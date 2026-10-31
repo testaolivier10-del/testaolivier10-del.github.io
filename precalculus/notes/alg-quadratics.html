@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quadratics: Factoring and the… — AP® Precalculus Notes</title>
+<meta name="description" content="Quadratic functions are the first functions in this course whose rate of change is not constant.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/alg-quadratics.html">
+<meta property="og:title" content="Quadratics: Factoring and the… — AP® Precalculus Notes">
+<meta property="og:description" content="Quadratic functions are the first functions in this course whose rate of change is not constant.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/alg-quadratics.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/alg-quadratics.html#reading",
+      "name": "Quadratics: Factoring and the Quadratic Formula",
+      "url": "https://levlprep.com/precalculus/notes/alg-quadratics.html",
+      "description": "Quadratic functions are the first functions in this course whose rate of change is not constant.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "quadratics: factoring and the quadratic formula review for precalculus",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Algebra you need",
+          "item": "https://levlprep.com/precalculus/units/skills-algebra.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Quadratics: Factoring and the Quadratic Formula: notes",
+          "item": "https://levlprep.com/precalculus/notes/alg-quadratics.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="alg-quadratics" data-unit="skills-algebra">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-algebra.html">Algebra you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Quadratics: Factoring and the Quadratic Formula: notes</span></nav>
+<p class="issue">Skills <i></i></p>
+<h1 class="deck bk-title" id="r3Title">Quadratics: Factoring <span>and the Quadratic Formula</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/alg-quadratics.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="alg-quadratics">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Falg-quadratics.html&amp;title=Quadratics%3A%20Factoring%20and%20the%20Quadratic%20Formula%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/alg-quadratics.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Functions Involving Parameters, Vectors, and Matrices</a>
+    <a class="bk-toc-chap" href="../units/skills-algebra.html"><span class="bk-toc-chap-n">S</span><span><b>Algebra you need</b><small>11 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="skills-algebra"><div class="tb-progress-row"><span><b>0</b> of 11 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="alg-functions"><a href="alg-functions.html"><span class="bk-toc-n">S</span>Functions, Graphs and Notation</a></li><li data-toc-t="alg-intervals"><a href="alg-intervals.html"><span class="bk-toc-n">S</span>Interval Notation and Inequalities</a></li><li data-toc-t="alg-lines"><a href="alg-lines.html"><span class="bk-toc-n">S</span>Lines, Slope and Linear Equations</a></li><li class="current" data-toc-t="alg-quadratics"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Quadratics: Factoring and the Quadratic Formula</a><div class="bk-toc-onpage"><p>On this page</p><a href="#quadratics-and-parabolas">Quadratics and parabolas</a><a href="#solving-with-factors">Solving with factors</a><a href="#the-quadratic-formula-and-the-discriminant">The quadratic formula and the discriminant</a><a href="#the-vertex-and-completing-the-square">The vertex and completing the square</a></div></li><li data-toc-t="alg-polynomial-algebra"><a href="alg-polynomial-algebra.html"><span class="bk-toc-n">S</span>Polynomial Arithmetic and Factoring</a></li><li data-toc-t="alg-complex-numbers"><a href="alg-complex-numbers.html"><span class="bk-toc-n">S</span>Complex Numbers</a></li><li data-toc-t="alg-rational-expressions"><a href="alg-rational-expressions.html"><span class="bk-toc-n">S</span>Rational Expressions</a></li><li data-toc-t="alg-systems"><a href="alg-systems.html"><span class="bk-toc-n">S</span>Systems of Equations</a></li><li data-toc-t="alg-exponents"><a href="alg-exponents.html"><span class="bk-toc-n">S</span>Exponent and Radical Rules</a></li><li data-toc-t="alg-right-triangle"><a href="alg-right-triangle.html"><span class="bk-toc-n">S</span>Right-Triangle Trigonometry</a></li><li data-toc-t="alg-circles"><a href="alg-circles.html"><span class="bk-toc-n">S</span>Circles, Arcs and Special Triangles</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p><span class="gl" tabindex="0" data-c="quadratic">Quadratic functions</span> are the first functions in this course whose <a class="gl" href="../notes/change-in-tandem.html" data-c="rate-of-change">rate of change</a> is not constant. Before studying that in Topic 1.3, you need four algebra skills: solving with factors, solving with the quadratic formula, finding the vertex, and <span class="gl" tabindex="0" data-c="quadratic-formula">completing the square</span>.</p>
+
+<h2 id="quadratics-and-parabolas">Quadratics and parabolas</h2>
+<p>A <b>quadratic <a class="gl" href="../notes/alg-functions.html" data-c="function">function</a></b> has the form <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">f(x) = ax^2 + bx + c</annotation></semantics></math> with <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a \ne 0</annotation></semantics></math>. Its graph is a <b><span class="gl" tabindex="0" data-c="parabola">parabola</span></b>: a U shape that opens up when <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &gt; 0</annotation></semantics></math> and down when <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &lt; 0</annotation></semantics></math>. The turning point is the <b>vertex</b>, and the parabola is symmetric about the vertical line through it, the axis of symmetry.</p>
+<figure id="fig-parabola"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="alg-quadratics-parabola"><img src="../figures/alg-quadratics-parabola.svg" alt="The parabola y = x² − 2x − 3 = (x − 1)² − 4 opens upward. Its vertex is (1, −4), on the dashed axis of symmetry x = 1. Its zeros are x = −1 and x = 3, and its y-intercept is (0, −3)." width="640" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The parabola <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = x^2 - 2x - 3</annotation></semantics></math> opens up, with vertex <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, -4)</annotation></semantics></math> and zeros <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = -1</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="solving-with-factors">Solving with factors</h2>
+<p>If a product is <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>, one of its factors is <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>. So when <math class="pcalc-m"><semantics><mrow><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">ax^2 + bx + c</annotation></semantics></math> can be written as a product, each factor gives a solution. For <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">x^2 - 5x + 6</annotation></semantics></math>, look for two numbers with product <math class="pcalc-m"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math> and sum <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">-5</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">-3</annotation></semantics></math>. Then <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(x - 2)(x - 3) = 0</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math> or <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>.</p>
+<p>The equation must equal <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> first. To solve <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>5</mn><mi>x</mi><mo>−</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">x^2 = 5x - 6</annotation></semantics></math>, move everything to one side before you look for factors.</p>
+
+<h2 id="the-quadratic-formula-and-the-discriminant">The quadratic formula and the discriminant</h2>
+<p>Every equation <math class="pcalc-m"><semantics><mrow><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">ax^2 + bx + c = 0</annotation></semantics></math> can be solved with the <b>quadratic formula</b>:</p>
+<p><math class="pcalc-m" display="block"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>b</mi><mo>±</mo><msqrt><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>a</mi><mi>c</mi></mrow></msqrt></mrow><mrow><mn>2</mn><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</annotation></semantics></math></p>
+<div class="worked">
+<p><b>Worked example 1.</b> Solve <math class="pcalc-m"><semantics><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>4</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">2x^2 + 3x - 4 = 0</annotation></semantics></math> exactly.</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">a = 2</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">b = 3</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>c</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">c = -4</annotation></semantics></math>. Then <math class="pcalc-m"><semantics><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>a</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">b^2 - 4ac</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>9</mn><mo>−</mo><mn>4</mn><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 9 - 4(2)(-4)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">= 9</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">+</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">+ 32</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>41</mn></mrow><annotation encoding="application/x-tex">= 41</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>±</mo><msqrt><mn>41</mn></msqrt></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">x = \frac{-3 \pm \sqrt{41}}{4}</annotation></semantics></math>. These are exact; <math class="pcalc-m"><semantics><mrow><msqrt><mn>41</mn></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{41}</annotation></semantics></math> does not simplify.</p>
+</div>
+<p>The number under the square root, <math class="pcalc-m"><semantics><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>a</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">b^2 - 4ac</annotation></semantics></math>, is the <b>discriminant</b>. It tells you how many real solutions there are without solving:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: b² − 4ac, Real solutions, The parabola"><table class="compare">
+<thead><tr><th scope="col"><math class="pcalc-m"><semantics><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>a</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">b^2 - 4ac</annotation></semantics></math></th><th scope="col">Real solutions</th><th scope="col">The parabola</th></tr></thead>
+<tbody>
+<tr><td>positive</td><td>two</td><td>crosses the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis twice</td></tr>
+<tr><td>zero</td><td>one</td><td>touches the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis at its vertex</td></tr>
+<tr><td>negative</td><td>none</td><td>stays on one side of the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="the-vertex-and-completing-the-square">The vertex and completing the square</h2>
+<p>The vertex of <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">y = ax^2 + bx + c</annotation></semantics></math> is at <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mi>b</mi><mrow><mn>2</mn><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">x = -\frac{b}{2a}</annotation></semantics></math>. For <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>8</mn><mi>x</mi><mo>+</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">y = 2x^2 - 8x + 5</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>8</mn></mrow><mn>4</mn></mfrac><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = -\frac{-8}{4} = 2</annotation></semantics></math>, and <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>8</mn><mo>−</mo><mn>16</mn><mo>+</mo><mn>5</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = 8 - 16 + 5 = -3</annotation></semantics></math>, so the vertex is <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, -3)</annotation></semantics></math>.</p>
+<p><b>Completing the square</b> rewrites a quadratic in <b><span class="gl" tabindex="0" data-c="vertex">vertex form</span></b> <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">a(x - h)^2 + k</annotation></semantics></math>, where the vertex <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(h, k)</annotation></semantics></math> can be read off.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Write <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>6</mn><mi>x</mi><mo>+</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x^2 + 6x + 5</annotation></semantics></math> in vertex form.</p>
+<p>Half of <math class="pcalc-m"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math>, and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>6</mn><mi>x</mi><mo>+</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">(x + 3)^2 = x^2 + 6x + 9</annotation></semantics></math>. That has <math class="pcalc-m"><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math> where we need <math class="pcalc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math>, so subtract <math class="pcalc-m"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math>:</p>
+<p><math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>6</mn><mi>x</mi><mo>+</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x^2 + 6x + 5</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">= (x + 3)^2 - 4</annotation></semantics></math>. The vertex is <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-3, -4)</annotation></semantics></math>.</p>
+</div>
+<p>Vertex form also makes solving easy: <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>4</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(x + 3)^2 - 4 = 0</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">(x + 3)^2 = 4</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>+</mo><mn>3</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x + 3 = \pm 2</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = -1</annotation></semantics></math> or <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x = -5</annotation></semantics></math>. Remember the <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">±</mo></mrow><annotation encoding="application/x-tex">\pm</annotation></semantics></math>; a square root has two signs.</p>
+<p>To build a parabola from its vertex and one more point, start with <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>a</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">y = a(x - h)^2 + k</annotation></semantics></math> and use the point to find <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>. With vertex <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-1, 2)</annotation></semantics></math> and point <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 5)</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mn>5</mn><mo>=</mo><mi>a</mi><mo stretchy="false">(</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">5 = a(1)^2 + 2</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">a = 3</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = 3(x + 1)^2 + 2</annotation></semantics></math>.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-quadratics">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="rates-of-change.html"><span>&larr; Previous</span><b>Rates of Change</b></a><a class="tb-chapter-link next" href="linear-quadratic-rates.html"><span>Next &rarr;</span><b>Rates of Change in Linear and Quadratic Functions</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/alg-quadratics.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-quadratics">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

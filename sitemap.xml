@@ -2,57 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://levlprep.com/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://levlprep.com/bio/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://levlprep.com/calculus/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://levlprep.com/chem/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://levlprep.com/environmental-science/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://levlprep.com/physics/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/</loc>
+    <lastmod>2026-10-31</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://levlprep.com/psychology/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://levlprep.com/statistics/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
@@ -82,7 +87,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/tools.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -212,7 +217,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/nremt/exams.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -227,12 +232,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/nremt/practice.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/skillsheets.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -242,7 +247,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/nremt/tools.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -277,7 +282,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -311,8 +316,38 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/precalculus/exams.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/flashcards.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/glossary.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/learn.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/practice.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/tools.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/premium.html</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -342,7 +377,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/psychology/tools.html</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -3332,17 +3367,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/nremt/body-map.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/flowcharts.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/formulary.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -3552,17 +3587,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/nremt/reference-cards.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/scenario-sim.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/sound-trainer.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -9692,7 +9727,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/teachers.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -9852,7 +9887,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/calculus/teachers.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -9967,7 +10002,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/chem/teachers.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -10072,7 +10107,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/environmental-science/teachers.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -10202,37 +10237,37 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/acid-base.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/arrow-pusher.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/conformations.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/reaction-predictor.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/reagent-roadmap.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/resonance.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/spectroscopy.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -10242,7 +10277,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/viewer-3d.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -10267,7 +10302,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/physics/teachers.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -10363,6 +10398,926 @@
   <url>
     <loc>https://levlprep.com/physics/unit-tests/unit-8.html</loc>
     <lastmod>2026-10-26</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/formula-sheet.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q1-exponential-justify.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q1-log-function.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q1-rational-graph.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q1-table-composition-inverse.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q1-trig-composition.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q2-cooling-residuals.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q2-cubic-volume.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q2-exponential-depreciation.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q2-logarithmic-sales.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q2-quadratic-attendance.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q3-ferris-wheel.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q3-spring.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q3-tide.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q3-waterwheel.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q4-exp-log-equations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q4-quadratic-in-ex.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q4-single-sine.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q4-single-tangent.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/frq/frq-q4-trig-equation-interval.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/justify.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/alg-circles.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/alg-complex-numbers.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/alg-exponents.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/alg-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/alg-intervals.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/alg-lines.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/alg-polynomial-algebra.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/alg-quadratics.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/alg-rational-expressions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/alg-right-triangle.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/alg-systems.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/change-in-tandem.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/complex-zeros.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/composition.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/conic-sections.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/equivalent-representations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/exp-log-equations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/exp-log-inverses.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/exponential-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/exponential-manipulation.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/exponential-modeling.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/implicit-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/inverse-determinant.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/inverse-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/inverse-trig.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/linear-quadratic-rates.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/linear-transformations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/linear-vs-exponential.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/logarithmic-expressions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/logarithmic-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/logarithmic-manipulation.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/logarithmic-modeling.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/matrices-as-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/matrices.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/matrix-modeling.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/model-construction.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/model-selection.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/model-validation.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/parametric-circles-lines.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/parametric-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/parametric-motion.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/parametric-rates.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/parametrizing-implicit.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/periodic-phenomena.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/polar-coordinates.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/polar-curves.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/polar-rates.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/polynomial-end-behavior.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/polynomial-rates.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/rates-of-change.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/rational-end-behavior.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/rational-holes.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/rational-zeros.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/sec-csc-cot.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/semi-log-plots.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/sequences.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/sine-cosine-curves.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/sine-cosine-tangent.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/sine-cosine-values.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/sinusoidal-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/sinusoidal-modeling.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/sinusoidal-transformations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/tangent-function.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/transformations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/trig-equations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/trig-identities.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/vector-valued-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/vectors.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/lessons/vertical-asymptotes.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/alg-circles.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/alg-complex-numbers.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/alg-exponents.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/alg-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/alg-intervals.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/alg-lines.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/alg-polynomial-algebra.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/alg-quadratics.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/alg-rational-expressions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/alg-right-triangle.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/alg-systems.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/change-in-tandem.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/complex-zeros.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/composition.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/conic-sections.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/equivalent-representations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/exp-log-equations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/exp-log-inverses.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/exponential-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/exponential-manipulation.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/exponential-modeling.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/implicit-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/inverse-determinant.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/inverse-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/inverse-trig.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/linear-quadratic-rates.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/linear-transformations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/linear-vs-exponential.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/logarithmic-expressions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/logarithmic-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/logarithmic-manipulation.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/logarithmic-modeling.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/matrices-as-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/matrices.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/matrix-modeling.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/model-construction.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/model-selection.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/model-validation.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/parametric-circles-lines.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/parametric-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/parametric-motion.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/parametric-rates.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/parametrizing-implicit.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/periodic-phenomena.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/polar-coordinates.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/polar-curves.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/polar-rates.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/polynomial-end-behavior.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/polynomial-rates.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/rates-of-change.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/rational-end-behavior.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/rational-holes.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/rational-zeros.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/sec-csc-cot.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/semi-log-plots.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/sequences.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/sine-cosine-curves.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/sine-cosine-tangent.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/sine-cosine-values.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/sinusoidal-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/sinusoidal-modeling.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/sinusoidal-transformations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/tangent-function.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/transformations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/trig-equations.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/trig-identities.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/vector-valued-functions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/vectors.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/notes/vertical-asymptotes.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/teachers.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/tools/exp-log-lab.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/tools/function-lab.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/tools/polar-graphs.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/tools/poly-rational.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/tools/rate-of-change.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/tools/regression-lab.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/tools/sinusoid-builder.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/tools/symbolic-steps.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/tools/unit-circle.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/tools/vectors-matrices.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/unit-sheets/skills-algebra.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/unit-sheets/unit-1.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/unit-sheets/unit-2.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/unit-sheets/unit-3.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/unit-sheets/unit-4.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/unit-tests/unit-1.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/unit-tests/unit-2.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/unit-tests/unit-3.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/units/skills-algebra.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/units/unit-1.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/units/unit-2.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/units/unit-3.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/precalculus/units/unit-4.html</loc>
+    <lastmod>2026-10-31</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -11042,7 +11997,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/statistics/teachers.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -11127,22 +12082,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/changelog.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://levlprep.com/privacy.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://levlprep.com/sources.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://levlprep.com/terms.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.3</priority>
   </url>
 </urlset>

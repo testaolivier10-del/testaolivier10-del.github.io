@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rational Functions and End Behavior — AP® Precalculus Notes</title>
+<meta name="description" content="Rational Functions and End Behavior explained from scratch: free precalculus study notes with figures and worked examples.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/rational-end-behavior.html">
+<meta property="og:title" content="Rational Functions and End Behavior — AP® Precalculus Notes">
+<meta property="og:description" content="Rational Functions and End Behavior explained from scratch: free precalculus study notes with figures and worked examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/rational-end-behavior.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/rational-end-behavior.html#reading",
+      "name": "Rational Functions and End Behavior",
+      "url": "https://levlprep.com/precalculus/notes/rational-end-behavior.html",
+      "description": "Rational Functions and End Behavior explained from scratch: free precalculus study notes with figures and worked examples.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "rational functions and end behavior ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Polynomial and Rational Functions",
+          "item": "https://levlprep.com/precalculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Rational Functions and End Behavior: notes",
+          "item": "https://levlprep.com/precalculus/notes/rational-end-behavior.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="rational-end-behavior" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Polynomial and Rational Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Rational Functions and End Behavior: notes</span></nav>
+<p class="issue">Unit 1 <i></i> Topic 1.7</p>
+<h1 class="deck bk-title" id="r3Title">Rational Functions <span>and End Behavior</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/rational-end-behavior.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="rational-end-behavior">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Frational-end-behavior.html&amp;title=Rational%20Functions%20and%20End%20Behavior%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/rational-end-behavior.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Polynomial and Rational Functions</b><small>14 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 14 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="change-in-tandem"><a href="change-in-tandem.html"><span class="bk-toc-n">1.1</span>Change in Tandem</a></li><li data-toc-t="rates-of-change"><a href="rates-of-change.html"><span class="bk-toc-n">1.2</span>Rates of Change</a></li><li data-toc-t="linear-quadratic-rates"><a href="linear-quadratic-rates.html"><span class="bk-toc-n">1.3</span>Rates of Change in Linear and Quadratic Functions</a></li><li data-toc-t="polynomial-rates"><a href="polynomial-rates.html"><span class="bk-toc-n">1.4</span>Polynomial Functions and Rates of Change</a></li><li data-toc-t="complex-zeros"><a href="complex-zeros.html"><span class="bk-toc-n">1.5</span>Polynomial Functions and Complex Zeros</a></li><li data-toc-t="polynomial-end-behavior"><a href="polynomial-end-behavior.html"><span class="bk-toc-n">1.6</span>Polynomial Functions and End Behavior</a></li><li class="current" data-toc-t="rational-end-behavior"><a href="#main" aria-current="page"><span class="bk-toc-n">1.7</span>Rational Functions and End Behavior</a><div class="bk-toc-onpage"><p>On this page</p><a href="#rational-functions">Rational functions</a><a href="#the-quotient-of-the-leading-terms">The quotient of the leading terms</a><a href="#horizontal-asymptotes">Horizontal asymptotes</a><a href="#slant-asymptotes">Slant asymptotes</a><a href="#in-context">In context</a></div></li><li data-toc-t="rational-zeros"><a href="rational-zeros.html"><span class="bk-toc-n">1.8</span>Rational Functions and Zeros</a></li><li data-toc-t="vertical-asymptotes"><a href="vertical-asymptotes.html"><span class="bk-toc-n">1.9</span>Rational Functions and Vertical Asymptotes</a></li><li data-toc-t="rational-holes"><a href="rational-holes.html"><span class="bk-toc-n">1.10</span>Rational Functions and Holes</a></li><li data-toc-t="equivalent-representations"><a href="equivalent-representations.html"><span class="bk-toc-n">1.11</span>Equivalent Representations of Polynomial and Rational Expressions</a></li><li data-toc-t="transformations"><a href="transformations.html"><span class="bk-toc-n">1.12</span>Transformations of Functions</a></li><li data-toc-t="model-selection"><a href="model-selection.html"><span class="bk-toc-n">1.13</span>Function Model Selection and Assumption Articulation</a></li><li data-toc-t="model-construction"><a href="model-construction.html"><span class="bk-toc-n">1.14</span>Function Model Construction and Application</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Exponential and Logarithmic Functions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>Divide one <a class="gl" href="../notes/alg-polynomial-algebra.html" data-c="polynomial-expression">polynomial</a> by another and you get a <b><span class="gl" tabindex="0" data-c="rational-function">rational function</span></b>. Its ends can do three things: level off at a constant, shrink to <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>, or keep growing, sometimes along a slanted line. This topic predicts which from the <a class="gl" href="../notes/polynomial-rates.html" data-c="leading-term">leading terms</a> and writes the answer in <a class="gl" href="../notes/polynomial-end-behavior.html" data-c="limit">limit notation</a>.</p>
+
+<h2 id="rational-functions">Rational functions</h2>
+<p>A rational <a class="gl" href="../notes/alg-functions.html" data-c="function">function</a> has the form <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mi>q</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">r(x) = \frac{p(x)}{q(x)}</annotation></semantics></math>, where <math class="pcalc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math> are polynomials. Examples: <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{3x^2 - 3}{x^2 + 2}</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>5</mn><mi>x</mi><mo>+</mo><mn>2</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{5x + 2}{x^2 + 1}</annotation></semantics></math>, average cost <math class="pcalc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mn>500</mn><mo>+</mo><mn>4</mn><mi>n</mi></mrow><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">C(n) = \frac{500 + 4n}{n}</annotation></semantics></math>.</p>
+
+<h2 id="the-quotient-of-the-leading-terms">The quotient of the leading terms</h2>
+<p>Topic 1.6 showed that for large <math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|x|</annotation></semantics></math> a polynomial behaves like its leading term. Apply that to the top and bottom separately, and a rational function behaves like the quotient of the two leading terms.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Degrees, Quotient of leading terms, End behavior, Example"><table class="compare">
+<thead><tr><th scope="col">Degrees</th><th scope="col">Quotient of leading terms</th><th scope="col">End behavior</th><th scope="col">Example</th></tr></thead>
+<tbody>
+<tr><td>top less than bottom</td><td>goes to <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td><span class="gl" tabindex="0" data-c="horizontal-asymptote">horizontal asymptote</span> <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>5</mn><mi>x</mi><mo>+</mo><mn>2</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac><mo>∼</mo><mfrac><mn>5</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{5x + 2}{x^2 + 1} \sim \frac{5}{x}</annotation></semantics></math></td></tr>
+<tr><td>equal</td><td>a constant <math class="pcalc-m"><semantics><mrow><mfrac><mi>a</mi><mi>b</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{a}{b}</annotation></semantics></math></td><td>horizontal asymptote <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mfrac><mi>a</mi><mi>b</mi></mfrac></mrow><annotation encoding="application/x-tex">y = \frac{a}{b}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn></mrow></mfrac><mo>∼</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\frac{3x^2 - 3}{x^2 + 2} \sim 3</annotation></semantics></math></td></tr>
+<tr><td>top one more</td><td>linear, <math class="pcalc-m"><semantics><mrow><mi>m</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">mx</annotation></semantics></math></td><td><span class="gl" tabindex="0" data-c="slant-asymptote">slant asymptote</span></td><td><math class="pcalc-m"><semantics><mrow><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mi>x</mi></mfrac><mo>∼</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{x^2 + 3x + 1}{x} \sim x</annotation></semantics></math></td></tr>
+<tr><td>top two or more more</td><td><math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math> or higher</td><td>like a polynomial</td><td><math class="pcalc-m"><semantics><mrow><mfrac><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow></mfrac><mo>∼</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{x^3 + 1}{x - 2} \sim x^2</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+
+<h2 id="horizontal-asymptotes">Horizontal asymptotes</h2>
+<p>If <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>r</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} r(x) = c</annotation></semantics></math> or <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>r</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to -\infty} r(x) = c</annotation></semantics></math>, the line <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">y = c</annotation></semantics></math> is a <b>horizontal asymptote</b>: the graph gets as close to it as you like far out.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Describe the <a class="gl" href="../notes/polynomial-end-behavior.html" data-c="end-behavior">end behavior</a> of <math class="pcalc-m"><semantics><mrow><mi>s</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">s(x)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{3x^2 - 3}{x^2 + 2}</annotation></semantics></math>.</p>
+<p>Leading terms: <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><msup><mi>x</mi><mn>2</mn></msup></mfrac><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\frac{3x^2}{x^2} = 3</annotation></semantics></math>. So <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>s</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} s(x) = 3</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>s</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to -\infty} s(x) = 3</annotation></semantics></math>; the horizontal asymptote is <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = 3</annotation></semantics></math>.</p>
+<p>Which side? <math class="pcalc-m"><semantics><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn><mo>=</mo><mn>3</mn><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>−</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">3x^2 - 3 = 3(x^2 + 2) - 9</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>s</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn><mo>−</mo><mfrac><mn>9</mn><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">s(x) = 3 - \frac{9}{x^2 + 2}</annotation></semantics></math>, always a little below <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math>.</p>
+</div>
+<figure id="fig-ha"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="rational-end-behavior-ha"><img src="../figures/rational-end-behavior-ha.svg" alt="The graph of r(x) = (2x² − 8)/(x² + 1). Its zeros are x = −2 and x = 2 and its y-intercept is (0, −8). For large positive and negative x the graph gets close to the dashed horizontal asymptote y = 2, the quotient of the leading terms 2x²/x²." width="640" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>8</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{2x^2 - 8}{x^2 + 1}</annotation></semantics></math> approaches <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = 2</annotation></semantics></math> at both ends. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>An asymptote describes the ends, not the middle. A graph may cross its horizontal asymptote: <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>5</mn><mi>x</mi><mo>+</mo><mn>2</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{5x + 2}{x^2 + 1}</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> at <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.4</mn></mrow><annotation encoding="application/x-tex">x = -0.4</annotation></semantics></math> and still has the asymptote <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math>.</p>
+
+<h2 id="slant-asymptotes">Slant asymptotes</h2>
+<p>When the top's <a class="gl" href="../notes/polynomial-rates.html" data-c="degree">degree</a> is one more than the bottom's, the quotient of the leading terms is linear and the graph approaches a slanted line. To find it, rewrite the function as a line plus a fraction that goes to <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the slant asymptote of <math class="pcalc-m"><semantics><mrow><mi>k</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">k(x)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{x^2 + 2x + 3}{x + 1}</annotation></semantics></math>.</p>
+<p>Write the top around the bottom: <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x^2 + 2x + 3</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">= (x + 1)^2 + 2</annotation></semantics></math>.</p>
+<p>So <math class="pcalc-m"><semantics><mrow><mi>k</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>+</mo><mfrac><mn>2</mn><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">k(x) = x + 1 + \frac{2}{x + 1}</annotation></semantics></math>. As <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>→</mo><mo form="prefix" lspace="0" rspace="0">±</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">x \to \pm\infty</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mfrac><mn>2</mn><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{2}{x + 1} \to 0</annotation></semantics></math>, and the graph approaches <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = x + 1</annotation></semantics></math>.</p>
+</div>
+<p>With a single-term denominator it is quicker: <math class="pcalc-m"><semantics><mrow><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{x^2 + 3x + 1}{x}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mi>x</mi><mo>+</mo><mn>3</mn><mo>+</mo><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">= x + 3 + \frac{1}{x}</annotation></semantics></math>, slant asymptote <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = x + 3</annotation></semantics></math>.</p>
+
+<h2 id="in-context">In context</h2>
+<p>The poster shop's average cost <math class="pcalc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(n)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>500</mn><mo>+</mo><mn>4</mn><mi>n</mi></mrow><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">= \frac{500 + 4n}{n}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>4</mn><mo>+</mo><mfrac><mn>500</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">= 4 + \frac{500}{n}</annotation></semantics></math> has <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>C</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\lim_{n \to \infty} C(n) = 4</annotation></semantics></math>. In words: for very large orders, the average cost per poster gets close to $4, because the $500 setup is spread over more and more posters.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:rational-end-behavior">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="alg-rational-expressions.html"><span>&larr; Previous</span><b>Rational Expressions</b></a><a class="tb-chapter-link next" href="rational-zeros.html"><span>Next &rarr;</span><b>Rational Functions and Zeros</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/rational-end-behavior.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:rational-end-behavior">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

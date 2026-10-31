@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rational Functions and Vertical… — AP® Precalculus Notes</title>
+<meta name="description" content="Rational Functions and Vertical Asymptotes explained from scratch: free precalculus study notes with figures and worked examples.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/vertical-asymptotes.html">
+<meta property="og:title" content="Rational Functions and Vertical… — AP® Precalculus Notes">
+<meta property="og:description" content="Rational Functions and Vertical Asymptotes explained from scratch: free precalculus study notes with figures and worked examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/vertical-asymptotes.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/vertical-asymptotes.html#reading",
+      "name": "Rational Functions and Vertical Asymptotes",
+      "url": "https://levlprep.com/precalculus/notes/vertical-asymptotes.html",
+      "description": "Rational Functions and Vertical Asymptotes explained from scratch: free precalculus study notes with figures and worked examples.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "rational functions and vertical asymptotes ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Polynomial and Rational Functions",
+          "item": "https://levlprep.com/precalculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Rational Functions and Vertical Asymptotes: notes",
+          "item": "https://levlprep.com/precalculus/notes/vertical-asymptotes.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="vertical-asymptotes" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Polynomial and Rational Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Rational Functions and Vertical Asymptotes: notes</span></nav>
+<p class="issue">Unit 1 <i></i> Topic 1.9</p>
+<h1 class="deck bk-title" id="r3Title">Rational Functions <span>and Vertical Asymptotes</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/vertical-asymptotes.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="vertical-asymptotes">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fvertical-asymptotes.html&amp;title=Rational%20Functions%20and%20Vertical%20Asymptotes%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/vertical-asymptotes.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Polynomial and Rational Functions</b><small>14 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 14 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="change-in-tandem"><a href="change-in-tandem.html"><span class="bk-toc-n">1.1</span>Change in Tandem</a></li><li data-toc-t="rates-of-change"><a href="rates-of-change.html"><span class="bk-toc-n">1.2</span>Rates of Change</a></li><li data-toc-t="linear-quadratic-rates"><a href="linear-quadratic-rates.html"><span class="bk-toc-n">1.3</span>Rates of Change in Linear and Quadratic Functions</a></li><li data-toc-t="polynomial-rates"><a href="polynomial-rates.html"><span class="bk-toc-n">1.4</span>Polynomial Functions and Rates of Change</a></li><li data-toc-t="complex-zeros"><a href="complex-zeros.html"><span class="bk-toc-n">1.5</span>Polynomial Functions and Complex Zeros</a></li><li data-toc-t="polynomial-end-behavior"><a href="polynomial-end-behavior.html"><span class="bk-toc-n">1.6</span>Polynomial Functions and End Behavior</a></li><li data-toc-t="rational-end-behavior"><a href="rational-end-behavior.html"><span class="bk-toc-n">1.7</span>Rational Functions and End Behavior</a></li><li data-toc-t="rational-zeros"><a href="rational-zeros.html"><span class="bk-toc-n">1.8</span>Rational Functions and Zeros</a></li><li class="current" data-toc-t="vertical-asymptotes"><a href="#main" aria-current="page"><span class="bk-toc-n">1.9</span>Rational Functions and Vertical Asymptotes</a><div class="bk-toc-onpage"><p>On this page</p><a href="#where-vertical-asymptotes-come-from">Where vertical asymptotes come from</a><a href="#one-sided-limits">One-sided limits</a><a href="#writing-it-for-a-grader">Writing it for a grader</a><a href="#from-a-table">From a table</a></div></li><li data-toc-t="rational-holes"><a href="rational-holes.html"><span class="bk-toc-n">1.10</span>Rational Functions and Holes</a></li><li data-toc-t="equivalent-representations"><a href="equivalent-representations.html"><span class="bk-toc-n">1.11</span>Equivalent Representations of Polynomial and Rational Expressions</a></li><li data-toc-t="transformations"><a href="transformations.html"><span class="bk-toc-n">1.12</span>Transformations of Functions</a></li><li data-toc-t="model-selection"><a href="model-selection.html"><span class="bk-toc-n">1.13</span>Function Model Selection and Assumption Articulation</a></li><li data-toc-t="model-construction"><a href="model-construction.html"><span class="bk-toc-n">1.14</span>Function Model Construction and Application</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Exponential and Logarithmic Functions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p><a class="gl" href="../notes/polynomial-end-behavior.html" data-c="end-behavior">End behavior</a> describes a <a class="gl" href="../notes/rational-end-behavior.html" data-c="rational-function">rational function</a> far from the origin. This topic looks at the places where it blows up: <a class="gl" href="../notes/alg-functions.html" data-c="function">inputs</a> where the denominator is <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> and the outputs grow without bound. Those vertical lines are <span class="gl" tabindex="0" data-c="vertical-asymptote">vertical asymptotes</span>, and the way to describe them precisely is with <span class="gl" tabindex="0" data-c="one-sided-limit">one-sided limits</span>.</p>
+
+<h2 id="where-vertical-asymptotes-come-from">Where vertical asymptotes come from</h2>
+<p>Near an input <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> where the denominator of <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mi>q</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">r(x) = \frac{p(x)}{q(x)}</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> but the numerator is not, the outputs are a fixed number divided by a tiny number: they grow without bound in size. The vertical line <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math> is then a <b>vertical asymptote</b>.</p>
+<p>When the numerator is <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> at <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> too, compare <a class="gl" href="../notes/complex-zeros.html" data-c="multiplicity">multiplicities</a>. If <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x - a)</annotation></semantics></math> divides the denominator more times than the numerator, there is still a vertical asymptote at <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>. If not, the factor cancels away and the outputs approach a number instead. The next topic studies that case.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the vertical asymptotes of <math class="pcalc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(x)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{x - 3}{(x - 3)(x + 2)}</annotation></semantics></math>.</p>
+<p>Denominator zeros: <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math>. The factor <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x - 3</annotation></semantics></math> appears once on top and once below, so it cancels: <math class="pcalc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">h(x) = \frac{1}{x + 2}</annotation></semantics></math> for <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x \ne 3</annotation></semantics></math>.</p>
+<p>Only <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = -2</annotation></semantics></math> is a vertical asymptote.</p>
+</div>
+
+<h2 id="one-sided-limits">One-sided limits</h2>
+<p>A <b>one-sided <a class="gl" href="../notes/polynomial-end-behavior.html" data-c="limit">limit</a></b> describes the outputs as the input approaches <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> from one side only. <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mi>a</mi><mo>−</mo></msup></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to a^-} f(x)</annotation></semantics></math> means "as <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> approaches <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> from the left" (inputs less than <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>) and <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mi>a</mi><mo>+</mo></msup></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to a^+} f(x)</annotation></semantics></math> "from the right". At a vertical asymptote each one-sided limit is <math class="pcalc-m"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math> or <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">-\infty</annotation></semantics></math>.</p>
+<figure id="fig-va"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="vertical-asymptotes-sides"><img src="../figures/vertical-asymptotes-sides.svg" alt="The graph of r(x) = x/((x − 1)(x + 2)) with dashed vertical asymptotes x = −2 and x = 1. As x approaches −2 from the left the outputs decrease without bound, and from the right they increase without bound. As x approaches 1 from the left the outputs decrease without bound, and from the right they increase without bound." width="640" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> At <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>1</mn><mo>−</mo></msup></mrow></munder><mi>r</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 1^-} r(x) = -\infty</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>1</mn><mo>+</mo></msup></mrow></munder><mi>r</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 1^+} r(x) = \infty</annotation></semantics></math>. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>To find the sign, look at each factor just beside <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Describe <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r(x)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mi>x</mi><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{x}{(x - 1)(x + 2)}</annotation></semantics></math> near <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>.</p>
+<p>Left of <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math> (say <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0.9</mn></mrow><annotation encoding="application/x-tex">x = 0.9</annotation></semantics></math>): top <math class="pcalc-m"><semantics><mrow><mn>0.9</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0.9 &gt; 0</annotation></semantics></math>; <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>1</mn><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x - 1 &lt; 0</annotation></semantics></math> and small; <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>+</mo><mn>2</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x + 2 &gt; 0</annotation></semantics></math>. The quotient is negative and huge: <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>1</mn><mo>−</mo></msup></mrow></munder><mi>r</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 1^-} r(x) = -\infty</annotation></semantics></math>.</p>
+<p>Right of <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math> (say <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1.1</mn></mrow><annotation encoding="application/x-tex">x = 1.1</annotation></semantics></math>): <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>1</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x - 1 &gt; 0</annotation></semantics></math>, everything else the same: <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>1</mn><mo>+</mo></msup></mrow></munder><mi>r</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 1^+} r(x) = \infty</annotation></semantics></math>.</p>
+</div>
+<p>When the leftover power of <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x - a)</annotation></semantics></math> is even, it is positive on both sides, so both one-sided limits match. For <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{x + 1}{(x - 2)^2}</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>2</mn><mo>−</mo></msup></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 2^-} f(x) = \infty</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>2</mn><mo>+</mo></msup></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 2^+} f(x) = \infty</annotation></semantics></math>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Leftover power of (x − a) below, Sides of the asymptote, Example near a"><table class="compare">
+<thead><tr><th scope="col">Leftover power of <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x - a)</annotation></semantics></math> below</th><th scope="col">Sides of the asymptote</th><th scope="col">Example near <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td>odd</td><td>opposite signs</td><td><math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{x - 1}</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">-\infty</annotation></semantics></math> left, <math class="pcalc-m"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math> right</td></tr>
+<tr><td>even</td><td>same sign</td><td><math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{(x - 2)^2}</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math> on both sides</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="writing-it-for-a-grader">Writing it for a grader</h2>
+<p>Write both one-sided limits in full: "<math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>1</mn><mo>−</mo></msup></mrow></munder><mi>r</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 1^-} r(x) = -\infty</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>1</mn><mo>+</mo></msup></mrow></munder><mi>r</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 1^+} r(x) = \infty</annotation></semantics></math>." These lose the point: "<math class="pcalc-m"><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">r(1) = \infty</annotation></semantics></math>" (<math class="pcalc-m"><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r(1)</annotation></semantics></math> does not exist), "<math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">r \to \infty</annotation></semantics></math> at <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math>" (no limit notation, no side), or a limit with the wrong side.</p>
+<p>In context, translate both parts: <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>V</mi><mo>→</mo><msup><mn>0</mn><mo>+</mo></msup></mrow></munder><mi>P</mi><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{V \to 0^+} P(V) = \infty</annotation></semantics></math> for <math class="pcalc-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>600</mn><mi>V</mi></mfrac></mrow><annotation encoding="application/x-tex">P(V) = \frac{600}{V}</annotation></semantics></math> says that as the volume shrinks toward <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>, the pressure grows without bound.</p>
+
+<h2 id="from-a-table">From a table</h2>
+<p>A table of inputs closing in on <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> from each side shows the same thing. For <math class="pcalc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">g(x) = \frac{x^2 + 1}{x - 1}</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>0.99</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>198.01</mn></mrow><annotation encoding="application/x-tex">g(0.99) = -198.01</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>0.999</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1998.00</mn></mrow><annotation encoding="application/x-tex">g(0.999) = -1998.00</annotation></semantics></math> on the left; <math class="pcalc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>1.01</mn><mo stretchy="false">)</mo><mo>=</mo><mn>202.01</mn></mrow><annotation encoding="application/x-tex">g(1.01) = 202.01</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>1.001</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2002.00</mn></mrow><annotation encoding="application/x-tex">g(1.001) = 2002.00</annotation></semantics></math> on the right. So <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>1</mn><mo>−</mo></msup></mrow></munder><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 1^-} g(x) = -\infty</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>1</mn><mo>+</mo></msup></mrow></munder><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 1^+} g(x) = \infty</annotation></semantics></math>.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:vertical-asymptotes">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="rational-zeros.html"><span>&larr; Previous</span><b>Rational Functions and Zeros</b></a><a class="tb-chapter-link next" href="rational-holes.html"><span>Next &rarr;</span><b>Rational Functions and Holes</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/vertical-asymptotes.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:vertical-asymptotes">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

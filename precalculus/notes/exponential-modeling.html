@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exponential Function Context and… — AP® Precalculus Notes</title>
+<meta name="description" content="Exponential Function Context and Data Modeling explained from scratch: free precalculus study notes with figures and worked examples.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/exponential-modeling.html">
+<meta property="og:title" content="Exponential Function Context and… — AP® Precalculus Notes">
+<meta property="og:description" content="Exponential Function Context and Data Modeling explained from scratch: free precalculus study notes with figures and worked examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/exponential-modeling.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/exponential-modeling.html#reading",
+      "name": "Exponential Function Context and Data Modeling",
+      "url": "https://levlprep.com/precalculus/notes/exponential-modeling.html",
+      "description": "Exponential Function Context and Data Modeling explained from scratch: free precalculus study notes with figures and worked examples.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "exponential function context and data modeling ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Exponential and Logarithmic Functions",
+          "item": "https://levlprep.com/precalculus/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Exponential Function Context and Data Modeling: notes",
+          "item": "https://levlprep.com/precalculus/notes/exponential-modeling.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="exponential-modeling" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Exponential and Logarithmic Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Exponential Function Context and Data Modeling: notes</span></nav>
+<p class="issue">Unit 2 <i></i> Topic 2.5</p>
+<h1 class="deck bk-title" id="r3Title">Exponential Function Context <span>and Data Modeling</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/exponential-modeling.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="exponential-modeling">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fexponential-modeling.html&amp;title=Exponential%20Function%20Context%20and%20Data%20Modeling%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/exponential-modeling.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-1.html"><span class="bk-toc-n">1</span>Polynomial and Rational Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-2.html"><span class="bk-toc-chap-n">2</span><span><b>Exponential and Logarithmic Functions</b><small>15 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-2"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="sequences"><a href="sequences.html"><span class="bk-toc-n">2.1</span>Change in Arithmetic and Geometric Sequences</a></li><li data-toc-t="linear-vs-exponential"><a href="linear-vs-exponential.html"><span class="bk-toc-n">2.2</span>Change in Linear and Exponential Functions</a></li><li data-toc-t="exponential-functions"><a href="exponential-functions.html"><span class="bk-toc-n">2.3</span>Exponential Functions</a></li><li data-toc-t="exponential-manipulation"><a href="exponential-manipulation.html"><span class="bk-toc-n">2.4</span>Exponential Function Manipulation</a></li><li class="current" data-toc-t="exponential-modeling"><a href="#main" aria-current="page"><span class="bk-toc-n">2.5</span>Exponential Function Context and Data Modeling</a><div class="bk-toc-onpage"><p>On this page</p><a href="#reading-a-and-b-in-context">Reading a and b in context</a><a href="#three-ways-to-build-the-model">Three ways to build the model</a><a href="#other-time-units">Other time units</a><a href="#predicting-and-solving">Predicting and solving</a><a href="#where-the-model-can-be-trusted">Where the model can be trusted</a></div></li><li data-toc-t="model-validation"><a href="model-validation.html"><span class="bk-toc-n">2.6</span>Competing Function Model Validation</a></li><li data-toc-t="composition"><a href="composition.html"><span class="bk-toc-n">2.7</span>Composition of Functions</a></li><li data-toc-t="inverse-functions"><a href="inverse-functions.html"><span class="bk-toc-n">2.8</span>Inverse Functions</a></li><li data-toc-t="logarithmic-expressions"><a href="logarithmic-expressions.html"><span class="bk-toc-n">2.9</span>Logarithmic Expressions</a></li><li data-toc-t="exp-log-inverses"><a href="exp-log-inverses.html"><span class="bk-toc-n">2.10</span>Inverses of Exponential Functions</a></li><li data-toc-t="logarithmic-functions"><a href="logarithmic-functions.html"><span class="bk-toc-n">2.11</span>Logarithmic Functions</a></li><li data-toc-t="logarithmic-manipulation"><a href="logarithmic-manipulation.html"><span class="bk-toc-n">2.12</span>Logarithmic Function Manipulation</a></li><li data-toc-t="exp-log-equations"><a href="exp-log-equations.html"><span class="bk-toc-n">2.13</span>Exponential and Logarithmic Equations and Inequalities</a></li><li data-toc-t="logarithmic-modeling"><a href="logarithmic-modeling.html"><span class="bk-toc-n">2.14</span>Logarithmic Function Context and Data Modeling</a></li><li data-toc-t="semi-log-plots"><a href="semi-log-plots.html"><span class="bk-toc-n">2.15</span>Semi-log Plots</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Trigonometric and Polar Functions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>When a quantity changes by the same factor over equal stretches of time, an <span class="gl" tabindex="0" data-c="exponential-model">exponential model</span> <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>a</mi><msup><mi>b</mi><mi>t</mi></msup></mrow><annotation encoding="application/x-tex">f(t) = ab^t</annotation></semantics></math> describes it: a phone losing value, a medicine leaving the blood, a gym gaining members. This page builds such models three ways, rewrites them for other time units, and uses them to predict and to find when a value is reached. It is the content of Question 2 whenever the context is exponential.</p>
+
+<h2 id="reading-a-and-b-in-context">Reading <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> in context</h2>
+<p><math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a = f(0)</annotation></semantics></math> is the initial value, the amount when <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>. <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> is the <a class="gl" href="../notes/exponential-functions.html" data-c="growth-factor">growth factor</a> per unit of <math class="pcalc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>: each unit, the amount is multiplied by <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math>. A factor <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>1.035</mn></mrow><annotation encoding="application/x-tex">b = 1.035</annotation></semantics></math> means a <math class="pcalc-m"><semantics><mrow><mn>3.5</mn><mo>%</mo></mrow><annotation encoding="application/x-tex">3.5\%</annotation></semantics></math> increase per unit; <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>0.8</mn></mrow><annotation encoding="application/x-tex">b = 0.8</annotation></semantics></math> means the amount keeps <math class="pcalc-m"><semantics><mrow><mn>80</mn><mo>%</mo></mrow><annotation encoding="application/x-tex">80\%</annotation></semantics></math>, a <math class="pcalc-m"><semantics><mrow><mn>20</mn><mo>%</mo></mrow><annotation encoding="application/x-tex">20\%</annotation></semantics></math> decrease. Always say what <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math> is and what one unit of <math class="pcalc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> is.</p>
+
+<h2 id="three-ways-to-build-the-model">Three ways to build the model</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: You know, Find a and b by"><table class="compare">
+<thead><tr><th scope="col">You know</th><th scope="col">Find <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> by</th></tr></thead>
+<tbody>
+<tr><td>The initial value and the percent change</td><td><math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> = initial value, <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>1</mn><mo>+</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">b = 1 + r</annotation></semantics></math></td></tr>
+<tr><td>Two points</td><td>The ratio of the <a class="gl" href="../notes/alg-functions.html" data-c="function">outputs</a> over the gap in inputs: <math class="pcalc-m"><semantics><mrow><msup><mi>b</mi><mtext>gap</mtext></msup><mo>=</mo><mtext>ratio</mtext></mrow><annotation encoding="application/x-tex">b^{\text{gap}} = \text{ratio}</annotation></semantics></math></td></tr>
+<tr><td>Many data points that fit only roughly</td><td>Exponential <a class="gl" href="../notes/model-construction.html" data-c="regression">regression</a> on the calculator</td></tr>
+</tbody>
+</table></div>
+<div class="worked">
+<p><b>Worked example 1 (two points).</b> A phone costs <math class="pcalc-m"><semantics><mrow><mo>$</mo><mn>800</mn></mrow><annotation encoding="application/x-tex">$800</annotation></semantics></math> new and is worth <math class="pcalc-m"><semantics><mrow><mo>$</mo><mn>512</mn></mrow><annotation encoding="application/x-tex">$512</annotation></semantics></math> after <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math> years. Find <math class="pcalc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>a</mi><msup><mi>b</mi><mi>t</mi></msup></mrow><annotation encoding="application/x-tex">V(t) = ab^t</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mi>V</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>800</mn></mrow><annotation encoding="application/x-tex">a = V(0) = 800</annotation></semantics></math>.</p>
+<p>Over the <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math>-year gap the value is multiplied by <math class="pcalc-m"><semantics><mrow><mfrac><mn>512</mn><mn>800</mn></mfrac><mo>=</mo><mn>0.64</mn></mrow><annotation encoding="application/x-tex">\frac{512}{800} = 0.64</annotation></semantics></math>. That is two yearly factors: <math class="pcalc-m"><semantics><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>=</mo><mn>0.64</mn></mrow><annotation encoding="application/x-tex">b^2 = 0.64</annotation></semantics></math>.</p>
+<p>Take the square root (<a class="gl" href="../notes/alg-exponents.html" data-c="exponent-rules">rational exponent</a> <math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math>): <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><msup><mn>0.64</mn><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>=</mo><mn>0.8</mn></mrow><annotation encoding="application/x-tex">b = 0.64^{1/2} = 0.8</annotation></semantics></math>. So <math class="pcalc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>800</mn><mo stretchy="false">(</mo><mn>0.8</mn><msup><mo stretchy="false">)</mo><mi>t</mi></msup></mrow><annotation encoding="application/x-tex">V(t) = 800(0.8)^t</annotation></semantics></math>: the phone keeps <math class="pcalc-m"><semantics><mrow><mn>80</mn><mo>%</mo></mrow><annotation encoding="application/x-tex">80\%</annotation></semantics></math> of its value each year.</p>
+</div>
+<figure id="fig-phone"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="exponential-modeling-phone"><img src="../figures/exponential-modeling-phone.svg" alt="A phone's value V in dollars against years t: the points (0, 800) and (2, 512) on the decay curve V(t) = 800(0.8)^t, which falls toward the dashed asymptote V = 0." width="640" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> <math class="pcalc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>800</mn><mo stretchy="false">(</mo><mn>0.8</mn><msup><mo stretchy="false">)</mo><mi>t</mi></msup></mrow><annotation encoding="application/x-tex">V(t) = 800(0.8)^t</annotation></semantics></math> through <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>800</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 800)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>512</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 512)</annotation></semantics></math>. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>If neither point is at <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>, find <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> the same way, then work back to <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>. Through <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>30</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 30)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>270</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 270)</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">b^2 = 9</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">b = 3</annotation></semantics></math>, and <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>⋅</mo><msup><mn>3</mn><mn>1</mn></msup><mo>=</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">a \cdot 3^1 = 30</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">a = 10</annotation></semantics></math>.</p>
+<p>With real data, use exponential regression: enter the lists, run the regression, and store <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> at full precision. For the medicine data on the practice page, the calculator gives <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>0.79686</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow><annotation encoding="application/x-tex">b = 0.79686...</annotation></semantics></math>, a decrease of about <math class="pcalc-m"><semantics><mrow><mn>20.314</mn><mo>%</mo></mrow><annotation encoding="application/x-tex">20.314\%</annotation></semantics></math> per hour.</p>
+
+<h2 id="other-time-units">Other time units</h2>
+<p>Rational exponents convert the factor to another unit. If the yearly factor is <math class="pcalc-m"><semantics><mrow><mn>1.2</mn></mrow><annotation encoding="application/x-tex">1.2</annotation></semantics></math>, the monthly factor <math class="pcalc-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math> satisfies <math class="pcalc-m"><semantics><mrow><msup><mi>m</mi><mn>12</mn></msup><mo>=</mo><mn>1.2</mn></mrow><annotation encoding="application/x-tex">m^{12} = 1.2</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>m</mi><mo>=</mo><msup><mn>1.2</mn><mrow><mn>1</mn><mo>/</mo><mn>12</mn></mrow></msup></mrow><annotation encoding="application/x-tex">m = 1.2^{1/12}</annotation></semantics></math>. The model can be written <math class="pcalc-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(t)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>1200</mn><mo stretchy="false">(</mo><msup><mn>1.2</mn><mrow><mn>1</mn><mo>/</mo><mn>12</mn></mrow></msup><msup><mo stretchy="false">)</mo><mrow><mn>12</mn><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">= 1200(1.2^{1/12})^{12t}</annotation></semantics></math>, which is the same function as <math class="pcalc-m"><semantics><mrow><mn>1200</mn><mo stretchy="false">(</mo><mn>1.2</mn><msup><mo stretchy="false">)</mo><mi>t</mi></msup></mrow><annotation encoding="application/x-tex">1200(1.2)^t</annotation></semantics></math>.</p>
+<p>Do not split the percent: <math class="pcalc-m"><semantics><mrow><mn>20</mn><mo>%</mo></mrow><annotation encoding="application/x-tex">20\%</annotation></semantics></math> a year is not <math class="pcalc-m"><semantics><mrow><mfrac><mn>20</mn><mn>12</mn></mfrac><mo>%</mo></mrow><annotation encoding="application/x-tex">\frac{20}{12}\%</annotation></semantics></math> a month, because each month builds on the last. Likewise, <math class="pcalc-m"><semantics><mrow><mn>30</mn><mo>%</mo></mrow><annotation encoding="application/x-tex">30\%</annotation></semantics></math> a week is a daily factor of <math class="pcalc-m"><semantics><mrow><msup><mn>1.3</mn><mrow><mn>1</mn><mo>/</mo><mn>7</mn></mrow></msup><mo>≈</mo><mn>1.038</mn></mrow><annotation encoding="application/x-tex">1.3^{1/7} \approx 1.038</annotation></semantics></math>, not <math class="pcalc-m"><semantics><mrow><mn>1</mn><mo>+</mo><mfrac><mn>0.3</mn><mn>7</mn></mfrac></mrow><annotation encoding="application/x-tex">1 + \frac{0.3}{7}</annotation></semantics></math>.</p>
+<p>A <b>half-life</b> <math class="pcalc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> means the amount halves every <math class="pcalc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> units: <math class="pcalc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>A</mi><mn>0</mn></msub><msup><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mrow><mi>t</mi><mo>/</mo><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">A(t) = A_0\left(\frac{1}{2}\right)^{t/h}</annotation></semantics></math>. After <math class="pcalc-m"><semantics><mrow><mn>15</mn></mrow><annotation encoding="application/x-tex">15</annotation></semantics></math> years with a <math class="pcalc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math>-year half-life, <math class="pcalc-m"><semantics><mrow><mn>80</mn></mrow><annotation encoding="application/x-tex">80</annotation></semantics></math> grams becomes <math class="pcalc-m"><semantics><mrow><mn>80</mn><msup><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mn>3</mn></msup><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">80\left(\frac{1}{2}\right)^3 = 10</annotation></semantics></math> grams.</p>
+
+<h2 id="predicting-and-solving">Predicting and solving</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> For <math class="pcalc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>800</mn><mo stretchy="false">(</mo><mn>0.8</mn><msup><mo stretchy="false">)</mo><mi>t</mi></msup></mrow><annotation encoding="application/x-tex">V(t) = 800(0.8)^t</annotation></semantics></math>, find <math class="pcalc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>3.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">V(3.5)</annotation></semantics></math> and the time when the phone is worth <math class="pcalc-m"><semantics><mrow><mo>$</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">$100</annotation></semantics></math>.</p>
+<p>Prediction: <math class="pcalc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>3.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">V(3.5)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>800</mn><mo stretchy="false">(</mo><mn>0.8</mn><msup><mo stretchy="false">)</mo><mn>3.5</mn></msup></mrow><annotation encoding="application/x-tex">= 800(0.8)^{3.5}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>366.357</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow><annotation encoding="application/x-tex">= 366.357...</annotation></semantics></math>, about <math class="pcalc-m"><semantics><mrow><mo>$</mo><mn>366.36</mn></mrow><annotation encoding="application/x-tex">$366.36</annotation></semantics></math>.</p>
+<p>Solving: graph <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>800</mn><mo stretchy="false">(</mo><mn>0.8</mn><msup><mo stretchy="false">)</mo><mi>t</mi></msup></mrow><annotation encoding="application/x-tex">y = 800(0.8)^t</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">y = 100</annotation></semantics></math> and find the intersection with the calculator: <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>9.318</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow><annotation encoding="application/x-tex">t = 9.318...</annotation></semantics></math>, so about <math class="pcalc-m"><semantics><mrow><mn>9.319</mn></mrow><annotation encoding="application/x-tex">9.319</annotation></semantics></math> years. (Store the value; do not round <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> first.)</p>
+</div>
+
+<h2 id="where-the-model-can-be-trusted">Where the model can be trusted</h2>
+<p>A model built from data is supported near that data. Between data points, predictions are usually good. Far past the last data point, nothing in the data shows the pattern continues: the phone may stop losing value at a scrap price, and the body may clear a medicine differently once little is left. Say this with the numbers: "the data stop at <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">t = 5</annotation></semantics></math>, so a prediction at <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>24</mn></mrow><annotation encoding="application/x-tex">t = 24</annotation></semantics></math> is not supported by the data." In context, the <a class="gl" href="../notes/alg-functions.html" data-c="domain">domain</a> may also have a hard edge, such as a value that cannot fall below a floor.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:exponential-modeling">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="exponential-manipulation.html"><span>&larr; Previous</span><b>Exponential Function Manipulation</b></a><a class="tb-chapter-link next" href="model-validation.html"><span>Next &rarr;</span><b>Competing Function Model Validation</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/exponential-modeling.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:exponential-modeling">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

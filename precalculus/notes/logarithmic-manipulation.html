@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logarithmic Function Manipulation — AP® Precalculus Notes</title>
+<meta name="description" content="Exponent rules have twins for logarithms. Because a logarithm is an exponent, every rule for combining exponents becomes a rule for combining logarithms.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/logarithmic-manipulation.html">
+<meta property="og:title" content="Logarithmic Function Manipulation — AP® Precalculus Notes">
+<meta property="og:description" content="Exponent rules have twins for logarithms. Because a logarithm is an exponent, every rule for combining exponents becomes a rule for combining logarithms.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/logarithmic-manipulation.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/logarithmic-manipulation.html#reading",
+      "name": "Logarithmic Function Manipulation",
+      "url": "https://levlprep.com/precalculus/notes/logarithmic-manipulation.html",
+      "description": "Exponent rules have twins for logarithms. Because a logarithm is an exponent, every rule for combining exponents becomes a rule for combining logarithms.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "logarithmic function manipulation ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Exponential and Logarithmic Functions",
+          "item": "https://levlprep.com/precalculus/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Logarithmic Function Manipulation: notes",
+          "item": "https://levlprep.com/precalculus/notes/logarithmic-manipulation.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="logarithmic-manipulation" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Exponential and Logarithmic Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Logarithmic Function Manipulation: notes</span></nav>
+<p class="issue">Unit 2 <i></i> Topic 2.12</p>
+<h1 class="deck bk-title" id="r3Title">Logarithmic Function <span>Manipulation</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/logarithmic-manipulation.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="logarithmic-manipulation">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Flogarithmic-manipulation.html&amp;title=Logarithmic%20Function%20Manipulation%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/logarithmic-manipulation.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-1.html"><span class="bk-toc-n">1</span>Polynomial and Rational Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-2.html"><span class="bk-toc-chap-n">2</span><span><b>Exponential and Logarithmic Functions</b><small>15 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-2"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="sequences"><a href="sequences.html"><span class="bk-toc-n">2.1</span>Change in Arithmetic and Geometric Sequences</a></li><li data-toc-t="linear-vs-exponential"><a href="linear-vs-exponential.html"><span class="bk-toc-n">2.2</span>Change in Linear and Exponential Functions</a></li><li data-toc-t="exponential-functions"><a href="exponential-functions.html"><span class="bk-toc-n">2.3</span>Exponential Functions</a></li><li data-toc-t="exponential-manipulation"><a href="exponential-manipulation.html"><span class="bk-toc-n">2.4</span>Exponential Function Manipulation</a></li><li data-toc-t="exponential-modeling"><a href="exponential-modeling.html"><span class="bk-toc-n">2.5</span>Exponential Function Context and Data Modeling</a></li><li data-toc-t="model-validation"><a href="model-validation.html"><span class="bk-toc-n">2.6</span>Competing Function Model Validation</a></li><li data-toc-t="composition"><a href="composition.html"><span class="bk-toc-n">2.7</span>Composition of Functions</a></li><li data-toc-t="inverse-functions"><a href="inverse-functions.html"><span class="bk-toc-n">2.8</span>Inverse Functions</a></li><li data-toc-t="logarithmic-expressions"><a href="logarithmic-expressions.html"><span class="bk-toc-n">2.9</span>Logarithmic Expressions</a></li><li data-toc-t="exp-log-inverses"><a href="exp-log-inverses.html"><span class="bk-toc-n">2.10</span>Inverses of Exponential Functions</a></li><li data-toc-t="logarithmic-functions"><a href="logarithmic-functions.html"><span class="bk-toc-n">2.11</span>Logarithmic Functions</a></li><li class="current" data-toc-t="logarithmic-manipulation"><a href="#main" aria-current="page"><span class="bk-toc-n">2.12</span>Logarithmic Function Manipulation</a><div class="bk-toc-onpage"><p>On this page</p><a href="#three-properties-of-logarithms">Three properties of logarithms</a><a href="#expanding-and-condensing">Expanding and condensing</a><a href="#change-of-base">Change of base</a><a href="#what-the-properties-do-to-graphs">What the properties do to graphs</a><a href="#the-domain-trap">The domain trap</a></div></li><li data-toc-t="exp-log-equations"><a href="exp-log-equations.html"><span class="bk-toc-n">2.13</span>Exponential and Logarithmic Equations and Inequalities</a></li><li data-toc-t="logarithmic-modeling"><a href="logarithmic-modeling.html"><span class="bk-toc-n">2.14</span>Logarithmic Function Context and Data Modeling</a></li><li data-toc-t="semi-log-plots"><a href="semi-log-plots.html"><span class="bk-toc-n">2.15</span>Semi-log Plots</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Trigonometric and Polar Functions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p><a class="gl" href="../notes/alg-exponents.html" data-c="exponent-rules">Exponent rules</a> have twins for <a class="gl" href="../notes/logarithmic-expressions.html" data-c="logarithm">logarithms</a>. Because a logarithm is an exponent, every rule for combining exponents becomes a rule for combining logarithms. This page states the three properties, the <span class="gl" tabindex="0" data-c="log-properties">change of base formula</span>, what each one means for a graph, and the <a class="gl" href="../notes/alg-functions.html" data-c="domain">domain</a> trap that costs points.</p>
+
+<h2 id="three-properties-of-logarithms">Three properties of logarithms</h2>
+<p>For a base <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b &gt; 0</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>≠</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">b \ne 1</annotation></semantics></math>, and positive numbers <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Property, Logarithm rule, Exponent rule behind it"><table class="compare">
+<thead><tr><th scope="col">Property</th><th scope="col">Logarithm rule</th><th scope="col">Exponent rule behind it</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td><math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>x</mi><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\log_b(xy)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>+</mo><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">= \log_b x + \log_b y</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><msup><mi>b</mi><mi>m</mi></msup><mo>⋅</mo><msup><mi>b</mi><mi>n</mi></msup><mo>=</mo><msup><mi>b</mi><mrow><mi>m</mi><mo>+</mo><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">b^m \cdot b^n = b^{m + n}</annotation></semantics></math></td></tr>
+<tr><td>Quotient</td><td><math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mfrac><mi>x</mi><mi>y</mi></mfrac></mrow><annotation encoding="application/x-tex">\log_b \frac{x}{y}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>−</mo><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">= \log_b x - \log_b y</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><msup><mi>b</mi><mi>m</mi></msup><msup><mi>b</mi><mi>n</mi></msup></mfrac><mo>=</mo><msup><mi>b</mi><mrow><mi>m</mi><mo>−</mo><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\frac{b^m}{b^n} = b^{m - n}</annotation></semantics></math></td></tr>
+<tr><td>Power</td><td><math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mi>n</mi></msup><mo stretchy="false">)</mo><mo>=</mo><mi>n</mi><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\log_b(x^n) = n\log_b x</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>b</mi><mi>m</mi></msup><msup><mo stretchy="false">)</mo><mi>n</mi></msup><mo>=</mo><msup><mi>b</mi><mrow><mi>m</mi><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">(b^m)^n = b^{mn}</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>Why the product property holds: write <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><msup><mi>b</mi><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">x = b^m</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>b</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">y = b^n</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>m</mi><mo>=</mo><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">m = \log_b x</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>n</mi><mo>=</mo><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">n = \log_b y</annotation></semantics></math>. Then <math class="pcalc-m"><semantics><mrow><mi>x</mi><mi>y</mi><mo>=</mo><msup><mi>b</mi><mrow><mi>m</mi><mo>+</mo><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">xy = b^{m + n}</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>x</mi><mi>y</mi><mo stretchy="false">)</mo><mo>=</mo><mi>m</mi><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\log_b(xy) = m + n</annotation></semantics></math>.</p>
+<p>There is no rule for <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\log_b(x + y)</annotation></semantics></math>, and <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mfrac><mi>x</mi><mi>y</mi></mfrac></mrow><annotation encoding="application/x-tex">\log_b \frac{x}{y}</annotation></semantics></math> is not <math class="pcalc-m"><semantics><mrow><mfrac><mrow><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mrow><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>y</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\log_b x}{\log_b y}</annotation></semantics></math>. Those two slips are the most common log errors on the exam.</p>
+
+<h2 id="expanding-and-condensing">Expanding and condensing</h2>
+<div class="worked">
+<p><b>Worked example 1 (expand).</b> Write <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mn>5</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>25</mn><msup><mi>x</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\log_5(25x^3)</annotation></semantics></math>, for <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &gt; 0</annotation></semantics></math>, as a sum of simple terms.</p>
+<p>Product: <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mn>5</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>25</mn><mo>+</mo><msub><mi>log</mi><mn>5</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msup><mi>x</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">\log_5 25 + \log_5 x^3</annotation></semantics></math>.</p>
+<p>Evaluate and use the power property: <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo>+</mo><mn>3</mn><msub><mi>log</mi><mn>5</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">2 + 3\log_5 x</annotation></semantics></math>.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2 (condense).</b> Write <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>+</mo><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>3</mn><mo>−</mo><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">2\log x + \log 3 - \log 5</annotation></semantics></math> as a single logarithm.</p>
+<p>Coefficients become exponents first: <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">2\log x = \log x^2</annotation></semantics></math>.</p>
+<p>Then the sum: <math class="pcalc-m"><semantics><mrow><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\log x^2 + \log 3</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= \log(3x^2)</annotation></semantics></math>.</p>
+<p>Then the difference: <math class="pcalc-m"><semantics><mrow><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>−</mo><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\log(3x^2) - \log 5</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mfrac><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><mn>5</mn></mfrac></mrow><annotation encoding="application/x-tex">= \log \frac{3x^2}{5}</annotation></semantics></math>, for <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &gt; 0</annotation></semantics></math>.</p>
+</div>
+<p>"A single logarithm" means exactly one log term. Stopping at <math class="pcalc-m"><semantics><mrow><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>−</mo><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\log(3x^2) - \log 5</annotation></semantics></math> does not earn the point.</p>
+
+<h2 id="change-of-base">Change of base</h2>
+<p>Any logarithm can be written through another base <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>:</p>
+<p><math class="pcalc-m" display="block"><semantics><mrow><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mfrac><mrow><msub><mi>log</mi><mi>a</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mrow><msub><mi>log</mi><mi>a</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>b</mi></mrow></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">\log_b x = \frac{\log_a x}{\log_a b}.</annotation></semantics></math></p>
+<p>With a calculator, use <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mi>e</mi></mrow><annotation encoding="application/x-tex">a = e</annotation></semantics></math> or <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">a = 10</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mn>7</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">\log_7 20</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>20</mn></mrow><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>7</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{\ln 20}{\ln 7}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">≈</mo><mn>1.540</mn></mrow><annotation encoding="application/x-tex">\approx 1.540</annotation></semantics></math>. Check the size: <math class="pcalc-m"><semantics><mrow><mn>7</mn><mo>&lt;</mo><mn>20</mn><mo>&lt;</mo><mn>49</mn></mrow><annotation encoding="application/x-tex">7 &lt; 20 &lt; 49</annotation></semantics></math>, so the answer must be between <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math>.</p>
+<p>The formula also says something about graphs. <math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><msub><mi>log</mi><mi>a</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>b</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{\log_a b}</annotation></semantics></math> is a constant, so <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\log_b x</annotation></semantics></math> is a constant times <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mi>a</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\log_a x</annotation></semantics></math>. For example, <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mn>4</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\log_4 x</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mrow><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>4</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{\log_2 x}{\log_2 4}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">= \frac{1}{2}\log_2 x</annotation></semantics></math>. Every <a class="gl" href="../notes/logarithmic-functions.html" data-c="log-function">logarithmic function</a> is a <a class="gl" href="../notes/transformations.html" data-c="dilation">vertical dilation</a> of every other one.</p>
+
+<h2 id="what-the-properties-do-to-graphs">What the properties do to graphs</h2>
+<p>The product property turns a horizontal dilation into a <a class="gl" href="../notes/transformations.html" data-c="translation">vertical translation</a>. For <math class="pcalc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>4</mn><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(x) = \log_2(4x)</annotation></semantics></math>:</p>
+<p><math class="pcalc-m" display="block"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>4</mn><mo>+</mo><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mn>2</mn><mo>+</mo><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">h(x) = \log_2 4 + \log_2 x = 2 + \log_2 x.</annotation></semantics></math></p>
+<p>So multiplying every <a class="gl" href="../notes/alg-functions.html" data-c="function">input</a> by <math class="pcalc-m"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math> (a horizontal dilation by a factor of <math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{4}</annotation></semantics></math>) gives the same graph as moving <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\log_2 x</annotation></semantics></math> up <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math> units. The power property turns a power on the input into a vertical dilation: <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>3</mn></msup><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\log_2(x^3) = 3\log_2 x</annotation></semantics></math> for <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &gt; 0</annotation></semantics></math>.</p>
+
+<h2 id="the-domain-trap">The domain trap</h2>
+<p>Each property holds only where every logarithm in it is defined. Look at <math class="pcalc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\ln(x^2)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">2\ln x</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Is <math class="pcalc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\ln(x^2) = 2\ln x</annotation></semantics></math> for every <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \ne 0</annotation></semantics></math>?</p>
+<p>At <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = -1</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">)</mo><mo>=</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ln((-1)^2) = \ln 1 = 0</annotation></semantics></math>, but <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2\ln(-1)</annotation></semantics></math> is undefined.</p>
+<p>So they agree only for <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &gt; 0</annotation></semantics></math>. For every <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \ne 0</annotation></semantics></math>, the true statement is <math class="pcalc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\ln(x^2) = 2\ln|x|</annotation></semantics></math>.</p>
+</div>
+<p>When a problem asks for an expression equal to another "for every <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> in its domain", check a negative input before you use the power property.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:logarithmic-manipulation">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="logarithmic-functions.html"><span>&larr; Previous</span><b>Logarithmic Functions</b></a><a class="tb-chapter-link next" href="exp-log-equations.html"><span>Next &rarr;</span><b>Exponential and Logarithmic Equations and Inequalities</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/logarithmic-manipulation.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:logarithmic-manipulation">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

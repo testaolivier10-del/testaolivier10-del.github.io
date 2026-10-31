@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conic Sections — AP® Precalculus Notes | LevlPrep</title>
+<meta name="description" content="A double cone, two ice-cream cones point to point, can be sliced by a plane in different ways.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/conic-sections.html">
+<meta property="og:title" content="Conic Sections — AP® Precalculus Notes | LevlPrep">
+<meta property="og:description" content="A double cone, two ice-cream cones point to point, can be sliced by a plane in different ways.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/conic-sections.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/conic-sections.html#reading",
+      "name": "Conic Sections",
+      "url": "https://levlprep.com/precalculus/notes/conic-sections.html",
+      "description": "A double cone, two ice-cream cones point to point, can be sliced by a plane in different ways.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "conic sections ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Functions Involving Parameters, Vectors, and Matrices",
+          "item": "https://levlprep.com/precalculus/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Conic Sections: notes",
+          "item": "https://levlprep.com/precalculus/notes/conic-sections.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="conic-sections" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Functions Involving Parameters, Vectors, and Matrices</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Conic Sections: notes</span></nav>
+<p class="issue">Unit 4 <i></i> Topic 4.6</p>
+<h1 class="deck bk-title" id="r3Title">Conic <span>Sections</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/conic-sections.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="conic-sections">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fconic-sections.html&amp;title=Conic%20Sections%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/conic-sections.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Trigonometric and Polar Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Functions Involving Parameters, Vectors, and Matrices</b><small>14 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 14 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="parametric-functions"><a href="parametric-functions.html"><span class="bk-toc-n">4.1</span>Parametric Functions</a></li><li data-toc-t="parametric-motion"><a href="parametric-motion.html"><span class="bk-toc-n">4.2</span>Parametric Functions Modeling Planar Motion</a></li><li data-toc-t="parametric-rates"><a href="parametric-rates.html"><span class="bk-toc-n">4.3</span>Parametric Functions and Rates of Change</a></li><li data-toc-t="parametric-circles-lines"><a href="parametric-circles-lines.html"><span class="bk-toc-n">4.4</span>Parametrically Defined Circles and Lines</a></li><li data-toc-t="implicit-functions"><a href="implicit-functions.html"><span class="bk-toc-n">4.5</span>Implicitly Defined Functions</a></li><li class="current" data-toc-t="conic-sections"><a href="#main" aria-current="page"><span class="bk-toc-n">4.6</span>Conic Sections</a><div class="bk-toc-onpage"><p>On this page</p><a href="#parabolas">Parabolas</a><a href="#ellipses">Ellipses</a><a href="#hyperbolas">Hyperbolas</a><a href="#which-conic-is-it">Which conic is it?</a></div></li><li data-toc-t="parametrizing-implicit"><a href="parametrizing-implicit.html"><span class="bk-toc-n">4.7</span>Parametrization of Implicitly Defined Functions</a></li><li data-toc-t="vectors"><a href="vectors.html"><span class="bk-toc-n">4.8</span>Vectors</a></li><li data-toc-t="vector-valued-functions"><a href="vector-valued-functions.html"><span class="bk-toc-n">4.9</span>Vector-Valued Functions</a></li><li data-toc-t="matrices"><a href="matrices.html"><span class="bk-toc-n">4.10</span>Matrices</a></li><li data-toc-t="inverse-determinant"><a href="inverse-determinant.html"><span class="bk-toc-n">4.11</span>The Inverse and Determinant of a Matrix</a></li><li data-toc-t="linear-transformations"><a href="linear-transformations.html"><span class="bk-toc-n">4.12</span>Linear Transformations and Matrices</a></li><li data-toc-t="matrices-as-functions"><a href="matrices-as-functions.html"><span class="bk-toc-n">4.13</span>Matrices as Functions</a></li><li data-toc-t="matrix-modeling"><a href="matrix-modeling.html"><span class="bk-toc-n">4.14</span>Matrices Modeling Contexts</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-algebra.html"><span class="bk-toc-n">S</span>Algebra you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+<p class="bk-lede"><span class="pcalc-beyond pcalc-nav-ref"><b>Beyond the exam.</b> The AP® Precalculus exam does not test this unit. Many classes teach it, and it prepares you for calculus.</span></p>
+    <article class="pcalc-prose bk-prose">
+<p>A double cone, two ice-cream cones point to point, can be sliced by a plane in different ways. A cut straight across gives a circle; a tilted cut gives an <b><span class="gl" tabindex="0" data-c="conic">ellipse</span></b>; a cut parallel to the side gives a <a class="gl" href="../notes/alg-quadratics.html" data-c="parabola">parabola</a>; a steep cut through both cones gives the two branches of a <b>hyperbola</b>. These curves are the <b>conic sections</b>. Each is an implicitly defined curve, with an equation in <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>.</p>
+<figure id="fig-three"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="conic-sections-three"><img src="../figures/conic-sections-three.svg" alt="Three graphs. Left: the parabola y = 0.5 x squared with its vertex at the origin. Middle: the ellipse x squared over 9 plus y squared over 4 = 1, centered at the origin, with vertices (3, 0) and (-3, 0) and the ends of the short axis at (0, 2) and (0, -2). Right: the hyperbola x squared minus y squared over 2.25 = 1, with vertices (1, 0) and (-1, 0), two branches opening left and right, and dashed asymptotes y = 1.5x and y = -1.5x." width="660" height="245" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The three conic sections in standard position. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="parabolas">Parabolas</h2>
+<p>You know <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>a</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">y = a(x - h)^2 + k</annotation></semantics></math>, a parabola with vertex <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(h, k)</annotation></semantics></math> that opens up if <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &gt; 0</annotation></semantics></math> and down if <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &lt; 0</annotation></semantics></math>. Swap the roles of <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> and you get a parabola that opens sideways:</p>
+<math class="pcalc-m" display="block"><semantics><mrow><mi>x</mi><mo>−</mo><mi>h</mi><mo>=</mo><mi>a</mi><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mi>k</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>.</mo></mrow><annotation encoding="application/x-tex">x - h = a(y - k)^2.</annotation></semantics></math>
+<p>It has vertex <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(h, k)</annotation></semantics></math> and opens right if <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &gt; 0</annotation></semantics></math>, left if <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &lt; 0</annotation></semantics></math>. A sideways parabola is not the <a class="gl" href="../notes/alg-functions.html" data-c="function-graph">graph of a function</a> of <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, since most <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-values have two <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-values.</p>
+
+<h2 id="ellipses">Ellipses</h2>
+<p>An ellipse with center <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(h, k)</annotation></semantics></math> has the standard form</p>
+<math class="pcalc-m" display="block"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo>+</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mi>k</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><msup><mi>b</mi><mn>2</mn></msup></mfrac><mo>=</mo><mn>1</mn><mo>,</mo><mspace width="2em"></mspace><mi>a</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="0.2778em"></mspace><mi>b</mi><mo>&gt;</mo><mn>0</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">\frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2} = 1, \qquad a &gt; 0, \; b &gt; 0.</annotation></semantics></math>
+<p>It reaches <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> units left and right of the center and <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> units up and down. The farthest points along the longer direction are the vertices; the longer axis has length <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">2a</annotation></semantics></math> or <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>b</mi></mrow><annotation encoding="application/x-tex">2b</annotation></semantics></math>, whichever is larger. When <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a = b</annotation></semantics></math> the ellipse is a circle of radius <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Describe <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>16</mn></mfrac><mo>+</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>+</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{(x - 1)^2}{16} + \frac{(y + 2)^2}{4}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= 1</annotation></semantics></math>.</p>
+<p>Center: <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x - 1</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>+</mo><mn>2</mn><mo>=</mo><mi>y</mi><mo>−</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y + 2 = y - (-2)</annotation></semantics></math> give <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, -2)</annotation></semantics></math>.</p>
+<p>Distances: <math class="pcalc-m"><semantics><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>=</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">a^2 = 16</annotation></semantics></math> so <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">a = 4</annotation></semantics></math> across; <math class="pcalc-m"><semantics><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">b^2 = 4</annotation></semantics></math> so <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">b = 2</annotation></semantics></math> up and down. The ellipse is wider than tall.</p>
+<p>Vertices: <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>±</mo><mn>4</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1 \pm 4, -2)</annotation></semantics></math>, that is <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(5, -2)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-3, -2)</annotation></semantics></math>; the long axis has length <math class="pcalc-m"><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math>. The top and bottom points are <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 0)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, -4)</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="hyperbolas">Hyperbolas</h2>
+<p>Change the plus sign to a minus and the curve breaks into two branches:</p>
+<math class="pcalc-m" display="block"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo>−</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mi>k</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><msup><mi>b</mi><mn>2</mn></msup></mfrac><mo>=</mo><mn>1</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">\frac{(x - h)^2}{a^2} - \frac{(y - k)^2}{b^2} = 1.</annotation></semantics></math>
+<p>This hyperbola opens left and right. Its vertices are <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>±</mo><mi>a</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(h \pm a, k)</annotation></semantics></math>, and far from the center each branch gets closer and closer to the asymptotes <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>−</mo><mi>k</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><mfrac><mi>b</mi><mi>a</mi></mfrac><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>h</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y - k = \pm\frac{b}{a}(x - h)</annotation></semantics></math>. If the <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> term comes first, <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mi>k</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><msup><mi>b</mi><mn>2</mn></msup></mfrac><mo>−</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><msup><mi>a</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{(y - k)^2}{b^2} - \frac{(x - h)^2}{a^2}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= 1</annotation></semantics></math>, it opens up and down with vertices <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>k</mi><mo>±</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(h, k \pm b)</annotation></semantics></math> and the same asymptotes.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Describe <math class="pcalc-m"><semantics><mrow><mfrac><msup><mi>x</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>−</mo><mfrac><msup><mi>y</mi><mn>2</mn></msup><mn>9</mn></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{x^2}{4} - \frac{y^2}{9} = 1</annotation></semantics></math>.</p>
+<p>Center <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 0)</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">a = 2</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">b = 3</annotation></semantics></math>; the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> term is positive, so it opens left and right. Vertices <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 0)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-2, 0)</annotation></semantics></math>. Asymptotes <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mi>x</mi></mrow><annotation encoding="application/x-tex">y = \pm\frac{3}{2}x</annotation></semantics></math>.</p>
+<p>It never meets the <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-axis: <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><msup><mi>y</mi><mn>2</mn></msup><mn>9</mn></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-\frac{y^2}{9} = 1</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">y^2 = -9</annotation></semantics></math>, which has no real solution.</p>
+</div>
+
+<h2 id="which-conic-is-it">Which conic is it?</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Squared terms, Conic, Example"><table class="compare">
+<thead><tr><th scope="col">Squared terms</th><th scope="col">Conic</th><th scope="col">Example</th></tr></thead>
+<tbody>
+<tr><td>only one variable squared</td><td>parabola</td><td><math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 2y^2 - 3</annotation></semantics></math></td></tr>
+<tr><td>both squared, same sign</td><td>ellipse (circle if the coefficients match)</td><td><math class="pcalc-m"><semantics><mrow><mn>4</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>9</mn><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>36</mn></mrow><annotation encoding="application/x-tex">4x^2 + 9y^2 = 36</annotation></semantics></math></td></tr>
+<tr><td>both squared, opposite signs</td><td>hyperbola</td><td><math class="pcalc-m"><semantics><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">y^2 - 4x^2 = 16</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>To read the details, rewrite in standard form. Divide so the right side is <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mn>4</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>9</mn><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>36</mn></mrow><annotation encoding="application/x-tex">4x^2 + 9y^2 = 36</annotation></semantics></math> becomes <math class="pcalc-m"><semantics><mrow><mfrac><msup><mi>x</mi><mn>2</mn></msup><mn>9</mn></mfrac><mo>+</mo><mfrac><msup><mi>y</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{x^2}{9} + \frac{y^2}{4} = 1</annotation></semantics></math>. If there are linear terms, complete the square.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Identify <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mn>6</mn><mi>x</mi><mo>+</mo><mn>4</mn><mi>y</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x^2 + y^2 - 6x + 4y - 3</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>.</p>
+<p>Group and move the constant: <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>6</mn><mi>x</mi><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x^2 - 6x) + (y^2 + 4y)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">= 3</annotation></semantics></math>.</p>
+<p>Complete each square: add <math class="pcalc-m"><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math> to both sides, <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><mi>y</mi><mo>+</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">(x - 3)^2 + (y + 2)^2 = 16</annotation></semantics></math>.</p>
+<p>A circle with center <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, -2)</annotation></semantics></math> and radius <math class="pcalc-m"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math>.</p>
+</div>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:conic-sections">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="implicit-functions.html"><span>&larr; Previous</span><b>Implicitly Defined Functions</b></a><a class="tb-chapter-link next" href="parametrizing-implicit.html"><span>Next &rarr;</span><b>Parametrization of Implicitly Defined Functions</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/conic-sections.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:conic-sections">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

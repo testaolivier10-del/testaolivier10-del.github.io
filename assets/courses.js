@@ -115,10 +115,11 @@
     {
       // As AP® Calculus AB (docs/apprecalc-spec.md decision 2): the mark only
       // in the full names, never in a URL; the key travels as its folder,
-      // "precalculus". 'hidden' until published (spec section 5, Launch).
+      // "precalculus". Was 'hidden' until published; 'live' since the launch
+      // (docs/apprecalc-spec.md decision 20).
       key: 'apprecalc', short: 'Precalculus', name: 'AP® Precalculus', productName: 'AP® Precalculus',
       path: '/precalculus/', dir: 'precalculus', storagePrefix: 'apprecalc_', rankLabel: 'Precalculus rank',
-      searchLabel: 'Precalculus', aliases: ['precalculus', 'precalc', 'pcalc'], paid: true, status: 'hidden', order: 11,
+      searchLabel: 'Precalculus', aliases: ['precalculus', 'precalc', 'pcalc'], paid: true, status: 'live', order: 11,
     },
   ];
 

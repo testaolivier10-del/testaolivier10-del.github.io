@@ -78,8 +78,9 @@ builder split, decisions); read it before AP® Precalculus work and update it in
 `docs/apprecalc-research/`. Formats, domain-aware `expr` grading, FRQ types and tool layout:
 `docs/apprecalc-architecture.md`; writing rules (three-decimal rule, limit notation, rate and concavity wording, Q4
 forms, no calculus words): `docs/apprecalc-authoring-guide.md`; map: `docs/apprecalc-phase0.md`; open points:
-`docs/apprecalc-needs-author.md`; briefs (authors A-F, builders T1-T4): `docs/apprecalc-briefs/`. Hidden until
-launch (`status: 'hidden'`, `onSale: false`); Unit 4 is "beyond the exam".
+`docs/apprecalc-needs-author.md`; briefs (authors A-F, builders T1-T4): `docs/apprecalc-briefs/`; launch log:
+`docs/apprecalc-reviews/launch.md`. Published and live; Premium not on sale (`onSale: false`) until the owner
+checklist in spec section 9; Unit 4 is "beyond the exam".
 
 ## AI FRQ grader (AP® courses)
 

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vectors — AP® Precalculus Notes | LevlPrep</title>
+<meta name="description" content="Many quantities need two pieces of information: not just &quot;how much&quot; but &quot;which way&quot;.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/vectors.html">
+<meta property="og:title" content="Vectors — AP® Precalculus Notes | LevlPrep">
+<meta property="og:description" content="Many quantities need two pieces of information: not just &quot;how much&quot; but &quot;which way&quot;.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/vectors.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/vectors.html#reading",
+      "name": "Vectors",
+      "url": "https://levlprep.com/precalculus/notes/vectors.html",
+      "description": "Many quantities need two pieces of information: not just \"how much\" but \"which way\".",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "vectors ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Functions Involving Parameters, Vectors, and Matrices",
+          "item": "https://levlprep.com/precalculus/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Vectors: notes",
+          "item": "https://levlprep.com/precalculus/notes/vectors.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="vectors" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Functions Involving Parameters, Vectors, and Matrices</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Vectors: notes</span></nav>
+<p class="issue">Unit 4 <i></i> Topic 4.8</p>
+<h1 class="deck bk-title" id="r3Title">Vectors</h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/vectors.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="vectors">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fvectors.html&amp;title=Vectors%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/vectors.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Trigonometric and Polar Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Functions Involving Parameters, Vectors, and Matrices</b><small>14 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 14 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="parametric-functions"><a href="parametric-functions.html"><span class="bk-toc-n">4.1</span>Parametric Functions</a></li><li data-toc-t="parametric-motion"><a href="parametric-motion.html"><span class="bk-toc-n">4.2</span>Parametric Functions Modeling Planar Motion</a></li><li data-toc-t="parametric-rates"><a href="parametric-rates.html"><span class="bk-toc-n">4.3</span>Parametric Functions and Rates of Change</a></li><li data-toc-t="parametric-circles-lines"><a href="parametric-circles-lines.html"><span class="bk-toc-n">4.4</span>Parametrically Defined Circles and Lines</a></li><li data-toc-t="implicit-functions"><a href="implicit-functions.html"><span class="bk-toc-n">4.5</span>Implicitly Defined Functions</a></li><li data-toc-t="conic-sections"><a href="conic-sections.html"><span class="bk-toc-n">4.6</span>Conic Sections</a></li><li data-toc-t="parametrizing-implicit"><a href="parametrizing-implicit.html"><span class="bk-toc-n">4.7</span>Parametrization of Implicitly Defined Functions</a></li><li class="current" data-toc-t="vectors"><a href="#main" aria-current="page"><span class="bk-toc-n">4.8</span>Vectors</a><div class="bk-toc-onpage"><p>On this page</p><a href="#components">Components</a><a href="#magnitude-and-direction">Magnitude and direction</a><a href="#adding-subtracting-and-scaling">Adding, subtracting and scaling</a><a href="#the-dot-product-and-angles">The dot product and angles</a></div></li><li data-toc-t="vector-valued-functions"><a href="vector-valued-functions.html"><span class="bk-toc-n">4.9</span>Vector-Valued Functions</a></li><li data-toc-t="matrices"><a href="matrices.html"><span class="bk-toc-n">4.10</span>Matrices</a></li><li data-toc-t="inverse-determinant"><a href="inverse-determinant.html"><span class="bk-toc-n">4.11</span>The Inverse and Determinant of a Matrix</a></li><li data-toc-t="linear-transformations"><a href="linear-transformations.html"><span class="bk-toc-n">4.12</span>Linear Transformations and Matrices</a></li><li data-toc-t="matrices-as-functions"><a href="matrices-as-functions.html"><span class="bk-toc-n">4.13</span>Matrices as Functions</a></li><li data-toc-t="matrix-modeling"><a href="matrix-modeling.html"><span class="bk-toc-n">4.14</span>Matrices Modeling Contexts</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-algebra.html"><span class="bk-toc-n">S</span>Algebra you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+<p class="bk-lede"><span class="pcalc-beyond pcalc-nav-ref"><b>Beyond the exam.</b> The AP® Precalculus exam does not test this unit. Many classes teach it, and it prepares you for calculus.</span></p>
+    <article class="pcalc-prose bk-prose">
+<p>Many quantities need two pieces of information: not just "how much" but "which way". A wind of 20 km/h from the west is different from a wind of 20 km/h from the north. A <b><span class="gl" tabindex="0" data-c="vector">vector</span></b> is a quantity with a magnitude (size) and a direction. You draw it as an arrow; you compute with it through its components.</p>
+
+<h2 id="components">Components</h2>
+<p>An arrow from <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_1, y_1)</annotation></semantics></math> to <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_2, y_2)</annotation></semantics></math> moves <math class="pcalc-m"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">x_2 - x_1</annotation></semantics></math> across and <math class="pcalc-m"><semantics><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">y_2 - y_1</annotation></semantics></math> up. Those two numbers are its components:</p>
+<math class="pcalc-m" display="block"><semantics><mrow><mi mathvariant="bold">v</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo>.</mo></mrow><annotation encoding="application/x-tex">\mathbf{v} = \left\langle x_2 - x_1, y_2 - y_1 \right\rangle.</annotation></semantics></math>
+<p>Only the move matters, not where the arrow starts. The arrow from <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 1)</annotation></semantics></math> to <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 4)</annotation></semantics></math> and the arrow from <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 0)</annotation></semantics></math> to <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-1, 3)</annotation></semantics></math> are the same vector, <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>,</mo><mn>3</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle -1, 3 \right\rangle</annotation></semantics></math>. Another way to write <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle a, b \right\rangle</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mi>a</mi><mi mathvariant="bold">i</mi><mo>+</mo><mi>b</mi><mi mathvariant="bold">j</mi></mrow><annotation encoding="application/x-tex">a\mathbf{i} + b\mathbf{j}</annotation></semantics></math>, where <math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">i</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{i} = \left\langle 1, 0 \right\rangle</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">j</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{j} = \left\langle 0, 1 \right\rangle</annotation></semantics></math>.</p>
+
+<h2 id="magnitude-and-direction">Magnitude and direction</h2>
+<p>The magnitude is the arrow's length, from the Pythagorean theorem: <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">‖</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo fence="true" stretchy="true">‖</mo></mrow><mo>=</mo><msqrt><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\left\| \left\langle a, b \right\rangle \right\| = \sqrt{a^2 + b^2}</annotation></semantics></math>. Going the other way, a vector with magnitude <math class="pcalc-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math> pointing at angle <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> from the positive <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis has components <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>m</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>,</mo><mi>m</mi><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle m\cos\theta, m\sin\theta \right\rangle</annotation></semantics></math>, the same idea as a point on a circle of radius <math class="pcalc-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A boat heads <math class="pcalc-m"><semantics><mrow><msup><mn>30</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">30^\circ</annotation></semantics></math> north of east at <math class="pcalc-m"><semantics><mrow><mn>12</mn></mrow><annotation encoding="application/x-tex">12</annotation></semantics></math> km/h, and a current pushes it south at <math class="pcalc-m"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math> km/h. Find its actual velocity vector and speed.</p>
+<p>Heading: <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>12</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msup><mn>30</mn><mo>∘</mo></msup><mo>,</mo><mn>12</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msup><mn>30</mn><mo>∘</mo></msup></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 12\cos 30^\circ, 12\sin 30^\circ \right\rangle</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>6</mn><msqrt><mn>3</mn></msqrt><mo>,</mo><mn>6</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">= \left\langle 6\sqrt{3}, 6 \right\rangle</annotation></semantics></math>, using <math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msup><mn>30</mn><mo>∘</mo></msup><mo>=</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\cos 30^\circ = \frac{\sqrt{3}}{2}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msup><mn>30</mn><mo>∘</mo></msup><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\sin 30^\circ = \frac{1}{2}</annotation></semantics></math>.</p>
+<p>Current: <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>0</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 0, -4 \right\rangle</annotation></semantics></math> (south is the negative <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> direction).</p>
+<p>Sum: <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>6</mn><msqrt><mn>3</mn></msqrt><mo>,</mo><mn>2</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 6\sqrt{3}, 2 \right\rangle</annotation></semantics></math>. Speed: <math class="pcalc-m"><semantics><mrow><msqrt><mrow><mo stretchy="false">(</mo><mn>6</mn><msqrt><mn>3</mn></msqrt><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><msup><mn>2</mn><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{(6\sqrt{3})^2 + 2^2}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mrow><mn>108</mn><mo>+</mo><mn>4</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{108 + 4}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mn>112</mn></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{112}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>4</mn><msqrt><mn>7</mn></msqrt></mrow><annotation encoding="application/x-tex">= 4\sqrt{7}</annotation></semantics></math> km/h, a little over <math class="pcalc-m"><semantics><mrow><mn>10.5</mn></mrow><annotation encoding="application/x-tex">10.5</annotation></semantics></math> km/h.</p>
+</div>
+
+<h2 id="adding-subtracting-and-scaling">Adding, subtracting and scaling</h2>
+<p>To add <math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">u</mi><mo>+</mo><mi mathvariant="bold">v</mi></mrow><annotation encoding="application/x-tex">\mathbf{u} + \mathbf{v}</annotation></semantics></math> on a picture, put the tail of <math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">v</mi></mrow><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math> at the tip of <math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">u</mi></mrow><annotation encoding="application/x-tex">\mathbf{u}</annotation></semantics></math>; the sum runs from the tail of <math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">u</mi></mrow><annotation encoding="application/x-tex">\mathbf{u}</annotation></semantics></math> to the tip of <math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">v</mi></mrow><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math>. In components you just add matching entries.</p>
+<figure id="fig-sum"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="vectors-sum"><img src="../figures/vectors-sum.svg" alt="Vector u = &lt;3, 1&gt; drawn from the origin to (3, 1) in green, vector v = &lt;1, 2&gt; drawn from the tip of u at (3, 1) to (4, 3) in blue, and their sum u + v = &lt;4, 3&gt; drawn from the origin to (4, 3) in vermillion. The sum has length 5." width="380" height="290" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>3</mn><mo>,</mo><mn>1</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo>+</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>4</mn><mo>,</mo><mn>3</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 3, 1 \right\rangle + \left\langle 1, 2 \right\rangle = \left\langle 4, 3 \right\rangle</annotation></semantics></math>, tip to tail. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Operation, Components, Picture"><table class="compare">
+<thead><tr><th scope="col">Operation</th><th scope="col">Components</th><th scope="col">Picture</th></tr></thead>
+<tbody>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">u</mi><mo>+</mo><mi mathvariant="bold">v</mi></mrow><annotation encoding="application/x-tex">\mathbf{u} + \mathbf{v}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>a</mi><mo>+</mo><mi>c</mi><mo>,</mo><mi>b</mi><mo>+</mo><mi>d</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle a + c, b + d \right\rangle</annotation></semantics></math></td><td>tip to tail</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">u</mi><mo>−</mo><mi mathvariant="bold">v</mi></mrow><annotation encoding="application/x-tex">\mathbf{u} - \mathbf{v}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>a</mi><mo>−</mo><mi>c</mi><mo>,</mo><mi>b</mi><mo>−</mo><mi>d</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle a - c, b - d \right\rangle</annotation></semantics></math></td><td>add the reversed <math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">v</mi></mrow><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math></td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>k</mi><mi mathvariant="bold">u</mi></mrow><annotation encoding="application/x-tex">k\mathbf{u}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>k</mi><mi>a</mi><mo>,</mo><mi>k</mi><mi>b</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle ka, kb \right\rangle</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>k</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|k|</annotation></semantics></math> times as long; reversed if <math class="pcalc-m"><semantics><mrow><mi>k</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k &lt; 0</annotation></semantics></math></td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mfrac><mi mathvariant="bold">u</mi><mrow><mo fence="true" stretchy="true">‖</mo><mi mathvariant="bold">u</mi><mo fence="true" stretchy="true">‖</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\mathbf{u}}{\left\| \mathbf{u} \right\|}</annotation></semantics></math></td><td>each component over the length</td><td>same direction, length <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>The last row is the <b>unit vector</b> in the direction of <math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">u</mi></mrow><annotation encoding="application/x-tex">\mathbf{u}</annotation></semantics></math>. For <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>5</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>12</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 5, -12 \right\rangle</annotation></semantics></math>, the length is <math class="pcalc-m"><semantics><mrow><msqrt><mrow><mn>25</mn><mo>+</mo><mn>144</mn></mrow></msqrt><mo>=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">\sqrt{25 + 144} = 13</annotation></semantics></math>, so the unit vector is <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mfrac><mn>5</mn><mn>13</mn></mfrac><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>12</mn><mn>13</mn></mfrac></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle \frac{5}{13}, -\frac{12}{13} \right\rangle</annotation></semantics></math>.</p>
+
+<h2 id="the-dot-product-and-angles">The dot product and angles</h2>
+<p>The <b>dot product</b> of <math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">u</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{u} = \left\langle a, b \right\rangle</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">v</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>c</mi><mo>,</mo><mi>d</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{v} = \left\langle c, d \right\rangle</annotation></semantics></math> is the number <math class="pcalc-m"><semantics><mrow><mi mathvariant="bold">u</mi><mo>⋅</mo><mi mathvariant="bold">v</mi><mo>=</mo><mi>a</mi><mi>c</mi><mo>+</mo><mi>b</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">\mathbf{u} \cdot \mathbf{v} = ac + bd</annotation></semantics></math>. It is also <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">‖</mo><mi mathvariant="bold">u</mi><mo fence="true" stretchy="true">‖</mo></mrow><mrow><mo fence="true" stretchy="true">‖</mo><mi mathvariant="bold">v</mi><mo fence="true" stretchy="true">‖</mo></mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\left\| \mathbf{u} \right\| \left\| \mathbf{v} \right\| \cos\theta</annotation></semantics></math>, where <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> is the angle between the two arrows when they start at the same point. So</p>
+<math class="pcalc-m" display="block"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mfrac><mrow><mi mathvariant="bold">u</mi><mo>⋅</mo><mi mathvariant="bold">v</mi></mrow><mrow><mrow><mo fence="true" stretchy="true">‖</mo><mi mathvariant="bold">u</mi><mo fence="true" stretchy="true">‖</mo></mrow><mrow><mo fence="true" stretchy="true">‖</mo><mi mathvariant="bold">v</mi><mo fence="true" stretchy="true">‖</mo></mrow></mrow></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">\cos\theta = \frac{\mathbf{u} \cdot \mathbf{v}}{\left\| \mathbf{u} \right\| \left\| \mathbf{v} \right\|}.</annotation></semantics></math>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the angle between <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 1, 0 \right\rangle</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>1</mn><mo>,</mo><msqrt><mn>3</mn></msqrt></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 1, \sqrt{3} \right\rangle</annotation></semantics></math>.</p>
+<p>Dot product: <math class="pcalc-m"><semantics><mrow><mn>1</mn><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mn>0</mn><mo stretchy="false">(</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1(1) + 0(\sqrt{3}) = 1</annotation></semantics></math>. Lengths: <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><msqrt><mrow><mn>1</mn><mo>+</mo><mn>3</mn></mrow></msqrt><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\sqrt{1 + 3} = 2</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>⋅</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\cos\theta = \frac{1}{1 \cdot 2} = \frac{1}{2}</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mfrac><mi>π</mi><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\theta = \frac{\pi}{3}</annotation></semantics></math>.</p>
+</div>
+<p>A dot product of <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> means <math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\cos\theta = 0</annotation></semantics></math>: the vectors are perpendicular. <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>2</mn><mo>,</mo><mn>3</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo>⋅</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>,</mo><mn>2</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 2, 3 \right\rangle \cdot \left\langle -3, 2 \right\rangle</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>6</mn><mo>+</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">= -6 + 6</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>. A positive dot product means the angle is less than <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{2}</annotation></semantics></math>; a negative one, more.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:vectors">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="parametrizing-implicit.html"><span>&larr; Previous</span><b>Parametrization of Implicitly Defined Functions</b></a><a class="tb-chapter-link next" href="vector-valued-functions.html"><span>Next &rarr;</span><b>Vector-Valued Functions</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/vectors.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:vectors">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

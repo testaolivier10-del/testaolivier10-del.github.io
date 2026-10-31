@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polynomial Functions and End… — AP® Precalculus Notes</title>
+<meta name="description" content="So far you have studied polynomial graphs up close: their zeros, turning points and bends. This topic zooms out.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/polynomial-end-behavior.html">
+<meta property="og:title" content="Polynomial Functions and End… — AP® Precalculus Notes">
+<meta property="og:description" content="So far you have studied polynomial graphs up close: their zeros, turning points and bends. This topic zooms out.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/polynomial-end-behavior.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/polynomial-end-behavior.html#reading",
+      "name": "Polynomial Functions and End Behavior",
+      "url": "https://levlprep.com/precalculus/notes/polynomial-end-behavior.html",
+      "description": "So far you have studied polynomial graphs up close: their zeros, turning points and bends. This topic zooms out.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "polynomial functions and end behavior ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Polynomial and Rational Functions",
+          "item": "https://levlprep.com/precalculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Polynomial Functions and End Behavior: notes",
+          "item": "https://levlprep.com/precalculus/notes/polynomial-end-behavior.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="polynomial-end-behavior" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Polynomial and Rational Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Polynomial Functions and End Behavior: notes</span></nav>
+<p class="issue">Unit 1 <i></i> Topic 1.6</p>
+<h1 class="deck bk-title" id="r3Title">Polynomial Functions <span>and End Behavior</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/polynomial-end-behavior.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="polynomial-end-behavior">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fpolynomial-end-behavior.html&amp;title=Polynomial%20Functions%20and%20End%20Behavior%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/polynomial-end-behavior.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Polynomial and Rational Functions</b><small>14 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 14 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="change-in-tandem"><a href="change-in-tandem.html"><span class="bk-toc-n">1.1</span>Change in Tandem</a></li><li data-toc-t="rates-of-change"><a href="rates-of-change.html"><span class="bk-toc-n">1.2</span>Rates of Change</a></li><li data-toc-t="linear-quadratic-rates"><a href="linear-quadratic-rates.html"><span class="bk-toc-n">1.3</span>Rates of Change in Linear and Quadratic Functions</a></li><li data-toc-t="polynomial-rates"><a href="polynomial-rates.html"><span class="bk-toc-n">1.4</span>Polynomial Functions and Rates of Change</a></li><li data-toc-t="complex-zeros"><a href="complex-zeros.html"><span class="bk-toc-n">1.5</span>Polynomial Functions and Complex Zeros</a></li><li class="current" data-toc-t="polynomial-end-behavior"><a href="#main" aria-current="page"><span class="bk-toc-n">1.6</span>Polynomial Functions and End Behavior</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why-the-leading-term-wins">Why the leading term wins</a><a href="#limit-notation">Limit notation</a><a href="#finding-the-leading-term">Finding the leading term</a><a href="#what-end-behavior-tells-you">What end behavior tells you</a></div></li><li data-toc-t="rational-end-behavior"><a href="rational-end-behavior.html"><span class="bk-toc-n">1.7</span>Rational Functions and End Behavior</a></li><li data-toc-t="rational-zeros"><a href="rational-zeros.html"><span class="bk-toc-n">1.8</span>Rational Functions and Zeros</a></li><li data-toc-t="vertical-asymptotes"><a href="vertical-asymptotes.html"><span class="bk-toc-n">1.9</span>Rational Functions and Vertical Asymptotes</a></li><li data-toc-t="rational-holes"><a href="rational-holes.html"><span class="bk-toc-n">1.10</span>Rational Functions and Holes</a></li><li data-toc-t="equivalent-representations"><a href="equivalent-representations.html"><span class="bk-toc-n">1.11</span>Equivalent Representations of Polynomial and Rational Expressions</a></li><li data-toc-t="transformations"><a href="transformations.html"><span class="bk-toc-n">1.12</span>Transformations of Functions</a></li><li data-toc-t="model-selection"><a href="model-selection.html"><span class="bk-toc-n">1.13</span>Function Model Selection and Assumption Articulation</a></li><li data-toc-t="model-construction"><a href="model-construction.html"><span class="bk-toc-n">1.14</span>Function Model Construction and Application</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Exponential and Logarithmic Functions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>So far you have studied <a class="gl" href="../notes/alg-polynomial-algebra.html" data-c="polynomial-expression">polynomial</a> graphs up close: their zeros, turning points and bends. This topic zooms out. Far from the origin, every polynomial graph looks like the graph of its <a class="gl" href="../notes/polynomial-rates.html" data-c="leading-term">leading term</a>, and its ends either rise or fall without bound. That long-run behavior is the <b><span class="gl" tabindex="0" data-c="end-behavior">end behavior</span></b>, and the exam wants it written in <span class="gl" tabindex="0" data-c="limit">limit notation</span>.</p>
+
+<h2 id="why-the-leading-term-wins">Why the leading term wins</h2>
+<p>Take <math class="pcalc-m"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>50</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">p(x) = 2x^3 - 50x^2</annotation></semantics></math>. At <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">x = 10</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>2</mn><msup><mi>x</mi><mn>3</mn></msup><mo>=</mo><mn>2</mn><mo>,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">2x^3 = 2{,}000</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>50</mn><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>5</mn><mo>,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">50x^2 = 5{,}000</annotation></semantics></math>: the second term is bigger and <math class="pcalc-m"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">p(10) = -3{,}000</annotation></semantics></math>. At <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">x = 100</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>2</mn><msup><mi>x</mi><mn>3</mn></msup><mo>=</mo><mn>2</mn><mo>,</mo><mn>000</mn><mo>,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">2x^3 = 2{,}000{,}000</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>50</mn><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>500</mn><mo>,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">50x^2 = 500{,}000</annotation></semantics></math>: the leading term has pulled ahead, and it stays ahead for every larger <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. A higher power always outgrows a lower one eventually.</p>
+<p>So the end behavior of any polynomial is the end behavior of its leading term <math class="pcalc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><msup><mi>x</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">a_n x^n</annotation></semantics></math>, which depends on only two things: whether <math class="pcalc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> is even or odd, and whether <math class="pcalc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_n</annotation></semantics></math> is positive or negative.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: a_n &gt; 0, a_n &lt; 0"><table class="compare">
+<thead><tr><th scope="col"></th><th scope="col"><math class="pcalc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_n &gt; 0</annotation></semantics></math></th><th scope="col"><math class="pcalc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_n &lt; 0</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td>even <a class="gl" href="../notes/polynomial-rates.html" data-c="degree">degree</a></td><td><math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to -\infty} p(x) = \infty</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} p(x) = \infty</annotation></semantics></math> (both up)</td><td><math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to -\infty} p(x) = -\infty</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} p(x) = -\infty</annotation></semantics></math> (both down)</td></tr>
+<tr><td>odd degree</td><td><math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to -\infty} p(x) = -\infty</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} p(x) = \infty</annotation></semantics></math> (down, up)</td><td><math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to -\infty} p(x) = \infty</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} p(x) = -\infty</annotation></semantics></math> (up, down)</td></tr>
+</tbody>
+</table></div>
+<figure id="fig-ends"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="polynomial-end-behavior-ends"><img src="../figures/polynomial-end-behavior-ends.svg" alt="The graph of p(x) = −0.5x³ + 3x. Its leading term is −0.5x³ (odd degree, negative leading coefficient): the left end rises without bound and the right end falls without bound." width="640" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Odd degree with a negative leading coefficient: up on the left, down on the right. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="limit-notation">Limit notation</h2>
+<p>The statement <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} f(x) = \infty</annotation></semantics></math> reads: "as <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> increases without bound, <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math> increases without bound." Likewise <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to -\infty} f(x) = -\infty</annotation></semantics></math> means that as <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> decreases without bound, <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math> decreases without bound. Write all four parts every time: <math class="pcalc-m"><semantics><mrow><mo movablelimits="false">lim</mo></mrow><annotation encoding="application/x-tex">\lim</annotation></semantics></math>, the <a class="gl" href="../notes/alg-functions.html" data-c="function">function</a> with its input, where the input goes, and where the outputs go.</p>
+<p>These lose the point on the exam: "<math class="pcalc-m"><semantics><mrow><mi>f</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">f \to \infty</annotation></semantics></math>" (no input), "<math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">f(\infty) = \infty</annotation></semantics></math>" (<math class="pcalc-m"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math> is not an input), and "<math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} = \infty</annotation></semantics></math>" (no function).</p>
+
+<h2 id="finding-the-leading-term">Finding the leading term</h2>
+<p>When the polynomial is a product, multiply the leading parts of the factors; you do not need to expand.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the end behavior of <math class="pcalc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">(</mo><mn>3</mn><mo>−</mo><mi>x</mi><msup><mo stretchy="false">)</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">h(x) = x^2(3 - x)^3</annotation></semantics></math>.</p>
+<p>Leading part of <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>−</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3 - x)</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">-x</annotation></semantics></math>, so of <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>−</mo><mi>x</mi><msup><mo stretchy="false">)</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">(3 - x)^3</annotation></semantics></math> it is <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi><msup><mo stretchy="false">)</mo><mn>3</mn></msup><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>x</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">(-x)^3 = -x^3</annotation></semantics></math>. Leading term: <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>⋅</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>x</mi><mn>3</mn></msup><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>x</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">x^2 \cdot (-x^3) = -x^5</annotation></semantics></math>.</p>
+<p>Odd degree, negative coefficient: <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to -\infty} h(x) = \infty</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} h(x) = -\infty</annotation></semantics></math>.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the end behavior of <math class="pcalc-m"><semantics><mrow><mi>q</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q(x)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.1</mn><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= -0.1(x + 3)(x + 1)(x - 2)(x - 4)</annotation></semantics></math>.</p>
+<p>Leading term: <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.1</mn><msup><mi>x</mi><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">-0.1x^4</annotation></semantics></math>. Even degree, negative: <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>q</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to -\infty} q(x) = -\infty</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>q</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} q(x) = -\infty</annotation></semantics></math>.</p>
+<p>Because both ends fall, <math class="pcalc-m"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math> has a <a class="gl" href="../notes/polynomial-rates.html" data-c="global-extremum">global maximum</a> but no global minimum.</p>
+</div>
+
+<h2 id="what-end-behavior-tells-you">What end behavior tells you</h2>
+<ul>
+<li>An odd-degree polynomial has at least one <a class="gl" href="../notes/alg-functions.html" data-c="zero">real zero</a>: one of its ends is above the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis and the other below, and its graph has no breaks, so it must cross.</li>
+<li>An even-degree polynomial has a global maximum (both ends down) or a global minimum (both ends up).</li>
+<li>End behavior says nothing about the middle of the graph. A table of a few large-ish inputs can mislead if the leading term has not taken over yet.</li>
+</ul>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:polynomial-end-behavior">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="complex-zeros.html"><span>&larr; Previous</span><b>Polynomial Functions and Complex Zeros</b></a><a class="tb-chapter-link next" href="alg-rational-expressions.html"><span>Next &rarr;</span><b>Rational Expressions</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/polynomial-end-behavior.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:polynomial-end-behavior">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

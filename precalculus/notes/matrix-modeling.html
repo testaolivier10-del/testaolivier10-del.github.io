@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrices Modeling Contexts — AP® Precalculus Notes</title>
+<meta name="description" content="If the chance of each move stays the same from step to step, one matrix predicts the whole future.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/matrix-modeling.html">
+<meta property="og:title" content="Matrices Modeling Contexts — AP® Precalculus Notes">
+<meta property="og:description" content="If the chance of each move stays the same from step to step, one matrix predicts the whole future.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/matrix-modeling.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/matrix-modeling.html#reading",
+      "name": "Matrices Modeling Contexts",
+      "url": "https://levlprep.com/precalculus/notes/matrix-modeling.html",
+      "description": "If the chance of each move stays the same from step to step, one matrix predicts the whole future.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "matrices modeling contexts ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Functions Involving Parameters, Vectors, and Matrices",
+          "item": "https://levlprep.com/precalculus/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Matrices Modeling Contexts: notes",
+          "item": "https://levlprep.com/precalculus/notes/matrix-modeling.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="matrix-modeling" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Functions Involving Parameters, Vectors, and Matrices</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Matrices Modeling Contexts: notes</span></nav>
+<p class="issue">Unit 4 <i></i> Topic 4.14</p>
+<h1 class="deck bk-title" id="r3Title">Matrices Modeling <span>Contexts</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/matrix-modeling.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="matrix-modeling">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fmatrix-modeling.html&amp;title=Matrices%20Modeling%20Contexts%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/matrix-modeling.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Trigonometric and Polar Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Functions Involving Parameters, Vectors, and Matrices</b><small>14 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 14 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="parametric-functions"><a href="parametric-functions.html"><span class="bk-toc-n">4.1</span>Parametric Functions</a></li><li data-toc-t="parametric-motion"><a href="parametric-motion.html"><span class="bk-toc-n">4.2</span>Parametric Functions Modeling Planar Motion</a></li><li data-toc-t="parametric-rates"><a href="parametric-rates.html"><span class="bk-toc-n">4.3</span>Parametric Functions and Rates of Change</a></li><li data-toc-t="parametric-circles-lines"><a href="parametric-circles-lines.html"><span class="bk-toc-n">4.4</span>Parametrically Defined Circles and Lines</a></li><li data-toc-t="implicit-functions"><a href="implicit-functions.html"><span class="bk-toc-n">4.5</span>Implicitly Defined Functions</a></li><li data-toc-t="conic-sections"><a href="conic-sections.html"><span class="bk-toc-n">4.6</span>Conic Sections</a></li><li data-toc-t="parametrizing-implicit"><a href="parametrizing-implicit.html"><span class="bk-toc-n">4.7</span>Parametrization of Implicitly Defined Functions</a></li><li data-toc-t="vectors"><a href="vectors.html"><span class="bk-toc-n">4.8</span>Vectors</a></li><li data-toc-t="vector-valued-functions"><a href="vector-valued-functions.html"><span class="bk-toc-n">4.9</span>Vector-Valued Functions</a></li><li data-toc-t="matrices"><a href="matrices.html"><span class="bk-toc-n">4.10</span>Matrices</a></li><li data-toc-t="inverse-determinant"><a href="inverse-determinant.html"><span class="bk-toc-n">4.11</span>The Inverse and Determinant of a Matrix</a></li><li data-toc-t="linear-transformations"><a href="linear-transformations.html"><span class="bk-toc-n">4.12</span>Linear Transformations and Matrices</a></li><li data-toc-t="matrices-as-functions"><a href="matrices-as-functions.html"><span class="bk-toc-n">4.13</span>Matrices as Functions</a></li><li class="current" data-toc-t="matrix-modeling"><a href="#main" aria-current="page"><span class="bk-toc-n">4.14</span>Matrices Modeling Contexts</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-transition-matrix">The transition matrix</a><a href="#one-step-forward">One step forward</a><a href="#one-step-back">One step back</a><a href="#the-long-run">The long run</a><a href="#shares-instead-of-counts">Shares instead of counts</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-algebra.html"><span class="bk-toc-n">S</span>Algebra you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+<p class="bk-lede"><span class="pcalc-beyond pcalc-nav-ref"><b>Beyond the exam.</b> The AP® Precalculus exam does not test this unit. Many classes teach it, and it prepares you for calculus.</span></p>
+    <article class="pcalc-prose bk-prose">
+<p><a class="gl" href="../notes/matrices.html" data-c="matrix">Matrices</a> model situations where things move between a few states in steps: bikes between stations each day, customers between phone plans each month, a town's weather from one day to the next. If the chance of each move stays the same from step to step, one matrix predicts the whole future.</p>
+
+<h2 id="the-transition-matrix">The transition matrix</h2>
+<p>Each day a bike at station A stays there with chance <math class="pcalc-m"><semantics><mrow><mn>0.8</mn></mrow><annotation encoding="application/x-tex">0.8</annotation></semantics></math> and is ridden to B with chance <math class="pcalc-m"><semantics><mrow><mn>0.2</mn></mrow><annotation encoding="application/x-tex">0.2</annotation></semantics></math>. A bike at B goes to A with chance <math class="pcalc-m"><semantics><mrow><mn>0.3</mn></mrow><annotation encoding="application/x-tex">0.3</annotation></semantics></math> and stays with chance <math class="pcalc-m"><semantics><mrow><mn>0.7</mn></mrow><annotation encoding="application/x-tex">0.7</annotation></semantics></math>. Put each station's chances in a column, "from" across the top and "to" down the side:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: from A, from B"><table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">from A</th><th scope="col">from B</th></tr></thead>
+<tbody>
+<tr><th scope="row">to A</th><td><math class="pcalc-m"><semantics><mrow><mn>0.8</mn></mrow><annotation encoding="application/x-tex">0.8</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mn>0.3</mn></mrow><annotation encoding="application/x-tex">0.3</annotation></semantics></math></td></tr>
+<tr><th scope="row">to B</th><td><math class="pcalc-m"><semantics><mrow><mn>0.2</mn></mrow><annotation encoding="application/x-tex">0.2</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mn>0.7</mn></mrow><annotation encoding="application/x-tex">0.7</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<math class="pcalc-m" display="block"><semantics><mrow><mi>T</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>0.8</mn></mtd><mtd><mn>0.3</mn></mtd></mtr><mtr><mtd><mn>0.2</mn></mtd><mtd><mn>0.7</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">T = \left[ \begin{matrix} 0.8 &amp; 0.3 \\ 0.2 &amp; 0.7 \end{matrix} \right]</annotation></semantics></math>
+<p>This is a <b><span class="gl" tabindex="0" data-c="transition-matrix">transition matrix</span></b>. Each column adds up to <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math>, because every bike ends the day somewhere. (Some books put "from" in the rows and multiply on the other side; the numbers are the same, read the other way. Check which way a matrix is set up before using it.)</p>
+<figure id="fig-bikes"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="matrix-modeling-bikes"><img src="../figures/matrix-modeling-bikes.svg" alt="Two circles, Station A and Station B. A loop on A is labeled 0.8 and an arrow from A to B is labeled 0.2; an arrow from B to A is labeled 0.3 and a loop on B is labeled 0.7. Each day a bike at A stays with chance 0.8 or moves to B with chance 0.2, and a bike at B moves to A with chance 0.3 or stays with chance 0.7." width="540" height="270" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The bike-share model as a diagram. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="one-step-forward">One step forward</h2>
+<p>A <b>state <a class="gl" href="../notes/vectors.html" data-c="vector">vector</a></b> lists how many are in each state, here <math class="pcalc-m"><semantics><mrow><msub><mi mathvariant="bold">x</mi><mn>0</mn></msub><mo>=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>400</mn></mtd></mtr><mtr><mtd><mn>100</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{x}_0 = \left[ \begin{matrix} 400 \\ 100 \end{matrix} \right]</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mn>400</mn></mrow><annotation encoding="application/x-tex">400</annotation></semantics></math> bikes at A and <math class="pcalc-m"><semantics><mrow><mn>100</mn></mrow><annotation encoding="application/x-tex">100</annotation></semantics></math> at B. The expected numbers one day later are <math class="pcalc-m"><semantics><mrow><mi>T</mi><msub><mi mathvariant="bold">x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">T\mathbf{x}_0</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Predict the bikes at each station after one day and after two days.</p>
+<p><math class="pcalc-m"><semantics><mrow><msub><mi mathvariant="bold">x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\mathbf{x}_1</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>0.8</mn></mtd><mtd><mn>0.3</mn></mtd></mtr><mtr><mtd><mn>0.2</mn></mtd><mtd><mn>0.7</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>400</mn></mtd></mtr><mtr><mtd><mn>100</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} 0.8 &amp; 0.3 \\ 0.2 &amp; 0.7 \end{matrix} \right]\left[ \begin{matrix} 400 \\ 100 \end{matrix} \right]</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mrow><mn>0.8</mn><mo stretchy="false">(</mo><mn>400</mn><mo stretchy="false">)</mo><mo>+</mo><mn>0.3</mn><mo stretchy="false">(</mo><mn>100</mn><mo stretchy="false">)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mn>0.2</mn><mo stretchy="false">(</mo><mn>400</mn><mo stretchy="false">)</mo><mo>+</mo><mn>0.7</mn><mo stretchy="false">(</mo><mn>100</mn><mo stretchy="false">)</mo></mrow></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} 0.8(400) + 0.3(100) \\ 0.2(400) + 0.7(100) \end{matrix} \right]</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>350</mn></mtd></mtr><mtr><mtd><mn>150</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} 350 \\ 150 \end{matrix} \right]</annotation></semantics></math>.</p>
+<p>Row 1 collects everything that ends at A: <math class="pcalc-m"><semantics><mrow><mn>320</mn></mrow><annotation encoding="application/x-tex">320</annotation></semantics></math> bikes that stayed plus <math class="pcalc-m"><semantics><mrow><mn>30</mn></mrow><annotation encoding="application/x-tex">30</annotation></semantics></math> that came over from B.</p>
+<p><math class="pcalc-m"><semantics><mrow><msub><mi mathvariant="bold">x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\mathbf{x}_2</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mi>T</mi><msub><mi mathvariant="bold">x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">= T\mathbf{x}_1</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mrow><mn>0.8</mn><mo stretchy="false">(</mo><mn>350</mn><mo stretchy="false">)</mo><mo>+</mo><mn>0.3</mn><mo stretchy="false">(</mo><mn>150</mn><mo stretchy="false">)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mn>0.2</mn><mo stretchy="false">(</mo><mn>350</mn><mo stretchy="false">)</mo><mo>+</mo><mn>0.7</mn><mo stretchy="false">(</mo><mn>150</mn><mo stretchy="false">)</mo></mrow></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} 0.8(350) + 0.3(150) \\ 0.2(350) + 0.7(150) \end{matrix} \right]</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>325</mn></mtd></mtr><mtr><mtd><mn>175</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} 325 \\ 175 \end{matrix} \right]</annotation></semantics></math>. The total stays <math class="pcalc-m"><semantics><mrow><mn>500</mn></mrow><annotation encoding="application/x-tex">500</annotation></semantics></math>.</p>
+</div>
+<p>In general <math class="pcalc-m"><semantics><mrow><msub><mi mathvariant="bold">x</mi><mi>n</mi></msub><mo>=</mo><msup><mi>T</mi><mi>n</mi></msup><msub><mi mathvariant="bold">x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\mathbf{x}_n = T^n\mathbf{x}_0</annotation></semantics></math>. A calculator with matrix operations finds <math class="pcalc-m"><semantics><mrow><msup><mi>T</mi><mn>10</mn></msup></mrow><annotation encoding="application/x-tex">T^{10}</annotation></semantics></math> or <math class="pcalc-m"><semantics><mrow><msup><mi>T</mi><mn>30</mn></msup></mrow><annotation encoding="application/x-tex">T^{30}</annotation></semantics></math> in one step.</p>
+
+<h2 id="one-step-back">One step back</h2>
+<p>If today's state is known, yesterday's solves <math class="pcalc-m"><semantics><mrow><mi>T</mi><msub><mi mathvariant="bold">x</mi><mtext>yesterday</mtext></msub><mo>=</mo><msub><mi mathvariant="bold">x</mi><mtext>today</mtext></msub></mrow><annotation encoding="application/x-tex">T\mathbf{x}_{\text{yesterday}} = \mathbf{x}_{\text{today}}</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><msub><mi mathvariant="bold">x</mi><mtext>yesterday</mtext></msub><mo>=</mo><msup><mi>T</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></msup><msub><mi mathvariant="bold">x</mi><mtext>today</mtext></msub></mrow><annotation encoding="application/x-tex">\mathbf{x}_{\text{yesterday}} = T^{-1}\mathbf{x}_{\text{today}}</annotation></semantics></math>. Here <math class="pcalc-m"><semantics><mrow><mi>det</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">\det T</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>0.56</mn><mo>−</mo><mn>0.06</mn></mrow><annotation encoding="application/x-tex">= 0.56 - 0.06</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">= 0.5</annotation></semantics></math>, and <math class="pcalc-m"><semantics><mrow><msup><mi>T</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></msup><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>350</mn></mtd></mtr><mtr><mtd><mn>150</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">T^{-1}\left[ \begin{matrix} 350 \\ 150 \end{matrix} \right]</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>400</mn></mtd></mtr><mtr><mtd><mn>100</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} 400 \\ 100 \end{matrix} \right]</annotation></semantics></math>, the starting state, as it should be.</p>
+
+<h2 id="the-long-run">The long run</h2>
+<p>Keep stepping and the numbers settle: <math class="pcalc-m"><semantics><mrow><mn>350</mn></mrow><annotation encoding="application/x-tex">350</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>325</mn></mrow><annotation encoding="application/x-tex">325</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>312.5</mn></mrow><annotation encoding="application/x-tex">312.5</annotation></semantics></math>, ... at A, approaching <math class="pcalc-m"><semantics><mrow><mn>300</mn></mrow><annotation encoding="application/x-tex">300</annotation></semantics></math>. A <b>steady state</b> is a vector that one more step does not change: <math class="pcalc-m"><semantics><mrow><mi>T</mi><mi mathvariant="bold">x</mi><mo>=</mo><mi mathvariant="bold">x</mi></mrow><annotation encoding="application/x-tex">T\mathbf{x} = \mathbf{x}</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the steady state for <math class="pcalc-m"><semantics><mrow><mn>500</mn></mrow><annotation encoding="application/x-tex">500</annotation></semantics></math> bikes.</p>
+<p>At a steady state the bikes leaving A balance those arriving: <math class="pcalc-m"><semantics><mrow><mn>0.2</mn><mi>a</mi><mo>=</mo><mn>0.3</mn><mi>b</mi></mrow><annotation encoding="application/x-tex">0.2a = 0.3b</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>1.5</mn><mi>b</mi></mrow><annotation encoding="application/x-tex">a = 1.5b</annotation></semantics></math>. With <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>=</mo><mn>500</mn></mrow><annotation encoding="application/x-tex">a + b = 500</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mn>2.5</mn><mi>b</mi><mo>=</mo><mn>500</mn></mrow><annotation encoding="application/x-tex">2.5b = 500</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>200</mn></mrow><annotation encoding="application/x-tex">b = 200</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>300</mn></mrow><annotation encoding="application/x-tex">a = 300</annotation></semantics></math>.</p>
+<p>Check: <math class="pcalc-m"><semantics><mrow><mi>T</mi><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>300</mn></mtd></mtr><mtr><mtd><mn>200</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">T\left[ \begin{matrix} 300 \\ 200 \end{matrix} \right]</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mrow><mn>240</mn><mo>+</mo><mn>60</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>60</mn><mo>+</mo><mn>140</mn></mrow></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} 240 + 60 \\ 60 + 140 \end{matrix} \right]</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>300</mn></mtd></mtr><mtr><mtd><mn>200</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} 300 \\ 200 \end{matrix} \right]</annotation></semantics></math>.</p>
+</div>
+<p>The steady state does not depend on how the bikes start; with <math class="pcalc-m"><semantics><mrow><mn>400</mn></mrow><annotation encoding="application/x-tex">400</annotation></semantics></math> or <math class="pcalc-m"><semantics><mrow><mn>100</mn></mrow><annotation encoding="application/x-tex">100</annotation></semantics></math> at A, the system drifts toward <math class="pcalc-m"><semantics><mrow><mn>300</mn></mrow><annotation encoding="application/x-tex">300</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>200</mn></mrow><annotation encoding="application/x-tex">200</annotation></semantics></math>.</p>
+
+<h2 id="shares-instead-of-counts">Shares instead of counts</h2>
+<p>The same matrix works with shares that add up to <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math>. If today is rainy, the weather state is <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} 0 \\ 1 \end{matrix} \right]</annotation></semantics></math> (chance of sun <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>, chance of rain <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math>), and <math class="pcalc-m"><semantics><mrow><msup><mi>T</mi><mi>n</mi></msup><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">T^n\left[ \begin{matrix} 0 \\ 1 \end{matrix} \right]</annotation></semantics></math> gives the chances of sun and rain <math class="pcalc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> days later.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:matrix-modeling">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="matrices-as-functions.html"><span>&larr; Previous</span><b>Matrices as Functions</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/matrix-modeling.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:matrix-modeling">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

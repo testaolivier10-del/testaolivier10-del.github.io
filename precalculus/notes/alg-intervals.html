@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interval Notation and Inequalities — AP® Precalculus Notes</title>
+<meta name="description" content="You will write them for domains and ranges, for where a function rises or falls, and for the stretch of inputs a question is about.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/alg-intervals.html">
+<meta property="og:title" content="Interval Notation and Inequalities — AP® Precalculus Notes">
+<meta property="og:description" content="You will write them for domains and ranges, for where a function rises or falls, and for the stretch of inputs a question is about.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/alg-intervals.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/alg-intervals.html#reading",
+      "name": "Interval Notation and Inequalities",
+      "url": "https://levlprep.com/precalculus/notes/alg-intervals.html",
+      "description": "You will write them for domains and ranges, for where a function rises or falls, and for the stretch of inputs a question is about.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "interval notation and inequalities review for precalculus",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Algebra you need",
+          "item": "https://levlprep.com/precalculus/units/skills-algebra.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Interval Notation and Inequalities: notes",
+          "item": "https://levlprep.com/precalculus/notes/alg-intervals.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="alg-intervals" data-unit="skills-algebra">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-algebra.html">Algebra you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Interval Notation and Inequalities: notes</span></nav>
+<p class="issue">Skills <i></i></p>
+<h1 class="deck bk-title" id="r3Title">Interval Notation <span>and Inequalities</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/alg-intervals.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="alg-intervals">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Falg-intervals.html&amp;title=Interval%20Notation%20and%20Inequalities%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/alg-intervals.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Functions Involving Parameters, Vectors, and Matrices</a>
+    <a class="bk-toc-chap" href="../units/skills-algebra.html"><span class="bk-toc-chap-n">S</span><span><b>Algebra you need</b><small>11 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="skills-algebra"><div class="tb-progress-row"><span><b>0</b> of 11 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="alg-functions"><a href="alg-functions.html"><span class="bk-toc-n">S</span>Functions, Graphs and Notation</a></li><li class="current" data-toc-t="alg-intervals"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Interval Notation and Inequalities</a><div class="bk-toc-onpage"><p>On this page</p><a href="#interval-notation">Interval notation</a><a href="#solving-linear-inequalities">Solving linear inequalities</a><a href="#compound-inequalities">Compound inequalities</a><a href="#domains-as-intervals">Domains as intervals</a></div></li><li data-toc-t="alg-lines"><a href="alg-lines.html"><span class="bk-toc-n">S</span>Lines, Slope and Linear Equations</a></li><li data-toc-t="alg-quadratics"><a href="alg-quadratics.html"><span class="bk-toc-n">S</span>Quadratics: Factoring and the Quadratic Formula</a></li><li data-toc-t="alg-polynomial-algebra"><a href="alg-polynomial-algebra.html"><span class="bk-toc-n">S</span>Polynomial Arithmetic and Factoring</a></li><li data-toc-t="alg-complex-numbers"><a href="alg-complex-numbers.html"><span class="bk-toc-n">S</span>Complex Numbers</a></li><li data-toc-t="alg-rational-expressions"><a href="alg-rational-expressions.html"><span class="bk-toc-n">S</span>Rational Expressions</a></li><li data-toc-t="alg-systems"><a href="alg-systems.html"><span class="bk-toc-n">S</span>Systems of Equations</a></li><li data-toc-t="alg-exponents"><a href="alg-exponents.html"><span class="bk-toc-n">S</span>Exponent and Radical Rules</a></li><li data-toc-t="alg-right-triangle"><a href="alg-right-triangle.html"><span class="bk-toc-n">S</span>Right-Triangle Trigonometry</a></li><li data-toc-t="alg-circles"><a href="alg-circles.html"><span class="bk-toc-n">S</span>Circles, Arcs and Special Triangles</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>Intervals are how precalculus says "these inputs" or "these outputs". You will write them for <a class="gl" href="../notes/alg-functions.html" data-c="domain">domains</a> and <a class="gl" href="../notes/alg-functions.html" data-c="range">ranges</a>, for where a <a class="gl" href="../notes/alg-functions.html" data-c="function">function</a> rises or falls, and for the stretch of inputs a question is about. This page covers the notation and how to solve the <span class="gl" tabindex="0" data-c="inequality">linear inequalities</span> that produce intervals.</p>
+
+<h2 id="interval-notation">Interval notation</h2>
+<p>An interval is every real number between two ends. Write the left end, a comma, the right end, and show whether each end is included:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Inequality, Interval, Ends"><table class="compare">
+<thead><tr><th scope="col">Inequality</th><th scope="col">Interval</th><th scope="col">Ends</th></tr></thead>
+<tbody>
+<tr><td><math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">-1 \le x \le 4</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-1, 4]</annotation></semantics></math></td><td>both included (<span class="gl" tabindex="0" data-c="interval-notation">closed interval</span>)</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">-1 &lt; x &lt; 4</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-1, 4)</annotation></semantics></math></td><td>neither included (open interval)</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>≤</mo><mi>x</mi><mo>&lt;</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">-1 \le x &lt; 4</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[-1, 4)</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math> in, <math class="pcalc-m"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math> out</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x \ge 2</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[2, \infty)</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math> in; no right end</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x &lt; 5</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-\infty, 5)</annotation></semantics></math></td><td>no left end; <math class="pcalc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math> out</td></tr>
+</tbody>
+</table></div>
+<p>A bracket means "included", a parenthesis means "not included". The symbols <math class="pcalc-m"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">-\infty</annotation></semantics></math> are not numbers you can land on, so they always get a parenthesis. On a graph, an included end gets a closed dot and an excluded end an open dot.</p>
+<p>When a set skips a number, write the pieces and join them with the union sign <math class="pcalc-m"><semantics><mrow><mo>∪</mo></mrow><annotation encoding="application/x-tex">\cup</annotation></semantics></math>. Every real number except <math class="pcalc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo><mo>∪</mo><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-\infty, 5) \cup (5, \infty)</annotation></semantics></math>.</p>
+
+<h2 id="solving-linear-inequalities">Solving linear inequalities</h2>
+<p>A linear inequality, such as <math class="pcalc-m"><semantics><mrow><mn>5</mn><mi>x</mi><mo>−</mo><mn>4</mn><mo>≤</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">5x - 4 \le 2x + 11</annotation></semantics></math>, is solved like an equation: add, subtract, multiply or divide both sides by the same number. One rule is different. <b>Multiplying or dividing by a negative number flips the inequality.</b> The reason: <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo>&lt;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">2 &lt; 3</annotation></semantics></math>, but <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>&gt;</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">-2 &gt; -3</annotation></semantics></math>. Negation turns the number line around.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Solve <math class="pcalc-m"><semantics><mrow><mn>3</mn><mo>−</mo><mn>2</mn><mi>x</mi><mo>&gt;</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">3 - 2x &gt; 7</annotation></semantics></math>.</p>
+<p>Subtract <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> from both sides: <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mi>x</mi><mo>&gt;</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">-2x &gt; 4</annotation></semantics></math>.</p>
+<p>Divide by <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math> and flip: <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x &lt; -2</annotation></semantics></math>. In interval notation, <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-\infty, -2)</annotation></semantics></math>.</p>
+<p>Check one value inside: <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = -3</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mn>3</mn><mo>+</mo><mn>6</mn><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">3 + 6 = 9</annotation></semantics></math>, and <math class="pcalc-m"><semantics><mrow><mn>9</mn><mo>&gt;</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">9 &gt; 7</annotation></semantics></math>. Check the end: <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = -2</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mn>7</mn><mo>&gt;</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">7 &gt; 7</annotation></semantics></math>, false, so the parenthesis is right.</p>
+</div>
+
+<h2 id="compound-inequalities">Compound inequalities</h2>
+<p>A compound inequality has three parts, like <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>≤</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn><mo>&lt;</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">-1 \le 2x + 3 &lt; 9</annotation></semantics></math>. Do every step to all three parts at once.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Which inputs of <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">f(x) = 2x + 3</annotation></semantics></math> give outputs with <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>≤</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>&lt;</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">-1 \le f(x) &lt; 9</annotation></semantics></math>?</p>
+<p>Subtract <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> from all parts: <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mo>≤</mo><mn>2</mn><mi>x</mi><mo>&lt;</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">-4 \le 2x &lt; 6</annotation></semantics></math>. Divide all parts by <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>≤</mo><mi>x</mi><mo>&lt;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">-2 \le x &lt; 3</annotation></semantics></math>. The answer is <math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[-2, 3)</annotation></semantics></math>.</p>
+</div>
+<figure id="fig-intervals"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="alg-intervals-outputs"><img src="../figures/alg-intervals-outputs.svg" alt="The line y = 2x + 3. The solid green piece runs from the closed point (−2, −1) to the open point (3, 9): the inputs in [−2, 3) are exactly the ones whose outputs satisfy −1 ≤ 2x + 3 &lt; 9. Dashed horizontal lines mark y = −1 and y = 9." width="640" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The inputs in <math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[-2, 3)</annotation></semantics></math> give the outputs from <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math> up to, but not including, <math class="pcalc-m"><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math>. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="domains-as-intervals">Domains as intervals</h2>
+<p>The domain rules from the last topic produce inequalities, so domains come out as intervals. For <math class="pcalc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msqrt><mrow><mn>6</mn><mo>−</mo><mn>2</mn><mi>x</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">g(x) = \sqrt{6 - 2x}</annotation></semantics></math>, the inside must be at least <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mn>6</mn><mo>−</mo><mn>2</mn><mi>x</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">6 - 2x \ge 0</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mi>x</mi><mo>≥</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">-2x \ge -6</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>≤</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x \le 3</annotation></semantics></math> (flip). The domain is <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">(-\infty, 3]</annotation></semantics></math>, with a bracket because <math class="pcalc-m"><semantics><mrow><msqrt><mn>0</mn></msqrt><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\sqrt{0} = 0</annotation></semantics></math> is fine.</p>
+<p>Read the question for inputs or outputs. "Which inputs give outputs at least <math class="pcalc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math>" wants an interval of <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-values, not <math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>5</mn><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[5, \infty)</annotation></semantics></math>.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-intervals">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="alg-functions.html"><span>&larr; Previous</span><b>Functions, Graphs and Notation</b></a><a class="tb-chapter-link next" href="change-in-tandem.html"><span>Next &rarr;</span><b>Change in Tandem</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/alg-intervals.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-intervals">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>
