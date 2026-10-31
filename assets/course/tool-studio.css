@@ -12,7 +12,7 @@ body.ls-full #site-header, body.ls-full .course-nav, body.ls-full .r3-toolband{d
 }
 body.ls-on .bottom-nav, body.ls-on .bottom-sheet,
 body.ls-on .bottom-scrim, body.ls-on .site-crumb, body.ls-on [data-crumb], body.ls-on .cx-crumb,
-body.ls-on .bio-crumb, body.ls-on .chem-crumb, body.ls-on .phys-crumb, body.ls-on .calc-crumb, body.ls-on .stat-crumb, body.ls-on .env-crumb, body.ls-on .psy-crumb, body.ls-on main > .hero, body.ls-on .tool-top,
+body.ls-on .bio-crumb, body.ls-on .chem-crumb, body.ls-on .phys-crumb, body.ls-on .calc-crumb, body.ls-on .stat-crumb, body.ls-on .env-crumb, body.ls-on .psy-crumb, body.ls-on .pcalc-crumb, body.ls-on main > .hero, body.ls-on .tool-top,
 body.ls-on .lp-launch, body.ls-on .lp-tip, body.ls-on .pt-fab{display:none !important;}
 body.ls-on{padding-bottom:0 !important;}
 body.ls-on .ls-host{max-width:none;padding:0;margin:0;}

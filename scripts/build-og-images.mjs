@@ -158,6 +158,15 @@ const CARDS = [
     title: 'Psychology for the May 2027 exam, from neuron to society',
     sub: 'Free notes for every topic, concepts applied to real situations, and the article analysis and evidence questions drilled part by part.',
   },
+  /* AP® Precalculus (folder precalculus/), the same rules: no mark, no counts
+     (docs/apprecalc-spec.md decision 8). Render with ONLY=precalculus/assets/og-image.png. */
+  {
+    out: 'precalculus/assets/og-image.png',
+    badge: 'Free notes',
+    brand: 'LevlPrep',
+    title: 'Precalculus for the May 2027 exam, every function in motion',
+    sub: 'Free notes for every topic, functions you can drag and watch, and the four free-response questions drilled part by part.',
+  },
 ];
 // ONLY=<out path> renders just that card (adding a course need not re-render the others).
 if (process.env.ONLY) CARDS.splice(0, CARDS.length, ...CARDS.filter((c) => c.out === process.env.ONLY));

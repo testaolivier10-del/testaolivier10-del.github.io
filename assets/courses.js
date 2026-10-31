@@ -112,6 +112,14 @@
       path: '/psychology/', dir: 'psychology', storagePrefix: 'appsych_', rankLabel: 'Psychology rank',
       searchLabel: 'Psychology', aliases: ['psychology', 'psych', 'psy'], paid: true, status: 'live', order: 10,
     },
+    {
+      // As AP® Calculus AB (docs/apprecalc-spec.md decision 2): the mark only
+      // in the full names, never in a URL; the key travels as its folder,
+      // "precalculus". 'hidden' until published (spec section 5, Launch).
+      key: 'apprecalc', short: 'Precalculus', name: 'AP® Precalculus', productName: 'AP® Precalculus',
+      path: '/precalculus/', dir: 'precalculus', storagePrefix: 'apprecalc_', rankLabel: 'Precalculus rank',
+      searchLabel: 'Precalculus', aliases: ['precalculus', 'precalc', 'pcalc'], paid: true, status: 'hidden', order: 11,
+    },
   ];
 
   var list = LIST.slice().sort(function (a, b) { return a.order - b.order; });

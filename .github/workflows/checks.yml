@@ -194,6 +194,19 @@ jobs:
         run: node scripts/build-appsych.mjs --check
       - name: the AP Psychology content follows its rules
         run: node scripts/check-appsych-content.mjs --check
+      # AP Precalculus, the same three checks (docs/apprecalc-architecture.md):
+      # the ordering rule (words and math notation such as \ln or f^{-1}),
+      # the generated pages against precalculus/data, and the authored data
+      # against its rules (math that renders, expr keys that parse and grade
+      # on their domains, calculator flags, the four FRQ types at 6 points,
+      # no calculus wording, Unit 4 kept out of exams, pre-registered tools).
+      # Only published units fail.
+      - name: the AP Precalculus course uses no concept before it is taught
+        run: node scripts/check-apprecalc-map.mjs --check
+      - name: the AP Precalculus pages match their data
+        run: node scripts/build-apprecalc.mjs --check
+      - name: the AP Precalculus content follows its rules
+        run: node scripts/check-apprecalc-content.mjs --check
       # The ochem homepage lists the chapters twice (the path of nodes and the
       # JSON-LD syllabus). Both are generated from curriculum.js; a stale copy
       # would show a reader, and a search engine, the wrong course.

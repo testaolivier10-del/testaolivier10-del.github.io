@@ -23,7 +23,7 @@ const DATA = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)
 const FOUNDER = DATA._founder;
 const strip = (s) => String(s).replace(/<[^>]+>/g, '');
 const attr = (s) => String(s).replace(/&(?![a-z]+;|#\d+;)/g, '&amp;').replace(/"/g, '&quot;');
-const DIR = { nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology' };
+const DIR = { nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus' };
 
 /* The tool covers: index.json per course gives each cover's real tool title. */
 function toolCovers(key) {

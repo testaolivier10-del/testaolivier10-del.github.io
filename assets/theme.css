@@ -257,10 +257,19 @@ body[data-course="apenv"]{--ctint:#EFF0DA;--cink:#474A10;}
    psychology/assets/psy.css). */
 body[data-course="appsych"]{--ctint:#E3F0F8;--cink:#084F78;}
 :root[data-theme="dark"] body[data-course="appsych"]{--ctint:rgba(80,170,220,0.10);--cink:#A8D8F0;}
+/* AP Precalculus: forest green, hue 145° (the widest gap left on the wheel:
+   between Biology's leaf green at 109° and NREMT's teal at 174°, darker and
+   bluer than Biology). --cink on --ctint: 7.3:1 light (8.4:1 on white, 8.0:1
+   on the page); dark 10.8:1 on the card and 11.0:1 on the tint over the page
+   (docs/apprecalc-spec.md decision 8, proposed; the same values as body.pcalc
+   in precalculus/assets/pcalc.css and IDENTITY.accent in scripts/lib/apprecalc-build.mjs). */
+body[data-course="apprecalc"]{--ctint:#E3F3E8;--cink:#11592F;}
+:root[data-theme="dark"] body[data-course="apprecalc"]{--ctint:rgba(80,200,130,0.10);--cink:#ACE4BF;}
 /* Primary buttons in the course color (--cink, page-colored text). Contrast,
    light / dark: ochem 8.4 / 10.5, A&P 6.5 / 10.5, Biology 6.6 / 12.3,
-   Chemistry 8.6 / 10.7, Physics 8.4 / 12.1, Calculus 9.4 / 10.8, Statistics 9.8 / 10.9, Environmental Science 8.6 / 12.5, Psychology 8.3 / 12.2. */
-body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-course="apchem"],[data-course="apphys"],[data-course="apcalc"],[data-course="apstat"],[data-course="apenv"],[data-course="appsych"],.bio,.chem,.phys,.calc){--btn-bg:var(--cink);--btn-ink:var(--paper);}
+   Chemistry 8.6 / 10.7, Physics 8.4 / 12.1, Calculus 9.4 / 10.8, Statistics 9.8 / 10.9, Environmental Science 8.6 / 12.5, Psychology 8.3 / 12.2,
+   Precalculus 8.0 / 12.9. */
+body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-course="apchem"],[data-course="apphys"],[data-course="apcalc"],[data-course="apstat"],[data-course="apenv"],[data-course="appsych"],[data-course="apprecalc"],.bio,.chem,.phys,.calc){--btn-bg:var(--cink);--btn-ink:var(--paper);}
 
 /* The same pairs for a course's card outside its pages (hub cards, polish A3). */
 [data-tint="ochem"]{--ctint:#ECE8FB;--cink:#4B3BA8;}
@@ -272,6 +281,7 @@ body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-cour
 [data-tint="apstat"]{--ctint:#F5E6F4;--cink:#6E2470;}
 [data-tint="apenv"]{--ctint:#EFF0DA;--cink:#474A10;}
 [data-tint="appsych"]{--ctint:#E3F0F8;--cink:#084F78;}
+[data-tint="apprecalc"]{--ctint:#E3F3E8;--cink:#11592F;}
 :root[data-theme="dark"] [data-tint="ochem"]{--ctint:rgba(156,143,224,0.18);--cink:#C9C0F2;}
 :root[data-theme="dark"] [data-tint="anp"]{--ctint:rgba(236,132,108,0.07);--cink:#F2B9A9;}
 :root[data-theme="dark"] [data-tint="bio"]{--ctint:rgba(140,200,110,0.08);--cink:#B6E2A2;}
@@ -281,6 +291,7 @@ body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-cour
 :root[data-theme="dark"] [data-tint="apstat"]{--ctint:rgba(214,120,206,0.10);--cink:#F0BCEB;}
 :root[data-theme="dark"] [data-tint="apenv"]{--ctint:rgba(200,200,100,0.10);--cink:#DCDB98;}
 :root[data-theme="dark"] [data-tint="appsych"]{--ctint:rgba(80,170,220,0.10);--cink:#A8D8F0;}
+:root[data-theme="dark"] [data-tint="apprecalc"]{--ctint:rgba(80,200,130,0.10);--cink:#ACE4BF;}
 
 /* ==========================================================================
    2. Base

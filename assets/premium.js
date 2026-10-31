@@ -475,6 +475,51 @@
         ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
       ],
     },
+    apprecalc: {
+      name: 'AP® Precalculus',
+      // Registered hidden (docs/apprecalc-spec.md decision 3): not on sale until
+      // the owner checklist (spec section 9): migration, Polar product, Worker
+      // POLAR_PRODUCTS, then remove onSale: false.
+      onSale: false,
+      dailyFree: 15,
+      // The free tier (docs/apprecalc-spec.md decision 6, proposed): Unit 1 and
+      // every "Algebra you need" lesson. Keep in step with FREE_UNITS in
+      // scripts/lib/apprecalc-build.mjs.
+      freeChapters: ['unit-1'],
+      compare: 'Fiveable is $79 a year (checked October 2026).',
+      passes: [
+        { id: 'pcalc-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
+      ],
+      free: [
+        'Every notes page, the glossary, the flashcards and the printable unit sheets',
+        'The formulas and identities to know, and the cram-kit study plan outline',
+        'Every lesson in Unit 1, and every "Algebra you need" lesson',
+        '15 practice or review questions a day from any unit',
+        'One full practice exam',
+        'Three trainers: the function lab, rate of change and the unit circle',
+        'Your progress, XP, streak and weak topics',
+      ],
+      premium: [
+        'Every interactive lesson',
+        'Unlimited practice and review from the whole question bank',
+        'Every trainer: polynomials and rationals, exponentials and logs, regression, sinusoids, symbolic steps, polar graphs, vectors and matrices',
+        'All free-response questions, unit tests and practice exams',
+        'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
+        'The full dashboard: mastery by unit, topic and mathematical practice',
+      ],
+      rows: [
+        ['Notes, glossary, flashcards and unit sheets', 'yes', 'yes'],
+        ['The formulas and identities to know', 'yes', 'yes'],
+        ['Interactive lessons', 'Unit 1, and algebra lessons', 'Every unit'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Trainers', 'Three', 'Every trainer'],
+        ['Free-response questions and unit tests', 'no', 'yes'],
+        ['Full practice exams', 'One', 'Every one'],
+        ['Cram kit study plan', 'Outline', 'Fitted to your weakest units'],
+        ['Mastery dashboard', 'no', 'By unit, topic and mathematical practice'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
+      ],
+    },
   };
 
   // Which course a page belongs to, for returnCourse().
@@ -490,6 +535,7 @@
     { key: 'apstat', path: '/statistics/' },
     { key: 'apenv', path: '/environmental-science/' },
     { key: 'appsych', path: '/psychology/' },
+    { key: 'apprecalc', path: '/precalculus/' },
   ];
   // courses:end
 

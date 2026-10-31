@@ -4397,5 +4397,408 @@
   "note": "2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
+ "apprecalc": {
+  "name": "AP® Precalculus",
+  "short": "AP® Precalculus",
+  "tabname": "AP® Precalculus",
+  "pill": "AP® Precalculus · free to start",
+  "beta": true,
+  "h1a": "AP® Precalculus,",
+  "h1b": "every function in motion.",
+  "hand": "see every function move",
+  "lede": "Each topic taught from scratch for the May 2027 exam, with the algebra you need placed right before it, then practice that grades typed answers by value and the four free-response questions drilled part by part.",
+  "btn1": "Start the first lesson",
+  "btn2": "All units",
+  "btn3": "Function lab",
+  "trust": [
+   "note",
+   "Every notes page is free, and so are the lessons in Unit 1 and the algebra chapter. 15 practice questions a day are free too."
+  ],
+  "pills": [
+   "Every notes page free",
+   "Unit 1 lessons free",
+   "Unit sheets free to print",
+   "Progress saved on your device"
+  ],
+  "strip_label": "The exam",
+  "strip": [
+   [
+    "Section I",
+    "42 questions",
+    "multiple choice · 105 minutes"
+   ],
+   [
+    "Section II",
+    "4 free response",
+    "written answers · 70 minutes"
+   ],
+   [
+    "The question bank",
+    "Coming soon",
+    "every option explained"
+   ],
+   [
+    "Practice exams",
+    "Full length",
+    "both sections, timed, one free"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Functions, Graphs and Notation",
+   "Skills · Algebra you need. Unit 1 lessons and every notes page are free.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Missed questions come back",
+   "Anything you miss returns when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "A little every day",
+   "Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 15 practice questions a day are free.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "Function Explorer",
+   [
+    "Units",
+    "Algebra you need"
+   ],
+   ""
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with functions, graphs and notation: a lesson that checks what you need first, then walks it one step at a time.",
+    "Start the first lesson →"
+   ],
+   [
+    "Practice what you learned",
+    "Drill a unit, a topic or a mathematical practice, with graph and table sets. 15 a day are free.",
+    "Practice now →"
+   ],
+   [
+    "Sit a practice exam",
+    "Unit tests and full timed practice exams in the May 2027 four-part format.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "units",
+  "map_h": [
+   "4 units,",
+   "in order"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "4 units and 58 topics in the order of the course framework, for the May 2027 exam, plus an \"Algebra you need\" chapter placed where each skill is first needed. Unit 4 is not on the exam; it is here, marked \"beyond the exam\", because many classes teach it. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.",
+   "Practice that grades a typed expression by its value, calculator and no-calculator questions split as the exam splits them, and the three-decimal rule. The four free-response questions (function concepts, non-periodic and periodic modeling, symbolic manipulations) are drilled part by part.",
+   "<b class=\"ink\">The course is being built.</b> Units appear here as each one passes its accuracy review."
+  ],
+  "map_lede": "Each unit's share of the exam, from the course framework. Every notes page is free; the lessons in Unit 1 are free too. The units in framework order, then the algebra you need: functions and intervals, lines, quadratics, polynomial algebra, complex numbers, rational expressions, systems, exponents, right-triangle trigonometry and special triangles, each placed just before the topic that first needs it.",
+  "units": [
+   [
+    "1",
+    "Polynomial and Rational Functions",
+    "14 topics",
+    "30 to 40%",
+    true,
+    false
+   ],
+   [
+    "2",
+    "Exponential and Logarithmic Functions",
+    "15 topics",
+    "25 to 40%",
+    false,
+    false
+   ],
+   [
+    "3",
+    "Trigonometric and Polar Functions",
+    "15 topics",
+    "30 to 35%",
+    false,
+    false
+   ],
+   [
+    "4",
+    "Functions Involving Parameters, Vectors, and Matrices",
+    "14 topics",
+    "Beyond the exam",
+    false,
+    false
+   ],
+   [
+    "S1",
+    "Algebra you need",
+    "11 topics",
+    "Algebra you need",
+    true,
+    true
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Every topic,",
+    "in notes"
+   ],
+   "p": "A free notes page for every topic, in framework order, with a printable sheet for each unit and a glossary of every term.",
+   "chips": [
+    [
+     "Flashcards",
+     ""
+    ],
+    [
+     "Cram kit",
+     ""
+    ],
+    [
+     "Make it specific",
+     ""
+    ],
+    [
+     "Glossary",
+     ""
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Section II",
+   "big": "4",
+   "bigs": "free response questions on the exam",
+   "p": "All four free-response types, with 6-point rubrics and sample answers.",
+   "cta": "Try a free response",
+   "small": "Unit tests and full timed practice exams in the May 2027 four-part format."
+  },
+  "guide": {
+   "eye": "How to use it, every time",
+   "h": "Four steps, every time you study.",
+   "p": "",
+   "items": [
+    "<b>Read the lesson.</b> It checks what you need first, then walks each idea one step at a time, with a graph for every function.",
+    "<b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "<b>Train the hard parts.</b> Transformations, rates of change and concavity, log and trig rewriting, sinusoidal models, each checked step by step.",
+    "<b>Check your mastery.</b> Your dashboard shows it by unit, topic and mathematical practice, and every miss links to its lesson."
+   ],
+   "cta": "Open your dashboard"
+  },
+  "tools_h": "Ten trainers ",
+  "tools_h2": null,
+  "tools_lede": "Drag the parameters of any function and watch every representation move, read concavity from secant slopes, build a sinusoid from a context, rewrite a Q4 expression one graded step at a time, then answer the questions about what you saw. The function lab, rate of change and unit circle trainers are free.",
+  "tools": [
+   [
+    "Function lab",
+    "Drag the parameters; graph, table and formula move together.",
+    "free"
+   ],
+   [
+    "Rate of change",
+    "Secant slopes over equal intervals, and what concavity says.",
+    "free"
+   ],
+   [
+    "Polynomials and rationals",
+    "Zeros, holes, asymptotes and end behavior from the factors.",
+    "Premium"
+   ],
+   [
+    "Exponential and log lab",
+    "Ratios versus differences, logs as inverses, semi-log plots.",
+    "Premium"
+   ],
+   [
+    "Regression lab",
+    "Fit a model, read the residuals, give three decimals.",
+    "Premium"
+   ],
+   [
+    "Unit circle",
+    "Sine, cosine and tangent from the circle, and the graphs unrolling.",
+    "free"
+   ],
+   [
+    "Sinusoid builder",
+    "Amplitude, period, phase shift and midline from a context.",
+    "Premium"
+   ],
+   [
+    "Polar graphs",
+    "Curves drawn as the angle sweeps, linked to r against the angle.",
+    "Premium"
+   ],
+   [
+    "Vectors and matrices",
+    "Parametric motion, vectors and matrices as transformations.",
+    "Premium"
+   ]
+  ],
+  "tools_also": [
+   [
+    "Drills",
+    [
+     "Symbolic steps"
+    ]
+   ]
+  ],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "small",
+    "eye": "Only in AP® Precalculus",
+    "h": "Formulas to know",
+    "p": "No formula sheet is given on the exam: every formula and identity you need, and where it is taught."
+   },
+   {
+    "kind": "small",
+    "eye": "Only in AP® Precalculus",
+    "h": "Algebra you need",
+    "p": "The algebra the course assumes, each skill placed right before the topic that first needs it."
+   }
+  ],
+  "grid": [
+   [
+    "Practice",
+    "Drill a unit, a topic or a mathematical practice, with graph and table sets."
+   ],
+   [
+    "Review",
+    "Missed questions come back when you are about to forget them."
+   ],
+   [
+    "Exams",
+    "Unit tests and full timed practice exams in the May 2027 four-part format."
+   ],
+   [
+    "Free-response practice",
+    "All four free-response types, with 6-point rubrics and sample answers."
+   ],
+   [
+    "Make it specific",
+    "Reasons tied to the given values, limit notation and rate wording, checked against a rubric."
+   ],
+   [
+    "Cram kit",
+    "3-week and 2-week plans to exam day, and timed mixed sets."
+   ],
+   [
+    "Flashcards",
+    "Spaced-repetition cards from the glossary."
+   ],
+   [
+    "Tools",
+    "Trainers and drills, then the questions about what you did."
+   ],
+   [
+    "Dashboard",
+    "Mastery by unit, topic and mathematical practice."
+   ],
+   [
+    "Glossary",
+    "Every term, with a plain definition and where it is taught."
+   ],
+   [
+    "Formulas to know",
+    "No formula sheet is given on the exam: every formula and identity you need, and where it is taught."
+   ],
+   [
+    "Free unit practice tests",
+    "A free sample test for every exam unit, with every option explained."
+   ]
+  ],
+  "sample": {
+   "tags": [
+    "Unit 1 · Polynomial and Rational Functions",
+    "Rates of Change"
+   ],
+   "q": "For f(x) = x², what is the average rate of change of f on the interval [1, 3]?",
+   "opts": [
+    "4",
+    "2",
+    "8",
+    "3"
+   ],
+   "more": "Open the free lesson on rates of change",
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One real question from the bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read the situation"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See the reasoning behind it"
+    ]
+   ],
+   "note": ""
+  },
+  "deal": {
+   "free": [
+    "Every notes page, the glossary, the flashcards and the printable unit sheets",
+    "The cram-kit study plan outline, printable",
+    "Every lesson in Unit 1, and every \"Algebra you need\" lesson",
+    "15 practice or review questions a day from any unit",
+    "One full practice exam",
+    "Three trainers: the function lab, rate of change and the unit circle"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "$17.50",
+   "was": "$25",
+   "note": "Founding price until 31 January 2027. One pass, good through 30 June 2027, the end of the exam season.",
+   "prem": [
+    "Every interactive lesson",
+    "Unlimited practice and review from the whole question bank",
+    "Every trainer: polynomials and rationals, exponentials and logs, regression, sinusoids, symbolic steps, polar graphs, vectors and matrices",
+    "All free-response questions, unit tests and practice exams",
+    "The cram kit: a study plan fitted to your weakest units, and timed mixed sets",
+    "The full dashboard: mastery by unit, topic and mathematical practice"
+   ],
+   "name": "AP® Precalculus"
+  },
+  "foot": [
+   "AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": "This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the Sources page. Spot a mistake?",
+  "trainh": "Ten trainers for what the exam marks hardest.",
+  "hidden": true,
+  "ink": "#11592F",
+  "tint": "#E3F3E8",
+  "bbg": "#0B4A33",
+  "bac": "#8AF0C0",
+  "t1": "AP®",
+  "t2": "Precalculus",
+  "coverhand": "see every function move",
+  "try": {
+   "ok": 0,
+   "title": "Rise over run: 4.",
+   "why": "f(3) − f(1) = 9 − 1 = 8, over 3 − 1 = 2: the slope of the secant line is 4."
+  },
+  "note": "2026 exam",
+  "mapsub": "Pick a unit to open its lessons and practice."
+ },
  "_founder": "Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep."
 }

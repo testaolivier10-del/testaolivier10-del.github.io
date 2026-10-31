@@ -55,7 +55,9 @@
     apstat: { date: '2027-05-11', label: 'AP® Statistics exam (Tue, May 11, 2027)' },
     apenv: { date: '2027-05-13', label: 'AP® Environmental Science exam (Thu, May 13, 2027)' },
     // docs/appsych-research/framework.md section 5: Friday 14 May 2027, Session 2.
-    appsych: { date: '2027-05-14', label: 'AP® Psychology exam (Fri, May 14, 2027)' }
+    appsych: { date: '2027-05-14', label: 'AP® Psychology exam (Fri, May 14, 2027)' },
+    // docs/apprecalc-research/framework.md section 5: Tuesday 11 May 2027, Session 1.
+    apprecalc: { date: '2027-05-11', label: 'AP® Precalculus exam (Tue, May 11, 2027)' }
   };
   function key(subject){ return (subject || 'levl') + '_exam_date'; }
   function stored(subject){

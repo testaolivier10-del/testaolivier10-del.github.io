@@ -108,7 +108,7 @@
      mounts itself above Review and the dashboard (#app[data-slug="review"] or
      "dashboard") and shows only when something is flagged. Flagged questions
      are a Review job, so Practice no longer lists them (Olivier, 2026-10-26). */
-  var DIRS = { 'anatomy-physiology': 'anp', bio: 'apbio', chem: 'apchem', physics: 'apphys', calculus: 'apcalc', statistics: 'apstat', 'environmental-science': 'apenv', psychology: 'appsych' };
+  var DIRS = { 'anatomy-physiology': 'anp', bio: 'apbio', chem: 'apchem', physics: 'apphys', calculus: 'apcalc', statistics: 'apstat', 'environmental-science': 'apenv', psychology: 'appsych', precalculus: 'apprecalc' };
   function dashCard(){
     var app = document.querySelector('#app[data-slug="dashboard"], #app[data-slug="review"]');
     var course = DIRS[(location.pathname.split('/').filter(Boolean).slice(-2, -1)[0]) || ''];

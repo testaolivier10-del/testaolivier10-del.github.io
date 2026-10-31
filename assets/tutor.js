@@ -45,6 +45,7 @@
     { key: 'apstat', dir: 'statistics' },
     { key: 'apenv', dir: 'environmental-science' },
     { key: 'appsych', dir: 'psychology' },
+    { key: 'apprecalc', dir: 'precalculus' },
   ];
   // courses:end
   function courseKey(){
@@ -163,6 +164,14 @@
       .catch(function(){ return []; });
   }
 
+  // AP® Precalculus's, the same way (scripts/build-apprecalc.mjs).
+  function pcalcPages(){
+    return fetch('/precalculus/assets/notes-index.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(list){ return list.length ? list.concat([{ file: '/precalculus/glossary.html', title: 'Glossary', data: '/precalculus/assets/glossary.json' }]) : list; })
+      .catch(function(){ return []; });
+  }
+
   function resolvePages(){
     var k = courseKey();
     if(k === 'ochem') return ochemPages();
@@ -174,6 +183,7 @@
     if(k === 'apstat') return statPages();
     if(k === 'apenv') return envPages();
     if(k === 'appsych') return psyPages();
+    if(k === 'apprecalc') return pcalcPages();
     return Promise.resolve(NREMT_PAGES);
   }
 
@@ -189,6 +199,7 @@
     if(k === 'apstat') return '<a href="/statistics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apenv') return '<a href="/environmental-science/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'appsych') return '<a href="/psychology/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
+    if(k === 'apprecalc') return '<a href="/precalculus/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     return '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
   }
 
@@ -1121,6 +1132,12 @@
       'How do I write an operational definition?',
       'What is the difference between negative reinforcement and punishment?',
       'How do I cite a source on the evidence-based question?'
+    ],
+    apprecalc: [
+      'How do I find a hole versus a vertical asymptote?',
+      'How do I write end behavior in limit notation?',
+      'What does concave up say about the average rates of change?',
+      'How do I find the period and phase shift of a sinusoid?'
     ]
   };
 
@@ -1134,7 +1151,8 @@
     apcalc: 'Ask me anything from this course — every published Calculus notes page and the glossary are indexed. I can define a term, explain a derivative or an integral step by step, or point you at the page it came from.',
     apstat: 'Ask me anything from this course: every published Statistics notes page and the glossary are indexed. I can define a term, explain a calculation or a conclusion step by step, or point you at the page it came from.',
     apenv: 'Ask me anything from this course: every published Environmental Science notes page and the glossary are indexed. I can define a term, explain a calculation or a cause-and-effect chain step by step, or point you at the page it came from.',
-    appsych: 'Ask me anything from this course: every published Psychology notes page and the glossary are indexed. I can define a term, apply a concept to a situation, or point you at the page it came from.'
+    appsych: 'Ask me anything from this course: every published Psychology notes page and the glossary are indexed. I can define a term, apply a concept to a situation, or point you at the page it came from.',
+    apprecalc: 'Ask me anything from this course: every published Precalculus notes page and the glossary are indexed. I can define a term, work through a function step by step, or point you at the page it came from.'
   };
 
   function Tutor(mount, opts){

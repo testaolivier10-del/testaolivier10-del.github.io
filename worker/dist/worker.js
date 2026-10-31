@@ -1000,6 +1000,9 @@ const PASSES = {
   'env-2027':       { course: 'apenv', until: '2027-06-30T23:59:59-10:00' },
   // AP® Psychology mirrors AP® Environmental Science (docs/appsych-spec.md decision 3).
   'psy-2027':       { course: 'appsych', until: '2027-06-30T23:59:59-10:00' },
+  // AP® Precalculus mirrors AP® Calculus AB (docs/apprecalc-spec.md decision 3).
+  // Not sold until "pcalc-2027" is in the POLAR_PRODUCTS setting (owner checklist).
+  'pcalc-2027':     { course: 'apprecalc', until: '2027-06-30T23:59:59-10:00' },
 };
 
 const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty.call(PASSES, id);
@@ -1019,7 +1022,7 @@ function passTerms(pass) {
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
-const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology' };
+const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus' };
 const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
@@ -1681,7 +1684,7 @@ async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology' };
+const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology', apprecalc: 'AP® Precalculus' };
 
 const ENDING_NOTICE_DAYS = 3;
 
@@ -3000,6 +3003,18 @@ const COURSE_RULES = {
     '- Teach current science honestly: say when a classic study has failed to replicate or is debated; use the DSM-5-TR for disorders; never teach learning styles, left-brained or right-brained people, or the 10% brain myth as fact.',
     '- Mental health is taught as science, never as a diagnosis of the student or anyone they know. Use person-first, respectful language. If the student seems to be in distress, encourage them to talk to a trusted adult, and in the US to call or text 988.',
     '- Do not state a value that is not in the passages; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
+  ].join('\n'),
+  apprecalc: [
+    '',
+    'This student is a high-school student preparing for the AP® Precalculus exam (May 2027 format). Additional guidance:',
+    '- Explain at a high-school level, from the basics up, and connect every function to its representations: graph, table, formula and words.',
+    '- Write math so it reads plainly in text: f(x), x^2, sqrt(x), log_2(x), ln(x), sin^(-1)(x). Work in radians.',
+    '- Tie every reason to the given function or values ("f(1) = f(3) = 5, so f is not one-to-one"), never only a rule. Write end behavior and asymptotes in limit notation.',
+    '- Say "the rate of change is increasing" or "decreasing", not the calculus phrase "increasing at a decreasing rate". The average rate of change on an interval is the slope of its secant line. Do not use derivatives.',
+    '- Calculator answers are correct to three decimal places, with no rounding partway. Without a calculator, give exact values and combine to one logarithm or one trigonometric term when asked; give every solution in the interval.',
+    '- Unit 4 (parametric functions, vectors and matrices) is not on the exam; say so if asked. Do not state a value that is not in the passages; say it is not in their material instead.',
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
   ].join('\n'),
