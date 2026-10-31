@@ -1,0 +1,12 @@
+{
+ "inverse-trig-restrict": {
+  "file": "figures/inverse-trig-restrict.svg",
+  "ext": "svg",
+  "w": 520,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Cosine restricted to [0, pi], falling from (0, 1) to (pi, -1), and its reflection across the line y = x, the graph of inverse cosine, falling from (-1, pi) to (1, 0)."
+ }
+}

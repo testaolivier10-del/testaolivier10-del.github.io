@@ -1,0 +1,66 @@
+{
+ "topic": "model-selection",
+ "hook": "A city counts riders on a new bike-share each week. Should the planners expect riders to keep rising by the same number each week, to rise and then level off, or to rise and fall with the seasons? The model they pick decides the budget.",
+ "prereq": [
+  {
+   "q": "Outputs over equal input steps are $1, 4, 9, 16$. What are the second differences?",
+   "options": [
+    "$2, 2$",
+    "$3, 5, 7$",
+    "$1, 1$",
+    "$4, 4$"
+   ],
+   "correct": 0,
+   "why": "First differences: $3, 5, 7$. Second differences: $2, 2$.",
+   "review": "linear-quadratic-rates"
+  },
+  {
+   "q": "What is the degree of $p(x) = x(x - 2)(x + 5)$?",
+   "options": [
+    "$3$",
+    "$2$",
+    "$1$",
+    "$5$"
+   ],
+   "correct": 0,
+   "why": "Three linear factors multiply to degree $3$.",
+   "review": "polynomial-rates"
+  }
+ ],
+ "figure": {
+  "figure": "model-selection-symmetric",
+  "caption": "Data with one highest point and matching values on each side suggest a quadratic model, here $y = -x^2 + 4x + 2$."
+ },
+ "chain": [
+  {
+   "cause": "Look at the changes in output over equal input steps",
+   "effect": "constant first differences suggest linear; constant second differences suggest quadratic"
+  },
+  {
+   "cause": "Look at the context",
+   "effect": "area suggests degree 2, volume degree 3, different rules on different intervals suggest piecewise"
+  },
+  {
+   "cause": "Ask what the context allows",
+   "effect": "restrict the domain and range, and state the assumptions the model makes"
+  }
+ ],
+ "ideas": [
+  "A function model is chosen from the data (the pattern of changes) and from the context (what the quantity measures).",
+  "Linear: constant rate of change. Quadratic: the rate of change changes at a constant rate, or one extremum with symmetry. Piecewise: different behavior on different intervals.",
+  "A model is only trusted for inputs the context allows: no negative times, no heights below the ground, no cuts bigger than the sheet."
+ ],
+ "misconception": {
+  "wrong": "The best model is the one that passes through every data point.",
+  "right": "The best model matches the pattern in the data and makes sense in the context; an exact fit can bend in ways the situation does not support."
+ },
+ "check": [
+  "pcalc-model-selection-1",
+  "pcalc-model-selection-2",
+  "pcalc-model-selection-3",
+  "pcalc-model-selection-6",
+  "pcalc-model-selection-10",
+  "pcalc-model-selection-12"
+ ],
+ "summary": "Choose a model type from the changes over equal input steps and from the context, then state the domain and range the context allows and the assumptions the model makes."
+}

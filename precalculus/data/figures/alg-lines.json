@@ -1,0 +1,12 @@
+{
+ "alg-lines-slope": {
+  "file": "figures/alg-lines-slope.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The line through (1, 2) and (4, 8). A dashed horizontal run of 3 goes from (1, 2) to (4, 2) and a dashed vertical rise of 6 goes up to (4, 8), so the slope is 6/3 = 2."
+ }
+}

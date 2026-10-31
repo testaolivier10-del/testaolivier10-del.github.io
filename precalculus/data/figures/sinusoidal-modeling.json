@@ -1,0 +1,42 @@
+{
+ "sinusoidal-modeling-ferris": {
+  "file": "figures/sinusoidal-modeling-ferris.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a Ferris wheel on a support above the ground, turning counterclockwise, with a seat S at the lowest point of the wheel, which is above the ground. Right: an unscaled graph of h(t), the height of the seat above the ground, for one turn. The graph starts at its lowest point F, rises through G to its highest point J, falls through K and ends at the lowest point M. G and K are at the height of the center of the wheel. The axes have no scale."
+ },
+ "sinusoidal-modeling-tide": {
+  "file": "figures/sinusoidal-modeling-tide.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An unscaled graph of W(t), the depth of water at a dock, for t from 2 to 14 hours after midnight. The graph starts at a high point P, falls through Q to a low point R, rises through S and ends at the next high point T. Q and S are halfway between the high and low depths. The axes have no scale."
+ },
+ "sinusoidal-modeling-spring": {
+  "file": "figures/sinusoidal-modeling-spring.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a weight hanging from a spring attached to a beam, above a floor, bobbing up and down. Right: an unscaled graph of h(t), the height of the bottom of the weight above the floor, for one cycle. The graph starts at its highest point F, falls through G to its lowest point J, rises through K and ends at the highest point M. G and K are halfway between the highest and lowest heights. The axes have no scale."
+ },
+ "sinusoidal-modeling-greenhouse": {
+  "file": "figures/sinusoidal-modeling-greenhouse.svg",
+  "ext": "svg",
+  "w": 620,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An unscaled graph of T(t), the temperature in a greenhouse, in degrees Celsius, t hours after midnight, for t from 4 to 28. The graph starts at a lowest point P, rises through Q to a highest point R, falls through S and ends at the next lowest point U. Q and S are halfway between the lowest and highest temperatures. The axes have no scale."
+ }
+}

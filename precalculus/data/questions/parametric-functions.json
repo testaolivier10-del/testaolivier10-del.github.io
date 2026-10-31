@@ -1,0 +1,481 @@
+{
+ "stimuli": {
+  "parametric-functions-s1": {
+   "kind": "graph",
+   "title": "The path of $f(t) = (t^2 - 4, t^3 - 4t)$",
+   "figure": "parametric-functions-loop",
+   "text": "<p>The path is traced for $-2.5 \\le t \\le 2.5$. Arrows show the direction of travel as $t$ increases.</p>"
+  },
+  "parametric-functions-s2": {
+   "kind": "table",
+   "title": "A drone flight log",
+   "table": {
+    "caption": "Position of a drone at selected times: x(t) is meters east of the launch pad and y(t) is meters north of it",
+    "cols": [
+     "$t$ (seconds)",
+     "0",
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "rows": [
+     [
+      "$x(t)$ (meters)",
+      "2",
+      "5",
+      "6",
+      "5",
+      "2"
+     ],
+     [
+      "$y(t)$ (meters)",
+      "1",
+      "2",
+      "4",
+      "7",
+      "11"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-parametric-functions-1",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-functions-s1",
+   "q": "Use the formula for $f$. At which point is the path when $t = 1$?",
+   "type": "single",
+   "options": [
+    "$(-3, -3)$",
+    "$(-3, 3)$",
+    "$(-5, -3)$",
+    "$(-3, -4)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x(1) = (1)^2 - 4 = -3$ and $y(1) = (1)^3 - 4(1) = -3$, so the point is $(-3, -3)$, below the $x$-axis on the loop.",
+    "options": [
+     "Both coordinates come from $t = 1$: $x(1) = -3$ and $y(1) = -3$.",
+     "This is the point for $t = -1$, where $y(-1) = -1 + 4 = 3$.",
+     "$x(1) = 1 - 4 = -3$; the sign of $t^2$ was flipped to get $-5$.",
+     "$y(t) = t^3 - 4t$, so $y(1) = 1 - 4 = -3$; this used $t^3 - 4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-2",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-functions-s1",
+   "q": "The path goes through the origin twice. For which values of the parameter is the point at the origin?",
+   "type": "single",
+   "options": [
+    "$t = -2$ and $t = 2$",
+    "$t = 0$ and $t = 2$",
+    "$t = -2$, $t = 0$ and $t = 2$",
+    "Just $t = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At the origin both coordinates are $0$. $x(t) = t^2 - 4 = 0$ gives $t = -2$ or $t = 2$, and $y(-2) = -8 + 8 = 0$, $y(2) = 8 - 8 = 0$. Both work.",
+    "options": [
+     "Both $t = -2$ and $t = 2$ make $x(t) = 0$ and $y(t) = 0$.",
+     "At $t = 0$ the point is $(-4, 0)$, the left end of the loop.",
+     "$t = 0$ is extra: $x(0) = -4$, so the point is $(-4, 0)$ then.",
+     "$x(0) = -4$, so $t = 0$ gives $(-4, 0)$, not the origin."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-3",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-functions-s1",
+   "q": "As $t$ increases through $0$, the point passes $(-4, 0)$. Which way is it moving there?",
+   "type": "single",
+   "options": [
+    "Down, from $(-3, 3)$ toward $(-3, -3)$",
+    "Up, from $(-3, -3)$ toward $(-3, 3)$",
+    "Left, away from the origin along the $x$-axis",
+    "Right, back toward the origin along the $x$-axis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Just before $t = 0$ the point is near $(-3, 3)$ (at $t = -1$) and just after it is near $(-3, -3)$ (at $t = 1$). The arrows on the loop point down at $(-4, 0)$.",
+    "options": [
+     "From $t = -1$ to $t = 1$ the point goes from $(-3, 3)$ to $(-3, -3)$: downward.",
+     "This reverses the order; $(-3, 3)$ comes first because $-1 < 1$.",
+     "$(-4, 0)$ is the leftmost point: $x(t) = t^2 - 4$ is smallest at $t = 0$, so the point turns from moving left to moving right there.",
+     "The point is turning around in $x$ at $(-4, 0)$; its clear motion there is downward."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-4",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-functions-s1",
+   "q": "Why is this path not the graph of a function $y = g(x)$?",
+   "type": "single",
+   "options": [
+    "At $t = -1$ and $t = 1$, $x = -3$ but $y$ is $3$ and $-3$: one $x$, two $y$-values",
+    "It crosses itself at the origin, which the graph of a function of $x$ does not do",
+    "The $x$-coordinates are negative for $-2 < t < 2$",
+    "$y(t) = t^3 - 4t$ is a cubic in $t$, so $y$ is not a function of $x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A function of $x$ gives one $y$ for each $x$. Here $x(-1) = x(1) = -3$ while $y(-1) = 3$ and $y(1) = -3$, so $x = -3$ has two $y$-values.",
+    "options": [
+     "Specific values settle it: $x = -3$ comes with $y = 3$ and $y = -3$.",
+     "Passing the same point twice gives one $y$ for that $x$, which a function allows. The problem is an $x$ with two different $y$-values.",
+     "Negative $x$-values are fine for a function; the issue is two outputs for one input.",
+     "Cubics in $t$ can trace graphs of functions of $x$, for example $(t, t^3)$. Use specific points instead."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-5",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-functions-s1",
+   "q": "For which values of $t$ in $[-2.5, 2.5]$ is the point moving to the left?",
+   "type": "single",
+   "options": [
+    "$-2.5 < t < 0$",
+    "$0 < t < 2.5$",
+    "$-2 < t < 2$",
+    "$-2.5 < t < -2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The point moves left where $x(t) = t^2 - 4$ is decreasing. A parabola opening up decreases to the left of its vertex, so $x$ decreases for $-2.5 < t < 0$ and increases after.",
+    "options": [
+     "$x(t) = t^2 - 4$ falls from $2.25$ to $-4$ as $t$ goes from $-2.5$ to $0$.",
+     "For $t > 0$, $x(t)$ increases, so the point moves right.",
+     "This is when the point is on the loop; it moves left for half of that time and right for the other half.",
+     "The point keeps moving left after $t = -2$, all the way to $t = 0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-6",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-functions-s2",
+   "q": "Where is the drone at $t = 3$ seconds?",
+   "type": "single",
+   "options": [
+    "$(5, 7)$",
+    "$(7, 5)$",
+    "$(5, 4)$",
+    "$(3, 5)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read both rows in the column $t = 3$: $x(3) = 5$ and $y(3) = 7$. The point is $(x(3), y(3)) = (5, 7)$, 5 meters east and 7 meters north.",
+    "options": [
+     "$(x(3), y(3)) = (5, 7)$.",
+     "The coordinates are swapped; $x$ comes first.",
+     "$4$ is $y(2)$, from the wrong column.",
+     "$3$ is the time, not a coordinate."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-7",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-functions-s2",
+   "q": "Between which two readings does the drone first move west?",
+   "type": "single",
+   "options": [
+    "Between $t = 2$ and $t = 3$",
+    "Between $t = 1$ and $t = 2$",
+    "Between $t = 3$ and $t = 4$",
+    "Between $t = 0$ and $t = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "West means $x$ decreases. $x$ goes $2, 5, 6, 5, 2$: it first falls from $6$ to $5$, between $t = 2$ and $t = 3$.",
+    "options": [
+     "$x$ drops from $6$ to $5$ here: the first move west.",
+     "$x$ rises from $5$ to $6$ here, so the drone moves east.",
+     "The drone does move west here, but it already did between $t = 2$ and $t = 3$.",
+     "$x$ rises from $2$ to $5$, so this move is east."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-8",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-functions-s2",
+   "q": "The drone is at $x = 5$ at two different times. What does that tell you?",
+   "type": "single",
+   "options": [
+    "At $x = 5$ the heights are $2$ and $7$, so the path is not the graph of a function of $x$",
+    "The drone was at one and the same point at $t = 1$ and again at $t = 3$",
+    "The drone hovered in place from $t = 1$ to $t = 3$ before it moved west",
+    "$x(t)$ is not a function of $t$, since two times share the output $5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $t = 1$ the drone is at $(5, 2)$ and at $t = 3$ at $(5, 7)$: one $x$-value, two $y$-values. The path in the $xy$-plane fails to be the graph of a function of $x$, while $x(t)$ and $y(t)$ are still functions of $t$.",
+    "options": [
+     "$(5, 2)$ and $(5, 7)$ share $x = 5$ with different $y$.",
+     "The $y$-values differ ($2$ and $7$), so they are different points.",
+     "The drone went east to $x = 6$ and back; it did not stay put.",
+     "Each $t$ has one $x(t)$, so $x(t)$ is a function of $t$; repeated outputs are allowed."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-9",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-functions-s2",
+   "q": "How many meters north does the drone move from $t = 1$ to $t = 4$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 9,
+    "unit": "meters",
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "That starts from $t = 0$. Use $y(4) - y(1) = 11 - 2$."
+     },
+     {
+      "value": 3,
+      "why": "That is the change in time, $4 - 1$. North is the $y$-row: $11 - 2 = 9$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "North is the $y$-row: $y(4) - y(1) = 11 - 2 = 9$ meters."
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-10",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In a parametric function $f(t) = (x(t), y(t))$, what does the parameter $t$ do?",
+   "type": "single",
+   "options": [
+    "Each value of $t$ picks out one point $(x(t), y(t))$",
+    "$t$ is the slope of the curve at the point it produces",
+    "$t$ is the $x$-coordinate of each point",
+    "$t$ is the distance from the origin"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The parameter is the input: each $t$ gives one point, and increasing $t$ sets the order of the points.",
+    "options": [
+     "$t$ goes in, the point $(x(t), y(t))$ comes out.",
+     "A slope compares changes in $y$ and $x$; $t$ is the input that produces both.",
+     "The $x$-coordinate is $x(t)$, which usually differs from $t$.",
+     "The distance from the origin is $\\sqrt{x(t)^2 + y(t)^2}$, not $t$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-11",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A curve is given by $x(t) = 2t + 1$ and $y(t) = t^2$. Write $y$ as a function of $x$.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "x"
+    ],
+    "mode": "exact",
+    "answer": "((x - 1)/2)^2",
+    "domain": [
+     -5,
+     5
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "((x + 1)/2)^2",
+      "why": "To solve $x = 2t + 1$ for $t$, subtract 1: $t = \\frac{x - 1}{2}$."
+     },
+     {
+      "expr": "(2x + 1)^2",
+      "why": "This puts $x(t)$ inside $y$. Solve for $t$ first, $t = \\frac{x - 1}{2}$, then square it."
+     },
+     {
+      "expr": "(x - 1)^2/2",
+      "why": "Square the whole quotient: $\\left(\\frac{x - 1}{2}\\right)^2 = \\frac{(x - 1)^2}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Solve $x = 2t + 1$ for $t$: $t = \\frac{x - 1}{2}$. Substitute into $y = t^2$: $y = \\left(\\frac{x - 1}{2}\\right)^2$."
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-12",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A curve is given by $x(t) = 3 - t$ and $y(t) = t^2 + 1$. What is $y$ at the point where the curve crosses the $y$-axis?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 10,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is $y(0)$. On the $y$-axis $x = 0$, so $3 - t = 0$ and $t = 3$."
+     },
+     {
+      "value": 3,
+      "why": "$t = 3$ is the parameter value; the question asks for $y(3) = 3^2 + 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "On the $y$-axis, $x = 0$: $3 - t = 0$, so $t = 3$. Then $y(3) = (3)^2 + 1 = 10$."
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-13",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Compare $g(t) = (t, t^2)$ for $0 \\le t \\le 2$ with $h(s) = (2s, 4s^2)$ for $0 \\le s \\le 1$. Which statement is true?",
+   "type": "single",
+   "options": [
+    "Both trace $y = x^2$ from $(0, 0)$ to $(2, 4)$, in the same direction",
+    "$h$ traces the parabola $y = 4x^2$, a different curve",
+    "$h$ traces the same parabola in the opposite direction",
+    "$g$ and $h$ are both at $(1, 1)$ when the parameter is $1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $h$, $x = 2s$ and $y = 4s^2 = (2s)^2 = x^2$. As $s$ goes from $0$ to $1$, $x$ goes from $0$ to $2$, the same points and the same direction as $g$.",
+    "options": [
+     "Both give $y = x^2$ for $0 \\le x \\le 2$, starting at $(0, 0)$.",
+     "$4s^2 = (2s)^2 = x^2$, so the parabola is $y = x^2$.",
+     "Both start at $(0, 0)$ and end at $(2, 4)$, so they go the same way.",
+     "$h(1) = (2, 4)$; $h$ reaches $(1, 1)$ at $s = \\frac{1}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-14",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for sketching a parametric curve in order.",
+   "type": "order",
+   "options": [
+    "Choose several values of $t$ in the interval",
+    "Compute $x(t)$ and $y(t)$ for each value",
+    "Plot each point $(x(t), y(t))$",
+    "Join the points in order of increasing $t$ and add arrows"
+   ],
+   "why": {
+    "correct": "Values of $t$ first, then the coordinates, then the points, then the curve joined in the order the parameter gives, with arrows for the direction."
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-15",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A curve $f(t) = (x(t), y(t))$ is changed to $g(t) = (x(t) + 2, y(t))$. Predict each change.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The $x$-coordinate of the point for each $t$",
+     "answer": "up",
+     "why": "Every $x$-coordinate gains 2, so the whole curve slides 2 units right."
+    },
+    {
+     "name": "The $y$-coordinate of the point for each $t$",
+     "answer": "none",
+     "why": "$y(t)$ is unchanged, so every point keeps its height."
+    },
+    {
+     "name": "The number of times the curve crosses itself",
+     "answer": "none",
+     "why": "A slide moves every point the same way, so crossings stay crossings and no new ones appear."
+    }
+   ],
+   "why": {
+    "correct": "Adding 2 to $x(t)$ shifts the curve right by 2 and changes nothing else."
+   }
+  },
+  {
+   "id": "pcalc-parametric-functions-16",
+   "unit": "unit-4",
+   "topic": "parametric-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which function traces the same path as $f(t) = (t, t^2)$, $-1 \\le t \\le 2$, but in the opposite direction?",
+   "type": "single",
+   "options": [
+    "$(-t, t^2)$ for $-2 \\le t \\le 1$",
+    "$(t, -t^2)$ for $-1 \\le t \\le 2$",
+    "$(-t, t^2)$ for $-1 \\le t \\le 2$",
+    "$(t^2, t)$ for $-1 \\le t \\le 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $(-t, t^2)$, $y = t^2 = (-t)^2 = x^2$. With $-2 \\le t \\le 1$, $x = -t$ runs from $2$ down to $-1$, so the path goes from $(2, 4)$ to $(-1, 1)$: the same points, backward.",
+    "options": [
+     "It starts at $(2, 4)$ and ends at $(-1, 1)$, the reverse of $f$.",
+     "$y = -x^2$ is the parabola reflected across the $x$-axis, a different path.",
+     "With $-1 \\le t \\le 2$, $x = -t$ runs from $1$ to $-2$: a different piece of the parabola.",
+     "Swapping the coordinates gives $x = y^2$, a parabola opening right."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,401 @@
+{
+ "stimuli": {
+  "sine-cosine-curves-s1": {
+   "kind": "graph",
+   "title": "The graph of $y = \\cos\\theta$",
+   "plot": {
+    "label": "Graph of y = cos theta for theta from 0 to 2 pi: it starts at 1, falls through zero at pi over 2 to -1 at pi, and rises through zero at 3 pi over 2 back to 1 at 2 pi",
+    "x": [-0.3, 6.7],
+    "y": [-1.5, 1.5],
+    "piX": true,
+    "yStep": 0.5,
+    "xLabel": "θ",
+    "yLabel": "y",
+    "curves": [
+     { "fn": "cos(x)", "domain": [0, 6.283185307179586], "cls": "s1", "label": "y = cos θ" }
+    ]
+   }
+  },
+  "sine-cosine-curves-s2": {
+   "kind": "table",
+   "title": "Exact values of $\\sin\\theta$",
+   "table": {
+    "caption": "Values of $\\sin\\theta$ at multiples of $\\frac{\\pi}{6}$ from $0$ to $\\pi$",
+    "cols": ["$\\theta$", "$0$", "$\\frac{\\pi}{6}$", "$\\frac{\\pi}{3}$", "$\\frac{\\pi}{2}$", "$\\frac{2\\pi}{3}$", "$\\frac{5\\pi}{6}$", "$\\pi$"],
+    "rows": [["$\\sin\\theta$", "$0$", "$\\frac{1}{2}$", "$\\frac{\\sqrt{3}}{2}$", "$1$", "$\\frac{\\sqrt{3}}{2}$", "$\\frac{1}{2}$", "$0$"]]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-sine-cosine-curves-1",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sine-cosine-curves-s1",
+   "q": "On which interval is $\\cos\\theta$ decreasing?",
+   "type": "single",
+   "options": ["$(0, \\pi)$", "$(\\pi, 2\\pi)$", "$\\left(\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right)$", "$\\left(\\frac{\\pi}{2}, 2\\pi\\right)$"],
+   "correct": 0,
+   "why": {
+    "correct": "The graph falls from $1$ at $\\theta = 0$ to $-1$ at $\\theta = \\pi$, then rises.",
+    "options": [
+     "From the highest point to the lowest point: $(0, \\pi)$.",
+     "On $(\\pi, 2\\pi)$ the graph rises from $-1$ back to $1$.",
+     "This is where the graph is below the axis, not where it falls; it rises on $\\left(\\pi, \\frac{3\\pi}{2}\\right)$.",
+     "Cosine falls on $\\left(\\frac{\\pi}{2}, \\pi\\right)$ but rises on $(\\pi, 2\\pi)$, so it is not decreasing on this whole interval."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-2",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sine-cosine-curves-s1",
+   "q": "On which interval is the graph of $y = \\cos\\theta$ concave up?",
+   "type": "single",
+   "options": ["$\\left(\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right)$", "$\\left(0, \\frac{\\pi}{2}\\right)$", "$(\\pi, 2\\pi)$", "$(0, \\pi)$"],
+   "correct": 0,
+   "why": {
+    "correct": "The graph bends upward where it is below the axis, between the zeros $\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$.",
+    "options": [
+     "Between the two zeros, around the lowest point, the graph is concave up.",
+     "Near the highest point $(0, 1)$ the graph bends downward: concave down.",
+     "This is where cosine increases. On $\\left(\\frac{3\\pi}{2}, 2\\pi\\right)$ it is concave down again.",
+     "This is where cosine decreases; the bend changes at $\\frac{\\pi}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-3",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sine-cosine-curves-s1",
+   "q": "What is the average rate of change of $\\cos\\theta$ on $\\left[0, \\frac{\\pi}{2}\\right]$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-2/pi",
+    "mistakes": [
+     { "value": -1, "why": "That is the change in output, $0 - 1$. Divide by the change in input, $\\frac{\\pi}{2}$." },
+     { "value": "-pi/2", "why": "That divides the input change by the output change. Use $\\frac{\\cos(\\pi/2) - \\cos 0}{\\pi/2 - 0}$." },
+     { "value": "2/pi", "why": "Cosine falls from 1 to 0, so the rate is negative." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{\\cos(\\pi/2) - \\cos 0}{\\pi/2 - 0} = \\frac{0 - 1}{\\pi/2} = -\\frac{2}{\\pi}$, the slope of the secant line through $(0, 1)$ and $\\left(\\frac{\\pi}{2}, 0\\right)$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-4",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sine-cosine-curves-s1",
+   "q": "The average rates of change of $\\cos\\theta$ on $\\left[0, \\frac{\\pi}{4}\\right]$ and on $\\left[\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right]$ are about $-0.373$ and $-0.900$. Which describes $\\cos\\theta$ on $\\left(0, \\frac{\\pi}{2}\\right)$?",
+   "type": "single",
+   "options": [
+    "Decreasing, and the rate of change is decreasing",
+    "Decreasing, and the rate of change is increasing",
+    "Increasing, and the rate of change is decreasing",
+    "Decreasing, and the rate of change is constant"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both rates are negative, so cosine is decreasing. Over equal intervals the rate goes from $-0.373$ to $-0.900$, a smaller number, so the rate of change is decreasing: concave down.",
+    "options": [
+     "Negative rates that get more negative: decreasing, concave down.",
+     "$-0.900 < -0.373$, so the rate went down, not up.",
+     "The rates are negative, so the outputs fall.",
+     "The two rates differ, so the rate is not constant."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-5",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "sine-cosine-curves-s1",
+   "q": "For which $\\theta$ in $[0, 2\\pi]$ does $\\cos\\theta$ take its least value?",
+   "type": "single",
+   "options": ["$\\theta = \\pi$", "$\\theta = \\frac{3\\pi}{2}$", "$\\theta = 0$", "$\\theta = \\frac{\\pi}{2}$"],
+   "correct": 0,
+   "why": {
+    "correct": "The lowest point of the graph is $(\\pi, -1)$: the point on the unit circle is at $(-1, 0)$.",
+    "options": [
+     "$\\cos\\pi = -1$, the least value.",
+     "$\\cos\\frac{3\\pi}{2} = 0$; that is where sine is least.",
+     "$\\cos 0 = 1$, the greatest value.",
+     "$\\cos\\frac{\\pi}{2} = 0$, a zero."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-6",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sine-cosine-curves-s2",
+   "q": "Use the table. What is the average rate of change of $\\sin\\theta$ on $\\left[0, \\frac{\\pi}{6}\\right]$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "3/pi",
+    "mistakes": [
+     { "value": "1/2", "why": "That is the change in output only. Divide by the change in input, $\\frac{\\pi}{6}$." },
+     { "value": "pi/3", "why": "That is the input change over the output change, upside down." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{\\sin(\\pi/6) - \\sin 0}{\\pi/6 - 0} = \\frac{1/2}{\\pi/6} = \\frac{3}{\\pi}$, about $0.955$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-7",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sine-cosine-curves-s2",
+   "q": "Use the table. What is the average rate of change of $\\sin\\theta$ on $\\left[\\frac{\\pi}{2}, \\pi\\right]$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-2/pi",
+    "mistakes": [
+     { "value": "2/pi", "why": "Sine falls from 1 to 0 on this interval, so the rate is negative." },
+     { "value": -1, "why": "That is the change in output; divide by the input change $\\frac{\\pi}{2}$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{\\sin\\pi - \\sin(\\pi/2)}{\\pi - \\pi/2} = \\frac{0 - 1}{\\pi/2} = -\\frac{2}{\\pi}$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-8",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "sine-cosine-curves-s2",
+   "q": "The average rates of change of $\\sin\\theta$ on $\\left[0, \\frac{\\pi}{6}\\right]$, $\\left[\\frac{\\pi}{6}, \\frac{\\pi}{3}\\right]$ and $\\left[\\frac{\\pi}{3}, \\frac{\\pi}{2}\\right]$ are about $0.955$, $0.699$ and $0.256$. What do they show about the graph of $y = \\sin\\theta$ on $\\left[0, \\frac{\\pi}{2}\\right]$?",
+   "type": "single",
+   "options": [
+    "Increasing and concave down",
+    "Increasing and concave up",
+    "Decreasing and concave down",
+    "Increasing at a constant rate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The rates are positive, so sine is increasing; over equal intervals they shrink, so the rate of change of sine is decreasing and the graph is concave down.",
+    "options": [
+     "Positive and shrinking rates over equal intervals.",
+     "Concave up would need the rates to grow from one interval to the next.",
+     "The rates are positive, so sine is increasing there.",
+     "The rates change from $0.955$ to $0.256$; a constant rate would give equal ones."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-9",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sine-cosine-curves-s2",
+   "q": "The table shows $\\sin\\frac{\\pi}{6} = \\sin\\frac{5\\pi}{6}$ and $\\sin\\frac{\\pi}{3} = \\sin\\frac{2\\pi}{3}$. Which statement explains this pattern?",
+   "type": "single",
+   "options": [
+    "The points at $\\theta$ and $\\pi - \\theta$ on the unit circle have the same height",
+    "Sine has period $\\frac{2\\pi}{3}$",
+    "The points at $\\theta$ and $\\theta + \\pi$ on the unit circle have the same height",
+    "Sine increases on $[0, \\pi]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The points at $\\theta$ and $\\pi - \\theta$ are mirror images across the $y$-axis, so they share a $y$-coordinate: $\\sin(\\pi - \\theta) = \\sin\\theta$.",
+    "options": [
+     "Mirror images across the $y$-axis share a height.",
+     "The period of sine is $2\\pi$. Equal values do not by themselves mean a period.",
+     "Half a turn sends a point to the opposite side, where the height changes sign.",
+     "Sine rises only until $\\frac{\\pi}{2}$, then falls; equal values on both sides show that."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-10",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the range of $y = \\sin\\theta$?",
+   "type": "single",
+   "options": ["$[-1, 1]$", "$[0, 1]$", "$[0, 2\\pi]$", "$(-\\infty, \\infty)$"],
+   "correct": 0,
+   "why": {
+    "correct": "Sine is the height of a point on a circle of radius 1, so it goes from $-1$ at the bottom to $1$ at the top.",
+    "options": [
+     "From the bottom of the unit circle to the top.",
+     "Below the $x$-axis the height is negative, down to $-1$.",
+     "This is one period of inputs, not the outputs.",
+     "This is the domain: any angle can go in, but the outputs stay between $-1$ and $1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-11",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which list gives every zero of $y = \\sin\\theta$? ($k$ is any integer.)",
+   "type": "single",
+   "options": ["$\\theta = k\\pi$", "$\\theta = 2k\\pi$", "$\\theta = \\frac{\\pi}{2} + k\\pi$", "$\\theta = \\frac{k\\pi}{2}$"],
+   "correct": 0,
+   "why": {
+    "correct": "The height is $0$ where the point is on the $x$-axis: at $(1, 0)$ and $(-1, 0)$, every half turn.",
+    "options": [
+     "Every multiple of $\\pi$: $0, \\pm\\pi, \\pm 2\\pi, \\ldots$",
+     "This misses $\\pi, 3\\pi, \\ldots$, where the point is at $(-1, 0)$.",
+     "These are the zeros of cosine, where the point is on the $y$-axis.",
+     "This includes $\\frac{\\pi}{2}$, where $\\sin\\theta = 1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-12",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How can the graph of $y = \\sin\\theta$ be moved to give the graph of $y = \\cos\\theta$?",
+   "type": "single",
+   "options": [
+    "Translate it $\\frac{\\pi}{2}$ units to the left",
+    "Translate it $\\frac{\\pi}{2}$ units to the right",
+    "Reflect it across the $\\theta$-axis",
+    "Translate it 1 unit up"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cosine reaches each value a quarter turn earlier: its highest point is at $0$, sine's at $\\frac{\\pi}{2}$. Moving sine left $\\frac{\\pi}{2}$ lines them up: $\\cos\\theta = \\sin\\left(\\theta + \\frac{\\pi}{2}\\right)$.",
+    "options": [
+     "Sine's highest point moves from $\\frac{\\pi}{2}$ to $0$.",
+     "Moving right puts the highest point at $\\pi$, where cosine is $-1$.",
+     "The reflection gives $-\\sin\\theta$, which is $0$ at $\\theta = 0$, but $\\cos 0 = 1$.",
+     "That gives $\\sin\\theta + 1$, with range $[0, 2]$; cosine's range is $[-1, 1]$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-13",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "On which intervals is $\\sin\\theta$ increasing? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$",
+    "$\\left(\\frac{3\\pi}{2}, \\frac{5\\pi}{2}\\right)$",
+    "$\\left(\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right)$",
+    "$(0, \\pi)$"
+   ],
+   "correct": [0, 1],
+   "why": {
+    "correct": "Sine rises from its lowest point to its highest point: from $-\\frac{\\pi}{2}$ to $\\frac{\\pi}{2}$, and again one period later, from $\\frac{3\\pi}{2}$ to $\\frac{5\\pi}{2}$.",
+    "options": [
+     "From $-1$ at $-\\frac{\\pi}{2}$ up to $1$ at $\\frac{\\pi}{2}$.",
+     "The same interval shifted by $2\\pi$.",
+     "Here sine falls from $1$ to $-1$.",
+     "Sine rises on $\\left(0, \\frac{\\pi}{2}\\right)$ but falls on $\\left(\\frac{\\pi}{2}, \\pi\\right)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-14",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "The angle $\\theta$ increases from $\\pi$ to $\\frac{3\\pi}{2}$. Predict each change.",
+   "variables": [
+    { "name": "$\\sin\\theta$", "answer": "down", "why": "The point moves from $(-1, 0)$ to the bottom of the circle, so its height falls from 0 to $-1$." },
+    { "name": "$\\cos\\theta$", "answer": "up", "why": "The point moves from $x = -1$ toward the $y$-axis, so its $x$-coordinate rises from $-1$ to 0." },
+    { "name": "The period of $y = \\sin\\theta$", "answer": "none", "why": "The period is a property of the whole function, $2\\pi$; it does not depend on which input you look at." }
+   ],
+   "why": {
+    "correct": "In Quadrant III the point falls and moves right; the functions themselves keep the same period."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-15",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A periodic function has period $2\\pi$, passes through $(0, 1)$ and $(\\pi, -1)$, takes only values between $-1$ and $1$, and has zeros at $\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$. Which could it be?",
+   "type": "single",
+   "options": ["$y = \\cos\\theta$", "$y = \\sin\\theta$", "$y = \\sin\\theta + 1$", "$y = \\cos\\theta - 1$"],
+   "correct": 0,
+   "why": {
+    "correct": "$\\cos 0 = 1$, $\\cos\\pi = -1$, and cosine is $0$ at $\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$.",
+    "options": [
+     "All four facts match cosine.",
+     "$\\sin 0 = 0$, not $1$.",
+     "This has range $[0, 2]$ and $\\sin\\pi + 1 = 1$, not $-1$.",
+     "This gives $\\cos 0 - 1 = 0$, not $1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-curves-16",
+   "unit": "unit-3",
+   "topic": "sine-cosine-curves",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "On $\\left(0, \\frac{\\pi}{2}\\right)$, $\\sin\\theta$ is increasing and its graph is concave down. Which describes $\\sin\\theta$ on $\\left(\\frac{\\pi}{2}, \\pi\\right)$?",
+   "type": "single",
+   "options": [
+    "Decreasing, and the graph is concave down",
+    "Decreasing, and the graph is concave up",
+    "Increasing, and the graph is concave up",
+    "Increasing, and the graph is concave down"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "After the highest point at $\\frac{\\pi}{2}$ sine falls toward $0$, and the graph stays above the axis, so it is still concave down; it changes concavity only at the zero $\\pi$.",
+    "options": [
+     "Falling, and still bending down above the axis.",
+     "Sine is concave up only where it is below the axis, on $(\\pi, 2\\pi)$.",
+     "Past $\\frac{\\pi}{2}$ the height of the point drops.",
+     "Sine reaches its greatest value at $\\frac{\\pi}{2}$, so it cannot keep increasing."
+    ]
+   }
+  }
+ ]
+}

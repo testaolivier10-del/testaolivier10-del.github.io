@@ -1,0 +1,257 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "pcalc-alg-polynomial-algebra-1",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Multiply out $(x - 2)(x^2 + 3x - 1)$ and combine like terms.",
+   "type": "expr",
+   "expr": {
+    "answer": "x^3 + x^2 - 7x + 2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "mistakes": [
+     {
+      "expr": "x^3 + 3x^2 - x - 2",
+      "why": "Multiply each term of $x^2 + 3x - 1$ by $-2$ as well, not just the last one."
+     },
+     {
+      "expr": "x^3 + x^2 - 5x + 2",
+      "why": "The $x$ terms are $-x$ (from $x \\cdot -1$) and $-6x$ (from $-2 \\cdot 3x$): $-7x$."
+     },
+     {
+      "expr": "x^3 + x^2 - 7x - 2",
+      "why": "$-2 \\cdot -1 = +2$: a negative times a negative is positive."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x(x^2 + 3x - 1) - 2(x^2 + 3x - 1) = x^3 + 3x^2 - x - 2x^2 - 6x + 2 = x^3 + x^2 - 7x + 2$."
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-2",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which is $x^3 - 9x$ factored completely?",
+   "type": "single",
+   "options": [
+    "$x(x^2 - 9)$",
+    "$x(x - 3)(x + 3)$",
+    "$(x - 3)(x + 3)$",
+    "$x(x - 3)(x - 3)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Common factor first: $x^3 - 9x = x(x^2 - 9)$. Then $x^2 - 9 = (x - 3)(x + 3)$. So $x^3 - 9x = x(x - 3)(x + 3)$.",
+    "options": [
+     "$x^2 - 9$ is a difference of squares and still splits: $(x - 3)(x + 3)$.",
+     "Right: take out the common $x$, then factor $x^2 - 9$ as a difference of squares.",
+     "This multiplies to $x^2 - 9$; the common factor $x$ was dropped.",
+     "$(x - 3)(x - 3) = x^2 - 6x + 9$, not $x^2 - 9$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-3",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Factor $x^3 + 2x^2 - 4x - 8$ by grouping.",
+   "type": "single",
+   "options": [
+    "$(x + 2)(x^2 + 4)$",
+    "$(x - 2)(x + 2)$",
+    "$(x + 2)^2(x + 2)$",
+    "$(x - 2)(x + 2)^2$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Group: $x^2(x + 2) - 4(x + 2)$. Factor out $(x + 2)$: $(x^2 - 4)(x + 2)$. Then $x^2 - 4 = (x - 2)(x + 2)$, so the result is $(x - 2)(x + 2)^2$.",
+    "options": [
+     "The second group is $-4(x + 2)$, so the other factor is $x^2 - 4$, not $x^2 + 4$.",
+     "This has only two linear factors; it multiplies to $x^2 - 4$, not a cubic.",
+     "That is $(x + 2)^3$; check: its constant term is $8$, not $-8$.",
+     "Right: $x^2(x + 2) - 4(x + 2) = (x^2 - 4)(x + 2) = (x - 2)(x + 2)(x + 2)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-4",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is $x^3 - 27$ written as a product?",
+   "type": "single",
+   "options": [
+    "$(x - 3)(x^2 + 3x + 9)$",
+    "$(x - 3)^3$",
+    "$(x - 3)(x^2 - 3x + 9)$",
+    "$(x - 3)(x + 3)(x + 9)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Difference of cubes: $x^3 - 3^3 = (x - 3)(x^2 + 3x + 9)$. Multiply back to check: $x^3 + 3x^2 + 9x - 3x^2 - 9x - 27 = x^3 - 27$.",
+    "options": [
+     "Right: a difference of cubes, $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$ with $a = x$, $b = 3$.",
+     "$(x - 3)^3 = x^3 - 9x^2 + 27x - 27$, which has middle terms.",
+     "The middle sign is $+$ for a difference of cubes: $+ab = +3x$.",
+     "This multiplies to a cubic with an $x^2$ term; $x^3 - 27$ has none."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-5",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $p(x) = x^3 - 4x^2 + x + 6$, $p(2) = 0$. Which must be a factor of $p(x)$?",
+   "type": "single",
+   "options": [
+    "$x + 2$",
+    "$x - 6$",
+    "$x - 2$",
+    "$x$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "If $p(a) = 0$, then $x - a$ is a factor. Here $p(2) = 8 - 16 + 2 + 6 = 0$, so $x - 2$ is a factor; in fact $p(x) = (x - 2)(x - 3)(x + 1)$.",
+    "options": [
+     "$x + 2$ is $0$ at $x = -2$; the factor for the zero $x = 2$ is $x - 2$.",
+     "$6$ is the constant term; $p(6) = 84 \\ne 0$.",
+     "Right: an input $a$ with $p(a) = 0$ gives the factor $x - a$.",
+     "$p(0) = 6 \\ne 0$, so $x$ is not a factor."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-6",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which is $4x^2 - 25$ factored?",
+   "type": "single",
+   "options": [
+    "$(4x - 5)(x + 5)$",
+    "$(2x - 5)^2$",
+    "$(2x - 25)(2x + 1)$",
+    "$(2x - 5)(2x + 5)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$a^2 - b^2 = (a - b)(a + b)$ with $a = 2x$ and $b = 5$.",
+    "options": [
+     "This multiplies to $4x^2 + 15x - 25$; the middle terms do not cancel.",
+     "$(2x - 5)^2 = 4x^2 - 20x + 25$.",
+     "This multiplies to $4x^2 - 48x - 25$.",
+     "Right: $4x^2 = (2x)^2$ and $25 = 5^2$, a difference of squares."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-7",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is $x^4 - 5x^2 + 4$ factored completely?",
+   "type": "single",
+   "options": [
+    "$(x^2 - 1)(x^2 - 4)$",
+    "$(x - 1)(x + 1)(x - 2)(x + 2)$",
+    "$(x - 1)^2(x - 2)^2$",
+    "$(x^2 + 1)(x^2 + 4)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Let $u = x^2$: $u^2 - 5u + 4 = (u - 1)(u - 4)$. So $x^4 - 5x^2 + 4 = (x^2 - 1)(x^2 - 4) = (x - 1)(x + 1)(x - 2)(x + 2)$.",
+    "options": [
+     "Correct as a first step, but each factor is a difference of squares and splits again.",
+     "Right: treat it as a quadratic in $x^2$, then split each difference of squares.",
+     "This has $x^3$ and $x$ terms when multiplied out; $x^4 - 5x^2 + 4$ has none.",
+     "This multiplies to $x^4 + 5x^2 + 4$: the sign of the middle term is wrong."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-8",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Simplify $(2x + 1)^2 - (x - 3)^2$.",
+   "type": "expr",
+   "expr": {
+    "answer": "3x^2 + 10x - 8",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "mistakes": [
+     {
+      "expr": "3x^2 + 6x - 8",
+      "why": "$(2x + 1)^2 = 4x^2 + 4x + 1$, with a middle term $4x$; $(a + b)^2$ is not $a^2 + b^2$."
+     },
+     {
+      "expr": "3x^2 - 2x + 10",
+      "why": "Subtract every term of $(x - 3)^2 = x^2 - 6x + 9$: $-(x^2 - 6x + 9) = -x^2 + 6x - 9$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$4x^2 + 4x + 1 - (x^2 - 6x + 9) = 4x^2 + 4x + 1 - x^2 + 6x - 9 = 3x^2 + 10x - 8$."
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-9",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are the solutions of $x^3 - 9x = 0$?",
+   "type": "single",
+   "options": [
+    "$x = 3$ and $x = -3$",
+    "$x = 9$",
+    "$x = 0$, $x = 3$ and $x = -3$",
+    "$x = 0$, $x = 9$ and $x = -9$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Factor: $x(x - 3)(x + 3) = 0$. A product is $0$ when a factor is $0$: $x = 0$, $3$ or $-3$. Never divide by $x$; it hides $x = 0$.",
+    "options": [
+     "Dividing both sides by $x$ loses the solution $x = 0$. Factor instead.",
+     "$x^3 = 9x$ does not mean $x = 9$; $9^3 - 81 \\ne 0$.",
+     "Right: $x(x - 3)(x + 3) = 0$, and each factor gives a solution.",
+     "$x^2 = 9$ gives $x = \\pm 3$, not $\\pm 9$."
+    ]
+   }
+  }
+ ]
+}

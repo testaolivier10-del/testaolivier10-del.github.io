@@ -1,0 +1,396 @@
+{
+ "stimuli": {
+  "sinusoidal-functions-s1": {
+   "kind": "graph",
+   "title": "A sinusoidal function $f$",
+   "plot": {
+    "label": "Graph of a sinusoidal function f for t from 0 to 12: highest points (0, 1), (6, 1) and (12, 1), lowest points (3, -3) and (9, -3)",
+    "x": [-0.5, 12.5],
+    "y": [-3.5, 1.5],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "t",
+    "yLabel": "y",
+    "curves": [
+     { "fn": "2cos(pi*x/3) - 1", "domain": [0, 12], "cls": "s1", "label": "f" }
+    ],
+    "points": [
+     { "at": [0, 1] },
+     { "at": [3, -3] },
+     { "at": [6, 1] }
+    ]
+   }
+  },
+  "sinusoidal-functions-s2": {
+   "kind": "table",
+   "title": "A buoy on the waves",
+   "text": "A buoy bobs up and down. Its height above the sea floor is a sinusoidal function of time, and its greatest and least heights appear in the table.",
+   "table": {
+    "caption": "Height $h(t)$ of the buoy above the sea floor, in meters, $t$ seconds after a stopwatch starts",
+    "cols": ["$t$ (seconds)", "0", "2", "4", "6", "8", "10", "12"],
+    "rows": [["$h(t)$ (meters)", "3", "3.8", "3", "2.2", "3", "3.8", "3"]]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-sinusoidal-functions-1",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sinusoidal-functions-s1",
+   "q": "What is the amplitude of $f$?",
+   "type": "single",
+   "options": ["$2$", "$4$", "$1$", "$3$"],
+   "correct": 0,
+   "why": {
+    "correct": "The greatest value is $1$ and the least is $-3$: amplitude $= \\frac{1 - (-3)}{2} = 2$.",
+    "options": [
+     "Half of $\\max - \\min = 4$.",
+     "$4$ is the full distance from the lowest to the highest point, twice the amplitude.",
+     "$1$ is the greatest value, measured from the $t$-axis instead of from the midline.",
+     "$3$ is the size of the least value, measured from the $t$-axis instead of from the midline."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-2",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sinusoidal-functions-s1",
+   "q": "What is the midline of the graph of $f$?",
+   "type": "single",
+   "options": ["$y = -1$", "$y = 0$", "$y = -3$", "$y = 2$"],
+   "correct": 0,
+   "why": {
+    "correct": "The midline is halfway between $1$ and $-3$: $y = \\frac{1 + (-3)}{2} = -1$.",
+    "options": [
+     "Average of the greatest and least values.",
+     "The $t$-axis is not the midline here: the wave reaches 1 above it but 3 below it.",
+     "$-3$ is the least value, the bottom of the wave, not its center line.",
+     "$2$ is the amplitude, not the height of the midline."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-3",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sinusoidal-functions-s1",
+   "q": "What is the period of $f$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 6,
+    "mistakes": [
+     { "value": 3, "why": "That is from a highest point to the next lowest point, half a cycle. Measure from $(0, 1)$ to the next highest point $(6, 1)$." },
+     { "value": 12, "why": "The window shows two full cycles. One cycle runs from $t = 0$ to $t = 6$." }
+    ]
+   },
+   "why": {
+    "correct": "Highest points at $t = 0$ and $t = 6$: one full cycle takes 6 units."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-4",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-functions-s1",
+   "q": "What is the frequency of $f$, in cycles per unit of $t$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "1/6",
+    "mistakes": [
+     { "value": 6, "why": "That is the period. Frequency is its reciprocal: $\\frac{1}{6}$ of a cycle per unit." },
+     { "value": 2, "why": "Two cycles appear in the window, but the window is 12 units wide: $\\frac{2}{12} = \\frac{1}{6}$ cycle per unit." }
+    ]
+   },
+   "why": {
+    "correct": "Frequency $= \\frac{1}{\\text{period}} = \\frac{1}{6}$ cycle per unit of $t$."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-5",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-functions-s1",
+   "q": "What is the average rate of change of $f$ on $[0, 3]$?",
+   "type": "single",
+   "options": ["$-\\frac{4}{3}$", "$-4$", "$-\\frac{3}{4}$", "$-\\frac{2}{3}$"],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{f(3) - f(0)}{3 - 0} = \\frac{-3 - 1}{3} = -\\frac{4}{3}$, the slope of the secant line through $(0, 1)$ and $(3, -3)$.",
+    "options": [
+     "Change in output $-4$ over change in input $3$.",
+     "$-4$ is the change in output; divide by the 3 units of input.",
+     "This is the change in input over the change in output, upside down.",
+     "This uses the amplitude 2 as the change in output; the graph drops 4, from the top to the bottom."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-6",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sinusoidal-functions-s2",
+   "q": "What is the amplitude of $h$, in meters?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 0.8,
+    "unit": "meters",
+    "mistakes": [
+     { "value": 1.6, "why": "That is $\\max - \\min$, the full swing. The amplitude is half of it." },
+     { "value": 3, "why": "That is the midline height. The amplitude is how far the buoy goes above or below it." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{3.8 - 2.2}{2} = 0.8$ meters."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-7",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sinusoidal-functions-s2",
+   "q": "What is the period of $h$?",
+   "type": "single",
+   "options": ["8 seconds", "4 seconds", "2 seconds", "12 seconds"],
+   "correct": 0,
+   "why": {
+    "correct": "The greatest height 3.8 m occurs at $t = 2$ and next at $t = 10$: one cycle takes 8 seconds.",
+    "options": [
+     "Highest to highest: $10 - 2 = 8$.",
+     "$h(0) = h(4) = 3$, but at $t = 0$ the buoy is rising and at $t = 4$ it is falling: only half a cycle.",
+     "This is the spacing of the table, a quarter of a cycle.",
+     "This is the length of the whole table, a cycle and a half."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-8",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-functions-s2",
+   "q": "What is the frequency of the buoy's motion, in cycles per second?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 0.125,
+    "unit": "cycles per second",
+    "mistakes": [
+     { "value": 8, "why": "That is the period in seconds per cycle. The frequency is its reciprocal." },
+     { "value": 0.25, "why": "That uses 4 seconds as the period, but $t = 0$ to $t = 4$ is only half a cycle." }
+    ]
+   },
+   "why": {
+    "correct": "The period is 8 seconds, so the frequency is $\\frac{1}{8} = 0.125$ cycle per second."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-9",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-functions-s2",
+   "q": "If the pattern continues, what is the buoy's height at $t = 18$ seconds, in meters?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 3.8,
+    "unit": "meters",
+    "mistakes": [
+     { "value": 2.2, "why": "That is $h(6)$. $18 = 2 \\cdot 8 + 2$, so $h(18) = h(2)$." },
+     { "value": 3, "why": "That is $h(16) = h(0)$. Two periods take you to $t = 16$; two more seconds give $h(2)$." }
+    ]
+   },
+   "why": {
+    "correct": "With period 8, $h(18) = h(18 - 16) = h(2) = 3.8$ meters."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-10",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What are the amplitude and midline of $y = 4\\sin\\theta + 1$?",
+   "type": "single",
+   "options": [
+    "Amplitude $4$, midline $y = 1$",
+    "Amplitude $1$, midline $y = 4$",
+    "Amplitude $8$, midline $y = 1$",
+    "Amplitude $5$, midline $y = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$4\\sin\\theta$ goes from $-4$ to $4$; adding 1 gives $-3$ to $5$. Amplitude $\\frac{5 - (-3)}{2} = 4$, midline $y = \\frac{5 + (-3)}{2} = 1$.",
+    "options": [
+     "The factor 4 sets the amplitude; the added 1 sets the midline.",
+     "The roles are swapped: 4 multiplies the heights, 1 lifts them.",
+     "8 is $\\max - \\min$, twice the amplitude.",
+     "5 is the greatest value, not the amplitude, and the graph is lifted off $y = 0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-11",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a number $k$, $\\sin k = 0.3$. What is $\\sin(-k)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -0.3,
+    "mistakes": [
+     { "value": 0.3, "why": "Sine is odd: reflecting the angle across the $x$-axis flips the height, so $\\sin(-k) = -\\sin k$." },
+     { "value": 0.7, "why": "That is $1 - 0.3$. Sine is odd, so $\\sin(-k) = -0.3$." }
+    ]
+   },
+   "why": {
+    "correct": "The point at angle $-k$ is the point at $k$ reflected across the $x$-axis, so its height changes sign: $\\sin(-k) = -0.3$."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-12",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A guitar string vibrates with a frequency of 220 cycles per second. What is the period of its vibration, in seconds?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "1/220",
+    "unit": "seconds",
+    "mistakes": [
+     { "value": 220, "why": "That is the frequency, in cycles per second. The period, seconds per cycle, is its reciprocal." },
+     { "value": "2pi/220", "why": "$2\\pi$ is the period of $\\sin\\theta$, but here the period is just the time for one cycle: $\\frac{1}{220}$ second." }
+    ]
+   },
+   "why": {
+    "correct": "Period $= \\frac{1}{\\text{frequency}} = \\frac{1}{220}$ second."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-13",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A pendulum's horizontal position, measured from a mark on the floor, swings smoothly between $-12$ cm and $18$ cm. Its position is a sinusoidal function of time. What are its amplitude and midline?",
+   "type": "single",
+   "options": [
+    "Amplitude 15 cm, midline $x = 3$",
+    "Amplitude 30 cm, midline $x = 3$",
+    "Amplitude 15 cm, midline $x = 0$",
+    "Amplitude 18 cm, midline $x = 6$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Amplitude $\\frac{18 - (-12)}{2} = 15$ cm; midline $x = \\frac{18 + (-12)}{2} = 3$. Check: $3 \\pm 15$ gives $18$ and $-12$.",
+    "options": [
+     "Half the swing, and the average of the two extremes.",
+     "30 cm is the whole swing, twice the amplitude.",
+     "The mark on the floor is not the center of the swing: the pendulum goes further right than left.",
+     "18 is the greatest position, not the amplitude, and $\\frac{18 - 12}{2} = 3$, not 6."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-14",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which functions are sinusoidal? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$y = 3\\cos\\theta - 2$",
+    "$y = \\sin\\theta + 5$",
+    "$y = \\theta^2$",
+    "$y = 2^\\theta$"
+   ],
+   "correct": [0, 1],
+   "why": {
+    "correct": "Both are the sine wave after dilations and translations: cosine is sine shifted, and the 3, $-2$ and $+5$ stretch and lift it.",
+    "options": [
+     "A cosine graph stretched by 3 and moved down 2.",
+     "The sine graph moved up 5.",
+     "A parabola is not periodic.",
+     "An exponential function keeps growing; it never repeats."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-15",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "A sinusoidal function has greatest value 10 and least value 2. The greatest value is changed to 14; the least value and the cycle length stay the same. Predict each change.",
+   "variables": [
+    { "name": "The amplitude", "answer": "up", "why": "The swing grows from $10 - 2 = 8$ to $14 - 2 = 12$, so the amplitude goes from 4 to 6." },
+    { "name": "The height of the midline", "answer": "up", "why": "The midline moves from $\\frac{10 + 2}{2} = 6$ to $\\frac{14 + 2}{2} = 8$." },
+    { "name": "The period", "answer": "none", "why": "The heights change, but each cycle still takes the same length of input." }
+   ],
+   "why": {
+    "correct": "Raising only the top stretches the wave and lifts its center line; the cycle length is separate."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-functions-16",
+   "unit": "unit-3",
+   "topic": "sinusoidal-functions",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement is true for every number $\\theta$?",
+   "type": "single",
+   "options": [
+    "$\\cos(-\\theta) = \\cos\\theta$",
+    "$\\sin(-\\theta) = \\sin\\theta$",
+    "$\\cos(-\\theta) = -\\cos\\theta$",
+    "$\\sin(-\\theta) = \\cos\\theta$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The angles $\\theta$ and $-\\theta$ give points that are reflections across the $x$-axis: same $x$-coordinate, so cosine is even.",
+    "options": [
+     "Same $x$-coordinate for $\\theta$ and $-\\theta$.",
+     "False at $\\theta = \\frac{\\pi}{2}$: $\\sin\\left(-\\frac{\\pi}{2}\\right) = -1$, not 1. Sine is odd.",
+     "False at $\\theta = 0$: $\\cos 0 = 1$, not $-1$.",
+     "False at $\\theta = 0$: $\\sin 0 = 0$ but $\\cos 0 = 1$."
+    ]
+   }
+  }
+ ]
+}

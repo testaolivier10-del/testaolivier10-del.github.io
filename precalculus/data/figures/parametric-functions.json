@@ -1,0 +1,22 @@
+{
+ "parametric-functions-trace": {
+  "file": "figures/parametric-functions-trace.svg",
+  "ext": "svg",
+  "w": 460,
+  "h": 350,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The curve x(t) = t squared minus 2t, y(t) = 2t minus 1 for t from -1 to 3, a parabola opening to the right. Points are marked at t = -1 (3, -3), t = 0 (0, -1), t = 1 (-1, 1), t = 2 (0, 3) and t = 3 (3, 5). Arrows show the point moves left and up until t = 1, then right and up."
+ },
+ "parametric-functions-loop": {
+  "file": "figures/parametric-functions-loop.svg",
+  "ext": "svg",
+  "w": 460,
+  "h": 370,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The path x(t) = t squared minus 4, y(t) = t cubed minus 4t for t from -2.5 to 2.5. Points are marked at t = -2 (0, 0), t = -1 (-3, 3), t = 0 (-4, 0), t = 1 (-3, -3) and t = 2 (0, 0). Arrows show the direction of travel: in from the lower right, up through the origin, around a loop on the left going counterclockwise in the order t = -1, 0, 1, back through the origin, and out to the upper right."
+ }
+}

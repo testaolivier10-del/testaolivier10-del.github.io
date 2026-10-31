@@ -1,0 +1,67 @@
+<p>Two expressions can look nothing alike and still have the same graph. $1 - 2\sin^2 x$ and $\cos(2x)$ are one example. An equation that is true for every input where both sides are defined is an <b>identity</b>. On the exam, identities do three jobs: they turn an angle like $\frac{\pi}{12}$ into exact values you know, they rewrite an expression as a single trigonometric function, and they turn a hard equation into one you can solve.</p>
+
+<h2>The Pythagorean identity</h2>
+<p>The point $(\cos x, \sin x)$ is on the unit circle $X^2 + Y^2 = 1$, so</p>
+<p>$$\sin^2 x + \cos^2 x = 1$$</p>
+<p>for every $x$. (Here $\sin^2 x$ means $(\sin x)^2$.) Dividing every term by $\cos^2 x$, and then by $\sin^2 x$, gives two more forms:</p>
+<p>$$\tan^2 x + 1 = \sec^2 x \qquad 1 + \cot^2 x = \csc^2 x$$</p>
+<p>Use them to find one value from another. If $\sin x = \frac{3}{5}$ and $x$ is in Quadrant II, then $\cos^2 x = 1 - \frac{9}{25} = \frac{16}{25}$, so $\cos x = -\frac{4}{5}$, negative because of the quadrant.</p>
+
+<h2>Sum and difference identities</h2>
+<p>$$\sin(a \pm b) = \sin a\cos b \pm \cos a\sin b$$</p>
+<p>$$\cos(a \pm b) = \cos a\cos b \mp \sin a\sin b$$</p>
+<p>Watch the signs in the cosine identity: a sum gives a minus, a difference gives a plus. And notice what they say is false: $\sin(a + b)$ is not $\sin a + \sin b$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\sin\frac{5\pi}{12}$ exactly.</p>
+<p>Write $\frac{5\pi}{12} = \frac{\pi}{4} + \frac{\pi}{6}$, two angles you know.</p>
+<p>$\sin\left(\frac{\pi}{4} + \frac{\pi}{6}\right) = \sin\frac{\pi}{4}\cos\frac{\pi}{6} + \cos\frac{\pi}{4}\sin\frac{\pi}{6} = \frac{\sqrt{2}}{2}\cdot\frac{\sqrt{3}}{2} + \frac{\sqrt{2}}{2}\cdot\frac{1}{2} = \frac{\sqrt{6} + \sqrt{2}}{4}$.</p>
+</div>
+<p>The difference identities also explain the phase shift between the graphs: $\cos\left(x - \frac{\pi}{2}\right) = \cos x\cdot 0 + \sin x\cdot 1 = \sin x$.</p>
+
+<h2>Double-angle identities</h2>
+<p>Put $b = a$ in the sum identities:</p>
+<p>$$\sin(2a) = 2\sin a\cos a$$</p>
+<p>$$\cos(2a) = \cos^2 a - \sin^2 a = 2\cos^2 a - 1 = 1 - 2\sin^2 a$$</p>
+<p>The last two forms come from replacing $\sin^2 a$ or $\cos^2 a$ with the Pythagorean identity. <a class="figref" href="#fig-double">Figure 1</a> shows the first form as heights on a graph.</p>
+<figure id="fig-double" data-fig="trig-identities-double"><figcaption>$\cos(2x)$ (solid) is the difference of $\cos^2 x$ and $\sin^2 x$ (dashed).</figcaption></figure>
+
+<table class="compare">
+<thead><tr><th scope="col">Family</th><th scope="col">Identities</th><th scope="col">Typical use</th></tr></thead>
+<tbody>
+<tr><td>Pythagorean</td><td>$\sin^2 x + \cos^2 x = 1$; $\tan^2 x + 1 = \sec^2 x$; $1 + \cot^2 x = \csc^2 x$</td><td>replace a square; find one ratio from another</td></tr>
+<tr><td>Sum and difference</td><td>$\sin(a \pm b)$, $\cos(a \pm b)$</td><td>exact values at angles like $\frac{\pi}{12}$; shifts</td></tr>
+<tr><td>Double angle</td><td>$\sin(2a) = 2\sin a\cos a$; three forms of $\cos(2a)$</td><td>an equation with $2x$ and $x$ together</td></tr>
+</tbody>
+</table>
+
+<h2>Rewriting as a single function</h2>
+<p>When a question says "as a single trigonometric function", the answer is one function like $\tan x$, not a quotient like $\frac{\sin x}{\cos x}$. A routine that works:</p>
+<ol>
+<li>Write every function in terms of $\sin$ and $\cos$, and expand any $2x$ with a double-angle identity.</li>
+<li>Use a Pythagorean identity to replace sums of squares.</li>
+<li>Cancel common factors.</li>
+<li>Name the one function that is left.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 2.</b> Rewrite $\frac{1 - \cos(2x)}{\sin(2x)}$ as a single trigonometric function.</p>
+<p>Choose the form of $\cos(2x)$ that cancels the $1$: $1 - \cos(2x) = 1 - (1 - 2\sin^2 x) = 2\sin^2 x$.</p>
+<p>Expand the bottom: $\sin(2x) = 2\sin x\cos x$.</p>
+<p>Cancel: $\frac{2\sin^2 x}{2\sin x\cos x} = \frac{\sin x}{\cos x} = \tan x$, wherever the original expression is defined.</p>
+</div>
+
+<h2>Solving equations with identities</h2>
+<p>An equation that mixes $\sin(2x)$ and $\sin x$ cannot be solved until both use the same angle.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Solve $\cos(2x) = \cos x$ on $[0, 2\pi)$.</p>
+<p>Use the form with only cosines: $2\cos^2 x - 1 = \cos x$, so $2\cos^2 x - \cos x - 1 = 0$.</p>
+<p>Factor: $(2\cos x + 1)(\cos x - 1) = 0$. So $\cos x = -\frac{1}{2}$ ($x = \frac{2\pi}{3}, \frac{4\pi}{3}$) or $\cos x = 1$ ($x = 0$).</p>
+<p>Answer: $x = 0$, $\frac{2\pi}{3}$, $\frac{4\pi}{3}$.</p>
+</div>
+
+<h2>Common slips</h2>
+<ul>
+<li>Splitting a function over a sum: $\cos(a + b) \ne \cos a + \cos b$.</li>
+<li>Pulling the $2$ out of $\sin(2x)$.</li>
+<li>Stopping at $\frac{\sin x}{\cos x}$ when one function was asked for.</li>
+<li>Dividing an equation by $\sin x$ and losing the solutions where $\sin x = 0$; factor instead.</li>
+</ul>

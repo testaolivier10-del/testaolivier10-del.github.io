@@ -1,0 +1,22 @@
+{
+ "parametric-rates-secant": {
+  "file": "figures/parametric-rates-secant.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The curve x(t) = t squared plus 1, y(t) = 4t minus t squared for t from 0 to 4, with points at t = 0 (1, 0), t = 1 (2, 3), t = 2 (5, 4), t = 3 (10, 3) and t = 4 (17, 0). A segment joins the points for t = 0 and t = 2; dashed legs show a change in x of 4 and a change in y of 4, so the segment has slope 1."
+ },
+ "parametric-rates-curve": {
+  "file": "figures/parametric-rates-curve.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The curve x(t) = t squared plus 1, y(t) = 4t minus t squared for t from 0 to 4, moving right the whole time, rising to a top point and falling again. Points are marked at t = 0 (1, 0), t = 1 (2, 3), t = 2 (5, 4), t = 3 (10, 3) and t = 4 (17, 0)."
+ }
+}

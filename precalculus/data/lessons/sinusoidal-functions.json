@@ -1,0 +1,62 @@
+{
+ "topic": "sinusoidal-functions",
+ "hook": "The depth of water at a harbor, the temperature over a day and the hum of a guitar string all rise and fall in smooth, even waves. Before you can write a formula for one, you need four numbers that describe any such wave: how far it swings, where its center line is, how long one cycle takes, and how many cycles fit in one unit of time.",
+ "prereq": [
+  {
+   "q": "What is the period of $y = \\cos\\theta$?",
+   "options": ["$2\\pi$", "$\\pi$", "$1$", "$\\frac{\\pi}{2}$"],
+   "correct": 0,
+   "why": "The point on the unit circle returns to the same place after one full turn, $2\\pi$.",
+   "review": "sine-cosine-curves"
+  },
+  {
+   "q": "The graph of $g(x) = f(x) + 3$ is the graph of $f$",
+   "options": ["moved up 3 units", "moved right 3 units", "stretched vertically by a factor of 3", "moved left 3 units"],
+   "correct": 0,
+   "why": "Adding 3 to every output moves each point up 3 units.",
+   "review": "transformations"
+  }
+ ],
+ "figure": {
+  "figure": "sinusoidal-functions-parts",
+  "caption": "For $y = 3\\sin\\left(\\frac{\\pi t}{4}\\right) + 5$: midline $y = 5$, amplitude 3 (midline to maximum), period 8, frequency $\\frac{1}{8}$."
+ },
+ "chain": [
+  {
+   "cause": "Stretch or shrink the graph of sine or cosine and slide it around",
+   "effect": "you get a sinusoidal function: the same smooth wave shape, with new heights and a new cycle length"
+  },
+  {
+   "cause": "Average the greatest and least values",
+   "effect": "the midline $y = \\frac{\\max + \\min}{2}$, the horizontal line the wave oscillates around"
+  },
+  {
+   "cause": "Take half the distance from the least value to the greatest",
+   "effect": "the amplitude $\\frac{\\max - \\min}{2}$, how far the wave reaches above and below its midline"
+  },
+  {
+   "cause": "Measure one full cycle along the input axis",
+   "effect": "the period $P$; the frequency $\\frac{1}{P}$ counts the cycles per unit of input"
+  }
+ ],
+ "ideas": [
+  "A <b>sinusoidal function</b> has the shape of a sine graph after dilations and translations. $y = \\sin\\theta$ and $y = \\cos\\theta$ are both sinusoidal, each with amplitude 1, midline $y = 0$ and period $2\\pi$.",
+  "<b>Amplitude</b> is a distance, so it is never negative. <b>Midline</b> is a line, so write it as an equation: $y = 5$.",
+  "<b>Frequency</b> $= \\frac{1}{\\text{period}}$. A period of 8 seconds means $\\frac{1}{8}$ of a cycle per second; 220 cycles per second means a period of $\\frac{1}{220}$ second.",
+  "Sine is odd, $\\sin(-\\theta) = -\\sin\\theta$; cosine is even, $\\cos(-\\theta) = \\cos\\theta$."
+ ],
+ "misconception": {
+  "wrong": "The amplitude is the distance from the lowest point to the highest point.",
+  "right": "That distance is twice the amplitude. The amplitude is measured from the midline to the highest point (or to the lowest), so it is half of $\\max - \\min$."
+ },
+ "check": [
+  "pcalc-sinusoidal-functions-1",
+  "pcalc-sinusoidal-functions-2",
+  "pcalc-sinusoidal-functions-3",
+  "pcalc-sinusoidal-functions-4",
+  "pcalc-sinusoidal-functions-5",
+  "pcalc-sinusoidal-functions-12",
+  "pcalc-sinusoidal-functions-13"
+ ],
+ "summary": "A sinusoidal function is a sine or cosine graph after dilations and translations. Four numbers describe it: the midline $y = \\frac{\\max + \\min}{2}$, the amplitude $\\frac{\\max - \\min}{2}$, the period (the length of one cycle) and the frequency, one over the period. Sine is odd and cosine is even."
+}

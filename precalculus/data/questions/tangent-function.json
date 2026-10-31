@@ -1,0 +1,549 @@
+{
+ "stimuli": {
+  "tangent-function-s1": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = 2\\tan\\left(\\frac{x}{2}\\right)$",
+   "plot": {
+    "label": "Graph of f(x) = 2 tan(x/2) for x from -2 pi to 2 pi, with dashed vertical asymptotes at x = -pi and x = pi",
+    "x": [
+     -6.283185307179586,
+     6.283185307179586
+    ],
+    "y": [
+     -6,
+     6
+    ],
+    "piX": true,
+    "yStep": 2,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "2tan(x/2)",
+      "domain": [
+       -6.283185307179586,
+       6.283185307179586
+      ],
+      "label": "f"
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": -3.141592653589793
+     },
+     {
+      "x": 3.141592653589793
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       0
+      ]
+     },
+     {
+      "at": [
+       1.5707963267948966,
+       2
+      ]
+     },
+     {
+      "at": [
+       -1.5707963267948966,
+       -2
+      ]
+     }
+    ]
+   }
+  },
+  "tangent-function-s2": {
+   "kind": "table",
+   "title": "A lighthouse beam on a straight shore",
+   "text": "<p>A lighthouse stands $4$ kilometers from a straight shore. Its beam makes an angle $\\theta$ radians with the shortest path to the shore, and the spot of light is $d(\\theta) = 4\\tan\\theta$ kilometers along the shore from the nearest point, for $0 \\le \\theta < \\frac{\\pi}{2}$.</p>",
+   "table": {
+    "caption": "Distance d(θ) of the spot of light along the shore, in kilometers, for selected angles θ, in radians",
+    "cols": [
+     "$\\theta$ (radians)",
+     "$0$",
+     "$\\frac{\\pi}{6}$",
+     "$\\frac{\\pi}{4}$",
+     "$\\frac{\\pi}{3}$"
+    ],
+    "rows": [
+     [
+      "$d(\\theta)$ (kilometers)",
+      "$0$",
+      "$\\frac{4\\sqrt{3}}{3}$",
+      "$4$",
+      "$4\\sqrt{3}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-tangent-function-1",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "tangent-function-s1",
+   "q": "The graph shows $f(x) = 2\\tan\\left(\\frac{x}{2}\\right)$. What is the period of $f$?",
+   "type": "single",
+   "options": [
+    "$2\\pi$",
+    "$\\pi$",
+    "$4\\pi$",
+    "$\\frac{\\pi}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $a\\tan(bx)$ the period is $\\frac{\\pi}{|b|}$. Here $b = \\frac{1}{2}$, so the period is $\\frac{\\pi}{1/2} = 2\\pi$. On the graph, the asymptotes at $x = -\\pi$ and $x = \\pi$ are $2\\pi$ apart.",
+    "options": [
+     "Right: $\\frac{\\pi}{1/2} = 2\\pi$, the distance between the asymptotes at $-\\pi$ and $\\pi$.",
+     "That is the period of $\\tan x$; the factor $\\frac{1}{2}$ inside stretches the graph to period $2\\pi$.",
+     "That is $\\frac{2\\pi}{b}$, the sine and cosine rule; tangent repeats after $\\frac{\\pi}{b}$.",
+     "This multiplies $\\pi$ by $b$ instead of dividing by $b$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-2",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "tangent-function-s1",
+   "q": "For the function in the graph, where are the vertical asymptotes of $f$ on $(-2\\pi, 2\\pi)$?",
+   "type": "single",
+   "options": [
+    "$x = -\\pi$ and $x = \\pi$",
+    "$x = -\\frac{\\pi}{2}$ and $x = \\frac{\\pi}{2}$",
+    "$x = 0$",
+    "$x = -2\\pi$, $x = 0$ and $x = 2\\pi$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\tan u$ has asymptotes where $\\cos u = 0$, at $u = \\frac{\\pi}{2} + k\\pi$. With $u = \\frac{x}{2}$, $\\frac{x}{2} = \\frac{\\pi}{2} + k\\pi$ gives $x = \\pi + 2k\\pi$; on $(-2\\pi, 2\\pi)$ that is $x = -\\pi$ and $x = \\pi$.",
+    "options": [
+     "Right: $\\frac{x}{2} = \\pm\\frac{\\pi}{2}$ gives $x = \\pm\\pi$.",
+     "These are the asymptotes of $\\tan x$; the input here is $\\frac{x}{2}$, so solve $\\frac{x}{2} = \\pm\\frac{\\pi}{2}$.",
+     "At $x = 0$ the graph crosses the origin: $f(0) = 2\\tan 0 = 0$ is a zero, not an asymptote.",
+     "These are zeros of $f$ (where $\\sin\\frac{x}{2} = 0$), not asymptotes."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-3",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "tangent-function-s1",
+   "q": "For the function in the graph, which statement about $f$ near $x = \\pi$ is true?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to \\pi^-} f(x) = \\infty$",
+    "$\\lim_{x \\to \\pi^-} f(x) = -\\infty$",
+    "$\\lim_{x \\to \\pi^-} f(x) = 0$",
+    "$\\lim_{x \\to \\pi^-} f(x) = 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "As $x$ increases toward $\\pi$, $\\frac{x}{2}$ increases toward $\\frac{\\pi}{2}$, where $\\sin$ is near $1$ and $\\cos$ is a small positive number. So $\\tan\\frac{x}{2}$ grows without bound and $\\lim_{x \\to \\pi^-} f(x) = \\infty$; on the graph the branch rises along the dashed line.",
+    "options": [
+     "Right: from the left, the branch climbs without bound beside the asymptote.",
+     "That is the behavior from the right, $\\lim_{x \\to \\pi^+} f(x) = -\\infty$, where the next branch starts.",
+     "$f$ is $0$ at $x = 0$ and $x = 2\\pi$, not near the asymptote.",
+     "$f(\\frac{\\pi}{2}) = 2$ is one point on the branch; near $\\pi$ the outputs keep growing."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-4",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "tangent-function-s1",
+   "q": "For the function in the graph, find the exact value of $f\\left(\\frac{\\pi}{2}\\right)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is $\\tan\\frac{\\pi}{4}$ alone; multiply by the $2$ in front: $2(1) = 2$."
+     },
+     {
+      "value": 0,
+      "why": "That is $2\\tan\\pi$: the input was doubled. The rule halves it, $\\frac{1}{2}\\cdot\\frac{\\pi}{2} = \\frac{\\pi}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f\\left(\\frac{\\pi}{2}\\right) = 2\\tan\\left(\\frac{\\pi}{4}\\right) = 2(1) = 2$. The graph passes through the marked point $\\left(\\frac{\\pi}{2}, 2\\right)$."
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-5",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "tangent-function-s1",
+   "q": "For the function in the graph, which statement describes $f$ on the interval $(0, \\pi)$?",
+   "type": "single",
+   "options": [
+    "$f$ is increasing, and the rate of change of $f$ is increasing",
+    "$f$ is increasing, and the rate of change of $f$ is decreasing",
+    "$f$ is decreasing, and the rate of change of $f$ is increasing",
+    "$f$ is increasing, and the rate of change of $f$ is constant"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On $(0, \\pi)$ the outputs rise from $0$ toward the asymptote, so $f$ is increasing. The graph bends upward (concave up): over equal steps the rises get bigger, for example $f$ goes up $2$ on $\\left[0, \\frac{\\pi}{2}\\right]$ and much more than $2$ on $\\left[\\frac{\\pi}{2}, \\pi\\right)$. So the rate of change of $f$ is increasing.",
+    "options": [
+     "Right: rising outputs, and each equal step rises more than the last (concave up).",
+     "That describes a branch bending downward, like $f$ on $(-\\pi, 0)$; on $(0, \\pi)$ the graph bends upward.",
+     "The outputs go up from $0$, so $f$ is increasing here, not decreasing.",
+     "A constant rate of change means a straight line; this branch curves upward."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-6",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "tangent-function-s2",
+   "q": "Using the table, find the average rate of change of $d$ on $\\left[\\frac{\\pi}{6}, \\frac{\\pi}{3}\\right]$. Give an exact value.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "16sqrt(3)/pi",
+    "unit": "kilometers per radian",
+    "units": [
+     "km per radian",
+     "km/radian",
+     "kilometers/radian"
+    ],
+    "mistakes": [
+     {
+      "value": "8sqrt(3)/3",
+      "why": "That is the change in $d$ only. Divide by the change in angle, $\\frac{\\pi}{3} - \\frac{\\pi}{6} = \\frac{\\pi}{6}$."
+     },
+     {
+      "value": "pi/(16sqrt(3))",
+      "why": "That is the change in angle over the change in distance; the rate is output change over input change."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The average rate of change of $d$ on $\\left[\\frac{\\pi}{6}, \\frac{\\pi}{3}\\right]$ is the slope of the secant line: $\\frac{d(\\pi/3) - d(\\pi/6)}{\\pi/3 - \\pi/6} = \\frac{4\\sqrt{3} - \\frac{4\\sqrt{3}}{3}}{\\pi/6} = \\frac{8\\sqrt{3}}{3}\\cdot\\frac{6}{\\pi} = \\frac{16\\sqrt{3}}{\\pi}$ kilometers per radian, about $8.82$."
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-7",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "tangent-function-s2",
+   "q": "The average rate of change of $d$ is $\\frac{8\\sqrt{3}}{\\pi}$ kilometers per radian on $\\left[0, \\frac{\\pi}{6}\\right]$ and $\\frac{16\\sqrt{3}}{\\pi}$ kilometers per radian on $\\left[\\frac{\\pi}{6}, \\frac{\\pi}{3}\\right]$. What does this show about $d$ on $\\left[0, \\frac{\\pi}{3}\\right]$?",
+   "type": "single",
+   "options": [
+    "The rate of change of $d$ is increasing, so the graph of $d$ is concave up",
+    "The rate of change of $d$ is decreasing, so the graph of $d$ is concave down",
+    "$d$ is decreasing, because the rates are not equal",
+    "$d$ is linear, because both rates are positive"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The two input intervals have the same length, $\\frac{\\pi}{6}$, and the average rate on the later one is larger. Increasing average rates over equal intervals mean the graph of $d$ is concave up: the spot moves along the shore faster and faster as the beam turns.",
+    "options": [
+     "Right: equal intervals, larger rate later, so concave up.",
+     "The rate on the later interval is larger ($\\frac{16\\sqrt{3}}{\\pi} > \\frac{8\\sqrt{3}}{\\pi}$), so the rates increase.",
+     "Both rates are positive, so $d$ is increasing on the interval.",
+     "A linear function has equal rates on equal intervals; these differ."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-8",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "tangent-function-s2",
+   "q": "Which statement explains what happens to $d(\\theta)$ as $\\theta$ approaches $\\frac{\\pi}{2}$ from the left, in the context?",
+   "type": "single",
+   "options": [
+    "$\\lim_{\\theta \\to \\pi/2^-} d(\\theta) = \\infty$: the beam turns nearly parallel to the shore, so the spot lands farther and farther away",
+    "$\\lim_{\\theta \\to \\pi/2^-} d(\\theta) = 4$: the spot approaches the lighthouse's distance from the shore",
+    "$\\lim_{\\theta \\to \\pi/2^-} d(\\theta) = 0$: the beam points back at the nearest point of the shore",
+    "$\\lim_{\\theta \\to \\pi/2^-} d(\\theta) = -\\infty$: the spot moves to the other side of the nearest point"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$d(\\theta) = 4\\tan\\theta$ has a vertical asymptote at $\\theta = \\frac{\\pi}{2}$ because $\\cos\\frac{\\pi}{2} = 0$. From the left $\\tan\\theta$ grows without bound, so $\\lim_{\\theta \\to \\pi/2^-} d(\\theta) = \\infty$. In context, a beam almost parallel to the shore meets it very far away.",
+    "options": [
+     "Right: an asymptote at $\\frac{\\pi}{2}$, approached from the left, gives outputs growing without bound.",
+     "$d\\left(\\frac{\\pi}{4}\\right) = 4$ is one table value; $d$ keeps growing past it.",
+     "$d(0) = 0$ is the start; as $\\theta$ grows toward $\\frac{\\pi}{2}$ the distance grows.",
+     "From the left of $\\frac{\\pi}{2}$, $\\sin\\theta$ and $\\cos\\theta$ are both positive, so $d$ is positive."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-9",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "tangent-function-s2",
+   "q": "A student says the spot is twice as far along the shore at $\\theta = \\frac{\\pi}{3}$ as at $\\theta = \\frac{\\pi}{6}$, because the angle doubled. Which response is correct?",
+   "type": "single",
+   "options": [
+    "No: $d\\left(\\frac{\\pi}{3}\\right) = 4\\sqrt{3}$, which is $3$ times $d\\left(\\frac{\\pi}{6}\\right) = \\frac{4\\sqrt{3}}{3}$",
+    "Yes: $d$ is proportional to $\\theta$, so doubling $\\theta$ doubles $d$",
+    "No: $d\\left(\\frac{\\pi}{3}\\right)$ is $4$ times $d\\left(\\frac{\\pi}{6}\\right)$, because $\\tan$ squares the angle",
+    "Yes: $\\tan\\left(2\\cdot\\frac{\\pi}{6}\\right) = 2\\tan\\left(\\frac{\\pi}{6}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From the table, $d\\left(\\frac{\\pi}{3}\\right) = 4\\sqrt{3}$ and $d\\left(\\frac{\\pi}{6}\\right) = \\frac{4\\sqrt{3}}{3}$, so the ratio is $\\frac{4\\sqrt{3}}{4\\sqrt{3}/3} = 3$. Tangent is not linear: doubling the input does not double the output.",
+    "options": [
+     "Right: the ratio of the table values is $3$, not $2$.",
+     "$d$ would be proportional to $\\theta$ only if its graph were a line through the origin; the rates in the table are not constant.",
+     "The ratio from the table is $3$; tangent does not square its input.",
+     "$\\tan\\frac{\\pi}{3} = \\sqrt{3}$ and $2\\tan\\frac{\\pi}{6} = \\frac{2\\sqrt{3}}{3}$, which differ."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-10",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The graph of $y = \\tan x$ is shifted right $\\frac{\\pi}{4}$ units and up $2$ units. Write the new function $g$.",
+   "type": "expr",
+   "expr": {
+    "answer": "tan(x - pi/4) + 2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -0.5,
+     2
+    ],
+    "mode": "exact",
+    "lhs": "g(x) =",
+    "mistakes": [
+     {
+      "expr": "tan(x + pi/4) + 2",
+      "why": "A shift right subtracts inside the function: $x - \\frac{\\pi}{4}$, not $x + \\frac{\\pi}{4}$."
+     },
+     {
+      "expr": "tan(x) - pi/4 + 2",
+      "why": "Subtracting $\\frac{\\pi}{4}$ outside moves the graph down. A horizontal shift goes inside: $\\tan\\left(x - \\frac{\\pi}{4}\\right)$."
+     },
+     {
+      "expr": "tan(x - 2) + pi/4",
+      "why": "The two shifts are swapped: $\\frac{\\pi}{4}$ goes inside with $x$, and $2$ is added outside."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A shift right by $\\frac{\\pi}{4}$ replaces $x$ with $x - \\frac{\\pi}{4}$, and a shift up adds $2$ outside: $g(x) = \\tan\\left(x - \\frac{\\pi}{4}\\right) + 2$. Its asymptotes move to $x = \\frac{3\\pi}{4} + k\\pi$."
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-11",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the period of tangent to rewrite $\\tan(x + \\pi)$ as a single trigonometric function of $x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "tan(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1.2,
+     1.2
+    ],
+    "mode": "exact",
+    "lhs": "\\tan(x + \\pi) =",
+    "mistakes": [
+     {
+      "expr": "-tan(x)",
+      "why": "Both $\\sin(x + \\pi) = -\\sin x$ and $\\cos(x + \\pi) = -\\cos x$ change sign, so the quotient keeps its sign."
+     },
+     {
+      "expr": "tan(x) + pi",
+      "why": "A period adds to the input, not to the output: the graph repeats, it does not move up."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Tangent has period $\\pi$: adding $\\pi$ to the angle turns the terminal ray to the opposite direction, which changes the sign of both $\\sin$ and $\\cos$, so their quotient is unchanged. $\\tan(x + \\pi) = \\tan x$."
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-12",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statements are true for $y = \\tan x$? Select every true statement.",
+   "type": "multi",
+   "options": [
+    "Its zeros are at $x = k\\pi$ for integers $k$",
+    "Its vertical asymptotes are at $x = \\frac{\\pi}{2} + k\\pi$ for integers $k$",
+    "Its period is $2\\pi$",
+    "Its outputs lie between $-1$ and $1$",
+    "It is decreasing on $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$\\tan x = \\frac{\\sin x}{\\cos x}$ is $0$ where $\\sin x = 0$ ($x = k\\pi$) and undefined where $\\cos x = 0$ ($x = \\frac{\\pi}{2} + k\\pi$). Its period is $\\pi$, its range is $(-\\infty, \\infty)$, and it increases on each branch.",
+    "options": [
+     "True: $\\sin(k\\pi) = 0$, so $\\tan(k\\pi) = 0$.",
+     "True: $\\cos x = 0$ there, so the quotient is undefined and the outputs grow without bound nearby.",
+     "False: the period is $\\pi$, because $\\sin$ and $\\cos$ both change sign after $\\pi$.",
+     "False: that is the range of sine and cosine; tangent takes every real value.",
+     "False: on $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$ the outputs rise from $-\\infty$ to $\\infty$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-13",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "The terminal ray of an angle $\\theta$ in standard position passes through the point $(-3, 4)$. What is $\\tan\\theta$?",
+   "type": "single",
+   "options": [
+    "$-\\frac{4}{3}$",
+    "$-\\frac{3}{4}$",
+    "$\\frac{4}{3}$",
+    "$\\frac{4}{5}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\tan\\theta$ is the slope of the terminal ray: $\\frac{y}{x} = \\frac{4}{-3} = -\\frac{4}{3}$. The ray is in Quadrant II, where $\\sin$ is positive and $\\cos$ is negative, so the tangent is negative.",
+    "options": [
+     "Right: slope $\\frac{y}{x} = \\frac{4}{-3}$.",
+     "This is $\\frac{x}{y}$; tangent is $\\frac{y}{x}$, rise over run.",
+     "The point has $x = -3$, so the slope is negative.",
+     "This is $\\sin\\theta = \\frac{y}{r}$ with $r = 5$, not the tangent."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-14",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the period of $y = 5\\tan\\left(\\frac{\\pi x}{4}\\right)$?",
+   "type": "single",
+   "options": [
+    "$4$",
+    "$8$",
+    "$\\frac{\\pi^2}{4}$",
+    "$\\frac{\\pi}{4}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The period of $a\\tan(bx)$ is $\\frac{\\pi}{|b|}$. With $b = \\frac{\\pi}{4}$: $\\frac{\\pi}{\\pi/4} = 4$. The $5$ stretches the graph vertically and does not change the period.",
+    "options": [
+     "Right: $\\pi \\div \\frac{\\pi}{4} = 4$.",
+     "That is $\\frac{2\\pi}{b}$, the rule for sine and cosine.",
+     "This multiplies $\\pi$ by $b$; divide instead.",
+     "This is $b$ itself, not the period."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-15",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $f(x) = \\tan(bx)$ with $b > 0$, the value of $b$ increases. Predict how each feature changes.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The period of f",
+     "answer": "down",
+     "why": "The period is $\\frac{\\pi}{b}$, and a larger $b$ divides $\\pi$ by a larger number, so the graph repeats sooner."
+    },
+    {
+     "name": "The distance between two consecutive vertical asymptotes",
+     "answer": "down",
+     "why": "Consecutive asymptotes are one period apart, so they move closer together as the period shrinks."
+    },
+    {
+     "name": "The value f(0)",
+     "answer": "none",
+     "why": "$f(0) = \\tan(b\\cdot 0) = \\tan 0 = 0$ for every $b$, so every graph still passes through the origin."
+    }
+   ],
+   "why": {
+    "correct": "$b$ squeezes the graph horizontally: the period $\\frac{\\pi}{b}$ and the asymptote spacing shrink, while the zero at the origin stays."
+   }
+  },
+  {
+   "id": "pcalc-tangent-function-16",
+   "unit": "unit-3",
+   "topic": "tangent-function",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement about $\\tan x$ near $x = -\\frac{\\pi}{2}$ is true?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to -\\pi/2^+} \\tan x = -\\infty$",
+    "$\\lim_{x \\to -\\pi/2^+} \\tan x = \\infty$",
+    "$\\lim_{x \\to -\\pi/2^+} \\tan x = 0$",
+    "$\\lim_{x \\to -\\pi/2^+} \\tan x = -1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Just to the right of $-\\frac{\\pi}{2}$ (for example $x = -1.5$), $\\sin x$ is near $-1$ and $\\cos x$ is a small positive number, so $\\tan x$ is a large negative number. The branch on $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$ starts at $-\\infty$.",
+    "options": [
+     "Right: negative over small positive gives large negative outputs.",
+     "That is the behavior from the left of $-\\frac{\\pi}{2}$, where $\\cos x$ is negative.",
+     "$\\tan x$ is $0$ at $x = 0$, not near the asymptote.",
+     "$\\tan\\left(-\\frac{\\pi}{4}\\right) = -1$ is one point; closer to $-\\frac{\\pi}{2}$ the outputs keep falling."
+    ]
+   }
+  }
+ ]
+}

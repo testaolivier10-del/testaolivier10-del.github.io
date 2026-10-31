@@ -1,0 +1,57 @@
+<p>Once you know the graph of one function well, you know a whole family. Shift it, stretch it, flip it, and you get new functions whose graphs you can draw without plotting a single point. The original is the <b>parent</b>; the new one is its <b>transformation</b>, written in terms of the parent, such as $g(x) = 2f(x - 3) - 1$.</p>
+
+<h2>Outside changes act on outputs</h2>
+<p>Anything done to $f(x)$ after the function has acted changes the outputs, so it moves the graph up or down or stretches it vertically. The inputs stay where they were.</p>
+<ul>
+<li><b>Vertical translation:</b> $g(x) = f(x) + k$ moves every point $k$ units up (down if $k < 0$).</li>
+<li><b>Vertical dilation:</b> $g(x) = a f(x)$ multiplies every output by $a$. If $a > 1$ the graph is stretched away from the $x$-axis; if $0 < a < 1$ it is compressed toward it.</li>
+<li><b>Reflection across the $x$-axis:</b> $g(x) = -f(x)$ changes the sign of every output. A negative $a$ dilates and reflects at once.</li>
+</ul>
+
+<h2>Inside changes act on inputs, in reverse</h2>
+<p>Anything done to $x$ before the function acts changes which input produces each output. That is why the direction feels backward.</p>
+<ul>
+<li><b>Horizontal translation:</b> $g(x) = f(x - h)$ moves the graph $h$ units right. Check with a value: $g(h) = f(0)$, so the output $f$ had at $0$ now appears at $h$.</li>
+<li><b>Horizontal dilation:</b> $g(x) = f(bx)$ multiplies every input by $\frac{1}{b}$. So $f(2x)$ is squeezed toward the $y$-axis by a factor of $\frac{1}{2}$, and $f(\frac{x}{3})$ is stretched by a factor of $3$.</li>
+<li><b>Reflection across the $y$-axis:</b> $g(x) = f(-x)$ changes the sign of every input.</li>
+</ul>
+<table class="compare">
+<thead><tr><th scope="col">Formula</th><th scope="col">Acts on</th><th scope="col">The point $(a, b)$ on $f$ moves to</th></tr></thead>
+<tbody>
+<tr><td>$f(x) + 4$</td><td>outputs</td><td>$(a, b + 4)$</td></tr>
+<tr><td>$3f(x)$</td><td>outputs</td><td>$(a, 3b)$</td></tr>
+<tr><td>$-f(x)$</td><td>outputs</td><td>$(a, -b)$</td></tr>
+<tr><td>$f(x - 4)$</td><td>inputs</td><td>$(a + 4, b)$</td></tr>
+<tr><td>$f(3x)$</td><td>inputs</td><td>$(\frac{a}{3}, b)$</td></tr>
+<tr><td>$f(-x)$</td><td>inputs</td><td>$(-a, b)$</td></tr>
+</tbody>
+</table>
+
+<h2>Combining transformations</h2>
+<p>For $g(x) = a f(x - h) + k$, work from the input outward: shift the input, apply $f$, multiply by $a$, add $k$. The order matters on the output side. Multiplying by $2$ and then adding $1$ is not the same as adding $1$ and then multiplying by $2$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Let $f(x) = x^2$ and $g(x) = 2f(x - 3) - 1$. Where does the point $(1, 1)$ on $f$ go, and what is the vertex of $g$?</p>
+<p>The input moves $3$ right: $1 \to 4$. The output is doubled, then lowered by $1$: $1 \to 2 \to 1$. So $(1, 1)$ goes to $(4, 1)$.</p>
+<p>Check with the formula: $g(4) = 2f(1) - 1 = 2(1) - 1 = 1$. Correct.</p>
+<p>The vertex $(0, 0)$ goes to $(0 + 3, 2 \cdot 0 - 1) = (3, -1)$.</p>
+</div>
+<figure id="fig-parent" data-fig="transformations-parent"><figcaption>$f(x) = x^2$ and $g(x) = 2f(x - 3) - 1$: $3$ right, twice as tall, $1$ down.</figcaption></figure>
+<p>In <a class="figref" href="#fig-parent">the figure</a>, $g$ looks narrower. That is the vertical stretch: each output, measured from the vertex level, is twice as large.</p>
+
+<h2>Writing the new formula</h2>
+<p>To write $g$ as an expression in $x$, replace every $x$ in $f$ with what is inside the parentheses. Missing one is the most common slip.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Let $f(x) = x^2 - 4x$. Write $g(x) = f(x - 1) + 3$ in terms of $x$.</p>
+<p>Replace each $x$ with $(x - 1)$, in parentheses: $f(x - 1) = (x - 1)^2 - 4(x - 1)$.</p>
+<p>Add $3$: $g(x) = (x - 1)^2 - 4(x - 1) + 3$.</p>
+<p>Expand if you want standard form: $x^2 - 2x + 1 - 4x + 4 + 3 = x^2 - 6x + 8$.</p>
+</div>
+
+<h2>How the domain and range change</h2>
+<p>Because inside changes act on inputs, they change the domain. Because outside changes act on outputs, they change the range.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> $f$ has domain $[0, 4]$ and range $[-1, 3]$. Find the domain and range of $g(x) = -2f(x - 1)$.</p>
+<p>Domain: $g(x)$ needs $x - 1$ in $[0, 4]$, so $1 \le x \le 5$. The domain is $[1, 5]$.</p>
+<p>Range: multiply the ends by $-2$: $-1 \to 2$ and $3 \to -6$. Reorder from least to greatest: $[-6, 2]$.</p>
+</div>
+<p>Tables work the same way. If $n(x) = k(x - 3)$ and the table gives $k(2) = 6$, then $n(5) = k(2) = 6$. To find where $n(x) = 6$, solve $x - 3 = 2$.</p>

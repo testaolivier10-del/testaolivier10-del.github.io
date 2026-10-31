@@ -1,0 +1,11 @@
+{
+ "exp-log-inverses-reflect": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graphs of y = 2 to the x and y = log base 2 of x, mirror images across the dashed line y = x, with (2, 4) matching (4, 2) and (0, 1) matching (1, 0).",
+  "ext": "svg",
+  "w": 380,
+  "h": 360
+ }
+}

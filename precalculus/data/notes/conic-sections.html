@@ -1,0 +1,45 @@
+<p>A double cone, two ice-cream cones point to point, can be sliced by a plane in different ways. A cut straight across gives a circle; a tilted cut gives an <b>ellipse</b>; a cut parallel to the side gives a parabola; a steep cut through both cones gives the two branches of a <b>hyperbola</b>. These curves are the <b>conic sections</b>. Each is an implicitly defined curve, with an equation in $x$ and $y$.</p>
+<figure id="fig-three" data-fig="conic-sections-three"><figcaption>The three conic sections in standard position.</figcaption></figure>
+
+<h2>Parabolas</h2>
+<p>You know $y = a(x - h)^2 + k$, a parabola with vertex $(h, k)$ that opens up if $a > 0$ and down if $a < 0$. Swap the roles of $x$ and $y$ and you get a parabola that opens sideways:</p>
+$$x - h = a(y - k)^2.$$
+<p>It has vertex $(h, k)$ and opens right if $a > 0$, left if $a < 0$. A sideways parabola is not the graph of a function of $x$, since most $x$-values have two $y$-values.</p>
+
+<h2>Ellipses</h2>
+<p>An ellipse with center $(h, k)$ has the standard form</p>
+$$\frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2} = 1, \qquad a > 0, \; b > 0.$$
+<p>It reaches $a$ units left and right of the center and $b$ units up and down. The farthest points along the longer direction are the vertices; the longer axis has length $2a$ or $2b$, whichever is larger. When $a = b$ the ellipse is a circle of radius $a$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Describe $\frac{(x - 1)^2}{16} + \frac{(y + 2)^2}{4} = 1$.</p>
+<p>Center: $x - 1$ and $y + 2 = y - (-2)$ give $(1, -2)$.</p>
+<p>Distances: $a^2 = 16$ so $a = 4$ across; $b^2 = 4$ so $b = 2$ up and down. The ellipse is wider than tall.</p>
+<p>Vertices: $(1 \pm 4, -2)$, that is $(5, -2)$ and $(-3, -2)$; the long axis has length $8$. The top and bottom points are $(1, 0)$ and $(1, -4)$.</p>
+</div>
+
+<h2>Hyperbolas</h2>
+<p>Change the plus sign to a minus and the curve breaks into two branches:</p>
+$$\frac{(x - h)^2}{a^2} - \frac{(y - k)^2}{b^2} = 1.$$
+<p>This hyperbola opens left and right. Its vertices are $(h \pm a, k)$, and far from the center each branch gets closer and closer to the asymptotes $y - k = \pm\frac{b}{a}(x - h)$. If the $y$ term comes first, $\frac{(y - k)^2}{b^2} - \frac{(x - h)^2}{a^2} = 1$, it opens up and down with vertices $(h, k \pm b)$ and the same asymptotes.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Describe $\frac{x^2}{4} - \frac{y^2}{9} = 1$.</p>
+<p>Center $(0, 0)$, $a = 2$, $b = 3$; the $x$ term is positive, so it opens left and right. Vertices $(2, 0)$ and $(-2, 0)$. Asymptotes $y = \pm\frac{3}{2}x$.</p>
+<p>It never meets the $y$-axis: $x = 0$ gives $-\frac{y^2}{9} = 1$, so $y^2 = -9$, which has no real solution.</p>
+</div>
+
+<h2>Which conic is it?</h2>
+<table class="compare">
+<thead><tr><th scope="col">Squared terms</th><th scope="col">Conic</th><th scope="col">Example</th></tr></thead>
+<tbody>
+<tr><td>only one variable squared</td><td>parabola</td><td>$x = 2y^2 - 3$</td></tr>
+<tr><td>both squared, same sign</td><td>ellipse (circle if the coefficients match)</td><td>$4x^2 + 9y^2 = 36$</td></tr>
+<tr><td>both squared, opposite signs</td><td>hyperbola</td><td>$y^2 - 4x^2 = 16$</td></tr>
+</tbody>
+</table>
+<p>To read the details, rewrite in standard form. Divide so the right side is $1$: $4x^2 + 9y^2 = 36$ becomes $\frac{x^2}{9} + \frac{y^2}{4} = 1$. If there are linear terms, complete the square.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Identify $x^2 + y^2 - 6x + 4y - 3 = 0$.</p>
+<p>Group and move the constant: $(x^2 - 6x) + (y^2 + 4y) = 3$.</p>
+<p>Complete each square: add $9$ and $4$ to both sides, $(x - 3)^2 + (y + 2)^2 = 16$.</p>
+<p>A circle with center $(3, -2)$ and radius $4$.</p>
+</div>

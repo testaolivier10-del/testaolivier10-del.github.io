@@ -1,0 +1,48 @@
+<p>Some quantities rise quickly at first and then more and more slowly, without stopping: skill with practice, a sapling's height, sales after a launch. When the input has to multiply to give equal increases in the output, a <b>logarithmic model</b> fits. This page shows how to recognize that pattern, build the model from points or by regression, use it to predict, and say where it stops making sense.</p>
+
+<h2>Recognizing logarithmic data</h2>
+<p>Compare the three patterns side by side.</p>
+<table class="compare">
+<thead><tr><th scope="col">Model</th><th scope="col">Inputs</th><th scope="col">Outputs</th></tr></thead>
+<tbody>
+<tr><td>Linear</td><td>equal differences</td><td>equal differences</td></tr>
+<tr><td>Exponential</td><td>equal differences</td><td>equal ratios</td></tr>
+<tr><td>Logarithmic</td><td>equal ratios</td><td>equal differences</td></tr>
+</tbody>
+</table>
+<p>The logarithmic row is the exponential row with inputs and outputs swapped, which is what you would expect from inverse functions.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Typing speed $y$ after $x$ hours: $(1, 20)$, $(3, 26)$, $(9, 32)$, $(27, 38)$, $(81, 44)$. Which model fits, and why?</p>
+<p>The inputs are not equally spaced ($2$, $6$, $18$, $54$ apart), so equal differences in $y$ do not mean linear.</p>
+<p>The inputs are each $3$ times the one before, and the outputs each increase by $6$. Equal ratios in, equal differences out: logarithmic.</p>
+</div>
+
+<h2>Building the model from points</h2>
+<p>For $y = a + b\log_c x$, a point with $x = 1$ gives $a$ at once, because $\log_c 1 = 0$. A second point gives $b$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Fit $y = a + b\log_3 x$ to the typing data.</p>
+<p>At $x = 1$: $a = 20$.</p>
+<p>At $x = 3$: $20 + b \cdot 1 = 26$, so $b = 6$. The model is $y = 20 + 6\log_3 x$; every other point checks, for example $20 + 6 \cdot 4 = 44$ at $x = 81$.</p>
+</div>
+<p>With base $e$ and no point at $x = 1$, write two equations, $a + b\ln x_1 = y_1$ and $a + b\ln x_2 = y_2$, and solve the system.</p>
+
+<h2>Logarithmic regression</h2>
+<p>Real data are never exact. A graphing calculator's logarithmic regression fits $y = a + b\ln x$. Store $a$ and $b$ with full precision; rounding them first can change the third decimal place of every later answer. Check the fit with a residual plot: residuals scattered with no pattern support the model.</p>
+
+<h2>Using the model</h2>
+<div class="worked">
+<p><b>Worked example 3.</b> With $y = 20 + 6\log_3 x$, when does the speed reach $35$ words per minute?</p>
+<p>$6\log_3 x = 15$, so $\log_3 x = 2.5$.</p>
+<p>Exponential form: $x = 3^{2.5} = 9\sqrt{3} \approx 15.6$ hours.</p>
+</div>
+<p>The same idea with a regression model: $a + b\ln x = 60$ gives $x = e^{(60 - a)/b}$.</p>
+
+<h2>Rate of change and its meaning</h2>
+<p>For $b > 0$, a logarithmic model is increasing and concave down. Average rates of change over later intervals are smaller: in context, each extra unit of input adds less than the one before. And doubling the input always adds the same amount, $b\ln 2$. For $y = 52 + 18\ln x$, each doubling of weeks adds about $12.5$ words per minute.</p>
+
+<h2>Where the model stops working</h2>
+<ul>
+<li><b>Near $x = 0$.</b> $\lim_{x \to 0^+}(a + b\ln x) = -\infty$, so the model eventually gives negative speeds or heights. The context rules those inputs out.</li>
+<li><b>Far past the data.</b> The model keeps rising without bound, but nothing in the data says the real quantity does. Past the last data point there is no evidence for the model, so error can grow.</li>
+</ul>
+<p>When you explain either one, name the specific values and say what goes wrong in context.</p>

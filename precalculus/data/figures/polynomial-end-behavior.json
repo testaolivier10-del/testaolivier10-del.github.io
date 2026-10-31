@@ -1,0 +1,12 @@
+{
+ "polynomial-end-behavior-ends": {
+  "file": "figures/polynomial-end-behavior-ends.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of p(x) = −0.5x³ + 3x. Its leading term is −0.5x³ (odd degree, negative leading coefficient): the left end rises without bound and the right end falls without bound."
+ }
+}

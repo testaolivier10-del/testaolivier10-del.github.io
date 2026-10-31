@@ -1,0 +1,529 @@
+{
+ "stimuli": {
+  "trig-identities-s1": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = 1 - 2\\sin^2 x$",
+   "plot": {
+    "label": "Graph of f(x) = 1 - 2 sin squared x for x from 0 to 2 pi, a wave between -1 and 1 that starts at 1",
+    "x": [
+     0,
+     6.283185307179586
+    ],
+    "y": [
+     -1.5,
+     1.5
+    ],
+    "piX": true,
+    "yStep": 0.5,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "1 - 2sin(x)^2",
+      "domain": [
+       0,
+       6.283185307179586
+      ],
+      "label": "f"
+     }
+    ]
+   }
+  },
+  "trig-identities-s2": {
+   "kind": "table",
+   "title": "Two angles $\\alpha$ and $\\beta$ in Quadrant I",
+   "table": {
+    "caption": "Sine and cosine of two angles α and β, each between 0 and π/2",
+    "cols": [
+     "Angle",
+     "Sine",
+     "Cosine"
+    ],
+    "rows": [
+     [
+      "$\\alpha$",
+      "$\\frac{3}{5}$",
+      "$\\frac{4}{5}$"
+     ],
+     [
+      "$\\beta$",
+      "$\\frac{12}{13}$",
+      "$\\frac{5}{13}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-trig-identities-1",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "trig-identities-s1",
+   "q": "The graph shows $f(x) = 1 - 2\\sin^2 x$. Which function has the same graph?",
+   "type": "single",
+   "options": [
+    "$y = \\cos(2x)$",
+    "$y = \\cos^2 x$",
+    "$y = \\sin(2x)$",
+    "$y = 2\\cos x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "One form of the double-angle identity is $\\cos(2x) = 1 - 2\\sin^2 x$. The graph agrees: it starts at $1$, reaches $-1$ at $x = \\frac{\\pi}{2}$ and repeats every $\\pi$.",
+    "options": [
+     "Right: $1 - 2\\sin^2 x$ is one of the three forms of $\\cos(2x)$.",
+     "$\\cos^2 x$ is never negative, but the graph goes down to $-1$.",
+     "$\\sin(2x)$ starts at $0$; the graph starts at $1$.",
+     "$2\\cos x$ reaches $2$ and has period $2\\pi$; the graph stays between $-1$ and $1$ and has period $\\pi$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-2",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "trig-identities-s1",
+   "q": "For the function in the graph, what is the period of $f$?",
+   "type": "single",
+   "options": [
+    "$\\pi$",
+    "$2\\pi$",
+    "$\\frac{\\pi}{2}$",
+    "$4\\pi$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f(x) = \\cos(2x)$ has period $\\frac{2\\pi}{2} = \\pi$. On the graph, the peaks at $0$, $\\pi$ and $2\\pi$ are $\\pi$ apart.",
+    "options": [
+     "Right: the graph repeats every $\\pi$.",
+     "That is the period of $\\sin x$; squaring and doubling make the graph repeat twice as often.",
+     "That would be $\\cos(4x)$.",
+     "That would be $\\cos\\left(\\frac{x}{2}\\right)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-3",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "trig-identities-s1",
+   "q": "For the function in the graph, find the exact value of $f\\left(\\frac{\\pi}{6}\\right)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "That is $1 - 2\\cdot\\frac{1}{2}$: the sine was not squared. $\\sin^2\\frac{\\pi}{6} = \\frac{1}{4}$."
+     },
+     {
+      "value": "3/4",
+      "why": "That is $1 - \\sin^2\\frac{\\pi}{6}$; the $2$ in front multiplies $\\sin^2 x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f\\left(\\frac{\\pi}{6}\\right) = 1 - 2\\left(\\frac{1}{2}\\right)^2 = 1 - \\frac{1}{2} = \\frac{1}{2}$. Check with the identity: $\\cos\\left(2\\cdot\\frac{\\pi}{6}\\right) = \\cos\\frac{\\pi}{3} = \\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-4",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "trig-identities-s1",
+   "q": "For the function in the graph, find every solution of $f(x) = 0$ on $[0, 2\\pi)$.",
+   "type": "single",
+   "options": [
+    "$\\frac{\\pi}{4}$, $\\frac{3\\pi}{4}$, $\\frac{5\\pi}{4}$ and $\\frac{7\\pi}{4}$",
+    "$\\frac{\\pi}{4}$ and $\\frac{3\\pi}{4}$",
+    "$\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$",
+    "$\\frac{\\pi}{4}$, $\\frac{3\\pi}{4}$, $\\frac{5\\pi}{4}$, $\\frac{7\\pi}{4}$ and $\\frac{9\\pi}{4}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f(x) = \\cos(2x) = 0$. With $u = 2x$ in $[0, 4\\pi)$: $u = \\frac{\\pi}{2}, \\frac{3\\pi}{2}, \\frac{5\\pi}{2}, \\frac{7\\pi}{2}$, so $x = \\frac{\\pi}{4}, \\frac{3\\pi}{4}, \\frac{5\\pi}{4}, \\frac{7\\pi}{4}$. The graph crosses the axis four times.",
+    "options": [
+     "Right: two periods of length $\\pi$, two zeros each.",
+     "That is one period; $[0, 2\\pi)$ holds two periods of $f$.",
+     "These are values of $2x$; divide by $2$.",
+     "$\\frac{9\\pi}{4}$ is outside $[0, 2\\pi)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-5",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "trig-identities-s1",
+   "q": "Rewrite $f(x) = 1 - 2\\sin^2 x$ using $\\cos x$ only.",
+   "type": "expr",
+   "expr": {
+    "answer": "2cos(x)^2 - 1",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "mode": "exact",
+    "lhs": "f(x) =",
+    "mistakes": [
+     {
+      "expr": "1 - 2cos(x)^2",
+      "why": "$\\sin^2 x$ is $1 - \\cos^2 x$, not $\\cos^2 x$; distribute the $-2$ over $1 - \\cos^2 x$."
+     },
+     {
+      "expr": "2cos(x) - 1",
+      "why": "The cosine is squared: $2\\cos^2 x - 1$."
+     },
+     {
+      "expr": "1 - 2(1 - cos(x))^2",
+      "why": "$\\sin^2 x = 1 - \\cos^2 x$; the square is on the cosine alone, not on $1 - \\cos x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Replace $\\sin^2 x$ with $1 - \\cos^2 x$ (Pythagorean identity): $1 - 2(1 - \\cos^2 x) = 1 - 2 + 2\\cos^2 x = 2\\cos^2 x - 1$."
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-6",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "trig-identities-s2",
+   "q": "Using the table, find the exact value of $\\sin(\\alpha + \\beta)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "63/65",
+    "mistakes": [
+     {
+      "value": "99/65",
+      "why": "That is $\\sin\\alpha + \\sin\\beta$. The sine of a sum is not the sum of the sines; use $\\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$."
+     },
+     {
+      "value": "56/65",
+      "why": "That is $\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$, which is $\\cos(\\alpha - \\beta)$."
+     },
+     {
+      "value": "-33/65",
+      "why": "The sine sum identity adds the two products: $\\frac{15}{65} + \\frac{48}{65}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta = \\frac{3}{5}\\cdot\\frac{5}{13} + \\frac{4}{5}\\cdot\\frac{12}{13} = \\frac{15}{65} + \\frac{48}{65} = \\frac{63}{65}$."
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-7",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "trig-identities-s2",
+   "q": "Using the table, find the exact value of $\\cos(\\alpha + \\beta)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-16/65",
+    "mistakes": [
+     {
+      "value": "56/65",
+      "why": "The cosine of a sum subtracts: $\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$."
+     },
+     {
+      "value": "69/65",
+      "why": "That is $\\cos\\alpha + \\cos\\beta$. Use the sum identity instead."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta = \\frac{4}{5}\\cdot\\frac{5}{13} - \\frac{3}{5}\\cdot\\frac{12}{13} = \\frac{20}{65} - \\frac{36}{65} = -\\frac{16}{65}$."
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-8",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "trig-identities-s2",
+   "q": "Using the table, find the exact value of $\\sin(2\\alpha)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "24/25",
+    "mistakes": [
+     {
+      "value": "6/5",
+      "why": "That is $2\\sin\\alpha$. The double-angle identity is $2\\sin\\alpha\\cos\\alpha$; sine values never exceed $1$."
+     },
+     {
+      "value": "12/25",
+      "why": "That is $\\sin\\alpha\\cos\\alpha$; multiply by $2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha = 2\\cdot\\frac{3}{5}\\cdot\\frac{4}{5} = \\frac{24}{25}$."
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-9",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "trig-identities-s2",
+   "q": "Using the table, find the exact value of $\\cos(2\\beta)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-119/169",
+    "mistakes": [
+     {
+      "value": "10/13",
+      "why": "That is $2\\cos\\beta$; use $\\cos^2\\beta - \\sin^2\\beta$."
+     },
+     {
+      "value": "119/169",
+      "why": "The identity is $\\cos^2\\beta - \\sin^2\\beta$, cosine first: $\\frac{25}{169} - \\frac{144}{169}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\cos(2\\beta) = \\cos^2\\beta - \\sin^2\\beta = \\frac{25}{169} - \\frac{144}{169} = -\\frac{119}{169}$. The answer is negative because $\\beta > \\frac{\\pi}{4}$, so $2\\beta > \\frac{\\pi}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-10",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Rewrite $\\frac{\\sin(2x)}{2\\cos^2 x}$ as a single trigonometric function of $x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "tan(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1.2,
+     1.2
+    ],
+    "mode": "exact",
+    "lhs": "\\frac{\\sin(2x)}{2\\cos^2 x} =",
+    "mistakes": [
+     {
+      "expr": "tan(2x)",
+      "why": "The $2$ in $\\sin(2x)$ is part of the angle, not a factor to cancel with the $2$ below. Expand $\\sin(2x) = 2\\sin x\\cos x$ first."
+     },
+     {
+      "expr": "sin(x)",
+      "why": "$\\frac{2\\sin x\\cos x}{2\\cos^2 x}$ cancels one cosine, leaving $\\frac{\\sin x}{\\cos x}$."
+     },
+     {
+      "expr": "cot(x)",
+      "why": "The sine is on top, so the quotient is $\\frac{\\sin x}{\\cos x} = \\tan x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Use $\\sin(2x) = 2\\sin x\\cos x$: $\\frac{2\\sin x\\cos x}{2\\cos^2 x} = \\frac{\\sin x}{\\cos x} = \\tan x$. Stop only when one trigonometric function is left."
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-11",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Rewrite $(1 + \\tan^2 x)\\cos x$ as a single trigonometric function of $x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "sec(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1.2,
+     1.2
+    ],
+    "mode": "exact",
+    "lhs": "(1 + \\tan^2 x)\\cos x =",
+    "mistakes": [
+     {
+      "expr": "sec(x)^2",
+      "why": "$1 + \\tan^2 x = \\sec^2 x$, and multiplying by $\\cos x$ cancels one factor: $\\sec x$."
+     },
+     {
+      "expr": "cos(x)",
+      "why": "$1 + \\tan^2 x$ is $\\sec^2 x$, not $1$; the result is $\\frac{1}{\\cos x}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$1 + \\tan^2 x = \\sec^2 x$ (divide $\\sin^2 x + \\cos^2 x = 1$ by $\\cos^2 x$). Then $\\sec^2 x\\cos x = \\frac{1}{\\cos^2 x}\\cdot\\cos x = \\frac{1}{\\cos x} = \\sec x$."
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-12",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use a difference identity to rewrite $\\cos\\left(x - \\frac{\\pi}{2}\\right)$.",
+   "type": "single",
+   "options": [
+    "$\\sin x$",
+    "$-\\sin x$",
+    "$\\cos x$",
+    "$-\\cos x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\cos\\left(x - \\frac{\\pi}{2}\\right) = \\cos x\\cos\\frac{\\pi}{2} + \\sin x\\sin\\frac{\\pi}{2} = \\cos x\\cdot 0 + \\sin x\\cdot 1 = \\sin x$. Cosine shifted right $\\frac{\\pi}{2}$ is sine.",
+    "options": [
+     "Right: the cosine term drops out because $\\cos\\frac{\\pi}{2} = 0$.",
+     "The cosine difference identity adds: $\\cos a\\cos b + \\sin a\\sin b$.",
+     "The $\\cos x$ term is multiplied by $\\cos\\frac{\\pi}{2} = 0$.",
+     "The surviving term is $\\sin x\\sin\\frac{\\pi}{2} = \\sin x$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-13",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which equations are identities, true for every $x$ where both sides are defined? Select every identity.",
+   "type": "multi",
+   "options": [
+    "$\\sin^2 x = 1 - \\cos^2 x$",
+    "$\\sin(2x) = 2\\sin x$",
+    "$\\cos(2x) = \\cos^2 x - \\sin^2 x$",
+    "$\\sin(x + y) = \\sin x + \\sin y$",
+    "$1 + \\tan^2 x = \\sec^2 x$"
+   ],
+   "correct": [
+    0,
+    2,
+    4
+   ],
+   "why": {
+    "correct": "The Pythagorean identity and its forms, and the double-angle identity for cosine, hold everywhere. Doubling an angle does not double its sine, and the sine of a sum is not the sum of the sines.",
+    "options": [
+     "Identity: $\\sin^2 x + \\cos^2 x = 1$ rearranged.",
+     "Not an identity: at $x = \\frac{\\pi}{2}$, $\\sin\\pi = 0$ but $2\\sin\\frac{\\pi}{2} = 2$.",
+     "Identity: one form of the double-angle identity.",
+     "Not an identity: at $x = y = \\frac{\\pi}{2}$, $\\sin\\pi = 0$ but the right side is $2$.",
+     "Identity: divide $\\sin^2 x + \\cos^2 x = 1$ by $\\cos^2 x$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-14",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find every solution of $\\sin(2x) = \\sin x$ on $[0, 2\\pi)$.",
+   "type": "single",
+   "options": [
+    "$0$, $\\frac{\\pi}{3}$, $\\pi$ and $\\frac{5\\pi}{3}$",
+    "$\\frac{\\pi}{3}$ and $\\frac{5\\pi}{3}$",
+    "$0$ and $\\pi$",
+    "$0$, $\\frac{\\pi}{3}$, $\\frac{2\\pi}{3}$ and $\\pi$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$2\\sin x\\cos x = \\sin x$, so $2\\sin x\\cos x - \\sin x = 0$ and $\\sin x(2\\cos x - 1) = 0$. Either $\\sin x = 0$ ($x = 0, \\pi$) or $\\cos x = \\frac{1}{2}$ ($x = \\frac{\\pi}{3}, \\frac{5\\pi}{3}$).",
+    "options": [
+     "Right: factor out $\\sin x$ and solve both factors.",
+     "Dividing by $\\sin x$ loses $x = 0$ and $x = \\pi$, where $\\sin x = 0$.",
+     "These come from $\\sin x = 0$ alone; the factor $2\\cos x - 1$ gives two more.",
+     "$\\cos\\frac{2\\pi}{3} = -\\frac{1}{2}$; the second angle with cosine $\\frac{1}{2}$ is $\\frac{5\\pi}{3}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-15",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 3,
+   "q": "Use $\\frac{\\pi}{12} = \\frac{\\pi}{3} - \\frac{\\pi}{4}$ to find the exact value of $\\cos\\frac{\\pi}{12}$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "(sqrt(6) + sqrt(2))/4",
+    "mistakes": [
+     {
+      "value": "(sqrt(6) - sqrt(2))/4",
+      "why": "The cosine difference identity adds the products: $\\cos a\\cos b + \\sin a\\sin b$."
+     },
+     {
+      "value": "1/2 - sqrt(2)/2",
+      "why": "That is $\\cos\\frac{\\pi}{3} - \\cos\\frac{\\pi}{4}$. The cosine of a difference is not the difference of the cosines."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\cos\\left(\\frac{\\pi}{3} - \\frac{\\pi}{4}\\right) = \\cos\\frac{\\pi}{3}\\cos\\frac{\\pi}{4} + \\sin\\frac{\\pi}{3}\\sin\\frac{\\pi}{4} = \\frac{1}{2}\\cdot\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{3}}{2}\\cdot\\frac{\\sqrt{2}}{2} = \\frac{\\sqrt{2} + \\sqrt{6}}{4}$."
+   }
+  },
+  {
+   "id": "pcalc-trig-identities-16",
+   "unit": "unit-3",
+   "topic": "trig-identities",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "If $\\cos x = \\frac{1}{3}$, what is the exact value of $\\cos^2 x - \\sin^2 x$?",
+   "type": "single",
+   "options": [
+    "$-\\frac{7}{9}$",
+    "$-\\frac{1}{3}$",
+    "$\\frac{7}{9}$",
+    "$-\\frac{1}{9}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\cos^2 x - \\sin^2 x = \\cos(2x) = 2\\cos^2 x - 1 = 2\\cdot\\frac{1}{9} - 1 = -\\frac{7}{9}$. Directly: $\\sin^2 x = 1 - \\frac{1}{9} = \\frac{8}{9}$, and $\\frac{1}{9} - \\frac{8}{9} = -\\frac{7}{9}$.",
+    "options": [
+     "Right: $2\\cos^2 x - 1$ with $\\cos^2 x = \\frac{1}{9}$.",
+     "That is $2\\cos x - 1$: the cosine was not squared.",
+     "The sign is reversed: $\\frac{1}{9} - \\frac{8}{9}$ is negative.",
+     "That uses $\\sin^2 x = \\frac{2}{9}$; from the Pythagorean identity, $\\sin^2 x = 1 - \\frac{1}{9} = \\frac{8}{9}$."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "model-construction-quadratic": {
+  "file": "figures/model-construction-quadratic.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Plant sales S, in hundreds, against month t: the data points (1, 14), (3, 30) and (5, 30) on the parabola S(t) = -2t^2 + 16t, drawn from t = 0 to t = 8 where the sales return to 0."
+ }
+}

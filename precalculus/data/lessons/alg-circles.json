@@ -1,0 +1,60 @@
+{
+ "topic": "alg-circles",
+ "hook": "A 12-inch pizza cut into 8 slices gives each slice a crust about 4.7 inches long. The crust is an arc, and its length is a fixed fraction of the whole circle. Arcs, circles on a grid and two famous right triangles are the last pieces you need before sine and cosine become functions.",
+ "prereq": [
+  {
+   "q": "In a right triangle, the side opposite angle $A$ is $4$ and the hypotenuse is $8$. What is $\\sin A$?",
+   "options": ["$\\frac{1}{2}$", "$2$", "$\\frac{\\sqrt{3}}{2}$", "$4$"],
+   "correct": 0,
+   "why": "Sine is opposite over hypotenuse: $\\frac{4}{8} = \\frac{1}{2}$.",
+   "review": "alg-right-triangle"
+  },
+  {
+   "q": "Expand $(x + 3)^2$.",
+   "options": ["$x^2 + 6x + 9$", "$x^2 + 9$", "$x^2 + 3x + 9$", "$x^2 + 6x + 6$"],
+   "correct": 0,
+   "why": "$(x + 3)(x + 3) = x^2 + 3x + 3x + 9 = x^2 + 6x + 9$.",
+   "review": "alg-quadratics"
+  }
+ ],
+ "figure": {
+  "figure": "alg-circles-special",
+  "caption": "Learn these two triangles by heart: their side ratios give exact values of sine and cosine at $30^\\circ$, $45^\\circ$ and $60^\\circ$."
+ },
+ "chain": [
+  {
+   "cause": "A right triangle with two $45^\\circ$ angles has equal legs",
+   "effect": "with legs $1$, the hypotenuse is $\\sqrt{1^2 + 1^2} = \\sqrt{2}$"
+  },
+  {
+   "cause": "Cut an equilateral triangle of side $2$ in half",
+   "effect": "you get a 30-60-90 triangle with short leg $1$, hypotenuse $2$ and long leg $\\sqrt{2^2 - 1^2} = \\sqrt{3}$"
+  },
+  {
+   "cause": "A central angle of $\\theta$ degrees takes the fraction $\\frac{\\theta}{360}$ of the circle",
+   "effect": "its arc has length $s = \\frac{\\theta}{360} \\cdot 2\\pi r$"
+  },
+  {
+   "cause": "Every point of a circle is the same distance $r$ from the center $(h, k)$",
+   "effect": "the Pythagorean theorem gives its equation, $(x - h)^2 + (y - k)^2 = r^2$"
+  }
+ ],
+ "ideas": [
+  "45-45-90: sides $1 : 1 : \\sqrt{2}$. 30-60-90: sides $1 : \\sqrt{3} : 2$, with the short leg across from $30^\\circ$.",
+  "So $\\sin 30^\\circ = \\frac{1}{2}$, $\\cos 30^\\circ = \\frac{\\sqrt{3}}{2}$, $\\sin 45^\\circ = \\cos 45^\\circ = \\frac{\\sqrt{2}}{2}$, $\\sin 60^\\circ = \\frac{\\sqrt{3}}{2}$, $\\cos 60^\\circ = \\frac{1}{2}$.",
+  "Arc length is a fraction of the circumference: $s = \\frac{\\theta}{360} \\cdot 2\\pi r$ for an angle of $\\theta$ degrees.",
+  "The circle with center $(h, k)$ and radius $r$ is $(x - h)^2 + (y - k)^2 = r^2$. The right side is $r^2$, not $r$."
+ ],
+ "misconception": {
+  "wrong": "In a 30-60-90 triangle the side across from $60^\\circ$ is twice the side across from $30^\\circ$, because the angle is twice as big.",
+  "right": "Sides do not grow in step with angles. The sides are $1$, $\\sqrt{3}$ and $2$: the hypotenuse, across from $90^\\circ$, is twice the short leg, and the side across from $60^\\circ$ is $\\sqrt{3} \\approx 1.73$ times it."
+ },
+ "check": [
+  "pcalc-alg-circles-2",
+  "pcalc-alg-circles-3",
+  "pcalc-alg-circles-5",
+  "pcalc-alg-circles-7",
+  "pcalc-alg-circles-10"
+ ],
+ "summary": "The 45-45-90 triangle has sides $1 : 1 : \\sqrt{2}$ and the 30-60-90 triangle $1 : \\sqrt{3} : 2$; they give exact sines and cosines at $30^\\circ$, $45^\\circ$ and $60^\\circ$. An arc cut off by a central angle of $\\theta$ degrees is the fraction $\\frac{\\theta}{360}$ of the circumference $2\\pi r$. The circle with center $(h, k)$ and radius $r$ is $(x - h)^2 + (y - k)^2 = r^2$."
+}

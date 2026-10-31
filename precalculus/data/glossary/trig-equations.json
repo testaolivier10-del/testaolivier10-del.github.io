@@ -1,0 +1,5 @@
+{
+ "trig-equation": {
+  "def": "An equation or inequality in which the unknown is the input of a trigonometric function, such as $2\\sin x = 1$ or $\\cos(2x) \\le 0$. It usually has two solutions per period; to find all of them in an interval, isolate the function, take the principal value, use symmetry for the second angle, and add periods."
+ }
+}

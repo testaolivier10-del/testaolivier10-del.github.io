@@ -1,0 +1,88 @@
+{
+ "topic": "exp-log-equations",
+ "hook": "A medicine leaves the body so that $200 \\cdot (0.8)^t$ milligrams remain after $t$ hours. When does it fall below $50$ milligrams? The unknown is in the exponent, so ordinary algebra cannot reach it. Logarithms bring the exponent down, and that turns the question into one you can solve.",
+ "prereq": [
+  {
+   "q": "Which is equal to $\\log_2 x + \\log_2 3$ for $x > 0$?",
+   "options": [
+    "$\\log_2(3x)$",
+    "$\\log_2(x + 3)$",
+    "$3\\log_2 x$",
+    "$\\log_2 \\frac{x}{3}$"
+   ],
+   "correct": 0,
+   "why": "Product property.",
+   "review": "logarithmic-manipulation"
+  },
+  {
+   "q": "$\\ln$ and $e^x$ are inverse functions. What is $\\ln(e^{5})$?",
+   "options": [
+    "$5$",
+    "$e^5$",
+    "$5e$",
+    "$\\ln 5$"
+   ],
+   "correct": 0,
+   "why": "$\\ln$ undoes $e^x$.",
+   "review": "exp-log-inverses"
+  },
+  {
+   "q": "Solve $x^2 - 2x - 8 = 0$.",
+   "options": [
+    "$x = 4$ or $x = -2$",
+    "$x = -4$ or $x = 2$",
+    "$x = 8$ or $x = -1$",
+    "$x = 2$ or $x = 4$"
+   ],
+   "correct": 0,
+   "why": "$(x - 4)(x + 2) = 0$.",
+   "review": "alg-quadratics"
+  }
+ ],
+ "figure": {
+  "figure": "exp-log-equations-intersect",
+  "caption": "The solution of $2^x = 10$ is where the graph of $y = 2^x$ meets $y = 10$: $x = \\log_2 10 \\approx 3.32$, between $3$ and $4$."
+ },
+ "chain": [
+  {
+   "cause": "The unknown is in an exponent",
+   "effect": "isolate the power, then take a logarithm of both sides (or use a common base)"
+  },
+  {
+   "cause": "The unknown is inside logarithms",
+   "effect": "combine them into one logarithm, then rewrite in exponential form"
+  },
+  {
+   "cause": "Combining logarithms widens the domain",
+   "effect": "some roots of the new equation are extraneous: check each in the original"
+  },
+  {
+   "cause": "The equation is quadratic in $e^x$",
+   "effect": "substitute $u = e^x$, solve, and reject any $u \\le 0$"
+  },
+  {
+   "cause": "An inequality with $b^x$ or $\\log_b x$",
+   "effect": "the direction stays for $b > 1$ and flips for $0 < b < 1$; respect the domain"
+  }
+ ],
+ "ideas": [
+  "Exponential equations: isolate $b^{(\\ldots)}$, then use a common base or take $\\log$ or $\\ln$ of both sides.",
+  "Logarithmic equations: get one logarithm on each side or one logarithm equal to a number, then rewrite as a power.",
+  "Check every answer in the original equation; a value that makes any logarithm's input $0$ or negative is extraneous.",
+  "Inverses of transformed functions: swap $x$ and $y$, undo the outer steps in reverse order, and use the matching exponential or logarithm."
+ ],
+ "misconception": {
+  "wrong": "Solving $\\ln x + \\ln(x - 2) = \\ln 8$ gives $x = 4$ or $x = -2$, so both are answers.",
+  "right": "$-2$ solves the quadratic $x^2 - 2x - 8 = 0$ but not the original equation, where $\\ln(-2)$ is undefined. It is extraneous; the only solution is $x = 4$."
+ },
+ "check": [
+  "pcalc-exp-log-equations-1",
+  "pcalc-exp-log-equations-2",
+  "pcalc-exp-log-equations-6",
+  "pcalc-exp-log-equations-7",
+  "pcalc-exp-log-equations-8",
+  "pcalc-exp-log-equations-14",
+  "pcalc-exp-log-equations-19"
+ ],
+ "summary": "To solve an exponential equation, isolate the power and use a common base or a logarithm. To solve a logarithmic equation, combine into one logarithm and rewrite as a power, then check for extraneous solutions. An equation quadratic in $e^x$ is solved with $u = e^x$, rejecting roots where $e^x$ would not be positive. Inequalities keep their direction for bases above $1$ and flip for bases between $0$ and $1$."
+}

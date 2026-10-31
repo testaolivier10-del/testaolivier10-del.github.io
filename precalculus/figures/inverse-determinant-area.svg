@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 290" width="370" height="290" role="img" aria-labelledby="t d">
+<title id="t">The parallelogram made by the columns of a matrix</title>
+<desc id="d">The column vectors &lt;3, 1&gt; and &lt;1, 2&gt; drawn from the origin, and the shaded parallelogram they make, with corners (0, 0), (3, 1), (4, 3) and (1, 2). Its area is 5, the determinant 3 times 2 minus 1 times 1.</desc>
+<rect width="370" height="290" fill="#fff"/>
+<line x1="40" y1="16" x2="40" y2="256" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="90" y1="16" x2="90" y2="256" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="140" y1="16" x2="140" y2="256" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="190" y1="16" x2="190" y2="256" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="240" y1="16" x2="240" y2="256" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="290" y1="16" x2="290" y2="256" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="340" y1="16" x2="340" y2="256" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="40" y1="256" x2="340" y2="256" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="40" y1="208" x2="340" y2="208" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="40" y1="160" x2="340" y2="160" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="40" y1="112" x2="340" y2="112" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="40" y1="64" x2="340" y2="64" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="40" y1="16" x2="340" y2="16" stroke="#E3E8E6" stroke-width="1"/>
+<line x1="40" y1="208" x2="340" y2="208" stroke="#7A8583" stroke-width="1.4"/>
+<line x1="90" y1="16" x2="90" y2="256" stroke="#7A8583" stroke-width="1.4"/>
+<text x="40" y="223" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >−1</tspan></text>
+<text x="140" y="223" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >1</tspan></text>
+<text x="190" y="223" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >2</tspan></text>
+<text x="240" y="223" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >3</tspan></text>
+<text x="290" y="223" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >4</tspan></text>
+<text x="340" y="223" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >5</tspan></text>
+<text x="85" y="260" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >−1</tspan></text>
+<text x="85" y="164" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >1</tspan></text>
+<text x="85" y="116" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >2</tspan></text>
+<text x="85" y="68" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >3</tspan></text>
+<text x="85" y="20" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >4</tspan></text>
+<text x="85" y="223" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0</tspan></text>
+<text x="338" y="202" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">x</tspan></text>
+<text x="96" y="28" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5B6664" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">y</tspan></text>
+<polygon points="90,208 240,160 290,64 140,112" fill="#11592F" fill-opacity="0.18" stroke="#11592F" stroke-width="1.6"/>
+<line x1="90" y1="208" x2="231.43" y2="162.74" stroke="#0072B2" stroke-width="2.6"/><path d="M240,160 L230.4,169.37 L226.74,157.94 Z" fill="#0072B2"/>
+<line x1="90" y1="208" x2="135.84" y2="119.98" stroke="#D55E00" stroke-width="2.6"/><path d="M140,112 L139.78,125.41 L129.14,119.87 Z" fill="#D55E00"/>
+<text x="246" y="174" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#0072B2" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >⟨3, 1⟩</tspan></text>
+<text x="134" y="106" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#D55E00" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >⟨1, 2⟩</tspan></text>
+<text x="190" y="141" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#11592F" text-anchor="middle" font-weight="bold" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >area 5</tspan></text>
+</svg>

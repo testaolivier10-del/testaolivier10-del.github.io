@@ -1,0 +1,12 @@
+{
+ "complex-zeros-touch": {
+  "file": "figures/complex-zeros-touch.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of p(x) = 0.25(x + 2)(x − 1)²(x − 3). It crosses the x-axis at x = −2 and x = 3, the zeros of multiplicity 1, and touches the axis without crossing at x = 1, the zero of multiplicity 2."
+ }
+}

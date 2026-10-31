@@ -1,0 +1,556 @@
+{
+ "stimuli": {
+  "inverse-trig-s1": {
+   "kind": "graph",
+   "title": "The graph of $y = \\cos^{-1} x$",
+   "plot": {
+    "label": "Graph of y = inverse cosine of x on [-1, 1], falling from (-1, pi) through (0, pi/2) to (1, 0), with closed endpoints",
+    "x": [
+     -1.5,
+     1.5
+    ],
+    "y": [
+     -0.5,
+     3.5
+    ],
+    "xStep": 0.5,
+    "yStep": 0.5,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "arccos(x)",
+      "domain": [
+       -1,
+       1
+      ],
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "label": "y = cos^-1 x"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       1.5707963267948966
+      ]
+     }
+    ],
+    "labels": [
+     {
+      "at": [
+       -1,
+       3.33
+      ],
+      "text": "(−1, π)",
+      "anchor": "start"
+     },
+     {
+      "at": [
+       0.08,
+       1.75
+      ],
+      "text": "(0, π/2)",
+      "anchor": "start"
+     }
+    ]
+   }
+  },
+  "inverse-trig-s2": {
+   "kind": "table",
+   "title": "Four wheelchair ramp designs",
+   "text": "<p>Each ramp rises a vertical distance over a horizontal run. The angle $\\theta$ between a ramp and the ground satisfies $\\tan\\theta = \\frac{\\text{rise}}{\\text{run}}$, with $0 < \\theta < \\frac{\\pi}{2}$. Use a calculator in radian mode.</p>",
+   "table": {
+    "caption": "Rise and horizontal run of four ramp designs, in meters",
+    "cols": [
+     "Ramp",
+     "Rise (meters)",
+     "Run (meters)"
+    ],
+    "rows": [
+     [
+      "K",
+      "$0.5$",
+      "$6$"
+     ],
+     [
+      "L",
+      "$0.8$",
+      "$10$"
+     ],
+     [
+      "M",
+      "$1.2$",
+      "$12$"
+     ],
+     [
+      "N",
+      "$0.9$",
+      "$8$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-inverse-trig-1",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "inverse-trig-s1",
+   "q": "The graph shows $y = \\cos^{-1} x$. What is the range of $\\cos^{-1}$?",
+   "type": "single",
+   "options": [
+    "$[0, \\pi]$",
+    "$\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$",
+    "$[-1, 1]$",
+    "$[0, 2\\pi]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\cos^{-1}$ undoes cosine restricted to $[0, \\pi]$, so its outputs are the angles in $[0, \\pi]$. The graph runs from height $\\pi$ at $x = -1$ down to $0$ at $x = 1$.",
+    "options": [
+     "Right: the outputs are angles from $0$ to $\\pi$.",
+     "That is the range of $\\sin^{-1}$ and (open) of $\\tan^{-1}$, not of $\\cos^{-1}$.",
+     "That is the domain of $\\cos^{-1}$: the inputs are cosine values.",
+     "Cosine is not one-to-one on $[0, 2\\pi]$ ($\\cos\\frac{\\pi}{3} = \\cos\\frac{5\\pi}{3}$), so that interval cannot be the range."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-2",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "inverse-trig-s1",
+   "q": "Using the graph or the unit circle, find the exact value of $\\cos^{-1}\\left(-\\frac{1}{2}\\right)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "2pi/3",
+    "mistakes": [
+     {
+      "value": "-pi/3",
+      "why": "$\\cos^{-1}$ never gives a negative angle; its outputs are in $[0, \\pi]$. A negative input gives an angle in Quadrant II."
+     },
+     {
+      "value": "4pi/3",
+      "why": "$\\cos\\frac{4\\pi}{3} = -\\frac{1}{2}$ too, but $\\frac{4\\pi}{3}$ is outside the range $[0, \\pi]$."
+     },
+     {
+      "value": "pi/3",
+      "why": "$\\cos\\frac{\\pi}{3} = +\\frac{1}{2}$. The input is negative, so the angle is in Quadrant II: $\\pi - \\frac{\\pi}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\cos^{-1}\\left(-\\frac{1}{2}\\right)$ is the angle in $[0, \\pi]$ whose cosine is $-\\frac{1}{2}$. That angle is in Quadrant II with reference angle $\\frac{\\pi}{3}$: $\\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}$."
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-3",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "inverse-trig-s1",
+   "q": "What is the exact value of $\\cos^{-1}\\left(\\cos\\frac{5\\pi}{3}\\right)$?",
+   "type": "single",
+   "options": [
+    "$\\frac{\\pi}{3}$",
+    "$\\frac{5\\pi}{3}$",
+    "$-\\frac{\\pi}{3}$",
+    "$\\frac{2\\pi}{3}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Work from the inside: $\\cos\\frac{5\\pi}{3} = \\frac{1}{2}$. Then $\\cos^{-1}\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{3}$, the angle in $[0, \\pi]$ with cosine $\\frac{1}{2}$. The inverse undoes cosine only for inputs already in $[0, \\pi]$.",
+    "options": [
+     "Right: inner value $\\frac{1}{2}$, then the angle in $[0, \\pi]$.",
+     "$\\frac{5\\pi}{3}$ is outside $[0, \\pi]$, so $\\cos^{-1}$ cannot return it.",
+     "$\\cos\\left(-\\frac{\\pi}{3}\\right) = \\frac{1}{2}$, but negative angles are outside the range of $\\cos^{-1}$.",
+     "$\\cos\\frac{2\\pi}{3} = -\\frac{1}{2}$, not $\\frac{1}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-4",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "inverse-trig-s1",
+   "q": "The graph of $y = \\cos^{-1} x$ is symmetric about the point $\\left(0, \\frac{\\pi}{2}\\right)$. If $\\cos^{-1}(0.6) = a$, which expression equals $\\cos^{-1}(-0.6)$?",
+   "type": "single",
+   "options": [
+    "$\\pi - a$",
+    "$-a$",
+    "$a$",
+    "$\\pi + a$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Symmetry about $\\left(0, \\frac{\\pi}{2}\\right)$ means the heights at $x$ and $-x$ average to $\\frac{\\pi}{2}$: $\\cos^{-1}(-0.6) = \\pi - a$. On the unit circle, the angle with cosine $-0.6$ is the reflection of angle $a$ across the $y$-axis, which is $\\pi - a$.",
+    "options": [
+     "Right: the two outputs add to $\\pi$.",
+     "$-a$ is negative, outside the range $[0, \\pi]$.",
+     "$\\cos a = 0.6$, not $-0.6$; the inputs differ in sign, so the angles differ.",
+     "$\\pi + a$ is greater than $\\pi$, outside the range."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-5",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "inverse-trig-s1",
+   "q": "Cosine is restricted to $[0, \\pi]$ to define $\\cos^{-1}$. Which reason, using values of cosine, explains why the interval $[0, 2\\pi]$ would not work?",
+   "type": "single",
+   "options": [
+    "$\\cos\\frac{\\pi}{3} = \\cos\\frac{5\\pi}{3} = \\frac{1}{2}$, so two inputs in $[0, 2\\pi]$ share an output and the inverse would have two answers",
+    "$\\cos 0 = 1$ and $\\cos\\pi = -1$, so cosine takes the values $1$ and $-1$ on $[0, 2\\pi]$",
+    "$\\cos\\frac{\\pi}{2} = 0$, so cosine has a zero in $[0, 2\\pi]$",
+    "$\\cos\\frac{\\pi}{3} = \\frac{1}{2}$ and $\\cos\\frac{2\\pi}{3} = -\\frac{1}{2}$, so cosine changes sign on $[0, 2\\pi]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A function has an inverse only when each output comes from one input. On $[0, 2\\pi]$, $\\cos\\frac{\\pi}{3} = \\cos\\frac{5\\pi}{3} = \\frac{1}{2}$: two inputs give the output $\\frac{1}{2}$, so $\\cos^{-1}\\left(\\frac{1}{2}\\right)$ would not be a single value.",
+    "options": [
+     "Right: two specific inputs with the same output show cosine is not invertible there.",
+     "Reaching $1$ and $-1$ is fine; the problem is outputs being repeated.",
+     "Having a zero does not stop a function from being invertible.",
+     "Changing sign does not stop invertibility; repeated outputs do."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-6",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "inverse-trig-s2",
+   "calc": true,
+   "q": "Use a calculator to find the angle, in radians, between ramp L and the ground. Give your answer correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 0.07982998571223732,
+    "unit": "radians",
+    "mistakes": [
+     {
+      "value": 1.4909663410826592,
+      "why": "That is $\\tan^{-1}\\left(\\frac{10}{0.8}\\right)$, run over rise. Tangent is rise over run: $\\tan^{-1}\\left(\\frac{0.8}{10}\\right)$."
+     },
+     {
+      "value": 4.573921259900861,
+      "why": "That is the angle in degrees. Set the calculator to radian mode."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Set up $\\tan\\theta = \\frac{0.8}{10} = 0.08$, so $\\theta = \\tan^{-1}(0.08) \\approx 0.079830$ radians (calculator in radian mode), which is $0.080$ to three decimal places."
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-7",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "inverse-trig-s2",
+   "calc": true,
+   "q": "Which ramp makes the largest angle with the ground, and what is that angle to three decimal places?",
+   "type": "single",
+   "options": [
+    "Ramp N, about $0.112$ radians",
+    "Ramp M, about $0.100$ radians",
+    "Ramp N, about $0.113$ radians",
+    "Ramp K, about $0.083$ radians"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ratios $\\frac{\\text{rise}}{\\text{run}}$ are $0.0833$ (K), $0.08$ (L), $0.1$ (M) and $0.1125$ (N). $\\tan^{-1}$ is increasing, so the largest ratio gives the largest angle: ramp N, $\\tan^{-1}(0.1125) \\approx 0.11203$ radians (radian mode).",
+    "options": [
+     "Right: largest ratio, and $\\tan^{-1}(0.1125) \\approx 0.112$.",
+     "Ramp M has the largest rise, but its ratio $0.1$ is smaller than ramp N's $0.1125$.",
+     "$0.113$ is the ratio $0.1125$ rounded, not the angle $\\tan^{-1}(0.1125)$.",
+     "Ramp K's ratio, $0.0833$, is the second smallest, not the largest."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-8",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "inverse-trig-s2",
+   "calc": true,
+   "q": "The sloped surface of ramp M is $\\sqrt{145.44}$ meters long. Find the ramp's angle with $\\sin\\theta = \\frac{\\text{rise}}{\\text{surface length}}$, correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 0.09966865249116202,
+    "unit": "radians",
+    "mistakes": [
+     {
+      "value": 0.08314123188844122,
+      "why": "That is $\\sin^{-1}\\left(\\frac{1.2}{\\sqrt{145.44}}\\right)$ for ramp K's numbers; use ramp M's rise, $1.2$."
+     },
+     {
+      "value": 5.710593137499642,
+      "why": "That is the angle in degrees; set the calculator to radian mode."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\theta = \\sin^{-1}\\left(\\frac{1.2}{\\sqrt{145.44}}\\right) \\approx 0.099669$ radians (radian mode). It matches $\\tan^{-1}(0.1)$: the same angle, found from a different pair of sides."
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-9",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "inverse-trig-s2",
+   "calc": true,
+   "q": "A new ramp has the same run as ramp L, $10$ meters, and must make an angle of $0.07$ radians with the ground. What rise does it need, correct to three decimal places?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 0.7011455787200271,
+    "unit": "meters",
+    "mistakes": [
+     {
+      "value": 0.6988600163464251,
+      "why": "That is $10\\tan^{-1}(0.07)$. The angle is given, so apply $\\tan$ to it: rise $= 10\\tan(0.07)$."
+     },
+     {
+      "value": 0.012217310842583566,
+      "why": "That is $10\\tan(0.07^\\circ)$, with the calculator in degree mode; use radian mode."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\tan(0.07) = \\frac{\\text{rise}}{10}$, so rise $= 10\\tan(0.07) \\approx 0.70114$ meters (radian mode). Here the angle is known, so use $\\tan$, not $\\tan^{-1}$."
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-10",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the exact value of $\\sin^{-1}\\left(-\\frac{\\sqrt{3}}{2}\\right)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-pi/3",
+    "mistakes": [
+     {
+      "value": "4pi/3",
+      "why": "$\\sin\\frac{4\\pi}{3} = -\\frac{\\sqrt{3}}{2}$, but $\\frac{4\\pi}{3}$ is outside $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$."
+     },
+     {
+      "value": "5pi/3",
+      "why": "$\\frac{5\\pi}{3}$ names the same direction as $-\\frac{\\pi}{3}$, but the range of $\\sin^{-1}$ is $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$."
+     },
+     {
+      "value": "-pi/6",
+      "why": "$\\sin\\left(-\\frac{\\pi}{6}\\right) = -\\frac{1}{2}$. The value $\\frac{\\sqrt{3}}{2}$ belongs to $\\frac{\\pi}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sin^{-1}$ gives the angle in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$ with the given sine. $\\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}$, and sine is odd, so the angle is $-\\frac{\\pi}{3}$."
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-11",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the exact value of $\\tan^{-1}(-1)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-pi/4",
+    "mistakes": [
+     {
+      "value": "3pi/4",
+      "why": "$\\tan\\frac{3\\pi}{4} = -1$, but $\\frac{3\\pi}{4}$ is outside $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$."
+     },
+     {
+      "value": "7pi/4",
+      "why": "$\\frac{7\\pi}{4}$ points the same way as $-\\frac{\\pi}{4}$, but it is outside the range of $\\tan^{-1}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\tan^{-1}$ gives the angle in $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$ with the given tangent. $\\tan\\frac{\\pi}{4} = 1$ and tangent is odd, so $\\tan^{-1}(-1) = -\\frac{\\pi}{4}$."
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-12",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the exact value of $\\sin^{-1}\\left(\\sin\\frac{3\\pi}{4}\\right)$?",
+   "type": "single",
+   "options": [
+    "$\\frac{\\pi}{4}$",
+    "$\\frac{3\\pi}{4}$",
+    "$-\\frac{\\pi}{4}$",
+    "$\\frac{\\sqrt{2}}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Inside first: $\\sin\\frac{3\\pi}{4} = \\frac{\\sqrt{2}}{2}$. Then $\\sin^{-1}\\left(\\frac{\\sqrt{2}}{2}\\right)$ is the angle in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$ with that sine: $\\frac{\\pi}{4}$.",
+    "options": [
+     "Right: the inner value is $\\frac{\\sqrt{2}}{2}$, and its angle in range is $\\frac{\\pi}{4}$.",
+     "$\\frac{3\\pi}{4}$ is outside $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$, so $\\sin^{-1}$ cannot return it.",
+     "$\\sin\\left(-\\frac{\\pi}{4}\\right)$ is negative; the inner value $\\frac{\\sqrt{2}}{2}$ is positive.",
+     "That is the inner value $\\sin\\frac{3\\pi}{4}$; the outer $\\sin^{-1}$ turns it back into an angle."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-13",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "$f(x) = 2\\sin x + 1$ with domain $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$ is invertible. Find $f^{-1}(x)$ for $-1 \\le x \\le 3$.",
+   "type": "expr",
+   "expr": {
+    "answer": "sin^-1((x - 1)/2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1,
+     3
+    ],
+    "mode": "exact",
+    "lhs": "f^{-1}(x) =",
+    "mistakes": [
+     {
+      "expr": "sin^-1((x + 1)/2)",
+      "why": "Undo the $+1$ by subtracting $1$: $\\frac{x - 1}{2}$."
+     },
+     {
+      "expr": "(sin^-1(x) - 1)/2",
+      "why": "The steps are undone in the wrong order. $\\sin$ was applied first, so $\\sin^{-1}$ is applied last."
+     },
+     {
+      "expr": "1/(2sin(x) + 1)",
+      "why": "$f^{-1}$ is the inverse function, not the reciprocal $\\frac{1}{f(x)}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Write $y = 2\\sin x + 1$, swap: $x = 2\\sin y + 1$. Undo in reverse order: subtract $1$, divide by $2$, then apply $\\sin^{-1}$: $y = \\sin^{-1}\\left(\\frac{x - 1}{2}\\right)$. The restricted domain $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$ is the range of $\\sin^{-1}$, so this is the inverse."
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-14",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statements about the inverse trigonometric functions are true? Select every true statement.",
+   "type": "multi",
+   "options": [
+    "The range of $\\sin^{-1}$ is $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$",
+    "The domain of $\\cos^{-1}$ is $[0, \\pi]$",
+    "The domain of $\\tan^{-1}$ is $(-\\infty, \\infty)$",
+    "$\\sin^{-1} x = \\frac{1}{\\sin x}$"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "The inverse functions swap the domains and ranges of the restricted functions. $\\sin^{-1}$ takes $[-1, 1]$ to $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$; $\\cos^{-1}$ takes $[-1, 1]$ to $[0, \\pi]$; $\\tan^{-1}$ takes every real number to $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$.",
+    "options": [
+     "True: those are the angles $\\sin^{-1}$ returns.",
+     "False: $[0, \\pi]$ is the range of $\\cos^{-1}$; its domain is $[-1, 1]$.",
+     "True: tangent takes every real value, so $\\tan^{-1}$ accepts every real input.",
+     "False: $\\sin^{-1}$ is the inverse function, not the reciprocal; $\\frac{1}{\\sin x}$ is a different function."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-15",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement describes the end behavior of $y = \\tan^{-1} x$?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to \\infty} \\tan^{-1} x = \\frac{\\pi}{2}$",
+    "$\\lim_{x \\to \\infty} \\tan^{-1} x = \\infty$",
+    "$\\lim_{x \\to \\infty} \\tan^{-1} x = 0$",
+    "$\\lim_{x \\to \\infty} \\tan^{-1} x = \\pi$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\tan^{-1}$ undoes tangent on $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$. Large tangent values come from angles just below $\\frac{\\pi}{2}$, so the outputs approach $\\frac{\\pi}{2}$: the graph has a horizontal asymptote $y = \\frac{\\pi}{2}$.",
+    "options": [
+     "Right: the vertical asymptote of tangent becomes a horizontal asymptote of its inverse.",
+     "The outputs are angles in $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$, so they stay below $\\frac{\\pi}{2}$.",
+     "$\\tan^{-1}(0) = 0$; for large inputs the angle gets close to $\\frac{\\pi}{2}$.",
+     "$\\pi$ is outside the range of $\\tan^{-1}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-trig-16",
+   "unit": "unit-3",
+   "topic": "inverse-trig",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "What is the exact value of $\\cos\\left(\\sin^{-1}\\frac{3}{5}\\right)$?",
+   "type": "single",
+   "options": [
+    "$\\frac{4}{5}$",
+    "$\\frac{3}{4}$",
+    "$-\\frac{4}{5}$",
+    "$\\frac{5}{4}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Let $\\theta = \\sin^{-1}\\frac{3}{5}$, so $\\sin\\theta = \\frac{3}{5}$ with $\\theta$ in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$; here $\\theta$ is in Quadrant I. Draw a right triangle with opposite side $3$ and hypotenuse $5$: the adjacent side is $\\sqrt{25 - 9} = 4$. So $\\cos\\theta = \\frac{4}{5}$, positive because $\\theta$ is in Quadrant I.",
+    "options": [
+     "Right: adjacent over hypotenuse in the $3$-$4$-$5$ triangle.",
+     "That is $\\tan\\theta = \\frac{3}{4}$, opposite over adjacent.",
+     "$\\sin^{-1}$ of a positive number is an angle in Quadrant I, where cosine is positive.",
+     "That is hypotenuse over adjacent, the reciprocal of the cosine."
+    ]
+   }
+  }
+ ]
+}

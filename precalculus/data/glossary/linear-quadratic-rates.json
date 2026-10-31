@@ -1,0 +1,8 @@
+{
+ "secant-line": {
+  "def": "A line through two points $(a, f(a))$ and $(b, f(b))$ of a graph. Its slope, $\\frac{f(b) - f(a)}{b - a}$, is the average rate of change of $f$ on $[a, b]$."
+ },
+ "second-differences": {
+  "def": "For outputs at equal input steps, the changes in the first differences (the changes in output). Constant second differences mean the values fit a quadratic function."
+ }
+}

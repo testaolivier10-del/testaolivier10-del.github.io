@@ -1,0 +1,59 @@
+{
+ "topic": "alg-right-triangle",
+ "hook": "A surveyor cannot climb a 30-meter tree to measure it, and a builder cannot guess how steep a ramp is. Both stand back, measure one angle and one length, and let a ratio of sides do the rest. Those ratios, sine, cosine and tangent, are the starting point for every periodic function in this unit.",
+ "prereq": [
+  {
+   "q": "A line rises 6 units while it runs 8 units to the right. What is its slope?",
+   "options": ["$\\frac{3}{4}$", "$\\frac{4}{3}$", "$14$", "$48$"],
+   "correct": 0,
+   "why": "Slope is rise over run: $\\frac{6}{8} = \\frac{3}{4}$.",
+   "review": "alg-lines"
+  },
+  {
+   "q": "Solve $x^2 = 6^2 + 8^2$ for $x > 0$.",
+   "options": ["$10$", "$14$", "$100$", "$\\sqrt{14}$"],
+   "correct": 0,
+   "why": "$x^2 = 36 + 64 = 100$, so $x = 10$.",
+   "review": "alg-quadratics"
+  }
+ ],
+ "figure": {
+  "figure": "alg-right-triangle-sides",
+  "caption": "The names of the two legs depend on which acute angle you stand at; the hypotenuse is always across from the right angle."
+ },
+ "chain": [
+  {
+   "cause": "Stand at an acute angle $\\theta$ of a right triangle",
+   "effect": "the leg across from $\\theta$ is the opposite side, the leg touching $\\theta$ is the adjacent side, and the side across from the right angle is the hypotenuse"
+  },
+  {
+   "cause": "Right triangles with the same angle $\\theta$ are similar",
+   "effect": "the ratios of their sides are the same, whatever the triangle's size, so each ratio depends only on $\\theta$"
+  },
+  {
+   "cause": "Name the three ratios",
+   "effect": "$\\sin\\theta = \\frac{\\text{opposite}}{\\text{hypotenuse}}$, $\\cos\\theta = \\frac{\\text{adjacent}}{\\text{hypotenuse}}$, $\\tan\\theta = \\frac{\\text{opposite}}{\\text{adjacent}}$ (SOH CAH TOA)"
+  },
+  {
+   "cause": "You know one side and the angle",
+   "effect": "pick the ratio that links the known side to the unknown one, write the equation, and solve it"
+  }
+ ],
+ "ideas": [
+  "The hypotenuse is the longest side, so $\\sin\\theta$ and $\\cos\\theta$ are between $0$ and $1$ for an acute angle.",
+  "$\\tan\\theta = \\frac{\\text{opposite}}{\\text{adjacent}}$ is rise over run: the slope of the hypotenuse when the adjacent side lies flat.",
+  "To find a side: write the ratio, put in the known values, then multiply (unknown on top) or divide (unknown on the bottom)."
+ ],
+ "misconception": {
+  "wrong": "The opposite side is always the vertical side and the adjacent side is always the horizontal one.",
+  "right": "Opposite and adjacent are named from the angle you use. Switch to the other acute angle and the two legs swap names; only the hypotenuse stays the same."
+ },
+ "check": [
+  "pcalc-alg-right-triangle-1",
+  "pcalc-alg-right-triangle-2",
+  "pcalc-alg-right-triangle-4",
+  "pcalc-alg-right-triangle-5",
+  "pcalc-alg-right-triangle-8"
+ ],
+ "summary": "In a right triangle, name the legs from the angle $\\theta$: opposite and adjacent. Then $\\sin\\theta = \\frac{\\text{opposite}}{\\text{hypotenuse}}$, $\\cos\\theta = \\frac{\\text{adjacent}}{\\text{hypotenuse}}$ and $\\tan\\theta = \\frac{\\text{opposite}}{\\text{adjacent}}$. The ratios depend only on the angle, so one angle and one side are enough to find the other sides."
+}

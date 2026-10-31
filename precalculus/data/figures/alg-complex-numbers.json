@@ -1,0 +1,12 @@
+{
+ "alg-complex-numbers-noreal": {
+  "file": "figures/alg-complex-numbers-noreal.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The parabola y = x² + 4x + 13 = (x + 2)² + 9 has its vertex at (−2, 9) and never reaches the x-axis. The equation x² + 4x + 13 = 0 has no real solutions; its solutions are the complex numbers −2 + 3i and −2 − 3i."
+ }
+}

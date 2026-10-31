@@ -1,0 +1,107 @@
+/* Polynomials and rationals (precalculus/assets/tools/poly-rational.js). OWNED BY THIS
+   TOOL ONLY (builder T2). Loaded by the generator after pcalc-tools.css. Each
+   factor keeps one colour (pr-c1..pr-c5) in the formula, on its pin, in the
+   dock and in the tables; the curve is the course green; light and dark. */
+.pr-card,.ls-root{--pr-c1:#0072B2;--pr-c2:#C25400;--pr-c3:#8E44AD;--pr-c4:#B8336A;--pr-c5:#4F6D7A;--pr-curve:var(--cink);
+  --pr-pos:rgba(0,114,178,.13);--pr-neg:rgba(213,94,0,.15);--pr-bgp:var(--white);}
+:root[data-theme="dark"] .pr-card,:root[data-theme="dark"] .ls-root{--pr-c1:#6CB8EC;--pr-c2:#FF9A5C;--pr-c3:#C79BE0;--pr-c4:#F08FB7;--pr-c5:#A9C3CE;
+  --pr-pos:rgba(108,184,236,.16);--pr-neg:rgba(255,154,92,.17);}
+.pr-c1{--pc:var(--pr-c1);} .pr-c2{--pc:var(--pr-c2);} .pr-c3{--pc:var(--pr-c3);} .pr-c4{--pc:var(--pr-c4);} .pr-c5{--pc:var(--pr-c5);} .pr-c0{--pc:var(--muted);}
+
+.pr-stage{display:flex;flex-direction:column;gap:4px;min-height:0;flex:1;}
+.pr-plotwrap{position:relative;flex:1 1 0;min-height:240px;}
+.pr-card:not(.ls-root *) .pr-plotwrap{height:420px;flex:none;}
+.pr-svg{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;overflow:visible;}
+.pr-formula{margin:0;min-height:2.6em;display:flex;align-items:center;justify-content:center;font-size:1.12em;color:var(--ink);overflow-x:auto;}
+.pr-formula-in{display:inline-flex;align-items:center;gap:.2em;white-space:nowrap;}
+.pr-frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;}
+.pr-num{padding:0 .25em .12em;border-bottom:1.6px solid currentColor;}
+.pr-den{padding:.12em .25em 0;}
+.pr-fx{color:var(--pc);font-weight:700;}
+.pr-fx math{color:inherit;}
+.pr-legend{display:flex;flex-wrap:wrap;gap:2px 14px;justify-content:center;margin:0;font:700 12px var(--font-ui);color:var(--muted);}
+.pr-lg{display:inline-flex;align-items:center;gap:6px;}
+.pr-lg::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;}
+.pr-lg-z::before{background:var(--muted);}
+.pr-lg-v::before{background:transparent;box-shadow:inset 0 0 0 2.5px var(--muted);}
+.pr-lg-h::before{background:transparent;border:2px dashed var(--muted);width:7px;height:7px;}
+.pr-lg-s::before{width:18px;height:10px;border-radius:4px;background:linear-gradient(90deg,var(--pr-pos) 50%,var(--pr-neg) 50%);}
+
+/* the scene */
+.pr-bg{fill:var(--pr-bgp);stroke:var(--line);stroke-width:1;}
+.pr-grid line{stroke:var(--line);stroke-width:1;opacity:.7;}
+.pr-axis line{stroke:var(--ink);stroke-width:1.4;opacity:.75;}
+.pr-tk text{fill:var(--muted);font:700 11px var(--font-ui);font-variant-numeric:tabular-nums;}
+.pr-curve{fill:none;stroke:var(--pr-curve);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+.pr-ha{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:7 5;opacity:.6;}
+.pr-va{stroke:var(--pc);stroke-width:2;stroke-dasharray:7 5;}
+.pr-arrow{fill:none;stroke:var(--pc);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.pr-lab{fill:var(--pc,var(--ink));font:800 11.5px var(--font-ui);paint-order:stroke;stroke:var(--pr-bgp);stroke-width:3.5px;stroke-linejoin:round;}
+.pr-lab-ha{fill:var(--ink);}
+.pr-end{fill:var(--pr-curve);font:900 11px var(--font-ui);}
+.pr-zero{fill:var(--pc);stroke:var(--pr-bgp);stroke-width:2;}
+.pr-hole{fill:var(--pr-bgp);stroke:var(--pc);stroke-width:2.6;}
+.pr-hole-drop{stroke:var(--pc);stroke-width:1.2;stroke-dasharray:2 3;opacity:.7;}
+.pr-signs .pr-sk{fill:var(--muted);font:800 10.5px var(--font-ui);}
+.pr-sg.is-pos{fill:var(--pr-pos);} .pr-sg.is-neg{fill:var(--pr-neg);}
+.pr-sgt{fill:var(--ink);font:900 14px var(--font-ui);}
+.pr-scut{fill:var(--pc);stroke:var(--pr-bgp);stroke-width:1.5;}
+.pr-scut-va{stroke:var(--pc);stroke-width:2;stroke-dasharray:3 2;}
+.pr-scut-h{fill:var(--pr-bgp);stroke:var(--pc);stroke-width:2;}
+.pr-mark-t{font:800 11px var(--font-ui);}
+
+/* pins: one per factor, on the x-axis, in its colour; the shape says what it is */
+.pr-pin .pcalc-plot-halo{fill:var(--pc);fill-opacity:.16;}
+.pr-pin circle:last-child{fill:var(--pc);stroke:var(--pr-bgp);stroke-width:2.2;}
+.pr-pin.is-den circle:last-child{fill:var(--pr-bgp);stroke:var(--pc);stroke-width:3;}
+.pr-pin.is-hole circle:last-child{fill:var(--pr-bgp);stroke:var(--pc);stroke-width:3;stroke-dasharray:3 2;}
+.pr-pin.is-sel .pcalc-plot-halo{fill-opacity:.3;stroke:var(--pc);stroke-width:2;}
+.pr-pin:focus-visible .pcalc-plot-halo{fill-opacity:.38;stroke:var(--pc);stroke-width:2.5;}
+
+/* the dock */
+.pr-ctl{display:flex;flex-direction:column;gap:8px;}
+.pr-chips{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 4px;scrollbar-width:thin;}
+.pr-chip{flex:0 0 auto;min-height:48px;min-width:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:4px 10px;border-radius:12px;
+  border:2px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;box-shadow:inset 0 -3px 0 var(--pc,transparent);}
+.pr-chip[aria-pressed="true"]{border-color:var(--pc);background:var(--white);box-shadow:inset 0 -4px 0 var(--pc),0 0 0 2px color-mix(in srgb,var(--pc) 22%,transparent);}
+.pr-chip-m{font-size:15px;line-height:1.2;color:var(--pc,var(--ink));font-weight:800;}
+.pr-chip-k{font:700 11px var(--font-ui);color:var(--muted);}
+.pr-add{border-style:dashed;--pc:var(--cink);}
+.pr-add .pr-chip-m{font:900 18px var(--font-ui);}
+.pr-edit{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.pr-edit[hidden]{display:none;}
+.pr-kind{flex:1 1 220px;}
+.pr-mult{display:flex;align-items:center;gap:6px;}
+.pr-mv{min-width:4.6ch;text-align:center;font:800 15px var(--font-mono);}
+.pr-mult .bt-step:disabled{opacity:.4;cursor:default;}
+.pr-del{min-height:44px;}
+
+/* Why and Details */
+.pr-feats{margin:6px 0 0;padding-left:1.2em;display:grid;gap:6px;}
+.pr-feats li{line-height:1.5;}
+.pr-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--pc);margin-right:6px;vertical-align:middle;}
+.pr-rule{margin:8px 0 0;font-size:.95em;}
+.pr-dform{margin:4px 0;overflow-x:auto;}
+.pr-tbl td{vertical-align:middle;}
+.pr-presets{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+.pr-presets .bt-small{flex-basis:100%;}
+
+/* Test yourself figure */
+.pr-figwrap{display:flex;flex-direction:column;gap:4px;min-height:0;flex:1;width:100%;}
+.pr-fig-plot{min-height:220px;}
+.ls-root .ls-drill-stage .pr-figwrap{height:100%;}
+.ls-root .ls-drill-stage .pr-fig-plot{flex:1 1 0;}
+.pr-figwrap:not(.ls-root *) .pr-fig-plot{height:300px;flex:none;}
+.pr-opt{display:inline;}
+
+.ls-root.ls-phone .pr-formula{font-size:1em;min-height:2.2em;}
+.ls-root.ls-phone .pr-legend{display:none;}
+.ls-root.ls-phone .pr-ls-stage .pr-stage{padding-bottom:40px;}
+.ls-root.ls-phone .pr-chip{min-width:52px;padding:4px 8px;}
+@media (prefers-reduced-motion: reduce){ .pr-chip{transition:none;} }
+/* a student's try on the figure: dashed orange, "yours" */
+.pr-svg line.pr-mark{stroke:#D55E00;stroke-width:2.4;stroke-dasharray:7 5;}
+.pr-svg circle.pr-mark{fill:var(--pr-bgp);stroke:#D55E00;stroke-width:2.6;stroke-dasharray:4 3;}
+.pr-svg text.pr-mark-t{fill:#B34700;paint-order:stroke;stroke:var(--pr-bgp);stroke-width:3px;}
+:root[data-theme="dark"] .pr-svg line.pr-mark,:root[data-theme="dark"] .pr-svg circle.pr-mark{stroke:#F29A5C;}
+:root[data-theme="dark"] .pr-svg text.pr-mark-t{fill:#F29A5C;}

@@ -1,0 +1,48 @@
+<p>Exponent rules have twins for logarithms. Because a logarithm is an exponent, every rule for combining exponents becomes a rule for combining logarithms. This page states the three properties, the change of base formula, what each one means for a graph, and the domain trap that costs points.</p>
+
+<h2>Three properties of logarithms</h2>
+<p>For a base $b > 0$, $b \ne 1$, and positive numbers $x$ and $y$:</p>
+<table class="compare">
+<thead><tr><th scope="col">Property</th><th scope="col">Logarithm rule</th><th scope="col">Exponent rule behind it</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>$\log_b(xy) = \log_b x + \log_b y$</td><td>$b^m \cdot b^n = b^{m + n}$</td></tr>
+<tr><td>Quotient</td><td>$\log_b \frac{x}{y} = \log_b x - \log_b y$</td><td>$\frac{b^m}{b^n} = b^{m - n}$</td></tr>
+<tr><td>Power</td><td>$\log_b(x^n) = n\log_b x$</td><td>$(b^m)^n = b^{mn}$</td></tr>
+</tbody>
+</table>
+<p>Why the product property holds: write $x = b^m$ and $y = b^n$, so $m = \log_b x$ and $n = \log_b y$. Then $xy = b^{m + n}$, so $\log_b(xy) = m + n$.</p>
+<p>There is no rule for $\log_b(x + y)$, and $\log_b \frac{x}{y}$ is not $\frac{\log_b x}{\log_b y}$. Those two slips are the most common log errors on the exam.</p>
+
+<h2>Expanding and condensing</h2>
+<div class="worked">
+<p><b>Worked example 1 (expand).</b> Write $\log_5(25x^3)$, for $x > 0$, as a sum of simple terms.</p>
+<p>Product: $\log_5 25 + \log_5 x^3$.</p>
+<p>Evaluate and use the power property: $2 + 3\log_5 x$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2 (condense).</b> Write $2\log x + \log 3 - \log 5$ as a single logarithm.</p>
+<p>Coefficients become exponents first: $2\log x = \log x^2$.</p>
+<p>Then the sum: $\log x^2 + \log 3 = \log(3x^2)$.</p>
+<p>Then the difference: $\log(3x^2) - \log 5 = \log \frac{3x^2}{5}$, for $x > 0$.</p>
+</div>
+<p>"A single logarithm" means exactly one log term. Stopping at $\log(3x^2) - \log 5$ does not earn the point.</p>
+
+<h2>Change of base</h2>
+<p>Any logarithm can be written through another base $a$:</p>
+<p>$$\log_b x = \frac{\log_a x}{\log_a b}.$$</p>
+<p>With a calculator, use $a = e$ or $a = 10$: $\log_7 20 = \frac{\ln 20}{\ln 7} \approx 1.540$. Check the size: $7 < 20 < 49$, so the answer must be between $1$ and $2$.</p>
+<p>The formula also says something about graphs. $\frac{1}{\log_a b}$ is a constant, so $\log_b x$ is a constant times $\log_a x$. For example, $\log_4 x = \frac{\log_2 x}{\log_2 4} = \frac{1}{2}\log_2 x$. Every logarithmic function is a vertical dilation of every other one.</p>
+
+<h2>What the properties do to graphs</h2>
+<p>The product property turns a horizontal dilation into a vertical translation. For $h(x) = \log_2(4x)$:</p>
+<p>$$h(x) = \log_2 4 + \log_2 x = 2 + \log_2 x.$$</p>
+<p>So multiplying every input by $4$ (a horizontal dilation by a factor of $\frac{1}{4}$) gives the same graph as moving $\log_2 x$ up $2$ units. The power property turns a power on the input into a vertical dilation: $\log_2(x^3) = 3\log_2 x$ for $x > 0$.</p>
+
+<h2>The domain trap</h2>
+<p>Each property holds only where every logarithm in it is defined. Look at $\ln(x^2)$ and $2\ln x$.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Is $\ln(x^2) = 2\ln x$ for every $x \ne 0$?</p>
+<p>At $x = -1$: $\ln((-1)^2) = \ln 1 = 0$, but $2\ln(-1)$ is undefined.</p>
+<p>So they agree only for $x > 0$. For every $x \ne 0$, the true statement is $\ln(x^2) = 2\ln|x|$.</p>
+</div>
+<p>When a problem asks for an expression equal to another "for every $x$ in its domain", check a negative input before you use the power property.</p>

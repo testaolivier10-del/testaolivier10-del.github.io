@@ -1,0 +1,405 @@
+{
+ "stimuli": {
+  "sinusoidal-transformations-s1": {
+   "kind": "graph",
+   "title": "A sinusoidal function $g$",
+   "plot": {
+    "label": "Graph of a sinusoidal function g for theta from 0 to 2 pi: lowest points (0, -2) and (2 pi, -2), highest point (pi, 4), crossing its midline y = 1 at pi over 2 and 3 pi over 2",
+    "x": [-0.3, 6.7],
+    "y": [-3, 5],
+    "piX": true,
+    "yStep": 1,
+    "xLabel": "θ",
+    "yLabel": "y",
+    "curves": [
+     { "fn": "3sin(x - pi/2) + 1", "domain": [0, 6.283185307179586], "cls": "s1", "label": "g" }
+    ],
+    "points": [
+     { "at": [0, -2] },
+     { "at": [3.141592653589793, 4] },
+     { "at": [6.283185307179586, -2] }
+    ]
+   }
+  },
+  "sinusoidal-transformations-s2": {
+   "kind": "table",
+   "title": "Values of a sinusoidal function $k$",
+   "text": "The function $k$ is sinusoidal. Its greatest and least values appear in the table.",
+   "table": {
+    "caption": "Values of $k(t)$ at whole-number inputs",
+    "cols": ["$t$", "0", "1", "2", "3", "4", "5"],
+    "rows": [["$k(t)$", "2", "6", "10", "6", "2", "6"]]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-sinusoidal-transformations-1",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-transformations-s1",
+   "q": "Write a formula for $g(\\theta)$.",
+   "type": "expr",
+   "expr": {
+    "answer": "3sin(theta - pi/2) + 1",
+    "vars": ["theta"],
+    "domain": [-6.3, 6.3],
+    "lhs": "g(\\theta) =",
+    "mistakes": [
+     { "expr": "6sin(theta - pi/2) + 1", "why": "6 is $\\max - \\min$. The amplitude is half of it, 3." },
+     { "expr": "3sin(theta + pi/2) + 1", "why": "The rising midline crossing is at $\\theta = \\frac{\\pi}{2}$, a shift to the right: $\\sin\\left(\\theta - \\frac{\\pi}{2}\\right)$." },
+     { "expr": "3cos(theta) + 1", "why": "A cosine with $a > 0$ starts at a highest point, but $g$ starts at a lowest point. Use $a = -3$, or a shift." }
+    ]
+   },
+   "why": {
+    "correct": "Midline $d = \\frac{4 + (-2)}{2} = 1$, amplitude $\\frac{4 - (-2)}{2} = 3$, period $2\\pi$ so $b = 1$. The graph rises through its midline at $\\theta = \\frac{\\pi}{2}$, so $g(\\theta) = 3\\sin\\left(\\theta - \\frac{\\pi}{2}\\right) + 1$. Equivalent: $-3\\cos\\theta + 1$."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-2",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-transformations-s1",
+   "q": "The function can be written $g(\\theta) = 3\\sin(\\theta + c) + 1$. Which value of $c$ works?",
+   "type": "single",
+   "options": ["$c = -\\frac{\\pi}{2}$", "$c = \\frac{\\pi}{2}$", "$c = \\pi$", "$c = 0$"],
+   "correct": 0,
+   "why": {
+    "correct": "The sine pattern starts (rising midline crossing) at $\\theta = -c$. On the graph that is $\\theta = \\frac{\\pi}{2}$, so $c = -\\frac{\\pi}{2}$.",
+    "options": [
+     "Start of the cycle at $\\theta = \\frac{\\pi}{2}$ means $\\theta + c = 0$ there.",
+     "This moves the graph left; it would rise through the midline at $-\\frac{\\pi}{2}$ and fall through it at $\\frac{\\pi}{2}$.",
+     "With $c = \\pi$ the graph would have a lowest point at $\\frac{\\pi}{2}$, but $g$ is at its midline there.",
+     "With no shift the graph would be at its midline at $\\theta = 0$, but $g(0) = -2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-3",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sinusoidal-transformations-s1",
+   "q": "Which is also a formula for $g$?",
+   "type": "single",
+   "options": [
+    "$g(\\theta) = -3\\cos\\theta + 1$",
+    "$g(\\theta) = 3\\cos\\theta + 1$",
+    "$g(\\theta) = -3\\sin\\theta + 1$",
+    "$g(\\theta) = 3\\cos\\left(\\theta - \\frac{\\pi}{2}\\right) + 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$-3\\cos\\theta + 1$ is $-3 + 1 = -2$ at $\\theta = 0$ and $3 + 1 = 4$ at $\\theta = \\pi$: a reflected cosine starts at a lowest point, as $g$ does.",
+    "options": [
+     "A reflected cosine: lowest at $0$, highest at $\\pi$.",
+     "This has its highest point at $\\theta = 0$; $g$ has its lowest point there.",
+     "This is $1$ at $\\theta = 0$, but $g(0) = -2$.",
+     "$\\cos\\left(\\theta - \\frac{\\pi}{2}\\right) = \\sin\\theta$, so this is $1$ at $\\theta = 0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-4",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-transformations-s1",
+   "q": "What is the average rate of change of $g$ on $[0, \\pi]$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "6/pi",
+    "mistakes": [
+     { "value": 6, "why": "That is the change in output. Divide by the change in input, $\\pi$." },
+     { "value": "3/pi", "why": "That uses the amplitude 3 as the change in output. $g$ rises from $-2$ to $4$, a change of 6." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{g(\\pi) - g(0)}{\\pi - 0} = \\frac{4 - (-2)}{\\pi} = \\frac{6}{\\pi}$, the slope of the secant line from the lowest point to the highest point."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-5",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sinusoidal-transformations-s1",
+   "q": "On which interval is $g$ increasing and its graph concave down?",
+   "type": "single",
+   "options": [
+    "$\\left(\\frac{\\pi}{2}, \\pi\\right)$",
+    "$\\left(0, \\frac{\\pi}{2}\\right)$",
+    "$\\left(\\pi, \\frac{3\\pi}{2}\\right)$",
+    "$\\left(\\frac{3\\pi}{2}, 2\\pi\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$g$ rises from its lowest point at $0$ to its highest point at $\\pi$. Above the midline, from $\\frac{\\pi}{2}$ to $\\pi$, the graph bends down toward the highest point.",
+    "options": [
+     "Rising, and above the midline: concave down.",
+     "Rising, but below the midline: concave up there.",
+     "Above the midline (concave down), but falling after the highest point.",
+     "Below the midline and falling: decreasing and concave up."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-6",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-transformations-s2",
+   "q": "The function can be written $k(t) = a\\sin(b(t + c)) + d$ with $b > 0$. What is $b$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "pi/2",
+    "mistakes": [
+     { "value": 4, "why": "4 is the period. $b = \\frac{2\\pi}{\\text{period}} = \\frac{2\\pi}{4}$." },
+     { "value": "pi", "why": "That uses a period of 2, the time from the least value to the greatest. That is half a cycle; the period is 4." },
+     { "value": "8pi", "why": "That multiplies by the period. $b$ is $2\\pi$ divided by the period." }
+    ]
+   },
+   "why": {
+    "correct": "Least values at $t = 0$ and $t = 4$: the period is 4, so $b = \\frac{2\\pi}{4} = \\frac{\\pi}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-7",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sinusoidal-transformations-s2",
+   "q": "What are the amplitude and midline of $k$?",
+   "type": "single",
+   "options": [
+    "Amplitude $4$, midline $y = 6$",
+    "Amplitude $8$, midline $y = 6$",
+    "Amplitude $4$, midline $y = 2$",
+    "Amplitude $6$, midline $y = 4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Greatest 10, least 2: amplitude $\\frac{10 - 2}{2} = 4$ and midline $y = \\frac{10 + 2}{2} = 6$.",
+    "options": [
+     "Half the swing, and the average of the extremes.",
+     "8 is the whole swing, twice the amplitude.",
+     "2 is the least value, not the center.",
+     "The two numbers are swapped."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-8",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "sinusoidal-transformations-s2",
+   "q": "With $a = 4$, $b = \\frac{\\pi}{2}$ and $d = 6$, which value of $c$ makes $k(t) = a\\sin(b(t + c)) + d$ match the table?",
+   "type": "single",
+   "options": ["$c = -1$", "$c = 1$", "$c = -\\frac{\\pi}{2}$", "$c = 2$"],
+   "correct": 0,
+   "why": {
+    "correct": "$k$ crosses its midline going up at $t = 1$ (from 2 through 6 to 10). A sine with $a > 0$ does that where $t + c = 0$, so $c = -1$: $k(t) = 4\\sin\\left(\\frac{\\pi}{2}(t - 1)\\right) + 6$.",
+    "options": [
+     "Rising midline crossing at $t = 1$: $t + c = 0$ there.",
+     "This puts the rising crossing at $t = -1$, where $k$ is falling ($k(-1) = k(3)$ and the values go 10, 6, 2).",
+     "$c$ is measured in units of $t$, after $b$ is factored out; $-\\frac{\\pi}{2}$ would be $b \\cdot c$.",
+     "This puts the rising crossing at $t = -2$; with period 4 that matches $t = 2$, where $k$ is at its greatest value, not crossing."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-9",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-transformations-s2",
+   "q": "Use $k(t) = 4\\sin\\left(\\frac{\\pi}{2}(t - 1)\\right) + 6$. What is the exact value of $k(1.5)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "6 + 2sqrt(2)",
+    "mistakes": [
+     { "value": 8, "why": "That uses $\\sin\\frac{\\pi}{4} = \\frac{1}{2}$. The sine of $\\frac{\\pi}{4}$ is $\\frac{\\sqrt{2}}{2}$." },
+     { "value": 8, "why": "Halfway in time between the midline and the top is not halfway in height: the value is $6 + 4\\sin\\frac{\\pi}{4}$." }
+    ]
+   },
+   "why": {
+    "correct": "$k(1.5) = 4\\sin\\left(\\frac{\\pi}{2} \\cdot 0.5\\right) + 6 = 4\\sin\\frac{\\pi}{4} + 6 = 4 \\cdot \\frac{\\sqrt{2}}{2} + 6 = 6 + 2\\sqrt{2}$."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-10",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the period of $f(\\theta) = 5\\sin(3\\theta)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "2pi/3",
+    "mistakes": [
+     { "value": "6pi", "why": "Multiplying the input by 3 makes the cycles shorter, not longer: divide $2\\pi$ by 3." },
+     { "value": 3, "why": "3 is $b$. The period is $\\frac{2\\pi}{b}$." }
+    ]
+   },
+   "why": {
+    "correct": "Period $= \\frac{2\\pi}{|b|} = \\frac{2\\pi}{3}$."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-11",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the amplitude of $f(\\theta) = -4\\cos(2\\theta) + 7$?",
+   "type": "single",
+   "options": ["$4$", "$-4$", "$7$", "$11$"],
+   "correct": 0,
+   "why": {
+    "correct": "The amplitude is $|a| = |-4| = 4$. The negative sign reflects the graph; it does not make a distance negative.",
+    "options": [
+     "The absolute value of $a$.",
+     "An amplitude is a distance, never negative.",
+     "7 sets the midline $y = 7$.",
+     "11 is the greatest value, $7 + 4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-12",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "How is the graph of $f(\\theta) = \\sin\\left(2\\theta + \\frac{\\pi}{2}\\right)$ shifted, compared with $y = \\sin(2\\theta)$?",
+   "type": "single",
+   "options": [
+    "Left $\\frac{\\pi}{4}$",
+    "Left $\\frac{\\pi}{2}$",
+    "Right $\\frac{\\pi}{4}$",
+    "Right $\\frac{\\pi}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Factor out $b$: $2\\theta + \\frac{\\pi}{2} = 2\\left(\\theta + \\frac{\\pi}{4}\\right)$, so $c = \\frac{\\pi}{4}$: a shift left $\\frac{\\pi}{4}$.",
+    "options": [
+     "After factoring out 2, the shift is $\\frac{\\pi}{4}$ to the left.",
+     "This reads the shift before factoring out $b = 2$.",
+     "A plus sign inside moves the graph left, not right.",
+     "Wrong direction, and $b$ was not factored out."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-13",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write a sinusoidal function with amplitude 2, period $\\pi$ and midline $y = -1$ whose graph crosses its midline going up at $\\theta = 0$.",
+   "type": "expr",
+   "expr": {
+    "answer": "2sin(2theta) - 1",
+    "vars": ["theta"],
+    "domain": [-6.3, 6.3],
+    "lhs": "f(\\theta) =",
+    "mistakes": [
+     { "expr": "2sin(theta/2) - 1", "why": "That has period $4\\pi$. For period $\\pi$, $b = \\frac{2\\pi}{\\pi} = 2$." },
+     { "expr": "2sin(pi*theta) - 1", "why": "That uses the period as $b$, giving period 2. $b = \\frac{2\\pi}{\\text{period}} = 2$." },
+     { "expr": "2sin(2theta) + 1", "why": "The midline is $y = -1$, so subtract 1." }
+    ]
+   },
+   "why": {
+    "correct": "$b = \\frac{2\\pi}{\\pi} = 2$, $|a| = 2$, $d = -1$. A sine with $a > 0$ rises through its midline at $0$, so no shift: $f(\\theta) = 2\\sin(2\\theta) - 1$."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-14",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "In $f(\\theta) = 3\\sin(b\\theta)$, the positive constant $b$ is doubled. Predict each change.",
+   "variables": [
+    { "name": "The period", "answer": "down", "why": "The period $\\frac{2\\pi}{b}$ is halved when $b$ doubles: the cycles get shorter." },
+    { "name": "The amplitude", "answer": "none", "why": "The amplitude is $|a| = 3$; $b$ changes only the horizontal scale." },
+    { "name": "The number of zeros on $[0, 2\\pi]$", "answer": "up", "why": "Twice as many cycles fit in the same interval, so the graph crosses the axis more often." }
+   ],
+   "why": {
+    "correct": "$b$ is a horizontal dilation: it changes the cycle length, not the heights."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-15",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which functions have period $\\pi$? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$y = \\sin(2\\theta)$",
+    "$y = 3\\cos(2\\theta + 1)$",
+    "$y = \\sin\\left(\\frac{\\theta}{2}\\right)$",
+    "$y = \\cos(\\pi\\theta)$"
+   ],
+   "correct": [0, 1],
+   "why": {
+    "correct": "Period $\\frac{2\\pi}{|b|} = \\pi$ needs $|b| = 2$. Shifts and stretches outside the input do not change the period.",
+    "options": [
+     "$b = 2$: period $\\pi$.",
+     "$b = 2$ again; the $+1$ inside shifts the graph but keeps the period.",
+     "$b = \\frac{1}{2}$: period $4\\pi$.",
+     "$b = \\pi$: period $\\frac{2\\pi}{\\pi} = 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-transformations-16",
+   "unit": "unit-3",
+   "topic": "sinusoidal-transformations",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "q": "Put the steps for writing $f(t) = a\\cos(b(t + c)) + d$ from a graph in order.",
+   "options": [
+    "Average the greatest and least values to get $d$",
+    "Take half their difference to get the amplitude $|a|$",
+    "Measure the period and compute $b = \\frac{2\\pi}{\\text{period}}$",
+    "Find a highest point (for $a > 0$) and set $c$ to the opposite of its input"
+   ],
+   "why": {
+    "correct": "Midline, amplitude, period, then the shift from a landmark: a cosine with $a > 0$ is highest where its input is 0, so if the highest point is at $t = t_0$, then $c = -t_0$."
+   }
+  }
+ ]
+}

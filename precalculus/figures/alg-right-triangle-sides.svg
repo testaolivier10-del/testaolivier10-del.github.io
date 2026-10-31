@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-labelledby="alg-right-triangle-sides-t alg-right-triangle-sides-d" font-family="Arial, Helvetica, sans-serif">
+<title id="alg-right-triangle-sides-t">The sides of a right triangle, named from the angle theta</title>
+<desc id="alg-right-triangle-sides-d">A right triangle with the right angle at the lower right corner and the angle theta at the lower left corner. The longest side, across from the right angle, is the hypotenuse. The vertical side across from theta is the side opposite theta. The horizontal side that touches theta and is not the hypotenuse is the side adjacent to theta. To the right: sine of theta is opposite over hypotenuse, cosine of theta is adjacent over hypotenuse, tangent of theta is opposite over adjacent (SOH CAH TOA).</desc>
+<rect width="720" height="360" fill="#fff"/>
+<path d="M70,300 L420,300 L420,90 Z" fill="#E3F3E8" stroke="#1F2A28" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M398 300 v-22 h22" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<path d="M128 300 A58 58 0 0 0 119.73 270.16" fill="none" stroke="#D55E00" stroke-width="3" stroke-linecap="round"/>
+<text x="140" y="288" font-size="20" text-anchor="start" fill="#D55E00"><tspan font-style="italic">θ</tspan></text>
+<text x="230" y="178" font-size="17" text-anchor="end" fill="#1F2A28" font-weight="bold">hypotenuse</text>
+<text x="434" y="200" font-size="17" text-anchor="start" fill="#1F2A28" font-weight="bold">opposite</text>
+<text x="434" y="220" font-size="16" text-anchor="start" fill="#1F2A28"><tspan font-style="italic">θ</tspan></text>
+<text x="245" y="328" font-size="17" text-anchor="middle" fill="#1F2A28" font-weight="bold">adjacent to <tspan font-style="italic">θ</tspan></text>
+<text x="590" y="110" font-size="18" text-anchor="end" fill="#11592F">sin <tspan font-style="italic">θ</tspan> =</text><text x="652" y="101" font-size="16" text-anchor="middle" fill="#1F2A28">opposite</text><line x1="600" y1="107" x2="704" y2="107" stroke="#1F2A28" stroke-width="1.5" stroke-linecap="round"/><text x="652" y="125" font-size="16" text-anchor="middle" fill="#1F2A28">hypotenuse</text>
+<text x="590" y="190" font-size="18" text-anchor="end" fill="#0072B2">cos <tspan font-style="italic">θ</tspan> =</text><text x="652" y="181" font-size="16" text-anchor="middle" fill="#1F2A28">adjacent</text><line x1="600" y1="187" x2="704" y2="187" stroke="#1F2A28" stroke-width="1.5" stroke-linecap="round"/><text x="652" y="205" font-size="16" text-anchor="middle" fill="#1F2A28">hypotenuse</text>
+<text x="590" y="270" font-size="18" text-anchor="end" fill="#D55E00">tan <tspan font-style="italic">θ</tspan> =</text><text x="652" y="261" font-size="16" text-anchor="middle" fill="#1F2A28">opposite</text><line x1="600" y1="267" x2="704" y2="267" stroke="#1F2A28" stroke-width="1.5" stroke-linecap="round"/><text x="652" y="285" font-size="16" text-anchor="middle" fill="#1F2A28">adjacent</text>
+<text x="600" y="336" font-size="15" text-anchor="middle" fill="#5A6563" font-weight="bold">SOH CAH TOA</text>
+</svg>

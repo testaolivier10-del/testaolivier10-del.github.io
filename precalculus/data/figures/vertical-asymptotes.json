@@ -1,0 +1,12 @@
+{
+ "vertical-asymptotes-sides": {
+  "file": "figures/vertical-asymptotes-sides.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of r(x) = x/((x − 1)(x + 2)) with dashed vertical asymptotes x = −2 and x = 1. As x approaches −2 from the left the outputs decrease without bound, and from the right they increase without bound. As x approaches 1 from the left the outputs decrease without bound, and from the right they increase without bound."
+ }
+}

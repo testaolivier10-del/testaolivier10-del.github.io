@@ -1,0 +1,14 @@
+{
+ "radian": {
+  "def": "A unit of angle measure: an angle's radian measure is the length of the arc it cuts off divided by the radius. A full turn is $2\\pi$ radians, so $\\pi$ radians $= 180^\\circ$. On the unit circle, an angle of $\\theta$ radians cuts off an arc of length $\\theta$."
+ },
+ "unit-circle": {
+  "def": "The circle of radius 1 centered at the origin, $x^2 + y^2 = 1$. The terminal ray of an angle $\\theta$ in standard position meets it at the point $(\\cos\\theta, \\sin\\theta)$."
+ },
+ "standard-position": {
+  "def": "An angle placed with its vertex at the origin and its initial ray along the positive $x$-axis. It turns to its terminal ray, counterclockwise for a positive angle and clockwise for a negative one."
+ },
+ "trig-function": {
+  "def": "The sine and cosine functions, and with them tangent, defined for any angle $\\theta$ in standard position: $\\cos\\theta$ and $\\sin\\theta$ are the $x$- and $y$-coordinates of the point where the terminal ray meets the unit circle, and $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$ is the slope of the terminal ray."
+ }
+}

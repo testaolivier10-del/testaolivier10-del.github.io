@@ -1,0 +1,102 @@
+/* Unit circle (precalculus/assets/tools/unit-circle.js). OWNED BY THIS TOOL ONLY
+   (builder T3). Loaded by the generator after pcalc-tools.css. One color per
+   idea, the same in the scene, the readout, the table and the drill figure:
+   cos θ blue, sin θ red, tan θ purple, the angle (arc length) the course green. */
+.uc-card,.ls-root{--uc-cos:#0072B2;--uc-sin:#B0123A;--uc-tan:#7A4F9E;--uc-arc:var(--cink,#11592F);--uc-ref:rgba(230,159,0,.22);--uc-paper:var(--white,#fff);}
+:root[data-theme="dark"] .uc-card,:root[data-theme="dark"] .ls-root{--uc-cos:#6BB4E8;--uc-sin:#F590AC;--uc-tan:#C3A3E0;--uc-ref:rgba(240,190,80,.20);}
+
+.uc-stage{display:flex;flex-direction:column;flex:1;min-height:0;}
+.uc-wrap{position:relative;flex:1 1 0;min-height:300px;}
+.uc-card:not(.ls-root *) .uc-wrap{height:460px;flex:none;}
+.uc-svg{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;overflow:hidden;cursor:grab;}
+.uc-svg.is-drag{cursor:grabbing;}
+.uc-svg text{font-family:var(--font-ui);}
+
+.uc-axis{stroke:var(--ink);stroke-width:1.4;opacity:.55;}
+.uc-grid{stroke:var(--line);stroke-width:1;}
+.uc-axl{fill:var(--muted);font-weight:800;font-style:italic;font-size:15px;}
+.uc-tk{fill:var(--muted);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums;}
+.uc-circle{fill:none;stroke:var(--ink);stroke-width:2;opacity:.75;}
+.uc-circle.is-r{stroke-dasharray:6 6;opacity:.5;}
+.uc-sp{fill:var(--uc-paper);stroke:var(--ink);stroke-width:1.5;opacity:.75;}
+.uc-sp.is-ax{fill:var(--ink);}
+.uc-quad{fill:var(--muted);font-weight:800;font-size:18px;opacity:.35;}
+.uc-quad.is-on{opacity:.9;fill:var(--uc-arc);}
+.uc-alab{fill:var(--muted);font-weight:800;font-size:14px;paint-order:stroke;stroke:var(--uc-paper);stroke-width:4px;}
+
+.uc-arc{fill:none;stroke:var(--uc-arc);stroke-width:7;stroke-linecap:round;opacity:.9;}
+.uc-amark{fill:none;stroke:var(--uc-arc);stroke-width:2;}
+.uc-thl{fill:var(--uc-arc);font-weight:900;font-style:italic;font-size:17px;}
+.uc-flat{stroke:var(--uc-arc);stroke-width:7;stroke-linecap:round;opacity:.8;}
+.uc-ref{fill:var(--uc-ref);stroke:none;}
+.uc-ref.is-on{stroke:#B07800;stroke-width:1.2;}
+.uc-right{fill:none;stroke:var(--ink);stroke-width:1.3;opacity:.6;}
+.uc-rad{stroke:var(--ink);stroke-width:2.6;stroke-linecap:round;}
+.uc-cos{stroke:var(--uc-cos);stroke-width:5;stroke-linecap:round;}
+.uc-sin{stroke:var(--uc-sin);stroke-width:5;stroke-linecap:round;}
+.uc-bar{stroke-width:4;opacity:.85;}
+.uc-link{stroke:var(--uc-sin);stroke-width:1.4;stroke-dasharray:4 5;opacity:.75;}
+.uc-cur{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:3 4;opacity:.5;}
+
+.uc-ghost{fill:none;stroke-width:2;opacity:.2;}
+:root[data-theme="dark"] .uc-ghost{opacity:.32;}
+.uc-trace{fill:none;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round;}
+.uc-sin-c{stroke:var(--uc-sin);} .uc-cos-c{stroke:var(--uc-cos);} .uc-tan-c{stroke:var(--uc-tan);}
+.uc-gpt{stroke:var(--uc-paper);stroke-width:2;}
+.uc-sin-f{fill:var(--uc-sin);} .uc-cos-f{fill:var(--uc-cos);} .uc-tan-f{fill:var(--uc-tan);}
+.uc-asym{stroke:var(--muted);stroke-width:1.4;stroke-dasharray:5 5;}
+.uc-tline{stroke:var(--uc-tan);stroke-width:1.6;stroke-dasharray:6 5;opacity:.7;}
+.uc-ext{stroke:var(--uc-tan);stroke-width:2;}
+.uc-ext.is-back{stroke-dasharray:6 5;}
+.uc-tseg{stroke:var(--uc-tan);stroke-width:5;stroke-linecap:round;}
+.uc-tpt{fill:var(--uc-tan);stroke:var(--uc-paper);stroke-width:2;}
+
+.uc-lab{font-weight:800;font-size:15px;fill:var(--ink);paint-order:stroke;stroke:var(--uc-paper);stroke-width:4px;}
+.uc-c-cos{fill:var(--uc-cos);} .uc-c-sin{fill:var(--uc-sin);} .uc-c-tan{fill:var(--uc-tan);} .uc-c-th{fill:var(--uc-arc);} .uc-c-ok{fill:var(--uc-arc);}
+.uc-plab{fill:var(--ink);font-weight:900;font-size:17px;paint-order:stroke;stroke:var(--uc-paper);stroke-width:5px;font-variant-numeric:tabular-nums;}
+.uc-pname{fill:var(--ink);font-weight:900;font-style:italic;font-size:17px;paint-order:stroke;stroke:var(--uc-paper);stroke-width:4px;}
+.uc-read{font-weight:900;font-size:21px;fill:var(--ink);font-variant-numeric:tabular-nums;}
+.uc-svg.is-tall .uc-read{font-size:16px;}
+.uc-svg.is-tall .uc-plab,.uc-svg.is-tall .uc-pname{font-size:15px;}
+.uc-svg.is-tall .uc-lab{font-size:13.5px;}
+.uc-svg.is-tall .uc-quad{font-size:15px;}
+.uc-svg.is-tall .uc-alab{font-size:13px;}
+
+.uc-handle{cursor:grab;outline:none;}
+.uc-handle .uc-dot{fill:var(--uc-arc);stroke:var(--uc-paper);stroke-width:3;}
+.uc-handle .uc-halo{fill:var(--uc-arc);fill-opacity:.16;}
+.uc-handle:hover .uc-halo{fill-opacity:.26;}
+.uc-handle:focus-visible .uc-halo{fill-opacity:.32;stroke:var(--uc-arc);stroke-width:2.5;}
+
+/* the dock */
+.uc-ctl{display:flex;flex-direction:column;gap:10px;}
+.uc-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;}
+.uc-play{display:inline-flex;align-items:center;gap:8px;min-height:44px;}
+.uc-play[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+.uc-view{flex:1 1 auto;}
+.uc-angle .bt-out{min-width:4.5em;text-align:right;font-variant-numeric:tabular-nums;}
+
+/* Details: the table */
+.uc-table th,.uc-table td{text-align:center;}
+.uc-table tr.is-on{background:var(--ctint);}
+.uc-table tr.is-on th,.uc-table tr.is-on td{font-weight:800;}
+.uc-go{min-width:52px;min-height:40px;padding:2px 8px;border:1.5px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);cursor:pointer;font:inherit;}
+.uc-go:hover,.uc-go:focus-visible{border-color:var(--cink);}
+.uc-nd{font-size:13px;color:var(--muted);}
+.uc-degc{display:none;}
+.uc-deg .uc-degc{display:table-cell;}
+.uc-table td:nth-child(3){color:var(--uc-cos);} .uc-table td:nth-child(4){color:var(--uc-sin);} .uc-table td:nth-child(5){color:var(--uc-tan);}
+
+/* the drill figure */
+.uc-fig{margin:0;}
+.uc-fig .uc-dsvg{display:block;width:100%;height:auto;max-height:420px;}
+.ls-root .ls-drill-stage .uc-fig > svg{max-height:100%;}
+.uc-dsvg text{font-family:var(--font-ui);}
+.uc-pfix{fill:var(--uc-arc);stroke:var(--uc-paper);stroke-width:2.5;}
+.uc-band{fill:var(--uc-arc);opacity:.75;}
+.uc-qiv{fill:var(--cink);fill-opacity:.07;}
+.uc-sec{stroke:var(--ink);stroke-width:2;stroke-dasharray:6 4;}
+.uc-zero{fill:var(--uc-paper);stroke:var(--ink);stroke-width:2.4;}
+.uc-dsvg .cd-yours{stroke:#D55E00;stroke-dasharray:7 5;fill:none;stroke-width:2.4;}
+.uc-dsvg text.cd-yours{fill:#B34700;stroke:var(--uc-paper);stroke-width:4px;stroke-dasharray:none;paint-order:stroke;font-weight:800;font-size:14px;}
+:root[data-theme="dark"] .uc-dsvg .cd-yours{stroke:#F29A5C;} :root[data-theme="dark"] .uc-dsvg text.cd-yours{fill:#F29A5C;}

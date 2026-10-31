@@ -1,0 +1,56 @@
+<p>Solving $\sin x = \frac{1}{2}$ looks like a one-step job: press $\sin^{-1}$. But sine repeats, so the equation has infinitely many solutions, and the inverse key returns only one of them. This page gives a four-step routine that finds every solution in an interval, works for equations like $\sin(3x) = 1$ and $\sin^2 x = \frac{1}{4}$, and handles inequalities.</p>
+
+<h2>The routine: isolate, principal value, symmetry, period</h2>
+<ol>
+<li><b>Isolate</b> the trigonometric function: undo the outside operations until you have $\sin(\ldots) = k$, $\cos(\ldots) = k$ or $\tan(\ldots) = k$. If $|k| > 1$ for sine or cosine, stop: there is no solution.</li>
+<li><b>Principal value:</b> apply the inverse (or read the unit circle) to get one angle.</li>
+<li><b>Symmetry:</b> find the other angle in the same period with the same value (<a class="figref" href="#fig-two-angles">Figure 1</a>).
+  <ul>
+  <li>Sine: $\sin(\pi - \theta) = \sin\theta$, a mirror image across the $y$-axis.</li>
+  <li>Cosine: $\cos(-\theta) = \cos\theta$, a mirror image across the $x$-axis, so $2\pi - \theta$ also works.</li>
+  <li>Tangent: one angle per period; the next is $\theta + \pi$.</li>
+  </ul></li>
+<li><b>Period:</b> add or subtract the period ($2\pi$ for sine and cosine, $\pi$ for tangent) to reach every solution in the interval. Drop anything outside it.</li>
+</ol>
+<figure id="fig-two-angles" data-fig="trig-equations-circle"><figcaption>The horizontal line $y = \frac{1}{2}$ meets the unit circle at two angles.</figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Solve $2\cos x - \sqrt{3} = 0$ on $[0, 2\pi)$.</p>
+<p><b>Isolate:</b> $2\cos x = \sqrt{3}$, so $\cos x = \frac{\sqrt{3}}{2}$.</p>
+<p><b>Principal value:</b> $\cos^{-1}\frac{\sqrt{3}}{2} = \frac{\pi}{6}$.</p>
+<p><b>Symmetry:</b> $-\frac{\pi}{6}$ has the same cosine; it is outside the interval, so add $2\pi$: $\frac{11\pi}{6}$.</p>
+<p><b>Answer:</b> $x = \frac{\pi}{6}$ and $x = \frac{11\pi}{6}$. On all real numbers: $x = \pm\frac{\pi}{6} + 2k\pi$.</p>
+</div>
+
+<h2>When the angle is $bx$</h2>
+<p>For $\sin(bx) = k$, the inside $bx$ runs through a stretched interval. If $x$ is in $[0, 2\pi)$ and $b = 3$, then $3x$ is in $[0, 6\pi)$: three periods, so up to six solutions. Solve for the inside first, then divide.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Solve $\sin(2x) = -\frac{\sqrt{2}}{2}$ on $[0, \pi)$.</p>
+<p>Let $u = 2x$. Since $0 \le x < \pi$, we have $0 \le u < 2\pi$.</p>
+<p>$\sin u = -\frac{\sqrt{2}}{2}$: the principal value is $-\frac{\pi}{4}$, outside $[0, 2\pi)$, so use $-\frac{\pi}{4} + 2\pi = \frac{7\pi}{4}$. The mirror angle is $\pi - \left(-\frac{\pi}{4}\right) = \frac{5\pi}{4}$.</p>
+<p>So $u = \frac{5\pi}{4}$ or $\frac{7\pi}{4}$, and $x = \frac{u}{2} = \frac{5\pi}{8}$ or $\frac{7\pi}{8}$. Both are in $[0, \pi)$.</p>
+</div>
+
+<h2>Quadratic forms and factoring</h2>
+<p>Treat $\sin x$ like a variable. $2\sin^2 x - \sin x - 1 = 0$ factors as $(2\sin x + 1)(\sin x - 1) = 0$, so $\sin x = -\frac{1}{2}$ or $\sin x = 1$, and each piece is solved with the routine. Two rules keep every solution:</p>
+<ul>
+<li>A square root has two signs: $\sin^2 x = \frac{1}{4}$ means $\sin x = \pm\frac{1}{2}$.</li>
+<li>Never divide both sides by a trigonometric expression that can be $0$. Factor it out instead: $\tan x\sin x = \sin x$ becomes $\sin x(\tan x - 1) = 0$, which keeps $x = 0$ and $x = \pi$.</li>
+</ul>
+
+<h2>Inequalities</h2>
+<p>Solve the matching equation. Its solutions split the interval into pieces; on each piece the inequality is either true everywhere or false everywhere. Test one value per piece.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Solve $\sin x < -\frac{1}{2}$ on $[0, 2\pi)$.</p>
+<p>$\sin x = -\frac{1}{2}$ at $\frac{7\pi}{6}$ and $\frac{11\pi}{6}$. Test $\frac{3\pi}{2}$: $\sin\frac{3\pi}{2} = -1 < -\frac{1}{2}$, true. Test $0$: $\sin 0 = 0$, false. So the solution is $\left(\frac{7\pi}{6}, \frac{11\pi}{6}\right)$.</p>
+</div>
+
+<h2>With a calculator</h2>
+<p>When the value is not on the unit circle, the routine still works with decimals. In radian mode, $\cos(2t) = \frac{1}{3}$ gives $2t = \cos^{-1}\left(\frac{1}{3}\right) \approx 1.230959$; store it. The other values are $2t = -1.230959 + 2k\pi$ and $2t = 1.230959 + 2k\pi$. Divide by $2$ and keep the ones in the interval. To check, graph both sides and find every intersection, widening the window to the full interval so none is hidden.</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Stopping at the principal value and missing the second solution.</li>
+<li>Listing an angle outside the interval, such as a negative principal value.</li>
+<li>For $\sin(bx)$, forgetting to stretch the interval, or forgetting to divide by $b$ at the end.</li>
+</ul>

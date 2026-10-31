@@ -1,0 +1,107 @@
+/* Function lab (precalculus/assets/tools/function-lab.js). OWNED BY THIS TOOL
+   ONLY (builder T1). Loaded by the generator after pcalc-tools.css. g is the
+   course green; the parent is a grey ghost; each key point keeps one color
+   (p1-p5, Okabe-Ito) on the graph and in the table; the parameter being
+   moved is tinted green in the formula and the sentence. Light and dark. */
+.fl-card,.ls-root{--fl-g:var(--cink,#11592F);--fl-ghost:#8A9692;--fl-bg:#FBFDFC;--fl-grid:#E6ECEA;--fl-grid2:#F1F5F4;--fl-axis:#55625F;
+  --fl-p1:#0072B2;--fl-p2:#D55E00;--fl-p3:#CC79A7;--fl-p4:#B07800;--fl-p5:#56B4E9;--fl-tint:var(--ctint,#E3F3E8);}
+:root[data-theme="dark"] .fl-card,:root[data-theme="dark"] .ls-root{--fl-g:#7FE0A6;--fl-ghost:#7D8885;--fl-bg:#141a18;--fl-grid:#26302d;--fl-grid2:#1c2422;--fl-axis:#a9b5b2;
+  --fl-p1:#6CB8EC;--fl-p2:#FF9A5C;--fl-p3:#E7A5CA;--fl-p4:#F0C04A;--fl-p5:#8FD3F7;--fl-tint:rgba(80,200,130,.14);}
+
+/* stage: graph, and on a wide stage a side column with formula, words, table and features */
+.fl-stage{display:flex;gap:14px;min-height:0;flex:1;container-type:inline-size;}
+.fl-main{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:6px;min-height:0;}
+.fl-graph-wrap{position:relative;flex:1 1 0;min-height:240px;}
+.fl-card:not(.ls-root *) .fl-graph-wrap{height:460px;flex:none;}
+.fl-graph{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;}
+.fl-side{flex:0 0 340px;max-width:40%;overflow:auto;display:flex;flex-direction:column;gap:12px;padding:2px 4px 8px 0;}
+.fl-eqline{display:none;margin:0;font:600 15px/1.3 var(--font-ui);color:var(--ink);white-space:nowrap;overflow-x:auto;scrollbar-width:none;}
+@container (max-width: 760px){ .fl-side{display:none;} .fl-eqline{display:block;} }
+.ls-phone .fl-side{display:none;} .ls-phone .fl-eqline{display:block;}
+
+.fl-bg{fill:var(--fl-bg);stroke:var(--line);stroke-width:1;}
+.fl-grid{stroke:var(--fl-grid);stroke-width:1;} .fl-grid.is-minor{stroke:var(--fl-grid2);}
+.fl-axis{stroke:var(--fl-axis);stroke-width:1.4;}
+.fl-tk{fill:var(--muted);font:700 11px var(--font-ui);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--fl-bg);stroke-width:3px;}
+.fl-axl{fill:var(--ink);font:italic 800 13px var(--font-ui);}
+.fl-asym{stroke:var(--fl-axis);stroke-width:1.5;stroke-dasharray:6 5;opacity:.85;}
+.fl-asl{fill:var(--ink);font:800 11.5px var(--font-ui);paint-order:stroke;stroke:var(--fl-bg);stroke-width:4px;}
+.fl-parent{fill:none;stroke:var(--fl-ghost);stroke-width:2.2;stroke-dasharray:7 6;opacity:.75;stroke-linecap:round;}
+.fl-g{fill:none;stroke:var(--fl-g);stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round;}
+.fl-end{fill:var(--fl-g);stroke:var(--fl-bg);stroke-width:2;}
+.fl-end.is-open{fill:var(--fl-bg);stroke:var(--fl-g);stroke-width:2.6;}
+.fl-pend{fill:var(--fl-ghost);stroke:var(--fl-bg);stroke-width:1.5;opacity:.8;}
+.fl-pend.is-open{fill:var(--fl-bg);stroke:var(--fl-ghost);stroke-width:2;}
+.fl-zero{fill:var(--fl-bg);stroke:var(--ink);stroke-width:2.2;}
+.fl-zl{fill:var(--ink);font:800 11px var(--font-ui);paint-order:stroke;stroke:var(--fl-bg);stroke-width:4px;}
+.fl-link{stroke-width:1.4;stroke-dasharray:2 4;opacity:.7;fill:none;}
+.fl-kp0{fill:var(--fl-bg);stroke-width:2;opacity:.85;}
+.fl-kp{stroke:var(--fl-bg);stroke-width:2;}
+.fl-kp.is-open{fill:var(--fl-bg) !important;stroke-width:2.6;}
+.fl-link.p1,.fl-kp0.p1{stroke:var(--fl-p1);} .fl-kp.p1{fill:var(--fl-p1);} .fl-kp.p1.is-open{stroke:var(--fl-p1);}
+.fl-link.p2,.fl-kp0.p2{stroke:var(--fl-p2);} .fl-kp.p2{fill:var(--fl-p2);} .fl-kp.p2.is-open{stroke:var(--fl-p2);}
+.fl-link.p3,.fl-kp0.p3{stroke:var(--fl-p3);} .fl-kp.p3{fill:var(--fl-p3);} .fl-kp.p3.is-open{stroke:var(--fl-p3);}
+.fl-link.p4,.fl-kp0.p4{stroke:var(--fl-p4);} .fl-kp.p4{fill:var(--fl-p4);} .fl-kp.p4.is-open{stroke:var(--fl-p4);}
+.fl-link.p5,.fl-kp0.p5{stroke:var(--fl-p5);} .fl-kp.p5{fill:var(--fl-p5);} .fl-kp.p5.is-open{stroke:var(--fl-p5);}
+
+/* handles: (h, k) square, the key point round (its own key-point color) */
+.fl-h{cursor:grab;outline:none;}
+.fl-h.is-drag{cursor:grabbing;}
+.fl-halo{fill:var(--fl-g);fill-opacity:.12;stroke:none;transition:fill-opacity .15s;}
+.fl-h:hover .fl-halo,.fl-h.is-drag .fl-halo{fill-opacity:.22;}
+.fl-h:focus-visible .fl-halo{fill-opacity:.25;stroke:var(--fl-g);stroke-width:2.5;}
+.fl-h-hk .fl-hdot{fill:var(--fl-bg);stroke:var(--fl-g);stroke-width:3;}
+.fl-h-sh .fl-hdot{stroke:var(--fl-bg);stroke-width:2.5;}
+.fl-h-sh .fl-hdot.p1{fill:var(--fl-p1);} .fl-h-sh .fl-hdot.p2{fill:var(--fl-p2);} .fl-h-sh .fl-hdot.p3{fill:var(--fl-p3);} .fl-h-sh .fl-hdot.p4{fill:var(--fl-p4);} .fl-h-sh .fl-hdot.p5{fill:var(--fl-p5);}
+.fl-hcore{fill:var(--fl-bg);}
+
+.fl-legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font:700 12px var(--font-ui);color:var(--muted);}
+.fl-lg{display:inline-flex;align-items:center;gap:6px;}
+.fl-lg-f::before{content:"";width:18px;height:0;border-top:2.2px dashed var(--fl-ghost);}
+.fl-lg-g::before{content:"";width:18px;height:3.4px;border-radius:2px;background:var(--fl-g);}
+.fl-lg-hk::before{content:"";width:10px;height:10px;border-radius:3px;border:2.5px solid var(--fl-g);box-sizing:border-box;}
+.fl-lg-sh::before{content:"";width:11px;height:11px;border-radius:50%;background:var(--fl-p2);}
+.ls-phone .fl-legend{display:none;}
+
+/* formula, words, table, features */
+.fl-eq{display:flex;flex-direction:column;gap:4px;}
+.fl-eq p{margin:0;}
+.fl-parentf{color:var(--muted);font-size:14px;}
+.fl-big{font:600 18px/1.35 var(--font-ui);color:var(--ink);}
+.fl-conc{font-size:17px;color:var(--fl-g);}
+.fl-tpl i{font-family:var(--font-serif,Georgia,serif);font-style:italic;}
+.fl-v{font-weight:800;font-variant-numeric:tabular-nums;padding:0 2px;border-radius:5px;}
+.fl-v.is-on{background:var(--fl-tint);color:var(--fl-g);box-shadow:inset 0 -2px 0 var(--fl-g);}
+.fl-words{margin:0;font:500 14.5px/1.5 var(--font-ui);color:var(--ink);}
+.fl-w.is-on{background:var(--fl-tint);color:var(--fl-g);font-weight:700;border-radius:4px;padding:0 2px;}
+.ls-root[data-fl-play="a"] .fl-va,.ls-root[data-fl-play="a"] .fl-v.fl-va,.ls-root[data-fl-play="b"] .fl-vb,.ls-root[data-fl-play="h"] .fl-vh,.ls-root[data-fl-play="k"] .fl-vk{background:var(--fl-tint);color:var(--fl-g);box-shadow:inset 0 -2px 0 var(--fl-g);}
+.fl-tbl{width:100%;font-variant-numeric:tabular-nums;}
+.fl-tbl caption{text-align:left;font:700 13px var(--font-ui);color:var(--muted);padding-bottom:4px;caption-side:top;}
+.fl-map b{color:var(--ink);font-style:italic;}
+.fl-sw{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:-1px;}
+.fl-sw.is-h{box-shadow:0 0 0 2px var(--fl-bg),0 0 0 3.5px currentColor;}
+.fl-sw.p1{background:var(--fl-p1);color:var(--fl-p1);} .fl-sw.p2{background:var(--fl-p2);color:var(--fl-p2);} .fl-sw.p3{background:var(--fl-p3);color:var(--fl-p3);} .fl-sw.p4{background:var(--fl-p4);color:var(--fl-p4);} .fl-sw.p5{background:var(--fl-p5);color:var(--fl-p5);}
+.fl-feats{margin:0;display:flex;flex-direction:column;gap:8px;}
+.fl-feats > div{display:grid;grid-template-columns:118px 1fr;gap:8px;align-items:baseline;border-top:1px solid var(--line);padding-top:7px;}
+.fl-feats dt{font:700 12.5px var(--font-ui);color:var(--muted);}
+.fl-feats dd{margin:0;font-size:14.5px;line-height:1.55;}
+.fl-note{font:600 12px var(--font-ui);color:var(--muted);}
+
+/* dock */
+.fl-ctl{display:flex;flex-direction:column;gap:10px;}
+.fl-chips{display:flex;gap:6px;flex-wrap:wrap;}
+.ls-phone .fl-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
+.fl-chip{min-height:40px;}
+.fl-chip[aria-pressed="true"]{border-color:var(--fl-g);color:var(--fl-g);box-shadow:inset 0 0 0 1.5px var(--fl-g);background:var(--fl-tint);}
+.fl-prow{display:flex;flex-direction:column;gap:6px;}
+.fl-pseg{display:flex;}
+.fl-pseg .fl-pk{flex:1;min-height:44px;font:italic 800 16px var(--font-serif,Georgia,serif);}
+.fl-slot .bt-slider{margin:0;}
+.fl-acts{display:flex;gap:8px;flex-wrap:wrap;}
+.fl-acts .bt-btn{flex:1 1 auto;min-height:44px;}
+.fl-play::before{content:"";display:inline-block;width:0;height:0;border-left:9px solid currentColor;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-right:8px;vertical-align:-1px;}
+
+/* the drill figure */
+.fl-figwrap .pcalc-plot{width:100%;height:auto;max-height:100%;}
+.ls-root .fl-figwrap{height:100%;display:flex;}
+.ls-root .fl-figwrap .pcalc-plot{height:100%;}

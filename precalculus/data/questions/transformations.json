@@ -1,0 +1,574 @@
+{
+ "stimuli": {
+  "transformations-s1": {
+   "kind": "graph",
+   "title": "A parent graph $f$ and two transformations, $g$ and $h$",
+   "plot": {
+    "label": "Graphs of the parent f(x) = x^2 with vertex (0, 0), g with vertex (-2, -3) opening up, and h with vertex (0, 4) opening down and wider",
+    "x": [
+     -6,
+     4
+    ],
+    "y": [
+     -4,
+     6
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^2",
+      "label": "f",
+      "cls": "s1"
+     },
+     {
+      "fn": "(x + 2)^2 - 3",
+      "label": "g",
+      "cls": "s2"
+     },
+     {
+      "fn": "-0.5x^2 + 4",
+      "label": "h",
+      "cls": "s3"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       0
+      ]
+     },
+     {
+      "at": [
+       -2,
+       -3
+      ]
+     },
+     {
+      "at": [
+       0,
+       4
+      ]
+     },
+     {
+      "at": [
+       1,
+       1
+      ]
+     },
+     {
+      "at": [
+       -1,
+       -2
+      ]
+     }
+    ]
+   }
+  },
+  "transformations-s2": {
+   "kind": "table",
+   "title": "A function given by a table",
+   "table": {
+    "caption": "Selected values of the function k; its domain is the closed interval from -2 to 2",
+    "cols": [
+     "$x$",
+     "-2",
+     "-1",
+     "0",
+     "1",
+     "2"
+    ],
+    "rows": [
+     [
+      "$k(x)$",
+      "3",
+      "0",
+      "-1",
+      "4",
+      "6"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-transformations-1",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "transformations-s1",
+   "q": "The graph shows the parent $f(x) = x^2$ and a transformation $g$ with vertex $(-2, -3)$. Which equation gives $g$?",
+   "type": "single",
+   "options": [
+    "$g(x) = f(x - 2) - 3$",
+    "$g(x) = f(x + 2) - 3$",
+    "$g(x) = f(x + 2) + 3$",
+    "$g(x) = f(x - 3) - 2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The vertex moves from $(0, 0)$ to $(-2, -3)$: $2$ left and $3$ down. A shift left by $2$ replaces $x$ with $x + 2$, and down $3$ subtracts $3$ from the output: $g(x) = f(x + 2) - 3$.",
+    "options": [
+     "Inside the parentheses the sign is opposite the direction: $x - 2$ moves the graph right.",
+     "Left $2$ is $x + 2$ inside; down $3$ is $-3$ outside.",
+     "Adding $3$ outside moves the graph up, but the vertex is below the $x$-axis.",
+     "This mixes up the two shifts: the horizontal one goes inside, the vertical one outside."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-transformations-2",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "transformations-s1",
+   "q": "The graph of $h$ is the graph of $f(x) = x^2$ reflected across the $x$-axis, vertically dilated by a factor of $\\frac{1}{2}$, and then shifted up $4$. Write $h(x)$ in terms of $x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "-x^2/2 + 4",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -4,
+     4
+    ],
+    "mode": "exact",
+    "lhs": "h(x) =",
+    "mistakes": [
+     {
+      "expr": "x^2/2 + 4",
+      "why": "This opens upward. The reflection across the $x$-axis makes the factor negative."
+     },
+     {
+      "expr": "-2x^2 + 4",
+      "why": "A factor of $\\frac{1}{2}$ multiplies the outputs by $\\frac{1}{2}$, which makes the graph wider, not narrower."
+     },
+     {
+      "expr": "-(x^2 + 4)/2",
+      "why": "The shift up comes after the dilation, so $4$ is added outside, not dilated."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Reflect and dilate: $-\\frac{1}{2}f(x) = -\\frac{1}{2}x^2$. Then shift up $4$: $h(x) = -\\frac{1}{2}x^2 + 4$. Check with the graph: $h(2) = -2 + 4 = 2$."
+   }
+  },
+  {
+   "id": "pcalc-transformations-3",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "transformations-s1",
+   "q": "The point $(1, 1)$ is on the graph of $f$. Which point is on the graph of $g(x) = f(x + 2) - 3$?",
+   "type": "single",
+   "options": [
+    "$(3, -2)$",
+    "$(-1, 4)$",
+    "$(3, 4)$",
+    "$(-1, -2)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "If $f(1) = 1$, then $g(-1) = f(-1 + 2) - 3 = f(1) - 3 = -2$. Every input moves $2$ left and every output moves $3$ down: $(1, 1) \\to (-1, -2)$.",
+    "options": [
+     "This moves the input $2$ right; $x + 2$ inside moves the graph left.",
+     "This adds $3$ to the output; $-3$ outside moves it down.",
+     "Both shifts go the wrong way.",
+     "Input $1 - 2 = -1$, output $1 - 3 = -2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-transformations-4",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "transformations-s1",
+   "q": "What is the range of $h(x) = -\\frac{1}{2}f(x) + 4$, where $f(x) = x^2$?",
+   "type": "single",
+   "options": [
+    "$(-\\infty, 4]$",
+    "$[4, \\infty)$",
+    "$(-\\infty, 0]$",
+    "$[0, 4]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The range of $f$ is $[0, \\infty)$. Multiplying by $-\\frac{1}{2}$ gives $(-\\infty, 0]$, and adding $4$ gives $(-\\infty, 4]$. The vertex $(0, 4)$ is the highest point.",
+    "options": [
+     "Reflect, dilate, then shift each output up $4$.",
+     "This keeps the parent's direction; the reflection flips the range below the vertex.",
+     "This leaves out the shift up $4$.",
+     "The outputs keep decreasing as $x$ moves away from $0$; there is no lowest value."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-transformations-5",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "transformations-s2",
+   "q": "Let $m(x) = 2k(x) - 1$. Use the table to find $m(1)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 7,
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "That is $2(4 - 1)$: the dilation applies to $k(1)$, then the shift is subtracted."
+     },
+     {
+      "value": 3,
+      "why": "That is $k(1) - 1$; the vertical dilation doubles the output first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$m(1) = 2k(1) - 1 = 2(4) - 1 = 7$: the output is doubled, then $1$ is subtracted."
+   }
+  },
+  {
+   "id": "pcalc-transformations-6",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "transformations-s2",
+   "q": "Let $n(x) = k(x - 3)$. For what value of $x$ is $n(x) = 6$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": -1,
+      "why": "That moves the input left. Solve $x - 3 = 2$: the input of $n$ is $3$ more than the input of $k$."
+     },
+     {
+      "value": 2,
+      "why": "That is where $k(x) = 6$. The input of $n$ is shifted: $x - 3 = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$n(x) = 6$ means $k(x - 3) = 6$. The table gives $k(2) = 6$, so $x - 3 = 2$ and $x = 5$. The graph of $n$ is the graph of $k$ moved $3$ right."
+   }
+  },
+  {
+   "id": "pcalc-transformations-7",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "transformations-s2",
+   "q": "Let $p(x) = k(-x)$. What is $p(2)$?",
+   "type": "single",
+   "options": [
+    "$6$",
+    "$-6$",
+    "$-3$",
+    "$3$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$p(2) = k(-2) = 3$. Replacing $x$ with $-x$ reflects the graph across the $y$-axis.",
+    "options": [
+     "That is $k(2)$; the input is negated first.",
+     "That is $-k(2)$, a reflection across the $x$-axis.",
+     "That negates the output; $k(-x)$ negates the input.",
+     "Read $k$ at $-2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-transformations-8",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "transformations-s2",
+   "q": "The domain of $k$ is $[-2, 2]$. What is the domain of $n(x) = k(x - 3)$?",
+   "type": "single",
+   "options": [
+    "$[1, 5]$",
+    "$[-5, -1]$",
+    "$[-2, 2]$",
+    "$[-6, 6]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$n(x)$ is defined when $x - 3$ is in $[-2, 2]$, so $-2 \\le x - 3 \\le 2$ and $1 \\le x \\le 5$. A horizontal shift moves the domain.",
+    "options": [
+     "Add $3$ to each end: $x - 3$ must lie in the domain of $k$.",
+     "This shifts left; $x - 3$ moves the graph right.",
+     "A horizontal shift changes the domain; only a vertical change keeps it.",
+     "This multiplies the ends by $3$, as for a dilation."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-transformations-9",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does the graph of $y = f(2x)$ compare with the graph of $y = f(x)$?",
+   "type": "single",
+   "options": [
+    "It is stretched horizontally by a factor of $2$",
+    "It is compressed horizontally by a factor of $\\frac{1}{2}$",
+    "It is stretched vertically by a factor of $2$",
+    "It is shifted left by $2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f(2x)$ reaches each output at half the input: the point $(a, b)$ on $f$ moves to $(\\frac{a}{2}, b)$. That is a horizontal dilation by a factor of $\\frac{1}{2}$.",
+    "options": [
+     "The factor inside acts on inputs in reverse: $2x$ halves them.",
+     "Inputs are multiplied by $\\frac{1}{2}$.",
+     "A vertical dilation multiplies outputs: that would be $2f(x)$.",
+     "A shift adds to the input, as in $f(x + 2)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-transformations-10",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = x^2 - 4x$. Write $g(x) = f(x - 1) + 3$ as an expression in $x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "(x - 1)^2 - 4(x - 1) + 3",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -4,
+     4
+    ],
+    "mode": "exact",
+    "lhs": "g(x) =",
+    "mistakes": [
+     {
+      "expr": "(x - 1)^2 - 4x + 3",
+      "why": "Every $x$ in $f$ becomes $x - 1$, including the one in $-4x$."
+     },
+     {
+      "expr": "(x + 1)^2 - 4(x + 1) + 3",
+      "why": "$f(x - 1)$ puts $x - 1$ in, not $x + 1$."
+     },
+     {
+      "expr": "x^2 - 4x + 2",
+      "why": "This subtracts $1$ from the output instead of the input, then adds $3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Replace every $x$ in $f$ with $x - 1$: $f(x - 1) = (x - 1)^2 - 4(x - 1)$. Add $3$: $g(x) = (x - 1)^2 - 4(x - 1) + 3 = x^2 - 6x + 8$."
+   }
+  },
+  {
+   "id": "pcalc-transformations-11",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which equation reflects the graph of $y = f(x)$ across the $y$-axis?",
+   "type": "single",
+   "options": [
+    "$y = -f(x)$",
+    "$y = -f(-x)$",
+    "$y = f(x) - 1$",
+    "$y = f(-x)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Across the $y$-axis, the point $(a, b)$ goes to $(-a, b)$: the input is negated, so $y = f(-x)$.",
+    "options": [
+     "Negating the output reflects across the $x$-axis.",
+     "This reflects across both axes.",
+     "This shifts the graph down $1$.",
+     "Negating the input flips left and right."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-transformations-12",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The graph of $f$ has domain $[0, 4]$ and range $[-1, 3]$. Let $g(x) = -2f(x - 1)$. What are the domain and range of $g$?",
+   "type": "single",
+   "options": [
+    "Domain $[1, 5]$, range $[-6, 2]$",
+    "Domain $[-1, 3]$, range $[-6, 2]$",
+    "Domain $[1, 5]$, range $[-2, 6]$",
+    "Domain $[0, 4]$, range $[-6, 2]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Domain: $x - 1$ must be in $[0, 4]$, so $x$ is in $[1, 5]$. Range: multiply the outputs $-1$ and $3$ by $-2$ to get $2$ and $-6$, so the range is $[-6, 2]$.",
+    "options": [
+     "Shift the inputs right $1$; multiply the outputs by $-2$ and reorder.",
+     "This shifts the domain left; $x - 1$ moves it right.",
+     "This dilates by $2$ but forgets the reflection.",
+     "A horizontal shift changes the domain."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-transformations-13",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Starting from the graph of $y = f(x)$, build $y = 2f(x - 3) + 1$ working from the input outward: put the steps in order.",
+   "type": "order",
+   "options": [
+    "Shift right $3$: $y = f(x - 3)$",
+    "Dilate vertically by a factor of $2$: $y = 2f(x - 3)$",
+    "Shift up $1$: $y = 2f(x - 3) + 1$"
+   ],
+   "why": {
+    "correct": "From the input outward: first the change inside, $x - 3$; then the factor $2$ on the output; then $+1$. The dilation must come before the vertical shift: dilating after adding $1$ would give $2f(x - 3) + 2$."
+   }
+  },
+  {
+   "id": "pcalc-transformations-14",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A function $f$ has a maximum value of $5$ at $x = 2$. Let $g(x) = -3f(x + 1) + 2$. What is the minimum value of $g$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -13,
+    "mistakes": [
+     {
+      "value": -17,
+      "why": "That subtracts $2$; the shift $+2$ moves outputs up."
+     },
+     {
+      "value": 17,
+      "why": "Multiplying $5$ by $-3$ gives $-15$; then add $2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The reflection turns the maximum into a minimum. At $x = 1$, $g(1) = -3f(2) + 2 = -3(5) + 2 = -13$."
+   }
+  },
+  {
+   "id": "pcalc-transformations-15",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Let $f(x) = x^2$, with range $[0, \\infty)$. Which transformations of $f$ have a different range from $f$? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$y = f(x - 5)$",
+    "$y = f(x) + 5$",
+    "$y = -f(x)$",
+    "$y = f(3x)$"
+   ],
+   "correct": [
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Vertical changes (shifts, dilations, reflections across the $x$-axis) act on outputs, so they can change the range. Horizontal changes act on inputs and keep the range here.",
+    "options": [
+     "A shift right keeps the outputs $[0, \\infty)$.",
+     "Adding $5$ moves the range to $[5, \\infty)$.",
+     "Negating gives $(-\\infty, 0]$.",
+     "A horizontal dilation keeps the outputs $[0, \\infty)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-transformations-16",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says the graph of $g(x) = f(x + 4)$ is the graph of $f$ shifted $4$ units right. Which reason shows the student is wrong?",
+   "type": "single",
+   "options": [
+    "$g(-4) = f(0)$, so the point at input $0$ on $f$ is at input $-4$ on $g$",
+    "$g(4) = f(0)$, so the point at input $0$ on $f$ is at input $4$ on $g$",
+    "$g(0) = f(0) + 4$, so the graph moves up $4$",
+    "$g(x) = f(x) + f(4)$, so the graph moves by $f(4)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Use a value: $g(-4) = f(-4 + 4) = f(0)$. The output $f$ had at $0$ now appears at $-4$, so the graph moved $4$ left.",
+    "options": [
+     "A specific input shows the direction.",
+     "$g(4) = f(8)$, not $f(0)$.",
+     "The $4$ is added to the input, not the output.",
+     "Function notation is not distributive: $f(x + 4) \\ne f(x) + f(4)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-transformations-17",
+   "unit": "unit-1",
+   "topic": "transformations",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In $g(x) = a(x - 2)^2 + 1$, the value of $a$ changes from $3$ to $\\frac{1}{3}$. Predict each change.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The width of the parabola",
+     "answer": "up",
+     "why": "Multiplying the outputs by a smaller positive factor makes the graph rise more slowly, so it is wider."
+    },
+    {
+     "name": "The $x$-coordinate of the vertex",
+     "answer": "none",
+     "why": "The vertex is at $x = 2$ from the shift $x - 2$, whatever the dilation."
+    },
+    {
+     "name": "The value $g(5)$",
+     "answer": "down",
+     "why": "$g(5) = 9a + 1$ falls from $28$ to $4$."
+    }
+   ],
+   "why": {
+    "correct": "A vertical dilation scales the distance from the vertex level but does not move the vertex."
+   }
+  }
+ ]
+}

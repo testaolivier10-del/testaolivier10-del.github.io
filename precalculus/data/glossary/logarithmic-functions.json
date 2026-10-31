@@ -1,0 +1,5 @@
+{
+ "log-function": {
+  "def": "A function of the form $f(x) = a\\log_b x$ (with $a \\ne 0$, $b > 0$, $b \\ne 1$), or a transformation of it. It is defined for $x > 0$, has the vertical asymptote $x = 0$, is always increasing or always decreasing, has one concavity and no extrema."
+ }
+}

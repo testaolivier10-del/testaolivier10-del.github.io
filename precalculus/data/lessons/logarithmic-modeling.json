@@ -1,0 +1,88 @@
+{
+ "topic": "logarithmic-modeling",
+ "hook": "Practice a new skill and the first weeks bring big gains; later the same effort buys less. Doubling your practice time adds about the same improvement each time. Data like that, where the input has to multiply to make the output climb by equal steps, call for a logarithmic model.",
+ "prereq": [
+  {
+   "q": "$y = a + b\\ln x$ at $x = 1$ equals",
+   "options": [
+    "$a$",
+    "$a + b$",
+    "$b$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": "$\\ln 1 = 0$.",
+   "review": "logarithmic-functions"
+  },
+  {
+   "q": "A residual is",
+   "options": [
+    "the actual value minus the predicted value",
+    "the predicted value minus the actual value",
+    "the predicted value divided by the actual value",
+    "the slope of the model"
+   ],
+   "correct": 0,
+   "why": "Residual = actual − predicted.",
+   "review": "model-validation"
+  },
+  {
+   "q": "Solve $\\ln x = 2.5$.",
+   "options": [
+    "$x = e^{2.5}$",
+    "$x = 2.5e$",
+    "$x = \\frac{2.5}{e}$",
+    "$x = 10^{2.5}$"
+   ],
+   "correct": 0,
+   "why": "Exponential form, base $e$.",
+   "review": "exp-log-equations"
+  }
+ ],
+ "figure": {
+  "figure": "logarithmic-modeling-data",
+  "caption": "Each doubling of the weeks adds $12.5$ words per minute; the model $y = 52 + 18\\ln x$ fits the data and rises more and more slowly."
+ },
+ "chain": [
+  {
+   "cause": "Inputs multiply by a constant factor while outputs add a constant",
+   "effect": "the data fit $y = a + b\\log_c x$, a logarithmic model"
+  },
+  {
+   "cause": "One point has $x = 1$",
+   "effect": "the logarithm is $0$ there, so the output at $x = 1$ is $a$"
+  },
+  {
+   "cause": "Data are not exact",
+   "effect": "use logarithmic regression, $y = a + b\\ln x$, and store the constants"
+  },
+  {
+   "cause": "Solve for an input",
+   "effect": "isolate the logarithm and rewrite as a power"
+  },
+  {
+   "cause": "Move far past the data or near $x = 0$",
+   "effect": "the model is unsupported or gives impossible values, so restrict the domain"
+  }
+ ],
+ "ideas": [
+  "A logarithmic model $y = a + b\\ln x$ fits when equal factors in $x$ give equal changes in $y$.",
+  "Build it from two points (one with $x = 1$ makes $a$ easy) or with logarithmic regression on a calculator.",
+  "$b > 0$: increasing, concave down, so the rate of change decreases: growth that slows but never stops.",
+  "Justify the choice with the numbers: \\\"each time $x$ triples, $y$ increases by $6$\\\"."
+ ],
+ "misconception": {
+  "wrong": "A logarithmic model levels off at a maximum value, like a population reaching its limit.",
+  "right": "A logarithmic model grows without bound: $\\lim_{x \\to \\infty}(a + b\\ln x) = \\infty$ for $b > 0$. Its rate of change shrinks, so the growth looks like leveling off, but there is no ceiling."
+ },
+ "check": [
+  "pcalc-logarithmic-modeling-1",
+  "pcalc-logarithmic-modeling-2",
+  "pcalc-logarithmic-modeling-3",
+  "pcalc-logarithmic-modeling-6",
+  "pcalc-logarithmic-modeling-7",
+  "pcalc-logarithmic-modeling-14",
+  "pcalc-logarithmic-modeling-18"
+ ],
+ "summary": "Use a logarithmic model $y = a + b\\ln x$ when the input must multiply by a constant for the output to rise by a constant. Build it from two points or by logarithmic regression, keeping the constants stored. Predict outputs by substituting and find inputs by rewriting as a power. The model is concave down, so its rate of change decreases; it is supported only near the data and fails near $x = 0$."
+}

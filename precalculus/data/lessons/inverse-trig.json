@@ -1,0 +1,72 @@
+{
+ "topic": "inverse-trig",
+ "hook": "A building code limits how steep a wheelchair ramp can be. The inspector measures the rise and the run, so she knows the tangent of the ramp's angle. To get the angle itself she has to run tangent backward. That backward function exists only if you agree, in advance, which angle to report.",
+ "prereq": [
+  {
+   "q": "What is $\\sin\\frac{\\pi}{6}$?",
+   "options": [
+    "$\\frac{1}{2}$",
+    "$\\frac{\\sqrt{3}}{2}$",
+    "$\\frac{\\sqrt{2}}{2}$",
+    "$1$"
+   ],
+   "correct": 0,
+   "why": "On the unit circle the angle $\\frac{\\pi}{6}$ meets the point $\\left(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right)$, so its sine is $\\frac{1}{2}$.",
+   "review": "sine-cosine-values"
+  },
+  {
+   "q": "$f$ is invertible and $f(2) = 5$. What is $f^{-1}(5)$?",
+   "options": [
+    "$2$",
+    "$5$",
+    "$\\frac{1}{5}$",
+    "$\\frac{1}{2}$"
+   ],
+   "correct": 0,
+   "why": "An inverse swaps inputs and outputs: $f(2) = 5$ means $f^{-1}(5) = 2$.",
+   "review": "inverse-functions"
+  }
+ ],
+ "figure": {
+  "figure": "inverse-trig-restrict",
+  "caption": "Cosine kept only on $[0, \\pi]$ (blue) takes each value from $-1$ to $1$ once. Reflecting it across $y = x$ gives $y = \\cos^{-1} x$ (green)."
+ },
+ "chain": [
+  {
+   "cause": "Sine, cosine and tangent repeat outputs",
+   "effect": "they have no inverse on their whole domains"
+  },
+  {
+   "cause": "Restrict each to one interval where it is one-to-one",
+   "effect": "$\\sin$ on $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$, $\\cos$ on $[0, \\pi]$, $\\tan$ on $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$"
+  },
+  {
+   "cause": "Swap inputs and outputs of the restricted function",
+   "effect": "$\\sin^{-1}$, $\\cos^{-1}$ and $\\tan^{-1}$, whose outputs are angles in those intervals"
+  },
+  {
+   "cause": "Evaluate $\\sin^{-1}(\\sin x)$",
+   "effect": "you get $x$ back only when $x$ is already in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$"
+  }
+ ],
+ "ideas": [
+  "An inverse trigonometric function takes a ratio and returns an angle.",
+  "$\\sin^{-1}$ and $\\tan^{-1}$ return angles between $-\\frac{\\pi}{2}$ and $\\frac{\\pi}{2}$; $\\cos^{-1}$ returns angles between $0$ and $\\pi$.",
+  "$\\sin^{-1} x$ is the inverse function, not the reciprocal $\\frac{1}{\\sin x}$.",
+  "For a composite like $\\cos^{-1}(\\cos x)$, find the inner value first, then the angle in the right range."
+ ],
+ "misconception": {
+  "wrong": "$\\tan^{-1}(-1) = \\frac{3\\pi}{4}$, because $\\tan\\frac{3\\pi}{4} = -1$.",
+  "right": "Many angles have tangent $-1$, but $\\tan^{-1}$ returns the one in $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$: $-\\frac{\\pi}{4}$."
+ },
+ "check": [
+  "pcalc-inverse-trig-1",
+  "pcalc-inverse-trig-2",
+  "pcalc-inverse-trig-4",
+  "pcalc-inverse-trig-6",
+  "pcalc-inverse-trig-13",
+  "pcalc-inverse-trig-11",
+  "pcalc-inverse-trig-16"
+ ],
+ "summary": "Restricted to $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$, $[0, \\pi]$ and $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$, sine, cosine and tangent are invertible. $\\sin^{-1}$, $\\cos^{-1}$ and $\\tan^{-1}$ take a ratio and return the one angle in that interval. Inverse is not reciprocal, and $\\sin^{-1}(\\sin x) = x$ only for $x$ in the restricted interval."
+}

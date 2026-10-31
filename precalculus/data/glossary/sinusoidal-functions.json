@@ -1,0 +1,14 @@
+{
+ "sinusoid": {
+  "def": "A function whose graph is the graph of sine (or cosine) after vertical and horizontal dilations and translations: a smooth wave that oscillates evenly about a horizontal line. Described by its amplitude, midline, period and frequency."
+ },
+ "amplitude": {
+  "def": "Half the distance between the greatest and least values of a sinusoidal function, $\\frac{\\max - \\min}{2}$: how far the graph reaches above and below its midline. It is never negative."
+ },
+ "midline": {
+  "def": "The horizontal line halfway between the greatest and least values of a sinusoidal function, $y = \\frac{\\max + \\min}{2}$. The graph oscillates around it."
+ },
+ "frequency": {
+  "def": "The number of cycles a periodic function completes per unit of input: the reciprocal of the period. A period of 4 seconds is a frequency of $\\frac{1}{4}$ cycle per second."
+ }
+}

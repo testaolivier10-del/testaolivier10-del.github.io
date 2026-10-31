@@ -1,0 +1,8 @@
+{
+ "natural-base": {
+  "def": "The number e, about 2.71828, used as the base of an exponential function, as in f(x) = e^x. It arises naturally when growth happens continuously; a calculator has a key for it."
+ },
+ "growth-factor": {
+  "def": "The base b of an exponential function in context: the factor the output is multiplied by for each unit of input. A percent change r (as a decimal) gives the growth factor b = 1 + r: a 4% increase is b = 1.04, and a 15% decrease is the decay factor b = 0.85."
+ }
+}

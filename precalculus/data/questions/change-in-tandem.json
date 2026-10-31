@@ -1,0 +1,492 @@
+{
+ "stimuli": {
+  "change-in-tandem-s1": {
+   "kind": "graph",
+   "title": "Depth of a pond",
+   "plot": {
+    "label": "Graph of the depth h(t) of a pond, in feet, for 0 to 8 months: it falls from 10 to 2 at t = 2, rises to 10 at t = 6 and falls to 2 at t = 8",
+    "x": [
+     -0.5,
+     8.5
+    ],
+    "y": [
+     -1,
+     12
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "t (months)",
+    "yLabel": "h (feet)",
+    "curves": [
+     {
+      "fn": "-0.25x^3 + 3x^2 - 9x + 10",
+      "domain": [
+       0,
+       8
+      ],
+      "label": "h",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       2
+      ]
+     },
+     {
+      "at": [
+       4,
+       6
+      ]
+     },
+     {
+      "at": [
+       6,
+       10
+      ]
+     }
+    ]
+   }
+  },
+  "change-in-tandem-s2": {
+   "kind": "table",
+   "title": "A cooling cup of coffee",
+   "table": {
+    "caption": "Temperature T(t) of a cup of coffee, in degrees Fahrenheit, t minutes after it is poured",
+    "cols": [
+     "$t$ (minutes)",
+     "0",
+     "2",
+     "4",
+     "6",
+     "8"
+    ],
+    "rows": [
+     [
+      "$T(t)$ (degrees Fahrenheit)",
+      "180",
+      "158",
+      "141",
+      "128",
+      "119"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-change-in-tandem-1",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "change-in-tandem-s1",
+   "q": "The graph shows the depth $h(t)$ of a pond, in feet, $t$ months after the start of a year, for $0 \\le t \\le 8$. On which interval is $h$ increasing?",
+   "type": "single",
+   "options": [
+    "$[0, 2]$",
+    "$[2, 6]$",
+    "$[4, 8]$",
+    "$[2, 10]$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$h$ is increasing on an interval when a larger input always gives a larger output there. The depth climbs from $h(2) = 2$ to $h(6) = 10$ and falls on both sides.",
+    "options": [
+     "On $[0, 2]$ the graph falls from $10$ to $2$: later times have smaller depths, so $h$ is decreasing there.",
+     "Right: from $t = 2$ to $t = 6$, a later time always gives a greater depth.",
+     "$h$ rises only until $t = 6$; on $[6, 8]$ it falls from $10$ to $2$.",
+     "$10$ is a depth (an output). The interval is in $t$, the input."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-2",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "change-in-tandem-s1",
+   "q": "Which describes $h$ on the interval $(4, 6)$?",
+   "type": "single",
+   "options": [
+    "$h$ is increasing and concave down.",
+    "$h$ is increasing and concave up.",
+    "$h$ is decreasing and concave down.",
+    "$h$ is decreasing and concave up."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two separate questions: is the output rising or falling (increasing), and is the rate of change rising or falling (concavity)? On $(4, 6)$ the depth rises, but it rises more slowly each month, so the graph is concave down.",
+    "options": [
+     "Right: the depth still rises, but the graph bends downward, so the rate of change of $h$ is decreasing.",
+     "On $(0, 4)$ the graph bends upward; after $t = 4$ it bends downward.",
+     "The depth goes from $6$ to $10$ on this interval, so $h$ is increasing.",
+     "That describes $(0, 2)$, where the depth falls while the graph bends upward."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-3",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "change-in-tandem-s1",
+   "q": "On the interval $(0, 4)$, how does the rate of change of $h$ behave?",
+   "type": "single",
+   "options": [
+    "It is decreasing, because $h$ falls and then rises.",
+    "It is negative throughout, because $h(4) < h(0)$.",
+    "It stays the same, because the graph is one smooth curve.",
+    "It is increasing, so the graph of $h$ is concave up."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Concave up means the rate of change is increasing. Near $t = 0$ the depth falls quickly, by $t = 2$ it has stopped falling, and after that it rises faster and faster until $t = 4$.",
+    "options": [
+     "The direction of $h$ is a different question. Ask how the rate changes: it goes from strongly negative to positive.",
+     "On $(2, 4)$ the depth rises, so the rate of change is positive there.",
+     "A smooth curve can bend; this one bends upward on $(0, 4)$.",
+     "Right: the depth drops fast near $t = 0$, then more slowly, then starts rising: the rate of change keeps increasing."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-4",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "change-in-tandem-s1",
+   "q": "By how many feet does the depth change from $t = 2$ to $t = 6$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 8,
+    "unit": "feet",
+    "units": [
+     "ft",
+     "foot"
+    ],
+    "mistakes": [
+     {
+      "value": -8,
+      "why": "The change is the later output minus the earlier one: $h(6) - h(2) = 10 - 2$."
+     },
+     {
+      "value": 4,
+      "why": "$4$ months is the change in the input. The question asks for the change in depth."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Change in output $= h(6) - h(2) = 10 - 2 = 8$ feet: the depth rose by $8$ feet over those $4$ months."
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-5",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "change-in-tandem-s1",
+   "q": "At which time is the pond's depth changing from decreasing to increasing?",
+   "type": "single",
+   "options": [
+    "$t = 2$",
+    "$t = 4$",
+    "$t = 6$",
+    "$t = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read the direction on each side. Left of $t = 2$ the graph falls; right of it the graph rises. The lowest depth, $2$ feet, is at $t = 2$.",
+    "options": [
+     "Right: $h$ decreases on $[0, 2]$ and increases on $[2, 6]$.",
+     "At $t = 4$ the depth is still rising; what changes there is the bending, from concave up to concave down.",
+     "At $t = 6$ the depth changes from increasing to decreasing, the opposite switch.",
+     "The graph starts at $t = 0$ and falls right away."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-6",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "change-in-tandem-s2",
+   "q": "What are the changes in $T$ over the four consecutive $2$-minute intervals in the table?",
+   "type": "single",
+   "options": [
+    "$-22$, $-17$, $-13$, $-9$",
+    "$22$, $17$, $13$, $9$",
+    "$-11$, $-8.5$, $-6.5$, $-4.5$",
+    "$-22$, $-39$, $-52$, $-61$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$158 - 180 = -22$, $141 - 158 = -17$, $128 - 141 = -13$, $119 - 128 = -9$.",
+    "options": [
+     "Right: each is the later temperature minus the earlier one.",
+     "These are the sizes of the drops. The temperature falls, so the changes are negative.",
+     "These divide each change by $2$ minutes; the question asks for the changes in temperature.",
+     "These are changes from $t = 0$, not over consecutive intervals."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-7",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "change-in-tandem-s2",
+   "q": "Based on the table, which statement about $T$ on $[0, 8]$ is true?",
+   "type": "single",
+   "options": [
+    "$T$ is decreasing and its rate of change is decreasing.",
+    "$T$ is increasing and its rate of change is decreasing.",
+    "$T$ is decreasing and its rate of change is increasing.",
+    "$T$ is decreasing at a constant rate."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$T$ falls, so it is decreasing. Over equal $2$-minute steps the changes are $-22, -17, -13, -9$, which increase, so the rate of change of $T$ is increasing and the graph of $T$ is concave up.",
+    "options": [
+     "The changes $-22, -17, -13, -9$ go up, so the rate of change is increasing.",
+     "Each temperature is lower than the one before, so $T$ is decreasing.",
+     "Right: the temperature falls, and the changes over equal intervals rise from $-22$ to $-9$.",
+     "The changes over equal $2$-minute intervals are not equal, so the rate is not constant."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-8",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "change-in-tandem-s2",
+   "q": "The pattern in the table continues. Which value of $T(10)$ is most consistent with it?",
+   "type": "single",
+   "options": [
+    "$108$",
+    "$125$",
+    "$119$",
+    "$113$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The changes $-22, -17, -13, -9$ get closer to $0$. The next change should be negative but closer to $0$ than $-9$: $119 - 6 = 113$ fits.",
+    "options": [
+     "A drop of $11$ would break the pattern: each $2$-minute drop has been smaller than the last, and the last was $9$.",
+     "The coffee has been cooling the whole time; a rise to $125$ would reverse that.",
+     "No change at all would mean the cooling stopped suddenly; the drops have been shrinking gradually.",
+     "Right: a drop of $6$, smaller than the last drop of $9$, keeps $T$ decreasing with an increasing rate of change."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-9",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "change-in-tandem-s2",
+   "q": "Which sentence correctly describes what happens to the coffee between $t = 6$ and $t = 8$?",
+   "type": "single",
+   "options": [
+    "The coffee's temperature drops $9$ degrees Fahrenheit in those $2$ minutes.",
+    "The coffee's temperature is $9$ degrees Fahrenheit at $t = 8$.",
+    "The coffee cools for $9$ minutes.",
+    "The coffee warms $9$ degrees Fahrenheit in those $2$ minutes."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A change in output keeps its units and its sign: $-9$ degrees Fahrenheit means the temperature fell $9$ degrees over that $2$-minute interval.",
+    "options": [
+     "Right: $T(8) - T(6) = 119 - 128 = -9$ degrees over $2$ minutes.",
+     "$9$ is a change in temperature, not the temperature itself, which is $119$ degrees.",
+     "The input change is $2$ minutes; $9$ is a change in degrees.",
+     "The change $119 - 128$ is negative, so the coffee cools."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-10",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A car starts from rest and speeds up steadily for $10$ seconds. Let $d(t)$ be the distance it has traveled after $t$ seconds. Which describes the graph of $d$ on $[0, 10]$?",
+   "type": "single",
+   "options": [
+    "Increasing and concave down",
+    "Increasing and concave up",
+    "Decreasing and concave up",
+    "Increasing with a constant rate of change"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Distance traveled rises, so $d$ is increasing. Speeding up means the distance covered in each second grows: the rate of change of $d$ is increasing, so $d$ is concave up.",
+    "options": [
+     "Concave down would mean the distance grows more slowly each second, as when a car slows down.",
+     "Right: the distance keeps growing, and it grows by more each second because the car speeds up.",
+     "Distance traveled cannot go down while the car moves forward.",
+     "A constant rate would mean a constant speed; this car speeds up."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-11",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "For $y = 20 - 3x$, how do $x$ and $y$ vary together?",
+   "type": "single",
+   "options": [
+    "As $x$ increases, $y$ increases.",
+    "As $x$ increases, $y$ decreases, by $3$ for each $1$ that $x$ goes up.",
+    "As $x$ increases, $y$ decreases, by $20$ for each $1$ that $x$ goes up.",
+    "$y$ stays at $20$ as $x$ changes."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Compare outputs: $y(0) = 20$, $y(1) = 17$, $y(2) = 14$. The input and output move in opposite directions, and the output changes by $-3$ for every $1$-unit step in the input.",
+    "options": [
+     "Try two inputs: $x = 0$ gives $20$ and $x = 1$ gives $17$. The output went down.",
+     "Right: each $1$-unit increase in $x$ subtracts another $3$ from $y$.",
+     "$20$ is the output at $x = 0$; the change per unit is the $-3$.",
+     "The $-3x$ term changes $y$ whenever $x$ changes."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-12",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which table shows a function that is decreasing on $[0, 3]$? (Inputs $x = 0, 1, 2, 3$.)",
+   "type": "single",
+   "options": [
+    "$f$: $9, 7, 7, 4$",
+    "$g$: $9, 6, 7, 2$",
+    "$k$: $9, 8, 5, 1$",
+    "$m$: $1, 5, 8, 9$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$f$ is decreasing on an interval when, for any two inputs $a < b$ there, $f(a) > f(b)$. Check each neighboring pair of outputs for a strict drop.",
+    "options": [
+     "$f(1) = f(2)$, so a larger input does not give a smaller output there; $f$ is not decreasing on all of $[0, 3]$.",
+     "$g(1) < g(2)$, so $g$ goes up between $1$ and $2$.",
+     "Right: every larger input gives a smaller output: $9 > 8 > 5 > 1$.",
+     "These outputs rise: $m$ is increasing."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-13",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Water pours at a constant rate into a vase that is narrow at the bottom and wide at the top. As time goes on, predict each change.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The height of the water",
+     "answer": "up",
+     "why": "Water keeps flowing in, so the height keeps rising: the height is an increasing function of time."
+    },
+    {
+     "name": "The rise in height during each second",
+     "answer": "down",
+     "why": "Each second adds the same volume, but the vase is wider higher up, so the same volume makes a thinner layer: the rate of change of the height is decreasing."
+    },
+    {
+     "name": "The volume of water added during each second",
+     "answer": "none",
+     "why": "The water pours at a constant rate, so every second adds the same volume."
+    }
+   ],
+   "why": {
+    "correct": "The height is increasing and its rate of change is decreasing, so the graph of height against time is concave down."
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-14",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "3.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "A taxi ride costs $C$ dollars for a trip of $m$ miles, and $C$ depends on $m$. Which is the independent variable?",
+   "type": "single",
+   "options": [
+    "$m$, the number of miles",
+    "$C$, the cost",
+    "The rate the taxi charges per mile",
+    "The time of day"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The independent variable is the input, the one that varies freely; the dependent variable is the output that depends on it. Here $C$ is a function of $m$.",
+    "options": [
+     "Right: you choose the miles, and the cost follows from them.",
+     "The cost depends on the miles, so $C$ is the dependent variable.",
+     "That is a fixed number in the rule, not a variable that changes.",
+     "Nothing in the description makes the cost depend on the time."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-change-in-tandem-15",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A function $f$ is increasing on $[1, 5]$ and its rate of change is decreasing there. Which describes the graph of $f$ on $[1, 5]$?",
+   "type": "single",
+   "options": [
+    "It rises and bends upward.",
+    "It falls and bends downward.",
+    "It rises along a straight line.",
+    "It rises and bends downward."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "\"Increasing\" is about the outputs: they rise. \"Rate of change decreasing\" is about how fast they rise: more slowly over each equal step. Together the graph rises and flattens, which is concave down.",
+    "options": [
+     "Bending upward (concave up) goes with an increasing rate of change.",
+     "An increasing function rises.",
+     "A straight line has a constant rate of change, not a decreasing one.",
+     "Right: increasing means it rises; a decreasing rate of change means it rises more and more slowly, so it is concave down."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "topic": "implicit-functions",
+ "hook": "The edge of a pond, the outline of a running track, the shape of a lens: many curves are easiest to describe with one equation that links x and y, not with a formula \"y = ...\". Such an equation still lets you find points, measure the curve and split it into pieces that are functions.",
+ "prereq": [
+  {
+   "q": "Solve $y^2 + y - 6 = 0$.",
+   "options": [
+    "$y = 2$ or $y = -3$",
+    "$y = -2$ or $y = 3$",
+    "$y = 6$ or $y = -1$",
+    "$y = 2$"
+   ],
+   "correct": 0,
+   "why": "$y^2 + y - 6 = (y - 2)(y + 3) = 0$, so $y = 2$ or $y = -3$.",
+   "review": "alg-quadratics"
+  },
+  {
+   "q": "Does the graph of $x = y^2$ pass the vertical line test?",
+   "options": [
+    "No: $x = 4$ gives $y = 2$ and $y = -2$",
+    "Yes: each $y$ gives one $x$",
+    "Yes: it is a parabola",
+    "No: it has no $y$-intercept"
+   ],
+   "correct": 0,
+   "why": "The vertical line $x = 4$ meets the graph at $(4, 2)$ and $(4, -2)$, two points, so $y$ is not a function of $x$.",
+   "review": "alg-functions"
+  }
+ ],
+ "figure": {
+  "figure": "implicit-functions-halves",
+  "caption": "$x^2 + y^2 = 25$ is not the graph of a function of $x$: the line $x = 3$ meets it twice. Its upper and lower halves are each the graph of a function."
+ },
+ "chain": [
+  {
+   "cause": "An equation links $x$ and $y$ without solving for $y$",
+   "effect": "its graph is every point $(x, y)$ that makes the equation true"
+  },
+  {
+   "cause": "Substitute a value of $x$",
+   "effect": "you get an equation in $y$ alone; each solution gives a point of the curve"
+  },
+  {
+   "cause": "Some $x$ gives two or more values of $y$",
+   "effect": "the curve is not the graph of a function of $x$, but it can be split into pieces that are"
+  },
+  {
+   "cause": "For some $x$ the equation in $y$ has no real solution",
+   "effect": "the curve has no points above or below that $x$, which bounds how far left or right it reaches"
+  }
+ ],
+ "ideas": [
+  "An <b>implicitly defined function</b> is given by an equation in $x$ and $y$, such as $x^2 + xy + y^2 = 7$, instead of $y = f(x)$. Its graph is the set of solutions.",
+  "To test a point, substitute both coordinates. To find points, substitute one coordinate and solve for the other.",
+  "If one $x$ gives two $y$-values, the curve is not a function of $x$. Solving for $y$ (sometimes with the quadratic formula) splits it into functions.",
+  "An implicit equation can define a function you cannot easily solve for, such as $y^3 + y = x$."
+ ],
+ "misconception": {
+  "wrong": "An equation that is not written as $y = \\ldots$ cannot define a function.",
+  "right": "What matters is whether each $x$ gives one $y$. $y^3 + y = x$ gives exactly one $y$ for each $x$, so it defines $y$ as a function of $x$ even though the formula is hard to write."
+ },
+ "check": [
+  "pcalc-implicit-functions-6",
+  "pcalc-implicit-functions-7",
+  "pcalc-implicit-functions-8",
+  "pcalc-implicit-functions-9",
+  "pcalc-implicit-functions-10",
+  "pcalc-implicit-functions-11"
+ ],
+ "summary": "An implicitly defined function is an equation linking $x$ and $y$; its graph is every solution point. Substitute a value to find points, count the $y$-values for one $x$ to decide whether the curve is a function of $x$, and solve for $y$ to split it into functions."
+}

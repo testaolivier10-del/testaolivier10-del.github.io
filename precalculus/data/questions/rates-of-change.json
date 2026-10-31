@@ -1,0 +1,521 @@
+{
+ "stimuli": {
+  "rates-of-change-s1": {
+   "kind": "table",
+   "title": "Distance on a hike",
+   "table": {
+    "caption": "Distance d(t) a hiker has walked, in miles, t hours after starting",
+    "cols": [
+     "$t$ (hours)",
+     "0",
+     "1",
+     "3",
+     "4",
+     "6"
+    ],
+    "rows": [
+     [
+      "$d(t)$ (miles)",
+      "0",
+      "2.5",
+      "7.0",
+      "8.8",
+      "11.2"
+     ]
+    ]
+   }
+  },
+  "rates-of-change-s2": {
+   "kind": "graph",
+   "title": "Concentration of a medicine",
+   "plot": {
+    "label": "Graph of C(t) = 12t/(t + 2), the concentration in milligrams per liter t hours after a dose, for 0 to 10 hours: it rises quickly at first, then more slowly",
+    "x": [
+     -0.5,
+     10.5
+    ],
+    "y": [
+     -1,
+     12
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "t (hours)",
+    "yLabel": "C (mg/L)",
+    "curves": [
+     {
+      "fn": "12x/(x + 2)",
+      "domain": [
+       0,
+       10
+      ],
+      "label": "C",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       6
+      ]
+     },
+     {
+      "at": [
+       6,
+       9
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-rates-of-change-1",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rates-of-change-s1",
+   "q": "What is the average rate of change of $d$ on $[1, 3]$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "9/4",
+    "unit": "miles per hour",
+    "units": [
+     "mph",
+     "mi/h",
+     "miles/hour"
+    ],
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 4.5,
+      "why": "$4.5$ miles is the change in distance; divide by the $2$ hours between $t = 1$ and $t = 3$."
+     },
+     {
+      "value": 3.5,
+      "why": "Use $d(1) = 2.5$ and $d(3) = 7.0$: $\\frac{7.0 - 2.5}{3 - 1}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d(3) - d(1)}{3 - 1} = \\frac{7.0 - 2.5}{2} = 2.25$ miles per hour: the slope of the line through $(1, 2.5)$ and $(3, 7.0)$."
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-2",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rates-of-change-s1",
+   "q": "On which interval between consecutive table times is the average rate of change of $d$ greatest?",
+   "type": "single",
+   "options": [
+    "$[1, 3]$",
+    "$[0, 1]$",
+    "$[4, 6]$",
+    "$[3, 4]$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The intervals have different lengths, so compare rates, not changes: $2.5$, $2.25$, $1.8$ and $1.2$ miles per hour on $[0, 1]$, $[1, 3]$, $[3, 4]$ and $[4, 6]$.",
+    "options": [
+     "The distance grows most here ($4.5$ miles), but over $2$ hours: $2.25$ miles per hour, less than on $[0, 1]$.",
+     "Right: $2.5$ miles in $1$ hour is $2.5$ miles per hour, the greatest of $2.5$, $2.25$, $1.8$ and $1.2$.",
+     "$\\frac{11.2 - 8.8}{2} = 1.2$ miles per hour, the smallest.",
+     "$\\frac{8.8 - 7.0}{1} = 1.8$ miles per hour."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-3",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rates-of-change-s1",
+   "q": "Using the table, which is the best estimate of how fast the hiker is walking at $t = 3.5$ hours?",
+   "type": "single",
+   "options": [
+    "$1.8$ miles per hour",
+    "$2.0$ miles per hour",
+    "$8.8$ miles per hour",
+    "$1.87$ miles per hour"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "To estimate the rate at one time, use the average rate of change over a short interval containing it: $\\frac{d(4) - d(3)}{4 - 3} = 1.8$ miles per hour.",
+    "options": [
+     "Right: $[3, 4]$ is the shortest interval in the table that contains $3.5$, and its average rate is $1.8$.",
+     "This is $\\frac{7.0}{3.5}$, which mixes a distance at $t = 3$ with the time $3.5$; use the average rate over $[3, 4]$.",
+     "$8.8$ is the distance at $t = 4$, not a rate.",
+     "That is the average over the whole hike, $[0, 6]$; a short interval around $3.5$ gives a better estimate."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-4",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rates-of-change-s1",
+   "q": "The average rate of change of $d$ on $[0, 6]$ is about $1.87$. What does this tell you?",
+   "type": "single",
+   "options": [
+    "The hiker walked $1.87$ miles in total.",
+    "At the end of the hike, at $t = 6$, the hiker is walking $1.87$ miles per hour.",
+    "Over the $6$ hours, the hiker covered about $1.87$ miles per hour on average.",
+    "The hiker's speed went up by $1.87$ miles per hour."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{d(6) - d(0)}{6 - 0} = \\frac{11.2}{6} \\approx 1.87$ miles per hour: the constant speed that would cover the same $11.2$ miles in the same $6$ hours.",
+    "options": [
+     "The total distance is $d(6) = 11.2$ miles; $1.87$ is that distance per hour.",
+     "An average over $[0, 6]$ describes the whole interval, not the speed at one time.",
+     "Right: $\\frac{11.2 - 0}{6 - 0} \\approx 1.87$ miles per hour, the steady speed that would cover the same distance.",
+     "The rate is a speed, not a change in speed."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-5",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rates-of-change-s1",
+   "q": "What is the average rate of change of $d$ on $[0, 4]$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "11/5",
+    "unit": "miles per hour",
+    "units": [
+     "mph",
+     "mi/h",
+     "miles/hour"
+    ],
+    "mistakes": [
+     {
+      "value": 8.8,
+      "why": "$8.8$ miles is the distance walked by $t = 4$; divide by the $4$ hours."
+     },
+     {
+      "value": 2.25,
+      "why": "That is the rate on $[1, 3]$. Use the ends of $[0, 4]$: $\\frac{d(4) - d(0)}{4 - 0}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d(4) - d(0)}{4 - 0} = \\frac{8.8 - 0}{4} = 2.2$ miles per hour."
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-6",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rates-of-change-s2",
+   "calc": true,
+   "q": "The concentration of a medicine in the blood is $C(t) = \\frac{12t}{t + 2}$ milligrams per liter, $t$ hours after a dose. Find the average rate of change of $C$ on $[2, 6]$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 0.75,
+    "unit": "milligrams per liter per hour",
+    "units": [
+     "mg/L per hour",
+     "mg/L/h"
+    ],
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "$3$ is the change in concentration, $9 - 6$; divide by the $4$ hours."
+     },
+     {
+      "value": 1.5,
+      "why": "Check $C(6) = \\frac{72}{8} = 9$ and $C(2) = \\frac{24}{4} = 6$, then divide $9 - 6$ by $6 - 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$C(2) = 6$ and $C(6) = 9$, so $\\frac{C(6) - C(2)}{6 - 2} = \\frac{3}{4} = 0.75$ milligrams per liter per hour."
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-7",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rates-of-change-s2",
+   "calc": true,
+   "q": "The concentration of a medicine in the blood is $C(t) = \\frac{12t}{t + 2}$ milligrams per liter, $t$ hours after a dose. Use the average rate of change on $[1, 1.1]$ to estimate how fast $C$ is changing at $t = 1$. Give your answer to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 2.580645161290327,
+    "unit": "milligrams per liter per hour",
+    "units": [
+     "mg/L per hour",
+     "mg/L/h"
+    ],
+    "mistakes": [
+     {
+      "value": 0.258,
+      "why": "$0.258$ is the change $C(1.1) - C(1)$; divide by the input change, $0.1$."
+     },
+     {
+      "value": 2.6,
+      "why": "Store $C(1.1) = 4.258064...$ in the calculator; rounding it to $4.26$ first gives $2.6$, which is not accurate to three decimals."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$C(1) = 4$ and $C(1.1) = \\frac{13.2}{3.1} = 4.258064...$ (store it). $\\frac{C(1.1) - C(1)}{0.1} = 2.580645...$, so about $2.581$ milligrams per liter per hour."
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-8",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rates-of-change-s2",
+   "calc": true,
+   "q": "The concentration of a medicine in the blood is $C(t) = \\frac{12t}{t + 2}$ milligrams per liter, $t$ hours after a dose. Using average rates of change on $[1, 1.1]$ and $[5, 5.1]$, at which time is the concentration changing faster?",
+   "type": "single",
+   "options": [
+    "At $t = 5$, because $C(5) > C(1)$",
+    "At $t = 1$: about $2.581$ against about $0.483$",
+    "At both times equally, because the intervals have the same length",
+    "At $t = 5$: about $8.620$ compared with about $4.258$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{C(1.1) - C(1)}{0.1} \\approx 2.581$ and $\\frac{C(5.1) - C(5)}{0.1} \\approx 0.483$. The rate near $t = 1$ is larger, so the concentration is rising faster then. This matches the graph, which is steeper near $t = 1$.",
+    "options": [
+     "A larger output does not mean a faster change. Compare the rates: about $0.483$ at $t = 5$.",
+     "Right: the average rate on $[1, 1.1]$ is about $2.581$ and on $[5, 5.1]$ about $0.483$.",
+     "Equal lengths make the rates fair to compare, but the rates themselves differ.",
+     "These are values of $C$ at $5.1$ and $1.1$, not rates of change."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-9",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rates-of-change-s2",
+   "calc": true,
+   "q": "The concentration of a medicine in the blood is $C(t) = \\frac{12t}{t + 2}$ milligrams per liter, $t$ hours after a dose. The average rate of change of $C$ on $[0, 2]$ is $3$. Which sentence interprets it?",
+   "type": "single",
+   "options": [
+    "From $t = 0$ to $t = 2$, $C$ rose an average of $3$ milligrams per liter per hour.",
+    "After $2$ hours, the concentration is $3$ milligrams per liter.",
+    "From $t = 0$ on, $C$ rises by exactly $3$ milligrams per liter in each hour.",
+    "The concentration falls by $3$ milligrams per liter each hour."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A positive average rate of change means the output went up over the interval; its value is the average change in output per unit of input.",
+    "options": [
+     "Right: $\\frac{C(2) - C(0)}{2 - 0} = \\frac{6}{2} = 3$, in milligrams per liter per hour.",
+     "$C(2) = 6$; $3$ is a rate, not a concentration.",
+     "An average on $[0, 2]$ says nothing about later hours, and the rate is not constant.",
+     "A positive rate means the output rises as time goes on."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-10",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rates-of-change-s2",
+   "calc": true,
+   "q": "The concentration of a medicine in the blood is $C(t) = \\frac{12t}{t + 2}$ milligrams per liter, $t$ hours after a dose. Which interval's average rate of change gives the best estimate of how fast $C$ changes at $t = 4$?",
+   "type": "single",
+   "options": [
+    "$[0, 8]$",
+    "$[4, 10]$",
+    "$[3.9, 4.1]$",
+    "$[2, 6]$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The shorter the interval around a point, the closer the average rate of change is to how fast the function changes at that point.",
+    "options": [
+     "A long interval mixes the fast early change with the slow later change.",
+     "This interval is long and starts at $4$, so it reflects mostly later, slower change.",
+     "Right: a short interval around $t = 4$ uses outputs very close to the one at $t = 4$.",
+     "Better than a long interval, but $[3.9, 4.1]$ is much shorter around $t = 4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-11",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the average rate of change of $g(x) = \\frac{10}{x}$ on $[2, 5]$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "$g(5) - g(2) = 2 - 5 = -3$ is negative, so the rate is negative."
+     },
+     {
+      "value": -3,
+      "why": "$-3$ is the change in output; divide by the change in input, $5 - 2 = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$g(2) = 5$ and $g(5) = 2$. $\\frac{g(5) - g(2)}{5 - 2} = \\frac{-3}{3} = -1$."
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-12",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $f(x) = x^2 + 1$, write the average rate of change of $f$ on $[1, 1 + h]$, $h > 0$, as a simplified expression in $h$.",
+   "type": "expr",
+   "expr": {
+    "answer": "2 + h",
+    "vars": [
+     "h"
+    ],
+    "domain": [
+     0.1,
+     3
+    ],
+    "lhs": "\\frac{f(1 + h) - f(1)}{h} =",
+    "mistakes": [
+     {
+      "expr": "(1 + h)^2 + 1 - 2",
+      "why": "That is the change in output; divide by the change in input, $h$."
+     },
+     {
+      "expr": "2h + h^2",
+      "why": "Expanding gives $2h + h^2$ on top; divide each term by $h$."
+     },
+     {
+      "expr": "h",
+      "why": "$(1 + h)^2 = 1 + 2h + h^2$, not $1 + h^2$; the middle term $2h$ is easy to drop."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(1 + h) - f(1) = (1 + h)^2 + 1 - 2 = 2h + h^2$. Divide by $h$: $2 + h$. As $h$ shrinks, the average rate gets close to $2$."
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-13",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The average rate of change of $f$ on $[3, 7]$ is $-2$. Which must be true?",
+   "type": "single",
+   "options": [
+    "$f$ is decreasing on $[3, 7]$.",
+    "$f(7) = f(3) - 8$",
+    "$f(7) = -2$",
+    "$f(7) = f(3) - 2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Rearrange the definition: $f(7) - f(3) = (\\text{average rate}) \\times (7 - 3) = -2 \\cdot 4 = -8$.",
+    "options": [
+     "An average says nothing about the inputs between $3$ and $7$; $f$ could rise for a while and still end lower.",
+     "Right: $f(7) - f(3) = -2 \\cdot (7 - 3) = -8$.",
+     "$-2$ is a rate, not an output.",
+     "The rate is per unit of input; over $4$ units the change is $-8$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-14",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "$W(t)$ is a puppy's weight in pounds $t$ weeks after birth. What are the units of the average rate of change of $W$ on $[4, 8]$?",
+   "type": "single",
+   "options": [
+    "Pounds per week",
+    "Weeks per pound",
+    "Pounds",
+    "Pounds times weeks"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{W(8) - W(4)}{8 - 4}$ is pounds divided by weeks: pounds per week.",
+    "options": [
+     "Right: output units per input unit.",
+     "This is upside down: the change in output (pounds) goes on top.",
+     "That is the unit of the change in weight; the rate divides it by weeks.",
+     "A rate divides output by input; it does not multiply them."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rates-of-change-15",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The average rate of change of $f$ on $[a, b]$ is $0$. Which statements must be true? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$f(a) = f(b)$",
+    "$f$ is constant on $[a, b]$.",
+    "The line through $(a, f(a))$ and $(b, f(b))$ is horizontal.",
+    "$f(a) = 0$"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "The average rate of change is the slope of the line through the two endpoints. A slope of $0$ means equal outputs at the ends and a horizontal line, nothing more.",
+    "options": [
+     "True: a zero numerator, $f(b) - f(a) = 0$, gives a rate of $0$.",
+     "Not necessarily: $f$ may rise and fall between $a$ and $b$ and come back to the same output.",
+     "True: its slope is the average rate of change, $0$.",
+     "The outputs are equal, but they need not be $0$."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,490 @@
+{
+ "stimuli": {
+  "polar-curves-s1": {
+   "kind": "graph",
+   "title": "A polar rose, $r = 3\\sin(2\\theta)$, and its graph of $r$ against $\\theta$",
+   "text": "<p>The first graph shows $r = 3\\sin(2\\theta)$ as a function of $\\theta$ on rectangular axes, for $0 \\le \\theta \\le 2\\pi$. The second shows the same function drawn in the polar plane.</p>",
+   "plot": {
+    "label": "Graph of r = 3 sin(2 theta) against theta for theta from 0 to 2 pi on rectangular axes, a wave between -3 and 3 with period pi",
+    "x": [
+     0,
+     6.283185307179586
+    ],
+    "y": [
+     -3.5,
+     3.5
+    ],
+    "piX": true,
+    "yStep": 1,
+    "xLabel": "θ",
+    "yLabel": "r",
+    "curves": [
+     {
+      "fn": "3sin(2x)",
+      "domain": [
+       0,
+       6.283185307179586
+      ]
+     }
+    ]
+   },
+   "figure": "polar-curves-rose"
+  },
+  "polar-curves-s2": {
+   "kind": "graph",
+   "title": "The polar function $r = 1 + 2\\cos\\theta$",
+   "text": "<p>The first graph shows $r = 1 + 2\\cos\\theta$ against $\\theta$ on rectangular axes, for $0 \\le \\theta \\le 2\\pi$. The second shows the same function in the polar plane.</p>",
+   "plot": {
+    "label": "Graph of r = 1 + 2 cos theta against theta for theta from 0 to 2 pi, starting at 3, dipping to -1 at theta = pi, and returning to 3",
+    "x": [
+     0,
+     6.283185307179586
+    ],
+    "y": [
+     -1.5,
+     3.5
+    ],
+    "piX": true,
+    "yStep": 1,
+    "xLabel": "θ",
+    "yLabel": "r",
+    "curves": [
+     {
+      "fn": "1 + 2cos(x)",
+      "domain": [
+       0,
+       6.283185307179586
+      ]
+     }
+    ]
+   },
+   "figure": "polar-curves-limacon"
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-polar-curves-1",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polar-curves-s1",
+   "q": "How many petals does the polar curve $r = 3\\sin(2\\theta)$ have?",
+   "type": "single",
+   "options": [
+    "$4$",
+    "$2$",
+    "$8$",
+    "$3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $r = a\\sin(n\\theta)$ with $n$ even, the rose has $2n$ petals: here $2\\cdot 2 = 4$. On the $r$ against $\\theta$ graph there are four humps on $[0, 2\\pi]$, two above the axis and two below, and each hump draws one petal.",
+    "options": [
+     "Right: $n = 2$ is even, so $2n = 4$ petals.",
+     "Each hump of the $r$ graph draws a petal, and there are four humps on $[0, 2\\pi]$, including the two where $r < 0$.",
+     "That doubles the count twice. Four humps on $[0, 2\\pi]$ draw four petals, each once.",
+     "An odd number of petals comes from an odd $n$; here $n = 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-2",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polar-curves-s1",
+   "q": "For $\\frac{\\pi}{2} < \\theta < \\pi$, in which quadrant are the points of the curve drawn?",
+   "type": "single",
+   "options": [
+    "Quadrant IV",
+    "Quadrant II",
+    "Quadrant III",
+    "Quadrant I"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On $\\left(\\frac{\\pi}{2}, \\pi\\right)$ the $r$ graph is below the axis, so $r < 0$. The angle points into Quadrant II, and a negative $r$ sends each point backward through the pole, into Quadrant IV. That petal is the one centered on the ray $\\frac{7\\pi}{4}$.",
+    "options": [
+     "Right: negative $r$ with an angle in Quadrant II lands in Quadrant IV.",
+     "That would need $r > 0$; the $r$ graph is negative on this interval.",
+     "The point opposite a Quadrant II direction is in Quadrant IV, not III.",
+     "Quadrant I points come from $0 < \\theta < \\frac{\\pi}{2}$, where $r > 0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-3",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-curves-s1",
+   "q": "What is the greatest distance from the pole to a point on the curve, and the first $\\theta$ in $[0, 2\\pi]$ where it occurs?",
+   "type": "single",
+   "options": [
+    "$3$, at $\\theta = \\frac{\\pi}{4}$",
+    "$3$, at $\\theta = \\frac{\\pi}{2}$",
+    "$6$, at $\\theta = \\frac{\\pi}{4}$",
+    "$\\frac{3}{2}$, at $\\theta = \\frac{\\pi}{12}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The distance from the pole is $|r|$, largest when $|\\sin(2\\theta)| = 1$. First at $2\\theta = \\frac{\\pi}{2}$, so $\\theta = \\frac{\\pi}{4}$, where $r = 3$: the tip of the first petal.",
+    "options": [
+     "Right: the first peak of the $r$ graph, the tip of a petal.",
+     "At $\\theta = \\frac{\\pi}{2}$, $r = 3\\sin\\pi = 0$: the curve is at the pole.",
+     "The amplitude is $3$; the petal does not reach $6$.",
+     "$r = \\frac{3}{2}$ at $\\frac{\\pi}{12}$ is partway out along the first petal."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-4",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-curves-s1",
+   "q": "For which $\\theta$ in $[0, 2\\pi)$ does the curve pass through the pole?",
+   "type": "single",
+   "options": [
+    "$0$, $\\frac{\\pi}{2}$, $\\pi$ and $\\frac{3\\pi}{2}$",
+    "$\\frac{\\pi}{4}$, $\\frac{3\\pi}{4}$, $\\frac{5\\pi}{4}$ and $\\frac{7\\pi}{4}$",
+    "$0$ and $\\pi$",
+    "$\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The curve is at the pole where $r = 0$: $\\sin(2\\theta) = 0$, so $2\\theta = 0, \\pi, 2\\pi, 3\\pi$ and $\\theta = 0, \\frac{\\pi}{2}, \\pi, \\frac{3\\pi}{2}$. These are the zeros of the $r$ graph, where each petal begins and ends.",
+    "options": [
+     "Right: the zeros of the $r$ graph.",
+     "Those are the tips of the petals, where $|r| = 3$.",
+     "$\\sin(2\\theta)$ is also $0$ at $\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$.",
+     "$r$ is also $0$ at $\\theta = 0$ and $\\theta = \\pi$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-5",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polar-curves-s1",
+   "q": "Find the exact value of $r$ when $\\theta = \\frac{\\pi}{12}$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "3/2",
+    "mistakes": [
+     {
+      "value": "3sqrt(3)/2",
+      "why": "That is $3\\cos\\frac{\\pi}{6}$, or $3\\sin\\frac{\\pi}{3}$ from doubling twice. $2\\cdot\\frac{\\pi}{12} = \\frac{\\pi}{6}$, and $\\sin\\frac{\\pi}{6} = \\frac{1}{2}$."
+     },
+     {
+      "value": "3sin(pi/12)",
+      "why": "Double the angle first: the input of sine is $2\\theta = \\frac{\\pi}{6}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$r = 3\\sin\\left(2\\cdot\\frac{\\pi}{12}\\right) = 3\\sin\\frac{\\pi}{6} = 3\\cdot\\frac{1}{2} = \\frac{3}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-6",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-curves-s2",
+   "q": "For which $\\theta$ in $[0, 2\\pi)$ does the curve $r = 1 + 2\\cos\\theta$ pass through the pole?",
+   "type": "single",
+   "options": [
+    "$\\frac{2\\pi}{3}$ and $\\frac{4\\pi}{3}$",
+    "$\\frac{\\pi}{3}$ and $\\frac{5\\pi}{3}$",
+    "$\\pi$",
+    "$\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$r = 0$ when $\\cos\\theta = -\\frac{1}{2}$: $\\theta = \\frac{2\\pi}{3}$ and $\\frac{4\\pi}{3}$. On the $r$ graph these are where the curve crosses the $\\theta$-axis.",
+    "options": [
+     "Right: the two zeros of $r$.",
+     "These solve $\\cos\\theta = +\\frac{1}{2}$, where $r = 2$.",
+     "At $\\theta = \\pi$, $r = -1$: the curve is $1$ unit from the pole.",
+     "At $\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$, $r = 1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-7",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polar-curves-s2",
+   "q": "Which interval of $\\theta$ draws the small inner loop of $r = 1 + 2\\cos\\theta$?",
+   "type": "single",
+   "options": [
+    "$\\left(\\frac{2\\pi}{3}, \\frac{4\\pi}{3}\\right)$",
+    "$\\left(\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right)$",
+    "$\\left(0, \\frac{2\\pi}{3}\\right)$",
+    "$\\left(\\frac{4\\pi}{3}, 2\\pi\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The inner loop is traced while $r < 0$, between the two zeros: on $\\left(\\frac{2\\pi}{3}, \\frac{4\\pi}{3}\\right)$ the $r$ graph is below the axis. The angles point left, but negative $r$ puts the points to the right of the pole, inside the big loop.",
+    "options": [
+     "Right: the interval where $r$ is negative.",
+     "$r = 1$ at $\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$; $r$ is still positive at the ends of this interval.",
+     "There $r > 0$: that piece is the upper half of the big loop.",
+     "There $r > 0$: that piece is the lower half of the big loop."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-8",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "polar-curves-s2",
+   "q": "What are the rectangular coordinates of the point on $r = 1 + 2\\cos\\theta$ where $\\theta = \\pi$?",
+   "type": "single",
+   "options": [
+    "$(1, 0)$",
+    "$(-1, 0)$",
+    "$(-3, 0)$",
+    "$(0, -1)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$r = 1 + 2\\cos\\pi = -1$. Then $x = r\\cos\\theta = (-1)(-1) = 1$ and $y = r\\sin\\theta = 0$. The angle points left, and the negative $r$ sends the point $1$ unit to the right: the far end of the inner loop.",
+    "options": [
+     "Right: $r = -1$ at angle $\\pi$ is the point $(1, 0)$.",
+     "That treats $r = -1$ as a distance in the direction $\\pi$; a negative $r$ reverses the direction.",
+     "$r = 1 + 2\\cos\\pi = -1$, not $-3$.",
+     "The angle $\\pi$ is on the horizontal axis, so $y = 0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-9",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-curves-s2",
+   "q": "Which point of $r = 1 + 2\\cos\\theta$ is farthest from the pole?",
+   "type": "single",
+   "options": [
+    "$(3, 0)$ in rectangular coordinates, at $\\theta = 0$",
+    "$(-1, 0)$ in rectangular coordinates, at $\\theta = \\pi$",
+    "$(0, 1)$ in rectangular coordinates, at $\\theta = \\frac{\\pi}{2}$",
+    "$(0, 3)$ in rectangular coordinates, at $\\theta = \\frac{\\pi}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The distance from the pole is $|r|$. On the $r$ graph, $|r|$ is largest at $\\theta = 0$ (and $2\\pi$), where $r = 3$. That point is $(3\\cos 0, 3\\sin 0) = (3, 0)$.",
+    "options": [
+     "Right: $|r| = 3$ is the largest value of $|r|$.",
+     "At $\\theta = \\pi$, $|r| = 1$, and the point is $(1, 0)$.",
+     "At $\\theta = \\frac{\\pi}{2}$, $|r| = 1$; that point is $1$ unit away.",
+     "$r = 3$ happens at $\\theta = 0$, which points right, not up."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-10",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which describes the graph of $r = 4\\cos\\theta$?",
+   "type": "single",
+   "options": [
+    "A circle of diameter $4$ centered at $(2, 0)$",
+    "A circle of radius $4$ centered at the pole",
+    "A circle of diameter $4$ centered at $(0, 2)$",
+    "A rose with $4$ petals"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Multiply by $r$: $r^2 = 4r\\cos\\theta$, so $x^2 + y^2 = 4x$. Complete the square: $(x - 2)^2 + y^2 = 4$, a circle of radius $2$ (diameter $4$) centered at $(2, 0)$. It passes through the pole at $\\theta = \\frac{\\pi}{2}$.",
+    "options": [
+     "Right: $(x - 2)^2 + y^2 = 4$.",
+     "That is $r = 4$, with $r$ constant; here $r$ changes with $\\theta$.",
+     "A sine, $r = 4\\sin\\theta$, gives the circle centered on the vertical axis.",
+     "A rose needs $\\cos(n\\theta)$ with $n \\ge 2$; here $n = 1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-11",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which describes the graph of $r = 5$?",
+   "type": "single",
+   "options": [
+    "A circle of radius $5$ centered at the pole",
+    "The vertical line $x = 5$",
+    "The horizontal line $y = 5$",
+    "The ray at angle $5$ radians"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$r = 5$ for every $\\theta$: every point is $5$ units from the pole, in every direction. That is the circle $x^2 + y^2 = 25$.",
+    "options": [
+     "Right: constant distance $5$.",
+     "$x = 5$ is $r\\cos\\theta = 5$, a different equation.",
+     "$y = 5$ is $r\\sin\\theta = 5$, a different equation.",
+     "A fixed angle gives a line through the pole; this fixes the distance."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-12",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which polar equations have a cardioid as their graph? Select every one.",
+   "type": "multi",
+   "options": [
+    "$r = 2 + 2\\sin\\theta$",
+    "$r = 1 + 2\\cos\\theta$",
+    "$r = 2\\sin(3\\theta)$",
+    "$r = 3 + 2\\cos\\theta$"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "A cardioid is a limaçon $r = a + b\\cos\\theta$ or $r = a + b\\sin\\theta$ with $|a| = |b|$: the curve just touches the pole once.",
+    "options": [
+     "Cardioid: $a = b = 2$.",
+     "Not a cardioid: $|a| < |b|$, so the limaçon has an inner loop.",
+     "Not a cardioid: a rose with $3$ petals.",
+     "Not a cardioid: $|a| > |b|$, so the limaçon never reaches the pole."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-13",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many petals does the rose $r = 2\\cos(3\\theta)$ have?",
+   "type": "single",
+   "options": [
+    "$3$",
+    "$6$",
+    "$2$",
+    "$9$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $r = a\\cos(n\\theta)$ with $n$ odd, the rose has $n$ petals. Here $n = 3$. Over $[0, 2\\pi]$ the curve traces the three petals twice, because the negative-$r$ humps redraw them.",
+    "options": [
+     "Right: odd $n$ gives $n$ petals.",
+     "$2n$ petals is the rule for even $n$; for odd $n$ the negative humps land on the same petals.",
+     "$2$ is the length of each petal, not the count.",
+     "That is $n^2$; the count is $n$ for odd $n$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-14",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For the limaçon $r = a + 2\\cos\\theta$, the value of $a$ increases from $2$ to $4$. Predict how each feature changes.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The greatest distance from the pole",
+     "answer": "up",
+     "why": "The greatest distance is $a + 2$, at $\\theta = 0$, so it goes from $4$ to $6$."
+    },
+    {
+     "name": "The angle θ at which the greatest distance occurs",
+     "answer": "none",
+     "why": "$a + 2\\cos\\theta$ is largest where $\\cos\\theta = 1$, at $\\theta = 0$, whatever the value of $a$."
+    },
+    {
+     "name": "The least distance from the pole",
+     "answer": "up",
+     "why": "The least value of $r$ is $a - 2$, at $\\theta = \\pi$: it goes from $0$ (a cardioid touching the pole) to $2$."
+    }
+   ],
+   "why": {
+    "correct": "Raising $a$ adds the same amount to every $r$: the curve grows outward and pulls away from the pole, while its widest point stays on the polar axis."
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-15",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for sketching a polar curve from its graph of $r$ against $\\theta$ in order.",
+   "type": "order",
+   "options": [
+    "Read $r$ at $\\theta = 0$, $\\frac{\\pi}{2}$, $\\pi$ and $\\frac{3\\pi}{2}$, and mark the zeros of $r$",
+    "Note where $r$ is positive and where it is negative",
+    "Plot each point: turn to $\\theta$, move $|r|$ units, backward through the pole when $r < 0$",
+    "Join the points in order of increasing $\\theta$"
+   ],
+   "why": {
+    "correct": "Key values first, then signs, then plotting with the sign rule, then joining in the order the angle sweeps."
+   }
+  },
+  {
+   "id": "pcalc-polar-curves-16",
+   "unit": "unit-3",
+   "topic": "polar-curves",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which describes the graph of $r = \\theta$ for $0 \\le \\theta \\le 4\\pi$?",
+   "type": "single",
+   "options": [
+    "A spiral that winds outward, two full turns",
+    "A circle of radius $4\\pi$",
+    "A ray from the pole at angle $4\\pi$",
+    "A rose with $4$ petals"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "As $\\theta$ sweeps around, $r$ keeps growing: each point is farther from the pole than the last, so the curve winds outward. From $0$ to $4\\pi$ the angle makes two full turns.",
+    "options": [
+     "Right: growing distance with a turning angle makes a spiral.",
+     "A circle needs $r$ constant; here $r$ grows with $\\theta$.",
+     "A ray needs $\\theta$ constant; here $\\theta$ changes.",
+     "A rose needs $r$ to rise and fall back to $0$; here $r$ only grows."
+    ]
+   }
+  }
+ ]
+}

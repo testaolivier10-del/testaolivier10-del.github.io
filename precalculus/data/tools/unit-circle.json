@@ -1,0 +1,16 @@
+{
+ "about": "Unit circle trainer (docs/apprecalc-spec.md section 6, builder T3). Every number and problem comes from precalculus/assets/tools/math/unit-circle.js (ApPrecalcMath.unitCircle); contexts unlock with their topics. Checked by scripts/lib/apprecalc-tool-checks/unit-circle.mjs.",
+ "slug": "unit-circle",
+ "kind": "simulator",
+ "topic": "sine-cosine-tangent",
+ "intro": "<p>Turn a point P around the unit circle. The arc it travels from (1, 0) is the angle θ in radians; its x-coordinate is cos θ, its height is sin θ, and the slope of the radius OP is tan θ. As θ turns, the height and the x-coordinate unroll into the graphs of sine and cosine, drawn on the same scale as the circle.</p>",
+ "howItWorksTitle": "How the circle works",
+ "howItWorks": "<ul><li><b>Radians:</b> an angle of θ radians cuts off an arc of length θ on the unit circle (radius 1). On a circle of radius r the arc is s = rθ, so θ = s / r. A full turn is 2π.</li><li><b>Coordinates:</b> the terminal ray of θ meets the unit circle at P = (cos θ, sin θ); on a circle of radius r the point is (r cos θ, r sin θ).</li><li><b>Tangent:</b> tan θ = sin θ / cos θ, the slope of the radius OP. It is not defined where cos θ = 0 (OP is vertical).</li><li><b>Reference angle:</b> the acute angle between the terminal ray and the x-axis. The special angles (multiples of π/6 and π/4) take their sizes from the 30-60-90 and 45-45-90 triangles; the quadrant gives the signs.</li><li><b>Keyboard:</b> on the circle, the arrow keys move P to the next special angle (Shift for one degree), Page Up and Page Down by a quarter turn, Home and End to 0 and 2π.</li></ul>",
+ "contexts": [
+  { "id": "radian", "topic": "sine-cosine-tangent", "kind": "radian" },
+  { "id": "coords", "topic": "sine-cosine-tangent", "kind": "coords" },
+  { "id": "ray", "topic": "sine-cosine-tangent", "kind": "ray" },
+  { "id": "values", "topic": "sine-cosine-values", "kind": "values" },
+  { "id": "graphs", "topic": "sine-cosine-curves", "kind": "graphs" }
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "topic": "sine-cosine-curves",
+ "hook": "Watch a reflector on a turning bike wheel from the side: it rises, slows at the top, falls, slows at the bottom and rises again. Plot its height against the angle the wheel has turned and you get the most important periodic graph there is. That graph, and its twin for the horizontal position, is what every model in the rest of this unit is built from.",
+ "prereq": [
+  {
+   "q": "What is $\\sin\\frac{7\\pi}{6}$?",
+   "options": ["$-\\frac{1}{2}$", "$\\frac{1}{2}$", "$-\\frac{\\sqrt{3}}{2}$", "$\\frac{\\sqrt{3}}{2}$"],
+   "correct": 0,
+   "why": "Quadrant III, reference angle $\\frac{\\pi}{6}$: the height is $-\\frac{1}{2}$.",
+   "review": "sine-cosine-values"
+  },
+  {
+   "q": "A function has period $P$. Over any interval of length $P$, what is its average rate of change?",
+   "options": ["$0$", "$P$", "$\\frac{1}{P}$", "It depends on the interval"],
+   "correct": 0,
+   "why": "The output after one period equals the output at the start, so the change in output is $0$.",
+   "review": "periodic-phenomena"
+  }
+ ],
+ "figure": {
+  "figure": "sine-cosine-curves-unroll",
+  "caption": "The height of the point at angle $\\theta$ on the unit circle is the height of the sine graph at $\\theta$. The dashed blue curve is cosine, the horizontal position."
+ },
+ "chain": [
+  {
+   "cause": "Let the angle $\\theta$ be the input and the height of the point on the unit circle the output",
+   "effect": "you get $y = \\sin\\theta$: $0$ at $\\theta = 0$, up to $1$ at $\\frac{\\pi}{2}$, back to $0$ at $\\pi$, down to $-1$ at $\\frac{3\\pi}{2}$, back to $0$ at $2\\pi$"
+  },
+  {
+   "cause": "Use the horizontal position as the output instead",
+   "effect": "you get $y = \\cos\\theta$: $1, 0, -1, 0, 1$ at the same five inputs, the sine graph moved $\\frac{\\pi}{2}$ to the left"
+  },
+  {
+   "cause": "One more full turn brings the point back",
+   "effect": "both graphs repeat every $2\\pi$ and stay between $-1$ and $1$"
+  },
+  {
+   "cause": "Near the top or bottom of the circle the height changes slowly; near the $x$-axis it changes fast",
+   "effect": "the rate of change of $\\sin\\theta$ is largest in size at the zeros, and the graph is concave down where $\\sin\\theta > 0$ and concave up where $\\sin\\theta < 0$"
+  }
+ ],
+ "ideas": [
+  "Both graphs have domain all real numbers, range $[-1, 1]$ and period $2\\pi$.",
+  "Five key points per cycle: sine $(0, 0), \\left(\\frac{\\pi}{2}, 1\\right), (\\pi, 0), \\left(\\frac{3\\pi}{2}, -1\\right), (2\\pi, 0)$; cosine $(0, 1), \\left(\\frac{\\pi}{2}, 0\\right), (\\pi, -1), \\left(\\frac{3\\pi}{2}, 0\\right), (2\\pi, 1)$.",
+  "Sine is zero at every multiple of $\\pi$; cosine is zero at $\\frac{\\pi}{2}$ plus every multiple of $\\pi$.",
+  "Each graph is concave down above the $\\theta$-axis and concave up below it, so its rate of change is decreasing where the graph is above the axis."
+ ],
+ "misconception": {
+  "wrong": "The sine graph is made of curved arches that are steepest at the top, like a hill.",
+  "right": "At a highest point the graph is flat: the point on the circle is moving sideways, not up. The graph is steepest where it crosses the $\\theta$-axis, where the point on the circle moves straight up or down."
+ },
+ "check": [
+  "pcalc-sine-cosine-curves-1",
+  "pcalc-sine-cosine-curves-2",
+  "pcalc-sine-cosine-curves-3",
+  "pcalc-sine-cosine-curves-4",
+  "pcalc-sine-cosine-curves-10",
+  "pcalc-sine-cosine-curves-13"
+ ],
+ "summary": "The graph of $y = \\sin\\theta$ is the height of the point at angle $\\theta$ on the unit circle; $y = \\cos\\theta$ is its horizontal position. Both repeat every $2\\pi$ and stay between $-1$ and $1$, and cosine is sine shifted $\\frac{\\pi}{2}$ to the left. Each graph is concave down above the axis and concave up below it, steepest at its zeros and flat at its highest and lowest points."
+}

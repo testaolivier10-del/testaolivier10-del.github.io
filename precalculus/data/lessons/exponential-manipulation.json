@@ -1,0 +1,66 @@
+{
+ "topic": "exponential-manipulation",
+ "hook": "A streaming service reports that subscribers double every month. A news site rewrites the same model as \"multiplied by 8 every quarter\" and another as \"up about 19% a week\" (taking a month as 4 weeks). All three are the same function, written in different equivalent exponential forms.",
+ "prereq": [
+  {
+   "q": "Simplify $2^3 \\cdot 2^x$.",
+   "options": [
+    "$2^{x + 3}$",
+    "$4^{x + 3}$",
+    "$2^{3x}$",
+    "$6^x$"
+   ],
+   "correct": 0,
+   "why": "Same base: add the exponents.",
+   "review": "alg-exponents"
+  },
+  {
+   "q": "The graph of $g(x) = f(x + 2)$ is the graph of $f$ moved how?",
+   "options": [
+    "$2$ units left",
+    "$2$ units right",
+    "$2$ units up",
+    "$2$ units down"
+   ],
+   "correct": 0,
+   "why": "$g(-2) = f(0)$: the graph moves left.",
+   "review": "transformations"
+  }
+ ],
+ "figure": {
+  "figure": "exponential-manipulation-shift",
+  "caption": "$h(x) = 2^{x + 3}$ is $2^x$ shifted $3$ left, and it is also $2^x$ stretched vertically by $2^3 = 8$: one graph, two descriptions."
+ },
+ "chain": [
+  {
+   "cause": "Add to the input: $b^{x + k}$",
+   "effect": "by the product rule, $b^k \\cdot b^x$: a horizontal translation is a vertical dilation by $b^k$"
+  },
+  {
+   "cause": "Multiply the input: $b^{cx}$",
+   "effect": "by the power rule, $(b^c)^x$: a horizontal dilation is a change of base"
+  },
+  {
+   "cause": "Negate the input: $b^{-x}$",
+   "effect": "$\\left(\\frac{1}{b}\\right)^x$: growth reflected across the $y$-axis is decay"
+  }
+ ],
+ "ideas": [
+  "$b^{x + k} = b^k b^x$: for an exponential function, shifting the graph horizontally is the same as stretching it vertically.",
+  "$b^{cx} = (b^c)^x$ and $b^{x/n} = (b^{1/n})^x$: a horizontal dilation is the same as changing the base.",
+  "Use the rules on whole exponents: $4^{x + 1} = 2^{2(x + 1)} = 2^{2x + 2}$, never $2^{2x + 1}$."
+ ],
+ "misconception": {
+  "wrong": "$2^{x + 3} = 2^x + 2^3$.",
+  "right": "Adding exponents goes with multiplying powers: $2^{x + 3} = 2^x \\cdot 2^3 = 8(2)^x$. Check with $x = 1$: $16$, not $10$."
+ },
+ "check": [
+  "pcalc-exponential-manipulation-1",
+  "pcalc-exponential-manipulation-2",
+  "pcalc-exponential-manipulation-5",
+  "pcalc-exponential-manipulation-9",
+  "pcalc-exponential-manipulation-11",
+  "pcalc-exponential-manipulation-15"
+ ],
+ "summary": "Exponent rules rewrite exponential functions: $b^{x + k} = b^k b^x$ (a horizontal shift is a vertical dilation), $b^{cx} = (b^c)^x$ (a horizontal dilation is a new base) and $b^{-x} = \\left(\\frac{1}{b}\\right)^x$. Equivalent forms make different features easy to read."
+}

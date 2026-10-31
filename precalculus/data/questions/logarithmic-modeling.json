@@ -1,0 +1,585 @@
+{
+ "stimuli": {
+  "logarithmic-modeling-s1": {
+   "kind": "table",
+   "title": "Typing speed and practice",
+   "table": {
+    "caption": "Typing speed, in words per minute, after x hours of practice",
+    "cols": [
+     "$x$ (hours)",
+     "1",
+     "3",
+     "9",
+     "27",
+     "81"
+    ],
+    "rows": [
+     [
+      "$y$ (words per minute)",
+      "20",
+      "26",
+      "32",
+      "38",
+      "44"
+     ]
+    ]
+   }
+  },
+  "logarithmic-modeling-s2": {
+   "kind": "table",
+   "title": "Height of a sapling",
+   "table": {
+    "caption": "Height of a tree sapling, in centimeters, at selected ages, in months",
+    "cols": [
+     "$x$ (months)",
+     "1",
+     "2",
+     "4",
+     "6",
+     "10",
+     "15"
+    ],
+    "rows": [
+     [
+      "$H$ (centimeters)",
+      "12.0",
+      "21.9",
+      "30.0",
+      "35.2",
+      "43.5",
+      "48.4"
+     ]
+    ]
+   },
+   "text": "A logarithmic regression $H = a + b\\ln x$ models the data. Use a graphing calculator and store the constants."
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-logarithmic-modeling-1",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logarithmic-modeling-s1",
+   "type": "single",
+   "q": "Why is a logarithmic model a good choice for these data?",
+   "options": [
+    "Each time the hours are multiplied by $3$, the speed increases by $6$",
+    "The speed increases by the same amount over equal-length intervals of hours",
+    "The ratios of successive speeds are equal",
+    "The second differences of the speeds are equal over equal-length intervals"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The inputs grow by a constant factor ($\\times 3$) while the outputs grow by a constant amount ($+6$). That is the pattern of $y = a + b\\log_3 x$.",
+    "options": [
+     "Multiplying the input adds a fixed amount to the output: logarithmic.",
+     "The input intervals are not equal: $2, 6, 18, 54$ hours. Equal differences over equal intervals would be linear.",
+     "$\\frac{26}{20} = 1.3$ but $\\frac{32}{26} \\approx 1.23$: the ratios are not equal, so not exponential.",
+     "The inputs are not equally spaced, so differences of outputs cannot test a quadratic here."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-2",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-modeling-s1",
+   "type": "expr",
+   "q": "Write a model $y = a + b\\log_3 x$ that fits every point in the table.",
+   "expr": {
+    "answer": "20 + 6log_3(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     100
+    ],
+    "mode": "exact",
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "6 + 20log_3(x)",
+      "why": "At $x = 1$ the logarithm is $0$, so the constant term is $y(1) = 20$."
+     },
+     {
+      "expr": "20 + 2log_3(x)",
+      "why": "$b$ is the change in $y$ per unit of $\\log_3 x$, which is $6$, not $\\frac{6}{3}$."
+     },
+     {
+      "expr": "20 + 6ln(x)",
+      "why": "The inputs multiply by $3$, so the step of $6$ goes with $\\log_3$; $6\\ln 3 \\ne 6$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $x = 1$, $\\log_3 1 = 0$, so $a = 20$. Each factor of $3$ adds $1$ to $\\log_3 x$ and $6$ to $y$, so $b = 6$: $y = 20 + 6\\log_3 x$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-3",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-modeling-s1",
+   "type": "numeric",
+   "q": "Use the model $y = 20 + 6\\log_3 x$ to predict the typing speed after $243$ hours.",
+   "numeric": {
+    "answer": 50,
+    "unit": "words per minute",
+    "mistakes": [
+     {
+      "value": 1478,
+      "why": "That multiplies $243$ by $6$ and adds $20$. Use the logarithm: $\\log_3 243 = 5$."
+     },
+     {
+      "value": 44,
+      "why": "That is the speed at $81$ hours; $243$ is one more factor of $3$, so add $6$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$243 = 3^5$, so $y = 20 + 6 \\cdot 5 = 50$ words per minute. It continues the pattern: one more factor of $3$ after $81$ adds $6$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-4",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "logarithmic-modeling-s1",
+   "type": "numeric",
+   "q": "According to the model $y = 20 + 6\\log_3 x$, after how many hours does the speed reach $35$ words per minute? Give the exact value.",
+   "numeric": {
+    "answer": "3^(5/2)",
+    "answerTex": "9\\sqrt{3}",
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "That is $\\log_3 x$. Rewrite as $x = 3^{2.5}$."
+     },
+     {
+      "value": 18,
+      "why": "$35$ is halfway between $32$ and $38$ in speed, but the matching input is not halfway between $9$ and $27$; it is $3^{2.5}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$6\\log_3 x = 15$, so $\\log_3 x = 2.5$ and $x = 3^{2.5} = 9\\sqrt{3}$ hours, about $15.6$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-5",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logarithmic-modeling-s1",
+   "type": "single",
+   "q": "The model gives $y = 14$ at $x = \\frac{1}{3}$ and smaller values as $x$ approaches $0$. Why should the model not be used for very small $x$?",
+   "options": [
+    "As $x$ nears $0$, the model decreases without bound, giving negative speeds",
+    "The model is undefined for inputs between $0$ and $1$, so it gives no speed there",
+    "Near $x = 0$ the model predicts speeds that rise too quickly to be realistic",
+    "A logarithmic model is not allowed to have time as its input variable"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\lim_{x \\to 0^+} (20 + 6\\log_3 x) = -\\infty$, but a typing speed cannot be negative. The data start at $1$ hour, so the model is supported only from there on.",
+    "options": [
+     "Negative speeds are impossible, so the context limits the domain.",
+     "$\\log_3 x$ is defined for $0 < x < 1$; it is just negative there.",
+     "Near $0$ the model falls, not rises.",
+     "A logarithmic model can use time as its input; the issue is the values near $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-6",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-modeling-s2",
+   "calc": true,
+   "type": "numeric",
+   "q": "Find $b$ in the logarithmic regression $H = a + b\\ln x$ for the data. Give it correct to three decimal places.",
+   "numeric": {
+    "answer": 13.397796468301458,
+    "mistakes": [
+     {
+      "value": 12.000494153463968,
+      "why": "That is $a$, the predicted height at $x = 1$ month. $b$ multiplies $\\ln x$."
+     },
+     {
+      "value": 2.393867924528302,
+      "why": "That is the slope of a linear regression of $H$ on $x$. Use the logarithmic regression."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Enter $x$ and $H$ as lists and run a logarithmic regression ($y = a + b\\ln x$): $a \\approx 12.000$ and $b \\approx 13.398$. Store both for later parts."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-7",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-modeling-s2",
+   "calc": true,
+   "type": "numeric",
+   "q": "Use the regression model to predict the sapling's height at $12$ months. Give it correct to three decimal places.",
+   "numeric": {
+    "answer": 45.29276769005244,
+    "unit": "centimeters",
+    "units": [
+     "cm"
+    ],
+    "mistakes": [
+     {
+      "value": 45.297749107159206,
+      "why": "That uses $a$ and $b$ rounded to one decimal place. Store the full values."
+     },
+     {
+      "value": 172.77405177308145,
+      "why": "That multiplies $b$ by $12$; the model uses $\\ln 12$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With the stored constants, $H(12) = a + b\\ln 12 \\approx 45.293$ centimeters. Do not round $a$ and $b$ before this step."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-8",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logarithmic-modeling-s2",
+   "calc": true,
+   "type": "numeric",
+   "q": "Find the residual of the regression model at $x = 6$ months. Give it correct to three decimal places.",
+   "numeric": {
+    "answer": -0.8061228423332949,
+    "unit": "centimeters",
+    "units": [
+     "cm"
+    ],
+    "mistakes": [
+     {
+      "value": 0.8061228423332949,
+      "why": "That is predicted minus actual. A residual is actual minus predicted."
+     },
+     {
+      "value": 36.0061228423333,
+      "why": "That is the predicted value; subtract it from the actual $35.2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Residual = actual minus predicted: $35.2 - (a + b\\ln 6) \\approx -0.806$ centimeters. The model slightly overestimates the height at $6$ months."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-9",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-modeling-s2",
+   "calc": true,
+   "type": "numeric",
+   "q": "According to the regression model, at what age does the sapling reach $60$ centimeters? Give it correct to three decimal places.",
+   "numeric": {
+    "answer": 35.9684373738181,
+    "unit": "months",
+    "mistakes": [
+     {
+      "value": 3.582641814278979,
+      "why": "That is $\\ln x$. Raise $e$ to it: $x = e^{(60 - a)/b}$."
+     },
+     {
+      "value": 3.582641814278979,
+      "why": "That is $\\frac{60 - a}{b}$, the value of $\\ln x$; $x$ is $e$ to that power."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Solve $a + b\\ln x = 60$: $\\ln x = \\frac{60 - a}{b}$, so $x = e^{(60 - a)/b} \\approx 35.968$ months. This is past the data, so treat it with care."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-10",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-modeling-s2",
+   "calc": true,
+   "type": "numeric",
+   "q": "Find the average rate of change of the regression model on $[2, 10]$. Give it correct to three decimal places.",
+   "numeric": {
+    "answer": 2.6953651973950077,
+    "unit": "centimeters per month",
+    "units": [
+     "cm per month",
+     "cm/month"
+    ],
+    "mistakes": [
+     {
+      "value": 2.7,
+      "why": "That uses the data values, not the model. The question asks about the model $H$."
+     },
+     {
+      "value": 21.56292157916006,
+      "why": "Divide the change in height by the $8$ months."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{H(10) - H(2)}{10 - 2} = \\frac{b(\\ln 10 - \\ln 2)}{8} \\approx 2.695$ centimeters per month, the slope of the secant line through $(2, H(2))$ and $(10, H(10))$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-11",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "type": "expr",
+   "q": "A model $y = a + b\\ln x$ passes through $(1, 5)$ and $(e^2, 11)$. Write the model.",
+   "expr": {
+    "answer": "5 + 3ln(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.2,
+     20
+    ],
+    "mode": "exact",
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "5 + 6ln(x)",
+      "why": "$\\ln e^2 = 2$, so $2b = 6$ and $b = 3$."
+     },
+     {
+      "expr": "11 + 3ln(x)",
+      "why": "At $x = 1$, $\\ln x = 0$, so $a$ is the output there, $5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $x = 1$: $a + b \\cdot 0 = 5$, so $a = 5$. At $x = e^2$: $5 + 2b = 11$, so $b = 3$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-12",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "q": "A model $y = a + b\\log x$ (common logarithm) passes through $(1, 40)$ and $(10, 55)$. Use it to predict $y$ at $x = 100$.",
+   "numeric": {
+    "answer": 70,
+    "mistakes": [
+     {
+      "value": 1540,
+      "why": "That uses $b \\cdot 100$; the model uses $\\log 100 = 2$."
+     },
+     {
+      "value": 55,
+      "why": "$\\log 100 = 2$, not $1$, so add $15$ twice."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a = 40$ (at $x = 1$) and $40 + b = 55$, so $b = 15$. Then $y(100) = 40 + 15 \\cdot 2 = 70$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-13",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "q": "Which data set is best modeled by a logarithmic function?",
+   "options": [
+    "$x$: $2, 4, 8, 16$ and $y$: $3, 5, 7, 9$",
+    "$x$: $1, 2, 3, 4$ and $y$: $3, 6, 12, 24$",
+    "$x$: $1, 2, 3, 4$ and $y$: $3, 5, 7, 9$",
+    "$x$: $1, 2, 3, 4$ and $y$: $1, 4, 9, 16$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In the logarithmic pattern the inputs are multiplied by a constant ($\\times 2$) while the outputs change by a constant ($+2$).",
+    "options": [
+     "Inputs double, outputs add $2$: logarithmic.",
+     "Equal input steps with outputs doubling: exponential.",
+     "Equal input steps with outputs adding $2$: linear.",
+     "Equal input steps with second differences $2$: quadratic."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-14",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "q": "Monthly sales are modeled by $S(t) = 30 + 12\\ln t$, in thousands of dollars, $t$ months after launch. The model's average rate of change on $[1, 10]$ is greater than on $[10, 19]$. What does this mean in context?",
+   "options": [
+    "Sales keep increasing, but each later month adds less than earlier months did",
+    "Sales start to decrease after month $10$, so the model has turned downward",
+    "Sales increase faster after month $10$ than they did before month $10$",
+    "Sales reach their highest value at month $10$ and then stay at that level"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both rates are positive, so sales rise. The rate is smaller on the later interval, so the rate of change of $S$ is decreasing: growth slows down.",
+    "options": [
+     "Positive but decreasing rates of change.",
+     "The average rate on $[10, 19]$ is still positive, so $S$ is increasing.",
+     "The later rate is smaller, so growth slows.",
+     "$S$ is increasing for every $t > 0$, so it has no maximum."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-15",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "q": "A logarithmic model was fit to data for $1 \\le x \\le 20$. Why is a prediction at $x = 200$ less reliable than one at $x = 15$?",
+   "options": [
+    "No data support the model past $x = 20$, so the real pattern there may differ",
+    "The model is undefined for inputs greater than $20$, so it gives no prediction",
+    "A logarithmic model tends to overestimate for large inputs, by a growing amount",
+    "The residuals are larger for small $x$, so predictions near $x = 15$ are worse"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x = 15$ is inside the data, where the model has been checked against observations. At $x = 200$ there is no data, so error can grow without warning.",
+    "options": [
+     "Extrapolating past the data is not supported by any observations.",
+     "$\\ln 200$ exists; the model gives a number there, just not a supported one.",
+     "A model can under- or overestimate past the data; the problem is that nothing checks it.",
+     "The residuals inside the data say nothing about $x = 200$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-16",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "type": "numeric",
+   "q": "A model is $y = 8.2 + 4.75\\ln x$. Use a calculator to find $x$ when $y = 25$, correct to three decimal places.",
+   "numeric": {
+    "answer": 34.35824796460462,
+    "mistakes": [
+     {
+      "value": 3.5368421052631582,
+      "why": "That is the value of $\\ln x$. Then $x = e$ to that power."
+     },
+     {
+      "value": 3442.2475956860926,
+      "why": "The model uses $\\ln$, so undo it with $e$, not $10$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\ln x = \\frac{25 - 8.2}{4.75}$, so $x = e^{16.8/4.75} \\approx 34.358$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-17",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "A model is $y = a + b\\ln x$ with $b > 0$. Predict what happens to each quantity as $x$ increases.",
+   "variables": [
+    {
+     "name": "$y$",
+     "answer": "up",
+     "why": "$\\ln x$ increases, and $b > 0$."
+    },
+    {
+     "name": "The average rate of change of $y$ on $[x, x + 1]$",
+     "answer": "down",
+     "why": "The model is concave down, so its rate of change decreases."
+    },
+    {
+     "name": "The change in $y$ from $x$ to $2x$",
+     "answer": "none",
+     "why": "It is $b\\ln(2x) - b\\ln x = b\\ln 2$, the same for every $x$."
+    }
+   ],
+   "why": {
+    "correct": "A logarithmic model grows by a fixed amount for each fixed factor of the input, so it rises more and more slowly."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-modeling-18",
+   "unit": "unit-2",
+   "topic": "logarithmic-modeling",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "q": "Reading speed is modeled by $y = 52 + 18\\ln x$ words per minute after $x$ weeks. Since $18\\ln 2 \\approx 12.5$, what does the model say?",
+   "options": [
+    "Each doubling of the number of weeks adds about $12.5$ words per minute",
+    "Each week the speed rises by about $12.5$ words per minute, at a steady linear pace",
+    "The reading speed doubles once each $12.5$ weeks, as in exponential growth",
+    "After $2$ weeks of practice, the reading speed is about $12.5$ words per minute"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$y(2x) - y(x) = 18\\ln 2 \\approx 12.5$: doubling the input adds the same amount to the output.",
+    "options": [
+     "A fixed factor on the input adds a fixed amount to the output.",
+     "A constant increase per week would be linear.",
+     "Doubling outputs would be exponential.",
+     "$y(2) = 52 + 18\\ln 2 \\approx 64.5$."
+    ]
+   }
+  }
+ ]
+}

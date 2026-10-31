@@ -1,0 +1,5 @@
+{
+ "trig-curve": {
+  "def": "The graph of $y = \\sin\\theta$ or $y = \\cos\\theta$, traced from the unit circle: sine is the point's height and cosine its horizontal position. Both repeat every $2\\pi$ and oscillate between $-1$ and $1$; the cosine curve is the sine curve shifted $\\frac{\\pi}{2}$ to the left."
+ }
+}

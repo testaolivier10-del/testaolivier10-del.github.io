@@ -1,0 +1,8 @@
+{
+ "exponent-rules": {
+  "def": "The laws of exponents for a positive base b: b^m b^n = b^(m+n), b^m / b^n = b^(m-n), (b^m)^n = b^(mn), b^0 = 1, a negative exponent b^(-n) = 1/b^n, and a rational exponent b^(m/n) = (nth root of b)^m."
+ },
+ "radical": {
+  "def": "A root written with the radical sign, such as the square root or the cube root. The nth root of b is the number whose nth power is b, and it equals the rational exponent b^(1/n)."
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "topic": "tangent-function",
+ "hook": "A lighthouse sweeps its beam across a straight shore. When the beam points straight at the shore, the spot of light is close. As the beam turns, the spot races away, faster and faster, until the beam runs parallel to the shore and the spot is gone. The distance along the shore is a tangent function, and its vertical asymptote is that moment.",
+ "prereq": [
+  {
+   "q": "What is $\\frac{\\sin(\\pi/4)}{\\cos(\\pi/4)}$?",
+   "options": [
+    "$1$",
+    "$\\frac{\\sqrt{2}}{2}$",
+    "$\\sqrt{2}$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": "$\\sin\\frac{\\pi}{4} = \\cos\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}$, so the quotient is $1$.",
+   "review": "sine-cosine-values"
+  },
+  {
+   "q": "What is the period of $y = \\sin(3x)$?",
+   "options": [
+    "$\\frac{2\\pi}{3}$",
+    "$6\\pi$",
+    "$3$",
+    "$\\frac{\\pi}{3}$"
+   ],
+   "correct": 0,
+   "why": "The period of $\\sin(bx)$ is $\\frac{2\\pi}{|b|} = \\frac{2\\pi}{3}$.",
+   "review": "sinusoidal-transformations"
+  },
+  {
+   "q": "$g(x) = \\frac{1}{x - 2}$. What is $\\lim_{x \\to 2^+} g(x)$?",
+   "options": [
+    "$\\infty$",
+    "$-\\infty$",
+    "$0$",
+    "$\\frac{1}{2}$"
+   ],
+   "correct": 0,
+   "why": "Just right of $2$ the denominator is a small positive number, so $g$ grows without bound.",
+   "review": "vertical-asymptotes"
+  }
+ ],
+ "figure": {
+  "figure": "tangent-function-slope",
+  "caption": "The terminal ray of $\\theta$ meets the line $x = 1$ at height $\\tan\\theta$, which is also the slope of the ray."
+ },
+ "chain": [
+  {
+   "cause": "Write $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$",
+   "effect": "tangent is $0$ where $\\sin\\theta = 0$, at $\\theta = k\\pi$"
+  },
+  {
+   "cause": "$\\cos\\theta = 0$ at $\\theta = \\frac{\\pi}{2} + k\\pi$",
+   "effect": "the quotient is undefined there: vertical asymptotes"
+  },
+  {
+   "cause": "After a half turn, $\\sin$ and $\\cos$ both change sign",
+   "effect": "their quotient repeats, so the period is $\\pi$"
+  },
+  {
+   "cause": "Use $f(x) = a\\tan(b(x - c)) + d$",
+   "effect": "period $\\frac{\\pi}{|b|}$, shifted right $c$ and up $d$, stretched by $a$"
+  }
+ ],
+ "ideas": [
+  "$\\tan\\theta$ is the slope of the terminal ray, and the height where that ray meets the line $x = 1$.",
+  "Tangent is $0$ where sine is $0$ and has a vertical asymptote where cosine is $0$.",
+  "The period of $a\\tan(bx)$ is $\\frac{\\pi}{|b|}$, half of what the sine rule would give.",
+  "On each branch tangent increases; it is concave down left of its zero and concave up right of it."
+ ],
+ "misconception": {
+  "wrong": "Tangent repeats every $2\\pi$, like sine and cosine, so the period of $\\tan(bx)$ is $\\frac{2\\pi}{b}$.",
+  "right": "After a half turn, $\\sin$ and $\\cos$ both change sign, so $\\frac{\\sin}{\\cos}$ is the same again. Tangent repeats every $\\pi$, and $\\tan(bx)$ every $\\frac{\\pi}{|b|}$."
+ },
+ "check": [
+  "pcalc-tangent-function-1",
+  "pcalc-tangent-function-3",
+  "pcalc-tangent-function-5",
+  "pcalc-tangent-function-6",
+  "pcalc-tangent-function-9",
+  "pcalc-tangent-function-13",
+  "pcalc-tangent-function-10"
+ ],
+ "summary": "$\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$, the slope of the terminal ray. It is $0$ at $\\theta = k\\pi$, has vertical asymptotes at $\\theta = \\frac{\\pi}{2} + k\\pi$ with outputs growing without bound on each side, and has period $\\pi$. For $a\\tan(b(x - c)) + d$ the period is $\\frac{\\pi}{|b|}$ and the asymptotes shift with the graph."
+}

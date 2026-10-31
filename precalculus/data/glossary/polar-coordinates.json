@@ -1,0 +1,8 @@
+{
+ "polar-coordinates": {
+  "def": "A way to name a point by its distance $r$ from the pole (the origin) and the angle $\\theta$ from the polar axis (the positive $x$-axis): $(r, \\theta)$. They convert with $x = r\\cos\\theta$, $y = r\\sin\\theta$ and $r^2 = x^2 + y^2$. A negative $r$ points the opposite way, and each point has many polar names."
+ },
+ "complex-polar": {
+  "def": "The form $r(\\cos\\theta + i\\sin\\theta)$ of a complex number $a + bi$, from the polar coordinates of the point $(a, b)$ in the complex plane: $r = \\sqrt{a^2 + b^2}$ is its distance from $0$ and $\\theta$ its angle."
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "topic": "linear-vs-exponential",
+ "hook": "A music app has 500 users. One plan adds 200 users a month; another doubles the users every month. After a year the first plan has 2,900 users and the second has over 2 million. The difference is adding versus multiplying.",
+ "prereq": [
+  {
+   "q": "What is the common ratio of the geometric sequence $6, 18, 54, \\ldots$?",
+   "options": [
+    "$3$",
+    "$12$",
+    "$6$",
+    "$\\frac{1}{3}$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{18}{6} = 3$.",
+   "review": "sequences"
+  },
+  {
+   "q": "What is the average rate of change of $f$ on $[1, 4]$ if $f(1) = 2$ and $f(4) = 14$?",
+   "options": [
+    "$4$",
+    "$12$",
+    "$3$",
+    "$\\frac{1}{4}$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{14 - 2}{4 - 1} = 4$.",
+   "review": "rates-of-change"
+  }
+ ],
+ "figure": {
+  "figure": "linear-vs-exponential-steps",
+  "caption": "Over equal steps, $f(x) = 4 + 6x$ adds $6$ each time while $g(x) = 4(1.5)^x$ multiplies by $1.5$. The exponential function starts lower and passes the line between $x = 5$ and $x = 6$."
+ },
+ "chain": [
+  {
+   "cause": "Check that the input intervals have equal length",
+   "effect": "only then compare the outputs directly"
+  },
+  {
+   "cause": "Equal differences over the equal intervals",
+   "effect": "a linear function, $f(x) = b + mx$"
+  },
+  {
+   "cause": "Equal ratios (not $0$ or $1$) over the equal intervals",
+   "effect": "an exponential function, $f(x) = ab^x$, or $f(x) = y_1 r^{x - x_1}$ through a known point"
+  }
+ ],
+ "ideas": [
+  "Linear functions extend arithmetic sequences to all real inputs; exponential functions extend geometric sequences.",
+  "Linear: over equal-length input intervals, the outputs change by equal amounts. Exponential: over equal-length input intervals, the outputs change by equal factors (they are proportional).",
+  "An increasing exponential function eventually passes any increasing linear function."
+ ],
+ "misconception": {
+  "wrong": "The outputs increase faster and faster, so the function is exponential.",
+  "right": "Say both halves with numbers: the input intervals have equal length, and the outputs over them have a constant ratio. Faster and faster growth also fits a quadratic."
+ },
+ "check": [
+  "pcalc-linear-vs-exponential-1",
+  "pcalc-linear-vs-exponential-2",
+  "pcalc-linear-vs-exponential-3",
+  "pcalc-linear-vs-exponential-6",
+  "pcalc-linear-vs-exponential-7",
+  "pcalc-linear-vs-exponential-11"
+ ],
+ "summary": "Over equal-length input intervals, a linear function adds a constant difference and an exponential function multiplies by a constant ratio. Justify a model type with both halves and the numbers; with unequal steps, compare rates or per-unit ratios instead."
+}

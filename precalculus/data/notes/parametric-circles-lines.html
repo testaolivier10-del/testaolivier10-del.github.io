@@ -1,0 +1,38 @@
+<p>Circles and lines have equations you already know: $(x - h)^2 + (y - k)^2 = r^2$ and $y = mx + b$. Parametric equations describe the same shapes as trips: where you start, which way you go, how fast, and where you stop. That extra information is what you need to model a wheel turning or a drone flying.</p>
+
+<h2>The unit circle, as a trip</h2>
+<p>On the unit circle the point at angle $t$ is $(\cos t, \sin t)$. So the parametric function $x(t) = \cos t$, $y(t) = \sin t$ for $0 \le t \le 2\pi$ starts at $(1, 0)$ when $t = 0$, passes $(0, 1)$ at $t = \frac{\pi}{2}$, $(-1, 0)$ at $t = \pi$, $(0, -1)$ at $t = \frac{3\pi}{2}$, and returns to $(1, 0)$: once around, counterclockwise. The parameter is the angle.</p>
+
+<h2>Any circle</h2>
+<p>Scale by the radius $r$, then shift the center to $(h, k)$:</p>
+$$x(t) = h + r\cos t, \qquad y(t) = k + r\sin t, \qquad 0 \le t \le 2\pi.$$
+<p>Every point is $r$ units from $(h, k)$. To check, use the Pythagorean identity: $(x - h)^2 + (y - k)^2 = r^2\cos^2 t + r^2\sin^2 t = r^2$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Describe $x(t) = -1 + 5\cos t$, $y(t) = 4 + 5\sin t$ for $0 \le t \le 2\pi$.</p>
+<p>Center $(-1, 4)$, radius $5$. At $t = 0$ the point is $(-1 + 5, 4) = (4, 4)$, the rightmost point. As $t$ increases it goes counterclockwise, reaching the top, $(-1, 9)$, at $t = \frac{\pi}{2}$. An equation of the circle is $(x + 1)^2 + (y - 4)^2 = 25$.</p>
+</div>
+<figure id="fig-both" data-fig="parametric-circles-lines-both"><figcaption>A circle traced from $t = 0$ (left) and a segment traced from $t = 0$ to $t = 1$ (right).</figcaption></figure>
+
+<h2>Changing the trip, not the circle</h2>
+<table class="compare">
+<thead><tr><th scope="col">Parametric equations</th><th scope="col">What changes</th></tr></thead>
+<tbody>
+<tr><td>$(h + r\cos t, k + r\sin t)$, $0 \le t \le 2\pi$</td><td>once around, counterclockwise from $(h + r, k)$</td></tr>
+<tr><td>$(h + r\cos t, k - r\sin t)$, $0 \le t \le 2\pi$</td><td>same start, clockwise</td></tr>
+<tr><td>$(h + r\sin t, k + r\cos t)$, $0 \le t \le 2\pi$</td><td>starts at the top, $(h, k + r)$, clockwise</td></tr>
+<tr><td>$(h + r\cos 2t, k + r\sin 2t)$, $0 \le t \le \pi$</td><td>once around in half the parameter time</td></tr>
+<tr><td>$(h + r\cos t, k + r\sin t)$, $0 \le t \le \pi$</td><td>the upper half only</td></tr>
+</tbody>
+</table>
+<p>For the third row, check two points: $t = 0$ gives $(h, k + r)$, the top, and $t = \frac{\pi}{2}$ gives $(h + r, k)$, the right side. Top to right is clockwise.</p>
+
+<h2>Segments and lines</h2>
+<p>To go from $(x_1, y_1)$ to $(x_2, y_2)$ in a straight line, start at the first point and add a fraction $t$ of the change in each coordinate:</p>
+$$x(t) = x_1 + (x_2 - x_1)t, \qquad y(t) = y_1 + (y_2 - y_1)t, \qquad 0 \le t \le 1.$$
+<p>At $t = 0$ you are at the start, at $t = 1$ at the end, and at $t = \frac{1}{2}$ at the midpoint. Letting $t$ run over all real numbers gives the whole line. If the trip takes $T$ units of time instead of $1$, divide the change by $T$: $x(t) = x_1 + \frac{x_2 - x_1}{T}t$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A drone flies straight from $(-2, 5)$ to $(6, 1)$ in $4$ seconds. Write its position.</p>
+<p>The change in $x$ is $6 - (-2) = 8$, so $x$ grows by $\frac{8}{4} = 2$ each second: $x(t) = -2 + 2t$. The change in $y$ is $1 - 5 = -4$, so $y$ changes by $-1$ each second: $y(t) = 5 - t$. Check: at $t = 4$, $(-2 + 8, 5 - 4) = (6, 1)$.</p>
+<p>The path's slope is $\frac{\text{rate of } y}{\text{rate of } x} = \frac{-1}{2}$, the same as $\frac{1 - 5}{6 - (-2)}$.</p>
+</div>
+<p>In general, $x(t) = x_0 + at$, $y(t) = y_0 + bt$ is a line through $(x_0, y_0)$ with slope $\frac{b}{a}$ when $a \ne 0$, and a vertical line when $a = 0$.</p>

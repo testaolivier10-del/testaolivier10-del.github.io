@@ -1,0 +1,71 @@
+{
+ "topic": "alg-intervals",
+ "hook": "A ride says \"riders must be at least 48 inches tall and under 78 inches\". That sentence is an interval: every height from 48 up to, but not including, 78. Precalculus writes intervals all the time, for domains, ranges and where a function rises or falls, so the notation needs to be automatic.",
+ "prereq": [
+  {
+   "q": "What is the domain of $f(x) = \\frac{1}{x - 2}$?",
+   "options": [
+    "Every real number except $2$",
+    "Every real number except $-2$",
+    "$x > 2$",
+    "Every real number"
+   ],
+   "correct": 0,
+   "why": "The denominator is $0$ at $x = 2$.",
+   "review": "alg-functions"
+  },
+  {
+   "q": "What is $f(-3)$ for $f(x) = 2x + 3$?",
+   "options": [
+    "$-3$",
+    "$9$",
+    "$-9$",
+    "$3$"
+   ],
+   "correct": 0,
+   "why": "$2(-3) + 3 = -3$.",
+   "review": "alg-functions"
+  }
+ ],
+ "figure": {
+  "figure": "alg-intervals-outputs",
+  "caption": "The inputs in $[-2, 3)$ are exactly the inputs of $y = 2x + 3$ whose outputs satisfy $-1 \\le y < 9$: closed dot at the included end, open dot at the excluded end."
+ },
+ "chain": [
+  {
+   "cause": "An endpoint is included ($\\le$ or $\\ge$)",
+   "effect": "it gets a bracket, $[$ or $]$, and a closed dot on a graph"
+  },
+  {
+   "cause": "An endpoint is not included ($<$ or $>$), or the interval runs forever",
+   "effect": "it gets a parenthesis; $\\infty$ and $-\\infty$ always take parentheses"
+  },
+  {
+   "cause": "You multiply or divide both sides of an inequality by a negative number",
+   "effect": "the inequality sign flips, because negation reverses order ($2 < 3$ but $-2 > -3$)"
+  },
+  {
+   "cause": "A domain leaves out a single number $a$",
+   "effect": "it is two intervals joined by a union: $(-\\infty, a) \\cup (a, \\infty)$"
+  }
+ ],
+ "ideas": [
+  "$[a, b]$ includes both ends; $(a, b)$ includes neither; $[a, b)$ includes $a$ but not $b$.",
+  "$\\infty$ is not a number you reach, so it always gets a parenthesis: $[2, \\infty)$.",
+  "Solve a linear inequality like an equation, but flip the sign when you multiply or divide by a negative.",
+  "For a compound inequality $a \\le 2x + 3 < b$, do each step to all three parts."
+ ],
+ "misconception": {
+  "wrong": "Dividing $-2x > 4$ by $-2$ gives $x > -2$.",
+  "right": "Dividing by a negative number reverses the order, so $x < -2$. Check with a value: $x = -3$ gives $6 > 4$, true; $x = 0$ gives $0 > 4$, false."
+ },
+ "check": [
+  "pcalc-alg-intervals-1",
+  "pcalc-alg-intervals-2",
+  "pcalc-alg-intervals-3",
+  "pcalc-alg-intervals-4",
+  "pcalc-alg-intervals-5",
+  "pcalc-alg-intervals-7"
+ ],
+ "summary": "Interval notation writes a stretch of the number line with its two ends: brackets for included ends, parentheses for excluded ends and for $\\pm\\infty$, and $\\cup$ to join pieces. Solve linear inequalities like equations, flipping the sign whenever you multiply or divide by a negative, and check one value."
+}

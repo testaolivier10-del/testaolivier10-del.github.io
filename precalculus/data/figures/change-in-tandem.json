@@ -1,0 +1,12 @@
+{
+ "change-in-tandem-shape": {
+  "file": "figures/change-in-tandem-shape.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of f(x) = (x³ − 12x)/4 on [−4, 4]. It increases from (−4, −4) to (−2, 4), decreases from (−2, 4) to (2, −4), then increases to (4, 4). Left of x = 0 the graph bends downward (concave down); right of x = 0 it bends upward (concave up)."
+ }
+}

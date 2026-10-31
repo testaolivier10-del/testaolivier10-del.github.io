@@ -1,0 +1,133 @@
+{
+ "id": "frq-q2-quadratic-attendance",
+ "type": "modeling",
+ "title": "Festival attendance: a quadratic model",
+ "calc": true,
+ "points": 6,
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "model-construction"
+ ],
+ "practices": [
+  "1.C",
+  "3.A",
+  "3.B",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Attendance at a street festival",
+  "text": "A town counts the people who attend its street festival each day. The table gives the attendance $A$, in hundreds of people, on selected days $d$ of the festival, where $d = 1$ is the first day. The attendance is modeled by the quadratic function $A(d) = ad^2 + bd + c$, whose graph passes through the three data points.",
+  "table": {
+   "caption": "Attendance A, in hundreds of people, on day d of the festival",
+   "cols": [
+    "$d$ (day)",
+    "1",
+    "4",
+    "7"
+   ],
+   "rows": [
+    [
+     "$A$ (hundreds of people)",
+     "4.2",
+     "9.6",
+     "8.4"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "Use the given data to <b>write</b> three equations that can be used to find the values of the constants $a$, $b$ and $c$ in the expression for $A(d)$.",
+   "rubric": [
+    {
+     "point": "Three correct equations, one for each data point, with the input squared in the $a$ term",
+     "accept": [
+      "$a + b + c = 4.2$, $16a + 4b + c = 9.6$, $49a + 7b + c = 8.4$",
+      "$a(1)^2 + b(1) + c = 4.2$ and so on",
+      "an equivalent matrix equation"
+     ]
+    }
+   ],
+   "sample": "$a + b + c = 4.2$, $16a + 4b + c = 9.6$, $49a + 7b + c = 8.4$."
+  },
+  {
+   "label": "A(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Find</b> the values of $a$, $b$ and $c$ as decimal approximations.",
+   "rubric": [
+    {
+     "point": "$a = -0.367...$, $b = 3.633...$, $c = 0.933...$ (each correct to three decimal places; all three needed)",
+     "accept": [
+      "$a = -0.366667$, $b = 3.633333$, $c = 0.933333$",
+      "values truncated to three decimal places",
+      "values from a calculator system solver or quadratic regression on the three points"
+     ]
+    }
+   ],
+   "sample": "Solving the system with a calculator: $a = -0.366667$, $b = 3.633333$, $c = 0.933333$. These values are stored in the calculator and used in every later part."
+  },
+  {
+   "label": "B(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Find</b> the average rate of change of $A$ over the interval $1 \\le d \\le 7$. Express your answer using correct units.",
+   "rubric": [
+    {
+     "point": "$0.7$ hundred people per day, with the difference quotient shown and units",
+     "accept": [
+      "$\\frac{A(7) - A(1)}{7 - 1} = \\frac{8.4 - 4.2}{6} = 0.7$ hundreds of people per day",
+      "70 people per day"
+     ]
+    }
+   ],
+   "sample": "The average rate of change of $A$ on $[1, 7]$ is $\\frac{A(7) - A(1)}{7 - 1} = \\frac{8.4 - 4.2}{6} = 0.7$ hundred people per day."
+  },
+  {
+   "label": "B(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "The average rate of change from part B(i) is the slope of a secant line. Use this secant line to <b>estimate</b> the attendance on day $d = 5$. Show the work that leads to your answer.",
+   "rubric": [
+    {
+     "point": "An estimate of $7$ hundred people from a point on the secant line through $(1, 4.2)$ and $(7, 8.4)$",
+     "accept": [
+      "$A(1) + 0.7(5 - 1) = 4.2 + 2.8 = 7$",
+      "$8.4 - 0.7(7 - 5) = 7$",
+      "$7$ hundred, or $700$ people, with the secant-line work"
+     ]
+    }
+   ],
+   "sample": "The secant line through $(1, 4.2)$ and $(7, 8.4)$ has slope $0.7$, so it is $y = 4.2 + 0.7(d - 1)$. At $d = 5$: $4.2 + 0.7(4) = 7$. The estimate is $7$ hundred people."
+  },
+  {
+   "label": "C",
+   "points": 2,
+   "space": "lines",
+   "prompt": "The town wants to use $A$ to plan for later days. <b>Determine</b> the largest day $d$ for which the model gives a reasonable attendance, and <b>explain</b>, using the model, why the model should not be used for days after that.",
+   "rubric": [
+    {
+     "point": "The bound $d \\approx 10.160$, where $A(d) = 0$ (found with a calculator, from the stored model)",
+     "accept": [
+      "$d = 10.160$ or $10.1596$ truncated or rounded to three places",
+      "\"the model is reasonable for $1 \\le d \\le 10.160$\""
+     ]
+    },
+    {
+     "point": "A reason in context tied to the model: after that day the model gives negative attendance, which is impossible",
+     "accept": [
+      "\"$A(d) < 0$ for $d > 10.160$, but attendance cannot be negative\"",
+      "the model is decreasing after its maximum and reaches 0, so it cannot describe a crowd after that day"
+     ]
+    }
+   ],
+   "sample": "Graphing the stored model and finding its zero gives $A(d) = 0$ at $d \\approx 10.160$. The model is concave down: after its maximum near $d = 4.955$ it decreases, and for $d > 10.160$ it gives $A(d) < 0$, a negative number of people, which cannot happen. So the model gives reasonable attendance only up to about day $10.160$, and it should not be used after that."
+  }
+ ]
+}

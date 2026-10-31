@@ -1,0 +1,70 @@
+{
+ "topic": "polar-curves",
+ "hook": "Look at the pickup pattern printed on a microphone box. It is drawn as a polar graph: in each direction, the distance from the center shows how well the microphone hears. The heart-shaped one is a cardioid, and its equation is a polar function, $r = 1 + \\cos\\theta$.",
+ "prereq": [
+  {
+   "q": "Where is the polar point $\\left(-2, \\frac{\\pi}{4}\\right)$?",
+   "options": [
+    "Quadrant III",
+    "Quadrant I",
+    "Quadrant II",
+    "Quadrant IV"
+   ],
+   "correct": 0,
+   "why": "The angle $\\frac{\\pi}{4}$ points into Quadrant I, and $r = -2$ moves backward through the pole into Quadrant III.",
+   "review": "polar-coordinates"
+  },
+  {
+   "q": "What is the period of $y = 3\\sin(2x)$?",
+   "options": [
+    "$\\pi$",
+    "$2\\pi$",
+    "$3$",
+    "$\\frac{\\pi}{2}$"
+   ],
+   "correct": 0,
+   "why": "The period of $\\sin(bx)$ is $\\frac{2\\pi}{b} = \\pi$.",
+   "review": "sinusoidal-transformations"
+  }
+ ],
+ "figure": {
+  "figure": "polar-curves-rose",
+  "caption": "The rose $r = 3\\sin(2\\theta)$: four petals, each reaching distance $3$ from the pole."
+ },
+ "chain": [
+  {
+   "cause": "Let $\\theta$ sweep from $0$ to $2\\pi$",
+   "effect": "the input of $r = f(\\theta)$ is the direction"
+  },
+  {
+   "cause": "Read $r$ from the graph of $r$ against $\\theta$",
+   "effect": "the output is the signed distance along that direction"
+  },
+  {
+   "cause": "$r$ is $0$",
+   "effect": "the curve passes through the pole"
+  },
+  {
+   "cause": "$r$ is negative",
+   "effect": "the point is drawn on the opposite ray, in the opposite quadrant"
+  }
+ ],
+ "ideas": [
+  "A polar function $r = f(\\theta)$ gives a distance for each direction; the curve is all points $(f(\\theta), \\theta)$.",
+  "Each hump of the graph of $r$ against $\\theta$ draws one loop or petal; zeros of $r$ are visits to the pole.",
+  "$r = a\\cos(n\\theta)$ and $r = a\\sin(n\\theta)$ are roses: $n$ petals if $n$ is odd, $2n$ if $n$ is even.",
+  "$r = a + b\\cos\\theta$ is a limaçon: an inner loop if $|a| < |b|$, a cardioid if $|a| = |b|$, no loop if $|a| > |b|$."
+ ],
+ "misconception": {
+  "wrong": "Where $r$ is negative, the curve is drawn in the quadrant the angle points to, just closer to the pole.",
+  "right": "A negative $r$ sends the point backward through the pole, so it is drawn in the opposite quadrant. That is how the inner loop of $r = 1 + 2\\cos\\theta$ ends up to the right of the pole."
+ },
+ "check": [
+  "pcalc-polar-curves-1",
+  "pcalc-polar-curves-2",
+  "pcalc-polar-curves-6",
+  "pcalc-polar-curves-7",
+  "pcalc-polar-curves-16"
+ ],
+ "summary": "A polar function $r = f(\\theta)$ assigns a signed distance to every direction. Read it from its graph of $r$ against $\\theta$: zeros are visits to the pole, negative values are drawn on the opposite ray, and each hump draws a petal or loop. Circles ($r = a$, $r = a\\cos\\theta$), limaçons and cardioids ($r = a + b\\cos\\theta$) and roses ($r = a\\sin(n\\theta)$) are the families to know."
+}

@@ -1,0 +1,610 @@
+{
+ "stimuli": {
+  "exp-log-inverses-s1": {
+   "kind": "table",
+   "title": "Values of $h(x) = \\log_4 x$",
+   "table": {
+    "caption": "Values of h(x) = log base 4 of x at six inputs, each 4 times the one before",
+    "cols": [
+     "$x$",
+     "$\\frac{1}{16}$",
+     "$\\frac{1}{4}$",
+     "1",
+     "4",
+     "16",
+     "64"
+    ],
+    "rows": [
+     [
+      "$h(x)$",
+      "-2",
+      "-1",
+      "0",
+      "1",
+      "2",
+      "3"
+     ]
+    ]
+   }
+  },
+  "exp-log-inverses-s2": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = 3^x$",
+   "plot": {
+    "label": "Graph of f(x) = 3 to the x, through (-1, 1/3), (0, 1) and (1, 3), with the x-axis as horizontal asymptote",
+    "width": 340,
+    "height": 300,
+    "x": [
+     -4,
+     3
+    ],
+    "y": [
+     -1,
+     9
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "3^x",
+      "domain": [
+       -4,
+       2.05
+      ],
+      "cls": "s1",
+      "label": "f"
+     }
+    ],
+    "asymptotes": [
+     {
+      "y": 0
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -1,
+       0.3333333333333333
+      ]
+     },
+     {
+      "at": [
+       0,
+       1
+      ]
+     },
+     {
+      "at": [
+       1,
+       3
+      ]
+     },
+     {
+      "at": [
+       2,
+       9
+      ]
+     }
+    ]
+   },
+   "text": "$g$ is the inverse of $f(x) = 3^x$, so $g(x) = \\log_3 x$."
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-exp-log-inverses-1",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exp-log-inverses-s1",
+   "type": "single",
+   "q": "In the table, each input is $4$ times the one before it. What happens to $h(x)$ at each step?",
+   "options": [
+    "It increases by $1$",
+    "It is multiplied by $4$",
+    "It increases by $4$",
+    "It is multiplied by $\\frac{1}{4}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Multiplying the input of $\\log_4$ by $4$ adds $1$ to the output: the outputs go $-2, -1, 0, 1, 2, 3$.",
+    "options": [
+     "Equal factors in the input give equal differences in the output: $+1$ each time.",
+     "Multiplying by $4$ is what happens to the inputs, not the outputs.",
+     "The outputs go up by $1$, from $0$ to $1$ to $2$, not by $4$.",
+     "The outputs rise, from $0$ to $1$ to $2$; they are not divided by $4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-2",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exp-log-inverses-s1",
+   "type": "numeric",
+   "q": "The inverse of $h$ is $k(x) = 4^x$. Find $k(2.5)$.",
+   "numeric": {
+    "answer": 32,
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "$40$ is halfway between $16$ and $64$. An exponential function is not linear: $4^{2.5} = 2^5 = 32$."
+     },
+     {
+      "value": 10,
+      "why": "That is $4 \\cdot 2.5$. The input is an exponent: $4^{2.5}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$k(2.5) = 4^{5/2} = (\\sqrt{4})^5 = 2^5 = 32$. It lies between $k(2) = 16$ and $k(3) = 64$, but not halfway: equal input steps multiply outputs."
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-3",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exp-log-inverses-s1",
+   "type": "single",
+   "q": "The inverse of $h$ is $k(x) = 4^x$. Which range does $k$ have?",
+   "options": [
+    "$(0, \\infty)$",
+    "$(-\\infty, \\infty)$",
+    "$[1, \\infty)$",
+    "$(-\\infty, 0)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The range of the inverse is the domain of $h$. A base-$4$ logarithm takes only positive inputs, so $k$ has only positive outputs.",
+    "options": [
+     "Domain of $h$, $x > 0$, becomes the range of $k$.",
+     "That is the range of $h$, which becomes the domain of $k$.",
+     "$k(-1) = \\frac{1}{4}$, an output less than $1$.",
+     "Powers of $4$ are positive, never negative."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-4",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exp-log-inverses-s1",
+   "type": "multi",
+   "q": "Using the table, which point is on the graph of $y = 4^x$, the inverse of $h$? Select every point that is.",
+   "options": [
+    "$(2, 16)$",
+    "$(16, 2)$",
+    "$\\left(\\frac{1}{4}, -1\\right)$",
+    "$\\left(-2, \\frac{1}{8}\\right)$"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Swap each point $(x, h(x))$ of the table: $(16, 2)$ on $h$ gives $(2, 16)$ on $y = 4^x$.",
+    "options": [
+     "$4^2 = 16$.",
+     "This point is on $h$ itself: $h(16) = 2$.",
+     "This point is on $h$: $h\\left(\\frac{1}{4}\\right) = -1$. Swapped, it is $\\left(-1, \\frac{1}{4}\\right)$.",
+     "$4^{-2} = \\frac{1}{16}$, not $\\frac{1}{8}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-5",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "exp-log-inverses-s1",
+   "type": "single",
+   "q": "Which formula gives the function in the table?",
+   "options": [
+    "$h(x) = \\log_4 x$",
+    "$h(x) = 4^x$",
+    "$h(x) = \\log_x 4$",
+    "$h(x) = \\frac{x}{4}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$h(16) = 2$ because $4^2 = 16$, and $h\\left(\\frac{1}{4}\\right) = -1$ because $4^{-1} = \\frac{1}{4}$: the outputs are base-$4$ exponents.",
+    "options": [
+     "Each output is the exponent of $4$ that gives the input.",
+     "$4^{16}$ is huge; the table pairs $16$ with $2$.",
+     "The base is fixed at $4$; the input $x$ is the number we reach.",
+     "$\\frac{16}{4} = 4$, but the table gives $h(16) = 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-6",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "exp-log-inverses-s2",
+   "type": "single",
+   "q": "The point $(1, 3)$ is on the graph of $f$. Which point is on the graph of $g$?",
+   "options": [
+    "$(3, 1)$",
+    "$(1, 3)$",
+    "$\\left(1, \\frac{1}{3}\\right)$",
+    "$(-1, -3)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$g$ swaps inputs and outputs of $f$: $f(1) = 3$, so $g(3) = 1$.",
+    "options": [
+     "$\\log_3 3 = 1$.",
+     "This point is on $f$ itself.",
+     "$\\frac{1}{3}$ is a reciprocal, not a swap of coordinates.",
+     "That reflects across the origin, not across $y = x$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-7",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "exp-log-inverses-s2",
+   "type": "single",
+   "q": "The graph of $f$ has the horizontal asymptote $y = 0$. Which statement describes $g$ near its asymptote?",
+   "options": [
+    "$\\lim_{x \\to 0^+} g(x) = -\\infty$",
+    "$\\lim_{x \\to -\\infty} g(x) = 0$",
+    "$\\lim_{x \\to 0^+} g(x) = 0$",
+    "$\\lim_{x \\to \\infty} g(x) = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Reflecting across $y = x$ turns the horizontal asymptote $y = 0$ into the vertical asymptote $x = 0$. As $x$ approaches $0$ from the right, $\\log_3 x$ decreases without bound.",
+    "options": [
+     "Small positive inputs, such as $\\frac{1}{9}$, give large negative outputs, such as $-2$.",
+     "That describes $f$: $\\lim_{x \\to -\\infty} 3^x = 0$.",
+     "$g(1) = 0$; near $x = 0$ the outputs fall without bound.",
+     "$g$ keeps growing, slowly: $g(81) = 4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-8",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exp-log-inverses-s2",
+   "type": "numeric",
+   "q": "Find the exact value of $g\\left(\\frac{1}{9}\\right)$.",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$3^2 = 9$; the reciprocal $\\frac{1}{9}$ needs the exponent $-2$."
+     },
+     {
+      "value": "-1/2",
+      "why": "$9^{1/2} = 3$ is a different question. Here $3^a = \\frac{1}{9}$, so $a = -2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$g\\left(\\frac{1}{9}\\right) = \\log_3 \\frac{1}{9}$, and $3^{-2} = \\frac{1}{9}$, so the value is $-2$."
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-9",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "exp-log-inverses-s2",
+   "type": "single",
+   "q": "For which inputs is $3^{\\log_3 x} = x$ true?",
+   "options": [
+    "$x > 0$",
+    "$x \\ne 0$",
+    "$x \\ge 1$",
+    "$x > 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f(g(x)) = x$ wherever $g(x)$ is defined, and $\\log_3 x$ is defined for $x > 0$.",
+    "options": [
+     "The identity holds on the domain of the inner function $\\log_3 x$.",
+     "$\\log_3(-2)$ is undefined, so negative inputs do not work.",
+     "It also works for $0 < x < 1$: $3^{\\log_3 0.5} = 0.5$.",
+     "It works for every positive input, such as $x = 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-10",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "type": "expr",
+   "q": "Write the inverse of $f(x) = 5^x$.",
+   "expr": {
+    "answer": "log_5(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.1,
+     10
+    ],
+    "mode": "exact",
+    "lhs": "f^{-1}(x) =",
+    "mistakes": [
+     {
+      "expr": "x^(1/5)",
+      "why": "A fifth root undoes a fifth power $x^5$, not the exponential $5^x$."
+     },
+     {
+      "expr": "5^(-x)",
+      "why": "That is $\\frac{1}{5^x}$, a reciprocal. The inverse returns the exponent: $\\log_5 x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The base-$5$ logarithm undoes the base-$5$ exponential: $f^{-1}(x) = \\log_5 x$."
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-11",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "type": "expr",
+   "q": "Write the inverse of $f(x) = 2e^x$.",
+   "expr": {
+    "answer": "ln(x/2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.1,
+     8
+    ],
+    "mode": "exact",
+    "lhs": "f^{-1}(x) =",
+    "mistakes": [
+     {
+      "expr": "ln(x)/2",
+      "why": "Divide inside the logarithm: $e^y = \\frac{x}{2}$ gives $y = \\ln \\frac{x}{2}$."
+     },
+     {
+      "expr": "ln(x) - 2",
+      "why": "Undo the factor $2$ by dividing $x$ by $2$ before taking $\\ln$, not by subtracting $2$ afterward."
+     },
+     {
+      "expr": "2ln(x)",
+      "why": "The $2$ multiplies $e^y$; undo it by dividing $x$ by $2$ first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Swap: $x = 2e^y$. Divide by $2$: $e^y = \\frac{x}{2}$. Undo $e$ with $\\ln$: $f^{-1}(x) = \\ln \\frac{x}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-12",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "type": "expr",
+   "q": "Write the inverse of $g(x) = \\log_3 x + 2$.",
+   "expr": {
+    "answer": "3^(x - 2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     4
+    ],
+    "mode": "exact",
+    "lhs": "g^{-1}(x) =",
+    "mistakes": [
+     {
+      "expr": "3^x - 2",
+      "why": "Subtract $2$ before undoing the logarithm: the $2$ belongs in the exponent."
+     },
+     {
+      "expr": "3^(x + 2)",
+      "why": "Undo $+2$ by subtracting: $3^{x - 2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Swap: $x = \\log_3 y + 2$. Subtract $2$: $\\log_3 y = x - 2$. Rewrite as a power: $g^{-1}(x) = 3^{x - 2}$."
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-13",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "q": "Find the exact value of $2^{\\log_2 9}$.",
+   "numeric": {
+    "answer": 9,
+    "mistakes": [
+     {
+      "value": 18,
+      "why": "That is $2 \\cdot 9$. The exponential undoes the logarithm and returns $9$."
+     },
+     {
+      "value": 512,
+      "why": "That is $2^9$. The exponent is $\\log_2 9$, not $9$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2^x$ and $\\log_2 x$ undo each other, so $2^{\\log_2 9} = 9$."
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-14",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "q": "Let $f(x) = 2^x$. When $x$ increases by $3$, what happens to $f(x)$?",
+   "options": [
+    "It is multiplied by $8$",
+    "It increases by $8$",
+    "It is multiplied by $6$",
+    "It increases by $3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f(x + 3) = 2^{x + 3} = 2^x \\cdot 2^3 = 8 f(x)$. Adding to the input multiplies the output.",
+    "options": [
+     "$2^{x + 3} = 8 \\cdot 2^x$.",
+     "From $x = 0$ to $x = 3$ the output goes from $1$ to $8$, up $7$; the change grows with $x$. The factor is always $8$.",
+     "$2 \\cdot 3 = 6$, but three factors of $2$ make $2^3 = 8$.",
+     "That is the change in the input, not in the output."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-15",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "q": "Let $g(x) = \\log x$, the common logarithm. When $x$ is multiplied by $1{,}000$, what happens to $g(x)$?",
+   "options": [
+    "It increases by $3$",
+    "It is multiplied by $3$",
+    "It increases by $1{,}000$",
+    "It is multiplied by $1{,}000$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$1{,}000 = 10^3$, so multiplying the input by $1{,}000$ adds $3$ to the base-$10$ exponent: $\\log(1{,}000x) = 3 + \\log x$.",
+    "options": [
+     "Multiplying the input adds to the output: $+3$.",
+     "$\\log 10 = 1$ and $\\log 10{,}000 = 4$: the output goes up by $3$, not times $3$.",
+     "Logarithms grow slowly; $\\log$ of a number goes up $1$ per factor of $10$.",
+     "That is what happens to the input."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-16",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "Predict what happens to each quantity as $x$ increases, for $x > 0$.",
+   "variables": [
+    {
+     "name": "$\\log_2 x$",
+     "answer": "up",
+     "why": "With base $2 > 1$, larger inputs need larger exponents."
+    },
+    {
+     "name": "$\\log_{1/2} x$",
+     "answer": "down",
+     "why": "Powers of $\\frac{1}{2}$ shrink as the exponent grows, so reaching a larger $x$ needs a smaller exponent."
+    },
+    {
+     "name": "$2^{\\log_2 x} - x$",
+     "answer": "none",
+     "why": "$2^{\\log_2 x} = x$ for $x > 0$, so the difference stays $0$."
+    }
+   ],
+   "why": {
+    "correct": "A logarithm increases when its base is greater than $1$ and decreases when its base is between $0$ and $1$; composing it with its exponential gives the identity."
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-17",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "type": "order",
+   "q": "Put the steps for drawing $y = \\log_2 x$ from the graph of $y = 2^x$ in order.",
+   "options": [
+    "List points of $y = 2^x$, such as $(0, 1)$, $(1, 2)$ and $(2, 4)$",
+    "Swap the coordinates of each point",
+    "Plot the swapped points, such as $(1, 0)$, $(2, 1)$ and $(4, 2)$",
+    "Draw the vertical asymptote $x = 0$ and connect the points with a curve"
+   ],
+   "why": {
+    "correct": "Swapping coordinates reflects the graph across $y = x$; the horizontal asymptote $y = 0$ becomes the vertical asymptote $x = 0$."
+   }
+  },
+  {
+   "id": "pcalc-exp-log-inverses-18",
+   "unit": "unit-2",
+   "topic": "exp-log-inverses",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "q": "A culture has $N(t) = 500 \\cdot 2^t$ bacteria after $t$ hours. The inverse gives the time for a count: $t = \\log_2 \\frac{N}{500}$. After how many hours are there $4{,}000$ bacteria?",
+   "numeric": {
+    "answer": 3,
+    "unit": "hours",
+    "units": [
+     "hour",
+     "hr",
+     "h"
+    ],
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "That is the factor $\\frac{4{,}000}{500} = 8$. The time is the exponent: $\\log_2 8 = 3$."
+     },
+     {
+      "value": "log_2(4000)",
+      "why": "That leaves out the starting count. Divide $4{,}000$ by $500$ first, then take $\\log_2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$t = \\log_2 \\frac{4{,}000}{500} = \\log_2 8 = 3$ hours. Check: $500 \\cdot 2^3 = 4{,}000$."
+   }
+  }
+ ]
+}

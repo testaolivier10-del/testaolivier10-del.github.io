@@ -1,0 +1,70 @@
+{
+ "topic": "sec-csc-cot",
+ "hook": "A guy wire runs from the top of a $12$ meter pole to the ground at an angle $\\theta$. Its length is $\\frac{12}{\\sin\\theta}$. As the wire gets flatter, its length grows without bound. Reciprocals like $\\frac{1}{\\sin\\theta}$ come up so often that they have their own names.",
+ "prereq": [
+  {
+   "q": "What is $\\cos\\frac{\\pi}{3}$?",
+   "options": [
+    "$\\frac{1}{2}$",
+    "$\\frac{\\sqrt{3}}{2}$",
+    "$\\frac{\\sqrt{2}}{2}$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": "The angle $\\frac{\\pi}{3}$ meets the unit circle at $\\left(\\frac{1}{2}, \\frac{\\sqrt{3}}{2}\\right)$, so its cosine is $\\frac{1}{2}$.",
+   "review": "sine-cosine-values"
+  },
+  {
+   "q": "Where does $y = \\tan x$ have vertical asymptotes?",
+   "options": [
+    "Where $\\cos x = 0$",
+    "Where $\\sin x = 0$",
+    "Where $\\tan x = 1$",
+    "Where $\\cos x = 1$"
+   ],
+   "correct": 0,
+   "why": "$\\tan x = \\frac{\\sin x}{\\cos x}$ is undefined where its denominator, $\\cos x$, is $0$.",
+   "review": "tangent-function"
+  }
+ ],
+ "figure": {
+  "figure": "sec-csc-cot-graphs",
+  "caption": "Secant is the reciprocal of cosine: equal to it at $\\pm 1$, with asymptotes where cosine is $0$."
+ },
+ "chain": [
+  {
+   "cause": "Take reciprocals of $\\cos$, $\\sin$ and $\\tan$",
+   "effect": "$\\sec x = \\frac{1}{\\cos x}$, $\\csc x = \\frac{1}{\\sin x}$, $\\cot x = \\frac{\\cos x}{\\sin x}$"
+  },
+  {
+   "cause": "A denominator is $0$",
+   "effect": "a vertical asymptote: $\\sec$ where $\\cos x = 0$, $\\csc$ and $\\cot$ where $\\sin x = 0$"
+  },
+  {
+   "cause": "$\\cos x$ or $\\sin x$ equals $\\pm 1$",
+   "effect": "the reciprocal equals it there: a turning point of $\\sec$ or $\\csc$"
+  },
+  {
+   "cause": "$|\\cos x| \\le 1$ and $|\\sin x| \\le 1$",
+   "effect": "$|\\sec x| \\ge 1$ and $|\\csc x| \\ge 1$, so neither takes values strictly between $-1$ and $1$"
+  }
+ ],
+ "ideas": [
+  "Pair them by the letter they do not share: $\\sec$ goes with $\\cos$, $\\csc$ with $\\sin$.",
+  "$\\sec$ has asymptotes where $\\cos x = 0$; $\\csc$ and $\\cot$ where $\\sin x = 0$.",
+  "Where $\\cos x$ decreases and stays positive, $\\sec x$ increases: reciprocals move the opposite way.",
+  "$\\sec$ and $\\csc$ have period $2\\pi$ and range $(-\\infty, -1] \\cup [1, \\infty)$; $\\cot$ has period $\\pi$ and range $(-\\infty, \\infty)$."
+ ],
+ "misconception": {
+  "wrong": "$\\csc x$ is the reciprocal of $\\cos x$, because both start with c.",
+  "right": "$\\csc x = \\frac{1}{\\sin x}$ and $\\sec x = \\frac{1}{\\cos x}$. Each pairs with the function whose name it does not start like."
+ },
+ "check": [
+  "pcalc-sec-csc-cot-1",
+  "pcalc-sec-csc-cot-3",
+  "pcalc-sec-csc-cot-4",
+  "pcalc-sec-csc-cot-6",
+  "pcalc-sec-csc-cot-10"
+ ],
+ "summary": "$\\sec x = \\frac{1}{\\cos x}$, $\\csc x = \\frac{1}{\\sin x}$ and $\\cot x = \\frac{\\cos x}{\\sin x}$. Each has vertical asymptotes where its denominator is $0$. Secant and cosecant equal their partners at $\\pm 1$ and never take values strictly between $-1$ and $1$; cotangent takes every real value and has period $\\pi$."
+}

@@ -1,0 +1,42 @@
+<p>Unit 2 begins with lists of numbers in order. A loyalty card that adds $4$ stamps per visit and a video whose shares triple every hour both make lists, but one adds the same amount each time and the other multiplies by the same amount. That one difference, adding versus multiplying, runs through the whole unit.</p>
+
+<h2>Sequences are functions</h2>
+<p>A <b>sequence</b> is an ordered list of numbers, called terms. The position is the input and the term is the output, so a sequence is a function whose inputs are whole numbers. We write the terms $a_0, a_1, a_2, \ldots$ (or start at $a_1$; the problem will say). Because there is no term at position $1.5$, the graph of a sequence is a set of separate dots, not a connected curve.</p>
+
+<h2>Arithmetic sequences: add the same amount</h2>
+<p>In an <b>arithmetic sequence</b>, each term is the previous term plus a fixed number $d$, the <b>common difference</b>. Starting from $a_0$, after $n$ steps you have added $d$ exactly $n$ times:</p>
+<p>$$a_n = a_0 + dn$$</p>
+<p>If you know some other term $a_k$, count the steps from it: $a_n = a_k + d(n - k)$. The terms change by equal amounts, so the dots lie on a line with slope $d$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> An arithmetic sequence has $a_4 = 19$ and $a_{10} = 43$. Find $d$ and a formula for $a_n$.</p>
+<p>From $n = 4$ to $n = 10$ is $10 - 4 = 6$ steps, and the terms rise by $43 - 19 = 24$.</p>
+<p>Each step adds the same amount, so $d = \frac{24}{6} = 4$.</p>
+<p>From the known term: $a_n = 19 + 4(n - 4)$. Check: $a_{10} = 19 + 4(6) = 43$.</p>
+</div>
+
+<h2>Geometric sequences: multiply by the same amount</h2>
+<p>In a <b>geometric sequence</b>, each term is the previous term times a fixed number $r$, the <b>common ratio</b>. After $n$ steps from $g_0$ you have multiplied by $r$ exactly $n$ times:</p>
+<p>$$g_n = g_0 r^n$$</p>
+<p>From a known term $g_k$: $g_n = g_k r^{n - k}$. To find $r$, divide a term by the one before it.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A geometric sequence has $g_2 = 12$ and $g_5 = 96$. Find $r$ and $g_n$.</p>
+<p>From $n = 2$ to $n = 5$ is $3$ steps, so $g_5 = g_2 r^3$.</p>
+<p>Substitute: $96 = 12r^3$. Divide by $12$: $r^3 = 8$. Take the cube root: $r = 2$.</p>
+<p>So $g_n = 12(2)^{n - 2}$. Check: $g_5 = 12 \cdot 2^3 = 96$.</p>
+</div>
+<p>Watch the exponent. If the first term is $g_1$, then $g_n = g_1 r^{n - 1}$, because getting from position $1$ to position $n$ takes $n - 1$ steps. Writing $g_1 r^n$ is the most common slip.</p>
+
+<h2>Equal changes versus growing changes</h2>
+<figure id="fig-seq" data-fig="sequences-dots"><figcaption>$a_n = 2 + 5n$ adds $5$ each step; $g_n = 2^n$ doubles each step.</figcaption></figure>
+<p>Look at the changes from one term to the next in <a class="figref" href="#fig-seq">the figure</a>:</p>
+<table class="compare">
+<thead><tr><th scope="col">$n$</th><th scope="col">$0$</th><th scope="col">$1$</th><th scope="col">$2$</th><th scope="col">$3$</th><th scope="col">$4$</th><th scope="col">$5$</th></tr></thead>
+<tbody>
+<tr><td>$a_n = 2 + 5n$</td><td>$2$</td><td>$7$</td><td>$12$</td><td>$17$</td><td>$22$</td><td>$27$</td></tr>
+<tr><td>change in $a_n$</td><td></td><td>$5$</td><td>$5$</td><td>$5$</td><td>$5$</td><td>$5$</td></tr>
+<tr><td>$g_n = 2^n$</td><td>$1$</td><td>$2$</td><td>$4$</td><td>$8$</td><td>$16$</td><td>$32$</td></tr>
+<tr><td>change in $g_n$</td><td></td><td>$1$</td><td>$2$</td><td>$4$</td><td>$8$</td><td>$16$</td></tr>
+</tbody>
+</table>
+<p>An arithmetic sequence changes by equal amounts. An increasing geometric sequence changes by increasing amounts, and the changes themselves are multiplied by $r$ each step. That is why the geometric sequence, though it starts lower, passes the arithmetic one at $n = 5$ and then pulls away. With $0 < r < 1$ the terms shrink instead, by smaller and smaller amounts, as in $48, 24, 12, 6, 3$.</p>
+<p>Next topic, the same two patterns get real-number inputs: arithmetic sequences become linear functions, and geometric sequences become the functions of the rest of this unit.</p>

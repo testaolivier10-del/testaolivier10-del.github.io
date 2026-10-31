@@ -1,0 +1,12 @@
+{
+ "conic-sections-three": {
+  "file": "figures/conic-sections-three.svg",
+  "ext": "svg",
+  "w": 660,
+  "h": 245,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three graphs. Left: the parabola y = 0.5 x squared with its vertex at the origin. Middle: the ellipse x squared over 9 plus y squared over 4 = 1, centered at the origin, with vertices (3, 0) and (-3, 0) and the ends of the short axis at (0, 2) and (0, -2). Right: the hyperbola x squared minus y squared over 2.25 = 1, with vertices (1, 0) and (-1, 0), two branches opening left and right, and dashed asymptotes y = 1.5x and y = -1.5x."
+ }
+}

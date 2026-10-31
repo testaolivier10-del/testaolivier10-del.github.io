@@ -1,0 +1,65 @@
+{
+ "topic": "alg-exponents",
+ "hook": "A phone storage plan doubles every year: 2, 4, 8, 16 gigabytes. Writing that as a power of 2, and knowing what a negative or fractional power means, is the algebra behind every growth and decay model in Unit 2.",
+ "prereq": [
+  {
+   "q": "What is $3^4$?",
+   "options": [
+    "$81$",
+    "$12$",
+    "$64$",
+    "$27$"
+   ],
+   "correct": 0,
+   "why": "$3 \\cdot 3 \\cdot 3 \\cdot 3 = 81$.",
+   "review": "alg-polynomial-algebra"
+  },
+  {
+   "q": "Expand $(x^2)(x^3)$.",
+   "options": [
+    "$x^5$",
+    "$x^6$",
+    "$2x^5$",
+    "$x^{23}$"
+   ],
+   "correct": 0,
+   "why": "$x^2 \\cdot x^3 = x \\cdot x \\cdot x \\cdot x \\cdot x = x^5$.",
+   "review": "alg-polynomial-algebra"
+  }
+ ],
+ "figure": {
+  "figure": "alg-exponents-roots",
+  "caption": "Rational exponents are roots: $x^{1/2} = \\sqrt{x}$ reaches $2$ at $x = 4$, and $x^{1/3} = \\sqrt[3]{x}$ reaches $2$ at $x = 8$."
+ },
+ "chain": [
+  {
+   "cause": "Multiply powers of the same base",
+   "effect": "add the exponents: $b^m b^n = b^{m + n}$"
+  },
+  {
+   "cause": "Raise a power to a power",
+   "effect": "multiply the exponents: $(b^m)^n = b^{mn}$"
+  },
+  {
+   "cause": "Use a negative or fractional exponent",
+   "effect": "take a reciprocal ($b^{-n} = \\frac{1}{b^n}$) or a root ($b^{1/n} = \\sqrt[n]{b}$)"
+  }
+ ],
+ "ideas": [
+  "$b^m \\cdot b^n = b^{m + n}$, $\\frac{b^m}{b^n} = b^{m - n}$, $(b^m)^n = b^{mn}$, $(ab)^n = a^n b^n$, $b^0 = 1$.",
+  "$b^{-n} = \\frac{1}{b^n}$: a negative exponent is a reciprocal, never a negative number.",
+  "$b^{m/n} = (\\sqrt[n]{b})^m$: the denominator is the root, the numerator the power. Take the root first to keep numbers small."
+ ],
+ "misconception": {
+  "wrong": "$2^{-3} = -8$.",
+  "right": "$2^{-3} = \\frac{1}{2^3} = \\frac{1}{8}$. A negative exponent flips the number into a fraction; it does not change the sign."
+ },
+ "check": [
+  "pcalc-alg-exponents-1",
+  "pcalc-alg-exponents-2",
+  "pcalc-alg-exponents-4",
+  "pcalc-alg-exponents-7",
+  "pcalc-alg-exponents-9"
+ ],
+ "summary": "Same base: add exponents to multiply, subtract to divide, multiply exponents for a power of a power. $b^{-n}$ is a reciprocal and $b^{m/n}$ is a root then a power. Writing both sides with one base turns $4^x = 32$ into $2x = 5$."
+}

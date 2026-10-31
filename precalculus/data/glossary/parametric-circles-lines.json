@@ -1,0 +1,5 @@
+{
+ "parametric-circle": {
+  "def": "A circle or line written with parametric equations. The circle with center (h, k) and radius r: x(t) = h + r cos t, y(t) = k + r sin t, which goes once around counterclockwise from (h + r, k) for 0 ≤ t ≤ 2π. The segment from (x1, y1) to (x2, y2): x(t) = x1 + (x2 − x1)t, y(t) = y1 + (y2 − y1)t for 0 ≤ t ≤ 1."
+ }
+}

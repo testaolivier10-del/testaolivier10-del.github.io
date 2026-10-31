@@ -1,0 +1,76 @@
+{
+ "topic": "exp-log-inverses",
+ "hook": "A savings balance doubles every $7$ years. Asking \\\"how much after $21$ years?\\\" uses an exponential function. Asking \\\"when will it reach $8$ times what I put in?\\\" runs the same rule backward. That backward rule is a logarithm with the same base: exponentials and logarithms undo each other.",
+ "prereq": [
+  {
+   "q": "What is $\\log_2 32$?",
+   "options": [
+    "$5$",
+    "$16$",
+    "$6$",
+    "$\\frac{1}{5}$"
+   ],
+   "correct": 0,
+   "why": "$2^5 = 32$, so $\\log_2 32 = 5$.",
+   "review": "logarithmic-expressions"
+  },
+  {
+   "q": "The point $(3, 7)$ is on the graph of an invertible function $f$. Which point is on the graph of $f^{-1}$?",
+   "options": [
+    "$(7, 3)$",
+    "$(3, 7)$",
+    "$(-3, -7)$",
+    "$\\left(3, \\frac{1}{7}\\right)$"
+   ],
+   "correct": 0,
+   "why": "An inverse swaps inputs and outputs.",
+   "review": "inverse-functions"
+  }
+ ],
+ "figure": {
+  "figure": "exp-log-inverses-reflect",
+  "caption": "$y = 2^x$ and $y = \\log_2 x$ reflect across $y = x$: $(2, 4)$ matches $(4, 2)$, and the horizontal asymptote $y = 0$ matches the vertical asymptote $x = 0$."
+ },
+ "chain": [
+  {
+   "cause": "$f(x) = b^x$ sends the exponent $a$ to $b^a$",
+   "effect": "$g(x) = \\log_b x$ sends $b^a$ back to $a$: they are inverses"
+  },
+  {
+   "cause": "Compose them",
+   "effect": "$\\log_b(b^x) = x$ for every $x$, and $b^{\\log_b x} = x$ for $x > 0$"
+  },
+  {
+   "cause": "Swap coordinates",
+   "effect": "the domain $(-\\infty, \\infty)$ and range $(0, \\infty)$ of $b^x$ trade places, and $y = 0$ becomes $x = 0$"
+  },
+  {
+   "cause": "Add to the input of $b^x$",
+   "effect": "the output is multiplied"
+  },
+  {
+   "cause": "Multiply the input of $\\log_b x$",
+   "effect": "the output increases by a fixed amount"
+  }
+ ],
+ "ideas": [
+  "$y = b^x$ and $y = \\log_b x$ (same base) are inverse functions: $\\log_b(b^x) = x$ and $b^{\\log_b x} = x$ for $x > 0$.",
+  "Their graphs reflect across $y = x$; $\\ln x$ and $e^x$ are the most used pair.",
+  "$b^x$: domain all real numbers, range $y > 0$, asymptote $y = 0$. $\\log_b x$: domain $x > 0$, range all real numbers, asymptote $x = 0$.",
+  "Exponential: equal additions to the input multiply the output. Logarithmic: equal factors on the input add to the output."
+ ],
+ "misconception": {
+  "wrong": "The inverse of $f(x) = 5^x$ is the fifth root, $\\sqrt[5]{x}$.",
+  "right": "A fifth root undoes the power $x^5$, where the variable is the base. In $5^x$ the variable is the exponent, so the inverse is $\\log_5 x$."
+ },
+ "check": [
+  "pcalc-exp-log-inverses-1",
+  "pcalc-exp-log-inverses-2",
+  "pcalc-exp-log-inverses-3",
+  "pcalc-exp-log-inverses-6",
+  "pcalc-exp-log-inverses-7",
+  "pcalc-exp-log-inverses-10",
+  "pcalc-exp-log-inverses-14"
+ ],
+ "summary": "With the same base, $f(x) = b^x$ and $g(x) = \\log_b x$ are inverses: each undoes the other, their graphs reflect across $y = x$, and their domains, ranges and asymptotes trade places. Adding to the input of an exponential multiplies its output; multiplying the input of a logarithm adds to its output. To invert a stretched exponential, undo the outer steps first, then take the logarithm."
+}

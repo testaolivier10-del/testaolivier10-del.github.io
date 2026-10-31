@@ -1,0 +1,5 @@
+{
+ "periodic": {
+  "def": "A function whose outputs repeat at regular intervals of input: there is a positive number $P$ with $f(x + P) = f(x)$ for every $x$. The smallest such $P$ is the period, the length of one full cycle."
+ }
+}

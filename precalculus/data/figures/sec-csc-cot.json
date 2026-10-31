@@ -1,0 +1,12 @@
+{
+ "sec-csc-cot-graphs": {
+  "file": "figures/sec-csc-cot-graphs.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of y = sec x for x from 0 to 2 pi, with the dashed cosine curve. Secant equals cosine where cosine is 1 or -1, has dashed vertical asymptotes at pi/2 and 3 pi/2 where cosine is 0, and never takes values between -1 and 1."
+ }
+}

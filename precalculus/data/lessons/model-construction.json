@@ -1,0 +1,66 @@
+{
+ "topic": "model-construction",
+ "hook": "A garden center tracks how many of a new spring plant it sells each month. Three numbers from last year are enough to build a model, predict next spring, and say when the model stops making sense.",
+ "prereq": [
+  {
+   "q": "Which system gives $y = ax^2 + bx + c$ through $(1, 3)$, $(2, 4)$ and $(3, 7)$?",
+   "options": [
+    "$a + b + c = 3$, $4a + 2b + c = 4$, $9a + 3b + c = 7$",
+    "$a + b + c = 3$, $2a + 2b + c = 4$, $3a + 3b + c = 7$",
+    "$3a + 3b + c = 1$, $4a + 4b + c = 2$, $7a + 7b + c = 3$",
+    "$a + b = 3$, $4a + 2b = 4$, $9a + 3b = 7$"
+   ],
+   "correct": 0,
+   "why": "Substitute each point; the input is squared for $a$.",
+   "review": "alg-systems"
+  },
+  {
+   "q": "What are the domain restrictions a model of a tossed ball\\'s height needs?",
+   "options": [
+    "From the toss until the ball lands",
+    "All real times",
+    "Only the times in the data",
+    "Until the ball reaches its highest point"
+   ],
+   "correct": 0,
+   "why": "Time starts at the toss, and the model stops describing the ball once it lands.",
+   "review": "model-selection"
+  }
+ ],
+ "figure": {
+  "figure": "model-construction-quadratic",
+  "caption": "Three data points determine the quadratic $S(t) = -2t^2 + 16t$. The context allows $0 \\le t \\le 8$, the months when the model gives sales that are not negative."
+ },
+ "chain": [
+  {
+   "cause": "Choose the model type from the data and the context",
+   "effect": "a form with unknown constants, such as $at^2 + bt + c$"
+  },
+  {
+   "cause": "Substitute data points, or run a regression on the calculator",
+   "effect": "the constants, stored at full precision"
+  },
+  {
+   "cause": "Evaluate the model and its average rates of change",
+   "effect": "predictions with units, inside the domain the context allows"
+  }
+ ],
+ "ideas": [
+  "A model is built from points (a system), from a known feature and transformations (vertex form), or from all the data at once (a regression).",
+  "Inverse proportion: $y = \\frac{k}{x}$; inverse-square laws: $y = \\frac{k}{x^2}$. One data point gives $k$.",
+  "Report predictions and rates with units: an average rate of change is output units per input unit, such as hundred plants per month."
+ ],
+ "misconception": {
+  "wrong": "Once a model fits the data, it can predict any input.",
+  "right": "A model is supported only near its data and only where the context allows; past that, its predictions can be impossible, such as negative sales."
+ },
+ "check": [
+  "pcalc-model-construction-1",
+  "pcalc-model-construction-2",
+  "pcalc-model-construction-4",
+  "pcalc-model-construction-10",
+  "pcalc-model-construction-12",
+  "pcalc-model-construction-13"
+ ],
+ "summary": "Build a model from data points (a system), from features and transformations, or by regression; store its constants; use it to predict and to find average rates of change with units, only for inputs the context allows."
+}

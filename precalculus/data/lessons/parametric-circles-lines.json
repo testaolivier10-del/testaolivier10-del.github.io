@@ -1,0 +1,83 @@
+{
+ "topic": "parametric-circles-lines",
+ "hook": "A seat on a Ferris wheel, the tip of a clock hand and a satellite in a round orbit all trace circles, and a drone flying from one landing pad to another traces a straight segment. Parametric equations describe both, and they also say where the trip starts, which way it goes and how long it takes.",
+ "prereq": [
+  {
+   "q": "What are the coordinates of the point on the unit circle at angle $\\frac{\\pi}{2}$?",
+   "options": [
+    "$(0, 1)$",
+    "$(1, 0)$",
+    "$(-1, 0)$",
+    "$(0, -1)$"
+   ],
+   "correct": 0,
+   "why": "$(\\cos\\frac{\\pi}{2}, \\sin\\frac{\\pi}{2}) = (0, 1)$, a quarter turn counterclockwise from $(1, 0)$.",
+   "review": "sine-cosine-values"
+  },
+  {
+   "q": "What is the slope of the line through $(1, 4)$ and $(5, 1)$?",
+   "options": [
+    "$-\\frac{3}{4}$",
+    "$-\\frac{4}{3}$",
+    "$\\frac{3}{4}$",
+    "$-3$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{1 - 4}{5 - 1} = \\frac{-3}{4}$.",
+   "review": "alg-lines"
+  },
+  {
+   "q": "What is the center of the circle $(x - 2)^2 + (y + 1)^2 = 9$?",
+   "options": [
+    "$(2, -1)$",
+    "$(-2, 1)$",
+    "$(2, 1)$",
+    "$(3, 3)$"
+   ],
+   "correct": 0,
+   "why": "$(x - h)^2 + (y - k)^2 = r^2$ has center $(h, k)$; $y + 1 = y - (-1)$, so $k = -1$.",
+   "review": "alg-circles"
+  }
+ ],
+ "figure": {
+  "figure": "parametric-circles-lines-both",
+  "caption": "Left: $(2\\cos t, 2\\sin t)$ starts at $(2, 0)$ and goes counterclockwise; $t$ is the angle. Right: $(1 + 4t, 4 - 3t)$ for $0 \\le t \\le 1$ goes from $(1, 4)$ to $(5, 1)$."
+ },
+ "chain": [
+  {
+   "cause": "$x(t) = h + r\\cos t$ and $y(t) = k + r\\sin t$",
+   "effect": "every point is $r$ units from $(h, k)$, so the curve is a circle with center $(h, k)$ and radius $r$"
+  },
+  {
+   "cause": "$t$ runs from $0$ to $2\\pi$",
+   "effect": "the point starts at $(h + r, k)$ and goes once around counterclockwise"
+  },
+  {
+   "cause": "Replace $\\sin t$ with $-\\sin t$",
+   "effect": "the same circle from the same start, but clockwise"
+  },
+  {
+   "cause": "$x$ and $y$ are both linear functions of $t$",
+   "effect": "the points lie on a line whose slope is the rate of $y$ over the rate of $x$"
+  }
+ ],
+ "ideas": [
+  "A <b>parametric circle</b>: $x(t) = h + r\\cos t$, $y(t) = k + r\\sin t$, $0 \\le t \\le 2\\pi$, traces the circle with center $(h, k)$ and radius $r$ once, counterclockwise from $(h + r, k)$.",
+  "Change the direction with $k - r\\sin t$; change the speed with $\\cos(bt)$ and $\\sin(bt)$; trace an arc with a shorter interval of $t$.",
+  "A segment from $(x_1, y_1)$ to $(x_2, y_2)$: $x(t) = x_1 + (x_2 - x_1)t$, $y(t) = y_1 + (y_2 - y_1)t$, $0 \\le t \\le 1$.",
+  "If $x(t) = x_0 + at$ and $y(t) = y_0 + bt$ with $a \\ne 0$, the line has slope $\\frac{b}{a}$."
+ ],
+ "misconception": {
+  "wrong": "$(3 + 2\\cos t, 1 + 2\\sin t)$ is a circle of radius $3$ centered at $(2, 1)$.",
+  "right": "The number added is the center's coordinate and the number multiplying $\\cos t$ and $\\sin t$ is the radius: center $(3, 1)$, radius $2$."
+ },
+ "check": [
+  "pcalc-parametric-circles-lines-1",
+  "pcalc-parametric-circles-lines-2",
+  "pcalc-parametric-circles-lines-3",
+  "pcalc-parametric-circles-lines-4",
+  "pcalc-parametric-circles-lines-10",
+  "pcalc-parametric-circles-lines-12"
+ ],
+ "summary": "$(h + r\\cos t, k + r\\sin t)$ for $0 \\le t \\le 2\\pi$ traces the circle with center $(h, k)$ and radius $r$ once counterclockwise, starting at $(h + r, k)$. A segment from $P$ to $Q$ is $P + (Q - P)t$ for $0 \\le t \\le 1$, coordinate by coordinate. Both describe not only a set of points but a trip along it."
+}

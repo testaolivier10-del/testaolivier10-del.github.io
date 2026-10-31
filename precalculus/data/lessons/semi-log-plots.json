@@ -1,0 +1,84 @@
+{
+ "topic": "semi-log-plots",
+ "hook": "A colony of bacteria goes from $3$ thousand to $192$ thousand in six hours. On an ordinary graph, the first hours are squashed against the axis and you cannot see what is happening. Put the vertical axis on a logarithmic scale and the same data fall on a straight line, which tells you at a glance that the growth is exponential.",
+ "prereq": [
+  {
+   "q": "On a logarithmic scale, the labels $1$, $10$, $100$ are equally spaced. What does each step do?",
+   "options": [
+    "Multiplies by $10$",
+    "Adds $10$",
+    "Adds $100$",
+    "Multiplies by $2$"
+   ],
+   "correct": 0,
+   "why": "Equal distances are equal factors.",
+   "review": "logarithmic-expressions"
+  },
+  {
+   "q": "Which is equal to $\\log(5 \\cdot 3^x)$?",
+   "options": [
+    "$\\log 5 + x\\log 3$",
+    "$5 + 3x$",
+    "$\\log 5 \\cdot x\\log 3$",
+    "$x\\log 15$"
+   ],
+   "correct": 0,
+   "why": "Product property, then power property.",
+   "review": "logarithmic-manipulation"
+  },
+  {
+   "q": "An exponential model $y = a \\cdot b^x$ has $b = 1.5$. What happens to $y$ when $x$ increases by $1$?",
+   "options": [
+    "It is multiplied by $1.5$",
+    "It increases by $1.5$",
+    "It is multiplied by $a$",
+    "It increases by $a$"
+   ],
+   "correct": 0,
+   "why": "$b$ is the growth factor.",
+   "review": "exponential-modeling"
+  }
+ ],
+ "figure": {
+  "figure": "semi-log-plots-line",
+  "caption": "The data $y = 3 \\cdot 2^t$ (thousands) on a logarithmic vertical axis: equal steps in time are equal factors, so the points lie on a line."
+ },
+ "chain": [
+  {
+   "cause": "Data follow $y = a \\cdot b^x$",
+   "effect": "$\\log y = \\log a + x\\log b$, a linear function of $x$"
+  },
+  {
+   "cause": "Plot $\\log y$, or use a logarithmic vertical axis",
+   "effect": "the data lie on a straight line: a semi-log plot"
+  },
+  {
+   "cause": "Read the line's slope and intercept",
+   "effect": "slope $= \\log b$ and intercept $= \\log a$, so $b = 10^{\\text{slope}}$ and $a = 10^{\\text{intercept}}$"
+  },
+  {
+   "cause": "The data bend instead",
+   "effect": "they are not exponential of the form $a \\cdot b^x$ (linear data bend down; a vertical shift bends too)"
+  }
+ ],
+ "ideas": [
+  "A semi-log plot has one axis (usually the vertical one) on a logarithmic scale with some base $n > 1$.",
+  "Exponential data $y = a \\cdot b^x$ look linear on it, because $\\log_n y = \\log_n a + x\\log_n b$.",
+  "From the line: $b = n^{\\text{slope}}$ and $a = n^{\\text{intercept}}$. With a natural-log scale, use $e$.",
+  "A function with a vertical shift, $a \\cdot b^x + k$ with $k \\ne 0$, does not give a line."
+ ],
+ "misconception": {
+  "wrong": "A line on a semi-log plot means the data are linear, so the slope is the amount added each step.",
+  "right": "The vertical scale shows $\\log y$. A line means $\\log y$ is linear, so $y$ is exponential: the slope is $\\log b$, and each step multiplies $y$ by $b$."
+ },
+ "check": [
+  "pcalc-semi-log-plots-1",
+  "pcalc-semi-log-plots-2",
+  "pcalc-semi-log-plots-3",
+  "pcalc-semi-log-plots-6",
+  "pcalc-semi-log-plots-7",
+  "pcalc-semi-log-plots-8",
+  "pcalc-semi-log-plots-11"
+ ],
+ "summary": "A semi-log plot puts one axis on a logarithmic scale. Exponential data $y = a \\cdot b^x$ then fall on a straight line, because $\\log y = \\log a + x\\log b$. The slope of the line is $\\log b$ and its intercept is $\\log a$, so you can read the model's growth factor and starting value from the line. Linear data, or exponential data with a vertical shift, bend instead."
+}

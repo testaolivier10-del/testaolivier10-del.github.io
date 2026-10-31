@@ -1,0 +1,604 @@
+{
+ "stimuli": {
+  "logarithmic-functions-s1": {
+   "kind": "graph",
+   "title": "The graph of $h$",
+   "plot": {
+    "label": "Graph of h(x) = log base 2 of (x + 4) minus 1, with a dashed vertical asymptote at x = -4 and points (-2, 0), (0, 1) and (4, 2)",
+    "width": 360,
+    "height": 290,
+    "x": [
+     -5,
+     6
+    ],
+    "y": [
+     -4,
+     3
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "log_2(x + 4) - 1",
+      "domain": [
+       -3.97,
+       6
+      ],
+      "cls": "s1",
+      "label": "h"
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": -4
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -3,
+       -1
+      ]
+     },
+     {
+      "at": [
+       -2,
+       0
+      ]
+     },
+     {
+      "at": [
+       0,
+       1
+      ]
+     },
+     {
+      "at": [
+       4,
+       2
+      ]
+     }
+    ]
+   },
+   "text": "The graph shows $h(x) = \\log_2(x + 4) - 1$ and its vertical asymptote $x = -4$."
+  },
+  "logarithmic-functions-s2": {
+   "kind": "graph",
+   "title": "The graph of $p$",
+   "plot": {
+    "label": "Graph of p(x) = 4 ln(x + 1) minus x for x from -1 to 12, rising to a high point near x = 3 and then falling, with a dashed asymptote at x = -1",
+    "width": 380,
+    "height": 290,
+    "x": [
+     -2,
+     12
+    ],
+    "y": [
+     -5,
+     4
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "4ln(x + 1) - x",
+      "domain": [
+       -0.75,
+       12
+      ],
+      "cls": "s1",
+      "label": "p"
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": -1
+     }
+    ]
+   },
+   "text": "The graph shows $p(x) = 4\\ln(x + 1) - x$ for $x > -1$. Use a graphing calculator."
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-logarithmic-functions-1",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "logarithmic-functions-s1",
+   "type": "single",
+   "q": "What is the domain of $h$?",
+   "options": [
+    "$x > -4$",
+    "$x > 0$",
+    "$x \\ge -4$",
+    "$x > 4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A logarithm needs a positive input: $x + 4 > 0$, so $x > -4$. The asymptote $x = -4$ itself is not included.",
+    "options": [
+     "$x + 4 > 0$ gives $x > -4$.",
+     "That is the domain of $\\log_2 x$; the graph is shifted $4$ units left.",
+     "At $x = -4$ the input of the logarithm is $0$, which is not allowed.",
+     "The shift is to the left: $x + 4 > 0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-2",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logarithmic-functions-s1",
+   "type": "single",
+   "q": "Which statement describes $h$ near its vertical asymptote?",
+   "options": [
+    "$\\lim_{x \\to -4^+} h(x) = -\\infty$",
+    "$\\lim_{x \\to -4^-} h(x) = -\\infty$",
+    "$\\lim_{x \\to -4^+} h(x) = \\infty$",
+    "$\\lim_{x \\to -\\infty} h(x) = -4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$h$ is defined only to the right of $x = -4$, and there the graph drops without bound.",
+    "options": [
+     "From the right, the outputs decrease without bound.",
+     "$h$ is not defined to the left of $-4$, so only the right-hand limit makes sense.",
+     "The graph goes down, not up, as $x$ approaches $-4$ from the right.",
+     "$h$ is not defined for very negative $x$; $-4$ is where the asymptote is, not a limit value."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-3",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-functions-s1",
+   "type": "numeric",
+   "q": "Find the zero of $h$.",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": -3,
+      "why": "$h(-3) = \\log_2 1 - 1 = -1$, not $0$."
+     },
+     {
+      "value": 1,
+      "why": "That is the output $h(0) = 1$, not an input where $h$ is $0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\log_2(x + 4) - 1 = 0$ means $\\log_2(x + 4) = 1$, so $x + 4 = 2$ and $x = -2$. The graph crosses the $x$-axis at $(-2, 0)$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-4",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-functions-s1",
+   "type": "numeric",
+   "q": "Find the average rate of change of $h$ on $[0, 4]$.",
+   "numeric": {
+    "answer": "1/4",
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is the change in output, $2 - 1$. Divide by the change in input, $4$."
+     },
+     {
+      "value": 4,
+      "why": "That divides the input change by the output change; flip it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{h(4) - h(0)}{4 - 0} = \\frac{2 - 1}{4} = \\frac{1}{4}$, the slope of the secant line through $(0, 1)$ and $(4, 2)$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-5",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logarithmic-functions-s1",
+   "type": "single",
+   "q": "Which statement describes $h$ on its whole domain?",
+   "options": [
+    "$h$ is increasing, and the rate of change of $h$ is decreasing",
+    "$h$ is increasing, and the rate of change of $h$ is increasing",
+    "$h$ is decreasing, and the rate of change of $h$ is increasing",
+    "$h$ has a maximum value at $x = 4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The graph rises everywhere and bends downward: secant slopes get smaller, from $1$ on $[-3, -2]$ to $\\frac{1}{2}$ on $[-2, 0]$ to $\\frac{1}{4}$ on $[0, 4]$. $h$ is concave down.",
+    "options": [
+     "Rising outputs with shrinking secant slopes: increasing and concave down.",
+     "An increasing rate of change would make the graph bend upward.",
+     "Larger inputs give larger outputs, so $h$ is increasing.",
+     "A logarithmic function has no maximum; $h$ keeps growing past $x = 4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-6",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-functions-s2",
+   "calc": true,
+   "type": "numeric",
+   "q": "$p(0) = 0$. Use a graphing calculator to find the other zero of $p$. Give it correct to three decimal places.",
+   "numeric": {
+    "answer": 9.346651929052218,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$0$ is the zero given in the stem. Widen the window to the right to see the graph cross again."
+     },
+     {
+      "value": 3,
+      "why": "That is near the highest point of $p$, where $p(3) \\approx 2.545$, not a zero."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Graph $y = 4\\ln(x + 1) - x$ with a window that reaches past $x = 10$, then find the zero to the right of the high point: $x \\approx 9.347$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-7",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logarithmic-functions-s2",
+   "calc": true,
+   "type": "single",
+   "q": "Use a graphing calculator to find every solution of $p(x) = 1$.",
+   "options": [
+    "$x \\approx 0.430$ and $x \\approx 7.613$",
+    "$x \\approx 0.430$",
+    "$x \\approx 7.613$",
+    "$x \\approx 1.718$ and $x \\approx 7.613$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Graph $y = 4\\ln(x + 1) - x$ and $y = 1$ and find both intersections, one on each side of the high point: $x \\approx 0.430$ and $x \\approx 7.613$.",
+    "options": [
+     "The line $y = 1$ crosses the graph twice, once while $p$ rises and once while it falls.",
+     "This misses the second intersection; widen the window to the right.",
+     "This misses the intersection while $p$ is rising, near $x = 0.430$.",
+     "$1.718$ is $e - 1$, where $\\ln(x + 1) = 1$; that ignores the $4$ and the $-x$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-8",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-functions-s2",
+   "calc": true,
+   "type": "numeric",
+   "q": "Use a graphing calculator to find the greatest value of $p$. Give it correct to three decimal places.",
+   "numeric": {
+    "answer": 2.5451774444795623,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "That is the input of the high point. The question asks for the output, $p(3)$."
+     },
+     {
+      "value": 5.545177444479562,
+      "why": "That leaves out the $-x$ term: $p(3) = 4\\ln 4 - 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Use the maximum feature on $y = 4\\ln(x + 1) - x$: the high point is at $x = 3$, with $p(3) = 4\\ln 4 - 3 \\approx 2.545$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-9",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-functions-s2",
+   "calc": true,
+   "type": "single",
+   "q": "Which statement describes $p$ near its vertical asymptote?",
+   "options": [
+    "$\\lim_{x \\to -1^+} p(x) = -\\infty$",
+    "$\\lim_{x \\to -1^+} p(x) = 1$",
+    "$\\lim_{x \\to -1^+} p(x) = \\infty$",
+    "$\\lim_{x \\to \\infty} p(x) = -1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "As $x \\to -1^+$, $\\ln(x + 1)$ decreases without bound while $-x$ approaches $1$, so $p(x)$ decreases without bound.",
+    "options": [
+     "The logarithm term falls without bound; the $-x$ term stays near $1$.",
+     "The $-x$ term approaches $1$, but $4\\ln(x + 1)$ is unbounded.",
+     "The graph drops, not rises, near $x = -1$.",
+     "$-1$ is where the asymptote is; as $x$ grows, $p$ decreases without bound."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-10",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "q": "Which features does the graph of $f(x) = \\ln x$ have? Select every one it has.",
+   "options": [
+    "A vertical asymptote at $x = 0$",
+    "A horizontal asymptote at $y = 0$",
+    "A $y$-intercept at $(0, 1)$",
+    "A local maximum"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "$\\ln x$ is defined for $x > 0$, drops without bound as $x \\to 0^+$, increases on its whole domain and is concave down.",
+    "options": [
+     "$\\lim_{x \\to 0^+} \\ln x = -\\infty$.",
+     "$\\ln x$ keeps growing, slowly: $\\ln e^{10} = 10$. It has no horizontal asymptote.",
+     "$x = 0$ is not in the domain; $(0, 1)$ is on $y = e^x$. The graph of $\\ln x$ crosses the $x$-axis at $(1, 0)$.",
+     "$\\ln x$ is increasing, so it has no turning point."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-11",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "q": "Which statement describes the end behavior of $f(x) = \\log_2 x$?",
+   "options": [
+    "$\\lim_{x \\to \\infty} \\log_2 x = \\infty$",
+    "$\\lim_{x \\to \\infty} \\log_2 x = 0$",
+    "$\\lim_{x \\to \\infty} \\log_2 x = 2$",
+    "$\\lim_{x \\to \\infty} \\log_2 x = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Slowly but without bound: $\\log_2 1{,}024 = 10$ and $\\log_2 2^{100} = 100$.",
+    "options": [
+     "Every whole number $n$ is reached at $x = 2^n$.",
+     "$0$ is the value at $x = 1$; the outputs keep growing.",
+     "$\\log_2 4 = 2$ and $\\log_2 8 = 3$: the outputs pass $2$.",
+     "$\\log_2 2 = 1$, and the outputs pass $1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-12",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "expr",
+   "q": "The graph of $g$ is the graph of $y = \\ln x$ shifted $3$ units right and $2$ units up. Write $g(x)$.",
+   "expr": {
+    "answer": "ln(x - 3) + 2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     3.1,
+     9
+    ],
+    "mode": "exact",
+    "lhs": "g(x) =",
+    "mistakes": [
+     {
+      "expr": "ln(x + 3) + 2",
+      "why": "Replacing $x$ by $x + 3$ shifts left. Right $3$ is $x - 3$."
+     },
+     {
+      "expr": "ln(x - 3) - 2",
+      "why": "Up $2$ adds $2$ to the output."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A shift $3$ units right replaces $x$ by $x - 3$; a shift up adds $2$ to the output: $g(x) = \\ln(x - 3) + 2$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-13",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "q": "Find the average rate of change of $f(x) = \\log_3 x$ on $[1, 9]$.",
+   "numeric": {
+    "answer": "1/4",
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is the change in output. Divide by the change in input, $8$."
+     },
+     {
+      "value": "1/3",
+      "why": "$\\log_3 9 = 2$, not $\\frac{8}{3}$. Recompute: $\\frac{2 - 0}{9 - 1}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{f(9) - f(1)}{9 - 1} = \\frac{2 - 0}{8} = \\frac{1}{4}$, the slope of the secant line through $(1, 0)$ and $(9, 2)$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-14",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "q": "What is the domain of $f(x) = \\ln(5 - x)$?",
+   "options": [
+    "$x < 5$",
+    "$x > 5$",
+    "$x \\le 5$",
+    "$x > 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The input of $\\ln$ must be positive: $5 - x > 0$, so $x < 5$.",
+    "options": [
+     "$5 - x > 0$ gives $x < 5$.",
+     "The $-x$ reverses the direction: $5 - x > 0$ when $x < 5$.",
+     "At $x = 5$ the input of $\\ln$ is $0$, which is not allowed.",
+     "That is the domain of $\\ln x$, not of $\\ln(5 - x)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-15",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "q": "The graph of $f(x) = \\log_b x$ passes through $(9, 2)$. Find $b$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 4.5,
+      "why": "That is $9 \\div 2$. Rewrite $\\log_b 9 = 2$ as $b^2 = 9$."
+     },
+     {
+      "value": 81,
+      "why": "That is $9^2$. The base squared is $9$: $b^2 = 9$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\log_b 9 = 2$ means $b^2 = 9$, and $b > 0$, so $b = 3$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-16",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "Let $f(x) = a\\log_2 x$ with $a > 0$. Predict what happens to each quantity as $a$ increases.",
+   "variables": [
+    {
+     "name": "$f(8)$",
+     "answer": "up",
+     "why": "$f(8) = 3a$, which grows with $a$."
+    },
+    {
+     "name": "$f\\left(\\frac{1}{2}\\right)$",
+     "answer": "down",
+     "why": "$f\\left(\\frac{1}{2}\\right) = -a$, which becomes more negative."
+    },
+    {
+     "name": "The $x$-intercept",
+     "answer": "none",
+     "why": "$f(1) = a \\cdot 0 = 0$ for every $a$, so the graph always crosses at $x = 1$."
+    }
+   ],
+   "why": {
+    "correct": "A vertical dilation multiplies every output by $a$; outputs of $0$ stay $0$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-17",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "q": "For $f(x) = \\ln x$, the average rates of change on $[1, 2]$, $[2, 3]$ and $[3, 4]$ are about $0.693$, $0.405$ and $0.288$. What do these values show?",
+   "options": [
+    "$f$ is concave down on $[1, 4]$, because its rate of change is decreasing",
+    "$f$ is decreasing on $[1, 4]$, because the rates are decreasing",
+    "$f$ is concave up on $[1, 4]$, because the rates are positive",
+    "$f$ has a maximum on $[1, 4]$, because the rates get closer to $0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Over equal-length intervals, the secant slopes decrease, so the rate of change of $f$ is decreasing and the graph is concave down. The rates are positive, so $f$ is increasing.",
+    "options": [
+     "Decreasing average rates over equal intervals mean concave down.",
+     "The rates are positive, so $f$ is increasing; it is the rates that decrease.",
+     "Positive rates show $f$ is increasing; concavity comes from how the rates change.",
+     "The rates stay positive, so $f$ keeps increasing and has no maximum there."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-functions-18",
+   "unit": "unit-2",
+   "topic": "logarithmic-functions",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "q": "What is the domain of $f(x) = \\log_3(x^2 - 9)$?",
+   "options": [
+    "$x < -3$ or $x > 3$",
+    "$x > 3$",
+    "$x > 9$",
+    "$-3 < x < 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The input must be positive: $x^2 - 9 > 0$, so $x^2 > 9$, which holds for $x > 3$ and for $x < -3$.",
+    "options": [
+     "$x^2 > 9$ on both sides: $x > 3$ or $x < -3$.",
+     "$x = -4$ also works: $(-4)^2 - 9 = 7 > 0$.",
+     "The condition is $x^2 > 9$, not $x > 9$.",
+     "For $-3 < x < 3$, $x^2 - 9$ is negative, so the logarithm is undefined there."
+    ]
+   }
+  }
+ ]
+}

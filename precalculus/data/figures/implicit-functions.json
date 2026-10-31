@@ -1,0 +1,12 @@
+{
+ "implicit-functions-halves": {
+  "file": "figures/implicit-functions-halves.svg",
+  "ext": "svg",
+  "w": 380,
+  "h": 350,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The circle x squared plus y squared = 25. Its upper half, y = the square root of 25 minus x squared, is drawn in green and its lower half, y = minus the square root of 25 minus x squared, in blue. A dashed vertical line at x = 3 meets the circle twice, at (3, 4) and (3, -4)."
+ }
+}

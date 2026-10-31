@@ -1,0 +1,12 @@
+{
+ "equivalent-representations-forms": {
+  "file": "figures/equivalent-representations-forms.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graph of r(x) = (x^2 - x - 2)/(x - 3): zeros at x = -1 and x = 2, a dashed vertical asymptote at x = 3, and the dashed slant asymptote y = x + 2 that the graph approaches at both ends."
+ }
+}

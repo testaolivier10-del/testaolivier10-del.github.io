@@ -1,0 +1,12 @@
+{
+ "sine-cosine-values-special": {
+  "file": "figures/sine-cosine-values-special.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A circle of radius 1 centered at the origin with a dot at every multiple of pi/6 and pi/4 from 0 to 2 pi, each labeled with its angle in radians. The first-quadrant points are labeled with their coordinates: at pi/6, (square root of 3 over 2, 1/2); at pi/4, (square root of 2 over 2, square root of 2 over 2); at pi/3, (1/2, square root of 3 over 2). A table to the right lists cosine and sine at 0, pi/6, pi/4, pi/3 and pi/2: cosine 1, root 3 over 2, root 2 over 2, 1/2, 0 and sine 0, 1/2, root 2 over 2, root 3 over 2, 1. The other quadrants repeat these values with signs set by the quadrant."
+ }
+}

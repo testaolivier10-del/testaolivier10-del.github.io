@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" width="520" height="420" role="img" aria-labelledby="sine-cosine-tangent-point-p-t sine-cosine-tangent-point-p-d" font-family="Arial, Helvetica, sans-serif">
+<title id="sine-cosine-tangent-point-p-t">An angle theta in standard position with P = (−3/5, 4/5)</title>
+<desc id="sine-cosine-tangent-point-p-d">A circle of radius 1 centered at the origin, with the x- and y-axes. An angle theta in standard position turns counterclockwise from the positive x-axis to a terminal ray in the second quadrant, which meets the circle at the point P with coordinates (−3/5, 4/5). A dashed segment drops from P to the x-axis.</desc>
+<rect width="520" height="420" fill="#fff"/>
+<line x1="60" y1="220" x2="460" y2="220" stroke="#1F2A28" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="260" y1="410" x2="260" y2="26" stroke="#1F2A28" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M460 220 l-8 -4 v8 z" fill="#1F2A28"/><path d="M260 26 l-4 8 h8 z" fill="#1F2A28"/>
+<text x="464" y="225" font-size="16" text-anchor="start" fill="#1F2A28"><tspan font-style="italic">x</tspan></text>
+<text x="268" y="32" font-size="16" text-anchor="start" fill="#1F2A28"><tspan font-style="italic">y</tspan></text>
+<circle cx="260" cy="220" r="160" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<line x1="260" y1="220" x2="164" y2="92" stroke="#1F2A28" stroke-width="3" stroke-linecap="round"/>
+<line x1="260" y1="220" x2="420" y2="220" stroke="#1F2A28" stroke-width="3" stroke-linecap="round"/>
+<path d="M296 220 A36 36 0 0 0 238.4 191.2" fill="none" stroke="#D55E00" stroke-width="2.5" stroke-linecap="round"/><path d="M236.8 192.4 L243.4 181.2 L249.4 189.2 Z" fill="#D55E00"/>
+<text x="290" y="180" font-size="19" text-anchor="start" fill="#D55E00"><tspan font-style="italic">θ</tspan></text>
+<line x1="164" y1="92" x2="164" y2="220" stroke="#0072B2" stroke-width="2" stroke-dasharray="6 5" stroke-linecap="round"/>
+<circle cx="164" cy="92" r="6.5" fill="#11592F"/>
+<text x="154" y="80" font-size="17" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan font-style="italic">P</tspan>(−3/5, 4/5)</text>
+<text x="426" y="240" font-size="14" text-anchor="start" fill="#1F2A28">1</text>
+<text x="94" y="240" font-size="14" text-anchor="end" fill="#1F2A28">−1</text>
+<text x="268" y="54" font-size="14" text-anchor="start" fill="#1F2A28">1</text>
+<text x="268" y="400" font-size="14" text-anchor="start" fill="#1F2A28">−1</text>
+<text x="378" y="394" font-size="15" text-anchor="start" fill="#5A6563"><tspan font-style="italic">x</tspan><tspan baseline-shift="super" font-size="70%">2</tspan> + <tspan font-style="italic">y</tspan><tspan baseline-shift="super" font-size="70%">2</tspan> = 1</text>
+</svg>

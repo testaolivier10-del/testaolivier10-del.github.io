@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Residual plots for two models of the same data</title><desc id="d">Residuals (actual minus predicted followers) for a linear model (vermillion squares) and an exponential model (blue circles) of seven weekly follower counts. The linear residuals form a U: positive, then negative, then positive again. The exponential residuals stay near 0 with no pattern, so the exponential model is the better fit.</desc>
+<rect width="640" height="420" fill="#FFFFFF"/>
+<clipPath id="c"><rect x="62" y="18" width="558" height="348"/></clipPath>
+<line x1="101.86" y1="18" x2="101.86" y2="366" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="181.57" y1="18" x2="181.57" y2="366" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="261.29" y1="18" x2="261.29" y2="366" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="341" y1="18" x2="341" y2="366" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="420.71" y1="18" x2="420.71" y2="366" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="500.43" y1="18" x2="500.43" y2="366" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="580.14" y1="18" x2="580.14" y2="366" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="62" y1="366" x2="620" y2="366" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="62" y1="331.2" x2="620" y2="331.2" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="62" y1="296.4" x2="620" y2="296.4" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="62" y1="261.6" x2="620" y2="261.6" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="62" y1="226.8" x2="620" y2="226.8" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="62" y1="192" x2="620" y2="192" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="62" y1="157.2" x2="620" y2="157.2" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="62" y1="122.4" x2="620" y2="122.4" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="62" y1="87.6" x2="620" y2="87.6" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="62" y1="52.8" x2="620" y2="52.8" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="62" y1="18" x2="620" y2="18" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="62" y1="226.8" x2="620" y2="226.8" stroke="#1F2A28" stroke-width="1.4"/>
+<line x1="101.86" y1="18" x2="101.86" y2="366" stroke="#1F2A28" stroke-width="1.4"/>
+<text x="181.57" y="243.8" font-size="13" fill="#1F2A28" text-anchor="middle">1</text>
+<text x="261.29" y="243.8" font-size="13" fill="#1F2A28" text-anchor="middle">2</text>
+<text x="341" y="243.8" font-size="13" fill="#1F2A28" text-anchor="middle">3</text>
+<text x="420.71" y="243.8" font-size="13" fill="#1F2A28" text-anchor="middle">4</text>
+<text x="500.43" y="243.8" font-size="13" fill="#1F2A28" text-anchor="middle">5</text>
+<text x="580.14" y="243.8" font-size="13" fill="#1F2A28" text-anchor="middle">6</text>
+<text x="94.86" y="370.5" font-size="13" fill="#1F2A28" text-anchor="end">−80</text>
+<text x="94.86" y="335.7" font-size="13" fill="#1F2A28" text-anchor="end">−60</text>
+<text x="94.86" y="300.9" font-size="13" fill="#1F2A28" text-anchor="end">−40</text>
+<text x="94.86" y="266.1" font-size="13" fill="#1F2A28" text-anchor="end">−20</text>
+<text x="94.86" y="196.5" font-size="13" fill="#1F2A28" text-anchor="end">20</text>
+<text x="94.86" y="161.7" font-size="13" fill="#1F2A28" text-anchor="end">40</text>
+<text x="94.86" y="126.9" font-size="13" fill="#1F2A28" text-anchor="end">60</text>
+<text x="94.86" y="92.1" font-size="13" fill="#1F2A28" text-anchor="end">80</text>
+<text x="94.86" y="57.3" font-size="13" fill="#1F2A28" text-anchor="end">100</text>
+<text x="94.86" y="22.5" font-size="13" fill="#1F2A28" text-anchor="end">120</text>
+<text x="341" y="408" font-size="14" fill="#1F2A28" text-anchor="middle" font-style="italic">t (weeks)</text>
+<text transform="translate(16 192) rotate(-90)" font-size="14" fill="#1F2A28" text-anchor="middle" font-style="italic">residual (followers)</text>
+<g clip-path="url(#c)">
+<line x1="62" y1="226.8" x2="620" y2="226.8" stroke="#1F2A28" stroke-width="1.6"/>
+</g>
+<rect x="96.86" y="136.66" width="10" height="10" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
+<rect x="176.57" y="215.59" width="10" height="10" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
+<rect x="256.29" y="266.67" width="10" height="10" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
+<rect x="336" y="296.87" width="10" height="10" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
+<rect x="415.71" y="283.57" width="10" height="10" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
+<rect x="495.43" y="235.47" width="10" height="10" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
+<rect x="575.14" y="117.77" width="10" height="10" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
+<circle cx="101.86" cy="226.83" r="5" fill="#0072B2" stroke="#0072B2" stroke-width="2"/>
+<circle cx="181.57" cy="227.94" r="5" fill="#0072B2" stroke="#0072B2" stroke-width="2"/>
+<circle cx="261.29" cy="224.17" r="5" fill="#0072B2" stroke="#0072B2" stroke-width="2"/>
+<circle cx="341" cy="228.24" r="5" fill="#0072B2" stroke="#0072B2" stroke-width="2"/>
+<circle cx="420.71" cy="224.71" r="5" fill="#0072B2" stroke="#0072B2" stroke-width="2"/>
+<circle cx="500.43" cy="231.29" r="5" fill="#0072B2" stroke="#0072B2" stroke-width="2"/>
+<circle cx="580.14" cy="224.44" r="5" fill="#0072B2" stroke="#0072B2" stroke-width="2"/>
+<text x="109.83" y="38.88" font-size="14" fill="#D55E00" text-anchor="start" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" paint-order="stroke">■ linear model</text>
+<text x="109.83" y="63.24" font-size="14" fill="#0072B2" text-anchor="start" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" paint-order="stroke">● exponential model</text>
+</svg>

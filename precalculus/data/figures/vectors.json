@@ -1,0 +1,22 @@
+{
+ "vectors-sum": {
+  "file": "figures/vectors-sum.svg",
+  "ext": "svg",
+  "w": 380,
+  "h": 290,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Vector u = <3, 1> drawn from the origin to (3, 1) in green, vector v = <1, 2> drawn from the tip of u at (3, 1) to (4, 3) in blue, and their sum u + v = <4, 3> drawn from the origin to (4, 3) in vermillion. The sum has length 5."
+ },
+ "vectors-grid": {
+  "file": "figures/vectors-grid.svg",
+  "ext": "svg",
+  "w": 400,
+  "h": 310,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Vector u drawn from (0, 0) to (4, 1) in green. Vector v drawn from (2, 1) to (1, 4) in blue. Both start and end at grid points."
+ }
+}

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" role="img" aria-labelledby="alg-circles-arc-t alg-circles-arc-d" font-family="Arial, Helvetica, sans-serif">
+<title id="alg-circles-arc-t">Arc length as a fraction of the circle, and the equation of a circle</title>
+<desc id="alg-circles-arc-d">Left: a circle with center O and radius r. A central angle of 60 degrees cuts off an arc, drawn in green, of length s. Because 60 degrees is one sixth of 360 degrees, the arc is one sixth of the circumference 2 pi r. Right: on a coordinate grid, the circle with center (2, −1) and radius 3, whose equation is (x − 2) squared plus (y + 1) squared equals 9. The points (5, −1) and (2, 2) are marked on it, each 3 units from the center.</desc>
+<rect width="760" height="360" fill="#fff"/>
+<circle cx="175" cy="190" r="120" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<line x1="175" y1="190" x2="295" y2="190" stroke="#1F2A28" stroke-width="2" stroke-linecap="round"/>
+<line x1="175" y1="190" x2="235" y2="86.08" stroke="#1F2A28" stroke-width="2" stroke-linecap="round"/>
+<path d="M295 190 A120 120 0 0 0 235 86.08" fill="none" stroke="#11592F" stroke-width="6" stroke-linecap="round"/>
+<path d="M209 190 A34 34 0 0 0 192 160.56" fill="none" stroke="#D55E00" stroke-width="2.5" stroke-linecap="round"/>
+<text x="215" y="176" font-size="15" text-anchor="start" fill="#D55E00">60°</text>
+<circle cx="175" cy="190" r="4" fill="#1F2A28"/>
+<text x="165" y="210" font-size="16" text-anchor="start" fill="#1F2A28"><tspan font-style="italic">O</tspan></text>
+<text x="235" y="212" font-size="18" text-anchor="middle" fill="#1F2A28"><tspan font-style="italic">r</tspan></text>
+<text x="292.92" y="130" font-size="20" text-anchor="start" fill="#11592F" font-weight="bold"><tspan font-style="italic">s</tspan></text>
+<text x="175" y="340" font-size="16" text-anchor="middle" fill="#1F2A28"><tspan font-style="italic">s</tspan> = (60/360) · 2π<tspan font-style="italic">r</tspan> = π<tspan font-style="italic">r</tspan>/3</text>
+<clipPath id="clip420x40"><rect x="414" y="34" width="302" height="282"/></clipPath>
+<line x1="522.35" y1="40" x2="522.35" y2="310" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="556.47" y1="40" x2="556.47" y2="310" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="590.59" y1="40" x2="590.59" y2="310" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="624.71" y1="40" x2="624.71" y2="310" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="658.82" y1="40" x2="658.82" y2="310" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="692.94" y1="40" x2="692.94" y2="310" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="420" y1="278.24" x2="710" y2="278.24" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="420" y1="214.71" x2="710" y2="214.71" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="420" y1="182.94" x2="710" y2="182.94" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="420" y1="119.41" x2="710" y2="119.41" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="420" y1="87.65" x2="710" y2="87.65" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="420" y1="55.88" x2="710" y2="55.88" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="420" y1="151.18" x2="720" y2="151.18" stroke="#1F2A28" stroke-width="1.4"/>
+<path d="M720 151.18 l-8 -4 v8 z" fill="#1F2A28"/>
+<line x1="488.24" y1="310" x2="488.24" y2="30" stroke="#1F2A28" stroke-width="1.4"/>
+<path d="M488.24 30 l-4 8 h8 z" fill="#1F2A28"/>
+<line x1="522.35" y1="147.18" x2="522.35" y2="155.18" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="522.35" y="170.18" font-size="13" text-anchor="middle" fill="#1F2A28">1</text>
+<line x1="556.47" y1="147.18" x2="556.47" y2="155.18" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="556.47" y="170.18" font-size="13" text-anchor="middle" fill="#1F2A28">2</text>
+<line x1="590.59" y1="147.18" x2="590.59" y2="155.18" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="590.59" y="170.18" font-size="13" text-anchor="middle" fill="#1F2A28">3</text>
+<line x1="624.71" y1="147.18" x2="624.71" y2="155.18" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="624.71" y="170.18" font-size="13" text-anchor="middle" fill="#1F2A28">4</text>
+<line x1="658.82" y1="147.18" x2="658.82" y2="155.18" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="658.82" y="170.18" font-size="13" text-anchor="middle" fill="#1F2A28">5</text>
+<line x1="692.94" y1="147.18" x2="692.94" y2="155.18" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="692.94" y="170.18" font-size="13" text-anchor="middle" fill="#1F2A28">6</text>
+<line x1="484.24" y1="278.24" x2="492.24" y2="278.24" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="480.24" y="282.74" font-size="13" text-anchor="end" fill="#1F2A28">−4</text>
+<line x1="484.24" y1="214.71" x2="492.24" y2="214.71" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="480.24" y="219.21" font-size="13" text-anchor="end" fill="#1F2A28">−2</text>
+<line x1="484.24" y1="182.94" x2="492.24" y2="182.94" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="480.24" y="187.44" font-size="13" text-anchor="end" fill="#1F2A28">−1</text>
+<line x1="484.24" y1="119.41" x2="492.24" y2="119.41" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="480.24" y="123.91" font-size="13" text-anchor="end" fill="#1F2A28">1</text>
+<line x1="484.24" y1="87.65" x2="492.24" y2="87.65" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="480.24" y="92.15" font-size="13" text-anchor="end" fill="#1F2A28">2</text>
+<line x1="484.24" y1="55.88" x2="492.24" y2="55.88" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="480.24" y="60.38" font-size="13" text-anchor="end" fill="#1F2A28">3</text>
+<text x="724" y="156.18" font-size="15" font-style="italic" fill="#1F2A28">x</text>
+<text x="497.24" y="38" font-size="15" font-style="italic" fill="#1F2A28">y</text>
+<path d="M658.82 182.94L658.79 180.45L658.68 177.95L658.51 175.46L658.26 172.98L657.95 170.5L657.56 168.03L657.11 165.58L656.59 163.13L656 160.7L655.34 158.28L654.61 155.88L653.81 153.49L652.95 151.13L652.03 148.79L651.03 146.47L649.97 144.18L648.85 141.92L647.67 139.68L646.42 137.47L645.11 135.29L643.74 133.15L642.31 131.04L640.82 128.97L639.28 126.93L637.67 124.93L636.01 122.97L634.3 121.05L632.53 119.18L630.71 117.35L628.85 115.56L626.93 113.82L624.96 112.12L622.94 110.48L620.88 108.88L618.78 107.34L616.63 105.85L614.44 104.41L612.22 103.02L609.95 101.69L607.65 100.41L605.31 99.2L602.94 98.03L600.53 96.93L598.1 95.89L595.64 94.9L593.15 93.98L590.64 93.11L588.1 92.31L585.54 91.57L582.96 90.89L580.36 90.28L577.75 89.73L575.12 89.24L572.48 88.82L569.83 88.46L567.17 88.17L564.5 87.94L561.83 87.78L559.15 87.68L556.47 87.65L553.79 87.68L551.11 87.78L548.44 87.94L545.77 88.17L543.11 88.46L540.46 88.82L537.82 89.24L535.19 89.73L532.58 90.28L529.98 90.89L527.4 91.57L524.84 92.31L522.3 93.11L519.79 93.98L517.3 94.9L514.84 95.89L512.41 96.93L510 98.03L507.63 99.2L505.29 100.41L502.99 101.69L500.73 103.02L498.5 104.41L496.31 105.85L494.16 107.34L492.06 108.88L490 110.48L487.98 112.12L486.02 113.82L484.1 115.56L482.23 117.35L480.41 119.18L478.64 121.05L476.93 122.97L475.27 124.93L473.67 126.93L472.12 128.97L470.63 131.04L469.2 133.15L467.83 135.29L466.52 137.47L465.27 139.68L464.09 141.92L462.97 144.18L461.91 146.47L460.92 148.79L459.99 151.13L459.13 153.49L458.33 155.88L457.61 158.28L456.95 160.7L456.35 163.13L455.83 165.58L455.38 168.03L454.99 170.5L454.68 172.98L454.43 175.46L454.26 177.95L454.15 180.45L454.12 182.94L454.15 185.44L454.26 187.93L454.43 190.42L454.68 192.9L454.99 195.38L455.38 197.85L455.83 200.31L456.35 202.75L456.95 205.19L457.61 207.61L458.33 210.01L459.13 212.39L459.99 214.75L460.92 217.09L461.91 219.41L462.97 221.7L464.09 223.97L465.27 226.2L466.52 228.41L467.83 230.59L469.2 232.73L470.63 234.84L472.12 236.92L473.67 238.95L475.27 240.95L476.93 242.91L478.64 244.83L480.41 246.71L482.23 248.54L484.1 250.32L486.02 252.07L487.98 253.76L490 255.4L492.06 257L494.16 258.54L496.31 260.04L498.5 261.48L500.73 262.86L502.99 264.19L505.29 265.47L507.63 266.69L510 267.85L512.41 268.95L514.84 270L517.3 270.98L519.79 271.91L522.3 272.77L524.84 273.57L527.4 274.31L529.98 274.99L532.58 275.6L535.19 276.15L537.82 276.64L540.46 277.06L543.11 277.42L545.77 277.71L548.44 277.94L551.11 278.1L553.79 278.2L556.47 278.24L559.15 278.2L561.83 278.1L564.5 277.94L567.17 277.71L569.83 277.42L572.48 277.06L575.12 276.64L577.75 276.15L580.36 275.6L582.96 274.99L585.54 274.31L588.1 273.57L590.64 272.77L593.15 271.91L595.64 270.98L598.1 270L600.53 268.95L602.94 267.85L605.31 266.69L607.65 265.47L609.95 264.19L612.22 262.86L614.44 261.48L616.63 260.04L618.78 258.54L620.88 257L622.94 255.4L624.96 253.76L626.93 252.07L628.85 250.32L630.71 248.54L632.53 246.71L634.3 244.83L636.01 242.91L637.67 240.95L639.28 238.95L640.82 236.92L642.31 234.84L643.74 232.73L645.11 230.59L646.42 228.41L647.67 226.2L648.85 223.97L649.97 221.7L651.03 219.41L652.03 217.09L652.95 214.75L653.81 212.39L654.61 210.01L655.34 207.61L656 205.19L656.59 202.75L657.11 200.31L657.56 197.85L657.95 195.38L658.26 192.9L658.51 190.42L658.68 187.93L658.79 185.44L658.82 182.94" fill="none" stroke="#11592F" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="556.47" y1="182.94" x2="658.82" y2="182.94" stroke="#0072B2" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="556.47" cy="182.94" r="4" fill="#1F2A28" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="658.82" cy="182.94" r="5" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
+<circle cx="556.47" cy="87.65" r="5" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
+<text x="548.47" y="202.94" font-size="13" text-anchor="end" fill="#1F2A28">(2, −1)</text>
+<text x="664.82" y="202.94" font-size="13" text-anchor="start" fill="#1F2A28">(5, −1)</text>
+<text x="564.47" y="79.65" font-size="13" text-anchor="start" fill="#1F2A28">(2, 2)</text>
+<text x="565" y="346" font-size="16" text-anchor="middle" fill="#1F2A28">(<tspan font-style="italic">x</tspan> − 2)<tspan baseline-shift="super" font-size="70%">2</tspan> + (<tspan font-style="italic">y</tspan> + 1)<tspan baseline-shift="super" font-size="70%">2</tspan> = 9</text>
+</svg>

@@ -1,0 +1,499 @@
+{
+ "stimuli": {
+  "exponential-functions-s1": {
+   "kind": "graph",
+   "title": "The graph of $h(x) = 2\\left(\\frac{1}{2}\\right)^x + 1$",
+   "plot": {
+    "label": "Graph of h(x) = 2(1/2)^x + 1, decreasing and concave up, passing through (0, 3) and (-1, 5), approaching the dashed horizontal asymptote y = 1 on the right",
+    "x": [
+     -3,
+     5
+    ],
+    "y": [
+     -1,
+     9
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "2(0.5)^x + 1",
+      "label": "h"
+     }
+    ],
+    "asymptotes": [
+     {
+      "y": 1
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       3
+      ]
+     },
+     {
+      "at": [
+       -1,
+       5
+      ]
+     },
+     {
+      "at": [
+       1,
+       2
+      ]
+     }
+    ]
+   }
+  },
+  "exponential-functions-s2": {
+   "kind": "table",
+   "title": "Values of a function $k$",
+   "table": {
+    "caption": "Selected values of the function k",
+    "cols": [
+     "$x$",
+     "0",
+     "1",
+     "2",
+     "3"
+    ],
+    "rows": [
+     [
+      "$k(x)$",
+      "7",
+      "11",
+      "19",
+      "35"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-exponential-functions-1",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-functions-s1",
+   "q": "Which statement describes the end behavior of $h$ as $x$ increases without bound?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to \\infty} h(x) = 0$",
+    "$\\lim_{x \\to \\infty} h(x) = 1$",
+    "$\\lim_{x \\to \\infty} h(x) = \\infty$",
+    "$\\lim_{x \\to 1} h(x) = \\infty$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "As $x$ grows, $\\left(\\frac{1}{2}\\right)^x$ shrinks toward $0$, so $h(x)$ approaches $2 \\cdot 0 + 1 = 1$: $\\lim_{x \\to \\infty} h(x) = 1$. The line $y = 1$ is a horizontal asymptote.",
+    "options": [
+     "This is the limit of $2(\\frac{1}{2})^x$ alone; the $+1$ shifts the asymptote up.",
+     "The term $2(\\frac{1}{2})^x$ goes to $0$ and $1$ remains.",
+     "The graph falls as $x$ increases; it does not grow.",
+     "This describes the input approaching $1$, which is not end behavior."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-2",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-functions-s1",
+   "q": "Which statement describes $h$ as $x$ decreases without bound?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to -\\infty} h(x) = 1$",
+    "$\\lim_{x \\to -\\infty} h(x) = -\\infty$",
+    "$\\lim_{x \\to -\\infty} h(x) = \\infty$",
+    "$\\lim_{x \\to \\infty} h(x) = -\\infty$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For negative $x$, $\\left(\\frac{1}{2}\\right)^x = 2^{-x}$ grows without bound: $h(-10) = 2 \\cdot 1024 + 1$. So $\\lim_{x \\to -\\infty} h(x) = \\infty$.",
+    "options": [
+     "The asymptote $y = 1$ is on the right side, as $x \\to \\infty$.",
+     "The outputs are all above $1$, so they cannot go to $-\\infty$.",
+     "Going left, the outputs grow without bound.",
+     "This is about the right side, and the outputs there approach $1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-3",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "exponential-functions-s1",
+   "q": "What is the range of $h$?",
+   "type": "single",
+   "options": [
+    "$[1, \\infty)$",
+    "$(0, \\infty)$",
+    "$(-\\infty, \\infty)$",
+    "$(1, \\infty)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$2\\left(\\frac{1}{2}\\right)^x$ takes every positive value and never $0$, so $h(x)$ takes every value greater than $1$, but never $1$ itself.",
+    "options": [
+     "The asymptote value $1$ is approached but not reached.",
+     "The $+1$ shifts the range up from $(0, \\infty)$.",
+     "Every output is greater than $1$.",
+     "Every output above the asymptote, not the asymptote."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-4",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "exponential-functions-s1",
+   "q": "Which statement about $h$ on the interval $(-3, 5)$ is true?",
+   "type": "single",
+   "options": [
+    "$h$ is decreasing, and the rate of change of $h$ is increasing",
+    "$h$ is decreasing, and the rate of change of $h$ is decreasing",
+    "$h$ is increasing, and the graph is concave up",
+    "$h$ is decreasing until $x = 0$, then increasing"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The outputs fall as $x$ increases, so $h$ is decreasing. The graph is concave up: the average rates of change over equal intervals are negative but closer to $0$ each time ($h$ drops $4$, then $2$, then $1$ from $x = -2$ to $x = 1$), so the rate of change of $h$ is increasing.",
+    "options": [
+     "Falling, and falling less steeply: rates increasing toward $0$.",
+     "Rates like $-4, -2, -1$ are increasing, which means concave up.",
+     "The base $\\frac{1}{2}$ makes $h$ decrease.",
+     "An exponential function has no turning point."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-5",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "exponential-functions-s1",
+   "q": "What is $h(-2)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 9.0,
+    "mistakes": [
+     {
+      "value": 1.5,
+      "why": "That uses $(\\frac{1}{2})^2 = \\frac{1}{4}$. A negative exponent flips the base: $(\\frac{1}{2})^{-2} = 2^2 = 4$."
+     },
+     {
+      "value": -1,
+      "why": "That multiplies $\\frac{1}{2}$ by $-2$; the exponent means repeated multiplying."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$h(-2) = 2\\left(\\frac{1}{2}\\right)^{-2} + 1 = 2(4) + 1 = 9$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-6",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exponential-functions-s2",
+   "q": "The outputs $7, 11, 19, 35$ do not have a constant ratio. Which statement shows that $k$ is still an exponential function shifted vertically?",
+   "type": "single",
+   "options": [
+    "The differences $4, 8, 16$ show that $k$ is linear",
+    "The outputs increase, so $k$ is exponential",
+    "The values $k(x) - 3$ are $4, 8, 16, 32$, which double for each step of $1$",
+    "The ratio $\\frac{35}{7} = 5$ is constant"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Subtract $3$ from every output: $4, 8, 16, 32$. Over equal steps these have a constant ratio of $2$, so $k(x) - 3 = 4(2)^x$ and $k(x) = 4(2)^x + 3$, an exponential function shifted up $3$.",
+    "options": [
+     "Linear needs constant differences; these double.",
+     "Increasing outputs fit many functions.",
+     "Shifted outputs that are proportional.",
+     "One ratio across the table does not show a pattern over equal steps."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-7",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-functions-s2",
+   "q": "Write an expression for $k(x)$ that fits the table.",
+   "type": "expr",
+   "expr": {
+    "answer": "4(2)^x + 3",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     4
+    ],
+    "mode": "exact",
+    "lhs": "k(x) =",
+    "mistakes": [
+     {
+      "expr": "7(2)^x",
+      "why": "This gives $k(1) = 14$, not $11$. Subtract the shift $3$ first, then find the ratio."
+     },
+     {
+      "expr": "4(2)^x",
+      "why": "This leaves out the vertical shift: $k(0) = 7$, not $4$."
+     },
+     {
+      "expr": "4x + 7",
+      "why": "The differences are $4, 8, 16$, not constant, so $k$ is not linear."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$k(x) - 3 = 4, 8, 16, 32$ at $x = 0, 1, 2, 3$, which is $4(2)^x$. So $k(x) = 4(2)^x + 3$. Check: $k(2) = 16 + 3 = 19$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-8",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-functions-s2",
+   "q": "What is $\\lim_{x \\to -\\infty} k(x)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "That is the limit of $4(2)^x$ alone. The $+3$ shifts the asymptote to $y = 3$."
+     },
+     {
+      "value": 7,
+      "why": "That is $k(0)$, the $y$-intercept, not the end behavior."
+     }
+    ]
+   },
+   "why": {
+    "correct": "As $x \\to -\\infty$, $4(2)^x \\to 0$, so $k(x) \\to 3$: $\\lim_{x \\to -\\infty} k(x) = 3$. The graph has the horizontal asymptote $y = 3$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-9",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "exponential-functions-s2",
+   "q": "Using $k(x) = 4(2)^x + 3$, find $k(5)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 131,
+    "mistakes": [
+     {
+      "value": 67,
+      "why": "That is $k(4)$. One more step doubles $k(x) - 3$: $2(64) + 3 = 131$."
+     },
+     {
+      "value": 134,
+      "why": "That doubles $k(4) = 67$. The doubling applies to $k(x) - 3$, not to $k(x)$: $2(64) + 3 = 131$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$k(5) = 4(32) + 3 = 131$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-10",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A town\\'s population grows by $4\\%$ each year. What is the growth factor per year?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 1.04,
+    "mistakes": [
+     {
+      "value": 0.04,
+      "why": "That is the growth rate. The growth factor multiplies the amount: $1 + 0.04$."
+     },
+     {
+      "value": 4,
+      "why": "Write the percent as a decimal and add $1$: $1.04$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each year the population is $100\\% + 4\\% = 104\\%$ of the year before, so the growth factor is $1 + 0.04 = 1.04$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-11",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A car loses $15\\%$ of its value each year. Which model gives its value $V$ after $t$ years, if it cost $\\$20{,}000$?",
+   "type": "single",
+   "options": [
+    "$V(t) = 20{,}000(0.15)^t$",
+    "$V(t) = 20{,}000(1.15)^t$",
+    "$V(t) = 20{,}000 - 0.15t$",
+    "$V(t) = 20{,}000(0.85)^t$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Losing $15\\%$ leaves $85\\%$, so the decay factor is $1 - 0.15 = 0.85$: $V(t) = 20{,}000(0.85)^t$.",
+    "options": [
+     "This keeps only $15\\%$ each year.",
+     "This grows by $15\\%$.",
+     "This subtracts $0.15$ dollars a year.",
+     "Keep $85\\%$ each year."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-12",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A quantity is modeled by $Q(t) = 300(0.92)^t$. By what percent does it change each unit of time? Give a negative number for a decrease.",
+   "type": "numeric",
+   "numeric": {
+    "answer": -8,
+    "unit": "percent",
+    "units": [
+     "%"
+    ],
+    "mistakes": [
+     {
+      "value": 92,
+      "why": "That is the percent kept; the change is $92\\% - 100\\% = -8\\%$."
+     },
+     {
+      "value": 8,
+      "why": "The factor is less than $1$, so the change is a decrease: $-8\\%$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The factor is $0.92 = 1 - 0.08$, so the quantity changes by $-8\\%$ each unit: it loses $8\\%$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-13",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "calc": true,
+   "q": "Use a calculator to evaluate $50e^{0.3}$, correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 67.49294037880016,
+    "mistakes": [
+     {
+      "value": 67.356,
+      "why": "That rounds $e$ to $2.7$ first. Use the calculator's $e^x$ key."
+     },
+     {
+      "value": 40.774,
+      "why": "That multiplies $e$ by $0.3$. Raise $e$ to the power $0.3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The natural base $e \\approx 2.71828$. $50e^{0.3} = 67.492940...$, so about $67.493$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-14",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = -2(3)^x$. Which statements are true? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$f$ is decreasing",
+    "$f$ is concave down",
+    "$f$ has a local maximum",
+    "$f$ has a zero at $x = 0$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$3^x$ is increasing and concave up; multiplying by $-2$ reflects it across the $x$-axis, so $f$ is decreasing and concave down. It has no extrema and no zeros.",
+    "options": [
+     "The reflection turns increasing into decreasing.",
+     "The reflection turns concave up into concave down.",
+     "An exponential function is monotonic, so no turning point.",
+     "$f(0) = -2$; $f$ is never $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-functions-15",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does an exponential function $f(x) = ab^x$ have no local maximum or minimum?",
+   "type": "single",
+   "options": [
+    "Its outputs are positive",
+    "Its graph has an asymptote",
+    "It is concave up",
+    "Each unit step multiplies the output by the same $b$, so the outputs keep moving in one direction"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Over every unit step the output is multiplied by $b$. If $b > 1$ every step moves the output away from $0$ in the same direction; if $0 < b < 1$, every step moves it toward $0$. The function is increasing everywhere or decreasing everywhere, so it never turns.",
+    "options": [
+     "If $a < 0$ the outputs are negative, and there is still no extremum.",
+     "Many functions with asymptotes have extrema.",
+     "Concave-up functions such as $x^2$ can have a minimum.",
+     "One fixed factor, one direction."
+    ]
+   }
+  }
+ ]
+}

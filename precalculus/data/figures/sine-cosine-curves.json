@@ -1,0 +1,12 @@
+{
+ "sine-cosine-curves-unroll": {
+  "file": "figures/sine-cosine-curves-unroll.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a circle of radius 1 with the point P at angle 2 pi over 3, whose height above the x-axis is sine of 2 pi over 3, about 0.87. Right: the graph of y = sin theta for theta from 0 to 2 pi in green, with the graph of y = cos theta dashed in blue for comparison. A dashed horizontal line carries the height of P across to the point (2 pi over 3, sin 2 pi over 3) on the sine graph. The sine graph starts at 0, rises to 1 at pi/2, returns to 0 at pi, falls to −1 at 3 pi over 2 and returns to 0 at 2 pi."
+ }
+}

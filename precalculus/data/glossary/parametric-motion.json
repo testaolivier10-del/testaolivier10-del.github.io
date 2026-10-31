@@ -1,0 +1,5 @@
+{
+ "planar-motion": {
+  "def": "Motion of an object in a flat plane, described by a parametric function: at time t the object is at (x(t), y(t)). It moves right where x(t) increases and up where y(t) increases."
+ }
+}

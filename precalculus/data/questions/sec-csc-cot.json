@@ -1,0 +1,543 @@
+{
+ "stimuli": {
+  "sec-csc-cot-s1": {
+   "kind": "graph",
+   "title": "The graph of $y = \\sec x$, with $y = \\cos x$ dashed",
+   "plot": {
+    "label": "Graph of y = sec x for x from 0 to 2 pi with dashed vertical asymptotes at pi/2 and 3 pi/2, and the dashed curve y = cos x",
+    "x": [
+     -0.2,
+     6.483185307179586
+    ],
+    "y": [
+     -4,
+     4
+    ],
+    "piX": true,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "1/cos(x)",
+      "domain": [
+       0,
+       6.283185307179586
+      ],
+      "label": "sec"
+     },
+     {
+      "fn": "cos(x)",
+      "domain": [
+       0,
+       6.283185307179586
+      ],
+      "dashed": true,
+      "label": "cos"
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": 1.5707963267948966
+     },
+     {
+      "x": 4.71238898038469
+     }
+    ]
+   }
+  },
+  "sec-csc-cot-s2": {
+   "kind": "table",
+   "title": "Sine and cosine of four angles",
+   "table": {
+    "caption": "Exact values of sin θ and cos θ for selected angles θ, in radians",
+    "cols": [
+     "$\\theta$ (radians)",
+     "$\\frac{\\pi}{6}$",
+     "$\\frac{\\pi}{4}$",
+     "$\\frac{\\pi}{3}$",
+     "$\\frac{\\pi}{2}$"
+    ],
+    "rows": [
+     [
+      "$\\sin\\theta$",
+      "$\\frac{1}{2}$",
+      "$\\frac{\\sqrt{2}}{2}$",
+      "$\\frac{\\sqrt{3}}{2}$",
+      "$1$"
+     ],
+     [
+      "$\\cos\\theta$",
+      "$\\frac{\\sqrt{3}}{2}$",
+      "$\\frac{\\sqrt{2}}{2}$",
+      "$\\frac{1}{2}$",
+      "$0$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-sec-csc-cot-1",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sec-csc-cot-s1",
+   "q": "Using the graph or the unit circle, find the exact value of $\\sec\\frac{2\\pi}{3}$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": "-1/2",
+      "why": "That is $\\cos\\frac{2\\pi}{3}$. Secant is its reciprocal: $\\frac{1}{-1/2} = -2$."
+     },
+     {
+      "value": 2,
+      "why": "Cosine is negative in Quadrant II, so its reciprocal is negative too."
+     },
+     {
+      "value": "2sqrt(3)/3",
+      "why": "That is $\\frac{1}{\\sin(2\\pi/3)}$, the reciprocal of sine. Secant is the reciprocal of cosine."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sec\\frac{2\\pi}{3} = \\frac{1}{\\cos(2\\pi/3)} = \\frac{1}{-1/2} = -2$. The graph of secant is below $-1$ on $\\left(\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right)$, where cosine is negative."
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-2",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sec-csc-cot-s1",
+   "q": "Using the graph, where does $y = \\sec x$ have vertical asymptotes on $[0, 2\\pi]$?",
+   "type": "single",
+   "options": [
+    "$x = \\frac{\\pi}{2}$ and $x = \\frac{3\\pi}{2}$",
+    "$x = 0$, $x = \\pi$ and $x = 2\\pi$",
+    "$x = \\frac{\\pi}{4}$ and $x = \\frac{5\\pi}{4}$",
+    "$x = \\frac{\\pi}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\sec x = \\frac{1}{\\cos x}$ is undefined where $\\cos x = 0$: at $\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$ in $[0, 2\\pi]$. The dashed cosine crosses the axis exactly there.",
+    "options": [
+     "Right: the zeros of cosine.",
+     "Those are the zeros of sine, where cosecant has its asymptotes.",
+     "$\\cos\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}$, not $0$, so $\\sec\\frac{\\pi}{4} = \\sqrt{2}$ is defined.",
+     "Cosine is $0$ again at $\\frac{3\\pi}{2}$, so there is a second asymptote."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-3",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sec-csc-cot-s1",
+   "q": "What is the range of $y = \\sec x$?",
+   "type": "single",
+   "options": [
+    "$(-\\infty, -1] \\cup [1, \\infty)$",
+    "$[-1, 1]$",
+    "$(-\\infty, \\infty)$",
+    "$[1, \\infty)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\cos x$ is between $-1$ and $1$, so its reciprocal has absolute value at least $1$: $\\sec x \\ge 1$ where cosine is positive and $\\sec x \\le -1$ where it is negative. On the graph, no part of the secant curve lies strictly between $-1$ and $1$.",
+    "options": [
+     "Right: the reciprocal of a number between $-1$ and $1$ is at least $1$ in size.",
+     "That is the range of cosine; secant takes the reciprocals of those values.",
+     "Secant never takes values like $0$ or $\\frac{1}{2}$: $\\frac{1}{\\cos x} = \\frac{1}{2}$ would need $\\cos x = 2$.",
+     "Where $\\cos x < 0$, the secant branches open downward, with outputs at most $-1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-4",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sec-csc-cot-s1",
+   "q": "Using the graph, which statement about $\\sec x$ near $x = \\frac{\\pi}{2}$ is true?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to \\pi/2^-} \\sec x = \\infty$",
+    "$\\lim_{x \\to \\pi/2^-} \\sec x = -\\infty$",
+    "$\\lim_{x \\to \\pi/2^-} \\sec x = 0$",
+    "$\\lim_{x \\to \\pi/2^-} \\sec x = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Just left of $\\frac{\\pi}{2}$, $\\cos x$ is a small positive number, so $\\frac{1}{\\cos x}$ is a large positive number: $\\lim_{x \\to \\pi/2^-} \\sec x = \\infty$. From the right, $\\cos x$ is small and negative, and the limit is $-\\infty$.",
+    "options": [
+     "Right: the reciprocal of a small positive number is large and positive.",
+     "That is the behavior from the right, where cosine is negative.",
+     "Cosine approaches $0$; its reciprocal grows without bound instead.",
+     "$\\sec 0 = 1$ is the bottom of the branch, not its behavior near the asymptote."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-5",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sec-csc-cot-s1",
+   "q": "On the interval $\\left(0, \\frac{\\pi}{2}\\right)$, how does $\\sec x$ behave, and why?",
+   "type": "single",
+   "options": [
+    "It is increasing, because $\\cos x$ is positive and decreasing there",
+    "It is decreasing, because $\\cos x$ is decreasing there",
+    "It is increasing, because $\\cos x$ is increasing there",
+    "It is decreasing, because $\\cos x$ is positive and less than $1$ there"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On $\\left(0, \\frac{\\pi}{2}\\right)$, $\\cos x$ falls from $1$ toward $0$ and stays positive. Dividing $1$ by smaller and smaller positive numbers gives larger and larger results, so $\\sec x$ increases from $1$ without bound.",
+    "options": [
+     "Right: a shrinking positive denominator makes the reciprocal grow.",
+     "A reciprocal moves the opposite way: as the positive cosine decreases, the secant increases.",
+     "$\\cos x$ decreases on $\\left(0, \\frac{\\pi}{2}\\right)$; it goes from $1$ to $0$.",
+     "Being positive and less than $1$ makes secant greater than $1$; it does not say whether secant rises or falls."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-6",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sec-csc-cot-s2",
+   "q": "Using the table, find the exact value of $\\csc\\frac{\\pi}{4}$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "sqrt(2)",
+    "mistakes": [
+     {
+      "value": "sqrt(2)/2",
+      "why": "That is $\\sin\\frac{\\pi}{4}$ itself. Cosecant is its reciprocal: $\\frac{2}{\\sqrt{2}} = \\sqrt{2}$."
+     },
+     {
+      "value": 1,
+      "why": "That is $\\cot\\frac{\\pi}{4} = \\frac{\\cos}{\\sin}$. Cosecant is $\\frac{1}{\\sin}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\csc\\frac{\\pi}{4} = \\frac{1}{\\sin(\\pi/4)} = \\frac{1}{\\sqrt{2}/2} = \\frac{2}{\\sqrt{2}} = \\sqrt{2}$."
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-7",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sec-csc-cot-s2",
+   "q": "Using the table, find the exact value of $\\cot\\frac{\\pi}{6}$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "sqrt(3)",
+    "mistakes": [
+     {
+      "value": "sqrt(3)/3",
+      "why": "That is $\\frac{\\sin}{\\cos}$, the tangent. Cotangent is $\\frac{\\cos}{\\sin}$."
+     },
+     {
+      "value": "2sqrt(3)/3",
+      "why": "That is $\\frac{1}{\\cos(\\pi/6)}$, the secant. Cotangent is $\\frac{\\cos}{\\sin}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\cot\\frac{\\pi}{6} = \\frac{\\cos(\\pi/6)}{\\sin(\\pi/6)} = \\frac{\\sqrt{3}/2}{1/2} = \\sqrt{3}$."
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-8",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sec-csc-cot-s2",
+   "q": "Using the table, which value is undefined?",
+   "type": "single",
+   "options": [
+    "$\\sec\\frac{\\pi}{2}$",
+    "$\\cot\\frac{\\pi}{2}$",
+    "$\\csc\\frac{\\pi}{2}$",
+    "$\\csc\\frac{\\pi}{6}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\cos\\frac{\\pi}{2} = 0$, so $\\sec\\frac{\\pi}{2} = \\frac{1}{0}$ is undefined. The others divide by a sine, which is not $0$ at these angles.",
+    "options": [
+     "Right: secant divides by $\\cos\\frac{\\pi}{2} = 0$.",
+     "$\\cot\\frac{\\pi}{2} = \\frac{\\cos(\\pi/2)}{\\sin(\\pi/2)} = \\frac{0}{1} = 0$: zero on top is fine.",
+     "$\\csc\\frac{\\pi}{2} = \\frac{1}{1} = 1$.",
+     "$\\csc\\frac{\\pi}{6} = \\frac{1}{1/2} = 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-9",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sec-csc-cot-s2",
+   "q": "Using the table, how do the values of $\\csc\\theta$ change as $\\theta$ goes from $\\frac{\\pi}{6}$ to $\\frac{\\pi}{2}$?",
+   "type": "single",
+   "options": [
+    "They decrease from $2$ to $1$",
+    "They increase from $\\frac{1}{2}$ to $1$",
+    "They increase from $1$ to $2$",
+    "They decrease from $2$ to $0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\csc\\theta = \\frac{1}{\\sin\\theta}$ takes the values $2$, $\\sqrt{2}$, $\\frac{2\\sqrt{3}}{3}$ and $1$. Sine increases, so its reciprocal decreases, from $2$ to $1$.",
+    "options": [
+     "Right: $2 > \\sqrt{2} > \\frac{2\\sqrt{3}}{3} > 1$.",
+     "Those are the sine values; cosecant is their reciprocal.",
+     "The order is reversed: as sine grows, cosecant shrinks.",
+     "$\\csc\\frac{\\pi}{2} = 1$, not $0$; cosecant never takes values between $-1$ and $1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-10",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Rewrite $\\cos x \\csc x$ as a single trigonometric function of $x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "cot(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.2,
+     3
+    ],
+    "mode": "exact",
+    "lhs": "\\cos x \\csc x =",
+    "mistakes": [
+     {
+      "expr": "tan(x)",
+      "why": "$\\frac{\\cos x}{\\sin x}$ is cotangent; tangent is $\\frac{\\sin x}{\\cos x}$."
+     },
+     {
+      "expr": "sec(x)",
+      "why": "$\\csc x = \\frac{1}{\\sin x}$, so the product is $\\frac{\\cos x}{\\sin x}$, not $\\frac{1}{\\cos x}$."
+     },
+     {
+      "expr": "1",
+      "why": "$\\cos x$ and $\\csc x$ are not reciprocals; $\\csc x$ is the reciprocal of $\\sin x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\cos x \\csc x = \\cos x \\cdot \\frac{1}{\\sin x} = \\frac{\\cos x}{\\sin x} = \\cot x$."
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-11",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Rewrite $\\tan x \\csc x$ as a single trigonometric function of $x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "sec(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.1,
+     1.4
+    ],
+    "mode": "exact",
+    "lhs": "\\tan x \\csc x =",
+    "mistakes": [
+     {
+      "expr": "cos(x)",
+      "why": "After the sines cancel, $\\frac{1}{\\cos x}$ is left, which is $\\sec x$, not $\\cos x$."
+     },
+     {
+      "expr": "cot(x)",
+      "why": "Write both in sines and cosines: $\\frac{\\sin x}{\\cos x} \\cdot \\frac{1}{\\sin x} = \\frac{1}{\\cos x}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\tan x \\csc x = \\frac{\\sin x}{\\cos x} \\cdot \\frac{1}{\\sin x} = \\frac{1}{\\cos x} = \\sec x$ (where $\\sin x \\ne 0$)."
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-12",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these are locations of vertical asymptotes of $y = \\csc x$ on the open interval $(0, 2\\pi)$? Select every one.",
+   "type": "multi",
+   "options": [
+    "$x = \\pi$",
+    "$x = \\frac{\\pi}{2}$",
+    "$x = \\frac{3\\pi}{2}$",
+    "$x = \\frac{\\pi}{4}$"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "$\\csc x = \\frac{1}{\\sin x}$ has asymptotes where $\\sin x = 0$, at $x = k\\pi$. On the open interval $(0, 2\\pi)$ that is $x = \\pi$ alone; $0$ and $2\\pi$ are excluded.",
+    "options": [
+     "Yes: $\\sin\\pi = 0$.",
+     "No: $\\sin\\frac{\\pi}{2} = 1$, so $\\csc\\frac{\\pi}{2} = 1$, a turning point.",
+     "No: $\\sin\\frac{3\\pi}{2} = -1$, so $\\csc\\frac{3\\pi}{2} = -1$, a turning point.",
+     "No: $\\csc\\frac{\\pi}{4} = \\sqrt{2}$, a defined value."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-13",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the period of $y = \\cot(2x)$?",
+   "type": "single",
+   "options": [
+    "$\\frac{\\pi}{2}$",
+    "$\\pi$",
+    "$2\\pi$",
+    "$4\\pi$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cotangent, like tangent, has period $\\pi$. With $b = 2$ the period is $\\frac{\\pi}{2}$.",
+    "options": [
+     "Right: $\\frac{\\pi}{|b|} = \\frac{\\pi}{2}$.",
+     "That is $\\frac{2\\pi}{2}$, using the sine rule; cotangent repeats every $\\pi$, so divide $\\pi$ by $2$.",
+     "Cotangent already repeats every $\\pi$, before any change.",
+     "$b = 2$ shortens the period; it does not lengthen it."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-14",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the exact value of $\\sec\\frac{5\\pi}{6}$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-2sqrt(3)/3",
+    "mistakes": [
+     {
+      "value": "2sqrt(3)/3",
+      "why": "Cosine is negative in Quadrant II, so secant is negative there too."
+     },
+     {
+      "value": -2,
+      "why": "That is $\\frac{1}{\\sin(5\\pi/6)}$ with the wrong sign; secant uses the cosine, $-\\frac{\\sqrt{3}}{2}$."
+     },
+     {
+      "value": "-sqrt(3)/2",
+      "why": "That is $\\cos\\frac{5\\pi}{6}$; take its reciprocal."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\cos\\frac{5\\pi}{6} = -\\frac{\\sqrt{3}}{2}$, so $\\sec\\frac{5\\pi}{6} = \\frac{1}{-\\sqrt{3}/2} = -\\frac{2}{\\sqrt{3}} = -\\frac{2\\sqrt{3}}{3}$."
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-15",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which function has range $(-\\infty, \\infty)$?",
+   "type": "single",
+   "options": [
+    "$y = \\cot x$",
+    "$y = \\sec x$",
+    "$y = \\csc x$",
+    "$y = \\cos x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\cot x = \\frac{\\cos x}{\\sin x}$ takes every real value on each branch, falling from $\\infty$ to $-\\infty$ between consecutive zeros of sine.",
+    "options": [
+     "Right: each branch of cotangent passes through every real number.",
+     "$\\sec x$ never takes values strictly between $-1$ and $1$.",
+     "$\\csc x$ never takes values strictly between $-1$ and $1$.",
+     "$\\cos x$ stays in $[-1, 1]$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sec-csc-cot-16",
+   "unit": "unit-3",
+   "topic": "sec-csc-cot",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "As $x$ increases from $\\frac{\\pi}{6}$ to $\\frac{\\pi}{3}$, predict how each quantity changes.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "sin x",
+     "answer": "up",
+     "why": "Sine increases on the first quadrant, from $\\frac{1}{2}$ to $\\frac{\\sqrt{3}}{2}$."
+    },
+    {
+     "name": "csc x",
+     "answer": "down",
+     "why": "Cosecant is $\\frac{1}{\\sin x}$, and dividing by a growing positive number gives a smaller result: from $2$ to $\\frac{2\\sqrt{3}}{3}$."
+    },
+    {
+     "name": "The period of csc x",
+     "answer": "none",
+     "why": "The period is a property of the whole function, $2\\pi$, and does not depend on where you look along the graph."
+    }
+   ],
+   "why": {
+    "correct": "Sine rises, so its reciprocal falls; the period of cosecant stays $2\\pi$."
+   }
+  }
+ ]
+}

@@ -1,0 +1,492 @@
+{
+ "stimuli": {
+  "model-selection-s1": {
+   "kind": "table",
+   "title": "Height of a tossed beanbag",
+   "table": {
+    "caption": "Height h(t) of a beanbag, in meters, t seconds after it is tossed upward from a balcony",
+    "cols": [
+     "$t$ (seconds)",
+     "0",
+     "0.5",
+     "1",
+     "1.5",
+     "2"
+    ],
+    "rows": [
+     [
+      "$h(t)$ (meters)",
+      "2",
+      "17",
+      "22",
+      "17",
+      "2"
+     ]
+    ]
+   }
+  },
+  "model-selection-s2": {
+   "kind": "graph",
+   "title": "Volume of an open box",
+   "text": "Squares of side $x$ inches are cut from the corners of a $12$-inch by $12$-inch sheet, and the sides are folded up to make an open box. The plot shows the volume $V$, in cubic inches, for six cut sizes.",
+   "plot": {
+    "label": "Scatter plot of box volume V in cubic inches against cut size x in inches, rising to about 128 near x = 2 and falling toward 0 near x = 6",
+    "x": [
+     0,
+     6.5
+    ],
+    "y": [
+     0,
+     140
+    ],
+    "xStep": 1,
+    "yStep": 20,
+    "xLabel": "x (inches)",
+    "yLabel": "V (cubic inches)",
+    "points": [
+     {
+      "at": [
+       0.5,
+       60.5
+      ]
+     },
+     {
+      "at": [
+       1.5,
+       121.5
+      ]
+     },
+     {
+      "at": [
+       2.5,
+       122.5
+      ]
+     },
+     {
+      "at": [
+       3.5,
+       87.5
+      ]
+     },
+     {
+      "at": [
+       4.5,
+       40.5
+      ]
+     },
+     {
+      "at": [
+       5.5,
+       5.5
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-model-selection-1",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "model-selection-s1",
+   "q": "The inputs in the table are equally spaced. Which type of function model fits the data best?",
+   "type": "single",
+   "options": [
+    "Linear, because the outputs rise and then fall by equal amounts",
+    "Quadratic, because the second differences are constant",
+    "Quadratic, because the first differences are constant",
+    "Cubic, because there are five data points"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Over equal input steps of $0.5$, the first differences are $15, 5, -5, -15$ and the second differences are $-10, -10, -10$. Constant second differences over equal steps mean a quadratic model.",
+    "options": [
+     "A linear model has constant first differences; these change from $15$ to $-15$.",
+     "Second differences of $-10$ each time, over equal steps.",
+     "The first differences change; it is the second differences that are constant.",
+     "Five points do not force a cubic; the pattern of differences decides the type."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-selection-2",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "model-selection-s1",
+   "q": "Over the equal input steps of the table, what is the constant second difference of $h$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -10,
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "Subtract in order, later minus earlier: $5 - 15 = -10$. The heights rise more slowly, so the change is negative."
+     },
+     {
+      "value": -5,
+      "why": "That is a first difference. Take the differences of the first differences."
+     }
+    ]
+   },
+   "why": {
+    "correct": "First differences: $17 - 2 = 15$, $22 - 17 = 5$, $17 - 22 = -5$, $2 - 17 = -15$. Second differences: $5 - 15 = -10$ each time."
+   }
+  },
+  {
+   "id": "pcalc-model-selection-3",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "model-selection-s1",
+   "q": "A quadratic model $h$ fits the table. For which inputs does the context allow the model to be used?",
+   "type": "single",
+   "options": [
+    "Any real number $t$",
+    "$0 \\le t \\le 2$, the inputs in the table",
+    "From $t = 0$ until $h$ reaches its maximum at $t = 1$",
+    "From $t = 0$ until the time when $h(t) = 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Time starts at the toss, $t = 0$, and the model stops describing the beanbag when it reaches the ground, where $h(t) = 0$. After that the model gives negative heights, which the context does not allow.",
+    "options": [
+     "Negative times come before the toss, and late times give negative heights.",
+     "The beanbag is still in the air at $t = 2$; the model can be used until it lands.",
+     "The beanbag keeps falling after its highest point, and the model still describes it.",
+     "The toss starts the clock and the ground ends the flight."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-selection-4",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "model-selection-s1",
+   "q": "Which statement uses the table to explain why a linear model is not appropriate?",
+   "type": "single",
+   "options": [
+    "The changes over equal steps, $15, 5, -5, -15$, are not constant",
+    "Some heights are below $5$ meters, so a linear model would not fit",
+    "The inputs go up by $0.5$, not by $1$, so a linear model does not apply",
+    "A linear model would need the heights to double each $0.5$ second"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A linear model has a constant rate of change, so over equal input steps its output changes are equal. Here they are $15, 5, -5, -15$.",
+    "options": [
+     "Equal steps with unequal changes rule out a constant rate.",
+     "A line can take small values too; the size of the heights does not decide the type.",
+     "A linear model works with any equal step size; the size of the step does not decide the type.",
+     "Doubling describes repeated multiplying, not a linear pattern."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-selection-5",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "model-selection-s2",
+   "q": "Which type of function model is most appropriate for the box volume $V$ as a function of the cut size $x$?",
+   "type": "single",
+   "options": [
+    "Quadratic, because the data rise and then fall",
+    "Cubic, because volume is length times width times height, each depending on $x$",
+    "Linear, because the cut size changes by equal steps",
+    "Quadratic, because area depends on two lengths"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The box is $12 - 2x$ by $12 - 2x$ by $x$, so $V(x) = x(12 - 2x)^2$, a product of three linear factors: a cubic. Volume contexts suggest cubic models.",
+    "options": [
+     "Rising then falling fits a cubic here too; the volume context points to degree $3$.",
+     "Three dimensions, each linear in $x$, multiply to a cubic.",
+     "Equal steps in the input say nothing about the model type by themselves.",
+     "Volume uses three lengths, not two."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-selection-6",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "model-selection-s2",
+   "q": "What domain does the context allow for the volume model?",
+   "type": "single",
+   "options": [
+    "$0 < x < 12$",
+    "$x > 0$",
+    "$0 < x < 6$",
+    "$0.5 \\le x \\le 5.5$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The cut must have positive size, and two cuts of $x$ must fit along a $12$-inch side: $2x < 12$, so $x < 6$. At $x = 6$ there is no base left.",
+    "options": [
+     "Two cuts come out of each side, so $2x < 12$.",
+     "A cut of $7$ inches is impossible on a $12$-inch sheet.",
+     "Positive cuts that leave a base.",
+     "These are only the cut sizes plotted; any size between $0$ and $6$ makes a box."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-selection-7",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "model-selection-s2",
+   "q": "Using $V(x) = x(12 - 2x)^2$, what volume, in cubic inches, does the model predict for a cut of $x = 2$ inches?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 128,
+    "unit": "cubic inches",
+    "mistakes": [
+     {
+      "value": 64,
+      "why": "That is $(12 - 2 \\cdot 2)^2$, the area of the base; multiply by the height $x = 2$."
+     },
+     {
+      "value": 200,
+      "why": "That is $2(12 - 2)^2$; the cut is taken from both ends, $12 - 2(2) = 8$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$V(2) = 2(12 - 4)^2 = 2(64) = 128$ cubic inches."
+   }
+  },
+  {
+   "id": "pcalc-model-selection-8",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "model-selection-s2",
+   "q": "Which is an assumption built into the model $V(x) = x(12 - 2x)^2$?",
+   "type": "single",
+   "options": [
+    "The sheet has no thickness, so the folded sides add nothing to the size",
+    "The volume increases as the cut size increases",
+    "The cuts are whole numbers of inches",
+    "The box has a lid"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The formula uses the full $12 - 2x$ for the inside length, which treats the material as having no thickness. Real cardboard would make the box a little smaller inside.",
+    "options": [
+     "The formula ignores the thickness of the sheet.",
+     "The plot shows the volume rising and then falling.",
+     "Any cut size between $0$ and $6$ works in the formula.",
+     "The box is open; the formula has no lid in it."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-selection-9",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A phone plan costs $\\$30$ per month for up to $5$ gigabytes of data, and $\\$8$ for each gigabyte over $5$. Which type of model fits the monthly cost?",
+   "type": "single",
+   "options": [
+    "Linear for any usage, at $\\$8$ per gigabyte",
+    "Piecewise-defined, constant then linear",
+    "Quadratic, because the cost rises faster later",
+    "Cubic, because the plan has three numbers"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The cost behaves differently on two intervals: constant at $\\$30$ up to $5$ gigabytes, then rising by $\\$8$ per gigabyte. Different behavior on different intervals calls for a piecewise-defined model.",
+    "options": [
+     "The cost is flat at first, so one line does not fit.",
+     "Two rules, one for each interval of usage.",
+     "The rate is constant after $5$ gigabytes; a quadratic's rate would keep changing.",
+     "The number of constants does not set the degree."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-selection-10",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For a function on equal input intervals, the average rates of change are $2, 5, 8, 11$. Which model type fits?",
+   "type": "single",
+   "options": [
+    "Linear",
+    "Cubic",
+    "Quadratic",
+    "Piecewise-defined, with two constant pieces"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The average rates of change increase by $3$ each time: the rate of change changes at a constant rate. That is the pattern of a quadratic.",
+    "options": [
+     "A linear function has the same rate on every interval.",
+     "A cubic's rates change by changing amounts.",
+     "A rate of change that changes linearly gives a quadratic.",
+     "Constant pieces would have rates of $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-selection-11",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which contexts suggest a quadratic model? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "The area of a square patio as a function of its side length",
+    "The height of a ball thrown upward as a function of time",
+    "The total price of tickets at $\\$12$ each as a function of the number bought",
+    "The volume of a cube as a function of its edge length"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Area depends on two lengths and gives degree $2$; the height of a thrown object has a rate of change that falls at a constant rate. A constant price gives a linear model; volume gives a cubic.",
+    "options": [
+     "Side times side: degree $2$.",
+     "The height rises, peaks once and falls symmetrically.",
+     "Each ticket adds $\\$12$: a constant rate, so linear.",
+     "Edge cubed: degree $3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-selection-12",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A linear model $T(m) = 90 - 4m$ gives the temperature, in degrees Celsius, of soup $m$ minutes after it is set on a counter in a $22$-degree room. Which restriction on the domain does the context suggest?",
+   "type": "single",
+   "options": [
+    "$0 \\le m \\le 17$, because after that the model gives temperatures below the room\\'s",
+    "$0 \\le m \\le 22.5$, because $T$ is $0$ at $m = 22.5$",
+    "$m \\ge 0$, because time is not negative",
+    "$0 \\le m \\le 90$, because the soup starts at $90$ degrees"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Soup cools toward room temperature and does not go below it. $90 - 4m = 22$ at $m = 17$, so the model is reasonable only for $0 \\le m \\le 17$.",
+    "options": [
+     "Set $T(m) = 22$: $m = 17$.",
+     "The soup never cools to $0$ degrees in a $22$-degree room.",
+     "The upper end matters too: the model drops below room temperature.",
+     "The starting temperature is an output, not a bound on time."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-selection-13",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A garage models its fee as $F(h) = 12 + 0.75h$ dollars for $h$ hours, and the model applies for $0 \\le h \\le 24$. What is the greatest fee the model allows, in dollars?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 30.0,
+    "unit": "dollars",
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "That is the least fee, at $h = 0$; the fee rises with time."
+     },
+     {
+      "value": 18,
+      "why": "That is the hourly part, $0.75 \\cdot 24$; add the $\\$12$ base fee."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$F$ is increasing, so its greatest value on $[0, 24]$ is at $h = 24$: $F(24) = 12 + 0.75(24) = 30$ dollars. The restricted domain restricts the range to $[12, 30]$."
+   }
+  },
+  {
+   "id": "pcalc-model-selection-14",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Through any five points with different inputs there is a polynomial of degree at most $4$. Why might a student still not choose it to model five data points?",
+   "type": "single",
+   "options": [
+    "It misses one or more of the five data points it was built from",
+    "Polynomials of degree $4$ have no real zeros",
+    "It may turn in ways the context gives no reason for",
+    "It has a constant rate of change"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Such a polynomial matches the data exactly, but between and beyond the points it may wiggle, with turning points the situation does not support. A simpler model that matches the pattern of the data and the context is usually more useful.",
+    "options": [
+     "It does pass through all five; that is how it is chosen.",
+     "Many degree-$4$ polynomials have real zeros.",
+     "Matching the points is not the same as matching the situation.",
+     "Only linear functions have a constant rate."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-selection-15",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Output values over equal input steps are $3, 7, 11, 15, 19$. Which model type fits and why?",
+   "type": "single",
+   "options": [
+    "Quadratic, because the outputs increase",
+    "Linear, because the outputs are odd numbers",
+    "Quadratic, because the second differences are $4$",
+    "Linear, because the first differences are all $4$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Over equal input steps the outputs change by $4$ each time: constant first differences mean a constant rate of change, so a linear model fits.",
+    "options": [
+     "Increasing outputs fit many models; the differences decide.",
+     "Whether the outputs are odd is not a property of the model.",
+     "The second differences are $0$; the first differences are $4$.",
+     "Equal steps, equal changes."
+    ]
+   }
+  }
+ ]
+}

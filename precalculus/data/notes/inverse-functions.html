@@ -1,0 +1,55 @@
+<p>A function turns inputs into outputs. Often you need to go the other way: from a Celsius reading back to Fahrenheit, from a price with tax back to the price before tax. The function that runs a process backward is its <b>inverse function</b>. This page shows what an inverse is, when one exists, how to justify that with specific values, and how to find it from a table, a graph or a formula.</p>
+
+<h2>What an inverse does</h2>
+<p>If $f(a) = b$, the inverse function $f^{-1}$ sends $b$ back to $a$: $f^{-1}(b) = a$. Input and output trade places. Read $f^{-1}(x)$ as "f inverse of x".</p>
+<p>The $-1$ is part of the name. It does not mean a reciprocal: $f^{-1}(x)$ and $\frac{1}{f(x)}$ are different things. If $f(x) = x - 5$, then $f^{-1}(x) = x + 5$, while $\frac{1}{f(x)} = \frac{1}{x - 5}$.</p>
+<p>Undoing and redoing gets you back where you started, so composing a function with its inverse gives the identity function: $f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$. This is the best way to check an inverse.</p>
+
+<h2>When does an inverse exist?</h2>
+<p>An inverse must send each output back to one input. If two inputs share an output, say $h(1) = 1$ and $h(3) = 1$, then $h^{-1}(1)$ would have to be both $1$ and $3$. A rule that does that is not a function, so $h$ has no inverse.</p>
+<p>A function in which every output comes from exactly one input is called <b>one-to-one</b>, or <b>invertible</b>. Functions that are always increasing, or always decreasing, are invertible.</p>
+<div class="worked">
+<p><b>Worked example 1 (justify with values).</b> Is $f(x) = x^2 - 4x$, defined for every real number, invertible?</p>
+<p>Look for two inputs with the same output: $f(0) = 0$ and $f(4) = 16 - 16 = 0$.</p>
+<p>Write the reason with those values: "$f(0) = f(4) = 0$, so two inputs share the output $0$, and $f$ has no inverse."</p>
+</div>
+<p>Exam readers give no credit for a bare phrase such as "it fails the horizontal line test" or "it is not one-to-one". Name the inputs and the shared output. And say "$f$ has no inverse", not "$f$ is not an inverse".</p>
+
+<h2>Inverses from tables and graphs</h2>
+<p>From a table, swap the rows: the outputs of $f$ become the inputs of $f^{-1}$. If $f(3) = 5$, then $f^{-1}(5) = 3$. The inputs you can use in $f^{-1}$ are exactly the outputs of $f$.</p>
+<p>On a graph, swapping coordinates turns each point $(a, b)$ into $(b, a)$. That is a <b>reflection across the line $y = x$</b>. To read $f^{-1}(b)$ from the graph of $f$, find $b$ on the output axis, go across to the graph, and read the input below it.</p>
+
+<h2>Inverses from formulas</h2>
+<p>Write $y = f(x)$, swap $x$ and $y$, and solve for $y$. Another way to think of it: list what $f$ does to $x$, then undo the steps in reverse order.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the inverse of $f(x) = \frac{x - 5}{3}$.</p>
+<p>$f$ subtracts $5$, then divides by $3$. Undo in reverse: multiply by $3$, then add $5$.</p>
+<p>$f^{-1}(x) = 3x + 5$. Check: $f(f^{-1}(x)) = \frac{(3x + 5) - 5}{3} = x$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> Find the inverse of $f(x) = \frac{2x + 1}{x - 3}$.</p>
+<p>Swap: $x = \frac{2y + 1}{y - 3}$. Multiply by $y - 3$: $xy - 3x = 2y + 1$.</p>
+<p>Collect the $y$ terms on one side: $xy - 2y = 3x + 1$, so $y(x - 2) = 3x + 1$.</p>
+<p>Divide: $f^{-1}(x) = \frac{3x + 1}{x - 2}$.</p>
+</div>
+
+<h2>Restricting the domain</h2>
+<p>A function that is not invertible can become invertible on part of its domain. A parabola rises on one side of its vertex and falls on the other, so on either side alone no output repeats.</p>
+<div class="worked">
+<p><b>Worked example 4.</b> Make $f(x) = (x - 2)^2 + 1$ invertible and find the inverse.</p>
+<p>The vertex is at $x = 2$. Keep $x \ge 2$, where $f$ is increasing.</p>
+<p>Swap: $x = (y - 2)^2 + 1$, so $(y - 2)^2 = x - 1$. Because $y \ge 2$, take the positive root: $y - 2 = \sqrt{x - 1}$.</p>
+<p>$f^{-1}(x) = 2 + \sqrt{x - 1}$, for $x \ge 1$, the range of $f$.</p>
+</div>
+
+<h2>Domain, range and context</h2>
+<table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">$f$</th><th scope="col">$f^{-1}$</th></tr></thead>
+<tbody>
+<tr><td>Inputs</td><td>the domain of $f$</td><td>the range of $f$</td></tr>
+<tr><td>Outputs</td><td>the range of $f$</td><td>the domain of $f$</td></tr>
+<tr><td>A point</td><td>$(a, b)$</td><td>$(b, a)$</td></tr>
+<tr><td>Temperature example</td><td>Fahrenheit in, Celsius out</td><td>Celsius in, Fahrenheit out</td></tr>
+</tbody>
+</table>
+<p>In context, say what the inverse's input and output mean. For $C(F) = \frac{5(F - 32)}{9}$, $C^{-1}(20) = 68$ means that $20$ degrees Celsius is $68$ degrees Fahrenheit.</p>

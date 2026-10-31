@@ -1,0 +1,5 @@
+{
+ "conic": {
+  "def": "A curve made by slicing a double cone with a plane: a parabola, an ellipse (a circle is a special one) or a hyperbola. Ellipse: (x − h)²/a² + (y − k)²/b² = 1. Hyperbola: (x − h)²/a² − (y − k)²/b² = 1, with asymptotes y − k = ±(b/a)(x − h)."
+ }
+}
