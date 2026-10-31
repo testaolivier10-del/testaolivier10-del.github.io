@@ -87,3 +87,6 @@
 .el-views .bt-mode{padding-left:2px;padding-right:2px;min-width:0;}
 .el-chips{flex-wrap:wrap;}
 .ls-root.ls-phone .el-chips{flex-wrap:nowrap;}
+
+/* Review (tools-exams): four views in a 340 px dock; with the shared 12 px padding "Semi-log" was cut to "Semi-l…" at desktop widths. */
+body[data-app="tool-exp-log-lab"] .ls-seg > button{padding:0 6px;}

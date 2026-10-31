@@ -182,7 +182,7 @@ https://fiveable.me/ap-pre-calc/unit-2.md; 2.1 from CED text)
 - **2.5** Build exponential models from a ratio and initial value, two points, or regression; base as growth
   factor and percent change; equivalent forms for other time units (e.g. monthly from yearly); models predict
   outputs and find inputs within the contextual domain [CC].
-- **2.6** Compare models via residuals (actual minus predicted, the standard convention; checked 2026-10-31, confirm against the CED in the accuracy pass) and residual plots; no pattern = appropriate model
+- **2.6** Compare models via residuals (actual minus predicted, per the CED clarifications, updated EK 2.6.B.1) and residual plots; no pattern = appropriate model
   [CC]; error as signed or absolute residual; over/underestimates on an interval [CC].
 - **2.7** Composition f(g(x)), not commutative; domain of a composite; read compositions from tables/graphs; identity
   function behaves like 0 for addition and 1 for multiplication [CC]; decompose functions.

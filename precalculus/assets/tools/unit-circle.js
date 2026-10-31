@@ -69,7 +69,7 @@
             '<output class="bt-out uc-out" for="' + id + '-a" aria-hidden="true"></output></div></div>' +
           '<div class="uc-row">' +
             '<button type="button" class="bt-btn uc-play" aria-pressed="false">' + ICON_PLAY + '<span>Unroll one turn</span></button>' +
-            '<div class="ls-seg uc-view" role="group" aria-label="What the scene shows"><button type="button" class="bt-mode" data-v="trig" aria-pressed="true">sin and cos</button><button type="button" class="bt-mode" data-v="tan" aria-pressed="false">tan</button></div>' +
+            '<div class="ls-seg uc-view" role="group" aria-label="What the scene shows"><button type="button" class="bt-mode" data-v="trig" aria-pressed="true">sin, cos</button><button type="button" class="bt-mode" data-v="tan" aria-pressed="false">tan</button></div>' +
           '</div>' +
         '</div>' +
         '<div class="uc-say"></div>' +
