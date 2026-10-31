@@ -106,4 +106,4 @@
 /* formulas in the choice options at reading size */
 .cd-opt-t .calc-m{font-size:1.16em;}
 .sl-ivfig .sl-nltl{font-size:13.5px;}
-@media (max-width:640px){.sl-qfig figcaption{padding-right:52px;}}
+.sl-qfig figcaption{padding:0 52px;text-align:center;}

@@ -39,7 +39,7 @@
       return { lo: a, hi: b, loIn: m[1] === '[' && isFinite(a), hiIn: m[4] === ']' && isFinite(b) };
     }
     var vr = v.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    m = new RegExp('^(?:' + vr + '\\s*=\\s*([^<>=]+)|\\{\\s*([^}]+)\\s*\\}|([^ ]+) only)$').exec(s);
+    m = new RegExp('^(?:' + vr + '\\s*=\\s*([^<>=]+?)(?:\\s+only)?|\\{\\s*([^}]+)\\s*\\}|([^ ]+) only)$').exec(s);
     if(m){ var p = readEnd(m[1] || m[2] || m[3]); return isFinite(p) ? { lo: p, hi: p, loIn: true, hiIn: true, point: true } : null; }
     // |x - a| < R (open; a closed end cannot be written this way)
     m = new RegExp('^\\|\\s*' + vr + '\\s*([+-])\\s*([^|]+)\\|\\s*(<=?)\\s*(.+)$').exec(s) || new RegExp('^\\|\\s*' + vr + '\\s*\\|\\s*(<=?)\\s*(.+)$').exec(s);
