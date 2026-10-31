@@ -215,6 +215,20 @@ function build() {
     const nx = nextBuilt(id);
     return [...back, ...(nx ? [{ href: `../notes/${nx.id}.html`, label: `Next: ${label(nx)}` }] : [])];
   }
+  /* BC inserts its topics between AB's (6.11-6.13 after 6.10, 7.5, 7.9, 8.13,
+     the skills chapters before Units 9 and 10), so an AB lesson's authored
+     "Next: ..." can name a topic that is no longer next. connectionsWithNext
+     relabels it "Later: ..."; on BC the real next topic is then added as
+     "Next: ..." in front of it, so Connections and "What comes next" agree.
+     AB never takes this path (its output is unchanged). */
+  const lessonConnections = (id, L, nx) => {
+    const list = connectionsWithNext(connections(id, L), nx);
+    if (!IS_BC || !nx || list.some(c => /^next\b/i.test(c.label || ''))) return list;
+    const i = list.findIndex(c => /^later\b/i.test(c.label || ''));
+    if (i < 0) return list;
+    const own = { href: `${nx.id}.html`, label: `Next: ${nx.title}${nx.ced ? ` (${nx.ced})` : ''}` };
+    return [...list.slice(0, i), own, ...list.slice(i)];
+  };
   const STEP_FIRST_PAINT = `<script>(function(){var s=document.querySelector('.calc-ls'),p=s&&s.querySelectorAll('.calc-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.calc-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('${COURSE_KEY}_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>`;
 
   function lessonPage(id) {
@@ -247,7 +261,7 @@ function build() {
       { id: 'check', kind: 'Check yourself', nav: 'Check yourself', h: 'Check yourself', html: `<p class="calc-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="calc-qs" data-set="check">${staticQuestions(check, stimuli, depth)}</div>` },
       { id: 'summary', kind: 'Summary', nav: 'Summary', h: 'Summary', html: g(L.summary) },
       { id: 'next', kind: 'Up next', nav: 'What comes next', h: 'What comes next', html: nx ? `<nav class="calc-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="${nx.id}.html">${esc(nx.title)} &rarr;</a></p></nav>` : '<p>This is the last topic in the course.</p>' },
-      connections(id, L).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="calc-links calc-nav-ref">${connectionsWithNext(connections(id, L), nx).map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
+      connections(id, L).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="calc-links calc-nav-ref">${lessonConnections(id, L, nx).map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
     ].filter(Boolean);
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'LearningResource', '@id': `${url}#lesson`, name: t.title, url, description: desc, learningResourceType: 'Lesson', educationalLevel: 'High school', inLanguage: 'en', ...freeLd(t),

@@ -232,7 +232,9 @@ export function courseOnly(v, course = COURSE.id) {
   const bc = course === 'bc';
   const re = ONLY_RE(bc ? 'calc-ab-only' : 'cbc-only');
   const keep = KEEP_RE(bc ? 'cbc-only' : 'calc-ab-only');
-  if (typeof v === 'string') return v.includes('-only') ? v.replace(re, '').replace(keep, '$1') : v;
+  // Any other element kept for this course (<li class="cbc-only">) loses the marker class.
+  const mark = new RegExp(` class="${bc ? 'cbc-only' : 'calc-ab-only'}"`, 'g');
+  if (typeof v === 'string') return v.includes('-only') ? v.replace(re, '').replace(keep, '$1').replace(mark, '') : v;
   if (Array.isArray(v)) return v.map(x => courseOnly(x, course));
   if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, courseOnly(x, course)]));
   return v;

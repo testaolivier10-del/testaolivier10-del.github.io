@@ -230,6 +230,7 @@
   function figure(el, p){
     var g = p.fig, done = {}, mine = null, W = 480, Hh = 300;
     if(g.kind === 'lag' && !g.f) return null; // a general f: nothing to draw
+    if(g.kind === 'alt') return altFig(el, p);
     var curves, view, marks;
     var fOf = { exp: Math.exp, sin: Math.sin, cos: Math.cos, ln: function(x){ return x > -1 ? Math.log(1 + x) : NaN; }, expneg: function(x){ return Math.exp(-x); } };
     function polyF(cs, c){ return function(x){ var s = 0, q = 1; for(var k = 0; k < cs.length; k++){ s += cs[k] * q; q *= (x - c); } return s; }; }
@@ -261,8 +262,6 @@
         vs = vs.filter(isFinite); var a0 = Math.min.apply(null, vs), b0 = Math.max.apply(null, vs), pd = (b0 - a0) * 0.15 + 0.1; view.y = [a0 - pd, b0 + pd];
         curves = function(){ return [{ f: ff, cls: 'tl-f', label: 'f' }, { f: Pf, cls: 'tl-p', label: 'P' + sub(n) }]; };
         marks = function(){ return [{ at: [x1, Pf(x1)], label: 'x = ' + x1, bracket: done.B ? g.bound : null, fx: ff(x1) }]; };
-      } else if(g.kind === 'alt'){
-        return altFig(el, p);
       }
     }
     var SUBD = '₀₁₂₃₄₅₆₇₈₉';
