@@ -420,7 +420,7 @@
         if(got.pred) o.push(dot(G, V.t, V.pred, 'el-pt el-r', 6), label(G, V.t, V.pred, g3(V.pred), 'el-r', 'end', -9, -8));
         if(mine && mine.k === 'pred') o.push(dot(G, V.t, mine.v, 'el-yours', 6), label(G, V.t, mine.v, 'yours', 'el-yours-t', 'start', 9, 4));
       } else if(p.type === 'inverse'){
-        var b = V.b, lim = Math.max(4, Math.min(30, niceUp(Math.max(V.N, Math.abs(V.k)) * 1.2))), lo2 = -Math.max(3, Math.abs(V.k) + 1);
+        var b = V.b, lim = Math.max(4, Math.min(300, niceUp(Math.max(V.N, Math.abs(V.k)) * 1.15))), lo2 = -Math.max(3, Math.abs(V.k) + 1);
         G = frameOf(w, h, [lo2, lim], [lo2, lim], { square: true });
         o.push(axes(G, {}));
         o.push('<line class="el-mirror" x1="' + r1(G.sx(lo2)) + '" y1="' + r1(G.sy(lo2)) + '" x2="' + r1(G.sx(lim)) + '" y2="' + r1(G.sy(lim)) + '"/>');

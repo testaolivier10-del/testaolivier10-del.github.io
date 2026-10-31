@@ -1,0 +1,264 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "pcalc-alg-rational-expressions-1",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Simplify $\\frac{x^2 - 9}{x^2 + x - 6}$, and state the inputs that must be left out.",
+   "type": "single",
+   "options": [
+    "$\\frac{x - 3}{x - 2}$, with $x \\ne 2$",
+    "$\\frac{x - 3}{x - 2}$, with $x \\ne -3$ and $x \\ne 2$",
+    "$\\frac{-9}{x - 6}$, with $x \\ne 6$",
+    "$\\frac{x + 3}{x - 2}$, with $x \\ne 2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{(x - 3)(x + 3)}{(x + 3)(x - 2)} = \\frac{x - 3}{x - 2}$ for $x \\ne -3$ and $x \\ne 2$. The original expression is undefined at both, so both stay excluded.",
+    "options": [
+     "The cancelled factor still counts: $x = -3$ makes the original denominator $0$.",
+     "Right: both zeros of the original denominator stay excluded.",
+     "Only factors cancel, never terms: $x^2$ cannot be cancelled from a sum.",
+     "$x^2 - 9 = (x - 3)(x + 3)$; the factor that cancels is $x + 3$, leaving $x - 3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-2",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write $\\frac{1}{x - 1} + \\frac{2}{x + 1}$ as a single fraction.",
+   "type": "expr",
+   "expr": {
+    "answer": "(3x - 1)/(x^2 - 1)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "mistakes": [
+     {
+      "expr": "3/(2x)",
+      "why": "Fractions are not added by adding denominators. Use the common denominator $(x - 1)(x + 1)$."
+     },
+     {
+      "expr": "3/(x^2 - 1)",
+      "why": "Each numerator must be multiplied by the factor its denominator was missing: $1(x + 1) + 2(x - 1)$."
+     },
+     {
+      "expr": "(3x + 1)/(x^2 - 1)",
+      "why": "$1(x + 1) + 2(x - 1) = x + 1 + 2x - 2 = 3x - 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Common denominator $(x - 1)(x + 1) = x^2 - 1$: $\\frac{(x + 1) + 2(x - 1)}{x^2 - 1} = \\frac{3x - 1}{x^2 - 1}$."
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-3",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which inputs make $\\frac{x + 2}{x^2 - 4x}$ undefined?",
+   "type": "single",
+   "options": [
+    "$x = 0$ and $x = 4$",
+    "$x = -2$",
+    "$x = 4$",
+    "$x = 2$ and $x = -2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A fraction is undefined where its denominator is $0$: $x(x - 4) = 0$ at $x = 0$ and $x = 4$. The numerator's zeros do not matter for the domain.",
+    "options": [
+     "Right: $x^2 - 4x = x(x - 4)$ is $0$ at both.",
+     "At $x = -2$ the numerator is $0$, which is allowed: the value is $0$.",
+     "$x = 0$ also makes $x(x - 4)$ zero.",
+     "These solve $x^2 - 4 = 0$; the denominator is $x^2 - 4x$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-4",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Split $\\frac{2x^2 + 3}{x}$ into a sum of two terms.",
+   "type": "expr",
+   "expr": {
+    "answer": "2x + 3/x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     4
+    ],
+    "mistakes": [
+     {
+      "expr": "2x + 3",
+      "why": "Divide every term of the numerator by $x$: $\\frac{3}{x}$, not $3$."
+     },
+     {
+      "expr": "2x^2 + 3/x",
+      "why": "$\\frac{2x^2}{x} = 2x$: divide this term by $x$ as well."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{2x^2 + 3}{x} = \\frac{2x^2}{x} + \\frac{3}{x} = 2x + \\frac{3}{x}$, for $x \\ne 0$."
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-5",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Simplify $\\frac{x^2 - 1}{x + 3} \\div \\frac{x - 1}{x^2 - 9}$.",
+   "type": "single",
+   "options": [
+    "$\\frac{(x + 1)(x + 3)}{x - 3}$",
+    "$\\frac{x - 1}{x + 3}$",
+    "$(x + 1)(x - 3)$",
+    "$\\frac{x + 1}{x - 3}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Multiply by the reciprocal: $\\frac{(x - 1)(x + 1)}{x + 3} \\cdot \\frac{(x - 3)(x + 3)}{x - 1}$. Cancel $x - 1$ and $x + 3$: $(x + 1)(x - 3)$, for $x \\ne \\pm 3, 1$.",
+    "options": [
+     "Flip the second fraction before multiplying; this flipped the first.",
+     "Dividing multiplies by the reciprocal $\\frac{x^2 - 9}{x - 1}$; the factors then cancel differently.",
+     "Right: $\\frac{(x - 1)(x + 1)}{x + 3} \\cdot \\frac{(x - 3)(x + 3)}{x - 1} = (x + 1)(x - 3)$.",
+     "$x^2 - 9$ moves to the top when you flip the second fraction."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-6",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$\\frac{x^2 - 4}{x - 2}$ and $x + 2$ have the same value at every input except one. Which?",
+   "type": "single",
+   "options": [
+    "$x = -2$",
+    "$x = 4$",
+    "$x = 0$",
+    "$x = 2$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{x^2 - 4}{x - 2} = \\frac{(x - 2)(x + 2)}{x - 2} = x + 2$ only when $x \\ne 2$. At $x = 2$ the fraction has no value; its graph is the line $y = x + 2$ with that one point missing.",
+    "options": [
+     "Both are $0$ at $x = -2$: $\\frac{0}{-4} = 0$ and $-2 + 2 = 0$.",
+     "At $x = 4$ both give $6$.",
+     "At $x = 0$ both give $2$.",
+     "Right: $\\frac{x^2 - 4}{x - 2}$ is undefined at $x = 2$, while $x + 2 = 4$ there."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-7",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Simplify $\\frac{1 + \\frac{1}{x}}{1 - \\frac{1}{x}}$.",
+   "type": "expr",
+   "expr": {
+    "answer": "(x + 1)/(x - 1)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     1.5,
+     5
+    ],
+    "mistakes": [
+     {
+      "expr": "(x - 1)/(x + 1)",
+      "why": "The top becomes $\\frac{x + 1}{x}$ and the bottom $\\frac{x - 1}{x}$; keep top over bottom."
+     },
+     {
+      "expr": "-1",
+      "why": "$\\frac{1}{x}$ terms do not cancel between top and bottom. Multiply top and bottom by $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Multiply top and bottom by $x$: $\\frac{x + 1}{x - 1}$, for $x \\ne 0, 1$."
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-8",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which simplification is correct?",
+   "type": "single",
+   "options": [
+    "$\\frac{x + 6}{x + 3} = 2$",
+    "$\\frac{3x + 6}{3} = x + 6$",
+    "$\\frac{x^2 + x}{x} = x + 1$, for $x \\ne 0$",
+    "$\\frac{x + 1}{x} = 1$, for $x \\ne 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Cancel only common factors of the whole numerator and denominator: $\\frac{x(x + 1)}{x} = x + 1$. Terms of a sum cannot be cancelled.",
+    "options": [
+     "$x$ and $3$ are terms of a sum, not factors; check $x = 1$: $\\frac{7}{4} \\ne 2$.",
+     "Divide both terms by $3$: $x + 2$.",
+     "Right: $x$ is a factor of the top, $x(x + 1)$, so it cancels.",
+     "Check $x = 1$: $\\frac{2}{1} = 2$, not $1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-9",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which is equal to $\\frac{x^2 + 2x + 3}{x + 1}$ for $x \\ne -1$?",
+   "type": "single",
+   "options": [
+    "$x + 2 + \\frac{3}{x + 1}$",
+    "$x + 1 + \\frac{2}{x + 1}$",
+    "$x + 3$",
+    "$x + 1 + \\frac{3}{x + 1}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Write the top around the denominator: $x^2 + 2x + 3 = (x + 1)^2 + 2$. Then $\\frac{(x + 1)^2 + 2}{x + 1} = x + 1 + \\frac{2}{x + 1}$.",
+    "options": [
+     "Check $x = 0$: $3$ on the left but $5$ here.",
+     "Right: $x^2 + 2x + 3 = (x + 1)^2 + 2$, so divide each part by $x + 1$.",
+     "Check $x = 0$: $3 = 3$, but at $x = 1$ the left is $3$ and this is $4$.",
+     "$(x + 1)^2 = x^2 + 2x + 1$, so the leftover is $2$, not $3$."
+    ]
+   }
+  }
+ ]
+}

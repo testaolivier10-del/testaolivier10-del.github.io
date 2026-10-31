@@ -181,6 +181,7 @@
       text: 'A weight hangs from a spring. At rest it is $' + rest + '$ centimeters above the floor. It is pulled down $' + A + '$ centimeters and let go at time $t = 0$ seconds; it then bobs up and down, back at its lowest point every $' + T + '$ ' + (T === 1 ? 'second' : 'seconds') + '.' };
   };
 
+  var SUB = '₀₁₂₃₄';
   var LEVEL = { max: 'the maximum', min: 'the minimum', mid: 'the midline' };
   function levelWhy(k, want){ return 'That is ' + LEVEL[k] + ' value. This point is at ' + LEVEL[want] + ': ' + (want === 'mid' ? 'halfway between the highest and lowest values.' : want === 'max' ? 'the highest value.' : 'the lowest value.'); }
 
@@ -250,7 +251,7 @@
     var sc = r.pick(['ferris', 'tide', 'spring']), st = STORY[sc](r), s = st.s, tr = truth(s);
     var picks = [1, 2, 3, 4], i = r.pick(picks); picks.splice(picks.indexOf(i), 1); var j = r.pick(picks);
     if(j < i){ var t = i; i = j; j = t; }
-    var text = '<p>' + H(st.text) + '</p><p>' + H('Let $' + st.y + '(t)$ be ' + st.yWord + ', in ' + st.yUnit + ', at time $t$ ' + st.tUnit + '. The graph shows one cycle of $' + st.y + '$, from $t = ' + n(s.t0) + '$, with five labeled points $P_0$ to $P_4$, one quarter of a cycle apart.') + '</p>';
+    var text = '<p>' + H(st.text) + '</p><p>' + H('Let $' + st.y + '(t)$ be ' + st.yWord + ', in ' + st.yUnit + ', at time $t$ ' + st.tUnit + '. The graph shows one cycle of $' + st.y + '$, from $t = ' + n(s.t0) + '$, with five labeled points P₀ to P₄, one quarter of a cycle apart.') + '</p>';
     var steps = [];
     [i, j].forEach(function(k){
       var kp = tr.keys[k], tSl = [[s.t0 + k * s.T / 2, 'The labeled points are a quarter of a cycle apart, so $P_' + k + '$ is $' + k + '$ quarter' + (k > 1 ? 's' : '') + ' of the period after $P_0$.'], [s.t0 + k * s.T, 'Each step from one labeled point to the next is a quarter of the period, not a whole period.']];
@@ -271,7 +272,7 @@
     // concave up below the midline (from a minimum, the graph bends up), down above it
     var up = p.kind === 'min' || q.kind === 'min';
     var y = st.y, iv = '\\left(' + n(p.t) + ', ' + n(q.t) + '\\right)';
-    var text = '<p>' + H(st.text) + '</p><p>' + H('Let $' + y + '(t)$ be ' + st.yWord + ', in ' + st.yUnit + ', at time $t$ ' + st.tUnit + '. The labeled points $P_0$ to $P_4$ on one cycle of the graph are a quarter of a cycle apart, from $t = ' + n(s.t0) + '$. Consider the interval from $P_' + k + '$ to $P_' + (k + 1) + '$, $t$ in $' + iv + '$.') + '</p>';
+    var text = '<p>' + H(st.text) + '</p><p>' + H('Let $' + y + '(t)$ be ' + st.yWord + ', in ' + st.yUnit + ', at time $t$ ' + st.tUnit + '. The labeled points P₀ to P₄ on one cycle of the graph are a quarter of a cycle apart, from $t = ' + n(s.t0) + '$. Consider the interval from P' + SUB[k] + ' to P' + SUB[k + 1] + ', $t$ in $' + iv + '$.') + '</p>';
     var bend = up ? 'The graph is concave up there, so the rate of change of $' + y + '$ is increasing.' : 'The graph is concave down there, so the rate of change of $' + y + '$ is decreasing.';
     var steps = [
       choice('dir', 'On $' + iv + '$, which is true?', [

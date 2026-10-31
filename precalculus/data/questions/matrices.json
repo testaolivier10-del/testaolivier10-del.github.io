@@ -1,0 +1,481 @@
+{
+ "stimuli": {
+  "matrices-s1": {
+   "kind": "table",
+   "title": "Three matrices",
+   "html": "<p>$$A = \\left[ \\begin{matrix} 3 & -1 \\\\ 1 & 2 \\end{matrix} \\right], \\quad B = \\left[ \\begin{matrix} 2 & 0 \\\\ -1 & 4 \\end{matrix} \\right], \\quad C = \\left[ \\begin{matrix} 1 & 0 & 2 \\\\ 3 & -1 & 1 \\end{matrix} \\right]$$</p>"
+  },
+  "matrices-s2": {
+   "kind": "table",
+   "title": "A food truck's weekend",
+   "table": {
+    "caption": "Number of items a food truck sold on two days, and the price of each item in dollars",
+    "cols": [
+     "Day",
+     "Burgers",
+     "Fries",
+     "Drinks"
+    ],
+    "rows": [
+     [
+      "Saturday (items sold)",
+      "40",
+      "65",
+      "90"
+     ],
+     [
+      "Sunday (items sold)",
+      "55",
+      "50",
+      "70"
+     ],
+     [
+      "Price (dollars per item)",
+      "6",
+      "3",
+      "2"
+     ]
+    ]
+   },
+   "text": "<p>Let $Q = \\left[ \\begin{matrix} 40 & 65 & 90 \\\\ 55 & 50 & 70 \\end{matrix} \\right]$ hold the sales and $P = \\left[ \\begin{matrix} 6 \\\\ 3 \\\\ 2 \\end{matrix} \\right]$ the prices.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-matrices-1",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrices-s1",
+   "q": "What is $AB$?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 7 & -4 \\\\ 0 & 8 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 6 & -2 \\\\ 1 & 9 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 6 & 0 \\\\ -1 & 8 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 7 & -4 \\\\ 0 & 6 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Row 1 of $A$ with each column of $B$: $3(2) + (-1)(-1) = 7$ and $3(0) + (-1)(4) = -4$. Row 2: $1(2) + 2(-1) = 0$ and $1(0) + 2(4) = 8$.",
+    "options": [
+     "Row times column for each of the four entries.",
+     "This is $BA$; the order is reversed.",
+     "This multiplies entries in matching positions; use rows times columns.",
+     "Row 2, column 2: $1(0) + 2(4) = 8$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-2",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrices-s1",
+   "q": "What is the entry in row 1, column 2 of $BA$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": -4,
+      "why": "That entry belongs to $AB$. For $BA$ use row 1 of $B$, $(2, 0)$, and column 2 of $A$, $(-1, 2)$."
+     },
+     {
+      "value": 1,
+      "why": "That is row 2, column 1. Row 1 of $B$ times column 2 of $A$: $2(-1) + 0(2)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Row 1 of $B$ is $(2, 0)$ and column 2 of $A$ is $(-1, 2)$: $2(-1) + 0(2) = -2$."
+   }
+  },
+  {
+   "id": "pcalc-matrices-3",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrices-s1",
+   "q": "Which products are defined? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$AC$",
+    "$BC$",
+    "$CA$",
+    "$CB$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$A$ and $B$ are $2 \\times 2$; $C$ is $2 \\times 3$. A product needs the inside numbers to match.",
+    "options": [
+     "$(2 \\times 2)(2 \\times 3)$: inside $2 = 2$.",
+     "$(2 \\times 2)(2 \\times 3)$: inside $2 = 2$.",
+     "$(2 \\times 3)(2 \\times 2)$: inside $3 \\ne 2$.",
+     "$(2 \\times 3)(2 \\times 2)$: inside $3 \\ne 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-4",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "matrices-s1",
+   "q": "What are the dimensions of $AC$?",
+   "type": "single",
+   "options": [
+    "$2 \\times 3$",
+    "$3 \\times 2$",
+    "$2 \\times 2$",
+    "$3 \\times 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$(2 \\times 2)(2 \\times 3)$: the outside numbers give $2 \\times 3$.",
+    "options": [
+     "Rows of $A$ by columns of $C$.",
+     "Rows come first: $A$ has $2$ rows, $C$ has $3$ columns.",
+     "$C$ has $3$ columns, so the product does too.",
+     "$A$ has $2$ rows, so the product does too."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-5",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrices-s1",
+   "q": "What is the entry in row 2, column 1 of $AC$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 7,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "That is row 1, column 1. Use row 2 of $A$, $(1, 2)$."
+     },
+     {
+      "value": 5,
+      "why": "Pair first with first and second with second: $1(1) + 2(3)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Row 2 of $A$ is $(1, 2)$ and column 1 of $C$ is $(1, 3)$: $1(1) + 2(3) = 7$."
+   }
+  },
+  {
+   "id": "pcalc-matrices-6",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "matrices-s2",
+   "q": "What was Saturday's revenue, in dollars?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 615,
+    "unit": "dollars",
+    "mistakes": [
+     {
+      "value": 195,
+      "why": "$195$ counts items sold. Multiply each count by its price: $40(6) + 65(3) + 90(2)$."
+     },
+     {
+      "value": 11,
+      "why": "$11$ adds the prices. Multiply each price by how many were sold, then add."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Row 1 of $Q$ times $P$: $40(6) + 65(3) + 90(2) = 240 + 195 + 180 = 615$ dollars."
+   }
+  },
+  {
+   "id": "pcalc-matrices-7",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrices-s2",
+   "q": "Which product gives both days' revenues at once?",
+   "type": "single",
+   "options": [
+    "$QP$, a $2 \\times 1$ matrix",
+    "$PQ$, a $3 \\times 3$ matrix",
+    "$QP$, a $3 \\times 1$ matrix",
+    "$PQ$, a $2 \\times 1$ matrix"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$Q$ is $2 \\times 3$ and $P$ is $3 \\times 1$: $QP$ is defined and is $2 \\times 1$, one revenue per day.",
+    "options": [
+     "Inside $3 = 3$; outside $2 \\times 1$.",
+     "$PQ$ is $(3 \\times 1)(2 \\times 3)$: inside $1 \\ne 2$, so it is not defined.",
+     "The outside numbers give $2 \\times 1$, not $3 \\times 1$.",
+     "$PQ$ is not defined."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-8",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "matrices-s2",
+   "q": "What was Sunday's revenue, in dollars?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 620,
+    "unit": "dollars",
+    "mistakes": [
+     {
+      "value": 175,
+      "why": "$175$ counts items. Multiply by prices: $55(6) + 50(3) + 70(2)$."
+     },
+     {
+      "value": 615,
+      "why": "That is Saturday. Use row 2 of $Q$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Row 2 of $Q$ times $P$: $55(6) + 50(3) + 70(2) = 330 + 150 + 140 = 620$ dollars."
+   }
+  },
+  {
+   "id": "pcalc-matrices-9",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "matrices-s2",
+   "q": "If every price rises by \\$1, by how many dollars does Saturday's revenue increase?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 195,
+    "unit": "dollars",
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "Each item sold brings in \\$1 more, so the increase is the number of items sold: $40 + 65 + 90$."
+     },
+     {
+      "value": 810,
+      "why": "$810$ is the new revenue. The question asks for the increase, $810 - 615$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each item sold now brings in one more dollar, so the increase is $40(1) + 65(1) + 90(1) = 195$ dollars, the number of items sold on Saturday."
+   }
+  },
+  {
+   "id": "pcalc-matrices-10",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What are the dimensions of $\\left[ \\begin{matrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{matrix} \\right]$?",
+   "type": "single",
+   "options": [
+    "$2 \\times 3$",
+    "$3 \\times 2$",
+    "$6 \\times 1$",
+    "$2 \\times 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two rows and three columns: $2 \\times 3$, rows first.",
+    "options": [
+     "Rows by columns.",
+     "Rows come first: there are $2$ rows.",
+     "Count rows and columns, not entries.",
+     "There are $3$ columns."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-11",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which matrix $I$ satisfies $AI = A$ for every $2 \\times 2$ matrix $A$?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 1 & 0 \\\\ 0 & 1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 1 & 1 \\\\ 1 & 1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0 & 1 \\\\ 1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 1 & 0 \\\\ 0 & 0 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The identity matrix has $1$s on the main diagonal and $0$s elsewhere. Check: $\\left[ \\begin{matrix} a & b \\\\ c & d \\end{matrix} \\right]\\left[ \\begin{matrix} 1 & 0 \\\\ 0 & 1 \\end{matrix} \\right] = \\left[ \\begin{matrix} a & b \\\\ c & d \\end{matrix} \\right]$.",
+    "options": [
+     "The identity matrix.",
+     "This adds the columns together: $a + b$ appears in both columns.",
+     "This swaps the two columns of $A$.",
+     "This replaces the second column of $A$ with zeros."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-12",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For two matrices, $AB = \\left[ \\begin{matrix} 4 & 7 \\\\ -6 & 3 \\end{matrix} \\right]$ and $BA = \\left[ \\begin{matrix} 2 & 11 \\\\ -4 & 5 \\end{matrix} \\right]$. What does this show?",
+   "type": "single",
+   "options": [
+    "The order of the factors in a matrix product matters",
+    "One of the two products was computed wrongly",
+    "$A$ and $B$ have different dimensions",
+    "Matrix multiplication is the same as entrywise multiplication"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both products exist and are $2 \\times 2$, yet they differ: matrix multiplication is not commutative.",
+    "options": [
+     "$AB \\ne BA$ is normal for matrices.",
+     "Different results are expected; for matrices $AB$ and $BA$ usually differ.",
+     "Both products are $2 \\times 2$, so $A$ and $B$ are both $2 \\times 2$.",
+     "Entrywise multiplication would give the same result in either order."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-13",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is $3\\left[ \\begin{matrix} 1 & -2 \\\\ 0 & 4 \\end{matrix} \\right]$?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 3 & -6 \\\\ 0 & 12 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 3 & -2 \\\\ 0 & 4 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 4 & 1 \\\\ 3 & 7 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 3 & -6 \\\\ 3 & 12 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Multiply every entry by $3$.",
+    "options": [
+     "Each entry times $3$.",
+     "Every entry is multiplied, not only the first.",
+     "This adds $3$; scaling multiplies.",
+     "$3 \\cdot 0 = 0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-14",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $\\left[ \\begin{matrix} 1 & 2 \\\\ 3 & 4 \\end{matrix} \\right]\\left[ \\begin{matrix} 5 \\\\ -1 \\end{matrix} \\right]$?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 3 \\\\ 11 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 5 \\\\ -4 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 4 \\\\ 19 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 3 & 11 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Row 1: $1(5) + 2(-1) = 3$. Row 2: $3(5) + 4(-1) = 11$. A $2 \\times 2$ times a $2 \\times 1$ is $2 \\times 1$.",
+    "options": [
+     "Each row times the column.",
+     "This multiplies matching positions ($1 \\cdot 5$ and $4 \\cdot (-1)$); use whole rows.",
+     "This uses columns of the first matrix instead of rows.",
+     "The product is $2 \\times 1$, a column, not a row."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-15",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the top entry of $\\left[ \\begin{matrix} k & 1 \\\\ 2 & 3 \\end{matrix} \\right]\\left[ \\begin{matrix} k \\\\ 4 \\end{matrix} \\right]$ as an expression in $k$.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "k"
+    ],
+    "mode": "exact",
+    "answer": "k^2 + 4",
+    "domain": [
+     -4,
+     4
+    ],
+    "mistakes": [
+     {
+      "expr": "k + 4",
+      "why": "Multiply: $k \\cdot k = k^2$, not $k$."
+     },
+     {
+      "expr": "k^2 + 1",
+      "why": "Multiply the $1$ by the $4$ below it: $1 \\cdot 4 = 4$."
+     },
+     {
+      "expr": "2k + 12",
+      "why": "That is the bottom entry, row 2 times the column."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Row 1, $(k, 1)$, times the column $(k, 4)$: $k \\cdot k + 1 \\cdot 4 = k^2 + 4$."
+   }
+  },
+  {
+   "id": "pcalc-matrices-16",
+   "unit": "unit-4",
+   "topic": "matrices",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for finding the entry in row $i$, column $j$ of $AB$ in order.",
+   "type": "order",
+   "options": [
+    "Check that the columns of $A$ match the rows of $B$",
+    "Take row $i$ of $A$ and column $j$ of $B$",
+    "Multiply their matching entries",
+    "Add the products"
+   ],
+   "why": {
+    "correct": "First make sure the product exists, then pair a row with a column, multiply pairwise and add."
+   }
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+{
+ "matrix": {
+  "def": "A rectangular array of numbers with m rows and n columns (dimensions m × n). Matrices of the same dimensions add entry by entry. The product AB is defined when A has as many columns as B has rows; the entry in row i, column j is row i of A times column j of B, multiplied entry by entry and added."
+ }
+}

@@ -436,7 +436,8 @@
     if(f.kind === 'transform'){
       var tr = f.trig === 'sin' ? Math.sin : Math.cos, A = Math.abs(f.a), per = TAU / f.b, lo = Math.min(f.d - A, -A) - 0.8, hi = Math.max(f.d + A, A) + 0.8;
       var piX = Math.abs(per / PI - Math.round(per / PI * 2) / 2) < 1e-9;
-      var x0 = -Math.max(Math.abs(f.c), per / 4) - 0.2, x1 = 2 * per;
+      var x0 = -Math.max(Math.abs(f.c), per / 4) - 0.2, x1 = per <= TAU + 1e-9 ? 2 * per : 1.25 * per;
+      if(x1 - x0 > 4.5 * PI) piX = false;
       var curves = [{ fn: function(x){ return tr(x); }, cls: 's5', dashed: true }];
       var cur = stage >= 4 ? function(x){ return f.a * tr(f.b * (x + f.c)) + f.d; } : stage >= 3 ? function(x){ return A * tr(f.b * x) + f.d; } : stage >= 2 ? function(x){ return A * tr(f.b * x); } : stage >= 1 ? function(x){ return A * tr(x); } : null;
       if(cur) curves.push({ fn: cur, cls: 's3', label: stage >= 4 ? 'f' : '' });

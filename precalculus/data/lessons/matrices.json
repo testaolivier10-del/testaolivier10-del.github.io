@@ -1,0 +1,71 @@
+{
+ "topic": "matrices",
+ "hook": "A food truck sells three items on two days. A table of how many it sold, times a list of prices, gives each day's revenue in one step. That rectangular table is a matrix, and the \"row times column\" rule for multiplying matrices is exactly the arithmetic the food truck owner would do by hand.",
+ "prereq": [
+  {
+   "q": "What is $\\left\\langle 2, -1 \\right\\rangle \\cdot \\left\\langle 4, 1 \\right\\rangle$?",
+   "options": [
+    "$7$",
+    "$9$",
+    "$-7$",
+    "$3$"
+   ],
+   "correct": 0,
+   "why": "Multiply matching components and add: $2(4) + (-1)(1) = 8 - 1 = 7$.",
+   "review": "vectors"
+  },
+  {
+   "q": "Solve the system $x + y = 5$, $x - y = 1$.",
+   "options": [
+    "$x = 3$, $y = 2$",
+    "$x = 2$, $y = 3$",
+    "$x = 4$, $y = 1$",
+    "$x = 5$, $y = 0$"
+   ],
+   "correct": 0,
+   "why": "Adding the equations gives $2x = 6$, so $x = 3$ and $y = 2$.",
+   "review": "alg-systems"
+  }
+ ],
+ "figure": {
+  "figure": "matrices-row-column",
+  "caption": "Each entry of a product is a row of the first matrix times a column of the second: $2(4) + (-1)(1) = 7$ goes in row 1, column 2."
+ },
+ "chain": [
+  {
+   "cause": "A matrix has $m$ rows and $n$ columns",
+   "effect": "its dimensions are $m \\times n$, rows first"
+  },
+  {
+   "cause": "The number of columns of $A$ equals the number of rows of $B$",
+   "effect": "$AB$ is defined; an $m \\times n$ times an $n \\times p$ gives an $m \\times p$"
+  },
+  {
+   "cause": "Take row $i$ of $A$ and column $j$ of $B$",
+   "effect": "multiply matching entries and add: that is the entry in row $i$, column $j$ of $AB$"
+  },
+  {
+   "cause": "Swap the order of the factors",
+   "effect": "$BA$ usually differs from $AB$, or is not defined at all"
+  }
+ ],
+ "ideas": [
+  "A <b>matrix</b> is a rectangular array of numbers. An $m \\times n$ matrix has $m$ rows and $n$ columns; $a_{ij}$ is the entry in row $i$, column $j$.",
+  "Add matrices of the same dimensions entry by entry; a number times a matrix multiplies every entry.",
+  "<b>Matrix multiplication</b>: entry $(i, j)$ of $AB$ is row $i$ of $A$ times column $j$ of $B$, multiplied entry by entry and added. It needs columns of $A$ = rows of $B$.",
+  "Order matters: usually $AB \\ne BA$. The identity $I = \\left[ \\begin{matrix} 1 & 0 \\\\ 0 & 1 \\end{matrix} \\right]$ gives $AI = IA = A$."
+ ],
+ "misconception": {
+  "wrong": "To multiply two matrices, multiply the entries in the same positions.",
+  "right": "Each entry of the product combines a whole row with a whole column. Multiplying matching positions is a different operation, and it does not give the revenue, the combined transformation or anything else the product is used for."
+ },
+ "check": [
+  "pcalc-matrices-1",
+  "pcalc-matrices-2",
+  "pcalc-matrices-3",
+  "pcalc-matrices-4",
+  "pcalc-matrices-10",
+  "pcalc-matrices-14"
+ ],
+ "summary": "A matrix is a rectangle of numbers with dimensions rows by columns. Matrices of the same size add entry by entry. A product $AB$ is defined when $A$ has as many columns as $B$ has rows; each entry is a row of $A$ times a column of $B$. The order of the factors matters."
+}
