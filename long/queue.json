@@ -176,7 +176,7 @@
    "thumb": "long/yt-ap-02-thumb.png",
    "captions": "long/yt-ap-02-captions.srt",
    "playlist": "Anatomy and Physiology | LevlPrep",
-   "date": "",
+   "date": "2026-11-02",
    "status": "approved",
    "approved_on": "2026-10-30",
    "youtube_id": "",
@@ -187,7 +187,11 @@
    "started": "2026-10-29",
    "note": "PILOT of the new long format (knight v3 standard, traced reference people). Thumbnail options: thumb, thumb-b, thumb-c.",
    "review_blob": "74a1b5f295b7133fa41b25c5edcd38ca8e015220",
-   "approved_blob": "74a1b5f295b7133fa41b25c5edcd38ca8e015220"
+   "approved_blob": "74a1b5f295b7133fa41b25c5edcd38ca8e015220",
+   "thumb_b": "long/yt-ap-02-thumb-b.png",
+   "thumb_c": "long/yt-ap-02-thumb-c.png",
+   "ab_test": false,
+   "endscreen_set": false
   }
  ]
 }
