@@ -235,7 +235,7 @@
     var mist = [[n(D) + ' ' + mod.sg + ' ' + n(A) + mod.trig + '(' + n(T) + (Math.abs(s.t0) < 1e-12 ? 't' : '(t - ' + n(s.t0) + ')') + ')', 'You used the period as $b$. Use $b = \\frac{2\\pi}{\\text{period}}$.'],
       [n(D) + ' ' + mod.sg + ' ' + n(2 * A) + mod.trig + '(' + argAscii(T, s.t0) + ')', 'The coefficient is the amplitude, half the distance from lowest to highest.']];
     if(s.start === 'min') mist.push([n(D) + ' + ' + n(A) + 'cos(' + argAscii(T, s.t0) + ')', 'This model starts at the highest value. At $t = 0$ the value is the lowest: use $-a\\cos$.']);
-    if(s.start === 'max' && s.t0) mist.push([n(D) + ' + ' + n(A) + 'cos(' + bAscii(T) + '(t + ' + n(s.t0) + '))', 'The shift has the wrong sign: $t + ' + n(s.t0) + '$ puts the high point at $t = -' + n(s.t0) + '$. Use $t - ' + n(s.t0) + '$.']);
+    if(s.start === 'max' && s.t0 && Math.abs(((2 * s.t0) % T)) > 1e-9) mist.push([n(D) + ' + ' + n(A) + 'cos(' + bAscii(T) + '(t + ' + n(s.t0) + '))', 'The shift has the wrong sign: $t + ' + n(s.t0) + '$ puts the high point at $t = -' + n(s.t0) + '$. Use $t - ' + n(s.t0) + '$.']);
     if(s.start === 'up') mist.push([n(D) + ' + ' + n(A) + 'cos(' + argAscii(T, 0) + ')', 'Cosine starts at its maximum. Here the value starts on the midline going up, which is how sine starts.']);
     steps.push(exprStep('model', 'Write a formula for $' + st.y + '(t)$.', st.y + '(t) =', mod.ascii, mist, dom));
     var sol = ['Amplitude $\\dfrac{' + s.max + ' - ' + s.min + '}{2} = ' + n(A) + '$; midline $' + st.y + ' = \\dfrac{' + s.max + ' + ' + s.min + '}{2} = ' + n(D) + '$.',

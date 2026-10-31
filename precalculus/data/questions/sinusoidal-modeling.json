@@ -1,0 +1,436 @@
+{
+ "stimuli": {
+  "sinusoidal-modeling-s1": {
+   "kind": "graph",
+   "title": "Temperature in a greenhouse",
+   "text": "The temperature in a greenhouse, $T(t)$ degrees Celsius, $t$ hours after midnight, is modeled by a sinusoidal function. The least temperature, $12^\\circ$C, occurs at 4 a.m. ($t = 4$), and the greatest, $28^\\circ$C, at 4 p.m. ($t = 16$). The unscaled graph shows $T$ for $4 \\le t \\le 28$. $P$ and $U$ are lowest points, $R$ is a highest point, and $Q$ and $S$ are on the midline.",
+   "figure": "sinusoidal-modeling-greenhouse"
+  },
+  "sinusoidal-modeling-s2": {
+   "kind": "table",
+   "title": "Water depth at a harbor",
+   "text": "The depth of water at a harbor entrance follows a sinusoidal pattern over the day.",
+   "table": {
+    "caption": "Depth $D(t)$ of the water, in meters, $t$ hours after midnight",
+    "cols": ["$t$ (hours)", "0", "3", "6", "9", "12", "15", "18", "21", "24"],
+    "rows": [["$D(t)$ (meters)", "4", "5.5", "4", "2.5", "4", "5.5", "4", "2.5", "4"]]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-sinusoidal-modeling-1",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sinusoidal-modeling-s1",
+   "q": "What are the coordinates of $R$?",
+   "type": "single",
+   "options": ["$(16, 28)$", "$(16, 20)$", "$(12, 28)$", "$(28, 16)$"],
+   "correct": 0,
+   "why": {
+    "correct": "$R$ is the highest point: $28^\\circ$C at $t = 16$.",
+    "options": [
+     "Time first, then temperature: 4 p.m. is $t = 16$.",
+     "20 is the midline temperature; $R$ is the highest point.",
+     "The greatest temperature is at 4 p.m., which is $t = 16$, not noon.",
+     "The coordinates are reversed: the input $t$ comes first."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-2",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-modeling-s1",
+   "q": "What are the coordinates of $S$?",
+   "type": "single",
+   "options": ["$(22, 20)$", "$(20, 22)$", "$(22, 12)$", "$(19, 20)$"],
+   "correct": 0,
+   "why": {
+    "correct": "The period is 24 hours (lowest at 4 and again at 28), so landmarks are 6 hours apart. $S$ is 6 hours after $R$, on the midline $\\frac{28 + 12}{2} = 20$: $(22, 20)$.",
+    "options": [
+     "A quarter period after the highest point, at the midline height.",
+     "The coordinates are reversed.",
+     "12 is the least temperature; $S$ is on the midline.",
+     "This uses 3 hours as the quarter period; the period is 24 hours, so a quarter is 6."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-3",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-modeling-s1",
+   "q": "Write a formula for $T(t)$.",
+   "type": "expr",
+   "expr": {
+    "answer": "-8cos(pi/12 (t - 4)) + 20",
+    "vars": ["t"],
+    "domain": [0, 28],
+    "lhs": "T(t) =",
+    "mistakes": [
+     { "expr": "8cos(pi/12 (t - 4)) + 20", "why": "A cosine with a positive $a$ is highest at the landmark. At $t = 4$ the temperature is lowest, so $a = -8$." },
+     { "expr": "-8cos(pi/6 (t - 4)) + 20", "why": "That uses 12 hours, lowest to highest, as the period. That is half a cycle; the period is 24 hours, so $b = \\frac{2\\pi}{24}$." },
+     { "expr": "-8cos(pi/12 (t + 4)) + 20", "why": "The lowest point is at $t = 4$, a shift to the right: $t - 4$." }
+    ]
+   },
+   "why": {
+    "correct": "$d = \\frac{28 + 12}{2} = 20$, $|a| = \\frac{28 - 12}{2} = 8$, period 24 so $b = \\frac{2\\pi}{24} = \\frac{\\pi}{12}$. Lowest at $t = 4$: a cosine with $a = -8$ shifted right 4. $T(t) = -8\\cos\\left(\\frac{\\pi}{12}(t - 4)\\right) + 20$; any equivalent form is right."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-4",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sinusoidal-modeling-s1",
+   "q": "Which statement describes $T$ on the interval $(16, 22)$?",
+   "type": "single",
+   "options": [
+    "$T$ is decreasing, and the rate of change of $T$ is decreasing",
+    "$T$ is decreasing, and the rate of change of $T$ is increasing",
+    "$T$ is increasing, and the rate of change of $T$ is decreasing",
+    "$T$ is decreasing, and the rate of change of $T$ is constant"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From $R$ to $S$ the temperature falls from its peak toward the midline, so $T$ is decreasing. The graph is above the midline, concave down, so the rate of change of $T$ is decreasing: it starts at 0 at the peak and becomes more and more negative.",
+    "options": [
+     "Falling, and concave down above the midline.",
+     "The rate of change is increasing only where the graph is concave up, below the midline, as on $(22, 28)$.",
+     "After the highest point at $t = 16$ the temperature falls.",
+     "A sinusoid's rate of change is never constant on an interval; here it keeps decreasing."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-5",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sinusoidal-modeling-s1",
+   "q": "What is the average rate of change of $T$ on $[10, 16]$, in degrees Celsius per hour?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "4/3",
+    "unit": "degrees Celsius per hour",
+    "mistakes": [
+     { "value": 8, "why": "That is the change in temperature, $28 - 20$. Divide by the 6 hours." },
+     { "value": "16/6", "why": "That uses the full swing from 12 to 28; at $t = 10$ the temperature is on the midline, 20." }
+    ]
+   },
+   "why": {
+    "correct": "$Q = (10, 20)$ and $R = (16, 28)$: $\\frac{T(16) - T(10)}{16 - 10} = \\frac{28 - 20}{6} = \\frac{4}{3}$ degrees Celsius per hour, the slope of the secant line from $Q$ to $R$."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-6",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sinusoidal-modeling-s2",
+   "q": "What is the period of $D$?",
+   "type": "single",
+   "options": ["12 hours", "6 hours", "24 hours", "3 hours"],
+   "correct": 0,
+   "why": {
+    "correct": "The greatest depth, 5.5 m, occurs at $t = 3$ and next at $t = 15$: one cycle takes 12 hours.",
+    "options": [
+     "High water to the next high water: $15 - 3 = 12$.",
+     "$t = 3$ (high) to $t = 9$ (low) is only half a cycle.",
+     "The table covers two full cycles in 24 hours.",
+     "This is the table's step, a quarter of a cycle."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-7",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-modeling-s2",
+   "q": "Write a formula for $D(t)$.",
+   "type": "expr",
+   "expr": {
+    "answer": "1.5cos(pi/6 (t - 3)) + 4",
+    "vars": ["t"],
+    "domain": [0, 24],
+    "lhs": "D(t) =",
+    "mistakes": [
+     { "expr": "3cos(pi/6 (t - 3)) + 4", "why": "3 is the full swing from 2.5 to 5.5. The amplitude is half of it, 1.5." },
+     { "expr": "1.5cos(pi/6 (t + 3)) + 4", "why": "High water is at $t = 3$, so the cosine is shifted right: $t - 3$." },
+     { "expr": "1.5cos(pi/12 (t - 3)) + 4", "why": "That uses a 24-hour period. The water is high every 12 hours, so $b = \\frac{2\\pi}{12} = \\frac{\\pi}{6}$." }
+    ]
+   },
+   "why": {
+    "correct": "$d = \\frac{5.5 + 2.5}{2} = 4$, $a = \\frac{5.5 - 2.5}{2} = 1.5$, $b = \\frac{2\\pi}{12} = \\frac{\\pi}{6}$, and a cosine with $a > 0$ is highest where its input is 0, here at $t = 3$: $D(t) = 1.5\\cos\\left(\\frac{\\pi}{6}(t - 3)\\right) + 4$."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-8",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sinusoidal-modeling-s2",
+   "q": "Use $D(t) = 1.5\\cos\\left(\\frac{\\pi}{6}(t - 3)\\right) + 4$. What is the depth at 5 a.m., in meters?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 4.75,
+    "unit": "meters",
+    "mistakes": [
+     { "value": 5, "why": "That reads 5 a.m. as two thirds of the way from 5.5 down to 4. The model gives $1.5\\cos\\frac{\\pi}{3} + 4$." },
+     { "value": "4 + 0.75sqrt(3)", "why": "That uses $\\cos\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}$. The cosine of $\\frac{\\pi}{3}$ is $\\frac{1}{2}$." }
+    ]
+   },
+   "why": {
+    "correct": "$D(5) = 1.5\\cos\\left(\\frac{\\pi}{6} \\cdot 2\\right) + 4 = 1.5\\cos\\frac{\\pi}{3} + 4 = 1.5 \\cdot \\frac{1}{2} + 4 = 4.75$ meters."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-9",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sinusoidal-modeling-s2",
+   "q": "On which interval is $D$ increasing and the rate of change of $D$ increasing?",
+   "type": "single",
+   "options": ["$(9, 12)$", "$(12, 15)$", "$(3, 6)$", "$(6, 9)$"],
+   "correct": 0,
+   "why": {
+    "correct": "From low water at $t = 9$ to the midline at $t = 12$, the depth rises and the graph is below the midline, concave up, so its rate of change increases.",
+    "options": [
+     "Rising from the lowest point toward the midline: concave up.",
+     "Rising, but above the midline: concave down, so the rate of change is decreasing.",
+     "Here the water is falling from high tide.",
+     "The water is falling here, toward low tide at $t = 9$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-10",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "The greenhouse temperature is modeled by $T(t) = -8\\cos\\left(\\frac{\\pi}{12}(t - 4)\\right) + 20$, $t$ hours after midnight. What is the first time $t$ in $[0, 24]$ at which $T(t) = 25$? Give $t$ correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 12.578812496899296,
+    "unit": "hours",
+    "mistakes": [
+     { "value": 19.421187503100704, "why": "That is the second solution, when the greenhouse cools back down to 25 degrees. The first is before the 4 p.m. peak." },
+     { "value": 8.578812496899296, "why": "That is $t - 4$. Add the shift back: the cosine's input is $\\frac{\\pi}{12}(t - 4)$." }
+    ]
+   },
+   "why": {
+    "correct": "In radian mode, graph $y = T(t)$ and $y = 25$ on $0 \\le t \\le 24$ and find the intersections: $t \\approx 12.579$ and $t \\approx 19.421$. The first is $t \\approx 12.579$ hours, about 12:35 p.m."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-11",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "calc": true,
+   "q": "For the same model, $T(t) = -8\\cos\\left(\\frac{\\pi}{12}(t - 4)\\right) + 20$, for how many hours between $t = 0$ and $t = 24$ is the temperature above $25^\\circ$C? Give the answer correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 6.842375006201408,
+    "unit": "hours",
+    "mistakes": [
+     { "value": 3.421187503100704, "why": "That is only the time from the first crossing to the 4 p.m. peak. The temperature stays above 25 until it cools back down at $t \\approx 19.421$." },
+     { "value": 17.157624993798592, "why": "That is the time the temperature is below 25. Subtract the two crossing times: $19.421 - 12.579$." }
+    ]
+   },
+   "why": {
+    "correct": "In radian mode, $T(t) = 25$ at $t \\approx 12.578812$ and $t \\approx 19.421188$ (stored, not rounded). Between them $T > 25$, for $19.421188 - 12.578812 \\approx 6.842$ hours."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-12",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a city, the longest day of the year, with 15.2 hours of daylight, is day 172, and the shortest day, with 9.2 hours, is half a year later. The pattern repeats every 365 days. Write a model for the hours of daylight $L(t)$ on day $t$.",
+   "type": "expr",
+   "expr": {
+    "answer": "3cos(2pi/365 (t - 172)) + 12.2",
+    "vars": ["t"],
+    "domain": [1, 365],
+    "lhs": "L(t) =",
+    "mistakes": [
+     { "expr": "6cos(2pi/365 (t - 172)) + 12.2", "why": "6 hours is the full swing. The amplitude is half of it, 3." },
+     { "expr": "3cos(2pi/365 (t + 172)) + 12.2", "why": "The longest day is day 172, a shift to the right: $t - 172$." },
+     { "expr": "3sin(2pi/365 (t - 172)) + 12.2", "why": "A sine with $a > 0$ is at its midline and rising where its input is 0. Day 172 is a highest point, which suits cosine." }
+    ]
+   },
+   "why": {
+    "correct": "Midline $\\frac{15.2 + 9.2}{2} = 12.2$, amplitude $\\frac{15.2 - 9.2}{2} = 3$, $b = \\frac{2\\pi}{365}$. Highest on day 172, so $L(t) = 3\\cos\\left(\\frac{2\\pi}{365}(t - 172)\\right) + 12.2$."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-13",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A weight on a spring bobs up and down with a frequency of 4 cycles per second. Its height is modeled by $h(t) = a\\sin(bt) + d$, $t$ in seconds, with $b > 0$. What is $b$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "8pi",
+    "mistakes": [
+     { "value": "pi/2", "why": "That uses 4 seconds as the period. 4 cycles per second is a frequency; the period is $\\frac{1}{4}$ second." },
+     { "value": 4, "why": "4 is the frequency. $b = \\frac{2\\pi}{\\text{period}} = 2\\pi \\cdot 4$." }
+    ]
+   },
+   "why": {
+    "correct": "Period $= \\frac{1}{4}$ second, so $b = \\frac{2\\pi}{1/4} = 8\\pi$."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-14",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A sinusoidal model of a harbor's depth was built from one week of measurements. Why should predictions for the same harbor a year later be trusted less than predictions for the next day?",
+   "type": "single",
+   "options": [
+    "Small differences between the model's period and the real cycle add up over many cycles, so the timing drifts",
+    "A sinusoidal model stops repeating after a few cycles",
+    "The amplitude of any sinusoidal model shrinks as $t$ grows",
+    "Depths a year later would be negative in the model"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The model is supported by the week of data. Far past it, a tiny error in the period is repeated in every cycle, and real conditions (seasons, storms) can change, so the error grows.",
+    "options": [
+     "Errors in the period build up cycle after cycle, far from the data.",
+     "The model repeats forever; the problem is that the real tide may not match it.",
+     "A sinusoid's amplitude is the constant $|a|$; it does not shrink.",
+     "The model stays between its least and greatest values, which are positive depths."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-15",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A rider boards a Ferris wheel at its lowest point at $t = 0$. The height has amplitude $A$, midline $y = M$ and period $P$. Which model fits with no phase shift?",
+   "type": "single",
+   "options": [
+    "$h(t) = -A\\cos\\left(\\frac{2\\pi}{P}t\\right) + M$",
+    "$h(t) = A\\cos\\left(\\frac{2\\pi}{P}t\\right) + M$",
+    "$h(t) = A\\sin\\left(\\frac{2\\pi}{P}t\\right) + M$",
+    "$h(t) = -A\\cos(Pt) + M$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A cosine with a negative coefficient starts at its lowest value: $h(0) = -A + M$, the bottom of the wheel. And $b = \\frac{2\\pi}{P}$.",
+    "options": [
+     "Reflected cosine: lowest at $t = 0$.",
+     "This starts at the highest point, $A + M$.",
+     "This starts on the midline, at the height of the center.",
+     "This uses the period as $b$; $b = \\frac{2\\pi}{P}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-16",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The height of a swing seat is $h(t) = 5\\sin\\left(\\frac{\\pi}{2}t\\right) + 7$ feet, $t$ in seconds. Which describes $h$ on the interval $(1, 2)$?",
+   "type": "single",
+   "options": [
+    "$h$ is decreasing, and the rate of change of $h$ is decreasing",
+    "$h$ is decreasing, and the rate of change of $h$ is increasing",
+    "$h$ is increasing, and the rate of change of $h$ is decreasing",
+    "$h$ is increasing, and the rate of change of $h$ is increasing"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The period is $\\frac{2\\pi}{\\pi/2} = 4$. The highest point is at $t = 1$ ($h = 12$) and the midline crossing at $t = 2$ ($h = 7$). On $(1, 2)$ the height falls while the graph is above the midline, concave down, so the rate of change of $h$ is decreasing.",
+    "options": [
+     "Falling from the top toward the midline, concave down.",
+     "The rate of change increases only below the midline, on $(2, 4)$ here.",
+     "That describes $(0, 1)$, before the highest point.",
+     "That describes $(3, 4)$, rising from the lowest point."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-17",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "A Ferris wheel speeds up so that it turns once every 6 minutes instead of every 8. Its size does not change. In the model $h(t) = a\\cos(bt) + d$ with $b > 0$, predict each change.",
+   "variables": [
+    { "name": "$b$", "answer": "up", "why": "$b = \\frac{2\\pi}{\\text{period}}$ grows from $\\frac{\\pi}{4}$ to $\\frac{\\pi}{3}$ when the period shrinks." },
+    { "name": "The period", "answer": "down", "why": "One turn takes 6 minutes instead of 8." },
+    { "name": "The amplitude $|a|$", "answer": "none", "why": "The wheel's radius sets the amplitude, and the wheel is the same size." }
+   ],
+   "why": {
+    "correct": "Speed changes the cycle length and $b$; the size of the wheel sets the heights."
+   }
+  },
+  {
+   "id": "pcalc-sinusoidal-modeling-18",
+   "unit": "unit-3",
+   "topic": "sinusoidal-modeling",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "Data on monthly average temperature rise and fall in the same pattern every year. Which regression should a student run on a graphing calculator to model the data?",
+   "type": "single",
+   "options": ["Sinusoidal regression", "Exponential regression", "Quadratic regression", "Linear regression"],
+   "correct": 0,
+   "why": {
+    "correct": "A repeating rise and fall is periodic, and a sinusoidal regression fits $a\\sin(b(t + c)) + d$ to the data.",
+    "options": [
+     "It is the regression whose model repeats.",
+     "An exponential model keeps growing or decaying; it never comes back.",
+     "A quadratic has one turn, not a repeating cycle.",
+     "A line cannot rise and then fall."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,474 @@
+{
+ "stimuli": {
+  "vector-valued-functions-s1": {
+   "kind": "graph",
+   "title": "The path of $\\mathbf{p}(t) = \\left\\langle 2t, 6t - t^2 \\right\\rangle$",
+   "figure": "vector-valued-functions-path",
+   "text": "<p>The tip of $\\mathbf{p}(t) = \\left\\langle 2t, 6t - t^2 \\right\\rangle$ for $0 \\le t \\le 6$. The position vectors $\\mathbf{p}(1)$ and $\\mathbf{p}(4)$ are drawn from the origin.</p>"
+  },
+  "vector-valued-functions-s2": {
+   "kind": "table",
+   "title": "A delivery drone",
+   "table": {
+    "caption": "Position of a drone, in meters east (x) and north (y) of its depot, t seconds after takeoff",
+    "cols": [
+     "$t$ (seconds)",
+     "0",
+     "5",
+     "10",
+     "15"
+    ],
+    "rows": [
+     [
+      "$x(t)$ (meters)",
+      "0",
+      "40",
+      "60",
+      "60"
+     ],
+     [
+      "$y(t)$ (meters)",
+      "0",
+      "30",
+      "70",
+      "120"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-vector-valued-functions-1",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vector-valued-functions-s1",
+   "q": "What is $\\mathbf{p}(4)$, and what is its magnitude?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 8, 8 \\right\\rangle$, magnitude $8\\sqrt{2}$",
+    "$\\left\\langle 8, 8 \\right\\rangle$, magnitude $16$",
+    "$\\left\\langle 4, 8 \\right\\rangle$, magnitude $4\\sqrt{5}$",
+    "$\\left\\langle 16, 8 \\right\\rangle$, magnitude $8\\sqrt{5}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\mathbf{p}(4) = \\left\\langle 2(4), 6(4) - 4^2 \\right\\rangle = \\left\\langle 8, 8 \\right\\rangle$, and $\\sqrt{64 + 64} = 8\\sqrt{2}$.",
+    "options": [
+     "$\\sqrt{8^2 + 8^2} = 8\\sqrt{2}$.",
+     "Magnitudes do not add component by component: $\\sqrt{64 + 64}$, not $8 + 8$.",
+     "This is $\\mathbf{p}(2)$.",
+     "$x(4) = 2(4) = 8$, not $4^2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-2",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vector-valued-functions-s1",
+   "q": "What is the displacement from $t = 1$ to $t = 4$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 6, 3 \\right\\rangle$",
+    "$\\left\\langle -6, -3 \\right\\rangle$",
+    "$\\left\\langle 10, 13 \\right\\rangle$",
+    "$\\left\\langle 6, 13 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\mathbf{p}(4) - \\mathbf{p}(1) = \\left\\langle 8 - 2, 8 - 5 \\right\\rangle = \\left\\langle 6, 3 \\right\\rangle$.",
+    "options": [
+     "Later position minus earlier position.",
+     "This is $\\mathbf{p}(1) - \\mathbf{p}(4)$, pointing backward.",
+     "This adds the positions; subtract them.",
+     "$8 - 5 = 3$; the $y$-components were added."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-3",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vector-valued-functions-s1",
+   "q": "How far apart are the object's positions at $t = 1$ and $t = 4$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "3*sqrt(5)",
+    "mistakes": [
+     {
+      "value": 9,
+      "why": "Use the length of the displacement, $\\sqrt{6^2 + 3^2}$, not $6 + 3$."
+     },
+     {
+      "value": 45,
+      "why": "$45$ is the length squared; take the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\left\\| \\left\\langle 6, 3 \\right\\rangle \\right\\| = \\sqrt{36 + 9} = \\sqrt{45} = 3\\sqrt{5}$."
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-4",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vector-valued-functions-s1",
+   "q": "What is the average rate of change of $\\mathbf{p}$ on $[1, 4]$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 2, 1 \\right\\rangle$",
+    "$\\left\\langle 6, 3 \\right\\rangle$",
+    "$\\left\\langle 3, \\frac{3}{2} \\right\\rangle$",
+    "$\\left\\langle \\frac{1}{2}, 1 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Divide the displacement $\\left\\langle 6, 3 \\right\\rangle$ by $4 - 1 = 3$: $\\left\\langle 2, 1 \\right\\rangle$.",
+    "options": [
+     "Displacement over elapsed time.",
+     "This is the displacement; divide by the $3$ units of time.",
+     "The elapsed time is $4 - 1 = 3$, not $2$.",
+     "This divides $3$ by $6$; divide each component by the time."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-5",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "vector-valued-functions-s1",
+   "q": "The average rate of change of $\\mathbf{p}$ on $[2, 4]$ is $\\left\\langle 2, 0 \\right\\rangle$. What does that mean?",
+   "type": "single",
+   "options": [
+    "The positions at $t = 2$ and $t = 4$ have the same height, though the object rose in between",
+    "The object moved straight right the whole time from $t = 2$ to $t = 4$",
+    "The object stopped moving up at $t = 2$",
+    "The object did not move between $t = 2$ and $t = 4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\mathbf{p}(2) = \\left\\langle 4, 8 \\right\\rangle$ and $\\mathbf{p}(4) = \\left\\langle 8, 8 \\right\\rangle$: same $y$, so the displacement is horizontal. In between, $\\mathbf{p}(3) = \\left\\langle 6, 9 \\right\\rangle$ is higher.",
+    "options": [
+     "Zero net change in $y$; the path still arches up to $y = 9$.",
+     "An average says nothing about the path in between; here it rose to $9$.",
+     "It kept rising until $t = 3$.",
+     "$x$ grew from $4$ to $8$, so it moved."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-6",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vector-valued-functions-s2",
+   "q": "What is the drone's displacement from $t = 0$ to $t = 10$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 60, 70 \\right\\rangle$",
+    "$\\left\\langle 70, 60 \\right\\rangle$",
+    "$\\left\\langle 6, 7 \\right\\rangle$",
+    "$\\left\\langle 60, 120 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\mathbf{p}(10) - \\mathbf{p}(0) = \\left\\langle 60 - 0, 70 - 0 \\right\\rangle = \\left\\langle 60, 70 \\right\\rangle$ meters.",
+    "options": [
+     "Read both rows at $t = 10$ and subtract the start.",
+     "The components are swapped; east comes first.",
+     "This divides by $10$: that is a rate, not a displacement.",
+     "$120$ is $y(15)$, from the wrong column."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-7",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vector-valued-functions-s2",
+   "q": "What is the average rate of change of the drone's position vector on $[5, 15]$, in meters per second?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 2, 9 \\right\\rangle$",
+    "$\\left\\langle 20, 90 \\right\\rangle$",
+    "$\\left\\langle 6, 12 \\right\\rangle$",
+    "$\\left\\langle 4, 3 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{\\left\\langle 60, 120 \\right\\rangle - \\left\\langle 40, 30 \\right\\rangle}{15 - 5} = \\frac{\\left\\langle 20, 90 \\right\\rangle}{10} = \\left\\langle 2, 9 \\right\\rangle$.",
+    "options": [
+     "Displacement $\\div$ $10$ seconds.",
+     "This is the displacement; divide by the $10$ seconds.",
+     "This divides $\\mathbf{p}(15)$ by $10$; subtract $\\mathbf{p}(5)$ first.",
+     "This is $\\mathbf{p}(5)$ divided by $10$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-8",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vector-valued-functions-s2",
+   "q": "How far is the drone from the depot at $t = 5$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 50,
+    "unit": "meters",
+    "mistakes": [
+     {
+      "value": 70,
+      "why": "Distance is the length of $\\left\\langle 40, 30 \\right\\rangle$: $\\sqrt{40^2 + 30^2}$, not $40 + 30$."
+     },
+     {
+      "value": 2500,
+      "why": "$2500$ is the distance squared; take the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\left\\| \\left\\langle 40, 30 \\right\\rangle \\right\\| = \\sqrt{1600 + 900} = 50$ meters."
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-9",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "vector-valued-functions-s2",
+   "q": "On $[10, 15]$ the average rate of change of the position vector is $\\left\\langle 0, 10 \\right\\rangle$. Which statement does the table support?",
+   "type": "single",
+   "options": [
+    "At $t = 15$ the drone is due north of where it was at $t = 10$",
+    "The drone hovered in place from $t = 10$ to $t = 15$",
+    "The drone moved only east from $t = 10$ to $t = 15$",
+    "The drone flew a straight line due north the whole time"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x$ is $60$ at both times and $y$ rose from $70$ to $120$, so the net move is due north. The table cannot show the path between readings.",
+    "options": [
+     "Same $x$, larger $y$: due north.",
+     "$y$ rose by $50$ meters, so it did not stay put.",
+     "The east component of the rate is $0$.",
+     "Two readings give the net move, not the route in between."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-10",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "For a vector-valued function $\\mathbf{p}(t)$ drawn from the origin, what does the tip of $\\mathbf{p}(t)$ trace as $t$ increases?",
+   "type": "single",
+   "options": [
+    "The path of the parametric function $(x(t), y(t))$",
+    "The graph of $x(t)$ against $t$",
+    "A circle centered at the origin",
+    "A straight line from the origin"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The tip is at $(x(t), y(t))$, so it traces the same curve in the same direction.",
+    "options": [
+     "Tip at $(x(t), y(t))$.",
+     "The tip is a point in the $xy$-plane, not on a $t$-axis.",
+     "Only if $\\left\\| \\mathbf{p}(t) \\right\\|$ stays constant.",
+     "Only for special functions, such as $\\left\\langle t, 2t \\right\\rangle$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-11",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $\\mathbf{p}(t) = \\left\\langle 3 - t, 2t \\right\\rangle$, write $y$ as a function of $x$ for the path of its tip.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "x"
+    ],
+    "mode": "exact",
+    "answer": "6 - 2x",
+    "domain": [
+     -4,
+     4
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "2x - 6",
+      "why": "From $x = 3 - t$, $t = 3 - x$, not $x - 3$."
+     },
+     {
+      "expr": "6 - x",
+      "why": "Multiply all of $3 - x$ by $2$: $2(3 - x) = 6 - 2x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x = 3 - t$ gives $t = 3 - x$. Then $y = 2t = 2(3 - x) = 6 - 2x$."
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-12",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which parametric equations describe $\\mathbf{p}(t) = t^2\\mathbf{i} + (1 - t)\\mathbf{j}$?",
+   "type": "single",
+   "options": [
+    "$x(t) = t^2$, $y(t) = 1 - t$",
+    "$x(t) = 1 - t$, $y(t) = t^2$",
+    "$x(t) = t^2 + 1$, $y(t) = -t$",
+    "$x(t) = t$, $y(t) = 1 - t^2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The $\\mathbf{i}$ part is $x(t)$ and the $\\mathbf{j}$ part is $y(t)$.",
+    "options": [
+     "$\\mathbf{i}$ goes with $x$, $\\mathbf{j}$ with $y$.",
+     "The components are swapped.",
+     "The $1$ belongs to the $\\mathbf{j}$ part.",
+     "The square is on $t$ in the $\\mathbf{i}$ part."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-13",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $\\mathbf{p}(t) = \\left\\langle \\cos t, 2\\sin t \\right\\rangle$, find $\\left\\| \\mathbf{p}\\left(\\frac{\\pi}{6}\\right) \\right\\|$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "sqrt(7)/2",
+    "mistakes": [
+     {
+      "value": "sqrt(3)/2 + 1",
+      "why": "Square the components, add, then take the root: $\\sqrt{\\frac{3}{4} + 1}$."
+     },
+     {
+      "value": "7/4",
+      "why": "$\\frac{7}{4}$ is the magnitude squared; take the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\mathbf{p}\\left(\\frac{\\pi}{6}\\right) = \\left\\langle \\frac{\\sqrt{3}}{2}, 1 \\right\\rangle$, so the magnitude is $\\sqrt{\\frac{3}{4} + 1} = \\sqrt{\\frac{7}{4}} = \\frac{\\sqrt{7}}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-14",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What does $\\left\\| \\mathbf{p}(t) \\right\\| = 4$ for every $t$ tell you about $\\mathbf{p}(t) = \\left\\langle 4\\cos t, 4\\sin t \\right\\rangle$?",
+   "type": "single",
+   "options": [
+    "Its tip stays $4$ units from the origin, so it traces a circle of radius $4$",
+    "Its tip moves $4$ units each unit of time along a line",
+    "Its tip stays at one point, $4$ units from the origin",
+    "Its tip traces a circle of radius $16$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\sqrt{16\\cos^2 t + 16\\sin^2 t} = 4$: every position is $4$ units from the origin, and the direction changes with $t$, so the tip goes around a circle.",
+    "options": [
+     "Constant distance from the origin, changing direction.",
+     "The length of $\\mathbf{p}(t)$ is a distance from the origin, not a step size.",
+     "The direction changes with $t$, so the tip moves.",
+     "$16$ is the length squared."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-15",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A new function is $\\mathbf{q}(t) = \\mathbf{p}(t) + \\left\\langle 2, 0 \\right\\rangle$. Compared with $\\mathbf{p}$, predict each change.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The $x$-coordinate of the position at each $t$",
+     "answer": "up",
+     "why": "Each position moves $2$ units right, so every $x$-coordinate grows by $2$."
+    },
+    {
+     "name": "The displacement on any interval $[t_1, t_2]$",
+     "answer": "none",
+     "why": "The added $\\left\\langle 2, 0 \\right\\rangle$$ appears in both positions and cancels when you subtract."
+    },
+    {
+     "name": "The average rate of change vector on any interval",
+     "answer": "none",
+     "why": "It is the displacement divided by the time, and neither changes."
+    }
+   ],
+   "why": {
+    "correct": "A constant shift moves the whole path but leaves every difference of positions alone."
+   }
+  },
+  {
+   "id": "pcalc-vector-valued-functions-16",
+   "unit": "unit-4",
+   "topic": "vector-valued-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for finding the average rate of change of $\\mathbf{p}$ on $[t_1, t_2]$ in order.",
+   "type": "order",
+   "options": [
+    "Find the position vectors $\\mathbf{p}(t_1)$ and $\\mathbf{p}(t_2)$",
+    "Subtract to get the displacement $\\mathbf{p}(t_2) - \\mathbf{p}(t_1)$",
+    "Find the elapsed time $t_2 - t_1$",
+    "Divide each component of the displacement by the elapsed time"
+   ],
+   "why": {
+    "correct": "Positions, then their difference, then the time, then divide component by component."
+   }
+  }
+ ]
+}

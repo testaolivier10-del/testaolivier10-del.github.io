@@ -422,7 +422,7 @@
    "diff": 2,
    "calc": true,
    "type": "numeric",
-   "q": "Use a calculator to find $\\ln 50$, correct to three decimal places.",
+   "q": "The natural logarithm of $50$ is the exponent $a$ with $e^a = 50$. Find $a$ with a calculator, correct to three decimal places.",
    "numeric": {
     "answer": 3.912023005428146,
     "mistakes": [

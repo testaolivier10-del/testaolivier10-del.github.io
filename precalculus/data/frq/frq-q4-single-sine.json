@@ -1,0 +1,124 @@
+{
+ "id": "frq-q4-single-sine",
+ "type": "symbolic",
+ "title": "Inverse cosine values and a sum rewritten as a single sine term",
+ "calc": false,
+ "points": 6,
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "trig-identities",
+  "inverse-trig"
+ ],
+ "practices": [
+  "1.A",
+  "1.B",
+  "1.C"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Inverse cosine and a single sine term",
+  "text": "<p>No calculator. Give exact values, use radians, and show the work for each part. Only real solutions are asked for.</p>",
+  "table": {
+   "caption": "The expressions and equations in this question, by part",
+   "cols": [
+    "Part",
+    "Expression or equation"
+   ],
+   "rows": [
+    [
+     "A(i)",
+     "$\\sin\\left(\\cos^{-1}\\left(-\\frac{3}{5}\\right)\\right)$"
+    ],
+    [
+     "A(ii)",
+     "$\\cos^{-1}(x) = \\frac{5\\pi}{6}$"
+    ],
+    [
+     "B",
+     "$k(x) = \\sin\\left(x + \\frac{\\pi}{6}\\right) + \\sin\\left(x - \\frac{\\pi}{6}\\right)$"
+    ],
+    [
+     "C",
+     "$k(x) = \\frac{3}{2}$ for $0 \\le x < 2\\pi$"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Find</b> the exact value of $\\sin\\left(\\cos^{-1}\\left(-\\frac{3}{5}\\right)\\right)$.",
+   "rubric": [
+    {
+     "point": "$\\frac{4}{5}$, positive because $\\cos^{-1}\\left(-\\frac{3}{5}\\right)$ is in $\\left(\\frac{\\pi}{2}, \\pi\\right)$",
+     "accept": [
+      "$\\frac{4}{5}$",
+      "0.8"
+     ]
+    }
+   ],
+   "sample": "Let $\\theta = \\cos^{-1}\\left(-\\frac{3}{5}\\right)$, an angle in $[0, \\pi]$ with $\\cos\\theta = -\\frac{3}{5}$, so $\\theta$ is in Quadrant II. $\\sin^2\\theta = 1 - \\frac{9}{25} = \\frac{16}{25}$, and sine is positive in Quadrant II, so $\\sin\\theta = \\frac{4}{5}$."
+  },
+  {
+   "label": "A(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Solve</b> $\\cos^{-1}(x) = \\frac{5\\pi}{6}$ for $x$.",
+   "rubric": [
+    {
+     "point": "$x = -\\frac{\\sqrt{3}}{2}$",
+     "accept": [
+      "$-\\frac{\\sqrt{3}}{2}$"
+     ]
+    }
+   ],
+   "sample": "$\\frac{5\\pi}{6}$ is in $[0, \\pi]$, so $x = \\cos\\frac{5\\pi}{6} = -\\frac{\\sqrt{3}}{2}$."
+  },
+  {
+   "label": "B",
+   "points": 2,
+   "space": "lines",
+   "prompt": "<b>Rewrite</b> $k(x) = \\sin\\left(x + \\frac{\\pi}{6}\\right) + \\sin\\left(x - \\frac{\\pi}{6}\\right)$ as a single term of the form $a\\sin x$. Show the identities you use.",
+   "rubric": [
+    {
+     "point": "Expands both with the sum and difference identities for sine",
+     "accept": [
+      "$\\sin x\\cos\\frac{\\pi}{6} + \\cos x\\sin\\frac{\\pi}{6} + \\sin x\\cos\\frac{\\pi}{6} - \\cos x\\sin\\frac{\\pi}{6}$"
+     ]
+    },
+    {
+     "point": "$k(x) = \\sqrt{3}\\sin x$",
+     "accept": [
+      "$2\\cdot\\frac{\\sqrt{3}}{2}\\sin x$ simplified to $\\sqrt{3}\\sin x$"
+     ]
+    }
+   ],
+   "sample": "$\\sin\\left(x + \\frac{\\pi}{6}\\right) = \\sin x\\cos\\frac{\\pi}{6} + \\cos x\\sin\\frac{\\pi}{6}$ and $\\sin\\left(x - \\frac{\\pi}{6}\\right) = \\sin x\\cos\\frac{\\pi}{6} - \\cos x\\sin\\frac{\\pi}{6}$. Adding, the cosine terms cancel: $k(x) = 2\\sin x\\cos\\frac{\\pi}{6} = 2\\cdot\\frac{\\sqrt{3}}{2}\\sin x = \\sqrt{3}\\sin x$."
+  },
+  {
+   "label": "C",
+   "points": 2,
+   "space": "lines",
+   "prompt": "<b>Solve</b> $k(x) = \\frac{3}{2}$ for $0 \\le x < 2\\pi$.",
+   "rubric": [
+    {
+     "point": "Uses part B to get $\\sin x = \\frac{\\sqrt{3}}{2}$ and gives one correct solution",
+     "accept": [
+      "$\\sqrt{3}\\sin x = \\frac{3}{2}$ so $\\sin x = \\frac{\\sqrt{3}}{2}$"
+     ]
+    },
+    {
+     "point": "Both solutions $x = \\frac{\\pi}{3}$ and $x = \\frac{2\\pi}{3}$, and no others",
+     "accept": [
+      "$\\frac{\\pi}{3}, \\frac{2\\pi}{3}$"
+     ]
+    }
+   ],
+   "sample": "By part B, $\\sqrt{3}\\sin x = \\frac{3}{2}$, so $\\sin x = \\frac{3}{2\\sqrt{3}} = \\frac{\\sqrt{3}}{2}$. In $[0, 2\\pi)$ this gives $x = \\frac{\\pi}{3}$ and, by symmetry, $x = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}$."
+  }
+ ]
+}

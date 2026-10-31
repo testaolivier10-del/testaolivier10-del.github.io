@@ -1,0 +1,66 @@
+{
+ "topic": "alg-complex-numbers",
+ "hook": "For centuries mathematicians rejected $\\sqrt{-1}$ as impossible, until they noticed it made their formulas work. The parabola $y = x^2 + 4x + 13$ never touches the $x$-axis, yet the quadratic formula still gives it two solutions, $-2 \\pm 3i$. Topic 1.5 counts every zero of a polynomial function, including these, so you need the arithmetic of $i$.",
+ "prereq": [
+  {
+   "q": "What is the discriminant of $x^2 + 4x + 13$?",
+   "options": [
+    "$-36$",
+    "$36$",
+    "$68$",
+    "$-52$"
+   ],
+   "correct": 0,
+   "why": "$16 - 4(1)(13) = -36$.",
+   "review": "alg-quadratics"
+  },
+  {
+   "q": "Multiply out $(x + 3)(x - 3)$.",
+   "options": [
+    "$x^2 - 9$",
+    "$x^2 + 9$",
+    "$x^2 - 6x - 9$",
+    "$x^2 + 6x - 9$"
+   ],
+   "correct": 0,
+   "why": "A difference of squares: the middle terms cancel.",
+   "review": "alg-polynomial-algebra"
+  }
+ ],
+ "figure": {
+  "figure": "alg-complex-numbers-noreal",
+  "caption": "$y = x^2 + 4x + 13 = (x + 2)^2 + 9$ never reaches the $x$-axis: no real zeros. The quadratic formula gives the complex solutions $-2 + 3i$ and $-2 - 3i$."
+ },
+ "chain": [
+  {
+   "cause": "$i$ is defined by $i^2 = -1$",
+   "effect": "square roots of negatives exist: $\\sqrt{-16} = 4i$"
+  },
+  {
+   "cause": "You add, subtract or multiply complex numbers",
+   "effect": "work like binomials, then replace $i^2$ with $-1$"
+  },
+  {
+   "cause": "The discriminant of a quadratic with real coefficients is negative",
+   "effect": "its two solutions are complex conjugates $a + bi$ and $a - bi$"
+  }
+ ],
+ "ideas": [
+  "The <b>imaginary unit</b> $i$ has $i^2 = -1$. A <b>complex number</b> is $a + bi$ with real $a$ (real part) and $b$ (imaginary part).",
+  "The <b>complex conjugate</b> of $a + bi$ is $a - bi$, and $(a + bi)(a - bi) = a^2 + b^2$, a real number.",
+  "Powers of $i$ repeat every four: $i, -1, -i, 1$."
+ ],
+ "misconception": {
+  "wrong": "$-8i^2 = -8$.",
+  "right": "$i^2 = -1$, so $-8i^2 = -8(-1) = 8$. The sign flips whenever $i^2$ is replaced."
+ },
+ "check": [
+  "pcalc-alg-complex-numbers-1",
+  "pcalc-alg-complex-numbers-2",
+  "pcalc-alg-complex-numbers-3",
+  "pcalc-alg-complex-numbers-4",
+  "pcalc-alg-complex-numbers-5",
+  "pcalc-alg-complex-numbers-8"
+ ],
+ "summary": "The imaginary unit $i$ has $i^2 = -1$, so $\\sqrt{-b^2} = bi$. Complex numbers $a + bi$ add and multiply like binomials, with $i^2$ replaced by $-1$. A quadratic with real coefficients and a negative discriminant has two complex solutions that are complex conjugates, $a \\pm bi$."
+}

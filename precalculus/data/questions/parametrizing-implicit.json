@@ -1,0 +1,485 @@
+{
+ "stimuli": {
+  "parametrizing-implicit-s1": {
+   "kind": "graph",
+   "title": "An ellipse traced from a starting point",
+   "figure": "parametrizing-implicit-s1",
+   "text": "<p>A point travels once around the ellipse for $0 \\le t \\le 2\\pi$, starting at the marked point and moving counterclockwise. The ellipse has center $(1, 2)$ and reaches $3$ units left and right and $2$ units up and down.</p>"
+  },
+  "parametrizing-implicit-s2": {
+   "kind": "table",
+   "title": "The curve $(2\\sec t, 3\\tan t)$",
+   "table": {
+    "caption": "Points of x(t) = 2 sec t, y(t) = 3 tan t for selected t between -π/2 and π/2",
+    "cols": [
+     "$t$",
+     "$-\\frac{\\pi}{3}$",
+     "$-\\frac{\\pi}{4}$",
+     "$0$",
+     "$\\frac{\\pi}{4}$",
+     "$\\frac{\\pi}{3}$"
+    ],
+    "rows": [
+     [
+      "$x(t)$",
+      "$4$",
+      "$2\\sqrt{2}$",
+      "$2$",
+      "$2\\sqrt{2}$",
+      "$4$"
+     ],
+     [
+      "$y(t)$",
+      "$-3\\sqrt{3}$",
+      "$-3$",
+      "$0$",
+      "$3$",
+      "$3\\sqrt{3}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-parametrizing-implicit-1",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametrizing-implicit-s1",
+   "q": "Which parametric function traces the ellipse as shown?",
+   "type": "single",
+   "options": [
+    "$(1 + 3\\cos t, 2 + 2\\sin t)$",
+    "$(1 + 2\\cos t, 2 + 3\\sin t)$",
+    "$(1 + 3\\sin t, 2 + 2\\cos t)$",
+    "$(1 + 9\\cos t, 2 + 4\\sin t)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Center $(1, 2)$, $3$ across, $2$ up and down: $(1 + 3\\cos t, 2 + 2\\sin t)$. At $t = 0$ it is at $(4, 2)$, and it moves up next: counterclockwise.",
+    "options": [
+     "$a = 3$ goes with cosine for $x$, $b = 2$ with sine for $y$.",
+     "This ellipse is $2$ across and $3$ up and down, taller than wide.",
+     "This starts at $(1, 4)$, the top, and goes clockwise.",
+     "Multiply by $a = 3$ and $b = 2$, not by their squares."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-2",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametrizing-implicit-s1",
+   "q": "Where is the point when $t = \\frac{\\pi}{2}$?",
+   "type": "single",
+   "options": [
+    "$(1, 4)$",
+    "$(4, 2)$",
+    "$(-2, 2)$",
+    "$(1, 0)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x = 1 + 3\\cos\\frac{\\pi}{2} = 1$ and $y = 2 + 2\\sin\\frac{\\pi}{2} = 4$: the top of the ellipse.",
+    "options": [
+     "$\\cos\\frac{\\pi}{2} = 0$, $\\sin\\frac{\\pi}{2} = 1$.",
+     "$(4, 2)$ is the start, $t = 0$.",
+     "$(-2, 2)$ is at $t = \\pi$.",
+     "$(1, 0)$ is the bottom, at $t = \\frac{3\\pi}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-3",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametrizing-implicit-s1",
+   "q": "What is the $x$-coordinate of the point when $t = \\frac{\\pi}{3}$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "5/2",
+    "mistakes": [
+     {
+      "value": "1 + 3*sqrt(3)/2",
+      "why": "$x$ uses cosine: $1 + 3\\cos\\frac{\\pi}{3} = 1 + 3 \\cdot \\frac{1}{2}$."
+     },
+     {
+      "value": "3/2",
+      "why": "Add the center's $x$-coordinate, $1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x = 1 + 3\\cos\\frac{\\pi}{3} = 1 + \\frac{3}{2} = \\frac{5}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-4",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametrizing-implicit-s1",
+   "q": "Remove the parameter. Which equation does every point of the ellipse satisfy?",
+   "type": "single",
+   "options": [
+    "$\\frac{(x - 1)^2}{9} + \\frac{(y - 2)^2}{4} = 1$",
+    "$\\frac{(x - 1)^2}{3} + \\frac{(y - 2)^2}{2} = 1$",
+    "$\\frac{(x + 1)^2}{9} + \\frac{(y + 2)^2}{4} = 1$",
+    "$\\frac{(x - 1)^2}{9} - \\frac{(y - 2)^2}{4} = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\cos t = \\frac{x - 1}{3}$ and $\\sin t = \\frac{y - 2}{2}$; squaring and adding gives $\\frac{(x - 1)^2}{9} + \\frac{(y - 2)^2}{4} = 1$.",
+    "options": [
+     "Square both quotients and add.",
+     "$\\left(\\frac{x - 1}{3}\\right)^2$ has $9$ underneath.",
+     "The center is $(1, 2)$, so subtract.",
+     "$\\cos^2 t + \\sin^2 t = 1$ is a sum: an ellipse, not a hyperbola."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-5",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametrizing-implicit-s1",
+   "q": "Which parametric function traces the same ellipse from the same start, but clockwise?",
+   "type": "single",
+   "options": [
+    "$(1 + 3\\cos t, 2 - 2\\sin t)$",
+    "$(1 - 3\\cos t, 2 + 2\\sin t)$",
+    "$(1 + 3\\cos 2t, 2 + 2\\sin 2t)$",
+    "$(1 + 3\\cos t, 2 + 2\\sin t)$ for $-2\\pi \\le t \\le 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $t = 0$ it is still $(4, 2)$, but $y = 2 - 2\\sin t$ decreases first, so the point heads down: clockwise.",
+    "options": [
+     "Same start, moving down first.",
+     "This starts at $(-2, 2)$, the other end.",
+     "This goes around twice as fast, still counterclockwise.",
+     "$t$ still increases, from $-2\\pi$ to $0$, so the trip is still counterclockwise."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-6",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametrizing-implicit-s2",
+   "q": "Which equation do all the points of this curve satisfy?",
+   "type": "single",
+   "options": [
+    "$\\frac{x^2}{4} - \\frac{y^2}{9} = 1$",
+    "$\\frac{x^2}{4} + \\frac{y^2}{9} = 1$",
+    "$\\frac{x^2}{2} - \\frac{y^2}{3} = 1$",
+    "$\\frac{y^2}{9} - \\frac{x^2}{4} = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\sec t = \\frac{x}{2}$ and $\\tan t = \\frac{y}{3}$, and $\\sec^2 t - \\tan^2 t = 1$, so $\\frac{x^2}{4} - \\frac{y^2}{9} = 1$. Check $(2\\sqrt{2}, 3)$: $\\frac{8}{4} - \\frac{9}{9} = 1$.",
+    "options": [
+     "The identity $\\sec^2 t - \\tan^2 t = 1$.",
+     "$(4, 3\\sqrt{3})$ gives $4 + 3 = 7$, not $1$.",
+     "Square $2$ and $3$: the denominators are $4$ and $9$.",
+     "$(2, 0)$ gives $-1$ here; the $x$ term is the positive one."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-7",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametrizing-implicit-s2",
+   "q": "Which part of the curve does $-\\frac{\\pi}{2} < t < \\frac{\\pi}{2}$ trace?",
+   "type": "single",
+   "options": [
+    "The right branch, where $x \\ge 2$",
+    "The left branch, where $x \\le -2$",
+    "Both branches",
+    "The upper half of both branches"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On this interval $\\cos t > 0$, so $\\sec t \\ge 1$ and $x = 2\\sec t \\ge 2$. Every $x$ in the table is positive.",
+    "options": [
+     "$\\sec t \\ge 1$ here.",
+     "The left branch needs $\\sec t \\le -1$, which happens for $\\frac{\\pi}{2} < t < \\frac{3\\pi}{2}$.",
+     "$x$ is never negative on this interval.",
+     "$y = 3\\tan t$ takes negative values too, as the table shows."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-8",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametrizing-implicit-s2",
+   "q": "As $t$ increases from $-\\frac{\\pi}{3}$ to $\\frac{\\pi}{3}$, which way does the point move?",
+   "type": "single",
+   "options": [
+    "Up the branch, from below the axis to above it",
+    "Down the branch, from above the axis to below it",
+    "Left the whole time",
+    "Right the whole time"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$y$ goes $-3\\sqrt{3}, -3, 0, 3, 3\\sqrt{3}$: it increases, so the point moves up. $x$ falls to $2$ and then rises again.",
+    "options": [
+     "$y = 3\\tan t$ increases.",
+     "$y$ increases in the table, so the point rises.",
+     "$x$ decreases until $t = 0$, then increases.",
+     "$x$ decreases before $t = 0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-9",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametrizing-implicit-s2",
+   "q": "Which identity explains why every point of this curve satisfies the same equation?",
+   "type": "single",
+   "options": [
+    "$\\sec^2 t - \\tan^2 t = 1$",
+    "$\\cos^2 t + \\sin^2 t = 1$",
+    "$\\csc^2 t - \\cot^2 t = 1$",
+    "$\\sec t = \\frac{1}{\\cos t}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With $\\frac{x}{2} = \\sec t$ and $\\frac{y}{3} = \\tan t$, the identity $\\sec^2 t - \\tan^2 t = 1$ becomes $\\frac{x^2}{4} - \\frac{y^2}{9} = 1$.",
+    "options": [
+     "It matches the secant and tangent in the formulas.",
+     "This identity fits $\\cos t$ and $\\sin t$, which give an ellipse.",
+     "This uses cosecant and cotangent, which do not appear.",
+     "This is a definition; it does not link $x$ and $y$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-10",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which parametric function traces $y = x^2 - 3x$ from left to right?",
+   "type": "single",
+   "options": [
+    "$(t, t^2 - 3t)$",
+    "$(t^2 - 3t, t)$",
+    "$(t, t^2)$",
+    "$(t^2, t^4 - 3t^2)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Let $x = t$; then $y = t^2 - 3t$. As $t$ increases, $x$ increases.",
+    "options": [
+     "$x = t$, $y = f(t)$.",
+     "This swaps the coordinates: it traces $x = y^2 - 3y$.",
+     "This traces $y = x^2$, without the $-3x$.",
+     "$x = t^2 \\ge 0$, so this traces only the right part and doubles back."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-11",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which parametric function traces the curve $x = y^2 + 1$?",
+   "type": "single",
+   "options": [
+    "$(t^2 + 1, t)$",
+    "$(t, t^2 + 1)$",
+    "$(t^2 + 1, t^2)$",
+    "$(t + 1, t^2)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The curve is $x$ as a function of $y$, so let $y = t$ and $x = t^2 + 1$.",
+    "options": [
+     "$y = t$, $x = g(t)$.",
+     "This traces $y = x^2 + 1$, a parabola opening up.",
+     "$y = t^2 \\ge 0$, so only the upper half.",
+     "This gives $x = \\sqrt{y} + 1$ on part of the curve, not $x = y^2 + 1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-12",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A curve is $(t^2 - 1, t)$. Remove the parameter and write $x$ in terms of $y$.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "y"
+    ],
+    "mode": "exact",
+    "answer": "y^2 - 1",
+    "domain": [
+     -3,
+     3
+    ],
+    "lhs": "x =",
+    "mistakes": [
+     {
+      "expr": "sqrt(y + 1)",
+      "why": "That solves for the wrong variable. Since $y = t$, substitute $t = y$ into $x = t^2 - 1$."
+     },
+     {
+      "expr": "y^2 + 1",
+      "why": "$x = t^2 - 1$; keep the minus sign."
+     },
+     {
+      "expr": "(y - 1)^2",
+      "why": "Square $t$ first, then subtract $1$: $t^2 - 1$, not $(t - 1)^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y = t$, so $x = t^2 - 1 = y^2 - 1$: a parabola opening right with vertex $(-1, 0)$."
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-13",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which parametric functions trace all of $y = x^2$ as $t$ runs over every real number? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$(t, t^2)$",
+    "$(t^3, t^6)$",
+    "$(t^2, t^4)$",
+    "$(2t, 2t^2)$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Each must satisfy $y = x^2$ and reach every $x$. $(t^3)^2 = t^6$, and $t^3$ takes every real value.",
+    "options": [
+     "$y = t^2 = x^2$ for every $x = t$.",
+     "$t^6 = (t^3)^2$, and $x = t^3$ covers every real number.",
+     "$y = x^2$ holds, but $x = t^2$ is never negative: the left half is missing.",
+     "$2t^2 = \\frac{(2t)^2}{2}$, so this traces $y = \\frac{x^2}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-14",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which parametric function traces the circle with center $(-1, 4)$ and radius $5$ clockwise, starting at $(4, 4)$?",
+   "type": "single",
+   "options": [
+    "$(-1 + 5\\cos t, 4 - 5\\sin t)$",
+    "$(-1 + 5\\cos t, 4 + 5\\sin t)$",
+    "$(1 + 5\\cos t, -4 - 5\\sin t)$",
+    "$(-1 + 25\\cos t, 4 - 25\\sin t)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $t = 0$: $(-1 + 5, 4) = (4, 4)$. The minus sign on $\\sin t$ sends the point down first: clockwise.",
+    "options": [
+     "Center $(-1, 4)$, radius $5$, moving down first.",
+     "This one moves up first: counterclockwise.",
+     "The center is $(-1, 4)$; these signs put it at $(1, -4)$.",
+     "$25$ is the radius squared; the radius is $5$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-15",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which parametric function traces the part of $x = y^2$ from $(0, 0)$ to $(4, 2)$?",
+   "type": "single",
+   "options": [
+    "$(t^2, t)$ for $0 \\le t \\le 2$",
+    "$(t^2, t)$ for $0 \\le t \\le 4$",
+    "$(t, t^2)$ for $0 \\le t \\le 2$",
+    "$(2t^2, t)$ for $0 \\le t \\le 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x = t^2 = y^2$, and at $t = 0$ and $t = 2$ the points are $(0, 0)$ and $(4, 2)$.",
+    "options": [
+     "Right curve, right endpoints.",
+     "At $t = 4$ the point is $(16, 4)$, past the end.",
+     "This traces $y = x^2$, a different parabola.",
+     "This traces $x = 2y^2$ and ends at $(8, 2)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametrizing-implicit-16",
+   "unit": "unit-4",
+   "topic": "parametrizing-implicit",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In $(a\\cos t, b\\sin t)$, $a$ is increased while $b$ stays the same. Predict each change.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The width of the ellipse",
+     "answer": "up",
+     "why": "The point reaches $a$ units left and right of the center, so the width $2a$ grows."
+    },
+    {
+     "name": "The height of the ellipse",
+     "answer": "none",
+     "why": "The height is $2b$, and $b$ did not change."
+    }
+   ],
+   "why": {
+    "correct": "$a$ stretches the curve horizontally; $b$ controls the height."
+   }
+  }
+ ]
+}

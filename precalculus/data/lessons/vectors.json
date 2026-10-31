@@ -1,0 +1,71 @@
+{
+ "topic": "vectors",
+ "hook": "A pilot sets a heading and a speed, and the wind pushes the plane sideways. Where does the plane actually go? Speeds with directions, pushes and pulls, and moves on a map all have a size and a direction. Vectors are the quantities that keep both, and they add in a way plain numbers do not.",
+ "prereq": [
+  {
+   "q": "What is the distance from $(0, 0)$ to $(3, 4)$?",
+   "options": [
+    "$5$",
+    "$7$",
+    "$25$",
+    "$1$"
+   ],
+   "correct": 0,
+   "why": "$\\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$.",
+   "review": "alg-right-triangle"
+  },
+  {
+   "q": "What are $\\cos\\frac{\\pi}{6}$ and $\\sin\\frac{\\pi}{6}$?",
+   "options": [
+    "$\\frac{\\sqrt{3}}{2}$ and $\\frac{1}{2}$",
+    "$\\frac{1}{2}$ and $\\frac{\\sqrt{3}}{2}$",
+    "$\\frac{\\sqrt{2}}{2}$ and $\\frac{\\sqrt{2}}{2}$",
+    "$\\sqrt{3}$ and $1$"
+   ],
+   "correct": 0,
+   "why": "The angle $\\frac{\\pi}{6}$ ($30^\\circ$) has cosine $\\frac{\\sqrt{3}}{2}$ and sine $\\frac{1}{2}$.",
+   "review": "sine-cosine-values"
+  }
+ ],
+ "figure": {
+  "figure": "vectors-sum",
+  "caption": "Adding vectors tip to tail: $\\mathbf{u} = \\left\\langle 3, 1 \\right\\rangle$ then $\\mathbf{v} = \\left\\langle 1, 2 \\right\\rangle$ lands at the tip of $\\mathbf{u} + \\mathbf{v} = \\left\\langle 4, 3 \\right\\rangle$."
+ },
+ "chain": [
+  {
+   "cause": "A vector goes from $(x_1, y_1)$ to $(x_2, y_2)$",
+   "effect": "its components are $\\left\\langle x_2 - x_1, y_2 - y_1 \\right\\rangle$, wherever it is drawn"
+  },
+  {
+   "cause": "Square the components, add, take the square root",
+   "effect": "the magnitude $\\left\\| \\mathbf{v} \\right\\|$, the vector's length"
+  },
+  {
+   "cause": "Place the second vector at the tip of the first",
+   "effect": "the sum runs from the first tail to the second tip; in components, add matching entries"
+  },
+  {
+   "cause": "Multiply matching components and add",
+   "effect": "the dot product; it is $0$ exactly when the vectors are perpendicular"
+  }
+ ],
+ "ideas": [
+  "A <b>vector</b> has a magnitude and a direction. $\\mathbf{v} = \\left\\langle a, b \\right\\rangle = a\\mathbf{i} + b\\mathbf{j}$ moves $a$ across and $b$ up; its magnitude is $\\left\\| \\mathbf{v} \\right\\| = \\sqrt{a^2 + b^2}$.",
+  "A vector of magnitude $m$ at angle $\\theta$ from the positive $x$-axis is $\\left\\langle m\\cos\\theta, m\\sin\\theta \\right\\rangle$.",
+  "Add and subtract component by component. A <b>scalar multiple</b> $k\\mathbf{v}$ stretches by $|k|$ and reverses if $k < 0$. A <b>unit vector</b> $\\frac{\\mathbf{v}}{\\left\\| \\mathbf{v} \\right\\|}$ has length $1$.",
+  "<b>Dot product</b>: $\\left\\langle a, b \\right\\rangle \\cdot \\left\\langle c, d \\right\\rangle = ac + bd = \\left\\| \\mathbf{u} \\right\\| \\left\\| \\mathbf{v} \\right\\| \\cos\\theta$, $\\theta$ the angle between them."
+ ],
+ "misconception": {
+  "wrong": "The magnitude of $\\mathbf{u} + \\mathbf{v}$ is the magnitude of $\\mathbf{u}$ plus the magnitude of $\\mathbf{v}$.",
+  "right": "Lengths add only when the vectors point the same way. $\\left\\langle 3, 0 \\right\\rangle + \\left\\langle 0, 4 \\right\\rangle = \\left\\langle 3, 4 \\right\\rangle$ has length $5$, not $3 + 4 = 7$. Add the components first, then find the length."
+ },
+ "check": [
+  "pcalc-vectors-1",
+  "pcalc-vectors-2",
+  "pcalc-vectors-3",
+  "pcalc-vectors-4",
+  "pcalc-vectors-10",
+  "pcalc-vectors-11"
+ ],
+ "summary": "A vector $\\left\\langle a, b \\right\\rangle$ is a size and a direction: $a$ across, $b$ up, length $\\sqrt{a^2 + b^2}$. Vectors add tip to tail (component by component), scale by numbers, and give a unit vector when divided by their length. The dot product $ac + bd$ measures the angle between two vectors and is $0$ for perpendicular ones."
+}

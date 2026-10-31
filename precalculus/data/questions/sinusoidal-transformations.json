@@ -239,8 +239,7 @@
    "numeric": {
     "answer": "6 + 2sqrt(2)",
     "mistakes": [
-     { "value": 8, "why": "That uses $\\sin\\frac{\\pi}{4} = \\frac{1}{2}$. The sine of $\\frac{\\pi}{4}$ is $\\frac{\\sqrt{2}}{2}$." },
-     { "value": 8, "why": "Halfway in time between the midline and the top is not halfway in height: the value is $6 + 4\\sin\\frac{\\pi}{4}$." }
+     { "value": 8, "why": "That uses $\\sin\\frac{\\pi}{4} = \\frac{1}{2}$, as if halfway in time meant halfway in height. The sine of $\\frac{\\pi}{4}$ is $\\frac{\\sqrt{2}}{2}$." }
     ]
    },
    "why": {

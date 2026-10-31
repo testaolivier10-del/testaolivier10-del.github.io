@@ -1,0 +1,71 @@
+{
+ "topic": "parametrizing-implicit",
+ "hook": "A drawing program, a robot arm and an animation all need curves as trips: a point that moves along the curve as time runs. If a curve is given as an equation, such as the outline of an elliptical track, you need parametric equations that trace it. Trig identities turn out to be exactly the tool.",
+ "prereq": [
+  {
+   "q": "Which identity is true for every $t$?",
+   "options": [
+    "$\\cos^2 t + \\sin^2 t = 1$",
+    "$\\cos t + \\sin t = 1$",
+    "$\\cos^2 t - \\sin^2 t = 1$",
+    "$\\tan^2 t + 1 = \\cos^2 t$"
+   ],
+   "correct": 0,
+   "why": "The Pythagorean identity: on the unit circle, $(\\cos t)^2 + (\\sin t)^2 = 1$.",
+   "review": "trig-identities"
+  },
+  {
+   "q": "What is the center of the ellipse $\\frac{(x - 1)^2}{9} + \\frac{(y - 2)^2}{4} = 1$?",
+   "options": [
+    "$(1, 2)$",
+    "$(-1, -2)$",
+    "$(9, 4)$",
+    "$(3, 2)$"
+   ],
+   "correct": 0,
+   "why": "Standard form $\\frac{(x - h)^2}{a^2} + \\frac{(y - k)^2}{b^2} = 1$ has center $(h, k) = (1, 2)$.",
+   "review": "conic-sections"
+  }
+ ],
+ "figure": {
+  "figure": "parametrizing-implicit-ellipse",
+  "caption": "$(3\\cos t, 2\\sin t)$ traces the ellipse $\\frac{x^2}{9} + \\frac{y^2}{4} = 1$ counterclockwise from $(3, 0)$. The point shares its $x$-coordinate with the point at angle $t$ on the dashed circle of radius $3$."
+ },
+ "chain": [
+  {
+   "cause": "A curve is the graph of $y = f(x)$",
+   "effect": "$x(t) = t$, $y(t) = f(t)$ traces it left to right"
+  },
+  {
+   "cause": "Set $\\frac{x - h}{a} = \\cos t$ and $\\frac{y - k}{b} = \\sin t$",
+   "effect": "$\\cos^2 t + \\sin^2 t = 1$ makes every point satisfy the ellipse equation"
+  },
+  {
+   "cause": "Set $\\frac{x - h}{a} = \\sec t$ and $\\frac{y - k}{b} = \\tan t$",
+   "effect": "$\\sec^2 t - \\tan^2 t = 1$ makes every point satisfy the hyperbola equation"
+  },
+  {
+   "cause": "Undo it: solve each equation for the trig function and use the identity",
+   "effect": "you get back the equation in x and y, with the parameter removed"
+  }
+ ],
+ "ideas": [
+  "A <b>parametrization</b> of a curve is a parametric function that traces it. A graph $y = f(x)$: $(t, f(t))$. A curve $x = g(y)$: $(g(t), t)$.",
+  "Ellipse $\\frac{(x - h)^2}{a^2} + \\frac{(y - k)^2}{b^2} = 1$: $(h + a\\cos t, k + b\\sin t)$, $0 \\le t \\le 2\\pi$.",
+  "Hyperbola $\\frac{(x - h)^2}{a^2} - \\frac{(y - k)^2}{b^2} = 1$: $(h + a\\sec t, k + b\\tan t)$; $-\\frac{\\pi}{2} < t < \\frac{\\pi}{2}$ gives the right branch.",
+  "A curve has many parametrizations; they can differ in start, direction and speed."
+ ],
+ "misconception": {
+  "wrong": "$(3\\cos t, 2\\sin t)$ traces a circle, because it uses $\\cos t$ and $\\sin t$ like the unit circle.",
+  "right": "The different multipliers stretch the circle: $\\left(\\frac{x}{3}\\right)^2 + \\left(\\frac{y}{2}\\right)^2 = \\cos^2 t + \\sin^2 t = 1$, an ellipse $3$ wide and $2$ tall from the center."
+ },
+ "check": [
+  "pcalc-parametrizing-implicit-1",
+  "pcalc-parametrizing-implicit-2",
+  "pcalc-parametrizing-implicit-3",
+  "pcalc-parametrizing-implicit-4",
+  "pcalc-parametrizing-implicit-10",
+  "pcalc-parametrizing-implicit-11"
+ ],
+ "summary": "To parametrize a curve given by an equation, choose $x(t)$ and $y(t)$ that make the equation true for every $t$: $(t, f(t))$ for a graph, $(h + a\\cos t, k + b\\sin t)$ for an ellipse, $(h + a\\sec t, k + b\\tan t)$ for a hyperbola. To go back, solve for the trig functions and use a Pythagorean identity."
+}

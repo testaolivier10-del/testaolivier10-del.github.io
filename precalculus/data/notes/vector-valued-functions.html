@@ -1,0 +1,39 @@
+<p>A parametric function gives a point $(x(t), y(t))$ for each $t$. Draw an arrow from the origin to that point and you have a vector that changes with $t$. Thinking of motion this way lets you use everything you know about vectors: subtracting positions, measuring distances and averaging rates.</p>
+
+<h2>Position vectors</h2>
+<p>A <b>vector-valued function</b> takes an input $t$ and returns a vector:</p>
+$$\mathbf{p}(t) = \left\langle x(t), y(t) \right\rangle = x(t)\mathbf{i} + y(t)\mathbf{j}.$$
+<p>When the arrow is drawn from the origin, $\mathbf{p}(t)$ is the <b>position vector</b> of the point $(x(t), y(t))$. As $t$ increases, the tip of the arrow traces the same curve, in the same direction, as the parametric function. Nothing new is drawn; the vector form is a new way to compute.</p>
+<p>For $\mathbf{p}(t) = \left\langle 2t, 6t - t^2 \right\rangle$ and $0 \le t \le 6$, the tip moves from $(0, 0)$ up to $(6, 9)$ at $t = 3$ and back down to $(12, 0)$: an arch. At $t = 4$, $\mathbf{p}(4) = \left\langle 8, 8 \right\rangle$, and its magnitude $\left\| \mathbf{p}(4) \right\| = \sqrt{64 + 64} = 8\sqrt{2}$ is the distance from the origin to the object.</p>
+
+<h2>Displacement</h2>
+<p>The vector from one position to a later one is the <b>displacement</b>, found by subtracting position vectors:</p>
+$$\text{displacement on } [t_1, t_2] = \mathbf{p}(t_2) - \mathbf{p}(t_1).$$
+<div class="worked">
+<p><b>Worked example 1.</b> For $\mathbf{p}(t) = \left\langle 2t, 6t - t^2 \right\rangle$, find the displacement from $t = 1$ to $t = 3$ and the distance between the two positions.</p>
+<p>$\mathbf{p}(1) = \left\langle 2, 5 \right\rangle$ and $\mathbf{p}(3) = \left\langle 6, 9 \right\rangle$.</p>
+<p>Displacement: $\left\langle 6 - 2, 9 - 5 \right\rangle = \left\langle 4, 4 \right\rangle$: $4$ units right and $4$ up.</p>
+<p>Distance: $\left\| \left\langle 4, 4 \right\rangle \right\| = \sqrt{16 + 16} = 4\sqrt{2}$.</p>
+</div>
+<figure id="fig-disp" data-fig="vector-valued-functions-displacement"><figcaption>Two position vectors and the displacement between their tips.</figcaption></figure>
+
+<h2>The average rate of change vector</h2>
+<p>Divide the displacement by the elapsed time and you get the average rate of change of $\mathbf{p}$ on $[t_1, t_2]$:</p>
+$$\frac{\mathbf{p}(t_2) - \mathbf{p}(t_1)}{t_2 - t_1} = \left\langle \frac{x(t_2) - x(t_1)}{t_2 - t_1}, \frac{y(t_2) - y(t_1)}{t_2 - t_1} \right\rangle.$$
+<p>Its components are exactly the average rates of change of $x$ and $y$ from the lesson on parametric rates, now packed into one vector. It points along the segment from the first position to the second, and its units are distance per unit of time.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A drone's position, in meters east and north of a depot, is $(40, 30)$ at $t = 5$ seconds and $(60, 120)$ at $t = 15$ seconds. Find the average rate of change of its position vector on $[5, 15]$.</p>
+<p>Displacement: $\left\langle 60 - 40, 120 - 30 \right\rangle = \left\langle 20, 90 \right\rangle$ meters.</p>
+<p>Divide by $15 - 5 = 10$ seconds: \left\langle 2, 9 \right\rangle$ meters per second, so on average $2$ m/s east and $9$ m/s north.</p>
+</div>
+
+<h2>What the magnitudes mean</h2>
+<table class="compare">
+<thead><tr><th scope="col">Vector</th><th scope="col">Its magnitude is</th></tr></thead>
+<tbody>
+<tr><td>$\mathbf{p}(t)$</td><td>the distance from the origin at time $t$</td></tr>
+<tr><td>$\mathbf{p}(t_2) - \mathbf{p}(t_1)$</td><td>the straight-line distance between the two positions</td></tr>
+<tr><td>$\frac{\mathbf{p}(t_2) - \mathbf{p}(t_1)}{t_2 - t_1}$</td><td>that distance divided by the time</td></tr>
+</tbody>
+</table>
+<p>A curved path is longer than the straight segment between its ends, so the distance traveled can be more than the magnitude of the displacement. For $\mathbf{p}(t) = \left\langle 2t, 6t - t^2 \right\rangle$ on $[2, 4]$, the displacement is $\left\langle 4, 0 \right\rangle$: horizontal, even though the object rose to $y = 9$ and came back down in between.</p>

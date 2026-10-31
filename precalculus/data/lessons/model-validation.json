@@ -1,0 +1,66 @@
+{
+ "topic": "model-validation",
+ "hook": "Two analysts model a channel's followers. One fits a line, the other an exponential function, and both graphs look close to the data. The residuals, the misses each model makes, decide which one to trust for next month.",
+ "prereq": [
+  {
+   "q": "Over equal steps, outputs go $100, 125, 156.25$. What fits?",
+   "options": [
+    "Exponential, ratio $1.25$",
+    "Linear, slope $25$",
+    "Linear, slope $1.25$",
+    "Quadratic"
+   ],
+   "correct": 0,
+   "why": "$\\frac{125}{100} = \\frac{156.25}{125} = 1.25$: constant ratio.",
+   "review": "linear-vs-exponential"
+  },
+  {
+   "q": "What does a calculator regression do?",
+   "options": [
+    "Finds the constants of a chosen model type that fit all the data closest",
+    "Finds a model through exactly two points",
+    "Chooses the model type for you",
+    "Rounds the data"
+   ],
+   "correct": 0,
+   "why": "You choose the type; the regression chooses the constants.",
+   "review": "model-construction"
+  }
+ ],
+ "figure": {
+  "figure": "model-validation-residuals",
+  "caption": "Residuals (actual minus predicted) of two models of the same data. The linear model's residuals form a U; the exponential model's scatter near 0 with no pattern, so it is the more appropriate model."
+ },
+ "chain": [
+  {
+   "cause": "For each data point, subtract the prediction from the actual value",
+   "effect": "the residuals: positive where the model underestimates, negative where it overestimates"
+  },
+  {
+   "cause": "Plot the residuals against the input",
+   "effect": "a residual plot"
+  },
+  {
+   "cause": "Small residuals with no pattern",
+   "effect": "the model is appropriate; a curve or trend means it misses the shape of the data"
+  }
+ ],
+ "ideas": [
+  "Residual $=$ actual $-$ predicted. Positive: the model underestimates. Negative: it overestimates.",
+  "An appropriate model has a residual plot scattered around 0 with no pattern; a U or a trend shows the model has the wrong shape.",
+  "Error can also be stated as predicted $-$ actual, or as an absolute error $|\\text{predicted} - \\text{actual}|$. Compare competing models by their residuals."
+ ],
+ "misconception": {
+  "wrong": "If a model's residuals are both positive and negative, the model fits well.",
+  "right": "Mixed signs are expected; what matters is the pattern. Residuals that go positive, negative, positive in order show a curve the model misses."
+ },
+ "check": [
+  "pcalc-model-validation-1",
+  "pcalc-model-validation-2",
+  "pcalc-model-validation-6",
+  "pcalc-model-validation-8",
+  "pcalc-model-validation-10",
+  "pcalc-model-validation-13"
+ ],
+ "summary": "Residuals (actual minus predicted) measure how far a model misses each data point. Choose the model whose residuals are small and patternless, and read the sign of the residuals to say where a model underestimates or overestimates."
+}

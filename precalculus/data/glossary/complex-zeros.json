@@ -1,0 +1,11 @@
+{
+ "multiplicity": {
+  "def": "If $(x - a)^k$ is a factor of a polynomial and no higher power is, $a$ is a zero of multiplicity $k$. The graph crosses the $x$-axis at a zero of odd multiplicity and touches it at a zero of even multiplicity (a double zero has multiplicity $2$)."
+ },
+ "complex-zero": {
+  "def": "A zero of a polynomial that may be real or non-real. A polynomial of degree $n$ has $n$ complex zeros counting multiplicity; with real coefficients, non-real zeros come in conjugate pairs $a \\pm bi$."
+ },
+ "even-odd": {
+  "def": "$f$ is an even function if $f(-x) = f(x)$ (graph symmetric about the $y$-axis) and an odd function if $f(-x) = -f(x)$ (graph symmetric about the origin)."
+ }
+}

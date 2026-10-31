@@ -1,0 +1,71 @@
+{
+ "topic": "polynomial-rates",
+ "hook": "A greenhouse warms all morning, peaks in the late afternoon and cools at night. A polynomial function can follow that day: its graph turns at the warmest moment, and it bends where the warming starts to slow. This topic names those turning and bending points and finds them on graphs, tables and a calculator.",
+ "prereq": [
+  {
+   "q": "Which is $x^3 - 9x$ factored completely?",
+   "options": [
+    "$x(x - 3)(x + 3)$",
+    "$x(x^2 - 9)$",
+    "$(x - 3)(x + 3)$",
+    "$x(x - 9)$"
+   ],
+   "correct": 0,
+   "why": "Common factor $x$, then a difference of squares.",
+   "review": "alg-polynomial-algebra"
+  },
+  {
+   "q": "The average rates of change of $f$ over consecutive equal intervals are $6, 4, 2$. The graph of $f$ is",
+   "options": [
+    "concave down",
+    "concave up",
+    "decreasing",
+    "linear"
+   ],
+   "correct": 0,
+   "why": "Decreasing rates mean concave down.",
+   "review": "linear-quadratic-rates"
+  }
+ ],
+ "figure": {
+  "figure": "polynomial-rates-cubic",
+  "caption": "$f(x) = x^3 - 6x^2 + 9x$ has a local maximum $(1, 4)$, a local minimum $(3, 0)$ and a point of inflection $(2, 2)$, where it changes from concave down to concave up."
+ },
+ "chain": [
+  {
+   "cause": "A polynomial function switches from increasing to decreasing at $x = a$",
+   "effect": "it has a local maximum at $a$ (decreasing to increasing gives a local minimum)"
+  },
+  {
+   "cause": "The domain is limited to a closed interval",
+   "effect": "an included endpoint can also be a local extremum, so check the endpoints"
+  },
+  {
+   "cause": "You compare every local extremum value and every endpoint value",
+   "effect": "the greatest is the global maximum and the least is the global minimum"
+  },
+  {
+   "cause": "The rate of change switches from increasing to decreasing, or back",
+   "effect": "the graph changes concavity: a point of inflection"
+  }
+ ],
+ "ideas": [
+  "A <b>polynomial function</b> $p(x) = a_n x^n + \\cdots + a_1 x + a_0$ has <b>degree</b> $n$ and <b>leading term</b> $a_n x^n$.",
+  "<b>Local maximum</b>: an output at least as large as at nearby inputs; <b>local minimum</b>: at most as large. <b>Global</b>: over the whole domain.",
+  "Between two distinct real zeros there is at least one local extremum. An even-degree polynomial has a global maximum or minimum.",
+  "A <b>point of inflection</b> is where the graph changes concavity: the rate of change switches from increasing to decreasing, or back."
+ ],
+ "misconception": {
+  "wrong": "The global maximum is the largest local maximum.",
+  "right": "Check the endpoints too. On $[-3, 2.5]$, $p(x) = \\frac{x^4}{4} - 2x^2 + 3$ has a local maximum $3$ at $x = 0$, but $p(-3) = 5.25$ is the global maximum."
+ },
+ "check": [
+  "pcalc-polynomial-rates-1",
+  "pcalc-polynomial-rates-2",
+  "pcalc-polynomial-rates-4",
+  "pcalc-polynomial-rates-7",
+  "pcalc-polynomial-rates-9",
+  "pcalc-polynomial-rates-12"
+ ],
+ "summary": "A polynomial function has a degree and a leading term. Where it switches between increasing and decreasing it has a local maximum or minimum; on a closed interval the endpoints count too, and the greatest and least of all these values are the global maximum and minimum. Where its rate of change switches between increasing and decreasing, the graph has a point of inflection."
+}

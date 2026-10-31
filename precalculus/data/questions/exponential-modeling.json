@@ -1,0 +1,486 @@
+{
+ "stimuli": {
+  "exponential-modeling-s1": {
+   "kind": "table",
+   "title": "A medicine leaving the bloodstream",
+   "table": {
+    "caption": "Amount D of a medicine in a patient's blood, in milligrams, t hours after a dose",
+    "cols": [
+     "$t$ (hours)",
+     "0",
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "rows": [
+     [
+      "$D$ (mg)",
+      "250",
+      "198",
+      "160",
+      "127",
+      "101",
+      "80"
+     ]
+    ]
+   }
+  },
+  "exponential-modeling-s2": {
+   "kind": "table",
+   "title": "Members of a climbing gym",
+   "table": {
+    "caption": "Number of members P of a climbing gym t years after it opened",
+    "cols": [
+     "$t$ (years)",
+     "0",
+     "2"
+    ],
+    "rows": [
+     [
+      "$P$ (members)",
+      "1200",
+      "1728"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-exponential-modeling-1",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-modeling-s1",
+   "calc": true,
+   "q": "Use exponential regression to model $D(t) = ab^t$. What is $b$, correct to three decimal places?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 0.7968616373370268,
+    "mistakes": [
+     {
+      "value": 0.792,
+      "why": "That is the ratio of the first two data values only. The regression uses all six points."
+     },
+     {
+      "value": -33.543,
+      "why": "That is the slope of a linear regression; the question asks for the exponential regression."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Enter $t$ and $D$ as lists and run exponential regression: $a = 250.149369...$, $b = 0.796862...$. So $b \\approx 0.797$. Store both."
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-2",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-modeling-s1",
+   "calc": true,
+   "q": "According to the regression model, by what percent does the amount of medicine decrease each hour? Give the answer correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 20.313836266297326,
+    "unit": "percent",
+    "units": [
+     "%"
+    ],
+    "mistakes": [
+     {
+      "value": 79.686,
+      "why": "That is the percent of the medicine that remains each hour. The decrease is $100\\%$ minus that."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The decay factor is $b = 0.796862...$, so each hour the amount is multiplied by $b$ and loses $(1 - b) \\cdot 100 = 20.313836...$ percent, about $20.314\\%$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-3",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-modeling-s1",
+   "calc": true,
+   "q": "Using the stored regression model, how many milligrams does it predict at $t = 6.5$ hours? Give the answer correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 57.17265865280293,
+    "unit": "mg",
+    "mistakes": [
+     {
+      "value": 63.36,
+      "why": "That multiplies the last data value by one ratio; use the regression model at $t = 6.5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$D(6.5) = a b^{6.5} = 57.172659...$ mg with the stored $a$ and $b$. Using $b$ rounded to three places changes the answer."
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-4",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "exponential-modeling-s1",
+   "calc": true,
+   "q": "Using the stored model, at what time $t$ does the model predict $50$ mg of medicine? Give $t$ correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 7.0903478753880655,
+    "unit": "hours",
+    "mistakes": [
+     {
+      "value": 0.003,
+      "why": "That is $D(50)$, the amount at $50$ hours. The question gives the amount and asks for the time."
+     },
+     {
+      "value": 7.5,
+      "why": "That continues the table linearly. The model is exponential; use an intersection."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Graph $y = D(t)$ and $y = 50$ and find the intersection (or solve $D(t) - 50 = 0$ with the calculator\\'s solver): $t = 7.090348...$, about $7.090$ hours."
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-5",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "exponential-modeling-s1",
+   "calc": true,
+   "q": "Why is the regression model less reliable for predicting the amount at $t = 24$ hours than at $t = 2.5$ hours?",
+   "type": "single",
+   "options": [
+    "The model gives a negative amount of medicine at $t = 24$",
+    "$t = 24$ is far past the data, which no longer support the model",
+    "Exponential models are not reliable at times that are not whole numbers",
+    "The model starts increasing again some time after $t = 5$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$t = 2.5$ lies between data points, where the model is checked by the data. $t = 24$ is far beyond $t = 5$: the body may clear the medicine differently there, and nothing in the data shows the pattern continues.",
+    "options": [
+     "An exponential decay model stays positive.",
+     "Beyond the data, small errors in $b$ grow with every hour.",
+     "The model works at any time in its domain.",
+     "With $b < 1$ the model is decreasing everywhere."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-6",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-modeling-s2",
+   "q": "An exponential model $P(t) = ab^t$ fits the two data points. Write $P(t)$.",
+   "type": "expr",
+   "expr": {
+    "answer": "1200(1.2)^t",
+    "vars": [
+     "t"
+    ],
+    "domain": [
+     0,
+     6
+    ],
+    "mode": "exact",
+    "lhs": "P(t) =",
+    "mistakes": [
+     {
+      "expr": "1200(1.44)^t",
+      "why": "The ratio $1.44$ is over $2$ years. The yearly factor is $\\sqrt{1.44} = 1.2$."
+     },
+     {
+      "expr": "1200 + 264t",
+      "why": "This is the linear model through the points; the model is exponential."
+     },
+     {
+      "expr": "1200(1.44)^(2t)",
+      "why": "Over $2$ years the factor is $1.44$, so the exponent is $\\frac{t}{2}$, not $2t$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a = P(0) = 1200$. Over $2$ years the ratio is $\\frac{1728}{1200} = 1.44$, so $b^2 = 1.44$ and $b = 1.2$. $P(t) = 1200(1.2)^t$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-7",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "exponential-modeling-s2",
+   "q": "By what percent does the membership grow each year, according to the model?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 20,
+    "unit": "percent",
+    "units": [
+     "%"
+    ],
+    "mistakes": [
+     {
+      "value": 1.2,
+      "why": "That is the growth factor; the percent is $(1.2 - 1) \\cdot 100$."
+     },
+     {
+      "value": 44,
+      "why": "That is the growth over $2$ years, from $1.44$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$b = 1.2 = 1 + 0.20$, so the membership grows $20\\%$ per year."
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-8",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-modeling-s2",
+   "q": "Which expression gives the monthly growth factor of the membership?",
+   "type": "single",
+   "options": [
+    "$1.2^{1/12}$",
+    "$\\frac{1.2}{12}$",
+    "$1.2^{12}$",
+    "$1 + \\frac{0.2}{12}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A year is $12$ months, so $(\\text{monthly factor})^{12} = 1.2$ and the monthly factor is $1.2^{1/12}$. Then $P(t) = 1200(1.2^{1/12})^{12t}$ with $t$ in years.",
+    "options": [
+     "Twelve equal monthly factors multiply to $1.2$.",
+     "Dividing the factor by $12$ gives $0.1$, a loss.",
+     "This is the factor over $12$ years.",
+     "Splitting the percent evenly ignores that each month builds on the last; $(1 + \\frac{0.2}{12})^{12} \\ne 1.2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-9",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-modeling-s2",
+   "q": "What does the model predict for the membership at $t = 4$ years?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "2488.32",
+    "mistakes": [
+     {
+      "value": 2256,
+      "why": "That adds $264$ each year, a linear pattern. The model multiplies by $1.2$ each year."
+     },
+     {
+      "value": 2488,
+      "why": "Keep the exact value $2488.32$ here; the question asks for the model's output."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P(4) = 1200(1.2)^4 = 1200(2.0736) = 2488.32$, about $2488$ members."
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-10",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "An exponential function passes through $(1, 30)$ and $(3, 270)$. Write $f(x) = ab^x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "10(3)^x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     4
+    ],
+    "mode": "exact",
+    "lhs": "f(x) =",
+    "mistakes": [
+     {
+      "expr": "30(3)^x",
+      "why": "$30$ is $f(1)$, not $f(0)$. Divide by $b$ once: $a = 10$."
+     },
+     {
+      "expr": "10(9)^x",
+      "why": "The ratio $9$ is over $2$ steps; the base is $\\sqrt{9} = 3$."
+     },
+     {
+      "expr": "30(9)^(x-1)",
+      "why": "The factor $9$ is for $2$ steps, so the exponent would be $\\frac{x - 1}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From $x = 1$ to $x = 3$ the output is multiplied by $\\frac{270}{30} = 9$ over $2$ steps, so $b^2 = 9$ and $b = 3$. Then $a \\cdot 3 = 30$ gives $a = 10$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-11",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A substance has a half-life of $5$ years: every $5$ years, half of it remains. Which model gives the amount from $A_0$ grams?",
+   "type": "single",
+   "options": [
+    "$A(t) = A_0\\left(\\frac{1}{2}\\right)^{5t}$",
+    "$A(t) = A_0\\left(\\frac{1}{5}\\right)^{t/2}$",
+    "$A(t) = A_0 - \\frac{1}{2}(5t)$",
+    "$A(t) = A_0\\left(\\frac{1}{2}\\right)^{t/5}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The amount is multiplied by $\\frac{1}{2}$ once every $5$ years, which is $\\frac{t}{5}$ times in $t$ years.",
+    "options": [
+     "This halves $5$ times a year.",
+     "This divides by $5$ every $2$ years.",
+     "This subtracts; decay by a factor multiplies.",
+     "Halve once per $5$ years."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-12",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A sample with a half-life of $5$ years has $80$ grams now. How many grams remain after $15$ years?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 10,
+    "unit": "grams",
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "That is one half-life. $15$ years is three."
+     },
+     {
+      "value": "80/3",
+      "why": "That divides by $3$; three half-lives multiply by $\\frac{1}{8}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$15$ years is $3$ half-lives: $80 \\cdot \\left(\\frac{1}{2}\\right)^3 = 10$ grams."
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-13",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "A plant population grows by $30\\%$ each week. What is the equivalent daily growth factor? Give it correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 1.038191865525826,
+    "mistakes": [
+     {
+      "value": 1.043,
+      "why": "That splits the $30\\%$ evenly over $7$ days. Growth compounds: take the seventh root of $1.3$."
+     },
+     {
+      "value": 0.186,
+      "why": "Dividing the factor by $7$ gives a decay factor. Take the seventh root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$(\\text{daily factor})^7 = 1.3$, so the daily factor is $1.3^{1/7} = 1.038192...$, about $1.038$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-14",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The model $S(t) = 4.2(1.035)^t$ gives a city\\'s average home price, in hundreds of thousands of dollars, $t$ years after 2020. What does $1.035$ mean?",
+   "type": "single",
+   "options": [
+    "The price increases by $\\$1.035$ each year",
+    "The price in 2020 was $1.035$ hundred thousand dollars",
+    "Each year the price rises $3.5\\%$ over the year before",
+    "The price increases by $103.5\\%$ each year"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$1.035$ is the growth factor: each year the output is multiplied by $1.035 = 1 + 0.035$, a $3.5\\%$ increase.",
+    "options": [
+     "The factor multiplies; it is not an added amount.",
+     "The 2020 price is $S(0) = 4.2$, about $\\$420{,}000$.",
+     "Growth factor $1 + 0.035$.",
+     "A $103.5\\%$ increase would more than double the price."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-modeling-15",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the model $S(t) = 4.2(1.035)^t$, what does $4.2$ mean?",
+   "type": "single",
+   "options": [
+    "The price grows by $\\$4{,}200$ more each year than the year before",
+    "The price grows by $4.2\\%$ each year after 2020",
+    "The average home price in 2024 was about $\\$420{,}000$",
+    "The average home price in 2020 was about $\\$420{,}000$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$S(0) = 4.2(1.035)^0 = 4.2$ hundred thousand dollars: the value at $t = 0$, the year 2020.",
+    "options": [
+     "The constant $4.2$ does not add each year.",
+     "The growth is in the base, $1.035$.",
+     "$t = 0$ is 2020, not 2024.",
+     "The initial value, at $t = 0$."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+{
+ "parametrization": {
+  "def": "A parametric function (x(t), y(t)) that traces a given curve. For example, (t, f(t)) parametrizes y = f(x), and (h + a cos t, k + b sin t) parametrizes an ellipse. A curve has many parametrizations, differing in start, direction and speed."
+ }
+}

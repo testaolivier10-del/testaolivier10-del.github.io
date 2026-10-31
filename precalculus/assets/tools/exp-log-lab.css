@@ -1,0 +1,85 @@
+/* Exponential and log lab (precalculus/assets/tools/exp-log-lab.js). OWNED BY THIS TOOL
+   ONLY (builder T2). Loaded after pcalc-tools.css. The exponential is always
+   the course green, the linear function and the logarithm blue, the second
+   input of a log rule orange; the same colours in the graph, the table and
+   the formulas. Light and dark. */
+.el-card,.ls-root{--el-E:var(--cink);--el-L:#0072B2;--el-v:#C25400;--el-r:#8E44AD;--el-bgp:var(--white);--el-band:rgba(17,89,47,.07);}
+:root[data-theme="dark"] .el-card,:root[data-theme="dark"] .ls-root{--el-L:#6CB8EC;--el-v:#FF9A5C;--el-r:#C79BE0;--el-band:rgba(172,228,191,.08);}
+
+.el-stage{display:flex;flex-direction:column;gap:6px;min-height:0;flex:1;}
+.el-plotwrap{position:relative;flex:1 1 0;min-height:220px;}
+.el-card:not(.ls-root *) .el-plotwrap{height:380px;flex:none;}
+.el-svg{display:block;width:100%;height:100%;user-select:none;-webkit-user-select:none;touch-action:none;}
+.el-under{min-height:0;}
+.el-under p{margin:0;}
+
+.el-bg{fill:var(--el-bgp);stroke:var(--line);stroke-width:1;}
+.el-grid line{stroke:var(--line);stroke-width:1;opacity:.7;}
+.el-axis line{stroke:var(--ink);stroke-width:1.4;opacity:.75;}
+.el-tk text{fill:var(--muted);font:700 11px var(--font-ui);font-variant-numeric:tabular-nums;}
+.el-tk .el-axl{fill:var(--ink);font:800 11.5px var(--font-ui);}
+.el-curve{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+.el-curve.el-E{stroke:var(--el-E);} .el-curve.el-L,.el-curve.el-log{stroke:var(--el-L);}
+.el-curve.el-fit{stroke:var(--el-E);stroke-width:2.4;stroke-dasharray:8 5;}
+.el-curve.is-faint{opacity:.45;stroke-dasharray:6 5;}
+.el-pt{stroke:var(--el-bgp);stroke-width:2;}
+.el-pt.el-E{fill:var(--el-E);} .el-pt.el-L{fill:var(--el-L);} .el-pt.el-r{fill:var(--el-r);}
+.el-pt.el-data{fill:var(--ink);}
+.el-pass{fill:var(--el-bgp);stroke:var(--el-E);stroke-width:2.6;}
+.el-band{fill:var(--el-band);}
+.el-rise{stroke-width:2;stroke-dasharray:4 3;fill:none;}
+.el-rise.el-L{stroke:var(--el-L);} .el-rise.el-E{stroke:var(--el-E);}
+.el-lab{font:800 12px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--el-bgp);stroke-width:3.5px;stroke-linejoin:round;}
+.el-lab.el-E{fill:var(--el-E);} .el-lab.el-L{fill:var(--el-L);} .el-lab.el-u{fill:var(--el-L);} .el-lab.el-v{fill:var(--el-v);} .el-lab.el-r{fill:var(--el-r);}
+.el-lab.el-muted{fill:var(--muted);}
+.el-lab.el-name{font-size:13.5px;font-weight:900;}
+.el-mirror{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:6 5;}
+.el-swap{stroke:var(--ink);stroke-width:1.6;stroke-dasharray:3 4;opacity:.7;}
+.el-bar{stroke:var(--el-bgp);stroke-width:1;}
+.el-bar.el-u{fill:var(--el-L);} .el-bar.el-v{fill:var(--el-v);} .el-bar.el-r{fill:var(--el-r);}
+.el-bar.is-ghost{opacity:.35;} .el-bar.is-minus{fill-opacity:.35;stroke:var(--el-v);stroke-width:1.6;stroke-dasharray:3 2;}
+.el-bar.is-copy{stroke-width:1.5;}
+.el-handle .pcalc-plot-halo{fill:var(--el-E);}
+.el-handle circle:last-child{fill:var(--el-E);}
+/* a student's try */
+.el-yours{fill:var(--el-bgp);stroke:#D55E00;stroke-width:2.6;stroke-dasharray:4 3;}
+.el-yours-t{fill:#B34700 !important;}
+.el-yours-c,.el-yours-l{stroke:#D55E00;stroke-width:2.4;stroke-dasharray:7 5;fill:none;}
+:root[data-theme="dark"] .el-yours,:root[data-theme="dark"] .el-yours-c,:root[data-theme="dark"] .el-yours-l{stroke:#F29A5C;}
+:root[data-theme="dark"] .el-yours-t{fill:#F29A5C !important;}
+
+/* the step table under the Ratios graph */
+.el-steps{overflow-x:auto;}
+.el-tbl{border-collapse:separate;border-spacing:0;width:100%;font:700 13px var(--font-ui);font-variant-numeric:tabular-nums;}
+.el-tbl th,.el-tbl td{padding:4px 6px;text-align:center;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap;}
+.el-tbl th[scope=row]{text-align:left;cursor:default;font-weight:800;}
+.el-tbl td small{display:block;font:800 11px var(--font-ui);opacity:.85;}
+.el-tbl tr.el-L td,.el-tbl tr.el-L th{color:var(--el-L);}
+.el-tbl tr.el-E td,.el-tbl tr.el-E th{color:var(--el-E);}
+.el-tbl .is-on{background:var(--ctint);border-radius:6px;}
+.el-tbl math{color:inherit;}
+.el-swapline{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:center;font:700 14px var(--font-ui);}
+.el-chip-c{padding:4px 10px;border-radius:999px;border:2px solid currentColor;}
+.el-chip-c.el-E{color:var(--el-E);} .el-chip-c.el-L{color:var(--el-L);}
+.el-arrow{font:900 18px var(--font-ui);color:var(--muted);}
+.el-eq{text-align:center;overflow-x:auto;font-size:1.05em;}
+.el-eq-n{color:var(--muted);font-size:.95em;}
+
+/* the dock */
+.el-ctl{display:flex;flex-direction:column;gap:8px;}
+.el-views .bt-mode{padding-left:6px;padding-right:6px;}
+.el-chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;}
+.el-chip{flex:0 0 auto;}
+.el-row{display:flex;gap:8px;flex-wrap:wrap;}
+
+/* Test yourself */
+.el-ptext table.ell-tbl{border-collapse:collapse;margin:8px 0;font:700 15px var(--font-ui);font-variant-numeric:tabular-nums;}
+.el-ptext .ell-tbl th,.el-ptext .ell-tbl td{border:1px solid var(--line);padding:5px 12px;text-align:center;}
+.el-figwrap{display:flex;flex-direction:column;flex:1;min-height:0;width:100%;}
+.el-fig-plot{min-height:200px;}
+.ls-root .ls-drill-stage .el-figwrap{flex:1 1 0;}
+.ls-root .ls-drill-stage .el-fig-plot{flex:1 1 0;}
+.el-figwrap:not(.ls-root *) .el-fig-plot{height:280px;flex:none;}
+.ls-root.ls-phone .el-tbl{font-size:12px;}
+.ls-root.ls-phone .el-tbl th,.ls-root.ls-phone .el-tbl td{padding:3px 3px;}
+.ls-root.ls-phone .el-ls-stage .el-stage{padding-bottom:36px;}

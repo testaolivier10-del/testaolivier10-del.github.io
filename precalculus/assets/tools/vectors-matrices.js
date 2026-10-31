@@ -205,7 +205,7 @@
       var row = playBtn.parentNode;
       row.hidden = st.view === 'vectors';
       seg2.innerHTML = st.view === 'motion' ? '<button type="button" class="bt-mode" data-k="pt" aria-pressed="' + !st.iv + '">Point</button><button type="button" class="bt-mode" data-k="iv" aria-pressed="' + st.iv + '">Interval</button>'
-        : '<button type="button" class="bt-mode" data-k="A" aria-pressed="' + !st.undo + '">A</button><button type="button" class="bt-mode" data-k="U" aria-pressed="' + st.undo + '"' + (VM.inverse(st.A) ? '' : ' disabled') + '>Undo with A⁻¹</button>';
+        : '<button type="button" class="bt-mode" data-k="A" aria-pressed="' + !st.undo + '">A</button><button type="button" class="bt-mode" data-k="U" aria-pressed="' + st.undo + '"' + (VM.inverse(st.A) ? '' : ' disabled') + '>Undo: A⁻¹</button>';
       seg2.setAttribute('aria-label', st.view === 'motion' ? 'Point or interval' : 'Apply A or undo it');
       wrap.setAttribute('aria-label', st.view === 'motion' ? 'Time t on the path: arrow keys change it' : st.view === 'vectors' ? 'Vectors u and v: tab to a tip and use the arrow keys' : 'The plane under the matrix A: arrow keys move the slider');
       wrap.setAttribute('role', st.view === 'motion' ? 'slider' : 'group');
@@ -349,8 +349,8 @@
       var Ai = VM.inverse(st.A), B = st.undo && Ai ? VM.blend(st.A, 1).map(function(row, i){ return row.map(function(x, j){ return (1 - st.s) * x + st.s * (i === j ? 1 : 0); }); }) : VM.blend(st.A, st.s);
       // the image of the grid lines
       var lines = [], m;
-      for(m = -6; m <= 6; m++){
-        var a1 = VM.apply(B, [m, -8]), a2 = VM.apply(B, [m, 8]), b1 = VM.apply(B, [-8, m]), b2 = VM.apply(B, [8, m]);
+      for(m = -12; m <= 12; m++){
+        var a1 = VM.apply(B, [m, -24]), a2 = VM.apply(B, [m, 24]), b1 = VM.apply(B, [-24, m]), b2 = VM.apply(B, [24, m]);
         lines.push('<line' + (m === 0 ? ' class="vm-iax"' : '') + ' x1="' + r1(g.sx(a1[0])) + '" y1="' + r1(g.sy(a1[1])) + '" x2="' + r1(g.sx(a2[0])) + '" y2="' + r1(g.sy(a2[1])) + '"/>');
         lines.push('<line' + (m === 0 ? ' class="vm-iax"' : '') + ' x1="' + r1(g.sx(b1[0])) + '" y1="' + r1(g.sy(b1[1])) + '" x2="' + r1(g.sx(b2[0])) + '" y2="' + r1(g.sy(b2[1])) + '"/>');
       }

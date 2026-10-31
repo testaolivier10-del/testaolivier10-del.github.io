@@ -1,0 +1,41 @@
+<p>You can now describe curves two ways: as an equation in $x$ and $y$ (an implicitly defined curve) and as a parametric function $(x(t), y(t))$. This page turns the first kind into the second, and back. Turning an equation into parametric equations is called finding a <b>parametrization</b>.</p>
+
+<h2>Graphs of functions</h2>
+<p>The easiest case: if the curve is $y = f(x)$, let $x$ itself be the parameter.</p>
+$$x(t) = t, \qquad y(t) = f(t).$$
+<p>For $y = x^2 - 3x$, use $(t, t^2 - 3t)$; it traces the parabola from left to right as $t$ increases. If the curve is $x = g(y)$, a function of $y$, use $y$ as the parameter instead: $x = y^2 + 1$ becomes $(t^2 + 1, t)$, traced from bottom to top.</p>
+
+<h2>Ellipses: the Pythagorean identity</h2>
+<p>For $\frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2} = 1$, the two fractions are squares that add to $1$, just like $\cos^2 t + \sin^2 t = 1$. So set</p>
+$$\frac{x - h}{a} = \cos t, \quad \frac{y - k}{b} = \sin t \qquad\Rightarrow\qquad x(t) = h + a\cos t, \quad y(t) = k + b\sin t.$$
+<div class="worked">
+<p><b>Worked example 1.</b> Parametrize $\frac{(x - 1)^2}{9} + \frac{(y - 2)^2}{4} = 1$.</p>
+<p>$h = 1$, $k = 2$, $a = 3$, $b = 2$: $x(t) = 1 + 3\cos t$, $y(t) = 2 + 2\sin t$, $0 \le t \le 2\pi$.</p>
+<p>Check: $\frac{(3\cos t)^2}{9} + \frac{(2\sin t)^2}{4} = \cos^2 t + \sin^2 t = 1$. The trip starts at $(4, 2)$ when $t = 0$ and goes once around counterclockwise.</p>
+</div>
+<figure id="fig-ellipse" data-fig="parametrizing-implicit-ellipse"><figcaption>$(3\cos t, 2\sin t)$: the circle of radius $3$ squeezed vertically by the factor $\frac{2}{3}$.</figcaption></figure>
+<p>As with circles, $k - b\sin t$ reverses the direction, and $\cos(2t)$ and $\sin(2t)$ go around twice as fast. The parameter $t$ is not the angle of the point from the center unless $a = b$.</p>
+
+<h2>Hyperbolas: the other Pythagorean identity</h2>
+<p>Divide $\sin^2 t + \cos^2 t = 1$ by $\cos^2 t$ to get $\tan^2 t + 1 = \sec^2 t$, so $\sec^2 t - \tan^2 t = 1$. A difference of squares equal to $1$ is exactly the hyperbola's form:</p>
+$$x(t) = h + a\sec t, \qquad y(t) = k + b\tan t.$$
+<div class="worked">
+<p><b>Worked example 2.</b> Parametrize $\frac{x^2}{4} - \frac{y^2}{9} = 1$ and say which branch $-\frac{\pi}{2} < t < \frac{\pi}{2}$ gives.</p>
+<p>$x(t) = 2\sec t$, $y(t) = 3\tan t$. Check: $\frac{4\sec^2 t}{4} - \frac{9\tan^2 t}{9} = \sec^2 t - \tan^2 t = 1$.</p>
+<p>For $-\frac{\pi}{2} < t < \frac{\pi}{2}$, $\cos t > 0$, so $\sec t \ge 1$ and $x \ge 2$: the right branch. As $t$ increases, $\tan t$ increases, so the point moves up the branch, from far below to far above. The values $t = \pm\frac{\pi}{2}$ are left out, where $\sec t$ and $\tan t$ are undefined; $\frac{\pi}{2} < t < \frac{3\pi}{2}$ gives the left branch.</p>
+</div>
+
+<h2>Going back: removing the parameter</h2>
+<p>To find the equation a parametric curve satisfies, solve each coordinate for the trig function and use the matching identity. For $x = 1 + 3\cos t$, $y = 2 + 2\sin t$: $\cos t = \frac{x - 1}{3}$ and $\sin t = \frac{y - 2}{2}$, so $\left(\frac{x - 1}{3}\right)^2 + \left(\frac{y - 2}{2}\right)^2 = 1$. For polynomials, solve one coordinate for $t$ and substitute: $(t^2 - 1, t)$ gives $t = y$ and $x = y^2 - 1$.</p>
+
+<h2>Many parametrizations, one curve</h2>
+<table class="compare">
+<thead><tr><th scope="col">Curve</th><th scope="col">A parametrization</th><th scope="col">Identity used</th></tr></thead>
+<tbody>
+<tr><td>$y = f(x)$</td><td>$(t, f(t))$</td><td>none</td></tr>
+<tr><td>$x = g(y)$</td><td>$(g(t), t)$</td><td>none</td></tr>
+<tr><td>ellipse</td><td>$(h + a\cos t, k + b\sin t)$</td><td>$\cos^2 t + \sin^2 t = 1$</td></tr>
+<tr><td>hyperbola</td><td>$(h + a\sec t, k + b\tan t)$</td><td>$\sec^2 t - \tan^2 t = 1$</td></tr>
+</tbody>
+</table>
+<p>None of these is the only choice. $(t^3, t^6)$ also traces all of $y = x^2$, because $t^3$ takes every real value. But $(t^2, t^4)$ traces only the right half, since $t^2 \ge 0$. Always check that the parameter interval covers the whole curve you want, and nothing more.</p>

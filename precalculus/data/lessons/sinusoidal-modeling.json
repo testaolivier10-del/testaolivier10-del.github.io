@@ -1,0 +1,72 @@
+{
+ "topic": "sinusoidal-modeling",
+ "hook": "A harbor master needs to know when the water will be deep enough for a ship. A greenhouse needs its vents to open before the afternoon peak. Neither has a formula handed to them, only a few facts: the highest and lowest values, when they happen, and how long a cycle takes. That is enough to build a sinusoidal model and answer the question, and it is exactly the task of the periodic modeling question on the exam.",
+ "prereq": [
+  {
+   "q": "A sinusoid has period 12. In $f(t) = a\\cos(b(t + c)) + d$ with $b > 0$, what is $b$?",
+   "options": [
+    "$\\frac{\\pi}{6}$",
+    "$12$",
+    "$24\\pi$",
+    "$\\frac{\\pi}{12}$"
+   ],
+   "correct": 0,
+   "why": "$b = \\frac{2\\pi}{\\text{period}} = \\frac{2\\pi}{12} = \\frac{\\pi}{6}$.",
+   "review": "sinusoidal-transformations"
+  },
+  {
+   "q": "A student runs a regression on a graphing calculator. What does the regression do?",
+   "options": [
+    "Finds the constants of the chosen model type that fit the data most closely",
+    "Finds the exact formula the data came from",
+    "Draws the line through the first and last data points",
+    "Rounds each data value to three decimal places"
+   ],
+   "correct": 0,
+   "why": "A regression chooses the constants of a model type you pick (linear, quadratic, exponential and so on) so the model is as close as possible to the data.",
+   "review": "model-construction"
+  }
+ ],
+ "figure": {
+  "figure": "sinusoidal-modeling-ferris",
+  "caption": "A seat on a Ferris wheel and its height over one turn. The five labeled points (lowest, midline, highest, midline, lowest) are where a model comes from."
+ },
+ "chain": [
+  {
+   "cause": "The context gives the greatest and least values",
+   "effect": "the midline $d = \\frac{\\max + \\min}{2}$ and the amplitude $|a| = \\frac{\\max - \\min}{2}$"
+  },
+  {
+   "cause": "The context gives the time for one cycle, or the frequency",
+   "effect": "the period ($\\frac{1}{\\text{frequency}}$ if needed), then $b = \\frac{2\\pi}{\\text{period}}$"
+  },
+  {
+   "cause": "The context gives one landmark: when the quantity is highest, lowest, or at its midline and rising",
+   "effect": "choose sine or cosine and the sign of $a$ to match that landmark, then set $c$ so the landmark lands at the right time"
+  },
+  {
+   "cause": "The model is used to predict",
+   "effect": "it is trustworthy only on the domain the context supports; with data, a sinusoidal regression on a calculator builds the same kind of model"
+  }
+ ],
+ "ideas": [
+  "Five labeled points on one cycle are: a highest or lowest point, a midline crossing, the opposite extreme, the other midline crossing and the first extreme again, each a quarter period apart.",
+  "Easy landmarks: highest at $t_0$ gives $a\\cos(b(t - t_0)) + d$ with $a > 0$; lowest at $t_0$ gives the same with $a < 0$; midline and rising at $t_0$ gives $a\\sin(b(t - t_0)) + d$ with $a > 0$.",
+  "Describe change on an interval in two separate statements: whether the quantity is increasing or decreasing, and whether its rate of change is increasing or decreasing (concave up or concave down).",
+  "A model fits the facts it was built from. Past the data, or if the real cycle drifts, predictions get worse."
+ ],
+ "misconception": {
+  "wrong": "If a tide goes from high to low in 6 hours, the period is 6 hours.",
+  "right": "High to low is half a cycle. The water must come back up to high tide to finish a cycle, so the period is 12 hours and $b = \\frac{2\\pi}{12} = \\frac{\\pi}{6}$."
+ },
+ "check": [
+  "pcalc-sinusoidal-modeling-1",
+  "pcalc-sinusoidal-modeling-2",
+  "pcalc-sinusoidal-modeling-3",
+  "pcalc-sinusoidal-modeling-4",
+  "pcalc-sinusoidal-modeling-5",
+  "pcalc-sinusoidal-modeling-13",
+  "pcalc-sinusoidal-modeling-16"
+ ],
+ "summary": "To model a periodic context, get the midline and amplitude from the greatest and least values, the period (and $b = \\frac{2\\pi}{\\text{period}}$) from the cycle length or frequency, and the shift from one landmark time. With data, sinusoidal regression does the same job. Use the model on the domain the context supports, and describe change on an interval as two statements: the direction of the quantity and the direction of its rate of change."
+}

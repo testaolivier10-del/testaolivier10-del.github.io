@@ -1,0 +1,71 @@
+{
+ "topic": "vector-valued-functions",
+ "hook": "A delivery drone reports its position as an arrow from the depot: so far east, so far north. As the minutes pass the arrow swings and stretches, and its tip draws the flight path. Comparing two arrows tells you how far the drone got and in which direction, on average, it was heading.",
+ "prereq": [
+  {
+   "q": "What is $\\left\\langle 6, 9 \\right\\rangle - \\left\\langle 2, 5 \\right\\rangle$?",
+   "options": [
+    "$\\left\\langle 4, 4 \\right\\rangle$",
+    "$\\left\\langle 8, 14 \\right\\rangle$",
+    "$\\left\\langle -4, -4 \\right\\rangle$",
+    "$\\left\\langle 3, 4 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": "Subtract matching components: $6 - 2 = 4$ and $9 - 5 = 4$.",
+   "review": "vectors"
+  },
+  {
+   "q": "For $x(t) = 2t$ and $y(t) = 6t - t^2$, where is the point at $t = 3$?",
+   "options": [
+    "$(6, 9)$",
+    "$(6, 27)$",
+    "$(9, 6)$",
+    "$(3, 9)$"
+   ],
+   "correct": 0,
+   "why": "$x(3) = 6$ and $y(3) = 18 - 9 = 9$.",
+   "review": "parametric-functions"
+  }
+ ],
+ "figure": {
+  "figure": "vector-valued-functions-displacement",
+  "caption": "The position vectors $\\mathbf{p}(1) = \\left\\langle 2, 5 \\right\\rangle$ and $\\mathbf{p}(3) = \\left\\langle 6, 9 \\right\\rangle$ of $\\mathbf{p}(t) = \\left\\langle 2t, 6t - t^2 \\right\\rangle$, and the displacement $\\mathbf{p}(3) - \\mathbf{p}(1) = \\left\\langle 4, 4 \\right\\rangle$ between them."
+ },
+ "chain": [
+  {
+   "cause": "Write a parametric function as $\\mathbf{p}(t) = \\left\\langle x(t), y(t) \\right\\rangle$",
+   "effect": "each t gives a position vector from the origin to the point"
+  },
+  {
+   "cause": "Let $t$ increase",
+   "effect": "the tip of the position vector traces the same path as the parametric function"
+  },
+  {
+   "cause": "Subtract $\\mathbf{p}(t_1)$ from $\\mathbf{p}(t_2)$",
+   "effect": "the displacement vector, from the first position to the second; its magnitude is the distance between them"
+  },
+  {
+   "cause": "Divide the displacement by $t_2 - t_1$",
+   "effect": "the average rate of change of p: the average rates of x and y, as one vector"
+  }
+ ],
+ "ideas": [
+  "A <b>vector-valued function</b> $\\mathbf{p}(t) = \\left\\langle x(t), y(t) \\right\\rangle = x(t)\\mathbf{i} + y(t)\\mathbf{j}$ gives a vector for each input $t$.",
+  "Drawn from the origin, $\\mathbf{p}(t)$ is a <b>position vector</b>; its tip traces the curve $(x(t), y(t))$.",
+  "Displacement on $[t_1, t_2]$: $\\mathbf{p}(t_2) - \\mathbf{p}(t_1)$. Distance between the two positions: its magnitude.",
+  "Average rate of change of $\\mathbf{p}$ on $[t_1, t_2]$: $\\frac{\\mathbf{p}(t_2) - \\mathbf{p}(t_1)}{t_2 - t_1}$, whose components are the average rates of change of $x$ and $y$."
+ ],
+ "misconception": {
+  "wrong": "The magnitude of the average rate of change of $\\mathbf{p}$ is the average speed along the path.",
+  "right": "It is the straight-line distance between the two positions divided by the time. If the path curves or doubles back, the distance traveled along it is longer, so the average speed along the path is larger."
+ },
+ "check": [
+  "pcalc-vector-valued-functions-6",
+  "pcalc-vector-valued-functions-7",
+  "pcalc-vector-valued-functions-8",
+  "pcalc-vector-valued-functions-9",
+  "pcalc-vector-valued-functions-10",
+  "pcalc-vector-valued-functions-14"
+ ],
+ "summary": "A vector-valued function $\\mathbf{p}(t) = \\left\\langle x(t), y(t) \\right\\rangle$ is a parametric function written as position vectors. The displacement $\\mathbf{p}(t_2) - \\mathbf{p}(t_1)$ says how far and which way the object moved, and dividing by $t_2 - t_1$ gives the average rate of change vector, made of the average rates of $x$ and $y$."
+}

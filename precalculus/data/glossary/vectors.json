@@ -1,0 +1,5 @@
+{
+ "vector": {
+  "def": "A quantity with a magnitude and a direction, written ⟨a, b⟩ or ai + bj: a moves a across and b up. Its magnitude is √(a² + b²). Vectors add component by component, a scalar multiple kv scales the length by |k|, a unit vector has length 1, and the dot product ⟨a, b⟩ · ⟨c, d⟩ = ac + bd is 0 for perpendicular vectors."
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "polynomial-function": {
+  "def": "A function $p(x) = a_n x^n + \\cdots + a_1 x + a_0$ with whole-number powers and real coefficients."
+ },
+ "degree": {
+  "def": "The highest power of $x$ in a polynomial with a nonzero coefficient. A nonzero constant has degree $0$."
+ },
+ "leading-term": {
+  "def": "The term with the highest power of $x$, $a_n x^n$; its coefficient $a_n$ is the leading coefficient."
+ },
+ "local-extremum": {
+  "def": "A local maximum is an output at least as large as the outputs at all nearby inputs; a local minimum is one at most as large. They occur where a function switches between increasing and decreasing, or at an included endpoint."
+ },
+ "global-extremum": {
+  "def": "The global maximum is the greatest output over the whole domain; the global minimum is the least. On a closed interval, compare the local extremum values and the endpoint values."
+ },
+ "inflection": {
+  "def": "A point where a graph changes concavity: its rate of change switches from increasing to decreasing, or from decreasing to increasing."
+ }
+}

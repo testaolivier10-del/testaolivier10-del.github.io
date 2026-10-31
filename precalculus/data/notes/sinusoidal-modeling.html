@@ -1,0 +1,50 @@
+<p>This topic puts everything in Unit 3 so far to work. A context describes something that repeats: a seat on a Ferris wheel, the depth of a harbor, the temperature in a greenhouse. You turn the description into a sinusoidal model, read it, and use it. This is exactly what the exam's periodic modeling question (no calculator) asks.</p>
+
+<h2>Step 1: five points on one cycle</h2>
+<p>A sinusoid passes through five landmark points in each cycle, a quarter period apart: an extreme, a midline crossing, the other extreme, the other midline crossing, and the first extreme again. Most periodic questions start by asking for their coordinates.</p>
+<figure id="fig-ferris" data-fig="sinusoidal-modeling-ferris"><figcaption>An unscaled graph of a seat's height. $F$, $J$ and $M$ are extremes; $G$ and $K$ are at the height of the wheel's center.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> A Ferris wheel has diameter 40 m and its center is 25 m above the ground. It turns once every 8 minutes. A seat is at its lowest point at $t = 0$. Give the coordinates of $F$, $G$, $J$, $K$ and $M$ in the figure, where $h(t)$ is the seat's height in meters.</p>
+<p>The radius is 20 m, so the seat goes from $25 - 20 = 5$ m to $25 + 20 = 45$ m. The quarter period is $\frac{8}{4} = 2$ minutes.</p>
+<p>$F = (0, 5)$ lowest, $G = (2, 25)$ at the center's height going up, $J = (4, 45)$ highest, $K = (6, 25)$ going down, $M = (8, 5)$ lowest again.</p>
+</div>
+
+<h2>Step 2: the constants</h2>
+<p>From the five points: $d$ is the midline, $|a|$ the amplitude, $b = \frac{2\pi}{\text{period}}$. If the context gives a frequency, the period is its reciprocal first: 3 cycles per minute is a period of $\frac{1}{3}$ minute, so $b = 6\pi$.</p>
+<p>For the shift, match the starting point of the function you choose to a landmark:</p>
+<table class="compare">
+<thead><tr><th scope="col">Landmark at $t = t_0$</th><th scope="col">Simplest form</th></tr></thead>
+<tbody>
+<tr><td>highest point</td><td>$a\cos(b(t - t_0)) + d$, $a > 0$</td></tr>
+<tr><td>lowest point</td><td>$a\cos(b(t - t_0)) + d$, $a < 0$</td></tr>
+<tr><td>midline, rising</td><td>$a\sin(b(t - t_0)) + d$, $a > 0$</td></tr>
+<tr><td>midline, falling</td><td>$a\sin(b(t - t_0)) + d$, $a < 0$</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example 2.</b> Write the Ferris wheel model in the form $h(t) = a\sin(b(t + c)) + d$.</p>
+<p>$d = 25$, $|a| = 20$, $b = \frac{2\pi}{8} = \frac{\pi}{4}$. The seat is at the midline and rising at $G$, $t = 2$, so with $a = 20$: $h(t) = 20\sin\left(\frac{\pi}{4}(t - 2)\right) + 25$, which means $c = -2$.</p>
+<p>Check at $t = 0$: $20\sin\left(-\frac{\pi}{2}\right) + 25 = -20 + 25 = 5$. Correct: the seat starts at the bottom. ($a = -20$ with $c = 2$, or $-20\cos\left(\frac{\pi}{4}t\right) + 25$, are the same function.)</p>
+</div>
+
+<h2>Step 3: how the quantity changes on an interval</h2>
+<p>Two separate questions, two separate answers:</p>
+<ul>
+<li><b>Is the quantity increasing or decreasing?</b> Look at whether the graph is heading toward a highest point (increasing) or a lowest point (decreasing).</li>
+<li><b>Is its rate of change increasing or decreasing?</b> Look at the concavity. Above the midline the graph is concave down, so the rate of change is decreasing; below it, concave up, rate increasing.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 3.</b> For the seat, describe $h$ on $(2, 4)$.</p>
+<p>From $G$ to $J$ the seat climbs, so $h$ is increasing. The graph is above the midline and bends down toward the top: concave down, so the rate of change of $h$ is decreasing. In words: the seat is rising, but more and more slowly as it nears the top.</p>
+</div>
+<p>Write both statements with the function's name and the interval. <span class="pcalc-trap">"Increasing at a decreasing rate"</span> is calculus wording that the precalculus rubric does not ask for: say "$h$ is increasing and the rate of change of $h$ is decreasing."</p>
+
+<h2>Models from data</h2>
+<p>When you have data instead of a description, read the greatest and least values and the cycle length from a table, exactly as above. With a graphing calculator you can also run a <b>sinusoidal regression</b>, which chooses all four constants to fit the data as closely as possible. In radian mode, store the constants rather than rounding them, and give final answers correct to three decimal places.</p>
+<div class="worked">
+<p><b>Worked example 4 (calculator).</b> A greenhouse's temperature is modeled by $T(t) = -8\cos\left(\frac{\pi}{12}(t - 4)\right) + 20$ degrees Celsius, $t$ hours after midnight. For how long during the day is it above $25^\circ$C?</p>
+<p>Graph $y = T(t)$ and $y = 25$ on $0 \le t \le 24$ in radian mode and find the intersections: $t \approx 12.579$ and $t \approx 19.421$. Between them the temperature is above 25, for $19.421 - 12.579 \approx 6.842$ hours. Use the stored values when you subtract.</p>
+</div>
+
+<h2>Where the model holds</h2>
+<p>A sinusoidal model repeats forever, but the world does not have to. Tides drift because the real cycle is not exactly the one in the model; temperatures change with the seasons and the weather. Use a model on the domain the context supports, and expect predictions far beyond the data to get worse.</p>

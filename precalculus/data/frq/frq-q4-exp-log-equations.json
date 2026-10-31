@@ -1,0 +1,129 @@
+{
+ "id": "frq-q4-exp-log-equations",
+ "type": "symbolic",
+ "title": "Exponential and logarithmic equations and a single logarithm",
+ "calc": false,
+ "points": 6,
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "exp-log-equations",
+  "logarithmic-manipulation"
+ ],
+ "practices": [
+  "1.A",
+  "1.B"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Directions for this question",
+  "text": "Answer each part with exact values. Show the work that leads to your answers. No calculator.",
+  "table": {
+   "caption": "What each part asks for",
+   "cols": [
+    "Part",
+    "Task"
+   ],
+   "rows": [
+    [
+     "A",
+     "Solve an exponential and a logarithmic equation"
+    ],
+    [
+     "B",
+     "Rewrite as a single logarithm and as a single power"
+    ],
+    [
+     "C",
+     "Solve a logarithmic inequality"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Solve</b> $2e^{3x - 1} + 5 = 19$ for $x$.",
+   "rubric": [
+    {
+     "point": "$x = \\frac{1 + \\ln 7}{3}$, with the power isolated before taking $\\ln$",
+     "accept": [
+      "$e^{3x - 1} = 7$, $3x - 1 = \\ln 7$, $x = \\frac{1 + \\ln 7}{3}$"
+     ]
+    }
+   ],
+   "sample": "$2e^{3x - 1} = 14$, so $e^{3x - 1} = 7$. Then $3x - 1 = \\ln 7$ and $x = \\frac{1 + \\ln 7}{3}$."
+  },
+  {
+   "label": "A(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Solve</b> $\\log_2 x + \\log_2(x + 6) = 4$ for $x$.",
+   "rubric": [
+    {
+     "point": "$x = 2$, with $x = -8$ rejected because $\\log_2(-8)$ is undefined",
+     "accept": [
+      "$x(x + 6) = 16$, $(x + 8)(x - 2) = 0$, $x = 2$ ($x = -8$ is extraneous)"
+     ]
+    }
+   ],
+   "sample": "Product property: $\\log_2(x(x + 6)) = 4$, so $x^2 + 6x = 16$ and $(x + 8)(x - 2) = 0$. $x = -8$ makes $\\log_2 x$ undefined, so it is extraneous. The solution is $x = 2$."
+  },
+  {
+   "label": "B(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Rewrite</b> $2\\ln(x + 1) - \\ln x + 3\\ln 2$ as a single natural logarithm, for $x > 0$.",
+   "rubric": [
+    {
+     "point": "$\\ln \\frac{8(x + 1)^2}{x}$: one logarithm",
+     "accept": [
+      "$\\ln \\frac{8(x + 1)^2}{x}$",
+      "$\\ln\\left(\\frac{8x^2 + 16x + 8}{x}\\right)$"
+     ]
+    }
+   ],
+   "sample": "Power property: $\\ln(x + 1)^2 - \\ln x + \\ln 8$. Product and quotient: $\\ln \\frac{8(x + 1)^2}{x}$."
+  },
+  {
+   "label": "B(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Rewrite</b> $9^x \\cdot 3^{2 - x}$ as a single power of $3$.",
+   "rubric": [
+    {
+     "point": "$3^{x + 2}$",
+     "accept": [
+      "$3^{2x} \\cdot 3^{2 - x} = 3^{x + 2}$"
+     ]
+    }
+   ],
+   "sample": "$9^x = (3^2)^x = 3^{2x}$, so $9^x \\cdot 3^{2 - x} = 3^{2x + 2 - x} = 3^{x + 2}$."
+  },
+  {
+   "label": "C",
+   "points": 2,
+   "space": "lines",
+   "prompt": "<b>Solve</b> $3 - \\log_2(x + 1) \\ge 1$ for $x$.",
+   "rubric": [
+    {
+     "point": "$\\log_2(x + 1) \\le 2$ leads to $x + 1 \\le 4$, so $x \\le 3$",
+     "accept": [
+      "$x \\le 3$ from $x + 1 \\le 2^2$"
+     ]
+    },
+    {
+     "point": "The domain condition $x > -1$ included: $-1 < x \\le 3$",
+     "accept": [
+      "$-1 < x \\le 3$",
+      "$(-1, 3]$"
+     ]
+    }
+   ],
+   "sample": "$-\\log_2(x + 1) \\ge -2$, so $\\log_2(x + 1) \\le 2$. Since $\\log_2$ is increasing, $x + 1 \\le 4$, so $x \\le 3$. The logarithm also needs $x + 1 > 0$, so $x > -1$. The solution is $-1 < x \\le 3$."
+  }
+ ]
+}
