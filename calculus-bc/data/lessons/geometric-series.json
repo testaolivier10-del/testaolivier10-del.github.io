@@ -1,0 +1,81 @@
+{
+ "topic": "geometric-series",
+ "hook": "Cut a square in half, then cut one half in half, and keep going: the pieces $\\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\cdots$ fill the whole square, exactly 1. Each piece is the one before times the same number. Series built this way, geometric series, are the one family where you can always write the sum, and they return in every later topic of the unit.",
+ "prereq": [
+  {
+   "q": "A series has partial sums $S_n = 2 - \\frac{1}{n}$. Its sum is",
+   "options": [
+    "$2$",
+    "$1$",
+    "$0$",
+    "It has no sum"
+   ],
+   "correct": 0,
+   "why": "The sum is $\\lim_{n \\to \\infty} S_n = 2$.",
+   "review": "series-convergence"
+  },
+  {
+   "q": "$\\lim_{n \\to \\infty} \\left(\\frac{3}{4}\\right)^n =$",
+   "options": [
+    "$0$",
+    "$1$",
+    "$\\frac{3}{4}$",
+    "$\\infty$"
+   ],
+   "correct": 0,
+   "why": "A number between $-1$ and $1$ raised to larger and larger powers shrinks to 0.",
+   "review": "math-sequences"
+  }
+ ],
+ "figure": {
+  "figure": "geometric-series-ratios",
+  "caption": "Partial sums for $r = \\frac{1}{2}$ and $r = -\\frac{1}{2}$ settle at $\\frac{1}{1 - r}$; for $r = \\frac{5}{4}$ they grow without bound."
+ },
+ "chain": [
+  {
+   "cause": "Each term is the previous one times $r$",
+   "effect": "$S_n = a + ar + \\cdots + ar^{n-1} = \\frac{a(1 - r^n)}{1 - r}$"
+  },
+  {
+   "cause": "If $|r| < 1$, then $r^n \\to 0$",
+   "effect": "$S_n \\to \\frac{a}{1 - r}$: the series converges"
+  },
+  {
+   "cause": "If $|r| \\ge 1$, the terms do not shrink to 0",
+   "effect": "the partial sums have no limit: the series diverges"
+  },
+  {
+   "cause": "The sum starts at a later index",
+   "effect": "$a$ is the first term actually in the sum, not the value at $n = 0$"
+  }
+ ],
+ "ideas": [
+  "$\\sum_{n=0}^{\\infty} ar^n = \\frac{a}{1 - r}$ when $|r| < 1$; it diverges when $|r| \\ge 1$ (and $a \\ne 0$).",
+  "In the formula, $a$ is the first term of the sum as written: $\\sum_{n=1}^{\\infty} 5\\left(\\frac{1}{4}\\right)^n$ has $a = \\frac{5}{4}$, not 5.",
+  "Find $r$ by dividing a term by the one before it; rewrite $\\frac{2^n}{3^{n+1}}$ as $\\frac{1}{3}\\left(\\frac{2}{3}\\right)^n$ to see $a$ and $r$.",
+  "With $x$ in the ratio, the series converges for the $x$ where $|r| < 1$, and its sum is a function of $x$."
+ ],
+ "misconception": {
+  "wrong": "$\\sum_{n=2}^{\\infty} 3\\left(\\frac{1}{2}\\right)^n = \\frac{3}{1 - 1/2} = 6$.",
+  "right": "The first term in the sum is at $n = 2$: $3 \\cdot \\frac{1}{4} = \\frac{3}{4}$. The sum is $\\frac{3/4}{1/2} = \\frac{3}{2}$."
+ },
+ "check": [
+  "cbc-geometric-series-1",
+  "cbc-geometric-series-3",
+  "cbc-geometric-series-4",
+  "cbc-geometric-series-7",
+  "cbc-geometric-series-8",
+  "cbc-geometric-series-11"
+ ],
+ "summary": "A geometric series $\\sum ar^n$ has a constant ratio $r$ between terms. It converges exactly when $|r| < 1$, to $\\frac{\\text{first term}}{1 - r}$, where the first term is the first one actually in the sum. If $|r| \\ge 1$ it diverges.",
+ "connections": [
+  {
+   "href": "../notes/series-convergence.html",
+   "label": "Back: convergent and divergent series (10.1)"
+  },
+  {
+   "href": "../notes/nth-term-test.html",
+   "label": "Next: the nth term test for divergence (10.3)"
+  }
+ ]
+}

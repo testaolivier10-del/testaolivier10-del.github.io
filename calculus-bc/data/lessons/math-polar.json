@@ -1,0 +1,81 @@
+{
+ "topic": "math-polar",
+ "hook": "A lighthouse beam sweeps around and a boat is spotted 3 miles out along it. That is exactly how polar coordinates name a point: an angle to turn and a distance to go. Some curves, like flower petals and heart shapes, have messy equations in $x$ and $y$ but simple ones in polar form, and Unit 9 asks for their slopes and areas.",
+ "prereq": [
+  {
+   "q": "What are $\\cos\\frac{\\pi}{3}$ and $\\sin\\frac{\\pi}{3}$?",
+   "options": [
+    "$\\frac{1}{2}$ and $\\frac{\\sqrt{3}}{2}$",
+    "$\\frac{\\sqrt{3}}{2}$ and $\\frac{1}{2}$",
+    "$\\frac{\\sqrt{2}}{2}$ and $\\frac{\\sqrt{2}}{2}$",
+    "$1$ and $0$"
+   ],
+   "correct": 0,
+   "why": "On the unit circle the point at angle $\\frac{\\pi}{3}$ is $\\left(\\frac{1}{2}, \\frac{\\sqrt{3}}{2}\\right)$.",
+   "review": "math-trig"
+  },
+  {
+   "q": "A curve is given by $x = 2\\cos t$, $y = 2\\sin t$. What shape is it?",
+   "options": [
+    "A circle of radius 2 centered at the origin",
+    "A line through the origin",
+    "A parabola",
+    "A circle of radius 4 centered at the origin"
+   ],
+   "correct": 0,
+   "why": "$x^2 + y^2 = 4\\cos^2 t + 4\\sin^2 t = 4$: a circle of radius 2.",
+   "review": "math-parametric-vectors"
+  }
+ ],
+ "figure": {
+  "figure": "math-polar-coords",
+  "caption": "A point is a turn and a distance: $P$ is 3 units along the ray $\\theta = \\frac{\\pi}{3}$; $Q$, with $r = -2$, is 2 units along the opposite ray."
+ },
+ "chain": [
+  {
+   "cause": "Turn to the angle $\\theta$ and go a distance $r$",
+   "effect": "you reach the point $(r, \\theta)$"
+  },
+  {
+   "cause": "Drop the vertical and horizontal legs of that right triangle",
+   "effect": "$x = r\\cos\\theta$ and $y = r\\sin\\theta$"
+  },
+  {
+   "cause": "Let $r$ depend on $\\theta$, as $r = f(\\theta)$",
+   "effect": "as $\\theta$ turns, the point traces a polar curve"
+  },
+  {
+   "cause": "Make a table of $\\theta$ and $r$, then plot each point",
+   "effect": "you see where $r = 0$ (the pole) and where $r < 0$ (the opposite ray)"
+  }
+ ],
+ "ideas": [
+  "A polar point $(r, \\theta)$: turn to the ray at angle $\\theta$, then go $r$ units. A negative $r$ goes backward, through the pole, onto the opposite ray.",
+  "$x = r\\cos\\theta$, $y = r\\sin\\theta$, $r^2 = x^2 + y^2$. These connect every polar question to rectangular ones.",
+  "A polar curve $r = f(\\theta)$ is a parametric curve with parameter $\\theta$: $x = f(\\theta)\\cos\\theta$, $y = f(\\theta)\\sin\\theta$.",
+  "Shapes to know: $r = a$ (circle), $\\theta = c$ (line through the pole), $r = a\\cos\\theta$ and $r = a\\sin\\theta$ (circles through the pole), $r = a + b\\cos\\theta$ (limaçons, cardioid when $a = b$), $r = a\\sin(n\\theta)$ (roses)."
+ ],
+ "misconception": {
+  "wrong": "A point with $r = -2$ cannot exist: a distance is never negative.",
+  "right": "$r$ is a signed distance along the ray. $(-2, \\frac{\\pi}{4})$ is 2 units from the pole on the ray opposite $\\theta = \\frac{\\pi}{4}$, the same point as $(2, \\frac{5\\pi}{4})$."
+ },
+ "check": [
+  "cbc-math-polar-1",
+  "cbc-math-polar-3",
+  "cbc-math-polar-5",
+  "cbc-math-polar-6",
+  "cbc-math-polar-7",
+  "cbc-math-polar-8"
+ ],
+ "summary": "Polar coordinates name a point by an angle $\\theta$ and a signed distance $r$. Convert with $x = r\\cos\\theta$ and $y = r\\sin\\theta$. A polar curve $r = f(\\theta)$ is plotted from a table of $\\theta$ and $r$; watch for $r = 0$ (the curve meets the pole) and $r < 0$ (the point is on the opposite ray).",
+ "connections": [
+  {
+   "href": "../notes/planar-motion.html",
+   "label": "Back: motion in the plane (9.6)"
+  },
+  {
+   "href": "../notes/polar-derivatives.html",
+   "label": "Next: polar coordinates and polar derivatives (9.7)"
+  }
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "topic": "logistic-models",
+ "hook": "An exponential model says a population grows faster and faster forever. Real populations run out of food and space: growth is fast at first, then slows, and the population levels off. The logistic model builds that limit into the differential equation, and you can read the limit, and the moment of fastest growth, straight from the equation.",
+ "prereq": [
+  {
+   "q": "If $\\frac{dP}{dt} = 0.3P$, then as $t$ grows, $P$ (starting at a positive value)",
+   "options": [
+    "grows without bound",
+    "levels off at 0.3",
+    "decreases to 0",
+    "stays the same"
+   ],
+   "correct": 0,
+   "why": "An exponential model $P = P_0 e^{0.3t}$ grows without bound.",
+   "review": "exponential-models"
+  },
+  {
+   "q": "What are the equilibrium solutions of $\\frac{dy}{dt} = y(4 - y)$?",
+   "options": [
+    "$y = 0$ and $y = 4$",
+    "$y = 4$ only",
+    "$y = 2$",
+    "$y = -4$ and $y = 0$"
+   ],
+   "correct": 0,
+   "why": "The rate is 0 when $y = 0$ or $4 - y = 0$.",
+   "review": "reasoning-with-slope-fields"
+  }
+ ],
+ "figure": {
+  "figure": "logistic-models-curve",
+  "caption": "For dP/dt = 0.0008P(1000 − P) with P(0) = 100: the population rises toward the carrying capacity 1000 and is steepest at P = 500 (left). The rate as a function of P is a downward parabola with its peak, 200, at P = 500 (right)."
+ },
+ "chain": [
+  {
+   "cause": "The growth rate is jointly proportional to $P$ and to the room left, $K - P$",
+   "effect": "$\\frac{dP}{dt} = kP(K - P)$, a logistic differential equation"
+  },
+  {
+   "cause": "When $P$ is small, $K - P \\approx K$",
+   "effect": "$\\frac{dP}{dt} \\approx kKP$: growth is nearly exponential"
+  },
+  {
+   "cause": "As $P$ approaches $K$, the factor $K - P$ approaches 0",
+   "effect": "growth slows and $P$ levels off: $\\lim_{t \\to \\infty} P(t) = K$, the carrying capacity"
+  },
+  {
+   "cause": "The rate $kP(K - P)$ is a downward parabola in $P$",
+   "effect": "it is largest at $P = \\frac{K}{2}$, where the graph of $P(t)$ has a point of inflection"
+  }
+ ],
+ "ideas": [
+  "Logistic: $\\frac{dP}{dt} = kP(K - P)$ or $\\frac{dP}{dt} = rP\\left(1 - \\frac{P}{K}\\right)$. The carrying capacity $K$ is the positive value of $P$ that makes the rate 0.",
+  "For $0 < P(0) < K$, $P$ increases toward $K$; for $P(0) > K$, $P$ decreases toward $K$. Either way $\\lim_{t \\to \\infty} P(t) = K$.",
+  "Growth is fastest at $P = \\frac{K}{2}$: below it the graph of $P$ is concave up, above it concave down.",
+  "Read these from the equation; no formula for $P(t)$ is needed."
+ ],
+ "misconception": {
+  "wrong": "For $\\frac{dP}{dt} = 0.0006P(1200 - P)$, the population grows fastest when it is largest, near 1200.",
+  "right": "Near 1200 the factor $1200 - P$ is almost 0, so growth has nearly stopped. The rate $0.0006P(1200 - P)$ is largest halfway, at $P = 600$."
+ },
+ "check": [
+  "cbc-logistic-models-1",
+  "cbc-logistic-models-2",
+  "cbc-logistic-models-3",
+  "cbc-logistic-models-10",
+  "cbc-logistic-models-11",
+  "cbc-logistic-models-15"
+ ],
+ "summary": "A logistic model, $\\frac{dP}{dt} = kP(K - P)$, has a rate jointly proportional to the quantity and to the room left. Any positive starting value approaches the carrying capacity $K$ (from below it rises, from above it falls), and growth is fastest at $P = \\frac{K}{2}$, the point of inflection of $P(t)$. All of this is read from the equation, without solving it.",
+ "connections": [
+  {
+   "href": "../notes/exponential-models.html",
+   "label": "Back: exponential models (7.8)"
+  },
+  {
+   "href": "../notes/average-value.html",
+   "label": "Next: average value of a function (8.1)"
+  }
+ ]
+}

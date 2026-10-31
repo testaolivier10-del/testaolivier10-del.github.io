@@ -1,0 +1,150 @@
+{
+ "id": "frq-u10-geometric-tests",
+ "type": "series",
+ "calc": false,
+ "points": 9,
+ "title": "Four series: a geometric sum, the nth term test, the integral test and a p-series",
+ "units": [
+  "unit-10"
+ ],
+ "topics": [
+  "geometric-series",
+  "nth-term-test",
+  "integral-test",
+  "p-series"
+ ],
+ "practices": [
+  "1.E",
+  "3.B",
+  "3.C",
+  "3.D",
+  "4.C"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Four series",
+  "text": "<p>The four series below are used in parts (a) through (d). No calculator is allowed.</p>",
+  "table": {
+   "caption": "The series for each part ($k$ is a positive constant)",
+   "cols": [
+    "Part",
+    "Series"
+   ],
+   "rows": [
+    [
+     "(a)",
+     "$\\sum_{n=2}^{\\infty} 3\\left(-\\frac{2}{5}\\right)^n$"
+    ],
+    [
+     "(b)",
+     "$\\sum_{n=1}^{\\infty} \\frac{n^2}{3n^2 + 1}$"
+    ],
+    [
+     "(c)",
+     "$\\sum_{n=1}^{\\infty} ne^{-n^2}$"
+    ],
+    [
+     "(d)",
+     "$\\sum_{n=1}^{\\infty} \\frac{\\sqrt{n}}{n^{k}}$"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "The series in part (a) is geometric. <b>Explain</b> why it converges, and <b>find</b> its sum.",
+   "rubric": [
+    {
+     "point": "Ratio $r = -\\frac{2}{5}$ and convergence because $|r| < 1$",
+     "accept": [
+      "$\\left|-\\frac{2}{5}\\right| = \\frac{2}{5} < 1$, so the series converges",
+      "not earned for \\\"the terms approach 0\\\""
+     ]
+    },
+    {
+     "point": "Sum $\\frac{12}{35}$, from the first term $\\frac{12}{25}$ (the term at $n = 2$) over $1 - r$",
+     "accept": [
+      "$\\frac{12/25}{7/5}$",
+      "$\\frac{3}{1 + 2/5} - 3 + \\frac{6}{5}$, simplified to $\\frac{12}{35}$",
+      "not earned for $\\frac{3}{1 + 2/5} = \\frac{15}{7}$, the sum from $n = 0$"
+     ]
+    }
+   ],
+   "sample": "The series is geometric with ratio $r = -\\frac{2}{5}$. Since $|r| = \\frac{2}{5} < 1$, it converges. Its first term, at $n = 2$, is $3 \\cdot \\frac{4}{25} = \\frac{12}{25}$, so the sum is $\\frac{12/25}{1 - \\left(-\\frac{2}{5}\\right)} = \\frac{12/25}{7/5} = \\frac{12}{35}$."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Show</b> that the series in part (b) diverges.",
+   "rubric": [
+    {
+     "point": "Limit of the terms: $\\lim_{n \\to \\infty} \\frac{n^2}{3n^2 + 1} = \\frac{1}{3}$",
+     "accept": [
+      "dividing the top and bottom by $n^2$",
+      "limit written in $n$"
+     ]
+    },
+    {
+     "point": "Conclusion: $\\frac{1}{3} \\ne 0$, so the series diverges by the nth term test",
+     "accept": [
+      "\\\"the divergence test\\\"",
+      "not earned for \\\"the terms diverge\\\" or \\\"the series converges to $\\frac{1}{3}$\\\""
+     ]
+    }
+   ],
+   "sample": "$\\lim_{n \\to \\infty} \\frac{n^2}{3n^2 + 1} = \\lim_{n \\to \\infty} \\frac{1}{3 + 1/n^2} = \\frac{1}{3}$. Since this limit is not 0, the series $\\sum \\frac{n^2}{3n^2 + 1}$ diverges by the nth term test."
+  },
+  {
+   "label": "c",
+   "points": 3,
+   "prompt": "<b>Use the integral test</b> to determine whether the series in part (c) converges or diverges. <b>Show</b> that the conditions for the test are met.",
+   "rubric": [
+    {
+     "point": "Conditions: $f(x) = xe^{-x^2}$ is positive, continuous and decreasing for $x \\ge 1$, with decreasing shown, for example $f'(x) = e^{-x^2}(1 - 2x^2) < 0$ for $x \\ge 1$",
+     "accept": [
+      "all three conditions named",
+      "decreasing justified by the sign of $f'$"
+     ]
+    },
+    {
+     "point": "Improper integral in limit notation, evaluated: $\\lim_{b \\to \\infty} \\int_1^{b} xe^{-x^2}\\,dx = \\lim_{b \\to \\infty} \\left(\\frac{1}{2e} - \\frac{1}{2}e^{-b^2}\\right) = \\frac{1}{2e}$",
+     "accept": [
+      "the antiderivative $-\\frac{1}{2}e^{-x^2}$ with the limit kept to the end",
+      "not earned with arithmetic on $\\infty$, such as $-\\frac{1}{2}e^{-\\infty^2}$"
+     ]
+    },
+    {
+     "point": "Conclusion: the integral converges, so the series converges by the integral test",
+     "accept": [
+      "the series converges",
+      "not earned for \\\"the series converges to $\\frac{1}{2e}$\\\""
+     ]
+    }
+   ],
+   "sample": "Let $f(x) = xe^{-x^2}$. For $x \\ge 1$, $f$ is positive and continuous, and $f'(x) = e^{-x^2} - 2x^2e^{-x^2} = e^{-x^2}(1 - 2x^2) < 0$, so $f$ is decreasing. Then $\\int_1^{\\infty} xe^{-x^2}\\,dx = \\lim_{b \\to \\infty} \\Big[-\\frac{1}{2}e^{-x^2}\\Big]_1^{b} = \\lim_{b \\to \\infty} \\left(-\\frac{1}{2}e^{-b^2} + \\frac{1}{2e}\\right) = \\frac{1}{2e}$. The improper integral converges, so $\\sum_{n=1}^{\\infty} ne^{-n^2}$ converges by the integral test."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "<b>Find</b> all values of $k$ for which the series in part (d) converges. <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "Rewrite as a $p$-series: $\\frac{\\sqrt{n}}{n^{k}} = \\frac{1}{n^{k - 1/2}}$, so $p = k - \\frac{1}{2}$",
+     "accept": [
+      "$n^{1/2 - k}$ identified as $\\frac{1}{n^p}$ with $p = k - \\frac{1}{2}$"
+     ]
+    },
+    {
+     "point": "Answer $k > \\frac{3}{2}$, because a $p$-series converges exactly when $p > 1$",
+     "accept": [
+      "$k - \\frac{1}{2} > 1$",
+      "not earned for $k \\ge \\frac{3}{2}$: at $k = \\frac{3}{2}$ the series is harmonic and diverges"
+     ]
+    }
+   ],
+   "sample": "$\\frac{\\sqrt{n}}{n^{k}} = \\frac{1}{n^{k - 1/2}}$, so the series is a $p$-series with $p = k - \\frac{1}{2}$. A $p$-series converges exactly when $p > 1$, so the series converges for $k - \\frac{1}{2} > 1$, that is $k > \\frac{3}{2}$. (At $k = \\frac{3}{2}$ it is the harmonic series, which diverges.)"
+  }
+ ]
+}

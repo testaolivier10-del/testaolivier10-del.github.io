@@ -1,0 +1,12 @@
+{
+ "geometric-series-ratios": {
+  "file": "figures/geometric-series-ratios.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Partial sums S sub n = 1 + r + ... + r to the n for n = 0 to 10, one dot each, for three ratios. Left, r = 1/2: the partial sums 1, 1.5, 1.75, ... rise toward the dashed line at 2, the sum 1/(1 − 1/2). Middle, r = −1/2: the partial sums 1, 0.5, 0.75, 0.625, ... zigzag in toward 2/3, the sum 1/(1 + 1/2). Right, r = 5/4: the partial sums grow without bound, so the series diverges."
+ }
+}

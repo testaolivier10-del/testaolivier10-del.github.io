@@ -1,0 +1,8 @@
+{
+ "absolute-convergence": {
+  "def": "A series $\\sum a_n$ converges absolutely when $\\sum |a_n|$ converges. Absolute convergence implies convergence, and the sum does not change when the terms are rearranged."
+ },
+ "conditional-convergence": {
+  "def": "A series converges conditionally when $\\sum a_n$ converges but $\\sum |a_n|$ diverges, as $\\sum \\frac{(-1)^{n+1}}{n}$ does."
+ }
+}

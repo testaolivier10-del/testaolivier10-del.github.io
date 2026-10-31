@@ -1,0 +1,81 @@
+{
+ "topic": "integral-test",
+ "hook": "Stack boxes of width 1 and heights $\\frac{1}{4}, \\frac{1}{9}, \\frac{1}{16}, \\ldots$ along the $x$-axis, and they fit neatly under the curve $y = \\frac{1}{x^2}$. If the area under the curve is finite, the boxes, which are the terms of a series, cannot add up to infinity. That picture is the integral test: it trades a series you cannot add for an improper integral you can evaluate.",
+ "prereq": [
+  {
+   "q": "$\\int_1^{\\infty} \\frac{1}{x^2}\\,dx$ equals",
+   "options": [
+    "$1$",
+    "$\\infty$",
+    "$\\frac{1}{2}$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": "$\\lim_{b \\to \\infty} \\left(1 - \\frac{1}{b}\\right) = 1$.",
+   "review": "improper-integrals"
+  },
+  {
+   "q": "$f$ is decreasing on an interval when",
+   "options": [
+    "$f'(x) < 0$ there",
+    "$f(x) < 0$ there",
+    "$f''(x) < 0$ there",
+    "$f'(x) = 0$ there"
+   ],
+   "correct": 0,
+   "why": "A negative derivative means the function falls as $x$ grows.",
+   "review": "increasing-decreasing"
+  }
+ ],
+ "figure": {
+  "figure": "integral-test-rectangles",
+  "caption": "Boxes of height $\\frac{1}{n^2}$ fit under $y = \\frac{1}{x^2}$, whose area is finite; boxes of height $\\frac{1}{n}$ stick out above $y = \\frac{1}{x}$, whose area is infinite."
+ },
+ "chain": [
+  {
+   "cause": "Match the terms with a function: $a_n = f(n)$, with $f$ positive, continuous and decreasing",
+   "effect": "each term is the area of a box of width 1 that fits beside the curve"
+  },
+  {
+   "cause": "Boxes under the curve, from $x = 1$ on",
+   "effect": "$a_2 + a_3 + \\cdots \\le \\int_1^{\\infty} f(x)\\,dx$: a finite integral holds the series down"
+  },
+  {
+   "cause": "Boxes over the curve",
+   "effect": "$a_1 + \\cdots + a_n \\ge \\int_1^{n+1} f(x)\\,dx$: an infinite integral pushes the series up"
+  },
+  {
+   "cause": "So the series and the integral behave alike",
+   "effect": "both converge or both diverge"
+  }
+ ],
+ "ideas": [
+  "Integral test: if $f$ is positive, continuous and decreasing on $[k, \\infty)$ and $a_n = f(n)$, then $\\sum_{n=k}^{\\infty} a_n$ and $\\int_k^{\\infty} f(x)\\,dx$ both converge or both diverge.",
+  "State the three conditions every time. \\\"Decreasing\\\" usually needs $f'(x) < 0$; it may hold only from some $x$ on, and then the test starts there.",
+  "The integral's value is not the series' sum. The test decides convergence only.",
+  "Write the improper integral as a limit, $\\lim_{b \\to \\infty} \\int_k^{b} f(x)\\,dx$, to the end."
+ ],
+ "misconception": {
+  "wrong": "$\\int_1^{\\infty} \\frac{dx}{x^2} = 1$, so $\\sum_{n=1}^{\\infty} \\frac{1}{n^2} = 1$.",
+  "right": "The integral test shows the series converges, nothing more. Its first term is already 1, and the sum is about 1.645."
+ },
+ "check": [
+  "cbc-integral-test-1",
+  "cbc-integral-test-2",
+  "cbc-integral-test-3",
+  "cbc-integral-test-6",
+  "cbc-integral-test-8",
+  "cbc-integral-test-12"
+ ],
+ "summary": "For a series of positive terms $a_n = f(n)$ with $f$ positive, continuous and decreasing, compute $\\lim_{b \\to \\infty} \\int_k^{b} f(x)\\,dx$. A finite limit means the series converges; an infinite one means it diverges. Check the conditions, keep limit notation, and never report the integral as the sum.",
+ "connections": [
+  {
+   "href": "../notes/nth-term-test.html",
+   "label": "Back: the nth term test for divergence (10.3)"
+  },
+  {
+   "href": "../notes/p-series.html",
+   "label": "Next: harmonic series and p-series (10.5)"
+  }
+ ]
+}

@@ -1,0 +1,532 @@
+{
+ "stimuli": {
+  "polar-derivatives-s1": {
+   "kind": "table",
+   "title": "A polar curve given by a table",
+   "table": {
+    "caption": "Values of $r = f(\\theta)$ and its derivative for a differentiable function $f$",
+    "cols": [
+     "$\\theta$",
+     "$r = f(\\theta)$",
+     "$\\frac{dr}{d\\theta} = f'(\\theta)$"
+    ],
+    "rows": [
+     [
+      "$0$",
+      "$2$",
+      "$3$"
+     ],
+     [
+      "$\\frac{\\pi}{2}$",
+      "$4$",
+      "$-2$"
+     ],
+     [
+      "$\\pi$",
+      "$-1$",
+      "$-3$"
+     ],
+     [
+      "$\\frac{3\\pi}{2}$",
+      "$-2$",
+      "$1$"
+     ]
+    ]
+   }
+  },
+  "polar-derivatives-s2": {
+   "kind": "table",
+   "title": "The curve $r = \\theta + 2\\cos\\theta$ (calculator)",
+   "table": {
+    "caption": "The polar curve $r = \\theta + 2\\cos\\theta$ for $0 \\le \\theta \\le \\pi$, with its derivative ($\\theta$ in radians)",
+    "cols": [
+     "Quantity",
+     "Formula"
+    ],
+    "rows": [
+     [
+      "Curve",
+      "$r = \\theta + 2\\cos\\theta$"
+     ],
+     [
+      "Derivative",
+      "$\\frac{dr}{d\\theta} = 1 - 2\\sin\\theta$"
+     ],
+     [
+      "Position",
+      "$x = r\\cos\\theta$, $y = r\\sin\\theta$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-polar-derivatives-1",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "For a polar curve $r = f(\\theta)$, which expression is $\\frac{dx}{d\\theta}$?",
+   "options": [
+    "$f'(\\theta)\\cos\\theta - f(\\theta)\\sin\\theta$",
+    "$f'(\\theta)\\sin\\theta + f(\\theta)\\cos\\theta$",
+    "$-f'(\\theta)\\sin\\theta$",
+    "$f'(\\theta)\\cos\\theta + f(\\theta)\\sin\\theta$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x = f(\\theta)\\cos\\theta$, so by the product rule $\\frac{dx}{d\\theta} = f'(\\theta)\\cos\\theta + f(\\theta)(-\\sin\\theta)$.",
+    "options": [
+     "Right: product rule on $x = f(\\theta)\\cos\\theta$.",
+     "This is $\\frac{dy}{d\\theta}$, from $y = f(\\theta)\\sin\\theta$.",
+     "The product rule needs two terms: differentiate $f(\\theta)$ and $\\cos\\theta$ in turn.",
+     "The derivative of $\\cos\\theta$ is $-\\sin\\theta$, so the second term is subtracted."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-2",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the slope of the tangent line to $r = 3\\sin\\theta$ at $\\theta = \\frac{\\pi}{6}$.",
+   "numeric": {
+    "answer": "sqrt(3)",
+    "mistakes": [
+     {
+      "value": "3*sqrt(3)/2",
+      "why": "That is $\\frac{dr}{d\\theta}$, the rate of change of the distance from the pole. The slope is $\\frac{dy/d\\theta}{dx/d\\theta}$."
+     },
+     {
+      "value": "sqrt(3)/3",
+      "why": "The fraction is upside down: the slope is $\\frac{dy/d\\theta}{dx/d\\theta}$, with $\\frac{dy}{d\\theta}$ on top."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$r = \\frac{3}{2}$ and $\\frac{dr}{d\\theta} = 3\\cos\\theta = \\frac{3\\sqrt{3}}{2}$. Then $\\frac{dy}{d\\theta} = \\frac{dr}{d\\theta}\\sin\\theta + r\\cos\\theta = \\frac{3\\sqrt{3}}{4} + \\frac{3\\sqrt{3}}{4} = \\frac{3\\sqrt{3}}{2}$ and $\\frac{dx}{d\\theta} = \\frac{dr}{d\\theta}\\cos\\theta - r\\sin\\theta = \\frac{9}{4} - \\frac{3}{4} = \\frac{3}{2}$, so $\\frac{dy}{dx} = \\frac{3\\sqrt{3}/2}{3/2} = \\sqrt{3}$."
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-3",
+   "type": "expr",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the spiral $r = \\theta$, write $\\frac{dy}{dx}$ in terms of $\\theta$.",
+   "expr": {
+    "answer": "(sin(theta) + theta*cos(theta))/(cos(theta) - theta*sin(theta))",
+    "vars": [
+     "theta"
+    ],
+    "domain": [
+     0.1,
+     0.6
+    ],
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "1",
+      "why": "That is $\\frac{dr}{d\\theta}$. Write $x = \\theta\\cos\\theta$ and $y = \\theta\\sin\\theta$ and divide $\\frac{dy}{d\\theta}$ by $\\frac{dx}{d\\theta}$."
+     },
+     {
+      "expr": "(cos(theta) - theta*sin(theta))/(sin(theta) + theta*cos(theta))",
+      "why": "The fraction is upside down: $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta}$."
+     },
+     {
+      "expr": "tan(theta)",
+      "why": "$\\tan\\theta$ is the slope of the ray to the point, not of the curve; the product rule adds a second term to each derivative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x = \\theta\\cos\\theta$ and $y = \\theta\\sin\\theta$, so $\\frac{dx}{d\\theta} = \\cos\\theta - \\theta\\sin\\theta$ and $\\frac{dy}{d\\theta} = \\sin\\theta + \\theta\\cos\\theta$; divide."
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-4",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polar-derivatives-s1",
+   "q": "At $\\theta = \\frac{\\pi}{2}$, is the point on the curve moving toward the pole or away from it, as $\\theta$ increases?",
+   "options": [
+    "Away from the pole: $r = 4$ is large",
+    "Toward the pole: $r > 0$ and $\\frac{dr}{d\\theta} < 0$",
+    "Away from the pole: $\\frac{dx}{d\\theta} < 0$",
+    "Neither: $\\cos\\frac{\\pi}{2} = 0$ makes $\\frac{dr}{d\\theta} = 0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The distance from the pole is $|r| = r$ here, and $\\frac{dr}{d\\theta} = -2 < 0$: the distance is decreasing, so the point moves toward the pole.",
+    "options": [
+     "The size of $r$ says where the point is; the sign of $\\frac{dr}{d\\theta}$, with the sign of $r$, says how the distance changes.",
+     "Right: a positive distance that is decreasing.",
+     "$\\frac{dx}{d\\theta}$ tracks the horizontal position. The distance from the pole is $|r|$, read from $r$ and $\\frac{dr}{d\\theta}$.",
+     "$\\frac{dr}{d\\theta} = -2$ is read from the table; it is not multiplied by $\\cos\\theta$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-5",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "polar-derivatives-s1",
+   "q": "At $\\theta = \\pi$, is the point on the curve moving toward the pole or away from it, as $\\theta$ increases?",
+   "options": [
+    "Away: $r < 0$ and $\\frac{dr}{d\\theta} < 0$, so $|r|$ grows",
+    "Toward: $\\frac{dr}{d\\theta} < 0$, so the value of $r$ is decreasing",
+    "Toward: $r < 0$ puts the point on the opposite ray",
+    "Neither: the point is at the pole"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The distance from the pole is $|r|$. With $r = -1$ and $\\frac{dr}{d\\theta} = -3$, $r$ is becoming more negative, so $|r|$ is increasing: the point moves away from the pole. The rule: $|r|$ increases when $r$ and $\\frac{dr}{d\\theta}$ have the same sign.",
+    "options": [
+     "Right: $r$ and $\\frac{dr}{d\\theta}$ have the same sign, so the distance $|r|$ increases.",
+     "A negative $\\frac{dr}{d\\theta}$ means toward the pole when $r > 0$. Here $r = -1$, and $r$ becoming more negative moves it away.",
+     "A negative $r$ puts the point on the opposite ray; it says nothing about how the distance is changing.",
+     "The point is at the pole when $r = 0$; here $r = -1$, one unit away."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-6",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-derivatives-s1",
+   "q": "Find $\\frac{dy}{d\\theta}$ at $\\theta = 0$.",
+   "numeric": {
+    "answer": "2",
+    "mistakes": [
+     {
+      "value": "3",
+      "why": "That is $\\frac{dr}{d\\theta}$. With $y = r\\sin\\theta$, $\\frac{dy}{d\\theta} = \\frac{dr}{d\\theta}\\sin\\theta + r\\cos\\theta$."
+     },
+     {
+      "value": "0",
+      "why": "Only the first term, $\\frac{dr}{d\\theta}\\sin\\theta$, is 0 at $\\theta = 0$; the product rule adds $r\\cos\\theta = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{d\\theta} = \\frac{dr}{d\\theta}\\sin\\theta + r\\cos\\theta = 3 \\cdot 0 + 2 \\cdot 1 = 2$."
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-7",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "polar-derivatives-s1",
+   "q": "Find the slope $\\frac{dy}{dx}$ of the curve at $\\theta = \\frac{\\pi}{2}$.",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": "2",
+      "why": "The fraction is upside down: $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{-2}{-4}$."
+     },
+     {
+      "value": "-2",
+      "why": "That is $\\frac{dr}{d\\theta}$ (or $\\frac{dy}{d\\theta}$ alone). Divide $\\frac{dy}{d\\theta}$ by $\\frac{dx}{d\\theta} = -4$."
+     },
+     {
+      "value": "-1/2",
+      "why": "Both derivatives are negative here, so their quotient is positive: check the sign of $\\frac{dx}{d\\theta} = -r\\sin\\frac{\\pi}{2} = -4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dx}{d\\theta} = \\frac{dr}{d\\theta}\\cos\\theta - r\\sin\\theta = (-2)(0) - 4(1) = -4$ and $\\frac{dy}{d\\theta} = \\frac{dr}{d\\theta}\\sin\\theta + r\\cos\\theta = (-2)(1) + 4(0) = -2$, so $\\frac{dy}{dx} = \\frac{-2}{-4} = \\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-8",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-derivatives-s1",
+   "q": "Find the $x$-coordinate of the point on the curve at $\\theta = \\pi$.",
+   "numeric": {
+    "answer": "1",
+    "mistakes": [
+     {
+      "value": "-1",
+      "why": "That would be $r = 1$ on the ray $\\theta = \\pi$. Here $r = -1$: $x = (-1)(-1) = 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x = r\\cos\\theta = (-1)\\cos\\pi = 1$: the ray $\\theta = \\pi$ points left, and the negative $r$ puts the point on the right."
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-9",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "At which points does a polar curve $r = f(\\theta)$ have a horizontal tangent line?",
+   "options": [
+    "Where $\\frac{dy}{d\\theta} = 0$ and $\\frac{dx}{d\\theta} \\ne 0$",
+    "Where $\\frac{dr}{d\\theta} = 0$",
+    "Where $\\frac{dx}{d\\theta} = 0$ and $\\frac{dy}{d\\theta} \\ne 0$",
+    "Where $r = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta}$ is 0 when the numerator is 0 and the denominator is not.",
+    "options": [
+     "Right: the slope $\\frac{dy/d\\theta}{dx/d\\theta}$ is 0 there.",
+     "$\\frac{dr}{d\\theta} = 0$ is where the distance from the pole stops changing, such as the tip of a petal; the tangent there is perpendicular to the ray, not horizontal in general.",
+     "That makes the slope's denominator 0: a vertical tangent.",
+     "$r = 0$ is the pole. A curve through the pole has tangent along the ray $\\theta$ there, horizontal only if that ray is horizontal."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-10",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The rose $r = 2\\cos(3\\theta)$ passes through the pole at $\\theta = \\frac{\\pi}{6}$. Find the slope of its tangent line there.",
+   "numeric": {
+    "answer": "sqrt(3)/3",
+    "mistakes": [
+     {
+      "value": "0",
+      "why": "$r = 0$ there, but $\\frac{dr}{d\\theta} = -6$, so neither derivative of $x$ or $y$ is 0. Compute both and divide."
+     },
+     {
+      "value": "-6",
+      "why": "That is $\\frac{dr}{d\\theta}$, the rate of change of the distance. The slope is $\\frac{dy/d\\theta}{dx/d\\theta}$."
+     },
+     {
+      "value": "sqrt(3)",
+      "why": "The fraction is upside down: $\\frac{dy/d\\theta}{dx/d\\theta} = \\frac{-3}{-3\\sqrt{3}}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $\\theta = \\frac{\\pi}{6}$, $r = 0$ and $\\frac{dr}{d\\theta} = -6\\sin\\frac{\\pi}{2} = -6$. Then $\\frac{dx}{d\\theta} = -6\\cos\\frac{\\pi}{6} - 0 = -3\\sqrt{3}$ and $\\frac{dy}{d\\theta} = -6\\sin\\frac{\\pi}{6} + 0 = -3$, so $\\frac{dy}{dx} = \\frac{-3}{-3\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$. At the pole the curve is tangent to the ray $\\theta = \\frac{\\pi}{6}$, whose slope is $\\tan\\frac{\\pi}{6}$."
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-11",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "2.C",
+   "level": "recall",
+   "diff": 2,
+   "q": "For a polar curve, which expression gives $\\frac{d^2y}{dx^2}$?",
+   "options": [
+    "$\\frac{d}{d\\theta}\\left(\\frac{dy}{dx}\\right)$",
+    "$\\dfrac{d^2y/d\\theta^2}{d^2x/d\\theta^2}$",
+    "$\\dfrac{\\frac{d}{d\\theta}\\left(\\frac{dy}{dx}\\right)}{dx/d\\theta}$",
+    "$\\dfrac{d^2y/d\\theta^2}{dx/d\\theta}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A polar curve is a parametric curve in $\\theta$, so $\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{d\\theta}\\left(\\frac{dy}{dx}\\right)}{dx/d\\theta}$ (Topic 9.2).",
+    "options": [
+     "This is the rate of change of the slope per radian; it still needs to be divided by $\\frac{dx}{d\\theta}$ to be per unit of $x$.",
+     "Second derivatives do not divide this way; differentiate $\\frac{dy}{dx}$ itself with respect to $\\theta$.",
+     "Right: differentiate the slope with respect to $\\theta$, then divide by $\\frac{dx}{d\\theta}$, as for any parametric curve.",
+     "This differentiates $\\frac{dy}{d\\theta}$ instead of the slope $\\frac{dy}{dx}$; the quantity to differentiate is $\\frac{dy}{dx}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-12",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For a polar curve $r = f(\\theta)$, $f(1) = 2$ and $f'(1) = -3$. What does $f'(1) = -3$ mean?",
+   "options": [
+    "At $\\theta = 1$, the slope of the curve is $-3$",
+    "The distance from the pole shrinks at 3 units per radian",
+    "At $\\theta = 1$, the point is moving downward at 3 units per radian",
+    "At $\\theta = 1$, the point is 3 units from the pole"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f'(\\theta) = \\frac{dr}{d\\theta}$ is the rate of change of $r$ with respect to $\\theta$. With $r = 2 > 0$, a negative rate means the distance from the pole is decreasing, at 3 units per radian.",
+    "options": [
+     "The slope is $\\frac{dy}{dx}$, which needs both $\\frac{dx}{d\\theta}$ and $\\frac{dy}{d\\theta}$.",
+     "Right: $r = 2 > 0$ is the distance, and $\\frac{dr}{d\\theta} < 0$ means it is shrinking.",
+     "Moving down is the sign of $\\frac{dy}{d\\theta} = f'(1)\\sin 1 + f(1)\\cos 1$, not of $f'(1)$.",
+     "The distance is $|f(1)| = 2$; $f'(1)$ is its rate of change."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-13",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "A point moves along $r = 2 + 2\\cos\\theta$ with $\\frac{d\\theta}{dt} = \\frac{1}{2}$ radian per second. Find $\\frac{dr}{dt}$ when $\\theta = \\frac{\\pi}{3}$.",
+   "numeric": {
+    "answer": "-sqrt(3)/2",
+    "mistakes": [
+     {
+      "value": "-sqrt(3)",
+      "why": "That is $\\frac{dr}{d\\theta}$. Multiply by $\\frac{d\\theta}{dt} = \\frac{1}{2}$ to get the rate per second."
+     },
+     {
+      "value": "-1",
+      "why": "That uses $\\sin\\frac{\\pi}{3} = \\frac{1}{2}$. It is $\\frac{\\sqrt{3}}{2}$; $\\cos\\frac{\\pi}{3} = \\frac{1}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Chain rule: $\\frac{dr}{dt} = \\frac{dr}{d\\theta} \\cdot \\frac{d\\theta}{dt} = (-2\\sin\\frac{\\pi}{3}) \\cdot \\frac{1}{2} = -\\sqrt{3} \\cdot \\frac{1}{2} = -\\frac{\\sqrt{3}}{2}$ units per second."
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-14",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "polar-derivatives-s2",
+   "q": "At $\\theta = 2$, is the point on the curve moving toward the pole or away from it, as $\\theta$ increases?",
+   "options": [
+    "Away: $r(2) \\approx 1.168$ is positive, so the distance grows",
+    "Away: $\\frac{dr}{d\\theta} \\approx -0.819$ and $\\cos 2 < 0$",
+    "Toward: $\\frac{dy}{d\\theta} < 0$ at $\\theta = 2$, so the point drops",
+    "Toward: $r(2) \\approx 1.168 > 0$ and $\\frac{dr}{d\\theta} \\approx -0.819 < 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$r(2) = 2 + 2\\cos 2 \\approx 1.168$ and $\\frac{dr}{d\\theta} = 1 - 2\\sin 2 \\approx -0.819$ (radian mode). $r > 0$ and $r$ is decreasing, so the point moves toward the pole.",
+    "options": [
+     "The sign of $r$ alone does not say how the distance changes; read it with the sign of $\\frac{dr}{d\\theta}$.",
+     "The sign of $\\cos 2$ matters for $x$, not for the distance $|r|$.",
+     "$\\frac{dy}{d\\theta}$ says whether the point moves up or down, not toward or away from the pole.",
+     "Right: a positive distance that is decreasing."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-15",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "polar-derivatives-s2",
+   "q": "Find the slope $\\frac{dy}{dx}$ of the curve at $\\theta = 1$.",
+   "numeric": {
+    "answer": -0.25921741228847733,
+    "mistakes": [
+     {
+      "value": -0.682941969615793,
+      "why": "That is $\\frac{dr}{d\\theta}$ at $\\theta = 1$. The slope is $\\frac{dy/d\\theta}{dx/d\\theta}$."
+     },
+     {
+      "value": -3.857765538092488,
+      "why": "The fraction is upside down: $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$r(1) = 1 + 2\\cos 1$ and $\\frac{dr}{d\\theta}\\Big|_{\\theta = 1} = 1 - 2\\sin 1$. Then $\\frac{dy}{d\\theta} = \\frac{dr}{d\\theta}\\sin\\theta + r\\cos\\theta \\approx 0.549$ and $\\frac{dx}{d\\theta} = \\frac{dr}{d\\theta}\\cos\\theta - r\\sin\\theta \\approx -2.120$, so $\\frac{dy}{dx} \\approx \\frac{0.549}{-2.120} \\approx -0.259$. Store the values and round only at the end."
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-16",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "calc": true,
+   "stimulus": "polar-derivatives-s2",
+   "q": "The curve has a horizontal tangent line at one value of $\\theta$ in $0 < \\theta < \\frac{\\pi}{2}$. Find that value.",
+   "numeric": {
+    "answer": 1.1656237771369453,
+    "mistakes": [
+     {
+      "value": 0.5235987755982988,
+      "why": "That solves $\\frac{dr}{d\\theta} = 1 - 2\\sin\\theta = 0$, where the distance from the pole is largest. A horizontal tangent needs $\\frac{dy}{d\\theta} = 0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Solve $\\frac{dy}{d\\theta} = (1 - 2\\sin\\theta)\\sin\\theta + (\\theta + 2\\cos\\theta)\\cos\\theta = 0$ on the calculator: $\\theta \\approx 1.166$. There $\\frac{dx}{d\\theta} \\approx -2.126 \\ne 0$, so the tangent is horizontal."
+   }
+  },
+  {
+   "id": "cbc-polar-derivatives-17",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "polar-derivatives-s2",
+   "q": "Find the distance from the point on the curve at $\\theta = 2.5$ to the $y$-axis.",
+   "numeric": {
+    "answer": 0.719196853404108,
+    "mistakes": [
+     {
+      "value": 0.8977127689061326,
+      "why": "That is $r$, the distance from the pole. The distance from the $y$-axis is $|r\\cos\\theta|$."
+     },
+     {
+      "value": 0.5372560855967529,
+      "why": "That is $|y| = |r\\sin\\theta|$, the distance from the $x$-axis."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The distance from the $y$-axis is $|x| = |r\\cos\\theta|$. $r(2.5) = 2.5 + 2\\cos 2.5 \\approx 0.898$ and $x = r\\cos 2.5 \\approx -0.719$, so the distance is about $0.719$."
+   }
+  }
+ ]
+}

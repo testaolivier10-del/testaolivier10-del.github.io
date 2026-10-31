@@ -1,0 +1,54 @@
+<p>In 8.13 you found the length of a graph $y = f(x)$. A parametric curve can loop, turn back and cross itself, so it is often not a graph of a function at all. Its length still comes from the same picture: many short straight pieces, each measured with the Pythagorean theorem.</p>
+
+<h2>Building the formula</h2>
+<figure id="fig-pieces" data-fig="parametric-arc-length-pieces"><figcaption>Short straight pieces approximate the curve; each is a hypotenuse.</figcaption></figure>
+<p>Split the time interval $a \le t \le b$ into short steps of length $\Delta t$. In one step the point moves about $\Delta x \approx x'(t)\,\Delta t$ across and $\Delta y \approx y'(t)\,\Delta t$ up, so that piece of the curve is close to a segment of length</p>
+<p>$$\Delta s \approx \sqrt{(\Delta x)^2 + (\Delta y)^2} \approx \sqrt{(x'(t))^2 + (y'(t))^2}\,\Delta t.$$</p>
+<p><a class="figref" href="#fig-pieces">The figure</a> shows one such triangle. Adding the pieces gives a Riemann sum, and letting $\Delta t$ shrink turns it into an integral:</p>
+<p>$$L = \int_a^b \sqrt{(x'(t))^2 + (y'(t))^2}\,dt.$$</p>
+<p>The integrand $\sqrt{(x'(t))^2 + (y'(t))^2}$ is the <b>speed</b> of the moving point: how much path it covers per unit of time. So the integral says "speed times time, added up", which is distance traveled. It equals the length of the curve when the curve is traced <b>exactly once</b> as $t$ runs from $a$ to $b$.</p>
+
+<h2>Exact lengths</h2>
+<p>An exact answer needs an integrand that simplifies. Look for $\cos^2 t + \sin^2 t = 1$ or a common factor that comes out of the root.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the length of $x = 2\cos t$, $y = 2\sin t$ for $0 \le t \le \pi$.</p>
+<p>$x' = -2\sin t$ and $y' = 2\cos t$, so $(x')^2 + (y')^2 = 4\sin^2 t + 4\cos^2 t = 4$.</p>
+<p>$L = \int_0^{\pi} \sqrt{4}\,dt = 2\pi$.</p>
+<p>Check: the curve is the upper half of a circle of radius 2, and half its circumference is $\frac{1}{2}(2\pi \cdot 2) = 2\pi$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the length of $x = \frac{1}{3}t^3$, $y = \frac{1}{2}t^2$ for $0 \le t \le \sqrt{8}$.</p>
+<p>$x' = t^2$ and $y' = t$, so $\sqrt{t^4 + t^2} = \sqrt{t^2(t^2 + 1)} = t\sqrt{t^2 + 1}$ for $t \ge 0$.</p>
+<p>Substitute $u = t^2 + 1$, $du = 2t\,dt$; the limits become $u = 1$ and $u = 9$:</p>
+<p>$$L = \frac{1}{2}\int_1^9 u^{1/2}\,du = \frac{1}{3}u^{3/2}\Big|_1^9 = \frac{1}{3}(27 - 1) = \frac{26}{3}.$$</p>
+</div>
+
+<h2>Calculator lengths</h2>
+<p>Most arc length integrals have no elementary antiderivative, so on the exam they are calculator questions. Write the full integral as your setup, then give the value to three decimal places.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find the length of $x = t^2$, $y = \sin(2t)$ for $0 \le t \le 2$.</p>
+<p>Setup: $L = \int_0^2 \sqrt{(2t)^2 + (2\cos(2t))^2}\,dt$.</p>
+<p>Calculator (radian mode): $L \approx 5.147$.</p>
+</div>
+
+<h2>Three formulas, one idea</h2>
+<table class="compare">
+<thead><tr><th>Situation</th><th>Integral</th><th>Variable and limits</th></tr></thead>
+<tbody>
+<tr><td>A graph $y = f(x)$ (8.13)</td><td>$\int_a^b \sqrt{1 + (f'(x))^2}\,dx$</td><td>$x$ from $a$ to $b$</td></tr>
+<tr><td>A parametric curve traced once</td><td>$\int_a^b \sqrt{(x'(t))^2 + (y'(t))^2}\,dt$</td><td>$t$ from $a$ to $b$</td></tr>
+<tr><td>Distance traveled by a moving point</td><td>$\int_a^b \sqrt{(x'(t))^2 + (y'(t))^2}\,dt$</td><td>the time interval, retraced parts counted again</td></tr>
+</tbody>
+</table>
+<p>The first row is a special case of the second: write $y = f(x)$ as $x = t$, $y = f(t)$, so $x' = 1$ and $y' = f'(t)$. The second and third rows are the same integral. They differ only when the point covers some part of the curve more than once: then the integral gives the distance traveled, which is more than the length of the curve. For example, $x = \cos(3t)$, $y = \sin(3t)$ on $0 \le t \le 2\pi$ goes around the unit circle three times at speed 3, and the integral gives $6\pi$, not $2\pi$.</p>
+
+<h2>Common slips</h2>
+<table class="compare">
+<thead><tr><th>Slip</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Squaring $x$ and $y$ instead of their derivatives</td><td>The legs of each triangle are $x'(t)\,dt$ and $y'(t)\,dt$</td></tr>
+<tr><td>Adding $|x'| + |y'|$</td><td>Square, add, take the root</td></tr>
+<tr><td>Using $x$-values as limits</td><td>The integral is in $t$: use the $t$-values</td></tr>
+<tr><td>A missing parenthesis: $\sqrt{2t^2 + \cdots}$ for $(2t)^2$</td><td>Write $(x'(t))^2$ with its parentheses, then simplify</td></tr>
+</tbody>
+</table>

@@ -1,0 +1,12 @@
+{
+ "partial-fractions-split": {
+  "file": "figures/partial-fractions-split.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graph of y = (x + 7)/((x − 1)(x + 3)), solid green, with dashed vertical asymptotes at x = 1 and x = −3, and its two pieces dashed: y = 2/(x − 1) in blue and y = −1/(x + 3) in vermillion. At every x the green curve is the sum of the two pieces, so its integral is 2 ln|x − 1| − ln|x + 3| + C."
+ }
+}

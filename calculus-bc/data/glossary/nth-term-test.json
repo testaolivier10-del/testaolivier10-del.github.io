@@ -1,0 +1,5 @@
+{
+ "nth-term-test": {
+  "def": "If $\\lim_{n \\to \\infty} a_n \\ne 0$ or the limit does not exist, then $\\sum a_n$ diverges. A test for divergence only: when $\\lim a_n = 0$ it gives no conclusion."
+ }
+}

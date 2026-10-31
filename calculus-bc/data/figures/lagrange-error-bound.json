@@ -1,0 +1,12 @@
+{
+ "lagrange-error-cos": {
+  "file": "figures/lagrange-error-cos.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "On -1.6 to 1.6, a dashed curve x to the fourth over 24, the Lagrange error bound for cos x and its second-degree Taylor polynomial about 0, with the region under it lightly shaded, and a solid curve, the actual error |cos x minus (1 minus x squared over 2)|, which stays below it. At x = 1 the bound is about 0.0417 and the actual error about 0.0403."
+ }
+}

@@ -1,0 +1,49 @@
+<p>A slope field shows the direction a solution curve takes at every point, but not a formula for the curve. <b>Euler's method</b> turns the slope field into numbers: it estimates the value of a solution by walking along short tangent segments, reading a new slope from the differential equation at the start of each one. It works for any differential equation $\frac{dy}{dx} = F(x, y)$, including ones you cannot solve.</p>
+
+<h2>One step is a tangent line</h2>
+<p>Suppose a solution passes through $(x_0, y_0)$. The equation gives its slope there, $F(x_0, y_0)$. For a short run $\Delta x$, the tangent line rises by about $\Delta y = F(x_0, y_0)\,\Delta x$, so</p>
+<p>$$y_1 = y_0 + F(x_0, y_0)\,\Delta x \quad \text{at} \quad x_1 = x_0 + \Delta x.$$</p>
+<p>This is the local linearization of topic 4.6, with the slope supplied by the differential equation. Euler's method simply repeats it: from $(x_1, y_1)$, read the slope $F(x_1, y_1)$ and step again.</p>
+
+<h2>Several steps, in a table</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> The solution $y = f(x)$ of $\frac{dy}{dx} = x + y$ passes through $(0, 1)$. Use Euler's method with two steps of equal size to approximate $f(1)$.</p>
+<p>Two equal steps from $x = 0$ to $x = 1$: $\Delta x = 0.5$.</p>
+<table class="compare">
+<thead><tr><th>$x$</th><th>$y$</th><th>$\frac{dy}{dx} = x + y$</th><th>$\Delta x$</th><th>$\Delta y$</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>1</td><td>1</td><td>0.5</td><td>0.5</td></tr>
+<tr><td>0.5</td><td>1.5</td><td>2</td><td>0.5</td><td>1</td></tr>
+<tr><td>1</td><td>2.5</td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+<p>So $f(1) \approx 2.5$. Each row's slope comes from that row's own $x$ and $y$.</p>
+</div>
+<p>On the exam, show each step: the slope used, the point it was read at, and the new value. Arithmetic does not need simplifying, so $1.5 + 2(0.5)$ earns the point as written. Take exactly the number of steps asked for: a third step overshoots.</p>
+
+<h2>Too big or too small?</h2>
+<p>Each Euler step follows a tangent line, so the shape of the solution decides the error. <a class="figref" href="#fig-euler">The figure</a> shows two steps on $\frac{dy}{dx} = y$ from $(0, 1)$. The solution through that point is $y = e^x$ (check: its derivative is itself), which is concave up, so the steps fall below it: Euler gives $2.25$ for a true value of $e \approx 2.718$.</p>
+<figure id="fig-euler" data-fig="eulers-method-steps"><figcaption>Tangent steps lie below a concave up solution: an underestimate.</figcaption></figure>
+<p>To find the concavity without solving, differentiate the equation implicitly. For $\frac{dy}{dx} = x + y$:</p>
+<p>$$\frac{d^2y}{dx^2} = 1 + \frac{dy}{dx} = 1 + x + y,$$</p>
+<p>which is positive for $x \ge 0$ and $y > 0$. The solution curves there are concave up, so the estimate 2.5 in worked example 1 is an <b>underestimate</b>. Concave down curves lie below their tangent lines, so Euler's method would give an <b>overestimate</b>. Name the concavity and say why it decides the answer; "the solution is increasing" is not a reason.</p>
+
+<h2>Step size</h2>
+<p>Shorter steps update the slope more often and follow the curve more closely. For $\frac{dy}{dx} = y$ from $(0, 1)$, the true value at $x = 1$ is $e \approx 2.718$:</p>
+<table class="compare">
+<thead><tr><th>$\Delta x$</th><th>Steps</th><th>Estimate of $y(1)$</th></tr></thead>
+<tbody>
+<tr><td>0.5</td><td>2</td><td>2.25</td></tr>
+<tr><td>0.25</td><td>4</td><td>2.441</td></tr>
+<tr><td>0.1</td><td>10</td><td>2.594</td></tr>
+</tbody>
+</table>
+<p>A step can also go left: to estimate $f(0.5)$ from a point at $x = 1$, use $\Delta x = -0.5$.</p>
+
+<h2>Euler's method in context</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> The volume $V$ of water in a tank, in liters, satisfies $\frac{dV}{dt} = 20 - 2\sqrt{V}$, with $t$ in minutes, and $V = 25$ at $t = 0$. Estimate $V$ at $t = 1$ with two steps of size $0.5$.</p>
+<p>At $t = 0$: $\frac{dV}{dt} = 20 - 2(5) = 10$, so $V \approx 25 + 10(0.5) = 30$ liters at $t = 0.5$.</p>
+<p>At $t = 0.5$: $\frac{dV}{dt} = 20 - 2\sqrt{30}$, so $V \approx 30 + \left(20 - 2\sqrt{30}\right)(0.5) = 40 - \sqrt{30} \approx 34.5$ liters at $t = 1$.</p>
+</div>
+<p>The rate has units of liters per minute and $\Delta t$ has units of minutes, so each $\Delta V$ is in liters, the units of the estimate.</p>

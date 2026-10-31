@@ -1,0 +1,12 @@
+{
+ "math-parametric-vectors-path": {
+  "file": "figures/math-parametric-vectors-path.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: the path x = t squared minus 2t, y = 3 minus t for t from -1 to 3, with dots at t = -1 (3, 4), t = 0 (0, 3), t = 1 (-1, 2), t = 2 (0, 1) and t = 3 (3, 0), and arrows showing that the point moves down the page, first left and then right. Right: the vector from P(1, 1) to Q(4, 5), with dashed components 3 across and 4 up; it is the vector 3, 4, and its length is 5."
+ }
+}

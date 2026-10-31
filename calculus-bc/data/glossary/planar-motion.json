@@ -1,0 +1,5 @@
+{
+ "planar-motion": {
+  "def": "A particle in the plane with position $\\mathbf{r}(t) = \\left\\langle x(t), y(t) \\right\\rangle$ has velocity $\\mathbf{v} = \\mathbf{r}'$, acceleration $\\mathbf{a} = \\mathbf{v}'$ and speed $\\sqrt{(x'(t))^2 + (y'(t))^2}$. The displacement vector over $[a, b]$ is $\\int_a^b \\mathbf{v}(t)\\,dt = \\mathbf{r}(b) - \\mathbf{r}(a)$; the total distance traveled is the integral of the speed, $\\int_a^b \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt$."
+ }
+}

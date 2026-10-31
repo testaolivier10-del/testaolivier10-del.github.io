@@ -1,0 +1,80 @@
+{
+ "topic": "p-series",
+ "hook": "Add $1 + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\cdots$ and the total creeps up so slowly that after a million terms it is barely past 14, yet it never stops growing. Square each denominator, $1 + \\frac{1}{4} + \\frac{1}{9} + \\cdots$, and the total settles near 1.645. One family of series, $\\sum \\frac{1}{n^p}$, sits on that boundary, and it is the yardstick for comparing every other series.",
+ "prereq": [
+  {
+   "q": "If $f$ is positive, continuous and decreasing and $\\int_1^{\\infty} f(x)\\,dx$ diverges, then $\\sum_{n=1}^{\\infty} f(n)$",
+   "options": [
+    "diverges",
+    "converges",
+    "converges to the integral",
+    "may do either"
+   ],
+   "correct": 0,
+   "why": "By the integral test, the series and the integral behave alike.",
+   "review": "integral-test"
+  },
+  {
+   "q": "$\\int_1^{b} \\frac{1}{x}\\,dx =$",
+   "options": [
+    "$\\ln b$",
+    "$1 - \\frac{1}{b}$",
+    "$\\frac{1}{b^2}$",
+    "$\\ln b - 1$"
+   ],
+   "correct": 0,
+   "why": "$\\ln b - \\ln 1 = \\ln b$, which grows without bound.",
+   "review": "improper-integrals"
+  }
+ ],
+ "figure": {
+  "figure": "p-series-partial-sums",
+  "caption": "Partial sums of $\\sum \\frac{1}{n^p}$ for $p = \\frac{1}{2}$, $1$ and $2$: only $p = 2$ levels off."
+ },
+ "chain": [
+  {
+   "cause": "Apply the integral test to $f(x) = \\frac{1}{x^p}$, $p > 0$",
+   "effect": "$f$ is positive, continuous and decreasing on $[1, \\infty)$"
+  },
+  {
+   "cause": "For $p > 1$, $\\int_1^{\\infty} x^{-p}\\,dx = \\frac{1}{p - 1}$ is finite",
+   "effect": "the $p$-series converges"
+  },
+  {
+   "cause": "For $p = 1$, $\\int_1^{b} \\frac{dx}{x} = \\ln b \\to \\infty$; for $0 < p < 1$, $\\frac{b^{1-p} - 1}{1 - p} \\to \\infty$",
+   "effect": "the $p$-series diverges"
+  },
+  {
+   "cause": "For $p \\le 0$, the terms do not approach 0",
+   "effect": "the series diverges by the nth term test"
+  }
+ ],
+ "ideas": [
+  "$\\sum_{n=1}^{\\infty} \\frac{1}{n^p}$ converges if $p > 1$ and diverges if $p \\le 1$.",
+  "The harmonic series $\\sum \\frac{1}{n}$ ($p = 1$) diverges, though its terms approach 0. The alternating harmonic series $\\sum \\frac{(-1)^{n+1}}{n}$ converges.",
+  "Rewrite before deciding: $\\frac{1}{\\sqrt[3]{n}} = \\frac{1}{n^{1/3}}$, $\\frac{\\sqrt{n}}{n^2} = \\frac{1}{n^{3/2}}$, $\\frac{n^2}{n^3} = \\frac{1}{n}$. Name the series and its $p$ when you use it."
+ ],
+ "misconception": {
+  "wrong": "$\\sum \\frac{1}{n}$ converges because its terms get smaller and smaller.",
+  "right": "The harmonic series diverges: its partial sums pass every number, though very slowly ($S_n \\ge \\ln(n + 1)$). Shrinking terms are not enough."
+ },
+ "check": [
+  "cbc-p-series-1",
+  "cbc-p-series-2",
+  "cbc-p-series-4",
+  "cbc-p-series-5",
+  "cbc-p-series-8",
+  "cbc-p-series-10"
+ ],
+ "summary": "A $p$-series $\\sum \\frac{1}{n^p}$ converges exactly when $p > 1$; the integral test proves it. The harmonic series ($p = 1$) diverges and the alternating harmonic series converges. Simplify a series to the form $\\frac{1}{n^p}$, then compare $p$ with 1.",
+ "connections": [
+  {
+   "href": "../notes/integral-test.html",
+   "label": "Back: the integral test (10.4)"
+  },
+  {
+   "href": "../notes/comparison-tests.html",
+   "label": "Next: comparison tests (10.6)"
+  }
+ ]
+}

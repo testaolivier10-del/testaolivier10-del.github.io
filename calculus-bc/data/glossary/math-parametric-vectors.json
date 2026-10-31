@@ -1,0 +1,8 @@
+{
+ "parametric-equation": {
+  "def": "A pair of equations $x = x(t)$, $y = y(t)$ that give both coordinates of a point in terms of a third variable $t$, the parameter (often time). As $t$ increases, the point traces a path in a direction; eliminating $t$ can give an equation in $x$ and $y$, but it loses the direction and the timing."
+ },
+ "vector": {
+  "def": "A quantity with a size and a direction, written by its components as $\\left\\langle a, b \\right\\rangle$: $a$ across and $b$ up. The vector from $(x_1, y_1)$ to $(x_2, y_2)$ is $\\left\\langle x_2 - x_1, y_2 - y_1 \\right\\rangle$; its magnitude (length) is $\\sqrt{a^2 + b^2}$. Vectors add and scale component by component."
+ }
+}

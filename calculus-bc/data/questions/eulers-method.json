@@ -1,0 +1,545 @@
+{
+ "stimuli": {
+  "eulers-method-s1": {
+   "kind": "graph",
+   "title": "Two Euler steps on the slope field of $\\frac{dy}{dx} = x + y$",
+   "text": "The slope field of $\\frac{dy}{dx} = x + y$ is shown with two Euler steps of size $\\Delta x = 0.5$, starting at the point $(0, 1)$ on a solution curve $y = f(x)$.",
+   "plot": {
+    "label": "Slope field of dy/dx = x + y for x from -0.5 to 1.5 and y from 0 to 3.5, with two Euler steps drawn from (0, 1) to (0.5, 1.5) and from (0.5, 1.5) to (1, 2.5)",
+    "x": [
+     -0.5,
+     1.5
+    ],
+    "y": [
+     0,
+     3.5
+    ],
+    "xStep": 0.5,
+    "yStep": 0.5,
+    "xLabel": "x",
+    "yLabel": "y",
+    "field": {
+     "dydx": "x + y",
+     "step": 0.5
+    },
+    "curves": [
+     {
+      "fn": "1 + x",
+      "domain": [
+       0,
+       0.5
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "1.5 + 2(x - 0.5)",
+      "domain": [
+       0.5,
+       1
+      ],
+      "cls": "s1"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       1
+      ],
+      "label": "(0, 1)"
+     },
+     {
+      "at": [
+       0.5,
+       1.5
+      ]
+     },
+     {
+      "at": [
+       1,
+       2.5
+      ],
+      "label": "(1, 2.5)"
+     }
+    ]
+   }
+  },
+  "eulers-method-s2": {
+   "kind": "table",
+   "title": "An Euler table for $\\frac{dy}{dx} = y - 2x$",
+   "text": "A student uses Euler's method with $\\Delta x = 0.5$, starting at $(0, 3)$, to approximate $y(1.5)$ for the solution of $\\frac{dy}{dx} = y - 2x$ through $(0, 3)$. Two entries are left blank (?).",
+   "table": {
+    "caption": "Euler table with columns x, y, dy/dx, delta x and delta y",
+    "cols": [
+     "$x$",
+     "$y$",
+     "$\\frac{dy}{dx}$",
+     "$\\Delta x$",
+     "$\\Delta y = \\frac{dy}{dx}\\,\\Delta x$"
+    ],
+    "rows": [
+     [
+      "0",
+      "3",
+      "3",
+      "0.5",
+      "1.5"
+     ],
+     [
+      "0.5",
+      "4.5",
+      "?",
+      "0.5",
+      "?"
+     ],
+     [
+      "1",
+      "",
+      "",
+      "",
+      ""
+     ],
+     [
+      "1.5",
+      "",
+      "",
+      "",
+      ""
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-eulers-method-1",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "eulers-method-s1",
+   "q": "What slope does the first Euler step use?",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 0.5,
+      "why": "$0.5$ is the step size $\\Delta x$. The slope is $\\frac{dy}{dx}$ at the starting point: $0 + 1 = 1$."
+     },
+     {
+      "value": 2,
+      "why": "2 is the slope at $(0.5, 1.5)$, used for the second step. The first step uses the slope at $(0, 1)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $(0, 1)$: $\\frac{dy}{dx} = 0 + 1 = 1$."
+   }
+  },
+  {
+   "id": "cbc-eulers-method-2",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "eulers-method-s1",
+   "q": "What is the Euler approximation of $f(1)$?",
+   "numeric": {
+    "answer": 2.5,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "The second step uses a new slope, the one at $(0.5, 1.5)$: $0.5 + 1.5 = 2$. So $1.5 + 2(0.5) = 2.5$."
+     },
+     {
+      "value": 1.5,
+      "why": "$1.5$ is the estimate of $f(0.5)$ after one step. Reaching $x = 1$ takes a second step."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Step 1: $1 + 1(0.5) = 1.5$ at $x = 0.5$. Step 2: slope $0.5 + 1.5 = 2$, so $1.5 + 2(0.5) = 2.5$ at $x = 1$."
+   }
+  },
+  {
+   "id": "cbc-eulers-method-3",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "eulers-method-s1",
+   "q": "For $x \\ge 0$ and $y > 0$, $\\frac{d^2y}{dx^2} = 1 + x + y$. Is the estimate of $f(1)$ too large or too small?",
+   "options": [
+    "Too large: the slopes increase from one step to the next",
+    "Too small: $\\frac{dy}{dx} = x + y > 0$, so the solution is increasing",
+    "No conclusion is possible without solving the equation",
+    "Too small: $\\frac{d^2y}{dx^2} > 0$, so the solution curves are concave up and the steps fall below them"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2} = \\frac{d}{dx}(x + y) = 1 + \\frac{dy}{dx} = 1 + x + y$, positive in this region. Concave up curves lie above their tangent segments, so 2.5 underestimates $f(1)$.",
+    "options": [
+     "Increasing slopes mean concave up, and a tangent segment lies below a concave up curve, so the estimate is too small.",
+     "The conclusion is right but the reason is not: increasing says nothing about the gap. Concavity, from $\\frac{d^2y}{dx^2}$, decides it.",
+     "$\\frac{d^2y}{dx^2}$ comes from the differential equation itself, so its sign can be read without solving.",
+     "Right: on concave up curves each tangent step lies below the curve, and starting the next step lower only makes it smaller."
+    ]
+   }
+  },
+  {
+   "id": "cbc-eulers-method-4",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "eulers-method-s1",
+   "q": "Repeat with four steps of size $\\Delta x = 0.25$ from $(0, 1)$. What is the new approximation of $f(1)$? Give the exact value.",
+   "numeric": {
+    "answer": "369/128",
+    "answerTex": "\\frac{369}{128}",
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "That is the two-step estimate with $\\Delta x = 0.5$. With $\\Delta x = 0.25$, take four steps: $1.25$, $1.625$, $2.15625$, $2.8828125$."
+     },
+     {
+      "value": 2,
+      "why": "Using the first slope, 1, for all four steps is one long tangent line. Each step needs the slope $x + y$ at its own starting point."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y$: $1 \\to 1 + 1(0.25) = 1.25 \\to 1.25 + 1.5(0.25) = 1.625 \\to 1.625 + 2.125(0.25) = 2.15625 \\to 2.15625 + 2.90625(0.25) = 2.8828125 = \\frac{369}{128}$. Smaller steps follow the curve more closely, so the estimate rises toward $f(1)$."
+   }
+  },
+  {
+   "id": "cbc-eulers-method-5",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "single",
+   "practice": "1.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "eulers-method-s1",
+   "q": "How can the Euler estimate of $f(1)$ be made closer to the true value?",
+   "options": [
+    "Use more steps of a smaller size",
+    "Use a larger $\\Delta x$ so fewer slopes are needed",
+    "Keep the slope at $(0, 1)$ for each of the steps",
+    "Use the slope at the end of each step that has just been taken"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The error of each step comes from the curve bending away from its tangent segment; shorter segments bend away less.",
+    "options": [
+     "Right: shorter steps follow the turning curve more closely, as four steps of 0.25 show.",
+     "Longer steps drift farther from the curve between slope updates; the estimate gets worse.",
+     "That ignores the slope field after the first point: it is a single tangent line, the crudest estimate.",
+     "The slope at the end of a step is unknown until the step is taken; Euler's method uses the slope at the start."
+    ]
+   }
+  },
+  {
+   "id": "cbc-eulers-method-6",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "eulers-method-s2",
+   "q": "What is the missing value of $\\frac{dy}{dx}$ in the second row?",
+   "numeric": {
+    "answer": 3.5,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "3 is the slope at $(0, 3)$. Each row uses the slope at its own point: $4.5 - 2(0.5) = 3.5$."
+     },
+     {
+      "value": 4.5,
+      "why": "That is $y$ alone. The slope is $y - 2x = 4.5 - 1 = 3.5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $(0.5, 4.5)$: $\\frac{dy}{dx} = 4.5 - 2(0.5) = 3.5$."
+   }
+  },
+  {
+   "id": "cbc-eulers-method-7",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "eulers-method-s2",
+   "q": "What is the Euler approximation of $y(1)$?",
+   "numeric": {
+    "answer": 6.25,
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "That reuses the first slope, 3. The second row's slope is 3.5, so $\\Delta y = 3.5(0.5) = 1.75$ and $y = 4.5 + 1.75$."
+     },
+     {
+      "value": 8,
+      "why": "$\\Delta y$ is the slope times $\\Delta x$: $3.5 \\times 0.5 = 1.75$, not $3.5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y(1) \\approx 4.5 + 3.5(0.5) = 6.25$."
+   }
+  },
+  {
+   "id": "cbc-eulers-method-8",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "eulers-method-s2",
+   "q": "Complete the table. What is the Euler approximation of $y(1.5)$?",
+   "numeric": {
+    "answer": 8.375,
+    "mistakes": [
+     {
+      "value": 7.875,
+      "why": "The third row's slope is at $(1, 6.25)$: $6.25 - 2(1) = 4.25$, so $\\Delta y = 2.125$. A slope of $3.25$ comes from using $x = 1.5$ instead of $x = 1$."
+     },
+     {
+      "value": 6.25,
+      "why": "$6.25$ is the estimate at $x = 1$. One more row is needed to reach $x = 1.5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Row 3: at $(1, 6.25)$ the slope is $6.25 - 2 = 4.25$, so $y(1.5) \\approx 6.25 + 4.25(0.5) = 8.375$."
+   }
+  },
+  {
+   "id": "cbc-eulers-method-9",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "eulers-method-s2",
+   "q": "Which gives $\\frac{d^2y}{dx^2}$ for this equation, and its value at $(0, 3)$?",
+   "options": [
+    "$\\frac{dy}{dx} - 2x$, which is 3 at $(0, 3)$",
+    "$y - 2x - 2$, which is 1 at $(0, 3)$",
+    "$-2$, which is $-2$ at $(0, 3)$",
+    "$y - 2x$, which is 3 at $(0, 3)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2} = \\frac{dy}{dx} - 2 = y - 2x - 2$. At $(0, 3)$ it is 1, so the solution is concave up there and the first step lies below the curve.",
+    "options": [
+     "The derivative of $-2x$ is $-2$, and $\\frac{dy}{dx}$ should be replaced by $y - 2x$.",
+     "Right: $\\frac{d}{dx}(y - 2x) = \\frac{dy}{dx} - 2 = (y - 2x) - 2$, and $3 - 0 - 2 = 1$.",
+     "$y$ is a function of $x$, so $\\frac{d}{dx}(y) = \\frac{dy}{dx}$, not 0.",
+     "That is $\\frac{dy}{dx}$ itself. Differentiate it once more: $\\frac{dy}{dx} - 2$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-eulers-method-10",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "The function $f$ satisfies $\\frac{dy}{dx} = x^2 - y$ and $f(1) = 2$. Use one Euler step of size $0.1$ to approximate $f(1.1)$.",
+   "numeric": {
+    "answer": 1.9,
+    "mistakes": [
+     {
+      "value": 2.1,
+      "why": "At $(1, 2)$ the slope is $1^2 - 2 = -1$, so $y$ goes down: $2 + (-1)(0.1) = 1.9$."
+     },
+     {
+      "value": 1,
+      "why": "Add the change $\\Delta y = (-1)(0.1) = -0.1$ to $f(1) = 2$; the slope itself is not the new $y$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(1.1) \\approx 2 + (1 - 2)(0.1) = 1.9$."
+   }
+  },
+  {
+   "id": "cbc-eulers-method-11",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the solution of $\\frac{dy}{dx} = 1 + y^2$ through $(0, 0)$, use two Euler steps of equal size to approximate $y(1)$.",
+   "numeric": {
+    "answer": "9/8",
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "The second step needs the slope at $(0.5, 0.5)$: $1 + 0.25 = 1.25$, so $y(1) \\approx 0.5 + 1.25(0.5) = 1.125$."
+     },
+     {
+      "value": 0.5,
+      "why": "$0.5$ is the estimate of $y(0.5)$ after one step; take the second step to reach $x = 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\Delta x = 0.5$. Step 1: slope 1, $y = 0.5$. Step 2: slope $1 + 0.5^2 = 1.25$, $y = 0.5 + 0.625 = 1.125 = \\frac{9}{8}$."
+   }
+  },
+  {
+   "id": "cbc-eulers-method-12",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "single",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "For $\\frac{dy}{dx} = F(x, y)$ and step size $\\Delta x$, which formula is one Euler step?",
+   "options": [
+    "$y_{\\text{new}} = y \\cdot F(x, y)\\,\\Delta x$",
+    "$y_{\\text{new}} = y + F(x + \\Delta x, y)\\,\\Delta x$",
+    "$y_{\\text{new}} = y + F(x, y)\\,\\Delta x$",
+    "$y_{\\text{new}} = y + \\Delta x$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Follow the tangent line: new $y$ = old $y$ + slope × $\\Delta x$, with the slope from the differential equation at the current point.",
+    "options": [
+     "The change is added to $y$, not multiplied by it.",
+     "Euler's method uses the slope at the point you are at, $(x, y)$, not ahead of it.",
+     "Right: the slope at the current point times the run gives the rise.",
+     "That adds the run, not the rise. Multiply the run by the slope first."
+    ]
+   }
+  },
+  {
+   "id": "cbc-eulers-method-13",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The function $f$ satisfies $\\frac{dy}{dx} = x + 2y$ and $f(1) = 1$. Use one Euler step to approximate $f(0.5)$.",
+   "numeric": {
+    "answer": -0.5,
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "Going from $x = 1$ to $x = 0.5$ is a step of $\\Delta x = -0.5$: $1 + 3(-0.5) = -0.5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $(1, 1)$ the slope is $1 + 2 = 3$, and $\\Delta x = 0.5 - 1 = -0.5$: $f(0.5) \\approx 1 + 3(-0.5) = -0.5$."
+   }
+  },
+  {
+   "id": "cbc-eulers-method-14",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Euler's method is used on $\\frac{dy}{dx} = y(3 - y)$ starting at $(0, 3)$. What happens to the estimates?",
+   "options": [
+    "They increase, since $y(3 - y)$ grows with $y$",
+    "They decrease toward 0, the other equilibrium solution",
+    "They jump above and below 3 from step to step",
+    "They all equal 3, since the slope at $y = 3$ is 0"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At an equilibrium solution the slope is 0, so Euler's method reproduces it exactly: every estimate is 3.",
+    "options": [
+     "At $y = 3$, $y(3 - y) = 0$: there is no change to start the growth.",
+     "The first slope is 0, so the first step leaves $y$ at 3, and so does every step after it.",
+     "With slope 0 at $y = 3$, no step moves away from 3.",
+     "Right: $y = 3$ is an equilibrium solution; every step has slope $3(0) = 0$, so $y$ stays at 3."
+    ]
+   }
+  },
+  {
+   "id": "cbc-eulers-method-15",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A solution $y = f(x)$ has $f(2) = 4$ and $f'(2) = 0.6$, and its graph is concave down for $2 \\le x \\le 2.5$. One Euler step gives $f(2.5) \\approx 4.3$. Which is true?",
+   "options": [
+    "$4.3$ is an overestimate: the tangent step lies above the graph",
+    "$4.3$ is an underestimate, because $f'(2) > 0$ means $f$ is increasing",
+    "$4.3$ is exact, because one step of Euler's method is exactly the tangent line",
+    "$4.3$ is an underestimate, because the graph is concave down"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "One Euler step from $(2, 4)$ is the tangent line: $4 + 0.6(0.5) = 4.3$. A concave down graph lies below its tangent lines, so $f(2.5) < 4.3$.",
+    "options": [
+     "Right: a concave down graph lies below its tangent lines, so the estimate is too large.",
+     "Increasing is not the reason. Concave down puts the graph below its tangent line, so the estimate is too large.",
+     "It is the tangent line value, which differs from $f(2.5)$ whenever the graph bends.",
+     "Concave down graphs lie below their tangent lines, which makes a tangent estimate too large."
+    ]
+   }
+  },
+  {
+   "id": "cbc-eulers-method-16",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The volume $V$ of water in a tank, in liters, satisfies $\\frac{dV}{dt} = 20 - 2\\sqrt{V}$, where $t$ is in minutes, and $V = 25$ when $t = 0$. Use one Euler step with $\\Delta t = 0.5$ to approximate $V$ when $t = 0.5$. Include units.",
+   "numeric": {
+    "answer": 30,
+    "unit": "liters",
+    "askUnit": true,
+    "units": [
+     "L",
+     "liter",
+     "litres",
+     "litre"
+    ],
+    "mistakes": [
+     {
+      "value": 35,
+      "why": "$\\Delta V = \\frac{dV}{dt}\\,\\Delta t = 10(0.5) = 5$, so $V \\approx 25 + 5$. Adding the full rate, 10, skips the $\\Delta t$."
+     },
+     {
+      "value": 10,
+      "why": "10 liters per minute is the rate at $t = 0$. The estimate is $25 + 10(0.5) = 30$ liters."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $t = 0$: $\\frac{dV}{dt} = 20 - 2\\sqrt{25} = 10$ liters per minute, so $V(0.5) \\approx 25 + 10(0.5) = 30$ liters."
+   }
+  }
+ ]
+}

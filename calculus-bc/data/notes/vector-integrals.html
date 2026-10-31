@@ -1,0 +1,49 @@
+<p>In 9.4 you went from position to velocity by differentiating each component. This topic runs the other way: from a velocity vector, and a starting point, back to the position. It is the planar version of what you did for straight-line motion in 8.2, done twice, once for $x$ and once for $y$.</p>
+
+<h2>Antiderivatives one component at a time</h2>
+<p>To integrate a vector-valued function, integrate each component:</p>
+<p>$$\int \left\langle f(t), g(t) \right\rangle\,dt = \left\langle \int f(t)\,dt, \int g(t)\,dt \right\rangle = \left\langle F(t), G(t) \right\rangle + \mathbf{C}.$$</p>
+<p>Each component gets its own constant, so the constant is a vector, $\mathbf{C} = \left\langle C_1, C_2 \right\rangle$. Definite integrals work the same way and give a vector of numbers:</p>
+<p>$$\int_0^2 \left\langle 3t^2, 2t + 1 \right\rangle\,dt = \left\langle t^3\Big|_0^2, (t^2 + t)\Big|_0^2 \right\rangle = \left\langle 8, 6 \right\rangle.$$</p>
+
+<h2>One velocity, many paths</h2>
+<figure id="fig-shift" data-fig="vector-integrals-shift"><figcaption>The same velocity from two starting points: two shifted paths.</figcaption></figure>
+<p>Knowing the velocity tells you how the particle moves, not where it is. <a class="figref" href="#fig-shift">The figure</a> shows two paths with the same velocity $\mathbf{v}(t) = \left\langle 1, 2t - 2 \right\rangle$. Both are antiderivatives, $\left\langle t, t^2 - 2t \right\rangle + \mathbf{C}$; they differ by the constant vector, so one is the other shifted. An initial condition picks the path:</p>
+<p>$$\mathbf{r}(t) = \mathbf{r}(0) + \int_0^t \mathbf{v}(s)\,ds, \qquad \text{or, between two times,} \qquad \mathbf{r}(b) = \mathbf{r}(a) + \int_a^b \mathbf{v}(t)\,dt.$$</p>
+<p>In components: $x(b) = x(a) + \int_a^b x'(t)\,dt$ and $y(b) = y(a) + \int_a^b y'(t)\,dt$. The integral is the change in position over the interval; the start is <b>added</b> to it.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A particle has velocity $\mathbf{v}(t) = \left\langle 4t^3, e^t \right\rangle$ and starts at $\mathbf{r}(0) = \left\langle -1, 3 \right\rangle$. Find $\mathbf{r}(t)$ and $\mathbf{r}(1)$.</p>
+<p>Antiderivatives: $\left\langle t^4, e^t \right\rangle + \mathbf{C}$.</p>
+<p>At $t = 0$: $\left\langle 0, 1 \right\rangle + \mathbf{C} = \left\langle -1, 3 \right\rangle$, so $\mathbf{C} = \left\langle -1, 2 \right\rangle$. Notice $e^0 = 1$, so $C_2$ is $2$, not $3$.</p>
+<p>$\mathbf{r}(t) = \left\langle t^4 - 1, e^t + 2 \right\rangle$ and $\mathbf{r}(1) = \left\langle 0, e + 2 \right\rangle$.</p>
+</div>
+
+<h2>From acceleration: two constants</h2>
+<p>Given the acceleration vector, integrate twice. The initial velocity fixes the first constant vector and the initial position the second.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> $\mathbf{a}(t) = \left\langle 6t, -4 \right\rangle$, $\mathbf{v}(0) = \left\langle 0, 8 \right\rangle$, $\mathbf{r}(0) = \left\langle 2, 0 \right\rangle$. Find $\mathbf{r}(2)$.</p>
+<p>Velocity: $\mathbf{v}(t) = \left\langle 3t^2, -4t \right\rangle + \left\langle 0, 8 \right\rangle = \left\langle 3t^2, 8 - 4t \right\rangle$.</p>
+<p>Position: $\mathbf{r}(t) = \left\langle t^3, 8t - 2t^2 \right\rangle + \left\langle 2, 0 \right\rangle = \left\langle t^3 + 2, 8t - 2t^2 \right\rangle$.</p>
+<p>$\mathbf{r}(2) = \left\langle 8 + 2, 16 - 8 \right\rangle = \left\langle 10, 8 \right\rangle$.</p>
+</div>
+
+<h2>Velocity from a table</h2>
+<p>When $x'(t)$ and $y'(t)$ are known only at some times, approximate each integral with a sum, using the table's own widths, and then add the starting coordinate.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A cart starts at $(0, 2)$, in feet. Its velocity components, in feet per second, are $x' = 2, 5, 1$ and $y' = 3, -1, 4$ at $t = 0, 1, 4$ seconds. Approximate the cart's position at $t = 4$ with a trapezoidal sum.</p>
+<p>$\int_0^4 x'(t)\,dt \approx \frac{2 + 5}{2}(1) + \frac{5 + 1}{2}(3) = 3.5 + 9 = 12.5$, so $x(4) \approx 0 + 12.5 = 12.5$ feet.</p>
+<p>$\int_0^4 y'(t)\,dt \approx \frac{3 + (-1)}{2}(1) + \frac{-1 + 4}{2}(3) = 1 + 4.5 = 5.5$, so $y(4) \approx 2 + 5.5 = 7.5$ feet.</p>
+<p>The cart is near $(12.5, 7.5)$.</p>
+</div>
+
+<h2>What each integral means</h2>
+<table class="compare">
+<thead><tr><th>Expression</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>$\int_a^b x'(t)\,dt$</td><td>Change in $x$-coordinate from $t = a$ to $t = b$</td></tr>
+<tr><td>$\int_a^b \mathbf{v}(t)\,dt$</td><td>Change in position, as a vector</td></tr>
+<tr><td>$x(a) + \int_a^b x'(t)\,dt$</td><td>The $x$-coordinate at $t = b$</td></tr>
+<tr><td>$\frac{1}{b - a}\int_a^b y'(t)\,dt$</td><td>Average vertical velocity on $[a, b]$</td></tr>
+</tbody>
+</table>
+<p>In context, give each with its units: the integral of a velocity in meters per minute is in meters. And keep the $dt$ in every integral you write: the scoring guidelines read an integral without its differential as incomplete.</p>

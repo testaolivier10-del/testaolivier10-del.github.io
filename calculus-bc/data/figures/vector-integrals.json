@@ -1,0 +1,12 @@
+{
+ "vector-integrals-shift": {
+  "file": "figures/vector-integrals-shift.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two paths with the same velocity v(t) = 1, 2t - 2 for t from 0 to 2.8. The emerald path starts at (0, 0) and the blue path starts at (2, 1); the blue path is the emerald one shifted 2 right and 1 up. At t = 2 both carry the same vermillion velocity vector. The antiderivative of v is t, t squared minus 2t, plus a constant vector C: C = 0, 0 for the emerald path and C = 2, 1 for the blue one. The initial position picks C: r(t) = r(0) plus the integral of v."
+ }
+}

@@ -1,0 +1,8 @@
+{
+ "p-series": {
+  "def": "A series $\\sum_{n=1}^{\\infty} \\frac{1}{n^p}$. It converges if $p > 1$ and diverges if $p \\le 1$, which the integral test proves."
+ },
+ "harmonic-series": {
+  "def": "The $p$-series with $p = 1$, $\\sum_{n=1}^{\\infty} \\frac{1}{n}$, which diverges although its terms approach 0. The alternating harmonic series $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n}$ converges."
+ }
+}

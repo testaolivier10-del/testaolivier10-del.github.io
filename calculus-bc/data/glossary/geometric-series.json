@@ -1,0 +1,5 @@
+{
+ "geometric-series": {
+  "def": "A series $\\sum ar^n$ in which each term is the previous one times the common ratio $r$. It converges exactly when $|r| < 1$, to $\\frac{a}{1 - r}$, where $a$ is the first term in the sum; it diverges when $|r| \\ge 1$ (for $a \\ne 0$)."
+ }
+}

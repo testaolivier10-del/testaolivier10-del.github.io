@@ -1,0 +1,12 @@
+{
+ "geometric-wrap": {
+  "file": "figures/geometric-wrap.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of y = 1/(1 - x) from x = -1.6 to 1.6, with a vertical asymptote at x = 1, and three partial sums of 1 + x + x squared + ...: through x squared, through x to the fifth and through x to the tenth. A shaded strip marks -1 < x < 1, where the partial sums close in on the curve. To the left of -1 they swing up and down with growing size; to the right of 1 they climb, while 1/(1 - x) is negative there."
+ }
+}

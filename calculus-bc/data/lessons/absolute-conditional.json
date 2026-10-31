@@ -1,0 +1,81 @@
+{
+ "topic": "absolute-conditional",
+ "hook": "The alternating harmonic series $1 - \\frac{1}{2} + \\frac{1}{3} - \\cdots$ converges, but strip the signs and you get the harmonic series, which diverges. Some series converge because their terms are small; others converge only because their signs keep cancelling. Telling the two apart is what absolute and conditional convergence are about.",
+ "prereq": [
+  {
+   "q": "Does $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n}$ converge?",
+   "options": [
+    "Yes, by the alternating series test",
+    "No, since $\\sum \\frac{1}{n}$ diverges",
+    "No, by the nth term test",
+    "Yes, by the ratio test"
+   ],
+   "correct": 0,
+   "why": "The sizes $\\frac{1}{n}$ decrease and approach 0, and the signs alternate.",
+   "review": "alternating-series-test"
+  },
+  {
+   "q": "For which $p$ does $\\sum_{n=1}^{\\infty} \\frac{1}{n^p}$ converge?",
+   "options": [
+    "$p > 1$",
+    "$p \\ge 1$",
+    "$p > 0$",
+    "$p < 1$"
+   ],
+   "correct": 0,
+   "why": "A $p$-series converges exactly when $p > 1$.",
+   "review": "p-series"
+  }
+ ],
+ "figure": {
+  "figure": "abs-cond-sums",
+  "caption": "Same sizes, different signs: $\\sum \\frac{1}{n}$ climbs without bound, while $\\sum \\frac{(-1)^{n+1}}{n}$ settles near $0.693$."
+ },
+ "chain": [
+  {
+   "cause": "Take the absolute value of every term",
+   "effect": "$\\sum |a_n|$ is a series of positive terms, which the comparison, integral and ratio tests can decide"
+  },
+  {
+   "cause": "$\\sum |a_n|$ converges",
+   "effect": "$\\sum a_n$ converges too (absolutely): signs can only cancel, never add"
+  },
+  {
+   "cause": "$\\sum |a_n|$ diverges but $\\sum a_n$ converges",
+   "effect": "the convergence comes from the signs cancelling: conditional convergence"
+  },
+  {
+   "cause": "$\\sum a_n$ converges absolutely",
+   "effect": "its terms can be rearranged in any order without changing the sum"
+  }
+ ],
+ "ideas": [
+  "Absolutely convergent: $\\sum |a_n|$ converges. Conditionally convergent: $\\sum a_n$ converges but $\\sum |a_n|$ diverges.",
+  "Absolute convergence implies convergence.",
+  "To classify: test $\\sum |a_n|$ first. If it converges, you are done (absolute). If not, test $\\sum a_n$ itself, usually with the alternating series test.",
+  "A divergent $\\sum |a_n|$ alone decides nothing about $\\sum a_n$."
+ ],
+ "misconception": {
+  "wrong": "$\\sum \\frac{1}{\\sqrt{n}}$ diverges, so $\\sum \\frac{(-1)^n}{\\sqrt{n}}$ diverges too.",
+  "right": "A divergent series of absolute values only rules out absolute convergence. The signed series converges by the alternating series test, so it converges conditionally."
+ },
+ "check": [
+  "cbc-absolute-conditional-1",
+  "cbc-absolute-conditional-2",
+  "cbc-absolute-conditional-3",
+  "cbc-absolute-conditional-8",
+  "cbc-absolute-conditional-11",
+  "cbc-absolute-conditional-13"
+ ],
+ "summary": "Every series is absolutely convergent ($\\sum |a_n|$ converges), conditionally convergent ($\\sum a_n$ converges but $\\sum |a_n|$ diverges), or divergent. Absolute convergence implies convergence, and an absolutely convergent series keeps its sum when its terms are rearranged.",
+ "connections": [
+  {
+   "href": "../notes/ratio-test.html",
+   "label": "Back: the ratio test (10.8)"
+  },
+  {
+   "href": "../notes/alternating-error-bound.html",
+   "label": "Next: the alternating series error bound (10.10)"
+  }
+ ]
+}

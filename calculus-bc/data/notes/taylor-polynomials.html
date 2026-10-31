@@ -1,0 +1,51 @@
+<p>In Unit 4 the tangent line gave a quick estimate of a function near a point: it matched the function's value and slope there. A Taylor polynomial carries that idea further. It matches the value, the slope, the concavity and as many higher derivatives as you like, and the more it matches, the better it follows the function.</p>
+
+<h2>From the tangent line to a parabola</h2>
+<p>Near $x = 0$, the tangent line to $\cos x$ is $y = 1$: right value, right slope, but flat, while $\cos x$ bends downward. To copy the bending, add a squared term $c(x - a)^2$ chosen so that the second derivatives agree. The second derivative of $c(x - a)^2$ is $2c$, so we need $2c = f''(a)$, that is $c = \frac{f''(a)}{2}$. For $\cos x$ at 0, $f''(0) = -1$, which gives</p>
+<p>$$P_2(x) = 1 - \frac{x^2}{2}.$$</p>
+<p>The same reasoning works for every degree: the $n$th derivative of $(x - a)^n$ is $n!$, so the coefficient that matches $f^{(n)}(a)$ is $\frac{f^{(n)}(a)}{n!}$.</p>
+
+<h2>The Taylor polynomial</h2>
+<p>The Taylor polynomial of degree $n$ for $f$ about $x = a$ is</p>
+<p>$$P_n(x) = f(a) + f'(a)(x - a) + \frac{f''(a)}{2!}(x - a)^2 + \frac{f'''(a)}{3!}(x - a)^3 + \cdots + \frac{f^{(n)}(a)}{n!}(x - a)^n.$$</p>
+<p>The number $a$ is the center. $P_n$ and $f$ have the same value and the same first $n$ derivatives at $a$. A Taylor polynomial about $a = 0$ is also called a Maclaurin polynomial.</p>
+<figure id="fig-cos" data-fig="taylor-cos-wrap"><figcaption>Higher-degree Taylor polynomials follow $\cos x$ farther from the center.</figcaption></figure>
+<p><a class="figref" href="#fig-cos">The figure</a> shows $P_2$, $P_4$ and $P_6$ for $\cos x$. All three agree with $\cos x$ at the center; each extra term keeps the polynomial close for a wider stretch before it peels away.</p>
+
+<h2>Building one step by step</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the third-degree Taylor polynomial for $f(x) = \ln x$ about $x = 1$, and use it to estimate $\ln 1.1$.</p>
+<table class="compare">
+<thead><tr><th>$n$</th><th>$f^{(n)}(x)$</th><th>$f^{(n)}(1)$</th><th>coefficient $\frac{f^{(n)}(1)}{n!}$</th></tr></thead>
+<tbody>
+<tr><td>$0$</td><td>$\ln x$</td><td>$0$</td><td>$0$</td></tr>
+<tr><td>$1$</td><td>$x^{-1}$</td><td>$1$</td><td>$1$</td></tr>
+<tr><td>$2$</td><td>$-x^{-2}$</td><td>$-1$</td><td>$-\frac{1}{2}$</td></tr>
+<tr><td>$3$</td><td>$2x^{-3}$</td><td>$2$</td><td>$\frac{2}{6} = \frac{1}{3}$</td></tr>
+</tbody>
+</table>
+<p>So $P_3(x) = (x - 1) - \frac{1}{2}(x - 1)^2 + \frac{1}{3}(x - 1)^3$.</p>
+<p>$P_3(1.1) = 0.1 - \frac{1}{2}(0.01) + \frac{1}{3}(0.001) = 0.1 - 0.005 + \frac{1}{3000} \approx 0.09533$. A calculator gives $\ln 1.1 \approx 0.09531$.</p>
+</div>
+<p>Organizing the work in a table, derivative, value at the center, coefficient, keeps the factorials and the center straight.</p>
+
+<h2>Reading a Taylor polynomial backward</h2>
+<p>A Taylor polynomial stores derivatives: the coefficient of $(x - a)^n$ times $n!$ is $f^{(n)}(a)$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> The third-degree Taylor polynomial for $g$ about $x = 2$ is $P_3(x) = 7 - 4(x - 2)^2 + \frac{1}{2}(x - 2)^3$. Find $g'(2)$, $g''(2)$ and $g'''(2)$, and say what happens at $x = 2$.</p>
+<p>$g'(2) = 0$ (there is no $(x - 2)$ term). $g''(2) = 2! \cdot (-4) = -8$. $g'''(2) = 3! \cdot \frac{1}{2} = 3$.</p>
+<p>Since $g'(2) = 0$ and $g''(2) < 0$, $g$ has a relative maximum at $x = 2$ by the second derivative test.</p>
+</div>
+
+<h2>Slips that cost points</h2>
+<table class="compare">
+<thead><tr><th>Slip</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Powers of $x$ when the center is $a \ne 0$</td><td>Use powers of $(x - a)$, and derivatives at $a$.</td></tr>
+<tr><td>A coefficient of $f^{(n)}(a)$</td><td>Divide by $n!$: the coefficient is $\frac{f^{(n)}(a)}{n!}$.</td></tr>
+<tr><td>Derivatives of $e^{2x}$ or $\sin(3x)$ without the chain rule</td><td>Each derivative brings out the inside factor: $2^n e^{2x}$.</td></tr>
+<tr><td>Writing "$+ \cdots$" after the last term</td><td>A polynomial ends. "$+ \cdots$" makes it an endless sum.</td></tr>
+<tr><td>Writing $f^{(4)}(x) = f^{(4)}(0)$</td><td>Keep the function and its value at the center apart.</td></tr>
+</tbody>
+</table>
+<p>A Taylor polynomial gives an estimate, not an exact value. How far off it can be is the subject of the next topic.</p>

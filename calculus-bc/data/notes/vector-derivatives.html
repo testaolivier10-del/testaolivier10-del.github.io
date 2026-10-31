@@ -1,0 +1,52 @@
+<p>Parametric equations give a moving point's $x$ and $y$ separately. A <b>vector-valued function</b> packages them as one object, the <b>position vector</b></p>
+<p>$$\mathbf{r}(t) = \left\langle x(t), y(t) \right\rangle,$$</p>
+<p>the arrow from the origin to the particle at time $t$. Nothing new is needed to differentiate it: every rule you know works on each component. What is new is the meaning of the result, a vector that tells you both how fast and which way.</p>
+
+<h2>Velocity and acceleration vectors</h2>
+<p>Differentiate each component:</p>
+<p>$$\mathbf{v}(t) = \mathbf{r}'(t) = \left\langle x'(t), y'(t) \right\rangle, \qquad \mathbf{a}(t) = \mathbf{v}'(t) = \mathbf{r}''(t) = \left\langle x''(t), y''(t) \right\rangle.$$</p>
+<p>$\mathbf{v}(t)$ is the <b>velocity vector</b> and $\mathbf{a}(t)$ the <b>acceleration vector</b>. The rules from straight-line motion still hold, one direction at a time: $x'(t)$ is the horizontal velocity, $y'(t)$ the vertical velocity, and so on.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A particle has position $\mathbf{r}(t) = \left\langle t^2 - 4t, \sin(\pi t) \right\rangle$. Find its velocity and acceleration vectors at $t = 1$.</p>
+<p>Velocity: $\mathbf{v}(t) = \left\langle 2t - 4, \pi\cos(\pi t) \right\rangle$ (chain rule on $\sin(\pi t)$), so $\mathbf{v}(1) = \left\langle -2, \pi\cos\pi \right\rangle = \left\langle -2, -\pi \right\rangle$.</p>
+<p>Acceleration: $\mathbf{a}(t) = \left\langle 2, -\pi^2\sin(\pi t) \right\rangle$, so $\mathbf{a}(1) = \left\langle 2, 0 \right\rangle$.</p>
+<p>Reading: at $t = 1$ the particle moves left (first component negative) and down (second component negative), while its acceleration points right.</p>
+</div>
+
+<h2>What the velocity vector shows</h2>
+<p>Draw $\mathbf{v}(t)$ starting at the particle's position. Two facts make it useful:</p>
+<ul>
+<li><b>Direction.</b> Its slope is $\frac{y'(t)}{x'(t)} = \frac{dy}{dx}$, the slope of the tangent line from 9.1, and its signs say which way the particle moves. So the velocity vector is tangent to the path and points in the direction of motion.</li>
+<li><b>Length.</b> Its magnitude is the <b>speed</b>: $\left\| \mathbf{v}(t) \right\| = \sqrt{(x'(t))^2 + (y'(t))^2}$. In worked example 1 the speed at $t = 1$ is $\sqrt{4 + \pi^2} \approx 3.724$.</li>
+</ul>
+<figure id="fig-ellipse" data-fig="vector-derivatives-ellipse"><figcaption>Velocity vectors are tangent to the path; this acceleration vector points into the bend.</figcaption></figure>
+<p><a class="figref" href="#fig-ellipse">The figure</a> shows $\mathbf{r}(t) = \left\langle 3\cos t, 2\sin t \right\rangle$. At $t = 0$ the particle is at $(3, 0)$ and $\mathbf{v}(0) = \left\langle 0, 2 \right\rangle$ points straight up, along the vertical tangent. At $t = \frac{\pi}{2}$ it is at $(0, 2)$ and $\mathbf{v} = \left\langle -3, 0 \right\rangle$ points straight left. Here $\mathbf{a}(t) = -\mathbf{r}(t)$, so the acceleration always points from the particle back toward the center: it bends the path.</p>
+<p>Special cases follow from the components:</p>
+<table class="compare">
+<thead><tr><th>Velocity at $t_0$</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>$\left\langle 0, b \right\rangle$, $b \ne 0$</td><td>Moving straight up or down: vertical tangent</td></tr>
+<tr><td>$\left\langle a, 0 \right\rangle$, $a \ne 0$</td><td>Moving straight across: horizontal tangent</td></tr>
+<tr><td>$\left\langle 0, 0 \right\rangle$</td><td>At rest for an instant; the path may have a sharp point there</td></tr>
+</tbody>
+</table>
+
+<h2>Velocity from a table</h2>
+<p>When positions are known only at some times, estimate each component of the velocity with a difference quotient, as in 2.3.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A boat's position, in kilometers, is $\left\langle 1, 2 \right\rangle$ at $t = 1$ hour and $\left\langle 9, -4 \right\rangle$ at $t = 3$ hours. Estimate its velocity vector and speed at $t = 2$.</p>
+<p>Each component over $[1, 3]$: $\frac{9 - 1}{2} = 4$ and $\frac{-4 - 2}{2} = -3$. So $\mathbf{v}(2) \approx \left\langle 4, -3 \right\rangle$ kilometers per hour.</p>
+<p>Speed $\approx \sqrt{4^2 + (-3)^2} = 5$ kilometers per hour.</p>
+</div>
+
+<h2>Common slips</h2>
+<table class="compare">
+<thead><tr><th>Slip</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Giving $\mathbf{r}(t_0)$ when the velocity is asked</td><td>Differentiate first: velocity is $\mathbf{r}'(t_0)$</td></tr>
+<tr><td>Giving the velocity when the acceleration is asked</td><td>Acceleration is the second derivative</td></tr>
+<tr><td>Swapping the components</td><td>Keep the order $\left\langle x, y \right\rangle$ in every vector</td></tr>
+<tr><td>Losing a chain rule factor</td><td>$\frac{d}{dt}\sin(kt) = k\cos(kt)$, $\frac{d}{dt}e^{kt} = ke^{kt}$</td></tr>
+<tr><td>Speed as one component, or as $\left|\frac{dy}{dx}\right|$</td><td>Speed is $\sqrt{(x'(t))^2 + (y'(t))^2}$</td></tr>
+</tbody>
+</table>

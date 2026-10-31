@@ -1,0 +1,12 @@
+{
+ "math-sequences-limits": {
+  "file": "figures/math-sequences-limits.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two plots of terms against n for n = 1 to 12, one dot per term. Left: a sub n = 1 + (−1) to the n over n; the dots alternate above and below the dashed line at height 1 and close in on it, so the sequence converges to 1. Right: b sub n = (−1) to the n times n over (n + 1); the dots jump between values near 1 and near −1 and never settle, so the sequence diverges."
+ }
+}

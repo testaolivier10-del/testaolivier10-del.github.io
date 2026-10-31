@@ -1,0 +1,150 @@
+{
+ "id": "frq-u6-parts-improper",
+ "type": "techniques",
+ "title": "Integration by parts and two improper integrals",
+ "calc": false,
+ "points": 9,
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "integration-by-parts",
+  "improper-integrals",
+  "lhospitals-rule"
+ ],
+ "practices": [
+  "1.E",
+  "3.D",
+  "4.C",
+  "4.E"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "The graph of $f(x) = (2x + 1)e^{-x}$",
+  "text": "Let $f$ be the function defined by $f(x) = (2x + 1)e^{-x}$. The graph of $f$ for $x \\ge 0$ is shown. The region $R$ lies under the graph of $f$, above the $x$-axis and to the right of the $y$-axis, and goes on to the right without end. A calculator is not allowed.",
+  "plot": {
+   "label": "Graph of f(x) = (2x + 1) times e to the negative x for x from 0 to 8: it starts at 1, rises to a maximum of about 1.21 at x = 0.5, then decreases toward 0; the region under it is shaded",
+   "x": [
+    0,
+    8.4
+   ],
+   "y": [
+    0,
+    1.4
+   ],
+   "xStep": 1,
+   "yStep": 0.2,
+   "xLabel": "x",
+   "yLabel": "y",
+   "curves": [
+    {
+     "fn": "(2x + 1)e^(-x)",
+     "domain": [
+      0,
+      8.3
+     ],
+     "cls": "s1",
+     "label": "f",
+     "ends": [
+      "closed",
+      null
+     ]
+    }
+   ],
+   "shade": [
+    {
+     "fn": "(2x + 1)e^(-x)",
+     "domain": [
+      0,
+      8.3
+     ]
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 3,
+   "prompt": "<b>Use</b> integration by parts to find the value of $\\int_0^1 (2x + 1)e^{-x}\\,dx$. Show the work that leads to your answer.",
+   "rubric": [
+    {
+     "point": "Parts chosen and labeled: $u = 2x + 1$, $dv = e^{-x}\\,dx$, with $du = 2\\,dx$ and $v = -e^{-x}$",
+     "accept": [
+      "the four pieces written out, or a tabular layout with $2x + 1$, $2$, $0$ and $e^{-x}$, $-e^{-x}$, $e^{-x}$",
+      "an antiderivative $-(2x + 1)e^{-x} - 2e^{-x}$ found correctly by parts earns this point even if $u$ and $dv$ are not named"
+     ]
+    },
+    {
+     "point": "Correct application of parts on the interval: $-(2x + 1)e^{-x}\\Big|_0^1 + \\int_0^1 2e^{-x}\\,dx$",
+     "accept": [
+      "an equivalent antiderivative, $-(2x + 3)e^{-x}$, evaluated from 0 to 1",
+      "no point if $uv$ is left without its bounds or two antiderivatives are multiplied"
+     ]
+    },
+    {
+     "point": "Answer: $3 - \\frac{5}{e}$",
+     "accept": [
+      "$3 - 5e^{-1}$ or any unsimplified equivalent such as $(-3e^{-1} + 1) + (-2e^{-1} + 2)$"
+     ]
+    }
+   ],
+   "sample": "Let $u = 2x + 1$ and $dv = e^{-x}\\,dx$, so $du = 2\\,dx$ and $v = -e^{-x}$. Then $\\int_0^1 (2x + 1)e^{-x}\\,dx = -(2x + 1)e^{-x}\\Big|_0^1 + \\int_0^1 2e^{-x}\\,dx = \\left(-3e^{-1} + 1\\right) + \\left(-2e^{-x}\\right)\\Big|_0^1 = \\left(1 - \\frac{3}{e}\\right) + \\left(2 - \\frac{2}{e}\\right) = 3 - \\frac{5}{e}$."
+  },
+  {
+   "label": "b",
+   "points": 4,
+   "prompt": "<b>Determine</b> whether the area of $R$ is finite. If it is, find it; if it is not, explain why. Use correct limit notation throughout.",
+   "rubric": [
+    {
+     "point": "Improper integral written as a limit: $\\lim_{b \\to \\infty} \\int_0^b (2x + 1)e^{-x}\\,dx$",
+     "accept": [
+      "$\\int_0^\\infty f(x)\\,dx = \\lim_{b \\to \\infty} \\int_0^b f(x)\\,dx$"
+     ]
+    },
+    {
+     "point": "Antiderivative evaluated inside the limit: $\\lim_{b \\to \\infty}\\left(3 - (2b + 3)e^{-b}\\right)$",
+     "accept": [
+      "$\\lim_{b \\to \\infty}\\left(-(2x + 3)e^{-x}\\right)\\Big|_0^b$ with the limit kept in every line",
+      "no point for \"arithmetic with infinity\" such as $-(2\\infty + 3)e^{-\\infty}$"
+     ]
+    },
+    {
+     "point": "$\\lim_{b \\to \\infty} \\frac{2b + 3}{e^b} = 0$, with a reason",
+     "accept": [
+      "L'Hospital's rule with the form $\\frac{\\infty}{\\infty}$ stated: $\\lim_{b \\to \\infty} \\frac{2b + 3}{e^b} = \\lim_{b \\to \\infty} \\frac{2}{e^b} = 0$",
+      "\"$e^b$ grows faster than any linear function\" as the reason"
+     ]
+    },
+    {
+     "point": "Conclusion: the integral converges, and the area of $R$ is 3",
+     "accept": [
+      "\"the area is finite and equals 3\""
+     ]
+    }
+   ],
+   "sample": "Area of $R = \\int_0^\\infty (2x + 1)e^{-x}\\,dx = \\lim_{b \\to \\infty} \\int_0^b (2x + 1)e^{-x}\\,dx = \\lim_{b \\to \\infty}\\left(-(2x + 3)e^{-x}\\right)\\Big|_0^b = \\lim_{b \\to \\infty}\\left(3 - \\frac{2b + 3}{e^b}\\right)$. Both $2b + 3$ and $e^b$ grow without bound, so by L'Hospital's rule $\\lim_{b \\to \\infty} \\frac{2b + 3}{e^b} = \\lim_{b \\to \\infty} \\frac{2}{e^b} = 0$. The integral converges, and the area of $R$ is $3 - 0 = 3$."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Determine</b> whether $\\int_1^\\infty \\frac{2x}{x^2 + 1}\\,dx$ converges or diverges. Show the work that leads to your answer.",
+   "rubric": [
+    {
+     "point": "Limit with the antiderivative: $\\lim_{b \\to \\infty}\\left(\\ln(b^2 + 1) - \\ln 2\\right)$",
+     "accept": [
+      "$\\lim_{b \\to \\infty} \\ln(x^2 + 1)\\Big|_1^b$"
+     ]
+    },
+    {
+     "point": "Conclusion: diverges, because $\\ln(b^2 + 1) \\to \\infty$",
+     "accept": [
+      "\"the limit is infinite, so the integral diverges\"",
+      "no point for \"diverges\" without the limit shown"
+     ]
+    }
+   ],
+   "sample": "With $u = x^2 + 1$: $\\int_1^\\infty \\frac{2x}{x^2 + 1}\\,dx = \\lim_{b \\to \\infty} \\ln(x^2 + 1)\\Big|_1^b = \\lim_{b \\to \\infty}\\left(\\ln(b^2 + 1) - \\ln 2\\right)$. Since $\\ln(b^2 + 1)$ grows without bound, the limit is infinite and the integral diverges."
+  }
+ ]
+}

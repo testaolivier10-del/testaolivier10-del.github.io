@@ -1,0 +1,38 @@
+<p>The nth term test can only prove divergence. The <b>integral test</b> can prove either convergence or divergence, for series whose terms are positive and shrinking. It connects a series to the improper integrals of Topic 6.13.</p>
+
+<h2>The picture</h2>
+<p>Suppose $a_n = f(n)$ for a function $f$ that is positive and decreasing. Draw each term as a box of width 1 and height $a_n$. Its area is $a_n$.</p>
+<figure id="fig-boxes" data-fig="integral-test-rectangles"><figcaption>Boxes under $y = \frac{1}{x^2}$ and over $y = \frac{1}{x}$.</figcaption></figure>
+<ul>
+<li><b>Boxes under the curve.</b> Put box $n$ on $[n - 1, n]$. Since $f$ is decreasing, its height $f(n)$ is the lowest value of $f$ there, so the box fits under the curve. Then $a_2 + a_3 + \cdots + a_n \le \int_1^{n} f(x)\,dx$. If $\int_1^{\infty} f(x)\,dx$ is finite, the partial sums are bounded and keep rising, so they approach a limit: the series converges.</li>
+<li><b>Boxes over the curve.</b> Put box $n$ on $[n, n + 1]$. Now $f(n)$ is the highest value there, so the box covers the curve. Then $a_1 + \cdots + a_n \ge \int_1^{n+1} f(x)\,dx$. If that integral grows without bound, so do the partial sums: the series diverges.</li>
+</ul>
+<p><a class="figref" href="#fig-boxes">The figure</a> shows both: $\sum \frac{1}{n^2}$ is held down by a finite area, and $\sum \frac{1}{n}$ is pushed up by $\int_1^{N+1} \frac{dx}{x} = \ln(N + 1)$, which grows without bound.</p>
+
+<h2>The test</h2>
+<p><b>Integral test.</b> If $f$ is <b>positive, continuous and decreasing</b> on $[k, \infty)$ and $a_n = f(n)$ for $n \ge k$, then</p>
+<p>$$\sum_{n=k}^{\infty} a_n \text{ and } \int_k^{\infty} f(x)\,dx \text{ both converge or both diverge.}$$</p>
+<p>All three conditions matter, and on the exam you must say they hold. Positive and continuous are usually clear from the formula. Decreasing usually needs a derivative: show $f'(x) < 0$ for $x \ge k$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Does $\sum_{n=1}^{\infty} \frac{n}{e^{n^2}}$ converge?</p>
+<p>Conditions: $f(x) = xe^{-x^2}$ is positive and continuous for $x \ge 1$. $f'(x) = e^{-x^2}(1 - 2x^2) < 0$ for $x \ge 1$, so $f$ is decreasing.</p>
+<p>Integral (substitute $u = x^2$): $\int_1^{\infty} xe^{-x^2}\,dx = \lim_{b \to \infty} \Big[-\frac{1}{2}e^{-x^2}\Big]_1^{b} = \lim_{b \to \infty} \left(-\frac{1}{2}e^{-b^2} + \frac{1}{2e}\right) = \frac{1}{2e}$.</p>
+<p>Conclusion: the integral converges, so the series converges by the integral test.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Does $\sum_{n=2}^{\infty} \frac{1}{n\ln n}$ converge?</p>
+<p>Conditions: $f(x) = \frac{1}{x\ln x}$ is positive and continuous for $x \ge 2$, and decreasing because its denominator $x\ln x$ increases.</p>
+<p>Integral (substitute $u = \ln x$): $\int_2^{b} \frac{dx}{x\ln x} = \ln(\ln b) - \ln(\ln 2)$, which grows without bound as $b \to \infty$.</p>
+<p>Conclusion: the integral diverges, so the series diverges by the integral test, even though its terms approach 0.</p>
+</div>
+
+<h2>Three cautions</h2>
+<table class="compare">
+<thead><tr><th>Caution</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>The integral is not the sum</td><td>$\int_1^{\infty} \frac{dx}{x^2} = 1$, but $\sum_{n=1}^{\infty} \frac{1}{n^2} \approx 1.645$; the boxes and the curve have different areas</td></tr>
+<tr><td>Decreasing may start late</td><td>$\frac{\ln x}{x}$ rises until $x = e$; run the test from $n = 3$, since the first terms never change convergence</td></tr>
+<tr><td>Keep limit notation</td><td>write $\lim_{b \to \infty} \int_1^{b}$; never substitute $\infty$ as a number</td></tr>
+</tbody>
+</table>
+<p>When the conditions fail, for example $\frac{\sin^2 n}{n^2}$, whose function keeps dropping to 0 and rising again, the integral test cannot be used at all; Topic 10.6 gives tests that handle such series. Next, in 10.5, the integral test settles a whole family at once: $\sum \frac{1}{n^p}$.</p>

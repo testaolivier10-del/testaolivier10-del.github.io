@@ -1,0 +1,8 @@
+{
+ "logistic-model": {
+  "def": "A differential equation in which the rate of change is jointly proportional to the quantity and to the room left below a limit $K$: $\\frac{dP}{dt} = kP(K - P)$, or $rP\\left(1 - \\frac{P}{K}\\right)$. Positive solutions approach $K$, and growth is fastest at $P = \\frac{K}{2}$."
+ },
+ "carrying-capacity": {
+  "def": "In a logistic model, the positive value $K$ at which the rate of change is 0; for any positive starting value, $\\lim_{t \\to \\infty} P(t) = K$. Read it from $\\frac{dP}{dt} = kP(K - P)$ by setting the rate to 0."
+ }
+}

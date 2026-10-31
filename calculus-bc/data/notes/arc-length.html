@@ -1,0 +1,44 @@
+<p>Area under a curve and volume of a solid came from adding up thin slices. The <b>arc length of a curve</b>, its length measured along the curve, comes the same way: from adding up short straight pieces. Each piece is the hypotenuse of a small right triangle, so the Pythagorean theorem does the work.</p>
+
+<h2>Chords first</h2>
+<p>Split $[a, b]$ into pieces. Over a piece with run $\Delta x$, the curve rises $\Delta y$, and the chord joining the two points has length</p>
+<p>$$\sqrt{(\Delta x)^2 + (\Delta y)^2} = \sqrt{1 + \left(\frac{\Delta y}{\Delta x}\right)^2}\,\Delta x$$</p>
+<p><a class="figref" href="#fig-chords">The figure</a> shows three chords along $y = \frac{2}{3}x^{3/2}$ on $[0, 3]$. Their total, about 4.647, is a little less than the curve's length: a chord is the shortest path between its endpoints. More, shorter chords bring the total closer.</p>
+<figure id="fig-chords" data-fig="arc-length-chords"><figcaption>Each chord is a hypotenuse; their total approaches the length of the curve.</figcaption></figure>
+
+<h2>From chords to an integral</h2>
+<p>If $f$ is differentiable, the Mean Value Theorem gives a point $c$ in each piece with $\frac{\Delta y}{\Delta x} = f'(c)$. So the chord total is $\sum \sqrt{1 + (f'(c))^2}\,\Delta x$, a Riemann sum. As the pieces shrink it becomes an integral:</p>
+<p>$$\text{arc length} = \int_a^b \sqrt{1 + (f'(x))^2}\,dx,$$</p>
+<p>for a function $f$ whose derivative is continuous on $[a, b]$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the length of the graph of $y = \frac{2}{3}x^{3/2}$ from $x = 0$ to $x = 3$.</p>
+<p>Derivative: $y' = x^{1/2}$, so $(y')^2 = x$.</p>
+<p>Setup: $\int_0^3 \sqrt{1 + x}\,dx$.</p>
+<p>Evaluate: $\frac{2}{3}(1 + x)^{3/2}\Big|_0^3 = \frac{2}{3}(8 - 1) = \frac{14}{3} \approx 4.667$.</p>
+</div>
+<p>Exact answers like this are rare: the square root usually has no elementary antiderivative. Most arc length questions are calculator questions, where the setup earns a point and the value to three decimal places earns another.</p>
+<div class="worked">
+<p><b>Worked example 2 (calculator).</b> Find the length of one arch of $y = \sin x$, from $x = 0$ to $x = \pi$.</p>
+<p>$y' = \cos x$, so the length is $\int_0^\pi \sqrt{1 + \cos^2 x}\,dx \approx 3.820$ (radian mode).</p>
+<p>Sanity check: the arch is longer than its base, $\pi \approx 3.142$, and longer than the two chords from $(0, 0)$ to $\left(\frac{\pi}{2}, 1\right)$ to $(\pi, 0)$, which total about 3.724.</p>
+</div>
+
+<h2>Setups that lose the point</h2>
+<table class="compare">
+<thead><tr><th>Curve and interval</th><th>Right setup</th><th>Common wrong setup</th></tr></thead>
+<tbody>
+<tr><td>$y = x^3$, $[0, 1]$</td><td>$\int_0^1 \sqrt{1 + 9x^4}\,dx$</td><td>$\int_0^1 \sqrt{1 + x^6}\,dx$ (squared $f$, not $f'$)</td></tr>
+<tr><td>$y = \sqrt{x}$, $[1, 4]$</td><td>$\int_1^4 \sqrt{1 + \frac{1}{4x}}\,dx$</td><td>$\int_1^4 \sqrt{1 + \frac{1}{2\sqrt{x}}}\,dx$ (derivative not squared)</td></tr>
+<tr><td>$y = \frac{x^2}{2}$, $[0, 2]$</td><td>$\int_0^2 \sqrt{1 + x^2}\,dx$</td><td>$\int_0^2 (1 + x^2)\,dx$ (no square root)</td></tr>
+</tbody>
+</table>
+<p>The scoring guidelines give the setup point only for an integrand in the right form, with the right limits. Write $\sqrt{1 + (f'(x))^2}$ with your derivative substituted, then evaluate.</p>
+
+<h2>Curves given as x = g(y)</h2>
+<p>When $x$ is a function of $y$, swap the roles: the length from $y = c$ to $y = d$ is $\int_c^d \sqrt{1 + (g'(y))^2}\,dy$. For $x = y^2$ from $y = 0$ to $y = 2$: $\int_0^2 \sqrt{1 + 4y^2}\,dy \approx 4.647$. The limits are $y$-values.</p>
+
+<h2>Arc length from a table</h2>
+<p>If only values of $f'$ are known, estimate $\int_a^b \sqrt{1 + (f'(x))^2}\,dx$ with a Riemann or trapezoidal sum of the values of $\sqrt{1 + (f'(x))^2}$, using the table's widths. For example, with $f'(0) = 0$, $f'(2) = \frac{3}{4}$ and $f'(4) = \frac{12}{5}$, the left sum on $[0, 6]$ is $2\left(1 + \frac{5}{4} + \frac{13}{5}\right) = 9.7$.</p>
+
+<h2>Reading an arc length in context</h2>
+<p>If $h(x)$ is the height of a cable in meters, $x$ meters from a pole, then $\int_0^5 \sqrt{1 + (h'(x))^2}\,dx$ is the length of cable between $x = 0$ and $x = 5$, in meters. Name the curve, the interval and the unit. The length does not depend on where the curve sits: moving a graph up or down leaves $f'$, and so its length, unchanged.</p>

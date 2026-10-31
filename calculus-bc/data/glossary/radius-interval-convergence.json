@@ -1,0 +1,11 @@
+{
+ "power-series": {
+  "def": "A series of the form $\\sum_{n=0}^{\\infty} a_n (x - a)^n$, centered at $x = a$. For each $x$ it is a series of numbers; its sum is a function of $x$ wherever it converges."
+ },
+ "radius-of-convergence": {
+  "def": "The number $R$ such that a power series centered at $a$ converges (absolutely) when $|x - a| < R$ and diverges when $|x - a| > R$. It is 0 if the series converges only at its center and infinite if it converges for every $x$."
+ },
+ "interval-of-convergence": {
+  "def": "The set of all $x$ where a power series converges: the open interval $(a - R, a + R)$ from the radius, plus each endpoint at which the series, tested on its own, converges."
+ }
+}

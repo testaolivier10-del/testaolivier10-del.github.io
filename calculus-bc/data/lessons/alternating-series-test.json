@@ -1,0 +1,89 @@
+{
+ "topic": "alternating-series-test",
+ "hook": "Add $1$, subtract $\\frac{1}{2}$, add $\\frac{1}{3}$, subtract $\\frac{1}{4}$, and keep going. Without the signs the sum grows without bound, but with them each step undoes part of the last one, and the running total settles. The alternating series test says exactly when that happens.",
+ "prereq": [
+  {
+   "q": "What does the nth term test say about $\\sum a_n$ when $\\lim_{n \\to \\infty} a_n = 0$?",
+   "options": [
+    "Nothing: the series may converge or diverge",
+    "The series converges",
+    "The series diverges",
+    "The series converges to 0"
+   ],
+   "correct": 0,
+   "why": "A limit of 0 leaves the question open; the nth term test can only show divergence.",
+   "review": "nth-term-test"
+  },
+  {
+   "q": "Does the harmonic series $\\sum_{n=1}^{\\infty} \\frac{1}{n}$ converge?",
+   "options": [
+    "No: it diverges, though its terms approach 0",
+    "Yes: its terms approach 0",
+    "Yes: it is a $p$-series with $p = 1$",
+    "Yes: its sum is 1"
+   ],
+   "correct": 0,
+   "why": "It is the $p$-series with $p = 1$, which diverges.",
+   "review": "p-series"
+  },
+  {
+   "q": "Which sequence is decreasing for $n \\ge 1$?",
+   "options": [
+    "$\\frac{1}{n + 2}$",
+    "$\\frac{n}{n + 2}$",
+    "$(-1)^n$",
+    "$\\sin n$"
+   ],
+   "correct": 0,
+   "why": "A larger $n$ gives a larger denominator, so $\\frac{1}{n + 2}$ decreases.",
+   "review": "math-sequences"
+  }
+ ],
+ "figure": {
+  "figure": "alt-partial-sums",
+  "caption": "The partial sums of $1 - \\frac{1}{2} + \\frac{1}{3} - \\frac{1}{4} + \\cdots$ zigzag in on the sum, about $0.693$."
+ },
+ "chain": [
+  {
+   "cause": "The signs alternate",
+   "effect": "each partial sum steps up, then down, then up again, so the partial sums zigzag"
+  },
+  {
+   "cause": "The sizes of the terms decrease",
+   "effect": "each step is shorter than the last, so the zigzag never passes back beyond the previous turn"
+  },
+  {
+   "cause": "The sizes approach 0",
+   "effect": "the steps shrink to nothing, the zigzag closes in on one number, and the series converges"
+  }
+ ],
+ "ideas": [
+  "The alternating series test: if $a_n > 0$, the $a_n$ decrease (from some point on), and $\\lim_{n \\to \\infty} a_n = 0$, then $\\sum (-1)^n a_n$ converges.",
+  "Check and state all three conditions: alternating signs, decreasing sizes, a limit of 0.",
+  "The test only proves convergence. If the sizes do not approach 0, use the nth term test for divergence instead.",
+  "The sum always lies between two consecutive partial sums."
+ ],
+ "misconception": {
+  "wrong": "The alternating series test fails for $\\sum (-1)^n \\frac{n}{n^2 + 3}$ because $a_2 > a_1$, so the series diverges.",
+  "right": "The sizes only need to decrease from some point on (here from $n = 2$), so the test applies and the series converges. And a failed condition never proves divergence by itself."
+ },
+ "check": [
+  "cbc-alternating-series-test-2",
+  "cbc-alternating-series-test-4",
+  "cbc-alternating-series-test-7",
+  "cbc-alternating-series-test-9",
+  "cbc-alternating-series-test-12",
+  "cbc-alternating-series-test-15"
+ ],
+ "summary": "A series whose terms alternate in sign converges when the sizes of its terms decrease and approach 0. Its partial sums zigzag around the sum with shrinking swings. If the sizes do not approach 0, the nth term test shows divergence; the alternating series test itself never shows divergence.",
+ "connections": [
+  {
+   "href": "../notes/comparison-tests.html",
+   "label": "Back: comparison tests (10.6)"
+  },
+  {
+   "href": "../notes/ratio-test.html",
+   "label": "Next: the ratio test (10.8)"
+  }
+ ]
+}

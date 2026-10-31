@@ -1,0 +1,38 @@
+<p>Every later test in Unit 10 takes some work. The <b>nth term test</b> takes almost none, so it is the first thing to check. It looks only at the terms $a_n$ and asks one question: do they approach 0?</p>
+
+<h2>The test</h2>
+<p><b>nth term test for divergence.</b> If $\lim_{n \to \infty} a_n \ne 0$, or the limit does not exist, then $\sum a_n$ diverges.</p>
+<p>Why it works: if a series converges to $S$, then its partial sums $S_n$ and $S_{n-1}$ both approach $S$, so</p>
+<p>$$a_n = S_n - S_{n-1} \to S - S = 0.$$</p>
+<p>So every convergent series has terms that approach 0. A series whose terms do not approach 0 cannot converge.</p>
+<figure id="fig-nth" data-fig="nth-term-test-two-cases"><figcaption>Left: terms approach $\frac{1}{2}$. Right: terms approach 0.</figcaption></figure>
+<p><a class="figref" href="#fig-nth">The left panel</a> shows why: when the terms level off at $\frac{1}{2}$, each new term adds about $\frac{1}{2}$, and the partial sums climb without bound.</p>
+
+<h2>What it cannot do</h2>
+<p>The test only ever proves <b>divergence</b>. If $\lim a_n = 0$, it is <b>inconclusive</b>: the series might converge or diverge. <a class="figref" href="#fig-nth">The right panel</a> shows terms $\frac{1}{n}$ that approach 0 while the partial sums keep growing. In 10.1 you saw another: $\sum \ln\left(\frac{n + 1}{n}\right)$ has terms approaching 0 and partial sums $\ln(n + 1)$ that grow without bound. On the other hand $\sum \left(\frac{1}{2}\right)^n$ also has terms approaching 0, and it converges.</p>
+<table class="compare">
+<thead><tr><th>$\lim_{n \to \infty} a_n$</th><th>What the nth term test says</th></tr></thead>
+<tbody>
+<tr><td>a number other than 0</td><td>the series diverges</td></tr>
+<tr><td>does not exist (including $\pm\infty$)</td><td>the series diverges</td></tr>
+<tr><td>$0$</td><td>nothing: use another test</td></tr>
+</tbody>
+</table>
+
+<h2>Using it</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Does $\sum_{n=1}^{\infty} \frac{3n^2 - 1}{5n^2 + n}$ converge?</p>
+<p>Limit of the terms: divide the top and bottom by $n^2$: $\frac{3 - 1/n^2}{5 + 1/n} \to \frac{3}{5}$.</p>
+<p>Conclusion: $\lim_{n \to \infty} \frac{3n^2 - 1}{5n^2 + n} = \frac{3}{5} \ne 0$, so the series diverges by the nth term test.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> What does the nth term test say about $\sum_{n=1}^{\infty} (-1)^n \frac{2n}{n + 3}$ and $\sum_{n=1}^{\infty} \frac{\ln n}{n}$?</p>
+<p>First: the sizes $\frac{2n}{n + 3}$ approach 2, so the terms jump between values near 2 and near $-2$. The limit does not exist, so it is not 0: the series diverges by the nth term test.</p>
+<p>Second: $\frac{\ln x}{x}$ is an $\frac{\infty}{\infty}$ form, and L'Hospital's rule gives $\frac{1/x}{1} \to 0$. The terms approach 0, so the nth term test says nothing. (Topic 10.4 settles it.)</p>
+</div>
+
+<h2>Saying it right</h2>
+<p>A justification names the limit, compares it with 0, names the test and concludes about the <b>series</b>:</p>
+<p>"$\lim_{n \to \infty} \frac{3n^2 - 1}{5n^2 + n} = \frac{3}{5} \ne 0$, so $\sum \frac{3n^2 - 1}{5n^2 + n}$ diverges by the nth term test."</p>
+<p>Three phrases cost points: "the terms diverge" when they approach $\frac{3}{5}$; "the series converges to $\frac{3}{5}$", which mixes up the terms with the sum; and "the terms go to 0, so the series converges", which uses the test backward.</p>
+<p>Limits in this unit are in $n$: write $\lim_{n \to \infty} a_n$. To use L'Hospital's rule or a derivative, switch to a function $f(x)$ with $f(n) = a_n$, find $\lim_{x \to \infty} f(x)$, and then state the result for $n$.</p>

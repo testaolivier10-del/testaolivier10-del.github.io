@@ -1,0 +1,12 @@
+{
+ "alt-partial-sums": {
+  "file": "figures/alt-partial-sums.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Partial sums S sub N of 1 minus 1/2 plus 1/3 minus 1/4 and so on, for N = 1 to 14, joined by a zigzag line. Odd partial sums lie above a dashed line at about 0.693 and even ones below it; the swings shrink as N grows, so the partial sums close in on the sum."
+ }
+}

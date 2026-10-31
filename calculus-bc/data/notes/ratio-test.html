@@ -1,0 +1,50 @@
+<p>A geometric series is easy to judge: each term is the same multiple $r$ of the one before, and the series converges exactly when $|r| < 1$. The ratio test asks whether a series behaves like a geometric series far out, and if so, with what ratio.</p>
+
+<h2>The idea: a ratio that settles</h2>
+<p>For $\sum \frac{n^2}{3^n}$, the ratio of a term to the one before is</p>
+<p>$$\frac{a_{n+1}}{a_n} = \frac{(n+1)^2}{3^{n+1}} \cdot \frac{3^n}{n^2} = \frac{(n+1)^2}{3n^2} = \frac{1}{3}\left(1 + \frac{1}{n}\right)^2.$$</p>
+<p>At $n = 1$ the ratio is $\frac{4}{3}$, so the second term is larger than the first. But as $n$ grows the ratio settles toward $\frac{1}{3}$ (<a class="figref" href="#fig-ratios">the figure</a>). Far out, each term is roughly a third of the one before, just like a geometric series with $r = \frac{1}{3}$, and that series converges.</p>
+<figure id="fig-ratios" data-fig="ratio-test-ratios"><figcaption>The ratio of consecutive terms settles at $\frac{1}{3}$, below the threshold 1.</figcaption></figure>
+
+<h2>The ratio test</h2>
+<p>For a series $\sum a_n$ with nonzero terms, find</p>
+<p>$$L = \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right|.$$</p>
+<table class="compare">
+<thead><tr><th>Limit</th><th>Conclusion</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>$L < 1$</td><td>the series converges</td><td>the terms shrink at least as fast as a convergent geometric series</td></tr>
+<tr><td>$L > 1$, or the limit is infinite</td><td>the series diverges</td><td>the terms grow, so they do not approach 0</td></tr>
+<tr><td>$L = 1$</td><td>no conclusion</td><td>both convergent and divergent series give 1</td></tr>
+</tbody>
+</table>
+<p>The absolute value lets the test work on series whose terms change sign. Only the limit matters: any number of early ratios above or below 1 change nothing.</p>
+
+<h2>Simplifying the ratio</h2>
+<p>Most of the work is algebra. Write $a_{n+1}$ by replacing every $n$ with $n + 1$, then multiply by the reciprocal of $a_n$. Three simplifications come up again and again:</p>
+<ul>
+<li>$\frac{(n+1)!}{n!} = n + 1$ and $\frac{(2n+2)!}{(2n)!} = (2n+2)(2n+1)$: two new factors, not one.</li>
+<li>$\frac{5^{n+1}}{5^n} = 5$.</li>
+<li>$\frac{(n+1)^k}{n^k} = \left(1 + \frac{1}{n}\right)^k \to 1$: polynomial factors contribute 1 to the limit.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 1.</b> Does $\sum_{n=1}^{\infty} \frac{5^n}{n!}$ converge?</p>
+<p>$\frac{a_{n+1}}{a_n} = \frac{5^{n+1}}{(n+1)!} \cdot \frac{n!}{5^n} = \frac{5}{n+1}$.</p>
+<p>$L = \lim_{n \to \infty} \frac{5}{n + 1} = 0 < 1$, so the series converges by the ratio test.</p>
+<p>The first few ratios ($\frac{5}{2}$, $\frac{5}{3}$, $\frac{5}{4}$) are above 1, and the terms grow at first. That does not matter; the limit does.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Does $\sum_{n=1}^{\infty} \frac{n!}{2^n}$ converge?</p>
+<p>$\frac{a_{n+1}}{a_n} = \frac{(n+1)!}{2^{n+1}} \cdot \frac{2^n}{n!} = \frac{n + 1}{2}$, which grows without bound.</p>
+<p>The limit is infinite, so the series diverges by the ratio test. (The terms themselves grow without bound, so the nth term test agrees.)</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> What does the ratio test say about $\sum_{n=1}^{\infty} \frac{n}{n^2 + 1}$?</p>
+<p>$\frac{a_{n+1}}{a_n} = \frac{n + 1}{(n+1)^2 + 1} \cdot \frac{n^2 + 1}{n}$. The top and bottom both grow like $n^3$, and the limit is 1.</p>
+<p>No conclusion. Use limit comparison with $\frac{1}{n}$ instead: the limit of $\frac{n^2}{n^2 + 1}$ is 1, and the harmonic series diverges, so this series diverges.</p>
+</div>
+
+<h2>When to reach for it</h2>
+<p>Use the ratio test when the terms contain factorials or exponentials such as $4^n$, since those cancel cleanly in the ratio. For a $p$-series or a ratio of polynomials the limit is always 1, so a comparison test is the right tool. Later in the unit the ratio test does its most important job: finding where a series with an $x$ in it converges.</p>
+
+<h2>Writing it the way graders want</h2>
+<p>Show the ratio with $a_{n+1}$ on top and the absolute value, simplify it, write the limit with $n \to \infty$, and compare the value with 1 in words: "$L = 0 < 1$, so the series converges by the ratio test." Do not say the series converges <i>to</i> $L$: the limit of the ratios decides whether the series converges, not what its sum is.</p>

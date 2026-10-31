@@ -1,0 +1,32 @@
+{
+ "polar-area-sectors": {
+  "file": "figures/polar-area-sectors.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three copies of the cardioid r = 2 + 2 cos θ. Left: one thin wedge of angle Δθ near θ = π/4 is shaded; it is nearly a slice of a circle of radius r, with area about one half r squared Δθ. Middle: eight such wedges fill the region swept from θ = 0 to θ = π/2; adding them is a Riemann sum. Right: the exact region swept from θ = 0 to θ = π/2 is shaded; its area is one half the integral of r squared from 0 to π/2, which is (3π + 8)/2, about 8.712."
+ },
+ "polar-area-frq-region": {
+  "file": "figures/polar-area-frq-region.svg",
+  "ext": "svg",
+  "w": 560,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "On a polar grid with circles of radius 1 and 2 and rays every π/6, the curve r = 3 sin θ + cos(2θ) is drawn for θ from 0 to π. It starts at (1, 0) on the positive x-axis, rises in a broad arch to a top a little above y = 2, and comes back down to (−1, 0) on the negative x-axis. The region R between the arch and the x-axis is shaded."
+ },
+ "polar-area-petal": {
+  "file": "figures/polar-area-petal.svg",
+  "ext": "svg",
+  "w": 520,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A polar grid with circles of radius 1, 2 and 3. The four-petal rose r = 3 sin(2θ) is drawn in emerald. The petal in the first quadrant, swept as θ runs from 0 to π/2, is shaded; it starts and ends at the pole, where r = 0, and reaches its tip, r = 3, at θ = π/4."
+ }
+}

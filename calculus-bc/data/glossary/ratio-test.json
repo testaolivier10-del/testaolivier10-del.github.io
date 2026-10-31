@@ -1,0 +1,5 @@
+{
+ "ratio-test": {
+  "def": "For a series $\\sum a_n$ with nonzero terms, let $L = \\lim_{n \\to \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right|$. If $L < 1$ the series converges; if $L > 1$ or the limit is infinite it diverges; if $L = 1$ the test gives no conclusion."
+ }
+}

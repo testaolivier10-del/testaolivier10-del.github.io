@@ -1,0 +1,80 @@
+{
+ "topic": "polar-area-between",
+ "hook": "A washer is a big disk with a smaller disk cut out. Areas between polar curves work the same way: a big wedge with a smaller wedge removed, thousands of times over. The hard part is not the integral but the setup: where the curves meet, and which one is outside.",
+ "prereq": [
+  {
+   "q": "The area of the region bounded by $r = f(\\theta)$ for $\\alpha \\le \\theta \\le \\beta$ is",
+   "options": [
+    "$\\frac{1}{2}\\int_{\\alpha}^{\\beta} \\left(f(\\theta)\\right)^2 d\\theta$",
+    "$\\int_{\\alpha}^{\\beta} f(\\theta)\\,d\\theta$",
+    "$\\frac{1}{2}\\int_{\\alpha}^{\\beta} f(\\theta)\\,d\\theta$",
+    "$\\int_{\\alpha}^{\\beta} \\left(f(\\theta)\\right)^2 d\\theta$"
+   ],
+   "correct": 0,
+   "why": "Thin wedges of area $\\frac{1}{2}r^2\\,\\Delta\\theta$, added up (Topic 9.8).",
+   "review": "polar-area"
+  },
+  {
+   "q": "The area between $y = f(x)$ on top and $y = g(x)$ below, for $a \\le x \\le b$, is",
+   "options": [
+    "$\\int_a^b \\left(f(x) - g(x)\\right)dx$",
+    "$\\int_a^b \\left(g(x) - f(x)\\right)dx$",
+    "$\\int_a^b f(x)\\,dx \\cdot \\int_a^b g(x)\\,dx$",
+    "$\\int_a^b \\left(f(x) - g(x)\\right)^2 dx$"
+   ],
+   "correct": 0,
+   "why": "Top minus bottom, integrated (Topic 8.4).",
+   "review": "area-between-curves-x"
+  }
+ ],
+ "figure": {
+  "figure": "polar-area-between-region",
+  "caption": "Inside $r = 2 + 2\\cos\\theta$ and outside $r = 3$: meet at $\\theta = \\pm\\frac{\\pi}{3}$, outer squared minus inner squared."
+ },
+ "chain": [
+  {
+   "cause": "Set the two equations equal, and check where each reaches the pole",
+   "effect": "the crossing angles, which become the limits"
+  },
+  {
+   "cause": "Pick a $\\theta$ between the limits and compare the two $r$-values",
+   "effect": "you know which curve is outer, $R$, and which is inner, $r$"
+  },
+  {
+   "cause": "Each thin piece is a wedge of radius $R$ minus a wedge of radius $r$",
+   "effect": "its area is $\\frac{1}{2}\\left(R^2 - r^2\\right)\\Delta\\theta$"
+  },
+  {
+   "cause": "Add the pieces and take the limit",
+   "effect": "$A = \\frac{1}{2}\\int_{\\alpha}^{\\beta} \\left(R^2 - r^2\\right)d\\theta$"
+  }
+ ],
+ "ideas": [
+  "$A = \\frac{1}{2}\\int_{\\alpha}^{\\beta} \\left(R(\\theta)^2 - r(\\theta)^2\\right)d\\theta$, outer squared minus inner squared. Never $\\frac{1}{2}\\int (R - r)^2\\,d\\theta$.",
+  "Limits come from where the curves meet: solve $f(\\theta) = g(\\theta)$, then check the pole separately, since each curve may reach it at a different angle.",
+  "Area arithmetic often beats a new integral: the region inside both curves is one curve's area minus the region inside it and outside the other."
+ ],
+ "misconception": {
+  "wrong": "The area between $r = 3$ and $r = 2$ for $0 \\le \\theta \\le \\frac{\\pi}{2}$ is $\\frac{1}{2}\\int_0^{\\pi/2} (3 - 2)^2\\,d\\theta = \\frac{\\pi}{4}$.",
+  "right": "Subtract the wedge areas, not the radii: $\\frac{1}{2}\\int_0^{\\pi/2} \\left(3^2 - 2^2\\right)d\\theta = \\frac{5\\pi}{4}$, a quarter of the ring between the circles."
+ },
+ "check": [
+  "cbc-polar-area-between-1",
+  "cbc-polar-area-between-2",
+  "cbc-polar-area-between-3",
+  "cbc-polar-area-between-6",
+  "cbc-polar-area-between-8",
+  "cbc-polar-area-between-15"
+ ],
+ "summary": "For the region outside $r = r(\\theta)$ and inside $r = R(\\theta)$, find the limits where the curves meet (and check the pole), decide which curve is outer, and compute $\\frac{1}{2}\\int_{\\alpha}^{\\beta} \\left(R^2 - r^2\\right)d\\theta$. Square each radius before subtracting.",
+ "connections": [
+  {
+   "href": "../notes/polar-area.html",
+   "label": "Back: area inside a polar curve (9.8)"
+  },
+  {
+   "href": "../notes/math-sequences.html",
+   "label": "Next: sequences, sigma notation and factorials"
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+<p>Unit 9 follows points that move in the plane. To describe them you need two tools from precalculus: <b>parametric equations</b>, which give the position at each time, and <b>vectors</b>, which describe a change in position. This page rebuilds both, one step at a time.</p>
+
+<h2>A point for each value of t</h2>
+<p>A graph $y = f(x)$ gives one $y$ for each $x$. Parametric equations instead give <i>both</i> coordinates from a third variable, the <b>parameter</b> $t$:</p>
+<p>$$x = x(t), \qquad y = y(t).$$</p>
+<p>Think of $t$ as time. At each time the point is at $(x(t), y(t))$, and as $t$ increases the point moves, tracing a path. The order of the points matters, so a parametric path has a <b>direction</b> (its orientation). Draw it with arrows.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Sketch the path $x = t^2 - 2t$, $y = 3 - t$ for $-1 \le t \le 3$.</p>
+<p>Make a table: put each $t$ into <i>both</i> equations, with parentheses around negative inputs.</p>
+<table class="compare">
+<thead><tr><th>$t$</th><th>$-1$</th><th>$0$</th><th>$1$</th><th>$2$</th><th>$3$</th></tr></thead>
+<tbody>
+<tr><td>$x = t^2 - 2t$</td><td>$3$</td><td>$0$</td><td>$-1$</td><td>$0$</td><td>$3$</td></tr>
+<tr><td>$y = 3 - t$</td><td>$4$</td><td>$3$</td><td>$2$</td><td>$1$</td><td>$0$</td></tr>
+</tbody>
+</table>
+<p>Plot $(3, 4)$, $(0, 3)$, $(-1, 2)$, $(0, 1)$, $(3, 0)$ in that order and join them. $y$ keeps falling, so the point moves down the page; $x$ falls until $t = 1$ and then rises, so it moves left and then right. <a class="figref" href="#fig-path">The figure</a> shows the path with its arrows.</p>
+</div>
+<figure id="fig-path" data-fig="math-parametric-vectors-path"><figcaption>A path traced point by point, and a vector with its components.</figcaption></figure>
+
+<h2>Eliminating the parameter</h2>
+<p>To see the shape of a path, remove $t$ and get one equation in $x$ and $y$. Two methods cover almost every case.</p>
+<p><b>Solve and substitute.</b> When one equation is linear in $t$, solve it for $t$ and put the result into the other. In worked example 1, $y = 3 - t$ gives $t = 3 - y$, so</p>
+<p>$$x = (3 - y)^2 - 2(3 - y) = y^2 - 4y + 3,$$</p>
+<p>a parabola that opens to the right. Check a point: $y = 2$ gives $x = 4 - 8 + 3 = -1$, as in the table at $t = 1$.</p>
+<p><b>Use an identity.</b> When the equations hold $\cos t$ and $\sin t$, square and add: $\cos^2 t + \sin^2 t = 1$ removes $t$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Describe $x = 3\cos t$, $y = 3\sin t$ for $0 \le t \le 2\pi$.</p>
+<p>$x^2 + y^2 = 9\cos^2 t + 9\sin^2 t = 9(\cos^2 t + \sin^2 t) = 9$: a circle of radius 3 centered at the origin.</p>
+<p>Direction: $t = 0$ gives $(3, 0)$ and $t = \frac{\pi}{2}$ gives $(0, 3)$. From the right side to the top is counterclockwise, and $t$ from 0 to $2\pi$ is one full turn.</p>
+</div>
+<p>Elimination keeps the shape and throws away the rest. $x = 3\sin t$, $y = 3\cos t$ satisfies the same equation $x^2 + y^2 = 9$, yet it starts at the top, $(0, 3)$, and goes <i>clockwise</i>. And on $0 \le t \le 4\pi$ either path goes around twice. Always find the start and the direction from the parametric equations themselves.</p>
+
+<h2>Vectors: a change in position</h2>
+<p>A <b>vector</b> has a size and a direction. In the plane it is written by its components,</p>
+<p>$$\left\langle a, b \right\rangle: \quad a \text{ across (right if positive)}, \; b \text{ up (if positive)}.$$</p>
+<p>The vector from $P(x_1, y_1)$ to $Q(x_2, y_2)$ is <b>end minus start</b>: $\left\langle x_2 - x_1, y_2 - y_1 \right\rangle$. The vector from the origin to a point is that point's <b>position</b>; the position of $Q(4, 5)$ is $\left\langle 4, 5 \right\rangle$.</p>
+<p>The <b>magnitude</b> (length) of $\left\langle a, b \right\rangle$ is the hypotenuse of a right triangle with legs $|a|$ and $|b|$:</p>
+<p>$$\left\| \left\langle a, b \right\rangle \right\| = \sqrt{a^2 + b^2}.$$</p>
+<p>Add vectors and multiply them by numbers one component at a time:</p>
+<p>$$\left\langle 1, -3 \right\rangle + \left\langle 4, 5 \right\rangle = \left\langle 5, 2 \right\rangle, \qquad 2\left\langle 1, -3 \right\rangle = \left\langle 2, -6 \right\rangle.$$</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A drone flies from $P(1, 1)$ to $Q(4, 5)$, in meters. Find the vector of the trip and its length.</p>
+<p>End minus start: $\left\langle 4 - 1, 5 - 1 \right\rangle = \left\langle 3, 4 \right\rangle$, so 3 meters east and 4 meters north.</p>
+<p>Length: $\sqrt{3^2 + 4^2} = \sqrt{25} = 5$ meters. Not $3 + 4 = 7$: the drone flies the diagonal, not the two legs.</p>
+</div>
+
+<h2>Common slips</h2>
+<table class="compare">
+<thead><tr><th>Slip</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Writing $(y, x)$ or putting $t$ in the $x$ place</td><td>A point is $(x(t), y(t))$: evaluate both functions at the same $t$</td></tr>
+<tr><td>Reading the shape and guessing the direction</td><td>Plot two nearby values of $t$ and see which way the point moves</td></tr>
+<tr><td>Start minus end for the vector from $P$ to $Q$</td><td>End minus start: $Q - P$</td></tr>
+<tr><td>Length as $a + b$, or forgetting the square root</td><td>$\sqrt{a^2 + b^2}$; a magnitude is never negative</td></tr>
+</tbody>
+</table>
+<p>With these two tools, the rest of Unit 9 is calculus you already know, applied to each coordinate: rates of $x$ and $y$, slopes of paths, and how far a point travels.</p>

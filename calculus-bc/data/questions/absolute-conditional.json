@@ -1,0 +1,482 @@
+{
+ "stimuli": {
+  "absolute-conditional-s1": {
+   "kind": "table",
+   "title": "Four series with alternating signs",
+   "table": {
+    "caption": "Four series, each with terms that alternate in sign",
+    "cols": [
+     "Series",
+     "Terms",
+     "Starts at"
+    ],
+    "rows": [
+     [
+      "I",
+      "$\\frac{(-1)^n}{n^2}$",
+      "$n = 1$"
+     ],
+     [
+      "II",
+      "$\\frac{(-1)^n}{\\sqrt{n}}$",
+      "$n = 1$"
+     ],
+     [
+      "III",
+      "$(-1)^n \\frac{n}{n + 1}$",
+      "$n = 1$"
+     ],
+     [
+      "IV",
+      "$\\frac{(-1)^n}{n \\ln n}$",
+      "$n = 2$"
+     ]
+    ]
+   }
+  },
+  "absolute-conditional-s2": {
+   "kind": "table",
+   "title": "A series and its absolute values",
+   "table": {
+    "caption": "The series $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{2n + 1}$ and the series of its absolute values",
+    "cols": [
+     "Series",
+     "Written out"
+    ],
+    "rows": [
+     [
+      "$\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{2n + 1}$",
+      "$\\frac{1}{3} - \\frac{1}{5} + \\frac{1}{7} - \\frac{1}{9} + \\cdots$"
+     ],
+     [
+      "$\\sum_{n=1}^{\\infty} \\frac{1}{2n + 1}$",
+      "$\\frac{1}{3} + \\frac{1}{5} + \\frac{1}{7} + \\frac{1}{9} + \\cdots$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-absolute-conditional-1",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "absolute-conditional-s1",
+   "q": "How does series I, $\\sum \\frac{(-1)^n}{n^2}$, behave?",
+   "options": [
+    "It converges conditionally: it alternates and $\\frac{1}{n^2} \\to 0$",
+    "It converges absolutely: $\\sum \\frac{1}{n^2}$ converges",
+    "It diverges: $\\frac{1}{n^2}$ shrinks too slowly",
+    "It converges absolutely: its terms alternate in sign"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\sum \\left|\\frac{(-1)^n}{n^2}\\right| = \\sum \\frac{1}{n^2}$ is a $p$-series with $p = 2 > 1$, so it converges. The series converges absolutely (and so it converges).",
+    "options": [
+     "Conditional means $\\sum |a_n|$ diverges, but $\\sum \\frac{1}{n^2}$ converges.",
+     "Right: the series of absolute values is a $p$-series with $p = 2$.",
+     "$\\frac{1}{n^2}$ shrinks fast enough: $p = 2 > 1$.",
+     "Alternating signs do not make convergence absolute; the absolute values must form a convergent series."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-2",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "absolute-conditional-s1",
+   "q": "How does series II, $\\sum \\frac{(-1)^n}{\\sqrt{n}}$, behave?",
+   "options": [
+    "It converges absolutely",
+    "It diverges, since $\\sum \\frac{1}{\\sqrt{n}}$ diverges",
+    "It converges conditionally",
+    "It diverges by the nth term test"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The signs alternate and $\\frac{1}{\\sqrt{n}}$ decreases to 0, so the series converges by the alternating series test. But $\\sum \\frac{1}{\\sqrt{n}}$ diverges ($p = \\frac{1}{2} \\le 1$). It converges conditionally.",
+    "options": [
+     "$\\sum \\frac{1}{\\sqrt{n}}$ is a $p$-series with $p = \\frac{1}{2}$, which diverges.",
+     "The series of absolute values diverging does not make the signed series diverge.",
+     "Right: it converges by the alternating series test, but $\\sum \\frac{1}{\\sqrt{n}}$ diverges.",
+     "$\\frac{1}{\\sqrt{n}} \\to 0$, so the nth term test says nothing."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-3",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "absolute-conditional-s1",
+   "q": "How does series III, $\\sum (-1)^n \\frac{n}{n + 1}$, behave?",
+   "options": [
+    "It converges conditionally, by the alternating series test",
+    "It converges absolutely, since $\\frac{n}{n+1} < 1$",
+    "It converges conditionally, since $\\sum \\frac{n}{n+1}$ diverges",
+    "It diverges: its terms do not approach 0"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{n}{n + 1} \\to 1$, so the terms swing near $\\pm 1$ and do not approach 0. The series diverges by the nth term test.",
+    "options": [
+     "The sizes approach 1, not 0, so that test does not apply.",
+     "$\\sum \\frac{n}{n + 1}$ diverges; each term near 1 adds about 1.",
+     "A divergent series of absolute values is half the story; the series itself must converge, and it does not.",
+     "Right: the sizes approach 1."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-4",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "absolute-conditional-s1",
+   "q": "Series IV converges by the alternating series test. Which argument shows it does not converge absolutely?",
+   "options": [
+    "$\\int_2^{\\infty} \\frac{1}{x \\ln x}\\,dx = \\lim_{b \\to \\infty} \\left[\\ln(\\ln b) - \\ln(\\ln 2)\\right]$ is infinite",
+    "$\\frac{1}{n \\ln n} < \\frac{1}{n}$ and $\\sum \\frac{1}{n}$ diverges",
+    "$\\frac{1}{n \\ln n} \\to 0$, so $\\sum \\frac{1}{n \\ln n}$ diverges",
+    "The ratio test limit for $\\frac{1}{n \\ln n}$ is 1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With $u = \\ln x$, $\\int \\frac{1}{x \\ln x}\\,dx = \\ln(\\ln x) + C$, so $\\int_2^{b} \\frac{1}{x \\ln x}\\,dx = \\ln(\\ln b) - \\ln(\\ln 2)$, which grows without bound as $b \\to \\infty$. The function is positive and decreasing for $x \\ge 2$, so by the integral test $\\sum \\frac{1}{n \\ln n}$ diverges: series IV converges conditionally.",
+    "options": [
+     "Right: the integral test shows $\\sum \\frac{1}{n \\ln n}$ diverges.",
+     "Smaller than a divergent series proves nothing.",
+     "Terms approaching 0 do not show divergence (or convergence).",
+     "A ratio test limit of 1 gives no conclusion."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-5",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "absolute-conditional-s1",
+   "q": "For which series in the table is the sum guaranteed to stay the same however its terms are rearranged?",
+   "options": [
+    "Series II",
+    "Series I",
+    "Series III",
+    "Series IV"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Rearranging the terms of an absolutely convergent series does not change its sum. Only series I converges absolutely.",
+    "options": [
+     "Series II converges conditionally, so no such guarantee holds.",
+     "Right: it is the absolutely convergent one.",
+     "Series III diverges; it has no sum to keep.",
+     "Series IV converges conditionally, so no such guarantee holds."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-6",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "absolute-conditional-s2",
+   "q": "To test $\\sum \\frac{1}{2n + 1}$, compare with $b_n = \\frac{1}{n}$. Find $\\lim_{n \\to \\infty} \\frac{1/(2n + 1)}{1/n}$.",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$\\frac{1/(2n+1)}{1/n} = \\frac{n}{2n + 1}$, which approaches $\\frac{1}{2}$, not 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{n}{2n + 1} \\to \\frac{1}{2}$, a finite positive limit. Since $\\sum \\frac{1}{n}$ diverges, $\\sum \\frac{1}{2n + 1}$ diverges by the limit comparison test."
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-7",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "absolute-conditional-s2",
+   "q": "Which statement shows that $\\sum \\frac{(-1)^{n+1}}{2n + 1}$ converges?",
+   "options": [
+    "$\\sum \\frac{1}{2n + 1}$ diverges, so the signed series converges",
+    "Its terms approach 0, so it converges",
+    "Its ratio test limit is 1, so it converges",
+    "It alternates, and $\\frac{1}{2n + 1}$ decreases to 0"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The signs alternate, $\\frac{1}{2n + 3} < \\frac{1}{2n + 1}$, and $\\lim_{n \\to \\infty} \\frac{1}{2n + 1} = 0$, so the series converges by the alternating series test.",
+    "options": [
+     "A divergent series of absolute values says nothing about the signed series by itself.",
+     "Terms approaching 0 are not enough; the alternating series test is the reason.",
+     "A ratio test limit of 1 decides nothing.",
+     "Right: the alternating series test."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-8",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "absolute-conditional-s2",
+   "q": "How should $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{2n + 1}$ be classified?",
+   "options": [
+    "Conditionally convergent",
+    "Absolutely convergent",
+    "Divergent",
+    "Both absolutely and conditionally convergent"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The series converges (alternating series test) and $\\sum |a_n| = \\sum \\frac{1}{2n + 1}$ diverges (limit comparison with $\\frac{1}{n}$), so it is conditionally convergent.",
+    "options": [
+     "Right: it converges, but its absolute values do not.",
+     "$\\sum \\frac{1}{2n + 1}$ diverges, so the convergence is not absolute.",
+     "The alternating series test shows it converges.",
+     "The two labels exclude each other: absolute means $\\sum |a_n|$ converges, conditional means it diverges."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-9",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "absolute-conditional-s2",
+   "q": "Find $S_3$, the sum of the first three terms of $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{2n + 1}$.",
+   "numeric": {
+    "answer": "29/105",
+    "mistakes": [
+     {
+      "value": "71/105",
+      "why": "That adds the absolute values. The signs alternate: $\\frac{1}{3} - \\frac{1}{5} + \\frac{1}{7}$."
+     },
+     {
+      "value": "2/15",
+      "why": "That is $S_2 = \\frac{1}{3} - \\frac{1}{5}$; three terms include $+\\frac{1}{7}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$S_3 = \\frac{1}{3} - \\frac{1}{5} + \\frac{1}{7} = \\frac{35 - 21 + 15}{105} = \\frac{29}{105}$."
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-10",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "If $\\sum |a_n|$ converges, what can you conclude about $\\sum a_n$?",
+   "options": [
+    "It diverges",
+    "Nothing until the alternating series test is checked",
+    "It converges",
+    "It converges conditionally"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Absolute convergence implies convergence: if $\\sum |a_n|$ converges, then $\\sum a_n$ converges (absolutely).",
+    "options": [
+     "Removing the signs can only make the sum harder to settle; if the absolute values converge, so does the series.",
+     "No further test is needed: absolute convergence implies convergence.",
+     "Right: absolute convergence implies convergence.",
+     "Conditional convergence means $\\sum |a_n|$ diverges, the opposite case."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-11",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The signs of $\\sin n$ follow no regular pattern. What can you conclude about $\\sum_{n=1}^{\\infty} \\frac{\\sin n}{n^2}$?",
+   "options": [
+    "It converges by the alternating series test",
+    "Nothing, since the signs are irregular",
+    "It diverges, since $\\sin n$ does not approach 0",
+    "It converges absolutely, since $\\left|\\frac{\\sin n}{n^2}\\right| \\le \\frac{1}{n^2}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$0 \\le \\left|\\frac{\\sin n}{n^2}\\right| \\le \\frac{1}{n^2}$ and $\\sum \\frac{1}{n^2}$ converges, so $\\sum \\left|\\frac{\\sin n}{n^2}\\right|$ converges by direct comparison. The series converges absolutely, so it converges.",
+    "options": [
+     "The signs do not alternate in a regular pattern, so the test does not apply.",
+     "Absolute convergence handles any pattern of signs.",
+     "The term is $\\frac{\\sin n}{n^2}$, which does approach 0.",
+     "Right: compare the absolute values with a convergent $p$-series."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-12",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For which values of $p$ is $\\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n^p}$ conditionally convergent?",
+   "options": [
+    "$0 < p \\le 1$",
+    "$p > 1$",
+    "$p \\le 0$",
+    "$p \\ge 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $p > 0$ the sizes $\\frac{1}{n^p}$ decrease to 0, so the series converges. The absolute values form a $p$-series, which diverges for $p \\le 1$. So the convergence is conditional for $0 < p \\le 1$ and absolute for $p > 1$.",
+    "options": [
+     "Right: then it converges by the alternating series test, while $\\sum \\frac{1}{n^p}$ diverges.",
+     "For $p > 1$, $\\sum \\frac{1}{n^p}$ converges, so the convergence is absolute.",
+     "For $p \\le 0$ the sizes do not approach 0, and the series diverges.",
+     "For $p > 1$ the convergence is absolute; $p = 1$ is the one conditional case in that range."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-13",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "You know that $\\sum |a_n|$ diverges. What can you conclude about $\\sum a_n$?",
+   "options": [
+    "It diverges",
+    "Nothing yet: it may converge conditionally or diverge",
+    "It converges conditionally",
+    "It converges absolutely"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A divergent $\\sum |a_n|$ rules out absolute convergence and nothing more. $\\sum \\frac{(-1)^n}{n}$ converges and $\\sum (-1)^n$ diverges, though both have divergent absolute values.",
+    "options": [
+     "The alternating harmonic series converges though $\\sum \\frac{1}{n}$ diverges.",
+     "Right: both happen, so test $\\sum a_n$ itself.",
+     "$\\sum (-1)^n$ has $\\sum |a_n|$ divergent and itself diverges.",
+     "Absolute convergence needs $\\sum |a_n|$ to converge."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-14",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "How does $\\sum_{n=1}^{\\infty} (-1)^n \\frac{n^2}{n^3 + 1}$ behave?",
+   "options": [
+    "It converges absolutely",
+    "It diverges by the nth term test",
+    "It converges conditionally",
+    "It diverges, since $\\sum \\frac{n^2}{n^3+1}$ diverges"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With $f(x) = \\frac{x^2}{x^3 + 1}$, $f'(x) = \\frac{x(2 - x^3)}{(x^3 + 1)^2} < 0$ for $x > \\sqrt[3]{2}$, so the sizes decrease for $n \\ge 2$, and they approach 0: the series converges. Limit comparison of $\\frac{n^2}{n^3 + 1}$ with $\\frac{1}{n}$ gives 1, so $\\sum |a_n|$ diverges. The convergence is conditional.",
+    "options": [
+     "$\\sum \\frac{n^2}{n^3 + 1}$ diverges by limit comparison with $\\frac{1}{n}$.",
+     "$\\frac{n^2}{n^3 + 1} \\to 0$, so the nth term test says nothing.",
+     "Right: alternating series test, while the absolute values behave like $\\frac{1}{n}$.",
+     "A divergent series of absolute values does not make the signed series diverge."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-15",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$S = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n^2}$. A student adds the same terms in a different order: two positive terms, then one negative term, and so on. What sum does the rearranged series have?",
+   "options": [
+    "A larger sum, since positive terms come first",
+    "No sum, since the signs no longer alternate",
+    "A sum that depends on how many terms are added",
+    "$S$, since the series converges absolutely"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\sum \\frac{1}{n^2}$ converges, so the series converges absolutely, and rearranging the terms of an absolutely convergent series does not change its sum: the rearranged series still sums to $S$.",
+    "options": [
+     "Every term is still used once; for an absolutely convergent series the order does not change the sum.",
+     "The rearranged series still converges absolutely, so it has a sum.",
+     "The sum is the limit of the partial sums; it is $S$ for this rearrangement too.",
+     "Right: rearranging an absolutely convergent series keeps its sum."
+    ]
+   }
+  },
+  {
+   "id": "cbc-absolute-conditional-16",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "absolute-conditional",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The series $\\sum_{n=0}^{\\infty} \\left(-\\frac{3}{4}\\right)^n$ converges absolutely. Find its sum.",
+   "numeric": {
+    "answer": "4/7",
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That is the sum of the absolute values, $\\frac{1}{1 - 3/4}$. With the signs the ratio is $-\\frac{3}{4}$: $\\frac{1}{1 + 3/4}$."
+     },
+     {
+      "value": "-3/7",
+      "why": "The first term ($n = 0$) is $1$; the sum is $\\frac{1}{1 - (-3/4)}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Geometric with first term 1 and ratio $r = -\\frac{3}{4}$: the sum is $\\frac{1}{1 - (-3/4)} = \\frac{1}{7/4} = \\frac{4}{7}$. Since $|r| < 1$, $\\sum \\left(\\frac{3}{4}\\right)^n$ converges too, which is why the convergence is absolute."
+   }
+  }
+ ]
+}

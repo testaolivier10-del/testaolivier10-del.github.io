@@ -1,0 +1,81 @@
+{
+ "topic": "improper-integrals",
+ "hook": "The graph of $y = \\frac{1}{x^2}$ runs to the right forever, yet the region under it from $x = 1$ on has area exactly 1. The graph of $y = \\frac{1}{x}$ looks almost the same, but the region under it has no finite area at all. An improper integral is how calculus decides which is which: as a limit.",
+ "prereq": [
+  {
+   "q": "$\\lim_{b \\to \\infty}\\left(1 - \\frac{1}{b}\\right) =$",
+   "options": [
+    "1",
+    "0",
+    "$\\infty$",
+    "It does not exist"
+   ],
+   "correct": 0,
+   "why": "$\\frac{1}{b} \\to 0$ as $b$ grows.",
+   "review": "limits-at-infinity"
+  },
+  {
+   "q": "$\\int_1^b \\frac{1}{x^2}\\,dx =$",
+   "options": [
+    "$1 - \\frac{1}{b}$",
+    "$\\frac{1}{b} - 1$",
+    "$\\frac{1}{b^3}$",
+    "$\\ln b$"
+   ],
+   "correct": 0,
+   "why": "$-\\frac{1}{x}\\Big|_1^b = -\\frac{1}{b} + 1$.",
+   "review": "ftc-definite-integrals"
+  }
+ ],
+ "figure": {
+  "figure": "improper-integrals-two-tails",
+  "caption": "Both curves approach 0, but the area under 1/x² from 1 to b levels off at 1 while the area under 1/x, ln b, keeps growing. The limit of the area decides convergence, not the height of the curve."
+ },
+ "chain": [
+  {
+   "cause": "A limit of integration is infinite, or the integrand is unbounded on the interval",
+   "effect": "the integral is improper: it is not a definite integral in the old sense"
+  },
+  {
+   "cause": "Replace the troublesome end by a variable, $b$",
+   "effect": "an ordinary definite integral, $\\int_1^b f(x)\\,dx$"
+  },
+  {
+   "cause": "Take the limit as $b$ approaches the troublesome end",
+   "effect": "if the limit is a finite number, the integral converges to it; otherwise it diverges"
+  },
+  {
+   "cause": "The integrand is unbounded at a point inside the interval",
+   "effect": "write it as two integrals that meet there, each one improper"
+  }
+ ],
+ "ideas": [
+  "$\\int_a^\\infty f(x)\\,dx = \\lim_{b \\to \\infty} \\int_a^b f(x)\\,dx$. It converges if this limit is a finite number and diverges otherwise.",
+  "Unbounded integrand at an end: $\\int_0^1 f(x)\\,dx = \\lim_{a \\to 0^+} \\int_a^1 f(x)\\,dx$. At an interior point, write it as two integrals that meet there.",
+  "$\\int_1^\\infty \\frac{1}{x^p}\\,dx$ converges (to $\\frac{1}{p - 1}$) when $p > 1$ and diverges when $p \\le 1$.",
+  "Keep $\\lim$ in every line until you take it; never substitute $\\infty$ as a number."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{1}{x}$ approaches 0 as $x \\to \\infty$, so $\\int_1^\\infty \\frac{1}{x}\\,dx$ converges.",
+  "right": "An integrand approaching 0 does not decide anything. $\\int_1^b \\frac{1}{x}\\,dx = \\ln b$, which grows without bound, so the integral diverges. Only the limit of the integrals decides."
+ },
+ "check": [
+  "cbc-improper-integrals-1",
+  "cbc-improper-integrals-2",
+  "cbc-improper-integrals-3",
+  "cbc-improper-integrals-4",
+  "cbc-improper-integrals-11",
+  "cbc-improper-integrals-16"
+ ],
+ "summary": "An improper integral has an infinite limit of integration or an integrand that is unbounded on the interval. Replace the bad end by a variable, integrate, and take the limit: a finite limit means the integral converges to that value; otherwise it diverges. Write the limit in every line, and break the interval at any interior point where the integrand blows up.",
+ "connections": [
+  {
+   "href": "../notes/partial-fractions.html",
+   "label": "Back: linear partial fractions (6.12)"
+  },
+  {
+   "href": "../notes/choosing-integration-methods.html",
+   "label": "Next: choosing a technique (6.14)"
+  }
+ ]
+}

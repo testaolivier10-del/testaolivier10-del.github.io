@@ -1,0 +1,8 @@
+{
+ "infinite-series": {
+  "def": "A sum with infinitely many terms, $\\sum_{n=1}^{\\infty} a_n = a_1 + a_2 + \\cdots$ It converges to $S$ when its partial sums approach $S$, and diverges when they have no finite limit."
+ },
+ "partial-sum": {
+  "def": "The sum of the first $n$ terms of a series, $S_n = a_1 + a_2 + \\cdots + a_n$. The partial sums form a sequence whose limit, if it exists, is the sum of the series."
+ }
+}

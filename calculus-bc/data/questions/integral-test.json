@@ -1,0 +1,503 @@
+{
+ "stimuli": {
+  "integral-test-s1": {
+   "kind": "table",
+   "title": "Four series and their improper integrals",
+   "table": {
+    "caption": "Each series, the function $f$ with $f(n) = a_n$, and the matching improper integral (each $f$ is positive, continuous and decreasing on the interval used)",
+    "cols": [
+     "Series",
+     "$f(x)$",
+     "Improper integral"
+    ],
+    "rows": [
+     [
+      "$\\sum_{n=1}^{\\infty} \\frac{1}{n^2}$",
+      "$\\frac{1}{x^2}$",
+      "$\\int_1^{\\infty} \\frac{dx}{x^2} = 1$"
+     ],
+     [
+      "$\\sum_{n=1}^{\\infty} \\frac{1}{n^2 + 1}$",
+      "$\\frac{1}{x^2 + 1}$",
+      "$\\int_1^{\\infty} \\frac{dx}{x^2 + 1} = \\frac{\\pi}{4}$"
+     ],
+     [
+      "$\\sum_{n=2}^{\\infty} \\frac{1}{n\\ln n}$",
+      "$\\frac{1}{x\\ln x}$",
+      "$\\int_2^{\\infty} \\frac{dx}{x\\ln x}$ diverges"
+     ],
+     [
+      "$\\sum_{n=1}^{\\infty} \\frac{n}{n^2 + 1}$",
+      "$\\frac{x}{x^2 + 1}$",
+      "$\\int_1^{\\infty} \\frac{x\\,dx}{x^2 + 1}$ diverges"
+     ]
+    ]
+   }
+  },
+  "integral-test-s2": {
+   "kind": "table",
+   "title": "The function $f(x) = xe^{-x}$",
+   "table": {
+    "caption": "Facts about $f(x) = xe^{-x}$ for the series $\\sum_{n=1}^{\\infty} ne^{-n}$",
+    "cols": [
+     "Quantity",
+     "Formula"
+    ],
+    "rows": [
+     [
+      "$f(x)$",
+      "$xe^{-x}$"
+     ],
+     [
+      "$f'(x)$",
+      "$(1 - x)e^{-x}$"
+     ],
+     [
+      "Series",
+      "$\\sum_{n=1}^{\\infty} ne^{-n}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-integral-test-1",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "integral-test-s1",
+   "q": "What does the integral test say about $\\sum_{n=1}^{\\infty} \\frac{1}{n^2 + 1}$?",
+   "options": [
+    "It converges, since its integral is finite",
+    "It converges to $\\frac{\\pi}{4}$",
+    "It diverges, since $\\frac{\\pi}{4}$ is not 0",
+    "Nothing, since the integral is not a whole number"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f(x) = \\frac{1}{x^2 + 1}$ is positive, continuous and decreasing for $x \\ge 1$, and $\\int_1^{\\infty} f(x)\\,dx = \\frac{\\pi}{4}$ is finite, so the series converges by the integral test.",
+    "options": [
+     "Right: a finite improper integral means the series converges.",
+     "The test gives convergence, not the sum. The sum is not $\\frac{\\pi}{4}$.",
+     "That mixes in the nth term test, which is about the limit of the terms, not the integral.",
+     "Any finite value of the integral gives convergence."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integral-test-2",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "integral-test-s1",
+   "q": "A student concludes from the table that $\\sum_{n=1}^{\\infty} \\frac{1}{n^2} = 1$. Is that right?",
+   "options": [
+    "Yes: the integral test gives the sum",
+    "No: the series diverges, though the integral is finite",
+    "Yes: both are limits of sums of $\\frac{1}{x^2}$",
+    "No: the integral decides convergence but is not the sum"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The integral test says only whether the series converges. Here $a_1 = 1$ and the other terms are positive, so the sum is more than 1 (it is $\\frac{\\pi^2}{6} \\approx 1.645$).",
+    "options": [
+     "The test compares the series with the integral; the two are not equal.",
+     "The integral is finite, so the series converges; it just does not equal 1.",
+     "The integral adds areas under a curve; the series adds boxes of height $\\frac{1}{n^2}$, which differ.",
+     "Right: the sum is more than 1, since its first term alone is 1."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integral-test-3",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "integral-test-s1",
+   "q": "What does the integral test say about $\\sum_{n=2}^{\\infty} \\frac{1}{n\\ln n}$?",
+   "options": [
+    "It converges, since its terms approach 0",
+    "Nothing, since the series starts at $n = 2$",
+    "It diverges, since its integral diverges",
+    "It converges, since $n\\ln n$ grows faster than $n$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With $u = \\ln x$, $\\int \\frac{dx}{x\\ln x} = \\ln|\\ln x| + C$. So $\\int_2^{b} \\frac{dx}{x\\ln x} = \\ln(\\ln b) - \\ln(\\ln 2) \\to \\infty$: the integral diverges, so the series diverges by the integral test.",
+    "options": [
+     "Terms approaching 0 never prove convergence; the integral decides here.",
+     "The test works from any starting index; integrate from that index.",
+     "Right: $\\int_2^b \\frac{dx}{x\\ln x} = \\ln(\\ln b) - \\ln(\\ln 2)$ grows without bound.",
+     "Growing faster than $n$ is not enough; the integral grows like $\\ln(\\ln b)$, without bound."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integral-test-4",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "integral-test-s1",
+   "q": "Verify the table's value: find $\\int_1^{\\infty} \\frac{dx}{x^2 + 1}$.",
+   "numeric": {
+    "answer": "pi/4",
+    "mistakes": [
+     {
+      "value": "pi/2",
+      "why": "That is $\\lim_{b \\to \\infty} \\arctan b$ alone. Subtract $\\arctan 1 = \\frac{\\pi}{4}$ for the lower limit."
+     },
+     {
+      "value": "3pi/4",
+      "why": "$\\arctan 1 = \\frac{\\pi}{4}$ is subtracted, not added."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{b \\to \\infty} \\int_1^{b} \\frac{dx}{x^2 + 1} = \\lim_{b \\to \\infty} \\left(\\arctan b - \\arctan 1\\right) = \\frac{\\pi}{2} - \\frac{\\pi}{4} = \\frac{\\pi}{4}$."
+   }
+  },
+  {
+   "id": "cbc-integral-test-5",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "integral-test-s1",
+   "q": "To use the integral test on $\\sum_{n=1}^{\\infty} \\frac{n}{n^2 + 1}$, which must be checked about $f(x) = \\frac{x}{x^2 + 1}$, and does it hold?",
+   "options": [
+    "That $f$ is decreasing for $x \\ge 1$: yes, $f'(x) \\le 0$ there",
+    "That $f$ is increasing for $x \\ge 1$: yes, since $x$ grows",
+    "That $f(n)$ approaches 0: yes, so the series converges",
+    "That $f$ is decreasing for $x \\ge 0$: no, so the test fails"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The conditions are positive, continuous and decreasing on $[1, \\infty)$. $f'(x) = \\frac{(x^2 + 1) - x(2x)}{(x^2 + 1)^2} = \\frac{1 - x^2}{(x^2 + 1)^2} \\le 0$ for $x \\ge 1$. Then $\\int_1^{b} \\frac{x\\,dx}{x^2 + 1} = \\frac{1}{2}\\ln(b^2 + 1) - \\frac{1}{2}\\ln 2 \\to \\infty$, so the series diverges.",
+    "options": [
+     "Right: positive and continuous are clear; decreasing needs the derivative's sign.",
+     "The test needs a decreasing $f$. Here $f'(x) \\le 0$ for $x \\ge 1$, so it is decreasing.",
+     "Terms approaching 0 are not a condition of the integral test, and they do not prove convergence.",
+     "$f$ rises on $[0, 1]$, but the series starts at $n = 1$; only $x \\ge 1$ matters."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integral-test-6",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "integral-test-s2",
+   "q": "On which interval is $f$ decreasing?",
+   "options": [
+    "$x \\ge 0$",
+    "$x \\le 1$",
+    "$x \\ge e$",
+    "$x \\ge 1$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$e^{-x} > 0$, so the sign of $f'(x)$ is the sign of $1 - x$, which is negative for $x > 1$. $f$ is decreasing on $[1, \\infty)$, which is where the series starts.",
+    "options": [
+     "For $0 < x < 1$, $1 - x > 0$, so $f' > 0$ and $f$ is increasing there.",
+     "That is where $f' \\ge 0$, so $f$ is increasing there.",
+     "$f'$ changes sign at $x = 1$, where $1 - x = 0$; $e^{-x}$ is never 0.",
+     "Right: $f'(x) = (1 - x)e^{-x} \\le 0$ when $x \\ge 1$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integral-test-7",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "integral-test-s2",
+   "q": "Find $\\int xe^{-x}\\,dx$ (integration by parts).",
+   "expr": {
+    "answer": "-x*e^(-x) - e^(-x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0,
+     3
+    ],
+    "mode": "constant",
+    "lhs": "\\int xe^{-x}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "-x*e^(-x) + e^(-x)",
+      "why": "$\\int e^{-x}\\,dx = -e^{-x}$, so the second term is $-e^{-x}$."
+     },
+     {
+      "expr": "x*e^(-x) - e^(-x)",
+      "why": "$v = \\int e^{-x}\\,dx = -e^{-x}$; the $uv$ term is $-xe^{-x}$."
+     },
+     {
+      "expr": "-(x^2/2)*e^(-x)",
+      "why": "The integral of a product is not the product of integrals: use parts with $u = x$ and $dv = e^{-x}\\,dx$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = x$, $dv = e^{-x}\\,dx$, so $du = dx$, $v = -e^{-x}$. Then $\\int xe^{-x}\\,dx = -xe^{-x} + \\int e^{-x}\\,dx = -xe^{-x} - e^{-x} + C$."
+   }
+  },
+  {
+   "id": "cbc-integral-test-8",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "integral-test-s2",
+   "q": "Find $\\int_1^{\\infty} xe^{-x}\\,dx$.",
+   "numeric": {
+    "answer": "2/e",
+    "mistakes": [
+     {
+      "value": "1/e",
+      "why": "At $x = 1$, $-xe^{-x} - e^{-x} = -\\frac{2}{e}$; both terms count, and subtracting it gives $+\\frac{2}{e}$."
+     },
+     {
+      "value": "-2/e",
+      "why": "Upper limit minus lower limit: $0 - \\left(-\\frac{2}{e}\\right) = \\frac{2}{e}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{b \\to \\infty} \\Big[-xe^{-x} - e^{-x}\\Big]_1^{b} = \\lim_{b \\to \\infty} \\left(-\\frac{b + 1}{e^{b}}\\right) + \\frac{2}{e} = 0 + \\frac{2}{e} = \\frac{2}{e}$ (L'Hospital's rule gives $\\frac{b + 1}{e^b} \\to 0$)."
+   }
+  },
+  {
+   "id": "cbc-integral-test-9",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "integral-test-s2",
+   "q": "What does the integral test say about $\\sum_{n=1}^{\\infty} ne^{-n}$?",
+   "options": [
+    "It converges, since $\\int_1^{\\infty} f(x)\\,dx$ is finite",
+    "It converges to $\\frac{2}{e}$",
+    "It diverges: $f$ increases on $[0, 1]$",
+    "Nothing: $f$ is a product of two functions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f(x) = xe^{-x}$ is positive and continuous for $x \\ge 1$, decreasing there since $f'(x) = (1 - x)e^{-x} < 0$, and $\\int_1^{\\infty} f(x)\\,dx = \\frac{2}{e}$ is finite, so the series converges by the integral test.",
+    "options": [
+     "Right: the conditions hold and the integral is finite.",
+     "The integral is finite, so the series converges, but its sum is not $\\frac{2}{e}$.",
+     "The series starts at $n = 1$, and $f$ decreases from there on.",
+     "The conditions are positive, continuous and decreasing; how $f$ is built does not matter."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integral-test-10",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "What does the integral test say about $\\sum_{n=1}^{\\infty} \\frac{1}{\\sqrt{n}}$?",
+   "options": [
+    "It converges, since $\\frac{1}{\\sqrt{n}} \\to 0$ as $n$ grows",
+    "It converges: $\\int_1^{\\infty} x^{-1/2}\\,dx = 2$",
+    "Nothing: $\\frac{1}{\\sqrt{x}}$ is not decreasing",
+    "It diverges, since $\\int_1^{\\infty} x^{-1/2}\\,dx$ diverges"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f(x) = \\frac{1}{\\sqrt{x}}$ is positive, continuous and decreasing on $[1, \\infty)$, and $\\lim_{b \\to \\infty} \\left(2\\sqrt{b} - 2\\right) = \\infty$, so the series diverges by the integral test.",
+    "options": [
+     "Terms approaching 0 never prove convergence.",
+     "$\\int_1^{b} x^{-1/2}\\,dx = 2\\sqrt{b} - 2$, and $\\sqrt{b}$ grows without bound as $b \\to \\infty$.",
+     "$\\frac{1}{\\sqrt{x}}$ is positive, continuous and decreasing for $x \\ge 1$.",
+     "Right: the integral diverges, so the series does."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integral-test-11",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "$f(x) = \\frac{1}{x(\\ln x)^2}$ is positive, continuous and decreasing for $x \\ge 2$. Find $\\int_2^{\\infty} f(x)\\,dx$, the integral that decides $\\sum_{n=2}^{\\infty} \\frac{1}{n(\\ln n)^2}$.",
+   "numeric": {
+    "answer": "1/ln(2)",
+    "mistakes": [
+     {
+      "value": "-1/ln(2)",
+      "why": "Upper limit minus lower: $0 - \\left(-\\frac{1}{\\ln 2}\\right) = +\\frac{1}{\\ln 2}$."
+     },
+     {
+      "value": "ln(2)",
+      "why": "The antiderivative is $-\\frac{1}{\\ln x}$, so the value at 2 is $-\\frac{1}{\\ln 2}$, not $\\ln 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With $u = \\ln x$, $\\int \\frac{dx}{x(\\ln x)^2} = -\\frac{1}{\\ln x} + C$. So $\\lim_{b \\to \\infty} \\left(-\\frac{1}{\\ln b} + \\frac{1}{\\ln 2}\\right) = \\frac{1}{\\ln 2}$: finite, so the series converges."
+   }
+  },
+  {
+   "id": "cbc-integral-test-12",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which conditions must $f$ meet on $[k, \\infty)$ for the integral test to apply to $\\sum_{n=k}^{\\infty} a_n$ with $a_n = f(n)$?",
+   "options": [
+    "Positive, continuous and increasing",
+    "Positive, continuous and decreasing",
+    "Continuous, with $\\lim_{x \\to \\infty} f(x) = 0$",
+    "Differentiable and bounded"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The integral test needs $f$ positive, continuous and decreasing on $[k, \\infty)$; then $\\sum a_n$ and $\\int_k^{\\infty} f(x)\\,dx$ both converge or both diverge.",
+    "options": [
+     "An increasing positive $f$ gives terms that do not approach 0; the test needs decreasing.",
+     "Right: all three, on the interval where the series runs.",
+     "A limit of 0 is not one of the conditions, and it is not enough.",
+     "These are not the test's conditions; positive, continuous and decreasing are."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integral-test-13",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is a correct way to write the improper integral for $\\sum_{n=1}^{\\infty} \\frac{1}{n^3}$?",
+   "options": [
+    "$\\lim_{b \\to \\infty} \\int_1^{b} x^{-3}\\,dx = \\frac{1}{2}$",
+    "$\\int_1^{\\infty} x^{-3}\\,dx = -\\frac{1}{2\\infty^2} + \\frac{1}{2} = \\frac{1}{2}$",
+    "$\\int_1^{\\infty} x^{-3}\\,dx = \\frac{1}{2}$, so the series sums to $\\frac{1}{2}$",
+    "$\\lim_{n \\to \\infty} \\frac{1}{n^3} = 0$, so the integral converges"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Write $\\int_1^{\\infty} f(x)\\,dx$ as $\\lim_{b \\to \\infty} \\int_1^{b} f(x)\\,dx$ and keep the limit until it is evaluated. Exam readers withhold the point for arithmetic with $\\infty$.",
+    "options": [
+     "Right: limit notation all the way to the end.",
+     "$\\infty$ is not a number to substitute; write the limit as $b \\to \\infty$.",
+     "The value is right, but the integral is not the sum of the series.",
+     "That is the limit of the terms, which neither evaluates the integral nor proves convergence."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integral-test-14",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int_1^{\\infty} \\frac{dx}{(x + 2)^2}$, the integral that decides $\\sum_{n=1}^{\\infty} \\frac{1}{(n + 2)^2}$.",
+   "numeric": {
+    "answer": "1/3",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "That evaluates the antiderivative at $x = 0$. The series starts at $n = 1$, so the integral starts at 1: $\\frac{1}{1 + 2}$."
+     },
+     {
+      "value": "-1/3",
+      "why": "Upper limit minus lower: $0 - \\left(-\\frac{1}{3}\\right) = \\frac{1}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{b \\to \\infty} \\Big[-\\frac{1}{x + 2}\\Big]_1^{b} = \\lim_{b \\to \\infty} \\left(-\\frac{1}{b + 2}\\right) + \\frac{1}{3} = \\frac{1}{3}$. Finite, so the series converges."
+   }
+  },
+  {
+   "id": "cbc-integral-test-15",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For $\\sum_{n=1}^{\\infty} \\frac{\\ln n}{n}$, $f(x) = \\frac{\\ln x}{x}$ has $f'(x) = \\frac{1 - \\ln x}{x^2}$. Which is correct?",
+   "options": [
+    "The test does not apply, since $f$ increases on $[1, e]$",
+    "The series converges, since $\\frac{\\ln n}{n} \\to 0$ as $n$ grows",
+    "Test from $n = 3$, where $f$ decreases; the series diverges",
+    "$f$ decreases for $x \\ge 1$; the integral converges"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$f'(x) < 0$ when $\\ln x > 1$, that is $x > e$, so $f$ is positive, continuous and decreasing on $[3, \\infty)$. $\\int_3^{b} \\frac{\\ln x}{x}\\,dx = \\frac{(\\ln b)^2 - (\\ln 3)^2}{2} \\to \\infty$, so $\\sum_{n=3}^{\\infty} \\frac{\\ln n}{n}$ diverges, and adding the first two terms does not change that.",
+    "options": [
+     "The test may start at any $n$; from $n = 3$ on, $f$ is decreasing.",
+     "Terms approaching 0 do not prove convergence.",
+     "Right: the first terms do not affect convergence, and $\\int_3^b \\frac{\\ln x}{x}\\,dx = \\frac{(\\ln b)^2 - (\\ln 3)^2}{2} \\to \\infty$.",
+     "$1 - \\ln x > 0$ for $x < e$, so $f$ increases there; and the integral grows like $\\frac{(\\ln b)^2}{2}$, without bound."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integral-test-16",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "integral-test",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why can the integral test not be used on $\\sum_{n=1}^{\\infty} \\frac{\\sin^2 n}{n^2}$?",
+   "options": [
+    "$f(x) = \\frac{\\sin^2 x}{x^2}$ is not continuous for $x \\ge 1$",
+    "$f$ is not decreasing: it keeps returning to 0",
+    "The terms do not approach 0",
+    "$\\int_1^{\\infty} \\frac{\\sin^2 x}{x^2}\\,dx$ diverges"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f(x) = \\frac{\\sin^2 x}{x^2}$ is 0 at every multiple of $\\pi$ and positive between them, so it is not decreasing, and on those zeros it is not even positive. The integral test does not apply; Topic 10.6 handles this series.",
+    "options": [
+     "It is continuous for $x \\ge 1$; the failing condition is decreasing.",
+     "Right: the test needs a decreasing $f$, and this one wiggles.",
+     "$0 \\le \\frac{\\sin^2 n}{n^2} \\le \\frac{1}{n^2}$, so the terms do approach 0.",
+     "That integral is finite; the problem is that $f$ is not decreasing, so the test does not apply."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+<p>An <b>infinite series</b> is a sum with no last term:</p>
+<p>$$\sum_{n=1}^{\infty} a_n = a_1 + a_2 + a_3 + \cdots$$</p>
+<p>You cannot add infinitely many numbers one at a time, so "the sum" needs a definition. It comes from adding a finite number of terms and asking where those totals head.</p>
+
+<h2>Partial sums</h2>
+<p>The <b>$n$th partial sum</b> $S_n$ is the sum of the first $n$ terms:</p>
+<p>$$S_1 = a_1, \quad S_2 = a_1 + a_2, \quad S_3 = a_1 + a_2 + a_3, \quad S_n = \sum_{k=1}^{n} a_k.$$</p>
+<p>The partial sums form a new sequence. The series <b>converges</b> to the number $S$ if $\lim_{n \to \infty} S_n = S$; then $S$ is the <b>sum</b> of the series. If the partial sums have no finite limit, because they grow without bound or never settle, the series <b>diverges</b>.</p>
+<figure id="fig-partial" data-fig="series-convergence-telescoping"><figcaption>Terms (bars) and partial sums (dots) of $\sum \frac{1}{n(n + 1)}$.</figcaption></figure>
+<p>Two sequences, two questions. <a class="figref" href="#fig-partial">In the figure</a>, the terms $a_n$ shrink toward 0 and the partial sums $S_n$ climb toward 1. The series converges, and its sum is 1. Say it that way: "the series converges to 1". The 2024 exam readers took points from answers that said the terms converge when they meant the series.</p>
+
+<h2>Finding a sum from the partial sums</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\sum_{n=1}^{\infty} \frac{1}{n(n + 1)}$.</p>
+<p>Split each term: $\frac{1}{n(n + 1)} = \frac{1}{n} - \frac{1}{n + 1}$ (check by combining the right side).</p>
+<p>Write out a partial sum: $S_n = \left(1 - \frac{1}{2}\right) + \left(\frac{1}{2} - \frac{1}{3}\right) + \cdots + \left(\frac{1}{n} - \frac{1}{n + 1}\right)$.</p>
+<p>Each negative piece cancels the next positive piece, so $S_n = 1 - \frac{1}{n + 1} = \frac{n}{n + 1}$.</p>
+<p>Take the limit: $\lim_{n \to \infty} \frac{n}{n + 1} = 1$. The series converges, and its sum is 1.</p>
+</div>
+<p>A series like this, where the partial sums collapse, is called <b>telescoping</b>. Most series do not have a neat formula for $S_n$; the tests in 10.3 through 10.9 decide convergence without one.</p>
+<p>Going the other way, if you know the partial sums you know the terms: $a_1 = S_1$ and $a_n = S_n - S_{n-1}$. If $S_n = \frac{3n}{n + 2}$, then $a_3 = S_3 - S_2 = \frac{9}{5} - \frac{3}{2} = \frac{3}{10}$, and the sum is $\lim S_n = 3$.</p>
+
+<h2>Three ways to diverge</h2>
+<table class="compare">
+<thead><tr><th>Series</th><th>Partial sums</th><th>Why it diverges</th></tr></thead>
+<tbody>
+<tr><td>$1 + 1 + 1 + \cdots$</td><td>$S_n = n$</td><td>grow without bound</td></tr>
+<tr><td>$1 - 1 + 1 - 1 + \cdots$</td><td>$1, 0, 1, 0, \ldots$</td><td>never settle on one number</td></tr>
+<tr><td>$\sum \ln\left(\frac{n + 1}{n}\right)$</td><td>$S_n = \ln(n + 1)$</td><td>grow without bound, slowly, though the terms approach 0</td></tr>
+</tbody>
+</table>
+<p>The middle row is a warning about regrouping. Grouping as $(1 - 1) + (1 - 1) + \cdots$ suggests 0; grouping as $1 + (-1 + 1) + \cdots$ suggests 1. Each grouping looks at only some of the partial sums. The definition looks at all of them, and they have no limit, so the series has no sum.</p>
+<p>The last row is the most important fact in this unit: <b>terms that approach 0 do not guarantee convergence</b>. Infinitely many small pieces can still add up to something infinite.</p>
+
+<h2>Rules that carry over</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> $\sum_{n=1}^{\infty} a_n = 4$ and $a_1 + a_2 + a_3 = 2.5$. Find $\sum_{n=1}^{\infty} 3a_n$ and $\sum_{n=4}^{\infty} a_n$.</p>
+<p>Multiplying every term by 3 multiplies every partial sum by 3, so $\sum 3a_n = 3 \cdot 4 = 12$.</p>
+<p>Dropping the first three terms subtracts 2.5 from every partial sum after the third, so $\sum_{n=4}^{\infty} a_n = 4 - 2.5 = 1.5$.</p>
+</div>
+<ul>
+<li>If $\sum a_n = A$ and $\sum b_n = B$, then $\sum (a_n + b_n) = A + B$ and $\sum c\,a_n = cA$.</li>
+<li>If $\sum a_n$ converges and $\sum b_n$ diverges, $\sum (a_n + b_n)$ diverges.</li>
+<li>Adding or removing finitely many terms changes the sum, never whether the series converges. That is why the tests later in the unit only care about the long-run behavior of the terms.</li>
+</ul>

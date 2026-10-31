@@ -1,0 +1,5 @@
+{
+ "parametric-derivative": {
+  "def": "For a curve $x = x(t)$, $y = y(t)$, the slope of the tangent line is $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}$ wherever $\\frac{dx}{dt} \\ne 0$ (the chain rule solved for $\\frac{dy}{dx}$). The tangent is horizontal where $\\frac{dy}{dt} = 0$ and $\\frac{dx}{dt} \\ne 0$, and vertical where $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} \\ne 0$."
+ }
+}

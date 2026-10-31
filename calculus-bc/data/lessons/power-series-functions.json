@@ -1,0 +1,85 @@
+{
+ "topic": "power-series-functions",
+ "hook": "Nobody memorizes the series for $\\ln(1 + x)$ or $\\arctan x$. They are built in a few lines from the geometric series, by the moves you already know: substitute, multiply, differentiate, integrate. A handful of known series becomes a whole library.",
+ "prereq": [
+  {
+   "q": "What is the Maclaurin series for $\\frac{1}{1 - x}$, and where does it converge?",
+   "options": [
+    "$1 + x + x^2 + \\cdots$ for $|x| < 1$",
+    "$1 + x + x^2 + \\cdots$ for every $x$",
+    "$1 - x + x^2 - \\cdots$ for $|x| < 1$",
+    "$1 + x + \\frac{x^2}{2!} + \\cdots$ for every $x$"
+   ],
+   "correct": 0,
+   "why": "It is the geometric series with ratio $x$.",
+   "review": "taylor-series"
+  },
+  {
+   "q": "Find $\\int t^4\\,dt$.",
+   "options": [
+    "$\\frac{t^5}{5} + C$",
+    "$4t^3 + C$",
+    "$t^5 + C$",
+    "$\\frac{t^4}{4} + C$"
+   ],
+   "correct": 0,
+   "why": "Power rule for antiderivatives: raise the power by one and divide by the new power.",
+   "review": "antiderivatives"
+  },
+  {
+   "q": "Find the radius of convergence of $\\sum \\frac{(x - 1)^n}{4^n}$.",
+   "options": [
+    "$4$",
+    "$\\frac{1}{4}$",
+    "$1$",
+    "$5$"
+   ],
+   "correct": 0,
+   "why": "It is geometric with ratio $\\frac{x - 1}{4}$: $|x - 1| < 4$.",
+   "review": "radius-interval-convergence"
+  }
+ ],
+ "figure": {
+  "figure": "geometric-wrap",
+  "caption": "Partial sums of $1 + x + x^2 + \\cdots$ close in on $\\frac{1}{1 - x}$ only for $-1 < x < 1$."
+ },
+ "chain": [
+  {
+   "cause": "Start from a known series, such as $\\frac{1}{1 - u} = \\sum u^n$ for $|u| < 1$",
+   "effect": "its sum and its interval are known"
+  },
+  {
+   "cause": "Substitute ($u = -x^2$), multiply by a power of $x$, or add series",
+   "effect": "a series for a new function, valid where the substituted value meets the old condition"
+  },
+  {
+   "cause": "Differentiate or integrate term by term",
+   "effect": "a series for the derivative or integral with the same radius; test the endpoints again"
+  }
+ ],
+ "ideas": [
+  "Substitution: replace $x$ by an expression in a known series, and the condition with it: $\\frac{1}{1 + x^2} = \\sum (-x^2)^n$ for $x^2 < 1$.",
+  "Term by term: $\\frac{d}{dx}\\sum c_n x^n = \\sum n c_n x^{n-1}$ and $\\int_0^x \\sum c_n t^n\\,dt = \\sum \\frac{c_n x^{n+1}}{n + 1}$.",
+  "The radius stays the same; endpoints may change, so test them again.",
+  "Differentiate with respect to $x$, never $n$; when integrating, fix the constant with a known value such as $\\ln 1 = 0$."
+ ],
+ "misconception": {
+  "wrong": "$\\ln(1 + x) = x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\cdots$ converges on $(-1, 1)$, the same interval as $\\frac{1}{1 + x}$.",
+  "right": "The radius is the same, but at $x = 1$ the integrated series is the alternating harmonic series, which converges, so the interval is $(-1, 1]$."
+ },
+ "check": [
+  "cbc-power-series-functions-1",
+  "cbc-power-series-functions-2",
+  "cbc-power-series-functions-3",
+  "cbc-power-series-functions-10",
+  "cbc-power-series-functions-11",
+  "cbc-power-series-functions-15"
+ ],
+ "summary": "New power series come from known ones by substitution, multiplication by powers of $x$, and term-by-term differentiation or integration. These operations keep the radius of convergence, but the endpoints must be tested again. This is how the series for $\\ln(1 + x)$ and $\\arctan x$ are derived.",
+ "connections": [
+  {
+   "href": "../notes/taylor-series.html",
+   "label": "Back: Taylor and Maclaurin series (10.14)"
+  }
+ ]
+}

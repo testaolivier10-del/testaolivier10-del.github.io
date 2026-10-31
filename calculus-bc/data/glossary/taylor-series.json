@@ -1,0 +1,5 @@
+{
+ "taylor-series": {
+  "def": "The power series $\\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}(x - a)^n$ of a function $f$ about $x = a$; its partial sums are the Taylor polynomials. A Maclaurin series is a Taylor series about $x = 0$."
+ }
+}

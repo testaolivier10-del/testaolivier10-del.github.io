@@ -1,0 +1,12 @@
+{
+ "integration-by-parts-areas": {
+  "file": "figures/integration-by-parts-areas.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "In the u-v plane, the curve v = ln u runs from (1, 0) to (e, 1). The region under it, from u = 1 to u = e, is shaded green with area 1 (the integral of v du). The region to its left, from v = 0 to v = 1, is shaded blue with area e − 1, about 1.718 (the integral of u dv). Together they fill the dashed rectangle of area uv = e, so the integral of v du is uv minus the integral of u dv."
+ }
+}

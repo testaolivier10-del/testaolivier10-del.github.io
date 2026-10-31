@@ -1,0 +1,329 @@
+{
+ "stimuli": {
+  "math-polar-s1": {
+   "kind": "table",
+   "title": "Values of $r = 1 + 2\\cos\\theta$",
+   "table": {
+    "caption": "The polar curve $r = 1 + 2\\cos\\theta$ at five angles ($\\theta$ in radians)",
+    "cols": [
+     "$\\theta$",
+     "$r$"
+    ],
+    "rows": [
+     [
+      "$0$",
+      "$3$"
+     ],
+     [
+      "$\\frac{\\pi}{3}$",
+      "$2$"
+     ],
+     [
+      "$\\frac{\\pi}{2}$",
+      "$1$"
+     ],
+     [
+      "$\\frac{2\\pi}{3}$",
+      "$0$"
+     ],
+     [
+      "$\\pi$",
+      "$-1$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-math-polar-1",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which rectangular point is the polar point $\\left(4, \\frac{\\pi}{6}\\right)$?",
+   "options": [
+    "$\\left(2, 2\\sqrt{3}\\right)$",
+    "$\\left(2\\sqrt{3}, 2\\right)$",
+    "$\\left(4, \\frac{\\pi}{6}\\right)$",
+    "$\\left(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$x = r\\cos\\theta = 4 \\cdot \\frac{\\sqrt{3}}{2} = 2\\sqrt{3}$ and $y = r\\sin\\theta = 4 \\cdot \\frac{1}{2} = 2$.",
+    "options": [
+     "Sine and cosine are swapped: $x$ uses $\\cos\\theta$, and $\\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}$.",
+     "Right: $x = 4\\cos\\frac{\\pi}{6} = 2\\sqrt{3}$ and $y = 4\\sin\\frac{\\pi}{6} = 2$.",
+     "This repeats the polar pair; convert with $x = r\\cos\\theta$ and $y = r\\sin\\theta$.",
+     "This is the point on the unit circle; multiply each coordinate by $r = 4$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-polar-2",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which polar coordinates $(r, \\theta)$, with $r > 0$ and $0 \\le \\theta < 2\\pi$, name the rectangular point $(-1, 1)$?",
+   "options": [
+    "$\\left(\\sqrt{2}, \\frac{3\\pi}{4}\\right)$",
+    "$\\left(\\sqrt{2}, -\\frac{\\pi}{4}\\right)$",
+    "$\\left(2, \\frac{3\\pi}{4}\\right)$",
+    "$\\left(\\sqrt{2}, \\frac{7\\pi}{4}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$r = \\sqrt{(-1)^2 + 1^2} = \\sqrt{2}$. The point is in the second quadrant, and the angle there with $\\tan\\theta = \\frac{1}{-1} = -1$ is $\\frac{3\\pi}{4}$.",
+    "options": [
+     "Right: $r = \\sqrt{2}$ and the point is in the second quadrant, on the ray $\\theta = \\frac{3\\pi}{4}$.",
+     "$\\tan\\theta = -1$ also holds at $-\\frac{\\pi}{4}$, but that ray points into the fourth quadrant, and the angle is outside $[0, 2\\pi)$.",
+     "The distance is $\\sqrt{x^2 + y^2} = \\sqrt{1 + 1} = \\sqrt{2}$, not $x^2 + y^2$.",
+     "The ray $\\theta = \\frac{7\\pi}{4}$ points into the fourth quadrant, where $x > 0$; the point $(-1, 1)$ has $x < 0$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-polar-3",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Where is the polar point $\\left(-3, \\frac{\\pi}{2}\\right)$ in rectangular coordinates?",
+   "options": [
+    "$(0, 3)$",
+    "$(-3, 0)$",
+    "$\\left(-3, \\frac{\\pi}{2}\\right)$",
+    "$(0, -3)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$x = -3\\cos\\frac{\\pi}{2} = 0$ and $y = -3\\sin\\frac{\\pi}{2} = -3$: the point is on the ray opposite $\\theta = \\frac{\\pi}{2}$.",
+    "options": [
+     "That is $\\left(3, \\frac{\\pi}{2}\\right)$. A negative $r$ puts the point on the opposite ray.",
+     "That is $(3, \\pi)$; the ray $\\theta = \\frac{\\pi}{2}$ is vertical, so the point stays on the $y$-axis.",
+     "This repeats the polar pair; convert with $x = r\\cos\\theta$ and $y = r\\sin\\theta$.",
+     "Right: face straight up, then walk 3 units backward."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-polar-4",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which rectangular equation describes the same curve as $r = 4\\sin\\theta$?",
+   "options": [
+    "$x^2 + y^2 = 16$",
+    "$y = 4x$",
+    "$x^2 + y^2 = 4y$",
+    "$x^2 + y^2 = 4x$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Multiply by $r$: $r^2 = 4r\\sin\\theta$, so $x^2 + y^2 = 4y$. Completing the square, $x^2 + (y - 2)^2 = 4$: a circle of radius 2 centered at $(0, 2)$.",
+    "options": [
+     "This is the circle $r = 4$, centered at the pole; $r = 4\\sin\\theta$ changes with $\\theta$.",
+     "A line through the pole has the form $\\theta = c$; this equation came from treating $\\sin\\theta$ as $x$.",
+     "Right: multiply both sides by $r$ to get $r^2 = 4r\\sin\\theta$, then use $r^2 = x^2 + y^2$ and $y = r\\sin\\theta$.",
+     "That is $r = 4\\cos\\theta$. With $\\sin\\theta$ the right side becomes $4y$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-polar-5",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "math-polar-s1",
+   "q": "Where is the point of the curve at $\\theta = \\pi$, in rectangular coordinates?",
+   "options": [
+    "$(-1, 0)$",
+    "$(1, 0)$",
+    "$(0, -1)$",
+    "$(-1, \\pi)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$x = r\\cos\\theta = (-1)\\cos\\pi = 1$ and $y = r\\sin\\theta = (-1)\\sin\\pi = 0$.",
+    "options": [
+     "That would be $r = 1$ on the ray $\\theta = \\pi$. Here $r = -1$, so the point is on the opposite ray.",
+     "Right: $r = -1$ on the ray $\\theta = \\pi$ lands one unit to the right of the pole.",
+     "The ray $\\theta = \\pi$ is horizontal; with $\\sin\\pi = 0$ the point stays on the $x$-axis.",
+     "This mixes polar and rectangular. Use $x = r\\cos\\theta = (-1)(-1) = 1$ and $y = r\\sin\\theta = 0$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-polar-6",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "math-polar-s1",
+   "q": "At which angle in the table does the curve pass through the pole?",
+   "options": [
+    "$\\theta = \\frac{2\\pi}{3}$",
+    "$\\theta = 0$",
+    "$\\theta = \\frac{\\pi}{2}$",
+    "$\\theta = \\pi$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The pole is the point with $r = 0$. In the table $r = 0$ at $\\theta = \\frac{2\\pi}{3}$ (check: $1 + 2\\cos\\frac{2\\pi}{3} = 1 - 1 = 0$).",
+    "options": [
+     "Right: $r = 0$ there, and $r = 0$ is the pole whatever the angle.",
+     "At $\\theta = 0$ the point is 3 units from the pole, the farthest point in the table.",
+     "At $\\theta = \\frac{\\pi}{2}$, $r = 1$: the point $(0, 1)$, one unit from the pole.",
+     "At $\\theta = \\pi$, $r = -1$: one unit from the pole, on the opposite ray."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-polar-7",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "math-polar-s1",
+   "q": "Find the $x$-coordinate of the point of the curve at $\\theta = \\frac{\\pi}{3}$.",
+   "numeric": {
+    "answer": "1",
+    "mistakes": [
+     {
+      "value": "sqrt(3)",
+      "why": "That is $y = r\\sin\\theta = 2 \\cdot \\frac{\\sqrt{3}}{2}$. The $x$-coordinate uses $\\cos\\theta$."
+     },
+     {
+      "value": "2",
+      "why": "That is $r$, the distance from the pole. The $x$-coordinate is $r\\cos\\theta$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x = r\\cos\\theta = 2\\cos\\frac{\\pi}{3} = 2 \\cdot \\frac{1}{2} = 1$."
+   }
+  },
+  {
+   "id": "cbc-math-polar-8",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "math-polar-s1",
+   "q": "For $\\frac{2\\pi}{3} < \\theta < \\pi$, $r$ is negative. In which quadrant are the points of the curve for these angles?",
+   "options": [
+    "The second quadrant",
+    "The third quadrant",
+    "The fourth quadrant",
+    "On the negative $x$-axis"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For $\\frac{2\\pi}{3} < \\theta < \\pi$ the ray points into the second quadrant, but $r < 0$, so the point is on the opposite ray, in the fourth quadrant. This is the lower half of the small inner loop.",
+    "options": [
+     "The rays point into the second quadrant, but $r < 0$ puts each point on the opposite ray.",
+     "Reflecting through the pole turns the second quadrant into the fourth, not the third.",
+     "Right: these rays point into the second quadrant, and a negative $r$ reflects each point through the pole into the fourth.",
+     "Only $\\theta = \\pi$ gives a point on an axis, and there $r = -1$ gives $(1, 0)$ on the positive $x$-axis."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-polar-9",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many petals does the rose $r = 2\\sin(3\\theta)$ have?",
+   "options": [
+    "$6$",
+    "$3$",
+    "$2$",
+    "$4$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$r = 2\\sin(3\\theta)$ traces three petals of length 2 as $\\theta$ runs from 0 to $\\pi$; from $\\pi$ to $2\\pi$, $r$ is the negative of its earlier values on the opposite rays, so the petals are traced again.",
+    "options": [
+     "Six would be right for $2n$ with an even $n$; for $\\sin(3\\theta)$, the angles from $\\pi$ to $2\\pi$ retrace the same three petals.",
+     "Right: for an odd multiple $n$ of $\\theta$ the rose has $n$ petals; the second half-turn retraces them.",
+     "The 2 sets the petal length, not the count.",
+     "Four petals come from $\\sin(2\\theta)$ or $\\cos(2\\theta)$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-polar-10",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the greatest distance from the pole of a point on $r = 2 + 2\\sin\\theta$?",
+   "numeric": {
+    "answer": "4",
+    "mistakes": [
+     {
+      "value": "2",
+      "why": "That is $r$ at $\\theta = 0$. The largest $r$ comes where $\\sin\\theta = 1$: $2 + 2 = 4$."
+     },
+     {
+      "value": "0",
+      "why": "That is the smallest distance, at $\\theta = \\frac{3\\pi}{2}$, where the curve touches the pole."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The distance is $|r|$, and $2 + 2\\sin\\theta$ is largest, 4, when $\\sin\\theta = 1$, at $\\theta = \\frac{\\pi}{2}$."
+   }
+  },
+  {
+   "id": "cbc-math-polar-11",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the $y$-coordinate of the point of $r = 2\\cos\\theta$ at $\\theta = \\frac{\\pi}{4}$.",
+   "numeric": {
+    "answer": "1",
+    "mistakes": [
+     {
+      "value": "sqrt(2)",
+      "why": "That is $r$ at $\\theta = \\frac{\\pi}{4}$. Multiply by $\\sin\\theta$ to get $y$."
+     },
+     {
+      "value": "sqrt(2)/2",
+      "why": "That is $\\sin\\frac{\\pi}{4}$ alone. First find $r = \\sqrt{2}$, then $y = r\\sin\\theta$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$r = 2\\cos\\frac{\\pi}{4} = \\sqrt{2}$, so $y = r\\sin\\theta = \\sqrt{2} \\cdot \\frac{\\sqrt{2}}{2} = 1$."
+   }
+  }
+ ]
+}

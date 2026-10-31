@@ -1,0 +1,93 @@
+{
+ "topic": "math-parametric-vectors",
+ "hook": "A graph $y = f(x)$ tells you where a curve is, but not when you were there or which way you were going. A drone's flight, a ball's arc, a point on a spinning wheel: each has an $x$ and a $y$ that change with time. Unit 9 describes motion like that with two equations in $t$, and measures its changes with vectors. This page builds both ideas from the precalculus you already know.",
+ "prereq": [
+  {
+   "q": "On the unit circle, the point at angle $\\theta$ is",
+   "options": [
+    "$(\\cos\\theta, \\sin\\theta)$",
+    "$(\\sin\\theta, \\cos\\theta)$",
+    "$(\\theta, \\sin\\theta)$",
+    "$(\\cos\\theta, \\tan\\theta)$"
+   ],
+   "correct": 0,
+   "why": "Cosine is the $x$-coordinate and sine the $y$-coordinate, so $\\cos^2\\theta + \\sin^2\\theta = 1$.",
+   "review": "math-trig"
+  },
+  {
+   "q": "The distance between $(1, 2)$ and $(4, 6)$ is",
+   "options": [
+    "$5$",
+    "$7$",
+    "$25$",
+    "$\\sqrt{7}$"
+   ],
+   "correct": 0,
+   "why": "The changes are 3 and 4, the legs of a right triangle: $\\sqrt{3^2 + 4^2} = 5$ by the Pythagorean theorem.",
+   "review": "math-geometry"
+  },
+  {
+   "q": "If $f(x) = x^2 - 3$, then $f(t + 1) =$",
+   "options": [
+    "$t^2 + 2t - 2$",
+    "$t^2 - 2$",
+    "$t^2 + 1 - 3t$",
+    "$(t^2 - 3) + 1$"
+   ],
+   "correct": 0,
+   "why": "Replace every $x$ by $(t + 1)$: $(t + 1)^2 - 3 = t^2 + 2t + 1 - 3$.",
+   "review": "math-functions"
+  }
+ ],
+ "figure": {
+  "figure": "math-parametric-vectors-path",
+  "caption": "Left: the path $x = t^2 - 2t$, $y = 3 - t$; each value of $t$ gives one point, and the arrows show the direction of increasing $t$. Right: the vector from $P(1, 1)$ to $Q(4, 5)$ is $\\left\\langle 3, 4 \\right\\rangle$, and its length is $\\sqrt{3^2 + 4^2} = 5$."
+ },
+ "chain": [
+  {
+   "cause": "Give each coordinate its own function of a parameter $t$",
+   "effect": "each $t$ gives one point $(x(t), y(t))$, and together the points trace a path"
+  },
+  {
+   "cause": "Increase $t$ and watch the points",
+   "effect": "the path gets a direction (its orientation), which an equation in $x$ and $y$ cannot show"
+  },
+  {
+   "cause": "Solve one equation for $t$, or use $\\cos^2 t + \\sin^2 t = 1$",
+   "effect": "eliminating $t$ gives the shape of the path as an equation in $x$ and $y$"
+  },
+  {
+   "cause": "Record a change in position as $\\left\\langle \\Delta x, \\Delta y \\right\\rangle$",
+   "effect": "a vector, whose length $\\sqrt{(\\Delta x)^2 + (\\Delta y)^2}$ comes from the Pythagorean theorem"
+  }
+ ],
+ "ideas": [
+  "<b>Parametric equations</b> $x = x(t)$, $y = y(t)$ give a point for each $t$. Make a table of $t$, $x$, $y$, plot the points in order of $t$, and draw arrows for the direction.",
+  "<b>Eliminate the parameter</b> to see the shape: solve a linear equation for $t$ and substitute, or square and add sines and cosines. The direction and the timing are lost when you do.",
+  "$x = r\\cos t$, $y = r\\sin t$ is a circle of radius $r$ traced counterclockwise from $(r, 0)$; swapping sine and cosine starts at the top and goes clockwise.",
+  "A <b>vector</b> $\\left\\langle a, b \\right\\rangle$ is a change: $a$ across and $b$ up. From $P$ to $Q$ it is end minus start; its magnitude is $\\sqrt{a^2 + b^2}$. Add vectors and multiply by numbers one component at a time."
+ ],
+ "misconception": {
+  "wrong": "The vector from $P(1, -2)$ to $Q(4, 2)$ is $\\left\\langle 4, 2 \\right\\rangle$, and its length is $4 + 2 = 6$.",
+  "right": "$\\left\\langle 4, 2 \\right\\rangle$ is the position of $Q$, the vector from the origin. From $P$ to $Q$ it is end minus start, $\\left\\langle 3, 4 \\right\\rangle$, and its length is $\\sqrt{3^2 + 4^2} = 5$, not the sum of the components."
+ },
+ "check": [
+  "cbc-math-parametric-vectors-1",
+  "cbc-math-parametric-vectors-2",
+  "cbc-math-parametric-vectors-3",
+  "cbc-math-parametric-vectors-4",
+  "cbc-math-parametric-vectors-6",
+  "cbc-math-parametric-vectors-8"
+ ],
+ "summary": "Parametric equations describe a path by giving $x$ and $y$ as functions of a parameter $t$; increasing $t$ traces the path in a direction. Eliminating $t$ shows the shape but loses the direction. A vector $\\left\\langle a, b \\right\\rangle$ records a change in position, from start to end; its magnitude is $\\sqrt{a^2 + b^2}$, and vectors add and scale component by component.",
+ "connections": [
+  {
+   "href": "../notes/arc-length.html",
+   "label": "Back: arc length and distance traveled (8.13)"
+  },
+  {
+   "href": "../notes/parametric-derivatives.html",
+   "label": "Next: parametric equations and their derivatives (9.1)"
+  }
+ ]
+}

@@ -1,0 +1,49 @@
+<p>A <b>geometric series</b> is a series in which each term is the previous one times a fixed number $r$, the <b>common ratio</b>:</p>
+<p>$$\sum_{n=0}^{\infty} ar^n = a + ar + ar^2 + ar^3 + \cdots$$</p>
+<p>It is the one kind of series where the partial sums have a simple formula, which is why it is the first one to master. Later topics compare other series with geometric ones, and in 10.14 this very series returns as the series for $\frac{1}{1 - x}$.</p>
+
+<h2>The partial sums</h2>
+<p>Write the $n$th partial sum and multiply it by $r$:</p>
+<p>$$S_n = a + ar + \cdots + ar^{n-1}, \qquad rS_n = ar + ar^2 + \cdots + ar^n.$$</p>
+<p>Subtract: almost everything cancels, leaving $S_n - rS_n = a - ar^n$. So, for $r \ne 1$,</p>
+<p>$$S_n = \frac{a(1 - r^n)}{1 - r}.$$</p>
+
+<h2>When it converges, and to what</h2>
+<p>Everything depends on $r^n$ as $n \to \infty$:</p>
+<ul>
+<li>If $|r| < 1$, $r^n \to 0$, so $S_n \to \frac{a}{1 - r}$. The series <b>converges</b>, and its sum is $\frac{a}{1 - r}$.</li>
+<li>If $|r| > 1$, $|r^n|$ grows without bound and so do the partial sums: the series <b>diverges</b>.</li>
+<li>If $r = 1$, the series is $a + a + a + \cdots$, with $S_n = na$: it diverges (for $a \ne 0$). If $r = -1$, the partial sums jump between $a$ and $0$: it diverges.</li>
+</ul>
+<figure id="fig-geo" data-fig="geometric-series-ratios"><figcaption>Partial sums of $1 + r + r^2 + \cdots$ for three ratios.</figcaption></figure>
+<p><a class="figref" href="#fig-geo">The figure</a> shows the three behaviors. With a negative ratio the partial sums zigzag, overshooting and undershooting, but still close in on $\frac{a}{1 - r}$.</p>
+<p>So, in one line: <b>$\sum ar^n$ converges if and only if $|r| < 1$, and then its sum is $\frac{\text{first term}}{1 - r}$.</b></p>
+
+<h2>The first term is the first term in the sum</h2>
+<p>The 2025 exam readers saw many geometric sums with the wrong first term. In $\frac{a}{1 - r}$, $a$ is the first term <i>that is actually in the sum</i>, whatever the starting index.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\sum_{n=2}^{\infty} \frac{3^{n}}{4^{n+1}}$.</p>
+<p>Rewrite the term to see the ratio: $\frac{3^n}{4^{n+1}} = \frac{1}{4}\left(\frac{3}{4}\right)^n$, so $r = \frac{3}{4}$ and $|r| < 1$: the series converges.</p>
+<p>First term, at $n = 2$: $\frac{1}{4} \cdot \frac{9}{16} = \frac{9}{64}$.</p>
+<p>Sum: $\frac{9/64}{1 - 3/4} = \frac{9}{64} \cdot 4 = \frac{9}{16}$.</p>
+</div>
+<p>To find $r$, divide any term by the one before it, or rewrite the general term as (constant)$\times$(something)$^n$. Negative signs that alternate belong in $r$: $12 - 8 + \frac{16}{3} - \cdots$ has $r = -\frac{2}{3}$, and its sum is $\frac{12}{1 + 2/3} = \frac{36}{5}$.</p>
+
+<h2>A ratio that contains $x$</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> For which $x$ does $\sum_{n=0}^{\infty} \left(\frac{x}{2}\right)^n$ converge, and to what?</p>
+<p>It is geometric with $a = 1$ and $r = \frac{x}{2}$. It converges when $\left|\frac{x}{2}\right| < 1$, that is $-2 < x < 2$.</p>
+<p>At $x = 2$ and $x = -2$, $|r| = 1$ and the series diverges, so neither end is included: the set is $(-2, 2)$.</p>
+<p>For those $x$, the sum is $\frac{1}{1 - x/2} = \frac{2}{2 - x}$.</p>
+</div>
+<p>So the series defines a function of $x$, but only on an interval. This idea grows into the series of functions in 10.13 through 10.15.</p>
+
+<h2>Geometric series in context</h2>
+<table class="compare">
+<thead><tr><th>Situation</th><th>Series</th><th>Sum</th></tr></thead>
+<tbody>
+<tr><td>$0.2727\ldots$ as a fraction</td><td>$\frac{27}{100} + \frac{27}{100^2} + \cdots$</td><td>$\frac{27/100}{1 - 1/100} = \frac{3}{11}$</td></tr>
+<tr><td>a ball dropped from 10 ft, rising to $\frac{3}{4}$ of each fall</td><td>$10 + 2(7.5 + 5.625 + \cdots)$</td><td>$10 + 2 \cdot \frac{7.5}{1/4} = 70$ ft</td></tr>
+<tr><td>a drug dose of 50 mg each day, 20% left from each earlier dose</td><td>$50 + 50(0.2) + 50(0.2)^2 + \cdots$</td><td>long-run level $\frac{50}{0.8} = 62.5$ mg</td></tr>
+</tbody>
+</table>

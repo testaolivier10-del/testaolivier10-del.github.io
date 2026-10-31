@@ -1,0 +1,22 @@
+{
+ "parametric-arc-length-pieces": {
+  "file": "figures/parametric-arc-length-pieces.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A curved path is replaced by five dashed straight segments joining points on it. On one segment a right triangle is drawn with a horizontal leg delta x, a vertical leg delta y and the segment delta s as its hypotenuse. Beside it: delta s is about the square root of delta x squared plus delta y squared; delta x is about x prime of t times delta t and delta y about y prime of t times delta t, so delta s is about the square root of x prime squared plus y prime squared, times delta t. Adding the pieces and shrinking delta t gives L, the integral of the square root of x prime of t squared plus y prime of t squared, dt."
+ },
+ "parametric-arc-length-cycloid": {
+  "file": "figures/parametric-arc-length-cycloid.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "One arch of the path x = t minus sin t, y = 1 minus cos t for t from 0 to 2 pi: it starts at the origin, rises to a highest point of height 2 above x = pi, and comes back down to (2 pi, 0), with arrows showing it is traced from left to right. A dashed wheel of radius 1 is drawn at t = 2 with the traced point on its rim marked."
+ }
+}

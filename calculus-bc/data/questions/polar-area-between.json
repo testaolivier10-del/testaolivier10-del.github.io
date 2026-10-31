@@ -1,0 +1,444 @@
+{
+ "stimuli": {
+  "polar-area-between-s1": {
+   "kind": "graph",
+   "title": "The circles $r = 4\\sin\\theta$ and $r = 2$",
+   "figure": "polar-area-between-circles"
+  },
+  "polar-area-between-s2": {
+   "kind": "table",
+   "title": "A circle and a spiral (calculator)",
+   "table": {
+    "caption": "The circle $r = 3$ and the spiral $r = 1 + \\theta$ for $0 \\le \\theta \\le \\pi$",
+    "cols": [
+     "$\\theta$",
+     "$0$",
+     "$1$",
+     "$2$",
+     "$3$"
+    ],
+    "rows": [
+     [
+      "$r = 3$",
+      "$3$",
+      "$3$",
+      "$3$",
+      "$3$"
+     ],
+     [
+      "$r = 1 + \\theta$",
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-polar-area-between-1",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polar-area-between-s1",
+   "q": "At which angles do the two circles cross?",
+   "options": [
+    "$\\theta = \\frac{\\pi}{3}$ and $\\theta = \\frac{2\\pi}{3}$",
+    "$\\theta = \\frac{\\pi}{6}$ and $\\theta = \\frac{5\\pi}{6}$",
+    "$\\theta = 0$ and $\\theta = \\pi$",
+    "$\\theta = \\frac{\\pi}{2}$ and $\\theta = \\frac{3\\pi}{2}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Set the two equations equal: $4\\sin\\theta = 2$, so $\\sin\\theta = \\frac{1}{2}$ and $\\theta = \\frac{\\pi}{6}$ or $\\frac{5\\pi}{6}$.",
+    "options": [
+     "Those solve $\\sin\\theta = \\frac{\\sqrt{3}}{2}$. Setting $4\\sin\\theta = 2$ gives $\\sin\\theta = \\frac{1}{2}$.",
+     "Right: $4\\sin\\theta = 2$ gives $\\sin\\theta = \\frac{1}{2}$.",
+     "There $r = 4\\sin\\theta = 0$: the pole, which is not on the circle $r = 2$.",
+     "At $\\theta = \\frac{\\pi}{2}$, $r = 4$ on one circle and 2 on the other; they do not meet there."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-2",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-area-between-s1",
+   "q": "Which integral gives the area of the shaded region, inside $r = 4\\sin\\theta$ and outside $r = 2$?",
+   "options": [
+    "$\\frac{1}{2}\\int_{\\pi/6}^{5\\pi/6} \\left(16\\sin^2\\theta - 4\\right)d\\theta$",
+    "$\\frac{1}{2}\\int_{\\pi/6}^{5\\pi/6} \\left(4\\sin\\theta - 2\\right)^2 d\\theta$",
+    "$\\frac{1}{2}\\int_{\\pi/6}^{5\\pi/6} \\left(4 - 16\\sin^2\\theta\\right)d\\theta$",
+    "$\\frac{1}{2}\\int_{0}^{\\pi} \\left(16\\sin^2\\theta - 4\\right)d\\theta$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$A = \\frac{1}{2}\\int_{\\alpha}^{\\beta} \\left(R^2 - r^2\\right)d\\theta$ with $R = 4\\sin\\theta$ (outer) and $r = 2$ (inner), from $\\frac{\\pi}{6}$ to $\\frac{5\\pi}{6}$.",
+    "options": [
+     "Right: outer radius squared minus inner radius squared, between the crossing angles.",
+     "Square each radius separately: the region is a big wedge minus a small wedge, $\\frac{1}{2}(R^2 - r^2)$, not $\\frac{1}{2}(R - r)^2$.",
+     "This subtracts the wrong way: on this interval $4\\sin\\theta$ is the outer curve. The result would be negative.",
+     "For $\\theta$ near 0 and $\\pi$, $4\\sin\\theta < 2$; the region is only between the crossings, $\\frac{\\pi}{6}$ to $\\frac{5\\pi}{6}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-3",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "polar-area-between-s1",
+   "q": "Find the area of the shaded region.",
+   "numeric": {
+    "answer": "4pi/3 + 2sqrt(3)",
+    "mistakes": [
+     {
+      "value": "8pi/3 + 4sqrt(3)",
+      "why": "That leaves out the $\\frac{1}{2}$ in front of the integral."
+     },
+     {
+      "value": "4pi - 6sqrt(3)",
+      "why": "That integrates $\\frac{1}{2}(4\\sin\\theta - 2)^2$, squaring the difference. Use $\\frac{1}{2}\\left((4\\sin\\theta)^2 - 2^2\\right)$."
+     },
+     {
+      "value": "4pi/3 - 2sqrt(3)",
+      "why": "Check the sign of $\\sin(2\\theta)$ at the limits: $\\sin\\frac{5\\pi}{3} = -\\frac{\\sqrt{3}}{2}$ and $\\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}$, so $-4\\left(\\sin\\frac{5\\pi}{3} - \\sin\\frac{\\pi}{3}\\right) = +4\\sqrt{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$16\\sin^2\\theta - 4 = 8 - 8\\cos(2\\theta) - 4 = 4 - 8\\cos(2\\theta)$. Then $\\frac{1}{2}\\Big[4\\theta - 4\\sin(2\\theta)\\Big]_{\\pi/6}^{5\\pi/6} = \\frac{1}{2}\\left(\\frac{8\\pi}{3} - 4\\left(-\\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{3}}{2}\\right)\\right) = \\frac{4\\pi}{3} + 2\\sqrt{3}$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-4",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "polar-area-between-s1",
+   "q": "The disk $r \\le 4\\sin\\theta$ has area $4\\pi$. Find the area of the region inside both circles.",
+   "numeric": {
+    "answer": "8pi/3 - 2sqrt(3)",
+    "mistakes": [
+     {
+      "value": "4pi/3 + 2sqrt(3)",
+      "why": "That is the shaded crescent itself. Subtract it from the whole disk, $4\\pi$."
+     },
+     {
+      "value": "4pi - 2sqrt(3)",
+      "why": "Subtract the whole crescent area, $\\frac{4\\pi}{3} + 2\\sqrt{3}$, from $4\\pi$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The disk inside $r = 4\\sin\\theta$ splits into the shaded crescent and the part inside both circles: $4\\pi - \\left(\\frac{4\\pi}{3} + 2\\sqrt{3}\\right) = \\frac{8\\pi}{3} - 2\\sqrt{3}$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-5",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "polar-area-between-s1",
+   "q": "How does the area inside $r = 2$ and outside $r = 4\\sin\\theta$ compare with the area of the shaded region?",
+   "options": [
+    "It is smaller: the circle $r = 2$ is mostly inside the other",
+    "They are equal",
+    "It is larger: $r = 2$ is the bigger circle",
+    "It needs a new integral with new limits"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Each disk has area $4\\pi$. The region inside $r = 2$ and outside $r = 4\\sin\\theta$ is $4\\pi$ minus the overlap, as is the shaded region, so the two are equal: $\\frac{4\\pi}{3} + 2\\sqrt{3}$ each.",
+    "options": [
+     "Most of the circle $r = 2$ lies below the $x$-axis, outside $r = 4\\sin\\theta$; compare the areas instead.",
+     "Right: both disks have area $4\\pi$, and each region is its disk minus the same overlap.",
+     "Both circles have radius 2: $r = 4\\sin\\theta$ has diameter 4.",
+     "No new integral is needed: subtract the overlap from the disk of area $4\\pi$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-6",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the area of the region between the circles $r = 2$ and $r = 3$ for $0 \\le \\theta \\le \\frac{\\pi}{2}$.",
+   "numeric": {
+    "answer": "5pi/4",
+    "mistakes": [
+     {
+      "value": "pi/4",
+      "why": "That squares the difference: $\\frac{1}{2}(3 - 2)^2 \\cdot \\frac{\\pi}{2}$. Square each radius, then subtract."
+     },
+     {
+      "value": "5pi/2",
+      "why": "That leaves out the $\\frac{1}{2}$ in front of the integral."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{2}\\int_0^{\\pi/2} \\left(3^2 - 2^2\\right)d\\theta = \\frac{1}{2} \\cdot 5 \\cdot \\frac{\\pi}{2} = \\frac{5\\pi}{4}$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-7",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find the area of the region inside $r = 2\\cos\\theta$ and outside $r = 1$.",
+   "numeric": {
+    "answer": "pi/3 + sqrt(3)/2",
+    "mistakes": [
+     {
+      "value": "2pi/3 + sqrt(3)",
+      "why": "That leaves out the $\\frac{1}{2}$ in front of the integral."
+     },
+     {
+      "value": "pi/6 + sqrt(3)/4",
+      "why": "That integrates from 0 to $\\frac{\\pi}{3}$, half the region. The region is symmetric about the $x$-axis: go from $-\\frac{\\pi}{3}$ to $\\frac{\\pi}{3}$, or double."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The curves meet where $2\\cos\\theta = 1$: $\\theta = \\pm\\frac{\\pi}{3}$. $\\frac{1}{2}\\int_{-\\pi/3}^{\\pi/3} \\left(4\\cos^2\\theta - 1\\right)d\\theta = \\frac{1}{2}\\int_{-\\pi/3}^{\\pi/3} \\left(1 + 2\\cos(2\\theta)\\right)d\\theta = \\frac{1}{2}\\Big[\\theta + \\sin(2\\theta)\\Big]_{-\\pi/3}^{\\pi/3} = \\frac{\\pi}{3} + \\frac{\\sqrt{3}}{2}$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-8",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "3.E",
+   "level": "recall",
+   "diff": 2,
+   "q": "Why is the area between an outer curve $r = R(\\theta)$ and an inner curve $r = r(\\theta)$ equal to $\\frac{1}{2}\\int \\left(R^2 - r^2\\right)d\\theta$ and not $\\frac{1}{2}\\int (R - r)^2\\,d\\theta$?",
+   "options": [
+    "Squaring a difference could give a negative number",
+    "$(R - r)^2$ is the same expression, multiplied out",
+    "Each thin piece is a big wedge minus a small wedge: $\\frac{1}{2}R^2\\,\\Delta\\theta - \\frac{1}{2}r^2\\,\\Delta\\theta$",
+    "$\\frac{1}{2}\\int (R - r)^2\\,d\\theta$ counts the inner region twice"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In rectangular area you subtract heights, $f - g$, because rectangles have area height times width. Polar wedges have area $\\frac{1}{2}r^2\\,\\Delta\\theta$, so you subtract the two wedge areas: $\\frac{1}{2}\\left(R^2 - r^2\\right)\\Delta\\theta$.",
+    "options": [
+     "A square is never negative; the trouble is that $(R - r)^2$ is not the area of the piece.",
+     "$(R - r)^2 = R^2 - 2Rr + r^2$, which is not $R^2 - r^2$.",
+     "Right: subtract areas, which are already squared.",
+     "It does not count any region correctly: a band between two arcs is not a wedge of radius $R - r$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-9",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The limaçon $r = 1 + 2\\cos\\theta$ has an outer loop (area $2\\pi + \\frac{3\\sqrt{3}}{2}$) and an inner loop (area $\\pi - \\frac{3\\sqrt{3}}{2}$). Find the area of the region inside the outer loop and outside the inner loop.",
+   "numeric": {
+    "answer": "pi + 3sqrt(3)",
+    "mistakes": [
+     {
+      "value": "3pi",
+      "why": "That adds the two loop areas. The inner loop is inside the outer one, so subtract it."
+     },
+     {
+      "value": "pi",
+      "why": "Subtracting $-\\frac{3\\sqrt{3}}{2}$ adds $\\frac{3\\sqrt{3}}{2}$: the $\\sqrt{3}$ terms add to $3\\sqrt{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The inner loop lies inside the outer loop, so the region between them has area $\\left(2\\pi + \\frac{3\\sqrt{3}}{2}\\right) - \\left(\\pi - \\frac{3\\sqrt{3}}{2}\\right) = \\pi + 3\\sqrt{3}$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-10",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find the area of the region inside both $r = \\sin\\theta$ and $r = \\cos\\theta$.",
+   "numeric": {
+    "answer": "pi/8 - 1/4",
+    "mistakes": [
+     {
+      "value": "pi/16 - 1/8",
+      "why": "That is half the region, the part with $0 \\le \\theta \\le \\frac{\\pi}{4}$. The part from $\\frac{\\pi}{4}$ to $\\frac{\\pi}{2}$, bounded by $r = \\cos\\theta$, is the same size."
+     },
+     {
+      "value": "pi/4",
+      "why": "That is the whole disk inside $r = \\sin\\theta$. The common region is only the lens where the two disks overlap."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The circles meet at the pole and where $\\sin\\theta = \\cos\\theta$, at $\\theta = \\frac{\\pi}{4}$. For $0 \\le \\theta \\le \\frac{\\pi}{4}$ the boundary of the common region is $r = \\sin\\theta$; by symmetry the other half matches. $A = 2 \\cdot \\frac{1}{2}\\int_0^{\\pi/4} \\sin^2\\theta\\,d\\theta = \\Big[\\frac{\\theta}{2} - \\frac{\\sin(2\\theta)}{4}\\Big]_0^{\\pi/4} = \\frac{\\pi}{8} - \\frac{1}{4}$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-11",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "calc": true,
+   "stimulus": "polar-area-between-s2",
+   "q": "At what value of $\\theta$ in $0 \\le \\theta \\le \\pi$ do the circle and the spiral meet?",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "That is the common value of $r$. The question asks for the angle, where $1 + \\theta = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$1 + \\theta = 3$ gives $\\theta = 2$; the table shows both values equal to 3 there."
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-12",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "polar-area-between-s2",
+   "q": "Find the area of the region inside the circle and outside the spiral for $0 \\le \\theta \\le 2$.",
+   "numeric": {
+    "answer": 4.666666666666667,
+    "mistakes": [
+     {
+      "value": 9.333333333333334,
+      "why": "That leaves out the $\\frac{1}{2}$ in front of the integral."
+     },
+     {
+      "value": 1.3333333333333333,
+      "why": "That integrates $\\frac{1}{2}\\left(3 - (1 + \\theta)\\right)^2$, the square of the difference. Square each radius, then subtract."
+     }
+    ]
+   },
+   "why": {
+    "correct": "On $0 \\le \\theta \\le 2$ the circle is outside: $\\frac{1}{2}\\int_0^2 \\left(9 - (1 + \\theta)^2\\right)d\\theta = \\frac{1}{2}\\left(18 - \\frac{3^3 - 1^3}{3}\\right) = \\frac{1}{2} \\cdot \\frac{28}{3} = \\frac{14}{3} \\approx 4.667$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-13",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "polar-area-between-s2",
+   "q": "Which expression gives the area of the region inside the spiral and outside the circle for $2 \\le \\theta \\le \\pi$?",
+   "options": [
+    "$\\frac{1}{2}\\int_2^{\\pi} \\left(9 - (1 + \\theta)^2\\right)d\\theta$",
+    "$\\frac{1}{2}\\int_2^{\\pi} \\left((1 + \\theta)^2 - 9\\right)d\\theta$",
+    "$\\frac{1}{2}\\int_2^{\\pi} \\left(\\theta - 2\\right)^2 d\\theta$",
+    "$\\int_2^{\\pi} \\left((1 + \\theta)^2 - 9\\right)d\\theta$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For $2 \\le \\theta \\le \\pi$, $1 + \\theta \\ge 3$, so the spiral is the outer boundary: $\\frac{1}{2}\\int_2^{\\pi} \\left((1 + \\theta)^2 - 3^2\\right)d\\theta$.",
+    "options": [
+     "This subtracts the wrong way: for $\\theta > 2$, $1 + \\theta > 3$, so the spiral is outside.",
+     "Right: after $\\theta = 2$ the spiral is the outer curve.",
+     "That squares the difference of the radii, $(1 + \\theta) - 3$; square each radius, then subtract.",
+     "The $\\frac{1}{2}$ from the wedge area is missing."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-14",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "polar-area-between-s2",
+   "q": "Find the area of the region inside the spiral and outside the circle for $2 \\le \\theta \\le \\pi$.",
+   "numeric": {
+    "answer": 2.202811032902142,
+    "mistakes": [
+     {
+      "value": 4.405622065804284,
+      "why": "That leaves out the $\\frac{1}{2}$ in front of the integral."
+     },
+     {
+      "value": 0.24796035280686446,
+      "why": "That integrates $\\frac{1}{2}(\\theta - 2)^2$, the square of the difference of the radii."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{2}\\int_2^{\\pi} \\left((1 + \\theta)^2 - 9\\right)d\\theta \\approx 2.203$ (calculator)."
+   }
+  },
+  {
+   "id": "cbc-polar-area-between-15",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The curves $r = \\sin\\theta$ and $r = \\cos\\theta$ both pass through the pole, but solving $\\sin\\theta = \\cos\\theta$ gives only $\\theta = \\frac{\\pi}{4}$. Why?",
+   "options": [
+    "The pole is not a point of either curve",
+    "Equal $r$ at equal $\\theta$ is the one way two curves can meet",
+    "$\\theta = \\frac{5\\pi}{4}$ also solves it, at the pole",
+    "They reach the pole at different angles: $\\theta = 0$ and $\\theta = \\frac{\\pi}{2}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Setting $r$-values equal finds crossings reached at the same $\\theta$. A point has many polar names, and the pole is $r = 0$ at every angle, so always check where each curve reaches the pole.",
+    "options": [
+     "$r = \\sin\\theta$ is 0 at $\\theta = 0$ and $r = \\cos\\theta$ is 0 at $\\theta = \\frac{\\pi}{2}$: both pass through the pole.",
+     "That is what the equation finds, but two curves can also meet at a point named by different polar coordinates, like the pole.",
+     "At $\\frac{5\\pi}{4}$ both $r$-values are $-\\frac{\\sqrt{2}}{2}$: the same point as at $\\frac{\\pi}{4}$, not the pole.",
+     "Right: a crossing at the pole need not happen at the same $\\theta$, so check $r = 0$ on each curve."
+    ]
+   }
+  }
+ ]
+}

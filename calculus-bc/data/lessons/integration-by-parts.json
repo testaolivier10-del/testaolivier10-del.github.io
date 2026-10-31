@@ -1,0 +1,85 @@
+{
+ "topic": "integration-by-parts",
+ "hook": "The product rule turns $x\\sin x$ into $\\sin x + x\\cos x$. Read backward, it says that an integral of a product can be traded for a different integral, often a much easier one. That trade is integration by parts, and it is how you integrate $x\\cos x$, $xe^{3x}$ and even $\\ln x$, none of which substitution can touch.",
+ "prereq": [
+  {
+   "q": "$\\frac{d}{dx}\\left(x\\sin x\\right) =$",
+   "options": [
+    "$\\sin x + x\\cos x$",
+    "$\\cos x$",
+    "$x\\cos x$",
+    "$\\sin x - x\\cos x$"
+   ],
+   "correct": 0,
+   "why": "Product rule: $(1)\\sin x + x\\cos x$.",
+   "review": "product-rule"
+  },
+  {
+   "q": "$\\int e^{3x}\\,dx =$",
+   "options": [
+    "$\\frac{1}{3}e^{3x} + C$",
+    "$3e^{3x} + C$",
+    "$e^{3x} + C$",
+    "$\\frac{1}{4}e^{4x} + C$"
+   ],
+   "correct": 0,
+   "why": "A linear inside function: divide by 3.",
+   "review": "u-substitution"
+  }
+ ],
+ "figure": {
+  "figure": "integration-by-parts-areas",
+  "caption": "Along v = ln u from (1, 0) to (e, 1), the area under the curve (∫ v du) and the area to its left (∫ u dv) fill the e-by-1 rectangle. One area is the rectangle minus the other: that is integration by parts."
+ },
+ "chain": [
+  {
+   "cause": "The product rule says $\\frac{d}{dx}(uv) = u\\frac{dv}{dx} + v\\frac{du}{dx}$",
+   "effect": "integrating both sides gives $uv = \\int u\\,dv + \\int v\\,du$"
+  },
+  {
+   "cause": "Solve for one of the integrals",
+   "effect": "$\\int u\\,dv = uv - \\int v\\,du$: an integral traded for another"
+  },
+  {
+   "cause": "Choose $u$ to get simpler when differentiated and $dv$ to be easy to integrate",
+   "effect": "the new integral $\\int v\\,du$ is easier than the old one"
+  },
+  {
+   "cause": "The new integral still holds a power of $x$",
+   "effect": "repeat parts, or lay the steps out in a table (the tabular method)"
+  },
+  {
+   "cause": "The integral is definite",
+   "effect": "evaluate $uv$ at both bounds: $\\int_a^b u\\,dv = uv\\Big|_a^b - \\int_a^b v\\,du$"
+  }
+ ],
+ "ideas": [
+  "Formula: $\\int u\\,dv = uv - \\int v\\,du$. Write $u$, $dv$, $du$ and $v$ before you start.",
+  "Put in $u$ what gets simpler when differentiated (a power of $x$, $\\ln x$, an inverse trigonometric function); put in $dv$ what you can integrate ($e^{kx}$, $\\sin kx$, $\\cos kx$).",
+  "A power $x^n$ times $e^{kx}$, $\\sin kx$ or $\\cos kx$ takes $n$ rounds of parts; the tabular method does them all at once with alternating signs.",
+  "Definite integrals: $\\int_a^b u\\,dv = uv\\Big|_a^b - \\int_a^b v\\,du$. The $uv$ term needs its bounds too."
+ ],
+ "misconception": {
+  "wrong": "$\\int x\\cos x\\,dx = \\frac{x^2}{2}\\sin x + C$: integrate each factor.",
+  "right": "The antiderivative of a product is not the product of the antiderivatives (differentiate $\\frac{x^2}{2}\\sin x$ to see). With $u = x$ and $dv = \\cos x\\,dx$: $x\\sin x - \\int \\sin x\\,dx = x\\sin x + \\cos x + C$."
+ },
+ "check": [
+  "cbc-integration-by-parts-1",
+  "cbc-integration-by-parts-2",
+  "cbc-integration-by-parts-3",
+  "cbc-integration-by-parts-10",
+  "cbc-integration-by-parts-11",
+  "cbc-integration-by-parts-16"
+ ],
+ "summary": "Integration by parts is the product rule run backward: $\\int u\\,dv = uv - \\int v\\,du$. Choose $u$ to simplify when differentiated and $dv$ to integrate easily, write out $u$, $dv$, $du$ and $v$, and in a definite integral evaluate $uv$ at both bounds. Repeated parts, or the tabular method, handles $x^n$ times an exponential or a sine.",
+ "connections": [
+  {
+   "href": "../notes/rewriting-integrands.html",
+   "label": "Back: long division and completing the square (6.10)"
+  },
+  {
+   "href": "../notes/partial-fractions.html",
+   "label": "Next: linear partial fractions (6.12)"
+  }
+ ]
+}

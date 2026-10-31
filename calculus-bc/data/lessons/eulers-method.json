@@ -1,0 +1,81 @@
+{
+ "topic": "eulers-method",
+ "hook": "Some differential equations, such as $\\frac{dy}{dx} = x + y$, cannot be solved by the methods of this unit. You can still find out roughly where a solution goes: stand at a known point, walk a short way along the slope the equation gives, read the new slope, and repeat. That walk is Euler's method.",
+ "prereq": [
+  {
+   "q": "$f(2) = 5$ and $f'(2) = 3$. The tangent line at $x = 2$ estimates $f(2.1)$ as",
+   "options": [
+    "5.3",
+    "5.03",
+    "8",
+    "3.5"
+   ],
+   "correct": 0,
+   "why": "$5 + 3(0.1) = 5.3$.",
+   "review": "local-linearity"
+  },
+  {
+   "q": "For $\\frac{dy}{dx} = xy$, the slope field segment at $(1, 2)$ has slope",
+   "options": [
+    "2",
+    "3",
+    "$\\frac{1}{2}$",
+    "1"
+   ],
+   "correct": 0,
+   "why": "$\\frac{dy}{dx} = 1 \\cdot 2 = 2$.",
+   "review": "sketching-slope-fields"
+  }
+ ],
+ "figure": {
+  "figure": "eulers-method-steps",
+  "caption": "Two Euler steps of size 0.5 on dy/dx = y from (0, 1): slope 1 to (0.5, 1.5), then slope 1.5 to (1, 2.25). The solution through (0, 1) is concave up, so both steps fall below it, and 2.25 underestimates its value e ≈ 2.718 at x = 1."
+ },
+ "chain": [
+  {
+   "cause": "The differential equation gives the slope at every point",
+   "effect": "at a known point you know the direction of the solution curve"
+  },
+  {
+   "cause": "Follow that slope for a short run $\\Delta x$",
+   "effect": "the rise is $\\Delta y = \\frac{dy}{dx}\\,\\Delta x$, and the new point is $(x + \\Delta x, y + \\Delta y)$"
+  },
+  {
+   "cause": "At the new point, read a new slope from the equation",
+   "effect": "take the next step; repeat until you reach the $x$ you want"
+  },
+  {
+   "cause": "The solution curves are concave up (or down) along the way",
+   "effect": "each step falls below (or above) them, so the estimate is too small (or too large)"
+  }
+ ],
+ "ideas": [
+  "One step: $y_{\\text{new}} = y + \\frac{dy}{dx}\\Big|_{(x, y)} \\cdot \\Delta x$, using the slope at the point you are at.",
+  "Lay the work out in a table with columns $x$, $y$, $\\frac{dy}{dx}$, $\\Delta x$, $\\Delta y$; take exactly the steps asked for.",
+  "Smaller steps give better estimates. A negative $\\Delta x$ steps to the left.",
+  "Over or under: find $\\frac{d^2y}{dx^2}$ by differentiating the equation. Concave up curves lie above their tangent steps (underestimate); concave down, below (overestimate)."
+ ],
+ "misconception": {
+  "wrong": "For $\\frac{dy}{dx} = x + y$ from $(0, 1)$ with $\\Delta x = 0.5$: the slope is 1, so $y(0.5) \\approx 1.5$ and $y(1) \\approx 2$.",
+  "right": "Each step needs a new slope at its own point. At $(0.5, 1.5)$ the slope is $0.5 + 1.5 = 2$, so $y(1) \\approx 1.5 + 2(0.5) = 2.5$. Reusing the first slope is just one long tangent line."
+ },
+ "check": [
+  "cbc-eulers-method-1",
+  "cbc-eulers-method-2",
+  "cbc-eulers-method-3",
+  "cbc-eulers-method-10",
+  "cbc-eulers-method-12",
+  "cbc-eulers-method-15"
+ ],
+ "summary": "Euler's method approximates a solution of $\\frac{dy}{dx} = F(x, y)$ by short tangent steps: from a known point, $y_{\\text{new}} = y + F(x, y)\\,\\Delta x$, then repeat from the new point. Smaller steps follow the curve more closely. The sign of $\\frac{d^2y}{dx^2}$ tells whether the steps fall below the solution (concave up, an underestimate) or above it (concave down, an overestimate).",
+ "connections": [
+  {
+   "href": "../notes/reasoning-with-slope-fields.html",
+   "label": "Back: reasoning with slope fields (7.4)"
+  },
+  {
+   "href": "../notes/separation-of-variables.html",
+   "label": "Next: separation of variables (7.6)"
+  }
+ ]
+}

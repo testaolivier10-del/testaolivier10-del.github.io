@@ -1,0 +1,8 @@
+{
+ "infinite-sequence": {
+  "def": "A list of numbers $a_1, a_2, a_3, \\ldots$ with one term for each counting number $n$; a function of $n$. It converges to $L$ if $\\lim_{n \\to \\infty} a_n = L$, and diverges if its terms do not approach one number."
+ },
+ "factorial": {
+  "def": "For a positive integer $n$, $n! = n(n - 1)\\cdots 2 \\cdot 1$; also $0! = 1$. Ratios simplify by expanding the larger factorial: $(n + 1)! = (n + 1)\\,n!$."
+ }
+}

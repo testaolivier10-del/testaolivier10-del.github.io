@@ -1,0 +1,12 @@
+{
+ "taylor-series-exp": {
+  "file": "figures/taylor-series-exp.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of y = e to the x from x = -3 to 2.5 with the first three Taylor polynomials about 0: the line 1 + x, the parabola 1 + x + x squared over 2, and the cubic that adds x cubed over 6. Each new term brings the polynomial closer to e to the x over a wider stretch; at x = 2 their values are 3, 5 and about 6.333, approaching e squared, about 7.389."
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "topic": "alternating-error-bound",
+ "hook": "A partial sum is an estimate of a series' sum. For most series you cannot tell how good the estimate is, but for an alternating series you can, at a glance: the error is never bigger than the first term you left out.",
+ "prereq": [
+  {
+   "q": "Which conditions does the alternating series test need for $\\sum (-1)^n a_n$ with $a_n > 0$?",
+   "options": [
+    "The $a_n$ decrease and approach 0",
+    "The $a_n$ approach 0",
+    "The $a_n$ decrease",
+    "$\\sum a_n$ converges"
+   ],
+   "correct": 0,
+   "why": "Both: decreasing sizes that approach 0.",
+   "review": "alternating-series-test"
+  },
+  {
+   "q": "What is $S_3$ for $\\sum_{n=1}^{\\infty} a_n$?",
+   "options": [
+    "$a_1 + a_2 + a_3$",
+    "$a_3$",
+    "$a_1 + a_2$",
+    "$a_3 + a_4 + \\cdots$"
+   ],
+   "correct": 0,
+   "why": "The third partial sum is the sum of the first three terms.",
+   "review": "series-convergence"
+  }
+ ],
+ "figure": {
+  "figure": "alt-error-band",
+  "caption": "For $\\sum \\frac{(-1)^{n+1}}{n^2}$, the sum lies between $S_4$ and $S_4 + a_5$: the error of $S_4$ is less than $a_5 = \\frac{1}{25}$."
+ },
+ "chain": [
+  {
+   "cause": "The partial sums of an alternating series zigzag around the sum with shrinking steps",
+   "effect": "the sum always lies between two consecutive partial sums, $S_n$ and $S_{n+1}$"
+  },
+  {
+   "cause": "$S_{n+1}$ and $S_n$ differ by the next term, $a_{n+1}$ in size",
+   "effect": "the distance from $S_n$ to the sum is at most $a_{n+1}$: $|S - S_n| \\le a_{n+1}$"
+  },
+  {
+   "cause": "The sign of the first omitted term",
+   "effect": "tells the direction: if it is negative, $S_n$ overestimates the sum; if positive, it underestimates"
+  }
+ ],
+ "ideas": [
+  "If a series alternates and its sizes decrease to 0, then $|S - S_n| \\le a_{n+1}$: the error is at most the first term left out.",
+  "State the conditions every time; the bound means nothing without them.",
+  "Write the result as an inequality: \"error $\\le \\frac{1}{720} < 0.002$\". The error is at most the bound, not equal to it.",
+  "The sign of the first omitted term says whether $S_n$ is too big or too small."
+ ],
+ "misconception": {
+  "wrong": "The error of $S_3$ is at most $a_3$, the last term added.",
+  "right": "The bound is the first term left out, $a_4$. The last term added is already part of $S_3$."
+ },
+ "check": [
+  "cbc-alternating-error-bound-1",
+  "cbc-alternating-error-bound-2",
+  "cbc-alternating-error-bound-3",
+  "cbc-alternating-error-bound-5",
+  "cbc-alternating-error-bound-11",
+  "cbc-alternating-error-bound-13"
+ ],
+ "summary": "For a series that alternates with sizes decreasing to 0, the sum lies within $a_{n+1}$, the first omitted term, of $S_n$: $|S - S_n| \\le a_{n+1}$. State the conditions, compute the bound, and compare it with the required accuracy using \"$\\le \\ldots <$\".",
+ "connections": [
+  {
+   "href": "../notes/absolute-conditional.html",
+   "label": "Back: absolute and conditional convergence (10.9)"
+  },
+  {
+   "href": "../notes/taylor-polynomials.html",
+   "label": "Next: Taylor polynomials (10.11)"
+  }
+ ]
+}

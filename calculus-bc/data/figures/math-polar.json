@@ -1,0 +1,22 @@
+{
+ "math-polar-coords": {
+  "file": "figures/math-polar-coords.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A polar grid with circles of radius 1 to 4 and rays every π/6. Point P has r = 3 and θ = π/3: its legs are x = r cos θ = 1.5 and y = r sin θ = 3√3/2, about 2.598. Point Q has r = −2 and θ = π/4: it lies 2 units from the pole on the ray opposite θ = π/4, at x = −√2, y = −√2. A side panel lists x = r cos θ, y = r sin θ and r² = x² + y²."
+ },
+ "math-polar-families": {
+  "file": "figures/math-polar-families.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three polar graphs drawn from their equations. Left: the cardioid r = 2 + 2 cos θ, a heart shape reaching 4 units right of the pole and touching the pole once, at θ = π. Middle: the limaçon r = 1 + 2 cos θ, a large loop with a small inner loop, in vermillion, traced while r is negative for 2π/3 < θ < 4π/3. Right: the rose r = 3 sin(2θ), four petals of length 3, one for every π/2 of θ."
+ }
+}

@@ -1,0 +1,45 @@
+<p>Unit 10 adds up infinitely many numbers. Before that, this page reviews three tools it leans on: sequences and their limits, factorials, and sigma notation.</p>
+
+<h2>Sequences</h2>
+<p>An <b>infinite sequence</b> is a list $a_1, a_2, a_3, \ldots$ with one term for each counting number $n$. Think of it as a function whose inputs are $1, 2, 3, \ldots$ A formula such as $a_n = \frac{n}{n + 1}$ gives any term directly: $a_1 = \frac{1}{2}$, $a_2 = \frac{2}{3}$, $a_{10} = \frac{10}{11}$.</p>
+<p>Some sequences start at $n = 0$. The index matters: $\left(-\frac{1}{2}\right)^{n}$ starting at $n = 0$ and $\left(-\frac{1}{2}\right)^{n - 1}$ starting at $n = 1$ are the same list, $1, -\frac{1}{2}, \frac{1}{4}, \ldots$ To find a formula from a few terms, look for a pattern in the numerators, the denominators and the signs separately; a sign that alternates is a factor $(-1)^n$ or $(-1)^{n+1}$.</p>
+<p>A sequence in which each term is the one before times the same number $r$ is a <b>geometric sequence</b>: $a, ar, ar^2, \ldots$ Unit 10 uses these constantly.</p>
+
+<h2>Limits of sequences</h2>
+<p>A sequence <b>converges</b> to $L$ if its terms get as close to $L$ as you like and stay there as $n$ grows: $\lim_{n \to \infty} a_n = L$. Otherwise it <b>diverges</b>.</p>
+<figure id="fig-seq" data-fig="math-sequences-limits"><figcaption>A sequence that converges and one that diverges.</figcaption></figure>
+<p>If $a_n = f(n)$ and $\lim_{x \to \infty} f(x) = L$, then $\lim_{n \to \infty} a_n = L$. So the AB tools work:</p>
+<ul>
+<li><b>Leading terms</b> for rational expressions: $\lim_{n \to \infty} \frac{3n^2 + 1}{2n^2 - n} = \frac{3}{2}$.</li>
+<li><b>L'Hospital's rule</b> on the function: $\frac{\ln x}{x}$ is an $\frac{\infty}{\infty}$ form, and $\frac{1/x}{1} \to 0$, so $\frac{\ln n}{n} \to 0$.</li>
+<li><b>Growth rates</b>: as $n \to \infty$, $\ln n$ grows slower than any power $n^p$ with $p > 0$, which grows slower than $e^n$ or $b^n$ with $b > 1$, which grows slower than $n!$.</li>
+<li><b>The squeeze theorem</b> for signs that alternate: $-\frac{1}{n} \le \frac{(-1)^n}{n} \le \frac{1}{n}$, so $\frac{(-1)^n}{n} \to 0$ (<a class="figref" href="#fig-seq">the figure</a> shows a cousin, $1 + \frac{(-1)^n}{n} \to 1$).</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 1.</b> Do $a_n = \frac{(-1)^n\,n}{n + 1}$ and $c_n = \left(\frac{2}{3}\right)^n$ converge?</p>
+<p>For $a_n$: the sizes $\frac{n}{n + 1}$ approach 1, so the odd terms approach $-1$ and the even terms approach $1$. The terms never settle on one number: $a_n$ diverges.</p>
+<p>For $c_n$: a number between $-1$ and $1$ raised to higher and higher powers shrinks toward 0, so $c_n \to 0$. In general $r^n \to 0$ when $|r| < 1$; $r^n$ grows without bound when $|r| > 1$; $r^n$ stays at 1 when $r = 1$ and jumps between $1$ and $-1$ when $r = -1$.</p>
+</div>
+
+<h2>Factorials</h2>
+<p>For a positive integer $n$, $n! = n(n - 1)(n - 2)\cdots 3 \cdot 2 \cdot 1$, and by agreement $0! = 1$. Factorials grow very fast: $5! = 120$, $10! = 3{,}628{,}800$.</p>
+<p>Ratios of factorials simplify by writing the larger one down until it reaches the smaller one:</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Simplify $\frac{(n + 1)!}{n!}$ and $\frac{(2n)!}{(2n + 2)!}$.</p>
+<p>$(n + 1)! = (n + 1) \cdot n!$, so $\frac{(n + 1)!}{n!} = n + 1$.</p>
+<p>$(2n + 2)! = (2n + 2)(2n + 1)(2n)!$: two factors, not one. So $\frac{(2n)!}{(2n + 2)!} = \frac{1}{(2n + 2)(2n + 1)}$.</p>
+</div>
+<p>Later Unit 10 topics (10.8 and 10.11) lean on exactly these simplifications, and dropping one factor of $(2n + 2)!$ is a common slip.</p>
+
+<h2>Sigma notation</h2>
+<p>$\sum_{k=1}^{m} a_k$ means $a_1 + a_2 + \cdots + a_m$. The letter $k$ is a counter; any letter works. Constants factor out and sums split:</p>
+<p>$$\sum_{k=1}^{m} c\,a_k = c\sum_{k=1}^{m} a_k, \qquad \sum_{k=1}^{m} \left(a_k + b_k\right) = \sum_{k=1}^{m} a_k + \sum_{k=1}^{m} b_k.$$</p>
+<table class="compare">
+<thead><tr><th>Written</th><th>Means</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>$\sum_{k=1}^{4} k^2$</td><td>$1 + 4 + 9 + 16$</td><td>$30$</td></tr>
+<tr><td>$\sum_{k=0}^{3} 2^k$</td><td>$1 + 2 + 4 + 8$</td><td>$15$</td></tr>
+<tr><td>$\sum_{k=1}^{3} \frac{k}{k + 1}$</td><td>$\frac{1}{2} + \frac{2}{3} + \frac{3}{4}$</td><td>$\frac{23}{12}$</td></tr>
+</tbody>
+</table>
+<p>Changing the starting index shifts the formula: $\sum_{k=0}^{3} 2^k$ and $\sum_{k=1}^{4} 2^{k-1}$ are the same sum. In 10.1 the upper limit becomes $\infty$, and the question becomes whether the sum settles to a number at all.</p>

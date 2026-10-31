@@ -1,0 +1,385 @@
+{
+ "stimuli": {
+  "planar-motion-s1": {
+   "kind": "graph",
+   "title": "A path with the velocity vector drawn at one point",
+   "text": "A particle moves along the path $x(t) = 4 - t^2$, $y(t) = t^3 - 4t$ for $-2 \\le t \\le 2$. The graph shows the path, the direction of motion, and the velocity vector drawn at the point where $t = 1$.",
+   "figure": "planar-motion-loop"
+  },
+  "planar-motion-s2": {
+   "kind": "table",
+   "title": "A particle's velocity components and starting point",
+   "text": "A particle moves in the $xy$-plane for $0 \\le t \\le 4$. Its velocity components and its position at $t = 0$ are given below. A graphing calculator is allowed.",
+   "table": {
+    "caption": "Velocity components and initial position of the particle",
+    "cols": ["Quantity", "Value"],
+    "rows": [
+     ["$x'(t)$", "$1 + \\ln(t + 1)$"],
+     ["$y'(t)$", "$3\\cos t$"],
+     ["$(x(0), y(0))$", "$(1, -2)$"]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-planar-motion-1",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "planar-motion-s1",
+   "q": "What is the velocity vector of the particle at $t = 1$?",
+   "options": [
+    "$\\left\\langle 3, -3 \\right\\rangle$",
+    "$\\left\\langle -2, -1 \\right\\rangle$",
+    "$\\left\\langle -2, 6 \\right\\rangle$",
+    "$\\left\\langle 2, -1 \\right\\rangle$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\mathbf{v}(t) = \\left\\langle -2t, 3t^2 - 4 \\right\\rangle$, so $\\mathbf{v}(1) = \\left\\langle -2, -1 \\right\\rangle$: 2 units left and 1 down per unit of time, as the arrow in the graph shows.",
+    "options": [
+     "That is the position $(x(1), y(1)) = (3, -3)$, where the vector starts.",
+     "Right: differentiate each component.",
+     "That is the acceleration $\\mathbf{a}(1) = \\left\\langle -2, 6t \\right\\rangle$ at $t = 1$.",
+     "$\\frac{d}{dt}(4 - t^2) = -2t$, which is $-2$ at $t = 1$: the particle moves left."
+    ]
+   }
+  },
+  {
+   "id": "cbc-planar-motion-2",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "planar-motion-s1",
+   "q": "Find the speed of the particle at $t = 1$.",
+   "numeric": {
+    "answer": "sqrt(5)",
+    "mistakes": [
+     { "value": "1/2", "why": "That is $\\left|\\frac{dy}{dx}\\right| = \\left|\\frac{-1}{-2}\\right|$, the steepness of the path. Speed is the length of the velocity vector, $\\sqrt{(x'(t))^2 + (y'(t))^2}$." },
+     { "value": 3, "why": "That adds the sizes of the components. Speed is $\\sqrt{(-2)^2 + (-1)^2}$." },
+     { "value": 5, "why": "That is $(-2)^2 + (-1)^2$; take the square root." }
+    ]
+   },
+   "why": {
+    "correct": "Speed $= \\left\\| \\mathbf{v}(1) \\right\\| = \\sqrt{(-2)^2 + (-1)^2} = \\sqrt{5}$."
+   }
+  },
+  {
+   "id": "cbc-planar-motion-3",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "planar-motion-s1",
+   "q": "Which statement about the motion from $t = -2$ to $t = 2$ is correct?",
+   "options": [
+    "The displacement is $\\left\\langle 0, 0 \\right\\rangle$, so the distance traveled is 0",
+    "The displacement is $\\left\\langle 4, 0 \\right\\rangle$, the farthest point from the start",
+    "The displacement is $\\left\\langle 3, -3 \\right\\rangle$, the position at $t = 1$",
+    "The displacement is $\\left\\langle 0, 0 \\right\\rangle$, but the distance traveled is positive"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\int_{-2}^{2} \\mathbf{v}(t)\\,dt = \\mathbf{r}(2) - \\mathbf{r}(-2) = \\left\\langle 0, 0 \\right\\rangle - \\left\\langle 0, 0 \\right\\rangle$: the particle ends where it started. It still went around the loop, so the distance traveled, $\\int_{-2}^{2} \\sqrt{(x')^2 + (y')^2}\\,dt$, is positive.",
+    "options": [
+     "A zero displacement means the start and end coincide; the particle still traveled around the loop.",
+     "$\\left\\langle 4, 0 \\right\\rangle$ is the position at $t = 0$; the displacement compares the end with the start.",
+     "That is a position along the way, not the change from start to end.",
+     "Right: net change zero, distance positive."
+    ]
+   }
+  },
+  {
+   "id": "cbc-planar-motion-4",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "planar-motion-s1",
+   "q": "Which expression gives the total distance traveled by the particle from $t = -2$ to $t = 2$?",
+   "options": [
+    "$\\int_{-2}^{2} \\sqrt{(4 - t^2)^2 + (t^3 - 4t)^2}\\,dt$",
+    "$\\int_{-2}^{2} \\sqrt{4t^2 + (3t^2 - 4)^2}\\,dt$",
+    "$\\sqrt{\\left(\\int_{-2}^{2} -2t\\,dt\\right)^2 + \\left(\\int_{-2}^{2} (3t^2 - 4)\\,dt\\right)^2}$",
+    "$\\int_{-2}^{2} \\left|\\frac{3t^2 - 4}{-2t}\\right|\\,dt$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Distance traveled is the integral of speed: $\\int_{-2}^{2} \\sqrt{(-2t)^2 + (3t^2 - 4)^2}\\,dt$, and $(-2t)^2 = 4t^2$.",
+    "options": [
+     "This squares the position components; speed squares the velocity components.",
+     "Right: integrate the speed over the time interval.",
+     "This is the length of the displacement vector, which is 0 here because the path is closed.",
+     "This integrates $\\left|\\frac{dy}{dx}\\right|$, the steepness of the path, not the speed."
+    ]
+   }
+  },
+  {
+   "id": "cbc-planar-motion-5",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "planar-motion-s1",
+   "q": "What is the acceleration vector of the particle at $t = 1$?",
+   "options": [
+    "$\\left\\langle -2, -1 \\right\\rangle$",
+    "$\\left\\langle 2, 6 \\right\\rangle$",
+    "$\\left\\langle -2, 3 \\right\\rangle$",
+    "$\\left\\langle -2, 6 \\right\\rangle$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\mathbf{a}(t) = \\mathbf{v}'(t) = \\left\\langle -2, 6t \\right\\rangle$, so $\\mathbf{a}(1) = \\left\\langle -2, 6 \\right\\rangle$.",
+    "options": [
+     "That is the velocity $\\mathbf{v}(1)$; acceleration is its derivative.",
+     "The derivative of $-2t$ is $-2$, not 2.",
+     "The derivative of $3t^2 - 4$ is $6t$, not $3t$.",
+     "Right: differentiate the velocity components."
+    ]
+   }
+  },
+  {
+   "id": "cbc-planar-motion-6",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 1,
+   "calc": true,
+   "stimulus": "planar-motion-s2",
+   "q": "Find the speed of the particle at $t = 2$.",
+   "numeric": {
+    "answer": 2.441879858687267,
+    "mistakes": [
+     { "value": 0.5948885920389582, "why": "That is $\\left|\\frac{dy}{dx}\\right|$ at $t = 2$. Speed is $\\sqrt{(x'(2))^2 + (y'(2))^2}$." }
+    ]
+   },
+   "why": {
+    "correct": "Speed $= \\sqrt{(1 + \\ln 3)^2 + (3\\cos 2)^2} \\approx 2.442$ (radian mode)."
+   }
+  },
+  {
+   "id": "cbc-planar-motion-7",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.D",
+   "level": "analyze",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "planar-motion-s2",
+   "q": "Find the time $t$ in $0 < t < 2$ at which the speed of the particle is 3.",
+   "numeric": {
+    "answer": 0.48337976943775696
+   },
+   "why": {
+    "correct": "Solve $\\sqrt{(1 + \\ln(t + 1))^2 + (3\\cos t)^2} = 3$ on the calculator: $t \\approx 0.483$. (A second solution, $t \\approx 2.319$, lies outside $0 < t < 2$.) The task is to solve for $t$, not to evaluate the speed at a given time."
+   }
+  },
+  {
+   "id": "cbc-planar-motion-8",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "planar-motion-s2",
+   "q": "Find the $x$-coordinate of the particle's position at $t = 4$.",
+   "numeric": {
+    "answer": 9.047189562170502,
+    "mistakes": [
+     { "value": 8.0471895621705, "why": "That is $\\int_0^4 x'(t)\\,dt$, the change in $x$. Add the start: $x(4) = x(0) + \\int_0^4 x'(t)\\,dt$." },
+     { "value": 7.0471895621705, "why": "The starting value is added, not subtracted: $x(4) = 1 + \\int_0^4 x'(t)\\,dt$." }
+    ]
+   },
+   "why": {
+    "correct": "$x(4) = x(0) + \\int_0^4 \\left(1 + \\ln(t + 1)\\right)\\,dt = 1 + 8.0472\\ldots \\approx 9.047$."
+   }
+  },
+  {
+   "id": "cbc-planar-motion-9",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "planar-motion-s2",
+   "q": "In which direction is the particle moving at $t = 4$?",
+   "options": [
+    "Right and up",
+    "Left and down",
+    "Right and down",
+    "Left and up"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$x'(4) = 1 + \\ln 5 > 0$, so $x$ is increasing (right); $y'(4) = 3\\cos 4 \\approx -1.961 < 0$, so $y$ is decreasing (down).",
+    "options": [
+     "$y'(4) = 3\\cos 4$ is negative: $4$ radians is in the third quadrant, where cosine is negative.",
+     "$x'(t) = 1 + \\ln(t + 1) > 0$ for $t \\ge 0$, so the particle moves right.",
+     "Right: $x' > 0$ and $y' < 0$.",
+     "Both signs are reversed: $x'(4) > 0$ and $y'(4) < 0$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-planar-motion-10",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "planar-motion-s2",
+   "q": "Find the total distance traveled by the particle from $t = 0$ to $t = 4$.",
+   "numeric": {
+    "answer": 11.92165594710145,
+    "mistakes": [
+     { "value": 8.361340203678155, "why": "That is the length of the displacement vector, the straight-line distance from start to end. Distance traveled integrates the speed." },
+     { "value": 16.317597049523112, "why": "That integrates $|x'(t)| + |y'(t)|$. Speed combines the components with the Pythagorean theorem: $\\sqrt{(x')^2 + (y')^2}$." }
+    ]
+   },
+   "why": {
+    "correct": "Distance $= \\int_0^4 \\sqrt{(1 + \\ln(t + 1))^2 + (3\\cos t)^2}\\,dt \\approx 11.922$."
+   }
+  },
+  {
+   "id": "cbc-planar-motion-11",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A particle has position $\\mathbf{r}(t) = \\left\\langle t^2, t^3 \\right\\rangle$. What is its speed at $t = 1$?",
+   "options": [
+    "$\\frac{3}{2}$",
+    "$\\sqrt{13}$",
+    "$5$",
+    "$\\sqrt{2}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\mathbf{v}(t) = \\left\\langle 2t, 3t^2 \\right\\rangle$, so $\\mathbf{v}(1) = \\left\\langle 2, 3 \\right\\rangle$ and the speed is $\\sqrt{4 + 9} = \\sqrt{13}$.",
+    "options": [
+     "That is $\\frac{dy}{dx} = \\frac{3}{2}$, the slope of the path. Speed is the magnitude of the velocity.",
+     "Right: $\\sqrt{2^2 + 3^2}$.",
+     "That adds the components $2 + 3$; use $\\sqrt{2^2 + 3^2}$.",
+     "That is the length of the position $\\left\\langle 1, 1 \\right\\rangle$; speed uses the velocity."
+    ]
+   }
+  },
+  {
+   "id": "cbc-planar-motion-12",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A particle moves with $x(t) = t^2 - 4t$ and $y(t) = 12t - t^3$ for $0 < t < 4$. On which interval is the particle's $y$-coordinate decreasing?",
+   "options": [
+    "$0 < t < 2$",
+    "$2 < t < 4$",
+    "$0 < t < 2$ and $2 < t < 4$",
+    "Nowhere on $0 < t < 4$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$y$ is decreasing where $\\frac{dy}{dt} = 12 - 3t^2 < 0$, that is $t > 2$: the interval $2 < t < 4$. The sign of $\\frac{dy}{dx}$ does not decide this.",
+    "options": [
+     "On $0 < t < 2$, $x$ is decreasing ($x' = 2t - 4 < 0$) but $y' = 12 - 3t^2 > 0$: $y$ increases.",
+     "Right: read the sign of $\\frac{dy}{dt}$.",
+     "This reads $\\frac{dy}{dx} = \\frac{12 - 3t^2}{2t - 4}$, which is negative on both intervals. That says the path falls as $x$ increases, not that $y$ decreases in time.",
+     "$\\frac{dy}{dt} = 12 - 3t^2$ is negative for $2 < t < 4$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-planar-motion-13",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A particle moves with $\\mathbf{r}(t) = \\left\\langle 3\\cos t, 3\\sin t \\right\\rangle$. Find the total distance it travels from $t = 0$ to $t = 2\\pi$.",
+   "numeric": {
+    "answer": "6*pi",
+    "mistakes": [
+     { "value": 0, "why": "That is the displacement: the particle returns to $(3, 0)$. Distance integrates the speed, which is 3 the whole time." },
+     { "value": "18*pi", "why": "The speed is $\\sqrt{9\\sin^2 t + 9\\cos^2 t} = 3$, not 9: take the square root." }
+    ]
+   },
+   "why": {
+    "correct": "$\\mathbf{v}(t) = \\left\\langle -3\\sin t, 3\\cos t \\right\\rangle$, so the speed is $\\sqrt{9(\\sin^2 t + \\cos^2 t)} = 3$. Distance $= \\int_0^{2\\pi} 3\\,dt = 6\\pi$, one trip around a circle of radius 3."
+   }
+  },
+  {
+   "id": "cbc-planar-motion-14",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A particle has velocity $\\mathbf{v}(t) = \\left\\langle 3t^2, 3t \\right\\rangle$. Find the distance it travels from $t = 0$ to $t = \\sqrt{3}$.",
+   "numeric": {
+    "answer": 7,
+    "mistakes": [
+     { "value": 8, "why": "$(t^2 + 1)^{3/2}\\Big|_0^{\\sqrt{3}} = 8 - 1$: the lower limit gives $1^{3/2} = 1$, not 0." },
+     { "value": 21, "why": "With $u = t^2 + 1$, $\\int 3t\\sqrt{t^2 + 1}\\,dt = \\frac{3}{2}\\int u^{1/2}\\,du = (t^2 + 1)^{3/2}$; the factors 3, $\\frac{1}{2}$ and $\\frac{2}{3}$ cancel." }
+    ]
+   },
+   "why": {
+    "correct": "Speed $= \\sqrt{9t^4 + 9t^2} = 3t\\sqrt{t^2 + 1}$ for $t \\ge 0$. Distance $= \\int_0^{\\sqrt{3}} 3t\\sqrt{t^2 + 1}\\,dt = (t^2 + 1)^{3/2}\\Big|_0^{\\sqrt{3}} = 8 - 1 = 7$."
+   }
+  },
+  {
+   "id": "cbc-planar-motion-15",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Particle A has position $\\mathbf{r}_A(t) = \\left\\langle 2t, t^2 - 1 \\right\\rangle$ and particle B has position $\\mathbf{r}_B(t) = \\left\\langle t + 2, 3t - 3 \\right\\rangle$ for $t \\ge 0$. Do they collide, and if so, when and where?",
+   "options": [
+    "Yes, at $t = 2$, at the point $(4, 3)$",
+    "Yes, at $(8, 15)$, where their paths cross",
+    "Yes, at $t = 1$, where both have $y = 0$",
+    "No, they do not collide"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A collision needs the same point at the same time. $2t = t + 2$ gives $t = 2$, and then $t^2 - 1 = 3 = 3t - 3$. Both are at $(4, 3)$ at $t = 2$.",
+    "options": [
+     "Right: both coordinates match at the same time.",
+     "The paths do cross at $(8, 15)$, but A is there at $t = 4$ and B at $t = 6$: different times, no collision.",
+     "At $t = 1$ the $y$-coordinates match but the $x$-coordinates are 2 and 3.",
+     "They do collide: at $t = 2$ both $x$ and $y$ agree."
+    ]
+   }
+  }
+ ]
+}

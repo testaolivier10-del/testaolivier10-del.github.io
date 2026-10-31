@@ -225,9 +225,14 @@ function mergeDir(dir, course) {
    an element whose class has calc-ab-only is dropped from BC pages, one with
    cbc-only from AB pages. Not nested; AB data has neither today. */
 const ONLY_RE = cls => new RegExp(`<([a-z][a-z0-9]*)\\b[^>]*class="[^"]*\\b${cls}\\b[^"]*"[^>]*>[\\s\\S]*?<\\/\\1>`, 'g');
+/* A <span> wrapper for the course being built is unwrapped (its text kept, the span
+   dropped), so wrapping AB text in calc-ab-only leaves AB's pages byte-identical. */
+const KEEP_RE = cls => new RegExp(`<span\\b[^>]*class="${cls}"[^>]*>([\\s\\S]*?)<\\/span>`, 'g');
 export function courseOnly(v, course = COURSE.id) {
-  const re = ONLY_RE(course === 'bc' ? 'calc-ab-only' : 'cbc-only');
-  if (typeof v === 'string') return v.includes('-only') ? v.replace(re, '') : v;
+  const bc = course === 'bc';
+  const re = ONLY_RE(bc ? 'calc-ab-only' : 'cbc-only');
+  const keep = KEEP_RE(bc ? 'cbc-only' : 'calc-ab-only');
+  if (typeof v === 'string') return v.includes('-only') ? v.replace(re, '').replace(keep, '$1') : v;
   if (Array.isArray(v)) return v.map(x => courseOnly(x, course));
   if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, courseOnly(x, course)]));
   return v;

@@ -1,0 +1,5 @@
+{
+ "lagrange-error-bound": {
+  "def": "A bound on the error of a Taylor polynomial: $\\left|f(x) - P_n(x)\\right| \\le \\frac{M}{(n+1)!}|x - a|^{n+1}$, where $M$ is the largest value of $\\left|f^{(n+1)}(z)\\right|$ for $z$ between the center $a$ and $x$."
+ }
+}

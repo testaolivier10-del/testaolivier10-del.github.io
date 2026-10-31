@@ -1,0 +1,93 @@
+{
+ "topic": "comparison-tests",
+ "hook": "You cannot add infinitely many terms, but you can often tell whether their sum settles by setting the series beside one you already know. If every term of a positive series is smaller than the matching term of a convergent geometric series or $p$-series, its partial sums are trapped under a ceiling, and the series converges.",
+ "prereq": [
+  {
+   "q": "Does $\\sum_{n=1}^{\\infty} \\frac{1}{n^3}$ converge?",
+   "options": [
+    "Yes: it is a $p$-series with $p = 3 > 1$",
+    "No: its terms approach 0 too slowly",
+    "No: it is the harmonic series",
+    "Yes: it is geometric with ratio $\\frac{1}{3}$"
+   ],
+   "correct": 0,
+   "why": "A $p$-series $\\sum \\frac{1}{n^p}$ converges exactly when $p > 1$.",
+   "review": "p-series"
+  },
+  {
+   "q": "Does $\\sum_{n=0}^{\\infty} \\left(\\frac{4}{5}\\right)^n$ converge?",
+   "options": [
+    "Yes: it is geometric with $|r| = \\frac{4}{5} < 1$",
+    "No: its ratio is positive",
+    "No: its terms are all positive",
+    "Yes: it is a $p$-series with $p = \\frac{4}{5}$"
+   ],
+   "correct": 0,
+   "why": "A geometric series converges when $|r| < 1$; here its sum is $\\frac{1}{1 - 4/5} = 5$.",
+   "review": "geometric-series"
+  },
+  {
+   "q": "Find $\\lim_{n \\to \\infty} \\frac{5n^2 - 1}{2n^2 + n}$.",
+   "options": [
+    "$\\frac{5}{2}$",
+    "$0$",
+    "$5$",
+    "The limit is infinite"
+   ],
+   "correct": 0,
+   "why": "Divide the top and bottom by $n^2$: $\\frac{5 - 1/n^2}{2 + 1/n} \\to \\frac{5}{2}$.",
+   "review": "limits-at-infinity"
+  }
+ ],
+ "figure": {
+  "figure": "comparison-partial-sums",
+  "caption": "The partial sums of $\\sum \\frac{1}{n^2 + 1}$ stay under those of $\\sum \\frac{1}{n^2}$, which level off below $\\frac{\\pi^2}{6} \\approx 1.645$."
+ },
+ "chain": [
+  {
+   "cause": "Every term of $\\sum a_n$ is positive",
+   "effect": "its partial sums only increase, so they converge exactly when they stay below some ceiling"
+  },
+  {
+   "cause": "$0 \\le a_n \\le b_n$ for every $n$ and $\\sum b_n$ converges",
+   "effect": "each partial sum of $\\sum a_n$ is below the sum of $\\sum b_n$, so $\\sum a_n$ converges (direct comparison)"
+  },
+  {
+   "cause": "$a_n \\ge b_n \\ge 0$ and $\\sum b_n$ diverges",
+   "effect": "the partial sums of $\\sum a_n$ grow past every bound, so $\\sum a_n$ diverges"
+  },
+  {
+   "cause": "$\\lim_{n \\to \\infty} \\frac{a_n}{b_n} = L$ with $0 < L < \\infty$",
+   "effect": "for large $n$, $a_n$ is about $L\\,b_n$, so the two series converge together or diverge together (limit comparison)"
+  }
+ ],
+ "ideas": [
+  "Compare positive terms with a series whose behavior is known and named: geometric with its ratio, or a $p$-series with its $p$.",
+  "Direct comparison needs the inequality in the useful direction: smaller than convergent, or larger than divergent. Larger than convergent, or smaller than divergent, proves nothing.",
+  "Choose $b_n$ by keeping the highest powers on top and bottom; use limit comparison when the inequality points the wrong way.",
+  "Write the limit in $n$: $\\lim_{n \\to \\infty} \\frac{a_n}{b_n}$, and say it is finite and positive."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{1}{n^2 + n} \\le \\frac{1}{n}$ and the harmonic series diverges, so $\\sum \\frac{1}{n^2 + n}$ diverges.",
+  "right": "Being smaller than a divergent series proves nothing. Compare with $\\frac{1}{n^2}$ instead: $\\frac{1}{n^2 + n} < \\frac{1}{n^2}$ and $p = 2 > 1$, so the series converges."
+ },
+ "check": [
+  "cbc-comparison-tests-1",
+  "cbc-comparison-tests-3",
+  "cbc-comparison-tests-5",
+  "cbc-comparison-tests-7",
+  "cbc-comparison-tests-11",
+  "cbc-comparison-tests-12"
+ ],
+ "summary": "For a series with positive terms, compare it with a known geometric series or $p$-series. Direct comparison: smaller than a convergent series converges, larger than a divergent series diverges. Limit comparison: if $\\lim_{n \\to \\infty} \\frac{a_n}{b_n}$ is finite and positive, both series do the same thing.",
+ "connections": [
+  {
+   "href": "../notes/p-series.html",
+   "label": "Back: harmonic series and p-series (10.5)"
+  },
+  {
+   "href": "../notes/alternating-series-test.html",
+   "label": "Next: the alternating series test (10.7)"
+  }
+ ]
+}

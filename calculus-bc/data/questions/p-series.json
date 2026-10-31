@@ -1,0 +1,636 @@
+{
+ "stimuli": {
+  "p-series-s1": {
+   "kind": "table",
+   "title": "Five series of powers of $n$",
+   "table": {
+    "caption": "Five series, each starting at $n = 1$ ($k$ is a positive constant)",
+    "cols": [
+     "Name",
+     "Series"
+    ],
+    "rows": [
+     [
+      "I",
+      "$\\sum \\frac{1}{n^{3/2}}$"
+     ],
+     [
+      "II",
+      "$\\sum \\frac{1}{\\sqrt[3]{n}}$"
+     ],
+     [
+      "III",
+      "$\\sum \\frac{n^2}{n^3}$"
+     ],
+     [
+      "IV",
+      "$\\sum \\frac{1}{n^{\\pi}}$"
+     ],
+     [
+      "V",
+      "$\\sum \\frac{1}{n^{2k}}$"
+     ]
+    ]
+   }
+  },
+  "p-series-s2": {
+   "kind": "graph",
+   "title": "Partial sums of the harmonic series",
+   "plot": {
+    "label": "Partial sums of the harmonic series for n = 1 to 20, each above the dashed curve y = ln(x + 1)",
+    "width": 420,
+    "height": 280,
+    "x": [
+     0,
+     21
+    ],
+    "y": [
+     0,
+     4.2
+    ],
+    "xStep": 2,
+    "yStep": 0.5,
+    "xLabel": "n",
+    "yLabel": "S_n",
+    "grid": true,
+    "points": [
+     {
+      "at": [
+       1,
+       1.0
+      ]
+     },
+     {
+      "at": [
+       2,
+       1.5
+      ]
+     },
+     {
+      "at": [
+       3,
+       1.833333
+      ]
+     },
+     {
+      "at": [
+       4,
+       2.083333
+      ]
+     },
+     {
+      "at": [
+       5,
+       2.283333
+      ]
+     },
+     {
+      "at": [
+       6,
+       2.45
+      ]
+     },
+     {
+      "at": [
+       7,
+       2.592857
+      ]
+     },
+     {
+      "at": [
+       8,
+       2.717857
+      ]
+     },
+     {
+      "at": [
+       9,
+       2.828968
+      ]
+     },
+     {
+      "at": [
+       10,
+       2.928968
+      ]
+     },
+     {
+      "at": [
+       11,
+       3.019877
+      ]
+     },
+     {
+      "at": [
+       12,
+       3.103211
+      ]
+     },
+     {
+      "at": [
+       13,
+       3.180134
+      ]
+     },
+     {
+      "at": [
+       14,
+       3.251562
+      ]
+     },
+     {
+      "at": [
+       15,
+       3.318229
+      ]
+     },
+     {
+      "at": [
+       16,
+       3.380729
+      ]
+     },
+     {
+      "at": [
+       17,
+       3.439553
+      ]
+     },
+     {
+      "at": [
+       18,
+       3.495108
+      ]
+     },
+     {
+      "at": [
+       19,
+       3.54774
+      ]
+     },
+     {
+      "at": [
+       20,
+       3.59774
+      ]
+     }
+    ],
+    "curves": [
+     {
+      "fn": "ln(x+1)",
+      "domain": [
+       0,
+       21
+      ],
+      "dashed": true,
+      "label": "y = ln(x + 1)",
+      "cls": "s2"
+     }
+    ]
+   },
+   "text": "The dots are the partial sums $S_n = 1 + \\frac{1}{2} + \\cdots + \\frac{1}{n}$ of the harmonic series for $n = 1$ to $20$. The dashed curve is $y = \\ln(x + 1)$; by the integral test picture, $S_n \\ge \\ln(n + 1)$ for every $n$."
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-p-series-1",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "p-series-s1",
+   "q": "Which of the series I, II, III and IV converge?",
+   "options": [
+    "I, II and IV",
+    "I, III and IV",
+    "IV alone",
+    "I and IV"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A $p$-series $\\sum \\frac{1}{n^p}$ converges exactly when $p > 1$. I: $p = \\frac{3}{2}$. II: $p = \\frac{1}{3}$. III: $\\frac{n^2}{n^3} = \\frac{1}{n}$, $p = 1$. IV: $p = \\pi$. So I and IV converge.",
+    "options": [
+     "Series II has $p = \\frac{1}{3}$, which is not greater than 1.",
+     "Series III simplifies to $\\frac{1}{n}$: $p = 1$, the harmonic series, which diverges.",
+     "Series I has $p = \\frac{3}{2} > 1$, so it converges too.",
+     "Right: $p = \\frac{3}{2}$ and $p = \\pi$ are both greater than 1."
+    ]
+   }
+  },
+  {
+   "id": "cbc-p-series-2",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "p-series-s1",
+   "q": "What is series III, and does it converge?",
+   "options": [
+    "A $p$-series with $p = 5$; it converges",
+    "A $p$-series with $p = \\frac{2}{3}$; it diverges",
+    "The harmonic series $\\sum \\frac{1}{n}$; it diverges",
+    "The harmonic series $\\sum \\frac{1}{n}$; it converges"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{n^2}{n^3} = \\frac{1}{n}$: the harmonic series, the $p$-series with $p = 1$, which diverges.",
+    "options": [
+     "Simplify first: the powers subtract, $\\frac{n^2}{n^3} = n^{-1}$.",
+     "$\\frac{n^2}{n^3}$ is not $n^{-2/3}$: subtract the exponents, $2 - 3 = -1$.",
+     "Right: $\\frac{n^2}{n^3} = \\frac{1}{n}$, so $p = 1$.",
+     "The harmonic series diverges, though its terms approach 0."
+    ]
+   }
+  },
+  {
+   "id": "cbc-p-series-3",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "p-series-s1",
+   "q": "Series II is a $p$-series. What is $p$?",
+   "numeric": {
+    "answer": "1/3",
+    "mistakes": [
+     {
+      "value": "3",
+      "why": "A cube root is the power $\\frac{1}{3}$, not 3."
+     },
+     {
+      "value": "-1/3",
+      "why": "$p$ is the power in the denominator: $\\frac{1}{n^{1/3}}$ has $p = \\frac{1}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{\\sqrt[3]{n}} = \\frac{1}{n^{1/3}}$, so $p = \\frac{1}{3}$, and since $p \\le 1$ the series diverges."
+   }
+  },
+  {
+   "id": "cbc-p-series-4",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "p-series-s1",
+   "q": "For which values of $k$ does series V converge? Give an interval.",
+   "interval": {
+    "lo": "1/2",
+    "hi": "inf",
+    "loIn": false,
+    "var": "k",
+    "ends": {
+     "lo": "At $k = \\frac{1}{2}$, $2k = 1$: the harmonic series, which diverges, so $k = \\frac{1}{2}$ is left out."
+    },
+    "mistakes": [
+     {
+      "answer": "(1, inf)",
+      "why": "The power is $2k$, not $k$: solve $2k > 1$."
+     },
+     {
+      "answer": "[1/2, inf)",
+      "why": "At $k = \\frac{1}{2}$ the series is $\\sum \\frac{1}{n}$, which diverges; the condition is $p > 1$, strictly."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Series V is a $p$-series with $p = 2k$. It converges when $2k > 1$, that is $k > \\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "cbc-p-series-5",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "p-series-s2",
+   "q": "What does the graph, with $S_n \\ge \\ln(n + 1)$, show about the harmonic series?",
+   "options": [
+    "It converges: the partial sums grow more and more slowly",
+    "It converges to about 3.6, the last partial sum shown",
+    "Nothing: the terms approach 0",
+    "It diverges: its lower bound grows without bound"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\ln(n + 1) \\to \\infty$ and $S_n \\ge \\ln(n + 1)$, so $S_n \\to \\infty$: the harmonic series diverges.",
+    "options": [
+     "Slowing growth is not leveling off; $S_n$ passes every number eventually.",
+     "$S_{20} \\approx 3.6$, but the partial sums keep growing past it.",
+     "The nth term test is silent, but the lower bound $\\ln(n + 1)$ settles it.",
+     "Right: a lower bound that grows without bound drags the partial sums up with it."
+    ]
+   }
+  },
+  {
+   "id": "cbc-p-series-6",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "p-series-s2",
+   "q": "Find $S_4$, the sum of the first four terms of the harmonic series.",
+   "numeric": {
+    "answer": "25/12",
+    "mistakes": [
+     {
+      "value": "4/10",
+      "why": "Fractions do not add top-to-top and bottom-to-bottom; use the common denominator 12."
+     },
+     {
+      "value": "1/4",
+      "why": "That is the fourth term alone; $S_4$ adds the first four terms."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$1 + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} = \\frac{12 + 6 + 4 + 3}{12} = \\frac{25}{12}$."
+   }
+  },
+  {
+   "id": "cbc-p-series-7",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "p-series-s2",
+   "q": "Using only $S_n \\ge \\ln(n + 1)$, which condition on $n$ guarantees $S_n > 5$?",
+   "options": [
+    "$\\ln(n + 1) < 5$",
+    "$\\ln(n + 1) > 5$, that is $n > e^5 - 1$",
+    "$n > 5$, so that the later terms are each below $\\frac{1}{5}$",
+    "$\\frac{1}{n} < 5$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$S_n \\ge \\ln(n + 1)$, so whenever $\\ln(n + 1) > 5$, $S_n > 5$. That holds once $n + 1 > e^5 \\approx 148.4$, so from $n = 148$ on. (The bound is cautious: the partial sums actually pass 5 at $n = 83$.)",
+    "options": [
+     "A lower bound below 5 says nothing about whether $S_n$ is above 5.",
+     "Right: if the lower bound passes 5, so does $S_n$.",
+     "$S_6 = 2.45$: far below 5. The partial sums grow slowly.",
+     "That is about the size of a single term, not the partial sum."
+    ]
+   }
+  },
+  {
+   "id": "cbc-p-series-8",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "p-series-s2",
+   "q": "Which statement about the harmonic series $\\sum_{n=1}^{\\infty} \\frac{1}{n}$ is true?",
+   "options": [
+    "Its terms approach 0, but its partial sums grow without bound",
+    "Its terms approach 0, so it converges to a finite sum",
+    "Its partial sums approach $\\ln 2$",
+    "It diverges because its terms do not approach 0"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{1}{n} \\to 0$, yet $S_n \\ge \\ln(n + 1) \\to \\infty$. The harmonic series diverges, which is why the nth term test can never prove convergence.",
+    "options": [
+     "Right: the standard example that terms approaching 0 do not guarantee convergence.",
+     "Terms approaching 0 are necessary for convergence, not enough.",
+     "$\\ln 2$ is the sum of the alternating harmonic series, not of this one.",
+     "Its terms $\\frac{1}{n}$ do approach 0; it diverges for another reason."
+    ]
+   }
+  },
+  {
+   "id": "cbc-p-series-9",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is true about the alternating harmonic series $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n} = 1 - \\frac{1}{2} + \\frac{1}{3} - \\cdots$?",
+   "options": [
+    "It diverges, since $\\sum \\frac{1}{n}$ diverges",
+    "It diverges by the nth term test",
+    "It is a $p$-series with $p = 1$, so it diverges",
+    "It converges, though $\\sum \\frac{1}{n}$ diverges"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The alternating harmonic series is one of the reference series: it converges (its sum is $\\ln 2$), while the harmonic series, with the same sizes of terms but all positive, diverges. Topic 10.7 gives the test behind this.",
+    "options": [
+     "The signs matter: positive and negative terms cancel enough for the partial sums to settle.",
+     "Its terms approach 0, so the nth term test says nothing.",
+     "A $p$-series has positive terms $\\frac{1}{n^p}$; the factor $(-1)^{n+1}$ makes this a different series.",
+     "Right: the alternating signs make the partial sums settle (to $\\ln 2$)."
+    ]
+   }
+  },
+  {
+   "id": "cbc-p-series-10",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "How do $\\sum_{n=1}^{\\infty} \\frac{1}{n^{0.999}}$ and $\\sum_{n=1}^{\\infty} \\frac{1}{n^{1.001}}$ behave?",
+   "options": [
+    "Both converge: the powers are close to 1",
+    "Both diverge: the powers are close to 1",
+    "The first diverges and the second converges",
+    "The first converges and the second diverges"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A $p$-series converges exactly when $p > 1$: $p = 0.999$ diverges and $p = 1.001$ converges, however close they look.",
+    "options": [
+     "How close $p$ is to 1 does not matter; which side of 1 it is on does.",
+     "$p = 1.001 > 1$, so the second converges, slowly.",
+     "Right: $0.999 \\le 1$ and $1.001 > 1$.",
+     "Reversed: a larger power makes the terms shrink faster, which helps convergence."
+    ]
+   }
+  },
+  {
+   "id": "cbc-p-series-11",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "Does $\\sum_{n=1}^{\\infty} \\frac{5}{n^4}$ converge?",
+   "options": [
+    "No: the numerator 5 is greater than 1",
+    "Yes: it is 5 times a $p$-series with $p = 4 > 1$",
+    "Yes, to $\\frac{5}{4}$",
+    "No: it is not a $p$-series"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\sum \\frac{5}{n^4} = 5\\sum \\frac{1}{n^4}$, and $\\sum \\frac{1}{n^4}$ is a $p$-series with $p = 4 > 1$, so the series converges.",
+    "options": [
+     "A constant factor scales the sum; it does not change convergence.",
+     "Right: a constant multiple of a convergent series converges.",
+     "It converges, but its sum is not $\\frac{5}{4}$; the sum of $\\sum \\frac{1}{n^4}$ is about 1.08.",
+     "It is a constant times one: $5\\sum \\frac{1}{n^4}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-p-series-12",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Given $\\sum_{n=1}^{\\infty} \\frac{1}{n^2} = \\frac{\\pi^2}{6}$, find $\\sum_{n=2}^{\\infty} \\frac{1}{n^2}$.",
+   "numeric": {
+    "answer": "pi^2/6 - 1",
+    "mistakes": [
+     {
+      "value": "pi^2/6",
+      "why": "Starting at $n = 2$ removes the first term, 1."
+     },
+     {
+      "value": "pi^2/6 - 1/4",
+      "why": "That removes the $n = 2$ term. The sum from $n = 2$ keeps it and leaves out $n = 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The sum from $n = 2$ leaves out only the first term, $\\frac{1}{1^2} = 1$: $\\frac{\\pi^2}{6} - 1$."
+   }
+  },
+  {
+   "id": "cbc-p-series-13",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Does $\\sum_{n=1}^{\\infty} \\left(\\frac{1}{n} - \\frac{1}{n^2}\\right)$ converge?",
+   "options": [
+    "Yes: the terms approach 0",
+    "Yes: both parts are $p$-series",
+    "Yes, to $\\frac{\\pi^2}{6} - 1$",
+    "No: one part diverges and the other converges"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "If $\\sum \\left(\\frac{1}{n} - \\frac{1}{n^2}\\right)$ converged, adding the convergent $\\sum \\frac{1}{n^2}$ would make $\\sum \\frac{1}{n}$ converge. It does not, so the series diverges.",
+    "options": [
+     "Terms approaching 0 never prove convergence.",
+     "Only one part converges; the harmonic part diverges.",
+     "That treats $\\sum \\frac{1}{n}$ as if it had a sum; it diverges.",
+     "Right: a convergent series cannot cancel a divergent one."
+    ]
+   }
+  },
+  {
+   "id": "cbc-p-series-14",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For which values of $p$ does $\\sum_{n=1}^{\\infty} \\frac{n^p}{n^3}$ converge? Give an interval.",
+   "interval": {
+    "lo": "-inf",
+    "hi": "2",
+    "hiIn": false,
+    "var": "p",
+    "ends": {
+     "hi": "At $p = 2$ the terms are $\\frac{1}{n}$: the harmonic series, which diverges, so $p = 2$ is left out."
+    },
+    "mistakes": [
+     {
+      "answer": "(2, inf)",
+      "why": "Larger $p$ makes the top grow; the power in the denominator is $3 - p$, which must be greater than 1, so $p < 2$."
+     },
+     {
+      "answer": "(-inf, 2]",
+      "why": "At $p = 2$ the series is the harmonic series, which diverges."
+     },
+     {
+      "answer": "(-inf, 3)",
+      "why": "The power $3 - p$ must be greater than 1, not 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{n^p}{n^3} = \\frac{1}{n^{3 - p}}$, a $p$-series with power $3 - p$. It converges when $3 - p > 1$, that is $p < 2$."
+   }
+  },
+  {
+   "id": "cbc-p-series-15",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The integral test proves the $p$-series result. Find $\\int_1^{\\infty} x^{-4}\\,dx$.",
+   "numeric": {
+    "answer": "1/3",
+    "mistakes": [
+     {
+      "value": "1/4",
+      "why": "The antiderivative of $x^{-4}$ is $\\frac{x^{-3}}{-3}$; the 3 comes from the new exponent."
+     },
+     {
+      "value": "-1/3",
+      "why": "Upper limit minus lower limit: $0 - \\left(-\\frac{1}{3}\\right) = \\frac{1}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{b \\to \\infty} \\Big[-\\frac{1}{3x^3}\\Big]_1^{b} = \\lim_{b \\to \\infty} \\left(-\\frac{1}{3b^3}\\right) + \\frac{1}{3} = \\frac{1}{3}$. In general $\\int_1^{\\infty} x^{-p}\\,dx = \\frac{1}{p - 1}$ for $p > 1$."
+   }
+  },
+  {
+   "id": "cbc-p-series-16",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "p-series",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "What can be said about $\\sum_{n=1}^{\\infty} n^2$, the series $\\sum \\frac{1}{n^p}$ with $p = -2$?",
+   "options": [
+    "It diverges by the nth term test",
+    "It converges, since $-2 < 1$",
+    "Nothing: it is not a $p$-series",
+    "It converges to $\\frac{\\pi^2}{6}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $p \\le 0$ the terms $\\frac{1}{n^p} = n^{-p}$ do not approach 0 (here $n^2 \\to \\infty$), so the series diverges by the nth term test.",
+    "options": [
+     "Right: $n^2 \\to \\infty$, so the terms do not approach 0.",
+     "$p$-series converge for $p > 1$; with $p = -2$ the terms grow.",
+     "It is one with $p = -2$, and the nth term test settles it at once.",
+     "That is the sum of $\\sum \\frac{1}{n^2}$, with $p = 2$, not $p = -2$."
+    ]
+   }
+  }
+ ]
+}

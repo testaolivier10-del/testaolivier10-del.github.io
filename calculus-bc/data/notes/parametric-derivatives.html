@@ -1,0 +1,60 @@
+<p>A curve given by parametric equations $x = x(t)$, $y = y(t)$ is the path of a moving point. Calculus asks three questions about it at each instant: how fast is $x$ changing, how fast is $y$ changing, and how steep is the path? The first two are derivatives you already know how to take. The third needs one new idea.</p>
+
+<h2>Two rates and a direction</h2>
+<p>Differentiate each coordinate with respect to $t$. $\frac{dx}{dt}$ is the horizontal rate and $\frac{dy}{dt}$ the vertical rate of the point. Their signs tell you which way it moves:</p>
+<table class="compare">
+<thead><tr><th>Sign</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>$\frac{dx}{dt} > 0$</td><td>$x$ is increasing: the point moves right</td></tr>
+<tr><td>$\frac{dx}{dt} < 0$</td><td>$x$ is decreasing: the point moves left</td></tr>
+<tr><td>$\frac{dy}{dt} > 0$</td><td>$y$ is increasing: the point moves up</td></tr>
+<tr><td>$\frac{dy}{dt} < 0$</td><td>$y$ is decreasing: the point moves down</td></tr>
+</tbody>
+</table>
+<p>Every rule from Units 2 and 3 applies, one coordinate at a time: the power, product, quotient and chain rules all work exactly as before, with $t$ as the variable.</p>
+
+<h2>The slope of the curve</h2>
+<p>If $y$ can be thought of as a function of $x$ near a point, the chain rule says</p>
+<p>$$\frac{dy}{dt} = \frac{dy}{dx}\cdot\frac{dx}{dt}.$$</p>
+<p>Solve for $\frac{dy}{dx}$:</p>
+<p>$$\frac{dy}{dx} = \frac{dy/dt}{dx/dt}, \qquad \text{provided } \frac{dx}{dt} \ne 0.$$</p>
+<p>In words: the slope is the vertical rate over the horizontal rate. If the point rises 6 units per second while it moves right 2 units per second, the path rises 3 units per unit of $x$. Notice that $\frac{dy}{dx}$ comes out as a function of $t$. You evaluate it at a <i>time</i>, not at a point.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A curve is given by $x = 2t + 1$, $y = t^2 - 4t$. Find the line tangent to the curve at $t = 3$.</p>
+<p>Rates: $\frac{dx}{dt} = 2$ and $\frac{dy}{dt} = 2t - 4$.</p>
+<p>Slope: $\frac{dy}{dx} = \frac{2t - 4}{2} = t - 2$, which is $1$ at $t = 3$.</p>
+<p>Point: $(x(3), y(3)) = (7, 9 - 12) = (7, -3)$. Use the same $t$ for the point and the slope.</p>
+<p>Tangent line: $y + 3 = 1(x - 7)$, that is, $y = x - 10$.</p>
+<p>Check by eliminating $t$: $t = \frac{x - 1}{2}$, so $y = \frac{(x - 1)^2}{4} - 2(x - 1)$ and $\frac{dy}{dx} = \frac{x - 1}{2} - 2$. At $x = 7$ this is $3 - 2 = 1$. The parametric route was faster and needed no elimination.</p>
+</div>
+
+<h2>Horizontal and vertical tangents</h2>
+<p>A fraction is 0 when its numerator is 0, and it is undefined when its denominator is 0. So:</p>
+<ul>
+<li><b>Horizontal tangent</b>: $\frac{dy}{dt} = 0$ and $\frac{dx}{dt} \ne 0$. For an instant the point moves straight across.</li>
+<li><b>Vertical tangent</b>: $\frac{dx}{dt} = 0$ and $\frac{dy}{dt} \ne 0$. For an instant the point moves straight up or down.</li>
+</ul>
+<p>In worked example 1, $\frac{dy}{dt} = 2t - 4 = 0$ at $t = 2$, while $\frac{dx}{dt} = 2$. The tangent is horizontal at $(5, -4)$, the lowest point of the curve.</p>
+<p>When both rates are 0 at the same time, the point stops for an instant and the quotient tells you nothing. The curve may have a sharp corner there or a perfectly smooth tangent; you have to look more closely, so state that the test does not apply.</p>
+<figure id="fig-tangents" data-fig="parametric-derivatives-tangents"><figcaption>One point, two slopes: why parametric slopes are found from $t$.</figcaption></figure>
+<p><a class="figref" href="#fig-tangents">The figure</a> shows why "evaluate at a time" matters. The curve $x = t^2$, $y = t^3 - 3t$ passes through $(3, 0)$ twice. Its slope is $\frac{3t^2 - 3}{2t}$, which is $\sqrt{3}$ at $t = \sqrt{3}$ and $-\sqrt{3}$ at $t = -\sqrt{3}$: two tangent lines at one point. A formula in $x$ could never give both.</p>
+
+<h2>Curves given by a table</h2>
+<p>On the exam, $x(t)$ and $y(t)$ are often known only through a table of values and derivatives. The same rules apply to the numbers.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> At $t = 4$, a curve has $x(4) = 2$, $y(4) = -1$, $x'(4) = -5$ and $y'(4) = 10$. Find the tangent line and the direction of motion at $t = 4$.</p>
+<p>Slope: $\frac{y'(4)}{x'(4)} = \frac{10}{-5} = -2$. Tangent line: $y + 1 = -2(x - 2)$.</p>
+<p>Direction: $x'(4) < 0$, so the point moves left; $y'(4) > 0$, so it moves up.</p>
+</div>
+
+<h2>Common slips</h2>
+<table class="compare">
+<thead><tr><th>Slip</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Using $\frac{dy}{dt}$ as the slope</td><td>Divide by $\frac{dx}{dt}$: the slope is change in $y$ per unit of $x$</td></tr>
+<tr><td>Dividing upside down</td><td>$\frac{dy/dt}{dx/dt}$: the $y$ rate on top, as in $\frac{dy}{dx}$</td></tr>
+<tr><td>Using $t$ as the $x$-coordinate</td><td>The point is $(x(t_0), y(t_0))$; compute both</td></tr>
+<tr><td>Calling $\frac{dx}{dt} = 0$ horizontal</td><td>No horizontal motion means a vertical tangent</td></tr>
+</tbody>
+</table>
+<p>On calculator questions, store $x'(t_0)$ and $y'(t_0)$ before dividing, and give the slope to three decimal places, with the quotient written out as your setup.</p>

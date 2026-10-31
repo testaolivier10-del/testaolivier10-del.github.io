@@ -1,0 +1,5 @@
+{
+ "eulers-method": {
+  "def": "A step-by-step approximation of a solution of $\\frac{dy}{dx} = F(x, y)$: from a known point $(x, y)$, move to $(x + \\Delta x,\\ y + F(x, y)\\,\\Delta x)$, then repeat from the new point with its own slope. Each step follows a tangent line; smaller steps give closer estimates."
+ }
+}

@@ -1,12 +1,12 @@
-<p>You now know every antidifferentiation technique on the AB exam: the basic rules, substitution, long division and completing the square. The hard part is no longer doing them; it is recognizing which one an integral wants. This page gives a reliable order of questions, then practice with the look-alikes that trip students up.</p>
+<p><span class="calc-ab-only">You now know every antidifferentiation technique on the AB exam: the basic rules, substitution, long division and completing the square.</span><span class="cbc-only">You now know every antidifferentiation technique on the BC exam: the basic rules, substitution, long division, completing the square, integration by parts and linear partial fractions.</span> The hard part is no longer doing them; it is recognizing which one an integral wants. This page gives a reliable order of questions, then practice with the look-alikes that trip students up.</p>
 
 <h2>Ask the questions in order</h2>
-<figure id="fig-flow" data-fig="integration-flowchart"><figcaption>Four questions, in order. Most integrals are settled by the first two.</figcaption></figure>
+<figure id="fig-flow" data-fig="integration-flowchart"><figcaption><span class="calc-ab-only">Four questions, in order.</span><span class="cbc-only">The four questions every course asks, in order; BC adds two more, listed below.</span> Most integrals are settled by the first two.</figcaption></figure>
 <ol>
 <li><b>Is it a basic form, or a sum of them after rewriting?</b> Rewrite roots as powers ($\frac{x + 1}{\sqrt{x}} = x^{1/2} + x^{-1/2}$), expand products, and split a fraction whose bottom is a single term ($\frac{x^3 + 2}{x} = x^2 + \frac{2}{x}$).</li>
 <li><b>Is there an inside function whose derivative is also a factor?</b> Then substitute: $\int x e^{x^2}\,dx$ with $u = x^2$. A constant factor can be fixed; a missing variable factor cannot.</li>
 <li><b>Is it a fraction whose top has degree at least the bottom's?</b> Divide first: $\frac{x^2 + 1}{x - 1} = x + 1 + \frac{2}{x - 1}$.</li>
-<li><b>Is it a constant over a quadratic with no real zeros?</b> Complete the square and use $\int \frac{du}{u^2 + a^2} = \frac{1}{a}\arctan\frac{u}{a} + C$.</li>
+<li><b>Is it a constant over a quadratic with no real zeros?</b> Complete the square and use $\int \frac{du}{u^2 + a^2} = \frac{1}{a}\arctan\frac{u}{a} + C$.</li><li class="cbc-only"><b>Is it a product with one factor that gets simpler when differentiated?</b> Use integration by parts: $\int x e^{2x}\,dx$ with $u = x$, $dv = e^{2x}\,dx$. A logarithm or an inverse trigonometric function goes in $u$.</li><li class="cbc-only"><b>Does the bottom factor into distinct linear factors?</b> Use linear partial fractions: $\frac{1}{x^2 - 1} = \frac{1/2}{x - 1} - \frac{1/2}{x + 1}$. Divide first if the top's degree is not below the bottom's.</li>
 </ol>
 <p>Then <b>check by differentiating</b>. It takes ten seconds and catches sign errors and missing factors.</p>
 
@@ -20,7 +20,7 @@
 <tr><td>$\int \frac{x^2}{x^2 + 1}\,dx$</td><td>division</td><td>$x - \arctan x + C$</td></tr>
 <tr><td>$\int \frac{1}{1 + 4x^2}\,dx$</td><td>substitution, $u = 2x$</td><td>$\frac{1}{2}\arctan(2x) + C$</td></tr>
 <tr><td>$\int x e^{x^2}\,dx$</td><td>substitution, $u = x^2$</td><td>$\frac{1}{2}e^{x^2} + C$</td></tr>
-<tr><td>$\int e^{x^2}\,dx$</td><td>none: no elementary antiderivative</td><td>a calculator for definite integrals</td></tr>
+<tr><td>$\int e^{x^2}\,dx$</td><td>none: no elementary antiderivative</td><td>a calculator for definite integrals</td></tr><tr class="cbc-only"><td>$\int x e^{x}\,dx$</td><td>integration by parts, $u = x$</td><td>$(x - 1)e^x + C$</td></tr><tr class="cbc-only"><td>$\int \frac{1}{x^2 - 1}\,dx$</td><td>linear partial fractions</td><td>$\frac{1}{2}\ln\left|\frac{x - 1}{x + 1}\right| + C$</td></tr>
 </tbody>
 </table>
 
@@ -41,4 +41,4 @@
 <h2>Reading someone else's work</h2>
 <p>The exam sometimes shows work and asks you to find the error. Check each line against its rule: Is $du$ right? Does the constant factor match? Were the limits changed? Is the antiderivative right (differentiate it)? In $\int_0^1 \frac{6x}{x^2 + 1}\,dx$, writing $3\int_0^1 \frac{du}{u}$ keeps the $x$-limits; the correct line is $3\int_1^2 \frac{du}{u} = 3\ln 2$.</p>
 
-<div class="going-further"><p>Integrals that need integration by parts, partial fractions or an infinite limit of integration belong to the BC course. If an AB integral seems to need one of those, look again for a substitution or a rewrite, or check whether it is a calculator question.</p></div>
+<div class="going-further"><p><span class="calc-ab-only">Integrals that need integration by parts, partial fractions or an infinite limit of integration belong to the BC course. If an AB integral seems to need one of those, look again for a substitution or a rewrite, or check whether it is a calculator question.</span><span class="cbc-only">Try substitution and rewriting before integration by parts or partial fractions: they are quicker when they work. An infinite limit of integration, or an integrand that blows up on the interval, makes the integral improper (6.13): write it as a limit before integrating.</span></p></div>

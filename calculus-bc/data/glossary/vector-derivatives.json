@@ -1,0 +1,8 @@
+{
+ "vector-valued-function": {
+  "def": "A function that gives a vector for each input, such as the position vector $\\mathbf{r}(t) = \\left\\langle x(t), y(t) \\right\\rangle$ of a moving particle. It describes the same path as the parametric equations $x = x(t)$, $y = y(t)$, and it is differentiated and integrated one component at a time."
+ },
+ "velocity-vector": {
+  "def": "The derivative of the position vector, $\\mathbf{v}(t) = \\mathbf{r}'(t) = \\left\\langle x'(t), y'(t) \\right\\rangle$. It is tangent to the path and points in the direction of motion; its magnitude is the speed. The acceleration vector is the next derivative, $\\mathbf{a}(t) = \\mathbf{v}'(t) = \\left\\langle x''(t), y''(t) \\right\\rangle$."
+ }
+}

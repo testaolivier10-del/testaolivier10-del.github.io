@@ -1,0 +1,559 @@
+{
+ "stimuli": {
+  "partial-fractions-s1": {
+   "kind": "table",
+   "title": "Splitting $\\frac{x + 7}{(x - 1)(x + 3)}$",
+   "text": "A student integrates $\\frac{x + 7}{(x - 1)(x + 3)}$ by linear partial fractions. The table shows the plan.",
+   "table": {
+    "caption": "Steps for the partial fraction decomposition",
+    "cols": [
+     "Step",
+     "What the student writes"
+    ],
+    "rows": [
+     [
+      "1. Choose the form",
+      "$\\frac{x + 7}{(x - 1)(x + 3)} = \\frac{A}{x - 1} + \\frac{B}{x + 3}$"
+     ],
+     [
+      "2. Clear the denominator",
+      "$x + 7 = A(x + 3) + B(x - 1)$"
+     ],
+     [
+      "3. Substitute the zeros",
+      "$x = 1$, then $x = -3$"
+     ],
+     [
+      "4. Integrate each piece",
+      "$\\int \\frac{A}{x - 1}\\,dx + \\int \\frac{B}{x + 3}\\,dx$"
+     ]
+    ]
+   }
+  },
+  "partial-fractions-s2": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = \\frac{6}{x^2 + 2x}$ for $x > 0$",
+   "text": "Let $f(x) = \\frac{6}{x^2 + 2x}$. The graph shows $f$ for $x > 0$, with the region under it from $x = 1$ to $x = 4$ shaded.",
+   "plot": {
+    "label": "Graph of f(x) = 6/(x squared + 2x) for x from 0.4 to 6, decreasing from about 6.25 toward 0, with the region under it from x = 1 to x = 4 shaded",
+    "x": [
+     0,
+     6.2
+    ],
+    "y": [
+     0,
+     6.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "6/(x^2 + 2x)",
+      "domain": [
+       0.4,
+       6
+      ],
+      "cls": "s1",
+      "label": "f"
+     }
+    ],
+    "shade": [
+     {
+      "fn": "6/(x^2 + 2x)",
+      "domain": [
+       1,
+       4
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       2
+      ]
+     },
+     {
+      "at": [
+       4,
+       0.25
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-partial-fractions-1",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "partial-fractions-s1",
+   "q": "Why does step 3 substitute $x = 1$ and $x = -3$?",
+   "options": [
+    "They are the values where $x + 7$ equals zero",
+    "They are the special inputs where the identity in step 2 holds",
+    "They make the original fraction equal to zero",
+    "Each value makes one term of $A(x + 3) + B(x - 1)$ zero, leaving one unknown"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The identity $x + 7 = A(x + 3) + B(x - 1)$ holds for every $x$. Choosing the zeros of the factors makes one term disappear each time.",
+    "options": [
+     "$x + 7 = 0$ at $x = -7$. The useful values are the zeros of the denominator's factors, which knock out one term each.",
+     "Step 2 holds for every $x$ (it is an identity), which is why any $x$ may be substituted. These two are just the most convenient.",
+     "At $x = 1$ and $x = -3$ the original fraction is undefined. Step 2 has no denominator, so those inputs are fine there.",
+     "Right: at $x = 1$ the $B$ term vanishes ($8 = 4A$); at $x = -3$ the $A$ term vanishes ($4 = -4B$)."
+    ]
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-2",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "partial-fractions-s1",
+   "q": "Find the value of $A$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "At $x = 1$: $1 + 7 = A(1 + 3)$, so $8 = 4A$. Divide by 4."
+     },
+     {
+      "value": -1,
+      "why": "That is $B$, found from $x = -3$. For $A$, substitute $x = 1$: $8 = 4A$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $x = 1$: $8 = A(4) + B(0)$, so $A = 2$."
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-3",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "partial-fractions-s1",
+   "q": "Find the value of $B$.",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "At $x = -3$: $-3 + 7 = B(-3 - 1)$, so $4 = -4B$ and $B = -1$. The factor $x - 1$ is negative there."
+     },
+     {
+      "value": 4,
+      "why": "$4$ is the left side at $x = -3$. It equals $-4B$, so divide by $-4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $x = -3$: $4 = A(0) + B(-4)$, so $B = -1$."
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-4",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "partial-fractions-s1",
+   "q": "Find $\\int \\frac{x + 7}{(x - 1)(x + 3)}\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "2ln(abs(x - 1)) - ln(abs(x + 3))",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     1.5,
+     5
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{x + 7}{(x - 1)(x + 3)}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "2ln(abs(x - 1)) + ln(abs(x + 3))",
+      "why": "$B = -1$, so the second piece is $-\\frac{1}{x + 3}$ and integrates to $-\\ln|x + 3|$."
+     },
+     {
+      "expr": "ln(abs(x - 1)) - ln(abs(x + 3))",
+      "why": "$\\int \\frac{2}{x - 1}\\,dx = 2\\ln|x - 1|$: keep the coefficient $A = 2$."
+     },
+     {
+      "expr": "ln(abs((x - 1)*(x + 3)))",
+      "why": "$\\ln$ of the denominator comes from $\\frac{g'(x)}{g(x)}$, and $x + 7$ is not the derivative of $(x - 1)(x + 3)$. Split the fraction first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int \\left(\\frac{2}{x - 1} - \\frac{1}{x + 3}\\right)dx = 2\\ln|x - 1| - \\ln|x + 3| + C$."
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-5",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "partial-fractions-s1",
+   "q": "Find the value of $\\int_2^4 \\frac{x + 7}{(x - 1)(x + 3)}\\,dx$.",
+   "numeric": {
+    "answer": "ln(45/7)",
+    "answerTex": "\\ln\\frac{45}{7}",
+    "mistakes": [
+     {
+      "value": "ln(9/7)",
+      "why": "At $x = 2$ the antiderivative is $2\\ln 1 - \\ln 5 = -\\ln 5$, not 0. Subtracting it adds $\\ln 5$."
+     },
+     {
+      "value": "ln(63/5)",
+      "why": "The piece $-\\frac{1}{x + 3}$ integrates to $-\\ln|x + 3|$; with a plus sign the value changes to $\\ln\\frac{63}{5}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\left(2\\ln|x - 1| - \\ln|x + 3|\\right)\\Big|_2^4 = (2\\ln 3 - \\ln 7) - (0 - \\ln 5) = \\ln 9 + \\ln 5 - \\ln 7 = \\ln\\frac{45}{7}$."
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-6",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "partial-fractions-s2",
+   "q": "Which is the partial fraction decomposition of $f(x)$?",
+   "options": [
+    "$\\frac{3}{x} - \\frac{3}{x + 2}$",
+    "$\\frac{3}{x} + \\frac{3}{x + 2}$",
+    "$\\frac{6}{x} - \\frac{6}{x + 2}$",
+    "$\\frac{3}{x} - \\frac{3}{x - 2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x^2 + 2x = x(x + 2)$ and $\\frac{6}{x(x + 2)} = \\frac{3}{x} - \\frac{3}{x + 2}$.",
+    "options": [
+     "Right: $6 = A(x + 2) + Bx$; $x = 0$ gives $A = 3$ and $x = -2$ gives $B = -3$.",
+     "Add these back: $\\frac{3(x + 2) + 3x}{x(x + 2)} = \\frac{6x + 6}{x^2 + 2x}$. The second sign must be minus.",
+     "Add these back: $\\frac{12}{x^2 + 2x}$, twice $f$. At $x = 0$: $6 = 2A$, so $A = 3$.",
+     "$x^2 + 2x = x(x + 2)$: the second factor is $x + 2$, not $x - 2$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-7",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "partial-fractions-s2",
+   "q": "Find the area of the shaded region.",
+   "numeric": {
+    "answer": "3*ln(2)",
+    "answerTex": "3\\ln 2",
+    "mistakes": [
+     {
+      "value": "3*ln(2/3)",
+      "why": "A negative area is a warning. At $x = 1$ the antiderivative is $3\\ln 1 - 3\\ln 3 = -3\\ln 3$, not 0; subtract it."
+     },
+     {
+      "value": "6*ln(2)",
+      "why": "The coefficients are 3, not 6: $\\frac{6}{x(x + 2)} = \\frac{3}{x} - \\frac{3}{x + 2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_1^4 \\left(\\frac{3}{x} - \\frac{3}{x + 2}\\right)dx = \\left(3\\ln x - 3\\ln(x + 2)\\right)\\Big|_1^4 = (3\\ln 4 - 3\\ln 6) - (0 - 3\\ln 3) = 3\\ln\\frac{4 \\cdot 3}{6} = 3\\ln 2$."
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-8",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "partial-fractions-s2",
+   "q": "Let $F(x) = \\int_1^x f(t)\\,dt$ for $x > 0$. Which expression is $F(x)$?",
+   "options": [
+    "$6\\ln\\frac{3x}{x + 2}$",
+    "$3\\ln\\frac{3x}{x + 2}$",
+    "$3\\ln\\frac{x}{x + 2}$",
+    "$3\\ln\\frac{x + 2}{3x}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$F(x) = \\int_1^x \\left(\\frac{3}{t} - \\frac{3}{t + 2}\\right)dt = 3\\ln\\frac{3x}{x + 2}$, which is 0 at $x = 1$ and positive for $x > 1$.",
+    "options": [
+     "The coefficients in the decomposition are 3, not 6.",
+     "Right: $\\left(3\\ln t - 3\\ln(t + 2)\\right)\\Big|_1^x = 3\\ln x - 3\\ln(x + 2) + 3\\ln 3 = 3\\ln\\frac{3x}{x + 2}$, and $F(1) = 3\\ln 1 = 0$.",
+     "This is an antiderivative but not $F$: at $x = 1$ it gives $3\\ln\\frac{1}{3} \\ne 0$. Subtract its value at 1.",
+     "This is $-F(x)$: it is negative for $x > 1$, where $F$ adds positive area."
+    ]
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-9",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "partial-fractions-s2",
+   "q": "Find the value of $\\int_2^6 f(x)\\,dx$.",
+   "numeric": {
+    "answer": "3*ln(3/2)",
+    "answerTex": "3\\ln\\frac{3}{2}",
+    "mistakes": [
+     {
+      "value": "3*ln(3/4)",
+      "why": "That is only the value at $x = 6$, $3\\ln\\frac{6}{8}$. Subtract the value at $x = 2$, $3\\ln\\frac{2}{4}$."
+     },
+     {
+      "value": "6*ln(3/2)",
+      "why": "The coefficients are 3, not 6: $f(x) = \\frac{3}{x} - \\frac{3}{x + 2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\left(3\\ln\\frac{x}{x + 2}\\right)\\Big|_2^6 = 3\\ln\\frac{6}{8} - 3\\ln\\frac{2}{4} = 3\\ln\\left(\\frac{3}{4}\\cdot 2\\right) = 3\\ln\\frac{3}{2}$."
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-10",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int \\frac{1}{x^2 - 1}\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "ln(abs(x - 1))/2 - ln(abs(x + 1))/2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     1.5,
+     5
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{1}{x^2 - 1}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "ln(abs(x - 1)) - ln(abs(x + 1))",
+      "why": "$1 = A(x + 1) + B(x - 1)$ gives $A = \\frac{1}{2}$ and $B = -\\frac{1}{2}$, not 1 and $-1$."
+     },
+     {
+      "expr": "arctan(x)",
+      "why": "$\\arctan x$ is the antiderivative of $\\frac{1}{x^2 + 1}$. Here the bottom $x^2 - 1 = (x - 1)(x + 1)$ factors, so split it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{(x - 1)(x + 1)} = \\frac{1/2}{x - 1} - \\frac{1/2}{x + 1}$, so the integral is $\\frac{1}{2}\\ln|x - 1| - \\frac{1}{2}\\ln|x + 1| + C$."
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-11",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int \\frac{5x - 1}{x^2 - x - 2}\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "3ln(abs(x - 2)) + 2ln(abs(x + 1))",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     2.5,
+     6
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{5x - 1}{x^2 - x - 2}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "2ln(abs(x - 2)) + 3ln(abs(x + 1))",
+      "why": "The coefficients are swapped. At $x = 2$: $9 = 3A$, so $A = 3$ goes with $x - 2$."
+     },
+     {
+      "expr": "3ln(abs(x - 2)) - 2ln(abs(x + 1))",
+      "why": "At $x = -1$: $-6 = B(-3)$, so $B = +2$. Both negatives cancel."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x^2 - x - 2 = (x - 2)(x + 1)$; $5x - 1 = A(x + 1) + B(x - 2)$ gives $A = 3$ (at $x = 2$) and $B = 2$ (at $x = -1$). So $3\\ln|x - 2| + 2\\ln|x + 1| + C$."
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-12",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which integral needs long division before linear partial fractions?",
+   "options": [
+    "$\\int \\frac{5}{x^2 - 1}\\,dx$",
+    "$\\int \\frac{2x}{x^2 - 1}\\,dx$",
+    "$\\int \\frac{x^2 + 3}{x^2 - 1}\\,dx$",
+    "$\\int \\frac{3x + 1}{x^2 - 1}\\,dx$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Partial fractions need the top's degree below the bottom's. When it is not, long division (6.10) comes first.",
+    "options": [
+     "A constant top has degree 0, below the bottom's 2: split directly.",
+     "The top is the derivative of the bottom, so substitution gives $\\ln|x^2 - 1| + C$ with no division at all.",
+     "Right: the top and bottom have the same degree, so divide first: $\\frac{x^2 + 3}{x^2 - 1} = 1 + \\frac{4}{x^2 - 1}$.",
+     "The top has degree 1, below the bottom's 2, so partial fractions apply at once."
+    ]
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-13",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "single",
+   "practice": "1.D",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which denominator splits into distinct linear factors?",
+   "options": [
+    "$x^2 + 4$",
+    "$x^2 - 6x + 9$",
+    "$x^2 + 2x + 5$",
+    "$x^2 - 5x + 6$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The course's partial fractions use denominators that factor into different linear factors, such as $(x - 2)(x - 3)$.",
+    "options": [
+     "$x^2 + 4$ has no real zeros, so it does not factor; $\\int \\frac{1}{x^2 + 4}\\,dx$ uses arctan.",
+     "$x^2 - 6x + 9 = (x - 3)^2$: one factor repeated, not two distinct factors.",
+     "$x^2 + 2x + 5 = (x + 1)^2 + 4$ has no real zeros; complete the square instead.",
+     "Right: $x^2 - 5x + 6 = (x - 2)(x - 3)$, two different linear factors."
+    ]
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-14",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the value of $\\int_0^1 \\frac{2}{x^2 + 4x + 3}\\,dx$.",
+   "numeric": {
+    "answer": "ln(3/2)",
+    "answerTex": "\\ln\\frac{3}{2}",
+    "mistakes": [
+     {
+      "value": "ln(1/2)",
+      "why": "At $x = 0$ the antiderivative is $\\ln 1 - \\ln 3 = -\\ln 3$, not 0. Subtracting it adds $\\ln 3$."
+     },
+     {
+      "value": "2*ln(3/2)",
+      "why": "The 2 is already inside $A$ and $B$: $\\frac{2}{(x + 1)(x + 3)} = \\frac{1}{x + 1} - \\frac{1}{x + 3}$. Do not multiply by 2 again."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{2}{(x + 1)(x + 3)} = \\frac{1}{x + 1} - \\frac{1}{x + 3}$, so $\\left(\\ln(x + 1) - \\ln(x + 3)\\right)\\Big|_0^1 = (\\ln 2 - \\ln 4) - (0 - \\ln 3) = \\ln\\frac{3}{2}$."
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-15",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "single",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$\\int \\frac{1}{(x - 2)(x + 2)}\\,dx =$",
+   "options": [
+    "$\\frac{1}{4}\\ln\\left|\\frac{x - 2}{x + 2}\\right| + C$",
+    "$\\ln\\left|(x - 2)(x + 2)\\right| + C$",
+    "$\\frac{1}{4}\\ln\\left|\\frac{x + 2}{x - 2}\\right| + C$",
+    "$\\ln|x - 2| - \\ln|x + 2| + C$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$1 = A(x + 2) + B(x - 2)$: $x = 2$ gives $A = \\frac{1}{4}$, $x = -2$ gives $B = -\\frac{1}{4}$.",
+    "options": [
+     "Right: $\\frac{1}{(x - 2)(x + 2)} = \\frac{1/4}{x - 2} - \\frac{1/4}{x + 2}$, and a difference of logs is the log of a quotient.",
+     "That would need the top to be the derivative of the bottom, $2x$. The top is 1, so split the fraction.",
+     "The quotient is upside down: $A = \\frac{1}{4}$ goes with $x - 2$, so $x - 2$ is on top.",
+     "The pieces carry $\\frac{1}{4}$: at $x = 2$, $1 = 4A$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-partial-fractions-16",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find $\\int \\frac{x^2 + x}{x^2 - 4}\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "x + 3ln(abs(x - 2))/2 - ln(abs(x + 2))/2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     2.5,
+     6
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{x^2 + x}{x^2 - 4}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "3ln(abs(x - 2))/2 - ln(abs(x + 2))/2",
+      "why": "Long division leaves a quotient of 1: $\\frac{x^2 + x}{x^2 - 4} = 1 + \\frac{x + 4}{x^2 - 4}$. Its antiderivative $x$ is missing."
+     },
+     {
+      "expr": "x + 3ln(abs(x - 2))/2 + ln(abs(x + 2))/2",
+      "why": "At $x = -2$: $2 = B(-4)$, so $B = -\\frac{1}{2}$ and the last log is subtracted."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Divide: $\\frac{x^2 + x}{x^2 - 4} = 1 + \\frac{x + 4}{(x - 2)(x + 2)}$. Then $x + 4 = A(x + 2) + B(x - 2)$ gives $A = \\frac{3}{2}$, $B = -\\frac{1}{2}$. Result: $x + \\frac{3}{2}\\ln|x - 2| - \\frac{1}{2}\\ln|x + 2| + C$."
+   }
+  }
+ ]
+}

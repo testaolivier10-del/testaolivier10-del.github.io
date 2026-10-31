@@ -1,0 +1,82 @@
+{
+ "topic": "parametric-arc-length",
+ "hook": "A cyclist's app shows a map of the route and the distance ridden. The map is a curve; the distance is its length. If the app logs how fast the bike moves east and how fast it moves north, it can add up the distance without ever knowing an equation for the route. That is arc length for a parametric curve: build each tiny step with the Pythagorean theorem, then integrate.",
+ "prereq": [
+  {
+   "q": "The length of $y = f(x)$ from $x = a$ to $x = b$ is",
+   "options": [
+    "$\\int_a^b \\sqrt{1 + (f'(x))^2}\\,dx$",
+    "$\\int_a^b \\sqrt{1 + f(x)^2}\\,dx$",
+    "$\\int_a^b (1 + f'(x))\\,dx$",
+    "$\\int_a^b |f(x)|\\,dx$"
+   ],
+   "correct": 0,
+   "why": "Each piece is the hypotenuse of a triangle with legs $dx$ and $f'(x)\\,dx$.",
+   "review": "arc-length"
+  },
+  {
+   "q": "For $x = t^2$, $y = 3t$, the derivatives with respect to $t$ are",
+   "options": [
+    "$x' = 2t$, $y' = 3$",
+    "$x' = 2t$, $y' = 3t$",
+    "$x' = t^2$, $y' = 3$",
+    "$x' = 2$, $y' = 0$"
+   ],
+   "correct": 0,
+   "why": "Differentiate each coordinate with respect to $t$.",
+   "review": "parametric-derivatives"
+  }
+ ],
+ "figure": {
+  "figure": "parametric-arc-length-pieces",
+  "caption": "Each short piece of the curve is close to a straight segment, the hypotenuse of a triangle with legs $x'(t)\\,\\Delta t$ and $y'(t)\\,\\Delta t$. Adding the pieces and letting $\\Delta t$ shrink gives the arc length integral."
+ },
+ "chain": [
+  {
+   "cause": "Over a short time $\\Delta t$ the point moves $\\Delta x \\approx x'(t)\\,\\Delta t$ across and $\\Delta y \\approx y'(t)\\,\\Delta t$ up",
+   "effect": "the piece of curve is close to a segment of length $\\sqrt{(x'(t))^2 + (y'(t))^2}\\,\\Delta t$"
+  },
+  {
+   "cause": "Add the pieces from $t = a$ to $t = b$ and let $\\Delta t \\to 0$",
+   "effect": "$L = \\int_a^b \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt$"
+  },
+  {
+   "cause": "The integrand is the speed of the point",
+   "effect": "the integral is the distance traveled, which is the curve's length when the curve is traced once"
+  },
+  {
+   "cause": "Most of these integrals have no simple antiderivative",
+   "effect": "on the exam they are calculator questions: write the setup, then three decimals"
+  }
+ ],
+ "ideas": [
+  "$L = \\int_a^b \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt$: square each derivative, add, take the root, integrate in $t$.",
+  "The limits are values of $t$, not of $x$. Check that $t$ from $a$ to $b$ traces the curve once; a path traced twice gives twice the length.",
+  "For $y = f(x)$, take $x = t$: the formula becomes the 8.13 formula $\\int_a^b \\sqrt{1 + (f'(x))^2}\\,dx$.",
+  "Exact answers come from integrands that simplify, often by $\\cos^2 t + \\sin^2 t = 1$ or a perfect square under the root."
+ ],
+ "misconception": {
+  "wrong": "The length of the segment $x = 2 + 5t$, $y = 1 - 12t$ for $0 \\le t \\le 1$ is $\\int_0^1 (5 + 12)\\,dt = 17$.",
+  "right": "The point moves 5 across and 12 down per unit of $t$ at the same time, along the diagonal: its speed is $\\sqrt{5^2 + 12^2} = 13$. The length is $\\int_0^1 13\\,dt = 13$, which matches the distance from $(2, 1)$ to $(7, -11)$."
+ },
+ "check": [
+  "cbc-parametric-arc-length-1",
+  "cbc-parametric-arc-length-2",
+  "cbc-parametric-arc-length-3",
+  "cbc-parametric-arc-length-4",
+  "cbc-parametric-arc-length-12",
+  "cbc-parametric-arc-length-13",
+  "cbc-parametric-arc-length-15"
+ ],
+ "summary": "The length of a parametric curve traced once for $a \\le t \\le b$ is $\\int_a^b \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt$, the integral of the speed of the moving point. The limits are values of $t$; a curve traced more than once is counted more than once. With $x = t$ the formula reduces to the $y = f(x)$ formula, and on calculator questions you write the integral and give three decimal places.",
+ "connections": [
+  {
+   "href": "../notes/parametric-second-derivatives.html",
+   "label": "Back: second derivatives of parametric equations (9.2)"
+  },
+  {
+   "href": "../notes/vector-derivatives.html",
+   "label": "Next: derivatives in vector form (9.4)"
+  }
+ ]
+}

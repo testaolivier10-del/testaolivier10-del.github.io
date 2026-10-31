@@ -1,0 +1,55 @@
+<p>Substitution undoes the chain rule. <b>Integration by parts</b> undoes the product rule, and it handles integrals that substitution cannot: $\int x\cos x\,dx$, $\int xe^{3x}\,dx$, $\int \ln x\,dx$. It is a BC-only topic, and it appears on the free-response section most years as one part of the mixed-techniques question.</p>
+
+<h2>The product rule, run backward</h2>
+<p>For differentiable functions $u$ and $v$ of $x$, the product rule says $\frac{d}{dx}(uv) = u\frac{dv}{dx} + v\frac{du}{dx}$. Integrate both sides:</p>
+<p>$$uv = \int u\,dv + \int v\,du,$$</p>
+<p>so</p>
+<p>$$\int u\,dv = uv - \int v\,du.$$</p>
+<p>The formula trades one integral, $\int u\,dv$, for another, $\int v\,du$. It helps only when the new integral is easier. <a class="figref" href="#fig-parts">The figure</a> shows the trade as two areas that together fill a rectangle of area $uv$.</p>
+<figure id="fig-parts" data-fig="integration-by-parts-areas"><figcaption>The two integrals are two areas; together they make the rectangle uv.</figcaption></figure>
+
+<h2>Choosing u and dv</h2>
+<p>Split the integrand into $u$ (to be differentiated) and $dv$ (to be integrated, and it must include $dx$). Two tests decide the split: $u$ should get simpler when you differentiate it, and you must be able to integrate $dv$.</p>
+<table class="compare">
+<thead><tr><th>Integral</th><th>$u$</th><th>$dv$</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>$\int x\cos x\,dx$</td><td>$x$</td><td>$\cos x\,dx$</td><td>$x$ becomes 1</td></tr>
+<tr><td>$\int xe^{3x}\,dx$</td><td>$x$</td><td>$e^{3x}\,dx$</td><td>$x$ becomes 1</td></tr>
+<tr><td>$\int x^2\ln x\,dx$</td><td>$\ln x$</td><td>$x^2\,dx$</td><td>$\ln x$ becomes $\frac{1}{x}$</td></tr>
+<tr><td>$\int \ln x\,dx$</td><td>$\ln x$</td><td>$dx$</td><td>$v = x$</td></tr>
+<tr><td>$\int \arctan x\,dx$</td><td>$\arctan x$</td><td>$dx$</td><td>$\arctan x$ becomes $\frac{1}{1 + x^2}$</td></tr>
+</tbody>
+</table>
+<p>A useful rule of thumb: logarithms and inverse trigonometric functions go in $u$; exponentials, sines and cosines go in $dv$; a power of $x$ goes in $u$ unless a logarithm is present.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\int x\cos x\,dx$.</p>
+<p>Label the parts: $u = x$, $dv = \cos x\,dx$, so $du = dx$ and $v = \sin x$.</p>
+<p>Apply the formula: $\int x\cos x\,dx = x\sin x - \int \sin x\,dx = x\sin x + \cos x + C$.</p>
+<p>Check: $\frac{d}{dx}(x\sin x + \cos x) = \sin x + x\cos x - \sin x = x\cos x$.</p>
+</div>
+<p>Writing $u$, $dv$, $du$ and $v$ before applying the formula is the habit the scoring guidelines reward. Most lost points come from a wrong $v$ (a sign slip on $\int \sin x\,dx$) or from multiplying two antiderivatives, which is never right.</p>
+
+<h2>Definite integrals: uv has bounds too</h2>
+<p>$$\int_a^b u\,dv = uv\Big|_a^b - \int_a^b v\,du.$$</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Evaluate $\int_1^e x\ln x\,dx$.</p>
+<p>$u = \ln x$, $dv = x\,dx$, so $du = \frac{1}{x}\,dx$ and $v = \frac{x^2}{2}$.</p>
+<p>$\int_1^e x\ln x\,dx = \frac{x^2}{2}\ln x\Big|_1^e - \int_1^e \frac{x^2}{2}\cdot\frac{1}{x}\,dx = \frac{e^2}{2} - \frac{x^2}{4}\Big|_1^e = \frac{e^2}{2} - \frac{e^2}{4} + \frac{1}{4} = \frac{e^2 + 1}{4}.$</p>
+</div>
+<p>Writing $x\ln x - \int_1^e \ldots$ with no bounds on the first term mixes a function with a number; the answer must be a number.</p>
+
+<h2>Repeated parts and the tabular method</h2>
+<p>For $x^2e^{2x}$, one round of parts leaves $\int xe^{2x}\,dx$, which needs a second round. The <b>tabular method</b> does every round at once. List $u$ and its derivatives down to 0 in one column, $dv$ and its repeated antiderivatives in the other, and multiply along the diagonals with signs $+, -, +, \ldots$</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find $\int x^2e^{2x}\,dx$.</p>
+<p>Left column: $x^2$, $2x$, $2$, $0$. Right column: $e^{2x}$, $\frac{1}{2}e^{2x}$, $\frac{1}{4}e^{2x}$, $\frac{1}{8}e^{2x}$.</p>
+<p>Diagonals: $+x^2\cdot\frac{1}{2}e^{2x} - 2x\cdot\frac{1}{4}e^{2x} + 2\cdot\frac{1}{8}e^{2x}$, so</p>
+<p>$$\int x^2e^{2x}\,dx = e^{2x}\left(\frac{x^2}{2} - \frac{x}{2} + \frac{1}{4}\right) + C.$$</p>
+</div>
+<p>The table works only when the $u$ column reaches 0, so it suits a power of $x$ times $e^{kx}$, $\sin kx$ or $\cos kx$.</p>
+
+<h2>When the original integral comes back</h2>
+<p>For $\int e^x\sin x\,dx$, two rounds of parts give $\int e^x\sin x\,dx = e^x\sin x - e^x\cos x - \int e^x\sin x\,dx$. Do not go around a third time. Treat the integral as an unknown $I$: $2I = e^x(\sin x - \cos x)$, so $I = \frac{1}{2}e^x(\sin x - \cos x) + C$.</p>
+
+<h2>Parts with functions given by tables</h2>
+<p>Parts also works when $f$ is known only through values. With $u = x$ and $dv = f'(x)\,dx$, $\int_a^b xf'(x)\,dx = xf(x)\Big|_a^b - \int_a^b f(x)\,dx$. You need $f(a)$, $f(b)$ and the value of $\int_a^b f(x)\,dx$, which a question gives or lets you find.</p>

@@ -1,0 +1,46 @@
+<p>The comparison tests need positive terms. Many important series have terms that switch sign, $+, -, +, -, \ldots$ Those are alternating series, and they have their own test, one of the simplest in the unit.</p>
+
+<h2>What an alternating series looks like</h2>
+<p>An alternating series has the form $\sum (-1)^n a_n$ or $\sum (-1)^{n+1} a_n$, where every $a_n$ is positive. The factor $(-1)^n$ supplies the sign; $a_n$ is the size of the term. The best-known example is the alternating harmonic series</p>
+<p>$$\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots$$</p>
+<p>Watch for signs in disguise: $\cos(n\pi) = (-1)^n$, so $\sum \frac{\cos(n\pi)}{n^2}$ is alternating. And watch for signs that are not there: $(-1)^{2n} = 1$ for every $n$, so $\sum \frac{(-1)^{2n}}{n}$ is the plain harmonic series.</p>
+
+<h2>Why the partial sums settle</h2>
+<figure id="fig-zigzag" data-fig="alt-partial-sums"><figcaption>The partial sums of the alternating harmonic series zigzag toward the sum.</figcaption></figure>
+<p>Follow the partial sums in <a class="figref" href="#fig-zigzag">the figure</a>. $S_1 = 1$. Subtracting $\frac{1}{2}$ gives $S_2 = 0.5$. Adding $\frac{1}{3}$ gives $S_3 \approx 0.833$, which does not climb back to $1$, because $\frac{1}{3} < \frac{1}{2}$. Each step goes the opposite way from the last and is shorter, so the partial sums zigzag inside a window that keeps shrinking. If the step sizes approach 0, the window closes on a single number: the sum.</p>
+<p>Three facts did the work: the signs alternate, the sizes decrease, and the sizes approach 0. Those are the three conditions of the test.</p>
+
+<h2>The alternating series test</h2>
+<p>If $a_n > 0$ for every $n$, the sizes decrease ($a_{n+1} \le a_n$, at least from some $n$ on), and $\lim_{n \to \infty} a_n = 0$, then $\sum (-1)^n a_n$ converges.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Does $\sum_{n=1}^{\infty} \frac{(-1)^n}{\sqrt{n + 1}}$ converge?</p>
+<p>Signs: $(-1)^n$ alternates. Sizes: $a_n = \frac{1}{\sqrt{n + 1}} > 0$.</p>
+<p>Decreasing: $\sqrt{n + 2} > \sqrt{n + 1}$, so $a_{n+1} = \frac{1}{\sqrt{n + 2}} < \frac{1}{\sqrt{n + 1}} = a_n$.</p>
+<p>Limit: $\lim_{n \to \infty} \frac{1}{\sqrt{n + 1}} = 0$.</p>
+<p>All three conditions hold, so the series converges by the alternating series test.</p>
+</div>
+<p>When the decreasing condition is not obvious, use a derivative. Write $a_n = f(n)$ and show $f'(x) < 0$ for $x$ past some point.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Does $\sum_{n=1}^{\infty} (-1)^n \frac{\ln n}{n}$ converge?</p>
+<p>With $f(x) = \frac{\ln x}{x}$, the quotient rule gives $f'(x) = \frac{x \cdot \frac{1}{x} - \ln x}{x^2} = \frac{1 - \ln x}{x^2}$, which is negative when $\ln x > 1$, that is for $x > e$. So $a_n = \frac{\ln n}{n}$ decreases for $n \ge 3$.</p>
+<p>By L'Hospital's rule (the limit has the form $\frac{\infty}{\infty}$), $\lim_{x \to \infty} \frac{\ln x}{x} = \lim_{x \to \infty} \frac{1/x}{1} = 0$, so $a_n \to 0$.</p>
+<p>The signs alternate, the sizes decrease from $n = 3$ on and approach 0: the series converges. The first two terms do not matter, since leaving out finitely many terms never changes whether a series converges.</p>
+</div>
+
+<h2>What the test does not say</h2>
+<table class="compare">
+<thead><tr><th>Situation</th><th>Conclusion</th></tr></thead>
+<tbody>
+<tr><td>All three conditions hold</td><td>The series converges.</td></tr>
+<tr><td>The sizes do not approach 0, as in $\sum (-1)^n \frac{n}{n + 1}$</td><td>The series diverges, by the <b>nth term test</b>, not by this test.</td></tr>
+<tr><td>The sizes approach 0 but do not decrease</td><td>The test says nothing; another argument is needed.</td></tr>
+<tr><td>The signs do not alternate</td><td>The test does not apply.</td></tr>
+</tbody>
+</table>
+<p>The alternating series test is a test for convergence only. A failed condition is never, by itself, a proof of divergence.</p>
+
+<h2>Signs change everything</h2>
+<p>The alternating harmonic series converges, but the series of the same sizes without signs, $\sum \frac{1}{n}$, diverges. The same happens with $\sum (-1)^n \frac{n}{n^2 + 3}$ (converges) and $\sum \frac{n}{n^2 + 3}$ (diverges by limit comparison with $\frac{1}{n}$). How much the signs matter is the subject of topic 10.9, two topics ahead.</p>
+
+<h2>Writing it the way graders want</h2>
+<p>Name the test and state each condition with the series' own terms: "The series alternates; $\frac{1}{\sqrt{n + 1}}$ decreases and $\lim_{n \to \infty} \frac{1}{\sqrt{n + 1}} = 0$; so the series converges by the alternating series test." A sentence that only says "it alternates, so it converges" does not earn the point.</p>

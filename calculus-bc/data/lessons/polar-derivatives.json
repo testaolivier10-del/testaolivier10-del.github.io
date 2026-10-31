@@ -1,0 +1,93 @@
+{
+ "topic": "polar-derivatives",
+ "hook": "A polar curve is drawn by a beam that turns: $\\theta$ goes up and the point slides along the curve. So it is a parametric curve, with $\\theta$ as the parameter, and its slope comes from the rule you already know. The new question polar adds is whether the point is moving toward the pole or away from it, and that lives in $\\frac{dr}{d\\theta}$.",
+ "prereq": [
+  {
+   "q": "For a parametric curve $x(t)$, $y(t)$, the slope $\\frac{dy}{dx}$ is",
+   "options": [
+    "$\\frac{dy/dt}{dx/dt}$, where $\\frac{dx}{dt} \\ne 0$",
+    "$\\frac{dx/dt}{dy/dt}$",
+    "$\\frac{dy}{dt} \\cdot \\frac{dx}{dt}$",
+    "$\\frac{dy}{dt}$"
+   ],
+   "correct": 0,
+   "why": "Divide the rate of change of $y$ by that of $x$ (Topic 9.1).",
+   "review": "parametric-derivatives"
+  },
+  {
+   "q": "Which point is the polar point $\\left(2, \\frac{\\pi}{2}\\right)$?",
+   "options": [
+    "$(0, 2)$",
+    "$(2, 0)$",
+    "$(0, -2)$",
+    "$\\left(2, \\frac{\\pi}{2}\\right)$ in $x$ and $y$"
+   ],
+   "correct": 0,
+   "why": "$x = 2\\cos\\frac{\\pi}{2} = 0$ and $y = 2\\sin\\frac{\\pi}{2} = 2$.",
+   "review": "math-polar"
+  },
+  {
+   "q": "What is $\\frac{d}{d\\theta}\\left[f(\\theta)\\sin\\theta\\right]$?",
+   "options": [
+    "$f'(\\theta)\\sin\\theta + f(\\theta)\\cos\\theta$",
+    "$f'(\\theta)\\cos\\theta$",
+    "$f'(\\theta)\\sin\\theta - f(\\theta)\\cos\\theta$",
+    "$f(\\theta)\\cos\\theta$"
+   ],
+   "correct": 0,
+   "why": "Product rule: derivative of the first times the second, plus the first times the derivative of the second.",
+   "review": "product-rule"
+  }
+ ],
+ "figure": {
+  "figure": "polar-derivatives-tangents",
+  "caption": "On $r = 2 + 2\\cos\\theta$: slope 1 at $\\theta = \\frac{\\pi}{2}$, and a horizontal tangent at $\\theta = \\frac{\\pi}{3}$, where $\\frac{dy}{d\\theta} = 0$."
+ },
+ "chain": [
+  {
+   "cause": "Write the curve as $x = r\\cos\\theta$, $y = r\\sin\\theta$ with $r = f(\\theta)$",
+   "effect": "it is a parametric curve with parameter $\\theta$"
+  },
+  {
+   "cause": "Differentiate each with the product rule",
+   "effect": "$\\frac{dx}{d\\theta} = \\frac{dr}{d\\theta}\\cos\\theta - r\\sin\\theta$ and $\\frac{dy}{d\\theta} = \\frac{dr}{d\\theta}\\sin\\theta + r\\cos\\theta$"
+  },
+  {
+   "cause": "Divide, where $\\frac{dx}{d\\theta} \\ne 0$",
+   "effect": "the slope $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta}$"
+  },
+  {
+   "cause": "Read the signs of $r$ and $\\frac{dr}{d\\theta}$ together",
+   "effect": "the same sign: moving away from the pole; opposite signs: moving toward it"
+  }
+ ],
+ "ideas": [
+  "Slope: $\\frac{dy}{dx} = \\frac{dr/d\\theta\\,\\sin\\theta + r\\cos\\theta}{dr/d\\theta\\,\\cos\\theta - r\\sin\\theta}$. Horizontal tangent: $\\frac{dy}{d\\theta} = 0$ with $\\frac{dx}{d\\theta} \\ne 0$; vertical tangent: $\\frac{dx}{d\\theta} = 0$ with $\\frac{dy}{d\\theta} \\ne 0$.",
+  "$\\frac{dr}{d\\theta}$ is not the slope. It is the rate of change of the signed distance from the pole.",
+  "Distance from the pole is $|r|$. It increases when $r$ and $\\frac{dr}{d\\theta}$ have the same sign and decreases when they have opposite signs.",
+  "$\\frac{dx}{d\\theta}$ and $\\frac{dy}{d\\theta}$ say whether the point moves right or left, up or down. Distance from the $y$-axis is $|x| = |r\\cos\\theta|$."
+ ],
+ "misconception": {
+  "wrong": "The slope of a polar curve is $\\frac{dr}{d\\theta}$.",
+  "right": "$\\frac{dr}{d\\theta}$ tells how fast the distance from the pole changes. The slope needs $x$ and $y$: $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta}$."
+ },
+ "check": [
+  "cbc-polar-derivatives-2",
+  "cbc-polar-derivatives-4",
+  "cbc-polar-derivatives-5",
+  "cbc-polar-derivatives-7",
+  "cbc-polar-derivatives-9",
+  "cbc-polar-derivatives-12"
+ ],
+ "summary": "Treat $r = f(\\theta)$ as the parametric curve $x = r\\cos\\theta$, $y = r\\sin\\theta$. The product rule gives $\\frac{dx}{d\\theta}$ and $\\frac{dy}{d\\theta}$; their quotient is the slope. Separately, the signs of $r$ and $\\frac{dr}{d\\theta}$ say whether the point moves toward the pole (opposite signs) or away from it (the same sign).",
+ "connections": [
+  {
+   "href": "../notes/math-polar.html",
+   "label": "Back: polar coordinates and polar graphs"
+  },
+  {
+   "href": "../notes/polar-area.html",
+   "label": "Next: area inside a polar curve (9.8)"
+  }
+ ]
+}

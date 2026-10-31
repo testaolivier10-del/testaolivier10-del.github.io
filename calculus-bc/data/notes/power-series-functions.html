@@ -1,0 +1,44 @@
+<p>Four Maclaurin series are worth memorizing: $\frac{1}{1 - x}$, $e^x$, $\sin x$ and $\cos x$. Almost every other series you need can be built from them without computing a single higher derivative. This topic is about the four moves that do the building, and about what they do to the interval of convergence.</p>
+
+<h2>Move 1: substitute</h2>
+<p>A known series holds for any input that meets its condition. Replace $x$ by an expression, and replace it in the condition too.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find a power series for $\frac{1}{1 + 4x^2}$ and its interval of convergence.</p>
+<p>Start with $\frac{1}{1 - u} = 1 + u + u^2 + \cdots$ for $|u| < 1$, and substitute $u = -4x^2$:</p>
+<p>$$\frac{1}{1 + 4x^2} = 1 - 4x^2 + 16x^4 - 64x^6 + \cdots = \sum_{n=0}^{\infty} (-4)^n x^{2n}.$$</p>
+<p>Condition: $|-4x^2| < 1$, so $x^2 < \frac{1}{4}$, that is $|x| < \frac{1}{2}$. At $x = \pm\frac{1}{2}$ every term has size 1, so both endpoints diverge: the interval is $\left(-\frac{1}{2}, \frac{1}{2}\right)$.</p>
+</div>
+<p>Substitution works the same way in the other series: $e^{-x^2} = \sum \frac{(-x^2)^n}{n!} = 1 - x^2 + \frac{x^4}{2!} - \cdots$ for every $x$, and $\cos(3x) = 1 - \frac{9x^2}{2!} + \frac{81x^4}{4!} - \cdots$</p>
+
+<h2>Move 2: multiply by a power of x</h2>
+<p>Multiplying each term by $x^k$ shifts every power up by $k$ and does not change where the series converges. For example, $x\cos x = x - \frac{x^3}{2!} + \frac{x^5}{4!} - \cdots$ for every $x$.</p>
+
+<h2>Move 3: differentiate term by term</h2>
+<p>Inside its interval, a power series can be differentiated one term at a time, and the result is the derivative of its sum:</p>
+<p>$$\frac{d}{dx}\sum_{n=0}^{\infty} c_n x^n = \sum_{n=1}^{\infty} n c_n x^{n-1}.$$</p>
+<p>Differentiating $\frac{1}{1 - x} = \sum x^n$ gives $\frac{1}{(1 - x)^2} = \sum_{n=1}^{\infty} n x^{n-1} = 1 + 2x + 3x^2 + \cdots$ for $|x| < 1$. Each term is differentiated with respect to $x$; the index $n$ is a fixed number in each term.</p>
+
+<h2>Move 4: integrate term by term</h2>
+<figure id="fig-wrap" data-fig="geometric-wrap"><figcaption>The geometric series matches $\frac{1}{1 - x}$ only on $(-1, 1)$.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the Maclaurin series for $\ln(1 + x)$ and its interval of convergence.</p>
+<p>Substitute $u = -t$: $\frac{1}{1 + t} = 1 - t + t^2 - t^3 + \cdots$ for $|t| < 1$.</p>
+<p>Integrate from 0 to $x$, term by term: $\ln(1 + x) = \int_0^x \frac{1}{1 + t}\,dt = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots = \sum_{n=1}^{\infty} \frac{(-1)^{n+1} x^n}{n}$.</p>
+<p>The radius stays 1. Endpoints: at $x = 1$ the series is the alternating harmonic series, which converges; at $x = -1$ every term is $-\frac{1}{n}$, which diverges. The interval is $(-1, 1]$, one endpoint more than the series we started from.</p>
+</div>
+<p>Integrating from 0 fixes the constant: the integral is 0 at $x = 0$, matching $\ln 1 = 0$. In the same way, integrating $\frac{1}{1 + t^2} = 1 - t^2 + t^4 - \cdots$ gives $\arctan x = x - \frac{x^3}{3} + \frac{x^5}{5} - \cdots$ for $|x| \le 1$.</p>
+
+<h2>What happens to the interval</h2>
+<table class="compare">
+<thead><tr><th>Move</th><th>Radius</th><th>Endpoints</th></tr></thead>
+<tbody>
+<tr><td>substitute $u = g(x)$</td><td>from the new condition</td><td>test again</td></tr>
+<tr><td>multiply by $x^k$</td><td>unchanged</td><td>unchanged</td></tr>
+<tr><td>differentiate term by term</td><td>unchanged</td><td>may lose an endpoint: test again</td></tr>
+<tr><td>integrate term by term</td><td>unchanged</td><td>may gain an endpoint: test again</td></tr>
+</tbody>
+</table>
+<p><a class="figref" href="#fig-wrap">The figure</a> is a reminder of why the interval matters: outside $(-1, 1)$ the partial sums of $1 + x + x^2 + \cdots$ swing or climb away, while $\frac{1}{1 - x}$ stays finite. A series stands for its function only on its interval of convergence.</p>
+
+<h2>Using a built series</h2>
+<p>Once you have a series, you can read off derivatives at the center ($f^{(n)}(0) = n! \cdot c_n$), evaluate sums such as $\sum \frac{n}{2^n} = \frac{1}{2}\sum n\left(\frac{1}{2}\right)^{n-1} = \frac{1}{2} \cdot \frac{1}{(1 - 1/2)^2} = 2$, and approximate integrals with no elementary antiderivative, such as $\int_0^x e^{-t^2}\,dt = x - \frac{x^3}{3} + \frac{x^5}{10} - \cdots$. When the resulting values alternate with sizes decreasing to 0, the alternating series error bound says how accurate the estimate is.</p>

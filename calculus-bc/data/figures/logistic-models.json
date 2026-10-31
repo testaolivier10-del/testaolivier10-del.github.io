@@ -1,0 +1,12 @@
+{
+ "logistic-models-curve": {
+  "file": "figures/logistic-models-curve.svg",
+  "ext": "svg",
+  "w": 520,
+  "h": 760,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: the population P against time t for dP/dt = 0.0008P(1000 − P) with P(0) = 100. It rises slowly, then steeply, then levels off below the dashed carrying capacity line P = 1000, and is steepest where it crosses P = 500, near t = 2.75, where its concavity changes from up to down. Right: the rate dP/dt against P, a downward parabola that is 0 at P = 0 and P = 1000, with its largest value 200 at P = 500."
+ }
+}

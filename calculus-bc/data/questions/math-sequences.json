@@ -1,0 +1,391 @@
+{
+ "stimuli": {
+  "math-sequences-s1": {
+   "kind": "table",
+   "title": "The first terms of a sequence",
+   "table": {
+    "caption": "The first four terms of a sequence $a_n$, starting at $n = 1$",
+    "cols": [
+     "$n$",
+     "$1$",
+     "$2$",
+     "$3$",
+     "$4$"
+    ],
+    "rows": [
+     [
+      "$a_n$",
+      "$\\frac{1}{2}$",
+      "$\\frac{2}{3}$",
+      "$\\frac{3}{4}$",
+      "$\\frac{4}{5}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-math-sequences-1",
+   "type": "expr",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "math-sequences-s1",
+   "q": "Write a formula for $a_n$ that fits the table.",
+   "expr": {
+    "answer": "n/(n+1)",
+    "vars": [
+     "n"
+    ],
+    "domain": [
+     1,
+     10
+    ],
+    "lhs": "a_n =",
+    "mistakes": [
+     {
+      "expr": "(n-1)/n",
+      "why": "That gives $a_1 = 0$; the table starts at $a_1 = \\frac{1}{2}$. Match the formula to $n = 1$ first."
+     },
+     {
+      "expr": "1/(n+1)",
+      "why": "The numerators grow with $n$: $1, 2, 3, 4$. The numerator is $n$, not 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each numerator is $n$ and each denominator is one more: $a_n = \\frac{n}{n + 1}$. Check: $a_3 = \\frac{3}{4}$."
+   }
+  },
+  {
+   "id": "cbc-math-sequences-2",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "math-sequences-s1",
+   "q": "Find $\\lim_{n \\to \\infty} a_n$.",
+   "numeric": {
+    "answer": "1",
+    "mistakes": [
+     {
+      "value": "0",
+      "why": "The terms grow: $\\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\ldots$ Divide the top and bottom by $n$ to find the limit."
+     },
+     {
+      "value": "4/5",
+      "why": "That is $a_4$, the last term shown; the limit is where the terms head as $n$ grows without bound."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{n}{n + 1} = \\frac{1}{1 + 1/n} \\to \\frac{1}{1 + 0} = 1$. The terms climb toward 1 but never reach it."
+   }
+  },
+  {
+   "id": "cbc-math-sequences-3",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "math-sequences-s1",
+   "q": "Find $a_{10}$.",
+   "numeric": {
+    "answer": "10/11",
+    "mistakes": [
+     {
+      "value": "9/10",
+      "why": "That is $a_9$. With $a_n = \\frac{n}{n + 1}$, $a_{10} = \\frac{10}{11}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a_{10} = \\frac{10}{10 + 1} = \\frac{10}{11}$."
+   }
+  },
+  {
+   "id": "cbc-math-sequences-4",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "math-sequences-s1",
+   "q": "Find $\\sum_{k=1}^{3} a_k$.",
+   "numeric": {
+    "answer": "23/12",
+    "mistakes": [
+     {
+      "value": "3/4",
+      "why": "That is $a_3$ alone; sigma notation adds the terms from $k = 1$ to $k = 3$."
+     },
+     {
+      "value": "6/9",
+      "why": "Fractions do not add top-to-top and bottom-to-bottom. Use the common denominator 12."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sum_{k=1}^{3} \\frac{k}{k + 1} = \\frac{1}{2} + \\frac{2}{3} + \\frac{3}{4} = \\frac{6 + 8 + 9}{12} = \\frac{23}{12}$."
+   }
+  },
+  {
+   "id": "cbc-math-sequences-5",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{n \\to \\infty} \\frac{3n^2 + 1}{2n^2 - n}$.",
+   "numeric": {
+    "answer": "3/2",
+    "mistakes": [
+     {
+      "value": "0",
+      "why": "The top and bottom have the same degree, so the limit is the ratio of the leading coefficients, not 0."
+     },
+     {
+      "value": "-1",
+      "why": "That plugs in $n = 1$. The limit is about large $n$: compare the leading terms $3n^2$ and $2n^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Divide the top and bottom by $n^2$: $\\frac{3 + 1/n^2}{2 - 1/n} \\to \\frac{3}{2}$."
+   }
+  },
+  {
+   "id": "cbc-math-sequences-6",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Does the sequence $a_n = \\frac{(-1)^n}{n}$ converge?",
+   "options": [
+    "Yes, to 0: $|a_n| = \\frac{1}{n} \\to 0$",
+    "No: its terms alternate in sign",
+    "Yes, to 1: the terms close in on 1",
+    "No: $(-1)^n$ has no limit"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$-\\frac{1}{n} \\le \\frac{(-1)^n}{n} \\le \\frac{1}{n}$ and both bounds approach 0, so by the squeeze theorem $a_n \\to 0$.",
+    "options": [
+     "Right: the signs alternate, but the sizes shrink to 0, so the terms close in on 0.",
+     "Alternating signs do not stop convergence; the terms here approach 0 from both sides.",
+     "The terms are $-1, \\frac{1}{2}, -\\frac{1}{3}, \\frac{1}{4}, \\ldots$, which close in on 0.",
+     "$(-1)^n$ alone has no limit, but dividing by $n$ squeezes the terms to 0."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-sequences-7",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Does the sequence $a_n = \\cos(\\pi n)$ converge?",
+   "options": [
+    "Yes, to 1: $\\cos 0 = 1$",
+    "Yes, to 0: cosine averages to 0",
+    "Yes, to $-1$: $\\cos\\pi = -1$",
+    "No: its terms alternate between $-1$ and $1$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\cos(\\pi n) = -1, 1, -1, 1, \\ldots$ The terms keep jumping between two values, so the sequence diverges.",
+    "options": [
+     "$\\cos(\\pi n)$ is $-1$ for odd $n$ and $1$ for even $n$; it does not stay near 1.",
+     "A sequence converges when its terms themselves settle, not their average.",
+     "That is $a_1$. The even terms are $\\cos(2\\pi) = 1$.",
+     "Right: $\\cos(\\pi n) = (-1)^n$ never settles."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-sequences-8",
+   "type": "expr",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Simplify $\\frac{(n + 1)!}{n!}$.",
+   "expr": {
+    "answer": "n+1",
+    "vars": [
+     "n"
+    ],
+    "domain": [
+     1,
+     8
+    ],
+    "lhs": "\\frac{(n + 1)!}{n!} =",
+    "mistakes": [
+     {
+      "expr": "n",
+      "why": "$(n + 1)! = (n + 1) \\cdot n \\cdot (n - 1) \\cdots 1$; after cancelling $n!$ the factor $n + 1$ remains."
+     },
+     {
+      "expr": "1/(n+1)",
+      "why": "The larger factorial is on top, so the quotient is greater than 1: $n + 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$(n + 1)! = (n + 1) \\cdot n!$, so the $n!$ cancels and $n + 1$ is left."
+   }
+  },
+  {
+   "id": "cbc-math-sequences-9",
+   "type": "expr",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Simplify $\\frac{(2n + 2)!}{(2n)!}$.",
+   "expr": {
+    "answer": "(2n+2)(2n+1)",
+    "vars": [
+     "n"
+    ],
+    "domain": [
+     1,
+     6
+    ],
+    "lhs": "\\frac{(2n + 2)!}{(2n)!} =",
+    "mistakes": [
+     {
+      "expr": "2n+2",
+      "why": "Going from $(2n)!$ to $(2n + 2)!$ adds two factors, $2n + 1$ and $2n + 2$, not one."
+     },
+     {
+      "expr": "2",
+      "why": "$(2n + 2)!$ is not $2 \\cdot (2n)!$. Write out the factors: $(2n + 2)(2n + 1)(2n)(2n - 1)\\cdots$"
+     }
+    ]
+   },
+   "why": {
+    "correct": "$(2n + 2)! = (2n + 2)(2n + 1)(2n)!$: two factors sit between $(2n)!$ and $(2n + 2)!$."
+   }
+  },
+  {
+   "id": "cbc-math-sequences-10",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\frac{5!}{3!}$.",
+   "numeric": {
+    "answer": "20",
+    "mistakes": [
+     {
+      "value": "2",
+      "why": "Factorials do not divide like their numbers: $\\frac{5!}{3!}$ is not $\\frac{5}{3}$ or $2!$. It is $5 \\cdot 4$."
+     },
+     {
+      "value": "120",
+      "why": "That is $5!$ alone; divide by $3! = 6$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{5!}{3!} = \\frac{5 \\cdot 4 \\cdot 3!}{3!} = 5 \\cdot 4 = 20$."
+   }
+  },
+  {
+   "id": "cbc-math-sequences-11",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\sum_{k=1}^{4} k^2$.",
+   "numeric": {
+    "answer": "30",
+    "mistakes": [
+     {
+      "value": "100",
+      "why": "That is $(1 + 2 + 3 + 4)^2$. Square each term first, then add."
+     },
+     {
+      "value": "16",
+      "why": "That is the last term, $4^2$; sigma notation adds every term from $k = 1$ to $k = 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$1 + 4 + 9 + 16 = 30$."
+   }
+  },
+  {
+   "id": "cbc-math-sequences-12",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which formula, starting at $n = 1$, gives the sequence $1, -\\frac{1}{2}, \\frac{1}{4}, -\\frac{1}{8}, \\ldots$?",
+   "options": [
+    "$a_n = \\left(-\\frac{1}{2}\\right)^{n}$",
+    "$a_n = -\\left(\\frac{1}{2}\\right)^{n - 1}$",
+    "$a_n = \\left(-\\frac{1}{2}\\right)^{n - 1}$",
+    "$a_n = \\frac{(-1)^n}{2n}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Each term is the previous one times $-\\frac{1}{2}$, starting from 1, so $a_n = 1 \\cdot \\left(-\\frac{1}{2}\\right)^{n - 1}$.",
+    "options": [
+     "This gives $a_1 = -\\frac{1}{2}$; the exponent must be 0 when $n = 1$.",
+     "Every term of this is negative; the given terms alternate in sign, which takes a factor $(-1)^{n-1}$.",
+     "Right: $a_1 = \\left(-\\frac{1}{2}\\right)^0 = 1$, and each term is the one before times $-\\frac{1}{2}$.",
+     "This gives $-\\frac{1}{2}, \\frac{1}{4}, -\\frac{1}{6}$: the denominators double in the given terms, not grow by 2."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-sequences-13",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Find $\\lim_{n \\to \\infty} \\frac{n^2}{e^n}$.",
+   "options": [
+    "$\\infty$",
+    "$0$",
+    "$1$",
+    "It does not exist"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Apply L'Hospital's rule twice to $\\frac{x^2}{e^x}$ (an $\\frac{\\infty}{\\infty}$ form): $\\frac{2x}{e^x}$, then $\\frac{2}{e^x} \\to 0$. A sequence's limit equals the function's limit when that exists.",
+    "options": [
+     "Both grow, but the exponential grows much faster, so the quotient shrinks.",
+     "Right: $e^n$ grows faster than any power of $n$.",
+     "The top and bottom do not grow at the same rate; $e^n$ wins.",
+     "The terms are positive and shrink steadily toward 0."
+    ]
+   }
+  }
+ ]
+}

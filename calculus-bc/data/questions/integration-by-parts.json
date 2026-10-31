@@ -1,0 +1,535 @@
+{
+ "stimuli": {
+  "integration-by-parts-s1": {
+   "kind": "table",
+   "title": "Tabular integration of $x^2 e^{2x}$",
+   "text": "A student finds $\\int x^2 e^{2x}\\,dx$ by the tabular method. The left column holds $u = x^2$ and its derivatives down to 0; the right column holds $dv = e^{2x}\\,dx$ and its repeated antiderivatives. Each diagonal product, from a row of the left column to the next row of the right column, is one term of the answer, with the signs alternating.",
+   "table": {
+    "caption": "Tabular layout for the integral of x squared times e to the 2x",
+    "cols": [
+     "Sign",
+     "$u$ and its derivatives",
+     "$dv$ and its antiderivatives"
+    ],
+    "rows": [
+     [
+      "$+$",
+      "$x^2$",
+      "$e^{2x}$"
+     ],
+     [
+      "$-$",
+      "$2x$",
+      "$\\frac{1}{2}e^{2x}$"
+     ],
+     [
+      "$+$",
+      "$2$",
+      "$\\frac{1}{4}e^{2x}$"
+     ],
+     [
+      "",
+      "$0$",
+      "$\\frac{1}{8}e^{2x}$"
+     ]
+    ]
+   }
+  },
+  "integration-by-parts-s2": {
+   "kind": "table",
+   "title": "Values of $f$ and $f'$",
+   "text": "The function $f$ is twice differentiable, and $f''$ is continuous. Selected values of $f$ and $f'$ are given, and $\\int_1^4 f(x)\\,dx = 6$.",
+   "table": {
+    "caption": "Values of f(x) and f prime of x",
+    "cols": [
+     "$x$",
+     "1",
+     "2",
+     "4"
+    ],
+    "rows": [
+     [
+      "$f(x)$",
+      "3",
+      "$-1$",
+      "5"
+     ],
+     [
+      "$f'(x)$",
+      "2",
+      "$-4$",
+      "7"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-integration-by-parts-1",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "integration-by-parts-s1",
+   "q": "Why is $x^2$ put in the $u$ column rather than $e^{2x}$?",
+   "options": [
+    "Because $e^{2x}$ has no derivative that can be written down",
+    "Because the $u$ column is for the factor with the larger value",
+    "Either choice gives the answer in exactly three rows",
+    "Its derivatives reach 0, while $e^{2x}$ can be integrated again and again"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The table stops when the $u$ column reaches 0. Powers of $x$ do that after a few derivatives; $e^{2x}$ only gets multiplied by constants, so it belongs in the $dv$ column.",
+    "options": [
+     "$e^{2x}$ has the derivative $2e^{2x}$. The reason is what happens to $x^2$: its derivatives reach 0.",
+     "Size has nothing to do with it. Choose $u$ so that its derivatives get simpler and end at 0.",
+     "With $u = e^{2x}$ the $dv$ column would integrate $x^2$ upward to $\\frac{x^3}{3}, \\frac{x^4}{12}, \\ldots$ and the table would never end.",
+     "Right: differentiating $x^2$ three times gives 0, which ends the table, and $e^{2x}$ never gets harder to integrate."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-2",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "integration-by-parts-s1",
+   "q": "Which product is the second term of the answer?",
+   "options": [
+    "$-2x \\cdot \\frac{1}{4}e^{2x}$",
+    "$-2x \\cdot \\frac{1}{2}e^{2x}$",
+    "$+2x \\cdot \\frac{1}{4}e^{2x}$",
+    "$-2x \\cdot \\frac{1}{8}e^{2x}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Terms: $+x^2 \\cdot \\frac{1}{2}e^{2x}$, then $-2x \\cdot \\frac{1}{4}e^{2x}$, then $+2 \\cdot \\frac{1}{8}e^{2x}$.",
+    "options": [
+     "Right: the second row's $u$ entry, $2x$, times the next row's $dv$ entry, $\\frac{1}{4}e^{2x}$, with the second sign, minus.",
+     "That multiplies across one row. Each term runs on a diagonal: $2x$ times the entry one row lower, $\\frac{1}{4}e^{2x}$.",
+     "The diagonal is right but the sign is not: the signs alternate $+, -, +$, so the second term is subtracted.",
+     "That skips a row. The diagonal from $2x$ goes to the very next row of the right column, $\\frac{1}{4}e^{2x}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-3",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "integration-by-parts-s1",
+   "q": "Use the table to find $\\int x^2 e^{2x}\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "e^(2x)*(x^2/2 - x/2 + 1/4)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "constant",
+    "lhs": "\\int x^2 e^{2x}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "e^(2x)*(x^2/2 + x/2 + 1/4)",
+      "why": "The signs must alternate $+, -, +$: the middle term is $-2x \\cdot \\frac{1}{4}e^{2x} = -\\frac{x}{2}e^{2x}$."
+     },
+     {
+      "expr": "x^2*e^(2x)/2",
+      "why": "That is only the first diagonal. Keep going until the $u$ column reaches 0: three diagonals, three terms."
+     },
+     {
+      "expr": "e^(2x)*(x^2/2 - x/2)",
+      "why": "The last diagonal, $+2 \\cdot \\frac{1}{8}e^{2x} = \\frac{1}{4}e^{2x}$, is missing. Stop only when the $u$ column reaches 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{2}x^2e^{2x} - \\frac{1}{2}xe^{2x} + \\frac{1}{4}e^{2x} + C = e^{2x}\\left(\\frac{x^2}{2} - \\frac{x}{2} + \\frac{1}{4}\\right) + C$. Check by differentiating: the product rule gives back $x^2e^{2x}$."
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-4",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "integration-by-parts-s1",
+   "q": "Find the value of $\\int_0^1 x^2 e^{2x}\\,dx$.",
+   "numeric": {
+    "answer": "(e^2 - 1)/4",
+    "answerTex": "\\frac{e^2 - 1}{4}",
+    "mistakes": [
+     {
+      "value": "e^2/4",
+      "why": "At $x = 0$ the antiderivative is $e^0\\left(0 - 0 + \\frac{1}{4}\\right) = \\frac{1}{4}$, not 0. Subtract it."
+     },
+     {
+      "value": "(5*e^2 - 1)/4",
+      "why": "The signs did not alternate: $\\frac{1}{2} + \\frac{1}{2} + \\frac{1}{4}$ at $x = 1$. The middle term is subtracted: $\\frac{1}{2} - \\frac{1}{2} + \\frac{1}{4} = \\frac{1}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$e^{2x}\\left(\\frac{x^2}{2} - \\frac{x}{2} + \\frac{1}{4}\\right)\\Big|_0^1 = \\frac{e^2}{4} - \\frac{1}{4} = \\frac{e^2 - 1}{4}$."
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-5",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "single",
+   "practice": "1.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "integration-by-parts-s1",
+   "q": "The same method is used for $\\int x^3 \\sin x\\,dx$, with $u = x^3$. How many terms does the answer have?",
+   "options": [
+    "It goes on forever, because $\\sin x$ keeps cycling",
+    "4",
+    "3",
+    "5"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "One term per nonzero entry of the $u$ column: $x^3$, $3x^2$, $6x$, $6$. Four terms.",
+    "options": [
+     "$\\sin x$ is in the $dv$ column, where cycling does no harm. The table ends when $u = x^3$ is differentiated down to 0.",
+     "Right: $x^3, 3x^2, 6x, 6$ are nonzero before the column reaches 0, so there are four diagonals.",
+     "Three terms come from $x^2$. Here $u = x^3$ has four nonzero entries: $x^3, 3x^2, 6x, 6$.",
+     "Count the nonzero entries of the $u$ column only: $x^3, 3x^2, 6x, 6$. The 0 row adds no term."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-6",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "integration-by-parts-s2",
+   "q": "To evaluate $\\int_1^4 x f'(x)\\,dx$ by parts, which choice works?",
+   "options": [
+    "$u = x$ and $dv = f'(x)\\,dx$, so $du = dx$ and $v = f''(x)$",
+    "$u = xf(x)$ and $dv = dx$, so $du = f(x)\\,dx$ and $v = x$",
+    "$u = x$ and $dv = f'(x)\\,dx$, so $du = dx$ and $v = f(x)$",
+    "$u = f'(x)$ and $dv = x\\,dx$, so $du = f''(x)\\,dx$ and $v = \\frac{x^2}{2}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Differentiate the factor that gets simpler ($x$) and integrate the one whose antiderivative is known ($f'$).",
+    "options": [
+     "$v$ is an antiderivative of $dv$: the antiderivative of $f'$ is $f$, not $f''$.",
+     "The integrand is $xf'(x)$, not $xf(x)$, and $du$ for $u = xf(x)$ would need the product rule.",
+     "Right: $v = f(x)$ is known from the table, and $\\int v\\,du = \\int f(x)\\,dx$ is given.",
+     "That leads to $\\int \\frac{x^2}{2}f''(x)\\,dx$, harder than the start, with no values of $f''$ given."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-7",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "integration-by-parts-s2",
+   "q": "Find the value of $\\int_1^4 x f'(x)\\,dx$.",
+   "numeric": {
+    "answer": 11,
+    "mistakes": [
+     {
+      "value": 17,
+      "why": "$xf(x)\\Big|_1^4 = 20 - 3 = 17$ is only $uv$. Subtract $\\int_1^4 f(x)\\,dx = 6$."
+     },
+     {
+      "value": 23,
+      "why": "Integration by parts subtracts the new integral: $uv - \\int v\\,du$, so $17 - 6$, not $17 + 6$."
+     },
+     {
+      "value": 14,
+      "why": "$uv$ is evaluated at both bounds: $4f(4) - 1 \\cdot f(1) = 20 - 3$, not just $20$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_1^4 xf'(x)\\,dx = xf(x)\\Big|_1^4 - \\int_1^4 f(x)\\,dx = (4 \\cdot 5 - 1 \\cdot 3) - 6 = 11$."
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-8",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "integration-by-parts-s2",
+   "q": "Find the value of $\\int_1^2 x f''(x)\\,dx$.",
+   "numeric": {
+    "answer": -6,
+    "mistakes": [
+     {
+      "value": -10,
+      "why": "$xf'(x)\\Big|_1^2 = -8 - 2 = -10$ is only $uv$. Subtract $\\int_1^2 f'(x)\\,dx = f(2) - f(1) = -4$."
+     },
+     {
+      "value": -14,
+      "why": "$\\int_1^2 f'(x)\\,dx = f(2) - f(1) = -1 - 3 = -4$, so $-10 - (-4) = -6$. Watch the double negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = x$, $dv = f''(x)\\,dx$, $du = dx$, $v = f'(x)$: $xf'(x)\\Big|_1^2 - \\int_1^2 f'(x)\\,dx = (2(-4) - 1(2)) - (f(2) - f(1)) = -10 - (-4) = -6$."
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-9",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "integration-by-parts-s2",
+   "q": "Which expression is equal to $\\int_1^4 f(x)\\,dx$?",
+   "options": [
+    "$\\int_1^4 x f'(x)\\,dx - 17$",
+    "$20 - \\int_1^4 x f'(x)\\,dx$",
+    "$17 + \\int_1^4 x f'(x)\\,dx$",
+    "$17 - \\int_1^4 x f'(x)\\,dx$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Parts with $u = f(x)$, $dv = dx$ (so $v = x$) gives $xf(x)\\Big|_1^4 - \\int_1^4 xf'(x)\\,dx = 17 - \\int_1^4 xf'(x)\\,dx$. With the value 11 from the table, this is $17 - 11 = 6$, as given.",
+    "options": [
+     "The order is $uv - \\int v\\,du$: 17 first, then subtract the integral.",
+     "$uv$ is evaluated at both bounds: $4f(4) - 1 \\cdot f(1) = 20 - 3 = 17$.",
+     "Integration by parts subtracts $\\int v\\,du$; it never adds it.",
+     "Right: with $u = f(x)$ and $dv = dx$, $\\int_1^4 f(x)\\,dx = xf(x)\\Big|_1^4 - \\int_1^4 xf'(x)\\,dx = 17 - \\int_1^4 xf'(x)\\,dx$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-10",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\int x\\cos x\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "x*sin(x) + cos(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "mode": "constant",
+    "lhs": "\\int x\\cos x\\,dx =",
+    "mistakes": [
+     {
+      "expr": "x*sin(x) - cos(x)",
+      "why": "$\\int \\sin x\\,dx = -\\cos x$, and parts subtracts it: $x\\sin x - (-\\cos x) = x\\sin x + \\cos x$."
+     },
+     {
+      "expr": "x^2*sin(x)/2",
+      "why": "The antiderivative of a product is not the product of antiderivatives. Use $u = x$, $dv = \\cos x\\,dx$: $x\\sin x - \\int \\sin x\\,dx$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = x$, $dv = \\cos x\\,dx$, $du = dx$, $v = \\sin x$: $x\\sin x - \\int \\sin x\\,dx = x\\sin x + \\cos x + C$."
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-11",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int \\ln x\\,dx$ for $x > 0$. Include $+ C$.",
+   "expr": {
+    "answer": "x*ln(x) - x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     4
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\ln x\\,dx =",
+    "mistakes": [
+     {
+      "expr": "x*ln(x)",
+      "why": "That is $uv$ alone. Subtract $\\int v\\,du = \\int x \\cdot \\frac{1}{x}\\,dx = x$."
+     },
+     {
+      "expr": "x*ln(x) + x",
+      "why": "Parts subtracts: $x\\ln x - \\int 1\\,dx = x\\ln x - x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = \\ln x$, $dv = dx$, $du = \\frac{1}{x}\\,dx$, $v = x$: $x\\ln x - \\int x \\cdot \\frac{1}{x}\\,dx = x\\ln x - x + C$."
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-12",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $\\int x^2 \\ln x\\,dx$, which choice makes the new integral simpler?",
+   "options": [
+    "$u = \\ln x$, $dv = x^2\\,dx$",
+    "$u = x^2$, $dv = \\ln x\\,dx$",
+    "$u = x^2\\ln x$, $dv = dx$",
+    "$u = 1$, $dv = x^2\\ln x\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A logarithm has a simple derivative but an awkward antiderivative, so it goes in $u$. Then $x^2\\ln x$ integrates to $\\frac{x^3}{3}\\ln x - \\frac{x^3}{9} + C$.",
+    "options": [
+     "Right: $du = \\frac{1}{x}dx$ and $v = \\frac{x^3}{3}$, so $\\int v\\,du = \\int \\frac{x^2}{3}\\,dx$, a power.",
+     "This needs $\\int \\ln x\\,dx$ first and leaves $\\int 2x(x\\ln x - x)\\,dx$, harder than the start.",
+     "Then $\\int v\\,du = \\int x(2x\\ln x + x)\\,dx$, which contains the original kind of integral again plus more.",
+     "Finding $v$ would mean solving the original integral first, so nothing is gained."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-13",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the value of $\\int_0^{\\pi/2} x\\sin x\\,dx$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": -1,
+      "why": "$v = \\int \\sin x\\,dx = -\\cos x$, so the result is $-x\\cos x + \\int \\cos x\\,dx = -x\\cos x + \\sin x$. A sign slip on $v$ gives $-1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = x$, $dv = \\sin x\\,dx$, $v = -\\cos x$: $\\left(-x\\cos x + \\sin x\\right)\\Big|_0^{\\pi/2} = (0 + 1) - (0 + 0) = 1$."
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-14",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "single",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Using parts twice on $\\int e^x \\sin x\\,dx$ gives $\\int e^x\\sin x\\,dx = e^x\\sin x - e^x\\cos x - \\int e^x\\sin x\\,dx$. What is $\\int e^x\\sin x\\,dx$?",
+   "options": [
+    "$-e^x\\cos x + C$",
+    "$\\frac{1}{2}e^x(\\sin x - \\cos x) + C$",
+    "$e^x(\\sin x - \\cos x) + C$",
+    "$\\frac{1}{2}e^x(\\sin x + \\cos x) + C$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Call the integral $I$: $I = e^x\\sin x - e^x\\cos x - I$, so $2I = e^x(\\sin x - \\cos x)$ and $I = \\frac{1}{2}e^x(\\sin x - \\cos x) + C$.",
+    "options": [
+     "This drops the $e^x\\sin x$ term and the integral that came back. Differentiate it: $e^x(\\sin x - \\cos x)$, not $e^x\\sin x$.",
+     "Right: move the integral to the left side, $2\\int e^x\\sin x\\,dx = e^x(\\sin x - \\cos x)$, and divide by 2.",
+     "The integral appears on both sides. Adding it to the left gives twice the integral, so divide by 2.",
+     "The second parts step subtracts $e^x\\cos x$. Differentiate this to check: it gives $e^x\\cos x$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-15",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int x e^{3x}\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "x*e^(3x)/3 - e^(3x)/9",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     1.5
+    ],
+    "mode": "constant",
+    "lhs": "\\int xe^{3x}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "x*e^(3x)/3 - e^(3x)/3",
+      "why": "$\\int \\frac{1}{3}e^{3x}\\,dx = \\frac{1}{9}e^{3x}$: integrating $e^{3x}$ divides by 3 each time."
+     },
+     {
+      "expr": "x*e^(3x)/3 + e^(3x)/9",
+      "why": "Parts subtracts $\\int v\\,du$: $\\frac{x}{3}e^{3x} - \\frac{1}{9}e^{3x}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = x$, $dv = e^{3x}\\,dx$, $v = \\frac{1}{3}e^{3x}$: $\\frac{x}{3}e^{3x} - \\int \\frac{1}{3}e^{3x}\\,dx = \\frac{x}{3}e^{3x} - \\frac{1}{9}e^{3x} + C$."
+   }
+  },
+  {
+   "id": "cbc-integration-by-parts-16",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes $\\int_1^2 xe^x\\,dx = xe^x - \\int_1^2 e^x\\,dx = xe^x - (e^2 - e)$. What is wrong?",
+   "options": [
+    "$du$ should be $x\\,dx$, not $dx$",
+    "The integral of $e^x$ on $[1, 2]$ is $e^2$, not $e^2 - e$",
+    "The term $uv = xe^x$ is never evaluated from 1 to 2",
+    "$u$ and $dv$ should be swapped so that $u = e^x$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$xe^x\\Big|_1^2 - (e^2 - e) = (2e^2 - e) - (e^2 - e) = e^2$. Leaving $uv$ unevaluated mixes a function with a number, and the scoring guidelines give no answer point for it.",
+    "options": [
+     "With $u = x$, $du = dx$. That step is right; $xe^x$ was left without its bounds.",
+     "$\\int_1^2 e^x\\,dx = e^2 - e$ is right. The problem is the unevaluated $xe^x$.",
+     "Right: a definite integral by parts is $uv\\Big|_1^2 - \\int_1^2 v\\,du$; the answer must be a number, here $e^2$.",
+     "$u = x$ is the right choice: it simplifies to 1. The error is the missing bounds on $xe^x$."
+    ]
+   }
+  }
+ ]
+}

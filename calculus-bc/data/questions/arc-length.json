@@ -1,0 +1,534 @@
+{
+ "stimuli": {
+  "arc-length-s1": {
+   "kind": "graph",
+   "title": "Chords along $y = \\frac{x^2}{2}$",
+   "text": "The graph of $f(x) = \\frac{x^2}{2}$ for $0 \\le x \\le 2$ is shown with two chords, from $(0, 0)$ to $\\left(1, \\frac{1}{2}\\right)$ and from $\\left(1, \\frac{1}{2}\\right)$ to $(2, 2)$.",
+   "plot": {
+    "label": "Graph of f(x) = x squared over 2 from x = 0 to 2, rising from (0, 0) to (2, 2), with two straight chords joining (0, 0), (1, 0.5) and (2, 2)",
+    "x": [
+     0,
+     2.3
+    ],
+    "y": [
+     0,
+     2.3
+    ],
+    "xStep": 0.5,
+    "yStep": 0.5,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^2/2",
+      "domain": [
+       0,
+       2
+      ],
+      "cls": "s1",
+      "label": "f",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     },
+     {
+      "fn": "0.5x",
+      "domain": [
+       0,
+       1
+      ],
+      "cls": "s2",
+      "dashed": true
+     },
+     {
+      "fn": "0.5 + 1.5(x - 1)",
+      "domain": [
+       1,
+       2
+      ],
+      "cls": "s2",
+      "dashed": true
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       0
+      ]
+     },
+     {
+      "at": [
+       1,
+       0.5
+      ],
+      "label": "(1, 0.5)"
+     },
+     {
+      "at": [
+       2,
+       2
+      ],
+      "label": "(2, 2)"
+     }
+    ]
+   }
+  },
+  "arc-length-s2": {
+   "kind": "table",
+   "title": "Values of $f'(x)$",
+   "text": "The function $f$ has a continuous derivative. Selected values of $f'(x)$ are given.",
+   "table": {
+    "caption": "Values of f prime of x at x = 0, 2, 4, 6",
+    "cols": [
+     "$x$",
+     "0",
+     "2",
+     "4",
+     "6"
+    ],
+    "rows": [
+     [
+      "$f'(x)$",
+      "0",
+      "$\\frac{3}{4}$",
+      "$\\frac{12}{5}$",
+      "$\\frac{4}{3}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-arc-length-1",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "arc-length-s1",
+   "q": "Find the length of the chord from $(0, 0)$ to $\\left(1, \\frac{1}{2}\\right)$.",
+   "numeric": {
+    "answer": "sqrt(5)/2",
+    "answerTex": "\\frac{\\sqrt{5}}{2}",
+    "mistakes": [
+     {
+      "value": 1.5,
+      "why": "Adding the run and the rise, $1 + \\frac{1}{2}$, overstates the length. The chord is the hypotenuse: $\\sqrt{1^2 + \\left(\\frac{1}{2}\\right)^2}$."
+     },
+     {
+      "value": 1.25,
+      "why": "$1 + \\frac{1}{4} = \\frac{5}{4}$ is the square of the length. Take the square root: $\\frac{\\sqrt{5}}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "By the Pythagorean theorem: $\\sqrt{(\\Delta x)^2 + (\\Delta y)^2} = \\sqrt{1 + \\frac{1}{4}} = \\frac{\\sqrt{5}}{2}$."
+   }
+  },
+  {
+   "id": "cbc-arc-length-2",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "arc-length-s1",
+   "q": "Find the total length of the two chords.",
+   "numeric": {
+    "answer": "(sqrt(5) + sqrt(13))/2",
+    "answerTex": "\\frac{\\sqrt{5} + \\sqrt{13}}{2}",
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That adds runs and rises: $(1 + 0.5) + (1 + 1.5)$. Each chord is a hypotenuse, $\\sqrt{(\\Delta x)^2 + (\\Delta y)^2}$."
+     },
+     {
+      "value": "sqrt(5)/2 + sqrt(5)",
+      "why": "The second chord rises $2 - \\frac{1}{2} = \\frac{3}{2}$ over a run of 1: its length is $\\sqrt{1 + \\frac{9}{4}} = \\frac{\\sqrt{13}}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sqrt{1 + \\frac{1}{4}} + \\sqrt{1 + \\frac{9}{4}} = \\frac{\\sqrt{5}}{2} + \\frac{\\sqrt{13}}{2} \\approx 2.921$."
+   }
+  },
+  {
+   "id": "cbc-arc-length-3",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "arc-length-s1",
+   "q": "Which integral gives the exact length of the graph of $f$ from $x = 0$ to $x = 2$?",
+   "options": [
+    "$\\int_0^2 \\sqrt{1 + \\frac{x^4}{4}}\\,dx$",
+    "$\\int_0^2 \\left(1 + x^2\\right)dx$",
+    "$\\int_0^2 \\sqrt{1 + x}\\,dx$",
+    "$\\int_0^2 \\sqrt{1 + x^2}\\,dx$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Arc length $= \\int_a^b \\sqrt{1 + (f'(x))^2}\\,dx$ with $f'(x) = x$.",
+    "options": [
+     "That squares $f(x)$ itself. The formula uses the derivative: $f'(x) = x$.",
+     "The square root is missing: the integrand comes from a hypotenuse, $\\sqrt{1 + (f')^2}$.",
+     "The derivative must be squared: $\\sqrt{1 + (f'(x))^2} = \\sqrt{1 + x^2}$.",
+     "Right: $f'(x) = x$, so the integrand is $\\sqrt{1 + (f'(x))^2} = \\sqrt{1 + x^2}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-arc-length-4",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "arc-length-s1",
+   "q": "How does the two-chord total compare with the length of the graph?",
+   "options": [
+    "It is less: a chord is the shortest path between its endpoints",
+    "It is greater, because $f$ is concave up",
+    "It is equal, because the chords meet the curve at its endpoints",
+    "No comparison is possible without evaluating the integral"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each chord is the straight path between two points of the curve, so the chord total, about 2.921, is less than the arc length, about 2.958. More chords raise the total toward it.",
+    "options": [
+     "Right: each piece of the curve is at least as long as its chord, and here strictly longer, since the curve bends.",
+     "Concavity decides whether chords lie above or below the curve, not whether they are shorter. A straight segment is never longer than a curved path.",
+     "Sharing endpoints does not make the lengths equal: the curve bends between them.",
+     "The comparison follows from geometry alone: the straight path is the shortest."
+    ]
+   }
+  },
+  {
+   "id": "cbc-arc-length-5",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "single",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "arc-length-s2",
+   "q": "Which expression gives the length of the graph of $f$ from $x = 0$ to $x = 6$?",
+   "options": [
+    "$\\int_0^6 \\left(1 + (f'(x))^2\\right)dx$",
+    "$\\int_0^6 \\sqrt{1 + (f'(x))^2}\\,dx$",
+    "$\\int_0^6 \\sqrt{1 + f'(x)}\\,dx$",
+    "$\\int_0^6 \\sqrt{1 + (f(x))^2}\\,dx$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Arc length $= \\int_0^6 \\sqrt{1 + (f'(x))^2}\\,dx$.",
+    "options": [
+     "The square root is part of the formula; without it the integral is not a length.",
+     "Right: this adds up tiny hypotenuses with run $dx$ and rise $f'(x)\\,dx$.",
+     "The derivative must be squared inside the root.",
+     "The formula uses the slope $f'(x)$, not the height $f(x)$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-arc-length-6",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "arc-length-s2",
+   "q": "Find the value of $\\sqrt{1 + (f'(2))^2}$.",
+   "numeric": {
+    "answer": "5/4",
+    "mistakes": [
+     {
+      "value": "7/4",
+      "why": "Square the derivative first: $\\left(\\frac{3}{4}\\right)^2 = \\frac{9}{16}$, so $\\sqrt{1 + \\frac{9}{16}} = \\sqrt{\\frac{25}{16}}$."
+     },
+     {
+      "value": "25/16",
+      "why": "$\\frac{25}{16}$ is under the root; take the square root: $\\frac{5}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sqrt{1 + \\frac{9}{16}} = \\sqrt{\\frac{25}{16}} = \\frac{5}{4}$."
+   }
+  },
+  {
+   "id": "cbc-arc-length-7",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "arc-length-s2",
+   "q": "Use a left Riemann sum with the three subintervals given by the table to approximate the length of the graph of $f$ from $x = 0$ to $x = 6$.",
+   "numeric": {
+    "answer": "97/10",
+    "mistakes": [
+     {
+      "value": "331/30",
+      "why": "That uses the right endpoints, 2, 4 and 6. A left sum uses $x = 0$, 2 and 4."
+     },
+     {
+      "value": "63/10",
+      "why": "Riemann sums of $f'(x)$ itself give $f(6) - f(0)$, the change in height. Use $\\sqrt{1 + (f'(x))^2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2\\left(\\sqrt{1 + 0^2} + \\sqrt{1 + \\frac{9}{16}} + \\sqrt{1 + \\frac{144}{25}}\\right) = 2\\left(1 + \\frac{5}{4} + \\frac{13}{5}\\right) = 2(4.85) = 9.7$."
+   }
+  },
+  {
+   "id": "cbc-arc-length-8",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "arc-length-s2",
+   "q": "Use a trapezoidal sum with the three subintervals given by the table to approximate the same length.",
+   "numeric": {
+    "answer": "311/30",
+    "mistakes": [
+     {
+      "value": "97/10",
+      "why": "That is the left sum. A trapezoidal sum averages each pair of neighbors: $\\frac{2}{2}\\left(1 + 2 \\cdot \\frac{5}{4} + 2 \\cdot \\frac{13}{5} + \\frac{5}{3}\\right)$."
+     },
+     {
+      "value": "311/15",
+      "why": "Each trapezoid has width 2 and height the average of two values, so the factor in front is $\\frac{2}{2} = 1$, not 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Values of $\\sqrt{1 + (f')^2}$: $1, \\frac{5}{4}, \\frac{13}{5}, \\frac{5}{3}$. Trapezoidal sum: $\\frac{2}{2}\\left(1 + 2\\cdot\\frac{5}{4} + 2\\cdot\\frac{13}{5} + \\frac{5}{3}\\right) = 1 + 2.5 + 5.2 + \\frac{5}{3} = \\frac{311}{30} \\approx 10.367$."
+   }
+  },
+  {
+   "id": "cbc-arc-length-9",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the length of the graph of $y = \\frac{2}{3}x^{3/2}$ from $x = 0$ to $x = 3$.",
+   "numeric": {
+    "answer": "14/3",
+    "mistakes": [
+     {
+      "value": "16/3",
+      "why": "At $x = 0$ the antiderivative $\\frac{2}{3}(1 + x)^{3/2}$ is $\\frac{2}{3}$, not 0. Subtract it: $\\frac{16}{3} - \\frac{2}{3}$."
+     },
+     {
+      "value": "sqrt(21)",
+      "why": "$\\sqrt{3^2 + (2\\sqrt{3})^2}$ is the straight-line distance between the endpoints, a single chord. The curve is longer: integrate."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y' = x^{1/2}$, so the length is $\\int_0^3 \\sqrt{1 + x}\\,dx = \\frac{2}{3}(1 + x)^{3/2}\\Big|_0^3 = \\frac{2}{3}(8 - 1) = \\frac{14}{3}$."
+   }
+  },
+  {
+   "id": "cbc-arc-length-10",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Use the arc length integral to find the length of the line $y = 2x + 1$ from $x = 0$ to $x = 3$.",
+   "numeric": {
+    "answer": "3*sqrt(5)",
+    "answerTex": "3\\sqrt{5}",
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "6 is the rise alone. The length is $\\int_0^3 \\sqrt{1 + 2^2}\\,dx = 3\\sqrt{5}$."
+     },
+     {
+      "value": 9,
+      "why": "Run plus rise, $3 + 6$, is not a length along the line; use the hypotenuse $\\sqrt{3^2 + 6^2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^3 \\sqrt{1 + 4}\\,dx = 3\\sqrt{5}$, which matches the distance formula from $(0, 1)$ to $(3, 7)$: $\\sqrt{9 + 36} = \\sqrt{45}$."
+   }
+  },
+  {
+   "id": "cbc-arc-length-11",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Find the length of the graph of $y = \\sin x$ from $x = 0$ to $x = \\pi$.",
+   "numeric": {
+    "answer": 3.820197789027712,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "2 is $\\int_0^\\pi \\sin x\\,dx$, the area under the arch. The length is $\\int_0^\\pi \\sqrt{1 + \\cos^2 x}\\,dx$."
+     },
+     {
+      "value": 3.141592653589793,
+      "why": "$\\pi$ is the run along the $x$-axis. The arch is longer: $\\int_0^\\pi \\sqrt{1 + \\cos^2 x}\\,dx$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y' = \\cos x$, so the length is $\\int_0^\\pi \\sqrt{1 + \\cos^2 x}\\,dx \\approx 3.820$ (calculator, radians)."
+   }
+  },
+  {
+   "id": "cbc-arc-length-12",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Find the length of the graph of $y = x^3$ from $x = 0$ to $x = 1$.",
+   "numeric": {
+    "answer": 1.5478656546836,
+    "mistakes": [
+     {
+      "value": 1.414213562373095,
+      "why": "$\\sqrt{2}$ is the chord from $(0, 0)$ to $(1, 1)$. The curve is longer: $\\int_0^1 \\sqrt{1 + 9x^4}\\,dx$."
+     },
+     {
+      "value": 2,
+      "why": "$\\int_0^1 (1 + 3x^2)\\,dx = 2$ leaves out the square and the root. The integrand is $\\sqrt{1 + (3x^2)^2} = \\sqrt{1 + 9x^4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y' = 3x^2$, so the length is $\\int_0^1 \\sqrt{1 + 9x^4}\\,dx \\approx 1.548$."
+   }
+  },
+  {
+   "id": "cbc-arc-length-13",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which integral gives the length of the curve $x = y^2$ from $y = 0$ to $y = 2$?",
+   "options": [
+    "$\\int_0^2 \\sqrt{1 + y^4}\\,dy$",
+    "$\\int_0^2 \\sqrt{1 + 2y}\\,dy$",
+    "$\\int_0^2 \\sqrt{1 + 4y^2}\\,dy$",
+    "$\\int_0^4 \\sqrt{1 + 4y^2}\\,dy$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For $x = g(y)$: length $= \\int_c^d \\sqrt{1 + (g'(y))^2}\\,dy = \\int_0^2 \\sqrt{1 + 4y^2}\\,dy$.",
+    "options": [
+     "That squares $x = y^2$ itself; the formula squares the derivative $\\frac{dx}{dy} = 2y$.",
+     "The derivative must be squared: $(2y)^2 = 4y^2$.",
+     "Right: with $x$ a function of $y$, $\\frac{dx}{dy} = 2y$, and the limits are $y$-values.",
+     "0 to 4 are the $x$-values. An integral in $dy$ needs $y$-limits, 0 to 2."
+    ]
+   }
+  },
+  {
+   "id": "cbc-arc-length-14",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cable hangs between two poles 5 meters apart; $h(x)$ is its height, in meters, above the point $x$ meters from the first pole. What does $\\int_0^5 \\sqrt{1 + (h'(x))^2}\\,dx = 6.2$ mean?",
+   "options": [
+    "The cable's height changes by 6.2 meters between the poles",
+    "The area between the cable and the ground is 6.2 square meters",
+    "The average height of the cable is 6.2 meters",
+    "The cable is 6.2 meters long between the two poles"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\int_a^b \\sqrt{1 + (h'(x))^2}\\,dx$ is the length of the graph of $h$ on $[a, b]$, here the cable from one pole to the other, in meters.",
+    "options": [
+     "A change in height is $\\int_0^5 h'(x)\\,dx = h(5) - h(0)$, without the root.",
+     "An area would be $\\int_0^5 h(x)\\,dx$, in square meters.",
+     "An average height would divide $\\int_0^5 h(x)\\,dx$ by 5.",
+     "Right: the arc length integral of the graph of $h$ from $x = 0$ to $x = 5$ is the cable's length, in meters."
+    ]
+   }
+  },
+  {
+   "id": "cbc-arc-length-15",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which integral gives the length of the graph of $y = \\sqrt{x}$ from $x = 1$ to $x = 4$?",
+   "options": [
+    "$\\int_1^4 \\sqrt{1 + \\frac{1}{4x}}\\,dx$",
+    "$\\int_1^4 \\sqrt{1 + x}\\,dx$",
+    "$\\int_1^4 \\sqrt{1 + \\frac{1}{2\\sqrt{x}}}\\,dx$",
+    "$\\int_1^4 \\left(1 + \\frac{1}{4x}\\right)dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$y' = \\frac{1}{2\\sqrt{x}}$, $(y')^2 = \\frac{1}{4x}$: length $= \\int_1^4 \\sqrt{1 + \\frac{1}{4x}}\\,dx$.",
+    "options": [
+     "Right: $y' = \\frac{1}{2\\sqrt{x}}$, and its square is $\\frac{1}{4x}$.",
+     "$1 + x$ squares $y = \\sqrt{x}$ itself. Square the derivative, $\\frac{1}{2\\sqrt{x}}$.",
+     "The derivative is not squared. The integrand must be $\\sqrt{1 + (y')^2}$.",
+     "The square root is missing; the scoring guidelines require the integrand in the right form."
+    ]
+   }
+  },
+  {
+   "id": "cbc-arc-length-16",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Compare the lengths of the graphs of $f(x) = x^2$ and $g(x) = x^2 + 5$ on $0 \\le x \\le 1$.",
+   "options": [
+    "They differ by 5",
+    "They are equal, since $f'(x) = g'(x)$",
+    "The graph of $g$ is longer, since it is higher",
+    "The graph of $f$ is longer, since it starts at the origin"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Both lengths are $\\int_0^1 \\sqrt{1 + 4x^2}\\,dx$: the formula uses only the slope.",
+    "options": [
+     "A vertical shift moves every point up 5 without stretching the curve.",
+     "Right: the arc length integrand depends only on the derivative, and a vertical shift does not change the slope.",
+     "Height does not enter the formula; $g$ is the same curve moved up 5.",
+     "Both graphs have the same shape, so they have the same length."
+    ]
+   }
+  }
+ ]
+}

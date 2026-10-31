@@ -1,0 +1,5 @@
+{
+ "vector-antiderivative": {
+  "def": "An antiderivative of a vector-valued function, found one component at a time: $\\int \\left\\langle f(t), g(t) \\right\\rangle\\,dt = \\left\\langle F(t), G(t) \\right\\rangle + \\mathbf{C}$, with a constant vector $\\mathbf{C}$. An initial condition fixes $\\mathbf{C}$; for position from velocity, $\\mathbf{r}(t) = \\mathbf{r}(0) + \\int_0^t \\mathbf{v}(s)\\,ds$."
+ }
+}

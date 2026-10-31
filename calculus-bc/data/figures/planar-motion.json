@@ -1,0 +1,22 @@
+{
+ "planar-motion-parabola": {
+  "file": "figures/planar-motion-parabola.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The path r(t) = 2t, 4t minus t squared for t from 0 to 4, an arch from (0, 0) up to (4, 4) and down to (8, 0), traced left to right. A dashed gray position vector goes from the origin to (2, 3), the point at t = 1. From that point a blue velocity vector 2, 2 is drawn; its length, the speed, is 2 root 2. A vermillion displacement vector 8, 0 runs from the start to the end, length 8, while the distance along the path, the integral of speed, is about 11.83."
+ },
+ "planar-motion-loop": {
+  "file": "figures/planar-motion-loop.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 680,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The path x(t) = 4 minus t squared, y(t) = t cubed minus 4t for t from -2 to 2. It starts at the origin at t = -2, swings up and right through (3, 3), reaches (4, 0) at t = 0, swings down through (3, -3) at t = 1 and returns to the origin at t = 2: a closed loop traced clockwise. Arrows show the direction of increasing t. At the point where t = 1, (3, -3), a blue velocity vector is drawn pointing 2 units left and 1 unit down."
+ }
+}

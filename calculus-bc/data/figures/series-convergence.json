@@ -1,0 +1,12 @@
+{
+ "series-convergence-telescoping": {
+  "file": "figures/series-convergence-telescoping.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "For the series with terms a sub n = 1 over n(n + 1), n = 1 to 12: blue bars show each term, starting at 1/2, then 1/6, 1/12 and shrinking toward 0; emerald dots show each partial sum S sub n = n/(n + 1): 1/2, 2/3, 3/4 and so on, rising toward the dashed line at height 1. The sequence of partial sums has limit 1, so the series converges and its sum is 1."
+ }
+}

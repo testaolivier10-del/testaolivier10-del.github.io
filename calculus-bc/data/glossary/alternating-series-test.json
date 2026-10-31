@@ -1,0 +1,5 @@
+{
+ "alternating-series": {
+  "def": "A series whose terms alternate in sign, $\\sum (-1)^n a_n$ with $a_n > 0$. The alternating series test: if the $a_n$ decrease and approach 0, the series converges."
+ }
+}
