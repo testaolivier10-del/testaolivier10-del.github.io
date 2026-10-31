@@ -35,7 +35,7 @@ test('AB topics come from calculus/data, BC topics from calculus-bc/data, in one
     assert.ok(B.rel.includes(`calculus-bc/${p}`), p);
   assert.ok(B.rel.every(r => !/(^|[^a-z0-9])ap([^a-z0-9]|$)/i.test(r.slice('calculus-bc/'.length))));
   // The 6.11-6.13 topics have no files yet, so Unit 6 shows them as coming soon, in CED order.
-  const unit6 = read('calculus-bc/units/unit-6.html');
+  const unit6 = read('calculus-bc/units/unit-6.html').split('class="bk-list"')[1];
   assert.ok(unit6.indexOf('Integration by Parts') > unit6.indexOf('Long Division') && unit6.indexOf('Integration by Parts') < unit6.indexOf('Choosing an Antidifferentiation'));
 });
 
