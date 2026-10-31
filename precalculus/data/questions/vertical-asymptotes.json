@@ -138,10 +138,10 @@
    "q": "Why does $f$ have the same one-sided behavior on both sides of $x = 2$?",
    "type": "single",
    "options": [
-    "Because the numerator is positive near $x = 2$ and $(x - 2)^2$ is positive on both sides",
-    "Because $x = 2$ is a zero of the numerator",
-    "Because $f$ has a horizontal asymptote",
-    "Because the graph is symmetric about $x = 2$"
+    "Because near $x = 2$ the numerator is positive and $(x - 2)^2$ is positive on both sides",
+    "Because $x = 2$ is a zero of the numerator, so both sides behave the same way",
+    "Because $f$ has a horizontal asymptote, so both ends of the graph behave alike",
+    "Because the graph is symmetric about the vertical line $x = 2$"
    ],
    "correct": 0,
    "why": {

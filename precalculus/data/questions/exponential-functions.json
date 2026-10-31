@@ -221,10 +221,10 @@
    "q": "The outputs $7, 11, 19, 35$ do not have a constant ratio. Which statement shows that $k$ is still an exponential function shifted vertically?",
    "type": "single",
    "options": [
-    "The differences $4, 8, 16$ show that $k$ is linear",
-    "The outputs increase, so $k$ is exponential",
-    "The values $k(x) - 3$ are $4, 8, 16, 32$, which double for each step of $1$",
-    "The ratio $\\frac{35}{7} = 5$ is constant"
+    "The differences $4, 8, 16$ between outputs show that $k$ is linear",
+    "The outputs increase faster and faster, so $k$ is exponential",
+    "The values $k(x) - 3$ are $4, 8, 16, 32$: they double each step",
+    "The ratio of the last output to the first, $\\frac{35}{7} = 5$, is constant"
    ],
    "correct": 2,
    "why": {
@@ -479,10 +479,10 @@
    "q": "Why does an exponential function $f(x) = ab^x$ have no local maximum or minimum?",
    "type": "single",
    "options": [
-    "Its outputs are positive",
-    "Its graph has an asymptote",
-    "It is concave up",
-    "Each unit step multiplies the output by the same $b$, so the outputs keep moving in one direction"
+    "Its outputs are all positive, so the graph stays above the $x$-axis",
+    "Its graph has a horizontal asymptote that it never reaches",
+    "It is concave up, so the graph bends the same way everywhere",
+    "Each unit step multiplies the output by $b$, so it moves one way only"
    ],
    "correct": 3,
    "why": {
