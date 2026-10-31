@@ -253,6 +253,8 @@ Spec decision 17 makes "undefined" the course word. `precalculus/assets/tools/sy
 defined", band labels "rewrite not defined", "first not defined") and `precalculus/assets/tools/math/poly-rational.js`
 (hole notes "is not defined") were left for builder T2, who was editing them. Switch them when T2 is done.
 
+**Resolved (2026-10-31, Phase 4 tools-exams review).** All three files say "undefined" now (legend "one undefined", band labels "rewrite undefined" / "first undefined", hole notes "is undefined", log-equation notes "the term ... is undefined"); no "not defined" is left under `precalculus/assets/tools/`.
+
 ## Phase 3
 
 ### phase3-exam-only-share: most of Section I Part B is exam-only (open, 2026-10-31)
@@ -448,3 +450,20 @@ them moved to 1.11 (see `slant-1-7`, `tools-t2-slant`).
 `equivalent-representations-forms`, `transformations-parent`, `alg-systems-lines`, `alg-exponents-roots` and
 `model-selection-symmetric` put the x and y letters outside the plot frame, and `alg-exponents-roots` labels curves
 `x^(1/2)` with a caret. Correct and readable; cosmetic.
+
+## Phase 4: tools-exams review
+
+### tools-exams-uc-nan: the unit-circle validator failure "seed 7932 prints NaN" (closed, 2026-10-31)
+
+Not reproduced: the validator ran clean six times in a row, and the generator plus `recheck` ran clean on 40,000
+seeds per context. Seed 7932 is `seedOf(1)`, the first seed of a context, so the failure was a whole context failing
+at once, not one bad seed: consistent with the validator running while the model was being switched from "not
+defined" to "undefined" and `_drills.mjs` did not yet allow the word (its message reads "prints NaN, undefined or
+Infinity"). Nothing in the model or the sweep is random or stateful. Reopen if it recurs, with the full message.
+
+### tools-exams-hint-labels: trainer drill labels a teacher may want reworded (open, 2026-10-31)
+
+Function lab's drill draws a horizontal asymptote labelled with its value only ("−3", not "y = −3"), from the shared
+`markSvg` label; rate of change asks for "the later rate minus the earlier one" (reworded from "go up by", which read
+oddly when the change is negative). Cosmetic; confirm or adjust.
+

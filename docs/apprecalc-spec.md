@@ -91,7 +91,7 @@ One branch, `claude/apprecalc`, one PR at the end.
 | 1 | Content: lessons, notes, banks (with stimulus sets), FRQs of all four types, glossary, figures | **done 2026-10-31**: 69 topics (authors A-F, self-reports in `docs/apprecalc-reviews/self-*.md`), ~1,270 items, 19 FRQs, figures; content check 0 failing |
 | 2 | Trainers (section 6) | **done 2026-10-31**: all ten trainers (T1-T4), validators at 300 seeds per context, Playwright at 1280/360 px |
 | 3 | Two practice exams, unit tests, "Make it specific" prompts, formula page, cram kit | **built 2026-10-31** (decision 19): two forms in the May 2027 format (Part A 29 bank no-calculator items in course order, Part B 13 calculator items: 11 exam-only + one bank set each; U1 15, U2 13, U3 14; FRQs one of each type, both Q1s on composition and inverses), 22 exam-only keys in `EXAM_NUMBERS`; 30 "Make it specific" prompts (10 per exam unit, every skill, a builder on each, numbers in `JUSTIFY_NUMBERS`); formula page (39 rows, 8 easy-to-forget); unit tests and cram kit tested on the real forms and FRQs; open points under "Phase 3" in needs-author |
-| 4 | Independent accuracy checks per unit, tools, exams | to do |
+| 4 | Independent accuracy checks per unit, tools, exams | **done 2026-10-31**: five independent reviews (`docs/apprecalc-reviews/unit-1..4.md`, `tools-exams.md`); no wrong keys; about 90 smaller fixes |
 | Launch | Publish, generators, continuity pass, "eleven courses" wording, full CI with browser checks, PR | to do |
 
 ### 5a. Authors and builders (Phase 1 and 2)

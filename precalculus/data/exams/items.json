@@ -421,7 +421,7 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "Graph $f$ and find its three turning points: relative minimums at $x \\approx -1.673$ and $x \\approx 1.470$, a relative maximum at $x \\approx 0.203$. The leading term $x^4$ makes the left end fall from $\\infty$, so $f$ is decreasing on $(-\\infty, -1.673)$ and $(0.203, 1.470)$. (Either bracket at a turning point is accepted.)",
+    "correct": "Graph $f$ and find its three turning points: relative minimums at $x \\approx -1.673$ and $x \\approx 1.470$, a relative maximum at $x \\approx 0.203$. The leading term $x^4$ makes the left end fall from $\\infty$, so $f$ is decreasing on $(-\\infty, -1.673)$ and $(0.203, 1.470)$. (Open or closed brackets at the turning points are both correct.)",
     "options": [
      "These are the intervals where $f$ is increasing.",
      "Right: from the left end down to the first minimum, and from the maximum down to the second minimum.",
