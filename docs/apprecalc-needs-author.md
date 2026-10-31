@@ -433,3 +433,18 @@ directrix and an ellipse's foci ($c^2 = a^2 - b^2$), which 4.6 does not teach. U
 low risk; if the CED's 4.6 lists foci or directrix, add a short notes section and two items. The dot product (4.8),
 the $\sec$/$\tan$ hyperbola (4.7) and the determinant in 4.11 are standard and kept.
 
+
+## Phase 4 review: Unit 1
+
+### u1-slant-1-7: exact slant lines before division (open, 2026-10-31, Unit 1 reviewer)
+
+The CED (read for Unit 1) says in 1.7.A.3 only that a linear quotient of leading terms gives a slant asymptote
+"parallel to" that line; finding the exact line by division is 1.11.B.2. `rational-end-behavior-11`, `-12` and
+`vertical-asymptotes-8` ask for the exact line by rewriting the numerator. The math is right; a teacher may want
+them moved to 1.11 (see `slant-1-7`, `tools-t2-slant`).
+
+### u1-figure-axes: axis letters outside author B's lesson figures (open, 2026-10-31, Unit 1 reviewer)
+
+`equivalent-representations-forms`, `transformations-parent`, `alg-systems-lines`, `alg-exponents-roots` and
+`model-selection-symmetric` put the x and y letters outside the plot frame, and `alg-exponents-roots` labels curves
+`x^(1/2)` with a caret. Correct and readable; cosmetic.
