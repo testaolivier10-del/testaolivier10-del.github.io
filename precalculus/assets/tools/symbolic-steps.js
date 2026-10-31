@@ -167,8 +167,10 @@
     N: 'log_b M = c means M = b^c.',
     count: 'Check each candidate against the domain (log inputs positive, e^x > 0) or the interval.',
     u: 'e^(2x) = (e^x)^2 = u^2.',
-    x1: 'Solve e^x = u (positive u only) with x = ln u; for trig, use the reference angle in each quadrant where the sign fits.',
-    x2: 'Find the other quadrant where the function has this sign.',
+    x1: 'Solve e^x = u for each positive u: x = ln u.',
+    x2: 'Solve e^x = u for the other positive u: x = ln u.',
+    tx1: 'Find the reference angle, then use the quadrants where the function has this sign; keep angles in [0, 2π).',
+    tx2: 'The other quadrant where the function has this sign gives the second solution.',
     v: 'arcsin and arctan give angles in [−π/2, π/2]; arccos in [0, π].',
     comp: 'Let θ be the inner angle; draw a right triangle from the given ratio and choose the sign from θ\'s quadrant.',
     k: 'Factor out what the identity needs: 2 sin x cos x = sin(2x).',
@@ -184,7 +186,7 @@
       extra: function(el, p){ cur = p.fig ? figure(el, p) : null; },
       onStep: function(s){ if(cur) cur.done(s.key); },
       onTry: function(s, t){ if(!cur || t.ok || t.shown) return false; return cur.yours(s.key, t.value); },
-      method: function(s){ return METHOD[s.key] || ''; }
+      method: function(s, p){ return (p.type === 'trig-eq' && METHOD['t' + s.key]) || METHOD[s.key] || ''; }
     });
   }
   function figure(el, p){
