@@ -1,0 +1,37 @@
+<p>So far you have studied polynomial graphs up close: their zeros, turning points and bends. This topic zooms out. Far from the origin, every polynomial graph looks like the graph of its leading term, and its ends either rise or fall without bound. That long-run behavior is the <b>end behavior</b>, and the exam wants it written in limit notation.</p>
+
+<h2>Why the leading term wins</h2>
+<p>Take $p(x) = 2x^3 - 50x^2$. At $x = 10$, $2x^3 = 2{,}000$ and $50x^2 = 5{,}000$: the second term is bigger and $p(10) = -3{,}000$. At $x = 100$, $2x^3 = 2{,}000{,}000$ and $50x^2 = 500{,}000$: the leading term has pulled ahead, and it stays ahead for every larger $x$. A higher power always outgrows a lower one eventually.</p>
+<p>So the end behavior of any polynomial is the end behavior of its leading term $a_n x^n$, which depends on only two things: whether $n$ is even or odd, and whether $a_n$ is positive or negative.</p>
+<table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">$a_n > 0$</th><th scope="col">$a_n < 0$</th></tr></thead>
+<tbody>
+<tr><td>even degree</td><td>$\lim_{x \to -\infty} p(x) = \infty$, $\lim_{x \to \infty} p(x) = \infty$ (both up)</td><td>$\lim_{x \to -\infty} p(x) = -\infty$, $\lim_{x \to \infty} p(x) = -\infty$ (both down)</td></tr>
+<tr><td>odd degree</td><td>$\lim_{x \to -\infty} p(x) = -\infty$, $\lim_{x \to \infty} p(x) = \infty$ (down, up)</td><td>$\lim_{x \to -\infty} p(x) = \infty$, $\lim_{x \to \infty} p(x) = -\infty$ (up, down)</td></tr>
+</tbody>
+</table>
+<figure id="fig-ends" data-fig="polynomial-end-behavior-ends"><figcaption>Odd degree with a negative leading coefficient: up on the left, down on the right.</figcaption></figure>
+
+<h2>Limit notation</h2>
+<p>The statement $\lim_{x \to \infty} f(x) = \infty$ reads: "as $x$ increases without bound, $f(x)$ increases without bound." Likewise $\lim_{x \to -\infty} f(x) = -\infty$ means that as $x$ decreases without bound, $f(x)$ decreases without bound. Write all four parts every time: $\lim$, the function with its input, where the input goes, and where the outputs go.</p>
+<p>These lose the point on the exam: "$f \to \infty$" (no input), "$f(\infty) = \infty$" ($\infty$ is not an input), and "$\lim_{x \to \infty} = \infty$" (no function).</p>
+
+<h2>Finding the leading term</h2>
+<p>When the polynomial is a product, multiply the leading parts of the factors; you do not need to expand.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the end behavior of $h(x) = x^2(3 - x)^3$.</p>
+<p>Leading part of $(3 - x)$ is $-x$, so of $(3 - x)^3$ it is $(-x)^3 = -x^3$. Leading term: $x^2 \cdot (-x^3) = -x^5$.</p>
+<p>Odd degree, negative coefficient: $\lim_{x \to -\infty} h(x) = \infty$ and $\lim_{x \to \infty} h(x) = -\infty$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the end behavior of $q(x) = -0.1(x + 3)(x + 1)(x - 2)(x - 4)$.</p>
+<p>Leading term: $-0.1x^4$. Even degree, negative: $\lim_{x \to -\infty} q(x) = -\infty$ and $\lim_{x \to \infty} q(x) = -\infty$.</p>
+<p>Because both ends fall, $q$ has a global maximum but no global minimum.</p>
+</div>
+
+<h2>What end behavior tells you</h2>
+<ul>
+<li>An odd-degree polynomial has at least one real zero: its ends are on opposite sides of the $x$-axis, and its graph has no breaks, so it must cross.</li>
+<li>An even-degree polynomial has a global maximum (both ends down) or a global minimum (both ends up).</li>
+<li>End behavior says nothing about the middle of the graph. A table of a few large-ish inputs can mislead if the leading term has not taken over yet.</li>
+</ul>

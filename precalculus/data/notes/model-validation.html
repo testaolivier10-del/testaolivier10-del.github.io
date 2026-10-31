@@ -1,0 +1,43 @@
+<p>Two models of the same data can both look close on a graph. One might be a line and the other an exponential function, and the eye cannot always tell which is better. The tool for deciding is the <b>residual</b>: how far the model misses each data point. This page defines residuals, reads residual plots, and uses them to choose between competing models, a skill the calculator section of the exam and Question 2 both test.</p>
+
+<h2>Residuals</h2>
+<p>For each data point,</p>
+<p>$$\text{residual} = \text{actual value} - \text{predicted value}$$</p>
+<ul>
+<li>A <b>positive</b> residual means the actual value is above the prediction: the model <b>underestimates</b> there.</li>
+<li>A <b>negative</b> residual means the actual value is below the prediction: the model <b>overestimates</b> there.</li>
+<li>A residual of $0$ means the model hits the data point.</li>
+</ul>
+<p>The size of a miss can also be stated as the error, predicted minus actual, or as the absolute error $|\text{predicted} - \text{actual}|$. Keep the order straight: a question that asks for the residual expects actual minus predicted.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A plant is $50, 62, 78, 97$ cm tall at weeks $0$ to $3$. Model $A$ predicts $48, 63, 78, 93$ and model $B$ predicts $50, 62.5, 78.1, 97.7$. Compare them.</p>
+<p>Residuals of $A$: $50 - 48 = 2$, $62 - 63 = -1$, $78 - 78 = 0$, $97 - 93 = 4$.</p>
+<p>Residuals of $B$: $0$, $62 - 62.5 = -0.5$, $78 - 78.1 = -0.1$, $97 - 97.7 = -0.7$.</p>
+<p>Every residual of $B$ is closer to $0$, and its largest miss is $0.7$ cm against $4$ cm for $A$. Model $B$ fits better. Its residuals are slightly negative, so it slightly overestimates.</p>
+</div>
+
+<h2>Residual plots</h2>
+<p>A <b>residual plot</b> graphs each residual against its input. It magnifies the misses so you can see their pattern.</p>
+<table class="compare">
+<thead><tr><th scope="col">What the residual plot shows</th><th scope="col">What it means</th></tr></thead>
+<tbody>
+<tr><td>Small residuals scattered above and below $0$, no pattern</td><td>The model has the right shape: appropriate</td></tr>
+<tr><td>A U shape (positive, negative, positive)</td><td>The data bend upward away from the model: try a concave-up model</td></tr>
+<tr><td>An upside-down U (negative, positive, negative)</td><td>The data bend downward: try a concave-down model</td></tr>
+<tr><td>Residuals that grow steadily in size</td><td>The model misses more and more as the input grows</td></tr>
+</tbody>
+</table>
+<figure id="fig-res" data-fig="model-validation-residuals"><figcaption>Residuals of a linear and an exponential model of the same follower counts.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> A channel had $210, 262, 330, 410, 515, 640, 805$ followers at weeks $0$ to $6$. Use regression and residuals to choose between a linear and an exponential model.</p>
+<p>Linear regression gives $L(t) = 97.357...t + 161.071...$. Its residuals are about $49, 4, -26, -43, -36, -8, 60$: a U.</p>
+<p>Exponential regression gives $E(t) = 210.016...(1.2506...)^t$. Its residuals stay within about $3$ followers of $0$ with no pattern (<a class="figref" href="#fig-res">see the figure</a>).</p>
+<p>Conclusion with reasons: "$E$ is more appropriate, because its residuals are small and show no pattern, while the residuals of $L$ form a U, so the data curve upward away from the line." Then predict with the stored $E$: $E(8) = 1256.991...$ followers.</p>
+</div>
+<p>Most graphing calculators can draw a residual plot straight from a regression. Store the regression first, then plot the residual list against the input list.</p>
+
+<h2>Mixed signs are not enough</h2>
+<p>A common wrong answer is "the linear model fits, because some residuals are positive and some are negative." Almost any model's residuals have both signs. What matters is whether they fall in a pattern. Residuals of one sign across an interval also say something: if every residual on $3 \le t \le 6$ is positive, the model underestimates on that whole interval.</p>
+
+<h2>Error beyond the data</h2>
+<p>Residuals exist only where there is data. Past the last data point, a model's error is unknown and usually grows: a small error in the base of an exponential model is multiplied again with every unit of input. Choose the model with the best residuals, and still say that predictions far beyond the data are less reliable.</p>

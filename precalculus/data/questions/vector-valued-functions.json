@@ -157,7 +157,7 @@
    "q": "The average rate of change of $\\mathbf{p}$ on $[2, 4]$ is $\\left\\langle 2, 0 \\right\\rangle$. What does that mean?",
    "type": "single",
    "options": [
-    "The positions at $t = 2$ and $t = 4$ have the same height, though the object rose in between",
+    "The two positions have the same height, though it rose in between",
     "The object moved straight right the whole time from $t = 2$ to $t = 4$",
     "The object stopped moving up at $t = 2$",
     "The object did not move between $t = 2$ and $t = 4$"
@@ -268,7 +268,7 @@
    "options": [
     "At $t = 15$ the drone is due north of where it was at $t = 10$",
     "The drone hovered in place from $t = 10$ to $t = 15$",
-    "The drone moved only east from $t = 10$ to $t = 15$",
+    "The drone moved east and not north from $t = 10$ to $t = 15$",
     "The drone flew a straight line due north the whole time"
    ],
    "correct": 0,
@@ -292,7 +292,7 @@
    "q": "For a vector-valued function $\\mathbf{p}(t)$ drawn from the origin, what does the tip of $\\mathbf{p}(t)$ trace as $t$ increases?",
    "type": "single",
    "options": [
-    "The path of the parametric function $(x(t), y(t))$",
+    "The path of $(x(t), y(t))$",
     "The graph of $x(t)$ against $t$",
     "A circle centered at the origin",
     "A straight line from the origin"
@@ -405,8 +405,8 @@
    "q": "What does $\\left\\| \\mathbf{p}(t) \\right\\| = 4$ for every $t$ tell you about $\\mathbf{p}(t) = \\left\\langle 4\\cos t, 4\\sin t \\right\\rangle$?",
    "type": "single",
    "options": [
-    "Its tip stays $4$ units from the origin, so it traces a circle of radius $4$",
-    "Its tip moves $4$ units each unit of time along a line",
+    "Its tip stays $4$ units from the origin: a circle of radius $4$",
+    "Its tip moves $4$ units for each unit of time, along a straight line",
     "Its tip stays at one point, $4$ units from the origin",
     "Its tip traces a circle of radius $16$"
    ],
@@ -439,7 +439,7 @@
     {
      "name": "The displacement on any interval $[t_1, t_2]$",
      "answer": "none",
-     "why": "The added $\\left\\langle 2, 0 \\right\\rangle$$ appears in both positions and cancels when you subtract."
+     "why": "The added $\\left\\langle 2, 0 \\right\\rangle$ appears in both positions and cancels when you subtract."
     },
     {
      "name": "The average rate of change vector on any interval",

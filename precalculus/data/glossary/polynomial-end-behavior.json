@@ -1,0 +1,8 @@
+{
+ "end-behavior": {
+  "def": "What the outputs of a function do as $x \\to \\infty$ and as $x \\to -\\infty$. For a polynomial it matches its leading term: even degree, both ends the same way; odd degree, opposite ways."
+ },
+ "limit": {
+  "def": "Limit notation describes where outputs go: $\\lim_{x \\to \\infty} f(x) = \\infty$ means that as $x$ increases without bound, $f(x)$ increases without bound. Write the function, its input, where the input goes and where the outputs go."
+ }
+}

@@ -31,7 +31,7 @@
   function f2(v){ return mn(M.fixed(v, 2)); }
   function f3(v){ return mn(M.fixed(v, 3)); }
   function g3(v){ return mn(String(+M.fixed(v, 3))); }
-  var VIEW_NAME = { ratios: 'Ratios', inverse: 'Inverse', rules: 'Log rules', semilog: 'Semi-log' };
+  var VIEW_NAME = { ratios: 'Ratios', inverse: 'Inverse', rules: 'Rules', semilog: 'Semi-log' };
 
   /* ------------------------------------------------ a plot frame */
   function frameOf(w, h, xr, yr, o){

@@ -98,3 +98,27 @@ whether Unit 4 needs `\vec` or `bmatrix` (a small change to `pcalc-math.js` and 
 ### teacher-review: no AP® Precalculus teacher has reviewed the course (open, 2026-10-31)
 
 The "not yet reviewed by an AP® Precalculus teacher" note stays on every page until one does (spec section 1).
+
+### shared-diagnose-words: calculus words in the shared number feedback (open, 2026-10-31, builder T4)
+
+`ApPrecalcMath.diagnose` (`precalculus/assets/tools/pcalc-tool-math.js`, forked from AB) falls back to "a minus
+sign from a derivative", "the antiderivative of x" and "a volume of revolution" when no authored slip matches. A
+precalculus student can see these. `polar-graphs` and `vectors-matrices` author their own sign, factor-of-2 and
+factor-of-π slips so the fallback never shows; the other trainers may not. Suggested shared fix: reword the three
+messages ("Check the order of a subtraction or a sign from the unit circle", "Check a ½ or a doubled term",
+"Check for a missing π").
+
+### vectors-matrices-scope: which Unit 4 topics the trainer drills (open, 2026-10-31, builder T4)
+
+Test yourself covers 4.1 (position, direction), 4.3 (average rates of x and y, slope Δy/Δx), 4.8 (k·u + v,
+magnitude, dot product), 4.11 (determinant, invertible, an entry of A⁻¹) and 4.12 (image of a point, area factor).
+Explore adds parametric circles and lines (4.4) and the plane under a matrix. Not drilled: conics and implicit
+curves (4.5-4.7), vector-valued functions (4.9), matrix products and composition (4.10, 4.13) and matrix models
+such as transition matrices (4.14). Unit 4 is beyond the exam, so this seemed enough; say if more contexts are wanted.
+
+### polar-rates-wording: "distance from the origin" questions (open, 2026-10-31, builder T4)
+
+The polar rates drill asks whether the distance between the point (r, θ) and the origin is increasing or decreasing
+on an interval where r keeps one sign and one direction (r = 0 is allowed at an end). Its keys follow the CED rule
+(same signs of r and its change: increasing). A teacher may want the "r < 0" case (the main trap) weighted more or
+less than the 40% it gets now.

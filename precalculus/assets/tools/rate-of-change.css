@@ -75,3 +75,7 @@
 .rc-figwrap .pcalc-plot{width:100%;height:auto;}
 .ls-root .rc-figwrap{height:100%;display:flex;}
 .ls-root .rc-figwrap .pcalc-plot{height:100%;}
+.rc-tabwrap{overflow-x:auto;margin:0 0 6px;}
+.rc-tabwrap table{margin:0 auto;font-variant-numeric:tabular-nums;}
+.ls-root .ls-drill-stage .cd-extra:has(.rc-tabwrap){display:flex;flex-direction:column;}
+.ls-root .cd-extra .rc-tabwrap + div{flex:1;min-height:0;}

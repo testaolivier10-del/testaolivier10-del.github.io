@@ -353,6 +353,9 @@
       generate: RC.generate, title: function(p){ return p.title; },
       extra: function(el, p){
         prob = p;
+        // the table of values goes on the stage, over the figure (the caption keeps the words)
+        var tb = el.parentNode && el.parentNode.querySelector('.bt-context table');
+        if(tb){ var tw = document.createElement('div'); tw.className = 'rc-tabwrap'; tw.appendChild(tb.closest('.bt-table-wrap') || tb); el.appendChild(tw); }
         var box = document.createElement('div'); el.appendChild(box);
         fig = T.markedFigure(box, function(){ return figSpec(p); }, 'rc-figwrap');
       },

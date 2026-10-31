@@ -196,7 +196,7 @@
     "$L$, because its residuals are both positive and negative",
     "$E$, because its residuals are small and show no pattern",
     "$L$, because its residuals form a smooth curve",
-    "$E$, because its residuals are all positive"
+    "$E$, because its residuals are mostly above $0$"
    ],
    "correct": 1,
    "why": {
@@ -221,7 +221,7 @@
    "q": "The residual of $L$ at $t = 0$ is positive. What does that mean?",
    "type": "single",
    "options": [
-    "$L$ predicts more followers than the channel had at $t = 0$",
+    "$L$ predicts more followers than the channel really had at $t = 0$",
     "The channel gained followers at $t = 0$",
     "$L$ predicts fewer followers than the channel had at $t = 0$",
     "$L$ is increasing at $t = 0$"
@@ -301,10 +301,10 @@
    "q": "Why does the U shape in the residuals of $L$ suggest that the data are not linear?",
    "type": "single",
    "options": [
-    "A U shape means the residuals add to zero",
-    "The line runs below the data at both ends and above it in the middle, so the data bend upward away from the line",
-    "A U shape means the data are decreasing in the middle",
-    "A U shape means the model is too steep everywhere"
+    "A U shape means the residuals add up to zero, so the line is wrong",
+    "Data above the line at the ends, below it in the middle: they curve up",
+    "A U shape means the follower counts are decreasing in the middle weeks",
+    "A U shape means the line is too steep at each of the weeks"
    ],
    "correct": 1,
    "why": {
@@ -489,6 +489,33 @@
    "practice": "1.A",
    "level": "apply",
    "diff": 1,
+   "q": "A model predicts a tide height of $3.2$ m at noon, and the measured height is $2.9$ m. What is the residual at noon?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-3/10",
+    "unit": "m",
+    "mistakes": [
+     {
+      "value": 0.3,
+      "why": "That is predicted minus actual. The residual is $2.9 - 3.2$."
+     },
+     {
+      "value": 6.1,
+      "why": "That adds the two heights; subtract them."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Residual $=$ actual $-$ predicted $= 2.9 - 3.2 = -0.3$ m. The model overestimates at noon."
+   }
+  },
+  {
+   "id": "pcalc-model-validation-13",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
    "q": "A model predicts $142$ visitors, and $150$ visitors come. What is the absolute error of the prediction?",
    "type": "numeric",
    "numeric": {
@@ -510,7 +537,7 @@
    }
   },
   {
-   "id": "pcalc-model-validation-13",
+   "id": "pcalc-model-validation-14",
    "unit": "unit-2",
    "topic": "model-validation",
    "practice": "3.A",
@@ -520,23 +547,23 @@
    "type": "single",
    "options": [
     "The model overestimates on $3 \\le t \\le 6$",
+    "The model is increasing over the interval $3 \\le t \\le 6$",
     "The model underestimates on $3 \\le t \\le 6$",
-    "The model is increasing on $3 \\le t \\le 6$",
     "The model is a good fit on $3 \\le t \\le 6$"
    ],
-   "correct": 1,
+   "correct": 2,
    "why": {
     "correct": "Positive residuals mean actual $>$ predicted throughout the interval: the model underestimates there.",
     "options": [
      "Overestimates give negative residuals.",
-     "Actual above predicted.",
      "Residual signs do not describe the model's direction.",
+     "Actual above predicted.",
      "Residuals with one sign over an interval are a pattern, which suggests a poorer fit there."
     ]
    }
   },
   {
-   "id": "pcalc-model-validation-14",
+   "id": "pcalc-model-validation-15",
    "unit": "unit-2",
    "topic": "model-validation",
    "practice": "3.C",
@@ -545,19 +572,19 @@
    "q": "A linear model\\'s residual plot is shaped like an upside-down U: negative, then positive, then negative. Which change to the model is most reasonable to try?",
    "type": "single",
    "options": [
-    "A linear model with a larger slope",
-    "An exponential model with base greater than $1$",
-    "A model whose graph is concave down, such as a quadratic with a negative leading coefficient",
-    "A linear model shifted up"
+    "A linear model with a larger slope, so it rises faster",
+    "An exponential model with a base greater than $1$",
+    "The same linear model shifted up a few units",
+    "A concave-down model, such as a quadratic opening down"
    ],
-   "correct": 2,
+   "correct": 3,
    "why": {
     "correct": "Data above the line in the middle and below it at the ends bend downward: they are concave down. A concave-down model can follow that shape; an increasing exponential function is concave up.",
     "options": [
      "A steeper line still cannot bend.",
      "This is concave up, the wrong way.",
-     "Match the concavity the residuals reveal.",
-     "Shifting moves every residual the same amount and keeps the pattern."
+     "Shifting moves every residual the same amount and keeps the pattern.",
+     "Match the concavity the residuals reveal."
     ]
    }
   }

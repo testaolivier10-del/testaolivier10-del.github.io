@@ -173,7 +173,7 @@
   function explore(host, data){
     var LS = null;
     var ids = (data.curves || PG.ORDER).filter(function(id){ return PG.PRESETS[id]; });
-    var st = { id: ids[0], spec: JSON.parse(JSON.stringify(PG.PRESETS[ids[0]].spec)), t: PI / 3, view: 'point', wk: 3, traced: TAU, touched: false };
+    var st = { id: ids[0], spec: JSON.parse(JSON.stringify(PG.PRESETS[ids[0]].spec)), t: PI / 12, view: 'point', wk: 3, traced: TAU, touched: false };
     var cue = T.cue('Press Play, or drag around the polar grid: the curve draws itself as θ turns.');
     host.innerHTML =
       '<section class="bt-problem pg-card" aria-label="Polar graphs explorer">' +
