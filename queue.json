@@ -722,10 +722,10 @@
    "approved_blob": "dec372a16c538bdc8e5da6f6a713c8bb363d457d"
   },
   {
-   "status": "approved",
+   "status": "scheduled",
    "added_on": "2026-10-30",
-   "date": null,
-   "buffer": null,
+   "date": "2026-11-05",
+   "buffer": "6ae61dfbab019b90871412aa",
    "yt_buffer": null,
    "youtube_id": null,
    "shorts_thumb": false,
