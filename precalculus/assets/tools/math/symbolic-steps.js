@@ -279,13 +279,25 @@
     try { fa = X.fn(a); } catch(e){ return { ok: false, error: 'First: ' + e.message }; }
     try { fb = X.fn(b); } catch(e){ return { ok: false, error: 'Second: ' + e.message }; }
     var N = 800, pieces = [], cur = null;
+    function kind(x){
+      var ya = fa(x), yb = fb(x), da = isFinite(ya) && Math.abs(ya) < 1e9, db = isFinite(yb) && Math.abs(yb) < 1e9;
+      return da && db ? (Math.abs(ya - yb) <= 1e-7 * Math.max(1, Math.abs(ya), Math.abs(yb)) ? 'same' : 'diff') : da ? 'a' : db ? 'b' : 'none';
+    }
     for(var i = 0; i <= N; i++){
-      var x = win[0] + (win[1] - win[0]) * (i + 0.5) / (N + 1), ya = fa(x), yb = fb(x), da = isFinite(ya) && Math.abs(ya) < 1e9, db = isFinite(yb) && Math.abs(yb) < 1e9;
-      var s = da && db ? (Math.abs(ya - yb) <= 1e-7 * Math.max(1, Math.abs(ya), Math.abs(yb)) ? 'same' : 'diff') : da ? 'a' : db ? 'b' : 'none';
+      var x = win[0] + (win[1] - win[0]) * (i + 0.5) / (N + 1), s = kind(x);
       if(cur && cur.s === s) cur.b = x; else { cur = { a: x, b: x, s: s }; pieces.push(cur); }
     }
     // single stray samples (an asymptote's neighbour) are absorbed
     pieces = pieces.filter(function(p, i){ return p.b > p.a || (i === 0 || i === pieces.length - 1) || pieces.length < 3; });
+    // each boundary found by bisection, then snapped to a round number when it is one
+    for(var j = 1; j < pieces.length; j++){
+      var lo = pieces[j - 1].b, hi = pieces[j].a, sl = pieces[j - 1].s;
+      for(var k = 0; k < 40; k++){ var m = (lo + hi) / 2; if(kind(m) === sl) lo = m; else hi = m; }
+      var bd = (lo + hi) / 2, rd = Math.round(bd * 20) / 20;
+      if(Math.abs(rd - bd) < 1e-6) bd = rd;
+      pieces[j - 1].b = bd; pieces[j].a = bd;
+    }
+    if(pieces.length){ pieces[0].a = win[0]; pieces[pieces.length - 1].b = win[1]; }
     return { ok: true, pieces: pieces, fa: fa, fb: fb };
   }
   var EXAMPLES = [

@@ -1,0 +1,56 @@
+/* Symbolic steps (precalculus/assets/tools/symbolic-steps.js). OWNED BY THIS TOOL ONLY
+   (builder T2). Loaded after pcalc-tools.css. The first expression is the
+   course green, the rewrite orange and dashed; the band under the graph is
+   green where they agree, orange where they differ, grey where only one is
+   defined. Light and dark. */
+.ss-card,.ls-root{--ss-a:var(--cink);--ss-b:#C25400;--ss-same:rgba(0,158,115,.22);--ss-diff:rgba(213,94,0,.28);--ss-one:rgba(94,94,94,.2);--ss-bgp:var(--white);--ss-off:rgba(213,94,0,.08);}
+:root[data-theme="dark"] .ss-card,:root[data-theme="dark"] .ls-root{--ss-b:#FF9A5C;--ss-same:rgba(79,209,170,.25);--ss-diff:rgba(255,154,92,.3);--ss-one:rgba(201,201,201,.18);--ss-off:rgba(255,154,92,.1);}
+.ss-stage{display:flex;flex-direction:column;gap:6px;flex:1;min-height:0;}
+.ss-plotwrap{position:relative;flex:1 1 0;min-height:220px;}
+.ss-card:not(.ls-root *) .ss-plotwrap{height:380px;flex:none;}
+.ss-svg{display:block;width:100%;height:100%;}
+.ss-bg{fill:var(--ss-bgp);stroke:var(--line);stroke-width:1;}
+.ss-grid line{stroke:var(--line);stroke-width:1;opacity:.7;}
+.ss-axis line,.ss-axis-l{stroke:var(--ink);stroke-width:1.4;opacity:.75;}
+.ss-tk text{fill:var(--muted);font:700 11px var(--font-ui);font-variant-numeric:tabular-nums;}
+.ss-tk .ss-axl{fill:var(--ink);font:800 11.5px var(--font-ui);}
+.ss-curve{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+.ss-curve.ss-a{stroke:var(--ss-a);}
+.ss-curve.ss-b{stroke:var(--ss-b);stroke-dasharray:9 6;stroke-width:3.2;}
+.ss-pc.is-same{fill:var(--ss-same);} .ss-pc.is-diff{fill:var(--ss-diff);} .ss-pc.is-a,.ss-pc.is-b{fill:var(--ss-one);} .ss-pc.is-none{fill:transparent;stroke:var(--line);}
+.ss-pct{fill:var(--ink);font:800 11px var(--font-ui);}
+.ss-legend{display:flex;flex-wrap:wrap;gap:2px 12px;justify-content:center;margin:0;font:700 12px var(--font-ui);color:var(--muted);}
+.ss-lg{display:inline-flex;align-items:center;gap:6px;}
+.ss-lg::before{content:"";display:inline-block;width:16px;height:10px;border-radius:3px;}
+.ss-lg-a::before{height:3px;background:var(--ss-a);} .ss-lg-b::before{height:0;border-top:3px dashed var(--ss-b);}
+.ss-lg-same::before{background:var(--ss-same);} .ss-lg-diff::before{background:var(--ss-diff);} .ss-lg-one::before{background:var(--ss-one);}
+.ss-lab{font:800 12px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--ss-bgp);stroke-width:3.5px;stroke-linejoin:round;}
+.ss-lab.ss-a{fill:var(--ss-a);} .ss-lab.ss-mut{fill:var(--muted);} .ss-lab.ss-ok{fill:var(--cink);} .ss-lab.ss-no{fill:#B34700;}
+.ss-hline{stroke:var(--ink);stroke-width:1.6;stroke-dasharray:6 4;opacity:.7;}
+.ss-drop{stroke:var(--cink);stroke-width:1.4;stroke-dasharray:2 3;}
+.ss-pt{fill:var(--ss-bgp);stroke:var(--cink);stroke-width:2.6;}
+.ss-pt.is-got{fill:var(--cink);}
+.ss-pt.is-out{fill:var(--ss-bgp);stroke:#D55E00;stroke-dasharray:3 2;}
+.ss-forbid{fill:var(--ss-off);}
+.ss-forbid-t{fill:#B34700 !important;font-size:11px !important;}
+.ss-circle{fill:none;stroke:var(--muted);stroke-width:1.5;}
+.ss-range{fill:none;stroke:var(--cink);stroke-width:6;stroke-linecap:round;opacity:.55;}
+.ss-ray{stroke:var(--cink);stroke-width:3;} .ss-ray-d{fill:var(--cink);}
+.ss-yours{stroke:#D55E00;stroke-width:2.4;stroke-dasharray:7 5;fill:none;} .ss-yours-d{fill:var(--ss-bgp);stroke:#D55E00;stroke-width:2.4;}
+.ss-yours-t{fill:#B34700 !important;}
+:root[data-theme="dark"] .ss-yours,:root[data-theme="dark"] .ss-yours-d{stroke:#F29A5C;} :root[data-theme="dark"] .ss-yours-t,:root[data-theme="dark"] .ss-lab.ss-no{fill:#F29A5C !important;}
+.ss-ctl{display:flex;flex-direction:column;gap:8px;}
+.ss-in{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;}
+.ss-in label{font:800 14px var(--font-ui);min-width:6.5em;}
+.ss-in input{min-height:44px;padding:6px 12px;border-radius:12px;border:2px solid var(--line);background:var(--white);color:var(--ink);font:700 16px var(--font-mono);min-width:0;}
+.ss-in input:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+.ss-pv{grid-column:2;min-height:1.4em;font-size:.95em;overflow-x:auto;}
+.ss-ex{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;}
+.ss-chip{flex:0 0 auto;font-family:var(--font-mono);font-size:13px;}
+.ss-figwrap{display:flex;flex-direction:column;flex:1;min-height:0;width:100%;}
+.ss-fig-plot{min-height:200px;}
+.ls-root .ls-drill-stage .ss-figwrap,.ls-root .ls-drill-stage .ss-fig-plot{flex:1 1 0;}
+.ss-figwrap:not(.ls-root *) .ss-fig-plot{height:280px;flex:none;}
+.ls-root.ls-phone .ss-legend{display:none;}
+.ls-root.ls-phone .ss-in{grid-template-columns:1fr;} .ls-root.ls-phone .ss-pv{grid-column:1;}
+.ss-ex-more{flex-wrap:wrap;margin-bottom:8px;}

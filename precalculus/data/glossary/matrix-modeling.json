@@ -1,0 +1,5 @@
+{
+ "transition-matrix": {
+  "def": "A matrix whose entry in row i, column j is the chance of moving from state j to state i in one step, so each column adds up to 1. A state vector lists how many (or what share) are in each state; one step later it is T times the state vector, n steps later Tⁿ times it, and one step earlier T⁻¹ times it."
+ }
+}

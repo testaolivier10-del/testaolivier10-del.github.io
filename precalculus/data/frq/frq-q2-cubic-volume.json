@@ -1,0 +1,140 @@
+{
+ "id": "frq-q2-cubic-volume",
+ "type": "modeling",
+ "title": "An open box folded from a sheet of cardboard",
+ "calc": true,
+ "points": 6,
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "polynomial-rates",
+  "linear-quadratic-rates",
+  "rates-of-change"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "3.A",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "An open box",
+  "text": "A packaging designer makes an open box from a rectangular sheet of cardboard $30$ centimeters long and $20$ centimeters wide. She cuts a square with sides of $x$ centimeters from each corner and folds up the sides. The table gives the volume $V(x)$ of the box, in cubic centimeters, for selected values of $x$.",
+  "table": {
+   "caption": "Volume V(x) of the open box, in cubic centimeters, for cut size x, in centimeters",
+   "cols": [
+    "$x$ (centimeters)",
+    "1",
+    "2",
+    "3"
+   ],
+   "rows": [
+    [
+     "$V(x)$ (cubic centimeters)",
+     "504",
+     "832",
+     "1008"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Write</b> an expression for $V(x)$, the volume of the box, in terms of $x$.",
+   "rubric": [
+    {
+     "point": "A correct product of the three dimensions",
+     "accept": [
+      "$V(x) = x(30 - 2x)(20 - 2x)$",
+      "$V(x) = 4x^3 - 100x^2 + 600x$"
+     ]
+    }
+   ],
+   "sample": "After the cuts, the base is $30 - 2x$ by $20 - 2x$ centimeters and the height is $x$ centimeters, so $V(x) = x(30 - 2x)(20 - 2x)$."
+  },
+  {
+   "label": "A(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "Use your expression to <b>find</b> the cut size $x$ that gives the greatest volume, and the greatest volume. Give your answers correct to three decimal places.",
+   "rubric": [
+    {
+     "point": "Both values correct to three decimal places, with units",
+     "accept": [
+      "$x \\approx 3.924$ centimeters and $V \\approx 1056.306$ cubic centimeters",
+      "truncated: $3.923$ and $1056.305$"
+     ]
+    }
+   ],
+   "sample": "Graph $y = x(30 - 2x)(20 - 2x)$ for $0 < x < 10$ and use the maximum feature: $x \\approx 3.924$ centimeters gives the greatest volume, $V \\approx 1056.306$ cubic centimeters."
+  },
+  {
+   "label": "B(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Find</b> the average rate of change of $V$ on the interval $[1, 3]$, with units. <b>Explain</b> what this value represents on the graph of $V$.",
+   "rubric": [
+    {
+     "point": "The value $252$ cubic centimeters per centimeter, identified as the slope of the secant line through $(1, V(1))$ and $(3, V(3))$",
+     "accept": [
+      "$\\frac{1008 - 504}{3 - 1} = 252$ cubic centimeters per centimeter; it is the slope of the secant line through $(1, 504)$ and $(3, 1008)$"
+     ]
+    }
+   ],
+   "sample": "The average rate of change of $V$ on $[1, 3]$ is $\\frac{V(3) - V(1)}{3 - 1} = \\frac{1008 - 504}{2} = 252$ cubic centimeters per centimeter. It is the slope of the secant line through $(1, 504)$ and $(3, 1008)$ on the graph of $V$."
+  },
+  {
+   "label": "B(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "Use the secant line from part B(i) to <b>estimate</b> $V(2)$.",
+   "rubric": [
+    {
+     "point": "An estimate from a point on the secant line",
+     "accept": [
+      "$504 + 252(2 - 1) = 756$ cubic centimeters",
+      "$1008 - 252 = 756$"
+     ]
+    }
+   ],
+   "sample": "The secant line is $y = 504 + 252(x - 1)$. At $x = 2$ it gives $504 + 252 = 756$, so $V(2) \\approx 756$ cubic centimeters."
+  },
+  {
+   "label": "C(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "Is the estimate in part B(ii) an overestimate or an underestimate of $V(2)$? <b>Give a reason</b> for your answer.",
+   "rubric": [
+    {
+     "point": "Underestimate, with a reason from the concavity of $V$ on $[1, 3]$",
+     "accept": [
+      "underestimate, because $V$ is concave down on $[1, 3]$, so the graph is above the secant line there",
+      "underestimate: the average rates on $[1, 2]$ and $[2, 3]$ are $328$ and $176$, decreasing, so $V$ is concave down on $[1, 3]$"
+     ]
+    }
+   ],
+   "sample": "An underestimate. On $[1, 3]$ the graph of $V$ is concave down: the average rates of change on $[1, 2]$ and $[2, 3]$ are $328$ and $176$ cubic centimeters per centimeter, which decrease. So the graph lies above the secant line on $[1, 3]$, and the secant line's value $756$ is below $V(2) = 832$."
+  },
+  {
+   "label": "C(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "The designer uses the model $V$ only for values of $x$ that make sense in this context. <b>Explain</b> what the largest possible value of $x$ is, and why the model cannot be used past it.",
+   "rubric": [
+    {
+     "point": "The bound $x = 10$ (or $x < 10$) with a reason from the dimensions of the sheet",
+     "accept": [
+      "$x < 10$, because the width $20 - 2x$ must be positive; at $x = 10$ the cuts use the whole $20$-centimeter width",
+      "for $x > 10$ the model uses a negative width $20 - 2x$, so its values (negative on $10 < x < 15$) describe no real box"
+     ]
+    }
+   ],
+   "sample": "$x$ must be less than $10$. The box's width is $20 - 2x$, which is $0$ at $x = 10$: the corner squares would use the whole width of the sheet, leaving no box. Past $x = 10$ the model uses a negative width (and gives negative volumes for $10 < x < 15$), which no real box has, so the context limits the domain to $0 < x < 10$."
+  }
+ ]
+}

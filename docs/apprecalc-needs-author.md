@@ -144,3 +144,28 @@ Sinusoid builder: the tide's period is 12 hours (real semidiurnal tides run abou
 scene's table is rounded to one decimal and a point counts as on the curve within 3% of the range plus 0.06 °C; the
 Explore sliders keep a ≥ 0 (a flipped model is reached with the shift, or with cosine under Details). Drill models are
 graded by evaluation on [0, 2·period], so any equivalent sine or cosine form is right. Confirm these are acceptable.
+
+### tools-t1-regression-methods: which calculator the regression keys follow (open, 2026-10-31, builder T1)
+
+Regression lab keys follow the TI-84 methods: ExpReg is least squares on ln y and LnReg on ln x, in the forms
+`y = a·b^x` and `y = a + b ln x`; SinReg is reported as `y = a sin(bx + c) + d`. Desmos fits `y = ab^x` by nonlinear
+least squares on y itself, so a student using Desmos gets slightly different constants and can miss the third decimal
+on the exponential drill (linear and quadratic agree on every calculator). Decide: name the TI method in the drill
+text, accept both, or drop exponential constants from the drill and keep only the prediction. The sinusoid is in
+Explore only (no drill keys), because calculators can return different but equivalent `c` values or local fits.
+
+### tools-t1-residual-pattern: the "pattern" verdict is a runs test (open, 2026-10-31, builder T1)
+
+Regression lab labels a residual plot "pattern" or "no clear pattern" by a runs test on the residual signs in x order
+(runs at or below the expected count minus one standard deviation). The validator checks every built data set: each
+set's own model reads "no clear pattern" and a linear fit to a curved set reads "pattern". A teacher should confirm
+the wording, and that a runs test is a fair stand-in for "look at the residual plot" on 8 to 12 points.
+
+### tools-t1-transformation-words: CED wording of dilations (open, 2026-10-31, builder T1)
+
+Function lab describes g(x) = a f(b(x − h)) + k in the order the changes act (b, h, then a, k) as "a horizontal
+dilation by a factor of 1/|b|", "a vertical dilation by a factor of |a|", "a reflection over the x-axis / y-axis", and
+"a horizontal (vertical) translation n units right/left (up/down)", with "(narrower)/(wider)" or "(taller)/(flatter)"
+added. Confirm against the CED's 1.12 language. Families unlock with their topics: exponential (2.3), log base 2
+(2.11), sine (3.4). The shared numeric slip notes (`diagnose` in pcalc-tool-math.js) can name "antiderivative" and
+"volume of revolution" in T1's number steps too (see shared-diagnose-words).

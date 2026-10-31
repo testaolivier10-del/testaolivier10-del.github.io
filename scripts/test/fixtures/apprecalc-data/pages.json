@@ -186,7 +186,7 @@
    "topic": "model-construction",
    "name": "Regression lab",
    "title": "Regression Lab",
-   "desc": "Fit linear, quadratic, cubic, exponential, logarithmic and sinusoidal models to data, read residual plots, choose a model and answer to three decimals.",
+   "desc": "Fit linear, quadratic, cubic, quartic, exponential, logarithmic and sinusoidal models to data, read residual plots, choose a model and answer to three decimals.",
    "blurb": "Fit a model, read the residuals, give three decimals.",
    "lede": "Fit a model to the data and let the residuals tell you if it fits.",
    "studio": true,
