@@ -1,0 +1,255 @@
+{
+ "about": "The AP Precalculus app pages. scripts/build-apprecalc.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in precalculus/assets/<script>, which mounts into #app. \"static\": true marks a generated page that is not an app (teachers.html). premium names the Premium feature (ApPrecalcCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/apprecalc-spec.md decision 2). tools[] are the ten trainers of docs/apprecalc-spec.md section 6, pre-registered in Phase 0: page precalculus/tools/<slug>.html, script precalculus/assets/tools/<slug>.js, model precalculus/assets/tools/math/<slug>.js (ApPrecalcMath.<camelSlug>), content precalculus/data/tools/<slug>.json, validator scripts/lib/apprecalc-tool-checks/<slug>.mjs, test scripts/test/apprecalc-tool-<slug>.test.mjs (docs/apprecalc-architecture.md, \"Tools\"). topic is the tool's context topic: the tool is built only when its data file exists and that topic is published. FREE OR PREMIUM is set here and only here: a tool with \"premium\": \"tools\" is Premium; function-lab, rate-of-change and unit-circle carry none and are free (docs/apprecalc-spec.md section 6, proposed; owner to confirm).",
+ "apps": [
+  {
+   "slug": "practice",
+   "premium": "question-bank",
+   "section": "practice",
+   "h1": "Practice",
+   "title": "Practice questions",
+   "desc": "Precalculus practice by unit, topic or skill: graphs and tables in stimulus sets, typed expressions graded by value, calculator and no-calculator questions.",
+   "card": "Drill a unit, a topic or a mathematical practice, with graph and table sets.",
+   "script": "pages/practice.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "review",
+   "premium": "review",
+   "section": "review",
+   "h1": "Review",
+   "title": "Spaced review",
+   "desc": "Your precalculus spaced review queue: every question you missed comes back just before you would forget it.",
+   "card": "Missed questions come back when you are about to forget them.",
+   "script": "pages/review.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "exams",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Exams",
+   "title": "Unit tests and practice exams",
+   "desc": "Timed precalculus unit tests and full practice exams in the May 2027 format: 29 + 13 multiple-choice, then the four free-response questions.",
+   "card": "Unit tests and full timed practice exams in the May 2027 four-part format.",
+   "script": "pages/exams.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "frq",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Free-response practice",
+   "title": "Free-response practice",
+   "desc": "Precalculus free-response practice in the four exam types, 6 points each, with a point-by-point rubric, a full-credit sample and a printable answer sheet.",
+   "card": "All four free-response types, with 6-point rubrics and sample answers.",
+   "script": "pages/frq.js",
+   "css": [
+    "pages/pages.css",
+    "../../assets/course/reading.css"
+   ]
+  },
+  {
+   "slug": "justify",
+   "premium": "justify",
+   "section": "exams",
+   "h1": "Make it specific",
+   "title": "Make it specific",
+   "desc": "Precalculus answers made specific enough to score: reasons tied to the given values, limit notation, secant slopes, concavity and the domain a context allows.",
+   "lede": "Write the answer, then check it against the rubric and two model answers: one that earns the point and one that loses it.",
+   "card": "Reasons tied to the given values, limit notation and rate wording, checked against a rubric.",
+   "script": "pages/justify.js",
+   "studio": true,
+   "css": [
+    "pages/pages.css",
+    "pages/entry.css"
+   ]
+  },
+  {
+   "slug": "cram",
+   "section": "exams",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Cram kit",
+   "title": "Cram kit",
+   "desc": "Precalculus cram plans counted back from your exam date: three or two weeks, day by day, weighted by unit, with timed mixed sets and practice exams.",
+   "lede": "A 3-week or 2-week plan counted back from your exam date, day by day: unit sheets and notes, a timed mixed set and one free-response question each study day, two full practice exams and rest days. Print it and tick the days off.",
+   "card": "3-week and 2-week plans to exam day, and timed mixed sets.",
+   "script": "pages/cram.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "flashcards",
+   "section": "practice",
+   "h1": "Flashcards",
+   "title": "Flashcards",
+   "desc": "Spaced-repetition precalculus flashcards built from the glossary, by unit and topic.",
+   "card": "Spaced-repetition cards from the glossary.",
+   "script": "pages/flashcards.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "tools",
+   "section": "tools",
+   "h1": "Tools",
+   "title": "Trainers",
+   "desc": "Precalculus trainers: function lab, rates of change, rational functions, exponentials and logs, regression, unit circle, sinusoids, Q4 steps and polar graphs.",
+   "card": "Trainers and drills, then the questions about what you did.",
+   "script": "pages/tools.js",
+   "css": [
+    "pages/pages.css",
+    "../../assets/course/reading.css"
+   ]
+  },
+  {
+   "slug": "dashboard",
+   "section": "dashboard",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Dashboard",
+   "title": "Your dashboard",
+   "desc": "Your precalculus mastery by unit, topic and mathematical practice, with every miss linked to the lesson that teaches it.",
+   "card": "Mastery by unit, topic and mathematical practice.",
+   "script": "pages/dashboard.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "search",
+   "section": "",
+   "h1": "Search",
+   "title": "Search the course",
+   "desc": "Search every precalculus lesson, notes page, glossary term and tool in the course.",
+   "script": "pages/search.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "teachers",
+   "section": "",
+   "h1": "For teachers",
+   "title": "For teachers",
+   "desc": "For precalculus teachers: stable share links, printable notes and unit sheets, and sharing pages to Google Classroom, with no new student data collected.",
+   "lede": "Share any notes page, lesson or unit sheet with a stable link. Students need no account, and nothing they do leaves their device unless they choose to sign in.",
+   "static": true
+  }
+ ],
+ "tools": [
+  {
+   "slug": "function-lab",
+   "kind": "simulator",
+   "topic": "transformations",
+   "name": "Function lab",
+   "title": "Function Lab",
+   "desc": "Every function type on one stage: drag the parameters and watch the graph, table, formula and words change together, with zeros, asymptotes and end behavior.",
+   "blurb": "Drag the parameters; graph, table and formula move together.",
+   "lede": "Drag a parameter and watch every representation change at once.",
+   "studio": true
+  },
+  {
+   "slug": "rate-of-change",
+   "kind": "simulator",
+   "topic": "rates-of-change",
+   "name": "Rate of change",
+   "title": "Rate of Change",
+   "desc": "Average rates of change as secant slopes over equal intervals, how those rates change, concavity, and the reasoning the modeling question asks for.",
+   "blurb": "Secant slopes over equal intervals, and what concavity says.",
+   "lede": "See average rates as secant slopes, then read concavity from them.",
+   "studio": true
+  },
+  {
+   "slug": "poly-rational",
+   "kind": "simulator",
+   "topic": "rational-holes",
+   "name": "Polynomials and rationals",
+   "title": "Polynomials and Rational Functions",
+   "desc": "Zeros and multiplicity, end behavior in limit notation, holes, vertical and horizontal asymptotes and sign charts, built from the factored form.",
+   "blurb": "Zeros, holes, asymptotes and end behavior from the factors.",
+   "lede": "Build a polynomial or rational function factor by factor.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "exp-log-lab",
+   "kind": "simulator",
+   "topic": "linear-vs-exponential",
+   "name": "Exponential and log lab",
+   "title": "Exponential and Log Lab",
+   "desc": "Exponential growth against linear growth (ratios against differences), logarithms as inverses, the log rules on a graph, and semi-log plots.",
+   "blurb": "Ratios versus differences, logs as inverses, semi-log plots.",
+   "lede": "Compare equal ratios with equal differences, then undo them with logs.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "regression-lab",
+   "kind": "simulator",
+   "topic": "model-construction",
+   "name": "Regression lab",
+   "title": "Regression Lab",
+   "desc": "Fit linear, quadratic, cubic, exponential, logarithmic and sinusoidal models to data, read residual plots, choose a model and answer to three decimals.",
+   "blurb": "Fit a model, read the residuals, give three decimals.",
+   "lede": "Fit a model to the data and let the residuals tell you if it fits.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "unit-circle",
+   "kind": "simulator",
+   "topic": "sine-cosine-tangent",
+   "name": "Unit circle",
+   "title": "Unit Circle",
+   "desc": "Radians as arc length, sine and cosine as coordinates on the circle, tangent as a slope, and the sine and cosine graphs unrolling as the angle turns.",
+   "blurb": "Sine, cosine and tangent from the circle, and the graphs unrolling.",
+   "lede": "Turn the angle and watch sine and cosine unroll into their graphs.",
+   "studio": true
+  },
+  {
+   "slug": "sinusoid-builder",
+   "kind": "simulator",
+   "topic": "sinusoidal-transformations",
+   "name": "Sinusoid builder",
+   "title": "Sinusoid Builder",
+   "desc": "Periodic models from data or a context: amplitude, period and b, phase shift and midline, with the five key points of one cycle.",
+   "blurb": "Amplitude, period, phase shift and midline from a context.",
+   "lede": "Build a sinusoid from its highs, lows and one cycle.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "symbolic-steps",
+   "kind": "drill",
+   "topic": "exp-log-equations",
+   "name": "Symbolic steps",
+   "title": "Symbolic Steps",
+   "desc": "Rewriting and solving step by step: a single logarithm, a single trigonometric term, equations quadratic in e to the x, and inverse trig with the right range.",
+   "blurb": "Q4 rewriting and solving, each step graded by value.",
+   "lede": "Rewrite and solve one step at a time, each step checked by value.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "polar-graphs",
+   "kind": "simulator",
+   "topic": "polar-curves",
+   "name": "Polar graphs",
+   "title": "Polar Graphs",
+   "desc": "Polar coordinates and curves drawn as the angle sweeps, linked to the graph of r against the angle, and how the distance from the origin changes.",
+   "blurb": "Curves drawn as the angle sweeps, linked to r against the angle.",
+   "lede": "Sweep the angle and watch the polar curve draw itself.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "vectors-matrices",
+   "kind": "simulator",
+   "topic": "parametric-functions",
+   "name": "Vectors and matrices",
+   "title": "Vectors and Matrices",
+   "desc": "Parametric motion, vectors and their sums, and 2 by 2 matrices as transformations of the plane. Beyond the exam: Unit 4 is not tested.",
+   "blurb": "Parametric motion, vectors and matrices as transformations.",
+   "lede": "Move a point with parameters, then transform the plane with a matrix.",
+   "studio": true,
+   "premium": "tools"
+  }
+ ]
+}

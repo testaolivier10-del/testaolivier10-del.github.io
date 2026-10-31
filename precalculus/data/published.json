@@ -1,0 +1,4 @@
+{
+ "about": "Chapters (units and the \"Algebra you need\" chapter) live on the site. A topic is built only when its lesson, notes and question file exist AND its chapter is listed here. A chapter is added once it passes its independent accuracy check and every check (docs/apprecalc-spec.md). Empty until launch: the course is hidden (spec section 5).",
+ "chapters": []
+}

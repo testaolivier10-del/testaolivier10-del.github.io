@@ -1,0 +1,61 @@
+{
+ "topic": "polar-rates",
+ "hook": "A runner covers more ground in some minutes than in others. Comparing how fast two quantities change together, over a few minutes, is the first step to describing any function.",
+ "prereq": [
+  {
+   "q": "What is the slope of the line through $(1, 2)$ and $(3, 8)$?",
+   "options": [
+    "$3$",
+    "$6$",
+    "$2$",
+    "$\\frac{1}{3}$"
+   ],
+   "correct": 0,
+   "why": "Rise over run: $\\frac{8 - 2}{3 - 1} = 3$.",
+   "review": "alg-lines"
+  },
+  {
+   "q": "In polar coordinates, what is $x$ for the point $(r, \\theta) = (2, 0)$?",
+   "options": [
+    "$2$",
+    "$0$",
+    "$-2$",
+    "$1$"
+   ],
+   "correct": 0,
+   "why": "$x = r\\cos\\theta = 2\\cos 0 = 2$.",
+   "review": "polar-coordinates"
+  }
+ ],
+ "figure": null,
+ "chain": [
+  {
+   "cause": "Pick two inputs $a$ and $b$",
+   "effect": "find the outputs $f(a)$ and $f(b)$"
+  },
+  {
+   "cause": "Divide the change in output by the change in input",
+   "effect": "the average rate of change on $[a, b]$"
+  },
+  {
+   "cause": "Shrink the interval around a point",
+   "effect": "the average rates estimate how fast $f$ changes there"
+  }
+ ],
+ "ideas": [
+  "The average rate of change is the slope of the secant line.",
+  "A positive rate means the output rises as the input rises."
+ ],
+ "misconception": {
+  "wrong": "The average rate of change is the average of the two outputs.",
+  "right": "It is the change in output divided by the change in input."
+ },
+ "check": [
+  "pcalc-polar-rates-1",
+  "pcalc-polar-rates-2",
+  "pcalc-polar-rates-3",
+  "pcalc-polar-rates-4",
+  "pcalc-polar-rates-9"
+ ],
+ "summary": "The average rate of change of $f$ on $[a, b]$ is $\\frac{f(b) - f(a)}{b - a}$, the slope of the secant line. Over small nearby intervals it compares how fast a function changes at two points."
+}

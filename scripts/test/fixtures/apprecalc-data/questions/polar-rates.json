@@ -1,0 +1,480 @@
+{
+ "stimuli": {
+  "polar-rates-s1": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = x^2$",
+   "plot": {
+    "label": "Graph of f(x) = x squared from x = 0 to 3, with the secant line through (1, 1) and (3, 9)",
+    "x": [
+     -0.5,
+     3.5
+    ],
+    "y": [
+     -1,
+     10
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^2",
+      "domain": [
+       0,
+       3.2
+      ],
+      "label": "f"
+     }
+    ],
+    "lines": [
+     {
+      "through": [
+       [
+        1,
+        1
+       ],
+       [
+        3,
+        9
+       ]
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       1
+      ]
+     },
+     {
+      "at": [
+       3,
+       9
+      ]
+     }
+    ]
+   }
+  },
+  "polar-rates-s2": {
+   "kind": "table",
+   "title": "Water in a tank",
+   "table": {
+    "caption": "Volume V(t) of water in a tank, in liters, at selected times t, in minutes",
+    "cols": [
+     "$t$ (minutes)",
+     "0",
+     "2",
+     "4",
+     "6"
+    ],
+    "rows": [
+     [
+      "$V(t)$ (liters)",
+      "10",
+      "16",
+      "26",
+      "40"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-polar-rates-1",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polar-rates-s1",
+   "q": "The graph shows $f(x) = x^2$ and a secant line. What is the average rate of change of $f$ on $[1, 3]$?",
+   "type": "single",
+   "options": [
+    "$4$",
+    "$8$",
+    "$2$",
+    "$3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The secant slope is $\\frac{f(3) - f(1)}{3 - 1} = \\frac{9 - 1}{2} = 4$.",
+    "options": [
+     "Change in output over change in input: $\\frac{8}{2} = 4$.",
+     "This is the change in output, $9 - 1$, not divided by the change in input.",
+     "This divides the change in input by itself; the output change is $8$.",
+     "This is the average of the endpoints $1$ and $3$, not a rate."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-2",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polar-rates-s1",
+   "q": "For the function in the graph, the average rates of change on $[0, 1]$, $[1, 2]$ and $[2, 3]$ are $1$, $3$ and $5$. What does this show?",
+   "type": "single",
+   "options": [
+    "The rate of change is increasing, so the graph is concave up",
+    "The rate of change is decreasing, so the graph is concave down",
+    "The function is decreasing on $[0, 3]$",
+    "The rate of change is constant"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Average rates over equal intervals that increase mean the graph is concave up.",
+    "options": [
+     "Rising rates over equal steps: concave up.",
+     "The rates rise, they do not fall.",
+     "The rates are positive, so the function is increasing.",
+     "They change by 2 each step, so they are not constant."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-3",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "expr",
+   "stimulus": "polar-rates-s1",
+   "q": "Write the average rate of change of $f(x) = x^2$ on $[x, x + 2]$ as an expression in $x$.",
+   "expr": {
+    "answer": "((x+2)^2 - x^2)/2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "lhs": "\\frac{f(x + 2) - f(x)}{2} =",
+    "mistakes": [
+     {
+      "expr": "(x+2)^2 - x^2",
+      "why": "Divide by the change in input, $2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Expand: $\\frac{(x + 2)^2 - x^2}{2} = \\frac{4x + 4}{2} = 2x + 2$."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-4",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "polar-rates-s1",
+   "q": "On an interval where a function is concave down, its average rates of change over equal consecutive intervals are",
+   "type": "single",
+   "options": [
+    "decreasing",
+    "increasing",
+    "constant",
+    "negative"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Concave down means the rate of change is decreasing.",
+    "options": [
+     "Decreasing rates: concave down.",
+     "Increasing rates mean concave up.",
+     "Constant rates mean a straight line.",
+     "The rates can be positive and still decrease."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-5",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polar-rates-s2",
+   "calc": true,
+   "q": "Using the table, what is the average rate of change of $V$ on $[2, 6]$?",
+   "type": "single",
+   "options": [
+    "$6$ liters per minute",
+    "$24$ liters per minute",
+    "$4$ liters per minute",
+    "$10$ liters per minute"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{V(6) - V(2)}{6 - 2} = \\frac{40 - 16}{4} = 6$ liters per minute.",
+    "options": [
+     "Change in volume over change in time: $\\frac{24}{4} = 6$.",
+     "This is the change in volume, not divided by the time.",
+     "This is the time interval, not a rate.",
+     "This is the rate from $t = 4$ to $t = 6$ halved the wrong way."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-6",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-rates-s2",
+   "calc": true,
+   "type": "numeric",
+   "q": "Use the table to find the average rate of change of $V$ on $[0, 6]$, correct to three decimal places.",
+   "numeric": {
+    "answer": 5,
+    "unit": "liters per minute",
+    "mistakes": [
+     {
+      "value": 30,
+      "why": "That is the change in volume; divide by the $6$ minutes."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{V(6) - V(0)}{6 - 0} = \\frac{40 - 10}{6} = 5.000$ liters per minute."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-7",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "polar-rates-s2",
+   "type": "numeric",
+   "q": "Solve $2^x = 7$ with a calculator. Give $x$ correct to three decimal places.",
+   "numeric": {
+    "answer": 2.807354922057604,
+    "mistakes": [
+     {
+      "value": 3.5,
+      "why": "That is $7 \\div 2$. Solve with a logarithm: $x = \\log_2 7$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x = \\log_2 7 = \\frac{\\ln 7}{\\ln 2} \\approx 2.807$."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-8",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "calc": true,
+   "stimulus": "polar-rates-s2",
+   "type": "numeric",
+   "q": "Use the table to find the average rate of change of $V$ on $[0, 2]$.",
+   "numeric": {
+    "answer": 3,
+    "unit": "liters per minute",
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "That is the change in volume; divide by the $2$ minutes."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{16 - 10}{2 - 0} = 3$ liters per minute."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-9",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "expr",
+   "q": "Rewrite $\\ln(x^2) - \\ln(x)$ as a single logarithm, for $x > 0$.",
+   "expr": {
+    "answer": "ln(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.1,
+     4
+    ],
+    "mistakes": [
+     {
+      "expr": "ln(x^2 - x)",
+      "why": "A difference of logarithms is the logarithm of a quotient, not of a difference."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The quotient rule: $\\ln(x^2) - \\ln(x) = \\ln\\left(\\frac{x^2}{x}\\right) = \\ln(x)$."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-10",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "expr",
+   "q": "Write $\\frac{\\pi}{2} - \\arccos(x)$ with a single inverse trigonometric function, for $-1 \\le x \\le 1$.",
+   "expr": {
+    "answer": "pi/2 - arccos(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1,
+     1
+    ],
+    "answerTex": "\\arcsin(x)",
+    "mistakes": [
+     {
+      "expr": "arccos(x)",
+      "why": "The two angles add up to $\\frac{\\pi}{2}$, so this is the other one."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $-1 \\le x \\le 1$, $\\arcsin(x) + \\arccos(x) = \\frac{\\pi}{2}$, so the answer is $\\arcsin(x)$."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-11",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "q": "What is the exact value of $\\log_4 2$?",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is $\\log_2 4$; here $4^x = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$4^{1/2} = 2$, so $\\log_4 2 = \\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-12",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A function is increasing on $[1, 5]$. Which statement about its average rate of change on $[1, 5]$ is correct?",
+   "type": "single",
+   "options": [
+    "It is positive",
+    "It is negative",
+    "It is zero",
+    "It depends on the interval's length"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An increasing function has a larger output at $5$ than at $1$, so the rate is positive.",
+    "options": [
+     "Output rises with input: positive.",
+     "Negative rates go with decreasing functions.",
+     "Zero would need equal outputs at the ends.",
+     "The sign is known from increasing."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-13",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "q": "Which functions have a constant average rate of change over every interval? Select all that apply.",
+   "options": [
+    "$f(x) = 3x - 2$",
+    "$g(x) = -x + 7$",
+    "$h(x) = x^2$",
+    "$k(x) = 2^x$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Only linear functions have a constant rate of change.",
+    "options": [
+     "Linear, with rate $3$.",
+     "Linear, with rate $-1$.",
+     "A quadratic's rates change by a constant amount.",
+     "An exponential's rates grow by a constant factor."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-14",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "q": "Put the steps for finding an average rate of change in order.",
+   "options": [
+    "Find the output at each end of the interval",
+    "Subtract the outputs",
+    "Subtract the inputs, in the same order",
+    "Divide the output change by the input change"
+   ],
+   "why": {
+    "correct": "Outputs first, then the two differences in the same order, then the quotient."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-15",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "The outputs at the right end of an interval increase while the left end is fixed. Predict each change.",
+   "variables": [
+    {
+     "name": "The change in output",
+     "answer": "up",
+     "why": "A larger right-end output makes the difference in outputs larger, with the input change fixed."
+    },
+    {
+     "name": "The change in input",
+     "answer": "none",
+     "why": "The interval's endpoints do not move, so the input change stays the same width."
+    }
+   ],
+   "why": {
+    "correct": "Only the numerator of the rate changes."
+   }
+  }
+ ]
+}
