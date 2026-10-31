@@ -88,8 +88,8 @@ One branch, `claude/apprecalc`, one PR at the end.
 |---|---|---|
 | R | Research: `docs/apprecalc-research/framework.md`, `market.md`; this spec | **done 2026-10-31** |
 | 0 | Fork Calculus AB: runtime `precalculus/assets/` (`pcalc-*`), generator, checks, tests, fixture, CED and dependency maps, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-10-31** (section 5b) |
-| 1 | Content: lessons, notes, banks (with stimulus sets), FRQs of all four types, glossary, figures | to do |
-| 2 | Trainers (section 6) | to do |
+| 1 | Content: lessons, notes, banks (with stimulus sets), FRQs of all four types, glossary, figures | **done 2026-10-31**: 69 topics (authors A-F, self-reports in `docs/apprecalc-reviews/self-*.md`), ~1,270 items, 19 FRQs, figures; content check 0 failing |
+| 2 | Trainers (section 6) | **done 2026-10-31**: all ten trainers (T1-T4), validators at 300 seeds per context, Playwright at 1280/360 px |
 | 3 | Two practice exams, unit tests, "Make it specific" prompts, formula page, cram kit | to do |
 | 4 | Independent accuracy checks per unit, tools, exams | to do |
 | Launch | Publish, generators, continuity pass, "eleven courses" wording, full CI with browser checks, PR | to do |

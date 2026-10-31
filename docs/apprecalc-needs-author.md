@@ -169,3 +169,24 @@ dilation by a factor of 1/|b|", "a vertical dilation by a factor of |a|", "a ref
 added. Confirm against the CED's 1.12 language. Families unlock with their topics: exponential (2.3), log base 2
 (2.11), sine (3.4). The shared numeric slip notes (`diagnose` in pcalc-tool-math.js) can name "antiderivative" and
 "volume of revolution" in T1's number steps too (see shared-diagnose-words).
+
+### tools-t2-single-form: Q4 "single term" answers are typed as their inside (open, 2026-10-31, builder T2)
+
+Symbolic steps asks for a single log, power, sine or tangent by its inside ("the expression is ln(B); type B"), so
+the form is one term by construction and B is graded by value on the problem's domain. The shared grader has no
+"form" check, so a fully typed `ln(...)` answer cannot be graded as a single term without one. If the owner wants
+students to type the whole single-term answer, the shared change is a `form` option on an `expr` step (for example
+`{ form: { outer: 'ln' } }` checked on the parse tree in `ApPrecalcExpr.grade`). A teacher should also confirm the
+domain step ("equal for x > 0, where the original is defined") matches how Q4 rubrics treat domain.
+
+### tools-t2-slant: slant asymptotes in the poly-rational trainer (open, 2026-10-31, builder T2)
+
+Polynomials and rationals draws a slant asymptote (labelled "slant y = mx + b") when the numerator's degree is one
+more than the denominator's and a vertical asymptote remains, and its end-behavior sentence says "no horizontal
+asymptote (a slant asymptote instead)". Confirm 1.7 covers slant asymptotes as we treat them (we never drill them;
+only Explore shows one). Holes on the x-axis ((x − 1)² over (x − 1)) are called holes, not zeros.
+
+### tools-t2-semilog-base: semi-log plots use base 10 only (open, 2026-10-31, builder T2)
+
+Exp-log lab's semi-log view and drill use log base 10 on the vertical axis (b = 10^slope, a = 10^intercept). Confirm
+the CED (2.15) does not expect natural-log semi-log plots too; adding them is one option in the model.
