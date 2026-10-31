@@ -218,7 +218,7 @@
     return { ctx: ctx.id, topic: ctx.topic, type: 'tabular',
       text: H('<p>Find $\\int ' + itex + '\\,dx$ with the tabular method: differentiate $x^2$ down the D column until it is 0, integrate $' + Fm.gtex + '$ down the I column, and add the diagonal products with alternating signs.</p>'),
       steps: [
-        stepExpr('ti', H('The third antiderivative of $' + Fm.gtex + '$ (the I entry beside the D entry $2$)'), I3, { vars: ['x'], domain: [-2, 2], mode: 'exact', mistakes: i3Mis }, { lhs: 'I_3 =', practice: '1.E', level: 'apply' }),
+        stepExpr('ti', H('The third antiderivative of $' + Fm.gtex + '$ (the last entry of the I column, one row below the D entry $2$)'), I3, { vars: ['x'], domain: [-2, 2], mode: 'exact', mistakes: i3Mis }, { lhs: 'I_3 =', practice: '1.E', level: 'apply' }),
         stepChoice('ts', H('The signs on the three diagonal products'), sh.options, sh.correct, sh.why, { practice: '1.E', level: 'apply' }),
         stepExpr('tr', H('$\\int ' + itex + '\\,dx =$'), ans, { vars: ['x'], domain: [-2, 2], mode: 'constant', mistakes: aMis }, { practice: '1.E', level: 'apply', hint: H('$x^2 \\cdot I_1 - 2x \\cdot I_2 + 2 \\cdot I_3 + C$.') })
       ],
