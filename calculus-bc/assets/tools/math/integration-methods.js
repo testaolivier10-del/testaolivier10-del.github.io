@@ -42,6 +42,7 @@
   function times(pre, t){ return t.charAt(0) === '-' ? '-' + pre + '*' + t.slice(1) : pre + '*' + t; }
   function inner(a){ return a === 1 ? 'x' : a === -1 ? '-x' : a + 'x'; }
   function istr(a){ return a === 1 ? 'x' : a === -1 ? '-x' : a + 'x'; }
+  function linT(p){ return p === 0 ? 'x' : p > 0 ? 'x − ' + p : 'x + ' + (-p); }
   function lin(p){ return p === 0 ? 'x' : p > 0 ? 'x - ' + p : 'x + ' + (-p); }
   function cl(v){ return Math.abs(v) < 1e-12 ? 0 : +(+v).toPrecision(12); }
 
@@ -189,7 +190,7 @@
       value = cl(Fx(o.B) - Fx(o.A));
       var uvOnly = (o.kind === 'ln') ? Math.pow(o.B, o.n + 1) * Math.log(o.B) / (o.n + 1) : (function(){ var I1 = M.fn('x*(' + o.v + ')', ['x']); return I1(o.B) - I1(o.A); })();
       steps.push(stepNum('pd', H('$\\int_{' + o.Atex + '}^{' + o.Btex + '} ' + o.itex + '\\,dx$ (exact, or to three decimal places)'), val(value, [
-        { value: Fx(o.B), why: 'Evaluate at both bounds: F(' + o.Btex.replace(/\\frac\{(\w+)\}\{(\w+)\}/, '$1/$2').replace('\\pi', 'π') + ') − F(' + o.Atex + ').' },
+        { value: Fx(o.B), why: H('Evaluate at both bounds: $F(' + o.Btex + ') - F(' + o.Atex + ')$.') },
         { value: uvOnly, why: 'That is only [uv] between the bounds. Subtract the integral of v du between the same bounds.' }]), { d: 3, practice: '1.E', level: 'apply' }));
       sol.push(H('$\\int_{' + o.Atex + '}^{' + o.Btex + '} ' + o.itex + '\\,dx = \\left[' + o.atex + '\\right]_{' + o.Atex + '}^{' + o.Btex + '} \\approx ' + M.fixed(value, 3) + '$.'));
     }
@@ -200,9 +201,17 @@
   }
 
   /* ------------------------------------------------------------ tabular */
+  /* x^2·I1 − 2x·I2 + 2·I3 with each coefficient reduced: x^2*e^(2x)/2 - x*e^(2x)/2 + e^(2x)/4. */
+  function tabAns(kind, a){
+    var cyc = kind === 's' ? [['cos', -1], ['sin', -1], ['cos', 1]] : kind === 'c' ? [['sin', 1], ['cos', -1], ['sin', -1]] : null, s = istr(a);
+    function g(k){ return cyc ? cyc[k - 1][0] + '(' + s + ')' : 'e^(' + s + ')'; }
+    function sg(k){ return cyc ? cyc[k - 1][1] : 1; }
+    var terms = [cmul(sg(1), a, 'x^2*' + g(1)), cmul(-2 * sg(2), a * a, 'x*' + g(2)), cmul(2 * sg(3), a * a * a, g(3))];
+    return terms.reduce(function(acc, t){ return acc ? acc + (t.charAt(0) === '-' ? ' - ' + t.slice(1) : ' + ' + t) : t; }, '');
+  }
   function genTabular(r, ctx){
     var kind = r.pick(['e', 'e', 's', 'c']), a = r.pick(kind === 'e' ? [1, 2, 3, -1] : [1, 2, 3]), Fm = fam(kind, a);
-    var ans = plus(plus(times('x^2', Fm.I(1)), -1, times('2x', Fm.I(2))), 1, times('2', Fm.I(3)));
+    var ans = tabAns(kind, a);
     var itex = 'x^2' + Fm.gtex;
     var I3 = Fm.I(3);
     var i3Mis = [];
@@ -245,9 +254,9 @@
       return { ctx: ctx.id, topic: ctx.topic, type: 'partial',
         text: H('<p>Find $\\int ' + itex + '\\,dx$ by partial fractions: ' + (expanded ? 'the denominator factors as $' + fac.replace(/\(x\)/g, 'x') + '$, so ' : '') + 'write $' + itex + ' = \\frac{A}{' + lin(p) + '} + \\frac{B}{' + lin(q) + '}$.</p>'),
         steps: [
-          stepNum('fa', H('$A$ (over $' + lin(p) + '$)'), M.cell(A, 1e-9, [{ value: B, why: 'That is B, the coefficient over x ' + (q < 0 ? '+ ' + (-q) : '− ' + q) + '. Cover up x ' + (p < 0 ? '+ ' + (-p) : '− ' + p) + ' and put x = ' + p + ' into what is left.' },
+          stepNum('fa', H('$A$ (over $' + lin(p) + '$)'), M.cell(A, 1e-9, [{ value: B, why: 'That is B, the coefficient over ' + linT(q) + '. Cover up ' + linT(p) + ' and put x = ' + p + ' into what is left.' },
             { value: N(-p) / (-p - q), why: 'Put in the zero of the covered factor: x = ' + p + ', not x = ' + (-p) + '.' }], 1e-6), { d: 0, practice: '1.E', level: 'apply', hint: H('Cover up $' + lin(p) + '$ and put $x = ' + p + '$ into the rest: $A = \\frac{' + pfNum(c, d) + '}{' + lin(q) + '}$ at $x = ' + p + '$.') }),
-          stepNum('fb', H('$B$ (over $' + lin(q) + '$)'), M.cell(B, 1e-9, [{ value: A, why: 'That is A. Cover up x ' + (q < 0 ? '+ ' + (-q) : '− ' + q) + ' and put x = ' + q + ' into the rest.' },
+          stepNum('fb', H('$B$ (over $' + lin(q) + '$)'), M.cell(B, 1e-9, [{ value: A, why: 'That is A. Cover up ' + linT(q) + ' and put x = ' + q + ' into the rest.' },
             { value: N(-q) / (-q - p), why: 'Put in the zero of the covered factor: x = ' + q + ', not x = ' + (-q) + '.' }], 1e-6), { d: 0, practice: '1.E', level: 'apply' }),
           stepExpr('fr', H('$\\int ' + itex + '\\,dx =$'), ans, { vars: ['x'], domain: dom, mode: 'constant', mistakes: [
             { expr: A + '*ln(' + lin(p) + ') + ' + B + '*ln(' + lin(q) + ')', why: 'Keep the absolute values: ln|x − a| is an antiderivative of 1/(x − a) on both sides of a.' },
@@ -281,7 +290,7 @@
       var pow = function(v){ return 'b^' + (e1.d === 1 ? '(' + e1.n + ')' : '(' + e1.n + '/' + e1.d + ')'); };
       var Fa = p === 1 ? k * Math.log(a) : k * Math.pow(a, 1 - p) / (1 - p);
       var co = fstr(k * e1.d, e1.n);   // k / (1 - p)
-      if(p === 1){ o.Fb = o.inf ? k + '*ln(b) - ' + k + '*ln(' + a + ')' : k + '*ln(' + a + ') - ' + k + '*ln(b)'; o.Fbtex = o.inf ? k + '\\ln b - ' + k + '\\ln ' + a : k + '\\ln ' + a + ' - ' + k + '\\ln b'; }
+      if(p === 1){ var la = a === 1 ? '' : k + '*ln(' + a + ')'; o.Fb = o.inf ? k + '*ln(b)' + (la ? ' - ' + la : '') : (la ? la + ' - ' : '-') + k + '*ln(b)'; o.Fbtex = o.inf ? k + '\\ln b' + (la ? ' - ' + k + '\\ln ' + a : '') : (la ? k + '\\ln ' + a + ' - ' : '-') + k + '\\ln b'; }
       else { o.Fb = o.inf ? co + '*' + pow() + ' - (' + cl(Fa) + ')' : '(' + cl(Fa) + ') - ' + co + '*' + pow(); var bt = 'b^{' + ftex(e1.n, e1.d) + '}'; o.Fbtex = o.inf ? ctex(k * e1.d, e1.n, bt, true) + ' - ' + '\\left(' + ftex(Math.round(Fa * 1e6), 1e6) + '\\right)' : ''; }
       o.conv = o.inf ? p > 1 : p < 1;
       o.value = o.conv ? (o.inf ? -Fa : Fa) : null;
@@ -395,8 +404,8 @@
     }
     t = t.replace(/ln\(\|([^|]*)\|\)/g, 'ln|$1|')
       .replace(/(\d)\*\((ln\|[^|]*\|)\)/g, '$1 $2')
-      .replace(/\^1(?![\d.\/])/g, '')
       .replace(/\/1(?![\d.])/g, '')
+      .replace(/\^1(?![\d.\/])/g, '')
       .replace(/(^|[\s(])\((-?\d+(?:\.\d+)?)\)(?![\^*(\w])/g, '$1$2')
       .replace(/\+\s*-\s*/g, '- ').replace(/-\s+-\s*/g, '+ ')
       .replace(/(^|[^\w.)|])1\*(?=[a-z(|])/g, '$1')
@@ -405,6 +414,8 @@
       .replace(/(^|[^\^\w.])(\d+)\*([a-z(|])/g, '$1$2$3')
       .replace(/(^|[^\^\w.])(\d+)?([a-z])\^\(-1\)/g, function(m, p, c, v){ return p + (c || '1') + '/' + v; })
       .replace(/(^|[^\^\w.])(\d+)?([a-z])\^\(-1\/2\)/g, function(m, p, c, v){ return p + (c || '1') + '/sqrt(' + v + ')'; })
+      .replace(/\((\d+)\/(\d+)\)\*(\([^()]*\)\^\d+)/g, function(m, n, q, v){ return (n === '1' ? '' : n) + v + '/' + q; })
+      .replace(/(^|[^a-z])([a-z])\*(?=[a-df-z]\b|\()/g, '$1$2')
       .replace(/^\+\s*/, '').trim();
     if(t === s) return s;
     try{ var c = M.compare(t, s, { vars: E.vars, mode: 'exact', domain: E.domain }); return c && c.valid && c.equal ? t : s; }catch(e){ return s; }

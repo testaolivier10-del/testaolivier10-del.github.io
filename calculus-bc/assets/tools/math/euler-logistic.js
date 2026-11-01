@@ -342,11 +342,11 @@
       var steps = [
         stepNum('cap', H('The carrying capacity'), exact(L, F.capMis.concat([{ value: half, why: 'That is half the carrying capacity, where the growth is fastest. The carrying capacity is where the rate returns to 0.' }])), { d: 0, practice: '2.D', level: 'apply', hint: H('Find the positive value of $' + V + '$ that makes $\\frac{d' + V + '}{dt} = 0$.') }),
         stepNum('lim', H('$\\lim_{t \\to \\infty} ' + Vt + '$, given $' + V + '(0) = ' + tn(P0) + '$'), exact(L, [{ value: P0, why: 'That is where it starts. A logistic solution with ' + V + '(0) > 0 approaches the carrying capacity.' }, { value: half, why: 'That is where it grows fastest. It keeps growing past it, toward the carrying capacity.' }, { value: 0, why: 'Only the solution that starts at 0 stays at 0; this one starts at ' + tn(P0) + '.' }]), { d: 0, practice: '3.D', level: 'apply' }),
-        stepNum('half', H('The value of $' + V + '$ where ' + noun + ' grows fastest'), exact(half, [{ value: L, why: 'At the carrying capacity the rate is 0. The rate kP(L − P) is a parabola in ' + V + ', largest halfway between its zeros 0 and ' + L + '.' }, { value: P0, why: 'That is the starting value. The rate is largest at half the carrying capacity.' }]), { d: dec(half), practice: '2.D', level: 'apply' }),
+        stepNum('half', H('The value of $' + V + '$ where ' + noun + ' grows fastest'), exact(half, [{ value: L, why: 'At the carrying capacity the rate is 0. The rate k' + V + '(L − ' + V + ') is a parabola in ' + V + ', largest halfway between its zeros 0 and ' + L + '.' }, { value: P0, why: 'That is the starting value. The rate is largest at half the carrying capacity.' }]), { d: dec(half), practice: '2.D', level: 'apply' }),
         stepNum('rate', H('The largest value of $\\frac{d' + V + '}{dt}$ (in ' + esc(ctx.rateUnit || 'per ' + u.replace(/s$/, '')) + ')'), exact(maxR, [{ value: r0, why: 'That is the rate at the start. Put ' + V + ' = ' + tn(half) + ' into the equation.' }, { value: F.rate(L), why: 'At the carrying capacity the rate is 0. Put ' + V + ' = ' + tn(half) + ' into the equation.' }, { value: 2 * maxR, why: 'Check the arithmetic: put ' + V + ' = ' + tn(half) + ' into the equation.' }]), { d: dec(maxR), practice: '1.E', level: 'apply' }),
         stepChoice('shape', H('Near $t = 0$, the graph of $' + Vt + '$ is'), sh.idx.map(function(i){ return shapes[ord[i]]; }), sh.correct, sh.idx.map(function(i){ return H(whyS(ord[i])); }), { practice: '3.D', level: 'analyze' })
       ];
-      var fac = F.form === 0 ? 'the factor $1 - \\frac{' + V + '}{' + L + '}$ is 0 at $' + V + ' = ' + L + '$' : F.form === 1 ? 'the factor $' + L + ' - ' + V + '$ is 0 at $' + V + ' = ' + L + '$' : 'factor: $' + F.tex + ' = ' + tn(F.b) + V + '(' + L + ' - ' + V + ')$, zero at $' + V + ' = ' + L + '$';
+      var fac = F.form === 0 ? 'the factor $1 - \\frac{' + V + '}{' + L + '}$ is 0 at $' + V + ' = ' + L + '$' : F.form === 1 ? 'the factor $' + L + ' - ' + V + '$ is 0 at $' + V + ' = ' + L + '$' : '(factoring, $' + F.tex + ' = ' + tn(F.b) + V + '(' + L + ' - ' + V + ')$) at $' + V + ' = ' + L + '$';
       return { ctx: ctx0.id, topic: ctx0.topic, type: 'logistic', de: F.s, story: ctx.sid || null,
         text: H('<p>' + esc(ctx.story || 'A population') + ': $\\frac{d' + V + '}{dt} = ' + F.tex + '$, where $' + V + '$ is ' + esc(noun) + ' and $t$ is in ' + esc(u) + '. At $t = 0$, $' + V + ' = ' + tn(P0) + '$.</p>'),
         steps: steps,
@@ -379,8 +379,8 @@
     }
     t = t.replace(/ln\(\|([^|]*)\|\)/g, 'ln|$1|')
       .replace(/(\d)\*\((ln\|[^|]*\|)\)/g, '$1 $2')
-      .replace(/\^1(?![\d.\/])/g, '')
       .replace(/\/1(?![\d.])/g, '')
+      .replace(/\^1(?![\d.\/])/g, '')
       .replace(/(^|[\s(])\((-?\d+(?:\.\d+)?)\)(?![\^*(\w])/g, '$1$2')
       .replace(/\+\s*-\s*/g, '- ').replace(/-\s+-\s*/g, '+ ')
       .replace(/(^|[^\w.)|])1\*(?=[a-z(|])/g, '$1')
@@ -389,6 +389,8 @@
       .replace(/(^|[^\^\w.])(\d+)\*([a-z(|])/g, '$1$2$3')
       .replace(/(^|[^\^\w.])(\d+)?([a-z])\^\(-1\)/g, function(m, p, c, v){ return p + (c || '1') + '/' + v; })
       .replace(/(^|[^\^\w.])(\d+)?([a-z])\^\(-1\/2\)/g, function(m, p, c, v){ return p + (c || '1') + '/sqrt(' + v + ')'; })
+      .replace(/\((\d+)\/(\d+)\)\*(\([^()]*\)\^\d+)/g, function(m, n, q, v){ return (n === '1' ? '' : n) + v + '/' + q; })
+      .replace(/(^|[^a-z])([a-z])\*(?=[a-df-z]\b|\()/g, '$1$2')
       .replace(/^\+\s*/, '').trim();
     if(t === s) return s;
     try{ var c = M.compare(t, s, { vars: E.vars, mode: 'exact', domain: E.domain }); return c && c.valid && c.equal ? t : s; }catch(e){ return s; }

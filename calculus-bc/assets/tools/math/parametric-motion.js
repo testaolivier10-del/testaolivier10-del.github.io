@@ -275,7 +275,7 @@
           ['neither: the curve has an inflection point there', 'An inflection point needs $\\frac{d^2y}{dx^2}$ to change sign; here it is ' + sgnWord(d2) + '.']
         ], '3.E')
       ];
-      var sol = ['$' + D + ' = \\frac{dy/dt}{dx/dt} = \\frac{' + tx(polyStr([3 * b, 0, c])) + '}{2t}$.', '$\\frac{d}{dt}\\left(' + D + '\\right) = ' + n(1.5 * b) + (c > 0 ? ' - ' : ' + ') + '\\frac{' + n(Math.abs(c)) + '}{2t^2}$, which is $' + f3(dd) + '$ at $t = ' + T0 + '$.',
+      var sol = ['$' + D + ' = \\frac{dy/dt}{dx/dt} = \\frac{' + tx(polyStr([3 * b, 0, c])) + '}{2t}$.', '$\\frac{d}{dt}\\left(' + D + '\\right) = ' + n(1.5 * b) + (c > 0 ? ' - ' : ' + ') + '\\frac{' + n(c % 2 ? Math.abs(c) : Math.abs(c) / 2) + '}{' + (c % 2 ? '2t^2' : 't^2') + '}$, which is $' + f3(dd) + '$ at $t = ' + T0 + '$.',
         '$\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{' + f3(dd) + '}{' + n(2 * t0) + '} \\approx ' + f3(d2) + '$.', 'It is ' + sgnWord(d2) + ', so the curve is concave ' + (up ? 'up' : 'down') + ' at $t = ' + T0 + '$.'];
       return { text: text, steps: steps, solution: sol, fig: figOf({ x: xs, y: ys }, t0 > 0 ? 0.25 : -3, t0 > 0 ? 3 : -0.25, { mark: t0 }),
         values: { fam: fam, given: { x: xs, y: ys }, t0: t0, dd: dd, d2: d2, dydx: dyk } };
@@ -283,7 +283,7 @@
     var A = r.pick([2, 3, 4]), B = r.pick([2, 3, 5].filter(function(q){ return q !== A; }));
     var tp = r.pick([[1, 6], [1, 4], [1, 3], [1, 2], [2, 3], [3, 4], [5, 6]]), T = piT(tp[0], tp[1]), t1 = T.v, sn = Math.sin(t1);
     var dd2 = B / A / (sn * sn), d22 = -B / (A * A * sn * sn * sn);
-    var xs2 = co(A, 'cos(t)'), ys2 = co(B, 'sin(t)'), key2 = '-(' + B + 'cos(t))/(' + A + 'sin(t))';
+    var xs2 = co(A, 'cos(t)'), ys2 = co(B, 'sin(t)'), g2 = A % 2 || B % 2 ? 1 : 2, key2 = '-' + (B / g2 === 1 ? 'cos(t)' : '(' + B / g2 + 'cos(t))') + '/(' + (A / g2 === 1 ? '' : A / g2) + 'sin(t))';
     var text2 = H('<p>A curve is given by $x(t) = ' + tx(xs2) + '$ and $y(t) = ' + tx(ys2) + '$ for $0 < t < \\pi$.</p>');
     var mis2 = [[dd2, 'That is $\\frac{d}{dt}\\left(' + D + '\\right)$. Divide it by $' + DXT + ' = -' + A + '\\sin t$.']];
     if(tp[1] !== 2) mis2.push([(B / A) * Math.tan(t1), 'That is $\\frac{y\'\'(t)}{x\'\'(t)}$, which is not the second derivative.']);

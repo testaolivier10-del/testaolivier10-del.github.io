@@ -35,6 +35,8 @@
     for(var d = 1; d <= 5040; d++) if(Math.abs(v * d - Math.round(v * d)) < 1e-9 * Math.max(1, Math.abs(v * d))) return { n: Math.round(v * d), d: d };
     return null;
   }
+  /* tn in brackets when negative, for a factor after a dot: 6 \cdot (-1). */
+  function tp(v){ return v < 0 ? '\\left(' + tn(v) + '\\right)' : tn(v); }
   function tn(v){ var f = fracOf(v); if(f && f.d === 1) return String(f.n); if(f) return (f.n < 0 ? '-' : '') + '\\frac{' + Math.abs(f.n) + '}{' + f.d + '}'; return String(+v.toFixed(4)); }
   // a number in the student syntax (for expression keys): 3, -1/6
   function en(v){ var f = fracOf(v); if(f && f.d === 1) return String(f.n); if(f) return '(' + f.n + '/' + f.d + ')'; return String(v); }
@@ -153,7 +155,7 @@
       ], { practice: '3.D', level: 'analyze' }, codes)
     ];
     return { ctx: ctx.id, topic: ctx.topic, type: 'coef', text: H('<p>The fourth-degree Taylor polynomial for $f$ about $x = ' + c + '$ is $P_4(x) = ' + Pg.tex + '$.</p>'),
-      steps: steps2, solution: [H('The coefficient of $' + xc(c) + '^k$ is $\\frac{f^{(k)}(' + c + ')}{k!}$, so $f^{(k)}(' + c + ') = k! \\cdot$ coefficient.'), H('$f\'\'(' + c + ') = 2 \\cdot ' + tn(a[2]) + ' = ' + tn(2 * a[2]) + '$ and $f\'\'\'(' + c + ') = 6 \\cdot ' + tn(a[3]) + ' = ' + tn(6 * a[3]) + '$.'), H('No linear term: $f\'(' + c + ') = 0$. With $f\'\'(' + c + ') ' + (mn ? '> 0' : '< 0') + '$, $f$ has a local ' + (mn ? 'minimum' : 'maximum') + ' at $x = ' + c + '$.')],
+      steps: steps2, solution: [H('The coefficient of $' + xc(c) + '^k$ is $\\frac{f^{(k)}(' + c + ')}{k!}$, so $f^{(k)}(' + c + ') = k! \\cdot$ coefficient.'), H('$f\'\'(' + c + ') = 2 \\cdot ' + tp(a[2]) + ' = ' + tn(2 * a[2]) + '$ and $f\'\'\'(' + c + ') = 6 \\cdot ' + tp(a[3]) + ' = ' + tn(6 * a[3]) + '$.'), H('No linear term: $f\'(' + c + ') = 0$. With $f\'\'(' + c + ') ' + (mn ? '> 0' : '< 0') + '$, $f$ has a local ' + (mn ? 'minimum' : 'maximum') + ' at $x = ' + c + '$.')],
       fig: { kind: 'coef', c: c, cs: a }, chk: { v: 'rev', c: c, a: a }, codes: codes };
   }
 
@@ -213,7 +215,7 @@
       var list = [{ code: F.code, html: HOW[F.code], why: 'Right: ' + F.how }].concat(shuffle(r, other.length).slice(0, 3).map(function(i){ return { code: other[i], html: HOW[other[i]], why: 'That gives a different function. ' + F.how }; }));
       steps.push(choice(r, 'how', H('How do you get the Maclaurin series of $' + F.tex + '$ from a series you know?'), list, { practice: '1.E', level: 'apply' }, codes));
     }
-    steps.push(stepNum('co', H('The coefficient of $x^' + m + '$ in the Maclaurin series for $' + F.tex + '$'), cellX(am, F.slips(m)), { d: 3, hint: H('Exact, like ' + (fracOf(am) && fracOf(am).d > 1 ? '-4/3' : '2') + ', or three decimal places.') }));
+    steps.push(stepNum('co', H('The coefficient of $x^' + m + '$ in the Maclaurin series for $' + F.tex + '$'), cellX(am, F.slips(m).map(function(x){ return { value: x.value, why: H(x.why) }; })), { d: 3, hint: H('Exact, like ' + (fracOf(am) && fracOf(am).d > 1 ? '-4/3' : '2') + ', or three decimal places.') }));
     steps.push(stepExpr('Pn', H('Write the Taylor polynomial of degree ' + n + ' for $' + F.tex + '$ about $x = 0$.'), P.s, { vars: ['x'], domain: [-0.5, 0.5], mistakes: mistakes }, { lhs: 'P_' + n + '(x) =', hint: H('Term by term, up to $x^' + n + '$; a polynomial, so no "+ ...". Type fractions with /, as in x^3/6.') }));
     steps.push(stepNum('dm', H('Find $f^{(' + m + ')}(0)$ for $f(x) = ' + F.tex + '$.'), cellX(am * fact(m), [{ value: am, why: H('That is the coefficient, $\\frac{f^{(' + m + ')}(0)}{' + m + '!}$: multiply by $' + m + '! = ' + fact(m) + '$.') }, { value: am * m, why: H('Multiply by $' + m + '! = ' + fact(m) + '$, not by ' + m + '.') }]), { d: 3, hint: H('The coefficient of $x^' + m + '$ is $\\frac{f^{(' + m + ')}(0)}{' + m + '!}$.') }));
     return { ctx: ctx.id, topic: ctx.topic, type: 'maclaurin',
@@ -335,8 +337,8 @@
     }
     t = t.replace(/ln\(\|([^|]*)\|\)/g, 'ln|$1|')
       .replace(/(\d)\*\((ln\|[^|]*\|)\)/g, '$1 $2')
-      .replace(/\^1(?![\d.\/])/g, '')
       .replace(/\/1(?![\d.])/g, '')
+      .replace(/\^1(?![\d.\/])/g, '')
       .replace(/(^|[\s(])\((-?\d+(?:\.\d+)?)\)(?![\^*(\w])/g, '$1$2')
       .replace(/\+\s*-\s*/g, '- ').replace(/-\s+-\s*/g, '+ ')
       .replace(/(^|[^\w.)|])1\*(?=[a-z(|])/g, '$1')
@@ -345,6 +347,8 @@
       .replace(/(^|[^\^\w.])(\d+)\*([a-z(|])/g, '$1$2$3')
       .replace(/(^|[^\^\w.])(\d+)?([a-z])\^\(-1\)/g, function(m, p, c, v){ return p + (c || '1') + '/' + v; })
       .replace(/(^|[^\^\w.])(\d+)?([a-z])\^\(-1\/2\)/g, function(m, p, c, v){ return p + (c || '1') + '/sqrt(' + v + ')'; })
+      .replace(/\((\d+)\/(\d+)\)\*(\([^()]*\)\^\d+)/g, function(m, n, q, v){ return (n === '1' ? '' : n) + v + '/' + q; })
+      .replace(/(^|[^a-z])([a-z])\*(?=[a-df-z]\b|\()/g, '$1$2')
       .replace(/^\+\s*/, '').trim();
     if(t === s) return s;
     try{ var c = M.compare(t, s, { vars: E.vars, mode: 'exact', domain: E.domain }); return c && c.valid && c.equal ? t : s; }catch(e){ return s; }

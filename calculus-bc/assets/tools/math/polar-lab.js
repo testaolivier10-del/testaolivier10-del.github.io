@@ -207,8 +207,11 @@
           [PI * a * a / 4, 'Divide by ' + k + ': with $\\sin^2(' + k + '\\theta)$ or $\\cos^2(' + k + '\\theta)$, the petal is only $\\frac{\\pi}{' + k + '}$ wide.']
         ], { hint: 'Exact (like 9pi/8) or to three decimal places.' })
       ];
-      sol = ['$r = 0$ at $\\theta = ' + L[0].tex + '$ and $\\theta = ' + L[1].tex + '$, consecutive zeros: one petal.', 'Area $= ' + I(L[0].tex, L[1].tex, '(' + body + ')^2') + ' = \\frac{' + (a * a) + '}{2}' + '\\int_{' + L[0].tex + '}^{' + L[1].tex + '} ' + (sin ? '\\sin^2(' : '\\cos^2(') + k + '\\theta)\\,d\\theta$.',
-        'With $' + (sin ? '\\sin^2 u = \\frac{1 - \\cos 2u}{2}' : '\\cos^2 u = \\frac{1 + \\cos 2u}{2}') + '$, the integral is $\\frac{' + (a * a) + '}{2} \\cdot \\frac{\\pi}{' + (2 * k) + '} = \\frac{' + (a * a) + '\\pi}{' + (4 * k) + '} \\approx ' + f3(A) + '$.'];
+      // a^2/2 and a^2*pi/(4k) reduced (2 rather than 4/2, pi/2 rather than 4pi/8)
+      var halfA2 = (a * a) % 2 ? '\\frac{' + (a * a) + '}{2}' : String(a * a / 2), gp = gcd(a * a, 4 * k), pn = a * a / gp, pd = 4 * k / gp;
+      var petalTex = pd === 1 ? (pn === 1 ? '' : pn) + '\\pi' : '\\frac{' + (pn === 1 ? '' : pn) + '\\pi}{' + pd + '}';
+      sol = ['$r = 0$ at $\\theta = ' + L[0].tex + '$ and $\\theta = ' + L[1].tex + '$, consecutive zeros: one petal.', 'Area $= ' + I(L[0].tex, L[1].tex, '(' + body + ')^2') + ' = ' + halfA2 + '\\int_{' + L[0].tex + '}^{' + L[1].tex + '} ' + (sin ? '\\sin^2(' : '\\cos^2(') + k + '\\theta)\\,d\\theta$.',
+        'With $' + (sin ? '\\sin^2 u = \\frac{1 - \\cos 2u}{2}' : '\\cos^2 u = \\frac{1 + \\cos 2u}{2}') + '$, the area is $' + halfA2 + ' \\cdot \\frac{\\pi}{' + (2 * k) + '} = ' + petalTex + ' \\approx ' + f3(A) + '$.'];
     } else if(fam === 'loop'){
       var a2 = r.pick([2, 3, 4]), b2 = r.pick([1, 2, 3].filter(function(q){ return q < a2; })), s2 = r() < 0.5;
       given = a2 + ' + ' + co(b2, s2 ? 'sin(theta)' : 'cos(theta)');

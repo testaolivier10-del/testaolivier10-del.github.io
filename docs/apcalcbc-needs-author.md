@@ -66,14 +66,21 @@ meta descriptions sit with the integration fixes under "Resolved"; C4 (absolute 
 - **a6-figure-text-size** (site-wide): single-panel figures are 760 px wide with 13-15 px labels (as AB's), small
   on a phone; two-panel ones were stacked. A site-wide rule on figure text size would help both courses. Owner.
 - **b2-both-rates-zero** (9.1 scope): the notes say the slope test does not apply when dx/dt = dy/dt = 0 and stop
-  (no limit of dy/dx taught); no item depends on it. Reviewer to confirm the scope.
+  (no limit of dy/dx taught); no item depends on it. Reviewer to confirm the scope. **Resolved 2026-10-31 (Unit 9
+  review):** in scope as written. The CED gives dy/dx = (dy/dt)/(dx/dt) where dx/dt ≠ 0 and asks for nothing about
+  the case where both rates are 0; the notes say correctly that the curve may have a corner or a smooth tangent there.
 - **b3-frq-sign-chart** (`frq-u9-motion-tangent` (b)): the point for the interval with a reason is given only for a
   reason based on dy/dt (2024 report). Confirm that a sign chart of dy/dt with a sentence earns it (AB's rule: a
-  sign chart alone does not). Reviewer.
+  sign chart alone does not). Reviewer. **Resolved 2026-10-31 (Unit 9 review):** yes. The reason must cite the sign
+  of dy/dt; a labelled sign chart of dy/dt with a sentence ("y is decreasing because dy/dt < 0 on the interval")
+  earns it, a chart alone does not. Added to the rubric's accepted wordings.
 - **b4-two-particles**: the CED Unit 9 note asks for care with subscripts when two particles appear; there is one
   collision item (9.6 item 15). A two-particle FRQ part could be added in Phase 3 if the exams need one.
 - **c1-polar-frq-slot**: the polar FRQ `frq-u9-polar-area` is type `parametric` (the Q2 slot), per the brief; its
-  part (b) uses a candidates test (a global argument). Reviewer.
+  part (b) uses a candidates test (a global argument). Reviewer. **Resolved 2026-10-31 (Unit 9 review):** both
+  right. Q2 is parametric/vector or polar (spec section 2; `parametric` covers polar), and part (b) asks for the
+  greatest distance on a closed interval, a global question, so the candidates test is the argument the scoring
+  guidelines want (the 2026 rule against a candidates test is for a local classification).
 - **c2-basel**: Σ1/n² = π²/6 is stated as a known fact, not derived; one p-series item gives it in the stem.
 - **c3-alternating-harmonic** **Resolved 2026-10-31 (Unit 10 review):** EK LIM-7.A.7 lists it among 10.5's reference series, so stating it there follows the CED. the alternating harmonic series is stated to converge (to ln 2) in 10.5 as a
   reference series (EK LIM-7.A.7), with the proof deferred to 10.7. Reviewer.
@@ -152,3 +159,7 @@ meta descriptions sit with the integration fixes under "Resolved"; C4 (absolute 
   need" on BC pages too (true for BC, reads oddly); a `cbc-only` wording would fit. Lead or 7.6 owner.
 - **u68-convergence-term**: the glossary id `convergence` (6.13) covers improper integrals only; series convergence
   lives under Unit 10 ids. Consider widening the definition or renaming the term "convergence (improper integral)".
+
+## Unit 9 review (2026-10-31)
+
+Report: `docs/apcalcbc-reviews/unit-9.md`. b2, b3 and c1 resolved above. Nothing new for a person.
