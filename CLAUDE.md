@@ -53,8 +53,8 @@ docs still describe every shared format. Research: `docs/apcalcbc-research/`. Ho
 interval items and BC FRQ slots: `docs/apcalcbc-architecture.md`; writing rules on top of AB's:
 `docs/apcalcbc-authoring-guide.md`; map (an overlay on AB's): `docs/apcalcbc-phase0.md`; open points:
 `docs/apcalcbc-needs-author.md`; briefs (authors A-D, builders T1-T3): `docs/apcalcbc-briefs/`; launch log:
-`docs/apcalcbc-reviews/launch.md`. Published and live; Premium not on sale (`onSale: false`) until the owner
-checklist in spec section 9; merges after AP® Precalculus. AB's build must stay byte-identical: run
+`docs/apcalcbc-reviews/launch.md`. Published and live; Premium on sale once merged (Worker setting in spec
+section 9); merges after AP® Precalculus. AB's build must stay byte-identical: run
 `node scripts/build-apcalc.mjs --check` after any shared change.
 
 ## AP® Statistics course
@@ -92,8 +92,8 @@ builder split, decisions); read it before AP® Precalculus work and update it in
 `docs/apprecalc-architecture.md`; writing rules (three-decimal rule, limit notation, rate and concavity wording, Q4
 forms, no calculus words): `docs/apprecalc-authoring-guide.md`; map: `docs/apprecalc-phase0.md`; open points:
 `docs/apprecalc-needs-author.md`; briefs (authors A-F, builders T1-T4): `docs/apprecalc-briefs/`; launch log:
-`docs/apprecalc-reviews/launch.md`. Published and live; Premium not on sale (`onSale: false`) until the owner
-checklist in spec section 9; Unit 4 is "beyond the exam".
+`docs/apprecalc-reviews/launch.md`. Published and live; Premium on sale once merged (Worker setting in spec
+section 9); Unit 4 is "beyond the exam".
 
 ## AI FRQ grader (AP® courses)
 

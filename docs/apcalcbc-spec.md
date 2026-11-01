@@ -226,14 +226,14 @@ slip is named). FRQs self-scored with one rubric line per point and full-credit 
 
 **Launch checklist (owner), to put AP® Calculus BC Premium on sale:**
 - [ ] Merge AP® Precalculus (PR #123) first, then this PR (it contains #123's commits).
-- [ ] Apply `scripts/sql/migrations/2026-10n-apprecalc.sql`, then `scripts/sql/migrations/2026-10o-apcalcbc.sql`
+- [x] (2026-11-01) Applied as one migration with both courses (live bodies checked first). Was: apply `scripts/sql/migrations/2026-10n-apprecalc.sql`, then `scripts/sql/migrations/2026-10o-apcalcbc.sql`
       in Supabase (adds `apcalcbc` to the three course checks and the six functions with a course list, which
       already include `apprecalc`; check the live function bodies first).
-- [ ] Create the Polar product "AP® Calculus BC Premium (through June 30, 2027)", one-time, $25, and make sure the
+- [x] (2026-11-01) Polar product id `250aa547-de68-4f34-aebb-4757c0ad0a57`; Founding member covers every product. Was: create the Polar product "AP® Calculus BC Premium (through June 30, 2027)", one-time, $25, and make sure the
       "Founding member" discount applies to it.
-- [ ] Add `"cbc-2027": "<id>"` to `POLAR_PRODUCTS` in the Cloudflare Worker (levlprep-ask) settings; the Worker code
+- [ ] Add `"cbc-2027": "250aa547-de68-4f34-aebb-4757c0ad0a57"` (was `<id>`) to `POLAR_PRODUCTS` in the Cloudflare Worker (levlprep-ask) settings; the Worker code
       already knows the pass (`worker/src/premium.js`) and redeploys on merge.
-- [ ] Remove `onSale: false` from `COURSES.apcalcbc` in `assets/premium.js`, bump `sw.js`, and grant owner access.
-- [ ] Confirm the identity (violet accent, cover, icon, headline, ranks), the free tier (Units 1 and 2, "Math you
+- [x] (2026-11-01) Done; `sw.js` v103; owner access granted (to 2099). Was: remove `onSale: false` from `COURSES.apcalcbc` in `assets/premium.js`, bump `sw.js`, and grant owner access.
+- [x] (2026-11-01) Owner said go ahead with the proposed defaults; no AB-holder discount for now. Was: confirm the identity (violet accent, cover, icon, headline, ranks), the free tier (Units 1 and 2, "Math you
       need", 9.1-9.3), the free trainer `series-lab`, and whether AB pass holders get a discount on BC.
 - [ ] Optional: an AP® Calculus BC teacher reviews the course (the "not yet reviewed" note stays until then).

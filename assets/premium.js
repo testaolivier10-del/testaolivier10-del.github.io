@@ -344,9 +344,8 @@
     },
     apcalcbc: {
       name: 'AP® Calculus BC',
-      // Not on sale until its product exists and the course is published
-      // (docs/apcalcbc-spec.md decision 3): nothing locked, no checkout.
-      onSale: false,
+      // On sale since the owner checklist (docs/apcalcbc-spec.md section 9):
+      // migration applied, Polar product cbc-2027, Worker POLAR_PRODUCTS.
       dailyFree: 15,
       // The free tier (docs/apcalcbc-spec.md decision 6, proposed): Units 1 and 2,
       // every "Math you need" lesson, and the lessons 9.1-9.3 (topic.free from
@@ -520,10 +519,8 @@
     },
     apprecalc: {
       name: 'AP® Precalculus',
-      // Registered hidden (docs/apprecalc-spec.md decision 3): not on sale until
-      // the owner checklist (spec section 9): migration, Polar product, Worker
-      // POLAR_PRODUCTS, then remove onSale: false.
-      onSale: false,
+      // On sale since the owner checklist (docs/apprecalc-spec.md section 9):
+      // migration applied, Polar product pcalc-2027, Worker POLAR_PRODUCTS.
       dailyFree: 15,
       // The free tier (docs/apprecalc-spec.md decision 6, proposed): Unit 1 and
       // every "Algebra you need" lesson. Keep in step with FREE_UNITS in
