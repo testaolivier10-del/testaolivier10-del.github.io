@@ -49,7 +49,8 @@
   "2026-10-31 8:50pm PT: Olivier: move everything built to the current standard up, and post one now. Queue dates changed: grease-fire 2026-10-31 (post now), cat-righting 2026-11-01. The laptop is offline, so the Buffer posts (still at 11-05 and 11-06) were NOT changed: next run with the laptop: share grease-fire now on TikTok and YouTube (Buffer share now, or update the due time), move cat-righting to 11-01 6pm PT, delete the w1025-01..03 Buffer posts, then clear reschedule_pending and buffer_delete_pending. Check Buffer first in case Olivier did it himself.",
   "2026-10-31 8:45pm PT: laptop back. Deleted the 6 Buffer posts of w1025-01..03. Grease fire shared now on TikTok (6ae6b54c...) and YouTube (6ae6b557..., sent), old 11-05 posts deleted. Cat righting rescheduled to 11-01 6pm PT (new ids saved), old 11-06 posts deleted. Nothing else is scheduled after 11-01 until Olivier approves the w1031 Shorts.",
   "2026-11-01 long video build: yt-apbio-02 was \"building\" with no saved draft (10-31 run), so it was restarted on the same item. Script audited and saved to the project (claude/levlprep-pipeline/long/b02_script.py); plant is a tomato (beans fix nitrogen).",
-  "2026-11-01 daily run (the 10-31 run, fired late at 10:11am PT): no failed runs to refire. Grease fire set to posted, youtube_id Q326OU1DRUs (about 79K views in its first 48 h per the Studio card), Studio thumbnail, related video (orgo-01, the chem precedent), pinned question on YouTube and as a TikTok comment. Ball top pinned on YouTube and TikTok comment posted. Orbitals Community teaser posted. End screens: orgo-01 (video element orbitals over the Next card, subscribe upper left, playlist left out: every spot covered the levlprep.com line) and ap-01 (best for viewer over the Next card, subscribe and A&P playlist over the runner on the right). w1006-01 bag rate got its pro thumbnail and Studio upload. b3-04 mitral valve skipped for the redesign: its video is a quiz screen with no hero art to cut out. No physics long video exists, so ball top and cat righting keep related_video null. Studio opens on Olivier's personal channel first; switch account to Levl Prep (levlprepofficial) via the avatar menu. No new comments on YouTube or TikTok. Nothing approved is waiting; Buffer ends with cat righting tonight until the w1031 Shorts are approved."
+  "2026-11-01 daily run (the 10-31 run, fired late at 10:11am PT): no failed runs to refire. Grease fire set to posted, youtube_id Q326OU1DRUs (about 79K views in its first 48 h per the Studio card), Studio thumbnail, related video (orgo-01, the chem precedent), pinned question on YouTube and as a TikTok comment. Ball top pinned on YouTube and TikTok comment posted. Orbitals Community teaser posted. End screens: orgo-01 (video element orbitals over the Next card, subscribe upper left, playlist left out: every spot covered the levlprep.com line) and ap-01 (best for viewer over the Next card, subscribe and A&P playlist over the runner on the right). w1006-01 bag rate got its pro thumbnail and Studio upload. b3-04 mitral valve skipped for the redesign: its video is a quiz screen with no hero art to cut out. No physics long video exists, so ball top and cat righting keep related_video null. Studio opens on Olivier's personal channel first; switch account to Levl Prep (levlprepofficial) via the avatar menu. No new comments on YouTube or TikTok. Nothing approved is waiting; Buffer ends with cat righting tonight until the w1031 Shorts are approved.",
+  "2026-11-01 weekly batch: analytics done (TikTok, YouTube, Supabase, Umami, Search Console; Bing not signed in). Built w1101 (4 Shorts, all code, no Gemini reference: Figma AI credits out until 5pm PT and the Gemini page refused screenshots). Grease fire Short has youtube_id Q326OU1DRUs (left for the daily run to record with its thumbnail and pin steps). No search PR (waiting on Olivier's fix choice). Two Community post drafts pending."
  ],
  "pending_reruns": [],
  "related_check_after": null,
@@ -165,6 +166,28 @@
    "status": "posted",
    "link": "https://www.youtube.com/post/UgkxDztImWrRkeOf_PVzFxk2W3jHuP-uyMax",
    "posted_on": "2026-11-01"
+  },
+  {
+   "id": "cp-w1101-poll",
+   "date": "2026-11-03",
+   "kind": "poll",
+   "text": "Be honest. Ever studied for hours and then blanked on the test?",
+   "options": [
+    "Yes",
+    "Every time",
+    "Never"
+   ],
+   "image": null,
+   "status": "pending"
+  },
+  {
+   "id": "cp-w1101-bleeding",
+   "date": "2026-11-06",
+   "kind": "teaser",
+   "text": "Tourniquet, direct pressure or packing: which one comes first for a bad bleed? The full bleeding control video walks through all three, step by step, with the mistakes that make each one fail. https://levlprep.com/nremt/notes/bleeding-control.html?ref=yt-cp-bleeding",
+   "options": null,
+   "image": "community/cp-w1101-bleeding.png",
+   "status": "pending"
   }
  ],
  "dub_test": {

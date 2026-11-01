@@ -18,3 +18,6 @@ Gemini (Levl Prep account) flat layered scenes from ref_*.png: a_bay_clean (bag 
 
 ## n35 (2026-10-27)
 Gemini flat scenes for the bleeding control rebuild: g_garage (garage at dusk), g_arm and g_arm_press (forearm close up; l_glove and l_gauze are layers split from them), g_long and g_long_clean (forearm cut open lengthwise; clean = vessels removed so code draws them), g_cross, g_cross_clean, g_cross_rot (cross section, rotated so the radius is on top), g_kitchen, g_body (front view body map), g_cavity and m_channel (deep wound block and its channel mask). Code: pipeline/long/n35_scenes.
+
+## w1101 (2026-11-01, all code, no Gemini art)
+Reusable code drawn pieces in pipeline/w1101/: lib/bomber.py (generic WWII four engine bomber, top view with hole sets, armor plates and ghost outlines, three quarter side view; used in w1101-01), guard/build.py guard_person + cap + draw_guard (ceremonial guard from figure.Person; lens_content = leg vein with valves and the muscle pump; w1101-02), calc/build.py car_side, car_top, speedometer, gantry, ticket (w1101-03), toads/build.py toad (cane toad with hop cycle, tongue, poison glands), snake, beetle, cane_row, maps of the Americas and Australia from coordinates with an organic spread front (w1101-04).

@@ -173,6 +173,53 @@
    "setting": "home kitchen counter",
    "lighting": "morning window light",
    "camera": "slow drift, iris into the nose and back"
+  },
+  {
+   "video": "w1101-01-bomber-holes",
+   "pieces": [
+    "code bomber (side and top)",
+    "code ground crew"
+   ],
+   "setting": "English airfield at dawn; overhead tarmac; sky over clouds",
+   "lighting": "dawn warm",
+   "camera": "side track, overhead push"
+  },
+  {
+   "video": "w1101-02-guard-faint",
+   "pieces": [
+    "code ceremonial guards",
+    "calf vein lens"
+   ],
+   "setting": "parade ground with a stone facade",
+   "lighting": "hot summer midday",
+   "camera": "push in on the hero, low close shot on legs"
+  },
+  {
+   "video": "w1101-03-speed-camera",
+   "pieces": [
+    "code hatchback",
+    "gantry camera",
+    "aerial fields map",
+    "speed graph and speedometer",
+    "ticket"
+   ],
+   "setting": "motorway at dusk; aerial farmland",
+   "lighting": "dusk",
+   "camera": "side track, aerial, graph"
+  },
+  {
+   "video": "w1101-04-cane-toads",
+   "pieces": [
+    "code cane toads",
+    "crate",
+    "snake",
+    "beetle",
+    "Americas and Australia maps",
+    "night road"
+   ],
+   "setting": "Queensland cane field; night country road",
+   "lighting": "bright morning; night with headlights",
+   "camera": "close push, maps, road push in"
   }
  ]
 }
