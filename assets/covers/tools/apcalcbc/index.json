@@ -1,0 +1,32 @@
+[
+ {
+  "slug": "series-lab",
+  "title": "Series Lab",
+  "file": "apcalcbc/series-lab.svg"
+ },
+ {
+  "slug": "taylor-lab",
+  "title": "Taylor Lab",
+  "file": "apcalcbc/taylor-lab.svg"
+ },
+ {
+  "slug": "parametric-motion",
+  "title": "Parametric Motion",
+  "file": "apcalcbc/parametric-motion.svg"
+ },
+ {
+  "slug": "polar-lab",
+  "title": "Polar Lab",
+  "file": "apcalcbc/polar-lab.svg"
+ },
+ {
+  "slug": "integration-methods",
+  "title": "Integration Methods",
+  "file": "apcalcbc/integration-methods.svg"
+ },
+ {
+  "slug": "euler-logistic",
+  "title": "Euler and Logistic",
+  "file": "apcalcbc/euler-logistic.svg"
+ }
+]

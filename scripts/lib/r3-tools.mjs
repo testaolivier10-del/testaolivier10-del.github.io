@@ -126,8 +126,9 @@ export function apToolsHubMain(o) {
     cta: first ? { href: `tools/${first.tools[0].slug}.html`, label: `Open the first ${firstKind}` } : null,
     groups: o.groups.filter((g) => g.tools.length).map((g) => ({
       h: g.h, kick: `${esc(g.h)} &middot; ${g.tools.length}`, p: g.p, label: g.h,
-      // A tool may link elsewhere (AP® Calculus BC links AB's trainers: t.href, t.attrs).
-      cards: g.tools.map((t) => ({ slug: t.slug, href: t.href || `tools/${t.slug}.html`, name: t.name, desc: t.blurb, foot: esc(t.foot || ''), free: !t.premium,
+      // A tool may link elsewhere (AP® Calculus BC links AB's trainers: t.href, t.attrs) and keep that
+      // course's cover (t.coverKey).
+      cards: g.tools.map((t) => ({ ...(t.coverKey ? { key: t.coverKey } : {}), slug: t.slug, href: t.href || `tools/${t.slug}.html`, name: t.name, desc: t.blurb, foot: esc(t.foot || ''), free: !t.premium,
         attrs: t.attrs !== undefined ? t.attrs : ` data-tool="${t.slug}"${t.premium ? ' data-premium="1"' : ''}` })),
     })),
     note: o.note,
