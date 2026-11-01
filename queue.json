@@ -899,7 +899,8 @@
    "cta": "none",
    "related_video": null,
    "related_set": false,
-   "pin_question": "Where else do you think survivorship bias fools people?"
+   "pin_question": "Where else do you think survivorship bias fools people?",
+   "review_blob": "08cc9d1db65d99fdecac20ac4d1e179450edc075"
   },
   {
    "id": "w1101-02-guard-faint",
@@ -921,7 +922,8 @@
    "cta": "none",
    "related_video": null,
    "related_set": false,
-   "pin_question": "Have you ever felt lightheaded after standing still for a long time?"
+   "pin_question": "Have you ever felt lightheaded after standing still for a long time?",
+   "review_blob": "de7f4da252ccfd4f8f7891a6c5f845e57b021350"
   },
   {
    "id": "w1101-04-cane-toads",
@@ -943,7 +945,8 @@
    "cta": "spoken",
    "related_video": null,
    "related_set": false,
-   "pin_question": "Which invasive species causes trouble where you live?"
+   "pin_question": "Which invasive species causes trouble where you live?",
+   "review_blob": "06a816270cf8e5c46d2f45273a6c815a1f9fcb46"
   },
   {
    "id": "w1101-03-speed-camera",
@@ -975,7 +978,8 @@
      "Rarely"
     ],
     "place": "upper middle, from the first second (the gantry and car sit below y 900 for the first 8 s)"
-   }
+   },
+   "review_blob": "ee5cd5b66e244341a83f15bba25fa52d057696be"
   }
  ]
 }
