@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ratio Test — AP® Calculus BC Notes | LevlPrep</title>
+<meta name="description" content="The ratio test: the limit of |a(n+1)/a(n)| below 1 converges, above 1 diverges, equal to 1 decides nothing. Best with factorials and powers.">
+<link rel="canonical" href="https://levlprep.com/calculus-bc/notes/ratio-test.html">
+<meta property="og:title" content="The Ratio Test — AP® Calculus BC Notes | LevlPrep">
+<meta property="og:description" content="The ratio test: the limit of |a(n+1)/a(n)| below 1 converges, above 1 diverges, equal to 1 decides nothing. Best with factorials and powers.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus-bc/notes/ratio-test.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus-bc/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../../calculus/assets/calc.css">
+<link rel="stylesheet" href="../assets/cbc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus-bc/notes/ratio-test.html#reading",
+      "name": "The Ratio Test",
+      "url": "https://levlprep.com/calculus-bc/notes/ratio-test.html",
+      "description": "The ratio test: the limit of |a(n+1)/a(n)| below 1 converges, above 1 diverges, equal to 1 decides nothing. Best with factorials and powers.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "the ratio test calculus bc explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus-bc/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus BC",
+          "item": "https://levlprep.com/calculus-bc/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Infinite Sequences and Series",
+          "item": "https://levlprep.com/calculus-bc/units/unit-10.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The Ratio Test: notes",
+          "item": "https://levlprep.com/calculus-bc/notes/ratio-test.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="calc cbc" data-course="apcalcbc" data-topic="ratio-test" data-unit="unit-10">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apcalcbc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus BC</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-10.html">Infinite Sequences and Series</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The Ratio Test: notes</span></nav>
+<p class="issue">Unit 10 <i></i> Topic 10.8</p>
+<h1 class="deck bk-title" id="r3Title">The Ratio <span>Test</span></h1>
+<p class="hand calc-nav-ref">every AB topic, then series</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/ratio-test.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta calc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="ratio-test">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus-bc%2Fnotes%2Fratio-test.html&amp;title=The%20Ratio%20Test%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/calculus-bc/notes/ratio-test.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalcbc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apcalcbc">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 10 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-9.html"><span class="bk-toc-n">9</span>Parametric Equations, Polar Coordinates, and Vector-Valued Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-10.html"><span class="bk-toc-chap-n">10</span><span><b>Infinite Sequences and Series</b><small>15 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-10"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="series-convergence"><a href="series-convergence.html"><span class="bk-toc-n">10.1</span>Convergent and Divergent Series</a></li><li data-toc-t="geometric-series"><a href="geometric-series.html"><span class="bk-toc-n">10.2</span>Geometric Series</a></li><li data-toc-t="nth-term-test"><a href="nth-term-test.html"><span class="bk-toc-n">10.3</span>The nth Term Test for Divergence</a></li><li data-toc-t="integral-test"><a href="integral-test.html"><span class="bk-toc-n">10.4</span>The Integral Test</a></li><li data-toc-t="p-series"><a href="p-series.html"><span class="bk-toc-n">10.5</span>Harmonic Series and p-Series</a></li><li data-toc-t="comparison-tests"><a href="comparison-tests.html"><span class="bk-toc-n">10.6</span>Comparison Tests</a></li><li data-toc-t="alternating-series-test"><a href="alternating-series-test.html"><span class="bk-toc-n">10.7</span>The Alternating Series Test</a></li><li class="current" data-toc-t="ratio-test"><a href="#main" aria-current="page"><span class="bk-toc-n">10.8</span>The Ratio Test</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-idea-a-ratio-that-settles">The idea: a ratio that settles</a><a href="#the-ratio-test">The ratio test</a><a href="#simplifying-the-ratio">Simplifying the ratio</a><a href="#when-to-reach-for-it">When to reach for it</a><a href="#writing-it-the-way-graders-want">Writing it the way graders want</a></div></li><li data-toc-t="absolute-conditional"><a href="absolute-conditional.html"><span class="bk-toc-n">10.9</span>Absolute and Conditional Convergence</a></li><li data-toc-t="alternating-error-bound"><a href="alternating-error-bound.html"><span class="bk-toc-n">10.10</span>The Alternating Series Error Bound</a></li><li data-toc-t="taylor-polynomials"><a href="taylor-polynomials.html"><span class="bk-toc-n">10.11</span>Taylor Polynomials</a></li><li data-toc-t="lagrange-error-bound"><a href="lagrange-error-bound.html"><span class="bk-toc-n">10.12</span>The Lagrange Error Bound</a></li><li data-toc-t="radius-interval-convergence"><a href="radius-interval-convergence.html"><span class="bk-toc-n">10.13</span>Radius and Interval of Convergence</a></li><li data-toc-t="taylor-series"><a href="taylor-series.html"><span class="bk-toc-n">10.14</span>Taylor and Maclaurin Series</a></li><li data-toc-t="power-series-functions"><a href="power-series-functions.html"><span class="bk-toc-n">10.15</span>Representing Functions as Power Series</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="calc-prose bk-prose">
+<p>A <a class="gl" href="../notes/geometric-series.html" data-c="geometric-series">geometric series</a> is easy to judge: each term is the same multiple <math class="calc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> of the one before, and the <a class="gl" href="../notes/series-convergence.html" data-c="infinite-series">series</a> <a class="gl" href="../notes/improper-integrals.html" data-c="convergence">converges</a> exactly when <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>r</mi><mo stretchy="false">|</mo><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|r| &lt; 1</annotation></semantics></math>. The <span class="gl" tabindex="0" data-c="ratio-test">ratio test</span> asks whether a series behaves like a geometric series far out, and if so, with what ratio.</p>
+
+<h2 id="the-idea-a-ratio-that-settles">The idea: a ratio that settles</h2>
+<p>For <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><msup><mi>n</mi><mn>2</mn></msup><msup><mn>3</mn><mi>n</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{n^2}{3^n}</annotation></semantics></math>, the ratio of a term to the one before is</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>a</mi><mi>n</mi></msub></mfrac><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><msup><mn>3</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mfrac><mo>⋅</mo><mfrac><msup><mn>3</mn><mi>n</mi></msup><msup><mi>n</mi><mn>2</mn></msup></mfrac><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mrow><mn>3</mn><msup><mi>n</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><msup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>.</mo></mrow><annotation encoding="application/x-tex">\frac{a_{n+1}}{a_n} = \frac{(n+1)^2}{3^{n+1}} \cdot \frac{3^n}{n^2} = \frac{(n+1)^2}{3n^2} = \frac{1}{3}\left(1 + \frac{1}{n}\right)^2.</annotation></semantics></math></p>
+<p>At <math class="calc-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n = 1</annotation></semantics></math> the ratio is <math class="calc-m"><semantics><mrow><mfrac><mn>4</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{4}{3}</annotation></semantics></math>, so the second term is larger than the first. But as <math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> grows the ratio settles toward <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{3}</annotation></semantics></math> (<a class="figref" href="#fig-ratios">the figure</a>). Far out, each term is roughly a third of the one before, just like a geometric series with <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">r = \frac{1}{3}</annotation></semantics></math>, and that series converges.</p>
+<figure id="fig-ratios"  class="calc-figure"><div class="calc-figimg" data-fig="ratio-test-ratios"><img src="../figures/ratio-test-ratios.svg" alt="Dots at height (n + 1) squared over 3 n squared for n = 1 to 15, the ratio of consecutive terms of the series of n squared over 3 to the n. The first dot is at 4/3, above a solid line at 1; the rest fall below it and approach a dashed line at 1/3. The limit 1/3 is below 1, so the series converges." width="720" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The ratio of consecutive terms settles at <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{3}</annotation></semantics></math>, below the threshold 1. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="the-ratio-test">The ratio test</h2>
+<p>For a series <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum a_n</annotation></semantics></math> with nonzero terms, find</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mi>L</mi><mo>=</mo><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mrow><mo fence="true" stretchy="true">|</mo><mfrac><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>a</mi><mi>n</mi></msub></mfrac><mo fence="true" stretchy="true">|</mo></mrow><mo>.</mo></mrow><annotation encoding="application/x-tex">L = \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right|.</annotation></semantics></math></p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Limit</th><th>Conclusion</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mi>L</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">L &lt; 1</annotation></semantics></math></td><td>the series converges</td><td>the terms shrink at least as fast as a convergent geometric series</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>L</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">L &gt; 1</annotation></semantics></math>, or the <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a> is infinite</td><td>the series diverges</td><td>the terms grow, so they do not approach 0</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>L</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">L = 1</annotation></semantics></math></td><td>no conclusion</td><td>both convergent and divergent series give 1</td></tr>
+</tbody>
+</table></div>
+<p>The absolute value lets the test work on series whose terms change sign. Only the limit matters: any number of early ratios above or below 1 change nothing.</p>
+
+<h2 id="simplifying-the-ratio">Simplifying the ratio</h2>
+<p>Most of the work is algebra. Write <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">a_{n+1}</annotation></semantics></math> by replacing every <math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n + 1</annotation></semantics></math>, then multiply by the reciprocal of <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_n</annotation></semantics></math>. Three simplifications come up again and again:</p>
+<ul>
+<li><math class="calc-m"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>!</mo></mrow><mrow><mi>n</mi><mo>!</mo></mrow></mfrac><mo>=</mo><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{(n+1)!}{n!} = n + 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mn>2</mn><mi>n</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>!</mo></mrow><mrow><mo stretchy="false">(</mo><mn>2</mn><mi>n</mi><mo stretchy="false">)</mo><mo>!</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{(2n+2)!}{(2n)!}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mn>2</mn><mi>n</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= (2n+2)(2n+1)</annotation></semantics></math>: two new factors, not one.</li>
+<li><math class="calc-m"><semantics><mrow><mfrac><msup><mn>5</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><msup><mn>5</mn><mi>n</mi></msup></mfrac><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\frac{5^{n+1}}{5^n} = 5</annotation></semantics></math>.</li>
+<li><math class="calc-m"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>k</mi></msup></mrow><msup><mi>n</mi><mi>k</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{(n+1)^k}{n^k}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mi>k</mi></msup><mo>→</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= \left(1 + \frac{1}{n}\right)^k \to 1</annotation></semantics></math>: <a class="gl" href="../notes/math-functions.html" data-c="rational-function">polynomial</a> factors contribute 1 to the limit.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 1.</b> Does <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><msup><mn>5</mn><mi>n</mi></msup><mrow><mi>n</mi><mo>!</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{5^n}{n!}</annotation></semantics></math> converge?</p>
+<p><math class="calc-m"><semantics><mrow><mfrac><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>a</mi><mi>n</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">\frac{a_{n+1}}{a_n}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><msup><mn>5</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>!</mo></mrow></mfrac><mo>⋅</mo><mfrac><mrow><mi>n</mi><mo>!</mo></mrow><msup><mn>5</mn><mi>n</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">= \frac{5^{n+1}}{(n+1)!} \cdot \frac{n!}{5^n}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>5</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{5}{n+1}</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mfrac><mn>5</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \lim_{n \to \infty} \frac{5}{n + 1}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= 0 &lt; 1</annotation></semantics></math>, so the series converges by the ratio test.</p>
+<p>The first few ratios (<math class="calc-m"><semantics><mrow><mfrac><mn>5</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{5}{2}</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mfrac><mn>5</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{5}{3}</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mfrac><mn>5</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{5}{4}</annotation></semantics></math>) are above 1, and the terms grow at first. That does not matter; the limit does.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Does <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mrow><mi>n</mi><mo>!</mo></mrow><msup><mn>2</mn><mi>n</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{n!}{2^n}</annotation></semantics></math> converge?</p>
+<p><math class="calc-m"><semantics><mrow><mfrac><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>a</mi><mi>n</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">\frac{a_{n+1}}{a_n}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>!</mo></mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mfrac><mo>⋅</mo><mfrac><msup><mn>2</mn><mi>n</mi></msup><mrow><mi>n</mi><mo>!</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{(n+1)!}{2^{n+1}} \cdot \frac{2^n}{n!}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{n + 1}{2}</annotation></semantics></math>, which grows without bound.</p>
+<p>The limit is infinite, so the series diverges by the ratio test. (The terms themselves grow without bound, so the <a class="gl" href="../notes/nth-term-test.html" data-c="nth-term-test">nth term test</a> agrees.)</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> What does the ratio test say about <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mi>n</mi><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{n}{n^2 + 1}</annotation></semantics></math>?</p>
+<p><math class="calc-m"><semantics><mrow><mfrac><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>a</mi><mi>n</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">\frac{a_{n+1}}{a_n}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac><mo>⋅</mo><mfrac><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">= \frac{n + 1}{(n+1)^2 + 1} \cdot \frac{n^2 + 1}{n}</annotation></semantics></math>. The top and bottom both grow like <math class="calc-m"><semantics><mrow><msup><mi>n</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">n^3</annotation></semantics></math>, and the limit is 1.</p>
+<p>No conclusion. Use limit comparison with <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n}</annotation></semantics></math> instead: the limit of <math class="calc-m"><semantics><mrow><mfrac><msup><mi>n</mi><mn>2</mn></msup><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{n^2}{n^2 + 1}</annotation></semantics></math> is 1, and the <a class="gl" href="../notes/p-series.html" data-c="harmonic-series">harmonic series</a> diverges, so this series diverges.</p>
+</div>
+
+<h2 id="when-to-reach-for-it">When to reach for it</h2>
+<p>Use the ratio test when the terms contain <a class="gl" href="../notes/math-sequences.html" data-c="factorial">factorials</a> or exponentials such as <math class="calc-m"><semantics><mrow><msup><mn>4</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">4^n</annotation></semantics></math>, since those cancel cleanly in the ratio. For a <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series or a ratio of polynomials the limit is always 1, so a <a class="gl" href="../notes/comparison-tests.html" data-c="direct-comparison">comparison test</a> is the right tool. Later in the unit the ratio test does its most important job: finding where a series with an <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> in it converges.</p>
+
+<h2 id="writing-it-the-way-graders-want">Writing it the way graders want</h2>
+<p>Show the ratio with <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">a_{n+1}</annotation></semantics></math> on top and the absolute value, simplify it, write the limit with <math class="calc-m"><semantics><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">n \to \infty</annotation></semantics></math>, and compare the value with 1 in words: "<math class="calc-m"><semantics><mrow><mi>L</mi><mo>=</mo><mn>0</mn><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">L = 0 &lt; 1</annotation></semantics></math>, so the series converges by the ratio test." Do not say the series converges <i>to</i> <math class="calc-m"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math>: the limit of the ratios decides whether the series converges, not what its sum is.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:ratio-test">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="alternating-series-test.html"><span>&larr; Previous</span><b>The Alternating Series Test</b></a><a class="tb-chapter-link next" href="absolute-conditional.html"><span>Next &rarr;</span><b>Absolute and Conditional Convergence</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/ratio-test.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"> This course has not yet been reviewed by an AP® Calculus BC teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:ratio-test">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../'; window.ApCalcCourse = {"key":"apcalcbc","name":"AP® Calculus BC","short":"Calculus BC","dir":"calculus-bc","pfx":["calc","cbc"],"frqTypes":{"table":"Rate in context from a table","model":"Modeling with a given function","motion":"Particle motion","area":"Area and volume","de":"Differential equation and slope field","graph":"Graph of f′ or graphical FTC","implicit":"Implicit differentiation and related rates","fg":"Table of f, g and their derivatives","parametric":"Parametric, vector or polar functions","techniques":"BC techniques: parts, improper integrals, Euler, arc length","series":"Series and Taylor polynomials"},"band":false,"score":false,"examDate":"2027-05-10","site":"https://levlprep.com/calculus-bc/","intervals":true,"smallValues":true,"rt":"../../calculus/"};</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../../calculus/assets/calc-core.js" defer></script>
+<script src="../../calculus/assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../calculus/assets/calc-toc.js" defer></script>
+</body>
+</html>

@@ -88,11 +88,11 @@
     {
       // As AP® Calculus AB (docs/apcalcbc-spec.md decision 2): the mark only in
       // the full names, never in a URL; the key travels as its folder,
-      // "calculus-bc". 'hidden' until launch (docs/apcalcbc-spec.md section 5).
-      // Order 12: Precalculus is planned as 11 (the math path).
+      // "calculus-bc". Was 'hidden' until published; 'live' since the launch
+      // (docs/apcalcbc-spec.md decision 11). Order 12, after Precalculus (the math path).
       key: 'apcalcbc', short: 'Calculus BC', name: 'AP® Calculus BC', productName: 'AP® Calculus BC',
       path: '/calculus-bc/', dir: 'calculus-bc', storagePrefix: 'apcalcbc_', rankLabel: 'Calculus BC rank',
-      searchLabel: 'Calculus BC', aliases: ['calculus-bc', 'calc-bc', 'calcbc', 'bc'], paid: true, status: 'hidden', order: 12,
+      searchLabel: 'Calculus BC', aliases: ['calculus-bc', 'calc-bc', 'calcbc', 'bc'], paid: true, status: 'live', order: 12,
     },
     {
       // As AP® Calculus AB (docs/apstat-spec.md decision 2): the mark only in

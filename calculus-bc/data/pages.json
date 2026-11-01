@@ -163,7 +163,7 @@
    "topic": "parametric-derivatives",
    "name": "Parametric motion",
    "title": "Parametric Motion",
-   "desc": "A particle traced by x(t) and y(t): velocity and acceleration vectors, speed, distance by arc length, and the first and second derivatives of y with respect to x.",
+   "desc": "A particle traced by x(t) and y(t): velocity and acceleration vectors, speed, distance by arc length, and dy/dx and d²y/dx² from the parametric forms.",
    "blurb": "A particle in the plane, its velocity and speed live.",
    "lede": "Trace a particle and read its velocity, speed and distance.",
    "premium": "tools",

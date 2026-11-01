@@ -3165,7 +3165,7 @@
    ],
    [
     "The question bank",
-    "Being written",
+    "1,902 questions",
     "every option explained"
    ],
    [
@@ -3228,7 +3228,7 @@
   "covers": [
    "10 units and 111 topics in the order of the course framework: the 81 Calculus AB topics and the 30 BC topics, each where the framework places it, plus 10 math topics placed where they are first needed. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.",
    "Practice checks what the exam checks: answers you type as expressions, intervals of convergence with both endpoints, graphs and tables, calculator and no-calculator parts, and justifications that name the theorem or the test and check its conditions.",
-   "<b class=\"ink\">The course is being written.</b> Units 1 to 8 come from the Calculus AB course; Units 9 and 10 and the BC topics of Units 6 to 8 are new."
+   "<b class=\"ink\">Built on Calculus AB.</b> Units 1 to 8 are the Calculus AB lessons, notes and questions, so a fix lands in both courses; Units 9 and 10 and the BC topics of Units 6 to 8 are new."
   ],
   "map_lede": "Each unit's share of the BC exam, from the course framework. Every notes page is free; the lessons in Units 1 and 2 are free too. The units in framework order, then the math you need, each placed just before the topic that first needs it: functions, exponents, algebra for limits, trigonometry, logarithms, inverse functions and geometry, then parametric equations and vectors, polar coordinates, and sequences and sums.",
   "units": [

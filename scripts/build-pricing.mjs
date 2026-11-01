@@ -714,8 +714,9 @@ function hubPcalcCard() {
      no-JavaScript fallback. */
   src = between(src, '<!-- home-try:start -->', '<!-- home-try:end -->', homeTry(), rel);
   /* The desktop facts row (polish 2026-10-17, A2): course-neutral, counted
-     from every open course's bank, never typed. */
-  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv, appsych: N.appsych, apprecalc: N.apprecalc, apcalcbc: N.apcalcbc };
+     from every open course's bank, never typed. AP® Calculus BC counts only its
+     own questions: its bank also serves AB's, which apcalc already counts. */
+  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv, appsych: N.appsych, apprecalc: N.apprecalc, apcalcbc: N.apcalcbcOwn };
   const allQ = OPEN.reduce((n, c) => n + (BANK[c.key] || 0), 0);
   const facts = [
     `${fmt(allQ)} practice questions, each one explained`,

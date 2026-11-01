@@ -7,6 +7,6 @@
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "The unit circle x = cos t, y = sin t traced counterclockwise, its upper half in blue labelled concave down and its lower half in vermillion labelled concave up. Beside it: dy/dx = -cot t; the derivative of dy/dx with respect to t is csc squared t, positive for every t; dividing by dx/dt = -sin t gives the second derivative -1 over sin cubed t, negative on the upper half and positive on the lower half. Skipping the division by dx/dt would call the whole circle concave up."
+  "alt": "The unit circle x = cos t, y = sin t traced counterclockwise, its upper half in blue labeled concave down and its lower half in vermillion labeled concave up. Beside it: dy/dx = -cot t; the derivative of dy/dx with respect to t is csc squared t, positive for every t; dividing by dx/dt = -sin t gives the second derivative -1 over sin cubed t, negative on the upper half and positive on the lower half. Skipping the division by dx/dt would call the whole circle concave up."
  }
 }

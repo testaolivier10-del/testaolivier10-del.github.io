@@ -289,7 +289,7 @@
     "mistakes": [
      {
       "value": "1",
-      "why": "Odd partial sums are 1; with an even number of terms, every 1 is cancelled by a $-1$."
+      "why": "Odd partial sums are 1; with an even number of terms, every 1 is canceled by a $-1$."
      },
      {
       "value": "100",
@@ -396,7 +396,7 @@
     "mistakes": [
      {
       "value": "1",
-      "why": "Two positive pieces survive the cancelling, $1$ and $\\frac{1}{2}$, because each term cancels with the one two places later."
+      "why": "Two positive pieces survive the canceling, $1$ and $\\frac{1}{2}$, because each term cancels with the one two places later."
      },
      {
       "value": "2/3",

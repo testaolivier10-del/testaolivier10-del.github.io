@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harmonic Series and p-Series — AP® Calculus BC Notes</title>
+<meta name="description" content="The harmonic series diverges and a p-series converges exactly when p &gt; 1. How to spot one, rewrite roots as powers, and use it as a benchmark.">
+<link rel="canonical" href="https://levlprep.com/calculus-bc/notes/p-series.html">
+<meta property="og:title" content="Harmonic Series and p-Series — AP® Calculus BC Notes">
+<meta property="og:description" content="The harmonic series diverges and a p-series converges exactly when p &gt; 1. How to spot one, rewrite roots as powers, and use it as a benchmark.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus-bc/notes/p-series.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus-bc/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../../calculus/assets/calc.css">
+<link rel="stylesheet" href="../assets/cbc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus-bc/notes/p-series.html#reading",
+      "name": "Harmonic Series and p-Series",
+      "url": "https://levlprep.com/calculus-bc/notes/p-series.html",
+      "description": "The harmonic series diverges and a p-series converges exactly when p > 1. How to spot one, rewrite roots as powers, and use it as a benchmark.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "harmonic series and p-series calculus bc explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus-bc/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus BC",
+          "item": "https://levlprep.com/calculus-bc/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Infinite Sequences and Series",
+          "item": "https://levlprep.com/calculus-bc/units/unit-10.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Harmonic Series and p-Series: notes",
+          "item": "https://levlprep.com/calculus-bc/notes/p-series.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="calc cbc" data-course="apcalcbc" data-topic="p-series" data-unit="unit-10">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apcalcbc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus BC</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-10.html">Infinite Sequences and Series</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Harmonic Series and p-Series: notes</span></nav>
+<p class="issue">Unit 10 <i></i> Topic 10.5</p>
+<h1 class="deck bk-title" id="r3Title">Harmonic Series <span>and p-Series</span></h1>
+<p class="hand calc-nav-ref">every AB topic, then series</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/p-series.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta calc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="p-series">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus-bc%2Fnotes%2Fp-series.html&amp;title=Harmonic%20Series%20and%20p-Series%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/calculus-bc/notes/p-series.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalcbc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apcalcbc">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 10 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-9.html"><span class="bk-toc-n">9</span>Parametric Equations, Polar Coordinates, and Vector-Valued Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-10.html"><span class="bk-toc-chap-n">10</span><span><b>Infinite Sequences and Series</b><small>15 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-10"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="series-convergence"><a href="series-convergence.html"><span class="bk-toc-n">10.1</span>Convergent and Divergent Series</a></li><li data-toc-t="geometric-series"><a href="geometric-series.html"><span class="bk-toc-n">10.2</span>Geometric Series</a></li><li data-toc-t="nth-term-test"><a href="nth-term-test.html"><span class="bk-toc-n">10.3</span>The nth Term Test for Divergence</a></li><li data-toc-t="integral-test"><a href="integral-test.html"><span class="bk-toc-n">10.4</span>The Integral Test</a></li><li class="current" data-toc-t="p-series"><a href="#main" aria-current="page"><span class="bk-toc-n">10.5</span>Harmonic Series and p-Series</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-p-series-test">The p -series test</a><a href="#the-harmonic-series">The harmonic series</a><a href="#recognizing-a-p-series">Recognizing a p -series</a><a href="#combining-reference-series">Combining reference series</a><a href="#saying-it-right">Saying it right</a></div></li><li data-toc-t="comparison-tests"><a href="comparison-tests.html"><span class="bk-toc-n">10.6</span>Comparison Tests</a></li><li data-toc-t="alternating-series-test"><a href="alternating-series-test.html"><span class="bk-toc-n">10.7</span>The Alternating Series Test</a></li><li data-toc-t="ratio-test"><a href="ratio-test.html"><span class="bk-toc-n">10.8</span>The Ratio Test</a></li><li data-toc-t="absolute-conditional"><a href="absolute-conditional.html"><span class="bk-toc-n">10.9</span>Absolute and Conditional Convergence</a></li><li data-toc-t="alternating-error-bound"><a href="alternating-error-bound.html"><span class="bk-toc-n">10.10</span>The Alternating Series Error Bound</a></li><li data-toc-t="taylor-polynomials"><a href="taylor-polynomials.html"><span class="bk-toc-n">10.11</span>Taylor Polynomials</a></li><li data-toc-t="lagrange-error-bound"><a href="lagrange-error-bound.html"><span class="bk-toc-n">10.12</span>The Lagrange Error Bound</a></li><li data-toc-t="radius-interval-convergence"><a href="radius-interval-convergence.html"><span class="bk-toc-n">10.13</span>Radius and Interval of Convergence</a></li><li data-toc-t="taylor-series"><a href="taylor-series.html"><span class="bk-toc-n">10.14</span>Taylor and Maclaurin Series</a></li><li data-toc-t="power-series-functions"><a href="power-series-functions.html"><span class="bk-toc-n">10.15</span>Representing Functions as Power Series</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="calc-prose bk-prose">
+<p>The <a class="gl" href="../notes/integral-test.html" data-c="integral-test">integral test</a> settles one whole family of <a class="gl" href="../notes/series-convergence.html" data-c="infinite-series">series</a> at once. These <b><math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series</b>, together with the <a class="gl" href="../notes/geometric-series.html" data-c="geometric-series">geometric series</a> of 10.2, are the reference series of Unit 10: the tests in 10.6 work by measuring other series against them.</p>
+<p><math class="calc-m" display="block"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mn>1</mn><msup><mi>n</mi><mi>p</mi></msup></mfrac><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><msup><mn>2</mn><mi>p</mi></msup></mfrac><mo>+</mo><mfrac><mn>1</mn><msup><mn>3</mn><mi>p</mi></msup></mfrac><mo>+</mo><mo>⋯</mo></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{1}{n^p} = 1 + \frac{1}{2^p} + \frac{1}{3^p} + \cdots</annotation></semantics></math></p>
+
+<h2 id="the-p-series-test">The <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series test</h2>
+<p><b>A <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mn>1</mn><msup><mi>n</mi><mi>p</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{1}{n^p}</annotation></semantics></math> <a class="gl" href="../notes/improper-integrals.html" data-c="convergence">converges</a> if <math class="calc-m"><semantics><mrow><mi>p</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p &gt; 1</annotation></semantics></math> and diverges if <math class="calc-m"><semantics><mrow><mi>p</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p \le 1</annotation></semantics></math>.</b></p>
+<p>For <math class="calc-m"><semantics><mrow><mi>p</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p &gt; 0</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><msup><mi>x</mi><mi>p</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">f(x) = \frac{1}{x^p}</annotation></semantics></math> is positive, <a class="gl" href="../notes/discontinuity-types.html" data-c="discontinuity">continuous</a> and decreasing on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[1, \infty)</annotation></semantics></math>, so the <a class="gl" href="../notes/definite-integral-notation.html" data-c="definite-integral">integral</a> test applies:</p>
+<ul>
+<li><math class="calc-m"><semantics><mrow><mi>p</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p &gt; 1</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>1</mn><mi>b</mi></msubsup><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>p</mi></mrow></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_1^{b} x^{-p}\,dx</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><msup><mi>b</mi><mrow><mn>1</mn><mo>−</mo><mi>p</mi></mrow></msup></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1 - b^{1-p}}{p - 1}</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><msup><mi>b</mi><mrow><mn>1</mn><mo>−</mo><mi>p</mi></mrow></msup><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b^{1-p} \to 0</annotation></semantics></math>, so the integral is <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{p - 1}</annotation></semantics></math>: finite. The series converges.</li>
+<li><math class="calc-m"><semantics><mrow><mi>p</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p = 1</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>1</mn><mi>b</mi></msubsup><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\int_1^{b} \frac{dx}{x}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>b</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">= \ln b \to \infty</annotation></semantics></math>. The series diverges.</li>
+<li><math class="calc-m"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>p</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 &lt; p &lt; 1</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>1</mn><mi>b</mi></msubsup><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>p</mi></mrow></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_1^{b} x^{-p}\,dx</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><msup><mi>b</mi><mrow><mn>1</mn><mo>−</mo><mi>p</mi></mrow></msup><mo>−</mo><mn>1</mn></mrow><mrow><mn>1</mn><mo>−</mo><mi>p</mi></mrow></mfrac><mo>→</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">= \frac{b^{1-p} - 1}{1 - p} \to \infty</annotation></semantics></math>. The series diverges.</li>
+<li><math class="calc-m"><semantics><mrow><mi>p</mi><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p \le 0</annotation></semantics></math>: the terms <math class="calc-m"><semantics><mrow><msup><mi>n</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>p</mi></mrow></msup></mrow><annotation encoding="application/x-tex">n^{-p}</annotation></semantics></math> do not approach 0, so the series diverges by the <a class="gl" href="../notes/nth-term-test.html" data-c="nth-term-test">nth term test</a>.</li>
+</ul>
+<figure id="fig-pseries"  class="calc-figure"><div class="calc-figimg" data-fig="p-series-partial-sums"><img src="../figures/p-series-partial-sums.svg" alt="Partial sums of the sum of 1 over n to the p, for n = 1 to 40 and three values of p, one dot per partial sum. p = 1/2, vermillion: the sums climb steeply, 11.27 by n = 40, and grow without bound. p = 1, the harmonic series, blue: the sums climb slowly, 4.28 by n = 40, but still grow without bound. p = 2, emerald: the sums level off under the dashed line at π²/6, about 1.645. The series converges exactly when p is greater than 1." width="760" height="430" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Partial sums for three values of <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="the-harmonic-series">The harmonic series</h2>
+<p>The <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series with <math class="calc-m"><semantics><mrow><mi>p</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p = 1</annotation></semantics></math> is the <b><span class="gl" tabindex="0" data-c="harmonic-series">harmonic series</span></b>, <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>+</mo><mo>⋯</mo></mrow><annotation encoding="application/x-tex">= 1 + \frac{1}{2} + \frac{1}{3} + \cdots</annotation></semantics></math> It is the most important divergent series in the course, because its terms approach 0. The boxes of the integral test show <math class="calc-m"><semantics><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>≥</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">S_n \ge \int_1^{n+1} \frac{dx}{x}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= \ln(n + 1)</annotation></semantics></math>, which grows without bound. The growth is slow: <a class="figref" href="#fig-pseries">in the figure</a> the blue dots reach only about 4.3 after 40 terms, and it takes 12,367 terms to pass 10. Slow growth is still growth: the <a class="gl" href="../notes/series-convergence.html" data-c="partial-sum">partial sums</a> pass every number.</p>
+<p>Change every other sign and the result is the <b>alternating harmonic series</b>, <math class="calc-m"><semantics><mrow><mn>1</mn><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>−</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>+</mo><mo>⋯</mo></mrow><annotation encoding="application/x-tex">1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots</annotation></semantics></math>, which converges (its sum is <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\ln 2</annotation></semantics></math>). The proof comes in 10.7. Keep the two apart: same sizes of terms, opposite behavior.</p>
+
+<h2 id="recognizing-a-p-series">Recognizing a <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series</h2>
+<p>Rewrite with <a class="gl" href="../notes/math-exponent-rules.html" data-c="exponent-rules">exponent rules</a> until the term is <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msup><mi>n</mi><mi>p</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n^p}</annotation></semantics></math>, then compare <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> with 1:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Series</th><th>Rewritten</th><th><math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msqrt><mi>n</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{\sqrt{n}}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msup><mi>n</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n^{1/2}}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math></td><td>diverges</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><msqrt><mi>n</mi></msqrt><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{\sqrt{n}}{n^2}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msup><mi>n</mi><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n^{3/2}}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mn>3</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{3}{2}</annotation></semantics></math></td><td>converges</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mrow><mi>n</mi><mroot><mi>n</mi><mn>3</mn></mroot></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n\sqrt[3]{n}}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msup><mi>n</mi><mrow><mn>4</mn><mo>/</mo><mn>3</mn></mrow></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n^{4/3}}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mn>4</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{4}{3}</annotation></semantics></math></td><td>converges</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mi>n</mi><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{n}{n^2}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></td><td>diverges (harmonic)</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>7</mn><msup><mi>n</mi><mn>1.01</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{7}{n^{1.01}}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>7</mn><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msup><mi>n</mi><mn>1.01</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">7\sum \frac{1}{n^{1.01}}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>1.01</mn></mrow><annotation encoding="application/x-tex">1.01</annotation></semantics></math></td><td>converges</td></tr>
+</tbody>
+</table></div>
+<p>A constant factor does not change convergence. Neither does the starting index: <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>5</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=5}^{\infty} \frac{1}{n^2}</annotation></semantics></math> converges because <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{1}{n^2}</annotation></semantics></math> does.</p>
+<div class="worked">
+<p><b>Worked example.</b> For which <math class="calc-m"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k &gt; 0</annotation></semantics></math> does <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mi>n</mi><msup><mi>n</mi><mrow><mi>k</mi><mo>+</mo><mn>2</mn></mrow></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{n}{n^{k+2}}</annotation></semantics></math> converge?</p>
+<p>Rewrite: <math class="calc-m"><semantics><mrow><mfrac><mi>n</mi><msup><mi>n</mi><mrow><mi>k</mi><mo>+</mo><mn>2</mn></mrow></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{n}{n^{k+2}}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><msup><mi>n</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{n^{k+1}}</annotation></semantics></math>, a <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series with <math class="calc-m"><semantics><mrow><mi>p</mi><mo>=</mo><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p = k + 1</annotation></semantics></math>.</p>
+<p>It converges when <math class="calc-m"><semantics><mrow><mi>k</mi><mo>+</mo><mn>1</mn><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k + 1 &gt; 1</annotation></semantics></math>, that is <math class="calc-m"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k &gt; 0</annotation></semantics></math>: for every positive <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math>. At <math class="calc-m"><semantics><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k = 0</annotation></semantics></math> it would be the harmonic series, which diverges.</p>
+</div>
+
+<h2 id="combining-reference-series">Combining reference series</h2>
+<p>The rules from 10.1 let you build on these results. A sum of two convergent series converges; a convergent series plus a divergent one diverges.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Does <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><mn>2</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac><mo>+</mo><mfrac><mn>3</mn><msup><mn>4</mn><mi>n</mi></msup></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \left(\frac{2}{n^2} + \frac{3}{4^n}\right)</annotation></semantics></math> converge?</p>
+<p>First part: <math class="calc-m"><semantics><mrow><mn>2</mn><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">2\sum \frac{1}{n^2}</annotation></semantics></math>, a <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series with <math class="calc-m"><semantics><mrow><mi>p</mi><mo>=</mo><mn>2</mn><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p = 2 &gt; 1</annotation></semantics></math>, converges.</p>
+<p>Second part: <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>3</mn><msup><mn>4</mn><mi>n</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{3}{4^n}</annotation></semantics></math> is geometric with <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">r = \frac{1}{4}</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>r</mi><mo stretchy="false">|</mo><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|r| &lt; 1</annotation></semantics></math>, so it converges.</p>
+<p>The sum of two convergent series converges, so the whole series converges. Replace the first part by <math class="calc-m"><semantics><mrow><mfrac><mn>2</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{2}{n}</annotation></semantics></math> and the answer flips: a divergent part plus a convergent part diverges.</p>
+</div>
+
+<h2 id="saying-it-right">Saying it right</h2>
+<p>Name the series and its <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>: "<math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msup><mi>n</mi><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n^{3/2}}</annotation></semantics></math> is a <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series with <math class="calc-m"><semantics><mrow><mi>p</mi><mo>=</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p = \frac{3}{2} &gt; 1</annotation></semantics></math>, so it converges." Exam readers took points from answers that called a series "harmonic" when it was not, or gave the result with no value of <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>. And as with the integral test, the test gives convergence, not the sum: <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac><mo>=</mo><mfrac><msup><mi>π</mi><mn>2</mn></msup><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n^2} = \frac{\pi^2}{6}</annotation></semantics></math> is a separate fact, not something the test produces.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:p-series">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="integral-test.html"><span>&larr; Previous</span><b>The Integral Test</b></a><a class="tb-chapter-link next" href="comparison-tests.html"><span>Next &rarr;</span><b>Comparison Tests</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/p-series.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"> This course has not yet been reviewed by an AP® Calculus BC teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:p-series">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../'; window.ApCalcCourse = {"key":"apcalcbc","name":"AP® Calculus BC","short":"Calculus BC","dir":"calculus-bc","pfx":["calc","cbc"],"frqTypes":{"table":"Rate in context from a table","model":"Modeling with a given function","motion":"Particle motion","area":"Area and volume","de":"Differential equation and slope field","graph":"Graph of f′ or graphical FTC","implicit":"Implicit differentiation and related rates","fg":"Table of f, g and their derivatives","parametric":"Parametric, vector or polar functions","techniques":"BC techniques: parts, improper integrals, Euler, arc length","series":"Series and Taylor polynomials"},"band":false,"score":false,"examDate":"2027-05-10","site":"https://levlprep.com/calculus-bc/","intervals":true,"smallValues":true,"rt":"../../calculus/"};</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../../calculus/assets/calc-core.js" defer></script>
+<script src="../../calculus/assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../calculus/assets/calc-toc.js" defer></script>
+</body>
+</html>

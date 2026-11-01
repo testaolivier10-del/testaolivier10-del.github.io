@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Alternating Series Test — AP® Calculus BC Notes</title>
+<meta name="description" content="The alternating series test: terms that alternate in sign, decrease in size and approach 0 give a convergent series. Check and state all three conditions.">
+<link rel="canonical" href="https://levlprep.com/calculus-bc/notes/alternating-series-test.html">
+<meta property="og:title" content="The Alternating Series Test — AP® Calculus BC Notes">
+<meta property="og:description" content="The alternating series test: terms that alternate in sign, decrease in size and approach 0 give a convergent series. Check and state all three conditions.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus-bc/notes/alternating-series-test.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus-bc/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../../calculus/assets/calc.css">
+<link rel="stylesheet" href="../assets/cbc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus-bc/notes/alternating-series-test.html#reading",
+      "name": "The Alternating Series Test",
+      "url": "https://levlprep.com/calculus-bc/notes/alternating-series-test.html",
+      "description": "The alternating series test: terms that alternate in sign, decrease in size and approach 0 give a convergent series. Check and state all three conditions.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "the alternating series test calculus bc explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus-bc/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus BC",
+          "item": "https://levlprep.com/calculus-bc/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Infinite Sequences and Series",
+          "item": "https://levlprep.com/calculus-bc/units/unit-10.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The Alternating Series Test: notes",
+          "item": "https://levlprep.com/calculus-bc/notes/alternating-series-test.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="calc cbc" data-course="apcalcbc" data-topic="alternating-series-test" data-unit="unit-10">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apcalcbc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus BC</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-10.html">Infinite Sequences and Series</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The Alternating Series Test: notes</span></nav>
+<p class="issue">Unit 10 <i></i> Topic 10.7</p>
+<h1 class="deck bk-title" id="r3Title">The Alternating <span>Series Test</span></h1>
+<p class="hand calc-nav-ref">every AB topic, then series</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/alternating-series-test.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta calc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="alternating-series-test">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus-bc%2Fnotes%2Falternating-series-test.html&amp;title=The%20Alternating%20Series%20Test%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/calculus-bc/notes/alternating-series-test.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalcbc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apcalcbc">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 10 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-9.html"><span class="bk-toc-n">9</span>Parametric Equations, Polar Coordinates, and Vector-Valued Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-10.html"><span class="bk-toc-chap-n">10</span><span><b>Infinite Sequences and Series</b><small>15 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-10"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="series-convergence"><a href="series-convergence.html"><span class="bk-toc-n">10.1</span>Convergent and Divergent Series</a></li><li data-toc-t="geometric-series"><a href="geometric-series.html"><span class="bk-toc-n">10.2</span>Geometric Series</a></li><li data-toc-t="nth-term-test"><a href="nth-term-test.html"><span class="bk-toc-n">10.3</span>The nth Term Test for Divergence</a></li><li data-toc-t="integral-test"><a href="integral-test.html"><span class="bk-toc-n">10.4</span>The Integral Test</a></li><li data-toc-t="p-series"><a href="p-series.html"><span class="bk-toc-n">10.5</span>Harmonic Series and p-Series</a></li><li data-toc-t="comparison-tests"><a href="comparison-tests.html"><span class="bk-toc-n">10.6</span>Comparison Tests</a></li><li class="current" data-toc-t="alternating-series-test"><a href="#main" aria-current="page"><span class="bk-toc-n">10.7</span>The Alternating Series Test</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-an-alternating-series-looks-like">What an alternating series looks like</a><a href="#why-the-partial-sums-settle">Why the partial sums settle</a><a href="#the-alternating-series-test">The alternating series test</a><a href="#what-the-test-does-not-say">What the test does not say</a><a href="#signs-change-everything">Signs change everything</a><a href="#writing-it-the-way-graders-want">Writing it the way graders want</a></div></li><li data-toc-t="ratio-test"><a href="ratio-test.html"><span class="bk-toc-n">10.8</span>The Ratio Test</a></li><li data-toc-t="absolute-conditional"><a href="absolute-conditional.html"><span class="bk-toc-n">10.9</span>Absolute and Conditional Convergence</a></li><li data-toc-t="alternating-error-bound"><a href="alternating-error-bound.html"><span class="bk-toc-n">10.10</span>The Alternating Series Error Bound</a></li><li data-toc-t="taylor-polynomials"><a href="taylor-polynomials.html"><span class="bk-toc-n">10.11</span>Taylor Polynomials</a></li><li data-toc-t="lagrange-error-bound"><a href="lagrange-error-bound.html"><span class="bk-toc-n">10.12</span>The Lagrange Error Bound</a></li><li data-toc-t="radius-interval-convergence"><a href="radius-interval-convergence.html"><span class="bk-toc-n">10.13</span>Radius and Interval of Convergence</a></li><li data-toc-t="taylor-series"><a href="taylor-series.html"><span class="bk-toc-n">10.14</span>Taylor and Maclaurin Series</a></li><li data-toc-t="power-series-functions"><a href="power-series-functions.html"><span class="bk-toc-n">10.15</span>Representing Functions as Power Series</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="calc-prose bk-prose">
+<p>The comparison tests need positive terms. Many important <a class="gl" href="../notes/series-convergence.html" data-c="infinite-series">series</a> have terms that switch sign, <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mo>,</mo><mo form="prefix" lspace="0" rspace="0">+</mo><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mo>,</mo><mo>…</mo></mrow><annotation encoding="application/x-tex">+, -, +, -, \ldots</annotation></semantics></math> Those are <span class="gl" tabindex="0" data-c="alternating-series">alternating series</span>, and they have their own test, one of the simplest in the unit.</p>
+
+<h2 id="what-an-alternating-series-looks-like">What an alternating series looks like</h2>
+<p>An alternating series has the form <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum (-1)^n a_n</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum (-1)^{n+1} a_n</annotation></semantics></math>, where every <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_n</annotation></semantics></math> is positive. The factor <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">(-1)^n</annotation></semantics></math> supplies the sign; <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_n</annotation></semantics></math> is the size of the term. The best-known example is the <a class="gl" href="../notes/p-series.html" data-c="harmonic-series">alternating harmonic series</a></p>
+<p><math class="calc-m" display="block"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mi>n</mi></mfrac><mo>=</mo><mn>1</mn><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>−</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>+</mo><mo>⋯</mo></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots</annotation></semantics></math></p>
+<p>Watch for signs in disguise: <math class="calc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>n</mi><mi>π</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\cos(n\pi) = (-1)^n</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>n</mi><mi>π</mi><mo stretchy="false">)</mo></mrow><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{\cos(n\pi)}{n^2}</annotation></semantics></math> is alternating. And watch for signs that are not there: <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mrow><mn>2</mn><mi>n</mi></mrow></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">(-1)^{2n} = 1</annotation></semantics></math> for every <math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mrow><mn>2</mn><mi>n</mi></mrow></msup></mrow><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{(-1)^{2n}}{n}</annotation></semantics></math> is the plain harmonic series.</p>
+
+<h2 id="why-the-partial-sums-settle">Why the partial sums settle</h2>
+<figure id="fig-zigzag"  class="calc-figure"><div class="calc-figimg" data-fig="alt-partial-sums"><img src="../figures/alt-partial-sums.svg" alt="Partial sums S sub N of 1 minus 1/2 plus 1/3 minus 1/4 and so on, for N = 1 to 14, joined by a zigzag line. Odd partial sums lie above a dashed line at about 0.693 and even ones below it; the swings shrink as N grows, so the partial sums close in on the sum." width="720" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The partial sums of the alternating harmonic series zigzag toward the sum. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Follow the <a class="gl" href="../notes/series-convergence.html" data-c="partial-sum">partial sums</a> in <a class="figref" href="#fig-zigzag">the figure</a>. <math class="calc-m"><semantics><mrow><msub><mi>S</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">S_1 = 1</annotation></semantics></math>. Subtracting <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math> gives <math class="calc-m"><semantics><mrow><msub><mi>S</mi><mn>2</mn></msub><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">S_2 = 0.5</annotation></semantics></math>. Adding <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{3}</annotation></semantics></math> gives <math class="calc-m"><semantics><mrow><msub><mi>S</mi><mn>3</mn></msub><mo>≈</mo><mn>0.833</mn></mrow><annotation encoding="application/x-tex">S_3 \approx 0.833</annotation></semantics></math>, which does not climb back to <math class="calc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math>, because <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>&lt;</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{3} &lt; \frac{1}{2}</annotation></semantics></math>. Each step goes the opposite way from the last and is shorter, so the partial sums zigzag inside a window that keeps shrinking. If the step sizes approach 0, the window closes on a single number: the sum.</p>
+<p>Three facts did the work: the signs alternate, the sizes decrease, and the sizes approach 0. Those are the three conditions of the test.</p>
+
+<h2 id="the-alternating-series-test">The alternating series test</h2>
+<p>If <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_n &gt; 0</annotation></semantics></math> for every <math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math>, the sizes decrease (<math class="calc-m"><semantics><mrow><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>≤</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_{n+1} \le a_n</annotation></semantics></math>, at least from some <math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> on), and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lim_{n \to \infty} a_n = 0</annotation></semantics></math>, then <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum (-1)^n a_n</annotation></semantics></math> <a class="gl" href="../notes/improper-integrals.html" data-c="convergence">converges</a>.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Does <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup></mrow><msqrt><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{(-1)^n}{\sqrt{n + 1}}</annotation></semantics></math> converge?</p>
+<p>Signs: <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">(-1)^n</annotation></semantics></math> alternates. Sizes: <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mfrac><mn>1</mn><msqrt><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msqrt></mfrac><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_n = \frac{1}{\sqrt{n + 1}} &gt; 0</annotation></semantics></math>.</p>
+<p>Decreasing: <math class="calc-m"><semantics><mrow><msqrt><mrow><mi>n</mi><mo>+</mo><mn>2</mn></mrow></msqrt><mo>&gt;</mo><msqrt><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{n + 2} &gt; \sqrt{n + 1}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">a_{n+1}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><msqrt><mrow><mi>n</mi><mo>+</mo><mn>2</mn></mrow></msqrt></mfrac><mo>&lt;</mo><mfrac><mn>1</mn><msqrt><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{\sqrt{n + 2}} &lt; \frac{1}{\sqrt{n + 1}}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">= a_n</annotation></semantics></math>.</p>
+<p><a class="gl" href="../notes/limit-notation.html" data-c="limit">Limit</a>: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mfrac><mn>1</mn><msqrt><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\lim_{n \to \infty} \frac{1}{\sqrt{n + 1}}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>.</p>
+<p>All three conditions hold, so the series converges by the alternating series test.</p>
+</div>
+<p>When the decreasing condition is not obvious, use a <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a>. Write <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a_n = f(n)</annotation></semantics></math> and show <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'(x) &lt; 0</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> past some point.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Does <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>n</mi></mrow><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} (-1)^n \frac{\ln n}{n}</annotation></semantics></math> converge?</p>
+<p>With <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">f(x) = \frac{\ln x}{x}</annotation></semantics></math>, the <a class="gl" href="../notes/quotient-rule.html" data-c="quotient-rule">quotient rule</a> gives <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mi>x</mi><mo>⋅</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo>−</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">= \frac{x \cdot \frac{1}{x} - \ln x}{x^2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1 - \ln x}{x^2}</annotation></semantics></math>, which is negative when <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\ln x &gt; 1</annotation></semantics></math>, that is for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>e</mi></mrow><annotation encoding="application/x-tex">x &gt; e</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>n</mi></mrow><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">a_n = \frac{\ln n}{n}</annotation></semantics></math> decreases for <math class="calc-m"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n \ge 3</annotation></semantics></math>.</p>
+<p>By <a class="gl" href="../notes/lhospitals-rule.html" data-c="lhospital">L'Hospital's rule</a> (the limit has the form <math class="calc-m"><semantics><mrow><mfrac><mi mathvariant="normal">∞</mi><mi mathvariant="normal">∞</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{\infty}{\infty}</annotation></semantics></math>), <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} \frac{\ln x}{x}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mfrac><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow><mn>1</mn></mfrac></mrow><annotation encoding="application/x-tex">= \lim_{x \to \infty} \frac{1/x}{1}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_n \to 0</annotation></semantics></math>.</p>
+<p>The signs alternate, the sizes decrease from <math class="calc-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n = 3</annotation></semantics></math> on and approach 0: the series converges. The first two terms do not matter, since leaving out finitely many terms never changes whether a series converges.</p>
+</div>
+
+<h2 id="what-the-test-does-not-say">What the test does not say</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Situation</th><th>Conclusion</th></tr></thead>
+<tbody>
+<tr><td>All three conditions hold</td><td>The series converges.</td></tr>
+<tr><td>The sizes do not approach 0, as in <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup><mfrac><mi>n</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum (-1)^n \frac{n}{n + 1}</annotation></semantics></math></td><td>The series diverges, by the <b><a class="gl" href="../notes/nth-term-test.html" data-c="nth-term-test">nth term test</a></b>, not by this test.</td></tr>
+<tr><td>The sizes approach 0 but do not decrease</td><td>The test says nothing; another argument is needed.</td></tr>
+<tr><td>The signs do not alternate</td><td>The test does not apply.</td></tr>
+</tbody>
+</table></div>
+<p>The alternating series test is a test for convergence only. A failed condition is never, by itself, a proof of divergence.</p>
+
+<h2 id="signs-change-everything">Signs change everything</h2>
+<p>The alternating harmonic series converges, but the series of the same sizes without signs, <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n}</annotation></semantics></math>, diverges. The same happens with <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup><mfrac><mi>n</mi><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum (-1)^n \frac{n}{n^2 + 3}</annotation></semantics></math> (converges) and <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mi>n</mi><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{n}{n^2 + 3}</annotation></semantics></math> (diverges by limit comparison with <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n}</annotation></semantics></math>). How much the signs matter is the subject of topic 10.9, two topics ahead.</p>
+
+<h2 id="writing-it-the-way-graders-want">Writing it the way graders want</h2>
+<p>Name the test and state each condition with the series' own terms: "The series alternates; <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msqrt><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{n + 1}}</annotation></semantics></math> decreases and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mfrac><mn>1</mn><msqrt><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\lim_{n \to \infty} \frac{1}{\sqrt{n + 1}}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>; so the series converges by the alternating series test." A sentence that only says "it alternates, so it converges" does not earn the point.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:alternating-series-test">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="comparison-tests.html"><span>&larr; Previous</span><b>Comparison Tests</b></a><a class="tb-chapter-link next" href="ratio-test.html"><span>Next &rarr;</span><b>The Ratio Test</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/alternating-series-test.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"> This course has not yet been reviewed by an AP® Calculus BC teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:alternating-series-test">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../'; window.ApCalcCourse = {"key":"apcalcbc","name":"AP® Calculus BC","short":"Calculus BC","dir":"calculus-bc","pfx":["calc","cbc"],"frqTypes":{"table":"Rate in context from a table","model":"Modeling with a given function","motion":"Particle motion","area":"Area and volume","de":"Differential equation and slope field","graph":"Graph of f′ or graphical FTC","implicit":"Implicit differentiation and related rates","fg":"Table of f, g and their derivatives","parametric":"Parametric, vector or polar functions","techniques":"BC techniques: parts, improper integrals, Euler, arc length","series":"Series and Taylor polynomials"},"band":false,"score":false,"examDate":"2027-05-10","site":"https://levlprep.com/calculus-bc/","intervals":true,"smallValues":true,"rt":"../../calculus/"};</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../../calculus/assets/calc-core.js" defer></script>
+<script src="../../calculus/assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../calculus/assets/calc-toc.js" defer></script>
+</body>
+</html>
