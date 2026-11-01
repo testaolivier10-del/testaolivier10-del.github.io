@@ -787,6 +787,12 @@ if (existsSync(sitemapForCoverage)) {
     if (/^(404|offline)\.html$/.test(relative(ROOT, file).split(sep).join('/'))) continue;
     // Nor are the textbook's section fragments — see build-sitemap.mjs.
     if (relative(ROOT, file).split(sep).join('/').startsWith('ochem/notes/')) continue;
+    // Nor a page whose canonical is in another course folder (AP® Calculus BC's
+    // copies of AB topics and AB free-response questions name the AB page, which
+    // is the one listed; build-sitemap.mjs skips them the same way).
+    const canon = body.match(/<link\s+rel="canonical"\s+href="([^"]*)"/i);
+    const topDir = relative(ROOT, file).split(sep)[0];
+    if (canon && relative(ROOT, file).includes(sep) && new URL(canon[1]).pathname.split('/')[1] !== topDir) continue;
     const path = '/' + relative(ROOT, file).split(sep).join('/');
     if (!listed.has(path) && !listed.has(path.replace(/index\.html$/, ''))) {
       fail(`sitemap.xml: no entry for ${path} — run scripts/build-sitemap.mjs`);

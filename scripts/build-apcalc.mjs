@@ -783,7 +783,7 @@ ${tail({ depth, section: 'home', extra: ['calc-home.js'] })}
     const topicTitle = t => { const x = map.topicById(t.topic); return x ? x.title : ''; };
     return apToolsHubMain({
       key: COURSE_KEY, up: '../', courseName: COURSE_HTML, lede: a.lede || a.desc, mountClass: 'calc-app-mount',
-      groups: TOOL_GROUPS.map(g => ({ h: g.h, p: g.p, tools: live.filter(t => groupOf(t) === g.kind).map(t => ({ ...t, foot: topicTitle(t), ...(abTool(t) ? { href: toolHref(t, ''), attrs: '' } : {}) })) })),
+      groups: TOOL_GROUPS.map(g => ({ h: g.h, p: g.p, tools: live.filter(t => groupOf(t) === g.kind).map(t => ({ ...t, foot: topicTitle(t), ...(abTool(t) ? { href: toolHref(t, ''), attrs: '', coverKey: 'apcalc' } : {}) })) })),
       note: 'Every tool records what you answer: missed questions go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>.',
     });
   }
@@ -904,7 +904,9 @@ ${tail({ depth, section: 'exams', extra: ['pages/frq-kit.js', 'pages/frq.js'], p
 </body>
 </html>
 `;
-    return head({ title: courseTitle(title, [`${LABEL} Free Response`, LABEL]), desc, path: `frq/${f.id}.html`, depth, jsonld, noindex }) + body;
+    // A BC copy of an AB free-response question: the AB page is the canonical copy, as for topics.
+    const canonical = IS_BC && f.fromAb ? `${SITE}/calculus/frq/${f.id}.html` : undefined;
+    return head({ title: courseTitle(title, [`${LABEL} Free Response`, LABEL]), desc, path: `frq/${f.id}.html`, depth, jsonld, noindex, canonical }) + body;
   }
 
   /* ---------------------------------------------------------- teachers */

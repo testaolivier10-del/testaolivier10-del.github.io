@@ -275,11 +275,14 @@ export function loadCourse(root = ROOT, { map = loadMap(), published: pubOverrid
       if (figures[id]) figures[id] = { ...figures[id], labels: readJson(join(labelDir, f)).labels || [] };
     }
   }
-  // FRQs: BC serves AB's (the shared Q1, Q3, Q4 stock) and its own.
+  // FRQs: BC serves AB's (the shared Q1, Q3, Q4 stock, marked fromAb so its page names AB's as canonical) and its own.
   const frq = {};
   for (const d of IS_BC ? [dirs.ab, data] : [data]) {
     const frqDir = join(d, 'frq');
-    if (existsSync(frqDir)) for (const f of readdirSync(frqDir).filter(f => f.endsWith('.json')).sort()) frq[f.slice(0, -5)] = readJson(join(frqDir, f));
+    if (existsSync(frqDir)) for (const f of readdirSync(frqDir).filter(f => f.endsWith('.json')).sort()) {
+      const q = readJson(join(frqDir, f));
+      frq[f.slice(0, -5)] = IS_BC && d === dirs.ab ? { ...q, fromAb: true } : q;
+    }
   }
   const pubPath = join(data, 'published.json');
   const published = new Set(pubOverride || (existsSync(pubPath) ? readJson(pubPath).chapters || [] : []));
