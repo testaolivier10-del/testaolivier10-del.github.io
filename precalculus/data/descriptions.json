@@ -1,7 +1,36 @@
 {
  "about": "Search descriptions, keyed by page kind then topic or unit id (docs/apprecalc-architecture.md). titles holds a shorter name for a <title> that would be cut.",
  "lessons": {},
- "notes": {},
+ "notes": {
+  "exp-log-inverses": "Exponential and logarithmic functions with the same base are inverses: each undoes the other, and their graphs reflect across y = x. Free precalculus notes.",
+  "matrices-as-functions": "A 2 × 2 matrix as a function: its inputs and outputs are vectors, and it moves every point of the plane by the same rule. Free precalculus notes.",
+  "parametric-circles-lines": "How to write a circle or a line as a parametric function, trace it in a chosen direction and speed, and turn it back into an equation. Free precalculus notes.",
+  "tangent-function": "Tangent is sine divided by cosine: the slope of the terminal ray, with period π and vertical asymptotes where cosine is 0. Free precalculus notes."
+ },
  "units": {},
- "titles": {}
+ "titles": {
+  "linear-quadratic-rates": "Linear and Quadratic Rates",
+  "polynomial-rates": "Polynomial Rates of Change",
+  "complex-zeros": "Polynomials and Complex Zeros",
+  "polynomial-end-behavior": "Polynomial End Behavior",
+  "vertical-asymptotes": "Vertical Asymptotes",
+  "equivalent-representations": "Equivalent Rational Expressions",
+  "model-selection": "Choosing a Function Model",
+  "model-construction": "Building a Function Model",
+  "sequences": "Arithmetic and Geometric Sequences",
+  "linear-vs-exponential": "Linear vs Exponential Change",
+  "exponential-modeling": "Exponential Modeling",
+  "exp-log-equations": "Exponential and Log Equations",
+  "logarithmic-modeling": "Logarithmic Modeling",
+  "sinusoidal-modeling": "Sinusoidal Modeling",
+  "trig-equations": "Trig Equations and Inequalities",
+  "sec-csc-cot": "Secant, Cosecant, and Cotangent",
+  "trig-identities": "Trigonometric Identities",
+  "parametric-motion": "Parametric Planar Motion",
+  "parametric-rates": "Parametric Rates of Change",
+  "parametric-circles-lines": "Parametric Circles and Lines",
+  "parametrizing-implicit": "Parametrizing Implicit Curves",
+  "inverse-determinant": "Matrix Inverse and Determinant",
+  "alg-quadratics": "Solving Quadratics"
+ }
 }

@@ -9,7 +9,7 @@
      limacon   r = a + b cos θ or a + b sin θ   inner loop (|a| < |b|), cardioid
                                                 (|a| = |b|), no loop (|a| > |b|)
      circle    r = a cos θ, a sin θ, or a       a circle of diameter |a| through the
-                                                origin, or centred on it
+                                                origin, or centered on it
    curve(spec) -> { spec, f(θ), slope(θ) (how fast r changes, exact, for the
    pieces; never shown as a word), tex, name, shape, maxR, breaks, period }.
    pieces(c) cuts [0, 2π] where r = 0 or r turns, and says on each piece
@@ -146,7 +146,7 @@
       name = Math.abs(A - B) < 1e-12 ? 'Cardioid' : 'Limaçon';
       maxR = A + B;
     } else {
-      if(tg === 'const'){ f = function(){ return a; }; slope = function(){ return 0; }; tex = 'r = ' + n(a); shape = 'circle of radius ' + n(Math.abs(a)) + ' centred at the origin'; breaks = [0, TAU]; }
+      if(tg === 'const'){ f = function(){ return a; }; slope = function(){ return 0; }; tex = 'r = ' + n(a); shape = 'circle of radius ' + n(Math.abs(a)) + ' centered at the origin'; breaks = [0, TAU]; }
       else {
         f = function(t){ return a * T(t); };
         slope = tg === 'sin' ? function(t){ return a * Math.cos(t); } : function(t){ return -a * Math.sin(t); };
@@ -329,13 +329,13 @@
     } else {
       var D = Math.abs(spec.a), cen = tg === 'cos' ? '(' + n(spec.a / 2) + ', 0)' : '(0, ' + n(spec.a / 2) + ')';
       steps.push(choice('shape', 'What does the graph look like?', distinct([
-        ['A circle of diameter ' + D + ' centred at $' + cen + '$', 'Right: $r = a\\' + tg + '\\theta$ is a circle through the origin with diameter $|a| = ' + D + '$ along the ' + (tg === 'cos' ? '$x$' : '$y$') + '-axis.'],
-        ['A circle of radius ' + D + ' centred at the origin', 'That is $r = ' + D + '$, a constant. Here $r$ changes with $\\theta$ and is $0$ at $\\theta = ' + (tg === 'cos' ? '\\frac{\\pi}{2}' : '0') + '$, so the circle passes through the origin.'],
-        ['A circle of diameter ' + D + ' centred at $' + (tg === 'cos' ? '(0, ' + n(spec.a / 2) + ')' : '(' + n(spec.a / 2) + ', 0)') + '$', 'Check where $|r|$ is greatest: at $\\theta = ' + (tg === 'cos' ? '0' : '\\frac{\\pi}{2}') + '$, so the diameter lies along the ' + (tg === 'cos' ? '$x$' : '$y$') + '-axis.'],
+        ['A circle of diameter ' + D + ' centered at $' + cen + '$', 'Right: $r = a\\' + tg + '\\theta$ is a circle through the origin with diameter $|a| = ' + D + '$ along the ' + (tg === 'cos' ? '$x$' : '$y$') + '-axis.'],
+        ['A circle of radius ' + D + ' centered at the origin', 'That is $r = ' + D + '$, a constant. Here $r$ changes with $\\theta$ and is $0$ at $\\theta = ' + (tg === 'cos' ? '\\frac{\\pi}{2}' : '0') + '$, so the circle passes through the origin.'],
+        ['A circle of diameter ' + D + ' centered at $' + (tg === 'cos' ? '(0, ' + n(spec.a / 2) + ')' : '(' + n(spec.a / 2) + ', 0)') + '$', 'Check where $|r|$ is greatest: at $\\theta = ' + (tg === 'cos' ? '0' : '\\frac{\\pi}{2}') + '$, so the diameter lies along the ' + (tg === 'cos' ? '$x$' : '$y$') + '-axis.'],
         ['A rose with 2 petals', 'A rose has $n\\theta$ inside with $n \\ge 2$. Here $n = 1$: a circle.']
       ]), '3.A'));
       steps.push(numStep('max', 'What is the greatest distance from the origin to a point on the graph?', D, [[D / 2, 'That is the radius of the circle. The farthest point is across the diameter, $|a| = ' + D + '$ from the origin.']], { practice: '2.A' }));
-      sol.push('$r = ' + coefTex(spec.a) + '\\' + tg + '\\theta$ is a circle through the origin, diameter $' + D + '$, centred at $' + cen + '$.', 'The greatest distance from the origin is the diameter, $' + D + '$.');
+      sol.push('$r = ' + coefTex(spec.a) + '\\' + tg + '\\theta$ is a circle through the origin, diameter $' + D + '$, centered at $' + cen + '$.', 'The greatest distance from the origin is the diameter, $' + D + '$.');
     }
     var text = H('<p>Consider the polar curve $' + c.tex + '$ for $0 \\le \\theta \\le 2\\pi$.</p>');
     return { text: text, steps: steps, solution: sol, fig: { kind: 'graph', spec: spec, t: kk * PI / 12, rmax: c.maxR }, values: { spec: spec, k: kk, r: rv, max: c.maxR, shape: c.shape } };

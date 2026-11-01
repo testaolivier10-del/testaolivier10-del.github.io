@@ -20,9 +20,9 @@
    "why": {
     "correct": "$\\frac{(x - 3)(x + 3)}{(x + 3)(x - 2)} = \\frac{x - 3}{x - 2}$ for $x \\ne -3$ and $x \\ne 2$. The original expression is undefined at both, so both stay excluded.",
     "options": [
-     "The cancelled factor still counts: $x = -3$ makes the original denominator $0$.",
+     "The canceled factor still counts: $x = -3$ makes the original denominator $0$.",
      "Right: both zeros of the original denominator stay excluded.",
-     "Only factors cancel, never terms: $x^2$ cannot be cancelled from a sum.",
+     "Only factors cancel, never terms: $x^2$ cannot be canceled from a sum.",
      "$x^2 - 9 = (x - 3)(x + 3)$; the factor that cancels is $x + 3$, leaving $x - 3$."
     ]
    }
@@ -235,7 +235,7 @@
    ],
    "correct": 2,
    "why": {
-    "correct": "Cancel only common factors of the whole numerator and denominator: $\\frac{x(x + 1)}{x} = x + 1$. Terms of a sum cannot be cancelled.",
+    "correct": "Cancel only common factors of the whole numerator and denominator: $\\frac{x(x + 1)}{x} = x + 1$. Terms of a sum cannot be canceled.",
     "options": [
      "$x$ and $3$ are terms of a sum, not factors; check $x = 1$: $\\frac{7}{4} \\ne 2$.",
      "Divide both terms by $3$: $x + 2$.",

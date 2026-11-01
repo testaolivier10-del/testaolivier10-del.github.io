@@ -92,7 +92,7 @@ One branch, `claude/apprecalc`, one PR at the end.
 | 2 | Trainers (section 6) | **done 2026-10-31**: all ten trainers (T1-T4), validators at 300 seeds per context, Playwright at 1280/360 px |
 | 3 | Two practice exams, unit tests, "Make it specific" prompts, formula page, cram kit | **built 2026-10-31** (decision 19): two forms in the May 2027 format (Part A 29 bank no-calculator items in course order, Part B 13 calculator items: 11 exam-only + one bank set each; U1 15, U2 13, U3 14; FRQs one of each type, both Q1s on composition and inverses), 22 exam-only keys in `EXAM_NUMBERS`; 30 "Make it specific" prompts (10 per exam unit, every skill, a builder on each, numbers in `JUSTIFY_NUMBERS`); formula page (39 rows, 8 easy-to-forget); unit tests and cram kit tested on the real forms and FRQs; open points under "Phase 3" in needs-author |
 | 4 | Independent accuracy checks per unit, tools, exams | **done 2026-10-31**: five independent reviews (`docs/apprecalc-reviews/unit-1..4.md`, `tools-exams.md`); no wrong keys; about 90 smaller fixes |
-| Launch | Publish, generators, continuity pass, "eleven courses" wording, full CI with browser checks, PR | to do |
+| Launch | Publish, generators, continuity pass, "eleven courses" wording, full CI with browser checks, PR | **done 2026-10-31** (decision 20, `docs/apprecalc-reviews/launch.md`); Premium waits for the owner checklist (section 9) |
 
 ### 5a. Authors and builders (Phase 1 and 2)
 
@@ -226,8 +226,30 @@ one rubric line per point and full-credit samples (the AI grader hook only when 
     - Unit tests (12 bank questions per exam unit, none for Unit 4) and the cram kit were built in Phase 0; now
       tested with every chapter published and against the real forms and FRQs.
 
+20. (2026-10-31, launch) **Published and live, Premium not on sale.** All five chapters in
+    `precalculus/data/published.json` (`skills-algebra`, `unit-1`..`unit-4`), `status: 'live'` in `assets/courses.js`,
+    every generator rerun (hub and 404 cards, premium page, sitemap, search, pricing, home facts), "eleven courses"
+    wording, `sources.html` section, changelog entry, `robots.txt`, `sw.js` v100, the social card rendered and a cover
+    for every trainer (`assets/covers/tools/apprecalc/`). `onSale: false` stays until the owner checklist below. The
+    course home says "2027 exam" (the other AP® homes still say "2026 exam": owner to decide). AP® Calculus BC
+    (branch `claude/apcalcbc`) is the twelfth course and merges after this one; its migration and wording must
+    then include `apprecalc` and say twelve.
+
 ## 9. Open items for the owner
 
-- Confirm the identity (decision 8), the free tier (decision 6) and free trainers (section 6).
-- The rest is in `docs/apprecalc-needs-author.md` ("Owner decisions": site weight, og image, AI grader).
-- Launch checklist (filled at launch): migration, Polar product, Worker `POLAR_PRODUCTS` line, `onSale`, merge.
+- Confirm the identity (decision 8), the free tier (decision 6) and free trainers (section 6), now live.
+- The rest is in `docs/apprecalc-needs-author.md` ("Owner decisions": site weight, AI grader; teacher questions).
+
+**Launch checklist (owner), to put AP® Precalculus Premium on sale:**
+- [ ] Apply migration `scripts/sql/migrations/2026-10n-apprecalc.sql` in Supabase (adds `apprecalc` to the three
+      course checks and the six functions with a course list; check the live function bodies first, as for
+      `2026-10l-appsych.sql`; needs that migration applied before it).
+- [ ] Create the Polar product "AP® Precalculus Premium (through June 30, 2027)", one-time, at the AP® price ($25),
+      and make sure the "Founding member" discount applies to it.
+- [ ] Add `"pcalc-2027": "<id>"` to `POLAR_PRODUCTS` in the Cloudflare Worker (levlprep-ask) settings; the Worker code
+      already knows the pass (`worker/src/premium.js`) and redeploys on merge.
+- [ ] Remove `onSale: false` from `COURSES.apprecalc` in `assets/premium.js`, bump `sw.js`, and grant owner access.
+- [ ] Confirm the identity (accent, cover, icon, headline, ranks), the free tier (Unit 1 and "Algebra you need") and
+      the three free trainers (function lab, rate of change, unit circle).
+- [ ] Merge the PR (after the Worker line, if Premium goes on sale with the merge).
+- [ ] Optional: an AP® Precalculus teacher reviews the course (the "not yet reviewed" note stays until then).

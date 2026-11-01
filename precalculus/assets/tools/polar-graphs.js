@@ -103,7 +103,7 @@
       out.push('<g class="pg-alab">' + labs.join('') + '</g>');
       if(c){
         var tr = o.traced == null ? TAU : o.traced;
-        // band-coloured glow under the traced curve, then the curve
+        // band-colored glow under the traced curve, then the curve
         bandsOf.forEach(function(pc){
           var a = pc.a, b = Math.min(pc.b, tr); if(b <= a + 1e-9) return;
           var pts = samples(c, a, b, Math.max(8, Math.round(240 * (b - a) / TAU)));
@@ -327,7 +327,7 @@
       var s = st.spec;
       if(s.fam === 'rose') return '$r = a\\' + s.trig + '(n\\theta)$ with $n = ' + s.n + '$ ' + (s.n % 2 ? 'odd: ' + s.n + ' petals, traced twice as $\\theta$ goes round once.' : 'even: $2n = ' + 2 * s.n + '$ petals; the negative values of $r$ draw half of them.');
       if(s.fam === 'limacon') return Math.abs(s.a) < Math.abs(s.b) ? '$|a| < |b|$: $r$ is negative for some $\\theta$, and those points draw the inner loop.' : Math.abs(s.a) === Math.abs(s.b) ? '$|a| = |b|$: $r$ touches 0 at one angle, the point of the cardioid.' : '$|a| > |b|$: $r$ never reaches 0, so there is no loop.';
-      return s.trig === 'const' ? '$r = a$: every point is $|a|$ from the origin, a circle centred there.' : '$r = a\\' + s.trig + '\\theta$: a circle through the origin, diameter $|a| = ' + Math.abs(s.a) + '$; it is traced once as $\\theta$ goes from 0 to $\\pi$.';
+      return s.trig === 'const' ? '$r = a$: every point is $|a|$ from the origin, a circle centered there.' : '$r = a\\' + s.trig + '\\theta$: a circle through the origin, diameter $|a| = ' + Math.abs(s.a) + '$; it is traced once as $\\theta$ goes from 0 to $\\pi$.';
     }
     function details(){
       var rows = [];

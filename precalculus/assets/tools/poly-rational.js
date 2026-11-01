@@ -193,7 +193,7 @@
     var presets = (data.presets || []).map(function(p){ return p.id; }).filter(function(id){ return PR.PRESETS[id]; });
     if(!presets.length) presets = PR.PRESET_ORDER.slice();
     var st = { spec: null, sel: 0, touched: false, next: 0 }, LS = null;
-    var cue = T.cue('Drag a coloured pin along the x-axis, or tap a factor below to make it a zero, an asymptote or a hole.');
+    var cue = T.cue('Drag a colored pin along the x-axis, or tap a factor below to make it a zero, an asymptote or a hole.');
     host.innerHTML =
       '<section class="bt-problem pr-card" aria-label="Polynomial and rational function builder">' +
         '<div class="pr-stage">' +

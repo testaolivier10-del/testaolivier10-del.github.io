@@ -421,8 +421,12 @@ const SHELL_BUDGETS = [
      docs/apprecalc-spec.md decision 1): the same math layer (pcalc-expr.js,
      domain-aware for logs and inverse trig, and pcalc-math.js), no score
      calculator, the "Make it specific" builder carried from AP® Psychology.
-     Calculus' 68.5 is the reference; measured before any unit is published. */
-  ['precalculus', 68.5],
+     Calculus' 68.5 was the reference before any unit was published.
+     68.5 -> 71.5 at the launch (docs/apprecalc-spec.md decision 20): the
+     curriculum now lists all five chapters, and Phases 3-4 added form-aware
+     expr grading (decision 15), the exam config and the "Make it specific"
+     builder; measured 70.9 KB. */
+  ['precalculus', 71.5],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

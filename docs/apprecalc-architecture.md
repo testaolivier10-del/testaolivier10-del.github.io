@@ -207,7 +207,7 @@ never mixes the parts; Units 1-3 each inside their weight range (`unitRange`: 30
 each, the calculator flag by type; no question or FRQ in two forms; at most 20 exam-only items per form
 (`pcalc-exam-<form>-<nn>`), every key recomputed in `EXAM_NUMBERS` (helpers `bisect`, `zeros`, `r3` exported).
 
-## Registration (hidden until launch)
+## Registration (hidden until launch, live since)
 
 Every AB registration point twinned (spec decision 3), with `status: 'hidden'` (no hub card, 404 card,
 premium.html entry, search scope or sitemap entry; generated course lists include it):
@@ -228,8 +228,9 @@ greeting, fallback link); `assets/theme.css`; `assets/course/flags.js`, `study.j
 `add-video.mjs`, `build-from-video.mjs`, `build-og-images.mjs` (card defined; the PNG is a copy of AB's until
 rendered: needs-author `og-image`), `build-og-tags.mjs`, `build-sitemap.mjs`, `check-site.mjs`, `check-a11y.mjs`,
 `check-console.mjs`, `check-weight.mjs` (site 340 → 341; `precalculus` 68.5); `.github/workflows/checks.yml` and
-`scripts/ci-local.sh`. Not yet: `sources.html`, the "eleven courses" wording, the AI FRQ grader's `FRQ_COURSES`
-(6-point rubrics need their own calibration); all at launch.
+`scripts/ci-local.sh`. At launch (spec decision 20): `status: 'live'`, every chapter published, `sources.html`, the
+"eleven courses" wording, `robots.txt`, changelog, `sw.js` v100. Still not wired: the AI FRQ grader's `FRQ_COURSES`
+(6-point rubrics need their own calibration) and `onSale` (owner checklist).
 
 ## Checks
 

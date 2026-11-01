@@ -21,11 +21,18 @@ Builder, Precalculus Legend. One place to change them: `IDENTITY` in `scripts/li
 Spec decision 6. Free trainers `function-lab`, `rate-of-change`, `unit-circle` (spec section 6). Set in
 `assets/premium.js` (`freeChapters: ['unit-1']`; the algebra chapter is free by rule) and `precalculus/data/pages.json`.
 
-### launch: registration is hidden (open, 2026-10-31)
+### launch: Premium not on sale (open, 2026-10-31; course live at launch)
 
-`status: 'hidden'` in `assets/courses.js`; `onSale: false` in `assets/premium.js`. At launch: apply
+The course is live (`status: 'live'`), with the "eleven courses" wording, `sources.html`, the hub and 404 cards.
+`onSale: false` stays in `assets/premium.js` until the owner checklist in spec section 9: apply
 `scripts/sql/migrations/2026-10n-apprecalc.sql` (written, not applied), create the Polar product, add the Worker
-`POLAR_PRODUCTS` line, set `onSale`, the "eleven courses" wording, `sources.html`, the hub and 404 cards.
+`POLAR_PRODUCTS` line, remove `onSale: false`.
+
+### home-exam-year: "2026 exam" on the older AP® homes (open, 2026-10-31, launch)
+
+The course home eyebrow (`note` in `scripts/lib/course-homes.json`) said "2026 exam", carried from AP® Calculus AB;
+precalculus now says "2027 exam" like AP® Psychology. AP® Biology, Chemistry, Physics 1, Calculus AB and
+Environmental Science still say "2026 exam" although their exams are now May 2027: a site-wide call for the owner.
 
 ### site-weight: the site shell budget moved from 340 to 341 KB (open, 2026-10-31)
 
@@ -33,11 +40,10 @@ Spec decision 6. Free trainers `function-lab`, `rate-of-change`, `unit-circle` (
 (course lists, premium.js, ranks, tutor, search, theme); the shell measured 339.7 KB, so the budget went up 1 KB
 with a comment. The owner may prefer trimming elsewhere.
 
-### og-image: social card not rendered (open, 2026-10-31)
+### og-image: social card (resolved 2026-10-31, launch)
 
-`precalculus/assets/og-image.png` is a copy of AP® Calculus AB's. The card is defined in
-`scripts/build-og-images.mjs`; render it where Playwright is available:
-`ONLY=precalculus/assets/og-image.png node scripts/build-og-images.mjs`.
+Rendered at launch (`ONLY=precalculus/assets/og-image.png node scripts/build-og-images.mjs`), title shortened to
+"Precalculus for May 2027, every function in motion" so it fits three lines like the other cards.
 
 ### frq-grader: the AI FRQ grader is not wired (open, 2026-10-31)
 

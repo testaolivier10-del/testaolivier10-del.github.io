@@ -92,7 +92,7 @@
    "prompt": "<b>Find</b> $\\lim_{x \\to -2} f(x)$. Show the work that leads to your answer.",
    "rubric": [
     {
-     "point": "The common factor cancelled and the limit $6$ stated in limit notation",
+     "point": "The common factor canceled and the limit $6$ stated in limit notation",
      "accept": [
       "$f(x) = \\frac{2(x - 1)}{x + 1}$ for $x \\ne -2$, so $\\lim_{x \\to -2} f(x) = \\frac{2(-3)}{-1} = 6$"
      ]
