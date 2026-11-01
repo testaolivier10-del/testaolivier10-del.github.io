@@ -182,7 +182,7 @@
    "why": {
     "correct": "Convergence is decided by the limit of $\\int_0^b f(x)\\,dx$, not by the limit of $f(x)$. Here that limit is 3, so the integral converges, but for $\\frac{1}{x}$ the same reasoning would fail.",
     "options": [
-     "Right: heights going to 0 is needed but not enough. The area of $R$ is finite because the limit of the integrals, 3, exists.",
+     "Right: heights going to 0 do not settle it. The area of $R$ is finite because the limit of the integrals, 3, exists.",
      "$y = \\frac{1}{x}$ approaches 0, but its area from 1 to $b$ is $\\ln b$, which grows without bound.",
      "This region goes on without end and still has area 3. An unbounded region can have finite area.",
      "$\\frac{1}{x}$ is decreasing too, and its improper integral diverges. Decreasing toward 0 does not settle it."

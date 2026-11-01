@@ -22,7 +22,7 @@
  "stimulus": {
   "kind": "table",
   "title": "Values of $h$ and its derivatives",
-  "text": "The function $h$ has derivatives of all orders for $x > -1$. The table gives values of $h$ and its first three derivatives at $x = 0$ and $x = 1$. The fourth derivative of $h$ is $h^{(4)}(x) = \\frac{960}{(x + 1)^6}$. The Taylor series for $h$ about $x = 1$ is $\\sum_{n=0}^{\\infty} \\frac{(-1)^n (n + 1)(x - 1)^n}{2^{n-1}}$, and it converges to $h(x)$ for $0 < x < 3$.",
+  "text": "The function $h$ has derivatives of all orders for $x > -1$. The table gives values of $h$ and its first three derivatives at $x = 0$ and $x = 1$. The fourth derivative of $h$ is $h^{(4)}(x) = \\frac{960}{(x + 1)^6}$. The Taylor series for $h$ about $x = 1$ is $\\sum_{n=0}^{\\infty} \\frac{(-1)^n (n + 1)(x - 1)^n}{2^{n-1}}$, and it converges to $h(x)$ for $-1 < x < 3$.",
   "table": {
    "caption": "Values of $h$, $h'$, $h''$ and $h'''$",
    "cols": [

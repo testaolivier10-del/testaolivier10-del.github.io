@@ -254,7 +254,7 @@
      },
      {
       "value": 1,
-      "why": "$\\frac{1}{1 - 1/2} = 2$ is the sum of $\\sum \\left(\\frac{1}{2}\\right)^n$ from $n = 0$; use the derivative series and the factor $\\frac{1}{2}$."
+      "why": "1 is $\\sum_{n=1}^{\\infty} \\left(\\frac{1}{2}\\right)^n$, the series without the factor $n$. Use the derivative series: $\\frac{1}{2} \\cdot \\frac{1}{(1 - 1/2)^2} = 2$."
      }
     ]
    },

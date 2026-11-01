@@ -453,7 +453,7 @@
    "practice": "3.G",
    "level": "analyze",
    "diff": 3,
-   "q": "For $S = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n^2}$, $S_4 = \\frac{115}{144}$ and the next term is $\\frac{1}{25}$. Which interval must contain $S$?",
+   "q": "For $S = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n^2}$, $S_4 = \\frac{115}{144}$ and the next term is $\\frac{1}{25}$. Which interval for $S$ do the alternating series error bound and the sign of the next term give?",
    "options": [
     "$\\left(\\frac{115}{144}, \\frac{115}{144} + \\frac{1}{25}\\right)$",
     "$\\left(\\frac{115}{144} - \\frac{1}{25}, \\frac{115}{144}\\right)$",
@@ -467,7 +467,7 @@
      "Right: $S_4$ ends with a subtracted term, so $S$ is above it, by less than $\\frac{1}{25}$.",
      "$S_4$ ends with $-\\frac{1}{16}$, so it undershoots: $S$ is above $S_4$.",
      "$\\frac{1}{16}$ is the last term used; the next term, $\\frac{1}{25}$, bounds the error, and $S$ is above $S_4$.",
-     "The first omitted term, $\\frac{1}{25}$, gives a tighter bound than $\\frac{1}{16}$."
+     "This interval does contain $S$, but it uses $\\frac{1}{16}$, the last term used. The bound is the first term left out, $\\frac{1}{25}$, which gives the narrower interval."
     ]
    }
   }

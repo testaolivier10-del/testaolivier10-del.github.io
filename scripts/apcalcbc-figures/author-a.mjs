@@ -5,7 +5,7 @@
    Every graph is drawn by sampling the function it shows, so a picture can
    never drift from its caption; every number printed on a figure is computed
    here. Standalone SVG: white background, role="img" with <title> and <desc>,
-   Arial/Helvetica, ink #1F2A28, BC emerald #0A5A34 for emphasis, Okabe-Ito
+   Arial/Helvetica, ink #1F2A28, BC violet #5A1E96 for emphasis (the constant is still named EMERALD), Okabe-Ito
    blue #0072B2 / vermillion #D55E00 / orange #E69F00 for further curves.
    Helpers follow scripts/apcalc-figures/unit-6.mjs (AB).
 
@@ -156,7 +156,7 @@ const figs = {};
   b.push(text(W / 2, 24, 'Together they fill the e-by-1 rectangle:  ∫ v du + ∫ u dv = uv = e · 1 − 1 · 0', { anchor: 'middle', size: 15, bold: true }));
   b.push(text(W / 2, H - 22, 'So ∫ from 1 to e of ln u du = e − (e − 1) = 1: integration by parts reads the same picture.', { anchor: 'middle', size: 14, color: MUTED }));
   figs[id] = { w: W, h: H, svg: svg(id, W, H, 'Integration by parts as two areas in a rectangle',
-    'In the u-v plane, the curve v = ln u runs from (1, 0) to (e, 1). The region under the curve, between it and the u-axis from u = 1 to u = e, is shaded green and has area 1: this is the integral of v du. The region to the left of the curve, between it and the v-axis from v = 0 to v = 1, is shaded blue and has area e − 1, about 1.718: this is the integral of u dv. Together the two regions fill the dashed rectangle from (0, 0) to (e, 1), whose area is uv = e. So the integral of v du equals uv minus the integral of u dv.', b) };
+    'In the u-v plane, the curve v = ln u runs from (1, 0) to (e, 1). The region under the curve, between it and the u-axis from u = 1 to u = e, is shaded violet and has area 1: this is the integral of v du. The region to the left of the curve, between it and the v-axis from v = 0 to v = 1, is shaded blue and has area e − 1, about 1.718: this is the integral of u dv. Together the two regions fill the dashed rectangle from (0, 0) to (e, 1), whose area is uv = e. So the integral of v du equals uv minus the integral of u dv.', b) };
 }
 
 /* 6.12: (x + 7)/((x - 1)(x + 3)) = 2/(x - 1) - 1/(x + 3). */
@@ -181,7 +181,7 @@ const figs = {};
   // Check the identity numerically at a few points (a figure never drifts from its caption).
   for (const x of [-5, -1, 0, 2, 4]) if (Math.abs(f(x) - g1(x) - g2(x)) > 1e-12) throw new Error('partial fraction identity fails at ' + x);
   figs[id] = { w: W, h: H, svg: svg(id, W, H, 'A rational function split into two simple fractions',
-    'Graph on x from −7 to 5 of y = (x + 7)/((x − 1)(x + 3)), drawn solid green, with dashed vertical asymptotes at x = 1 and x = −3. Two dashed curves show its pieces: y = 2/(x − 1) in blue, with its asymptote at x = 1, and y = −1/(x + 3) in vermillion, with its asymptote at x = −3. At every x the green curve is the sum of the blue and vermillion curves, so the integral of the green function is 2 ln|x − 1| − ln|x + 3| + C.', b) };
+    'Graph on x from −7 to 5 of y = (x + 7)/((x − 1)(x + 3)), drawn solid violet, with dashed vertical asymptotes at x = 1 and x = −3. Two dashed curves show its pieces: y = 2/(x − 1) in blue, with its asymptote at x = 1, and y = −1/(x + 3) in vermillion, with its asymptote at x = −3. At every x the violet curve is the sum of the blue and vermillion curves, so the integral of the violet function is 2 ln|x − 1| − ln|x + 3| + C.', b) };
 }
 
 /* 6.13: 1/x^2 and 1/x on [1, b]: one area levels off at 1, the other grows like ln b. */
@@ -210,7 +210,7 @@ const figs = {};
   b.push(text(W / 2, 30, 'Both curves approach 0;', { anchor: 'middle', size: 19, bold: true }));
   b.push(text(W / 2, 54, 'only one area stays finite', { anchor: 'middle', size: 19, bold: true }));
   figs[id] = { w: W, h: H, svg: svg(id, W, H, 'The areas under 1/x squared and 1/x from 1 to b',
-    'Left panel: the graph of y = 1/x squared with the region under it from x = 1 to x = b shaded green. That area is 1 − 1/b: 0.500 at b = 2, 0.900 at b = 10, 0.990 at b = 100, 0.999 at b = 1000. As b grows the area levels off at 1, so the improper integral from 1 to infinity converges to 1. Right panel: the graph of y = 1/x with the region under it from 1 to b shaded vermillion. That area is ln b: 0.693 at b = 2, 2.303 at b = 10, 4.605 at b = 100, 6.908 at b = 1000. It grows without bound, so the improper integral diverges, even though 1/x also approaches 0.', b) };
+    'Left panel: the graph of y = 1/x squared with the region under it from x = 1 to x = b shaded violet. That area is 1 − 1/b: 0.500 at b = 2, 0.900 at b = 10, 0.990 at b = 100, 0.999 at b = 1000. As b grows the area levels off at 1, so the improper integral from 1 to infinity converges to 1. Right panel: the graph of y = 1/x with the region under it from 1 to b shaded vermillion. That area is ln b: 0.693 at b = 2, 2.303 at b = 10, 4.605 at b = 100, 6.908 at b = 1000. It grows without bound, so the improper integral diverges, even though 1/x also approaches 0.', b) };
 }
 
 /* 7.5: Euler's method on dy/dx = y from (0, 1), two steps of 0.5, against the solution y = e^x. */
@@ -235,7 +235,7 @@ const figs = {};
   b.push(text(W / 2, 24, 'Euler’s method on dy/dx = y from (0, 1) with Δx = 0.5', { anchor: 'middle', size: 16, bold: true }));
   b.push(text(W / 2, H - 22, 'The solution y = eˣ is concave up, so each step falls below it: 2.25 underestimates e.', { anchor: 'middle', size: 14, color: MUTED }));
   figs[id] = { w: W, h: H, svg: svg(id, W, H, 'Two Euler steps beside the true solution curve',
-    'The slope field of dy/dx = y for x from −0.25 to 1.25, with short gray segments that get steeper as y increases. The solution through (0, 1), y = e to the x, is drawn in blue. Two green Euler steps of size 0.5 start at (0, 1): the first follows slope 1 to (0.5, 1.5); the second follows slope 1.5 to (1, 2.25). The true value at x = 1 is e, about 2.718, marked in blue above the last green point. Because the solution is concave up, each straight step falls below the curve, so the Euler estimate 2.25 is an underestimate.', b) };
+    'The slope field of dy/dx = y for x from −0.25 to 1.25, with short gray segments that get steeper as y increases. The solution through (0, 1), y = e to the x, is drawn in blue. Two violet Euler steps of size 0.5 start at (0, 1): the first follows slope 1 to (0.5, 1.5); the second follows slope 1.5 to (1, 2.25). The true value at x = 1 is e, about 2.718, marked in blue above the last violet point. Because the solution is concave up, each straight step falls below the curve, so the Euler estimate 2.25 is an underestimate.', b) };
 }
 
 /* 7.9: a logistic population with K = 1000: P against t, and dP/dt against P. */
@@ -294,7 +294,7 @@ const figs = {};
   b.push(text(W / 2, H - 46, 'A chord over a run Δx with rise Δy has length √((Δx)² + (Δy)²). More, shorter chords close in on the curve,', { anchor: 'middle', size: 13.5, color: MUTED }));
   b.push(text(W / 2, H - 26, 'and their total becomes the integral of √(1 + (dy/dx)²) dx, here ∫ from 0 to 3 of √(1 + x) dx = 14/3.', { anchor: 'middle', size: 13.5, color: MUTED }));
   figs[id] = { w: W, h: H, svg: svg(id, W, H, 'Chords approximating the length of a curve',
-    `The curve y = (2/3)x to the 3/2 from x = 0 to x = 3, drawn in green, rising from (0, 0) to (3, 2√3), about (3, 3.464). Three blue dashed chords join the points at x = 0, 1, 2 and 3, each with a dotted right triangle showing its run and rise. The chord lengths are ${dec(chords[0])}, ${dec(chords[1])} and ${dec(chords[2])}, a total of ${dec(sum)}, a little less than the curve's length 14/3, about ${dec(L)}. Each chord is the hypotenuse √((Δx)² + (Δy)²); with more chords the total becomes the integral of √(1 + (dy/dx)²) dx, which here is the integral from 0 to 3 of √(1 + x) dx = 14/3.`, b) };
+    `The curve y = (2/3)x to the 3/2 from x = 0 to x = 3, drawn in violet, rising from (0, 0) to (3, 2√3), about (3, 3.464). Three blue dashed chords join the points at x = 0, 1, 2 and 3, each with a dotted right triangle showing its run and rise. The chord lengths are ${dec(chords[0])}, ${dec(chords[1])} and ${dec(chords[2])}, a total of ${dec(sum)}, a little less than the curve's length 14/3, about ${dec(L)}. Each chord is the hypotenuse √((Δx)² + (Δy)²); with more chords the total becomes the integral of √(1 + (dy/dx)²) dx, which here is the integral from 0 to 3 of √(1 + x) dx = 14/3.`, b) };
 }
 
 mkdirSync(OUT, { recursive: true });

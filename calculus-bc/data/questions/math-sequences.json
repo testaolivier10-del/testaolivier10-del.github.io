@@ -383,7 +383,7 @@
      "Both grow, but the exponential grows much faster, so the quotient shrinks.",
      "Right: $e^n$ grows faster than any power of $n$.",
      "The top and bottom do not grow at the same rate; $e^n$ wins.",
-     "The terms are positive and shrink steadily toward 0."
+     "The terms are positive and, after $n = 2$, shrink toward 0."
     ]
    }
   }

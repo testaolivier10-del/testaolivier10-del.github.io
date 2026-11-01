@@ -29,7 +29,7 @@
  ],
  "figure": {
   "figure": "partial-fractions-split",
-  "caption": "The green curve (x + 7)/((x − 1)(x + 3)) is, at every x, the sum of the blue curve 2/(x − 1) and the vermillion curve −1/(x + 3). Each piece has one asymptote and integrates to a natural log."
+  "caption": "The violet curve (x + 7)/((x − 1)(x + 3)) is, at every x, the sum of the blue curve 2/(x − 1) and the vermillion curve −1/(x + 3). Each piece has one asymptote and integrates to a natural log."
  },
  "chain": [
   {

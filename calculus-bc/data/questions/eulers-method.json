@@ -183,12 +183,12 @@
    ],
    "correct": 3,
    "why": {
-    "correct": "$\\frac{d^2y}{dx^2} = \\frac{d}{dx}(x + y) = 1 + \\frac{dy}{dx} = 1 + x + y$, positive in this region. Concave up curves lie above their tangent segments, so 2.5 underestimates $f(1)$.",
+    "correct": "$\\frac{d^2y}{dx^2} = \\frac{d}{dx}(x + y) = 1 + \\frac{dy}{dx} = 1 + x + y$, positive in this region, where every Euler point lies. So every solution curve there is concave up and lies above its tangent segments: the first step ends below $f(0.5)$, and the second step ends below the solution curve through $(0.5, 1.5)$, which stays below $f$ (solution curves do not cross). So 2.5 underestimates $f(1)$.",
     "options": [
      "Increasing slopes mean concave up, and a tangent segment lies below a concave up curve, so the estimate is too small.",
      "The conclusion is right but the reason is not: increasing says nothing about the gap. Concavity, from $\\frac{d^2y}{dx^2}$, decides it.",
      "$\\frac{d^2y}{dx^2}$ comes from the differential equation itself, so its sign can be read without solving.",
-     "Right: on concave up curves each tangent step lies below the curve, and starting the next step lower only makes it smaller."
+     "Right: each tangent step lies below the concave up solution curve it starts on, and a curve that starts lower stays below the graph of $f$, since solution curves do not cross."
     ]
    }
   },

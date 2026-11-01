@@ -284,7 +284,7 @@
      },
      {
       "value": "63/10",
-      "why": "Riemann sums of $f'(x)$ itself give $f(6) - f(0)$, the change in height. Use $\\sqrt{1 + (f'(x))^2}$."
+      "why": "A Riemann sum of $f'(x)$ itself estimates $f(6) - f(0)$, the change in height, not the length. Use $\\sqrt{1 + (f'(x))^2}$."
      }
     ]
    },

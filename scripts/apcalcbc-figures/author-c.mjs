@@ -483,7 +483,7 @@ const figs = {};
     b.push(text(left, 38, `1 + r + r² + ⋯ with ${c.name}`, { bold: true, size: 14.5, color: c.color }));
     b.push(text(left, 60, c.note, { size: 13.5, color: MUTED }));
   });
-  b.push(text(W / 2, 360, 'Each dot is a partial sum Sₙ = 1 + r + ⋯ + rⁿ. The dashed line is the sum a/(1 − r) when |r| < 1.', { anchor: 'middle', size: 13.5, color: INK }));
+  b.push(text(W / 2, 360, 'The dot at n is the sum 1 + r + ⋯ + rⁿ (the first n + 1 terms). The dashed line is the sum a/(1 − r) when |r| < 1.', { anchor: 'middle', size: 13.5, color: INK }));
   figs[id] = { w: W, h: H, svg: svg(id, W, H, 'Partial sums of three geometric series',
     'Partial sums S sub n = 1 + r + ... + r to the n for n = 0 to 10, one dot each, for three ratios. Left, r = 1/2: the partial sums 1, 1.5, 1.75, ... rise toward the dashed line at 2, the sum 1/(1 − 1/2). Middle, r = −1/2: the partial sums 1, 0.5, 0.75, 0.625, ... zigzag in toward 2/3, the sum 1/(1 + 1/2). Right, r = 5/4: the partial sums grow without bound, so the series diverges.', b) };
 }

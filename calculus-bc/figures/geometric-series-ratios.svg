@@ -47,5 +47,5 @@
 <circle cx="704.55" cy="119.38" r="4" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
 <text x="550" y="38" font-family="Arial, Helvetica, sans-serif" font-size="14.5" fill="#D55E00" text-anchor="start" font-weight="bold"><tspan >1 + r + r² + ⋯ with r = 5/4</tspan></text>
 <text x="550" y="60" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#5B6664" text-anchor="start" font-weight="normal"><tspan >diverges: |r| ≥ 1</tspan></text>
-<text x="390" y="360" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2A28" text-anchor="middle" font-weight="normal"><tspan >Each dot is a partial sum Sₙ = 1 + r + ⋯ + rⁿ. The dashed line is the sum a/(1 − r) when |r| &lt; 1.</tspan></text>
+<text x="390" y="360" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2A28" text-anchor="middle" font-weight="normal"><tspan >The dot at n is the sum 1 + r + ⋯ + rⁿ (the first n + 1 terms). The dashed line is the sum a/(1 − r) when |r| &lt; 1.</tspan></text>
 </svg>

@@ -507,7 +507,7 @@
      },
      {
       "value": "4/9",
-      "why": "The coefficient of $x^3$ is $\\frac{n + 1}{3^n}$ at $n = 3$: $\\frac{4}{27}$. Then $f'''(0) = 6 \\cdot \\frac{4}{27}$."
+      "why": "That multiplies the coefficient $\\frac{4}{27}$ by 3. Multiply by $3! = 6$: $f'''(0) = 6 \\cdot \\frac{4}{27} = \\frac{8}{9}$."
      }
     ]
    },

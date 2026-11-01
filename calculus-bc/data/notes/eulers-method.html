@@ -26,7 +26,7 @@
 <figure id="fig-euler" data-fig="eulers-method-steps"><figcaption>Tangent steps lie below a concave up solution: an underestimate.</figcaption></figure>
 <p>To find the concavity without solving, differentiate the equation implicitly. For $\frac{dy}{dx} = x + y$:</p>
 <p>$$\frac{d^2y}{dx^2} = 1 + \frac{dy}{dx} = 1 + x + y,$$</p>
-<p>which is positive for $x \ge 0$ and $y > 0$. The solution curves there are concave up, so the estimate 2.5 in worked example 1 is an <b>underestimate</b>. Concave down curves lie below their tangent lines, so Euler's method would give an <b>overestimate</b>. Name the concavity and say why it decides the answer; "the solution is increasing" is not a reason.</p>
+<p>which is positive for $x \ge 0$ and $y > 0$. The solution curves there are concave up, so the estimate 2.5 in worked example 1 is an <b>underestimate</b>. With more than one step, the concavity must hold for every solution curve a step starts on, not only for $f$: each step lies below the curve through its own starting point, and that curve stays below $f$ because solution curves do not cross. Here every step stays where $x \ge 0$ and $y > 0$. Concave down curves lie below their tangent lines, so Euler's method would give an <b>overestimate</b>. Name the concavity and say why it decides the answer; "the solution is increasing" is not a reason.</p>
 
 <h2>Step size</h2>
 <p>Shorter steps update the slope more often and follow the curve more closely. For $\frac{dy}{dx} = y$ from $(0, 1)$, the true value at $x = 1$ is $e \approx 2.718$:</p>
