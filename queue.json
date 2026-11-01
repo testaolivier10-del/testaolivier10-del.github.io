@@ -636,7 +636,7 @@
    "approved_blob": "6a910b06300277941577f2f99e385e0b7d9d3285",
    "dropped_on": "2026-10-31",
    "dropped_reason": "Olivier 2026-10-31: remove every Short not built to the knight v3 standard",
-   "buffer_delete_pending": true
+   "buffer_deleted": "2026-10-31"
   },
   {
    "id": "w1025-02-free-throw",
@@ -665,7 +665,7 @@
    "approved_blob": "81fec0fd0e68f4aec2bb56701ec2fe05c8172a5a",
    "dropped_on": "2026-10-31",
    "dropped_reason": "Olivier 2026-10-31: remove every Short not built to the knight v3 standard",
-   "buffer_delete_pending": true
+   "buffer_deleted": "2026-10-31"
   },
   {
    "id": "w1025-03-dead-zone",
@@ -694,7 +694,7 @@
    "approved_blob": "64d9c3a4f9ebf9909317ea0dcd3a840098d933bd",
    "dropped_on": "2026-10-31",
    "dropped_reason": "Olivier 2026-10-31: remove every Short not built to the knight v3 standard",
-   "buffer_delete_pending": true
+   "buffer_deleted": "2026-10-31"
   },
   {
    "id": "w1025-04-head-rush",
@@ -739,8 +739,8 @@
    "status": "scheduled",
    "added_on": "2026-10-30",
    "date": "2026-10-31",
-   "buffer": "6ae61dfbab019b90871412aa",
-   "yt_buffer": "6ae61e0d1ee172cd6db1fd35",
+   "buffer": "6ae6b54c21c807e9d59ca853",
+   "yt_buffer": "6ae6b557ab019b90873c1458",
    "youtube_id": null,
    "shorts_thumb": false,
    "thumb_v2": true,
@@ -759,14 +759,14 @@
    "review_blob": "09930a99d4bc2b51bf8042bbd1c8ecffbe628726",
    "approved_on": "2026-10-30",
    "approved_blob": "09930a99d4bc2b51bf8042bbd1c8ecffbe628726",
-   "reschedule_pending": "post now (Olivier 2026-10-31 8:50pm PT); Buffer still has it at 2026-11-05"
+   "shared_now": "2026-10-31 8:43pm PT"
   },
   {
    "status": "scheduled",
    "added_on": "2026-10-30",
    "date": "2026-11-01",
-   "buffer": "6ae61e19ab019b9087141ce4",
-   "yt_buffer": "6ae61e2aab019b90871420f8",
+   "buffer": "6ae6b565ab019b90873c1656",
+   "yt_buffer": "6ae6b56737c1acd2a0e5c1d4",
    "youtube_id": null,
    "shorts_thumb": false,
    "thumb_v2": true,
@@ -784,8 +784,7 @@
    "pin_question": "Could an astronaut floating in space flip around the same way?",
    "review_blob": "05db7ca795ab6f596396edba51d44a258cda7f2a",
    "approved_on": "2026-10-30",
-   "approved_blob": "05db7ca795ab6f596396edba51d44a258cda7f2a",
-   "reschedule_pending": "move to 2026-11-01 6pm PT (Olivier 2026-10-31); Buffer still has it at 2026-11-06"
+   "approved_blob": "05db7ca795ab6f596396edba51d44a258cda7f2a"
   }
  ]
 }
