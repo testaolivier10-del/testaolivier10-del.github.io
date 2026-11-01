@@ -130,8 +130,8 @@ def calm_bg(c, t, tint=COURSE):
     sh = skia.GradientShader.MakeRadial(skia.Point(W * 0.5, H * 0.45), W * 0.75, [C((46, 40, 92)), C(NAVY)], [0, 1])
     c.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Shader=sh))
     for k, (x0, y0, r, sp) in enumerate(((300, 260, 260, 7), (1600, 820, 320, 5), (1500, 200, 180, 9), (420, 900, 220, 6))):
-        x = x0 + 40 * math.sin(t * 0.05 * sp + k); y = y0 + 30 * math.cos(t * 0.04 * sp + k * 2)
-        c.drawCircle(x, y, r, P(tint if k % 2 == 0 else (90, 96, 170), 18, MaskFilter=blur(60)))
+        x = x0 + 110 * math.sin(t * 0.06 * sp + k); y = y0 + 70 * math.cos(t * 0.05 * sp + k * 2)
+        c.drawCircle(x, y, r, P(tint if k % 2 == 0 else (90, 96, 170), 26, MaskFilter=blur(60)))
     rs = np.random.default_rng(5)
     for k in range(26):
         x = (rs.uniform(0, W) + t * rs.uniform(4, 10)) % W

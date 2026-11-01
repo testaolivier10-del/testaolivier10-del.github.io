@@ -79,14 +79,23 @@ def hook(c, t):
     if t < c2 - 0.15:
         # eight weeks ago: the pot of dry soil on the scale, Jay presses the seed in
         WD.table(c, *TABLE)
-        WD.scale_(c, *SCALE_TOP, 0.9, '1,250 g', hl=sm((t - c1 - 1.6) / 0.4))
-        WD.pot(c, SCALE_TOP[0], SCALE_TOP[1] - 6, 0.62)
-        WD.tomato_plant(c, SCALE_TOP[0], SCALE_TOP[1] - 6 - 0.62 * 132, 0.0, t)
+        fill = sm((t - t0) / 3.0)
+        WD.scale_(c, *SCALE_TOP, 0.9, f'{int(1250 * fill):,} g', hl=sm((t - t0 - 3.0) / 0.4))
+        WD.pot(c, SCALE_TOP[0], SCALE_TOP[1] - 6, 0.62, soil=fill > 0.3)
+        pour = 1 - sm((t - t0 - 2.8) / 0.4)
+        if pour > 0.01:
+            rs = np.random.default_rng(int(t * 30))
+            for i in range(26):
+                yy = (i * 9 + t * 260) % 120
+                c.drawCircle(SCALE_TOP[0] + 12 + rs.uniform(-10, 10), SCALE_TOP[1] - 230 + yy, 4, P((92, 66, 50), 255 * pour))
+        seed = sm((t - t0 - 3.4) / 0.6)
+        WD.tomato_plant(c, SCALE_TOP[0], SCALE_TOP[1] - 6 - 0.62 * 132 - 30 * (1 - seed), 0.0, t)
         press = 0.5 + 0.5 * math.sin((t - t0) * 3.2)
-        PP.jay.draw(c, jx - 120, 1010, 0.95, t, pose=dict(hands={'R': (-330, -430 + 18 * press), 'L': (60, -300)}, look=-0.8, tilt=-5))
+        hand_y = -560 + 120 * seed if pour > 0.01 else -430 + 18 * press
+        PP.jay.draw(c, jx - 120, 1010, 0.95, t, pose=dict(hands={'R': (-330, hand_y), 'L': (60, -300)}, look=-0.8, tilt=-5))
         tint(c, (255, 190, 110), 0.16)
         pill(c, '8 weeks ago', 260, 110, AMBER, 34, sm((t - t0) / 0.4))
-        a = sm((t - c1 - 1.6) / 0.4)
+        a = sm((t - t0 - 3.0) / 0.4)
         label(c, 'dry soil: 1,250 g', 420, 560, CREAM, 34, a, dot=(700, 690))
     elif t < c3 - 0.15:
         # weeks pass: the plant grows past his knee
@@ -187,8 +196,8 @@ def e1(c, t):
             x = 420 + i * 540
             ai = a3 * sm((t - cue(k, 3) - i * 0.4) / 0.4)
             D.atom(c, x, 500, 1.6, 6, n, 0, ai, t, seed=3 + i)
-            text(c, f'6 protons + {n} neutrons', x, 680, 34, CREAM, ai, 'semi', 'center')
-            text(c, amt, x, 740, 36, AMBER, ai, 'xb', 'center')
+            text(c, f'6 protons + {n} neutrons', x, 680, 40, CREAM, ai, 'semi', 'center')
+            text(c, amt, x, 745, 42, AMBER, ai, 'xb', 'center')
             text(c, nm, x, 850, 50, CREAM, ai * u(t, k, 4), 'xb', 'center')
         hand(c, 'isotopes', W / 2, 990, 80, AMBER, u(t, k, 4, 0.8), 'center')
 
@@ -282,7 +291,7 @@ def e5(c, t):
             x = 400 + 600 * f + 40 * math.sin(i)
             y = 300 + 90 * math.sin(i * 1.7) + 220 * f
             D.co2(c, x, y, 0.6, a2 * sm(f * 5) * (1 - sm((f - 0.85) / 0.15)), 20 * i)
-        label(c, 'CO2 from the air', 260, 200, CREAM, 38, a2)
+        label(c, 'CO₂ from the air', 260, 200, CREAM, 38, a2)
         for i in range(5):
             f = ((t - cue(k, 2)) * 0.4 + i / 5) % 1
             c.drawCircle(1060 + 10 * math.sin(i), 990 - 330 * f, 9, P((120, 190, 255), 230 * a2 * (1 - f)))
@@ -321,7 +330,7 @@ def p1a(c, t):
     a1 = u(t, k, 1)
     D.co2(c, 600, 690, 1.0, a1)
     arrow(c, (600, 750), (600, 880), (220, 214, 200), 7, a1, a1)
-    text(c, 'C comes from CO2 in the air', 600, 950, 40, CREAM, a1, 'semi', 'center')
+    text(c, 'C comes from CO₂ in the air', 600, 950, 40, CREAM, a1, 'semi', 'center')
     a2 = u(t, k, 2)
     D.h2o(c, 1300, 680, 1.2, a2)
     arrow(c, (1300, 750), (1300, 880), (220, 214, 200), 7, a2, a2)
@@ -381,12 +390,12 @@ def c4(c, t):
     c.restore()
     a2 = u(t, k, 2)
     if a2 > 0:
-        dim(c, 0.55 * a2)
-        WD.plant_food(c, 700, 560, 2.4 * a2, 0, a2)
+        dim(c, 0.35 * a2)
+        WD.plant_food(c, 1760, 250, 1.3 * a2, 0, a2)
         for i, (el, nm) in enumerate((('N', 'nitrogen'), ('P', 'phosphorus'), ('K', 'potassium'))):
             ai = sm((t - cue(k, 2) - 0.6 - i * 0.4) / 0.4)
-            D.tile(c, el, 1150, 330 + i * 190, 110, ai, name=False)
-            text(c, nm, 1240, 350 + i * 190, 54, CREAM, ai, 'xb')
+            D.tile(c, el, 1290, 120 + i * 115, 90, ai, name=False, glow=0.5 * (0.5 + 0.5 * math.sin(t * 2 + i)) * ai)
+            text(c, nm, 1360, 138 + i * 115, 46, CREAM, ai, 'xb')
     a3 = u(t, k, 3)
     if a3 > 0:
         for i in range(4):
@@ -473,18 +482,18 @@ def k1(c, t):
         shapes = []
         # chain
         ach = u(t, k, 3)
-        D.mol(c, [('C', x, y) for x, y in zig(5)], [(i, i + 1, 1) for i in range(4)], 140, 330, 1.0, ach, u=sm((t - cue(k, 3)) / 1.0))
-        text(c, 'chain', 280, 470, 40, CREAM, ach, 'semi', 'center')
+        D.mol(c, [('C', x, y) for x, y in zig(5)], [(i, i + 1, 1) for i in range(4)], 120, 330, 1.35, ach, u=sm((t - cue(k, 3)) / 1.0))
+        text(c, 'chain', 310, 480, 44, CREAM, ach, 'semi', 'center')
         ab = u(t, k, 4)
-        D.mol(c, [('C', x, y) for x, y in zig(4)] + [('C', 70, 140), ('C', 210, -100)], [(0, 1, 1), (1, 2, 1), (2, 3, 1), (1, 4, 1), (3, 5, 1)], 1060, 330, 1.0, ab, u=sm((t - cue(k, 4)) / 1.0))
-        text(c, 'branched', 1180, 520, 40, CREAM, ab, 'semi', 'center')
+        D.mol(c, [('C', x, y) for x, y in zig(4)] + [('C', 70, 140), ('C', 210, -100)], [(0, 1, 1), (1, 2, 1), (2, 3, 1), (1, 4, 1), (3, 5, 1)], 1060, 320, 1.35, ab, u=sm((t - cue(k, 4)) / 1.0))
+        text(c, 'branched', 1220, 560, 44, CREAM, ab, 'semi', 'center')
         ar = u(t, k, 5)
         ring = [('C', 80 * math.cos(math.radians(30 + 60 * i)), 80 * math.sin(math.radians(30 + 60 * i))) for i in range(6)]
-        D.mol(c, ring, [(i, (i + 1) % 6, 1) for i in range(6)], 380, 760, 1.0, ar, u=sm((t - cue(k, 5)) / 1.0))
-        text(c, 'ring', 380, 920, 40, CREAM, ar, 'semi', 'center')
+        D.mol(c, ring, [(i, (i + 1) % 6, 1) for i in range(6)], 380, 770, 1.3, ar, u=sm((t - cue(k, 5)) / 1.0))
+        text(c, 'ring', 380, 960, 44, CREAM, ar, 'semi', 'center')
         ad = u(t, k, 6)
-        D.mol(c, [('C', 0, 0), ('C', 110, 0), ('C', 200, 50)], [(0, 1, 2), (1, 2, 1)], 1080, 760, 1.0, ad, u=sm((t - cue(k, 6)) / 1.0))
-        text(c, 'double bond: two shared pairs', 1180, 920, 40, CREAM, ad, 'semi', 'center')
+        D.mol(c, [('C', 0, 0), ('C', 110, 0), ('C', 200, 50)], [(0, 1, 2), (1, 2, 1)], 1020, 770, 1.4, ad, u=sm((t - cue(k, 6)) / 1.0))
+        text(c, 'double bond: two shared pairs', 1180, 960, 44, CREAM, ad, 'semi', 'center')
 
 
 def wax(c, x, y, s, a, t=0.0):
@@ -704,8 +713,8 @@ def f3(c, t):
     if a2 > 0:
         # an amino acid backbone with both groups
         D.mol(c, [('N', 0, 0), ('C', 90, 30), ('C', 180, 0), ('O', 180, -80), ('O', 260, 40), ('H', -50, -40), ('H', -50, 40), ('H', 320, 20), ('C', 90, 120)],
-              [(0, 1, 1), (1, 2, 1), (2, 3, 2), (2, 4, 1), (0, 5, 1), (0, 6, 1), (4, 7, 1), (1, 8, 1)], 560, 900, 1.0, a2)
-        text(c, 'every amino acid has both', 800, 1050, 36, CREAM, a2, 'semi', 'center')
+              [(0, 1, 1), (1, 2, 1), (2, 3, 2), (2, 4, 1), (0, 5, 1), (0, 6, 1), (4, 7, 1), (1, 8, 1)], 1060, 880, 0.95, a2)
+        text(c, 'every amino acid has both', 640, 900, 40, CREAM, a2, 'semi', 'center')
     a3 = u(t, k, 3)
     group(c, 'phosphate', 1480, 440, 1.2, a3, ty=640)
     for (dx, dy) in ((92, 0), (0, 92)):
@@ -736,10 +745,10 @@ def f4(c, t):
     group(c, 'methyl', 1380, 330, 1.3, a2, ty=480)
     text(c, 'nonpolar', 1400, 530, 36, CREAM, a2, 'semi', 'center')
     a3 = u(t, k, 3)
-    D.dna_icon(c, 1400, 800, 0.9, a3, t)
+    D.dna_icon(c, 1400, 790, 1.1, a3, t)
     if a3 > 0:
         D.ball(c, 1400 + 60, 760, 16, 'C', a3, False, glow=0.6)
-        text(c, 'on DNA: changes how a gene is read', 1400, 1010, 34, CREAM, a3, 'semi', 'center')
+        text(c, 'on DNA: changes how a gene is read', 1400, 1020, 40, CREAM, a3, 'semi', 'center')
 
 
 CYS = ([('S', 0, 0), ('H', -60, -30), ('C', 90, 30), ('C', 180, 0), ('N', 180, -90), ('H', 140, -140), ('H', 230, -140),
@@ -804,7 +813,7 @@ def m0(c, t):
     for i, (nm, lab) in enumerate((('bread', 'bread'), ('butter', 'butter'), ('cheese', 'cheese'), ('tomato', 'tomatoes'))):
         ai = sm((t - cue(k, 2) - i * 0.35) / 0.3)
         x, y = pos[nm]
-        pill(c, lab, x, y - 150, CREAM if i % 2 else AMBER, 30, ai)
+        pill(c, lab, x, y - 150, CREAM if i % 2 else AMBER, 38, ai)
     K.vignette(c)
 
 
@@ -839,7 +848,11 @@ def m1(c, t):
     fam_card(c, 0, xs[0], 600, u(t, k, 1), t, 'like the starch in bread')
     fam_card(c, 1, xs[1], 600, u(t, k, 2), t, 'mostly C-H, like wax', els='CHO')
     for i in (2, 3):
-        fam_card(c, i, xs[i], 600, 0.18 * u(t, k), t)
+        fam_card(c, i, xs[i], 600, 0.22, t)
+    if u(t, k, 1) < 0.99:
+        fam_card(c, 0, xs[0], 600, 0.22, t)
+    if u(t, k, 2) < 0.99:
+        fam_card(c, 1, xs[1], 600, 0.22, t)
     a3 = u(t, k, 2, 0.5, -3.5)
     if a3 > 0:
         pill(c, 'membrane phospholipids also carry P', 960, 960, (250, 150, 60), 34, a3)
@@ -852,7 +865,7 @@ def m2(c, t):
     xs = [300, 740, 1180, 1620]
     fam_card(c, 0, xs[0], 600, 1.0, t)
     fam_card(c, 1, xs[1], 600, 1.0, t)
-    fam_card(c, 2, xs[2], 600, u(t, k), t, 'amino acid chains, some S', els='CHON')
+    fam_card(c, 2, xs[2], 600, u(t, k), t, 'some contain S', els='CHON')
     fam_card(c, 3, xs[3], 600, u(t, k, 2), t, 'store gene information')
     a3 = u(t, k, 3)
     if a3 > 0:
@@ -1040,21 +1053,21 @@ def b4(c, t):
         reb = u(t, k, 3, 1.4)
         n = 8
         for i in range(n):
-            x0 = 520 + i * 90
+            x0 = 620 + i * 90
             x1 = 700 + i * 120 + 30 * math.sin(t + i)
-            y1 = 260 + 40 * math.sin(i * 1.3 + t * 0.7)
-            x2, y2 = 520 + i * 110, 760
+            y1 = 270 + 40 * math.sin(i * 1.3 + t * 0.7)
+            x2, y2 = 640 + i * 110, 330
             x = x0 + (x1 - x0) * cut + (x2 - x1) * reb
-            yy = 380 + (y1 - 380) * cut + (y2 - y1) * reb
+            yy = 200 + (y1 - 200) * cut + (y2 - y1) * reb
             if i < n - 1 and cut < 0.98:
-                D.string(c, (x0, 380), (x0 + 90, 380), a * (1 - cut))
+                D.string(c, (x0, 200), (x0 + 90, 200), a * (1 - cut))
             D.bead(c, x, yy, 30, GREEN, a)
             if i < n - 1 and reb > 0.98:
                 D.string(c, (x, yy), (x + 110, yy), a)
-        text(c, 'starch from the bread', 300, 300, 38, CREAM, a * (1 - cut), 'semi', 'left')
-        pill(c, 'hydrolysis: cut into sugars', W / 2, 170, AMBER, 34, cut * (1 - reb))
-        pill(c, 'dehydration synthesis: his own polymers', W / 2, 170, BIO, 34, reb)
-        hand(c, 'the bread becomes part of Jay', W / 2, 980, 64, AMBER, u(t, k, 4, 1.0), 'center')
+        text(c, 'starch from the bread', 620, 140, 40, CREAM, a * (1 - cut), 'semi', 'left')
+        pill(c, 'hydrolysis: cut into sugars', W / 2, 80, AMBER, 38, cut * (1 - reb))
+        pill(c, 'dehydration synthesis: his own polymers', W / 2, 80, BIO, 38, reb)
+        hand(c, 'the bread becomes part of Jay', W / 2, 1000, 64, AMBER, u(t, k, 4, 0.6, 0.3), 'center')
     K.vignette(c)
 
 
@@ -1186,17 +1199,26 @@ def end(c, t):
             f = ((t - cue(k, 1)) * 0.3 + i / 6) % 1
             x = 1130 + 260 * f; y = 520 + 20 * math.sin(i + t)
             D.co2(c, x, y, 0.45, a * sm(f * 4) * (1 - sm((f - 0.8) / 0.2)), 15 * i)
-        label(c, 'his breath: CO2', 760, 380, CREAM, 36, a)
+        label(c, 'his breath: CO₂', 760, 380, CREAM, 36, a)
         pill(c, 'carbon from lunch', 600, 200, AMBER, 34, u(t, k, 2))
         K.vignette(c)
     else:
         K.calm_bg(c, t)
         # top third only: a leaf taking in CO2, then the site line; the lower two thirds stay calm for the end screen
-        D.leaf_icon(c, 400, 200, 0.8, 1.0, -10)
-        for i in range(4):
-            f = (t * 0.3 + i / 4) % 1
-            D.co2(c, 700 - 230 * f, 150 + 30 * math.sin(i + t), 0.45, sm(f * 4) * (1 - sm((f - 0.8) / 0.2)), 15 * i)
-        text(c, 'back into a leaf', 400, 320, 34, GREEN, sm((t - t_es) / 0.5), 'semi', 'center')
+        ia = sm((t - t_es) / 0.6)
+        clip = skia.Path(); clip.addRRect(skia.RRect.MakeRectXY(skia.Rect(60, 40, 700, 340), 26, 26))
+        c.save(); c.clipPath(clip, skia.ClipOp.kIntersect, True)
+        c.saveLayerAlpha(None, int(255 * ia))
+        c.translate(60, 40); c.scale(0.42, 0.42); c.translate(-560, -300)
+        WD.patio_bg(c, t, warm=0.3)
+        WD.tomato_plant(c, 1470, 800, 1.0, t, s=1.2, glow=0.5)
+        PP.jay.draw(c, 1040, 1030, 1.05, t, pose=dict(lean=12, look=0.9, tilt=8, arms={'R': (6, 20, 0), 'L': (20, 50, 0)}))
+        for i in range(6):
+            f = (t * 0.3 + i / 6) % 1
+            D.co2(c, 1130 + 260 * f, 520 + 20 * math.sin(i + t), 0.45, sm(f * 4) * (1 - sm((f - 0.8) / 0.2)), 15 * i)
+        c.restore(); c.restore()
+        c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(60, 40, 700, 340), 26, 26), SP(GREEN, 4, 255 * ia))
+        text(c, 'back into a leaf', 380, 395, 36, GREEN, u(t, k, 3), 'semi', 'center')
         a = u(t, k, 4)
         text(c, 'Free notes and practice', 1250, 140, 38, INK2, a, 'semi', 'center')
         text(c, 'levlprep.com', 1250, 240, 88, K.COURSE, a, 'xb', 'center')

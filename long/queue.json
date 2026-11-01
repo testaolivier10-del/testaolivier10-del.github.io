@@ -205,14 +205,14 @@
     "bio/notes/elements-of-life.html",
     "bio/notes/macromolecules-intro.html"
    ],
-   "title": "Elements of Life and Macromolecules | AP Biology",
-   "description_file": "",
-   "video": "",
-   "thumb": "",
-   "captions": "",
+   "title": "Elements of Life and Macromolecules for AP Bio (CHONPS, Polymers)",
+   "description_file": "long/yt-apbio-02-youtube.md",
+   "video": "long/yt-apbio-02-elements-macromolecules.mp4",
+   "thumb": "long/yt-apbio-02-thumb.png",
+   "captions": "long/yt-apbio-02-captions.srt",
    "playlist": "AP Biology | LevlPrep",
    "date": "",
-   "status": "building",
+   "status": "pending",
    "approved_on": "",
    "youtube_id": "",
    "thumbnail_set": false,
@@ -221,7 +221,11 @@
    "pr_url": "",
    "comment_id": "",
    "comment_pinned": false,
-   "added_on": "2026-11-01"
+   "added_on": "2026-11-01",
+   "thumb_b": "long/yt-apbio-02-thumb-b.png",
+   "thumb_c": "long/yt-apbio-02-thumb-c.png",
+   "ab_test": false,
+   "endscreen_set": false
   }
  ]
 }

@@ -9,6 +9,11 @@ from kit import C, P, SP, sm, text, W, H, CREAM, AMBER, CORAL, TEAL, YELLOW, BLU
 from gk import flat, smooth_closed, poly, blur, mix
 
 RIM = (255, 214, 140)
+T = 0.0          # global time, set by render.frame: atoms and beads jiggle gently (thermal motion)
+
+
+def jig(x, y, amp=3.2):
+    return x + amp * math.sin(T * 2.3 + y * 0.031 + x * 0.017), y + amp * math.cos(T * 1.9 + x * 0.029)
 # element colours (CPK-like, softened for the navy background)
 EL = dict(C=(70, 74, 92), H=(236, 236, 240), O=(232, 84, 76), N=(92, 132, 232), P=(250, 150, 60), S=(246, 210, 70), K=(176, 120, 230))
 EL_TXT = dict(C=CREAM, H=NAVY, O=CREAM, N=CREAM, P=NAVY, S=NAVY, K=CREAM)
@@ -22,6 +27,7 @@ def part(c, path, base, shade=None, sh=6, rim_a=160, a=1.0):
 def ball(c, x, y, r, el, a=1.0, label=True, glow=0.0):
     if a <= 0.01:
         return
+    x, y = jig(x, y)
     if glow > 0:
         K.glow(c, x, y, r * 2.2, EL[el] if el != 'C' else AMBER, glow * a)
     p = skia.Path(); p.addCircle(x, y, r)
@@ -31,10 +37,10 @@ def ball(c, x, y, r, el, a=1.0, label=True, glow=0.0):
         text(c, el, x, y + r * 0.36, r * 1.0, EL_TXT[el], a, 'xb', 'center')
 
 
-def bond(c, p0, p1, order=1, a=1.0, u=1.0, col=(220, 214, 200), w=7):
+def bond(c, p0, p1, order=1, a=1.0, u=1.0, col=(220, 214, 200), w=7, jg=True):
     if a <= 0.01 or u <= 0.01:
         return
-    x0, y0 = p0; x1, y1 = p1
+    x0, y0 = jig(*p0) if jg else p0; x1, y1 = jig(*p1) if jg else p1
     x1, y1 = x0 + (x1 - x0) * u, y0 + (y1 - y0) * u
     dx, dy = x1 - x0, y1 - y0; d = math.hypot(dx, dy) or 1
     nx, ny = -dy / d, dx / d
@@ -122,7 +128,7 @@ def atom(c, x, y, s, protons, neutrons, electrons=0, a=1.0, t=0.0, pu=1.0, nu=1.
 def tile(c, el, x, y, size=120, a=1.0, sc=1.0, glow=0.0, name=True, sub=None):
     if a <= 0.01:
         return
-    c.save(); c.translate(x, y); c.scale(sc, sc)
+    c.save(); c.translate(x, y + 5 * math.sin(T * 1.6 + x * 0.01)); c.scale(sc, sc)
     if glow > 0:
         K.glow(c, 0, 0, size, EL[el] if el != 'C' else AMBER, glow * a)
     h = size / 2
@@ -160,6 +166,7 @@ def bead(c, x, y, r=34, col=AMBER, a=1.0, oh=0.0, hh=0.0, hl=0.0):
     """a monomer bead; oh/hh show an -OH stub on its right and an -H stub on its left"""
     if a <= 0.01:
         return
+    x, y = jig(x, y, 2.5)
     if hl > 0:
         K.glow(c, x, y, r * 1.8, col, hl * a)
     p = skia.Path(); p.addCircle(x, y, r)

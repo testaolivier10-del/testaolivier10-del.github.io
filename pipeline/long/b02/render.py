@@ -51,6 +51,7 @@ def ev_at(t):
 
 
 def frame(t, surf=None):
+    SC.D.T = t
     surf = surf or skia.Surface(W, H)
     c = surf.getCanvas()
     c.clear(skia.Color(20, 26, 51))

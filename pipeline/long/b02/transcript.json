@@ -1,0 +1,35 @@
+{
+ "module": "b02_script",
+ "media": "out/yt-apbio-02-elements-macromolecules.mp4",
+ "model": "scribe_v2",
+ "script_words": 1962,
+ "heard_words": 1956,
+ "match_rate": 0.9918,
+ "voice_characters_used_by_check": 0,
+ "findings": [
+  {
+   "kind": "TERM",
+   "t": 378.3,
+   "script": "nonpolar",
+   "heard": "non polar"
+  },
+  {
+   "kind": "TERM",
+   "t": 492.6,
+   "script": "sul fie drils",
+   "heard": "sulfidrils"
+  },
+  {
+   "kind": "TERM",
+   "t": 501.1,
+   "script": "nonpolar",
+   "heard": "non polar"
+  },
+  {
+   "kind": "TERM",
+   "t": 563.4,
+   "script": "built",
+   "heard": "build"
+  }
+ ]
+}

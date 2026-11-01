@@ -1,0 +1,333 @@
+{
+"video": "out/yt-apbio-02-elements-macromolecules.mp4",
+"talk_source": "out/voice.wav",
+"duration": 876.8,
+"fps": 30.0,
+"long": true,
+"talking_seconds": 666.5,
+"moving_share": 0.12,
+"findings": [
+{
+"kind": "FROZEN",
+"t": 10.37,
+"end": 16.63,
+"note": "picture unchanged 6.3 s while the narrator talks",
+"strip": "out/motion/strip_00_frozen_10.4.png"
+},
+{
+"kind": "FROZEN",
+"t": 55.87,
+"end": 63.03,
+"note": "picture unchanged 7.2 s while the narrator talks",
+"strip": "out/motion/strip_01_frozen_55.9.png"
+},
+{
+"kind": "FROZEN",
+"t": 69.17,
+"end": 76.4,
+"note": "picture unchanged 7.2 s while the narrator talks",
+"strip": "out/motion/strip_02_frozen_69.2.png"
+},
+{
+"kind": "FROZEN",
+"t": 76.53,
+"end": 83.03,
+"note": "picture unchanged 6.5 s while the narrator talks",
+"strip": "out/motion/strip_03_frozen_76.5.png"
+},
+{
+"kind": "FROZEN",
+"t": 83.47,
+"end": 89.83,
+"note": "picture unchanged 6.4 s while the narrator talks",
+"strip": "out/motion/strip_04_frozen_83.5.png"
+},
+{
+"kind": "FROZEN",
+"t": 99.0,
+"end": 105.8,
+"note": "picture unchanged 6.8 s while the narrator talks",
+"strip": "out/motion/strip_05_frozen_99.0.png"
+},
+{
+"kind": "FROZEN",
+"t": 106.2,
+"end": 112.6,
+"note": "picture unchanged 6.4 s while the narrator talks",
+"strip": "out/motion/strip_06_frozen_106.2.png"
+},
+{
+"kind": "FROZEN",
+"t": 113.03,
+"end": 120.83,
+"note": "picture unchanged 7.8 s while the narrator talks",
+"strip": "out/motion/strip_07_frozen_113.0.png"
+},
+{
+"kind": "FROZEN",
+"t": 121.23,
+"end": 135.4,
+"note": "picture unchanged 14.2 s while the narrator talks",
+"strip": "out/motion/strip_08_frozen_121.2.png"
+},
+{
+"kind": "FROZEN",
+"t": 170.5,
+"end": 178.03,
+"note": "picture unchanged 7.5 s while the narrator talks",
+"strip": "out/motion/strip_09_frozen_170.5.png"
+},
+{
+"kind": "FROZEN",
+"t": 189.43,
+"end": 200.83,
+"note": "picture unchanged 11.4 s while the narrator talks",
+"strip": "out/motion/strip_10_frozen_189.4.png"
+},
+{
+"kind": "FROZEN",
+"t": 204.37,
+"end": 210.77,
+"note": "picture unchanged 6.4 s while the narrator talks",
+"strip": "out/motion/strip_11_frozen_204.4.png"
+},
+{
+"kind": "FROZEN",
+"t": 252.63,
+"end": 259.53,
+"note": "picture unchanged 6.9 s while the narrator talks",
+"strip": "out/motion/strip_12_frozen_252.6.png"
+},
+{
+"kind": "FROZEN",
+"t": 260.87,
+"end": 272.43,
+"note": "picture unchanged 11.6 s while the narrator talks",
+"strip": "out/motion/strip_13_frozen_260.9.png"
+},
+{
+"kind": "FROZEN",
+"t": 272.87,
+"end": 283.0,
+"note": "picture unchanged 10.1 s while the narrator talks",
+"strip": "out/motion/strip_14_frozen_272.9.png"
+},
+{
+"kind": "FROZEN",
+"t": 302.2,
+"end": 309.07,
+"note": "picture unchanged 6.9 s while the narrator talks",
+"strip": "out/motion/strip_15_frozen_302.2.png"
+},
+{
+"kind": "FROZEN",
+"t": 329.37,
+"end": 338.93,
+"note": "picture unchanged 9.6 s while the narrator talks",
+"strip": "out/motion/strip_16_frozen_329.4.png"
+},
+{
+"kind": "FROZEN",
+"t": 344.73,
+"end": 350.93,
+"note": "picture unchanged 6.2 s while the narrator talks",
+"strip": "out/motion/strip_17_frozen_344.7.png"
+},
+{
+"kind": "FROZEN",
+"t": 357.5,
+"end": 365.73,
+"note": "picture unchanged 8.2 s while the narrator talks",
+"strip": "out/motion/strip_18_frozen_357.5.png"
+},
+{
+"kind": "FROZEN",
+"t": 366.07,
+"end": 373.0,
+"note": "picture unchanged 6.9 s while the narrator talks",
+"strip": "out/motion/strip_19_frozen_366.1.png"
+},
+{
+"kind": "FROZEN",
+"t": 385.23,
+"end": 399.8,
+"note": "picture unchanged 14.6 s while the narrator talks",
+"strip": "out/motion/strip_20_frozen_385.2.png"
+},
+{
+"kind": "FROZEN",
+"t": 406.87,
+"end": 412.9,
+"note": "picture unchanged 6.0 s while the narrator talks",
+"strip": "out/motion/strip_21_frozen_406.9.png"
+},
+{
+"kind": "FROZEN",
+"t": 438.4,
+"end": 448.0,
+"note": "picture unchanged 9.6 s while the narrator talks",
+"strip": "out/motion/strip_22_frozen_438.4.png"
+},
+{
+"kind": "FROZEN",
+"t": 448.7,
+"end": 456.0,
+"note": "picture unchanged 7.3 s while the narrator talks",
+"strip": "out/motion/strip_23_frozen_448.7.png"
+},
+{
+"kind": "FROZEN",
+"t": 463.87,
+"end": 478.27,
+"note": "picture unchanged 14.4 s while the narrator talks",
+"strip": "out/motion/strip_24_frozen_463.9.png"
+},
+{
+"kind": "FROZEN",
+"t": 483.47,
+"end": 491.0,
+"note": "picture unchanged 7.5 s while the narrator talks",
+"strip": "out/motion/strip_25_frozen_483.5.png"
+},
+{
+"kind": "FROZEN",
+"t": 523.3,
+"end": 533.33,
+"note": "picture unchanged 10.0 s while the narrator talks",
+"strip": "out/motion/strip_26_frozen_523.3.png"
+},
+{
+"kind": "FROZEN",
+"t": 538.4,
+"end": 545.07,
+"note": "picture unchanged 6.7 s while the narrator talks",
+"strip": "out/motion/strip_27_frozen_538.4.png"
+},
+{
+"kind": "FROZEN",
+"t": 560.47,
+"end": 568.8,
+"note": "picture unchanged 8.3 s while the narrator talks",
+"strip": "out/motion/strip_28_frozen_560.5.png"
+},
+{
+"kind": "FROZEN",
+"t": 569.2,
+"end": 581.5,
+"note": "picture unchanged 12.3 s while the narrator talks",
+"strip": "out/motion/strip_29_frozen_569.2.png"
+},
+{
+"kind": "FROZEN",
+"t": 582.3,
+"end": 592.83,
+"note": "picture unchanged 10.5 s while the narrator talks",
+"strip": "out/motion/strip_30_frozen_582.3.png"
+},
+{
+"kind": "FROZEN",
+"t": 593.23,
+"end": 600.73,
+"note": "picture unchanged 7.5 s while the narrator talks",
+"strip": "out/motion/strip_31_frozen_593.2.png"
+},
+{
+"kind": "FROZEN",
+"t": 637.63,
+"end": 652.4,
+"note": "picture unchanged 14.8 s while the narrator talks",
+"strip": "out/motion/strip_32_frozen_637.6.png"
+},
+{
+"kind": "FROZEN",
+"t": 680.4,
+"end": 688.03,
+"note": "picture unchanged 7.6 s while the narrator talks",
+"strip": "out/motion/strip_33_frozen_680.4.png"
+},
+{
+"kind": "FROZEN",
+"t": 729.8,
+"end": 735.87,
+"note": "picture unchanged 6.1 s while the narrator talks",
+"strip": "out/motion/strip_34_frozen_729.8.png"
+},
+{
+"kind": "FROZEN",
+"t": 742.97,
+"end": 751.0,
+"note": "picture unchanged 8.0 s while the narrator talks",
+"strip": "out/motion/strip_35_frozen_743.0.png"
+},
+{
+"kind": "FROZEN",
+"t": 762.5,
+"end": 770.33,
+"note": "picture unchanged 7.8 s while the narrator talks",
+"strip": "out/motion/strip_36_frozen_762.5.png"
+},
+{
+"kind": "FROZEN",
+"t": 779.23,
+"end": 793.03,
+"note": "picture unchanged 13.8 s while the narrator talks",
+"strip": "out/motion/strip_37_frozen_779.2.png"
+},
+{
+"kind": "FROZEN",
+"t": 800.27,
+"end": 811.67,
+"note": "picture unchanged 11.4 s while the narrator talks",
+"strip": "out/motion/strip_38_frozen_800.3.png"
+},
+{
+"kind": "FROZEN",
+"t": 817.13,
+"end": 824.57,
+"note": "picture unchanged 7.4 s while the narrator talks",
+"strip": "out/motion/strip_39_frozen_817.1.png"
+},
+{
+"kind": "END_CARD",
+"t": 860.77,
+"end": 876.0,
+"note": "closing card holds 15.2 s (fine: the narration is over)",
+"strip": "out/motion/strip_40_end_card_860.8.png"
+},
+{
+"kind": "JUMP",
+"t": 6.8,
+"score": 31.2,
+"note": "one frame changes much more than its neighbours (a pop or an unplanned cut)",
+"strip": "out/motion/strip_41_jump_6.8.png"
+},
+{
+"kind": "JUMP",
+"t": 9.73,
+"score": 33.6,
+"note": "one frame changes much more than its neighbours (a pop or an unplanned cut)",
+"strip": "out/motion/strip_42_jump_9.7.png"
+},
+{
+"kind": "JUMP",
+"t": 95.9,
+"score": 31.2,
+"note": "one frame changes much more than its neighbours (a pop or an unplanned cut)",
+"strip": "out/motion/strip_43_jump_95.9.png"
+},
+{
+"kind": "JUMP",
+"t": 702.47,
+"score": 10.8,
+"note": "one frame changes much more than its neighbours (a pop or an unplanned cut)",
+"strip": "out/motion/strip_44_jump_702.5.png"
+},
+{
+"kind": "JUMP",
+"t": 856.3,
+"score": 130.3,
+"note": "one frame changes much more than its neighbours (a pop or an unplanned cut)",
+"strip": "out/motion/strip_45_jump_856.3.png"
+}
+]
+}
