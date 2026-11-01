@@ -1,0 +1,47 @@
+{
+ "video": "w1101-02-guard-faint",
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0,
+   "t1": 29.28,
+   "what": "hero guard, lens on calf, faint",
+   "motion_source": "code pose and breathing, keyed fall, cell flow from pump function",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s2",
+   "t0": 29.28,
+   "t1": 38.01,
+   "what": "neighbour wiggles toes, pump on",
+   "motion_source": "code pose, toe flex, pump function",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  }
+ ]
+}

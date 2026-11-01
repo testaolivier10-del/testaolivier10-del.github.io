@@ -1,0 +1,110 @@
+{
+ "video": "w1101-01-bomber-holes",
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0,
+   "t1": 7.14,
+   "what": "dawn landing, crew watch",
+   "motion_source": "keyed code motion (landing curve, prop spin, crew breathing)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s2",
+   "t0": 7.14,
+   "t1": 20.45,
+   "what": "overhead holes and plan",
+   "motion_source": "keyed overlays on the words, cloud shadows",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s3",
+   "t0": 20.45,
+   "t1": 25.87,
+   "what": "engine hit in the air",
+   "motion_source": "keyed fall with smoke trail particles",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s4",
+   "t0": 25.87,
+   "t1": 29.08,
+   "what": "survivors and empty spots",
+   "motion_source": "slow push, cloud shadows",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s5",
+   "t0": 29.08,
+   "t1": 33.75,
+   "what": "armor lands",
+   "motion_source": "plates drop eased, light sweep",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  }
+ ]
+}

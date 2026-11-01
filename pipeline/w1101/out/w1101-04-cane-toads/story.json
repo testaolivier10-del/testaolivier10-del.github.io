@@ -1,0 +1,134 @@
+{
+ "id": "w1101-04-cane-toads",
+ "format": "short",
+ "duration": 40.0,
+ "long_reason": "the story needs the failure, the poison, the missing enemies and the spread over decades, and this is the run CTA line (2 s)",
+ "answer": {
+  "kind": "place",
+  "what": "the toad range spreading across northern Australia"
+ },
+ "beats": [
+  {
+   "t0": 0,
+   "t1": 1.6,
+   "kind": "surprise",
+   "person": false,
+   "diagram": false,
+   "changes": [
+    0,
+    0.35,
+    0.6,
+    1.15
+   ],
+   "what": "a crate marked QUEENSLAND 1935 tips open and toads leap out",
+   "source": ""
+  },
+  {
+   "t0": 1.6,
+   "t1": 6.21,
+   "kind": "result",
+   "person": false,
+   "diagram": false,
+   "changes": [
+    1.6,
+    2.7,
+    3.8,
+    4.9,
+    6.0
+   ],
+   "what": "toads spread into the cane; title IT BACKFIRED",
+   "source": ""
+  },
+  {
+   "t0": 6.21,
+   "t1": 11.69,
+   "kind": "explain",
+   "person": false,
+   "diagram": false,
+   "changes": [
+    6.21,
+    7.41,
+    8.61,
+    9.81,
+    11.01
+   ],
+   "what": "a cane beetle high on the stalk; a toad leaps and falls short",
+   "source": "Wikipedia Cane toad; NMA defining moments"
+  },
+  {
+   "t0": 11.69,
+   "t1": 19.65,
+   "kind": "explain",
+   "person": false,
+   "diagram": false,
+   "changes": [
+    11.69,
+    12.79,
+    13.89,
+    14.99,
+    16.09,
+    17.19,
+    18.29,
+    19.39
+   ],
+   "what": "toads snap bugs; a snake bites one, the glands ooze, the snake goes limp",
+   "source": "Queensland Government cane toad page"
+  },
+  {
+   "t0": 19.65,
+   "t1": 24.35,
+   "kind": "explain",
+   "person": false,
+   "diagram": true,
+   "changes": [
+    19.65,
+    20.75,
+    21.85,
+    22.95,
+    24.05
+   ],
+   "what": "map of the Americas with the native range, predators and diseases chips; a toad sits in the corner",
+   "source": "Wikipedia Cane toad (native range)",
+   "anchor": true
+  },
+  {
+   "t0": 24.35,
+   "t1": 30.78,
+   "kind": "answer",
+   "person": false,
+   "diagram": true,
+   "changes": [
+    24.35,
+    25.35,
+    26.35,
+    27.35,
+    28.35,
+    29.35,
+    30.35
+   ],
+   "what": "map of Australia: range spreads from Gordonvale with a year counter; INVASIVE SPECIES",
+   "source": "Wikipedia Cane toads in Australia (spread dates); APES CED 9.8"
+  },
+  {
+   "t0": 30.78,
+   "t1": 39.96,
+   "kind": "answer",
+   "person": false,
+   "diagram": false,
+   "changes": [
+    30.78,
+    31.78,
+    32.78,
+    33.78,
+    34.78,
+    35.78,
+    36.78,
+    37.78,
+    38.78,
+    39.78
+   ],
+   "what": "night road crowded with hopping toads, MILLIONS, then the CTA line",
+   "source": "Australian Geographic / Wikipedia population estimate"
+  }
+ ]
+}

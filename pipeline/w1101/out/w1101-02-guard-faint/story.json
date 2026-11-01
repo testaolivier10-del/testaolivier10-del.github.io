@@ -1,0 +1,113 @@
+{
+ "id": "w1101-02-guard-faint",
+ "format": "short",
+ "duration": 38.0,
+ "long_reason": "the muscle pump needs one squeeze cycle, the frozen stall and the faint shown in order; cutting any of the three loses the idea",
+ "answer": {
+  "kind": "action",
+  "what": "wiggle toes and tense the calves to keep the muscle pump going"
+ },
+ "beats": [
+  {
+   "t0": 0,
+   "t1": 2.0,
+   "kind": "surprise",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    0,
+    0.7,
+    1.4
+   ],
+   "what": "a guard in the heat sways at attention, sweat running",
+   "source": ""
+  },
+  {
+   "t0": 2.0,
+   "t1": 6.22,
+   "kind": "result",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    2.0,
+    3.2,
+    4.4,
+    5.6
+   ],
+   "what": "he keeps swaying while the others stand still; title WHY SOLDIERS FAINT",
+   "source": ""
+  },
+  {
+   "t0": 6.22,
+   "t1": 19.08,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    6.22,
+    7.52,
+    8.82,
+    10.12,
+    11.42,
+    12.72,
+    14.02,
+    15.32,
+    16.62,
+    17.92
+   ],
+   "what": "a lens grows from his calf: vein with valves; muscles squeeze, red cells jump up, valves open and close",
+   "source": "OpenStax / IU human physiology: skeletal muscle pump"
+  },
+  {
+   "t0": 19.08,
+   "t1": 24.8,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    19.08,
+    20.28,
+    21.48,
+    22.68,
+    23.88
+   ],
+   "what": "muscles slack, flow stops, cells sink onto the closed valves and pile up",
+   "source": "skeletal muscle pump; BMJ Mil Health 2022 reflex syncope"
+  },
+  {
+   "t0": 24.8,
+   "t1": 29.28,
+   "kind": "explain",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    24.8,
+    25.8,
+    26.8,
+    27.8,
+    28.8
+   ],
+   "what": "lens closes; a dark tunnel closes in; he topples forward and hits the gravel",
+   "source": "BMJ Military Health 2022 (orthostatic reflex syncope)"
+  },
+  {
+   "t0": 29.28,
+   "t1": 38.01,
+   "kind": "answer",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    29.28,
+    30.48,
+    31.68,
+    32.88,
+    34.08,
+    35.28,
+    36.48,
+    37.68
+   ],
+   "what": "the guard beside him wiggles his toes; a lens on his calf shows the pump working; he stays on his feet",
+   "source": "BMJ Mil Health 2022 (toe wiggling); applied tension"
+  }
+ ]
+}

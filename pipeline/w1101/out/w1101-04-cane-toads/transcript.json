@@ -1,0 +1,23 @@
+{
+ "module": "w1101_04_cane_toads",
+ "media": "out/w1101-04-cane-toads/final_nomusic.mp4",
+ "model": "scribe_v2",
+ "script_words": 101,
+ "heard_words": 98,
+ "match_rate": 0.9406,
+ "voice_characters_used_by_check": 0,
+ "findings": [
+  {
+   "kind": "TERM",
+   "t": 3.0,
+   "script": "sugar cane",
+   "heard": "sugarcane"
+  },
+  {
+   "kind": "TERM",
+   "t": 37.1,
+   "script": "level prep dot",
+   "heard": "levelprep"
+  }
+ ]
+}

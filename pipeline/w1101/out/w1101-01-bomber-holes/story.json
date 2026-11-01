@@ -1,0 +1,125 @@
+{
+ "id": "w1101-01-bomber-holes",
+ "format": "short",
+ "duration": 33.7,
+ "answer": {
+  "kind": "place",
+  "what": "armor over the engines and cockpit, where the returners had no holes"
+ },
+ "beats": [
+  {
+   "t0": 0,
+   "t1": 1.8,
+   "kind": "surprise",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    0,
+    0.6,
+    1.15,
+    1.6
+   ],
+   "what": "a bomber full of holes touches down with a tyre smoke puff",
+   "source": ""
+  },
+  {
+   "t0": 1.8,
+   "t1": 7.14,
+   "kind": "result",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    1.8,
+    2.6,
+    3.6,
+    4.6,
+    5.6
+   ],
+   "what": "it rolls out past ground crew; one points at the holes; title SURVIVORSHIP BIAS",
+   "source": ""
+  },
+  {
+   "t0": 7.14,
+   "t1": 15.87,
+   "kind": "explain",
+   "person": false,
+   "diagram": true,
+   "changes": [
+    7.14,
+    8.34,
+    9.54,
+    10.74,
+    11.94,
+    13.14,
+    14.34,
+    15.54
+   ],
+   "what": "overhead: red rings mark holes on wings, tail, body on each word; dashed plates show the obvious idea",
+   "source": "AMS feature column 2016-06 (Wald, SRG); Mangel and Samaniego 1984",
+   "anchor": true
+  },
+  {
+   "t0": 15.87,
+   "t1": 20.45,
+   "kind": "explain",
+   "person": false,
+   "diagram": true,
+   "changes": [
+    15.87,
+    17.07,
+    18.27,
+    19.47
+   ],
+   "what": "plates fade; engines and cockpit glow: no holes there?",
+   "source": "AMS feature column"
+  },
+  {
+   "t0": 20.45,
+   "t1": 25.87,
+   "kind": "explain",
+   "person": false,
+   "diagram": false,
+   "changes": [
+    20.45,
+    21.45,
+    22.45,
+    23.45,
+    24.45,
+    25.45
+   ],
+   "what": "in the air: flak, the near plane is hit in an engine, burns and falls into the clouds",
+   "source": "Wald memoranda (survivor reasoning)"
+  },
+  {
+   "t0": 25.87,
+   "t1": 29.08,
+   "kind": "explain",
+   "person": false,
+   "diagram": true,
+   "changes": [
+    25.87,
+    26.87,
+    27.87,
+    28.87
+   ],
+   "what": "overhead: three survivors and three empty dashed spots marked MISSING; chip a kind of sampling bias",
+   "source": "AP Statistics CED topic 1.12"
+  },
+  {
+   "t0": 29.08,
+   "t1": 33.75,
+   "kind": "answer",
+   "person": false,
+   "diagram": true,
+   "changes": [
+    29.08,
+    30.08,
+    31.08,
+    32.08,
+    33.08
+   ],
+   "what": "armor plates land on the engines and cockpit with a clank and a glint as the sun sweeps over",
+   "source": "AMS feature column"
+  }
+ ]
+}

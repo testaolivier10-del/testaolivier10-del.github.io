@@ -1,0 +1,89 @@
+{
+ "video": "w1101-03-speed-camera",
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0,
+   "t1": 4.91,
+   "what": "brake under gantry A",
+   "motion_source": "keyed car motion, parallax",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s2",
+   "t0": 4.91,
+   "t1": 16.91,
+   "what": "aerial trip and numbers",
+   "motion_source": "car follows the route by the speed profile",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s3",
+   "t0": 16.91,
+   "t1": 25.37,
+   "what": "speed graph and needle",
+   "motion_source": "graph from v(u), needle from the same v",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s4",
+   "t0": 25.37,
+   "t1": 31.88,
+   "what": "brake under gantry B",
+   "motion_source": "keyed car motion",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  }
+ ]
+}

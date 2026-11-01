@@ -1,0 +1,131 @@
+{
+ "video": "w1101-04-cane-toads",
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0,
+   "t1": 6.21,
+   "what": "crate opens, toads hop out",
+   "motion_source": "keyed hop cycles",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s2",
+   "t0": 6.21,
+   "t1": 11.69,
+   "what": "beetle up high, toad falls short",
+   "motion_source": "keyed hop",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s3",
+   "t0": 11.69,
+   "t1": 19.65,
+   "what": "toads eat, snake and poison",
+   "motion_source": "keyed tongue, strike, limp",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s4",
+   "t0": 19.65,
+   "t1": 24.35,
+   "what": "Americas map",
+   "motion_source": "keyed reveal",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s5",
+   "t0": 24.35,
+   "t1": 30.78,
+   "what": "Australia spread",
+   "motion_source": "arrival year model per cell",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s6",
+   "t0": 30.78,
+   "t1": 39.96,
+   "what": "night road of toads",
+   "motion_source": "hop cycles",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  }
+ ]
+}

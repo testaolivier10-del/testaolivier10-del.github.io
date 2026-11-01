@@ -1,0 +1,10 @@
+{
+ "module": "w1101_02_guard_faint",
+ "media": "out/w1101-02-guard-faint/final_nomusic.mp4",
+ "model": "scribe_v2",
+ "script_words": 111,
+ "heard_words": 111,
+ "match_rate": 1.0,
+ "voice_characters_used_by_check": 0,
+ "findings": []
+}

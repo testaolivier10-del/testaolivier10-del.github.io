@@ -1,0 +1,102 @@
+{
+ "id": "w1101-03-speed-camera",
+ "format": "short",
+ "duration": 31.9,
+ "answer": {
+  "kind": "place",
+  "what": "the instant on the speed graph where she was going exactly 75"
+ },
+ "beats": [
+  {
+   "t0": 0,
+   "t1": 1.8,
+   "kind": "surprise",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    0,
+    0.5,
+    1.0,
+    1.5
+   ],
+   "what": "a car brakes hard under a speed camera gantry; the camera beam reads it",
+   "source": ""
+  },
+  {
+   "t0": 1.8,
+   "t1": 4.91,
+   "kind": "result",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    1.8,
+    3.0,
+    4.2
+   ],
+   "what": "she drives on past the gantry; title MEAN VALUE THEOREM",
+   "source": ""
+  },
+  {
+   "t0": 4.91,
+   "t1": 16.91,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    4.91,
+    5.91,
+    6.91,
+    7.91,
+    8.91,
+    9.91,
+    10.91,
+    11.91,
+    12.91,
+    13.91,
+    14.91,
+    15.91,
+    16.91
+   ],
+   "what": "aerial map: the car drives from gantry A to B, timer runs to 8:00, 10 MILES, 75 mph vs limit 65",
+   "source": "section control (EU road safety observatory); arithmetic"
+  },
+  {
+   "t0": 16.91,
+   "t1": 25.37,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    16.91,
+    17.91,
+    18.91,
+    19.91,
+    20.91,
+    21.91,
+    22.91,
+    23.91,
+    24.91
+   ],
+   "what": "speed graph draws as the car drives under it; on exactly the cursor stops on the 75 crossing and the needle reads 75",
+   "source": "AP Calculus AB CED topic 5.1 (Mean Value Theorem)"
+  },
+  {
+   "t0": 25.37,
+   "t1": 31.88,
+   "kind": "answer",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    25.37,
+    26.37,
+    27.37,
+    28.37,
+    29.37,
+    30.37,
+    31.37
+   ],
+   "what": "back on the motorway at gantry B she brakes again; chip AVERAGE 75 MPH",
+   "source": "arithmetic and MVT"
+  }
+ ]
+}

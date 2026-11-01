@@ -1,0 +1,10 @@
+{
+ "module": "w1101_01_bomber_holes",
+ "media": "out/w1101-01-bomber-holes/final_nomusic.mp4",
+ "model": "scribe_v2",
+ "script_words": 94,
+ "heard_words": 94,
+ "match_rate": 0.9894,
+ "voice_characters_used_by_check": 0,
+ "findings": []
+}

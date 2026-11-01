@@ -1,0 +1,10 @@
+{
+ "module": "w1101_03_speed_camera",
+ "media": "out/w1101-03-speed-camera/final_nomusic.mp4",
+ "model": "scribe_v2",
+ "script_words": 83,
+ "heard_words": 83,
+ "match_rate": 1.0,
+ "voice_characters_used_by_check": 0,
+ "findings": []
+}
