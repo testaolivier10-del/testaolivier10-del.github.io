@@ -1,0 +1,23 @@
+{
+  "slug": "integration-methods",
+  "kind": "skill",
+  "topic": "integration-by-parts",
+  "intro": "<p>Three BC techniques, seen before they are drilled. <b>Parts</b> turns $\\int u\\,dv$ into $uv - \\int v\\,du$: the picture shows why, as two areas that fill a rectangle. <b>Partial fractions</b> split a rational function into simple pieces you can integrate one at a time. An <b>improper integral</b> is the limit of ordinary ones: stretch the bound and watch the area settle on a number or grow forever. Then Test yourself, including a drill on choosing the method.</p>",
+  "howItWorks": "<p><b>Parts.</b> Name $u$ (the factor that gets simpler when differentiated: logarithms, then powers of $x$) and $dv$ (the factor you can integrate), find $du$ and $v$, and write $uv - \\int v\\,du$. For $x^2$ times $e^{ax}$, $\\sin ax$ or $\\cos ax$, the tabular method does the repeated parts in one table: differentiate down one column to 0, integrate down the other, and add the diagonal products with signs $+, -, +$. The picture plots $u$ against $v$: the area under that curve is $\\int u\\,dv$, the area beside it is $\\int v\\,du$, and together they make $uv$ at the upper bound minus $uv$ at the lower.</p><p><b>Partial fractions</b> (BC: distinct linear factors only). Write $\\frac{N(x)}{(x - a)(x - b)} = \\frac{A}{x - a} + \\frac{B}{x - b}$ and find $A$ by covering up $x - a$ and putting $x = a$ into what is left; then each piece integrates to a logarithm, $A\\ln|x - a|$.</p><p><b>Improper integrals.</b> Replace the infinite bound (or the bound where the integrand blows up) by $b$, integrate, and take the limit as $b$ goes there, with limit notation to the end: no arithmetic with $\\infty$. A finite limit means the integral converges to it; otherwise it diverges. $\\int_1^{\\infty} \\frac{1}{x^p}\\,dx$ converges exactly when $p > 1$, and $\\int_0^1 \\frac{1}{x^p}\\,dx$ exactly when $p < 1$.</p><p>Typed answers are checked by evaluating them, so any correct form counts; an antiderivative needs its $+ C$. A wrong answer gets the name of the slip it matches: the sign in $uv - \\int v\\,du$, two antiderivatives multiplied, a missing chain factor, all-plus tabular signs, $A$ and $B$ swapped, $\\ln$ without absolute values, a limit written with $\\infty$ plugged in.</p>",
+  "partTopics": {
+    "fa": "partial-fractions",
+    "fb": "partial-fractions",
+    "fr": "partial-fractions",
+    "is": "improper-integrals",
+    "ia": "improper-integrals",
+    "ic": "improper-integrals",
+    "iv": "improper-integrals"
+  },
+  "contexts": [
+    { "id": "parts", "kind": "parts", "topic": "integration-by-parts" },
+    { "id": "tabular", "kind": "tabular", "topic": "integration-by-parts" },
+    { "id": "partial", "kind": "partial", "topic": "partial-fractions" },
+    { "id": "improper", "kind": "improper", "topic": "improper-integrals" },
+    { "id": "choose", "kind": "choose", "topic": "choosing-integration-methods" }
+  ]
+}

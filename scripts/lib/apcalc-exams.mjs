@@ -13,6 +13,9 @@
                                    prompt, recomputed here (EXAM_NUMBERS) */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { BC_JUSTIFY_SKILLS } from './apcalcbc-exams.mjs';
+// AP® Calculus BC (APCALC_COURSE=bc) adds its own skills; AB's list is unchanged.
+const BC = process.env.APCALC_COURSE === 'bc';
 
 const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
 const strip = s => String(s ?? '').replace(/<\/?[A-Za-z!][^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -24,6 +27,12 @@ export const MCQ_PARTS = [{ key: 'A', n: 29, minutes: 62, calc: false }, { key: 
 export const FRQ_PARTS = [{ key: 'A', n: 2, minutes: 30, calc: true }, { key: 'B', n: 4, minutes: 60, calc: false }];
 export const FRQ_POINTS = 9;
 export const FRQ_TOTAL = 6;
+/* AP® Calculus BC's Section II (docs/apcalcbc-research/framework.md section 5): the
+   same 2 + 4 split and 9 points, with three BC-only slots. Q1, Q3 and Q4 are shared
+   with AB (an AB type); Q2 is parametric, vector or polar (calculator), Q5 a mix of BC
+   techniques and Q6 always series. checkForms(forms, { ..., slots: BC_FRQ_SLOTS }). */
+export const BC_FRQ_TYPES = ['parametric', 'techniques', 'series'];
+export const BC_FRQ_SLOTS = [null, 'parametric', null, null, 'techniques', 'series'];
 // The trainer's free prompts: the first few in course order (spec section 3).
 export const FREE_JUSTIFY = 3;
 // The reader-report misses the trainer is built around (framework.md section 8).
@@ -38,6 +47,7 @@ export const JUSTIFY_SKILLS = {
   de: 'Differential equations and slope fields',
   rules: 'Derivative rules with every step shown (chain, product, implicit)',
   setup: 'Area and volume set-ups: radii, limits, the factor of π',
+  ...(BC ? BC_JUSTIFY_SKILLS : {}),
 };
 
 export function loadExams(dataDir) {
@@ -47,11 +57,13 @@ export function loadExams(dataDir) {
   return { items: it.items || [], stimuli: it.stimuli || {}, forms: readJson(join(dir, 'forms.json')).forms || [] };
 }
 
+// dataDir: one folder, or several (BC: AB's prompts, then its own).
 export function loadJustify(dataDir, map) {
-  const dir = join(dataDir, 'justify');
-  if (!existsSync(dir)) return [];
   const out = [];
-  for (const f of readdirSync(dir).filter(f => f.endsWith('.json')).sort()) for (const p of readJson(join(dir, f)).prompts || []) out.push({ ...p, file: f });
+  for (const d of [].concat(dataDir)) {
+    const dir = join(d, 'justify');
+    if (existsSync(dir)) for (const f of readdirSync(dir).filter(f => f.endsWith('.json')).sort()) for (const p of readJson(join(dir, f)).prompts || []) out.push({ ...p, file: f });
+  }
   if (map) {
     const pos = id => map.topics.findIndex(t => t.id === id);
     const ch = id => map.chapters.findIndex(c => c.id === id);
@@ -101,7 +113,7 @@ export function checkForms(forms, ctx) {
         calcSeq.push(!!q.calc);
         if (seenQ.has(q.id) && seenQ.get(q.id) !== w) errs.push(`${w}: ${q.id} is also in ${seenQ.get(q.id)}`);
         seenQ.set(q.id, w);
-        const own = /^calc-exam-(\d+)-\d+$/.exec(q.id);
+        const own = /^(?:calc|cbc)-exam-(\d+)-\d+$/.exec(q.id);
         if (own && `form-${own[1]}` !== f.id) errs.push(`${w}: exam-only item ${q.id} belongs to form-${own[1]}`);
       }
       if (qs.some(q => !!q.calc !== !!qs[0].calc)) errs.push(`${w}: block ${block.join(', ')} mixes calculator and no-calculator questions`);
@@ -134,6 +146,12 @@ export function checkForms(forms, ctx) {
       if (!!q.calc !== wantCalc) errs.push(`${w}: Section II question ${i + 1} is in Part ${wantCalc ? 'A (calculator)' : 'B (no calculator)'}; ${id} is a ${q.calc ? 'calculator' : 'no-calculator'} question`);
       if (q.points !== FRQ_POINTS) errs.push(`${w}: ${id} is worth ${q.points} points, not ${FRQ_POINTS}`);
       types[q.type] = (types[q.type] || 0) + 1;
+      // BC slots: Q2, Q5 and Q6 have their BC type; the other three are AB types (the shared questions).
+      if (ctx.slots) {
+        const want = ctx.slots[i];
+        if (want && q.type !== want) errs.push(`${w}: Section II question ${i + 1} is the ${want} slot; ${id} is type ${q.type}`);
+        if (!want && BC_FRQ_TYPES.includes(q.type)) errs.push(`${w}: Section II question ${i + 1} is shared with AB, so it is an AB type; ${id} is type ${q.type}`);
+      }
       if (q.placeholder) errs.push(`${w}: ${id} is a placeholder`);
       if (seenF.has(id) && seenF.get(id) !== w) errs.push(`${w}: FRQ ${id} is also in ${seenF.get(id)}`);
       seenF.set(id, w);
@@ -158,7 +176,7 @@ export function checkJustify(prompts, ctx) {
   const { map } = ctx;
   for (const p of prompts) {
     const w = `justify ${p.id || '(no id)'}`;
-    if (!p.id || !/^u[1-9]-[a-z0-9-]+$/.test(p.id)) errs.push(`${w}: id must be u<unit>-<words>`);
+    if (!p.id || !/^u(?:[1-9]|10)-[a-z0-9-]+$/.test(p.id)) errs.push(`${w}: id must be u<unit>-<words>`);
     if (ids.has(p.id)) errs.push(`${w}: duplicate id`); ids.add(p.id);
     const t = map.topicById(p.topic);
     if (!t) errs.push(`${w}: unknown topic "${p.topic}"`);
@@ -276,10 +294,11 @@ export const JUSTIFY_NUMBERS = [
   { id: 'u8-washer-about-line', has: [`\\frac{${Math.round(15 * washer)}\\pi}{15}`] },
   { id: 'u8-average-value-meaning', has: [`\\frac{840}{12} = ${840 / 12}`] },
 ];
-/* items: Map(id -> item); prompts: list. Returns problems. */
-export function checkNumbers(items, prompts) {
+/* items: Map(id -> item); prompts: list; lists: the numbers to check (AB's by
+   default; BC passes its own exam numbers and AB's prompts' plus its own). */
+export function checkNumbers(items, prompts, lists = { exam: EXAM_NUMBERS, justify: JUSTIFY_NUMBERS }) {
   const errs = [];
-  for (const n of EXAM_NUMBERS) {
+  for (const n of lists.exam) {
     const q = items.get(n.id);
     if (!q) { errs.push(`numbers: ${n.id} not found`); continue; }
     const key = strip(q.options[q.correct]);
@@ -289,11 +308,12 @@ export function checkNumbers(items, prompts) {
     if (q.options.filter(o => strip(o) === key).length !== 1) errs.push(`numbers: ${n.id} has its key twice`);
   }
   const byId = new Map(prompts.map(p => [p.id, p]));
-  for (const n of JUSTIFY_NUMBERS) {
+  for (const n of lists.justify) {
     const p = byId.get(n.id);
     if (!p) { errs.push(`numbers: prompt ${n.id} not found`); continue; }
     const text = strip([p.context, p.prompt, ...(p.checklist || []), p.earns.answer].join(' '));
     for (const h of n.has) if (!text.includes(h)) errs.push(`numbers: prompt ${n.id} should show "${h}"`);
+    if (n.check && !n.check()) errs.push(`numbers: prompt ${n.id} fails its side condition`);
   }
   return errs;
 }

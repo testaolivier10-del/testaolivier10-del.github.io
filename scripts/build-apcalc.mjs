@@ -30,7 +30,12 @@
      APCALC_DATA=<dir>                        read authored data from <dir> (tests)
 
    Nothing it writes is edited by hand. Every served path avoids the token
-   "ap" (spec decision 2). */
+   "ap" (spec decision 2).
+
+   AP® Calculus BC is built by this same file with APCALC_COURSE=bc
+   (scripts/build-apcalcbc.mjs; docs/apcalcbc-architecture.md): the course
+   profile in scripts/lib/apcalc-build.mjs supplies every value that differs,
+   so with no APCALC_COURSE the AB output is byte-identical. */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { courseBanner } from './lib/covers.mjs';
 import { apToolsHubMain, swapMain, toolBand, apPageR3, apFrqItemR3 } from './lib/r3-tools.mjs';
@@ -44,7 +49,7 @@ import { connectionsWithNext } from './lib/lesson-next.mjs';
 import { glossaryJson as sharedGlossaryJson, glossaryMain, glossaryScript } from './lib/glossary.mjs';
 import { premiumData, lockedLd, courseOffers } from './lib/premium-data.mjs';
 import {
-  ROOT, SITE, BASE, COURSE_NAME, COURSE_HTML, COURSE_ID, COURSE_KEY, DISCLAIMER, BETA_NOTE, BETA_PILL,
+  ROOT, SITE, BASE, COURSE_NAME, COURSE_HTML, COURSE_ID, COURSE_KEY, DISCLAIMER, BETA_NOTE, BETA_PILL, COURSE, IS_BC, RT, OWN_TOOL, setCourseConfig,
   esc, text, loadMap, loadCourse, isFreeTopic, clampDesc, head, tail, crumbs, orgCrumbs, crumbNav, footer, reportButton,
   termIndex, glossify, figureImg, credit, renderFigures, stimulusBody, stimulusPanel, questionForPage, questionHtml,
   groupSets, hasApToken, stripMark, STIM_KIND,
@@ -56,16 +61,60 @@ import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
 
 const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
-const OUT = args.includes('--out') ? args[args.indexOf('--out') + 1] : join(ROOT, 'calculus');
+const OUT = args.includes('--out') ? args[args.indexOf('--out') + 1] : join(ROOT, COURSE.dir);
+const DIR = COURSE.dir;
+const TAG = `build-${IS_BC ? 'apcalcbc' : 'apcalc'}`;
 const map = loadMap();
 // APCALC_DATA points the build at another data folder (tests use the
 // placeholder sample in scripts/test/fixtures/apcalc-data, never calculus/data).
 /* A definition is plain text with build-time MathML in it (and the <wbr> the
    math renderer puts between formulas): escape the text, keep the math. */
 const escKeepMath = (s) => String(s).split(/(<math\b[\s\S]*?<\/math>|<wbr>)/).map((x, i) => i % 2 ? x : esc(x)).join('');
-const C = loadCourse(ROOT, { map, data: process.env.APCALC_DATA || undefined, published: process.env.APCALC_PUBLISHED !== undefined ? process.env.APCALC_PUBLISHED.split(',').filter(Boolean) : undefined });
+const C = loadCourse(ROOT, { map, data: process.env[COURSE.dataEnv] || undefined, published: process.env[COURSE.pubEnv] !== undefined ? process.env[COURSE.pubEnv].split(',').filter(Boolean) : undefined });
+/* BC links AB's trainers (docs/apcalcbc-architecture.md, "Trainers"): its
+   pages.json lists them as { slug, from: "ab" }, filled here from AB's
+   pages.json; they are never built under calculus-bc/, only linked. */
+if (IS_BC && C.pages && Array.isArray(C.pages.tools)) {
+  const abPages = existsSync(join(C.dirs.ab, 'pages.json')) ? JSON.parse(readFileSync(join(C.dirs.ab, 'pages.json'), 'utf8')) : { tools: [] };
+  C.pages.tools = C.pages.tools.map(t => t.from === 'ab' ? { ...((abPages.tools || []).find(x => x.slug === t.slug) || {}), ...t } : t);
+}
+const abTool = t => t.from === 'ab';
+const toolHref = (t, up) => abTool(t) ? `${up}../calculus/tools/${t.slug}.html` : `${up}tools/${t.slug}.html`;
 const outputs = new Map();
-const LABEL = 'AP® Calculus AB';
+const LABEL = COURSE.label;
+/* What each course looks like (AB's values are the ones it has always had;
+   BC's are proposed, owner to confirm: docs/apcalcbc-spec.md decision 7). */
+const IDENTITY = IS_BC ? {
+  t2: 'all the way to series.',
+  lede: 'Every AB topic and every BC topic, taught from scratch in framework order, then practice that grades typed answers, intervals and justifications.',
+  homeDesc: 'Calculus BC exam prep in framework order: every AB topic plus parametric, polar and series, free notes, trainers and answers you type graded by value.',
+  partColors: { course: ['#7A3CC0', '#5A1E96'], skills: ['#3E7C8C', '#24525E'] },
+  // The "Try a step" card: chosen when Unit 9 is written (left out until it exists).
+  sample: { topic: 'parametric-derivatives', id: 'cbc-parametric-derivatives-1' },
+  // A partial sum climbing to its limit under a sigma: the same 24-px stroke icon as the hub card.
+  icon: '<path d="M17 5H7l5 7-5 7h10"/><path d="M3 20h2l2-3 2 1.5 2-2 2 1 2-.5 2 .2" stroke-opacity=".55"/><path d="M3 15.5h18" stroke-dasharray="1.5 2.5"/>',
+  alignNote: 'every Calculus AB topic and the BC-only topics, each where the framework places it',
+} : {
+  t2: `one idea at a time.`,
+  lede: `Each topic taught from scratch, in framework order, then practice that grades typed answers and justifications.`,
+  homeDesc: 'Calculus AB exam prep in framework order: lessons from scratch, free notes, trainers, typed answers graded by value, and calculator and no-calculator practice.',
+  partColors: { course: ['#C2305A', '#8C1036'], skills: ['#3E7C8C', '#24525E'] },
+  sample: { topic: 'limit-notation', id: 'calc-limit-notation-15' },
+  icon: '<path d="M14.5 3.5c-1.3-.7-2.6.1-2.8 1.6l-1.4 13.8c-.2 1.5-1.5 2.3-2.8 1.6"/><path d="M3 17c3 0 4-7 8-8s5 2 6 3" stroke-opacity=".55"/><path d="M15 6l6 4" stroke-dasharray="1.5 2.5"/>',
+  alignNote: 'Calculus AB topics only; the BC-only topics are left out',
+};
+/* BC's free-response types (docs/apcalcbc-research/framework.md section 5): the
+   BC-only slots of Section II. Q1, Q3 and Q4 are AB types. */
+const BC_FRQ_TYPES = { parametric: 'Parametric, vector or polar functions', techniques: 'BC techniques: parts, improper integrals, Euler, arc length', series: 'Series and Taylor polynomials' };
+/* A question id's prefix: AB's items calc-, BC's own cbc- (spec, course key). */
+const pfxOf = t => IS_BC && t.source === 'bc' ? COURSE.idPrefix : 'calc';
+/* A BC page for an AB topic: the AB page is the canonical copy. */
+const abCanonical = (t, path) => IS_BC && t.source === 'ab' ? `${SITE}/calculus/${path}` : undefined;
+/* window.ApCalcCourse on every BC page (tail() in scripts/lib/apcalc-build.mjs). */
+const courseConfig = frqTypes => ({
+  key: COURSE_KEY, name: COURSE_NAME, short: COURSE.short, dir: DIR, pfx: ['calc', COURSE.idPrefix], frqTypes,
+  band: COURSE.band, score: COURSE.scoreCalculator, examDate: '2027-05-10', site: `${SITE}${BASE}`, intervals: true, smallValues: true,
+});
 const PRELAUNCH = C.published.size === 0;
 
 /* Every table sits in a focusable, named scrolling region (site rule table-wrap-keyboard). */
@@ -78,15 +127,15 @@ const tableLabel = inner => {
 const wrapTables = html => html.replace(/(<div class="table-wrap"[^>]*>\s*)?<table\b([\s\S]*?)<\/table>(\s*<\/div>)?/g,
   (m, open, inner, close) => open && close ? m : `<div class="table-wrap" tabindex="0" role="region" aria-label="${tableLabel(inner)}"><table${inner}</table></div>`);
 const put = (rel, content) => {
-  if (hasApToken(rel)) throw new Error(`build-apcalc: output path calculus/${rel} contains the token "ap" (spec decision 2)`);
+  if (hasApToken(rel)) throw new Error(`${TAG}: output path ${DIR}/${rel} contains the token "ap" (spec decision 2)`);
   // Video lessons from docs/videos.json (scripts/lib/videos.mjs).
-  outputs.set(rel, rel.endsWith('.html') ? r3Reading(applyVideo(`calculus/${rel}`, wrapTables(content)), { key: 'apcalc', rel: `calculus/${rel}` }) : content);
+  outputs.set(rel, rel.endsWith('.html') ? r3Reading(applyVideo(`${DIR}/${rel}`, wrapTables(content)), { key: COURSE_KEY, rel: `${DIR}/${rel}` }) : content);
 };
 
 if (map) {
   // A TeX typo in a built topic stops the build; elsewhere the content check lists it.
   const bad = C.mathProblems.filter(m => [...C.built].some(id => m.includes(`/${id}.`)));
-  if (bad.length) { console.error(`build-apcalc: math that does not render:\n  ${bad.join('\n  ')}`); process.exit(1); }
+  if (bad.length) { console.error(`${TAG}: math that does not render:\n  ${bad.join('\n  ')}`); process.exit(1); }
   build();
 }
 
@@ -126,7 +175,7 @@ function build() {
     : `<span class="calc-unbuilt">${esc(map.topicById(id).title)}</span>`;
   const nextBuilt = id => topics.slice(pos(id) + 1).find(t => C.built.has(t.id)) || null;
   const prevBuilt = id => topics.slice(0, pos(id)).reverse().find(t => C.built.has(t.id)) || null;
-  const bodyOpen = (attrs = '') => `<body class="calc"${attrs}>\n<header id="site-header"></header>\n<div class="course-nav"></div>`;
+  const bodyOpen = (attrs = '') => `<body class="calc${IS_BC ? ' cbc" data-course="apcalcbc' : ''}"${attrs}>\n<header id="site-header"></header>\n<div class="course-nav"></div>`;
   /* A stable link, "Share to Google Classroom", Copy link and Print, on every
      lesson, notes page, unit sheet and FRQ (spec section 1, "Teachers"). The
      shared title never carries the mark (it travels in a URL). Copy link and
@@ -166,7 +215,21 @@ function build() {
     const nx = nextBuilt(id);
     return [...back, ...(nx ? [{ href: `../notes/${nx.id}.html`, label: `Next: ${label(nx)}` }] : [])];
   }
-  const STEP_FIRST_PAINT = `<script>(function(){var s=document.querySelector('.calc-ls'),p=s&&s.querySelectorAll('.calc-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.calc-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apcalc_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>`;
+  /* BC inserts its topics between AB's (6.11-6.13 after 6.10, 7.5, 7.9, 8.13,
+     the skills chapters before Units 9 and 10), so an AB lesson's authored
+     "Next: ..." can name a topic that is no longer next. connectionsWithNext
+     relabels it "Later: ..."; on BC the real next topic is then added as
+     "Next: ..." in front of it, so Connections and "What comes next" agree.
+     AB never takes this path (its output is unchanged). */
+  const lessonConnections = (id, L, nx) => {
+    const list = connectionsWithNext(connections(id, L), nx);
+    if (!IS_BC || !nx || list.some(c => /^next\b/i.test(c.label || ''))) return list;
+    const i = list.findIndex(c => /^later\b/i.test(c.label || ''));
+    if (i < 0) return list;
+    const own = { href: `${nx.id}.html`, label: `Next: ${nx.title}${nx.ced ? ` (${nx.ced})` : ''}` };
+    return [...list.slice(0, i), own, ...list.slice(i)];
+  };
+  const STEP_FIRST_PAINT = `<script>(function(){var s=document.querySelector('.calc-ls'),p=s&&s.querySelectorAll('.calc-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.calc-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('${COURSE_KEY}_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>`;
 
   function lessonPage(id) {
     const t = map.topicById(id), ch = chapterById(t.chapter), L = C.lessons[id];
@@ -198,7 +261,7 @@ function build() {
       { id: 'check', kind: 'Check yourself', nav: 'Check yourself', h: 'Check yourself', html: `<p class="calc-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="calc-qs" data-set="check">${staticQuestions(check, stimuli, depth)}</div>` },
       { id: 'summary', kind: 'Summary', nav: 'Summary', h: 'Summary', html: g(L.summary) },
       { id: 'next', kind: 'Up next', nav: 'What comes next', h: 'What comes next', html: nx ? `<nav class="calc-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="${nx.id}.html">${esc(nx.title)} &rarr;</a></p></nav>` : '<p>This is the last topic in the course.</p>' },
-      connections(id, L).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="calc-links calc-nav-ref">${connectionsWithNext(connections(id, L), nx).map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
+      connections(id, L).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="calc-links calc-nav-ref">${lessonConnections(id, L, nx).map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
     ].filter(Boolean);
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'LearningResource', '@id': `${url}#lesson`, name: t.title, url, description: desc, learningResourceType: 'Lesson', educationalLevel: 'High school', inLanguage: 'en', ...freeLd(t),
@@ -209,7 +272,7 @@ function build() {
     const body = `
 ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
 <div class="xshell">${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../units/${ch.id}.html` }, { name: t.title }])}</div>
-<div class="xshell calc-ls cx-ls${parts.length > 1 ? ' calc-stepped' : ''}" data-course="apcalc"${nx ? ` data-next-title="${esc(nx.title)}" data-next-unit="${nx.chapter}"${isFreeTopic(map, nx) ? ' data-next-free="1"' : ''}` : ''}>
+<div class="xshell calc-ls cx-ls${parts.length > 1 ? ' calc-stepped' : ''}" data-course="${COURSE_KEY}"${nx ? ` data-next-title="${esc(nx.title)}" data-next-unit="${nx.chapter}"${isFreeTopic(map, nx) ? ' data-next-free="1"' : ''}` : ''}>
   <aside class="calc-ls-rail calc-nav-ref" aria-label="Lesson parts">
     <p class="calc-ls-k cx-ls-k">${unitLabel(ch)} · ${esc(ch.title)}</p>
     <p class="calc-ls-links"><a href="../units/${ch.id}.html">&larr; Back to the unit</a><a href="../notes/${id}.html">Read the notes</a></p>
@@ -245,7 +308,7 @@ ${tail({ depth, section: 'learn', extra: ['calc-questions.js', 'calc-lesson.js']
 </body>
 </html>
 `;
-    return head({ title, desc, path: `lessons/${id}.html`, depth, jsonld, noindex, meta: '<link rel="stylesheet" href="../../assets/course/lesson.css">\n' }) + body;
+    return head({ title, desc, path: `lessons/${id}.html`, depth, jsonld, noindex, canonical: abCanonical(t, `lessons/${id}.html`), meta: '<link rel="stylesheet" href="../../assets/course/lesson.css">\n' }) + body;
   }
 
   /* ------------------------------------------------------------ notes */
@@ -354,7 +417,7 @@ ${tail({ depth, section: 'learn', extra: ['calc-toc.js'] })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: `notes/${id}.html`, depth, jsonld, noindex, book: true }) + body;
+    return head({ title, desc, path: `notes/${id}.html`, depth, jsonld, noindex, book: true, canonical: abCanonical(t, `notes/${id}.html`) }) + body;
   }
 
   /* ------------------------------------------------------------- unit */
@@ -407,7 +470,7 @@ ${tail({ depth, section: 'learn', extra: ['calc-toc.js'] })}
   const TOOL_KIND_NAME = { simulator: 'Trainers', skill: 'Skills tools', drill: 'Drills' };
   function unitTools(chId) {
     const live = (C.pages.tools || []).filter(t => toolLive(t) && (map.topicById(t.topic) || {}).chapter === chId);
-    const groups = Object.entries(TOOL_KIND_NAME).map(([k, name]) => [name, live.filter(t => t.kind === k).map(t => ({ href: `../tools/${t.slug}.html`, title: t.name }))]);
+    const groups = Object.entries(TOOL_KIND_NAME).map(([k, name]) => [name, live.filter(t => t.kind === k).map(t => ({ href: toolHref(t, '../'), title: t.name }))]);
     groups.push(['Free-response questions', frqs.filter(f => f.units.includes(chId)).map(f => ({ href: `../frq/${f.id}.html`, title: frqTitle(f) }))]);
     return groups.filter(([, items]) => items.length);
   }
@@ -519,7 +582,7 @@ ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', 
 </body>
 </html>
 `;
-    return head({ title, desc, path: 'glossary.html', depth, ogType: 'website', jsonld, noindex }).replace('<link rel="stylesheet" href="assets/calc.css">', '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/glossary.css">\n<link rel="stylesheet" href="assets/calc.css">') + body;
+    return head({ title, desc, path: 'glossary.html', depth, ogType: 'website', jsonld, noindex }).replace(`<link rel="stylesheet" href="${RT('')}calc.css">`, `<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/glossary.css">\n<link rel="stylesheet" href="${RT('')}calc.css">`) + body;
   }
 
   /* ------------------------------------------------------------- learn */
@@ -567,13 +630,13 @@ ${tail({ depth, section: 'learn', extra: ['calc-toc.js', 'calc-book.js'], site: 
      simulators band and one real question. The markup is the first-visit
      state and reads on its own without JavaScript; assets/calc-home.js fills
      the level card, the three cards and the path from the runtime. */
-  const PART_COLORS = { course: ['#C2305A', '#8C1036'], skills: ['#3E7C8C', '#24525E'] };
+  const PART_COLORS = IDENTITY.partColors;
   const PART_LABEL = { course: 'Units', skills: 'Math you need' };
   const HOME_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
   // The "Try a step" card: one real question from a free unit's bank, read at
   // build time. Chosen when Unit 1 is written; until then the card is left out
   // (the test fixture's sample topic is 1.2).
-  const SAMPLE_Q = { topic: 'limit-notation', id: 'calc-limit-notation-15' };
+  const SAMPLE_Q = IDENTITY.sample;
   const STREAK_SVG = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg>';
 
   function homePath(depth) {
@@ -627,7 +690,7 @@ ${tail({ depth, section: 'learn', extra: ['calc-toc.js', 'calc-book.js'], site: 
   function homePage() {
     const depth = '';
     const title = `${LABEL} Course, Free to Start | LevlPrep`;
-    const desc = 'Calculus AB exam prep in framework order: lessons from scratch, free notes, trainers, typed answers graded by value, and calculator and no-calculator practice.';
+    const desc = IDENTITY.homeDesc;
     const url = `${SITE}${BASE}`;
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'Course', '@id': COURSE_ID, name: COURSE_NAME, url, description: desc, inLanguage: 'en', ...(offers ? { offers } : {}),
@@ -660,9 +723,9 @@ ${tail({ depth, section: 'learn', extra: ['calc-toc.js', 'calc-book.js'], site: 
     const bars = map.parts.map(p => `<div class="mini-domain-row"><span>${esc(PART_LABEL[p.id] || p.title)}</span><span class="bar"><i data-part-bar="${p.id}" style="width:0%;--dc:${(PART_COLORS[p.id] || PART_COLORS.course)[0]}"></i></span><span class="pct" data-part-pct="${p.id}">0%</span></div>`).join('');
         const HOME = {
       key: COURSE_KEY, prefix: 'calc', mainClass: 'calc-home', courseHtml: COURSE_HTML, beta: BETA_PILL,
-      t2: `one idea at a time.`, lede: `Each topic taught from scratch, in framework order, then practice that grades typed answers and justifications.`, storageKey: 'apcalc_progress_v1',
+      t2: IDENTITY.t2, lede: IDENTITY.lede, storageKey: `${COURSE_KEY}_progress_v1`,
       first, firstCh, unitLabel, freeUnits, freeUnitsText, dailyFree, chapters: map.chapters, topicsOf, chapterBuilt,
-      partLabel: PART_LABEL, nq, apps: C.pages.apps || [], tools: (C.pages.tools || []).filter(toolLive), toolIcon: TOOL_ICON,
+      partLabel: PART_LABEL, nq, apps: C.pages.apps || [], tools: (C.pages.tools || []).filter(toolLive).map(t => abTool(t) ? { ...t, href: toolHref(t, '') } : t), toolIcon: TOOL_ICON,
       exam: { mcq: MCQ_PARTS.reduce((n, p) => n + p.n, 0), mcqTime: `${MCQ_PARTS.reduce((n, p) => n + p.minutes, 0)} minutes`, frq: FRQ_TOTAL, frqTime: `${FRQ_PARTS.reduce((n, p) => n + p.minutes, 0)} minutes` }, sample: homeSample(depth),
     };
     const body = `
@@ -673,7 +736,7 @@ ${tail({ depth, section: 'home', extra: ['calc-home.js'] })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: '', depth, ogType: 'website', jsonld, noindex, meta: '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="assets/calc-home.css">\n<link rel="stylesheet" href="../assets/course/r3.css">\n' }) + body;
+    return head({ title, desc, path: '', depth, ogType: 'website', jsonld, noindex, meta: `<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="${RT('')}calc-home.css">\n<link rel="stylesheet" href="../assets/course/r3.css">\n` }) + body;
   }
 
   /* --------------------------------------------------- app page shells */
@@ -687,7 +750,7 @@ ${tail({ depth, section: 'home', extra: ['calc-home.js'] })}
   const HUB_PAGES = new Set(['dashboard', 'search', 'tools']);
   const TOOL_ICON = {
     // The integral sign over a curve and its tangent (docs/apcalc-spec.md decision 6), the same 24-px stroke icon as the hub card.
-    simulator: '<path d="M14.5 3.5c-1.3-.7-2.6.1-2.8 1.6l-1.4 13.8c-.2 1.5-1.5 2.3-2.8 1.6"/><path d="M3 17c3 0 4-7 8-8s5 2 6 3" stroke-opacity=".55"/><path d="M15 6l6 4" stroke-dasharray="1.5 2.5"/>',
+    simulator: IDENTITY.icon,
     skill: '<path d="M4 4v16h16"/><path d="M7 15l4-4 3 3 5-6"/>',
     drill: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/>',
   };
@@ -696,17 +759,19 @@ ${tail({ depth, section: 'home', extra: ['calc-home.js'] })}
     { kind: 'simulator', h: 'Trainers', p: 'Work through a model or a representation, then answer questions about it.' },
     { kind: 'skill', h: 'Skills tools', p: 'The math and data skills the exam tests, with worked steps.' },
     { kind: 'drill', h: 'Drills', p: 'Seeded, unlimited calculation drills, checked step by step.' },
+    ...(IS_BC ? [{ kind: 'ab', h: 'Calculus AB trainers', p: 'The AB trainers for Units 1 to 8, on the Calculus AB pages. What you answer there counts in Calculus AB.' }] : []),
   ];
+  const groupOf = t => abTool(t) ? 'ab' : t.kind;
   function toolsHub() {
     const live = (C.pages.tools || []).filter(toolLive);
     const topicTitle = t => { const x = map.topicById(t.topic); return x ? x.title : ''; };
-    const groups = TOOL_GROUPS.map(g => ({ ...g, tools: live.filter(t => t.kind === g.kind) })).filter(g => g.tools.length);
+    const groups = TOOL_GROUPS.map(g => ({ ...g, tools: live.filter(t => groupOf(t) === g.kind) })).filter(g => g.tools.length);
     return `
   <div class="cx-tools">
   ${groups.map(g => `<div class="cx-tools-h"><h2>${esc(g.h)}</h2><p>${esc(g.p)}</p></div>
   ${Hub.toolGrid(g.tools.map(t => ({
-    href: `tools/${t.slug}.html`, name: t.name, desc: t.blurb, icon: TOOL_ICON[t.slug] || TOOL_ICON[t.kind], stroke: true,
-    attrs: ` data-tool="${t.slug}"${t.premium ? ' data-premium="1"' : ''}`, foot: esc(topicTitle(t)), status: '',
+    href: toolHref(t, ''), name: t.name, desc: t.blurb, icon: TOOL_ICON[t.slug] || TOOL_ICON[t.kind], stroke: true,
+    attrs: abTool(t) ? '' : ` data-tool="${t.slug}"${t.premium ? ' data-premium="1"' : ''}`, foot: esc(topicTitle(t)), status: '',
   })), g.h)}`).join('\n  ')}
   <p class="cx-tools-note">Every tool records what you answer: missed questions go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>.</p>
   </div>
@@ -717,8 +782,8 @@ ${tail({ depth, section: 'home', extra: ['calc-home.js'] })}
     const live = (C.pages.tools || []).filter(toolLive);
     const topicTitle = t => { const x = map.topicById(t.topic); return x ? x.title : ''; };
     return apToolsHubMain({
-      key: 'apcalc', up: '../', courseName: COURSE_HTML, lede: a.lede || a.desc, mountClass: 'calc-app-mount',
-      groups: TOOL_GROUPS.map(g => ({ h: g.h, p: g.p, tools: live.filter(t => t.kind === g.kind).map(t => ({ ...t, foot: topicTitle(t) })) })),
+      key: COURSE_KEY, up: '../', courseName: COURSE_HTML, lede: a.lede || a.desc, mountClass: 'calc-app-mount',
+      groups: TOOL_GROUPS.map(g => ({ h: g.h, p: g.p, tools: live.filter(t => groupOf(t) === g.kind).map(t => ({ ...t, foot: topicTitle(t), ...(abTool(t) ? { href: toolHref(t, ''), attrs: '', coverKey: 'apcalc' } : {}) })) })),
       note: 'Every tool records what you answer: missed questions go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>.',
     });
   }
@@ -749,18 +814,18 @@ ${bodyOpen(` data-app="${a.slug}"`)}
     : `<p class="calc-soon">This page arrives with the first published unit. Meanwhile, read the <a href="learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `page:${a.slug}`)}
-${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssList.map(f => `<link rel="stylesheet" href="assets/${f}">\n`).join('')}${a.studio ? '<link rel="stylesheet" href="../assets/course/tool-studio.css">\n' : ''}${tail({ depth, section: a.section, extra: ['calc-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: [...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'dashboard'].includes(a.slug) ? ['course/flags.js'] : []), ...(a.studio ? ['course/tool-studio.js'] : []), ...(a.siteScripts || [])] })}
+${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssList.map(f => `<link rel="stylesheet" href="${RT('')}${f}">\n`).join('')}${a.studio ? '<link rel="stylesheet" href="../assets/course/tool-studio.css">\n' : ''}${tail({ depth, section: a.section, extra: ['calc-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: [...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'dashboard'].includes(a.slug) ? ['course/flags.js'] : []), ...(a.studio ? ['course/tool-studio.js'] : []), ...(a.siteScripts || [])] })}
 </body>
 </html>
 `;
     const page = head({ title: courseTitle(a.title, [LABEL]), desc: a.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || STATE_PAGES.has(a.slug) }) + body;
     // Progress page: the redesigned opener and its sheet (scripts/lib/dashboard-page.mjs).
-    if (a.slug === 'dashboard') return dashboardPage(page, 'apcalc');
+    if (a.slug === 'dashboard') return dashboardPage(page, COURSE_KEY);
     // Tools hub, round 3 (scripts/lib/r3-tools.mjs): the cover band and every tool led by its own cover.
     if (a.slug === 'tools') return swapMain(page, toolsHubR3(a), '../');
-    const out = study ? page.replace('<link rel="stylesheet" href="assets/calc.css">',
-      '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/study.css">\n<link rel="stylesheet" href="assets/calc.css">') : page;
-    return a.slug === 'exams' ? examsPage(out, 'apcalc', map) : out;
+    const out = study ? page.replace(`<link rel="stylesheet" href="${RT('')}calc.css">`,
+      `<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/study.css">\n<link rel="stylesheet" href="${RT('')}calc.css">`) : page;
+    return a.slug === 'exams' ? examsPage(out, COURSE_KEY, map) : out;
   }
 
   /* ------------------------------------------------------------- FRQs */
@@ -774,7 +839,8 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
   // The recurring free-response types (docs/apcalc-research/framework.md,
   // section 5), 9 points each; f.calc puts a question in Part A (calculator)
   // or Part B (no calculator).
-  const FRQ_TYPE_NAME = { table: 'Rate in context from a table', model: 'Modeling with a given function', motion: 'Particle motion', area: 'Area and volume', de: 'Differential equation and slope field', graph: 'Graph of f\u2032 or graphical FTC', implicit: 'Implicit differentiation and related rates', fg: 'Table of f, g and their derivatives' };
+  const FRQ_TYPE_NAME = { table: 'Rate in context from a table', model: 'Modeling with a given function', motion: 'Particle motion', area: 'Area and volume', de: 'Differential equation and slope field', graph: 'Graph of f\u2032 or graphical FTC', implicit: 'Implicit differentiation and related rates', fg: 'Table of f, g and their derivatives', ...(IS_BC ? BC_FRQ_TYPES : {}) };
+  setCourseConfig(courseConfig(FRQ_TYPE_NAME));
   const FRQ_ORDER = Object.keys(FRQ_TYPE_NAME);
   const frqStimulus = f => {
     if (f.stimulus && typeof f.stimulus === 'object') return f.stimulus;
@@ -832,13 +898,15 @@ ${bodyOpen(` data-frq="${f.id}"`)}
   <div id="app" class="calc-app-mount calc-frq-work" data-slug="frq-item" data-frq="${f.id}" data-unit="${esc(f.units[0])}" data-topic="${esc(f.topics[0] || '')}"><noscript><p>Writing your answer, the rubric and the sample answer need JavaScript. The question above prints without it.</p></noscript></div>
 </main>
 ${footer(depth, `frq:${f.id}`)}
-<link rel="stylesheet" href="../assets/pages/pages.css">
+<link rel="stylesheet" href="${RT('../')}pages/pages.css">
 <link rel="stylesheet" href="../../assets/course/reading.css">
 ${tail({ depth, section: 'exams', extra: ['pages/frq-kit.js', 'pages/frq.js'], premium: true })}
 </body>
 </html>
 `;
-    return head({ title: courseTitle(title, [`${LABEL} Free Response`, LABEL]), desc, path: `frq/${f.id}.html`, depth, jsonld, noindex }) + body;
+    // A BC copy of an AB free-response question: the AB page is the canonical copy, as for topics.
+    const canonical = IS_BC && f.fromAb ? `${SITE}/calculus/frq/${f.id}.html` : undefined;
+    return head({ title: courseTitle(title, [`${LABEL} Free Response`, LABEL]), desc, path: `frq/${f.id}.html`, depth, jsonld, noindex, canonical }) + body;
   }
 
   /* ---------------------------------------------------------- teachers */
@@ -876,7 +944,7 @@ ${bodyOpen(' data-app="teachers"')}
   <section class="xsection" aria-labelledby="h-assign">
     <h2 id="h-assign">How to assign it</h2>
     <ul class="calc-tc-list">
-      <li><b>Stable links.</b> Each lesson, notes page, unit sheet and free-response question has a permanent address, such as <code>levlprep.com/calculus/<wbr>notes/&lt;topic&gt;.html</code>. Links do not expire and need no account.</li>
+      <li><b>Stable links.</b> Each lesson, notes page, unit sheet and free-response question has a permanent address, such as <code>levlprep.com${BASE}<wbr>notes/&lt;topic&gt;.html</code>. Links do not expire and need no account.</li>
       <li><b>Question sets.</b> <code>practice.html?topic=&lt;topic&gt;</code> opens practice on one topic, <code>practice.html?unit=unit-1</code> on a whole unit. Students get feedback and an explanation for every option. The practice page can also print a set as a worksheet.</li>
       <li><b>Free-response questions.</b> Each has its own page with the prompt, the data and a printable answer sheet with lined space. Students write, then reveal the rubric and score themselves point by point. Nothing is graded by AI.</li>
       <li><b>Printing.</b> Each lesson, notes page, unit sheet and free-response question has a Print button. A lesson prints all its parts in one run; a free-response question prints with lined answer space, and its rubric can print on a separate page.</li>
@@ -903,7 +971,7 @@ ${bodyOpen(' data-app="teachers"')}
 
   <section class="xsection" aria-labelledby="h-align">
     <h2 id="h-align">Alignment with the course framework</h2>
-    <p>The units and topics follow the order of the course framework (Calculus AB topics only; the BC-only topics are left out), mapped to our lessons. Titles and explanations are in our own words; nothing reproduces the framework's text. It has not yet been reviewed by an ${COURSE_HTML} teacher.</p>
+    <p>The units and topics follow the order of the course framework (${IDENTITY.alignNote}), mapped to our lessons. Titles and explanations are in our own words; nothing reproduces the framework's text. It has not yet been reviewed by an ${COURSE_HTML} teacher.</p>
     ${units.map(unitTable).join('\n    ')}
     ${skills.length ? `<h3 class="calc-tc-skills">Skills</h3><p class="calc-small">Each math topic sits right before the framework topic that first needs it.</p>${skills.map(unitTable).join('\n    ')}` : ''}
   </section>
@@ -939,7 +1007,7 @@ ${tail({ depth, section: '' })}
   function toolData(entry) {
     if (!existsSync(toolFile(entry))) return { slug: entry.slug, live: false, arrives: arrivesOf(entry.topic) };
     const d = JSON.parse(readFileSync(toolFile(entry), 'utf8'));
-    if (d.topic !== entry.topic) throw new Error(`build-apcalc: calculus/data/tools/${entry.slug}.json has topic "${d.topic}", pages.json says "${entry.topic}"`);
+    if (d.topic !== entry.topic) throw new Error(`${TAG}: ${DIR}/data/tools/${entry.slug}.json has topic "${d.topic}", pages.json says "${entry.topic}"`);
     const live = x => (!x.topic || topicLive(x.topic)) && (!x.requires || x.requires.every(u => C.published.has(u)));
     const used = new Set();
     const walk = v => {
@@ -957,10 +1025,11 @@ ${tail({ depth, section: '' })}
     out.units = Object.fromEntries([...used].filter(t => map.topicById(t)).map(t => [t, map.topicById(t).chapter]));
     return out;
   }
-  const toolLive = entry => existsSync(toolFile(entry)) && topicLive(entry.topic) && toolData(entry).live;
+  const toolLive = entry => abTool(entry) ? existsSync(join(ROOT, 'calculus', 'tools', `${entry.slug}.html`)) && topicLive(entry.topic)
+    : existsSync(toolFile(entry)) && topicLive(entry.topic) && toolData(entry).live;
   function toolShell(t) {
     const depth = '../', path = `tools/${t.slug}.html`, url = `${SITE}${BASE}${path}`;
-    const scriptOk = existsSync(join(ROOT, 'calculus', 'assets', 'tools', `${t.slug}.js`));
+    const scriptOk = existsSync(join(ROOT, DIR, 'assets', 'tools', `${t.slug}.js`));
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'WebApplication', '@id': `${url}#tool`, name: t.name, url, description: t.desc, applicationCategory: 'EducationalApplication', operatingSystem: 'Any',
         ...(t.premium ? lockedLd('.calc-app-mount') : { isAccessibleForFree: true }), isPartOf: { '@id': COURSE_ID } },
@@ -968,11 +1037,13 @@ ${tail({ depth, section: '' })}
     ] };
     // Shared helpers, then this tool's own model (ApCalcMath.<camelSlug>),
     // then the framework and the tool (docs/apcalc-architecture.md, Tools).
+    // The framework files are the runtime's (AB's folder); the tool's model and script are this course's.
     const lib = f => existsSync(join(ROOT, 'calculus', 'assets', f)) ? [f] : [];
-    const extra = ['calc-questions.js', ...lib('tools/calc-tool-math.js'), ...lib(`tools/math/${t.slug}.js`), 'tools/calc-tools.js', ...lib('tools/calc-plot.js'), ...(scriptOk ? [`tools/${t.slug}.js`] : [])];
+    const own = f => { if (!existsSync(join(ROOT, DIR, 'assets', f))) return []; if (IS_BC) OWN_TOOL.add(f); return [f]; };
+    const extra = ['calc-questions.js', ...lib('tools/calc-tool-math.js'), ...own(`tools/math/${t.slug}.js`), 'tools/calc-tools.js', ...lib('tools/calc-plot.js'), ...(scriptOk ? (own(`tools/${t.slug}.js`), [`tools/${t.slug}.js`]) : [])];
     const body = `
 ${bodyOpen(` data-app="tool-${t.slug}"`)}
-${toolBand({ key: 'apcalc', up: '../../', slug: t.slug, title: t.name, hand: esc(t.lede || t.tag || t.blurb), lede: esc(t.desc), backHref: '../tools.html',
+${toolBand({ key: COURSE_KEY, up: '../../', slug: t.slug, title: t.name, hand: esc(t.lede || t.tag || t.blurb), lede: esc(t.desc), backHref: '../tools.html',
   crumbs: [{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_HTML, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: esc(t.name) }] })}
 <main id="main" class="xshell calc-app">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: t.name }])}
@@ -982,7 +1053,7 @@ ${toolBand({ key: 'apcalc', up: '../../', slug: t.slug, title: t.name, hand: esc
     : `<p class="calc-soon">This tool arrives with its unit. Meanwhile, read the <a href="../learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `tool:${t.slug}`)}
-<link rel="stylesheet" href="${depth}assets/tools/calc-tools.css">${existsSync(join(ROOT, 'calculus', 'assets', 'tools', `${t.slug}.css`)) ? `\n<link rel="stylesheet" href="${depth}assets/tools/${t.slug}.css">` : ''}${t.studio ? `\n<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">` : ''}
+<link rel="stylesheet" href="${RT(depth)}tools/calc-tools.css">${existsSync(join(ROOT, DIR, 'assets', 'tools', `${t.slug}.css`)) ? `\n<link rel="stylesheet" href="${depth}assets/tools/${t.slug}.css">` : ''}${t.studio ? `\n<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">` : ''}
 ${tail({ depth, section: 'tools', extra, premium: true, site: t.studio ? ['course/tool-studio.js'] : [] })}
 </body>
 </html>
@@ -994,15 +1065,23 @@ ${tail({ depth, section: 'tools', extra, premium: true, site: t.studio ? ['cours
   function curriculumJs() {
     const data = {
       units: map.chapters.map(c => ({ id: c.id, n: c.n ?? null, title: c.title, part: c.part, weight: c.weight || null, built: chapterBuilt(c) })),
-      topics: topics.map((t, i) => ({ id: t.id, ced: t.ced || null, title: t.title, unit: t.chapter, kind: t.kind, practices: t.practices || [], n: i + 1, built: C.built.has(t.id), free: isFreeTopic(map, t), qn: C.built.has(t.id) ? C.questions[t.id].items.length : 0, ...(bankFile(t) !== t.chapter ? { bank: bankFile(t) } : {}) })),
+      topics: topics.map((t, i) => ({ id: t.id, ced: t.ced || null, title: t.title, unit: t.chapter, kind: t.kind, practices: t.practices || [], n: i + 1, built: C.built.has(t.id), free: isFreeTopic(map, t), qn: C.built.has(t.id) ? C.questions[t.id].items.length : 0, ...(bankFile(t) !== t.chapter ? { bank: bankFile(t) } : {}), ...(pfxOf(t) !== 'calc' ? { pfx: pfxOf(t) } : {}) })),
       practices: map.practices.map(p => ({ id: p.id, name: p.name })),
       parts: map.parts,
       // Built questions per practice: practice mastery is measured against min(20, this).
       practiceCounts: Object.fromEntries(map.practices.map(p => [p.id, built.reduce((n, t) => n + C.questions[t.id].items.filter(q => String(q.practice).split('.')[0] === String(p.id)).length, 0)])),
     };
     const pages = (C.pages.apps || []).map(a => ({ slug: a.slug, h1: a.h1 }));
-    const toolList = (C.pages.tools || []).map(t => { const live = toolLive(t); return { slug: t.slug, kind: t.kind, name: t.name, blurb: t.blurb, topic: t.topic, live, ...(live ? {} : { arrives: arrivesOf(t.topic) }), ...(t.premium ? { premium: 1 } : {}) }; });
-    return `/* Generated by scripts/build-apcalc.mjs from the course map. Do not edit. */
+    const toolList = (C.pages.tools || []).filter(t => !abTool(t)).map(t => { const live = toolLive(t); return { slug: t.slug, kind: t.kind, name: t.name, blurb: t.blurb, topic: t.topic, live, ...(live ? {} : { arrives: arrivesOf(t.topic) }), ...(t.premium ? { premium: 1 } : {}) }; });
+    // BC publishes its own names (ApCalcBC*, site search reads them beside AB's) and hands them to AB's
+    // runtime, which reads ApCalcPages, ApCalcToolList and ApCalcCurriculum; a page loads one course's file.
+    if (IS_BC) return `/* Generated by scripts/${TAG}.mjs from the course map. Do not edit. */
+window.ApCalcBCPages = ${JSON.stringify(pages)};
+window.ApCalcBCToolList = ${JSON.stringify(toolList)};
+window.ApCalcBCCurriculum = ${JSON.stringify(data)};
+Object.assign(window, { ApCalcPages: window.ApCalcBCPages, ApCalcToolList: window.ApCalcBCToolList, ApCalcCurriculum: window.ApCalcBCCurriculum });
+`;
+    return `/* Generated by scripts/${TAG}.mjs from the course map. Do not edit. */
 window.ApCalcPages = ${JSON.stringify(pages)};
 window.ApCalcToolList = ${JSON.stringify(toolList)};
 window.ApCalcCurriculum = ${JSON.stringify(data)};
@@ -1080,8 +1159,8 @@ window.ApCalcCurriculum = ${JSON.stringify(data)};
     const at = (list, v) => { let i = list.indexOf(v); if (i < 0) { i = list.length; list.push(v); } return i; };
     const t = {};
     for (const topic of built) t[topic.id] = C.questions[topic.id].items.map(q => {
-      const m = q.id.match(/^calc-(.+)-(\d+)$/);
-      if (!m || m[1] !== topic.id) throw new Error(`bank index: question id ${q.id} is not calc-${topic.id}-<n>`);
+      const m = q.id.match(new RegExp(`^${pfxOf(topic)}-(.+)-(\\d+)$`));
+      if (!m || m[1] !== topic.id) throw new Error(`bank index: question id ${q.id} is not ${pfxOf(topic)}-${topic.id}-<n>`);
       return [m[2], at(ty, q.type), at(lv, q.level), q.diff, at(pr, q.practice), q.stimulus ? at(st, q.stimulus) : '', q.calc ? '1' : ''].join('.');
     }).join(',');
     return JSON.stringify({ v: 1, ty, lv, pr, st, t });
@@ -1094,12 +1173,12 @@ window.ApCalcCurriculum = ${JSON.stringify(data)};
   for (const ch of map.chapters.filter(chapterBuilt)) { put(`units/${ch.id}.html`, unitPage(ch.id)); put(`unit-sheets/${ch.id}.html`, unitSheet(ch.id)); }
   for (const t of built) { put(`lessons/${t.id}.html`, lessonPage(t.id)); put(`notes/${t.id}.html`, notesPage(t.id)); }
   // Round 3 (scripts/lib/r3-tools.mjs): free-response practice, the cram kit and the teachers page open with the short cover band.
-  const r3Ctx = { key: 'apcalc', frqFirst: frqs.length ? `frq/${frqs[0].id}.html` : '', frqCount: frqs.length };
+  const r3Ctx = { key: COURSE_KEY, frqFirst: frqs.length ? `frq/${frqs[0].id}.html` : '', frqCount: frqs.length };
   for (const a of C.pages.apps || []) put(`${a.slug}.html`, apPageR3(a.slug, a.static ? teachersPage(a) : appShell(a), r3Ctx));
   put('assets/frq/index.json', frqIndex());
   for (const f of frqs) { put(`assets/frq/${f.id}.json`, JSON.stringify(frqJson(f))); put(`frq/${f.id}.html`, apFrqItemR3(frqPage(f), r3Ctx)); }
   put('assets/summaries.json', JSON.stringify(Object.fromEntries(built.map(t => [t.id, text(C.lessons[t.id].summary)]))));
-  for (const t of (C.pages.tools || []).filter(toolLive)) { put(`tools/${t.slug}.html`, toolShell(t)); put(`assets/tool-data/${t.slug}.json`, JSON.stringify(toolData(t))); }
+  for (const t of (C.pages.tools || []).filter(t => toolLive(t) && !abTool(t))) { put(`tools/${t.slug}.html`, toolShell(t)); put(`assets/tool-data/${t.slug}.json`, JSON.stringify(toolData(t))); }
   put('assets/calc-curriculum.js', curriculumJs());
   put('assets/glossary.json', glossaryJson());
   put('assets/notes-index.json', JSON.stringify(built.map(t => ({ file: `${BASE}notes/${t.id}.html`, title: t.title }))));
@@ -1111,7 +1190,7 @@ window.ApCalcCurriculum = ${JSON.stringify(data)};
   /* The free search-entry pages, the practice exams' data and the
      justification trainer's prompts (scripts/lib/apcalc-entry.mjs). */
   const entry = entryPages({ map, C, head, tail, footer, crumbNav, crumbs, orgCrumbs, esc, text, SITE, BASE, COURSE_ID, COURSE_NAME, COURSE_HTML, BETA_PILL, LABEL,
-    courseTitle, clampDesc, noindex, bodyOpen, questionHtml, questionForPage, groupSets, stimulusPanel, stimulusBody, isFreeTopic, frqs, liveTools: (C.pages.tools || []).filter(toolLive).map(t => ({ slug: t.slug, name: t.name })) });
+    courseTitle, clampDesc, noindex, bodyOpen, questionHtml, questionForPage, groupSets, stimulusPanel, stimulusBody, isFreeTopic, frqs, liveTools: (C.pages.tools || []).filter(toolLive).map(t => ({ slug: t.slug, name: t.name, ...(abTool(t) ? { href: toolHref(t, '') } : {}) })) });
   for (const [rel, content] of Object.entries(entry.pages)) put(rel, content);
 }
 
@@ -1133,15 +1212,15 @@ for (const [rel, content] of outputs) {
   const p = join(OUT, rel);
   const cur = existsSync(p) ? readFileSync(p, 'utf8') : null;
   if (cur === content) continue;
-  if (CHECK) { console.log(`stale: calculus/${rel}`); bad++; continue; }
+  if (CHECK) { console.log(`stale: ${DIR}/${rel}`); bad++; continue; }
   mkdirSync(dirname(p), { recursive: true });
   writeFileSync(p, content);
 }
 for (const rel of stale) {
-  if (CHECK) { console.log(`not generated (remove it): calculus/${rel}`); bad++; }
+  if (CHECK) { console.log(`not generated (remove it): ${DIR}/${rel}`); bad++; }
   else unlinkSync(join(OUT, rel));
 }
-if (CHECK && bad) { console.log(`${bad} AP Calculus AB file(s) out of date. Run: node scripts/build-apcalc.mjs`); process.exit(1); }
+if (CHECK && bad) { console.log(`${bad} AP ${COURSE.short} file(s) out of date. Run: node scripts/${TAG}.mjs`); process.exit(1); }
 console.log(map
-  ? `AP Calculus AB: ${C.built.size} topics built (${C.published.size ? [...C.published].join(', ') : 'no chapter published'}), ${outputs.size} files ${CHECK ? 'checked' : 'written'}.`
-  : 'AP Calculus AB: no course map yet (docs/apcalc-dependency-map.json), so nothing is generated.');
+  ? `AP ${COURSE.short}: ${C.built.size} topics built (${C.published.size ? [...C.published].join(', ') : 'no chapter published'}), ${outputs.size} files ${CHECK ? 'checked' : 'written'}.`
+  : `AP ${COURSE.short}: no course map yet (docs/${COURSE.map}), so nothing is generated.`);

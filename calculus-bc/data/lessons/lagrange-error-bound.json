@@ -1,0 +1,89 @@
+{
+ "topic": "lagrange-error-bound",
+ "hook": "A Taylor polynomial gives an estimate. Engineers and the exam both ask the next question: how far off can it be? The Lagrange error bound answers with a single number, using the largest the next derivative can be.",
+ "prereq": [
+  {
+   "q": "What is the third-degree Taylor polynomial for $e^x$ about $x = 0$?",
+   "options": [
+    "$1 + x + \\frac{x^2}{2} + \\frac{x^3}{6}$",
+    "$1 + x + x^2 + x^3$",
+    "$x + \\frac{x^2}{2} + \\frac{x^3}{3}$",
+    "$1 + x + \\frac{x^2}{2} + \\frac{x^3}{6} + \\cdots$"
+   ],
+   "correct": 0,
+   "why": "Every derivative at 0 is 1, so each coefficient is $\\frac{1}{n!}$; a polynomial stops at its last term.",
+   "review": "taylor-polynomials"
+  },
+  {
+   "q": "On $[0, 2]$, where does $g(x) = \\frac{1}{1 + x}$ take its largest value?",
+   "options": [
+    "At $x = 0$",
+    "At $x = 2$",
+    "At $x = 1$",
+    "It has no largest value"
+   ],
+   "correct": 0,
+   "why": "$g$ is decreasing, so its largest value is at the left end.",
+   "review": "candidates-test"
+  },
+  {
+   "q": "For an alternating series that meets the test's conditions, the error of $S_n$ is at most",
+   "options": [
+    "$a_{n+1}$, the first term left out",
+    "$a_n$, the last term used",
+    "$S_{n+1}$",
+    "$a_1$"
+   ],
+   "correct": 0,
+   "why": "The alternating series error bound.",
+   "review": "alternating-error-bound"
+  }
+ ],
+ "figure": {
+  "figure": "lagrange-error-cos",
+  "caption": "For $\\cos x$ and $P_2(x) = 1 - \\frac{x^2}{2}$, the actual error stays under the Lagrange bound $\\frac{x^4}{4!}$."
+ },
+ "chain": [
+  {
+   "cause": "$P_n$ matches $f$ and its first $n$ derivatives at $a$",
+   "effect": "the difference $f - P_n$ grows only through the derivative after those, $f^{(n+1)}$"
+  },
+  {
+   "cause": "Bound $\\left|f^{(n+1)}(z)\\right| \\le M$ for every $z$ between $a$ and $x$",
+   "effect": "the error can be no bigger than $\\frac{M}{(n+1)!}|x - a|^{n+1}$"
+  },
+  {
+   "cause": "Compare that bound with the accuracy asked for",
+   "effect": "\"error $\\le$ bound $<$ given number\" shows the estimate is good enough"
+  }
+ ],
+ "ideas": [
+  "$\\left|f(x) - P_n(x)\\right| \\le \\frac{\\max\\left|f^{(n+1)}(z)\\right|}{(n+1)!}|x - a|^{n+1}$, the maximum taken for $z$ between $a$ and $x$.",
+  "Say where the maximum is and why: \"$e^z$ is increasing, so on $[0, 0.5]$ its maximum is $e^{0.5} < 2$.\"",
+  "The bound is a ceiling: write \"error $\\le$\", never \"error $=$\".",
+  "If the values form an alternating sum with sizes decreasing to 0, the alternating series error bound may be quicker."
+ ],
+ "misconception": {
+  "wrong": "For the bound on $P_3$ at $x = 0.5$, use $f^{(4)}(0)$, the fourth derivative at the center.",
+  "right": "Use the largest $\\left|f^{(4)}(z)\\right|$ for $z$ anywhere between the center and $0.5$, and say why that value is the largest."
+ },
+ "check": [
+  "cbc-lagrange-error-bound-1",
+  "cbc-lagrange-error-bound-2",
+  "cbc-lagrange-error-bound-3",
+  "cbc-lagrange-error-bound-9",
+  "cbc-lagrange-error-bound-11",
+  "cbc-lagrange-error-bound-14"
+ ],
+ "summary": "The Lagrange error bound caps the error of a Taylor polynomial: $\\left|f(x) - P_n(x)\\right| \\le \\frac{M}{(n+1)!}|x - a|^{n+1}$, where $M$ is the largest value of $\\left|f^{(n+1)}\\right|$ between $a$ and $x$. Justify $M$, compute the bound, and compare it with the accuracy required.",
+ "connections": [
+  {
+   "href": "../notes/taylor-polynomials.html",
+   "label": "Back: Taylor polynomials (10.11)"
+  },
+  {
+   "href": "../notes/radius-interval-convergence.html",
+   "label": "Next: radius and interval of convergence (10.13)"
+  }
+ ]
+}

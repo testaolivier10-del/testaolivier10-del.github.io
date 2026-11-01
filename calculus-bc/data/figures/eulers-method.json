@@ -1,0 +1,12 @@
+{
+ "eulers-method-steps": {
+  "file": "figures/eulers-method-steps.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The slope field of dy/dx = y for x from −0.25 to 1.25, with the solution through (0, 1), y = e to the x, drawn in blue. Two violet Euler steps of size 0.5 start at (0, 1): slope 1 to (0.5, 1.5), then slope 1.5 to (1, 2.25). The true value at x = 1 is e, about 2.718, above the last violet point. The solution is concave up, so the steps fall below it and 2.25 is an underestimate."
+ }
+}

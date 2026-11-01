@@ -1,0 +1,62 @@
+{
+ "topic": "radius-interval-convergence",
+ "hook": "A power series is a polynomial that never ends. It can stand for a function, but only for the values of $x$ where the infinite sum settles to a number. Finding those values, the interval of convergence, is the first thing to know about any power series.",
+ "prereq": [
+  {
+   "q": "What does the ratio test conclude when its limit is exactly 1?",
+   "options": [
+    "Nothing: use another test",
+    "The series converges",
+    "The series diverges",
+    "The series converges absolutely"
+   ],
+   "correct": 0,
+   "why": "A limit of 1 is the case the ratio test leaves open.",
+   "review": "ratio-test"
+  },
+  {
+   "q": "Does $\\sum_{n=1}^{\\infty} \\frac{1}{n}$ converge?",
+   "options": [
+    "No: it is the harmonic series",
+    "Yes: its terms approach 0",
+    "Yes: it is a $p$-series with $p > 1$",
+    "Yes: it is geometric"
+   ],
+   "correct": 0,
+   "why": "The harmonic series diverges, though its terms approach 0.",
+   "review": "p-series"
+  }
+ ],
+ "figure": null,
+ "chain": [
+  {
+   "cause": "Apply the ratio test to $\\sum a_n (x - a)^n$",
+   "effect": "its limit is some multiple of $|x - a|$"
+  },
+  {
+   "cause": "Set that limit below 1 and solve",
+   "effect": "the radius $R$ and the open interval $(a - R, a + R)$"
+  },
+  {
+   "cause": "At $x = a - R$ and $x = a + R$ the limit is exactly 1",
+   "effect": "test each endpoint with another test, then write the interval"
+  }
+ ],
+ "ideas": [
+  "The radius comes from the ratio test; the endpoints never do.",
+  "Write the interval with a bracket for an endpoint that is included and a parenthesis for one that is not."
+ ],
+ "misconception": {
+  "wrong": "The interval of convergence is the open interval the ratio test gives.",
+  "right": "The ratio test is silent at the endpoints, so each one is tested on its own and may be included."
+ },
+ "check": [
+  "cbc-radius-interval-convergence-1",
+  "cbc-radius-interval-convergence-2",
+  "cbc-radius-interval-convergence-3",
+  "cbc-radius-interval-convergence-4",
+  "cbc-radius-interval-convergence-10",
+  "cbc-radius-interval-convergence-15"
+ ],
+ "summary": "Use the ratio test to find the radius $R$ of a power series centered at $a$, then test $x = a - R$ and $x = a + R$ separately; the interval of convergence includes exactly the endpoints where the series converges."
+}

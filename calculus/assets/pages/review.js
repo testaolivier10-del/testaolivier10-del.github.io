@@ -15,6 +15,8 @@
    Free tier: a Unit 1 or 2 question is always served; any other takes one
    from the daily allowance shared with practice (ApCalcCore.serve). */
 (function(){
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var BASE = window.ApCalcBase || '';
   var app = document.getElementById('app');
   if(!app) return;
@@ -176,7 +178,7 @@
   function finish(){
     if(!session || session.done) return;
     session.done = true;
-    if(session.answered) Core.event('apcalc-session-finish', { mode: 'review', answered: session.answered, correct: session.right });
+    if(session.answered) Core.event(CK + '-session-finish', { mode: 'review', answered: session.answered, correct: session.right });
     if(!session.answered){ renderHome(); return; }
     var due = dueItems(), up = upcoming(), left = due.filter(function(x){ return x.kind === 'q'; }).length, leftTools = due.length - left;
     var mt = {}; session.missed.forEach(function(q){ mt[q.topic] = (mt[q.topic] || 0) + 1; });

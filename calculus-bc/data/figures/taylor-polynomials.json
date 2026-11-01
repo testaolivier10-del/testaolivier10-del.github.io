@@ -1,0 +1,12 @@
+{
+ "taylor-cos-wrap": {
+  "file": "figures/taylor-cos-wrap.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of y = cos x from x = -6.5 to 6.5 with three Taylor polynomials about x = 0: P sub 2 = 1 minus x squared over 2, a downward parabola that follows cos x for about |x| < 1; P sub 4, which adds x to the fourth over 24 and follows it to about |x| = 2; and P sub 6, which follows it to about |x| = 3. All three agree with cos x at x = 0 and peel away farther out."
+ }
+}

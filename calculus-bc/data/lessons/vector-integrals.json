@@ -1,0 +1,94 @@
+{
+ "topic": "vector-integrals",
+ "hook": "A ship's navigator without GPS knows where the ship started and logs its velocity east and north every hour. From those two facts alone she can say where the ship is now: start plus the accumulated change in each direction. That is dead reckoning, and it is exactly how you integrate a velocity vector.",
+ "prereq": [
+  {
+   "q": "If $\\frac{dy}{dt} = 6t$ and $y(0) = 5$, then $y(t) =$",
+   "options": [
+    "$3t^2 + 5$",
+    "$3t^2$",
+    "$6t + 5$",
+    "$3t^2 - 5$"
+   ],
+   "correct": 0,
+   "why": "Antidifferentiate, $3t^2 + C$, then $y(0) = C = 5$.",
+   "review": "particular-solutions"
+  },
+  {
+   "q": "A particle on a line has velocity $v(t)$ and position $s(0) = 2$. Its position at $t = 3$ is",
+   "options": [
+    "$2 + \\int_0^3 v(t)\\,dt$",
+    "$\\int_0^3 v(t)\\,dt$",
+    "$\\int_0^3 v(t)\\,dt - 2$",
+    "$2 + v(3)$"
+   ],
+   "correct": 0,
+   "why": "Position at a time is the starting position plus the accumulated change.",
+   "review": "motion-with-integrals"
+  },
+  {
+   "q": "If $\\mathbf{r}(t) = \\left\\langle t^3, 4t \\right\\rangle$, then $\\mathbf{r}'(t) =$",
+   "options": [
+    "$\\left\\langle 3t^2, 4 \\right\\rangle$",
+    "$\\left\\langle 3t^2, 4t \\right\\rangle$",
+    "$\\left\\langle \\frac{t^4}{4}, 2t^2 \\right\\rangle$",
+    "$\\left\\langle 6t, 0 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": "Differentiate each component.",
+   "review": "vector-derivatives"
+  }
+ ],
+ "figure": {
+  "figure": "vector-integrals-shift",
+  "caption": "The velocity $\\mathbf{v}(t) = \\left\\langle 1, 2t - 2 \\right\\rangle$ has the antiderivatives $\\left\\langle t, t^2 - 2t \\right\\rangle + \\mathbf{C}$: one path for each constant vector. The starting point, here $(0, 0)$ or $(2, 1)$, decides which path the particle follows."
+ },
+ "chain": [
+  {
+   "cause": "The velocity vector is $\\left\\langle x'(t), y'(t) \\right\\rangle$",
+   "effect": "antidifferentiate each component, adding a constant vector $\\mathbf{C} = \\left\\langle C_1, C_2 \\right\\rangle$"
+  },
+  {
+   "cause": "An initial position $\\mathbf{r}(0)$ is known",
+   "effect": "it fixes $\\mathbf{C}$ and picks out the one path the particle follows"
+  },
+  {
+   "cause": "The integral of a rate over an interval is the net change",
+   "effect": "$\\mathbf{r}(b) = \\mathbf{r}(a) + \\int_a^b \\mathbf{v}(t)\\,dt$, one component at a time"
+  },
+  {
+   "cause": "The velocity is known only from a table",
+   "effect": "approximate each component's integral with a Riemann or trapezoidal sum, then add the start"
+  }
+ ],
+ "ideas": [
+  "Integrate a vector one component at a time: $\\int \\left\\langle f(t), g(t) \\right\\rangle\\,dt = \\left\\langle F(t), G(t) \\right\\rangle + \\mathbf{C}$.",
+  "Position from velocity always adds the start: $x(b) = x(a) + \\int_a^b x'(t)\\,dt$ and $y(b) = y(a) + \\int_a^b y'(t)\\,dt$.",
+  "From acceleration, integrate twice: $\\mathbf{v}(0)$ fixes the first constant and $\\mathbf{r}(0)$ the second.",
+  "$\\int_a^b y'(t)\\,dt$ is the change in $y$ from $t = a$ to $t = b$, not $y(b)$ and not a distance."
+ ],
+ "misconception": {
+  "wrong": "$\\mathbf{r}(0) = \\left\\langle 2, 5 \\right\\rangle$ and $\\int_0^3 \\mathbf{v}(t)\\,dt = \\left\\langle 4, -1 \\right\\rangle$, so $\\mathbf{r}(3) = \\left\\langle 4, -1 \\right\\rangle - \\left\\langle 2, 5 \\right\\rangle = \\left\\langle 2, -6 \\right\\rangle$.",
+  "right": "The integral is the change in position, and a change is added to where you started: $\\mathbf{r}(3) = \\left\\langle 2, 5 \\right\\rangle + \\left\\langle 4, -1 \\right\\rangle = \\left\\langle 6, 4 \\right\\rangle$. Subtracting the start, or leaving it out, is the most common lost point on this topic."
+ },
+ "check": [
+  "cbc-vector-integrals-1",
+  "cbc-vector-integrals-2",
+  "cbc-vector-integrals-3",
+  "cbc-vector-integrals-4",
+  "cbc-vector-integrals-9",
+  "cbc-vector-integrals-11",
+  "cbc-vector-integrals-15"
+ ],
+ "summary": "To integrate a vector-valued function, integrate each component; an indefinite integral carries a constant vector $\\mathbf{C}$. An initial condition fixes it: the position at time $b$ is the starting position plus the integral of the velocity, $\\mathbf{r}(b) = \\mathbf{r}(a) + \\int_a^b \\mathbf{v}(t)\\,dt$. From a table, approximate each component's integral with a sum, then add the start.",
+ "connections": [
+  {
+   "href": "../notes/vector-derivatives.html",
+   "label": "Back: vector-valued functions and their derivatives (9.4)"
+  },
+  {
+   "href": "../notes/planar-motion.html",
+   "label": "Next: speed, distance and position along a path (9.6)"
+  }
+ ]
+}

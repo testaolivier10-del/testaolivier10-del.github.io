@@ -5,6 +5,8 @@
    option, and ends with a score and the way into practice. Answers are
    recorded like any question, so misses reach the review queue. */
 (function(){
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var box = document.querySelector('.calc-qs[data-set="check"]');
   var el = document.getElementById('calc-page-data');
   if(!box || !el || !window.ApCalcQuestions) return;
@@ -16,7 +18,7 @@
     onAnswer: function(res){
       answered++; if(res.correct) right++;
       if(answered !== total) return;
-      if(window.ApCalcCore) window.ApCalcCore.event('apcalc-session-finish', { mode: 'unit-sample', unit: data.unit, answered: total, correct: right });
+      if(window.ApCalcCore) window.ApCalcCore.event(CK + '-session-finish', { mode: 'unit-sample', unit: data.unit, answered: total, correct: right });
       box.insertAdjacentHTML('afterend', '<div class="calc-pr-score calc-sample-done" role="status" tabindex="-1"><span class="calc-pr-score-big">' + right + '<small>/' + total + '</small></span>' +
         '<span><b>Sample test done.</b><span class="calc-small">Missed questions are in your <a href="' + base + 'review.html">review queue</a>. Next: <a href="' + base + 'practice.html?unit=' + data.unit + '">practice the whole unit</a>.</span></span></div>');
     }

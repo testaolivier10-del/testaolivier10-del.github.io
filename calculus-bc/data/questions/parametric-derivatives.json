@@ -1,0 +1,419 @@
+{
+ "stimuli": {
+  "parametric-derivatives-s1": {
+   "kind": "graph",
+   "title": "A path with direction arrows and two marked times",
+   "text": "A point moves along the path $x(t) = t^3 - 3t$, $y(t) = 4 - t^2$ for $-2 \\le t \\le 2$. The graph shows the path; the arrows give the direction of increasing $t$, and the points where $t = -1$ and $t = 2$ are marked.",
+   "figure": "parametric-derivatives-path"
+  },
+  "parametric-derivatives-s2": {
+   "kind": "table",
+   "title": "A curve known only from a table",
+   "text": "A curve is traced by $(x(t), y(t))$, where $x$ and $y$ are differentiable functions of $t$. The table gives selected values.",
+   "table": {
+    "caption": "Values of $x$, $y$ and their derivatives with respect to $t$",
+    "cols": ["$t$", "$x(t)$", "$x'(t)$", "$y(t)$", "$y'(t)$"],
+    "rows": [
+     ["$0$", "$1$", "$3$", "$4$", "$-2$"],
+     ["$1$", "$3$", "$1$", "$2$", "$0$"],
+     ["$2$", "$4$", "$0$", "$3$", "$2$"],
+     ["$3$", "$2$", "$-4$", "$6$", "$3$"]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-parametric-derivatives-1",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-derivatives-s1",
+   "q": "Find $\\frac{dy}{dx}$ at the point where $t = 2$.",
+   "numeric": {
+    "answer": "-4/9",
+    "mistakes": [
+     { "value": "-9/4", "why": "That is $\\frac{dx/dt}{dy/dt}$, upside down. The slope is $\\frac{dy/dt}{dx/dt}$: the vertical rate over the horizontal rate." },
+     { "value": -4, "why": "That is $\\frac{dy}{dt}$ alone, how fast $y$ changes per unit of time. Divide by $\\frac{dx}{dt} = 9$ to get the change in $y$ per unit of $x$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dt} = -2t = -4$ and $\\frac{dx}{dt} = 3t^2 - 3 = 9$ at $t = 2$, so $\\frac{dy}{dx} = \\frac{-4}{9} = -\\frac{4}{9}$."
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-2",
+   "type": "expr",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-derivatives-s1",
+   "q": "Write an equation of the line tangent to the path at the point where $t = 2$.",
+   "expr": {
+    "answer": "-4/9*(x-2)",
+    "vars": ["x"],
+    "domain": [-3, 3],
+    "mode": "exact",
+    "lhs": "y =",
+    "mistakes": [
+     { "expr": "-9/4*(x-2)", "why": "The slope is $\\frac{dy/dt}{dx/dt} = \\frac{-4}{9}$; this line uses the reciprocal." },
+     { "expr": "-4*(x-2)", "why": "$-4$ is $\\frac{dy}{dt}$, a rate per unit of time. The slope of the line is $\\frac{dy/dt}{dx/dt} = -\\frac{4}{9}$." },
+     { "expr": "-4/9*(x+2)", "why": "The point is $(x(2), y(2)) = (2, 0)$, so the line is $y - 0 = -\\frac{4}{9}(x - 2)$: subtract 2." }
+    ]
+   },
+   "why": {
+    "correct": "The point is $(x(2), y(2)) = (8 - 6, 4 - 4) = (2, 0)$ and the slope is $-\\frac{4}{9}$, so $y - 0 = -\\frac{4}{9}(x - 2)$."
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-3",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-derivatives-s1",
+   "q": "Which statement describes the tangent line at the point where $t = -1$?",
+   "options": [
+    "It is horizontal, because $\\frac{dx}{dt} = 0$ there",
+    "It has slope 2, because $\\frac{dy}{dt} = 2$ there",
+    "It is vertical, because $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} \\ne 0$ there",
+    "It does not exist, because $\\frac{dy}{dx}$ is undefined there"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At $t = -1$, $\\frac{dx}{dt} = 3(1) - 3 = 0$ and $\\frac{dy}{dt} = 2 \\ne 0$. The point moves straight up for an instant, so the tangent line is vertical: the path turns from moving right to moving left at $(2, 3)$.",
+    "options": [
+     "$\\frac{dx}{dt} = 0$ makes the horizontal motion stop, which gives a vertical tangent. A horizontal tangent needs $\\frac{dy}{dt} = 0$.",
+     "$\\frac{dy}{dt} = 2$ is a rate per unit of time, not the slope; the slope divides by $\\frac{dx}{dt}$, which is 0 here.",
+     "Right: no horizontal motion and nonzero vertical motion give a vertical tangent line.",
+     "An undefined slope is the slope of a vertical line; the tangent line exists and is vertical."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-4",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-derivatives-s1",
+   "q": "For which values of $t$ is the point moving to the left and up at the same time?",
+   "options": [
+    "$-2 < t < -1$",
+    "$-1 < t < 0$",
+    "$0 < t < 1$",
+    "$1 < t < 2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Left means $\\frac{dx}{dt} = 3t^2 - 3 < 0$, so $-1 < t < 1$. Up means $\\frac{dy}{dt} = -2t > 0$, so $t < 0$. Both hold for $-1 < t < 0$, the part of the path from $(2, 3)$ to the top, $(0, 4)$.",
+    "options": [
+     "Here $\\frac{dx}{dt} > 0$ (for example $3(1.5)^2 - 3 > 0$), so the point moves right and up.",
+     "Right: $\\frac{dx}{dt} < 0$ and $\\frac{dy}{dt} > 0$.",
+     "Here $\\frac{dy}{dt} = -2t < 0$, so the point moves left and down.",
+     "Here $\\frac{dx}{dt} > 0$ and $\\frac{dy}{dt} < 0$: right and down."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-5",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-derivatives-s1",
+   "q": "At which point is the tangent line to the path horizontal?",
+   "options": [
+    "$(2, 3)$ and $(-2, 3)$, where $t = -1$ and $t = 1$",
+    "$(0, 1)$, where the path crosses itself",
+    "$(-2, 0)$ and $(2, 0)$, where $y = 0$",
+    "$(0, 4)$, where $t = 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Horizontal tangent: $\\frac{dy}{dt} = -2t = 0$ with $\\frac{dx}{dt} \\ne 0$. That is $t = 0$, where $\\frac{dx}{dt} = -3$, at the point $(0, 4)$.",
+    "options": [
+     "There $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} \\ne 0$: those tangents are vertical.",
+     "The crossing point has two tangent lines, one for each pass, and neither is horizontal.",
+     "$y = 0$ is where the path meets the $x$-axis; the slope there is $\\frac{dy/dt}{dx/dt} = \\pm\\frac{4}{9}$, not 0.",
+     "Right: $\\frac{dy}{dt} = 0$ and $\\frac{dx}{dt} = -3 \\ne 0$ at $t = 0$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-6",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-derivatives-s2",
+   "q": "Find the slope of the curve at the point where $t = 3$.",
+   "numeric": {
+    "answer": "-3/4",
+    "mistakes": [
+     { "value": "-4/3", "why": "That divides $x'(3)$ by $y'(3)$. The slope is $\\frac{dy/dt}{dx/dt} = \\frac{y'(3)}{x'(3)}$." },
+     { "value": 3, "why": "That is $y'(3)$ alone, a rate per unit of $t$. Divide it by $x'(3) = -4$." },
+     { "value": "3/2", "why": "That divides the values $y(3)$ and $x(3)$; the slope uses the derivatives $y'(3)$ and $x'(3)$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\left.\\frac{dy}{dx}\\right|_{t=3} = \\frac{y'(3)}{x'(3)} = \\frac{3}{-4} = -\\frac{3}{4}$."
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-7",
+   "type": "expr",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-derivatives-s2",
+   "q": "Write an equation of the line tangent to the curve at the point where $t = 0$.",
+   "expr": {
+    "answer": "4-2/3*(x-1)",
+    "vars": ["x"],
+    "domain": [-3, 5],
+    "mode": "exact",
+    "lhs": "y =",
+    "mistakes": [
+     { "expr": "4-3/2*(x-1)", "why": "The slope is $\\frac{y'(0)}{x'(0)} = \\frac{-2}{3}$; this line uses $\\frac{x'(0)}{y'(0)}$." },
+     { "expr": "4-2/3*x", "why": "The point is $(x(0), y(0)) = (1, 4)$. The time $t = 0$ is not the $x$-coordinate; use $x - 1$." },
+     { "expr": "1-2/3*(x-4)", "why": "The coordinates are swapped: the point is $(1, 4)$, with $x = 1$ and $y = 4$." }
+    ]
+   },
+   "why": {
+    "correct": "At $t = 0$ the point is $(x(0), y(0)) = (1, 4)$ and the slope is $\\frac{y'(0)}{x'(0)} = -\\frac{2}{3}$, so $y = 4 - \\frac{2}{3}(x - 1)$."
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-8",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-derivatives-s2",
+   "q": "What does the table tell you about the tangent lines at $t = 1$ and at $t = 2$?",
+   "options": [
+    "Horizontal at $t = 1$; vertical at $t = 2$",
+    "Vertical at $t = 1$; horizontal at $t = 2$",
+    "Horizontal at both times",
+    "Slope 2 at $t = 1$; slope $\\frac{3}{4}$ at $t = 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $t = 1$: $y'(1) = 0$ and $x'(1) = 1 \\ne 0$, so the slope is 0 (horizontal). At $t = 2$: $x'(2) = 0$ and $y'(2) = 2 \\ne 0$, so the tangent is vertical.",
+    "options": [
+     "Right: a zero numerator ($y'$) gives a horizontal tangent; a zero denominator ($x'$) with a nonzero $y'$ gives a vertical one.",
+     "This swaps the two cases. $\\frac{dy}{dx} = \\frac{y'}{x'}$ is 0 when $y' = 0$: horizontal.",
+     "At $t = 2$ it is $x'$ that is 0, not $y'$: that tangent is vertical.",
+     "These divide the coordinates $y(t)$ by $x(t)$; slopes come from the derivatives."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-9",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-derivatives-s2",
+   "q": "In which direction is the point moving at $t = 3$?",
+   "options": [
+    "Right and up",
+    "Left and up",
+    "Left and down",
+    "Right and down"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$x'(3) = -4 < 0$, so $x$ is decreasing: the point moves left. $y'(3) = 3 > 0$, so $y$ is increasing: it moves up.",
+    "options": [
+     "$x'(3) = -4$ is negative, so $x$ is decreasing: left, not right.",
+     "Right: $x' < 0$ (left) and $y' > 0$ (up).",
+     "$y'(3) = 3$ is positive, so the point moves up.",
+     "Both signs are reversed here: $x'(3) < 0$ and $y'(3) > 0$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-10",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A curve is given by $x = e^t$, $y = t^2 + 1$. Find $\\frac{dy}{dx}$ at $t = 1$.",
+   "numeric": {
+    "answer": "2/e",
+    "mistakes": [
+     { "value": "e/2", "why": "That is $\\frac{dx/dt}{dy/dt}$. Put the rate of $y$ on top: $\\frac{2t}{e^t}$." },
+     { "value": 2, "why": "That is $\\frac{dy}{dt} = 2t$ alone. Divide by $\\frac{dx}{dt} = e^t$, which is $e$ at $t = 1$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dt} = 2t$ and $\\frac{dx}{dt} = e^t$, so $\\frac{dy}{dx} = \\frac{2t}{e^t}$, which is $\\frac{2}{e}$ at $t = 1$."
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-11",
+   "type": "expr",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A curve is given by $x = 3\\cos t$, $y = 2\\sin t$. Find $\\frac{dy}{dx}$ in terms of $t$.",
+   "expr": {
+    "answer": "-2*cos(t)/(3*sin(t))",
+    "vars": ["t"],
+    "domain": [0.3, 2.8],
+    "mode": "exact",
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     { "expr": "-3*sin(t)/(2*cos(t))", "why": "That is $\\frac{dx/dt}{dy/dt}$. The slope is $\\frac{dy/dt}{dx/dt} = \\frac{2\\cos t}{-3\\sin t}$." },
+     { "expr": "2*cos(t)/(3*sin(t))", "why": "The derivative of $\\cos t$ is $-\\sin t$, so $\\frac{dx}{dt} = -3\\sin t$ and the slope is negative where $\\sin t$ and $\\cos t$ are both positive." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dt} = 2\\cos t$ and $\\frac{dx}{dt} = -3\\sin t$, so $\\frac{dy}{dx} = \\frac{2\\cos t}{-3\\sin t} = -\\frac{2\\cos t}{3\\sin t}$ wherever $\\sin t \\ne 0$."
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-12",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A curve is given by $x = t^2 + 1$, $y = t^3 - 12t$. At which points is the tangent line horizontal?",
+   "options": [
+    "$(5, -16)$ and $(5, 16)$",
+    "$(1, 0)$",
+    "$(-2, 16)$ and $(2, -16)$",
+    "$(4, -16)$ and $(4, 16)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{dy}{dt} = 3t^2 - 12 = 0$ at $t = \\pm 2$, where $\\frac{dx}{dt} = 2t = \\pm 4 \\ne 0$. At $t = 2$: $(5, 8 - 24) = (5, -16)$; at $t = -2$: $(5, -8 + 24) = (5, 16)$.",
+    "options": [
+     "Right: $t = \\pm 2$, and both points have $x = 2^2 + 1 = 5$.",
+     "At $t = 0$, $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} = -12 \\ne 0$: that tangent is vertical.",
+     "These write $(t, y)$; the $x$-coordinate is $x(\\pm 2) = 5$, not $t$.",
+     "$x(2) = 2^2 + 1 = 5$: the $+ 1$ was dropped."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-13",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "A curve is given by $x = t^2 + 1$, $y = t\\sin t$ for $0 < t < 3$. Find the value of $t$ at which the tangent line is horizontal.",
+   "numeric": {
+    "answer": 2.028757838110434,
+    "mistakes": [
+     { "value": 1.5707963267948966, "why": "That solves $t\\cos t = 0$, the product rule with the $\\sin t$ term dropped. $\\frac{dy}{dt} = \\sin t + t\\cos t$." }
+    ]
+   },
+   "why": {
+    "correct": "Horizontal tangent: $\\frac{dy}{dt} = \\sin t + t\\cos t = 0$ with $\\frac{dx}{dt} = 2t \\ne 0$. Solving on the calculator (radian mode) gives $t \\approx 2.029$ (2.028 also earns the point); there $\\frac{dx}{dt} \\approx 4.06 \\ne 0$."
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-14",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "A curve is given by $x = x(t)$, $y = y(t)$. Which expression gives the slope of the tangent line at a point where $\\frac{dx}{dt} \\ne 0$?",
+   "options": [
+    "$\\frac{dx/dt}{dy/dt}$",
+    "$\\frac{dy}{dt}$",
+    "$\\frac{dy}{dt} \\cdot \\frac{dx}{dt}$",
+    "$\\frac{dy/dt}{dx/dt}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "By the chain rule $\\frac{dy}{dt} = \\frac{dy}{dx}\\cdot\\frac{dx}{dt}$, so $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}$: rise per unit of time over run per unit of time.",
+    "options": [
+     "This is the reciprocal of the slope, run over rise.",
+     "This is how fast $y$ changes per unit of time, not per unit of $x$.",
+     "Multiplying the rates has no meaning here; the chain rule gives a quotient.",
+     "Right: the chain rule, solved for $\\frac{dy}{dx}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-15",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The curve $x = t^2$, $y = t^3 - 3t$ passes through $(3, 0)$ twice, at $t = -\\sqrt{3}$ and at $t = \\sqrt{3}$. What can be said about the slope of the curve at $(3, 0)$?",
+   "options": [
+    "It is 0, because $y = 0$ at $(3, 0)$",
+    "There are two tangent lines, with slopes $-\\sqrt{3}$ and $\\sqrt{3}$",
+    "There is one slope, found by putting $x = 3$ into a formula for $\\frac{dy}{dx}$",
+    "It does not exist, because the curve crosses itself there"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = \\frac{3t^2 - 3}{2t}$. At $t = \\sqrt{3}$: $\\frac{6}{2\\sqrt{3}} = \\sqrt{3}$. At $t = -\\sqrt{3}$: $-\\sqrt{3}$. Each pass through the point has its own tangent line, which is why slopes are found from $t$, not from the point.",
+    "options": [
+     "The height of a point says nothing about its slope; compute $\\frac{dy/dt}{dx/dt}$ at each $t$.",
+     "Right: one tangent line for each time the curve passes through the point.",
+     "$\\frac{dy}{dx}$ here is a formula in $t$, and two values of $t$ give $x = 3$, with different slopes.",
+     "Each pass has a well-defined tangent line; there are simply two of them."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-derivatives-16",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A point moves along a curve. At time $t = 2$, $\\frac{dx}{dt} = 4$ and the slope of the curve is $\\frac{dy}{dx} = -\\frac{1}{2}$. Find $\\frac{dy}{dt}$ at $t = 2$.",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     { "value": -8, "why": "That divides $\\frac{dx}{dt}$ by $\\frac{dy}{dx}$. The chain rule multiplies: $\\frac{dy}{dt} = \\frac{dy}{dx}\\cdot\\frac{dx}{dt}$." },
+     { "value": "-1/8", "why": "That divides the slope by $\\frac{dx}{dt}$. Multiply instead: $-\\frac{1}{2}\\cdot 4$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dt} = \\frac{dy}{dx}\\cdot\\frac{dx}{dt} = -\\frac{1}{2}\\cdot 4 = -2$: $y$ is decreasing at 2 units per unit of time."
+   }
+  }
+ ]
+}

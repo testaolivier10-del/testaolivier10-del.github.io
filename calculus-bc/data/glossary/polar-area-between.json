@@ -1,0 +1,5 @@
+{
+ "polar-area-between": {
+  "def": "The area of the region inside a polar curve $r = R(\\theta)$ and outside $r = r(\\theta)$: $\\frac{1}{2}\\int_{\\alpha}^{\\beta} \\left(R(\\theta)^2 - r(\\theta)^2\\right)d\\theta$, with limits where the curves meet. Each radius is squared before subtracting."
+ }
+}

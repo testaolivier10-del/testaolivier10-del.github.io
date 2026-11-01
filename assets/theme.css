@@ -236,6 +236,13 @@ body[data-course="apphys"]{--ctint:#FBEED5;--cink:#734200;}
    8.0:1 light, about 9.8:1 dark (docs/apcalc-spec.md decision 6). */
 body[data-course="apcalc"]{--ctint:#FCE8EE;--cink:#8C1036;}
 :root[data-theme="dark"] body[data-course="apcalc"]{--ctint:rgba(232,80,122,0.10);--cink:#F7B8CA;}
+/* AP Calculus BC: violet, hue 270 (between Organic Chemistry's indigo at 249° and
+   Statistics' plum at 298°; clear of the site teal and Precalculus' green). --cink on
+   --ctint: 8.5:1 light (10.2:1 on white, 9.7:1 on the page); dark 11.2:1 on the page
+   and 9.8:1 on the tint (docs/apcalcbc-spec.md decision 7, proposed; the same values as body.cbc in
+   calculus-bc/assets/cbc.css). */
+body[data-course="apcalcbc"]{--ctint:#F1E7FA;--cink:#5A1E96;}
+:root[data-theme="dark"] body[data-course="apcalcbc"]{--ctint:rgba(160,112,224,0.12);--cink:#D6BFF5;}
 /* AP Statistics: plum (not Calculus' crimson, ochem's lilac, Biology's green,
    A&P's coral, NREMT's mint, Chemistry's cobalt or Physics' amber). --cink on
    --ctint 8.2:1 light, 9.8:1 on white (docs/apstat-spec.md decision 5,
@@ -267,9 +274,9 @@ body[data-course="apprecalc"]{--ctint:#E3F3E8;--cink:#11592F;}
 :root[data-theme="dark"] body[data-course="apprecalc"]{--ctint:rgba(80,200,130,0.10);--cink:#ACE4BF;}
 /* Primary buttons in the course color (--cink, page-colored text). Contrast,
    light / dark: ochem 8.4 / 10.5, A&P 6.5 / 10.5, Biology 6.6 / 12.3,
-   Chemistry 8.6 / 10.7, Physics 8.4 / 12.1, Calculus 9.4 / 10.8, Statistics 9.8 / 10.9, Environmental Science 8.6 / 12.5, Psychology 8.3 / 12.2,
+   Chemistry 8.6 / 10.7, Physics 8.4 / 12.1, Calculus 9.4 / 10.8, Calculus BC 9.7 / 11.2, Statistics 9.8 / 10.9, Environmental Science 8.6 / 12.5, Psychology 8.3 / 12.2,
    Precalculus 8.0 / 12.9. */
-body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-course="apchem"],[data-course="apphys"],[data-course="apcalc"],[data-course="apstat"],[data-course="apenv"],[data-course="appsych"],[data-course="apprecalc"],.bio,.chem,.phys,.calc){--btn-bg:var(--cink);--btn-ink:var(--paper);}
+body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-course="apchem"],[data-course="apphys"],[data-course="apcalc"],[data-course="apcalcbc"],[data-course="apstat"],[data-course="apenv"],[data-course="appsych"],[data-course="apprecalc"],.bio,.chem,.phys,.calc){--btn-bg:var(--cink);--btn-ink:var(--paper);}
 
 /* The same pairs for a course's card outside its pages (hub cards, polish A3). */
 [data-tint="ochem"]{--ctint:#ECE8FB;--cink:#4B3BA8;}
@@ -278,6 +285,7 @@ body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-cour
 [data-tint="apchem"]{--ctint:#E3EAFA;--cink:#1D44A6;}
 [data-tint="apphys"]{--ctint:#FBEED5;--cink:#734200;}
 [data-tint="apcalc"]{--ctint:#FCE8EE;--cink:#8C1036;}
+[data-tint="apcalcbc"]{--ctint:#F1E7FA;--cink:#5A1E96;}
 [data-tint="apstat"]{--ctint:#F5E6F4;--cink:#6E2470;}
 [data-tint="apenv"]{--ctint:#EFF0DA;--cink:#474A10;}
 [data-tint="appsych"]{--ctint:#E3F0F8;--cink:#084F78;}
@@ -288,6 +296,7 @@ body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-cour
 :root[data-theme="dark"] [data-tint="apchem"]{--ctint:rgba(90,130,230,0.12);--cink:#B3C8F7;}
 :root[data-theme="dark"] [data-tint="apphys"]{--ctint:rgba(235,165,50,0.10);--cink:#F5CF8A;}
 :root[data-theme="dark"] [data-tint="apcalc"]{--ctint:rgba(232,80,122,0.10);--cink:#F7B8CA;}
+:root[data-theme="dark"] [data-tint="apcalcbc"]{--ctint:rgba(160,112,224,0.12);--cink:#D6BFF5;}
 :root[data-theme="dark"] [data-tint="apstat"]{--ctint:rgba(214,120,206,0.10);--cink:#F0BCEB;}
 :root[data-theme="dark"] [data-tint="apenv"]{--ctint:rgba(200,200,100,0.10);--cink:#DCDB98;}
 :root[data-theme="dark"] [data-tint="appsych"]{--ctint:rgba(80,170,220,0.10);--cink:#A8D8F0;}

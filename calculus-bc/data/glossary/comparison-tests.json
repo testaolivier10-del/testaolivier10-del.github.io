@@ -1,0 +1,8 @@
+{
+ "direct-comparison": {
+  "def": "For series with $0 \\le a_n \\le b_n$: if $\\sum b_n$ converges, so does $\\sum a_n$; if $\\sum a_n$ diverges, so does $\\sum b_n$."
+ },
+ "limit-comparison": {
+  "def": "For series with positive terms: if $\\lim_{n \\to \\infty} \\frac{a_n}{b_n}$ is a finite positive number, then $\\sum a_n$ and $\\sum b_n$ both converge or both diverge."
+ }
+}

@@ -1,0 +1,371 @@
+{
+ "stimuli": {
+  "parametric-arc-length-s1": {
+   "kind": "graph",
+   "title": "One arch traced by a point on a rolling wheel",
+   "text": "A wheel of radius 1 rolls along the $x$-axis. A point on its rim traces the path $x = t - \\sin t$, $y = 1 - \\cos t$. One arch is traced for $0 \\le t \\le 2\\pi$.",
+   "figure": "parametric-arc-length-cycloid"
+  },
+  "parametric-arc-length-s2": {
+   "kind": "table",
+   "title": "A drone's velocity components",
+   "text": "A drone flies in a vertical plane. Its horizontal and vertical velocities are differentiable, and selected values are given in the table, for $0 \\le t \\le 4$ seconds.",
+   "table": {
+    "caption": "Horizontal and vertical velocity of the drone",
+    "cols": ["$t$ (seconds)", "$x'(t)$ (meters per second)", "$y'(t)$ (meters per second)"],
+    "rows": [
+     ["$0$", "$3$", "$4$"],
+     ["$1$", "$6$", "$8$"],
+     ["$3$", "$5$", "$12$"],
+     ["$4$", "$8$", "$6$"]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-parametric-arc-length-1",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-arc-length-s1",
+   "q": "Which integral gives the length of one arch?",
+   "options": [
+    "$\\int_0^{2\\pi} \\sqrt{(t - \\sin t)^2 + (1 - \\cos t)^2}\\,dt$",
+    "$\\int_0^{2\\pi} \\sqrt{(1 - \\cos t)^2 + (\\sin t)^2}\\,dt$",
+    "$\\int_0^{2\\pi} \\left((1 - \\cos t) + \\sin t\\right)\\,dt$",
+    "$\\int_0^{2\\pi} \\sqrt{1 + \\left(\\frac{\\sin t}{1 - \\cos t}\\right)^2}\\,dt$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Length is $\\int_a^b \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt$ with $x'(t) = 1 - \\cos t$ and $y'(t) = \\sin t$, over the $t$-interval that traces the arch once.",
+    "options": [
+     "This squares the coordinates $x$ and $y$; the formula squares their derivatives.",
+     "Right: the square root of the sum of the squared derivatives.",
+     "Without squares and a square root this is not a length; the legs of the small triangle combine by the Pythagorean theorem.",
+     "$\\sqrt{1 + \\left(\\frac{dy}{dx}\\right)^2}$ goes with $dx$, not $dt$; with $dt$ it needs the factor $\\frac{dx}{dt}$, which this leaves out."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-2",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-arc-length-s1",
+   "q": "At the top of the arch, $t = \\pi$. Find $\\sqrt{(x'(\\pi))^2 + (y'(\\pi))^2}$, the speed of the rim point there.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     { "value": 4, "why": "That is $(x'(\\pi))^2 + (y'(\\pi))^2 = 2^2 + 0^2$. Take the square root." },
+     { "value": 0, "why": "That is $y'(\\pi) = \\sin\\pi$ alone. The point still moves sideways: $x'(\\pi) = 1 - \\cos\\pi = 2$." }
+    ]
+   },
+   "why": {
+    "correct": "$x'(\\pi) = 1 - \\cos\\pi = 2$ and $y'(\\pi) = \\sin\\pi = 0$, so the speed is $\\sqrt{2^2 + 0^2} = 2$: at the top, the rim point moves twice as fast as the wheel's center."
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-3",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "parametric-arc-length-s1",
+   "q": "Using $(1 - \\cos t)^2 + \\sin^2 t = 2 - 2\\cos t = 4\\sin^2\\left(\\frac{t}{2}\\right)$, find the exact length of one arch.",
+   "numeric": {
+    "answer": 8,
+    "mistakes": [
+     { "value": "2*pi", "why": "$2\\pi$ is the length of the arch's base, the straight distance the wheel rolls. The arch itself is longer: integrate $2\\sin\\left(\\frac{t}{2}\\right)$ from 0 to $2\\pi$." },
+     { "value": 4, "why": "An antiderivative of $2\\sin\\left(\\frac{t}{2}\\right)$ is $-4\\cos\\left(\\frac{t}{2}\\right)$: the inside derivative $\\frac{1}{2}$ doubles the factor." }
+    ]
+   },
+   "why": {
+    "correct": "On $0 \\le t \\le 2\\pi$, $\\sin\\left(\\frac{t}{2}\\right) \\ge 0$, so the integrand is $\\sqrt{4\\sin^2\\left(\\frac{t}{2}\\right)} = 2\\sin\\left(\\frac{t}{2}\\right)$. Then $\\int_0^{2\\pi} 2\\sin\\left(\\frac{t}{2}\\right)\\,dt = -4\\cos\\left(\\frac{t}{2}\\right)\\Big|_0^{2\\pi} = 4 + 4 = 8$."
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-4",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-arc-length-s1",
+   "q": "The wheel keeps rolling, and the rim point traces the path for $0 \\le t \\le 4\\pi$. How long is the path it traces?",
+   "numeric": {
+    "answer": 16,
+    "mistakes": [
+     { "value": 8, "why": "For $0 \\le t \\le 4\\pi$ the point traces two arches, each of length 8; the integral over $[0, 4\\pi]$ counts both." },
+     { "value": "4*pi", "why": "$4\\pi$ is how far the wheel rolls along the axis; the curved path above it is longer." }
+    ]
+   },
+   "why": {
+    "correct": "Each arch has length 8, and $t$ from 0 to $4\\pi$ traces two of them: $\\int_0^{4\\pi} 2\\left|\\sin\\left(\\frac{t}{2}\\right)\\right|\\,dt = 16$."
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-5",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-arc-length-s2",
+   "q": "Find the speed of the drone at $t = 3$ seconds. Include units.",
+   "numeric": {
+    "answer": 13,
+    "unit": "meters per second",
+    "units": ["m/s", "meters/second", "m/sec", "meters per sec"],
+    "askUnit": true,
+    "mistakes": [
+     { "value": 17, "why": "That adds the components, $5 + 12$. Speed is the length of the velocity: $\\sqrt{5^2 + 12^2}$." },
+     { "value": 169, "why": "That is $5^2 + 12^2$; take the square root." }
+    ]
+   },
+   "why": {
+    "correct": "$\\sqrt{(x'(3))^2 + (y'(3))^2} = \\sqrt{25 + 144} = 13$ meters per second."
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-6",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-arc-length-s2",
+   "q": "Which expression gives the length of the drone's path from $t = 0$ to $t = 4$?",
+   "options": [
+    "$\\int_0^4 \\left(x'(t) + y'(t)\\right)\\,dt$",
+    "$\\sqrt{\\left(\\int_0^4 x'(t)\\,dt\\right)^2 + \\left(\\int_0^4 y'(t)\\,dt\\right)^2}$",
+    "$\\int_0^4 \\sqrt{1 + \\left(\\frac{y'(t)}{x'(t)}\\right)^2}\\,dt$",
+    "$\\int_0^4 \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The length of the path is the integral of the speed, $\\sqrt{(x'(t))^2 + (y'(t))^2}$, over the time interval.",
+    "options": [
+     "Adding the components overcounts: the drone moves along the diagonal, not along each leg.",
+     "This is the straight-line distance between the start and the end. A curved path is longer.",
+     "This leaves out the factor $x'(t)$ that turns $dx$ into $dt$.",
+     "Right: integrate the speed."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-7",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-arc-length-s2",
+   "q": "Use a trapezoidal sum with the three subintervals given by the table to approximate the length of the drone's path from $t = 0$ to $t = 4$. Include units.",
+   "numeric": {
+    "answer": 42,
+    "unit": "meters",
+    "units": ["m", "meter"],
+    "askUnit": true,
+    "mistakes": [
+     { "value": 30.5, "why": "The subintervals are not equal: $[1, 3]$ has width 2. Multiply each average speed by its own width." },
+     { "value": 38, "why": "That is a left Riemann sum, $5(1) + 10(2) + 13(1)$. A trapezoid averages the speeds at both ends of each subinterval." }
+    ]
+   },
+   "why": {
+    "correct": "Speeds: $5, 10, 13, 10$ meters per second at $t = 0, 1, 3, 4$. Trapezoids: $\\frac{5 + 10}{2}(1) + \\frac{10 + 13}{2}(2) + \\frac{13 + 10}{2}(1) = 7.5 + 23 + 11.5 = 42$ meters."
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-8",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-arc-length-s2",
+   "q": "What does the value of $\\int_0^4 \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt$ represent?",
+   "options": [
+    "The distance, in meters, between the drone's positions at $t = 0$ and $t = 4$",
+    "The drone's average speed, in meters per second, from $t = 0$ to $t = 4$",
+    "The distance, in meters, that the drone travels along its path from $t = 0$ to $t = 4$",
+    "The drone's height, in meters, at $t = 4$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The integral of speed over a time interval is the distance traveled along the path in that time, here in meters.",
+    "options": [
+     "That straight-line distance ignores the bends of the path; it is at most the length of the path.",
+     "Average speed would divide this integral by the 4 seconds.",
+     "Right: speed integrated over time is distance along the path.",
+     "Height comes from $y'(t)$ alone, plus a starting height."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-9",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find the length of the curve $x = e^t\\cos t$, $y = e^t\\sin t$ for $0 \\le t \\le 1$.",
+   "numeric": {
+    "answer": "sqrt(2)*(e-1)",
+    "mistakes": [
+     { "value": "e-1", "why": "$(x')^2 + (y')^2 = e^{2t}\\left[(\\cos t - \\sin t)^2 + (\\sin t + \\cos t)^2\\right] = 2e^{2t}$, so the integrand is $\\sqrt{2}\\,e^t$, not $e^t$." },
+     { "value": "sqrt(2)*e", "why": "Evaluate at both limits: $\\sqrt{2}\\,e^t\\Big|_0^1 = \\sqrt{2}(e - 1)$; $e^0 = 1$, not 0." }
+    ]
+   },
+   "why": {
+    "correct": "$x' = e^t(\\cos t - \\sin t)$ and $y' = e^t(\\sin t + \\cos t)$. The cross terms cancel: $(x')^2 + (y')^2 = e^{2t}(2\\cos^2 t + 2\\sin^2 t) = 2e^{2t}$. So $L = \\int_0^1 \\sqrt{2}\\,e^t\\,dt = \\sqrt{2}(e - 1)$."
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-10",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the length of the path $x = 1 + 3t$, $y = 2 - 4t$ for $0 \\le t \\le 2$.",
+   "numeric": {
+    "answer": 10,
+    "mistakes": [
+     { "value": 14, "why": "That adds $|3| + |-4|$ before multiplying by 2. The speed is $\\sqrt{3^2 + (-4)^2} = 5$." },
+     { "value": 5, "why": "5 is the speed, the length covered per unit of $t$. Over 2 units of time the length is $5 \\cdot 2$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^2 \\sqrt{3^2 + (-4)^2}\\,dt = \\int_0^2 5\\,dt = 10$. Check: the path is the segment from $(1, 2)$ to $(7, -6)$, of length $\\sqrt{6^2 + 8^2} = 10$."
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-11",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find the length of the curve $x = \\cos^3 t$, $y = \\sin^3 t$ for $0 \\le t \\le \\frac{\\pi}{2}$.",
+   "numeric": {
+    "answer": "3/2",
+    "mistakes": [
+     { "value": 3, "why": "$\\int_0^{\\pi/2} 3\\sin t\\cos t\\,dt = \\frac{3}{2}\\sin^2 t\\Big|_0^{\\pi/2}$: the antiderivative of $\\sin t\\cos t$ has the factor $\\frac{1}{2}$." },
+     { "value": "9/2", "why": "$(x')^2 + (y')^2 = 9\\sin^2 t\\cos^2 t$, and its square root is $3\\sin t\\cos t$: take the root of the 9 as well." }
+    ]
+   },
+   "why": {
+    "correct": "$x' = -3\\cos^2 t\\sin t$ and $y' = 3\\sin^2 t\\cos t$. Then $(x')^2 + (y')^2 = 9\\sin^2 t\\cos^2 t(\\cos^2 t + \\sin^2 t) = 9\\sin^2 t\\cos^2 t$, whose root is $3\\sin t\\cos t \\ge 0$ on $\\left[0, \\frac{\\pi}{2}\\right]$. $L = \\int_0^{\\pi/2} 3\\sin t\\cos t\\,dt = \\frac{3}{2}\\sin^2 t\\Big|_0^{\\pi/2} = \\frac{3}{2}$."
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-12",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the length of the curve $x = t^2$, $y = \\frac{2}{3}t^3$ for $0 \\le t \\le \\sqrt{3}$.",
+   "numeric": {
+    "answer": "14/3",
+    "mistakes": [
+     { "value": "7/3", "why": "$\\sqrt{4t^2 + 4t^4} = 2t\\sqrt{1 + t^2}$: the factor 2 comes out of the root as well." },
+     { "value": "28/3", "why": "With $u = 1 + t^2$, $du = 2t\\,dt$, so $\\int 2t\\sqrt{1 + t^2}\\,dt = \\int u^{1/2}\\,du = \\frac{2}{3}u^{3/2}$; there is no extra factor 2." }
+    ]
+   },
+   "why": {
+    "correct": "$x' = 2t$ and $y' = 2t^2$, so the integrand is $\\sqrt{4t^2 + 4t^4} = 2t\\sqrt{1 + t^2}$ for $t \\ge 0$. With $u = 1 + t^2$: $\\int_1^4 u^{1/2}\\,du = \\frac{2}{3}u^{3/2}\\Big|_1^4 = \\frac{2}{3}(8 - 1) = \\frac{14}{3}$."
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-13",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For $x = \\cos(2t)$, $y = \\sin(2t)$, $0 \\le t \\le 2\\pi$, the integral $\\int_0^{2\\pi} \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt$ equals $4\\pi$. Which statement is correct?",
+   "options": [
+    "The circle has circumference $4\\pi$, so its radius is 2",
+    "The point goes around the unit circle twice, so the integral is twice the circumference $2\\pi$",
+    "The integral should be $2\\pi$; a value of $4\\pi$ means an arithmetic slip",
+    "The integral measures the area inside the circle, $4\\pi$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$x^2 + y^2 = 1$: the unit circle, of circumference $2\\pi$. The speed is $\\sqrt{4\\sin^2(2t) + 4\\cos^2(2t)} = 2$, and $2t$ runs from 0 to $4\\pi$: two full turns. The integral is the distance the point travels, $4\\pi$, which counts the circle twice.",
+    "options": [
+     "$x^2 + y^2 = \\cos^2(2t) + \\sin^2(2t) = 1$, so the radius is 1; the integral counts the circle twice.",
+     "Right: the formula gives the length of the curve only when it is traced once.",
+     "The integral is right; it measures the distance traveled, which includes both turns.",
+     "This integral adds up small lengths, not areas: the area of the unit circle is $\\pi$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-14",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Find the length of the curve $x = t^3 - t$, $y = t^2$ for $0 \\le t \\le 2$.",
+   "numeric": {
+    "answer": 8.102837579766627,
+    "mistakes": [
+     { "value": 7.211102550927978, "why": "That is the straight-line distance from $(0, 0)$ to $(6, 4)$. The curve bends, so integrate the speed: $\\int_0^2 \\sqrt{(3t^2 - 1)^2 + (2t)^2}\\,dt$." }
+    ]
+   },
+   "why": {
+    "correct": "$L = \\int_0^2 \\sqrt{(3t^2 - 1)^2 + (2t)^2}\\,dt \\approx 8.103$ (8.102 also earns the point) by the calculator's numerical integral."
+   }
+  },
+  {
+   "id": "cbc-parametric-arc-length-15",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The curve $y = x^2$, $0 \\le x \\le 1$, can be written as $x = t$, $y = t^2$, $0 \\le t \\le 1$. Which integral gives its length?",
+   "options": [
+    "$\\int_0^1 \\sqrt{1 + 2t}\\,dt$",
+    "$\\int_0^1 \\sqrt{t^2 + t^4}\\,dt$",
+    "$\\int_0^1 \\sqrt{1 + 4t^2}\\,dt$",
+    "$\\int_0^1 (1 + 2t)\\,dt$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$x' = 1$ and $y' = 2t$, so the integrand is $\\sqrt{1^2 + (2t)^2} = \\sqrt{1 + 4t^2}$. It is the same integral as the 8.13 formula $\\int_0^1 \\sqrt{1 + (2x)^2}\\,dx$.",
+    "options": [
+     "$y' = 2t$ must be squared: $(2t)^2 = 4t^2$.",
+     "This squares $x$ and $y$; the formula squares their derivatives.",
+     "Right: $\\sqrt{(x')^2 + (y')^2}$ with $x' = 1$ and $y' = 2t$.",
+     "Lengths combine by the Pythagorean theorem: square, add, take the root."
+    ]
+   }
+  }
+ ]
+}

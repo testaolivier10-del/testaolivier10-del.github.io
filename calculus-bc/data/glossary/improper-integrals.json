@@ -1,0 +1,8 @@
+{
+ "improper-integral": {
+  "def": "An integral with an infinite limit of integration, such as $\\int_1^\\infty \\frac{1}{x^2}\\,dx$, or with an integrand unbounded on the interval, such as $\\int_0^1 \\frac{1}{\\sqrt{x}}\\,dx$. It is defined as a limit of definite integrals: $\\int_a^\\infty f(x)\\,dx = \\lim_{b \\to \\infty} \\int_a^b f(x)\\,dx$."
+ },
+ "convergence": {
+  "def": "An improper integral converges when the limit of the definite integrals that defines it is a finite number; that number is its value. It diverges when the limit is infinite or does not exist. Example: $\\int_1^\\infty \\frac{1}{x^2}\\,dx$ converges to 1; $\\int_1^\\infty \\frac{1}{x}\\,dx$ diverges."
+ }
+}

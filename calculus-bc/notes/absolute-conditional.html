@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Absolute and Conditional Convergence — AP® Calculus BC Notes</title>
+<meta name="description" content="Absolute and conditional convergence: test the series of absolute values first, then the series itself, and classify each series in three ways.">
+<link rel="canonical" href="https://levlprep.com/calculus-bc/notes/absolute-conditional.html">
+<meta property="og:title" content="Absolute and Conditional Convergence — AP® Calculus BC Notes">
+<meta property="og:description" content="Absolute and conditional convergence: test the series of absolute values first, then the series itself, and classify each series in three ways.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus-bc/notes/absolute-conditional.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus-bc/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../../calculus/assets/calc.css">
+<link rel="stylesheet" href="../assets/cbc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus-bc/notes/absolute-conditional.html#reading",
+      "name": "Absolute and Conditional Convergence",
+      "url": "https://levlprep.com/calculus-bc/notes/absolute-conditional.html",
+      "description": "Absolute and conditional convergence: test the series of absolute values first, then the series itself, and classify each series in three ways.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "absolute and conditional convergence calculus bc explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus-bc/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus BC",
+          "item": "https://levlprep.com/calculus-bc/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Infinite Sequences and Series",
+          "item": "https://levlprep.com/calculus-bc/units/unit-10.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Absolute and Conditional Convergence: notes",
+          "item": "https://levlprep.com/calculus-bc/notes/absolute-conditional.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="calc cbc" data-course="apcalcbc" data-topic="absolute-conditional" data-unit="unit-10">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apcalcbc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus BC</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-10.html">Infinite Sequences and Series</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Absolute and Conditional Convergence: notes</span></nav>
+<p class="issue">Unit 10 <i></i> Topic 10.9</p>
+<h1 class="deck bk-title" id="r3Title">Absolute <span>and Conditional Convergence</span></h1>
+<p class="hand calc-nav-ref">every AB topic, then series</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/absolute-conditional.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta calc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="absolute-conditional">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus-bc%2Fnotes%2Fabsolute-conditional.html&amp;title=Absolute%20and%20Conditional%20Convergence%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/calculus-bc/notes/absolute-conditional.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalcbc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apcalcbc">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 10 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-9.html"><span class="bk-toc-n">9</span>Parametric Equations, Polar Coordinates, and Vector-Valued Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-10.html"><span class="bk-toc-chap-n">10</span><span><b>Infinite Sequences and Series</b><small>15 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-10"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="series-convergence"><a href="series-convergence.html"><span class="bk-toc-n">10.1</span>Convergent and Divergent Series</a></li><li data-toc-t="geometric-series"><a href="geometric-series.html"><span class="bk-toc-n">10.2</span>Geometric Series</a></li><li data-toc-t="nth-term-test"><a href="nth-term-test.html"><span class="bk-toc-n">10.3</span>The nth Term Test for Divergence</a></li><li data-toc-t="integral-test"><a href="integral-test.html"><span class="bk-toc-n">10.4</span>The Integral Test</a></li><li data-toc-t="p-series"><a href="p-series.html"><span class="bk-toc-n">10.5</span>Harmonic Series and p-Series</a></li><li data-toc-t="comparison-tests"><a href="comparison-tests.html"><span class="bk-toc-n">10.6</span>Comparison Tests</a></li><li data-toc-t="alternating-series-test"><a href="alternating-series-test.html"><span class="bk-toc-n">10.7</span>The Alternating Series Test</a></li><li data-toc-t="ratio-test"><a href="ratio-test.html"><span class="bk-toc-n">10.8</span>The Ratio Test</a></li><li class="current" data-toc-t="absolute-conditional"><a href="#main" aria-current="page"><span class="bk-toc-n">10.9</span>Absolute and Conditional Convergence</a><div class="bk-toc-onpage"><p>On this page</p><a href="#two-series-built-from-the-same">Two series built from the same sizes</a><a href="#the-definitions">The definitions</a><a href="#absolute-convergence-implies-convergence">Absolute convergence implies convergence</a><a href="#how-to-classify-a-series">How to classify a series</a><a href="#why-the-difference-matters-rearranging-terms">Why the difference matters: rearranging terms</a><a href="#writing-it-the-way-graders-want">Writing it the way graders want</a></div></li><li data-toc-t="alternating-error-bound"><a href="alternating-error-bound.html"><span class="bk-toc-n">10.10</span>The Alternating Series Error Bound</a></li><li data-toc-t="taylor-polynomials"><a href="taylor-polynomials.html"><span class="bk-toc-n">10.11</span>Taylor Polynomials</a></li><li data-toc-t="lagrange-error-bound"><a href="lagrange-error-bound.html"><span class="bk-toc-n">10.12</span>The Lagrange Error Bound</a></li><li data-toc-t="radius-interval-convergence"><a href="radius-interval-convergence.html"><span class="bk-toc-n">10.13</span>Radius and Interval of Convergence</a></li><li data-toc-t="taylor-series"><a href="taylor-series.html"><span class="bk-toc-n">10.14</span>Taylor and Maclaurin Series</a></li><li data-toc-t="power-series-functions"><a href="power-series-functions.html"><span class="bk-toc-n">10.15</span>Representing Functions as Power Series</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="calc-prose bk-prose">
+<p>A <a class="gl" href="../notes/series-convergence.html" data-c="infinite-series">series</a> with mixed signs can <a class="gl" href="../notes/improper-integrals.html" data-c="convergence">converge</a> for two quite different reasons. Its terms may be small enough that the series would converge even with every sign made positive. Or the series may converge only because positive and negative terms keep cancelling. The words for these two cases are absolute and <span class="gl" tabindex="0" data-c="conditional-convergence">conditional convergence</span>.</p>
+
+<h2 id="two-series-built-from-the-same">Two series built from the same sizes</h2>
+<figure id="fig-abscond"  class="calc-figure"><div class="calc-figimg" data-fig="abs-cond-sums"><img src="../figures/abs-cond-sums.svg" alt="Partial sums for N = 1 to 20. Open dots: the harmonic series, the sum of 1 over n, climbing steadily to about 3.60 with no ceiling. Filled dots: the alternating harmonic series, zigzagging around a dashed line at about 0.693. The alternating series converges but the series of absolute values diverges: conditional convergence." width="720" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The harmonic series climbs without bound; the alternating harmonic series settles. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>The terms of <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{(-1)^{n+1}}{n}</annotation></semantics></math> have the same sizes. <a class="figref" href="#fig-abscond">The figure</a> shows what the signs do: the harmonic series keeps climbing (it diverges), while the <a class="gl" href="../notes/p-series.html" data-c="harmonic-series">alternating harmonic series</a> zigzags in on about <math class="calc-m"><semantics><mrow><mn>0.693</mn></mrow><annotation encoding="application/x-tex">0.693</annotation></semantics></math> (it converges). Its convergence depends on the signs. Compare <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{(-1)^{n+1}}{n^2}</annotation></semantics></math>: here even <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n^2}</annotation></semantics></math> converges, so this series would converge whatever its signs were.</p>
+
+<h2 id="the-definitions">The definitions</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Classification</th><th>Meaning</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><span class="gl" tabindex="0" data-c="absolute-convergence">absolutely convergent</span></td><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">|</mo><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\sum |a_n|</annotation></semantics></math> converges</td><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup></mrow><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{(-1)^n}{n^2}</annotation></semantics></math></td></tr>
+<tr><td>conditionally convergent</td><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum a_n</annotation></semantics></math> converges, but <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">|</mo><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\sum |a_n|</annotation></semantics></math> diverges</td><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup></mrow><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{(-1)^n}{n}</annotation></semantics></math></td></tr>
+<tr><td>divergent</td><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum a_n</annotation></semantics></math> diverges</td><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup><mfrac><mi>n</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum (-1)^n \frac{n}{n + 1}</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>Every series falls into exactly one of the three rows.</p>
+
+<h2 id="absolute-convergence-implies-convergence">Absolute convergence implies convergence</h2>
+<p>If <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">|</mo><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\sum |a_n|</annotation></semantics></math> converges, then <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum a_n</annotation></semantics></math> converges. Signs can only make terms cancel; they can never make the total larger in size than the sum of the absolute values. This gives a way to handle series whose signs follow no pattern at all. For <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>n</mi></mrow><msup><mi>n</mi><mn>3</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{\cos n}{n^3}</annotation></semantics></math>, the signs of <math class="calc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\cos n</annotation></semantics></math> are irregular, so the <a class="gl" href="../notes/alternating-series-test.html" data-c="alternating-series">alternating series test</a> does not apply. But <math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">|</mo><mfrac><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>n</mi></mrow><msup><mi>n</mi><mn>3</mn></msup></mfrac><mo fence="true" stretchy="true">|</mo></mrow><mo>≤</mo><mfrac><mn>1</mn><msup><mi>n</mi><mn>3</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\left|\frac{\cos n}{n^3}\right| \le \frac{1}{n^3}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mrow><mo fence="true" stretchy="true">|</mo><mfrac><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>n</mi></mrow><msup><mi>n</mi><mn>3</mn></msup></mfrac><mo fence="true" stretchy="true">|</mo></mrow></mrow><annotation encoding="application/x-tex">\sum \left|\frac{\cos n}{n^3}\right|</annotation></semantics></math> converges by direct comparison with a <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series (<math class="calc-m"><semantics><mrow><mi>p</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">p = 3</annotation></semantics></math>), and the series converges absolutely.</p>
+
+<h2 id="how-to-classify-a-series">How to classify a series</h2>
+<ol>
+<li>If the terms do not approach 0, the series diverges by the <a class="gl" href="../notes/nth-term-test.html" data-c="nth-term-test">nth term test</a>. Stop.</li>
+<li>Test <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">|</mo><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\sum |a_n|</annotation></semantics></math>, a series of positive terms, with a comparison, the <a class="gl" href="../notes/integral-test.html" data-c="integral-test">integral test</a>, a <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series or the <a class="gl" href="../notes/ratio-test.html" data-c="ratio-test">ratio test</a>. If it converges, the series converges absolutely. Stop.</li>
+<li>If <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">|</mo><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\sum |a_n|</annotation></semantics></math> diverges, test <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum a_n</annotation></semantics></math> itself, usually with the alternating series test. If it converges, the convergence is conditional.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> Classify <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup></mrow><mrow><mn>3</mn><mi>n</mi><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{(-1)^n}{3n + 2}</annotation></semantics></math>.</p>
+<p>Absolute values: <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mrow><mn>3</mn><mi>n</mi><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{3n + 2}</annotation></semantics></math>. <a class="gl" href="../notes/limit-notation.html" data-c="limit">Limit</a> comparison with <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n}</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mfrac><mi>n</mi><mrow><mn>3</mn><mi>n</mi><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{n \to \infty} \frac{n}{3n + 2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{3}</annotation></semantics></math>, finite and positive, and <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n}</annotation></semantics></math> diverges, so <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mrow><mn>3</mn><mi>n</mi><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{3n + 2}</annotation></semantics></math> diverges. Not absolutely convergent.</p>
+<p>The series itself: it alternates, <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><mn>3</mn><mi>n</mi><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{3n + 2}</annotation></semantics></math> decreases, and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mfrac><mn>1</mn><mrow><mn>3</mn><mi>n</mi><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{n \to \infty} \frac{1}{3n + 2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>, so it converges by the alternating series test.</p>
+<p>Conclusion: the series converges conditionally.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Classify <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>n</mi></msup></mrow><mrow><mi>n</mi><mo>!</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{(-2)^n}{n!}</annotation></semantics></math>.</p>
+<p>Ratio test on the absolute values: <math class="calc-m"><semantics><mrow><mfrac><msup><mn>2</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>!</mo></mrow></mfrac><mo>⋅</mo><mfrac><mrow><mi>n</mi><mo>!</mo></mrow><msup><mn>2</mn><mi>n</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{2^{n+1}}{(n+1)!} \cdot \frac{n!}{2^n}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>2</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mo>→</mo><mn>0</mn><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= \frac{2}{n + 1} \to 0 &lt; 1</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><msup><mn>2</mn><mi>n</mi></msup><mrow><mi>n</mi><mo>!</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{2^n}{n!}</annotation></semantics></math> converges, so the series converges absolutely.</p>
+</div>
+<p>The ratio test, with its absolute value, always speaks about <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">|</mo><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\sum |a_n|</annotation></semantics></math>: a limit below 1 means absolute convergence.</p>
+
+<h2 id="why-the-difference-matters-rearranging-terms">Why the difference matters: rearranging terms</h2>
+<p>For a finite sum, the order of the terms never matters. For an infinite series it can. If a series converges absolutely, you may rearrange its terms in any order and the sum stays the same. A conditionally convergent series has no such guarantee.</p>
+<aside class="going-further"><p><b>Going further.</b> Riemann showed that the terms of a conditionally convergent series can be rearranged to add up to any number you like, or to diverge. The positive terms alone and the negative terms alone each diverge, so you can take positive terms until you pass your target, then negative terms until you fall below it, and repeat. The exam does not test this, but it is the reason absolute convergence is the safe kind.</p></aside>
+
+<h2 id="writing-it-the-way-graders-want">Writing it the way graders want</h2>
+<p>A classification needs two pieces of evidence: what <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">|</mo><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\sum |a_n|</annotation></semantics></math> does, with its test named, and what <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum a_n</annotation></semantics></math> does, with its test named. "Converges conditionally because <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msqrt><mi>n</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{\sqrt{n}}</annotation></semantics></math> diverges" is only half; add "and the series converges by the alternating series test, since <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msqrt><mi>n</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{n}}</annotation></semantics></math> decreases to 0."</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:absolute-conditional">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="ratio-test.html"><span>&larr; Previous</span><b>The Ratio Test</b></a><a class="tb-chapter-link next" href="alternating-error-bound.html"><span>Next &rarr;</span><b>The Alternating Series Error Bound</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/absolute-conditional.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"> This course has not yet been reviewed by an AP® Calculus BC teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:absolute-conditional">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../'; window.ApCalcCourse = {"key":"apcalcbc","name":"AP® Calculus BC","short":"Calculus BC","dir":"calculus-bc","pfx":["calc","cbc"],"frqTypes":{"table":"Rate in context from a table","model":"Modeling with a given function","motion":"Particle motion","area":"Area and volume","de":"Differential equation and slope field","graph":"Graph of f′ or graphical FTC","implicit":"Implicit differentiation and related rates","fg":"Table of f, g and their derivatives","parametric":"Parametric, vector or polar functions","techniques":"BC techniques: parts, improper integrals, Euler, arc length","series":"Series and Taylor polynomials"},"band":false,"score":false,"examDate":"2027-05-10","site":"https://levlprep.com/calculus-bc/","intervals":true,"smallValues":true,"rt":"../../calculus/"};</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../../calculus/assets/calc-core.js" defer></script>
+<script src="../../calculus/assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../calculus/assets/calc-toc.js" defer></script>
+</body>
+</html>

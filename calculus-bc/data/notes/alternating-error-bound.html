@@ -1,0 +1,46 @@
+<p>When a series converges, a partial sum $S_n$ is an estimate of its sum $S$. The question that follows is always: how good is the estimate? For most series that is hard to answer. For an alternating series that meets the conditions of the alternating series test, the answer is one term long.</p>
+
+<h2>Where the bound comes from</h2>
+<figure id="fig-band" data-fig="alt-error-band"><figcaption>The sum lies in the band from $S_4$ to $S_4 + a_5$.</figcaption></figure>
+<p>The partial sums of such a series zigzag around the sum with shrinking steps, so the sum is always trapped between two consecutive partial sums, $S_n$ and $S_{n+1}$. Those two differ by exactly the next term, whose size is $a_{n+1}$. A number trapped between them cannot be farther than $a_{n+1}$ from $S_n$. <a class="figref" href="#fig-band">The figure</a> shows this for $\sum \frac{(-1)^{n+1}}{n^2}$: the sum, about $0.822$, sits inside the band from $S_4 \approx 0.799$ to $S_4 + \frac{1}{25} \approx 0.839$.</p>
+
+<h2>The alternating series error bound</h2>
+<p>If a series alternates and the sizes $a_n$ of its terms decrease and approach 0, then</p>
+<p>$$|S - S_n| \le a_{n+1}.$$</p>
+<p>In words: the error of a partial sum is at most the size of the first term left out. The bound says nothing for a series of positive terms, or for an alternating series whose sizes do not decrease, so the conditions are part of every answer.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Let $S = \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^3}$. Estimate $S$ with $S_4$ and bound the error.</p>
+<p>$S_4 = 1 - \frac{1}{8} + \frac{1}{27} - \frac{1}{64} = \frac{1728 - 216 + 64 - 27}{1728} = \frac{1549}{1728} \approx 0.8964$.</p>
+<p>Conditions: the series alternates, and $\frac{1}{n^3}$ decreases and approaches 0. So the alternating series error bound applies.</p>
+<p>Bound: $|S - S_4| \le a_5 = \frac{1}{125} = 0.008$.</p>
+</div>
+
+<h2>Showing an estimate is good enough</h2>
+<p>Exam questions often give a number and ask you to show the error is less than it. The model sentence has three parts: the conditions, the bound, and a comparison.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Show that $S_4$ from worked example 1 differs from $S$ by less than $0.01$.</p>
+<p>"The series alternates and the terms $\frac{1}{n^3}$ decrease in size and approach 0, so the alternating series error bound applies: $|S - S_4| \le \frac{1}{125} < 0.01$."</p>
+</div>
+<p>Write "$\le$" for the bound and "$<$" for the comparison. Never write that the error <i>equals</i> $\frac{1}{125}$: the bound is a ceiling, and the actual error here is about $0.0051$.</p>
+
+<h2>How many terms are enough?</h2>
+<p>To guarantee an error below some target, find the first $n$ whose next term is below the target.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> How many terms of $\sum_{n=0}^{\infty} \frac{(-1)^n}{n!}$ guarantee an error below $0.001$?</p>
+<p>The sizes $\frac{1}{n!}$ decrease (from $n = 1$ on) and approach 0, so the bound applies. Using the terms through $n = k$, the bound is the next size, $\frac{1}{(k+1)!}$.</p>
+<p>$\frac{1}{6!} = \frac{1}{720} \approx 0.00139$ is too big; $\frac{1}{7!} = \frac{1}{5040} \approx 0.0002 < 0.001$. So use the terms through $n = 6$: seven terms.</p>
+</div>
+
+<h2>Too big or too small?</h2>
+<p>The sign of the first omitted term tells you which side of the sum $S_n$ is on. If that term is negative, the next step would go down, so $S_n$ is above the sum: an overestimate. If it is positive, $S_n$ is an underestimate. In worked example 1 the next term is $+\frac{1}{125}$, so $S_4$ is an underestimate and $S_4 < S < S_4 + \frac{1}{125}$.</p>
+
+<table class="compare">
+<thead><tr><th>Step</th><th>What to write</th></tr></thead>
+<tbody>
+<tr><td>Conditions</td><td>the series alternates; the sizes decrease and approach 0</td></tr>
+<tr><td>Bound</td><td>$|S - S_n| \le a_{n+1}$, the first omitted term, computed</td></tr>
+<tr><td>Comparison</td><td>$a_{n+1} <$ the given number</td></tr>
+<tr><td>Direction (if asked)</td><td>the sign of the first omitted term</td></tr>
+</tbody>
+</table>
+<p>This bound returns in the next two topics: some polynomial approximations of functions produce alternating sums, and then this bound is the quickest way to measure their error.</p>

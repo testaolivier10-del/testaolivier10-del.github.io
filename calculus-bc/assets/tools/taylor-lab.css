@@ -1,0 +1,88 @@
+/* Taylor lab (calculus-bc/assets/tools/taylor-lab.js). OWNED BY THIS TOOL ONLY (builder T1).
+   Colours from AB's plot set (calculus/assets/calc.css), the same in every view: f crimson
+   (thick), P_n blue, lower-degree polynomials lighter blue dashed, the error bound orange
+   (band and bracket), the gap between f and P_n dark; yours dashed crimson. Line weight and
+   dash carry the meaning too. */
+.tl-card{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.tl-fig{display:flex;flex-direction:column;gap:4px;min-width:0;}
+.tl-eq{margin:0;font:700 16px var(--font-ui);color:var(--ink);text-align:center;}
+.tl-eq-sep{margin:0 6px;color:var(--ink-2,#666);}
+.tl-plot{min-width:0;}
+.tl-plot svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none;}
+.ls-root .tl-fig{flex:1;min-height:0;}
+.ls-root .tl-plot{position:relative;flex:1;min-height:170px;}
+.ls-root .tl-plot svg{position:absolute;inset:0;width:100%;height:100%;}
+.tl-key{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:2px 0 0;font:700 12.5px var(--font-ui);color:var(--ink-2,#555);}
+.tl-key span{display:inline-flex;align-items:center;gap:6px;}
+.tl-key span::before{content:"";display:inline-block;width:20px;height:0;border-top:3px solid currentColor;}
+.tl-k-f{color:#B0123A;} .tl-k-p{color:#0072B2;} .tl-k-q1,.tl-k-q2{color:#5B9BD5;} .tl-k-q1::before,.tl-k-q2::before{border-top-style:dashed !important;}
+.tl-k-b{color:#D55E00;} .tl-k-b::before{border-top-width:8px !important;opacity:.45;}
+.tl-k-mine{color:#B0123A;} .tl-k-mine::before{border-top-style:dotted !important;}
+.tl-k-s{color:#B0123A;} .tl-k-sum{color:#009E73;} .tl-k-sum::before{border-top-style:dashed !important;}
+:root[data-theme="dark"] .tl-k-f,:root[data-theme="dark"] .tl-k-mine,:root[data-theme="dark"] .tl-k-s{color:#F590AC;}
+:root[data-theme="dark"] .tl-k-p{color:#6BB4E8;} :root[data-theme="dark"] .tl-k-b{color:#F29A5C;} :root[data-theme="dark"] .tl-k-sum{color:#52CFA6;}
+:root[data-theme="dark"] .tl-k-q1,:root[data-theme="dark"] .tl-k-q2{color:#9CC8EE;}
+
+.tl-ctl{display:flex;flex-direction:column;gap:10px;}
+.tl-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.tl-chip{min-height:44px;padding:0 13px;border-radius:999px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;white-space:nowrap;}
+.tl-chip[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+.ls-root .tl-chip[aria-pressed="true"]{background:var(--cink);border-color:var(--cink);color:#fff;}
+:root[data-theme="dark"] .ls-root .tl-chip[aria-pressed="true"],:root[data-theme="dark"] .tl-chip[aria-pressed="true"]{background:#D6BFF5;border-color:#D6BFF5;color:#1E0F33;}
+@media (max-width:640px){.ls-root .tl-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}.ls-root .tl-chips::-webkit-scrollbar{display:none;}}
+.tl-band{display:flex;align-items:center;gap:6px;}
+.tl-band-l{font:800 13px var(--font-ui);color:var(--ink-2,#555);margin-right:4px;}
+.tl-bb{flex:1;min-height:44px;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;padding:0 6px;}
+.tl-bb[aria-pressed="true"]{border-color:#D55E00;background:#FCE8D9;color:#8A3B00;}
+:root[data-theme="dark"] .tl-bb[aria-pressed="true"]{border-color:#F29A5C;background:#3E2716;color:#F5B47F;}
+
+/* the plot */
+.calc-plot .tl-f{fill:none;stroke:#B0123A;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round;}
+.calc-plot .tl-p{fill:none;stroke:#0072B2;stroke-width:2.4;stroke-linejoin:round;}
+.calc-plot .tl-q1,.calc-plot .tl-q2{fill:none;stroke:#5B9BD5;stroke-width:1.8;stroke-dasharray:6 5;}
+.calc-plot .tl-bandp{fill:#D55E00;fill-opacity:.16;stroke:#D55E00;stroke-opacity:.45;stroke-width:1;}
+.calc-plot .tl-bbar{fill:none;stroke:#D55E00;stroke-width:2.6;stroke-linecap:round;}
+.calc-plot .tl-gap{stroke:var(--ink);stroke-width:2;}
+.calc-plot .tl-fe{fill:#B0123A;stroke:var(--white);stroke-width:1.5;}
+.calc-plot .tl-pe{fill:#0072B2;stroke:var(--white);stroke-width:1.5;}
+.calc-plot .tl-cline{stroke:var(--ink-2,#777);stroke-width:1.2;stroke-dasharray:3 4;}
+.calc-plot .tl-clab{fill:var(--ink);font:italic 800 13px var(--font-ui);}
+.calc-plot .tl-mine{fill:none;stroke:#B0123A;stroke-width:2.4;stroke-dasharray:3 4;stroke-linecap:round;}
+.calc-plot .tl-qm{fill:#D55E00;stroke:var(--white);stroke-width:2;}
+.calc-plot .tl-qm.is-p{fill:#0072B2;}
+.calc-plot .tl-qlab{fill:var(--ink);font:800 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.calc-plot .tl-sum{stroke:#009E73;stroke-width:2.2;stroke-dasharray:9 6;}
+.calc-plot .tl-spath{fill:none;stroke:#B0123A;stroke-opacity:.5;stroke-width:1.6;}
+.calc-plot .tl-sdot{fill:#B0123A;stroke:var(--white);stroke-width:1.2;}
+:root[data-theme="dark"] .calc-plot .tl-f,:root[data-theme="dark"] .calc-plot .tl-mine,:root[data-theme="dark"] .calc-plot .tl-spath{stroke:#F590AC;}
+:root[data-theme="dark"] .calc-plot .tl-p{stroke:#6BB4E8;}
+:root[data-theme="dark"] .calc-plot .tl-q1,:root[data-theme="dark"] .calc-plot .tl-q2{stroke:#9CC8EE;}
+:root[data-theme="dark"] .calc-plot .tl-bandp{fill:#F29A5C;stroke:#F29A5C;fill-opacity:.2;}
+:root[data-theme="dark"] .calc-plot .tl-bbar{stroke:#F29A5C;}
+:root[data-theme="dark"] .calc-plot .tl-fe,:root[data-theme="dark"] .calc-plot .tl-sdot{fill:#F590AC;stroke:#14161a;}
+:root[data-theme="dark"] .calc-plot .tl-pe,:root[data-theme="dark"] .calc-plot .tl-qm.is-p{fill:#6BB4E8;stroke:#14161a;}
+:root[data-theme="dark"] .calc-plot .tl-qm{fill:#F29A5C;stroke:#14161a;}
+:root[data-theme="dark"] .calc-plot .tl-sum{stroke:#52CFA6;}
+
+/* drag handles: a 44 px target around a visible dot */
+.tl-handle{cursor:grab;outline:none;touch-action:none;}
+.tl-handle .tl-hitc{fill:transparent;pointer-events:all;}
+.tl-handle .tl-halo{fill:#B0123A;fill-opacity:.14;}
+.tl-handle .tl-dot{fill:#B0123A;stroke:var(--white);stroke-width:2.5;}
+.tl-handle.tl-he .tl-halo{fill:#D55E00;}
+.tl-handle.tl-he .tl-dot{fill:#D55E00;}
+.tl-handle:focus-visible .tl-halo{fill-opacity:.35;stroke:var(--ink);stroke-width:2;}
+.tl-handle.is-drag{cursor:grabbing;}
+:root[data-theme="dark"] .tl-handle .tl-dot{fill:#F590AC;stroke:#14161a;}
+:root[data-theme="dark"] .tl-handle .tl-halo{fill:#F590AC;}
+:root[data-theme="dark"] .tl-handle.tl-he .tl-dot,:root[data-theme="dark"] .tl-handle.tl-he .tl-halo{fill:#F29A5C;}
+.tl-tbl td,.tl-tbl th{font-variant-numeric:tabular-nums;}
+
+/* Test yourself */
+.tl-qfig{margin:0;}
+.tl-qfig svg{display:block;width:100%;height:auto;}
+.tl-dtab{margin:8px 0 0;}
+.tl-dtab caption{caption-side:top;text-align:left;font-size:13px;color:var(--ink-2,#555);padding-bottom:4px;}
+.tl-dtab td{text-align:center;font:700 16px var(--font-ui);}
+.cd-opt-t .calc-m{font-size:1.12em;}
+@media (max-width:640px){.tl-qfig .tl-key{padding-right:48px;}}

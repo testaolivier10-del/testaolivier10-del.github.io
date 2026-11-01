@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Area Between Two Polar Curves — AP® Calculus BC Notes</title>
+<meta name="description" content="Area between two polar curves: inside one and outside the other, find where they meet, and integrate one half of (outer² - inner²), not (outer - inner)².">
+<link rel="canonical" href="https://levlprep.com/calculus-bc/notes/polar-area-between.html">
+<meta property="og:title" content="Area Between Two Polar Curves — AP® Calculus BC Notes">
+<meta property="og:description" content="Area between two polar curves: inside one and outside the other, find where they meet, and integrate one half of (outer² - inner²), not (outer - inner)².">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus-bc/notes/polar-area-between.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus-bc/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../../calculus/assets/calc.css">
+<link rel="stylesheet" href="../assets/cbc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus-bc/notes/polar-area-between.html#reading",
+      "name": "Area Between Two Polar Curves",
+      "url": "https://levlprep.com/calculus-bc/notes/polar-area-between.html",
+      "description": "Area between two polar curves: inside one and outside the other, find where they meet, and integrate one half of (outer² - inner²), not (outer - inner)².",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "area between two polar curves calculus bc explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus-bc/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus BC",
+          "item": "https://levlprep.com/calculus-bc/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Parametric Equations, Polar Coordinates, and Vector-Valued Functions",
+          "item": "https://levlprep.com/calculus-bc/units/unit-9.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Area Between Two Polar Curves: notes",
+          "item": "https://levlprep.com/calculus-bc/notes/polar-area-between.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="calc cbc" data-course="apcalcbc" data-topic="polar-area-between" data-unit="unit-9">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apcalcbc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus BC</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-9.html">Parametric Equations, Polar Coordinates, and Vector-Valued Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Area Between Two Polar Curves: notes</span></nav>
+<p class="issue">Unit 9 <i></i> Topic 9.9</p>
+<h1 class="deck bk-title" id="r3Title">Area Between Two <span>Polar Curves</span></h1>
+<p class="hand calc-nav-ref">every AB topic, then series</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/polar-area-between.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta calc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="polar-area-between">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus-bc%2Fnotes%2Fpolar-area-between.html&amp;title=Area%20Between%20Two%20Polar%20Curves%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/calculus-bc/notes/polar-area-between.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalcbc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apcalcbc">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 9 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+    <a class="bk-toc-chap" href="../units/unit-9.html"><span class="bk-toc-chap-n">9</span><span><b>Parametric Equations, Polar Coordinates, and Vector-Valued Functions</b><small>9 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-9"><div class="tb-progress-row"><span><b>0</b> of 9 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="parametric-derivatives"><a href="parametric-derivatives.html"><span class="bk-toc-n">9.1</span>Parametric Equations and Their Derivatives</a></li><li data-toc-t="parametric-second-derivatives"><a href="parametric-second-derivatives.html"><span class="bk-toc-n">9.2</span>Second Derivatives of Parametric Equations</a></li><li data-toc-t="parametric-arc-length"><a href="parametric-arc-length.html"><span class="bk-toc-n">9.3</span>Arc Length of a Parametric Curve</a></li><li data-toc-t="vector-derivatives"><a href="vector-derivatives.html"><span class="bk-toc-n">9.4</span>Vector-Valued Functions and Their Derivatives</a></li><li data-toc-t="vector-integrals"><a href="vector-integrals.html"><span class="bk-toc-n">9.5</span>Integrating Vector-Valued Functions</a></li><li data-toc-t="planar-motion"><a href="planar-motion.html"><span class="bk-toc-n">9.6</span>Motion in the Plane</a></li><li data-toc-t="polar-derivatives"><a href="polar-derivatives.html"><span class="bk-toc-n">9.7</span>Polar Coordinates and Polar Derivatives</a></li><li data-toc-t="polar-area"><a href="polar-area.html"><span class="bk-toc-n">9.8</span>Area Inside a Polar Curve</a></li><li class="current" data-toc-t="polar-area-between"><a href="#main" aria-current="page"><span class="bk-toc-n">9.9</span>Area Between Two Polar Curves</a><div class="bk-toc-onpage"><p>On this page</p><a href="#outer-squared-minus-inner-squared">Outer squared minus inner squared</a><a href="#the-three-step-setup">The three-step setup</a><a href="#regions-inside-both-curves">Regions inside both curves</a><a href="#on-the-exam">On the exam</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-10.html"><span class="bk-toc-n">10</span>Infinite Sequences and Series</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="calc-prose bk-prose">
+<p>Topic 9.8 found the area swept by one <a class="gl" href="../notes/math-polar.html" data-c="polar-coordinates">polar curve</a>. Now there are two curves, and the region lies between them: inside one and outside the other. The idea is the same as the washer in a volume problem: a big piece with a small piece removed.</p>
+
+<h2 id="outer-squared-minus-inner-squared">Outer squared minus inner squared</h2>
+<p>Cut the region into thin wedges from the pole. Each piece is a wedge of the outer curve <math class="calc-m"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R(\theta)</annotation></semantics></math> with a wedge of the inner curve <math class="calc-m"><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r(\theta)</annotation></semantics></math> removed, so its area is</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>R</mi><mn>2</mn></msup><mspace width="0.1667em"></mspace><mi mathvariant="normal">Δ</mi><mi>θ</mi><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>r</mi><mn>2</mn></msup><mspace width="0.1667em"></mspace><mi mathvariant="normal">Δ</mi><mi>θ</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mo fence="true" stretchy="true">(</mo><mrow><msup><mi>R</mi><mn>2</mn></msup><mo>−</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><mo fence="true" stretchy="true">)</mo></mrow><mi mathvariant="normal">Δ</mi><mi>θ</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">\frac{1}{2}R^2\,\Delta\theta - \frac{1}{2}r^2\,\Delta\theta = \frac{1}{2}\left(R^2 - r^2\right)\Delta\theta.</annotation></semantics></math></p>
+<p>Adding and taking the <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a>:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mi>A</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>α</mi><mi>β</mi></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>θ</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mi>r</mi><mo stretchy="false">(</mo><mi>θ</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mo fence="true" stretchy="true">)</mo></mrow><mi>d</mi><mi>θ</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">A = \frac{1}{2}\int_{\alpha}^{\beta} \left(R(\theta)^2 - r(\theta)^2\right)d\theta.</annotation></semantics></math></p>
+<p>Square each radius, then subtract. Writing <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo largeop="true" movablelimits="false">∫</mo><mo stretchy="false">(</mo><mi>R</mi><mo>−</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>θ</mi></mrow><annotation encoding="application/x-tex">\frac{1}{2}\int (R - r)^2\,d\theta</annotation></semantics></math> is the most common setup error in this topic: <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>R</mi><mo>−</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(R - r)^2</annotation></semantics></math> is not the area of anything here. For <math class="calc-m"><semantics><mrow><mi>R</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">R = 3</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">r = 2</annotation></semantics></math> on a quarter turn, the correct area is <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⋅</mo><mo stretchy="false">(</mo><mn>9</mn><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo><mo>⋅</mo><mfrac><mi>π</mi><mn>2</mn></mfrac><mo>=</mo><mfrac><mrow><mn>5</mn><mi>π</mi></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2} \cdot (9 - 4) \cdot \frac{\pi}{2} = \frac{5\pi}{4}</annotation></semantics></math>, while the wrong one gives <math class="calc-m"><semantics><mrow><mfrac><mi>π</mi><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{4}</annotation></semantics></math>.</p>
+
+<h2 id="the-three-step-setup">The three-step setup</h2>
+<figure id="fig-between"  class="calc-figure"><div class="calc-figimg" data-fig="polar-area-between-region"><img src="../figures/polar-area-between-region.svg" alt="The cardioid r = 2 + 2 cos θ in emerald and the circle r = 3 in blue on a polar grid. They meet at (3, π/3) and (3, −π/3), marked with dashed rays from the pole. The region inside the cardioid and outside the circle, a crescent on the right, is shaded. A side panel gives the steps: set 2 + 2 cos θ = 3 to get θ = ±π/3; on that interval the cardioid is the outer curve; the area is one half the integral from −π/3 to π/3 of (2 + 2 cos θ) squared minus 3 squared, which is (9√3 − 2π)/2, about 4.653." width="780" height="440" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The region inside the cardioid <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>2</mn><mo>+</mo><mn>2</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = 2 + 2\cos\theta</annotation></semantics></math> and outside the circle <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">r = 3</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<ol>
+<li><b>Where do the curves meet?</b> Set the <math class="calc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>-values equal and solve for <math class="calc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math>. Then check the pole on its own: each curve reaches <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r = 0</annotation></semantics></math> at its own angle, and the equation will not find that crossing.</li>
+<li><b>Which curve is outer?</b> Pick a test angle between the crossings and compare the two <math class="calc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>-values. The larger is <math class="calc-m"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math>.</li>
+<li><b>Integrate</b> <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mo fence="true" stretchy="true">(</mo><mrow><msup><mi>R</mi><mn>2</mn></msup><mo>−</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\frac{1}{2}\left(R^2 - r^2\right)</annotation></semantics></math> between the crossing angles.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example.</b> Find the area inside <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>2</mn><mo>+</mo><mn>2</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = 2 + 2\cos\theta</annotation></semantics></math> and outside <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">r = 3</annotation></semantics></math> (<a class="figref" href="#fig-between">the figure</a>).</p>
+<p>Step 1: <math class="calc-m"><semantics><mrow><mn>2</mn><mo>+</mo><mn>2</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">2 + 2\cos\theta = 3</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\cos\theta = \frac{1}{2}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mi>π</mi><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\theta = -\frac{\pi}{3}</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mfrac><mi>π</mi><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{3}</annotation></semantics></math>.</p>
+<p>Step 2: at <math class="calc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\theta = 0</annotation></semantics></math>, the cardioid has <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">r = 4</annotation></semantics></math> and the circle <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">r = 3</annotation></semantics></math>, so the cardioid is outer.</p>
+<p>Step 3: <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mn>2</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">(2 + 2\cos\theta)^2 - 9</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">= 4</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mn>8</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">+ 8\cos\theta</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mn>4</mn><msup><mi>cos</mi><mn>2</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>−</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">+ 4\cos^2\theta - 9</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">= -3</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mn>8</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">+ 8\cos\theta</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mn>2</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>2</mn><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">+ 2\cos(2\theta)</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>π</mi><mo>/</mo><mn>3</mn></mrow><mrow><mi>π</mi><mo>/</mo><mn>3</mn></mrow></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>+</mo><mn>8</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>+</mo><mn>2</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>2</mn><mi>θ</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">)</mo></mrow><mi>d</mi><mi>θ</mi></mrow><annotation encoding="application/x-tex">= \frac{1}{2}\int_{-\pi/3}^{\pi/3} \left(-3 + 8\cos\theta + 2\cos(2\theta)\right)d\theta</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" symmetric="true" minsize="1.8em" maxsize="1.8em">[</mo><mo>−</mo><mn>3</mn><mi>θ</mi><mo>+</mo><mn>8</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>+</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>2</mn><mi>θ</mi><mo stretchy="false">)</mo><msubsup><mo stretchy="true" symmetric="true" minsize="1.8em" maxsize="1.8em">]</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>π</mi><mo>/</mo><mn>3</mn></mrow><mrow><mi>π</mi><mo>/</mo><mn>3</mn></mrow></msubsup></mrow><annotation encoding="application/x-tex">= \frac{1}{2}\Big[-3\theta + 8\sin\theta + \sin(2\theta)\Big]_{-\pi/3}^{\pi/3}</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mo fence="true" stretchy="true">(</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mi>π</mi><mo>+</mo><mn>8</mn><msqrt><mn>3</mn></msqrt><mo>+</mo><msqrt><mn>3</mn></msqrt></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">= \frac{1}{2}\left(-2\pi + 8\sqrt{3} + \sqrt{3}\right)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>9</mn><msqrt><mn>3</mn></msqrt><mo>−</mo><mn>2</mn><mi>π</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{9\sqrt{3} - 2\pi}{2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">≈</mo><mn>4.653</mn></mrow><annotation encoding="application/x-tex">\approx 4.653</annotation></semantics></math>.</p>
+</div>
+<p>Symmetry saves work: this region is symmetric about the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis, so <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>2</mn><mo>⋅</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mrow><mi>π</mi><mo>/</mo><mn>3</mn></mrow></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><msup><mi>R</mi><mn>2</mn></msup><mo>−</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><mo fence="true" stretchy="true">)</mo></mrow><mi>d</mi><mi>θ</mi></mrow><annotation encoding="application/x-tex">= 2 \cdot \frac{1}{2}\int_0^{\pi/3} \left(R^2 - r^2\right)d\theta</annotation></semantics></math> gives the same answer with an easier lower limit.</p>
+
+<h2 id="regions-inside-both-curves">Regions inside both curves</h2>
+<p>A region <b>inside both</b> curves is bounded by one curve for some angles and by the other for the rest, so it needs two <a class="gl" href="../notes/definite-integral-notation.html" data-c="definite-integral">integrals</a>, or area arithmetic. Take <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>4</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = 4\sin\theta</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">r = 2</annotation></semantics></math>, which meet at <math class="calc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mfrac><mi>π</mi><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\theta = \frac{\pi}{6}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>5</mn><mi>π</mi></mrow><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{5\pi}{6}</annotation></semantics></math>. The crescent inside <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>4</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = 4\sin\theta</annotation></semantics></math> and outside <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">r = 2</annotation></semantics></math> has area <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mi>π</mi><mo>/</mo><mn>6</mn></mrow><mrow><mn>5</mn><mi>π</mi><mo>/</mo><mn>6</mn></mrow></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>16</mn><msup><mi>sin</mi><mn>2</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>−</mo><mn>4</mn></mrow><mo fence="true" stretchy="true">)</mo></mrow><mi>d</mi><mi>θ</mi></mrow><annotation encoding="application/x-tex">\frac{1}{2}\int_{\pi/6}^{5\pi/6} \left(16\sin^2\theta - 4\right)d\theta</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>4</mn><mi>π</mi></mrow><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{4\pi}{3}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mn>2</mn><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">+ 2\sqrt{3}</annotation></semantics></math>. The whole disk inside <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>4</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = 4\sin\theta</annotation></semantics></math> has area <math class="calc-m"><semantics><mrow><mn>4</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">4\pi</annotation></semantics></math>, so the part inside both is</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mn>4</mn><mi>π</mi><mo>−</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><mrow><mn>4</mn><mi>π</mi></mrow><mn>3</mn></mfrac><mo>+</mo><mn>2</mn><msqrt><mn>3</mn></msqrt></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mn>8</mn><mi>π</mi></mrow><mn>3</mn></mfrac><mo>−</mo><mn>2</mn><msqrt><mn>3</mn></msqrt><mo>.</mo></mrow><annotation encoding="application/x-tex">4\pi - \left(\frac{4\pi}{3} + 2\sqrt{3}\right) = \frac{8\pi}{3} - 2\sqrt{3}.</annotation></semantics></math></p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Region</th><th>Setup</th></tr></thead>
+<tbody>
+<tr><td>inside <math class="calc-m"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math>, outside <math class="calc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo largeop="true" movablelimits="false">∫</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><msup><mi>R</mi><mn>2</mn></msup><mo>−</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><mo fence="true" stretchy="true">)</mo></mrow><mi>d</mi><mi>θ</mi></mrow><annotation encoding="application/x-tex">\frac{1}{2}\int \left(R^2 - r^2\right)d\theta</annotation></semantics></math> between the crossings</td></tr>
+<tr><td>inside both</td><td>split at the crossing and use each curve where it is the boundary, or subtract from a known area</td></tr>
+<tr><td>between two loops of one curve</td><td>outer loop's area minus inner loop's area</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="on-the-exam">On the exam</h2>
+<p>Readers look for the <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math>, both squares and the right limits in the setup. On a calculator question, write the integral with its limits, then the value to three decimals. If the crossing angle needs a calculator, store it and use the stored value as a limit rather than a rounded one.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:polar-area-between">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="polar-area.html"><span>&larr; Previous</span><b>Area Inside a Polar Curve</b></a><a class="tb-chapter-link next" href="math-sequences.html"><span>Next &rarr;</span><b>Sequences, Sigma Notation and Factorials</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/polar-area-between.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"> This course has not yet been reviewed by an AP® Calculus BC teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:polar-area-between">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../'; window.ApCalcCourse = {"key":"apcalcbc","name":"AP® Calculus BC","short":"Calculus BC","dir":"calculus-bc","pfx":["calc","cbc"],"frqTypes":{"table":"Rate in context from a table","model":"Modeling with a given function","motion":"Particle motion","area":"Area and volume","de":"Differential equation and slope field","graph":"Graph of f′ or graphical FTC","implicit":"Implicit differentiation and related rates","fg":"Table of f, g and their derivatives","parametric":"Parametric, vector or polar functions","techniques":"BC techniques: parts, improper integrals, Euler, arc length","series":"Series and Taylor polynomials"},"band":false,"score":false,"examDate":"2027-05-10","site":"https://levlprep.com/calculus-bc/","intervals":true,"smallValues":true,"rt":"../../calculus/"};</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../../calculus/assets/calc-core.js" defer></script>
+<script src="../../calculus/assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../calculus/assets/calc-toc.js" defer></script>
+</body>
+</html>

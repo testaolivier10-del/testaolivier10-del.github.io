@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparison Tests — AP® Calculus BC Notes | LevlPrep</title>
+<meta name="description" content="The direct and limit comparison tests for series with positive terms: choose a geometric or p-series to compare with and state the conclusion correctly.">
+<link rel="canonical" href="https://levlprep.com/calculus-bc/notes/comparison-tests.html">
+<meta property="og:title" content="Comparison Tests — AP® Calculus BC Notes | LevlPrep">
+<meta property="og:description" content="The direct and limit comparison tests for series with positive terms: choose a geometric or p-series to compare with and state the conclusion correctly.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus-bc/notes/comparison-tests.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus-bc/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../../calculus/assets/calc.css">
+<link rel="stylesheet" href="../assets/cbc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus-bc/notes/comparison-tests.html#reading",
+      "name": "Comparison Tests",
+      "url": "https://levlprep.com/calculus-bc/notes/comparison-tests.html",
+      "description": "The direct and limit comparison tests for series with positive terms: choose a geometric or p-series to compare with and state the conclusion correctly.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "comparison tests calculus bc explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus-bc/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus BC",
+          "item": "https://levlprep.com/calculus-bc/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Infinite Sequences and Series",
+          "item": "https://levlprep.com/calculus-bc/units/unit-10.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Comparison Tests: notes",
+          "item": "https://levlprep.com/calculus-bc/notes/comparison-tests.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="calc cbc" data-course="apcalcbc" data-topic="comparison-tests" data-unit="unit-10">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apcalcbc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus BC</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-10.html">Infinite Sequences and Series</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Comparison Tests: notes</span></nav>
+<p class="issue">Unit 10 <i></i> Topic 10.6</p>
+<h1 class="deck bk-title" id="r3Title">Comparison <span>Tests</span></h1>
+<p class="hand calc-nav-ref">every AB topic, then series</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/comparison-tests.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta calc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="comparison-tests">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus-bc%2Fnotes%2Fcomparison-tests.html&amp;title=Comparison%20Tests%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/calculus-bc/notes/comparison-tests.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalcbc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apcalcbc">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 10 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-9.html"><span class="bk-toc-n">9</span>Parametric Equations, Polar Coordinates, and Vector-Valued Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-10.html"><span class="bk-toc-chap-n">10</span><span><b>Infinite Sequences and Series</b><small>15 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-10"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="series-convergence"><a href="series-convergence.html"><span class="bk-toc-n">10.1</span>Convergent and Divergent Series</a></li><li data-toc-t="geometric-series"><a href="geometric-series.html"><span class="bk-toc-n">10.2</span>Geometric Series</a></li><li data-toc-t="nth-term-test"><a href="nth-term-test.html"><span class="bk-toc-n">10.3</span>The nth Term Test for Divergence</a></li><li data-toc-t="integral-test"><a href="integral-test.html"><span class="bk-toc-n">10.4</span>The Integral Test</a></li><li data-toc-t="p-series"><a href="p-series.html"><span class="bk-toc-n">10.5</span>Harmonic Series and p-Series</a></li><li class="current" data-toc-t="comparison-tests"><a href="#main" aria-current="page"><span class="bk-toc-n">10.6</span>Comparison Tests</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why-positive-terms-make-comparison-work">Why positive terms make comparison work</a><a href="#the-direct-comparison-test">The direct comparison test</a><a href="#the-limit-comparison-test">The limit comparison test</a><a href="#choosing-the-series-to-compare-with">Choosing the series to compare with</a><a href="#writing-it-the-way-graders-want">Writing it the way graders want</a></div></li><li data-toc-t="alternating-series-test"><a href="alternating-series-test.html"><span class="bk-toc-n">10.7</span>The Alternating Series Test</a></li><li data-toc-t="ratio-test"><a href="ratio-test.html"><span class="bk-toc-n">10.8</span>The Ratio Test</a></li><li data-toc-t="absolute-conditional"><a href="absolute-conditional.html"><span class="bk-toc-n">10.9</span>Absolute and Conditional Convergence</a></li><li data-toc-t="alternating-error-bound"><a href="alternating-error-bound.html"><span class="bk-toc-n">10.10</span>The Alternating Series Error Bound</a></li><li data-toc-t="taylor-polynomials"><a href="taylor-polynomials.html"><span class="bk-toc-n">10.11</span>Taylor Polynomials</a></li><li data-toc-t="lagrange-error-bound"><a href="lagrange-error-bound.html"><span class="bk-toc-n">10.12</span>The Lagrange Error Bound</a></li><li data-toc-t="radius-interval-convergence"><a href="radius-interval-convergence.html"><span class="bk-toc-n">10.13</span>Radius and Interval of Convergence</a></li><li data-toc-t="taylor-series"><a href="taylor-series.html"><span class="bk-toc-n">10.14</span>Taylor and Maclaurin Series</a></li><li data-toc-t="power-series-functions"><a href="power-series-functions.html"><span class="bk-toc-n">10.15</span>Representing Functions as Power Series</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="calc-prose bk-prose">
+<p>Most <a class="gl" href="../notes/series-convergence.html" data-c="infinite-series">series</a> cannot be summed exactly, and many are neither geometric nor <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series. The comparison tests let you borrow the answer from a series you already know: set the new series beside a <a class="gl" href="../notes/geometric-series.html" data-c="geometric-series">geometric series</a> or a <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series and read its behavior from the comparison.</p>
+
+<h2 id="why-positive-terms-make-comparison-work">Why positive terms make comparison work</h2>
+<p>When every term <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_n</annotation></semantics></math> is positive, each <a class="gl" href="../notes/series-convergence.html" data-c="partial-sum">partial sum</a> <math class="calc-m"><semantics><mrow><msub><mi>S</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">S_n</annotation></semantics></math> is larger than the one before. An increasing list of numbers can do only two things: level off at a <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a>, or grow past every bound. So a positive series <a class="gl" href="../notes/improper-integrals.html" data-c="convergence">converges</a> exactly when its partial sums stay under some ceiling. A comparison gives you that ceiling, or shows there is none.</p>
+<figure id="fig-compare"  class="calc-figure"><div class="calc-figimg" data-fig="comparison-partial-sums"><img src="../figures/comparison-partial-sums.svg" alt="Partial sums S sub N for N = 1 to 12 of two series, plotted as dots. The upper dots, for the series of 1 over n squared, rise from 1 and level off just under a dashed line at pi squared over 6, about 1.645. The lower dots, for the series of 1 over (n squared + 1), rise from 0.5 and level off near 1.08, always below the upper dots. Smaller positive terms give smaller partial sums, trapped under the same ceiling." width="720" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Smaller positive terms give smaller partial sums under the same ceiling. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p><a class="figref" href="#fig-compare">The figure</a> shows the idea with <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n^2 + 1}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n^2}</annotation></semantics></math>. Each term <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n^2 + 1}</annotation></semantics></math> is below <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n^2}</annotation></semantics></math>, so each partial sum of the first series is below the matching partial sum of the second, and those level off below <math class="calc-m"><semantics><mrow><mfrac><msup><mi>π</mi><mn>2</mn></msup><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi^2}{6}</annotation></semantics></math>.</p>
+
+<h2 id="the-direct-comparison-test">The direct comparison test</h2>
+<p>Suppose <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>a</mi><mi>n</mi></msub><mo>≤</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">0 \le a_n \le b_n</annotation></semantics></math> for every <math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> (or for every <math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> past some point).</p>
+<ul>
+<li>If <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum b_n</annotation></semantics></math> converges, then <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum a_n</annotation></semantics></math> converges. Smaller than convergent: converges.</li>
+<li>If <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum a_n</annotation></semantics></math> diverges, then <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum b_n</annotation></semantics></math> diverges. Larger than divergent: diverges.</li>
+</ul>
+<p>The other two cases prove nothing. A series smaller than a divergent one may converge (<math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac><mo>&lt;</mo><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n^2} &lt; \frac{1}{n}</annotation></semantics></math>) or diverge (<math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><mn>2</mn><mi>n</mi></mrow></mfrac><mo>&lt;</mo><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2n} &lt; \frac{1}{n}</annotation></semantics></math>). A series larger than a convergent one may do either too.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Does <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mn>1</mn><mrow><msup><mn>4</mn><mi>n</mi></msup><mo>+</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{1}{4^n + 3}</annotation></semantics></math> converge?</p>
+<p>The terms are positive. Since <math class="calc-m"><semantics><mrow><msup><mn>4</mn><mi>n</mi></msup><mo>+</mo><mn>3</mn><mo>&gt;</mo><msup><mn>4</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">4^n + 3 &gt; 4^n</annotation></semantics></math>, the fractions satisfy <math class="calc-m"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mfrac><mn>1</mn><mrow><msup><mn>4</mn><mi>n</mi></msup><mo>+</mo><mn>3</mn></mrow></mfrac><mo>&lt;</mo><mfrac><mn>1</mn><msup><mn>4</mn><mi>n</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">0 &lt; \frac{1}{4^n + 3} &lt; \frac{1}{4^n}</annotation></semantics></math> for every <math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msup><mn>4</mn><mi>n</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{4^n}</annotation></semantics></math> is geometric with ratio <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">r = \frac{1}{4}</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>r</mi><mo stretchy="false">|</mo><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|r| &lt; 1</annotation></semantics></math>, so it converges.</p>
+<p>By the <span class="gl" tabindex="0" data-c="direct-comparison">direct comparison test</span>, <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mrow><msup><mn>4</mn><mi>n</mi></msup><mo>+</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{4^n + 3}</annotation></semantics></math> converges.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Does <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{n + 1}{n^2}</annotation></semantics></math> converge?</p>
+<p>For every <math class="calc-m"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n \ge 1</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><msup><mi>n</mi><mn>2</mn></msup></mfrac><mo>&gt;</mo><mfrac><mi>n</mi><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{n + 1}{n^2} &gt; \frac{n}{n^2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= \frac{1}{n} &gt; 0</annotation></semantics></math>.</p>
+<p>The <a class="gl" href="../notes/p-series.html" data-c="harmonic-series">harmonic series</a> <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n}</annotation></semantics></math> diverges, and our terms are larger, so <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{n + 1}{n^2}</annotation></semantics></math> diverges by the direct comparison test.</p>
+</div>
+
+<h2 id="the-limit-comparison-test">The limit comparison test</h2>
+<p>Often the obvious comparison points the wrong way. The terms of <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n^2 - 3}</annotation></semantics></math> (from <math class="calc-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n = 2</annotation></semantics></math>) are a little <i>larger</i> than <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n^2}</annotation></semantics></math>, so a direct comparison with a convergent series says nothing. Yet for large <math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> the two terms are almost equal. The <span class="gl" tabindex="0" data-c="limit-comparison">limit comparison test</span> turns "almost equal" into a proof.</p>
+<p>Suppose <math class="calc-m"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_n &gt; 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><msub><mi>b</mi><mi>n</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b_n &gt; 0</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mfrac><msub><mi>a</mi><mi>n</mi></msub><msub><mi>b</mi><mi>n</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">\lim_{n \to \infty} \frac{a_n}{b_n}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">= L</annotation></semantics></math> where <math class="calc-m"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math> is a finite positive number. Then <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum a_n</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\sum b_n</annotation></semantics></math> both converge or both diverge.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Does <math class="calc-m"><semantics><mrow><munderover><mo largeop="true" movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>5</mn></mrow><mrow><msup><mi>n</mi><mn>3</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum_{n=1}^{\infty} \frac{2n + 5}{n^3 + 1}</annotation></semantics></math> converge?</p>
+<p>Choose <math class="calc-m"><semantics><mrow><msub><mi>b</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">b_n</annotation></semantics></math> by keeping the highest power on top and bottom: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>2</mn><mi>n</mi></mrow><msup><mi>n</mi><mn>3</mn></msup></mfrac><mo>=</mo><mfrac><mn>2</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{2n}{n^3} = \frac{2}{n^2}</annotation></semantics></math>, so use <math class="calc-m"><semantics><mrow><msub><mi>b</mi><mi>n</mi></msub><mo>=</mo><mfrac><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">b_n = \frac{1}{n^2}</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mfrac><msub><mi>a</mi><mi>n</mi></msub><msub><mi>b</mi><mi>n</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">\lim_{n \to \infty} \frac{a_n}{b_n}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mfrac><mrow><mo stretchy="false">(</mo><mn>2</mn><mi>n</mi><mo>+</mo><mn>5</mn><mo stretchy="false">)</mo><msup><mi>n</mi><mn>2</mn></msup></mrow><mrow><msup><mi>n</mi><mn>3</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \lim_{n \to \infty} \frac{(2n + 5)n^2}{n^3 + 1}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mfrac><mrow><mn>2</mn><msup><mi>n</mi><mn>3</mn></msup><mo>+</mo><mn>5</mn><msup><mi>n</mi><mn>2</mn></msup></mrow><mrow><msup><mi>n</mi><mn>3</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \lim_{n \to \infty} \frac{2n^3 + 5n^2}{n^3 + 1}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>2</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">= 2.</annotation></semantics></math></p>
+<p>The limit is finite and positive, and <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n^2}</annotation></semantics></math> converges because it is a <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series with <math class="calc-m"><semantics><mrow><mi>p</mi><mo>=</mo><mn>2</mn><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p = 2 &gt; 1</annotation></semantics></math>. By the limit comparison test, the series converges.</p>
+</div>
+
+<h2 id="choosing-the-series-to-compare-with">Choosing the series to compare with</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Term looks like</th><th>Compare with</th><th>Known behavior</th></tr></thead>
+<tbody>
+<tr><td>a ratio of <a class="gl" href="../notes/math-functions.html" data-c="rational-function">polynomials</a> in <math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msup><mi>n</mi><mi>p</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n^p}</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> = (bottom degree) <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo></mrow><annotation encoding="application/x-tex">-</annotation></semantics></math> (top degree)</td><td>converges if <math class="calc-m"><semantics><mrow><mi>p</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p &gt; 1</annotation></semantics></math></td></tr>
+<tr><td>roots, such as <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><msqrt><mi>n</mi></msqrt><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{n} + 2}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msup><mi>n</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n^{1/2}}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>p</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">p = \frac{1}{2}</annotation></semantics></math>: diverges</td></tr>
+<tr><td>exponentials, such as <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><msup><mn>3</mn><mi>n</mi></msup><mo>+</mo><mi>n</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{3^n + n}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msup><mn>3</mn><mi>n</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{3^n}</annotation></semantics></math></td><td>geometric, <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">r = \frac{1}{3}</annotation></semantics></math>: converges</td></tr>
+<tr><td>a bounded factor, such as <math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>cos</mi><mn>2</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>n</mi></mrow><msup><mi>n</mi><mn>3</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{\cos^2 n}{n^3}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msup><mi>n</mi><mn>3</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n^3}</annotation></semantics></math>, using <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><msup><mi>cos</mi><mn>2</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>n</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \le \cos^2 n \le 1</annotation></semantics></math></td><td>converges</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="writing-it-the-way-graders-want">Writing it the way graders want</h2>
+<p>Name the comparison series and say why its behavior is known: "geometric with <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">r = \frac{1}{4}</annotation></semantics></math>" or "a <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>-series with <math class="calc-m"><semantics><mrow><mi>p</mi><mo>=</mo><mn>2</mn><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p = 2 &gt; 1</annotation></semantics></math>". Do not call a series harmonic unless it is <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\sum \frac{1}{n}</annotation></semantics></math>. For direct comparison, state the inequality and that the terms are positive. For limit comparison, write the limit in <math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math>, compute it, and say it is finite and positive. Finally, say what the <b>series</b> does: "the series converges", not "the terms converge", since the terms approach 0 for every series that converges and for many that do not.</p>
+<p>Both tests are for series with positive terms. A series whose terms change sign needs a different test, which comes next.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:comparison-tests">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="p-series.html"><span>&larr; Previous</span><b>Harmonic Series and p-Series</b></a><a class="tb-chapter-link next" href="alternating-series-test.html"><span>Next &rarr;</span><b>The Alternating Series Test</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/comparison-tests.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"> This course has not yet been reviewed by an AP® Calculus BC teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:comparison-tests">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../'; window.ApCalcCourse = {"key":"apcalcbc","name":"AP® Calculus BC","short":"Calculus BC","dir":"calculus-bc","pfx":["calc","cbc"],"frqTypes":{"table":"Rate in context from a table","model":"Modeling with a given function","motion":"Particle motion","area":"Area and volume","de":"Differential equation and slope field","graph":"Graph of f′ or graphical FTC","implicit":"Implicit differentiation and related rates","fg":"Table of f, g and their derivatives","parametric":"Parametric, vector or polar functions","techniques":"BC techniques: parts, improper integrals, Euler, arc length","series":"Series and Taylor polynomials"},"band":false,"score":false,"examDate":"2027-05-10","site":"https://levlprep.com/calculus-bc/","intervals":true,"smallValues":true,"rt":"../../calculus/"};</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../../calculus/assets/calc-core.js" defer></script>
+<script src="../../calculus/assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../calculus/assets/calc-toc.js" defer></script>
+</body>
+</html>

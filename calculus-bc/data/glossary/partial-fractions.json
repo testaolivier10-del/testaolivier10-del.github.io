@@ -1,0 +1,5 @@
+{
+ "partial-fractions": {
+  "def": "Splitting a rational function whose denominator factors into distinct linear factors into simple fractions: $\\frac{p(x)}{(x - a)(x - b)} = \\frac{A}{x - a} + \\frac{B}{x - b}$ when the top's degree is below the bottom's. Each piece integrates to a natural log, $\\int \\frac{A}{x - a}\\,dx = A\\ln|x - a| + C$."
+ }
+}

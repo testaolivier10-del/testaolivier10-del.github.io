@@ -35,6 +35,7 @@
     { key: 'apenv', path: '/environmental-science/', productName: 'AP® Environmental Science' },
     { key: 'appsych', path: '/psychology/', productName: 'AP® Psychology' },
     { key: 'apprecalc', path: '/precalculus/', productName: 'AP® Precalculus' },
+    { key: 'apcalcbc', path: '/calculus-bc/', productName: 'AP® Calculus BC' },
   ];
   // courses:end
 

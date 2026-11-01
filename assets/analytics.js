@@ -48,6 +48,7 @@
     { key: 'apenv', dir: 'environmental-science' },
     { key: 'appsych', dir: 'psychology' },
     { key: 'apprecalc', dir: 'precalculus' },
+    { key: 'apcalcbc', dir: 'calculus-bc' },
   ];
   // courses:end
 

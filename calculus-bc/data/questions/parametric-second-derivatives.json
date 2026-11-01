@@ -1,0 +1,396 @@
+{
+ "stimuli": {
+  "parametric-second-derivatives-s1": {
+   "kind": "table",
+   "title": "A curve with a linear $x$",
+   "text": "A curve is given by the parametric equations below for $0 \\le t \\le 5$.",
+   "table": {
+    "caption": "The parametric equations of the curve",
+    "cols": ["Coordinate", "Equation"],
+    "rows": [
+     ["$x$", "$x(t) = 2t + 1$"],
+     ["$y$", "$y(t) = t^3 - 6t^2$"]
+    ]
+   }
+  },
+  "parametric-second-derivatives-s2": {
+   "kind": "table",
+   "title": "A curve with a logarithmic $x$",
+   "text": "A curve is given by the parametric equations below for $t > 0$.",
+   "table": {
+    "caption": "The parametric equations of the curve",
+    "cols": ["Coordinate", "Equation"],
+    "rows": [
+     ["$x$", "$x(t) = \\ln t$"],
+     ["$y$", "$y(t) = t^2 - 4t$"]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-parametric-second-derivatives-1",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-second-derivatives-s1",
+   "q": "Find $\\frac{dy}{dx}$ at $t = 1$.",
+   "numeric": {
+    "answer": "-9/2",
+    "mistakes": [
+     { "value": -9, "why": "That is $\\frac{dy}{dt} = 3t^2 - 12t$ at $t = 1$. Divide by $\\frac{dx}{dt} = 2$." },
+     { "value": "-2/9", "why": "That is $\\frac{dx/dt}{dy/dt}$, upside down. The slope is $\\frac{dy/dt}{dx/dt}$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dx} = \\frac{3t^2 - 12t}{2}$, which is $\\frac{3 - 12}{2} = -\\frac{9}{2}$ at $t = 1$."
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-2",
+   "type": "expr",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-second-derivatives-s1",
+   "q": "Find $\\frac{d^2y}{dx^2}$ in terms of $t$.",
+   "expr": {
+    "answer": "(3t-6)/2",
+    "vars": ["t"],
+    "domain": [0, 5],
+    "mode": "exact",
+    "lhs": "\\frac{d^2y}{dx^2} =",
+    "mistakes": [
+     { "expr": "3t-6", "why": "That is $\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)$, a rate per unit of $t$. Divide it by $\\frac{dx}{dt} = 2$ once more." },
+     { "expr": "6t-12", "why": "That is $\\frac{d^2y}{dt^2}$. The second derivative with respect to $x$ is $\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)$ divided by $\\frac{dx}{dt}$." },
+     { "expr": "(3t-6)/4", "why": "$\\frac{dy}{dx} = \\frac{3t^2 - 12t}{2}$ already holds one division by 2; its $t$-derivative is $3t - 6$, and one more division by 2 gives $\\frac{3t - 6}{2}$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dx} = \\frac{3t^2 - 12t}{2}$, so $\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) = \\frac{6t - 12}{2} = 3t - 6$. Divide by $\\frac{dx}{dt} = 2$: $\\frac{d^2y}{dx^2} = \\frac{3t - 6}{2}$."
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-3",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-second-derivatives-s1",
+   "q": "For which values of $t$ is the curve concave up?",
+   "options": [
+    "$0 < t < 2$",
+    "$2 < t < 5$",
+    "$0 < t < 4$",
+    "$4 < t < 5$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2} = \\frac{3t - 6}{2} > 0$ exactly when $t > 2$, so the curve is concave up for $2 < t < 5$.",
+    "options": [
+     "There $\\frac{d^2y}{dx^2} = \\frac{3t - 6}{2} < 0$: concave down.",
+     "Right: the second derivative is positive for $t > 2$.",
+     "There $\\frac{dy}{dx} < 0$, so the curve is falling; concavity is read from $\\frac{d^2y}{dx^2}$.",
+     "There $\\frac{dy}{dx} > 0$, so the curve is rising; that is about slope, and concave up starts earlier, at $t = 2$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-4",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-second-derivatives-s1",
+   "q": "At which point does the curve have a point of inflection?",
+   "options": [
+    "$(5, -16)$",
+    "$(2, -16)$",
+    "$(9, -32)$",
+    "$(1, 0)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2} = \\frac{3t - 6}{2}$ changes sign, from negative to positive, at $t = 2$. The point is $(x(2), y(2)) = (5, 8 - 24) = (5, -16)$.",
+    "options": [
+     "Right: the concavity changes at $t = 2$, the point $(5, -16)$.",
+     "This writes $t = 2$ as the $x$-coordinate; $x(2) = 2(2) + 1 = 5$.",
+     "At $t = 4$, $\\frac{dy}{dx} = 0$ and the curve is concave up: a relative minimum, not an inflection point.",
+     "This is the starting point, $t = 0$, where $\\frac{d^2y}{dx^2} = -3$ and nothing changes sign."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-5",
+   "type": "expr",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-second-derivatives-s2",
+   "q": "Find $\\frac{dy}{dx}$ in terms of $t$.",
+   "expr": {
+    "answer": "2t^2-4t",
+    "vars": ["t"],
+    "domain": [0.2, 4],
+    "mode": "exact",
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     { "expr": "(2t-4)/t", "why": "That multiplies by $\\frac{dx}{dt} = \\frac{1}{t}$. Dividing by $\\frac{1}{t}$ multiplies by $t$: $\\frac{2t - 4}{1/t} = t(2t - 4)$." },
+     { "expr": "2t-4", "why": "That is $\\frac{dy}{dt}$ alone. Divide by $\\frac{dx}{dt} = \\frac{1}{t}$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dt} = 2t - 4$ and $\\frac{dx}{dt} = \\frac{1}{t}$, so $\\frac{dy}{dx} = \\frac{2t - 4}{1/t} = 2t^2 - 4t$."
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-6",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-second-derivatives-s2",
+   "q": "Find $\\frac{d^2y}{dx^2}$ at $t = 2$.",
+   "numeric": {
+    "answer": 8,
+    "mistakes": [
+     { "value": 4, "why": "That is $\\frac{d}{dt}(2t^2 - 4t) = 4t - 4$ at $t = 2$. Divide by $\\frac{dx}{dt} = \\frac{1}{2}$ as well." },
+     { "value": -8, "why": "That divides $\\frac{d^2y}{dt^2} = 2$ by $\\frac{d^2x}{dt^2} = -\\frac{1}{t^2}$. The formula is $\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) \\div \\frac{dx}{dt}$." },
+     { "value": 2, "why": "That is $\\frac{d^2y}{dt^2}$, the second derivative with respect to $t$, not $x$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) = 4t - 4$, so $\\frac{d^2y}{dx^2} = \\frac{4t - 4}{1/t} = 4t^2 - 4t$, which is $16 - 8 = 8$ at $t = 2$."
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-7",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "parametric-second-derivatives-s2",
+   "q": "At $t = 2$, $\\frac{dy}{dx} = 0$. What does the second derivative tell you about the point $(\\ln 2, -4)$?",
+   "options": [
+    "$y$ has a relative maximum there, because $\\frac{d^2y}{dx^2} > 0$",
+    "It is a point of inflection, because $\\frac{dy}{dx} = 0$",
+    "$y$ has a relative minimum there, because $\\frac{d^2y}{dx^2} > 0$",
+    "Nothing, because $\\frac{dx}{dt} \\ne 0$ there"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = 0$ and $\\frac{d^2y}{dx^2} = 8 > 0$ at $t = 2$. The curve has a horizontal tangent and is concave up there, so by the second derivative test $y$ has a relative minimum at $(\\ln 2, -4)$.",
+    "options": [
+     "A positive second derivative means concave up, which gives a minimum, not a maximum.",
+     "An inflection point needs $\\frac{d^2y}{dx^2}$ to change sign; $\\frac{dy}{dx} = 0$ marks a horizontal tangent.",
+     "Right: horizontal tangent plus concave up.",
+     "$\\frac{dx}{dt} \\ne 0$ is what makes $\\frac{dy}{dx}$ and $\\frac{d^2y}{dx^2}$ defined, so the test applies."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-8",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-second-derivatives-s2",
+   "q": "For which values of $t$ is the curve concave down?",
+   "options": [
+    "$0 < t < 2$",
+    "$t > 2$",
+    "$t > 1$",
+    "$0 < t < 1$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2} = 4t^2 - 4t = 4t(t - 1)$. With $t > 0$ it is negative for $0 < t < 1$.",
+    "options": [
+     "On $0 < t < 2$ the slope $\\frac{dy}{dx} = 2t(t - 2)$ is negative; concavity needs the second derivative.",
+     "For $t > 2$ both derivatives are positive: rising and concave up.",
+     "For $t > 1$, $4t(t - 1) > 0$: concave up.",
+     "Right: $4t(t - 1) < 0$ when $0 < t < 1$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-9",
+   "type": "expr",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A curve is given by $x = t^2 + 1$, $y = t^3$ for $t > 0$. Find $\\frac{d^2y}{dx^2}$ in terms of $t$.",
+   "expr": {
+    "answer": "3/(4t)",
+    "vars": ["t"],
+    "domain": [0.5, 3],
+    "mode": "exact",
+    "lhs": "\\frac{d^2y}{dx^2} =",
+    "mistakes": [
+     { "expr": "3/2", "why": "That is $\\frac{d}{dt}\\left(\\frac{3t}{2}\\right)$. Divide by $\\frac{dx}{dt} = 2t$ once more." },
+     { "expr": "3t", "why": "That divides $\\frac{d^2y}{dt^2} = 6t$ by $\\frac{d^2x}{dt^2} = 2$. Differentiate $\\frac{dy}{dx}$ with respect to $t$, then divide by $\\frac{dx}{dt}$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dx} = \\frac{3t^2}{2t} = \\frac{3t}{2}$. Then $\\frac{d}{dt}\\left(\\frac{3t}{2}\\right) = \\frac{3}{2}$, and dividing by $\\frac{dx}{dt} = 2t$ gives $\\frac{3}{4t}$."
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-10",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A curve is given by $x = e^t$, $y = e^{2t}$. What is $\\frac{d^2y}{dx^2}$?",
+   "options": [
+    "$2e^t$",
+    "$2$",
+    "$4e^t$",
+    "$2e^{-t}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = \\frac{2e^{2t}}{e^t} = 2e^t$; its $t$-derivative is $2e^t$; dividing by $\\frac{dx}{dt} = e^t$ gives 2. Check: $y = (e^t)^2 = x^2$, and the second derivative of $x^2$ is 2.",
+    "options": [
+     "That is $\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)$; divide by $\\frac{dx}{dt} = e^t$ to finish.",
+     "Right: and the curve is the parabola $y = x^2$, whose second derivative is 2.",
+     "That divides $\\frac{d^2y}{dt^2} = 4e^{2t}$ by $\\frac{d^2x}{dt^2} = e^t$, which is not the formula.",
+     "That divides by $\\frac{dx}{dt}$ twice after differentiating; differentiate $\\frac{dy}{dx}$, then divide once."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-11",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The circle $x = \\cos t$, $y = \\sin t$ has $\\frac{dy}{dx} = -\\frac{\\cos t}{\\sin t}$. Find $\\frac{d^2y}{dx^2}$ at $t = \\frac{\\pi}{6}$.",
+   "numeric": {
+    "answer": -8,
+    "mistakes": [
+     { "value": 4, "why": "That is $\\frac{d}{dt}\\left(-\\cot t\\right) = \\csc^2 t$ at $\\frac{\\pi}{6}$. Divide by $\\frac{dx}{dt} = -\\sin t = -\\frac{1}{2}$." },
+     { "value": 8, "why": "The sign: $\\frac{dx}{dt} = -\\sin t$, so dividing $\\csc^2 t$ by it gives a negative number. The point is on the upper half, which is concave down." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d}{dt}(-\\cot t) = \\csc^2 t = 4$ at $t = \\frac{\\pi}{6}$, and $\\frac{dx}{dt} = -\\sin\\frac{\\pi}{6} = -\\frac{1}{2}$. So $\\frac{d^2y}{dx^2} = \\frac{4}{-1/2} = -8$: concave down, as the top half of a circle should be."
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-12",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "For a curve $x = x(t)$, $y = y(t)$ with $\\frac{dx}{dt} \\ne 0$, which expression equals $\\frac{d^2y}{dx^2}$?",
+   "options": [
+    "$\\frac{d^2y/dt^2}{d^2x/dt^2}$",
+    "$\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)$",
+    "$\\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{dx/dt}$",
+    "$\\frac{dy/dx}{dx/dt}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2}$ is the derivative of $\\frac{dy}{dx}$ with respect to $x$. Apply the slope rule to the function $\\frac{dy}{dx}$: its $t$-rate divided by the $t$-rate of $x$.",
+    "options": [
+     "Second derivatives do not divide like this; differentiate $\\frac{dy}{dx}$ with respect to $t$ first.",
+     "This is a rate per unit of $t$; one more division by $\\frac{dx}{dt}$ makes it per unit of $x$.",
+     "Right: $\\frac{d}{dx}\\left(\\frac{dy}{dx}\\right) = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{dx/dt}$.",
+     "The numerator must be differentiated before dividing."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-13",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "For a curve, $\\frac{dx}{dt} = t + 1$ and the slope is $\\frac{dy}{dx} = t\\sin(t^2)$. Find $\\frac{d^2y}{dx^2}$ at $t = 1.5$.",
+   "numeric": {
+    "answer": -0.8194832421457621,
+    "mistakes": [
+     { "value": -2.0487081053644052, "why": "That is $\\frac{d}{dt}\\left(t\\sin(t^2)\\right)$ at $t = 1.5$. Divide it by $\\frac{dx}{dt} = 2.5$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}\\left(t\\sin(t^2)\\right)}{t + 1}$. At $t = 1.5$ the calculator gives the numerator $\\approx -2.048708$ (a numerical derivative, radian mode), and $\\frac{-2.048708}{2.5} \\approx -0.819$."
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-14",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A curve is given by $x = t^3$, $y = t^2 + 1$ for $t \\ne 0$. Which describes its concavity?",
+   "options": [
+    "Concave down for $t < 0$ and for $t > 0$",
+    "Concave up for $t < 0$ and for $t > 0$",
+    "Concave up for $t > 0$, concave down for $t < 0$",
+    "Concave down for $t > 0$, concave up for $t < 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = \\frac{2t}{3t^2} = \\frac{2}{3t}$, whose $t$-derivative is $-\\frac{2}{3t^2}$. Dividing by $\\frac{dx}{dt} = 3t^2$ gives $\\frac{d^2y}{dx^2} = -\\frac{2}{9t^4}$, negative on both sides of $t = 0$.",
+    "options": [
+     "Right: $-\\frac{2}{9t^4} < 0$ for $t \\ne 0$.",
+     "The sign of $-\\frac{2}{9t^4}$ is negative; $t^4 > 0$ cannot make it positive.",
+     "Even powers of $t$ have one sign on both sides of 0, so the concavity does not change.",
+     "$-\\frac{2}{9t^4}$ is negative for $t < 0$ as well: $t^4$ is positive there too."
+    ]
+   }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-15",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "At $t = 1$, a curve has $\\frac{dx}{dt} = 4$ and $\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) = -2$. Find $\\frac{d^2y}{dx^2}$ at $t = 1$.",
+   "numeric": {
+    "answer": "-1/2",
+    "mistakes": [
+     { "value": -2, "why": "That is $\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)$, a rate per unit of $t$. Divide by $\\frac{dx}{dt} = 4$." },
+     { "value": -8, "why": "That multiplies by $\\frac{dx}{dt}$. To change a rate per unit of $t$ into a rate per unit of $x$, divide." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{dx/dt} = \\frac{-2}{4} = -\\frac{1}{2}$: concave down at that point."
+   }
+  }
+ ]
+}

@@ -1,0 +1,468 @@
+{
+ "stimuli": {
+  "polar-area-s1": {
+   "kind": "graph",
+   "title": "One petal of the rose $r = 3\\sin(2\\theta)$",
+   "figure": "polar-area-petal"
+  },
+  "polar-area-s2": {
+   "kind": "table",
+   "title": "A polar curve known only from a table (calculator)",
+   "table": {
+    "caption": "Values of $r = f(\\theta)$ for a polar curve, $\\theta$ in radians",
+    "cols": [
+     "$\\theta$",
+     "$0$",
+     "$\\frac{\\pi}{6}$",
+     "$\\frac{\\pi}{3}$",
+     "$\\frac{\\pi}{2}$"
+    ],
+    "rows": [
+     [
+      "$r$",
+      "$2$",
+      "$2.5$",
+      "$3.2$",
+      "$3$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-polar-area-1",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-area-s1",
+   "q": "Which integral gives the area of the shaded petal?",
+   "options": [
+    "$\\int_0^{\\pi/2} 9\\sin^2(2\\theta)\\,d\\theta$",
+    "$\\frac{1}{2}\\int_0^{\\pi/2} 9\\sin^2(2\\theta)\\,d\\theta$",
+    "$\\frac{1}{2}\\int_0^{\\pi/2} 3\\sin^2(2\\theta)\\,d\\theta$",
+    "$\\frac{1}{2}\\int_0^{\\pi} 9\\sin^2(2\\theta)\\,d\\theta$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$A = \\frac{1}{2}\\int_{\\alpha}^{\\beta} r^2\\,d\\theta$ with $r^2 = 9\\sin^2(2\\theta)$; the petal is traced once as $\\theta$ runs from 0 to $\\frac{\\pi}{2}$.",
+    "options": [
+     "The $\\frac{1}{2}$ is missing: each thin sector has area $\\frac{1}{2}r^2\\,\\Delta\\theta$, like a slice of a circle.",
+     "Right: one half, $r$ squared, and the $\\theta$-limits where the petal starts and ends at the pole.",
+     "Square all of $r$: $(3\\sin(2\\theta))^2 = 9\\sin^2(2\\theta)$, so the 3 is squared too.",
+     "From 0 to $\\pi$ the curve traces two petals; the shaded petal ends at $\\theta = \\frac{\\pi}{2}$, where $r$ returns to 0."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-area-2",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-area-s1",
+   "q": "Find the area of the shaded petal.",
+   "numeric": {
+    "answer": "9pi/8",
+    "mistakes": [
+     {
+      "value": "9pi/4",
+      "why": "That leaves out the $\\frac{1}{2}$ in front of the integral."
+     },
+     {
+      "value": "3/2",
+      "why": "That integrates $r$ instead of $r^2$: $\\frac{1}{2}\\int_0^{\\pi/2} 3\\sin(2\\theta)\\,d\\theta = \\frac{3}{2}$. Square $r$ first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{2}\\int_0^{\\pi/2} 9\\sin^2(2\\theta)\\,d\\theta = \\frac{9}{2}\\int_0^{\\pi/2} \\frac{1 - \\cos(4\\theta)}{2}\\,d\\theta = \\frac{9}{4}\\left[\\theta - \\frac{\\sin(4\\theta)}{4}\\right]_0^{\\pi/2} = \\frac{9}{4} \\cdot \\frac{\\pi}{2} = \\frac{9\\pi}{8}$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-3",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "polar-area-s1",
+   "q": "Find the total area enclosed by all four petals of the rose.",
+   "numeric": {
+    "answer": "9pi/2",
+    "mistakes": [
+     {
+      "value": "9pi/8",
+      "why": "That is one petal. There are four, all the same size."
+     },
+     {
+      "value": "9pi/4",
+      "why": "From 0 to $\\pi$ the curve traces only two of the petals; go to $2\\pi$, or multiply one petal by 4."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The four petals have equal area, so the total is $4 \\cdot \\frac{9\\pi}{8} = \\frac{9\\pi}{2}$. Equivalently, $\\frac{1}{2}\\int_0^{2\\pi} 9\\sin^2(2\\theta)\\,d\\theta = \\frac{9\\pi}{2}$: as $\\theta$ goes once around, each petal is traced exactly once."
+   }
+  },
+  {
+   "id": "cbc-polar-area-4",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polar-area-s1",
+   "q": "Why are the limits of integration for the shaded petal $\\theta = 0$ and $\\theta = \\frac{\\pi}{2}$?",
+   "options": [
+    "The petal lies in the first quadrant, which is $0 \\le \\theta \\le \\frac{\\pi}{2}$",
+    "$r$ is largest at $\\theta = \\frac{\\pi}{2}$",
+    "$r = 0$ at both, so the petal starts and ends at the pole",
+    "$\\sin(2\\theta)$ has period $\\pi$, half of $2\\pi$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Solve $3\\sin(2\\theta) = 0$: $\\theta = 0, \\frac{\\pi}{2}, \\pi, \\ldots$ Between $0$ and $\\frac{\\pi}{2}$, $r > 0$ and the curve leaves the pole and returns to it once: one petal.",
+    "options": [
+     "True here, but it is a coincidence of this rose. Limits come from where $r = 0$ or curves meet, found from the equation.",
+     "$r = 3\\sin\\pi = 0$ at $\\theta = \\frac{\\pi}{2}$; the tip, $r = 3$, is at $\\theta = \\frac{\\pi}{4}$.",
+     "Right: between two consecutive zeros of $r$, the curve traces one petal.",
+     "The period of $\\sin(2\\theta)$ is $\\pi$, which would give limits 0 and $\\pi$: two petals."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-area-5",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polar-area-s1",
+   "q": "Find the area of the part of the shaded petal with $0 \\le \\theta \\le \\frac{\\pi}{4}$.",
+   "numeric": {
+    "answer": "9pi/16",
+    "mistakes": [
+     {
+      "value": "9pi/8",
+      "why": "That is the whole petal; the ray $\\theta = \\frac{\\pi}{4}$ cuts it in half."
+     },
+     {
+      "value": "9pi/32",
+      "why": "That halves twice. Only one half of the petal is swept from 0 to $\\frac{\\pi}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{2}\\int_0^{\\pi/4} 9\\sin^2(2\\theta)\\,d\\theta = \\frac{9}{4}\\left[\\theta - \\frac{\\sin(4\\theta)}{4}\\right]_0^{\\pi/4} = \\frac{9\\pi}{16}$, half the petal: the line $\\theta = \\frac{\\pi}{4}$ through the tip splits it into mirror halves."
+   }
+  },
+  {
+   "id": "cbc-polar-area-6",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the area of the region enclosed by the circle $r = 4\\sin\\theta$.",
+   "numeric": {
+    "answer": "4pi",
+    "mistakes": [
+     {
+      "value": "8pi",
+      "why": "From 0 to $2\\pi$ the circle is traced twice (for $\\pi < \\theta < 2\\pi$, $r < 0$ retraces it). Integrate over $0 \\le \\theta \\le \\pi$."
+     },
+     {
+      "value": "16pi",
+      "why": "The diameter is 4, so the radius is 2, and the area is $4\\pi$; check the setup $\\frac{1}{2}\\int_0^{\\pi} 16\\sin^2\\theta\\,d\\theta$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The circle is traced once for $0 \\le \\theta \\le \\pi$: $\\frac{1}{2}\\int_0^{\\pi} 16\\sin^2\\theta\\,d\\theta = 8 \\cdot \\frac{\\pi}{2} = 4\\pi$, the area of a circle of radius 2."
+   }
+  },
+  {
+   "id": "cbc-polar-area-7",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the area of the region enclosed by the cardioid $r = 1 - \\sin\\theta$.",
+   "numeric": {
+    "answer": "3pi/2",
+    "mistakes": [
+     {
+      "value": "3pi",
+      "why": "That leaves out the $\\frac{1}{2}$ in front of the integral."
+     },
+     {
+      "value": "pi",
+      "why": "That integrates $r$, not $r^2$: $\\frac{1}{2}\\int_0^{2\\pi} (1 - \\sin\\theta)\\,d\\theta = \\pi$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{2}\\int_0^{2\\pi} (1 - \\sin\\theta)^2\\,d\\theta = \\frac{1}{2}\\int_0^{2\\pi} \\left(1 - 2\\sin\\theta + \\frac{1 - \\cos(2\\theta)}{2}\\right)d\\theta = \\frac{1}{2}\\left(2\\pi - 0 + \\pi\\right) = \\frac{3\\pi}{2}$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-8",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which expression gives the area inside the small inner loop of $r = 1 + 2\\cos\\theta$?",
+   "options": [
+    "$\\frac{1}{2}\\int_{0}^{2\\pi/3} (1 + 2\\cos\\theta)^2\\,d\\theta$",
+    "$\\frac{1}{2}\\int_{-2\\pi/3}^{2\\pi/3} (1 + 2\\cos\\theta)^2\\,d\\theta$",
+    "$\\frac{1}{2}\\int_{2\\pi/3}^{4\\pi/3} (1 + 2\\cos\\theta)^2\\,d\\theta$",
+    "$\\frac{1}{2}\\int_{0}^{2\\pi} (1 + 2\\cos\\theta)^2\\,d\\theta$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$1 + 2\\cos\\theta = 0$ at $\\theta = \\frac{2\\pi}{3}$ and $\\frac{4\\pi}{3}$. Between them $r < 0$, and the curve traces the inner loop once; squaring $r$ makes the integrand positive. The area is $\\pi - \\frac{3\\sqrt{3}}{2}$.",
+    "options": [
+     "From 0 to $\\frac{2\\pi}{3}$ the curve traces the upper half of the big outer loop.",
+     "That is the whole outer loop, where $r > 0$.",
+     "Right: $r < 0$ between the two zeros $\\frac{2\\pi}{3}$ and $\\frac{4\\pi}{3}$, and that stretch traces the inner loop.",
+     "A full turn counts the inner loop inside the outer one a second time."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-area-9",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Find the area of the region swept by the spiral $r = 1 + \\theta\\sin\\theta$ from $\\theta = 0$ to $\\theta = \\pi$.",
+   "numeric": {
+    "answer": 6.90354628871096,
+    "mistakes": [
+     {
+      "value": 13.80709257742192,
+      "why": "That leaves out the $\\frac{1}{2}$ in front of the integral."
+     },
+     {
+      "value": 3.1415926535898073,
+      "why": "That integrates $r$, not $r^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$A = \\frac{1}{2}\\int_0^{\\pi} (1 + \\theta\\sin\\theta)^2\\,d\\theta \\approx 6.904$ (calculator, radian mode). Write the setup with the $\\frac{1}{2}$ and the square before the number."
+   }
+  },
+  {
+   "id": "cbc-polar-area-10",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "3.E",
+   "level": "recall",
+   "diff": 1,
+   "q": "Why does a polar area integral have $\\frac{1}{2}r^2$ in it?",
+   "options": [
+    "A thin wedge is nearly a circle slice, of area $\\frac{1}{2}r^2\\,\\Delta\\theta$",
+    "It is the area of a thin rectangle of height $r$ and width $\\Delta\\theta$",
+    "It is the average of $r$ and $r^2$ over the interval",
+    "The curve is traced twice, so the area is halved"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A slice of a circle of radius $r$ with angle $\\Delta\\theta$ is the fraction $\\frac{\\Delta\\theta}{2\\pi}$ of the disk, so its area is $\\frac{\\Delta\\theta}{2\\pi}\\pi r^2 = \\frac{1}{2}r^2\\,\\Delta\\theta$. Adding slices and taking the limit gives $\\frac{1}{2}\\int_{\\alpha}^{\\beta} r^2\\,d\\theta$.",
+    "options": [
+     "Right: the polar area integral is the limit of these sectors' areas added up.",
+     "Polar regions are cut into wedges, not rectangles; a wedge's area grows with $r^2$.",
+     "$\\frac{1}{2}r^2$ is not an average; it is the slice area $\\frac{\\Delta\\theta}{2\\pi} \\cdot \\pi r^2$ per unit of $\\Delta\\theta$.",
+     "Some curves are traced twice over $[0, 2\\pi]$, which is a reason to change the limits, not the source of the $\\frac{1}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-area-11",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the area of the sector of the circle $r = 2$ with $0 \\le \\theta \\le \\frac{\\pi}{3}$.",
+   "numeric": {
+    "answer": "2pi/3",
+    "mistakes": [
+     {
+      "value": "4pi/3",
+      "why": "That leaves out the $\\frac{1}{2}$: the sector is $\\frac{1}{2}r^2\\theta$."
+     },
+     {
+      "value": "pi/3",
+      "why": "$r$ must be squared: $\\frac{1}{2}(2)^2 \\cdot \\frac{\\pi}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{2}\\int_0^{\\pi/3} 2^2\\,d\\theta = 2 \\cdot \\frac{\\pi}{3} = \\frac{2\\pi}{3}$, one sixth of the disk's area $4\\pi$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-12",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the area swept by the radius to the spiral $r = \\sqrt{\\theta}$ as $\\theta$ goes from 0 to $2\\pi$.",
+   "numeric": {
+    "answer": "pi^2",
+    "mistakes": [
+     {
+      "value": "2pi^2",
+      "why": "That leaves out the $\\frac{1}{2}$ in front of the integral."
+     },
+     {
+      "value": "4pi^2",
+      "why": "$\\int_0^{2\\pi} \\theta\\,d\\theta = \\frac{(2\\pi)^2}{2} = 2\\pi^2$; then halve it once more for the $\\frac{1}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{2}\\int_0^{2\\pi} (\\sqrt{\\theta})^2\\,d\\theta = \\frac{1}{2}\\int_0^{2\\pi} \\theta\\,d\\theta = \\frac{1}{2} \\cdot \\frac{(2\\pi)^2}{2} = \\pi^2$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-13",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "polar-area-s2",
+   "q": "Use a left Riemann sum with the three subintervals in the table to approximate the area swept from $\\theta = 0$ to $\\theta = \\frac{\\pi}{2}$, $A = \\frac{1}{2}\\int_0^{\\pi/2} r^2\\,d\\theta$.",
+   "numeric": {
+    "answer": 5.364269456004571,
+    "mistakes": [
+     {
+      "value": 10.728538912009142,
+      "why": "That leaves out the $\\frac{1}{2}$: the integrand is $\\frac{1}{2}r^2$."
+     },
+     {
+      "value": 6.673266395000318,
+      "why": "That is the right sum, using $\\theta = \\frac{\\pi}{6}, \\frac{\\pi}{3}, \\frac{\\pi}{2}$. A left sum uses the left end of each subinterval."
+     },
+     {
+      "value": 2.0158552860534504,
+      "why": "$r$ is not squared: square each value before adding."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each width is $\\frac{\\pi}{6}$. $A \\approx \\frac{1}{2} \\cdot \\frac{\\pi}{6}\\left(2^2 + 2.5^2 + 3.2^2\\right) = \\frac{\\pi}{12}(20.49) \\approx 5.364$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-14",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "polar-area-s2",
+   "q": "Use a trapezoidal sum with the three subintervals in the table to approximate $\\frac{1}{2}\\int_0^{\\pi/2} r^2\\,d\\theta$.",
+   "numeric": {
+    "answer": 6.018767925502445,
+    "mistakes": [
+     {
+      "value": 12.03753585100489,
+      "why": "That leaves out the $\\frac{1}{2}$ in front of $r^2$."
+     },
+     {
+      "value": 2.146754979953025,
+      "why": "That averages $r$, not $r^2$. Square each value first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The trapezoidal sum averages the left and right sums: $\\frac{1}{2} \\cdot \\frac{\\pi}{6} \\cdot \\frac{1}{2}\\left(2^2 + 2(2.5^2) + 2(3.2^2) + 3^2\\right) = \\frac{\\pi}{12}(22.99) \\approx 6.019$."
+   }
+  },
+  {
+   "id": "cbc-polar-area-15",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "polar-area-s2",
+   "q": "What does $\\frac{1}{2}\\int_0^{\\pi/2} r^2\\,d\\theta$ measure for this curve?",
+   "options": [
+    "The length of the curve from $\\theta = 0$ to $\\theta = \\frac{\\pi}{2}$",
+    "The area between the curve and the $x$-axis, for $0 \\le x \\le 3$",
+    "The average distance from the pole for $0 \\le \\theta \\le \\frac{\\pi}{2}$",
+    "The area swept by the radius from $\\theta = 0$ to $\\theta = \\frac{\\pi}{2}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{1}{2}\\int_{\\alpha}^{\\beta} r^2\\,d\\theta$ is the area of the region bounded by the polar curve and the rays $\\theta = \\alpha$ and $\\theta = \\beta$.",
+    "options": [
+     "The length of a curve uses a different integral (arc length); this one adds wedge areas.",
+     "The region is bounded by two rays from the pole, not by vertical lines at $x$-values.",
+     "An average would divide $\\int r\\,d\\theta$ by the interval's length; this adds $\\frac{1}{2}r^2\\,d\\theta$.",
+     "Right: the region swept by the radius as $\\theta$ goes from 0 to $\\frac{\\pi}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-polar-area-16",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "polar-area-s2",
+   "q": "A student approximates the area swept from $0$ to $\\frac{\\pi}{2}$ by $\\frac{\\pi}{6}(2 + 2.5 + 3.2)$. What is wrong?",
+   "options": [
+    "The width should be $\\frac{\\pi}{2}$, the length of the interval",
+    "The values used should be $2.5$, $3.2$ and $3$",
+    "The $\\frac{1}{2}$ and the squares of the $r$-values are missing",
+    "A table gives no way to estimate a polar area"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The integrand is $\\frac{1}{2}r^2$, so a left sum is $\\frac{\\pi}{6}\\left(\\frac{1}{2}(2)^2 + \\frac{1}{2}(2.5)^2 + \\frac{1}{2}(3.2)^2\\right)$. The student's sum adds $r$-values as if the region were made of rectangles.",
+    "options": [
+     "There are three subintervals, each $\\frac{\\pi}{6}$ wide; the width is right.",
+     "That would be a right sum instead of a left sum, still missing the $\\frac{1}{2}$ and the squares.",
+     "Right: each wedge is $\\frac{1}{2}r^2\\,\\Delta\\theta$, so the sum is $\\frac{\\pi}{12}(2^2 + 2.5^2 + 3.2^2)$.",
+     "It does, with a Riemann sum of $\\frac{1}{2}r^2$, as for any definite integral."
+    ]
+   }
+  }
+ ]
+}

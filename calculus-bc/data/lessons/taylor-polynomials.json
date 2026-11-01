@@ -1,0 +1,89 @@
+{
+ "topic": "taylor-polynomials",
+ "hook": "Your calculator does not store a table of $\\cos x$. It computes $\\cos x$ from a polynomial, because polynomials need only adding and multiplying. A Taylor polynomial is the polynomial that copies a function's value, slope, concavity and more at one point, and so stays close to the function nearby.",
+ "prereq": [
+  {
+   "q": "The tangent line to $f$ at $x = a$ is",
+   "options": [
+    "$y = f(a) + f'(a)(x - a)$",
+    "$y = f(a) + f'(x)(x - a)$",
+    "$y = f'(a)(x - a)$",
+    "$y = f(a)(x - a) + f'(a)$"
+   ],
+   "correct": 0,
+   "why": "It passes through $(a, f(a))$ with slope $f'(a)$.",
+   "review": "local-linearity"
+  },
+  {
+   "q": "If $f(x) = \\sin x$, what is $f'''(x)$?",
+   "options": [
+    "$-\\cos x$",
+    "$\\cos x$",
+    "$-\\sin x$",
+    "$\\sin x$"
+   ],
+   "correct": 0,
+   "why": "$f' = \\cos x$, $f'' = -\\sin x$, $f''' = -\\cos x$.",
+   "review": "higher-order-derivatives"
+  },
+  {
+   "q": "What is $4!$?",
+   "options": [
+    "$24$",
+    "$16$",
+    "$10$",
+    "$4$"
+   ],
+   "correct": 0,
+   "why": "$4! = 4 \\cdot 3 \\cdot 2 \\cdot 1 = 24$.",
+   "review": "math-sequences"
+  }
+ ],
+ "figure": {
+  "figure": "taylor-cos-wrap",
+  "caption": "$P_2$, $P_4$ and $P_6$ for $\\cos x$ about $x = 0$: each added term makes the polynomial follow $\\cos x$ farther from the center."
+ },
+ "chain": [
+  {
+   "cause": "The tangent line matches $f(a)$ and $f'(a)$",
+   "effect": "it fits $f$ well very near $a$ but misses the bending"
+  },
+  {
+   "cause": "Add a term $\\frac{f''(a)}{2!}(x - a)^2$",
+   "effect": "the polynomial's second derivative at $a$ is $f''(a)$, so it bends the same way $f$ does"
+  },
+  {
+   "cause": "Keep adding terms $\\frac{f^{(n)}(a)}{n!}(x - a)^n$",
+   "effect": "the polynomial matches more derivatives at $a$ and usually stays close to $f$ over a wider stretch"
+  }
+ ],
+ "ideas": [
+  "$P_n(x) = f(a) + f'(a)(x - a) + \\frac{f''(a)}{2!}(x - a)^2 + \\cdots + \\frac{f^{(n)}(a)}{n!}(x - a)^n$.",
+  "The center is where the derivatives are taken: powers of $(x - a)$, derivatives at $a$.",
+  "$P_1$ is the tangent line; each higher term matches one more derivative at the center.",
+  "A Taylor polynomial ends at its last term: write it out with no \"$+ \\cdots$\"."
+ ],
+ "misconception": {
+  "wrong": "The second-degree Taylor polynomial for $f$ about $x = 2$ is $f(2) + f'(2)x + f''(2)x^2$.",
+  "right": "Use powers of $(x - 2)$ and divide by the factorials: $f(2) + f'(2)(x - 2) + \\frac{f''(2)}{2!}(x - 2)^2$."
+ },
+ "check": [
+  "cbc-taylor-polynomials-1",
+  "cbc-taylor-polynomials-2",
+  "cbc-taylor-polynomials-3",
+  "cbc-taylor-polynomials-10",
+  "cbc-taylor-polynomials-11",
+  "cbc-taylor-polynomials-14"
+ ],
+ "summary": "The $n$th-degree Taylor polynomial for $f$ about $x = a$ is $\\sum_{k=0}^{n} \\frac{f^{(k)}(a)}{k!}(x - a)^k$. It matches $f$ and its first $n$ derivatives at $a$, so it approximates $f$ near $a$. About $a = 0$ it is called a Maclaurin polynomial.",
+ "connections": [
+  {
+   "href": "../notes/alternating-error-bound.html",
+   "label": "Back: the alternating series error bound (10.10)"
+  },
+  {
+   "href": "../notes/lagrange-error-bound.html",
+   "label": "Next: the Lagrange error bound (10.12)"
+  }
+ ]
+}

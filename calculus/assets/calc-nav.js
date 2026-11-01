@@ -4,6 +4,8 @@
    window.ApCalcBase (the path back to calculus/). Also wires [data-print] and
    [data-copy] (Copy link) buttons without an inline handler. */
 (function(){
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var base = window.ApCalcBase || '';
   var section = window.ApCalcSection || '';
   var ITEMS = [
@@ -25,8 +27,8 @@
     if(window.LevlChrome){
       window.LevlChrome.registerServiceWorker();
       window.LevlChrome.render({
-        subject: 'apcalc',
-        course: 'AP® Calculus AB',
+        subject: CK,
+        course: CN,
         courseShort: 'Calculus',
         courseHref: base + 'index.html',
         progressHref: base + 'dashboard.html',

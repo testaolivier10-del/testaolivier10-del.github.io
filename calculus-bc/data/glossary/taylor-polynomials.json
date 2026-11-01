@@ -1,0 +1,5 @@
+{
+ "taylor-polynomial": {
+  "def": "The polynomial $P_n(x) = \\sum_{k=0}^{n} \\frac{f^{(k)}(a)}{k!}(x - a)^k$, which matches $f$ and its first $n$ derivatives at the center $x = a$. A Maclaurin polynomial is a Taylor polynomial about $x = 0$."
+ }
+}

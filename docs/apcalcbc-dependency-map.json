@@ -1,0 +1,1277 @@
+{
+ "overlay": true,
+ "about": "AP Calculus BC concept dependency map, as an OVERLAY on docs/apcalc-dependency-map.json (docs/apcalcbc-phase0.md): only what BC adds. The loader (mergeBcMap in scripts/lib/apcalc-build.mjs) merges it with AB's map into the BC course map: Units 1-10 (BC weights), AB's 81 topics plus these 30 in CED order, the \"Math you need\" chapter with three BC skills topics, and every concept. Nothing of AB's map is copied.",
+ "version": 1,
+ "ced": {
+  "edition": "2019 framework, effective fall 2020 (10 units, 111 BC topics)",
+  "effective": "Exam format of May 2027",
+  "note": "Built from docs/apcalcbc-ced-map.json, itself from docs/apcalcbc-research/framework.md (CED text-verified for the BC topics)."
+ },
+ "chapterWeights": {
+  "unit-1": [
+   5,
+   10
+  ],
+  "unit-2": [
+   5,
+   10
+  ],
+  "unit-3": [
+   5,
+   10
+  ],
+  "unit-4": [
+   5,
+   10
+  ],
+  "unit-5": [
+   10,
+   15
+  ],
+  "unit-6": [
+   15,
+   20
+  ],
+  "unit-7": [
+   5,
+   10
+  ],
+  "unit-8": [
+   5,
+   10
+  ],
+  "unit-9": [
+   10,
+   15
+  ],
+  "unit-10": [
+   15,
+   20
+  ]
+ },
+ "chapterTools": {
+  "unit-6": {
+   "simulators": [
+    {
+     "id": "integration-methods",
+     "title": "Integration methods: parts (tabular too), partial fractions and improper integrals as limits, and choosing the method",
+     "topic": "integration-by-parts"
+    }
+   ],
+   "frqThemes": [
+    {
+     "title": "Integration by parts and an improper integral in one question",
+     "topic": "improper-integrals",
+     "type": "techniques"
+    }
+   ],
+   "comparisonTables": [
+    {
+     "title": "Which antiderivative technique: substitution, parts or partial fractions",
+     "topic": "partial-fractions"
+    }
+   ]
+  },
+  "unit-7": {
+   "simulators": [
+    {
+     "id": "euler-logistic",
+     "title": "Euler and logistic: Euler steps on a slope field, over and under from concavity, logistic growth and its fastest-growth point",
+     "topic": "eulers-method"
+    }
+   ],
+   "frqThemes": [
+    {
+     "title": "Euler's method from a differential equation, with over or under from concavity",
+     "topic": "eulers-method",
+     "type": "techniques"
+    }
+   ],
+   "stimulusThemes": [
+    {
+     "title": "A slope field with Euler steps drawn on it",
+     "topic": "eulers-method",
+     "stimulus": "graph"
+    }
+   ]
+  },
+  "unit-8": {
+   "frqThemes": [
+    {
+     "title": "Arc length of a curve and the area of a region",
+     "topic": "arc-length",
+     "type": "techniques"
+    }
+   ]
+  }
+ },
+ "chapters": [
+  {
+   "id": "unit-9",
+   "n": 9,
+   "part": "course",
+   "title": "Parametric Equations, Polar Coordinates, and Vector-Valued Functions",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "parametric-motion",
+      "title": "Parametric motion: a particle traced by (x(t), y(t)) with velocity, acceleration and speed live, and distance by arc length",
+      "topic": "parametric-derivatives"
+     },
+     {
+      "id": "polar-lab",
+      "title": "Polar lab: curves drawn as theta sweeps, area swept shaded, dy/dx and dr/dtheta read off the curve",
+      "topic": "polar-derivatives"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "A particle in the plane: speed, position from velocity and distance traveled",
+      "topic": "planar-motion",
+      "type": "parametric"
+     },
+     {
+      "title": "A polar curve: area, tangent slope and distance from the origin",
+      "topic": "polar-area",
+      "type": "parametric"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A parametric path with direction arrows",
+      "topic": "parametric-derivatives",
+      "stimulus": "graph"
+     },
+     {
+      "title": "A polar curve with a shaded sector",
+      "topic": "polar-area",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Arc length for y = f(x), for a parametric curve and as distance traveled",
+      "topic": "parametric-arc-length"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From position to velocity, speed and distance",
+      "topic": "planar-motion"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-10",
+   "n": 10,
+   "part": "course",
+   "title": "Infinite Sequences and Series",
+   "weight": [
+    15,
+    20
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "series-lab",
+      "title": "Series lab: choose and justify a test, partial sums against the limit, and an interval of convergence with both endpoints checked",
+      "topic": "series-convergence"
+     },
+     {
+      "id": "taylor-lab",
+      "title": "Taylor lab: polynomials wrap the function as terms are added, with the Lagrange and alternating error bounds drawn as a band",
+      "topic": "taylor-polynomials"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "A power series: ratio test, interval of convergence with both endpoints, and a sum",
+      "topic": "radius-interval-convergence",
+      "type": "series"
+     },
+     {
+      "title": "A Taylor polynomial and an error bound",
+      "topic": "lagrange-error-bound",
+      "type": "series"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A table of derivatives at the center",
+      "topic": "taylor-polynomials",
+      "stimulus": "table"
+     },
+     {
+      "title": "Partial sums plotted against n",
+      "topic": "series-convergence",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "The six convergence tests: when each applies and what it concludes",
+      "topic": "ratio-test"
+     },
+     {
+      "title": "Alternating series error bound versus Lagrange error bound",
+      "topic": "lagrange-error-bound"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Which test: nth term, geometric or p, comparison, alternating, ratio",
+      "topic": "absolute-conditional"
+     },
+     {
+      "title": "From known series to new ones: substitute, differentiate, integrate",
+      "topic": "power-series-functions"
+     }
+    ]
+   }
+  }
+ ],
+ "topics": [
+  {
+   "id": "integration-by-parts",
+   "ced": "6.11",
+   "title": "Integration by Parts",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    4
+   ],
+   "searchPhrase": "integration by parts calculus bc explained"
+  },
+  {
+   "id": "partial-fractions",
+   "ced": "6.12",
+   "title": "Linear Partial Fractions",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "linear partial fractions calculus bc explained"
+  },
+  {
+   "id": "improper-integrals",
+   "ced": "6.13",
+   "title": "Improper Integrals",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "searchPhrase": "improper integrals calculus bc explained"
+  },
+  {
+   "id": "eulers-method",
+   "ced": "7.5",
+   "title": "Euler's Method",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "euler's method calculus bc explained"
+  },
+  {
+   "id": "logistic-models",
+   "ced": "7.9",
+   "title": "Logistic Models",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "logistic models calculus bc explained"
+  },
+  {
+   "id": "arc-length",
+   "ced": "8.13",
+   "title": "Arc Length and Distance Traveled",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "arc length and distance traveled calculus bc explained"
+  },
+  {
+   "id": "parametric-derivatives",
+   "ced": "9.1",
+   "title": "Parametric Equations and Their Derivatives",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "parametric equations and their derivatives calculus bc explained"
+  },
+  {
+   "id": "parametric-second-derivatives",
+   "ced": "9.2",
+   "title": "Second Derivatives of Parametric Equations",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    1,
+    4
+   ],
+   "searchPhrase": "second derivatives of parametric equations calculus bc explained"
+  },
+  {
+   "id": "parametric-arc-length",
+   "ced": "9.3",
+   "title": "Arc Length of a Parametric Curve",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "arc length of a parametric curve calculus bc explained"
+  },
+  {
+   "id": "vector-derivatives",
+   "ced": "9.4",
+   "title": "Vector-Valued Functions and Their Derivatives",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "vector-valued functions and their derivatives calculus bc explained"
+  },
+  {
+   "id": "vector-integrals",
+   "ced": "9.5",
+   "title": "Integrating Vector-Valued Functions",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "integrating vector-valued functions calculus bc explained"
+  },
+  {
+   "id": "planar-motion",
+   "ced": "9.6",
+   "title": "Motion in the Plane",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "searchPhrase": "motion in the plane calculus bc explained"
+  },
+  {
+   "id": "polar-derivatives",
+   "ced": "9.7",
+   "title": "Polar Coordinates and Polar Derivatives",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "polar coordinates and polar derivatives calculus bc explained"
+  },
+  {
+   "id": "polar-area",
+   "ced": "9.8",
+   "title": "Area Inside a Polar Curve",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "area inside a polar curve calculus bc explained"
+  },
+  {
+   "id": "polar-area-between",
+   "ced": "9.9",
+   "title": "Area Between Two Polar Curves",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "area between two polar curves calculus bc explained"
+  },
+  {
+   "id": "series-convergence",
+   "ced": "10.1",
+   "title": "Convergent and Divergent Series",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "convergent and divergent series calculus bc explained"
+  },
+  {
+   "id": "geometric-series",
+   "ced": "10.2",
+   "title": "Geometric Series",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "geometric series calculus bc explained"
+  },
+  {
+   "id": "nth-term-test",
+   "ced": "10.3",
+   "title": "The nth Term Test for Divergence",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "the nth term test for divergence calculus bc explained"
+  },
+  {
+   "id": "integral-test",
+   "ced": "10.4",
+   "title": "The Integral Test",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "the integral test calculus bc explained"
+  },
+  {
+   "id": "p-series",
+   "ced": "10.5",
+   "title": "Harmonic Series and p-Series",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "harmonic series and p-series calculus bc explained"
+  },
+  {
+   "id": "comparison-tests",
+   "ced": "10.6",
+   "title": "Comparison Tests",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "comparison tests calculus bc explained"
+  },
+  {
+   "id": "alternating-series-test",
+   "ced": "10.7",
+   "title": "The Alternating Series Test",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "the alternating series test calculus bc explained"
+  },
+  {
+   "id": "ratio-test",
+   "ced": "10.8",
+   "title": "The Ratio Test",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "searchPhrase": "the ratio test calculus bc explained"
+  },
+  {
+   "id": "absolute-conditional",
+   "ced": "10.9",
+   "title": "Absolute and Conditional Convergence",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "absolute and conditional convergence calculus bc explained"
+  },
+  {
+   "id": "alternating-error-bound",
+   "ced": "10.10",
+   "title": "The Alternating Series Error Bound",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "searchPhrase": "the alternating series error bound calculus bc explained"
+  },
+  {
+   "id": "taylor-polynomials",
+   "ced": "10.11",
+   "title": "Taylor Polynomials",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "taylor polynomials calculus bc explained"
+  },
+  {
+   "id": "lagrange-error-bound",
+   "ced": "10.12",
+   "title": "The Lagrange Error Bound",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "searchPhrase": "the lagrange error bound calculus bc explained"
+  },
+  {
+   "id": "radius-interval-convergence",
+   "ced": "10.13",
+   "title": "Radius and Interval of Convergence",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "searchPhrase": "radius and interval of convergence calculus bc explained"
+  },
+  {
+   "id": "taylor-series",
+   "ced": "10.14",
+   "title": "Taylor and Maclaurin Series",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "taylor and maclaurin series calculus bc explained"
+  },
+  {
+   "id": "power-series-functions",
+   "ced": "10.15",
+   "title": "Representing Functions as Power Series",
+   "chapter": "unit-10",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "representing functions as power series calculus bc explained"
+  },
+  {
+   "id": "math-parametric-vectors",
+   "ced": null,
+   "title": "Parametric Equations and Vectors",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    2
+   ],
+   "before": "parametric-derivatives",
+   "searchPhrase": "parametric equations and vectors for calculus"
+  },
+  {
+   "id": "math-polar",
+   "ced": null,
+   "title": "Polar Coordinates and Polar Graphs",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    2
+   ],
+   "before": "polar-derivatives",
+   "searchPhrase": "polar coordinates and polar graphs for calculus"
+  },
+  {
+   "id": "math-sequences",
+   "ced": null,
+   "title": "Sequences, Sigma Notation and Factorials",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "series-convergence",
+   "searchPhrase": "sequences sigma notation and factorials"
+  }
+ ],
+ "everydayWords": {
+  "words": []
+ },
+ "concepts": [
+  {
+   "id": "parametric-equation",
+   "term": "parametric equations",
+   "aliases": [
+    "parametric equation",
+    "parametric curve",
+    "parametric curves",
+    "parametric function",
+    "parametric functions",
+    "parametric form"
+   ],
+   "taughtIn": "math-parametric-vectors",
+   "dependsOn": [
+    "function",
+    "function-graph"
+   ]
+  },
+  {
+   "id": "vector",
+   "term": "vector",
+   "aliases": [
+    "vectors",
+    "vector components",
+    "magnitude of a vector"
+   ],
+   "taughtIn": "math-parametric-vectors",
+   "dependsOn": [
+    "pythagorean-theorem"
+   ],
+   "notation": [
+    "\\\\left\\\\langle",
+    "\\\\langle"
+   ]
+  },
+  {
+   "id": "polar-coordinates",
+   "term": "polar coordinates",
+   "aliases": [
+    "polar coordinate",
+    "polar curve",
+    "polar curves",
+    "polar graph",
+    "polar graphs",
+    "polar equation",
+    "polar function",
+    "polar functions",
+    "polar form"
+   ],
+   "taughtIn": "math-polar",
+   "dependsOn": [
+    "radian",
+    "unit-circle",
+    "trig-function"
+   ]
+  },
+  {
+   "id": "infinite-sequence",
+   "term": "infinite sequence",
+   "aliases": [
+    "infinite sequences",
+    "sequence of terms",
+    "terms of a sequence",
+    "limit of a sequence"
+   ],
+   "taughtIn": "math-sequences",
+   "dependsOn": [
+    "function",
+    "limit-at-infinity"
+   ]
+  },
+  {
+   "id": "factorial",
+   "term": "factorial",
+   "aliases": [
+    "factorials"
+   ],
+   "taughtIn": "math-sequences",
+   "dependsOn": [
+    "infinite-sequence"
+   ],
+   "notation": [
+    "[A-Za-z0-9)}]!"
+   ]
+  },
+  {
+   "id": "integration-by-parts",
+   "term": "integration by parts",
+   "aliases": [
+    "by parts",
+    "tabular integration",
+    "tabular method"
+   ],
+   "taughtIn": "integration-by-parts",
+   "dependsOn": [
+    "indefinite-integral",
+    "product-rule",
+    "u-substitution"
+   ]
+  },
+  {
+   "id": "partial-fractions",
+   "term": "partial fractions",
+   "aliases": [
+    "partial fraction",
+    "partial fraction decomposition",
+    "linear partial fractions"
+   ],
+   "taughtIn": "partial-fractions",
+   "dependsOn": [
+    "rational-function",
+    "factoring",
+    "natural-log",
+    "indefinite-integral"
+   ]
+  },
+  {
+   "id": "improper-integral",
+   "term": "improper integral",
+   "aliases": [
+    "improper integrals"
+   ],
+   "taughtIn": "improper-integrals",
+   "dependsOn": [
+    "definite-integral",
+    "limit-at-infinity",
+    "infinite-limit",
+    "ftc"
+   ],
+   "notation": [
+    "\\\\int_\\{?[^}^]*\\}?\\^\\{?\\\\infty",
+    "\\\\int_\\{?-\\\\infty"
+   ]
+  },
+  {
+   "id": "convergence",
+   "term": "convergence",
+   "aliases": [
+    "converge",
+    "converges",
+    "convergent",
+    "diverge",
+    "diverges",
+    "divergent",
+    "divergence"
+   ],
+   "taughtIn": "improper-integrals",
+   "dependsOn": [
+    "improper-integral",
+    "limit"
+   ]
+  },
+  {
+   "id": "eulers-method",
+   "term": "Euler's method",
+   "aliases": [
+    "Euler method",
+    "Euler’s method",
+    "Euler step",
+    "Euler steps"
+   ],
+   "taughtIn": "eulers-method",
+   "dependsOn": [
+    "differential-equation",
+    "tangent-line",
+    "linearization",
+    "slope-field",
+    "estimate-bias"
+   ]
+  },
+  {
+   "id": "logistic-model",
+   "term": "logistic model",
+   "aliases": [
+    "logistic models",
+    "logistic growth",
+    "logistic differential equation",
+    "logistic equation"
+   ],
+   "taughtIn": "logistic-models",
+   "dependsOn": [
+    "differential-equation",
+    "exponential-model",
+    "proportional"
+   ]
+  },
+  {
+   "id": "carrying-capacity",
+   "term": "carrying capacity",
+   "aliases": [],
+   "taughtIn": "logistic-models",
+   "dependsOn": [
+    "logistic-model",
+    "limit-at-infinity",
+    "equilibrium"
+   ]
+  },
+  {
+   "id": "arc-length",
+   "term": "arc length of a curve",
+   "aliases": [
+    "length of a curve",
+    "arc length integral",
+    "arc length formula"
+   ],
+   "taughtIn": "arc-length",
+   "dependsOn": [
+    "definite-integral",
+    "derivative",
+    "pythagorean-theorem"
+   ]
+  },
+  {
+   "id": "parametric-derivative",
+   "term": "slope of a parametric curve",
+   "aliases": [
+    "parametric derivative",
+    "derivative of a parametric curve"
+   ],
+   "taughtIn": "parametric-derivatives",
+   "dependsOn": [
+    "parametric-equation",
+    "derivative",
+    "chain-rule",
+    "tangent-line"
+   ]
+  },
+  {
+   "id": "parametric-second-derivative",
+   "term": "second derivative of a parametric curve",
+   "aliases": [
+    "parametric second derivative"
+   ],
+   "taughtIn": "parametric-second-derivatives",
+   "dependsOn": [
+    "parametric-derivative",
+    "second-derivative",
+    "concave"
+   ]
+  },
+  {
+   "id": "parametric-arc-length",
+   "term": "arc length of a parametric curve",
+   "aliases": [
+    "parametric arc length",
+    "length of a parametric curve"
+   ],
+   "taughtIn": "parametric-arc-length",
+   "dependsOn": [
+    "arc-length",
+    "parametric-equation"
+   ]
+  },
+  {
+   "id": "vector-valued-function",
+   "term": "vector-valued function",
+   "aliases": [
+    "vector-valued functions",
+    "vector function",
+    "vector functions",
+    "position vector"
+   ],
+   "taughtIn": "vector-derivatives",
+   "dependsOn": [
+    "vector",
+    "parametric-equation",
+    "derivative"
+   ]
+  },
+  {
+   "id": "velocity-vector",
+   "term": "velocity vector",
+   "aliases": [
+    "velocity vectors",
+    "acceleration vector",
+    "acceleration vectors"
+   ],
+   "taughtIn": "vector-derivatives",
+   "dependsOn": [
+    "vector-valued-function",
+    "velocity",
+    "acceleration"
+   ]
+  },
+  {
+   "id": "vector-antiderivative",
+   "term": "antiderivative of a vector-valued function",
+   "aliases": [
+    "vector antiderivative"
+   ],
+   "taughtIn": "vector-integrals",
+   "dependsOn": [
+    "vector-valued-function",
+    "antiderivative",
+    "particular-solution"
+   ]
+  },
+  {
+   "id": "planar-motion",
+   "term": "motion in the plane",
+   "aliases": [
+    "planar motion",
+    "particle in the plane",
+    "displacement vector"
+   ],
+   "taughtIn": "planar-motion",
+   "dependsOn": [
+    "velocity-vector",
+    "vector-antiderivative",
+    "speed",
+    "displacement",
+    "total-distance",
+    "parametric-arc-length"
+   ]
+  },
+  {
+   "id": "polar-derivative",
+   "term": "slope of a polar curve",
+   "aliases": [
+    "polar derivative",
+    "derivative of a polar curve"
+   ],
+   "taughtIn": "polar-derivatives",
+   "dependsOn": [
+    "polar-coordinates",
+    "parametric-derivative",
+    "product-rule"
+   ],
+   "notation": [
+    "\\\\frac\\{dr\\}\\{d\\\\theta\\}"
+   ]
+  },
+  {
+   "id": "polar-area",
+   "term": "polar area",
+   "aliases": [
+    "area of a polar region",
+    "area inside a polar curve",
+    "area bounded by a polar curve"
+   ],
+   "taughtIn": "polar-area",
+   "dependsOn": [
+    "polar-coordinates",
+    "definite-integral",
+    "riemann-sum"
+   ]
+  },
+  {
+   "id": "polar-area-between",
+   "term": "area between polar curves",
+   "aliases": [
+    "area between two polar curves"
+   ],
+   "taughtIn": "polar-area-between",
+   "dependsOn": [
+    "polar-area",
+    "area-between-curves"
+   ]
+  },
+  {
+   "id": "infinite-series",
+   "term": "infinite series",
+   "aliases": [
+    "series"
+   ],
+   "taughtIn": "series-convergence",
+   "dependsOn": [
+    "infinite-sequence",
+    "sigma-notation",
+    "convergence"
+   ],
+   "notation": [
+    "\\\\sum_\\{?[a-z] ?= ?-?[0-9]+\\}?\\^\\{?\\\\infty"
+   ]
+  },
+  {
+   "id": "partial-sum",
+   "term": "partial sum",
+   "aliases": [
+    "partial sums",
+    "nth partial sum",
+    "sequence of partial sums"
+   ],
+   "taughtIn": "series-convergence",
+   "dependsOn": [
+    "infinite-series"
+   ]
+  },
+  {
+   "id": "geometric-series",
+   "term": "geometric series",
+   "aliases": [
+    "common ratio"
+   ],
+   "taughtIn": "geometric-series",
+   "dependsOn": [
+    "infinite-series",
+    "partial-sum"
+   ]
+  },
+  {
+   "id": "nth-term-test",
+   "term": "nth term test",
+   "aliases": [
+    "nth term test for divergence",
+    "n-th term test",
+    "divergence test"
+   ],
+   "taughtIn": "nth-term-test",
+   "dependsOn": [
+    "infinite-series",
+    "limit-at-infinity"
+   ]
+  },
+  {
+   "id": "integral-test",
+   "term": "integral test",
+   "aliases": [],
+   "taughtIn": "integral-test",
+   "dependsOn": [
+    "infinite-series",
+    "improper-integral",
+    "increasing"
+   ]
+  },
+  {
+   "id": "p-series",
+   "term": "p-series",
+   "aliases": [
+    "p series"
+   ],
+   "taughtIn": "p-series",
+   "dependsOn": [
+    "integral-test"
+   ]
+  },
+  {
+   "id": "harmonic-series",
+   "term": "harmonic series",
+   "aliases": [
+    "alternating harmonic series"
+   ],
+   "taughtIn": "p-series",
+   "dependsOn": [
+    "p-series"
+   ]
+  },
+  {
+   "id": "direct-comparison",
+   "term": "direct comparison test",
+   "aliases": [
+    "comparison test"
+   ],
+   "taughtIn": "comparison-tests",
+   "dependsOn": [
+    "infinite-series",
+    "p-series",
+    "geometric-series"
+   ]
+  },
+  {
+   "id": "limit-comparison",
+   "term": "limit comparison test",
+   "aliases": [],
+   "taughtIn": "comparison-tests",
+   "dependsOn": [
+    "direct-comparison",
+    "limit-at-infinity"
+   ]
+  },
+  {
+   "id": "alternating-series",
+   "term": "alternating series",
+   "aliases": [
+    "alternating series test"
+   ],
+   "taughtIn": "alternating-series-test",
+   "dependsOn": [
+    "infinite-series",
+    "nth-term-test"
+   ]
+  },
+  {
+   "id": "ratio-test",
+   "term": "ratio test",
+   "aliases": [],
+   "taughtIn": "ratio-test",
+   "dependsOn": [
+    "infinite-series",
+    "geometric-series",
+    "factorial"
+   ]
+  },
+  {
+   "id": "absolute-convergence",
+   "term": "absolute convergence",
+   "aliases": [
+    "absolutely convergent",
+    "converges absolutely"
+   ],
+   "taughtIn": "absolute-conditional",
+   "dependsOn": [
+    "convergence",
+    "alternating-series"
+   ]
+  },
+  {
+   "id": "conditional-convergence",
+   "term": "conditional convergence",
+   "aliases": [
+    "conditionally convergent",
+    "converges conditionally"
+   ],
+   "taughtIn": "absolute-conditional",
+   "dependsOn": [
+    "absolute-convergence"
+   ]
+  },
+  {
+   "id": "error-bound",
+   "term": "error bound",
+   "aliases": [
+    "error bounds"
+   ],
+   "taughtIn": "alternating-error-bound",
+   "dependsOn": [
+    "partial-sum"
+   ]
+  },
+  {
+   "id": "alternating-error-bound",
+   "term": "alternating series error bound",
+   "aliases": [
+    "alternating error bound"
+   ],
+   "taughtIn": "alternating-error-bound",
+   "dependsOn": [
+    "alternating-series",
+    "error-bound"
+   ]
+  },
+  {
+   "id": "taylor-polynomial",
+   "term": "Taylor polynomial",
+   "aliases": [
+    "Taylor polynomials",
+    "Maclaurin polynomial",
+    "Maclaurin polynomials"
+   ],
+   "taughtIn": "taylor-polynomials",
+   "dependsOn": [
+    "factorial",
+    "linearization",
+    "second-derivative"
+   ]
+  },
+  {
+   "id": "lagrange-error-bound",
+   "term": "Lagrange error bound",
+   "aliases": [
+    "Lagrange remainder",
+    "Lagrange form of the remainder"
+   ],
+   "taughtIn": "lagrange-error-bound",
+   "dependsOn": [
+    "taylor-polynomial",
+    "error-bound",
+    "absolute-extremum"
+   ]
+  },
+  {
+   "id": "power-series",
+   "term": "power series",
+   "aliases": [],
+   "taughtIn": "radius-interval-convergence",
+   "dependsOn": [
+    "infinite-series",
+    "ratio-test"
+   ]
+  },
+  {
+   "id": "radius-of-convergence",
+   "term": "radius of convergence",
+   "aliases": [],
+   "taughtIn": "radius-interval-convergence",
+   "dependsOn": [
+    "power-series",
+    "ratio-test"
+   ]
+  },
+  {
+   "id": "interval-of-convergence",
+   "term": "interval of convergence",
+   "aliases": [],
+   "taughtIn": "radius-interval-convergence",
+   "dependsOn": [
+    "radius-of-convergence",
+    "p-series",
+    "alternating-series",
+    "absolute-convergence"
+   ]
+  },
+  {
+   "id": "taylor-series",
+   "term": "Taylor series",
+   "aliases": [
+    "Maclaurin series"
+   ],
+   "taughtIn": "taylor-series",
+   "dependsOn": [
+    "taylor-polynomial",
+    "power-series",
+    "interval-of-convergence"
+   ]
+  },
+  {
+   "id": "term-by-term",
+   "term": "term-by-term differentiation",
+   "aliases": [
+    "term-by-term integration",
+    "differentiate term by term",
+    "integrate term by term"
+   ],
+   "taughtIn": "power-series-functions",
+   "dependsOn": [
+    "taylor-series",
+    "radius-of-convergence"
+   ]
+  }
+ ],
+ "circularDependencies": []
+}

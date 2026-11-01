@@ -1,0 +1,447 @@
+{
+ "stimuli": {
+  "radius-interval-convergence-s1": {
+   "kind": "table",
+   "title": "A power series and its ratio test",
+   "table": {
+    "caption": "The ratio test for $\\sum_{n=1}^{\\infty} \\frac{(x-3)^n}{n\\,2^n}$",
+    "cols": [
+     "Step",
+     "Result"
+    ],
+    "rows": [
+     [
+      "Term",
+      "$a_n = \\frac{(x-3)^n}{n\\,2^n}$"
+     ],
+     [
+      "Ratio",
+      "$\\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{|x-3|}{2} \\cdot \\frac{n}{n+1}$"
+     ],
+     [
+      "Limit",
+      "$\\frac{|x-3|}{2}$"
+     ]
+    ]
+   }
+  },
+  "radius-interval-convergence-s2": {
+   "kind": "table",
+   "title": "A geometric power series",
+   "table": {
+    "caption": "The series $\\sum_{n=0}^{\\infty} (2x)^n$ term by term",
+    "cols": [
+     "$n$",
+     "Term"
+    ],
+    "rows": [
+     [
+      "$0$",
+      "$1$"
+     ],
+     [
+      "$1$",
+      "$2x$"
+     ],
+     [
+      "$2$",
+      "$4x^2$"
+     ],
+     [
+      "$3$",
+      "$8x^3$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-radius-interval-convergence-1",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the radius of convergence of the series?",
+   "options": [
+    "$2$",
+    "$\\frac{1}{2}$",
+    "$3$",
+    "$4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ratio test limit is $\\frac{|x-3|}{2}$, and it is below 1 exactly when $|x - 3| < 2$, so the radius is 2.",
+    "options": [
+     "Right: $|x - 3| < 2$ gives a radius of 2.",
+     "This is the factor in front of $|x - 3|$, not the radius: solve the inequality for $|x - 3|$.",
+     "This is the center, $x = 3$, not the radius.",
+     "This is the width of the open interval, twice the radius."
+    ]
+   },
+   "stimulus": "radius-interval-convergence-s1"
+  },
+  {
+   "id": "cbc-radius-interval-convergence-2",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "At the right endpoint $x = 5$, what does the series become, and what happens there?",
+   "options": [
+    "The series $\\sum \\frac{1}{n}$, which diverges",
+    "A ratio test limit of 1, so the series converges",
+    "Terms that approach 0, so the series converges",
+    "A $p$-series with $p = 2$, which converges"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = 5$ each term is $\\frac{2^n}{n\\,2^n} = \\frac{1}{n}$: the harmonic series, which diverges.",
+    "options": [
+     "Right: the terms become $\\frac{1}{n}$.",
+     "A ratio test limit of 1 decides nothing; another test is needed at an endpoint.",
+     "Terms approaching 0 do not prove convergence; the harmonic series has them and diverges.",
+     "The power of $n$ is 1, not 2: the terms are $\\frac{1}{n}$."
+    ]
+   },
+   "stimulus": "radius-interval-convergence-s1"
+  },
+  {
+   "id": "cbc-radius-interval-convergence-3",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "At the left endpoint $x = 1$, what happens to the series?",
+   "options": [
+    "It converges by the alternating series test",
+    "It diverges by the nth term test",
+    "It diverges, as it does at $x = 5$",
+    "It converges by the ratio test"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = 1$ the terms are $\\frac{(-2)^n}{n\\,2^n} = \\frac{(-1)^n}{n}$: they alternate, decrease in size and approach 0, so the alternating series test gives convergence.",
+    "options": [
+     "Right: the alternating harmonic series converges.",
+     "The terms $\\frac{(-1)^n}{n}$ approach 0, so the nth term test says nothing.",
+     "The signs alternate here, which changes the answer.",
+     "At an endpoint the ratio test limit is 1, which decides nothing."
+    ]
+   },
+   "stimulus": "radius-interval-convergence-s1"
+  },
+  {
+   "id": "cbc-radius-interval-convergence-4",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "radius-interval-convergence-s1",
+   "q": "Give the interval of convergence of the series, with both endpoints tested.",
+   "interval": {
+    "lo": "1",
+    "hi": "5",
+    "loIn": true,
+    "hiIn": false,
+    "center": "3",
+    "ends": {
+     "lo": "At $x = 1$ the series is the alternating harmonic series, which converges, so $x = 1$ is included.",
+     "hi": "At $x = 5$ the series is the harmonic series, which diverges, so $x = 5$ is left out."
+    },
+    "mistakes": [
+     {
+      "answer": "(1, 5)",
+      "why": "Both endpoints left out: the ratio test cannot decide them. At $x = 1$ the series converges by the alternating series test, so include it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The ratio test gives $1 < x < 5$; the series converges at $x = 1$ (alternating harmonic) and diverges at $x = 5$ (harmonic), so the interval is $[1, 5)$."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-5",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the radius of convergence of this series?",
+   "options": [
+    "$\\frac{1}{2}$",
+    "$2$",
+    "$1$",
+    "$\\frac{1}{4}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The series is geometric with ratio $2x$; it converges when $|2x| < 1$, that is $|x| < \\frac{1}{2}$.",
+    "options": [
+     "Right: $|2x| < 1$ gives $|x| < \\frac{1}{2}$.",
+     "Two is the factor on $x$; dividing by it gives the radius.",
+     "One is the bound on the ratio $|2x|$, not on $|x|$.",
+     "This squares the radius; solve $|2x| < 1$ once."
+    ]
+   },
+   "stimulus": "radius-interval-convergence-s2"
+  },
+  {
+   "id": "cbc-radius-interval-convergence-6",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which describes the series at $x = \\frac{1}{2}$?",
+   "options": [
+    "Each term equals 1, so it diverges by the nth term test",
+    "Its terms approach 0, so it converges",
+    "It is alternating, so it converges",
+    "Its sum is $\\frac{1}{1 - 1}$, which is 0"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = \\frac{1}{2}$ the ratio is $2x = 1$, so every term is 1; terms that do not approach 0 make the series diverge.",
+    "options": [
+     "Right: the terms stay at 1.",
+     "The terms are all 1, which do not approach 0.",
+     "At $x = \\frac{1}{2}$ every term is positive; it alternates at $x = -\\frac{1}{2}$.",
+     "The geometric sum formula holds only for a ratio below 1 in size; here the ratio is 1."
+    ]
+   },
+   "stimulus": "radius-interval-convergence-s2"
+  },
+  {
+   "id": "cbc-radius-interval-convergence-7",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "radius-interval-convergence-s2",
+   "q": "Find the sum of the series at $x = \\frac{1}{4}$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is the first term. The sum of a geometric series is the first term over 1 minus the ratio: $\\frac{1}{1 - \\frac{1}{2}}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $x = \\frac{1}{4}$ the ratio is $\\frac{1}{2}$ and the first term is 1, so the sum is $\\frac{1}{1 - \\frac{1}{2}} = 2$."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-8",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which interval of convergence fits this series?",
+   "options": [
+    "$\\left(-\\frac{1}{2}, \\frac{1}{2}\\right)$",
+    "$\\left[-\\frac{1}{2}, \\frac{1}{2}\\right)$",
+    "$\\left[-\\frac{1}{2}, \\frac{1}{2}\\right]$",
+    "$(-2, 2)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At both endpoints the terms have size 1 and do not approach 0, so both are left out: $\\left(-\\frac{1}{2}, \\frac{1}{2}\\right)$.",
+    "options": [
+     "Right: both endpoints diverge by the nth term test.",
+     "At $x = -\\frac{1}{2}$ the terms are $(-1)^n$, which do not approach 0.",
+     "Neither endpoint gives terms that approach 0.",
+     "This uses 2 as the radius; the radius is $\\frac{1}{2}$."
+    ]
+   },
+   "stimulus": "radius-interval-convergence-s2"
+  },
+  {
+   "id": "cbc-radius-interval-convergence-9",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a power series $\\sum a_n x^n$, the ratio test gives $\\lim_{n \\to \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{1}{5}$. What is the radius of convergence?",
+   "options": [
+    "$5$",
+    "$\\frac{1}{5}$",
+    "$1$",
+    "$25$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ratio test limit for the series is $\\frac{|x|}{5}$, which is below 1 when $|x| < 5$.",
+    "options": [
+     "Right: the radius is the reciprocal of the limit.",
+     "The limit of the coefficient ratio is not the radius; take its reciprocal.",
+     "One is the bound the ratio test compares with.",
+     "This squares the reciprocal."
+    ]
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-10",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A power series centered at $x = 2$ has radius of convergence 4. Which is true?",
+   "options": [
+    "It converges at $x = 5$",
+    "It converges at $x = 6$",
+    "It diverges at $x = -2$",
+    "It converges at $x = 7$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Inside the open interval $(-2, 6)$ a power series converges (absolutely); $x = 5$ is inside.",
+    "options": [
+     "Right: 5 is within 4 of the center 2.",
+     "Six is an endpoint, which has to be tested on its own.",
+     "Negative two is an endpoint too; it may converge there.",
+     "Seven is outside the interval, where the series diverges."
+    ]
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-11",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Give the interval of convergence of $\\sum_{n=0}^{\\infty} \\frac{x^n}{n!}$.",
+   "interval": {
+    "lo": "-inf",
+    "hi": "inf"
+   },
+   "why": {
+    "correct": "The ratio test gives $\\frac{|x|}{n+1}$, which approaches 0 for every $x$, so the series converges for all real numbers."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-12",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "For which $x$ does $\\sum_{n=0}^{\\infty} n!\\,x^n$ converge?",
+   "interval": {
+    "point": "0"
+   },
+   "why": {
+    "correct": "For $x \\ne 0$ the ratio test gives $(n + 1)|x|$, which grows without bound, so the series diverges; at $x = 0$ every term after the first is 0."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-13",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $|x| < 3$, write the sum of $\\sum_{n=0}^{\\infty} \\left(\\frac{x}{3}\\right)^n$ as an expression in $x$.",
+   "expr": {
+    "answer": "3/(3-x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2.5,
+     2.5
+    ],
+    "lhs": "\\sum_{n=0}^{\\infty} \\left(\\frac{x}{3}\\right)^n =",
+    "mistakes": [
+     {
+      "expr": "1/(1-x)",
+      "why": "The ratio is $\\frac{x}{3}$, not $x$: the sum is $\\frac{1}{1 - \\frac{x}{3}}$."
+     },
+     {
+      "expr": "x/(3-x)",
+      "why": "That leaves out the first term, 1 (the $n = 0$ term): the sum starts at $n = 0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A geometric series with first term 1 and ratio $\\frac{x}{3}$ sums to $\\frac{1}{1 - \\frac{x}{3}} = \\frac{3}{3 - x}$."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-14",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Where is the interval of convergence of $\\sum_{n=0}^{\\infty} \\frac{(x+1)^n}{4^n}$ centered?",
+   "options": [
+    "At $x = -1$",
+    "At $x = 1$",
+    "At $x = 4$",
+    "At $x = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Powers of $(x + 1) = (x - (-1))$ center the series at $x = -1$.",
+    "options": [
+     "Right: $x + 1 = x - (-1)$.",
+     "The sign flips: $x + 1$ is zero at $x = -1$.",
+     "Four sets the radius, not the center.",
+     "A series in powers of $x$ is centered at 0; this one is in powers of $x + 1$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-15",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "Why does the ratio test not settle convergence at an endpoint of the interval?",
+   "options": [
+    "There the ratio test limit is 1, which decides nothing",
+    "There the terms of the series are undefined",
+    "A power series diverges at its endpoints",
+    "The ratio test applies to alternating series alone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The endpoints are exactly where the ratio test limit equals 1, the case the test leaves open; each endpoint needs another test.",
+    "options": [
+     "Right: a limit of 1 leaves the question open.",
+     "The terms are defined at the endpoints; they are just numbers.",
+     "A series may converge at an endpoint, as the alternating harmonic series does.",
+     "The ratio test works on any series with nonzero terms."
+    ]
+   }
+  }
+ ]
+}

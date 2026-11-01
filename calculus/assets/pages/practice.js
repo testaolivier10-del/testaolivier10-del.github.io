@@ -28,13 +28,15 @@
    diff, q, options/numeric, why). They join the pool as standalone steps
    when they match the filters; nothing else here needs to change. */
 (function(){
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var BASE = window.ApCalcBase || '';
   var app = document.getElementById('app');
   if(!app) return;
   var hero = document.querySelector('.page-head, .calc-hero');
   var CUR = window.ApCalcCurriculum || { units: [], topics: [], practices: [] };
   var Core = window.ApCalcCore, Q = window.ApCalcQuestions;
-  var SITE = 'https://levlprep.com/calculus/';
+  var SITE = CC.site || 'https://levlprep.com/calculus/';
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function plural(n, w, ws){ return n + ' ' + (n === 1 ? w : (ws || w + 's')); }
@@ -55,6 +57,8 @@
     { id: 'calc', name: 'Calculator questions' },
     { id: 'nocalc', name: 'No-calculator questions' }
   ];
+  // The interval answer type (AP® Calculus BC's intervals of convergence) as a filter where the course has it.
+  if(CC.intervals) KINDS.push({ id: 'interval', name: 'Intervals of convergence' });
   var DIFFS = [{ id: '', name: 'Any' }, { id: '1', name: 'Easier' }, { id: '2', name: 'Medium' }, { id: '3', name: 'Harder' }];
   var MODES = [
     { id: 'build', title: 'Build a set', desc: 'Pick the unit, topic, practice, type and difficulty.' },
@@ -99,12 +103,13 @@
     if(f.kind === 'sets' && !q.stimulus) return false;
     if(f.kind === 'numeric' && q.type !== 'numeric') return false;
     if(f.kind === 'expr' && q.type !== 'expr') return false;
+    if(f.kind === 'interval' && q.type !== 'interval') return false;
     if(f.kind === 'calc' && !q.calc) return false;
     if(f.kind === 'nocalc' && q.calc) return false;
     return true;
   }
   /* Flags (assets/course/flags.js): kept until the student unflags them. */
-  function flaggedIds(){ var o = {}; (window.LevlFlags ? window.LevlFlags.list('apcalc') : []).forEach(function(id){ o[id] = 1; }); return o; }
+  function flaggedIds(){ var o = {}; (window.LevlFlags ? window.LevlFlags.list(CK) : []).forEach(function(id){ o[id] = 1; }); return o; }
   function flaggedCount(){ var f = flaggedIds(); return stubs ? stubs.filter(function(q){ return f[q.id]; }).length : 0; }
   function missedIds(){ var o = {}; (Core ? Core.missed() : []).forEach(function(id){ o[id] = 1; }); return o; }
   function weakTopics(){ return Core ? Core.weakest(3).filter(function(x){ return x.value < 0.8; }) : []; }
@@ -310,6 +315,11 @@
       var E = q.expr || {};
       body = '<p class="calc-ws-blank">Answer: ' + (E.lhsHtml || '') + ' ________________________</p>';
       keyHtml = (E.lhsHtml ? E.lhsHtml + ' ' : '') + (E.answerHtml || esc(E.answer));
+    } else if(q.type === 'interval'){
+      var IV = q.interval || {};
+      body = '<p class="calc-ws-blank">Interval: ________________________ (both endpoints tested)</p>';
+      var BI = window.ApCalcBCInterval;
+      keyHtml = IV.answerHtml || (BI ? esc(BI.text(BI.key(IV), IV['var'])) : '');
     } else if(q.type === 'predict'){
       body = '<table class="calc-ws-pred"><thead><tr><th scope="col">Variable</th><th scope="col">Increases, decreases or no change</th></tr></thead><tbody>' + q.variables.map(function(v){ return '<tr><th scope="row">' + v.name + '</th><td></td></tr>'; }).join('') + '</tbody></table>';
       key = q.variables.map(function(v){ return strip(v.name) + ': ' + (v.answer === 'up' ? 'increases' : v.answer === 'down' ? 'decreases' : 'no change'); }).join('; ');
@@ -455,7 +465,7 @@
     if(!session || session.finished) return;
     session.finished = true;
     var res = session.results, right = res.filter(function(r){ return r.correct; }).length;
-    if(res.length && Core) Core.event('apcalc-session-finish', { mode: session.mode === 'retry' ? 'missed' : session.mode, answered: res.length, correct: right });
+    if(res.length && Core) Core.event(CK + '-session-finish', { mode: session.mode === 'retry' ? 'missed' : session.mode, answered: res.length, correct: right });
     if(!res.length){ renderSetup(); return; }
     /* Offer to save the progress, the way NREMT and ochem do after a session
        (account.js promptToSave decides whether to show anything). */
@@ -488,7 +498,7 @@
         '<button type="button" class="btn-outline" data-act="setup">Change the set</button>' +
         (Core.reviewCount() ? '<a class="btn-outline" href="' + BASE + 'review.html">Review queue (' + Core.reviewCount() + ' due)</a>' : '') +
       '</div>' +
-      (window.LevlPremium && window.LevlPremium.card && res.length >= 5 ? window.LevlPremium.card('apcalc', 'summary') : '') +
+      (window.LevlPremium && window.LevlPremium.card && res.length >= 5 ? window.LevlPremium.card(CK, 'summary') : '') +
       '</div>';
     var mode = session.mode;
     app.querySelectorAll('[data-act]').forEach(function(b){

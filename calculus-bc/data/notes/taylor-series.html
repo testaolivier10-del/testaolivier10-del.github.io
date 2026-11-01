@@ -1,0 +1,49 @@
+<p>A Taylor polynomial has a last term. If you never stop adding terms, you get a power series, the Taylor series of the function. For the functions in this course (the four series below and every series built from them), that series does more than approximate: on its interval of convergence it equals the function. That is a property of these functions, not of every function: a few functions have a Taylor series that converges to something else, and the course does not use them.</p>
+
+<h2>From polynomials to a series</h2>
+<p>The Taylor series of $f$ about $x = a$ is</p>
+<p>$$\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x - a)^n = f(a) + f'(a)(x - a) + \frac{f''(a)}{2!}(x - a)^2 + \cdots$$</p>
+<p>About $a = 0$ it is called the Maclaurin series. The Taylor polynomial $P_n$ is its partial sum through the $(x - a)^n$ term. So the questions of the last three topics fit together: $P_n(x)$ is a partial sum, the error bounds measure how far a partial sum is from the sum, and the interval of convergence says where the partial sums settle at all.</p>
+<figure id="fig-exp" data-fig="taylor-series-exp"><figcaption>The partial sums of the Maclaurin series for $e^x$ close in on the curve.</figcaption></figure>
+<p>For $e^x$, every derivative at 0 is 1, so the Maclaurin series is $\sum \frac{x^n}{n!}$. <a class="figref" href="#fig-exp">The figure</a> shows its first partial sums closing in on $e^x$. The ratio test gives $\frac{|x|}{n + 1} \to 0$ for every $x$, so the series converges everywhere, and it converges to $e^x$.</p>
+
+<h2>Four series to know by heart</h2>
+<table class="compare">
+<thead><tr><th>Function</th><th>Maclaurin series</th><th>General term</th><th>Converges to the function for</th></tr></thead>
+<tbody>
+<tr><td>$\frac{1}{1 - x}$</td><td>$1 + x + x^2 + x^3 + \cdots$</td><td>$x^n$</td><td>$-1 < x < 1$</td></tr>
+<tr><td>$e^x$</td><td>$1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots$</td><td>$\frac{x^n}{n!}$</td><td>every $x$</td></tr>
+<tr><td>$\sin x$</td><td>$x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots$</td><td>$\frac{(-1)^n x^{2n+1}}{(2n+1)!}$</td><td>every $x$</td></tr>
+<tr><td>$\cos x$</td><td>$1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots$</td><td>$\frac{(-1)^n x^{2n}}{(2n)!}$</td><td>every $x$</td></tr>
+</tbody>
+</table>
+<p>Patterns help you remember them. $\sin x$ is odd, so only odd powers appear; $\cos x$ is even, so only even powers. Both alternate in sign because their derivatives cycle through $\sin, \cos, -\sin, -\cos$. The series for $\frac{1}{1 - x}$ is just the geometric series, which is why it works only for $|x| < 1$.</p>
+
+<h2>Building a Taylor series from derivatives</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the Taylor series for $f(x) = e^x$ about $x = 2$.</p>
+<p>Every derivative of $e^x$ is $e^x$, so $f^{(n)}(2) = e^2$ for every $n$.</p>
+<p>The coefficients are $\frac{e^2}{n!}$, and the series is $\sum_{n=0}^{\infty} \frac{e^2 (x - 2)^n}{n!} = e^2 + e^2(x - 2) + \frac{e^2}{2!}(x - 2)^2 + \cdots$</p>
+</div>
+<p>When a question gives a formula for $f^{(n)}(a)$ instead of the function, the same recipe applies: divide by $n!$ and simplify. If $f^{(n)}(0) = \frac{n!}{3^n}$, the coefficients are $\frac{1}{3^n}$ and the series is the geometric series $\sum \left(\frac{x}{3}\right)^n$.</p>
+
+<h2>Reading coefficients backward</h2>
+<p>If a function is given by a power series $\sum c_n (x - a)^n$ with a positive radius, then that series is its Taylor series, so $c_n = \frac{f^{(n)}(a)}{n!}$ and</p>
+<p>$$f^{(n)}(a) = n! \cdot c_n.$$</p>
+<div class="worked">
+<p><b>Worked example 2.</b> $g(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^n}{n + 2}$. Find $g''(0)$.</p>
+<p>The coefficient of $x^2$ is $c_2 = \frac{(-1)^2}{2 + 2} = \frac{1}{4}$, so $g''(0) = 2! \cdot \frac{1}{4} = \frac{1}{2}$.</p>
+</div>
+
+<h2>Using known series to find sums and limits</h2>
+<div class="worked">
+<p><b>Worked example 3.</b> Find $\sum_{n=0}^{\infty} \frac{(-1)^n}{(2n + 1)!}\left(\frac{\pi}{6}\right)^{2n+1}$.</p>
+<p>This is the series for $\sin x$ with $x = \frac{\pi}{6}$, so the sum is $\sin\frac{\pi}{6} = \frac{1}{2}$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 4.</b> Find $\lim_{x \to 0} \frac{1 - \cos x}{x^2}$.</p>
+<p>$1 - \cos x = \frac{x^2}{2!} - \frac{x^4}{4!} + \cdots$, so $\frac{1 - \cos x}{x^2} = \frac{1}{2} - \frac{x^2}{24} + \cdots \to \frac{1}{2}$.</p>
+</div>
+
+<h2>Series or polynomial?</h2>
+<p>When a question asks for a Taylor polynomial, write a finite sum that ends at the stated degree. When it asks for a series, write the first few terms followed by "$+ \cdots$", or use sigma notation with the general term. Mixing the two, a polynomial with "$+ \cdots$" or a series with no general term when one is asked for, costs points on the exam.</p>

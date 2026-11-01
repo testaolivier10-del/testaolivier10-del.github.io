@@ -1,0 +1,475 @@
+{
+ "stimuli": {
+  "alternating-error-bound-s1": {
+   "kind": "table",
+   "title": "The terms of an alternating series",
+   "table": {
+    "caption": "The series $S = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n \\cdot 2^n} = \\frac{1}{2} - \\frac{1}{8} + \\frac{1}{24} - \\cdots$ and the sizes of its terms",
+    "cols": [
+     "$n$",
+     "$1$",
+     "$2$",
+     "$3$",
+     "$4$",
+     "$5$",
+     "$6$"
+    ],
+    "rows": [
+     [
+      "$a_n = \\frac{1}{n \\cdot 2^n}$",
+      "$\\frac{1}{2}$",
+      "$\\frac{1}{8}$",
+      "$\\frac{1}{24}$",
+      "$\\frac{1}{64}$",
+      "$\\frac{1}{160}$",
+      "$\\frac{1}{384}$"
+     ]
+    ]
+   }
+  },
+  "alternating-error-bound-s2": {
+   "kind": "table",
+   "title": "Another alternating series",
+   "table": {
+    "caption": "The series $T = \\sum_{n=0}^{\\infty} \\frac{(-1)^n}{(2n)!} = 1 - \\frac{1}{2!} + \\frac{1}{4!} - \\frac{1}{6!} + \\cdots$",
+    "cols": [
+     "$n$",
+     "$0$",
+     "$1$",
+     "$2$",
+     "$3$",
+     "$4$"
+    ],
+    "rows": [
+     [
+      "$\\frac{(-1)^n}{(2n)!}$",
+      "$1$",
+      "$-\\frac{1}{2}$",
+      "$\\frac{1}{24}$",
+      "$-\\frac{1}{720}$",
+      "$\\frac{1}{40320}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-alternating-error-bound-1",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "alternating-error-bound-s1",
+   "q": "Find $S_3$, the sum of the first three terms.",
+   "numeric": {
+    "answer": "5/12",
+    "mistakes": [
+     {
+      "value": "2/3",
+      "why": "That adds the sizes. The signs alternate: $\\frac{1}{2} - \\frac{1}{8} + \\frac{1}{24}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$S_3 = \\frac{1}{2} - \\frac{1}{8} + \\frac{1}{24} = \\frac{12 - 3 + 1}{24} = \\frac{10}{24} = \\frac{5}{12}$."
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-2",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "alternating-error-bound-s1",
+   "q": "Use the alternating series error bound to find a number $E$ with $|S - S_3| \\le E$.",
+   "numeric": {
+    "answer": "1/64",
+    "mistakes": [
+     {
+      "value": "1/24",
+      "why": "$\\frac{1}{24}$ is the last term used. The bound is the first term left out, $a_4 = \\frac{1}{64}$."
+     },
+     {
+      "value": "1/160",
+      "why": "$\\frac{1}{160}$ is $a_5$, the bound for $S_4$. For $S_3$ the first omitted term is $a_4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The series alternates and its sizes $\\frac{1}{n \\cdot 2^n}$ decrease to 0, so the alternating series error bound applies: $|S - S_3| \\le a_4 = \\frac{1}{64}$."
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-3",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "alternating-error-bound-s1",
+   "q": "Is $S_3$ an overestimate or an underestimate of $S$?",
+   "options": [
+    "An underestimate: the terms keep getting smaller in size",
+    "An underestimate: $S_3$ ends with a positive term, $\\frac{1}{24}$",
+    "Neither: $S_3$ equals $S$ to two decimal places",
+    "An overestimate: the next term, $-\\frac{1}{64}$, is negative"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The partial sums zigzag around $S$, and the next step, $-\\frac{1}{64}$, goes down. So $S < S_3$: $S_3$ is an overestimate. (Indeed $S_3 \\approx 0.4167$ and $S \\approx 0.4055$.)",
+    "options": [
+     "Shrinking terms do not decide the direction; the sign of the next term does.",
+     "Ending with a positive term means $S_3$ overshot; the sum is below it.",
+     "$S$ lies strictly between $S_3$ and $S_4$, so $S_3$ overshoots it.",
+     "Right: the next step would go down, so $S$ is below $S_3$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-4",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "alternating-error-bound-s1",
+   "q": "What is the smallest $n$ for which the alternating series error bound guarantees $|S - S_n| < 0.01$?",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "For $S_4$ the bound is $a_5 = \\frac{1}{160} < 0.01$ already, so $n = 4$ is enough."
+     },
+     {
+      "value": 3,
+      "why": "For $S_3$ the bound is $a_4 = \\frac{1}{64} \\approx 0.0156$, which is not below 0.01."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The bound for $S_n$ is $a_{n+1}$. $a_4 = \\frac{1}{64} \\approx 0.0156$ is too big, but $a_5 = \\frac{1}{160} = 0.00625 < 0.01$, so $n = 4$."
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-5",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "alternating-error-bound-s1",
+   "q": "Which statement correctly justifies that $S_4$ is within 0.01 of $S$?",
+   "options": [
+    "$|S - S_4| = \\frac{1}{160}$, which is less than 0.01",
+    "The series alternates with sizes decreasing to 0, so $|S - S_4| \\le \\frac{1}{160} < 0.01$",
+    "The terms approach 0, so $S_4$ is close to $S$",
+    "$|S - S_4| \\le \\frac{1}{64} < 0.01$, since $\\frac{1}{64}$ is the fourth term"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The alternating series error bound applies because the series alternates and $\\frac{1}{n \\cdot 2^n}$ decreases to 0. It gives $|S - S_4| \\le a_5 = \\frac{1}{160} = 0.00625 < 0.01$.",
+    "options": [
+     "The bound gives \"at most\", not \"equals\"; the actual error is smaller than $\\frac{1}{160}$.",
+     "Right: conditions, the bound, and the comparison with 0.01.",
+     "Terms approaching 0 do not give a size; the bound $a_5$ with its conditions does.",
+     "The fourth term is used in $S_4$; the bound is the first term left out, $\\frac{1}{160}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-6",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "alternating-error-bound-s2",
+   "q": "Find the sum of the terms for $n = 0$, $1$ and $2$.",
+   "numeric": {
+    "answer": "13/24",
+    "mistakes": [
+     {
+      "value": "37/24",
+      "why": "The middle term is $-\\frac{1}{2}$: $1 - \\frac{1}{2} + \\frac{1}{24}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$1 - \\frac{1}{2} + \\frac{1}{24} = \\frac{24 - 12 + 1}{24} = \\frac{13}{24}$."
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-7",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "alternating-error-bound-s2",
+   "q": "What is the alternating series error bound for using $\\frac{13}{24}$ (the terms for $n = 0, 1, 2$) as an approximation of $T$?",
+   "options": [
+    "$\\frac{1}{24}$, the size of the term for $n = 2$",
+    "$\\frac{1}{40320}$, the size of the term for $n = 4$",
+    "$\\frac{1}{120}$, the size of $\\frac{1}{5!}$",
+    "$\\frac{1}{720}$, the size of the term for $n = 3$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The series alternates and $\\frac{1}{(2n)!}$ decreases to 0, so the error is at most the size of the first omitted term: $\\left|T - \\frac{13}{24}\\right| \\le \\frac{1}{6!} = \\frac{1}{720}$.",
+    "options": [
+     "That term is already in the estimate; the bound is the first term left out.",
+     "That is the second term left out; the bound is the first.",
+     "The terms have even factorials, $(2n)!$; the next one is $\\frac{1}{6!}$.",
+     "Right: the first term left out."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-8",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "alternating-error-bound-s2",
+   "q": "Which statement shows that $\\frac{13}{24}$ approximates $T$ with an error less than $0.002$?",
+   "options": [
+    "$\\left|T - \\frac{13}{24}\\right| \\le \\frac{1}{720} < \\frac{1}{500} = 0.002$",
+    "$\\left|T - \\frac{13}{24}\\right| = \\frac{1}{720} < 0.002$",
+    "$\\left|T - \\frac{13}{24}\\right| \\le \\frac{1}{24} < 0.002$",
+    "$\\left|T - \\frac{13}{24}\\right| \\le \\frac{1}{40320} < 0.002$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The error is at most $\\frac{1}{720} \\approx 0.00139$, and $\\frac{1}{720} < \\frac{1}{500} = 0.002$. Writing \"error $\\le$ bound $<$ given number\" is the form that earns credit.",
+    "options": [
+     "Right: the bound, then a comparison with the given number.",
+     "The bound gives \"at most\"; the error is not known to equal $\\frac{1}{720}$.",
+     "$\\frac{1}{24} \\approx 0.042$ is not below 0.002, and it is the last term used, not the first omitted.",
+     "$\\frac{1}{40320}$ is the second term left out; the bound uses the first, $\\frac{1}{720}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-9",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "alternating-error-bound-s2",
+   "q": "Is $\\frac{13}{24}$ greater than or less than $T$?",
+   "options": [
+    "Less: the first omitted term, $\\frac{1}{720}$, is positive",
+    "Greater: the next term, $-\\frac{1}{720}$, is negative",
+    "Less: each partial sum lies below the sum of the series",
+    "Equal: the remaining terms are too small to change it"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The next term, $-\\frac{1}{720}$, would move the partial sum down, so $T < \\frac{13}{24}$ (in fact $T \\approx 0.54030$ and $\\frac{13}{24} \\approx 0.54167$).",
+    "options": [
+     "The first omitted term ($n = 3$) is $-\\frac{1}{720}$, negative.",
+     "Right: the sum lies below this partial sum.",
+     "Partial sums alternate above and below the sum.",
+     "They are small but not zero; the sum differs from $\\frac{13}{24}$ by up to $\\frac{1}{720}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-10",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "When can you use the alternating series error bound $|S - S_n| \\le a_{n+1}$?",
+   "options": [
+    "When the series converges, by any of the tests in this unit",
+    "When the sizes $a_n$ approach 0, whatever their signs",
+    "When it alternates and the sizes decrease to 0",
+    "When the ratio test limit for the series is below 1"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The bound holds exactly when the alternating series test applies: alternating signs and sizes that decrease and approach 0. Then the error of $S_n$ is at most $a_{n+1}$.",
+    "options": [
+     "The bound needs the alternating structure; a convergent series of positive terms does not qualify.",
+     "The sizes must also decrease and the signs alternate.",
+     "Right: the conditions of the alternating series test.",
+     "The ratio test says nothing about this bound."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-11",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says the error in $S_{10}$ for $\\sum_{n=1}^{\\infty} \\frac{1}{n^2}$ is at most $\\frac{1}{121}$, the first term left out. What is wrong?",
+   "options": [
+    "The first term left out is $\\frac{1}{100}$, not $\\frac{1}{121}$",
+    "The bound should be $\\frac{1}{121} + \\frac{1}{144}$, the next two terms",
+    "Nothing: the argument is correct as written",
+    "The series does not alternate, so this bound does not apply"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The alternating series error bound needs alternating signs. Here every omitted term is positive, so the error is $\\frac{1}{121} + \\frac{1}{144} + \\cdots$, which is more than $\\frac{1}{121}$ (about $0.095$).",
+    "options": [
+     "$S_{10}$ uses $n = 1$ to $10$, so the first omitted term is $\\frac{1}{121}$.",
+     "Adding two terms is still too small: the error is the sum of the whole tail.",
+     "The bound needs alternating signs; here every omitted term is positive.",
+     "Right: with positive terms the error is the whole positive tail, larger than one term."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-12",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For an alternating series that meets the conditions of the test, $S_{20} = 1.3527$ and $a_{21} = 0.01$. What does the error bound tell you about the sum $S$?",
+   "options": [
+    "$1.3427 \\le S \\le 1.3627$",
+    "$S = 1.3527 \\pm 0.01$ exactly",
+    "$S = 1.3627$",
+    "$S \\ge 1.3527$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$|S - S_{20}| \\le a_{21} = 0.01$ means $S_{20} - 0.01 \\le S \\le S_{20} + 0.01$, that is $1.3427 \\le S \\le 1.3627$.",
+    "options": [
+     "Right: $S$ is within $0.01$ of $S_{20}$.",
+     "The bound gives a range for $S$, not two exact values.",
+     "The bound limits the error; it does not say the error equals $0.01$.",
+     "The sum may lie on either side of $S_{20}$, depending on the sign of the 21st term."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-13",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 1,
+   "q": "The first omitted term of an alternating series is $0.003$, and the alternating series error bound applies. Which sentence is correct?",
+   "options": [
+    "The error is exactly $0.003$",
+    "The error is at most $0.003$",
+    "The error is at least $0.003$",
+    "The error is about $0.0015$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The alternating series error bound says $|S - S_n| \\le 0.003$: the error is at most $0.003$. Saying it \"equals\" $0.003$ loses the point.",
+    "options": [
+     "The actual error is less than or equal to the bound, usually less.",
+     "Right: the bound is a maximum.",
+     "The bound is an upper limit, not a lower one.",
+     "The bound does not estimate the error; it caps it."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-14",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "How many terms of $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n}$ does the alternating series error bound say you need so that the error is less than $0.001$?",
+   "numeric": {
+    "answer": 1000,
+    "mistakes": [
+     {
+      "value": 999,
+      "why": "With 999 terms the bound is $\\frac{1}{1000} = 0.001$, which is not less than $0.001$."
+     },
+     {
+      "value": 1001,
+      "why": "With 1000 terms the bound is $\\frac{1}{1001} < 0.001$ already."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The bound for $S_n$ is $\\frac{1}{n + 1}$. We need $\\frac{1}{n + 1} < 0.001$, so $n + 1 > 1000$: $n = 1000$ terms. The series converges very slowly."
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-15",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which number does the alternating series error bound give for $|S - S_9|$, where $S = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n^3}$?",
+   "options": [
+    "$\\frac{1}{729}$, the ninth term's size",
+    "$\\frac{1}{1331}$, the eleventh term's size",
+    "$\\frac{1}{100}$, the tenth term without the cube",
+    "$\\frac{1}{1000}$, the tenth term's size"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The series alternates and $\\frac{1}{n^3}$ decreases to 0, so $|S - S_9| \\le a_{10} = \\frac{1}{1000}$.",
+    "options": [
+     "The ninth term is part of $S_9$; the bound is the first term left out.",
+     "That is the second term left out.",
+     "The terms are $\\frac{1}{n^3}$, so the tenth is $\\frac{1}{1000}$.",
+     "Right: $S_9$ stops at $n = 9$, so the first term left out is $\\frac{1}{10^3}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-error-bound-16",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-error-bound",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For $S = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n^2}$, $S_4 = \\frac{115}{144}$ and the next term is $\\frac{1}{25}$. Which interval for $S$ do the alternating series error bound and the sign of the next term give?",
+   "options": [
+    "$\\left(\\frac{115}{144}, \\frac{115}{144} + \\frac{1}{25}\\right)$",
+    "$\\left(\\frac{115}{144} - \\frac{1}{25}, \\frac{115}{144}\\right)$",
+    "$\\left(\\frac{115}{144} - \\frac{1}{16}, \\frac{115}{144}\\right)$",
+    "$\\left(\\frac{115}{144}, \\frac{115}{144} + \\frac{1}{16}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$S_4 = 1 - \\frac{1}{4} + \\frac{1}{9} - \\frac{1}{16}$ ends with a subtracted term, so the next step ($+\\frac{1}{25}$) goes up and $S > S_4$. The error is at most $\\frac{1}{25}$, so $S$ lies between $\\frac{115}{144} \\approx 0.7986$ and $\\frac{115}{144} + \\frac{1}{25} \\approx 0.8386$.",
+    "options": [
+     "Right: $S_4$ ends with a subtracted term, so $S$ is above it, by less than $\\frac{1}{25}$.",
+     "$S_4$ ends with $-\\frac{1}{16}$, so it undershoots: $S$ is above $S_4$.",
+     "$\\frac{1}{16}$ is the last term used; the next term, $\\frac{1}{25}$, bounds the error, and $S$ is above $S_4$.",
+     "This interval does contain $S$, but it uses $\\frac{1}{16}$, the last term used. The bound is the first term left out, $\\frac{1}{25}$, which gives the narrower interval."
+    ]
+   }
+  }
+ ]
+}

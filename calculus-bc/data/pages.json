@@ -1,0 +1,249 @@
+{
+ "about": "The AP Calculus BC app pages and trainers (docs/apcalcbc-architecture.md). scripts/build-apcalcbc.mjs writes each app page's shell from apps[] and runs AB's page scripts (calculus/assets/<script>). tools[]: the six BC trainers of docs/apcalcbc-spec.md section 6, pre-registered in Phase 0 (page calculus-bc/tools/<slug>.html, script calculus-bc/assets/tools/<slug>.js, model calculus-bc/assets/tools/math/<slug>.js, content calculus-bc/data/tools/<slug>.json, validator scripts/lib/apcalcbc-tool-checks/<slug>.mjs, test scripts/test/apcalcbc-tool-<slug>.test.mjs); a tool is built only when its data file exists and its topic is published. Entries with \"from\": \"ab\" are AB's trainers, filled in from calculus/data/pages.json and linked to their AB pages, never built here. Free (proposed, owner to confirm): series-lab; the rest \"premium\": \"tools\".",
+ "apps": [
+  {
+   "slug": "practice",
+   "premium": "question-bank",
+   "section": "practice",
+   "h1": "Practice",
+   "title": "Practice questions",
+   "desc": "Calculus BC practice by unit, topic or skill: every AB topic plus parametric, polar and series, with graph and table sets and typed answers graded by value.",
+   "card": "Drill a unit, a topic or a mathematical practice, with graph and table sets.",
+   "script": "pages/practice.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "review",
+   "premium": "review",
+   "section": "review",
+   "h1": "Review",
+   "title": "Spaced review",
+   "desc": "Your Calculus BC spaced review queue: every question you missed comes back just before you would forget it.",
+   "card": "Missed questions come back when you are about to forget them.",
+   "script": "pages/review.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "exams",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Exams",
+   "title": "Unit tests and practice exams",
+   "desc": "Timed Calculus BC unit tests and full practice exams in the real format: 29 + 13 multiple-choice, then 2 + 4 free-response, with and without a calculator.",
+   "card": "Unit tests and full timed practice exams in the real four-part format.",
+   "script": "pages/exams.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "frq",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Free-response practice",
+   "title": "Free-response practice",
+   "desc": "Calculus BC free-response practice in the recurring exam types, parametric, polar and series included, 9 points each, with rubrics and full-credit samples.",
+   "card": "Every recurring free-response type, with 9-point rubrics and sample answers.",
+   "script": "pages/frq.js",
+   "css": [
+    "pages/pages.css",
+    "../../assets/course/reading.css"
+   ]
+  },
+  {
+   "slug": "justify",
+   "premium": "justify",
+   "section": "exams",
+   "h1": "Justification trainer",
+   "title": "Justification trainer",
+   "desc": "Calculus BC justification practice: name the theorem or test, check its conditions, conclude, and compare an answer that earns the point with one that does not.",
+   "lede": "Write a justification, then check it against the rubric and two model answers: one that earns the point and one that loses it.",
+   "card": "Justify with the right theorem or test and its conditions, checked against a rubric.",
+   "script": "pages/justify.js",
+   "studio": true,
+   "css": [
+    "pages/pages.css",
+    "pages/entry.css"
+   ]
+  },
+  {
+   "slug": "cram",
+   "section": "exams",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Cram kit",
+   "title": "Cram kit",
+   "desc": "Calculus BC cram plans counted back from your exam date: three or two weeks, day by day, weighted by unit, with unit sheets, mixed sets and practice exams.",
+   "lede": "A 3-week or 2-week plan counted back from your exam date, day by day: unit sheets and notes, a timed mixed set and one free-response question each study day, two full practice exams and rest days. Print it and tick the days off.",
+   "card": "3-week and 2-week plans to exam day, and timed mixed sets.",
+   "script": "pages/cram.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "flashcards",
+   "section": "practice",
+   "h1": "Flashcards",
+   "title": "Flashcards",
+   "desc": "Spaced-repetition Calculus BC flashcards built from the glossary, by unit and topic.",
+   "card": "Spaced-repetition cards from the glossary.",
+   "script": "pages/flashcards.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "tools",
+   "section": "tools",
+   "h1": "Tools",
+   "title": "Trainers",
+   "desc": "Calculus BC trainers: series and Taylor labs, parametric motion, polar curves, integration methods, Euler and logistic, plus the Calculus AB trainers.",
+   "card": "Trainers and drills, then the questions about what you did.",
+   "script": "pages/tools.js",
+   "css": [
+    "pages/pages.css",
+    "../../assets/course/reading.css"
+   ]
+  },
+  {
+   "slug": "dashboard",
+   "section": "dashboard",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Dashboard",
+   "title": "Your dashboard",
+   "desc": "Your Calculus BC mastery by unit, topic and mathematical practice, with every miss linked to the lesson that teaches it.",
+   "card": "Mastery by unit, topic and mathematical practice.",
+   "script": "pages/dashboard.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "search",
+   "section": "",
+   "h1": "Search",
+   "title": "Search the course",
+   "desc": "Search every Calculus BC lesson, notes page, glossary term and tool in the course.",
+   "script": "pages/search.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "teachers",
+   "section": "",
+   "h1": "For teachers",
+   "title": "For teachers",
+   "desc": "For Calculus BC teachers: stable share links, printable notes and unit sheets, and sharing pages to Google Classroom, with no new student data collected.",
+   "lede": "Share any notes page, lesson or unit sheet with a stable link. Students need no account, and nothing they do leaves their device unless they choose to sign in.",
+   "static": true
+  }
+ ],
+ "tools": [
+  {
+   "slug": "series-lab",
+   "kind": "simulator",
+   "topic": "series-convergence",
+   "name": "Series lab",
+   "title": "Series Lab",
+   "desc": "Choose and justify a convergence test, watch partial sums close in on the limit, and find an interval of convergence with both endpoints tested.",
+   "blurb": "Pick the test, check its conditions, test both endpoints.",
+   "lede": "Choose a test, justify it, and test both endpoints.",
+   "studio": true
+  },
+  {
+   "slug": "taylor-lab",
+   "kind": "simulator",
+   "topic": "taylor-polynomials",
+   "name": "Taylor lab",
+   "title": "Taylor Lab",
+   "desc": "Watch Taylor polynomials wrap a function as terms are added, move the center, and see the Lagrange and alternating series error bounds drawn as a band.",
+   "blurb": "Polynomials that wrap the function, with the error bound as a band.",
+   "lede": "Add terms and watch the polynomial wrap the function.",
+   "premium": "tools",
+   "studio": true
+  },
+  {
+   "slug": "parametric-motion",
+   "kind": "simulator",
+   "topic": "parametric-derivatives",
+   "name": "Parametric motion",
+   "title": "Parametric Motion",
+   "desc": "A particle traced by x(t) and y(t): velocity and acceleration vectors, speed, distance by arc length, and dy/dx and d²y/dx² from the parametric forms.",
+   "blurb": "A particle in the plane, its velocity and speed live.",
+   "lede": "Trace a particle and read its velocity, speed and distance.",
+   "premium": "tools",
+   "studio": true
+  },
+  {
+   "slug": "polar-lab",
+   "kind": "simulator",
+   "topic": "polar-derivatives",
+   "name": "Polar lab",
+   "title": "Polar Lab",
+   "desc": "Polar curves drawn as theta sweeps, the area being swept shaded, area between two curves, dy/dx in polar form and what the sign of dr/dtheta says.",
+   "blurb": "Polar curves drawn as theta sweeps, area shaded as it builds.",
+   "lede": "Sweep theta and watch the curve and its area build.",
+   "premium": "tools",
+   "studio": true
+  },
+  {
+   "slug": "integration-methods",
+   "kind": "skill",
+   "topic": "integration-by-parts",
+   "name": "Integration methods",
+   "title": "Integration Methods",
+   "desc": "Integration by parts, tabular too, linear partial fractions and improper integrals as limits, then choosing the method for an integral, step by step.",
+   "blurb": "Parts, partial fractions and improper integrals, step by step.",
+   "lede": "Pick the method, then work it step by step.",
+   "premium": "tools",
+   "studio": true
+  },
+  {
+   "slug": "euler-logistic",
+   "kind": "simulator",
+   "topic": "eulers-method",
+   "name": "Euler and logistic",
+   "title": "Euler and Logistic",
+   "desc": "Euler steps on a slope field, too high or too low from concavity, and logistic growth with its carrying capacity and the point of fastest growth.",
+   "blurb": "Euler steps on a slope field; logistic growth and its limit.",
+   "lede": "Step along a slope field, then model logistic growth.",
+   "premium": "tools",
+   "studio": true
+  },
+  {
+   "slug": "limit-explorer",
+   "from": "ab"
+  },
+  {
+   "slug": "tangent-tracer",
+   "from": "ab"
+  },
+  {
+   "slug": "rule-drills",
+   "from": "ab"
+  },
+  {
+   "slug": "related-rates",
+   "from": "ab"
+  },
+  {
+   "slug": "motion-lab",
+   "from": "ab"
+  },
+  {
+   "slug": "curve-analyzer",
+   "from": "ab"
+  },
+  {
+   "slug": "riemann-sums",
+   "from": "ab"
+  },
+  {
+   "slug": "accumulation",
+   "from": "ab"
+  },
+  {
+   "slug": "slope-fields",
+   "from": "ab"
+  },
+  {
+   "slug": "area-volume",
+   "from": "ab"
+  }
+ ]
+}

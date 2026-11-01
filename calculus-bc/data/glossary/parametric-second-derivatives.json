@@ -1,0 +1,5 @@
+{
+ "parametric-second-derivative": {
+  "def": "For a curve $x = x(t)$, $y = y(t)$, the second derivative is the derivative of $\\frac{dy}{dx}$ with respect to $x$: $\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{dx/dt}$, where $\\frac{dx}{dt} \\ne 0$. Its sign gives the concavity of the curve. It is not $\\frac{d^2y/dt^2}{d^2x/dt^2}$, and not $\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)$ alone."
+ }
+}

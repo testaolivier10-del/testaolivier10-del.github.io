@@ -1,0 +1,46 @@
+<p>Adding fractions is easy: $\frac{2}{x - 1} - \frac{1}{x + 3} = \frac{2(x + 3) - (x - 1)}{(x - 1)(x + 3)} = \frac{x + 7}{(x - 1)(x + 3)}$. The <b>method of partial fractions</b> runs that addition backward. It turns a rational function whose denominator factors into a sum of simple fractions, each of which integrates to a natural log. The BC course uses denominators with <b>distinct linear factors</b>, such as $(x - 1)(x + 3)$.</p>
+
+<h2>Splitting a fraction</h2>
+<p>For a fraction $\frac{p(x)}{(x - a)(x - b)}$ with $a \ne b$ and the top of degree below 2, write</p>
+<p>$$\frac{p(x)}{(x - a)(x - b)} = \frac{A}{x - a} + \frac{B}{x - b}.$$</p>
+<p>Multiply both sides by $(x - a)(x - b)$: $p(x) = A(x - b) + B(x - a)$. This is an <i>identity</i>, true for every $x$, so you may substitute any value. Substituting $x = a$ removes the $B$ term and gives $A$; substituting $x = b$ removes the $A$ term and gives $B$. <a class="figref" href="#fig-pf">The figure</a> shows a fraction and its two pieces.</p>
+<figure id="fig-pf" data-fig="partial-fractions-split"><figcaption>The violet curve is the sum of the two dashed pieces at every x.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\int \frac{x + 7}{(x - 1)(x + 3)}\,dx$.</p>
+<p>Form: $\frac{x + 7}{(x - 1)(x + 3)} = \frac{A}{x - 1} + \frac{B}{x + 3}$, so $x + 7 = A(x + 3) + B(x - 1)$.</p>
+<p>At $x = 1$: $8 = 4A$, so $A = 2$. At $x = -3$: $4 = -4B$, so $B = -1$.</p>
+<p>Check by adding back: $\frac{2}{x - 1} - \frac{1}{x + 3} = \frac{2x + 6 - x + 1}{(x - 1)(x + 3)} = \frac{x + 7}{(x - 1)(x + 3)}$.</p>
+<p>Integrate: $\int \left(\frac{2}{x - 1} - \frac{1}{x + 3}\right)dx = 2\ln|x - 1| - \ln|x + 3| + C$.</p>
+</div>
+<p>A second way to find $A$ and $B$ is to match coefficients: $x + 7 = (A + B)x + (3A - B)$, so $A + B = 1$ and $3A - B = 7$. Substituting the zeros is usually faster.</p>
+
+<h2>Definite integrals</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> Evaluate $\int_0^1 \frac{2}{x^2 + 4x + 3}\,dx$.</p>
+<p>Factor: $x^2 + 4x + 3 = (x + 1)(x + 3)$. Then $2 = A(x + 3) + B(x + 1)$: $x = -1$ gives $A = 1$; $x = -3$ gives $B = -1$.</p>
+<p>$\int_0^1 \left(\frac{1}{x + 1} - \frac{1}{x + 3}\right)dx = \left(\ln(x + 1) - \ln(x + 3)\right)\Big|_0^1 = (\ln 2 - \ln 4) - (\ln 1 - \ln 3) = \ln\frac{3}{2}.$</p>
+</div>
+<p>The value at the lower bound is $-\ln 3$, not 0; dropping it is the most common slip. Log rules tidy the answer: $\ln 2 - \ln 4 + \ln 3 = \ln\frac{2 \cdot 3}{4}$.</p>
+
+<h2>When the top is too big: divide first</h2>
+<p>Partial fractions need the top's degree to be below the bottom's. If it is not, use long division (6.10) first and split only the remainder.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find $\int \frac{x^2 + x}{x^2 - 4}\,dx$.</p>
+<p>Divide: $\frac{x^2 + x}{x^2 - 4} = 1 + \frac{x + 4}{x^2 - 4}$.</p>
+<p>Split: $x + 4 = A(x + 2) + B(x - 2)$; $x = 2$ gives $A = \frac{3}{2}$, $x = -2$ gives $B = -\frac{1}{2}$.</p>
+<p>Integrate: $x + \frac{3}{2}\ln|x - 2| - \frac{1}{2}\ln|x + 2| + C$.</p>
+</div>
+
+<h2>Which method?</h2>
+<p>Rational integrands look alike. Ask in order: is the top the derivative of the bottom (substitution)? Is the top's degree too big (divide)? Does the bottom factor into distinct linear factors (partial fractions)? Does it have no real zeros (complete the square, arctan)?</p>
+<table class="compare">
+<thead><tr><th>Integral</th><th>Method</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>$\int \frac{2x}{x^2 - 1}\,dx$</td><td>substitution, $u = x^2 - 1$</td><td>$\ln|x^2 - 1| + C$</td></tr>
+<tr><td>$\int \frac{1}{x^2 - 1}\,dx$</td><td>partial fractions</td><td>$\frac{1}{2}\ln\left|\frac{x - 1}{x + 1}\right| + C$</td></tr>
+<tr><td>$\int \frac{1}{x^2 + 1}\,dx$</td><td>basic form</td><td>$\arctan x + C$</td></tr>
+<tr><td>$\int \frac{x^2 + 3}{x^2 - 1}\,dx$</td><td>divide, then partial fractions</td><td>$x + 2\ln\left|\frac{x - 1}{x + 1}\right| + C$</td></tr>
+</tbody>
+</table>
+<p>Always check a decomposition by adding the pieces back over the common denominator. It takes a few seconds and catches a wrong sign on $B$, the slip that most often costs the answer.</p>
+<div class="going-further"><p>A repeated factor such as $(x - 1)^2$ or a factor with no real zeros such as $x^2 + 1$ needs a longer form of the method. Those cases are outside the BC course.</p></div>

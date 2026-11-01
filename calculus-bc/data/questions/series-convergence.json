@@ -1,0 +1,594 @@
+{
+ "stimuli": {
+  "series-convergence-s1": {
+   "kind": "graph",
+   "title": "Partial sums of a series",
+   "plot": {
+    "label": "Partial sums S sub n of a series for n = 1 to 10, rising toward the dashed line at height 3",
+    "width": 420,
+    "height": 280,
+    "x": [
+     0,
+     10.8
+    ],
+    "y": [
+     0,
+     3.6
+    ],
+    "xStep": 1,
+    "yStep": 0.5,
+    "xLabel": "n",
+    "yLabel": "S_n",
+    "grid": true,
+    "points": [
+     {
+      "at": [
+       1,
+       1.0
+      ]
+     },
+     {
+      "at": [
+       2,
+       1.5
+      ]
+     },
+     {
+      "at": [
+       3,
+       1.8
+      ]
+     },
+     {
+      "at": [
+       4,
+       2.0
+      ]
+     },
+     {
+      "at": [
+       5,
+       2.142857
+      ]
+     },
+     {
+      "at": [
+       6,
+       2.25
+      ]
+     },
+     {
+      "at": [
+       7,
+       2.333333
+      ]
+     },
+     {
+      "at": [
+       8,
+       2.4
+      ]
+     },
+     {
+      "at": [
+       9,
+       2.454545
+      ]
+     },
+     {
+      "at": [
+       10,
+       2.5
+      ]
+     }
+    ],
+    "asymptotes": [
+     {
+      "y": 3
+     }
+    ],
+    "labels": [
+     {
+      "at": [
+       10.6,
+       3.18
+      ],
+      "text": "S = 3",
+      "anchor": "end"
+     }
+    ]
+   },
+   "text": "The graph shows the partial sums $S_n = \\frac{3n}{n + 2}$ of a series $\\sum_{n=1}^{\\infty} a_n$, for $n = 1$ to $10$. The dashed line is at height 3."
+  },
+  "series-convergence-s2": {
+   "kind": "table",
+   "title": "A series whose partial sums jump",
+   "table": {
+    "caption": "Terms and partial sums of $\\sum_{n=1}^{\\infty} (-1)^{n+1}$",
+    "cols": [
+     "$n$",
+     "$1$",
+     "$2$",
+     "$3$",
+     "$4$",
+     "$5$"
+    ],
+    "rows": [
+     [
+      "$a_n$",
+      "$1$",
+      "$-1$",
+      "$1$",
+      "$-1$",
+      "$1$"
+     ],
+     [
+      "$S_n$",
+      "$1$",
+      "$0$",
+      "$1$",
+      "$0$",
+      "$1$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-series-convergence-1",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "series-convergence-s1",
+   "q": "What is the sum of the series $\\sum_{n=1}^{\\infty} a_n$?",
+   "numeric": {
+    "answer": "3",
+    "mistakes": [
+     {
+      "value": "1",
+      "why": "That is $S_1 = a_1$, the first partial sum. The sum is where the partial sums head as $n$ grows."
+     },
+     {
+      "value": "0",
+      "why": "That is the limit of the terms $a_n$. The sum of the series is the limit of the partial sums $S_n$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The sum of a series is the limit of its partial sums: $\\lim_{n \\to \\infty} \\frac{3n}{n + 2} = 3$."
+   }
+  },
+  {
+   "id": "cbc-series-convergence-2",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "series-convergence-s1",
+   "q": "Find $a_3$, the third term of the series.",
+   "numeric": {
+    "answer": "3/10",
+    "mistakes": [
+     {
+      "value": "9/5",
+      "why": "That is $S_3$, the sum of the first three terms. The third term alone is $S_3 - S_2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a_3 = S_3 - S_2 = \\frac{9}{5} - \\frac{3}{2} = \\frac{3}{10}$: the third partial sum minus the second."
+   }
+  },
+  {
+   "id": "cbc-series-convergence-3",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "series-convergence-s1",
+   "q": "Write the general term $a_n$ of the series in terms of $n$.",
+   "expr": {
+    "answer": "6/((n+1)(n+2))",
+    "vars": [
+     "n"
+    ],
+    "domain": [
+     1,
+     10
+    ],
+    "lhs": "a_n =",
+    "mistakes": [
+     {
+      "expr": "3n/(n+2)",
+      "why": "That is $S_n$, the sum of the first $n$ terms. The $n$th term is $S_n - S_{n-1}$."
+     },
+     {
+      "expr": "3/(n+2)",
+      "why": "Subtract the whole previous partial sum: $a_n = \\frac{3n}{n + 2} - \\frac{3(n - 1)}{n + 1}$, over a common denominator."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a_n = S_n - S_{n-1} = \\frac{3n}{n + 2} - \\frac{3(n - 1)}{n + 1} = \\frac{3\\left(n^2 + n - (n^2 + n - 2)\\right)}{(n + 1)(n + 2)} = \\frac{6}{(n + 1)(n + 2)}$. Check: $a_1 = 1 = S_1$."
+   }
+  },
+  {
+   "id": "cbc-series-convergence-4",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "series-convergence-s1",
+   "q": "Which statement about this series is correct?",
+   "options": [
+    "The terms converge to 3, so the series converges",
+    "The series diverges, since $S_n$ keeps growing as $n$ grows",
+    "The series converges to 3, and its terms approach 0",
+    "The series converges to 3, and its terms approach 3"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A series converges when its partial sums have a limit; here $S_n \\to 3$, so the series converges, to 3. Say it about the series: \\\"the series converges\\\", not \\\"the terms converge to 3\\\".",
+    "options": [
+     "The terms approach 0, not 3. It is the partial sums that approach 3.",
+     "Partial sums can rise forever and still approach a limit; here they level off at 3.",
+     "Right: the partial sums approach 3, and $a_n = \\frac{6}{(n + 1)(n + 2)} \\to 0$.",
+     "If every term were near 3, the partial sums would grow by about 3 each step and never level off."
+    ]
+   }
+  },
+  {
+   "id": "cbc-series-convergence-5",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "series-convergence-s1",
+   "q": "Find $\\sum_{n=5}^{\\infty} a_n$.",
+   "numeric": {
+    "answer": "1",
+    "mistakes": [
+     {
+      "value": "3",
+      "why": "That is the sum from $n = 1$. Starting at $n = 5$ leaves out $a_1 + a_2 + a_3 + a_4 = S_4 = 2$."
+     },
+     {
+      "value": "6/7",
+      "why": "That subtracts $S_5 = \\frac{15}{7}$, which includes $a_5$. Subtract only the terms before $n = 5$: $S_4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Leave out the first four terms: $\\sum_{n=5}^{\\infty} a_n = S - S_4 = 3 - \\frac{12}{6} = 1$."
+   }
+  },
+  {
+   "id": "cbc-series-convergence-6",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "series-convergence-s2",
+   "q": "Find $S_{100}$, the sum of the first 100 terms.",
+   "numeric": {
+    "answer": "0",
+    "mistakes": [
+     {
+      "value": "1",
+      "why": "Odd partial sums are 1; with an even number of terms, every 1 is canceled by a $-1$."
+     },
+     {
+      "value": "100",
+      "why": "The terms are not all 1: they alternate between 1 and $-1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The terms pair off as $(1 - 1) + (1 - 1) + \\cdots$; 100 terms make 50 pairs, each 0, so $S_{100} = 0$. Every even partial sum is 0."
+   }
+  },
+  {
+   "id": "cbc-series-convergence-7",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "series-convergence-s2",
+   "q": "Does the series $\\sum_{n=1}^{\\infty} (-1)^{n+1}$ converge?",
+   "options": [
+    "Yes, to 0, since the even partial sums are 0",
+    "Yes, to 1, since the first term is 1",
+    "Yes, since each term is 1 or $-1$ and so stays bounded",
+    "No: the partial sums jump between 1 and 0"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$S_n$ is 1 for odd $n$ and 0 for even $n$. The sequence of partial sums has no limit, so the series diverges.",
+    "options": [
+     "The odd partial sums are 1; the whole sequence of partial sums has no limit.",
+     "The sum of a series is the limit of all its partial sums, not its first term.",
+     "Bounded partial sums are not enough; they must approach a single number.",
+     "Right: a series converges when its partial sums approach one number, and these do not."
+    ]
+   }
+  },
+  {
+   "id": "cbc-series-convergence-8",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "series-convergence-s2",
+   "q": "A student writes $(1 - 1) + (1 - 1) + \\cdots = 0$, and then $1 + (-1 + 1) + (-1 + 1) + \\cdots = 1$. What is the flaw?",
+   "options": [
+    "The first grouping is right, so the sum is 0",
+    "The second grouping is right, so the sum is 1",
+    "Regrouping the terms changes the partial sums; the series has no sum",
+    "Both are right, so the sum is the average, $\\frac{1}{2}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The sum of a series is $\\lim_{n \\to \\infty} S_n$. Grouping keeps only some partial sums (every other one), and here those choices disagree because $\\lim S_n$ does not exist: the series diverges.",
+    "options": [
+     "Grouping picks out the even partial sums only; the odd ones are 1.",
+     "Grouping this way picks out the odd partial sums only; the even ones are 0.",
+     "Right: each grouping looks at a different selection of partial sums, and the full sequence of partial sums has no limit.",
+     "A sum is a limit of partial sums, not an average of two groupings."
+    ]
+   }
+  },
+  {
+   "id": "cbc-series-convergence-9",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "series-convergence-s2",
+   "q": "A student says the sum of this series is $\\frac{1}{2}$, the average of the values of $S_n$. Is that correct?",
+   "options": [
+    "Yes: the partial sums center on $\\frac{1}{2}$",
+    "No: the series diverges, so it has no sum",
+    "No: the sum is 0, from the even partial sums",
+    "No: the sum is 1, the first partial sum"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A series has a sum only when its partial sums approach a number. These jump between 1 and 0 forever, so the series diverges and has no sum.",
+    "options": [
+     "Centering is not converging; the partial sums never get close to $\\frac{1}{2}$.",
+     "Right: with no limit of the partial sums, there is no sum to report.",
+     "Half the partial sums are 1; choosing the even ones is arbitrary.",
+     "The first partial sum is not the sum of the whole series."
+    ]
+   }
+  },
+  {
+   "id": "cbc-series-convergence-10",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find the sum $\\sum_{n=1}^{\\infty} \\frac{2}{n(n + 2)}$. (Hint: $\\frac{2}{n(n + 2)} = \\frac{1}{n} - \\frac{1}{n + 2}$.)",
+   "numeric": {
+    "answer": "3/2",
+    "mistakes": [
+     {
+      "value": "1",
+      "why": "Two positive pieces survive the canceling, $1$ and $\\frac{1}{2}$, because each term cancels with the one two places later."
+     },
+     {
+      "value": "2/3",
+      "why": "That is $S_1 = 1 - \\frac{1}{3}$. The sum is the limit of $S_n$ as $n \\to \\infty$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$S_n = \\left(1 - \\frac{1}{3}\\right) + \\left(\\frac{1}{2} - \\frac{1}{4}\\right) + \\left(\\frac{1}{3} - \\frac{1}{5}\\right) + \\cdots + \\left(\\frac{1}{n} - \\frac{1}{n + 2}\\right)$. Everything cancels except $1 + \\frac{1}{2} - \\frac{1}{n + 1} - \\frac{1}{n + 2}$, which approaches $\\frac{3}{2}$."
+   }
+  },
+  {
+   "id": "cbc-series-convergence-11",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The partial sums of a series are $S_n = \\frac{n^2}{n^2 + 1}$. Find the fourth term, $a_4$.",
+   "numeric": {
+    "answer": "7/170",
+    "mistakes": [
+     {
+      "value": "16/17",
+      "why": "That is $S_4$, the sum of the first four terms. Subtract $S_3$ to get the fourth term alone."
+     },
+     {
+      "value": "1",
+      "why": "That is the sum of the series, $\\lim S_n$, not a single term."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a_4 = S_4 - S_3 = \\frac{16}{17} - \\frac{9}{10} = \\frac{160 - 153}{170} = \\frac{7}{170}$."
+   }
+  },
+  {
+   "id": "cbc-series-convergence-12",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The partial sums of $\\sum_{n=1}^{\\infty} \\ln\\left(\\frac{n + 1}{n}\\right)$ are $S_n = \\ln(n + 1)$. What does this show?",
+   "options": [
+    "The series converges, since its terms approach 0",
+    "The series converges to $\\ln 2$, its first term",
+    "The series diverges, though its terms approach 0",
+    "The series converges to 0"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$S_n = \\ln 2 - \\ln 1 + \\ln 3 - \\ln 2 + \\cdots = \\ln(n + 1) \\to \\infty$, so the series diverges, even though each term $\\ln\\left(1 + \\frac{1}{n}\\right)$ approaches 0.",
+    "options": [
+     "Terms approaching 0 do not make a series converge: these partial sums grow forever.",
+     "$\\ln 2$ is $a_1 = S_1$. The sum would be $\\lim S_n$, which does not exist.",
+     "Right: $\\ln(n + 1)$ grows without bound, while $\\ln\\left(1 + \\frac{1}{n}\\right) \\to 0$.",
+     "The terms approach 0; the partial sums grow without bound."
+    ]
+   }
+  },
+  {
+   "id": "cbc-series-convergence-13",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "For a series $\\sum_{n=1}^{\\infty} a_n$, what is the partial sum $S_n$?",
+   "options": [
+    "The $n$th term, $a_n$",
+    "The sum of the first $n$ terms, $a_1 + a_2 + \\cdots + a_n$",
+    "The sum of the terms after the $n$th one",
+    "The limit of $a_n$ as $n \\to \\infty$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$S_n = \\sum_{k=1}^{n} a_k$. The series converges to $S$ exactly when $\\lim_{n \\to \\infty} S_n = S$.",
+    "options": [
+     "$a_n$ is one term; $S_n$ adds the first $n$ of them.",
+     "Right: the series converges when these partial sums have a limit.",
+     "That is what is left over, $S - S_n$, when the series converges.",
+     "That limit describes the terms, not the sum of the first $n$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-series-convergence-14",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The partial sums of a series are $S_n = 5 - \\frac{2}{n}$. Find the first term, $a_1$.",
+   "numeric": {
+    "answer": "3",
+    "mistakes": [
+     {
+      "value": "5",
+      "why": "That is the sum of the series, $\\lim_{n \\to \\infty} S_n$. The first term is $S_1$."
+     },
+     {
+      "value": "2",
+      "why": "2 is the amount subtracted at $n = 1$, not the term. The first term is the first partial sum: $a_1 = S_1 = 5 - \\frac{2}{1} = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a_1 = S_1 = 5 - 2 = 3$. (The sum of the series is $\\lim S_n = 5$.)"
+   }
+  },
+  {
+   "id": "cbc-series-convergence-15",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "$\\sum_{n=1}^{\\infty} a_n = 4$. Find $\\sum_{n=1}^{\\infty} 3a_n$.",
+   "numeric": {
+    "answer": "12",
+    "mistakes": [
+     {
+      "value": "4",
+      "why": "Multiplying every term by 3 multiplies every partial sum, and so the sum, by 3."
+     },
+     {
+      "value": "7",
+      "why": "A constant factor multiplies the sum; it is not added to it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each partial sum is multiplied by 3, so the limit is $3 \\cdot 4 = 12$."
+   }
+  },
+  {
+   "id": "cbc-series-convergence-16",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$\\sum a_n$ converges and $\\sum b_n$ diverges. What can be said about $\\sum (a_n + b_n)$?",
+   "options": [
+    "It converges",
+    "It may converge or diverge",
+    "It diverges",
+    "It converges to $\\sum a_n$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Suppose $\\sum (a_n + b_n)$ converged. Then $\\sum b_n = \\sum (a_n + b_n) - \\sum a_n$ would be a difference of convergent series, which converges, a contradiction. So $\\sum (a_n + b_n)$ diverges.",
+    "options": [
+     "Adding a convergent series cannot cancel the divergence of $\\sum b_n$.",
+     "This case is settled: the difference of two convergent series converges, so the sum here cannot.",
+     "Right: if it converged, $\\sum b_n = \\sum (a_n + b_n) - \\sum a_n$ would converge too.",
+     "The terms $b_n$ do not drop out; they keep the partial sums from settling."
+    ]
+   }
+  },
+  {
+   "id": "cbc-series-convergence-17",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "series-convergence",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$\\sum_{n=1}^{\\infty} a_n$ converges to 10, and $a_1 + a_2 + \\cdots + a_{99} = 7$. What is true of $\\sum_{n=100}^{\\infty} a_n$?",
+   "options": [
+    "It converges, to 10",
+    "It converges, to 3",
+    "It diverges: an infinite tail has no sum",
+    "It converges, to 7"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For $n \\ge 100$, the tail's partial sums are $S_n - 7$, which approach $10 - 7 = 3$. Removing or adding finitely many terms never changes whether a series converges.",
+    "options": [
+     "The first 99 terms add to 7; without them the sum is $10 - 7$.",
+     "Right: dropping finitely many terms keeps convergence and changes the sum by what was dropped.",
+     "The tail of a convergent series converges: its partial sums are $S_n - 7$.",
+     "7 is the sum of the dropped terms, not of the tail."
+    ]
+   }
+  }
+ ]
+}

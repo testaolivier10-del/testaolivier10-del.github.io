@@ -1,0 +1,81 @@
+{
+ "topic": "arc-length",
+ "hook": "Lay a string along a curve, straighten it, and measure it: that is the curve's length. Calculus gets the same number without a string. Approximate the curve by short straight chords, find each chord's length with the Pythagorean theorem, and let the chords shrink. The sum becomes an integral.",
+ "prereq": [
+  {
+   "q": "What is the distance between $(1, 2)$ and $(4, 6)$?",
+   "options": [
+    "5",
+    "7",
+    "25",
+    "$\\sqrt{7}$"
+   ],
+   "correct": 0,
+   "why": "$\\sqrt{3^2 + 4^2} = 5$.",
+   "review": "math-geometry"
+  },
+  {
+   "q": "If $y = \\frac{2}{3}x^{3/2}$, then $\\frac{dy}{dx} =$",
+   "options": [
+    "$x^{1/2}$",
+    "$\\frac{2}{3}x^{1/2}$",
+    "$\\frac{4}{15}x^{5/2}$",
+    "$x^{3/2}$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{2}{3}\\cdot\\frac{3}{2}x^{1/2} = x^{1/2}$.",
+   "review": "power-rule"
+  }
+ ],
+ "figure": {
+  "figure": "arc-length-chords",
+  "caption": "Three chords along y = (2/3)x^(3/2) on [0, 3] total about 4.647, a little less than the curve’s length, 14/3 ≈ 4.667. Each chord is a hypotenuse; with more chords the total becomes the arc length integral."
+ },
+ "chain": [
+  {
+   "cause": "Replace a short piece of the curve by its chord, with run $\\Delta x$ and rise $\\Delta y$",
+   "effect": "the chord's length is $\\sqrt{(\\Delta x)^2 + (\\Delta y)^2} = \\sqrt{1 + \\left(\\frac{\\Delta y}{\\Delta x}\\right)^2}\\,\\Delta x$"
+  },
+  {
+   "cause": "By the Mean Value Theorem, $\\frac{\\Delta y}{\\Delta x} = f'(c)$ for some $c$ in the piece",
+   "effect": "the chord total is a Riemann sum of $\\sqrt{1 + (f'(x))^2}$"
+  },
+  {
+   "cause": "Let the pieces shrink",
+   "effect": "the sum becomes $\\int_a^b \\sqrt{1 + (f'(x))^2}\\,dx$, the arc length"
+  },
+  {
+   "cause": "The curve is given as $x = g(y)$",
+   "effect": "swap roles: $\\int_c^d \\sqrt{1 + (g'(y))^2}\\,dy$ with $y$-limits"
+  }
+ ],
+ "ideas": [
+  "Arc length of $y = f(x)$ from $x = a$ to $x = b$: $\\int_a^b \\sqrt{1 + (f'(x))^2}\\,dx$, for $f'$ continuous on $[a, b]$.",
+  "Square the derivative, not the function; keep the square root and the 1.",
+  "Few arc length integrals have exact values; most are calculator questions. Write the setup, then the value to three decimal places.",
+  "From a table of $f'$, estimate the length with a Riemann or trapezoidal sum of $\\sqrt{1 + (f')^2}$."
+ ],
+ "misconception": {
+  "wrong": "The length of $y = x^3$ from 0 to 1 is $\\int_0^1 \\sqrt{1 + x^6}\\,dx$.",
+  "right": "$x^6$ squares the function. The formula squares the derivative: $y' = 3x^2$, so the length is $\\int_0^1 \\sqrt{1 + 9x^4}\\,dx \\approx 1.548$."
+ },
+ "check": [
+  "cbc-arc-length-1",
+  "cbc-arc-length-2",
+  "cbc-arc-length-3",
+  "cbc-arc-length-4",
+  "cbc-arc-length-9",
+  "cbc-arc-length-14"
+ ],
+ "summary": "The length of the graph of $y = f(x)$ from $x = a$ to $x = b$ is $\\int_a^b \\sqrt{1 + (f'(x))^2}\\,dx$: the limit of sums of chord lengths, each a hypotenuse. Square the derivative, keep the root, use the right limits, and expect to need a calculator for most values.",
+ "connections": [
+  {
+   "href": "../notes/washer-method-other-axes.html",
+   "label": "Back: washer method about other lines (8.12)"
+  },
+  {
+   "href": "../notes/parametric-derivatives.html",
+   "label": "Next: Unit 9 (9.1)"
+  }
+ ]
+}

@@ -78,6 +78,7 @@ function imageFor(file) {
   if (file.startsWith('environmental-science/')) return `${ORIGIN}/environmental-science/assets/og-image.png`;
   if (file.startsWith('psychology/')) return `${ORIGIN}/psychology/assets/og-image.png`;
   if (file.startsWith('precalculus/')) return `${ORIGIN}/precalculus/assets/og-image.png`;
+  if (file.startsWith('calculus-bc/')) return `${ORIGIN}/calculus-bc/assets/og-image.png`;
   return `${ORIGIN}/assets/og-image.png`;
 }
 

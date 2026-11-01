@@ -1,0 +1,5 @@
+{
+ "polar-coordinates": {
+  "def": "A way to name a point by $(r, \\theta)$: turn to the ray at angle $\\theta$ from the positive $x$-axis, then go a signed distance $r$ along it. They convert by $x = r\\cos\\theta$, $y = r\\sin\\theta$ and $r^2 = x^2 + y^2$; a curve $r = f(\\theta)$ is a polar curve."
+ }
+}

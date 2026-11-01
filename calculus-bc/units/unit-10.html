@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 10: Infinite Sequences and Series — AP® Calculus BC</title>
+<meta name="description" content="Sequences and series: every convergence test, error bounds, Taylor polynomials and series, and intervals of convergence, with free notes and practice.">
+<link rel="canonical" href="https://levlprep.com/calculus-bc/units/unit-10.html">
+<meta property="og:title" content="Unit 10: Infinite Sequences and Series — AP® Calculus BC">
+<meta property="og:description" content="Sequences and series: every convergence test, error bounds, Taylor polynomials and series, and intervals of convergence, with free notes and practice.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/calculus-bc/units/unit-10.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus-bc/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../../calculus/assets/calc.css">
+<link rel="stylesheet" href="../assets/cbc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://levlprep.com/calculus-bc/units/unit-10.html#unit",
+      "name": "Infinite Sequences and Series",
+      "url": "https://levlprep.com/calculus-bc/units/unit-10.html",
+      "description": "Sequences and series: every convergence test, error bounds, Taylor polynomials and series, and intervals of convergence, with free notes and practice.",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus-bc/#course"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus BC",
+          "item": "https://levlprep.com/calculus-bc/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Infinite Sequences and Series",
+          "item": "https://levlprep.com/calculus-bc/units/unit-10.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="calc cbc" data-course="apcalcbc" data-unit="unit-10">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apcalcbc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus BC</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Infinite Sequences and Series</span></nav>
+<p class="issue">Unit 10 <i></i> 15&ndash;20% of the exam</p>
+<h1 class="deck tb-chapter-title" id="r3Title">Infinite Sequences <span>and Series</span></h1>
+<p class="hand calc-nav-ref">every AB topic, then series</p>
+<div class="hero-ctas"><a class="btn-chan" href="../practice.html?unit=unit-10">Practice this unit</a><a class="btn-ghost" href="../unit-sheets/unit-10.html">Unit sheet</a></div>
+<p class="r3-chips tb-chapter-meta"><span>15 topics</span><span data-unit-meta="unit-10">not practiced yet</span></p>
+
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalcbc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-chapter r3 r3-read" data-cover="apcalcbc">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail calc-nav-ref" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <div class="calc-toc-prog" data-toc-prog=""><div class="tb-progress-row"><span><b>0</b> of 121 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <form class="bk-toc-search" action="../search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search the notes&hellip;" aria-label="Search the notes"></form>
+    <nav class="tb-contents" aria-label="Course contents"><p class="bk-toc-group">Units</p><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-1.html"><span class="tb-toc-num">1</span><span class="tb-toc-modtitle">Limits and Continuity</span><span class="tb-toc-count" data-toc-ch="unit-1">0/16</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-2.html"><span class="tb-toc-num">2</span><span class="tb-toc-modtitle">Differentiation: Definition and Fundamental Properties</span><span class="tb-toc-count" data-toc-ch="unit-2">0/10</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-3.html"><span class="tb-toc-num">3</span><span class="tb-toc-modtitle">Differentiation: Composite, Implicit, and Inverse Functions</span><span class="tb-toc-count" data-toc-ch="unit-3">0/6</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-4.html"><span class="tb-toc-num">4</span><span class="tb-toc-modtitle">Contextual Applications of Differentiation</span><span class="tb-toc-count" data-toc-ch="unit-4">0/7</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-5.html"><span class="tb-toc-num">5</span><span class="tb-toc-modtitle">Analytical Applications of Differentiation</span><span class="tb-toc-count" data-toc-ch="unit-5">0/12</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-6.html"><span class="tb-toc-num">6</span><span class="tb-toc-modtitle">Integration and Accumulation of Change</span><span class="tb-toc-count" data-toc-ch="unit-6">0/14</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-7.html"><span class="tb-toc-num">7</span><span class="tb-toc-modtitle">Differential Equations</span><span class="tb-toc-count" data-toc-ch="unit-7">0/9</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-8.html"><span class="tb-toc-num">8</span><span class="tb-toc-modtitle">Applications of Integration</span><span class="tb-toc-count" data-toc-ch="unit-8">0/13</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-9.html"><span class="tb-toc-num">9</span><span class="tb-toc-modtitle">Parametric Equations, Polar Coordinates, and Vector-Valued Functions</span><span class="tb-toc-count" data-toc-ch="unit-9">0/9</span></a></div><div class="tb-toc-mod open"><a class="tb-toc-modhead" href="#main" aria-current="page"><span class="tb-toc-num">10</span><span class="tb-toc-modtitle">Infinite Sequences and Series</span><span class="tb-toc-count" data-toc-ch="unit-10">0/15</span></a><div class="tb-toc-topics"><a class="tb-toc-topic" href="../lessons/series-convergence.html" data-toc-t="series-convergence"><span class="tb-toc-tick"></span>Convergent and Divergent Series</a><a class="tb-toc-topic" href="../lessons/geometric-series.html" data-toc-t="geometric-series"><span class="tb-toc-tick"></span>Geometric Series</a><a class="tb-toc-topic" href="../lessons/nth-term-test.html" data-toc-t="nth-term-test"><span class="tb-toc-tick"></span>The nth Term Test for Divergence</a><a class="tb-toc-topic" href="../lessons/integral-test.html" data-toc-t="integral-test"><span class="tb-toc-tick"></span>The Integral Test</a><a class="tb-toc-topic" href="../lessons/p-series.html" data-toc-t="p-series"><span class="tb-toc-tick"></span>Harmonic Series and p-Series</a><a class="tb-toc-topic" href="../lessons/comparison-tests.html" data-toc-t="comparison-tests"><span class="tb-toc-tick"></span>Comparison Tests</a><a class="tb-toc-topic" href="../lessons/alternating-series-test.html" data-toc-t="alternating-series-test"><span class="tb-toc-tick"></span>The Alternating Series Test</a><a class="tb-toc-topic" href="../lessons/ratio-test.html" data-toc-t="ratio-test"><span class="tb-toc-tick"></span>The Ratio Test</a><a class="tb-toc-topic" href="../lessons/absolute-conditional.html" data-toc-t="absolute-conditional"><span class="tb-toc-tick"></span>Absolute and Conditional Convergence</a><a class="tb-toc-topic" href="../lessons/alternating-error-bound.html" data-toc-t="alternating-error-bound"><span class="tb-toc-tick"></span>The Alternating Series Error Bound</a><a class="tb-toc-topic" href="../lessons/taylor-polynomials.html" data-toc-t="taylor-polynomials"><span class="tb-toc-tick"></span>Taylor Polynomials</a><a class="tb-toc-topic" href="../lessons/lagrange-error-bound.html" data-toc-t="lagrange-error-bound"><span class="tb-toc-tick"></span>The Lagrange Error Bound</a><a class="tb-toc-topic" href="../lessons/radius-interval-convergence.html" data-toc-t="radius-interval-convergence"><span class="tb-toc-tick"></span>Radius and Interval of Convergence</a><a class="tb-toc-topic" href="../lessons/taylor-series.html" data-toc-t="taylor-series"><span class="tb-toc-tick"></span>Taylor and Maclaurin Series</a><a class="tb-toc-topic" href="../lessons/power-series-functions.html" data-toc-t="power-series-functions"><span class="tb-toc-tick"></span>Representing Functions as Power Series</a></div></div><p class="bk-toc-group">Skills</p><div class="tb-toc-mod"><a class="tb-toc-modhead" href="skills-math.html"><span class="tb-toc-num">S</span><span class="tb-toc-modtitle">Math you need</span><span class="tb-toc-count" data-toc-ch="skills-math">0/10</span></a></div></nav>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <h2 class="bk-h" id="h-topics">Topics, <span>in course order</span></h2>
+    <ol class="bk-list" aria-labelledby="h-topics"><li class="bk-row" data-topic="series-convergence"><span class="bk-row-n">10.1</span><a class="bk-row-title" href="../lessons/series-convergence.html">Convergent and Divergent Series</a><span class="bk-chip" data-chip-topic="series-convergence">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/series-convergence.html" aria-label="Lesson: Convergent and Divergent Series">Lesson</a><a class="bk-btn ghost" href="../notes/series-convergence.html" aria-label="Notes: Convergent and Divergent Series">Notes</a></span></li><li class="bk-row" data-topic="geometric-series"><span class="bk-row-n">10.2</span><a class="bk-row-title" href="../lessons/geometric-series.html">Geometric Series</a><span class="bk-chip" data-chip-topic="geometric-series">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/geometric-series.html" aria-label="Lesson: Geometric Series">Lesson</a><a class="bk-btn ghost" href="../notes/geometric-series.html" aria-label="Notes: Geometric Series">Notes</a></span></li><li class="bk-row" data-topic="nth-term-test"><span class="bk-row-n">10.3</span><a class="bk-row-title" href="../lessons/nth-term-test.html">The nth Term Test for Divergence</a><span class="bk-chip" data-chip-topic="nth-term-test">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/nth-term-test.html" aria-label="Lesson: The nth Term Test for Divergence">Lesson</a><a class="bk-btn ghost" href="../notes/nth-term-test.html" aria-label="Notes: The nth Term Test for Divergence">Notes</a></span></li><li class="bk-row" data-topic="integral-test"><span class="bk-row-n">10.4</span><a class="bk-row-title" href="../lessons/integral-test.html">The Integral Test</a><span class="bk-chip" data-chip-topic="integral-test">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/integral-test.html" aria-label="Lesson: The Integral Test">Lesson</a><a class="bk-btn ghost" href="../notes/integral-test.html" aria-label="Notes: The Integral Test">Notes</a></span></li><li class="bk-row" data-topic="p-series"><span class="bk-row-n">10.5</span><a class="bk-row-title" href="../lessons/p-series.html">Harmonic Series and p-Series</a><span class="bk-chip" data-chip-topic="p-series">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/p-series.html" aria-label="Lesson: Harmonic Series and p-Series">Lesson</a><a class="bk-btn ghost" href="../notes/p-series.html" aria-label="Notes: Harmonic Series and p-Series">Notes</a></span></li><li class="bk-row" data-topic="comparison-tests"><span class="bk-row-n">10.6</span><a class="bk-row-title" href="../lessons/comparison-tests.html">Comparison Tests</a><span class="bk-chip" data-chip-topic="comparison-tests">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/comparison-tests.html" aria-label="Lesson: Comparison Tests">Lesson</a><a class="bk-btn ghost" href="../notes/comparison-tests.html" aria-label="Notes: Comparison Tests">Notes</a></span></li><li class="bk-row" data-topic="alternating-series-test"><span class="bk-row-n">10.7</span><a class="bk-row-title" href="../lessons/alternating-series-test.html">The Alternating Series Test</a><span class="bk-chip" data-chip-topic="alternating-series-test">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/alternating-series-test.html" aria-label="Lesson: The Alternating Series Test">Lesson</a><a class="bk-btn ghost" href="../notes/alternating-series-test.html" aria-label="Notes: The Alternating Series Test">Notes</a></span></li><li class="bk-row" data-topic="ratio-test"><span class="bk-row-n">10.8</span><a class="bk-row-title" href="../lessons/ratio-test.html">The Ratio Test</a><span class="bk-chip" data-chip-topic="ratio-test">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/ratio-test.html" aria-label="Lesson: The Ratio Test">Lesson</a><a class="bk-btn ghost" href="../notes/ratio-test.html" aria-label="Notes: The Ratio Test">Notes</a></span></li><li class="bk-row" data-topic="absolute-conditional"><span class="bk-row-n">10.9</span><a class="bk-row-title" href="../lessons/absolute-conditional.html">Absolute and Conditional Convergence</a><span class="bk-chip" data-chip-topic="absolute-conditional">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/absolute-conditional.html" aria-label="Lesson: Absolute and Conditional Convergence">Lesson</a><a class="bk-btn ghost" href="../notes/absolute-conditional.html" aria-label="Notes: Absolute and Conditional Convergence">Notes</a></span></li><li class="bk-row" data-topic="alternating-error-bound"><span class="bk-row-n">10.10</span><a class="bk-row-title" href="../lessons/alternating-error-bound.html">The Alternating Series Error Bound</a><span class="bk-chip" data-chip-topic="alternating-error-bound">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/alternating-error-bound.html" aria-label="Lesson: The Alternating Series Error Bound">Lesson</a><a class="bk-btn ghost" href="../notes/alternating-error-bound.html" aria-label="Notes: The Alternating Series Error Bound">Notes</a></span></li><li class="bk-row" data-topic="taylor-polynomials"><span class="bk-row-n">10.11</span><a class="bk-row-title" href="../lessons/taylor-polynomials.html">Taylor Polynomials</a><span class="bk-chip" data-chip-topic="taylor-polynomials">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/taylor-polynomials.html" aria-label="Lesson: Taylor Polynomials">Lesson</a><a class="bk-btn ghost" href="../notes/taylor-polynomials.html" aria-label="Notes: Taylor Polynomials">Notes</a></span></li><li class="bk-row" data-topic="lagrange-error-bound"><span class="bk-row-n">10.12</span><a class="bk-row-title" href="../lessons/lagrange-error-bound.html">The Lagrange Error Bound</a><span class="bk-chip" data-chip-topic="lagrange-error-bound">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/lagrange-error-bound.html" aria-label="Lesson: The Lagrange Error Bound">Lesson</a><a class="bk-btn ghost" href="../notes/lagrange-error-bound.html" aria-label="Notes: The Lagrange Error Bound">Notes</a></span></li><li class="bk-row" data-topic="radius-interval-convergence"><span class="bk-row-n">10.13</span><a class="bk-row-title" href="../lessons/radius-interval-convergence.html">Radius and Interval of Convergence</a><span class="bk-chip" data-chip-topic="radius-interval-convergence">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/radius-interval-convergence.html" aria-label="Lesson: Radius and Interval of Convergence">Lesson</a><a class="bk-btn ghost" href="../notes/radius-interval-convergence.html" aria-label="Notes: Radius and Interval of Convergence">Notes</a></span></li><li class="bk-row" data-topic="taylor-series"><span class="bk-row-n">10.14</span><a class="bk-row-title" href="../lessons/taylor-series.html">Taylor and Maclaurin Series</a><span class="bk-chip" data-chip-topic="taylor-series">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/taylor-series.html" aria-label="Lesson: Taylor and Maclaurin Series">Lesson</a><a class="bk-btn ghost" href="../notes/taylor-series.html" aria-label="Notes: Taylor and Maclaurin Series">Notes</a></span></li><li class="bk-row" data-topic="power-series-functions"><span class="bk-row-n">10.15</span><a class="bk-row-title" href="../lessons/power-series-functions.html">Representing Functions as Power Series</a><span class="bk-chip" data-chip-topic="power-series-functions">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/power-series-functions.html" aria-label="Lesson: Representing Functions as Power Series">Lesson</a><a class="bk-btn ghost" href="../notes/power-series-functions.html" aria-label="Notes: Representing Functions as Power Series">Notes</a></span></li></ol>
+    <h2 class="bk-h" id="h-practice">Practice this unit</h2>
+    <div class="bk-cards">
+      <a class="bk-card" href="../practice.html?unit=unit-10"><b>Question set</b><span>Exam-style questions from this unit's 15 topics, with an explanation for every option.</span></a>
+      <a class="bk-card" href="../exams.html?unit=unit-10"><b>Unit test</b><span>A timed test on the whole unit, every topic weighted equally.</span></a>
+      <a class="bk-card" href="../tools.html"><b>Tools for this unit</b><span>2 trainers.</span></a>
+    </div>
+    <h2 class="bk-h" id="h-tools">In this unit's tools</h2>
+    <div class="bk-tools"><section class="bk-toolset"><h3>Trainers <small>2</small></h3><ul><li><a href="../tools/series-lab.html">Series lab</a></li><li><a href="../tools/taylor-lab.html">Taylor lab</a></li></ul></section><section class="bk-toolset"><h3>Free-response questions <small>3</small></h3><ul><li><a href="../frq/frq-u10-geometric-tests.html">Four series: a geometric sum, the nth term test, the integral test and a p-series</a></li><li><a href="../frq/frq-u10-interval-taylor.html">A power series: radius, interval, a derivative and a geometric sum</a></li><li><a href="../frq/frq-u10-taylor-error.html">A Taylor polynomial from a table, with two error bounds</a></li></ul></section></div>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Unit navigation"><a class="tb-chapter-link" href="unit-9.html"><span>&larr; Unit 9</span><b>Parametric Equations, Polar Coordinates, and Vector-Valued Functions</b></a><a class="tb-chapter-link next" href="skills-math.html"><span>Skills &rarr;</span><b>Math you need</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"> This course has not yet been reviewed by an AP® Calculus BC teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="unit:unit-10">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../'; window.ApCalcCourse = {"key":"apcalcbc","name":"AP® Calculus BC","short":"Calculus BC","dir":"calculus-bc","pfx":["calc","cbc"],"frqTypes":{"table":"Rate in context from a table","model":"Modeling with a given function","motion":"Particle motion","area":"Area and volume","de":"Differential equation and slope field","graph":"Graph of f′ or graphical FTC","implicit":"Implicit differentiation and related rates","fg":"Table of f, g and their derivatives","parametric":"Parametric, vector or polar functions","techniques":"BC techniques: parts, improper integrals, Euler, arc length","series":"Series and Taylor polynomials"},"band":false,"score":false,"examDate":"2027-05-10","site":"https://levlprep.com/calculus-bc/","intervals":true,"smallValues":true,"rt":"../../calculus/"};</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../../calculus/assets/calc-core.js" defer></script>
+<script src="../../calculus/assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../calculus/assets/calc-toc.js" defer></script>
+</body>
+</html>

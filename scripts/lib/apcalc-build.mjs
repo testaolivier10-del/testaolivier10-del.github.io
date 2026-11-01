@@ -26,18 +26,57 @@ import { Tex, Plot, Expr, mathHtml, RAW_KEYS } from './apcalc-mathlib.mjs';
 
 export const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 export const SITE = 'https://levlprep.com';
-export const BASE = '/calculus/';
-export const COURSE_KEY = 'apcalc';              // storage, analytics, registry: never in a URL
-export const COURSE_NAME = 'AP® Calculus AB';
-export const COURSE_HTML = 'AP&reg; Calculus AB';
+
+/* ONE GENERATOR, TWO COURSES (docs/apcalcbc-architecture.md, "Reuse").
+   AP® Calculus BC is built by this same code with the "bc" profile:
+   APCALC_COURSE=bc, set by scripts/build-apcalcbc.mjs and the BC checks
+   before they import anything. Every AB value below is the profile's AB
+   field, so with no APCALC_COURSE the AB build is byte-identical to the one
+   before BC existed (scripts/test/apcalcbc-reuse.test.mjs holds it so).
+
+   BC reads AB's authored topics from calculus/data/ and its own from
+   calculus-bc/data/ (no AB file is copied), serves at /calculus-bc/, keys
+   storage apcalcbc_*, ids new items cbc-, and runs AB's runtime files from
+   /calculus/assets/, configured per page by window.ApCalcCourse (tail()). */
+export const PROFILES = {
+  ab: {
+    id: 'ab', key: 'apcalc', dir: 'calculus', name: 'AP® Calculus AB', html: 'AP&reg; Calculus AB', label: 'AP® Calculus AB',
+    short: 'Calculus AB', idPrefix: 'calc', freeUnits: ['unit-1', 'unit-2'], freeTopics: [],
+    map: 'apcalc-dependency-map.json', stub: 'apcalc-map-stub.json', dataEnv: 'APCALC_DATA', pubEnv: 'APCALC_PUBLISHED',
+    runtime: '', scoreCalculator: true, band: true,
+  },
+  bc: {
+    id: 'bc', key: 'apcalcbc', dir: 'calculus-bc', name: 'AP® Calculus BC', html: 'AP&reg; Calculus BC', label: 'AP® Calculus BC',
+    short: 'Calculus BC', idPrefix: 'cbc', freeUnits: ['unit-1', 'unit-2'],
+    // Spec decision 6 (proposed, owner to confirm): AB's free tier plus 9.1-9.3,
+    // so a BC visitor tries BC material free. Keep in step with premium.js.
+    freeTopics: ['parametric-derivatives', 'parametric-second-derivatives', 'parametric-arc-length'],
+    map: 'apcalcbc-dependency-map.json', stub: 'apcalcbc-map-stub.json', dataEnv: 'APCALCBC_DATA', pubEnv: 'APCALCBC_PUBLISHED',
+    // AB's authored data (the AB topics), and the folder BC pages reach AB's runtime through.
+    abData: 'APCALC_DATA', runtime: '../calculus/', scoreCalculator: false, band: false,
+  },
+};
+export const COURSE = PROFILES[process.env.APCALC_COURSE === 'bc' ? 'bc' : 'ab'];
+export const IS_BC = COURSE.id === 'bc';
+export const BASE = `/${COURSE.dir}/`;
+export const COURSE_KEY = COURSE.key;              // storage, analytics, registry: never in a URL
+export const COURSE_NAME = COURSE.name;
+export const COURSE_HTML = COURSE.html;
 export const COURSE_ID = `${SITE}${BASE}#course`;
 export const DISCLAIMER = 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.';
-export const BETA_NOTE = 'This course has not yet been reviewed by an AP® Calculus AB teacher.';
+export const BETA_NOTE = `This course has not yet been reviewed by an ${COURSE.name} teacher.`;
 // Units 1 and 2 are free, and every math-skills lesson (as AP® Chemistry,
 // apchem-spec decision 6; docs/apcalc-spec.md decision 6).
-export const FREE_UNITS = ['unit-1', 'unit-2'];
-export const MAP_PATH = join(ROOT, 'docs', 'apcalc-dependency-map.json');
-export const STUB_PATH = join(ROOT, 'scripts', 'test', 'fixtures', 'apcalc-map-stub.json');
+export const FREE_UNITS = COURSE.freeUnits;
+export const MAP_PATH = join(ROOT, 'docs', COURSE.map);
+export const STUB_PATH = join(ROOT, 'scripts', 'test', 'fixtures', COURSE.stub);
+/* Where a page finds the runtime files (calc-*.js, calc.css, pages/, tools/
+   framework): AB its own assets/, BC AB's (one copy of the runtime). The
+   course's generated files (curriculum, bank, glossary, tool data) are
+   always its own `${depth}assets/`. */
+export const RT = depth => `${depth}${COURSE.runtime}assets/`;
+/* An AB figure on a BC page: AB's file, by root-relative path. */
+export const figureDir = (f, depth) => f && f._course === 'ab' && IS_BC ? '/calculus/figures/' : `${depth}figures/`;
 
 export const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 // Plain text of authored HTML: a rendered formula becomes its plain-text
@@ -50,7 +89,7 @@ export const text = html => Tex.plain(mathText(html)).replace(/<\/?[A-Za-z!][^>]
 const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
 
 /* The token rule (spec decision 2): no "ap" or "apcalc" token in a served path. */
-export const hasApToken = s => String(s).toLowerCase().split(/[^a-z0-9]+/).some(t => t === 'ap' || t === 'apcalc' || t === 'apphys' || t === 'apchem' || t === 'apbio');
+export const hasApToken = s => String(s).toLowerCase().split(/[^a-z0-9]+/).some(t => t === 'ap' || t === 'apcalc' || t === 'apcalcbc' || t === 'apphys' || t === 'apchem' || t === 'apbio');
 
 /* The trademark (spec section 1, decision 3): "AP®" with the ®, as an
    adjective before a capitalized noun ("AP® Calculus AB"), never plural or
@@ -80,11 +119,49 @@ export function mapSource(env = process.env) {
   return null;
 }
 
+/* The BC map is an overlay on AB's (docs/apcalcbc-phase0.md): AB's units,
+   topics and concepts plus BC's own, merged here so nothing is copied.
+   mergeBcMap(ab, bc) -> a map in AB's format: chapters in course order
+   (Units 1-10, then the skills chapters), BC weights for Units 1-8, topics
+   grouped by chapter in CED order (BC topics where the CED places them),
+   AB concepts then BC ones, every topic and concept tagged with the course
+   whose data folder holds it (`source`: 'ab' | 'bc'). */
+export const AB_MAP_PATH = join(ROOT, 'docs', PROFILES.ab.map);
+export function mergeBcMap(ab, bc) {
+  const cedKey = t => t.ced ? t.ced.split('.').map(n => String(+n).padStart(3, '0')).join('.') : null;
+  const chapters = [...ab.chapters.map(c => {
+    const w = (bc.chapterWeights || {})[c.id];
+    const tools = (bc.chapterTools || {})[c.id];
+    const merged = { ...c, ...(w ? { weight: w } : {}) };
+    if (tools) { merged.tools = { ...(c.tools || {}) }; for (const [k, v] of Object.entries(tools)) merged.tools[k] = [...(merged.tools[k] || []), ...v]; }
+    return merged;
+  }), ...bc.chapters];
+  chapters.sort((a, b) => (a.part === 'course' ? 0 : 1) - (b.part === 'course' ? 0 : 1) || (a.n ?? 999) - (b.n ?? 999));
+  const all = [...ab.topics.map(t => ({ ...t, source: 'ab' })), ...bc.topics.map(t => ({ ...t, source: 'bc' }))];
+  const topics = [];
+  for (const c of chapters) {
+    const ts = all.filter(t => t.chapter === c.id).map((t, i) => ({ t, i }));
+    ts.sort((x, y) => (cedKey(x.t) && cedKey(y.t) ? cedKey(x.t).localeCompare(cedKey(y.t)) : x.i - y.i) || x.i - y.i);
+    topics.push(...ts.map(x => x.t));
+  }
+  return {
+    about: bc.about, version: bc.version, ced: bc.ced, practices: ab.practices, parts: ab.parts, chapters, topics,
+    everydayWords: { ...(ab.everydayWords || {}), words: [...((ab.everydayWords || {}).words || []), ...((bc.everydayWords || {}).words || [])] },
+    concepts: [...ab.concepts.map(c => ({ ...c, source: 'ab' })), ...bc.concepts.map(c => ({ ...c, source: 'bc' }))],
+    circularDependencies: [...(ab.circularDependencies || []), ...(bc.circularDependencies || [])],
+  };
+}
+/* A map file, raw: BC's overlay merged onto AB's (a stub overlay too). */
+export function readMapRaw(path) {
+  const raw = readJson(path);
+  return raw.overlay ? mergeBcMap(readJson(raw.base ? join(ROOT, raw.base) : AB_MAP_PATH), raw) : raw;
+}
+
 /* Validates the parts of the map this generator relies on and returns the
    interface above. Throws with every problem listed. */
 export function loadMap(path = mapSource()) {
   if (!path) return null;
-  const raw = readJson(path);
+  const raw = readMapRaw(path);
   const errs = [];
   for (const k of ['practices', 'parts', 'chapters', 'topics', 'concepts']) if (!Array.isArray(raw[k])) errs.push(`map: "${k}" must be an array`);
   if (errs.length) throw new Error(errs.join('\n'));
@@ -135,36 +212,78 @@ export function loadMap(path = mapSource()) {
 
 /* ------------------------------------------------------------------ data */
 
-function mergeDir(dir) {
+function mergeDir(dir, course) {
   const all = {};
   if (!existsSync(dir)) return all;
   for (const f of readdirSync(dir).filter(f => f.endsWith('.json')).sort()) {
-    for (const [k, v] of Object.entries(readJson(join(dir, f)))) if (!(k in all)) all[k] = { ...v, _file: f };
+    for (const [k, v] of Object.entries(readJson(join(dir, f)))) if (!(k in all)) all[k] = { ...v, _file: f, ...(course ? { _course: course } : {}) };
   }
   return all;
 }
 
+/* Text for one course only (docs/apcalcbc-architecture.md, "One source"):
+   an element whose class has calc-ab-only is dropped from BC pages, one with
+   cbc-only from AB pages. Not nested; AB data has neither today. */
+const ONLY_RE = cls => new RegExp(`<([a-z][a-z0-9]*)\\b[^>]*class="[^"]*\\b${cls}\\b[^"]*"[^>]*>[\\s\\S]*?<\\/\\1>`, 'g');
+/* A <span> wrapper for the course being built is unwrapped (its text kept, the span
+   dropped), so wrapping AB text in calc-ab-only leaves AB's pages byte-identical. */
+const KEEP_RE = cls => new RegExp(`<span\\b[^>]*class="${cls}"[^>]*>([\\s\\S]*?)<\\/span>`, 'g');
+export function courseOnly(v, course = COURSE.id) {
+  const bc = course === 'bc';
+  const re = ONLY_RE(bc ? 'calc-ab-only' : 'cbc-only');
+  const keep = KEEP_RE(bc ? 'cbc-only' : 'calc-ab-only');
+  // Any other element kept for this course (<li class="cbc-only">) loses the marker class.
+  const mark = new RegExp(` class="${bc ? 'cbc-only' : 'calc-ab-only'}"`, 'g');
+  if (typeof v === 'string') return v.includes('-only') ? v.replace(re, '').replace(keep, '$1').replace(mark, '') : v;
+  if (Array.isArray(v)) return v.map(x => courseOnly(x, course));
+  if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, courseOnly(x, course)]));
+  return v;
+}
+
+/* The data folders a course reads, AB's first: AB [calculus/data]; BC
+   [calculus/data (AB topics), calculus-bc/data (BC topics)]. */
+export function dataDirs(root = ROOT, dataDir) {
+  if (!IS_BC) return { ab: dataDir || join(root, 'calculus', 'data'), own: dataDir || join(root, 'calculus', 'data') };
+  return { ab: process.env[COURSE.abData] || join(root, 'calculus', 'data'), own: dataDir || join(root, COURSE.dir, 'data') };
+}
+
+/* BC: AB's page descriptions for AB topics, BC's own on top. */
+const mergeDescriptions = (a, b) => { const out = { ...a }; for (const [k, v] of Object.entries(b)) out[k] = v && typeof v === 'object' ? { ...(a[k] || {}), ...v } : v; return out; };
+
 /* published: override for tests (an array of chapter ids). */
 export function loadCourse(root = ROOT, { map = loadMap(), published: pubOverride, data: dataDir } = {}) {
-  const data = dataDir || join(root, 'calculus', 'data');
+  const dirs = dataDirs(root, dataDir);
+  const data = dirs.own;
+  const dirOf = t => IS_BC && t.source === 'ab' ? dirs.ab : data;
   const lessons = {}, notes = {}, questions = {};
   const topics = map ? map.topics : [];
   for (const t of topics) {
-    const lp = join(data, 'lessons', `${t.id}.json`), np = join(data, 'notes', `${t.id}.html`), qp = join(data, 'questions', `${t.id}.json`);
+    const d = dirOf(t);
+    const lp = join(d, 'lessons', `${t.id}.json`), np = join(d, 'notes', `${t.id}.html`), qp = join(d, 'questions', `${t.id}.json`);
     if (existsSync(lp)) lessons[t.id] = readJson(lp);
     if (existsSync(np)) notes[t.id] = readFileSync(np, 'utf8');
     if (existsSync(qp)) questions[t.id] = readJson(qp);
   }
-  const glossary = mergeDir(join(data, 'glossary'));
-  const figures = mergeDir(join(data, 'figures'));
-  const labelDir = join(data, 'labels');
-  if (existsSync(labelDir)) for (const f of readdirSync(labelDir).filter(f => f.endsWith('.json'))) {
-    const id = f.slice(0, -5);
-    if (figures[id]) figures[id] = { ...figures[id], labels: readJson(join(labelDir, f)).labels || [] };
+  // BC: its own definitions and figures first, then AB's (each figure knows its folder).
+  const both = sub => IS_BC ? { ...mergeDir(join(dirs.ab, sub), 'ab'), ...mergeDir(join(data, sub), 'bc') } : mergeDir(join(data, sub));
+  const glossary = both('glossary');
+  const figures = both('figures');
+  for (const d of IS_BC ? [dirs.ab, data] : [data]) {
+    const labelDir = join(d, 'labels');
+    if (existsSync(labelDir)) for (const f of readdirSync(labelDir).filter(f => f.endsWith('.json'))) {
+      const id = f.slice(0, -5);
+      if (figures[id]) figures[id] = { ...figures[id], labels: readJson(join(labelDir, f)).labels || [] };
+    }
   }
+  // FRQs: BC serves AB's (the shared Q1, Q3, Q4 stock, marked fromAb so its page names AB's as canonical) and its own.
   const frq = {};
-  const frqDir = join(data, 'frq');
-  if (existsSync(frqDir)) for (const f of readdirSync(frqDir).filter(f => f.endsWith('.json')).sort()) frq[f.slice(0, -5)] = readJson(join(frqDir, f));
+  for (const d of IS_BC ? [dirs.ab, data] : [data]) {
+    const frqDir = join(d, 'frq');
+    if (existsSync(frqDir)) for (const f of readdirSync(frqDir).filter(f => f.endsWith('.json')).sort()) {
+      const q = readJson(join(frqDir, f));
+      frq[f.slice(0, -5)] = IS_BC && d === dirs.ab ? { ...q, fromAb: true } : q;
+    }
+  }
   const pubPath = join(data, 'published.json');
   const published = new Set(pubOverride || (existsSync(pubPath) ? readJson(pubPath).chapters || [] : []));
   const readOpt = (f, d) => existsSync(join(data, f)) ? readJson(join(data, f)) : d;
@@ -176,7 +295,7 @@ export function loadCourse(root = ROOT, { map = loadMap(), published: pubOverrid
   // mathProblems (the content check reports it, the build refuses a built
   // topic that has one) and rendered loosely so the rest still loads.
   const mathProblems = [];
-  const R = (v, where) => renderMath(v, msg => mathProblems.push(`${where}: ${msg}`));
+  const R = (v, where) => renderMath(courseOnly(v), msg => mathProblems.push(`${where}: ${msg}`));
   const raw = { questions: {} };
   for (const id of Object.keys(lessons)) lessons[id] = R(lessons[id], `lessons/${id}.json`);
   for (const id of Object.keys(notes)) notes[id] = R(notes[id], `notes/${id}.html`);
@@ -186,7 +305,8 @@ export function loadCourse(root = ROOT, { map = loadMap(), published: pubOverrid
   return {
     map, data, lessons, notes, questions, glossary, figures, frq, published, built, mathProblems, raw,
     pages: readOpt('pages.json', { apps: [], tools: [] }),
-    descriptions: readOpt('descriptions.json', {}),
+    descriptions: IS_BC ? mergeDescriptions(existsSync(join(dirs.ab, 'descriptions.json')) ? readJson(join(dirs.ab, 'descriptions.json')) : {}, readOpt('descriptions.json', {})) : readOpt('descriptions.json', {}),
+    dirs, dirOf,
   };
 }
 
@@ -215,6 +335,7 @@ export function renderMath(v, onError = msg => { throw new Error(msg); }) {
 export function prepareBank(bank, topicId, problems = []) {
   for (const q of (bank && bank.items) || []) {
     try {
+      if (q.type === 'interval' && q.interval) q.interval.answerHtml = Tex.render(intervalTex(q.interval), { strict: true });
       if (q.type === 'expr' && q.expr) {
         const E = q.expr, vars = E.vars || ['x'];
         const tree = Expr.parse(String(E.answer), { vars });
@@ -234,11 +355,22 @@ export function prepareBank(bank, topicId, problems = []) {
   return bank;
 }
 
+/* An interval item's key as TeX (AP® Calculus BC; docs/apcalcbc-architecture.md,
+   "interval items"): "[1, 5)", "(-\infty, \infty)", "x = 2 \text{ only}". An
+   endpoint is a number or an exact value in the student syntax ("sqrt(3)"). */
+export function intervalTex(I) {
+  const v = I.var || 'x';
+  const end = e => /^-?(inf|infinity)$/i.test(String(e).trim()) ? (String(e).trim().startsWith('-') ? '-\\infty' : '\\infty') : Expr.toTex(Expr.parse(String(e), { vars: [] }));
+  if (I.point !== undefined) return `${v} = ${end(I.point)} \\text{ only}`;
+  if (/^-(inf|infinity)$/i.test(String(I.lo).trim()) && /^(inf|infinity)$/i.test(String(I.hi).trim())) return '(-\\infty, \\infty)';
+  return `${I.loIn ? '[' : '('}${end(I.lo)}, ${end(I.hi)}${I.hiIn ? ']' : ')'}`;
+}
+
 /* Free lessons (structured data and the runtime gate agree on this):
    Units 1 and 2, and every math-skills topic. */
 export function isFreeTopic(map, t) {
   const ch = map.chapterById(t.chapter);
-  if (FREE_UNITS.includes(t.chapter)) return true;
+  if (FREE_UNITS.includes(t.chapter) || COURSE.freeTopics.includes(t.id)) return true;
   return !!(ch && ch.part !== 'course');
 }
 
@@ -269,8 +401,11 @@ export const stripMark = s => String(s).replace(/\bAP®?\s*/g, '').replace(/\s+/
 export const NOINDEX = '<meta name="robots" content="noindex, follow">';
 
 /* depth: '' for pages in calculus/, '../' one folder down. */
-export function head({ title, desc, path, depth, ogType = 'article', jsonld, meta = '', noindex = false, book = false }) {
-  const url = `${SITE}${BASE}${path}`;
+/* canonical: another page's URL, when this one renders the same source. AP®
+   Calculus BC's lesson and notes pages for AB topics name the AB page, so search
+   engines index one copy (docs/apcalcbc-architecture.md, "One source"). */
+export function head({ title, desc, path, depth, ogType = 'article', jsonld, meta = '', noindex = false, book = false, canonical }) {
+  const url = canonical || `${SITE}${BASE}${path}`;
   const up = depth + '../';
   desc = stripMark(desc);
   return `<!DOCTYPE html>
@@ -305,7 +440,7 @@ ${meta}<link rel="stylesheet" href="${up}assets/theme.css">
 <script src="${up}assets/site-chrome.js" defer></script>
 ${book ? `<link rel="stylesheet" href="${up}assets/course/base.css">
 <link rel="stylesheet" href="${up}assets/course/book.css">
-` : ''}<link rel="stylesheet" href="${depth}assets/calc.css">
+` : ''}<link rel="stylesheet" href="${RT(depth)}calc.css">${IS_BC ? `\n<link rel="stylesheet" href="${depth}assets/cbc.css">` : ''}
 <link rel="stylesheet" href="${up}assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
@@ -316,16 +451,31 @@ ${JSON.stringify(jsonld, null, 2)}
 
 /* The scripts every course page ends with. premium loads the site's Premium
    module first on pages with a Premium surface; ApCalcCore does without it. */
+/* BC pages tell the shared runtime which course they are (AB pages set
+   nothing, so AB's runtime keeps its own defaults): window.ApCalcCourse =
+   { key, name, dir, rt (the path to AB's folder, for runtime files the
+   runtime loads itself), pfx (id prefixes), frqTypes, band, score, ... }.
+   Set by courseConfig() in build-apcalc.mjs through setCourseConfig(). */
+let COURSE_CONFIG = null;
+export const setCourseConfig = c => { COURSE_CONFIG = c; };
+/* A runtime file (calc-*.js, pages/, tools/ framework) or a file of this
+   course (its curriculum, a BC trainer's own script)? BC trainers' scripts
+   live in calculus-bc/assets/tools/ (OWN_TOOL). */
+const OWN_FILES = new Set(['calc-curriculum.js', 'cbc-interval.js']);
+export const OWN_TOOL = new Set();
+const srcFor = (depth, f) => OWN_FILES.has(f) || OWN_TOOL.has(f) ? `${depth}assets/${f}` : `${RT(depth)}${f}`;
 export function tail({ depth, section, extra = [], premium = false, site = [] }) {
-  const s = src => `<script src="${depth}assets/${src}" defer></script>`;
+  const s = src => `<script src="${srcFor(depth, src)}" defer></script>`;
+  const cfg = IS_BC && COURSE_CONFIG ? ` window.ApCalcCourse = ${JSON.stringify({ ...COURSE_CONFIG, rt: `${depth}${COURSE.runtime}` }).replace(/</g, '\\u003c')};` : '';
   return [
     ...['report-question.js', ...site].map(f => `<script src="${depth}../assets/${f}" defer></script>`),
     ...(premium ? [`<script src="${depth}../assets/premium.js" defer></script>`] : []),
-    `<script>window.ApCalcSection = '${section}'; window.ApCalcBase = '${depth}';</script>`,
+    `<script>window.ApCalcSection = '${section}'; window.ApCalcBase = '${depth}';${cfg}</script>`,
     s('calc-curriculum.js'), s('calc-core.js'), s('calc-nav.js'),
     `<script src="${depth}../assets/course/glossary-tip.js" data-glossary="${depth}assets/glossary.json" data-course-root="${depth}" defer></script>`,
     // The question engine needs the expression parser and the math renderer.
-    ...extra.flatMap(f => f === 'calc-questions.js' ? ['calc-expr.js', 'calc-math.js', f] : [f]).map(s),
+    // BC adds its interval answers (calculus-bc/assets/cbc-interval.js) before the engine.
+    ...extra.flatMap(f => f === 'calc-questions.js' ? ['calc-expr.js', 'calc-math.js', ...(IS_BC ? ['cbc-interval.js'] : []), f] : [f]).map(s),
   ].join('\n');
 }
 
@@ -441,7 +591,7 @@ export function figureImg(C, figId, depth, { masks = false } = {}) {
   const labels = (f.labels || []).filter(l => l.box);
   const pct = (v, of) => (100 * v / of).toFixed(2) + '%';
   const maskHtml = masks ? labels.map(l => `<button type="button" class="calc-mask" data-label="${esc(l.id)}" aria-label="Hidden label: ${esc(l.name)}. Select to reveal." style="left:${pct(l.box[0], W)};top:${pct(l.box[1], H)};width:${pct(l.box[2], W)};height:${pct(l.box[3], H)}"><span>${esc(l.name)}</span></button>`).join('') : '';
-  return `<div class="calc-figimg${maskHtml ? ' has-masks' : ''}" data-fig="${esc(figId)}"><img src="${depth}figures/${figId}.${f.ext || 'svg'}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">${maskHtml}</div>`;
+  return `<div class="calc-figimg${maskHtml ? ' has-masks' : ''}" data-fig="${esc(figId)}"><img src="${figureDir(f, depth)}${figId}.${f.ext || 'svg'}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">${maskHtml}</div>`;
 }
 export const credit = (f, opts) => { const a = attribution(f, opts); return a.html ? `<span class="calc-credit">${a.html}</span>` : ''; };
 
@@ -575,6 +725,7 @@ export function questionForPage(q) {
     ...(q.stimulus ? { stimulus: q.stimulus } : {}), ...(q.fixed ? { fixed: true } : {}),
     ...(q.calc ? { calc: true } : {}),
     q: q.q, options: q.options, correct: q.correct, numeric: q.numeric, expr: q.expr, variables: q.variables, why: q.why,
+    ...(q.interval ? { interval: q.interval } : {}),
   };
 }
 
@@ -600,6 +751,9 @@ export function questionHtml(q, n) {
     const u = q.numeric.unit ? ` ${esc(q.numeric.unit)}` : '';
     opts = `<p class="calc-small">${q.calc ? 'Calculator allowed. Give the answer correct to three decimal places' : 'No calculator. Type the exact value (a fraction, π, e or a root is fine)'}${q.numeric.askUnit ? ', then its unit.' : u ? `, in${u}.` : '.'}</p>`;
     key = `<li>Answer: ${formatKey(q.numeric, q.calc)}</li>`;
+  } else if (q.type === 'interval') {
+    opts = '<p class="calc-small">Type the interval, in interval notation such as [1, 5) or as an inequality such as 1 &le; x &lt; 5.</p>';
+    key = `<li>Answer: ${q.interval.answerHtml || esc(intervalTex(q.interval))}</li>`;
   } else if (q.type === 'expr') {
     opts = `<p class="calc-small">Type an expression${q.expr.lhs ? ` for ${q.expr.lhsHtml || esc(q.expr.lhs)}` : ''}.</p>`;
     key = `<li>Answer: ${q.expr.lhsHtml ? `${q.expr.lhsHtml} ` : ''}${q.expr.answerHtml || esc(q.expr.answer)}</li>`;

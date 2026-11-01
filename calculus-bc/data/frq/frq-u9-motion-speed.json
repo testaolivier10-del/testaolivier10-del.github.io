@@ -1,0 +1,94 @@
+{
+ "id": "frq-u9-motion-speed",
+ "type": "parametric",
+ "title": "A robot on a gym floor: speed, position and distance",
+ "calc": true,
+ "points": 9,
+ "units": ["unit-9"],
+ "topics": ["vector-derivatives", "vector-integrals", "parametric-arc-length", "planar-motion"],
+ "practices": ["1.D", "1.E", "2.B", "4.C"],
+ "stimulus": {
+  "kind": "table",
+  "title": "A robot moving on a gym floor",
+  "text": "A robot moves on a flat gym floor, set up as the $xy$-plane with distances in meters. For $0 \\le t \\le 5$ seconds, its velocity components are given below, and at $t = 0$ the robot is at the point $(1, 2)$. A graphing calculator is required.",
+  "table": {
+   "caption": "Velocity components of the robot, in meters per second, and its position at $t = 0$",
+   "cols": ["Quantity", "Value"],
+   "rows": [
+    ["$\\frac{dx}{dt}$", "$4\\sin(0.7t) - 1$ meters per second"],
+    ["$\\frac{dy}{dt}$", "$2\\cos(0.6t) + 0.5$ meters per second"],
+    ["$(x(0), y(0))$", "$(1, 2)$"]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Find</b> the speed of the robot at time $t = 4$. <b>Find</b> the acceleration vector of the robot at time $t = 4$.",
+   "rubric": [
+    {
+     "point": "Speed at $t = 4$: $\\sqrt{(x'(4))^2 + (y'(4))^2} \\approx 1.032$ meters per second.",
+     "accept": ["1.032", "the square root of the sum of the squared velocity components at t = 4, evaluated to 1.032"]
+    },
+    {
+     "point": "Acceleration vector: $\\left\\langle x''(4), y''(4) \\right\\rangle \\approx \\left\\langle -2.638, -0.811 \\right\\rangle$.",
+     "accept": ["<-2.638, -0.811>", "<-2.638, -0.810>", "both components from the calculator's numerical derivative, correct to three decimal places"]
+    }
+   ],
+   "sample": "Speed $= \\sqrt{(4\\sin 2.8 - 1)^2 + (2\\cos 2.4 + 0.5)^2} \\approx 1.032$ meters per second. Acceleration: $\\mathbf{a}(4) = \\left\\langle x''(4), y''(4) \\right\\rangle = \\left\\langle 2.8\\cos 2.8, -1.2\\sin 2.4 \\right\\rangle \\approx \\left\\langle -2.638, -0.811 \\right\\rangle$."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Find</b> all times $t$, for $0 < t < 5$, at which the speed of the robot is 3 meters per second.",
+   "rubric": [
+    {
+     "point": "Sets up the equation $\\sqrt{(4\\sin(0.7t) - 1)^2 + (2\\cos(0.6t) + 0.5)^2} = 3$.",
+     "accept": ["speed = 3 written with the velocity components", "(x'(t))^2 + (y'(t))^2 = 9"]
+    },
+    {
+     "point": "Both solutions: $t \\approx 1.462$ and $t \\approx 2.507$.",
+     "accept": ["t = 1.462 and t = 2.507", "2.506 for the second time (truncated)"]
+    }
+   ],
+   "sample": "Speed is 3 when $\\sqrt{(4\\sin(0.7t) - 1)^2 + (2\\cos(0.6t) + 0.5)^2} = 3$. Solving on the calculator gives $t \\approx 1.462$ and $t \\approx 2.507$ seconds."
+  },
+  {
+   "label": "c",
+   "points": 3,
+   "prompt": "<b>Find</b> the position of the robot at time $t = 5$.",
+   "rubric": [
+    {
+     "point": "Uses the initial position with an integral of each velocity component: $x(5) = 1 + \\int_0^5 x'(t)\\,dt$ or $y(5) = 2 + \\int_0^5 y'(t)\\,dt$.",
+     "accept": ["initial value added to a definite integral from 0 to 5 of the velocity component, with dt"]
+    },
+    {
+     "point": "$x(5) \\approx 7.065$.",
+     "accept": ["7.065"]
+    },
+    {
+     "point": "$y(5) \\approx 4.970$.",
+     "accept": ["4.970"]
+    }
+   ],
+   "sample": "$x(5) = x(0) + \\int_0^5 \\left(4\\sin(0.7t) - 1\\right)\\,dt \\approx 1 + 6.065 = 7.065$. $y(5) = y(0) + \\int_0^5 \\left(2\\cos(0.6t) + 0.5\\right)\\,dt \\approx 2 + 2.970 = 4.970$. At $t = 5$ the robot is at about $(7.065, 4.970)$."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "<b>Find</b> the total distance traveled by the robot over the time interval $0 \\le t \\le 5$.",
+   "rubric": [
+    {
+     "point": "Integral of speed: $\\int_0^5 \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt$.",
+     "accept": ["the definite integral from 0 to 5 of the square root of the sum of the squared velocity components"]
+    },
+    {
+     "point": "Answer: $\\approx 11.863$ meters.",
+     "accept": ["11.863", "11.862"]
+    }
+   ],
+   "sample": "Distance $= \\int_0^5 \\sqrt{(4\\sin(0.7t) - 1)^2 + (2\\cos(0.6t) + 0.5)^2}\\,dt \\approx 11.863$ meters."
+  }
+ ]
+}

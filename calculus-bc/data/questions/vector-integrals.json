@@ -1,0 +1,401 @@
+{
+ "stimuli": {
+  "vector-integrals-s1": {
+   "kind": "table",
+   "title": "A boat's velocity components and its starting point",
+   "text": "A remote-controlled boat moves on a lake. Its velocity components are differentiable functions of time $t$, in minutes, and at $t = 0$ the boat is at the point $(3, -1)$. Distances are in meters.",
+   "table": {
+    "caption": "Velocity components of the boat at selected times",
+    "cols": ["$t$ (minutes)", "$x'(t)$ (meters per minute)", "$y'(t)$ (meters per minute)"],
+    "rows": [
+     ["$0$", "$4$", "$1$"],
+     ["$2$", "$6$", "$-2$"],
+     ["$5$", "$3$", "$0$"],
+     ["$8$", "$-1$", "$5$"]
+    ]
+   }
+  },
+  "vector-integrals-s2": {
+   "kind": "table",
+   "title": "From acceleration back to position",
+   "text": "A particle moves for $t \\ge 0$ with the acceleration vector and initial values below.",
+   "table": {
+    "caption": "Acceleration and initial conditions of the particle",
+    "cols": ["Quantity", "Value"],
+    "rows": [
+     ["acceleration", "$\\mathbf{a}(t) = \\left\\langle 2, -6t \\right\\rangle$"],
+     ["velocity at $t = 0$", "$\\mathbf{v}(0) = \\left\\langle 1, 3 \\right\\rangle$"],
+     ["position at $t = 0$", "$\\mathbf{r}(0) = \\left\\langle 0, 4 \\right\\rangle$"]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-vector-integrals-1",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vector-integrals-s1",
+   "q": "Use a trapezoidal sum with the three subintervals in the table to approximate $x(8)$, the boat's $x$-coordinate at $t = 8$. Include units.",
+   "numeric": {
+    "answer": 29.5,
+    "unit": "meters",
+    "units": ["m", "meter"],
+    "askUnit": true,
+    "mistakes": [
+     { "value": 26.5, "why": "That is $\\int_0^8 x'(t)\\,dt$, the change in $x$. Add the starting value: $x(8) = x(0) + \\int_0^8 x'(t)\\,dt = 3 + 26.5$." },
+     { "value": 23.5, "why": "The starting value is added, not subtracted: $x(8) = x(0) + \\int_0^8 x'(t)\\,dt$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^8 x'(t)\\,dt \\approx \\frac{4 + 6}{2}(2) + \\frac{6 + 3}{2}(3) + \\frac{3 + (-1)}{2}(3) = 10 + 13.5 + 3 = 26.5$. Then $x(8) = x(0) + \\int_0^8 x'(t)\\,dt \\approx 3 + 26.5 = 29.5$ meters."
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-2",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vector-integrals-s1",
+   "q": "Use a left Riemann sum with the three subintervals in the table to approximate $y(8)$, the boat's $y$-coordinate at $t = 8$.",
+   "numeric": {
+    "answer": -5,
+    "mistakes": [
+     { "value": -4, "why": "That is the change in $y$. Add the starting value $y(0) = -1$." },
+     { "value": -3, "why": "The starting value is added: $y(8) = y(0) + \\int_0^8 y'(t)\\,dt = -1 + (-4)$." },
+     { "value": 10, "why": "That uses right endpoints: $(-2)(2) + 0(3) + 5(3) = 11$, then $-1$. A left sum takes each subinterval's left value." }
+    ]
+   },
+   "why": {
+    "correct": "Left sum: $1(2) + (-2)(3) + 0(3) = -4$. So $y(8) = y(0) + \\int_0^8 y'(t)\\,dt \\approx -1 + (-4) = -5$ meters."
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-3",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "vector-integrals-s1",
+   "q": "What does $\\int_2^5 y'(t)\\,dt$ represent?",
+   "options": [
+    "The boat's $y$-coordinate at $t = 5$, in meters",
+    "The change in the boat's $y$-coordinate, in meters, from $t = 2$ to $t = 5$",
+    "The boat's average vertical velocity, in meters per minute, from $t = 2$ to $t = 5$",
+    "The distance, in meters, that the boat travels from $t = 2$ to $t = 5$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The integral of a rate over an interval is the net change of the quantity: $\\int_2^5 y'(t)\\,dt = y(5) - y(2)$, in meters.",
+    "options": [
+     "To get $y(5)$ you would add a known value, such as $y(2)$, to the change.",
+     "Right: $y(5) - y(2)$.",
+     "An average would divide by $5 - 2 = 3$ minutes.",
+     "Distance along the path uses the speed $\\sqrt{(x')^2 + (y')^2}$, not $y'$ alone."
+    ]
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-4",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vector-integrals-s1",
+   "q": "Using one trapezoid on $[0, 2]$ for each component, which point best approximates the boat's position at $t = 2$?",
+   "options": [
+    "$(10, -1)$",
+    "$(7, 0)$",
+    "$(13, -2)$",
+    "$(11, 1)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$x(2) \\approx 3 + \\frac{4 + 6}{2}(2) = 13$ and $y(2) \\approx -1 + \\frac{1 + (-2)}{2}(2) = -2$.",
+    "options": [
+     "These are the changes in $x$ and $y$; add the starting point $(3, -1)$.",
+     "This subtracts the starting point from the changes; the start is added.",
+     "Right: start plus the trapezoid approximation of each change.",
+     "This uses the left-end rates only, $4(2)$ and $1(2)$; a trapezoid averages both ends."
+    ]
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-5",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vector-integrals-s2",
+   "q": "Find the velocity vector $\\mathbf{v}(t)$.",
+   "options": [
+    "$\\left\\langle 2t, -3t^2 \\right\\rangle$",
+    "$\\left\\langle 2t - 1, -3t^2 - 3 \\right\\rangle$",
+    "$\\left\\langle 2t + 1, 3 - 6t \\right\\rangle$",
+    "$\\left\\langle 2t + 1, 3 - 3t^2 \\right\\rangle$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\mathbf{v}(t) = \\left\\langle 2t, -3t^2 \\right\\rangle + \\mathbf{C}$, and $\\mathbf{v}(0) = \\mathbf{C} = \\left\\langle 1, 3 \\right\\rangle$. So $\\mathbf{v}(t) = \\left\\langle 2t + 1, 3 - 3t^2 \\right\\rangle$.",
+    "options": [
+     "This antiderivative has $\\mathbf{v}(0) = \\left\\langle 0, 0 \\right\\rangle$; add the constant vector $\\left\\langle 1, 3 \\right\\rangle$ so that $\\mathbf{v}(0)$ matches.",
+     "The initial velocity is added, not subtracted: at $t = 0$ this gives $\\left\\langle -1, -3 \\right\\rangle$.",
+     "The antiderivative of $-6t$ is $-3t^2$, not $-6t$.",
+     "Right: antidifferentiate each component and match $\\mathbf{v}(0)$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-6",
+   "type": "expr",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vector-integrals-s2",
+   "q": "Find the vertical component of the position, $y(t)$.",
+   "expr": {
+    "answer": "4+3t-t^3",
+    "vars": ["t"],
+    "domain": [0, 3],
+    "mode": "exact",
+    "lhs": "y(t) =",
+    "mistakes": [
+     { "expr": "3t-t^3", "why": "At $t = 0$ this gives 0, but $y(0) = 4$: add the initial position's vertical component." },
+     { "expr": "3t-t^3-4", "why": "The initial value is added: $y(t) = y(0) + \\int_0^t (3 - 3s^2)\\,ds$." },
+     { "expr": "4-t^3", "why": "The vertical velocity is $3 - 3t^2$, which includes the initial 3; its antiderivative has the term $3t$." }
+    ]
+   },
+   "why": {
+    "correct": "$y'(t) = 3 - 3t^2$, so $y(t) = 3t - t^3 + C$, and $y(0) = 4$ gives $C = 4$: $y(t) = 4 + 3t - t^3$."
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-7",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vector-integrals-s2",
+   "q": "Find the position vector $\\mathbf{r}(2)$.",
+   "options": [
+    "$\\left\\langle 6, 2 \\right\\rangle$",
+    "$\\left\\langle 4, -8 \\right\\rangle$",
+    "$\\left\\langle 5, -9 \\right\\rangle$",
+    "$\\left\\langle 6, -2 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x(t) = t^2 + t$ (since $x(0) = 0$) and $y(t) = 4 + 3t - t^3$. At $t = 2$: $\\left\\langle 4 + 2, 4 + 6 - 8 \\right\\rangle = \\left\\langle 6, 2 \\right\\rangle$.",
+    "options": [
+     "Right: both initial conditions are used.",
+     "This antidifferentiates twice with both constants left out; use $\\mathbf{v}(0)$ and $\\mathbf{r}(0)$.",
+     "That is the velocity $\\mathbf{v}(2) = \\left\\langle 5, -9 \\right\\rangle$, not the position.",
+     "The vertical component needs $y(0) = 4$: $4 + 6 - 8 = 2$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-8",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "vector-integrals-s2",
+   "q": "For $t \\ge 0$, what is the greatest value of the particle's $y$-coordinate?",
+   "numeric": {
+    "answer": 6,
+    "mistakes": [
+     { "value": 2, "why": "That is the greatest value of $3t - t^3$; the position also includes the initial height $y(0) = 4$." },
+     { "value": 4, "why": "That is the starting height. $y' = 3 - 3t^2 > 0$ for $0 < t < 1$, so the particle rises before it falls." }
+    ]
+   },
+   "why": {
+    "correct": "$y'(t) = 3 - 3t^2$ is positive for $0 \\le t < 1$ and negative for $t > 1$, so $y$ increases and then decreases: its greatest value is $y(1) = 4 + 3 - 1 = 6$."
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-9",
+   "type": "expr",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A particle has velocity $\\mathbf{v}(t) = \\left\\langle 6t^2, \\cos t \\right\\rangle$ and $\\mathbf{r}(0) = \\left\\langle 1, 2 \\right\\rangle$. Find $x(t)$.",
+   "expr": {
+    "answer": "2t^3+1",
+    "vars": ["t"],
+    "domain": [-2, 2],
+    "mode": "exact",
+    "lhs": "x(t) =",
+    "mistakes": [
+     { "expr": "2t^3", "why": "This has $x(0) = 0$; add the initial value $x(0) = 1$." },
+     { "expr": "12t+1", "why": "That differentiates $6t^2$. Position comes from antidifferentiating the velocity: $\\int 6t^2\\,dt = 2t^3$." },
+     { "expr": "2t^3-1", "why": "The initial value is added: $x(t) = x(0) + \\int_0^t 6s^2\\,ds$." }
+    ]
+   },
+   "why": {
+    "correct": "$x(t) = x(0) + \\int_0^t 6s^2\\,ds = 1 + 2t^3$. (Likewise $y(t) = 2 + \\sin t$.)"
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-10",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A particle has velocity $\\mathbf{v}(t) = \\left\\langle 2t, \\pi\\cos(\\pi t) \\right\\rangle$ and $\\mathbf{r}(0) = \\left\\langle 1, 3 \\right\\rangle$. Find $y\\left(\\frac{1}{2}\\right)$.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     { "value": 1, "why": "That is $\\int_0^{1/2} \\pi\\cos(\\pi t)\\,dt = \\sin\\frac{\\pi}{2} = 1$, the change in $y$. Add $y(0) = 3$." },
+     { "value": -2, "why": "The initial value is added: $y\\left(\\frac{1}{2}\\right) = 3 + 1$." }
+    ]
+   },
+   "why": {
+    "correct": "$y(t) = 3 + \\int_0^t \\pi\\cos(\\pi s)\\,ds = 3 + \\sin(\\pi t)$, so $y\\left(\\frac{1}{2}\\right) = 3 + 1 = 4$."
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-11",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\int \\left\\langle e^{2t}, \\frac{1}{t} \\right\\rangle\\,dt$.",
+   "options": [
+    "$\\left\\langle 2e^{2t}, -\\frac{1}{t^2} \\right\\rangle + \\mathbf{C}$",
+    "$\\left\\langle \\frac{1}{2}e^{2t}, \\ln|t| \\right\\rangle + \\mathbf{C}$",
+    "$\\left\\langle e^{2t}, \\ln|t| \\right\\rangle + \\mathbf{C}$",
+    "$\\left\\langle \\frac{1}{2}e^{2t}, -\\frac{1}{t^2} \\right\\rangle + \\mathbf{C}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Antidifferentiate each component: $\\int e^{2t}\\,dt = \\frac{1}{2}e^{2t}$ and $\\int \\frac{1}{t}\\,dt = \\ln|t|$. The constant is a vector $\\mathbf{C} = \\left\\langle C_1, C_2 \\right\\rangle$, one constant per component.",
+    "options": [
+     "These are derivatives of the components; the integral reverses differentiation.",
+     "Right: one antiderivative per component, plus a constant vector.",
+     "Differentiating $e^{2t}$ gives $2e^{2t}$, so the antiderivative needs the factor $\\frac{1}{2}$.",
+     "$-\\frac{1}{t^2}$ is the derivative of $\\frac{1}{t}$; its antiderivative is $\\ln|t|$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-12",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\int_0^1 \\left\\langle 3t^2, 4t^3 + 1 \\right\\rangle\\,dt$.",
+   "options": [
+    "$\\left\\langle 6, 12 \\right\\rangle$",
+    "$\\left\\langle 1, 1 \\right\\rangle$",
+    "$\\left\\langle 3, 5 \\right\\rangle$",
+    "$\\left\\langle 1, 2 \\right\\rangle$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Integrate each component: $\\int_0^1 3t^2\\,dt = 1$ and $\\int_0^1 (4t^3 + 1)\\,dt = (t^4 + t)\\Big|_0^1 = 2$.",
+    "options": [
+     "These are the derivatives at $t = 1$; integrate instead.",
+     "The $+ 1$ in the second component integrates to $t$, which adds 1.",
+     "These are the integrand's values at $t = 1$, not the integrals.",
+     "Right: $\\left\\langle 1, 2 \\right\\rangle$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-13",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "A particle has velocity $\\mathbf{v}(t) = \\left\\langle \\sqrt{t + 1}, \\sin(t^2) \\right\\rangle$ and $\\mathbf{r}(0) = \\left\\langle 2, 1 \\right\\rangle$. Find $y(2)$.",
+   "numeric": {
+    "answer": 1.8047764893437535,
+    "mistakes": [
+     { "value": 0.8047764893437535, "why": "That is $\\int_0^2 \\sin(t^2)\\,dt$, the change in $y$. Add $y(0) = 1$." },
+     { "value": -0.19522351065624648, "why": "The initial value is added, not subtracted: $y(2) = 1 + \\int_0^2 \\sin(t^2)\\,dt$." }
+    ]
+   },
+   "why": {
+    "correct": "$y(2) = y(0) + \\int_0^2 \\sin(t^2)\\,dt = 1 + 0.80477\\ldots \\approx 1.805$, with the integral from the calculator (radian mode)."
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-14",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the particle with velocity $\\mathbf{v}(t) = \\left\\langle \\sqrt{t + 1}, \\sin(t^2) \\right\\rangle$ and $\\mathbf{r}(0) = \\left\\langle 2, 1 \\right\\rangle$, find $x(3)$ exactly, without a calculator.",
+   "numeric": {
+    "answer": "20/3",
+    "mistakes": [
+     { "value": "14/3", "why": "That is $\\int_0^3 \\sqrt{t + 1}\\,dt$, the change in $x$. Add $x(0) = 2$." },
+     { "value": "8/3", "why": "The initial value is added: $x(3) = 2 + \\frac{14}{3}$." },
+     { "value": "22/3", "why": "That uses $\\frac{2}{3}(t + 1)^{3/2}$ at the upper limit alone. Subtract its value at the lower limit too: $\\frac{2}{3}(8 - 1) = \\frac{14}{3}$." }
+    ]
+   },
+   "why": {
+    "correct": "$x(3) = x(0) + \\int_0^3 \\sqrt{t + 1}\\,dt = 2 + \\frac{2}{3}(t + 1)^{3/2}\\Big|_0^3 = 2 + \\frac{2}{3}(8 - 1) = 2 + \\frac{14}{3} = \\frac{20}{3}$."
+   }
+  },
+  {
+   "id": "cbc-vector-integrals-15",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A particle starts at $\\mathbf{r}(0) = \\left\\langle 1, 1 \\right\\rangle$, and $\\int_0^4 \\mathbf{v}(t)\\,dt = \\left\\langle 5, -2 \\right\\rangle$. Where is the particle at $t = 4$?",
+   "options": [
+    "$\\left\\langle 5, -2 \\right\\rangle$",
+    "$\\left\\langle 6, -1 \\right\\rangle$",
+    "$\\left\\langle 4, -3 \\right\\rangle$",
+    "$\\left\\langle 1, 1 \\right\\rangle$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The integral of velocity is the change in position: $\\mathbf{r}(4) = \\mathbf{r}(0) + \\int_0^4 \\mathbf{v}(t)\\,dt = \\left\\langle 1 + 5, 1 - 2 \\right\\rangle = \\left\\langle 6, -1 \\right\\rangle$.",
+    "options": [
+     "That is the change in position from $t = 0$ to $t = 4$; add it to the start.",
+     "Right: start plus change.",
+     "The start is added to the change, not subtracted from it.",
+     "That is where the particle started; the integral says it moved."
+    ]
+   }
+  }
+ ]
+}

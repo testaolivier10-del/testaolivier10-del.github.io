@@ -1,0 +1,12 @@
+{
+ "comparison-partial-sums": {
+  "file": "figures/comparison-partial-sums.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Partial sums S sub N for N = 1 to 12 of two series, plotted as dots. The upper dots, for the series of 1 over n squared, rise from 1 and level off just under a dashed line at pi squared over 6, about 1.645. The lower dots, for the series of 1 over (n squared + 1), rise from 0.5 and level off near 1.08, always below the upper dots. Smaller positive terms give smaller partial sums, trapped under the same ceiling."
+ }
+}

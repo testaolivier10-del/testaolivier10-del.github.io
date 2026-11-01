@@ -1,0 +1,8 @@
+/* AP® Calculus BC on top of AB's calc.css (BC pages load AB's runtime styles;
+   docs/apcalcbc-architecture.md). Only what differs: the accent. Violet, hue 270
+   (proposed, owner to confirm; docs/apcalcbc-spec.md decision 7): --cink on --ctint
+   8.5:1 light (10.2:1 on white, 9.7:1 on the page); dark 11.2:1 on the page and
+   9.8:1 on the tint. The same values as body[data-course="apcalcbc"] in
+   assets/theme.css. */
+body.calc.cbc{--ctint:#F1E7FA;--cink:#5A1E96;}
+:root[data-theme="dark"] body.calc.cbc{--ctint:rgba(160,112,224,0.12);--cink:#D6BFF5;}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derivatives of Vector Functions — AP® Calculus BC Notes</title>
+<meta name="description" content="Vector-valued functions: position, velocity and acceleration vectors, speed as the length of velocity, and velocity estimated from a table.">
+<link rel="canonical" href="https://levlprep.com/calculus-bc/notes/vector-derivatives.html">
+<meta property="og:title" content="Derivatives of Vector Functions — AP® Calculus BC Notes">
+<meta property="og:description" content="Vector-valued functions: position, velocity and acceleration vectors, speed as the length of velocity, and velocity estimated from a table.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus-bc/notes/vector-derivatives.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus-bc/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../../calculus/assets/calc.css">
+<link rel="stylesheet" href="../assets/cbc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus-bc/notes/vector-derivatives.html#reading",
+      "name": "Vector-Valued Functions and Their Derivatives",
+      "url": "https://levlprep.com/calculus-bc/notes/vector-derivatives.html",
+      "description": "Vector-valued functions: position, velocity and acceleration vectors, speed as the length of velocity, and velocity estimated from a table.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "vector-valued functions and their derivatives calculus bc explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus-bc/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus BC",
+          "item": "https://levlprep.com/calculus-bc/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Parametric Equations, Polar Coordinates, and Vector-Valued Functions",
+          "item": "https://levlprep.com/calculus-bc/units/unit-9.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Vector-Valued Functions and Their Derivatives: notes",
+          "item": "https://levlprep.com/calculus-bc/notes/vector-derivatives.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="calc cbc" data-course="apcalcbc" data-topic="vector-derivatives" data-unit="unit-9">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apcalcbc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus BC</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-9.html">Parametric Equations, Polar Coordinates, and Vector-Valued Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Vector-Valued Functions and Their Derivatives: notes</span></nav>
+<p class="issue">Unit 9 <i></i> Topic 9.4</p>
+<h1 class="deck bk-title" id="r3Title">Vector-Valued Functions <span>and Their Derivatives</span></h1>
+<p class="hand calc-nav-ref">every AB topic, then series</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/vector-derivatives.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta calc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="vector-derivatives">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus-bc%2Fnotes%2Fvector-derivatives.html&amp;title=Vector-Valued%20Functions%20and%20Their%20Derivatives%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/calculus-bc/notes/vector-derivatives.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalcbc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apcalcbc">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 9 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+    <a class="bk-toc-chap" href="../units/unit-9.html"><span class="bk-toc-chap-n">9</span><span><b>Parametric Equations, Polar Coordinates, and Vector-Valued Functions</b><small>9 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-9"><div class="tb-progress-row"><span><b>0</b> of 9 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="parametric-derivatives"><a href="parametric-derivatives.html"><span class="bk-toc-n">9.1</span>Parametric Equations and Their Derivatives</a></li><li data-toc-t="parametric-second-derivatives"><a href="parametric-second-derivatives.html"><span class="bk-toc-n">9.2</span>Second Derivatives of Parametric Equations</a></li><li data-toc-t="parametric-arc-length"><a href="parametric-arc-length.html"><span class="bk-toc-n">9.3</span>Arc Length of a Parametric Curve</a></li><li class="current" data-toc-t="vector-derivatives"><a href="#main" aria-current="page"><span class="bk-toc-n">9.4</span>Vector-Valued Functions and Their Derivatives</a><div class="bk-toc-onpage"><p>On this page</p><a href="#velocity-and-acceleration-vectors">Velocity and acceleration vectors</a><a href="#what-the-velocity-vector-shows">What the velocity vector shows</a><a href="#velocity-from-a-table">Velocity from a table</a><a href="#common-slips">Common slips</a></div></li><li data-toc-t="vector-integrals"><a href="vector-integrals.html"><span class="bk-toc-n">9.5</span>Integrating Vector-Valued Functions</a></li><li data-toc-t="planar-motion"><a href="planar-motion.html"><span class="bk-toc-n">9.6</span>Motion in the Plane</a></li><li data-toc-t="polar-derivatives"><a href="polar-derivatives.html"><span class="bk-toc-n">9.7</span>Polar Coordinates and Polar Derivatives</a></li><li data-toc-t="polar-area"><a href="polar-area.html"><span class="bk-toc-n">9.8</span>Area Inside a Polar Curve</a></li><li data-toc-t="polar-area-between"><a href="polar-area-between.html"><span class="bk-toc-n">9.9</span>Area Between Two Polar Curves</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-10.html"><span class="bk-toc-n">10</span>Infinite Sequences and Series</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="calc-prose bk-prose">
+<p><a class="gl" href="../notes/math-parametric-vectors.html" data-c="parametric-equation">Parametric equations</a> give a moving point's <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> separately. A <b><span class="gl" tabindex="0" data-c="vector-valued-function">vector-valued function</span></b> packages them as one object, the <b>position <a class="gl" href="../notes/math-parametric-vectors.html" data-c="vector">vector</a></b></p>
+<p><math class="calc-m" display="block"><semantics><mrow><mi mathvariant="bold">r</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>,</mo><mi>y</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">\mathbf{r}(t) = \left\langle x(t), y(t) \right\rangle,</annotation></semantics></math></p>
+<p>the arrow from the origin to the particle at time <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>. Nothing new is needed to <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">differentiate</a> it: every rule you know works on each component. What is new is the meaning of the result, a vector that tells you both how fast and which way.</p>
+
+<h2 id="velocity-and-acceleration-vectors">Velocity and acceleration vectors</h2>
+<p>Differentiate each component:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mi mathvariant="bold">v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="bold">r</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mrow><mi>x</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>,</mo><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo>,</mo><mspace width="2em"></mspace><mi mathvariant="bold">a</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="bold">v</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="bold">r</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mrow><mi>x</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>,</mo><mrow><mi>y</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo>.</mo></mrow><annotation encoding="application/x-tex">\mathbf{v}(t) = \mathbf{r}'(t) = \left\langle x'(t), y'(t) \right\rangle, \qquad \mathbf{a}(t) = \mathbf{v}'(t) = \mathbf{r}''(t) = \left\langle x''(t), y''(t) \right\rangle.</annotation></semantics></math></p>
+<p><math class="calc-m"><semantics><mrow><mi mathvariant="bold">v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{v}(t)</annotation></semantics></math> is the <b><span class="gl" tabindex="0" data-c="velocity-vector">velocity vector</span></b> and <math class="calc-m"><semantics><mrow><mi mathvariant="bold">a</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{a}(t)</annotation></semantics></math> the <b><a class="gl" href="../notes/straight-line-motion.html" data-c="acceleration">acceleration</a> vector</b>. The rules from straight-line motion still hold, one direction at a time: <math class="calc-m"><semantics><mrow><mrow><mi>x</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x'(t)</annotation></semantics></math> is the horizontal <a class="gl" href="../notes/straight-line-motion.html" data-c="velocity">velocity</a>, <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y'(t)</annotation></semantics></math> the vertical velocity, and so on.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A particle has position <math class="calc-m"><semantics><mrow><mi mathvariant="bold">r</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{r}(t)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>t</mi><mo>,</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>π</mi><mi>t</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">= \left\langle t^2 - 4t, \sin(\pi t) \right\rangle</annotation></semantics></math>. Find its velocity and acceleration vectors at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math>.</p>
+<p>Velocity: <math class="calc-m"><semantics><mrow><mi mathvariant="bold">v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{v}(t)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>2</mn><mi>t</mi><mo>−</mo><mn>4</mn><mo>,</mo><mi>π</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>π</mi><mi>t</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">= \left\langle 2t - 4, \pi\cos(\pi t) \right\rangle</annotation></semantics></math> (<a class="gl" href="../notes/chain-rule.html" data-c="chain-rule">chain rule</a> on <math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>π</mi><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sin(\pi t)</annotation></semantics></math>), so <math class="calc-m"><semantics><mrow><mi mathvariant="bold">v</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{v}(1)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>,</mo><mi>π</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>π</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">= \left\langle -2, \pi\cos\pi \right\rangle</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi>π</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">= \left\langle -2, -\pi \right\rangle</annotation></semantics></math>.</p>
+<p>Acceleration: <math class="calc-m"><semantics><mrow><mi mathvariant="bold">a</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>2</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>π</mi><mn>2</mn></msup><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>π</mi><mi>t</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{a}(t) = \left\langle 2, -\pi^2\sin(\pi t) \right\rangle</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi mathvariant="bold">a</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>2</mn><mo>,</mo><mn>0</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{a}(1) = \left\langle 2, 0 \right\rangle</annotation></semantics></math>.</p>
+<p>Reading: at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math> the particle moves left (first component negative) and down (second component negative), while its acceleration points right.</p>
+</div>
+
+<h2 id="what-the-velocity-vector-shows">What the velocity vector shows</h2>
+<p>Draw <math class="calc-m"><semantics><mrow><mi mathvariant="bold">v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{v}(t)</annotation></semantics></math> starting at the particle's position. Two facts make it useful:</p>
+<ul>
+<li><b>Direction.</b> Its <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> is <math class="calc-m"><semantics><mrow><mfrac><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mrow><mrow><mi>x</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{y'(t)}{x'(t)} = \frac{dy}{dx}</annotation></semantics></math>, the slope of the <a class="gl" href="../notes/derivative-definition.html" data-c="tangent-line">tangent line</a> from 9.1, and its signs say which way the particle moves. So the velocity vector is tangent to the path and points in the direction of motion.</li>
+<li><b>Length.</b> Its magnitude is the <b><a class="gl" href="../notes/straight-line-motion.html" data-c="speed">speed</a></b>: <math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">‖</mo><mrow><mi mathvariant="bold">v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">‖</mo></mrow></mrow><annotation encoding="application/x-tex">\left\| \mathbf{v}(t) \right\|</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{(x'(t))^2 + (y'(t))^2}</annotation></semantics></math>. In worked example 1 the speed at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math> is <math class="calc-m"><semantics><mrow><msqrt><mrow><mn>4</mn><mo>+</mo><msup><mi>π</mi><mn>2</mn></msup></mrow></msqrt><mo>≈</mo><mn>3.724</mn></mrow><annotation encoding="application/x-tex">\sqrt{4 + \pi^2} \approx 3.724</annotation></semantics></math>.</li>
+</ul>
+<figure id="fig-ellipse"  class="calc-figure"><div class="calc-figimg" data-fig="vector-derivatives-ellipse"><img src="../figures/vector-derivatives-ellipse.svg" alt="The ellipse r(t) = 3 cos t, 2 sin t, traced counterclockwise. Blue velocity vectors, drawn at half size, start at the points where t = 0, pi/4, pi/2, pi and 3 pi/2; each is tangent to the ellipse and points counterclockwise: straight up at t = 0, straight left at t = pi/2. At t = pi/4 a vermillion acceleration vector, also half size, points from the particle toward the center. The formulas are r(t) = 3 cos t, 2 sin t; v(t) = -3 sin t, 2 cos t; a(t) = -3 cos t, -2 sin t." width="880" height="470" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Velocity vectors are tangent to the path; this acceleration vector points into the bend. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p><a class="figref" href="#fig-ellipse">The figure</a> shows <math class="calc-m"><semantics><mrow><mi mathvariant="bold">r</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>3</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>t</mi><mo>,</mo><mn>2</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>t</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{r}(t) = \left\langle 3\cos t, 2\sin t \right\rangle</annotation></semantics></math>. At <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math> the particle is at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 0)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi mathvariant="bold">v</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>0</mn><mo>,</mo><mn>2</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{v}(0) = \left\langle 0, 2 \right\rangle</annotation></semantics></math> points straight up, along the <a class="gl" href="../notes/differentiability.html" data-c="corner">vertical tangent</a>. At <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mfrac><mi>π</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">t = \frac{\pi}{2}</annotation></semantics></math> it is at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 2)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi mathvariant="bold">v</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>,</mo><mn>0</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{v} = \left\langle -3, 0 \right\rangle</annotation></semantics></math> points straight left. Here <math class="calc-m"><semantics><mrow><mi mathvariant="bold">a</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="bold">r</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{a}(t) = -\mathbf{r}(t)</annotation></semantics></math>, so the acceleration always points from the particle back toward the center: it bends the path.</p>
+<p>Special cases follow from the components:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Velocity at <math class="calc-m"><semantics><mrow><msub><mi>t</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">t_0</annotation></semantics></math></th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>0</mn><mo>,</mo><mi>b</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 0, b \right\rangle</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b \ne 0</annotation></semantics></math></td><td>Moving straight up or down: vertical tangent</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>a</mi><mo>,</mo><mn>0</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle a, 0 \right\rangle</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>a</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a \ne 0</annotation></semantics></math></td><td>Moving straight across: <a class="gl" href="../notes/implicit-relations.html" data-c="horizontal-tangent">horizontal tangent</a></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>0</mn><mo>,</mo><mn>0</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 0, 0 \right\rangle</annotation></semantics></math></td><td>At rest for an instant; the path may have a sharp point there</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="velocity-from-a-table">Velocity from a table</h2>
+<p>When positions are known only at some times, estimate each component of the velocity with a <a class="gl" href="../notes/average-and-instant-rates.html" data-c="difference-quotient">difference quotient</a>, as in 2.3.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A boat's position, in kilometers, is <math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 1, 2 \right\rangle</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math> hour and <math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>9</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 9, -4 \right\rangle</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math> hours. Estimate its velocity vector and speed at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math>.</p>
+<p>Each component over <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 3]</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>9</mn><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\frac{9 - 1}{2} = 4</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mo>−</mo><mn>2</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\frac{-4 - 2}{2} = -3</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><mi mathvariant="bold">v</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>≈</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>4</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{v}(2) \approx \left\langle 4, -3 \right\rangle</annotation></semantics></math> kilometers per hour.</p>
+<p>Speed <math class="calc-m"><semantics><mrow><mo>≈</mo><msqrt><mrow><msup><mn>4</mn><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></msqrt><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\approx \sqrt{4^2 + (-3)^2} = 5</annotation></semantics></math> kilometers per hour.</p>
+</div>
+
+<h2 id="common-slips">Common slips</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Slip</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Giving <math class="calc-m"><semantics><mrow><mi mathvariant="bold">r</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{r}(t_0)</annotation></semantics></math> when the velocity is asked</td><td>Differentiate first: velocity is <math class="calc-m"><semantics><mrow><mrow><mi mathvariant="bold">r</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{r}'(t_0)</annotation></semantics></math></td></tr>
+<tr><td>Giving the velocity when the acceleration is asked</td><td>Acceleration is the <a class="gl" href="../notes/higher-order-derivatives.html" data-c="second-derivative">second derivative</a></td></tr>
+<tr><td>Swapping the components</td><td>Keep the order <math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle x, y \right\rangle</annotation></semantics></math> in every vector</td></tr>
+<tr><td>Losing a chain rule factor</td><td><math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>k</mi><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{d}{dt}\sin(kt)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>k</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>k</mi><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= k\cos(kt)</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><msup><mi>e</mi><mrow><mi>k</mi><mi>t</mi></mrow></msup><mo>=</mo><mi>k</mi><msup><mi>e</mi><mrow><mi>k</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\frac{d}{dt}e^{kt} = ke^{kt}</annotation></semantics></math></td></tr>
+<tr><td>Speed as one component, or as <math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">|</mo><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo fence="true" stretchy="true">|</mo></mrow></mrow><annotation encoding="application/x-tex">\left|\frac{dy}{dx}\right|</annotation></semantics></math></td><td>Speed is <math class="calc-m"><semantics><mrow><msqrt><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{(x'(t))^2 + (y'(t))^2}</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:vector-derivatives">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="parametric-arc-length.html"><span>&larr; Previous</span><b>Arc Length of a Parametric Curve</b></a><a class="tb-chapter-link next" href="vector-integrals.html"><span>Next &rarr;</span><b>Integrating Vector-Valued Functions</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/vector-derivatives.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"> This course has not yet been reviewed by an AP® Calculus BC teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:vector-derivatives">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../'; window.ApCalcCourse = {"key":"apcalcbc","name":"AP® Calculus BC","short":"Calculus BC","dir":"calculus-bc","pfx":["calc","cbc"],"frqTypes":{"table":"Rate in context from a table","model":"Modeling with a given function","motion":"Particle motion","area":"Area and volume","de":"Differential equation and slope field","graph":"Graph of f′ or graphical FTC","implicit":"Implicit differentiation and related rates","fg":"Table of f, g and their derivatives","parametric":"Parametric, vector or polar functions","techniques":"BC techniques: parts, improper integrals, Euler, arc length","series":"Series and Taylor polynomials"},"band":false,"score":false,"examDate":"2027-05-10","site":"https://levlprep.com/calculus-bc/","intervals":true,"smallValues":true,"rt":"../../calculus/"};</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../../calculus/assets/calc-core.js" defer></script>
+<script src="../../calculus/assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../calculus/assets/calc-toc.js" defer></script>
+</body>
+</html>

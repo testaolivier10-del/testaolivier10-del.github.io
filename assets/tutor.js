@@ -46,6 +46,7 @@
     { key: 'apenv', dir: 'environmental-science' },
     { key: 'appsych', dir: 'psychology' },
     { key: 'apprecalc', dir: 'precalculus' },
+    { key: 'apcalcbc', dir: 'calculus-bc' },
   ];
   // courses:end
   function courseKey(){
@@ -140,6 +141,14 @@
       .catch(function(){ return []; });
   }
 
+  // AP® Calculus BC's, the same way (scripts/build-apcalcbc.mjs).
+  function calcBcPages(){
+    return fetch('/calculus-bc/assets/notes-index.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(list){ return list.length ? list.concat([{ file: '/calculus-bc/glossary.html', title: 'Glossary', data: '/calculus-bc/assets/glossary.json' }]) : list; })
+      .catch(function(){ return []; });
+  }
+
   // AP® Statistics's, the same way (scripts/build-apstat.mjs).
   function statPages(){
     return fetch('/statistics/assets/notes-index.json')
@@ -180,6 +189,7 @@
     if(k === 'apchem') return chemPages();
     if(k === 'apphys') return physPages();
     if(k === 'apcalc') return calcPages();
+    if(k === 'apcalcbc') return calcBcPages();
     if(k === 'apstat') return statPages();
     if(k === 'apenv') return envPages();
     if(k === 'appsych') return psyPages();
@@ -196,6 +206,7 @@
     if(k === 'apchem') return '<a href="/chem/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apphys') return '<a href="/physics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apcalc') return '<a href="/calculus/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
+    if(k === 'apcalcbc') return '<a href="/calculus-bc/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apstat') return '<a href="/statistics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apenv') return '<a href="/environmental-science/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'appsych') return '<a href="/psychology/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
@@ -1115,6 +1126,12 @@
       'What is the difference between a definite and an indefinite integral?',
       'Which hypotheses does the Mean Value Theorem need?'
     ],
+    apcalcbc: [
+      'How do I find an interval of convergence?',
+      'When do I use the ratio test instead of a comparison test?',
+      'How do I find the area inside a polar curve?',
+      'What is the difference between the alternating series and Lagrange error bounds?'
+    ],
     apstat: [
       'What does 95% confident actually mean?',
       'How do I write a conclusion for a significance test?',
@@ -1149,6 +1166,7 @@
     apchem: 'Ask me anything from this course — every published Chemistry notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.',
     apphys: 'Ask me anything from this course — every published Physics notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.',
     apcalc: 'Ask me anything from this course — every published Calculus notes page and the glossary are indexed. I can define a term, explain a derivative or an integral step by step, or point you at the page it came from.',
+    apcalcbc: 'Ask me anything from this course: every published Calculus BC notes page and the glossary are indexed. I can define a term, explain a series test or an integral step by step, or point you at the page it came from.',
     apstat: 'Ask me anything from this course: every published Statistics notes page and the glossary are indexed. I can define a term, explain a calculation or a conclusion step by step, or point you at the page it came from.',
     apenv: 'Ask me anything from this course: every published Environmental Science notes page and the glossary are indexed. I can define a term, explain a calculation or a cause-and-effect chain step by step, or point you at the page it came from.',
     appsych: 'Ask me anything from this course: every published Psychology notes page and the glossary are indexed. I can define a term, apply a concept to a situation, or point you at the page it came from.',

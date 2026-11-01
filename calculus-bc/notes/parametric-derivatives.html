@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parametric Derivatives — AP® Calculus BC Notes | LevlPrep</title>
+<meta name="description" content="Find dy/dx for a parametric curve, tangent lines, and horizontal and vertical tangents, with the slips that cost points on the exam.">
+<link rel="canonical" href="https://levlprep.com/calculus-bc/notes/parametric-derivatives.html">
+<meta property="og:title" content="Parametric Derivatives — AP® Calculus BC Notes | LevlPrep">
+<meta property="og:description" content="Find dy/dx for a parametric curve, tangent lines, and horizontal and vertical tangents, with the slips that cost points on the exam.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus-bc/notes/parametric-derivatives.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus-bc/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../../calculus/assets/calc.css">
+<link rel="stylesheet" href="../assets/cbc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus-bc/notes/parametric-derivatives.html#reading",
+      "name": "Parametric Equations and Their Derivatives",
+      "url": "https://levlprep.com/calculus-bc/notes/parametric-derivatives.html",
+      "description": "Find dy/dx for a parametric curve, tangent lines, and horizontal and vertical tangents, with the slips that cost points on the exam.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "parametric equations and their derivatives calculus bc explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus-bc/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus BC",
+          "item": "https://levlprep.com/calculus-bc/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Parametric Equations, Polar Coordinates, and Vector-Valued Functions",
+          "item": "https://levlprep.com/calculus-bc/units/unit-9.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Parametric Equations and Their Derivatives: notes",
+          "item": "https://levlprep.com/calculus-bc/notes/parametric-derivatives.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="calc cbc" data-course="apcalcbc" data-topic="parametric-derivatives" data-unit="unit-9">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apcalcbc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus BC</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-9.html">Parametric Equations, Polar Coordinates, and Vector-Valued Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Parametric Equations and Their Derivatives: notes</span></nav>
+<p class="issue">Unit 9 <i></i> Topic 9.1</p>
+<h1 class="deck bk-title" id="r3Title">Parametric Equations <span>and Their Derivatives</span></h1>
+<p class="hand calc-nav-ref">every AB topic, then series</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/parametric-derivatives.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta calc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="parametric-derivatives">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus-bc%2Fnotes%2Fparametric-derivatives.html&amp;title=Parametric%20Equations%20and%20Their%20Derivatives%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/calculus-bc/notes/parametric-derivatives.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalcbc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apcalcbc">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 9 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+    <a class="bk-toc-chap" href="../units/unit-9.html"><span class="bk-toc-chap-n">9</span><span><b>Parametric Equations, Polar Coordinates, and Vector-Valued Functions</b><small>9 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-9"><div class="tb-progress-row"><span><b>0</b> of 9 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="parametric-derivatives"><a href="#main" aria-current="page"><span class="bk-toc-n">9.1</span>Parametric Equations and Their Derivatives</a><div class="bk-toc-onpage"><p>On this page</p><a href="#two-rates-and-a-direction">Two rates and a direction</a><a href="#the-slope-of-the-curve">The slope of the curve</a><a href="#horizontal-and-vertical-tangents">Horizontal and vertical tangents</a><a href="#curves-given-by-a-table">Curves given by a table</a><a href="#common-slips">Common slips</a></div></li><li data-toc-t="parametric-second-derivatives"><a href="parametric-second-derivatives.html"><span class="bk-toc-n">9.2</span>Second Derivatives of Parametric Equations</a></li><li data-toc-t="parametric-arc-length"><a href="parametric-arc-length.html"><span class="bk-toc-n">9.3</span>Arc Length of a Parametric Curve</a></li><li data-toc-t="vector-derivatives"><a href="vector-derivatives.html"><span class="bk-toc-n">9.4</span>Vector-Valued Functions and Their Derivatives</a></li><li data-toc-t="vector-integrals"><a href="vector-integrals.html"><span class="bk-toc-n">9.5</span>Integrating Vector-Valued Functions</a></li><li data-toc-t="planar-motion"><a href="planar-motion.html"><span class="bk-toc-n">9.6</span>Motion in the Plane</a></li><li data-toc-t="polar-derivatives"><a href="polar-derivatives.html"><span class="bk-toc-n">9.7</span>Polar Coordinates and Polar Derivatives</a></li><li data-toc-t="polar-area"><a href="polar-area.html"><span class="bk-toc-n">9.8</span>Area Inside a Polar Curve</a></li><li data-toc-t="polar-area-between"><a href="polar-area-between.html"><span class="bk-toc-n">9.9</span>Area Between Two Polar Curves</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-10.html"><span class="bk-toc-n">10</span>Infinite Sequences and Series</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="calc-prose bk-prose">
+<p>A curve given by <a class="gl" href="../notes/math-parametric-vectors.html" data-c="parametric-equation">parametric equations</a> <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x = x(t)</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>y</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = y(t)</annotation></semantics></math> is the path of a moving point. Calculus asks three questions about it at each instant: how fast is <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> changing, how fast is <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> changing, and how steep is the path? The first two are <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivatives</a> you already know how to take. The third needs one new idea.</p>
+
+<h2 id="two-rates-and-a-direction">Two rates and a direction</h2>
+<p>Differentiate each coordinate with respect to <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>. <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dx}{dt}</annotation></semantics></math> is the horizontal rate and <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dt}</annotation></semantics></math> the vertical rate of the point. Their signs tell you which way it moves:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Sign</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dx}{dt} &gt; 0</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> is increasing: the point moves right</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dx}{dt} &lt; 0</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> is decreasing: the point moves left</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} &gt; 0</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> is increasing: the point moves up</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} &lt; 0</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> is decreasing: the point moves down</td></tr>
+</tbody>
+</table></div>
+<p>Every rule from Units 2 and 3 applies, one coordinate at a time: the power, product, quotient and chain rules all work exactly as before, with <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> as the variable.</p>
+
+<h2 id="the-slope-of-the-curve">The slope of the curve</h2>
+<p>If <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> can be thought of as a <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> near a point, the <a class="gl" href="../notes/chain-rule.html" data-c="chain-rule">chain rule</a> says</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>⋅</mo><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = \frac{dy}{dx}\cdot\frac{dx}{dt}.</annotation></semantics></math></p>
+<p>Solve for <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math>:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>d</mi><mi>y</mi><mo>/</mo><mi>d</mi><mi>t</mi></mrow><mrow><mi>d</mi><mi>x</mi><mo>/</mo><mi>d</mi><mi>t</mi></mrow></mfrac><mo>,</mo><mspace width="2em"></mspace><mtext>provided </mtext><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>≠</mo><mn>0</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = \frac{dy/dt}{dx/dt}, \qquad \text{provided } \frac{dx}{dt} \ne 0.</annotation></semantics></math></p>
+<p>In words: the <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> is the vertical rate over the horizontal rate. If the point rises 6 units per second while it moves right 2 units per second, the path rises 3 units per unit of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. Notice that <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> comes out as a function of <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>. You evaluate it at a <i>time</i>, not at a point.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A curve is given by <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn><mi>t</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 2t + 1</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>t</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>t</mi></mrow><annotation encoding="application/x-tex">y = t^2 - 4t</annotation></semantics></math>. Find the <a class="gl" href="../notes/derivative-definition.html" data-c="tangent-line">line tangent</a> to the curve at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math>.</p>
+<p>Rates: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{dx}{dt} = 2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>t</mi><mo>−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = 2t - 4</annotation></semantics></math>.</p>
+<p>Slope: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>2</mn><mi>t</mi><mo>−</mo><mn>4</mn></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{2t - 4}{2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>t</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">= t - 2</annotation></semantics></math>, which is <math class="calc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math>.</p>
+<p>Point: <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>,</mo><mi>y</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x(3), y(3))</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mn>7</mn><mo>,</mo><mn>9</mn><mo>−</mo><mn>12</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= (7, 9 - 12)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mn>7</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= (7, -3)</annotation></semantics></math>. Use the same <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> for the point and the slope.</p>
+<p>Tangent line: <math class="calc-m"><semantics><mrow><mi>y</mi><mo>+</mo><mn>3</mn><mo>=</mo><mn>1</mn><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>7</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y + 3 = 1(x - 7)</annotation></semantics></math>, that is, <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi><mo>−</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">y = x - 10</annotation></semantics></math>.</p>
+<p>Check by eliminating <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">t = \frac{x - 1}{2}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>4</mn></mfrac><mo>−</mo><mn>2</mn><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= \frac{(x - 1)^2}{4} - 2(x - 1)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = \frac{x - 1}{2} - 2</annotation></semantics></math>. At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">x = 7</annotation></semantics></math> this is <math class="calc-m"><semantics><mrow><mn>3</mn><mo>−</mo><mn>2</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3 - 2 = 1</annotation></semantics></math>. The parametric route was faster and needed no elimination.</p>
+</div>
+
+<h2 id="horizontal-and-vertical-tangents">Horizontal and vertical tangents</h2>
+<p>A fraction is 0 when its numerator is 0, and it is undefined when its denominator is 0. So:</p>
+<ul>
+<li><b><a class="gl" href="../notes/implicit-relations.html" data-c="horizontal-tangent">Horizontal tangent</a></b>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dx}{dt} \ne 0</annotation></semantics></math>. For an instant the point moves straight across.</li>
+<li><b><a class="gl" href="../notes/differentiability.html" data-c="corner">Vertical tangent</a></b>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dx}{dt} = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} \ne 0</annotation></semantics></math>. For an instant the point moves straight up or down.</li>
+</ul>
+<p>In worked example 1, <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>t</mi><mo>−</mo><mn>4</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = 2t - 4 = 0</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math>, while <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{dx}{dt} = 2</annotation></semantics></math>. The tangent is horizontal at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(5, -4)</annotation></semantics></math>, the lowest point of the curve.</p>
+<p>When both rates are 0 at the same time, the point stops for an instant and the quotient tells you nothing. The curve may have a sharp corner there or a perfectly smooth tangent; you have to look more closely, so state that the test does not apply.</p>
+<figure id="fig-tangents"  class="calc-figure"><div class="calc-figimg" data-fig="parametric-derivatives-tangents"><img src="../figures/parametric-derivatives-tangents.svg" alt="The curve x = t squared, y = t cubed minus 3t for t from about -2 to 2, a loop that crosses itself at (3, 0), with arrows for the direction of increasing t. At (3, 0) two dashed tangent lines are drawn: slope square root of 3 when t = square root of 3, and slope minus square root of 3 when t = minus square root of 3. Short horizontal tangent segments mark (1, 2) at t = -1 and (1, -2) at t = 1, and a vertical tangent marks the origin at t = 0." width="760" height="570" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> One point, two slopes: why parametric slopes are found from <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p><a class="figref" href="#fig-tangents">The figure</a> shows why "evaluate at a time" matters. The curve <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><msup><mi>t</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x = t^2</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>t</mi><mn>3</mn></msup><mo>−</mo><mn>3</mn><mi>t</mi></mrow><annotation encoding="application/x-tex">y = t^3 - 3t</annotation></semantics></math> passes through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 0)</annotation></semantics></math> twice. Its slope is <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>3</mn><msup><mi>t</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn></mrow><mrow><mn>2</mn><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{3t^2 - 3}{2t}</annotation></semantics></math>, which is <math class="calc-m"><semantics><mrow><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{3}</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">t = \sqrt{3}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">-\sqrt{3}</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">t = -\sqrt{3}</annotation></semantics></math>: two tangent lines at one point. A formula in <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> could never give both.</p>
+
+<h2 id="curves-given-by-a-table">Curves given by a table</h2>
+<p>On the exam, <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y(t)</annotation></semantics></math> are often known only through a table of values and derivatives. The same rules apply to the numbers.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> At <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">t = 4</annotation></semantics></math>, a curve has <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x(4) = 2</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y(4) = -1</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mrow><mi>x</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x'(4) = -5</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">y'(4) = 10</annotation></semantics></math>. Find the tangent line and the direction of motion at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">t = 4</annotation></semantics></math>.</p>
+<p>Slope: <math class="calc-m"><semantics><mrow><mfrac><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><mrow><mrow><mi>x</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{y'(4)}{x'(4)}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>10</mn><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>5</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{10}{-5}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">= -2</annotation></semantics></math>. Tangent line: <math class="calc-m"><semantics><mrow><mi>y</mi><mo>+</mo><mn>1</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y + 1 = -2(x - 2)</annotation></semantics></math>.</p>
+<p>Direction: <math class="calc-m"><semantics><mrow><mrow><mi>x</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x'(4) &lt; 0</annotation></semantics></math>, so the point moves left; <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y'(4) &gt; 0</annotation></semantics></math>, so it moves up.</p>
+</div>
+
+<h2 id="common-slips">Common slips</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Slip</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Using <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dt}</annotation></semantics></math> as the slope</td><td>Divide by <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dx}{dt}</annotation></semantics></math>: the slope is change in <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> per unit of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></td></tr>
+<tr><td>Dividing upside down</td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi><mo>/</mo><mi>d</mi><mi>t</mi></mrow><mrow><mi>d</mi><mi>x</mi><mo>/</mo><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy/dt}{dx/dt}</annotation></semantics></math>: the <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> rate on top, as in <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math></td></tr>
+<tr><td>Using <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> as the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-coordinate</td><td>The point is <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo>,</mo><mi>y</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x(t_0), y(t_0))</annotation></semantics></math>; compute both</td></tr>
+<tr><td>Calling <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dx}{dt} = 0</annotation></semantics></math> horizontal</td><td>No horizontal motion means a vertical tangent</td></tr>
+</tbody>
+</table></div>
+<p>On calculator questions, store <math class="calc-m"><semantics><mrow><mrow><mi>x</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x'(t_0)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y'(t_0)</annotation></semantics></math> before dividing, and give the slope to three decimal places, with the quotient written out as your setup.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:parametric-derivatives">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="math-parametric-vectors.html"><span>&larr; Previous</span><b>Parametric Equations and Vectors</b></a><a class="tb-chapter-link next" href="parametric-second-derivatives.html"><span>Next &rarr;</span><b>Second Derivatives of Parametric Equations</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/parametric-derivatives.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"> This course has not yet been reviewed by an AP® Calculus BC teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalcbc" data-report-question="notes:parametric-derivatives">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../'; window.ApCalcCourse = {"key":"apcalcbc","name":"AP® Calculus BC","short":"Calculus BC","dir":"calculus-bc","pfx":["calc","cbc"],"frqTypes":{"table":"Rate in context from a table","model":"Modeling with a given function","motion":"Particle motion","area":"Area and volume","de":"Differential equation and slope field","graph":"Graph of f′ or graphical FTC","implicit":"Implicit differentiation and related rates","fg":"Table of f, g and their derivatives","parametric":"Parametric, vector or polar functions","techniques":"BC techniques: parts, improper integrals, Euler, arc length","series":"Series and Taylor polynomials"},"band":false,"score":false,"examDate":"2027-05-10","site":"https://levlprep.com/calculus-bc/","intervals":true,"smallValues":true,"rt":"../../calculus/"};</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../../calculus/assets/calc-core.js" defer></script>
+<script src="../../calculus/assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../calculus/assets/calc-toc.js" defer></script>
+</body>
+</html>

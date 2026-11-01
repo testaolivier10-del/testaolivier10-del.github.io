@@ -1,0 +1,51 @@
+<p>Every series so far was a list of numbers. A power series has an $x$ in it, $\sum_{n=0}^{\infty} a_n (x - a)^n$, so it is a whole family of series, one for each value of $x$. For some values the series converges, for others it diverges. The set where it converges is the interval of convergence, and finding it is asked on the free-response section almost every year.</p>
+
+<h2>What a power series is</h2>
+<p>A power series centered at $x = a$ is</p>
+<p>$$\sum_{n=0}^{\infty} a_n (x - a)^n = a_0 + a_1(x - a) + a_2(x - a)^2 + \cdots$$</p>
+<p>The numbers $a_n$ are its coefficients. Read the center from the powers: $(x + 2)^n = (x - (-2))^n$ is centered at $-2$, and $(2x - 1)^n = 2^n\left(x - \frac{1}{2}\right)^n$ is centered at $\frac{1}{2}$. At the center every term after the first is 0, so a power series always converges there.</p>
+<p>Beyond the center there are exactly three possibilities:</p>
+<ul>
+<li>it converges only at $x = a$ (radius $0$);</li>
+<li>it converges for every real $x$ (infinite radius);</li>
+<li>there is a radius $R > 0$: it converges when $|x - a| < R$ and diverges when $|x - a| > R$. At the two endpoints $x = a \pm R$ anything can happen.</li>
+</ul>
+
+<h2>Step 1: the radius from the ratio test</h2>
+<p>Apply the ratio test to the terms, treating $x$ as a fixed number. Keep the absolute value bars: they turn the limit into a distance from the center.</p>
+<div class="worked">
+<p><b>Worked example.</b> Find the interval of convergence of $\sum_{n=1}^{\infty} \frac{(x - 1)^n}{n \cdot 4^n}$.</p>
+<p>Ratio: $\left|\frac{a_{n+1}}{a_n}\right| = \frac{|x - 1|^{n+1}}{(n + 1)4^{n+1}} \cdot \frac{n \cdot 4^n}{|x - 1|^n} = \frac{|x - 1|}{4} \cdot \frac{n}{n + 1}$.</p>
+<p>Limit: $\lim_{n \to \infty} \frac{|x - 1|}{4} \cdot \frac{n}{n + 1} = \frac{|x - 1|}{4}$.</p>
+<p>Converges when $\frac{|x - 1|}{4} < 1$, that is $|x - 1| < 4$. Radius $R = 4$; open interval $-3 < x < 5$.</p>
+<p><b>Step 2, right endpoint.</b> At $x = 5$: $\frac{4^n}{n \cdot 4^n} = \frac{1}{n}$. The harmonic series diverges, so $x = 5$ is left out.</p>
+<p><b>Step 2, left endpoint.</b> At $x = -3$: $\frac{(-4)^n}{n \cdot 4^n} = \frac{(-1)^n}{n}$. It alternates and $\frac{1}{n}$ decreases to 0, so it converges by the alternating series test: $x = -3$ is included.</p>
+<p><b>Answer.</b> The interval of convergence is $[-3, 5)$.</p>
+</div>
+<figure id="fig-interval" data-fig="interval-number-line"><figcaption>Center 1, radius 4; the endpoints are tested separately.</figcaption></figure>
+
+<h2>Step 2: each endpoint on its own</h2>
+<p>At an endpoint the ratio test limit is exactly 1, so it cannot decide anything there. Substitute the endpoint, simplify until you can name the series, and use a test that can decide it.</p>
+<table class="compare">
+<thead><tr><th>At the endpoint the series becomes</th><th>Test</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>$\sum \frac{1}{n^p}$</td><td>$p$-series</td><td>converges if $p > 1$</td></tr>
+<tr><td>$\sum \frac{(-1)^n}{n^p}$ with $p > 0$</td><td>alternating series test</td><td>converges</td></tr>
+<tr><td>$\sum 1$, $\sum (-1)^n$, $\sum n$</td><td>nth term test</td><td>diverges</td></tr>
+<tr><td>something less familiar</td><td>comparison or limit comparison</td><td>decide with a named series</td></tr>
+</tbody>
+</table>
+<p>Inside the open interval the series converges absolutely, which the ratio test shows. At an endpoint it may converge absolutely (like $\sum \frac{(-1)^n}{n^2}$), conditionally (like $\sum \frac{(-1)^n}{n}$), or diverge.</p>
+
+<h2>Radius traps</h2>
+<ul>
+<li>A coefficient on $x$: $|2x - 1| < 1$ means $\left|x - \frac{1}{2}\right| < \frac{1}{2}$. Factor it out before reading the radius.</li>
+<li>Even powers: for $\sum \frac{x^{2n}}{5^n}$ the condition is $x^2 < 5$, so $R = \sqrt{5}$, not 5.</li>
+<li>Factorials: $\sum \frac{x^n}{n!}$ has ratio limit $\frac{|x|}{n + 1} \to 0$ for every $x$, so it converges everywhere; $\sum n!\,x^n$ has ratio limit $(n + 1)|x| \to \infty$ unless $x = 0$, so it converges only at its center.</li>
+</ul>
+
+<h2>Geometric power series</h2>
+<p>When the power series is geometric, its sum has a formula. $\sum_{n=0}^{\infty} \left(\frac{x - 2}{3}\right)^n$ has ratio $\frac{x - 2}{3}$, so for $|x - 2| < 3$ its sum is $\frac{1}{1 - \frac{x - 2}{3}} = \frac{3}{5 - x}$. At both endpoints every term has size 1, so both diverge, and the interval is $(-1, 5)$. Inside its interval, a power series is a function of $x$; the next topics build power series for familiar functions.</p>
+
+<h2>Writing it the way graders want</h2>
+<p>Show the ratio with absolute values and $a_{n+1}$ on top, take the limit in $n$, solve the inequality, then write a sentence for each endpoint that names the series and the test. Give the interval with brackets and parentheses. If the question asks for the radius, give a number; if it asks for the interval, give an interval.</p>

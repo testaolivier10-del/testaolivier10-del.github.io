@@ -1,0 +1,533 @@
+{
+ "stimuli": {
+  "radius-interval-convergence-s1": {
+   "kind": "table",
+   "title": "The ratio test on a power series",
+   "table": {
+    "caption": "The ratio test for $\\sum_{n=1}^{\\infty} \\frac{(x + 2)^n}{n^2\\,3^n}$",
+    "cols": [
+     "Step",
+     "Result"
+    ],
+    "rows": [
+     [
+      "Term",
+      "$a_n = \\frac{(x + 2)^n}{n^2\\,3^n}$"
+     ],
+     [
+      "Ratio",
+      "$\\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{|x + 2|}{3} \\cdot \\frac{n^2}{(n + 1)^2}$"
+     ],
+     [
+      "Limit",
+      "$\\lim_{n \\to \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{|x + 2|}{3}$"
+     ]
+    ]
+   }
+  },
+  "radius-interval-convergence-s2": {
+   "kind": "table",
+   "title": "The ratio test on $\\sum \\frac{(2x - 1)^n}{n}$",
+   "table": {
+    "caption": "The ratio test for $\\sum_{n=1}^{\\infty} \\frac{(2x - 1)^n}{n}$",
+    "cols": [
+     "Step",
+     "Result"
+    ],
+    "rows": [
+     [
+      "Ratio",
+      "$\\left|\\frac{a_{n+1}}{a_n}\\right| = |2x - 1| \\cdot \\frac{n}{n + 1}$"
+     ],
+     [
+      "Limit",
+      "$|2x - 1|$"
+     ],
+     [
+      "Converges when",
+      "$|2x - 1| < 1$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-radius-interval-convergence-1",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "radius-interval-convergence-s1",
+   "q": "What is the radius of convergence of the series?",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": "1/3",
+      "why": "$\\frac{1}{3}$ is the factor in front of $|x + 2|$. Solve $\\frac{|x + 2|}{3} < 1$: $|x + 2| < 3$."
+     },
+     {
+      "value": 2,
+      "why": "2 comes from the center, $x = -2$; the radius comes from $|x + 2| < 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The series converges when $\\frac{|x + 2|}{3} < 1$, that is $|x + 2| < 3$, so the radius is $R = 3$."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-2",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "radius-interval-convergence-s1",
+   "q": "On which open interval does the ratio test show the series converges?",
+   "options": [
+    "$(-1, 5)$",
+    "$(-3, 3)$",
+    "$(-5, 1)$",
+    "$\\left(-\\frac{7}{3}, -\\frac{5}{3}\\right)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$|x + 2| < 3$ means $-3 < x + 2 < 3$, so $-5 < x < 1$. The endpoints still have to be tested.",
+    "options": [
+     "The center is $x = -2$, not $2$: $x + 2 = x - (-2)$.",
+     "That is centered at 0; this series is centered at $-2$.",
+     "Right: $|x + 2| < 3$ means $-5 < x < 1$.",
+     "That uses $\\frac{1}{3}$ as the radius; the radius is 3."
+    ]
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-3",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "radius-interval-convergence-s1",
+   "q": "At the right endpoint, $x = 1$, what does the series become, and does it converge?",
+   "options": [
+    "$\\sum \\frac{1}{n}$, which diverges as the harmonic series",
+    "A series whose ratio test limit is 1, so it converges",
+    "$\\sum 1$, which diverges by the nth term test",
+    "$\\sum \\frac{1}{n^2}$: a convergent $p$-series"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At $x = 1$, $x + 2 = 3$ and each term is $\\frac{3^n}{n^2\\,3^n} = \\frac{1}{n^2}$. The $p$-series with $p = 2 > 1$ converges, so $x = 1$ is included.",
+    "options": [
+     "The denominator has $n^2$, so the terms are $\\frac{1}{n^2}$.",
+     "A ratio test limit of 1 decides nothing; another test is needed.",
+     "The $3^n$ cancels but the $n^2$ stays: the terms are $\\frac{1}{n^2}$.",
+     "Right: $\\frac{3^n}{n^2\\,3^n} = \\frac{1}{n^2}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-4",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "radius-interval-convergence-s1",
+   "q": "At the left endpoint, $x = -5$, what happens?",
+   "options": [
+    "$\\sum \\frac{(-1)^n}{n^2}$, which converges absolutely",
+    "$\\sum \\frac{(-1)^n}{n^2}$ diverges, since the signs alternate",
+    "$\\sum \\frac{(-3)^n}{n^2}$ diverges, since its terms grow",
+    "$\\sum \\frac{1}{n^2}$ converges, the same as at $x = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = -5$, $x + 2 = -3$ and each term is $\\frac{(-3)^n}{n^2\\,3^n} = \\frac{(-1)^n}{n^2}$. Its absolute values form $\\sum \\frac{1}{n^2}$, which converges, so the series converges (absolutely) and $x = -5$ is included.",
+    "options": [
+     "Right: the absolute values form a convergent $p$-series.",
+     "Alternating signs never cause divergence on their own; here the sizes $\\frac{1}{n^2}$ even converge.",
+     "The $3^n$ in the denominator cancels: the terms are $\\frac{(-1)^n}{n^2}$.",
+     "At $x = -5$ the signs alternate: $(x + 2)^n = (-3)^n$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-5",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "radius-interval-convergence-s1",
+   "q": "Give the interval of convergence of $\\sum_{n=1}^{\\infty} \\frac{(x + 2)^n}{n^2\\,3^n}$, with both endpoints tested.",
+   "interval": {
+    "lo": "-5",
+    "hi": "1",
+    "loIn": true,
+    "hiIn": true,
+    "center": "-2",
+    "var": "x",
+    "ends": {
+     "lo": "At $x = -5$ the series is $\\sum \\frac{(-1)^n}{n^2}$, which converges absolutely, so $x = -5$ is included.",
+     "hi": "At $x = 1$ the series is $\\sum \\frac{1}{n^2}$, a convergent $p$-series, so $x = 1$ is included."
+    },
+    "mistakes": [
+     {
+      "answer": "(-5, 1)",
+      "why": "Both endpoints left out: the ratio test cannot decide them. Tested on their own, both give series that converge ($\\sum \\frac{1}{n^2}$ and $\\sum \\frac{(-1)^n}{n^2}$)."
+     },
+     {
+      "answer": "[-1, 5]",
+      "why": "The center is $x = -2$: $x + 2 = 0$ at $x = -2$, so the interval runs from $-2 - 3$ to $-2 + 3$."
+     },
+     {
+      "answer": "[-5, 1)",
+      "why": "At $x = 1$ the terms are $\\frac{1}{n^2}$, not $\\frac{1}{n}$: a convergent $p$-series, so include $x = 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The ratio test gives $-5 < x < 1$. At $x = 1$ the series is $\\sum \\frac{1}{n^2}$ (converges); at $x = -5$ it is $\\sum \\frac{(-1)^n}{n^2}$ (converges absolutely). The interval of convergence is $[-5, 1]$."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-6",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "radius-interval-convergence-s2",
+   "q": "What is the radius of convergence of $\\sum_{n=1}^{\\infty} \\frac{(2x - 1)^n}{n}$?",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "$|2x - 1| < 1$ is not yet in the form $|x - a| < R$: divide by 2 to get $\\left|x - \\frac{1}{2}\\right| < \\frac{1}{2}$."
+     },
+     {
+      "value": 2,
+      "why": "Divide by 2, do not multiply: $|2x - 1| = 2\\left|x - \\frac{1}{2}\\right| < 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$|2x - 1| < 1$ means $2\\left|x - \\frac{1}{2}\\right| < 1$, so $\\left|x - \\frac{1}{2}\\right| < \\frac{1}{2}$: center $\\frac{1}{2}$, radius $\\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-7",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "radius-interval-convergence-s2",
+   "q": "At $x = 0$, what does the series become, and what happens?",
+   "options": [
+    "$\\sum \\frac{1}{n}$, which diverges as the harmonic series",
+    "$\\sum \\frac{(-1)^n}{n}$, which diverges by the nth term test",
+    "$\\sum \\frac{(-1)^n}{n}$, which converges absolutely",
+    "$\\sum \\frac{(-1)^n}{n}$, which converges by the alternating series test"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At $x = 0$ the terms are $\\frac{(-1)^n}{n}$: they alternate, and $\\frac{1}{n}$ decreases to 0, so the series converges by the alternating series test (conditionally).",
+    "options": [
+     "At $x = 0$, $2x - 1 = -1$, so the signs alternate.",
+     "The terms $\\frac{(-1)^n}{n}$ approach 0, so the nth term test says nothing.",
+     "Its absolute values form the harmonic series, which diverges; the convergence is conditional.",
+     "Right: $2(0) - 1 = -1$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-8",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "radius-interval-convergence-s2",
+   "q": "At $x = 1$, what does the series become, and what happens?",
+   "options": [
+    "$\\sum \\frac{1}{n}$, which diverges as the harmonic series",
+    "$\\sum \\frac{1}{n}$, which converges since $\\frac{1}{n} \\to 0$",
+    "$\\sum \\frac{(-1)^n}{n}$, which converges",
+    "$\\sum \\frac{1}{n}$, which converges by the ratio test"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = 1$, $2x - 1 = 1$ and the series is $\\sum \\frac{1}{n}$, the harmonic series, which diverges. So $x = 1$ is not included.",
+    "options": [
+     "Right: $2(1) - 1 = 1$.",
+     "The harmonic series diverges even though its terms approach 0.",
+     "At $x = 1$, $2x - 1 = 1$: no alternating sign.",
+     "Its ratio test limit is 1, which decides nothing; it is the harmonic series."
+    ]
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-9",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "radius-interval-convergence-s2",
+   "q": "Give the interval of convergence of $\\sum_{n=1}^{\\infty} \\frac{(2x - 1)^n}{n}$.",
+   "interval": {
+    "lo": "0",
+    "hi": "1",
+    "loIn": true,
+    "hiIn": false,
+    "center": "1/2",
+    "var": "x",
+    "ends": {
+     "lo": "At $x = 0$ the series is $\\sum \\frac{(-1)^n}{n}$, which converges by the alternating series test, so $x = 0$ is included.",
+     "hi": "At $x = 1$ the series is the harmonic series $\\sum \\frac{1}{n}$, which diverges, so $x = 1$ is left out."
+    },
+    "mistakes": [
+     {
+      "answer": "(0, 1)",
+      "why": "Both endpoints left out: the ratio test cannot decide them. At $x = 0$ the series converges by the alternating series test, so include it."
+     },
+     {
+      "answer": "[0, 1]",
+      "why": "At $x = 1$ the series is the harmonic series, which diverges, so leave $x = 1$ out."
+     },
+     {
+      "answer": "[-1, 1)",
+      "why": "That solves $|x| < 1$. From $|2x - 1| < 1$: $0 < x < 1$, centered at $\\frac{1}{2}$ with radius $\\frac{1}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The ratio test gives $0 < x < 1$. The series converges at $x = 0$ (alternating harmonic) and diverges at $x = 1$ (harmonic), so the interval is $[0, 1)$."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-10",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Give the interval of convergence of $\\sum_{n=0}^{\\infty} \\frac{x^{2n}}{5^n}$.",
+   "interval": {
+    "lo": "-sqrt(5)",
+    "hi": "sqrt(5)",
+    "loIn": false,
+    "hiIn": false,
+    "center": "0",
+    "var": "x",
+    "ends": {
+     "lo": "At $x = -\\sqrt{5}$, $x^{2n} = 5^n$ and every term is 1, so the series diverges by the nth term test.",
+     "hi": "At $x = \\sqrt{5}$ every term is $\\frac{5^n}{5^n} = 1$, so the series diverges by the nth term test."
+    },
+    "mistakes": [
+     {
+      "answer": "(-5, 5)",
+      "why": "The ratio is $\\frac{x^2}{5}$, so the condition is $x^2 < 5$, which gives $|x| < \\sqrt{5}$, not $|x| < 5$."
+     },
+     {
+      "answer": "[-sqrt(5), sqrt(5)]",
+      "why": "At $x = \\pm\\sqrt{5}$ every term equals 1; terms that do not approach 0 make the series diverge."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The series is geometric with ratio $\\frac{x^2}{5}$, so it converges when $\\frac{x^2}{5} < 1$, that is $|x| < \\sqrt{5}$. At $x = \\pm\\sqrt{5}$ every term is 1, so both endpoints diverge: $\\left(-\\sqrt{5}, \\sqrt{5}\\right)$."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-11",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Give the interval of convergence of $\\sum_{n=1}^{\\infty} n(x - 4)^n$.",
+   "interval": {
+    "lo": "3",
+    "hi": "5",
+    "loIn": false,
+    "hiIn": false,
+    "center": "4",
+    "var": "x",
+    "ends": {
+     "lo": "At $x = 3$ the terms are $n(-1)^n$, which do not approach 0, so the series diverges by the nth term test.",
+     "hi": "At $x = 5$ the terms are $n$, which grow without bound, so the series diverges by the nth term test."
+    },
+    "mistakes": [
+     {
+      "answer": "[3, 5]",
+      "why": "At $x = 3$ and $x = 5$ the terms have size $n$, which does not approach 0: both endpoints diverge."
+     },
+     {
+      "answer": "[3, 5)",
+      "why": "At $x = 3$ the terms $n(-1)^n$ alternate but grow in size; they do not approach 0, so the series diverges there."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{n + 1}{n}|x - 4| \\to |x - 4|$, so the series converges for $3 < x < 5$. At both endpoints the terms have size $n$, which does not approach 0, so the interval is $(3, 5)$."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-12",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For which $x$ does $\\sum_{n=0}^{\\infty} \\frac{(x + 3)^n}{n!}$ converge?",
+   "interval": {
+    "lo": "-inf",
+    "hi": "inf",
+    "var": "x",
+    "mistakes": [
+     {
+      "answer": "x = -3",
+      "why": "The ratio test limit is $\\lim \\frac{|x + 3|}{n + 1} = 0$ for every $x$, not only at the center."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{|x + 3|}{n + 1} \\to 0 < 1$ for every $x$, so the series converges for all real numbers: the radius is infinite."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-13",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For which $x$ does $\\sum_{n=0}^{\\infty} n!\\,(x - 2)^n$ converge?",
+   "interval": {
+    "point": "2",
+    "var": "x",
+    "mistakes": [
+     {
+      "answer": "(-inf, inf)",
+      "why": "For $x \\ne 2$ the ratio test limit is $\\lim (n + 1)|x - 2| = \\infty$, so the series diverges there."
+     },
+     {
+      "answer": "(1, 3)",
+      "why": "The ratio test limit $(n + 1)|x - 2|$ grows without bound for every $x \\ne 2$; there is no positive radius."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $x \\ne 2$, $\\left|\\frac{a_{n+1}}{a_n}\\right| = (n + 1)|x - 2| \\to \\infty$, so the series diverges. At $x = 2$ every term after the first is 0. It converges only at $x = 2$."
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-14",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A power series $\\sum a_n (x + 1)^n$ converges at $x = 3$ and diverges at $x = -7$. What can you conclude about its radius of convergence $R$?",
+   "options": [
+    "$R = 4$",
+    "$R = 6$",
+    "$4 \\le R \\le 6$",
+    "$R \\ge 6$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The center is $-1$. Converging at $x = 3$, a distance 4 from the center, means $R \\ge 4$. Diverging at $x = -7$, a distance 6 away, means $R \\le 6$. So $4 \\le R \\le 6$.",
+    "options": [
+     "$R$ could be larger than 4; the series could converge farther out.",
+     "$R$ could be smaller than 6, down to 4.",
+     "Right: converging 4 from the center needs $R \\ge 4$; diverging 6 away needs $R \\le 6$.",
+     "The series diverges at distance 6 from the center, so $R$ is at most 6."
+    ]
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-15",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A power series centered at $x = 0$ has radius of convergence 2. Which could be its interval of convergence?",
+   "options": [
+    "$(0, 4)$",
+    "$[-4, 4]$",
+    "$(-1, 1)$",
+    "$(-2, 2]$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The interval runs from $0 - 2$ to $0 + 2$, and each endpoint is included or not depending on its own test, so $(-2, 2]$ is possible.",
+    "options": [
+     "That is centered at 2, not 0.",
+     "That has radius 4.",
+     "That has radius 1.",
+     "Right: centered at 0 with radius 2; each endpoint may go either way."
+    ]
+   }
+  },
+  {
+   "id": "cbc-radius-interval-convergence-16",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "radius-interval-convergence",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $|x - 2| < 3$, write the sum of $\\sum_{n=0}^{\\infty} \\frac{(x - 2)^n}{3^n}$ as an expression in $x$.",
+   "expr": {
+    "answer": "3/(5-x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -0.5,
+     4.5
+    ],
+    "mode": "exact",
+    "lhs": "\\sum_{n=0}^{\\infty} \\frac{(x - 2)^n}{3^n} =",
+    "mistakes": [
+     {
+      "expr": "1/(3-x)",
+      "why": "The ratio is $\\frac{x - 2}{3}$, not $x - 2$: the sum is $\\frac{1}{1 - \\frac{x - 2}{3}}$."
+     },
+     {
+      "expr": "3/(1-x)",
+      "why": "$3 - (x - 2) = 5 - x$: keep the parentheses when subtracting $x - 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A geometric series with first term 1 and ratio $\\frac{x - 2}{3}$: $\\frac{1}{1 - \\frac{x - 2}{3}} = \\frac{3}{3 - (x - 2)} = \\frac{3}{5 - x}$."
+   }
+  }
+ ]
+}

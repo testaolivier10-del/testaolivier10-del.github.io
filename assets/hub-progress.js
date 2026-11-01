@@ -150,6 +150,17 @@
       { min: 20, title: 'Area Builder' },
       { min: 30, title: 'Calculus Legend' },
     ],
+    // docs/apcalcbc-spec.md decision 7 (proposed; owner to confirm). The first
+    // is also level[0] in scripts/lib/course-homes.json (apcalcbc).
+    apcalcbc: [
+      { min: 1,  title: 'Sequence Starter' },
+      { min: 3,  title: 'Curve Tracer' },
+      { min: 6,  title: 'Polar Plotter' },
+      { min: 10, title: 'Series Tester' },
+      { min: 15, title: 'Taylor Builder' },
+      { min: 20, title: 'Convergence Prover' },
+      { min: 30, title: 'Calculus BC Legend' },
+    ],
     // docs/apstat-spec.md decision 5 (proposed; owner to confirm). The first
     // is also IDENTITY.firstRank in scripts/lib/apstat-build.mjs.
     apstat: [
@@ -211,6 +222,7 @@
     { key: 'apenv', rankLabel: 'Environmental Science rank' },
     { key: 'appsych', rankLabel: 'Psychology rank' },
     { key: 'apprecalc', rankLabel: 'Precalculus rank' },
+    { key: 'apcalcbc', rankLabel: 'Calculus BC rank' },
   ];
   // courses:end
   var COURSE_RANK_LABEL = { hub: 'LevlPrep rank' };

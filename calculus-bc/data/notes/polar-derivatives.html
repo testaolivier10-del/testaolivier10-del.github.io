@@ -1,0 +1,42 @@
+<p>A polar curve $r = f(\theta)$ is traced as $\theta$ turns. Write it in $x$ and $y$ and it becomes a parametric curve with parameter $\theta$:</p>
+<p>$$x = r\cos\theta = f(\theta)\cos\theta, \qquad y = r\sin\theta = f(\theta)\sin\theta.$$</p>
+<p>So every idea from Topics 9.1 and 9.2 carries over. This page adds two things polar questions ask about: the slope in polar form, and the meaning of $\frac{dr}{d\theta}$.</p>
+
+<h2>Derivatives of $x$ and $y$ with respect to $\theta$</h2>
+<p>Both $x$ and $y$ are products, so each derivative has two terms:</p>
+<p>$$\frac{dx}{d\theta} = \frac{dr}{d\theta}\cos\theta - r\sin\theta, \qquad \frac{dy}{d\theta} = \frac{dr}{d\theta}\sin\theta + r\cos\theta.$$</p>
+<p>Do not memorize these as new formulas. Write $x = r\cos\theta$, apply the product rule, and they appear. The signs tell you how the point moves: $\frac{dy}{d\theta} > 0$ means the point is moving up as $\theta$ increases, $\frac{dx}{d\theta} < 0$ means it is moving left.</p>
+
+<h2>The slope of a polar curve</h2>
+<p>As for any parametric curve, where $\frac{dx}{d\theta} \ne 0$:</p>
+<p>$$\frac{dy}{dx} = \frac{dy/d\theta}{dx/d\theta} = \frac{\frac{dr}{d\theta}\sin\theta + r\cos\theta}{\frac{dr}{d\theta}\cos\theta - r\sin\theta}.$$</p>
+<figure id="fig-tangents" data-fig="polar-derivatives-tangents"><figcaption>Two tangent lines to the cardioid $r = 2 + 2\cos\theta$.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the tangent line to $r = 2 + 2\cos\theta$ at $\theta = \frac{\pi}{2}$.</p>
+<p>Values first: $r = 2 + 2\cos\frac{\pi}{2} = 2$ and $\frac{dr}{d\theta} = -2\sin\theta = -2$.</p>
+<p>Derivatives: $\frac{dx}{d\theta} = (-2)(0) - (2)(1) = -2$ and $\frac{dy}{d\theta} = (-2)(1) + (2)(0) = -2$.</p>
+<p>Slope: $\frac{dy}{dx} = \frac{-2}{-2} = 1$. The point: $x = 2\cos\frac{\pi}{2} = 0$, $y = 2\sin\frac{\pi}{2} = 2$.</p>
+<p>Tangent line: $y - 2 = 1(x - 0)$, so $y = x + 2$ (<a class="figref" href="#fig-tangents">the blue line in the figure</a>).</p>
+</div>
+<p><b>Horizontal and vertical tangents.</b> A horizontal tangent needs $\frac{dy}{d\theta} = 0$ with $\frac{dx}{d\theta} \ne 0$; a vertical tangent needs $\frac{dx}{d\theta} = 0$ with $\frac{dy}{d\theta} \ne 0$. On the cardioid at $\theta = \frac{\pi}{3}$: $r = 3$, $\frac{dr}{d\theta} = -\sqrt{3}$, so $\frac{dy}{d\theta} = -\sqrt{3}\cdot\frac{\sqrt{3}}{2} + 3 \cdot \frac{1}{2} = 0$ while $\frac{dx}{d\theta} = -\frac{\sqrt{3}}{2} - \frac{3\sqrt{3}}{2} = -2\sqrt{3}$. That is the top of the curve.</p>
+<p><b>At the pole.</b> If $r = 0$ at $\theta = \alpha$ and $\frac{dr}{d\theta} \ne 0$ there, the formula simplifies to $\frac{dy}{dx} = \tan\alpha$: the curve leaves the pole along the ray $\theta = \alpha$.</p>
+
+<h2>What $\frac{dr}{d\theta}$ tells you</h2>
+<p>$\frac{dr}{d\theta}$ is the rate of change of $r$, the signed distance from the pole. It is <b>not</b> the slope. Its sign, read together with the sign of $r$, says whether the point is moving toward or away from the pole:</p>
+<table class="compare">
+<thead><tr><th>$r$</th><th>$\frac{dr}{d\theta}$</th><th>Distance $|r|$</th><th>The point is moving</th></tr></thead>
+<tbody>
+<tr><td>$> 0$</td><td>$> 0$</td><td>increasing</td><td>away from the pole</td></tr>
+<tr><td>$> 0$</td><td>$< 0$</td><td>decreasing</td><td>toward the pole</td></tr>
+<tr><td>$< 0$</td><td>$< 0$</td><td>increasing</td><td>away from the pole</td></tr>
+<tr><td>$< 0$</td><td>$> 0$</td><td>decreasing</td><td>toward the pole</td></tr>
+</tbody>
+</table>
+<p>The short rule: the same sign means away, opposite signs mean toward. On the exam, give both signs as your reason: "$r(2) > 0$ and $r'(2) < 0$, so the point is moving toward the origin."</p>
+<div class="worked">
+<p><b>Worked example 2.</b> For $r = 1 + 2\cos\theta$ at $\theta = \pi$, is the point moving toward or away from the pole?</p>
+<p>$r(\pi) = 1 - 2 = -1$ and $\frac{dr}{d\theta} = -2\sin\pi = 0$. Neither, for an instant: the distance has a turning point. A little later, at $\theta = \frac{7\pi}{6}$, $r = 1 - \sqrt{3} < 0$ and $\frac{dr}{d\theta} = -2\sin\frac{7\pi}{6} = 1 > 0$: opposite signs, so the point is moving toward the pole, finishing the inner loop.</p>
+</div>
+
+<h2>Rates in time and distances from the axes</h2>
+<p>If $\theta$ depends on time, the chain rule converts: $\frac{dr}{dt} = \frac{dr}{d\theta} \cdot \frac{d\theta}{dt}$, and likewise for $x$ and $y$. Distance from the $y$-axis is $|x| = |r\cos\theta|$; distance from the $x$-axis is $|y| = |r\sin\theta|$. On calculator questions, write the setup ("$x = r(\theta)\cos\theta$") before the number, use radian mode, and round to three decimals only at the end.</p>

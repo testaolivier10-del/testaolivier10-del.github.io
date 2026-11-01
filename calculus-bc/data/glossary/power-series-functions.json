@@ -1,0 +1,5 @@
+{
+ "term-by-term": {
+  "def": "Differentiating or integrating a power series one term at a time: $\\frac{d}{dx}\\sum c_n x^n = \\sum n c_n x^{n-1}$ and $\\int_0^x \\sum c_n t^n\\,dt = \\sum \\frac{c_n x^{n+1}}{n + 1}$. The radius of convergence stays the same; the endpoints must be tested again."
+ }
+}

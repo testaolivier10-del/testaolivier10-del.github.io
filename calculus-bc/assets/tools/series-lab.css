@@ -1,0 +1,113 @@
+/* Series lab (calculus-bc/assets/tools/series-lab.js). OWNED BY THIS TOOL ONLY (builder T1).
+   Colours from AB's plot set (calculus/assets/calc.css, Okabe-Ito based), the same across
+   every view: partial sums S_n crimson (dots on a line), terms a_n blue bars, the sum green
+   dashed, error bounds orange; yours dashed. Shape and dash carry the meaning too. */
+.sl-card{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.sl-fig{display:flex;flex-direction:column;gap:4px;min-width:0;}
+.sl-eq{margin:0;font:700 17px var(--font-ui);color:var(--ink);text-align:center;min-height:30px;}
+.sl-plot{min-width:0;}
+.sl-plot svg,.sl-nlbox svg{display:block;width:100%;height:auto;user-select:none;-webkit-user-select:none;}
+.sl-nlbox:empty{display:none;}
+.sl-nlbox svg{touch-action:none;cursor:pointer;}
+.ls-root .sl-fig{flex:1;min-height:0;}
+.ls-root .sl-plot{position:relative;flex:1;min-height:150px;}
+.ls-root .sl-plot svg{position:absolute;inset:0;width:100%;height:100%;}
+
+.sl-ctl{display:flex;flex-direction:column;gap:10px;}
+.sl-views{display:flex;gap:6px;}
+.sl-view{flex:1;min-height:40px;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;}
+.sl-view[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+.sl-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.sl-chip{min-height:44px;padding:0 13px;border-radius:999px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;white-space:nowrap;}
+.sl-chip[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+.ls-root .sl-chip[aria-pressed="true"]{background:var(--cink);border-color:var(--cink);color:#fff;}
+:root[data-theme="dark"] .ls-root .sl-chip[aria-pressed="true"],:root[data-theme="dark"] .sl-chip[aria-pressed="true"]{background:#D6BFF5;border-color:#D6BFF5;color:#1E0F33;}
+:root[data-theme="dark"] .sl-view[aria-pressed="true"]{border-color:#D6BFF5;color:#D6BFF5;background:transparent;}
+@media (max-width:640px){.ls-root .sl-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}.ls-root .sl-chips::-webkit-scrollbar{display:none;}}
+
+/* the partial-sums chart */
+.calc-plot .sl-bar{fill:#0072B2;fill-opacity:.28;stroke:#0072B2;stroke-opacity:.55;stroke-width:1;}
+.calc-plot .sl-bar.is-cur{fill-opacity:.55;}
+.calc-plot .sl-path{fill:none;stroke:#B0123A;stroke-width:1.6;stroke-opacity:.55;stroke-linejoin:round;}
+.calc-plot .sl-dot{fill:#B0123A;stroke:var(--white);stroke-width:1.2;}
+.calc-plot .sl-dot.is-cur{stroke-width:2.2;}
+.calc-plot .sl-dot.is-off{fill:var(--white);stroke:#B0123A;}
+.calc-plot .sl-sum{stroke:#009E73;stroke-width:2.2;stroke-dasharray:9 6;}
+.calc-plot .sl-sumlab{fill:#00805C;font:800 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.calc-plot .sl-curlab{fill:#B0123A;font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.calc-plot .sl-bound{fill:none;stroke:#D55E00;stroke-width:2.6;stroke-linecap:round;}
+.calc-plot .sl-mine{stroke:#B0123A;stroke-width:2;stroke-dasharray:4 5;}
+.calc-plot .sl-minelab{fill:#B0123A;font:800 12px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;}
+:root[data-theme="dark"] .calc-plot .sl-bar{fill:#6BB4E8;stroke:#6BB4E8;}
+:root[data-theme="dark"] .calc-plot .sl-path{stroke:#F590AC;}
+:root[data-theme="dark"] .calc-plot .sl-dot{fill:#F590AC;stroke:#14161a;}
+:root[data-theme="dark"] .calc-plot .sl-dot.is-off{fill:#14161a;stroke:#F590AC;}
+:root[data-theme="dark"] .calc-plot .sl-sum{stroke:#52CFA6;}
+:root[data-theme="dark"] .calc-plot .sl-sumlab{fill:#52CFA6;}
+:root[data-theme="dark"] .calc-plot .sl-curlab,:root[data-theme="dark"] .calc-plot .sl-minelab{fill:#F590AC;}
+:root[data-theme="dark"] .calc-plot .sl-mine{stroke:#F590AC;}
+:root[data-theme="dark"] .calc-plot .sl-bound{stroke:#F29A5C;}
+
+/* the number line */
+.sl-line .sl-nl{stroke:var(--ink);stroke-width:1.6;}
+.sl-line .sl-nlt{stroke:var(--ink);stroke-width:1.2;}
+.sl-line .sl-nltl{fill:var(--ink-2,#555);font:700 11.5px var(--font-ui);}
+.sl-line .sl-band{stroke:#009E73;stroke-width:7;stroke-linecap:butt;stroke-opacity:.85;}
+.sl-line .sl-band.is-mine{stroke:#B0123A;stroke-width:3;stroke-dasharray:6 4;stroke-opacity:1;}
+.sl-line .sl-end{stroke:#009E73;stroke-width:2.6;}
+.sl-line .sl-end.is-in{fill:#009E73;}
+.sl-line .sl-end.is-out{fill:var(--white);}
+.sl-line .sl-end.is-unk{fill:var(--white);stroke-dasharray:3 2;}
+.sl-line .sl-end.is-mine{stroke:#B0123A;}
+.sl-line .sl-end.is-mine.is-in{fill:#B0123A;}
+.sl-line .sl-unk{fill:#00805C;font:900 13px var(--font-ui);}
+.sl-line .sl-arrow{fill:none;stroke:#009E73;stroke-width:3;}
+.sl-line .sl-arrow.is-mine{stroke:#B0123A;}
+.sl-line .sl-ctr{stroke:var(--ink);stroke-width:2.4;}
+.sl-line .sl-xmark path{fill:#B0123A;stroke:var(--white);stroke-width:1.5;}
+:root[data-theme="dark"] .sl-line .sl-band,:root[data-theme="dark"] .sl-line .sl-end,:root[data-theme="dark"] .sl-line .sl-arrow{stroke:#52CFA6;}
+:root[data-theme="dark"] .sl-line .sl-end.is-in{fill:#52CFA6;}
+:root[data-theme="dark"] .sl-line .sl-end.is-out,:root[data-theme="dark"] .sl-line .sl-end.is-unk{fill:#14161a;}
+:root[data-theme="dark"] .sl-line .sl-unk{fill:#52CFA6;}
+:root[data-theme="dark"] .sl-line .sl-band.is-mine,:root[data-theme="dark"] .sl-line .sl-end.is-mine,:root[data-theme="dark"] .sl-line .sl-arrow.is-mine{stroke:#F590AC;}
+:root[data-theme="dark"] .sl-line .sl-end.is-mine.is-in,:root[data-theme="dark"] .sl-line .sl-xmark path{fill:#F590AC;}
+:root[data-theme="dark"] .sl-line .sl-nltl{fill:#C9C9C9;}
+
+/* the six-test board */
+.sl-board-h{margin:12px 0 6px;}
+.sl-board{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:0 0 6px;}
+.sl-test{border:1.5px solid var(--line);border-radius:12px;padding:9px 11px;background:var(--paper);}
+.sl-test-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 4px;}
+.sl-test-n{font:800 14px var(--font-ui);color:var(--ink);}
+.sl-test .sl-stat{flex:none;min-height:0;padding:2px 9px;border-radius:999px;font:800 11.5px var(--font-ui);border:0;}
+.sl-test-w{margin:0;font-size:14px;line-height:1.45;color:var(--ink-2,#444);}
+.sl-test.is-works .sl-stat{background:#D7F2E8;color:#00664A;}
+.sl-test.is-inc .sl-stat{background:#FCE8D9;color:#9A4200;}
+.sl-test.is-na .sl-stat{background:var(--line);color:var(--ink-2,#555);}
+.sl-test.is-na{opacity:.82;}
+.sl-test.is-best{border-color:#009E73;border-width:2.5px;box-shadow:0 0 0 3px rgba(0,158,115,.12);}
+.sl-test.is-best .sl-stat{background:#009E73;color:#fff;}
+:root[data-theme="dark"] .sl-test.is-works .sl-stat{background:#163A30;color:#7FE0BE;}
+:root[data-theme="dark"] .sl-test.is-inc .sl-stat{background:#3E2716;color:#F5B47F;}
+:root[data-theme="dark"] .sl-test.is-best{border-color:#52CFA6;}
+:root[data-theme="dark"] .sl-test.is-best .sl-stat{background:#52CFA6;color:#0d1a15;}
+:root[data-theme="dark"] .sl-test-w{color:#cfcfcf;}
+.sl-ends{margin:4px 0 8px;padding-left:20px;}
+.sl-ends li{margin:3px 0;}
+.sl-tbl td,.sl-tbl th{font-variant-numeric:tabular-nums;}
+
+/* Test yourself */
+.sl-qfig{margin:0;}
+.sl-qfig svg{display:block;width:100%;height:auto;}
+.sl-qfig figcaption{margin-top:4px;}
+.sl-ivfig svg{max-height:110px;}
+.sl-iv input{font:600 17px var(--font-mono,ui-monospace,monospace);min-width:12ch;}
+.sl-parts{display:block;margin-top:4px;font-size:13px;color:var(--ink-2,#555);}
+/* formulas in the choice options at reading size */
+.cd-opt-t .calc-m{font-size:1.16em;}
+.sl-ivfig .sl-nltl{font-size:13.5px;}
+.sl-qfig figcaption{padding:0 52px;text-align:center;}
+
+/* Phones: keep the lower-right corner of the plot (an axis label, the last tick) clear of the Enlarge button,
+   which sits 8px from the stage corner (BC review, tools-exams). */
+@media (max-width:640px){.ls-root .sl-fig{padding-bottom:40px;}}

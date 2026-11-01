@@ -59,7 +59,8 @@ for (const [dir, [key, px]] of Object.entries(COURSES)) {
     const s = readFileSync(`${dir}/assets/pages/frq.js`, 'utf8');
     assert.match(s, /s\.src = BASE \+ '\.\.\/assets\/course\/frq-grader\.js';/);
     assert.ok(s.includes(`'<div class="${px}-fq-ai"></div>'`), 'a slot under the self-score button');
-    assert.ok(s.includes(`course: '${key}', f: f,`), `course key ${key}`);
+    // AB's runtime also serves AP® Calculus BC: there the key is CK ('apcalc' by default).
+    assert.ok(s.includes(`course: '${key}', f: f,`) || (s.includes('course: CK, f: f,') && s.includes(`CK = CC.key || '${key}'`)), `course key ${key}`);
     assert.ok(s.includes(`app.querySelectorAll('.${px}-fq-answer')`), 'reads the textareas');
     assert.match(s, /reveal: function\(\)\{ if\(box\.hidden\) revealBtn\.click\(\); return box; \}/);
     // The self-score is untouched: its reveal button and save remain.

@@ -1,0 +1,12 @@
+{
+ "abs-cond-sums": {
+  "file": "figures/abs-cond-sums.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Partial sums for N = 1 to 20. Open dots: the harmonic series, the sum of 1 over n, climbing steadily to about 3.60 with no ceiling. Filled dots: the alternating harmonic series, zigzagging around a dashed line at about 0.693. The alternating series converges but the series of absolute values diverges: conditional convergence."
+ }
+}

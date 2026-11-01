@@ -12,6 +12,8 @@
    Kept out of an inline <script> because it builds href="..." by
    concatenation, which the site's link checker scans .html files for. */
 (function(){
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var HP = window.HubProgress, A = window.ApCalcCore, CUR = window.ApCalcCurriculum;
   var base = window.ApCalcBase || '';
   function el(id){ return document.getElementById(id); }
@@ -24,7 +26,7 @@
   /* ---- hero: level, XP, streak, and the part bars (units, skills) ---- */
   function renderHero(){
     if(HP){
-      var info = HP.levelInfo('apcalc');
+      var info = HP.levelInfo(CK);
       // Zeros say nothing to a new visitor: the card shows what it tracks until the first XP (polish 2026-10-17, B10).
       el('calcLevel').toggleAttribute('data-lv-zero', !(info.total > 0));
       el('calcLvRing').textContent = 'L' + info.level;
@@ -91,9 +93,9 @@
           cta.textContent = 'Continue: ' + t.title;
           cta.href = base + 'lessons/' + t.id + '.html';
         }
-        if(R) R.set('apcalc', '/calculus/lessons/' + t.id + '.html', t.title);
+        if(R) R.set(CK, '/' + (CC.dir || 'calculus') + '/lessons/' + t.id + '.html', t.title);
       } else if(R){
-        R.set('apcalc', null);
+        R.set(CK, null);
       }
     } finally {
       if(R) R.ctaReady(cta); else if(cta) cta.classList.remove('cta-pending');
@@ -205,7 +207,7 @@
   }
   function start(){
     render(); sample();
-    document.addEventListener('apcalc:progress', render);
+    document.addEventListener(CK + ':progress', render);
     if(box && window.ResizeObserver) new ResizeObserver(function(){ try{ drawPath(); }catch(e){} }).observe(box);
     else window.addEventListener('resize', function(){ try{ drawPath(); }catch(e){} });
   }

@@ -1,0 +1,53 @@
+<p>An exponential model, $\frac{dP}{dt} = kP$, says the growth rate is proportional to the population, so the population grows without bound. That fits a small population with plenty of food and space, but not a crowded one. A <b>logistic model</b> adds a brake: as the population nears the most the environment can support, its growth slows to zero.</p>
+
+<h2>The logistic differential equation</h2>
+<p>In a logistic model the rate of change is <i>jointly proportional</i> to the population $P$ and to the room left, $K - P$:</p>
+<p>$$\frac{dP}{dt} = kP(K - P), \qquad k > 0.$$</p>
+<p>The same model is often written $\frac{dP}{dt} = rP\left(1 - \frac{P}{K}\right)$, with $r = kK$. In both forms, $K$ is the <b>carrying capacity</b>: the positive value of $P$ at which the rate is 0. To read $K$, set the rate equal to 0 and take the positive solution.</p>
+<table class="compare">
+<thead><tr><th>Equation</th><th>Carrying capacity</th><th>Fastest growth at</th></tr></thead>
+<tbody>
+<tr><td>$\frac{dP}{dt} = 0.0006P(1200 - P)$</td><td>1200</td><td>$P = 600$</td></tr>
+<tr><td>$\frac{dP}{dt} = 0.04P\left(1 - \frac{P}{2500}\right)$</td><td>2500</td><td>$P = 1250$</td></tr>
+<tr><td>$\frac{dy}{dt} = 2y(7 - y)$</td><td>7</td><td>$y = 3.5$</td></tr>
+</tbody>
+</table>
+
+<h2>Reading the model without solving it</h2>
+<p>The equilibrium solutions are $P = 0$ and $P = K$. The sign of $kP(K - P)$ tells what happens from any other starting value:</p>
+<ul>
+<li>$0 < P(0) < K$: the rate is positive, so $P$ increases toward $K$, never reaching it.</li>
+<li>$P(0) > K$: the factor $K - P$ is negative, so $P$ decreases toward $K$.</li>
+<li>In both cases $\lim_{t \to \infty} P(t) = K$.</li>
+</ul>
+<p>The questions on this topic ask you to <i>interpret</i> the equation: its carrying capacity, its limit, where growth is fastest, what a rate means in context. Solving the equation for a formula is not needed.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Fish in a lake satisfy $\frac{dP}{dt} = 0.0006P(1200 - P)$, with $t$ in years and $P(0) = 200$. Find (a) $\lim_{t \to \infty} P(t)$, (b) the rate at $t = 0$, (c) the population when it grows fastest.</p>
+<p>(a) The rate is 0 at $P = 1200$, and $0 < 200 < 1200$, so $\lim_{t \to \infty} P(t) = 1200$ fish.</p>
+<p>(b) $\frac{dP}{dt} = 0.0006(200)(1000) = 120$ fish per year.</p>
+<p>(c) Half the carrying capacity: 600 fish.</p>
+</div>
+
+<h2>Why growth is fastest at half the carrying capacity</h2>
+<p>As a function of $P$, the rate $R(P) = kP(K - P) = kKP - kP^2$ is a downward parabola with zeros at 0 and $K$. Its derivative $R'(P) = kK - 2kP$ is 0 at $P = \frac{K}{2}$, where $R$ has its maximum. <a class="figref" href="#fig-logistic">The figure</a> shows both views: the population against time on the left, the rate against the population on the right.</p>
+<figure id="fig-logistic" data-fig="logistic-models-curve"><figcaption>The population is steepest where the rate parabola peaks, at half the carrying capacity.</figcaption></figure>
+<p>The same fact gives the concavity of $P(t)$. By the chain rule,</p>
+<p>$$\frac{d^2P}{dt^2} = k(K - 2P)\frac{dP}{dt}.$$</p>
+<p>For a population rising from below $\frac{K}{2}$, $\frac{dP}{dt} > 0$, so the graph of $P$ is concave up while $P < \frac{K}{2}$ and concave down while $\frac{K}{2} < P < K$. The population at $\frac{K}{2}$ is a point of inflection: growth is fastest there.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> In a school of 5000 students, the number $R$ who have heard a rumor satisfies $\frac{dR}{dt} = 0.0002R(5000 - R)$, with $t$ in hours and $R(0) = 100$. When is the rumor spreading fastest, and how fast?</p>
+<p>Fastest at $R = 2500$ students, half the carrying capacity. The rate then is $0.0002(2500)(2500) = 1250$ students per hour.</p>
+<p>In context: when half the school has heard the rumor, it is spreading at 1250 students per hour, faster than at any other time.</p>
+</div>
+
+<h2>Logistic compared with exponential</h2>
+<table class="compare">
+<thead><tr><th></th><th>Exponential, $\frac{dP}{dt} = kP$</th><th>Logistic, $\frac{dP}{dt} = kP(K - P)$</th></tr></thead>
+<tbody>
+<tr><td>Rate proportional to</td><td>$P$</td><td>$P$ and $K - P$, jointly</td></tr>
+<tr><td>Long run</td><td>grows without bound</td><td>approaches $K$</td></tr>
+<tr><td>Fastest growth</td><td>keeps increasing</td><td>at $P = \frac{K}{2}$</td></tr>
+<tr><td>Shape of the graph of $P$</td><td>concave up</td><td>S-shaped: up, then down</td></tr>
+</tbody>
+</table>
+<p>For a small population the two models nearly agree, since $K - P \approx K$ and the logistic rate is close to $kKP$.</p>

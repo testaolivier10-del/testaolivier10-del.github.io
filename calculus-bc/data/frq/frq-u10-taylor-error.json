@@ -1,0 +1,142 @@
+{
+ "id": "frq-u10-taylor-error",
+ "type": "series",
+ "points": 9,
+ "calc": false,
+ "title": "A Taylor polynomial from a table, with two error bounds",
+ "units": [
+  "unit-10"
+ ],
+ "topics": [
+  "taylor-polynomials",
+  "lagrange-error-bound",
+  "alternating-error-bound",
+  "taylor-series"
+ ],
+ "practices": [
+  "1.E",
+  "3.C",
+  "3.D",
+  "4.E"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Values of $h$ and its derivatives",
+  "text": "The function $h$ has derivatives of all orders for $x > -1$. The table gives values of $h$ and its first three derivatives at $x = 0$ and $x = 1$. The fourth derivative of $h$ is $h^{(4)}(x) = \\frac{960}{(x + 1)^6}$. The Taylor series for $h$ about $x = 1$ is $\\sum_{n=0}^{\\infty} \\frac{(-1)^n (n + 1)(x - 1)^n}{2^{n-1}}$, and it converges to $h(x)$ for $-1 < x < 3$.",
+  "table": {
+   "caption": "Values of $h$, $h'$, $h''$ and $h'''$",
+   "cols": [
+    "$x$",
+    "$h(x)$",
+    "$h'(x)$",
+    "$h''(x)$",
+    "$h'''(x)$"
+   ],
+   "rows": [
+    [
+     "$0$",
+     "$8$",
+     "$-16$",
+     "$48$",
+     "$-192$"
+    ],
+    [
+     "$1$",
+     "$2$",
+     "$-2$",
+     "$3$",
+     "$-6$"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Write</b> the third-degree Taylor polynomial $P_3(x)$ for $h$ about $x = 1$.",
+   "rubric": [
+    {
+     "point": "First three terms from the values at $x = 1$: $2 - 2(x - 1) + \\frac{3}{2}(x - 1)^2$",
+     "accept": [
+      "$2 - 2(x - 1) + \\frac{3}{2!}(x - 1)^2$"
+     ]
+    },
+    {
+     "point": "Cubic term $\\frac{-6}{3!}(x - 1)^3 = -(x - 1)^3$, with the polynomial ending there (no \"$+ \\cdots$\")",
+     "accept": [
+      "$-\\frac{6}{6}(x - 1)^3$"
+     ]
+    }
+   ],
+   "sample": "$P_3(x) = h(1) + h'(1)(x - 1) + \\frac{h''(1)}{2!}(x - 1)^2 + \\frac{h'''(1)}{3!}(x - 1)^3 = 2 - 2(x - 1) + \\frac{3}{2}(x - 1)^2 - (x - 1)^3$."
+  },
+  {
+   "label": "b",
+   "points": 1,
+   "prompt": "Use $P_3(x)$ to <b>estimate</b> $h(1.2)$.",
+   "rubric": [
+    {
+     "point": "$P_3(1.2) = 2 - 0.4 + 0.06 - 0.008 = 1.652$",
+     "accept": [
+      "$2 - 2(0.2) + \\frac{3}{2}(0.2)^2 - (0.2)^3$",
+      "$\\frac{413}{250}$"
+     ]
+    }
+   ],
+   "sample": "$h(1.2) \\approx P_3(1.2) = 2 - 2(0.2) + \\frac{3}{2}(0.04) - 0.008 = 2 - 0.4 + 0.06 - 0.008 = 1.652$."
+  },
+  {
+   "label": "c",
+   "points": 3,
+   "prompt": "Use the Lagrange error bound to <b>show</b> that $\\left|h(1.2) - P_3(1.2)\\right| < \\frac{1}{500}$.",
+   "rubric": [
+    {
+     "point": "The largest value of $\\left|h^{(4)}(z)\\right|$ for $1 \\le z \\le 1.2$ is $h^{(4)}(1) = \\frac{960}{64} = 15$, with a reason: $\\frac{960}{(z + 1)^6}$ is decreasing on that interval",
+     "accept": [
+      "\"$(z + 1)^6$ increases, so $\\frac{960}{(z+1)^6}$ is largest at $z = 1$\""
+     ]
+    },
+    {
+     "point": "Lagrange error bound written: $\\left|h(1.2) - P_3(1.2)\\right| \\le \\frac{15}{4!}(0.2)^4$",
+     "accept": [
+      "$\\frac{\\max|h^{(4)}|}{4!}|1.2 - 1|^4$ with $\\max = 15$"
+     ]
+    },
+    {
+     "point": "Evaluates the bound, $\\frac{15}{24}(0.0016) = \\frac{1}{1000}$, and concludes $\\frac{1}{1000} < \\frac{1}{500}$",
+     "accept": [
+      "$0.001 < 0.002$"
+     ]
+    }
+   ],
+   "sample": "$h^{(4)}(z) = \\frac{960}{(z + 1)^6}$ is positive and decreasing for $z > -1$, because $(z + 1)^6$ increases. So on $1 \\le z \\le 1.2$ the largest value of $\\left|h^{(4)}(z)\\right|$ is $h^{(4)}(1) = \\frac{960}{2^6} = 15$. By the Lagrange error bound, $\\left|h(1.2) - P_3(1.2)\\right| \\le \\frac{15}{4!}|1.2 - 1|^4 = \\frac{15}{24}(0.0016) = 0.001 = \\frac{1}{1000} < \\frac{1}{500}$."
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "prompt": "<b>Explain</b> why the alternating series error bound can be used for the estimate in part (b), and use it to <b>find</b> a bound on $\\left|h(1.2) - P_3(1.2)\\right|$. Can the alternating series error bound be used in the same way to bound $\\left|h(0.8) - P_3(0.8)\\right|$? <b>Explain</b>.",
+   "rubric": [
+    {
+     "point": "At $x = 1.2$ the terms of the Taylor series, $\\frac{(-1)^n (n + 1)(0.2)^n}{2^{n-1}} = (-1)^n \\cdot 2(n + 1)(0.1)^n$, alternate in sign, and their sizes decrease and approach 0",
+     "accept": [
+      "sizes $2, 0.4, 0.06, 0.008, 0.001, \\ldots$ shown decreasing with limit 0"
+     ]
+    },
+    {
+     "point": "The bound is the first omitted term ($n = 4$): $\\frac{5(0.2)^4}{2^3} = \\frac{1}{1000}$",
+     "accept": [
+      "$\\left|h(1.2) - P_3(1.2)\\right| \\le 0.001$"
+     ]
+    },
+    {
+     "point": "No for $x = 0.8$: there $(x - 1)^n = (-0.2)^n$, so every term $\\frac{(n + 1)(0.2)^n}{2^{n-1}}$ is positive; the series does not alternate and the alternating series error bound does not apply",
+     "accept": [
+      "\"all the terms are positive at $x = 0.8$\""
+     ]
+    }
+   ],
+   "sample": "At $x = 1.2$ the terms of the Taylor series are $\\frac{(-1)^n (n + 1)(0.2)^n}{2^{n-1}} = (-1)^n \\cdot 2(n + 1)(0.1)^n$. They alternate in sign; their sizes $2, 0.4, 0.06, 0.008, 0.001, \\ldots$ decrease, since the ratio of consecutive sizes is $\\frac{n + 2}{n + 1}(0.1) < 1$, and approach 0. So the alternating series error bound applies, and since $P_3(1.2)$ is the sum of the terms for $n = 0$ to $3$, $\\left|h(1.2) - P_3(1.2)\\right| \\le$ the size of the $n = 4$ term $= \\frac{5(0.2)^4}{2^3} = 0.001$. At $x = 0.8$, $(x - 1)^n = (-0.2)^n$, so each term is $\\frac{(-1)^n (n + 1)(-0.2)^n}{2^{n-1}} = \\frac{(n + 1)(0.2)^n}{2^{n-1}} > 0$. The series does not alternate there, so the alternating series error bound cannot be used; the Lagrange error bound still can."
+  }
+ ]
+}

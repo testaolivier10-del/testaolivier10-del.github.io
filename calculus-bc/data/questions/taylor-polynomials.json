@@ -1,0 +1,523 @@
+{
+ "stimuli": {
+  "taylor-polynomials-s1": {
+   "kind": "table",
+   "title": "A function and its derivatives at $x = 1$",
+   "table": {
+    "caption": "Values of $f$ and its first four derivatives at $x = 1$",
+    "cols": [
+     "$f(1)$",
+     "$f'(1)$",
+     "$f''(1)$",
+     "$f'''(1)$",
+     "$f^{(4)}(1)$"
+    ],
+    "rows": [
+     [
+      "$2$",
+      "$-3$",
+      "$5$",
+      "$12$",
+      "$-48$"
+     ]
+    ]
+   }
+  },
+  "taylor-polynomials-s2": {
+   "kind": "table",
+   "title": "Derivatives of $f(x) = e^{2x}$",
+   "table": {
+    "caption": "The function $f(x) = e^{2x}$ and its derivatives at $x = 0$",
+    "cols": [
+     "$n$",
+     "$f^{(n)}(x)$",
+     "$f^{(n)}(0)$"
+    ],
+    "rows": [
+     [
+      "$0$",
+      "$e^{2x}$",
+      "$1$"
+     ],
+     [
+      "$1$",
+      "$2e^{2x}$",
+      "$2$"
+     ],
+     [
+      "$2$",
+      "$4e^{2x}$",
+      "$4$"
+     ],
+     [
+      "$3$",
+      "$8e^{2x}$",
+      "$8$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-taylor-polynomials-1",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "taylor-polynomials-s1",
+   "q": "Write the second-degree Taylor polynomial $P_2(x)$ for $f$ about $x = 1$.",
+   "expr": {
+    "answer": "2 - 3(x-1) + (5/2)(x-1)^2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     1.5
+    ],
+    "mode": "exact",
+    "lhs": "P_2(x) =",
+    "answerTex": "2 - 3(x - 1) + \\frac{5}{2}(x - 1)^2",
+    "mistakes": [
+     {
+      "expr": "2 - 3(x-1) + 5(x-1)^2",
+      "why": "The coefficient of $(x - 1)^2$ is $\\frac{f''(1)}{2!} = \\frac{5}{2}$: divide by $2!$."
+     },
+     {
+      "expr": "2 - 3x + (5/2)x^2",
+      "why": "The polynomial is centered at $x = 1$, so it uses powers of $(x - 1)$, not of $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P_2(x) = f(1) + f'(1)(x - 1) + \\frac{f''(1)}{2!}(x - 1)^2 = 2 - 3(x - 1) + \\frac{5}{2}(x - 1)^2$."
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-2",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "taylor-polynomials-s1",
+   "q": "Find the coefficient of $(x - 1)^3$ in the third-degree Taylor polynomial for $f$ about $x = 1$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "That is $f'''(1)$ itself. The coefficient is $\\frac{f'''(1)}{3!} = \\frac{12}{6}$."
+     },
+     {
+      "value": 4,
+      "why": "Divide by $3! = 6$, not by 3: $\\frac{12}{6} = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The coefficient of $(x - 1)^3$ is $\\frac{f'''(1)}{3!} = \\frac{12}{6} = 2$."
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-3",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "taylor-polynomials-s1",
+   "q": "Use the third-degree Taylor polynomial for $f$ about $x = 1$ to estimate $f(1.2)$.",
+   "numeric": {
+    "answer": 1.516,
+    "mistakes": [
+     {
+      "value": 1.596,
+      "why": "The cubic term needs the factorial: $\\frac{12}{3!}(0.2)^3 = 2(0.008) = 0.016$, not $12(0.008)$."
+     },
+     {
+      "value": 1.5,
+      "why": "That is $P_2(1.2)$; the third-degree polynomial adds $2(0.2)^3 = 0.016$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P_3(x) = 2 - 3(x - 1) + \\frac{5}{2}(x - 1)^2 + 2(x - 1)^3$, so $P_3(1.2) = 2 - 0.6 + 0.1 + 0.016 = 1.516$."
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-4",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "taylor-polynomials-s1",
+   "q": "Find the coefficient of $(x - 1)^4$ in the fourth-degree Taylor polynomial for $f$ about $x = 1$.",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": -48,
+      "why": "Divide by $4! = 24$: the coefficient is $\\frac{-48}{24}$."
+     },
+     {
+      "value": -12,
+      "why": "Divide by $4! = 24$, not by 4."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{f^{(4)}(1)}{4!} = \\frac{-48}{24} = -2$."
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-5",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "taylor-polynomials-s2",
+   "q": "Continuing the pattern in the table, find $f^{(4)}(0)$.",
+   "numeric": {
+    "answer": 16,
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "Each derivative multiplies by another 2 (the chain rule), so $f^{(4)}(x) = 16e^{2x}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each derivative brings out a factor of 2, so $f^{(n)}(x) = 2^n e^{2x}$ and $f^{(4)}(0) = 2^4 = 16$."
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-6",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "taylor-polynomials-s2",
+   "q": "Write the third-degree Maclaurin polynomial $P_3(x)$ for $f(x) = e^{2x}$.",
+   "expr": {
+    "answer": "1 + 2x + 2x^2 + (4/3)x^3",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -0.5,
+     0.5
+    ],
+    "mode": "exact",
+    "lhs": "P_3(x) =",
+    "answerTex": "1 + 2x + 2x^2 + \\frac{4}{3}x^3",
+    "mistakes": [
+     {
+      "expr": "1 + 2x + 4x^2 + 8x^3",
+      "why": "Each coefficient is $\\frac{f^{(n)}(0)}{n!}$: divide 4 by $2!$ and 8 by $3!$."
+     },
+     {
+      "expr": "1 + x + x^2/2 + x^3/6",
+      "why": "Those are the coefficients for $e^x$. For $e^{2x}$ the derivatives at 0 are $1, 2, 4, 8$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P_3(x) = 1 + 2x + \\frac{4}{2!}x^2 + \\frac{8}{3!}x^3 = 1 + 2x + 2x^2 + \\frac{4}{3}x^3$."
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-7",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "taylor-polynomials-s2",
+   "q": "Use $P_3$ to estimate $f(0.1) = e^{0.2}$. Give the exact value of $P_3(0.1)$.",
+   "numeric": {
+    "answer": "458/375",
+    "mistakes": [
+     {
+      "value": 1.248,
+      "why": "That uses $4x^2$ and $8x^3$ without the factorials. With $P_3(x) = 1 + 2x + 2x^2 + \\frac{4}{3}x^3$, $P_3(0.1) = 1.2213\\ldots$"
+     },
+     {
+      "value": 1.22,
+      "why": "Include the cubic term: $\\frac{4}{3}(0.1)^3 = \\frac{1}{750}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P_3(0.1) = 1 + 0.2 + 2(0.01) + \\frac{4}{3}(0.001) = 1.22 + \\frac{1}{750} = \\frac{458}{375} \\approx 1.22133$, close to $e^{0.2} \\approx 1.22140$."
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-8",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "taylor-polynomials-s2",
+   "q": "Find the coefficient of $x^5$ in the fifth-degree Maclaurin polynomial for $e^{2x}$.",
+   "numeric": {
+    "answer": "4/15",
+    "mistakes": [
+     {
+      "value": 32,
+      "why": "That is $f^{(5)}(0) = 2^5$; divide by $5! = 120$."
+     },
+     {
+      "value": "1/120",
+      "why": "That is the coefficient for $e^x$. Here $f^{(5)}(0) = 32$, so the coefficient is $\\frac{32}{120}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{f^{(5)}(0)}{5!} = \\frac{2^5}{120} = \\frac{32}{120} = \\frac{4}{15}$."
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-9",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the Taylor polynomial for $f$ about $x = a$, what is the coefficient of $(x - a)^n$?",
+   "options": [
+    "$f^{(n)}(a)$",
+    "$\\frac{f^{(n)}(a)}{n!}$",
+    "$\\frac{f^{(n)}(0)}{n!}$",
+    "$\\frac{f^{(n)}(a)}{n}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The coefficient of $(x - a)^n$ is $\\frac{f^{(n)}(a)}{n!}$. Differentiating $\\frac{f^{(n)}(a)}{n!}(x - a)^n$ $n$ times gives $f^{(n)}(a)$, so the polynomial's derivatives at $a$ match $f$'s.",
+    "options": [
+     "Divide by $n!$, so that the $n$th derivative of the polynomial at $a$ matches $f^{(n)}(a)$.",
+     "Right: the $n$th derivative at the center over $n$ factorial.",
+     "The derivatives are taken at the center $a$, not at 0 (unless $a = 0$).",
+     "Divide by $n!$, not by $n$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-10",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The third-degree Taylor polynomial for $f$ about $x = -1$ is $P_3(x) = 4 - 2(x + 1) + 3(x + 1)^2 - 5(x + 1)^3$. Find $f''(-1)$.",
+   "numeric": {
+    "answer": 6,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "3 is the coefficient, $\\frac{f''(-1)}{2!}$. Multiply by $2! = 2$ to get $f''(-1)$."
+     },
+     {
+      "value": -30,
+      "why": "That is $f'''(-1) = 3!(-5)$. The second derivative comes from the $(x + 1)^2$ term."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The coefficient of $(x + 1)^2$ is $\\frac{f''(-1)}{2!} = 3$, so $f''(-1) = 2 \\cdot 3 = 6$."
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-11",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The second-degree Taylor polynomial for $f$ about $x = 3$ is $P_2(x) = 5 - 2(x - 3)^2$. What does this show about $f$ at $x = 3$?",
+   "options": [
+    "$f$ has a relative minimum at $x = 3$",
+    "$f$ has a point of inflection at $x = 3$",
+    "$f$ is decreasing at $x = 3$",
+    "$f$ has a relative maximum at $x = 3$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The missing $(x - 3)$ term means $f'(3) = 0$, and $\\frac{f''(3)}{2!} = -2$ gives $f''(3) = -4 < 0$. By the second derivative test, $f$ has a relative maximum at $x = 3$.",
+    "options": [
+     "The coefficient of $(x - 3)^2$ is negative, so $f''(3) < 0$: concave down, a maximum.",
+     "$f''(3) = -4 \\ne 0$, so the concavity is down at 3, not changing.",
+     "There is no $(x - 3)$ term, so $f'(3) = 0$.",
+     "Right: $f'(3) = 0$ and $f''(3) = -4 < 0$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-12",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the fourth-degree Maclaurin polynomial for $\\cos x$.",
+   "expr": {
+    "answer": "1 - x^2/2 + x^4/24",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -0.5,
+     0.5
+    ],
+    "mode": "exact",
+    "lhs": "P_4(x) =",
+    "answerTex": "1 - \\frac{x^2}{2} + \\frac{x^4}{24}",
+    "mistakes": [
+     {
+      "expr": "1 + x^2/2 + x^4/24",
+      "why": "$\\frac{d^2}{dx^2}\\cos x = -\\cos x$, so $f''(0) = -1$ and the $x^2$ term is negative."
+     },
+     {
+      "expr": "1 - x^2 + x^4",
+      "why": "Divide each derivative by its factorial: $\\frac{-1}{2!}x^2$ and $\\frac{1}{4!}x^4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The derivatives of $\\cos x$ at 0 are $1, 0, -1, 0, 1$, so $P_4(x) = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} = 1 - \\frac{x^2}{2} + \\frac{x^4}{24}$."
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-13",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Write the second-degree Taylor polynomial for $f(x) = \\sqrt{x}$ about $x = 4$.",
+   "expr": {
+    "answer": "2 + (x-4)/4 - (x-4)^2/64",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     3,
+     5
+    ],
+    "mode": "exact",
+    "lhs": "P_2(x) =",
+    "answerTex": "2 + \\frac{1}{4}(x - 4) - \\frac{1}{64}(x - 4)^2",
+    "mistakes": [
+     {
+      "expr": "2 + (x-4)/4 - (x-4)^2/32",
+      "why": "$f''(4) = -\\frac{1}{32}$ is the derivative; the coefficient is $\\frac{f''(4)}{2!} = -\\frac{1}{64}$."
+     },
+     {
+      "expr": "2 + x/4 - x^2/64",
+      "why": "Center at $x = 4$: use powers of $(x - 4)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(4) = 2$; $f'(x) = \\frac{1}{2}x^{-1/2}$, so $f'(4) = \\frac{1}{4}$; $f''(x) = -\\frac{1}{4}x^{-3/2}$, so $f''(4) = -\\frac{1}{32}$. Then $P_2(x) = 2 + \\frac{1}{4}(x - 4) - \\frac{1}{64}(x - 4)^2$."
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-14",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which is written correctly as the third-degree Taylor polynomial for $e^x$ about $x = 0$?",
+   "options": [
+    "$1 + x + \\frac{x^2}{2} + \\frac{x^3}{6} + \\cdots$",
+    "$x + \\frac{x^2}{2} + \\frac{x^3}{6} + \\frac{x^4}{24}$",
+    "$1 + x + \\frac{x^2}{2} + \\frac{x^3}{6}$",
+    "$1 + x + x^2 + x^3$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Every derivative of $e^x$ is $e^x$, which is 1 at $x = 0$, so $P_3(x) = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!}$, written with no \"$+ \\cdots$\" since a polynomial has a last term.",
+    "options": [
+     "A polynomial stops: the \"$+ \\cdots$\" turns it into an endless sum.",
+     "This drops $f(0) = 1$ and adds a fourth-degree term.",
+     "Right: four terms, through $x^3$, and it stops there.",
+     "The coefficients need the factorials: $\\frac{1}{2!}$ and $\\frac{1}{3!}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-15",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is the fifth-degree Maclaurin polynomial for $\\cos x$ the same as the fourth-degree one?",
+   "options": [
+    "The fifth-degree term is too small to matter",
+    "$\\cos x$ has no derivatives past the fourth",
+    "A polynomial for $\\cos x$ stops at degree 4",
+    "$\\frac{d^5}{dx^5}\\cos x = -\\sin x$, which is 0 at $x = 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The derivatives of $\\cos x$ cycle: $\\cos x, -\\sin x, -\\cos x, \\sin x, \\cos x, -\\sin x, \\ldots$ At 0, every odd-order derivative is 0, so the $x^5$ term is $0 \\cdot x^5$ and $P_5 = P_4$.",
+    "options": [
+     "The coefficient is exactly 0, not small.",
+     "$\\cos x$ has derivatives of every order; they cycle with period 4.",
+     "It can have any even degree; the odd-degree coefficients are 0.",
+     "Right: the $x^5$ coefficient is 0."
+    ]
+   }
+  },
+  {
+   "id": "cbc-taylor-polynomials-16",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "$f(2) = 1$, $f'(2) = 0.5$ and $f''(2) = -0.4$. Use the second-degree Taylor polynomial for $f$ about $x = 2$ to estimate $f(2.2)$.",
+   "numeric": {
+    "answer": 1.092,
+    "mistakes": [
+     {
+      "value": 1.084,
+      "why": "The quadratic term is $\\frac{f''(2)}{2!}(0.2)^2 = -0.2(0.04) = -0.008$: divide by $2!$."
+     },
+     {
+      "value": 1.1,
+      "why": "That is the tangent line estimate; the second-degree term adds $-0.008$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P_2(2.2) = 1 + 0.5(0.2) + \\frac{-0.4}{2}(0.2)^2 = 1 + 0.1 - 0.008 = 1.092$."
+   }
+  }
+ ]
+}

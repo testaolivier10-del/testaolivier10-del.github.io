@@ -1,0 +1,53 @@
+<p>In 9.1 you found the slope of a parametric curve, $\frac{dy}{dx} = \frac{dy/dt}{dx/dt}$. The next question is how that slope changes as you move along the curve: the second derivative $\frac{d^2y}{dx^2}$, which tells you whether the curve bends up or down. It takes one idea, used twice.</p>
+
+<h2>The slope rule, applied to the slope</h2>
+<p>The rule from 9.1 works for <i>any</i> quantity that depends on $t$: its rate of change with respect to $x$ is its rate with respect to $t$, divided by $\frac{dx}{dt}$. The slope $\frac{dy}{dx}$ is such a quantity. So</p>
+<p>$$\frac{d^2y}{dx^2} = \frac{d}{dx}\left(\frac{dy}{dx}\right) = \frac{\frac{d}{dt}\left(\frac{dy}{dx}\right)}{dx/dt}, \qquad \frac{dx}{dt} \ne 0.$$</p>
+<p>That gives a three-step method:</p>
+<ol>
+<li>Find $\frac{dy}{dx} = \frac{dy/dt}{dx/dt}$ and simplify it as a function of $t$.</li>
+<li>Differentiate that function with respect to $t$.</li>
+<li>Divide the result by $\frac{dx}{dt}$.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> A curve is given by $x = t^2$, $y = t^3 - 3t$ for $t > 0$. Find $\frac{d^2y}{dx^2}$ and the concavity of the curve.</p>
+<p>Step 1: $\frac{dy}{dx} = \frac{3t^2 - 3}{2t} = \frac{3t}{2} - \frac{3}{2t}$. Splitting the fraction makes step 2 a power rule instead of a quotient rule.</p>
+<p>Step 2: $\frac{d}{dt}\left(\frac{3t}{2} - \frac{3}{2}t^{-1}\right) = \frac{3}{2} + \frac{3}{2t^2}$.</p>
+<p>Step 3: divide by $\frac{dx}{dt} = 2t$: $\frac{d^2y}{dx^2} = \frac{3/2 + 3/(2t^2)}{2t} = \frac{3}{4t} + \frac{3}{4t^3} = \frac{3(t^2 + 1)}{4t^3}$.</p>
+<p>For $t > 0$ every factor is positive, so the curve is concave up there. At $t = 1$ the value is $\frac{3 \cdot 2}{4} = \frac{3}{2}$.</p>
+</div>
+
+<h2>Why the extra division matters</h2>
+<p>$\frac{d}{dt}\left(\frac{dy}{dx}\right)$ measures how fast the slope changes <i>per unit of time</i>. Concavity is about how fast the slope changes <i>per unit of $x$</i>. Dividing by $\frac{dx}{dt}$ converts one into the other, and it can change the sign.</p>
+<figure id="fig-circle" data-fig="parametric-second-derivatives-circle"><figcaption>The division by $\frac{dx}{dt}$ decides the concavity of the circle.</figcaption></figure>
+<p><a class="figref" href="#fig-circle">The figure</a> shows the circle $x = \cos t$, $y = \sin t$. Its slope is $-\cot t$, and $\frac{d}{dt}(-\cot t) = \csc^2 t$, positive for every $t$. If you stopped there, you would call the whole circle concave up. Dividing by $\frac{dx}{dt} = -\sin t$ gives $\frac{d^2y}{dx^2} = -\frac{1}{\sin^3 t}$: negative on the upper half, where $\sin t > 0$, and positive on the lower half. That matches the picture.</p>
+<p>The other tempting shortcut, $\frac{d^2y/dt^2}{d^2x/dt^2}$, is simply not the second derivative. For $x = e^t$, $y = e^{3t}$ it gives $\frac{9e^{3t}}{e^t} = 9e^{2t}$, but the curve is $y = x^3$, whose second derivative is $6x = 6e^t$. The three steps give the same $6e^t$: $\frac{dy}{dx} = \frac{3e^{3t}}{e^t} = 3e^{2t}$, its $t$-derivative is $6e^{2t}$, and $\frac{6e^{2t}}{e^t} = 6e^t$.</p>
+
+<h2>Concavity, inflection points and the second derivative test</h2>
+<p>Once you have $\frac{d^2y}{dx^2}$ as a function of $t$, Unit 5 applies:</p>
+<table class="compare">
+<thead><tr><th>Finding</th><th>Conclusion</th></tr></thead>
+<tbody>
+<tr><td>$\frac{d^2y}{dx^2} > 0$ at $t$</td><td>The curve is concave up there</td></tr>
+<tr><td>$\frac{d^2y}{dx^2} < 0$ at $t$</td><td>The curve is concave down there</td></tr>
+<tr><td>$\frac{d^2y}{dx^2}$ changes sign at $t_0$</td><td>A point of inflection at $(x(t_0), y(t_0))$</td></tr>
+<tr><td>$\frac{dy}{dx} = 0$ and $\frac{d^2y}{dx^2} > 0$ at $t_0$</td><td>A relative minimum of $y$ there (second derivative test)</td></tr>
+<tr><td>$\frac{dy}{dx} = 0$ and $\frac{d^2y}{dx^2} < 0$ at $t_0$</td><td>A relative maximum of $y$ there</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example 2.</b> At $t = 3$, a curve has $\frac{dx}{dt} = 6$, $\frac{dy}{dx} = 0$ and $\frac{d}{dt}\left(\frac{dy}{dx}\right) = -12$. What happens at that point?</p>
+<p>$\frac{d^2y}{dx^2} = \frac{-12}{6} = -2 < 0$. The tangent is horizontal and the curve is concave down, so $y$ has a relative maximum at the point where $t = 3$.</p>
+</div>
+<p>Always report a point as $(x(t_0), y(t_0))$, not as $t_0$, and name what changes sign when you claim an inflection point: "$\frac{d^2y}{dx^2}$ changes from negative to positive at $t = 2$."</p>
+
+<h2>Common slips</h2>
+<table class="compare">
+<thead><tr><th>Slip</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Stopping at $\frac{d}{dt}\left(\frac{dy}{dx}\right)$</td><td>Divide by $\frac{dx}{dt}$ once more</td></tr>
+<tr><td>Writing $\frac{d^2y/dt^2}{d^2x/dt^2}$</td><td>Differentiate the simplified slope, then divide</td></tr>
+<tr><td>A quotient rule that loses a sign</td><td>Simplify $\frac{dy}{dx}$ first; split fractions into powers of $t$</td></tr>
+<tr><td>Giving $t$ as the inflection point</td><td>The point is $(x(t_0), y(t_0))$</td></tr>
+</tbody>
+</table>

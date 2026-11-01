@@ -1,0 +1,28 @@
+{
+ "about": "AP® Calculus BC justification prompts for Unit 6 (the BC topics; AB's Unit 6 prompts come from calculus/data/justify/unit-6.json). Format: docs/apcalc-architecture.md, \"Justification trainer\".",
+ "prompts": [
+  {
+   "unit": "unit-6",
+   "id": "u6-improper-limit-notation",
+   "topic": "improper-integrals",
+   "practice": "4.C",
+   "skill": "limits",
+   "title": "An improper integral, with the limit written out",
+   "context": "<p>Consider $\\int_1^{\\infty} \\frac{2}{x^3}\\,dx$.</p>",
+   "prompt": "<b>Show</b> that the integral converges and find its value. Use correct notation in every step.",
+   "checklist": [
+    "Rewrites the integral as a limit: $\\lim_{b \\to \\infty} \\int_1^b \\frac{2}{x^3}\\,dx$",
+    "Antidifferentiates and evaluates at $b$ and 1 inside the limit: $1 - \\frac{1}{b^2}$",
+    "Takes the limit as a separate step and concludes the integral converges to 1, with no arithmetic on $\\infty$"
+   ],
+   "earns": {
+    "answer": "$\\int_1^{\\infty} \\frac{2}{x^3}\\,dx = \\lim_{b \\to \\infty} \\int_1^b 2x^{-3}\\,dx = \\lim_{b \\to \\infty} \\left[-\\frac{1}{x^2}\\right]_1^b = \\lim_{b \\to \\infty} \\left(1 - \\frac{1}{b^2}\\right) = 1$. The limit exists, so the integral converges, to 1.",
+    "why": "Every step keeps the limit in front until it is taken, and the answer says the integral converges because the limit is a finite number."
+   },
+   "misses": {
+    "answer": "$\\int_1^{\\infty} \\frac{2}{x^3}\\,dx = \\left[-\\frac{1}{x^2}\\right]_1^{\\infty} = -\\frac{1}{\\infty} + 1 = 1$.",
+    "why": "The value is right, but it substitutes $\\infty$ as if it were a number. Readers give the point only with limit notation carried through to the end."
+   }
+  }
+ ]
+}

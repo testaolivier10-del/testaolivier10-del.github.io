@@ -1,0 +1,5 @@
+{
+ "integration-by-parts": {
+  "def": "The product rule run backward: $\\int u\\,dv = uv - \\int v\\,du$, where $u$ is a factor chosen to simplify when differentiated and $dv$ (with $dx$) a factor that can be integrated. For a definite integral, $uv$ is evaluated at both bounds. The tabular method lays out repeated rounds in two columns with alternating signs."
+ }
+}

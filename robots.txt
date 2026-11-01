@@ -13,5 +13,6 @@ Disallow: /statistics/data/notes/
 Disallow: /environmental-science/data/notes/
 Disallow: /psychology/data/notes/
 Disallow: /precalculus/data/notes/
+Disallow: /calculus-bc/data/notes/
 
 Sitemap: https://levlprep.com/sitemap.xml

@@ -1,0 +1,470 @@
+{
+ "stimuli": {
+  "lagrange-error-bound-s1": {
+   "kind": "table",
+   "title": "Derivatives at the center and a bound on the next one",
+   "table": {
+    "caption": "Values of $f$ and its derivatives at $x = 0$; on $0 \\le x \\le 0.5$, $\\left|f^{(4)}(x)\\right| \\le 10$",
+    "cols": [
+     "$f(0)$",
+     "$f'(0)$",
+     "$f''(0)$",
+     "$f'''(0)$",
+     "$\\left|f^{(4)}(x)\\right|$ on $[0, 0.5]$"
+    ],
+    "rows": [
+     [
+      "$1$",
+      "$2$",
+      "$-3$",
+      "$6$",
+      "at most $10$"
+     ]
+    ]
+   }
+  },
+  "lagrange-error-bound-s2": {
+   "kind": "table",
+   "title": "Bounding the third derivative of $e^x$",
+   "table": {
+    "caption": "$f(x) = e^x$ is approximated at $x = \\frac{1}{2}$ by $P_2(x) = 1 + x + \\frac{x^2}{2}$. Values of $f'''(z) = e^z$ (to four decimal places)",
+    "cols": [
+     "$z$",
+     "$0$",
+     "$0.25$",
+     "$0.5$"
+    ],
+    "rows": [
+     [
+      "$e^z$",
+      "$1$",
+      "$1.2840$",
+      "$1.6487$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-lagrange-error-bound-1",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "lagrange-error-bound-s1",
+   "q": "Use the third-degree Taylor polynomial for $f$ about $x = 0$ to estimate $f(0.5)$.",
+   "numeric": {
+    "answer": "7/4",
+    "mistakes": [
+     {
+      "value": 1.625,
+      "why": "That is $P_2(0.5)$. The third-degree polynomial adds $\\frac{f'''(0)}{3!}(0.5)^3 = 0.125$."
+     },
+     {
+      "value": 2,
+      "why": "Divide each derivative by its factorial: $\\frac{-3}{2!}(0.5)^2 = -0.375$ and $\\frac{6}{3!}(0.5)^3 = 0.125$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P_3(x) = 1 + 2x - \\frac{3}{2}x^2 + x^3$, so $P_3(0.5) = 1 + 1 - 0.375 + 0.125 = 1.75 = \\frac{7}{4}$."
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-2",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "lagrange-error-bound-s1",
+   "q": "Use the Lagrange error bound to find a number $E$ with $\\left|f(0.5) - P_3(0.5)\\right| \\le E$.",
+   "numeric": {
+    "answer": "5/192",
+    "mistakes": [
+     {
+      "value": "5/24",
+      "why": "That uses $\\frac{10}{3!}(0.5)^3$. The bound for $P_3$ uses the next derivative, the fourth: $\\frac{10}{4!}(0.5)^4$."
+     },
+     {
+      "value": "5/8",
+      "why": "Divide by $4! = 24$: $\\frac{10}{4!}(0.5)^4$, not $10(0.5)^4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The Lagrange error bound for $P_3$ is $\\frac{\\max\\left|f^{(4)}(z)\\right|}{4!}|x - 0|^4 \\le \\frac{10}{24}(0.5)^4 = \\frac{10}{384} = \\frac{5}{192} \\approx 0.026$."
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-3",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "lagrange-error-bound-s1",
+   "q": "Which statement shows that $P_3(0.5)$ approximates $f(0.5)$ with an error less than $0.03$?",
+   "options": [
+    "$\\left|f(0.5) - P_3(0.5)\\right| = \\frac{5}{192} < 0.03$",
+    "$\\left|f(0.5) - P_3(0.5)\\right| \\le \\frac{10}{3!}(0.5)^3 < 0.03$",
+    "$\\left|f(0.5) - P_3(0.5)\\right| \\le \\frac{6}{4!}(0.5)^4 < 0.03$",
+    "$\\left|f(0.5) - P_3(0.5)\\right| \\le \\frac{5}{192} < 0.03$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The Lagrange error bound gives $\\left|f(0.5) - P_3(0.5)\\right| \\le \\frac{10}{4!}(0.5)^4 = \\frac{5}{192} \\approx 0.026$, and $\\frac{5}{192} < 0.03$.",
+    "options": [
+     "The bound gives \"at most\"; the error itself is not known to equal $\\frac{5}{192}$.",
+     "That uses the wrong derivative and power, and $\\frac{10}{6}(0.125) \\approx 0.21$ is not below 0.03.",
+     "$6 = f'''(0)$ is a value at the center; the bound needs the largest size of $f^{(4)}$ on the interval, 10.",
+     "Right: the bound with its inputs, then the comparison."
+    ]
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-4",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "lagrange-error-bound-s1",
+   "q": "What do the estimate and the bound together say about $f(0.5)$?",
+   "options": [
+    "$\\frac{7}{4} - \\frac{5}{192} \\le f(0.5) \\le \\frac{7}{4} + \\frac{5}{192}$",
+    "$f(0.5) = \\frac{7}{4} + \\frac{5}{192}$, the estimate plus the bound",
+    "$\\frac{7}{4} \\le f(0.5) \\le \\frac{7}{4} + \\frac{5}{192}$, above the estimate",
+    "$f(0.5) \\le \\frac{5}{192}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\left|f(0.5) - \\frac{7}{4}\\right| \\le \\frac{5}{192}$ means $f(0.5)$ is within $\\frac{5}{192}$ of $\\frac{7}{4}$, on either side.",
+    "options": [
+     "Right: $f(0.5)$ is within the bound of the estimate, on either side.",
+     "The bound limits the error; it does not give its value or sign.",
+     "Nothing here shows the error is positive; $f(0.5)$ may be below the estimate.",
+     "The bound is on the error, $\\left|f(0.5) - \\frac{7}{4}\\right|$, not on $f(0.5)$ itself."
+    ]
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-5",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "lagrange-error-bound-s2",
+   "q": "Which choice of $M$, a bound on $\\left|f'''(z)\\right|$ for $0 \\le z \\le \\frac{1}{2}$, is justified?",
+   "options": [
+    "$M = 1$: the third derivative at the center is $e^0 = 1$",
+    "$M = 2$: $e^z$ increases, so its largest value is $e^{1/2}$, and $e^{1/2} < 2$",
+    "$M = 1.284$: the value at the middle of the interval",
+    "$M = \\frac{1}{8}$: the value of $\\frac{x^3}{3!}$ at $x = \\frac{1}{2}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f'''(z) = e^z$ is increasing, so on $0 \\le z \\le \\frac{1}{2}$ its largest value is $e^{1/2} = \\sqrt{e} < \\sqrt{4} = 2$. Any $M$ at least $e^{1/2}$ works; $M = 2$ is a convenient one.",
+    "options": [
+     "The bound must cover every $z$ between 0 and $\\frac{1}{2}$, where $e^z$ exceeds 1.",
+     "Right: the maximum is at the right end, and it is below 2.",
+     "The middle value is not the largest; $e^z$ is larger at $z = \\frac{1}{2}$.",
+     "That is part of the bound's formula, not a bound on the derivative."
+    ]
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-6",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "lagrange-error-bound-s2",
+   "q": "Find $P_2\\left(\\frac{1}{2}\\right)$.",
+   "numeric": {
+    "answer": "13/8",
+    "mistakes": [
+     {
+      "value": 1.75,
+      "why": "The quadratic term is $\\frac{x^2}{2} = \\frac{1}{8}$, not $x^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P_2\\left(\\frac{1}{2}\\right) = 1 + \\frac{1}{2} + \\frac{1}{2}\\left(\\frac{1}{4}\\right) = \\frac{13}{8}$."
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-7",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "lagrange-error-bound-s2",
+   "q": "With $M = 2$, find the Lagrange error bound for $\\left|e^{1/2} - P_2\\left(\\frac{1}{2}\\right)\\right|$.",
+   "numeric": {
+    "answer": "1/24",
+    "mistakes": [
+     {
+      "value": "1/48",
+      "why": "That uses $M = 1$, the value at the center; the bound needs the largest value on $[0, \\frac{1}{2}]$."
+     },
+     {
+      "value": "1/8",
+      "why": "Divide by $3! = 6$, not $2!$: the bound for $P_2$ uses the third derivative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{M}{3!}\\left|\\frac{1}{2} - 0\\right|^3 = \\frac{2}{6} \\cdot \\frac{1}{8} = \\frac{1}{24} \\approx 0.0417$."
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-8",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "lagrange-error-bound-s2",
+   "q": "A calculator gives $e^{1/2} \\approx 1.6487$. How does the actual error compare with the bound $\\frac{1}{24}$?",
+   "options": [
+    "The actual error, about $0.024$, is below the bound, as it has to be",
+    "The actual error equals the bound, about $0.042$, as expected",
+    "The actual error is larger than the bound, so $M = 2$ was too small",
+    "The two are not comparable, since the bound used $M = 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\left|e^{1/2} - \\frac{13}{8}\\right| \\approx |1.6487 - 1.625| \\approx 0.0237 \\le \\frac{1}{24} \\approx 0.0417$. The bound uses the worst case, so the actual error is usually smaller.",
+    "options": [
+     "Right: the bound is a ceiling, and the actual error is under it.",
+     "$1.6487 - 1.625 \\approx 0.024$, which is smaller than $\\frac{1}{24}$.",
+     "$0.024 < 0.042$: the error is within the bound.",
+     "They can: the bound is a number, $\\frac{1}{24}$, and the error is about $0.024$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-9",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which is the Lagrange error bound for $P_n(x)$, the $n$th-degree Taylor polynomial for $f$ about $x = a$?",
+   "options": [
+    "$\\frac{\\max\\left|f^{(n)}(z)\\right|}{n!}|x - a|^n$",
+    "$\\frac{\\max\\left|f^{(n+1)}(z)\\right|}{(n+1)!}|x - a|^{n+1}$",
+    "$\\frac{\\left|f^{(n+1)}(a)\\right|}{(n+1)!}\\left|x - a\\right|^{n+1}$",
+    "$\\max\\left|f^{(n+1)}(z)\\right| \\cdot |x - a|^{n+1}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\left|f(x) - P_n(x)\\right| \\le \\frac{\\max\\left|f^{(n+1)}(z)\\right|}{(n+1)!}|x - a|^{n+1}$, where the maximum is over the $z$ between $a$ and $x$.",
+    "options": [
+     "The bound uses the derivative one past the degree: $f^{(n+1)}$.",
+     "Right: the next derivative, the next factorial, the next power.",
+     "The derivative is maximized over the interval between $a$ and $x$, not taken at the center.",
+     "Divide by $(n+1)!$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-10",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "$P_3(x) = x - \\frac{x^3}{6}$ approximates $\\sin x$. Using $\\left|\\frac{d^4}{dx^4}\\sin x\\right| \\le 1$, which is the Lagrange error bound for $\\left|\\sin(0.2) - P_3(0.2)\\right|$?",
+   "options": [
+    "$\\frac{(0.2)^3}{3!} = \\frac{1}{750}$",
+    "$(0.2)^4 = \\frac{1}{625}$, with no factorial",
+    "$\\frac{(0.2)^4}{4!} = \\frac{1}{15000}$",
+    "$\\frac{(0.2)^4}{3!} = \\frac{1}{3750}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\left|\\sin(0.2) - P_3(0.2)\\right| \\le \\frac{1}{4!}(0.2)^4 = \\frac{0.0016}{24} = \\frac{1}{15000}$.",
+    "options": [
+     "The bound for $P_3$ uses the next derivative: the fourth power and $4!$.",
+     "Divide by $4! = 24$.",
+     "Right: the fourth derivative, $4!$, and the fourth power.",
+     "The factorial matches the power: $4!$ with $(0.2)^4$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-11",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "To bound the error of the second-degree Taylor polynomial for $f$ about $x = 1$ at $x = 1.3$, over which values of $z$ do you find the largest $\\left|f'''(z)\\right|$?",
+   "options": [
+    "$z = 1$ alone, the center",
+    "$z = 1.3$ alone, the point being estimated",
+    "$0 \\le z \\le 1.3$, from zero to the point",
+    "$1 \\le z \\le 1.3$, from the center to the point"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The Lagrange error bound uses the largest $\\left|f'''(z)\\right|$ for $z$ between the center $a = 1$ and $x = 1.3$. Say where that maximum is and why (for example, because $|f'''|$ is increasing there).",
+    "options": [
+     "One value does not cover the interval; the largest size between 1 and 1.3 is needed.",
+     "The largest size may occur anywhere between 1 and 1.3.",
+     "The interval runs from the center, 1, not from 0.",
+     "Right: the $z$ in the bound lies between the center and $x$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-12",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "$\\left|f^{(5)}(x)\\right| \\le 3$ for $1 \\le x \\le 1.4$. Which is the Lagrange error bound for the fourth-degree Taylor polynomial for $f$ about $x = 1$ at $x = 1.4$?",
+   "options": [
+    "$\\frac{3}{5!}(0.4)^5 = \\frac{4}{15625}$",
+    "$\\frac{3}{4!}(0.4)^4 = \\frac{2}{625}$",
+    "$3(0.4)^5 = \\frac{96}{3125}$, with no factorial",
+    "$\\frac{3}{4!}(0.4)^5 = \\frac{4}{3125}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{3}{5!}|1.4 - 1|^5 = \\frac{3}{120}(0.4)^5 = \\frac{3(0.01024)}{120} = 0.000256 = \\frac{4}{15625}$.",
+    "options": [
+     "Right: the fifth derivative's bound, $5!$, and the fifth power.",
+     "The bound for $P_4$ uses the next derivative: $5!$ and the fifth power.",
+     "Divide by $5! = 120$.",
+     "The factorial matches the power: $5!$ with $(0.4)^5$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-13",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "$\\cos(0.1) = 1 - \\frac{(0.1)^2}{2!} + \\frac{(0.1)^4}{4!} - \\cdots$, an alternating sum whose terms decrease in size to 0. What does the alternating series error bound give for the estimate $1 - \\frac{(0.1)^2}{2} = 0.995$?",
+   "options": [
+    "An error of at most $\\frac{(0.1)^2}{2}$",
+    "An error of at most $\\frac{(0.1)^4}{24}$",
+    "An error of at most $\\frac{(0.1)^6}{720}$",
+    "An error of at most $\\frac{(0.1)^3}{6}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "When the values form an alternating series with sizes decreasing to 0, the alternating series error bound applies: the error is at most the first omitted term, $\\frac{(0.1)^4}{4!} = \\frac{0.0001}{24} \\approx 0.0000042$. Here it is quicker than finding a maximum of a derivative.",
+    "options": [
+     "That term is part of the estimate; the bound is the first term left out.",
+     "Right: the first term left out.",
+     "That is the second term left out; the bound is the first.",
+     "There is no $(0.1)^3$ term in this alternating sum; the next term is $\\frac{(0.1)^4}{4!}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-14",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 1,
+   "q": "The Lagrange error bound for an estimate is $0.004$. Which sentence is correct?",
+   "options": [
+    "The error is $0.004$",
+    "The estimate is $0.004$ too large",
+    "The error is at most $0.004$",
+    "The error is at least $0.004$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The Lagrange error bound says $\\left|f(x) - P_n(x)\\right| \\le 0.004$: the error is at most $0.004$, in either direction.",
+    "options": [
+     "The actual error is less than or equal to the bound, usually less.",
+     "The bound gives no direction and no exact size.",
+     "Right: the bound caps the error.",
+     "The bound is an upper limit, not a lower one."
+    ]
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-15",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For $f(x) = \\ln(1 + x)$, $f^{(4)}(x) = -\\frac{6}{(1 + x)^4}$. Which is the Lagrange error bound for the third-degree Taylor polynomial for $f$ about $x = 0$ at $x = 0.2$?",
+   "options": [
+    "$\\frac{6/1.2^4}{4!}(0.2)^4 = \\frac{1}{5184}$, since $\\left|f^{(4)}\\right|$ is largest at $z = 0.2$",
+    "$\\frac{6}{3!}(0.2)^3 = \\frac{1}{125}$, using the third power for $P_3$",
+    "$6(0.2)^4 = \\frac{6}{625}$, using the largest value 6",
+    "$\\frac{6}{4!}(0.2)^4 = \\frac{1}{2500}$, since $\\left|f^{(4)}\\right|$ is largest at $z = 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\left|f^{(4)}(z)\\right| = \\frac{6}{(1 + z)^4}$ decreases as $z$ increases, so on $[0, 0.2]$ its largest value is 6, at $z = 0$. The bound is $\\frac{6}{4!}(0.2)^4 = \\frac{1}{4}(0.0016) = \\frac{1}{2500}$.",
+    "options": [
+     "$\\frac{6}{(1 + z)^4}$ decreases, so $z = 0.2$ gives its smallest value, not its largest.",
+     "The bound for $P_3$ uses the fourth derivative, $4!$ and the fourth power.",
+     "The largest value is right, but divide by $4! = 24$.",
+     "Right: $\\frac{6}{(1 + z)^4}$ decreases, so its maximum on $[0, 0.2]$ is 6."
+    ]
+   }
+  },
+  {
+   "id": "cbc-lagrange-error-bound-16",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "lagrange-error-bound",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Every derivative of $e^x$ is at most $e < 3$ on $[0, 1]$. What is the smallest degree $n$ for which the Lagrange error bound $\\frac{3}{(n + 1)!}$ guarantees that $P_n(1)$ is within $0.001$ of $e$?",
+   "numeric": {
+    "answer": 6,
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "For $n = 6$ the bound is $\\frac{3}{7!} = \\frac{3}{5040} \\approx 0.0006 < 0.001$ already."
+     },
+     {
+      "value": 5,
+      "why": "For $n = 5$ the bound is $\\frac{3}{6!} = \\frac{3}{720} \\approx 0.0042$, which is not below $0.001$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "We need $\\frac{3}{(n + 1)!} < 0.001$, that is $(n + 1)! > 3000$. $6! = 720$ is too small and $7! = 5040$ is enough, so $n + 1 = 7$ and $n = 6$."
+   }
+  }
+ ]
+}

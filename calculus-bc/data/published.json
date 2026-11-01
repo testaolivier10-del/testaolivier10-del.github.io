@@ -1,0 +1,16 @@
+{
+ "about": "Chapters of AP Calculus BC that are live. An AB unit (1-8, skills-math) listed here builds its AB topics from calculus/data/ into calculus-bc/; Units 9 and 10 and the BC topics of Units 6-8 come from calculus-bc/data/. Every chapter is published since the launch (docs/apcalcbc-spec.md).",
+ "chapters": [
+  "skills-math",
+  "unit-1",
+  "unit-2",
+  "unit-3",
+  "unit-4",
+  "unit-5",
+  "unit-6",
+  "unit-7",
+  "unit-8",
+  "unit-9",
+  "unit-10"
+ ]
+}

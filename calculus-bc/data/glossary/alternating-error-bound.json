@@ -1,0 +1,8 @@
+{
+ "error-bound": {
+  "def": "A number that the size of an error cannot exceed: if $E$ is an error bound for an approximation, then $|\\text{actual} - \\text{approximation}| \\le E$."
+ },
+ "alternating-error-bound": {
+  "def": "For an alternating series whose sizes $a_n$ decrease to 0, the error of the partial sum $S_n$ is at most the first omitted term: $|S - S_n| \\le a_{n+1}$."
+ }
+}

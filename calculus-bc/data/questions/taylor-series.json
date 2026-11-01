@@ -1,0 +1,519 @@
+{
+ "stimuli": {
+  "taylor-series-s1": {
+   "kind": "graph",
+   "title": "$\\sin x$ and two of its Taylor polynomials",
+   "text": "The graph shows $y = \\sin x$ (solid) with its Taylor polynomials about $x = 0$ of degree 3, $P_3(x)$ (dashed, the one that turns down past $x \\approx 1.4$), and degree 5, $P_5(x)$ (the one that stays close longer), for $-4 \\le x \\le 4$.",
+   "plot": {
+    "label": "Graphs of y = sin x and its Taylor polynomials about 0 of degree 3 and degree 5, for x from -4 to 4. Near 0 all three coincide. P3 = x - x cubed over 6 turns away past about |x| = 1.5; P5 stays close to sin x until about |x| = 2.5.",
+    "width": 440,
+    "height": 280,
+    "x": [
+     -4,
+     4
+    ],
+    "y": [
+     -2.5,
+     2.5
+    ],
+    "xStep": 1,
+    "yStep": 0.5,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "sin(x)",
+      "cls": "s1",
+      "label": "sin x"
+     },
+     {
+      "fn": "x - x^3/6",
+      "cls": "s2",
+      "dashed": true,
+      "label": "P3"
+     },
+     {
+      "fn": "x - x^3/6 + x^5/120",
+      "cls": "s3",
+      "label": "P5"
+     }
+    ]
+   }
+  },
+  "taylor-series-s2": {
+   "kind": "table",
+   "title": "Derivatives of $f$ at $x = 0$",
+   "table": {
+    "caption": "A function $f$ has derivatives of all orders, with $f^{(n)}(0) = \\frac{(-1)^n\\,n!}{2^{n+1}}$ for $n \\ge 0$",
+    "cols": [
+     "$n$",
+     "$0$",
+     "$1$",
+     "$2$",
+     "$3$"
+    ],
+    "rows": [
+     [
+      "$f^{(n)}(0)$",
+      "$\\frac{1}{2}$",
+      "$-\\frac{1}{4}$",
+      "$\\frac{1}{4}$",
+      "$-\\frac{3}{8}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-taylor-series-1",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 1,
+   "stimulus": "taylor-series-s1",
+   "q": "What does the graph show about the Taylor polynomials as the degree goes from 3 to 5?",
+   "options": [
+    "The higher degree matches $\\sin x$ exactly for $-4 \\le x \\le 4$",
+    "The higher degree stays close to $\\sin x$ farther from 0",
+    "Both polynomials are closest to $\\sin x$ near $x = \\pm 4$",
+    "The lower degree is the better estimate near $x = 2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Both polynomials match $\\sin x$ near the center. $P_3$ turns away past about $|x| = 1.5$, while $P_5$ stays close to about $|x| = 2.5$: more terms, a closer fit over a wider interval.",
+    "options": [
+     "$P_5$ still pulls away from $\\sin x$ near $x = \\pm 3$; no polynomial equals $\\sin x$ on an interval.",
+     "Right: $P_5$ follows $\\sin x$ farther out than $P_3$.",
+     "They are closest near the center, $x = 0$, and pull away farther out.",
+     "Near $x = 2$, $P_5$ is much closer to $\\sin x$ than $P_3$ is."
+    ]
+   }
+  },
+  {
+   "id": "cbc-taylor-series-2",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "taylor-series-s1",
+   "q": "Write $P_5(x)$, the fifth-degree Taylor polynomial for $\\sin x$ about $x = 0$.",
+   "expr": {
+    "answer": "x - x^3/6 + x^5/120",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -0.5,
+     0.5
+    ],
+    "mode": "exact",
+    "lhs": "P_5(x) =",
+    "answerTex": "x - \\frac{x^3}{6} + \\frac{x^5}{120}",
+    "mistakes": [
+     {
+      "expr": "x - x^3/3 + x^5/5",
+      "why": "Divide by the factorials: $3! = 6$ and $5! = 120$."
+     },
+     {
+      "expr": "x + x^3/6 + x^5/120",
+      "why": "The signs alternate: $\\sin x = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\cdots$"
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sin x = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\cdots$, so $P_5(x) = x - \\frac{x^3}{6} + \\frac{x^5}{120}$."
+   }
+  },
+  {
+   "id": "cbc-taylor-series-3",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "taylor-series-s1",
+   "q": "Which is the general term of the Maclaurin series for $\\sin x$?",
+   "options": [
+    "$\\frac{(-1)^n x^{2n}}{(2n)!}$",
+    "$\\frac{x^n}{n!}$",
+    "$\\frac{(-1)^n x^{2n+1}}{2n + 1}$",
+    "$\\frac{(-1)^n x^{2n+1}}{(2n+1)!}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\sin x = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)!} = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\cdots$ for every real $x$.",
+    "options": [
+     "Even powers give the series for $\\cos x$.",
+     "That is the series for $e^x$.",
+     "The denominators are factorials, $(2n+1)!$.",
+     "Right: odd powers, odd factorials, alternating signs."
+    ]
+   }
+  },
+  {
+   "id": "cbc-taylor-series-4",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "taylor-series-s1",
+   "q": "According to the graph, at $x = 2$ is $P_3(2)$ above or below $\\sin 2$?",
+   "options": [
+    "Below: $P_3(2) = \\frac{2}{3}$, while $\\sin 2 \\approx 0.91$",
+    "Above: $P_3(2) = \\frac{10}{3}$, while $\\sin 2 \\approx 0.91$",
+    "Equal: a Taylor polynomial passes through $(2, \\sin 2)$",
+    "Above: an odd-degree polynomial lies above $\\sin x$ for $x > 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$P_3(2) = 2 - \\frac{2^3}{6} = \\frac{2}{3} \\approx 0.67$, and $\\sin 2 \\approx 0.91$, so $P_3(2)$ is below $\\sin 2$, as the graph shows.",
+    "options": [
+     "Right: the dashed curve is under the solid one at $x = 2$.",
+     "$P_3(2) = 2 - \\frac{8}{6} = \\frac{2}{3}$; subtract the cubic term.",
+     "Taylor polynomials about 0 match $\\sin x$ at the center, not at $x = 2$.",
+     "Read the graph: at $x = 2$ the dashed $P_3$ is below $\\sin x$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-taylor-series-5",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "taylor-series-s2",
+   "q": "Find the coefficient of $x^3$ in the Maclaurin series for $f$.",
+   "numeric": {
+    "answer": "-1/16",
+    "mistakes": [
+     {
+      "value": "-3/8",
+      "why": "That is $f'''(0)$; the coefficient is $\\frac{f'''(0)}{3!} = \\frac{-3/8}{6}$."
+     },
+     {
+      "value": "1/16",
+      "why": "$f'''(0) = -\\frac{3}{8}$ is negative, so the coefficient is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{f'''(0)}{3!} = \\frac{-3/8}{6} = -\\frac{1}{16}$."
+   }
+  },
+  {
+   "id": "cbc-taylor-series-6",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "taylor-series-s2",
+   "q": "Which is the general term of the Maclaurin series for $f$?",
+   "options": [
+    "$\\frac{(-1)^n n!\\,x^n}{2^{n+1}}$",
+    "$\\frac{(-1)^n x^n}{2^n\\,n!}$",
+    "$\\frac{(-1)^n x^n}{2^{n+1}}$",
+    "$\\frac{x^n}{2^{n+1}}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The coefficient of $x^n$ is $\\frac{f^{(n)}(0)}{n!} = \\frac{(-1)^n n!}{2^{n+1} n!} = \\frac{(-1)^n}{2^{n+1}}$, so the general term is $\\frac{(-1)^n x^n}{2^{n+1}}$.",
+    "options": [
+     "Divide $f^{(n)}(0)$ by $n!$; the factorials cancel.",
+     "The $n!$ in $f^{(n)}(0)$ cancels the $n!$ in the denominator.",
+     "Right: $\\frac{f^{(n)}(0)}{n!} = \\frac{(-1)^n}{2^{n+1}}$.",
+     "The derivatives alternate in sign, so the terms do too."
+    ]
+   }
+  },
+  {
+   "id": "cbc-taylor-series-7",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "taylor-series-s2",
+   "q": "Give the interval of convergence of the Maclaurin series $\\sum_{n=0}^{\\infty} \\frac{(-1)^n x^n}{2^{n+1}}$.",
+   "interval": {
+    "lo": "-2",
+    "hi": "2",
+    "loIn": false,
+    "hiIn": false,
+    "center": "0",
+    "var": "x",
+    "ends": {
+     "lo": "At $x = -2$ every term is $\\frac{2^n}{2^{n+1}} = \\frac{1}{2}$, so the series diverges by the nth term test.",
+     "hi": "At $x = 2$ the terms are $\\frac{(-1)^n}{2}$, which do not approach 0, so the series diverges."
+    },
+    "mistakes": [
+     {
+      "answer": "[-2, 2]",
+      "why": "At $x = \\pm 2$ every term has size $\\frac{1}{2}$, which does not approach 0: both endpoints diverge."
+     },
+     {
+      "answer": "(-1/2, 1/2)",
+      "why": "The ratio is $-\\frac{x}{2}$, so the condition is $\\left|\\frac{x}{2}\\right| < 1$, that is $|x| < 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The series is geometric with ratio $-\\frac{x}{2}$, so it converges when $\\left|\\frac{x}{2}\\right| < 1$, that is $|x| < 2$. At $x = \\pm 2$ the terms have size $\\frac{1}{2}$, so both endpoints diverge: $(-2, 2)$."
+   }
+  },
+  {
+   "id": "cbc-taylor-series-8",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "taylor-series-s2",
+   "q": "For $|x| < 2$, the series equals $f(x)$. Write $f(x)$ as an expression.",
+   "expr": {
+    "answer": "1/(2+x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1.5,
+     1.5
+    ],
+    "mode": "exact",
+    "lhs": "f(x) =",
+    "mistakes": [
+     {
+      "expr": "2/(2+x)",
+      "why": "The first term is $\\frac{1}{2}$, not 1: the sum is $\\frac{1/2}{1 + x/2} = \\frac{1}{2 + x}$."
+     },
+     {
+      "expr": "1/(2-x)",
+      "why": "The ratio is $-\\frac{x}{2}$, so the denominator is $1 - \\left(-\\frac{x}{2}\\right) = 1 + \\frac{x}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Geometric with first term $\\frac{1}{2}$ and ratio $-\\frac{x}{2}$: $\\frac{1/2}{1 + x/2} = \\frac{1}{2 + x}$."
+   }
+  },
+  {
+   "id": "cbc-taylor-series-9",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the exact sum of $\\sum_{n=0}^{\\infty} \\frac{2^n}{n!}$.",
+   "numeric": {
+    "answer": "e^2",
+    "mistakes": [
+     {
+      "value": "e^2 - 1",
+      "why": "The sum starts at $n = 0$, whose term is 1; it is included, so the sum is all of $e^2$."
+     },
+     {
+      "value": "2e",
+      "why": "Substitute $x = 2$ into $e^x = \\sum \\frac{x^n}{n!}$: the sum is $e^2$, not $2e$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$e^x = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!}$ for every $x$, so with $x = 2$ the sum is $e^2$."
+   }
+  },
+  {
+   "id": "cbc-taylor-series-10",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Find the exact sum of $\\sum_{n=0}^{\\infty} \\frac{(-1)^n \\pi^{2n}}{(2n)!}$.",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is $\\cos 0$. Here $x = \\pi$: $\\cos \\pi = -1$."
+     },
+     {
+      "value": 0,
+      "why": "$\\sin \\pi = 0$, but even powers and $(2n)!$ make this the series for $\\cos x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\cos x = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n}}{(2n)!}$, so with $x = \\pi$ the sum is $\\cos \\pi = -1$."
+   }
+  },
+  {
+   "id": "cbc-taylor-series-11",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "1.E",
+   "level": "recall",
+   "diff": 1,
+   "q": "For which $x$ does the Maclaurin series for $\\cos x$ converge to $\\cos x$?",
+   "interval": {
+    "lo": "-inf",
+    "hi": "inf",
+    "var": "x",
+    "mistakes": [
+     {
+      "answer": "(-1, 1)",
+      "why": "That is the interval for $\\frac{1}{1 - x}$. The ratio test limit for the cosine series is $\\frac{x^2}{(2n+2)(2n+1)} \\to 0$ for every $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For every real $x$: the ratio test limit is $\\lim_{n \\to \\infty} \\frac{x^2}{(2n + 2)(2n + 1)} = 0$, and the series equals $\\cos x$ everywhere. The same is true for $\\sin x$ and $e^x$."
+   }
+  },
+  {
+   "id": "cbc-taylor-series-12",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In the Taylor series for $e^x$ about $x = 1$, find the coefficient of $(x - 1)^3$.",
+   "numeric": {
+    "answer": "e/6",
+    "mistakes": [
+     {
+      "value": "1/6",
+      "why": "That is the coefficient about $x = 0$. About $x = 1$ every derivative is $e^1 = e$, so the coefficient is $\\frac{e}{3!}$."
+     },
+     {
+      "value": "e",
+      "why": "Divide by $3! = 6$: the coefficient is $\\frac{f'''(1)}{3!}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Every derivative of $e^x$ is $e^x$, so $f'''(1) = e$ and the coefficient is $\\frac{e}{3!} = \\frac{e}{6}$."
+   }
+  },
+  {
+   "id": "cbc-taylor-series-13",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "How is the Taylor polynomial $P_4(x) = 1 + x + \\frac{x^2}{2} + \\frac{x^3}{6} + \\frac{x^4}{24}$ related to the Maclaurin series for $e^x$?",
+   "options": [
+    "It equals the series for $x$ between $-1$ and $1$",
+    "It is a partial sum: the series' first five terms",
+    "It is the remainder left after the series",
+    "It is unrelated: the series has different coefficients"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The Maclaurin series for $e^x$ is $\\sum \\frac{x^n}{n!}$, and $P_4$ is its partial sum through $n = 4$: its first five terms.",
+    "options": [
+     "The series has more nonzero terms; $P_4$ only approximates it.",
+     "Right: a Taylor polynomial is a partial sum of the Taylor series.",
+     "$P_4$ is the beginning of the series, not what is left over.",
+     "The coefficients are the same, $\\frac{1}{n!}$; the series keeps going."
+    ]
+   }
+  },
+  {
+   "id": "cbc-taylor-series-14",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which function has the Maclaurin series $1 - x + x^2 - x^3 + \\cdots$ for $|x| < 1$?",
+   "options": [
+    "$\\frac{1}{1 - x}$",
+    "$e^{-x}$",
+    "$\\frac{1}{1 + x}$",
+    "$\\cos x$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "It is geometric with first term 1 and ratio $-x$, so its sum is $\\frac{1}{1 - (-x)} = \\frac{1}{1 + x}$ for $|x| < 1$.",
+    "options": [
+     "That series has every sign positive: $1 + x + x^2 + \\cdots$",
+     "$e^{-x} = 1 - x + \\frac{x^2}{2!} - \\cdots$ has factorials.",
+     "Right: geometric with ratio $-x$.",
+     "$\\cos x$ has only even powers, with factorials."
+    ]
+   }
+  },
+  {
+   "id": "cbc-taylor-series-15",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Use the Maclaurin series for $\\sin x$ to find $\\lim_{x \\to 0} \\frac{\\sin x - x}{x^3}$.",
+   "numeric": {
+    "answer": "-1/6",
+    "mistakes": [
+     {
+      "value": "1/6",
+      "why": "$\\sin x - x = -\\frac{x^3}{6} + \\frac{x^5}{120} - \\cdots$: the leading term is negative."
+     },
+     {
+      "value": 0,
+      "why": "Divide each term by $x^3$ first: $-\\frac{1}{6} + \\frac{x^2}{120} - \\cdots$, which approaches $-\\frac{1}{6}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{\\sin x - x}{x^3} = \\frac{-\\frac{x^3}{6} + \\frac{x^5}{120} - \\cdots}{x^3} = -\\frac{1}{6} + \\frac{x^2}{120} - \\cdots$, which approaches $-\\frac{1}{6}$ as $x \\to 0$."
+   }
+  },
+  {
+   "id": "cbc-taylor-series-16",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "taylor-series",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For $|x| < 3$, $f(x) = \\sum_{n=0}^{\\infty} \\frac{(n + 1)x^n}{3^n}$. Find $f'''(0)$.",
+   "numeric": {
+    "answer": "8/9",
+    "mistakes": [
+     {
+      "value": "4/27",
+      "why": "$\\frac{4}{27}$ is the coefficient of $x^3$, which equals $\\frac{f'''(0)}{3!}$. Multiply by $3! = 6$."
+     },
+     {
+      "value": "4/9",
+      "why": "That multiplies the coefficient $\\frac{4}{27}$ by 3. Multiply by $3! = 6$: $f'''(0) = 6 \\cdot \\frac{4}{27} = \\frac{8}{9}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A power series is the Taylor series of its sum, so the coefficient of $x^3$, $\\frac{4}{27}$, equals $\\frac{f'''(0)}{3!}$. Then $f'''(0) = 6 \\cdot \\frac{4}{27} = \\frac{8}{9}$."
+   }
+  }
+ ]
+}

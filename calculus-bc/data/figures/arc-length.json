@@ -1,0 +1,12 @@
+{
+ "arc-length-chords": {
+  "file": "figures/arc-length-chords.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 450,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The curve y = (2/3)x to the 3/2 from x = 0 to x = 3, in violet, rising from (0, 0) to (3, 2√3), about 3.464. Three dashed blue chords join the points at x = 0, 1, 2 and 3, with dotted right triangles showing each run and rise. The chords measure 1.202, 1.577 and 1.869, a total of 4.647, a little less than the curve’s length 14/3, about 4.667. With more chords the total becomes the integral of √(1 + (dy/dx)²) dx, here the integral from 0 to 3 of √(1 + x) dx."
+ }
+}

@@ -1,0 +1,32 @@
+{
+  "slug": "taylor-lab",
+  "kind": "simulator",
+  "topic": "taylor-polynomials",
+  "intro": "<p>A Taylor polynomial matches a function at one point, its center: the same value, the same slope, the same concavity, and so on up to its degree. Add terms and watch the polynomial wrap around the function farther and farther from the center; drag the center along the curve. The shaded band is an error bound: the Lagrange bound, or the alternating series bound where the series alternates. The function always stays inside it.</p>",
+  "howItWorks": "<p>The polynomial is $P_n(x) = \\sum_{k=0}^{n} \\frac{f^{(k)}(c)}{k!}(x - c)^k$, computed from the exact derivatives of the function (for $\\sin x$, $\\cos x$, $e^x$, $\\ln(1 + x)$, $\\frac{1}{1 - x}$ and $\\arctan x$, each has a formula for every order). It is written out term by term in Why: a polynomial ends, so it never has a \"$+ \\cdots$\".</p><p>The Lagrange band at each $x$ is $\\frac{M}{(n+1)!}|x - c|^{n+1}$, with $M$ the largest value of $|f^{(n+1)}|$ between $c$ and that $x$, found exactly (the end of the interval for $e^x$, $\\ln(1 + x)$ and $\\frac{1}{1 - x}$; 1 once the interval reaches a peak of $\\sin$ or $\\cos$). The alternating band is the size of the first nonzero term left out; it is drawn only where the series at $x$ alternates and its terms decrease from there on, which is when that bound applies.</p><p>Test yourself works the AP® Calculus BC skills: coefficients from a table of derivatives, a polynomial from a known series, derivatives read back from a polynomial, which bound applies and its value, and the wording \"the error is at most\".</p>",
+  "howItWorksTitle": "How the Taylor lab works",
+  "partTopics": {
+    "c2": "taylor-polynomials",
+    "c3": "taylor-polynomials",
+    "P3": "taylor-polynomials",
+    "approx": "taylor-polynomials",
+    "d2": "taylor-polynomials",
+    "d3": "taylor-polynomials",
+    "ext": "taylor-polynomials",
+    "how": "power-series-functions",
+    "co": "taylor-series",
+    "Pn": "taylor-series",
+    "dm": "taylor-series",
+    "M": "lagrange-error-bound",
+    "tol": "lagrange-error-bound",
+    "say": "alternating-error-bound"
+  },
+  "contexts": [
+    { "id": "table", "kind": "coef", "topic": "taylor-polynomials" },
+    { "id": "known", "kind": "maclaurin", "fams": ["known"], "topic": "taylor-series" },
+    { "id": "built", "kind": "maclaurin", "fams": ["built"], "topic": "power-series-functions" },
+    { "id": "lagrange", "kind": "lagrange", "topic": "lagrange-error-bound" },
+    { "id": "altseries", "kind": "altbound", "fams": ["series"], "topic": "alternating-error-bound" },
+    { "id": "alttaylor", "kind": "altbound", "fams": ["taylor"], "topic": "lagrange-error-bound" }
+  ]
+}

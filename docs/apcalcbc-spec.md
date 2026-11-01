@@ -1,0 +1,239 @@
+# AP® Calculus BC course: spec and status
+
+The source of truth for LevlPrep's twelfth course. A fresh session reads this file, `CLAUDE.md`,
+`docs/apcalcbc-research/framework.md` and `market.md`, and the AP® Calculus AB docs it builds on
+(`docs/apcalc-spec.md`, `docs/apcalc-architecture.md`, `docs/apcalc-authoring-guide.md`), not the chat history.
+When the plan changes, update this file in the same commit. Open points for a person go in
+`docs/apcalcbc-needs-author.md`.
+
+Course key `apcalcbc` (storage, analytics, registry, SQL). URL path `/calculus-bc/`. Pass `cbc-2027`. Every new
+browser global starts with `ApCalcBC`; new question ids `cbc-`; CSS classes `cbc-` where a class must differ from
+AB's `calc-`. Built **on** AP® Calculus AB as it stands on main (after the redesign, dashboards design F, video
+lessons, quick answers, the AI FRQ grader hook and the tools upgrade), so every shared page type carries over.
+
+## 1. Owner brief (2026-10-30), condensed
+
+- Olivier asked to "plan out the next 2 courses and build them" and picked AP® Precalculus plus AP® Calculus BC
+  (recommended: a full math path Precalc → Calc AB → Calc BC, BC reusing most of Calc AB, a fast, low-risk build).
+- Build it the same way as the other courses: research, build everything, independent accuracy reviews, one PR the
+  owner reviews before merging. Only stop him for what genuinely needs him (Polar, Worker setting, merge).
+- Tools at the bar of the NREMT body map: interactive, visual where useful, professional illustration quality, simple
+  on landing with detail revealed progressively, each tool full screen, easy to read on a phone.
+- Every course feels the same (glossary, textbook with the plain/interactive toggle, practice, review with flagged
+  questions only in Review, exams, flashcards tab, dashboard design F); own identity and cover art. **No score
+  calculator, no readiness band, no Beta label** (owner 2026-10-14, 2026-10-26); the "not yet reviewed by an AP®
+  Calculus BC teacher" note stays.
+- Premium pass one-time through 30 June 2027 at the AP® price ($25), founding discount as the other passes.
+
+## 2. What the research says (details and URLs in `docs/apcalcbc-research/`, done 2026-10-31)
+
+**Content.** Unchanged for 2026-27. 111 BC topics: the 81 AB topics plus 30 BC-only: 6.11 integration by parts,
+6.12 linear partial fractions, 6.13 improper integrals, the BC techniques inside 6.14, 7.5 Euler's method, 7.9
+logistic models, 8.13 arc length, Unit 9 (9.1-9.9 parametric, vector-valued and polar), Unit 10 (10.1-10.15
+sequences and series). Unit 10 assesses only the nth term, integral, comparison, limit comparison, alternating
+series and ratio tests. BC MCQ weights: U1-U4 5-10% each, U5 10-15%, U6 15-20%, U7 5-10%, U8 5-10%, U9 10-15%,
+U10 15-20%.
+
+**Exam (Mon 10 May 2027, morning), the same new format as AB.** Section I: 42 MCQ in 100 min (Part A 29 without
+calculator, 62 min; Part B 13 with a graphing calculator, 38 min), 50%. Section II: 6 FRQs of 9 points in 90 min
+(Part A 2 with calculator, 30 min; Part B 4 without, 60 min), 50%. Q1, Q3 and Q4 are shared with AB; Q2 is
+parametric/vector motion or polar, Q5 mixes BC techniques, Q6 is always series. An AB subscore is reported (about
+60% of the exam is AB content). A student cannot take AB and BC in the same year.
+
+**Scores.** 2025: 160,436 takers, 78.6% 3+, 44% fives. 2026: 82% 3+, 46% fives. AB subscore 2025: 88% 3+,
+47.7% fives, so about half of BC students still drop points on AB content.
+
+**Where students lose points.** Interval of convergence (endpoints untested, ratio test used at an endpoint, radius
+given for interval); Lagrange and alternating series error bounds (wrong bound, conditions not shown); polar area
+(r not squared, ½ dropped, wrong limits; the 2025 polar question averaged 3.09 of 9); parametric motion (speed as
+|dy/dx|, initial condition subtracted, dt missing); Taylor polynomials (wrong center, derivative slips, a series
+written for a polynomial). Full list in `framework.md`.
+
+**Market.** UWorld (1,800+ BC questions), Fiveable $79/yr, Princeton Review book $27.99 (old format), free Khan and
+Flipped Math. Series is the hardest unit by every account. Gap: drillable series reasoning (which test, endpoints,
+error bound) with feedback, visual parametric and polar tools, BC FRQs in the 2027 format.
+
+## 3. Positioning and what makes it better
+
+Free forever: notes and textbook pages, glossary, flashcards, unit sheets, formula page, unit practice tests.
+Premium: unlimited practice, exams, every lesson, analytics, every trainer.
+
+1. **Series trainer (flagship).** Pick the test, justify it, check both endpoints, state the interval; and a Taylor
+   lab where the polynomial wraps the function as terms are added, with the Lagrange and alternating error bounds
+   drawn as a band.
+2. **Parametric, polar and vector, visible.** A particle traced by (x(t), y(t)) with velocity and speed live; polar
+   curves drawn as θ sweeps, with the area being swept shaded and the ½∫r² setup built step by step.
+3. **The whole AB course inside, one source.** Units 1-8 are the AB lessons, notes and banks (no copies), with BC's
+   extra topics placed in CED order, so a fix lands once and both courses get it.
+4. **Built for May 2027**: the 29/13 MCQ split, BC FRQs in the six exam slots (Q2 parametric/polar, Q5 techniques,
+   Q6 series), 9-point rubrics, full-credit samples, two full timed practice exams.
+5. **Justification on the reader-report misses**, now with the BC ones: endpoints, error bound conditions, ratio
+   test limits, polar setup.
+
+## 4. Continuity with the other courses
+
+Same shared layer (`assets/`, Tool Studio, flagging, XP, tutor, dashboard, covers), item formats (`expr` items and
+the three-decimal calculator rule), the "not yet reviewed" note, trademark rules. Every shared-layer fix goes into
+the shared file. Calculus AB must not change behaviour: its checks and tests stay green on this branch.
+
+## 5. Build plan
+
+One branch, `claude/apcalcbc`, one PR at the end.
+
+| Phase | What | Status |
+|---|---|---|
+| R | Research: `docs/apcalcbc-research/framework.md`, `market.md`; this spec | **done 2026-10-31** |
+| 0 | Course shell on the AB runtime: how BC reads AB's data (section 8 decision 1), BC map (111 topics + math chapter), dependency map, generator, runtime, checks, tests, fixture, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-10-31** (decision 8; `docs/apcalcbc-architecture.md`, `docs/apcalcbc-phase0.md`) |
+| 1 | Content: the 30 BC-only topics (lessons, notes, banks with stimulus sets, glossary, figures), BC FRQs (Q2/Q5/Q6 types), BC edits to 6.14 | **done 2026-10-31** (decision 9; 33 BC topics with the three math topics, 510 BC questions, 9 BC FRQs) |
+| 2 | BC trainers (section 6) | **done 2026-10-31** (all six, Explore and Test yourself; reviewed in Phase 4) |
+| 3 | Two practice exams (BC unit mix, BC FRQ slots), unit tests for 9 and 10, justification prompts, formula page additions, cram kit | **done 2026-10-31** (decision 10) |
+| 4 | Independent accuracy checks (Unit 6-8 BC topics, Unit 9, Unit 10, tools, exams) | **done 2026-10-31**: four independent reviews (`docs/apcalcbc-reviews/units-6-8.md`, `unit-9.md`, `unit-10.md`, `tools-exams.md`); no wrong keys; two FRQ rubrics tightened, one double-key item and one polar-lab area readout fixed |
+| Launch | Publish, generators, continuity pass, "twelve courses" wording, full CI with browser checks, PR | **done 2026-10-31** (decision 11, `docs/apcalcbc-reviews/launch.md`); Premium waits for the owner checklist (section 9); merges after AP® Precalculus (PR #123) |
+
+### 5a. Authoring split
+
+Each author owns every file of its topics and the FRQs listed (9 BC FRQs: 2 `techniques`, 4 `parametric`, 3
+`series`, enough for two practice exams' Q2, Q5 and Q6 with spares; Q1, Q3 and Q4 come from AB's stock). Briefs in
+`docs/apcalcbc-briefs/`; topic ids in `docs/apcalcbc-dependency-map.json`.
+
+| Author | Topics | Count | FRQs |
+|---|---|---|---|
+| A | 6.11, 6.12, 6.13, 7.5, 7.9, 8.13, plus the BC wording of AB's 6.10 and 6.14 (`cbc-only`/`calc-ab-only`) | 6 | 2 `techniques` |
+| B | `math-parametric-vectors`, 9.1-9.6 | 7 | 2 `parametric` (motion) |
+| C | `math-polar`, 9.7-9.9, `math-sequences`, 10.1-10.5 | 10 | 1 `parametric` (polar), 1 `series` |
+| D | 10.6-10.15 | 10 | 2 `series` |
+
+| Builder | Trainers |
+|---|---|
+| T1 | `series-lab` (flagship, free), `taylor-lab` |
+| T2 | `parametric-motion`, `polar-lab` |
+| T3 | `integration-methods`, `euler-logistic` |
+
+## 6. Trainers (proposed)
+
+The ten AB trainers are reused on BC pages (same files, linked from BC topics). New, each with Explore and Test
+yourself (seeded drills, feedback naming the slip):
+
+| Slug | Unit | What |
+|---|---|---|
+| `series-lab` | 10 | Flagship. Choose and justify a convergence test, partial sums plotted against the limit, interval of convergence with both endpoints checked |
+| `taylor-lab` | 10 | Taylor and Maclaurin polynomials wrapping f as terms are added; center slider; Lagrange and alternating error bounds drawn as a band |
+| `parametric-motion` | 9 | Particle traced by (x(t), y(t)) or a vector function; velocity and acceleration vectors, speed, distance by arc length, dy/dx and d²y/dx² |
+| `polar-lab` | 9 | Polar curves drawn as θ sweeps; area swept shaded, area between curves, dy/dx in polar, r and dr/dθ sign readings |
+| `integration-methods` | 6 | Parts (tabular too), partial fractions, improper integrals as limits, choosing the method |
+| `euler-logistic` | 7 | Euler's method steps on a slope field, over/under from concavity; logistic growth with carrying capacity and the fastest-growth point |
+
+Free (proposed, owner to confirm): `series-lab`; AB's free trainers (`tangent-tracer`, `limit-explorer`,
+`rule-drills`) stay free on their AB pages, which BC links (decision 8). Scaffolded in Phase 0 (four files per
+slug, `docs/apcalcbc-architecture.md`, "Trainers"); nothing builds until a tool's data file exists and its topic
+is published.
+
+## 7. How answers are graded
+
+All grading is code. Choice items exact; numbers with the three-decimal rule on calculator items, exact forms
+otherwise; `expr` items by evaluation at seeded points (series terms and Taylor polynomials too); intervals of
+convergence by a new interval answer type if Phase 0 needs one (endpoints and brackets graded separately, so the
+slip is named). FRQs self-scored with one rubric line per point and full-credit samples.
+
+## 8. Decisions log
+
+1. (2026-10-31) **One source for AB content.** BC reads AB's authored topics from `calculus/data/` at build time and
+   its own 30 topics from `calculus-bc/data/`; no AB file is copied. Phase 0 settles the mechanics (which runtime
+   files are shared, storage keys `apcalcbc_*`, how a BC lesson links to AB notes) and records them in
+   `docs/apcalcbc-architecture.md`. AB pages and behaviour stay unchanged.
+2. (2026-10-31) **No "ap" in any served path.** Folder `/calculus-bc/`. Registry and storage key `apcalcbc`.
+3. (2026-10-31) **Pass and price mirror the other AP® courses:** `cbc-2027`, $25 one-time, through 30 June 2027,
+   registered `onSale: false` until the owner checklist.
+4. (2026-10-31) **Sources:** College Board CED, exam pages, scoring guidelines and Chief Reader Reports for scope and
+   common errors only, in our own words. No released exam questions reproduced or adapted.
+5. (2026-10-31) **Exam format as researched** (section 2). Default exam date Mon 2027-05-10.
+6. (2026-10-31) **Free tier (proposed, owner to confirm):** Units 1 and 2 and the "Math you need" chapter as AB,
+   plus 9.1-9.3 so a BC visitor tries BC material free.
+
+7. (2026-10-31, Phase 0) **Identity (proposed, owner to confirm; needs-author `identity`).** Accent violet,
+   hue 270, light `--cink #5A1E96` on `--ctint #F1E7FA` (8.5:1; 10.2:1 on white), dark `--cink #D6BFF5` (11.2:1 on
+   the page, 9.8:1 on the tint); cover deep violet `#34104C` with lilac `#C88CFF` and gold; icon a sigma over a
+   partial-sum curve; headline "AP® Calculus BC, all the way to series."; ranks Sequence Starter, Curve Tracer,
+   Polar Plotter, Series Tester, Taylor Builder, Convergence Prover, Calculus BC Legend; manifest and OG
+   "Calculus BC". Emerald was proposed first and dropped: Precalculus took forest green and the site accent is
+   teal. Registered `hidden` (order 12) with every AB registration point twinned; SQL migration
+   `2026-10o-apcalcbc.sql` written, not applied.
+8. (2026-10-31) **Phase 0 done, as built** (`docs/apcalcbc-architecture.md`, `docs/apcalcbc-phase0.md`).
+   (a) **One generator**: `build-apcalcbc.mjs` runs `build-apcalc.mjs` with the BC profile (`PROFILES.bc` in
+   `scripts/lib/apcalc-build.mjs`); AB's output is byte-identical (every file hashed before and after).
+   (b) **One source**: AB topics from `calculus/data/`, BC's from `calculus-bc/data/`; BC renders every AB topic's
+   pages under `/calculus-bc/` with the AB page as canonical (needs-author `ab-pages-in-bc`); `cbc-only` and
+   `calc-ab-only` blocks give AB files BC wording without a copy. (c) **One map**: the BC map is an overlay merged
+   onto AB's (121 topics: 111 CED and 10 math, three of them BC's: parametric equations and vectors, polar
+   coordinates, sequences and factorials). (d) **One runtime**: BC pages run AB's runtime from `/calculus/assets/`,
+   configured by `window.ApCalcCourse` (storage `apcalcbc_*`, ids `cbc-`, BC FRQ types, no band, no score link);
+   AB's runtime with no config behaves as before. AB's shell budget 68.5 → 69.5 KB for it. (e) **Interval
+   answers**: a new `interval` item type graded in four parts (each endpoint, each bracket) with the slips named,
+   in BC's own `calculus-bc/assets/cbc-interval.js`. (f) **BC FRQ types** `parametric`, `techniques`, `series`;
+   practice exams hold Q2, Q5, Q6 to them (`BC_FRQ_SLOTS`). (g) **No score calculator, no readiness band** (AB keeps
+   its own, untouched). (h) **AB's ten trainers are linked**, not rebuilt (needs-author `ab-trainers`).
+9. (2026-10-31) **Phase 1 integration pass.** Self-report points merged into `docs/apcalcbc-needs-author.md`
+   (ids `a1`-`d4`, resolved ones listed). BC fixes in shared code, AB byte-identical: BC lessons add the real next
+   topic when BC's order moves an authored Next (`lessonConnections`); a BC 6.14 flowchart overrides AB's figure
+   id on BC; hand-written meta descriptions for every BC topic; the small-value guard in the three-decimal rule
+   (BC only; AB's same weakness logged in `docs/apcalc-needs-author.md`, calculus shell budget 69.7 KB).
+10. (2026-10-31, Phase 3) **Exams, prompts, formula rows, unit tests, cram kit**, in AB's formats
+    (`docs/apcalcbc-architecture.md`, "Phase 3"; BC code in `scripts/lib/apcalcbc-exams.mjs`, read only when BC).
+    - Two **practice exams** (`calculus-bc/data/exams/forms.json`): Part A 29 no-calculator bank questions (AB and
+      BC banks, none a lesson check, none in AB's forms), Part B 13 exam-only calculator items per form
+      (`items.json`, `cbc-exam-<form>-<nn>`: a particle-in-the-plane set in form 1 and a polar set read from the
+      graph of r in form 2, then singles; no key below 0.005). Units, both forms: U1-U4 3, U5 5, U6 7, U7 3, U8 3,
+      U9 5, U10 7 (26 and 25 of the 42 on BC topics). Section II: form 1 `frq-u4-table-medicine`, `frq-u9-motion-speed`,
+      `frq-u6-graph-1`, `frq-u7-draining-tank`, `frq-u6-parts-improper`, `frq-u10-interval-taylor`; form 2
+      `frq-u5-model-greenhouse`, `frq-u9-polar-area`, `frq-u8-velocity-graph`, `frq-u4-implicit-cubic`,
+      `frq-u7-euler-arc-length`, `frq-u10-taylor-error` (Q1, Q3, Q4 AB FRQs that are not in AB's exams). Every
+      key recomputed in `CBC_EXAM_NUMBERS` and every option graded by the runtime in the test.
+    - **Justification**: BC's trainer serves AB's 33 prompts plus 11 BC ones (`calculus-bc/data/justify/`:
+      improper-integral notation, Euler over/under from concavity, speed vs slope, position adds the start, the
+      polar petal set-up, toward the origin when r < 0, limit comparison, alternating bound conditions, the ratio
+      test's limit, the Lagrange maximum, both endpoints), three BC skills (`series`, `error`, `polar`); numbers in
+      `CBC_JUSTIFY_NUMBERS`. Units 9 and 10 have 4 and 5.
+    - **Formula page**: 6 BC rows in AB's groups (parts, partial fractions, improper, Euler, logistic, arc length)
+      and three BC groups (parametric/vector/polar, series tests, Taylor and error bounds; 24 rows), 5 "easy to
+      forget" lines, a fourth habit (name the series test, test each endpoint).
+    - **Unit tests** for Units 9 and 10 chosen by hand (`calculus-bc/data/unit-tests.json`, 12 each, 9 of 9 and 11
+      of 15 topics, nothing from a lesson check or a practice exam); Units 1-8 keep the automatic sample.
+    - **Cram kit**: no code change needed; tested on BC's ten units and the two forms.
+    - Tests: `scripts/test/apcalcbc-practice-exams.test.mjs`. AB's build byte-identical.
+
+11. (2026-10-31, launch) **Published and live, Premium not on sale.** Built on the AP® Precalculus branch (PR #123
+    merged in, a merge, both courses registered everywhere; BC is order 12). All eleven chapters in
+    `calculus-bc/data/published.json` (`skills-math`, `unit-1`..`unit-10`: 121 topics, 1,902 bank questions of which
+    510 are BC's own), `status: 'live'`, every generator rerun (hub and 404 cards, premium page, terms, sitemap,
+    search, pricing, home facts, manifest), "twelve courses" wording, `sources.html` section, changelog entry,
+    `robots.txt` (already hid `calculus-bc/data/notes/`), `sw.js` v102, a cover for each BC trainer
+    (`assets/covers/tools/apcalcbc/`; the ten AB-linked trainers keep AB's art, `coverKey`). The social card was
+    already rendered (Phase 0). Fixes found on the way: the SQL migration is renamed `2026-10o-apcalcbc.sql` so it
+    sorts after `2026-10n-apprecalc.sql`, and its course lists include `apprecalc`; the site's question total counts
+    BC's own questions only (`apcalcbcOwn`), not AB's twice; course search maps `apcalcbc` to `calculus-bc` in URLs;
+    BC copies of AB free-response questions name the AB page as canonical and leave the sitemap (as BC's AB topics).
+    `onSale: false` stays until the owner checklist below. The "not yet reviewed by an AP® Calculus BC teacher" note
+    stays; no score calculator, readiness band or Beta label. AB's build byte-identical.
+
+## 9. Open items for the owner
+
+- Confirm the identity (decision 7), the free tier (decision 6) and the free trainer `series-lab` (section 6), now
+  live.
+- Confirm two Phase 0 choices: BC renders AB's topic pages under `/calculus-bc/` (canonical to AB), and links
+  AB's trainers rather than rebuilding them (needs-author `ab-pages-in-bc`, `ab-trainers`).
+- Whether an AB pass holder gets a discount on the BC pass (the shared pricing has no upgrade path today; nothing
+  was built).
+
+**Launch checklist (owner), to put AP® Calculus BC Premium on sale:**
+- [ ] Merge AP® Precalculus (PR #123) first, then this PR (it contains #123's commits).
+- [x] (2026-11-01) Applied as one migration with both courses (live bodies checked first). Was: apply `scripts/sql/migrations/2026-10n-apprecalc.sql`, then `scripts/sql/migrations/2026-10o-apcalcbc.sql`
+      in Supabase (adds `apcalcbc` to the three course checks and the six functions with a course list, which
+      already include `apprecalc`; check the live function bodies first).
+- [x] (2026-11-01) Polar product id `250aa547-de68-4f34-aebb-4757c0ad0a57`; Founding member covers every product. Was: create the Polar product "AP® Calculus BC Premium (through June 30, 2027)", one-time, $25, and make sure the
+      "Founding member" discount applies to it.
+- [ ] Add `"cbc-2027": "250aa547-de68-4f34-aebb-4757c0ad0a57"` (was `<id>`) to `POLAR_PRODUCTS` in the Cloudflare Worker (levlprep-ask) settings; the Worker code
+      already knows the pass (`worker/src/premium.js`) and redeploys on merge.
+- [x] (2026-11-01) Done; `sw.js` v103; owner access granted (to 2099). Was: remove `onSale: false` from `COURSES.apcalcbc` in `assets/premium.js`, bump `sw.js`, and grant owner access.
+- [x] (2026-11-01) Owner said go ahead with the proposed defaults; no AB-holder discount for now. Was: confirm the identity (violet accent, cover, icon, headline, ranks), the free tier (Units 1 and 2, "Math you
+      need", 9.1-9.3), the free trainer `series-lab`, and whether AB pass holders get a discount on BC.
+- [ ] Optional: an AP® Calculus BC teacher reviews the course (the "not yet reviewed" note stays until then).

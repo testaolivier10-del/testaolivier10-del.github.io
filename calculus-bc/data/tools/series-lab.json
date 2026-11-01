@@ -1,0 +1,41 @@
+{
+  "slug": "series-lab",
+  "kind": "simulator",
+  "topic": "series-convergence",
+  "intro": "<p>A series converges when its partial sums settle on a number. Pick a series and add terms one at a time: the dots are the partial sums $S_n$, the bars the terms $a_n$, and the dashed line the sum when there is one. Below the picture, the six tests the AP® Calculus BC exam assesses, each marked for this series: which one settles it, and why the others cannot. Switch to Power series to drag $x$ along a number line and see where the series converges, endpoints included.</p>",
+  "howItWorks": "<p>Every partial sum is added up term by term in order, the way the definition says ($S_n = a_1 + a_2 + \\cdots + a_n$). A picture of partial sums can suggest convergence but never prove it: $\\sum \\frac{1}{n \\ln n}$ diverges, yet its partial sums stay under 3 for the first 500 million terms. That is why each series comes with the test that decides it, the condition the test needs, and its conclusion.</p><p>For a power series, the ratio test gives the open interval, $\\lim \\left|\\frac{a_{n+1}}{a_n}\\right| < 1$. At an endpoint that limit is exactly 1, so the ratio test cannot decide: each endpoint is a series of its own, tested with another test. In Test yourself the interval you type is graded in four parts (each endpoint and each bracket), so a missed endpoint is named.</p><p>The tests are the six in the course framework: the nth term test (divergence only), the integral test, direct and limit comparison, the alternating series test and the ratio test, with geometric and p-series as the series you compare with.</p>",
+  "howItWorksTitle": "How the series lab works",
+  "partTopics": {
+    "a1": "series-convergence",
+    "a3": "series-convergence",
+    "r": "geometric-series",
+    "first": "geometric-series",
+    "s3": "series-convergence",
+    "conv": "geometric-series",
+    "lim": "nth-term-test",
+    "cond": "integral-test",
+    "int": "radius-interval-convergence",
+    "ival": "integral-test",
+    "intd": "integral-test",
+    "cmp": "comparison-tests",
+    "conds": "alternating-series-test",
+    "absS": "absolute-conditional",
+    "serS": "absolute-conditional",
+    "cls": "absolute-conditional",
+    "R": "radius-interval-convergence",
+    "lo": "radius-interval-convergence",
+    "hi": "radius-interval-convergence"
+  },
+  "contexts": [
+    { "id": "partial", "kind": "partial", "topic": "series-convergence" },
+    { "id": "geometric", "kind": "sum", "topic": "geometric-series" },
+    { "id": "nth", "kind": "test", "fams": ["nth"], "topic": "nth-term-test" },
+    { "id": "integral", "kind": "test", "fams": ["integral"], "topic": "integral-test" },
+    { "id": "comparison", "kind": "test", "fams": ["direct", "limit"], "topic": "comparison-tests" },
+    { "id": "alternating", "kind": "test", "fams": ["alt"], "topic": "alternating-series-test" },
+    { "id": "ratio", "kind": "test", "fams": ["ratio"], "topic": "ratio-test" },
+    { "id": "mixed", "kind": "test", "fams": ["nth", "integral", "direct", "limit", "alt", "ratio"], "topic": "ratio-test" },
+    { "id": "absolute", "kind": "absolute", "topic": "absolute-conditional" },
+    { "id": "interval", "kind": "interval", "topic": "radius-interval-convergence" }
+  ]
+}

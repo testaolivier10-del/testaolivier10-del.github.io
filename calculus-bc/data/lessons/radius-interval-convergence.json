@@ -1,0 +1,93 @@
+{
+ "topic": "radius-interval-convergence",
+ "hook": "Put an $x$ into a series, as in $\\sum \\frac{(x - 1)^n}{n \\cdot 4^n}$, and every value of $x$ gives a different series of numbers. Some converge and some do not. The values that converge always form one interval around a center, and finding it, endpoints included, is the most tested skill of the unit.",
+ "prereq": [
+  {
+   "q": "What does the ratio test conclude when its limit is exactly 1?",
+   "options": [
+    "Nothing: use another test",
+    "The series converges",
+    "The series diverges",
+    "The series converges to 1"
+   ],
+   "correct": 0,
+   "why": "A limit of 1 is the case the ratio test leaves open.",
+   "review": "ratio-test"
+  },
+  {
+   "q": "Does $\\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n}$ converge?",
+   "options": [
+    "Yes, by the alternating series test",
+    "No: its absolute values form the harmonic series",
+    "No, by the nth term test",
+    "Yes, as a $p$-series"
+   ],
+   "correct": 0,
+   "why": "It alternates and $\\frac{1}{n}$ decreases to 0.",
+   "review": "alternating-series-test"
+  },
+  {
+   "q": "Solve $|x - 1| < 4$.",
+   "options": [
+    "$-3 < x < 5$",
+    "$-4 < x < 4$",
+    "$-5 < x < 3$",
+    "$x < 5$"
+   ],
+   "correct": 0,
+   "why": "$-4 < x - 1 < 4$, so $-3 < x < 5$.",
+   "review": "math-functions"
+  }
+ ],
+ "figure": {
+  "figure": "interval-number-line",
+  "caption": "For $\\sum \\frac{(x - 1)^n}{n \\cdot 4^n}$: center 1, radius 4, and each endpoint tested on its own gives $[-3, 5)$."
+ },
+ "chain": [
+  {
+   "cause": "Apply the ratio test to $\\sum a_n(x - a)^n$, keeping $x$ as a letter",
+   "effect": "the limit is a multiple of $|x - a|$"
+  },
+  {
+   "cause": "Set that limit below 1 and solve",
+   "effect": "the radius $R$ and the open interval $(a - R, a + R)$, where the series converges absolutely"
+  },
+  {
+   "cause": "At $x = a - R$ and $x = a + R$ the ratio test limit is exactly 1",
+   "effect": "substitute each endpoint, name the series you get, and test it with another test"
+  },
+  {
+   "cause": "Each endpoint converges or diverges on its own",
+   "effect": "write the interval with a bracket for an included endpoint and a parenthesis for one left out"
+  }
+ ],
+ "ideas": [
+  "A power series $\\sum a_n (x - a)^n$ converges only at its center, for every real $x$, or on an interval of radius $R$ around the center.",
+  "The ratio test gives the radius; it never decides the endpoints.",
+  "Test each endpoint separately: substitute, simplify, and use the $p$-series, alternating series or nth term test.",
+  "Radius and interval are different answers: $R = 4$, but the interval is $[-3, 5)$."
+ ],
+ "misconception": {
+  "wrong": "The interval of convergence of $\\sum \\frac{(x - 1)^n}{n \\cdot 4^n}$ is $(-3, 5)$, from the ratio test.",
+  "right": "The ratio test says nothing at $x = -3$ and $x = 5$. Tested on its own, $x = -3$ gives $\\sum \\frac{(-1)^n}{n}$, which converges, so the interval is $[-3, 5)$."
+ },
+ "check": [
+  "cbc-radius-interval-convergence-1",
+  "cbc-radius-interval-convergence-2",
+  "cbc-radius-interval-convergence-3",
+  "cbc-radius-interval-convergence-4",
+  "cbc-radius-interval-convergence-5",
+  "cbc-radius-interval-convergence-10"
+ ],
+ "summary": "For a power series centered at $a$, the ratio test gives $|x - a| < R$: the radius $R$ and an open interval. The ratio test limit is 1 at both endpoints, so test each one separately and include it only if the series converges there.",
+ "connections": [
+  {
+   "href": "../notes/lagrange-error-bound.html",
+   "label": "Back: the Lagrange error bound (10.12)"
+  },
+  {
+   "href": "../notes/taylor-series.html",
+   "label": "Next: Taylor and Maclaurin series (10.14)"
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "improper-integrals-two-tails": {
+  "file": "figures/improper-integrals-two-tails.svg",
+  "ext": "svg",
+  "w": 500,
+  "h": 800,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two panels. Left: y = 1/x squared with the area under it from x = 1 to x = b shaded violet; that area is 1 − 1/b, which is 0.500 at b = 2, 0.900 at b = 10, 0.990 at b = 100 and 0.999 at b = 1000, so it approaches 1 and the improper integral converges. Right: y = 1/x with the area from 1 to b shaded vermillion; that area is ln b, which is 0.693, 2.303, 4.605 and 6.908 at the same values of b and grows without bound, so the improper integral diverges."
+ }
+}

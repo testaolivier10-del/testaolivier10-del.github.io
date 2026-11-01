@@ -1,0 +1,12 @@
+{
+ "alt-error-band": {
+  "file": "figures/alt-error-band.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Partial sums of 1 minus 1/4 plus 1/9 minus 1/16 and so on, for N = 1 to 8, zigzagging around a dashed line at pi squared over 12, about 0.822. A shaded band runs from S sub 4 = 115/144, about 0.7986, up to S sub 4 plus the next term, 1/25. The sum lies inside the band: the error of S sub 4 is about 0.0239, less than 1/25."
+ }
+}

@@ -1,0 +1,126 @@
+{
+ "id": "frq-u9-polar-area",
+ "type": "parametric",
+ "calc": true,
+ "points": 9,
+ "title": "A polar arch: area, distance from the y-axis, motion toward the origin and a tangent slope",
+ "units": [
+  "unit-9"
+ ],
+ "topics": [
+  "math-polar",
+  "polar-derivatives",
+  "polar-area"
+ ],
+ "practices": [
+  "1.D",
+  "1.E",
+  "2.B",
+  "3.D",
+  "3.F",
+  "4.C"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "The curve $r = 3\\sin\\theta + \\cos(2\\theta)$",
+  "figure": "polar-area-frq-region",
+  "text": "<p>The curve shown is the graph of the polar equation $r = 3\\sin\\theta + \\cos(2\\theta)$ for $0 \\le \\theta \\le \\pi$. It starts at the point $(1, 0)$ and ends at $(-1, 0)$. Region $R$ is bounded by the curve and the $x$-axis. A graphing calculator is required, in radian mode.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 3,
+   "prompt": "<b>Find</b> the area of region $R$.",
+   "rubric": [
+    {
+     "point": "Integrand: $\\frac{1}{2}\\left(3\\sin\\theta + \\cos(2\\theta)\\right)^2$, with both the $\\frac{1}{2}$ and the square",
+     "accept": [
+      "$\\frac{1}{2}\\int r^2\\,d\\theta$ with $r$ written out",
+      "$\\frac{1}{2}\\int (r(\\theta))^2\\,d\\theta$"
+     ]
+    },
+    {
+     "point": "Limits $\\theta = 0$ to $\\theta = \\pi$",
+     "accept": [
+      "$\\int_0^{\\pi}$",
+      "an equivalent split of $[0, \\pi]$ into pieces"
+     ]
+    },
+    {
+     "point": "Answer $5.854$ (or $5.853$), with the integral shown",
+     "accept": [
+      "$\\frac{5\\pi - 4}{2}$",
+      "$5.85398\\ldots$"
+     ]
+    }
+   ],
+   "sample": "$\\text{Area} = \\frac{1}{2}\\int_0^{\\pi} \\left(3\\sin\\theta + \\cos(2\\theta)\\right)^2 d\\theta = 5.854$ (calculator)."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "For $0 \\le \\theta \\le \\frac{\\pi}{2}$, <b>find</b> the greatest distance from a point on the curve to the $y$-axis. Show the work that leads to your answer.",
+   "rubric": [
+    {
+     "point": "Distance from the $y$-axis is $x(\\theta) = r\\cos\\theta = \\left(3\\sin\\theta + \\cos(2\\theta)\\right)\\cos\\theta$, considered on the interval",
+     "accept": [
+      "$|r\\cos\\theta|$",
+      "solving $x'(\\theta) = 0$ for $x = r\\cos\\theta$"
+     ]
+    },
+    {
+     "point": "Answer $1.737$, justified by comparing the critical point $\\theta \\approx 0.480$ with the endpoints ($x(0) = 1$, $x\\left(\\frac{\\pi}{2}\\right) = 0$)",
+     "accept": [
+      "$1.737$ with a candidates table",
+      "$1.737$ from the graph of $x(\\theta)$ on $[0, \\frac{\\pi}{2}]$ with the endpoint values"
+     ]
+    }
+   ],
+   "sample": "The distance from the $y$-axis is $x(\\theta) = r(\\theta)\\cos\\theta = \\left(3\\sin\\theta + \\cos(2\\theta)\\right)\\cos\\theta$, which is not negative on $[0, \\frac{\\pi}{2}]$. On the calculator, $x'(\\theta) = 0$ at $\\theta = 0.480$ (store it as $A$). Candidates: $x(0) = 1$, $x(A) = 1.737$, $x\\left(\\frac{\\pi}{2}\\right) = 0$. The greatest distance is $1.737$."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "Is the point on the curve moving toward the origin or away from the origin as $\\theta$ increases through $\\theta = \\frac{5\\pi}{6}$? <b>Give a reason</b> for your answer.",
+   "rubric": [
+    {
+     "point": "Values: $r\\left(\\frac{5\\pi}{6}\\right) = 2 > 0$ and $\\frac{dr}{d\\theta}\\Big|_{\\theta = 5\\pi/6} = -0.866 < 0$ (or $-\\frac{\\sqrt{3}}{2}$)",
+     "accept": [
+      "$r' = 3\\cos\\theta - 2\\sin(2\\theta)$ evaluated",
+      "the signs of both, with values"
+     ]
+    },
+    {
+     "point": "Conclusion with reason: toward the origin, because $r > 0$ and $r$ is decreasing (opposite signs of $r$ and $\\frac{dr}{d\\theta}$)",
+     "accept": [
+      "the distance from the origin is decreasing",
+      "not earned with the sign of $\\frac{dr}{d\\theta}$ alone, without $r > 0$"
+     ]
+    }
+   ],
+   "sample": "$r\\left(\\frac{5\\pi}{6}\\right) = \\frac{3}{2} + \\frac{1}{2} = 2 > 0$ and $\\frac{dr}{d\\theta} = 3\\cos\\theta - 2\\sin(2\\theta)$ gives $\\frac{dr}{d\\theta}\\Big|_{\\theta = 5\\pi/6} = -0.866 < 0$. Since $r$ is positive and decreasing, the distance from the origin is decreasing: the point is moving toward the origin."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "<b>Find</b> the slope of the line tangent to the curve at the point where $\\theta = \\frac{\\pi}{3}$.",
+   "rubric": [
+    {
+     "point": "Setup: $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta}$ with $y = r\\sin\\theta$ and $x = r\\cos\\theta$",
+     "accept": [
+      "$\\frac{r'\\sin\\theta + r\\cos\\theta}{r'\\cos\\theta - r\\sin\\theta}$",
+      "calculator derivatives of $r(\\theta)\\sin\\theta$ and $r(\\theta)\\cos\\theta$ at $\\frac{\\pi}{3}$"
+     ]
+    },
+    {
+     "point": "Answer $-0.439$ (or $-0.438$)",
+     "accept": [
+      "$\\frac{0.848}{-1.933}$ with the setup",
+      "not earned by $\\frac{dr}{d\\theta}$, which is $-0.232$"
+     ]
+    }
+   ],
+   "sample": "$x = r\\cos\\theta$ and $y = r\\sin\\theta$ with $r = 3\\sin\\theta + \\cos(2\\theta)$. At $\\theta = \\frac{\\pi}{3}$ the calculator gives $\\frac{dy}{d\\theta} = 0.848$ and $\\frac{dx}{d\\theta} = -1.933$, so $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = -0.439$."
+  }
+ ]
+}

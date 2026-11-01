@@ -194,7 +194,12 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.parseCourse('precalculus'), 'apprecalc');
   assert.equal(A.parseCourse('precalc'), 'apprecalc');
   assert.equal(A.parseCourse('pcalc'), 'apprecalc');
-  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc']);
+  // AP® Calculus BC (live since its launch): key apcalcbc, named by its folder, aliases calc-bc, calcbc and bc.
+  assert.equal(A.urlKey('apcalcbc'), 'calculus-bc');
+  assert.equal(A.parseCourse('calculus-bc'), 'apcalcbc');
+  assert.equal(A.parseCourse('calcbc'), 'apcalcbc');
+  eq(A.scopeKeys('apcalcbc'), ['apcalcbc']);
+  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc']);
   eq(A.scopeKeys('apprecalc'), ['apprecalc']);
   eq(A.scopeKeys('apenv'), ['apenv']);
   eq(A.scopeKeys('appsych'), ['appsych']);

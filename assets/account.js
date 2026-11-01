@@ -1050,6 +1050,7 @@
     { storagePrefix: 'apenv_' },
     { storagePrefix: 'appsych_' },
     { storagePrefix: 'apprecalc_' },
+    { storagePrefix: 'apcalcbc_' },
   ];
   // courses:end
   var CLEAR_PREFIXES = ['hub_'].concat(COURSE_LIST.map(function(c){ return c.storagePrefix; }), ['levlprep_']);
@@ -1958,6 +1959,7 @@
     { key: 'apenv', path: '/environmental-science/' },
     { key: 'appsych', path: '/psychology/' },
     { key: 'apprecalc', path: '/precalculus/' },
+    { key: 'apcalcbc', path: '/calculus-bc/' },
   ];
   // courses:end
   function inviteJson(k){ try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch(e){ return null; } }

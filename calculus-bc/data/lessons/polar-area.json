@@ -1,0 +1,92 @@
+{
+ "topic": "polar-area",
+ "hook": "Cut a pizza into very thin slices and every slice is nearly a triangle with its point at the center. Polar regions are cut the same way: thin wedges fanning out from the pole. The 2025 exam's polar question had the lowest average of the year, and the lost points were mostly here: the square on $r$, the $\\frac{1}{2}$, and the limits.",
+ "prereq": [
+  {
+   "q": "What is the area of a sector of a circle of radius 3 with central angle $\\frac{\\pi}{2}$?",
+   "options": [
+    "$\\frac{9\\pi}{4}$",
+    "$\\frac{3\\pi}{2}$",
+    "$\\frac{9\\pi}{2}$",
+    "$9\\pi$"
+   ],
+   "correct": 0,
+   "why": "The sector is $\\frac{1}{4}$ of the disk: $\\frac{1}{4} \\cdot 9\\pi = \\frac{9\\pi}{4}$, which is $\\frac{1}{2}r^2\\theta = \\frac{1}{2} \\cdot 9 \\cdot \\frac{\\pi}{2}$.",
+   "review": "math-geometry"
+  },
+  {
+   "q": "A definite integral $\\int_a^b f(x)\\,dx$ is the limit of",
+   "options": [
+    "Riemann sums $\\sum f(x_i)\\,\\Delta x$",
+    "slopes of secant lines",
+    "the values $f(a)$ and $f(b)$",
+    "averages of $f(a)$ and $f(b)$"
+   ],
+   "correct": 0,
+   "why": "Thin pieces of size $f(x_i)\\,\\Delta x$, added up, as the pieces get thinner.",
+   "review": "definite-integral-notation"
+  },
+  {
+   "q": "At which $\\theta$ in $[0, \\pi]$ is $r = 3\\sin(2\\theta)$ equal to 0?",
+   "options": [
+    "$0$, $\\frac{\\pi}{2}$ and $\\pi$",
+    "$\\frac{\\pi}{4}$ and $\\frac{3\\pi}{4}$",
+    "$0$ and $\\pi$",
+    "$\\frac{\\pi}{2}$"
+   ],
+   "correct": 0,
+   "why": "$\\sin(2\\theta) = 0$ when $2\\theta$ is a multiple of $\\pi$.",
+   "review": "math-polar"
+  }
+ ],
+ "figure": {
+  "figure": "polar-area-sectors",
+  "caption": "One wedge has area about $\\frac{1}{2}r^2\\,\\Delta\\theta$; adding wedges is a Riemann sum; its limit is $\\frac{1}{2}\\int r^2\\,d\\theta$."
+ },
+ "chain": [
+  {
+   "cause": "Cut the region into thin wedges of angle $\\Delta\\theta$ from the pole",
+   "effect": "each wedge is nearly a slice of a circle of radius $r$"
+  },
+  {
+   "cause": "A slice of a circle has area $\\frac{1}{2}r^2\\,\\Delta\\theta$",
+   "effect": "the region's area is about $\\sum \\frac{1}{2}r^2\\,\\Delta\\theta$, a Riemann sum"
+  },
+  {
+   "cause": "Let $\\Delta\\theta \\to 0$",
+   "effect": "$A = \\frac{1}{2}\\int_{\\alpha}^{\\beta} r^2\\,d\\theta$"
+  },
+  {
+   "cause": "Find $\\alpha$ and $\\beta$ from where $r = 0$ or from the rays that bound the region",
+   "effect": "the region is swept exactly once"
+  }
+ ],
+ "ideas": [
+  "$A = \\frac{1}{2}\\int_{\\alpha}^{\\beta} r^2\\,d\\theta$: the region bounded by $r = f(\\theta)$ and the rays $\\theta = \\alpha$, $\\theta = \\beta$. Write the $\\frac{1}{2}$ and the square in every setup.",
+  "Limits: a loop or petal runs between consecutive zeros of $r$. Check that the region is traced once; a circle such as $r = 4\\sin\\theta$ is traced once on $[0, \\pi]$, twice on $[0, 2\\pi]$.",
+  "No calculator: expand $r^2$ and use $\\sin^2 u = \\frac{1 - \\cos(2u)}{2}$ and $\\cos^2 u = \\frac{1 + \\cos(2u)}{2}$. Calculator: write the integral, then the value to three decimals."
+ ],
+ "misconception": {
+  "wrong": "The area inside $r = 4\\sin\\theta$ is $\\frac{1}{2}\\int_0^{2\\pi} 16\\sin^2\\theta\\,d\\theta = 8\\pi$.",
+  "right": "That counts the circle twice: for $\\pi < \\theta < 2\\pi$, $r < 0$ and the same circle is retraced. Over $[0, \\pi]$ the area is $4\\pi$, which matches a circle of radius 2."
+ },
+ "check": [
+  "cbc-polar-area-1",
+  "cbc-polar-area-2",
+  "cbc-polar-area-4",
+  "cbc-polar-area-6",
+  "cbc-polar-area-8",
+  "cbc-polar-area-10"
+ ],
+ "summary": "The area of the region bounded by $r = f(\\theta)$ and the rays $\\theta = \\alpha$ and $\\theta = \\beta$ is $\\frac{1}{2}\\int_{\\alpha}^{\\beta} r^2\\,d\\theta$, the limit of sums of thin wedges $\\frac{1}{2}r^2\\,\\Delta\\theta$. Square $r$, keep the $\\frac{1}{2}$, and choose limits that sweep the region exactly once.",
+ "connections": [
+  {
+   "href": "../notes/polar-derivatives.html",
+   "label": "Back: polar coordinates and polar derivatives (9.7)"
+  },
+  {
+   "href": "../notes/polar-area-between.html",
+   "label": "Next: area between two polar curves (9.9)"
+  }
+ ]
+}

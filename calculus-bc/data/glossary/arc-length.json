@@ -1,0 +1,5 @@
+{
+ "arc-length": {
+  "def": "The length of a curve measured along it. For $y = f(x)$ with $f'$ continuous on $[a, b]$: $\\int_a^b \\sqrt{1 + (f'(x))^2}\\,dx$, the limit of sums of chord lengths $\\sqrt{(\\Delta x)^2 + (\\Delta y)^2}$. For $x = g(y)$ on $[c, d]$: $\\int_c^d \\sqrt{1 + (g'(y))^2}\\,dy$."
+ }
+}

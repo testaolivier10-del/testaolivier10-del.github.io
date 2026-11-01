@@ -1,0 +1,105 @@
+/* Euler and logistic (calculus-bc/assets/tools/euler-logistic.js). OWNED BY THIS TOOL ONLY
+   (builder T3). The slope-field trainer's colour set (Okabe-Ito based): the field in a quiet
+   ink, the true solution dashed blue, the Euler polygon in the course ink with its run and
+   rise in orange, the carrying capacity green dashed, L/2 orange dotted; lighter in dark
+   mode. Dash and shape carry the meaning too, so colour is never the only cue. */
+.el-card{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.el-fig{display:flex;flex-direction:column;gap:4px;min-width:0;}
+.el-eq{margin:0;font:700 16px var(--font-ui);color:var(--ink);text-align:center;overflow-x:auto;}
+.el-plot,.el-lp{min-width:0;}
+.el-plot svg,.el-lp svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none;}
+.el-lplots{display:grid;gap:8px;grid-template-columns:minmax(0,1fr);}
+.el-lplots.is-wide{grid-template-columns:minmax(0,3fr) minmax(0,2fr);}
+.ls-root .el-fig{flex:1;min-height:0;}
+.ls-root .el-plot{position:relative;flex:1;min-height:200px;}
+.ls-root .el-plot svg{position:absolute;inset:0;width:100%;height:100%;}
+.ls-root .el-lplots{flex:1;min-height:0;}
+.ls-root .el-lplots:not(.is-wide){grid-template-rows:minmax(0,3fr) minmax(0,2fr);}
+.ls-root .el-lp{position:relative;min-height:120px;}
+.ls-root .el-lp svg{position:absolute;inset:0;width:100%;height:100%;}
+.el-plot[hidden],.el-lplots[hidden],.el-ce[hidden],.el-cl[hidden]{display:none;}
+
+.el-ctl{display:flex;flex-direction:column;gap:10px;}
+.el-scenes{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--line);border-radius:12px;padding:3px;gap:3px;background:var(--paper);}
+.el-scene{min-height:40px;border:0;border-radius:9px;background:transparent;color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;}
+.el-scene[aria-pressed="true"]{background:var(--cink);color:#fff;}
+:root[data-theme="dark"] .el-scene[aria-pressed="true"]{background:#D6BFF5;color:#1E0F33;}
+.el-ce,.el-cl{display:flex;flex-direction:column;gap:10px;}
+.el-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.el-chip{min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;white-space:nowrap;}
+.el-chip[aria-pressed="true"]{border-color:var(--cink);background:var(--cink);color:#fff;}
+:root[data-theme="dark"] .el-chip[aria-pressed="true"]{background:#D6BFF5;border-color:#D6BFF5;color:#1E0F33;}
+@media (max-width:640px){.ls-root .el-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}.ls-root .el-chips::-webkit-scrollbar{display:none;}}
+.el-nrow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.el-nlab{font:800 13px var(--font-ui);color:var(--ink-2,#555);margin-right:4px;}
+.el-n{min-width:44px;min-height:44px;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 15px var(--font-ui);cursor:pointer;}
+.el-n[aria-pressed="true"]{border-color:var(--cink);background:var(--cink);color:#fff;}
+:root[data-theme="dark"] .el-n[aria-pressed="true"]{background:#D6BFF5;border-color:#D6BFF5;color:#1E0F33;}
+.el-play{gap:8px;}
+.el-tbl td.el-gap{text-align:center;color:var(--ink-2,#666);}
+.el-tbl tr.is-on td{font-weight:800;background:var(--ctint,rgba(176,18,58,.08));}
+
+/* the pictures */
+.calc-plot .el-field line{stroke:var(--ink-2,#555);stroke-opacity:.45;stroke-width:1.3;stroke-linecap:round;}
+.calc-plot .el-true{fill:none;stroke:#0072B2;stroke-width:2.4;stroke-dasharray:8 6;stroke-linecap:round;}
+.calc-plot .el-poly{fill:none;stroke:#B0123A;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+.calc-plot .el-pt{fill:#B0123A;stroke:var(--white,#fff);stroke-width:1.5;}
+.calc-plot .el-tpt{fill:#fff;stroke:#0072B2;stroke-width:2.5;}
+.calc-plot .el-start{fill:#B0123A;stroke:var(--white,#fff);stroke-width:2;}
+.calc-plot .el-tri{fill:none;stroke:#D55E00;stroke-width:1.6;stroke-dasharray:3 3;}
+.calc-plot .el-tanq{stroke:#D55E00;stroke-width:3;stroke-linecap:round;}
+.calc-plot .el-err{stroke:#7a4fa0;stroke-width:3;stroke-linecap:round;}
+.calc-plot .el-xe{stroke:var(--ink-2,#666);stroke-opacity:.4;stroke-width:1;stroke-dasharray:2 4;}
+.calc-plot .el-lab,.calc-plot .el-qlab{font:800 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white,#fff);stroke-width:4px;stroke-linejoin:round;}
+.calc-plot .el-lab-e{fill:#B0123A;} .calc-plot .el-lab-t{fill:#00609A;} .calc-plot .el-qlab{fill:var(--ink);}
+.calc-plot .el-cap{stroke:#009E73;stroke-width:2;stroke-dasharray:9 5;}
+.calc-plot .el-caplab{fill:#00805C;font:800 12px var(--font-ui);paint-order:stroke;stroke:var(--white,#fff);stroke-width:4px;}
+.calc-plot .el-cappt{fill:#009E73;}
+.calc-plot .el-halfl{stroke:#D55E00;stroke-width:1.6;stroke-dasharray:2 4;}
+.calc-plot .el-halflab{fill:#B34E00;font:800 12px var(--font-ui);paint-order:stroke;stroke:var(--white,#fff);stroke-width:4px;}
+.calc-plot .el-logc{fill:none;stroke:#B0123A;stroke-width:3;stroke-linecap:round;}
+.calc-plot .el-par{fill:none;stroke:#0072B2;stroke-width:3;stroke-linecap:round;}
+.calc-plot .el-vtx,.calc-plot .el-infl{fill:#D55E00;stroke:var(--white,#fff);stroke-width:1.5;}
+.calc-plot .el-now{fill:#B0123A;stroke:var(--white,#fff);stroke-width:2;}
+.calc-plot .el-tan{stroke:#0072B2;stroke-width:2;stroke-dasharray:6 4;}
+.el-infllab{fill:#B34E00;font:800 11.5px var(--font-ui);paint-order:stroke;stroke:var(--white,#fff);stroke-width:4px;}
+:root[data-theme="dark"] .calc-plot .el-field line{stroke:#C9C9C9;stroke-opacity:.45;}
+:root[data-theme="dark"] .calc-plot .el-poly,:root[data-theme="dark"] .calc-plot .el-logc{stroke:#F590AC;}
+:root[data-theme="dark"] .calc-plot .el-pt,:root[data-theme="dark"] .calc-plot .el-start,:root[data-theme="dark"] .calc-plot .el-now{fill:#F590AC;stroke:#1c1c1e;}
+:root[data-theme="dark"] .calc-plot .el-true,:root[data-theme="dark"] .calc-plot .el-tan,:root[data-theme="dark"] .calc-plot .el-par{stroke:#6BB4E8;}
+:root[data-theme="dark"] .calc-plot .el-tpt{fill:#1c1c1e;stroke:#6BB4E8;}
+:root[data-theme="dark"] .calc-plot .el-lab-e{fill:#F590AC;} :root[data-theme="dark"] .calc-plot .el-lab-t{fill:#6BB4E8;}
+:root[data-theme="dark"] .calc-plot .el-lab,:root[data-theme="dark"] .calc-plot .el-qlab,:root[data-theme="dark"] .calc-plot .el-caplab,:root[data-theme="dark"] .calc-plot .el-halflab,:root[data-theme="dark"] .el-infllab{stroke:#1c1c1e;}
+:root[data-theme="dark"] .calc-plot .el-tri,:root[data-theme="dark"] .calc-plot .el-tanq,:root[data-theme="dark"] .calc-plot .el-halfl{stroke:#F29A5C;}
+:root[data-theme="dark"] .calc-plot .el-vtx,:root[data-theme="dark"] .calc-plot .el-infl{fill:#F29A5C;stroke:#1c1c1e;}
+:root[data-theme="dark"] .calc-plot .el-halflab,:root[data-theme="dark"] .el-infllab{fill:#F29A5C;}
+:root[data-theme="dark"] .calc-plot .el-cap{stroke:#52CFA6;} :root[data-theme="dark"] .calc-plot .el-caplab{fill:#52CFA6;} :root[data-theme="dark"] .calc-plot .el-cappt{fill:#52CFA6;}
+:root[data-theme="dark"] .calc-plot .el-err{stroke:#C7A2E6;}
+
+/* drag handles: a 44 px target around a visible dot */
+.el-handle{cursor:grab;outline:none;touch-action:none;}
+.el-handle .el-hitc{fill:transparent;pointer-events:all;}
+.el-handle .el-halo{fill:var(--cink);fill-opacity:.14;}
+.el-handle .el-dot{fill:var(--cink);stroke:var(--white,#fff);stroke-width:2.5;}
+.el-handle:hover .el-halo{fill-opacity:.24;}
+.el-handle:focus-visible .el-halo{fill-opacity:.32;stroke:var(--cink);stroke-width:2;}
+.el-handle.is-drag{cursor:grabbing;}
+:root[data-theme="dark"] .el-handle .el-dot{fill:#D6BFF5;stroke:#1c1c1e;}
+:root[data-theme="dark"] .el-handle .el-halo{fill:#D6BFF5;}
+
+/* Test yourself: the field over its table; the logistic graph beside its rate */
+.el-qfig{display:flex;flex-direction:column;gap:6px;width:100%;}
+.el-qfig .cd-fig{margin:0;}
+.el-qfig svg,.el-qlog svg{display:block;width:100%;height:auto;}
+.el-qtbl{font-size:14px;}
+.el-qtbl td,.el-qtbl th{padding:4px 8px;}
+.el-qtbl tr.el-last td{border-top:2px solid var(--line);font-weight:800;}
+.el-qlog{display:grid;gap:8px;grid-template-columns:minmax(0,1fr);}
+.el-qlog.is-wide{grid-template-columns:minmax(0,3fr) minmax(0,2fr);align-items:center;}
+.el-qlog .cd-fig{margin:0;}
+.el-tbl th[scope="col"]{text-align:right;}
+.el-qtbl{width:100%;table-layout:fixed;}
+
+/* Phones: keep the lower-right corner of the plot (an axis label, the last tick) clear of the Enlarge button,
+   which sits 8px from the stage corner (BC review, tools-exams). */
+@media (max-width:640px){.ls-root .el-fig{padding-bottom:40px;}}

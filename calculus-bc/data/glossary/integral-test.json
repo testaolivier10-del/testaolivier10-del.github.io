@@ -1,0 +1,5 @@
+{
+ "integral-test": {
+  "def": "If $f$ is positive, continuous and decreasing on $[k, \\infty)$ and $a_n = f(n)$, then $\\sum_{n=k}^{\\infty} a_n$ and $\\int_k^{\\infty} f(x)\\,dx$ both converge or both diverge. The integral's value is not the series' sum."
+ }
+}

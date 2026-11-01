@@ -1,0 +1,12 @@
+{
+ "nth-term-test-two-cases": {
+  "file": "figures/nth-term-test-two-cases.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two plots for n = 1 to 15, with blue bars for the terms and vermillion dots for the partial sums. Left: a sub n = n/(2n + 1); the bars level off near 1/2, not 0, and the partial sums climb by about 1/2 each step, past 7 by n = 15: the series diverges by the nth term test. Right: a sub n = 1/n; the bars shrink toward 0, yet the partial sums keep growing, past 3.3 by n = 15; terms approaching 0 do not settle the question, so the nth term test is silent."
+ }
+}

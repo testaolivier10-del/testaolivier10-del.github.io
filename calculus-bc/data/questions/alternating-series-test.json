@@ -1,0 +1,519 @@
+{
+ "stimuli": {
+  "alternating-series-test-s1": {
+   "kind": "graph",
+   "title": "Partial sums of $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{\\sqrt{n}}$",
+   "text": "The points show the partial sums $S_1, S_2, \\ldots, S_8$ of $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{\\sqrt{n}} = 1 - \\frac{1}{\\sqrt{2}} + \\frac{1}{\\sqrt{3}} - \\cdots$. The dashed line is at the sum $S$ of the series.",
+   "plot": {
+    "label": "Partial sums S1 to S8 of the alternating series with terms 1 over root n, plotted against N: 1.000, 0.293, 0.870, 0.370, 0.818, 0.409, 0.787, 0.434. They zigzag above and below a dashed line at the sum, about 0.605, with shrinking swings.",
+    "width": 420,
+    "height": 260,
+    "x": [
+     0,
+     8.8
+    ],
+    "y": [
+     0,
+     1.1
+    ],
+    "xStep": 1,
+    "yStep": 0.2,
+    "xLabel": "N",
+    "yLabel": "S",
+    "lines": [
+     {
+      "through": [
+       [
+        0,
+        0.6048986434216305
+       ],
+       [
+        8.8,
+        0.6048986434216305
+       ]
+      ],
+      "dashed": true,
+      "cls": "s2",
+      "label": "S"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       1
+      ]
+     },
+     {
+      "at": [
+       2,
+       0.2929
+      ]
+     },
+     {
+      "at": [
+       3,
+       0.8702
+      ]
+     },
+     {
+      "at": [
+       4,
+       0.3702
+      ]
+     },
+     {
+      "at": [
+       5,
+       0.8175
+      ]
+     },
+     {
+      "at": [
+       6,
+       0.4092
+      ]
+     },
+     {
+      "at": [
+       7,
+       0.7872
+      ]
+     },
+     {
+      "at": [
+       8,
+       0.4336
+      ]
+     }
+    ]
+   }
+  },
+  "alternating-series-test-s2": {
+   "kind": "table",
+   "title": "The sizes of the terms of an alternating series",
+   "table": {
+    "caption": "$a_n = \\frac{n}{n^2 + 3}$ for the series $\\sum_{n=1}^{\\infty} (-1)^n \\frac{n}{n^2 + 3}$",
+    "cols": [
+     "$n$",
+     "$1$",
+     "$2$",
+     "$3$",
+     "$4$",
+     "$5$"
+    ],
+    "rows": [
+     [
+      "$a_n$",
+      "$\\frac{1}{4}$",
+      "$\\frac{2}{7}$",
+      "$\\frac{3}{12}$",
+      "$\\frac{4}{19}$",
+      "$\\frac{5}{28}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-alternating-series-test-1",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "alternating-series-test-s1",
+   "q": "According to the graph, how do the odd partial sums $S_1, S_3, S_5, S_7$ compare with the sum $S$?",
+   "options": [
+    "They are below $S$: each ends by subtracting a term",
+    "They are above $S$: each ends by adding a positive term",
+    "They equal $S$: the series has reached its sum by then",
+    "They are above $S$ at first and below it after $N = 4$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For odd $n$, $(-1)^{n+1} = 1$, so $S_1, S_3, S_5, S_7$ each end with an added term. In the graph they all lie above the dashed line, and the even partial sums lie below it.",
+    "options": [
+     "An odd partial sum ends with a positive term ($n$ odd gives $(-1)^{n+1} = 1$).",
+     "Right: an odd partial sum ends with $+\\frac{1}{\\sqrt{n}}$, an overshoot.",
+     "No partial sum lands on the sum; each is above or below it.",
+     "Every odd partial sum in the graph is above the dashed line."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-2",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "alternating-series-test-s1",
+   "q": "Which statement verifies the conditions of the alternating series test for this series?",
+   "options": [
+    "The terms alternate in sign and $\\sum \\frac{1}{\\sqrt{n}}$ diverges",
+    "The terms alternate in sign and the partial sums stay between 0 and 1",
+    "The signs alternate and $\\frac{1}{\\sqrt{n}}$ decreases to 0",
+    "The sizes $\\frac{1}{\\sqrt{n}}$ decrease, so the partial sums decrease"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The series is $\\sum (-1)^{n+1} a_n$ with $a_n = \\frac{1}{\\sqrt{n}} > 0$; $a_{n+1} = \\frac{1}{\\sqrt{n+1}} < \\frac{1}{\\sqrt{n}} = a_n$; and $\\lim_{n \\to \\infty} \\frac{1}{\\sqrt{n}} = 0$. So the series converges by the alternating series test.",
+    "options": [
+     "What $\\sum \\frac{1}{\\sqrt{n}}$ does is not a condition of this test; the sizes must decrease to 0.",
+     "Bounded partial sums are not a condition of the test; the sizes must decrease and approach 0.",
+     "Right: all three conditions, each one stated.",
+     "The partial sums go up and down; the test needs alternating signs and a limit of 0 as well."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-3",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "alternating-series-test-s1",
+   "q": "Find the exact value of $S_5 - S_4$.",
+   "numeric": {
+    "answer": "1/sqrt(5)",
+    "answerTex": "\\frac{1}{\\sqrt{5}}",
+    "mistakes": [
+     {
+      "value": "-1/sqrt(5)",
+      "why": "The fifth term is $\\frac{(-1)^{6}}{\\sqrt{5}}$, which is positive: going from $S_4$ to $S_5$ is a step up."
+     },
+     {
+      "value": "1/sqrt(4)",
+      "why": "$S_5 - S_4$ is the fifth term, $\\frac{1}{\\sqrt{5}}$, not the fourth."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$S_5 - S_4$ is the fifth term, $\\frac{(-1)^{5+1}}{\\sqrt{5}} = \\frac{1}{\\sqrt{5}}$: the step up from the fourth point to the fifth."
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-4",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "alternating-series-test-s1",
+   "q": "Which statement about the sum $S$ does the graph support?",
+   "options": [
+    "$S_8 < S < S_7$",
+    "$S_7 < S < S_8$",
+    "$S = S_8$, the last partial sum shown",
+    "$S > S_1 = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The partial sums alternate above and below the sum while their swings shrink, so $S$ lies between any two consecutive partial sums. $S_7$ is above the line and $S_8$ below it: $S_8 < S < S_7$.",
+    "options": [
+     "Right: consecutive partial sums sit on either side of the sum.",
+     "$S_7$ ends with an added term, so it is above the sum, and $S_8$ is below it.",
+     "$S_8$ ends with a subtracted term and lies below the dashed line.",
+     "$S_1 = 1$ is the highest point; every later partial sum and the sum lie below it."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-5",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "alternating-series-test-s2",
+   "q": "What does the table show about the sizes $a_n$?",
+   "options": [
+    "The sizes decrease from $n = 1$ on, as the test needs",
+    "$a_2 > a_1$, and from $n = 2$ on the sizes decrease",
+    "The sizes increase from $n = 1$ to the last entry",
+    "The sizes approach $\\frac{1}{4}$ as $n$ grows"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$a_1 = 0.25$ and $a_2 \\approx 0.286$, so the sizes rise once; then $a_3 = 0.25$, $a_4 \\approx 0.211$, $a_5 \\approx 0.179$ keep falling.",
+    "options": [
+     "$\\frac{2}{7} \\approx 0.286$ is larger than $\\frac{1}{4} = 0.25$.",
+     "Right: $\\frac{2}{7} > \\frac{1}{4}$, then the values fall.",
+     "From $n = 2$ the sizes fall: $\\frac{2}{7}, \\frac{3}{12}, \\frac{4}{19}, \\frac{5}{28}$.",
+     "The sizes behave like $\\frac{n}{n^2} = \\frac{1}{n}$ and approach 0."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-6",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "alternating-series-test-s2",
+   "q": "Which argument shows that $a_n = \\frac{n}{n^2 + 3}$ decreases for $n \\ge 2$?",
+   "options": [
+    "The table values fall from $n = 2$ to $n = 5$",
+    "The numerator $n$ grows more slowly than $n^2 + 3$, so the terms approach 0",
+    "With $f(x) = \\frac{x}{x^2 + 3}$, $f'(x) = \\frac{3 - x^2}{(x^2 + 3)^2} < 0$ for $x > \\sqrt{3}$",
+    "With $f(x) = \\frac{x}{x^2 + 3}$, $f'(x) = \\frac{1}{2x} < 0$ for $x > 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "By the quotient rule, $f'(x) = \\frac{(x^2 + 3) - x(2x)}{(x^2 + 3)^2} = \\frac{3 - x^2}{(x^2 + 3)^2}$, which is negative for $x > \\sqrt{3} \\approx 1.73$. So $a_{n+1} < a_n$ for every $n \\ge 2$.",
+    "options": [
+     "Five values cannot show what happens for every larger $n$; a derivative argument can.",
+     "Approaching 0 is a different condition from decreasing; a sequence can approach 0 while going up and down.",
+     "Right: a negative derivative past $\\sqrt{3}$ covers every $n \\ge 2$.",
+     "That differentiates the top and bottom separately; use the quotient rule."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-7",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "alternating-series-test-s2",
+   "q": "What does the alternating series test conclude about $\\sum_{n=1}^{\\infty} (-1)^n \\frac{n}{n^2 + 3}$?",
+   "options": [
+    "Nothing, since $a_2 > a_1$ breaks the decreasing condition",
+    "It diverges, since $a_2 > a_1$",
+    "It converges, since the terms alternate in sign",
+    "It converges: the sizes decrease from $n = 2$ on and approach 0"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The signs alternate; $a_n = \\frac{n}{n^2 + 3}$ decreases for $n \\ge 2$; and $\\lim_{n \\to \\infty} \\frac{n}{n^2 + 3} = 0$. Leaving out the first term does not change whether a series converges, so the series converges by the alternating series test.",
+    "options": [
+     "The condition only has to hold from some point on; dropping the first term does not change convergence.",
+     "The test never shows divergence, and one early rise does not stop convergence.",
+     "Alternating signs alone are not enough; the sizes must also decrease and approach 0.",
+     "Right: the first term does not affect convergence, so decreasing from $n = 2$ on is enough."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-8",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "alternating-series-test-s2",
+   "q": "What does $\\sum_{n=1}^{\\infty} \\frac{n}{n^2 + 3}$, the same sizes without the signs, do?",
+   "options": [
+    "It diverges by limit comparison with $\\sum \\frac{1}{n}$",
+    "It converges by the alternating series test, as before",
+    "It converges, since the sizes decrease and approach 0",
+    "It diverges by the nth term test, since the terms stay positive"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\lim_{n \\to \\infty} \\frac{n/(n^2 + 3)}{1/n} = \\lim_{n \\to \\infty} \\frac{n^2}{n^2 + 3} = 1$, a finite positive limit, and $\\sum \\frac{1}{n}$ diverges, so $\\sum \\frac{n}{n^2 + 3}$ diverges. The signs make the difference.",
+    "options": [
+     "Right: the limit of $\\frac{n^2}{n^2 + 3}$ is 1, and the harmonic series diverges.",
+     "Without the signs the series is not alternating, so that test does not apply.",
+     "Terms approaching 0 do not prove convergence.",
+     "The terms approach 0, so the nth term test decides nothing."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-9",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "What happens to $\\sum_{n=1}^{\\infty} (-1)^n \\frac{n + 1}{n}$?",
+   "options": [
+    "It converges by the alternating series test",
+    "It diverges by the nth term test: the terms do not approach 0",
+    "It converges, since the sizes $\\frac{n+1}{n}$ decrease",
+    "Nothing can be decided, since the alternating series test fails"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{n + 1}{n} \\to 1$, so the terms $(-1)^n \\frac{n+1}{n}$ do not approach 0 (they swing near $1$ and $-1$). By the nth term test, the series diverges.",
+    "options": [
+     "The sizes $\\frac{n+1}{n}$ approach 1, not 0, so that test does not apply.",
+     "Right: the sizes approach 1, so the terms swing near $\\pm 1$.",
+     "Decreasing sizes are not enough; they must also approach 0.",
+     "When the terms do not approach 0, the nth term test shows divergence."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-10",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which conclusion about $\\sum_{n=2}^{\\infty} \\frac{(-1)^n}{\\ln n}$ is justified?",
+   "options": [
+    "It diverges, since $\\ln n$ grows slowly",
+    "It diverges by the nth term test",
+    "It converges by the alternating series test",
+    "It converges by comparison with $\\sum \\frac{1}{n^2}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For $n \\ge 2$, $\\frac{1}{\\ln n} > 0$; since $\\ln n$ increases, $\\frac{1}{\\ln n}$ decreases; and $\\lim_{n \\to \\infty} \\frac{1}{\\ln n} = 0$. The signs alternate, so the series converges by the alternating series test.",
+    "options": [
+     "Slow growth matters for $\\sum \\frac{1}{\\ln n}$, not for the alternating series; the test applies.",
+     "$\\frac{1}{\\ln n} \\to 0$, so the nth term test says nothing.",
+     "Right: $\\frac{1}{\\ln n}$ is positive, decreasing, with limit 0.",
+     "The comparison tests need positive terms, and $\\frac{1}{\\ln n}$ is far larger than $\\frac{1}{n^2}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-11",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which test shows that $\\sum_{n=1}^{\\infty} \\frac{\\cos(n\\pi)}{\\sqrt[3]{n}}$ converges?",
+   "options": [
+    "The direct comparison test with $\\sum \\frac{1}{\\sqrt[3]{n}}$",
+    "The nth term test, since the terms approach 0",
+    "The $p$-series test with $p = \\frac{1}{3}$",
+    "The alternating series test, since $\\cos(n\\pi) = (-1)^n$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\cos(n\\pi)$ is $-1$ for odd $n$ and $1$ for even $n$, so the series is $\\sum \\frac{(-1)^n}{\\sqrt[3]{n}}$. The sizes $\\frac{1}{\\sqrt[3]{n}}$ decrease and approach 0, so it converges by the alternating series test.",
+    "options": [
+     "That comparison needs positive terms, and $\\sum \\frac{1}{\\sqrt[3]{n}}$ diverges anyway.",
+     "The nth term test can show divergence and nothing else.",
+     "A $p$-series with $p = \\frac{1}{3}$ diverges, and this series has signs.",
+     "Right: the cosine factor is exactly an alternating sign."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-12",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "For $\\sum (-1)^n a_n$ with $a_n > 0$, which conditions does the alternating series test need?",
+   "options": [
+    "$a_{n+1} \\le a_n$ from some $n$ on, and $\\lim_{n \\to \\infty} a_n = 0$",
+    "$\\lim_{n \\to \\infty} a_n = 0$, with no condition on how the sizes change",
+    "$a_{n+1} \\le a_n$ from some $n$ on, with no condition on the limit",
+    "$\\sum a_n$ converges as a series of positive terms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The alternating series test: if the sizes $a_n$ are positive, decrease (at least from some point on), and approach 0, then $\\sum (-1)^n a_n$ converges.",
+    "options": [
+     "Right: decreasing sizes that approach 0.",
+     "A limit of 0 is not enough; the sizes must also decrease.",
+     "Decreasing is not enough: sizes that level off at 1 decrease but do not approach 0.",
+     "If $\\sum a_n$ converges, the signed series does too, but this is not the alternating series test's condition."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-13",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $S_4$, the sum of the first four terms of $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n}$.",
+   "numeric": {
+    "answer": "7/12",
+    "mistakes": [
+     {
+      "value": "25/12",
+      "why": "That adds the sizes $1 + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4}$. The signs alternate: $1 - \\frac{1}{2} + \\frac{1}{3} - \\frac{1}{4}$."
+     },
+     {
+      "value": "-7/12",
+      "why": "The first term is $\\frac{(-1)^{2}}{1} = +1$, so the sum starts with a plus sign."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$S_4 = 1 - \\frac{1}{2} + \\frac{1}{3} - \\frac{1}{4} = \\frac{12 - 6 + 4 - 3}{12} = \\frac{7}{12}$."
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-14",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Does $\\sum_{n=1}^{\\infty} (-1)^{n} \\sin\\left(\\frac{1}{n}\\right)$ converge?",
+   "options": [
+    "No: $\\sin\\left(\\frac{1}{n}\\right)$ does not approach 0",
+    "No: $\\sin$ takes negative values, so the signs are not alternating",
+    "Yes: $\\sin\\left(\\frac{1}{n}\\right)$ is positive, decreasing and approaches 0",
+    "Yes: $\\sum \\sin\\left(\\frac{1}{n}\\right)$ converges"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For $n \\ge 1$, $0 < \\frac{1}{n} \\le 1 < \\frac{\\pi}{2}$, where $\\sin$ is positive and increasing. As $n$ grows, $\\frac{1}{n}$ decreases, so $\\sin\\left(\\frac{1}{n}\\right)$ decreases, and it approaches $\\sin 0 = 0$. The series converges by the alternating series test.",
+    "options": [
+     "$\\frac{1}{n} \\to 0$ and $\\sin$ is continuous, so $\\sin\\left(\\frac{1}{n}\\right) \\to \\sin 0 = 0$.",
+     "For $n \\ge 1$, $0 < \\frac{1}{n} \\le 1$, where $\\sin$ is positive; the sign comes from $(-1)^n$.",
+     "Right: for $n \\ge 1$, $\\frac{1}{n}$ lies in $(0, 1]$, where sine is positive and increasing.",
+     "$\\sum \\sin\\left(\\frac{1}{n}\\right)$ diverges (limit comparison with $\\frac{1}{n}$ gives 1); the alternating series test is the reason."
+    ]
+   }
+  },
+  {
+   "id": "cbc-alternating-series-test-15",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does the alternating series test not apply to $\\sum_{n=1}^{\\infty} \\frac{(-1)^{2n}}{n}$?",
+   "options": [
+    "The sizes $\\frac{1}{n}$ do not decrease as $n$ grows large",
+    "The sizes $\\frac{1}{n}$ do not approach 0 as $n$ grows large",
+    "It does apply, and it shows that this series converges",
+    "$(-1)^{2n} = 1$, so the terms are all positive and the series is harmonic"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$(-1)^{2n} = \\left((-1)^2\\right)^n = 1^n = 1$, so the series is $\\sum \\frac{1}{n}$, the harmonic series, which diverges. The alternating series test needs signs that alternate.",
+    "options": [
+     "$\\frac{1}{n}$ does decrease; the trouble is the sign.",
+     "$\\frac{1}{n}$ approaches 0; the trouble is the sign.",
+     "$(-1)^{2n} = \\left((-1)^2\\right)^n = 1$: the series is $\\sum \\frac{1}{n}$, which diverges.",
+     "Right: an even power of $-1$ is 1, so there is no alternation."
+    ]
+   }
+  }
+ ]
+}

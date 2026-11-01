@@ -1,0 +1,511 @@
+{
+ "stimuli": {
+  "comparison-tests-s1": {
+   "kind": "table",
+   "title": "Two series with positive terms",
+   "table": {
+    "caption": "The first terms of $a_n = \\frac{1}{3^n + n}$ and $b_n = \\frac{1}{3^n}$",
+    "cols": [
+     "$n$",
+     "$a_n = \\frac{1}{3^n + n}$",
+     "$b_n = \\frac{1}{3^n}$"
+    ],
+    "rows": [
+     [
+      "$1$",
+      "$\\frac{1}{4}$",
+      "$\\frac{1}{3}$"
+     ],
+     [
+      "$2$",
+      "$\\frac{1}{11}$",
+      "$\\frac{1}{9}$"
+     ],
+     [
+      "$3$",
+      "$\\frac{1}{30}$",
+      "$\\frac{1}{27}$"
+     ],
+     [
+      "$4$",
+      "$\\frac{1}{85}$",
+      "$\\frac{1}{81}$"
+     ]
+    ]
+   }
+  },
+  "comparison-tests-s2": {
+   "kind": "table",
+   "title": "A limit comparison, step by step",
+   "table": {
+    "caption": "The ratio $\\frac{a_n}{b_n}$ for $a_n = \\frac{n^2 + 1}{n^4 + 3n}$ and $b_n = \\frac{1}{n^2}$ (values to four decimal places)",
+    "cols": [
+     "$n$",
+     "$\\frac{a_n}{b_n} = \\frac{n^2(n^2 + 1)}{n^4 + 3n}$"
+    ],
+    "rows": [
+     [
+      "$1$",
+      "$0.5000$"
+     ],
+     [
+      "$10$",
+      "$1.0070$"
+     ],
+     [
+      "$100$",
+      "$1.0001$"
+     ],
+     [
+      "$1000$",
+      "$1.0000$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-comparison-tests-1",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "comparison-tests-s1",
+   "q": "Which inequality do the table's values suggest, and why does it hold for every $n \\ge 1$?",
+   "options": [
+    "$a_n > b_n$, because $3^n + n > 3^n$",
+    "$a_n < b_n$, because $3^n + n > 3^n$",
+    "$a_n < b_n$, because $a_n$ decreases faster",
+    "$a_n = b_n$ once $n$ is large"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For every $n \\ge 1$, $3^n + n > 3^n > 0$, so $0 < \\frac{1}{3^n + n} < \\frac{1}{3^n}$: each $a_n$ is smaller than the matching $b_n$.",
+    "options": [
+     "A bigger denominator gives a smaller fraction, so the inequality points the other way.",
+     "Right: a bigger denominator makes a smaller fraction.",
+     "How fast the terms shrink is not the reason; compare the denominators term by term.",
+     "The two are close for large $n$ but differ by the $+\\,n$ in the denominator for every $n$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-2",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "comparison-tests-s1",
+   "q": "Find the sum $\\sum_{n=1}^{\\infty} \\frac{1}{3^n}$.",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": 1.5,
+      "why": "That sum starts at $n = 0$ (first term 1). Here the first term is $\\frac{1}{3}$: the sum is $\\frac{1/3}{1 - 1/3}$."
+     },
+     {
+      "value": "1/3",
+      "why": "That is the first term only. A geometric series sums to its first term over $1 - r$: $\\frac{1/3}{1 - 1/3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A geometric series with first term $\\frac{1}{3}$ and ratio $\\frac{1}{3}$: $\\frac{1/3}{1 - 1/3} = \\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-3",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "comparison-tests-s1",
+   "q": "What does the direct comparison test conclude about $\\sum_{n=1}^{\\infty} \\frac{1}{3^n + n}$?",
+   "options": [
+    "It diverges, since $0 < a_n < b_n$ and $\\sum b_n$ is geometric",
+    "Nothing, since $a_n$ is not geometric",
+    "It converges, since $a_n$ approaches 0",
+    "It converges, since $0 < a_n < b_n$ and $\\sum b_n$ converges"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The terms are positive and $a_n < b_n$ for every $n$; $\\sum b_n$ is geometric with $r = \\frac{1}{3}$, so it converges, and by the direct comparison test so does $\\sum a_n$.",
+    "options": [
+     "Being smaller than a convergent series is the case that gives convergence.",
+     "The test does not need $a_n$ to be geometric; only the comparison series needs a known behavior.",
+     "Terms approaching 0 do not prove convergence (the harmonic series has them); the comparison does.",
+     "Right: smaller positive terms than a convergent series."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-4",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "comparison-tests-s1",
+   "q": "What does the comparison tell you about the sum $S = \\sum_{n=1}^{\\infty} \\frac{1}{3^n + n}$?",
+   "options": [
+    "$0 < S < \\frac{1}{2}$",
+    "$S = \\frac{1}{2}$",
+    "$S > \\frac{1}{2}$",
+    "$S$ is about $\\frac{1}{4}$, the first term"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each partial sum of $\\sum a_n$ is positive and below the matching partial sum of $\\sum b_n$, which is below $\\frac{1}{2}$. So $0 < S < \\frac{1}{2}$ (in fact $S > \\frac{1}{4}$, its first term).",
+    "options": [
+     "Right: every term is positive and smaller than the matching term of a series that sums to $\\frac{1}{2}$.",
+     "The terms are smaller than those of $\\sum b_n$, so the sum is smaller too.",
+     "Each $a_n$ is below $b_n$, so the partial sums stay below those of $\\sum b_n$.",
+     "The first term is $\\frac{1}{4}$, and the later positive terms add to it, so $S > \\frac{1}{4}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-5",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "comparison-tests-s2",
+   "q": "Why is $b_n = \\frac{1}{n^2}$ a good series to compare with $a_n = \\frac{n^2 + 1}{n^4 + 3n}$?",
+   "options": [
+    "Keeping the constant terms gives $\\frac{1}{n^2}$ after cancelling",
+    "Keeping the highest powers gives $\\frac{n^2}{n^4} = \\frac{1}{n^2}$",
+    "Both terms are equal at $n = 1$",
+    "$\\frac{1}{n^2}$ is smaller than $a_n$ for large $n$, as the test needs"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For large $n$ the numerator behaves like $n^2$ and the denominator like $n^4$, so $a_n$ behaves like $\\frac{n^2}{n^4} = \\frac{1}{n^2}$.",
+    "options": [
+     "The constants matter least for large $n$; the highest powers dominate.",
+     "Right: the dominant terms decide how the terms behave for large $n$.",
+     "At $n = 1$, $a_1 = \\frac{2}{4}$ and $b_1 = 1$: they are not equal, and one value decides nothing.",
+     "A limit comparison needs no inequality; the choice comes from the dominant powers."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-6",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "comparison-tests-s2",
+   "q": "Find $\\lim_{n \\to \\infty} \\frac{a_n}{b_n}$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "Divide the top and bottom of $\\frac{n^4 + n^2}{n^4 + 3n}$ by $n^4$: the limit is $\\frac{1 + 0}{1 + 0}$, not 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{a_n}{b_n} = \\frac{n^4 + n^2}{n^4 + 3n}$. Dividing by $n^4$ gives $\\frac{1 + 1/n^2}{1 + 3/n^3}$, which approaches $1$, as the table suggests."
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-7",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "comparison-tests-s2",
+   "q": "What does the limit comparison test conclude about $\\sum_{n=1}^{\\infty} \\frac{n^2 + 1}{n^4 + 3n}$?",
+   "options": [
+    "It diverges: the limit is 1, which is not less than 1 as the test needs",
+    "Nothing: the ratio is 0.5 at $n = 1$, so the two series differ",
+    "It converges: the terms approach 0 and the ratios approach 1",
+    "It converges, like the $p$-series $\\sum \\frac{1}{n^2}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Both series have positive terms and $\\lim_{n \\to \\infty} \\frac{a_n}{b_n} = 1$, a finite positive number. $\\sum \\frac{1}{n^2}$ is a $p$-series with $p = 2 > 1$, so it converges, and by the limit comparison test $\\sum a_n$ converges.",
+    "options": [
+     "The limit comparison test does not compare the limit with 1; any finite positive limit links the two series.",
+     "Only the limit as $n \\to \\infty$ matters, not early values.",
+     "Terms approaching 0 are not enough; the comparison with $p = 2$ is the reason.",
+     "Right: a finite positive limit means both series do the same thing."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-8",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "comparison-tests-s2",
+   "q": "At $n = 10$ the ratio $\\frac{a_n}{b_n}$ is above 1. What does that mean for a direct comparison of $\\sum a_n$ with $\\sum \\frac{1}{n^2}$?",
+   "options": [
+    "There $a_n > \\frac{1}{n^2}$, so $a_n \\le b_n$ fails and that direct comparison gives no conclusion",
+    "There $a_n < \\frac{1}{n^2}$, so a direct comparison with this $p$-series shows convergence",
+    "The series diverges, because its terms are larger than those of a convergent series",
+    "The direct comparison still works if the series starts at $n = 10$ instead of $n = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A ratio above 1 means $a_n > \\frac{1}{n^2}$ (this holds for every $n \\ge 4$, since $n^2(n^2 + 1) > n^4 + 3n$ exactly when $n > 3$). Larger than a convergent series is no conclusion, which is why the limit comparison test is used here.",
+    "options": [
+     "Right: a direct comparison with a convergent series needs the smaller terms.",
+     "A ratio above 1 means $a_n$ is the larger of the two.",
+     "Being larger than a convergent series decides nothing; the series in fact converges.",
+     "The ratio stays above 1 for every $n \\ge 4$, so $a_n > b_n$ from there on, the wrong direction."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-9",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "What does the direct comparison test say about $\\sum_{n=1}^{\\infty} \\frac{1}{n^2 + 5}$?",
+   "options": [
+    "It diverges, since $\\frac{1}{n^2 + 5} < \\frac{1}{n}$",
+    "It converges, since $0 < \\frac{1}{n^2 + 5} < \\frac{1}{n^2}$",
+    "It converges, since $\\frac{1}{n^2 + 5} > \\frac{1}{n^3}$",
+    "It diverges, since $n^2 + 5 > n^2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For every $n$, $0 < \\frac{1}{n^2 + 5} < \\frac{1}{n^2}$, and $\\sum \\frac{1}{n^2}$ converges ($p = 2 > 1$), so the series converges by the direct comparison test.",
+    "options": [
+     "Smaller than a divergent series decides nothing.",
+     "Right: smaller than a convergent $p$-series with $p = 2$.",
+     "Larger than a convergent series decides nothing.",
+     "A larger denominator makes the terms smaller than $\\frac{1}{n^2}$, which points to convergence."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-10",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $n \\ge 3$, $\\ln n > 1$. What does this show about $\\sum_{n=3}^{\\infty} \\frac{\\ln n}{n}$?",
+   "options": [
+    "It converges, since $\\frac{\\ln n}{n} > \\frac{1}{n}$ and both terms approach 0",
+    "It converges, since $\\frac{\\ln n}{n}$ approaches 0",
+    "It diverges, by comparison with $\\sum \\frac{1}{n}$",
+    "Nothing, since $\\ln n$ is not a power of $n$ and no $p$-series fits"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For $n \\ge 3$, $\\frac{\\ln n}{n} > \\frac{1}{n} > 0$. The harmonic series $\\sum \\frac{1}{n}$ diverges, so by the direct comparison test $\\sum \\frac{\\ln n}{n}$ diverges.",
+    "options": [
+     "Being larger than a divergent series shows divergence, not convergence.",
+     "Terms approaching 0 are not enough; these terms are larger than $\\frac{1}{n}$.",
+     "Right: larger than a divergent series with positive terms.",
+     "The direct comparison test works with any positive terms once the inequality is shown."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-11",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes: \"$\\frac{1}{n+1} < \\frac{1}{n}$ and the harmonic series diverges, so $\\sum_{n=1}^{\\infty} \\frac{1}{n+1}$ diverges by the direct comparison test.\" What is wrong?",
+   "options": [
+    "The series converges, because its terms are smaller than those of the harmonic series",
+    "The inequality is false: $\\frac{1}{n+1} > \\frac{1}{n}$, so the comparison is reversed",
+    "Nothing: the argument is correct, since both series have positive terms",
+    "Smaller than a divergent series proves nothing"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "To show divergence by direct comparison, the terms must be at least as large as those of a divergent series. Here they are smaller, so no conclusion follows. The limit comparison with $\\frac{1}{n}$ works: $\\lim_{n \\to \\infty} \\frac{n}{n+1} = 1$, so the series diverges.",
+    "options": [
+     "The series does diverge (its limit comparison with $\\frac{1}{n}$ gives 1); only the reason is wrong.",
+     "The inequality is true; the problem is which way it points.",
+     "A divergent series that is larger shows nothing about a smaller one.",
+     "Right: the inequality points the wrong way for divergence."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-12",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which argument shows that $\\sum_{n=1}^{\\infty} \\frac{1}{2^n - 1}$ converges?",
+   "options": [
+    "Limit comparison with $\\frac{1}{2^n}$: the limit is 1 and $\\sum \\frac{1}{2^n}$ converges",
+    "Direct comparison with $\\frac{1}{2^n}$, since $\\frac{1}{2^n - 1} < \\frac{1}{2^n}$ for each $n$",
+    "Direct comparison with $\\frac{1}{n}$, since $\\frac{1}{2^n - 1} < \\frac{1}{n}$",
+    "Limit comparison with $\\frac{1}{n}$: the limit is 0 and $\\sum \\frac{1}{n}$ diverges"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The terms $\\frac{1}{2^n - 1}$ are larger than $\\frac{1}{2^n}$, so a direct comparison goes the wrong way. With limit comparison, $\\lim_{n \\to \\infty} \\frac{1/(2^n - 1)}{1/2^n} = \\lim_{n \\to \\infty} \\frac{2^n}{2^n - 1} = 1$, and $\\sum \\frac{1}{2^n}$ is geometric with $r = \\frac{1}{2}$, so the series converges.",
+    "options": [
+     "Right: the limit $\\lim \\frac{2^n}{2^n - 1}$ is 1.",
+     "The inequality is backwards: $2^n - 1 < 2^n$ makes $\\frac{1}{2^n - 1}$ the larger term.",
+     "Smaller than a divergent series proves nothing.",
+     "The limit comparison test needs a finite positive limit; 0 is not one."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-13",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "To test $\\sum_{n=1}^{\\infty} \\frac{3n^2}{n^3 + 2}$, compare with $b_n = \\frac{1}{n}$. Find $\\lim_{n \\to \\infty} \\frac{a_n}{b_n}$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "Multiply by $n$, not divide: $\\frac{a_n}{b_n} = \\frac{3n^2}{n^3 + 2} \\cdot n = \\frac{3n^3}{n^3 + 2}$, which approaches 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{a_n}{b_n} = \\frac{3n^3}{n^3 + 2} \\to 3$. The limit is finite and positive and the harmonic series diverges, so $\\sum \\frac{3n^2}{n^3 + 2}$ diverges by the limit comparison test."
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-14",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which conclusion about $\\sum_{n=1}^{\\infty} \\frac{\\sin^2 n}{n^2}$ is justified?",
+   "options": [
+    "It diverges, since $\\sin^2 n$ does not approach 0",
+    "Nothing, since the terms are sometimes 0",
+    "It converges, since $0 \\le \\frac{\\sin^2 n}{n^2} \\le \\frac{1}{n^2}$",
+    "It converges, since $\\sin^2 n \\le 1$ by itself"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Since $0 \\le \\sin^2 n \\le 1$, $0 \\le \\frac{\\sin^2 n}{n^2} \\le \\frac{1}{n^2}$. The series $\\sum \\frac{1}{n^2}$ converges ($p = 2$), so the series converges by the direct comparison test.",
+    "options": [
+     "The full term is $\\frac{\\sin^2 n}{n^2}$, which does approach 0, and the comparison decides the series.",
+     "The direct comparison test allows terms equal to 0 ($0 \\le a_n \\le b_n$).",
+     "Right: bounded above by a convergent $p$-series.",
+     "$\\sin^2 n \\le 1$ alone says nothing about the series; dividing by $n^2$ gives the comparison."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-15",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which series $b_n$ should you use in a limit comparison test for $\\sum_{n=1}^{\\infty} \\frac{1}{\\sqrt{n} + 2}$?",
+   "options": [
+    "$\\frac{1}{n}$",
+    "$\\frac{1}{n^2}$",
+    "$\\frac{1}{2^n}$",
+    "$\\frac{1}{\\sqrt{n}}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For large $n$, $\\frac{1}{\\sqrt{n} + 2}$ behaves like $\\frac{1}{\\sqrt{n}}$. The limit of the ratio is $\\lim \\frac{\\sqrt{n}}{\\sqrt{n} + 2} = 1$, and $\\sum \\frac{1}{\\sqrt{n}}$ is a $p$-series with $p = \\frac{1}{2}$, so the series diverges.",
+    "options": [
+     "The denominator grows like $\\sqrt{n}$, not $n$; the limit with $\\frac{1}{n}$ would be infinite.",
+     "The terms shrink far more slowly than $\\frac{1}{n^2}$; the limit would be infinite.",
+     "Nothing geometric is in the term; the limit would be infinite.",
+     "Right: the dominant part of the denominator is $\\sqrt{n}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-16",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which conditions does the limit comparison test need?",
+   "options": [
+    "$a_n > 0$, $b_n > 0$, and $\\lim_{n \\to \\infty} \\frac{a_n}{b_n}$ finite and positive",
+    "$a_n \\le b_n$ for each $n$, and $\\sum b_n$ is a convergent geometric or $p$-series",
+    "$a_n > 0$, $b_n > 0$, and $\\lim_{n \\to \\infty} \\frac{a_n}{b_n}$ is less than 1",
+    "$\\lim_{n \\to \\infty} a_n = 0$ and $\\lim_{n \\to \\infty} b_n = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both series need positive terms, and the limit of $\\frac{a_n}{b_n}$ must be a finite number $L > 0$. Then $\\sum a_n$ and $\\sum b_n$ both converge or both diverge.",
+    "options": [
+     "Right: then both series converge or both diverge.",
+     "That is the direct comparison test.",
+     "The size of the limit compared with 1 does not matter here; it has to be finite and positive.",
+     "Terms approaching 0 are not the condition; the limit of their ratio is."
+    ]
+   }
+  },
+  {
+   "id": "cbc-comparison-tests-17",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "comparison-tests",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which conclusion about $\\sum_{n=1}^{\\infty} \\frac{n + 4}{n\\sqrt{n} + 1}$ is justified?",
+   "options": [
+    "It converges by limit comparison with $\\frac{1}{n^{3/2}}$",
+    "It diverges by limit comparison with $\\frac{1}{\\sqrt{n}}$",
+    "It converges, since its terms approach 0",
+    "It diverges by the nth term test"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The terms behave like $\\frac{n}{n^{3/2}} = \\frac{1}{\\sqrt{n}}$. $\\lim_{n \\to \\infty} \\frac{(n + 4)\\sqrt{n}}{n\\sqrt{n} + 1} = 1$, a finite positive limit, and $\\sum \\frac{1}{\\sqrt{n}}$ diverges ($p = \\frac{1}{2}$), so the series diverges by the limit comparison test.",
+    "options": [
+     "The top grows like $n$, so the terms behave like $\\frac{n}{n^{3/2}} = \\frac{1}{\\sqrt{n}}$, not $\\frac{1}{n^{3/2}}$.",
+     "Right: the limit is 1 and $p = \\frac{1}{2} \\le 1$.",
+     "Terms approaching 0 do not prove convergence.",
+     "The terms approach 0, so the nth term test decides nothing."
+    ]
+   }
+  }
+ ]
+}

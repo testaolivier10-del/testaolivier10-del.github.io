@@ -11,6 +11,7 @@ export const COVERS = {
   apchem: { t1: 'AP®', t2: 'Chemistry', hand: 'units and sig figs, checked' },
   apphys: { t1: 'AP®', t2: 'Physics 1', hand: 'force by force' },
   apcalc: { t1: 'AP®', t2: 'Calculus AB', hand: 'typed like real math' },
+  apcalcbc: { t1: 'AP®', t2: 'Calculus BC', hand: 'every AB topic, then series' },
   apstat: { t1: 'AP®', t2: 'Statistics', hand: 'conclusions in context' },
   apenv: { t1: 'AP® Environmental', t2: 'Science', hand: 'every calculation, with units' },
   appsych: { t1: 'AP®', t2: 'Psychology', hand: 'every concept, applied' },

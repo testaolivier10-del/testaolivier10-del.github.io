@@ -1,0 +1,513 @@
+{
+ "stimuli": {
+  "logistic-models-s1": {
+   "kind": "table",
+   "title": "Fish in a lake",
+   "text": "The number of fish $P(t)$ in a lake, $t$ years after 200 fish were released, satisfies $\\frac{dP}{dt} = 0.0006P(1200 - P)$ with $P(0) = 200$. Values of $P(t)$, rounded to the nearest fish, are shown.",
+   "table": {
+    "caption": "Number of fish P(t) at selected times t in years",
+    "cols": [
+     "$t$ (years)",
+     "0",
+     "1",
+     "2",
+     "3",
+     "4",
+     "6",
+     "8"
+    ],
+    "rows": [
+     [
+      "$P(t)$ (fish)",
+      "200",
+      "349",
+      "549",
+      "761",
+      "937",
+      "1125",
+      "1181"
+     ]
+    ]
+   }
+  },
+  "logistic-models-s2": {
+   "kind": "graph",
+   "title": "The growth rate $\\frac{dP}{dt}$ graphed against $P$",
+   "text": "A population $P$ follows a logistic model $\\frac{dP}{dt} = kP(K - P)$. The graph shows $\\frac{dP}{dt}$, in animals per year, as a function of $P$: a parabola through $(0, 0)$ and $(800, 0)$ with its highest point at $(400, 32)$.",
+   "plot": {
+    "label": "Graph of the rate dP/dt against P: a downward parabola from (0, 0) up to its highest point (400, 32) and back down to (800, 0)",
+    "x": [
+     0,
+     900
+    ],
+    "y": [
+     0,
+     40
+    ],
+    "xStep": 100,
+    "yStep": 8,
+    "xLabel": "P",
+    "yLabel": "dP/dt",
+    "curves": [
+     {
+      "fn": "0.0002x(800 - x)",
+      "domain": [
+       0,
+       800
+      ],
+      "cls": "s1",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       400,
+       32
+      ],
+      "label": "(400, 32)"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-logistic-models-1",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "logistic-models-s1",
+   "q": "What is the carrying capacity of the lake for these fish?",
+   "numeric": {
+    "answer": 1200,
+    "unit": "fish",
+    "mistakes": [
+     {
+      "value": 600,
+      "why": "600 is half the carrying capacity, where growth is fastest. The population levels off at the value that makes $1200 - P = 0$."
+     },
+     {
+      "value": 1181,
+      "why": "1181 is the population at $t = 8$, still rising. The carrying capacity is the limit, 1200."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dP}{dt} = 0$ when $P = 1200$, and $P$ rises toward it: the carrying capacity is 1200 fish."
+   }
+  },
+  {
+   "id": "cbc-logistic-models-2",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "logistic-models-s1",
+   "q": "For what number of fish is the population growing fastest?",
+   "numeric": {
+    "answer": 600,
+    "unit": "fish",
+    "mistakes": [
+     {
+      "value": 1200,
+      "why": "At 1200 the rate $0.0006P(1200 - P)$ is 0: growth has stopped. It is largest halfway, at $P = 600$."
+     },
+     {
+      "value": 200,
+      "why": "200 is the starting population. The rate is a downward parabola in $P$, largest at $P = 600$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dP}{dt} = 0.0006P(1200 - P)$ is a downward parabola in $P$ with zeros 0 and 1200, so its largest value is at $P = 600$, half the carrying capacity."
+   }
+  },
+  {
+   "id": "cbc-logistic-models-3",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logistic-models-s1",
+   "q": "Between which two times in the table is the population growing fastest?",
+   "options": [
+    "Between $t = 6$ and $t = 8$",
+    "Between $t = 0$ and $t = 1$",
+    "Between $t = 3$ and $t = 4$",
+    "Between $t = 2$ and $t = 3$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Growth is fastest when $P = 600$, which happens between $t = 2$ and $t = 3$. The table agrees: $761 - 549 = 212$ is the largest one-year change.",
+    "options": [
+     "Near the carrying capacity growth slows: $P$ rises only about 56 fish over these two years.",
+     "At first the population is small, so growth is slow; it speeds up until $P = 600$.",
+     "$P$ is already above 600 here, so the rate has started to fall: the jump is about 176, smaller than 212.",
+     "Right: $P$ passes 600 between $P(2) \\approx 549$ and $P(3) \\approx 761$; the table also shows its largest jump there."
+    ]
+   }
+  },
+  {
+   "id": "cbc-logistic-models-4",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "logistic-models-s1",
+   "q": "How fast is the population growing at $t = 0$? Include units.",
+   "numeric": {
+    "answer": 120,
+    "unit": "fish per year",
+    "askUnit": true,
+    "units": [
+     "fish/year",
+     "fish/yr",
+     "fish per yr"
+    ],
+    "mistakes": [
+     {
+      "value": 0.12,
+      "why": "$0.0006 \\cdot 200 \\cdot (1200 - 200) = 0.0006 \\cdot 200{,}000 = 120$. Check the factor $1200 - 200 = 1000$."
+     },
+     {
+      "value": 144,
+      "why": "That uses $1200$ for $1200 - P$. At $t = 0$, $P = 200$, so the factor is $1000$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dP}{dt}\\Big|_{P = 200} = 0.0006(200)(1000) = 120$ fish per year."
+   }
+  },
+  {
+   "id": "cbc-logistic-models-5",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logistic-models-s1",
+   "q": "Suppose instead that 1500 fish had been released, with the same differential equation. What would $P(t)$ do?",
+   "options": [
+    "Decrease toward 1200",
+    "Increase without bound",
+    "Stay at 1500",
+    "Fall to 600 and then level off"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The equilibrium solutions are $P = 0$ and $P = 1200$. Any positive start approaches 1200: from below it rises, from above it falls.",
+    "options": [
+     "Right: for $P > 1200$, $1200 - P < 0$, so $\\frac{dP}{dt} < 0$, and the population falls toward the carrying capacity.",
+     "Above 1200 the factor $1200 - P$ is negative, so the population shrinks.",
+     "$P = 1500$ is not an equilibrium: $\\frac{dP}{dt} = 0.0006(1500)(-300) = -270$.",
+     "The population falls only while $P > 1200$; it approaches 1200 from above and never reaches 600."
+    ]
+   }
+  },
+  {
+   "id": "cbc-logistic-models-6",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "logistic-models-s2",
+   "q": "What is the carrying capacity $K$?",
+   "options": [
+    "0",
+    "800",
+    "400",
+    "32"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$kP(K - P) = 0$ at $P = 0$ and $P = K$; the graph returns to 0 at 800.",
+    "options": [
+     "$P = 0$ is the other equilibrium: no animals, no growth. The carrying capacity is the positive one.",
+     "Right: the rate returns to 0 at $P = 800$, the positive equilibrium the population approaches.",
+     "400 is where the rate is largest, half of $K$.",
+     "32 animals per year is the largest rate, not a population."
+    ]
+   }
+  },
+  {
+   "id": "cbc-logistic-models-7",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logistic-models-s2",
+   "q": "Which differential equation matches the graph?",
+   "options": [
+    "$\\frac{dP}{dt} = 32P(800 - P)$",
+    "$\\frac{dP}{dt} = 0.0002P(P - 800)$",
+    "$\\frac{dP}{dt} = 0.0002P(800 - P)$",
+    "$\\frac{dP}{dt} = 0.0002P(400 - P)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "From the zeros, $K = 800$. From the top point, $k \\cdot 400 \\cdot 400 = 32$, so $k = \\frac{32}{160{,}000} = 0.0002$.",
+    "options": [
+     "32 is the largest rate, not $k$. At $P = 400$ this formula gives over 5 million.",
+     "This rate is negative for $0 < P < 800$, but the graph is above the axis there.",
+     "Right: $K = 800$, and at $P = 400$: $k(400)(400) = 32$ gives $k = 0.0002$.",
+     "This rate is 0 at $P = 400$, but the graph is highest there and returns to 0 at 800."
+    ]
+   }
+  },
+  {
+   "id": "cbc-logistic-models-8",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logistic-models-s2",
+   "q": "Compare the growth rate when $P = 200$ with the growth rate when $P = 600$.",
+   "options": [
+    "The rate is larger at $P = 600$, since there are more animals",
+    "The rate is larger at $P = 200$, since there is more room to grow",
+    "The graph alone does not allow a comparison",
+    "They are equal: 24 animals per year each"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The rate $kP(K - P)$ is symmetric about $\\frac{K}{2} = 400$, so $P = 200$ and $P = 600$ give the same rate, 24 animals per year.",
+    "options": [
+     "More animals means more births, but less room: $800 - 600 = 200$. The two effects balance exactly.",
+     "More room, but fewer animals to grow. The graph has the same height at 200 and 600.",
+     "Read the heights of the graph, or use the model: both rates are 24.",
+     "Right: the parabola is symmetric about $P = 400$; $0.0002(200)(600) = 0.0002(600)(200) = 24$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-logistic-models-9",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "logistic-models-s2",
+   "q": "Where is the graph of the population $P(t)$ concave up, for a population that starts between 0 and 800?",
+   "options": [
+    "Concave up while $P < 400$, concave down while $400 < P < 800$",
+    "Concave down while $P < 400$, concave up while $400 < P < 800$",
+    "Concave up throughout $0 < P < 800$",
+    "Neither: the graph of $P(t)$ is a straight line"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{d^2P}{dt^2} = \\frac{d}{dP}\\left(kP(K - P)\\right) \\cdot \\frac{dP}{dt} = k(K - 2P)\\frac{dP}{dt}$. With $\\frac{dP}{dt} > 0$, the sign is that of $K - 2P$: positive for $P < 400$, negative above. $P = 400$ is a point of inflection.",
+    "options": [
+     "Right: $\\frac{dP}{dt}$ increases as $P$ grows toward 400 and decreases after, so $P(t)$ bends up and then down.",
+     "Reversed: below 400 the rate is rising as $P$ rises, so the graph of $P$ gets steeper (concave up).",
+     "Above 400 the rate falls as $P$ rises, so the graph of $P$ flattens out: concave down.",
+     "A straight line has a constant rate. Here the rate changes with $P$, from 0 up to 32 and back to 0."
+    ]
+   }
+  },
+  {
+   "id": "cbc-logistic-models-10",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A population satisfies $\\frac{dy}{dt} = 0.5y\\left(1 - \\frac{y}{300}\\right)$ with $y(0) = 20$. What is $\\lim_{t \\to \\infty} y(t)$?",
+   "numeric": {
+    "answer": 300,
+    "mistakes": [
+     {
+      "value": 0.5,
+      "why": "0.5 is the relative growth rate for small populations. The limit is the value that makes $1 - \\frac{y}{300} = 0$: 300."
+     },
+     {
+      "value": 150,
+      "why": "150 is where the population grows fastest. It keeps growing past 150 toward 300."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$1 - \\frac{y}{300} = 0$ at $y = 300$, the carrying capacity; a population starting at 20 rises toward it."
+   }
+  },
+  {
+   "id": "cbc-logistic-models-11",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "single",
+   "practice": "1.D",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which differential equation is a logistic model?",
+   "options": [
+    "$\\frac{dy}{dt} = 3y^2$",
+    "$\\frac{dy}{dt} = 3y(10 - y)$",
+    "$\\frac{dy}{dt} = 3y$",
+    "$\\frac{dy}{dt} = 3(10 - y)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A logistic model has the form $\\frac{dy}{dt} = ky(K - y)$, or $ry\\left(1 - \\frac{y}{K}\\right)$.",
+    "options": [
+     "The rate grows with $y$ without limit; nothing slows it down.",
+     "Right: the rate is jointly proportional to $y$ and to $10 - y$.",
+     "The rate is proportional to $y$ alone: an exponential model, with no carrying capacity.",
+     "The rate is proportional to $10 - y$ alone; it is largest at $y = 0$, not halfway."
+    ]
+   }
+  },
+  {
+   "id": "cbc-logistic-models-12",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A population satisfies $\\frac{dP}{dt} = 0.04P\\left(1 - \\frac{P}{2500}\\right)$. Find $\\frac{dP}{dt}$ when $P = 500$.",
+   "numeric": {
+    "answer": 16,
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "$0.04 \\cdot 500 = 20$ leaves out the factor $1 - \\frac{500}{2500} = 0.8$, which slows the growth."
+     },
+     {
+      "value": 4,
+      "why": "The factor is $1 - \\frac{P}{2500} = 0.8$, not $\\frac{P}{2500} = 0.2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$0.04(500)\\left(1 - \\frac{500}{2500}\\right) = 20(0.8) = 16$."
+   }
+  },
+  {
+   "id": "cbc-logistic-models-13",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For the same model, $\\frac{dP}{dt} = 0.04P\\left(1 - \\frac{P}{2500}\\right)$, what is the largest value of $\\frac{dP}{dt}$?",
+   "numeric": {
+    "answer": 25,
+    "mistakes": [
+     {
+      "value": 1250,
+      "why": "1250 is the population at which the rate is largest. Substitute it: $0.04(1250)(0.5) = 25$."
+     },
+     {
+      "value": 50,
+      "why": "At $P = 1250$, $1 - \\frac{1250}{2500} = 0.5$; the rate is $50 \\times 0.5 = 25$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The rate is largest at half the carrying capacity, $P = 1250$: $0.04(1250)(0.5) = 25$."
+   }
+  },
+  {
+   "id": "cbc-logistic-models-14",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which statement describes the model $\\frac{dP}{dt} = 0.01P(90 - P)$?",
+   "options": [
+    "The growth rate is proportional to $90 - P$ alone",
+    "The growth rate equals the room left, $90 - P$",
+    "The growth rate is jointly proportional to $P$ and to $90 - P$",
+    "The growth rate is proportional to $P$ alone"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "\"Jointly proportional to $P$ and to $90 - P$\" is the defining sentence of a logistic model with carrying capacity 90.",
+    "options": [
+     "The factor $P$ matters too: with $P = 0$ the rate is 0, however much room there is.",
+     "The room left is multiplied by $0.01P$; for example at $P = 10$ the rate is $8$, not $80$.",
+     "Right: the rate is a constant, 0.01, times $P$ times the room left, $90 - P$.",
+     "That is exponential growth, $\\frac{dP}{dt} = kP$. Here the factor $90 - P$ also matters."
+    ]
+   }
+  },
+  {
+   "id": "cbc-logistic-models-15",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a school of 5000 students, the number $R$ who have heard a rumor satisfies $\\frac{dR}{dt} = 0.0002R(5000 - R)$, with $R(0) = 100$. Which statement is true?",
+   "options": [
+    "The rumor spreads fastest when 5000 students have heard it, and $R$ approaches 5000",
+    "The rumor spreads fastest when 2500 students have heard it, and $R$ approaches 2500",
+    "The rumor spreads fastest at the start, when 100 students have heard it",
+    "The rumor spreads fastest when 2500 students have heard it, and $R$ approaches 5000"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{dR}{dt}$ is largest at $R = \\frac{5000}{2} = 2500$, and since $0 < R(0) < 5000$, $\\lim_{t \\to \\infty} R(t) = 5000$.",
+    "options": [
+     "At $R = 5000$ the rate is $0.0002(5000)(0) = 0$: the spreading has stopped.",
+     "2500 is where the rate peaks; $R$ keeps growing past it, toward 5000.",
+     "At $R = 100$ few students are passing it on: the rate is $0.0002(100)(4900) = 98$, below the peak $0.0002(2500)(2500) = 1250$.",
+     "Right: the rate is largest at half the carrying capacity, and $R$ rises toward 5000."
+    ]
+   }
+  },
+  {
+   "id": "cbc-logistic-models-16",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "type": "numeric",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The function $y$ satisfies $\\frac{dy}{dt} = 2y(7 - y)$ and $y(0) = 10$. What is $\\lim_{t \\to \\infty} y(t)$?",
+   "numeric": {
+    "answer": 7,
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "At $y = 10$, $\\frac{dy}{dt} = 2(10)(-3) = -60 < 0$, so $y$ decreases. It falls toward 7."
+     },
+     {
+      "value": 3.5,
+      "why": "3.5 is where growth is fastest for a population below 7. Starting at 10, $y$ decreases toward 7 and stays above it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $y > 7$ the rate is negative, so $y$ decreases toward the carrying capacity 7."
+   }
+  }
+ ]
+}

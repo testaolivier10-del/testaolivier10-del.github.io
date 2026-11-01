@@ -1,0 +1,94 @@
+{
+ "topic": "parametric-derivatives",
+ "hook": "A drone's flight plan gives its east position and its north position as functions of time. At any moment you can ask how fast it moves east, how fast it moves north, and how steep its path is. The first two are ordinary derivatives with respect to $t$. The third, the slope $\\frac{dy}{dx}$ of the path, comes from dividing one rate by the other, and that one division is the heart of Unit 9.",
+ "prereq": [
+  {
+   "q": "If $y$ is a function of $x$ and $x$ is a function of $t$, the chain rule says $\\frac{dy}{dt} =$",
+   "options": [
+    "$\\frac{dy}{dx}\\cdot\\frac{dx}{dt}$",
+    "$\\frac{dy}{dx} + \\frac{dx}{dt}$",
+    "$\\frac{dy}{dx} \\div \\frac{dx}{dt}$",
+    "$\\frac{dx}{dy}\\cdot\\frac{dx}{dt}$"
+   ],
+   "correct": 0,
+   "why": "The rates multiply: change in $y$ per unit of $x$, times change in $x$ per unit of $t$.",
+   "review": "chain-rule"
+  },
+  {
+   "q": "The path $x = t + 1$, $y = t^2$ passes through which point when $t = 2$?",
+   "options": [
+    "$(3, 4)$",
+    "$(2, 4)$",
+    "$(4, 3)$",
+    "$(3, 2)$"
+   ],
+   "correct": 0,
+   "why": "Put $t = 2$ into both equations: $x = 3$ and $y = 4$.",
+   "review": "math-parametric-vectors"
+  },
+  {
+   "q": "The line through $(2, 5)$ with slope $-3$ is",
+   "options": [
+    "$y - 5 = -3(x - 2)$",
+    "$y - 2 = -3(x - 5)$",
+    "$y + 5 = -3(x + 2)$",
+    "$y = -3x + 5$"
+   ],
+   "correct": 0,
+   "why": "Point-slope form: $y - y_1 = m(x - x_1)$ with $(x_1, y_1) = (2, 5)$.",
+   "review": "derivative-definition"
+  }
+ ],
+ "figure": {
+  "figure": "parametric-derivatives-tangents",
+  "caption": "The curve $x = t^2$, $y = t^3 - 3t$ passes through $(3, 0)$ twice, with slope $\\sqrt{3}$ at $t = \\sqrt{3}$ and $-\\sqrt{3}$ at $t = -\\sqrt{3}$. Its tangent is horizontal at $t = \\pm 1$, where $\\frac{dy}{dt} = 0$, and vertical at $t = 0$, where $\\frac{dx}{dt} = 0$."
+ },
+ "chain": [
+  {
+   "cause": "$x$ and $y$ are both functions of $t$",
+   "effect": "$\\frac{dx}{dt}$ and $\\frac{dy}{dt}$ are the horizontal and vertical rates of the moving point"
+  },
+  {
+   "cause": "The chain rule gives $\\frac{dy}{dt} = \\frac{dy}{dx}\\cdot\\frac{dx}{dt}$",
+   "effect": "so $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}$ wherever $\\frac{dx}{dt} \\ne 0$"
+  },
+  {
+   "cause": "$\\frac{dy}{dt} = 0$ while $\\frac{dx}{dt} \\ne 0$",
+   "effect": "the point moves straight across for an instant: a horizontal tangent"
+  },
+  {
+   "cause": "$\\frac{dx}{dt} = 0$ while $\\frac{dy}{dt} \\ne 0$",
+   "effect": "the point moves straight up or down for an instant: a vertical tangent"
+  }
+ ],
+ "ideas": [
+  "The slope of a parametric curve is $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}$, provided $\\frac{dx}{dt} \\ne 0$. It is a function of $t$: evaluate it at the time, not at the point.",
+  "A tangent line needs a point and a slope, both at the same $t$: $y - y(t_0) = \\left.\\frac{dy}{dx}\\right|_{t=t_0}(x - x(t_0))$.",
+  "Signs give direction: $\\frac{dx}{dt} > 0$ moves right, $< 0$ left; $\\frac{dy}{dt} > 0$ moves up, $< 0$ down.",
+  "Horizontal tangent: $\\frac{dy}{dt} = 0$ and $\\frac{dx}{dt} \\ne 0$. Vertical tangent: $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} \\ne 0$. Both zero: look closer."
+ ],
+ "misconception": {
+  "wrong": "At $t = 1$, $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} = 5$, so the tangent line is horizontal.",
+  "right": "$\\frac{dx}{dt} = 0$ means no horizontal motion: the point moves straight up, so the tangent line is vertical. A horizontal tangent needs $\\frac{dy}{dt} = 0$ with $\\frac{dx}{dt} \\ne 0$, because $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}$ is 0 only when its numerator is."
+ },
+ "check": [
+  "cbc-parametric-derivatives-1",
+  "cbc-parametric-derivatives-2",
+  "cbc-parametric-derivatives-3",
+  "cbc-parametric-derivatives-5",
+  "cbc-parametric-derivatives-10",
+  "cbc-parametric-derivatives-14",
+  "cbc-parametric-derivatives-15"
+ ],
+ "summary": "For a curve $x = x(t)$, $y = y(t)$, the derivatives $\\frac{dx}{dt}$ and $\\frac{dy}{dt}$ are the horizontal and vertical rates, and their signs give the direction of motion. The slope of the curve is $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}$ where $\\frac{dx}{dt} \\ne 0$, evaluated at a time. Horizontal tangents need $\\frac{dy}{dt} = 0$, vertical tangents $\\frac{dx}{dt} = 0$, with the other rate nonzero.",
+ "connections": [
+  {
+   "href": "../notes/math-parametric-vectors.html",
+   "label": "Back: parametric equations and vectors"
+  },
+  {
+   "href": "../notes/parametric-second-derivatives.html",
+   "label": "Next: second derivatives of parametric equations (9.2)"
+  }
+ ]
+}

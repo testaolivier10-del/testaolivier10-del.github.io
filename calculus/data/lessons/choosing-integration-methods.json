@@ -29,7 +29,7 @@
  ],
  "figure": {
   "figure": "integration-flowchart",
-  "caption": "Ask the questions in order: basic form, substitution, long division, completing the square."
+  "caption": "<span class=\"calc-ab-only\">Ask the questions in order: basic form, substitution, long division, completing the square.</span><span class=\"cbc-only\">Ask the questions in order: basic form, substitution, long division, completing the square, then the two BC questions: integration by parts and linear partial fractions.</span>"
  },
  "chain": [
   {
@@ -67,7 +67,7 @@
   "calc-choosing-integration-methods-9",
   "calc-choosing-integration-methods-16"
  ],
- "summary": "To choose a technique, ask in order: is it a basic form after rewriting? Is there an inside function with its derivative as a factor? Is it a fraction to divide? Is it a constant over an irreducible quadratic? Then integrate, check by differentiating, and change the limits whenever you substitute in a definite integral.",
+ "summary": "To choose a technique, ask in order: is it a basic form after rewriting? Is there an inside function with its derivative as a factor? Is it a fraction to divide? Is it a constant over an irreducible quadratic? Then integrate, check by differentiating, and change the limits whenever you substitute in a definite integral.<span class=\"cbc-only\"> On the BC exam, two more questions follow: is it a product with a factor that simplifies when differentiated (integration by parts)? Does the bottom factor into distinct linear factors (linear partial fractions)?</span>",
  "connections": [
   {
    "href": "../notes/rewriting-integrands.html",

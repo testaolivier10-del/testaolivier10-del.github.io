@@ -1,0 +1,77 @@
+{
+ "topic": "taylor-series",
+ "hook": "A Taylor polynomial stops after a few terms and is only an estimate. Let it run forever and, for $\\sin x$, $\\cos x$ and $e^x$, the infinite sum is not an estimate any more: it is the function, for every $x$. Four of these series are worth knowing by heart; the rest of the unit builds on them.",
+ "prereq": [
+  {
+   "q": "What is the coefficient of $(x - a)^n$ in the Taylor polynomial for $f$ about $x = a$?",
+   "options": [
+    "$\\frac{f^{(n)}(a)}{n!}$",
+    "$f^{(n)}(a)$",
+    "$\\frac{f^{(n)}(0)}{n!}$",
+    "$\\frac{f^{(n)}(a)}{n}$"
+   ],
+   "correct": 0,
+   "why": "The $n$th derivative at the center over $n!$.",
+   "review": "taylor-polynomials"
+  },
+  {
+   "q": "What is the interval of convergence of $\\sum_{n=0}^{\\infty} x^n$?",
+   "options": [
+    "$(-1, 1)$",
+    "$[-1, 1)$",
+    "$[-1, 1]$",
+    "all real numbers"
+   ],
+   "correct": 0,
+   "why": "It is geometric with ratio $x$; at $x = \\pm 1$ the terms do not approach 0.",
+   "review": "radius-interval-convergence"
+  }
+ ],
+ "figure": {
+  "figure": "taylor-series-exp",
+  "caption": "The partial sums $1 + x$, $1 + x + \\frac{x^2}{2!}$, $1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!}$ close in on $e^x$."
+ },
+ "chain": [
+  {
+   "cause": "Keep adding terms $\\frac{f^{(n)}(a)}{n!}(x - a)^n$ without stopping",
+   "effect": "the result is a power series, the Taylor series of $f$ about $a$, and $P_n$ is its partial sum"
+  },
+  {
+   "cause": "The Taylor series converges and its partial sums approach $f(x)$",
+   "effect": "the series equals the function on its interval of convergence"
+  },
+  {
+   "cause": "Know four series by heart: $\\frac{1}{1 - x}$, $\\sin x$, $\\cos x$, $e^x$",
+   "effect": "many sums and limits can be read off, and other series can be built from them"
+  }
+ ],
+ "ideas": [
+  "Taylor series of $f$ about $a$: $\\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}(x - a)^n$. About $a = 0$ it is a Maclaurin series.",
+  "$e^x = \\sum \\frac{x^n}{n!}$, $\\sin x = \\sum \\frac{(-1)^n x^{2n+1}}{(2n+1)!}$, $\\cos x = \\sum \\frac{(-1)^n x^{2n}}{(2n)!}$, for every $x$.",
+  "$\\frac{1}{1 - x} = \\sum x^n = 1 + x + x^2 + \\cdots$ only for $-1 < x < 1$.",
+  "A series is written with \"$+ \\cdots$\" or with $\\sum$ and a general term; a Taylor polynomial is not."
+ ],
+ "misconception": {
+  "wrong": "The Taylor series for $e^x$ about $x = 1$ is $\\sum \\frac{(x - 1)^n}{n!}$, the same coefficients as about 0.",
+  "right": "The coefficients use derivatives at the center: $f^{(n)}(1) = e$, so the series is $\\sum \\frac{e\\,(x - 1)^n}{n!}$."
+ },
+ "check": [
+  "cbc-taylor-series-1",
+  "cbc-taylor-series-2",
+  "cbc-taylor-series-3",
+  "cbc-taylor-series-4",
+  "cbc-taylor-series-9",
+  "cbc-taylor-series-12"
+ ],
+ "summary": "The Taylor series of $f$ about $a$ is $\\sum \\frac{f^{(n)}(a)}{n!}(x - a)^n$; its partial sums are the Taylor polynomials. The Maclaurin series of $e^x$, $\\sin x$ and $\\cos x$ converge to the function for every $x$, and $\\frac{1}{1 - x} = \\sum x^n$ for $|x| < 1$.",
+ "connections": [
+  {
+   "href": "../notes/radius-interval-convergence.html",
+   "label": "Back: radius and interval of convergence (10.13)"
+  },
+  {
+   "href": "../notes/power-series-functions.html",
+   "label": "Next: representing functions as power series (10.15)"
+  }
+ ]
+}

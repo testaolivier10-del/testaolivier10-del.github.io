@@ -20,6 +20,7 @@ const COURSES = {
   apenv: 'AP® Environmental Science',
   appsych: 'AP® Psychology',
   apprecalc: 'AP® Precalculus',
+  apcalcbc: 'AP® Calculus BC',
 };
 
 const CSS = `.from-video{margin:0 0 18px;max-width:520px;padding:14px 16px 16px;border:var(--bw,2px) solid var(--line);border-radius:var(--radius);background:var(--white);box-shadow:var(--lift-sm,none);}

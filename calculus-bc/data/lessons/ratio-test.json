@@ -1,0 +1,93 @@
+{
+ "topic": "ratio-test",
+ "hook": "A geometric series converges when each term is a fixed fraction of the one before. Many series are not geometric, but far out their terms behave as if they were: each term is close to a fixed fraction $L$ of the one before. The ratio test finds that $L$ and compares it with 1.",
+ "prereq": [
+  {
+   "q": "When does the geometric series $\\sum_{n=0}^{\\infty} a r^n$ (with $a \\ne 0$) converge?",
+   "options": [
+    "When $|r| < 1$",
+    "When $r > 0$",
+    "When $|r| > 1$",
+    "When $r = 1$"
+   ],
+   "correct": 0,
+   "why": "Each term is $r$ times the last; the sum settles when $|r| < 1$.",
+   "review": "geometric-series"
+  },
+  {
+   "q": "Simplify $\\frac{(n+1)!}{n!}$.",
+   "options": [
+    "$n + 1$",
+    "$n$",
+    "$1$",
+    "$(n+1)n$"
+   ],
+   "correct": 0,
+   "why": "$(n+1)! = (n+1) \\cdot n!$, so the quotient is $n + 1$.",
+   "review": "math-sequences"
+  },
+  {
+   "q": "Find $\\lim_{n \\to \\infty} \\frac{n + 1}{2n}$.",
+   "options": [
+    "$\\frac{1}{2}$",
+    "$1$",
+    "$0$",
+    "$2$"
+   ],
+   "correct": 0,
+   "why": "Divide the top and bottom by $n$: $\\frac{1 + 1/n}{2} \\to \\frac{1}{2}$.",
+   "review": "limits-at-infinity"
+  }
+ ],
+ "figure": {
+  "figure": "ratio-test-ratios",
+  "caption": "The ratios $\\frac{a_{n+1}}{a_n}$ for $\\sum \\frac{n^2}{3^n}$ start above 1 and settle at $\\frac{1}{3}$; the limit is what counts."
+ },
+ "chain": [
+  {
+   "cause": "Compute $\\left|\\frac{a_{n+1}}{a_n}\\right|$ and its limit $L$",
+   "effect": "far out, each term is about $L$ times the one before, as in a geometric series with ratio $L$"
+  },
+  {
+   "cause": "$L < 1$",
+   "effect": "the terms shrink at least as fast as a convergent geometric series, so the series converges"
+  },
+  {
+   "cause": "$L > 1$ (or $L$ is infinite)",
+   "effect": "the terms grow, do not approach 0, and the series diverges"
+  },
+  {
+   "cause": "$L = 1$",
+   "effect": "the test decides nothing: use another test"
+  }
+ ],
+ "ideas": [
+  "Ratio test: $L = \\lim_{n \\to \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right|$. $L < 1$: converges. $L > 1$ or infinite: diverges. $L = 1$: no conclusion.",
+  "Put $a_{n+1}$ on top and simplify before taking the limit: $\\frac{(n+1)!}{n!} = n + 1$, $\\frac{3^{n+1}}{3^n} = 3$.",
+  "Use it for factorials and exponentials. For $p$-series and ratios of polynomials the limit is 1, so compare instead.",
+  "Only the limit matters; early ratios above or below 1 change nothing."
+ ],
+ "misconception": {
+  "wrong": "$\\lim_{n \\to \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = 1$ for $\\sum \\frac{1}{n^2}$, so the series diverges.",
+  "right": "A limit of 1 decides nothing. $\\sum \\frac{1}{n^2}$ converges as a $p$-series with $p = 2$, while $\\sum \\frac{1}{n}$, with the same limit, diverges."
+ },
+ "check": [
+  "cbc-ratio-test-2",
+  "cbc-ratio-test-3",
+  "cbc-ratio-test-5",
+  "cbc-ratio-test-8",
+  "cbc-ratio-test-9",
+  "cbc-ratio-test-13"
+ ],
+ "summary": "The ratio test compares a series with a geometric one. Find $L = \\lim_{n \\to \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right|$: if $L < 1$ the series converges, if $L > 1$ or $L$ is infinite it diverges, and if $L = 1$ the test gives no conclusion. It works best on factorials and powers like $3^n$.",
+ "connections": [
+  {
+   "href": "../notes/alternating-series-test.html",
+   "label": "Back: the alternating series test (10.7)"
+  },
+  {
+   "href": "../notes/absolute-conditional.html",
+   "label": "Next: absolute and conditional convergence (10.9)"
+  }
+ ]
+}

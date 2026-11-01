@@ -1,0 +1,12 @@
+{
+ "vector-derivatives-ellipse": {
+  "file": "figures/vector-derivatives-ellipse.svg",
+  "ext": "svg",
+  "w": 880,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The ellipse r(t) = 3 cos t, 2 sin t, traced counterclockwise. Blue velocity vectors, drawn at half size, start at the points where t = 0, pi/4, pi/2, pi and 3 pi/2; each is tangent to the ellipse and points counterclockwise: straight up at t = 0, straight left at t = pi/2. At t = pi/4 a vermillion acceleration vector, also half size, points from the particle toward the center. The formulas are r(t) = 3 cos t, 2 sin t; v(t) = -3 sin t, 2 cos t; a(t) = -3 cos t, -2 sin t."
+ }
+}

@@ -1,0 +1,546 @@
+{
+ "stimuli": {
+  "power-series-functions-s1": {
+   "kind": "table",
+   "title": "From a geometric series to $\\arctan x$",
+   "table": {
+    "caption": "Building a power series for $\\arctan x$ from the series for $\\frac{1}{1 - u}$",
+    "cols": [
+     "Step",
+     "Series"
+    ],
+    "rows": [
+     [
+      "Start",
+      "$\\frac{1}{1 - u} = 1 + u + u^2 + u^3 + \\cdots$ for $|u| < 1$"
+     ],
+     [
+      "Substitute $u = -x^2$",
+      "$\\frac{1}{1 + x^2} = 1 + (-x^2) + (-x^2)^2 + \\cdots$"
+     ],
+     [
+      "Integrate from $0$ to $x$",
+      "$\\arctan x = \\int_0^x \\frac{1}{1 + t^2}\\,dt$"
+     ]
+    ]
+   }
+  },
+  "power-series-functions-s2": {
+   "kind": "table",
+   "title": "Differentiating the geometric series",
+   "table": {
+    "caption": "For $|x| < 1$, $\\frac{1}{1 - x} = \\sum_{n=0}^{\\infty} x^n$. Differentiating term by term:",
+    "cols": [
+     "Function",
+     "Series"
+    ],
+    "rows": [
+     [
+      "$\\frac{1}{1 - x}$",
+      "$1 + x + x^2 + x^3 + \\cdots = \\sum_{n=0}^{\\infty} x^n$"
+     ],
+     [
+      "$\\frac{d}{dx}\\left(\\frac{1}{1 - x}\\right)$",
+      "$1 + 2x + 3x^2 + \\cdots = \\sum_{n=1}^{\\infty} n x^{n-1}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-power-series-functions-1",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "power-series-functions-s1",
+   "q": "Write the first four nonzero terms of the Maclaurin series for $\\frac{1}{1 + x^2}$.",
+   "expr": {
+    "answer": "1 - x^2 + x^4 - x^6",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -0.5,
+     0.5
+    ],
+    "mode": "exact",
+    "lhs": "\\frac{1}{1 + x^2} \\approx",
+    "mistakes": [
+     {
+      "expr": "1 + x^2 + x^4 + x^6",
+      "why": "Substitute $u = -x^2$: $u^2 = x^4$ but $u = -x^2$ and $u^3 = -x^6$, so the signs alternate."
+     },
+     {
+      "expr": "1 - x + x^2 - x^3",
+      "why": "Substitute $-x^2$ for $u$, not $-x$: the powers are $x^2, x^4, x^6$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With $u = -x^2$: $1 + (-x^2) + (-x^2)^2 + (-x^2)^3 + \\cdots = 1 - x^2 + x^4 - x^6 + \\cdots$"
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-2",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "power-series-functions-s1",
+   "q": "What is the radius of convergence of the series for $\\frac{1}{1 + x^2}$?",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "The condition is $|u| = x^2 < 1$, which gives $|x| < 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The geometric series needs $|u| < 1$, that is $x^2 < 1$, so $|x| < 1$ and the radius is 1."
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-3",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "power-series-functions-s1",
+   "q": "Integrate term by term from $0$ to $x$: write the first four nonzero terms of the Maclaurin series for $\\arctan x$.",
+   "expr": {
+    "answer": "x - x^3/3 + x^5/5 - x^7/7",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -0.5,
+     0.5
+    ],
+    "mode": "exact",
+    "lhs": "\\arctan x \\approx",
+    "answerTex": "x - \\frac{x^3}{3} + \\frac{x^5}{5} - \\frac{x^7}{7}",
+    "mistakes": [
+     {
+      "expr": "x - x^3 + x^5 - x^7",
+      "why": "Integrating $t^{2n}$ gives $\\frac{t^{2n+1}}{2n + 1}$: divide by the new power."
+     },
+     {
+      "expr": "-2x + 4x^3 - 6x^5 + 8x^7",
+      "why": "That differentiates the series; $\\arctan x$ is the integral of $\\frac{1}{1 + x^2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^x (1 - t^2 + t^4 - t^6)\\,dt = x - \\frac{x^3}{3} + \\frac{x^5}{5} - \\frac{x^7}{7}$, and the constant is 0 because $\\arctan 0 = 0$."
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-4",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "power-series-functions-s1",
+   "q": "Use the first two nonzero terms of the series for $\\arctan x$ to estimate $\\arctan\\frac{1}{2}$.",
+   "numeric": {
+    "answer": "11/24",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "That is only the first term; subtract $\\frac{(1/2)^3}{3} = \\frac{1}{24}$."
+     },
+     {
+      "value": "3/8",
+      "why": "The second term is $\\frac{(1/2)^3}{3} = \\frac{1}{24}$, not $\\left(\\frac{1}{2}\\right)^3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\arctan\\frac{1}{2} \\approx \\frac{1}{2} - \\frac{(1/2)^3}{3} = \\frac{1}{2} - \\frac{1}{24} = \\frac{11}{24}$."
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-5",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "power-series-functions-s1",
+   "q": "The series for $\\arctan\\frac{1}{2}$ alternates and its terms decrease in size to 0. Find the alternating series error bound for the estimate $\\frac{11}{24}$.",
+   "numeric": {
+    "answer": "1/160",
+    "mistakes": [
+     {
+      "value": "1/24",
+      "why": "$\\frac{1}{24}$ is the last term used; the bound is the first term left out, $\\frac{(1/2)^5}{5}$."
+     },
+     {
+      "value": "1/32",
+      "why": "Divide by 5 as well: the term is $\\frac{(1/2)^5}{5} = \\frac{1}{160}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The first omitted term is $\\frac{(1/2)^5}{5} = \\frac{1}{160}$, so $\\left|\\arctan\\frac{1}{2} - \\frac{11}{24}\\right| \\le \\frac{1}{160}$."
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-6",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "power-series-functions-s2",
+   "q": "Write $\\frac{d}{dx}\\left(\\frac{1}{1 - x}\\right)$, the sum of $\\sum_{n=1}^{\\infty} n x^{n-1}$, as an expression in $x$.",
+   "expr": {
+    "answer": "1/(1-x)^2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -0.5,
+     0.5
+    ],
+    "mode": "exact",
+    "lhs": "\\sum_{n=1}^{\\infty} n x^{n-1} =",
+    "answerTex": "\\frac{1}{(1 - x)^2}",
+    "mistakes": [
+     {
+      "expr": "-1/(1-x)^2",
+      "why": "The chain rule gives $-(1 - x)^{-2} \\cdot (-1)$: the two negatives cancel."
+     },
+     {
+      "expr": "1/(1-x)",
+      "why": "That is the original function; differentiate it: $\\frac{d}{dx}(1 - x)^{-1} = (1 - x)^{-2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d}{dx}(1 - x)^{-1} = -(1 - x)^{-2} \\cdot (-1) = \\frac{1}{(1 - x)^2}$, so $\\sum_{n=1}^{\\infty} n x^{n-1} = \\frac{1}{(1 - x)^2}$ for $|x| < 1$."
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-7",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "power-series-functions-s2",
+   "q": "Use the table to find the sum $\\sum_{n=1}^{\\infty} \\frac{n}{2^n}$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "$\\sum n\\left(\\frac{1}{2}\\right)^{n-1} = 4$, but $\\frac{n}{2^n} = \\frac{1}{2} \\cdot n\\left(\\frac{1}{2}\\right)^{n-1}$: multiply by $\\frac{1}{2}$."
+     },
+     {
+      "value": 1,
+      "why": "1 is $\\sum_{n=1}^{\\infty} \\left(\\frac{1}{2}\\right)^n$, the series without the factor $n$. Use the derivative series: $\\frac{1}{2} \\cdot \\frac{1}{(1 - 1/2)^2} = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{n}{2^n} = \\frac{1}{2} \\cdot n\\left(\\frac{1}{2}\\right)^{n-1}$, so the sum is $\\frac{1}{2} \\cdot \\frac{1}{(1 - 1/2)^2} = \\frac{1}{2} \\cdot 4 = 2$."
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-8",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "power-series-functions-s2",
+   "q": "Give the interval of convergence of $\\sum_{n=1}^{\\infty} n x^{n-1}$.",
+   "interval": {
+    "lo": "-1",
+    "hi": "1",
+    "loIn": false,
+    "hiIn": false,
+    "center": "0",
+    "var": "x",
+    "ends": {
+     "lo": "At $x = -1$ the terms are $n(-1)^{n-1}$, whose sizes grow, so the series diverges by the nth term test.",
+     "hi": "At $x = 1$ the terms are $n$, which grow without bound, so the series diverges by the nth term test."
+    },
+    "mistakes": [
+     {
+      "answer": "[-1, 1)",
+      "why": "At $x = -1$ the terms $n(-1)^{n-1}$ alternate but their sizes grow; they do not approach 0, so the series diverges."
+     },
+     {
+      "answer": "[-1, 1]",
+      "why": "At both endpoints the terms have size $n$, which does not approach 0: both endpoints diverge."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Differentiating keeps the radius, 1. At $x = \\pm 1$ the terms have size $n$, which does not approach 0, so both endpoints diverge: $(-1, 1)$."
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-9",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "power-series-functions-s2",
+   "q": "A student differentiates the general term $x^n$ and writes $x^n \\ln x$. What went wrong?",
+   "options": [
+    "Nothing: $\\frac{d}{dx} x^n = x^n \\ln x$",
+    "The derivative was taken with respect to $n$; with respect to $x$ it is $n x^{n-1}$",
+    "The power rule was used; the quotient rule was needed",
+    "The series should be integrated, not differentiated"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In term-by-term differentiation, each term is a power of $x$ with a fixed exponent $n$, so $\\frac{d}{dx} x^n = n x^{n-1}$. The answer $x^n \\ln x$ treats $n$ as the variable.",
+    "options": [
+     "That is the derivative of $a^x$-type terms; for $x^n$ the power rule gives $n x^{n-1}$.",
+     "Right: $x$ is the variable, $n$ is a fixed index in each term.",
+     "$x^n$ is not a quotient; the power rule is right and gives $n x^{n-1}$.",
+     "Either can be done; the slip is the variable of differentiation."
+    ]
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-10",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Integrate the series for $\\frac{1}{1 + t}$ from $0$ to $x$ to write the first four nonzero terms of the Maclaurin series for $\\ln(1 + x)$.",
+   "expr": {
+    "answer": "x - x^2/2 + x^3/3 - x^4/4",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -0.5,
+     0.5
+    ],
+    "mode": "exact",
+    "lhs": "\\ln(1 + x) \\approx",
+    "answerTex": "x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\frac{x^4}{4}",
+    "mistakes": [
+     {
+      "expr": "x + x^2/2 + x^3/3 + x^4/4",
+      "why": "$\\frac{1}{1 + t} = \\frac{1}{1 - (-t)} = 1 - t + t^2 - \\cdots$: the signs alternate."
+     },
+     {
+      "expr": "1 - x + x^2 - x^3",
+      "why": "That is the series for $\\frac{1}{1 + x}$; integrate it to get $\\ln(1 + x)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{1 + t} = 1 - t + t^2 - t^3 + \\cdots$ for $|t| < 1$. Integrating from 0 to $x$: $\\ln(1 + x) = x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\frac{x^4}{4} + \\cdots$"
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-11",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Give the interval of convergence of $\\ln(1 + x) = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1} x^n}{n}$.",
+   "interval": {
+    "lo": "-1",
+    "hi": "1",
+    "loIn": false,
+    "hiIn": true,
+    "center": "0",
+    "var": "x",
+    "ends": {
+     "lo": "At $x = -1$ every term is $\\frac{(-1)^{n+1}(-1)^n}{n} = -\\frac{1}{n}$: the negative of the harmonic series, which diverges.",
+     "hi": "At $x = 1$ the series is $\\sum \\frac{(-1)^{n+1}}{n}$, the alternating harmonic series, which converges."
+    },
+    "mistakes": [
+     {
+      "answer": "(-1, 1)",
+      "why": "Integrating keeps the radius but can change the endpoints. At $x = 1$ the series is the alternating harmonic series, which converges, so include $x = 1$."
+     },
+     {
+      "answer": "[-1, 1)",
+      "why": "The endpoints are swapped. At $x = -1$ every term is $-\\frac{1}{n}$ (diverges); at $x = 1$ the series alternates (converges)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The radius is 1, as for $\\frac{1}{1 + x}$. At $x = 1$ the series is the alternating harmonic series, which converges; at $x = -1$ it is $-\\sum \\frac{1}{n}$, which diverges. The interval is $(-1, 1]$."
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-12",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the series for $e^x$ to write the first four nonzero terms of the Maclaurin series for $x e^{-x}$.",
+   "expr": {
+    "answer": "x - x^2 + x^3/2 - x^4/6",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -0.5,
+     0.5
+    ],
+    "mode": "exact",
+    "lhs": "x e^{-x} \\approx",
+    "answerTex": "x - x^2 + \\frac{x^3}{2} - \\frac{x^4}{6}",
+    "mistakes": [
+     {
+      "expr": "x + x^2 + x^3/2 + x^4/6",
+      "why": "Substitute $-x$: $e^{-x} = 1 - x + \\frac{x^2}{2!} - \\cdots$, so the signs alternate."
+     },
+     {
+      "expr": "1 - x + x^2/2 - x^3/6",
+      "why": "That is the series for $e^{-x}$; multiply each term by $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$e^{-x} = 1 - x + \\frac{x^2}{2} - \\frac{x^3}{6} + \\cdots$, and multiplying by $x$ gives $x - x^2 + \\frac{x^3}{2} - \\frac{x^4}{6} + \\cdots$"
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-13",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the coefficient of $x^6$ in the Maclaurin series for $e^{x^2}$.",
+   "numeric": {
+    "answer": "1/6",
+    "mistakes": [
+     {
+      "value": "1/720",
+      "why": "$x^6 = (x^2)^3$ comes from the $n = 3$ term, $\\frac{(x^2)^3}{3!}$: divide by $3!$, not $6!$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$e^{x^2} = \\sum \\frac{(x^2)^n}{n!} = \\sum \\frac{x^{2n}}{n!}$. The $x^6$ term has $n = 3$: $\\frac{x^6}{3!}$, so the coefficient is $\\frac{1}{6}$."
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-14",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Let $f(x) = \\sin(x^2)$. Use its Maclaurin series to find $f^{(6)}(0)$.",
+   "numeric": {
+    "answer": -120,
+    "mistakes": [
+     {
+      "value": "-1/6",
+      "why": "$-\\frac{1}{6}$ is the coefficient of $x^6$, which equals $\\frac{f^{(6)}(0)}{6!}$. Multiply by $720$."
+     },
+     {
+      "value": 120,
+      "why": "The $x^6$ term is $-\\frac{(x^2)^3}{3!}$: negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sin(x^2) = x^2 - \\frac{x^6}{3!} + \\frac{x^{10}}{5!} - \\cdots$. The coefficient of $x^6$ is $-\\frac{1}{6} = \\frac{f^{(6)}(0)}{6!}$, so $f^{(6)}(0) = -\\frac{720}{6} = -120$."
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-15",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "What happens to the radius of convergence when a power series is differentiated or integrated term by term?",
+   "options": [
+    "It doubles when the series is integrated",
+    "It shrinks by 1 when the series is differentiated",
+    "It stays the same, and so does each endpoint",
+    "It stays the same, though an endpoint may change"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Term-by-term differentiation and integration keep the radius of convergence. Behavior at the endpoints can change, so test them again.",
+    "options": [
+     "The radius does not change.",
+     "The radius does not change.",
+     "Endpoints can change: $\\sum \\frac{(-1)^{n+1}x^n}{n}$ converges at $x = 1$, but its derivative series does not.",
+     "Right: the radius is kept; test the endpoints again."
+    ]
+   }
+  },
+  {
+   "id": "cbc-power-series-functions-16",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Write the first three nonzero terms of the Maclaurin series for $\\int_0^x e^{-t^2}\\,dt$.",
+   "expr": {
+    "answer": "x - x^3/3 + x^5/10",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -0.5,
+     0.5
+    ],
+    "mode": "exact",
+    "lhs": "\\int_0^x e^{-t^2}\\,dt \\approx",
+    "answerTex": "x - \\frac{x^3}{3} + \\frac{x^5}{10}",
+    "mistakes": [
+     {
+      "expr": "x - x^3/3 + x^5/5",
+      "why": "$e^{-t^2} = 1 - t^2 + \\frac{t^4}{2!} - \\cdots$: keep the $\\frac{1}{2!}$, so the third term is $\\frac{x^5}{5 \\cdot 2} = \\frac{x^5}{10}$."
+     },
+     {
+      "expr": "1 - x^2 + x^4/2",
+      "why": "That is the series for $e^{-x^2}$; integrate it from 0 to $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$e^{-t^2} = 1 - t^2 + \\frac{t^4}{2} - \\cdots$. Integrating from 0 to $x$: $x - \\frac{x^3}{3} + \\frac{x^5}{10} - \\cdots$"
+   }
+  }
+ ]
+}

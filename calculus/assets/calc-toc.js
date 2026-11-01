@@ -2,6 +2,8 @@
    theme.css tb-*): the phone "Contents" drawer, lessons-done progress, ticks
    on finished topics and mastery chips. Every number comes from ApCalcCore. */
 (function(){
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   function tier(m){
     if(!m.answered) return ['', 'Not practiced'];
     var p = Math.round(m.value * 100);
@@ -55,7 +57,7 @@
     if(cur && c.scrollHeight > c.clientHeight) c.scrollTop = Math.max(0, cur.offsetTop - c.offsetTop - 120);
     paint();
     window.ApCalcToc = { paint: paint };
-    document.addEventListener('apcalc:progress', paint);
+    document.addEventListener(CK + ':progress', paint);
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

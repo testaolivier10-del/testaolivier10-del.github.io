@@ -1,0 +1,81 @@
+{
+ "topic": "parametric-second-derivatives",
+ "hook": "A roller coaster designer cares about more than the slope of the track: whether the track bends up into a valley or down over a hill decides whether riders are pressed into their seats or lifted out of them. For a track drawn by parametric equations, that bend is $\\frac{d^2y}{dx^2}$, and finding it takes one extra division that most students forget.",
+ "prereq": [
+  {
+   "q": "For $x = t^2$, $y = 4t$, the slope $\\frac{dy}{dx}$ is",
+   "options": [
+    "$\\frac{2}{t}$",
+    "$\\frac{t}{2}$",
+    "$8t$",
+    "$4$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{dy/dt}{dx/dt} = \\frac{4}{2t} = \\frac{2}{t}$.",
+   "review": "parametric-derivatives"
+  },
+  {
+   "q": "A graph is concave down on an interval where",
+   "options": [
+    "the second derivative is negative",
+    "the first derivative is negative",
+    "the function is negative",
+    "the second derivative is zero"
+   ],
+   "correct": 0,
+   "why": "Concave down means the slope is decreasing, so the second derivative is negative.",
+   "review": "concavity"
+  }
+ ],
+ "figure": {
+  "figure": "parametric-second-derivatives-circle",
+  "caption": "On the circle $x = \\cos t$, $y = \\sin t$, the $t$-derivative of the slope is $\\csc^2 t$, positive everywhere. Only after dividing by $\\frac{dx}{dt} = -\\sin t$ does the second derivative, $-\\frac{1}{\\sin^3 t}$, show the upper half concave down and the lower half concave up."
+ },
+ "chain": [
+  {
+   "cause": "$\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}$ is itself a function of $t$",
+   "effect": "its rate of change with respect to $x$ needs the same slope rule again"
+  },
+  {
+   "cause": "Apply the rule to the function $\\frac{dy}{dx}$",
+   "effect": "$\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{dx/dt}$"
+  },
+  {
+   "cause": "The sign of $\\frac{d^2y}{dx^2}$ at a time",
+   "effect": "gives the concavity of the curve there: positive is concave up, negative concave down"
+  },
+  {
+   "cause": "$\\frac{dy}{dx} = 0$ and $\\frac{d^2y}{dx^2}$ has a sign",
+   "effect": "the second derivative test classifies the point as a relative minimum or maximum"
+  }
+ ],
+ "ideas": [
+  "Step 1: find $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}$ and simplify it as a function of $t$.",
+  "Step 2: differentiate $\\frac{dy}{dx}$ with respect to $t$. Step 3: divide by $\\frac{dx}{dt}$. Skipping step 3 is the classic slip.",
+  "$\\frac{d^2y}{dx^2}$ is not $\\frac{d^2y/dt^2}{d^2x/dt^2}$: second derivatives do not divide that way.",
+  "Concavity, inflection points and the second derivative test work as in Unit 5, with every derivative found from $t$."
+ ],
+ "misconception": {
+  "wrong": "For $x = 2t$, $y = t^3$: $\\frac{dy}{dx} = \\frac{3t^2}{2}$, so $\\frac{d^2y}{dx^2} = 3t$.",
+  "right": "$3t$ is $\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)$, a rate per unit of $t$. Divide by $\\frac{dx}{dt} = 2$ to make it a rate per unit of $x$: $\\frac{d^2y}{dx^2} = \\frac{3t}{2}$. Check: $y = \\left(\\frac{x}{2}\\right)^3 = \\frac{x^3}{8}$, whose second derivative is $\\frac{6x}{8} = \\frac{3t}{2}$."
+ },
+ "check": [
+  "cbc-parametric-second-derivatives-1",
+  "cbc-parametric-second-derivatives-2",
+  "cbc-parametric-second-derivatives-3",
+  "cbc-parametric-second-derivatives-9",
+  "cbc-parametric-second-derivatives-11",
+  "cbc-parametric-second-derivatives-12"
+ ],
+ "summary": "The second derivative of a parametric curve is the derivative of $\\frac{dy}{dx}$ with respect to $x$: differentiate $\\frac{dy}{dx}$ with respect to $t$, then divide by $\\frac{dx}{dt}$. Its sign gives the concavity of the curve, and with $\\frac{dy}{dx} = 0$ it classifies a horizontal tangent as a relative minimum or maximum. Never stop after differentiating, and never divide $\\frac{d^2y}{dt^2}$ by $\\frac{d^2x}{dt^2}$.",
+ "connections": [
+  {
+   "href": "../notes/parametric-derivatives.html",
+   "label": "Back: parametric equations and their derivatives (9.1)"
+  },
+  {
+   "href": "../notes/parametric-arc-length.html",
+   "label": "Next: arc length of a parametric curve (9.3)"
+  }
+ ]
+}

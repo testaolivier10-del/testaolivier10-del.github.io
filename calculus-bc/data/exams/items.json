@@ -1,0 +1,789 @@
+{
+ "about": "Exam-only calculator questions for the two AP® Calculus BC practice exams (docs/apcalcbc-spec.md row 3, docs/apcalc-architecture.md \"Practice exams\"): Section I Part B of each form, in the bank item format. Ids cbc-exam-<form>-<nn>, stimuli exam-<form>-s<n>. Every key is recomputed in scripts/lib/apcalcbc-exams.mjs (CBC_EXAM_NUMBERS).",
+ "stimuli": {
+  "exam-1-s1": {
+   "kind": "graph",
+   "title": "A particle moving in the plane",
+   "text": "A particle moves in the $xy$-plane for $0 \\le t \\le 3$ seconds with $\\frac{dx}{dt} = 2 + \\cos\\left(t^2\\right)$ and $\\frac{dy}{dt} = 3\\sin t$, distances in meters. At $t = 0$ the particle is at the point $(1, -2)$. The graph shows $\\frac{dx}{dt}$ (solid) and $\\frac{dy}{dt}$ (dashed).",
+   "plot": {
+    "label": "Graphs of dx/dt = 2 + cos(t squared) and dy/dt = 3 sin t for t from 0 to 3 seconds; dx/dt stays between 1 and 3, and dy/dt rises from 0 to 3 and falls back to about 0.4",
+    "x": [
+     0,
+     3
+    ],
+    "y": [
+     -1,
+     4
+    ],
+    "xStep": 0.5,
+    "yStep": 1,
+    "xLabel": "t (seconds)",
+    "yLabel": "meters per second",
+    "curves": [
+     {
+      "fn": "2 + cos(x^2)",
+      "domain": [
+       0,
+       3
+      ],
+      "label": "dx/dt",
+      "cls": "s1"
+     },
+     {
+      "fn": "3sin(x)",
+      "domain": [
+       0,
+       3
+      ],
+      "label": "dy/dt",
+      "cls": "s2",
+      "dashed": true
+     }
+    ]
+   }
+  },
+  "exam-2-s1": {
+   "kind": "graph",
+   "title": "A polar curve, from the graph of r",
+   "text": "A curve is given in polar coordinates by $r = \\theta + \\sin(2\\theta)$ for $0 \\le \\theta \\le \\pi$. The graph shows $r$ as a function of $\\theta$ (not the curve itself).",
+   "plot": {
+    "label": "Graph of r = theta + sin(2 theta) against theta from 0 to pi; r rises from 0 to about 1.9 near theta = 1, dips to about 1.2 near theta = 2.1, then rises to pi",
+    "x": [
+     0,
+     3.14159265
+    ],
+    "y": [
+     0,
+     3.5
+    ],
+    "piX": true,
+    "yStep": 1,
+    "xLabel": "θ",
+    "yLabel": "r",
+    "curves": [
+     {
+      "fn": "x + sin(2x)",
+      "domain": [
+       0,
+       3.14159265
+      ],
+      "label": "r",
+      "cls": "s1"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-01",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the speed of the particle at $t = 2$ seconds?",
+   "options": [
+    "$2.026$",
+    "$3.042$",
+    "$4.074$",
+    "$9.254$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Speed is $\\sqrt{\\left(x'(2)\\right)^2 + \\left(y'(2)\\right)^2} = \\sqrt{(2 + \\cos 4)^2 + (3\\sin 2)^2} \\approx 3.042$ meters per second.",
+    "options": [
+     "This is $\\left|\\frac{dy}{dx}\\right|$, the steepness of the path, not how fast the particle moves.",
+     "The speed is the length of the velocity vector, $\\sqrt{(x'(2))^2 + (y'(2))^2}$.",
+     "This adds the two components; the speed combines them as the legs of a right triangle.",
+     "This is the square of the speed; take its square root."
+    ]
+   },
+   "stimulus": "exam-1-s1"
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-02",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the total distance the particle travels from $t = 0$ to $t = 3$?",
+   "options": [
+    "$8.976$",
+    "$12.673$",
+    "$9.482$",
+    "$30.630$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Distance traveled $= \\int_0^3 \\sqrt{\\left(x'(t)\\right)^2 + \\left(y'(t)\\right)^2}\\,dt \\approx 9.482$ meters.",
+    "options": [
+     "This is the straight-line distance from the start to the end, the size of the displacement; the path curves.",
+     "This integrates $x'(t) + y'(t)$; the distance integrates the speed, the square root of the sum of squares.",
+     "The integral of the speed over the interval.",
+     "This integrates the square of the speed; the square root belongs inside the integral."
+    ]
+   },
+   "stimulus": "exam-1-s1"
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-03",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the $x$-coordinate of the particle at $t = 3$?",
+   "options": [
+    "$7.703$",
+    "$6.703$",
+    "$-5.703$",
+    "$2.089$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x(3) = x(0) + \\int_0^3 x'(t)\\,dt = 1 + \\int_0^3 \\left(2 + \\cos\\left(t^2\\right)\\right)dt \\approx 7.703$.",
+    "options": [
+     "The starting $x$-coordinate plus the change in $x$, the integral of $\\frac{dx}{dt}$.",
+     "This is the change in $x$ alone; the particle starts at $x = 1$, not $x = 0$.",
+     "This subtracts the change in $x$ from the start; the position adds it.",
+     "This adds the value of $\\frac{dx}{dt}$ at $t = 3$, a rate, not the accumulated change."
+    ]
+   },
+   "stimulus": "exam-1-s1"
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-04",
+   "unit": "unit-9",
+   "topic": "parametric-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "exam-1-s1",
+   "q": "What is the slope of the path of the particle at $t = 1$?",
+   "options": [
+    "$1.006$",
+    "$2.524$",
+    "$3.581$",
+    "$0.994$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{3\\sin 1}{2 + \\cos 1} \\approx 0.994$, with $\\frac{dx}{dt} \\ne 0$ there.",
+    "options": [
+     "This is $\\frac{dx/dt}{dy/dt}$, the reciprocal of the slope.",
+     "This is $\\frac{dy}{dt}$ at $t = 1$; the slope divides it by $\\frac{dx}{dt}$.",
+     "This is the speed at $t = 1$, the length of the velocity vector, not the slope of the path.",
+     "The slope $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}$ at $t = 1$."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-05",
+   "unit": "unit-10",
+   "topic": "taylor-polynomials",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "The third-degree Maclaurin polynomial for $e^x$ is used to approximate $e^{0.8}$. What is the approximation?",
+   "options": [
+    "$2.205$",
+    "$2.226$",
+    "$2.120$",
+    "$2.952$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$P_3(x) = 1 + x + \\frac{x^2}{2} + \\frac{x^3}{6}$, so $P_3(0.8) = 1 + 0.8 + 0.32 + \\frac{0.512}{6} \\approx 2.205$.",
+    "options": [
+     "The polynomial $1 + x + \\frac{x^2}{2} + \\frac{x^3}{6}$ evaluated at $x = 0.8$.",
+     "This is the value of $e^{0.8}$ itself, not the polynomial's approximation of it.",
+     "This stops at the $x^2$ term, the second-degree polynomial.",
+     "This leaves out the factorials: the coefficients are $\\frac{1}{2!}$ and $\\frac{1}{3!}$, not 1."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-06",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the length of the graph of $y = \\frac{x^3}{3}$ from $x = 0$ to $x = 2$?",
+   "options": [
+    "$8.400$",
+    "$3.653$",
+    "$2.664$",
+    "$3.333$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = x^2$, so the length is $\\int_0^2 \\sqrt{1 + x^4}\\,dx \\approx 3.653$.",
+    "options": [
+     "This integrates $1 + \\left(\\frac{dy}{dx}\\right)^2$ without the square root.",
+     "The arc length integral, $\\int_0^2 \\sqrt{1 + \\left(y'\\right)^2}\\,dx$ with $y' = x^2$.",
+     "This squares $y$ instead of $\\frac{dy}{dx}$ under the root.",
+     "This is the straight segment from $(0, 0)$ to $\\left(2, \\frac{8}{3}\\right)$; the graph is curved and longer."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-07",
+   "unit": "unit-8",
+   "topic": "area-between-curves-x",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $x \\ge 0$, the graphs of $y = 2\\sin x$ and $y = \\frac{x^2}{2}$ enclose a region. What is its area?",
+   "options": [
+    "$1.934$",
+    "$2.710$",
+    "$1.505$",
+    "$9.988$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The curves meet at $x = 0$ and at $x = c \\approx 1.934$ (store it). The area is $\\int_0^c \\left(2\\sin x - \\frac{x^2}{2}\\right)dx \\approx 1.505$.",
+    "options": [
+     "This is where the graphs cross, the upper limit of the integral, not the area.",
+     "This is the area under $y = 2\\sin x$ alone; subtract the area under the lower curve.",
+     "The integral of the top curve minus the bottom one between the crossings.",
+     "This is the volume of the solid when the region is revolved about the $x$-axis."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-08",
+   "unit": "unit-7",
+   "topic": "eulers-method",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $y = f(x)$ be the solution of $\\frac{dy}{dx} = x + \\sin y$ with $f(0) = 1$. What is the approximation of $f(1.5)$ from Euler's method with three steps of size $0.5$?",
+   "options": [
+    "$3.012$",
+    "$3.646$",
+    "$2.262$",
+    "$3.079$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Each step is $y_{\\text{new}} = y + 0.5\\left(x + \\sin y\\right)$: from $(0, 1)$ to $(0.5, 1.421)$, to $(1, 2.165)$, to $(1.5, 3.079)$, keeping full precision between steps.",
+    "options": [
+     "This keeps the first slope's $\\sin y$ value for every step; recompute the slope at each new point.",
+     "This puts the $x$ at the end of each step into the slope, $(x + 0.5) + \\sin y$; Euler's method uses the slope at the point you are at.",
+     "This is one step of size 1.5 along the tangent line at $(0, 1)$, not three steps.",
+     "Three Euler steps, each with the slope at the current point."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-09",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the value of $\\int_1^{\\infty} \\frac{1}{x^3 + 1}\\,dx$?",
+   "options": [
+    "$0.836$",
+    "$0.374$",
+    "$0.500$",
+    "$1.209$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\int_1^{\\infty} \\frac{dx}{x^3 + 1} = \\lim_{b \\to \\infty} \\int_1^b \\frac{dx}{x^3 + 1} \\approx 0.374$; the integral converges by comparison with $\\int_1^{\\infty} \\frac{dx}{x^3} = \\frac{1}{2}$, and a calculator on a long interval such as $[1, 1000]$ agrees to three decimal places.",
+    "options": [
+     "This is the integral from 0 to 1; the interval here starts at 1 and has no end.",
+     "The limit as $b \\to \\infty$ of $\\int_1^b \\frac{1}{x^3 + 1}\\,dx$.",
+     "This is $\\int_1^{\\infty} \\frac{1}{x^3}\\,dx$; adding 1 to the denominator makes the integral smaller.",
+     "This is the integral from 0 to $\\infty$; the lower limit is 1."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-10",
+   "unit": "unit-6",
+   "topic": "integration-by-parts",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the value of $\\int_1^{e} x^2\\ln x\\,dx$?",
+   "options": [
+    "$4.575$",
+    "$6.695$",
+    "$4.352$",
+    "$2.121$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With $u = \\ln x$ and $dv = x^2\\,dx$: $\\int_1^e x^2\\ln x\\,dx = \\left[\\frac{x^3}{3}\\ln x - \\frac{x^3}{9}\\right]_1^e = \\frac{2e^3 + 1}{9} \\approx 4.575$.",
+    "options": [
+     "By parts, $\\frac{x^3}{3}\\ln x - \\frac{x^3}{9}$ from 1 to $e$.",
+     "This is only the $uv$ term at $x = e$; the integral of $v\\,du$ is left out.",
+     "This adds the value of the antiderivative at $x = 1$ instead of subtracting it: it is $-\\frac{1}{9}$ there, so subtracting it adds $\\frac{1}{9}$.",
+     "This is $\\int_1^e \\frac{x^2}{3}\\,dx$, the integral of $v\\,du$ alone."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-11",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the absolute maximum value of $f(x) = x^2e^{-x/2}$ on the interval $[0, 6]$?",
+   "options": [
+    "$4.000$",
+    "$1.792$",
+    "$2.165$",
+    "$1.472$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$f'(x) = e^{-x/2}\\left(2x - \\frac{x^2}{2}\\right) = 0$ at $x = 0$ and $x = 4$. Candidates: $f(0) = 0$, $f(4) = 16e^{-2} \\approx 2.165$, $f(6) = 36e^{-3} \\approx 1.792$. The absolute maximum is about $2.165$.",
+    "options": [
+     "This is where the maximum occurs, $x = 4$, not the maximum value.",
+     "This is $f(6)$, the value at the right endpoint, which is less than $f(4)$.",
+     "The largest of $f(0)$, $f(4)$ and $f(6)$.",
+     "This is $f(2)$; $f'(2) \\ne 0$, so $x = 2$ is not a candidate."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-12",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "The temperature of a cup of tea is $T(t) = 70 + 30e^{-0.2t}$ degrees Celsius, $t$ minutes after it is poured. At what rate is the temperature changing at $t = 3$ minutes?",
+   "options": [
+    "$3.293$ degrees Celsius per minute",
+    "$-3.293$ degrees Celsius per minute",
+    "$-4.512$ degrees Celsius per minute",
+    "$86.464$ degrees Celsius per minute"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$T'(t) = 30(-0.2)e^{-0.2t} = -6e^{-0.2t}$, so $T'(3) = -6e^{-0.6} \\approx -3.293$ degrees Celsius per minute.",
+    "options": [
+     "The size is right, but the tea is cooling, so the rate is negative.",
+     "$T'(3) = -6e^{-0.6}$, negative because the tea is cooling.",
+     "This is the average rate of change on $[0, 3]$, not the rate at $t = 3$.",
+     "This is $T(3)$, the temperature itself, with rate units attached."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-1-13",
+   "unit": "unit-2",
+   "topic": "quotient-rule",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = \\frac{e^x}{1 + \\sin x}$. What is $f'(1)$?",
+   "options": [
+    "$-1.043$",
+    "$5.031$",
+    "$1.921$",
+    "$1.043$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f'(x) = \\frac{e^x(1 + \\sin x) - e^x\\cos x}{(1 + \\sin x)^2}$, so $f'(1) \\approx 1.043$.",
+    "options": [
+     "This is the numerator of the quotient rule in the wrong order, which flips the sign.",
+     "This divides the derivative of the top by the derivative of the bottom; the quotient rule is not that.",
+     "The denominator of the quotient rule is squared; this divides by $1 + \\sin 1$ once.",
+     "The quotient rule at $x = 1$."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-01",
+   "unit": "unit-9",
+   "topic": "polar-area",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "exam-2-s1",
+   "q": "For $0 \\le \\theta \\le \\pi$ the curve runs from the origin to the point $(-\\pi, 0)$ and stays on or above the $x$-axis. What is the area of the region bounded by the curve and the $x$-axis?",
+   "options": [
+    "$4.382$",
+    "$8.765$",
+    "$4.935$",
+    "$2.467$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$A = \\frac{1}{2}\\int_0^{\\pi} \\left(\\theta + \\sin(2\\theta)\\right)^2 d\\theta \\approx 4.382$.",
+    "options": [
+     "One half of the integral of $r^2$ from 0 to $\\pi$.",
+     "This leaves out the $\\frac{1}{2}$ of the polar area formula.",
+     "This integrates $r$, not $r^2$: it is the area under the graph of $r$ against $\\theta$, not the area of the polar region.",
+     "This keeps the $\\frac{1}{2}$ but does not square $r$."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-02",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exam-2-s1",
+   "q": "What is the slope of the curve, $\\frac{dy}{dx}$, at $\\theta = \\frac{\\pi}{4}$?",
+   "options": [
+    "$1.000$",
+    "$-0.282$",
+    "$-3.546$",
+    "$1.970$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With $x = r\\cos\\theta$ and $y = r\\sin\\theta$, $\\frac{dy}{dx} = \\frac{r'\\sin\\theta + r\\cos\\theta}{r'\\cos\\theta - r\\sin\\theta}$, where $r' = 1 + 2\\cos(2\\theta)$. At $\\theta = \\frac{\\pi}{4}$ this is about $-3.546$.",
+    "options": [
+     "This is $\\frac{dr}{d\\theta}$, the rate the distance from the origin changes, not the slope of the curve.",
+     "This is $\\frac{dx/d\\theta}{dy/d\\theta}$, the reciprocal of the slope.",
+     "$\\frac{dy/d\\theta}{dx/d\\theta}$ with $x = r\\cos\\theta$ and $y = r\\sin\\theta$.",
+     "This is $\\frac{dy}{d\\theta}$ alone; divide it by $\\frac{dx}{d\\theta}$."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-03",
+   "unit": "unit-9",
+   "topic": "polar-derivatives",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "exam-2-s1",
+   "q": "At $\\theta = 1.5$, is the point on the curve moving toward the origin or away from it?",
+   "options": [
+    "Away, because $r(1.5) \\approx 1.641$ is positive",
+    "Toward, because $r > 0$ and $\\frac{dr}{d\\theta} \\approx -0.980 < 0$",
+    "Away, because $\\theta$ is increasing",
+    "Toward, because the graph of $r$ is concave down"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The distance from the origin is $r$ (positive here), and $\\frac{dr}{d\\theta} = 1 + 2\\cos(2\\theta) \\approx -0.980$ at $\\theta = 1.5$. Since $r > 0$ and $\\frac{dr}{d\\theta} < 0$, the point is moving toward the origin.",
+    "options": [
+     "A positive $r$ says where the point is, not which way its distance is changing; read the sign of $\\frac{dr}{d\\theta}$.",
+     "With $r > 0$, a negative $\\frac{dr}{d\\theta}$ means the distance from the origin is decreasing.",
+     "$\\theta$ increases along the whole curve; the distance from the origin can still shrink.",
+     "Concavity of the graph of $r$ says how $\\frac{dr}{d\\theta}$ changes; the direction comes from its sign."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-04",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "exam-2-s1",
+   "q": "What is the area of the region inside the curve and outside the circle $r = 1$, for $0 \\le \\theta \\le \\pi$?",
+   "options": [
+    "$5.853$",
+    "$0.962$",
+    "$2.812$",
+    "$2.926$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The curve crosses $r = 1$ once, at $\\theta = a \\approx 0.352$ (solve $\\theta + \\sin 2\\theta = 1$ and store it); after that $r > 1$. Area $= \\frac{1}{2}\\int_a^{\\pi} \\left(r^2 - 1\\right)d\\theta \\approx 2.926$.",
+    "options": [
+     "This leaves out the $\\frac{1}{2}$ of the polar area formula.",
+     "This squares the difference of the radii; the formula subtracts the squares, $r^2 - 1^2$.",
+     "This starts at $\\theta = 0$, where the curve is inside the circle; start where they meet.",
+     "From the angle where $r = 1$ to $\\pi$, half the integral of $r^2 - 1$."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-05",
+   "unit": "unit-10",
+   "topic": "power-series-functions",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $F(x) = \\int_0^x e^{-t^2}\\,dt$. The first three nonzero terms of the Maclaurin series for $F$ are used to approximate $F(0.8)$. What is the approximation?",
+   "options": [
+    "$0.662$",
+    "$0.658$",
+    "$0.629$",
+    "$0.565$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$e^{-t^2} = 1 - t^2 + \\frac{t^4}{2!} - \\cdots$, so $F(x) = x - \\frac{x^3}{3} + \\frac{x^5}{10} - \\cdots$, and $F(0.8) \\approx 0.8 - \\frac{0.512}{3} + \\frac{0.32768}{10} \\approx 0.662$.",
+    "options": [
+     "$x - \\frac{x^3}{3} + \\frac{x^5}{10}$, from integrating $1 - t^2 + \\frac{t^4}{2}$ term by term, at $x = 0.8$.",
+     "This is $F(0.8)$ itself, from the calculator, not the three-term approximation.",
+     "This uses only the first two nonzero terms.",
+     "This evaluates the series for $e^{-t^2}$ at $0.8$ without integrating it."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-06",
+   "unit": "unit-8",
+   "topic": "washer-method-axes",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The region bounded by $y = 2\\cos x$ and $y = x^2$ is revolved about the $x$-axis. What is the volume of the solid?",
+   "options": [
+    "$13.527$",
+    "$17.034$",
+    "$8.517$",
+    "$2.701$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The curves meet at $x = \\pm c$, $c \\approx 1.022$. With outer radius $2\\cos x$ and inner radius $x^2$, $V = \\pi\\int_{-c}^{c} \\left(4\\cos^2 x - x^4\\right)dx \\approx 17.034$.",
+    "options": [
+     "This squares the difference of the radii; washers subtract the squares, $R^2 - r^2$.",
+     "$\\pi\\int_{-c}^{c} \\left((2\\cos x)^2 - (x^2)^2\\right)dx$ between the two crossings.",
+     "This integrates from 0 to $c$ only, half of the symmetric region.",
+     "This is the area of the region, not the volume of the solid."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-07",
+   "unit": "unit-8",
+   "topic": "arc-length",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the length of the graph of $y = x^2$ from $x = 0$ to $x = 1.5$?",
+   "options": [
+    "$2.704$",
+    "$2.031$",
+    "$2.826$",
+    "$2.333$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = 2x$, so the length is $\\int_0^{1.5} \\sqrt{1 + 4x^2}\\,dx \\approx 2.826$.",
+    "options": [
+     "This is the straight segment from $(0, 0)$ to $(1.5, 2.25)$; the graph bends and is longer.",
+     "This puts $y^2$ under the root; arc length uses $\\left(\\frac{dy}{dx}\\right)^2 = 4x^2$.",
+     "$\\int_0^{1.5} \\sqrt{1 + 4x^2}\\,dx$.",
+     "This uses $\\frac{dy}{dx} = 2x$ without squaring it."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-08",
+   "unit": "unit-7",
+   "topic": "logistic-models",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A population satisfies $\\frac{dP}{dt} = 0.3P\\left(1 - \\frac{P}{500}\\right)$ with $P(0) = 60$, and the solution is $P(t) = \\frac{500}{1 + \\frac{22}{3}e^{-0.3t}}$, $t$ in years. At what time is the population growing fastest?",
+   "options": [
+    "$7.068$",
+    "$250$",
+    "$6.641$",
+    "$13.283$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Logistic growth is fastest at half the carrying capacity, $P = 250$. Then $1 + \\frac{22}{3}e^{-0.3t} = 2$, so $t = \\frac{\\ln(22/3)}{0.3} \\approx 6.641$ years.",
+    "options": [
+     "This solves $e^{0.3t} = \\frac{500}{60}$, which is not where $P$ reaches half the carrying capacity.",
+     "This is the population at which the growth is fastest, not the time.",
+     "The time when $P = 250$, half the carrying capacity.",
+     "This is the time when $\\frac{22}{3}e^{-0.3t} = \\frac{3}{22}$, past the fastest growth; at the fastest growth that term equals 1."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-09",
+   "unit": "unit-6",
+   "topic": "partial-fractions",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the value of $\\int_2^5 \\frac{3}{x^2 - 1}\\,dx$?",
+   "options": [
+    "$-1.040$",
+    "$2.079$",
+    "$1.560$",
+    "$1.040$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{3}{x^2 - 1} = \\frac{3/2}{x - 1} - \\frac{3/2}{x + 1}$, so the integral is $\\frac{3}{2}\\left[\\ln\\left|\\frac{x - 1}{x + 1}\\right|\\right]_2^5 = \\frac{3}{2}\\left(\\ln\\frac{2}{3} - \\ln\\frac{1}{3}\\right) = \\frac{3}{2}\\ln 2 \\approx 1.040$.",
+    "options": [
+     "The logarithms are subtracted in the wrong order; the integrand is positive, so the integral is too.",
+     "This drops the $\\frac{1}{2}$ from $\\frac{3}{x^2 - 1} = \\frac{3/2}{x - 1} - \\frac{3/2}{x + 1}$.",
+     "This integrates $\\frac{3}{x^2 - 1}$ as if it were $\\frac{3}{2}\\cdot\\frac{1}{2}\\ln\\left|x^2 - 1\\right|$, a substitution that does not fit.",
+     "Partial fractions, then $\\frac{3}{2}\\ln\\left|\\frac{x - 1}{x + 1}\\right|$ from 2 to 5."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-10",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $H(x) = \\int_1^{x^2} \\frac{\\ln t}{1 + t}\\,dt$. What is $H'(1.5)$?",
+   "options": [
+    "$0.749$",
+    "$0.250$",
+    "$0.162$",
+    "$0.207$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "By the Fundamental Theorem and the chain rule, $H'(x) = \\frac{\\ln\\left(x^2\\right)}{1 + x^2}\\cdot 2x$, so $H'(1.5) = \\frac{\\ln 2.25}{3.25}\\cdot 3 \\approx 0.749$.",
+    "options": [
+     "The integrand at $t = x^2 = 2.25$, times the chain factor $2x = 3$.",
+     "This leaves out the chain factor $2x$ from the upper limit $x^2$.",
+     "This puts $x$ into the integrand instead of $x^2$, and drops the chain factor.",
+     "This is $H(1.5)$, the integral itself, not its derivative."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-11",
+   "unit": "unit-5",
+   "topic": "mean-value-theorem",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $f(x) = x + 2\\cos x$ on $[0, 3]$, two values of $c$ in $(0, 3)$ satisfy the conclusion of the Mean Value Theorem. What is the greater one?",
+   "options": [
+    "$0.725$",
+    "$2.416$",
+    "$-0.327$",
+    "$1.571$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f$ is continuous and differentiable, and $\\frac{f(3) - f(0)}{3} \\approx -0.327$. Solving $1 - 2\\sin c = -0.327$ on $(0, 3)$ gives $c \\approx 0.725$ and $c \\approx 2.416$; the greater is about $2.416$.",
+    "options": [
+     "This is the smaller of the two values.",
+     "The larger solution of $f'(c) = \\frac{f(3) - f(0)}{3}$ in $(0, 3)$.",
+     "This is the average rate of change, the slope $f'(c)$ must equal, not $c$.",
+     "Here $f'(c) = -1$, which is not the average rate of change."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-12",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = e^x\\sqrt[3]{x + 7}$. What is the approximation of $f(1.2)$ from the line tangent to the graph of $f$ at $x = 1$?",
+   "options": [
+    "$6.695$",
+    "$5.663$",
+    "$5.482$",
+    "$6.569$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f(1) = 2e$ and $f'(x) = e^x\\sqrt[3]{x + 7} + \\frac{e^x}{3(x + 7)^{2/3}}$, so $f'(1) = e\\left(2 + \\frac{1}{12}\\right)$. The estimate is $f(1) + 0.2f'(1) \\approx 6.569$.",
+    "options": [
+     "This is $f(1.2)$ itself, from the calculator, not the tangent-line estimate.",
+     "This is $f'(1)$, the slope of the tangent line, not the estimate.",
+     "This differentiates only the cube root; the product rule needs both terms.",
+     "$f(1) + f'(1)(0.2)$."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "cbc-exam-2-13",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Let $f(x) = x^3\\sin\\left(\\frac{x}{2}\\right)$. What is $f'(2)$?",
+   "options": [
+    "$12.259$",
+    "$14.420$",
+    "$10.098$",
+    "$3.242$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f'(x) = 3x^2\\sin\\left(\\frac{x}{2}\\right) + x^3\\cdot\\frac{1}{2}\\cos\\left(\\frac{x}{2}\\right)$, so $f'(2) = 12\\sin 1 + 4\\cos 1 \\approx 12.259$.",
+    "options": [
+     "$3x^2\\sin\\frac{x}{2} + \\frac{x^3}{2}\\cos\\frac{x}{2}$ at $x = 2$.",
+     "This leaves out the factor $\\frac{1}{2}$ from the chain rule on $\\sin\\frac{x}{2}$.",
+     "This differentiates only the $x^3$ factor; the product rule has a second term.",
+     "This multiplies the two derivatives; the product rule is not that."
+    ]
+   }
+  }
+ ]
+}

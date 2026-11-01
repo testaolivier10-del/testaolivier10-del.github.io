@@ -1,0 +1,5 @@
+{
+ "parametric-arc-length": {
+  "def": "The length of the curve $x = x(t)$, $y = y(t)$ for $a \\le t \\le b$ is $L = \\int_a^b \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt$, provided the curve is traced exactly once as $t$ runs from $a$ to $b$. The integrand is the speed of the moving point, so the same integral gives the distance it travels, even when it retraces part of the curve."
+ }
+}

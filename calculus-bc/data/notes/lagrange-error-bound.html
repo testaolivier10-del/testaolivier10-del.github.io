@@ -1,0 +1,51 @@
+<p>A Taylor polynomial $P_n$ estimates $f$ near its center. An estimate is only useful if you know how far off it can be. The Lagrange error bound gives that guarantee as one number, built from the derivative the polynomial does not match.</p>
+
+<h2>Where the error comes from</h2>
+<p>$P_n$ copies $f$ and its first $n$ derivatives at the center $a$. The two can only drift apart through the derivative that does not match, $f^{(n+1)}$. If that derivative is never larger than some number $M$ between $a$ and $x$, the drift is limited too. The precise statement:</p>
+<p>$$\left|f(x) - P_n(x)\right| \le \frac{M}{(n+1)!}|x - a|^{n+1}, \qquad \text{where } \left|f^{(n+1)}(z)\right| \le M \text{ for every } z \text{ between } a \text{ and } x.$$</p>
+<p>The bound looks like the next term of the polynomial, with $f^{(n+1)}(a)$ replaced by the worst case $M$.</p>
+<figure id="fig-lagrange" data-fig="lagrange-error-cos"><figcaption>The actual error of $P_2$ for $\cos x$ stays under the bound $\frac{x^4}{24}$.</figcaption></figure>
+<p>For $\cos x$ and $P_2(x) = 1 - \frac{x^2}{2}$ about 0, every derivative of $\cos x$ is $\pm\sin x$ or $\pm\cos x$, so $M = 1$ works. Strictly, the bound for $P_2$ uses the third derivative; since the $x^3$ coefficient of $\cos x$ is 0, $P_2 = P_3$, and the bound for $P_3$, $\frac{1}{4!}|x|^4$, applies to it as well. <a class="figref" href="#fig-lagrange">The figure</a> shows the actual error staying under that curve.</p>
+
+<h2>The four steps</h2>
+<ol>
+<li>Identify $n$ (the degree used) and the next derivative, $f^{(n+1)}$.</li>
+<li>Find $M$, the largest value of $\left|f^{(n+1)}(z)\right|$ for $z$ between $a$ and $x$, and say why it is the largest.</li>
+<li>Compute $\frac{M}{(n+1)!}|x - a|^{n+1}$.</li>
+<li>Write the result as an inequality, and compare it with any number the question gives.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> Estimate $e^{0.3}$ with the second-degree Maclaurin polynomial for $e^x$, and show the error is less than $0.01$.</p>
+<p>Estimate: $P_2(0.3) = 1 + 0.3 + \frac{(0.3)^2}{2} = 1.345$.</p>
+<p>Next derivative: $f'''(z) = e^z$. It is increasing, so on $0 \le z \le 0.3$ its largest value is $e^{0.3}$, which is less than $e^{1} < 3$. Take $M = 3$ (any $M \ge e^{0.3}$ works).</p>
+<p>Bound: $\left|e^{0.3} - P_2(0.3)\right| \le \frac{3}{3!}(0.3)^3 = \frac{3}{6}(0.027) = 0.0135$.</p>
+<p>That is not below $0.01$. A smaller valid $M$ helps: $e^{0.3} < e^{1/2} < 2$, so with $M = 2$ the bound is $\frac{2}{6}(0.027) = 0.009 < 0.01$.</p>
+</div>
+<p>The example shows why step 2 deserves care: $M$ must be at least the true maximum, but the closer it is, the more useful the bound.</p>
+
+<h2>Finding M from a formula or from given information</h2>
+<p>Exam questions give the next derivative in one of three ways.</p>
+<table class="compare">
+<thead><tr><th>Given</th><th>How to get $M$</th></tr></thead>
+<tbody>
+<tr><td>A bound, "$\left|f^{(4)}(x)\right| \le 10$ on $[0, 1]$"</td><td>Use it directly: $M = 10$.</td></tr>
+<tr><td>A formula, $f^{(4)}(x) = \frac{6}{(1 + x)^4}$</td><td>Decide where it is largest on the interval (here it decreases, so at the left end) and evaluate there.</td></tr>
+<tr><td>$\sin$, $\cos$ or $e^x$</td><td>$|\sin z|, |\cos z| \le 1$; $e^z$ is largest at the right end of the interval.</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example 2.</b> $|f^{(5)}(x)| \le 40$ for $2 \le x \le 2.5$. Bound the error of the fourth-degree Taylor polynomial for $f$ about $x = 2$ at $x = 2.5$.</p>
+<p>$\left|f(2.5) - P_4(2.5)\right| \le \frac{40}{5!}(0.5)^5 = \frac{40}{120} \cdot \frac{1}{32} = \frac{1}{96} \approx 0.0104$.</p>
+</div>
+
+<h2>When the alternating series error bound is easier</h2>
+<p>Sometimes the terms of the approximation, at the given $x$, form an alternating sum whose sizes decrease to 0, as with $\cos(0.1) = 1 - \frac{(0.1)^2}{2!} + \frac{(0.1)^4}{4!} - \cdots$ Then the alternating series error bound applies as well: the error is at most the first term left out. Questions sometimes ask for one bound by name; use the one named, and state its conditions.</p>
+<table class="compare">
+<thead><tr><th></th><th>Alternating series error bound</th><th>Lagrange error bound</th></tr></thead>
+<tbody>
+<tr><td>Needs</td><td>alternating terms whose sizes decrease to 0</td><td>a bound $M$ on $\left|f^{(n+1)}\right|$ between $a$ and $x$</td></tr>
+<tr><td>Bound</td><td>the first omitted term</td><td>$\frac{M}{(n+1)!}|x - a|^{n+1}$</td></tr>
+<tr><td>Say</td><td>why the terms alternate and decrease to 0</td><td>where the maximum is and why</td></tr>
+</tbody>
+</table>
+<p>Either way, the bound is a ceiling. Write "the error is at most $\frac{1}{96}$", or "error $\le \frac{1}{96} < 0.02$", never "the error equals $\frac{1}{96}$".</p>

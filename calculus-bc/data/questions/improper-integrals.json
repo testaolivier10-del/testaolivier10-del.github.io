@@ -1,0 +1,503 @@
+{
+ "stimuli": {
+  "improper-integrals-s1": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = \\frac{6}{(x + 2)^2}$ for $x \\ge 0$",
+   "text": "Let $f(x) = \\frac{6}{(x + 2)^2}$. The region $R$ lies under the graph of $f$, above the $x$-axis, and to the right of the $y$-axis; it goes on to the right without end.",
+   "plot": {
+    "label": "Graph of f(x) = 6/(x + 2) squared for x from 0 to 10, decreasing from 1.5 at x = 0 toward 0, with the region under it shaded all the way to the right edge",
+    "x": [
+     0,
+     10.4
+    ],
+    "y": [
+     0,
+     1.8
+    ],
+    "xStep": 1,
+    "yStep": 0.5,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "6/(x + 2)^2",
+      "domain": [
+       0,
+       10.3
+      ],
+      "cls": "s1",
+      "label": "f",
+      "ends": [
+       "closed",
+       null
+      ]
+     }
+    ],
+    "shade": [
+     {
+      "fn": "6/(x + 2)^2",
+      "domain": [
+       0,
+       10.3
+      ]
+     }
+    ]
+   }
+  },
+  "improper-integrals-s2": {
+   "kind": "table",
+   "title": "Areas from 1 to $b$ under two powers of $x$",
+   "text": "The table gives $\\int_1^b x^{-1/2}\\,dx = 2\\sqrt{b} - 2$ and $\\int_1^b x^{-3/2}\\,dx = 2 - \\frac{2}{\\sqrt{b}}$ for several values of $b$.",
+   "table": {
+    "caption": "Values of two integrals from 1 to b",
+    "cols": [
+     "$b$",
+     "$\\int_1^b x^{-1/2}\\,dx$",
+     "$\\int_1^b x^{-3/2}\\,dx$"
+    ],
+    "rows": [
+     [
+      "1",
+      "0",
+      "0"
+     ],
+     [
+      "4",
+      "2",
+      "1"
+     ],
+     [
+      "100",
+      "18",
+      "1.8"
+     ],
+     [
+      "10,000",
+      "198",
+      "1.98"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-improper-integrals-1",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "improper-integrals-s1",
+   "q": "Which expression gives the area of $R$, written correctly?",
+   "options": [
+    "$\\lim_{b \\to \\infty} \\frac{6}{(b + 2)^2}$",
+    "$-\\frac{6}{\\infty + 2} + \\frac{6}{2}$",
+    "$\\lim_{b \\to 0^+} \\int_b^{10} \\frac{6}{(x + 2)^2}\\,dx$",
+    "$\\lim_{b \\to \\infty} \\int_0^b \\frac{6}{(x + 2)^2}\\,dx$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Area of $R = \\int_0^\\infty \\frac{6}{(x + 2)^2}\\,dx$, which means $\\lim_{b \\to \\infty} \\int_0^b \\frac{6}{(x + 2)^2}\\,dx$.",
+    "options": [
+     "That is the limit of the height of the graph, which is 0. The area is a limit of integrals, not of $f$.",
+     "$\\infty$ is not a number to substitute. Arithmetic with $\\infty$ earns no credit; write the limit.",
+     "The region is unbounded on the right, not at 0, and it does not stop at 10. The upper bound must go to $\\infty$.",
+     "Right: an infinite limit of integration means a limit of definite integrals on $[0, b]$ as $b$ grows."
+    ]
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-2",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "improper-integrals-s1",
+   "q": "Find the area of $R$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": -3,
+      "why": "$\\int 6(x + 2)^{-2}\\,dx = -6(x + 2)^{-1}$. Evaluate it as upper minus lower: $\\lim_{b \\to \\infty}\\left(-\\frac{6}{b + 2} + \\frac{6}{2}\\right) = 3$."
+     },
+     {
+      "value": 1.5,
+      "why": "$1.5 = f(0)$ is the height at the start, not the area. Integrate: $\\lim_{b \\to \\infty}\\left(3 - \\frac{6}{b + 2}\\right) = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{b \\to \\infty} \\int_0^b \\frac{6}{(x + 2)^2}\\,dx = \\lim_{b \\to \\infty}\\left(-\\frac{6}{x + 2}\\right)\\Big|_0^b = \\lim_{b \\to \\infty}\\left(3 - \\frac{6}{b + 2}\\right) = 3$."
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-3",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "improper-integrals-s1",
+   "q": "Find the value of $\\int_1^\\infty f(x)\\,dx$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "That starts at $x = 0$. From $x = 1$: $\\lim_{b \\to \\infty}\\left(\\frac{6}{3} - \\frac{6}{b + 2}\\right) = 2$."
+     },
+     {
+      "value": -2,
+      "why": "Order of evaluation: upper minus lower, $-\\frac{6}{b + 2} - \\left(-\\frac{6}{3}\\right)$, which approaches $+2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{b \\to \\infty}\\left(-\\frac{6}{x + 2}\\right)\\Big|_1^b = \\lim_{b \\to \\infty}\\left(2 - \\frac{6}{b + 2}\\right) = 2$."
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-4",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "improper-integrals-s1",
+   "q": "A student says: \"$f(x)$ approaches 0 as $x$ grows, so the area of $R$ has to be finite.\" Which response is correct?",
+   "options": [
+    "Not enough: $\\frac{1}{x}$ also approaches 0, yet $\\int_1^\\infty \\frac{dx}{x}$ diverges",
+    "The reason is enough: a graph that approaches 0 encloses a finite area",
+    "The conclusion is wrong: a region that goes on without end has infinite area",
+    "The reason is enough, and it holds because $f$ is also decreasing everywhere"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Convergence is decided by the limit of $\\int_0^b f(x)\\,dx$, not by the limit of $f(x)$. Here that limit is 3, so the integral converges, but for $\\frac{1}{x}$ the same reasoning would fail.",
+    "options": [
+     "Right: heights going to 0 do not settle it. The area of $R$ is finite because the limit of the integrals, 3, exists.",
+     "$y = \\frac{1}{x}$ approaches 0, but its area from 1 to $b$ is $\\ln b$, which grows without bound.",
+     "This region goes on without end and still has area 3. An unbounded region can have finite area.",
+     "$\\frac{1}{x}$ is decreasing too, and its improper integral diverges. Decreasing toward 0 does not settle it."
+    ]
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-5",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "single",
+   "practice": "1.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "improper-integrals-s1",
+   "q": "Changing the exponent changes the answer. Which integral diverges?",
+   "options": [
+    "$\\int_0^\\infty 6e^{-x}\\,dx$",
+    "$\\int_0^\\infty \\frac{6}{x + 2}\\,dx$",
+    "$\\int_0^\\infty \\frac{6}{(x + 2)^2}\\,dx$",
+    "$\\int_0^\\infty \\frac{6}{(x + 2)^3}\\,dx$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The power 1 gives a log, and $\\ln(b + 2) \\to \\infty$. Powers above 1 and decaying exponentials give limits that exist.",
+    "options": [
+     "$\\int_0^b 6e^{-x}\\,dx = 6 - 6e^{-b}$, which approaches 6: it converges.",
+     "Right: $\\int_0^b \\frac{6}{x + 2}\\,dx = 6\\ln(b + 2) - 6\\ln 2$, which grows without bound.",
+     "This is the area of $R$, which converges to 3.",
+     "$\\int_0^b 6(x + 2)^{-3}\\,dx = \\frac{3}{4} - \\frac{3}{(b + 2)^2}$, which approaches $\\frac{3}{4}$: it converges."
+    ]
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-6",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "improper-integrals-s2",
+   "q": "What do the formulas behind the table show as $b \\to \\infty$?",
+   "options": [
+    "Both converge, because both integrands approach 0",
+    "Both diverge, because both columns keep increasing",
+    "$\\int_1^\\infty x^{-3/2}\\,dx$ converges to 2; $\\int_1^\\infty x^{-1/2}\\,dx$ diverges",
+    "$\\int_1^\\infty x^{-1/2}\\,dx$ converges to 2; $\\int_1^\\infty x^{-3/2}\\,dx$ diverges"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Read the limits of the formulas, not just the last row: $\\lim_{b \\to \\infty}\\left(2 - \\frac{2}{\\sqrt{b}}\\right) = 2$ and $\\lim_{b \\to \\infty}\\left(2\\sqrt{b} - 2\\right) = \\infty$.",
+    "options": [
+     "Integrands that approach 0 do not settle it: $2\\sqrt{b} - 2$ grows without bound.",
+     "Increasing is not the same as unbounded: $2 - \\frac{2}{\\sqrt{b}}$ increases but stays below 2.",
+     "Right: $2 - \\frac{2}{\\sqrt{b}} \\to 2$, while $2\\sqrt{b} - 2 \\to \\infty$.",
+     "The columns are swapped: $x^{-1/2}$ gives $2\\sqrt{b} - 2$, which keeps growing."
+    ]
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-7",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "improper-integrals-s2",
+   "q": "Find the value of $\\int_1^\\infty x^{-3/2}\\,dx$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": -2,
+      "why": "$\\int x^{-3/2}\\,dx = -2x^{-1/2}$; upper minus lower gives $\\lim_{b \\to \\infty}\\left(-\\frac{2}{\\sqrt{b}} + 2\\right) = 2$."
+     },
+     {
+      "value": 1.98,
+      "why": "$1.98$ is the value at $b = 10{,}000$. The improper integral is the limit as $b \\to \\infty$, exactly 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{b \\to \\infty} \\int_1^b x^{-3/2}\\,dx = \\lim_{b \\to \\infty}\\left(2 - \\frac{2}{\\sqrt{b}}\\right) = 2$."
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-8",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "improper-integrals-s2",
+   "q": "The table shows $p = \\frac{1}{2}$ and $p = \\frac{3}{2}$. For which $p$ does $\\int_1^\\infty \\frac{1}{x^p}\\,dx$ converge?",
+   "options": [
+    "$p \\ge 1$",
+    "$p < 1$",
+    "$p > 0$",
+    "$p > 1$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\int_1^\\infty \\frac{1}{x^p}\\,dx$ converges to $\\frac{1}{p - 1}$ when $p > 1$ and diverges when $p \\le 1$.",
+    "options": [
+     "At $p = 1$ the integral is $\\ln b$, which grows without bound. The inequality is strict.",
+     "For $p < 1$ the antiderivative $\\frac{x^{1 - p}}{1 - p}$ grows without bound, as the $p = \\frac{1}{2}$ column shows.",
+     "$p = \\frac{1}{2}$ is above 0 and its column diverges.",
+     "Right: for $p > 1$, $\\int_1^b x^{-p}\\,dx = \\frac{1 - b^{1 - p}}{p - 1} \\to \\frac{1}{p - 1}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-9",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "improper-integrals-s2",
+   "q": "On $(0, 1]$, $x^{-1/2}$ is unbounded near 0. Find the value of $\\int_0^1 x^{-1/2}\\,dx$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$\\int_0^1 x^{-1/2}\\,dx = \\lim_{a \\to 0^+}\\left(2\\sqrt{x}\\right)\\Big|_a^1 = \\lim_{a \\to 0^+}\\left(2 - 2\\sqrt{a}\\right) = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The integrand is unbounded at 0, so take a limit there: $\\lim_{a \\to 0^+} \\int_a^1 x^{-1/2}\\,dx = \\lim_{a \\to 0^+}\\left(2 - 2\\sqrt{a}\\right) = 2$. It converges, though the same power diverges on $[1, \\infty)$."
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-10",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find the value of $\\int_0^\\infty xe^{-x}\\,dx$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": -1,
+      "why": "$\\int xe^{-x}\\,dx = -xe^{-x} - e^{-x}$; at $b$ it approaches 0, at 0 it is $-1$, and upper minus lower gives $0 - (-1) = 1$."
+     },
+     {
+      "value": 0,
+      "why": "The value at the lower bound, $-0 \\cdot e^0 - e^0 = -1$, is not 0. Subtracting it gives 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Parts with $u = x$, $dv = e^{-x}\\,dx$: $\\lim_{b \\to \\infty}\\left(-xe^{-x} - e^{-x}\\right)\\Big|_0^b = \\lim_{b \\to \\infty}\\left(-\\frac{b}{e^b} - \\frac{1}{e^b}\\right) + 1 = 1$, since $\\lim_{b \\to \\infty} \\frac{b}{e^b} = \\lim_{b \\to \\infty} \\frac{1}{e^b} = 0$ by L'Hospital's rule."
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-11",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student writes $\\int_{-1}^{1} \\frac{1}{x^2}\\,dx = -\\frac{1}{x}\\Big|_{-1}^{1} = -2$. What is the correct conclusion?",
+   "options": [
+    "The integral diverges: $\\frac{1}{x^2}$ is unbounded at $x = 0$, and $\\int_0^1 \\frac{1}{x^2}\\,dx$ diverges",
+    "The value $-2$ is right, by the Fundamental Theorem of Calculus",
+    "The value is $2$: the sign was lost",
+    "The value is 0, by symmetry about the $y$-axis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An integrand unbounded inside the interval makes the integral improper: $\\int_{-1}^{1} = \\int_{-1}^{0} + \\int_0^{1}$, and $\\lim_{a \\to 0^+} \\int_a^1 x^{-2}\\,dx = \\lim_{a \\to 0^+}\\left(\\frac{1}{a} - 1\\right) = \\infty$.",
+    "options": [
+     "Right: the piece on $[0, 1]$ is $\\lim_{a \\to 0^+}\\left(-1 + \\frac{1}{a}\\right) = \\infty$, so the whole integral diverges.",
+     "The Fundamental Theorem needs $\\frac{1}{x^2}$ continuous on $[-1, 1]$, and it is not continuous at 0. A positive integrand cannot give $-2$.",
+     "No finite value is right. The integrand blows up at 0, inside the interval.",
+     "$\\frac{1}{x^2}$ is even and positive; symmetry doubles the area, and each half diverges."
+    ]
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-12",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the value of $\\int_0^\\infty e^{-2x}\\,dx$.",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": "-1/2",
+      "why": "$\\int e^{-2x}\\,dx = -\\frac{1}{2}e^{-2x}$; upper minus lower: $\\lim_{b \\to \\infty}\\left(-\\frac{1}{2}e^{-2b}\\right) - \\left(-\\frac{1}{2}\\right) = \\frac{1}{2}$."
+     },
+     {
+      "value": 2,
+      "why": "Integrating $e^{-2x}$ divides by $-2$; it does not multiply by 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{b \\to \\infty}\\left(-\\frac{1}{2}e^{-2x}\\right)\\Big|_0^b = \\lim_{b \\to \\infty}\\left(\\frac{1}{2} - \\frac{1}{2}e^{-2b}\\right) = \\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-13",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "single",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "$\\int_1^\\infty \\frac{1}{x(x + 1)}\\,dx$",
+   "options": [
+    "converges to $\\ln\\frac{1}{2}$",
+    "converges to $\\ln 2$",
+    "diverges, because $\\ln b \\to \\infty$",
+    "converges to 1"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Partial fractions: $\\frac{1}{x(x + 1)} = \\frac{1}{x} - \\frac{1}{x + 1}$. Then $\\lim_{b \\to \\infty}\\left(\\ln\\frac{b}{b + 1} - \\ln\\frac{1}{2}\\right) = 0 + \\ln 2$.",
+    "options": [
+     "The sign is reversed: subtract the value at 1, $\\ln\\frac{1}{2}$, which adds $\\ln 2$.",
+     "Right: $\\left(\\ln x - \\ln(x + 1)\\right)\\Big|_1^b = \\ln\\frac{b}{b + 1} + \\ln 2$, and $\\ln\\frac{b}{b + 1} \\to \\ln 1 = 0$.",
+     "$\\ln b$ and $\\ln(b + 1)$ both grow, but their difference $\\ln\\frac{b}{b + 1}$ approaches 0. Combine the logs before taking the limit.",
+     "$\\frac{1}{x(x + 1)} = \\frac{1}{x} - \\frac{1}{x + 1}$ integrates to logs, not powers. The limit is $\\ln 2$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-14",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "What does $\\int_2^\\infty \\frac{1}{x\\ln x}\\,dx$ do?",
+   "options": [
+    "It converges to $\\frac{1}{\\ln 2}$",
+    "It converges to 0, because $\\frac{1}{x\\ln x} \\to 0$",
+    "It diverges, because $\\ln(\\ln b) \\to \\infty$",
+    "It converges to $\\ln(\\ln 2)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Substitute $u = \\ln x$, $du = \\frac{1}{x}dx$: $\\lim_{b \\to \\infty} \\int_{\\ln 2}^{\\ln b} \\frac{du}{u} = \\lim_{b \\to \\infty}\\left(\\ln(\\ln b) - \\ln(\\ln 2)\\right) = \\infty$.",
+    "options": [
+     "An antiderivative of $\\frac{1}{x\\ln x}$ is $\\ln(\\ln x)$, not $-\\frac{1}{\\ln x}$ (that one belongs to $\\frac{1}{x(\\ln x)^2}$).",
+     "An integrand approaching 0 does not make an integral converge, and a positive integrand cannot give 0.",
+     "Right: with $u = \\ln x$, $\\int_2^b \\frac{dx}{x\\ln x} = \\ln(\\ln b) - \\ln(\\ln 2)$, which grows without bound, if slowly.",
+     "$\\ln(\\ln 2)$ is the value of the antiderivative at the lower bound. The value at $b$, $\\ln(\\ln b)$, grows without bound."
+    ]
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-15",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the value of $\\int_0^3 \\frac{1}{\\sqrt{3 - x}}\\,dx$.",
+   "numeric": {
+    "answer": "2*sqrt(3)",
+    "answerTex": "2\\sqrt{3}",
+    "mistakes": [
+     {
+      "value": "-2*sqrt(3)",
+      "why": "$\\int (3 - x)^{-1/2}\\,dx = -2\\sqrt{3 - x}$ (the inside has derivative $-1$). Upper minus lower: $0 - (-2\\sqrt{3}) = 2\\sqrt{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The integrand is unbounded at $x = 3$: $\\lim_{b \\to 3^-}\\left(-2\\sqrt{3 - x}\\right)\\Big|_0^b = \\lim_{b \\to 3^-}\\left(-2\\sqrt{3 - b} + 2\\sqrt{3}\\right) = 2\\sqrt{3}$."
+   }
+  },
+  {
+   "id": "cbc-improper-integrals-16",
+   "unit": "unit-6",
+   "topic": "improper-integrals",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which line evaluates $\\int_1^\\infty \\frac{1}{x^2}\\,dx$ with notation that earns full credit?",
+   "options": [
+    "$\\int_1^\\infty \\frac{dx}{x^2} = -\\frac{1}{x}\\Big|_1^\\infty = -\\frac{1}{\\infty} + 1 = 1$",
+    "$\\lim_{b \\to \\infty} \\int_1^b \\frac{dx}{x^2} = \\left(-\\frac{1}{x}\\right)\\Big|_1^b = 1 - \\frac{1}{b} = 1$",
+    "$\\int_1^\\infty \\frac{dx}{x^2} = 1 - 0 = 1$ since the curve approaches 0",
+    "$\\lim_{b \\to \\infty} \\int_1^b \\frac{dx}{x^2} = \\lim_{b \\to \\infty}\\left(1 - \\frac{1}{b}\\right) = 1$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Write the limit, carry it through each step, and take it at the end. Dropping it mid-line or writing $\\frac{1}{\\infty}$ loses the point even when the number is right.",
+    "options": [
+     "$\\infty$ is substituted as if it were a number. That is arithmetic with infinity, which the scoring guidelines do not accept.",
+     "The limit was dropped in the middle: $1 - \\frac{1}{b}$ does not equal 1. Keep $\\lim_{b \\to \\infty}$ until you take it.",
+     "No limit of integrals is shown, and the reason given (the curve approaches 0) does not decide convergence.",
+     "Right: the limit is written in every expression until it is taken."
+    ]
+   }
+  }
+ ]
+}

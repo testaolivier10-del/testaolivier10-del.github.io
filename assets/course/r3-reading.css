@@ -140,6 +140,7 @@
 .r3-lesson[data-cover="apchem"] > [class$="-ls-hero"]{background-image:url(../covers/art/apchem.svg)}
 .r3-lesson[data-cover="apphys"] > [class$="-ls-hero"]{background-image:url(../covers/art/apphys.svg)}
 .r3-lesson[data-cover="apcalc"] > [class$="-ls-hero"]{background-image:url(../covers/art/apcalc.svg)}
+.r3-lesson[data-cover="apcalcbc"] > [class$="-ls-hero"]{background-image:url(../covers/art/apcalcbc.svg)}
 .r3-lesson[data-cover="apstat"] > [class$="-ls-hero"]{background-image:url(../covers/art/apstat.svg)}
 .r3-lesson[data-cover="apenv"] > [class$="-ls-hero"]{background-image:url(../covers/art/apenv.svg)}
 .r3-lesson[data-cover="appsych"] > [class$="-ls-hero"]{background-image:url(../covers/art/appsych.svg)}

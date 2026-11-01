@@ -1,0 +1,59 @@
+<p>Motion in the plane brings together everything in Unit 9 so far: the position vector, its derivatives, its integrals and the length of a path. Every free-response question on a particle in the plane asks some mix of the same five things. This page lists them, shows the tool for each, and points out where points are usually lost.</p>
+
+<h2>From position to velocity, speed and distance</h2>
+<p>Start from the position vector $\mathbf{r}(t) = \left\langle x(t), y(t) \right\rangle$ and follow the arrows:</p>
+<table class="compare">
+<thead><tr><th>Quantity</th><th>Formula</th><th>Kind of answer</th></tr></thead>
+<tbody>
+<tr><td>Velocity</td><td>$\mathbf{v}(t) = \left\langle x'(t), y'(t) \right\rangle$</td><td>a vector</td></tr>
+<tr><td>Acceleration</td><td>$\mathbf{a}(t) = \left\langle x''(t), y''(t) \right\rangle$</td><td>a vector</td></tr>
+<tr><td>Speed</td><td>$\left\| \mathbf{v}(t) \right\| = \sqrt{(x'(t))^2 + (y'(t))^2}$</td><td>a number, at least 0</td></tr>
+<tr><td>Displacement on $[a, b]$</td><td>$\int_a^b \mathbf{v}(t)\,dt = \mathbf{r}(b) - \mathbf{r}(a)$</td><td>a vector</td></tr>
+<tr><td>Position at $t = b$</td><td>$\mathbf{r}(b) = \mathbf{r}(a) + \int_a^b \mathbf{v}(t)\,dt$</td><td>a point or vector</td></tr>
+<tr><td>Distance traveled on $[a, b]$</td><td>$\int_a^b \sqrt{(x'(t))^2 + (y'(t))^2}\,dt$</td><td>a number, at least 0</td></tr>
+</tbody>
+</table>
+<p>The table mirrors straight-line motion from Units 4 and 8, where speed was $|v(t)|$ and distance $\int_a^b |v(t)|\,dt$. In the plane, the absolute value becomes the magnitude of a vector.</p>
+<figure id="fig-parabola" data-fig="planar-motion-parabola"><figcaption>Position, velocity, displacement and distance on one path.</figcaption></figure>
+<p><a class="figref" href="#fig-parabola">The figure</a> shows $\mathbf{r}(t) = \left\langle 2t, 4t - t^2 \right\rangle$ for $0 \le t \le 4$. At $t = 1$ the particle is at $(2, 3)$ with $\mathbf{v}(1) = \left\langle 2, 2 \right\rangle$, so its speed is $2\sqrt{2}$. Over the whole trip the displacement is $\mathbf{r}(4) - \mathbf{r}(0) = \left\langle 8, 0 \right\rangle$, length 8, but the particle flies along the arch, a distance of $\int_0^4 \sqrt{4 + (4 - 2t)^2}\,dt \approx 11.83$.</p>
+
+<h2>A calculator question, start to finish</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> A particle moves with $x'(t) = 2\sin(t^2) + 1$ and $y'(t) = e^{-t} + t$ for $0 \le t \le 3$, and $(x(0), y(0)) = (2, 5)$.</p>
+<p><b>Speed at $t = 1$:</b> $\sqrt{(x'(1))^2 + (y'(1))^2} = \sqrt{(2\sin 1 + 1)^2 + (e^{-1} + 1)^2} \approx 3.012$.</p>
+<p><b>Position at $t = 3$:</b> $x(3) = 2 + \int_0^3 x'(t)\,dt \approx 2 + 4.547 = 6.547$ and $y(3) = 5 + \int_0^3 y'(t)\,dt \approx 5 + 5.450 = 10.450$.</p>
+<p><b>Distance traveled:</b> $\int_0^3 \sqrt{(x'(t))^2 + (y'(t))^2}\,dt \approx 7.900$.</p>
+<p>Each answer shows the setup first, then the calculator value to three decimal places, with stored values and no early rounding.</p>
+</div>
+<p>A question may also give a speed and ask for the time: "when is the speed 3?" Then write the equation $\sqrt{(x'(t))^2 + (y'(t))^2} = 3$ and solve it on the calculator. Evaluating the speed at some time does not answer it.</p>
+
+<h2>Reading direction and behavior</h2>
+<p>Many points come from reading signs, and each question has its own derivative:</p>
+<ul>
+<li>"Is the particle moving left or right?" Read $\frac{dx}{dt}$. "Up or down?" Read $\frac{dy}{dt}$.</li>
+<li>"Is the $y$-coordinate decreasing?" Read $\frac{dy}{dt} < 0$, not $\frac{dy}{dx}$. A path can fall as $x$ increases ($\frac{dy}{dx} < 0$) while $x$ itself is decreasing, so that $y$ rises in time.</li>
+<li>"Is the particle at rest?" Both components of the velocity are 0.</li>
+<li>"Where is the particle farthest left?" A candidates test on $x(t)$: compare $x$ at the endpoints and where $x'(t)$ changes sign.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> A particle has $x(t) = t^3 - 3t$ and $y(t) = 2t^2 - t^4$ for $-2 \le t \le 2$. For which $t$ is the particle moving left and down?</p>
+<p>Left: $x'(t) = 3t^2 - 3 < 0$, so $-1 < t < 1$.</p>
+<p>Down: $y'(t) = 4t - 4t^3 = 4t(1 - t)(1 + t) < 0$, so $-1 < t < 0$ or $t > 1$.</p>
+<p>Both: $-1 < t < 0$.</p>
+</div>
+
+<h2>Two particles</h2>
+<p>With two particles, label everything with its particle ($x_A$, $y_B$). Their <b>paths cross</b> where the curves share a point; they <b>collide</b> only if they are at that point at the same time. Set the $x$-coordinates equal, solve for $t$, and check that the $y$-coordinates agree at that same $t$.</p>
+
+<h2>Where points are lost</h2>
+<table class="compare">
+<thead><tr><th>Slip</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Speed as $\left|\frac{dy}{dx}\right|$ or as one component</td><td>$\sqrt{(x'(t))^2 + (y'(t))^2}$</td></tr>
+<tr><td>Position without the initial value, or with it subtracted</td><td>$x(b) = x(a) + \int_a^b x'(t)\,dt$</td></tr>
+<tr><td>A missing $dt$, or limits that do not match the start</td><td>Write the full integral with its differential and the $t$-interval</td></tr>
+<tr><td>"$y$ is decreasing" read from $\frac{dy}{dx}$</td><td>Read the sign of $\frac{dy}{dt}$</td></tr>
+<tr><td>Velocity given when acceleration is asked, or components swapped</td><td>Check which derivative, and keep the order $\left\langle x, y \right\rangle$</td></tr>
+<tr><td>Fewer than three decimal places</td><td>Store values; round only the final answer</td></tr>
+</tbody>
+</table>

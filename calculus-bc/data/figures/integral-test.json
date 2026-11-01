@@ -1,0 +1,12 @@
+{
+ "integral-test-rectangles": {
+  "file": "figures/integral-test-rectangles.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 410,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: the curve f(x) = 1/x² with boxes of width 1 drawn under it; box n spans x = n − 1 to n and has height 1/n², for n = 2 to 7. The boxes fit under the curve from x = 1 on, so 1/2² + 1/3² + ... is less than the integral from 1 to infinity of 1/x², which is 1: the series converges. Right: the curve f(x) = 1/x with boxes of height 1/n from x = n to n + 1, for n = 1 to 6, sticking out above the curve, so 1 + 1/2 + ... + 1/N is more than the integral from 1 to N + 1 of 1/x, which is ln(N + 1) and grows without bound: the series diverges."
+ }
+}

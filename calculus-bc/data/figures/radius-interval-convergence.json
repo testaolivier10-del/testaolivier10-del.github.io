@@ -1,0 +1,12 @@
+{
+ "interval-number-line": {
+  "file": "figures/interval-number-line.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 270,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A number line from -5 to 7. The power series sum of (x - 1) to the n over n times 4 to the n is centered at 1 with radius 4, marked by arrows to -3 and 5. A thick bar runs from -3 to 5, with a filled dot at -3, where the series becomes the alternating harmonic series and converges, and an open dot at 5, where it becomes the harmonic series and diverges. Outside the bar the series diverges. The interval of convergence is [-3, 5)."
+ }
+}

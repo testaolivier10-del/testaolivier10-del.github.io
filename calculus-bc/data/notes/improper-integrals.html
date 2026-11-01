@@ -1,0 +1,53 @@
+<p>Every definite integral so far had finite limits and a continuous integrand on a closed interval. An <b>improper integral</b> breaks one of those rules: a limit of integration is infinite, as in $\int_1^\infty \frac{1}{x^2}\,dx$, or the integrand is unbounded on the interval, as in $\int_0^1 \frac{1}{\sqrt{x}}\,dx$. Calculus handles both the same way: integrate on a safe interval, then take a limit.</p>
+
+<h2>Infinite limits of integration</h2>
+<p>$$\int_a^\infty f(x)\,dx = \lim_{b \to \infty} \int_a^b f(x)\,dx.$$</p>
+<p>If the limit is a finite number, the improper integral <b>converges</b> to that number. If the limit is infinite or does not exist, the integral <b>diverges</b>. The same idea works at the other end: $\int_{-\infty}^{b} f(x)\,dx = \lim_{a \to -\infty} \int_a^b f(x)\,dx$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Evaluate $\int_1^\infty \frac{1}{x^2}\,dx$ or show that it diverges.</p>
+<p>$\int_1^\infty \frac{1}{x^2}\,dx = \lim_{b \to \infty} \int_1^b x^{-2}\,dx = \lim_{b \to \infty}\left(-\frac{1}{x}\right)\Big|_1^b = \lim_{b \to \infty}\left(1 - \frac{1}{b}\right) = 1.$</p>
+<p>The limit is a finite number, so the integral converges to 1.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Evaluate $\int_1^\infty \frac{1}{x}\,dx$ or show that it diverges.</p>
+<p>$\lim_{b \to \infty} \int_1^b \frac{1}{x}\,dx = \lim_{b \to \infty} \ln b = \infty$, so the integral diverges.</p>
+</div>
+<p><a class="figref" href="#fig-tails">The figure</a> puts the two side by side. Both graphs approach 0, yet one area levels off and the other grows without bound. A height that goes to 0 is not enough to make the area finite: only the limit of the integrals decides.</p>
+<figure id="fig-tails" data-fig="improper-integrals-two-tails"><figcaption>The area under 1/x² from 1 to b approaches 1; the area under 1/x is ln b, which grows without bound.</figcaption></figure>
+
+<h2>Powers of x: the p-integrals</h2>
+<p>For $p \ne 1$, $\int_1^b x^{-p}\,dx = \frac{b^{1 - p} - 1}{1 - p}$. When $p > 1$, $b^{1 - p} \to 0$ and the integral converges to $\frac{1}{p - 1}$. When $p < 1$, $b^{1 - p} \to \infty$ and it diverges; $p = 1$ gives $\ln b$, which also diverges.</p>
+<table class="compare">
+<thead><tr><th>Integral</th><th>$\int_1^b$ equals</th><th>As $b \to \infty$</th></tr></thead>
+<tbody>
+<tr><td>$\int_1^\infty x^{-2}\,dx$</td><td>$1 - \frac{1}{b}$</td><td>converges to 1</td></tr>
+<tr><td>$\int_1^\infty x^{-3/2}\,dx$</td><td>$2 - \frac{2}{\sqrt{b}}$</td><td>converges to 2</td></tr>
+<tr><td>$\int_1^\infty x^{-1}\,dx$</td><td>$\ln b$</td><td>diverges</td></tr>
+<tr><td>$\int_1^\infty x^{-1/2}\,dx$</td><td>$2\sqrt{b} - 2$</td><td>diverges</td></tr>
+<tr><td>$\int_0^\infty e^{-x}\,dx$</td><td>$1 - e^{-b}$ (from 0)</td><td>converges to 1</td></tr>
+</tbody>
+</table>
+
+<h2>Integrands that blow up</h2>
+<p>If $f$ is unbounded at an endpoint, put the limit at that endpoint. For an upper endpoint $c$: $\int_a^c f(x)\,dx = \lim_{b \to c^-} \int_a^b f(x)\,dx$.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Evaluate $\int_0^3 \frac{1}{\sqrt{3 - x}}\,dx$.</p>
+<p>The integrand is unbounded as $x \to 3^-$. With $\int (3 - x)^{-1/2}\,dx = -2\sqrt{3 - x}$:</p>
+<p>$\lim_{b \to 3^-}\left(-2\sqrt{3 - x}\right)\Big|_0^b = \lim_{b \to 3^-}\left(-2\sqrt{3 - b} + 2\sqrt{3}\right) = 2\sqrt{3}.$ The integral converges.</p>
+</div>
+<p>The dangerous case is a blow-up <i>inside</i> the interval. $\int_{-1}^1 \frac{1}{x^2}\,dx$ looks like $-\frac{1}{x}\Big|_{-1}^1 = -2$, a negative answer for a positive integrand. The Fundamental Theorem does not apply, because $\frac{1}{x^2}$ is not continuous at 0. Look at the piece from 0 to 1: $\int_0^1 \frac{1}{x^2}\,dx = \lim_{a \to 0^+}\left(\frac{1}{a} - 1\right) = \infty$, so the integral diverges. Before integrating, always check the integrand for vertical asymptotes on the interval.</p>
+
+<h2>Using parts and L'Hospital's rule</h2>
+<div class="worked">
+<p><b>Worked example 4.</b> Evaluate $\int_0^\infty xe^{-x}\,dx$.</p>
+<p>Parts with $u = x$, $dv = e^{-x}\,dx$: $\int xe^{-x}\,dx = -xe^{-x} - e^{-x} + C$.</p>
+<p>$\lim_{b \to \infty}\left(-xe^{-x} - e^{-x}\right)\Big|_0^b = \lim_{b \to \infty}\left(-\frac{b}{e^b} - \frac{1}{e^b}\right) - (0 - 1).$</p>
+<p>$\frac{b}{e^b}$ has the form $\frac{\infty}{\infty}$, so by L'Hospital's rule $\lim_{b \to \infty}\frac{b}{e^b} = \lim_{b \to \infty}\frac{1}{e^b} = 0$. The integral converges to $0 - 0 + 1 = 1$.</p>
+</div>
+
+<h2>Writing it so it earns the point</h2>
+<ul>
+<li>Write $\lim_{b \to \infty}$ in front of every expression until the step where you take the limit. Dropping it in the middle makes a false statement such as $\int_1^b \frac{dx}{x^2} = 1$.</li>
+<li>Never substitute $\infty$: $-\frac{1}{\infty}$ and $e^{-\infty}$ are not numbers. Recent scoring guidelines give the point only when the notation is right all the way.</li>
+<li>State the conclusion in words: "the integral converges to 1" or "the integral diverges".</li>
+</ul>

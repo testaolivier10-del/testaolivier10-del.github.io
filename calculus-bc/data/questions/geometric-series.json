@@ -1,0 +1,538 @@
+{
+ "stimuli": {
+  "geometric-series-s1": {
+   "kind": "table",
+   "title": "The first terms of a geometric series",
+   "table": {
+    "caption": "The terms $a_n$ of a geometric series $\\sum_{n=0}^{\\infty} a_n$, starting at $n = 0$",
+    "cols": [
+     "$n$",
+     "$0$",
+     "$1$",
+     "$2$",
+     "$3$"
+    ],
+    "rows": [
+     [
+      "$a_n$",
+      "$12$",
+      "$-8$",
+      "$\\frac{16}{3}$",
+      "$-\\frac{32}{9}$"
+     ]
+    ]
+   }
+  },
+  "geometric-series-s2": {
+   "kind": "table",
+   "title": "A geometric series with $x$ in the ratio",
+   "table": {
+    "caption": "The first terms of $\\sum_{n=0}^{\\infty} \\left(\\frac{x - 1}{3}\\right)^n$",
+    "cols": [
+     "$n$",
+     "$0$",
+     "$1$",
+     "$2$",
+     "$3$"
+    ],
+    "rows": [
+     [
+      "Term",
+      "$1$",
+      "$\\frac{x - 1}{3}$",
+      "$\\frac{(x - 1)^2}{9}$",
+      "$\\frac{(x - 1)^3}{27}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-geometric-series-1",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "geometric-series-s1",
+   "q": "Find the common ratio $r$.",
+   "numeric": {
+    "answer": "-2/3",
+    "mistakes": [
+     {
+      "value": "-3/2",
+      "why": "That divides a term by the one after it. The ratio is a term over the previous term: $\\frac{-8}{12}$."
+     },
+     {
+      "value": "2/3",
+      "why": "The signs alternate, so the ratio is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Divide any term by the one before it: $\\frac{-8}{12} = -\\frac{2}{3}$, and $\\frac{16/3}{-8} = -\\frac{2}{3}$."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-2",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "geometric-series-s1",
+   "q": "Does the series converge?",
+   "options": [
+    "No: the terms alternate in sign",
+    "No: the first term, 12, is greater than 1",
+    "Yes: $|r| = \\frac{2}{3} < 1$",
+    "Yes: the ratio $-\\frac{2}{3}$ is negative"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$|r| = \\frac{2}{3} < 1$, so the geometric series converges.",
+    "options": [
+     "Alternating signs mean a negative ratio; what decides convergence is $|r|$.",
+     "The first term only scales the sum; convergence depends on the ratio.",
+     "Right: a geometric series converges exactly when $|r| < 1$.",
+     "A negative ratio is not the reason; $r = -2$ is negative and diverges. The test is $|r| < 1$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-geometric-series-3",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "geometric-series-s1",
+   "q": "Find $\\sum_{n=0}^{\\infty} a_n$.",
+   "numeric": {
+    "answer": "36/5",
+    "mistakes": [
+     {
+      "value": "36",
+      "why": "The ratio is $-\\frac{2}{3}$, so $1 - r = 1 + \\frac{2}{3}$. Using $1 - \\frac{2}{3}$ drops the sign."
+     },
+     {
+      "value": "-24/5",
+      "why": "That divides the ratio's term $-8$ by $1 - r$. The numerator is the first term, $a = 12$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{a}{1 - r} = \\frac{12}{1 - \\left(-\\frac{2}{3}\\right)} = \\frac{12}{5/3} = \\frac{36}{5}$."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-4",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "geometric-series-s1",
+   "q": "Find $\\sum_{n=2}^{\\infty} a_n$.",
+   "numeric": {
+    "answer": "16/5",
+    "mistakes": [
+     {
+      "value": "36/5",
+      "why": "That uses 12 as the first term. The first term of the sum from $n = 2$ is $a_2 = \\frac{16}{3}$."
+     },
+     {
+      "value": "-24/5",
+      "why": "That removes only $a_0 = 12$. Starting at $n = 2$ removes $a_0$ and $a_1$: $\\frac{36}{5} - 12 - (-8)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Starting at $n = 2$, the first term is $a_2 = \\frac{16}{3}$ and the ratio is still $-\\frac{2}{3}$: $\\frac{16/3}{5/3} = \\frac{16}{5}$. Check: $\\frac{36}{5} - 12 + 8 = \\frac{16}{5}$."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-5",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "geometric-series-s1",
+   "q": "Find $S_3 = a_0 + a_1 + a_2$, the sum of the first three terms.",
+   "numeric": {
+    "answer": "28/3",
+    "mistakes": [
+     {
+      "value": "36/5",
+      "why": "That is the sum of all the terms. $S_3$ adds the first three only."
+     },
+     {
+      "value": "52/9",
+      "why": "That adds $a_0$ through $a_3$, four terms; $S_3$ stops at $a_2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$12 - 8 + \\frac{16}{3} = \\frac{28}{3}$. The formula agrees: $\\frac{a(1 - r^3)}{1 - r} = \\frac{12\\left(1 + \\frac{8}{27}\\right)}{5/3} = \\frac{28}{3}$."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-6",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "geometric-series-s2",
+   "q": "What is the common ratio of this series?",
+   "options": [
+    "$x - 1$",
+    "$\\frac{1}{3}$",
+    "$\\frac{x - 1}{3}$",
+    "$\\frac{3}{x - 1}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Divide a term by the one before it: $\\frac{(x - 1)^2/9}{(x - 1)/3} = \\frac{x - 1}{3}$.",
+    "options": [
+     "The 3 in the denominator is part of the ratio: each term picks up another factor of 3 below.",
+     "Each term also picks up another factor of $(x - 1)$ above.",
+     "Right: each term is the previous one times $\\frac{x - 1}{3}$.",
+     "That is upside down: divide a term by the one before, $\\frac{(x - 1)/3}{1}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-geometric-series-7",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "geometric-series-s2",
+   "q": "Give all $x$ for which the series converges, as an interval.",
+   "interval": {
+    "lo": "-2",
+    "hi": "4",
+    "loIn": false,
+    "hiIn": false,
+    "center": "1",
+    "var": "x",
+    "ends": {
+     "lo": "At $x = -2$ the ratio is $-1$: the terms are $(-1)^n$, whose partial sums jump between 1 and 0, so the series diverges and $x = -2$ is left out.",
+     "hi": "At $x = 4$ the ratio is $1$: every term is 1 and the partial sums grow without bound, so $x = 4$ is left out."
+    },
+    "mistakes": [
+     {
+      "answer": "[-2, 4]",
+      "why": "At $x = -2$ and $x = 4$ the ratio has size 1, and a geometric series with $|r| = 1$ diverges. Leave both ends out."
+     },
+     {
+      "answer": "(-3, 3)",
+      "why": "That interval is centered at 0. Here $|x - 1| < 3$ is centered at $x = 1$: from $1 - 3$ to $1 + 3$."
+     },
+     {
+      "answer": "(-2, 4]",
+      "why": "At $x = 4$ the ratio is 1, so every term is 1 and the series diverges."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The series converges when $\\left|\\frac{x - 1}{3}\\right| < 1$, that is $|x - 1| < 3$, or $-2 < x < 4$. At both ends $|r| = 1$, and the series diverges, so the interval is $(-2, 4)$."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-8",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "geometric-series-s2",
+   "q": "For $-2 < x < 4$, write the sum of the series as an expression in $x$.",
+   "expr": {
+    "answer": "3/(4-x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1.5,
+     3.5
+    ],
+    "lhs": "\\sum_{n=0}^{\\infty} \\left(\\frac{x - 1}{3}\\right)^n =",
+    "mistakes": [
+     {
+      "expr": "3/(2-x)",
+      "why": "$3 - (x - 1) = 3 - x + 1 = 4 - x$: the minus sign reaches the $-1$ too."
+     },
+     {
+      "expr": "1/(1-x)",
+      "why": "The ratio is $\\frac{x - 1}{3}$, not $x$: the sum is $\\frac{1}{1 - \\frac{x - 1}{3}}$."
+     },
+     {
+      "expr": "3/(4-x) - 1",
+      "why": "The series starts at $n = 0$ with the term 1, so that term stays in the sum."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{1 - \\frac{x - 1}{3}} = \\frac{3}{3 - (x - 1)} = \\frac{3}{4 - x}$."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-9",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "geometric-series-s2",
+   "q": "For which $x$ is the sum of the series equal to 2?",
+   "numeric": {
+    "answer": "5/2",
+    "mistakes": [
+     {
+      "value": "11/2",
+      "why": "Check the algebra: $4 - x = \\frac{3}{2}$ gives $x = 4 - \\frac{3}{2}$. Also $\\frac{11}{2}$ is outside the interval where the series converges."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{3}{4 - x} = 2$ gives $4 - x = \\frac{3}{2}$, so $x = \\frac{5}{2}$, which is inside $-2 < x < 4$."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-10",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the repeating decimal $0.272727\\ldots$ as a fraction in lowest terms.",
+   "numeric": {
+    "answer": "3/11",
+    "mistakes": [
+     {
+      "value": "27/100",
+      "why": "That is the first term only. The sum is $\\frac{a}{1 - r}$ with $r = \\frac{1}{100}$."
+     },
+     {
+      "value": "3/10",
+      "why": "Each repeat shifts two places, so the ratio is $\\frac{1}{100}$, not $\\frac{1}{10}$: $\\frac{27/100}{1 - 1/10} = \\frac{3}{10}$ uses the wrong ratio."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$0.2727\\ldots = \\frac{27}{100} + \\frac{27}{100^2} + \\cdots$, a geometric series with $a = \\frac{27}{100}$ and $r = \\frac{1}{100}$: $\\frac{27/100}{99/100} = \\frac{27}{99} = \\frac{3}{11}$."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-11",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\sum_{n=1}^{\\infty} 5\\left(\\frac{1}{4}\\right)^n$.",
+   "numeric": {
+    "answer": "5/3",
+    "mistakes": [
+     {
+      "value": "20/3",
+      "why": "That uses 5 as the first term, the value at $n = 0$. This sum starts at $n = 1$, where the term is $\\frac{5}{4}$."
+     },
+     {
+      "value": "5/4",
+      "why": "That is the first term only; divide by $1 - r = \\frac{3}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The first term is at $n = 1$: $a = 5 \\cdot \\frac{1}{4} = \\frac{5}{4}$. Sum: $\\frac{5/4}{1 - 1/4} = \\frac{5/4}{3/4} = \\frac{5}{3}$."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-12",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find $\\sum_{n=0}^{\\infty} \\frac{2^n}{3^{n+1}}$.",
+   "numeric": {
+    "answer": "1",
+    "mistakes": [
+     {
+      "value": "3",
+      "why": "That treats the first term as 1. At $n = 0$ the term is $\\frac{2^0}{3^1} = \\frac{1}{3}$."
+     },
+     {
+      "value": "2/3",
+      "why": "Rewrite the term as $\\frac{1}{3}\\left(\\frac{2}{3}\\right)^n$; the sum is $\\frac{1/3}{1 - 2/3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Rewrite: $\\frac{2^n}{3^{n+1}} = \\frac{1}{3}\\left(\\frac{2}{3}\\right)^n$. First term $\\frac{1}{3}$ (at $n = 0$), ratio $\\frac{2}{3}$: $\\frac{1/3}{1/3} = 1$."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-13",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Does $\\sum_{n=0}^{\\infty} \\frac{3^n}{2^n}$ converge?",
+   "options": [
+    "Yes: to $\\frac{1}{1 - 3/2} = -2$",
+    "Yes: it is geometric",
+    "No: its ratio $\\frac{2}{3}$ is less than 1",
+    "No: it is geometric with $r = \\frac{3}{2}$, and $|r| \\ge 1$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{3^n}{2^n} = \\left(\\frac{3}{2}\\right)^n$: geometric with $r = \\frac{3}{2}$. Since $|r| \\ge 1$, the series diverges.",
+    "options": [
+     "The formula $\\frac{a}{1 - r}$ holds only when $|r| < 1$. A sum of positive terms cannot be $-2$.",
+     "Being geometric is not enough: the ratio $\\frac{3}{2}$ is too big.",
+     "The ratio is $\\frac{3^{n+1}/2^{n+1}}{3^n/2^n} = \\frac{3}{2}$, not $\\frac{2}{3}$.",
+     "Right: the terms grow, and the partial sums grow without bound."
+    ]
+   }
+  },
+  {
+   "id": "cbc-geometric-series-14",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A ball is dropped from 10 feet. After each bounce it rises to $\\frac{3}{4}$ of the height it fell from. Find the total vertical distance it travels, up and down, if it bounces forever.",
+   "numeric": {
+    "answer": "70",
+    "unit": "feet",
+    "units": [
+     "ft",
+     "foot"
+    ],
+    "mistakes": [
+     {
+      "value": "40",
+      "why": "That counts each rebound height once. The ball goes up and then comes back down the same height."
+     },
+     {
+      "value": "80",
+      "why": "The first 10 feet is traveled once (down only); only the rebound heights are traveled twice."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Down 10, then up and down $7.5$, then $5.625$, and so on: $10 + 2\\left(7.5 + 5.625 + \\cdots\\right) = 10 + 2 \\cdot \\frac{7.5}{1 - 3/4} = 10 + 60 = 70$ feet."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-15",
+   "type": "interval",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For which values of $r$ does $\\sum_{n=0}^{\\infty} r^n$ converge? Give an interval.",
+   "interval": {
+    "lo": "-1",
+    "hi": "1",
+    "loIn": false,
+    "hiIn": false,
+    "var": "r",
+    "center": "0",
+    "ends": {
+     "lo": "At $r = -1$ the partial sums jump between 1 and 0, so the series diverges.",
+     "hi": "At $r = 1$ every term is 1 and the partial sums grow without bound, so the series diverges."
+    },
+    "mistakes": [
+     {
+      "answer": "[-1, 1]",
+      "why": "At $r = 1$ the series is $1 + 1 + \\cdots$ and at $r = -1$ it is $1 - 1 + 1 - \\cdots$: both diverge."
+     },
+     {
+      "answer": "(-1, 1]",
+      "why": "At $r = 1$ every term is 1, and the partial sums $S_n = n$ grow without bound."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A geometric series converges exactly when $|r| < 1$: $-1 < r < 1$."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-16",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\sum_{n=1}^{\\infty} e^{-n}$.",
+   "numeric": {
+    "answer": "1/(e-1)",
+    "mistakes": [
+     {
+      "value": "e/(e-1)",
+      "why": "That is the sum from $n = 0$, which includes the term $e^0 = 1$. Here the first term is $e^{-1}$."
+     },
+     {
+      "value": "1/e",
+      "why": "That is the first term only; divide by $1 - r = 1 - \\frac{1}{e}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "First term $e^{-1}$, ratio $e^{-1}$: $\\frac{e^{-1}}{1 - e^{-1}}$. Multiply the top and bottom by $e$: $\\frac{1}{e - 1}$."
+   }
+  },
+  {
+   "id": "cbc-geometric-series-17",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "geometric-series",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "For $r \\ne 1$, what is the sum of the first $n$ terms of $a + ar + ar^2 + \\cdots$?",
+   "options": [
+    "$\\frac{a}{1 - r}$",
+    "$a\\,r^{n}$",
+    "$\\frac{a(1 - r^{n+1})}{1 - r}$",
+    "$\\frac{a(1 - r^n)}{1 - r}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$S_n = a + ar + \\cdots + ar^{n-1}$. Then $S_n - rS_n = a - ar^n$, so $S_n = \\frac{a(1 - r^n)}{1 - r}$.",
+    "options": [
+     "That is the sum of the whole series, the limit of the partial sums when $|r| < 1$.",
+     "That is a single term, the one after the $n$th.",
+     "That adds $n + 1$ terms, from $a$ to $ar^n$.",
+     "Right: the partial sum formula, valid for any $r \\ne 1$."
+    ]
+   }
+  }
+ ]
+}

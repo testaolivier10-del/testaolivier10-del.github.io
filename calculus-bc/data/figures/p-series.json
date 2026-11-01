@@ -1,0 +1,12 @@
+{
+ "p-series-partial-sums": {
+  "file": "figures/p-series-partial-sums.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Partial sums of the sum of 1 over n to the p, for n = 1 to 40 and three values of p, one dot per partial sum. p = 1/2, vermillion: the sums climb steeply, 11.27 by n = 40, and grow without bound. p = 1, the harmonic series, blue: the sums climb slowly, 4.28 by n = 40, but still grow without bound. p = 2, emerald: the sums level off under the dashed line at π²/6, about 1.645. The series converges exactly when p is greater than 1."
+ }
+}

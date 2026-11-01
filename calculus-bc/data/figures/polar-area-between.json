@@ -1,0 +1,22 @@
+{
+ "polar-area-between-region": {
+  "file": "figures/polar-area-between-region.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The cardioid r = 2 + 2 cos θ in emerald and the circle r = 3 in blue on a polar grid. They meet at (3, π/3) and (3, −π/3), marked with dashed rays from the pole. The region inside the cardioid and outside the circle, a crescent on the right, is shaded. A side panel gives the steps: set 2 + 2 cos θ = 3 to get θ = ±π/3; on that interval the cardioid is the outer curve; the area is one half the integral from −π/3 to π/3 of (2 + 2 cos θ) squared minus 3 squared, which is (9√3 − 2π)/2, about 4.653."
+ },
+ "polar-area-between-circles": {
+  "file": "figures/polar-area-between-circles.svg",
+  "ext": "svg",
+  "w": 560,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "On a polar grid with circles of radius 1 to 4: the circle r = 4 sin θ in emerald, of diameter 4, resting on the pole and reaching up to (0, 4), and the circle r = 2 in blue, centered at the pole. They cross at two marked points, at θ = π/6 and θ = 5π/6. The region inside r = 4 sin θ and outside r = 2, a crescent above the blue circle, is shaded."
+ }
+}

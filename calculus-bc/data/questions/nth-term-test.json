@@ -1,0 +1,565 @@
+{
+ "stimuli": {
+  "nth-term-test-s1": {
+   "kind": "table",
+   "title": "Terms of three series for large $n$",
+   "table": {
+    "caption": "Terms of the series $\\sum a_n$, $\\sum b_n$ and $\\sum c_n$, rounded to four places",
+    "cols": [
+     "$n$",
+     "$a_n = \\frac{2n^2}{n^2 + 5}$",
+     "$b_n = \\frac{1}{\\sqrt{n}}$",
+     "$c_n = \\cos\\left(\\frac{1}{n}\\right)$"
+    ],
+    "rows": [
+     [
+      "$10$",
+      "$1.9048$",
+      "$0.3162$",
+      "$0.9950$"
+     ],
+     [
+      "$100$",
+      "$1.9990$",
+      "$0.1000$",
+      "$1.0000$"
+     ],
+     [
+      "$1000$",
+      "$2.0000$",
+      "$0.0316$",
+      "$1.0000$"
+     ]
+    ]
+   }
+  },
+  "nth-term-test-s2": {
+   "kind": "graph",
+   "title": "The terms of a series",
+   "plot": {
+    "label": "The terms a sub n of a series for n = 1 to 12, rising toward the dashed line at height 3",
+    "width": 420,
+    "height": 280,
+    "x": [
+     0,
+     12.8
+    ],
+    "y": [
+     0,
+     3.5
+    ],
+    "xStep": 1,
+    "yStep": 0.5,
+    "xLabel": "n",
+    "yLabel": "a_n",
+    "grid": true,
+    "points": [
+     {
+      "at": [
+       1,
+       0.6
+      ]
+     },
+     {
+      "at": [
+       2,
+       1.0
+      ]
+     },
+     {
+      "at": [
+       3,
+       1.285714
+      ]
+     },
+     {
+      "at": [
+       4,
+       1.5
+      ]
+     },
+     {
+      "at": [
+       5,
+       1.666667
+      ]
+     },
+     {
+      "at": [
+       6,
+       1.8
+      ]
+     },
+     {
+      "at": [
+       7,
+       1.909091
+      ]
+     },
+     {
+      "at": [
+       8,
+       2.0
+      ]
+     },
+     {
+      "at": [
+       9,
+       2.076923
+      ]
+     },
+     {
+      "at": [
+       10,
+       2.142857
+      ]
+     },
+     {
+      "at": [
+       11,
+       2.2
+      ]
+     },
+     {
+      "at": [
+       12,
+       2.25
+      ]
+     }
+    ],
+    "asymptotes": [
+     {
+      "y": 3
+     }
+    ]
+   },
+   "text": "The graph shows the terms $a_n = \\frac{3n}{n + 4}$ of the series $\\sum_{n=1}^{\\infty} a_n$, for $n = 1$ to $12$. The dashed line is at height 3."
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-nth-term-test-1",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "nth-term-test-s1",
+   "q": "Find $\\lim_{n \\to \\infty} a_n$.",
+   "numeric": {
+    "answer": "2",
+    "mistakes": [
+     {
+      "value": "0",
+      "why": "The terms in the table head toward 2, not 0: the top and bottom have the same degree."
+     },
+     {
+      "value": "2/5",
+      "why": "That divides the top's coefficient 2 by the bottom's constant 5. For large $n$ the leading terms $2n^2$ and $n^2$ decide the limit."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Divide the top and bottom by $n^2$: $\\frac{2}{1 + 5/n^2} \\to 2$. The table agrees: $1.9048$, $1.9990$, $2.0000$."
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-2",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "nth-term-test-s1",
+   "q": "What does the nth term test say about $\\sum a_n$?",
+   "options": [
+    "It converges to 2, since $\\lim a_n = 2$",
+    "Nothing, since the terms approach a limit",
+    "It converges, since the terms level off",
+    "It diverges, since $\\lim a_n = 2 \\ne 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\lim_{n \\to \\infty} a_n = 2 \\ne 0$, so $\\sum a_n$ diverges by the nth term test.",
+    "options": [
+     "The limit of the terms is not the sum. Adding terms near 2 forever grows without bound.",
+     "The test decides divergence exactly when that limit is not 0, as here.",
+     "Terms leveling off at 2 add about 2 at each step, so the partial sums grow without bound.",
+     "Right: terms that do not approach 0 make the series diverge."
+    ]
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-3",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "nth-term-test-s1",
+   "q": "What does the nth term test say about $\\sum b_n$?",
+   "options": [
+    "It converges, since $\\lim b_n = 0$",
+    "It diverges, since $b_n$ is positive",
+    "Nothing: $\\lim b_n = 0$",
+    "It diverges, since $b_{1000}$ is not 0"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{1}{\\sqrt{n}} \\to 0$, so the nth term test gives no conclusion. (Topic 10.4 shows this series diverges.)",
+    "options": [
+     "Terms approaching 0 are needed for convergence but do not guarantee it.",
+     "Positive terms do not decide anything on their own.",
+     "Right: with terms approaching 0 the test is silent.",
+     "The test uses the limit of the terms, which here is 0, not any single term."
+    ]
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-4",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "nth-term-test-s1",
+   "q": "What does the nth term test say about $\\sum c_n$?",
+   "options": [
+    "Nothing, since $\\frac{1}{n} \\to 0$",
+    "It diverges, since $\\lim c_n = \\cos 0 = 1 \\ne 0$",
+    "It converges, since $\\cos\\left(\\frac{1}{n}\\right)$ stays bounded",
+    "It converges to 1"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "As $n \\to \\infty$, $\\frac{1}{n} \\to 0$ and cosine is continuous, so $c_n \\to \\cos 0 = 1 \\ne 0$: the series diverges by the nth term test.",
+    "options": [
+     "The test looks at the terms $\\cos\\left(\\frac{1}{n}\\right)$, not at the inside $\\frac{1}{n}$.",
+     "Right: the terms approach 1.",
+     "Bounded terms can still add up without bound; these are close to 1.",
+     "The terms approach 1; a series whose terms approach 1 diverges."
+    ]
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-5",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "nth-term-test-s2",
+   "q": "Find $\\lim_{n \\to \\infty} a_n$.",
+   "numeric": {
+    "answer": "3",
+    "mistakes": [
+     {
+      "value": "0",
+      "why": "The dots rise toward the dashed line at 3; they do not approach 0."
+     },
+     {
+      "value": "3/5",
+      "why": "That is $a_1$, the first term. The limit is where the terms head as $n$ grows: divide the top and bottom by $n$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{3n}{n + 4} = \\frac{3}{1 + 4/n} \\to 3$, the height the dots approach."
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-6",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "nth-term-test-s2",
+   "q": "Which conclusion about $\\sum_{n=1}^{\\infty} a_n$ is correct?",
+   "options": [
+    "The series converges to 3",
+    "The nth term test is inconclusive",
+    "The series converges, since each $a_n$ is below 3",
+    "The series diverges by the nth term test"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\lim_{n \\to \\infty} a_n = 3 \\ne 0$, so the series diverges by the nth term test.",
+    "options": [
+     "3 is the limit of the terms; a series whose terms approach 3 grows without bound.",
+     "It is inconclusive when the terms approach 0; here they approach 3.",
+     "Terms below 3 can still add without bound; these stay near 3.",
+     "Right: $\\lim a_n = 3 \\ne 0$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-7",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "nth-term-test-s2",
+   "q": "How do the partial sums $S_n$ behave for large $n$?",
+   "options": [
+    "They approach 3, the limit of the terms",
+    "They approach 0",
+    "They grow without bound",
+    "They level off at some number greater than 3"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For large $n$, $S_{n+1} = S_n + a_{n+1} \\approx S_n + 3$: the partial sums grow without bound, which is why the series diverges.",
+    "options": [
+     "The terms approach 3; the partial sums add those terms up.",
+     "Every term is positive and near 3, so the partial sums keep growing.",
+     "Right: each new term is close to 3.",
+     "Adding terms near 3 forever cannot level off."
+    ]
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-8",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "nth-term-test-s2",
+   "q": "A student writes: \\\"The terms converge to 3, so the series converges to 3.\\\" What is wrong?",
+   "options": [
+    "Nothing: a series converges to the limit of its terms",
+    "A limit of 3 for the terms makes the series diverge",
+    "The terms converge to 0, not 3",
+    "The series converges, but to a number other than 3"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The limit of the terms and the sum of the series are different things. Here $\\lim a_n = 3 \\ne 0$, so the series diverges by the nth term test.",
+    "options": [
+     "The sum of a series is the limit of its partial sums, not of its terms.",
+     "Right: when $\\lim a_n \\ne 0$, the series diverges.",
+     "The graph and the formula both show the terms approaching 3.",
+     "The series has no sum: its partial sums grow without bound."
+    ]
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-9",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement is the nth term test?",
+   "options": [
+    "If $\\lim_{n \\to \\infty} a_n \\ne 0$, then $\\sum a_n$ diverges",
+    "If $\\lim_{n \\to \\infty} a_n = 0$, then $\\sum a_n$ converges",
+    "If $\\sum a_n$ diverges, then $\\lim_{n \\to \\infty} a_n \\ne 0$",
+    "If $\\lim_{n \\to \\infty} a_n = 0$, then $\\sum a_n$ diverges"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "If a series converges, its terms approach 0. Turned around: if the terms do not approach 0 (the limit is not 0 or does not exist), the series diverges.",
+    "options": [
+     "Right: and if the limit is 0, the test says nothing.",
+     "This is false: terms approaching 0 are not enough (10.1 showed $\\sum \\ln\\frac{n + 1}{n}$ diverges).",
+     "This is the false converse: many divergent series have terms approaching 0.",
+     "Terms approaching 0 leave the question open, in either direction."
+    ]
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-10",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "What does the nth term test say about $\\sum_{n=1}^{\\infty} \\arctan n$?",
+   "options": [
+    "It converges: arctan is bounded by $\\frac{\\pi}{2}$",
+    "Nothing: $\\arctan n$ is increasing, not decreasing",
+    "It converges to $\\frac{\\pi}{2}$",
+    "It diverges: $\\lim \\arctan n = \\frac{\\pi}{2} \\ne 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "As $n \\to \\infty$, $\\arctan n \\to \\frac{\\pi}{2} \\ne 0$, so the series diverges by the nth term test.",
+    "options": [
+     "Bounded terms near $\\frac{\\pi}{2}$ still add up without bound.",
+     "The test asks for the limit of the terms, which is $\\frac{\\pi}{2}$, not 0.",
+     "$\\frac{\\pi}{2}$ is the limit of the terms, not a sum.",
+     "Right: the terms approach $\\frac{\\pi}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-11",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What does the nth term test say about $\\sum_{n=1}^{\\infty} \\frac{n^2}{e^n}$?",
+   "options": [
+    "It diverges: the top and bottom both grow",
+    "It converges: the terms approach 0",
+    "Nothing: the terms approach 0",
+    "It diverges: $\\frac{n^2}{e^n}$ is positive"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\lim_{n \\to \\infty} \\frac{n^2}{e^n} = 0$ (L'Hospital's rule twice), so the nth term test gives no conclusion.",
+    "options": [
+     "What matters is the limit of the quotient, which is 0.",
+     "A limit of 0 never proves convergence; another test is needed (a later test in this unit shows it converges).",
+     "Right: $e^n$ outgrows $n^2$, so the test is silent.",
+     "Positive terms decide nothing on their own."
+    ]
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-12",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "What does the nth term test say about $\\sum_{n=1}^{\\infty} \\frac{(-1)^n\\,n}{n + 1}$?",
+   "options": [
+    "Nothing: the terms alternate in sign",
+    "It diverges: the terms do not approach 0",
+    "It converges: positive and negative terms cancel",
+    "Nothing: $\\lim a_n$ does not exist"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\left|a_n\\right| = \\frac{n}{n + 1} \\to 1$, so $a_n$ does not approach 0 (it has no limit at all). The series diverges by the nth term test.",
+    "options": [
+     "Alternating signs do not exempt a series; the test asks whether $\\lim a_n = 0$, and it is not.",
+     "Right: their sizes approach 1, so the terms jump between values near 1 and $-1$.",
+     "The terms stay near $\\pm 1$, so the partial sums keep jumping by about 1.",
+     "A limit that does not exist is not 0, and that is enough for divergence."
+    ]
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-13",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For which constant $k$ is the nth term test inconclusive for $\\sum_{n=1}^{\\infty} \\frac{kn + 1}{2n + 3}$?",
+   "numeric": {
+    "answer": "0",
+    "mistakes": [
+     {
+      "value": "2",
+      "why": "For $k = 2$ the terms approach $\\frac{2}{2} = 1 \\ne 0$, so the test shows divergence."
+     },
+     {
+      "value": "-1",
+      "why": "That makes the first term 0 ($k + 1 = 0$), but the test is about the limit as $n \\to \\infty$, which is $\\frac{k}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{n \\to \\infty} \\frac{kn + 1}{2n + 3} = \\frac{k}{2}$, which is 0 only for $k = 0$. For every other $k$ the series diverges by the nth term test. (For $k = 0$ the terms $\\frac{1}{2n + 3}$ approach 0, so the test says nothing.)"
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-14",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which justification earns credit for the divergence of $\\sum_{n=1}^{\\infty} \\frac{4n - 1}{n + 2}$?",
+   "options": [
+    "The terms converge to 4, so the series converges to 4",
+    "The terms get bigger, so the series diverges",
+    "The series diverges because $\\frac{4n - 1}{n + 2}$ diverges",
+    "$\\lim_{n \\to \\infty} \\frac{4n - 1}{n + 2} = 4 \\ne 0$; it diverges by the nth term test"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "State the limit of the terms, say it is not 0, name the test and conclude about the series.",
+    "options": [
+     "The terms' limit is not the sum, and a nonzero limit means the series diverges.",
+     "Increasing terms are not the reason; the limit of the terms must be shown to be nonzero.",
+     "The terms do not diverge: they approach 4. Say what the limit is and that it is not 0.",
+     "Right: the limit, its value, the comparison with 0 and the test's name."
+    ]
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-15",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find $\\lim_{n \\to \\infty} n\\sin\\left(\\frac{1}{n}\\right)$, the limit of the terms of $\\sum_{n=1}^{\\infty} n\\sin\\left(\\frac{1}{n}\\right)$.",
+   "numeric": {
+    "answer": "1",
+    "mistakes": [
+     {
+      "value": "0",
+      "why": "$\\sin\\left(\\frac{1}{n}\\right) \\to 0$, but it is multiplied by $n \\to \\infty$. Rewrite as $\\frac{\\sin u}{u}$ with $u = \\frac{1}{n}$."
+     },
+     {
+      "value": "1000",
+      "why": "Use the limit, not a large $n$. The two factors balance: $\\frac{\\sin u}{u} \\to 1$ as $u \\to 0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Write $n\\sin\\left(\\frac{1}{n}\\right) = \\frac{\\sin(1/n)}{1/n}$; with $u = \\frac{1}{n} \\to 0$, $\\frac{\\sin u}{u} \\to 1$. Since the limit is not 0, the series diverges by the nth term test."
+   }
+  },
+  {
+   "id": "cbc-nth-term-test-16",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "nth-term-test",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What can be concluded about $\\sum_{n=1}^{\\infty} \\frac{1}{n + 1}$ from the nth term test alone?",
+   "options": [
+    "It converges, since $\\frac{1}{n + 1} \\to 0$",
+    "Nothing: the terms approach 0",
+    "It diverges, since $\\frac{1}{n + 1} \\to 0$",
+    "It converges to 0"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\lim_{n \\to \\infty} \\frac{1}{n + 1} = 0$, so the nth term test is inconclusive; another test is needed.",
+    "options": [
+     "Terms approaching 0 never prove convergence; this series in fact diverges.",
+     "Right: the test cannot decide (10.4 and 10.5 show this series diverges).",
+     "The nth term test shows divergence when the terms do not approach 0.",
+     "The terms approach 0; a sum of positive terms is not 0."
+    ]
+   }
+  }
+ ]
+}

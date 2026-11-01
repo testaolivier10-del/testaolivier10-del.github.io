@@ -1,0 +1,22 @@
+{
+ "parametric-derivatives-tangents": {
+  "file": "figures/parametric-derivatives-tangents.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 570,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The curve x = t squared, y = t cubed minus 3t for t from about -2 to 2, a loop that crosses itself at (3, 0), with arrows for the direction of increasing t. At (3, 0) two dashed tangent lines are drawn: slope square root of 3 when t = square root of 3, and slope minus square root of 3 when t = minus square root of 3. Short horizontal tangent segments mark (1, 2) at t = -1 and (1, -2) at t = 1, and a vertical tangent marks the origin at t = 0."
+ },
+ "parametric-derivatives-path": {
+  "file": "figures/parametric-derivatives-path.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 500,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The path x(t) = t cubed minus 3t, y(t) = 4 minus t squared for t from -2 to 2. It starts at (-2, 0) when t = -2, rises to the right, turns back to the left at (2, 3), passes over the top at (0, 4), turns again at (-2, 3) and comes down to (2, 0) when t = 2, crossing its earlier path at (0, 1). Arrows show the direction of increasing t. The point where t = -1, (2, 3), is marked in blue and the point where t = 2, (2, 0), in vermillion."
+ }
+}

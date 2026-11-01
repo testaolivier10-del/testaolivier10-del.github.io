@@ -1,0 +1,12 @@
+{
+ "polar-derivatives-tangents": {
+  "file": "figures/polar-derivatives-tangents.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The cardioid r = 2 + 2 cos θ on a polar grid. At θ = π/2 the point is (0, 2) and the blue tangent line has slope 1: there r = 2, dr/dθ = −2, dx/dθ = −2 and dy/dθ = −2; since dr/dθ is negative while r is positive, the point is moving toward the pole. At θ = π/3 the point is (3/2, 3√3/2), the top of the curve, where the vermillion tangent is horizontal: dy/dθ = 0 and dx/dθ is not 0."
+ }
+}

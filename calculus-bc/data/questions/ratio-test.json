@@ -1,0 +1,463 @@
+{
+ "stimuli": {
+  "ratio-test-s1": {
+   "kind": "table",
+   "title": "Ratios of consecutive terms of $\\sum \\frac{n^2}{3^n}$",
+   "table": {
+    "caption": "The ratio $\\frac{a_{n+1}}{a_n}$ for $a_n = \\frac{n^2}{3^n}$ (decimals to four places)",
+    "cols": [
+     "$n$",
+     "$1$",
+     "$2$",
+     "$5$",
+     "$10$",
+     "$100$"
+    ],
+    "rows": [
+     [
+      "$\\frac{a_{n+1}}{a_n}$",
+      "$1.3333$",
+      "$0.7500$",
+      "$0.4800$",
+      "$0.4033$",
+      "$0.3400$"
+     ]
+    ]
+   }
+  },
+  "ratio-test-s2": {
+   "kind": "table",
+   "title": "Ratios of consecutive terms of $\\sum \\frac{n!}{10^n}$",
+   "table": {
+    "caption": "The ratio $\\frac{a_{n+1}}{a_n} = \\frac{n+1}{10}$ for $a_n = \\frac{n!}{10^n}$",
+    "cols": [
+     "$n$",
+     "$1$",
+     "$5$",
+     "$9$",
+     "$20$",
+     "$100$"
+    ],
+    "rows": [
+     [
+      "$\\frac{a_{n+1}}{a_n}$",
+      "$0.2$",
+      "$0.6$",
+      "$1.0$",
+      "$2.1$",
+      "$10.1$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "cbc-ratio-test-1",
+   "type": "expr",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ratio-test-s1",
+   "q": "Write $\\frac{a_{n+1}}{a_n}$ for $a_n = \\frac{n^2}{3^n}$ as a simplified expression in $n$.",
+   "expr": {
+    "answer": "(n+1)^2/(3n^2)",
+    "vars": [
+     "n"
+    ],
+    "domain": [
+     1,
+     20
+    ],
+    "mode": "exact",
+    "lhs": "\\frac{a_{n+1}}{a_n} =",
+    "mistakes": [
+     {
+      "expr": "3(n+1)^2/n^2",
+      "why": "Dividing by $3^n$ and multiplying by $3^n$ flips: $\\frac{3^n}{3^{n+1}} = \\frac{1}{3}$, so the 3 belongs in the denominator."
+     },
+     {
+      "expr": "n^2/(3(n+1)^2)",
+      "why": "That is $\\frac{a_n}{a_{n+1}}$ with the 3 kept: put $a_{n+1}$ on top, so $(n+1)^2$ is in the numerator."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{a_{n+1}}{a_n} = \\frac{(n+1)^2}{3^{n+1}} \\cdot \\frac{3^n}{n^2} = \\frac{(n+1)^2}{3n^2}$. At $n = 1$ this is $\\frac{4}{3}$, as in the table."
+   }
+  },
+  {
+   "id": "cbc-ratio-test-2",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ratio-test-s1",
+   "q": "Find $\\lim_{n \\to \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right|$ for this series.",
+   "numeric": {
+    "answer": "1/3",
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "The ratio is $\\frac{(n+1)^2}{3n^2}$; the 3 is in the denominator, so the limit is $\\frac{1}{3}$."
+     },
+     {
+      "value": 1,
+      "why": "$\\frac{(n+1)^2}{n^2}$ approaches 1, but the factor $\\frac{1}{3}$ stays: the limit is $\\frac{1}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{(n+1)^2}{3n^2} = \\frac{1}{3}\\left(1 + \\frac{1}{n}\\right)^2 \\to \\frac{1}{3}$, which the table's values approach."
+   }
+  },
+  {
+   "id": "cbc-ratio-test-3",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ratio-test-s1",
+   "q": "What does the ratio test conclude about $\\sum_{n=1}^{\\infty} \\frac{n^2}{3^n}$?",
+   "options": [
+    "It diverges, since the first ratio, $\\frac{4}{3}$, is greater than 1",
+    "Nothing, since some of the ratios are above 1",
+    "It converges to $\\frac{1}{3}$, the limit of the ratios",
+    "It converges, since the limit $\\frac{1}{3}$ is less than 1"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The ratio test limit is $L = \\frac{1}{3} < 1$, so the series converges. The limit says whether it converges, not what it converges to.",
+    "options": [
+     "Only the limit decides; one early ratio above 1 changes nothing.",
+     "The test uses the limit, not every ratio; the limit $\\frac{1}{3}$ is below 1.",
+     "The limit of the ratios decides convergence; it is not the sum.",
+     "Right: a ratio test limit below 1 gives convergence."
+    ]
+   }
+  },
+  {
+   "id": "cbc-ratio-test-4",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ratio-test-s1",
+   "q": "At $n = 1$ the ratio is $\\frac{4}{3} > 1$. What does this early value mean?",
+   "options": [
+    "$a_2 > a_1$; early growth does not decide convergence",
+    "$a_2 < a_1$; the terms are shrinking from the start",
+    "The series diverges, since one ratio is above 1",
+    "The ratio test gives no conclusion for this series"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{a_2}{a_1} = \\frac{4}{3}$ means $a_2 = \\frac{4}{9}$ is larger than $a_1 = \\frac{1}{3}$. Early terms can grow; what decides convergence is the limit of the ratio, $\\frac{1}{3}$.",
+    "options": [
+     "Right: a ratio above 1 means the next term is larger, but only the limit matters.",
+     "A ratio above 1 means $a_2$ is the larger term: $a_1 = \\frac{1}{3}$, $a_2 = \\frac{4}{9}$.",
+     "The ratio test uses the limit as $n \\to \\infty$; finitely many early terms never decide convergence.",
+     "The limit is $\\frac{1}{3}$, which gives a conclusion: convergence."
+    ]
+   }
+  },
+  {
+   "id": "cbc-ratio-test-5",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ratio-test-s2",
+   "q": "What does the ratio test conclude about $\\sum_{n=1}^{\\infty} \\frac{n!}{10^n}$?",
+   "options": [
+    "It converges: the first ratios are below 1",
+    "It diverges: $\\frac{n+1}{10}$ grows without bound",
+    "Nothing: the ratio test limit is not a number",
+    "It converges: $\\frac{n+1}{10}$ is 1 at $n = 9$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\lim_{n \\to \\infty} \\frac{n + 1}{10} = \\infty$. A ratio test limit greater than 1, including an infinite one, means the series diverges.",
+    "options": [
+     "Only the limit decides, and the ratios grow past every bound.",
+     "Right: a limit of infinity counts as greater than 1.",
+     "An infinite limit is a conclusion: the series diverges.",
+     "A ratio of exactly 1 at one $n$ means nothing; the limit is infinite."
+    ]
+   }
+  },
+  {
+   "id": "cbc-ratio-test-6",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ratio-test-s2",
+   "q": "For which $n$ is $a_{n+1} = a_n$ for the first time? (After that, each term is larger than the one before.)",
+   "numeric": {
+    "answer": 9,
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "At $n = 9$ the ratio $\\frac{n+1}{10}$ is exactly 1, so $a_{10} = a_9$; the terms start growing after that."
+     },
+     {
+      "value": 1,
+      "why": "At $n = 1$ the ratio is 0.2, so $a_2$ is much smaller than $a_1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{a_{n+1}}{a_n} = \\frac{n + 1}{10}$ equals 1 when $n = 9$, so $a_{10} = a_9$. For $n > 9$ the ratio is above 1 and the terms grow."
+   }
+  },
+  {
+   "id": "cbc-ratio-test-7",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ratio-test-s2",
+   "q": "Which other test also shows that $\\sum \\frac{n!}{10^n}$ diverges?",
+   "options": [
+    "The alternating series test, since the ratios pass 1",
+    "The limit comparison test with $\\sum \\frac{1}{10^n}$",
+    "The integral test with $f(x) = \\frac{x}{10^x}$",
+    "The nth term test, since the terms grow and do not approach 0"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "From $n = 9$ on the ratio is at least 1, so $a_n \\ge a_{10} > 0$ for every $n \\ge 10$. The terms do not approach 0, so the series diverges by the nth term test.",
+    "options": [
+     "The terms are all positive; the series does not alternate.",
+     "$\\frac{n!/10^n}{1/10^n} = n!$ has no finite limit, so that comparison gives nothing.",
+     "That function is not the term $\\frac{n!}{10^n}$, and $n!$ has no simple antiderivative to use.",
+     "Right: from $n = 10$ on each term is at least as large as the one before."
+    ]
+   }
+  },
+  {
+   "id": "cbc-ratio-test-8",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ratio-test-s2",
+   "q": "A student notes that the ratios for $n = 1$ to $8$ are all below 1 and concludes that the series converges. What is wrong?",
+   "options": [
+    "The ratio test uses the limit as $n \\to \\infty$, which is infinite",
+    "Nothing: ratios below 1 mean the terms shrink, so the series converges",
+    "The ratios should be compared with 0, not with 1",
+    "The ratio test needs each ratio to be below $\\frac{1}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ratio test looks at $\\lim_{n \\to \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right|$. Here the limit is infinite, so the series diverges. Early ratios below 1 only say the first terms shrink.",
+    "options": [
+     "Right: finitely many ratios never decide the test.",
+     "The terms shrink only until $n = 9$; after that they grow without bound.",
+     "The threshold is 1: a limit below 1 converges, above 1 diverges.",
+     "No ratio needs to be below $\\frac{1}{2}$; the limit decides."
+    ]
+   }
+  },
+  {
+   "id": "cbc-ratio-test-9",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For both $\\sum \\frac{1}{n}$ and $\\sum \\frac{1}{n^2}$ the ratio test limit is 1. What does that show?",
+   "options": [
+    "Both series converge, since their ratio test limits are equal",
+    "A limit of 1 decides nothing: the two series differ",
+    "Both series diverge, since their ratio test limits equal 1",
+    "The ratio test was done wrong, since its limit is less than 1"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{n}{n + 1} \\to 1$ and $\\frac{n^2}{(n + 1)^2} \\to 1$, yet $\\sum \\frac{1}{n}$ diverges and $\\sum \\frac{1}{n^2}$ converges. A ratio test limit of 1 decides nothing; use another test (here the $p$-series test).",
+    "options": [
+     "$\\sum \\frac{1}{n}$ diverges, so equal limits do not mean equal behavior.",
+     "Right: the two series behave differently with the same limit.",
+     "$\\sum \\frac{1}{n^2}$ converges ($p = 2$), so a limit of 1 does not mean divergence.",
+     "$\\frac{n}{n+1} \\to 1$ and $\\frac{n^2}{(n+1)^2} \\to 1$: both limits are 1."
+    ]
+   }
+  },
+  {
+   "id": "cbc-ratio-test-10",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "What does the ratio test conclude about $\\sum_{n=0}^{\\infty} \\frac{3^n}{n!}$?",
+   "options": [
+    "It diverges: the ratio is $\\frac{3}{n + 1}$, which starts at 3",
+    "Nothing: the limit of $\\frac{3}{n+1}$ is 0, not a ratio near 1",
+    "It converges: the limit of $\\frac{3}{n + 1}$ is 0",
+    "It diverges: $3^n$ grows without bound"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{a_{n+1}}{a_n} = \\frac{3^{n+1}}{(n+1)!} \\cdot \\frac{n!}{3^n} = \\frac{3}{n + 1} \\to 0 < 1$, so the series converges by the ratio test.",
+    "options": [
+     "The first ratios exceed 1, but the limit is 0.",
+     "A limit of 0 is less than 1, which decides the test: convergence.",
+     "Right: 0 is less than 1.",
+     "$n!$ grows faster than $3^n$, so the terms approach 0 and the ratio limit is 0."
+    ]
+   }
+  },
+  {
+   "id": "cbc-ratio-test-11",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the ratio test limit $\\lim_{n \\to \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right|$ for $\\sum_{n=1}^{\\infty} n\\left(\\frac{9}{10}\\right)^n$.",
+   "numeric": {
+    "answer": "9/10",
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "$\\frac{n+1}{n} \\to 1$, but the factor $\\frac{9}{10}$ from the powers stays: the limit is $\\frac{9}{10}$."
+     },
+     {
+      "value": "10/9",
+      "why": "That is $\\frac{a_n}{a_{n+1}}$: put the $(n+1)$th term on top."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{(n+1)(9/10)^{n+1}}{n(9/10)^n} = \\frac{n + 1}{n} \\cdot \\frac{9}{10} \\to \\frac{9}{10}$. It is less than 1, so the series converges."
+   }
+  },
+  {
+   "id": "cbc-ratio-test-12",
+   "type": "numeric",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find the ratio test limit for $\\sum_{n=1}^{\\infty} \\frac{(n!)^2}{(2n)!}$.",
+   "numeric": {
+    "answer": "1/4",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "$(2n + 2)! = (2n + 2)(2n + 1)(2n)!$: two new factors, not one. The ratio is $\\frac{(n+1)^2}{(2n+2)(2n+1)}$."
+     },
+     {
+      "value": 1,
+      "why": "The top grows like $n^2$ and the bottom like $4n^2$; the limit is $\\frac{1}{4}$, not 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{a_{n+1}}{a_n} = \\frac{((n+1)!)^2}{(2n+2)!} \\cdot \\frac{(2n)!}{(n!)^2} = \\frac{(n+1)^2}{(2n+2)(2n+1)} = \\frac{n+1}{2(2n+1)} \\to \\frac{1}{4}$. Since $\\frac{1}{4} < 1$, the series converges."
+   }
+  },
+  {
+   "id": "cbc-ratio-test-13",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "What does the ratio test conclude about $\\sum_{n=1}^{\\infty} \\frac{2^n}{n^5}$?",
+   "options": [
+    "It converges: the limit is $\\frac{1}{2}$",
+    "It diverges: the limit is 2",
+    "Nothing: the limit is 1",
+    "It converges: $n^5$ is large"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{a_{n+1}}{a_n} = \\frac{2^{n+1}}{(n+1)^5} \\cdot \\frac{n^5}{2^n} = 2\\left(\\frac{n}{n+1}\\right)^5 \\to 2 > 1$, so the series diverges.",
+    "options": [
+     "That inverts the ratio; $\\frac{a_{n+1}}{a_n} = 2 \\cdot \\frac{n^5}{(n+1)^5} \\to 2$.",
+     "Right: $2 > 1$.",
+     "$\\frac{n^5}{(n+1)^5} \\to 1$, but the factor 2 stays: the limit is 2.",
+     "$2^n$ eventually outgrows $n^5$; the limit 2 shows it."
+    ]
+   }
+  },
+  {
+   "id": "cbc-ratio-test-14",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "For which series is the ratio test usually the best first choice?",
+   "options": [
+    "Terms that are ratios of polynomials in $n$",
+    "Terms of the form $\\frac{1}{n^p}$ for a fixed $p$",
+    "Terms with factorials or powers like $5^n$",
+    "Terms that do not approach 0 as $n$ grows"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Factorials and exponentials simplify in the ratio ($\\frac{(n+1)!}{n!} = n + 1$, $\\frac{5^{n+1}}{5^n} = 5$), so the ratio test gives a clear limit. For polynomial and $p$-series terms the limit is 1, which decides nothing.",
+    "options": [
+     "For those the ratio test limit is 1, which decides nothing; use a comparison.",
+     "For a $p$-series the ratio test limit is 1, which decides nothing.",
+     "Right: those cancel cleanly in $\\frac{a_{n+1}}{a_n}$.",
+     "Those diverge by the nth term test, which is quicker."
+    ]
+   }
+  },
+  {
+   "id": "cbc-ratio-test-15",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "ratio-test",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What does the ratio test conclude about $\\sum_{n=1}^{\\infty} \\frac{(-1)^n n}{4^n}$?",
+   "options": [
+    "It does not apply, since the terms change sign",
+    "It diverges: the ratio $\\frac{a_{n+1}}{a_n}$ is negative",
+    "It converges: the limit is 4",
+    "It converges: $\\left|\\frac{a_{n+1}}{a_n}\\right| \\to \\frac{1}{4}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{n + 1}{4^{n+1}} \\cdot \\frac{4^n}{n} = \\frac{n + 1}{4n} \\to \\frac{1}{4} < 1$, so the series converges by the ratio test.",
+    "options": [
+     "The ratio test uses $\\left|\\frac{a_{n+1}}{a_n}\\right|$, so it works on series with signs.",
+     "The test takes the absolute value of the ratio before the limit.",
+     "That inverts the ratio; a limit of 4 would mean divergence.",
+     "Right: the absolute value removes the sign, and $\\frac{1}{4} < 1$."
+    ]
+   }
+  }
+ ]
+}

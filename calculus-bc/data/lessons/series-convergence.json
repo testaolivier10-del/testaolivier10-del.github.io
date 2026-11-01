@@ -1,0 +1,81 @@
+{
+ "topic": "series-convergence",
+ "hook": "Walk halfway to a wall, then half the remaining distance, then half again. Infinitely many steps, yet you never pass the wall: the distances add to a finite total. Other endless sums grow without bound. Deciding which, and naming the total when there is one, is what Unit 10 is about, and it all rests on one definition.",
+ "prereq": [
+  {
+   "q": "Does the sequence $a_n = \\frac{n}{n + 1}$ converge?",
+   "options": [
+    "Yes, to 1",
+    "Yes, to 0",
+    "No: its terms keep growing",
+    "No: it alternates"
+   ],
+   "correct": 0,
+   "why": "$\\frac{n}{n + 1} = \\frac{1}{1 + 1/n} \\to 1$.",
+   "review": "math-sequences"
+  },
+  {
+   "q": "$\\int_1^{\\infty} \\frac{1}{x^2}\\,dx$ means",
+   "options": [
+    "$\\lim_{b \\to \\infty} \\int_1^b \\frac{1}{x^2}\\,dx$, which is 1",
+    "$\\int_1^{1000} \\frac{1}{x^2}\\,dx$",
+    "$\\frac{1}{\\infty^2} - 1$",
+    "nothing: the region is infinite"
+   ],
+   "correct": 0,
+   "why": "An improper integral is a limit of definite integrals; here $1 - \\frac{1}{b} \\to 1$.",
+   "review": "improper-integrals"
+  }
+ ],
+ "figure": {
+  "figure": "series-convergence-telescoping",
+  "caption": "Terms $\\frac{1}{n(n + 1)}$ shrink to 0 while the partial sums $\\frac{n}{n + 1}$ close in on 1: the series converges, to 1."
+ },
+ "chain": [
+  {
+   "cause": "Add the first $n$ terms of $\\sum a_n$",
+   "effect": "the partial sum $S_n = a_1 + a_2 + \\cdots + a_n$"
+  },
+  {
+   "cause": "Do this for every $n$",
+   "effect": "a new sequence, $S_1, S_2, S_3, \\ldots$"
+  },
+  {
+   "cause": "If $\\lim_{n \\to \\infty} S_n = S$, a finite number",
+   "effect": "the series converges and its sum is $S$"
+  },
+  {
+   "cause": "If the partial sums grow without bound or never settle",
+   "effect": "the series diverges and has no sum"
+  }
+ ],
+ "ideas": [
+  "An infinite series $\\sum_{n=1}^{\\infty} a_n$ converges to $S$ exactly when its partial sums $S_n$ approach $S$. Two sequences are in play: the terms $a_n$ and the partial sums $S_n$. Keep them apart.",
+  "From partial sums back to terms: $a_1 = S_1$ and $a_n = S_n - S_{n-1}$ for $n \\ge 2$.",
+  "Say \\\"the series converges\\\" or \\\"the series diverges\\\". The terms of a convergent series approach 0, not the sum.",
+  "Constants factor out of a convergent series; adding or removing finitely many terms changes the sum but never whether the series converges."
+ ],
+ "misconception": {
+  "wrong": "The terms of $\\sum \\ln\\left(\\frac{n + 1}{n}\\right)$ approach 0, so the series converges.",
+  "right": "Its partial sums are $\\ln(n + 1)$, which grow without bound: the series diverges. Terms that shrink to 0 are not enough."
+ },
+ "check": [
+  "cbc-series-convergence-1",
+  "cbc-series-convergence-2",
+  "cbc-series-convergence-4",
+  "cbc-series-convergence-7",
+  "cbc-series-convergence-12",
+  "cbc-series-convergence-13"
+ ],
+ "summary": "A series $\\sum a_n$ converges to $S$ when its partial sums $S_n = a_1 + \\cdots + a_n$ approach $S$; otherwise it diverges. Find terms from partial sums by subtracting, keep the terms and the partial sums apart, and say what converges: the series.",
+ "connections": [
+  {
+   "href": "../notes/math-sequences.html",
+   "label": "Back: sequences, sigma notation and factorials"
+  },
+  {
+   "href": "../notes/geometric-series.html",
+   "label": "Next: geometric series (10.2)"
+  }
+ ]
+}

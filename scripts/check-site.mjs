@@ -27,7 +27,7 @@ function walk(dir, exts, out = []) {
     // The A&P, AP Biology and AP Chemistry notes sources are HTML fragments that
     // build-anp.mjs, build-apbio.mjs, build-apchem.mjs, build-apphys.mjs and build-apcalc.mjs wrap into pages; the
     // built pages are what get checked.
-    if (st.isDirectory()) { if (!(exts.includes('.html') && ['anatomy-physiology/data', 'bio/data', 'chem/data', 'physics/data', 'calculus/data', 'statistics/data', 'environmental-science/data', 'psychology/data', 'precalculus/data'].includes(relative(ROOT, full).split(sep).join('/')))) walk(full, exts, out); }
+    if (st.isDirectory()) { if (!(exts.includes('.html') && ['anatomy-physiology/data', 'bio/data', 'chem/data', 'physics/data', 'calculus/data', 'statistics/data', 'environmental-science/data', 'psychology/data', 'precalculus/data', 'calculus-bc/data'].includes(relative(ROOT, full).split(sep).join('/')))) walk(full, exts, out); }
     else if (exts.includes(extname(name))) out.push(full);
   }
   return out;
@@ -745,7 +745,7 @@ if (Array.isArray(bank)) {
     if (rel === 'changelog.html' || rel === 'premium.html') continue;
     const isOchem = rel.split(/[\\/]/)[0] === 'ochem';
     // A&P question counts come from its own bank, written by build-anp.mjs.
-    if (['anatomy-physiology', 'bio', 'chem', 'physics', 'calculus', 'statistics', 'environmental-science', 'psychology', 'precalculus'].includes(rel.split(/[\\/]/)[0])) continue;
+    if (['anatomy-physiology', 'bio', 'chem', 'physics', 'calculus', 'statistics', 'environmental-science', 'psychology', 'precalculus', 'calculus-bc'].includes(rel.split(/[\\/]/)[0])) continue;
     for (const m of body.matchAll(COUNT_RE)) {
       const n = m[1];
       // Session lengths (a 100-question exam, a 20-question drill) and badge
@@ -787,6 +787,12 @@ if (existsSync(sitemapForCoverage)) {
     if (/^(404|offline)\.html$/.test(relative(ROOT, file).split(sep).join('/'))) continue;
     // Nor are the textbook's section fragments — see build-sitemap.mjs.
     if (relative(ROOT, file).split(sep).join('/').startsWith('ochem/notes/')) continue;
+    // Nor a page whose canonical is in another course folder (AP® Calculus BC's
+    // copies of AB topics and AB free-response questions name the AB page, which
+    // is the one listed; build-sitemap.mjs skips them the same way).
+    const canon = body.match(/<link\s+rel="canonical"\s+href="([^"]*)"/i);
+    const topDir = relative(ROOT, file).split(sep)[0];
+    if (canon && relative(ROOT, file).includes(sep) && new URL(canon[1]).pathname.split('/')[1] !== topDir) continue;
     const path = '/' + relative(ROOT, file).split(sep).join('/');
     if (!listed.has(path) && !listed.has(path.replace(/index\.html$/, ''))) {
       fail(`sitemap.xml: no entry for ${path} — run scripts/build-sitemap.mjs`);
@@ -844,7 +850,7 @@ if (existsSync(curriculumPath)) {
     if (rel.startsWith('nremt/')) continue;
     // The A&P course's counts are written by build-anp.mjs from its own map
     // and data, and `build-anp.mjs --check` keeps them current.
-    if (rel.startsWith('anatomy-physiology/') || rel.startsWith('bio/') || rel.startsWith('chem/') || rel.startsWith('physics/') || rel.startsWith('calculus/') || rel.startsWith('statistics/') || rel.startsWith('environmental-science/') || rel.startsWith('psychology/') || rel.startsWith('precalculus/')) continue; // each generated from its own map
+    if (rel.startsWith('anatomy-physiology/') || rel.startsWith('bio/') || rel.startsWith('chem/') || rel.startsWith('physics/') || rel.startsWith('calculus/') || rel.startsWith('statistics/') || rel.startsWith('environmental-science/') || rel.startsWith('psychology/') || rel.startsWith('precalculus/') || rel.startsWith('calculus-bc/')) continue; // each generated from its own map
     // The changelog is a dated record, not a claim about now. "audited across
     // all 62 sections" under a September date was true in September, and
     // rewriting it to today's number would make the entry a lie about what

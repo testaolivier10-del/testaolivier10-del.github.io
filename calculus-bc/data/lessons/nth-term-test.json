@@ -1,0 +1,76 @@
+{
+ "topic": "nth-term-test",
+ "hook": "Pour a cup of water into a bucket every minute, forever, and the bucket overflows: if the pieces you add do not shrink to nothing, an endless sum grows without bound. That is the nth term test, the first test to try on any series. It can prove a series diverges, but it can never prove one converges.",
+ "prereq": [
+  {
+   "q": "For a convergent series, the sum is the limit of",
+   "options": [
+    "its partial sums $S_n$",
+    "its terms $a_n$",
+    "its first term",
+    "the ratio of consecutive terms"
+   ],
+   "correct": 0,
+   "why": "By definition, $\\sum a_n = \\lim_{n \\to \\infty} S_n$.",
+   "review": "series-convergence"
+  },
+  {
+   "q": "$\\lim_{n \\to \\infty} \\frac{5n^2}{2n^2 + 1} =$",
+   "options": [
+    "$\\frac{5}{2}$",
+    "$0$",
+    "$5$",
+    "$\\infty$"
+   ],
+   "correct": 0,
+   "why": "Same degree: the ratio of the leading coefficients.",
+   "review": "math-sequences"
+  }
+ ],
+ "figure": {
+  "figure": "nth-term-test-two-cases",
+  "caption": "Terms approaching $\\frac{1}{2}$ force the partial sums up without bound; terms approaching 0 leave the question open."
+ },
+ "chain": [
+  {
+   "cause": "If $\\sum a_n$ converges to $S$",
+   "effect": "$S_n \\to S$ and $S_{n-1} \\to S$, so $a_n = S_n - S_{n-1} \\to 0$"
+  },
+  {
+   "cause": "So if $\\lim a_n$ is not 0, or does not exist",
+   "effect": "the series cannot converge: it diverges"
+  },
+  {
+   "cause": "If $\\lim a_n = 0$",
+   "effect": "the test says nothing; use another test"
+  }
+ ],
+ "ideas": [
+  "The nth term test: if $\\lim_{n \\to \\infty} a_n \\ne 0$ (or the limit does not exist), then $\\sum a_n$ diverges.",
+  "It is a test for divergence only. When $\\lim a_n = 0$ it gives no conclusion: $\\sum \\frac{1}{n^2}$ converges and $\\sum \\frac{1}{n}$ diverges, and both have terms approaching 0.",
+  "Write it fully: the limit of the terms, its value, \\\"$\\ne 0$\\\", the test's name, and \\\"the series diverges\\\"."
+ ],
+ "misconception": {
+  "wrong": "$\\lim_{n \\to \\infty} \\frac{1}{n} = 0$, so $\\sum \\frac{1}{n}$ converges by the nth term test.",
+  "right": "A limit of 0 means the nth term test says nothing. This series in fact diverges, as 10.5 shows."
+ },
+ "check": [
+  "cbc-nth-term-test-1",
+  "cbc-nth-term-test-2",
+  "cbc-nth-term-test-3",
+  "cbc-nth-term-test-6",
+  "cbc-nth-term-test-9",
+  "cbc-nth-term-test-11"
+ ],
+ "summary": "If the terms of a series do not approach 0, the series diverges: that is the nth term test. If the terms do approach 0, the test is inconclusive and another test must decide. Say \\\"the series diverges\\\", give the limit of the terms, and show it is not 0.",
+ "connections": [
+  {
+   "href": "../notes/geometric-series.html",
+   "label": "Back: geometric series (10.2)"
+  },
+  {
+   "href": "../notes/integral-test.html",
+   "label": "Next: the integral test (10.4)"
+  }
+ ]
+}

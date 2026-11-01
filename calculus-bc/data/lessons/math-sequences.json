@@ -1,0 +1,80 @@
+{
+ "topic": "math-sequences",
+ "hook": "A savings account balance listed month by month, a ball's bounce heights, the digits of $\\pi$ to more and more places: each is a list of numbers, one for each counting number $n$. Unit 10 is about adding infinitely many numbers like these, and before adding them you need to name them, find where they head, and handle the factorials that show up everywhere.",
+ "prereq": [
+  {
+   "q": "$\\lim_{x \\to \\infty} \\frac{2x + 1}{x - 3} =$",
+   "options": [
+    "$2$",
+    "$0$",
+    "$-\\frac{1}{3}$",
+    "$\\infty$"
+   ],
+   "correct": 0,
+   "why": "Same degree on top and bottom: the ratio of the leading coefficients, $\\frac{2}{1}$.",
+   "review": "limits-at-infinity"
+  },
+  {
+   "q": "$\\sum_{i=1}^{3} 2i =$",
+   "options": [
+    "$12$",
+    "$6$",
+    "$2$",
+    "$18$"
+   ],
+   "correct": 0,
+   "why": "$2 + 4 + 6 = 12$.",
+   "review": "definite-integral-notation"
+  }
+ ],
+ "figure": {
+  "figure": "math-sequences-limits",
+  "caption": "Left: $a_n = 1 + \\frac{(-1)^n}{n}$ closes in on 1. Right: $b_n = \\frac{(-1)^n n}{n + 1}$ jumps between values near 1 and near $-1$."
+ },
+ "chain": [
+  {
+   "cause": "List one number for each $n = 1, 2, 3, \\ldots$",
+   "effect": "an infinite sequence $a_1, a_2, a_3, \\ldots$, a function of $n$"
+  },
+  {
+   "cause": "Let $n$ grow without bound",
+   "effect": "the terms settle to one number (the sequence converges) or they do not (it diverges)"
+  },
+  {
+   "cause": "Treat $a_n$ as $f(n)$ for a function $f(x)$",
+   "effect": "$\\lim_{n \\to \\infty} a_n$ comes from $\\lim_{x \\to \\infty} f(x)$ when that limit exists"
+  },
+  {
+   "cause": "Expand the larger factorial in a ratio",
+   "effect": "the common factorial cancels, leaving a few factors"
+  }
+ ],
+ "ideas": [
+  "A sequence is a function whose inputs are $n = 1, 2, 3, \\ldots$ Its limit is found with the tools for $\\lim_{x \\to \\infty} f(x)$: leading terms, L'Hospital's rule, the squeeze theorem.",
+  "$n! = n(n - 1)(n - 2) \\cdots 2 \\cdot 1$, with $0! = 1$. Simplify ratios by writing the larger factorial down to the smaller: $(n + 1)! = (n + 1)\\,n!$.",
+  "Sigma notation $\\sum_{k=1}^{m} a_k$ adds the terms from $k = 1$ to $k = m$. Check the starting index: it decides the first term."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{(2n + 2)!}{(2n)!} = 2n + 2$, since the factorials cancel.",
+  "right": "Two factors sit between them: $(2n + 2)! = (2n + 2)(2n + 1)(2n)!$, so the ratio is $(2n + 2)(2n + 1)$."
+ },
+ "check": [
+  "cbc-math-sequences-1",
+  "cbc-math-sequences-2",
+  "cbc-math-sequences-3",
+  "cbc-math-sequences-6",
+  "cbc-math-sequences-9",
+  "cbc-math-sequences-11"
+ ],
+ "summary": "An infinite sequence lists a term $a_n$ for each $n$. It converges if its terms approach one number and diverges otherwise; find the limit as for functions at infinity. Simplify factorial ratios by expanding the larger factorial, and read sigma notation from its starting index.",
+ "connections": [
+  {
+   "href": "../notes/polar-area-between.html",
+   "label": "Back: area between two polar curves (9.9)"
+  },
+  {
+   "href": "../notes/series-convergence.html",
+   "label": "Next: convergent and divergent series (10.1)"
+  }
+ ]
+}

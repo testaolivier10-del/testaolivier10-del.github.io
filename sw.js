@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v101';
+const CACHE_NAME = 'levlprep-v103';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -265,6 +265,27 @@ COURSE_URLS.calculus = [
   'calculus/assets/calc-questions.js',
   'calculus/assets/calc-nav.js',
   'calculus/assets/glossary.json',
+];
+COURSE_URLS['calculus-bc'] = [
+  // The AP® Calculus BC shell (key apcalcbc, folder calculus-bc): its own pages,
+  // curriculum and glossary, plus the AB runtime files that BC pages run
+  // (docs/apcalcbc-architecture.md).
+  'calculus-bc/index.html',
+  'calculus-bc/learn.html',
+  'calculus-bc/search.html',
+  'calculus-bc/tools.html',
+  'calculus-bc/dashboard.html',
+  'calculus-bc/manifest.json',
+  'calculus-bc/assets/cbc.css',
+  'calculus-bc/assets/calc-curriculum.js',
+  'calculus-bc/assets/cbc-interval.js',
+  'calculus-bc/assets/glossary.json',
+  'calculus/assets/calc.css',
+  'calculus/assets/calc-core.js',
+  'calculus/assets/calc-expr.js',
+  'calculus/assets/calc-math.js',
+  'calculus/assets/calc-questions.js',
+  'calculus/assets/calc-nav.js',
 ];
 COURSE_URLS.statistics = [
   // The AP® Statistics shell (key apstat, folder statistics), as Calculus plus

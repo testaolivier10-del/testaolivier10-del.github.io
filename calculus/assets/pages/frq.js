@@ -16,6 +16,8 @@
    optional AI grader ("Grade my answer", ../../assets/course/frq-grader.js,
    docs/frq-grader.md) sits beside the self-score and never replaces it. Shared code: pages/frq-kit.js (window.ApCalcFrq). */
 (function(){
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var BASE = window.ApCalcBase || '';
   var app = document.getElementById('app');
   if(!app) return;
@@ -30,7 +32,7 @@
     if(window.ApCalcFrq) return Promise.resolve(window.ApCalcFrq);
     return new Promise(function(res, rej){
       var s = document.createElement('script');
-      s.src = BASE + 'assets/pages/frq-kit.js';
+      s.src = (CC.rt != null ? CC.rt : BASE) + 'assets/pages/frq-kit.js';
       s.onload = function(){ window.ApCalcFrq ? res(window.ApCalcFrq) : rej(); };
       s.onerror = rej;
       document.head.appendChild(s);
@@ -127,7 +129,7 @@
         box.querySelector('[data-act="save"]').addEventListener('click', function(){
           var s = total();
           K.saveScore(id, { got: s.got, of: s.of, parts: s.parts, title: f.title, type: f.type, units: f.units });
-          if(Core) Core.event('apcalc-frq-score', { frq: id, got: s.got, of: s.of });
+          if(Core) Core.event(CK + '-frq-score', { frq: id, got: s.got, of: s.of });
           this.textContent = 'Saved';
           this.disabled = true;
         });
@@ -138,7 +140,7 @@
          self-score box, so the rubric is always one tap away. */
       grader(function(G){
         G.mount(app.querySelector('.calc-fq-ai'), {
-          course: 'apcalc', f: f,
+          course: CK, f: f,
           answers: function(){ var a = {}; app.querySelectorAll('.calc-fq-answer').forEach(function(t){ a[t.getAttribute('data-part')] = t.value; }); return a; },
           reveal: function(){ if(box.hidden) revealBtn.click(); return box; }
         });

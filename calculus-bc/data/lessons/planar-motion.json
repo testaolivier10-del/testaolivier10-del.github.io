@@ -1,0 +1,94 @@
+{
+ "topic": "planar-motion",
+ "hook": "A soccer ball curls from the corner flag into the box. Where is it after one second, how fast is it going, how far has it flown, and how far is it from where it started? Each question has its own tool: the position vector, the speed, the integral of speed, and the integral of velocity. Motion in the plane puts all of Unit 9 together, and it is a regular free-response question on the BC exam.",
+ "prereq": [
+  {
+   "q": "On a line, total distance traveled from $t = 0$ to $t = 3$ is",
+   "options": [
+    "$\\int_0^3 |v(t)|\\,dt$",
+    "$\\int_0^3 v(t)\\,dt$",
+    "$|s(3) - s(0)|$",
+    "$v(3) - v(0)$"
+   ],
+   "correct": 0,
+   "why": "Distance adds up the size of the velocity, so backtracking counts.",
+   "review": "motion-with-integrals"
+  },
+  {
+   "q": "If $\\mathbf{v}(t) = \\left\\langle 2t, 1 \\right\\rangle$ and $\\mathbf{r}(0) = \\left\\langle 3, 0 \\right\\rangle$, then $\\mathbf{r}(2) =$",
+   "options": [
+    "$\\left\\langle 7, 2 \\right\\rangle$",
+    "$\\left\\langle 4, 2 \\right\\rangle$",
+    "$\\left\\langle 7, 1 \\right\\rangle$",
+    "$\\left\\langle 4, 1 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": "$\\mathbf{r}(2) = \\left\\langle 3, 0 \\right\\rangle + \\int_0^2 \\left\\langle 2t, 1 \\right\\rangle\\,dt = \\left\\langle 3 + 4, 0 + 2 \\right\\rangle$.",
+   "review": "vector-integrals"
+  },
+  {
+   "q": "The length of $x = 3t$, $y = 4t$ for $0 \\le t \\le 2$ is",
+   "options": [
+    "$10$",
+    "$14$",
+    "$5$",
+    "$7$"
+   ],
+   "correct": 0,
+   "why": "$\\int_0^2 \\sqrt{9 + 16}\\,dt = 10$.",
+   "review": "parametric-arc-length"
+  }
+ ],
+ "figure": {
+  "figure": "planar-motion-parabola",
+  "caption": "For $\\mathbf{r}(t) = \\left\\langle 2t, 4t - t^2 \\right\\rangle$, $0 \\le t \\le 4$: at $t = 1$ the particle is at $(2, 3)$ with velocity $\\left\\langle 2, 2 \\right\\rangle$ and speed $2\\sqrt{2}$. The displacement vector is $\\left\\langle 8, 0 \\right\\rangle$, of length 8, but the distance traveled along the arch is about 11.83."
+ },
+ "chain": [
+  {
+   "cause": "Differentiate the position vector",
+   "effect": "velocity $\\mathbf{v}(t) = \\left\\langle x'(t), y'(t) \\right\\rangle$, then acceleration $\\mathbf{a}(t) = \\left\\langle x''(t), y''(t) \\right\\rangle$"
+  },
+  {
+   "cause": "Take the magnitude of the velocity",
+   "effect": "the speed $\\sqrt{(x'(t))^2 + (y'(t))^2}$, a number and never negative"
+  },
+  {
+   "cause": "Integrate the velocity over $[a, b]$",
+   "effect": "the displacement vector $\\mathbf{r}(b) - \\mathbf{r}(a)$; add the start to get the position"
+  },
+  {
+   "cause": "Integrate the speed over $[a, b]$",
+   "effect": "the total distance traveled along the path"
+  }
+ ],
+ "ideas": [
+  "Speed is the magnitude of the velocity, $\\sqrt{(x'(t))^2 + (y'(t))^2}$. It is not $\\left|\\frac{dy}{dx}\\right|$, which measures steepness, not how fast.",
+  "Position: $x(b) = x(a) + \\int_a^b x'(t)\\,dt$, and the same for $y$. Add the initial value, keep the $dt$.",
+  "Distance traveled is $\\int_a^b \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt$; displacement is $\\int_a^b \\mathbf{v}(t)\\,dt$, a vector.",
+  "\"$y$ is decreasing\" reads the sign of $\\frac{dy}{dt}$; \"moving left\" reads $\\frac{dx}{dt} < 0$. A collision needs the same point at the same time."
+ ],
+ "misconception": {
+  "wrong": "At $t = 2$, $\\frac{dx}{dt} = 3$ and $\\frac{dy}{dt} = -4$, so the speed is $\\left|\\frac{dy}{dx}\\right| = \\left|\\frac{-4}{3}\\right| = \\frac{4}{3}$.",
+  "right": "$\\frac{dy}{dx}$ compares the two rates to give the slope of the path; it does not measure how fast the particle moves. Speed is the length of the velocity vector: $\\sqrt{3^2 + (-4)^2} = 5$."
+ },
+ "check": [
+  "cbc-planar-motion-1",
+  "cbc-planar-motion-2",
+  "cbc-planar-motion-3",
+  "cbc-planar-motion-4",
+  "cbc-planar-motion-12",
+  "cbc-planar-motion-13",
+  "cbc-planar-motion-15"
+ ],
+ "summary": "For a particle in the plane, velocity and acceleration are the first and second derivatives of the position vector, and speed is the magnitude of the velocity. The integral of velocity is the displacement vector, so the position at a time is the start plus that integral; the integral of speed is the total distance traveled. Direction questions read the signs of $\\frac{dx}{dt}$ and $\\frac{dy}{dt}$, and calculator answers carry their setup and three decimal places.",
+ "connections": [
+  {
+   "href": "../notes/vector-integrals.html",
+   "label": "Back: integrating vector-valued functions (9.5)"
+  },
+  {
+   "href": "../notes/math-polar.html",
+   "label": "Next: a new kind of coordinates for Unit 9"
+  }
+ ]
+}

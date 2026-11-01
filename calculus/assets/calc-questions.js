@@ -29,12 +29,16 @@
    find-the-error list, options that are a scale) is never shuffled. Order
    items are shuffled for display and graded against the authored order. */
 (function(){
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function html(s){ return String(s == null ? '' : s); }   // our own authored markup (<i>, <sub>)
   function shuffle(a){ a = a.slice(); for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   var uid = 0;
 
   function X(){ return window.ApCalcExpr; }
+  // AP® Calculus BC's interval answers (calculus-bc/assets/cbc-interval.js, BC pages only).
+  function IV(){ return window.ApCalcBCInterval; }
   function T(){ return window.ApCalcTex; }
 
   /* A typed number: a decimal ("2.718", "-0.5", ".25", "1,234.5", "1.2e-3")
@@ -112,6 +116,11 @@
     var ok = [r3(A), t3(A)];
     return [r3(v), t3(v)].some(function(x){ return ok.some(function(y){ return same(x, y); }); });
   }
+  function isSmall(A){ return !!CC.smallValues && A && Math.abs(A) < 0.005; }
+  function decOk(v, A){
+    var e = isSmall(A) ? Math.pow(10, Math.floor(Math.log10(Math.abs(A))) + 1) : 1;
+    return threeOk(v, A) && threeOk(v / e, A / e);
+  }
   function keyValue(N){
     if(N.value != null) return +N.value;
     if(typeof N.answer === 'string') return X() ? X().number(N.answer) : NaN;
@@ -136,7 +145,7 @@
     var unitTyped = resp && typeof resp === 'object' && resp.unit != null && String(resp.unit).trim() ? String(resp.unit).trim() : p.unit;
     var accepted = [N.unit].concat(N.units || []).filter(function(u){ return u; });
     var notes = [], mistake = null;
-    var exact = same(v, A), dec3 = r.decimal && r.places >= 3 && threeOk(v, A);
+    var exact = same(v, A), dec3 = r.decimal && r.places >= 3 && decOk(v, A);
     var valueOk = exact || dec3;
     var parts = { value: valueOk, unit: null };
     if(valueOk && !exact && !calc) notes.push('Right to three decimal places. On a no-calculator question, give the exact value.');
@@ -148,10 +157,11 @@
     if(!valueOk){
       (N.mistakes || []).some(function(mk){
         var mv = typeof mk.value === 'string' ? (X() ? X().number(mk.value) : NaN) : +mk.value;
-        if(isFinite(mv) && (same(v, mv) || (r.decimal && r.places >= 3 && threeOk(v, mv)))){ mistake = mk; return true; }
+        if(isFinite(mv) && (same(v, mv) || (r.decimal && r.places >= 3 && decOk(v, mv)))){ mistake = mk; return true; }
         return false;
       });
       if(mistake) notes.unshift(mistake.why);
+      else if(isSmall(A) && r.decimal && Math.abs(v - A) < 0.01) notes.unshift('Below 0.005, give three significant digits (as in 0.00137).');
       else if(r.decimal && r.places < 3 && Math.abs(v - A) < Math.pow(10, -r.places)) notes.unshift('Three decimal places: you gave ' + r.places + '. The exam marks a decimal answer right only when it is correct to three places after the decimal point (rounded or truncated).');
       else if(r.decimal && Math.abs(v - A) < 0.01) notes.unshift('Close, but not correct to three decimal places. Round only at the end: keep full precision (store values in the calculator) through the work.');
       else if(A && near(-v, A)) notes.unshift('The size is right but the sign is wrong. Check a subtraction order or a direction.');
@@ -174,9 +184,12 @@
     return String(+v.toPrecision(12)) + u;
   }
 
+
+
   function grade(q, resp){
     var t = q.type;
     if(t === 'numeric') return gradeNumeric(q, resp);
+    if(t === 'interval') return IV() ? IV().grade(q, resp) : { valid: false, correct: false, score: 0, error: 'The interval checker did not load.' };
     if(t === 'expr'){
       if(!X()) return { valid: false, correct: false, score: 0, error: 'The expression checker did not load.' };
       return X().grade(q, resp);
@@ -233,7 +246,7 @@
       '<h3 id="' + hid + '">' + html(s.title || '') + '</h3>' + placePaths(s.html) + '</section>';
   }
 
-  function report(q){ return window.LevlReport ? window.LevlReport.button('apcalc', q.id) : ''; }
+  function report(q){ return window.LevlReport ? window.LevlReport.button(CK, q.id) : ''; }
   var DIR = [{ v: 'up', label: 'Increases' }, { v: 'down', label: 'Decreases' }, { v: 'none', label: 'No change' }];
 
   /* Options are one Tab stop; arrows, Home and End move, Enter or Space answers. */
@@ -271,7 +284,7 @@
     var body = wrap.querySelector('.calc-q-body'), fb = wrap.querySelector('.calc-q-feedback'), actions = wrap.querySelector('.calc-q-actions');
     host.appendChild(wrap);
     // Flag toggle on the study pages (assets/course/flags.js); opts.flag 'session' for an exam-only item.
-    if(studyPage() && window.LevlFlags && opts.flag !== false) window.LevlFlags.attach(wrap, 'apcalc', q.id, opts.flag);
+    if(studyPage() && window.LevlFlags && opts.flag !== false) window.LevlFlags.attach(wrap, CK, q.id, opts.flag);
 
     function finish(g, detailHtml, pick, part){
       done = true;
@@ -293,7 +306,7 @@
       try{ wrap.dispatchEvent(new CustomEvent('calc:answered', { bubbles: true, detail: result })); }catch(e){}
     }
 
-    if(q.type === 'predict') predict(); else if(q.type === 'order') order(); else if(q.type === 'multi') multi(); else if(q.type === 'numeric') numeric(); else if(q.type === 'expr') expr(); else choice();
+    if(q.type === 'predict') predict(); else if(q.type === 'order') order(); else if(q.type === 'multi') multi(); else if(q.type === 'numeric') numeric(); else if(q.type === 'expr') expr(); else if(q.type === 'interval') interval(); else choice();
 
     function optWhy(x, i){
       if(reveal && q.why && q.why.options && q.why.options[i]) x.insertAdjacentHTML('beforeend', '<span class="calc-opt-why">' + html(q.why.options[i]) + '</span>');
@@ -397,6 +410,42 @@
       }
       check.addEventListener('click', go);
       [input, unitIn].forEach(function(el){ if(el) el.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); go(); } }); });
+    }
+
+
+    /* An interval answer (AP® Calculus BC): one box, a live reading of how it was
+       understood, and four marks (each endpoint, each bracket) after Check. */
+    function interval(){
+      var I = q.interval || {}, v = I['var'] || 'x', id = 'iv-' + (++uid);
+      body.innerHTML = '<div class="calc-num calc-iv"><label for="' + id + '">Your interval</label>' +
+        '<span class="calc-num-row"><input type="text" id="' + id + '" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="' + id + '-p ' + id + '-h"></span>' +
+        '<div class="calc-expr-preview" id="' + id + '-p" aria-live="polite"><span class="calc-small">Your interval will show here as you type.</span></div>' +
+        '<span class="calc-small" id="' + id + '-h">Interval notation, [1, 5) or (-inf, inf), or an inequality, 1 &lt;= ' + esc(v) + ' &lt; 5. Use [ ] for an endpoint that is included, ( ) for one that is not; exact values such as sqrt(3) are fine.</span></div>';
+      actions.innerHTML = '<button type="button" class="btn-press sm calc-check">Check</button>';
+      var input = body.querySelector('input'), prev = body.querySelector('.calc-expr-preview'), check = actions.querySelector('.calc-check');
+      input.addEventListener('input', function(){
+        var S = IV() && IV().parse(input.value, v);
+        prev.innerHTML = !input.value.trim() ? '<span class="calc-small">Your interval will show here as you type.</span>' : S ? 'Read as: <b>' + esc(IV().text(S, v)) + '</b>' : '<span class="calc-small">Not an interval yet.</span>';
+      });
+      function go(){
+        if(done || busy) return;
+        var g = grade(q, input.value);
+        if(!g.valid){ fb.innerHTML = '<p class="calc-small" role="alert">Type an interval such as [1, 5) or an inequality such as 1 &lt;= ' + esc(v) + ' &lt; 5.</p>'; input.focus(); return; }
+        busy = true;
+        explain(function(){
+          input.readOnly = true;
+          if(!opts.exam) input.parentNode.insertAdjacentHTML('beforeend', '<span class="calc-mark ' + (g.correct ? 'ok">Correct' : 'no">Your answer') + '</span>');
+          var mark = function(x){ return x ? '<span class="calc-mark ok">Right</span>' : '<span class="calc-mark no">Not yet</span>'; };
+          var P = g.parts || {};
+          var rows = [['Left endpoint', P.lo], ['Right endpoint', P.hi], ['Bracket at the left', P.loIn], ['Bracket at the right', P.hiIn]].filter(function(r){ return r[1] !== null && r[1] !== undefined; });
+          var detail = opts.exam ? '' : (rows.length ? '<ul class="calc-num-parts">' + rows.map(function(r){ return '<li>' + mark(r[1]) + ' ' + r[0] + '</li>'; }).join('') + '</ul>' : '') +
+            (g.notes.length ? '<ul class="calc-num-notes">' + g.notes.map(function(n){ return '<li>' + html(n) + '</li>'; }).join('') + '</ul>' : '') +
+            '<p><b>Answer:</b> ' + (I.answerHtml || esc(IV().text(IV().key(I), v))) + '</p>';
+          finish(g, detail, input.value, g.right + ' of ' + g.total + ' parts right.');
+        });
+      }
+      check.addEventListener('click', go);
+      input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); go(); } });
     }
 
     /* A typed expression (docs/apcalc-architecture.md, "expr items"): a
