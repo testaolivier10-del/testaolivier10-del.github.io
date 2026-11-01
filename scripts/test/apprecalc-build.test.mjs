@@ -82,7 +82,7 @@ test('the free tier is Unit 1 and the algebra chapter, the same in the build and
   const prem = readFileSync('assets/premium.js', 'utf8');
   const block = prem.slice(prem.indexOf('    apprecalc: {'), prem.indexOf('  };', prem.indexOf('    apprecalc: {')));
   assert.match(block, /freeChapters: \['unit-1'\]/);
-  assert.match(block, /onSale: false/);
+  assert.doesNotMatch(block, /onSale: false/); // on sale since the owner checklist (spec section 9)
   assert.match(block, /\{ id: 'pcalc-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' \}/);
 });
 
