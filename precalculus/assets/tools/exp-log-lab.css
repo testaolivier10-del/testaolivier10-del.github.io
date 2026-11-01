@@ -53,7 +53,8 @@
 .el-tbl{border-collapse:separate;border-spacing:0;width:100%;font:700 13px var(--font-ui);font-variant-numeric:tabular-nums;}
 .el-tbl th,.el-tbl td{padding:4px 6px;text-align:center;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap;}
 .el-tbl th[scope=row]{text-align:left;cursor:default;font-weight:800;}
-.el-tbl td small{display:block;font:800 11px var(--font-ui);opacity:.85;}
+/* Full colour: at .85 opacity the blue labels fell under 4.5:1 (check-a11y at launch). */
+.el-tbl td small{display:block;font:800 11px var(--font-ui);}
 .el-tbl tr.el-L td,.el-tbl tr.el-L th{color:var(--el-L);}
 .el-tbl tr.el-E td,.el-tbl tr.el-E th{color:var(--el-E);}
 .el-tbl .is-on{background:var(--ctint);border-radius:6px;}

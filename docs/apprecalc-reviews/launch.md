@@ -47,4 +47,15 @@ next to AP® Psychology. No horizontal overflow on any page.
 
 ## 4. CI
 
-(see below)
+- First non-browser run: check-site (British spellings "cancelled", "centred", "coloured" in one question file, one
+  FRQ and two trainers; 23 lesson and notes `<title>`s cut with an ellipsis, two of them identical; four notes
+  descriptions that opened by pointing back), the map check ("Factoring" in the alg-quadratics title before
+  factoring is taught: title now "Quadratics: Zeros and the Quadratic Formula"), the shell budget (70.9 KB against
+  68.5: raised to 71.5 with the reason in `check-weight.mjs`), and the site-search test (scope list now has
+  `apprecalc`). Fixed: US spellings, short names in `descriptions.json` `titles` (as AP® Psychology), standalone
+  descriptions without "AP" (the content check's rule).
+- `BROWSER=1 scripts/ci-local.sh`: every job passed except check-a11y: the exp-log lab table's small blue labels
+  were 3.96:1 at 0.85 opacity; now full colour. check-a11y rerun: no serious or critical violations across 105 page
+  shapes. check-console passed (every page and the practice flow).
+
+**Launch phase done.** PR opened (owner reviews and merges); Premium waits for the owner checklist in spec section 9.
