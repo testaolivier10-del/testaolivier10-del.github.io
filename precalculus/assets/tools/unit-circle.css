@@ -74,6 +74,8 @@
 .uc-play{display:inline-flex;align-items:center;gap:8px;min-height:44px;}
 .uc-play[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
 .uc-view{flex:1 1 auto;}
+/* The two labels keep their width ("sin, cos" was cut to "sin, c..." beside the play button at 1280; launch). */
+.ls-root .uc-view > .bt-mode{flex:1 0 auto;}
 .uc-angle .bt-out{min-width:4.5em;text-align:right;font-variant-numeric:tabular-nums;}
 
 /* Details: the table */
