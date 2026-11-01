@@ -1,0 +1,29 @@
+{
+ "module": "w1031_03_mirror_mint",
+ "media": "out/w1031-03-mirror-mint/final_nomusic.mp4",
+ "model": "scribe_v2",
+ "script_words": 98,
+ "heard_words": 97,
+ "match_rate": 0.9592,
+ "voice_characters_used_by_check": 0,
+ "findings": [
+  {
+   "kind": "TERM",
+   "t": 19.5,
+   "script": "kyral",
+   "heard": "chiral"
+  },
+  {
+   "kind": "TERM",
+   "t": 24.0,
+   "script": "kyral",
+   "heard": "chiral"
+  },
+  {
+   "kind": "TERM",
+   "t": 34.5,
+   "script": "levlprep dot",
+   "heard": "levelprep"
+  }
+ ]
+}

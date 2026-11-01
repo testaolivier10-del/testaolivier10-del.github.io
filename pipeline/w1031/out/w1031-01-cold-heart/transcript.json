@@ -1,0 +1,10 @@
+{
+ "module": "w1031_01_cold_heart",
+ "media": "out/w1031-01-cold-heart/final_nomusic.mp4",
+ "model": "scribe_v2",
+ "script_words": 91,
+ "heard_words": 91,
+ "match_rate": 1.0,
+ "voice_characters_used_by_check": 0,
+ "findings": []
+}

@@ -1,0 +1,120 @@
+{
+ "id": "w1031-02-phineas-gage",
+ "format": "short",
+ "duration": 34.2,
+ "answer": {
+  "kind": "action",
+  "what": "frontal lobe damage changed how he acted (personality and self control)"
+ },
+ "beats": [
+  {
+   "t0": 0,
+   "t1": 4.6,
+   "kind": "question",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "what": "Gage tamps powder in the rock cut; sparks flick off the iron on each strike",
+   "source": ""
+  },
+  {
+   "t0": 4.6,
+   "t1": 9.0,
+   "kind": "surprise",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    4.6,
+    5.4,
+    6.2,
+    7.0,
+    8.2
+   ],
+   "what": "spark, blast, the iron shoots up tapered end first, camera follows it into the sky",
+   "source": "Harlow 1848/1868; Macmillan"
+  },
+  {
+   "t0": 9.0,
+   "t1": 13.2,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    9.0,
+    9.4,
+    10.4,
+    11.6,
+    12.6
+   ],
+   "what": "his own head in profile (left side): the path in under the left cheekbone and out the top",
+   "source": "Harlow; Ratiu and Van Horn CT reconstructions",
+   "anchor": true
+  },
+  {
+   "t0": 13.2,
+   "t1": 19.0,
+   "kind": "result",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    13.4,
+    14.4,
+    15.5,
+    16.5,
+    17.6
+   ],
+   "what": "the iron lands about 80 ft away point first; he sits up and talks, workers run in",
+   "source": "Harlow 1848"
+  },
+  {
+   "t0": 19.0,
+   "t1": 25.6,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    19.0,
+    21.3,
+    23.4,
+    24.4
+   ],
+   "what": "left frontal lobe lights up; chips: plans ahead, keeps you in check",
+   "source": "AP Psychology CED (biological bases); Macmillan",
+   "anchor": true
+  },
+  {
+   "t0": 25.6,
+   "t1": 29.7,
+   "kind": "answer",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    25.6,
+    27.0,
+    28.3
+   ],
+   "what": "dusk: he walks away while friends watch: no longer Gage",
+   "source": "Harlow 1868 quote"
+  },
+  {
+   "t0": 29.7,
+   "t1": 34.2,
+   "kind": "payoff",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    29.7,
+    31.9
+   ],
+   "what": "back to the opening tamp and one spark (loop)",
+   "source": ""
+  }
+ ],
+ "long_reason": "the story needs the accident, the survival and the personality change; 34 s with no padding"
+}

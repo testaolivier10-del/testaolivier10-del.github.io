@@ -1,0 +1,110 @@
+{
+ "video": "w1031-03-mirror-mint",
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0,
+   "t1": 9.2,
+   "what": "kitchen: mint in front of a mirror that shows caraway and rye; two carvone molecules across the mirror line; atoms and bonds pulse",
+   "motion_source": "procedural (3D ball and stick from coordinates)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": "no people; wisps are soft volumes"
+  },
+  {
+   "id": "s2",
+   "t0": 9.2,
+   "t1": 12.7,
+   "what": "two oven mitts with thumbs come forward and swing on left and right",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s3",
+   "t0": 12.7,
+   "t1": 20.0,
+   "what": "stacking attempt: molecule slides over and turns, DOESN T MATCH; CHIRAL",
+   "motion_source": "procedural 3D rotation",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s4",
+   "t0": 20.0,
+   "t1": 27.4,
+   "what": "inside the nose: both molecules dock chiral receptors, two different signals; kitchen inset",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": "cilia wave, membrane"
+  },
+  {
+   "id": "s5",
+   "t0": 27.4,
+   "t1": 37.2,
+   "what": "back in the kitchen: the spearmint molecule flips through the mirror into the caraway one; scent puff turns amber; CTA",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  }
+ ]
+}

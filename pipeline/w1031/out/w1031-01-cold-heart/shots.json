@@ -1,0 +1,131 @@
+{
+ "video": "w1031-01-cold-heart",
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0,
+   "t1": 4.2,
+   "what": "rescuers tug him up out of the ice hole (rough lift), cracks spread",
+   "motion_source": "procedural (IK arms, jerky tugs)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": "water in the hole ripples"
+  },
+  {
+   "id": "s2",
+   "t0": 4.2,
+   "t1": 10.1,
+   "what": "lens from the chest: cold heart slow beats, ECG with J wave",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s3",
+   "t0": 10.1,
+   "t1": 16.6,
+   "what": "the hard yank and drop onto the rim, shake, heart quivers, VF",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": "VF framed as can happen"
+  },
+  {
+   "id": "s4",
+   "t0": 16.6,
+   "t1": 21.1,
+   "what": "they mean to help: lift eases back, lens closes",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s5",
+   "t0": 21.1,
+   "t1": 28.5,
+   "what": "slid out flat onto the sled, pulled slowly toward shore",
+   "motion_source": "procedural walk cycle, tether",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": "camera tracks the sled"
+  },
+  {
+   "id": "s6",
+   "t0": 28.5,
+   "t1": 35.3,
+   "what": "slow steady beat in the lens, sled moving",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  }
+ ]
+}

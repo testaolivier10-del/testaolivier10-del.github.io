@@ -1,0 +1,17 @@
+{
+ "module": "w1031_02_phineas_gage",
+ "media": "out/w1031-02-phineas-gage/final_nomusic.mp4",
+ "model": "scribe_v2",
+ "script_words": 96,
+ "heard_words": 99,
+ "match_rate": 0.9896,
+ "voice_characters_used_by_check": 0,
+ "findings": [
+  {
+   "kind": "EXTRA",
+   "t": 3.3,
+   "script": "eighteen",
+   "heard": "one thousand eight hundred"
+  }
+ ]
+}

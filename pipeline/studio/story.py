@@ -23,7 +23,7 @@ For a long video the same checks run on the first 60 s with "promise" and "first
 """
 import json, sys
 
-SHORT_MIN, SHORT_MAX = 25.0, 30.0
+SHORT_MIN, SHORT_MAX = 25.0, 35.0   # Olivier 2026-10-30: about 25 to 35 s, up to 45 s with a long_reason
 
 
 def template(vid, fmt="short"):
@@ -56,10 +56,10 @@ def check(st):
     if fmt == "short":
         if SHORT_MIN <= dur <= SHORT_MAX:
             ok(True, f"length {dur:.1f}s is within {SHORT_MIN:.0f} to {SHORT_MAX:.0f}s")
-        elif SHORT_MAX < dur <= 40.0:
-            ok(bool((st.get("long_reason") or "").strip()), f"length {dur:.1f}s is over 30s, allowed up to 40s only with a long_reason saying why the idea needs it")
+        elif SHORT_MAX < dur <= 45.0:
+            ok(bool((st.get("long_reason") or "").strip()), f"length {dur:.1f}s is over 30s, allowed up to 45s only with a long_reason saying why the idea needs it")
         else:
-            ok(False, f"length {dur:.1f}s is within 25 to 40s")
+            ok(False, f"length {dur:.1f}s is within 25 to 45s")
         hook_end, window, first = 2.0, (4.0, 10.0), [b for b in beats if b["t0"] < 2.0]
         HOOK = ("mistake", "surprise", "question")   # a visible mistake (best), a surprising change, or a visual question
         ok(any(b["kind"] in HOOK for b in first), "a mistake, a surprising change or a visual question is on screen before 2s")

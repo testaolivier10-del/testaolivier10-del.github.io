@@ -1,0 +1,152 @@
+{
+ "video": "w1031-02-phineas-gage",
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0,
+   "t1": 5.38,
+   "what": "Gage tamps powder in the rock cut, sparks on strikes, push in",
+   "motion_source": "procedural (keyed tamp cycle, IK arms, breathing)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": "face too small for lip sync; breathing on body"
+  },
+  {
+   "id": "s2",
+   "t0": 5.38,
+   "t1": 8.98,
+   "what": "spark, blast, iron through his head (flash), camera tilts after the iron into the sky",
+   "motion_source": "procedural + science sim (blast volumes, ballistic iron)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": "dust as soft volumes"
+  },
+  {
+   "id": "s3",
+   "t0": 8.98,
+   "t1": 13.22,
+   "what": "his head in profile: path under the left cheekbone, out the top",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": "diagram view; head breathes"
+  },
+  {
+   "id": "s4",
+   "t0": 13.22,
+   "t1": 19.05,
+   "what": "iron lands about 80 ft away point first; he sits up and talks; two workers run in",
+   "motion_source": "procedural (IK run cycle)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": "talking shown by head nod and hand, mouth not visible at this scale"
+  },
+  {
+   "id": "s5",
+   "t0": 19.05,
+   "t1": 25.6,
+   "what": "left frontal lobe lights; labels",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s6",
+   "t0": 25.6,
+   "t1": 29.43,
+   "what": "dusk: he walks away, friends watch and step back",
+   "motion_source": "procedural walk cycle",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s7",
+   "t0": 29.43,
+   "t1": 34.2,
+   "what": "loop: back to tamping and one spark",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  }
+ ]
+}

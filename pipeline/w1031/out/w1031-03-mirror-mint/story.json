@@ -1,0 +1,150 @@
+{
+ "id": "w1031-03-mirror-mint",
+ "format": "short",
+ "duration": 37.2,
+ "answer": {
+  "kind": "place",
+  "what": "which side of the mirror: the flipped molecule smells of caraway (rye), the other of spearmint"
+ },
+ "beats": [
+  {
+   "t0": 0,
+   "t1": 1.8,
+   "kind": "question",
+   "person": false,
+   "diagram": false,
+   "changes": [
+    0,
+    0.6,
+    1.2
+   ],
+   "what": "a spearmint sprig in front of a mirror that shows caraway seeds and rye bread instead; scent wisps rise",
+   "source": "",
+   "anchor": true
+  },
+  {
+   "t0": 1.8,
+   "t1": 4.5,
+   "kind": "surprise",
+   "person": false,
+   "diagram": false,
+   "changes": [
+    2.0,
+    2.8,
+    3.7
+   ],
+   "what": "the wisps drift up from both sides",
+   "source": "",
+   "anchor": true
+  },
+  {
+   "t0": 4.5,
+   "t1": 9.2,
+   "kind": "explain",
+   "person": false,
+   "diagram": true,
+   "changes": [
+    5.0,
+    5.5,
+    7.5,
+    8.5
+   ],
+   "what": "the wisps gather into two carvone molecules across the mirror line; atoms then bonds pulse",
+   "source": "LibreTexts Stereoisomerism and Smell",
+   "anchor": true
+  },
+  {
+   "t0": 9.2,
+   "t1": 12.7,
+   "kind": "explain",
+   "person": false,
+   "diagram": true,
+   "changes": [
+    9.8,
+    10.8,
+    12.2
+   ],
+   "what": "oven mitts with thumbs, left and right, swing on their words",
+   "source": "LibreTexts",
+   "anchor": true
+  },
+  {
+   "t0": 12.7,
+   "t1": 16.9,
+   "kind": "explain",
+   "person": false,
+   "diagram": true,
+   "changes": [
+    13.2,
+    14.1,
+    15.3,
+    16.0
+   ],
+   "what": "the spearmint molecule slides onto the caraway one and turns; red mismatch at the stereocentre",
+   "source": "LibreTexts",
+   "anchor": true
+  },
+  {
+   "t0": 16.9,
+   "t1": 20.2,
+   "kind": "explain",
+   "person": false,
+   "diagram": true,
+   "changes": [
+    17.8,
+    19.2
+   ],
+   "what": "CHIRAL title; molecules turning over the mirror line",
+   "source": "LibreTexts",
+   "anchor": true
+  },
+  {
+   "t0": 20.2,
+   "t1": 27.4,
+   "kind": "explain",
+   "person": false,
+   "diagram": true,
+   "changes": [
+    20.2,
+    22.5,
+    23.9,
+    25.5,
+    26.5
+   ],
+   "what": "cutaway inside the nose with the kitchen in an inset: each molecule docks a chiral receptor differently, two signals",
+   "source": "LibreTexts; Leibniz LSB carvone receptor studies",
+   "anchor": true
+  },
+  {
+   "t0": 27.4,
+   "t1": 32.6,
+   "kind": "answer",
+   "person": false,
+   "diagram": true,
+   "changes": [
+    28.6,
+    30.4,
+    31.6
+   ],
+   "what": "back in the kitchen: the mint molecule flips through the mirror and becomes the caraway one; rye glows",
+   "source": "LibreTexts",
+   "anchor": true
+  },
+  {
+   "t0": 32.6,
+   "t1": 37.2,
+   "kind": "payoff",
+   "person": false,
+   "diagram": false,
+   "changes": [
+    32.6,
+    34.4,
+    35.3
+   ],
+   "what": "CTA line over the moving kitchen, levlprep.com line",
+   "source": "",
+   "anchor": true
+  }
+ ],
+ "long_reason": "the hand analogy, the non stacking and the nose are needed for the idea, plus the 2.5 s spoken CTA of this run's test"
+}

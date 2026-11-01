@@ -1,151 +1,178 @@
 {
-  "entries": [
-    {
-      "id": "t1018-pulse-full",
-      "date": "2026-10-18",
-      "pieces": [
-        "kit_fb",
-        "cu_fb",
-        "L_thumb_fb",
-        "L_fing_fb",
-        "watch2_0",
-        "clips/kitA",
-        "clips/kitB"
-      ],
-      "setting": "kitchen",
-      "lighting": "night, warm window and pendant",
-      "camera": "wide side view, then wrist close up"
-    },
-    {
-      "id": "t1018-caffeine-full",
-      "date": "2026-10-18",
-      "pieces": [
-        "dorm_fb",
-        "syn_fb",
-        "rec",
-        "brain_fb",
-        "clips/cafA",
-        "clips/cafB"
-      ],
-      "setting": "dorm desk",
-      "lighting": "night, desk lamp and laptop glow",
-      "camera": "wide side view, then lens into head, synapse"
-    },
-    {
-      "id": "yt-nremt-35-bleeding",
-      "date": "2026-10-20",
-      "pieces": [
-        "garage_cut",
-        "forearm_cu",
-        "nose_kitchen"
-      ],
-      "setting": "home garage; kitchen",
-      "lighting": "late afternoon daylight; morning daylight",
-      "camera": "wide side view, forearm close up, side view leaning forward"
-    },
-    {
-      "id": "w1021-01-iv-water",
-      "date": "2026-10-22",
-      "pieces": [
-        "w1021/v1_room_ext",
-        "w1021/v1_vein_bg",
-        "w1021/cell0-9",
-        "w1021/v1_cell_a",
-        "w1021/v1_cell_swollen",
-        "w1021/v1_cell_burst"
-      ],
-      "setting": "hospital room at night; inside a vein; one red blood cell",
-      "lighting": "night window light, warm lamp; red vessel glow",
-      "camera": "wide on the IV bag, pan down the tubing, lens into the vein, close up cell"
-    },
-    {
-      "id": "w1021-02-ball-top",
-      "date": "2026-10-22",
-      "pieces": [
-        "w1021/v2_park_bg",
-        "w1021/ball",
-        "w1021/stu_body",
-        "w1021/stu_arm"
-      ],
-      "setting": "sunny park",
-      "lighting": "midday sun, rim light",
-      "camera": "low wide from behind the student"
-    },
-    {
-      "id": "w1021-03-speedometer",
-      "date": "2026-10-22",
-      "pieces": [
-        "w1021/v3_dash_tall",
-        "w1021/needle",
-        "w1021/cap"
-      ],
-      "setting": "car dashboard on a highway",
-      "lighting": "dusk, warm dash glow",
-      "camera": "driver's view, dial close up"
-    },
-    {
-      "id": "w1025-01-power-lift",
-      "date": "2026-10-26",
-      "pieces": [
-        "w1025/a_bay_clean",
-        "w1025/a_bag"
-      ],
-      "setting": "ambulance bay with open rear doors and supply shelves",
-      "lighting": "bright day, flat layered",
-      "camera": "side view, full body"
-    },
-    {
-      "id": "w1025-02-free-throw",
-      "date": "2026-10-26",
-      "pieces": [
-        "w1025/b_court_wide"
-      ],
-      "setting": "outdoor basketball court at sunset",
-      "lighting": "warm sunset, flat layered",
-      "camera": "side view, shooter and hoop"
-    },
-    {
-      "id": "w1025-03-dead-zone",
-      "date": "2026-10-26",
-      "pieces": [
-        "w1025/c_lawn2",
-        "w1025/c_lake",
-        "w1025/c_bloom",
-        "w1025/c_buffer"
-      ],
-      "setting": "lawn sloping to a lake; lake cut away; algae bloom; buffer strip",
-      "lighting": "storm then clear day, flat layered",
-      "camera": "three quarter wide; side cut away of the water"
-    },
-    {
-      "id": "w1025-04-head-rush",
-      "date": "2026-10-26",
-      "pieces": [
-        "w1025/d_kitchen",
-        "w1025/d_body"
-      ],
-      "setting": "home kitchen with a high stool; flat body circulation diagram",
-      "lighting": "morning window light, flat layered",
-      "camera": "side view full body; front body diagram"
-    },
-    {
-      "id": "yt-nremt-35-bleeding",
-      "date": "2026-10-28",
-      "pieces": [
-        "flat/n35/g_garage",
-        "flat/n35/g_arm",
-        "flat/n35/g_arm_press",
-        "flat/n35/g_long",
-        "flat/n35/g_cross",
-        "flat/n35/g_kitchen",
-        "flat/n35/g_body",
-        "flat/n35/g_cavity",
-        "codechar paramedic",
-        "codechar hoodie runner"
-      ],
-      "setting": "home garage at dusk; kitchen in the afternoon; diagrams on soft blue",
-      "lighting": "warm lamp left, cool dusk door right; sunny window",
-      "camera": "side view wide, forearm close up"
-    }
-  ]
+ "entries": [
+  {
+   "id": "t1018-pulse-full",
+   "date": "2026-10-18",
+   "pieces": [
+    "kit_fb",
+    "cu_fb",
+    "L_thumb_fb",
+    "L_fing_fb",
+    "watch2_0",
+    "clips/kitA",
+    "clips/kitB"
+   ],
+   "setting": "kitchen",
+   "lighting": "night, warm window and pendant",
+   "camera": "wide side view, then wrist close up"
+  },
+  {
+   "id": "t1018-caffeine-full",
+   "date": "2026-10-18",
+   "pieces": [
+    "dorm_fb",
+    "syn_fb",
+    "rec",
+    "brain_fb",
+    "clips/cafA",
+    "clips/cafB"
+   ],
+   "setting": "dorm desk",
+   "lighting": "night, desk lamp and laptop glow",
+   "camera": "wide side view, then lens into head, synapse"
+  },
+  {
+   "id": "yt-nremt-35-bleeding",
+   "date": "2026-10-20",
+   "pieces": [
+    "garage_cut",
+    "forearm_cu",
+    "nose_kitchen"
+   ],
+   "setting": "home garage; kitchen",
+   "lighting": "late afternoon daylight; morning daylight",
+   "camera": "wide side view, forearm close up, side view leaning forward"
+  },
+  {
+   "id": "w1021-01-iv-water",
+   "date": "2026-10-22",
+   "pieces": [
+    "w1021/v1_room_ext",
+    "w1021/v1_vein_bg",
+    "w1021/cell0-9",
+    "w1021/v1_cell_a",
+    "w1021/v1_cell_swollen",
+    "w1021/v1_cell_burst"
+   ],
+   "setting": "hospital room at night; inside a vein; one red blood cell",
+   "lighting": "night window light, warm lamp; red vessel glow",
+   "camera": "wide on the IV bag, pan down the tubing, lens into the vein, close up cell"
+  },
+  {
+   "id": "w1021-02-ball-top",
+   "date": "2026-10-22",
+   "pieces": [
+    "w1021/v2_park_bg",
+    "w1021/ball",
+    "w1021/stu_body",
+    "w1021/stu_arm"
+   ],
+   "setting": "sunny park",
+   "lighting": "midday sun, rim light",
+   "camera": "low wide from behind the student"
+  },
+  {
+   "id": "w1021-03-speedometer",
+   "date": "2026-10-22",
+   "pieces": [
+    "w1021/v3_dash_tall",
+    "w1021/needle",
+    "w1021/cap"
+   ],
+   "setting": "car dashboard on a highway",
+   "lighting": "dusk, warm dash glow",
+   "camera": "driver's view, dial close up"
+  },
+  {
+   "id": "w1025-01-power-lift",
+   "date": "2026-10-26",
+   "pieces": [
+    "w1025/a_bay_clean",
+    "w1025/a_bag"
+   ],
+   "setting": "ambulance bay with open rear doors and supply shelves",
+   "lighting": "bright day, flat layered",
+   "camera": "side view, full body"
+  },
+  {
+   "id": "w1025-02-free-throw",
+   "date": "2026-10-26",
+   "pieces": [
+    "w1025/b_court_wide"
+   ],
+   "setting": "outdoor basketball court at sunset",
+   "lighting": "warm sunset, flat layered",
+   "camera": "side view, shooter and hoop"
+  },
+  {
+   "id": "w1025-03-dead-zone",
+   "date": "2026-10-26",
+   "pieces": [
+    "w1025/c_lawn2",
+    "w1025/c_lake",
+    "w1025/c_bloom",
+    "w1025/c_buffer"
+   ],
+   "setting": "lawn sloping to a lake; lake cut away; algae bloom; buffer strip",
+   "lighting": "storm then clear day, flat layered",
+   "camera": "three quarter wide; side cut away of the water"
+  },
+  {
+   "id": "w1025-04-head-rush",
+   "date": "2026-10-26",
+   "pieces": [
+    "w1025/d_kitchen",
+    "w1025/d_body"
+   ],
+   "setting": "home kitchen with a high stool; flat body circulation diagram",
+   "lighting": "morning window light, flat layered",
+   "camera": "side view full body; front body diagram"
+  },
+  {
+   "id": "yt-nremt-35-bleeding",
+   "date": "2026-10-28",
+   "pieces": [
+    "flat/n35/g_garage",
+    "flat/n35/g_arm",
+    "flat/n35/g_arm_press",
+    "flat/n35/g_long",
+    "flat/n35/g_cross",
+    "flat/n35/g_kitchen",
+    "flat/n35/g_body",
+    "flat/n35/g_cavity",
+    "codechar paramedic",
+    "codechar hoodie runner"
+   ],
+   "setting": "home garage at dusk; kitchen in the afternoon; diagrams on soft blue",
+   "lighting": "warm lamp left, cool dusk door right; sunny window",
+   "camera": "side view wide, forearm close up"
+  },
+  {
+   "video": "w1031-01-cold-heart",
+   "pieces": [
+    "code drawn frozen lake at night, ice hole, ambulance light bar, rescuers in dry suits (figure.Person), code heart and ECG"
+   ],
+   "setting": "frozen lake",
+   "lighting": "night, moonlight, flashing red and blue",
+   "camera": "push in, lens top right, tracking the sled"
+  },
+  {
+   "video": "w1031-02-phineas-gage",
+   "pieces": [
+    "code drawn 1848 railroad rock cut, period workers (figure.Person), blast, tamping iron, x-ray head with brain lobes, dusk road"
+   ],
+   "setting": "railroad rock cut, Vermont",
+   "lighting": "late afternoon sun from the right; dusk",
+   "camera": "push in, tilt up after the iron, hard cuts"
+  },
+  {
+   "video": "w1031-03-mirror-mint",
+   "pieces": [
+    "code drawn sunny kitchen, vanity mirror with caraway and rye reflection, mint glass, oven mitts, 3D ball and stick carvone, nose receptor cutaway"
+   ],
+   "setting": "home kitchen counter",
+   "lighting": "morning window light",
+   "camera": "slow drift, iris into the nose and back"
+  }
+ ]
 }
