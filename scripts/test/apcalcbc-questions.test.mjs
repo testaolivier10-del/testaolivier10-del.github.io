@@ -60,3 +60,26 @@ test('AB items grade exactly as before; without BC\'s file an interval item is n
   assert.equal(Q.grade({ type: 'single', correct: 2 }, 2).correct, true);
   assert.equal(Q.grade({ type: 'numeric', numeric: { answer: 'pi/4' } }, '0.785').correct, true);
 });
+
+test('small values: on BC a decimal below 0.005 must be right to three significant digits; AB keeps the plain rule', () => {
+  const load = cfg => {
+    const c = { Math, Number, String, Array, Object, JSON, Error, isFinite, isNaN, parseFloat, RegExp, Infinity, NaN };
+    c.window = c; if (cfg) c.ApCalcCourse = cfg; vm.createContext(c);
+    for (const f of ['calculus/assets/calc-expr.js', 'calculus-bc/assets/cbc-interval.js', 'calculus/assets/calc-questions.js']) vm.runInContext(readFileSync(f, 'utf8'), c);
+    return c.ApCalcQuestions;
+  };
+  const bc = load({ key: 'apcalcbc', smallValues: true }), ab = load(null);
+  const q = A => ({ type: 'numeric', calc: true, numeric: { answer: A } });
+  // The weakness: 0.000 for 0.0004 and 0.0010 for 0.0014 pass the plain three-place rule.
+  assert.equal(ab.grade(q(0.0004), '0.000').correct, true);
+  assert.equal(ab.grade(q(0.0014), '0.0010').correct, true);
+  assert.equal(bc.grade(q(0.0004), '0.000').correct, false);
+  assert.equal(bc.grade(q(0.0014), '0.0010').correct, false);
+  assert.match(bc.grade(q(0.0014), '0.0010').notes[0], /significant digits/);
+  for (const s of ['0.00137', '0.00136', '0.001369', '0.0013691']) assert.equal(bc.grade(q(0.0013691), s).correct, true, s);
+  assert.equal(bc.grade({ type: 'numeric', numeric: { answer: '1/729' } }, '1/729').correct, true);
+  assert.equal(bc.grade({ type: 'numeric', numeric: { answer: '1/729' } }, '0.00137').correct, true);
+  assert.equal(bc.grade({ type: 'numeric', numeric: { answer: '1/1000' } }, '0.00137').correct, false);
+  // At 0.005 and above, and for 0, BC grades as AB.
+  for (const [A, s] of [[0.0123456, '0.012'], [0.0123456, '0.0123'], [0, '0.000'], [2.34567, '2.345']]) assert.equal(bc.grade(q(A), s).correct, ab.grade(q(A), s).correct, `${A} ${s}`);
+});

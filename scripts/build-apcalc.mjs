@@ -113,7 +113,7 @@ const abCanonical = (t, path) => IS_BC && t.source === 'ab' ? `${SITE}/calculus/
 /* window.ApCalcCourse on every BC page (tail() in scripts/lib/apcalc-build.mjs). */
 const courseConfig = frqTypes => ({
   key: COURSE_KEY, name: COURSE_NAME, short: COURSE.short, dir: DIR, pfx: ['calc', COURSE.idPrefix], frqTypes,
-  band: COURSE.band, score: COURSE.scoreCalculator, examDate: '2027-05-10', site: `${SITE}${BASE}`, intervals: true,
+  band: COURSE.band, score: COURSE.scoreCalculator, examDate: '2027-05-10', site: `${SITE}${BASE}`, intervals: true, smallValues: true,
 });
 const PRELAUNCH = C.published.size === 0;
 

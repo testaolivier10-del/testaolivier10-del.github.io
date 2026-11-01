@@ -86,7 +86,7 @@ One branch, `claude/apcalcbc`, one PR at the end.
 | 0 | Course shell on the AB runtime: how BC reads AB's data (section 8 decision 1), BC map (111 topics + math chapter), dependency map, generator, runtime, checks, tests, fixture, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-10-31** (decision 8; `docs/apcalcbc-architecture.md`, `docs/apcalcbc-phase0.md`) |
 | 1 | Content: the 30 BC-only topics (lessons, notes, banks with stimulus sets, glossary, figures), BC FRQs (Q2/Q5/Q6 types), BC edits to 6.14 | to do |
 | 2 | BC trainers (section 6) | to do |
-| 3 | Two practice exams (BC unit mix, BC FRQ slots), unit tests for 9 and 10, justification prompts, formula page additions, cram kit | to do |
+| 3 | Two practice exams (BC unit mix, BC FRQ slots), unit tests for 9 and 10, justification prompts, formula page additions, cram kit | **done 2026-10-31** (decision 10) |
 | 4 | Independent accuracy checks (Unit 6-8 BC topics, Unit 9, Unit 10, tools, exams) | to do |
 | Launch | Publish, generators, continuity pass, "twelve courses" wording, full CI with browser checks, PR | to do |
 
@@ -172,6 +172,34 @@ slip is named). FRQs self-scored with one rubric line per point and full-credit 
    in BC's own `calculus-bc/assets/cbc-interval.js`. (f) **BC FRQ types** `parametric`, `techniques`, `series`;
    practice exams hold Q2, Q5, Q6 to them (`BC_FRQ_SLOTS`). (g) **No score calculator, no readiness band** (AB keeps
    its own, untouched). (h) **AB's ten trainers are linked**, not rebuilt (needs-author `ab-trainers`).
+9. (2026-10-31) **Phase 1 integration pass.** Self-report points merged into `docs/apcalcbc-needs-author.md`
+   (ids `a1`-`d4`, resolved ones listed). BC fixes in shared code, AB byte-identical: BC lessons add the real next
+   topic when BC's order moves an authored Next (`lessonConnections`); a BC 6.14 flowchart overrides AB's figure
+   id on BC; hand-written meta descriptions for every BC topic; the small-value guard in the three-decimal rule
+   (BC only; AB's same weakness logged in `docs/apcalc-needs-author.md`, calculus shell budget 69.7 KB).
+10. (2026-10-31, Phase 3) **Exams, prompts, formula rows, unit tests, cram kit**, in AB's formats
+    (`docs/apcalcbc-architecture.md`, "Phase 3"; BC code in `scripts/lib/apcalcbc-exams.mjs`, read only when BC).
+    - Two **practice exams** (`calculus-bc/data/exams/forms.json`): Part A 29 no-calculator bank questions (AB and
+      BC banks, none a lesson check, none in AB's forms), Part B 13 exam-only calculator items per form
+      (`items.json`, `cbc-exam-<form>-<nn>`: a particle-in-the-plane set in form 1 and a polar set read from the
+      graph of r in form 2, then singles; no key below 0.005). Units, both forms: U1-U4 3, U5 5, U6 7, U7 3, U8 3,
+      U9 5, U10 7 (26 and 25 of the 42 on BC topics). Section II: form 1 `frq-u4-table-medicine`, `frq-u9-motion-speed`,
+      `frq-u6-graph-1`, `frq-u7-draining-tank`, `frq-u6-parts-improper`, `frq-u10-interval-taylor`; form 2
+      `frq-u5-model-greenhouse`, `frq-u9-polar-area`, `frq-u8-velocity-graph`, `frq-u4-implicit-cubic`,
+      `frq-u7-euler-arc-length`, `frq-u10-taylor-error` (Q1, Q3, Q4 AB FRQs that are not in AB's exams). Every
+      key recomputed in `CBC_EXAM_NUMBERS` and every option graded by the runtime in the test.
+    - **Justification**: BC's trainer serves AB's 33 prompts plus 11 BC ones (`calculus-bc/data/justify/`:
+      improper-integral notation, Euler over/under from concavity, speed vs slope, position adds the start, the
+      polar petal set-up, toward the origin when r < 0, limit comparison, alternating bound conditions, the ratio
+      test's limit, the Lagrange maximum, both endpoints), three BC skills (`series`, `error`, `polar`); numbers in
+      `CBC_JUSTIFY_NUMBERS`. Units 9 and 10 have 4 and 5.
+    - **Formula page**: 6 BC rows in AB's groups (parts, partial fractions, improper, Euler, logistic, arc length)
+      and three BC groups (parametric/vector/polar, series tests, Taylor and error bounds; 24 rows), 5 "easy to
+      forget" lines, a fourth habit (name the series test, test each endpoint).
+    - **Unit tests** for Units 9 and 10 chosen by hand (`calculus-bc/data/unit-tests.json`, 12 each, 9 of 9 and 11
+      of 15 topics, nothing from a lesson check or a practice exam); Units 1-8 keep the automatic sample.
+    - **Cram kit**: no code change needed; tested on BC's ten units and the two forms.
+    - Tests: `scripts/test/apcalcbc-practice-exams.test.mjs`. AB's build byte-identical.
 
 ## 9. Open items for the owner
 

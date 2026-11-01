@@ -116,6 +116,11 @@
     var ok = [r3(A), t3(A)];
     return [r3(v), t3(v)].some(function(x){ return ok.some(function(y){ return same(x, y); }); });
   }
+  function isSmall(A){ return !!CC.smallValues && A && Math.abs(A) < 0.005; }
+  function decOk(v, A){
+    var e = isSmall(A) ? Math.pow(10, Math.floor(Math.log10(Math.abs(A))) + 1) : 1;
+    return threeOk(v, A) && threeOk(v / e, A / e);
+  }
   function keyValue(N){
     if(N.value != null) return +N.value;
     if(typeof N.answer === 'string') return X() ? X().number(N.answer) : NaN;
@@ -140,7 +145,7 @@
     var unitTyped = resp && typeof resp === 'object' && resp.unit != null && String(resp.unit).trim() ? String(resp.unit).trim() : p.unit;
     var accepted = [N.unit].concat(N.units || []).filter(function(u){ return u; });
     var notes = [], mistake = null;
-    var exact = same(v, A), dec3 = r.decimal && r.places >= 3 && threeOk(v, A);
+    var exact = same(v, A), dec3 = r.decimal && r.places >= 3 && decOk(v, A);
     var valueOk = exact || dec3;
     var parts = { value: valueOk, unit: null };
     if(valueOk && !exact && !calc) notes.push('Right to three decimal places. On a no-calculator question, give the exact value.');
@@ -152,10 +157,11 @@
     if(!valueOk){
       (N.mistakes || []).some(function(mk){
         var mv = typeof mk.value === 'string' ? (X() ? X().number(mk.value) : NaN) : +mk.value;
-        if(isFinite(mv) && (same(v, mv) || (r.decimal && r.places >= 3 && threeOk(v, mv)))){ mistake = mk; return true; }
+        if(isFinite(mv) && (same(v, mv) || (r.decimal && r.places >= 3 && decOk(v, mv)))){ mistake = mk; return true; }
         return false;
       });
       if(mistake) notes.unshift(mistake.why);
+      else if(isSmall(A) && r.decimal && Math.abs(v - A) < 0.01) notes.unshift('Below 0.005, give three significant digits (as in 0.00137).');
       else if(r.decimal && r.places < 3 && Math.abs(v - A) < Math.pow(10, -r.places)) notes.unshift('Three decimal places: you gave ' + r.places + '. The exam marks a decimal answer right only when it is correct to three places after the decimal point (rounded or truncated).');
       else if(r.decimal && Math.abs(v - A) < 0.01) notes.unshift('Close, but not correct to three decimal places. Round only at the end: keep full precision (store values in the calculator) through the work.');
       else if(A && near(-v, A)) notes.unshift('The size is right but the sign is wrong. Check a subtraction order or a direction.');

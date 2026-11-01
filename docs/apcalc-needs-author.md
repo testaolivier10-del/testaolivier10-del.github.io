@@ -161,6 +161,17 @@ Lessons carry their text and their check questions (in the page data) as MathML:
 first lesson (22 KB). Loading check questions from the bank, or not repeating the stimulus SVG in the page data,
 would roughly halve the heavy ones.
 
+## small-values: the three-decimal rule and answers below 0.005 (open, 2026-10-31, from AP® Calculus BC)
+
+`gradeNumeric` in `calculus/assets/calc-questions.js` accepts any decimal that agrees with the key to three
+places, rounded or truncated. When the true answer is below about 0.005 that is at most one significant digit,
+so `0.000` passes for a key of 0.0004 and `0.0010` for a key of 0.0014. No AB item has a nonzero key that small
+today (checked 2026-10-31), so nothing is wrong on AB now; a future AB item with a tiny key would be graded too
+generously. BC has a guard: with `window.ApCalcCourse.smallValues` (set on BC pages only) a decimal below 0.005
+must also be right to three significant digits, with a note saying so. AB sets no config, so AB is unchanged.
+Owner or reviewer: turn the guard on for AB too (one line: AB pages would need the flag, or the runtime default
+changes), or keep AB's authors avoiding tiny numeric keys (single-answer items instead, as BC's 10.10-10.12 do).
+
 ## Resolved
 
 All 2026-10-13, answered by the independent reviewers or fixed; kept here so nobody asks again.

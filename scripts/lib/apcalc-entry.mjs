@@ -20,6 +20,7 @@
 import { loadExams, loadJustify, formUnits, FREE_JUSTIFY, JUSTIFY_SKILLS } from './apcalc-exams.mjs';
 import { renderMath, prepareBank, RT, COURSE, COURSE_KEY } from './apcalc-build.mjs';
 import { r3Inner } from './r3-inner.mjs';
+import { mergeEq, loadUnitTests } from './apcalcbc-exams.mjs';
 
 export const SAMPLE_SIZE = 12;
 
@@ -156,6 +157,10 @@ export function entryPages(ctx) {
   const built = ch => map.topics.some(t => t.chapter === ch.id && C.built.has(t.id));
   const topicLink = (id, depth) => C.built.has(id) ? `<a href="${depth}notes/${id}.html">${esc(map.topicById(id).title)}</a>` : esc((map.topicById(id) || {}).title || id);
   const out = {};
+  // AP® Calculus BC: BC rows on the formula page, hand-picked unit tests and
+  // AB's justification prompts with its own (scripts/lib/apcalcbc-exams.mjs).
+  const BC = COURSE.id === 'bc';
+  const { eq: EQS, notOn: NOTS } = BC ? mergeEq(EQ, NOT_ON) : { eq: EQ, notOn: NOT_ON };
   // Live trainers that practice an equation (EQ rows' sixth field), as links.
   const trainers = slugs => {
     const live = (slugs || []).map(sl => (liveTools || []).find(t => t.slug === sl)).filter(Boolean);
@@ -175,7 +180,7 @@ export function entryPages(ctx) {
       crumbs(orgCrumbs([{ name: 'Formulas to know', url }])),
     ] };
     const R = x => renderMath(x);
-    const sections = EQ.map(s => `<section class="xsection calc-eq-sec" aria-labelledby="eq-${s.id}"><h2 id="eq-${s.id}">${esc(s.h)}</h2>
+    const sections = EQS.map(s => `<section class="xsection calc-eq-sec" aria-labelledby="eq-${s.id}"><h2 id="eq-${s.id}">${esc(s.h)}</h2>
     <div class="table-wrap" tabindex="0" role="region" aria-label="${esc(s.h)}: formulas"><table class="calc-eq"><thead><tr><th scope="col">Formula</th><th scope="col">What it is</th><th scope="col">When you use it</th><th scope="col">Learn it in</th></tr></thead><tbody>${s.rows.map(r => `<tr><th scope="row"><span class="calc-eq-f">${R(`$${r[0]}$`)}</span></th><td>${R(r[1])}</td><td>${R(r[2])}</td><td>${esc(r[3])}<br>${topicLink(r[4], depth)}${trainers(r[5])}</td></tr>`).join('')}</tbody></table></div></section>`).join('\n  ');
     const body = `
 ${bodyOpen(' data-app="formula-sheet"')}
@@ -187,12 +192,13 @@ ${bodyOpen(' data-app="formula-sheet"')}
     <ul class="calc-links">
       <li><b>Name the theorem and check its conditions.</b> Before you use the Intermediate Value Theorem, the Mean Value Theorem or the Extreme Value Theorem, say why the function is continuous (and differentiable, for the Mean Value Theorem) on the interval.</li>
       <li><b>Three decimal places, setup first.</b> On a calculator question, write the integral, derivative or equation you solve, then give the answer correct to three decimal places. Keep full precision until the end.</li>
-      <li><b>Radian mode.</b> Every angle in calculus is in radians.</li>
+      <li><b>Radian mode.</b> Every angle in calculus is in radians.</li>${BC ? `
+      <li><b>Name the series test and its conditions.</b> Say which test, check what it needs, and test each endpoint of an interval of convergence on its own.</li>` : ''}
     </ul>
   </section>
-  ${EQ.length ? sections : '<p class="calc-small">The formula-by-formula guide arrives with the first published unit.</p>'}
-  ${NOT_ON.length ? `<section class="xsection" aria-labelledby="eq-not"><h2 id="eq-not">Easy to forget</h2>
-    <ul class="calc-eq-not">${NOT_ON.map(r => `<li><b>${R(r[0])}.</b> ${R(r[1])} <span class="calc-small">${topicLink(r[2], depth)}</span></li>`).join('')}</ul>
+  ${EQS.length ? sections : '<p class="calc-small">The formula-by-formula guide arrives with the first published unit.</p>'}
+  ${NOTS.length ? `<section class="xsection" aria-labelledby="eq-not"><h2 id="eq-not">Easy to forget</h2>
+    <ul class="calc-eq-not">${NOTS.map(r => `<li><b>${R(r[0])}.</b> ${R(r[1])} <span class="calc-small">${topicLink(r[2], depth)}</span></li>`).join('')}</ul>
   </section>` : ''}
   <section class="xsection" aria-labelledby="eq-next"><h2 id="eq-next">Practice with it</h2>
     <p>${[COURSE.scoreCalculator && `<a href="score-calculator.html">Estimate your score</a>`, testLink('', 'Free unit practice tests'), `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
@@ -254,9 +260,12 @@ ${tail({ depth, section: 'exams', extra: ['pages/score.js', 'pages/calm-ref.js']
 
   /* ---------------------------------------------------- unit practice tests */
   const stimFor = q => { const s = ((C.questions[q.topic] || {}).stimuli || {})[q.stimulus]; return s; };
+  const fixed = BC ? loadUnitTests(C.data) : {};
+  const byId = new Map(); if (BC) for (const t of Object.values(C.questions)) for (const q of t.items || []) byId.set(q.id, q);
   for (const ch of units.filter(built)) {
     const depth = '../', path = `unit-tests/${ch.id}.html`, url = `${SITE}${BASE}${path}`;
-    const qs = unitSample(ch, ctx).map(questionForPage);
+    const pick = fixed[ch.id] && fixed[ch.id].every(id => byId.has(id) && C.built.has(byId.get(id).topic)) ? fixed[ch.id].map(id => byId.get(id)) : unitSample(ch, ctx);
+    const qs = pick.map(questionForPage);
     const title = courseTitle(`Unit ${ch.n} Practice Test: ${ch.title}`, [LABEL]);
     const desc = clampDesc(`A free ${qs.length}-question practice test for Unit ${ch.n}, ${ch.title.toLowerCase()}, with the answer and an explanation for every option.`);
     const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -313,7 +322,7 @@ ${tail({ depth, section: 'exams', extra: ['calc-questions.js', 'pages/sample.js'
   out['assets/exams/items.json'] = JSON.stringify({ stimuli: ownStim, items: [...usedOwn].map(id => questionForPage(examItems.get(id))) });
 
   /* ---------------------------------------------------- justification data */
-  const prompts = loadJustify(C.data, map).filter(p => C.published.has(p.unit));
+  const prompts = loadJustify(BC ? [C.dirs.ab, C.data] : C.data, map).filter(p => C.published.has(p.unit));
   out['assets/justify.json'] = JSON.stringify({
     skills: JUSTIFY_SKILLS,
     // "answer" is a raw key for questions (never TeX), so the model answers are rendered on their own.

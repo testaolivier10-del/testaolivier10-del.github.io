@@ -64,8 +64,17 @@ calculus/assets/                    the runtime both courses run
 - **Canonicals.** A BC lesson or notes page for an AB topic names the AB page as canonical (`abCanonical`),
   so search engines index one copy; `build-sitemap.mjs` skips a page whose canonical is in another folder.
 - **Course-only text.** In authored HTML, an element with class `cbc-only` is dropped from AB pages and one
-  with `calc-ab-only` from BC pages (`courseOnly`, not nested). This is how AB notes get BC wording (6.10's
-  "partial fractions are BC", 6.14's technique list) without a copy and without changing AB's output.
+  with `calc-ab-only` from BC pages (`courseOnly`, not nested); a `<span>` of the course being built is unwrapped
+  and any other kept element loses the marker class, so AB's output stays byte-identical. This is how AB notes get
+  BC wording (6.10's "partial fractions are BC", 6.14's technique list) without a copy.
+- **BC versions of AB figures.** BC's figures win on an id clash, so a BC figure registered under an AB figure's id
+  replaces it on BC pages only: 6.14's `integration-flowchart` (six questions) from
+  `scripts/apcalcbc-figures/integration-flowchart.mjs`, registered in `calculus-bc/data/figures/choosing-integration-methods.json`.
+- **Order on BC pages.** Prev/next and "What comes next" follow the merged map. An AB lesson's authored
+  "Next: ..." that names a topic BC has moved further away is relabelled "Later: ..." and, on BC only, the real
+  next topic is added before it (`lessonConnections`).
+- **Small numeric keys.** `ApCalcCourse.smallValues` (BC) makes the three-decimal rule also require three
+  significant digits when the key is below 0.005 (`calc-questions.js`, `decOk`); AB's rule is unchanged.
 - **Figures.** An AB figure on a BC page is served from `/calculus/figures/` (`figureDir`); BC's own figures
   live in `calculus-bc/figures/`.
 
@@ -103,6 +112,23 @@ BC's FRQ list is AB's eight types plus `parametric` (Q2: parametric, vector or p
 slots: BC_FRQ_SLOTS })` (`scripts/lib/apcalc-exams.mjs`) holds a BC practice exam to `[AB, parametric, AB,
 AB, techniques, series]` on top of AB's rules (29 + 13 MCQ, 2 calculator then 4 no-calculator FRQs, 9 points,
 unit weights from the BC map: 5-10% gives 2-5 of 42, 10-15% 4-7, 15-20% 6-9).
+
+### Phase 3: exams, prompts, formula rows, unit tests (spec decision 10)
+
+- **Practice exams**: `calculus-bc/data/exams/forms.json` and `items.json` in AB's format, checked by the same
+  `checkForms` with `BC_FRQ_SLOTS` and AB's form rules (12-14 exam-only items, no lesson checks). Exam-only ids
+  `cbc-exam-<form>-<nn>`. Keys: `CBC_EXAM_NUMBERS` in `scripts/lib/apcalcbc-exams.mjs`; `checkNumbers(items,
+  prompts, lists)` takes BC's lists (AB's default unchanged).
+- **Justification**: `loadJustify([AB data, BC data], map)` on BC, so the trainer serves AB's prompts and BC's
+  (`calculus-bc/data/justify/<unit>.json`, ids `u<unit>-...`, `u10-` allowed). `JUSTIFY_SKILLS` gains
+  `BC_JUSTIFY_SKILLS` (`series`, `error`, `polar`) only when `APCALC_COURSE=bc`. The BC check wants 3-5 prompts
+  for Units 9 and 10 and 10+ of BC's own; numbers in `CBC_JUSTIFY_NUMBERS`.
+- **Formula page**: `mergeEq(EQ, NOT_ON)` adds `BC_EQ` rows to AB's groups by id and appends `BC_GROUPS` and
+  `BC_NOT_ON`; rows have AB's shape `[TeX, what, when, 'Unit N', topic, trainers?]`.
+- **Unit tests**: `calculus-bc/data/unit-tests.json` (`{ units: { "unit-9": [12 ids], ... } }`) replaces the
+  automatic sample for the units it lists, once every listed topic is built; `checkUnitTests` (12 items, single
+  or numeric, no calculator, no lesson check or practice-exam item, sets together in order, two thirds of the
+  unit's topics).
 
 ### No score calculator, no readiness band
 

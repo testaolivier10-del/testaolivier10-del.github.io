@@ -1,0 +1,97 @@
+{
+ "about": "AP® Calculus BC justification prompts for Unit 9 (parametric equations, polar coordinates and vector-valued functions). Format: docs/apcalc-architecture.md, \"Justification trainer\".",
+ "prompts": [
+  {
+   "unit": "unit-9",
+   "id": "u9-speed-not-slope",
+   "topic": "planar-motion",
+   "practice": "1.E",
+   "skill": "polar",
+   "title": "Speed of a particle in the plane",
+   "context": "<p>A particle moves in the $xy$-plane with $x'(t) = 2t$ and $y'(t) = t^2 - 3$.</p>",
+   "prompt": "<b>Find</b> the speed of the particle at $t = 2$. Show the setup.",
+   "checklist": [
+    "Evaluates both components of velocity at $t = 2$: $x'(2) = 4$ and $y'(2) = 1$",
+    "Writes speed as the length of the velocity vector, $\\sqrt{\\left(x'(2)\\right)^2 + \\left(y'(2)\\right)^2}$",
+    "Gives $\\sqrt{17}$, a magnitude, with no use of $\\frac{dy}{dx}$"
+   ],
+   "earns": {
+    "answer": "$x'(2) = 2(2) = 4$ and $y'(2) = 2^2 - 3 = 1$. Speed $= \\sqrt{\\left(x'(2)\\right)^2 + \\left(y'(2)\\right)^2} = \\sqrt{16 + 1} = \\sqrt{17}$.",
+    "why": "Speed is the magnitude of the velocity vector, built from both components; the answer shows the setup before the number."
+   },
+   "misses": {
+    "answer": "$\\frac{dy}{dx} = \\frac{t^2 - 3}{2t} = \\frac{1}{4}$ at $t = 2$, so the speed is $\\frac{1}{4}$.",
+    "why": "$\\frac{dy}{dx}$ is the slope of the path, how steep it is, not how fast the particle moves along it."
+   }
+  },
+  {
+   "unit": "unit-9",
+   "id": "u9-position-adds-start",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "skill": "polar",
+   "title": "Position from velocity and a starting point",
+   "context": "<p>A particle moves in the plane with velocity $\\mathbf{v}(t) = \\left\\langle 6t - 2, e^{t} \\right\\rangle$. At $t = 0$ it is at $(3, 1)$.</p>",
+   "prompt": "<b>Find</b> the $x$-coordinate of the particle at $t = 2$. Show the integral you use.",
+   "checklist": [
+    "Starts from the known position: $x(2) = x(0) + \\int_0^2 x'(t)\\,dt$",
+    "Evaluates the integral: $\\int_0^2 (6t - 2)\\,dt = 12 - 4 = 8$",
+    "Adds the start, $3 + 8 = 11$, and keeps the $dt$ in the setup"
+   ],
+   "earns": {
+    "answer": "$x(2) = x(0) + \\int_0^2 (6t - 2)\\,dt = 3 + \\left[3t^2 - 2t\\right]_0^2 = 3 + (12 - 4) = 11$.",
+    "why": "The position at $t = 2$ is the starting position plus the change in position, the integral of the horizontal velocity."
+   },
+   "misses": {
+    "answer": "$x(2) = \\int_0^2 (6t - 2)\\,dt = \\left[3t^2 - 2t\\right]_0^2 = 8$.",
+    "why": "The integral gives the change in $x$, not $x$ itself. The particle starts at $x = 3$, so that value has to be added."
+   }
+  },
+  {
+   "unit": "unit-9",
+   "id": "u9-polar-petal-setup",
+   "topic": "polar-area",
+   "practice": "1.D",
+   "skill": "polar",
+   "title": "The area of one petal: the half, the square and the limits",
+   "context": "<p>The polar curve $r = 3\\cos(2\\theta)$ is a rose with four petals. One petal crosses the positive $x$-axis.</p>",
+   "prompt": "<b>Write</b> an integral for the area of that petal, <b>explain</b> how you chose its limits, and evaluate it.",
+   "checklist": [
+    "Finds the limits where the petal starts and ends at the origin: $r = 0$ when $\\cos(2\\theta) = 0$, $\\theta = \\pm\\frac{\\pi}{4}$",
+    "Writes $\\frac{1}{2}\\int_{-\\pi/4}^{\\pi/4} \\left(3\\cos(2\\theta)\\right)^2 d\\theta$, with the $\\frac{1}{2}$ and the square",
+    "Evaluates it to $\\frac{9\\pi}{8}$"
+   ],
+   "earns": {
+    "answer": "The petal begins and ends at the origin, where $r = 0$: $\\cos(2\\theta) = 0$ at $\\theta = -\\frac{\\pi}{4}$ and $\\theta = \\frac{\\pi}{4}$, and $r > 0$ between them. Area $= \\frac{1}{2}\\int_{-\\pi/4}^{\\pi/4} \\left(3\\cos(2\\theta)\\right)^2 d\\theta = \\frac{9}{4}\\int_{-\\pi/4}^{\\pi/4} \\left(1 + \\cos(4\\theta)\\right)d\\theta = \\frac{9}{4}\\cdot\\frac{\\pi}{2} = \\frac{9\\pi}{8}$.",
+    "why": "The limits come from where the petal meets the pole, and the setup keeps the one half and squares $r$ before any evaluation."
+   },
+   "misses": {
+    "answer": "Area $= \\int_0^{\\pi/2} 3\\cos(2\\theta)\\,d\\theta = \\left[\\frac{3}{2}\\sin(2\\theta)\\right]_0^{\\pi/2} = 0$.",
+    "why": "It integrates $r$ instead of $\\frac{1}{2}r^2$, and its limits are not where the petal starts and ends, so it sweeps parts of two petals and gets 0."
+   }
+  },
+  {
+   "unit": "unit-9",
+   "id": "u9-polar-toward-origin",
+   "topic": "polar-derivatives",
+   "practice": "3.D",
+   "skill": "polar",
+   "title": "Toward the origin when r is negative",
+   "context": "<p>A point moves along the polar curve $r = 1 - 2\\cos\\theta$ as $\\theta$ increases.</p>",
+   "prompt": "<b>Determine</b> whether the point is moving toward the origin or away from it at $\\theta = \\frac{\\pi}{6}$. <b>Justify</b> your answer.",
+   "checklist": [
+    "Evaluates $r\\left(\\frac{\\pi}{6}\\right) = 1 - \\sqrt{3} < 0$",
+    "Evaluates $\\frac{dr}{d\\theta} = 2\\sin\\theta$ at $\\frac{\\pi}{6}$: $2\\sin\\frac{\\pi}{6} = 1 > 0$",
+    "Reasons that $r$ and $\\frac{dr}{d\\theta}$ have opposite signs, so the distance $|r|$ is decreasing: toward the origin"
+   ],
+   "earns": {
+    "answer": "$r\\left(\\frac{\\pi}{6}\\right) = 1 - 2\\cos\\frac{\\pi}{6} = 1 - \\sqrt{3} < 0$ and $\\frac{dr}{d\\theta} = 2\\sin\\frac{\\pi}{6} = 1 > 0$. Since $r < 0$ and $r$ is increasing, $r$ is moving toward 0, so the distance from the origin, $|r|$, is decreasing: the point is moving toward the origin.",
+    "why": "The distance from the origin is $|r|$, so the answer needs the signs of both $r$ and $\\frac{dr}{d\\theta}$; opposite signs mean the distance is shrinking."
+   },
+   "misses": {
+    "answer": "$\\frac{dr}{d\\theta} = 2\\sin\\frac{\\pi}{6} = 1 > 0$, so $r$ is increasing and the point is moving away from the origin.",
+    "why": "That holds only when $r > 0$. Here $r$ is negative, and a negative $r$ increasing toward 0 means the point is getting closer to the origin."
+   }
+  }
+ ]
+}

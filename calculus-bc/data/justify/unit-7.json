@@ -1,0 +1,28 @@
+{
+ "about": "AP® Calculus BC justification prompts for Unit 7 (the BC topics; AB's Unit 7 prompts come from calculus/data/justify/unit-7.json). Format: docs/apcalc-architecture.md, \"Justification trainer\".",
+ "prompts": [
+  {
+   "unit": "unit-7",
+   "id": "u7-euler-under-concave-up",
+   "topic": "eulers-method",
+   "practice": "3.D",
+   "skill": "de",
+   "title": "Euler's method: overestimate or underestimate",
+   "context": "<p>Let $y = f(x)$ be the solution of $\\frac{dy}{dx} = x + y$ with $f(0) = 1$. For this solution, $f(x) > 0$ for $0 \\le x \\le 1$.</p>",
+   "prompt": "<b>Use</b> Euler's method with two steps of equal size, starting at $x = 0$, to approximate $f(1)$. Then <b>explain</b> whether the approximation is greater than or less than $f(1)$.",
+   "checklist": [
+    "Takes two steps of size $0.5$, each using the slope at the current point: $1 + 0.5(1) = 1.5$, then $1.5 + 0.5(2) = 2.5$",
+    "Finds the second derivative: $\\frac{d^2y}{dx^2} = 1 + \\frac{dy}{dx} = 1 + x + y$",
+    "Concludes from $\\frac{d^2y}{dx^2} > 0$ on $[0, 1]$ (the graph of $f$ is concave up) that each Euler step lands below the curve, so 2.5 is less than $f(1)$"
+   ],
+   "earns": {
+    "answer": "Step 1: slope at $(0, 1)$ is $0 + 1 = 1$, so $f(0.5) \\approx 1 + 0.5(1) = 1.5$. Step 2: slope at $(0.5, 1.5)$ is $2$, so $f(1) \\approx 1.5 + 0.5(2) = 2.5$. Since $\\frac{d^2y}{dx^2} = 1 + \\frac{dy}{dx} = 1 + x + y > 0$ for $0 \\le x \\le 1$ (there $x \\ge 0$ and $y > 0$), the graph of $f$ is concave up, so the Euler segments lie below it: 2.5 is an underestimate, less than $f(1)$.",
+    "why": "It shows both steps with the slope recomputed, and it reads the direction of the error from the sign of the second derivative on the whole interval, not from one point."
+   },
+   "misses": {
+    "answer": "$f(1) \\approx 1 + 1(1) = 2$, which is an underestimate because $f$ is increasing.",
+    "why": "It takes one step instead of two, and an increasing function says nothing about over or under: the error comes from concavity, the sign of $\\frac{d^2y}{dx^2}$."
+   }
+  }
+ ]
+}

@@ -40,6 +40,8 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { ROOT, loadMap, ALLOWED_LICENSES, hasApToken, trademarkProblems, COURSE, IS_BC, intervalTex, dataDirs } from './lib/apcalc-build.mjs';
 import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, JUSTIFY_SKILLS, BC_FRQ_SLOTS } from './lib/apcalc-exams.mjs';
+import { JUSTIFY_NUMBERS } from './lib/apcalc-exams.mjs';
+import { CBC_EXAM_NUMBERS, CBC_JUSTIFY_NUMBERS, loadUnitTests, checkUnitTests } from './lib/apcalcbc-exams.mjs';
 import { scanPage } from './lib/apcalc-map.mjs';
 import { Expr, Tex, Plot } from './lib/apcalc-mathlib.mjs';
 export { trademarkProblems };
@@ -576,6 +578,13 @@ if (isMain) {
     }
     if (r.errors.length) { if (isPub) failed++; else draft++; }
   }
+  // BC: a figures file that belongs to no BC topic (a BC version of an AB figure, such as
+  // 6.14's flowchart in figures/choosing-integration-methods.json) is checked here.
+  if (IS_BC && !only && exists(join(DATA, 'figures'))) for (const f of readdirSync(join(DATA, 'figures')).filter(f => f.endsWith('.json') && !dataTopics.has(f.slice(0, -5)))) {
+    const errs = [];
+    try { for (const [fid, x] of Object.entries(readJson(join(DATA, 'figures', f)))) checkFigure(fid, x, m => errs.push(m)); } catch (e) { errs.push(`invalid JSON (${e.message})`); }
+    for (const e of errs) { console.log(`figures/${f}: FAIL: ${e}`); failed++; }
+  }
   // Bank-wide rules: they fail on the published bank and print for the whole one.
   const ids2 = new Map();
   for (const q of allItems) { if (ids2.has(q.id)) console.log(`  FAIL: item id ${q.id} is used twice`); ids2.set(q.id, 1); }
@@ -649,7 +658,8 @@ if (isMain) {
   let examFails = 0;
   // Only where the data has them (the test fixture has neither).
   if (map && (exists(join(DATA, 'exams')) || exists(join(DATA, 'justify')))) {
-    const ex = loadExams(DATA), prompts = loadJustify(DATA, map);
+    // BC's trainer serves AB's prompts (Units 1-8) and its own.
+    const ex = loadExams(DATA), prompts = loadJustify(IS_BC ? [AB_DATA, DATA] : DATA, map);
     const bad2 = m => { console.log(`exams: FAIL: ${m}`); examFails++; };
     const examItems = new Map(ex.items.map(q => [q.id, q]));
     const orderOf = {};
@@ -680,6 +690,12 @@ if (isMain) {
     if (!IS_BC && prompts.length < 32) bad2(`the justification trainer has ${prompts.length} prompts; it needs at least 32`);
     if (!IS_BC) for (const u of map.chapters.filter(c => c.part === 'course')) { const n = prompts.filter(p => p.unit === u.id).length; if (n < 3 || n > 5) bad2(`${u.id} has ${n} justification prompts (3 to 5)`); }
     for (const k of Object.keys(JUSTIFY_SKILLS)) if (prompts.length && !prompts.some(p => p.skill === k)) bad2(`no justification prompt practises "${k}"`);
+    // BC (docs/apcalcbc-spec.md row 3): 3 to 5 prompts for each of Units 9 and 10, 10+ of its own.
+    if (IS_BC) {
+      for (const u of ['unit-9', 'unit-10']) { const n = prompts.filter(p => p.unit === u).length; if (n < 3 || n > 5) bad2(`${u} has ${n} justification prompts (3 to 5)`); }
+      const own = prompts.filter(p => !exists(join(AB_DATA, 'justify', p.file)) || !readJson(join(AB_DATA, 'justify', p.file)).prompts.some(x => x.id === p.id)).length;
+      if (own < 10) bad2(`the BC justification prompts number ${own}; at least 10`);
+    }
     // Each form: mostly bank items that are not lesson-check items (those are on
     // the free lessons), plus 12-14 exam-only items of its own.
     const lessonChecks = new Set();
@@ -690,7 +706,9 @@ if (isMain) {
       for (const id of ids.filter(id => lessonChecks.has(id))) bad2(`${f.id}: ${id} is a lesson check item; use one a student has not met on a free lesson`);
     }
     for (const q of ex.items) if (!ex.forms.some(f => (f.mcq || []).flat().includes(q.id))) bad2(`${q.id}: an exam-only item in no form`);
-    for (const e of checkNumbers(examItems, prompts)) bad2(e);
+    for (const e of checkNumbers(examItems, prompts, IS_BC ? { exam: CBC_EXAM_NUMBERS, justify: [...JUSTIFY_NUMBERS, ...CBC_JUSTIFY_NUMBERS] } : undefined)) bad2(e);
+    // BC: the hand-picked free unit tests (calculus-bc/data/unit-tests.json).
+    if (IS_BC) for (const e of checkUnitTests(loadUnitTests(DATA), { map, bank, lessonChecks, formIds: new Set(ex.forms.flatMap(f => (f.mcq || []).flat())), orderOf: id => orderOf[id] })) bad2(e);
     console.log(`${LABEL} exams: ${ex.forms.length} practice exams, ${ex.items.length} exam-only items, ${prompts.length} justification prompts, ${examFails} failing.`);
   }
   const bad = failed + bankErr.length + frqFails + metaFails + toolFails + examFails;

@@ -29,7 +29,7 @@
  ],
  "figure": {
   "figure": "integration-flowchart",
-  "caption": "Ask the questions in order: basic form, substitution, long division, completing the square."
+  "caption": "<span class=\"calc-ab-only\">Ask the questions in order: basic form, substitution, long division, completing the square.</span><span class=\"cbc-only\">Ask the questions in order: basic form, substitution, long division, completing the square, then the two BC questions: integration by parts and linear partial fractions.</span>"
  },
  "chain": [
   {

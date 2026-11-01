@@ -13,6 +13,9 @@
                                    prompt, recomputed here (EXAM_NUMBERS) */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { BC_JUSTIFY_SKILLS } from './apcalcbc-exams.mjs';
+// AP® Calculus BC (APCALC_COURSE=bc) adds its own skills; AB's list is unchanged.
+const BC = process.env.APCALC_COURSE === 'bc';
 
 const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
 const strip = s => String(s ?? '').replace(/<\/?[A-Za-z!][^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -44,6 +47,7 @@ export const JUSTIFY_SKILLS = {
   de: 'Differential equations and slope fields',
   rules: 'Derivative rules with every step shown (chain, product, implicit)',
   setup: 'Area and volume set-ups: radii, limits, the factor of π',
+  ...(BC ? BC_JUSTIFY_SKILLS : {}),
 };
 
 export function loadExams(dataDir) {
@@ -53,11 +57,13 @@ export function loadExams(dataDir) {
   return { items: it.items || [], stimuli: it.stimuli || {}, forms: readJson(join(dir, 'forms.json')).forms || [] };
 }
 
+// dataDir: one folder, or several (BC: AB's prompts, then its own).
 export function loadJustify(dataDir, map) {
-  const dir = join(dataDir, 'justify');
-  if (!existsSync(dir)) return [];
   const out = [];
-  for (const f of readdirSync(dir).filter(f => f.endsWith('.json')).sort()) for (const p of readJson(join(dir, f)).prompts || []) out.push({ ...p, file: f });
+  for (const d of [].concat(dataDir)) {
+    const dir = join(d, 'justify');
+    if (existsSync(dir)) for (const f of readdirSync(dir).filter(f => f.endsWith('.json')).sort()) for (const p of readJson(join(dir, f)).prompts || []) out.push({ ...p, file: f });
+  }
   if (map) {
     const pos = id => map.topics.findIndex(t => t.id === id);
     const ch = id => map.chapters.findIndex(c => c.id === id);
@@ -170,7 +176,7 @@ export function checkJustify(prompts, ctx) {
   const { map } = ctx;
   for (const p of prompts) {
     const w = `justify ${p.id || '(no id)'}`;
-    if (!p.id || !/^u[1-9]-[a-z0-9-]+$/.test(p.id)) errs.push(`${w}: id must be u<unit>-<words>`);
+    if (!p.id || !/^u(?:[1-9]|10)-[a-z0-9-]+$/.test(p.id)) errs.push(`${w}: id must be u<unit>-<words>`);
     if (ids.has(p.id)) errs.push(`${w}: duplicate id`); ids.add(p.id);
     const t = map.topicById(p.topic);
     if (!t) errs.push(`${w}: unknown topic "${p.topic}"`);
@@ -288,10 +294,11 @@ export const JUSTIFY_NUMBERS = [
   { id: 'u8-washer-about-line', has: [`\\frac{${Math.round(15 * washer)}\\pi}{15}`] },
   { id: 'u8-average-value-meaning', has: [`\\frac{840}{12} = ${840 / 12}`] },
 ];
-/* items: Map(id -> item); prompts: list. Returns problems. */
-export function checkNumbers(items, prompts) {
+/* items: Map(id -> item); prompts: list; lists: the numbers to check (AB's by
+   default; BC passes its own exam numbers and AB's prompts' plus its own). */
+export function checkNumbers(items, prompts, lists = { exam: EXAM_NUMBERS, justify: JUSTIFY_NUMBERS }) {
   const errs = [];
-  for (const n of EXAM_NUMBERS) {
+  for (const n of lists.exam) {
     const q = items.get(n.id);
     if (!q) { errs.push(`numbers: ${n.id} not found`); continue; }
     const key = strip(q.options[q.correct]);
@@ -301,11 +308,12 @@ export function checkNumbers(items, prompts) {
     if (q.options.filter(o => strip(o) === key).length !== 1) errs.push(`numbers: ${n.id} has its key twice`);
   }
   const byId = new Map(prompts.map(p => [p.id, p]));
-  for (const n of JUSTIFY_NUMBERS) {
+  for (const n of lists.justify) {
     const p = byId.get(n.id);
     if (!p) { errs.push(`numbers: prompt ${n.id} not found`); continue; }
     const text = strip([p.context, p.prompt, ...(p.checklist || []), p.earns.answer].join(' '));
     for (const h of n.has) if (!text.includes(h)) errs.push(`numbers: prompt ${n.id} should show "${h}"`);
+    if (n.check && !n.check()) errs.push(`numbers: prompt ${n.id} fails its side condition`);
   }
   return errs;
 }

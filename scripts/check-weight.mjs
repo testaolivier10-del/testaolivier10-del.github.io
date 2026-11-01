@@ -385,8 +385,10 @@ const SHELL_BUDGETS = [
      68.5 -> 69.5 for AP® Calculus BC (docs/apcalcbc-spec.md, Phase 0): BC pages run this same
      runtime, so each file reads its course from window.ApCalcCourse (key, name, id prefixes, FRQ
      types, no band or score link) and the question engine calls BC's interval grader; the grader
-     itself is BC's own file (calculus-bc/assets/cbc-interval.js). Measured 69.4 KB. */
-  ['calculus', 69.5],
+     itself is BC's own file (calculus-bc/assets/cbc-interval.js). Measured 69.4 KB.
+     69.5 -> 69.7 (BC integration pass, 2026-10-31): the small-value guard in calc-questions.js
+     (below 0.005 a decimal must be right to three significant digits, BC only); measured 69.5 KB. */
+  ['calculus', 69.7],
   /* AP® Statistics (statistics/, a fork of the AP® Calculus AB runtime),
      plus what every statistics question page needs (docs/apstat-spec.md
      section 7): the distributions library (stat-dist.js, 6.4 KB gzipped:

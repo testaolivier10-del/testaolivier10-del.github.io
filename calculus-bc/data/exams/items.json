@@ -440,7 +440,7 @@
    "level": "apply",
    "diff": 1,
    "stimulus": "exam-2-s1",
-   "q": "What is the area of the region swept out by the curve for $0 \\le \\theta \\le \\pi$ (bounded by the curve and the segment of the $x$-axis it ends on)?",
+   "q": "For $0 \\le \\theta \\le \\pi$ the curve runs from the origin to the point $(-\\pi, 0)$ and stays on or above the $x$-axis. What is the area of the region bounded by the curve and the $x$-axis?",
    "options": [
     "$4.382$",
     "$8.765$",

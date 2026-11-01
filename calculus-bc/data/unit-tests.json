@@ -1,0 +1,7 @@
+{
+ "about": "The free unit practice tests (unit-tests/<unit>.html) chosen by hand for the BC units, 12 bank questions each: every topic or nearly, single-answer and numeric items only, no lesson check and no practice-exam question, a set's items together in authored order (docs/apcalcbc-spec.md row 3; checked by checkUnitTests in scripts/lib/apcalcbc-exams.mjs). A unit not listed gets the automatic sample (unitSample in scripts/lib/apcalc-entry.mjs).",
+ "units": {
+  "unit-9": ["cbc-parametric-derivatives-8", "cbc-parametric-derivatives-9", "cbc-parametric-second-derivatives-14", "cbc-parametric-arc-length-10", "cbc-vector-derivatives-2", "cbc-vector-derivatives-4", "cbc-vector-integrals-12", "cbc-planar-motion-11", "cbc-polar-derivatives-10", "cbc-polar-area-11", "cbc-polar-area-7", "cbc-polar-area-between-7"],
+  "unit-10": ["cbc-geometric-series-13", "cbc-integral-test-10", "cbc-comparison-tests-9", "cbc-alternating-series-test-5", "cbc-alternating-series-test-6", "cbc-ratio-test-15", "cbc-absolute-conditional-12", "cbc-alternating-error-bound-12", "cbc-taylor-polynomials-15", "cbc-lagrange-error-bound-10", "cbc-radius-interval-convergence-14", "cbc-taylor-series-13"]
+ }
+}
