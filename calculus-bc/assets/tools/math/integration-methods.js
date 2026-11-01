@@ -380,7 +380,38 @@
   function generate(r, ctx, type){
     var kind = type || ctx.kind || 'parts';
     if(!GEN[kind]) throw new Error('integrationMethods.generate: no problem kind "' + kind + '"');
-    return GEN[kind](r, ctx);
+    return prettyKeys(GEN[kind](r, ctx));
+  }
+  /* A key as a student would type it, for "Show the answer": abs() as bars (ln|x - 1|), no 1*, ^1 or /1,
+     no "+ -", 2x for 2*x, x^3/6 for (1/6)*x^3, 3/b for 3*b^(-1). Kept only when it evaluates to the very
+     same function at the cell's points (M.compare), so grading never changes. (BC review, tools-exams.) */
+  function pretty(s, E){
+    var t = String(s), i, guard = 0;
+    while((i = t.indexOf('abs(')) > -1 && guard++ < 20){
+      var d = 0, j = i + 3;
+      for(; j < t.length; j++){ if(t.charAt(j) === '(') d++; else if(t.charAt(j) === ')'){ d--; if(!d) break; } }
+      if(j >= t.length) break;
+      t = t.slice(0, i) + '|' + t.slice(i + 4, j) + '|' + t.slice(j + 1);
+    }
+    t = t.replace(/ln\(\|([^|]*)\|\)/g, 'ln|$1|')
+      .replace(/(\d)\*\((ln\|[^|]*\|)\)/g, '$1 $2')
+      .replace(/\^1(?![\d.\/])/g, '')
+      .replace(/\/1(?![\d.])/g, '')
+      .replace(/(^|[\s(])\((-?\d+(?:\.\d+)?)\)(?![\^*(\w])/g, '$1$2')
+      .replace(/\+\s*-\s*/g, '- ').replace(/-\s+-\s*/g, '+ ')
+      .replace(/(^|[^\w.)|])1\*(?=[a-z(|])/g, '$1')
+      .replace(/\((\d+)\/(\d+)\)\*([a-z](?:\^\d+)?)(?![\w(^])/g, function(m, n, q, v){ return (n === '1' ? '' : n) + v + '/' + q; })
+      .replace(/(^|[^\^\w.])(\d+)\*(ln|sin|cos|tan|atan|sqrt|e\^)/g, '$1$2 $3')
+      .replace(/(^|[^\^\w.])(\d+)\*([a-z(|])/g, '$1$2$3')
+      .replace(/(^|[^\^\w.])(\d+)?([a-z])\^\(-1\)/g, function(m, p, c, v){ return p + (c || '1') + '/' + v; })
+      .replace(/(^|[^\^\w.])(\d+)?([a-z])\^\(-1\/2\)/g, function(m, p, c, v){ return p + (c || '1') + '/sqrt(' + v + ')'; })
+      .replace(/^\+\s*/, '').trim();
+    if(t === s) return s;
+    try{ var c = M.compare(t, s, { vars: E.vars, mode: 'exact', domain: E.domain }); return c && c.valid && c.equal ? t : s; }catch(e){ return s; }
+  }
+  function prettyKeys(p){
+    (p.steps || []).forEach(function(st){ var E = st.kind === 'expr' && st.cell && st.cell.expr; if(E) E.answer = pretty(E.answer, E); });
+    return p;
   }
 
   M.register('integrationMethods', {

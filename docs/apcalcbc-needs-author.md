@@ -54,10 +54,10 @@ an id, the question, what was done meanwhile, and who decides. AB's open points 
 Ids keep the author letter and number from `docs/apcalcbc-reviews/self-<a-d>.md`. Duplicates merged: A1 and B1's
 meta descriptions sit with the integration fixes under "Resolved"; C4 (absolute words) is resolved there too.
 
-- **a3-split-integral** (map): AB's map teaches the concept `split-integral` at 8.6, though splitting an integral
+- **a3-split-integral** (map). **Resolved 2026-10-31 (review units-6-8):** no map change; `split-integral` is the 8.6 technique (split at crossings), and 6.13's wording is clear. AB's map teaches the concept `split-integral` at 8.6, though splitting an integral
   at a point is 6.6's additivity; 6.13 avoids the phrase. Consider moving the concept to `integral-properties`
   (an AB map change: AB's map check and build must stay clean). Reviewer.
-- **a4-euler-multistep** (accuracy): concavity alone does not always fix the sign of a multi-step Euler error (it
+- **a4-euler-multistep** (accuracy). **Resolved 2026-10-31 (review units-6-8):** concavity decides it when it holds for every solution curve a step starts on (solution curves do not cross); `cbc-eulers-method-3` and the 7.5 notes now say so. concavity alone does not always fix the sign of a multi-step Euler error (it
   also depends on how the slope changes with y). The one multi-step item (`cbc-eulers-method-3`, dy/dx = x + y)
   holds because every solution curve in the region is concave up and the slope increases with y; the FRQ asks only
   about the first step. Phase 3 exam items and reviewers: keep that care.
@@ -130,7 +130,7 @@ meta descriptions sit with the integration fixes under "Resolved"; C4 (absolute 
 - **p3-part-b** (reviewer). Part B is all exam-only calculator items, as AB. Each form has 4 Unit 9 calculator
   items (one set) and 1 Unit 10 item (a Taylor value; a series integrated term by term); the real exam's
   calculator mix by unit is not published. Check the balance.
-- **p3-logistic-solution** (reviewer). `cbc-exam-2-08` gives the logistic solution formula and asks when growth is
+- **p3-logistic-solution** (reviewer). **Resolved 2026-10-31 (review units-6-8):** in scope: the solution is given, EK FUN-7.H.4 plus a calculator solve; numbers rechecked. `cbc-exam-2-08` gives the logistic solution formula and asks when growth is
   fastest (P = L/2, then solve). The guide says logistic models are interpreted, not solved; giving the solution
   keeps it in scope, but confirm.
 - **p3-free-prompts** (owner). The first three prompts in course order are free, so BC's free prompts are AB's
@@ -145,3 +145,10 @@ meta descriptions sit with the integration fixes under "Resolved"; C4 (absolute 
 
 - **u10-weak-distractors** (author, low): `cbc-nth-term-test-15` mistake 1000 and `cbc-geometric-series-12` mistake 2/3 match
   no clear slip; graded wrong, could be retargeted. Details in `docs/apcalcbc-reviews/unit-10.md`.
+
+## Units 6-8 review (Phase 4)
+
+- **u68-separation-wording**: AB's 7.6 notes say "On the AP® Calculus AB exam it is the only solving method you
+  need" on BC pages too (true for BC, reads oddly); a `cbc-only` wording would fit. Lead or 7.6 owner.
+- **u68-convergence-term**: the glossary id `convergence` (6.13) covers improper integrals only; series convergence
+  lives under Unit 10 ids. Consider widening the definition or renaming the term "convergence (improper integral)".
