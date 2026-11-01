@@ -96,8 +96,8 @@ def cold():
     m = load('/home/claude/lp/w1031/cold/build.py', 'cold')
     bg = clean(m, 2.0, f'{OUT}/w1031-01-cold-heart/clean_a.png')
     def grp(c):
-        import tchars
-        tchars.draw_ice(c, 2.0, 0, 200, 0.85, lift_px=40, lean=0.3)
+        import ctchars as tchars
+        tchars.draw_ice(c, 2.0, 0, 200, 0.85, lift_px=0, lean=0.0)
     ha = hero(grp)
     def pulse(cv):
         from PIL import ImageDraw

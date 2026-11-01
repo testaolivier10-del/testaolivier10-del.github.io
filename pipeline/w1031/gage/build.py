@@ -18,7 +18,7 @@ sys.path[:0] = ['/home/claude/lp/w1031/lib']
 import numpy as np, skia
 from lpk import *
 from figure import Person
-import tchars
+import ctchars as tchars
 import layout as L
 
 ID = 'w1031-02-phineas-gage'
@@ -437,11 +437,11 @@ def scene_dusk(c, t, u):
     c.drawRect(skia.Rect(740, 1020, 770, 1050), P((255, 196, 110), 220 + 30 * math.sin(t * 3)))
     c.drawRect(skia.Rect(720, 1000, 790, 1070), P((255, 196, 110), 60, MaskFilter=blur(20)))
     # Gage stands apart, turning his head away; his two friends watch him, uneasy; long shadows away from the low sun
-    for x_, w_ in ((80, 270), (560, 420)):
+    for x_, w_ in ((560, 420),):        # Gage's own contact shadow moves with him (cperson)
         c.drawOval(skia.Rect(x_ + 10, 1405, x_ + w_ + 60, 1440), P((40, 28, 44), 120, MaskFilter=blur(10)))
     turn = smooth((t - T['friends'] - 0.2) / 0.8)
     tn = ((120, 70, 120), 0.22)
-    tchars.draw_dusk_gage(c, t, 60, 1425 - 690 * 1.05, 1.05, turn, tint=tn)
+    tchars.draw_dusk_gage(c, t, 60, 1425 - 690 * 1.05, 1.05, turn, tint=tn, walk_t0=T['friends'] + 0.4)   # he turns and walks slowly away
     tchars.draw_dusk_friends(c, t, 600, 1425 - 688 * 1.05, 1.05, lean=smooth((t - T['longer']) / 0.8), tint=tn)
     motes(c, t, 26, (0, 900, 1080, 1400), (255, 200, 150))
 

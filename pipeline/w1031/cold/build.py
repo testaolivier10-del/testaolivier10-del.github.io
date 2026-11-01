@@ -17,7 +17,7 @@ sys.path[:0] = ['/home/claude/lp/w1031/lib']
 import numpy as np, skia
 from lpk import *
 from figure import Person
-import tchars
+import ctchars as tchars
 import layout as L
 
 ID = 'w1031-01-cold-heart'
@@ -211,7 +211,7 @@ IS = 0.76
 IX0, IY0 = HOLE[0] - 660 * IS, HOLE[1] - 638 * IS
 
 
-def ice_scene(c, t, lift, jolt):
+def ice_scene(c, t, lift, jolt, imp=0.0):
     """the traced rescue group (ref/ice_hole2.png) over a code hole; the lift raises the patient through a smooth
     field so the rescuers' hands stay on him; the water and the near lip of the hole cover him below the waterline"""
     x, y = HOLE
@@ -225,9 +225,12 @@ def ice_scene(c, t, lift, jolt):
     # beams under the figures so they light the air, not paint over faces
     for hx_, hy_, ang in ((IX0 + 482 * IS, IY0 + 228 * IS, 0.6), (IX0 + 888 * IS, IY0 + 248 * IS, math.pi - 0.6)):
         beam(c, hx_, hy_, ang, 330, 26)
+    if imp > 0.02:   # he hits the ice edge: the flash lights the ice and the hole, under the people (so it never washes through his legs)
+        c.drawOval(skia.Rect(HOLE[0] - 260, HOLE[1] - 40, HOLE[0] + 260, HOLE[1] + 60), P((255, 240, 230), 120 * imp, MaskFilter=blur(24), BlendMode=skia.BlendMode.kScreen))
     tchars.draw_ice(c, t, IX0, IY0 + 14 * jolt, IS, lift_px=lp_, lean=lift, rim=((196, 214, 255), (-3, 2), 190))
     # water in front: the lower half of the hole covers him below the waterline, ripples spread from him
     c.save(); c.clipPath(inner, skia.ClipOp.kIntersect, True)
+    c.clipRect(skia.Rect(x - 200, y - 2, x + 200, y + 60))      # ripples stay on the water, never over him
     c.drawRect(skia.Rect(x - 200, y - 2, x + 200, y + 60), P((12, 20, 44)))
     for k in range(4):
         r = ((t * 28 + k * 35) % 140)
@@ -264,8 +267,9 @@ def sled_scene2(c, t):
         u_ = ((t * 1.3 + k * 0.2) % 1.0)
         c.drawCircle(x0 + 1150 * SS + 40 * u_, 1366 - 10 * u_, 6 + 10 * u_, P((236, 244, 255), 120 * (1 - u_)))
     tchars.draw_sled(c, t, x0, y0, SS)
-    beam(c, x0 + 655 * SS, y0 + 210 * SS, math.radians(150), 360, 40)
-    breath(c, t, x0 + 700 * SS, y0 + 285 * SS, 2.6, 0.4, dirx=-1)
+    (lx_, ly_), (mx_, my_) = tchars.SLED_LAMP      # the rescuer's helmet lamp and mouth, from the code character
+    beam(c, x0 + lx_ * SS, y0 + ly_ * SS, math.radians(150), 360, 40)
+    breath(c, t, x0 + mx_ * SS, y0 + my_ * SS, 2.6, 0.4, dirx=-1)
 
 
 def sled_scene(c, t, u):
@@ -426,9 +430,7 @@ def frame(t):
         if t >= T['and2']:
             lift = lift - 0.12 * smooth((t - T['and2']) / 1.5)
         imp = math.exp(-((t - T['jolt'] - 0.54) / 0.14) ** 2)
-        ice_scene(c, t, lift, jolt)
-        if imp > 0.02:   # he hits the ice edge
-            c.drawOval(skia.Rect(HOLE[0] - 260, HOLE[1] - 40, HOLE[0] + 260, HOLE[1] + 60), P((255, 240, 230), 120 * imp, MaskFilter=blur(24), BlendMode=skia.BlendMode.kScreen))
+        ice_scene(c, t, lift, jolt, imp)
     else:
         u = smooth((t - T['so'] + 0.3) / (DUR - T['so']))
         sled_scene2(c, t)
