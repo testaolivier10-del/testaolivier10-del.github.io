@@ -96,8 +96,8 @@ def cold():
     m = load('/home/claude/lp/w1031/cold/build.py', 'cold')
     bg = clean(m, 2.0, f'{OUT}/w1031-01-cold-heart/clean_a.png')
     def grp(c):
-        m.patient_in_water(c, 2.0, 0.3, 0.0)
-        m.rescuers_pull(c, 2.0, 0.3, 0.0)
+        import tchars
+        tchars.draw_ice(c, 2.0, 0, 200, 0.85, lift_px=40, lean=0.3)
     ha = hero(grp)
     def pulse(cv):
         from PIL import ImageDraw
@@ -106,7 +106,7 @@ def cold():
             x = 140 + i * 13.5; y = 1560 + 70 * math.sin(i * 1.7) * math.sin(i * 0.53)
             pts.append((x, y))
         d.line(pts, fill=(255, 70, 70), width=16, joint='curve')
-    a = compose(bg, ha, 1000, 540, 1120, 'ONE ROUGH LIFT', 'CAN STOP HIS HEART', 'NREMT  EMT TRAPS #2', (63, 194, 169), f'{OUT}/w1031-01-cold-heart/thumb_a.png', graphic=pulse, box=tp.RED, box_txt=tp.WHITE)
+    a = compose(bg, ha, 760, 540, 1150, 'ONE ROUGH LIFT', 'CAN STOP HIS HEART', 'NREMT  EMT TRAPS #2', (63, 194, 169), f'{OUT}/w1031-01-cold-heart/thumb_a.png', graphic=pulse, box=tp.RED, box_txt=tp.WHITE)
     def hrt(c):
         m.heart(c, 540, 960, 3.2, 3.0, 0, 0.0)
     hb = hero(hrt)

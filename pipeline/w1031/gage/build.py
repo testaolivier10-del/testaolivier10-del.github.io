@@ -18,6 +18,7 @@ sys.path[:0] = ['/home/claude/lp/w1031/lib']
 import numpy as np, skia
 from lpk import *
 from figure import Person
+import tchars
 import layout as L
 
 ID = 'w1031-02-phineas-gage'
@@ -163,8 +164,12 @@ def motes(c, t, n=40, region=(0, 600, 1080, 1400), col=(255, 232, 190)):
 
 # ===================================================================== Gage and the iron
 S = 2.7
-FOOT = (600, 1330)
-HOLE = (600 - 66 * S, 1330)
+TS, TX0 = 0.86, 110.0
+TY0 = 1335 - 1150 * TS
+HOLE = (TX0 + 265 * TS, TY0 + 1138 * TS)
+_cm = tchars.tamp_upper_matrix(0.0, 0.0).mapXY(*tchars.CHEEK)   # where the cheek is in the held pose at the blast
+CHEEK = (TX0 + _cm.x() * TS, TY0 + _cm.y() * TS)
+FOOT = (TX0 + 470 * TS, 1335)
 ROD_L = 150 * S            # 3 ft 7 in for a man about 5 ft 6 in tall
 
 
@@ -197,7 +202,21 @@ def tamp_phase(t):
     return lift
 
 
-def gage_tamping(c, t, knock=0.0):
+def gage_tamping(c, t, knock=0.0, hold=True):
+    lift = tamp_phase(t) if t < T['spark'] else 0.0
+    br = math.sin(t * 1.7)
+    if hold:
+        g1, g0 = tchars.grip_screen(TX0, TY0, TS, lift, br)
+        ox, oy = g1[0] - g0[0], g1[1] - g0[1]
+        top = (TX0 + tchars.ROD_TOP[0] * TS + ox, TY0 + tchars.ROD_TOP[1] * TS + oy)
+        bot = (TX0 + tchars.ROD_BOT[0] * TS + ox, TY0 + tchars.ROD_BOT[1] * TS + oy)
+        c.save(); c.clipRect(skia.Rect(-500, -3000, 2000, HOLE[1] + 2))
+        rod(c, bot[0], bot[1], top[0], top[1], wk=0.62)
+        c.restore()
+    tchars.draw_tamp(c, t, TX0, TY0, TS, lift, br, knock, hat_fly=smooth((t - T['off'] - 0.25) / 0.9) if T['off'] < t < T['went'] else 0.0)
+
+
+def _old_gage_tamping(c, t, knock=0.0):
     fx, fy = FOOT
     br = 1.5 * math.sin(t * 1.7)
     lift = tamp_phase(t) if t < T['spark'] else max(0.0, 1 - (t - T['spark']) / 0.25) * 0.0
@@ -328,7 +347,7 @@ def scene_cut(c, t, cam):
     far(c, t, par=dx)
     walls(c, t)
     ground(c, t)
-    far_workers(c, t)
+    None
     return
 
 
@@ -409,38 +428,21 @@ def scene_dusk(c, t, u):
     g = (110, 84, 92)
     lgrad(c, skia.Rect(-100, 1100, 1200, 2000), 1100, 1700, [(128, 92, 96), g, (70, 52, 66)])
     # a dirt road into town and a house with a lit window
-    c.drawPath(poly([(380, 1110), (520, 1110), (1180, 1920), (-100, 1920)]), P((150, 110, 106)))
+    rs_ = np.random.default_rng(14)
+    for k in range(90):
+        x_, y_ = rs_.uniform(-50, 1130), rs_.uniform(1130, 1900); r_ = rs_.uniform(2, 6) * (0.5 + (y_ - 1100) / 600)
+        c.drawOval(skia.Rect(x_ - r_ * 1.5, y_ - r_, x_ + r_ * 1.5, y_ + r_ * 0.6), P((88, 64, 76)))
     c.drawPath(poly([(700, 980), (860, 980), (860, 1110), (700, 1110)]), P((80, 60, 76)))
     c.drawPath(poly([(690, 990), (780, 930), (870, 990)]), P((60, 44, 60)))
     c.drawRect(skia.Rect(740, 1020, 770, 1050), P((255, 196, 110), 220 + 30 * math.sin(t * 3)))
     c.drawRect(skia.Rect(720, 1000, 790, 1070), P((255, 196, 110), 60, MaskFilter=blur(20)))
-    # two friends at right, watching him go; long shadows away from the low sun on the left
-    for k, (x, col, sc_, hat_) in enumerate(((790, (150, 120, 108), 1.9, True), (900, (110, 120, 150), 1.75, False))):
-        f = Person(s=sc_, shirt=col, vest=(60, 48, 52) if k == 0 else (90, 80, 70), pants=(64, 58, 76), hat=(50, 40, 40), light=-1, rim=(255, 170, 120), hatted=hat_, beard=(k == 1))
-        x = x + 40 * smooth((t - T['friends'] - 0.2 - 0.3 * k) / 0.5)
-        y = 1500 + k * 30
-        br = 1.4 * math.sin(t * 1.5 + k * 2.1)
-        J = dict(head=(x - 6 * sc_, y - 200 * sc_ + br), neck=(x, y - 176 * sc_ + br), hip=(x, y - 100 * sc_),
-                 shN=(x, y - 166 * sc_), elN=(x - 6 * sc_, y - 132 * sc_), hdN=(x - 2 * sc_, y - 104 * sc_),
-                 shF=(x + 4, y - 166 * sc_), elF=(x + 10 * sc_, y - 132 * sc_), hdF=(x + 6 * sc_, y - 104 * sc_),
-                 knN=(x - 4 * sc_, y - 50 * sc_), ftN=(x - 6 * sc_, y - 4 * sc_), knF=(x + 8 * sc_, y - 50 * sc_), ftF=(x + 12 * sc_, y - 4 * sc_))
-        c.drawPath(poly([(x - 20, y), (x + 20, y), (x + 260, y + 60), (x + 200, y + 70)]), P((50, 36, 50), 110))
-        f.draw(c, J, face=-1)
-    # Gage walking away to the left along the road, his shadow trailing
-    x = 520 - 70 * u
-    y = 1380
-    g2 = Person(s=1.7, shirt=(226, 210, 184), vest=(86, 64, 56), pants=(78, 72, 92), hat=(68, 54, 48), light=-1, rim=(255, 170, 120))
-    s = 1.7; ph = t * 5.5; a = math.sin(ph)
-    from lpk import ik2
-    hip = (x, y - 100 * s - 2 * abs(math.cos(ph)) * s)
-    neck = (x - 4 * s, y - 176 * s); head = (neck[0] - 6 * s, neck[1] - 26 * s)
-    ftN = (x + 26 * s * a, y - 4 * s - max(0, 10 * s * math.sin(ph + 1.6))); ftF = (x - 26 * s * a, y - 4 * s - max(0, 10 * s * math.sin(ph + 1.6 + math.pi)))
-    knN = ik2(hip, ftN, 52 * s, 50 * s, bend=1); knF = ik2(hip, ftF, 52 * s, 50 * s, bend=1)
-    sh = (neck[0], neck[1] + 10 * s)
-    hdN = (sh[0] + 22 * s * a, sh[1] + 60 * s); hdF = (sh[0] - 22 * s * a, sh[1] + 60 * s)
-    elN = ik2(sh, hdN, 32 * s, 30 * s, bend=-1); elF = ik2(sh, hdF, 32 * s, 30 * s, bend=-1)
-    c.drawPath(poly([(x - 20, y), (x + 20, y), (x + 230, y + 50), (x + 180, y + 60)]), P((50, 36, 50), 110))
-    g2.draw(c, dict(head=head, neck=neck, hip=hip, shN=sh, elN=elN, hdN=hdN, shF=sh, elF=elF, hdF=hdF, knN=knN, ftN=ftN, knF=knF, ftF=ftF), face=-1)
+    # Gage stands apart, turning his head away; his two friends watch him, uneasy; long shadows away from the low sun
+    for x_, w_ in ((80, 270), (560, 420)):
+        c.drawOval(skia.Rect(x_ + 10, 1405, x_ + w_ + 60, 1440), P((40, 28, 44), 120, MaskFilter=blur(10)))
+    turn = smooth((t - T['friends'] - 0.2) / 0.8)
+    tn = ((120, 70, 120), 0.22)
+    tchars.draw_dusk_gage(c, t, 60, 1425 - 690 * 1.05, 1.05, turn, tint=tn)
+    tchars.draw_dusk_friends(c, t, 600, 1425 - 688 * 1.05, 1.05, lean=smooth((t - T['longer']) / 0.8), tint=tn)
     motes(c, t, 26, (0, 900, 1080, 1400), (255, 200, 150))
 
 
@@ -464,20 +466,39 @@ def frame(t):
     # ---------------- A: tamping, the spark, the blast, the iron shoots up (0 .. went)
     if t < T['went'] - 0.35 or t >= T['all'] - 0.25:
         tt = t if t < T['went'] else (t - T['all'] + 0.25) % 2.0 + 0.2   # the loop back reuses the opening
-        tilt = 0.0 if t >= T['went'] else smooth((t - T['off'] - 0.25) / 2.2)
+        tilt = 0.0 if t >= T['went'] else smooth((t - T['off'] - 0.3) / 1.6)
         zoom = 1.0 + 0.08 * smooth(tt / 5.0) if t < T['off'] else 1.08
         shake = 0.0
         if T['off'] <= t < T['off'] + 0.6:
             shake = 14 * math.exp(-(t - T['off']) / 0.15) * math.sin(t * 90)
-        dy = 2600 * tilt
+        dy = 1500 * tilt
         c.save()
         c.translate(540 + shake, 960); c.scale(zoom, zoom); c.translate(-540, -960 + dy)
-        sky(c); clouds(c, tt); sun(c, 900, 560)
+        sky(c); clouds(c, tt); sun(c, 960, 500)
         far(c, tt, par=-20 * tilt)
-        walls(c, tt); ground(c, tt); far_workers(c, tt)
+        walls(c, tt); ground(c, tt); None
         motes(c, tt, 30)
-        knock = smooth((t - T['off']) / 0.45) if (t >= T['off'] and t < T['went']) else 0.0
-        gage_tamping(c, tt if t >= T['all'] - 0.25 else t, knock)
+        knock = smooth((t - T['off'] - 0.4) / 0.4) if (t >= T['off'] and t < T['went']) else 0.0
+        c.drawOval(skia.Rect(HOLE[0] - 50, HOLE[1] - 9, HOLE[0] + 50, HOLE[1] + 9), P((52, 36, 32)))
+        c.drawOval(skia.Rect(HOLE[0] - 50, HOLE[1] - 9, HOLE[0] + 50, HOLE[1] + 9), SP((120, 96, 80), 3))
+        if T['off'] <= t < T['went']:
+            u = t - T['off']
+            view_c = 960 - dy
+            dvx, dvy = CHEEK[0] - hx, CHEEK[1] - hy; dn = math.hypot(dvx, dvy); dvx, dvy = dvx / dn, dvy / dn
+            # one straight line: tip from the hole to the cheek (0.12 s), through the head slowly so the eye can follow it
+            # (0.3 s), then away out the top; only later, high above him, does it start to tumble upright
+            tip = dn * smooth(u / 0.12) + 300 * smooth((u - 0.12) / 0.3) + 1900 * max(0.0, u - 0.42) ** 1.2
+            tx_, ty_ = hx + dvx * tip, hy + dvy * tip
+            cx0, cy0 = tx_ - dvx * ROD_L * 0.5, ty_ - dvy * ROD_L * 0.5
+            blend = smooth((u - 0.6) / 0.8)
+            y_mid = lerp(cy0, view_c + 380 - 420 * smooth((u - 0.4) / 2.6), blend)
+            xm = lerp(cx0, CHEEK[0] + 40, blend)
+            ang = lerp(math.atan2(dvx, -dvy), 0.10, smooth((u - 0.6) / 1.0))
+            x0, y0 = xm - math.sin(ang) * ROD_L / 2, y_mid + math.cos(ang) * ROD_L / 2
+            x1, y1 = xm + math.sin(ang) * ROD_L / 2, y_mid - math.cos(ang) * ROD_L / 2
+            if (tip - ROD_L) < dn + 300:
+                rod(c, x0, y0, x1, y1)
+        gage_tamping(c, tt if t >= T['all'] - 0.25 else t, knock, hold=(t < T['off'] or t >= T['all'] - 0.25))
         # spark on each strike near the end, and the big one on "spark"
         if t < T['spark']:
             p = (t / 0.7) % 1.0
@@ -487,37 +508,58 @@ def frame(t):
         if t >= T['all'] - 0.25:
             sparks(c, t, hx, hy - 4, T['spark2'] + 0.05, 18, 1.2)
         blast(c, t, hx, hy)
-        # the iron in flight: tapered end first, straight up out of the hole (it passed through his head)
+        # the iron in flight: up from the hole BEHIND his hands and jaw (we see it below his fists), in under the cheek,
+        # out through the top of the head; drawn behind him until its tail has cleared his head, then in front
         if T['off'] <= t < T['went']:
             u = t - T['off']
             view_c = 960 - dy
-            dist = 330 * smooth(u / 0.06) + 1400 * max(0.0, u - 0.2)
-            y_mid = lerp(hy - ROD_L * 0.5 - dist, view_c + 380 - 420 * smooth((u - 0.4) / 2.6), smooth((u - 0.2) / 0.6))
-            xm = hx + 60 * smooth(u / 2.5)
-            ang = 0.10 * smooth(u / 2.5)
+            dvx, dvy = CHEEK[0] - hx, CHEEK[1] - hy; dn = math.hypot(dvx, dvy); dvx, dvy = dvx / dn, dvy / dn
+            # one straight line: tip from the hole to the cheek (0.12 s), through the head slowly so the eye can follow it
+            # (0.3 s), then away out the top; only later, high above him, does it start to tumble upright
+            tip = dn * smooth(u / 0.12) + 300 * smooth((u - 0.12) / 0.3) + 1900 * max(0.0, u - 0.42) ** 1.2
+            tx_, ty_ = hx + dvx * tip, hy + dvy * tip
+            cx0, cy0 = tx_ - dvx * ROD_L * 0.5, ty_ - dvy * ROD_L * 0.5
+            blend = smooth((u - 0.6) / 0.8)
+            y_mid = lerp(cy0, view_c + 380 - 420 * smooth((u - 0.4) / 2.6), blend)
+            xm = lerp(cx0, CHEEK[0] + 40, blend)
+            ang = lerp(math.atan2(dvx, -dvy), 0.10, smooth((u - 0.6) / 1.0))
             x0, y0 = xm - math.sin(ang) * ROD_L / 2, y_mid + math.cos(ang) * ROD_L / 2
             x1, y1 = xm + math.sin(ang) * ROD_L / 2, y_mid - math.cos(ang) * ROD_L / 2
-            for k in range(6):
-                c.drawLine(x0, y0 + 30 + k * 50, x0, y0 + 110 + k * 70, SP((255, 240, 220), 3, 70 - k * 11))
-            rod(c, x0, y0, x1, y1, glint=math.exp(-((t - T['skull'] - 0.1) / 0.25) ** 2))
-            hf = math.exp(-((u - 0.1) / 0.1) ** 2)
+            behind = (tip - ROD_L) < dn + 300
+            if not behind:
+                if u > 0.9:
+                    for k in range(5):
+                        o = 40 + k * 60
+                        c.drawLine(x0 - math.sin(ang) * o, y0 + math.cos(ang) * o, x0 - math.sin(ang) * (o + 90), y0 + math.cos(ang) * (o + 90), SP((255, 240, 220), 3, 70 - k * 12))
+                rod(c, x0, y0, x1, y1, glint=math.exp(-((t - T['skull'] - 0.1) / 0.25) ** 2))
+            hf = 0.6 * math.exp(-((u - 0.13) / 0.06) ** 2)
             if hf > 0.02:
-                hd = (FOOT[0] - 62 * S, FOOT[1] - 186 * S)
-                c.drawCircle(*hd, 120, P((255, 250, 235), 240 * hf, MaskFilter=blur(30), BlendMode=skia.BlendMode.kScreen))
+                hd = CHEEK
+                c.drawCircle(*hd, 60, P((255, 250, 235), 200 * hf, MaskFilter=blur(30), BlendMode=skia.BlendMode.kScreen))
         c.restore()
     a1 = 1.0 if T['went'] - 0.35 <= t < T['landed'] - 0.15 else 0.0
-    a2 = smooth((t - T['but'] + 0.1) / 0.18) * (1 - smooth((t - T['and2'] + 0.2) / 0.3))
+    a2 = 1.0 if T['but'] - 0.05 <= t < T['and2'] - 0.2 else 0.0
     a = max(a1, a2)
     # ---------------- C: the iron lands about 80 ft away; he sits up and talks (landed .. but)
     if T['landed'] - 0.5 <= t < T['but'] + 0.2 and a < 0.99:
         u = t - T['landed']
         c.save()
-        z = 0.62 + 0.05 * smooth((t - T['landed']) / 5.0) + 0.25 * smooth((t - T['somehow']) / 1.2)
-        fx = 0 + 160 * smooth((t - T['somehow']) / 1.2)
-        c.translate(540, 960); c.scale(z, z); c.translate(-540 + fx, -960 - 200)
-        sky(c); sun(c, 900, 560); far(c, t); walls(c, t); ground(c, t); far_workers(c, t)
+        close = t >= T['somehow'] - 0.05
+        if not close:
+            z = 0.74 + 0.04 * smooth((t - T['landed']) / 5.0)
+            c.translate(540, 1100); c.scale(z, z); c.translate(-760, -1240)
+        else:
+            z = 1.0 + 0.05 * smooth((t - T['somehow']) / 3.5)
+            c.translate(540, 1300); c.scale(z, z); c.translate(-540, -1300)
+        sky(c); sun(c, 900, 560); far(c, t); walls(c, t); ground(c, t); None
+        if not close:
+            # the blast hole, still smoking, where he stood
+            c.drawOval(skia.Rect(HOLE[0] - 50, HOLE[1] - 9, HOLE[0] + 50, HOLE[1] + 9), P((52, 36, 32)))
+            for k in range(5):
+                uu = ((t * 0.35 + k * 0.2) % 1.0)
+                c.drawCircle(HOLE[0] + 20 * math.sin(t + k), HOLE[1] - 40 - 260 * uu, 30 + 50 * uu, P((150, 140, 132), 120 * (1 - uu)))
         # the landing spot far to the right; iron falls point first and sticks in the gravel
-        lx, ly = 1060, 1330
+        lx, ly = 1180, 1330
         fall = smooth((t - T['landed'] + 0.4) / (T['feet'] - T['landed'] + 0.4))
         if t < T['feet']:
             yy = ly - 700 * (1 - fall)
@@ -529,20 +571,21 @@ def frame(t):
                 for k in range(7):
                     c.drawCircle(lx + (k - 3) * 22 * (1 + d), ly - 10 - 40 * d * (1 - d / 2.0), 22 + 30 * d, P((196, 172, 140), 160 * (1 - d / 1.6)))
         # distance chip: dashed line from Gage to the iron
-        if T['feet'] - 0.2 <= t < T['somehow']:
+        if T['feet'] - 0.2 <= t < T['somehow'] and not close:
             k = smooth((t - T['feet'] + 0.2) / 0.3)
-            for i in range(14):
-                x0 = 420 + i * 46
-                if x0 > 420 + 640 * k: break
-                c.drawLine(x0, 1450, x0 + 24, 1450, SP((255, 210, 63), 6))
-            L.chip(c, 'ABOUT 80 FT', 740, 1400, (255, 210, 63), 60, k)
-        sit = smooth((t - T['somehow'] - 0.4) / 1.4)
-        gage_ground(c, t, 330, 1440, sit=sit, s=2.4, talk=smooth((t - T['talking']) / 0.3))
-        # two workers run in from the right
-        if t >= T['somehow'] + 0.3:
-            r = smooth((t - T['somehow'] - 0.3) / 2.6)
-            worker_run(c, t, 960 - 380 * r, 1450, 2.3, (176, 150, 130), face=-1, run=1 - smooth((r - 0.85) / 0.15))
-            worker_run(c, t + 0.3, 1120 - 420 * r, 1470, 2.05, (110, 128, 160), face=-1, run=1 - smooth((r - 0.85) / 0.15), hatted=False, beard=True)
+            for i in range(24):
+                x0 = HOLE[0] + i * 46
+                if x0 > HOLE[0] + (lx - HOLE[0]) * k: break
+                c.drawLine(x0, 1380, x0 + 24, 1380, SP((255, 210, 63), 7))
+            L.chip(c, 'ABOUT 80 FT', (HOLE[0] + lx) / 2, 1320, (255, 210, 63), 64, k)
+        if close:
+            # dust still hanging; he sits up and talks while two workers kneel by him
+            for k in range(6):
+                c.drawOval(skia.Rect(100 + k * 170 + 30 * math.sin(t * 0.3 + k) - 200, 1120 + 20 * math.sin(t * 0.5 + k) - 70, 100 + k * 170 + 30 * math.sin(t * 0.3 + k) + 200, 1120 + 20 * math.sin(t * 0.5 + k) + 70), P((226, 206, 176), 40, MaskFilter=blur(40)))
+            c.drawOval(skia.Rect(0, 1380, 600, 1420), P((90, 64, 52), 90, MaskFilter=blur(10)))
+            c.drawOval(skia.Rect(520, 1385, 1080, 1420), P((90, 64, 52), 90, MaskFilter=blur(10)))
+            tchars.draw_workers(c, t, 425, 1420 - 730 * 0.54, 0.54)
+            tchars.draw_sit(c, t, -80, 1420 - 735 * 0.58, 0.58, talk=smooth((t - T['talking']) / 0.3), daze=1 - smooth((t - T['talking']) / 0.6))
         motes(c, t, 30)
         c.restore()
     # ---------------- D: afterward, dusk (and2 .. all)
@@ -557,7 +600,7 @@ def frame(t):
         if fa > 0: c.drawRect(skia.Rect(0, 0, W, H), P((10, 10, 20), 255 * fa))
     # ---------------- B: the head cutaway (went .. landed) and again (but .. and2)
     a1 = 1.0 if T['went'] - 0.35 <= t < T['landed'] - 0.15 else 0.0
-    a2 = smooth((t - T['but'] + 0.1) / 0.18) * (1 - smooth((t - T['and2'] + 0.2) / 0.3))
+    a2 = 1.0 if T['but'] - 0.05 <= t < T['and2'] - 0.2 else 0.0
     a = max(a1, a2)
     if a > 0.01:
         if a1 >= a2:
@@ -565,8 +608,8 @@ def frame(t):
             ru = (t - T['went'] - 0.1) / (T['came'] + 1.0 - T['went'])
             # a round lens grows from his head (iris) as the cut comes in
             head_xray(c, t, 1.0, 0.0, pu, ru if 0 <= ru <= 1 else -1)
-            fl = 1 - smooth((t - T['went'] + 0.35) / 0.2)
-            if fl > 0: c.drawRect(skia.Rect(0, 0, W, H), P((255, 250, 240), 255 * fl))
+            fl = 1 - smooth((t - T['went'] + 0.35) / 0.12)
+            if fl > 0: c.drawRect(skia.Rect(0, 0, W, H), P((255, 250, 240), 170 * fl))
         else:
             hl = smooth((t - T['frontal']) / 0.4)
             head_xray(c, t, a2, hl, 1.0, -1)

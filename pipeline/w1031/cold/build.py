@@ -17,6 +17,7 @@ sys.path[:0] = ['/home/claude/lp/w1031/lib']
 import numpy as np, skia
 from lpk import *
 from figure import Person
+import tchars
 import layout as L
 
 ID = 'w1031-01-cold-heart'
@@ -31,7 +32,7 @@ DUR = END + 1.6
 CAP = Captions(WD.w)
 MOON = (236, 240, 255)
 RIM = (196, 214, 255)
-AMB_X, AMB_Y = 860, 905
+AMB_X, AMB_Y = 420, 905
 
 
 def sky(c):
@@ -43,9 +44,9 @@ def sky(c):
 
 
 def moon(c):
-    c.drawCircle(250, 300, 200, P((180, 200, 255), 60, MaskFilter=blur(80), BlendMode=skia.BlendMode.kScreen))
-    c.drawCircle(250, 300, 56, P(MOON))
-    c.drawCircle(234, 292, 10, P((214, 220, 240))); c.drawCircle(266, 316, 7, P((214, 220, 240)))
+    c.drawCircle(170, 690, 200, P((180, 200, 255), 60, MaskFilter=blur(80), BlendMode=skia.BlendMode.kScreen))
+    c.drawCircle(170, 690, 46, P(MOON))
+    c.drawCircle(158, 682, 8, P((214, 220, 240))); c.drawCircle(184, 700, 6, P((214, 220, 240)))
 
 
 SH1 = jag([(-400, 830), (0, 800), (200, 820), (420, 790), (700, 815), (1000, 790), (1500, 805)], 4, 4)
@@ -116,8 +117,11 @@ def cracks(c, t):
         p = skia.Path(); px, py = x + 200 * math.cos(a), y + 60 * math.sin(a); p.moveTo(px, py)
         for j in range(1, 5):
             px += L_ / 4 * math.cos(a + rs.uniform(-0.4, 0.4)); py += L_ / 4 * 0.35 * math.sin(a + rs.uniform(-0.4, 0.4)); p.lineTo(px, py)
-        c.drawPath(p, SP((240, 248, 255), 6, 235))
-        c.drawPath(p, SP((40, 56, 110), 2.5, 240))
+        c.drawPath(p, SP((236, 244, 255), 3, 220))
+        c.drawPath(p, SP((50, 66, 120), 1.2, 230))
+        if L_ > 60:
+            q = skia.Path(); q.moveTo(px - L_ / 4 * math.cos(a), py - L_ / 16 * math.sin(a)); q.lineTo(px - L_ / 4 * math.cos(a) + 40 * math.cos(a + 0.8), py - L_ / 16 * math.sin(a) + 14 * math.sin(a + 0.8))
+            c.drawPath(q, SP((236, 244, 255), 2, 200))
 
 
 def hole(c, t):
@@ -154,7 +158,7 @@ def breath(c, t, x, y, period, ph, dirx=-1):
     if u > 0.55: return
     k = u / 0.55
     for j in range(3):
-        c.drawCircle(x + dirx * (20 + 60 * k + j * 14), y - 10 * k - j * 6, 10 + 20 * k, P((230, 236, 255), 80 * (1 - k)))
+        c.drawCircle(x + dirx * (20 + 60 * k + j * 14), y - 10 * k - j * 6, 12 + 24 * k, P((230, 236, 255), 60 * (1 - k), MaskFilter=blur(8 + 10 * k)))
 
 
 RESC = dict(shirt=(214, 56, 52), vest=(176, 40, 42), pants=(196, 50, 48), skin=(214, 166, 136), hat=(240, 210, 70), boots=(40, 40, 50),
@@ -201,6 +205,67 @@ def patient_in_water(c, t, lift, jolt=0.0):
     c.restore()
     # water line wobble around his chest
     c.drawOval(skia.Rect(x - 70, HOLE[1] - 4, x + 70, HOLE[1] + 14), SP((120, 150, 210), 3, 160))
+
+
+IS = 0.76
+IX0, IY0 = HOLE[0] - 660 * IS, HOLE[1] - 638 * IS
+
+
+def ice_scene(c, t, lift, jolt):
+    """the traced rescue group (ref/ice_hole2.png) over a code hole; the lift raises the patient through a smooth
+    field so the rescuers' hands stay on him; the water and the near lip of the hole cover him below the waterline"""
+    x, y = HOLE
+    cracks(c, t)
+    k_ = IS / 0.55
+    rim = smooth_closed([(x - 165 * k_, y), (x - 110 * k_, y - 34 * k_), (x, y - 40 * k_), (x + 115 * k_, y - 33 * k_), (x + 168 * k_, y + 2), (x + 110 * k_, y + 34 * k_), (x, y + 40 * k_), (x - 112 * k_, y + 32 * k_)])
+    c.drawPath(rim, P((176, 206, 246)))
+    inner = smooth_closed([(x - 140 * k_, y), (x - 95 * k_, y - 24 * k_), (x, y - 30 * k_), (x + 98 * k_, y - 23 * k_), (x + 142 * k_, y + 2), (x + 92 * k_, y + 24 * k_), (x, y + 30 * k_), (x - 95 * k_, y + 23 * k_)])
+    c.drawPath(inner, P((10, 16, 36)))
+    lp_ = lift * 250
+    # beams under the figures so they light the air, not paint over faces
+    for hx_, hy_, ang in ((IX0 + 482 * IS, IY0 + 228 * IS, 0.6), (IX0 + 888 * IS, IY0 + 248 * IS, math.pi - 0.6)):
+        beam(c, hx_, hy_, ang, 330, 26)
+    tchars.draw_ice(c, t, IX0, IY0 + 14 * jolt, IS, lift_px=lp_, lean=lift, rim=((196, 214, 255), (-3, 2), 190))
+    # water in front: the lower half of the hole covers him below the waterline, ripples spread from him
+    c.save(); c.clipPath(inner, skia.ClipOp.kIntersect, True)
+    c.drawRect(skia.Rect(x - 200, y - 2, x + 200, y + 60), P((12, 20, 44)))
+    for k in range(4):
+        r = ((t * 28 + k * 35) % 140)
+        c.drawOval(skia.Rect(x - r * 1.2, y + 2 - r * 0.12, x + r * 1.2, y + 6 + r * 0.14), SP((90, 120, 190), 2, 150 * (1 - r / 140)))
+    c.restore()
+    lip = skia.Op(rim, inner, skia.PathOp.kDifference_PathOp)
+    if lip is not None:
+        c.save(); c.clipRect(skia.Rect(x - 200, y - 2, x + 200, y + 60)); c.drawPath(lip, P((196, 222, 252))); c.restore()
+    c.drawArc(skia.Rect(x - 142 * k_, y - 30 * k_, x + 142 * k_, y + 30 * k_), 10, 160, False, SP((236, 244, 255), 3, 200))
+    # breath in the cold air
+    breath(c, t, IX0 + 440 * IS, IY0 + 285 * IS, 2.6, 0.0, dirx=1)
+    breath(c, t, IX0 + 925 * IS, IY0 + 318 * IS, 2.8, 1.1, dirx=-1)
+    breath(c, t, IX0 + 668 * IS, IY0 + 462 * IS - lift * 250 * IS, 3.4, 0.5, dirx=1)
+
+
+SS = 0.62
+
+
+def sled_scene2(c, t):
+    """the traced sled group (ref/sled.png): he lies flat, wrapped, a rescuer kneels on the sled with a hand on his
+    shoulder; the sled is towed slowly toward shore on a rope (off to the left)"""
+    pull = smooth((t - T['so']) / (DUR - T['so']))
+    sx = 900 - 520 * pull
+    x0, y0 = sx - 640 * SS, 1362 - 735 * SS
+    # the empty hole they came out of, behind on the right
+    hx_, hy_ = 1060, 1350
+    c.drawOval(skia.Rect(hx_ - 150, hy_ - 34, hx_ + 150, hy_ + 34), P((176, 206, 246)))
+    c.drawOval(skia.Rect(hx_ - 128, hy_ - 26, hx_ + 128, hy_ + 26), P((10, 16, 36)))
+    c.drawOval(skia.Rect(x0 + 100 * SS, 1350, x0 + 1180 * SS, 1380), P((30, 40, 80), 110, MaskFilter=blur(8)))
+    rope0 = (x0 + 125 * SS, y0 + 640 * SS)
+    c.drawLine(*rope0, -300, rope0[1] - 30, SP((240, 210, 70), 4))
+    # a light snow spray where the sled runs
+    for k in range(5):
+        u_ = ((t * 1.3 + k * 0.2) % 1.0)
+        c.drawCircle(x0 + 1150 * SS + 40 * u_, 1366 - 10 * u_, 6 + 10 * u_, P((236, 244, 255), 120 * (1 - u_)))
+    tchars.draw_sled(c, t, x0, y0, SS)
+    beam(c, x0 + 655 * SS, y0 + 210 * SS, math.radians(150), 360, 40)
+    breath(c, t, x0 + 700 * SS, y0 + 285 * SS, 2.6, 0.4, dirx=-1)
 
 
 def sled_scene(c, t, u):
@@ -262,7 +327,7 @@ def heart(c, cx, cy, sc, t, mode, mu):
     qv = mu
     s = sc * (1 - 0.06 * beat * (1 - qv))
     c.save(); c.translate(cx, cy); c.scale(s, s)
-    jit = lambda i: qv * 11 * math.sin(t * 47 + i * 2.3) + qv * 8 * math.sin(t * 31 + i * 5.1)
+    jit = lambda i: qv * 3.5 * math.sin(t * 61 + i * 2.3) + qv * 2.5 * math.sin(t * 43 + i * 5.1)
     outline = [(-58, -66), (-90, -28), (-98, 18), (-80, 62), (-36, 98), (24, 122), (74, 130), (98, 98), (100, 42), (84, -16), (54, -56), (2, -72)]
     pts = [(x + jit(i), y + jit(i + 7)) for i, (x, y) in enumerate(outline)]
     # great vessels behind: superior vena cava, aortic arch, pulmonary trunk (all drawn in dark reds)
@@ -341,11 +406,11 @@ def frame(t):
     sled = t >= T['so'] - 0.3
     # camera: slow push in the rescue shot; the lens comes from his chest
     if not sled:
-        z = 1.22 + 0.06 * smooth(t / T['so'])
-        cx, cy = 540, 1250
+        z = 1.12 + 0.05 * smooth(t / T['so'])
+        cx, cy = 540, 1215
     else:
         u = (t - T['so'] + 0.3) / (DUR - T['so'] + 0.3)
-        pull_ = smooth((t - T['so'] - 1.9) / (DUR - T['so'] - 1.9)); z = 1.12 + 0.03 * u; cx, cy = 560 - 300 * pull_ - 60 * smooth((t - T['so']) / 2.0), 1250
+        pull_ = smooth((t - T['so']) / (DUR - T['so'])); z = 1.15 + 0.03 * u; cx, cy = 690 - 160 * pull_, 1250
     jolt = 0.0
     if T['jolt'] + 0.5 <= t < T['jolt'] + 1.4:
         jolt = math.exp(-(t - T['jolt'] - 0.5) / 0.3) * math.sin((t - T['jolt'] - 0.5) * 40)
@@ -357,20 +422,16 @@ def frame(t):
         lift = 0.3 * smooth(t / 2.4) + 0.03 * math.sin(t * 7.5) * (1 - smooth((t - 2.6) / 1.0))
         if t >= T['jolt']:
             u_ = t - T['jolt']
-            lift = 0.3 + 0.55 * smooth(u_ / 0.22) - 0.3 * smooth((u_ - 0.42) / 0.1)
+            lift = 0.3 + 0.55 * smooth(u_ / 0.22) - 0.7 * smooth((u_ - 0.42) / 0.14)
         if t >= T['and2']:
             lift = lift - 0.12 * smooth((t - T['and2']) / 1.5)
         imp = math.exp(-((t - T['jolt'] - 0.54) / 0.14) ** 2)
-        hole(c, t)
-        cracks(c, t)
-        patient_in_water(c, t, lift, jolt)
-        rescuers_pull(c, t, lift, jolt)
-        breath(c, t, HOLE[0] + 8, HOLE[1] - 200 * lift - 330, 3.4, 0.3, dirx=1)
+        ice_scene(c, t, lift, jolt)
         if imp > 0.02:   # he hits the ice edge
             c.drawOval(skia.Rect(HOLE[0] - 260, HOLE[1] - 40, HOLE[0] + 260, HOLE[1] + 60), P((255, 240, 230), 120 * imp, MaskFilter=blur(24), BlendMode=skia.BlendMode.kScreen))
     else:
         u = smooth((t - T['so'] + 0.3) / (DUR - T['so']))
-        sled_scene(c, t, u)
+        sled_scene2(c, t)
     snow(c, t, 70)
     c.restore()
     snow(c, t, 18, near=True)
@@ -386,11 +447,11 @@ def frame(t):
         col = (255, 90, 90) if mu > 0.5 else (90, 255, 160)
         lens(c, t, lx, ly, r, mu, col)
         if r > 150:
-            ecg(c, 160, 1222, 760, 130, t, mu, col)
+            ecg(c, 60, 562, 500, 92, t, mu, col)
         if mu > 0.5 and t >= T['vent']:
-            L.chip(c, 'VENTRICULAR FIBRILLATION', 540, 1196, (255, 107, 107), 46, smooth((t - T['vent']) / 0.25) * (1 - smooth((t - T['and2']) / 0.3)))
+            L.chip(c, 'VENTRICULAR FIBRILLATION', 310, 532, (255, 107, 107), 40, smooth((t - T['vent']) / 0.25) * (1 - smooth((t - T['and2']) / 0.3)))
         if r2 > r1 and t >= T['slow2']:
-            L.chip(c, 'SLOW AND STEADY', 540, 1196, (90, 255, 160), 46, smooth((t - T['slow2']) / 0.25))
+            L.chip(c, 'SLOW AND STEADY', 310, 532, (90, 255, 160), 40, smooth((t - T['slow2']) / 0.25))
     # red warning pulse on "stop his heart"
     wa = math.exp(-((t - T['stop'] + 0.15) / 0.35) ** 2) + 0.7 * mu * (0.5 + 0.5 * math.sin(t * 12))
     if wa > 0.02:
