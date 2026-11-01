@@ -881,7 +881,7 @@
   },
   {
    "id": "w1101-01-bomber-holes",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-01",
    "date": null,
    "tiktok_caption": "Survivorship bias and the famous World War Two bomber story. Armor the spots with holes, or the spots without? The planes that made it home were a biased sample, a kind of sampling bias you meet in AP Statistics, because the planes hit in the engines never came back to be counted. levlprep.com #APStatistics #statistics #survivorshipbias #history",
@@ -900,11 +900,13 @@
    "related_video": null,
    "related_set": false,
    "pin_question": "Where else do you think survivorship bias fools people?",
-   "review_blob": "08cc9d1db65d99fdecac20ac4d1e179450edc075"
+   "review_blob": "08cc9d1db65d99fdecac20ac4d1e179450edc075",
+   "approved_on": "2026-11-01",
+   "approved_blob": "08cc9d1db65d99fdecac20ac4d1e179450edc075"
   },
   {
    "id": "w1101-02-guard-faint",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-01",
    "date": null,
    "tiktok_caption": "Why soldiers faint when they stand still too long. Lock still, or wiggle your toes: which keeps you on your feet? Your calf muscles squeeze your leg veins and one way valves push blood back up to your heart. Stand frozen and that muscle pump stops, blood pools in your legs and less reaches your brain. Anatomy and physiology, venous return. levlprep.com #anatomy #physiology #nursing #science",
@@ -923,11 +925,13 @@
    "related_video": null,
    "related_set": false,
    "pin_question": "Have you ever felt lightheaded after standing still for a long time?",
-   "review_blob": "de7f4da252ccfd4f8f7891a6c5f845e57b021350"
+   "review_blob": "de7f4da252ccfd4f8f7891a6c5f845e57b021350",
+   "approved_on": "2026-11-01",
+   "approved_blob": "de7f4da252ccfd4f8f7891a6c5f845e57b021350"
   },
   {
    "id": "w1101-04-cane-toads",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-01",
    "date": null,
    "tiktok_caption": "Cane toads in Australia, the invasive species that backfired. Did the toads save the sugar cane, or take over the country? They couldn't reach the cane beetles, poisoned the animals that ate them, and had almost no predators or diseases to hold them back, so they spread across northern Australia. AP Environmental Science, invasive species. levlprep.com #APES #environmentalscience #canetoads #ecology",
@@ -946,11 +950,13 @@
    "related_video": null,
    "related_set": false,
    "pin_question": "Which invasive species causes trouble where you live?",
-   "review_blob": "06a816270cf8e5c46d2f45273a6c815a1f9fcb46"
+   "review_blob": "06a816270cf8e5c46d2f45273a6c815a1f9fcb46",
+   "approved_on": "2026-11-01",
+   "approved_blob": "06a816270cf8e5c46d2f45273a6c815a1f9fcb46"
   },
   {
    "id": "w1101-03-speed-camera",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-01",
    "date": null,
    "tiktok_caption": "Mean value theorem and average speed cameras. Slow at both cameras: ticket, or no ticket? Ten miles in eight minutes is an average of 75 mph, and because her position changed smoothly, at some moment she was going exactly 75. AP Calculus AB, the mean value theorem in real life. levlprep.com #APCalculus #calculus #math #APCalc",
@@ -979,7 +985,9 @@
     ],
     "place": "upper middle, from the first second (the gantry and car sit below y 900 for the first 8 s)"
    },
-   "review_blob": "ee5cd5b66e244341a83f15bba25fa52d057696be"
+   "review_blob": "ee5cd5b66e244341a83f15bba25fa52d057696be",
+   "approved_on": "2026-11-01",
+   "approved_blob": "ee5cd5b66e244341a83f15bba25fa52d057696be"
   }
  ]
 }
