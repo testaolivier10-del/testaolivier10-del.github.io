@@ -17,7 +17,7 @@ const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const args = process.argv.slice(2);
 const OUT = args.includes('--out') ? args[args.indexOf('--out') + 1] : join(ROOT, 'calculus-bc', 'figures');
 
-const INK = '#1F2A28', EMERALD = '#0A5A34', BLUE = '#0072B2', VERM = '#D55E00', ORANGE = '#B26B00', SKY = '#56B4E9', GRID = '#E3E6E5', MUTED = '#5B6664';
+const INK = '#1F2A28', EMERALD = '#5A1E96', BLUE = '#0072B2', VERM = '#D55E00', ORANGE = '#B26B00', SKY = '#56B4E9', GRID = '#E3E6E5', MUTED = '#5B6664';
 const FONT = 'Arial, Helvetica, sans-serif';
 const r2 = v => Math.round(v * 100) / 100;
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

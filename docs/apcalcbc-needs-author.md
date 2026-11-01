@@ -88,7 +88,7 @@ meta descriptions sit with the integration fixes under "Resolved"; C4 (absolute 
   guard below (`small-values`) a numeric item could now take such a key on BC; the content check's own
   three-decimal test (`check-apcalc-content.mjs`, numeric mistakes) does not know the guard yet, so keep tiny keys
   out of numeric items until it does.
-- **figure-accent** (new, integration pass): 39 of BC's 41 figures use emerald `#0A5A34`, the accent proposed
+- **figure-accent** (new, integration pass): 39 of BC's 41 figures use emerald `#0A5A34`, the accent proposed **Resolved 2026-10-31:** `EMERALD` set to violet #5A1E96 in author-a..d.mjs and all figures regenerated.
   first and dropped for violet (decision 7). Once the owner confirms the identity, change `EMERALD` in
   `scripts/apcalcbc-figures/author-{a,b,c,d}.mjs` and rerun them (the 6.14 flowchart already uses violet).
 
