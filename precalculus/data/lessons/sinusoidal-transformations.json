@@ -1,0 +1,61 @@
+{
+ "topic": "sinusoidal-transformations",
+ "hook": "A music app draws a sound wave, and an engineer needs its formula to filter it: how tall, how fast, how far along. Every sinusoid you will ever meet is $y = \\sin\\theta$ stretched, squeezed and slid. Four constants, $a$, $b$, $c$ and $d$, record exactly how, and reading them correctly is the heart of the periodic modeling question on the exam.",
+ "prereq": [
+  {
+   "q": "The greatest value of a sinusoidal function is $9$ and the least is $1$. What is its midline?",
+   "options": ["$y = 5$", "$y = 4$", "$y = 8$", "$y = 10$"],
+   "correct": 0,
+   "why": "The midline is the average of the extremes: $\\frac{9 + 1}{2} = 5$.",
+   "review": "sinusoidal-functions"
+  },
+  {
+   "q": "The graph of $y = f(x - 3)$ is the graph of $y = f(x)$",
+   "options": ["moved 3 units right", "moved 3 units left", "moved 3 units down", "stretched horizontally by 3"],
+   "correct": 0,
+   "why": "The input $x$ must be 3 larger to give the same output, so every point moves 3 units right.",
+   "review": "transformations"
+  }
+ ],
+ "figure": {
+  "figure": "sinusoidal-transformations-shift",
+  "caption": "$g(\\theta) = 2\\sin\\left(\\theta - \\frac{\\pi}{4}\\right) + 1$ is the sine graph (dashed) moved right $\\frac{\\pi}{4}$, stretched to amplitude 2 and lifted to the midline $y = 1$."
+ },
+ "chain": [
+  {
+   "cause": "Multiply by $a$: $a\\sin\\theta$",
+   "effect": "a vertical dilation: the amplitude becomes $|a|$, and a negative $a$ also reflects the graph across the midline"
+  },
+  {
+   "cause": "Multiply the input by $b$: $\\sin(b\\theta)$",
+   "effect": "a horizontal dilation: one cycle now takes $\\frac{2\\pi}{|b|}$, so the period is $\\frac{2\\pi}{|b|}$ and $b = \\frac{2\\pi}{\\text{period}}$"
+  },
+  {
+   "cause": "Add $c$ inside, after factoring out $b$: $\\sin(b(\\theta + c))$",
+   "effect": "a phase shift: the graph moves left $c$ units if $c > 0$, right if $c < 0$"
+  },
+  {
+   "cause": "Add $d$ outside: $a\\sin(b(\\theta + c)) + d$",
+   "effect": "a vertical translation: the midline becomes $y = d$"
+  }
+ ],
+ "ideas": [
+  "For $f(\\theta) = a\\sin(b(\\theta + c)) + d$ or $a\\cos(b(\\theta + c)) + d$: amplitude $|a|$, period $\\frac{2\\pi}{|b|}$, phase shift $-c$ (left by $c$), midline $y = d$.",
+  "Factor $b$ out before reading the shift: $\\sin(2\\theta + \\pi) = \\sin\\left(2\\left(\\theta + \\frac{\\pi}{2}\\right)\\right)$ moves left $\\frac{\\pi}{2}$, not $\\pi$.",
+  "Building from a graph: $d$ from the midline, $|a|$ from the amplitude, $b = \\frac{2\\pi}{\\text{period}}$, then $c$ from one landmark (a rising midline crossing for sine, a highest point for cosine).",
+  "Many formulas give the same graph: $\\cos\\theta = \\sin\\left(\\theta + \\frac{\\pi}{2}\\right)$, and $c$ can change by any whole number of periods."
+ ],
+ "misconception": {
+  "wrong": "In $f(\\theta) = \\sin(2\\theta - \\pi)$ the graph moves right $\\pi$, and the period is $2 \\cdot 2\\pi = 4\\pi$.",
+  "right": "Factor first: $\\sin(2\\theta - \\pi) = \\sin\\left(2\\left(\\theta - \\frac{\\pi}{2}\\right)\\right)$, a shift right $\\frac{\\pi}{2}$. Multiplying the input by 2 makes each cycle shorter, so the period is $\\frac{2\\pi}{2} = \\pi$."
+ },
+ "check": [
+  "pcalc-sinusoidal-transformations-1",
+  "pcalc-sinusoidal-transformations-2",
+  "pcalc-sinusoidal-transformations-3",
+  "pcalc-sinusoidal-transformations-4",
+  "pcalc-sinusoidal-transformations-10",
+  "pcalc-sinusoidal-transformations-12"
+ ],
+ "summary": "In $f(\\theta) = a\\sin(b(\\theta + c)) + d$, $|a|$ is the amplitude, $\\frac{2\\pi}{|b|}$ the period, $c$ the phase shift (left by $c$) and $y = d$ the midline; cosine works the same way. To build a formula from a graph, read $d$ and $|a|$, get $b = \\frac{2\\pi}{\\text{period}}$, then find $c$ from a landmark point. Factor out $b$ before reading a shift."
+}

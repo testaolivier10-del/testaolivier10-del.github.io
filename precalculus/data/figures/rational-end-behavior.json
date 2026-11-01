@@ -1,0 +1,12 @@
+{
+ "rational-end-behavior-ha": {
+  "file": "figures/rational-end-behavior-ha.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of r(x) = (2x² − 8)/(x² + 1). Its zeros are x = −2 and x = 2 and its y-intercept is (0, −8). For large positive and negative x the graph gets close to the dashed horizontal asymptote y = 2, the quotient of the leading terms 2x²/x²."
+ }
+}

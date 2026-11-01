@@ -1,0 +1,37 @@
+<p>Exponential data are hard to read on an ordinary graph: the early values are squashed near the axis and the later ones shoot off the top. A <b>semi-log plot</b> fixes that by putting the vertical axis on a logarithmic scale. This page shows why exponential data then become a straight line, how to read the model from the line, and what other data look like.</p>
+
+<h2>One logarithmic axis</h2>
+<p>On a semi-log plot the horizontal axis is ordinary and the vertical axis is a logarithmic scale with some base $n > 1$, usually $10$. The labels $1$, $10$, $100$, $1{,}000$ are equally spaced, so equal vertical distances mean equal <b>factors</b>, not equal differences. Plotting $y$ on that axis is the same as plotting $\log y$ on an ordinary one.</p>
+
+<h2>Why exponential data make a line</h2>
+<p>Take $y = a \cdot b^x$ and apply the properties of logarithms:</p>
+<p>$$\log y = \log a + \log(b^x) = \log a + x\log b.$$</p>
+<p>That is a linear function of $x$, with slope $\log b$ and intercept $\log a$. So exponential data lie on a straight line on a semi-log plot. No vertical shift is involved: the form must be exactly $a \cdot b^x$.</p>
+<table class="compare">
+<thead><tr><th scope="col">Data</th><th scope="col">Ordinary graph</th><th scope="col">Semi-log plot</th></tr></thead>
+<tbody>
+<tr><td>Exponential $a \cdot b^x$, $b > 1$</td><td>concave up curve</td><td>straight line, slope $\log b$</td></tr>
+<tr><td>Linear $mx + k$, $m > 0$</td><td>straight line</td><td>concave down curve</td></tr>
+<tr><td>Shifted $a \cdot b^x + k$</td><td>concave up curve</td><td>curve, not a line</td></tr>
+</tbody>
+</table>
+
+<h2>Reading the model from the line</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> App users lie on a line through $(0, 20)$ and $(8, 2{,}000)$ on a base-$10$ semi-log plot. Find $y = a \cdot b^t$.</p>
+<p>Slope in powers of $10$: $\frac{\log 2{,}000 - \log 20}{8 - 0} = \frac{3.301 - 1.301}{8} = 0.25$.</p>
+<p>So $\log b = 0.25$ and $b = 10^{0.25} \approx 1.778$: about $77.8\%$ growth per year.</p>
+<p>The intercept is $\log a = \log 20$, so $a = 20$. The model is $y = 20 \cdot 10^{t/4}$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> A table gives $\log y = 0.5, 0.8, 1.1, 1.4, 1.7$ at $t = 0, 1, 2, 3, 4$. Find $y$.</p>
+<p>$\log y$ rises $0.3$ per step, so $\log y = 0.5 + 0.3t$.</p>
+<p>Undo the logarithm: $y = 10^{0.5 + 0.3t} = 10^{0.5} \cdot (10^{0.3})^t \approx 3.16 \cdot 2.00^t$.</p>
+</div>
+<p>With a natural-log scale the same steps use $e$: the line $\ln y = 1.2 + 0.05t$ gives $y = e^{1.2} \cdot e^{0.05t}$.</p>
+
+<h2>Reading values between labels</h2>
+<p>Halfway up between $200$ and $2{,}000$ on the logarithmic axis is not $1{,}100$. It is the value whose logarithm is halfway between $\log 200$ and $\log 2{,}000$, about $2.801$: the value is $\sqrt{200 \cdot 2{,}000} = \sqrt{400{,}000} \approx 632$. On a log scale, "halfway" means the same factor up from the lower value as down from the upper one.</p>
+
+<h2>Comparing models on one plot</h2>
+<p>Several exponential models drawn on one semi-log plot are all straight lines. The steeper line has the larger growth factor, since slope $= \log b$. The higher intercept has the larger starting value. Parallel lines grow by the same factor each step.</p>

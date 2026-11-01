@@ -1026,7 +1026,7 @@
       f.parentNode.replaceChild(d, f);
       return d;
     }
-    list(opts.footer || (slim ? null : 'body > footer, body > .xshell > footer, body > .bio-foot, body > .chem-foot, body > .phys-foot, body > .calc-foot, body > .stat-foot')).forEach(function(f){
+    list(opts.footer || (slim ? null : 'body > footer, body > .xshell > footer, body > .bio-foot, body > .chem-foot, body > .phys-foot, body > .calc-foot, body > .pcalc-foot, body > .stat-foot')).forEach(function(f){
       if(!f.parentNode || root.contains(f)) return;
       var wrap = f.parentNode !== document.body && f.parentNode.children.length === 1 ? f.parentNode : f;
       aboutB.appendChild(wrap);

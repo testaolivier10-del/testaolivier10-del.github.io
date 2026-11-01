@@ -1,0 +1,71 @@
+{
+ "topic": "rates-of-change",
+ "hook": "A hiking app says you averaged 1.9 miles per hour. You did not walk at that speed every minute: you were faster on the flat start and slower on the climb. That single number is an average rate of change, and comparing such averages over short stretches is how precalculus says how fast a function changes at a moment.",
+ "prereq": [
+  {
+   "q": "What is the slope of the line through $(1, 4)$ and $(4, 8)$?",
+   "options": [
+    "$\\frac{4}{3}$",
+    "$\\frac{3}{4}$",
+    "$4$",
+    "$12$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{8 - 4}{4 - 1} = \\frac{4}{3}$.",
+   "review": "alg-lines"
+  },
+  {
+   "q": "The outputs of $f$ at $x = 0, 1, 2, 3$ are $2, 5, 10, 17$. How does the rate of change of $f$ behave?",
+   "options": [
+    "It is increasing",
+    "It is decreasing",
+    "It is constant",
+    "It is negative"
+   ],
+   "correct": 0,
+   "why": "The changes $3, 5, 7$ rise.",
+   "review": "change-in-tandem"
+  }
+ ],
+ "figure": {
+  "figure": "rates-of-change-line",
+  "caption": "The average rate of change of $f(x) = 4\\sqrt{x}$ on $[1, 4]$ is $\\frac{8 - 4}{4 - 1} = \\frac{4}{3}$, the slope of the line through $(1, 4)$ and $(4, 8)$."
+ },
+ "chain": [
+  {
+   "cause": "Pick an interval $[a, b]$ and find $f(a)$ and $f(b)$",
+   "effect": "the average rate of change is $\\frac{f(b) - f(a)}{b - a}$, in output units per input unit"
+  },
+  {
+   "cause": "Draw the line through $(a, f(a))$ and $(b, f(b))$",
+   "effect": "its slope is that average rate of change"
+  },
+  {
+   "cause": "Shrink the interval around a point $x = c$",
+   "effect": "the average rate of change estimates how fast $f$ changes at $c$"
+  },
+  {
+   "cause": "Compare such estimates at two points over equally short intervals",
+   "effect": "the larger one tells where $f$ is changing faster"
+  }
+ ],
+ "ideas": [
+  "The <b>average rate of change</b> of $f$ on $[a, b]$ is $\\frac{f(b) - f(a)}{b - a}$: the slope of the line through $(a, f(a))$ and $(b, f(b))$.",
+  "Units: output units per input unit, like miles per hour or dollars per year.",
+  "Positive: the output ends higher. Negative: it ends lower. Zero: the outputs at the ends are equal.",
+  "To compare rates at two points, use short intervals of the same length around each."
+ ],
+ "misconception": {
+  "wrong": "The interval with the biggest change in output has the biggest average rate of change.",
+  "right": "Divide by the length of the interval first. The hiker gained $4.5$ miles on $[1, 3]$ but only $2.5$ on $[0, 1]$, yet the rate on $[0, 1]$ is higher: $2.5$ against $2.25$ miles per hour."
+ },
+ "check": [
+  "pcalc-rates-of-change-1",
+  "pcalc-rates-of-change-2",
+  "pcalc-rates-of-change-3",
+  "pcalc-rates-of-change-6",
+  "pcalc-rates-of-change-7",
+  "pcalc-rates-of-change-10"
+ ],
+ "summary": "The average rate of change of $f$ on $[a, b]$ is $\\frac{f(b) - f(a)}{b - a}$, the slope of the line through $(a, f(a))$ and $(b, f(b))$, in output units per input unit. Over a short interval around a point it estimates how fast $f$ changes at that point, and comparing those estimates tells where $f$ changes faster."
+}

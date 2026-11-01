@@ -1,0 +1,22 @@
+{
+ "linear-transformations-square": {
+  "file": "figures/linear-transformations-square.svg",
+  "ext": "svg",
+  "w": 370,
+  "h": 310,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The unit square with corners (0, 0), (1, 0), (1, 1) and (0, 1), dashed in gray, and its image under the matrix with rows (1, 1) and (0, 2), shaded green: a parallelogram with corners (0, 0), (1, 0), (2, 2) and (1, 2). The image of <1, 0> is <1, 0> (blue arrow) and the image of <0, 1> is <1, 2> (vermillion arrow), the two columns of the matrix."
+ },
+ "linear-transformations-s1": {
+  "file": "figures/linear-transformations-s1.svg",
+  "ext": "svg",
+  "w": 370,
+  "h": 310,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The unit square, dashed in gray, and its image under a linear transformation, shaded green: a parallelogram with corners (0, 0), (2, 1), (1, 2) and (-1, 1). The image of <1, 0> is drawn as a blue arrow to (2, 1) and the image of <0, 1> as a vermillion arrow to (-1, 1)."
+ }
+}

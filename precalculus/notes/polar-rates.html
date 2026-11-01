@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rates of Change in Polar Functions — AP® Precalculus Notes</title>
+<meta name="description" content="A polar function r = f(θ) describes a curve by distance and direction. This topic asks how that distance changes as the direction turns.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/polar-rates.html">
+<meta property="og:title" content="Rates of Change in Polar Functions — AP® Precalculus Notes">
+<meta property="og:description" content="A polar function r = f(θ) describes a curve by distance and direction. This topic asks how that distance changes as the direction turns.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/polar-rates.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/polar-rates.html#reading",
+      "name": "Rates of Change in Polar Functions",
+      "url": "https://levlprep.com/precalculus/notes/polar-rates.html",
+      "description": "A polar function r = f(θ) describes a curve by distance and direction. This topic asks how that distance changes as the direction turns.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "rates of change in polar functions ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Trigonometric and Polar Functions",
+          "item": "https://levlprep.com/precalculus/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Rates of Change in Polar Functions: notes",
+          "item": "https://levlprep.com/precalculus/notes/polar-rates.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="polar-rates" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Trigonometric and Polar Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Rates of Change in Polar Functions: notes</span></nav>
+<p class="issue">Unit 3 <i></i> Topic 3.15</p>
+<h1 class="deck bk-title" id="r3Title">Rates of Change <span>in Polar Functions</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/polar-rates.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="polar-rates">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fpolar-rates.html&amp;title=Rates%20of%20Change%20in%20Polar%20Functions%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/polar-rates.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Exponential and Logarithmic Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Trigonometric and Polar Functions</b><small>15 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="periodic-phenomena"><a href="periodic-phenomena.html"><span class="bk-toc-n">3.1</span>Periodic Phenomena</a></li><li data-toc-t="sine-cosine-tangent"><a href="sine-cosine-tangent.html"><span class="bk-toc-n">3.2</span>Sine, Cosine, and Tangent</a></li><li data-toc-t="sine-cosine-values"><a href="sine-cosine-values.html"><span class="bk-toc-n">3.3</span>Sine and Cosine Function Values</a></li><li data-toc-t="sine-cosine-curves"><a href="sine-cosine-curves.html"><span class="bk-toc-n">3.4</span>Sine and Cosine Function Graphs</a></li><li data-toc-t="sinusoidal-functions"><a href="sinusoidal-functions.html"><span class="bk-toc-n">3.5</span>Sinusoidal Functions</a></li><li data-toc-t="sinusoidal-transformations"><a href="sinusoidal-transformations.html"><span class="bk-toc-n">3.6</span>Sinusoidal Function Transformations</a></li><li data-toc-t="sinusoidal-modeling"><a href="sinusoidal-modeling.html"><span class="bk-toc-n">3.7</span>Sinusoidal Function Context and Data Modeling</a></li><li data-toc-t="tangent-function"><a href="tangent-function.html"><span class="bk-toc-n">3.8</span>The Tangent Function</a></li><li data-toc-t="inverse-trig"><a href="inverse-trig.html"><span class="bk-toc-n">3.9</span>Inverse Trigonometric Functions</a></li><li data-toc-t="trig-equations"><a href="trig-equations.html"><span class="bk-toc-n">3.10</span>Trigonometric Equations and Inequalities</a></li><li data-toc-t="sec-csc-cot"><a href="sec-csc-cot.html"><span class="bk-toc-n">3.11</span>The Secant, Cosecant, and Cotangent Functions</a></li><li data-toc-t="trig-identities"><a href="trig-identities.html"><span class="bk-toc-n">3.12</span>Equivalent Representations of Trigonometric Functions</a></li><li data-toc-t="polar-coordinates"><a href="polar-coordinates.html"><span class="bk-toc-n">3.13</span>Trigonometry and Polar Coordinates</a></li><li data-toc-t="polar-curves"><a href="polar-curves.html"><span class="bk-toc-n">3.14</span>Polar Function Graphs</a></li><li class="current" data-toc-t="polar-rates"><a href="#main" aria-current="page"><span class="bk-toc-n">3.15</span>Rates of Change in Polar Functions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#average-rate-of-change-of-r">Average rate of change of r</a><a href="#toward-or-away-from-the-origin">Toward or away from the origin</a><a href="#farthest-and-closest-points">Farthest and closest points</a><a href="#saying-it-in-words">Saying it in words</a><a href="#common-slips">Common slips</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Functions Involving Parameters, Vectors, and Matrices</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>A <a class="gl" href="../notes/polar-curves.html" data-c="polar-function">polar function</a> <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r = f(\theta)</annotation></semantics></math> describes a curve by distance and direction. This topic asks how that distance changes as the direction turns. The tools are the same ones you used in Unit 1: <a class="gl" href="../notes/rates-of-change.html" data-c="aroc">average rates of change</a>, <a class="gl" href="../notes/linear-quadratic-rates.html" data-c="secant-line">secant lines</a>, increasing and decreasing. The new twist is the sign of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>.</p>
+
+<h2 id="average-rate-of-change-of-r">Average rate of change of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></h2>
+<p>The input is the angle and the <a class="gl" href="../notes/alg-functions.html" data-c="function">output</a> is <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>, so the average <a class="gl" href="../notes/change-in-tandem.html" data-c="rate-of-change">rate of change</a> of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> on <math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math> is</p>
+<p><math class="pcalc-m" display="block"><semantics><mrow><mfrac><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo>−</mo><mi>r</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{r(b) - r(a)}{b - a}</annotation></semantics></math></p>
+<p>measured in units of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> per <a class="gl" href="../notes/sine-cosine-tangent.html" data-c="radian">radian</a>. It is the <a class="gl" href="../notes/alg-lines.html" data-c="slope">slope</a> of the secant line through <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>r</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, r(a))</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>b</mi><mo>,</mo><mi>r</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(b, r(b))</annotation></semantics></math> on the graph of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> against <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> For <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>2</mn><mo>+</mo><mn>4</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = 2 + 4\cos\theta</annotation></semantics></math>, find the average rate of change of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> on <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mrow><mn>0</mn><mo>,</mo><mfrac><mi>π</mi><mn>3</mn></mfrac></mrow><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[0, \frac{\pi}{3}\right]</annotation></semantics></math> and say what it means.</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">r(0) = 2 + 4 = 6</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>r</mi><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mi>π</mi><mn>3</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mn>2</mn><mo>+</mo><mn>4</mn><mo>⋅</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">r\left(\frac{\pi}{3}\right) = 2 + 4\cdot\frac{1}{2} = 4</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>4</mn><mo>−</mo><mn>6</mn></mrow><mrow><mi>π</mi><mo>/</mo><mn>3</mn><mo>−</mo><mn>0</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{4 - 6}{\pi/3 - 0}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>6</mn><mi>π</mi></mfrac></mrow><annotation encoding="application/x-tex">= -\frac{6}{\pi}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">≈</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1.91</mn></mrow><annotation encoding="application/x-tex">\approx -1.91</annotation></semantics></math> units per radian.</p>
+<p>Meaning: as the angle turns from <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> to <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{3}</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> falls by about <math class="pcalc-m"><semantics><mrow><mn>1.91</mn></mrow><annotation encoding="application/x-tex">1.91</annotation></semantics></math> units per radian on average. Because <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> stays positive on this interval, the curve moves toward the origin.</p>
+</div>
+<p>As with any function, an average rate gives estimates. Between two known values, the point on the secant line estimates <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>: halfway in angle, halfway in <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>. Comparing average rates on equal intervals shows whether the rate of change of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> is increasing or decreasing.</p>
+
+<h2 id="toward-or-away-from-the-origin">Toward or away from the origin</h2>
+<p>The distance from the origin to the point <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(r, \theta)</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>r</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|r|</annotation></semantics></math>, not <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>. So "is <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> increasing" and "is the curve moving away from the origin" are different questions. Put the sign of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> and its direction of change together:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: r is, and r is, so |r| is, the curve is moving"><table class="compare">
+<thead><tr><th scope="col"><math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> is</th><th scope="col">and <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> is</th><th scope="col">so <math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>r</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|r|</annotation></semantics></math> is</th><th scope="col">the curve is moving</th></tr></thead>
+<tbody>
+<tr><td>positive</td><td>increasing</td><td>increasing</td><td>away from the origin</td></tr>
+<tr><td>positive</td><td>decreasing</td><td>decreasing</td><td>toward the origin</td></tr>
+<tr><td>negative</td><td>decreasing</td><td>increasing</td><td>away from the origin</td></tr>
+<tr><td>negative</td><td>increasing</td><td>decreasing</td><td>toward the origin</td></tr>
+</tbody>
+</table></div>
+<p>A quick test: if <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> moves away from <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> on the graph of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> against <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math>, the curve moves away from the origin. If <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> moves toward <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>, the curve comes back.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> For <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>1</mn><mo>+</mo><mn>2</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = 1 + 2\sin\theta</annotation></semantics></math> (<a class="figref" href="#fig-polar-rates">Figure 1</a>), is the distance from the origin increasing or decreasing on <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><mrow><mn>7</mn><mi>π</mi></mrow><mn>6</mn></mfrac><mo>,</mo><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\frac{7\pi}{6}, \frac{3\pi}{2}\right)</annotation></semantics></math>?</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>r</mi><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mrow><mn>7</mn><mi>π</mi></mrow><mn>6</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">r\left(\frac{7\pi}{6}\right)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>1</mn><mo>+</mo><mn>2</mn><mrow><mo fence="true" stretchy="true">(</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">= 1 + 2\left(-\frac{1}{2}\right)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>r</mi><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>2</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mn>1</mn><mo>−</mo><mn>2</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r\left(\frac{3\pi}{2}\right) = 1 - 2 = -1</annotation></semantics></math>. On this interval <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> is negative and decreasing, moving away from <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>. So the distance from the origin is increasing: the inner loop grows outward until <math class="pcalc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\theta = \frac{3\pi}{2}</annotation></semantics></math>.</p>
+</div>
+<figure id="fig-polar-rates"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="polar-rates-curve"><img src="../figures/polar-rates-curve.svg" alt="The polar graph of r = 1 + 2 sin theta: a limacon whose large outer loop reaches highest straight above the origin and crosses the horizontal axis 1 unit on each side of the origin, with a small inner loop above the origin." width="520" height="520" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>1</mn><mo>+</mo><mn>2</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = 1 + 2\sin\theta</annotation></semantics></math>, with an inner loop drawn while <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r &lt; 0</annotation></semantics></math>. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="farthest-and-closest-points">Farthest and closest points</h2>
+<p>The curve is farthest from the origin where <math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>r</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|r|</annotation></semantics></math> is largest, and touches the origin where <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r = 0</annotation></semantics></math>. Read them from the graph of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> against <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math>: the highest peak and the lowest valley both count, because a valley at <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">r = -4</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math> units out.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> For <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>1</mn><mo>−</mo><mn>3</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = 1 - 3\cos\theta</annotation></semantics></math>, find the farthest point from the origin.</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> <a class="gl" href="../notes/alg-functions.html" data-c="range">ranges</a> from <math class="pcalc-m"><semantics><mrow><mn>1</mn><mo>−</mo><mn>3</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1 - 3 = -2</annotation></semantics></math> (at <math class="pcalc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\theta = 0</annotation></semantics></math>) to <math class="pcalc-m"><semantics><mrow><mn>1</mn><mo>+</mo><mn>3</mn><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">1 + 3 = 4</annotation></semantics></math> (at <math class="pcalc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">\theta = \pi</annotation></semantics></math>). The largest <math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>r</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|r|</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math>, at <math class="pcalc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">\theta = \pi</annotation></semantics></math>: the point <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>4</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>π</mi><mo>,</mo><mn>4</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>π</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(4\cos\pi, 4\sin\pi)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= (-4, 0)</annotation></semantics></math>. The value <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">r = -2</annotation></semantics></math> at <math class="pcalc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\theta = 0</annotation></semantics></math> is only <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math> units away.</p>
+</div>
+
+<h2 id="saying-it-in-words">Saying it in words</h2>
+<p>Name the function, the interval and both facts: "On <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><mrow><mn>7</mn><mi>π</mi></mrow><mn>6</mn></mfrac><mo>,</mo><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\frac{7\pi}{6}, \frac{3\pi}{2}\right)</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> is negative and decreasing, so the distance between the point on the curve and the origin is increasing." For rates on equal intervals: "The average rates of change of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> decrease, so the rate of change of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> is decreasing on <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mrow><mn>0</mn><mo>,</mo><mfrac><mi>π</mi><mn>3</mn></mfrac></mrow><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[0, \frac{\pi}{3}\right]</annotation></semantics></math>."</p>
+
+<h2 id="common-slips">Common slips</h2>
+<ul>
+<li>Saying the curve moves toward the origin just because <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> decreases, without checking the sign of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>.</li>
+<li>Dividing by the wrong thing: the rate is change in <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> over change in <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.</li>
+<li>Reading only the highest peak of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> for the farthest point and missing a deeper valley.</li>
+</ul>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:polar-rates">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="polar-curves.html"><span>&larr; Previous</span><b>Polar Function Graphs</b></a><a class="tb-chapter-link next" href="parametric-functions.html"><span>Next &rarr;</span><b>Parametric Functions</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/polar-rates.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:polar-rates">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

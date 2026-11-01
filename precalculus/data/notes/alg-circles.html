@@ -1,0 +1,37 @@
+<p>The next topic puts angles on a circle and reads sine and cosine as coordinates. Three tools make that easy: two right triangles whose sides you know exactly, the length of an arc, and the equation of a circle.</p>
+
+<h2>The two special right triangles</h2>
+<p>Most right triangles have messy side ratios. Two have ratios you can write exactly, and they appear again and again.</p>
+<p><b>45-45-90.</b> Two equal angles mean two equal legs. With legs $1$, the Pythagorean theorem gives a hypotenuse of $\sqrt{1 + 1} = \sqrt{2}$. Any 45-45-90 triangle is a scaled copy: legs $a$, hypotenuse $a\sqrt{2}$.</p>
+<p><b>30-60-90.</b> Cut an equilateral triangle with sides $2$ down the middle. Each half has a hypotenuse $2$, a short leg $1$ (half the base) and a long leg $\sqrt{2^2 - 1^2} = \sqrt{3}$. The short leg is across from $30^\circ$, the long leg across from $60^\circ$.</p>
+<figure id="fig-special" data-fig="alg-circles-special"><figcaption>The 45-45-90 and 30-60-90 triangles.</figcaption></figure>
+<p>Reading SOH CAH TOA off these triangles gives exact values:</p>
+<table class="compare">
+<thead><tr><th scope="col">Angle</th><th scope="col">$\sin$</th><th scope="col">$\cos$</th><th scope="col">$\tan$</th></tr></thead>
+<tbody>
+<tr><td>$30^\circ$</td><td>$\frac{1}{2}$</td><td>$\frac{\sqrt{3}}{2}$</td><td>$\frac{1}{\sqrt{3}} = \frac{\sqrt{3}}{3}$</td></tr>
+<tr><td>$45^\circ$</td><td>$\frac{\sqrt{2}}{2}$</td><td>$\frac{\sqrt{2}}{2}$</td><td>$1$</td></tr>
+<tr><td>$60^\circ$</td><td>$\frac{\sqrt{3}}{2}$</td><td>$\frac{1}{2}$</td><td>$\sqrt{3}$</td></tr>
+</tbody>
+</table>
+<p>($\frac{1}{\sqrt{2}}$ and $\frac{\sqrt{2}}{2}$ are the same number: multiply top and bottom by $\sqrt{2}$.)</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A 30-60-90 triangle has hypotenuse $10$. Find both legs.</p>
+<p>Scale $1 : \sqrt{3} : 2$ so the hypotenuse is $10$: multiply by $5$. The short leg is $5$ and the long leg is $5\sqrt{3}$.</p>
+</div>
+
+<h2>Arc length</h2>
+<p>A <b>central angle</b> has its vertex at the center of a circle. An angle of $\theta$ degrees is the fraction $\frac{\theta}{360}$ of a full turn, so it cuts off that fraction of the circumference $2\pi r$:</p>
+<p style="text-align:center">$s = \frac{\theta}{360} \cdot 2\pi r$.</p>
+<figure id="fig-arc" data-fig="alg-circles-arc"><figcaption>Left: a $60^\circ$ angle cuts off one sixth of the circle. Right: a circle on a grid and its equation.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> A circle has radius 9 cm. How long is the arc cut off by a central angle of $80^\circ$?</p>
+<p>$s = \frac{80}{360} \cdot 2\pi(9) = \frac{2}{9} \cdot 18\pi = 4\pi$ cm, about 12.6 cm.</p>
+</div>
+<p>Notice what happens when the arc is exactly as long as the radius: $\frac{\theta}{360} \cdot 2\pi r = r$ gives $\theta = \frac{360}{2\pi} = \frac{180}{\pi} \approx 57.3^\circ$, whatever the size of the circle. That angle is about to get its own name.</p>
+
+<h2>The equation of a circle</h2>
+<p>A circle is every point at distance $r$ from its center $(h, k)$. The horizontal and vertical distances from the center, $x - h$ and $y - k$, are the legs of a right triangle with hypotenuse $r$. The Pythagorean theorem gives</p>
+<p style="text-align:center">$(x - h)^2 + (y - k)^2 = r^2$.</p>
+<p>Watch the signs: a center at $(2, -1)$ gives $(x - 2)^2 + (y + 1)^2 = r^2$. And the right side is the radius squared: radius $3$ means $= 9$.</p>
+<p>The simplest case is the circle of radius $1$ centered at the origin, $x^2 + y^2 = 1$. The point on it reached by turning $30^\circ$ up from the positive $x$-axis is the top corner of a 30-60-90 triangle with hypotenuse $1$: it is $(\cos 30^\circ, \sin 30^\circ) = \left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right)$. Check: $\frac{3}{4} + \frac{1}{4} = 1$. That picture is exactly where the next topic starts.</p>

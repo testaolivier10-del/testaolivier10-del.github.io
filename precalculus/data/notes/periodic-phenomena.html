@@ -1,0 +1,50 @@
+<p>Many things in the world come back to where they started and then do it all again: the depth of water at a dock, the brightness of a lighthouse, the pressure in an artery, the hours of daylight across the year. Functions that model them are <b>periodic</b>. This page shows what that word means, how to find the period, and how one cycle tells you everything else about the function.</p>
+
+<h2>What periodic means</h2>
+<p>A function $f$ is <b>periodic</b> if its outputs repeat at regular intervals of input. In symbols, there is a positive number $P$ with</p>
+<p style="text-align:center">$f(x + P) = f(x)$ for every input $x$.</p>
+<p>The smallest positive number that works is the <b>period</b> of $f$. If $P$ works, so do $2P$, $3P$ and every other whole multiple, which is why the definition asks for the smallest one.</p>
+<p>The water tank in Figure 1 fills and drains on a schedule. In each cycle the depth rises from 1 foot to 5 feet in 2 minutes, holds for 1 minute, then drains back to 1 foot over 3 minutes. Then the cycle starts again, so the depth is periodic with period 6 minutes.</p>
+<figure id="fig-cycle" data-fig="periodic-phenomena-cycle"><figcaption>One cycle (green) and two copies of it. The period is the length of one cycle, 6 minutes.</figcaption></figure>
+
+<h2>Finding the period</h2>
+<p>Look for the length of the smallest piece of graph (or table) that repeats exactly. A safe way is to pick a distinctive point, such as a highest point, and measure to the next point that looks exactly the same.</p>
+<p>Be careful with two inputs that share an output. In Figure 1 the depth is 3 feet at $t = 1$ (on the way up) and again at $t = 4.5$ (on the way down). Those inputs are $3.5$ apart, but $3.5$ is not the period: just after $t = 1$ the depth is rising, and just after $t = 4.5$ it is falling. The pattern only matches again 6 minutes later.</p>
+
+<h2>Building the graph from one cycle</h2>
+<p>A full cycle is any interval of input one period long. Since $f(x + P) = f(x)$, the graph on $[P, 2P]$ is the graph on $[0, P]$ moved $P$ units to the right. The same works to the left: $f(x - P) = f(x)$ too.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A function $f$ has period $4$. On one cycle, $f$ rises in a straight line from $(0, 2)$ to $(1, 5)$, falls in a straight line to $(3, -1)$, then rises to $(4, 2)$. Sketch $f$ on $[0, 12]$ and find where it is decreasing.</p>
+<p>Copy the cycle to $[4, 8]$ and $[8, 12]$ by adding $4$ and then $8$ to every input. The highest points move from $x = 1$ to $x = 5$ and $x = 9$; the lowest from $x = 3$ to $x = 7$ and $x = 11$.</p>
+<p>In the first cycle $f$ decreases on $(1, 3)$. Add whole periods: $f$ also decreases on $(5, 7)$ and $(9, 11)$.</p>
+</div>
+
+<h2>Outputs far from the known cycle</h2>
+<p>To find $f$ at an input far away, subtract (or add) whole periods until the input lands in the cycle you know. Each step does not change the output.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> For the tank, find the depth at $t = 47$ minutes and at $t = -2$ minutes.</p>
+<p>$47 = 7 \cdot 6 + 5$, so subtract seven periods: depth at $47$ = depth at $47 - 42 = 5$. On the first cycle the depth at $t = 5$ is on the draining piece, which falls $4$ feet in $3$ minutes from $5$ feet at $t = 3$: depth $= 5 - \frac{4}{3}(2) = \frac{7}{3}$ feet.</p>
+<p>For $t = -2$, add one period: depth at $-2$ = depth at $4$ $= 5 - \frac{4}{3}(1) = \frac{11}{3}$ feet. Subtracting from a negative input the other way would move you further from the cycle.</p>
+</div>
+
+<h2>How a periodic function changes over a cycle</h2>
+<p>Everything you can say about one cycle repeats every period: where $f$ increases and decreases, where the graph is concave up or concave down, where the highest and lowest outputs occur. The rates of change repeat too. The average rate of change of $f$ on $[a, b]$ equals its average rate of change on $[a + P, b + P]$.</p>
+<p>One rate is always the same. Over any interval that is exactly one period long, the output returns to its starting value, so</p>
+<p style="text-align:center">average rate of change on $[a, a + P]$ $= \frac{f(a + P) - f(a)}{P} = \frac{0}{P} = 0$.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A building's power use $P(t)$, in kilowatts, repeats every 24 hours. A table gives $P(4) = 26$, $P(8) = 52$ and $P(12) = 64$. Describe how $P$ changes on $[4, 12]$.</p>
+<p>The average rate of change of $P$ on $[4, 8]$ is $\frac{52 - 26}{8 - 4} = 6.5$ kilowatts per hour, the slope of the secant line through $(4, 26)$ and $(8, 52)$. On $[8, 12]$ it is $\frac{64 - 52}{4} = 3$ kilowatts per hour.</p>
+<p>Both rates are positive, so $P$ is increasing. Over equal intervals the rates get smaller, so the rate of change of $P$ is decreasing and the graph is concave down there. The same is true on $[28, 36]$, one day later.</p>
+</div>
+
+<h2>A checklist for periodic questions</h2>
+<table class="compare">
+<thead><tr><th scope="col">Question</th><th scope="col">What to do</th></tr></thead>
+<tbody>
+<tr><td>What is the period?</td><td>Measure the smallest input interval after which the whole pattern repeats.</td></tr>
+<tr><td>What is $f$ at a far input?</td><td>Add or subtract whole periods to land in the known cycle.</td></tr>
+<tr><td>Where is $f$ increasing?</td><td>Find the intervals in one cycle, then add multiples of the period.</td></tr>
+<tr><td>Average rate over a full period?</td><td>Always $0$: the output ends where it began.</td></tr>
+</tbody>
+</table>
+<p>The coming topics build the most important periodic functions of all from a circle. Every idea on this page, the period, one cycle, and how the function changes within it, carries straight over.</p>

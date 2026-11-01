@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linear Transformations and Matrices — AP® Precalculus Notes</title>
+<meta name="description" content="Multiply every vector by the same 2×2 matrix and the plane is rotated, reflected, stretched or slanted.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/linear-transformations.html">
+<meta property="og:title" content="Linear Transformations and Matrices — AP® Precalculus Notes">
+<meta property="og:description" content="Multiply every vector by the same 2×2 matrix and the plane is rotated, reflected, stretched or slanted.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/linear-transformations.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/linear-transformations.html#reading",
+      "name": "Linear Transformations and Matrices",
+      "url": "https://levlprep.com/precalculus/notes/linear-transformations.html",
+      "description": "Multiply every vector by the same 2×2 matrix and the plane is rotated, reflected, stretched or slanted.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "linear transformations and matrices ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Functions Involving Parameters, Vectors, and Matrices",
+          "item": "https://levlprep.com/precalculus/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Linear Transformations and Matrices: notes",
+          "item": "https://levlprep.com/precalculus/notes/linear-transformations.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="linear-transformations" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Functions Involving Parameters, Vectors, and Matrices</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Linear Transformations and Matrices: notes</span></nav>
+<p class="issue">Unit 4 <i></i> Topic 4.12</p>
+<h1 class="deck bk-title" id="r3Title">Linear Transformations <span>and Matrices</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/linear-transformations.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">2 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="linear-transformations">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Flinear-transformations.html&amp;title=Linear%20Transformations%20and%20Matrices%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/linear-transformations.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Trigonometric and Polar Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Functions Involving Parameters, Vectors, and Matrices</b><small>14 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 14 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="parametric-functions"><a href="parametric-functions.html"><span class="bk-toc-n">4.1</span>Parametric Functions</a></li><li data-toc-t="parametric-motion"><a href="parametric-motion.html"><span class="bk-toc-n">4.2</span>Parametric Functions Modeling Planar Motion</a></li><li data-toc-t="parametric-rates"><a href="parametric-rates.html"><span class="bk-toc-n">4.3</span>Parametric Functions and Rates of Change</a></li><li data-toc-t="parametric-circles-lines"><a href="parametric-circles-lines.html"><span class="bk-toc-n">4.4</span>Parametrically Defined Circles and Lines</a></li><li data-toc-t="implicit-functions"><a href="implicit-functions.html"><span class="bk-toc-n">4.5</span>Implicitly Defined Functions</a></li><li data-toc-t="conic-sections"><a href="conic-sections.html"><span class="bk-toc-n">4.6</span>Conic Sections</a></li><li data-toc-t="parametrizing-implicit"><a href="parametrizing-implicit.html"><span class="bk-toc-n">4.7</span>Parametrization of Implicitly Defined Functions</a></li><li data-toc-t="vectors"><a href="vectors.html"><span class="bk-toc-n">4.8</span>Vectors</a></li><li data-toc-t="vector-valued-functions"><a href="vector-valued-functions.html"><span class="bk-toc-n">4.9</span>Vector-Valued Functions</a></li><li data-toc-t="matrices"><a href="matrices.html"><span class="bk-toc-n">4.10</span>Matrices</a></li><li data-toc-t="inverse-determinant"><a href="inverse-determinant.html"><span class="bk-toc-n">4.11</span>The Inverse and Determinant of a Matrix</a></li><li class="current" data-toc-t="linear-transformations"><a href="#main" aria-current="page"><span class="bk-toc-n">4.12</span>Linear Transformations and Matrices</a><div class="bk-toc-onpage"><p>On this page</p><a href="#linear-transformations-and-their-matrices">Linear transformations and their matrices</a><a href="#reading-the-matrix-from-a-picture">Reading the matrix from a picture</a><a href="#what-stays-the-same">What stays the same</a><a href="#a-catalog-of-moves">A catalog of moves</a><a href="#areas-and-orientation">Areas and orientation</a></div></li><li data-toc-t="matrices-as-functions"><a href="matrices-as-functions.html"><span class="bk-toc-n">4.13</span>Matrices as Functions</a></li><li data-toc-t="matrix-modeling"><a href="matrix-modeling.html"><span class="bk-toc-n">4.14</span>Matrices Modeling Contexts</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-algebra.html"><span class="bk-toc-n">S</span>Algebra you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+<p class="bk-lede"><span class="pcalc-beyond pcalc-nav-ref"><b>Beyond the exam.</b> The AP® Precalculus exam does not test this unit. Many classes teach it, and it prepares you for calculus.</span></p>
+    <article class="pcalc-prose bk-prose">
+<p>A <a class="gl" href="../notes/matrices.html" data-c="matrix">matrix</a> can do more than store numbers: it can move the whole plane. Multiply every <a class="gl" href="../notes/vectors.html" data-c="vector">vector</a> by the same <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2 \times 2</annotation></semantics></math> matrix and the plane is rotated, reflected, stretched or slanted. Moves of this kind are called <span class="gl" tabindex="0" data-c="linear-transformation">linear transformations</span>, and the matrix is the recipe.</p>
+
+<h2 id="linear-transformations-and-their-matrices">Linear transformations and their matrices</h2>
+<p>A <b>linear transformation</b> of the plane sends each vector to a new one by a rule of the form</p>
+<math class="pcalc-m" display="block"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>,</mo><mi>c</mi><mi>x</mi><mo>+</mo><mi>d</mi><mi>y</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo>.</mo></mrow><annotation encoding="application/x-tex">L(\left\langle x, y \right\rangle) = \left\langle ax + by, cx + dy \right\rangle.</annotation></semantics></math>
+<p>Write the <a class="gl" href="../notes/alg-functions.html" data-c="function">input</a> as a column and this is matrix multiplication: <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mi>a</mi></mtd><mtd><mi>b</mi></mtd></mtr><mtr><mtd><mi>c</mi></mtd><mtd><mi>d</mi></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mi>x</mi></mtd></mtr><mtr><mtd><mi>y</mi></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} a &amp; b \\ c &amp; d \end{matrix} \right]\left[ \begin{matrix} x \\ y \end{matrix} \right]</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>c</mi><mi>x</mi><mo>+</mo><mi>d</mi><mi>y</mi></mrow></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} ax + by \\ cx + dy \end{matrix} \right]</annotation></semantics></math>. For example, <math class="pcalc-m"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L(\left\langle x, y \right\rangle)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>x</mi><mo>+</mo><mn>2</mn><mi>y</mi><mo>,</mo><mn>3</mn><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">= \left\langle x + 2y, 3x - y \right\rangle</annotation></semantics></math> has the matrix <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>2</mn></mtd></mtr><mtr><mtd><mn>3</mn></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} 1 &amp; 2 \\ 3 &amp; -1 \end{matrix} \right]</annotation></semantics></math>, and <math class="pcalc-m"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>1</mn><mo>,</mo><mn>1</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>3</mn><mo>,</mo><mn>2</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">L(\left\langle 1, 1 \right\rangle) = \left\langle 3, 2 \right\rangle</annotation></semantics></math>.</p>
+
+<h2 id="reading-the-matrix-from-a-picture">Reading the matrix from a picture</h2>
+<p>Put in <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 1, 0 \right\rangle</annotation></semantics></math>: the output is <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>a</mi><mo>,</mo><mi>c</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle a, c \right\rangle</annotation></semantics></math>, the first column. Put in <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 0, 1 \right\rangle</annotation></semantics></math>: the output is <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>b</mi><mo>,</mo><mi>d</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle b, d \right\rangle</annotation></semantics></math>, the second column. So the matrix is "where the two unit vectors go, written as columns".</p>
+<figure id="fig-square"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="linear-transformations-square"><img src="../figures/linear-transformations-square.svg" alt="The unit square with corners (0, 0), (1, 0), (1, 1) and (0, 1), dashed in gray, and its image under the matrix with rows (1, 1) and (0, 2), shaded green: a parallelogram with corners (0, 0), (1, 0), (2, 2) and (1, 2). The image of &lt;1, 0&gt; is &lt;1, 0&gt; (blue arrow) and the image of &lt;0, 1&gt; is &lt;1, 2&gt; (vermillion arrow), the two columns of the matrix." width="370" height="310" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The unit square and its image under <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>2</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} 1 &amp; 1 \\ 0 &amp; 2 \end{matrix} \right]</annotation></semantics></math>. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> A transformation sends <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 1, 0 \right\rangle</annotation></semantics></math> to <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>2</mn><mo>,</mo><mn>1</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 2, 1 \right\rangle</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 0, 1 \right\rangle</annotation></semantics></math> to <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>,</mo><mn>1</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle -1, 1 \right\rangle</annotation></semantics></math>. Find its matrix and the image of <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>3</mn><mo>,</mo><mn>2</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 3, 2 \right\rangle</annotation></semantics></math>.</p>
+<p>Columns: <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>2</mn></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} 2 &amp; -1 \\ 1 &amp; 1 \end{matrix} \right]</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>2</mn></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>3</mn></mtd></mtr><mtr><mtd><mn>2</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} 2 &amp; -1 \\ 1 &amp; 1 \end{matrix} \right]\left[ \begin{matrix} 3 \\ 2 \end{matrix} \right]</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mrow><mn>2</mn><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} 2(3) + (-1)(2) \\ 1(3) + 1(2) \end{matrix} \right]</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>4</mn></mtd></mtr><mtr><mtd><mn>5</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} 4 \\ 5 \end{matrix} \right]</annotation></semantics></math>. Or think of it as <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> copies of <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>2</mn><mo>,</mo><mn>1</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 2, 1 \right\rangle</annotation></semantics></math> plus <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math> copies of <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>,</mo><mn>1</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle -1, 1 \right\rangle</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="what-stays-the-same">What stays the same</h2>
+<p>Because every vector is moved by the same matrix, the origin always goes to the origin (<math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mi>a</mi></mtd><mtd><mi>b</mi></mtd></mtr><mtr><mtd><mi>c</mi></mtd><mtd><mi>d</mi></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} a &amp; b \\ c &amp; d \end{matrix} \right]\left[ \begin{matrix} 0 \\ 0 \end{matrix} \right]</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} 0 \\ 0 \end{matrix} \right]</annotation></semantics></math>), lines go to lines, and parallel lines stay parallel. A rule that moves the origin, such as <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow><mo>→</mo><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>x</mi><mo>+</mo><mn>1</mn><mo>,</mo><mi>y</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle x, y \right\rangle \to \left\langle x + 1, y \right\rangle</annotation></semantics></math>, is not linear.</p>
+
+<h2 id="a-catalog-of-moves">A catalog of moves</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Move, Matrix, Determinant"><table class="compare">
+<thead><tr><th scope="col">Move</th><th scope="col">Matrix</th><th scope="col">Determinant</th></tr></thead>
+<tbody>
+<tr><td>rotation by <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> counterclockwise</td><td><math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow></mtd><mtd><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} \cos\theta &amp; -\sin\theta \\ \sin\theta &amp; \cos\theta \end{matrix} \right]</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></td></tr>
+<tr><td>reflection across the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis</td><td><math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} 1 &amp; 0 \\ 0 &amp; -1 \end{matrix} \right]</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></td></tr>
+<tr><td>reflection across the line <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = x</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} 0 &amp; 1 \\ 1 &amp; 0 \end{matrix} \right]</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></td></tr>
+<tr><td>dilation by <math class="pcalc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mi>k</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mi>k</mi></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} k &amp; 0 \\ 0 &amp; k \end{matrix} \right]</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><msup><mi>k</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">k^2</annotation></semantics></math></td></tr>
+<tr><td>horizontal shear</td><td><math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mi>k</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} 1 &amp; k \\ 0 &amp; 1 \end{matrix} \right]</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>The rotation matrix comes from the <a class="gl" href="../notes/sine-cosine-tangent.html" data-c="unit-circle">unit circle</a>: <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 1, 0 \right\rangle</annotation></semantics></math> turns to <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>,</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle \cos\theta, \sin\theta \right\rangle</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 0, 1 \right\rangle</annotation></semantics></math> turns to <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>,</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle -\sin\theta, \cos\theta \right\rangle</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Rotate <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">⟨</mo><mrow><mn>2</mn><mo>,</mo><mn>0</mn></mrow><mo fence="true" stretchy="true">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle 2, 0 \right\rangle</annotation></semantics></math> by <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{6}</annotation></semantics></math> counterclockwise.</p>
+<p><math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></mtd></mtr><mtr><mtd><mfrac><mn>1</mn><mn>2</mn></mfrac></mtd><mtd><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>2</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} \frac{\sqrt{3}}{2} &amp; -\frac{1}{2} \\ \frac{1}{2} &amp; \frac{\sqrt{3}}{2} \end{matrix} \right]\left[ \begin{matrix} 2 \\ 0 \end{matrix} \right]</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><msqrt><mn>3</mn></msqrt></mtd></mtr><mtr><mtd><mn>1</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">= \left[ \begin{matrix} \sqrt{3} \\ 1 \end{matrix} \right]</annotation></semantics></math>, a vector of length <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math> at angle <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{6}</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="areas-and-orientation">Areas and orientation</h2>
+<p>The unit square goes to the parallelogram made by the two columns, whose area is <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">|</mo><mi>det</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo fence="true" stretchy="true">|</mo></mrow></mrow><annotation encoding="application/x-tex">\left| \det \right|</annotation></semantics></math>. Every other region is scaled by the same factor, so a triangle of area <math class="pcalc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math> under a matrix with <a class="gl" href="../notes/inverse-determinant.html" data-c="determinant">determinant</a> <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> becomes a triangle of area <math class="pcalc-m"><semantics><mrow><mn>15</mn></mrow><annotation encoding="application/x-tex">15</annotation></semantics></math>. A negative determinant also flips the plane over, like a reflection: a counterclockwise trip around a shape becomes a clockwise one.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:linear-transformations">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="inverse-determinant.html"><span>&larr; Previous</span><b>The Inverse and Determinant of a Matrix</b></a><a class="tb-chapter-link next" href="matrices-as-functions.html"><span>Next &rarr;</span><b>Matrices as Functions</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/linear-transformations.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:linear-transformations">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

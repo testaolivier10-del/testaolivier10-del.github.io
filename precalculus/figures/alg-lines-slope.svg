@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Slope as rise over run</title><desc id="d">The line through (1, 2) and (4, 8). A dashed horizontal run of 3 goes from (1, 2) to (4, 2) and a dashed vertical rise of 6 goes up to (4, 8), so the slope is 6/3 = 2.</desc>
+<rect width="640" height="420" fill="#FFFFFF"/>
+<clipPath id="c"><rect x="56" y="18" width="564" height="352"/></clipPath>
+<line x1="56" y1="18" x2="56" y2="370" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="136.57" y1="18" x2="136.57" y2="370" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="217.14" y1="18" x2="217.14" y2="370" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="297.71" y1="18" x2="297.71" y2="370" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="378.29" y1="18" x2="378.29" y2="370" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="458.86" y1="18" x2="458.86" y2="370" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="539.43" y1="18" x2="539.43" y2="370" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="620" y1="18" x2="620" y2="370" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="370" x2="620" y2="370" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="338" x2="620" y2="338" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="306" x2="620" y2="306" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="274" x2="620" y2="274" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="242" x2="620" y2="242" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="210" x2="620" y2="210" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="178" x2="620" y2="178" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="146" x2="620" y2="146" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="114" x2="620" y2="114" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="82" x2="620" y2="82" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="50" x2="620" y2="50" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="18" x2="620" y2="18" stroke="#E4E8E6" stroke-width="1"/>
+<line x1="56" y1="338" x2="620" y2="338" stroke="#1F2A28" stroke-width="1.4"/>
+<line x1="136.57" y1="18" x2="136.57" y2="370" stroke="#1F2A28" stroke-width="1.4"/>
+<text x="56" y="355" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">−1</text>
+<text x="217.14" y="355" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">1</text>
+<text x="297.71" y="355" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">2</text>
+<text x="378.29" y="355" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">3</text>
+<text x="458.86" y="355" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">4</text>
+<text x="539.43" y="355" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">5</text>
+<text x="620" y="355" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">6</text>
+<text x="130.57" y="374.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">−1</text>
+<text x="130.57" y="310.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">1</text>
+<text x="130.57" y="278.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">2</text>
+<text x="130.57" y="246.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">3</text>
+<text x="130.57" y="214.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">4</text>
+<text x="130.57" y="182.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">5</text>
+<text x="130.57" y="150.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">6</text>
+<text x="130.57" y="118.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">7</text>
+<text x="130.57" y="86.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">8</text>
+<text x="130.57" y="54.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">9</text>
+<text x="130.57" y="22.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">10</text>
+<text x="616" y="330" font-size="15" fill="#1F2A28" text-anchor="end" font-style="italic">x</text>
+<text x="144.57" y="32" font-size="15" fill="#1F2A28" font-style="italic">y</text>
+<g clip-path="url(#c)">
+<line x1="56" y1="402" x2="620" y2="-46" stroke="#11592F" stroke-width="2"/>
+<line x1="217.14" y1="274" x2="458.86" y2="274" stroke="#0072B2" stroke-width="2" stroke-dasharray="6 4"/>
+<line x1="458.86" y1="274" x2="458.86" y2="82" stroke="#0072B2" stroke-width="2" stroke-dasharray="6 4"/>
+</g>
+<circle cx="217.14" cy="274" r="5" fill="#1F2A28" stroke="#1F2A28" stroke-width="2.2"/>
+<circle cx="458.86" cy="82" r="5" fill="#1F2A28" stroke="#1F2A28" stroke-width="2.2"/>
+<text x="338" y="294" font-size="14" fill="#0072B2" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" paint-order="stroke">run = 3</text>
+<text x="468.86" y="178" font-size="14" fill="#0072B2" text-anchor="start" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" paint-order="stroke">rise = 6</text>
+<text x="207.14" y="268" font-size="14" fill="#1F2A28" text-anchor="end" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" paint-order="stroke">(1, 2)</text>
+<text x="448.86" y="78" font-size="14" fill="#1F2A28" text-anchor="end" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" paint-order="stroke">(4, 8)</text>
+<text x="152.69" y="62.8" font-size="14" fill="#11592F" text-anchor="start" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" paint-order="stroke" font-weight="bold">slope = 6/3 = 2</text>
+</svg>

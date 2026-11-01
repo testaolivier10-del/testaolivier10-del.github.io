@@ -1,0 +1,43 @@
+<p>Choosing a model type is half the job. The other half is finding its constants, then using the model honestly: predicting with units, finding rates of change, and saying where the model stops making sense. This is the work of the exam's modeling question (Question 2), and it is where careful habits earn the most points.</p>
+
+<h2>Three ways to build a model</h2>
+<table class="compare">
+<thead><tr><th scope="col">You know</th><th scope="col">Build the model by</th><th scope="col">Example</th></tr></thead>
+<tbody>
+<tr><td>As many data points as unknown constants</td><td>Substituting each point and solving the system</td><td>Three points give $a$, $b$, $c$ of a quadratic</td></tr>
+<tr><td>A key feature, such as a vertex, and one more point</td><td>Transformations of a parent function</td><td>$S(t) = a(t - 4)^2 + 32$, then use a point to find $a$</td></tr>
+<tr><td>Many data points that do not fit exactly</td><td>Regression on the calculator</td><td>Quadratic regression on six data points</td></tr>
+</tbody>
+</table>
+
+<div class="worked">
+<p><b>Worked example 1 (a system).</b> A garden center sold $14$, $30$ and $30$ hundred plants in months $t = 1$, $3$ and $5$. Find the quadratic model $S(t) = at^2 + bt + c$.</p>
+<p>Substitute each point: $a + b + c = 14$, $9a + 3b + c = 30$, $25a + 5b + c = 30$.</p>
+<p>Eliminate $c$: the second minus the first gives $8a + 2b = 16$; the third minus the second gives $16a + 2b = 0$.</p>
+<p>Eliminate $b$: subtract to get $8a = -16$, so $a = -2$. Then $16(-2) + 2b = 0$ gives $b = 16$, and $-2 + 16 + c = 14$ gives $c = 0$.</p>
+<p>The model is $S(t) = -2t^2 + 16t$. Check $t = 5$: $-50 + 80 = 30$.</p>
+</div>
+<figure id="fig-quad" data-fig="model-construction-quadratic"><figcaption>The quadratic through the three data points, drawn for the months the context allows.</figcaption></figure>
+<p>The same model comes from transformations. Its maximum is at $(4, 32)$, so $S(t) = a(t - 4)^2 + 32$; the point $(0, 0)$ gives $0 = 16a + 32$ and $a = -2$.</p>
+
+<h2>Regression: store every constant</h2>
+<p>Real data rarely fall exactly on a curve. A calculator regression (linear, quadratic, cubic or quartic in this unit) chooses the constants that bring the model closest to all the data at once. Enter the inputs and outputs as two lists, choose the regression type you justified from the data and context, and store the result.</p>
+<p>Store, do not round. If $a = -2.589285...$, keep every digit in the calculator and use the stored model for every later step. Give only the final answer correct to three decimal places. Rounding a constant early and then predicting with it is the most common way to lose a point on Question 2.</p>
+
+<h2>Using the model: values, rates and units</h2>
+<p>A prediction is an output with its unit: $S(6) = -72 + 96 = 24$ hundred plants. An average rate of change is output units per input unit.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the average rate of change of $S$ on $[1, 3]$ and say what it means.</p>
+<p>The average rate of change of $S$ on $[1, 3]$ is $\frac{S(3) - S(1)}{3 - 1} = \frac{30 - 14}{2} = 8$ hundred plants per month. It is the slope of the secant line through $(1, 14)$ and $(3, 30)$.</p>
+<p>In context: from month $1$ to month $3$, sales rose by $8$ hundred plants per month on average.</p>
+</div>
+
+<h2>Inverse proportion and inverse-square laws</h2>
+<p>Some contexts call for a rational model. If $y$ is <b>inversely proportional</b> to $x$, then $y = \frac{k}{x}$: doubling $x$ halves $y$, as when more painters share a job. An inverse-square law, $y = \frac{k}{x^2}$, divides $y$ by $4$ when $x$ doubles, as for the brightness of a light and your distance from it.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Intensity $I$ is inversely proportional to the square of the distance $d$, and $I = 200$ at $d = 3$. Find $I(d)$ and $I(6)$.</p>
+<p>$I = \frac{k}{d^2}$, so $200 = \frac{k}{9}$ and $k = 1800$. Then $I(d) = \frac{1800}{d^2}$ and $I(6) = \frac{1800}{36} = 50$.</p>
+</div>
+
+<h2>The domain the context allows</h2>
+<p>A model is only trusted for inputs the situation allows. For $S(t) = -2t(t - 8)$, the outputs are negative after $t = 8$, and sales cannot be negative, so the model can be used for $0 \le t \le 8$ (<a class="figref" href="#fig-quad">see the figure</a>). Name the bound and the reason, with the values. Also say why predictions far past the last data point are risky: the data no longer support the model there, and its shape (here, falling toward negative values) may not match what really happens.</p>

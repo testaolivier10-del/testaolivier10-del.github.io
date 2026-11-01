@@ -1,0 +1,392 @@
+{
+ "stimuli": {
+  "alg-functions-s1": {
+   "kind": "graph",
+   "title": "The graph of $y = g(x)$",
+   "plot": {
+    "label": "Graph of g(x) = (x - 1)^2/2 - 2 from x = -3 to 5: it crosses the x-axis at x = -1 and x = 3, crosses the y-axis at -1.5 and has lowest point (1, -2)",
+    "x": [
+     -3.5,
+     5.5
+    ],
+    "y": [
+     -3,
+     6
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "(x - 1)^2/2 - 2",
+      "domain": [
+       -3,
+       5
+      ],
+      "label": "g"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -1,
+       0
+      ]
+     },
+     {
+      "at": [
+       3,
+       0
+      ]
+     },
+     {
+      "at": [
+       0,
+       -1.5
+      ]
+     },
+     {
+      "at": [
+       1,
+       -2
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-alg-functions-1",
+   "unit": "skills-algebra",
+   "topic": "alg-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "For $f(x) = x^2 - 3x + 1$, what is $f(-2)$?",
+   "type": "single",
+   "options": [
+    "$11$",
+    "$3$",
+    "$-1$",
+    "$-9$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Put $-2$ in for every $x$, inside parentheses: $f(-2) = (-2)^2 - 3(-2) + 1 = 4 + 6 + 1 = 11$.",
+    "options": [
+     "Right: $(-2)^2 - 3(-2) + 1 = 4 + 6 + 1 = 11$.",
+     "This squares only the $2$, as if $(-2)^2$ were $-4$. With parentheses, $(-2)^2 = 4$.",
+     "This uses $-3(-2) = -6$. A negative times a negative is positive: $-3(-2) = 6$.",
+     "Two sign slips: $(-2)^2$ read as $-4$ and $-3(-2)$ read as $-6$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-functions-2",
+   "unit": "skills-algebra",
+   "topic": "alg-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $f(x) = x^2 - 3x + 1$, write $f(x + 1)$ as an expression in $x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "(x + 1)^2 - 3(x + 1) + 1",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "lhs": "f(x + 1) =",
+    "mistakes": [
+     {
+      "expr": "x^2 - 3x + 2",
+      "why": "That is $f(x) + 1$: it adds $1$ to the output. $f(x + 1)$ replaces every input $x$ with $x + 1$."
+     },
+     {
+      "expr": "x^2 + 1 - 3(x + 1) + 1",
+      "why": "The square needs parentheses: $(x + 1)^2 = x^2 + 2x + 1$, not $x^2 + 1$."
+     },
+     {
+      "expr": "(x + 1)^2 - 3x + 1",
+      "why": "Replace every $x$, including the one in $-3x$: it becomes $-3(x + 1)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Replace each $x$ with $(x + 1)$: $(x + 1)^2 - 3(x + 1) + 1 = x^2 + 2x + 1 - 3x - 3 + 1 = x^2 - x - 1$."
+   }
+  },
+  {
+   "id": "pcalc-alg-functions-3",
+   "unit": "skills-algebra",
+   "topic": "alg-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the domain of $g(x) = \\frac{\\sqrt{x - 2}}{x - 5}$?",
+   "type": "single",
+   "options": [
+    "$x \\ge 2$ and $x \\ne 5$",
+    "$x \\ge 2$",
+    "$x \\ne 5$",
+    "$x > 2$ and $x \\ne 5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two rules: the expression under a square root cannot be negative ($x \\ge 2$), and a denominator cannot be $0$ ($x \\ne 5$). Both must hold.",
+    "options": [
+     "Right: the square root needs $x - 2 \\ge 0$, and the denominator needs $x - 5 \\ne 0$.",
+     "This misses the denominator: at $x = 5$ it is $0$, and division by $0$ is undefined.",
+     "This misses the square root: for $x < 2$, $x - 2$ is negative and has no real square root.",
+     "$x = 2$ is allowed: $\\sqrt{0} = 0$, and $\\frac{0}{-3} = 0$ is a real number."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-functions-4",
+   "unit": "skills-algebra",
+   "topic": "alg-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "alg-functions-s1",
+   "q": "What are the zeros of $g$?",
+   "type": "single",
+   "options": [
+    "$x = -1$ and $x = 3$",
+    "$y = -1.5$",
+    "$x = 1$",
+    "$x = -3$ and $x = 5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A zero of a function is an input whose output is $0$: where the graph meets the $x$-axis.",
+    "options": [
+     "Right: the graph crosses the $x$-axis at $x = -1$ and $x = 3$, so $g(-1) = g(3) = 0$.",
+     "That is the $y$-intercept, the output at $x = 0$. Zeros are inputs where the output is $0$.",
+     "At $x = 1$ the output is $-2$, the lowest point, not $0$.",
+     "These are the ends of the graph shown; the outputs there are $6$, not $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-functions-5",
+   "unit": "skills-algebra",
+   "topic": "alg-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "alg-functions-s1",
+   "q": "Use the graph to find $g(0)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": -1.5,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$g(0)$ is the output when the input is $0$: read the height of the graph where it crosses the $y$-axis."
+     },
+     {
+      "value": -1,
+      "why": "$-1$ is an input where $g$ is $0$; $g(0)$ is the output at the input $0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The graph crosses the $y$-axis at $(0, -1.5)$, so $g(0) = -1.5$: the $y$-intercept."
+   }
+  },
+  {
+   "id": "pcalc-alg-functions-6",
+   "unit": "skills-algebra",
+   "topic": "alg-functions",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "alg-functions-s1",
+   "q": "How many inputs $x$ in $-3 \\le x \\le 5$ give the output $g(x) = 2$?",
+   "type": "single",
+   "options": [
+    "Two",
+    "One",
+    "Zero",
+    "Four"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Draw the horizontal line $y = 2$. It crosses the graph once left of $x = 1$ and once right of it, so two inputs share the output $2$.",
+    "options": [
+     "Right: the horizontal line $y = 2$ meets the graph twice, at $x = -1.83$ and $x = 3.83$ (about).",
+     "A graph can reach the same height more than once; this one reaches $y = 2$ on each side of its lowest point.",
+     "The graph rises to $6$ at both ends, so it passes $y = 2$ on the way.",
+     "The graph goes down once and up once, so a horizontal line meets it at most twice."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-functions-7",
+   "unit": "skills-algebra",
+   "topic": "alg-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "alg-functions-s1",
+   "q": "Which describes the range of $g$ on $-3 \\le x \\le 5$?",
+   "type": "single",
+   "options": [
+    "$-2 \\le y \\le 6$",
+    "$-3 \\le y \\le 5$",
+    "$y \\ge -1.5$",
+    "$-1 \\le y \\le 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The range is the set of outputs: read the graph's heights, from its lowest point $(1, -2)$ up to $(-3, 6)$ and $(5, 6)$.",
+    "options": [
+     "Right: the lowest output is $-2$ at $x = 1$ and the highest is $6$ at both ends.",
+     "Those are the inputs shown (the domain), not the outputs.",
+     "$-1.5$ is the $y$-intercept; the graph goes lower, down to $-2$.",
+     "$-1$ and $3$ are the zeros, inputs, not the smallest and largest outputs."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-functions-8",
+   "unit": "skills-algebra",
+   "topic": "alg-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A parking garage charges $C(t) = \\begin{cases} 5, & 0 < t \\le 2 \\\\ 5 + 3(t - 2), & 2 < t \\le 6 \\end{cases}$ dollars for $t$ hours. What is $C(4)$?",
+   "type": "single",
+   "options": [
+    "$11$ dollars",
+    "$17$ dollars",
+    "$6$ dollars",
+    "$5$ dollars"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "First find which piece holds the input: $2 < 4 \\le 6$. Then use that piece: $C(4) = 5 + 3(4 - 2) = 5 + 6 = 11$ dollars.",
+    "options": [
+     "Right: $4$ is in $2 < t \\le 6$, so $C(4) = 5 + 3(4 - 2) = 11$.",
+     "This uses $5 + 3 \\cdot 4$; the formula is $5 + 3(t - 2)$, so only the hours after the first two are charged at \\$3.",
+     "This is only $3(4 - 2)$; the \\$5 for the first two hours is still part of the second piece.",
+     "That piece is for $0 < t \\le 2$ only; $t = 4$ uses the second piece."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-functions-9",
+   "unit": "skills-algebra",
+   "topic": "alg-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which table does NOT define $y$ as a function of $x$?",
+   "type": "single",
+   "options": [
+    "$x$: $1, 2, 2, 3$ and $y$: $4, 5, 6, 7$",
+    "$x$: $1, 2, 3, 4$ and $y$: $5, 5, 5, 5$",
+    "$x$: $-1, 0, 1, 2$ and $y$: $1, 0, 1, 4$",
+    "$x$: $0, 3, 6, 9$ and $y$: $9, 6, 3, 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A function gives each input exactly one output. Look for a repeated input with different outputs; repeated outputs are fine.",
+    "options": [
+     "Right: the input $2$ has two outputs, $5$ and $6$, so this is not a function.",
+     "Every input has one output. Several inputs may share an output.",
+     "Each input appears once, so each has exactly one output. $-1$ and $1$ sharing $1$ is allowed.",
+     "Each input appears once with one output: a function."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-functions-10",
+   "unit": "skills-algebra",
+   "topic": "alg-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the zero of $h(x) = 2x + 10$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -5,
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "$10$ is $h(0)$, the $y$-intercept. A zero is an input with $h(x) = 0$: solve $2x + 10 = 0$."
+     },
+     {
+      "value": 5,
+      "why": "Check the sign: $2x + 10 = 0$ gives $2x = -10$, so $x = -5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Set the output to $0$: $2x + 10 = 0$, $2x = -10$, $x = -5$. Check: $h(-5) = 0$."
+   }
+  },
+  {
+   "id": "pcalc-alg-functions-11",
+   "unit": "skills-algebra",
+   "topic": "alg-functions",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statements about $k(x) = \\frac{1}{x + 3}$ are true? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "Its domain is every real number except $-3$.",
+    "Its $y$-intercept is $\\left(0, \\frac{1}{3}\\right)$.",
+    "It has a zero at $x = -3$.",
+    "The output $0$ is in its range."
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Domain: exclude what makes the denominator $0$. Intercept: $k(0)$. A zero needs a numerator of $0$, and the numerator is always $1$.",
+    "options": [
+     "True: $x + 3 = 0$ at $x = -3$, and division by $0$ is undefined.",
+     "True: $k(0) = \\frac{1}{0 + 3} = \\frac{1}{3}$.",
+     "False: $k(-3)$ is undefined, not $0$. An input outside the domain is never a zero.",
+     "False: a fraction with numerator $1$ is never $0$, so no input gives $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-functions-12",
+   "unit": "skills-algebra",
+   "topic": "alg-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A table gives the price $P(n)$, in dollars, for $n$ tickets. Which sentence states what $P(4) = 30$ means?",
+   "type": "single",
+   "options": [
+    "Four tickets cost \\$30.",
+    "Thirty tickets cost \\$4.",
+    "Each ticket costs \\$30.",
+    "The price goes up \\$4 per ticket."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In $P(4) = 30$, the input is $4$ (tickets) and the output is $30$ (dollars).",
+    "options": [
+     "Right: the input $4$ is the number of tickets and the output $30$ is the price.",
+     "This swaps input and output. Inside the parentheses is the input, $n = 4$ tickets.",
+     "$30$ is the price of all four tickets together.",
+     "One value of $P$ says nothing about how the price changes per ticket."
+    ]
+   }
+  }
+ ]
+}

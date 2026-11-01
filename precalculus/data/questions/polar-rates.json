@@ -1,0 +1,508 @@
+{
+ "stimuli": {
+  "polar-rates-s1": {
+   "kind": "graph",
+   "title": "The polar function $r = 1 + 2\\sin\\theta$ and its graph of $r$ against $\\theta$",
+   "text": "<p>The first graph shows $r = 1 + 2\\sin\\theta$ against $\\theta$ on rectangular axes, for $0 \\le \\theta \\le 2\\pi$. The second shows the same function in the polar plane.</p>",
+   "plot": {
+    "label": "Graph of r = 1 + 2 sin theta against theta for theta from 0 to 2 pi, rising from 1 to 3 at pi/2, falling to -1 at 3 pi/2, and rising back to 1",
+    "x": [
+     0,
+     6.283185307179586
+    ],
+    "y": [
+     -1.5,
+     3.5
+    ],
+    "piX": true,
+    "yStep": 1,
+    "xLabel": "θ",
+    "yLabel": "r",
+    "curves": [
+     {
+      "fn": "1 + 2sin(x)",
+      "domain": [
+       0,
+       6.283185307179586
+      ]
+     }
+    ]
+   },
+   "figure": "polar-rates-curve"
+  },
+  "polar-rates-s2": {
+   "kind": "table",
+   "title": "The reach of a garden sprinkler",
+   "text": "<p>A sprinkler turns counterclockwise. When its nozzle points in the direction $\\theta$ radians, the water lands $r(\\theta)$ meters away. Use a calculator.</p>",
+   "table": {
+    "caption": "Distance r(θ) the water reaches, in meters, at selected angles θ, in radians",
+    "cols": [
+     "$\\theta$ (radians)",
+     "$0$",
+     "$\\frac{\\pi}{6}$",
+     "$\\frac{\\pi}{3}$",
+     "$\\frac{\\pi}{2}$",
+     "$\\frac{2\\pi}{3}$"
+    ],
+    "rows": [
+     [
+      "$r(\\theta)$ (meters)",
+      "$4.0$",
+      "$5.5$",
+      "$6.2$",
+      "$6.4$",
+      "$6.0$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-polar-rates-1",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polar-rates-s1",
+   "q": "Find the average rate of change of $r = 1 + 2\\sin\\theta$ with respect to $\\theta$ on $\\left[0, \\frac{\\pi}{2}\\right]$. Give an exact value.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "4/pi",
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is the change in $r$ only; divide by the change in angle, $\\frac{\\pi}{2}$."
+     },
+     {
+      "value": "pi/4",
+      "why": "That is the change in angle over the change in $r$, upside down."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{r(\\pi/2) - r(0)}{\\pi/2 - 0} = \\frac{3 - 1}{\\pi/2} = \\frac{4}{\\pi}$, the slope of the secant line on the graph of $r$ against $\\theta$. On average $r$ grows $\\frac{4}{\\pi} \\approx 1.27$ units per radian of turning."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-2",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polar-rates-s1",
+   "q": "On the interval $\\frac{\\pi}{2} < \\theta < \\frac{7\\pi}{6}$, how is the distance from the origin to the curve changing, and why?",
+   "type": "single",
+   "options": [
+    "Decreasing, because $r$ is positive and decreasing",
+    "Increasing, because $r$ is positive",
+    "Decreasing, because $r$ is negative and increasing",
+    "Increasing, because $r$ is decreasing"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On the graph of $r$, the values fall from $3$ at $\\frac{\\pi}{2}$ to $0$ at $\\frac{7\\pi}{6}$ and stay positive. The distance from the origin is $|r| = r$ here, so it decreases: the curve moves back toward the pole.",
+    "options": [
+     "Right: positive and decreasing $r$ means a shrinking distance.",
+     "Positive tells you the direction of the point, not whether $r$ is growing; here it is shrinking.",
+     "$r$ is still positive on this interval; it reaches $0$ only at $\\frac{7\\pi}{6}$.",
+     "When $r$ is positive, a decreasing $r$ means the points get closer to the pole."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-3",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "polar-rates-s1",
+   "q": "On the interval $\\frac{7\\pi}{6} < \\theta < \\frac{3\\pi}{2}$, how is the distance from the origin to the curve changing, and why?",
+   "type": "single",
+   "options": [
+    "Increasing, because $r$ is negative and decreasing",
+    "Decreasing, because $r$ is decreasing",
+    "Increasing, because $r$ is positive and increasing",
+    "Decreasing, because $r$ is negative"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Here $r$ falls from $0$ to $-1$: negative and decreasing. The distance from the origin is $|r|$, which grows from $0$ to $1$. The inner loop moves away from the pole.",
+    "options": [
+     "Right: a negative $r$ that decreases has a growing size $|r|$.",
+     "For negative $r$, decreasing makes $|r|$ larger: the distance grows.",
+     "$r$ is below the axis on this interval, so it is negative, not positive.",
+     "A negative sign alone does not decide it; how $|r|$ changes does."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-4",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "polar-rates-s1",
+   "q": "On which interval is $r$ increasing while the distance from the origin to the curve is decreasing?",
+   "type": "single",
+   "options": [
+    "$\\left(\\frac{3\\pi}{2}, \\frac{11\\pi}{6}\\right)$",
+    "$\\left(\\frac{11\\pi}{6}, 2\\pi\\right)$",
+    "$\\left(0, \\frac{\\pi}{2}\\right)$",
+    "$\\left(\\frac{7\\pi}{6}, \\frac{3\\pi}{2}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On $\\left(\\frac{3\\pi}{2}, \\frac{11\\pi}{6}\\right)$, $r$ rises from $-1$ to $0$: increasing but negative, so $|r|$ shrinks from $1$ to $0$ and the curve heads back to the pole.",
+    "options": [
+     "Right: negative and increasing $r$ means a shrinking distance.",
+     "There $r$ rises from $0$ to $1$ and is positive, so the distance increases.",
+     "There $r$ rises from $1$ to $3$ and is positive, so the distance increases.",
+     "There $r$ is decreasing, from $0$ to $-1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-5",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-rates-s1",
+   "q": "Which point of the curve is farthest from the origin?",
+   "type": "single",
+   "options": [
+    "$r = 3$ at $\\theta = \\frac{\\pi}{2}$, the rectangular point $(0, 3)$",
+    "$r = -1$ at $\\theta = \\frac{3\\pi}{2}$, the rectangular point $(0, 1)$",
+    "$r = 1$ at $\\theta = 0$, the rectangular point $(1, 0)$",
+    "$r = 3$ at $\\theta = \\frac{\\pi}{2}$, the rectangular point $(3, 0)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The distance is $|r|$. On the graph of $r$, $|r|$ is largest at the peak $r = 3$, at $\\theta = \\frac{\\pi}{2}$. That point is $\\left(3\\cos\\frac{\\pi}{2}, 3\\sin\\frac{\\pi}{2}\\right) = (0, 3)$.",
+    "options": [
+     "Right: the largest $|r|$, straight above the origin.",
+     "$|r| = 1$ there: the far end of the inner loop, but only $1$ unit away.",
+     "$|r| = 1$ at $\\theta = 0$.",
+     "The direction $\\frac{\\pi}{2}$ points up, so the point is $(0, 3)$, not $(3, 0)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-6",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-rates-s2",
+   "calc": true,
+   "q": "Find the average rate of change of $r$ on $\\left[0, \\frac{\\pi}{3}\\right]$, correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 2.1008452488130183,
+    "unit": "meters per radian",
+    "units": [
+     "m per radian",
+     "m/radian",
+     "meters/radian"
+    ],
+    "mistakes": [
+     {
+      "value": 2.2,
+      "why": "That is the change in reach only; divide by the change in angle, $\\frac{\\pi}{3}$."
+     },
+     {
+      "value": 0.7333333333333334,
+      "why": "That divides by $3$ instead of $\\frac{\\pi}{3}$; the interval is $\\frac{\\pi}{3} \\approx 1.047$ radians long."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{r(\\pi/3) - r(0)}{\\pi/3 - 0} = \\frac{6.2 - 4.0}{\\pi/3} = \\frac{6.6}{\\pi} \\approx 2.100845$ meters per radian, the slope of the secant line through $(0, 4.0)$ and $\\left(\\frac{\\pi}{3}, 6.2\\right)$."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-7",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polar-rates-s2",
+   "calc": true,
+   "q": "The average rate of change of $r$ is about $2.865$ meters per radian on $\\left[0, \\frac{\\pi}{6}\\right]$ and about $1.337$ meters per radian on $\\left[\\frac{\\pi}{6}, \\frac{\\pi}{3}\\right]$. Which statement is supported?",
+   "type": "single",
+   "options": [
+    "On $\\left[0, \\frac{\\pi}{3}\\right]$ the reach is increasing, and the rate of change of the reach is decreasing",
+    "On $\\left[0, \\frac{\\pi}{3}\\right]$ the reach is decreasing, because the rates are getting smaller",
+    "On $\\left[0, \\frac{\\pi}{3}\\right]$ the reach is increasing, and the rate of change of the reach is increasing",
+    "On $\\left[0, \\frac{\\pi}{3}\\right]$ the reach is constant, because both rates are positive"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{5.5 - 4.0}{\\pi/6} = \\frac{9}{\\pi} \\approx 2.865$ and $\\frac{6.2 - 5.5}{\\pi/6} = \\frac{4.2}{\\pi} \\approx 1.337$. Both are positive, so the reach (the distance from the sprinkler, since $r > 0$) increases. Over equal intervals the rate drops, so the rate of change of the reach is decreasing.",
+    "options": [
+     "Right: positive rates, getting smaller over equal intervals.",
+     "Smaller positive rates still mean the reach grows, just more slowly.",
+     "The later rate is smaller, so the rate of change is decreasing.",
+     "Positive rates mean the reach changes; it grows."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-8",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polar-rates-s2",
+   "calc": true,
+   "q": "Which statement interprets the average rate of change of $r$ on $\\left[\\frac{\\pi}{2}, \\frac{2\\pi}{3}\\right]$?",
+   "type": "single",
+   "options": [
+    "As the nozzle turns from $\\frac{\\pi}{2}$ to $\\frac{2\\pi}{3}$, the reach decreases by about $0.764$ meters per radian on average",
+    "As the nozzle turns from $\\frac{\\pi}{2}$ to $\\frac{2\\pi}{3}$, the reach decreases by about $0.4$ meters per radian on average",
+    "As the nozzle turns from $\\frac{\\pi}{2}$ to $\\frac{2\\pi}{3}$, the reach increases by about $0.764$ meters per radian on average",
+    "As the nozzle turns from $\\frac{\\pi}{2}$ to $\\frac{2\\pi}{3}$, the water lands about $0.764$ meters from the sprinkler"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{6.0 - 6.4}{2\\pi/3 - \\pi/2} = \\frac{-0.4}{\\pi/6} = -\\frac{2.4}{\\pi} \\approx -0.764$ meters per radian. The sign is negative, so the reach shrinks; the size says by how much per radian, on average.",
+    "options": [
+     "Right: $-\\frac{2.4}{\\pi} \\approx -0.764$ meters per radian.",
+     "$0.4$ meters is the change in reach; the rate divides it by $\\frac{\\pi}{6}$ radians.",
+     "The reach goes from $6.4$ to $6.0$, down, so the rate is negative.",
+     "A rate of change is a change per radian, not a distance."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-9",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-rates-s2",
+   "calc": true,
+   "q": "Use the secant line through $\\left(\\frac{\\pi}{6}, 5.5\\right)$ and $\\left(\\frac{\\pi}{3}, 6.2\\right)$ to estimate $r\\left(\\frac{\\pi}{4}\\right)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 5.85,
+    "unit": "meters",
+    "mistakes": [
+     {
+      "value": 5.5,
+      "why": "That is $r\\left(\\frac{\\pi}{6}\\right)$; add the change along the secant line over $\\frac{\\pi}{12}$ radians."
+     },
+     {
+      "value": 6.2,
+      "why": "That is $r\\left(\\frac{\\pi}{3}\\right)$; $\\frac{\\pi}{4}$ is halfway between the two table angles."
+     },
+     {
+      "value": 6.55,
+      "why": "That moves $\\frac{\\pi}{4}$ radians along the secant line from $\\frac{\\pi}{6}$; the step is $\\frac{\\pi}{4} - \\frac{\\pi}{6} = \\frac{\\pi}{12}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The slope of the secant line is $\\frac{6.2 - 5.5}{\\pi/6} = \\frac{4.2}{\\pi}$. Move $\\frac{\\pi}{4} - \\frac{\\pi}{6} = \\frac{\\pi}{12}$ along it from $\\left(\\frac{\\pi}{6}, 5.5\\right)$: $5.5 + \\frac{4.2}{\\pi}\\cdot\\frac{\\pi}{12} = 5.5 + 0.35 = 5.85$ meters. The estimate is a point on the secant line."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-10",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $r = 3\\cos\\theta$ on $\\frac{\\pi}{2} < \\theta < \\pi$, how is the distance from the origin to the curve changing?",
+   "type": "single",
+   "options": [
+    "Increasing, because $r$ is negative and decreasing",
+    "Decreasing, because $r$ is decreasing",
+    "Increasing, because $r$ is positive and increasing",
+    "Decreasing, because $r$ is negative"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On $\\left(\\frac{\\pi}{2}, \\pi\\right)$, $\\cos\\theta$ goes from $0$ to $-1$, so $r$ goes from $0$ to $-3$: negative and decreasing. Its size $|r|$ grows from $0$ to $3$, so the distance from the origin increases.",
+    "options": [
+     "Right: $|r|$ grows from $0$ to $3$.",
+     "For a negative $r$, decreasing means growing in size, so the distance increases.",
+     "Cosine is negative in Quadrant II, so $r < 0$ here.",
+     "The sign alone does not decide it; $|r|$ is growing."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-11",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the average rate of change of $r = 4\\sin(2\\theta)$ on $\\left[0, \\frac{\\pi}{4}\\right]$. Give an exact value.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "16/pi",
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That is the change in $r$; divide by the change in angle, $\\frac{\\pi}{4}$."
+     },
+     {
+      "value": "pi/16",
+      "why": "That divides the change in angle by the change in $r$, upside down."
+     },
+     {
+      "value": "8/pi",
+      "why": "$r\\left(\\frac{\\pi}{4}\\right) = 4\\sin\\left(2\\cdot\\frac{\\pi}{4}\\right) = 4$, not $2$; double the angle before taking the sine."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$r(0) = 0$ and $r\\left(\\frac{\\pi}{4}\\right) = 4\\sin\\frac{\\pi}{2} = 4$, so the average rate of change is $\\frac{4 - 0}{\\pi/4} = \\frac{16}{\\pi}$ units per radian."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-12",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For $r = \\cos(2\\theta)$, on which intervals is the distance from the origin to the curve increasing? Select every one.",
+   "type": "multi",
+   "options": [
+    "$\\left(0, \\frac{\\pi}{4}\\right)$",
+    "$\\left(\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right)$",
+    "$\\left(\\frac{\\pi}{2}, \\frac{3\\pi}{4}\\right)$",
+    "$\\left(\\frac{3\\pi}{4}, \\pi\\right)$"
+   ],
+   "correct": [
+    1,
+    3
+   ],
+   "why": {
+    "correct": "The distance increases where $r$ is positive and increasing or negative and decreasing. $r = \\cos(2\\theta)$ decreases on $\\left(0, \\frac{\\pi}{2}\\right)$ and increases on $\\left(\\frac{\\pi}{2}, \\pi\\right)$, and it is negative on $\\left(\\frac{\\pi}{4}, \\frac{3\\pi}{4}\\right)$.",
+    "options": [
+     "No: $r$ is positive and decreasing (from $1$ to $0$), so the distance shrinks.",
+     "Yes: $r$ is negative and decreasing (from $0$ to $-1$), so $|r|$ grows.",
+     "No: $r$ is negative and increasing (from $-1$ to $0$), so $|r|$ shrinks.",
+     "Yes: $r$ is positive and increasing (from $0$ to $1$)."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-13",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which point of $r = 3 + \\cos\\theta$ is closest to the origin?",
+   "type": "single",
+   "options": [
+    "The point at $\\theta = \\pi$, $2$ units from the origin",
+    "The point at $\\theta = 0$, $4$ units from the origin",
+    "The point at $\\theta = \\frac{\\pi}{2}$, $3$ units from the origin",
+    "The origin itself, at $\\theta = \\pi$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$r = 3 + \\cos\\theta$ is always positive, so the distance is $r$ itself. It is smallest where $\\cos\\theta = -1$: $\\theta = \\pi$, $r = 2$.",
+    "options": [
+     "Right: the least value of $r$ is $2$.",
+     "$r = 4$ at $\\theta = 0$ is the farthest point.",
+     "$r = 3$ at $\\frac{\\pi}{2}$ is not the least value.",
+     "$r = 2$ at $\\theta = \\pi$, so the curve never reaches the origin."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-14",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "On the curve $r = 2\\sin\\theta$, $\\theta$ increases from $\\pi$ to $\\frac{3\\pi}{2}$. Predict how each quantity changes.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "r",
+     "answer": "down",
+     "why": "$\\sin\\theta$ goes from $0$ to $-1$, so $r = 2\\sin\\theta$ goes from $0$ to $-2$."
+    },
+    {
+     "name": "The distance from the origin to the point",
+     "answer": "up",
+     "why": "The distance is $|r|$, which grows from $0$ to $2$ as $r$ becomes more negative."
+    }
+   ],
+   "why": {
+    "correct": "$r$ is negative and decreasing, so its size, the distance from the origin, increases."
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-15",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "On an interval $[a, b]$ where $r > 0$, the average rate of change of a polar function $r$ is $-1.5$. Which statement is supported?",
+   "type": "single",
+   "options": [
+    "On average, the points get closer to the origin by $1.5$ units per radian as $\\theta$ goes from $a$ to $b$",
+    "On average, the points get farther from the origin by $1.5$ units per radian as $\\theta$ goes from $a$ to $b$",
+    "The curve is $1.5$ units from the origin on $[a, b]$",
+    "The angle decreases by $1.5$ radians as $r$ goes from $r(a)$ to $r(b)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With $r > 0$, the distance from the origin is $r$. A negative average rate of change means $r(b) < r(a)$: overall, the distance shrinks by $1.5$ units for each radian the angle turns.",
+    "options": [
+     "Right: negative rate with positive $r$ means a shrinking distance.",
+     "The rate is negative and $r$ is positive, so the distance decreases.",
+     "A rate of change describes change per radian, not a position.",
+     "The angle increases from $a$ to $b$; the rate is change in $r$ per radian."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-rates-16",
+   "unit": "unit-3",
+   "topic": "polar-rates",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the cardioid $r = 2 + 2\\cos\\theta$, which statement is true?",
+   "type": "single",
+   "options": [
+    "The greatest distance from the origin is $4$, at $\\theta = 0$, and the curve reaches the origin at $\\theta = \\pi$",
+    "The greatest distance from the origin is $4$, at $\\theta = \\pi$, and the curve reaches the origin at $\\theta = 0$",
+    "The greatest distance from the origin is $2$, at $\\theta = \\frac{\\pi}{2}$, and the curve does not reach the origin",
+    "The greatest distance from the origin is $4$, at $\\theta = \\frac{\\pi}{2}$, and the curve reaches the origin at $\\theta = \\frac{3\\pi}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$r = 2 + 2\\cos\\theta$ is never negative. It is largest, $4$, where $\\cos\\theta = 1$ ($\\theta = 0$), and $0$ where $\\cos\\theta = -1$ ($\\theta = \\pi$).",
+    "options": [
+     "Right: the extremes of $r$ give the farthest and closest points.",
+     "$\\cos\\pi = -1$ makes $r = 0$ at $\\pi$; the maximum is at $\\theta = 0$.",
+     "$r = 2$ at $\\frac{\\pi}{2}$ is not the largest value, and $r = 0$ at $\\theta = \\pi$.",
+     "$r\\left(\\frac{\\pi}{2}\\right) = 2$, not $4$."
+    ]
+   }
+  }
+ ]
+}

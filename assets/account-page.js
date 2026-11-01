@@ -25,6 +25,7 @@
     { key: 'apstat', paid: true },
     { key: 'apenv', paid: true },
     { key: 'appsych', paid: true },
+    { key: 'apprecalc', paid: true },
     { key: 'apcalcbc', paid: true },
   ];
   // courses:end

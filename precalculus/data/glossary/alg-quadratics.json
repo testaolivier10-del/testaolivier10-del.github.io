@@ -1,0 +1,14 @@
+{
+ "quadratic": {
+  "def": "A function $f(x) = ax^2 + bx + c$ with $a \\ne 0$. Its graph is a parabola."
+ },
+ "parabola": {
+  "def": "The U-shaped graph of a quadratic function; it opens up when $a > 0$ and down when $a < 0$, and is symmetric about the vertical line through its vertex."
+ },
+ "vertex": {
+  "def": "The turning point of a parabola, at $x = -\\frac{b}{2a}$. In vertex form $y = a(x - h)^2 + k$ the vertex is $(h, k)$."
+ },
+ "quadratic-formula": {
+  "def": "The solutions of $ax^2 + bx + c = 0$ are $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The discriminant $b^2 - 4ac$ tells how many are real: two, one or none. Completing the square rewrites a quadratic in vertex form."
+ }
+}

@@ -1,0 +1,5 @@
+{
+ "exponential-function": {
+  "def": "A function f(x) = ab^x with a not 0, b > 0 and b not 1: the input is in the exponent. Over equal-length input intervals its outputs change by a constant ratio. If b > 1 it shows exponential growth; if 0 < b < 1, exponential decay."
+ }
+}

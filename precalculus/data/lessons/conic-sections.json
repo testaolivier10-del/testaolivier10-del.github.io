@@ -1,0 +1,71 @@
+{
+ "topic": "conic-sections",
+ "hook": "Slice a cone with a flat cut and the edge of the cut is a curve. Tilt the cut and the curve changes: a circle, a stretched oval, a U-shape, or a pair of open branches. These conic sections show up as satellite dishes, planet orbits and the shadow a lampshade throws on a wall.",
+ "prereq": [
+  {
+   "q": "What is the vertex of $y = 2(x - 3)^2 + 1$?",
+   "options": [
+    "$(3, 1)$",
+    "$(-3, 1)$",
+    "$(1, 3)$",
+    "$(3, 2)$"
+   ],
+   "correct": 0,
+   "why": "$y = a(x - h)^2 + k$ has vertex $(h, k) = (3, 1)$.",
+   "review": "alg-quadratics"
+  },
+  {
+   "q": "Which points of $x^2 + y^2 = 9$ have $y = 0$?",
+   "options": [
+    "$(3, 0)$ and $(-3, 0)$",
+    "$(9, 0)$ and $(-9, 0)$",
+    "$(0, 3)$ and $(0, -3)$",
+    "$(3, 0)$, the one point on the right"
+   ],
+   "correct": 0,
+   "why": "$x^2 = 9$, so $x = 3$ or $x = -3$.",
+   "review": "implicit-functions"
+  }
+ ],
+ "figure": {
+  "figure": "conic-sections-three",
+  "caption": "A parabola, an ellipse and a hyperbola. The ellipse reaches $3$ across and $2$ up from its center; the hyperbola has two branches that approach the dashed asymptotes."
+ },
+ "chain": [
+  {
+   "cause": "Only one variable is squared, as in $y = a(x - h)^2 + k$",
+   "effect": "the curve is a parabola with vertex $(h, k)$"
+  },
+  {
+   "cause": "Both squares are added and set equal to $1$: $\\frac{(x - h)^2}{a^2} + \\frac{(y - k)^2}{b^2} = 1$",
+   "effect": "an ellipse with center $(h, k)$, reaching $a$ units across and $b$ units up and down"
+  },
+  {
+   "cause": "The squares are subtracted: $\\frac{(x - h)^2}{a^2} - \\frac{(y - k)^2}{b^2} = 1$",
+   "effect": "a hyperbola with center $(h, k)$, opening left and right, with asymptotes of slope $\\pm\\frac{b}{a}$"
+  },
+  {
+   "cause": "The equation is not in standard form",
+   "effect": "complete the square in each variable, then read the conic off the signs"
+  }
+ ],
+ "ideas": [
+  "<b>Parabola</b>: $y - k = a(x - h)^2$ opens up or down; $x - h = a(y - k)^2$ opens right ($a > 0$) or left.",
+  "<b>Ellipse</b>: $\\frac{(x - h)^2}{a^2} + \\frac{(y - k)^2}{b^2} = 1$, center $(h, k)$; vertices $a$ units across and $b$ units up and down. $a = b$ gives a circle.",
+  "<b>Hyperbola</b>: $\\frac{(x - h)^2}{a^2} - \\frac{(y - k)^2}{b^2} = 1$ opens left and right, vertices $(h \\pm a, k)$, asymptotes $y - k = \\pm\\frac{b}{a}(x - h)$. With $y$ first it opens up and down.",
+  "Both squares with the same sign: ellipse. Opposite signs: hyperbola. One square: parabola."
+ ],
+ "misconception": {
+  "wrong": "In $\\frac{(x - 1)^2}{16} + \\frac{(y + 2)^2}{4} = 1$ the ellipse reaches 16 units left and right of its center.",
+  "right": "The denominators are squares. $a^2 = 16$, so it reaches $a = 4$ units left and right, and $b^2 = 4$ gives $2$ units up and down."
+ },
+ "check": [
+  "pcalc-conic-sections-1",
+  "pcalc-conic-sections-2",
+  "pcalc-conic-sections-3",
+  "pcalc-conic-sections-4",
+  "pcalc-conic-sections-11",
+  "pcalc-conic-sections-13"
+ ],
+ "summary": "Conic sections are the parabola, the ellipse and the hyperbola, all implicitly defined curves. In standard form you read off the center or vertex, the distances $a$ and $b$ from the denominators' square roots, and for a hyperbola the asymptotes $y - k = \\pm\\frac{b}{a}(x - h)$. The signs of the squared terms tell which conic you have."
+}

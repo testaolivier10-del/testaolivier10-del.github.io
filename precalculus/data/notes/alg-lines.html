@@ -1,0 +1,33 @@
+<p>A line changes at a steady rate: the same step in $x$ always gives the same change in $y$. That makes lines the measuring stick for every other function in this course. To see how fast a curve changes between two of its points, you draw the line through them and read its slope.</p>
+
+<h2>Slope</h2>
+<p>The <b>slope</b> of a line is its rise over its run, the change in $y$ divided by the change in $x$, between any two of its points:</p>
+<p>$$m = \frac{y_2 - y_1}{x_2 - x_1}$$</p>
+<p>Subtract in the same order on top and bottom. For $(-2, 5)$ and $(4, -7)$: $m = \frac{-7 - 5}{4 - (-2)} = \frac{-12}{6} = -2$.</p>
+<figure id="fig-slope" data-fig="alg-lines-slope"><figcaption>From $(1, 2)$ to $(4, 8)$ the run is $3$ and the rise is $6$, so the slope is $2$.</figcaption></figure>
+<table class="compare">
+<thead><tr><th scope="col">Slope</th><th scope="col">The line</th><th scope="col">Example</th></tr></thead>
+<tbody>
+<tr><td>positive</td><td>rises left to right</td><td>$y = 2x + 1$</td></tr>
+<tr><td>negative</td><td>falls left to right</td><td>$y = -3x - 2$</td></tr>
+<tr><td>$0$</td><td>horizontal</td><td>$y = 4$</td></tr>
+<tr><td>undefined</td><td>vertical (run $0$)</td><td>$x = 4$</td></tr>
+</tbody>
+</table>
+
+<h2>Equations of a line</h2>
+<p><b>Point-slope form</b> uses one point $(x_1, y_1)$ and the slope $m$: $y - y_1 = m(x - x_1)$. It says that from the known point, $y$ changes by $m$ times the change in $x$. Solved for $y$, it is $y = y_1 + m(x - x_1)$, the form you will use to estimate values.</p>
+<p><b>Slope-intercept form</b> $y = mx + b$ has slope $m$ and $y$-intercept $(0, b)$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the line through $(2, 10)$ and $(6, 22)$, and its value at $x = 3$.</p>
+<p>Slope: $m = \frac{22 - 10}{6 - 2} = \frac{12}{4} = 3$.</p>
+<p>Point-slope form from $(2, 10)$: $y - 10 = 3(x - 2)$, so $y = 10 + 3(x - 2)$.</p>
+<p>At $x = 3$: $y = 10 + 3(1) = 13$. In slope-intercept form the line is $y = 3x + 4$.</p>
+</div>
+<p>When you rewrite point-slope form, distribute the slope to both terms: $y - 4 = -3(x + 2)$ becomes $y - 4 = -3x - 6$, so $y = -3x - 2$.</p>
+
+<h2>A line through two points of a curve</h2>
+<p>The two points do not have to come from a line. For $f(x) = x^2$, the points $(2, f(2)) = (2, 4)$ and $(5, f(5)) = (5, 25)$ are on a curve, and the line through them has slope $\frac{25 - 4}{5 - 2} = 7$. The next topic gives this slope its own name and uses it to measure how fast $f$ changes; the algebra is the same as here.</p>
+
+<h2>Slope in context</h2>
+<p>When $x$ and $y$ are quantities, the slope has units of output per input. For a phone plan $C(m) = 15 + 0.10m$ dollars for $m$ minutes, the slope is $0.10$ dollars per minute: each extra minute adds \$0.10. The intercept, \$15, is the cost at $m = 0$.</p>

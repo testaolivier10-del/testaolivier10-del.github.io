@@ -1,0 +1,5 @@
+{
+ "linear-transformation": {
+  "def": "A rule that sends each vector ⟨x, y⟩ to ⟨ax + by, cx + dy⟩: multiplication by the matrix with rows (a, b) and (c, d). Its columns are the images of ⟨1, 0⟩ and ⟨0, 1⟩. It keeps the origin fixed and lines straight, and multiplies every area by the absolute value of its determinant."
+ }
+}

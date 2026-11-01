@@ -1,0 +1,65 @@
+/* Regression lab (precalculus/assets/tools/regression-lab.js). OWNED BY THIS
+   TOOL ONLY (builder T1). Loaded after pcalc-tools.css. The model is the
+   course green; data points ink; residuals above the model blue, below
+   orange, the same on the graph, the residual plot and the Details table.
+   Light and dark. */
+.rl-card,.ls-root{--rl-g:var(--cink,#11592F);--rl-bg:#FBFDFC;--rl-grid:#E6ECEA;--rl-axis:#55625F;--rl-tint:var(--ctint,#E3F3E8);--rl-pos:#0072B2;--rl-neg:#C2410C;--rl-pt:#1F2A27;}
+:root[data-theme="dark"] .rl-card,:root[data-theme="dark"] .ls-root{--rl-g:#7FE0A6;--rl-bg:#141a18;--rl-grid:#26302d;--rl-axis:#a9b5b2;--rl-tint:rgba(80,200,130,.14);--rl-pos:#6CB8EC;--rl-neg:#FF9A5C;--rl-pt:#E8EEEC;}
+
+.rl-stage{display:flex;flex-direction:column;gap:6px;min-height:0;flex:1;}
+.rl-eq{margin:0;font:600 15px/1.4 var(--font-ui);color:var(--ink);overflow-x:auto;white-space:nowrap;scrollbar-width:none;min-height:24px;}
+.rl-mname{font-weight:800;color:var(--rl-g);margin-right:6px;}
+.rl-graph-wrap{position:relative;flex:1 1 0;min-height:190px;}
+.rl-card:not(.ls-root *) .rl-graph-wrap{height:360px;flex:none;}
+.rl-graph{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;}
+.rl-res-wrap{flex:0 0 128px;}
+.ls-phone .rl-res-wrap{flex-basis:104px;}
+.rl-res{display:block;width:100%;height:100%;}
+
+.rl-bg{fill:var(--rl-bg);stroke:var(--line);stroke-width:1;}
+.rl-grid{stroke:var(--rl-grid);stroke-width:1;}
+.rl-tk{fill:var(--muted);font:700 11px var(--font-ui);font-variant-numeric:tabular-nums;}
+.rl-axl{fill:var(--ink);font:italic 800 12px var(--font-ui);paint-order:stroke;stroke:var(--rl-bg);stroke-width:4px;}
+.rl-model{fill:none;stroke:var(--rl-g);stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round;}
+.rl-stem{stroke-width:2;opacity:.85;}
+.rl-stem.is-pos{stroke:var(--rl-pos);} .rl-stem.is-neg{stroke:var(--rl-neg);}
+.rl-pt{fill:var(--rl-pt);stroke:var(--rl-bg);stroke-width:1.6;}
+.rl-pline{stroke:var(--rl-axis);stroke-width:1.2;stroke-dasharray:4 4;}
+.rl-ppt{fill:var(--rl-bg);stroke:var(--rl-g);stroke-width:3;}
+.rl-plab{fill:var(--rl-g);font:800 12.5px var(--font-ui);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--rl-bg);stroke-width:4px;}
+.rl-rzero{stroke:var(--rl-axis);stroke-width:1.3;}
+.rl-rline{fill:none;stroke:var(--muted);stroke-width:1;opacity:.45;}
+.rl-rpt{stroke:var(--rl-bg);stroke-width:1.4;}
+.rl-rpt.is-pos{fill:var(--rl-pos);} .rl-rpt.is-neg{fill:var(--rl-neg);}
+.rl-rk{fill:var(--muted);font:700 11.5px var(--font-ui);}
+.rl-verdict{font:800 12px var(--font-ui);}
+.rl-verdict.is-good{fill:var(--rl-g);} .rl-verdict.is-bad{fill:var(--rl-neg);}
+
+.rl-h{cursor:ew-resize;outline:none;}
+.rl-halo{fill:var(--rl-g);fill-opacity:.13;}
+.rl-h:hover .rl-halo,.rl-h.is-drag .rl-halo{fill-opacity:.24;}
+.rl-h:focus-visible .rl-halo{fill-opacity:.25;stroke:var(--rl-g);stroke-width:2.5;}
+.rl-hdot{fill:var(--rl-g);}
+.rl-harr{fill:none;stroke:var(--rl-bg);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+
+.rl-ctl{display:flex;flex-direction:column;gap:10px;}
+.rl-sets,.rl-models{display:flex;gap:6px;flex-wrap:wrap;}
+.ls-phone .rl-sets,.ls-phone .rl-models{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
+.rl-chip,.rl-mchip{min-height:40px;}
+.rl-chip[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:800;}
+.rl-mchip[aria-pressed="true"]{border-color:var(--rl-g);color:var(--rl-g);box-shadow:inset 0 0 0 1.5px var(--rl-g);background:var(--rl-tint);}
+.rl-mchip:disabled{opacity:.45;cursor:not-allowed;}
+.rl-slot .bt-slider{margin:0;}
+.rl-rule{font-size:14px;color:var(--muted);}
+.rl-ktbl,.rl-dtbl{font-variant-numeric:tabular-nums;}
+.rl-full{font-family:var(--font-mono,ui-monospace,monospace);font-size:13px;color:var(--muted);}
+.rl-pos{color:var(--rl-pos);} .rl-neg{color:var(--rl-neg);}
+.rl-sse{font-size:14px;}
+.rl-tabwrap{overflow-x:auto;margin:0 0 6px;}
+.rl-dtab{border-collapse:collapse;font:600 13.5px var(--font-ui);margin:0 auto;font-variant-numeric:tabular-nums;}
+.rl-dtab th,.rl-dtab td{border:1px solid var(--line);padding:4px 8px;text-align:center;}
+.rl-dtab th{background:var(--rl-tint);font-weight:800;}
+.rl-figwrap .pcalc-plot{width:100%;height:auto;}
+.ls-root .rl-figwrap{height:100%;display:flex;}
+.ls-root .rl-figwrap .pcalc-plot{height:100%;}
+.ls-root .cd-extra .rl-tabwrap + div{flex:1;min-height:0;}

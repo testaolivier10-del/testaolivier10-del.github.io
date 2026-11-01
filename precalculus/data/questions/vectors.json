@@ -1,0 +1,479 @@
+{
+ "stimuli": {
+  "vectors-s1": {
+   "kind": "graph",
+   "title": "Two vectors on a grid",
+   "figure": "vectors-grid",
+   "text": "<p>Vector $\\mathbf{u}$ is drawn from $(0, 0)$ to $(4, 1)$; vector $\\mathbf{v}$ is drawn from $(2, 1)$ to $(1, 4)$.</p>"
+  },
+  "vectors-s2": {
+   "kind": "table",
+   "title": "A boat and a current",
+   "text": "<p>A boat is steered $30^\\circ$ north of east at $12$ km/h through still water. A current flows due south at $4$ km/h. East is the positive $x$ direction and north the positive $y$ direction.</p>",
+   "table": {
+    "caption": "The two motions acting on the boat, in kilometers per hour",
+    "cols": [
+     "Motion",
+     "Speed (km/h)",
+     "Direction"
+    ],
+    "rows": [
+     [
+      "Boat through the water",
+      "12",
+      "30° north of east"
+     ],
+     [
+      "Current",
+      "4",
+      "due south"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-vectors-1",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vectors-s1",
+   "q": "What are the components of $\\mathbf{v}$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle -1, 3 \\right\\rangle$",
+    "$\\left\\langle 1, -3 \\right\\rangle$",
+    "$\\left\\langle 1, 4 \\right\\rangle$",
+    "$\\left\\langle 3, -1 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Terminal minus initial: $\\left\\langle 1 - 2, 4 - 1 \\right\\rangle = \\left\\langle -1, 3 \\right\\rangle$, one unit left and three up.",
+    "options": [
+     "$1 - 2 = -1$ across, $4 - 1 = 3$ up.",
+     "This subtracts the other way, from tip to tail; it points the opposite direction.",
+     "$(1, 4)$ is where the arrow ends; subtract where it starts.",
+     "The components are swapped."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vectors-2",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vectors-s1",
+   "q": "What is $\\mathbf{u} + \\mathbf{v}$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 3, 4 \\right\\rangle$",
+    "$\\left\\langle 5, -2 \\right\\rangle$",
+    "$\\left\\langle -4, 3 \\right\\rangle$",
+    "$\\left\\langle 4, 4 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\left\\langle 4 + (-1), 1 + 3 \\right\\rangle = \\left\\langle 3, 4 \\right\\rangle$, adding matching components.",
+    "options": [
+     "$4 - 1 = 3$ and $1 + 3 = 4$.",
+     "This is $\\mathbf{u} - \\mathbf{v}$.",
+     "This multiplies matching components; add them.",
+     "$4 + (-1) = 3$, not $4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vectors-3",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vectors-s1",
+   "q": "What is $\\left\\| \\mathbf{u} + \\mathbf{v} \\right\\|$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "Square the components before adding: $\\sqrt{3^2 + 4^2}$."
+     },
+     {
+      "value": 25,
+      "why": "$25$ is the length squared; take the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\left\\| \\left\\langle 3, 4 \\right\\rangle \\right\\| = \\sqrt{9 + 16} = 5$."
+   }
+  },
+  {
+   "id": "pcalc-vectors-4",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vectors-s1",
+   "q": "What is $\\mathbf{u} \\cdot \\mathbf{v}$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 11,
+      "why": "Multiply matching components: $4(-1) + 1(3)$, not $4(3) + 1(-1)$."
+     },
+     {
+      "value": 7,
+      "why": "$7$ drops the sign of $-1$: $4(-1) = -4$, so the sum is $-4 + 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$4(-1) + 1(3) = -4 + 3 = -1$. It is negative, so the angle between $\\mathbf{u}$ and $\\mathbf{v}$ is more than $\\frac{\\pi}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-vectors-5",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vectors-s1",
+   "q": "What is $2\\mathbf{u} - \\mathbf{v}$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 9, -1 \\right\\rangle$",
+    "$\\left\\langle 7, 5 \\right\\rangle$",
+    "$\\left\\langle 8, -2 \\right\\rangle$",
+    "$\\left\\langle 9, 5 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$2\\mathbf{u} = \\left\\langle 8, 2 \\right\\rangle$, then $\\left\\langle 8 - (-1), 2 - 3 \\right\\rangle = \\left\\langle 9, -1 \\right\\rangle$.",
+    "options": [
+     "$8 + 1 = 9$, $2 - 3 = -1$.",
+     "This is $2\\mathbf{u} + \\mathbf{v}$.",
+     "Subtracting $-1$ adds $1$: $8 - (-1) = 9$.",
+     "$2 - 3 = -1$, not $5$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vectors-6",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vectors-s2",
+   "q": "Which vector gives the boat's motion through the water?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 6\\sqrt{3}, 6 \\right\\rangle$",
+    "$\\left\\langle 6, 6\\sqrt{3} \\right\\rangle$",
+    "$\\left\\langle 12\\sqrt{3}, 12 \\right\\rangle$",
+    "$\\left\\langle 6\\sqrt{3}, -6 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\left\\langle 12\\cos 30^\\circ, 12\\sin 30^\\circ \\right\\rangle = \\left\\langle 12 \\cdot \\frac{\\sqrt{3}}{2}, 12 \\cdot \\frac{1}{2} \\right\\rangle = \\left\\langle 6\\sqrt{3}, 6 \\right\\rangle$.",
+    "options": [
+     "$x$ uses cosine, $y$ uses sine.",
+     "Cosine and sine are swapped; that is $60^\\circ$ north of east.",
+     "Multiply by $\\frac{\\sqrt{3}}{2}$ and $\\frac{1}{2}$, not by $\\sqrt{3}$ and $1$.",
+     "North of east is the positive $y$ direction."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vectors-7",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vectors-s2",
+   "q": "Which vector gives the boat's actual motion, with the current included?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 6\\sqrt{3}, 2 \\right\\rangle$",
+    "$\\left\\langle 6\\sqrt{3}, 10 \\right\\rangle$",
+    "$\\left\\langle 6\\sqrt{3} - 4, 6 \\right\\rangle$",
+    "$\\left\\langle 6\\sqrt{3}, -2 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\left\\langle 6\\sqrt{3}, 6 \\right\\rangle + \\left\\langle 0, -4 \\right\\rangle = \\left\\langle 6\\sqrt{3}, 2 \\right\\rangle$.",
+    "options": [
+     "The current changes only the north component: $6 - 4 = 2$.",
+     "South is negative; add $-4$, not $4$.",
+     "The current has no east component; subtract from $y$.",
+     "$6 - 4 = 2$, which is positive."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vectors-8",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vectors-s2",
+   "q": "What is the boat's actual speed, in km/h?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "4*sqrt(7)",
+    "unit": "km/h",
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "Speeds subtract only when the motions are opposite. Add the vectors, then take the length."
+     },
+     {
+      "value": 16,
+      "why": "Speeds add only when the motions point the same way. Use the length of the sum."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\left\\| \\left\\langle 6\\sqrt{3}, 2 \\right\\rangle \\right\\| = \\sqrt{108 + 4} = \\sqrt{112} = 4\\sqrt{7} \\approx 10.583$ km/h."
+   }
+  },
+  {
+   "id": "pcalc-vectors-9",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "vectors-s2",
+   "q": "How does the direction of the boat's actual path compare with its heading?",
+   "type": "single",
+   "options": [
+    "It points between due east and the heading, closer to east",
+    "It points more to the north than the heading does",
+    "It points the same way as the heading",
+    "It points south of east"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The actual vector $\\left\\langle 6\\sqrt{3}, 2 \\right\\rangle$ has the same east part as the heading but a smaller north part ($2$ instead of $6$), so it is less steep: still north of east, below $30^\\circ$.",
+    "options": [
+     "Same east part, smaller north part.",
+     "The current pushes south, so the path tilts less to the north.",
+     "The north component changed from $6$ to $2$.",
+     "The north component $2$ is still positive."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vectors-10",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the unit vector in the direction of $\\left\\langle 5, -12 \\right\\rangle$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle \\frac{5}{13}, -\\frac{12}{13} \\right\\rangle$",
+    "$\\left\\langle \\frac{5}{17}, -\\frac{12}{17} \\right\\rangle$",
+    "$\\left\\langle 1, -1 \\right\\rangle$",
+    "$\\left\\langle \\frac{5}{7}, -\\frac{12}{7} \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The length is $\\sqrt{25 + 144} = 13$. Divide each component by $13$.",
+    "options": [
+     "Each component over the length $13$.",
+     "$17 = 5 + 12$ is not the length; use $\\sqrt{5^2 + 12^2}$.",
+     "This changes the direction; the ratio of components must stay $5 : -12$.",
+     "$7 = 12 - 5$ is not the length."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vectors-11",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which vector is perpendicular to $\\left\\langle 2, 3 \\right\\rangle$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle -3, 2 \\right\\rangle$",
+    "$\\left\\langle 3, 2 \\right\\rangle$",
+    "$\\left\\langle -2, -3 \\right\\rangle$",
+    "$\\left\\langle 2, -3 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\left\\langle 2, 3 \\right\\rangle \\cdot \\left\\langle -3, 2 \\right\\rangle = -6 + 6 = 0$, so the vectors are perpendicular.",
+    "options": [
+     "Dot product $0$.",
+     "$6 + 6 = 12$, not $0$.",
+     "This points the opposite way: dot product $-13$.",
+     "$4 - 9 = -5$, not $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vectors-12",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the angle between $\\left\\langle 1, 0 \\right\\rangle$ and $\\left\\langle 1, \\sqrt{3} \\right\\rangle$, in radians.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "pi/3",
+    "mistakes": [
+     {
+      "value": "pi/6",
+      "why": "$\\cos\\theta = \\frac{1}{2}$ gives $\\theta = \\frac{\\pi}{3}$; $\\frac{\\pi}{6}$ has cosine $\\frac{\\sqrt{3}}{2}$."
+     },
+     {
+      "value": "1/2",
+      "why": "$\\frac{1}{2}$ is $\\cos\\theta$; the angle is $\\cos^{-1}\\frac{1}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\cos\\theta = \\frac{1(1) + 0(\\sqrt{3})}{1 \\cdot 2} = \\frac{1}{2}$, so $\\theta = \\frac{\\pi}{3}$."
+   }
+  },
+  {
+   "id": "pcalc-vectors-13",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For which $k$ is $\\left\\langle k, 4 \\right\\rangle$ perpendicular to $\\left\\langle 2, -3 \\right\\rangle$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 6,
+    "mistakes": [
+     {
+      "value": -6,
+      "why": "$2k + 4(-3) = 0$ gives $2k = 12$; keep the sign of $-3$."
+     },
+     {
+      "value": 12,
+      "why": "$2k = 12$, so divide by $2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Set the dot product to $0$: $2k + 4(-3) = 0$, so $2k = 12$ and $k = 6$."
+   }
+  },
+  {
+   "id": "pcalc-vectors-14",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Write the magnitude of $\\left\\langle x, 3 \\right\\rangle$ as an expression in $x$.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "x"
+    ],
+    "mode": "exact",
+    "answer": "sqrt(x^2 + 9)",
+    "domain": [
+     -4,
+     4
+    ],
+    "lhs": "\\left\\| \\left\\langle x, 3 \\right\\rangle \\right\\| =",
+    "mistakes": [
+     {
+      "expr": "x + 3",
+      "why": "Square each component, add, then take the square root: $\\sqrt{x^2 + 3^2}$."
+     },
+     {
+      "expr": "sqrt(x^2 + 3)",
+      "why": "Square the second component too: $3^2 = 9$."
+     },
+     {
+      "expr": "x^2 + 9",
+      "why": "That is the magnitude squared; take the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sqrt{x^2 + 3^2} = \\sqrt{x^2 + 9}$."
+   }
+  },
+  {
+   "id": "pcalc-vectors-15",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "How does $-2\\mathbf{v}$ compare with $\\mathbf{v}$?",
+   "type": "single",
+   "options": [
+    "Twice as long, pointing the opposite way",
+    "Twice as long, pointing the same way",
+    "Half as long, pointing the opposite way",
+    "The same length, pointing the opposite way"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Multiplying by $-2$ doubles each component and flips each sign: length times $|-2| = 2$, direction reversed.",
+    "options": [
+     "$|-2| = 2$ and the sign reverses.",
+     "The negative sign reverses the direction.",
+     "$|-2| = 2$ doubles the length.",
+     "The factor $2$ doubles the length."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vectors-16",
+   "unit": "unit-4",
+   "topic": "vectors",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these equal $\\left\\langle 4, -2 \\right\\rangle$? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$4\\mathbf{i} - 2\\mathbf{j}$",
+    "The vector from $(1, 3)$ to $(5, 1)$",
+    "The vector from $(5, 1)$ to $(1, 3)$",
+    "$2\\left\\langle 1, -2 \\right\\rangle$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$4\\mathbf{i} - 2\\mathbf{j}$ is the same vector written another way, and from $(1, 3)$ to $(5, 1)$ the move is $5 - 1 = 4$ across and $1 - 3 = -2$ up.",
+    "options": [
+     "$a\\mathbf{i} + b\\mathbf{j} = $ the vector with components $a$ and $b$.",
+     "$4$ across and $-2$ up.",
+     "Going the other way gives $-4$ and $2$: the opposite vector.",
+     "$2\\left\\langle 1, -2 \\right\\rangle = \\left\\langle 2, -4 \\right\\rangle$."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+{
+ "log-properties": {
+  "def": "Rules for rewriting logarithms, for positive $x$ and $y$: product $\\log_b(xy) = \\log_b x + \\log_b y$; quotient $\\log_b \\frac{x}{y} = \\log_b x - \\log_b y$; power $\\log_b(x^n) = n\\log_b x$; change of base $\\log_b x = \\frac{\\log_a x}{\\log_a b}$."
+ }
+}

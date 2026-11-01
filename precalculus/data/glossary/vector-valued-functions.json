@@ -1,0 +1,5 @@
+{
+ "vector-function": {
+  "def": "A function that gives a vector for each input, p(t) = ⟨x(t), y(t)⟩ = x(t)i + y(t)j. Drawn from the origin, p(t) is the position vector of the point (x(t), y(t)), and its tip traces the parametric curve. p(t2) − p(t1) is the displacement, and dividing by t2 − t1 gives the average rate of change vector."
+ }
+}

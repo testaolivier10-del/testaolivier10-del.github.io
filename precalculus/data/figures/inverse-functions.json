@@ -1,0 +1,11 @@
+{
+ "inverse-functions-reflect": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graph of f(x) = x squared over 4 for x at least 0 and its inverse 2 times the square root of x, mirror images across the dashed line y = x; (2, 1) on f matches (1, 2) on the inverse.",
+  "ext": "svg",
+  "w": 360,
+  "h": 340
+ }
+}

@@ -1,0 +1,469 @@
+{
+ "stimuli": {
+  "matrix-modeling-s1": {
+   "kind": "diagram",
+   "title": "A two-station bike share",
+   "figure": "matrix-modeling-bikes",
+   "text": "<p>A bike-share system has $500$ bikes. Today $400$ are at station A and $100$ at station B. The diagram shows the chance that a bike moves or stays each day.</p>"
+  },
+  "matrix-modeling-s2": {
+   "kind": "table",
+   "title": "Sunny and rainy days",
+   "text": "<p>In one town, tomorrow's weather depends only on today's. Today is rainy.</p>",
+   "table": {
+    "caption": "Chance of tomorrow's weather (rows) given today's weather (columns)",
+    "cols": [
+     "Tomorrow",
+     "Today sunny",
+     "Today rainy"
+    ],
+    "rows": [
+     [
+      "Sunny",
+      "0.9",
+      "0.5"
+     ],
+     [
+      "Rainy",
+      "0.1",
+      "0.5"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-matrix-modeling-1",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrix-modeling-s1",
+   "q": "Which transition matrix, with \"from\" columns (A, B) and \"to\" rows (A, B), models one day?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 0.8 & 0.3 \\\\ 0.2 & 0.7 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0.8 & 0.2 \\\\ 0.3 & 0.7 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0.8 & 0.2 \\\\ 0.7 & 0.3 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0.2 & 0.7 \\\\ 0.8 & 0.3 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Column 1 is a bike at A: stays $0.8$, goes to B $0.2$. Column 2 is a bike at B: goes to A $0.3$, stays $0.7$. Each column adds up to $1$.",
+    "options": [
+     "Columns $(0.8, 0.2)$ and $(0.3, 0.7)$.",
+     "This puts \"from\" in the rows; its columns add up to $1.1$ and $0.9$.",
+     "The chances for B are reversed: a bike at B stays with chance $0.7$.",
+     "The stay and move chances are swapped."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-2",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrix-modeling-s1",
+   "q": "How many bikes are expected at station A after one day?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 350,
+    "unit": "bikes",
+    "mistakes": [
+     {
+      "value": 340,
+      "why": "That uses rows as \"from\": $0.8(400) + 0.2(100)$. Bikes arriving at A from B come with chance $0.3$: $0.8(400) + 0.3(100)$."
+     },
+     {
+      "value": 320,
+      "why": "$320$ bikes stay at A, but $0.3(100) = 30$ more arrive from B."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Row 1 of $T$ times $\\left[ \\begin{matrix} 400 \\\\ 100 \\end{matrix} \\right]$: $0.8(400) + 0.3(100) = 320 + 30 = 350$."
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-3",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrix-modeling-s1",
+   "q": "How many bikes are expected at station A after two days?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 325,
+    "unit": "bikes",
+    "mistakes": [
+     {
+      "value": 350,
+      "why": "That is after one day. Multiply by $T$ again."
+     },
+     {
+      "value": 300,
+      "why": "$300$ is the long-run number; after two days the count is still on its way there."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\mathbf{x}_1 = \\left[ \\begin{matrix} 350 \\\\ 150 \\end{matrix} \\right]$, so after two days A has $0.8(350) + 0.3(150) = 280 + 45 = 325$ bikes."
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-4",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "matrix-modeling-s1",
+   "q": "In the long run, how many bikes are expected at station A?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 300,
+    "unit": "bikes",
+    "mistakes": [
+     {
+      "value": 250,
+      "why": "The stations do not split evenly. Balance the flows: $0.2a = 0.3b$ with $a + b = 500$."
+     },
+     {
+      "value": 400,
+      "why": "The count moves away from the start: $350$, $325$, ... Solve $0.2a = 0.3b$, $a + b = 500$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At a steady state $0.2a = 0.3b$, so $a = 1.5b$; with $a + b = 500$, $b = 200$ and $a = 300$. Check: $0.8(300) + 0.3(200) = 300$."
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-5",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrix-modeling-s1",
+   "q": "Today's state is $\\left[ \\begin{matrix} 400 \\\\ 100 \\end{matrix} \\right]$. Which calculation gives the expected state yesterday?",
+   "type": "single",
+   "options": [
+    "$T^{-1}\\left[ \\begin{matrix} 400 \\\\ 100 \\end{matrix} \\right]$",
+    "$T\\left[ \\begin{matrix} 400 \\\\ 100 \\end{matrix} \\right]$",
+    "$T^2\\left[ \\begin{matrix} 400 \\\\ 100 \\end{matrix} \\right]$",
+    "$-T\\left[ \\begin{matrix} 400 \\\\ 100 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Yesterday's state $\\mathbf{y}$ satisfies $T\\mathbf{y} = \\left[ \\begin{matrix} 400 \\\\ 100 \\end{matrix} \\right]$, so $\\mathbf{y} = T^{-1}\\left[ \\begin{matrix} 400 \\\\ 100 \\end{matrix} \\right]$.",
+    "options": [
+     "$T^{-1}$ steps back one day.",
+     "$T$ steps forward to tomorrow.",
+     "$T^2$ steps two days forward.",
+     "A negative matrix gives negative bike counts; undoing a step needs the inverse."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-6",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrix-modeling-s2",
+   "calc": true,
+   "q": "What is the chance that it is sunny two days from today?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 0.7,
+    "mistakes": [
+     {
+      "value": 0.5,
+      "why": "$0.5$ is the chance for tomorrow. Multiply by the matrix twice."
+     },
+     {
+      "value": 0.9,
+      "why": "$0.9$ is the chance of sun after a sunny day; today is rainy."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With $T = \\left[ \\begin{matrix} 0.9 & 0.5 \\\\ 0.1 & 0.5 \\end{matrix} \\right]$ and today $\\left[ \\begin{matrix} 0 \\\\ 1 \\end{matrix} \\right]$: tomorrow $\\left[ \\begin{matrix} 0.5 \\\\ 0.5 \\end{matrix} \\right]$, then $0.9(0.5) + 0.5(0.5) = 0.7$."
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-7",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrix-modeling-s2",
+   "calc": true,
+   "q": "What is the chance that it is sunny five days from today? Give your answer correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 0.8248000000000001,
+    "mistakes": [
+     {
+      "value": 0.8350400000000002,
+      "why": "That starts from a sunny day. Today is rainy: use $T^5$ times the vector $(0, 1)$."
+     },
+     {
+      "value": 0.8333333333333334,
+      "why": "That is the long-run chance. After five days the chance is still slightly below it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Enter $T$ in the calculator and compute $T^5\\left[ \\begin{matrix} 0 \\\\ 1 \\end{matrix} \\right]$: the first entry is $0.8248$."
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-8",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "matrix-modeling-s2",
+   "calc": true,
+   "q": "In the long run, what share of days are sunny? Give your answer correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 0.8333333333333334,
+    "mistakes": [
+     {
+      "value": 0.9,
+      "why": "$0.9$ is the chance of sun after a sunny day. Solve $0.1s = 0.5(1 - s)$ for the steady share."
+     },
+     {
+      "value": 0.7,
+      "why": "That is the chance two days out. Find the steady state, or compute $T^n$ for large $n$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At a steady state the flows balance: $0.1s = 0.5(1 - s)$, so $0.6s = 0.5$ and $s = \\frac{5}{6} \\approx 0.833$. A calculator check: $T^{30}$ has both columns close to $(0.833, 0.167)$."
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-9",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrix-modeling-s2",
+   "calc": true,
+   "q": "Which expression gives the weather state five days from today?",
+   "type": "single",
+   "options": [
+    "$T^5\\left[ \\begin{matrix} 0 \\\\ 1 \\end{matrix} \\right]$",
+    "$5T\\left[ \\begin{matrix} 0 \\\\ 1 \\end{matrix} \\right]$",
+    "$T\\left[ \\begin{matrix} 0 \\\\ 5 \\end{matrix} \\right]$",
+    "$T^5\\left[ \\begin{matrix} 1 \\\\ 0 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each day multiplies by $T$, so five days multiply by $T^5$. Today is rainy: the vector $(0, 1)$.",
+    "options": [
+     "Five steps: $T^5$.",
+     "$5T$ multiplies each chance by $5$; chances above $1$ make no sense.",
+     "The state lists chances that add up to $1$, not a count of days.",
+     "This starts from a sunny day."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-10",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "Why does each column of a transition matrix (with \"from\" columns) add up to 1?",
+   "type": "single",
+   "options": [
+    "Everything in a state ends the step in some state",
+    "Each row lists the states something can come from",
+    "The matrix has an inverse",
+    "The state vector has two entries"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A column lists the chances for one starting state across every possible ending state, and something must end somewhere.",
+    "options": [
+     "The chances for one starting state cover every outcome.",
+     "Rows collect arrivals; their sums can be anything.",
+     "Columns adding up to 1 does not make a matrix invertible.",
+     "The number of entries does not set the sum."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-11",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which could be a transition matrix with \"from\" columns?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 0.6 & 0.1 \\\\ 0.4 & 0.9 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0.6 & 0.4 \\\\ 0.6 & 0.4 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0.5 & 1.2 \\\\ 0.5 & -0.2 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0.3 & 0.3 \\\\ 0.3 & 0.3 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Entries between $0$ and $1$, and each column adds up to $1$: $0.6 + 0.4$ and $0.1 + 0.9$.",
+    "options": [
+     "Valid chances, columns add up to $1$.",
+     "Its columns add up to $1.2$ and $0.8$.",
+     "A chance cannot be $1.2$ or $-0.2$.",
+     "Its columns add up to $0.6$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-12",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $T = \\left[ \\begin{matrix} 0.9 & 0.2 \\\\ 0.1 & 0.8 \\end{matrix} \\right]$, what share is in the first state at the steady state?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "2/3",
+    "mistakes": [
+     {
+      "value": "1/3",
+      "why": "That is the second state. Balance $0.1a = 0.2b$: $a = 2b$, so $a = \\frac{2}{3}$."
+     },
+     {
+      "value": 0.9,
+      "why": "$0.9$ is a one-step chance, not the long-run share."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Flows balance: $0.1a = 0.2b$, so $a = 2b$. With $a + b = 1$, $a = \\frac{2}{3}$."
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-13",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "With $T = \\left[ \\begin{matrix} 0.8 & 0.3 \\\\ 0.2 & 0.7 \\end{matrix} \\right]$, a share $p$ of the bikes start at A and $1 - p$ at B. Write the share at A after one day.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "p"
+    ],
+    "mode": "exact",
+    "answer": "0.5p + 0.3",
+    "domain": [
+     0,
+     1
+    ],
+    "mistakes": [
+     {
+      "expr": "0.8p + 0.2(1 - p)",
+      "why": "Bikes arrive at A from B with chance $0.3$ (row 1, column 2), not $0.2$."
+     },
+     {
+      "expr": "0.8p",
+      "why": "Add the bikes arriving from B: $0.3(1 - p)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Row 1 of $T$ times $(p, 1 - p)$: $0.8p + 0.3(1 - p) = 0.8p + 0.3 - 0.3p = 0.5p + 0.3$."
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-14",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does $T^{-1}$ give the state one step earlier?",
+   "type": "single",
+   "options": [
+    "If $T\\mathbf{y} = \\mathbf{x}$, multiplying by $T^{-1}$ gives $\\mathbf{y} = T^{-1}\\mathbf{x}$",
+    "$T^{-1}$ has the same columns as $T$ in reverse order",
+    "Each column of $T^{-1}$ adds up to $-1$",
+    "$T^{-1}$ is $T$ with each chance replaced by its reciprocal"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "One step forward from $\\mathbf{y}$ gives $\\mathbf{x}$: $T\\mathbf{y} = \\mathbf{x}$. The inverse undoes $T$, so $\\mathbf{y} = T^{-1}\\mathbf{x}$.",
+    "options": [
+     "The inverse undoes one step.",
+     "Swapping columns is a different matrix, not the inverse.",
+     "Column sums are not the reason; for an invertible transition matrix the columns of $T^{-1}$ add up to $1$, not $-1$.",
+     "Reciprocals of entries do not undo matrix multiplication."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-15",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The 500 bikes start with more at A, say 450 at A and 50 at B, instead of 400 and 100. Predict each change.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The number of bikes at A after one day",
+     "answer": "up",
+     "why": "$0.8(450) + 0.3(50) = 375$, more than $350$: more bikes start where most stay."
+    },
+    {
+     "name": "The long-run number at A",
+     "answer": "none",
+     "why": "The steady state comes from $T$ and the total, $500$: still $300$."
+    }
+   ],
+   "why": {
+    "correct": "The start changes the next few days, not where the system settles."
+   }
+  },
+  {
+   "id": "pcalc-matrix-modeling-16",
+   "unit": "unit-4",
+   "topic": "matrix-modeling",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for predicting the state two steps ahead in order.",
+   "type": "order",
+   "options": [
+    "Write the transition matrix $T$ with \"from\" columns",
+    "Check that each column of $T$ adds up to $1$",
+    "Compute $\\mathbf{x}_1 = T\\mathbf{x}_0$ from the current state $\\mathbf{x}_0$",
+    "Compute $\\mathbf{x}_2 = T\\mathbf{x}_1$"
+   ],
+   "why": {
+    "correct": "Set up $T$ and check it, then step forward twice (or compute $T^2\\mathbf{x}_0$ at once)."
+   }
+  }
+ ]
+}

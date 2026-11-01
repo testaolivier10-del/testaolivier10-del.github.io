@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 480" width="560" height="480" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Tangent of an angle as a height on the line x = 1</title>
+<desc id="d">A unit circle with an angle theta of about 0.9 radians in standard position. The terminal ray passes through the point (cos theta, sin theta) on the circle and continues to the dashed vertical line x = 1, which it meets at (1, tan theta). The vertical segment from the x-axis up to that point has length tan theta, which is also the slope of the terminal ray.</desc>
+<rect width="560" height="480" fill="#FFFFFF"/>
+<line x1="20" y1="290" x2="540" y2="290" stroke="#5A6563" stroke-width="1.4"/>
+<line x1="200" y1="460" x2="200" y2="48" stroke="#5A6563" stroke-width="1.4"/>
+<text x="536" y="282" font-size="15" fill="#1F2A28" text-anchor="end" font-style="italic">x</text>
+<text x="210" y="60" font-size="15" fill="#1F2A28" text-anchor="start" font-style="italic">y</text>
+<circle cx="200" cy="290" r="150" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<line x1="350" y1="48" x2="350" y2="460" stroke="#0072B2" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="358" y="452" font-size="15" fill="#0072B2" text-anchor="start">x = 1</text>
+<line x1="200" y1="290" x2="350" y2="100.98" stroke="#11592F" stroke-width="2.6"/>
+<line x1="350" y1="290" x2="350" y2="100.98" stroke="#D55E00" stroke-width="4"/>
+<path d="M238,290 A38,38 0 0 0 223.62,260.23" fill="none" stroke="#1F2A28" stroke-width="1.6"/>
+<text x="250" y="274" font-size="17" fill="#1F2A28" text-anchor="middle" font-style="italic">θ</text>
+<circle cx="293.24" cy="172.5" r="5" fill="#11592F" stroke="#11592F" stroke-width="2"/>
+<circle cx="350" cy="100.98" r="5" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
+<text x="283.24" y="160.5" font-size="15" fill="#1F2A28" text-anchor="end">(cos θ, sin θ)</text>
+<text x="362" y="105.98" font-size="15" fill="#D55E00" text-anchor="start">(1, tan θ)</text>
+<text x="362" y="200.49" font-size="14" fill="#D55E00" text-anchor="start">height tan θ</text>
+<text x="344" y="308" font-size="14" fill="#5A6563" text-anchor="end">1</text>
+<text x="206" y="308" font-size="14" fill="#5A6563" text-anchor="start">0</text>
+<text x="280" y="22" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="bold">The terminal ray of θ meets x = 1 at height tan θ</text>
+</svg>

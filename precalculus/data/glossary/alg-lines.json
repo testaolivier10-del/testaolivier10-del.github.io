@@ -1,0 +1,8 @@
+{
+ "slope": {
+  "def": "The change in $y$ divided by the change in $x$ between two points of a line, $\\frac{y_2 - y_1}{x_2 - x_1}$. A line has the same slope between any two of its points."
+ },
+ "line-equation": {
+  "def": "Point-slope form $y - y_1 = m(x - x_1)$ is the line through $(x_1, y_1)$ with slope $m$; slope-intercept form $y = mx + b$ has slope $m$ and $y$-intercept $(0, b)$."
+ }
+}

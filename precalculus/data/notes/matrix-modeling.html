@@ -1,0 +1,39 @@
+<p>Matrices model situations where things move between a few states in steps: bikes between stations each day, customers between phone plans each month, a town's weather from one day to the next. If the chance of each move stays the same from step to step, one matrix predicts the whole future.</p>
+
+<h2>The transition matrix</h2>
+<p>Each day a bike at station A stays there with chance $0.8$ and is ridden to B with chance $0.2$. A bike at B goes to A with chance $0.3$ and stays with chance $0.7$. Put each station's chances in a column, "from" across the top and "to" down the side:</p>
+<table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">from A</th><th scope="col">from B</th></tr></thead>
+<tbody>
+<tr><th scope="row">to A</th><td>$0.8$</td><td>$0.3$</td></tr>
+<tr><th scope="row">to B</th><td>$0.2$</td><td>$0.7$</td></tr>
+</tbody>
+</table>
+$$T = \left[ \begin{matrix} 0.8 & 0.3 \\ 0.2 & 0.7 \end{matrix} \right]$$
+<p>This is a <b>transition matrix</b>. Each column adds up to $1$, because every bike ends the day somewhere. (Some books put "from" in the rows and multiply on the other side; the numbers are the same, read the other way. Check which way a matrix is set up before using it.)</p>
+<figure id="fig-bikes" data-fig="matrix-modeling-bikes"><figcaption>The bike-share model as a diagram.</figcaption></figure>
+
+<h2>One step forward</h2>
+<p>A <b>state vector</b> lists how many are in each state, here $\mathbf{x}_0 = \left[ \begin{matrix} 400 \\ 100 \end{matrix} \right]$: $400$ bikes at A and $100$ at B. The expected numbers one day later are $T\mathbf{x}_0$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Predict the bikes at each station after one day and after two days.</p>
+<p>$\mathbf{x}_1 = \left[ \begin{matrix} 0.8 & 0.3 \\ 0.2 & 0.7 \end{matrix} \right]\left[ \begin{matrix} 400 \\ 100 \end{matrix} \right] = \left[ \begin{matrix} 0.8(400) + 0.3(100) \\ 0.2(400) + 0.7(100) \end{matrix} \right] = \left[ \begin{matrix} 350 \\ 150 \end{matrix} \right]$.</p>
+<p>Row 1 collects everything that ends at A: $320$ bikes that stayed plus $30$ that came over from B.</p>
+<p>$\mathbf{x}_2 = T\mathbf{x}_1 = \left[ \begin{matrix} 0.8(350) + 0.3(150) \\ 0.2(350) + 0.7(150) \end{matrix} \right] = \left[ \begin{matrix} 325 \\ 175 \end{matrix} \right]$. The total stays $500$.</p>
+</div>
+<p>In general $\mathbf{x}_n = T^n\mathbf{x}_0$. A calculator with matrix operations finds $T^{10}$ or $T^{30}$ in one step.</p>
+
+<h2>One step back</h2>
+<p>If today's state is known, yesterday's solves $T\mathbf{x}_{\text{yesterday}} = \mathbf{x}_{\text{today}}$, so $\mathbf{x}_{\text{yesterday}} = T^{-1}\mathbf{x}_{\text{today}}$. Here $\det T = 0.56 - 0.06 = 0.5$, and $T^{-1}\left[ \begin{matrix} 350 \\ 150 \end{matrix} \right] = \left[ \begin{matrix} 400 \\ 100 \end{matrix} \right]$, the starting state, as it should be.</p>
+
+<h2>The long run</h2>
+<p>Keep stepping and the numbers settle: $350$, $325$, $312.5$, ... at A, approaching $300$. A <b>steady state</b> is a vector that one more step does not change: $T\mathbf{x} = \mathbf{x}$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the steady state for $500$ bikes.</p>
+<p>At a steady state the bikes leaving A balance those arriving: $0.2a = 0.3b$, so $a = 1.5b$. With $a + b = 500$: $2.5b = 500$, $b = 200$, $a = 300$.</p>
+<p>Check: $T\left[ \begin{matrix} 300 \\ 200 \end{matrix} \right] = \left[ \begin{matrix} 240 + 60 \\ 60 + 140 \end{matrix} \right] = \left[ \begin{matrix} 300 \\ 200 \end{matrix} \right]$.</p>
+</div>
+<p>The steady state does not depend on how the bikes start; with $400$ or $100$ at A, the system drifts toward $300$ and $200$.</p>
+
+<h2>Shares instead of counts</h2>
+<p>The same matrix works with shares that add up to $1$. If today is rainy, the weather state is $\left[ \begin{matrix} 0 \\ 1 \end{matrix} \right]$ (chance of sun $0$, chance of rain $1$), and $T^n\left[ \begin{matrix} 0 \\ 1 \end{matrix} \right]$ gives the chances of sun and rain $n$ days later.</p>

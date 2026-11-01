@@ -1,0 +1,5 @@
+{
+ "special-angle": {
+  "def": "A multiple of $\\frac{\\pi}{6}$ or $\\frac{\\pi}{4}$, whose sine and cosine are known exactly from the special right triangles. Its reference angle, the acute angle between its terminal ray and the $x$-axis, gives the size of each value; the quadrant gives the sign."
+ }
+}

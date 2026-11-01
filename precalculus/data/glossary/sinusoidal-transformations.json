@@ -1,0 +1,5 @@
+{
+ "phase-shift": {
+  "def": "The horizontal translation of a sinusoidal function. In $f(\\theta) = a\\sin(b(\\theta + c)) + d$ the graph of $a\\sin(b\\theta) + d$ moves left $c$ units when $c > 0$ and right $|c|$ units when $c < 0$. Factor $b$ out of the input before reading it."
+ }
+}

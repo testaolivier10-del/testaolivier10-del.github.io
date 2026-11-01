@@ -1,0 +1,144 @@
+{
+ "id": "frq-q1-exponential-justify",
+ "type": "concepts",
+ "title": "A table, a cubic and a model type justified",
+ "calc": true,
+ "points": 6,
+ "units": [
+  "unit-1",
+  "unit-2"
+ ],
+ "topics": [
+  "model-validation",
+  "linear-vs-exponential"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "3.A",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Values of f, and the function g",
+  "text": "The table gives values of the increasing function $f$ at selected values of $x$. The function $g$ is given by $g(x) = x^3 - 6x^2 + 9x + 2$.",
+  "table": {
+   "caption": "Selected values of the function f",
+   "cols": [
+    "$x$",
+    "0",
+    "2",
+    "4",
+    "6",
+    "8"
+   ],
+   "rows": [
+    [
+     "$f(x)$",
+     "3",
+     "4.8",
+     "7.68",
+     "12.288",
+     "19.6608"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Find</b> the average rate of change of $f$ over the interval $0 \\le x \\le 4$ and over the interval $4 \\le x \\le 8$.",
+   "rubric": [
+    {
+     "point": "Both values: $1.17$ on $[0, 4]$ and $2.9952$ on $[4, 8]$, with the difference quotients",
+     "accept": [
+      "$\\frac{7.68 - 3}{4} = 1.17$ and $\\frac{19.6608 - 7.68}{4} = 2.9952$",
+      "values correct to three decimal places (2.995)"
+     ]
+    }
+   ],
+   "sample": "On $[0, 4]$: $\\frac{f(4) - f(0)}{4 - 0} = \\frac{7.68 - 3}{4} = 1.17$. On $[4, 8]$: $\\frac{f(8) - f(4)}{8 - 4} = \\frac{19.6608 - 7.68}{4} = 2.9952$."
+  },
+  {
+   "label": "A(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "Based on the results of part A(i), is the graph of $f$ concave up or concave down on $0 \\le x \\le 8$? <b>Give a reason</b> for your answer.",
+   "rubric": [
+    {
+     "point": "Concave up, with a reason: the average rates of change over consecutive equal-length intervals increase",
+     "accept": [
+      "\"concave up, because the average rate of change on [4, 8], 2.9952, is greater than on [0, 4], 1.17, and the intervals have equal length\"",
+      "\"the rate of change of f is increasing\""
+     ]
+    }
+   ],
+   "sample": "Concave up. Over the consecutive intervals $[0, 4]$ and $[4, 8]$, which have equal length, the average rate of change of $f$ increases from $1.17$ to $2.9952$, so the rate of change of $f$ is increasing."
+  },
+  {
+   "label": "B(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Solve</b> $g(x) = 4$ for all values of $x$. Give your answers correct to three decimal places where needed.",
+   "rubric": [
+    {
+     "point": "All three solutions and no others: $x = 0.268$, $x = 2$, $x = 3.732$",
+     "accept": [
+      "$0.267$ or $0.268$, $2$, $3.732$ (rounded or truncated)",
+      "$2 - \\sqrt{3}$, $2$, $2 + \\sqrt{3}$"
+     ]
+    }
+   ],
+   "sample": "Graph $y = g(x)$ and $y = 4$ and find every intersection (widen the window to be sure there are no more; a cubic has at most three): $x = 0.268$, $x = 2$ and $x = 3.732$."
+  },
+  {
+   "label": "B(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Express</b> the end behavior of $g$, as $x$ decreases without bound and as $x$ increases without bound, using the mathematical notation of limits.",
+   "rubric": [
+    {
+     "point": "Both limits correct in limit notation: $\\lim_{x \\to -\\infty} g(x) = -\\infty$ and $\\lim_{x \\to \\infty} g(x) = \\infty$",
+     "accept": [
+      "$\\lim_{x \\to -\\infty} g(x) = -\\infty$, $\\lim_{x \\to \\infty} g(x) = \\infty$"
+     ]
+    }
+   ],
+   "sample": "The leading term is $x^3$, so $\\lim_{x \\to -\\infty} g(x) = -\\infty$ and $\\lim_{x \\to \\infty} g(x) = \\infty$."
+  },
+  {
+   "label": "C(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "Is a linear function or an exponential function a better model for the values in the table? <b>Justify</b> your answer, using the input and output values in the table.",
+   "rubric": [
+    {
+     "point": "Exponential, with both halves: the input values change by equal amounts ($2$) and the output values change proportionally (constant ratio $1.6$)",
+     "accept": [
+      "\"exponential: over equal-length input intervals of 2, the outputs have a constant ratio, 4.8/3 = 7.68/4.8 = 12.288/7.68 = 19.6608/12.288 = 1.6\"",
+      "no point if either the equal-length input intervals or the proportional outputs (with values) is missing"
+     ]
+    }
+   ],
+   "sample": "Exponential. The inputs increase by equal amounts of $2$, and over each of these intervals the outputs are multiplied by the same factor: $\\frac{4.8}{3} = \\frac{7.68}{4.8} = \\frac{12.288}{7.68} = \\frac{19.6608}{12.288} = 1.6$. The differences ($1.8$, $2.88$, $4.608$, $7.3728$) are not constant, so a linear function does not fit."
+  },
+  {
+   "label": "C(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Write</b> an expression for an exponential function that matches every value in the table.",
+   "rubric": [
+    {
+     "point": "$f(x) = 3(1.6)^{x/2}$ or an equivalent form",
+     "accept": [
+      "$3\\left(\\sqrt{1.6}\\right)^x$",
+      "$3(1.264911...)^x$ with the base correct to three decimal places"
+     ]
+    }
+   ],
+   "sample": "$f(0) = 3$ and the outputs are multiplied by $1.6$ every $2$ units, so $f(x) = 3(1.6)^{x/2}$."
+  }
+ ]
+}

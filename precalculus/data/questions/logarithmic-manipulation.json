@@ -1,0 +1,675 @@
+{
+ "stimuli": {
+  "logarithmic-manipulation-s1": {
+   "kind": "graph",
+   "title": "The graphs of $f$ and $g$",
+   "plot": {
+    "label": "Graphs of f(x) = log base 3 of x and g(x) = log base 3 of 9x; the graph of g lies 2 units above the graph of f",
+    "width": 380,
+    "height": 300,
+    "x": [
+     -0.5,
+     10
+    ],
+    "y": [
+     -2,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "log_3(x)",
+      "domain": [
+       0.12,
+       10
+      ],
+      "cls": "s2",
+      "label": "f"
+     },
+     {
+      "fn": "log_3(9x)",
+      "domain": [
+       0.014,
+       10
+      ],
+      "cls": "s1",
+      "label": "g"
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": 0
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       0
+      ],
+      "cls": "s2"
+     },
+     {
+      "at": [
+       1,
+       2
+      ],
+      "cls": "s1"
+     },
+     {
+      "at": [
+       3,
+       1
+      ],
+      "cls": "s2"
+     },
+     {
+      "at": [
+       3,
+       3
+      ],
+      "cls": "s1"
+     },
+     {
+      "at": [
+       9,
+       2
+      ],
+      "cls": "s2"
+     },
+     {
+      "at": [
+       9,
+       4
+      ],
+      "cls": "s1"
+     }
+    ]
+   },
+   "text": "The graphs show $f(x) = \\log_3 x$ and $g(x) = \\log_3(9x)$."
+  },
+  "logarithmic-manipulation-s2": {
+   "kind": "table",
+   "title": "Values of $\\ln x$",
+   "table": {
+    "caption": "Natural logarithms of 2, 3, 5 and 7, rounded to three decimal places",
+    "cols": [
+     "$x$",
+     "2",
+     "3",
+     "5",
+     "7"
+    ],
+    "rows": [
+     [
+      "$\\ln x$",
+      "0.693",
+      "1.099",
+      "1.609",
+      "1.946"
+     ]
+    ]
+   },
+   "text": "Use the table and the properties of logarithms, without a calculator."
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-logarithmic-manipulation-1",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "logarithmic-manipulation-s1",
+   "type": "single",
+   "q": "For every $x > 0$, what is $g(x) - f(x)$?",
+   "options": [
+    "$2$",
+    "$9$",
+    "$3$",
+    "$8x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "By the product property, $\\log_3(9x) = \\log_3 9 + \\log_3 x = 2 + \\log_3 x$. So $g(x) - f(x) = 2$, as the graph shows at $x = 1$, $3$ and $9$.",
+    "options": [
+     "$\\log_3 9 = 2$, the same gap at every $x$.",
+     "The factor $9$ inside the logarithm becomes $\\log_3 9 = 2$ outside it.",
+     "$\\log_3 3 = 1$; the factor is $9$, and $\\log_3 9 = 2$.",
+     "Subtracting the inputs is not how the outputs compare; the gap is a constant."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-2",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-manipulation-s1",
+   "type": "single",
+   "q": "Which transformation of the graph of $f$ gives the graph of $g$?",
+   "options": [
+    "A vertical translation up $2$ units",
+    "A horizontal translation left $9$ units",
+    "A vertical dilation by a factor of $9$",
+    "A vertical translation up $9$ units"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$g(x) = 2 + f(x)$: every output of $f$ goes up by $2$.",
+    "options": [
+     "$g(x) = f(x) + 2$.",
+     "A shift left would be $\\log_3(x + 9)$; here $x$ is multiplied by $9$.",
+     "A vertical dilation multiplies outputs; $g(1) = 2$ while $9 f(1) = 0$.",
+     "The shift is $\\log_3 9 = 2$, not $9$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-3",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logarithmic-manipulation-s1",
+   "type": "single",
+   "q": "The graph of $g$ can also be described as which transformation of the graph of $f$?",
+   "options": [
+    "A horizontal dilation by a factor of $\\frac{1}{9}$",
+    "A horizontal dilation by a factor of $9$",
+    "A vertical dilation by a factor of $2$",
+    "A horizontal translation right $2$ units"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$g(x) = f(9x)$: $g$ reaches each output of $f$ at an input $\\frac{1}{9}$ as large, so the graph is squeezed toward the $y$-axis. For a logarithm, that horizontal dilation is the same as a vertical shift.",
+    "options": [
+     "$f(9) = 2$ and $g(1) = 2$: each input is divided by $9$.",
+     "Multiplying the input by $9$ squeezes the graph; a factor of $9$ would stretch it.",
+     "$2f(x) = \\log_3 x^2$, which does not match $g(1) = 2$.",
+     "A shift right would lower the graph; $g$ is above $f$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-4",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-manipulation-s1",
+   "type": "numeric",
+   "q": "Find $g\\left(\\frac{1}{3}\\right)$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": -1,
+      "why": "That is $f\\left(\\frac{1}{3}\\right)$. $g$ is $2$ units higher."
+     },
+     {
+      "value": 3,
+      "why": "$9 \\cdot \\frac{1}{3} = 3$ is the input of the logarithm; $\\log_3 3 = 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$g\\left(\\frac{1}{3}\\right) = \\log_3 3 = 1$. Or: $2 + \\log_3 \\frac{1}{3} = 2 + (-1) = 1$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-5",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "logarithmic-manipulation-s1",
+   "type": "single",
+   "q": "Let $k(x) = \\log_3(x^2)$. Is $k(x) = 2f(x)$ for every $x$ in the domain of $k$?",
+   "options": [
+    "No: $k(-3) = 2$, but $f(-3)$ is undefined",
+    "Yes: the power property gives $\\log_3(x^2) = 2\\log_3 x$",
+    "No: $k(3) = 2$, but $2f(3) = 1$",
+    "Yes: both graphs pass through $(1, 0)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$k$ is defined for every $x \\ne 0$, but $2f(x) = 2\\log_3 x$ only for $x > 0$. They agree for $x > 0$; for $x < 0$, $k(x) = 2\\log_3|x|$.",
+    "options": [
+     "$k(-3) = \\log_3 9 = 2$, and $\\log_3(-3)$ does not exist.",
+     "The power property needs $x > 0$; it does not hold at $x = -3$.",
+     "$2f(3) = 2\\log_3 3 = 2$, so $x = 3$ is not a counterexample.",
+     "Sharing one point does not make two functions equal."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-6",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-manipulation-s2",
+   "type": "single",
+   "q": "Which value is closest to $\\ln 6$?",
+   "options": [
+    "$1.79$",
+    "$0.76$",
+    "$2.08$",
+    "$0.41$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\ln 6 = \\ln(2 \\cdot 3) = \\ln 2 + \\ln 3 \\approx 0.693 + 1.099 = 1.792$.",
+    "options": [
+     "Product property: add the logarithms of the factors.",
+     "That multiplies $\\ln 2$ by $\\ln 3$; the logarithm of a product is a sum.",
+     "That is about $\\ln 8 = 3\\ln 2$.",
+     "That is $\\ln 3 - \\ln 2 = \\ln 1.5$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-7",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-manipulation-s2",
+   "type": "single",
+   "q": "Which value is closest to $\\ln 25$?",
+   "options": [
+    "$3.22$",
+    "$2.59$",
+    "$8.05$",
+    "$0.80$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\ln 25 = \\ln(5^2) = 2\\ln 5 \\approx 2(1.609) = 3.218$.",
+    "options": [
+     "Power property: the exponent $2$ multiplies $\\ln 5$.",
+     "That is $(\\ln 5)^2$; the power property gives $2\\ln 5$, not a square.",
+     "That is $5\\ln 5$; $25 = 5^2$, so the factor is $2$.",
+     "That is half of $\\ln 5$, which would be $\\ln \\sqrt{5}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-8",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-manipulation-s2",
+   "type": "single",
+   "q": "Which value is closest to $\\ln 2.5$?",
+   "options": [
+    "$0.92$",
+    "$2.32$",
+    "$2.30$",
+    "$1.12$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$2.5 = \\frac{5}{2}$, so $\\ln 2.5 = \\ln 5 - \\ln 2 \\approx 1.609 - 0.693 = 0.916$.",
+    "options": [
+     "Quotient property: subtract the logarithms.",
+     "That is $\\frac{\\ln 5}{\\ln 2}$; the logarithm of a quotient is a difference.",
+     "That is $\\ln 5 + \\ln 2 = \\ln 10$.",
+     "That is $\\ln 2 \\cdot \\ln 5$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-9",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logarithmic-manipulation-s2",
+   "type": "single",
+   "q": "Which value is closest to $\\log_2 7$?",
+   "options": [
+    "$2.81$",
+    "$1.25$",
+    "$0.36$",
+    "$1.35$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Change of base: $\\log_2 7 = \\frac{\\ln 7}{\\ln 2} \\approx \\frac{1.946}{0.693} \\approx 2.81$. Check: $2^2 = 4 < 7 < 8 = 2^3$.",
+    "options": [
+     "$\\frac{\\ln 7}{\\ln 2}$, which lies between $2$ and $3$ as it should.",
+     "That is $\\ln 7 - \\ln 2 = \\ln 3.5$.",
+     "That is $\\frac{\\ln 2}{\\ln 7} = \\log_7 2$, upside down.",
+     "That is $\\ln 7 \\cdot \\ln 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-10",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "expr",
+   "q": "For $x > 0$, write $3\\log_2 x - \\log_2 5$ as a single logarithm.",
+   "expr": {
+    "answer": "log_2(x^3/5)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.2,
+     6
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "log"
+    },
+    "lhs": "3\\log_2 x - \\log_2 5 =",
+    "answerTex": "\\log_2 \\frac{x^3}{5}",
+    "mistakes": [
+     {
+      "expr": "log_2(3x/5)",
+      "why": "The $3$ is an exponent on $x$, not a factor: $3\\log_2 x = \\log_2 x^3$."
+     },
+     {
+      "expr": "log_2(x^3 - 5)",
+      "why": "A difference of logarithms is the logarithm of a quotient, not of a difference."
+     },
+     {
+      "expr": "log_2(x^3)/log_2(5)",
+      "why": "Subtracting logarithms divides their inputs inside one logarithm; it does not divide two logarithms."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Power property first: $3\\log_2 x = \\log_2 x^3$. Then the quotient property: $\\log_2 x^3 - \\log_2 5 = \\log_2 \\frac{x^3}{5}$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-11",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "type": "expr",
+   "q": "Write $\\ln(x^4) - \\ln(x^2)$ as a single logarithm that is equal to it for every $x \\ne 0$.",
+   "expr": {
+    "answer": "ln(x^2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "log"
+    },
+    "lhs": "\\ln(x^4) - \\ln(x^2) =",
+    "mistakes": [
+     {
+      "expr": "2ln(x)",
+      "why": "$2\\ln x$ equals $\\ln(x^2)$ only for $x > 0$; at $x = -1$ it is undefined, while $\\ln(x^2) = 0$."
+     },
+     {
+      "expr": "ln(x^4 - x^2)",
+      "why": "A difference of logarithms is the logarithm of a quotient, not of a difference."
+     },
+     {
+      "expr": "ln(x)",
+      "why": "$\\frac{x^4}{x^2} = x^2$, not $x$; and $\\ln x$ is undefined for $x < 0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Quotient property: $\\ln(x^4) - \\ln(x^2) = \\ln \\frac{x^4}{x^2} = \\ln(x^2)$. Both sides are defined for every $x \\ne 0$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-12",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "expr",
+   "q": "The function $f(x) = \\log_4 x$ is a vertical dilation of $y = \\log_2 x$. Write $f(x)$ as a constant times $\\log_2 x$.",
+   "expr": {
+    "answer": "log_2(x)/2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.2,
+     10
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "log",
+     "base": 2,
+     "scaled": true,
+     "arg": "var",
+     "say": "a constant times log_2(x)"
+    },
+    "lhs": "\\log_4 x =",
+    "answerTex": "\\frac{1}{2}\\log_2 x",
+    "mistakes": [
+     {
+      "expr": "2log_2(x)",
+      "why": "Divide by $\\log_2 4 = 2$: $\\log_4 16 = 2$, but $2\\log_2 16 = 8$."
+     },
+     {
+      "expr": "log_2(x/4)",
+      "why": "Changing the base divides the whole logarithm by $\\log_2 4$; it does not divide the input by $4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Change of base: $\\log_4 x = \\frac{\\log_2 x}{\\log_2 4} = \\frac{\\log_2 x}{2} = \\frac{1}{2}\\log_2 x$. Check: $\\log_4 16 = 2 = \\frac{1}{2}\\log_2 16$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-13",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "q": "Which expression is equal to $\\log_5(25x^3)$ for $x > 0$?",
+   "options": [
+    "$2 + 3\\log_5 x$",
+    "$6\\log_5 x$",
+    "$25 + 3\\log_5 x$",
+    "$3(2 + \\log_5 x)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Product property, then power property: $\\log_5 25 + \\log_5 x^3 = 2 + 3\\log_5 x$.",
+    "options": [
+     "$\\log_5 25 = 2$ and $\\log_5 x^3 = 3\\log_5 x$.",
+     "The $2$ and the $3\\log_5 x$ are added, not multiplied.",
+     "$25$ inside the logarithm becomes $\\log_5 25 = 2$ outside it.",
+     "The exponent $3$ applies only to $x$, not to $25$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-14",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "q": "Find the exact value of $\\log_6 4 + \\log_6 9$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": "log_6(13)",
+      "why": "Adding logarithms multiplies their inputs: $4 \\cdot 9 = 36$, not $4 + 9$."
+     },
+     {
+      "value": 36,
+      "why": "That is the input $36$. The value is $\\log_6 36 = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product property: $\\log_6 4 + \\log_6 9 = \\log_6 36 = 2$, because $6^2 = 36$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-15",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "type": "numeric",
+   "q": "Use a calculator to find $\\log_7 20$, correct to three decimal places.",
+   "numeric": {
+    "answer": 1.5395018495629604,
+    "mistakes": [
+     {
+      "value": 1.0498221244986776,
+      "why": "That is $\\ln \\frac{20}{7}$. Change of base divides the logarithms: $\\frac{\\ln 20}{\\ln 7}$."
+     },
+     {
+      "value": 0.6495607655709434,
+      "why": "That is $\\frac{\\ln 7}{\\ln 20} = \\log_{20} 7$, upside down."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Change of base: $\\log_7 20 = \\frac{\\ln 20}{\\ln 7} \\approx 1.540$. Check: $7^1 = 7 < 20 < 49 = 7^2$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-16",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "q": "Which equation is true for every pair of positive numbers $x$ and $y$?",
+   "options": [
+    "$\\log(xy) = \\log x + \\log y$",
+    "$\\log(x + y) = \\log x + \\log y$",
+    "$\\log \\frac{x}{y} = \\frac{\\log x}{\\log y}$",
+    "$(\\log x)^2 = 2\\log x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The product property turns a product inside a logarithm into a sum outside it. There is no rule for a sum inside.",
+    "options": [
+     "The product property.",
+     "Try $x = y = 1$: $\\log 2 \\ne 0$.",
+     "The quotient property gives $\\log x - \\log y$.",
+     "The power property is $\\log(x^2) = 2\\log x$; $(\\log x)^2$ is a square of the logarithm."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-17",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "q": "Which expressions are equal to $3\\ln 2$? Select every one that is.",
+   "options": [
+    "$\\ln 8$",
+    "$\\ln 6$",
+    "$(\\ln 2)^3$",
+    "$\\ln 2 + \\ln 4$"
+   ],
+   "correct": [
+    0,
+    3
+   ],
+   "why": {
+    "correct": "$3\\ln 2 = \\ln 2^3 = \\ln 8$, and $\\ln 2 + \\ln 4 = \\ln 8$ as well.",
+    "options": [
+     "Power property: $3\\ln 2 = \\ln 2^3 = \\ln 8$.",
+     "$\\ln 6 = \\ln 2 + \\ln 3$; the $3$ in $3\\ln 2$ is an exponent, not a factor inside.",
+     "$(\\ln 2)^3$ cubes the logarithm, about $0.333$; $3\\ln 2 \\approx 2.079$.",
+     "Product property: $\\ln(2 \\cdot 4) = \\ln 8$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-18",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "Consider $\\log_b x$ for a base $b > 1$. Predict what happens to each quantity as the base $b$ increases.",
+   "variables": [
+    {
+     "name": "$\\log_b 10$",
+     "answer": "down",
+     "why": "A larger base reaches $10$ with a smaller exponent: $\\log_b 10 = \\frac{\\ln 10}{\\ln b}$ and $\\ln b$ grows."
+    },
+    {
+     "name": "$\\log_b 1$",
+     "answer": "none",
+     "why": "$b^0 = 1$ for every base, so $\\log_b 1 = 0$."
+    },
+    {
+     "name": "$\\log_b \\frac{1}{10}$",
+     "answer": "up",
+     "why": "$\\log_b \\frac{1}{10} = -\\log_b 10$, which is negative and closer to $0$ as $b$ grows."
+    }
+   ],
+   "why": {
+    "correct": "By change of base, $\\log_b x = \\frac{\\ln x}{\\ln b}$: every base gives a vertical dilation of $\\ln x$, flatter for larger bases."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-manipulation-19",
+   "unit": "unit-2",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "q": "Put the steps for writing $2\\log x + \\log 3 - \\log 5$ as a single logarithm in order.",
+   "options": [
+    "Power property: $2\\log x = \\log x^2$",
+    "Product property: $\\log x^2 + \\log 3 = \\log(3x^2)$",
+    "Quotient property: $\\log(3x^2) - \\log 5 = \\log \\frac{3x^2}{5}$",
+    "State where it holds: $x > 0$, the domain of $\\log x$"
+   ],
+   "why": {
+    "correct": "Move coefficients into exponents first, then combine sums and differences; the result holds on the domain of the original."
+   }
+  }
+ ]
+}

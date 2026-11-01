@@ -1,0 +1,37 @@
+<p>Unit 3 builds sine and cosine as functions of any angle. They start life as something smaller: ratios of the sides of a right triangle. This page is the algebra you need for that first step.</p>
+
+<h2>Naming the sides</h2>
+<p>In a right triangle the side across from the right angle is the <b>hypotenuse</b>; it is always the longest side. The other two sides, the legs, get their names from the acute angle you are working with, called $\theta$ here:</p>
+<ul>
+<li>the <b>opposite side</b> is the leg across from $\theta$;</li>
+<li>the <b>adjacent side</b> is the leg that touches $\theta$ (the hypotenuse touches it too, but it already has a name).</li>
+</ul>
+<figure id="fig-sides" data-fig="alg-right-triangle-sides"><figcaption>Opposite, adjacent and hypotenuse, seen from the angle $\theta$.</figcaption></figure>
+<p>Move to the other acute angle and the two legs swap names. Always ask "opposite to which angle?"</p>
+
+<h2>Three ratios that depend only on the angle</h2>
+<p>Any two right triangles with the same acute angle $\theta$ are similar: one is a scaled copy of the other. Scaling multiplies every side by the same number, so the ratio of any two sides does not change. Each ratio is therefore a property of the angle alone, and each has a name. These are the <b>trigonometric ratios</b>:</p>
+<table class="compare">
+<thead><tr><th scope="col">Ratio</th><th scope="col">Definition</th><th scope="col">Memory aid</th></tr></thead>
+<tbody>
+<tr><td>$\sin\theta$</td><td>$\frac{\text{opposite}}{\text{hypotenuse}}$</td><td>SOH</td></tr>
+<tr><td>$\cos\theta$</td><td>$\frac{\text{adjacent}}{\text{hypotenuse}}$</td><td>CAH</td></tr>
+<tr><td>$\tan\theta$</td><td>$\frac{\text{opposite}}{\text{adjacent}}$</td><td>TOA</td></tr>
+</tbody>
+</table>
+<p>Because the hypotenuse is the longest side, $\sin\theta$ and $\cos\theta$ are between $0$ and $1$ for an acute angle. $\tan\theta$ can be any positive number. When the adjacent side lies flat, $\tan\theta$ is the rise over the run of the hypotenuse: its slope.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A right triangle has legs $5$ and $12$. The angle $A$ is across from the side $5$. Find $\sin A$, $\cos A$ and $\tan A$.</p>
+<p>First the hypotenuse: $\sqrt{5^2 + 12^2} = \sqrt{169} = 13$.</p>
+<p>From $A$: opposite $= 5$, adjacent $= 12$, hypotenuse $= 13$. So $\sin A = \frac{5}{13}$, $\cos A = \frac{12}{13}$, $\tan A = \frac{5}{12}$.</p>
+</div>
+
+<h2>Finding a missing side</h2>
+<p>Know one angle and one side? Choose the ratio that uses the side you know and the side you want, write an equation, and solve it.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A ramp's sloped surface is 20 feet long and makes a $35^\circ$ angle with the ground. Use $\sin 35^\circ \approx 0.5736$ to find how high the ramp rises.</p>
+<p>The rise is opposite the angle and the 20 feet is the hypotenuse, so use sine: $\sin 35^\circ = \frac{h}{20}$.</p>
+<p>Multiply both sides by 20: $h = 20 \sin 35^\circ \approx 20(0.5736) = 11.472$ feet.</p>
+</div>
+<p>If the unknown side is on the bottom of the ratio, you divide instead: with $\cos\theta = \frac{6}{x}$, multiply by $x$ to get $x\cos\theta = 6$, then $x = \frac{6}{\cos\theta}$.</p>
+<p>The same idea gives formulas. If a hypotenuse has length $r$, then the opposite side is $r\sin\theta$ and the adjacent side is $r\cos\theta$. These two expressions come back in the next topics, where they become the coordinates of a point on a circle.</p>

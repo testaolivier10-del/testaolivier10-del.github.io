@@ -1,0 +1,33 @@
+<p>A quadratic whose graph misses the $x$-axis has no real zeros, but the quadratic formula still produces answers: they just involve the square root of a negative number. Topic 1.5 counts every zero of a polynomial function, real or not, so this page covers what those answers mean and how to compute with them.</p>
+
+<h2>The imaginary unit</h2>
+<p>No real number squares to $-1$. The <b>imaginary unit</b> $i$ is defined by $i^2 = -1$. Then every negative number has square roots: $\sqrt{-16} = \sqrt{16} \cdot i = 4i$, since $(4i)^2 = 16i^2 = -16$.</p>
+<p>A <b>complex number</b> has the form $a + bi$ with $a$ and $b$ real. $a$ is the real part and $b$ the imaginary part. Real numbers are the complex numbers with $b = 0$.</p>
+
+<h2>Arithmetic</h2>
+<p>Add and subtract real parts and imaginary parts separately: $(4 - 3i) - (1 - 5i) = 3 + 2i$.</p>
+<p>Multiply like binomials, then replace $i^2$ with $-1$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Multiply $(3 + 2i)(1 - 4i)$.</p>
+<p>Distribute: $3 - 12i + 2i - 8i^2$.</p>
+<p>Replace $i^2$: $-8i^2 = -8(-1) = 8$. Combine: $(3 + 8) + (-12 + 2)i = 11 - 10i$.</p>
+</div>
+<p>Powers of $i$ repeat in a cycle of four:</p>
+<table class="compare">
+<thead><tr><th scope="col">$i^1$</th><th scope="col">$i^2$</th><th scope="col">$i^3$</th><th scope="col">$i^4$</th></tr></thead>
+<tbody><tr><td>$i$</td><td>$-1$</td><td>$-i$</td><td>$1$</td></tr></tbody>
+</table>
+
+<h2>Complex conjugates</h2>
+<p>The <b>complex conjugate</b> of $a + bi$ is $a - bi$. A number times its conjugate is always real:</p>
+<p>$$(a + bi)(a - bi) = a^2 - b^2 i^2 = a^2 + b^2.$$</p>
+<p>For example, $(5 - 2i)(5 + 2i) = 25 + 4 = 29$.</p>
+
+<h2>Quadratics with no real solutions</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> Solve $x^2 + 4x + 13 = 0$.</p>
+<p>Discriminant: $16 - 4(1)(13) = -36$. Negative, so no real solutions.</p>
+<p>Quadratic formula: $x = \frac{-4 \pm \sqrt{-36}}{2} = \frac{-4 \pm 6i}{2} = -2 \pm 3i$.</p>
+</div>
+<figure id="fig-noreal" data-fig="alg-complex-numbers-noreal"><figcaption>The parabola has no $x$-intercepts; its two solutions are complex.</figcaption></figure>
+<p>The two solutions are complex conjugates of each other. That is no accident: the $\pm$ in the formula produces $a + bi$ and $a - bi$ together whenever the coefficients are real and the discriminant is negative. Topic 1.5 extends this pairing to every polynomial function with real coefficients.</p>

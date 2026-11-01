@@ -1,0 +1,43 @@
+<p>Precalculus studies how quantities change together. When the date changes, the depth of a pond changes; when time passes, coffee cools. This page gives you the words for that joint change, the words the exam expects: <b>increasing</b>, <b>decreasing</b>, <b>rate of change</b>, <b>concave up</b> and <b>concave down</b>. You will use them in every unit.</p>
+
+<h2>Quantities that change together</h2>
+<p>When two quantities are linked, we say they <b>covary</b>: a change in one goes with a change in the other. A function makes the link precise. The input is the <b>independent variable</b>, the one you choose or that runs on its own, like time. The output is the <b>dependent variable</b>, the one that depends on it, like temperature.</p>
+<p>To describe covariation, compare outputs. As $x$ goes from $0$ to $1$ to $2$, the outputs of $y = 20 - 3x$ go $20, 17, 14$. The input rises and the output falls, by $3$ for each step of $1$.</p>
+
+<h2>Increasing and decreasing</h2>
+<p>A function $f$ is <b>increasing on an interval</b> if larger inputs always give larger outputs there: for any $a < b$ in the interval, $f(a) < f(b)$. It is <b>decreasing on an interval</b> if larger inputs always give smaller outputs: $f(a) > f(b)$.</p>
+<p>On a graph, read from left to right. Rising means increasing; falling means decreasing. The definition is about outputs, so check it with numbers when you have a table: $9, 8, 5, 1$ is decreasing, but $9, 7, 7, 4$ is not decreasing on the whole interval, because two inputs share the output $7$.</p>
+<figure id="fig-tandem" data-fig="change-in-tandem-shape"><figcaption>$f(x) = (x^3 - 12x)/4$: increasing, then decreasing, then increasing; concave down, then concave up.</figcaption></figure>
+<p>Whether you write $[-2, 2]$ or $(-2, 2)$ for where $f$ decreases is not tested: either is accepted. Endpoints still matter for domains and ranges.</p>
+<p>Where a function switches from decreasing to increasing, its output is lower than at nearby inputs, as the figure shows at $(2, -4)$. Where it switches from increasing to decreasing, as at $(-2, 4)$, its output is higher than at nearby inputs.</p>
+
+<h2>Rate of change</h2>
+<p>The <b>rate of change</b> of a function compares how much the output changes with how much the input changes. When the input goes up by $1$ and the output goes up by $5$, the output is changing five times as fast as the input. A positive rate of change means input and output move the same way; a negative rate means they move opposite ways.</p>
+<p>With a table at equal input steps, compare the changes in output directly. They tell you both the direction and how fast.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Coffee is poured and cools. Its temperature $T(t)$, in degrees Fahrenheit, is $180, 158, 141, 128, 119$ at $t = 0, 2, 4, 6, 8$ minutes. Describe how $T$ changes.</p>
+<p>Changes over each $2$-minute step: $158 - 180 = -22$, then $-17$, $-13$, $-9$.</p>
+<p>Every change is negative, so $T$ is decreasing. The changes go $-22, -17, -13, -9$: they increase (toward $0$). Over equal steps, that means the rate of change of $T$ is increasing.</p>
+</div>
+
+<h2>Concavity: how the rate of change changes</h2>
+<p>A graph is <b>concave up</b> on an interval when its rate of change is increasing there: it bends upward, like a cup. It is <b>concave down</b> when its rate of change is decreasing: it bends downward, like a cap.</p>
+<table class="compare">
+<thead><tr><th scope="col">Outputs over equal steps</th><th scope="col">Direction</th><th scope="col">Rate of change</th><th scope="col">Concavity</th></tr></thead>
+<tbody>
+<tr><td>$2, 5, 10, 17$ (changes $3, 5, 7$)</td><td>increasing</td><td>increasing</td><td>concave up</td></tr>
+<tr><td>$2, 9, 14, 17$ (changes $7, 5, 3$)</td><td>increasing</td><td>decreasing</td><td>concave down</td></tr>
+<tr><td>$180, 158, 141, 128$ (changes $-22, -17, -13$)</td><td>decreasing</td><td>increasing</td><td>concave up</td></tr>
+<tr><td>$40, 37, 30, 19$ (changes $-3, -7, -11$)</td><td>decreasing</td><td>decreasing</td><td>concave down</td></tr>
+</tbody>
+</table>
+<p>Direction and concavity answer two different questions. Direction asks whether the output goes up or down. Concavity asks whether the rate of change goes up or down. Say each one with its own subject: "$T$ is decreasing, and the rate of change of $T$ is increasing." <span class="pcalc-trap">Do not merge them into the calculus phrase "decreasing at an increasing rate"; the exam expects the two separate statements.</span></p>
+
+<h2>Sketching from a description</h2>
+<p>A word description gives you both properties. Turn each sentence into one of them.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Water pours at a steady rate into a vase that is narrow at the bottom and wide at the top. Sketch the height $H$ of the water against time.</p>
+<p>The height keeps rising, so $H$ is increasing. Each second adds the same volume, but higher up the vase is wider, so the same volume raises the water less: the rate of change of $H$ is decreasing. The graph rises and flattens out, concave down.</p>
+</div>
+<p>A car that starts from rest and speeds up gives the opposite shape for its distance: increasing and concave up, since it covers more ground each second.</p>
+<p>Zeros still mean the same thing here: where the graph meets the $x$-axis, the output is $0$.</p>

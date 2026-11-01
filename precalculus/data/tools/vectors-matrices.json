@@ -1,0 +1,18 @@
+{
+ "about": "Vectors and matrices (docs/apprecalc-spec.md section 6, builder T4). Unit 4, beyond the exam. The paths, matrices and every number live in precalculus/assets/tools/math/vectors-matrices.js; contexts unlock with their topics. Checked by scripts/lib/apprecalc-tool-checks/vectors-matrices.mjs.",
+ "slug": "vectors-matrices",
+ "kind": "simulator",
+ "topic": "parametric-functions",
+ "intro": "<p><b>Beyond the exam.</b> Unit 4 is not tested on the AP® Precalculus exam; it is here because many classes teach it and it leads into calculus.</p><p>Three views on one stage. <b>Motion:</b> a point moves along a parametric path while the graphs of $x(t)$ and $y(t)$ run beside it; an interval shows the average rates of change of $x$ and $y$ and the displacement between the two points. <b>Vectors:</b> drag the tips of $\\mathbf{u}$ and $\\mathbf{v}$ and watch their sum, difference or a scalar multiple, with magnitudes and the dot product. <b>Matrices:</b> a $2 \\times 2$ matrix moves the whole plane; the unit square becomes a parallelogram whose area is $|\\det A|$ times as large, and $A^{-1}$ moves it back.</p>",
+ "howItWorksTitle": "How the pictures are drawn",
+ "howItWorks": "<ul><li><b>Parametric motion:</b> the point at time $t$ is $(x(t), y(t))$. The arrows on the path show the direction of motion as $t$ increases. On $[t_1, t_2]$ the average rate of change of $x$ is $\\frac{x(t_2) - x(t_1)}{t_2 - t_1}$, the same for $y$; their ratio is the slope $\\frac{\\Delta y}{\\Delta x}$ of the segment between the two points.</li><li><b>Vectors</b> add and scale entry by entry: $k\\left\\langle a, b \\right\\rangle + \\left\\langle c, d \\right\\rangle = \\left\\langle ka + c, kb + d \\right\\rangle$. The magnitude is $\\sqrt{a^2 + b^2}$. The dot product $\\mathbf{u} \\cdot \\mathbf{v} = u_1 v_1 + u_2 v_2$ is 0 for perpendicular vectors, positive when the angle between them is less than $\\frac{\\pi}{2}$.</li><li><b>Matrices:</b> $A$ sends $(1, 0)$ to its first column and $(0, 1)$ to its second, and every other point along with them. $\\det A = ad - bc$; areas are multiplied by $|\\det A|$, a negative determinant flips the plane over, and $\\det A = 0$ squashes it onto a line, so $A$ has no inverse. Otherwise $A^{-1} = \\frac{1}{\\det A}\\left[ \\begin{matrix} d & -b \\\\ -c & a \\end{matrix} \\right]$.</li><li><b>The slider</b> in Matrices moves the plane gradually from where it starts to its image, so you can watch every point travel.</li><li><b>Keyboard:</b> the draggable points move one unit with the arrow keys; on the motion stage the arrow keys change $t$.</li></ul>",
+ "paths": ["line", "toss", "circle", "clock", "ellipse"],
+ "matrices": ["rotate", "reflect", "stretch", "shear", "general", "flat"],
+ "contexts": [
+  { "id": "param", "topic": "parametric-functions", "kind": "param" },
+  { "id": "prates", "topic": "parametric-rates", "kind": "prates" },
+  { "id": "vectors", "topic": "vectors", "kind": "vectors" },
+  { "id": "transform", "topic": "linear-transformations", "kind": "transform" },
+  { "id": "inverse", "topic": "inverse-determinant", "kind": "inverse" }
+ ]
+}

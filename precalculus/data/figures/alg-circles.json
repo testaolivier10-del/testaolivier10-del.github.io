@@ -1,0 +1,22 @@
+{
+ "alg-circles-special": {
+  "file": "figures/alg-circles-special.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a 45-45-90 triangle with two legs of length 1 and a hypotenuse of length square root of 2; both acute angles are 45 degrees. Right: a 30-60-90 triangle with the short leg 1 across from the 30 degree angle, the long leg square root of 3 across from the 60 degree angle, and the hypotenuse 2, twice the short leg."
+ },
+ "alg-circles-arc": {
+  "file": "figures/alg-circles-arc.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a circle with center O and radius r. A central angle of 60 degrees cuts off an arc, drawn in green, of length s. Because 60 degrees is one sixth of 360 degrees, the arc is one sixth of the circumference 2 pi r. Right: on a coordinate grid, the circle with center (2, −1) and radius 3, whose equation is (x − 2) squared plus (y + 1) squared equals 9. The points (5, −1) and (2, 2) are marked on it, each 3 units from the center."
+ }
+}

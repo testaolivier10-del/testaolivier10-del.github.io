@@ -21,6 +21,7 @@
       { key: 'apstat', name: 'AP® Statistics', path: '/statistics/', status: 'live' },
       { key: 'apenv', name: 'AP® Environmental Science', path: '/environmental-science/', status: 'live' },
       { key: 'appsych', name: 'AP® Psychology', path: '/psychology/', status: 'live' },
+      { key: 'apprecalc', name: 'AP® Precalculus', path: '/precalculus/', status: 'live' },
       { key: 'apcalcbc', name: 'AP® Calculus BC', path: '/calculus-bc/', status: 'hidden' },
     ];
     // courses:end

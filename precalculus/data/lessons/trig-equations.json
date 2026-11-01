@@ -1,0 +1,71 @@
+{
+ "topic": "trig-equations",
+ "hook": "A weight bounces on a spring, and you want every moment it passes a mark. One inverse key on a calculator gives one moment. The motion repeats, so there are more, and the exam's point goes to the student who finds every one of them in the interval and nothing outside it.",
+ "prereq": [
+  {
+   "q": "What is $\\sin^{-1}\\left(\\frac{1}{2}\\right)$?",
+   "options": [
+    "$\\frac{\\pi}{6}$",
+    "$\\frac{5\\pi}{6}$",
+    "$\\frac{\\pi}{3}$",
+    "$2$"
+   ],
+   "correct": 0,
+   "why": "The angle in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$ with sine $\\frac{1}{2}$ is $\\frac{\\pi}{6}$.",
+   "review": "inverse-trig"
+  },
+  {
+   "q": "What is the period of $y = \\cos(2x)$?",
+   "options": [
+    "$\\pi$",
+    "$2\\pi$",
+    "$4\\pi$",
+    "$\\frac{\\pi}{2}$"
+   ],
+   "correct": 0,
+   "why": "The period of $\\cos(bx)$ is $\\frac{2\\pi}{|b|} = \\frac{2\\pi}{2} = \\pi$.",
+   "review": "sinusoidal-transformations"
+  }
+ ],
+ "figure": {
+  "figure": "trig-equations-circle",
+  "caption": "Two angles in $[0, 2\\pi)$ have sine $\\frac{1}{2}$: the principal value $\\frac{\\pi}{6}$ and its mirror image $\\pi - \\frac{\\pi}{6}$."
+ },
+ "chain": [
+  {
+   "cause": "Isolate the trigonometric function",
+   "effect": "an equation like $\\sin x = \\frac{1}{2}$"
+  },
+  {
+   "cause": "Apply the inverse",
+   "effect": "one principal value, such as $\\frac{\\pi}{6}$"
+  },
+  {
+   "cause": "Use symmetry ($\\pi - x$ for sine, $-x$ for cosine)",
+   "effect": "the second angle in the same period"
+  },
+  {
+   "cause": "Add or subtract periods",
+   "effect": "every solution in the interval, and no extras"
+  }
+ ],
+ "ideas": [
+  "Sine and cosine take most values twice per period; the inverse key gives only one of them.",
+  "Second angle: $\\pi - \\theta$ for sine, $2\\pi - \\theta$ (or $-\\theta$) for cosine, $\\theta + \\pi$ for tangent.",
+  "For $\\sin(bx) = k$, solve for $bx$ on the stretched interval first, then divide by $b$.",
+  "For an inequality, solve the equation, then test one value in each piece."
+ ],
+ "misconception": {
+  "wrong": "The solution of $\\sin x = \\frac{1}{2}$ is $x = \\sin^{-1}\\frac{1}{2} = \\frac{\\pi}{6}$.",
+  "right": "$\\frac{\\pi}{6}$ is one solution. On $[0, 2\\pi)$, $\\frac{5\\pi}{6}$ also works, and on all real numbers the solutions are $\\frac{\\pi}{6} + 2k\\pi$ and $\\frac{5\\pi}{6} + 2k\\pi$."
+ },
+ "check": [
+  "pcalc-trig-equations-1",
+  "pcalc-trig-equations-2",
+  "pcalc-trig-equations-6",
+  "pcalc-trig-equations-9",
+  "pcalc-trig-equations-10",
+  "pcalc-trig-equations-15"
+ ],
+ "summary": "To solve a trigonometric equation, isolate the function, take the principal value with the inverse, find the second angle by symmetry, then add periods until you have every solution in the interval and none outside it. Inequalities follow the equation: its solutions cut the interval into pieces, and a test value decides each piece."
+}

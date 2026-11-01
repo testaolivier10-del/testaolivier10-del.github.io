@@ -1,0 +1,33 @@
+<p>Rational expressions are fractions with polynomials on top and bottom. Topic 1.7 builds functions out of them, and their behavior depends on details of the algebra: which factors cancel and which inputs are excluded. This page is that algebra.</p>
+
+<h2>What a rational expression is</h2>
+<p>A <b>rational expression</b> is a quotient $\frac{p(x)}{q(x)}$ of two polynomials, such as $\frac{x - 3}{x - 2}$ or $\frac{2x^2 + 3}{x}$. It is undefined wherever the denominator $q(x)$ is $0$. Find those inputs by factoring the denominator: $\frac{x + 2}{x^2 - 4x} = \frac{x + 2}{x(x - 4)}$ is undefined at $x = 0$ and $x = 4$.</p>
+
+<h2>Simplifying</h2>
+<p>Factor the numerator and denominator completely, then cancel factors they share.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Simplify $\frac{x^2 - 9}{x^2 + x - 6}$.</p>
+<p>Factor: $\frac{(x - 3)(x + 3)}{(x + 3)(x - 2)}$.</p>
+<p>Cancel $x + 3$: $\frac{x - 3}{x - 2}$, with $x \ne -3$ and $x \ne 2$.</p>
+</div>
+<p>The excluded input $x = -3$ does not come back when the factor cancels. The original expression has no value at $x = -3$, so the simplified one is equal to it only for $x \ne -3$. On a graph, that shows up as a single missing point.</p>
+<figure id="fig-missing" data-fig="alg-rational-expressions-missing"><figcaption>$\frac{x^2 - 4}{x - 2}$ agrees with $x + 2$ everywhere except $x = 2$.</figcaption></figure>
+<p>Cancel factors, never terms. In $\frac{x + 6}{x + 3}$ the $x$'s are terms of sums; nothing cancels. In $\frac{x^2 + x}{x} = \frac{x(x + 1)}{x}$, $x$ is a factor of the whole top, so it cancels to $x + 1$ for $x \ne 0$.</p>
+
+<h2>Adding and subtracting</h2>
+<p>Use a common denominator, the product of the different factors.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Write $\frac{1}{x - 1} + \frac{2}{x + 1}$ as one fraction.</p>
+<p>Common denominator $(x - 1)(x + 1)$. Multiply each numerator by the factor its denominator lacks:</p>
+<p>$\frac{1(x + 1) + 2(x - 1)}{(x - 1)(x + 1)} = \frac{3x - 1}{x^2 - 1}$.</p>
+</div>
+
+<h2>Multiplying and dividing</h2>
+<p>Multiply numerators and denominators straight across, cancelling common factors. To divide, multiply by the reciprocal of the second fraction:</p>
+<p>$$\frac{x^2 - 1}{x + 3} \div \frac{x - 1}{x^2 - 9} = \frac{(x - 1)(x + 1)}{x + 3} \cdot \frac{(x - 3)(x + 3)}{x - 1} = (x + 1)(x - 3).$$</p>
+<p>A fraction inside a fraction simplifies the same way: multiply its top and bottom by the small denominators. $\frac{1 + \frac{1}{x}}{1 - \frac{1}{x}} = \frac{x + 1}{x - 1}$.</p>
+
+<h2>Splitting a fraction</h2>
+<p>The reverse of adding: when the numerator is a sum, divide each term by the denominator. $\frac{2x^2 + 3}{x} = 2x + \frac{3}{x}$. When the denominator has two terms, first write the numerator in terms of it: $x^2 + 2x + 3 = (x + 1)^2 + 2$, so</p>
+<p>$$\frac{x^2 + 2x + 3}{x + 1} = x + 1 + \frac{2}{x + 1}.$$</p>
+<p>Topic 1.7 uses this form: for large $x$, the small fraction $\frac{2}{x + 1}$ is close to $0$, so the expression behaves like $x + 1$.</p>

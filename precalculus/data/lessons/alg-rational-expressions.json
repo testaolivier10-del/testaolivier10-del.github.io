@@ -1,0 +1,70 @@
+{
+ "topic": "alg-rational-expressions",
+ "hook": "If $x$ friends split a \\$120 bill and a \\$30 tip, each pays $\\frac{150}{x}$ dollars. Expressions with the variable in a denominator show up whenever something is shared or divided. Topic 1.7 studies functions built from them, so first the algebra: simplify, combine, split, and keep track of the inputs that are not allowed.",
+ "prereq": [
+  {
+   "q": "Which is $x^2 + x - 6$ factored?",
+   "options": [
+    "$(x + 3)(x - 2)$",
+    "$(x - 3)(x + 2)$",
+    "$(x + 6)(x - 1)$",
+    "$(x + 3)(x + 2)$"
+   ],
+   "correct": 0,
+   "why": "Product $-6$, sum $1$: $3$ and $-2$.",
+   "review": "alg-polynomial-algebra"
+  },
+  {
+   "q": "Which inputs are not in the domain of $\\frac{1}{x - 5}$?",
+   "options": [
+    "$x = 5$",
+    "$x = -5$",
+    "$x = 0$",
+    "$x = 1$"
+   ],
+   "correct": 0,
+   "why": "The denominator is $0$ at $x = 5$.",
+   "review": "alg-functions"
+  }
+ ],
+ "figure": {
+  "figure": "alg-rational-expressions-missing",
+  "caption": "$\\frac{x^2 - 4}{x - 2}$ simplifies to $x + 2$, but only for $x \\ne 2$: its graph is the line $y = x + 2$ with the point $(2, 4)$ missing."
+ },
+ "chain": [
+  {
+   "cause": "A denominator has a factor that is $0$ at $x = a$",
+   "effect": "$a$ is excluded from the domain, before and after any simplifying"
+  },
+  {
+   "cause": "The numerator and denominator share a factor",
+   "effect": "it cancels, but the excluded input stays excluded"
+  },
+  {
+   "cause": "Two fractions are added or subtracted",
+   "effect": "rewrite both over a common denominator, then combine the numerators"
+  },
+  {
+   "cause": "A numerator is a sum",
+   "effect": "each term can be divided by the denominator separately: $\\frac{2x^2 + 3}{x} = 2x + \\frac{3}{x}$"
+  }
+ ],
+ "ideas": [
+  "A <b>rational expression</b> is a quotient of two polynomials, like $\\frac{x - 3}{x - 2}$. It is undefined where its denominator is $0$.",
+  "Factor first, then cancel common factors, never terms. Keep the excluded inputs of the original.",
+  "Add with a common denominator; multiply straight across; divide by multiplying by the reciprocal."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{x + 6}{x + 3} = 2$, cancelling the $x$'s and $6 \\div 3$.",
+  "right": "Only factors of the whole top and bottom cancel. At $x = 1$, $\\frac{7}{4} \\ne 2$. $\\frac{x + 6}{x + 3}$ does not simplify."
+ },
+ "check": [
+  "pcalc-alg-rational-expressions-1",
+  "pcalc-alg-rational-expressions-2",
+  "pcalc-alg-rational-expressions-3",
+  "pcalc-alg-rational-expressions-6",
+  "pcalc-alg-rational-expressions-8",
+  "pcalc-alg-rational-expressions-9"
+ ],
+ "summary": "A rational expression is a quotient of polynomials, undefined where its denominator is $0$. Factor, then cancel common factors only, keeping the original exclusions. Add with a common denominator, multiply across, divide by the reciprocal, and split a sum in the numerator term by term."
+}

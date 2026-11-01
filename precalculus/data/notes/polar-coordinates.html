@@ -1,0 +1,60 @@
+<p>Rectangular coordinates say how far to go right and how far to go up. <b>Polar coordinates</b> say how far to go and in which direction. Both name the same points; each is easier for some jobs. This page sets up the polar system, converts in both directions, and uses it to write complex numbers in polar form.</p>
+
+<h2>The polar grid</h2>
+<p>Start at a point called the <b>pole</b> (the origin) and draw a ray to the right, the <b>polar axis</b> (the positive $x$-axis). The point $(r, \theta)$ is found in two moves:</p>
+<ol>
+<li>Turn to the angle $\theta$, measured counterclockwise from the polar axis, as for an angle in standard position.</li>
+<li>Move $r$ units along that ray. If $r$ is negative, move $|r|$ units in the opposite direction, backward through the pole.</li>
+</ol>
+<p>The grid has circles (all points with the same $r$) and rays (all points with the same $\theta$), as in <a class="figref" href="#fig-polar-grid">Figure 1</a>.</p>
+<figure id="fig-polar-grid" data-fig="polar-coordinates-points"><figcaption>P is $\left(3, \frac{\pi}{6}\right)$, Q is $\left(2, \frac{5\pi}{6}\right)$, R is $\left(4, \frac{3\pi}{2}\right)$ and S is $(1, \pi)$.</figcaption></figure>
+
+<h2>One point, many names</h2>
+<p>In rectangular coordinates every point has one name. In polar coordinates it has infinitely many:</p>
+<ul>
+<li>Adding a full turn changes nothing: $(r, \theta)$ and $(r, \theta + 2\pi)$ are the same point.</li>
+<li>Reversing direction twice changes nothing: $(r, \theta)$ and $(-r, \theta + \pi)$ are the same point.</li>
+<li>The pole is $(0, \theta)$ for every $\theta$.</li>
+</ul>
+<p>For example, Q $= \left(2, \frac{5\pi}{6}\right) = \left(2, -\frac{7\pi}{6}\right) = \left(-2, \frac{11\pi}{6}\right)$.</p>
+
+<h2>Converting between the systems</h2>
+<p>The point $(r, \theta)$ lies on a circle of radius $|r|$, so the circle facts from Topic 3.3 give the conversions.</p>
+<table class="compare">
+<thead><tr><th scope="col">Direction</th><th scope="col">Formulas</th><th scope="col">Watch out for</th></tr></thead>
+<tbody>
+<tr><td>Polar to rectangular</td><td>$x = r\cos\theta$, $y = r\sin\theta$</td><td>a negative $r$ flips both signs</td></tr>
+<tr><td>Rectangular to polar</td><td>$r = \sqrt{x^2 + y^2}$, $\tan\theta = \frac{y}{x}$</td><td>the quadrant of the angle</td></tr>
+<tr><td>Equations</td><td>replace $x$, $y$ and $x^2 + y^2$ with $r\cos\theta$, $r\sin\theta$ and $r^2$</td><td>divide only by quantities that are not $0$</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example 1.</b> Convert $\left(-4, \frac{5\pi}{6}\right)$ to rectangular coordinates.</p>
+<p>$x = -4\cos\frac{5\pi}{6} = -4\cdot\left(-\frac{\sqrt{3}}{2}\right) = 2\sqrt{3}$.</p>
+<p>$y = -4\sin\frac{5\pi}{6} = -4\cdot\frac{1}{2} = -2$.</p>
+<p>The point is $\left(2\sqrt{3}, -2\right)$, in Quadrant IV: the ray $\frac{5\pi}{6}$ points into Quadrant II, and the negative $r$ sends the point the other way.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Convert $(-2, -2)$ to polar coordinates with $r > 0$ and $0 \le \theta < 2\pi$.</p>
+<p>$r = \sqrt{4 + 4} = 2\sqrt{2}$.</p>
+<p>$\tan\theta = \frac{-2}{-2} = 1$. The inverse gives $\tan^{-1} 1 = \frac{\pi}{4}$, in Quadrant I. But $(-2, -2)$ is in Quadrant III, so add $\pi$: $\theta = \frac{5\pi}{4}$.</p>
+<p>The point is $\left(2\sqrt{2}, \frac{5\pi}{4}\right)$. Check: $2\sqrt{2}\cos\frac{5\pi}{4} = 2\sqrt{2}\cdot\left(-\frac{\sqrt{2}}{2}\right) = -2$.</p>
+</div>
+<p>Equations convert the same way. The circle $x^2 + y^2 = 25$ becomes $r^2 = 25$, or just $r = 5$. The line $y = 3$ becomes $r\sin\theta = 3$, so $r = \frac{3}{\sin\theta} = 3\csc\theta$.</p>
+
+<h2>Complex numbers in polar form</h2>
+<p>The <b>complex plane</b> plots $a + bi$ as the point $(a, b)$: real part across, imaginary part up. Any point has polar coordinates, so</p>
+<p>$$a + bi = r(\cos\theta + i\sin\theta), \qquad r = \sqrt{a^2 + b^2}, \quad \tan\theta = \frac{b}{a}$$</p>
+<p>This is the <b>polar form</b> of a complex number. $r$ is its distance from $0$.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Write $z = \sqrt{3} - i$ in polar form.</p>
+<p>The point is $\left(\sqrt{3}, -1\right)$, in Quadrant IV. $r = \sqrt{3 + 1} = 2$. $\tan\theta = -\frac{1}{\sqrt{3}}$, reference angle $\frac{\pi}{6}$, so $\theta = \frac{11\pi}{6}$ (or $-\frac{\pi}{6}$).</p>
+<p>$z = 2\left(\cos\frac{11\pi}{6} + i\sin\frac{11\pi}{6}\right)$.</p>
+</div>
+
+<h2>Common slips</h2>
+<ul>
+<li>Writing $(\theta, r)$ instead of $(r, \theta)$.</li>
+<li>Trusting $\tan^{-1}\frac{y}{x}$ in Quadrants II and III. Draw the point and add $\pi$ when it is on the left.</li>
+<li>Reporting $r^2$ instead of $r$.</li>
+</ul>

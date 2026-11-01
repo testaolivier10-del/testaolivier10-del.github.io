@@ -66,7 +66,7 @@ limit 90;
 -- 4. Which course the traffic goes to.
 --
 -- The paths carry this: /nremt/... , /ochem/... , /anatomy-physiology/... ,
--- /bio/... (AP® Biology), /chem/... (AP® Chemistry), /physics/... (AP® Physics 1), /calculus/... (AP® Calculus AB), /statistics/... (AP® Statistics), /environmental-science/... (AP® Environmental Science), /psychology/... (AP® Psychology), and everything else is the hub and its standalone
+-- /bio/... (AP® Biology), /chem/... (AP® Chemistry), /physics/... (AP® Physics 1), /calculus/... (AP® Calculus AB), /statistics/... (AP® Statistics), /environmental-science/... (AP® Environmental Science), /psychology/... (AP® Psychology), /precalculus/... (AP® Precalculus), and everything else is the hub and its standalone
 -- pages.
 -- ---------------------------------------------------------------------------
 select
@@ -81,6 +81,7 @@ select
     when path like '/statistics/%' then 'AP® Statistics'
     when path like '/environmental-science/%' then 'AP® Environmental Science'
     when path like '/psychology/%' then 'AP® Psychology'
+    when path like '/precalculus/%' then 'AP® Precalculus'
     else 'Hub and other'
   end as area,
   sum(views) as views

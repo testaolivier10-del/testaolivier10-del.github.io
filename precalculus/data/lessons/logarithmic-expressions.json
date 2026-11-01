@@ -1,0 +1,88 @@
+{
+ "topic": "logarithmic-expressions",
+ "hook": "The quietest sound you can hear and a very loud rock concert differ in intensity by a factor of about $100$ billion. No ordinary ruler shows both. Counting powers of ten instead, the gap becomes $11$ steps. A logarithm is that count: the exponent a base needs to reach a number.",
+ "prereq": [
+  {
+   "q": "What is $2^{-3}$?",
+   "options": [
+    "$\\frac{1}{8}$",
+    "$-8$",
+    "$-6$",
+    "$\\frac{1}{6}$"
+   ],
+   "correct": 0,
+   "why": "A negative exponent means a reciprocal: $2^{-3} = \\frac{1}{2^3} = \\frac{1}{8}$.",
+   "review": "alg-exponents"
+  },
+  {
+   "q": "$f(x) = 2^x$ is invertible. Since $f(5) = 32$, what is $f^{-1}(32)$?",
+   "options": [
+    "$5$",
+    "$32$",
+    "$\\frac{1}{32}$",
+    "$16$"
+   ],
+   "correct": 0,
+   "why": "The inverse sends the output $32$ back to the input $5$.",
+   "review": "inverse-functions"
+  },
+  {
+   "q": "Which number is $e$ closest to?",
+   "options": [
+    "$2.718$",
+    "$3.142$",
+    "$1.618$",
+    "$2.000$"
+   ],
+   "correct": 0,
+   "why": "The natural base $e$ is about $2.718$.",
+   "review": "exponential-functions"
+  }
+ ],
+ "figure": {
+  "figure": "logarithmic-expressions-powers",
+  "caption": "On $y = 2^x$, the output $8$ comes from the input $3$. That input is the logarithm: $\\log_2 8 = 3$."
+ },
+ "chain": [
+  {
+   "cause": "Ask which power of $b$ gives $c$",
+   "effect": "the answer $a$ is $\\log_b c$, so $\\log_b c = a$ means $b^a = c$"
+  },
+  {
+   "cause": "Use base $10$ or base $e$",
+   "effect": "you get the common logarithm $\\log c$ or the natural logarithm $\\ln c$"
+  },
+  {
+   "cause": "$c$ lies between two powers of $b$",
+   "effect": "$\\log_b c$ lies between their exponents"
+  },
+  {
+   "cause": "Every power $b^a$ with $b > 0$ is positive",
+   "effect": "$\\log_b c$ exists only for $c > 0$, though its value can be negative"
+  },
+  {
+   "cause": "Space numbers by their logarithms",
+   "effect": "equal distances mean equal factors: a logarithmic scale"
+  }
+ ],
+ "ideas": [
+  "$\\log_b c = a$ means $b^a = c$, for $b > 0$, $b \\ne 1$, $c > 0$. A logarithm is an exponent.",
+  "Common logarithm: $\\log c = \\log_{10} c$. Natural logarithm: $\\ln c = \\log_e c$.",
+  "Exact values come from writing $c$ as a power of $b$: $\\log_4 8 = \\frac{3}{2}$ because $8 = 4^{3/2}$.",
+  "On a logarithmic scale, each equal step multiplies the value by the same factor."
+ ],
+ "misconception": {
+  "wrong": "$\\log_3 81 = 27$, because $81 \\div 3 = 27$.",
+  "right": "A logarithm gives the exponent, not a quotient: $3^4 = 81$, so $\\log_3 81 = 4$."
+ },
+ "check": [
+  "pcalc-logarithmic-expressions-1",
+  "pcalc-logarithmic-expressions-2",
+  "pcalc-logarithmic-expressions-3",
+  "pcalc-logarithmic-expressions-6",
+  "pcalc-logarithmic-expressions-7",
+  "pcalc-logarithmic-expressions-12",
+  "pcalc-logarithmic-expressions-13"
+ ],
+ "summary": "A logarithm is an exponent: $\\log_b c = a$ means $b^a = c$. The common logarithm uses base $10$ and the natural logarithm uses base $e$. Find exact values by writing the input as a power of the base, and estimate others between consecutive powers. Logarithms take only positive inputs. A logarithmic scale spaces numbers by their logarithms, so equal steps are equal factors."
+}

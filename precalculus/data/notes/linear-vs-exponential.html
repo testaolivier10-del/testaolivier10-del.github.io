@@ -1,0 +1,37 @@
+<p>Arithmetic and geometric sequences are defined only at whole-number positions. Fill in every real input between them and you get two of the most useful function types in the course: <b>linear functions</b>, which extend arithmetic sequences, and <b>exponential functions</b>, which extend geometric ones. This page is about telling them apart from a table, and about justifying your answer the way the exam scores it.</p>
+
+<h2>Adding versus multiplying</h2>
+<p>A linear function $f(x) = b + mx$ adds the same amount $m$ for each unit of input. An exponential function $f(x) = ab^x$ (with $a \ne 0$, $b > 0$ and $b \ne 1$) multiplies by the same factor $b$ for each unit of input. If $b > 1$ the function shows <b>exponential growth</b>; if $0 < b < 1$, <b>exponential decay</b>.</p>
+<figure id="fig-steps" data-fig="linear-vs-exponential-steps"><figcaption>$f(x) = 4 + 6x$ adds $6$ per step; $g(x) = 4(1.5)^x$ multiplies by $1.5$ per step.</figcaption></figure>
+<p>In <a class="figref" href="#fig-steps">the figure</a>, the line is ahead at first, but the exponential function's steps keep getting bigger ($2$, $3$, $4.5$, $6.75$, ...) and it passes the line between $x = 5$ and $x = 6$. An increasing exponential function eventually passes any increasing linear function.</p>
+
+<h2>The test, with both halves</h2>
+<p>Over <b>equal-length input intervals</b>:</p>
+<table class="compare">
+<thead><tr><th scope="col">What the outputs do</th><th scope="col">Function type</th><th scope="col">Example over steps of $2$</th></tr></thead>
+<tbody>
+<tr><td>Change by a constant difference</td><td>Linear</td><td>$7, 13, 19, 25$: add $6$ each time</td></tr>
+<tr><td>Change by a constant ratio (not $0$ or $1$); the outputs are proportional</td><td>Exponential</td><td>$5, 15, 45, 135$: multiply by $3$ each time</td></tr>
+</tbody>
+</table>
+<p>A full justification names both halves and uses the numbers: "The input intervals all have length $2$, and the outputs over them have a constant ratio, $\frac{15}{5} = \frac{45}{15} = \frac{135}{45} = 3$, so an exponential function fits." Readers take the point away if either half is missing. "The outputs grow faster and faster" earns nothing, because a quadratic does that too.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A culture has $5$, $15$, $45$, $135$ and $405$ thousand bacteria at $t = 0, 2, 4, 6, 8$ hours. Choose a model and write it.</p>
+<p>Equal intervals: each step is $2$ hours. Differences: $10, 30, 90, 270$, not constant, so not linear. Ratios: $3, 3, 3, 3$, constant, so exponential.</p>
+<p>The output triples every $2$ hours, so after $t$ hours it has tripled $\frac{t}{2}$ times: $B(t) = 5(3)^{t/2}$.</p>
+<p>At $t = 1$, half of a tripling period: $B(1) = 5(3)^{1/2} = 5\sqrt{3}$. The output is multiplied by $\sqrt{3}$ each hour, because $\sqrt{3} \cdot \sqrt{3} = 3$. Halfway in time is not halfway in value.</p>
+</div>
+
+<h2>The trap: unequal input steps</h2>
+<p>If the inputs are $0, 1, 3, 6$, the steps are $1$, $2$ and $3$, and raw differences or ratios mean nothing until you account for the step lengths.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> $p(x)$ is $10, 13, 19, 28$ and $q(x)$ is $4, 8, 32, 256$ at $x = 0, 1, 3, 6$. What could each be?</p>
+<p>For $p$, the differences are $3, 6, 9$. Divide each by its step: $\frac{3}{1} = \frac{6}{2} = \frac{9}{3} = 3$. A constant rate of change: $p(x) = 10 + 3x$ fits.</p>
+<p>For $q$, the ratios are $2, 4, 8$, which look unequal. But $2 = 2^1$ over $1$ unit, $4 = 2^2$ over $2$ units, $8 = 2^3$ over $3$ units: the output doubles for every unit. $q(x) = 4(2)^x$ fits.</p>
+</div>
+
+<h2>An exponential function through a known point</h2>
+<p>If you know one point $(x_1, y_1)$ and the ratio $r$ per unit of input, count the steps from that point, just as for a geometric sequence: $f(x) = y_1 r^{x - x_1}$. With $f(2) = 18$ and a ratio of $3$: $f(x) = 18(3)^{x - 2}$, so $f(3) = 54$ and $f(0) = 2$.</p>
+
+<h2>Rates of change</h2>
+<p>For a linear function the average rate of change is the same on every interval. For an exponential function, the average rates of change over equal-length intervals have the same ratio as the outputs. In the bacteria table, the average rates on $[0, 2]$, $[2, 4]$ and $[4, 6]$ are $5$, $15$ and $45$ thousand per hour: each is $3$ times the one before, so the rate of change of $B$ is increasing and the graph is concave up.</p>

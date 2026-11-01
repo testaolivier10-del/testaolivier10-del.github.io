@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circles, Arcs and Special Triangles — AP® Precalculus Notes</title>
+<meta name="description" content="The next topic puts angles on a circle and reads sine and cosine as coordinates.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/alg-circles.html">
+<meta property="og:title" content="Circles, Arcs and Special Triangles — AP® Precalculus Notes">
+<meta property="og:description" content="The next topic puts angles on a circle and reads sine and cosine as coordinates.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/alg-circles.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/alg-circles.html#reading",
+      "name": "Circles, Arcs and Special Triangles",
+      "url": "https://levlprep.com/precalculus/notes/alg-circles.html",
+      "description": "The next topic puts angles on a circle and reads sine and cosine as coordinates.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "circles, arcs and special triangles review for precalculus",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Algebra you need",
+          "item": "https://levlprep.com/precalculus/units/skills-algebra.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Circles, Arcs and Special Triangles: notes",
+          "item": "https://levlprep.com/precalculus/notes/alg-circles.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="alg-circles" data-unit="skills-algebra">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-algebra.html">Algebra you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Circles, Arcs and Special Triangles: notes</span></nav>
+<p class="issue">Skills <i></i></p>
+<h1 class="deck bk-title" id="r3Title">Circles, Arcs <span>and Special Triangles</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/alg-circles.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="alg-circles">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Falg-circles.html&amp;title=Circles%2C%20Arcs%20and%20Special%20Triangles%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/alg-circles.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Functions Involving Parameters, Vectors, and Matrices</a>
+    <a class="bk-toc-chap" href="../units/skills-algebra.html"><span class="bk-toc-chap-n">S</span><span><b>Algebra you need</b><small>11 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="skills-algebra"><div class="tb-progress-row"><span><b>0</b> of 11 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="alg-functions"><a href="alg-functions.html"><span class="bk-toc-n">S</span>Functions, Graphs and Notation</a></li><li data-toc-t="alg-intervals"><a href="alg-intervals.html"><span class="bk-toc-n">S</span>Interval Notation and Inequalities</a></li><li data-toc-t="alg-lines"><a href="alg-lines.html"><span class="bk-toc-n">S</span>Lines, Slope and Linear Equations</a></li><li data-toc-t="alg-quadratics"><a href="alg-quadratics.html"><span class="bk-toc-n">S</span>Quadratics: Zeros and the Quadratic Formula</a></li><li data-toc-t="alg-polynomial-algebra"><a href="alg-polynomial-algebra.html"><span class="bk-toc-n">S</span>Polynomial Arithmetic and Factoring</a></li><li data-toc-t="alg-complex-numbers"><a href="alg-complex-numbers.html"><span class="bk-toc-n">S</span>Complex Numbers</a></li><li data-toc-t="alg-rational-expressions"><a href="alg-rational-expressions.html"><span class="bk-toc-n">S</span>Rational Expressions</a></li><li data-toc-t="alg-systems"><a href="alg-systems.html"><span class="bk-toc-n">S</span>Systems of Equations</a></li><li data-toc-t="alg-exponents"><a href="alg-exponents.html"><span class="bk-toc-n">S</span>Exponent and Radical Rules</a></li><li data-toc-t="alg-right-triangle"><a href="alg-right-triangle.html"><span class="bk-toc-n">S</span>Right-Triangle Trigonometry</a></li><li class="current" data-toc-t="alg-circles"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Circles, Arcs and Special Triangles</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-two-special-right-triangles">The two special right triangles</a><a href="#arc-length">Arc length</a><a href="#the-equation-of-a-circle">The equation of a circle</a></div></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>The next topic puts angles on a circle and reads sine and cosine as coordinates. Three tools make that easy: two right triangles whose sides you know exactly, the length of an arc, and the <span class="gl" tabindex="0" data-c="circle-equation">equation of a circle</span>.</p>
+
+<h2 id="the-two-special-right-triangles">The two special right triangles</h2>
+<p>Most right triangles have messy side ratios. Two have ratios you can write exactly, and they appear again and again.</p>
+<p><b>45-45-90.</b> Two equal angles mean two equal legs. With legs <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math>, the Pythagorean theorem gives a <a class="gl" href="../notes/alg-right-triangle.html" data-c="hypotenuse">hypotenuse</a> of <math class="pcalc-m"><semantics><mrow><msqrt><mrow><mn>1</mn><mo>+</mo><mn>1</mn></mrow></msqrt><mo>=</mo><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{1 + 1} = \sqrt{2}</annotation></semantics></math>. Any <span class="gl" tabindex="0" data-c="special-triangle">45-45-90 triangle</span> is a scaled copy: legs <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>, hypotenuse <math class="pcalc-m"><semantics><mrow><mi>a</mi><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">a\sqrt{2}</annotation></semantics></math>.</p>
+<p><b>30-60-90.</b> Cut an equilateral triangle with sides <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math> down the middle. Each half has a hypotenuse <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math>, a short leg <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math> (half the base) and a long leg <math class="pcalc-m"><semantics><mrow><msqrt><mrow><msup><mn>2</mn><mn>2</mn></msup><mo>−</mo><msup><mn>1</mn><mn>2</mn></msup></mrow></msqrt><mo>=</mo><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{2^2 - 1^2} = \sqrt{3}</annotation></semantics></math>. The short leg is across from <math class="pcalc-m"><semantics><mrow><msup><mn>30</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">30^\circ</annotation></semantics></math>, the long leg across from <math class="pcalc-m"><semantics><mrow><msup><mn>60</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">60^\circ</annotation></semantics></math>.</p>
+<figure id="fig-special"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="alg-circles-special"><img src="../figures/alg-circles-special.svg" alt="Left: a 45-45-90 triangle with two legs of length 1 and a hypotenuse of length square root of 2; both acute angles are 45 degrees. Right: a 30-60-90 triangle with the short leg 1 across from the 30 degree angle, the long leg square root of 3 across from the 60 degree angle, and the hypotenuse 2, twice the short leg." width="720" height="340" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The 45-45-90 and 30-60-90 triangles. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Reading <a class="gl" href="../notes/alg-right-triangle.html" data-c="trig-ratio">SOH CAH TOA</a> off these triangles gives exact values:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Angle, sin, cos, tan"><table class="compare">
+<thead><tr><th scope="col">Angle</th><th scope="col"><math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo></mrow><annotation encoding="application/x-tex">\sin</annotation></semantics></math></th><th scope="col"><math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo></mrow><annotation encoding="application/x-tex">\cos</annotation></semantics></math></th><th scope="col"><math class="pcalc-m"><semantics><mrow><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo></mrow><annotation encoding="application/x-tex">\tan</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td><math class="pcalc-m"><semantics><mrow><msup><mn>30</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">30^\circ</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><msqrt><mn>3</mn></msqrt></mfrac><mo>=</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{3}} = \frac{\sqrt{3}}{3}</annotation></semantics></math></td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><msup><mn>45</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">45^\circ</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><msqrt><mn>2</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{2}}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><msqrt><mn>2</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{2}}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><msup><mn>60</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">60^\circ</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{3}</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>(<math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{2}}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mfrac><msqrt><mn>2</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{2}}{2}</annotation></semantics></math> are the same number: multiply top and bottom by <math class="pcalc-m"><semantics><mrow><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{2}</annotation></semantics></math>.)</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A 30-60-90 triangle has hypotenuse <math class="pcalc-m"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math>. Find both legs.</p>
+<p>Scale <math class="pcalc-m"><semantics><mrow><mn>1</mn><mo>:</mo><msqrt><mn>3</mn></msqrt><mo>:</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1 : \sqrt{3} : 2</annotation></semantics></math> so the hypotenuse is <math class="pcalc-m"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math>: multiply by <math class="pcalc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math>. The short leg is <math class="pcalc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math> and the long leg is <math class="pcalc-m"><semantics><mrow><mn>5</mn><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">5\sqrt{3}</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="arc-length">Arc length</h2>
+<p>A <b>central angle</b> has its vertex at the center of a circle. An angle of <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> degrees is the fraction <math class="pcalc-m"><semantics><mrow><mfrac><mi>θ</mi><mn>360</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\theta}{360}</annotation></semantics></math> of a full turn, so it cuts off that fraction of the circumference <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>π</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">2\pi r</annotation></semantics></math>:</p>
+<p style="text-align:center"><math class="pcalc-m"><semantics><mrow><mi>s</mi><mo>=</mo><mfrac><mi>θ</mi><mn>360</mn></mfrac><mo>⋅</mo><mn>2</mn><mi>π</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">s = \frac{\theta}{360} \cdot 2\pi r</annotation></semantics></math>.</p>
+<figure id="fig-arc"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="alg-circles-arc"><img src="../figures/alg-circles-arc.svg" alt="Left: a circle with center O and radius r. A central angle of 60 degrees cuts off an arc, drawn in green, of length s. Because 60 degrees is one sixth of 360 degrees, the arc is one sixth of the circumference 2 pi r. Right: on a coordinate grid, the circle with center (2, −1) and radius 3, whose equation is (x − 2) squared plus (y + 1) squared equals 9. The points (5, −1) and (2, 2) are marked on it, each 3 units from the center." width="760" height="360" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> Left: a <math class="pcalc-m"><semantics><mrow><msup><mn>60</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">60^\circ</annotation></semantics></math> angle cuts off one sixth of the circle. Right: a circle on a grid and its equation. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> A circle has radius 9 cm. How long is the arc cut off by a central angle of <math class="pcalc-m"><semantics><mrow><msup><mn>80</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">80^\circ</annotation></semantics></math>?</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>80</mn><mn>360</mn></mfrac><mo>⋅</mo><mn>2</mn><mi>π</mi><mo stretchy="false">(</mo><mn>9</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= \frac{80}{360} \cdot 2\pi(9)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>2</mn><mn>9</mn></mfrac><mo>⋅</mo><mn>18</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">= \frac{2}{9} \cdot 18\pi</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>4</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">= 4\pi</annotation></semantics></math> cm, about 12.6 cm.</p>
+</div>
+<p>Notice what happens when the arc is exactly as long as the radius: <math class="pcalc-m"><semantics><mrow><mfrac><mi>θ</mi><mn>360</mn></mfrac><mo>⋅</mo><mn>2</mn><mi>π</mi><mi>r</mi><mo>=</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">\frac{\theta}{360} \cdot 2\pi r = r</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>360</mn><mrow><mn>2</mn><mi>π</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{360}{2\pi}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>180</mn><mi>π</mi></mfrac></mrow><annotation encoding="application/x-tex">= \frac{180}{\pi}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">≈</mo><msup><mn>57.3</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">\approx 57.3^\circ</annotation></semantics></math>, whatever the size of the circle. That angle is about to get its own name.</p>
+
+<h2 id="the-equation-of-a-circle">The equation of a circle</h2>
+<p>A circle is every point at distance <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> from its center <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(h, k)</annotation></semantics></math>. The horizontal and vertical distances from the center, <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">x - h</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>−</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">y - k</annotation></semantics></math>, are the legs of a right triangle with hypotenuse <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>. The Pythagorean theorem gives</p>
+<p style="text-align:center"><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mi>k</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(x - h)^2 + (y - k)^2 = r^2</annotation></semantics></math>.</p>
+<p>Watch the signs: a center at <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, -1)</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><mi>y</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(x - 2)^2 + (y + 1)^2 = r^2</annotation></semantics></math>. And the right side is the radius squared: radius <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> means <math class="pcalc-m"><semantics><mrow><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">= 9</annotation></semantics></math>.</p>
+<p>The simplest case is the circle of radius <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math> centered at the origin, <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x^2 + y^2 = 1</annotation></semantics></math>. The point on it reached by turning <math class="pcalc-m"><semantics><mrow><msup><mn>30</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">30^\circ</annotation></semantics></math> up from the positive <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis is the top corner of a 30-60-90 triangle with hypotenuse <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math>: it is <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msup><mn>30</mn><mo>∘</mo></msup><mo>,</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msup><mn>30</mn><mo>∘</mo></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\cos 30^\circ, \sin 30^\circ)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac><mo>,</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">= \left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right)</annotation></semantics></math>. Check: <math class="pcalc-m"><semantics><mrow><mfrac><mn>3</mn><mn>4</mn></mfrac><mo>+</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{3}{4} + \frac{1}{4} = 1</annotation></semantics></math>. That picture is exactly where the next topic starts.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-circles">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="alg-right-triangle.html"><span>&larr; Previous</span><b>Right-Triangle Trigonometry</b></a><a class="tb-chapter-link next" href="sine-cosine-tangent.html"><span>Next &rarr;</span><b>Sine, Cosine, and Tangent</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/alg-circles.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-circles">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

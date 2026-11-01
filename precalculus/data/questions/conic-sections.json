@@ -1,0 +1,559 @@
+{
+ "stimuli": {
+  "conic-sections-s1": {
+   "kind": "graph",
+   "title": "An ellipse",
+   "plot": {
+    "label": "Graph of an ellipse centered at (1, -2), reaching from x = -3 to x = 5 and from y = -4 to y = 0",
+    "x": [
+     -4,
+     6
+    ],
+    "y": [
+     -5,
+     1.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "-2 + 2*sqrt(1 - (x - 1)^2/16)",
+      "domain": [
+       -3,
+       5
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "-2 - 2*sqrt(1 - (x - 1)^2/16)",
+      "domain": [
+       -3,
+       5
+      ],
+      "cls": "s1"
+     }
+    ]
+   }
+  },
+  "conic-sections-s2": {
+   "kind": "graph",
+   "title": "The hyperbola $\\frac{x^2}{4} - \\frac{y^2}{9} = 1$",
+   "plot": {
+    "label": "Graph of the hyperbola x squared over 4 minus y squared over 9 equals 1, two branches opening left and right, with dashed asymptotes through the origin",
+    "x": [
+     -6,
+     6
+    ],
+    "y": [
+     -8,
+     8
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "1.5*sqrt(x^2 - 4)",
+      "domain": [
+       2,
+       5.5
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "-1.5*sqrt(x^2 - 4)",
+      "domain": [
+       2,
+       5.5
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "1.5*sqrt(x^2 - 4)",
+      "domain": [
+       -5.5,
+       -2
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "-1.5*sqrt(x^2 - 4)",
+      "domain": [
+       -5.5,
+       -2
+      ],
+      "cls": "s1"
+     }
+    ],
+    "lines": [
+     {
+      "point": [
+       0,
+       0
+      ],
+      "slope": 1.5,
+      "dashed": true
+     },
+     {
+      "point": [
+       0,
+       0
+      ],
+      "slope": -1.5,
+      "dashed": true
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-conic-sections-1",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "conic-sections-s1",
+   "q": "What is the center of the ellipse?",
+   "type": "single",
+   "options": [
+    "$(1, -2)$",
+    "$(-1, 2)$",
+    "$(1, 2)$",
+    "$(-2, 1)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ellipse runs from $x = -3$ to $x = 5$ and from $y = -4$ to $y = 0$. The middle of each range is $x = 1$ and $y = -2$.",
+    "options": [
+     "Midpoints of $[-3, 5]$ and $[-4, 0]$.",
+     "Both signs are flipped; the ellipse is below the $x$-axis.",
+     "The center is below the axis, at $y = -2$.",
+     "The coordinates are swapped."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-2",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "conic-sections-s1",
+   "q": "Which equation does the ellipse have?",
+   "type": "single",
+   "options": [
+    "$\\frac{(x - 1)^2}{16} + \\frac{(y + 2)^2}{4} = 1$",
+    "$\\frac{(x - 1)^2}{4} + \\frac{(y + 2)^2}{16} = 1$",
+    "$\\frac{(x + 1)^2}{16} + \\frac{(y - 2)^2}{4} = 1$",
+    "$\\frac{(x - 1)^2}{4} + \\frac{(y + 2)^2}{2} = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Center $(1, -2)$; it reaches $4$ units across, so $a^2 = 16$, and $2$ units up and down, so $b^2 = 4$.",
+    "options": [
+     "Center $(1, -2)$, $a = 4$, $b = 2$.",
+     "This one is taller than wide; the graph is wider.",
+     "$(x + 1)$ and $(y - 2)$ put the center at $(-1, 2)$.",
+     "The denominators are $a^2$ and $b^2$, not $a$ and $b$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-3",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "conic-sections-s1",
+   "q": "Which points are the vertices at the ends of the long axis?",
+   "type": "single",
+   "options": [
+    "$(5, -2)$ and $(-3, -2)$",
+    "$(1, 0)$ and $(1, -4)$",
+    "$(17, -2)$ and $(-15, -2)$",
+    "$(5, 2)$ and $(-3, 2)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The long axis is horizontal: $(1 \\pm 4, -2)$, which is $(5, -2)$ and $(-3, -2)$.",
+    "options": [
+     "$4$ units left and right of $(1, -2)$.",
+     "These are the ends of the short axis, $2$ units up and down.",
+     "Move $a = 4$ units, not $a^2 = 16$.",
+     "The vertices share the center's $y$-coordinate, $-2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-4",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "conic-sections-s1",
+   "q": "What is the length of the long axis of the ellipse?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 8,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "$4$ is the distance from the center to a vertex; the whole axis is twice that."
+     },
+     {
+      "value": 16,
+      "why": "$16$ is $a^2$. The axis length is $2a = 2(4)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From $(-3, -2)$ to $(5, -2)$ is $5 - (-3) = 8$, which is $2a = 2(4)$."
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-5",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "conic-sections-s1",
+   "q": "Is $(3, -2 + \\sqrt{3})$ on the ellipse?",
+   "type": "single",
+   "options": [
+    "Yes: $\\frac{(3 - 1)^2}{16} + \\frac{(\\sqrt{3})^2}{4} = \\frac{1}{4} + \\frac{3}{4} = 1$",
+    "No: $\\frac{3 - 1}{16} + \\frac{\\sqrt{3}}{4}$ is not $1$",
+    "No: it is not one of the four vertices",
+    "Yes: its $x$-coordinate is between $-3$ and $5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Substitute into the equation: $x - 1 = 2$ and $y + 2 = \\sqrt{3}$, so $\\frac{4}{16} + \\frac{3}{4} = 1$. The point is on the ellipse.",
+    "options": [
+     "The equation holds exactly.",
+     "Square before dividing: $(3 - 1)^2 = 4$ and $(\\sqrt{3})^2 = 3$.",
+     "An ellipse has many points besides its vertices.",
+     "An $x$ in range is needed, but the point also has to satisfy the equation."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-6",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "conic-sections-s2",
+   "q": "What are the vertices of the hyperbola?",
+   "type": "single",
+   "options": [
+    "$(2, 0)$ and $(-2, 0)$",
+    "$(0, 3)$ and $(0, -3)$",
+    "$(4, 0)$ and $(-4, 0)$",
+    "$(3, 0)$ and $(-3, 0)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The $x$ term is positive, so the hyperbola opens left and right with vertices $(\\pm a, 0)$, $a = \\sqrt{4} = 2$.",
+    "options": [
+     "$a = 2$, on the $x$-axis.",
+     "The hyperbola does not meet the $y$-axis; these would be vertices if the $y$ term came first.",
+     "Use $a = \\sqrt{4}$, not $4$.",
+     "$3 = b$ sets the asymptote slopes, not the vertices."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-7",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "conic-sections-s2",
+   "q": "Which are the asymptotes of the hyperbola?",
+   "type": "single",
+   "options": [
+    "$y = \\pm\\frac{3}{2}x$",
+    "$y = \\pm\\frac{2}{3}x$",
+    "$y = \\pm\\frac{9}{4}x$",
+    "$y = \\pm 3x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$y = \\pm\\frac{b}{a}x$ with $a = 2$, $b = 3$: slopes $\\pm\\frac{3}{2}$. On the graph, the dashed lines rise $3$ for every $2$ across.",
+    "options": [
+     "$\\frac{b}{a} = \\frac{3}{2}$.",
+     "This is $\\frac{a}{b}$, upside down.",
+     "Use $a$ and $b$, not $a^2$ and $b^2$.",
+     "Divide $b = 3$ by $a = 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-8",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "conic-sections-s2",
+   "q": "Find the positive $y$-value of the point on the hyperbola with $x = 4$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "3*sqrt(3)",
+    "mistakes": [
+     {
+      "value": 27,
+      "why": "$27$ is $y^2$; take the square root, $\\sqrt{27} = 3\\sqrt{3}$."
+     },
+     {
+      "value": 6,
+      "why": "$6$ is the asymptote's height at $x = 4$, $\\frac{3}{2}(4)$; the curve is below it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{16}{4} - \\frac{y^2}{9} = 1$, so $\\frac{y^2}{9} = 3$, $y^2 = 27$ and $y = \\sqrt{27} = 3\\sqrt{3}$."
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-9",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "conic-sections-s2",
+   "q": "Does the hyperbola cross the $y$-axis?",
+   "type": "single",
+   "options": [
+    "No: $x = 0$ gives $y^2 = -9$, which has no real solution",
+    "Yes, at $(0, 3)$ and $(0, -3)$",
+    "Yes, at the origin, where the asymptotes meet",
+    "No: a hyperbola never crosses either axis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Substitute $x = 0$: $0 - \\frac{y^2}{9} = 1$, so $y^2 = -9$. No real $y$ works, so there are no points on the $y$-axis.",
+    "options": [
+     "$y^2 = -9$ has no real solution.",
+     "$(0, 3)$ gives $0 - 1 = -1$, not $1$.",
+     "$(0, 0)$ gives $0$, not $1$; the asymptotes meet there, the curve does not.",
+     "This hyperbola crosses the $x$-axis at its vertices $(\\pm 2, 0)$; check $x = 0$ instead."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-10",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which conic is $4x^2 + 9y^2 = 36$?",
+   "type": "single",
+   "options": [
+    "An ellipse with vertices $(\\pm 3, 0)$",
+    "A hyperbola opening left and right",
+    "A circle of radius 6",
+    "A parabola opening up"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both squares have positive coefficients: an ellipse. Divide by $36$: $\\frac{x^2}{9} + \\frac{y^2}{4} = 1$, so $a = 3$ and $b = 2$.",
+    "options": [
+     "$\\frac{x^2}{9} + \\frac{y^2}{4} = 1$.",
+     "A hyperbola needs opposite signs on the squares.",
+     "The coefficients $4$ and $9$ differ, so it is not a circle.",
+     "Both variables are squared, so it is not a parabola."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-11",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Describe the graph of $y^2 - 4x^2 = 16$.",
+   "type": "single",
+   "options": [
+    "A hyperbola opening up and down",
+    "A hyperbola opening left and right",
+    "An ellipse centered at the origin",
+    "A parabola opening to the right"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Opposite signs: a hyperbola. Divide by $16$: $\\frac{y^2}{16} - \\frac{x^2}{4} = 1$. The $y$ term is positive, so it opens up and down, with vertices $(0, \\pm 4)$.",
+    "options": [
+     "$y$ term positive: up and down.",
+     "Left and right needs the $x$ term positive.",
+     "An ellipse needs the same sign on both squares.",
+     "Both variables are squared, so it is not a parabola."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-12",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Describe the graph of $x = 2y^2 - 3$.",
+   "type": "single",
+   "options": [
+    "A parabola with vertex $(-3, 0)$, opening right",
+    "A parabola with vertex $(0, -3)$, opening up",
+    "A parabola with vertex $(-3, 0)$, opening left",
+    "A hyperbola with vertices on the $x$-axis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only $y$ is squared: a sideways parabola $x - (-3) = 2(y - 0)^2$. Vertex $(-3, 0)$; the coefficient $2 > 0$, so it opens right.",
+    "options": [
+     "$x = 2y^2 - 3$: vertex $(-3, 0)$, opens right.",
+     "That is $y = 2x^2 - 3$; here $x$ is the one not squared.",
+     "The coefficient of $y^2$ is positive, so it opens right.",
+     "Only one variable is squared, so it is a parabola."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-13",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Rewrite $x^2 + y^2 - 6x + 4y - 3 = 0$ by completing the square. What is the graph?",
+   "type": "single",
+   "options": [
+    "A circle with center $(3, -2)$ and radius $4$",
+    "A circle with center $(-3, 2)$ and radius $4$",
+    "A circle with center $(3, -2)$ and radius $16$",
+    "A circle with center $(3, -2)$ and radius $\\sqrt{3}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$(x^2 - 6x + 9) + (y^2 + 4y + 4) = 3 + 9 + 4$, so $(x - 3)^2 + (y + 2)^2 = 16$: center $(3, -2)$, radius $4$.",
+    "options": [
+     "$(x - 3)^2 + (y + 2)^2 = 16$.",
+     "$(x - 3)^2$ means the center has $x = 3$.",
+     "$16$ is the radius squared.",
+     "Add the $9$ and $4$ to the right side too: $3 + 9 + 4 = 16$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-14",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve $\\frac{x^2}{9} + \\frac{y^2}{4} = 1$ for the upper half of the ellipse, $y \\ge 0$.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "x"
+    ],
+    "mode": "exact",
+    "answer": "2*sqrt(1 - x^2/9)",
+    "domain": [
+     -3,
+     3
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "sqrt(4 - x^2/9)",
+      "why": "Multiply both terms by $4$: $y^2 = 4 - \\frac{4x^2}{9}$."
+     },
+     {
+      "expr": "4*sqrt(1 - x^2/9)",
+      "why": "$y^2 = 4\\left(1 - \\frac{x^2}{9}\\right)$; the square root of $4$ is $2$."
+     },
+     {
+      "expr": "2*sqrt(1 + x^2/9)",
+      "why": "Subtract $\\frac{x^2}{9}$ from both sides; the sign is minus."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{y^2}{4} = 1 - \\frac{x^2}{9}$, so $y^2 = 4\\left(1 - \\frac{x^2}{9}\\right)$ and, taking the positive root, $y = 2\\sqrt{1 - \\frac{x^2}{9}}$."
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-15",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which equations have graphs that are ellipses? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$\\frac{x^2}{25} + \\frac{y^2}{9} = 1$",
+    "$3x^2 + y^2 = 12$",
+    "$x^2 - y^2 = 1$",
+    "$y = x^2 + 1$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "An ellipse has both squares with the same sign. $3x^2 + y^2 = 12$ becomes $\\frac{x^2}{4} + \\frac{y^2}{12} = 1$.",
+    "options": [
+     "Standard form, $a = 5$, $b = 3$.",
+     "Same signs: $\\frac{x^2}{4} + \\frac{y^2}{12} = 1$.",
+     "Opposite signs: a hyperbola.",
+     "One square: a parabola."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-conic-sections-16",
+   "unit": "unit-4",
+   "topic": "conic-sections",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In $\\frac{x^2}{9} + \\frac{y^2}{b^2} = 1$, $b$ is increased from $2$ to $5$. Predict each change.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The height of the ellipse",
+     "answer": "up",
+     "why": "It reaches $b$ units above and below the center, so the height $2b$ grows from $4$ to $10$."
+    },
+    {
+     "name": "The $x$-intercepts",
+     "answer": "none",
+     "why": "At $y = 0$, $x^2 = 9$ whatever $b$ is: still $(\\pm 3, 0)$."
+    },
+    {
+     "name": "The center",
+     "answer": "none",
+     "why": "No shift terms appear, so the center stays $(0, 0)$."
+    }
+   ],
+   "why": {
+    "correct": "$b$ controls only the vertical reach; with $b = 5 > 3$ the long axis becomes vertical."
+   }
+  }
+ ]
+}

@@ -1,0 +1,459 @@
+/* AP® Precalculus course styles, on top of assets/theme.css. Forked from the AP® Physics 1
+   stylesheet (itself from Chemistry's and A&P's) (docs/apprecalc-spec.md decision 1): the same visual language
+   tokens (Okabe–Ito based, colorblind-safe, light and dark), page shell,
+   stepped lesson, textbook frame and question styles, renamed pcalc-*, plus
+   what this course adds: stimulus panels and sets, numeric answers, charts,
+   unit pages, the printable unit sheet and the course home.
+
+   The course color: forest green on every page (body.pcalc), the same values as
+   body[data-course="apprecalc"] in assets/theme.css and IDENTITY.accent in
+   scripts/lib/apprecalc-build.mjs (docs/apprecalc-spec.md decision 8): --cink on
+   --ctint 7.3:1 light (8.4:1 on white), 11.0:1 dark on the tint over the page
+   (dark tint kept low, A&P decision 81). Then the math layer: formulas (MathML from
+   pcalc-math.js), plots (pcalc-plot.js), typed-expression answers. */
+body.pcalc{--ctint:#E3F3E8;--cink:#11592F;}
+:root[data-theme="dark"] body.pcalc{--ctint:rgba(80,200,130,0.10);--cink:#ACE4BF;}
+/* Unit 4's "beyond the exam" line (spec decision 7). */
+.pcalc-beyond{display:block;margin:8px 0 0;padding:8px 12px;border-radius:12px;background:var(--ctint);color:var(--ink);font:600 14px/1.45 var(--font-ui);}
+.pcalc-beyond b{color:var(--cink);}
+
+/* ============================================================ 0. Math */
+/* Formulas: MathML, in a math font where the device has one. Display
+   formulas scroll sideways on a phone rather than overflow the page. */
+math.pcalc-m{font-family:"STIX Two Math","Cambria Math","Latin Modern Math","STIXGeneral",math,serif;font-size:1.08em;}
+math.pcalc-m[display="block"]{display:block math;margin:.6em 0;overflow-x:auto;overflow-y:hidden;max-width:100%;padding:2px 0;}
+math.pcalc-m mtext{font-family:var(--font-body,inherit);}
+.pcalc-q-calc{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12px var(--font-ui);letter-spacing:.02em;vertical-align:2px;}
+/* Plots (pcalc-plot.js): Okabe-Ito based series, lighter in dark mode;
+   open points are hollow. Color is never the only cue: curves carry labels. */
+.pcalc-plot-wrap{overflow-x:auto;max-width:100%;}
+.pcalc-plot{display:block;max-width:100%;height:auto;margin:0 auto;font:600 11px var(--font-ui);}
+.pcalc-plot text{fill:var(--ink-2,var(--ink));}
+.pcalc-plot .pcalc-plot-axlabel,.pcalc-plot .pcalc-plot-label{font-weight:800;fill:var(--ink);}
+.pcalc-plot-grid line{stroke:var(--line);stroke-width:1;}
+.pcalc-plot-axis line{stroke:var(--ink);stroke-width:1.3;}
+.pcalc-plot-curve{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round;}
+.pcalc-plot-curve.is-dashed,.pcalc-plot-line.is-dashed{stroke-dasharray:6 5;}
+.pcalc-plot-line{stroke-width:1.8;}
+.pcalc-plot-asym{stroke:var(--ink-3,#777);stroke-width:1.3;stroke-dasharray:4 4;}
+.pcalc-plot-field line{stroke:var(--ink-2,#555);stroke-width:1.3;stroke-linecap:round;}
+.pcalc-plot-shade{fill:var(--cink);fill-opacity:.16;}
+.pcalc-plot-pt{stroke-width:2;}
+.pcalc-plot-pt.is-open{fill:var(--white,#fff);}
+.pcalc-plot .s1{stroke:#B0123A;color:#B0123A;} .pcalc-plot .s2{stroke:#0072B2;color:#0072B2;} .pcalc-plot .s3{stroke:#009E73;color:#009E73;}
+.pcalc-plot .s4{stroke:#D55E00;color:#D55E00;} .pcalc-plot .s5{stroke:#7A4F9E;color:#7A4F9E;}
+.pcalc-plot .pcalc-plot-pt.s1:not(.is-open){fill:#B0123A;} .pcalc-plot .pcalc-plot-pt.s2:not(.is-open){fill:#0072B2;} .pcalc-plot .pcalc-plot-pt.s3:not(.is-open){fill:#009E73;}
+.pcalc-plot .pcalc-plot-pt.s4:not(.is-open){fill:#D55E00;} .pcalc-plot .pcalc-plot-pt.s5:not(.is-open){fill:#7A4F9E;}
+.pcalc-plot text.s1{fill:#B0123A;stroke:none;} .pcalc-plot text.s2{fill:#0072B2;stroke:none;} .pcalc-plot text.s3{fill:#00805C;stroke:none;}
+:root[data-theme="dark"] .pcalc-plot .s1{stroke:#F590AC;color:#F590AC;} :root[data-theme="dark"] .pcalc-plot .s2{stroke:#6BB4E8;color:#6BB4E8;}
+:root[data-theme="dark"] .pcalc-plot .s3{stroke:#52CFA6;color:#52CFA6;} :root[data-theme="dark"] .pcalc-plot .s4{stroke:#F29A5C;color:#F29A5C;}
+:root[data-theme="dark"] .pcalc-plot .s5{stroke:#C3A3E0;color:#C3A3E0;}
+:root[data-theme="dark"] .pcalc-plot .pcalc-plot-pt.s1:not(.is-open){fill:#F590AC;} :root[data-theme="dark"] .pcalc-plot .pcalc-plot-pt.s2:not(.is-open){fill:#6BB4E8;}
+:root[data-theme="dark"] .pcalc-plot text.s1{fill:#F590AC;} :root[data-theme="dark"] .pcalc-plot text.s2{fill:#6BB4E8;} :root[data-theme="dark"] .pcalc-plot text.s3{fill:#52CFA6;}
+/* Series strokes are for paths, lines and points: a label in a series colour keeps a plain glyph. */
+.pcalc-plot text.s4,.pcalc-plot text.s5,:root[data-theme="dark"] .pcalc-plot text.s1,:root[data-theme="dark"] .pcalc-plot text.s2,:root[data-theme="dark"] .pcalc-plot text.s3,:root[data-theme="dark"] .pcalc-plot text.s4,:root[data-theme="dark"] .pcalc-plot text.s5{stroke:none;}
+/* A typed expression: the box, its left-hand side and the live preview. */
+.pcalc-expr{display:grid;gap:6px;}
+.pcalc-expr label{font:800 14px var(--font-ui);}
+.pcalc-expr-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.pcalc-expr-row input{flex:1 1 220px;min-height:44px;padding:8px 12px;border:2px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);font:600 17px var(--font-ui);}
+.pcalc-expr-row input:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+.pcalc-expr-lhs{font-size:18px;white-space:nowrap;}
+.pcalc-expr-preview{min-height:2.2em;padding:6px 10px;border-radius:10px;background:var(--ctint);color:var(--ink);overflow-x:auto;}
+.pcalc-expr-preview:empty{min-height:0;padding:0;background:none;} /* collapsed, not display:none: it stays a live region */
+.pcalc-expr-err{color:var(--bad-text,#A0291E);font:700 14px var(--font-ui);}
+
+
+/* ============================================================ 1. Visual language */
+:root{
+  --pcalc-o2:#D55E00;        /* oxygenated blood: vermillion */
+  --pcalc-o2-fill:#F6D2BD;
+  --pcalc-deo2:#0072B2;      /* deoxygenated blood: blue */
+  --pcalc-deo2-fill:#C3DDF0;
+  --pcalc-symp:#CC79A7;      /* sympathetic: reddish purple */
+  --pcalc-symp-fill:#F1DAE7;
+  --pcalc-para:#009E73;      /* parasympathetic: bluish green */
+  --pcalc-para-fill:#C4E8DC;
+  --pcalc-aff:#E69F00;       /* afferent (toward the control center): orange */
+  --pcalc-aff-fill:#F8E3B8;
+  --pcalc-eff:#56B4E9;       /* efferent (away from it): sky blue */
+  --pcalc-eff-fill:#D2EAF8;
+  --pcalc-hi:#8E3B2E;        /* the high side of a gradient */
+  --pcalc-hi-fill:#EFD5CF;
+  --pcalc-lo:#5B6B8C;        /* the low side */
+  --pcalc-lo-fill:#E1E6F0;
+  --pcalc-memb:#6B5E3C;      /* membranes */
+  --pcalc-shape:#5D6B69;     /* neutral structure */
+  --pcalc-shape-fill:#EEF2F1;
+  --pcalc-causes:#1F2A28;    /* "causes" arrows */
+  --pcalc-flows:#1F2A28;     /* "flows to" arrows */
+  --pcalc-mask:#FFF7E6;
+}
+:root[data-theme="dark"]{
+  --pcalc-o2:#FF9A5C;  --pcalc-o2-fill:rgba(213,94,0,0.28);
+  --pcalc-deo2:#6CB8EC; --pcalc-deo2-fill:rgba(0,114,178,0.30);
+  --pcalc-symp:#E7A5CA; --pcalc-symp-fill:rgba(204,121,167,0.26);
+  --pcalc-para:#4FD1AA; --pcalc-para-fill:rgba(0,158,115,0.26);
+  --pcalc-aff:#F3C04F;  --pcalc-aff-fill:rgba(230,159,0,0.26);
+  --pcalc-eff:#8FD0F5;  --pcalc-eff-fill:rgba(86,180,233,0.24);
+  --pcalc-hi:#F0A08F;   --pcalc-hi-fill:rgba(142,59,46,0.34);
+  --pcalc-lo:#AEBBD6;   --pcalc-lo-fill:rgba(91,107,140,0.30);
+  --pcalc-memb:#D8C58F;
+  --pcalc-shape:#B7C4C1; --pcalc-shape-fill:rgba(183,196,193,0.10);
+  --pcalc-causes:#E6EEEC; --pcalc-flows:#E6EEEC;
+  --pcalc-mask:#2B3432;
+}
+
+/* SVG vocabulary. Fill classes color a shape; add .line for a stroke only. */
+.pcalc-fig svg, svg.pcalc-svg{max-width:100%;height:auto;overflow:visible;}
+/* Inline stimulus drawings (particle views) carry a fixed width; they shrink to the column on a phone. */
+.pcalc-stim-html svg{max-width:100%;height:auto;}
+.pcalc-fig .shape{fill:var(--pcalc-shape-fill);stroke:var(--pcalc-shape);stroke-width:2;}
+.pcalc-fig .o2{fill:var(--pcalc-o2-fill);stroke:var(--pcalc-o2);stroke-width:2;}
+.pcalc-fig .deo2{fill:var(--pcalc-deo2-fill);stroke:var(--pcalc-deo2);stroke-width:2;}
+.pcalc-fig .symp{fill:var(--pcalc-symp-fill);stroke:var(--pcalc-symp);stroke-width:2;}
+.pcalc-fig .para{fill:var(--pcalc-para-fill);stroke:var(--pcalc-para);stroke-width:2;}
+.pcalc-fig .aff{fill:var(--pcalc-aff-fill);stroke:var(--pcalc-aff);stroke-width:2;}
+.pcalc-fig .eff{fill:var(--pcalc-eff-fill);stroke:var(--pcalc-eff);stroke-width:2;}
+.pcalc-fig .hi{fill:var(--pcalc-hi-fill);stroke:var(--pcalc-hi);stroke-width:2;}
+.pcalc-fig .lo{fill:var(--pcalc-lo-fill);stroke:var(--pcalc-lo);stroke-width:2;}
+.pcalc-fig .memb{fill:none;stroke:var(--pcalc-memb);stroke-width:3;}
+.pcalc-fig .accent{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
+.pcalc-fig .line{fill:none !important;}
+.pcalc-fig .o2.line{stroke:var(--pcalc-o2);} .pcalc-fig .deo2.line{stroke:var(--pcalc-deo2);}
+/* The two arrow kinds (spec section 6). "causes": solid, filled head.
+   "flows": dashed, open head. The heads are markers defined once per page by
+   pcalc-core.js, so an author only writes class="causes" or class="flows". */
+.pcalc-fig .causes{fill:none;stroke:var(--pcalc-causes);stroke-width:2.5;marker-end:url(#pcalc-head-causes);}
+.pcalc-fig .flows{fill:none;stroke:var(--pcalc-flows);stroke-width:2.2;stroke-dasharray:7 5;marker-end:url(#pcalc-head-flows);}
+.pcalc-fig .o2.flows{stroke:var(--pcalc-o2);} .pcalc-fig .deo2.flows{stroke:var(--pcalc-deo2);}
+.pcalc-fig .lbl{fill:var(--ink);font:800 15px var(--font-ui);}
+.pcalc-fig .lbl-sm{fill:var(--muted);font:700 12.5px var(--font-ui);}
+.pcalc-fig text{fill:var(--ink);font-family:var(--font-ui);}
+#pcalc-defs{position:absolute;width:0;height:0;overflow:hidden;}
+
+/* ============================================================ 2. Page shell */
+.pcalc-crumb{font:800 12.5px var(--font-ui);color:var(--muted);margin:18px 0 0;}
+.pcalc-crumb a{color:var(--muted);text-decoration:none;}
+.pcalc-crumb a:hover{color:var(--ink);text-decoration:underline;}
+.pcalc-hero{padding-top:22px;}
+.pcalc-hero h1{max-width:24ch;}
+.pcalc-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;}
+.pcalc-tag{display:inline-block;padding:4px 11px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12.5px var(--font-ui);text-decoration:none;}
+a.pcalc-tag:hover{text-decoration:underline;}
+.pcalc-part{margin:0 0 30px;max-width:760px;}
+.pcalc-part h2{display:flex;align-items:baseline;gap:10px;font-size:21px;margin:0 0 12px;}
+.pcalc-part p,.pcalc-prose p,.pcalc-prose li{font-weight:600;line-height:1.7;}
+.pcalc-hint{color:var(--muted);font-size:14px;}
+.pcalc-small{color:var(--muted);font:700 13px var(--font-ui);}
+.pcalc-unbuilt{color:var(--muted);}
+.pcalc-links{margin:0;padding-left:20px;}
+.pcalc-links li{margin:4px 0;}
+.pcalc-plain{margin:6px 0 14px;padding-left:20px;}
+.pcalc-hook{background:var(--ctint);border-radius:var(--radius, 18px);padding:18px 22px;}
+
+/* The causal chain: numbered cause -> effect steps. */
+.pcalc-chain{list-style:none;counter-reset:step;margin:0;padding:0;}
+.pcalc-chain li{counter-increment:step;display:grid;grid-template-columns:32px 1fr;column-gap:12px;row-gap:4px;padding:12px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
+.pcalc-chain li::before{content:counter(step);grid-row:1 / span 3;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cink);color:var(--paper);font:900 13px var(--font-ui);}
+.pcalc-chain .pcalc-arrow{color:var(--cink);font-weight:900;}
+.pcalc-chain .pcalc-cause{font-weight:700;}
+.pcalc-ideas{margin:0;padding-left:20px;}.pcalc-ideas li{margin:0 0 10px;}
+.pcalc-core-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.pcalc-core{display:inline-block;padding:6px 13px;border-radius:12px;background:var(--white);box-shadow:var(--lift-sm);font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.pcalc-misconception{border-left:4px solid var(--warn, #C98A1A);padding-left:16px;}
+.pcalc-wrong b{color:var(--bad-text, #B3261E);}
+.pcalc-right b{color:var(--good-text, #1B7B5B);}
+
+/* Figures and the lesson figure panel. */
+.pcalc-figure{margin:18px 0 24px;}
+.pcalc-figure figcaption{font:600 13.5px/1.5 var(--font-ui);color:var(--muted);margin-top:8px;}
+.pcalc-credit{display:block;font-size:12px;margin-top:3px;}
+.pcalc-figimg{position:relative;display:inline-block;max-width:100%;}
+.pcalc-figimg img{display:block;max-width:100%;height:auto;border-radius:10px;background:#fff;}
+/* Dark mode: the diagrams are SVG files drawn on white in the course palette
+   (the Okabe-Ito hues above), shown as <img>, so page tokens cannot reach
+   inside them. Inverting lightness and turning the hue back round keeps every
+   hue in place while light fills go dark and dark strokes and labels go light,
+   the same swap the A&P figures make with their dark tokens; the white ground
+   lands near the dark card surface. Follows the site's theme toggle. */
+:root[data-theme="dark"] .pcalc-figimg img{filter:invert(.88) hue-rotate(180deg) saturate(1.25) brightness(1.05);}
+@media print{:root[data-theme="dark"] .pcalc-figimg img{filter:none;}}
+.pcalc-mask{position:absolute;border:0;padding:0;margin:0;background:transparent;cursor:default;color:transparent;border-radius:4px;}
+.pcalc-mask span{position:absolute;left:-9999px;}
+.pcalc-labels-hidden .pcalc-mask{background:var(--pcalc-mask);outline:2px solid var(--cink);cursor:pointer;}
+.pcalc-labels-hidden .pcalc-mask:focus-visible{outline:3px solid var(--accent);}
+.pcalc-labels-hidden .pcalc-mask.revealed{background:transparent;outline:2px dashed var(--good, #1B7B5B);}
+.pcalc-toggle-labels{margin-top:4px;}
+
+/* Prose (notes pages). */
+.pcalc-prose{max-width:760px;}
+.pcalc-prose h2{font-size:23px;margin:34px 0 10px;}
+.pcalc-prose h3{font-size:18px;margin:24px 0 8px;}
+.pcalc-prose table.compare{width:100%;border-collapse:collapse;margin:18px 0;font:600 14.5px/1.5 var(--font-ui);display:block;overflow-x:auto;}
+.pcalc-prose table.compare th,.pcalc-prose table.compare td{padding:9px 11px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+.pcalc-prose table.compare thead th{background:var(--ctint);color:var(--cink);}
+.pcalc-prose table.compare tbody th{font-weight:800;}
+.pcalc-prose .worked{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 18px;margin:18px 0;}
+.pcalc-prose .worked::before{content:'Worked example';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:6px;}
+.going-further,.pcalc-preview,.for-your-exam{border-radius:14px;padding:12px 16px;margin:18px 0;}
+.going-further{background:var(--paper-2, rgba(0,0,0,0.035));}
+.going-further::before{content:'Going further';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.pcalc-preview{border:2px dashed var(--cink);}
+.pcalc-preview::before{content:'Preview';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:4px;}
+.for-your-exam{background:var(--ctint);}
+.pcalc-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;}
+.pcalc-foot{padding:26px 0 40px;}
+.pcalc-gate{margin:0 0 18px;}.pcalc-gate .premium-card{margin:0;}.pcalc-gate-notes{margin:8px 0 0;font:700 14px/1.5 var(--font-ui);}
+.pcalc-accuracy-note{color:var(--muted);font:600 13px/1.5 var(--font-ui);max-width:760px;}
+.pcalc-beta{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 10.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;}
+.pcalc-q-credit{margin:4px 0 0;color:var(--muted);}
+
+/* ============================================================ Lesson layout (redesign)
+   A rail with the lesson's parts, a coral title card joined to a white card
+   and chip rows under it. Without JS every part shows in one scroll and the
+   rail links jump to them; pcalc-lesson.js adds .pcalc-stepped (one part a step). */
+.pcalc-ls{display:grid;grid-template-columns:250px minmax(0,1fr);gap:0 clamp(24px,4vw,54px);align-items:start;}
+.pcalc-ls-rail{position:sticky;top:calc(var(--site-header-h,112px) + 18px);display:flex;flex-direction:column;gap:14px;padding:22px 0 26px;max-height:calc(100vh - var(--site-header-h,112px) - 36px);overflow-y:auto;}
+.pcalc-ls-main{min-width:0;}
+.pcalc-ls-k{font:900 12px/1.5 var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;}
+.pcalc-ls-links{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0;}
+.pcalc-ls-links a{display:inline-flex;align-items:center;gap:6px;font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.pcalc-ls-links a:hover,.pcalc-ls-chips a:hover{color:var(--cink);}
+.pcalc-ls-prog{display:flex;align-items:center;gap:12px;}
+.pcalc-ls-prog[hidden]{display:none;}
+.pcalc-ls-track{flex:1;height:8px;border-radius:999px;background:var(--track);overflow:hidden;}
+.pcalc-ls-fill{width:0;height:100%;background:var(--cink);border-radius:999px;transition:width .25s ease;}
+.pcalc-ls-count{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+.pcalc-ls-steps{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:2px;}
+.pcalc-ls-steps a{display:flex;align-items:flex-start;gap:10px;padding:7px 8px;border-radius:9px;font:800 12.5px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
+.pcalc-ls-steps a:hover{background:var(--hover-tint);}
+.pcalc-ls-steps .n{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);font:900 11px var(--font-mono);margin-top:-2px;}
+.pcalc-ls-steps .done a{color:var(--ink);}
+.pcalc-ls-steps .current .n{background:var(--cink);color:var(--paper);}
+.pcalc-ls-steps .done:not(.current) .n{background:var(--good-text);color:var(--white);font-size:0;}
+.pcalc-ls-steps .done:not(.current) .n::after{content:"\2713";font:900 12px var(--font-ui);}
+.pcalc-ls-hint{font:700 13px var(--font-ui);color:var(--muted);margin-left:auto;text-align:right;}
+.pcalc-ls-hint:empty{display:none;}
+.pcalc-ls-hint + .pcalc-ls-go{margin-left:0;}
+.pcalc-ls-go:disabled{opacity:.5;cursor:not-allowed;filter:none;}
+.pcalc-free-first{margin:16px 0;padding:18px 20px;border-radius:var(--radius-lg);background:var(--white);border:var(--bw,2px) solid var(--line);}
+.pcalc-free-first p{margin:0 0 12px;font-weight:700;color:var(--muted);}
+.pcalc-ls-steps .current a{background:var(--ctint);color:var(--cink);}
+.pcalc-ls-hero{margin-top:16px;padding:clamp(24px,4vw,44px) clamp(24px,4vw,44px) 26px;background:var(--ctint);border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+.pcalc-ls-hero .eyebrow{color:var(--cink);}
+.pcalc-ls-hero .pcalc-tag{background:var(--white);}
+.pcalc-ls-hero h1{margin:0 0 6px;max-width:20ch;}
+.pcalc-ls-hero .lede{margin:0 0 14px;max-width:52ch;color:var(--muted);font-weight:700;}
+.pcalc-ls-card{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:var(--radius-lg);margin-top:-2px;padding:clamp(20px,4vw,32px);box-shadow:var(--lift-lg);}
+.pcalc-ls [id]{scroll-margin-top:calc(var(--site-header-h,112px) + 12px);}
+.pcalc-stepped .pcalc-ls-card{min-height:360px;display:flex;flex-direction:column;}
+.pcalc-ls-card .pcalc-part{max-width:72ch;}
+.pcalc-ls-card #figure{max-width:none;}
+.pcalc-stepped .pcalc-step{display:none;flex:1;margin:0;}
+.pcalc-stepped .pcalc-step.is-on{display:block;}
+.pcalc-step .pcalc-step-k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);margin:0 0 6px;}
+.pcalc-step h2{font:900 clamp(19px,3vw,24px) var(--font-ui);margin:0 0 14px;}
+.pcalc-step h2:focus{outline:none;}
+.pcalc-step-body > :first-child{margin-top:0;}
+.pcalc-step-body > :last-child{margin-bottom:0;}
+.pcalc-ls-actions{display:flex;align-items:center;gap:12px;margin-top:26px;}
+.pcalc-ls-actions[hidden],.pcalc-ls-actions [hidden]{display:none;}
+.pcalc-ls-back{font:800 14.5px var(--font-ui);color:var(--muted);background:none;border:0;padding:10px 6px;cursor:pointer;}
+.pcalc-ls-back:hover{color:var(--ink);}
+.pcalc-ls-go{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font:900 15px var(--font-ui);color:var(--paper);background:var(--cink);padding:13px 24px;border-radius:var(--radius);border:0;cursor:pointer;text-decoration:none;box-shadow:var(--lift-sm);}
+.pcalc-ls-go:hover{filter:brightness(1.07);color:var(--paper);}
+.pcalc-ls-related{margin:22px 0 30px;display:flex;flex-direction:column;gap:10px;}
+.pcalc-ls-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;}
+.pcalc-ls-label{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:74px;}
+.pcalc-ls-chips{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0;}
+.pcalc-ls-chips a,.pcalc-ls-chips .pcalc-unbuilt,.pcalc-ls-chips summary{display:inline-block;color:var(--ink);background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:var(--radius-sm);padding:6px 11px;font:700 12.5px var(--font-ui);text-decoration:none;}
+.pcalc-ls-chips details{display:contents;}
+.pcalc-ls-chips summary{cursor:pointer;color:var(--cink);list-style:none;}
+@media (prefers-reduced-motion:no-preference){.pcalc-stepped .pcalc-step.is-on{animation:pcalc-step-in .25s ease both;}}
+@keyframes pcalc-step-in{from{opacity:0;transform:translateY(6px);}}
+@media (max-width:900px){
+  .pcalc-ls{display:block;}
+  .pcalc-ls-rail{position:static;max-height:none;overflow:visible;padding:14px 0 0;gap:10px;}
+  .pcalc-ls-links{flex-direction:row;flex-wrap:wrap;gap:6px 18px;}
+  .pcalc-ls-steps{flex-direction:row;flex-wrap:wrap;gap:6px;}
+  .pcalc-ls-steps a{padding:5px 9px 5px 5px;background:var(--white);box-shadow:var(--lift-sm);}
+  .pcalc-stepped .pcalc-ls-steps .t{display:none;}
+  .pcalc-stepped .pcalc-ls-steps .current .t{display:inline;}
+}
+@media (max-width:560px){.pcalc-ls-label{min-width:0;flex-basis:100%;}}
+/* No JavaScript: the lesson reads as one scroll, every part shown, no step
+   controls (the stepped classes are in the markup for the first paint). */
+@media (scripting: none){.pcalc-stepped .pcalc-step{display:block;margin:0 0 28px;}.pcalc-ls-prog,.pcalc-ls-actions{display:none;}.pcalc-stepped .pcalc-ls-steps .t{display:inline;}}
+@media print{.pcalc-ls{display:block;}.pcalc-ls-rail,.pcalc-ls-actions{display:none !important;}.pcalc-stepped .pcalc-step{display:block;}}
+
+/* Glossary terms in running text: underlined, with a definition on hover,
+   focus or tap (pcalc-glossary.js). */
+.gl{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:help;color:inherit;}
+a.gl{cursor:pointer;}
+
+/* Questions. */
+.pcalc-qs{display:grid;gap:14px;}
+.pcalc-q{background:var(--white);box-shadow:var(--lift-sm);border-radius:16px;padding:16px 18px;}
+.pcalc-q-stem{margin:0 0 10px;font-weight:700;}
+.pcalc-q-n{color:var(--cink);font-weight:900;}
+.pcalc-opts{margin:0;padding-left:20px;}
+.pcalc-opt-btns{display:grid;gap:8px;}
+.pcalc-opt{display:block;width:100%;text-align:left;padding:11px 14px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 15px/1.45 var(--font-ui);cursor:pointer;}
+.pcalc-opt:hover:not(:disabled):not([aria-disabled="true"]){border-color:var(--cink);}
+.pcalc-opt[aria-disabled="true"]{cursor:default;}
+.pcalc-opt[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
+.pcalc-opt.is-right{border-color:var(--good, #1B7B5B);background:var(--good-tint, rgba(27,123,91,0.1));}
+.pcalc-opt.is-wrong{border-color:var(--bad, #B3261E);background:var(--bad-tint, rgba(179,38,30,0.08));}
+.pcalc-opt .pcalc-opt-why{display:block;font-weight:600;font-size:13.5px;color:var(--muted);margin-top:4px;}
+.pcalc-q-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;}
+.pcalc-q-feedback{margin-top:12px;font-weight:600;line-height:1.6;}
+.pcalc-q-feedback .pcalc-verdict{font-weight:900;}
+.pcalc-q-feedback .ok{color:var(--good-text, #1B7B5B);} .pcalc-q-feedback .no{color:var(--bad-text, #B3261E);}
+.pcalc-order{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.pcalc-order li{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);}
+.pcalc-order li.pos-ok{border-color:var(--good, #1B7B5B);} .pcalc-order li.pos-no{border-color:var(--bad, #B3261E);}
+.pcalc-order .pcalc-order-text{flex:1;font-weight:700;}
+.pcalc-order button{min-width:34px;min-height:34px;border-radius:9px;border:0;background:var(--ctint);color:var(--cink);font:900 15px var(--font-ui);cursor:pointer;}
+.pcalc-predict{width:100%;border-collapse:collapse;}
+.pcalc-predict th,.pcalc-predict td{padding:8px 6px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;}
+.pcalc-predict .pcalc-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.pcalc-predict .pcalc-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+.pcalc-predict .pcalc-dir button[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+.pcalc-predict tr.var-ok th{color:var(--good-text, #1B7B5B);} .pcalc-predict tr.var-no th{color:var(--bad-text, #B3261E);}
+.pcalc-predict .pcalc-var-why{font-weight:600;font-size:13.5px;color:var(--muted);}
+.pcalc-q-key summary{cursor:pointer;font-weight:800;color:var(--cink);margin-top:8px;}
+.js .pcalc-q-key{display:none;}
+
+/* Mastery text, study cards and filters. */
+.pcalc-mastery{font:900 12.5px var(--font-ui);color:var(--cink);}
+.pcalc-cards{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
+.pcalc-cards li a{display:flex;flex-direction:column;gap:4px;height:100%;padding:15px 17px;border-radius:16px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);}
+.pcalc-cards li a span{color:var(--muted);font:600 13.5px/1.45 var(--font-ui);}
+.pcalc-filter{display:inline-flex;align-items:center;gap:8px;font:800 13.5px var(--font-ui);margin-top:6px;}
+.pcalc-filter input,.pcalc-filter select{padding:8px 11px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 14px var(--font-ui);}
+
+
+/* ============ Unit, notes and Learn pages
+   The textbook layout is shared by every course: assets/course/book.css
+   (.bk-*), loaded by those pages after base.css. Only Chem specifics stay. */
+
+@media (max-width:560px){
+  .pcalc-part h2{font-size:19px;}
+}
+@media print{
+  .pcalc-toggle-labels,.pcalc-q-actions,#site-header,.course-nav{display:none !important;}
+  .js .pcalc-q-key{display:block;}
+}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;}
+.pcalc-cover{position:absolute;background:#fff;border-radius:3px;pointer-events:none;}
+.pcalc-fix{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.pcalc-pin{position:absolute;background:#fff;border:3px solid var(--accent,#A33B26);border-radius:4px;box-shadow:0 0 0 3px rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font:800 14px var(--font-ui,system-ui);color:var(--accent,#A33B26);pointer-events:none;}
+.pcalc-report-page{margin:18px 0 0;color:var(--muted);font:600 13px/1.5 var(--font-ui);}
+
+/* Learn: the book column keeps the footer below the fold while the chosen
+   chapter's topics load in order (pcalc-book.js), so nothing on screen moves. */
+#pcalc-book{min-height:100vh;}
+
+/* ============================================================ AP Precalculus additions */
+/* 44 px touch targets on every control a student answers with. */
+.pcalc-opt,.pcalc-ls-go,.pcalc-ls-back,.bk-btn,.pcalc-check,.pcalc-dir button,.pcalc-order button,.pcalc-num input{min-height:44px;}
+.pcalc-order button{min-width:44px;}
+.pcalc-foot .report-btn,.pcalc-report-page .report-btn{min-height:44px;}
+.pcalc-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;margin:8px 0 0;}
+.pcalc-review-note{font:700 13.5px/1.5 var(--font-ui);color:var(--muted);margin:14px 0 0;}
+.pcalc-soon{padding:18px 20px;border-radius:var(--radius-lg,18px);background:var(--white);border:var(--bw,2px) solid var(--line);font-weight:700;}
+.pcalc-hero{padding-top:22px;}
+
+/* Answer marks: a word as well as a colour (A&P decision 81). */
+.pcalc-mark{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font:900 11.5px var(--font-ui);vertical-align:middle;}
+.pcalc-mark.ok{background:var(--good-text,#1B7B5B);color:var(--white,#fff);}
+.pcalc-mark.no{background:var(--bad-text,#B3261E);color:var(--white,#fff);}
+.pcalc-mark.miss{background:var(--amber-text,#8A5A00);color:var(--white,#fff);}
+.pcalc-mark.ok::before{content:"\2713  ";}.pcalc-mark.no::before{content:"\2715  ";}
+.pcalc-dir button[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
+.pcalc-predict .pcalc-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.pcalc-predict .pcalc-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+
+/* Stimulus sets: one panel, then its 4-5 questions, held together. */
+.pcalc-set{border:var(--bw,2px) solid var(--line);border-radius:18px;padding:14px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;background:var(--paper);}
+.pcalc-set>*,.pcalc-qs>*{min-width:0;}
+.pcalc-qs{grid-template-columns:minmax(0,1fr);}
+.pcalc-stim{background:var(--white);border-radius:14px;padding:16px 18px;box-shadow:var(--lift-sm);}
+.pcalc-stim-k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--cink);margin:0 0 4px;}
+.pcalc-stim h3{font:900 17px var(--font-ui);margin:0 0 8px;}
+.pcalc-stim-text p{font-weight:600;line-height:1.6;margin:0 0 10px;}
+table.pcalc-data{width:100%;border-collapse:collapse;font:600 14px/1.45 var(--font-ui);}
+table.pcalc-data caption{text-align:left;font:800 13px var(--font-ui);color:var(--muted);padding:0 0 6px;}
+table.pcalc-data th,table.pcalc-data td{padding:8px 10px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+table.pcalc-data thead th{background:var(--ctint);color:var(--cink);}
+table.pcalc-data td{font-variant-numeric:tabular-nums;}
+
+/* Charts drawn by the generator (scripts/lib/apprecalc-build.mjs chartSvg).
+   Series differ by colour AND marker shape, in light and dark. */
+:root{--pcalc-s1:#0072B2;--pcalc-s2:#D55E00;--pcalc-s3:#009E73;--pcalc-s4:#CC79A7;--pcalc-s5:#5E5E5E;}
+:root[data-theme="dark"]{--pcalc-s1:#6CB8EC;--pcalc-s2:#FF9A5C;--pcalc-s3:#4FD1AA;--pcalc-s4:#E7A5CA;--pcalc-s5:#C9C9C9;}
+.pcalc-chart{margin:4px 0;}
+.pcalc-svg{width:100%;max-width:560px;height:auto;display:block;}
+.pcalc-svg .axis{stroke:var(--ink);stroke-width:1.5;}
+.pcalc-svg .grid{stroke:var(--line, rgba(0,0,0,0.1));stroke-width:1;}
+.pcalc-svg .tick{fill:var(--muted);font:700 12px var(--font-ui);}
+.pcalc-svg .lbl{fill:var(--ink);font:800 13px var(--font-ui);}
+.pcalc-svg .series{fill:none;stroke-width:2.5;}
+.pcalc-svg .err{stroke:var(--ink);stroke-width:1.5;fill:none;}
+.pcalc-svg .s1{stroke:var(--pcalc-s1);} .pcalc-svg .s2{stroke:var(--pcalc-s2);} .pcalc-svg .s3{stroke:var(--pcalc-s3);} .pcalc-svg .s4{stroke:var(--pcalc-s4);} .pcalc-svg .s5{stroke:var(--pcalc-s5);} .pcalc-svg .series.s5{stroke-dasharray:7 4;}
+.pcalc-svg .pt.s1,.pcalc-svg .bar.s1{fill:var(--pcalc-s1);} .pcalc-svg .pt.s2,.pcalc-svg .bar.s2{fill:var(--pcalc-s2);} .pcalc-svg .pt.s3,.pcalc-svg .bar.s3{fill:var(--pcalc-s3);} .pcalc-svg .pt.s4,.pcalc-svg .bar.s4{fill:var(--pcalc-s4);} .pcalc-svg .pt.s5,.pcalc-svg .bar.s5{fill:var(--pcalc-s5);}
+.pcalc-legend{display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 0;font:800 13px var(--font-ui);}
+.pcalc-legend i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+.pcalc-legend .s1 i{background:var(--pcalc-s1);} .pcalc-legend .s2 i{background:var(--pcalc-s2);} .pcalc-legend .s3 i{background:var(--pcalc-s3);} .pcalc-legend .s4 i{background:var(--pcalc-s4);} .pcalc-legend .s5 i{background:var(--pcalc-s5);}
+.pcalc-chart-data summary{cursor:pointer;font:800 13px var(--font-ui);color:var(--cink);margin-top:6px;min-height:32px;}
+
+/* Numeric answers. */
+.pcalc-num{display:flex;flex-direction:column;gap:6px;}
+.pcalc-num label{font:800 14px var(--font-ui);}
+.pcalc-num-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.pcalc-num input{width:12ch;padding:8px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:800 17px var(--font-mono, monospace);}
+.pcalc-num input:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.pcalc-num-unit{font:800 15px var(--font-ui);color:var(--muted);}
+.pcalc-num-ulabel{font:800 14px var(--font-ui);margin-left:6px;}
+.pcalc-num input.pcalc-num-u{width:10ch;}
+/* Value, units and significant figures, each with its own mark. */
+.pcalc-num-parts{list-style:none;margin:8px 0 4px;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px;font:700 14px var(--font-ui);}
+.pcalc-num-parts li{display:flex;align-items:center;gap:6px;}
+.pcalc-num-notes{margin:6px 0;padding-left:20px;font-size:14.5px;line-height:1.5;}
+.pcalc-num-notes li{margin:2px 0;}
+
+
+
+/* Glossary page: its styles are inlined in precalculus/glossary.html (build-apprecalc.mjs, GLOSSARY_CSS). */
+
+/* The printable unit sheet: one page on screen, compact on paper. */
+.pcalc-sheet-head h1{margin:6px 0 10px;}
+.pcalc-sheet-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin:10px 0 24px;}
+.pcalc-sheet-topic{background:var(--white);border-radius:14px;padding:14px 16px;box-shadow:var(--lift-sm);font:600 13.5px/1.5 var(--font-ui);}
+.pcalc-sheet-topic h2{font:900 16px var(--font-ui);margin:0 0 6px;}
+.pcalc-sheet-topic h2 span{color:var(--cink);}
+.pcalc-sheet-topic ul{margin:6px 0;padding-left:18px;}
+.pcalc-sheet-chain{color:var(--muted);}
+.pcalc-sheet-terms{margin:6px 0 0;display:grid;gap:4px;}
+.pcalc-sheet-terms dt{display:inline;font-weight:900;}
+.pcalc-sheet-terms dt::after{content:": ";}
+.pcalc-sheet-terms dd{display:inline;margin:0;}
+@media print{
+  body.pcalc{background:#fff;color:#000;}
+  .pcalc-foot .privacy-link,.pcalc-crumb,.pcalc-nav-ref .btn-press,.report-btn{display:none !important;}
+  .pcalc-sheet-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .pcalc-sheet-topic{box-shadow:none;border:1px solid #999;padding:8px 10px;font-size:10.5pt;break-inside:avoid;}
+  .pcalc-sheet-head h1{font-size:16pt;}
+  .pcalc-set{border-color:#999;}
+}
+@media (max-width:560px){.pcalc-sheet-grid{grid-template-columns:minmax(0,1fr);}.pcalc-set{padding:10px;}}
+
+/* Share bar: Share to Google Classroom, Copy link, Print (lessons, notes,
+   unit sheets, FRQs; scripts/build-apprecalc.mjs shareBar). Fixed height, so
+   nothing shifts when the copy label changes. */
+.pcalc-share{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px;}
+.pcalc-share-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--white);color:var(--cink);font:800 13.5px var(--font-ui);text-decoration:none;cursor:pointer;white-space:nowrap;min-width:7.5em;justify-content:center;}
+.pcalc-share-btn:hover{border-color:var(--cink);color:var(--cink);}
+.pcalc-share-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+@media print{.pcalc-share{display:none !important;}}

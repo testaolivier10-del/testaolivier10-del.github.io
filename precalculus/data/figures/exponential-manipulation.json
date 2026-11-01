@@ -1,0 +1,12 @@
+{
+ "exponential-manipulation-shift": {
+  "file": "figures/exponential-manipulation-shift.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of y = 2^x through (0, 1) and the graph of h(x) = 2^(x + 3) through (-3, 1) and (0, 8): the second is the first moved 3 units left, and also the first with every output multiplied by 8."
+ }
+}

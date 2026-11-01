@@ -1,0 +1,41 @@
+<p>A <b>function model</b> is a function chosen to describe a real situation: the height of a beanbag, the cost of a phone plan, the volume of a box. Before you can build one, you have to choose its type. This page is about that choice, and about saying plainly what the model takes for granted.</p>
+
+<h2>Two sources of evidence: the data and the context</h2>
+<p>You choose a model type by asking two questions. What pattern do the numbers show? What does the situation itself suggest? A good choice agrees with both.</p>
+<p>The numbers speak through their changes. Over equal input steps:</p>
+<table class="compare">
+<thead><tr><th scope="col">Pattern over equal input steps</th><th scope="col">What it means</th><th scope="col">Model type</th></tr></thead>
+<tbody>
+<tr><td>First differences constant</td><td>The rate of change is constant</td><td>Linear</td></tr>
+<tr><td>Second differences constant</td><td>The rate of change changes at a constant rate</td><td>Quadratic</td></tr>
+<tr><td>Third differences constant</td><td>The changes in the rate of change are constant</td><td>Cubic</td></tr>
+<tr><td>Different behavior on different intervals</td><td>One rule does not describe the whole situation</td><td>Piecewise-defined</td></tr>
+</tbody>
+</table>
+<p>The context speaks through what the quantity measures. An area is a product of two lengths, so it suggests a quadratic. A volume is a product of three lengths, so it suggests a cubic. A height that rises to one maximum and falls back symmetrically suggests a quadratic. A price that is flat up to a limit and then charges per unit suggests a piecewise-defined model.</p>
+
+<div class="worked">
+<p><b>Worked example 1.</b> A beanbag is tossed upward from a hand $6$ feet above the ground. Its height, in feet, at $t = 0, 0.5, 1, 1.5, 2$ seconds is $6, 18, 22, 18, 6$. Choose a model type.</p>
+<p>The inputs go up by $0.5$ each time, so the steps are equal. First differences (later minus earlier): $12, 4, -4, -12$. These are not constant, so a linear model is out.</p>
+<p>Second differences: $4 - 12 = -8$, $-4 - 4 = -8$, $-12 - (-4) = -8$. Constant, so a quadratic model fits.</p>
+<p>The context agrees: a tossed object rises to one highest point and falls back.</p>
+</div>
+<figure id="fig-sym" data-fig="model-selection-symmetric"><figcaption>One highest point and symmetry on each side: the shape of a quadratic.</figcaption></figure>
+<p>Check the equal steps first. If the inputs are $0, 1, 3, 4$, the gaps are not equal, and comparing raw differences tells you nothing until you divide each by the length of its step, which gives the average rate of change on each interval.</p>
+
+<h2>More points do not mean a better model</h2>
+<p>Through any $n + 1$ points with different inputs, there is a polynomial of degree at most $n$ that hits every point. Five points can always be matched by a degree-$4$ polynomial. That does not make it the right model. Between and beyond the data it can turn up and down for no reason the situation supports (<a class="figref" href="#fig-sym">compare the smooth quadratic in the figure</a>). Choose the simplest type that matches the pattern and the context.</p>
+
+<h2>Assumptions and the domain the context allows</h2>
+<p>Every model takes some things for granted. Saying what they are is part of the answer, and the exam asks for it in words.</p>
+<ul>
+<li><b>Restricted domain.</b> Only some inputs make sense. Time starts at $0$. A beanbag model stops when the beanbag lands, where $h(t) = 0$. A cut from a $12$-inch sheet must be less than $6$ inches if two cuts come out of each side.</li>
+<li><b>Restricted range.</b> Only some outputs make sense: no negative heights, no fractional people, no soup colder than the room it sits in.</li>
+<li><b>Built-in assumptions.</b> A box formula that uses the full $12 - 2x$ assumes the sheet has no thickness. A linear cooling model assumes the soup cools at the same rate the whole time, which real soup does not.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> $T(m) = 90 - 4m$ models the temperature of soup, in degrees Celsius, $m$ minutes after it is set in a $22$-degree room. What domain does the context allow?</p>
+<p>Soup cools toward room temperature and never drops below it. Solve $90 - 4m = 22$: $4m = 68$, so $m = 17$.</p>
+<p>After $17$ minutes the model gives temperatures below $22$ degrees, which cannot happen. Use the model for $0 \le m \le 17$, and say why: "after $m = 17$ the model predicts soup colder than the room."</p>
+</div>
+<p>When you explain a restriction, name the bound and the reason, using the numbers. "The domain is $0 \le m \le 17$ because the soup cannot cool below the room's $22$ degrees" earns credit. "Time cannot be negative" alone does not explain the upper end.</p>

@@ -1,0 +1,8 @@
+{
+ "complex-number": {
+  "def": "A number $a + bi$, where $a$ and $b$ are real and $i$ is the imaginary unit, with $i^2 = -1$. $a$ is the real part and $b$ the imaginary part."
+ },
+ "complex-conjugate": {
+  "def": "The complex conjugate of $a + bi$ is $a - bi$. Their product, $a^2 + b^2$, is real."
+ }
+}

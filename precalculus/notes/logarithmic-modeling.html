@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logarithmic Modeling — AP® Precalculus Notes | LevlPrep</title>
+<meta name="description" content="Some quantities rise quickly at first and then more and more slowly, without stopping: skill with practice, a sapling's height, sales after a launch.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/logarithmic-modeling.html">
+<meta property="og:title" content="Logarithmic Modeling — AP® Precalculus Notes | LevlPrep">
+<meta property="og:description" content="Some quantities rise quickly at first and then more and more slowly, without stopping: skill with practice, a sapling's height, sales after a launch.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/logarithmic-modeling.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/logarithmic-modeling.html#reading",
+      "name": "Logarithmic Function Context and Data Modeling",
+      "url": "https://levlprep.com/precalculus/notes/logarithmic-modeling.html",
+      "description": "Some quantities rise quickly at first and then more and more slowly, without stopping: skill with practice, a sapling's height, sales after a launch.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "logarithmic function context and data modeling ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Exponential and Logarithmic Functions",
+          "item": "https://levlprep.com/precalculus/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Logarithmic Function Context and Data Modeling: notes",
+          "item": "https://levlprep.com/precalculus/notes/logarithmic-modeling.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="logarithmic-modeling" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Exponential and Logarithmic Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Logarithmic Function Context and Data Modeling: notes</span></nav>
+<p class="issue">Unit 2 <i></i> Topic 2.14</p>
+<h1 class="deck bk-title" id="r3Title">Logarithmic Function Context <span>and Data Modeling</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/logarithmic-modeling.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="logarithmic-modeling">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Flogarithmic-modeling.html&amp;title=Logarithmic%20Function%20Context%20and%20Data%20Modeling%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/logarithmic-modeling.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-1.html"><span class="bk-toc-n">1</span>Polynomial and Rational Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-2.html"><span class="bk-toc-chap-n">2</span><span><b>Exponential and Logarithmic Functions</b><small>15 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-2"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="sequences"><a href="sequences.html"><span class="bk-toc-n">2.1</span>Change in Arithmetic and Geometric Sequences</a></li><li data-toc-t="linear-vs-exponential"><a href="linear-vs-exponential.html"><span class="bk-toc-n">2.2</span>Change in Linear and Exponential Functions</a></li><li data-toc-t="exponential-functions"><a href="exponential-functions.html"><span class="bk-toc-n">2.3</span>Exponential Functions</a></li><li data-toc-t="exponential-manipulation"><a href="exponential-manipulation.html"><span class="bk-toc-n">2.4</span>Exponential Function Manipulation</a></li><li data-toc-t="exponential-modeling"><a href="exponential-modeling.html"><span class="bk-toc-n">2.5</span>Exponential Function Context and Data Modeling</a></li><li data-toc-t="model-validation"><a href="model-validation.html"><span class="bk-toc-n">2.6</span>Competing Function Model Validation</a></li><li data-toc-t="composition"><a href="composition.html"><span class="bk-toc-n">2.7</span>Composition of Functions</a></li><li data-toc-t="inverse-functions"><a href="inverse-functions.html"><span class="bk-toc-n">2.8</span>Inverse Functions</a></li><li data-toc-t="logarithmic-expressions"><a href="logarithmic-expressions.html"><span class="bk-toc-n">2.9</span>Logarithmic Expressions</a></li><li data-toc-t="exp-log-inverses"><a href="exp-log-inverses.html"><span class="bk-toc-n">2.10</span>Inverses of Exponential Functions</a></li><li data-toc-t="logarithmic-functions"><a href="logarithmic-functions.html"><span class="bk-toc-n">2.11</span>Logarithmic Functions</a></li><li data-toc-t="logarithmic-manipulation"><a href="logarithmic-manipulation.html"><span class="bk-toc-n">2.12</span>Logarithmic Function Manipulation</a></li><li data-toc-t="exp-log-equations"><a href="exp-log-equations.html"><span class="bk-toc-n">2.13</span>Exponential and Logarithmic Equations and Inequalities</a></li><li class="current" data-toc-t="logarithmic-modeling"><a href="#main" aria-current="page"><span class="bk-toc-n">2.14</span>Logarithmic Function Context and Data Modeling</a><div class="bk-toc-onpage"><p>On this page</p><a href="#recognizing-logarithmic-data">Recognizing logarithmic data</a><a href="#building-the-model-from-points">Building the model from points</a><a href="#logarithmic-regression">Logarithmic regression</a><a href="#using-the-model">Using the model</a><a href="#rate-of-change-and-its-meaning">Rate of change and its meaning</a><a href="#where-the-model-stops-working">Where the model stops working</a></div></li><li data-toc-t="semi-log-plots"><a href="semi-log-plots.html"><span class="bk-toc-n">2.15</span>Semi-log Plots</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Trigonometric and Polar Functions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>Some quantities rise quickly at first and then more and more slowly, without stopping: skill with practice, a sapling's height, sales after a launch. When the input has to multiply to give equal increases in the <a class="gl" href="../notes/alg-functions.html" data-c="function">output</a>, a <b><span class="gl" tabindex="0" data-c="log-model">logarithmic model</span></b> fits. This page shows how to recognize that pattern, build the model from points or by <a class="gl" href="../notes/model-construction.html" data-c="regression">regression</a>, use it to predict, and say where it stops making sense.</p>
+
+<h2 id="recognizing-logarithmic-data">Recognizing logarithmic data</h2>
+<p>Compare the three patterns side by side.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Model, Inputs, Outputs"><table class="compare">
+<thead><tr><th scope="col">Model</th><th scope="col">Inputs</th><th scope="col">Outputs</th></tr></thead>
+<tbody>
+<tr><td>Linear</td><td>equal differences</td><td>equal differences</td></tr>
+<tr><td>Exponential</td><td>equal differences</td><td>equal ratios</td></tr>
+<tr><td>Logarithmic</td><td>equal ratios</td><td>equal differences</td></tr>
+</tbody>
+</table></div>
+<p>The logarithmic row is the exponential row with inputs and outputs swapped, which is what you would expect from <a class="gl" href="../notes/inverse-functions.html" data-c="inverse-function">inverse functions</a>.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Typing speed <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> after <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> hours: <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>20</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 20)</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>26</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 26)</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>9</mn><mo>,</mo><mn>32</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(9, 32)</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>27</mn><mo>,</mo><mn>38</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(27, 38)</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>81</mn><mo>,</mo><mn>44</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(81, 44)</annotation></semantics></math>. Which model fits, and why?</p>
+<p>The inputs are not equally spaced (<math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>18</mn></mrow><annotation encoding="application/x-tex">18</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>54</mn></mrow><annotation encoding="application/x-tex">54</annotation></semantics></math> apart), so equal differences in <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> do not mean linear.</p>
+<p>The inputs are each <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> times the one before, and the outputs each increase by <math class="pcalc-m"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math>. Equal ratios in, equal differences out: logarithmic.</p>
+</div>
+
+<h2 id="building-the-model-from-points">Building the model from points</h2>
+<p>For <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><msub><mi>log</mi><mi>c</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = a + b\log_c x</annotation></semantics></math>, a point with <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> at once, because <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mi>c</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\log_c 1 = 0</annotation></semantics></math>. A second point gives <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Fit <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><msub><mi>log</mi><mn>3</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = a + b\log_3 x</annotation></semantics></math> to the typing data.</p>
+<p>At <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">a = 20</annotation></semantics></math>.</p>
+<p>At <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mn>20</mn><mo>+</mo><mi>b</mi><mo>⋅</mo><mn>1</mn><mo>=</mo><mn>26</mn></mrow><annotation encoding="application/x-tex">20 + b \cdot 1 = 26</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">b = 6</annotation></semantics></math>. The model is <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>20</mn><mo>+</mo><mn>6</mn><msub><mi>log</mi><mn>3</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = 20 + 6\log_3 x</annotation></semantics></math>; every other point checks, for example <math class="pcalc-m"><semantics><mrow><mn>20</mn><mo>+</mo><mn>6</mn><mo>⋅</mo><mn>4</mn><mo>=</mo><mn>44</mn></mrow><annotation encoding="application/x-tex">20 + 6 \cdot 4 = 44</annotation></semantics></math> at <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>81</mn></mrow><annotation encoding="application/x-tex">x = 81</annotation></semantics></math>.</p>
+</div>
+<p>With base <math class="pcalc-m"><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math> and no point at <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>, write two equations, <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">a + b\ln x_1 = y_1</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><msub><mi>y</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">a + b\ln x_2 = y_2</annotation></semantics></math>, and solve the system.</p>
+
+<h2 id="logarithmic-regression">Logarithmic regression</h2>
+<p>Real data are never exact. A graphing calculator's logarithmic regression fits <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = a + b\ln x</annotation></semantics></math>. Store <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> with full precision; rounding them first can change the third decimal place of every later answer. Check the fit with a <a class="gl" href="../notes/model-validation.html" data-c="residual">residual plot</a>: residuals scattered with no pattern support the model.</p>
+
+<h2 id="using-the-model">Using the model</h2>
+<div class="worked">
+<p><b>Worked example 3.</b> With <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>20</mn><mo>+</mo><mn>6</mn><msub><mi>log</mi><mn>3</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = 20 + 6\log_3 x</annotation></semantics></math>, when does the speed reach <math class="pcalc-m"><semantics><mrow><mn>35</mn></mrow><annotation encoding="application/x-tex">35</annotation></semantics></math> words per minute?</p>
+<p><math class="pcalc-m"><semantics><mrow><mn>6</mn><msub><mi>log</mi><mn>3</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mn>15</mn></mrow><annotation encoding="application/x-tex">6\log_3 x = 15</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mn>3</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">\log_3 x = 2.5</annotation></semantics></math>.</p>
+<p>Exponential form: <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><msup><mn>3</mn><mn>2.5</mn></msup><mo>=</mo><mn>9</mn><msqrt><mn>3</mn></msqrt><mo>≈</mo><mn>15.6</mn></mrow><annotation encoding="application/x-tex">x = 3^{2.5} = 9\sqrt{3} \approx 15.6</annotation></semantics></math> hours.</p>
+</div>
+<p>The same idea with a regression model: <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mn>60</mn></mrow><annotation encoding="application/x-tex">a + b\ln x = 60</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><msup><mi>e</mi><mrow><mo stretchy="false">(</mo><mn>60</mn><mo>−</mo><mi>a</mi><mo stretchy="false">)</mo><mo>/</mo><mi>b</mi></mrow></msup></mrow><annotation encoding="application/x-tex">x = e^{(60 - a)/b}</annotation></semantics></math>.</p>
+
+<h2 id="rate-of-change-and-its-meaning">Rate of change and its meaning</h2>
+<p>For <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b &gt; 0</annotation></semantics></math>, a logarithmic model is increasing and <a class="gl" href="../notes/change-in-tandem.html" data-c="concavity">concave down</a>. <a class="gl" href="../notes/rates-of-change.html" data-c="aroc">Average rates of change</a> over later intervals are smaller: in context, each extra unit of input adds less than the one before. And doubling the input always adds the same amount, <math class="pcalc-m"><semantics><mrow><mi>b</mi><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">b\ln 2</annotation></semantics></math>. For <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>52</mn><mo>+</mo><mn>18</mn><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = 52 + 18\ln x</annotation></semantics></math>, each doubling of weeks adds about <math class="pcalc-m"><semantics><mrow><mn>12.5</mn></mrow><annotation encoding="application/x-tex">12.5</annotation></semantics></math> words per minute.</p>
+
+<h2 id="where-the-model-stops-working">Where the model stops working</h2>
+<ul>
+<li><b>Near <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>.</b> <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>0</mn><mo>+</mo></msup></mrow></munder><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 0^+}(a + b\ln x)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">= -\infty</annotation></semantics></math>, so the model eventually gives negative speeds or heights. The context rules those inputs out.</li>
+<li><b>Far past the data.</b> The model keeps rising without bound, but nothing in the data says the real quantity does. Past the last data point there is no evidence for the model, so error can grow.</li>
+</ul>
+<p>When you explain either one, name the specific values and say what goes wrong in context.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:logarithmic-modeling">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="exp-log-equations.html"><span>&larr; Previous</span><b>Exponential and Logarithmic Equations and Inequalities</b></a><a class="tb-chapter-link next" href="semi-log-plots.html"><span>Next &rarr;</span><b>Semi-log Plots</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/logarithmic-modeling.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:logarithmic-modeling">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

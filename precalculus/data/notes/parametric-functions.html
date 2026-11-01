@@ -1,0 +1,53 @@
+<p>Most graphs you have drawn so far show one quantity against another: $y$ against $x$. A parametric function adds a third quantity that is not drawn at all. It is the clock that tells each point when to appear. This page shows how to read and draw such curves, and why they can do things an ordinary graph cannot.</p>
+
+<h2>A parameter runs the show</h2>
+<p>A <b>parametric function</b> is a pair of functions of one input, written $f(t) = (x(t), y(t))$. The input $t$ is called the <b>parameter</b>. For each allowed $t$, the function $x(t)$ gives a horizontal position and $y(t)$ gives a vertical position, so the pair is one point of the plane.</p>
+<p>Think of $t$ as time. A drone's log might say that after $t$ seconds it is $x(t)$ meters east and $y(t)$ meters north of where it took off. The flight path is the set of all points $(x(t), y(t))$. Time does not show on the picture, but it decides the order of the points.</p>
+
+<h2>From a table to a curve</h2>
+<p>The surest way to sketch a parametric curve is a table. Choose several values of $t$, compute $x(t)$ and $y(t)$, plot the points, and join them in order of increasing $t$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Sketch $x(t) = t^2 - 2t$, $y(t) = 2t - 1$ for $-1 \le t \le 3$.</p>
+<table class="compare">
+<thead><tr><th scope="col">$t$</th><th scope="col">$-1$</th><th scope="col">$0$</th><th scope="col">$1$</th><th scope="col">$2$</th><th scope="col">$3$</th></tr></thead>
+<tbody>
+<tr><th scope="row">$x(t) = t^2 - 2t$</th><td>$3$</td><td>$0$</td><td>$-1$</td><td>$0$</td><td>$3$</td></tr>
+<tr><th scope="row">$y(t) = 2t - 1$</th><td>$-3$</td><td>$-1$</td><td>$1$</td><td>$3$</td><td>$5$</td></tr>
+</tbody>
+</table>
+<p>For example, $x(-1) = (-1)^2 - 2(-1) = 1 + 2 = 3$. Plot $(3, -3)$, $(0, -1)$, $(-1, 1)$, $(0, 3)$, $(3, 5)$ and join them in that order. The curve moves left until $t = 1$, then turns and moves right, climbing the whole time.</p>
+</div>
+<figure id="fig-trace" data-fig="parametric-functions-trace"><figcaption>The curve of Worked example 1. Arrows show the direction of travel as $t$ increases.</figcaption></figure>
+
+<h2>Direction of travel</h2>
+<p>A parametric curve comes with a direction: the order in which the points are traced as $t$ increases. Mark it with arrows. You can read the direction from the two functions separately:</p>
+<ul>
+<li>where $x(t)$ is increasing, the point moves right; where it is decreasing, the point moves left;</li>
+<li>where $y(t)$ is increasing, the point moves up; where it is decreasing, the point moves down.</li>
+</ul>
+<p>In Worked example 1, $y(t) = 2t - 1$ increases for every $t$, so the point climbs the whole time, while $x(t)$ falls and then rises.</p>
+
+<h2>Curves that are not graphs of functions</h2>
+<p>Both $x(t)$ and $y(t)$ are functions of $t$: one input, one output. The curve they make is a different matter. In Worked example 1, $x = 0$ happens at $t = 0$ and at $t = 2$, with $y = -1$ and $y = 3$. One $x$-value has two $y$-values, so the curve is not the graph of a function of $x$. A parametric curve may also cross itself, when two different values of $t$ land on the same point.</p>
+
+<h2>Same path, different parameter</h2>
+<p>Different parametric functions can trace the same set of points. The functions $(t, t^2)$ for $0 \le t \le 2$ and $(2s, 4s^2)$ for $0 \le s \le 1$ both trace the parabola $y = x^2$ from $(0, 0)$ to $(2, 4)$. The second one just gets there with smaller parameter values. Replacing $t$ with $-t$ (and adjusting the interval) traces the same path backward.</p>
+
+<h2>Writing $y$ as a function of $x$</h2>
+<p>When $x(t)$ is simple to solve for $t$, you can remove the parameter and get an equation in $x$ and $y$ alone.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Write $y$ as a function of $x$ for $x(t) = 2t + 1$, $y(t) = t^2$.</p>
+<p>Solve $x = 2t + 1$ for $t$: subtract 1, then divide by 2, so $t = \frac{x - 1}{2}$.</p>
+<p>Substitute into $y = t^2$: $y = \left(\frac{x - 1}{2}\right)^2$. The curve is a parabola with vertex at $(1, 0)$, the point where $t = 0$.</p>
+</div>
+
+<h2>Graph against the parameter, or curve in the plane?</h2>
+<table class="compare">
+<thead><tr><th scope="col">Picture</th><th scope="col">Horizontal axis</th><th scope="col">Vertical axis</th><th scope="col">What it shows</th></tr></thead>
+<tbody>
+<tr><td>Graph of $x(t)$</td><td>$t$</td><td>$x$</td><td>when the point moves right or left</td></tr>
+<tr><td>Graph of $y(t)$</td><td>$t$</td><td>$y$</td><td>when the point moves up or down</td></tr>
+<tr><td>Parametric curve</td><td>$x$</td><td>$y$</td><td>the path itself, with arrows for the order</td></tr>
+</tbody>
+</table>
+<p>Keep these apart. A common slip is to draw $y(t)$ against $t$ and call it the curve.</p>

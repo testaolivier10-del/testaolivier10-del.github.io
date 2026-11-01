@@ -1,0 +1,5 @@
+{
+ "determinant": {
+  "def": "For a 2 × 2 matrix with rows (a, b) and (c, d), the number ad − bc. Its absolute value is the area of the parallelogram made by the columns. The inverse matrix A⁻¹, with AA⁻¹ = A⁻¹A = I, exists exactly when the determinant is not 0, and then it is (1/(ad − bc)) times the matrix with rows (d, −b) and (−c, a)."
+ }
+}

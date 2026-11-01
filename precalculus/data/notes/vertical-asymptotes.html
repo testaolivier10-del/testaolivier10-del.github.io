@@ -1,0 +1,35 @@
+<p>End behavior describes a rational function far from the origin. This topic looks at the places where it blows up: inputs where the denominator is $0$ and the outputs grow without bound. Those vertical lines are vertical asymptotes, and the way to describe them precisely is with one-sided limits.</p>
+
+<h2>Where vertical asymptotes come from</h2>
+<p>Near an input $a$ where the denominator of $r(x) = \frac{p(x)}{q(x)}$ is $0$ but the numerator is not, the outputs are a fixed number divided by a tiny number: they grow without bound in size. The vertical line $x = a$ is then a <b>vertical asymptote</b>.</p>
+<p>When the numerator is $0$ at $a$ too, compare multiplicities. If $(x - a)$ divides the denominator more times than the numerator, there is still a vertical asymptote at $a$. If not, the factor cancels away and the outputs approach a number instead. The next topic studies that case.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the vertical asymptotes of $h(x) = \frac{x - 3}{(x - 3)(x + 2)}$.</p>
+<p>Denominator zeros: $3$ and $-2$. The factor $x - 3$ appears once on top and once below, so it cancels: $h(x) = \frac{1}{x + 2}$ for $x \ne 3$.</p>
+<p>Only $x = -2$ is a vertical asymptote.</p>
+</div>
+
+<h2>One-sided limits</h2>
+<p>A <b>one-sided limit</b> describes the outputs as the input approaches $a$ from one side only. $\lim_{x \to a^-} f(x)$ means "as $x$ approaches $a$ from the left" (inputs less than $a$) and $\lim_{x \to a^+} f(x)$ "from the right". At a vertical asymptote each one-sided limit is $\infty$ or $-\infty$.</p>
+<figure id="fig-va" data-fig="vertical-asymptotes-sides"><figcaption>At $x = 1$: $\lim_{x \to 1^-} r(x) = -\infty$ and $\lim_{x \to 1^+} r(x) = \infty$.</figcaption></figure>
+<p>To find the sign, look at each factor just beside $a$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Describe $r(x) = \frac{x}{(x - 1)(x + 2)}$ near $x = 1$.</p>
+<p>Left of $1$ (say $x = 0.9$): top $0.9 > 0$; $x - 1 < 0$ and small; $x + 2 > 0$. The quotient is negative and huge: $\lim_{x \to 1^-} r(x) = -\infty$.</p>
+<p>Right of $1$ (say $x = 1.1$): $x - 1 > 0$, everything else the same: $\lim_{x \to 1^+} r(x) = \infty$.</p>
+</div>
+<p>When the leftover power of $(x - a)$ is even, it is positive on both sides, so both one-sided limits match. For $f(x) = \frac{x + 1}{(x - 2)^2}$: $\lim_{x \to 2^-} f(x) = \infty$ and $\lim_{x \to 2^+} f(x) = \infty$.</p>
+<table class="compare">
+<thead><tr><th scope="col">Leftover power of $(x - a)$ below</th><th scope="col">Sides of the asymptote</th><th scope="col">Example near $a$</th></tr></thead>
+<tbody>
+<tr><td>odd</td><td>opposite signs</td><td>$\frac{1}{x - 1}$: $-\infty$ left, $\infty$ right</td></tr>
+<tr><td>even</td><td>same sign</td><td>$\frac{1}{(x - 2)^2}$: $\infty$ on both sides</td></tr>
+</tbody>
+</table>
+
+<h2>Writing it for a grader</h2>
+<p>Write both one-sided limits in full: "$\lim_{x \to 1^-} r(x) = -\infty$ and $\lim_{x \to 1^+} r(x) = \infty$." These lose the point: "$r(1) = \infty$" ($r(1)$ does not exist), "$r \to \infty$ at $1$" (no limit notation, no side), or a limit with the wrong side.</p>
+<p>In context, translate both parts: $\lim_{V \to 0^+} P(V) = \infty$ for $P(V) = \frac{600}{V}$ says that as the volume shrinks toward $0$, the pressure grows without bound.</p>
+
+<h2>From a table</h2>
+<p>A table of inputs closing in on $a$ from each side shows the same thing. For $g(x) = \frac{x^2 + 1}{x - 1}$: $g(0.99) = -198.01$ and $g(0.999) = -1998.00$ on the left; $g(1.01) = 202.01$ and $g(1.001) = 2002.00$ on the right. So $\lim_{x \to 1^-} g(x) = -\infty$ and $\lim_{x \to 1^+} g(x) = \infty$.</p>

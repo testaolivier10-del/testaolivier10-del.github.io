@@ -19,6 +19,7 @@ const COURSES = {
   apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics',
   apenv: 'AP® Environmental Science',
   appsych: 'AP® Psychology',
+  apprecalc: 'AP® Precalculus',
   apcalcbc: 'AP® Calculus BC',
 };
 

@@ -1,0 +1,259 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "pcalc-alg-quadratics-1",
+   "unit": "skills-algebra",
+   "topic": "alg-quadratics",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Solve $x^2 - 5x + 6 = 0$.",
+   "type": "single",
+   "options": [
+    "$x = -2$ or $x = -3$",
+    "$x = 5$ or $x = 6$",
+    "$x = 2$ or $x = 3$",
+    "$x = 1$ or $x = 6$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Find two numbers with product $6$ and sum $-5$: $-2$ and $-3$. So $(x - 2)(x - 3) = 0$, giving $x = 2$ or $x = 3$.",
+    "options": [
+     "$(x + 2)(x + 3) = x^2 + 5x + 6$, which has $+5x$. The signs in the factors are minus.",
+     "These are the coefficients, not solutions: $5^2 - 25 + 6 = 6 \\ne 0$.",
+     "Right: $x^2 - 5x + 6 = (x - 2)(x - 3)$, and a product is $0$ when a factor is $0$.",
+     "$1 \\cdot 6 = 6$, but $1 + 6 = 7$, not $5$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-quadratics-2",
+   "unit": "skills-algebra",
+   "topic": "alg-quadratics",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the quadratic formula to find the larger solution of $2x^2 + 3x - 4 = 0$. Give the exact value.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "(-3 + sqrt(41))/4",
+    "answerTex": "\\frac{-3 + \\sqrt{41}}{4}",
+    "mistakes": [
+     {
+      "value": "(3 + sqrt(41))/4",
+      "why": "The formula starts with $-b$, and $b = 3$, so the top is $-3 + \\sqrt{41}$."
+     },
+     {
+      "value": "(-3 + sqrt(41))/2",
+      "why": "Divide by $2a = 4$, not by $a = 2$."
+     },
+     {
+      "value": "(-3 - sqrt(41))/4",
+      "why": "That is the smaller solution, about $-2.351$. The larger one takes the $+$ sign."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a = 2$, $b = 3$, $c = -4$. $x = \\frac{-3 \\pm \\sqrt{9 - 4(2)(-4)}}{2(2)} = \\frac{-3 \\pm \\sqrt{41}}{4}$. The larger is $\\frac{-3 + \\sqrt{41}}{4} \\approx 0.851$."
+   }
+  },
+  {
+   "id": "pcalc-alg-quadratics-3",
+   "unit": "skills-algebra",
+   "topic": "alg-quadratics",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the vertex of the parabola $y = 2x^2 - 8x + 5$?",
+   "type": "single",
+   "options": [
+    "$(2, -3)$",
+    "$(-2, 29)$",
+    "$(4, 5)$",
+    "$(2, 5)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The vertex is at $x = -\\frac{b}{2a} = -\\frac{-8}{4} = 2$, and $y = 2(2)^2 - 8(2) + 5 = -3$.",
+    "options": [
+     "Right: $x = -\\frac{-8}{2 \\cdot 2} = 2$ and $y = 8 - 16 + 5 = -3$.",
+     "The vertex is at $x = -\\frac{b}{2a} = -\\frac{-8}{4} = 2$, not $-2$.",
+     "This uses $x = -\\frac{b}{a}$; divide by $2a$.",
+     "$5$ is the $y$-intercept; put $x = 2$ into the formula."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-quadratics-4",
+   "unit": "skills-algebra",
+   "topic": "alg-quadratics",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Complete the square: $x^2 + 6x + 5 = (x + 3)^2 + k$. What is $k$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -4,
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "$(x + 3)^2 = x^2 + 6x + 9$ already holds $9$; take it back out: $5 - 9$."
+     },
+     {
+      "value": 14,
+      "why": "Subtract the $9$ that $(x + 3)^2$ adds, do not add it: $k = 5 - 9$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$(x + 3)^2 = x^2 + 6x + 9$. To keep the expression the same, $x^2 + 6x + 5 = (x + 3)^2 + 5 - 9 = (x + 3)^2 - 4$."
+   }
+  },
+  {
+   "id": "pcalc-alg-quadratics-5",
+   "unit": "skills-algebra",
+   "topic": "alg-quadratics",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many real zeros does $f(x) = 3x^2 - 2x + 5$ have?",
+   "type": "single",
+   "options": [
+    "Two",
+    "One",
+    "Zero",
+    "It depends on $x$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The discriminant $b^2 - 4ac = 4 - 60 = -56$ is negative, so the square root in the quadratic formula is not real: no real zeros. The parabola opens up and stays above the $x$-axis.",
+    "options": [
+     "Two real zeros need $b^2 - 4ac > 0$; here it is $-56$.",
+     "One real zero needs $b^2 - 4ac = 0$.",
+     "Right: the discriminant is $(-2)^2 - 4(3)(5) = 4 - 60 = -56 < 0$.",
+     "The number of zeros is a property of the whole function, found from $a$, $b$ and $c$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-quadratics-6",
+   "unit": "skills-algebra",
+   "topic": "alg-quadratics",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the greatest output of $f(x) = -(x - 1)^2 + 4$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "$1$ is the input where the greatest output occurs; the output there is $f(1) = 4$."
+     },
+     {
+      "value": -4,
+      "why": "The vertex form $a(x - h)^2 + k$ has vertex $(h, k) = (1, 4)$; the sign of $a$ only says the parabola opens down."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$-(x - 1)^2 \\le 0$ for every $x$, so $f(x) \\le 4$, with $f(1) = 4$. The vertex $(1, 4)$ is the highest point."
+   }
+  },
+  {
+   "id": "pcalc-alg-quadratics-7",
+   "unit": "skills-algebra",
+   "topic": "alg-quadratics",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A parabola has vertex $(-1, 2)$ and passes through $(0, 5)$. Write its equation in vertex form.",
+   "type": "expr",
+   "expr": {
+    "answer": "3(x + 1)^2 + 2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -4,
+     3
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "3(x - 1)^2 + 2",
+      "why": "The vertex $x$ is $-1$, so the factor is $(x - (-1)) = (x + 1)$."
+     },
+     {
+      "expr": "(x + 1)^2 + 2",
+      "why": "Find $a$ from the point $(0, 5)$: $5 = a(0 + 1)^2 + 2$ gives $a = 3$."
+     },
+     {
+      "expr": "5(x + 1)^2 + 2",
+      "why": "$5 = a \\cdot 1 + 2$, so $a = 3$, not $5$."
+     }
+    ],
+    "form": {
+     "type": "vertex"
+    }
+   },
+   "why": {
+    "correct": "Vertex form $y = a(x - h)^2 + k$ with $(h, k) = (-1, 2)$: $y = a(x + 1)^2 + 2$. The point $(0, 5)$ gives $5 = a + 2$, so $a = 3$."
+   }
+  },
+  {
+   "id": "pcalc-alg-quadratics-8",
+   "unit": "skills-algebra",
+   "topic": "alg-quadratics",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are the zeros of $f(x) = (x - 1)^2 - 4$?",
+   "type": "single",
+   "options": [
+    "$x = 1$ and $x = -4$",
+    "$x = -1$ and $x = 3$",
+    "$x = 3$",
+    "$x = 5$ and $x = -3$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Set $(x - 1)^2 - 4 = 0$: $(x - 1)^2 = 4$, $x - 1 = 2$ or $x - 1 = -2$, so $x = 3$ or $x = -1$.",
+    "options": [
+     "These come from the vertex $(1, -4)$, not from setting $f(x) = 0$.",
+     "Right: $(x - 1)^2 = 4$, so $x - 1 = \\pm 2$.",
+     "$(x - 1)^2 = 4$ has two square roots, $2$ and $-2$: $x = 3$ or $x = -1$.",
+     "These come from $x - 1 = \\pm 4$, which skips the square root. Take the square root of $4$: $x - 1 = \\pm 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-quadratics-9",
+   "unit": "skills-algebra",
+   "topic": "alg-quadratics",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A parabola has $f(0) = 7$ and $f(4) = 7$. What is its axis of symmetry?",
+   "type": "single",
+   "options": [
+    "$x = 7$",
+    "$x = 4$",
+    "$x = 0$",
+    "$x = 2$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A parabola is symmetric about the vertical line through its vertex. Two inputs with the same output are mirror images, so the axis is at their midpoint, $x = \\frac{0 + 4}{2} = 2$.",
+    "options": [
+     "$7$ is an output. The axis is a vertical line through an input.",
+     "$x = 4$ is one of the two inputs; the axis lies halfway between them.",
+     "The axis is halfway between the inputs $0$ and $4$.",
+     "Right: equal outputs sit at equal distances from the axis, so it is halfway between $0$ and $4$."
+    ]
+   }
+  }
+ ]
+}

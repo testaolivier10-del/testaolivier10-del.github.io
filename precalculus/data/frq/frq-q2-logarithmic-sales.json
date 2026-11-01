@@ -1,0 +1,133 @@
+{
+ "id": "frq-q2-logarithmic-sales",
+ "type": "modeling",
+ "title": "Video game sales that level off",
+ "calc": true,
+ "points": 6,
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "logarithmic-modeling"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "3.B",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Total sales of a video game",
+  "text": "A video game studio tracks the total number of copies of a new game sold since its release. The table gives the total sales $S$, in thousands of copies, $t$ weeks after release. The total sales are modeled by the function $S(t) = a + b\\ln t$, whose graph passes through both data points.",
+  "table": {
+   "caption": "Total sales S, in thousands of copies, t weeks after release",
+   "cols": [
+    "$t$ (weeks)",
+    "1",
+    "8"
+   ],
+   "rows": [
+    [
+     "$S$ (thousands of copies)",
+     "12",
+     "37"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "Use the given data to <b>write</b> two equations that can be used to find the values of the constants $a$ and $b$ in the expression for $S(t)$.",
+   "rubric": [
+    {
+     "point": "Two correct equations, one for each data point",
+     "accept": [
+      "$a + b\\ln 1 = 12$ and $a + b\\ln 8 = 37$",
+      "$a = 12$ and $12 + b\\ln 8 = 37$"
+     ]
+    }
+   ],
+   "sample": "$a + b\\ln 1 = 12$ and $a + b\\ln 8 = 37$."
+  },
+  {
+   "label": "A(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Find</b> the values of $a$ and $b$ as decimal approximations.",
+   "rubric": [
+    {
+     "point": "$a = 12$ and $b \\approx 12.022$",
+     "accept": [
+      "$a = 12$, $b = \\frac{25}{\\ln 8} \\approx 12.022$"
+     ]
+    }
+   ],
+   "sample": "$\\ln 1 = 0$, so $a = 12$. Then $b\\ln 8 = 25$, so $b = \\frac{25}{\\ln 8} \\approx 12.022$ (stored, not rounded, for later parts)."
+  },
+  {
+   "label": "B(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "Use the given data to <b>find</b> the average rate of change of $S$, in thousands of copies per week, from $t = 1$ to $t = 8$. Express your answer as a decimal approximation. Show the computations that lead to your answer.",
+   "rubric": [
+    {
+     "point": "The difference quotient from the data, about $3.571$ thousand copies per week",
+     "accept": [
+      "$\\frac{37 - 12}{8 - 1} = \\frac{25}{7} \\approx 3.571$"
+     ]
+    }
+   ],
+   "sample": "$\\frac{S(8) - S(1)}{8 - 1} = \\frac{37 - 12}{7} = \\frac{25}{7} \\approx 3.571$ thousand copies per week, the slope of the secant line through $(1, 12)$ and $(8, 37)$."
+  },
+  {
+   "label": "B(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "Use the average rate of change from part B(i) to <b>estimate</b> the total sales at $t = 4$. Is this estimate an overestimate or an underestimate of the value of the model $S(4)$? <b>Explain</b> your reasoning using the concavity of the graph of $S$.",
+   "rubric": [
+    {
+     "point": "The estimate $12 + 3 \\cdot \\frac{25}{7} \\approx 22.714$ on the secant line, and \"underestimate\" because $S$ is concave down on $[1, 8]$, so its graph lies above the secant line",
+     "accept": [
+      "$\\approx 22.714$; underestimate, since $b > 0$ makes $S$ concave down on $[1, 8]$ and the secant line lies below the graph",
+      "the rate of change of $S$ is decreasing on $[1, 8]$, so the secant lies below the graph there"
+     ]
+    }
+   ],
+   "sample": "Using the secant line through $(1, 12)$: $12 + \\frac{25}{7}(4 - 1) \\approx 22.714$ thousand copies. $S(t) = 12 + b\\ln t$ with $b > 0$ is concave down on $[1, 8]$, so the graph of $S$ lies above the secant line on that interval and the estimate is an underestimate. (Indeed $S(4) \\approx 28.667$.)"
+  },
+  {
+   "label": "C(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "According to the model, when will the total sales reach $60$ thousand copies? Give your answer correct to three decimal places.",
+   "rubric": [
+    {
+     "point": "$t \\approx 54.192$ weeks, from solving $S(t) = 60$",
+     "accept": [
+      "$t = e^{48/b} \\approx 54.192$"
+     ]
+    }
+   ],
+   "sample": "Solve $12 + b\\ln t = 60$: $\\ln t = \\frac{48}{b}$, so $t = e^{48/b} \\approx 54.192$ weeks."
+  },
+  {
+   "label": "C(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "The studio expects sales of the game to level off after a few months, as most interested players have bought it. <b>Explain</b> why the model's error is likely to grow for values of $t$ greater than $8$, and what that means for the answer to part C(i).",
+   "rubric": [
+    {
+     "point": "The data stop at $t = 8$, so the model is unsupported after that; the model keeps increasing without bound while actual sales level off, so the model overestimates more and more, and $60$ thousand may come later or never",
+     "accept": [
+      "The model is fit to data only up to $8$ weeks; $\\lim_{t \\to \\infty} S(t) = \\infty$ but real sales level off, so the gap between model and actual sales grows and the predicted time of about $54$ weeks is too early"
+     ]
+    }
+   ],
+   "sample": "The model was built from data with $1 \\le t \\le 8$, so past week $8$ no data support it. $S(t)$ keeps increasing without bound, $\\lim_{t \\to \\infty} S(t) = \\infty$, while actual sales level off. So the model's predictions get further above the actual sales as $t$ increases, and the time of about 54.2 weeks from part C(i) is likely too early: actual sales may reach $60$ thousand much later, or not at all."
+  }
+ ]
+}

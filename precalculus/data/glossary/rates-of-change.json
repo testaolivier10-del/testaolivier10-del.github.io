@@ -1,0 +1,5 @@
+{
+ "aroc": {
+  "def": "The average rate of change of $f$ on $[a, b]$ is $\\frac{f(b) - f(a)}{b - a}$, the slope of the line through $(a, f(a))$ and $(b, f(b))$, in output units per input unit."
+ }
+}

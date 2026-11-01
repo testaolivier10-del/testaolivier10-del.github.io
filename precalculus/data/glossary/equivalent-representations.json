@@ -1,0 +1,11 @@
+{
+ "long-division": {
+  "def": "A way to divide one polynomial by another, like long division of numbers: divide the leading terms, multiply, subtract, repeat. It writes the dividend as divisor times quotient plus remainder, where the remainder has lower degree than the divisor."
+ },
+ "binomial-theorem": {
+  "def": "The rule for expanding a power of a sum, $(a + b)^n$: the terms run from $a^n$ down to $b^n$, and their coefficients are row $n$ of Pascal's triangle, where each entry is the sum of the two entries above it."
+ },
+ "factored-form": {
+  "def": "A polynomial written as a product of factors, such as $2x(x - 3)(x + 1)$. Each linear factor shows a zero. Standard form, $2x^3 - 4x^2 - 6x$, lists the terms by degree and shows the leading term and so the end behavior."
+ }
+}

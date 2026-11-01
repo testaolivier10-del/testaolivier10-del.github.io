@@ -1,0 +1,12 @@
+{
+ "rational-zeros-sign": {
+  "file": "figures/rational-zeros-sign.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of r(x) = (x + 1)(x − 3)/(x − 1). Its zeros are x = −1 and x = 3; the dashed line x = 1 marks the input that is not in the domain. The output is negative for x < −1, positive for −1 < x < 1, negative for 1 < x < 3 and positive for x > 3."
+ }
+}

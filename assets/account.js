@@ -1049,6 +1049,7 @@
     { storagePrefix: 'apstat_' },
     { storagePrefix: 'apenv_' },
     { storagePrefix: 'appsych_' },
+    { storagePrefix: 'apprecalc_' },
     { storagePrefix: 'apcalcbc_' },
   ];
   // courses:end
@@ -1957,6 +1958,7 @@
     { key: 'apstat', path: '/statistics/' },
     { key: 'apenv', path: '/environmental-science/' },
     { key: 'appsych', path: '/psychology/' },
+    { key: 'apprecalc', path: '/precalculus/' },
     { key: 'apcalcbc', path: '/calculus-bc/' },
   ];
   // courses:end

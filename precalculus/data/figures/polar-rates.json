@@ -1,0 +1,12 @@
+{
+ "polar-rates-curve": {
+  "file": "figures/polar-rates-curve.svg",
+  "ext": "svg",
+  "w": 520,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The polar graph of r = 1 + 2 sin theta: a limacon whose large outer loop reaches highest straight above the origin and crosses the horizontal axis 1 unit on each side of the origin, with a small inner loop above the origin."
+ }
+}

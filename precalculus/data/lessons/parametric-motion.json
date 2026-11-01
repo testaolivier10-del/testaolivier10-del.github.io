@@ -1,0 +1,71 @@
+{
+ "topic": "parametric-motion",
+ "hook": "A robot vacuum crosses a living room. Its app stores two numbers every second: how far it is along the east wall and how far along the north wall. From those two lists alone you can tell when it was heading left, when it was climbing toward the far wall, and when it doubled back.",
+ "prereq": [
+  {
+   "q": "On which interval is $g(t) = 4t - t^2$ increasing?",
+   "options": [
+    "$t < 2$",
+    "$t > 2$",
+    "$0 < t < 4$",
+    "$t < 4$"
+   ],
+   "correct": 0,
+   "why": "$g(t) = -(t - 2)^2 + 4$ is a parabola opening down with vertex at $t = 2$, so it increases to the left of $t = 2$.",
+   "review": "alg-quadratics"
+  },
+  {
+   "q": "A curve is $x(t) = t + 1$, $y(t) = 3t$. Where is the point at $t = 2$?",
+   "options": [
+    "$(3, 6)$",
+    "$(2, 6)$",
+    "$(6, 3)$",
+    "$(3, 2)$"
+   ],
+   "correct": 0,
+   "why": "$x(2) = 2 + 1 = 3$ and $y(2) = 3(2) = 6$, so the point is $(3, 6)$.",
+   "review": "parametric-functions"
+  }
+ ],
+ "figure": {
+  "figure": "parametric-motion-path",
+  "caption": "A particle with $x(t) = t^3 - 6t^2 + 9t$ and $y(t) = 4t - t^2$ for $0 \\le t \\le 4$. It turns around in $x$ at $t = 1$ and $t = 3$ and is highest at $t = 2$."
+ },
+ "chain": [
+  {
+   "cause": "$x(t)$ is increasing on an interval of time",
+   "effect": "the particle moves right during that time"
+  },
+  {
+   "cause": "$y(t)$ is decreasing on an interval of time",
+   "effect": "the particle moves down during that time"
+  },
+  {
+   "cause": "$x(t)$ changes from increasing to decreasing",
+   "effect": "the particle turns from moving right to moving left; that point is farthest right nearby"
+  },
+  {
+   "cause": "One coordinate turns around while the other keeps changing",
+   "effect": "the particle is still moving, so it is not at rest"
+  }
+ ],
+ "ideas": [
+  "In <b>planar motion</b> the position at time $t$ is $(x(t), y(t))$. Read the horizontal motion from $x(t)$ and the vertical motion from $y(t)$, one at a time.",
+  "$x(t)$ increasing: moving right. $x(t)$ decreasing: moving left. $y(t)$ increasing: moving up. $y(t)$ decreasing: moving down.",
+  "Where $x(t)$ has a maximum the particle is farthest right; where $y(t)$ has a maximum it is highest.",
+  "A model is only good for the times the context allows, such as from launch until the ball lands."
+ ],
+ "misconception": {
+  "wrong": "When $x(t)$ stops increasing and starts decreasing, the particle stops moving.",
+  "right": "Only the horizontal motion turns around. If $y(t)$ is still changing, the particle is moving straight up or down at that moment, so it is not at rest."
+ },
+ "check": [
+  "pcalc-parametric-motion-1",
+  "pcalc-parametric-motion-2",
+  "pcalc-parametric-motion-3",
+  "pcalc-parametric-motion-5",
+  "pcalc-parametric-motion-11",
+  "pcalc-parametric-motion-12"
+ ],
+ "summary": "A particle moving in the plane has position $(x(t), y(t))$ at time $t$. Where $x(t)$ increases it moves right, where $y(t)$ increases it moves up, and the turning points of each coordinate give the farthest right, left, highest and lowest positions. Read each coordinate separately, then put the two together."
+}

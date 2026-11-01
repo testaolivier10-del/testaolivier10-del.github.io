@@ -1,0 +1,53 @@
+<p>Every sinusoidal function can be written with one formula,</p>
+<p style="text-align:center">$f(\theta) = a\sin(b(\theta + c)) + d$ or $f(\theta) = a\cos(b(\theta + c)) + d$,</p>
+<p>where $a$ and $b$ are not zero. Each constant is one of the transformations from Unit 1 applied to the sine graph. This page shows what each one does, then how to run the process backward: read a graph and write its formula.</p>
+
+<h2>What each constant does</h2>
+<table class="compare">
+<thead><tr><th scope="col">Constant</th><th scope="col">Transformation</th><th scope="col">Feature it sets</th></tr></thead>
+<tbody>
+<tr><td>$a$</td><td>vertical dilation by $|a|$; reflection across the midline if $a < 0$</td><td>amplitude $|a|$</td></tr>
+<tr><td>$b$</td><td>horizontal dilation by $\frac{1}{|b|}$</td><td>period $\frac{2\pi}{|b|}$</td></tr>
+<tr><td>$c$</td><td>horizontal translation by $-c$</td><td>phase shift: left $c$ if $c > 0$</td></tr>
+<tr><td>$d$</td><td>vertical translation by $d$</td><td>midline $y = d$</td></tr>
+</tbody>
+</table>
+<p><b>Why the period is $\frac{2\pi}{|b|}$.</b> $\sin(b\theta)$ completes one cycle while $b\theta$ runs from $0$ to $2\pi$, which happens while $\theta$ runs from $0$ to $\frac{2\pi}{b}$. A bigger $b$ squeezes more cycles into the same space, so the period shrinks. Turned around, this is the rule the exam asks for again and again:</p>
+<p style="text-align:center">$b = \frac{2\pi}{\text{period}}$.</p>
+<p>In context the period is often hidden in a frequency. A spring that bounces 2 times per second has period $\frac{1}{2}$ second, so $b = \frac{2\pi}{1/2} = 4\pi$, not $\frac{2\pi}{2}$.</p>
+<p><b>Why the shift is $-c$.</b> The sine graph starts a cycle (crosses its midline going up) where its input is $0$. For $\sin(b(\theta + c))$ that is where $\theta + c = 0$, at $\theta = -c$. So $c > 0$ moves the graph left. This is the same rule as $f(x + 3)$ moving a graph left 3.</p>
+<figure id="fig-shift" data-fig="sinusoidal-transformations-shift"><figcaption>A phase shift of $\frac{\pi}{4}$ to the right, an amplitude of 2 and a midline of $y = 1$.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> Describe $f(\theta) = -3\sin(2\theta + \pi) + 4$.</p>
+<p>Factor $b$ out of the input first: $2\theta + \pi = 2\left(\theta + \frac{\pi}{2}\right)$, so $c = \frac{\pi}{2}$.</p>
+<p>Amplitude $|-3| = 3$, reflected across the midline. Period $\frac{2\pi}{2} = \pi$. Phase shift $\frac{\pi}{2}$ to the left. Midline $y = 4$, so the values run from $1$ to $7$.</p>
+</div>
+
+<h2>Sine and cosine are shifts of each other</h2>
+<p>Cosine is sine moved $\frac{\pi}{2}$ to the left: $\cos\theta = \sin\left(\theta + \frac{\pi}{2}\right)$. So every sinusoid has a sine formula and a cosine formula. A reflection gives more: $-\cos\theta = \sin\left(\theta - \frac{\pi}{2}\right)$. On the exam, any correct formula earns the points; choose the one that makes $c$ easiest to read.</p>
+
+<h2>From a graph to a formula</h2>
+<ol>
+<li><b>Midline:</b> $d = \frac{\max + \min}{2}$.</li>
+<li><b>Amplitude:</b> $|a| = \frac{\max - \min}{2}$.</li>
+<li><b>Period:</b> measure one cycle, then $b = \frac{2\pi}{\text{period}}$.</li>
+<li><b>Shift:</b> pick a landmark. For sine with $a > 0$, use a midline crossing where the graph is rising: $c = -(\text{its input})$. For cosine with $a > 0$, use a highest point. For cosine with $a < 0$, use a lowest point.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 2.</b> A sinusoid has a highest point at $(\pi, 4)$ and lowest points at $(0, -2)$ and $(2\pi, -2)$. Write a formula.</p>
+<p>Midline $d = \frac{4 + (-2)}{2} = 1$. Amplitude $\frac{4 - (-2)}{2} = 3$. Period $2\pi$ (lowest to lowest), so $b = 1$.</p>
+<p>With cosine and $a = 3$, the highest point should sit where the input is $0$; here it is at $\theta = \pi$, a shift right $\pi$: $f(\theta) = 3\cos(\theta - \pi) + 1$.</p>
+<p>With cosine and $a = -3$ (a reflected cosine starts at a lowest point), the lowest point at $\theta = 0$ needs no shift: $f(\theta) = -3\cos\theta + 1$. With sine and $a = 3$: the graph crosses the midline going up halfway between $(0, -2)$ and $(\pi, 4)$, at $\theta = \frac{\pi}{2}$, so $f(\theta) = 3\sin\left(\theta - \frac{\pi}{2}\right) + 1$. All three are the same function.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> Write a sinusoid with amplitude 2, period $\pi$ and midline $y = -1$ whose graph crosses its midline going up at $\theta = 0$.</p>
+<p>$b = \frac{2\pi}{\pi} = 2$. A sine with $a > 0$ already rises through its midline at $0$, so $c = 0$: $f(\theta) = 2\sin(2\theta) - 1$.</p>
+</div>
+
+<h2>Common slips</h2>
+<ul>
+<li>Reading the shift before factoring: $\sin(3\theta - \pi)$ shifts right $\frac{\pi}{3}$, not $\pi$.</li>
+<li>Using the period as $b$, or the frequency as the period: $b$ is $2\pi$ divided by the period.</li>
+<li>Using $\max - \min$ as the amplitude: it is half of that.</li>
+<li>Forgetting the sign of the shift: $\theta - 2$ moves right, $\theta + 2$ moves left.</li>
+</ul>

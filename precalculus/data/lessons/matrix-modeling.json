@@ -1,0 +1,71 @@
+{
+ "topic": "matrix-modeling",
+ "hook": "A city's bike-share system moves bikes between stations every day: most stay put, some are ridden across town. Knowing only the chances of each move, a matrix can predict how many bikes each station will have tomorrow, next week and in the long run, and even how many it had yesterday.",
+ "prereq": [
+  {
+   "q": "What is $\\left[ \\begin{matrix} 0.5 & 0.2 \\\\ 0.5 & 0.8 \\end{matrix} \\right]\\left[ \\begin{matrix} 100 \\\\ 200 \\end{matrix} \\right]$?",
+   "options": [
+    "$\\left[ \\begin{matrix} 90 \\\\ 210 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 50 \\\\ 160 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 120 \\\\ 180 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 150 \\\\ 150 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": "Row 1: $0.5(100) + 0.2(200) = 90$. Row 2: $0.5(100) + 0.8(200) = 210$.",
+   "review": "matrices"
+  },
+  {
+   "q": "If $A\\mathbf{v} = \\mathbf{w}$ and $\\det A \\ne 0$, how do you find $\\mathbf{v}$ from $\\mathbf{w}$?",
+   "options": [
+    "$\\mathbf{v} = A^{-1}\\mathbf{w}$",
+    "$\\mathbf{v} = A\\mathbf{w}$",
+    "$\\mathbf{v} = \\mathbf{w}A^{-1}$",
+    "$\\mathbf{v} = \\mathbf{w} - A$"
+   ],
+   "correct": 0,
+   "why": "Multiply both sides on the left by $A^{-1}$: $A^{-1}A\\mathbf{v} = \\mathbf{v}$.",
+   "review": "matrices-as-functions"
+  }
+ ],
+ "figure": {
+  "figure": "matrix-modeling-bikes",
+  "caption": "Each arrow is a daily chance. As a transition matrix with \"from\" columns and \"to\" rows: $\\left[ \\begin{matrix} 0.8 & 0.3 \\\\ 0.2 & 0.7 \\end{matrix} \\right]$."
+ },
+ "chain": [
+  {
+   "cause": "List the chance of moving from each state (column) to each state (row)",
+   "effect": "the transition matrix $T$; each column adds up to $1$"
+  },
+  {
+   "cause": "Multiply the current state vector by $T$",
+   "effect": "the expected state one step later: $\\mathbf{x}_{n+1} = T\\mathbf{x}_n$"
+  },
+  {
+   "cause": "Multiply by $T$ again and again",
+   "effect": "$\\mathbf{x}_n = T^n\\mathbf{x}_0$, the prediction $n$ steps ahead"
+  },
+  {
+   "cause": "Multiply by $T^{-1}$ instead",
+   "effect": "the state one step earlier, as long as $T$ has an inverse"
+  }
+ ],
+ "ideas": [
+  "A <b>transition matrix</b> $T$: the entry in row $i$, column $j$ is the chance of moving from state $j$ to state $i$ in one step. Each column adds up to $1$.",
+  "A <b>state vector</b> lists how many (or what share) are in each state. One step later: $\\mathbf{x}_{n+1} = T\\mathbf{x}_n$; after $n$ steps: $\\mathbf{x}_n = T^n\\mathbf{x}_0$.",
+  "One step earlier: $\\mathbf{x}_{n-1} = T^{-1}\\mathbf{x}_n$.",
+  "A steady state satisfies $T\\mathbf{x} = \\mathbf{x}$. Over many steps the state vector usually settles toward it."
+ ],
+ "misconception": {
+  "wrong": "The first row of the bike matrix, $0.8$ and $0.3$, lists what happens to the bikes at station A.",
+  "right": "With this setup the columns are \"from\" and the rows are \"to\". Column 1, $0.8$ and $0.2$, is what happens to bikes at A; row 1 collects every bike that ends at A. Always check which way your matrix is set up: each column adds up to 1 here."
+ },
+ "check": [
+  "pcalc-matrix-modeling-1",
+  "pcalc-matrix-modeling-2",
+  "pcalc-matrix-modeling-3",
+  "pcalc-matrix-modeling-4",
+  "pcalc-matrix-modeling-10",
+  "pcalc-matrix-modeling-11"
+ ],
+ "summary": "A transition matrix holds the chances of moving between states in one step, with \"from\" columns that add up to 1. Multiplying a state vector by $T$ moves it one step forward, $T^n$ moves it $n$ steps, $T^{-1}$ moves it one step back, and a steady state is a vector that $T$ leaves unchanged."
+}

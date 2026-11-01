@@ -1,0 +1,71 @@
+{
+ "topic": "parametric-functions",
+ "hook": "A drone keeps a flight log: every second it records how far east it is and how far north it is. Neither list alone shows the flight. Put the two numbers together for each second and plot them, and the path appears, with a direction of travel. That is a parametric function.",
+ "prereq": [
+  {
+   "q": "If $g(t) = t^2 - 2t$, what is $g(3)$?",
+   "options": [
+    "$3$",
+    "$9$",
+    "$15$",
+    "$-3$"
+   ],
+   "correct": 0,
+   "why": "Substitute with parentheses: $g(3) = (3)^2 - 2(3) = 9 - 6 = 3$.",
+   "review": "alg-functions"
+  },
+  {
+   "q": "The point $(-3, 2)$ is how far from the $y$-axis, and on which side?",
+   "options": [
+    "3 units, to the left",
+    "3 units, to the right",
+    "2 units, above",
+    "2 units, below"
+   ],
+   "correct": 0,
+   "why": "The first coordinate, $-3$, says 3 units left of the $y$-axis.",
+   "review": "alg-functions"
+  }
+ ],
+ "figure": {
+  "figure": "parametric-functions-trace",
+  "caption": "The curve $x(t) = t^2 - 2t$, $y(t) = 2t - 1$ for $-1 \\le t \\le 3$: each $t$ gives one point, and the arrows show the order the points come in."
+ },
+ "chain": [
+  {
+   "cause": "Pick a value of the parameter $t$",
+   "effect": "$x(t)$ and $y(t)$ give one point $(x(t), y(t))$"
+  },
+  {
+   "cause": "Let $t$ run through an interval",
+   "effect": "the points trace a curve in the plane"
+  },
+  {
+   "cause": "Plot the points in order of increasing $t$",
+   "effect": "the curve gets a direction of travel, shown with arrows"
+  },
+  {
+   "cause": "Two values of $t$ give the same $x$ but different $y$",
+   "effect": "the curve is not the graph of a function of $x$, even though $x(t)$ and $y(t)$ are both functions of $t$"
+  }
+ ],
+ "ideas": [
+  "A <b>parametric function</b> $f(t) = (x(t), y(t))$ turns each input $t$, the <b>parameter</b>, into a point of the plane.",
+  "To sketch one, make a table: values of $t$, then $x(t)$ and $y(t)$, then plot the points in order of increasing $t$ and add arrows.",
+  "The curve can go left, turn around, or cross itself. One $x$ with two $y$-values means the curve is not the graph of a function of $x$.",
+  "If $x(t)$ is easy to solve for $t$, substitute into $y(t)$ to write $y$ as a function of $x$."
+ ],
+ "misconception": {
+  "wrong": "The graph of $(x(t), y(t))$ is the graph of $y(t)$ against $t$.",
+  "right": "The curve plots $y$ against $x$. The parameter $t$ is not on either axis: it only says which point comes when. The graph of $y(t)$ against $t$ is a different picture."
+ },
+ "check": [
+  "pcalc-parametric-functions-6",
+  "pcalc-parametric-functions-7",
+  "pcalc-parametric-functions-8",
+  "pcalc-parametric-functions-11",
+  "pcalc-parametric-functions-12",
+  "pcalc-parametric-functions-16"
+ ],
+ "summary": "A parametric function $f(t) = (x(t), y(t))$ sends each value of the parameter $t$ to a point. As $t$ increases the points trace a curve with a direction. The curve is drawn in the $xy$-plane, and it need not be the graph of a function of $x$."
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Functions, Graphs and Notation — AP® Precalculus Notes</title>
+<meta name="description" content="Every topic in this course is about functions: how their outputs change, what their graphs look like, and how to describe them with numbers and words.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/alg-functions.html">
+<meta property="og:title" content="Functions, Graphs and Notation — AP® Precalculus Notes">
+<meta property="og:description" content="Every topic in this course is about functions: how their outputs change, what their graphs look like, and how to describe them with numbers and words.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/alg-functions.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/alg-functions.html#reading",
+      "name": "Functions, Graphs and Notation",
+      "url": "https://levlprep.com/precalculus/notes/alg-functions.html",
+      "description": "Every topic in this course is about functions: how their outputs change, what their graphs look like, and how to describe them with numbers and words.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "functions, graphs and notation review for precalculus",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Algebra you need",
+          "item": "https://levlprep.com/precalculus/units/skills-algebra.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Functions, Graphs and Notation: notes",
+          "item": "https://levlprep.com/precalculus/notes/alg-functions.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="alg-functions" data-unit="skills-algebra">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-algebra.html">Algebra you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Functions, Graphs and Notation: notes</span></nav>
+<p class="issue">Skills <i></i></p>
+<h1 class="deck bk-title" id="r3Title">Functions, Graphs <span>and Notation</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/alg-functions.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="alg-functions">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Falg-functions.html&amp;title=Functions%2C%20Graphs%20and%20Notation%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/alg-functions.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Functions Involving Parameters, Vectors, and Matrices</a>
+    <a class="bk-toc-chap" href="../units/skills-algebra.html"><span class="bk-toc-chap-n">S</span><span><b>Algebra you need</b><small>11 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="skills-algebra"><div class="tb-progress-row"><span><b>0</b> of 11 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="alg-functions"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Functions, Graphs and Notation</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-a-function-is">What a function is</a><a href="#evaluating-with-function-notation">Evaluating with function notation</a><a href="#domain-and-range">Domain and range</a><a href="#zeros-and-intercepts">Zeros and intercepts</a><a href="#piecewise-defined-functions">Piecewise-defined functions</a></div></li><li data-toc-t="alg-intervals"><a href="alg-intervals.html"><span class="bk-toc-n">S</span>Interval Notation and Inequalities</a></li><li data-toc-t="alg-lines"><a href="alg-lines.html"><span class="bk-toc-n">S</span>Lines, Slope and Linear Equations</a></li><li data-toc-t="alg-quadratics"><a href="alg-quadratics.html"><span class="bk-toc-n">S</span>Quadratics: Zeros and the Quadratic Formula</a></li><li data-toc-t="alg-polynomial-algebra"><a href="alg-polynomial-algebra.html"><span class="bk-toc-n">S</span>Polynomial Arithmetic and Factoring</a></li><li data-toc-t="alg-complex-numbers"><a href="alg-complex-numbers.html"><span class="bk-toc-n">S</span>Complex Numbers</a></li><li data-toc-t="alg-rational-expressions"><a href="alg-rational-expressions.html"><span class="bk-toc-n">S</span>Rational Expressions</a></li><li data-toc-t="alg-systems"><a href="alg-systems.html"><span class="bk-toc-n">S</span>Systems of Equations</a></li><li data-toc-t="alg-exponents"><a href="alg-exponents.html"><span class="bk-toc-n">S</span>Exponent and Radical Rules</a></li><li data-toc-t="alg-right-triangle"><a href="alg-right-triangle.html"><span class="bk-toc-n">S</span>Right-Triangle Trigonometry</a></li><li data-toc-t="alg-circles"><a href="alg-circles.html"><span class="bk-toc-n">S</span>Circles, Arcs and Special Triangles</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>Every topic in this course is about <span class="gl" tabindex="0" data-c="function">functions</span>: how their outputs change, what their graphs look like, and how to describe them with numbers and words. This page sets up the vocabulary. If your algebra class used these words loosely, read it carefully; the exam reads them strictly.</p>
+
+<h2 id="what-a-function-is">What a function is</h2>
+<p>A <b>function</b> is a rule that gives each input exactly one output. A vending machine is a function from buttons to snacks: B4 always gives the same snack. A table, a graph, a formula or a sentence can all describe a function.</p>
+<p>The rule says "exactly one output", not "a different output for each input". Two buttons may give the same snack, and two inputs may share an output. What is not allowed is one input with two outputs.</p>
+<p>We name functions with letters and write the input in parentheses. <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">f(3) = 7</annotation></semantics></math> means "the input <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> gives the output <math class="pcalc-m"><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math>". On the graph of <math class="pcalc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math>, that is the point <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>7</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 7)</annotation></semantics></math>. Keep the two apart: inside the parentheses is always the input.</p>
+
+<h2 id="evaluating-with-function-notation">Evaluating with function notation</h2>
+<p>To evaluate a function, replace every <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> in its formula with the input, and put the input in parentheses. Parentheses protect negative signs and whole expressions.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> For <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x) = x^2 - 3x + 1</annotation></semantics></math>, find <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(-2)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x + 1)</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(-2)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>3</mn><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= (-2)^2 - 3(-2)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+ 1</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">= 4</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">+</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">+ 6</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+ 1</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">= 11</annotation></semantics></math>. Without parentheses, <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mn>2</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">-2^2</annotation></semantics></math> would mean <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">-4</annotation></semantics></math>, a common slip.</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x + 1)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>3</mn><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= (x + 1)^2 - 3(x + 1)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+ 1</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">= x^2</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">+</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">+ 2x</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">+</mo><mn>1</mn><mo>−</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">+ 1 - 3x - 3</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+ 1</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= x^2 - x - 1</annotation></semantics></math>.</p>
+<p>Notice that <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x + 1)</annotation></semantics></math> is not <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">f(x) + 1 = x^2 - 3x + 2</annotation></semantics></math>. One changes the input; the other changes the output.</p>
+</div>
+
+<h2 id="domain-and-range">Domain and range</h2>
+<p>The <b><span class="gl" tabindex="0" data-c="domain">domain</span></b> of a function is the set of inputs it accepts. The <b><span class="gl" tabindex="0" data-c="range">range</span></b> is the set of outputs it produces. Unless a question says otherwise, the domain of a formula is every real number that gives a real output. Two rules cover almost every case in this course:</p>
+<ul>
+<li>A denominator cannot be <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>.</li>
+<li>The expression under a square root cannot be negative.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the domain of <math class="pcalc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(x)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><msqrt><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow></msqrt><mrow><mi>x</mi><mo>−</mo><mn>5</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{\sqrt{x - 2}}{x - 5}</annotation></semantics></math>.</p>
+<p>Square root: <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>2</mn><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x - 2 \ge 0</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x \ge 2</annotation></semantics></math>. Denominator: <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>5</mn><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x - 5 \ne 0</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x \ne 5</annotation></semantics></math>. Both must hold: the domain is <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x \ge 2</annotation></semantics></math> with <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x \ne 5</annotation></semantics></math>.</p>
+</div>
+<p>On a graph, the domain is how far the graph reaches left and right, and the range is how far it reaches down and up. The graph of <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msqrt><mrow><mi>x</mi><mo>+</mo><mn>4</mn></mrow></msqrt><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x) = \sqrt{x + 4} - 1</annotation></semantics></math> starts at <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-4, -1)</annotation></semantics></math> and keeps rising to the right, so its domain is <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>≥</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x \ge -4</annotation></semantics></math> and its range is <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>≥</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y \ge -1</annotation></semantics></math>.</p>
+<figure id="fig-functions"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="alg-functions-graph"><img src="../figures/alg-functions-graph.svg" alt="The graph of f(x) = square root of (x + 4), minus 1, starts at the closed point (−4, −1), crosses the x-axis at the zero (−3, 0), crosses the y-axis at (0, 1) and passes through (5, 2). Its domain is x ≥ −4 and its range is y ≥ −1." width="640" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The graph of <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msqrt><mrow><mi>x</mi><mo>+</mo><mn>4</mn></mrow></msqrt><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x) = \sqrt{x + 4} - 1</annotation></semantics></math>, with its zero, its <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-intercept and the point <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(5, 2)</annotation></semantics></math>. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="zeros-and-intercepts">Zeros and intercepts</h2>
+<p>A <b>zero</b> of a function is an input whose output is <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>. On the graph, a zero is an <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-intercept: the graph meets the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis there. To find zeros from a formula, set the output equal to <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> and solve. For <math class="pcalc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">h(x) = 2x + 10</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>10</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">2x + 10 = 0</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x = -5</annotation></semantics></math>.</p>
+<p>The <b><math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-intercept</b> is the point where the graph crosses the <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-axis, <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>f</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, f(0))</annotation></semantics></math>. A function has at most one <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-intercept (one input, one output), but it can have many zeros, or none.</p>
+<p>An input outside the domain is never a zero. <math class="pcalc-m"><semantics><mrow><mi>k</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">k(x) = \frac{1}{x + 3}</annotation></semantics></math> is undefined at <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = -3</annotation></semantics></math>, and since its numerator is always <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math> it has no zeros at all.</p>
+
+<h2 id="piecewise-defined-functions">Piecewise-defined functions</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="piecewise-function">piecewise-defined function</span></b> uses different formulas on different parts of its domain. A parking garage might charge $5 for up to two hours and $3 for each hour after that:</p>
+<p><math class="pcalc-m" display="block"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo stretchy="true">{</mo><mtable columnalign="left left" columnspacing="1em"><mtr><mtd><mrow><mn>5</mn><mo>,</mo></mrow></mtd><mtd><mrow><mn>0</mn><mo>&lt;</mo><mi>t</mi><mo>≤</mo><mn>2</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>5</mn><mo>+</mo><mn>3</mn><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>,</mo></mrow></mtd><mtd><mrow><mn>2</mn><mo>&lt;</mo><mi>t</mi><mo>≤</mo><mn>6</mn></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">C(t) = \begin{cases} 5, &amp; 0 &lt; t \le 2 \\ 5 + 3(t - 2), &amp; 2 &lt; t \le 6 \end{cases}</annotation></semantics></math></p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find <math class="pcalc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mn>1.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(1.5)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(4)</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mn>1.5</mn></mrow><annotation encoding="application/x-tex">1.5</annotation></semantics></math> meets <math class="pcalc-m"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>t</mi><mo>≤</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">0 &lt; t \le 2</annotation></semantics></math>, so use the first piece: <math class="pcalc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mn>1.5</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">C(1.5) = 5</annotation></semantics></math> dollars.</p>
+<p><math class="pcalc-m"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math> meets <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo>&lt;</mo><mi>t</mi><mo>≤</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">2 &lt; t \le 6</annotation></semantics></math>, so use the second piece: <math class="pcalc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn><mo>+</mo><mn>3</mn><mo stretchy="false">(</mo><mn>4</mn><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">C(4) = 5 + 3(4 - 2) = 11</annotation></semantics></math> dollars.</p>
+</div>
+<p>Always check the condition first. The most common slip is plugging the input into the wrong piece.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-functions">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link next" href="alg-intervals.html"><span>Next &rarr;</span><b>Interval Notation and Inequalities</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/alg-functions.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-functions">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

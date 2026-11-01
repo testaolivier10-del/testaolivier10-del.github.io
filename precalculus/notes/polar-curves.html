@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polar Function Graphs — AP® Precalculus Notes | LevlPrep</title>
+<meta name="description" content="In Topic 3.13 a single pair (r, θ) named a single point. Now let r depend on θ .">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/polar-curves.html">
+<meta property="og:title" content="Polar Function Graphs — AP® Precalculus Notes | LevlPrep">
+<meta property="og:description" content="In Topic 3.13 a single pair (r, θ) named a single point. Now let r depend on θ .">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/polar-curves.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/polar-curves.html#reading",
+      "name": "Polar Function Graphs",
+      "url": "https://levlprep.com/precalculus/notes/polar-curves.html",
+      "description": "In Topic 3.13 a single pair (r, θ) named a single point. Now let r depend on θ .",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "polar function graphs ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Trigonometric and Polar Functions",
+          "item": "https://levlprep.com/precalculus/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Polar Function Graphs: notes",
+          "item": "https://levlprep.com/precalculus/notes/polar-curves.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="polar-curves" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Trigonometric and Polar Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Polar Function Graphs: notes</span></nav>
+<p class="issue">Unit 3 <i></i> Topic 3.14</p>
+<h1 class="deck bk-title" id="r3Title">Polar Function <span>Graphs</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/polar-curves.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="polar-curves">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fpolar-curves.html&amp;title=Polar%20Function%20Graphs%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/polar-curves.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Exponential and Logarithmic Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Trigonometric and Polar Functions</b><small>15 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="periodic-phenomena"><a href="periodic-phenomena.html"><span class="bk-toc-n">3.1</span>Periodic Phenomena</a></li><li data-toc-t="sine-cosine-tangent"><a href="sine-cosine-tangent.html"><span class="bk-toc-n">3.2</span>Sine, Cosine, and Tangent</a></li><li data-toc-t="sine-cosine-values"><a href="sine-cosine-values.html"><span class="bk-toc-n">3.3</span>Sine and Cosine Function Values</a></li><li data-toc-t="sine-cosine-curves"><a href="sine-cosine-curves.html"><span class="bk-toc-n">3.4</span>Sine and Cosine Function Graphs</a></li><li data-toc-t="sinusoidal-functions"><a href="sinusoidal-functions.html"><span class="bk-toc-n">3.5</span>Sinusoidal Functions</a></li><li data-toc-t="sinusoidal-transformations"><a href="sinusoidal-transformations.html"><span class="bk-toc-n">3.6</span>Sinusoidal Function Transformations</a></li><li data-toc-t="sinusoidal-modeling"><a href="sinusoidal-modeling.html"><span class="bk-toc-n">3.7</span>Sinusoidal Function Context and Data Modeling</a></li><li data-toc-t="tangent-function"><a href="tangent-function.html"><span class="bk-toc-n">3.8</span>The Tangent Function</a></li><li data-toc-t="inverse-trig"><a href="inverse-trig.html"><span class="bk-toc-n">3.9</span>Inverse Trigonometric Functions</a></li><li data-toc-t="trig-equations"><a href="trig-equations.html"><span class="bk-toc-n">3.10</span>Trigonometric Equations and Inequalities</a></li><li data-toc-t="sec-csc-cot"><a href="sec-csc-cot.html"><span class="bk-toc-n">3.11</span>The Secant, Cosecant, and Cotangent Functions</a></li><li data-toc-t="trig-identities"><a href="trig-identities.html"><span class="bk-toc-n">3.12</span>Equivalent Representations of Trigonometric Functions</a></li><li data-toc-t="polar-coordinates"><a href="polar-coordinates.html"><span class="bk-toc-n">3.13</span>Trigonometry and Polar Coordinates</a></li><li class="current" data-toc-t="polar-curves"><a href="#main" aria-current="page"><span class="bk-toc-n">3.14</span>Polar Function Graphs</a><div class="bk-toc-onpage"><p>On this page</p><a href="#a-function-of-the-angle">A function of the angle</a><a href="#sketching-from-the-graph-of-r">Sketching from the graph of r</a><a href="#the-families">The families</a><a href="#the-inner-loop">The inner loop</a><a href="#common-slips">Common slips</a></div></li><li data-toc-t="polar-rates"><a href="polar-rates.html"><span class="bk-toc-n">3.15</span>Rates of Change in Polar Functions</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Functions Involving Parameters, Vectors, and Matrices</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>In Topic 3.13 a single pair <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(r, \theta)</annotation></semantics></math> named a single point. Now let <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> depend on <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math>. As the direction <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> sweeps around the pole, the distance <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r = f(\theta)</annotation></semantics></math> changes, and the points trace a curve. This page shows how to read and sketch such curves from the ordinary graph of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> against <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math>, and names the families you will see.</p>
+
+<h2 id="a-function-of-the-angle">A function of the angle</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="polar-function">polar function</span></b> <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r = f(\theta)</annotation></semantics></math> has the angle as its input and a signed distance as its <a class="gl" href="../notes/alg-functions.html" data-c="function">output</a>. Its graph is the set of points with <a class="gl" href="../notes/polar-coordinates.html" data-c="polar-coordinates">polar coordinates</a> <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo><mo>,</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(f(\theta), \theta)</annotation></semantics></math>. You can also graph <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> against <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> on ordinary axes, with <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> across and <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> up. The two pictures carry the same information:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: On the graph of r against θ, On the polar curve"><table class="compare">
+<thead><tr><th scope="col">On the graph of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> against <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></th><th scope="col">On the polar curve</th></tr></thead>
+<tbody>
+<tr><td>moving right (input increases)</td><td>the direction turns counterclockwise</td></tr>
+<tr><td>height <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> (output)</td><td>signed distance along the current ray</td></tr>
+<tr><td>a zero, <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r = 0</annotation></semantics></math></td><td>the curve passes through the pole</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r &lt; 0</annotation></semantics></math> (below the axis)</td><td>the point is on the opposite ray</td></tr>
+<tr><td>a peak or valley of <math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>r</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|r|</annotation></semantics></math></td><td>a point farthest from the pole nearby, such as a petal tip</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="sketching-from-the-graph-of-r">Sketching from the graph of <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Sketch <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>3</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>2</mn><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r = 3\sin(2\theta)</annotation></semantics></math> (<a class="figref" href="#fig-rose">Figure 1</a>).</p>
+<p><b>Key values.</b> <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r = 0</annotation></semantics></math> at <math class="pcalc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mn>0</mn><mo>,</mo><mfrac><mi>π</mi><mn>2</mn></mfrac><mo>,</mo><mi>π</mi><mo>,</mo><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\theta = 0, \frac{\pi}{2}, \pi, \frac{3\pi}{2}</annotation></semantics></math>; <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">r = 3</annotation></semantics></math> at <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{4}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>5</mn><mi>π</mi></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{5\pi}{4}</annotation></semantics></math>; <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">r = -3</annotation></semantics></math> at <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{3\pi}{4}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>7</mn><mi>π</mi></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{7\pi}{4}</annotation></semantics></math>.</p>
+<p><b>First quarter turn,</b> <math class="pcalc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>θ</mi><mo>≤</mo><mfrac><mi>π</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">0 \le \theta \le \frac{\pi}{2}</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> rises from <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> to <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> and falls back to <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>, all positive. The points leave the pole, reach distance <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> along the ray <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{4}</annotation></semantics></math>, and return: one petal in Quadrant I.</p>
+<p><b>Second quarter turn,</b> <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>2</mn></mfrac><mo>≤</mo><mi>θ</mi><mo>≤</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">\frac{\pi}{2} \le \theta \le \pi</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> is negative. The angle points into Quadrant II, so the points land in Quadrant IV: a petal there, with its tip at <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>,</mo><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>4</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(-3, \frac{3\pi}{4}\right)</annotation></semantics></math>, which is the same point as <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>3</mn><mo>,</mo><mfrac><mrow><mn>7</mn><mi>π</mi></mrow><mn>4</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(3, \frac{7\pi}{4}\right)</annotation></semantics></math>.</p>
+<p>The next two quarter turns draw petals in Quadrants III and II. Four humps, four petals.</p>
+</div>
+<figure id="fig-rose"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="polar-curves-rose"><img src="../figures/polar-curves-rose.svg" alt="The polar graph of r = 3 sin(2 theta): a rose with four petals of length 3, centered on the rays pi/4, 3 pi/4, 5 pi/4 and 7 pi/4, each starting and ending at the pole." width="520" height="520" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>3</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>2</mn><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r = 3\sin(2\theta)</annotation></semantics></math> for <math class="pcalc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>θ</mi><mo>≤</mo><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">0 \le \theta \le 2\pi</annotation></semantics></math>. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="the-families">The families</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Equation, Name, Shape"><table class="compare">
+<thead><tr><th scope="col">Equation</th><th scope="col">Name</th><th scope="col">Shape</th></tr></thead>
+<tbody>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">r = a</annotation></semantics></math></td><td>circle</td><td>radius <math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>a</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|a|</annotation></semantics></math>, centered at the pole</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mi>a</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = a\cos\theta</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mi>a</mi><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = a\sin\theta</annotation></semantics></math></td><td>circle</td><td>diameter <math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>a</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|a|</annotation></semantics></math>, through the pole, centered on an axis</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = a + b\cos\theta</annotation></semantics></math> (or <math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo></mrow><annotation encoding="application/x-tex">\sin</annotation></semantics></math>), <math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>a</mi><mo stretchy="false">|</mo><mo>&lt;</mo><mo stretchy="false">|</mo><mi>b</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|a| &lt; |b|</annotation></semantics></math></td><td>limaçon with inner loop</td><td>passes through the pole twice</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>a</mi><mo stretchy="false">|</mo><mo>=</mo><mo stretchy="false">|</mo><mi>b</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|a| = |b|</annotation></semantics></math></td><td>cardioid</td><td>heart shape, touches the pole once</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>a</mi><mo stretchy="false">|</mo><mo>&gt;</mo><mo stretchy="false">|</mo><mi>b</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|a| &gt; |b|</annotation></semantics></math></td><td>limaçon without a loop</td><td>never reaches the pole</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mi>a</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>n</mi><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r = a\cos(n\theta)</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mi>a</mi><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>n</mi><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r = a\sin(n\theta)</annotation></semantics></math></td><td>rose</td><td><math class="pcalc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> petals if <math class="pcalc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> is odd, <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">2n</annotation></semantics></math> if <math class="pcalc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> is even, each of length <math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>a</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|a|</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>Cosine versions are symmetric about the polar axis; sine versions are symmetric about the vertical line <math class="pcalc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mfrac><mi>π</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\theta = \frac{\pi}{2}</annotation></semantics></math>.</p>
+
+<h2 id="the-inner-loop">The inner loop</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> Where does <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>1</mn><mo>+</mo><mn>2</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = 1 + 2\cos\theta</annotation></semantics></math> form its inner loop?</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r = 0</annotation></semantics></math> where <math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\cos\theta = -\frac{1}{2}</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\theta = \frac{2\pi}{3}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>4</mn><mi>π</mi></mrow><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{4\pi}{3}</annotation></semantics></math>. Between them, <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r &lt; 0</annotation></semantics></math>; at <math class="pcalc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">\theta = \pi</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r = -1</annotation></semantics></math>.</p>
+<p>On <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mn>3</mn></mfrac><mo>,</mo><mfrac><mrow><mn>4</mn><mi>π</mi></mrow><mn>3</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\frac{2\pi}{3}, \frac{4\pi}{3}\right)</annotation></semantics></math> the angle points left, but the negative <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> puts the points to the right of the pole. The small loop runs from the pole out to <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 0)</annotation></semantics></math> in rectangular coordinates and back. Outside that interval <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r &gt; 0</annotation></semantics></math> and the big loop is drawn, reaching <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 0)</annotation></semantics></math> at <math class="pcalc-m"><semantics><mrow><mi>θ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\theta = 0</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="common-slips">Common slips</h2>
+<ul>
+<li>Plotting a negative <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> in the quadrant the angle points to. Reverse through the pole.</li>
+<li>Counting petals as <math class="pcalc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> when <math class="pcalc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> is even. Even <math class="pcalc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">2n</annotation></semantics></math>.</li>
+<li>Confusing <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>4</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r = 4\cos\theta</annotation></semantics></math> (a circle through the pole) with <math class="pcalc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">r = 4</annotation></semantics></math> (a circle around the pole).</li>
+</ul>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:polar-curves">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="polar-coordinates.html"><span>&larr; Previous</span><b>Trigonometry and Polar Coordinates</b></a><a class="tb-chapter-link next" href="polar-rates.html"><span>Next &rarr;</span><b>Rates of Change in Polar Functions</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/polar-curves.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:polar-curves">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

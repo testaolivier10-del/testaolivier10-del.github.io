@@ -1,0 +1,22 @@
+{
+ "sine-cosine-tangent-unit-circle": {
+  "file": "figures/sine-cosine-tangent-unit-circle.svg",
+  "ext": "svg",
+  "w": 740,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A circle of radius 1 centered at the origin. An angle theta in standard position starts on the positive x-axis (the initial ray) and turns counterclockwise to the terminal ray, which meets the circle at P. The arc from (1, 0) to P, drawn in green, has length theta, because the radius is 1. A dashed vertical segment from P down to the x-axis has length sine of theta; the horizontal distance from the origin is cosine of theta. So P is (cos theta, sin theta). The slope of the terminal ray is sin theta over cos theta, which is tangent of theta."
+ },
+ "sine-cosine-tangent-point-p": {
+  "file": "figures/sine-cosine-tangent-point-p.svg",
+  "ext": "svg",
+  "w": 520,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A circle of radius 1 centered at the origin, with the x- and y-axes. An angle theta in standard position turns counterclockwise from the positive x-axis to a terminal ray in the second quadrant, which meets the circle at the point P with coordinates (−3/5, 4/5). A dashed segment drops from P to the x-axis."
+ }
+}

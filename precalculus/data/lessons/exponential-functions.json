@@ -1,0 +1,70 @@
+{
+ "topic": "exponential-functions",
+ "hook": "A cup of tea cools, a savings account grows, a medicine leaves the bloodstream. Each changes by the same factor every hour or year, and each levels off toward a value it never quite reaches. The function that does this is f(x) = ab^x.",
+ "prereq": [
+  {
+   "q": "Over equal steps, outputs go $2, 6, 18, 54$. What kind of function fits?",
+   "options": [
+    "Exponential, ratio $3$",
+    "Linear, slope $3$",
+    "Quadratic",
+    "Linear, slope $4$"
+   ],
+   "correct": 0,
+   "why": "Equal steps, constant ratio $3$.",
+   "review": "linear-vs-exponential"
+  },
+  {
+   "q": "What does $\\lim_{x \\to \\infty} f(x) = 2$ mean?",
+   "options": [
+    "As $x$ grows without bound, $f(x)$ approaches $2$",
+    "$f(2) = \\infty$",
+    "$f$ is never $2$",
+    "$f(x) = 2$ for large $x$"
+   ],
+   "correct": 0,
+   "why": "Limit notation describes the value the outputs approach.",
+   "review": "polynomial-end-behavior"
+  }
+ ],
+ "figure": {
+  "figure": "exponential-functions-growth-decay",
+  "caption": "Growth $f(x) = 3(2)^x$ and decay $g(x) = 3\\left(\\frac{1}{2}\\right)^x$: both concave up, both through $(0, 3)$, both with the horizontal asymptote $y = 0$, one on the left and one on the right."
+ },
+ "chain": [
+  {
+   "cause": "$b > 1$ (growth) or $0 < b < 1$ (decay), with $a > 0$",
+   "effect": "the function is increasing or decreasing everywhere, and concave up"
+  },
+  {
+   "cause": "$a < 0$",
+   "effect": "the graph is reflected across the $x$-axis: concave down"
+  },
+  {
+   "cause": "The output is multiplied by $b$ forever",
+   "effect": "one side approaches the asymptote: $\\lim_{x \\to \\infty} ab^x = 0$ for decay, $\\lim_{x \\to -\\infty} ab^x = 0$ for growth"
+  },
+  {
+   "cause": "Add $k$: $ab^x + k$",
+   "effect": "the asymptote moves to $y = k$"
+  }
+ ],
+ "ideas": [
+  "$f(x) = ab^x$ ($a \\ne 0$, $b > 0$, $b \\ne 1$) is always increasing or always decreasing, has one concavity, and has no extrema or points of inflection.",
+  "Its graph has a horizontal asymptote; write the end behavior in limit notation, such as $\\lim_{x \\to -\\infty} 3(2)^x = 0$.",
+  "The base is the growth factor: a $4\\%$ increase is $b = 1.04$; a $15\\%$ decrease is $b = 0.85$. The natural base $e \\approx 2.718$ is a base used in many models."
+ ],
+ "misconception": {
+  "wrong": "$h(x) = 2\\left(\\frac{1}{2}\\right)^x + 1$ approaches $0$ as $x \\to \\infty$.",
+  "right": "The $+1$ shifts the asymptote: $\\lim_{x \\to \\infty} h(x) = 1$. Find the limit of the exponential part, then add the shift."
+ },
+ "check": [
+  "pcalc-exponential-functions-1",
+  "pcalc-exponential-functions-2",
+  "pcalc-exponential-functions-4",
+  "pcalc-exponential-functions-6",
+  "pcalc-exponential-functions-11",
+  "pcalc-exponential-functions-15"
+ ],
+ "summary": "$f(x) = ab^x$ is monotonic with one concavity and a horizontal asymptote, written in limit notation. The base is the growth factor ($1 +$ the percent change as a decimal). Adding $k$ moves the asymptote to $y = k$; the natural base $e$ is one choice of $b$."
+}

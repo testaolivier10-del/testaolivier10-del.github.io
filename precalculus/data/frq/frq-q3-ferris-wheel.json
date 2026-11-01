@@ -1,0 +1,104 @@
+{
+ "id": "frq-q3-ferris-wheel",
+ "type": "periodic",
+ "title": "A Ferris wheel seat",
+ "calc": false,
+ "points": 6,
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "sinusoidal-modeling"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Height of a Ferris wheel seat",
+  "text": "A Ferris wheel has a diameter of 40 meters, and its center is 25 meters above the ground. The wheel turns counterclockwise at a constant speed and completes one full turn every 8 minutes. At time $t = 0$ minutes, seat $S$ is at the lowest point of the wheel. The sinusoidal function $h$ models the height of seat $S$ above the ground, in meters, at time $t$. The graph of $h$ for one full turn is shown with its axes unscaled. The points $F$, $G$, $J$, $K$ and $M$ are on the graph: $F$, $J$ and $M$ are a lowest or highest point, and $G$ and $K$ are at the height of the center of the wheel.",
+  "figure": "sinusoidal-modeling-ferris"
+ },
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Find</b> the coordinates of the points $F$, $G$, $J$, $K$ and $M$.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "The extremes: $F = (0, 5)$, $J = (4, 45)$ and $M = (8, 5)$",
+     "accept": [
+      "all three correct",
+      "heights 5, 45, 5 at times 0, 4, 8"
+     ]
+    },
+    {
+     "point": "The midline points: $G = (2, 25)$ and $K = (6, 25)$",
+     "accept": [
+      "both correct",
+      "height 25 (the center) at times 2 and 6"
+     ]
+    }
+   ],
+   "sample": "The radius is 20 m, so the seat's height goes from $25 - 20 = 5$ m to $25 + 20 = 45$ m. A quarter turn takes $\\frac{8}{4} = 2$ minutes. $F = (0, 5)$, $G = (2, 25)$, $J = (4, 45)$, $K = (6, 25)$, $M = (8, 5)$.",
+   "space": "lines"
+  },
+  {
+   "label": "B",
+   "prompt": "The function $h$ is given by $h(t) = a\\sin(b(t + c)) + d$, where $a$, $b$, $c$ and $d$ are constants. <b>Find</b> values of $a$, $b$, $c$ and $d$.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "$b = \\frac{\\pi}{4}$ and $d = 25$",
+     "accept": [
+      "$b = \\frac{2\\pi}{8}$",
+      "$b = -\\frac{\\pi}{4}$ with a matching $a$ and $c$"
+     ]
+    },
+    {
+     "point": "$a$ and $c$ that fit the graph: $a = 20$ with $c = -2$, or $a = -20$ with $c = 2$",
+     "accept": [
+      "any $c$ that differs from these by a multiple of 8",
+      "a check that $h(0) = 5$ with the chosen values"
+     ]
+    }
+   ],
+   "sample": "Midline $d = \\frac{45 + 5}{2} = 25$; amplitude $\\frac{45 - 5}{2} = 20$; period 8, so $b = \\frac{2\\pi}{8} = \\frac{\\pi}{4}$. With $a = 20$, the sine pattern starts (midline, rising) at $G$, $t = 2$, so $t + c = 0$ at $t = 2$ and $c = -2$: $h(t) = 20\\sin\\left(\\frac{\\pi}{4}(t - 2)\\right) + 25$. Check: $h(0) = 20\\sin\\left(-\\frac{\\pi}{2}\\right) + 25 = 5$.",
+   "space": "lines"
+  },
+  {
+   "label": "C(i)",
+   "prompt": "Is $h$ increasing or decreasing on the interval $(2, 4)$? <b>Give a reason</b> for your answer in the context of the problem.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Increasing, with a reason: on $(2, 4)$ the seat moves from the height of the center ($G$) up to the top of the wheel ($J$)",
+     "accept": [
+      "the seat is rising from 25 m to 45 m",
+      "the graph rises from $G$ to $J$"
+     ]
+    }
+   ],
+   "sample": "$h$ is increasing on $(2, 4)$: between $t = 2$ and $t = 4$ the seat rises from the height of the center, 25 m, to the top of the wheel, 45 m.",
+   "space": "lines"
+  },
+  {
+   "label": "C(ii)",
+   "prompt": "Is the rate of change of $h$ increasing or decreasing on the interval $(2, 4)$? <b>Explain</b> your reasoning.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Decreasing, with a reason: the graph of $h$ is concave down on $(2, 4)$ (above the midline, bending toward the highest point $J$), so the seat rises more and more slowly",
+     "accept": [
+      "the rate of change of $h$ is decreasing because the graph is concave down",
+      "the average rates of change over equal pieces of $(2, 4)$ get smaller"
+     ]
+    }
+   ],
+   "sample": "The rate of change of $h$ is decreasing on $(2, 4)$. The graph of $h$ is above its midline there and concave down: the seat is still rising, but more slowly as it nears the top, where its height stops changing.",
+   "space": "lines"
+  }
+ ]
+}

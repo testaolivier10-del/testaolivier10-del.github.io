@@ -1,0 +1,70 @@
+{
+ "topic": "polynomial-end-behavior",
+ "hook": "Zoom out on any polynomial graph and the wiggles shrink to nothing; only the ends remain, shooting up or down. The leading term alone decides where they go. The exam asks for that end behavior in limit notation, and readers take the point when the notation is sloppy.",
+ "prereq": [
+  {
+   "q": "What is the leading term of $5 - 3x^4 + 2x$?",
+   "options": [
+    "$-3x^4$",
+    "$5$",
+    "$3x^4$",
+    "$2x$"
+   ],
+   "correct": 0,
+   "why": "The highest power of $x$.",
+   "review": "polynomial-rates"
+  },
+  {
+   "q": "$f$ is an even function. Its graph is symmetric about",
+   "options": [
+    "the $y$-axis",
+    "the origin",
+    "the $x$-axis",
+    "the line $y = x$"
+   ],
+   "correct": 0,
+   "why": "$f(-x) = f(x)$.",
+   "review": "complex-zeros"
+  }
+ ],
+ "figure": {
+  "figure": "polynomial-end-behavior-ends",
+  "caption": "$p(x) = -0.5x^3 + 3x$: odd degree, negative leading coefficient, so $\\lim_{x \\to -\\infty} p(x) = \\infty$ and $\\lim_{x \\to \\infty} p(x) = -\\infty$."
+ },
+ "chain": [
+  {
+   "cause": "$|x|$ grows large",
+   "effect": "the leading term $a_n x^n$ outgrows every other term"
+  },
+  {
+   "cause": "The degree $n$ is even",
+   "effect": "both ends go the same way: up if $a_n > 0$, down if $a_n < 0$"
+  },
+  {
+   "cause": "The degree $n$ is odd",
+   "effect": "the ends go opposite ways: left down and right up if $a_n > 0$, the reverse if $a_n < 0$"
+  },
+  {
+   "cause": "You report end behavior",
+   "effect": "write both limits in full, such as $\\lim_{x \\to \\infty} p(x) = -\\infty$"
+  }
+ ],
+ "ideas": [
+  "<b>End behavior</b>: what the outputs do as $x \\to \\infty$ and as $x \\to -\\infty$. For a polynomial, the leading term decides it.",
+  "<b>Limit notation</b>: $\\lim_{x \\to \\infty} f(x) = \\infty$ reads \"as $x$ increases without bound, $f(x)$ increases without bound.\"",
+  "Even degree: ends match. Odd degree: ends opposite. The sign of the leading coefficient picks which way."
+ ],
+ "misconception": {
+  "wrong": "If the first few large inputs give negative outputs, then $\\lim_{x \\to \\infty} p(x) = -\\infty$.",
+  "right": "End behavior is decided by the leading term, which may take over late. $p(x) = 2x^3 - 50x^2$ is negative at $x = 10$ and $20$, but $\\lim_{x \\to \\infty} p(x) = \\infty$ because $2x^3$ wins once $x > 25$."
+ },
+ "check": [
+  "pcalc-polynomial-end-behavior-1",
+  "pcalc-polynomial-end-behavior-2",
+  "pcalc-polynomial-end-behavior-3",
+  "pcalc-polynomial-end-behavior-6",
+  "pcalc-polynomial-end-behavior-7",
+  "pcalc-polynomial-end-behavior-13"
+ ],
+ "summary": "As $|x|$ grows, a polynomial behaves like its leading term $a_n x^n$. Even degree sends both ends the same way and odd degree sends them opposite ways; the sign of $a_n$ picks the direction. State end behavior in full limit notation, for example $\\lim_{x \\to -\\infty} p(x) = \\infty$ and $\\lim_{x \\to \\infty} p(x) = -\\infty$."
+}

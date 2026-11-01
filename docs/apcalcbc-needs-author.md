@@ -26,7 +26,7 @@ an id, the question, what was done meanwhile, and who decides. AB's open points 
 - **ab-trainers**: BC links AB's ten trainers on their AB pages rather than building them again, so answers
   there count in Calculus AB, not BC. Building them under `/calculus-bc/` would mean parameterizing the ten
   tool scripts the way the core runtime is now (Phase 2 work). Confirm.
-- **launch-checklist** (filled at launch): apply `2026-10n-apcalcbc.sql`, create the Polar product "AP® Calculus
+- **launch-checklist** (filled at launch): apply `2026-10o-apcalcbc.sql`, create the Polar product "AP® Calculus
   BC Premium (through June 30, 2027)" $25, add `"cbc-2027"` to `POLAR_PRODUCTS` in the Worker settings, remove
   `onSale: false`, set the registry status, merge.
 

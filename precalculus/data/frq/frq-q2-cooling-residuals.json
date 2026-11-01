@@ -1,0 +1,133 @@
+{
+ "id": "frq-q2-cooling-residuals",
+ "type": "modeling",
+ "title": "Cooling coffee: two models compared with residuals",
+ "calc": true,
+ "points": 6,
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "model-validation",
+  "exponential-modeling"
+ ],
+ "practices": [
+  "1.C",
+  "3.A",
+  "3.B",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Temperature of a cup of coffee",
+  "text": "A cup of coffee is left on a table in a room kept at $22$ degrees Celsius. Its temperature is measured every $5$ minutes. Two models are proposed: a linear model $L$, found by linear regression on the data, and the model $E$ given by $E(t) = 22 + 70(0.952)^t$, where $t$ is in minutes and both models give degrees Celsius.",
+  "table": {
+   "caption": "Temperature of the coffee, in degrees Celsius, t minutes after it is poured",
+   "cols": [
+    "$t$ (minutes)",
+    "0",
+    "5",
+    "10",
+    "15",
+    "20"
+   ],
+   "rows": [
+    [
+     "Temperature (degrees Celsius)",
+     "92.0",
+     "76.5",
+     "65.0",
+     "55.3",
+     "48.4"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "Use linear regression on the data to <b>find</b> $L(t) = mt + c$. Give $m$ and $c$ as decimal approximations.",
+   "rubric": [
+    {
+     "point": "$m = -2.168$ and $c = 89.120$ (correct to three decimal places; both needed)",
+     "accept": [
+      "$L(t) = -2.168000t + 89.120000$",
+      "values truncated to three decimal places"
+     ]
+    }
+   ],
+   "sample": "Linear regression on the lists gives $m = -2.168000$ and $c = 89.120000$, so $L(t) = -2.168000t + 89.120000$. Both values are stored."
+  },
+  {
+   "label": "A(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "A residual is the actual value minus the predicted value. <b>Find</b> the residual of $L$ and the residual of $E$ at $t = 10$.",
+   "rubric": [
+    {
+     "point": "Residual of $L$: $-2.440$; residual of $E$: $0.198$ (both, as actual minus predicted)",
+     "accept": [
+      "$65 - L(10) = -2.440$ and $65 - E(10) = 0.198$",
+      "values truncated to three decimal places"
+     ]
+    }
+   ],
+   "sample": "$L(10) = 67.440000...$, so the residual of $L$ is $65 - L(10) = -2.440$. $E(10) = 22 + 70(0.952)^{10} = 64.802341...$, so the residual of $E$ is $65 - E(10) = 0.198$."
+  },
+  {
+   "label": "B(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "The residuals of $L$ at $t = 0, 5, 10, 15, 20$ are, in order, positive, negative, negative, negative, positive. The residuals of $E$ are all within $0.5$ of $0$ with no pattern. Which model is more appropriate for the data? <b>Give a reason</b> for your answer.",
+   "rubric": [
+    {
+     "point": "$E$, with a reason from the residuals: the residuals of $E$ are small with no pattern, while those of $L$ show a pattern (positive, negative, positive)",
+     "accept": [
+      "\"E: its residuals are close to 0 and patternless; L's residuals form a U, so the data curve away from the line\""
+     ]
+    }
+   ],
+   "sample": "$E$ is more appropriate. Its residuals are small and show no pattern. The residuals of $L$ go from positive to negative and back to positive, so the data bend upward away from the line, and a line has the wrong shape."
+  },
+  {
+   "label": "B(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "Use the model $E$ to <b>predict</b> the temperature of the coffee at $t = 30$ minutes.",
+   "rubric": [
+    {
+     "point": "$38.003$ degrees Celsius",
+     "accept": [
+      "$38.003$ or $38.003$ degrees Celsius"
+     ]
+    }
+   ],
+   "sample": "$E(30) = 22 + 70(0.952)^{30} = 38.003$ degrees Celsius."
+  },
+  {
+   "label": "C",
+   "points": 2,
+   "space": "lines",
+   "prompt": "(i) Use $E$ to <b>find</b> the time when the coffee is $40$ degrees Celsius. (ii) <b>Explain</b> why the model $L$ should not be used to predict the temperature an hour after the coffee is poured.",
+   "rubric": [
+    {
+     "point": "(i) $t = 27.610$ minutes, from solving $E(t) = 40$ with a calculator",
+     "accept": [
+      "$27.610$ minutes, rounded or truncated",
+      "an intersection of y = E(t) and y = 40 reported to three decimal places"
+     ]
+    },
+    {
+     "point": "(ii) $L$ is decreasing without bound: it falls below the room temperature of $22$ degrees after about $t = 31.0$ minutes, which a cooling cup in a $22$-degree room cannot do",
+     "accept": [
+      "\"$L(60) = -40.960$, below the room's $22$ degrees\"",
+      "a reason tied to the room temperature and the line decreasing forever"
+     ]
+    }
+   ],
+   "sample": "(i) Graph $y = E(t)$ and $y = 40$ and find the intersection: $t = 27.610$ minutes. (ii) $L$ has a negative slope, so it keeps decreasing at the same rate. $L(60) = -40.960$ degrees, below the room temperature of $22$ degrees; in fact $L(t) < 22$ for $t > 30.959$. Coffee in a $22$-degree room cools toward $22$ degrees and does not drop below it, so $L$ is not valid an hour after pouring. $E$ approaches $22$, since $\\lim_{t \\to \\infty} E(t) = 22$."
+  }
+ ]
+}

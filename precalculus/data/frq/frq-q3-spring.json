@@ -1,0 +1,99 @@
+{
+ "id": "frq-q3-spring",
+ "type": "periodic",
+ "title": "A weight on a spring",
+ "calc": false,
+ "points": 6,
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "sinusoidal-modeling"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Height of a weight on a spring",
+  "text": "A weight hangs from a spring above a floor. The weight is pulled and released, and then it bobs up and down with a frequency of 0.5 cycle per second. The bottom of the weight is 60 centimeters above the floor at its highest and 40 centimeters above the floor at its lowest. At time $t = 0$ seconds, the weight is at its highest. The sinusoidal function $h$ models the height of the bottom of the weight above the floor, in centimeters, at time $t$. The graph of $h$ for one cycle is shown with its axes unscaled. The points $F$, $G$, $J$, $K$ and $M$ are on the graph: $F$ and $M$ are highest points, $J$ is a lowest point, and $G$ and $K$ are on the midline.",
+  "figure": "sinusoidal-modeling-spring"
+ },
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Find</b> the coordinates of the points $F$, $G$, $J$, $K$ and $M$.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "The extremes: $F = (0, 60)$, $J = (1, 40)$ and $M = (2, 60)$",
+     "accept": [
+      "all three correct"
+     ]
+    },
+    {
+     "point": "The midline points: $G = (0.5, 50)$ and $K = (1.5, 50)$",
+     "accept": [
+      "both correct"
+     ]
+    }
+   ],
+   "sample": "A frequency of 0.5 cycle per second means a period of $\\frac{1}{0.5} = 2$ seconds, so the points are $\\frac{2}{4} = 0.5$ second apart. The midline is $\\frac{60 + 40}{2} = 50$. $F = (0, 60)$, $G = (0.5, 50)$, $J = (1, 40)$, $K = (1.5, 50)$, $M = (2, 60)$.",
+   "space": "lines"
+  },
+  {
+   "label": "B",
+   "prompt": "The function $h$ is given by $h(t) = a\\sin(b(t + c)) + d$, where $a$, $b$, $c$ and $d$ are constants. <b>Find</b> values of $a$, $b$, $c$ and $d$.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "$b = \\pi$ (from the period 2 seconds) and $d = 50$",
+     "accept": [
+      "$b = \\frac{2\\pi}{2}$",
+      "$b = 2\\pi \\cdot 0.5$"
+     ]
+    },
+    {
+     "point": "$a$ and $c$ that fit the graph: $a = 10$ with $c = \\frac{1}{2}$, or $a = -10$ with $c = -\\frac{1}{2}$",
+     "accept": [
+      "any $c$ that differs from these by a multiple of 2"
+     ]
+    }
+   ],
+   "sample": "$d = 50$ and the amplitude is $\\frac{60 - 40}{2} = 10$. The period is $\\frac{1}{0.5} = 2$ seconds (not 0.5), so $b = \\frac{2\\pi}{2} = \\pi$. With $a = 10$, the sine pattern starts (midline, rising) at $K$, $t = 1.5$, or one period earlier at $t = -0.5$, so $c = \\frac{1}{2}$: $h(t) = 10\\sin\\left(\\pi\\left(t + \\frac{1}{2}\\right)\\right) + 50$. Check: $h(0) = 10\\sin\\frac{\\pi}{2} + 50 = 60$.",
+   "space": "lines"
+  },
+  {
+   "label": "C(i)",
+   "prompt": "Is $h$ increasing or decreasing on the interval $(0.5, 1)$? <b>Give a reason</b> for your answer in the context of the problem.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Decreasing, with a reason: on $(0.5, 1)$ the weight moves from the midline height down to its lowest point $J$",
+     "accept": [
+      "the weight is moving down, from 50 cm to 40 cm"
+     ]
+    }
+   ],
+   "sample": "$h$ is decreasing on $(0.5, 1)$: the weight is moving down, from 50 cm above the floor at $t = 0.5$ to its lowest height, 40 cm, at $t = 1$.",
+   "space": "lines"
+  },
+  {
+   "label": "C(ii)",
+   "prompt": "Is the graph of $h$ concave up or concave down on the interval $(0.5, 1)$, and is the rate of change of $h$ increasing or decreasing there? <b>Explain</b> your reasoning.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Concave up and the rate of change of $h$ is increasing, with a reason: the graph is below its midline, bending up toward the lowest point $J$, where the weight momentarily stops",
+     "accept": [
+      "the weight slows down as it nears the bottom, so the negative rate of change increases toward 0"
+     ]
+    }
+   ],
+   "sample": "The graph of $h$ is concave up on $(0.5, 1)$, so the rate of change of $h$ is increasing. The weight is moving down but slowing as it nears the bottom: the rate of change is negative and rises toward 0 at $t = 1$.",
+   "space": "lines"
+  }
+ ]
+}

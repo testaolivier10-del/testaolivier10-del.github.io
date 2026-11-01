@@ -11,11 +11,11 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Search All Courses | LevlPrep</title>
-<meta name="description" content="Search all ten LevlPrep courses: NREMT-EMT, ochem, A&amp;P, biology, chemistry, physics, calculus, statistics, environmental science and psychology notes and terms.">
+<meta name="description" content="Search all eleven LevlPrep courses: NREMT-EMT, ochem, A&amp;P, biology, chemistry, physics, calculus, statistics, environmental science, psychology and precalculus.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://levlprep.com/search.html">
 <meta property="og:title" content="Search All Courses | LevlPrep">
-<meta property="og:description" content="Search all ten LevlPrep courses: NREMT-EMT, ochem, A&amp;P, biology, chemistry, physics, calculus, statistics, environmental science and psychology notes and terms.">
+<meta property="og:description" content="Search all eleven LevlPrep courses: NREMT-EMT, ochem, A&amp;P, biology, chemistry, physics, calculus, statistics, environmental science, psychology and precalculus.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://levlprep.com/search.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -91,6 +91,7 @@
   [data-c="apchem"]{--c-tint:#E3EAFA;--c-ink:#1D44A6;}
   [data-c="apphys"]{--c-tint:#FBEED5;--c-ink:#734200;}
   [data-c="apcalc"]{--c-tint:#FCE8EE;--c-ink:#8C1036;}
+  [data-c="apprecalc"]{--c-tint:#E3F3E8;--c-ink:#11592F;}
   [data-c="apcalcbc"]{--c-tint:#F1E7FA;--c-ink:#5A1E96;}
   :root[data-theme="dark"] [data-c="nremt"]{--c-tint:rgba(63,194,169,0.16);--c-ink:#9FE6D6;}
   :root[data-theme="dark"] [data-c="ochem"]{--c-tint:rgba(156,143,224,0.2);--c-ink:#C9C0F2;}
@@ -99,6 +100,7 @@
   :root[data-theme="dark"] [data-c="apchem"]{--c-tint:rgba(90,130,230,0.2);--c-ink:#B3C8F7;}
   :root[data-theme="dark"] [data-c="apphys"]{--c-tint:rgba(235,165,50,0.16);--c-ink:#F5CF8A;}
   :root[data-theme="dark"] [data-c="apcalc"]{--c-tint:rgba(232,80,122,0.16);--c-ink:#F7B8CA;}
+  :root[data-theme="dark"] [data-c="apprecalc"]{--c-tint:rgba(80,200,130,0.16);--c-ink:#ACE4BF;}
   :root[data-theme="dark"] [data-c="apcalcbc"]{--c-tint:rgba(160,112,224,0.18);--c-ink:#D6BFF5;}
   /* ?embed=1: this page inside the "/" search overlay every page opens
      (site-chrome.js), so only the box, chips and results show. */
@@ -123,7 +125,7 @@
     <span class="sp-pill">Search</span>
     <h1>Find it in <span>every course.</span></h1>
     <p class="hand">notes, lessons, terms, tools and questions</p>
-    <p class="lede">NREMT-EMT, Organic Chemistry, Anatomy &amp; Physiology, AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics, AP® Environmental Science and AP® Psychology: notes and textbook, lessons, glossary terms, tools and practice questions.</p>
+    <p class="lede">NREMT-EMT, Organic Chemistry, Anatomy &amp; Physiology, AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics, AP® Environmental Science, AP® Psychology and AP® Precalculus: notes and textbook, lessons, glossary terms, tools and practice questions.</p>
     </div>
   </div>
 
@@ -139,7 +141,7 @@
       <div class="ss-chips" id="ssChips" role="group" aria-label="Course"></div>
       <div class="ss-status" id="ssStatus" role="status" aria-live="polite"></div>
       <div id="ssResults"></div>
-      <noscript><p class="ss-none">Search runs in your browser and needs JavaScript. Each course&rsquo;s notes and glossary work without it: <a href="nremt/">NREMT</a>, <a href="ochem/">Organic Chemistry</a>, <a href="anatomy-physiology/">Anatomy &amp; Physiology</a>, <a href="bio/">AP&reg; Biology</a>, <a href="chem/">AP&reg; Chemistry</a>, <a href="physics/">AP&reg; Physics 1</a>, <a href="calculus/">AP&reg; Calculus AB</a>, <a href="statistics/">AP&reg; Statistics</a>, <a href="environmental-science/">AP&reg; Environmental Science</a>, <a href="psychology/">AP&reg; Psychology</a>.</p></noscript>
+      <noscript><p class="ss-none">Search runs in your browser and needs JavaScript. Each course&rsquo;s notes and glossary work without it: <a href="nremt/">NREMT</a>, <a href="ochem/">Organic Chemistry</a>, <a href="anatomy-physiology/">Anatomy &amp; Physiology</a>, <a href="bio/">AP&reg; Biology</a>, <a href="chem/">AP&reg; Chemistry</a>, <a href="physics/">AP&reg; Physics 1</a>, <a href="calculus/">AP&reg; Calculus AB</a>, <a href="statistics/">AP&reg; Statistics</a>, <a href="environmental-science/">AP&reg; Environmental Science</a>, <a href="psychology/">AP&reg; Psychology</a>, <a href="precalculus/">AP&reg; Precalculus</a>.</p></noscript>
     </div>
     <aside class="ss-side" aria-label="About search">
       <div class="sp-box ss-pnl"><h2 class="sp-d">Private by design</h2><p>Search runs in your browser. Nothing you type is sent anywhere, and a course&rsquo;s material only downloads when a search needs it.</p></div>

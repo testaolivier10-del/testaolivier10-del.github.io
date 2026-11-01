@@ -1,0 +1,8 @@
+{
+ "composition": {
+  "def": "A function built by using the output of one function as the input of another. The composite $f(g(x))$, also written $(f \\circ g)(x)$, applies $g$ first and then $f$."
+ },
+ "identity-function": {
+  "def": "The function $I(x) = x$, which returns every input unchanged. Composing any function with it, in either order, gives the same function back."
+ }
+}

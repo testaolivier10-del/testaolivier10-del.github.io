@@ -1,0 +1,251 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "pcalc-alg-lines-1",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the slope of the line through $(-2, 5)$ and $(4, -7)$?",
+   "type": "single",
+   "options": [
+    "$2$",
+    "$-\\frac{1}{2}$",
+    "$-2$",
+    "$-6$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Slope $= \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{-7 - 5}{4 - (-2)} = \\frac{-12}{6} = -2$. Subtract in the same order on top and bottom.",
+    "options": [
+     "The $y$-values fall from $5$ to $-7$ as $x$ rises, so the slope is negative.",
+     "This is run over rise. Slope is rise over run: $\\frac{-12}{6}$.",
+     "Right: $\\frac{-7 - 5}{4 - (-2)} = \\frac{-12}{6} = -2$.",
+     "This subtracts the $y$-values, $-7 - 5 = -12$, but adds the $x$-values, $4 + (-2) = 2$. Subtract both in the same order: $4 - (-2) = 6$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-2",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write an equation of the line through $(1, 3)$ with slope $2$. Solve for $y$.",
+   "type": "expr",
+   "expr": {
+    "answer": "3 + 2(x - 1)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -4,
+     4
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "3 + 2(x + 1)",
+      "why": "Point-slope form subtracts the point's $x$: $y - 3 = 2(x - 1)$, not $x + 1$."
+     },
+     {
+      "expr": "2x + 3",
+      "why": "$3$ is the $y$-value at $x = 1$, not at $x = 0$. Use $y - 3 = 2(x - 1)$, which gives $y = 2x + 1$."
+     },
+     {
+      "expr": "1 + 2(x - 3)",
+      "why": "The coordinates are swapped: the point is $x = 1$, $y = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Point-slope form: $y - 3 = 2(x - 1)$, so $y = 3 + 2(x - 1) = 2x + 1$. Check: at $x = 1$, $y = 3$."
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-3",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A phone plan costs $C(m) = 15 + 0.10m$ dollars for $m$ minutes of calls. What does the slope $0.10$ mean?",
+   "type": "single",
+   "options": [
+    "Each extra minute adds \\$0.10 to the cost.",
+    "The plan costs \\$0.10 with no calls.",
+    "Each extra dollar buys $0.10$ minute.",
+    "The cost rises \\$15 for each minute."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In $C(m) = 15 + 0.10m$, the slope $0.10$ is the change in $C$ per $1$-unit change in $m$: \\$0.10 per minute. The \\$15 is the cost at $m = 0$.",
+    "options": [
+     "Right: the slope is the change in cost for each $1$-minute increase in $m$.",
+     "With no calls ($m = 0$) the cost is \\$15, the intercept.",
+     "This swaps input and output; the slope is dollars per minute.",
+     "\\$15 is the starting cost, not the change per minute."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-4",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "The points in the table lie on a line. What is its slope? $x$: $0, 2, 4, 6$; $y$: $7, 4, 1, -2$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-3/2",
+    "mistakes": [
+     {
+      "value": -3,
+      "why": "$-3$ is the change in $y$ for each step of $2$ in $x$; divide by $2$."
+     },
+     {
+      "value": "-2/3",
+      "why": "That is run over rise. Slope is the change in $y$ over the change in $x$: $\\frac{-3}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each step of $2$ in $x$ changes $y$ by $-3$, so the slope is $\\frac{-3}{2} = -1.5$."
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-5",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A line passes through $(2, 10)$ and $(6, 22)$. What is $y$ on this line at $x = 3$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 13,
+    "mistakes": [
+     {
+      "value": 16,
+      "why": "$16$ is halfway between $10$ and $22$, the value at $x = 4$. At $x = 3$ you go one step from $x = 2$: $10 + 3 \\cdot 1$."
+     },
+     {
+      "value": 3,
+      "why": "$3$ is the slope; use it to move from the point $(2, 10)$: $y = 10 + 3(3 - 2)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Slope $= \\frac{22 - 10}{6 - 2} = 3$. From $(2, 10)$: $y = 10 + 3(x - 2)$, so at $x = 3$, $y = 13$."
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-6",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $f(x) = x^2$, what is the slope of the line through $(2, f(2))$ and $(5, f(5))$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 7,
+    "mistakes": [
+     {
+      "value": 21,
+      "why": "$21 = f(5) - f(2)$ is the rise; divide by the run, $5 - 2 = 3$."
+     },
+     {
+      "value": "7/3",
+      "why": "The rise is $f(5) - f(2) = 25 - 4 = 21$, not $7$; then divide by $3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The points are $(2, 4)$ and $(5, 25)$. Slope $= \\frac{25 - 4}{5 - 2} = \\frac{21}{3} = 7$."
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-7",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which line has slope $0$?",
+   "type": "single",
+   "options": [
+    "$y = 4$",
+    "$x = 4$",
+    "$y = 4x$",
+    "$y = x - 4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A horizontal line $y = c$ has the same $y$ for every $x$: rise $0$, slope $0$. A vertical line $x = c$ has run $0$, so its slope is undefined.",
+    "options": [
+     "Right: $y$ is $4$ for every $x$, so the rise is $0$.",
+     "This is a vertical line; its run is $0$, so its slope is undefined.",
+     "Its slope is $4$.",
+     "Its slope is $1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-8",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which equation is the same line as $y - 4 = -3(x + 2)$?",
+   "type": "single",
+   "options": [
+    "$y = -3x - 2$",
+    "$y = -3x + 10$",
+    "$y = -3x - 10$",
+    "$y = -3x + 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Distribute: $y - 4 = -3x - 6$. Add $4$: $y = -3x - 2$. Check: at $x = -2$, $y = 6 - 2 = 4$.",
+    "options": [
+     "Right: $y = -3x - 6 + 4 = -3x - 2$.",
+     "Distribute the $-3$ to both terms: $-3(x + 2) = -3x - 6$, not $-3x + 6$.",
+     "After distributing, $4$ is added to both sides: $-6 + 4 = -2$.",
+     "Check the point $(-2, 4)$: $-3(-2) + 2 = 8$, not $4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-9",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A line has slope $-4$. If $x$ increases by $3$, by how much does $y$ change?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -12,
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "A negative slope means $y$ goes down as $x$ goes up: the change is $-4 \\cdot 3$."
+     },
+     {
+      "value": -1,
+      "why": "That adds the slope and the change in $x$, $-4 + 3$. Multiply instead: change in $y$ = slope $\\times$ change in $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Change in $y$ = slope $\\times$ change in $x$ $= -4 \\cdot 3 = -12$. A line changes by the same amount for every equal step in $x$."
+   }
+  }
+ ]
+}

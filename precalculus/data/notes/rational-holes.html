@@ -1,0 +1,39 @@
+<p>Topic 1.9 found vertical asymptotes at zeros of the denominator, but not at every zero: when a factor cancels, there is no asymptote. This topic is about what is there instead, a single missing point called a <b>hole in the graph</b>.</p>
+
+<h2>When a factor cancels</h2>
+<p>Factor the numerator and the denominator. If $(x - a)$ divides the numerator at least as many times as the denominator, it cancels completely from the denominator. The function is still undefined at $x = a$ (its original denominator is $0$ there), but near $a$ it behaves like the simplified formula, which has a value at $a$. The graph is the simplified graph with one point removed: a hole.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Analyze $r(x) = \frac{x^2 - x - 6}{x^2 - 5x + 6}$.</p>
+<p>Factor: $\frac{(x - 3)(x + 2)}{(x - 2)(x - 3)}$. So $r(x) = \frac{x + 2}{x - 2}$ for $x \ne 3$.</p>
+<p>Hole: $x - 3$ cancels. Height: $\frac{3 + 2}{3 - 2} = 5$. So $\lim_{x \to 3} r(x) = 5$, and the hole is at $(3, 5)$.</p>
+<p>Vertical asymptote: $x - 2$ remains below. $\lim_{x \to 2^-} r(x) = -\infty$, $\lim_{x \to 2^+} r(x) = \infty$.</p>
+<p>Horizontal asymptote: equal degrees, $\lim_{x \to \pm\infty} r(x) = 1$. Zero: $x = -2$ (not $3$, which is not in the domain).</p>
+</div>
+<figure id="fig-hole" data-fig="rational-holes-hole"><figcaption>An open circle marks the hole at $\left(1, \frac{3}{2}\right)$; dashed lines mark the two asymptotes.</figcaption></figure>
+
+<h2>Hole or asymptote? Compare multiplicities</h2>
+<table class="compare">
+<thead><tr><th scope="col">$(x - a)$ appears</th><th scope="col">At $x = a$</th><th scope="col">Example</th></tr></thead>
+<tbody>
+<tr><td>only in the denominator</td><td>vertical asymptote</td><td>$\frac{x + 1}{x - 1}$ at $x = 1$</td></tr>
+<tr><td>more times below than above</td><td>vertical asymptote</td><td>$\frac{x - 1}{(x - 1)^2}$ at $x = 1$</td></tr>
+<tr><td>at least as many times above</td><td>hole</td><td>$\frac{(x - 1)^2}{x - 1}$ at $x = 1$, hole at $(1, 0)$</td></tr>
+</tbody>
+</table>
+<p>In the last example the hole sits on the $x$-axis, at $(1, 0)$. It is still not a zero: $x = 1$ is not in the domain.</p>
+
+<h2>The height of a hole is a limit</h2>
+<p>A hole at $(a, L)$ means the outputs approach $L$ as $x$ approaches $a$ from both sides, while $r(a)$ does not exist. Write it as $\lim_{x \to a} r(x) = L$. A table shows the same thing: for $k(x) = \frac{x^2 - 1}{x + 1}$, the values at $-1.01$, $-1.001$, $-0.999$, $-0.99$ are $-2.01$, $-2.001$, $-1.999$, $-1.99$, so $\lim_{x \to -1} k(x) = -2$.</p>
+<p>Contrast this with a vertical asymptote, where the table's values grow without bound in size. Both are inputs outside the domain; the limit tells them apart.</p>
+
+<h2>Building a function from its features</h2>
+<p>The same rules run backward. To make a rational function with a hole at $x = 1$ and a vertical asymptote $x = -2$, put the factor $x - 1$ both above and below (so it cancels) and leave $x + 2$ only below:</p>
+<p>$$f(x) = \frac{x - 1}{(x - 1)(x + 2)}.$$</p>
+<p>Check it: for $x \ne 1$, $f(x) = \frac{1}{x + 2}$, so the hole is at $\left(1, \frac{1}{3}\right)$, the vertical asymptote is $x = -2$, and since the denominator has the higher degree the horizontal asymptote is $y = 0$. Swapping the roles of the two factors would swap the features.</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Writing $r(3) = 5$ for a hole at $(3, 5)$. The function has no value at $3$; use $\lim_{x \to 3} r(x) = 5$.</li>
+<li>Calling $\frac{0}{0}$ zero. It has no value; cancel and evaluate.</li>
+<li>Listing the hole's input as a zero or as a vertical asymptote.</li>
+</ul>

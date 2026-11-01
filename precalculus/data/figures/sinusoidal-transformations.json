@@ -1,0 +1,22 @@
+{
+ "sinusoidal-transformations-shift": {
+  "file": "figures/sinusoidal-transformations-shift.svg",
+  "ext": "svg",
+  "w": 740,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Dashed gray: the graph of y = sin theta. Green: the graph of g(theta) = 2 sin(theta − pi/4) + 1 for theta from −pi/4 to 9 pi over 4. Compared with sine, g is moved right by pi/4 (the phase shift, shown by an arrow from the origin to (pi/4, 1)), stretched vertically so its amplitude is 2, and moved up so its midline is y = 1 (dashed). Its maximum 3 is at 3 pi over 4 and its minimum −1 at 7 pi over 4; its period is still 2 pi."
+ },
+ "sinusoidal-transformations-waterwheel": {
+  "file": "figures/sinusoidal-transformations-waterwheel.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a waterwheel whose center is above the water line, with the lower part of the wheel under water. A point P on the rim is at the top of the wheel. Right: an unscaled graph of h(t), the height of P above the water, for one turn of the wheel. The graph starts at its highest point F, falls through G to its lowest point J, which is below the t-axis, rises through K, and ends at the highest point M. G and K are halfway between the highest and lowest heights. The axes have no scale."
+ }
+}

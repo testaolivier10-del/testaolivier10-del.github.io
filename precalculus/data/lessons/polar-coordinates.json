@@ -1,0 +1,70 @@
+{
+ "topic": "polar-coordinates",
+ "hook": "An air traffic radar does not report a plane's $x$ and $y$. It reports how far away the plane is and in which direction. Distance and direction are a second way to name every point in the plane, and for anything that spins or sweeps, it is the natural one.",
+ "prereq": [
+  {
+   "q": "What is $\\cos\\frac{2\\pi}{3}$?",
+   "options": [
+    "$-\\frac{1}{2}$",
+    "$\\frac{1}{2}$",
+    "$-\\frac{\\sqrt{3}}{2}$",
+    "$\\frac{\\sqrt{3}}{2}$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{2\\pi}{3}$ is in Quadrant II with reference angle $\\frac{\\pi}{3}$, so its cosine is $-\\frac{1}{2}$.",
+   "review": "sine-cosine-values"
+  },
+  {
+   "q": "What is $\\tan^{-1}(-1)$?",
+   "options": [
+    "$-\\frac{\\pi}{4}$",
+    "$\\frac{3\\pi}{4}$",
+    "$\\frac{7\\pi}{4}$",
+    "$-1$"
+   ],
+   "correct": 0,
+   "why": "The angle in $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$ with tangent $-1$ is $-\\frac{\\pi}{4}$.",
+   "review": "inverse-trig"
+  }
+ ],
+ "figure": {
+  "figure": "polar-coordinates-points",
+  "caption": "A polar grid: circles of constant distance $r$ and rays of constant angle $\\theta$. P is $\\left(3, \\frac{\\pi}{6}\\right)$."
+ },
+ "chain": [
+  {
+   "cause": "Pick a distance $r$ and an angle $\\theta$",
+   "effect": "the point $(r, \\theta)$: turn to $\\theta$, then go $r$ units out from the pole"
+  },
+  {
+   "cause": "Use the circle of radius $r$",
+   "effect": "$x = r\\cos\\theta$ and $y = r\\sin\\theta$"
+  },
+  {
+   "cause": "Go back from $(x, y)$",
+   "effect": "$r = \\sqrt{x^2 + y^2}$ and $\\tan\\theta = \\frac{y}{x}$, with the quadrant checked"
+  },
+  {
+   "cause": "Add $2\\pi$ to $\\theta$, or negate $r$ and add $\\pi$",
+   "effect": "the same point gets another name"
+  }
+ ],
+ "ideas": [
+  "$(r, \\theta)$ means: face the direction $\\theta$, then move $r$ units. A negative $r$ moves backward through the pole.",
+  "$x = r\\cos\\theta$, $y = r\\sin\\theta$ and $r^2 = x^2 + y^2$ convert between the two systems.",
+  "$\\tan^{-1}\\frac{y}{x}$ gives an angle in Quadrant I or IV; if the point is in Quadrant II or III, add $\\pi$.",
+  "A complex number $a + bi$ is the point $(a, b)$, so it has a polar form $r(\\cos\\theta + i\\sin\\theta)$."
+ ],
+ "misconception": {
+  "wrong": "The polar angle of $(-3, 3)$ is $\\tan^{-1}\\left(\\frac{3}{-3}\\right) = -\\frac{\\pi}{4}$.",
+  "right": "$\\tan^{-1}$ only returns angles in Quadrants I and IV. $(-3, 3)$ is in Quadrant II, so the angle is $-\\frac{\\pi}{4} + \\pi = \\frac{3\\pi}{4}$."
+ },
+ "check": [
+  "pcalc-polar-coordinates-1",
+  "pcalc-polar-coordinates-2",
+  "pcalc-polar-coordinates-5",
+  "pcalc-polar-coordinates-6",
+  "pcalc-polar-coordinates-11"
+ ],
+ "summary": "A point in polar coordinates $(r, \\theta)$ is $r$ units from the pole in the direction $\\theta$. Convert with $x = r\\cos\\theta$, $y = r\\sin\\theta$, $r = \\sqrt{x^2 + y^2}$ and $\\tan\\theta = \\frac{y}{x}$, checking the quadrant. Every point has many polar names, and a complex number $a + bi$ can be written as $r(\\cos\\theta + i\\sin\\theta)$."
+}

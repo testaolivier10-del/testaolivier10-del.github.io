@@ -1,0 +1,591 @@
+{
+ "stimuli": {
+  "model-validation-s1": {
+   "kind": "graph",
+   "title": "Residual plots for two models of follower counts",
+   "text": "A new video channel had $210, 262, 330, 410, 515, 640$ and $805$ followers at the end of weeks $t = 0$ to $6$. A linear regression $L$ and an exponential regression $E$ were fit to the data. The plot shows each model's residuals, actual minus predicted: open circles for $L$, filled dots for $E$.",
+   "plot": {
+    "label": "Residual plot: open circles for the linear model form a U shape, positive at t = 0, negative from t = 2 to 5, positive at t = 6; filled dots for the exponential model stay close to 0 with no pattern",
+    "x": [
+     -0.5,
+     6.5
+    ],
+    "y": [
+     -60,
+     80
+    ],
+    "xStep": 1,
+    "yStep": 20,
+    "xLabel": "t (weeks)",
+    "yLabel": "residual (followers)",
+    "lines": [
+     {
+      "through": [
+       [
+        0,
+        0
+       ],
+       [
+        6,
+        0
+       ]
+      ],
+      "cls": "s5"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0.0,
+       48.93
+      ],
+      "open": true,
+      "cls": "s3"
+     },
+     {
+      "at": [
+       1.0,
+       3.57
+      ],
+      "open": true,
+      "cls": "s3"
+     },
+     {
+      "at": [
+       2.0,
+       -25.79
+      ],
+      "open": true,
+      "cls": "s3"
+     },
+     {
+      "at": [
+       3.0,
+       -43.14
+      ],
+      "open": true,
+      "cls": "s3"
+     },
+     {
+      "at": [
+       4.0,
+       -35.5
+      ],
+      "open": true,
+      "cls": "s3"
+     },
+     {
+      "at": [
+       5.0,
+       -7.86
+      ],
+      "open": true,
+      "cls": "s3"
+     },
+     {
+      "at": [
+       6.0,
+       59.79
+      ],
+      "open": true,
+      "cls": "s3"
+     },
+     {
+      "at": [
+       0.0,
+       -0.02
+      ],
+      "cls": "s1"
+     },
+     {
+      "at": [
+       1.0,
+       -0.66
+      ],
+      "cls": "s1"
+     },
+     {
+      "at": [
+       2.0,
+       1.51
+      ],
+      "cls": "s1"
+     },
+     {
+      "at": [
+       3.0,
+       -0.83
+      ],
+      "cls": "s1"
+     },
+     {
+      "at": [
+       4.0,
+       1.2
+      ],
+      "cls": "s1"
+     },
+     {
+      "at": [
+       5.0,
+       -2.58
+      ],
+      "cls": "s1"
+     },
+     {
+      "at": [
+       6.0,
+       1.36
+      ],
+      "cls": "s1"
+     }
+    ]
+   }
+  },
+  "model-validation-s2": {
+   "kind": "table",
+   "title": "Two models of a growing plant",
+   "table": {
+    "caption": "Height of a plant, in centimeters, at week t, with the predictions of a linear model A and an exponential model B",
+    "cols": [
+     "$t$ (weeks)",
+     "0",
+     "1",
+     "2",
+     "3"
+    ],
+    "rows": [
+     [
+      "Actual height (cm)",
+      "50",
+      "62",
+      "78",
+      "97"
+     ],
+     [
+      "Model $A$ (cm)",
+      "48",
+      "63",
+      "78",
+      "93"
+     ],
+     [
+      "Model $B$ (cm)",
+      "50",
+      "62.5",
+      "78.1",
+      "97.7"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-model-validation-1",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "model-validation-s1",
+   "calc": true,
+   "q": "Based on the residual plots, which model is more appropriate for the data, and why?",
+   "type": "single",
+   "options": [
+    "$L$, because its residuals are both positive and negative",
+    "$E$, because its residuals are small and show no pattern",
+    "$L$, because its residuals form a smooth curve",
+    "$E$, because its residuals are mostly above $0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An appropriate model leaves residuals scattered around $0$ with no pattern. The residuals of $L$ form a U: positive, then negative, then positive, which means the data bend away from the line. The residuals of $E$ stay near $0$ with no pattern.",
+    "options": [
+     "Mixed signs are fine only without a pattern; these form a U.",
+     "Small, patternless residuals.",
+     "A curved pattern in the residuals is the sign of a poor model.",
+     "The residuals of $E$ are positive and negative."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-validation-2",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "model-validation-s1",
+   "calc": true,
+   "q": "The residual of $L$ at $t = 0$ is positive. What does that mean?",
+   "type": "single",
+   "options": [
+    "$L$ predicts more followers than the channel really had at $t = 0$",
+    "The channel gained followers at $t = 0$",
+    "$L$ predicts fewer followers than the channel had at $t = 0$",
+    "$L$ is increasing at $t = 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Residual $=$ actual $-$ predicted. A positive residual means actual $>$ predicted: the model underestimates there.",
+    "options": [
+     "That is a negative residual, an overestimate.",
+     "A residual compares the model to the data; it is not a change in followers.",
+     "Actual minus predicted is positive: an underestimate.",
+     "The sign of a residual says nothing about whether the model is increasing."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-validation-3",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "model-validation-s1",
+   "calc": true,
+   "q": "Use exponential regression on the data to find $E(t) = ab^t$. What is the residual of $E$ at $t = 3$, correct to three decimal places?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -0.8254619789569233,
+    "mistakes": [
+     {
+      "value": 0.825,
+      "why": "That is predicted minus actual. A residual is actual minus predicted."
+     },
+     {
+      "value": -43.143,
+      "why": "That is the residual of the linear model $L$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Exponential regression gives $a = 210.015964...$ and $b = 1.250648...$. Then $E(3) = 410.825462...$, and the residual is actual $-$ predicted $= 410 - 410.825462... = -0.825462...$, about $-0.825$."
+   }
+  },
+  {
+   "id": "pcalc-model-validation-4",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "model-validation-s1",
+   "calc": true,
+   "q": "Use the stored exponential model $E$ to predict the number of followers at $t = 8$ weeks. Give the answer correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 1256.9917455426912,
+    "mistakes": [
+     {
+      "value": 939.929,
+      "why": "That is the linear model's prediction. The residual plots favor $E$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$E(8) = ab^8 = 1256.991746...$ with the stored $a$ and $b$, about $1256.992$ followers."
+   }
+  },
+  {
+   "id": "pcalc-model-validation-5",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "model-validation-s1",
+   "calc": true,
+   "q": "Why does the U shape in the residuals of $L$ suggest that the data are not linear?",
+   "type": "single",
+   "options": [
+    "A U shape means the residuals add up to zero, so the line is wrong",
+    "Data above the line at the ends, below it in the middle: they curve up",
+    "A U shape means the follower counts are decreasing in the middle weeks",
+    "A U shape means the line is too steep at each of the weeks"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Positive residuals at the ends and negative ones in the middle mean the data lie above the line at the ends and below it in the middle: the data are concave up, which a line cannot follow.",
+    "options": [
+     "Least-squares residuals of a line do add to zero, U or not; that is no evidence.",
+     "Data above, below, above the line: they curve up.",
+     "The data increase throughout; the residual is the gap to the line.",
+     "A slope that is too steep everywhere would give residuals with one trend, not a U."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-validation-6",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "model-validation-s2",
+   "q": "What is the residual of model $A$ at $t = 3$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 4,
+    "unit": "cm",
+    "mistakes": [
+     {
+      "value": -4,
+      "why": "That is predicted minus actual. A residual is actual minus predicted."
+     },
+     {
+      "value": 0.7,
+      "why": "That uses model $B$; the question asks about $A$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Residual $=$ actual $-$ predicted $= 97 - 93 = 4$ cm. Model $A$ underestimates at $t = 3$."
+   }
+  },
+  {
+   "id": "pcalc-model-validation-7",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "model-validation-s2",
+   "q": "What is the residual of model $B$ at $t = 1$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -0.5,
+    "unit": "cm",
+    "mistakes": [
+     {
+      "value": 0.5,
+      "why": "Subtract in the order actual minus predicted: $62 - 62.5$."
+     },
+     {
+      "value": -1,
+      "why": "That is model $A$'s residual at $t = 1$, $62 - 63$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$62 - 62.5 = -0.5$ cm. The negative residual means model $B$ overestimates at $t = 1$."
+   }
+  },
+  {
+   "id": "pcalc-model-validation-8",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "model-validation-s2",
+   "q": "Which model fits the data in the table better, and why?",
+   "type": "single",
+   "options": [
+    "$B$, because its residuals are all closer to $0$",
+    "$A$, because it matches the data exactly at $t = 2$",
+    "$A$, because its residuals are whole numbers",
+    "$B$, because its predictions are larger"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The residuals of $A$ are $2, -1, 0, 4$; those of $B$ are $0, -0.5, -0.1, -0.7$. Every residual of $B$ is at least as close to $0$, and the largest error of $B$ ($0.7$ cm) is smaller than the largest of $A$ ($4$ cm).",
+    "options": [
+     "Smaller errors at each time.",
+     "One exact match does not outweigh larger errors elsewhere.",
+     "Whole numbers are not a measure of fit.",
+     "Larger predictions are better only where the model underestimates."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-validation-9",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "model-validation-s2",
+   "q": "The residuals of model $B$ are $0, -0.5, -0.1, -0.7$. What do the negative residuals say?",
+   "type": "single",
+   "options": [
+    "$B$ slightly underestimates the height at those weeks",
+    "$B$ slightly overestimates the height at those weeks",
+    "The plant shrank at those weeks",
+    "$B$ is decreasing at those weeks"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A negative residual means actual $<$ predicted, so the model predicts a little more than the real height.",
+    "options": [
+     "Underestimates give positive residuals.",
+     "Predicted more than actual.",
+     "The actual heights increase each week.",
+     "A residual compares a prediction with the data."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-validation-10",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "How is a residual defined in this course?",
+   "type": "single",
+   "options": [
+    "Predicted value minus actual value",
+    "Actual value divided by predicted value",
+    "Actual value minus predicted value",
+    "The difference between two predictions"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A residual is actual minus predicted. The error of a prediction can be stated as predicted minus actual, or as the absolute value of the difference.",
+    "options": [
+     "This is the opposite sign; it is the error of the prediction, not the residual.",
+     "A residual is a difference, not a ratio.",
+     "Positive when the model underestimates.",
+     "A residual compares a prediction with data."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-validation-11",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which features of a residual plot suggest that a model is appropriate for the data? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "The residuals are scattered above and below $0$ with no pattern",
+    "The residuals stay above $0$ across the inputs",
+    "The residuals form a curved pattern",
+    "The residuals grow steadily larger as the input increases"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "A good model leaves only small, patternless residuals. A curve or a steady trend in the residuals shows the model misses the shape of the data.",
+    "options": [
+     "No pattern: the model captures the shape.",
+     "Residuals of one sign mean the model underestimates throughout: a pattern.",
+     "A curve means the data bend away from the model.",
+     "A trend means the error grows in a predictable way."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-validation-12",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A model predicts a tide height of $3.2$ m at noon, and the measured height is $2.9$ m. What is the residual at noon?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-3/10",
+    "unit": "m",
+    "mistakes": [
+     {
+      "value": 0.3,
+      "why": "That is predicted minus actual. The residual is $2.9 - 3.2$."
+     },
+     {
+      "value": 6.1,
+      "why": "That adds the two heights; subtract them."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Residual $=$ actual $-$ predicted $= 2.9 - 3.2 = -0.3$ m. The model overestimates at noon."
+   }
+  },
+  {
+   "id": "pcalc-model-validation-13",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A model predicts $142$ visitors, and $150$ visitors come. What is the absolute error of the prediction?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 8,
+    "unit": "visitors",
+    "mistakes": [
+     {
+      "value": -8,
+      "why": "The absolute error is the size of the difference, so it is not negative."
+     },
+     {
+      "value": 292,
+      "why": "That adds the two values; subtract them."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The absolute error is $|\\text{predicted} - \\text{actual}| = |142 - 150| = 8$ visitors."
+   }
+  },
+  {
+   "id": "pcalc-model-validation-14",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "On $3 \\le t \\le 6$, every residual of a model is positive. Which statement is supported?",
+   "type": "single",
+   "options": [
+    "The model overestimates on $3 \\le t \\le 6$",
+    "The model is increasing over the interval $3 \\le t \\le 6$",
+    "The model underestimates on $3 \\le t \\le 6$",
+    "The model is a good fit on $3 \\le t \\le 6$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Positive residuals mean actual $>$ predicted throughout the interval: the model underestimates there.",
+    "options": [
+     "Overestimates give negative residuals.",
+     "Residual signs do not describe the model's direction.",
+     "Actual above predicted.",
+     "Residuals with one sign over an interval are a pattern, which suggests a poorer fit there."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-validation-15",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A linear model's residual plot is shaped like an upside-down U: negative, then positive, then negative. Which change to the model is most reasonable to try?",
+   "type": "single",
+   "options": [
+    "A linear model with a larger slope, so it rises faster",
+    "An exponential model with a base greater than $1$",
+    "The same linear model shifted up a few units",
+    "A concave-down model, such as a quadratic opening down"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Data above the line in the middle and below it at the ends bend downward: they are concave down. A concave-down model can follow that shape; an increasing exponential function is concave up.",
+    "options": [
+     "A steeper line still cannot bend.",
+     "This is concave up, the wrong way.",
+     "Shifting moves every residual the same amount and keeps the pattern.",
+     "Match the concavity the residuals reveal."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sine and Cosine Function Values — AP® Precalculus Notes</title>
+<meta name="description" content="The exam expects exact values of sine and cosine at the angles you meet most often, with no calculator.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/sine-cosine-values.html">
+<meta property="og:title" content="Sine and Cosine Function Values — AP® Precalculus Notes">
+<meta property="og:description" content="The exam expects exact values of sine and cosine at the angles you meet most often, with no calculator.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/sine-cosine-values.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/sine-cosine-values.html#reading",
+      "name": "Sine and Cosine Function Values",
+      "url": "https://levlprep.com/precalculus/notes/sine-cosine-values.html",
+      "description": "The exam expects exact values of sine and cosine at the angles you meet most often, with no calculator.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "sine and cosine function values ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Trigonometric and Polar Functions",
+          "item": "https://levlprep.com/precalculus/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Sine and Cosine Function Values: notes",
+          "item": "https://levlprep.com/precalculus/notes/sine-cosine-values.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="sine-cosine-values" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Trigonometric and Polar Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Sine and Cosine Function Values: notes</span></nav>
+<p class="issue">Unit 3 <i></i> Topic 3.3</p>
+<h1 class="deck bk-title" id="r3Title">Sine and Cosine <span>Function Values</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/sine-cosine-values.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="sine-cosine-values">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fsine-cosine-values.html&amp;title=Sine%20and%20Cosine%20Function%20Values%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/sine-cosine-values.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Exponential and Logarithmic Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Trigonometric and Polar Functions</b><small>15 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="periodic-phenomena"><a href="periodic-phenomena.html"><span class="bk-toc-n">3.1</span>Periodic Phenomena</a></li><li data-toc-t="sine-cosine-tangent"><a href="sine-cosine-tangent.html"><span class="bk-toc-n">3.2</span>Sine, Cosine, and Tangent</a></li><li class="current" data-toc-t="sine-cosine-values"><a href="#main" aria-current="page"><span class="bk-toc-n">3.3</span>Sine and Cosine Function Values</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-first-quadrant-three-triangles-of">The first quadrant: three triangles of hypotenuse 1</a><a href="#every-other-quadrant-reference-angles-and">Every other quadrant: reference angles and signs</a><a href="#circles-of-any-radius">Circles of any radius</a></div></li><li data-toc-t="sine-cosine-curves"><a href="sine-cosine-curves.html"><span class="bk-toc-n">3.4</span>Sine and Cosine Function Graphs</a></li><li data-toc-t="sinusoidal-functions"><a href="sinusoidal-functions.html"><span class="bk-toc-n">3.5</span>Sinusoidal Functions</a></li><li data-toc-t="sinusoidal-transformations"><a href="sinusoidal-transformations.html"><span class="bk-toc-n">3.6</span>Sinusoidal Function Transformations</a></li><li data-toc-t="sinusoidal-modeling"><a href="sinusoidal-modeling.html"><span class="bk-toc-n">3.7</span>Sinusoidal Function Context and Data Modeling</a></li><li data-toc-t="tangent-function"><a href="tangent-function.html"><span class="bk-toc-n">3.8</span>The Tangent Function</a></li><li data-toc-t="inverse-trig"><a href="inverse-trig.html"><span class="bk-toc-n">3.9</span>Inverse Trigonometric Functions</a></li><li data-toc-t="trig-equations"><a href="trig-equations.html"><span class="bk-toc-n">3.10</span>Trigonometric Equations and Inequalities</a></li><li data-toc-t="sec-csc-cot"><a href="sec-csc-cot.html"><span class="bk-toc-n">3.11</span>The Secant, Cosecant, and Cotangent Functions</a></li><li data-toc-t="trig-identities"><a href="trig-identities.html"><span class="bk-toc-n">3.12</span>Equivalent Representations of Trigonometric Functions</a></li><li data-toc-t="polar-coordinates"><a href="polar-coordinates.html"><span class="bk-toc-n">3.13</span>Trigonometry and Polar Coordinates</a></li><li data-toc-t="polar-curves"><a href="polar-curves.html"><span class="bk-toc-n">3.14</span>Polar Function Graphs</a></li><li data-toc-t="polar-rates"><a href="polar-rates.html"><span class="bk-toc-n">3.15</span>Rates of Change in Polar Functions</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Functions Involving Parameters, Vectors, and Matrices</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>The exam expects exact values of sine and cosine at the angles you meet most often, with no calculator. This page shows how to get each one in a few seconds from two triangles and the signs of the quadrants, and how to use them on circles of any size.</p>
+
+<h2 id="the-first-quadrant-three-triangles-of">The first quadrant: three triangles of hypotenuse 1</h2>
+<p>Put the angle <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{6}</annotation></semantics></math> (<math class="pcalc-m"><semantics><mrow><msup><mn>30</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">30^\circ</annotation></semantics></math>) on the <a class="gl" href="../notes/sine-cosine-tangent.html" data-c="unit-circle">unit circle</a> and drop a segment from the point to the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis. You get a <a class="gl" href="../notes/alg-circles.html" data-c="special-triangle">30-60-90 triangle</a> with <a class="gl" href="../notes/alg-right-triangle.html" data-c="hypotenuse">hypotenuse</a> 1. Its sides are <math class="pcalc-m"><semantics><mrow><mn>1</mn><mo>:</mo><msqrt><mn>3</mn></msqrt><mo>:</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1 : \sqrt{3} : 2</annotation></semantics></math> divided by 2: the height (across from <math class="pcalc-m"><semantics><mrow><msup><mn>30</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">30^\circ</annotation></semantics></math>) is <math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math> and the base is <math class="pcalc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{2}</annotation></semantics></math>. So the point is <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac><mo>,</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right)</annotation></semantics></math>.</p>
+<p>At <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{3}</annotation></semantics></math> (<math class="pcalc-m"><semantics><mrow><msup><mn>60</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">60^\circ</annotation></semantics></math>) the same triangle stands on its other leg, and the coordinates swap: <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right)</annotation></semantics></math>. At <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{4}</annotation></semantics></math> the 45-45-90 triangle with hypotenuse 1 has equal legs <math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>=</mo><mfrac><msqrt><mn>2</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}</annotation></semantics></math>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: θ, 0, π/6, π/4"><table class="compare">
+<thead><tr><th scope="col"><math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></th><th scope="col"><math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></th><th scope="col"><math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{6}</annotation></semantics></math></th><th scope="col"><math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{4}</annotation></semantics></math></th><th scope="col"><math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{3}</annotation></semantics></math></th><th scope="col"><math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{2}</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><th scope="row"><math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\cos\theta</annotation></semantics></math></th><td><math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><msqrt><mn>2</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{2}}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td></tr>
+<tr><th scope="row"><math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\sin\theta</annotation></semantics></math></th><td><math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><msqrt><mn>2</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{2}}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>A quick check: the ray at <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{6}</annotation></semantics></math> is close to the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis, so the point is far to the right and not very high. The bigger value, <math class="pcalc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac><mo>≈</mo><mn>0.87</mn></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{2} \approx 0.87</annotation></semantics></math>, is the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-coordinate.</p>
+
+<h2 id="every-other-quadrant-reference-angles-and">Every other quadrant: reference angles and signs</h2>
+<p>These are the <b><span class="gl" tabindex="0" data-c="special-angle">special angles</span></b>: every multiple of <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{6}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{4}</annotation></semantics></math>. Each one makes the same triangle with the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis as one of the three first-quadrant angles. The acute angle between the <a class="gl" href="../notes/sine-cosine-tangent.html" data-c="standard-position">terminal ray</a> and the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis is the <b>reference angle</b>. The point has the same coordinates as at the reference angle, up to sign, and the quadrant gives the signs.</p>
+<figure id="fig-special"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="sine-cosine-values-special"><img src="../figures/sine-cosine-values-special.svg" alt="A circle of radius 1 centered at the origin with a dot at every multiple of pi/6 and pi/4 from 0 to 2 pi, each labeled with its angle in radians. The first-quadrant points are labeled with their coordinates: at pi/6, (square root of 3 over 2, 1/2); at pi/4, (square root of 2 over 2, square root of 2 over 2); at pi/3, (1/2, square root of 3 over 2). A table to the right lists cosine and sine at 0, pi/6, pi/4, pi/3 and pi/2: cosine 1, root 3 over 2, root 2 over 2, 1/2, 0 and sine 0, 1/2, root 2 over 2, root 3 over 2, 1. The other quadrants repeat these values with signs set by the quadrant." width="780" height="520" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> All sixteen special angles and the first-quadrant values they repeat. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Quadrant, Angles between, Reference angle of θ, Signs of (cos θ, sin θ)"><table class="compare">
+<thead><tr><th scope="col">Quadrant</th><th scope="col">Angles between</th><th scope="col">Reference angle of <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></th><th scope="col">Signs of <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>,</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\cos\theta, \sin\theta)</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td>I</td><td><math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">+</mo><mo>,</mo><mo form="prefix" lspace="0" rspace="0">+</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(+, +)</annotation></semantics></math></td></tr>
+<tr><td>II</td><td><math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{2}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mi>π</mi><mo>−</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\pi - \theta</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mo>,</mo><mo form="prefix" lspace="0" rspace="0">+</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-, +)</annotation></semantics></math></td></tr>
+<tr><td>III</td><td><math class="pcalc-m"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{3\pi}{2}</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mi>θ</mi><mo>−</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">\theta - \pi</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-, -)</annotation></semantics></math></td></tr>
+<tr><td>IV</td><td><math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{3\pi}{2}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>π</mi><mo>−</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">2\pi - \theta</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">+</mo><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(+, -)</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<div class="worked">
+<p><b>Worked example 1.</b> Find <math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mfrac><mrow><mn>4</mn><mi>π</mi></mrow><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\cos\frac{4\pi}{3}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mfrac><mrow><mn>4</mn><mi>π</mi></mrow><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\sin\frac{4\pi}{3}</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>4</mn><mi>π</mi></mrow><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{4\pi}{3}</annotation></semantics></math> is between <math class="pcalc-m"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{3\pi}{2}</annotation></semantics></math>: Quadrant III. Its reference angle is <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>4</mn><mi>π</mi></mrow><mn>3</mn></mfrac><mo>−</mo><mi>π</mi><mo>=</mo><mfrac><mi>π</mi><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{4\pi}{3} - \pi = \frac{\pi}{3}</annotation></semantics></math>, where the point is <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right)</annotation></semantics></math>.</p>
+<p>In Quadrant III both coordinates are negative: <math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mfrac><mrow><mn>4</mn><mi>π</mi></mrow><mn>3</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\cos\frac{4\pi}{3} = -\frac{1}{2}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mfrac><mrow><mn>4</mn><mi>π</mi></mrow><mn>3</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\sin\frac{4\pi}{3} = -\frac{\sqrt{3}}{2}</annotation></semantics></math>.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Find <math class="pcalc-m"><semantics><mrow><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\tan\frac{3\pi}{4}</annotation></semantics></math>.</p>
+<p>Quadrant II, reference angle <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{4}</annotation></semantics></math>: the point is <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><msqrt><mn>2</mn></msqrt><mn>2</mn></mfrac><mo>,</mo><mfrac><msqrt><mn>2</mn></msqrt><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\right)</annotation></semantics></math>. Then <math class="pcalc-m"><semantics><mrow><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\tan\frac{3\pi}{4}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><msqrt><mn>2</mn></msqrt><mo>/</mo><mn>2</mn></mrow><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><msqrt><mn>2</mn></msqrt><mo>/</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{\sqrt{2}/2}{-\sqrt{2}/2}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= -1</annotation></semantics></math>.</p>
+</div>
+<p>Angles outside <math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>2</mn><mi>π</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[0, 2\pi)</annotation></semantics></math> first move by whole turns: <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>11</mn><mi>π</mi></mrow><mn>4</mn></mfrac><mo>=</mo><mn>2</mn><mi>π</mi><mo>+</mo><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{11\pi}{4} = 2\pi + \frac{3\pi}{4}</annotation></semantics></math> has the same terminal ray as <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{3\pi}{4}</annotation></semantics></math>, so the same values.</p>
+
+<h2 id="circles-of-any-radius">Circles of any radius</h2>
+<p>On a circle of radius <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> centered at the origin, the point at angle <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> is the unit-circle point scaled by <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>:</p>
+<p style="text-align:center"><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x, y)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mi>r</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>,</mo><mi>r</mi><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= (r\cos\theta, r\sin\theta)</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A robot arm 2 meters long pivots at the origin. Its tip starts on the positive <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis and turns counterclockwise through <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>7</mn><mi>π</mi></mrow><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{7\pi}{6}</annotation></semantics></math>. Where is the tip?</p>
+<p>Quadrant III, reference angle <math class="pcalc-m"><semantics><mrow><mfrac><mi>π</mi><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{6}</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mfrac><mrow><mn>7</mn><mi>π</mi></mrow><mn>6</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\cos\frac{7\pi}{6} = -\frac{\sqrt{3}}{2}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mfrac><mrow><mn>7</mn><mi>π</mi></mrow><mn>6</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\sin\frac{7\pi}{6} = -\frac{1}{2}</annotation></semantics></math>.</p>
+<p>Scale by 2: the tip is at <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>2</mn><mo>⋅</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>,</mo><mn>2</mn><mo>⋅</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(2 \cdot \left(-\frac{\sqrt{3}}{2}\right), 2 \cdot \left(-\frac{1}{2}\right)\right)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msqrt><mn>3</mn></msqrt><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= (-\sqrt{3}, -1)</annotation></semantics></math>.</p>
+</div>
+<p>These exact values are the raw material for the graphs in the next topic and for every no-calculator model in the rest of the unit, so practice until they come without thinking.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:sine-cosine-values">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="sine-cosine-tangent.html"><span>&larr; Previous</span><b>Sine, Cosine, and Tangent</b></a><a class="tb-chapter-link next" href="sine-cosine-curves.html"><span>Next &rarr;</span><b>Sine and Cosine Function Graphs</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/sine-cosine-values.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:sine-cosine-values">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

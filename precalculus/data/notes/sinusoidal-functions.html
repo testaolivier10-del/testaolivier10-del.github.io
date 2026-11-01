@@ -1,0 +1,49 @@
+<p>The graphs of sine and cosine are only the beginning. Stretch them taller, squeeze them sideways, lift them up, slide them along, and you get a whole family of waves that model tides, temperatures, sound and anything else that rises and falls smoothly and evenly. This page names the family and the four numbers that describe each member.</p>
+
+<h2>What makes a function sinusoidal</h2>
+<p>A <b>sinusoidal function</b> (a <b>sinusoid</b>) is any function whose graph is the graph of $y = \sin\theta$ after vertical and horizontal dilations and translations, the transformations you met in Unit 1. The shape stays the same smooth wave: equal highest points, equal lowest points, evenly spaced, with the same rounded turns. The cosine graph is a sinusoid too: it is the sine graph translated $\frac{\pi}{2}$ to the left.</p>
+<p>Not every periodic function is sinusoidal. The tank whose depth climbs in straight lines and holds steady at the top is periodic but not sinusoidal: its graph has corners and flat stretches.</p>
+
+<h2>Midline and amplitude</h2>
+<p>A sinusoid oscillates around a horizontal line, its <b>midline</b>, halfway between its greatest and least values:</p>
+<p style="text-align:center">midline: $y = \frac{\max + \min}{2}$.</p>
+<p>The <b>amplitude</b> is how far the wave reaches from the midline, up or down. It is half the distance from the least value to the greatest:</p>
+<p style="text-align:center">amplitude $= \frac{\max - \min}{2}$.</p>
+<figure id="fig-parts" data-fig="sinusoidal-functions-parts"><figcaption>Midline, amplitude and period of $y = 3\sin\left(\frac{\pi t}{4}\right) + 5$.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> The water depth at a pier goes between 2.2 meters and 3.8 meters in a smooth wave. Find the midline and the amplitude.</p>
+<p>Midline: $y = \frac{3.8 + 2.2}{2} = 3$. Amplitude: $\frac{3.8 - 2.2}{2} = 0.8$ meters.</p>
+<p>Check: $3 + 0.8 = 3.8$ and $3 - 0.8 = 2.2$. Midline plus or minus the amplitude gives the greatest and least values.</p>
+</div>
+<p>For a formula like $y = a\sin\theta + d$, the factor $a$ stretches the heights of $\sin\theta$ (between $-1$ and $1$) to between $-a$ and $a$, and $d$ lifts everything by $d$. So the amplitude is $|a|$ and the midline is $y = d$. For example, $y = 4\sin\theta + 1$ goes from $-3$ to $5$, with amplitude 4 and midline $y = 1$.</p>
+
+<h2>Period and frequency</h2>
+<p>The <b>period</b> is the length of one cycle along the input axis, measured between any two matching points: highest to highest, or midline crossing going up to the next one going up. The <b>frequency</b> is how many cycles fit in one unit of input:</p>
+<p style="text-align:center">frequency $= \frac{1}{\text{period}}$, period $= \frac{1}{\text{frequency}}$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A guitar string vibrates 220 times per second. What is the period of its motion?</p>
+<p>The frequency is 220 cycles per second, so the period is $\frac{1}{220}$ second, about 0.0045 second.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> A table gives a buoy's height at $t = 0, 2, 4, 6, 8$ seconds: $3, 3.8, 3, 2.2, 3$ meters, and the pattern repeats. Find the period and frequency, and the height at $t = 18$.</p>
+<p>The heights return to the same value going the same way after 8 seconds (3 m and rising at $t = 0$ and at $t = 8$). Note $t = 4$ also gives 3 m, but there the buoy is falling, so that is only half a cycle. Period 8 seconds; frequency $\frac{1}{8}$ cycle per second.</p>
+<p>$18 = 2 \cdot 8 + 2$, so the height at $t = 18$ equals the height at $t = 2$: 3.8 m.</p>
+</div>
+<p>Period and frequency are easy to mix up in context. Ask which one is a time (the period, in seconds per cycle) and which one is a count (the frequency, in cycles per second).</p>
+
+<h2>Sine is odd, cosine is even</h2>
+<p>The point at angle $-\theta$ is the reflection across the $x$-axis of the point at $\theta$: same $x$-coordinate, opposite $y$-coordinate. So</p>
+<p style="text-align:center">$\sin(-\theta) = -\sin\theta$ and $\cos(-\theta) = \cos\theta$.</p>
+<p>Sine is an odd function: its graph is symmetric about the origin. Cosine is an even function: its graph is symmetric about the vertical axis. For example, $\sin\left(-\frac{\pi}{6}\right) = -\frac{1}{2}$ while $\cos\left(-\frac{\pi}{3}\right) = \frac{1}{2}$.</p>
+
+<h2>Summary of the four features</h2>
+<table class="compare">
+<thead><tr><th scope="col">Feature</th><th scope="col">How to find it</th><th scope="col">For $y = \sin\theta$</th></tr></thead>
+<tbody>
+<tr><td>Midline</td><td>$y = \frac{\max + \min}{2}$</td><td>$y = 0$</td></tr>
+<tr><td>Amplitude</td><td>$\frac{\max - \min}{2}$</td><td>$1$</td></tr>
+<tr><td>Period</td><td>length of one full cycle</td><td>$2\pi$</td></tr>
+<tr><td>Frequency</td><td>$\frac{1}{\text{period}}$</td><td>$\frac{1}{2\pi}$</td></tr>
+</tbody>
+</table>
+<p>The next topic shows how each number appears in a formula, $f(\theta) = a\sin(b(\theta + c)) + d$, and how to build the formula from a graph.</p>

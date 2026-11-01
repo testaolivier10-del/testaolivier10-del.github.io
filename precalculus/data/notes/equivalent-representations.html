@@ -1,0 +1,50 @@
+<p>The same function can be written in several ways that look nothing alike. $\frac{x^2 - x - 2}{x - 3}$, $\frac{(x - 2)(x + 1)}{x - 3}$ and $x + 2 + \frac{4}{x - 3}$ all give the same output for every input except $x = 3$. They are <b>equivalent forms</b>. You choose the form that answers the question in front of you, the way you would pick the right map for a trip.</p>
+
+<h2>Why rewrite at all</h2>
+<p>Each form puts different features in plain view. The skill on the exam is knowing which form to reach for, and getting to it without an algebra slip.</p>
+<table class="compare">
+<thead><tr><th scope="col">Form</th><th scope="col">Example</th><th scope="col">What you can read straight off it</th></tr></thead>
+<tbody>
+<tr><td>Standard form</td><td>$2x^3 - 4x^2 - 6x$</td><td>The leading term $2x^3$, so the end behavior; the $y$-intercept (the constant term)</td></tr>
+<tr><td>Factored form</td><td>$2x(x - 3)(x + 1)$</td><td>The zeros $0$, $3$ and $-1$ and their multiplicities; for a rational function, holes, vertical asymptotes and the domain</td></tr>
+<tr><td>Quotient plus remainder</td><td>$x + 2 + \frac{4}{x - 3}$</td><td>The slant or horizontal asymptote (the quotient) and which side of it the graph is on (the sign of the remainder term)</td></tr>
+</tbody>
+</table>
+
+<h2>Factored form: zeros, holes and asymptotes</h2>
+<p>Once a rational function is factored top and bottom, you can read almost everything. A factor on top gives a zero, as long as that input is in the domain. A factor on the bottom gives a vertical asymptote. A factor that appears on both and cancels gives a hole instead.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Describe $h(x) = \frac{x^2 + 2x - 3}{x^2 + x - 6}$.</p>
+<p>Factor the top: two numbers with product $-3$ and sum $2$ are $3$ and $-1$, so $x^2 + 2x - 3 = (x - 1)(x + 3)$.</p>
+<p>Factor the bottom: product $-6$, sum $1$ gives $3$ and $-2$, so $x^2 + x - 6 = (x + 3)(x - 2)$.</p>
+<p>So $h(x) = \frac{(x - 1)(x + 3)}{(x + 3)(x - 2)}$. The domain is every real number except $-3$ and $2$.</p>
+<p>The factor $x + 3$ cancels, so there is a <b>hole</b> at $x = -3$. What is left, $\frac{x - 1}{x - 2}$, has a zero at $x = 1$ and a vertical asymptote at $x = 2$.</p>
+</div>
+
+<h2>Polynomial long division</h2>
+<p>Dividing polynomials works like dividing numbers. Dividing $17$ by $5$ gives $17 = 5 \cdot 3 + 2$: divisor times quotient plus remainder. For polynomials it is the same sentence, and the remainder always has a lower degree than the divisor:</p>
+<p>$$p(x) = d(x) \cdot q(x) + r(x), \text{ so } \frac{p(x)}{d(x)} = q(x) + \frac{r(x)}{d(x)}$$</p>
+<p>The steps repeat: divide the leading terms, multiply the divisor by that result, subtract, and bring down the next term.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Write $r(x) = \frac{x^2 - x - 2}{x - 3}$ as a quotient plus a remainder.</p>
+<p>Divide the leading terms: $x^2 \div x = x$. Multiply: $x(x - 3) = x^2 - 3x$. Subtract: $(x^2 - x) - (x^2 - 3x) = 2x$. Bring down $-2$ to get $2x - 2$.</p>
+<p>Divide again: $2x \div x = 2$. Multiply: $2(x - 3) = 2x - 6$. Subtract: $(2x - 2) - (2x - 6) = 4$. The remainder $4$ has degree $0$, lower than the divisor, so you stop.</p>
+<p>Result: $x^2 - x - 2 = (x - 3)(x + 2) + 4$, so $r(x) = x + 2 + \frac{4}{x - 3}$.</p>
+<p>Check with one input: at $x = 0$, $\frac{-2}{-3} = \frac{2}{3}$ and $0 + 2 + \frac{4}{-3} = \frac{2}{3}$. They match.</p>
+</div>
+<p>When the divisor is $x - c$, synthetic division is a shortcut: write the coefficients, use $c$ (not $-c$), and put a $0$ in for any missing power. A useful fact falls out: the remainder equals $p(c)$, because the divisor is $0$ at $x = c$.</p>
+<figure id="fig-forms" data-fig="equivalent-representations-forms"><figcaption>The three forms of $r$ describe one graph: zeros at $-1$ and $2$, a vertical asymptote at $x = 3$, and the slant asymptote $y = x + 2$.</figcaption></figure>
+
+<h2>Slant asymptotes from the quotient</h2>
+<p>Look at $r(x) = x + 2 + \frac{4}{x - 3}$ for a very large input, like $x = 1003$. The remainder term is $\frac{4}{1000}$, nearly $0$, so $r(x)$ is nearly $x + 2$. That is why the line $y = x + 2$ is a <b>slant asymptote</b> (<a class="figref" href="#fig-forms">see the figure</a>). It appears when the numerator's degree is one more than the denominator's.</p>
+<p>The remainder term also tells you which side of the line the graph is on. For $x > 3$, $\frac{4}{x - 3}$ is positive, so the graph is above the line; for $x < 3$ it is negative, so the graph is below.</p>
+
+<h2>Expanding powers with Pascal's triangle</h2>
+<p>Multiplying out $(x + 2)^4$ by hand takes four rounds of distributing. Pascal's triangle does it at once. Each row starts and ends with $1$, and every other entry is the sum of the two entries above it. Row $n$ gives the coefficients of $(a + b)^n$, and the powers of $a$ count down while the powers of $b$ count up.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Expand $(x + 2)^4$.</p>
+<p>Row $4$ is $1, 4, 6, 4, 1$. Pair each with $x^{4 - k}$ and $2^k$:</p>
+<p>$$1x^4 + 4x^3(2) + 6x^2(2)^2 + 4x(2)^3 + 1(2)^4 = x^4 + 8x^3 + 24x^2 + 32x + 16$$</p>
+<p>The most common slip is forgetting to raise the $2$ to its power. The $x^2$ term is $6 \cdot 4 = 24$, not $6 \cdot 2$.</p>
+</div>
+<p>If the second term is negative, as in $(x - 1)^5$, the powers of $-1$ alternate in sign, so the signs of the terms alternate too.</p>

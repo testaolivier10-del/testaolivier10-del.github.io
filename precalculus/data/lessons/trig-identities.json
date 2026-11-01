@@ -1,0 +1,71 @@
+{
+ "topic": "trig-identities",
+ "hook": "Two speakers play the same note, one a little behind the other. Your ear hears a single wave, louder or softer depending on the delay. The math behind that is a trigonometric identity: a sum of two sine waves can be rewritten as one. Identities let you trade a messy expression for a simpler one with the same graph.",
+ "prereq": [
+  {
+   "q": "What is $\\sin^2\\frac{\\pi}{6} + \\cos^2\\frac{\\pi}{6}$?",
+   "options": [
+    "$1$",
+    "$\\frac{1}{2}$",
+    "$\\frac{\\sqrt{3} + 1}{2}$",
+    "$2$"
+   ],
+   "correct": 0,
+   "why": "$\\left(\\frac{1}{2}\\right)^2 + \\left(\\frac{\\sqrt{3}}{2}\\right)^2 = \\frac{1}{4} + \\frac{3}{4} = 1$: the point is on the unit circle.",
+   "review": "sine-cosine-values"
+  },
+  {
+   "q": "Which equals $\\csc x$?",
+   "options": [
+    "$\\frac{1}{\\sin x}$",
+    "$\\frac{1}{\\cos x}$",
+    "$\\frac{\\cos x}{\\sin x}$",
+    "$\\sin^{-1} x$"
+   ],
+   "correct": 0,
+   "why": "Cosecant is the reciprocal of sine.",
+   "review": "sec-csc-cot"
+  }
+ ],
+ "figure": {
+  "figure": "trig-identities-double",
+  "caption": "At every $x$, the height of $\\cos(2x)$ equals $\\cos^2 x$ minus $\\sin^2 x$: the double-angle identity as a picture."
+ },
+ "chain": [
+  {
+   "cause": "A point $(\\cos x, \\sin x)$ is on the unit circle",
+   "effect": "$\\sin^2 x + \\cos^2 x = 1$, the Pythagorean identity"
+  },
+  {
+   "cause": "Divide it by $\\cos^2 x$ or by $\\sin^2 x$",
+   "effect": "$\\tan^2 x + 1 = \\sec^2 x$ and $1 + \\cot^2 x = \\csc^2 x$"
+  },
+  {
+   "cause": "Add two angles",
+   "effect": "$\\sin(a + b) = \\sin a\\cos b + \\cos a\\sin b$ and $\\cos(a + b) = \\cos a\\cos b - \\sin a\\sin b$"
+  },
+  {
+   "cause": "Set $b = a$ in the sum identities",
+   "effect": "$\\sin(2a) = 2\\sin a\\cos a$ and $\\cos(2a) = \\cos^2 a - \\sin^2 a$"
+  }
+ ],
+ "ideas": [
+  "An identity is true for every input where both sides are defined; you use it to swap one form for another.",
+  "$\\sin(a + b)$ is not $\\sin a + \\sin b$; use the sum identity.",
+  "$\\cos(2x)$ has three forms: $\\cos^2 x - \\sin^2 x$, $2\\cos^2 x - 1$ and $1 - 2\\sin^2 x$. Pick the one that matches the rest of the expression.",
+  "To rewrite as a single trigonometric function, write everything in sines and cosines, simplify, and stop at one function."
+ ],
+ "misconception": {
+  "wrong": "$\\sin(2x) = 2\\sin x$, because the $2$ can come out front.",
+  "right": "The $2$ is part of the angle. $\\sin(2x) = 2\\sin x\\cos x$; for example $\\sin\\pi = 0$ while $2\\sin\\frac{\\pi}{2} = 2$."
+ },
+ "check": [
+  "pcalc-trig-identities-1",
+  "pcalc-trig-identities-3",
+  "pcalc-trig-identities-4",
+  "pcalc-trig-identities-6",
+  "pcalc-trig-identities-10",
+  "pcalc-trig-identities-14"
+ ],
+ "summary": "The Pythagorean identity $\\sin^2 x + \\cos^2 x = 1$ and its forms with $\\tan$, $\\sec$, $\\cot$ and $\\csc$; the sum and difference identities for sine and cosine; and the double-angle identities $\\sin(2x) = 2\\sin x\\cos x$ and $\\cos(2x) = \\cos^2 x - \\sin^2 x = 2\\cos^2 x - 1 = 1 - 2\\sin^2 x$. Use them to find exact values, to rewrite expressions as one function, and to solve equations."
+}

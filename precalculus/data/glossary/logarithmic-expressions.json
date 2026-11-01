@@ -1,0 +1,8 @@
+{
+ "logarithm": {
+  "def": "The exponent a base needs to produce a number: $\\log_b c = a$ means $b^a = c$ (for $b > 0$, $b \\ne 1$, $c > 0$). The common logarithm $\\log c$ has base $10$; the natural logarithm $\\ln c$ has base $e$."
+ },
+ "log-scale": {
+  "def": "A scale on which numbers are placed by their logarithms, so equal distances stand for equal factors (often factors of $10$). It shows values of very different sizes on one axis."
+ }
+}

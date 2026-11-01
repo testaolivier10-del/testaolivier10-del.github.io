@@ -1,0 +1,40 @@
+<p>For an ordinary function you know how to measure change: the average rate of change on an interval, the slope of the secant line. A parametric function has two coordinates changing at once, so there are three rates worth asking about: how fast $x$ changes, how fast $y$ changes, and how steep the path is.</p>
+
+<h2>Two average rates, one for each coordinate</h2>
+<p>Take a parametric function $(x(t), y(t))$ and an interval $[t_1, t_2]$. Each coordinate is a function of $t$, so each has its own average rate of change:</p>
+$$\text{rate of } x = \frac{x(t_2) - x(t_1)}{t_2 - t_1}, \qquad \text{rate of } y = \frac{y(t_2) - y(t_1)}{t_2 - t_1}.$$
+<p>These are the slopes of secant lines on the graphs of $x(t)$ and $y(t)$ against $t$. If $x$ is in meters and $t$ in seconds, the rate of $x$ is in meters per second. A positive rate of $x$ means the point ended up farther right; a negative rate of $y$ means it ended up lower.</p>
+
+<h2>The slope of the path</h2>
+<p>To measure how steep the path itself is between the two points, compare the change in $y$ with the change in $x$:</p>
+$$\text{slope of the segment} = \frac{y(t_2) - y(t_1)}{x(t_2) - x(t_1)}.$$
+<p>This is the average rate of change of $y$ with respect to $x$ on that piece of the path. Dividing the top and bottom by $t_2 - t_1$ shows that it is also the rate of $y$ divided by the rate of $x$.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> A skier's horizontal distance $x(t)$ and height $y(t)$, in meters, are logged every 2 seconds.</p>
+<table class="compare">
+<thead><tr><th scope="col">$t$ (seconds)</th><th scope="col">$0$</th><th scope="col">$2$</th><th scope="col">$4$</th><th scope="col">$6$</th></tr></thead>
+<tbody>
+<tr><th scope="row">$x(t)$ (meters)</th><td>$0$</td><td>$6$</td><td>$16$</td><td>$30$</td></tr>
+<tr><th scope="row">$y(t)$ (meters)</th><td>$50$</td><td>$46$</td><td>$38$</td><td>$26$</td></tr>
+</tbody>
+</table>
+<p>On $[2, 6]$: the average rate of change of $x$ is $\frac{30 - 6}{6 - 2} = 6$ meters per second, and of $y$ is $\frac{26 - 46}{6 - 2} = -5$ meters per second.</p>
+<p>The slope of the segment from $(6, 46)$ to $(30, 26)$ is $\frac{26 - 46}{30 - 6} = \frac{-20}{24} = -\frac{5}{6}$. Check: $\frac{-5}{6}$, the rate of $y$ over the rate of $x$. On average the skier drops $5$ meters for every $6$ meters across.</p>
+</div>
+
+<h2>Reading the sign</h2>
+<table class="compare">
+<thead><tr><th scope="col">Change in $x$</th><th scope="col">Change in $y$</th><th scope="col">Slope of the segment</th></tr></thead>
+<tbody>
+<tr><td>positive (right)</td><td>positive (up)</td><td>positive</td></tr>
+<tr><td>negative (left)</td><td>positive (up)</td><td>negative</td></tr>
+<tr><td>nonzero</td><td>$0$</td><td>$0$: a horizontal segment</td></tr>
+<tr><td>$0$</td><td>nonzero</td><td>undefined: a vertical segment</td></tr>
+</tbody>
+</table>
+<p>A slope of $0$ does not mean the point stood still. On $(t^2 + 1, 4t - t^2)$ from $t = 1$ to $t = 3$, the point goes from $(2, 3)$ to $(10, 3)$: the segment is horizontal, yet the point moved $8$ units right and rose and fell along the way.</p>
+
+<h2>How the rates themselves change</h2>
+<p>Over equal intervals of $t$, compare successive average rates. In the skier's log the rates of $x$ on $[0, 2]$, $[2, 4]$, $[4, 6]$ are $3$, $5$ and $7$ meters per second: they increase, so the rate of change of $x$ is increasing, and the skier covers more horizontal ground in each 2 seconds. The segment slopes $-\frac{2}{3}$, $-\frac{4}{5}$, $-\frac{6}{7}$ decrease, so the path gets steeper downhill from one stretch to the next.</p>
+<p>Shorter intervals give a closer picture. The slope of a segment over a small interval of $t$ estimates how steep the path is near those points, and the rates of $x$ and $y$ over a small interval estimate how fast each coordinate is changing there.</p>

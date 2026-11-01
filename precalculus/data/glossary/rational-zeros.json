@@ -1,0 +1,5 @@
+{
+ "rational-inequality": {
+  "def": "An inequality such as $\\frac{p(x)}{q(x)} \\ge 0$. Solve it with a sign chart: split the number line at the zeros of the numerator and the denominator, test one input in each interval, include zeros only for $\\le$ or $\\ge$, and never include an excluded input."
+ }
+}

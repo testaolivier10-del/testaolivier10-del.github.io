@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 270" width="540" height="270" role="img" aria-labelledby="t d">
+<title id="t">A two-station bike-share model</title>
+<desc id="d">Two circles, Station A and Station B. A loop on A is labeled 0.8 and an arrow from A to B is labeled 0.2; an arrow from B to A is labeled 0.3 and a loop on B is labeled 0.7. Each day a bike at A stays with chance 0.8 or moves to B with chance 0.2, and a bike at B moves to A with chance 0.3 or stays with chance 0.7.</desc>
+<rect width="540" height="270" fill="#fff"/>
+<circle cx="140" cy="120" r="46" fill="#11592F" fill-opacity="0.12" stroke="#11592F" stroke-width="2.2"/>
+<text x="140" y="126" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="bold" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >Station A</tspan></text>
+<circle cx="400" cy="120" r="46" fill="#0072B2" fill-opacity="0.12" stroke="#0072B2" stroke-width="2.2"/>
+<text x="400" y="126" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="bold" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >Station B</tspan></text>
+<path d="M180,98 Q270,38 356.4,95.648" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<path d="M360,98 L347.8,96.47 L353.9,87.32 Z" fill="#1F2A28"/>
+<text x="270" y="52" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0.2</tspan></text>
+<path d="M360,142 Q270,202 183.6,144.352" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<path d="M180,142 L192.2,143.53 L186.1,152.68 Z" fill="#1F2A28"/>
+<text x="270" y="196" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0.3</tspan></text>
+<path d="M118,80 C90,10 190,10 160,78" fill="none" stroke="#11592F" stroke-width="2"/>
+<path d="M160,78 L162.2,65.9 L171,72.5 Z" fill="#11592F"/>
+<text x="140" y="28" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#11592F" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0.8</tspan></text>
+<path d="M378,80 C350,10 450,10 420,78" fill="none" stroke="#0072B2" stroke-width="2"/>
+<path d="M420,78 L422.2,65.9 L431,72.5 Z" fill="#0072B2"/>
+<text x="400" y="28" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#0072B2" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0.7</tspan></text>
+<text x="270" y="238" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >Each day, a bike at A stays with chance 0.8 and moves to B with chance 0.2;</tspan></text>
+<text x="270" y="256" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >a bike at B moves to A with chance 0.3 and stays with chance 0.7.</tspan></text>
+</svg>

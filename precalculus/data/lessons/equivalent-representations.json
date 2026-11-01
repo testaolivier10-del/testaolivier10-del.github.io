@@ -1,0 +1,71 @@
+{
+ "topic": "equivalent-representations",
+ "hook": "A bakery prices custom cakes with a formula that is a quotient of two polynomials. Written one way, it shows where the price is undefined; rewritten by division, it shows the price per extra tier for very large orders. Same function, different questions answered.",
+ "prereq": [
+  {
+   "q": "Factor $x^2 - x - 6$.",
+   "options": [
+    "$(x - 3)(x + 2)$",
+    "$(x + 3)(x - 2)$",
+    "$(x - 6)(x + 1)$",
+    "$(x - 3)(x - 2)$"
+   ],
+   "correct": 0,
+   "why": "Two numbers with product $-6$ and sum $-1$: $-3$ and $2$.",
+   "review": "alg-polynomial-algebra"
+  },
+  {
+   "q": "Where does $f(x) = \\frac{x - 1}{(x - 1)(x + 4)}$ have a hole?",
+   "options": [
+    "$x = 1$",
+    "$x = -4$",
+    "$x = -1$",
+    "Nowhere"
+   ],
+   "correct": 0,
+   "why": "The factor $x - 1$ cancels, so the graph has a hole at $x = 1$; $x = -4$ is a vertical asymptote.",
+   "review": "rational-holes"
+  }
+ ],
+ "figure": {
+  "figure": "equivalent-representations-forms",
+  "caption": "One function, three forms: $r(x) = \\frac{x^2 - x - 2}{x - 3} = \\frac{(x - 2)(x + 1)}{x - 3} = x + 2 + \\frac{4}{x - 3}$. Factored form gives the zeros and the vertical asymptote; the divided form gives the slant asymptote $y = x + 2$."
+ },
+ "chain": [
+  {
+   "cause": "Factor the numerator and the denominator",
+   "effect": "read zeros, holes, vertical asymptotes and the domain"
+  },
+  {
+   "cause": "Multiply out to standard form",
+   "effect": "read the leading term and so the end behavior"
+  },
+  {
+   "cause": "Divide the numerator by the denominator",
+   "effect": "get quotient $+$ remainder over divisor, and the quotient is the slant or horizontal asymptote"
+  },
+  {
+   "cause": "Use a row of Pascal's triangle",
+   "effect": "expand $(a + b)^n$ without multiplying it out"
+  }
+ ],
+ "ideas": [
+  "Equivalent forms give the same output for every input in the domain; each form makes different features easy to read.",
+  "Polynomial long division writes dividend $=$ divisor $\\cdot$ quotient $+$ remainder, so $\\frac{p(x)}{d(x)} = q(x) + \\frac{r(x)}{d(x)}$.",
+  "When the quotient is linear, the line $y = q(x)$ is a slant asymptote: the remainder term shrinks toward $0$ for large inputs.",
+  "Row $n$ of Pascal's triangle gives the coefficients of $(a + b)^n$; each entry is the sum of the two above it."
+ ],
+ "misconception": {
+  "wrong": "The remainder from dividing $p(x)$ by $x - 3$ can be ignored, so $\\frac{p(x)}{x - 3}$ equals the quotient.",
+  "right": "The remainder stays as $\\frac{\\text{remainder}}{x - 3}$. It is small only for large inputs, which is why the quotient is an asymptote and not the function itself."
+ },
+ "check": [
+  "pcalc-equivalent-representations-1",
+  "pcalc-equivalent-representations-2",
+  "pcalc-equivalent-representations-3",
+  "pcalc-equivalent-representations-9",
+  "pcalc-equivalent-representations-12",
+  "pcalc-equivalent-representations-6"
+ ],
+ "summary": "Factored form shows zeros, holes, vertical asymptotes and the domain; standard form shows end behavior; division writes a rational function as quotient plus remainder over divisor, and a linear quotient is the slant asymptote. Pascal's triangle expands $(a + b)^n$."
+}

@@ -1,0 +1,8 @@
+{
+ "interval-notation": {
+  "def": "A way to write a stretch of the number line by its ends: a bracket for an included end, a parenthesis for an excluded end or for $\\pm\\infty$. $[-1, 4)$ means $-1 \\le x < 4$. A closed interval includes both ends; an open interval includes neither."
+ },
+ "inequality": {
+  "def": "A statement that one quantity is less than (or greater than) another, such as $3 - 2x > 7$. A linear inequality, with the variable to the first power, is solved like an equation, but the sign flips when you multiply or divide both sides by a negative number."
+ }
+}

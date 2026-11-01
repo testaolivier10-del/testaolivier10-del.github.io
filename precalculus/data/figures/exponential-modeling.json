@@ -1,0 +1,12 @@
+{
+ "exponential-modeling-phone": {
+  "file": "figures/exponential-modeling-phone.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A phone's value V in dollars against years t: the points (0, 800) and (2, 512) on the decay curve V(t) = 800(0.8)^t, which falls toward the dashed asymptote V = 0."
+ }
+}

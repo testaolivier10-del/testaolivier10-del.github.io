@@ -1,0 +1,8 @@
+{
+ "regression": {
+  "def": "Fitting a model of a chosen type (linear, quadratic, cubic, quartic, and later exponential and others) to all the data at once with a calculator, which picks the constants that make the model closest to the data. Linear regression and quadratic regression are the common cases."
+ },
+ "inverse-variation": {
+  "def": "Inverse proportion: $y = \\frac{k}{x}$, so the product $xy$ stays constant and doubling $x$ halves $y$. An inverse-square law, $y = \\frac{k}{x^2}$, divides $y$ by $4$ when $x$ doubles, as for light intensity and distance."
+ }
+}

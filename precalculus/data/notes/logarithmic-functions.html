@@ -1,0 +1,46 @@
+<p>A logarithmic function is the inverse of an exponential function, so its graph is an exponential graph reflected across $y = x$. This page lists what that graph looks like, how to describe its behavior near the asymptote and at the far right in limit notation, and how its rate of change behaves.</p>
+
+<h2>The basic shape</h2>
+<p>A <b>logarithmic function</b> has the form $f(x) = a\log_b x$, with $a \ne 0$, $b > 0$ and $b \ne 1$. Take $a > 0$ and $b > 1$, as in $\log_2 x$, $\ln x$ or $3\log x$:</p>
+<ul>
+<li><b>Domain</b> $x > 0$: a logarithm needs a positive input. <b>Range</b>: all real numbers.</li>
+<li><b>Vertical asymptote</b> $x = 0$: $\lim_{x \to 0^+} f(x) = -\infty$.</li>
+<li><b>End behavior</b>: $\lim_{x \to \infty} f(x) = \infty$. The growth is slow, but there is no ceiling.</li>
+<li>Always <b>increasing</b> and always <b>concave down</b>, so no local maximum, no minimum and no point of inflection.</li>
+<li>It crosses the $x$-axis at $(1, 0)$, because $\log_b 1 = 0$, and passes through $(b, a)$.</li>
+</ul>
+<p>If $0 < b < 1$, or if $a < 0$, the graph is reflected: it decreases instead. The domain and asymptote do not change.</p>
+<table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">$y = b^x$ ($b > 1$)</th><th scope="col">$y = \log_b x$ ($b > 1$)</th></tr></thead>
+<tbody>
+<tr><td>Asymptote</td><td>$\lim_{x \to -\infty} b^x = 0$</td><td>$\lim_{x \to 0^+} \log_b x = -\infty$</td></tr>
+<tr><td>Far right</td><td>$\lim_{x \to \infty} b^x = \infty$, fast</td><td>$\lim_{x \to \infty} \log_b x = \infty$, slowly</td></tr>
+<tr><td>Concavity</td><td>concave up</td><td>concave down</td></tr>
+</tbody>
+</table>
+
+<h2>Transformations move the asymptote</h2>
+<p>The input of the logarithm sets the domain. For $f(x) = a\log_b(x - h) + k$, the domain is $x > h$ and the vertical asymptote is $x = h$. The $k$ moves the graph up or down but leaves the asymptote where it is.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Describe $h(x) = \log_2(x + 4) - 1$.</p>
+<p>Domain: $x + 4 > 0$, so $x > -4$. Vertical asymptote: $x = -4$.</p>
+<p>Behavior near it, from the right, the only side where $h$ is defined: $\lim_{x \to -4^+} h(x) = -\infty$.</p>
+<p>Zero: $\log_2(x + 4) = 1$, so $x + 4 = 2$ and $x = -2$.</p>
+</div>
+<p>Write both parts of the limit: the side ($-4^+$) and the sign ($-\infty$). Exam readers take points for a missing sign or a limit from the wrong side.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the domain of $f(x) = \ln(5 - x)$.</p>
+<p>$5 - x > 0$, so $x < 5$. This graph is reflected across a vertical line: the asymptote is $x = 5$, approached from the left, $\lim_{x \to 5^-} f(x) = -\infty$.</p>
+</div>
+
+<h2>How fast a logarithmic function grows</h2>
+<p>Equal factors in the input give equal steps in the output. For $g(x) = 2\log_2(x - 1)$, the input $x - 1$ goes $2, 4, 8$ (each time doubling) and the output goes $2, 4, 6$: up $2$ each time. So the input has to cover longer and longer stretches for each equal step up.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Use average rates of change of $f(x) = \ln x$ on $[1, 2]$, $[2, 3]$ and $[3, 4]$ to describe its concavity.</p>
+<p>$\frac{\ln 2 - \ln 1}{1} \approx 0.693$, $\frac{\ln 3 - \ln 2}{1} \approx 0.405$, $\frac{\ln 4 - \ln 3}{1} \approx 0.288$.</p>
+<p>These are slopes of secant lines over equal-length intervals. They are positive, so $f$ is increasing, and they decrease, so the rate of change of $f$ is decreasing: $f$ is concave down on $[1, 4]$.</p>
+</div>
+<p>Keep the two statements apart: "$f$ is increasing" is about the outputs, and "the rate of change of $f$ is decreasing" is about the slopes.</p>
+
+<h2>With a calculator</h2>
+<p>When a logarithm is mixed with other terms, as in $p(x) = 4\ln(x + 1) - x$, there may be no algebra route. Graph it, use the zero, intersect and maximum features, and look at a wide window: $p$ rises and then falls, so an equation such as $p(x) = 1$ has two solutions, about $0.430$ and $7.613$. Keep the stored values and give each answer to three decimal places.</p>

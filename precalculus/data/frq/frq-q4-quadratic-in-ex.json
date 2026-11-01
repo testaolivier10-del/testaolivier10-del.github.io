@@ -1,0 +1,105 @@
+{
+ "id": "frq-q4-quadratic-in-ex",
+ "type": "symbolic",
+ "title": "An equation quadratic in e to the x, and single-term forms",
+ "calc": false,
+ "points": 6,
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "exp-log-equations",
+  "logarithmic-manipulation",
+  "exponential-manipulation"
+ ],
+ "practices": [
+  "1.A",
+  "1.B",
+  "3.C"
+ ],
+ "intro": "No calculator. Give exact values and show the work that leads to each answer.",
+ "parts": [
+  {
+   "label": "A(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Solve</b> $e^{2x} - 3e^x - 10 = 0$ for $x$.",
+   "rubric": [
+    {
+     "point": "$x = \\ln 5$, from $(e^x - 5)(e^x + 2) = 0$",
+     "accept": [
+      "Let $u = e^x$: $(u - 5)(u + 2) = 0$, $e^x = 5$, $x = \\ln 5$"
+     ]
+    }
+   ],
+   "sample": "Let $u = e^x$, so $u^2 - 3u - 10 = 0$ and $(u - 5)(u + 2) = 0$. $e^x = 5$ gives $x = \\ln 5$."
+  },
+  {
+   "label": "A(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Explain</b> why the other factor in part A(i) gives no solution.",
+   "rubric": [
+    {
+     "point": "$e^x = -2$ is impossible because $e^x > 0$ for every real $x$",
+     "accept": [
+      "$e^x$ is always positive, so $e^x = -2$ has no real solution",
+      "$\\ln(-2)$ is undefined, because no power of $e$ is negative"
+     ]
+    }
+   ],
+   "sample": "The other factor gives $e^x = -2$. But $e^x > 0$ for every real number $x$, so no real $x$ makes $e^x$ negative: this root of the quadratic in $u$ gives no solution."
+  },
+  {
+   "label": "B(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Rewrite</b> $\\frac{8^{x + 1}}{4^x}$ as a single power of $2$.",
+   "rubric": [
+    {
+     "point": "$2^{x + 3}$",
+     "accept": [
+      "$\\frac{2^{3x + 3}}{2^{2x}} = 2^{x + 3}$"
+     ]
+    }
+   ],
+   "sample": "$8^{x + 1} = 2^{3x + 3}$ and $4^x = 2^{2x}$, so the quotient is $2^{3x + 3 - 2x} = 2^{x + 3}$."
+  },
+  {
+   "label": "B(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Rewrite</b> $\\ln(x^2 - 9) - \\ln(x + 3)$ as a single natural logarithm with no fraction, for $x > 3$.",
+   "rubric": [
+    {
+     "point": "$\\ln(x - 3)$",
+     "accept": [
+      "$\\ln \\frac{(x - 3)(x + 3)}{x + 3} = \\ln(x - 3)$"
+     ]
+    }
+   ],
+   "sample": "Quotient property: $\\ln \\frac{x^2 - 9}{x + 3} = \\ln \\frac{(x - 3)(x + 3)}{x + 3} = \\ln(x - 3)$, for $x > 3$."
+  },
+  {
+   "label": "C",
+   "points": 2,
+   "space": "lines",
+   "prompt": "<b>Solve</b> $4^x - 6 \\cdot 2^x + 8 = 0$ for $x$.",
+   "rubric": [
+    {
+     "point": "The equation written as a quadratic in $2^x$ and factored: $(2^x - 2)(2^x - 4) = 0$",
+     "accept": [
+      "$u = 2^x$: $u^2 - 6u + 8 = 0$, $(u - 2)(u - 4) = 0$"
+     ]
+    },
+    {
+     "point": "Both solutions, $x = 1$ and $x = 2$",
+     "accept": [
+      "$2^x = 2$ gives $x = 1$; $2^x = 4$ gives $x = 2$"
+     ]
+    }
+   ],
+   "sample": "$4^x = (2^x)^2$, so with $u = 2^x$: $u^2 - 6u + 8 = 0$ and $(u - 2)(u - 4) = 0$. Both values are positive: $2^x = 2$ gives $x = 1$ and $2^x = 4$ gives $x = 2$."
+  }
+ ]
+}

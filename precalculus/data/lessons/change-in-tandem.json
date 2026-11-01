@@ -1,0 +1,72 @@
+{
+ "topic": "change-in-tandem",
+ "hook": "A pond is deepest after the spring rains and shallowest in a dry month. Its depth and the date change together: when one moves, the other moves too. This first topic is about describing that kind of joint change in words a grader accepts: increasing or decreasing, and how fast.",
+ "prereq": [
+  {
+   "q": "For $f(x) = (x^3 - 12x)/4$, what is $f(2)$?",
+   "options": [
+    "$-4$",
+    "$4$",
+    "$-2$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": "$(8 - 24)/4 = -16/4 = -4$.",
+   "review": "alg-functions"
+  },
+  {
+   "q": "Which interval is $-2 < x \\le 6$?",
+   "options": [
+    "$(-2, 6]$",
+    "$[-2, 6)$",
+    "$(-2, 6)$",
+    "$[-2, 6]$"
+   ],
+   "correct": 0,
+   "why": "Parenthesis at the excluded end $-2$, bracket at the included end $6$.",
+   "review": "alg-intervals"
+  }
+ ],
+ "figure": {
+  "figure": "change-in-tandem-shape",
+  "caption": "$f(x) = (x^3 - 12x)/4$ increases on $[-4, -2]$, decreases on $[-2, 2]$ and increases on $[2, 4]$. It is concave down left of $x = 0$ and concave up right of it."
+ },
+ "chain": [
+  {
+   "cause": "For inputs $a < b$ in an interval, $f(a) < f(b)$ every time",
+   "effect": "$f$ is increasing on that interval (and decreasing if $f(a) > f(b)$ every time)"
+  },
+  {
+   "cause": "The output changes by more over each equal step of input",
+   "effect": "the rate of change is increasing and the graph is concave up"
+  },
+  {
+   "cause": "The output changes by less over each equal step (or by more negative amounts)",
+   "effect": "the rate of change is decreasing and the graph is concave down"
+  },
+  {
+   "cause": "A function switches from decreasing to increasing",
+   "effect": "its outputs reach a lowest value there, as the pond does at $t = 2$"
+  }
+ ],
+ "ideas": [
+  "<b>Increasing on an interval</b>: larger inputs give larger outputs there. <b>Decreasing</b>: larger inputs give smaller outputs.",
+  "The <b>rate of change</b> compares the change in output with the change in input: how fast the output moves.",
+  "<b>Concave up</b>: the rate of change is increasing (the graph bends upward). <b>Concave down</b>: the rate of change is decreasing.",
+  "Direction and concavity are separate: a function can be decreasing and concave up, like cooling coffee."
+ ],
+ "misconception": {
+  "wrong": "If a function is decreasing, its rate of change must be decreasing too.",
+  "right": "The coffee's temperature falls, but its drops shrink: $-22, -17, -13, -9$. The temperature is decreasing while its rate of change is increasing, so the graph is concave up."
+ },
+ "check": [
+  "pcalc-change-in-tandem-1",
+  "pcalc-change-in-tandem-2",
+  "pcalc-change-in-tandem-3",
+  "pcalc-change-in-tandem-6",
+  "pcalc-change-in-tandem-7",
+  "pcalc-change-in-tandem-10",
+  "pcalc-change-in-tandem-14"
+ ],
+ "summary": "Two quantities that change together are described by direction and by how fast. A function is increasing on an interval when larger inputs give larger outputs, decreasing when they give smaller ones. Its rate of change says how fast the output moves; when the rate of change increases the graph is concave up, and when it decreases the graph is concave down."
+}

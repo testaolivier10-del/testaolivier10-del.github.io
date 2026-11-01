@@ -1,11 +1,10 @@
--- AP® Calculus BC (course key apcalcbc): the database half of registering the
--- course (docs/apcalcbc-spec.md, the owner checklist). Named 2026-10n-apcalcbc so it
--- sorts after every migration before it (2026-10m-referrals.sql lists no paid-course
--- set): migrations run, and are compared with schema.sql, in file-name order. A
--- course migration written later (AP® Precalculus, on its own branch) must list
--- 'apcalcbc' too, or be rebased onto this one. NOT APPLIED anywhere yet.
+-- AP® Precalculus (course key apprecalc): the database half of registering the
+-- course (docs/apprecalc-spec.md, the owner checklist). Named 2026-10n-apprecalc so
+-- it sorts after every earlier migration (2026-10m-referrals.sql lists no
+-- paid-course set): migrations run, and are compared with schema.sql, in
+-- file-name order. NOT APPLIED anywhere yet.
 --
--- Run once, BEFORE the AP® Calculus BC pass goes on sale: Supabase dashboard ->
+-- Run once, BEFORE the AP® Precalculus pass goes on sale: Supabase dashboard ->
 -- SQL Editor -> New query -> paste -> Run. Needs 2026-10l-appsych.sql (and the
 -- migrations before it) first. Idempotent: every check constraint is dropped
 -- and re-added, every function is create-or-replace, so running it twice
@@ -13,9 +12,9 @@
 -- (scripts/test/sql-migration.test.mjs checks them word for word).
 --
 -- What it does:
---   1. Adds 'apcalcbc' to the course check on premium_passes, premium_funnel and
+--   1. Adds 'apprecalc' to the course check on premium_passes, premium_funnel and
 --      exam_completions.
---   2. Adds 'apcalcbc' to every function with a course list: report_question,
+--   2. Adds 'apprecalc' to every function with a course list: report_question,
 --      join_waitlist, count_premium_step, premium_add_pass (keeping p_until:
 --      the pass runs through June 30, 2027 whenever it is bought),
 --      record_exam_completion, count_premium_paid. The signatures are
@@ -40,7 +39,7 @@ begin
 end
 $$;
 alter table public.premium_passes
-  add constraint premium_passes_course_check check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apcalcbc'));
+  add constraint premium_passes_course_check check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc'));
 
 do $$
 declare r record;
@@ -54,7 +53,7 @@ begin
 end
 $$;
 alter table public.premium_funnel
-  add constraint premium_funnel_course_check check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apcalcbc'));
+  add constraint premium_funnel_course_check check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc'));
 
 do $$
 declare r record;
@@ -68,7 +67,7 @@ begin
 end
 $$;
 alter table public.exam_completions
-  add constraint exam_completions_course_check check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apcalcbc'));
+  add constraint exam_completions_course_check check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc'));
 
 -- ---------------------------------------------------------------------------
 -- 2. Functions with a course list
@@ -88,7 +87,7 @@ begin
   -- Validated here rather than trusted from the browser. This function is
   -- reachable by anyone who can open the site, so the only things that stop it
   -- becoming a free text-storage service are these bounds.
-  if p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apcalcbc') then
+  if p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc') then
     raise exception 'unknown course';
   end if;
   if p_reason not in ('wrong-answer', 'unclear', 'typo', 'outdated', 'other') then
@@ -121,7 +120,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apcalcbc') then
+  if p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc') then
     raise exception 'unknown course';
   end if;
   if p_email is null or length(p_email) > 254
@@ -147,7 +146,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apcalcbc')
+  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc')
      or p_step is null or p_step not in ('gate-shown', 'limit-hit', 'interest', 'signin-for-checkout', 'checkout-start') then
     return;
   end if;
@@ -179,7 +178,7 @@ declare
   v_start timestamptz;
   v_end timestamptz;
 begin
-  if p_user is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apcalcbc')
+  if p_user is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc')
      or p_pass is null or p_days is null or p_days < 1 or p_days > 400
      or (p_until is not null and p_until > now() + interval '400 days') then
     raise exception 'bad pass';
@@ -218,7 +217,7 @@ as $$
 declare
   v_uid uuid := auth.uid();
 begin
-  if v_uid is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apcalcbc')
+  if v_uid is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc')
      or p_questions is null or p_questions < 1 or p_questions > 300 then
     return false;
   end if;
@@ -246,7 +245,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apcalcbc') then
+  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc') then
     return;
   end if;
   insert into public.premium_funnel (course, step, n)

@@ -1,0 +1,32 @@
+{
+ "parametric-circles-lines-both": {
+  "file": "figures/parametric-circles-lines-both.svg",
+  "ext": "svg",
+  "w": 620,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: the circle x(t) = 2 cos t, y(t) = 2 sin t. The radius to the point at t = pi/3 makes angle t with the positive x-axis; the trip starts at (2, 0) when t = 0 and arrows show counterclockwise travel. Right: the segment x(t) = 1 + 4t, y(t) = 4 minus 3t from (1, 4) at t = 0 to (5, 1) at t = 1, with the midpoint (3, 2.5) at t = 0.5."
+ },
+ "parametric-circles-lines-circle": {
+  "file": "figures/parametric-circles-lines-circle.svg",
+  "ext": "svg",
+  "w": 400,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A circle with center (2, 1) and radius 3. The trip starts at (5, 1), marked t = 0, and arrows show counterclockwise travel. The center is marked."
+ },
+ "parametric-circles-lines-segment": {
+  "file": "figures/parametric-circles-lines-segment.svg",
+  "ext": "svg",
+  "w": 400,
+  "h": 280,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A straight segment from (-2, 5), marked t = 0, to (6, 1), marked t = 4, with an arrow pointing from the first point toward the second."
+ }
+}

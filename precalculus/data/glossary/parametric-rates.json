@@ -1,0 +1,5 @@
+{
+ "parametric-rate": {
+  "def": "For a parametric function (x(t), y(t)) on an interval [t1, t2]: the average rate of change of x, the average rate of change of y, and their quotient, the change in y over the change in x, which is the slope of the segment joining the two points."
+ }
+}

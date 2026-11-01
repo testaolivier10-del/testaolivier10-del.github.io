@@ -1,0 +1,46 @@
+<p>The exam expects exact values of sine and cosine at the angles you meet most often, with no calculator. This page shows how to get each one in a few seconds from two triangles and the signs of the quadrants, and how to use them on circles of any size.</p>
+
+<h2>The first quadrant: three triangles of hypotenuse 1</h2>
+<p>Put the angle $\frac{\pi}{6}$ ($30^\circ$) on the unit circle and drop a segment from the point to the $x$-axis. You get a 30-60-90 triangle with hypotenuse 1. Its sides are $1 : \sqrt{3} : 2$ divided by 2: the height (across from $30^\circ$) is $\frac{1}{2}$ and the base is $\frac{\sqrt{3}}{2}$. So the point is $\left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right)$.</p>
+<p>At $\frac{\pi}{3}$ ($60^\circ$) the same triangle stands on its other leg, and the coordinates swap: $\left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right)$. At $\frac{\pi}{4}$ the 45-45-90 triangle with hypotenuse 1 has equal legs $\frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}$.</p>
+<table class="compare">
+<thead><tr><th scope="col">$\theta$</th><th scope="col">$0$</th><th scope="col">$\frac{\pi}{6}$</th><th scope="col">$\frac{\pi}{4}$</th><th scope="col">$\frac{\pi}{3}$</th><th scope="col">$\frac{\pi}{2}$</th></tr></thead>
+<tbody>
+<tr><th scope="row">$\cos\theta$</th><td>$1$</td><td>$\frac{\sqrt{3}}{2}$</td><td>$\frac{\sqrt{2}}{2}$</td><td>$\frac{1}{2}$</td><td>$0$</td></tr>
+<tr><th scope="row">$\sin\theta$</th><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{\sqrt{2}}{2}$</td><td>$\frac{\sqrt{3}}{2}$</td><td>$1$</td></tr>
+</tbody>
+</table>
+<p>A quick check: the ray at $\frac{\pi}{6}$ is close to the $x$-axis, so the point is far to the right and not very high. The bigger value, $\frac{\sqrt{3}}{2} \approx 0.87$, is the $x$-coordinate.</p>
+
+<h2>Every other quadrant: reference angles and signs</h2>
+<p>These are the <b>special angles</b>: every multiple of $\frac{\pi}{6}$ and $\frac{\pi}{4}$. Each one makes the same triangle with the $x$-axis as one of the three first-quadrant angles. The acute angle between the terminal ray and the $x$-axis is the <b>reference angle</b>. The point has the same coordinates as at the reference angle, up to sign, and the quadrant gives the signs.</p>
+<figure id="fig-special" data-fig="sine-cosine-values-special"><figcaption>All sixteen special angles and the first-quadrant values they repeat.</figcaption></figure>
+<table class="compare">
+<thead><tr><th scope="col">Quadrant</th><th scope="col">Angles between</th><th scope="col">Reference angle of $\theta$</th><th scope="col">Signs of $(\cos\theta, \sin\theta)$</th></tr></thead>
+<tbody>
+<tr><td>I</td><td>$0$ and $\frac{\pi}{2}$</td><td>$\theta$</td><td>$(+, +)$</td></tr>
+<tr><td>II</td><td>$\frac{\pi}{2}$ and $\pi$</td><td>$\pi - \theta$</td><td>$(-, +)$</td></tr>
+<tr><td>III</td><td>$\pi$ and $\frac{3\pi}{2}$</td><td>$\theta - \pi$</td><td>$(-, -)$</td></tr>
+<tr><td>IV</td><td>$\frac{3\pi}{2}$ and $2\pi$</td><td>$2\pi - \theta$</td><td>$(+, -)$</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\cos\frac{4\pi}{3}$ and $\sin\frac{4\pi}{3}$.</p>
+<p>$\frac{4\pi}{3}$ is between $\pi$ and $\frac{3\pi}{2}$: Quadrant III. Its reference angle is $\frac{4\pi}{3} - \pi = \frac{\pi}{3}$, where the point is $\left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right)$.</p>
+<p>In Quadrant III both coordinates are negative: $\cos\frac{4\pi}{3} = -\frac{1}{2}$ and $\sin\frac{4\pi}{3} = -\frac{\sqrt{3}}{2}$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Find $\tan\frac{3\pi}{4}$.</p>
+<p>Quadrant II, reference angle $\frac{\pi}{4}$: the point is $\left(-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\right)$. Then $\tan\frac{3\pi}{4} = \frac{\sqrt{2}/2}{-\sqrt{2}/2} = -1$.</p>
+</div>
+<p>Angles outside $[0, 2\pi)$ first move by whole turns: $\frac{11\pi}{4} = 2\pi + \frac{3\pi}{4}$ has the same terminal ray as $\frac{3\pi}{4}$, so the same values.</p>
+
+<h2>Circles of any radius</h2>
+<p>On a circle of radius $r$ centered at the origin, the point at angle $\theta$ is the unit-circle point scaled by $r$:</p>
+<p style="text-align:center">$(x, y) = (r\cos\theta, r\sin\theta)$.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A robot arm 2 meters long pivots at the origin. Its tip starts on the positive $x$-axis and turns counterclockwise through $\frac{7\pi}{6}$. Where is the tip?</p>
+<p>Quadrant III, reference angle $\frac{\pi}{6}$: $\cos\frac{7\pi}{6} = -\frac{\sqrt{3}}{2}$ and $\sin\frac{7\pi}{6} = -\frac{1}{2}$.</p>
+<p>Scale by 2: the tip is at $\left(2 \cdot \left(-\frac{\sqrt{3}}{2}\right), 2 \cdot \left(-\frac{1}{2}\right)\right) = (-\sqrt{3}, -1)$.</p>
+</div>
+<p>These exact values are the raw material for the graphs in the next topic and for every no-calculator model in the rest of the unit, so practice until they come without thinking.</p>

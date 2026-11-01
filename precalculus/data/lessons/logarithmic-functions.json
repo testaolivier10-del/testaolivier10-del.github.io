@@ -1,0 +1,84 @@
+{
+ "topic": "logarithmic-functions",
+ "hook": "Suppose each time a phone's storage doubles, the price climbs by about the same amount. Doubling the input adds a fixed step to the output: that is how a logarithmic function grows. It rises without limit, but more and more slowly, and it has a wall on its left where the inputs run out.",
+ "prereq": [
+  {
+   "q": "What is $\\log_2 8$?",
+   "options": [
+    "$3$",
+    "$4$",
+    "$16$",
+    "$6$"
+   ],
+   "correct": 0,
+   "why": "$2^3 = 8$.",
+   "review": "logarithmic-expressions"
+  },
+  {
+   "q": "$y = 2^x$ has the horizontal asymptote $y = 0$. Which asymptote does its inverse $y = \\log_2 x$ have?",
+   "options": [
+    "$x = 0$",
+    "$y = 0$",
+    "$x = 1$",
+    "$y = 1$"
+   ],
+   "correct": 0,
+   "why": "Reflecting across $y = x$ turns $y = 0$ into $x = 0$.",
+   "review": "exp-log-inverses"
+  },
+  {
+   "q": "$\\lim_{x \\to 3^+} f(x) = -\\infty$ says what about the graph of $f$?",
+   "options": [
+    "Just right of $x = 3$, it drops without bound",
+    "Just left of $x = 3$, it drops without bound",
+    "It approaches $y = 3$ from above",
+    "It crosses $x = 3$ going down"
+   ],
+   "correct": 0,
+   "why": "$3^+$ means from the right; $-\\infty$ means decreasing without bound.",
+   "review": "vertical-asymptotes"
+  }
+ ],
+ "figure": {
+  "figure": "logarithmic-functions-asymptote",
+  "caption": "$g(x) = 2\\log_2(x - 1)$: the domain is $x > 1$, $\\lim_{x \\to 1^+} g(x) = -\\infty$, and each doubling of $x - 1$ adds $2$ to the output."
+ },
+ "chain": [
+  {
+   "cause": "The input of a logarithm must be positive",
+   "effect": "$f(x) = a\\log_b(x - h) + k$ has domain $x > h$ and a vertical asymptote $x = h$"
+  },
+  {
+   "cause": "Inputs approach the asymptote from the right",
+   "effect": "for $a > 0$ and $b > 1$, $\\lim_{x \\to h^+} f(x) = -\\infty$"
+  },
+  {
+   "cause": "Inputs grow without bound",
+   "effect": "the outputs grow without bound too, slowly: $\\lim_{x \\to \\infty} f(x) = \\infty$"
+  },
+  {
+   "cause": "Compare average rates over equal intervals",
+   "effect": "they decrease, so $f$ is concave down; it is increasing with no maximum or minimum"
+  }
+ ],
+ "ideas": [
+  "$f(x) = a\\log_b x$ ($a \\ne 0$, $b > 0$, $b \\ne 1$): domain $x > 0$, range all real numbers, vertical asymptote $x = 0$.",
+  "For $a > 0$, $b > 1$: increasing, concave down, $\\lim_{x \\to 0^+} f(x) = -\\infty$ and $\\lim_{x \\to \\infty} f(x) = \\infty$. No extrema, no points of inflection.",
+  "Shifts move the asymptote: $\\log_b(x - h)$ has domain $x > h$ and asymptote $x = h$.",
+  "Write behavior near the asymptote with a one-sided limit from the side where $f$ is defined."
+ ],
+ "misconception": {
+  "wrong": "Because $\\ln x$ grows so slowly, it levels off at a horizontal asymptote.",
+  "right": "It never levels off: $\\ln x$ reaches any number $n$ at $x = e^n$, so $\\lim_{x \\to \\infty} \\ln x = \\infty$. Its rate of change decreases toward $0$, but the outputs have no ceiling."
+ },
+ "check": [
+  "pcalc-logarithmic-functions-1",
+  "pcalc-logarithmic-functions-2",
+  "pcalc-logarithmic-functions-3",
+  "pcalc-logarithmic-functions-5",
+  "pcalc-logarithmic-functions-11",
+  "pcalc-logarithmic-functions-12",
+  "pcalc-logarithmic-functions-18"
+ ],
+ "summary": "A logarithmic function $f(x) = a\\log_b x$ is defined only for $x > 0$, with a vertical asymptote at $x = 0$. With $a > 0$ and $b > 1$ it is increasing and concave down, so its rate of change decreases: $\\lim_{x \\to 0^+} f(x) = -\\infty$ and $\\lim_{x \\to \\infty} f(x) = \\infty$, with no extrema. Shifts move the asymptote and the domain. Describe asymptote behavior in limit notation from the side where $f$ is defined."
+}

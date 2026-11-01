@@ -1,0 +1,12 @@
+{
+ "matrices-row-column": {
+  "file": "figures/matrices-row-column.svg",
+  "ext": "svg",
+  "w": 580,
+  "h": 235,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Matrix A with rows (2, -1) and (0, 3) times matrix B with rows (1, 4) and (-2, 1) equals the product with rows (4, 7) and (-6, 3). Row 1 of A and column 2 of B are highlighted, and the entry 7 in row 1, column 2 of the product is boxed: 2 times 4 plus (-1) times 1 = 7."
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "inverse-determinant-area": {
+  "file": "figures/inverse-determinant-area.svg",
+  "ext": "svg",
+  "w": 370,
+  "h": 290,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The column vectors <3, 1> and <1, 2> drawn from the origin, and the shaded parallelogram they make, with corners (0, 0), (3, 1), (4, 3) and (1, 2). Its area is 5, the determinant 3 times 2 minus 1 times 1."
+ },
+ "inverse-determinant-s2": {
+  "file": "figures/inverse-determinant-s2.svg",
+  "ext": "svg",
+  "w": 370,
+  "h": 310,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A shaded parallelogram with corners (0, 0), (4, 1), (5, 4) and (1, 3) on a grid."
+ }
+}

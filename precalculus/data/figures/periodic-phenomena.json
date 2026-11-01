@@ -1,0 +1,12 @@
+{
+ "periodic-phenomena-cycle": {
+  "file": "figures/periodic-phenomena-cycle.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The depth of water in a tank, in feet, over 18 minutes. In each 6-minute cycle the depth rises in a straight line from 1 foot to 5 feet in 2 minutes, stays at 5 feet for 1 minute, then falls in a straight line back to 1 foot over 3 minutes. The first cycle, from t = 0 to t = 6, is shaded and drawn in green; the next two cycles are exact copies. A bracket marks the period, 6 minutes."
+ }
+}

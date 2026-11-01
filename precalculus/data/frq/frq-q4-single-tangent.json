@@ -1,0 +1,94 @@
+{
+ "id": "frq-q4-single-tangent",
+ "type": "symbolic",
+ "title": "Inverse trigonometric ranges and an expression rewritten as a single tangent",
+ "calc": false,
+ "points": 6,
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "trig-identities",
+  "inverse-trig"
+ ],
+ "practices": [
+  "1.A",
+  "1.B",
+  "1.C"
+ ],
+ "intro": "No calculator. Give exact values, use radians, and show the work for each part. Only real solutions are asked for.",
+ "parts": [
+  {
+   "label": "A(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Find</b> the exact value of $\\tan^{-1}\\left(-\\sqrt{3}\\right)$.",
+   "rubric": [
+    {
+     "point": "$-\\frac{\\pi}{3}$ (an angle outside $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$ such as $\\frac{2\\pi}{3}$ earns no point)",
+     "accept": [
+      "$-\\frac{\\pi}{3}$"
+     ]
+    }
+   ],
+   "sample": "$\\tan^{-1}$ returns the angle in $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$ with the given tangent. $\\tan\\frac{\\pi}{3} = \\sqrt{3}$ and tangent is odd, so $\\tan^{-1}\\left(-\\sqrt{3}\\right) = -\\frac{\\pi}{3}$."
+  },
+  {
+   "label": "A(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Find</b> the exact value of $\\sin^{-1}\\left(\\sin\\frac{5\\pi}{4}\\right)$.",
+   "rubric": [
+    {
+     "point": "$-\\frac{\\pi}{4}$, with the inner value $-\\frac{\\sqrt{2}}{2}$",
+     "accept": [
+      "$-\\frac{\\pi}{4}$"
+     ]
+    }
+   ],
+   "sample": "$\\sin\\frac{5\\pi}{4} = -\\frac{\\sqrt{2}}{2}$. The angle in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$ with that sine is $-\\frac{\\pi}{4}$, so the value is $-\\frac{\\pi}{4}$ (not $\\frac{5\\pi}{4}$)."
+  },
+  {
+   "label": "B",
+   "points": 2,
+   "space": "lines",
+   "prompt": "<b>Rewrite</b> $h(x) = \\frac{\\sin(2x)}{1 + \\cos(2x)}$ as a single trigonometric function of $x$. Show the identities you use.",
+   "rubric": [
+    {
+     "point": "Uses $\\sin(2x) = 2\\sin x\\cos x$ and $1 + \\cos(2x) = 2\\cos^2 x$ (from $\\cos(2x) = 2\\cos^2 x - 1$)",
+     "accept": [
+      "$\\frac{2\\sin x\\cos x}{2\\cos^2 x}$"
+     ]
+    },
+    {
+     "point": "$h(x) = \\tan x$ as one function (stopping at $\\frac{\\sin x}{\\cos x}$ earns no point)",
+     "accept": [
+      "$\\tan x$"
+     ]
+    }
+   ],
+   "sample": "$\\sin(2x) = 2\\sin x\\cos x$ and $1 + \\cos(2x) = 1 + (2\\cos^2 x - 1) = 2\\cos^2 x$. So $h(x) = \\frac{2\\sin x\\cos x}{2\\cos^2 x} = \\frac{\\sin x}{\\cos x} = \\tan x$."
+  },
+  {
+   "label": "C",
+   "points": 2,
+   "space": "lines",
+   "prompt": "<b>Solve</b> $h(x) = \\sqrt{3}$ for $0 \\le x < 2\\pi$.",
+   "rubric": [
+    {
+     "point": "Uses part B to write $\\tan x = \\sqrt{3}$ and gives one correct solution",
+     "accept": [
+      "$x = \\frac{\\pi}{3}$"
+     ]
+    },
+    {
+     "point": "Both solutions $x = \\frac{\\pi}{3}$ and $x = \\frac{4\\pi}{3}$, and no others",
+     "accept": [
+      "$\\frac{\\pi}{3}, \\frac{4\\pi}{3}$"
+     ]
+    }
+   ],
+   "sample": "By part B, $\\tan x = \\sqrt{3}$. The principal value is $\\frac{\\pi}{3}$; tangent has period $\\pi$, so $\\frac{4\\pi}{3}$ also works. At both, $1 + \\cos(2x) = \\frac{1}{2} \\ne 0$, so $h$ is defined. The solutions are $x = \\frac{\\pi}{3}$ and $x = \\frac{4\\pi}{3}$."
+  }
+ ]
+}

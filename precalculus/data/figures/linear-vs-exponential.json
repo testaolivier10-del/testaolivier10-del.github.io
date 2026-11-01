@@ -1,0 +1,12 @@
+{
+ "linear-vs-exponential-steps": {
+  "file": "figures/linear-vs-exponential-steps.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The line f(x) = 4 + 6x adding 6 per step and the exponential g(x) = 4(1.5)^x multiplying by 1.5 per step, from x = 0 to 6; the exponential passes the line between x = 5 and x = 6."
+ }
+}

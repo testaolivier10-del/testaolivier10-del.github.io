@@ -1,0 +1,62 @@
+{
+ "topic": "sine-cosine-values",
+ "hook": "On the exam's no-calculator part, and in every question about periodic models, you need values like $\\cos\\frac{2\\pi}{3}$ instantly and exactly. You do not have to memorize sixteen points. Two triangles and one rule about signs produce every one of them.",
+ "prereq": [
+  {
+   "q": "A 30-60-90 triangle has hypotenuse $1$. How long is the leg across from the $30^\\circ$ angle?",
+   "options": ["$\\frac{1}{2}$", "$\\frac{\\sqrt{3}}{2}$", "$2$", "$\\frac{\\sqrt{2}}{2}$"],
+   "correct": 0,
+   "why": "The sides are $1 : \\sqrt{3} : 2$; scaled to hypotenuse 1 they are $\\frac{1}{2} : \\frac{\\sqrt{3}}{2} : 1$. The short leg is across from $30^\\circ$.",
+   "review": "alg-circles"
+  },
+  {
+   "q": "The terminal ray of $\\theta$ meets the unit circle at $(0.6, -0.8)$. What is $\\cos\\theta$?",
+   "options": ["$0.6$", "$-0.8$", "$-\\frac{4}{3}$", "$0.8$"],
+   "correct": 0,
+   "why": "$\\cos\\theta$ is the $x$-coordinate of the point.",
+   "review": "sine-cosine-tangent"
+  }
+ ],
+ "figure": {
+  "figure": "sine-cosine-values-special",
+  "caption": "Every multiple of $\\frac{\\pi}{6}$ and $\\frac{\\pi}{4}$. The first-quadrant values repeat in every quadrant; only the signs change."
+ },
+ "chain": [
+  {
+   "cause": "An angle of $\\frac{\\pi}{6}$, $\\frac{\\pi}{4}$ or $\\frac{\\pi}{3}$ on the unit circle makes a right triangle with hypotenuse 1",
+   "effect": "it is a special right triangle, so the coordinates are exact: $\\left(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right)$, $\\left(\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}\\right)$, $\\left(\\frac{1}{2}, \\frac{\\sqrt{3}}{2}\\right)$"
+  },
+  {
+   "cause": "An angle in another quadrant, such as $\\frac{5\\pi}{6}$",
+   "effect": "its reference angle, the acute angle between the terminal ray and the $x$-axis, is $\\frac{\\pi}{6}$, so its coordinates have the same sizes"
+  },
+  {
+   "cause": "The quadrant decides the signs",
+   "effect": "$\\frac{5\\pi}{6}$ is in Quadrant II, so $\\cos\\frac{5\\pi}{6} = -\\frac{\\sqrt{3}}{2}$ and $\\sin\\frac{5\\pi}{6} = \\frac{1}{2}$"
+  },
+  {
+   "cause": "A circle of radius $r$ instead of 1",
+   "effect": "scale the coordinates by $r$: the point at angle $\\theta$ is $(r\\cos\\theta, r\\sin\\theta)$"
+  }
+ ],
+ "ideas": [
+  "The special angles are the multiples of $\\frac{\\pi}{6}$ and $\\frac{\\pi}{4}$. Their sines and cosines are $0$, $\\pm\\frac{1}{2}$, $\\pm\\frac{\\sqrt{2}}{2}$, $\\pm\\frac{\\sqrt{3}}{2}$ or $\\pm 1$.",
+  "Method: find the reference angle, take the first-quadrant value, then give it the sign of the quadrant.",
+  "For a reference angle of $\\frac{\\pi}{6}$ or $\\frac{\\pi}{3}$, the coordinate that is larger in size is $\\frac{\\sqrt{3}}{2}$: it belongs to the axis the ray is closer to.",
+  "On a circle of radius $r$ centered at the origin, the point at angle $\\theta$ is $(r\\cos\\theta, r\\sin\\theta)$."
+ ],
+ "misconception": {
+  "wrong": "$\\sin\\frac{2\\pi}{3} = -\\frac{\\sqrt{3}}{2}$, because the angle is past $\\frac{\\pi}{2}$, so everything turns negative.",
+  "right": "Only the coordinate on the negative side changes sign. $\\frac{2\\pi}{3}$ is in Quadrant II, left of the $y$-axis but above the $x$-axis: $\\cos\\frac{2\\pi}{3} = -\\frac{1}{2}$ and $\\sin\\frac{2\\pi}{3} = \\frac{\\sqrt{3}}{2}$."
+ },
+ "check": [
+  "pcalc-sine-cosine-values-1",
+  "pcalc-sine-cosine-values-2",
+  "pcalc-sine-cosine-values-3",
+  "pcalc-sine-cosine-values-4",
+  "pcalc-sine-cosine-values-9",
+  "pcalc-sine-cosine-values-10",
+  "pcalc-sine-cosine-values-15"
+ ],
+ "summary": "Exact sines and cosines at multiples of $\\frac{\\pi}{6}$ and $\\frac{\\pi}{4}$ come from the 30-60-90 and 45-45-90 triangles. Find the reference angle, use its first-quadrant value, and give it the sign of the quadrant. On a circle of radius $r$, the point at angle $\\theta$ is $(r\\cos\\theta, r\\sin\\theta)$."
+}

@@ -41,6 +41,7 @@
     { storagePrefix: 'apstat_' },
     { storagePrefix: 'apenv_' },
     { storagePrefix: 'appsych_' },
+    { storagePrefix: 'apprecalc_' },
     { storagePrefix: 'apcalcbc_' },
   ];
   // courses:end

@@ -1,0 +1,12 @@
+{
+ "alg-functions-graph": {
+  "file": "figures/alg-functions-graph.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of f(x) = square root of (x + 4), minus 1, starts at the closed point (−4, −1), crosses the x-axis at the zero (−3, 0), crosses the y-axis at (0, 1) and passes through (5, 2). Its domain is x ≥ −4 and its range is y ≥ −1."
+ }
+}

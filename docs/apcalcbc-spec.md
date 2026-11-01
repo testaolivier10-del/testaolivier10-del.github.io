@@ -157,7 +157,7 @@ slip is named). FRQs self-scored with one rubric line per point and full-credit 
    Polar Plotter, Series Tester, Taylor Builder, Convergence Prover, Calculus BC Legend; manifest and OG
    "Calculus BC". Emerald was proposed first and dropped: Precalculus took forest green and the site accent is
    teal. Registered `hidden` (order 12) with every AB registration point twinned; SQL migration
-   `2026-10n-apcalcbc.sql` written, not applied.
+   `2026-10o-apcalcbc.sql` written, not applied.
 8. (2026-10-31) **Phase 0 done, as built** (`docs/apcalcbc-architecture.md`, `docs/apcalcbc-phase0.md`).
    (a) **One generator**: `build-apcalcbc.mjs` runs `build-apcalc.mjs` with the BC profile (`PROFILES.bc` in
    `scripts/lib/apcalc-build.mjs`); AB's output is byte-identical (every file hashed before and after).

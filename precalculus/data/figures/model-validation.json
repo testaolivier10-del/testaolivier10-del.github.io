@@ -1,0 +1,12 @@
+{
+ "model-validation-residuals": {
+  "file": "figures/model-validation-residuals.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Residual plot for seven weekly follower counts: the linear model's residuals (squares) form a U, positive at both ends and negative in the middle; the exponential model's residuals (circles) stay near 0 with no pattern."
+ }
+}

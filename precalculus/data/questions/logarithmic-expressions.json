@@ -1,0 +1,554 @@
+{
+ "stimuli": {
+  "logarithmic-expressions-s1": {
+   "kind": "table",
+   "title": "Powers of $3$",
+   "table": {
+    "caption": "Values of 3 to the power x for x from -2 to 4",
+    "cols": [
+     "$x$",
+     "-2",
+     "-1",
+     "0",
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "rows": [
+     [
+      "$3^x$",
+      "$\\frac{1}{9}$",
+      "$\\frac{1}{3}$",
+      "1",
+      "3",
+      "9",
+      "27",
+      "81"
+     ]
+    ]
+   }
+  },
+  "logarithmic-expressions-s2": {
+   "kind": "diagram",
+   "title": "A logarithmic scale",
+   "figure": "logarithmic-expressions-scale",
+   "text": "On this number line, the labeled ticks $1$, $10$, $100$, $1{,}000$ and $10{,}000$ are equally spaced. Two values are marked: $50$ and $2{,}000$."
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-logarithmic-expressions-1",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "logarithmic-expressions-s1",
+   "type": "numeric",
+   "q": "Use the table to find $\\log_3 81$.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 27,
+      "why": "That is $81 \\div 3$. A logarithm gives the exponent: $3^4 = 81$."
+     },
+     {
+      "value": 9,
+      "why": "That is $\\sqrt{81}$. Find the exponent that turns $3$ into $81$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\log_3 81$ asks: $3$ to what power is $81$? The table shows $3^4 = 81$, so $\\log_3 81 = 4$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-2",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-expressions-s1",
+   "type": "single",
+   "q": "Use the table to find $\\log_3 \\frac{1}{9}$.",
+   "options": [
+    "$-2$",
+    "$2$",
+    "$\\frac{1}{9}$",
+    "$-9$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$3^{-2} = \\frac{1}{9}$, so $\\log_3 \\frac{1}{9} = -2$. A logarithm can be negative; its input cannot.",
+    "options": [
+     "The table pairs $x = -2$ with $\\frac{1}{9}$.",
+     "$3^2 = 9$, not $\\frac{1}{9}$; the reciprocal needs a negative exponent.",
+     "That is the input of the logarithm, not the exponent that produces it.",
+     "$3^{-9}$ is far smaller than $\\frac{1}{9}$; the exponent is $-2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-3",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logarithmic-expressions-s1",
+   "type": "single",
+   "q": "Between which two consecutive integers is $\\log_3 50$?",
+   "options": [
+    "$3$ and $4$",
+    "$4$ and $5$",
+    "$16$ and $17$",
+    "$2$ and $3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$3^3 = 27$ and $3^4 = 81$, and $27 < 50 < 81$. So the exponent that gives $50$ is between $3$ and $4$.",
+    "options": [
+     "$50$ is between $27 = 3^3$ and $81 = 3^4$.",
+     "$3^4 = 81$ is already more than $50$.",
+     "That is $50 \\div 3$, about $16.7$. A logarithm counts factors of $3$, it does not divide.",
+     "$3^3 = 27$ is less than $50$, so the exponent is more than $3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-4",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-expressions-s1",
+   "type": "multi",
+   "q": "Using the table, which expressions are equal to $2$? Select every one that is.",
+   "options": [
+    "$\\log_3 9$",
+    "$\\log_3 81 - \\log_3 9$",
+    "$3^2$",
+    "$\\log_9 3$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Read each logarithm from the table as an exponent, then compute.",
+    "options": [
+     "$3^2 = 9$, so $\\log_3 9 = 2$.",
+     "$\\log_3 81 = 4$ and $\\log_3 9 = 2$, and $4 - 2 = 2$.",
+     "$3^2 = 9$, the output, not the exponent.",
+     "$9^{1/2} = 3$, so $\\log_9 3 = \\frac{1}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-5",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-expressions-s1",
+   "type": "numeric",
+   "q": "The table stops at $x = -2$. Continue its pattern to find $\\log_3 \\frac{1}{27}$.",
+   "numeric": {
+    "answer": -3,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "$3^3 = 27$; the reciprocal $\\frac{1}{27}$ needs the exponent $-3$."
+     },
+     {
+      "value": "-1/27",
+      "why": "That is the input with a minus sign. The logarithm is the exponent: $3^{-3} = \\frac{1}{27}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each step left divides by $3$: $3^{-3} = \\frac{1}{27}$. So $\\log_3 \\frac{1}{27} = -3$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-6",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "logarithmic-expressions-s2",
+   "type": "single",
+   "q": "On the scale, a point sits $2$ labeled steps to the right of $10$. What value does it show?",
+   "options": [
+    "1,000",
+    "30",
+    "100",
+    "10,000"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each labeled step multiplies by $10$: $10 \\cdot 10 \\cdot 10 = 1{,}000$.",
+    "options": [
+     "Two steps from $10$: times $10$, then times $10$ again.",
+     "On a logarithmic scale a step multiplies by $10$; it does not add $10$.",
+     "That is one step to the right of $10$.",
+     "That is three steps to the right of $10$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-7",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "logarithmic-expressions-s2",
+   "type": "single",
+   "q": "The common logarithm $\\log 50$ counts how many labeled steps $50$ sits to the right of $1$. Which describes $\\log 50$?",
+   "options": [
+    "A number between $1$ and $2$",
+    "A number between $10$ and $100$",
+    "A number between $0$ and $1$",
+    "A number between $2$ and $3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$50$ lies between $10 = 10^1$ and $100 = 10^2$, so its exponent of $10$ is between $1$ and $2$ (about $1.7$).",
+    "options": [
+     "$10^1 < 50 < 10^2$, so $1 < \\log 50 < 2$.",
+     "Those are the values around $50$, not their exponents.",
+     "$\\log 10 = 1$ already, and $50$ is past $10$.",
+     "$\\log 100 = 2$, and $50$ is short of $100$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-8",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logarithmic-expressions-s2",
+   "type": "single",
+   "q": "The marked value $2{,}000$ is how many times the marked value $50$?",
+   "options": [
+    "$40$ times",
+    "$1{,}950$ times",
+    "$1.6$ times",
+    "$4$ times"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{2{,}000}{50} = 40$. On a logarithmic scale, the distance between them, about $1.6$ steps, is $\\log 40$.",
+    "options": [
+     "Divide: $2{,}000 \\div 50 = 40$.",
+     "That is the difference $2{,}000 - 50$, not a factor.",
+     "About $1.6$ is the distance in steps, which is $\\log 40$, not the factor.",
+     "$50 \\cdot 4 = 200$, which is a tenth of $2{,}000$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-9",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "logarithmic-expressions-s2",
+   "type": "single",
+   "q": "A data set has values from $3$ to $8{,}000$. Why does a logarithmic scale display it well?",
+   "options": [
+    "Equal distances show equal factors, so small and large values are both readable",
+    "It turns negative values into positive ones",
+    "It spaces values by equal differences, like an ordinary number line",
+    "It removes the need for labeled tick marks"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On an ordinary scale, $3$, $30$ and $300$ would crowd together next to $8{,}000$. A logarithmic scale gives each factor of $10$ the same room.",
+    "options": [
+     "Each factor of $10$ gets the same distance, so every order of magnitude is visible.",
+     "A logarithmic scale shows only positive values; it does not change signs.",
+     "Equal differences is how an ordinary scale works; a logarithmic scale uses equal factors.",
+     "The tick labels matter more, because the spacing is not by differences."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-10",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "q": "What is the exact value of $\\log 0.001$, the common logarithm?",
+   "numeric": {
+    "answer": -3,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "$10^3 = 1{,}000$. A number less than $1$ has a negative logarithm."
+     },
+     {
+      "value": -2,
+      "why": "Count place values, not zeros: $0.001 = 10^{-3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$0.001 = \\frac{1}{1{,}000} = 10^{-3}$, so $\\log 0.001 = -3$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-11",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 3,
+   "type": "numeric",
+   "q": "What is the exact value of $\\ln \\frac{1}{\\sqrt{e}}$?",
+   "numeric": {
+    "answer": "-1/2",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "$\\sqrt{e} = e^{1/2}$, and the reciprocal flips the sign of the exponent."
+     },
+     {
+      "value": -2,
+      "why": "A square root is the power $\\frac{1}{2}$, not $2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{\\sqrt{e}} = e^{-1/2}$, and $\\ln$ is the logarithm base $e$, so $\\ln \\frac{1}{\\sqrt{e}} = -\\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-12",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 3,
+   "type": "numeric",
+   "q": "What is the exact value of $\\log_4 8$?",
+   "numeric": {
+    "answer": "3/2",
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is $8 \\div 4$. Find the exponent with $4^a = 8$."
+     },
+     {
+      "value": "2/3",
+      "why": "That is $\\log_8 4$. Here $4^a = 8$, so $a = \\frac{3}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Write both as powers of $2$: $4 = 2^2$ and $8 = 2^3$. Then $4^{3/2} = 2^3 = 8$, so $\\log_4 8 = \\frac{3}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-13",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "q": "Which equation says the same thing as $5^3 = 125$?",
+   "options": [
+    "$\\log_5 125 = 3$",
+    "$\\log_3 125 = 5$",
+    "$\\log_{125} 5 = 3$",
+    "$\\log_5 3 = 125$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\log_b c = a$ means $b^a = c$. The base $5$ stays the base, and the logarithm is the exponent $3$.",
+    "options": [
+     "Base $5$, exponent $3$, value $125$.",
+     "The base of the logarithm is the base of the power, $5$.",
+     "$125^3$ is huge; $\\log_{125} 5 = \\frac{1}{3}$.",
+     "The logarithm gives the exponent, $3$, not the value $125$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-14",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "q": "Solve $\\log_2 x = 7$.",
+   "numeric": {
+    "answer": 128,
+    "mistakes": [
+     {
+      "value": 49,
+      "why": "That is $7^2$. The base is $2$: $x = 2^7$."
+     },
+     {
+      "value": 14,
+      "why": "That is $2 \\cdot 7$. The logarithm is an exponent: $x = 2^7$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\log_2 x = 7$ means $2^7 = x$, so $x = 128$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-15",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "type": "numeric",
+   "q": "The common logarithm of $0.004$ is the exponent $a$ with $10^a = 0.004$. Find $a$ with a calculator, correct to three decimal places.",
+   "numeric": {
+    "answer": -2.397940008672037,
+    "mistakes": [
+     {
+      "value": 2.397940008672037,
+      "why": "The sign is lost. $0.004$ is less than $1$, so it is $10$ to a negative power: $10^{-3} = 0.001 < 0.004 < 0.01 = 10^{-2}$."
+     },
+     {
+      "value": -5.521460917862246,
+      "why": "That is $\\ln 0.004$, base $e$. The common logarithm is base $10$: use the $\\log$ key."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\log 0.004 \\approx -2.398$, because $10^{-2.398} \\approx 0.004$. Check: $10^{-3} = 0.001 < 0.004 < 0.01 = 10^{-2}$, so $a$ is between $-3$ and $-2$."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-16",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "q": "For $b > 0$ with $b \\ne 1$ and $c > 0$, what does $\\log_b c = a$ mean?",
+   "options": [
+    "$b^a = c$",
+    "$a^b = c$",
+    "$c^a = b$",
+    "$b^c = a$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A logarithm is an exponent: $\\log_b c$ is the power of $b$ that gives $c$.",
+    "options": [
+     "The base $b$ raised to the logarithm $a$ gives $c$.",
+     "The base of the power is $b$, the base of the logarithm.",
+     "$c$ is the result, not the base.",
+     "$c$ is the result of the power; $a$ is the exponent."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-17",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "q": "Which of these values is undefined? Select every undefined value.",
+   "options": [
+    "$\\log_2 0$",
+    "$\\log_2 1$",
+    "$\\ln \\frac{1}{2}$",
+    "$\\log 0.5$"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "$b^a$ is positive for every $a$ when $b > 0$, so a logarithm is defined only for positive inputs. Its value may be zero or negative.",
+    "options": [
+     "No power of $2$ equals $0$, so $\\log_2 0$ is undefined.",
+     "$2^0 = 1$, so $\\log_2 1 = 0$.",
+     "$\\frac{1}{2}$ is positive, so $\\ln \\frac{1}{2}$ exists (it is negative).",
+     "$0.5$ is positive, so $\\log 0.5$ exists (it is negative)."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-18",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "Let $c$ be a positive number. Predict what happens to each quantity as $c$ increases.",
+   "variables": [
+    {
+     "name": "$\\log c$",
+     "answer": "up",
+     "why": "A larger positive number needs a larger power of $10$ to reach it."
+    },
+    {
+     "name": "$\\log(10^c) - c$",
+     "answer": "none",
+     "why": "$\\log(10^c) = c$, so the difference is $0$ whatever $c$ is."
+    },
+    {
+     "name": "$\\log \\frac{1}{c}$",
+     "answer": "down",
+     "why": "$\\frac{1}{c}$ gets smaller as $c$ grows, so its exponent of $10$ gets smaller."
+    }
+   ],
+   "why": {
+    "correct": "Logarithms with a base greater than $1$ grow as their input grows, and undo powers of their base."
+   }
+  },
+  {
+   "id": "pcalc-logarithmic-expressions-19",
+   "unit": "unit-2",
+   "topic": "logarithmic-expressions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "q": "On a scale for ground shaking, the reading is $M = \\log A$, where $A$ is how many times the shaking exceeds a small reference amount. One reading is $6$ and another is $4$. How many times as strong is the first shaking?",
+   "options": [
+    "$100$ times",
+    "$2$ times",
+    "$1.5$ times",
+    "$20$ times"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$M = 6$ means $A = 10^6$ and $M = 4$ means $A = 10^4$. Then $\\frac{10^6}{10^4} = 10^2 = 100$.",
+    "options": [
+     "Each unit on the scale is a factor of $10$, and the readings differ by $2$ units.",
+     "That is $6 - 4$; on a logarithmic scale a difference of $2$ means a factor of $10^2$.",
+     "That is $6 \\div 4$; divide the shaking amounts, $10^6$ and $10^4$, not the readings.",
+     "That multiplies $10$ by $2$; the factor is $10 \\cdot 10$."
+    ]
+   }
+  }
+ ]
+}

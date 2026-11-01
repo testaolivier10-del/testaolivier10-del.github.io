@@ -198,7 +198,7 @@
 .cx-q .cx-opt[aria-disabled="true"],.cx-q .cx-opt:disabled{cursor:default;opacity:1;}
 .cx-q .cx-opt .letter{flex:0 0 26px;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--muted);font:900 12px var(--font-ui);border:0;}
 .cx-q .cx-opt.selected .letter,.cx-q .cx-opt[aria-checked="true"] .letter{background:var(--cink);color:var(--white);box-shadow:none;}
-.cx-q .cx-opt > span:not(.letter):not(.sr-only):not([class*="why"]):not(.bio-mark):not(.chem-mark):not(.phys-mark):not(.calc-mark):not(.stat-mark){flex:1 1 0;min-width:0;}
+.cx-q .cx-opt > span:not(.letter):not(.sr-only):not([class*="why"]):not(.bio-mark):not(.chem-mark):not(.phys-mark):not(.calc-mark):not(.pcalc-mark):not(.stat-mark){flex:1 1 0;min-width:0;}
 .cx-q .cx-opt [class*="opt-why"]{flex-basis:100%;display:block;font:600 13.5px/1.5 var(--font-ui);color:var(--muted);margin:2px 0 0;}
 .cx-q .cx-opt:is(.is-right,.correct){background:var(--tint-good);box-shadow:inset 0 0 0 2px var(--good-text);}
 .cx-q .cx-opt:is(.is-wrong,.incorrect,.wrong){background:var(--tint-bad);box-shadow:inset 0 0 0 2px var(--bad-text);}
@@ -242,10 +242,10 @@
 .cx-tag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:var(--radius-pill);background:var(--cink);color:var(--white);font:900 9.5px/1.6 var(--font-ui);letter-spacing:.06em;text-transform:uppercase;vertical-align:1px;}
 .cx-choice b .cx-tag{display:inline-block;}
 /* Bio's and Chemistry's renderers write a visible mark chip themselves
-   (.bio-mark, .chem-mark, .phys-mark, .calc-mark, .stat-mark); keep one. */
-.cx-q .cx-opt:has(.bio-mark,.chem-mark,.phys-mark,.calc-mark,.stat-mark)::before{content:none;display:none;}
-.cx-q .cx-opt :is(.bio-mark,.chem-mark,.phys-mark,.calc-mark,.stat-mark){order:9;}
-.cx-q .cx-opt :is(.bio-mark,.chem-mark,.phys-mark,.calc-mark,.stat-mark){flex:0 0 auto;margin-left:auto;white-space:nowrap;}
+   (.bio-mark, .chem-mark, .phys-mark, .calc-mark, .pcalc-mark, .stat-mark); keep one. */
+.cx-q .cx-opt:has(.bio-mark,.chem-mark,.phys-mark,.calc-mark,.pcalc-mark,.stat-mark)::before{content:none;display:none;}
+.cx-q .cx-opt :is(.bio-mark,.chem-mark,.phys-mark,.calc-mark,.pcalc-mark,.stat-mark){order:9;}
+.cx-q .cx-opt :is(.bio-mark,.chem-mark,.phys-mark,.calc-mark,.pcalc-mark,.stat-mark){flex:0 0 auto;margin-left:auto;white-space:nowrap;}
 .cx-q .cx-opt:is(.is-right,.correct,.is-wrong,.incorrect,.wrong)::before{margin-left:auto;}
 .cx-q .cx-opt [class*="opt-why"]{order:10;}
 /* NREMT pages sit in .wrap, which pads its top; the opener spaces itself. */
@@ -381,27 +381,27 @@
    prefix (bio-pr-score, chem-ex-top ...); Organic Chemistry uses the bare
    ex-* names. Scoped under .cx-study so they win over the course sheets,
    which load after this one. */
-.cx-study :is(.bio-pr-score,.chem-pr-score,.phys-pr-score,.calc-pr-score,.stat-pr-score,.env-pr-score,.anp-pr-score){background:var(--white);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,3.4vw,32px);gap:clamp(16px,3vw,28px);box-shadow:0 26px 50px -42px rgba(11,26,51,.5);margin:6px 0 18px;}
-.cx-study :is(.bio-pr-score-big,.chem-pr-score-big,.phys-pr-score-big,.calc-pr-score-big,.stat-pr-score-big,.env-pr-score-big,.anp-pr-score-big){font:900 clamp(60px,8vw,92px)/.95 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.05em;color:var(--ink);}
-.cx-study :is(.bio-pr-score-big,.chem-pr-score-big,.phys-pr-score-big,.calc-pr-score-big,.stat-pr-score-big,.env-pr-score-big,.anp-pr-score-big) small{font-size:.4em;letter-spacing:-.02em;color:var(--muted);}
-.cx-study :is(.bio-pr-score,.chem-pr-score,.phys-pr-score,.calc-pr-score,.stat-pr-score,.env-pr-score,.anp-pr-score) b{font:900 clamp(20px,2.4vw,26px)/1.2 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.02em;color:var(--ink);}
-.cx-study :is(.bio-pr-summary,.chem-pr-summary,.phys-pr-summary,.calc-pr-summary,.stat-pr-summary,.env-pr-summary,.anp-pr-summary) > h2{font:900 clamp(24px,2.8vw,32px)/1.1 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.03em;margin:32px 0 14px;}
-.cx-study :is(.bio-pr-next-list,.chem-pr-next-list,.phys-pr-next-list,.calc-pr-next-list,.stat-pr-next-list,.env-pr-next-list,.anp-pr-next-list) li{border:1px solid var(--line);box-shadow:none;border-radius:16px;padding:14px 16px;}
-.cx-study :is(.bio-pr-actions,.chem-pr-actions,.phys-pr-actions,.calc-pr-actions,.stat-pr-actions,.env-pr-actions,.anp-pr-actions) .btn-press{min-height:52px;padding:14px 24px;border-radius:14px;font-size:16px;}
-.cx-study :is(.bio-pr-actions,.chem-pr-actions,.phys-pr-actions,.calc-pr-actions,.stat-pr-actions,.env-pr-actions,.anp-pr-actions) .btn-outline{min-height:52px;border-radius:14px;}
-.cx-study :is(.bio-ex-top,.chem-ex-top,.phys-ex-top,.calc-ex-top,.stat-ex-top,.env-ex-top,.anp-ex-top,.ex-top){background:var(--white);border:1px solid var(--line);border-radius:18px;box-shadow:none;padding:14px 18px;}
-.cx-study :is(.bio-ex-time,.chem-ex-time,.phys-ex-time,.calc-ex-time,.stat-ex-time,.env-ex-time,.anp-ex-time,.ex-time){font:900 clamp(24px,2.6vw,30px)/1 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
-.cx-study :is(.bio-ex-nav,.chem-ex-nav,.phys-ex-nav,.calc-ex-nav,.stat-ex-nav,.env-ex-nav,.anp-ex-nav,.ex-nav) button{border-radius:10px;min-height:40px;font-family:var(--font-ui);font-variant-numeric:tabular-nums;}
-.cx-study :is(.bio-ex-opt,.chem-ex-opt,.phys-ex-opt,.calc-ex-opt,.stat-ex-opt,.env-ex-opt,.anp-ex-opt,.ex-opt){min-height:58px;align-items:center;border:0;border-radius:16px;box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface2);font-size:16px;padding:12px 16px;}
-.cx-study :is(.bio-ex-opt,.chem-ex-opt,.phys-ex-opt,.calc-ex-opt,.stat-ex-opt,.env-ex-opt,.anp-ex-opt,.ex-opt):has(input:checked){box-shadow:inset 0 0 0 2.5px var(--cink,var(--accent));background:var(--ctint,var(--tint-accent));}
-.cx-study :is(.bio-ex-letter,.chem-ex-letter,.phys-ex-letter,.calc-ex-letter,.stat-ex-letter,.env-ex-letter,.anp-ex-letter,.ex-letter){font:900 14px var(--font-ui);}
-.cx-study :is(.bio-ex-score,.chem-ex-score,.phys-ex-score,.calc-ex-score,.stat-ex-score,.env-ex-score,.anp-ex-score,.ex-score){border-radius:24px;}
-.cx-study :is(.bio-ex-ritem,.chem-ex-ritem,.phys-ex-ritem,.calc-ex-ritem,.stat-ex-ritem,.env-ex-ritem,.anp-ex-ritem,.ex-ritem){border:1px solid var(--line);border-radius:18px;}
-.cx-study :is(.bio-ex-rstem,.chem-ex-rstem,.phys-ex-rstem,.calc-ex-rstem,.stat-ex-rstem,.env-ex-rstem,.anp-ex-rstem,.ex-rstem){font:900 17px/1.4 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.01em;}
-.cx-study :is(.bio-ex-kind,.chem-ex-kind,.phys-ex-kind,.calc-ex-kind,.stat-ex-kind,.env-ex-kind,.anp-ex-kind,.ex-kind){border-radius:16px;box-shadow:none;padding:16px 18px;}
-.cx-study :is(.bio-ex-q,.chem-ex-q,.phys-ex-q,.calc-ex-q,.stat-ex-q,.env-ex-q,.anp-ex-q,.ex-q) .step-title{font:900 clamp(19px,2.2vw,25px)/1.3 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.02em;}
-.cx-study :is(.bio-fc-face,.chem-fc-face,.phys-fc-face,.calc-fc-face,.stat-fc-face,.env-fc-face,.anp-fc-face){border:1px solid var(--line);border-radius:24px;box-shadow:0 26px 50px -40px rgba(11,26,51,.55);}
-.cx-study :is(.bio-fc-q,.chem-fc-q,.phys-fc-q,.calc-fc-q,.stat-fc-q,.env-fc-q,.anp-fc-q){font-family:'Inter Display','Nunito',system-ui,sans-serif;font-weight:900;letter-spacing:-.025em;}
+.cx-study :is(.bio-pr-score,.chem-pr-score,.phys-pr-score,.calc-pr-score,.pcalc-pr-score,.stat-pr-score,.env-pr-score,.anp-pr-score){background:var(--white);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,3.4vw,32px);gap:clamp(16px,3vw,28px);box-shadow:0 26px 50px -42px rgba(11,26,51,.5);margin:6px 0 18px;}
+.cx-study :is(.bio-pr-score-big,.chem-pr-score-big,.phys-pr-score-big,.calc-pr-score-big,.pcalc-pr-score-big,.stat-pr-score-big,.env-pr-score-big,.anp-pr-score-big){font:900 clamp(60px,8vw,92px)/.95 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.05em;color:var(--ink);}
+.cx-study :is(.bio-pr-score-big,.chem-pr-score-big,.phys-pr-score-big,.calc-pr-score-big,.pcalc-pr-score-big,.stat-pr-score-big,.env-pr-score-big,.anp-pr-score-big) small{font-size:.4em;letter-spacing:-.02em;color:var(--muted);}
+.cx-study :is(.bio-pr-score,.chem-pr-score,.phys-pr-score,.calc-pr-score,.pcalc-pr-score,.stat-pr-score,.env-pr-score,.anp-pr-score) b{font:900 clamp(20px,2.4vw,26px)/1.2 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.02em;color:var(--ink);}
+.cx-study :is(.bio-pr-summary,.chem-pr-summary,.phys-pr-summary,.calc-pr-summary,.pcalc-pr-summary,.stat-pr-summary,.env-pr-summary,.anp-pr-summary) > h2{font:900 clamp(24px,2.8vw,32px)/1.1 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.03em;margin:32px 0 14px;}
+.cx-study :is(.bio-pr-next-list,.chem-pr-next-list,.phys-pr-next-list,.calc-pr-next-list,.pcalc-pr-next-list,.stat-pr-next-list,.env-pr-next-list,.anp-pr-next-list) li{border:1px solid var(--line);box-shadow:none;border-radius:16px;padding:14px 16px;}
+.cx-study :is(.bio-pr-actions,.chem-pr-actions,.phys-pr-actions,.calc-pr-actions,.pcalc-pr-actions,.stat-pr-actions,.env-pr-actions,.anp-pr-actions) .btn-press{min-height:52px;padding:14px 24px;border-radius:14px;font-size:16px;}
+.cx-study :is(.bio-pr-actions,.chem-pr-actions,.phys-pr-actions,.calc-pr-actions,.pcalc-pr-actions,.stat-pr-actions,.env-pr-actions,.anp-pr-actions) .btn-outline{min-height:52px;border-radius:14px;}
+.cx-study :is(.bio-ex-top,.chem-ex-top,.phys-ex-top,.calc-ex-top,.pcalc-ex-top,.stat-ex-top,.env-ex-top,.anp-ex-top,.ex-top){background:var(--white);border:1px solid var(--line);border-radius:18px;box-shadow:none;padding:14px 18px;}
+.cx-study :is(.bio-ex-time,.chem-ex-time,.phys-ex-time,.calc-ex-time,.pcalc-ex-time,.stat-ex-time,.env-ex-time,.anp-ex-time,.ex-time){font:900 clamp(24px,2.6vw,30px)/1 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+.cx-study :is(.bio-ex-nav,.chem-ex-nav,.phys-ex-nav,.calc-ex-nav,.pcalc-ex-nav,.stat-ex-nav,.env-ex-nav,.anp-ex-nav,.ex-nav) button{border-radius:10px;min-height:40px;font-family:var(--font-ui);font-variant-numeric:tabular-nums;}
+.cx-study :is(.bio-ex-opt,.chem-ex-opt,.phys-ex-opt,.calc-ex-opt,.pcalc-ex-opt,.stat-ex-opt,.env-ex-opt,.anp-ex-opt,.ex-opt){min-height:58px;align-items:center;border:0;border-radius:16px;box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface2);font-size:16px;padding:12px 16px;}
+.cx-study :is(.bio-ex-opt,.chem-ex-opt,.phys-ex-opt,.calc-ex-opt,.pcalc-ex-opt,.stat-ex-opt,.env-ex-opt,.anp-ex-opt,.ex-opt):has(input:checked){box-shadow:inset 0 0 0 2.5px var(--cink,var(--accent));background:var(--ctint,var(--tint-accent));}
+.cx-study :is(.bio-ex-letter,.chem-ex-letter,.phys-ex-letter,.calc-ex-letter,.pcalc-ex-letter,.stat-ex-letter,.env-ex-letter,.anp-ex-letter,.ex-letter){font:900 14px var(--font-ui);}
+.cx-study :is(.bio-ex-score,.chem-ex-score,.phys-ex-score,.calc-ex-score,.pcalc-ex-score,.stat-ex-score,.env-ex-score,.anp-ex-score,.ex-score){border-radius:24px;}
+.cx-study :is(.bio-ex-ritem,.chem-ex-ritem,.phys-ex-ritem,.calc-ex-ritem,.pcalc-ex-ritem,.stat-ex-ritem,.env-ex-ritem,.anp-ex-ritem,.ex-ritem){border:1px solid var(--line);border-radius:18px;}
+.cx-study :is(.bio-ex-rstem,.chem-ex-rstem,.phys-ex-rstem,.calc-ex-rstem,.pcalc-ex-rstem,.stat-ex-rstem,.env-ex-rstem,.anp-ex-rstem,.ex-rstem){font:900 17px/1.4 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.01em;}
+.cx-study :is(.bio-ex-kind,.chem-ex-kind,.phys-ex-kind,.calc-ex-kind,.pcalc-ex-kind,.stat-ex-kind,.env-ex-kind,.anp-ex-kind,.ex-kind){border-radius:16px;box-shadow:none;padding:16px 18px;}
+.cx-study :is(.bio-ex-q,.chem-ex-q,.phys-ex-q,.calc-ex-q,.pcalc-ex-q,.stat-ex-q,.env-ex-q,.anp-ex-q,.ex-q) .step-title{font:900 clamp(19px,2.2vw,25px)/1.3 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.02em;}
+.cx-study :is(.bio-fc-face,.chem-fc-face,.phys-fc-face,.calc-fc-face,.pcalc-fc-face,.stat-fc-face,.env-fc-face,.anp-fc-face){border:1px solid var(--line);border-radius:24px;box-shadow:0 26px 50px -40px rgba(11,26,51,.55);}
+.cx-study :is(.bio-fc-q,.chem-fc-q,.phys-fc-q,.calc-fc-q,.pcalc-fc-q,.stat-fc-q,.env-fc-q,.anp-fc-q){font-family:'Inter Display','Nunito',system-ui,sans-serif;font-weight:900;letter-spacing:-.025em;}
 /* Phones: one choice per row so the bigger cards keep their words whole. */
 @media (max-width:560px){
   .cx-study .cx-step .cx-choices{grid-template-columns:minmax(0,1fr);}

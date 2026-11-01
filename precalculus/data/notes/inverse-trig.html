@@ -1,0 +1,54 @@
+<p>You know how to go from an angle to its sine, cosine or tangent. Many problems run the other way: you know a ratio (a rise over a run, a coordinate on a circle) and need the angle. This page builds the functions that do that, $\sin^{-1}$, $\cos^{-1}$ and $\tan^{-1}$, and shows how to evaluate them exactly and with a calculator.</p>
+
+<h2>Why the trigonometric functions need restricting</h2>
+<p>A function has an inverse only if each output comes from exactly one input (Topic 2.8). Sine fails badly: $\sin\frac{\pi}{6} = \sin\frac{5\pi}{6} = \frac{1}{2}$, and every period repeats the pattern. So we keep one piece of each graph that takes every output once and throw the rest away.</p>
+<ul>
+<li><b>Sine</b> on $\left[-\frac{\pi}{2}, \frac{\pi}{2}\right]$: it increases from $-1$ to $1$.</li>
+<li><b>Cosine</b> on $[0, \pi]$: it decreases from $1$ to $-1$.</li>
+<li><b>Tangent</b> on $\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$: it increases through every real number.</li>
+</ul>
+<p>Swapping inputs and outputs of these pieces gives the inverse functions. Their outputs are angles, in radians.</p>
+
+<table class="compare">
+<thead><tr><th scope="col">Function</th><th scope="col">Domain (the ratio you put in)</th><th scope="col">Range (the angle you get)</th><th scope="col">Quadrants of the answer</th></tr></thead>
+<tbody>
+<tr><td>$\sin^{-1} x$</td><td>$[-1, 1]$</td><td>$\left[-\frac{\pi}{2}, \frac{\pi}{2}\right]$</td><td>I or IV</td></tr>
+<tr><td>$\cos^{-1} x$</td><td>$[-1, 1]$</td><td>$[0, \pi]$</td><td>I or II</td></tr>
+<tr><td>$\tan^{-1} x$</td><td>$(-\infty, \infty)$</td><td>$\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$</td><td>I or IV</td></tr>
+</tbody>
+</table>
+<p>The graph of each inverse is the restricted graph reflected over the line $y = x$. Tangent's vertical asymptotes at $\pm\frac{\pi}{2}$ become horizontal asymptotes of $\tan^{-1}$: $\lim_{x \to \infty} \tan^{-1} x = \frac{\pi}{2}$ and $\lim_{x \to -\infty} \tan^{-1} x = -\frac{\pi}{2}$.</p>
+<p><b>Notation.</b> $\sin^{-1} x$ means the inverse function (also written $\arcsin x$). It is <i>not</i> $\frac{1}{\sin x}$. The reciprocal of sine is a different function, which you will meet in Topic 3.11. The exponent $-1$ on a function name means "inverse"; to write a reciprocal, write the fraction.</p>
+
+<h2>Exact values</h2>
+<p>To evaluate $\sin^{-1} a$, ask: which angle in the range has sine $a$? Use the unit circle values from Topic 3.3, then check the range.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\sin^{-1}\left(-\frac{1}{2}\right)$, $\cos^{-1}\left(-\frac{\sqrt{2}}{2}\right)$ and $\tan^{-1}\sqrt{3}$.</p>
+<p>$\sin^{-1}\left(-\frac{1}{2}\right)$: the angle in $\left[-\frac{\pi}{2}, \frac{\pi}{2}\right]$ with sine $-\frac{1}{2}$. The reference angle is $\frac{\pi}{6}$, and a negative sine in that range means Quadrant IV: the answer is $-\frac{\pi}{6}$ (not $\frac{7\pi}{6}$ or $\frac{11\pi}{6}$, which are outside the range).</p>
+<p>$\cos^{-1}\left(-\frac{\sqrt{2}}{2}\right)$: the angle in $[0, \pi]$ with cosine $-\frac{\sqrt{2}}{2}$. Reference angle $\frac{\pi}{4}$; negative cosine in $[0, \pi]$ means Quadrant II: $\pi - \frac{\pi}{4} = \frac{3\pi}{4}$.</p>
+<p>$\tan^{-1}\sqrt{3}$: the angle in $\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$ with tangent $\sqrt{3}$, which is $\frac{\pi}{3}$.</p>
+</div>
+
+<h2>Composites: inside first</h2>
+<p>An inverse undoes its function, but only on the restricted interval. $\sin\left(\sin^{-1} x\right) = x$ for every $x$ in $[-1, 1]$. The other order is the trap: $\sin^{-1}(\sin x) = x$ only when $x$ is already in $\left[-\frac{\pi}{2}, \frac{\pi}{2}\right]$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find $\cos^{-1}\left(\cos\frac{7\pi}{4}\right)$ and $\tan\left(\cos^{-1}\frac{5}{13}\right)$.</p>
+<p>First one, inside first: $\cos\frac{7\pi}{4} = \frac{\sqrt{2}}{2}$. Then $\cos^{-1}\left(\frac{\sqrt{2}}{2}\right) = \frac{\pi}{4}$, the angle in $[0, \pi]$. The answer is $\frac{\pi}{4}$, not $\frac{7\pi}{4}$.</p>
+<p>Second one: let $\theta = \cos^{-1}\frac{5}{13}$, an angle in Quadrant I with adjacent side $5$ and hypotenuse $13$. The opposite side is $\sqrt{169 - 25} = 12$, so $\tan\theta = \frac{12}{5}$.</p>
+</div>
+
+<h2>With a calculator</h2>
+<p>When the ratio is not a unit circle value, use the $\sin^{-1}$, $\cos^{-1}$ or $\tan^{-1}$ key in <b>radian mode</b>. Write the setup first, then the value to three decimal places.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A ramp rises $0.6$ meters over a run of $7.2$ meters. Find its angle with the ground.</p>
+<p>$\tan\theta = \frac{0.6}{7.2}$, so $\theta = \tan^{-1}\left(\frac{0.6}{7.2}\right) \approx 0.08314$ radians, which is $0.083$ to three decimals. Keep the full value stored if you use it again.</p>
+</div>
+<p>The calculator gives only the angle in the range. If a problem needs a different angle with the same ratio, you find it from the unit circle, which is the next topic's job.</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Reporting an angle outside the range, such as $\frac{5\pi}{3}$ for $\sin^{-1}\left(-\frac{\sqrt{3}}{2}\right)$. The answer is $-\frac{\pi}{3}$.</li>
+<li>Reading $\tan^{-1} x$ as $\frac{1}{\tan x}$.</li>
+<li>Giving a negative angle for $\cos^{-1}$ of a negative number. $\cos^{-1}$ outputs are between $0$ and $\pi$.</li>
+<li>Leaving the calculator in degree mode.</li>
+</ul>

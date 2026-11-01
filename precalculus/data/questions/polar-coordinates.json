@@ -1,0 +1,494 @@
+{
+ "stimuli": {
+  "polar-coordinates-s1": {
+   "kind": "diagram",
+   "title": "Four points on a polar grid",
+   "text": "<p>The circles have radius $1$, $2$, $3$ and $4$, and the rays are $\\frac{\\pi}{6}$ apart, measured counterclockwise from the polar axis (the positive $x$-axis).</p>",
+   "figure": "polar-coordinates-points"
+  },
+  "polar-coordinates-s2": {
+   "kind": "table",
+   "title": "Four points in rectangular coordinates",
+   "table": {
+    "caption": "Four points named by their rectangular coordinates (x, y)",
+    "cols": [
+     "Point",
+     "$x$",
+     "$y$"
+    ],
+    "rows": [
+     [
+      "U",
+      "$-3$",
+      "$3$"
+     ],
+     [
+      "V",
+      "$0$",
+      "$5$"
+     ],
+     [
+      "W",
+      "$1$",
+      "$-\\sqrt{3}$"
+     ],
+     [
+      "Z",
+      "$-4$",
+      "$0$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-polar-coordinates-1",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polar-coordinates-s1",
+   "q": "Which polar coordinates $(r, \\theta)$ name point Q in the diagram?",
+   "type": "single",
+   "options": [
+    "$\\left(2, \\frac{5\\pi}{6}\\right)$",
+    "$\\left(\\frac{5\\pi}{6}, 2\\right)$",
+    "$\\left(2, \\frac{\\pi}{6}\\right)$",
+    "$\\left(-2, \\frac{5\\pi}{6}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Q is on the circle of radius $2$, on the ray $\\frac{5\\pi}{6}$ (five steps of $\\frac{\\pi}{6}$ from the polar axis). Polar coordinates list the distance first, then the angle: $\\left(2, \\frac{5\\pi}{6}\\right)$.",
+    "options": [
+     "Right: distance $2$, angle $\\frac{5\\pi}{6}$.",
+     "The order is $(r, \\theta)$: distance first, then angle.",
+     "The ray at $\\frac{\\pi}{6}$ is in Quadrant I; Q is in Quadrant II.",
+     "A negative $r$ points the opposite way, into Quadrant IV."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-2",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-coordinates-s1",
+   "q": "What are the rectangular coordinates of point P in the diagram?",
+   "type": "single",
+   "options": [
+    "$\\left(\\frac{3\\sqrt{3}}{2}, \\frac{3}{2}\\right)$",
+    "$\\left(\\frac{3}{2}, \\frac{3\\sqrt{3}}{2}\\right)$",
+    "$\\left(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right)$",
+    "$\\left(3, \\frac{\\pi}{6}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "P is $\\left(3, \\frac{\\pi}{6}\\right)$ in polar coordinates. $x = r\\cos\\theta = 3\\cdot\\frac{\\sqrt{3}}{2} = \\frac{3\\sqrt{3}}{2}$ and $y = r\\sin\\theta = 3\\cdot\\frac{1}{2} = \\frac{3}{2}$.",
+    "options": [
+     "Right: $x = 3\\cos\\frac{\\pi}{6}$, $y = 3\\sin\\frac{\\pi}{6}$.",
+     "This swaps sine and cosine; $x$ uses cosine.",
+     "This is the point on the unit circle; multiply by $r = 3$.",
+     "That is the polar form of P, not its rectangular coordinates."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-3",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polar-coordinates-s1",
+   "q": "Which pair is another set of polar coordinates for point Q in the diagram?",
+   "type": "single",
+   "options": [
+    "$\\left(-2, \\frac{11\\pi}{6}\\right)$",
+    "$\\left(2, -\\frac{5\\pi}{6}\\right)$",
+    "$\\left(-2, \\frac{5\\pi}{6}\\right)$",
+    "$\\left(2, \\frac{11\\pi}{6}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With a negative $r$, turn to the angle and then move backward through the pole. The ray $\\frac{11\\pi}{6}$ points into Quadrant IV, so $r = -2$ lands $2$ units in the opposite direction, $\\frac{11\\pi}{6} - \\pi = \\frac{5\\pi}{6}$: that is Q.",
+    "options": [
+     "Right: the opposite ray of $\\frac{11\\pi}{6}$ is $\\frac{5\\pi}{6}$.",
+     "$-\\frac{5\\pi}{6}$ is the same ray as $\\frac{7\\pi}{6}$, in Quadrant III.",
+     "$r = -2$ at $\\frac{5\\pi}{6}$ lands in Quadrant IV, opposite Q.",
+     "$r = 2$ at $\\frac{11\\pi}{6}$ is in Quadrant IV."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-4",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polar-coordinates-s1",
+   "q": "What are the rectangular coordinates of point R in the diagram?",
+   "type": "single",
+   "options": [
+    "$(0, -4)$",
+    "$(-4, 0)$",
+    "$(0, 4)$",
+    "$(4, 0)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "R is $\\left(4, \\frac{3\\pi}{2}\\right)$. $x = 4\\cos\\frac{3\\pi}{2} = 0$ and $y = 4\\sin\\frac{3\\pi}{2} = -4$.",
+    "options": [
+     "Right: straight below the pole, $4$ units.",
+     "That point is at angle $\\pi$, to the left of the pole.",
+     "That point is at angle $\\frac{\\pi}{2}$, above the pole.",
+     "That point is on the polar axis, at angle $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-5",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polar-coordinates-s2",
+   "q": "Point U in the table has rectangular coordinates $(-3, 3)$. Find $r > 0$ for U in polar coordinates. Give an exact value.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "3sqrt(2)",
+    "mistakes": [
+     {
+      "value": 18,
+      "why": "That is $r^2 = x^2 + y^2$; take the square root."
+     },
+     {
+      "value": 6,
+      "why": "That adds the sizes of the coordinates. The distance from the pole is $\\sqrt{x^2 + y^2}$."
+     },
+     {
+      "value": 0,
+      "why": "That is $x + y$. Use $r = \\sqrt{x^2 + y^2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$r = \\sqrt{x^2 + y^2} = \\sqrt{9 + 9} = \\sqrt{18} = 3\\sqrt{2}$."
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-6",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polar-coordinates-s2",
+   "q": "For point U, $(-3, 3)$, which angle $\\theta$ in $[0, 2\\pi)$ goes with $r = 3\\sqrt{2}$?",
+   "type": "single",
+   "options": [
+    "$\\frac{3\\pi}{4}$",
+    "$-\\frac{\\pi}{4}$",
+    "$\\frac{7\\pi}{4}$",
+    "$\\frac{\\pi}{4}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\tan\\theta = \\frac{y}{x} = \\frac{3}{-3} = -1$, and $\\tan^{-1}(-1) = -\\frac{\\pi}{4}$. But U is in Quadrant II ($x < 0$, $y > 0$), and $\\tan^{-1}$ only returns angles in Quadrants I and IV. Add $\\pi$: $\\theta = \\frac{3\\pi}{4}$.",
+    "options": [
+     "Right: Quadrant II, reference angle $\\frac{\\pi}{4}$.",
+     "That is $\\tan^{-1}(-1)$, which points into Quadrant IV, and it is not in $[0, 2\\pi)$.",
+     "$\\frac{7\\pi}{4}$ points into Quadrant IV; with $r > 0$ that names $(3, -3)$.",
+     "$\\frac{\\pi}{4}$ points into Quadrant I, where both coordinates are positive."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-7",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polar-coordinates-s2",
+   "q": "Which polar coordinates name point W, $\\left(1, -\\sqrt{3}\\right)$?",
+   "type": "single",
+   "options": [
+    "$\\left(2, \\frac{5\\pi}{3}\\right)$",
+    "$\\left(2, \\frac{2\\pi}{3}\\right)$",
+    "$\\left(4, \\frac{5\\pi}{3}\\right)$",
+    "$\\left(2, \\frac{\\pi}{3}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$r = \\sqrt{1 + 3} = 2$. $\\tan\\theta = -\\sqrt{3}$ with $x > 0$ and $y < 0$: Quadrant IV, reference angle $\\frac{\\pi}{3}$, so $\\theta = 2\\pi - \\frac{\\pi}{3} = \\frac{5\\pi}{3}$.",
+    "options": [
+     "Right: $r = 2$, Quadrant IV.",
+     "$\\tan\\frac{2\\pi}{3} = -\\sqrt{3}$ too, but that ray is in Quadrant II; W has $x > 0$.",
+     "$4$ is $r^2$; take the square root.",
+     "$\\frac{\\pi}{3}$ is in Quadrant I; W has a negative $y$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-8",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polar-coordinates-s2",
+   "q": "Which polar coordinates with $r > 0$ name point Z, $(-4, 0)$?",
+   "type": "single",
+   "options": [
+    "$(4, \\pi)$",
+    "$(4, 0)$",
+    "$(-4, \\pi)$",
+    "$\\left(4, \\frac{\\pi}{2}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Z is $4$ units from the pole, on the negative $x$-axis, which is the ray $\\theta = \\pi$.",
+    "options": [
+     "Right: distance $4$, direction $\\pi$.",
+     "Angle $0$ points along the positive $x$-axis, to $(4, 0)$.",
+     "$r = -4$ at angle $\\pi$ goes back through the pole to $(4, 0)$; the question also asks for $r > 0$.",
+     "Angle $\\frac{\\pi}{2}$ points straight up, to $(0, 4)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-9",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the polar form of the complex number $z = -1 + i\\sqrt{3}$?",
+   "type": "single",
+   "options": [
+    "$2\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right)$",
+    "$2\\left(\\cos\\frac{\\pi}{3} + i\\sin\\frac{\\pi}{3}\\right)$",
+    "$4\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right)$",
+    "$2\\left(\\cos\\frac{5\\pi}{6} + i\\sin\\frac{5\\pi}{6}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In the complex plane, $z$ is the point $\\left(-1, \\sqrt{3}\\right)$. Its distance from $0$ is $\\sqrt{1 + 3} = 2$, and it is in Quadrant II with reference angle $\\frac{\\pi}{3}$, so $\\theta = \\frac{2\\pi}{3}$.",
+    "options": [
+     "Right: $r = 2$, $\\theta = \\frac{2\\pi}{3}$.",
+     "$\\frac{\\pi}{3}$ is in Quadrant I; the real part is negative.",
+     "$4$ is $r^2$; $r = \\sqrt{(-1)^2 + (\\sqrt{3})^2} = 2$.",
+     "$\\cos\\frac{5\\pi}{6} = -\\frac{\\sqrt{3}}{2}$, which gives the real part $-\\sqrt{3}$, not $-1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-10",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Write the complex number $4\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)$ in the form $a + bi$.",
+   "type": "single",
+   "options": [
+    "$4i$",
+    "$4$",
+    "$-4i$",
+    "$4 + 4i$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\cos\\frac{\\pi}{2} = 0$ and $\\sin\\frac{\\pi}{2} = 1$, so the number is $4(0 + i) = 4i$: $4$ units up the imaginary axis.",
+    "options": [
+     "Right: $a = 4\\cos\\frac{\\pi}{2} = 0$, $b = 4\\sin\\frac{\\pi}{2} = 4$.",
+     "That is the point at angle $0$; at $\\frac{\\pi}{2}$ the real part is $0$.",
+     "$\\sin\\frac{\\pi}{2} = +1$, so the imaginary part is positive.",
+     "$\\cos\\frac{\\pi}{2} = 0$, so there is no real part."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-11",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "The point $(5, 2)$ is in Quadrant I. Find its polar angle $\\theta$, in radians, correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 0.3805063771123649,
+    "unit": "radians",
+    "mistakes": [
+     {
+      "value": 1.1902899496825317,
+      "why": "That is $\\tan^{-1}\\left(\\frac{5}{2}\\right)$. The tangent of the angle is $\\frac{y}{x} = \\frac{2}{5}$."
+     },
+     {
+      "value": 21.80140948635181,
+      "why": "That is the angle in degrees; use radian mode."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\tan\\theta = \\frac{2}{5}$, and the point is in Quadrant I, so $\\theta = \\tan^{-1}(0.4) \\approx 0.380506$ (calculator in radian mode)."
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-12",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Rewrite the vertical line $x = 4$ as a polar equation, solved for $r$.",
+   "type": "expr",
+   "expr": {
+    "answer": "4/cos(theta)",
+    "vars": [
+     "theta"
+    ],
+    "domain": [
+     -1.2,
+     1.2
+    ],
+    "mode": "exact",
+    "lhs": "r =",
+    "mistakes": [
+     {
+      "expr": "4cos(theta)",
+      "why": "Solve $r\\cos\\theta = 4$ by dividing by $\\cos\\theta$, not multiplying."
+     },
+     {
+      "expr": "4/sin(theta)",
+      "why": "$x = r\\cos\\theta$; $r\\sin\\theta$ is $y$. The line $y = 4$ would give $\\frac{4}{\\sin\\theta}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Substitute $x = r\\cos\\theta$: $r\\cos\\theta = 4$, so $r = \\frac{4}{\\cos\\theta}$ (which is $4\\sec\\theta$)."
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-13",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which polar coordinates name the rectangular point $(0, 3)$? Select every pair.",
+   "type": "multi",
+   "options": [
+    "$\\left(3, \\frac{\\pi}{2}\\right)$",
+    "$\\left(-3, \\frac{3\\pi}{2}\\right)$",
+    "$\\left(3, \\frac{3\\pi}{2}\\right)$",
+    "$\\left(-3, \\frac{\\pi}{2}\\right)$",
+    "$\\left(\\frac{\\pi}{2}, 3\\right)$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$(0, 3)$ is $3$ units straight up. That is $r = 3$ at $\\frac{\\pi}{2}$, or $r = -3$ at the opposite ray $\\frac{3\\pi}{2}$.",
+    "options": [
+     "Yes: $3$ units along the ray $\\frac{\\pi}{2}$.",
+     "Yes: the ray $\\frac{3\\pi}{2}$ points down, and $r = -3$ reverses it to point up.",
+     "No: $3$ units along $\\frac{3\\pi}{2}$ is $(0, -3)$.",
+     "No: $r = -3$ reverses the upward ray, giving $(0, -3)$.",
+     "No: the order is $(r, \\theta)$; this pair has $r = \\frac{\\pi}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-14",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are the rectangular coordinates of the polar point $\\left(-2, \\frac{\\pi}{6}\\right)$?",
+   "type": "single",
+   "options": [
+    "$\\left(-\\sqrt{3}, -1\\right)$",
+    "$\\left(\\sqrt{3}, 1\\right)$",
+    "$\\left(-1, -\\sqrt{3}\\right)$",
+    "$\\left(-\\sqrt{3}, 1\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x = r\\cos\\theta = -2\\cdot\\frac{\\sqrt{3}}{2} = -\\sqrt{3}$ and $y = r\\sin\\theta = -2\\cdot\\frac{1}{2} = -1$. The negative $r$ puts the point in Quadrant III, opposite the ray $\\frac{\\pi}{6}$.",
+    "options": [
+     "Right: both coordinates flip sign because $r < 0$.",
+     "That uses $r = 2$; the negative $r$ points the opposite way.",
+     "This swaps sine and cosine; $x$ uses cosine.",
+     "Only $x$ was negated; $y = r\\sin\\theta = -1$ too."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-15",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A point has polar coordinates $(2, \\theta)$. As $\\theta$ increases from $0$ to $\\frac{\\pi}{2}$, predict how each quantity changes.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "Its x-coordinate",
+     "answer": "down",
+     "why": "$x = 2\\cos\\theta$, and cosine decreases from $1$ to $0$ on this interval, so $x$ goes from $2$ to $0$."
+    },
+    {
+     "name": "Its y-coordinate",
+     "answer": "up",
+     "why": "$y = 2\\sin\\theta$, and sine increases from $0$ to $1$, so $y$ goes from $0$ to $2$."
+    },
+    {
+     "name": "Its distance from the pole",
+     "answer": "none",
+     "why": "The distance from the pole is $|r| = 2$ for every $\\theta$: the point moves along a circle."
+    }
+   ],
+   "why": {
+    "correct": "With $r$ fixed, the point travels a quarter of the circle of radius $2$."
+   }
+  },
+  {
+   "id": "pcalc-polar-coordinates-16",
+   "unit": "unit-3",
+   "topic": "polar-coordinates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are the rectangular coordinates of the polar point $\\left(6, -\\frac{\\pi}{3}\\right)$?",
+   "type": "single",
+   "options": [
+    "$\\left(3, -3\\sqrt{3}\\right)$",
+    "$\\left(-3, 3\\sqrt{3}\\right)$",
+    "$\\left(3\\sqrt{3}, -3\\right)$",
+    "$\\left(3, 3\\sqrt{3}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x = 6\\cos\\left(-\\frac{\\pi}{3}\\right) = 6\\cdot\\frac{1}{2} = 3$ and $y = 6\\sin\\left(-\\frac{\\pi}{3}\\right) = 6\\cdot\\left(-\\frac{\\sqrt{3}}{2}\\right) = -3\\sqrt{3}$. A negative angle turns clockwise, into Quadrant IV.",
+    "options": [
+     "Right: Quadrant IV, $x = 3$, $y = -3\\sqrt{3}$.",
+     "Cosine is even, so $\\cos\\left(-\\frac{\\pi}{3}\\right) = +\\frac{1}{2}$ and $x$ is positive.",
+     "This swaps sine and cosine.",
+     "Sine is odd, so $\\sin\\left(-\\frac{\\pi}{3}\\right)$ is negative and $y < 0$."
+    ]
+   }
+  }
+ ]
+}

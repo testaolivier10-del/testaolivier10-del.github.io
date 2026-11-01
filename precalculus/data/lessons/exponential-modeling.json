@@ -1,0 +1,66 @@
+{
+ "topic": "exponential-modeling",
+ "hook": "A new phone costs \\$800. Two years later it sells for \\$512. Assume it keeps losing the same fraction of its value each year, and two numbers become a model that predicts its value at any time, and how long until it is worth \\$100.",
+ "prereq": [
+  {
+   "q": "A quantity decreases by $15\\%$ each year. What is the decay factor?",
+   "options": [
+    "$0.85$",
+    "$0.15$",
+    "$1.15$",
+    "$-0.15$"
+   ],
+   "correct": 0,
+   "why": "$1 - 0.15 = 0.85$.",
+   "review": "exponential-functions"
+  },
+  {
+   "q": "Rewrite $1.2^{t}$ using a monthly factor, with $t$ in years.",
+   "options": [
+    "$(1.2^{1/12})^{12t}$",
+    "$1.2^{t/12}$",
+    "$(\\frac{1.2}{12})^{12t}$",
+    "$1.2^{12t}$"
+   ],
+   "correct": 0,
+   "why": "$(1.2^{1/12})^{12t} = 1.2^{t}$ by the power rule.",
+   "review": "exponential-manipulation"
+  }
+ ],
+ "figure": {
+  "figure": "exponential-modeling-phone",
+  "caption": "Two data points, $(0, 800)$ and $(2, 512)$, give $V(t) = 800(0.8)^t$: the phone keeps $80\\%$ of its value each year."
+ },
+ "chain": [
+  {
+   "cause": "Know the initial value and the ratio, or two points, or many data points",
+   "effect": "find $a$ and $b$ directly, by the ratio over the gap, or by exponential regression"
+  },
+  {
+   "cause": "Read the base $b$ as a growth factor",
+   "effect": "percent change $(b - 1) \\cdot 100$ per unit; a $k$-unit factor $b^k$, a $\\frac{1}{k}$-unit factor $b^{1/k}$"
+  },
+  {
+   "cause": "Use the stored model",
+   "effect": "predict an output, or find the input for a given output with the calculator, inside the domain the context allows"
+  }
+ ],
+ "ideas": [
+  "Two points $(0, a)$ and $(k, y)$: $b^k = \\frac{y}{a}$, so $b = \\left(\\frac{y}{a}\\right)^{1/k}$.",
+  "Exponential regression on the calculator fits $y = ab^x$ to all the data; store $a$ and $b$.",
+  "Other time units: a yearly factor $b$ is a monthly factor $b^{1/12}$; a half-life $h$ gives $\\left(\\frac{1}{2}\\right)^{t/h}$."
+ ],
+ "misconception": {
+  "wrong": "A $30\\%$ weekly growth is $\\frac{30\\%}{7}$ per day, a daily factor of $1 + \\frac{0.3}{7}$.",
+  "right": "Growth compounds: the daily factor $d$ satisfies $d^7 = 1.3$, so $d = 1.3^{1/7} \\approx 1.038$."
+ },
+ "check": [
+  "pcalc-exponential-modeling-6",
+  "pcalc-exponential-modeling-7",
+  "pcalc-exponential-modeling-8",
+  "pcalc-exponential-modeling-10",
+  "pcalc-exponential-modeling-12",
+  "pcalc-exponential-modeling-14"
+ ],
+ "summary": "Build $ab^t$ from an initial value and a ratio, from two points, or by exponential regression. The base is the growth factor; rewrite it for other time units with rational exponents. Predict and solve with the stored model, and only where the context and data allow."
+}

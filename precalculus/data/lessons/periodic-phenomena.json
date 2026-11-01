@@ -1,0 +1,71 @@
+{
+ "topic": "periodic-phenomena",
+ "hook": "Your heart pushes out the same pressure wave with every beat. A lighthouse beam sweeps past the same window every few seconds, and the sea rises and falls about twice a day. Each of these repeats a pattern, so once you know one full cycle you can predict the output at any time at all, next minute or next year.",
+ "prereq": [
+  {
+   "q": "A table gives $g(2) = 7$ and $g(6) = 19$. What is the average rate of change of $g$ on $[2, 6]$?",
+   "options": [
+    "$3$",
+    "$12$",
+    "$\\frac{1}{3}$",
+    "$6.5$"
+   ],
+   "correct": 0,
+   "why": "Change in output over change in input: $\\frac{19 - 7}{6 - 2} = \\frac{12}{4} = 3$.",
+   "review": "rates-of-change"
+  },
+  {
+   "q": "Over the equal intervals $[0, 1]$, $[1, 2]$ and $[2, 3]$, the average rates of change of $h$ are $5$, $3$ and $1$. What does this suggest about the graph of $h$ on $[0, 3]$?",
+   "options": [
+    "It is concave down",
+    "It is concave up",
+    "It is decreasing",
+    "It is a straight line"
+   ],
+   "correct": 0,
+   "why": "The rates are positive, so $h$ is increasing, and they get smaller over equal intervals, so the graph is concave down.",
+   "review": "change-in-tandem"
+  }
+ ],
+ "figure": {
+  "figure": "periodic-phenomena-cycle",
+  "caption": "The tank's depth repeats every 6 minutes. The green cycle on $[0, 6]$ is all you need: every later cycle is a copy of it."
+ },
+ "chain": [
+  {
+   "cause": "The outputs of $f$ repeat the same pattern every $P$ units of input",
+   "effect": "$f$ is periodic, and the smallest such positive $P$ is the period: $f(x + P) = f(x)$ for every $x$"
+  },
+  {
+   "cause": "You know $f$ on one full cycle, an interval of length $P$",
+   "effect": "copy that piece of graph left and right, $P$ units at a time, to get the whole graph"
+  },
+  {
+   "cause": "You need the output at an input far from the known cycle",
+   "effect": "add or subtract whole periods until the input lands in the cycle: with $P = 6$, $f(47) = f(47 - 7 \\cdot 6) = f(5)$"
+  },
+  {
+   "cause": "Every feature of one cycle repeats",
+   "effect": "intervals where $f$ increases or decreases, concavity and average rates of change all repeat every $P$ units"
+  }
+ ],
+ "ideas": [
+  "A <b>periodic function</b> repeats its outputs: there is a positive number $P$ with $f(x + P) = f(x)$ for every input $x$. The smallest such $P$ is the <b>period</b>.",
+  "One full cycle, any interval of length $P$, holds all the information. Shift inputs by whole periods to reach any other input.",
+  "Over any interval one full period long, the average rate of change is $0$, because the output ends where it started.",
+  "Two inputs can share an output without being a period apart: a cycle usually passes through each in-between value twice."
+ ],
+ "misconception": {
+  "wrong": "The period is the distance between two inputs that have the same output.",
+  "right": "Inside one cycle the graph usually reaches the same output twice, once going up and once going down. The period is the length of the smallest interval after which the whole pattern repeats, so check that the graph matches from that point on, not only one value."
+ },
+ "check": [
+  "pcalc-periodic-phenomena-1",
+  "pcalc-periodic-phenomena-2",
+  "pcalc-periodic-phenomena-3",
+  "pcalc-periodic-phenomena-4",
+  "pcalc-periodic-phenomena-9",
+  "pcalc-periodic-phenomena-15"
+ ],
+ "summary": "A periodic function repeats its outputs every $P$ units of input, $f(x + P) = f(x)$, and the smallest such $P$ is the period. Learn one cycle and you know the function everywhere: shift any input by whole periods into the cycle. Increasing and decreasing intervals, concavity and rates of change repeat every period, and the average rate of change over a full period is $0$."
+}

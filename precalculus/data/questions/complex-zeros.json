@@ -1,0 +1,502 @@
+{
+ "stimuli": {
+  "complex-zeros-s1": {
+   "kind": "graph",
+   "title": "The graph of a polynomial function $p$",
+   "plot": {
+    "label": "Graph of a polynomial function p of degree 4: it crosses the x-axis at x = -3 and x = 2 and touches it without crossing at x = -1; it is above the axis between -3 and 2 and below it outside",
+    "x": [
+     -4,
+     3
+    ],
+    "y": [
+     -7,
+     6
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "-0.25(x + 3)(x + 1)^2(x - 2)",
+      "domain": [
+       -3.4,
+       2.4
+      ],
+      "label": "p"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -3,
+       0
+      ]
+     },
+     {
+      "at": [
+       -1,
+       0
+      ]
+     },
+     {
+      "at": [
+       2,
+       0
+      ]
+     },
+     {
+      "at": [
+       0,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  "complex-zeros-s2": {
+   "kind": "table",
+   "title": "Equally spaced outputs",
+   "table": {
+    "caption": "Values of f(x) = x^3 - 2x^2 + 1 at x = 0, 1, 2, 3, 4, 5",
+    "cols": [
+     "$x$",
+     "0",
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "rows": [
+     [
+      "$f(x)$",
+      "1",
+      "0",
+      "1",
+      "10",
+      "33",
+      "76"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-complex-zeros-1",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "complex-zeros-s1",
+   "q": "The graph shows a polynomial function $p$ of degree $4$. Which zero of $p$ has even multiplicity?",
+   "type": "single",
+   "options": [
+    "$x = -3$",
+    "$x = 2$",
+    "$x = -1$",
+    "$x = 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At a zero of even multiplicity the factor is squared (or raised to another even power), so it does not change sign: the graph touches the $x$-axis without crossing.",
+    "options": [
+     "The graph crosses the axis at $x = -3$, which goes with odd multiplicity.",
+     "The graph crosses at $x = 2$ as well: odd multiplicity.",
+     "Right: the graph touches the axis at $x = -1$ and turns back without crossing.",
+     "$p(0) = 1.5$, so $0$ is not a zero at all."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-2",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "complex-zeros-s1",
+   "q": "Which could be a formula for $p$?",
+   "type": "single",
+   "options": [
+    "$0.25(x + 3)(x + 1)^2(x - 2)$",
+    "$-0.25(x + 3)(x + 1)(x - 2)$",
+    "$-0.25(x - 3)(x - 1)^2(x + 2)$",
+    "$-0.25(x + 3)(x + 1)^2(x - 2)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A zero at $x = a$ gives a factor $x - a$. The touching zero $-1$ needs $(x + 1)^2$. Then check one point: at $x = 0$ the formula must give the graph's $1.5$.",
+    "options": [
+     "This has the right zeros but the opposite sign: its output at $0$ is $-1.5$, below the axis.",
+     "Degree $3$, and $x = -1$ appears once, so the graph would cross there.",
+     "These zeros are $3$, $1$ and $-2$, the opposites of the ones on the graph.",
+     "Right: zeros $-3$, $-1$ (squared) and $2$, and $p(0) = -0.25(3)(1)(-2) = 1.5$ matches the graph."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-3",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "complex-zeros-s1",
+   "q": "$p$ has degree $4$. How many complex zeros does $p$ have, counting multiplicity?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "$3$ counts the different zeros $-3$, $-1$ and $2$; the zero $-1$ counts twice."
+     },
+     {
+      "value": 2,
+      "why": "Count the zeros that cross and the touching zero, with its multiplicity."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A polynomial of degree $n$ has exactly $n$ complex zeros, counting multiplicity. Here: $-3$ (once), $-1$ (twice) and $2$ (once), $4$ in all, all of them real."
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-4",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "complex-zeros-s1",
+   "q": "What is the sign of $p(x)$ on the interval $(-1, 2)$?",
+   "type": "single",
+   "options": [
+    "Positive",
+    "Negative",
+    "Zero",
+    "It changes sign at $x = 0.5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$p$ can change sign only at a zero of odd multiplicity. Between $-1$ and $2$ there is no zero, and the graph is above the axis.",
+    "options": [
+     "Right: the graph is above the $x$-axis there; for example $p(0) = 1.5$.",
+     "The graph is below the axis only left of $-3$ and right of $2$.",
+     "$p$ is $0$ only at its zeros, not on a whole interval.",
+     "Between consecutive zeros the sign stays the same."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-5",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "complex-zeros-s1",
+   "q": "Why does the graph of $p$ have the same sign just left and just right of $x = -1$?",
+   "type": "single",
+   "options": [
+    "Because $p(-1)$ is a local maximum",
+    "Because the factor $(x + 1)^2$ is never negative",
+    "Because $-1$ is between $-3$ and $2$",
+    "Because $p$ has degree $4$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Near $x = -1$ the other factors keep their signs, and $(x + 1)^2 \\ge 0$ on both sides. So $p$ has the same sign on both sides: the graph touches the axis and turns back.",
+    "options": [
+     "At $x = -1$ the output $0$ is a local minimum of $p$, but that is a result, not the reason.",
+     "Right: a squared factor does not change sign, so $p$ keeps its sign across $x = -1$.",
+     "Many inputs lie between $-3$ and $2$; the reason is the factor's even power.",
+     "The degree counts zeros; it does not decide what happens at one zero."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-6",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "complex-zeros-s2",
+   "q": "For the outputs in the table, which differences are constant?",
+   "type": "single",
+   "options": [
+    "The first differences, each equal to $1$",
+    "The second differences, each equal to $6$",
+    "The third differences, each equal to $6$",
+    "No level of differences is constant"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "First differences $-1, 1, 9, 23, 43$; second $2, 8, 14, 20$; third $6, 6, 6$. Constant third differences over equal steps fit a polynomial of degree $3$.",
+    "options": [
+     "The first differences are $-1, 1, 9, 23, 43$.",
+     "The second differences are $2, 8, 14, 20$; they change by $6$.",
+     "Right: $8 - 2 = 6$, $14 - 8 = 6$, $20 - 14 = 6$.",
+     "Keep differencing: the third differences settle at $6$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-7",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "complex-zeros-s2",
+   "q": "Using only the differences, what is $f(6)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 145,
+    "mistakes": [
+     {
+      "value": 119,
+      "why": "$76 + 43$ repeats the last first difference; it grows by $20 + 6 = 26$, to $69$."
+     },
+     {
+      "value": 102,
+      "why": "$76 + 26$ adds the next second difference; add the next first difference, $43 + 26 = 69$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Next third difference $6$; next second difference $20 + 6 = 26$; next first difference $43 + 26 = 69$; so $f(6) = 76 + 69 = 145$. Check: $216 - 72 + 1 = 145$."
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-8",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "complex-zeros-s2",
+   "q": "The table shows $f(1) = 0$. What are all the zeros of $f(x) = x^3 - 2x^2 + 1$?",
+   "type": "single",
+   "options": [
+    "Just $x = 1$",
+    "$x = 1$ and $x = \\frac{1 \\pm \\sqrt{5}}{2}$",
+    "$x = 1$ and $x = \\frac{-1 \\pm \\sqrt{5}}{2}$",
+    "$x = 1$ and $x = \\frac{1 \\pm i\\sqrt{3}}{2}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f(1) = 0$ gives the factor $x - 1$: $x^3 - 2x^2 + 1 = (x - 1)(x^2 - x - 1)$. Then $x = \\frac{1 \\pm \\sqrt{1 + 4}}{2} = \\frac{1 \\pm \\sqrt{5}}{2}$. Three zeros for degree $3$.",
+    "options": [
+     "$x - 1$ is a factor, and the remaining quadratic $x^2 - x - 1$ has two more zeros.",
+     "Right: $f(x) = (x - 1)(x^2 - x - 1)$, and the quadratic formula gives $\\frac{1 \\pm \\sqrt{5}}{2}$.",
+     "For $x^2 - x - 1$, $-b = 1$, so the solutions are $\\frac{1 \\pm \\sqrt{5}}{2}$.",
+     "The discriminant is $1 + 4 = 5$, positive, so these zeros are real."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-9",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "complex-zeros-s2",
+   "q": "What is the least degree of a polynomial that fits the table, judging only by its differences?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "$6$ is the value of the constant differences; the degree is which differences are constant."
+     },
+     {
+      "value": 2,
+      "why": "The second differences are not constant; the third ones are."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For equally spaced inputs, constant $n$th differences fit a polynomial of degree $n$. Here the third differences are constant, so degree $3$."
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-10",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A polynomial function with real coefficients has $2 + i$ as a zero. Which must also be a zero?",
+   "type": "single",
+   "options": [
+    "$-2 - i$",
+    "$2 - i$",
+    "$-2 + i$",
+    "$i$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With real coefficients, the non-real zeros come in conjugate pairs $a \\pm bi$. So $2 - i$ is also a zero.",
+    "options": [
+     "This negates both parts; the conjugate changes only the sign of the imaginary part.",
+     "Right: non-real zeros of a polynomial with real coefficients come in conjugate pairs.",
+     "The real part stays $2$.",
+     "Only the complex conjugate of $2 + i$ is forced to be a zero."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-11",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the polynomial of least degree with leading coefficient $1$ and real coefficients whose zeros include $1$ and $2i$.",
+   "type": "expr",
+   "expr": {
+    "answer": "(x - 1)(x^2 + 4)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "lhs": "p(x) =",
+    "mistakes": [
+     {
+      "expr": "(x - 1)(x - 2)",
+      "why": "$2i$ is not $2$. Use the factors $(x - 2i)(x + 2i) = x^2 + 4$."
+     },
+     {
+      "expr": "(x - 1)(x^2 - 4)",
+      "why": "$(x - 2i)(x + 2i) = x^2 - 4i^2 = x^2 + 4$, not $x^2 - 4$."
+     },
+     {
+      "expr": "(x + 1)(x^2 + 4)",
+      "why": "The zero $1$ gives the factor $x - 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Real coefficients force the conjugate $-2i$ to be a zero too. $(x - 2i)(x + 2i) = x^2 + 4$, so $p(x) = (x - 1)(x^2 + 4) = x^3 - x^2 + 4x - 4$."
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-12",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = x^4 - 3x^2$, $g(x) = x^3 + x$ and $h(x) = x^3 + 1$. Which statements are true? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$f$ is an even function.",
+    "$g$ is an even function.",
+    "$g$ is an odd function.",
+    "$h$ is an odd function."
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Even: $f(-x) = f(x)$ (symmetric about the $y$-axis). Odd: $f(-x) = -f(x)$ (symmetric about the origin). $h$ is neither: the constant $1$ breaks the odd symmetry.",
+    "options": [
+     "True: $f(-x) = x^4 - 3x^2 = f(x)$.",
+     "False: $g(-x) = -x^3 - x = -g(x)$.",
+     "True: $g(-x) = -g(x)$.",
+     "False: $h(-x) = -x^3 + 1$, which is not $-h(x) = -x^3 - 1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-13",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A polynomial function $p$ of degree $5$ has real coefficients. Its zeros include $3$, with multiplicity $2$, and $1 + i$. How many more zeros does $p$ have, counting multiplicity?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$1 + i$ brings its conjugate $1 - i$ with it, so four zeros are already known."
+     },
+     {
+      "value": 3,
+      "why": "The zero $3$ counts twice because of its multiplicity."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Degree $5$ means $5$ zeros counting multiplicity. Known: $3$, $3$, $1 + i$ and its conjugate $1 - i$. That is $4$, so $1$ more remains (and it must be real)."
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-14",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does the graph of $q(x) = x^2(x - 4)^3$ behave at its zeros?",
+   "type": "single",
+   "options": [
+    "It crosses at $x = 0$ and touches at $x = 4$.",
+    "It touches at both $x = 0$ and $x = 4$.",
+    "It crosses at both $x = 0$ and $x = 4$.",
+    "It touches at $x = 0$ and crosses at $x = 4$."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Even multiplicity: no sign change, the graph touches. Odd multiplicity: a sign change, the graph crosses (flattening as it does when the multiplicity is $3$ or more).",
+    "options": [
+     "Swapped: $x^2$ has an even power and $(x - 4)^3$ an odd one.",
+     "Multiplicity $3$ is odd, so the graph crosses at $x = 4$.",
+     "Multiplicity $2$ is even, so the graph only touches at $x = 0$.",
+     "Right: even multiplicity $2$ at $0$, odd multiplicity $3$ at $4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-complex-zeros-15",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "$f$ is an odd function and $f(2) = 5$. What is $f(-2)$?",
+   "type": "single",
+   "options": [
+    "$5$",
+    "$-5$",
+    "$\\frac{1}{5}$",
+    "$-2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For an odd function, $f(-x) = -f(x)$: the graph is symmetric about the origin, so $(2, 5)$ pairs with $(-2, -5)$.",
+    "options": [
+     "That is what an even function would give.",
+     "Right: odd means $f(-x) = -f(x)$.",
+     "Odd symmetry negates the output; it does not take a reciprocal.",
+     "$-2$ is the input; the output is $-f(2)$."
+    ]
+   }
+  }
+ ]
+}

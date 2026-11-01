@@ -1,0 +1,526 @@
+{
+ "stimuli": {
+  "parametric-motion-s1": {
+   "kind": "graph",
+   "title": "Graphs of $x(t)$ and $y(t)$ for a moving particle",
+   "text": "<p>A particle moves in the plane with position $(x(t), y(t))$ for $0 \\le t \\le 4$, where $x(t) = t^3 - 6t^2 + 9t$ and $y(t) = 4t - t^2$. The graph shows each coordinate against time.</p>",
+   "plot": {
+    "label": "Graphs of x(t) = t cubed minus 6t squared plus 9t and y(t) = 4t minus t squared against t for t from 0 to 4",
+    "x": [
+     -0.3,
+     4.3
+    ],
+    "y": [
+     -0.5,
+     4.8
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "t",
+    "yLabel": "position",
+    "curves": [
+     {
+      "fn": "x^3 - 6x^2 + 9x",
+      "domain": [
+       0,
+       4
+      ],
+      "label": "x(t)",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     },
+     {
+      "fn": "4x - x^2",
+      "domain": [
+       0,
+       4
+      ],
+      "label": "y(t)",
+      "cls": "s2",
+      "dashed": true,
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ]
+   }
+  },
+  "parametric-motion-s2": {
+   "kind": "table",
+   "title": "A thrown ball",
+   "text": "<p>A ball is thrown from a height of 1.5 meters. Seen from the side, its position $t$ seconds after the throw is $(x(t), y(t))$, in meters.</p>",
+   "table": {
+    "caption": "The model for the ball: horizontal distance x(t) and height y(t), in meters, t seconds after the throw",
+    "cols": [
+     "Coordinate",
+     "Model"
+    ],
+    "rows": [
+     [
+      "$x(t)$ (meters)",
+      "$15t$"
+     ],
+     [
+      "$y(t)$ (meters)",
+      "$-4.9t^2 + 12t + 1.5$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-parametric-motion-1",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-motion-s1",
+   "q": "On which interval is the particle moving to the left?",
+   "type": "single",
+   "options": [
+    "$1 < t < 3$",
+    "$0 < t < 1$",
+    "$2 < t < 4$",
+    "$0 < t < 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The particle moves left where $x(t)$ is decreasing. The graph of $x(t)$ falls from $4$ at $t = 1$ to $0$ at $t = 3$.",
+    "options": [
+     "$x(t)$ decreases on $(1, 3)$: left.",
+     "$x(t)$ increases on $(0, 1)$, so the particle moves right.",
+     "$y(t)$ decreases on $(2, 4)$; that is when the particle moves down.",
+     "$y(t)$ increases on $(0, 2)$; that is when it moves up."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-2",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-motion-s1",
+   "q": "Where is the particle when it is highest?",
+   "type": "single",
+   "options": [
+    "$(2, 4)$",
+    "$(4, 2)$",
+    "$(4, 3)$",
+    "$(0, 3)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The particle is highest where $y(t)$ is largest: $y(2) = 4$. Its position then is $(x(2), y(2)) = (8 - 24 + 18, 4) = (2, 4)$.",
+    "options": [
+     "At $t = 2$: $x(2) = 2$, $y(2) = 4$.",
+     "The coordinates are swapped; $x$ comes first.",
+     "$(4, 3)$ is the point at $t = 1$, where the particle is farthest right, not highest.",
+     "$(0, 3)$ is the point at $t = 3$, after the particle has started down."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-3",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-motion-s1",
+   "q": "On which interval is the particle moving left and down at the same time?",
+   "type": "single",
+   "options": [
+    "$2 < t < 3$",
+    "$1 < t < 2$",
+    "$3 < t < 4$",
+    "$1 < t < 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Left needs $x(t)$ decreasing, on $(1, 3)$. Down needs $y(t)$ decreasing, on $(2, 4)$. Both hold on the overlap, $(2, 3)$.",
+    "options": [
+     "The overlap of $(1, 3)$ and $(2, 4)$ is $(2, 3)$.",
+     "On $(1, 2)$, $y(t)$ is still increasing, so the particle moves left and up.",
+     "On $(3, 4)$, $x(t)$ increases again: right and down.",
+     "This is the whole time it moves left, but for $1 < t < 2$ it is moving up."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-4",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-motion-s1",
+   "q": "At which times in $[0, 4]$ is the particle farthest to the right? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$t = 1$",
+    "$t = 2$",
+    "$t = 3$",
+    "$t = 4$"
+   ],
+   "correct": [
+    0,
+    3
+   ],
+   "why": {
+    "correct": "Farthest right means the largest $x(t)$. The graph of $x(t)$ reaches $4$ twice, at $t = 1$ and at $t = 4$, and is below $4$ everywhere else.",
+    "options": [
+     "$x(1) = 4$, the largest value.",
+     "$x(2) = 2$; $t = 2$ is when the particle is highest.",
+     "$x(3) = 0$; this is when it is farthest left.",
+     "$x(4) = 4$, tied for the largest value."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-5",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "parametric-motion-s1",
+   "q": "At $t = 1$, $x(t)$ changes from increasing to decreasing. Is the particle at rest at $t = 1$?",
+   "type": "single",
+   "options": [
+    "No: $y(t)$ is still increasing then, so the particle is moving up",
+    "Yes: $x(t)$ stops changing, so the particle stops",
+    "Yes: the particle is at its highest point then",
+    "No: $x(t)$ is still increasing at $t = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only the horizontal motion turns around at $t = 1$. $y(t) = 4t - t^2$ increases until $t = 2$, so at $t = 1$ the particle is still rising. It is not at rest.",
+    "options": [
+     "The vertical motion continues: $y(t)$ increases on $(0, 2)$.",
+     "A stop needs both coordinates to stop changing; $y(t)$ keeps increasing.",
+     "The highest point is at $t = 2$, where $y(2) = 4$.",
+     "$x(t)$ reaches its largest value at $t = 1$; it is turning around, not still increasing."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-6",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-motion-s2",
+   "calc": true,
+   "q": "At what time does the ball hit the ground? Give your answer correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 2.568177895622981,
+    "unit": "seconds",
+    "mistakes": [
+     {
+      "value": -0.11919830378624663,
+      "why": "That zero is before the throw. Keep the zero with $t > 0$."
+     },
+     {
+      "value": 2.4489795918367343,
+      "why": "That solves $-4.9t^2 + 12t = 0$ and drops the starting height of 1.5 meters."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The ball is on the ground when $y(t) = 0$. Graph $-4.9x^2 + 12x + 1.5$ and find its zeros: $-0.119$ and $2.568$. Only $t > 0$ makes sense, so $t \\approx 2.568$ seconds."
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-7",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-motion-s2",
+   "calc": true,
+   "q": "How far from the thrower, horizontally, does the ball land? Give your answer correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 38.522668434344716,
+    "unit": "meters",
+    "mistakes": [
+     {
+      "value": 36.73469387755102,
+      "why": "This uses the landing time without the 1.5 meter start. Solve $-4.9t^2 + 12t + 1.5 = 0$."
+     },
+     {
+      "value": 38.55,
+      "why": "Rounding the time to $2.57$ before multiplying changes the third decimal. Store the time and use the stored value."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Store the landing time from $-4.9t^2 + 12t + 1.5 = 0$, $t \\approx 2.568178$. Then $x \\approx 15(2.568178) \\approx 38.523$ meters."
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-8",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-motion-s2",
+   "calc": true,
+   "q": "What is the greatest height the ball reaches? Give your answer in meters, correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 8.846938775510205,
+    "unit": "meters",
+    "mistakes": [
+     {
+      "value": 1.2244897959183672,
+      "why": "That is the time of the top, $t = \\frac{12}{9.8}$; put it into $y(t)$."
+     },
+     {
+      "value": 7.346938775510205,
+      "why": "This leaves out the starting height; $y(t)$ includes the $+ 1.5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y(t)$ is a parabola opening down. Its vertex is at $t = \\frac{-12}{2(-4.9)} \\approx 1.2245$ (or use the calculator's maximum). Store it: $y \\approx 8.847$ meters."
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-9",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-motion-s2",
+   "calc": true,
+   "q": "At what times is the ball 6 meters high?",
+   "type": "single",
+   "options": [
+    "$t \\approx 0.462$ and $t \\approx 1.987$",
+    "$t \\approx 0.462$, the one time on the way up",
+    "$t \\approx 1.987$, the one time on the way down",
+    "$t \\approx 1.224$, when the ball is at the top"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Solve $-4.9t^2 + 12t + 1.5 = 6$: graph $y = -4.9x^2 + 12x + 1.5$ and $y = 6$ and find every intersection. They are at $t \\approx 0.462$ (going up) and $t \\approx 1.987$ (coming down).",
+    "options": [
+     "The ball passes 6 meters twice, once rising and once falling.",
+     "The ball also passes 6 meters on the way down; find every intersection.",
+     "The ball also passes 6 meters on the way up, near $t = 0.462$.",
+     "At the top the ball is about $8.847$ meters high, above 6 meters."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-10",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-motion-s2",
+   "calc": true,
+   "q": "For which times does the model describe the ball?",
+   "type": "single",
+   "options": [
+    "$0 \\le t \\le 2.568$",
+    "$t \\ge 0$",
+    "$0 \\le t \\le 1.224$",
+    "$-0.119 \\le t \\le 2.568$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The model starts at the throw, $t = 0$, and ends when the ball lands, $t \\approx 2.568$. After that $y(t)$ is negative, a height a ball resting on the ground cannot have.",
+    "options": [
+     "From the throw until the landing.",
+     "After $t \\approx 2.568$ the model gives negative heights.",
+     "This stops at the top of the flight; the ball keeps moving until it lands.",
+     "Times before the throw, $t < 0$, are not part of the flight."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-11",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "How does the graph of $x(t)$ against $t$ differ from the path of the particle?",
+   "type": "single",
+   "options": [
+    "The graph of $x(t)$ shows when the particle moves right or left; the path shows where it goes",
+    "They are the same picture drawn with different labels on the axes",
+    "The graph of $x(t)$ shows the path, and the path shows the time",
+    "The graph of $x(t)$ shows where the particle is highest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The graph of $x(t)$ puts time across and horizontal position up, so its rises and falls show right and left motion. The path plots $y$ against $x$ and leaves time out.",
+    "options": [
+     "Against $t$: direction in $x$. In the plane: the path.",
+     "The axes differ ($t$ and $x$ versus $x$ and $y$), so the shapes usually differ too.",
+     "The path is $y$ against $x$; time is not on either of its axes.",
+     "Height is $y(t)$; the graph of $x(t)$ says nothing about it."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-12",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A particle moves with $x(t) = 2t - 3$ and $y(t) = t^2 - 4t$ for $0 \\le t \\le 5$. What is its $x$-coordinate when it is at its lowest point?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$t = 2$ is the time of the lowest point. Its $x$-coordinate is $x(2) = 2(2) - 3$."
+     },
+     {
+      "value": -4,
+      "why": "$-4$ is the lowest $y$-value, $y(2)$. The question asks for $x(2)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y(t) = t^2 - 4t = (t - 2)^2 - 4$ is lowest at $t = 2$. Then $x(2) = 2(2) - 3 = 1$, so the lowest point is $(1, -4)$."
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-13",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A robot starts at $x = 5$ meters and moves left at a constant 2 meters per second. Write its horizontal position $x(t)$ after $t$ seconds.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "t"
+    ],
+    "mode": "exact",
+    "answer": "5 - 2t",
+    "domain": [
+     0,
+     5
+    ],
+    "lhs": "x(t) =",
+    "mistakes": [
+     {
+      "expr": "5 + 2t",
+      "why": "Moving left makes $x$ smaller, so subtract: $5 - 2t$."
+     },
+     {
+      "expr": "2t - 5",
+      "why": "At $t = 0$ the robot is at $x = 5$, so the constant term is $+5$."
+     },
+     {
+      "expr": "-2t",
+      "why": "The robot starts at $x = 5$, not at $0$: add the starting position."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Start at $5$ and lose $2$ meters each second: $x(t) = 5 - 2t$."
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-14",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A particle follows $(x(t), y(t))$ for $0 \\le t \\le 6$. A second particle follows $(x(2t), y(2t))$ for $0 \\le t \\le 3$. Predict how the second compares with the first.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The set of points it passes through",
+     "answer": "none",
+     "why": "As $t$ runs over $[0, 3]$, $2t$ runs over $[0, 6]$, so it visits exactly the same points."
+    },
+    {
+     "name": "The time it takes to cover the whole path",
+     "answer": "down",
+     "why": "It finishes at $t = 3$ instead of $t = 6$: the same trip in half the time."
+    },
+    {
+     "name": "Its position at the start, $t = 0$",
+     "answer": "none",
+     "why": "At $t = 0$ both are at $(x(0), y(0))$."
+    }
+   ],
+   "why": {
+    "correct": "Doubling the input speeds up the trip without changing the path or where it starts."
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-15",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "On $0 < t < 3$, $x(t)$ is increasing and $y(t)$ is decreasing. Which statements are true on that interval? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "The particle moves right",
+    "The particle moves down",
+    "The particle moves up",
+    "The path is a straight line"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$x(t)$ increasing means moving right; $y(t)$ decreasing means moving down. The shape of the path is not given.",
+    "options": [
+     "$x(t)$ increases: right.",
+     "$y(t)$ decreases: down.",
+     "Up would need $y(t)$ increasing.",
+     "Right and down can follow a curve; directions alone do not make a straight line."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-motion-16",
+   "unit": "unit-4",
+   "topic": "parametric-motion",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for describing a particle's motion from $x(t)$ and $y(t)$ in order.",
+   "type": "order",
+   "options": [
+    "Find where $x(t)$ and where $y(t)$ increase and decrease",
+    "Mark every time at which $x(t)$ or $y(t)$ turns around",
+    "Split the time interval at those times",
+    "On each piece, combine right or left with up or down"
+   ],
+   "why": {
+    "correct": "Read each coordinate, mark every turnaround, cut time there, then describe each piece with one horizontal and one vertical direction."
+   }
+  }
+ ]
+}

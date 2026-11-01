@@ -1,0 +1,5 @@
+{
+ "exp-log-inverse": {
+  "def": "An exponential function $y = b^x$ and the logarithm with the same base, $y = \\log_b x$, undo each other: $\\log_b(b^x) = x$ for every $x$ and $b^{\\log_b x} = x$ for $x > 0$. Their graphs are reflections across $y = x$."
+ }
+}

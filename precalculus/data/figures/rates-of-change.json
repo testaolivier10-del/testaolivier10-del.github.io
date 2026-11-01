@@ -1,0 +1,12 @@
+{
+ "rates-of-change-line": {
+  "file": "figures/rates-of-change-line.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of f(x) = 4 times the square root of x for 0 ≤ x ≤ 9, with a blue line through (1, 4) and (4, 8). The slope of that line, (8 − 4)/(4 − 1) = 4/3, is the average rate of change of f on [1, 4]."
+ }
+}

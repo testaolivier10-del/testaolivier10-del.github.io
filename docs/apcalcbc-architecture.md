@@ -195,4 +195,4 @@ and `index.js` (`COURSE_RULES`), `worker/dist/worker.js`; `scripts/build-pricing
 `scripts/build-og-images.mjs` (+ `calculus-bc/assets/og-image.png`), `build-og-tags.mjs`, `build-sitemap.mjs`,
 `check-site.mjs`, `check-a11y.mjs`, `check-console.mjs`, `check-weight.mjs`; `robots.txt`; `add-video.mjs`,
 `build-from-video.mjs`; `.github/workflows/checks.yml`, `scripts/ci-local.sh`;
-`scripts/sql/migrations/2026-10n-apcalcbc.sql` (**not applied**) with `schema.sql` and `reports.sql`.
+`scripts/sql/migrations/2026-10o-apcalcbc.sql` (**not applied**) with `schema.sql` and `reports.sql`.

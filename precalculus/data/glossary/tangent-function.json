@@ -1,0 +1,5 @@
+{
+ "tangent-function": {
+  "def": "The function $\\tan x = \\frac{\\sin x}{\\cos x}$: the slope of the terminal ray of the angle $x$. Its period is $\\pi$, its zeros are at $x = k\\pi$, and it has vertical asymptotes at $x = \\frac{\\pi}{2} + k\\pi$, where cosine is $0$."
+ }
+}

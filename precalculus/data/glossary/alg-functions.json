@@ -1,0 +1,23 @@
+{
+ "function": {
+  "def": "A rule that gives each input exactly one output. $f(3) = 7$ means the input $3$ gives the output $7$."
+ },
+ "domain": {
+  "def": "The set of inputs a function accepts. For a formula, every real number that gives a real output: no zero denominators and no square roots of negative numbers."
+ },
+ "range": {
+  "def": "The set of outputs a function produces as the input runs through its domain."
+ },
+ "function-graph": {
+  "def": "All the points $(x, f(x))$ for $x$ in the domain, drawn in the plane: inputs across, outputs up."
+ },
+ "zero": {
+  "def": "An input $a$ with $f(a) = 0$. On the graph, a zero is an $x$-intercept, the point $(a, 0)$."
+ },
+ "y-intercept": {
+  "def": "The point where a graph crosses the $y$-axis, $(0, f(0))$. A function has at most one."
+ },
+ "piecewise-function": {
+  "def": "A function that uses different formulas on different parts of its domain. To evaluate it, find the piece whose condition the input meets."
+ }
+}

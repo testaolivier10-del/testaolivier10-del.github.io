@@ -1,0 +1,12 @@
+{
+ "parametric-motion-path": {
+  "file": "figures/parametric-motion-path.svg",
+  "ext": "svg",
+  "w": 460,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The path of a particle with x(t) = t cubed minus 6t squared plus 9t and y(t) = 4t minus t squared for t from 0 to 4. It starts at (0, 0) at t = 0, moves right and up to (4, 3) at t = 1, turns and moves left through (2, 4) at t = 2, the highest point, to (0, 3) at t = 3, then turns again and moves right and down to (4, 0) at t = 4, crossing its earlier path near (2, 1)."
+ }
+}

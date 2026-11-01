@@ -1,0 +1,8 @@
+{
+ "parameter": {
+  "def": "An extra input variable, often written t, that both coordinates of a curve depend on. Each value of the parameter picks out one point, and increasing it sets the order in which the points are traced."
+ },
+ "parametric": {
+  "def": "A function f(t) = (x(t), y(t)) that sends each value of a parameter t to the point (x(t), y(t)). As t runs through an interval, the points trace a curve with a direction of travel."
+ }
+}

@@ -1,0 +1,5 @@
+{
+ "polar-rate": {
+  "def": "How $r$ changes as $\\theta$ changes for a polar function. The average rate of change of $r$ on $[a, b]$ is $\\frac{r(b) - r(a)}{b - a}$, in units per radian. The distance from the origin, $|r|$, increases where $r$ is positive and increasing or negative and decreasing, and decreases otherwise."
+ }
+}

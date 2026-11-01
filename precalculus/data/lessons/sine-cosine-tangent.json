@@ -1,0 +1,62 @@
+{
+ "topic": "sine-cosine-tangent",
+ "hook": "A bike wheel turns, and a reflector on its rim goes round and round. How high is the reflector after the wheel has turned through some angle? Put the wheel's center at the origin and the answer is a coordinate. That coordinate, read off a circle of radius 1, is the sine of the angle, and it turns sine from a triangle ratio into a function of any angle at all.",
+ "prereq": [
+  {
+   "q": "A circle has radius $r$. How long is the arc cut off by a central angle of $90^\\circ$?",
+   "options": ["$\\frac{\\pi r}{2}$", "$90r$", "$\\pi r$", "$\\frac{r}{4}$"],
+   "correct": 0,
+   "why": "$90^\\circ$ is a quarter turn: $\\frac{90}{360} \\cdot 2\\pi r = \\frac{\\pi r}{2}$.",
+   "review": "alg-circles"
+  },
+  {
+   "q": "In a right triangle with hypotenuse $1$, the side opposite the angle $\\theta$ has length $0.6$. What is $\\sin\\theta$?",
+   "options": ["$0.6$", "$0.8$", "$\\frac{1}{0.6}$", "$0.4$"],
+   "correct": 0,
+   "why": "$\\sin\\theta = \\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{0.6}{1} = 0.6$. With hypotenuse 1, sine is just the opposite side.",
+   "review": "alg-right-triangle"
+  }
+ ],
+ "figure": {
+  "figure": "sine-cosine-tangent-unit-circle",
+  "caption": "On the unit circle the point at angle $\\theta$ is $(\\cos\\theta, \\sin\\theta)$, the arc from $(1, 0)$ has length $\\theta$, and $\\tan\\theta$ is the slope of the terminal ray."
+ },
+ "chain": [
+  {
+   "cause": "Measure an angle by the arc it cuts off, divided by the radius",
+   "effect": "that is its radian measure: a full turn is $\\frac{2\\pi r}{r} = 2\\pi$ radians, so $\\pi$ radians $= 180^\\circ$"
+  },
+  {
+   "cause": "Put the angle in standard position: vertex at the origin, initial ray on the positive $x$-axis, turning counterclockwise",
+   "effect": "its terminal ray meets the unit circle $x^2 + y^2 = 1$ at one point"
+  },
+  {
+   "cause": "Read that point's coordinates",
+   "effect": "its $x$-coordinate is $\\cos\\theta$ and its $y$-coordinate is $\\sin\\theta$, for any angle, not only acute ones"
+  },
+  {
+   "cause": "Divide the $y$-coordinate by the $x$-coordinate",
+   "effect": "$\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$, the slope of the terminal ray, undefined where $\\cos\\theta = 0$"
+  }
+ ],
+ "ideas": [
+  "Radians: $\\theta = \\frac{\\text{arc length}}{\\text{radius}}$. On the unit circle, an angle of $\\theta$ radians cuts off an arc of length exactly $\\theta$.",
+  "Convert with $\\pi$ radians $= 180^\\circ$: multiply degrees by $\\frac{\\pi}{180}$, or radians by $\\frac{180}{\\pi}$.",
+  "Signs follow the quadrant: in Quadrant II, $\\cos\\theta < 0$ and $\\sin\\theta > 0$; in Quadrant III both are negative; in Quadrant IV, $\\cos\\theta > 0$ and $\\sin\\theta < 0$.",
+  "Angles that differ by $2\\pi$ share a terminal ray, so they have the same sine, cosine and tangent."
+ ],
+ "misconception": {
+  "wrong": "$\\sin\\theta$ is the $x$-coordinate, because $x$ comes first.",
+  "right": "Cosine comes first: the point is $(\\cos\\theta, \\sin\\theta)$. Sine is the height, the $y$-coordinate. At $\\theta = 0$ the point is $(1, 0)$, so $\\cos 0 = 1$ and $\\sin 0 = 0$."
+ },
+ "check": [
+  "pcalc-sine-cosine-tangent-1",
+  "pcalc-sine-cosine-tangent-2",
+  "pcalc-sine-cosine-tangent-3",
+  "pcalc-sine-cosine-tangent-4",
+  "pcalc-sine-cosine-tangent-5",
+  "pcalc-sine-cosine-tangent-10",
+  "pcalc-sine-cosine-tangent-14"
+ ],
+ "summary": "An angle in radians is arc length over radius, so a full turn is $2\\pi$. Place the angle $\\theta$ in standard position; its terminal ray meets the unit circle at $(\\cos\\theta, \\sin\\theta)$, and $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$ is the ray's slope. These definitions work for every angle, and the quadrant sets the signs."
+}

@@ -1,0 +1,387 @@
+{
+ "stimuli": {
+  "sine-cosine-values-s1": {
+   "kind": "graph",
+   "title": "A point on a circle of radius 4",
+   "text": "The circle $x^2 + y^2 = 16$ is centered at the origin $O$. The point $Q$ is on the circle, on the terminal ray of the angle $\\frac{2\\pi}{3}$ in standard position.",
+   "plot": {
+    "label": "The circle x^2 + y^2 = 16 centered at the origin, with the segment from the origin to the point Q on the circle in the second quadrant, at angle 2 pi over 3",
+    "width": 330,
+    "height": 322,
+    "x": [-5, 5],
+    "y": [-5, 5],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     { "fn": "sqrt(16 - x^2)", "domain": [-4, 4], "cls": "s1" },
+     { "fn": "-sqrt(16 - x^2)", "domain": [-4, 4], "cls": "s1" }
+    ],
+    "lines": [
+     { "through": [[0, 0], [-2, 3.4641016151377544]], "domain": [-2, 0], "cls": "s2" }
+    ],
+    "points": [
+     { "at": [-2, 3.4641016151377544], "label": "Q" }
+    ]
+   }
+  },
+  "sine-cosine-values-s2": {
+   "kind": "table",
+   "title": "A robot arm",
+   "text": "A robot arm 2 meters long pivots at the origin. Its tip starts on the positive $x$-axis and turns counterclockwise. The table gives the angle $\\theta$ the arm has turned, in radians, at four times.",
+   "table": {
+    "caption": "Angle $\\theta(t)$ turned by the arm, in radians, $t$ seconds after the start",
+    "cols": ["$t$ (seconds)", "1", "2", "3", "4"],
+    "rows": [["$\\theta(t)$ (radians)", "$\\frac{3\\pi}{4}$", "$\\frac{7\\pi}{6}$", "$\\frac{5\\pi}{3}$", "$\\frac{11\\pi}{4}$"]]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-sine-cosine-values-1",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sine-cosine-values-s1",
+   "q": "What is the $x$-coordinate of $Q$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     { "value": 2, "why": "$Q$ is left of the $y$-axis, so its $x$-coordinate is negative: $4\\cos\\frac{2\\pi}{3} = 4\\left(-\\frac{1}{2}\\right)$." },
+     { "value": "-1/2", "why": "That is $\\cos\\frac{2\\pi}{3}$ on the unit circle. This circle has radius 4, so multiply by 4." },
+     { "value": "-2sqrt(3)", "why": "That uses $\\frac{\\sqrt{3}}{2}$ for the cosine. The ray at $\\frac{2\\pi}{3}$ is closer to the $y$-axis, so the smaller value, $\\frac{1}{2}$, goes with $x$." }
+    ]
+   },
+   "why": {
+    "correct": "$x = 4\\cos\\frac{2\\pi}{3}$. The reference angle is $\\frac{\\pi}{3}$ and Quadrant II makes cosine negative: $4\\left(-\\frac{1}{2}\\right) = -2$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-2",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sine-cosine-values-s1",
+   "q": "What is the $y$-coordinate of $Q$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "2sqrt(3)",
+    "mistakes": [
+     { "value": "sqrt(3)/2", "why": "That is $\\sin\\frac{2\\pi}{3}$ on the unit circle. Multiply by the radius 4." },
+     { "value": "-2sqrt(3)", "why": "$Q$ is above the $x$-axis, so its $y$-coordinate is positive." },
+     { "value": 2, "why": "That uses $\\frac{1}{2}$ for the sine. At $\\frac{2\\pi}{3}$ the ray is closer to the $y$-axis, so the height is the larger value, $\\frac{\\sqrt{3}}{2}$, times 4." }
+    ]
+   },
+   "why": {
+    "correct": "$y = 4\\sin\\frac{2\\pi}{3} = 4 \\cdot \\frac{\\sqrt{3}}{2} = 2\\sqrt{3}$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-3",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sine-cosine-values-s1",
+   "q": "What is the slope of the segment $OQ$?",
+   "type": "single",
+   "options": ["$-\\sqrt{3}$", "$-\\frac{\\sqrt{3}}{3}$", "$\\sqrt{3}$", "$-\\frac{1}{2}$"],
+   "correct": 0,
+   "why": {
+    "correct": "The slope is $\\tan\\frac{2\\pi}{3} = \\frac{\\sqrt{3}/2}{-1/2} = -\\sqrt{3}$; with the coordinates, $\\frac{2\\sqrt{3}}{-2} = -\\sqrt{3}$. The radius does not change the slope.",
+    "options": [
+     "Rise $2\\sqrt{3}$ over run $-2$.",
+     "This is $\\tan\\frac{5\\pi}{6}$: it divides $x$ by $y$ instead of $y$ by $x$.",
+     "The segment rises to the left, so the slope is negative.",
+     "This is $\\cos\\frac{2\\pi}{3}$, a coordinate, not the slope of the ray."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-4",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sine-cosine-values-s1",
+   "q": "The point $R$ is on the same circle, on the terminal ray of $\\frac{2\\pi}{3} + \\pi$. What are the coordinates of $R$?",
+   "type": "single",
+   "options": [
+    "$(2, -2\\sqrt{3})$",
+    "$(-2, -2\\sqrt{3})$",
+    "$(2\\sqrt{3}, -2)$",
+    "$(-2, 2\\sqrt{3})$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Half a turn more points the ray the opposite way, so $R$ is diametrically opposite $Q$: both coordinates change sign, $(2, -2\\sqrt{3})$. Check: $\\frac{5\\pi}{3}$ is in Quadrant IV with reference angle $\\frac{\\pi}{3}$.",
+    "options": [
+     "Opposite $Q$ through the center: $(2, -2\\sqrt{3})$.",
+     "This flips only the $y$-coordinate, the reflection across the $x$-axis, which is the angle $\\frac{4\\pi}{3}$.",
+     "This swaps the sizes; with reference angle $\\frac{\\pi}{3}$ the larger size belongs to $y$.",
+     "This is $Q$ itself, the point for a full turn $2\\pi$, not half a turn."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-5",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sine-cosine-values-s2",
+   "q": "What is the $x$-coordinate of the tip at $t = 1$, in meters?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-sqrt(2)",
+    "unit": "meters",
+    "mistakes": [
+     { "value": "-sqrt(2)/2", "why": "That is $\\cos\\frac{3\\pi}{4}$ on the unit circle. The arm is 2 meters long: multiply by 2." },
+     { "value": "sqrt(2)", "why": "$\\frac{3\\pi}{4}$ is in Quadrant II, where the $x$-coordinate is negative." }
+    ]
+   },
+   "why": {
+    "correct": "$x = 2\\cos\\frac{3\\pi}{4} = 2\\left(-\\frac{\\sqrt{2}}{2}\\right) = -\\sqrt{2}$ meters."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-6",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sine-cosine-values-s2",
+   "q": "What is the $y$-coordinate of the tip at $t = 2$, in meters?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -1,
+    "unit": "meters",
+    "mistakes": [
+     { "value": 1, "why": "$\\frac{7\\pi}{6}$ is in Quadrant III, below the $x$-axis, so the height is negative." },
+     { "value": "-sqrt(3)", "why": "That is the $x$-coordinate. With reference angle $\\frac{\\pi}{6}$, the height uses $\\frac{1}{2}$." },
+     { "value": "-1/2", "why": "That is $\\sin\\frac{7\\pi}{6}$ on the unit circle. Multiply by the arm's length, 2." }
+    ]
+   },
+   "why": {
+    "correct": "$y = 2\\sin\\frac{7\\pi}{6}$. Quadrant III, reference angle $\\frac{\\pi}{6}$: $\\sin\\frac{7\\pi}{6} = -\\frac{1}{2}$, so $y = -1$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-7",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sine-cosine-values-s2",
+   "q": "Where is the tip at $t = 3$?",
+   "type": "single",
+   "options": ["$(1, -\\sqrt{3})$", "$(\\sqrt{3}, -1)$", "$(-1, -\\sqrt{3})$", "$\\left(\\frac{1}{2}, -\\frac{\\sqrt{3}}{2}\\right)$"],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{5\\pi}{3}$ is in Quadrant IV with reference angle $\\frac{\\pi}{3}$: $\\cos\\frac{5\\pi}{3} = \\frac{1}{2}$, $\\sin\\frac{5\\pi}{3} = -\\frac{\\sqrt{3}}{2}$. Times 2: $(1, -\\sqrt{3})$.",
+    "options": [
+     "Quadrant IV signs, reference angle $\\frac{\\pi}{3}$, scaled by 2.",
+     "This uses the reference angle $\\frac{\\pi}{6}$. $2\\pi - \\frac{5\\pi}{3} = \\frac{\\pi}{3}$.",
+     "This is Quadrant III. $\\frac{5\\pi}{3}$ is past $\\frac{3\\pi}{2}$, so $x > 0$.",
+     "This is the point on the unit circle; the arm is 2 meters long."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-8",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "sine-cosine-values-s2",
+   "q": "Where is the tip at $t = 4$?",
+   "type": "single",
+   "options": ["$(-\\sqrt{2}, \\sqrt{2})$", "$(\\sqrt{2}, -\\sqrt{2})$", "$(-\\sqrt{2}, -\\sqrt{2})$", "$(\\sqrt{2}, \\sqrt{2})$"],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{11\\pi}{4} = 2\\pi + \\frac{3\\pi}{4}$: one full turn and then $\\frac{3\\pi}{4}$, so the tip is where it was at $t = 1$: $\\left(2\\cos\\frac{3\\pi}{4}, 2\\sin\\frac{3\\pi}{4}\\right) = (-\\sqrt{2}, \\sqrt{2})$.",
+    "options": [
+     "Remove the full turn: same point as $\\frac{3\\pi}{4}$, in Quadrant II.",
+     "This is the Quadrant IV point, the angle $\\frac{7\\pi}{4}$. Subtract $2\\pi$ from $\\frac{11\\pi}{4}$, not $\\pi$.",
+     "This is the Quadrant III point, the angle $\\frac{5\\pi}{4}$.",
+     "This is the Quadrant I point, $\\frac{\\pi}{4}$; it keeps the reference angle but drops the sign of $x$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-9",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the exact value of $\\sin\\frac{5\\pi}{4}$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-sqrt(2)/2",
+    "mistakes": [
+     { "value": "sqrt(2)/2", "why": "$\\frac{5\\pi}{4}$ is in Quadrant III, below the $x$-axis, so sine is negative." },
+     { "value": "-1/2", "why": "That is the value for a reference angle of $\\frac{\\pi}{6}$. The reference angle of $\\frac{5\\pi}{4}$ is $\\frac{\\pi}{4}$." }
+    ]
+   },
+   "why": {
+    "correct": "Quadrant III, reference angle $\\frac{5\\pi}{4} - \\pi = \\frac{\\pi}{4}$: $\\sin\\frac{5\\pi}{4} = -\\frac{\\sqrt{2}}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-10",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the exact value of $\\cos\\frac{2\\pi}{3}$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-1/2",
+    "mistakes": [
+     { "value": "1/2", "why": "$\\frac{2\\pi}{3}$ is in Quadrant II, left of the $y$-axis, so cosine is negative." },
+     { "value": "-sqrt(3)/2", "why": "The reference angle is $\\frac{\\pi}{3}$, whose cosine is $\\frac{1}{2}$; $\\frac{\\sqrt{3}}{2}$ is its sine." }
+    ]
+   },
+   "why": {
+    "correct": "Quadrant II, reference angle $\\pi - \\frac{2\\pi}{3} = \\frac{\\pi}{3}$: $\\cos\\frac{2\\pi}{3} = -\\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-11",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the exact value of $\\tan\\frac{\\pi}{6}$?",
+   "type": "single",
+   "options": ["$\\frac{\\sqrt{3}}{3}$", "$\\sqrt{3}$", "$\\frac{1}{2}$", "$\\frac{\\sqrt{3}}{2}$"],
+   "correct": 0,
+   "why": {
+    "correct": "$\\tan\\frac{\\pi}{6} = \\frac{\\sin(\\pi/6)}{\\cos(\\pi/6)} = \\frac{1/2}{\\sqrt{3}/2} = \\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$.",
+    "options": [
+     "$\\frac{1}{\\sqrt{3}}$, rewritten as $\\frac{\\sqrt{3}}{3}$.",
+     "$\\sqrt{3}$ is $\\tan\\frac{\\pi}{3}$: cosine over sine is upside down here.",
+     "$\\frac{1}{2}$ is $\\sin\\frac{\\pi}{6}$ alone.",
+     "$\\frac{\\sqrt{3}}{2}$ is $\\cos\\frac{\\pi}{6}$ alone."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-12",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the reference angle of $\\frac{5\\pi}{6}$?",
+   "type": "single",
+   "options": ["$\\frac{\\pi}{6}$", "$\\frac{\\pi}{3}$", "$\\frac{5\\pi}{6}$", "$\\frac{7\\pi}{6}$"],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{5\\pi}{6}$ is in Quadrant II, so its reference angle is $\\pi - \\frac{5\\pi}{6} = \\frac{\\pi}{6}$, the acute angle to the negative $x$-axis.",
+    "options": [
+     "The ray is $\\frac{\\pi}{6}$ short of the negative $x$-axis.",
+     "$\\frac{5\\pi}{6} - \\frac{\\pi}{2} = \\frac{\\pi}{3}$ measures to the $y$-axis; reference angles are measured to the $x$-axis.",
+     "A reference angle is acute, between $0$ and $\\frac{\\pi}{2}$.",
+     "This is the angle half a turn away, not a reference angle."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-13",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these equal $-\\frac{\\sqrt{3}}{2}$? Select all that apply.",
+   "type": "multi",
+   "options": ["$\\cos\\frac{5\\pi}{6}$", "$\\sin\\frac{5\\pi}{6}$", "$\\cos\\frac{7\\pi}{4}$", "$\\sin\\frac{2\\pi}{3}$"],
+   "correct": [0],
+   "why": {
+    "correct": "Only $\\cos\\frac{5\\pi}{6}$: Quadrant II, reference angle $\\frac{\\pi}{6}$, negative $x$-coordinate $-\\frac{\\sqrt{3}}{2}$.",
+    "options": [
+     "Reference angle $\\frac{\\pi}{6}$, cosine negative in Quadrant II.",
+     "$\\sin\\frac{5\\pi}{6} = \\frac{1}{2}$: the height uses the smaller value and is positive in Quadrant II.",
+     "$\\cos\\frac{7\\pi}{4} = \\frac{\\sqrt{2}}{2}$: reference angle $\\frac{\\pi}{4}$, positive in Quadrant IV.",
+     "$\\sin\\frac{2\\pi}{3} = \\frac{\\sqrt{3}}{2}$, positive: Quadrant II is above the $x$-axis."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-14",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the exact value of $\\tan\\frac{3\\pi}{4}$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     { "value": 1, "why": "The point $\\left(-\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}\\right)$ has coordinates of opposite signs, so the slope is negative." },
+     { "value": "-sqrt(2)/2", "why": "That is $\\cos\\frac{3\\pi}{4}$. Tangent divides the sine by the cosine." }
+    ]
+   },
+   "why": {
+    "correct": "At $\\frac{3\\pi}{4}$ the point is $\\left(-\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}\\right)$, so $\\tan\\frac{3\\pi}{4} = \\frac{\\sqrt{2}/2}{-\\sqrt{2}/2} = -1$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-15",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A point is on a circle of radius 10 centered at the origin, on the terminal ray of $\\frac{\\pi}{6}$. What are its coordinates?",
+   "type": "single",
+   "options": ["$(5\\sqrt{3}, 5)$", "$(5, 5\\sqrt{3})$", "$\\left(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right)$", "$(10\\sqrt{3}, 10)$"],
+   "correct": 0,
+   "why": {
+    "correct": "$(r\\cos\\theta, r\\sin\\theta) = \\left(10 \\cdot \\frac{\\sqrt{3}}{2}, 10 \\cdot \\frac{1}{2}\\right) = (5\\sqrt{3}, 5)$.",
+    "options": [
+     "Scale $\\left(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right)$ by 10.",
+     "This is the point at $\\frac{\\pi}{3}$: the coordinates are swapped.",
+     "This is the point on the unit circle; multiply by the radius 10.",
+     "This doubles the right answer: $10 \\cdot \\frac{\\sqrt{3}}{2} = 5\\sqrt{3}$, not $10\\sqrt{3}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-values-16",
+   "unit": "unit-3",
+   "topic": "sine-cosine-values",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "type": "order",
+   "q": "Put the steps for finding $\\cos\\frac{4\\pi}{3}$ exactly in order.",
+   "options": [
+    "Find the quadrant: $\\pi < \\frac{4\\pi}{3} < \\frac{3\\pi}{2}$, Quadrant III",
+    "Find the reference angle: $\\frac{4\\pi}{3} - \\pi = \\frac{\\pi}{3}$",
+    "Take the first-quadrant value: $\\cos\\frac{\\pi}{3} = \\frac{1}{2}$",
+    "Apply the quadrant's sign: $\\cos\\frac{4\\pi}{3} = -\\frac{1}{2}$"
+   ],
+   "why": {
+    "correct": "Quadrant, reference angle, first-quadrant value, then the sign: cosine is negative in Quadrant III."
+   }
+  }
+ ]
+}

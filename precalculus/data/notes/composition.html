@@ -1,0 +1,55 @@
+<p>Many processes happen in stages. A store takes a discount and then adds tax. A thermostat reads a temperature in Celsius and a display converts it to Fahrenheit. Each stage is a function, and running one stage after another is called <b>composition</b>. This page shows how to evaluate a composite from a table, a graph or a formula, why order matters, which inputs a composite can take, and how to split a function into stages.</p>
+
+<h2>What a composite function does</h2>
+<p>The <b>composite function</b> $f(g(x))$ takes an input $x$, applies $g$, and then uses that output as the input of $f$. It is also written $(f \circ g)(x)$, read "f of g of x". The function written closest to $x$ acts first. Think of an assembly line: $g$ is the first machine and $f$ is the second.</p>
+<p>Because the output of $g$ becomes an input of $f$, the work always goes from the inside out. On the exam, show the inner value: graders look for it.</p>
+<div class="worked">
+<p><b>Worked example 1 (from a table).</b> A table gives $g(2) = 0$ and $f(0) = 4$. Find $f(g(2))$.</p>
+<p>Inner value first: $g(2) = 0$.</p>
+<p>Then the outer function at that value: $f(g(2)) = f(0) = 4$.</p>
+</div>
+
+<h2>Order matters</h2>
+<p>Back at the store, take $d(p) = p - 15$ (the discount) and $t(p) = 1.08p$ (the tax). Discount first gives $t(d(p)) = 1.08(p - 15) = 1.08p - 16.2$. Tax first gives $d(t(p)) = 1.08p - 15$. They differ by $1.2$ dollars, whatever the price. Composition is <b>not commutative</b>: $f(g(x))$ and $g(f(x))$ are usually different functions. There are exceptions, but never assume one.</p>
+
+<h2>Composites from formulas</h2>
+<p>To write $f(g(x))$ as a formula, replace every $x$ in the formula of $f$ by the whole expression $g(x)$, in parentheses.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Let $f(x) = x^2 + 3$ and $g(x) = 2x - 1$. Find $f(g(x))$ and $g(f(x))$.</p>
+<p>$f(g(x)) = (2x - 1)^2 + 3$. The parentheses matter: the whole of $2x - 1$ is squared.</p>
+<p>$g(f(x)) = 2(x^2 + 3) - 1 = 2x^2 + 5$.</p>
+<p>At $x = 1$: $f(g(1)) = 1 + 3 = 4$, but $g(f(1)) = 2 \cdot 4 - 1 = 7$. Different functions.</p>
+</div>
+<p>Composition also explains transformations. With $g(x) = x - 2$, $f(g(x)) = f(x - 2)$ is the graph of $f$ moved $2$ units right. With $f(x) = 5 \cdot 2^x$ and $g(x) = x + 3$, $f(g(x)) = 5 \cdot 2^{x + 3} = 40 \cdot 2^x$: for an exponential function, a horizontal shift is the same as a vertical dilation.</p>
+
+<h2>Composites from graphs</h2>
+<p>A graph works like a table: read the inner function at $x$, then read the outer function at that output. To solve an equation such as $g(f(x)) = 2$, work from the outside in: first find every input of $g$ that gives $2$, then every $x$ with $f(x)$ equal to one of those inputs. Several inputs can share an output, so check for more than one.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> The parabola $g$ reaches $2$ at the inputs $-1$ and $3$. The line $f$ has $f(0) = -1$ and $f(2) = 3$. Solve $g(f(x)) = 2$.</p>
+<p>Outer step: $g(u) = 2$ for $u = -1$ or $u = 3$.</p>
+<p>Inner step: $f(x) = -1$ gives $x = 0$; $f(x) = 3$ gives $x = 2$.</p>
+<p>So $x = 0$ and $x = 2$. Stopping at $-1$ and $3$ gives the values of $f(x)$, not of $x$.</p>
+</div>
+
+<h2>The domain of a composite</h2>
+<p>An input $x$ belongs to the domain of $f(g(x))$ when two things hold: $x$ is in the domain of $g$, and the output $g(x)$ is in the domain of $f$.</p>
+<div class="worked">
+<p><b>Worked example 4.</b> Let $f(x) = \sqrt{x}$ and $g(x) = 6 - 2x$. Find the domain of $f(g(x)) = \sqrt{6 - 2x}$.</p>
+<p>$f$ needs a non-negative input, so $6 - 2x \ge 0$.</p>
+<p>Then $-2x \ge -6$, and dividing by $-2$ flips the inequality: $x \le 3$.</p>
+</div>
+
+<h2>The identity function</h2>
+<p>The <b>identity function</b> $I(x) = x$ returns every input unchanged. Composing with it does nothing: $f(I(x)) = f(x)$ and $I(f(x)) = f(x)$. It plays the role for composition that $0$ plays for addition and $1$ plays for multiplication. You will need it in the next topic.</p>
+
+<h2>Taking a function apart</h2>
+<p>Reading a formula as stages helps you evaluate it, graph it and later undo it. Ask what is done to $x$ first (the inner function) and what is done to that result (the outer function).</p>
+<table class="compare">
+<thead><tr><th scope="col">Function</th><th scope="col">Inner $g(x)$</th><th scope="col">Outer $f(x)$</th></tr></thead>
+<tbody>
+<tr><td>$h(x) = (3x + 1)^4$</td><td>$3x + 1$</td><td>$x^4$</td></tr>
+<tr><td>$h(x) = \sqrt{x^2 + 9}$</td><td>$x^2 + 9$</td><td>$\sqrt{x}$</td></tr>
+<tr><td>$h(x) = 2^{x - 5}$</td><td>$x - 5$</td><td>$2^x$</td></tr>
+</tbody>
+</table>
+<p>A decomposition is not unique, but the order of the stages is fixed by the formula. Check a pair by composing it: $f(g(x))$ must give back $h(x)$.</p>
