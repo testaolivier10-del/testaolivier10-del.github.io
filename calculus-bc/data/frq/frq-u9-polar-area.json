@@ -71,7 +71,7 @@
     {
      "point": "Answer $1.737$, justified by comparing the critical point $\\theta \\approx 0.480$ with the endpoints ($x(0) = 1$, $x\\left(\\frac{\\pi}{2}\\right) = 0$)",
      "accept": [
-      "$1.737$ (or $1.738$) with a candidates table",
+      "$1.737$ with a candidates table",
       "$1.737$ from the graph of $x(\\theta)$ on $[0, \\frac{\\pi}{2}]$ with the endpoint values"
      ]
     }

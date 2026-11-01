@@ -1,5 +1,5 @@
 {
  "polar-derivative": {
-  "def": "The slope of a polar curve $r = f(\\theta)$: $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta}$, with $x = r\\cos\\theta$ and $y = r\\sin\\theta$, where $\\frac{dx}{d\\theta} \\ne 0$. Not to be confused with $\\frac{dr}{d\\theta}$, the rate of change of the distance from the pole."
+  "def": "The slope of a polar curve $r = f(\\theta)$: $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta}$, with $x = r\\cos\\theta$ and $y = r\\sin\\theta$, where $\\frac{dx}{d\\theta} \\ne 0$. Not to be confused with $\\frac{dr}{d\\theta}$, the rate of change of $r$, the signed distance from the pole."
  }
 }

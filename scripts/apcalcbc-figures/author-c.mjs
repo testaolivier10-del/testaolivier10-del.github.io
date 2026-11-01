@@ -186,7 +186,7 @@ const figs = {};
   b.push(arc(250, 245, 34, 0, t, { color: EMERALD }));
   b.push(text(250 + 46, 245 - 20, 'θ = π/3', { size: 14, color: EMERALD, bold: true, halo: true }));
   b.push(Q.pt(x, y));
-  b.push(text(Q.sx(x) + 10, Q.sy(y) - 8, 'P (r = 3, θ = π/3)', { size: 14.5, bold: true, color: EMERALD, halo: true }));
+  b.push(text(Q.sx(x) + 10, Q.sy(y) - 30, 'P (r = 3, θ = π/3)', { size: 14.5, bold: true, color: EMERALD, halo: true }));
   b.push(text(Q.sx(x / 2) - 16, Q.sy(y / 2) - 6, 'r = 3', { size: 14, color: EMERALD, anchor: 'end', halo: true }));
   b.push(text(Q.sx(x / 2), 245 + 34, 'x = r cos θ = 1.5', { size: 13.5, color: BLUE, anchor: 'middle', halo: true }));
   b.push(text(Q.sx(x) + 8, Q.sy(y / 2) + 22, 'y = r sin θ ≈ 2.598', { size: 13.5, color: BLUE, halo: true }));
@@ -354,7 +354,7 @@ const figs = {};
   b.push(Q.path(f, 0, 2 * PI, { color: EMERALD }));
   for (const t of [PI / 3, -PI / 3]) { b.push(Q.line(0, 0, 3 * Math.cos(t), 3 * Math.sin(t), { dash: '4 4', color: INK, width: 1.3 })); b.push(Q.pt(3 * Math.cos(t), 3 * Math.sin(t), { color: INK, r: 4.5 })); }
   b.push(text(Q.sx(1.5) + 8, Q.sy(2.6) - 8, '(3, π/3)', { size: 14, bold: true, halo: true }));
-  b.push(text(Q.sx(1.5) - 10, Q.sy(-2.6) + 20, '(3, −π/3)', { size: 14, bold: true, anchor: 'end', halo: true }));
+  b.push(text(Q.sx(1.5) + 10, Q.sy(-2.6) + 26, '(3, −π/3)', { size: 14, bold: true, anchor: 'start', halo: true }));
   b.push(text(Q.sx(-2.2), Q.sy(-3.3), 'r = 3', { size: 15, bold: true, color: BLUE, halo: true }));
   b.push(text(Q.sx(2.9), Q.sy(-2.75), 'r = 2 + 2 cos θ', { size: 15, bold: true, color: EMERALD, halo: true }));
   const A = 0.5 * simpson(t => f(t) ** 2 - 9, -PI / 3, PI / 3);

@@ -262,7 +262,7 @@
      "Each coordinate is multiplied by 3, so the squares are multiplied by 9: $x^2 + y^2 = 9$.",
      "$\\cos t + \\sin t$ is not constant ($\\sqrt{2}$ at $t = \\frac{\\pi}{4}$), so $x + y$ changes along the path.",
      "Right: square, add and use $\\cos^2 t + \\sin^2 t = 1$.",
-     "$\\frac{y}{x} = \\tan t$, so $t$ is not $x$; dividing does not give $y = 3\\tan x$."
+     "Dividing gives $\\frac{y}{x} = \\tan t$, and $t$ is the parameter, not $x$: the path is not $y = 3\\tan x$. Squaring and adding removes $t$."
     ]
    }
   }

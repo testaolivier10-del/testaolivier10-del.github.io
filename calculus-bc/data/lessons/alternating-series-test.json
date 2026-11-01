@@ -61,7 +61,7 @@
   "The alternating series test: if $a_n > 0$, the $a_n$ decrease (from some point on), and $\\lim_{n \\to \\infty} a_n = 0$, then $\\sum (-1)^n a_n$ converges.",
   "Check and state all three conditions: alternating signs, decreasing sizes, a limit of 0.",
   "The test only proves convergence. If the sizes do not approach 0, use the nth term test for divergence instead.",
-  "The sum always lies between two consecutive partial sums."
+  "When the conditions hold from the first term on, the sum lies between any two consecutive partial sums."
  ],
  "misconception": {
   "wrong": "The alternating series test fails for $\\sum (-1)^n \\frac{n}{n^2 + 3}$ because $a_2 > a_1$, so the series diverges.",

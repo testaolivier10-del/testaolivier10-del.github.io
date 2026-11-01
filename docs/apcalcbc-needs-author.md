@@ -75,14 +75,14 @@ meta descriptions sit with the integration fixes under "Resolved"; C4 (absolute 
 - **c1-polar-frq-slot**: the polar FRQ `frq-u9-polar-area` is type `parametric` (the Q2 slot), per the brief; its
   part (b) uses a candidates test (a global argument). Reviewer.
 - **c2-basel**: Σ1/n² = π²/6 is stated as a known fact, not derived; one p-series item gives it in the stem.
-- **c3-alternating-harmonic**: the alternating harmonic series is stated to converge (to ln 2) in 10.5 as a
+- **c3-alternating-harmonic** **Resolved 2026-10-31 (Unit 10 review):** EK LIM-7.A.7 lists it among 10.5's reference series, so stating it there follows the CED. the alternating harmonic series is stated to converge (to ln 2) in 10.5 as a
   reference series (EK LIM-7.A.7), with the proof deferred to 10.7. Reviewer.
 - **d1-rearrangement**: 10.9 notes mention Riemann's rearrangement theorem in a `going-further` aside only; items
   test only LIM-7.A.14 (absolutely convergent series keep their sum).
-- **d2-taylor-equals-f** (accuracy): 10.14 notes say that for "the functions in this course" the Taylor series
+- **d2-taylor-equals-f** (accuracy) **Resolved 2026-10-31 (Unit 10 review):** the 10.14 notes now name the functions and say not every function equals its Taylor series. 10.14 notes say that for "the functions in this course" the Taylor series
   equals the function on its interval. True for the four memorized series and those derived from them, not for
   every function. A teacher may want a sentence on that. Reviewer.
-- **d3-frq-general-term**: `frq-u10-taylor-error` gives the general term of the Taylor series in the stem, since
+- **d3-frq-general-term** **Resolved 2026-10-31 (Unit 10 review):** a released BC6 pattern; the stem now states the right interval, −1 < x < 3. `frq-u10-taylor-error` gives the general term of the Taylor series in the stem, since
   part (d) needs it. Confirm it matches the Q6 style. Reviewer.
 - **d4-small-values-items**: error bounds below about 0.005 are single-answer items, not numeric ones. With the
   guard below (`small-values`) a numeric item could now take such a key on BC; the content check's own
@@ -140,3 +140,8 @@ meta descriptions sit with the integration fixes under "Resolved"; C4 (absolute 
   are used, so there is no spare Q5; a third would let a future form vary.
 - **p3-accuracy** (Phase 4). The 26 exam-only items, 11 prompts and the formula rows await the independent
   accuracy check; every key is recomputed by code but the distractor explanations are unreviewed.
+
+## Unit 10 review (Phase 4)
+
+- **u10-weak-distractors** (author, low): `cbc-nth-term-test-15` mistake 1000 and `cbc-geometric-series-12` mistake 2/3 match
+  no clear slip; graded wrong, could be retargeted. Details in `docs/apcalcbc-reviews/unit-10.md`.

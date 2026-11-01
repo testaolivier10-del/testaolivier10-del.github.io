@@ -266,7 +266,7 @@
    "why": {
     "correct": "$r = 2\\sin(3\\theta)$ traces three petals of length 2 as $\\theta$ runs from 0 to $\\pi$; from $\\pi$ to $2\\pi$, $r$ is the negative of its earlier values on the opposite rays, so the petals are traced again.",
     "options": [
-     "Six would be right for $2n$ with an even $n$; for $\\sin(3\\theta)$, the angles from $\\pi$ to $2\\pi$ retrace the same three petals.",
+     "A rose $\\sin(n\\theta)$ has $2n$ petals only when $n$ is even. Here $n = 3$ is odd, so the angles from $\\pi$ to $2\\pi$ retrace the same three petals.",
      "Right: for an odd multiple $n$ of $\\theta$ the rose has $n$ petals; the second half-turn retraces them.",
      "The 2 sets the petal length, not the count.",
      "Four petals come from $\\sin(2\\theta)$ or $\\cos(2\\theta)$."

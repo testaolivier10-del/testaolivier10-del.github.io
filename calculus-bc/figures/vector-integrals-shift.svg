@@ -18,9 +18,9 @@
 <circle cx="247.5" cy="247.5" r="5" fill="#0072B2" stroke="#0072B2" stroke-width="2"/>
 <line x1="397.5" y1="247.5" x2="429.63" y2="183.23" stroke="#D55E00" stroke-width="2.4" stroke-linecap="round"/><polygon points="435,172.5 434.46,185.65 424.8,180.82" fill="#D55E00"/>
 <circle cx="397.5" cy="247.5" r="3.5" fill="#0072B2" stroke="#0072B2" stroke-width="2"/>
-<text xml:space="preserve" x="105.5" y="348.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#5A1E96" text-anchor="start" font-weight="bold" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round"><tspan >start (0, 0)</tspan></text>
+<text xml:space="preserve" x="89.5" y="312.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#5A1E96" text-anchor="end" font-weight="bold" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round"><tspan >start (0, 0)</tspan></text>
 <text xml:space="preserve" x="239.5" y="237.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#0072B2" text-anchor="end" font-weight="bold" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round"><tspan >start (2, 1)</tspan></text>
-<text xml:space="preserve" x="291" y="231.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#D55E00" text-anchor="start" font-weight="normal" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round"><tspan >same velocity at t = 2</tspan></text>
+<text xml:space="preserve" x="262.5" y="361.25" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#D55E00" text-anchor="start" font-weight="normal" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round"><tspan >same velocity at t = 2</tspan></text>
 <text xml:space="preserve" x="590" y="110" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#1F2A28" text-anchor="start" font-weight="bold"><tspan >v(t) = ⟨1, 2t − 2⟩</tspan></text>
 <text xml:space="preserve" x="590" y="145" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#1F2A28" text-anchor="start" font-weight="normal"><tspan >Antiderivative:</tspan></text>
 <text xml:space="preserve" x="590" y="170" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#1F2A28" text-anchor="start" font-weight="normal"><tspan >⟨t, t² − 2t⟩ + C</tspan></text>

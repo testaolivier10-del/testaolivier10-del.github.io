@@ -49,7 +49,7 @@
     },
     {
      "point": "Answer with reason: $y$ is decreasing on $1.026 < t < 4.210$ because $\\frac{dy}{dt} < 0$ there.",
-     "accept": ["(1.026, 4.210) because dy/dt < 0", "a reason based on dy/dx earns no credit"]
+     "accept": ["(1.026, 4.210) because dy/dt < 0", "a sign chart of dy/dt with a sentence stating that y is decreasing because dy/dt < 0 on the interval (a sign chart alone does not earn the point)", "a reason based on dy/dx earns no credit"]
     }
    ],
    "sample": "$y$ is decreasing where $\\frac{dy}{dt} = 3\\cos(1.2t) - 1 < 0$. The calculator gives $\\frac{dy}{dt} = 0$ at $t \\approx 1.026$ and $t \\approx 4.210$, with $\\frac{dy}{dt} < 0$ between them. So the $y$-coordinate is decreasing on $1.026 < t < 4.210$, because $\\frac{dy}{dt} < 0$ on that interval."

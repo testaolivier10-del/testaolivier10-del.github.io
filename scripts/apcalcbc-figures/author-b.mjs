@@ -307,9 +307,9 @@ const figs = {};
     b.push(vec(P, X(s)(2), Y(s)(2), X(s)(2) + 0.5, Y(s)(2) + 1, { color: VERM, width: 2.4 }));
     b.push(dot(P, X(s)(2), Y(s)(2), { r: 3.5, color: c }));
   }
-  b.push(label(P, 0, 0, 'start (0, 0)', { dx: 8, dy: 26, color: EMERALD, bold: true }));
+  b.push(label(P, 0, 0, 'start (0, 0)', { dx: -8, dy: -10, anchor: 'end', color: EMERALD, bold: true }));
   b.push(label(P, 2, 1, 'start (2, 1)', { dx: -8, dy: -10, anchor: 'end', color: BLUE, bold: true }));
-  b.push(label(P, 2.5, 1, 'same velocity at t = 2', { dx: 6, dy: -16, color: VERM }));
+  b.push(label(P, 2.2, -0.45, 'same velocity at t = 2', { dx: 0, dy: 5, color: VERM }));
   const tx = 590;
   b.push(text(tx, 110, 'v(t) = ⟨1, 2t − 2⟩', { size: 15, bold: true }));
   b.push(text(tx, 145, 'Antiderivative:', { size: 14 }));

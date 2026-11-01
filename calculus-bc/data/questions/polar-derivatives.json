@@ -411,7 +411,7 @@
       "why": "That is $\\frac{dr}{d\\theta}$. Multiply by $\\frac{d\\theta}{dt} = \\frac{1}{2}$ to get the rate per second."
      },
      {
-      "value": "-1",
+      "value": "-1/2",
       "why": "That uses $\\sin\\frac{\\pi}{3} = \\frac{1}{2}$. It is $\\frac{\\sqrt{3}}{2}$; $\\cos\\frac{\\pi}{3} = \\frac{1}{2}$."
      }
     ]
