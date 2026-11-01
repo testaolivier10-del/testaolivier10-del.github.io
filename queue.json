@@ -498,9 +498,9 @@
    "hook": "No freezer. Ice cold in seconds?",
    "cta": "spoken",
    "related_video": "1p-L3_POFL0",
-   "tiktok_caption": "Endothermic means it can't happen on its own. True or false? How an instant cold pack gets ice cold with no freezer, and why ΔG° = ΔH° − TΔS° still comes out negative. Free AP Chem practice at levlprep.com #APChem #chemistry",
+   "tiktok_caption": "Endothermic means it can't happen on its own. True or false? How an instant cold pack gets ice cold with no freezer, and why \u0394G\u00b0 = \u0394H\u00b0 \u2212 T\u0394S\u00b0 still comes out negative. Free AP Chem practice at levlprep.com #APChem #chemistry",
    "yt_title": "No freezer. Why does this pack get ice cold?",
-   "yt_description": "Endothermic means it can't happen on its own. True or false? Instant cold packs, entropy and ΔG° = ΔH° − TΔS° (AP Chemistry, Unit 9).\n\nFree AP Chem notes and practice: https://levlprep.com/chem/notes/dissolution-free-energy.html?ref=yt-cold-pack\n\n#APChem #chemistry",
+   "yt_description": "Endothermic means it can't happen on its own. True or false? Instant cold packs, entropy and \u0394G\u00b0 = \u0394H\u00b0 \u2212 T\u0394S\u00b0 (AP Chemistry, Unit 9).\n\nFree AP Chem notes and practice: https://levlprep.com/chem/notes/dissolution-free-energy.html?ref=yt-cold-pack\n\n#APChem #chemistry",
    "status": "posted",
    "added_on": "2026-10-14",
    "approved_on": "2026-10-14",
@@ -553,7 +553,7 @@
    "hook": "Acceleration at the top: zero?",
    "cta": "spoken",
    "related_video": null,
-   "tiktok_caption": "No air resistance: on the way down, is the acceleration bigger, smaller, or the same? Why a ball at the top of its throw has zero velocity but still accelerates at 9.8 m/s² down. AP exam traps #1. Free AP Physics 1 practice at levlprep.com #APPhysics #physics",
+   "tiktok_caption": "No air resistance: on the way down, is the acceleration bigger, smaller, or the same? Why a ball at the top of its throw has zero velocity but still accelerates at 9.8 m/s\u00b2 down. AP exam traps #1. Free AP Physics 1 practice at levlprep.com #APPhysics #physics",
    "yt_title": "Zero speed at the top. Zero acceleration?",
    "yt_description": "No air resistance: on the way down, is the acceleration bigger, smaller, or the same? Velocity vs acceleration at the top of a vertical throw, and the v vs t graph whose slope is g (AP Physics 1, Unit 1). AP exam traps #1.\n\nFree AP Physics 1 notes and practice: https://levlprep.com/physics/notes/motion-representations.html?ref=yt-ball-top\n\n#APPhysics #physics",
    "pin_question": "What physics trap got you on a test?",
@@ -567,7 +567,7 @@
    "pin_comment_id": "UgzFUrUf7_S2s2G7qPV4AaABAg"
   },
   {
-   "status": "scheduled",
+   "status": "dropped",
    "added_on": "2026-10-22",
    "date": "2026-10-31",
    "buffer": "manual",
@@ -601,11 +601,13 @@
    "poll_reminded": false,
    "review_blob": "7ed72acdd74a5652353aa53d123facc14a22a3a5",
    "approved_on": "2026-10-22",
-   "approved_blob": "7ed72acdd74a5652353aa53d123facc14a22a3a5"
+   "approved_blob": "7ed72acdd74a5652353aa53d123facc14a22a3a5",
+   "dropped_on": "2026-10-31",
+   "dropped_reason": "Olivier 2026-10-31: remove every Short not built to the knight v3 standard"
   },
   {
    "id": "w1025-01-power-lift",
-   "status": "scheduled",
+   "status": "dropped",
    "added_on": "2026-10-26",
    "date": "2026-11-01",
    "buffer": "6ae14d19b24fed5fb494689a",
@@ -631,11 +633,14 @@
    },
    "review_blob": "6a910b06300277941577f2f99e385e0b7d9d3285",
    "approved_on": "2026-10-27",
-   "approved_blob": "6a910b06300277941577f2f99e385e0b7d9d3285"
+   "approved_blob": "6a910b06300277941577f2f99e385e0b7d9d3285",
+   "dropped_on": "2026-10-31",
+   "dropped_reason": "Olivier 2026-10-31: remove every Short not built to the knight v3 standard",
+   "buffer_delete_pending": true
   },
   {
    "id": "w1025-02-free-throw",
-   "status": "scheduled",
+   "status": "dropped",
    "added_on": "2026-10-26",
    "date": "2026-11-02",
    "buffer": "6ae14d2c8bc396ba2f17072f",
@@ -657,11 +662,14 @@
    "poll_reminded": false,
    "review_blob": "81fec0fd0e68f4aec2bb56701ec2fe05c8172a5a",
    "approved_on": "2026-10-27",
-   "approved_blob": "81fec0fd0e68f4aec2bb56701ec2fe05c8172a5a"
+   "approved_blob": "81fec0fd0e68f4aec2bb56701ec2fe05c8172a5a",
+   "dropped_on": "2026-10-31",
+   "dropped_reason": "Olivier 2026-10-31: remove every Short not built to the knight v3 standard",
+   "buffer_delete_pending": true
   },
   {
    "id": "w1025-03-dead-zone",
-   "status": "scheduled",
+   "status": "dropped",
    "added_on": "2026-10-26",
    "date": "2026-11-03",
    "buffer": "6ae14d3df6d6782c59a0e60c",
@@ -683,11 +691,14 @@
    "poll_reminded": false,
    "review_blob": "64d9c3a4f9ebf9909317ea0dcd3a840098d933bd",
    "approved_on": "2026-10-27",
-   "approved_blob": "64d9c3a4f9ebf9909317ea0dcd3a840098d933bd"
+   "approved_blob": "64d9c3a4f9ebf9909317ea0dcd3a840098d933bd",
+   "dropped_on": "2026-10-31",
+   "dropped_reason": "Olivier 2026-10-31: remove every Short not built to the knight v3 standard",
+   "buffer_delete_pending": true
   },
   {
    "id": "w1025-04-head-rush",
-   "status": "scheduled",
+   "status": "dropped",
    "added_on": "2026-10-26",
    "date": "2026-11-04",
    "buffer": "manual",
@@ -720,7 +731,9 @@
    },
    "review_blob": "dec372a16c538bdc8e5da6f6a713c8bb363d457d",
    "approved_on": "2026-10-27",
-   "approved_blob": "dec372a16c538bdc8e5da6f6a713c8bb363d457d"
+   "approved_blob": "dec372a16c538bdc8e5da6f6a713c8bb363d457d",
+   "dropped_on": "2026-10-31",
+   "dropped_reason": "Olivier 2026-10-31: remove every Short not built to the knight v3 standard"
   },
   {
    "status": "scheduled",
