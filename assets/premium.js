@@ -477,10 +477,8 @@
     },
     apprecalc: {
       name: 'AP® Precalculus',
-      // Registered hidden (docs/apprecalc-spec.md decision 3): not on sale until
-      // the owner checklist (spec section 9): migration, Polar product, Worker
-      // POLAR_PRODUCTS, then remove onSale: false.
-      onSale: false,
+      // On sale since the owner checklist (docs/apprecalc-spec.md section 9):
+      // migration applied, Polar product pcalc-2027, Worker POLAR_PRODUCTS.
       dailyFree: 15,
       // The free tier (docs/apprecalc-spec.md decision 6, proposed): Unit 1 and
       // every "Algebra you need" lesson. Keep in step with FREE_UNITS in

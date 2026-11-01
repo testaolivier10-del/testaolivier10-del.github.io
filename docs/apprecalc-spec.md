@@ -241,15 +241,18 @@ one rubric line per point and full-credit samples (the AI grader hook only when 
 - The rest is in `docs/apprecalc-needs-author.md` ("Owner decisions": site weight, AI grader; teacher questions).
 
 **Launch checklist (owner), to put AP® Precalculus Premium on sale:**
-- [ ] Apply migration `scripts/sql/migrations/2026-10n-apprecalc.sql` in Supabase (adds `apprecalc` to the three
+- [x] (2026-11-01) Applied together with BC's `2026-10o-apcalcbc.sql`, which lists both courses (live bodies checked
+      first; they matched `2026-10l-appsych.sql`). Never rerun this file alone after BC's: it would drop `apcalcbc`.
+      Was: apply migration `scripts/sql/migrations/2026-10n-apprecalc.sql` in Supabase (adds `apprecalc` to the three
       course checks and the six functions with a course list; check the live function bodies first, as for
       `2026-10l-appsych.sql`; needs that migration applied before it).
-- [ ] Create the Polar product "AP® Precalculus Premium (through June 30, 2027)", one-time, at the AP® price ($25),
+- [x] (2026-11-01) Polar product id `d68e3113-427d-471a-81c4-f68f6b7ad050`; the Founding member discount covers
+      every product. Was: create the Polar product "AP® Precalculus Premium (through June 30, 2027)", one-time, at the AP® price ($25),
       and make sure the "Founding member" discount applies to it.
-- [ ] Add `"pcalc-2027": "<id>"` to `POLAR_PRODUCTS` in the Cloudflare Worker (levlprep-ask) settings; the Worker code
+- [ ] Add `"pcalc-2027": "d68e3113-427d-471a-81c4-f68f6b7ad050"` (was `<id>`) to `POLAR_PRODUCTS` in the Cloudflare Worker (levlprep-ask) settings; the Worker code
       already knows the pass (`worker/src/premium.js`) and redeploys on merge.
-- [ ] Remove `onSale: false` from `COURSES.apprecalc` in `assets/premium.js`, bump `sw.js`, and grant owner access.
-- [ ] Confirm the identity (accent, cover, icon, headline, ranks), the free tier (Unit 1 and "Algebra you need") and
+- [x] (2026-11-01) Done; `sw.js` v101; owner access granted (to 2099). Was: remove `onSale: false` from `COURSES.apprecalc` in `assets/premium.js`, bump `sw.js`, and grant owner access.
+- [x] (2026-11-01) Owner said go ahead with the proposed defaults. Was: confirm the identity (accent, cover, icon, headline, ranks), the free tier (Unit 1 and "Algebra you need") and
       the three free trainers (function lab, rate of change, unit circle).
 - [ ] Merge the PR (after the Worker line, if Premium goes on sale with the merge).
 - [ ] Optional: an AP® Precalculus teacher reviews the course (the "not yet reviewed" note stays until then).
