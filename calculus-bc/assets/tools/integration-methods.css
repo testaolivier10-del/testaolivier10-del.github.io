@@ -32,11 +32,11 @@
 .im-scenes{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--line);border-radius:12px;padding:3px;gap:3px;background:var(--paper);}
 .im-scene{min-height:40px;border:0;border-radius:9px;background:transparent;color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;padding:0 4px;}
 .im-scene[aria-pressed="true"]{background:var(--cink);color:#fff;}
-:root[data-theme="dark"] .im-scene[aria-pressed="true"]{background:#F7B8CA;color:#1a1015;}
+:root[data-theme="dark"] .im-scene[aria-pressed="true"]{background:#D6BFF5;color:#1E0F33;}
 .im-chips{display:flex;flex-wrap:wrap;gap:6px;}
 .im-chip{min-height:44px;padding:0 13px;border-radius:999px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;white-space:nowrap;}
 .im-chip[aria-pressed="true"]{border-color:var(--cink);background:var(--cink);color:#fff;}
-:root[data-theme="dark"] .im-chip[aria-pressed="true"]{background:#F7B8CA;border-color:#F7B8CA;color:#1a1015;}
+:root[data-theme="dark"] .im-chip[aria-pressed="true"]{background:#D6BFF5;border-color:#D6BFF5;color:#1E0F33;}
 @media (max-width:640px){.ls-root .im-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}.ls-root .im-chips::-webkit-scrollbar{display:none;}}
 
 .calc-plot .im-f{fill:none;stroke:#B0123A;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
@@ -74,7 +74,7 @@
 .im-handle .im-halo{fill:var(--cink);fill-opacity:.15;}
 .im-handle .im-dot{fill:var(--cink);stroke:var(--white,#fff);stroke-width:2.5;}
 .im-handle:focus-visible .im-halo{fill-opacity:.32;stroke:var(--cink);stroke-width:2;}
-:root[data-theme="dark"] .im-handle .im-dot{fill:#F7B8CA;stroke:#1c1c1e;} :root[data-theme="dark"] .im-handle .im-halo{fill:#F7B8CA;}
+:root[data-theme="dark"] .im-handle .im-dot{fill:#D6BFF5;stroke:#1c1c1e;} :root[data-theme="dark"] .im-handle .im-halo{fill:#D6BFF5;}
 
 /* the tabular table */
 .im-tab{display:block;width:100%;max-width:420px;height:auto;margin:0 auto;}
@@ -98,3 +98,7 @@
 .im-bigint{font-size:26px;color:var(--ink);overflow-x:auto;max-width:100%;}
 .im-note{margin:0;max-width:520px;font:600 15px var(--font-ui);color:var(--ink);line-height:1.5;}
 .im-note.is-q{color:var(--ink-2,#666);}
+
+/* Phones: keep the lower-right corner of the plot (an axis label, the last tick) clear of the Enlarge button,
+   which sits 8px from the stage corner (BC review, tools-exams). */
+@media (max-width:640px){.ls-root .im-fig{padding-bottom:40px;}}

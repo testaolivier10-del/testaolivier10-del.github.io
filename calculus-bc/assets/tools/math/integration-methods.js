@@ -44,6 +44,8 @@
   function istr(a){ return a === 1 ? 'x' : a === -1 ? '-x' : a + 'x'; }
   function linT(p){ return p === 0 ? 'x' : p > 0 ? 'x − ' + p : 'x + ' + (-p); }
   function lin(p){ return p === 0 ? 'x' : p > 0 ? 'x - ' + p : 'x + ' + (-p); }
+  /* A rational value as n/d when it is one with d up to 64 (1/8, not 0.125), else as a decimal. */
+  function ratStr(v){ for(var d = 1; d <= 64; d++){ var n = Math.round(v * d); if(Math.abs(v * d - n) < 1e-9) return d === 1 ? String(n) : n + '/' + d; } return String(cl(v)); }
   function cl(v){ return Math.abs(v) < 1e-12 ? 0 : +(+v).toPrecision(12); }
 
   /* ------------------------------------------------------------- explore */
@@ -291,7 +293,7 @@
       var Fa = p === 1 ? k * Math.log(a) : k * Math.pow(a, 1 - p) / (1 - p);
       var co = fstr(k * e1.d, e1.n);   // k / (1 - p)
       if(p === 1){ var la = a === 1 ? '' : k + '*ln(' + a + ')'; o.Fb = o.inf ? k + '*ln(b)' + (la ? ' - ' + la : '') : (la ? la + ' - ' : '-') + k + '*ln(b)'; o.Fbtex = o.inf ? k + '\\ln b' + (la ? ' - ' + k + '\\ln ' + a : '') : (la ? k + '\\ln ' + a + ' - ' : '-') + k + '\\ln b'; }
-      else { o.Fb = o.inf ? co + '*' + pow() + ' - (' + cl(Fa) + ')' : '(' + cl(Fa) + ') - ' + co + '*' + pow(); var bt = 'b^{' + ftex(e1.n, e1.d) + '}'; o.Fbtex = o.inf ? ctex(k * e1.d, e1.n, bt, true) + ' - ' + '\\left(' + ftex(Math.round(Fa * 1e6), 1e6) + '\\right)' : ''; }
+      else { o.Fb = o.inf ? co + '*' + pow() + ' - (' + ratStr(Fa) + ')' : '(' + ratStr(Fa) + ') - ' + co + '*' + pow(); var bt = 'b^{' + ftex(e1.n, e1.d) + '}'; o.Fbtex = o.inf ? ctex(k * e1.d, e1.n, bt, true) + ' - ' + '\\left(' + ftex(Math.round(Fa * 1e6), 1e6) + '\\right)' : ''; }
       o.conv = o.inf ? p > 1 : p < 1;
       o.value = o.conv ? (o.inf ? -Fa : Fa) : null;
       if(o.conv && !o.inf) o.value = Fa;
@@ -404,15 +406,19 @@
     }
     t = t.replace(/ln\(\|([^|]*)\|\)/g, 'ln|$1|')
       .replace(/(\d)\*\((ln\|[^|]*\|)\)/g, '$1 $2')
+      .replace(/\((-?\d+)\/(\d+)\)\*(ln\|[^|]*\|)/g, function(m, n, q, v){ return (n === '1' ? '' : n === '-1' ? '-' : n + ' ') + v + '/' + q; })
+      .replace(/\((-?\d+)\/(\d+)\)\*([a-z])\^\(-(\d+)\)/g, function(m, n, q, v, k){ return n + '/(' + q + v + (k === '1' ? '' : '^' + k) + ')'; })
       .replace(/\/1(?![\d.])/g, '')
       .replace(/\^1(?![\d.\/])/g, '')
-      .replace(/(^|[\s(])\((-?\d+(?:\.\d+)?)\)(?![\^*(\w])/g, '$1$2')
+      .replace(/\((-?\d+)\/(\d+)\)\*(e\^\([^()]*\)|sin\([^()]*\)|cos\([^()]*\))/g, function(m, n, q, v){ return (n === '1' ? '' : n === '-1' ? '-' : n + ' ') + v + '/' + q; })
+      .replace(/(^|[\s(])\((-?\d+(?:\.\d+)?(?:\/\d+)?)\)(?![\^*(\w])/g, '$1$2')
       .replace(/\+\s*-\s*/g, '- ').replace(/-\s+-\s*/g, '+ ')
       .replace(/(^|[^\w.)|])1\*(?=[a-z(|])/g, '$1')
       .replace(/\((\d+)\/(\d+)\)\*([a-z](?:\^\d+)?)(?![\w(^])/g, function(m, n, q, v){ return (n === '1' ? '' : n) + v + '/' + q; })
       .replace(/(^|[^\^\w.])(\d+)\*(ln|sin|cos|tan|atan|sqrt|e\^)/g, '$1$2 $3')
       .replace(/(^|[^\^\w.])(\d+)\*([a-z(|])/g, '$1$2$3')
       .replace(/(^|[^\^\w.])(\d+)?([a-z])\^\(-1\)/g, function(m, p, c, v){ return p + (c || '1') + '/' + v; })
+      .replace(/(^|[^\^\w.])(\d+)?([a-z])\^\(-([2-9])\)/g, function(m, p, c, v, k){ return p + (c || '1') + '/' + v + '^' + k; })
       .replace(/(^|[^\^\w.])(\d+)?([a-z])\^\(-1\/2\)/g, function(m, p, c, v){ return p + (c || '1') + '/sqrt(' + v + ')'; })
       .replace(/\((\d+)\/(\d+)\)\*(\([^()]*\)\^\d+)/g, function(m, n, q, v){ return (n === '1' ? '' : n) + v + '/' + q; })
       .replace(/(^|[^a-z])([a-z])\*(?=[a-df-z]\b|\()/g, '$1$2')

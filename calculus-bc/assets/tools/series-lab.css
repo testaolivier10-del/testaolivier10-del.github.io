@@ -21,8 +21,8 @@
 .sl-chip{min-height:44px;padding:0 13px;border-radius:999px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;white-space:nowrap;}
 .sl-chip[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
 .ls-root .sl-chip[aria-pressed="true"]{background:var(--cink);border-color:var(--cink);color:#fff;}
-:root[data-theme="dark"] .ls-root .sl-chip[aria-pressed="true"],:root[data-theme="dark"] .sl-chip[aria-pressed="true"]{background:#F7B8CA;border-color:#F7B8CA;color:#1a1015;}
-:root[data-theme="dark"] .sl-view[aria-pressed="true"]{border-color:#F7B8CA;color:#F7B8CA;background:transparent;}
+:root[data-theme="dark"] .ls-root .sl-chip[aria-pressed="true"],:root[data-theme="dark"] .sl-chip[aria-pressed="true"]{background:#D6BFF5;border-color:#D6BFF5;color:#1E0F33;}
+:root[data-theme="dark"] .sl-view[aria-pressed="true"]{border-color:#D6BFF5;color:#D6BFF5;background:transparent;}
 @media (max-width:640px){.ls-root .sl-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}.ls-root .sl-chips::-webkit-scrollbar{display:none;}}
 
 /* the partial-sums chart */
@@ -107,3 +107,7 @@
 .cd-opt-t .calc-m{font-size:1.16em;}
 .sl-ivfig .sl-nltl{font-size:13.5px;}
 .sl-qfig figcaption{padding:0 52px;text-align:center;}
+
+/* Phones: keep the lower-right corner of the plot (an axis label, the last tick) clear of the Enlarge button,
+   which sits 8px from the stage corner (BC review, tools-exams). */
+@media (max-width:640px){.ls-root .sl-fig{padding-bottom:40px;}}

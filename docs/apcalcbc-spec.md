@@ -87,7 +87,7 @@ One branch, `claude/apcalcbc`, one PR at the end.
 | 1 | Content: the 30 BC-only topics (lessons, notes, banks with stimulus sets, glossary, figures), BC FRQs (Q2/Q5/Q6 types), BC edits to 6.14 | to do |
 | 2 | BC trainers (section 6) | to do |
 | 3 | Two practice exams (BC unit mix, BC FRQ slots), unit tests for 9 and 10, justification prompts, formula page additions, cram kit | **done 2026-10-31** (decision 10) |
-| 4 | Independent accuracy checks (Unit 6-8 BC topics, Unit 9, Unit 10, tools, exams) | to do |
+| 4 | Independent accuracy checks (Unit 6-8 BC topics, Unit 9, Unit 10, tools, exams) | **done 2026-10-31**: four independent reviews (`docs/apcalcbc-reviews/units-6-8.md`, `unit-9.md`, `unit-10.md`, `tools-exams.md`); no wrong keys; two FRQ rubrics tightened, one double-key item and one polar-lab area readout fixed |
 | Launch | Publish, generators, continuity pass, "twelve courses" wording, full CI with browser checks, PR | to do |
 
 ### 5a. Authoring split

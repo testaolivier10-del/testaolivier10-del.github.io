@@ -82,6 +82,9 @@
       }
       return cache[k];
     }
+    // The area swept up to θ itself, not the table's nearest sample (480 steps), so the three-decimal value
+    // matches the upper limit shown in the set-up (θ = 1.88 gave 9.165, the area to 1.885; it is 9.160).
+    function areaTo(th){ var L = lims(); return th <= L[0] ? 0 : PL.area(cur(), L[0], th); }
     var cue = T.cue('Press Play, or drag around the curve to sweep θ.');
     host.innerHTML =
       '<section class="bt-problem pl-card" aria-label="Polar lab explorer">' +
@@ -126,7 +129,7 @@
     function setPick(mode, id, reg){
       pause(); st.mode = mode; st.id = id; st.reg = reg || null;
       storeSet('apcalcbc_polar-lab_pick', JSON.stringify({ id: st.id, reg: st.reg }));
-      var L = lims(); st.th = L[0] + (L[1] - L[0]) * 0.3;
+      var L = lims(); st.th = Math.round((L[0] + (L[1] - L[0]) * 0.3) * 100) / 100;   // on a slider step, so its readout and the θ pill agree
       so.min = L[0]; so.max = L[1]; slider.input.min = String(L[0]); slider.input.max = String(L[1]); slider.set(st.th);
       pwrap.setAttribute('aria-valuemin', M.fixed(L[0], 2)); pwrap.setAttribute('aria-valuemax', M.fixed(L[1], 2));
       controls(); pl = null; gl = null; draw(true);
@@ -212,7 +215,7 @@
       o.push('<circle class="pl-dot" cx="' + r1(g.sx(s.x)) + '" cy="' + r1(g.sy(s.y)) + '" r="7.5"/>');
       plane.innerHTML = o.join('');
       pwrap.setAttribute('aria-valuenow', M.fixed(th, 2));
-      pwrap.setAttribute('aria-valuetext', 'θ = ' + thTxt(th) + ': r = ' + F(rr, 2) + ', area swept ' + F(tb.A[i], 2));
+      pwrap.setAttribute('aria-valuetext', 'θ = ' + thTxt(th) + ': r = ' + F(rr, 2) + ', area swept ' + F(areaTo(th), 2));
     }
 
     /* ------------------------------------------------ r against θ */
@@ -263,7 +266,7 @@
       return { lo: lo, body: body, full: '\\frac{1}{2}\\int_{' + lo + '}^{' + L[3].tex + '} ' + body + '\\,d\\theta' };
     }
     function words(full){
-      var c = cur(), th = st.th, I = info(), i = idx(th), A = I.tb.A[i], d = PL.describe(c, th), s = d.s, two = st.mode === 'two', reg = region(), S = setupTex();
+      var c = cur(), th = st.th, I = info(), i = idx(th), A = areaTo(th), d = PL.describe(c, th), s = d.s, two = st.mode === 'two', reg = region(), S = setupTex();
       // the setup line under the plane: built to the current θ
       var sKey = key() + ':' + M.fixed(th, 2);
       if(sKey !== lastSetup){
@@ -287,7 +290,7 @@
     }
     function pills(){
       if(!LS) return;
-      var c = cur(), th = st.th, s = PL.at(c, th), A = info().tb.A[idx(th)], narrow = false;
+      var c = cur(), th = st.th, s = PL.at(c, th), A = areaTo(th), narrow = false;
       try{ narrow = LS.root.classList.contains('ls-phone') || matchMedia('(max-width: 599.98px)').matches; }catch(e){}
       LS.pills(narrow ? [{ html: '<span class="pl-pk">r</span> ' + F(s.r, 2) + ' · <span class="pl-pk">dr/dθ</span> ' + F(s.dr, 2), tone: 'ghost' }]
         : [{ k: 'r', html: F(s.r, 2), tone: 'readout' }, { k: 'dr/dθ', html: F(s.dr, 2), tone: 'readout' }, { k: 'area', html: F(A, 3), tone: 'readout' }], 'left', 'explore');

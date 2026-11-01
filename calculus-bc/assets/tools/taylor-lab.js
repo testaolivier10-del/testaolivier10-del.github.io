@@ -81,7 +81,7 @@
     var F = TL.funcById('exp'), c = 0, n = 2, xe = 1, band = 'lag', LS = null, touched = false, nid = T.nid('tl'), svg = null, Fr = null, view = null;
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem tl-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Taylor polynomial explorer</h2>' +
-      '<div class="tl-fig"><p class="tl-eq"></p><div class="tl-plot"></div><p class="tl-key" aria-hidden="true"><span class="tl-k-f">f</span><span class="tl-k-p">P<sub>n</sub></span><span class="tl-k-b">error bound</span></p></div>' +
+      '<div class="tl-fig"><p class="tl-eq"></p><div class="tl-plot"></div><p class="tl-key" aria-hidden="true"><span class="tl-k-f">f</span><span class="tl-k-p"><bdi>P<sub>n</sub></bdi></span><span class="tl-k-b">error bound</span></p></div>' +
       '<div class="tl-ctl"><div class="tl-chips ls-scroll" role="group" aria-label="Function">' + TL.FUNCS.map(function(f){ return '<button type="button" class="tchip tl-chip" data-id="' + f.id + '" aria-pressed="false" aria-label="' + esc(plainTex(f.tex)) + '">' + esc(f.chip) + '</button>'; }).join('') + '</div>' +
       '<div class="tl-sl"></div><div class="tl-band" role="group" aria-label="Error band"><span class="tl-band-l">Band</span><button type="button" class="tl-bb" data-b="lag" aria-pressed="true">Lagrange</button><button type="button" class="tl-bb" data-b="alt" aria-pressed="false">Alternating</button><button type="button" class="tl-bb" data-b="off" aria-pressed="false">Off</button></div></div>' +
       '<div class="tl-say"></div>' +

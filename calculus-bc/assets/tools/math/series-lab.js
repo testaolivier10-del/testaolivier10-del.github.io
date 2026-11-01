@@ -426,7 +426,13 @@
     };
     var absList = [{ code: B.absCode, html: POOL[B.absCode].html, why: 'Right: $\\sum ' + B.btex + '$ is ' + B.absWhy + '.' }];
     var dk = B.prm.b === 'p' ? (B.absConv ? 'p+' : 'p-') : B.prm.b;
-    pickN(r, ABSD[dk], 3).forEach(function(k){ absList.push({ code: k, html: POOL[k].html, why: 'Not this one: $\\sum ' + B.btex + '$ is ' + B.absWhy + '.' }); });
+    // what is wrong with each distractor's reason, then the right reason (BC review, tools-exams)
+    var NOTIT = { 'div-nth': 'Its terms do approach 0, so the nth term test decides nothing. ',
+      'conv-geo': 'It is not geometric: the ratio of consecutive terms is not constant. ',
+      'conv-ratio': 'The ratio test limit is 1 here, so the ratio test decides nothing. ',
+      'div-lc': 'Against $\\frac{1}{n}$ the limit is not a finite positive number, so that comparison shows nothing. ',
+      'conv-p': dk === 'p-' ? 'Here $p \\le 1$. ' : 'It is not a p-series. ', 'div-p': dk === 'p+' ? 'Here $p > 1$. ' : 'It is not a p-series. ' };
+    pickN(r, ABSD[dk], 3).forEach(function(k){ absList.push({ code: k, html: POOL[k].html, why: (NOTIT[k] || 'Not this one. ') + '$\\sum ' + B.btex + '$ is ' + B.absWhy + '.' }); });
     absList = absList.slice(0, 4);
     var s2 = B.absConv ? [
       { code: 'conv-abs', html: 'Converges, because $\\sum |a_n|$ converges', why: 'Right: absolute convergence implies convergence.' },

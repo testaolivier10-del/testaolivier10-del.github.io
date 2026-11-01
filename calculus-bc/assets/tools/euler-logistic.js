@@ -224,7 +224,7 @@
       if(LS){
         LS.caption(T.sayHead($('.el-say')), 'explore');
         LS.pills([{ k: 'Euler', html: n3(yE), tone: 'readout' }, { k: 'True', html: isFinite(yT) ? n3(yT) : '—', tone: 'ghost' }], 'left', 'explore');
-        LS.pills(isFinite(yT) && Math.abs(err) >= 5e-4 ? [{ html: (under ? 'Under' : 'Over') + ' by ' + n3(Math.abs(err)), tone: under ? 'accent' : 'warn' }] : [], 'right', 'explore');
+        LS.pills(isFinite(yT) && Math.abs(err) >= 5e-4 ? [{ k: under ? 'Under' : 'Over', html: n3(Math.abs(err)), tone: under ? 'accent' : 'warn' }] : [], 'right', 'explore');
       }
     }
     /* ----- Logistic scene */
@@ -264,7 +264,7 @@
       parts.push('<path class="el-par" d="' + pathOf(sampleFn(m.rate, 0, Pmax, spec, 200), F2) + '"/>');
       parts.push('<line class="el-halfl" x1="' + r2(F2.sx(lg.L / 2)) + '" x2="' + r2(F2.sx(lg.L / 2)) + '" y1="' + F2.pad.t + '" y2="' + (F2.h - F2.pad.b) + '"/>');
       parts.push('<circle class="el-vtx" cx="' + r2(F2.sx(lg.L / 2)) + '" cy="' + r2(F2.sy(m.maxRate)) + '" r="5"/><text class="el-halflab" x="' + r2(F2.sx(lg.L / 2) + 8) + '" y="' + r2(F2.sy(m.maxRate) - 6) + '">max ' + clean(m.maxRate, 1) + '</text>');
-      parts.push('<circle class="el-cappt" cx="' + r2(F2.sx(lg.L)) + '" cy="' + r2(F2.sy(0)) + '" r="5"/><text class="el-caplab" x="' + r2(F2.sx(lg.L) - 7) + '" y="' + r2(F2.sy(0) + 17) + '" text-anchor="end">L</text>');
+      parts.push('<circle class="el-cappt" cx="' + r2(F2.sx(lg.L)) + '" cy="' + r2(F2.sy(0)) + '" r="5"/><text class="el-caplab" x="' + r2(F2.sx(lg.L)) + '" y="' + r2(F2.sy(0) + 32) + '" text-anchor="middle">L</text>');
       parts.push('<circle class="el-now" cx="' + r2(F2.sx(Pt)) + '" cy="' + r2(F2.sy(m.rate(Pt))) + '" r="7"/>');
       b2.innerHTML = P.svg(spec).replace('</svg>', parts.join('') + '</svg>');
       if(Ht) Ht.set(lg.t, Pt);

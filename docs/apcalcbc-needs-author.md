@@ -163,3 +163,12 @@ meta descriptions sit with the integration fixes under "Resolved"; C4 (absolute 
 ## Unit 9 review (2026-10-31)
 
 Report: `docs/apcalcbc-reviews/unit-9.md`. b2, b3 and c1 resolved above. Nothing new for a person.
+
+## Tools and exams review (Phase 4)
+
+Report: `docs/apcalcbc-reviews/tools-exams.md`. **p3-accuracy resolved 2026-10-31**: the 26 exam-only items (every
+option recomputed), the 11 BC prompts, the 24 unit-test items and the formula rows were checked; two distractor
+explanations rewritten (`cbc-exam-1-08`, `cbc-exam-1-10`), no key changed.
+
+- **te-abs-bars** (lead, shared, cosmetic): bare `|a_n|` renders with a gap after the first bar in the shared TeX
+  renderer (AB and BC). A shared fix, not done here.

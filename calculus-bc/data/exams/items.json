@@ -289,7 +289,7 @@
     "correct": "Each step is $y_{\\text{new}} = y + 0.5\\left(x + \\sin y\\right)$: from $(0, 1)$ to $(0.5, 1.421)$, to $(1, 2.165)$, to $(1.5, 3.079)$, keeping full precision between steps.",
     "options": [
      "This keeps the first slope's $\\sin y$ value for every step; recompute the slope at each new point.",
-     "This uses the slope at the right end of each step; Euler's method uses the slope at the point you are at.",
+     "This puts the $x$ at the end of each step into the slope, $(x + 0.5) + \\sin y$; Euler's method uses the slope at the point you are at.",
      "This is one step of size 1.5 along the tangent line at $(0, 1)$, not three steps.",
      "Three Euler steps, each with the slope at the current point."
     ]
@@ -344,7 +344,7 @@
     "options": [
      "By parts, $\\frac{x^3}{3}\\ln x - \\frac{x^3}{9}$ from 1 to $e$.",
      "This is only the $uv$ term at $x = e$; the integral of $v\\,du$ is left out.",
-     "This drops the value at $x = 1$ with the wrong sign: $-\\frac{x^3}{9}$ at 1 is $-\\frac{1}{9}$, which is subtracted.",
+     "This adds the value of the antiderivative at $x = 1$ instead of subtracting it: it is $-\\frac{1}{9}$ there, so subtracting it adds $\\frac{1}{9}$.",
      "This is $\\int_1^e \\frac{x^2}{3}\\,dx$, the integral of $v\\,du$ alone."
     ]
    }
