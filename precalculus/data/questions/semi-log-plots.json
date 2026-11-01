@@ -1,0 +1,521 @@
+{
+ "stimuli": {
+  "semi-log-plots-s1": {
+   "kind": "graph",
+   "title": "Users of an app on a semi-log plot",
+   "figure": "semi-log-plots-set1",
+   "text": "The vertical axis is a logarithmic scale. Points $A(0, 20)$, $B(4, 200)$ and $C(8, 2{,}000)$ lie on the line through the data, where $t$ is years since 2016."
+  },
+  "semi-log-plots-s2": {
+   "kind": "table",
+   "title": "The logarithm of $y$",
+   "table": {
+    "caption": "Values of t and of the common logarithm of y, from data plotted on a semi-log plot",
+    "cols": [
+     "$t$",
+     "0",
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "rows": [
+     [
+      "$\\log y$",
+      "0.5",
+      "0.8",
+      "1.1",
+      "1.4",
+      "1.7"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-semi-log-plots-1",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "semi-log-plots-s1",
+   "calc": true,
+   "type": "single",
+   "q": "The data lie on a straight line on this semi-log plot. What does that show about the number of users?",
+   "options": [
+    "It grows exponentially, by the same factor in equal times",
+    "It grows linearly: equal time steps add the same number of users",
+    "It grows like a quadratic: its second differences are constant",
+    "It grows logarithmically: it rises by equal steps as $t$ doubles"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On a logarithmic vertical scale, equal vertical steps are equal factors. A straight line rises by equal steps over equal times, so the count is multiplied by the same factor each year: exponential growth.",
+    "options": [
+     "Straight on a semi-log plot means $\\log y$ is linear in $t$, so $y$ is exponential.",
+     "Linear data would bend (concave down) on a log scale, because equal additions are smaller and smaller factors.",
+     "A quadratic's logarithm is not linear in $t$, so it would not make a straight line.",
+     "Logarithmic growth would bend even more on a log scale."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-2",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "semi-log-plots-s1",
+   "calc": true,
+   "type": "single",
+   "q": "From $A$ to $B$, how does the number of users change?",
+   "options": [
+    "It is multiplied by $10$",
+    "It increases by $10$ users",
+    "It is multiplied by $4$",
+    "It is multiplied by $100$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$B$ is one labeled step (one power of $10$) above $A$: from $20$ to $200$, a factor of $10$, over $4$ years.",
+    "options": [
+     "$\\frac{200}{20} = 10$.",
+     "The count goes from $20$ to $200$, up $180$; on a log scale, equal steps are factors, not differences.",
+     "$4$ is the number of years, not the factor.",
+     "A factor of $100$ is two labeled steps, from $A$ to $C$; $B$ is one step above $A$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-3",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "semi-log-plots-s1",
+   "calc": true,
+   "type": "single",
+   "q": "The line's slope is measured in powers of $10$ per year: the change in $\\log y$ divided by the change in $t$. What is the slope?",
+   "options": [
+    "$0.25$",
+    "$247.5$",
+    "$10$",
+    "$1.778$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{\\log 2{,}000 - \\log 20}{8 - 0} = \\frac{3.301 - 1.301}{8} = \\frac{2}{8} = 0.25$ per year.",
+    "options": [
+     "$\\log y$ rises $2$ (two powers of $10$) in $8$ years.",
+     "That is $\\frac{2{,}000 - 20}{8}$, the slope on an ordinary scale; this axis shows $\\log y$.",
+     "$10$ is the factor over $4$ years, not the change in $\\log y$ per year.",
+     "That is $10^{0.25}$, the growth factor $b$; the slope is its logarithm, $0.25$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-4",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "semi-log-plots-s1",
+   "calc": true,
+   "type": "numeric",
+   "q": "Model the data with $y = a \\cdot b^t$. Find the yearly growth factor $b$, correct to three decimal places.",
+   "numeric": {
+    "answer": 1.7782794100389228,
+    "mistakes": [
+     {
+      "value": 0.25,
+      "why": "That is the slope, which is $\\log b$. Then $b = 10^{0.25}$."
+     },
+     {
+      "value": 2.5,
+      "why": "That spreads the factor of $10$ evenly as $\\frac{10}{4}$; the factor per year is the fourth root, $10^{1/4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\log b$ is the slope, $0.25$, so $b = 10^{0.25} \\approx 1.778$. Check: $1.778^4 \\approx 10$, the factor over $4$ years."
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-5",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "semi-log-plots-s1",
+   "calc": true,
+   "type": "numeric",
+   "q": "Use the model $y = 20 \\cdot 10^{t/4}$ to estimate the number of users at $t = 6$ years, correct to three decimal places.",
+   "numeric": {
+    "answer": 632.4555320336758,
+    "unit": "users",
+    "mistakes": [
+     {
+      "value": 1100,
+      "why": "That is halfway between $200$ and $2{,}000$ in value. On a log scale, halfway up is the geometric middle, $\\sqrt{200 \\cdot 2{,}000}$."
+     },
+     {
+      "value": 30,
+      "why": "That uses $20 \\cdot 1.5$; the model is $20 \\cdot 10^{1.5}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y = 20 \\cdot 10^{6/4} = 20 \\cdot 10^{1.5} \\approx 632.456$ users. On the plot, that point is halfway between $B$ and $C$ in height, but not in value."
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-6",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "semi-log-plots-s2",
+   "type": "single",
+   "q": "What kind of function models $y$?",
+   "options": [
+    "$y$ is exponential in $t$",
+    "$y$ is linear in $t$",
+    "$y$ is logarithmic in $t$",
+    "$y$ is quadratic in $t$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\log y$ increases by $0.3$ for each step of $1$ in $t$, so $\\log y$ is linear in $t$ and $y$ is exponential.",
+    "options": [
+     "$\\log y$ linear in $t$ means $y = a \\cdot b^t$.",
+     "It is $\\log y$, not $y$, that grows by equal amounts.",
+     "A logarithmic $y$ would make $y$ itself change by equal steps over equal factors of $t$.",
+     "$\\log y$ has constant first differences, so it is linear, and $y$ is exponential."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-7",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "semi-log-plots-s2",
+   "type": "expr",
+   "q": "Write $\\log y$ as a linear function of $t$.",
+   "expr": {
+    "answer": "0.5 + 0.3t",
+    "vars": [
+     "t"
+    ],
+    "domain": [
+     0,
+     6
+    ],
+    "mode": "exact",
+    "lhs": "\\log y =",
+    "mistakes": [
+     {
+      "expr": "0.3 + 0.5t",
+      "why": "The intercept is the value at $t = 0$, $0.5$; the slope is the change per step, $0.3$."
+     },
+     {
+      "expr": "0.5 + 0.8t",
+      "why": "The slope is the change, $0.8 - 0.5 = 0.3$, not the second value."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The starting value at $t = 0$ is $0.5$ and the constant change is $0.3$ per unit of $t$: $\\log y = 0.5 + 0.3t$."
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-8",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "semi-log-plots-s2",
+   "type": "single",
+   "q": "Which equation gives $y$ as a function of $t$?",
+   "options": [
+    "$y = 10^{0.5 + 0.3t}$",
+    "$y = 0.5 + 0.3t$",
+    "$y = 0.5 \\cdot (0.3)^t$",
+    "$y = 10^{0.5} + 10^{0.3t}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\log y = 0.5 + 0.3t$, so $y = 10^{0.5 + 0.3t} = 10^{0.5} \\cdot 10^{0.3t} = 10^{0.5} \\cdot (10^{0.3})^t$.",
+    "options": [
+     "Undo the logarithm with base $10$, then split the exponent.",
+     "That is $\\log y$, not $y$.",
+     "The intercept and slope are logarithms of $a$ and $b$, so $a = 10^{0.5}$ and $b = 10^{0.3}$.",
+     "$10^{0.5 + 0.3t}$ is a product of powers, not a sum."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-9",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "semi-log-plots-s2",
+   "type": "single",
+   "q": "What is $y$ when $t = 0$?",
+   "options": [
+    "$\\sqrt{10}$",
+    "$0.5$",
+    "$10 \\cdot 0.5$",
+    "$e^{0.5}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\log y = 0.5$, so $y = 10^{0.5} = \\sqrt{10} \\approx 3.16$.",
+    "options": [
+     "$10^{1/2} = \\sqrt{10}$.",
+     "$0.5$ is $\\log y$, not $y$.",
+     "That multiplies instead of using a power: $y = 10^{0.5}$.",
+     "The scale is base $10$, so undo $\\log$ with $10$, not $e$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-10",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "semi-log-plots-s2",
+   "type": "numeric",
+   "q": "By what factor is $y$ multiplied each time $t$ increases by $1$? Give the exact value.",
+   "numeric": {
+    "answer": "10^(0.3)",
+    "mistakes": [
+     {
+      "value": 0.3,
+      "why": "$0.3$ is the change in $\\log y$. The factor is $10^{0.3}$."
+     },
+     {
+      "value": 1.3,
+      "why": "Adding $0.3$ to a logarithm multiplies by $10^{0.3}$, not by $1.3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each step adds $0.3$ to $\\log y$, which multiplies $y$ by $10^{0.3}$ (about $2$)."
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-11",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "q": "Which function's graph is a straight line on a semi-log plot (logarithmic vertical axis)?",
+   "options": [
+    "$y = 5 \\cdot 3^x$",
+    "$y = 5x + 3$",
+    "$y = x^3$",
+    "$y = 5 + 3\\log x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\log(5 \\cdot 3^x) = \\log 5 + x\\log 3$, which is linear in $x$.",
+    "options": [
+     "An exponential function becomes linear when you take its logarithm.",
+     "$\\log(5x + 3)$ is not linear in $x$; the graph bends.",
+     "$\\log(x^3) = 3\\log x$, which is not linear in $x$.",
+     "$\\log(5 + 3\\log x)$ is not linear in $x$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-12",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "expr",
+   "q": "A semi-log plot with a natural-log scale shows the line $\\ln y = 1.2 + 0.05t$. Write $y$ as a function of $t$.",
+   "expr": {
+    "answer": "e^(1.2 + 0.05t)",
+    "vars": [
+     "t"
+    ],
+    "domain": [
+     0,
+     40
+    ],
+    "mode": "exact",
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "1.2 + 0.05t",
+      "why": "That is $\\ln y$. Raise $e$ to it to get $y$."
+     },
+     {
+      "expr": "1.2e^(0.05t)",
+      "why": "The intercept $1.2$ is $\\ln a$, so $a = e^{1.2}$, not $1.2$."
+     },
+     {
+      "expr": "e^1.2 + e^(0.05t)",
+      "why": "$e^{1.2 + 0.05t}$ is a product, $e^{1.2} \\cdot e^{0.05t}$, not a sum."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Undo $\\ln$ with $e$: $y = e^{1.2 + 0.05t} = e^{1.2} \\cdot e^{0.05t}$, about $3.32 \\cdot 1.051^t$."
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-13",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "q": "Why is the graph of $y = 3 \\cdot 2^x + 10$ not a straight line on a semi-log plot?",
+   "options": [
+    "Adding $10$ makes $\\log y$ nonlinear in $x$",
+    "The base $2$ is too small for a semi-log plot",
+    "The coefficient $3$ bends the graph",
+    "Its outputs are negative for some $x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only $y = a \\cdot b^x$ has $\\log y = \\log a + x\\log b$, a linear function. With a vertical shift, $\\log(3 \\cdot 2^x + 10)$ is not linear: the graph flattens toward $\\log 10$ on the left.",
+    "options": [
+     "The vertical shift breaks the product form that the logarithm turns into a line.",
+     "Any base $b > 0$, $b \\ne 1$, gives a line when there is no shift.",
+     "A coefficient becomes $\\log 3$, a vertical shift of the line, not a bend.",
+     "$3 \\cdot 2^x + 10$ is always more than $10$, so its outputs are positive."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-14",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "q": "On a semi-log plot with a base-$10$ scale, the line through exponential data rises from $\\log y = 1$ at $x = 0$ to $\\log y = 3.5$ at $x = 5$. What is the growth factor $b$ in $y = a \\cdot b^x$? Give the exact value.",
+   "numeric": {
+    "answer": "sqrt(10)",
+    "mistakes": [
+     {
+      "value": 0.5,
+      "why": "$0.5$ is the slope, which equals $\\log b$. Then $b = 10^{0.5}$."
+     },
+     {
+      "value": 10,
+      "why": "That is $a = 10^1$, from the intercept. $b$ comes from the slope."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The slope is $\\frac{3.5 - 1}{5 - 0} = 0.5 = \\log b$, so $b = 10^{0.5} = \\sqrt{10}$."
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-15",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "q": "Data that are exactly linear, such as $y = 4x + 2$ for $x \\ge 0$, are plotted on a semi-log plot. What does the graph look like?",
+   "options": [
+    "A curve that rises and is concave down",
+    "A straight line with positive slope",
+    "A curve that rises and is concave up",
+    "A horizontal line"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Equal additions of $4$ are smaller and smaller factors as $y$ grows ($2$ to $6$ triples, $6$ to $10$ is $\\times 1.67$), so $\\log y$ rises by shrinking steps.",
+    "options": [
+     "Shrinking steps in $\\log y$ over equal steps in $x$: concave down.",
+     "Only exponential data give a straight line.",
+     "The steps in $\\log y$ shrink, so the curve bends down.",
+     "$y$ increases, so $\\log y$ does too."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-16",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "Exponential data $y = a \\cdot b^x$ with $a > 0$ and $b > 1$ are drawn on a semi-log plot. Predict the effect of each change.",
+   "variables": [
+    {
+     "name": "The slope of the line, when $b$ increases",
+     "answer": "up",
+     "why": "The slope is $\\log b$, which grows with $b$."
+    },
+    {
+     "name": "The slope of the line, when $a$ increases",
+     "answer": "none",
+     "why": "$a$ only moves the line up, since $\\log y = \\log a + x\\log b$."
+    },
+    {
+     "name": "The vertical intercept, when $a$ increases",
+     "answer": "up",
+     "why": "The intercept is $\\log a$."
+    }
+   ],
+   "why": {
+    "correct": "On a semi-log plot, $\\log y = \\log a + x\\log b$: $a$ sets the intercept and $b$ sets the slope."
+   }
+  },
+  {
+   "id": "pcalc-semi-log-plots-17",
+   "unit": "unit-2",
+   "topic": "semi-log-plots",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "q": "Two exponential models are drawn on one semi-log plot. Line $P$ is steeper than line $Q$. What does that tell you?",
+   "options": [
+    "$P$ has the larger growth factor",
+    "$P$ has the larger starting value",
+    "$P$ is linear and $Q$ is exponential",
+    "$P$ gives the larger output for each $x$ value"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The slope of each line is $\\log b$, so the steeper line has the larger $b$. Starting values come from the intercepts.",
+    "options": [
+     "Slope $= \\log b$, larger for larger $b$.",
+     "The starting value $a$ sets the intercept, not the steepness.",
+     "Both are straight on a semi-log plot, so both are exponential.",
+     "If $Q$ starts much higher, it can stay above $P$ for a while."
+    ]
+   }
+  }
+ ]
+}

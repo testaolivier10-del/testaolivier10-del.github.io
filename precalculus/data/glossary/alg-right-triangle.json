@@ -1,0 +1,8 @@
+{
+ "trig-ratio": {
+  "def": "A ratio of two sides of a right triangle, named from an acute angle $\\theta$: $\\sin\\theta = \\frac{\\text{opposite}}{\\text{hypotenuse}}$, $\\cos\\theta = \\frac{\\text{adjacent}}{\\text{hypotenuse}}$, $\\tan\\theta = \\frac{\\text{opposite}}{\\text{adjacent}}$ (SOH CAH TOA). It depends only on the angle, not on the size of the triangle."
+ },
+ "hypotenuse": {
+  "def": "The side of a right triangle across from the right angle, and its longest side. The other two sides, the legs, are named from an acute angle $\\theta$: the opposite side is across from $\\theta$, the adjacent side touches $\\theta$."
+ }
+}

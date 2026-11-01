@@ -1,0 +1,483 @@
+{
+ "stimuli": {
+  "rational-holes-s1": {
+   "kind": "graph",
+   "title": "The graph of $r(x) = \\frac{x^2 - x - 6}{x^2 - 5x + 6}$",
+   "plot": {
+    "label": "Graph of r(x) = (x^2 - x - 6)/(x^2 - 5x + 6) with an open circle (a hole) at (3, 5), a dashed vertical asymptote x = 2 and a dashed horizontal asymptote y = 1; the graph crosses the x-axis at -2",
+    "x": [
+     -6,
+     8
+    ],
+    "y": [
+     -6,
+     10
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "(x^2 - x - 6)/(x^2 - 5x + 6)",
+      "label": "r"
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": 2
+     },
+     {
+      "y": 1
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       3,
+       5
+      ],
+      "open": true
+     },
+     {
+      "at": [
+       -2,
+       0
+      ]
+     }
+    ]
+   }
+  },
+  "rational-holes-s2": {
+   "kind": "table",
+   "title": "Outputs near $x = -1$",
+   "table": {
+    "caption": "Values of k(x) = (x^2 - 1)/(x + 1) for inputs close to -1; k(-1) is undefined",
+    "cols": [
+     "$x$",
+     "-1.1",
+     "-1.01",
+     "-1.001",
+     "-0.999",
+     "-0.99",
+     "-0.9"
+    ],
+    "rows": [
+     [
+      "$k(x)$",
+      "-2.1",
+      "-2.01",
+      "-2.001",
+      "-1.999",
+      "-1.99",
+      "-1.9"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-rational-holes-1",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rational-holes-s1",
+   "q": "The graph shows $r(x) = \\frac{x^2 - x - 6}{x^2 - 5x + 6}$. Where is the hole in the graph of $r$?",
+   "type": "single",
+   "options": [
+    "At $(2, 4)$",
+    "At $(3, 0)$",
+    "At $(3, 5)$",
+    "At $(-2, 0)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Factor: $\\frac{(x - 3)(x + 2)}{(x - 2)(x - 3)}$. The factor $x - 3$ has the same multiplicity on top and bottom, so $x = 3$ is a hole; its $y$-coordinate is $\\frac{3 + 2}{3 - 2} = 5$.",
+    "options": [
+     "At $x = 2$ only the denominator has a factor $x - 2$: that is the vertical asymptote.",
+     "$x = 3$ is right, but the hole's height is the limit there, $\\frac{3 + 2}{3 - 2} = 5$.",
+     "Right: $x - 3$ cancels, and the remaining $\\frac{x + 2}{x - 2}$ is $5$ at $x = 3$.",
+     "$(-2, 0)$ is on the graph: it is a zero."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-2",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rational-holes-s1",
+   "q": "The graph shows $r(x) = \\frac{x^2 - x - 6}{x^2 - 5x + 6}$. Which statement is true?",
+   "type": "single",
+   "options": [
+    "$r(3) = 5$",
+    "$\\lim_{x \\to 3} r(x) = 5$",
+    "$\\lim_{x \\to 3} r(x) = \\infty$",
+    "$\\lim_{x \\to 3} r(x) = 0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For $x \\ne 3$, $r(x) = \\frac{x + 2}{x - 2}$, which approaches $5$ as $x \\to 3$. So $\\lim_{x \\to 3} r(x) = 5$ while $r(3)$ is undefined.",
+    "options": [
+     "$r(3)$ is undefined: the original denominator is $0$ at $x = 3$.",
+     "Right: the outputs approach $5$ from both sides, though $r(3)$ does not exist.",
+     "Near $x = 3$ the outputs stay close to $5$; they grow without bound only near $x = 2$.",
+     "$0 \\div 0$ is not $0$; cancel the common factor and evaluate."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-3",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rational-holes-s1",
+   "q": "The graph shows $r(x) = \\frac{x^2 - x - 6}{x^2 - 5x + 6}$. Which describes $r$ near its vertical asymptote?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to 2^-} r(x) = -\\infty$ and $\\lim_{x \\to 2^+} r(x) = \\infty$",
+    "$\\lim_{x \\to 2^-} r(x) = \\infty$ and $\\lim_{x \\to 2^+} r(x) = -\\infty$",
+    "$\\lim_{x \\to 3^-} r(x) = -\\infty$ and $\\lim_{x \\to 3^+} r(x) = \\infty$",
+    "$\\lim_{x \\to 2} r(x) = 4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Near $x = 2$: top $x + 2 \\approx 4 > 0$; bottom $x - 2$ negative on the left, positive on the right.",
+    "options": [
+     "Right: $\\frac{x + 2}{x - 2}$ has a positive top and a denominator that changes sign at $2$.",
+     "Test $x = 1.9$: $\\frac{3.9}{-0.1} = -39$, so the left side goes down.",
+     "$x = 3$ is the hole; the vertical asymptote is $x = 2$.",
+     "The outputs near $2$ grow without bound; $4$ is the numerator's value there."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-4",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rational-holes-s1",
+   "q": "The graph shows $r(x) = \\frac{x^2 - x - 6}{x^2 - 5x + 6}$. What is $\\lim_{x \\to \\infty} r(x)$?",
+   "type": "single",
+   "options": [
+    "$\\infty$",
+    "$5$",
+    "$0$",
+    "$1$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Equal degrees with leading coefficients $1$ and $1$: $\\lim_{x \\to \\infty} r(x) = 1$.",
+    "options": [
+     "Equal degrees give a horizontal asymptote, not unbounded growth.",
+     "$5$ is the height of the hole.",
+     "$0$ would need the denominator's degree to be greater.",
+     "Right: $\\frac{x^2}{x^2} = 1$, the horizontal asymptote $y = 1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-5",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rational-holes-s1",
+   "q": "The graph shows $r(x) = \\frac{x^2 - x - 6}{x^2 - 5x + 6}$. What is the real zero of $r$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "$x = 3$ zeroes the numerator, but it is not in the domain: it is the hole."
+     },
+     {
+      "value": 2,
+      "why": "$x = 2$ is the vertical asymptote."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The numerator $(x - 3)(x + 2)$ is $0$ at $3$ and $-2$. $3$ is not in the domain, so the only real zero is $x = -2$."
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-6",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rational-holes-s2",
+   "q": "The table gives values of $k(x) = \\frac{x^2 - 1}{x + 1}$ near $x = -1$. What is $\\lim_{x \\to -1} k(x)$?",
+   "type": "single",
+   "options": [
+    "$-2$",
+    "$-1$",
+    "$-\\infty$",
+    "It does not exist, because $k(-1)$ is undefined"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$-2.1, -2.01, -2.001$ from the left and $-1.999, -1.99, -1.9$ from the right close in on $-2$. Algebra agrees: $k(x) = x - 1$ for $x \\ne -1$.",
+    "options": [
+     "Right: the outputs approach $-2$ from both sides.",
+     "$-1$ is the input being approached, not the limit of the outputs.",
+     "The outputs stay near $-2$; they do not grow in size.",
+     "A limit describes nearby inputs; it can exist even where the function is undefined."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-7",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rational-holes-s2",
+   "q": "The table gives values of $k(x) = \\frac{x^2 - 1}{x + 1}$ near $x = -1$. What feature does the graph of $k$ have at $x = -1$?",
+   "type": "single",
+   "options": [
+    "A vertical asymptote $x = -1$",
+    "A zero at $x = -1$",
+    "A hole at $(-1, -2)$",
+    "A hole at $(-1, 0)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$x + 1$ appears once on top ($x^2 - 1 = (x - 1)(x + 1)$) and once below, so it cancels: a hole where the outputs would be $-1 - 1 = -2$.",
+    "options": [
+     "Near an asymptote the outputs grow without bound; here they stay near $-2$.",
+     "$k(-1)$ is undefined, so $-1$ cannot be a zero.",
+     "Right: the graph is the line $y = x - 1$ with that one point missing.",
+     "The hole's height is the limit, $-2$, not the value of the numerator."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-8",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rational-holes-s2",
+   "q": "The table gives values of $k(x) = \\frac{x^2 - 1}{x + 1}$ near $x = -1$. How can a table tell a hole apart from a vertical asymptote?",
+   "type": "single",
+   "options": [
+    "At a hole the outputs approach one number; at an asymptote they grow without bound.",
+    "At a hole the outputs are positive; at an asymptote they are negative.",
+    "At a hole the function is defined; at an asymptote it is not.",
+    "At a hole the outputs change sign; at an asymptote they do not."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both features are inputs outside the domain. What differs is the limit: a number for a hole, $\\pm\\infty$ for a vertical asymptote.",
+    "options": [
+     "Right: compare $-2.001$ and $-1.999$ here with values like $-1998$ and $2002$ near an asymptote.",
+     "Signs can be anything at either feature.",
+     "The function is undefined at both.",
+     "Here the outputs stay negative around the hole."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-9",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rational-holes-s2",
+   "q": "The table gives values of $k(x) = \\frac{x^2 - 1}{x + 1}$ near $x = -1$. Find $k(3)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "$\\frac{9 - 1}{3 + 1} = \\frac{8}{4} = 2$; or use $k(x) = x - 1$."
+     },
+     {
+      "value": 8,
+      "why": "$8$ is the numerator; divide by $3 + 1 = 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$k(3) = \\frac{9 - 1}{4} = 2$, the same as $3 - 1$, since $k(x) = x - 1$ for $x \\ne -1$."
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-10",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which function has a hole at $x = 1$?",
+   "type": "single",
+   "options": [
+    "$\\frac{x - 1}{(x - 1)^2}$",
+    "$\\frac{(x - 1)^2}{x - 1}$",
+    "$\\frac{x + 1}{x - 1}$",
+    "$\\frac{x - 1}{x + 1}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A hole at $x = a$ needs $(x - a)$ in the denominator with multiplicity no greater than in the numerator. $\\frac{(x - 1)^2}{x - 1} = x - 1$ for $x \\ne 1$: a hole at $(1, 0)$.",
+    "options": [
+     "$x - 1$ appears more often below, so $x = 1$ is a vertical asymptote.",
+     "Right: the numerator's multiplicity ($2$) is at least the denominator's ($1$).",
+     "Only the denominator is $0$ at $1$: a vertical asymptote.",
+     "$x = 1$ is a zero here, and $-1$ is an asymptote."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-11",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "$f(x) = \\frac{x^2 + 2x - 8}{x^2 - 4}$ has a hole at $x = 2$. What is the $y$-coordinate of the hole?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "3/2",
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$\\frac{0}{0}$ is not $0$. Cancel $x - 2$ first: $\\frac{x + 4}{x + 2}$ at $x = 2$."
+     },
+     {
+      "value": 2,
+      "why": "$\\frac{x + 4}{x + 2}$ at $x = 2$ is $\\frac{6}{4}$; check the factoring: $x^2 + 2x - 8 = (x + 4)(x - 2)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{(x + 4)(x - 2)}{(x - 2)(x + 2)} = \\frac{x + 4}{x + 2}$ for $x \\ne 2$. So $\\lim_{x \\to 2} f(x) = \\frac{6}{4} = \\frac{3}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-12",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statements about $g(x) = \\frac{x^2 - 9}{x - 3}$ are true? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "The graph has a hole at $(3, 6)$.",
+    "The graph has a vertical asymptote $x = 3$.",
+    "$g(3) = 6$",
+    "$\\lim_{x \\to 3} g(x) = 6$"
+   ],
+   "correct": [
+    0,
+    3
+   ],
+   "why": {
+    "correct": "$\\frac{(x - 3)(x + 3)}{x - 3} = x + 3$ except at $x = 3$, where $g$ is undefined. The limit is $6$; the graph is a line with the point $(3, 6)$ removed.",
+    "options": [
+     "True: $g(x) = x + 3$ for $x \\ne 3$.",
+     "False: the factor $x - 3$ cancels, so the outputs approach $6$.",
+     "False: $g(3)$ is undefined.",
+     "True: $x + 3 \\to 6$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-13",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which function has a hole at $x = 1$ and a vertical asymptote $x = -2$?",
+   "type": "single",
+   "options": [
+    "$\\frac{x + 2}{(x - 1)(x + 2)}$",
+    "$\\frac{1}{(x - 1)(x + 2)}$",
+    "$\\frac{x - 1}{(x - 1)(x + 2)}$",
+    "$\\frac{(x - 1)(x + 2)}{x + 2}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A cancelling factor $x - 1$ gives the hole; a factor $x + 2$ left over in the denominator gives the asymptote.",
+    "options": [
+     "This cancels $x + 2$ (a hole at $-2$) and keeps $x - 1$ (an asymptote at $1$): the reverse.",
+     "Nothing cancels, so both $1$ and $-2$ are asymptotes.",
+     "Right: $x - 1$ cancels (a hole at $1$), and $x + 2$ remains below (an asymptote at $-2$).",
+     "This has a hole at $-2$ and no asymptote."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-14",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "$h(x) = \\frac{2x^2 - 2}{x^2 + x - 2}$ has a hole. What is its $y$-coordinate?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "4/3",
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$2$ is the horizontal asymptote; the hole is at $x = 1$, with height $\\frac{2(2)}{3}$."
+     },
+     {
+      "value": 0,
+      "why": "Cancel the common factor $x - 1$ before evaluating."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{2(x - 1)(x + 1)}{(x + 2)(x - 1)} = \\frac{2(x + 1)}{x + 2}$ for $x \\ne 1$. At $x = 1$: $\\frac{4}{3}$, so the hole is at $\\left(1, \\frac{4}{3}\\right)$."
+   }
+  },
+  {
+   "id": "pcalc-rational-holes-15",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A rational function $f$ has a hole at $(4, 7)$. Which statement is written correctly?",
+   "type": "single",
+   "options": [
+    "$f(4) = 7$",
+    "$\\lim_{x \\to 7} f(x) = 4$",
+    "$\\lim_{x \\to 4^-} f(x) = \\infty$",
+    "$\\lim_{x \\to 4} f(x) = 7$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A hole is a point the graph approaches but does not include. The limit notation $\\lim_{x \\to 4} f(x) = 7$ says exactly that.",
+    "options": [
+     "At a hole the function is undefined; use a limit.",
+     "Input and output are swapped: $x$ approaches $4$.",
+     "That describes a vertical asymptote.",
+     "Right: the outputs approach $7$ as $x$ approaches $4$ from both sides."
+    ]
+   }
+  }
+ ]
+}

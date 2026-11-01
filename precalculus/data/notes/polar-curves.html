@@ -1,0 +1,52 @@
+<p>In Topic 3.13 a single pair $(r, \theta)$ named a single point. Now let $r$ depend on $\theta$. As the direction $\theta$ sweeps around the pole, the distance $r = f(\theta)$ changes, and the points trace a curve. This page shows how to read and sketch such curves from the ordinary graph of $r$ against $\theta$, and names the families you will see.</p>
+
+<h2>A function of the angle</h2>
+<p>A <b>polar function</b> $r = f(\theta)$ has the angle as its input and a signed distance as its output. Its graph is the set of points with polar coordinates $(f(\theta), \theta)$. You can also graph $r$ against $\theta$ on ordinary axes, with $\theta$ across and $r$ up. The two pictures carry the same information:</p>
+<table class="compare">
+<thead><tr><th scope="col">On the graph of $r$ against $\theta$</th><th scope="col">On the polar curve</th></tr></thead>
+<tbody>
+<tr><td>moving right (input increases)</td><td>the direction turns counterclockwise</td></tr>
+<tr><td>height $r$ (output)</td><td>signed distance along the current ray</td></tr>
+<tr><td>a zero, $r = 0$</td><td>the curve passes through the pole</td></tr>
+<tr><td>$r < 0$ (below the axis)</td><td>the point is on the opposite ray</td></tr>
+<tr><td>a peak or valley of $|r|$</td><td>a point farthest from the pole nearby, such as a petal tip</td></tr>
+</tbody>
+</table>
+
+<h2>Sketching from the graph of $r$</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Sketch $r = 3\sin(2\theta)$ (<a class="figref" href="#fig-rose">Figure 1</a>).</p>
+<p><b>Key values.</b> $r = 0$ at $\theta = 0, \frac{\pi}{2}, \pi, \frac{3\pi}{2}$; $r = 3$ at $\frac{\pi}{4}$ and $\frac{5\pi}{4}$; $r = -3$ at $\frac{3\pi}{4}$ and $\frac{7\pi}{4}$.</p>
+<p><b>First quarter turn,</b> $0 \le \theta \le \frac{\pi}{2}$: $r$ rises from $0$ to $3$ and falls back to $0$, all positive. The points leave the pole, reach distance $3$ along the ray $\frac{\pi}{4}$, and return: one petal in Quadrant I.</p>
+<p><b>Second quarter turn,</b> $\frac{\pi}{2} \le \theta \le \pi$: $r$ is negative. The angle points into Quadrant II, so the points land in Quadrant IV: a petal there, with its tip at $\left(-3, \frac{3\pi}{4}\right)$, which is the same point as $\left(3, \frac{7\pi}{4}\right)$.</p>
+<p>The next two quarter turns draw petals in Quadrants III and II. Four humps, four petals.</p>
+</div>
+<figure id="fig-rose" data-fig="polar-curves-rose"><figcaption>$r = 3\sin(2\theta)$ for $0 \le \theta \le 2\pi$.</figcaption></figure>
+
+<h2>The families</h2>
+<table class="compare">
+<thead><tr><th scope="col">Equation</th><th scope="col">Name</th><th scope="col">Shape</th></tr></thead>
+<tbody>
+<tr><td>$r = a$</td><td>circle</td><td>radius $|a|$, centered at the pole</td></tr>
+<tr><td>$r = a\cos\theta$, $r = a\sin\theta$</td><td>circle</td><td>diameter $|a|$, through the pole, centered on an axis</td></tr>
+<tr><td>$r = a + b\cos\theta$ (or $\sin$), $|a| < |b|$</td><td>limaçon with inner loop</td><td>passes through the pole twice</td></tr>
+<tr><td>$|a| = |b|$</td><td>cardioid</td><td>heart shape, touches the pole once</td></tr>
+<tr><td>$|a| > |b|$</td><td>limaçon without a loop</td><td>never reaches the pole</td></tr>
+<tr><td>$r = a\cos(n\theta)$, $r = a\sin(n\theta)$</td><td>rose</td><td>$n$ petals if $n$ is odd, $2n$ if $n$ is even, each of length $|a|$</td></tr>
+</tbody>
+</table>
+<p>Cosine versions are symmetric about the polar axis; sine versions are symmetric about the vertical line $\theta = \frac{\pi}{2}$.</p>
+
+<h2>The inner loop</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> Where does $r = 1 + 2\cos\theta$ form its inner loop?</p>
+<p>$r = 0$ where $\cos\theta = -\frac{1}{2}$: $\theta = \frac{2\pi}{3}$ and $\frac{4\pi}{3}$. Between them, $r < 0$; at $\theta = \pi$, $r = -1$.</p>
+<p>On $\left(\frac{2\pi}{3}, \frac{4\pi}{3}\right)$ the angle points left, but the negative $r$ puts the points to the right of the pole. The small loop runs from the pole out to $(1, 0)$ in rectangular coordinates and back. Outside that interval $r > 0$ and the big loop is drawn, reaching $(3, 0)$ at $\theta = 0$.</p>
+</div>
+
+<h2>Common slips</h2>
+<ul>
+<li>Plotting a negative $r$ in the quadrant the angle points to. Reverse through the pole.</li>
+<li>Counting petals as $n$ when $n$ is even. Even $n$ gives $2n$.</li>
+<li>Confusing $r = 4\cos\theta$ (a circle through the pole) with $r = 4$ (a circle around the pole).</li>
+</ul>

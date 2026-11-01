@@ -1,0 +1,214 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "pcalc-alg-right-triangle-1",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A right triangle has legs of length $8$ and $15$ and hypotenuse $17$. The angle $B$ is across from the leg of length $8$. What is $\\sin B$?",
+   "type": "single",
+   "options": ["$\\frac{8}{17}$", "$\\frac{15}{17}$", "$\\frac{8}{15}$", "$\\frac{17}{8}$"],
+   "correct": 0,
+   "why": {
+    "correct": "Sine is opposite over hypotenuse. From $B$ the opposite side is $8$, so $\\sin B = \\frac{8}{17}$.",
+    "options": [
+     "Opposite $8$ over hypotenuse $17$.",
+     "$\\frac{15}{17}$ is adjacent over hypotenuse, which is $\\cos B$.",
+     "$\\frac{8}{15}$ is opposite over adjacent, which is $\\tan B$.",
+     "This is the ratio upside down; the hypotenuse goes on the bottom."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-2",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the same triangle (legs $8$ and $15$, hypotenuse $17$), the other acute angle is $C$, across from the leg of length $15$. What is $\\tan C$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "15/8",
+    "mistakes": [
+     { "value": "8/15", "why": "That is $\\tan B$. From $C$ the opposite side is $15$ and the adjacent side is $8$: the legs swap names." },
+     { "value": "15/17", "why": "That is opposite over hypotenuse, $\\sin C$. Tangent is opposite over adjacent." }
+    ]
+   },
+   "why": {
+    "correct": "From $C$: opposite $= 15$, adjacent $= 8$, so $\\tan C = \\frac{15}{8}$."
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-3",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 10-foot ladder leans against a wall. Its foot is 6 feet from the wall on level ground. Let $\\theta$ be the angle between the ladder and the ground. What is $\\tan\\theta$?",
+   "type": "single",
+   "options": ["$\\frac{4}{3}$", "$\\frac{3}{4}$", "$\\frac{3}{5}$", "$\\frac{4}{5}$"],
+   "correct": 0,
+   "why": {
+    "correct": "The ladder is the hypotenuse. The height on the wall is $\\sqrt{10^2 - 6^2} = 8$ feet, opposite $\\theta$; the 6 feet is adjacent. $\\tan\\theta = \\frac{8}{6} = \\frac{4}{3}$.",
+    "options": [
+     "Opposite $8$ over adjacent $6$.",
+     "This is adjacent over opposite, the ratio upside down.",
+     "$\\frac{6}{10}$ is adjacent over hypotenuse, which is $\\cos\\theta$.",
+     "$\\frac{8}{10}$ is opposite over hypotenuse, which is $\\sin\\theta$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-4",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A kite string 40 meters long makes an angle of $55^\\circ$ with the level ground. Use $\\sin 55^\\circ \\approx 0.8192$ to find the kite's height above the hand holding the string, in meters.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 32.768,
+    "unit": "meters",
+    "mistakes": [
+     { "value": 48.828125, "why": "That divides 40 by $0.8192$. The height is opposite the angle and the string is the hypotenuse, so $h = 40 \\sin 55^\\circ$: multiply." },
+     { "value": 0.02048, "why": "That divides $0.8192$ by 40. From $\\sin 55^\\circ = \\frac{h}{40}$, multiply both sides by 40." }
+    ]
+   },
+   "why": {
+    "correct": "$\\sin 55^\\circ = \\frac{h}{40}$, so $h = 40(0.8192) = 32.768$ meters."
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-5",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A right triangle has hypotenuse $8$ and an acute angle $\\theta$. Write the length of the side adjacent to $\\theta$ in terms of $\\theta$.",
+   "type": "expr",
+   "expr": {
+    "answer": "8cos(theta)",
+    "vars": ["theta"],
+    "domain": [0.1, 1.4],
+    "lhs": "\\text{adjacent} =",
+    "mistakes": [
+     { "expr": "8sin(theta)", "why": "Sine goes with the opposite side. The adjacent side uses cosine: $\\cos\\theta = \\frac{\\text{adjacent}}{8}$." },
+     { "expr": "cos(theta)/8", "why": "From $\\cos\\theta = \\frac{\\text{adjacent}}{8}$, multiply by 8; do not divide." },
+     { "expr": "8/cos(theta)", "why": "The unknown is on top of the ratio, so multiply: adjacent $= 8\\cos\\theta$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\cos\\theta = \\frac{\\text{adjacent}}{8}$, so adjacent $= 8\\cos\\theta$."
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-6",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a right triangle, $\\sin A = \\frac{3}{5}$ for the acute angle $A$. What is $\\cos A$?",
+   "type": "single",
+   "options": ["$\\frac{4}{5}$", "$\\frac{5}{3}$", "$\\frac{2}{5}$", "$\\frac{3}{4}$"],
+   "correct": 0,
+   "why": {
+    "correct": "Draw a triangle with opposite $3$ and hypotenuse $5$. The adjacent side is $\\sqrt{25 - 9} = 4$, so $\\cos A = \\frac{4}{5}$. Any triangle with this angle gives the same ratio.",
+    "options": [
+     "Adjacent $4$ over hypotenuse $5$.",
+     "This flips $\\sin A$ upside down; cosine needs the adjacent side.",
+     "This is $1 - \\frac{3}{5}$. Sides follow the Pythagorean theorem, not subtraction of ratios.",
+     "$\\frac{3}{4}$ is opposite over adjacent, which is $\\tan A$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-7",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Right triangle 2 is right triangle 1 with every side multiplied by 3. Both have an acute angle of $40^\\circ$. How does $\\sin 40^\\circ$ found from triangle 2 compare with $\\sin 40^\\circ$ found from triangle 1?",
+   "type": "single",
+   "options": ["They are equal", "It is 3 times as large", "It is 9 times as large", "It is one third as large"],
+   "correct": 0,
+   "why": {
+    "correct": "Both sides in the ratio are multiplied by 3, so the ratio does not change. A trigonometric ratio depends only on the angle.",
+    "options": [
+     "$\\frac{3 \\cdot \\text{opposite}}{3 \\cdot \\text{hypotenuse}} = \\frac{\\text{opposite}}{\\text{hypotenuse}}$.",
+     "The opposite side triples, but so does the hypotenuse, so the 3s cancel.",
+     "Areas scale by 9, but a ratio of two lengths does not change.",
+     "Nothing shrinks: the factor 3 appears on top and bottom and cancels."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-8",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A wheelchair ramp rises 2 feet over a horizontal distance of 24 feet. Let $\\theta$ be the angle the ramp makes with the ground. What is $\\tan\\theta$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "1/12",
+    "mistakes": [
+     { "value": 12, "why": "That is run over rise. Tangent is opposite over adjacent: rise $2$ over run $24$." },
+     { "value": 48, "why": "That multiplies the sides. Tangent is a ratio: $\\frac{2}{24}$." }
+    ]
+   },
+   "why": {
+    "correct": "The rise is opposite $\\theta$ and the horizontal run is adjacent: $\\tan\\theta = \\frac{2}{24} = \\frac{1}{12}$, the slope of the ramp."
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-9",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "From a point 30 meters from the base of a tree, on level ground, the angle up to the top of the tree is $50^\\circ$. Use $\\tan 50^\\circ \\approx 1.192$ to find the height of the tree, in meters.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 35.76,
+    "unit": "meters",
+    "mistakes": [
+     { "value": 25.16778523489933, "why": "That divides 30 by $1.192$. The height is opposite the angle and 30 is adjacent: $\\tan 50^\\circ = \\frac{h}{30}$, so multiply." },
+     { "value": 31.192, "why": "That adds the ratio to the distance. Multiply: $h = 30 \\tan 50^\\circ$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\tan 50^\\circ = \\frac{h}{30}$, so $h = 30(1.192) = 35.76$ meters."
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-10",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "q": "A right triangle has an acute angle $\\theta$ with $\\cos\\theta = 0.6$ and adjacent side 9. Put the steps for finding the hypotenuse $x$ in order.",
+   "options": [
+    "Name the sides from $\\theta$: 9 is adjacent, $x$ is the hypotenuse",
+    "Choose the ratio that links them: $\\cos\\theta = \\frac{9}{x}$",
+    "Multiply both sides by $x$: $0.6x = 9$",
+    "Divide by $0.6$: $x = 15$"
+   ],
+   "why": {
+    "correct": "Name the sides, pick the ratio that uses both, clear the fraction, then solve: $x = \\frac{9}{0.6} = 15$."
+   }
+  }
+ ]
+}

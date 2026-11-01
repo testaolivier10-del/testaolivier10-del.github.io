@@ -1,0 +1,51 @@
+<p>Three more trigonometric functions come from the ones you know by taking reciprocals. They are not new ideas, just names for quotients that keep appearing: the length of a wire, the distance along a sloped beam, the rewriting steps in the next topic. Knowing them by sight makes the algebra shorter.</p>
+
+<h2>The definitions</h2>
+<p>For any angle $x$ where the denominator is not $0$:</p>
+<p>$$\sec x = \frac{1}{\cos x} \qquad \csc x = \frac{1}{\sin x} \qquad \cot x = \frac{1}{\tan x} = \frac{\cos x}{\sin x}$$</p>
+<p>Secant goes with cosine and cosecant goes with sine. A quick check: each pairs with the function whose name it does <i>not</i> start like. Cotangent is the reciprocal of tangent, so it is cosine over sine.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\sec\frac{\pi}{4}$, $\csc\frac{7\pi}{6}$ and $\cot\frac{2\pi}{3}$.</p>
+<p>$\cos\frac{\pi}{4} = \frac{\sqrt{2}}{2}$, so $\sec\frac{\pi}{4} = \frac{2}{\sqrt{2}} = \sqrt{2}$.</p>
+<p>$\sin\frac{7\pi}{6} = -\frac{1}{2}$, so $\csc\frac{7\pi}{6} = -2$. The sign carries over: a reciprocal has the same sign as the number.</p>
+<p>$\cos\frac{2\pi}{3} = -\frac{1}{2}$ and $\sin\frac{2\pi}{3} = \frac{\sqrt{3}}{2}$, so $\cot\frac{2\pi}{3} = \frac{-1/2}{\sqrt{3}/2} = -\frac{1}{\sqrt{3}} = -\frac{\sqrt{3}}{3}$.</p>
+</div>
+
+<h2>Graphs from reciprocals</h2>
+<p>You can sketch $y = \sec x$ straight from $y = \cos x$ (<a class="figref" href="#fig-sec">Figure 1</a>):</p>
+<ul>
+<li>Where $\cos x = 1$ or $-1$, $\sec x$ equals it: the reciprocal of $\pm 1$ is $\pm 1$. These are the turning points of the secant branches.</li>
+<li>Where $\cos x = 0$, $\sec x$ is undefined: a vertical asymptote. Near it, $\cos x$ is a tiny number, so $\sec x$ is huge, with the same sign as $\cos x$. For example $\lim_{x \to \pi/2^-} \sec x = \infty$ and $\lim_{x \to \pi/2^+} \sec x = -\infty$.</li>
+<li>Where $\cos x$ is positive and decreasing, $\sec x$ is positive and increasing. Reciprocals of positive numbers move the opposite way.</li>
+</ul>
+<figure id="fig-sec" data-fig="sec-csc-cot-graphs"><figcaption>$y = \sec x$ (solid) and $y = \cos x$ (dashed).</figcaption></figure>
+<p>The graph of $\csc x$ is built from $\sin x$ in the same way: turning points where $\sin x = \pm 1$, asymptotes where $\sin x = 0$. The graph of $\cot x$ looks like a tangent graph reflected and shifted: it falls on each branch, has zeros where $\cos x = 0$ and asymptotes where $\sin x = 0$.</p>
+
+<h2>All six side by side</h2>
+<table class="compare">
+<thead><tr><th scope="col">Function</th><th scope="col">Definition</th><th scope="col">Period</th><th scope="col">Vertical asymptotes</th><th scope="col">Range</th></tr></thead>
+<tbody>
+<tr><td>$\sin x$</td><td>$y$-coordinate</td><td>$2\pi$</td><td>none</td><td>$[-1, 1]$</td></tr>
+<tr><td>$\cos x$</td><td>$x$-coordinate</td><td>$2\pi$</td><td>none</td><td>$[-1, 1]$</td></tr>
+<tr><td>$\tan x$</td><td>$\frac{\sin x}{\cos x}$</td><td>$\pi$</td><td>$x = \frac{\pi}{2} + k\pi$</td><td>$(-\infty, \infty)$</td></tr>
+<tr><td>$\csc x$</td><td>$\frac{1}{\sin x}$</td><td>$2\pi$</td><td>$x = k\pi$</td><td>$(-\infty, -1] \cup [1, \infty)$</td></tr>
+<tr><td>$\sec x$</td><td>$\frac{1}{\cos x}$</td><td>$2\pi$</td><td>$x = \frac{\pi}{2} + k\pi$</td><td>$(-\infty, -1] \cup [1, \infty)$</td></tr>
+<tr><td>$\cot x$</td><td>$\frac{\cos x}{\sin x}$</td><td>$\pi$</td><td>$x = k\pi$</td><td>$(-\infty, \infty)$</td></tr>
+</tbody>
+</table>
+<p>Why the ranges skip $(-1, 1)$: $|\cos x| \le 1$, and dividing $1$ by a number of size at most $1$ gives a number of size at least $1$.</p>
+
+<h2>Rewriting with sines and cosines</h2>
+<p>When an expression mixes the six functions, write everything in terms of $\sin x$ and $\cos x$, simplify the fraction, then name what is left. This is the main skill the next topic builds on.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Rewrite $\sin x \sec x$ and $\frac{\csc x}{\cot x}$ as single trigonometric functions.</p>
+<p>$\sin x \sec x = \sin x \cdot \frac{1}{\cos x} = \frac{\sin x}{\cos x} = \tan x$.</p>
+<p>$\frac{\csc x}{\cot x} = \frac{1/\sin x}{\cos x/\sin x} = \frac{1}{\sin x} \cdot \frac{\sin x}{\cos x} = \frac{1}{\cos x} = \sec x$, wherever $\sin x \ne 0$ and $\cos x \ne 0$.</p>
+</div>
+
+<h2>Common slips</h2>
+<ul>
+<li>Pairing $\csc$ with $\cos$. Cosecant is $\frac{1}{\sin x}$.</li>
+<li>Confusing the reciprocal with the inverse. $\sec x = \frac{1}{\cos x}$ returns a number; $\cos^{-1} x$ returns an angle.</li>
+<li>Putting the asymptotes of $\sec x$ where $\sin x = 0$. They come from the zeros of its own denominator, $\cos x$.</li>
+</ul>

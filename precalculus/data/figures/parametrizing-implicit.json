@@ -1,0 +1,22 @@
+{
+ "parametrizing-implicit-ellipse": {
+  "file": "figures/parametrizing-implicit-ellipse.svg",
+  "ext": "svg",
+  "w": 400,
+  "h": 310,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The ellipse x squared over 9 plus y squared over 4 = 1 traced by x(t) = 3 cos t, y(t) = 2 sin t. The trip starts at (3, 0) when t = 0 and arrows show counterclockwise travel. The point for t = pi/4 is marked at (3 cos(pi/4), 2 sin(pi/4)), about (2.12, 1.41); a dashed circle of radius 3 and the ellipse share the x-coordinate 3 cos t."
+ },
+ "parametrizing-implicit-s1": {
+  "file": "figures/parametrizing-implicit-s1.svg",
+  "ext": "svg",
+  "w": 400,
+  "h": 310,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An ellipse with center (1, 2), reaching 3 units left and right of the center and 2 units above and below it. The trip starts at (4, 2), marked t = 0, and arrows show counterclockwise travel."
+ }
+}

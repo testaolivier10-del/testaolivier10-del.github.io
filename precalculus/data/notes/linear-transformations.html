@@ -1,0 +1,38 @@
+<p>A matrix can do more than store numbers: it can move the whole plane. Multiply every vector by the same $2 \times 2$ matrix and the plane is rotated, reflected, stretched or slanted. Moves of this kind are called linear transformations, and the matrix is the recipe.</p>
+
+<h2>Linear transformations and their matrices</h2>
+<p>A <b>linear transformation</b> of the plane sends each vector to a new one by a rule of the form</p>
+$$L(\left\langle x, y \right\rangle) = \left\langle ax + by, cx + dy \right\rangle.$$
+<p>Write the input as a column and this is matrix multiplication: $\left[ \begin{matrix} a & b \\ c & d \end{matrix} \right]\left[ \begin{matrix} x \\ y \end{matrix} \right] = \left[ \begin{matrix} ax + by \\ cx + dy \end{matrix} \right]$. For example, $L(\left\langle x, y \right\rangle) = \left\langle x + 2y, 3x - y \right\rangle$ has the matrix $\left[ \begin{matrix} 1 & 2 \\ 3 & -1 \end{matrix} \right]$, and $L(\left\langle 1, 1 \right\rangle) = \left\langle 3, 2 \right\rangle$.</p>
+
+<h2>Reading the matrix from a picture</h2>
+<p>Put in $\left\langle 1, 0 \right\rangle$: the output is $\left\langle a, c \right\rangle$, the first column. Put in $\left\langle 0, 1 \right\rangle$: the output is $\left\langle b, d \right\rangle$, the second column. So the matrix is "where the two unit vectors go, written as columns".</p>
+<figure id="fig-square" data-fig="linear-transformations-square"><figcaption>The unit square and its image under $\left[ \begin{matrix} 1 & 1 \\ 0 & 2 \end{matrix} \right]$.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> A transformation sends $\left\langle 1, 0 \right\rangle$ to $\left\langle 2, 1 \right\rangle$ and $\left\langle 0, 1 \right\rangle$ to $\left\langle -1, 1 \right\rangle$. Find its matrix and the image of $\left\langle 3, 2 \right\rangle$.</p>
+<p>Columns: $\left[ \begin{matrix} 2 & -1 \\ 1 & 1 \end{matrix} \right]$.</p>
+<p>$\left[ \begin{matrix} 2 & -1 \\ 1 & 1 \end{matrix} \right]\left[ \begin{matrix} 3 \\ 2 \end{matrix} \right] = \left[ \begin{matrix} 2(3) + (-1)(2) \\ 1(3) + 1(2) \end{matrix} \right] = \left[ \begin{matrix} 4 \\ 5 \end{matrix} \right]$. Or think of it as $3$ copies of $\left\langle 2, 1 \right\rangle$ plus $2$ copies of $\left\langle -1, 1 \right\rangle$.</p>
+</div>
+
+<h2>What stays the same</h2>
+<p>Because every vector is moved by the same matrix, the origin always goes to the origin ($\left[ \begin{matrix} a & b \\ c & d \end{matrix} \right]\left[ \begin{matrix} 0 \\ 0 \end{matrix} \right] = \left[ \begin{matrix} 0 \\ 0 \end{matrix} \right]$), lines go to lines, and parallel lines stay parallel. A rule that moves the origin, such as $\left\langle x, y \right\rangle \to \left\langle x + 1, y \right\rangle$, is not linear.</p>
+
+<h2>A catalog of moves</h2>
+<table class="compare">
+<thead><tr><th scope="col">Move</th><th scope="col">Matrix</th><th scope="col">Determinant</th></tr></thead>
+<tbody>
+<tr><td>rotation by $\theta$ counterclockwise</td><td>$\left[ \begin{matrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{matrix} \right]$</td><td>$1$</td></tr>
+<tr><td>reflection across the $x$-axis</td><td>$\left[ \begin{matrix} 1 & 0 \\ 0 & -1 \end{matrix} \right]$</td><td>$-1$</td></tr>
+<tr><td>reflection across the line $y = x$</td><td>$\left[ \begin{matrix} 0 & 1 \\ 1 & 0 \end{matrix} \right]$</td><td>$-1$</td></tr>
+<tr><td>dilation by $k$</td><td>$\left[ \begin{matrix} k & 0 \\ 0 & k \end{matrix} \right]$</td><td>$k^2$</td></tr>
+<tr><td>horizontal shear</td><td>$\left[ \begin{matrix} 1 & k \\ 0 & 1 \end{matrix} \right]$</td><td>$1$</td></tr>
+</tbody>
+</table>
+<p>The rotation matrix comes from the unit circle: $\left\langle 1, 0 \right\rangle$ turns to $\left\langle \cos\theta, \sin\theta \right\rangle$ and $\left\langle 0, 1 \right\rangle$ turns to $\left\langle -\sin\theta, \cos\theta \right\rangle$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Rotate $\left\langle 2, 0 \right\rangle$ by $\frac{\pi}{6}$ counterclockwise.</p>
+<p>$\left[ \begin{matrix} \frac{\sqrt{3}}{2} & -\frac{1}{2} \\ \frac{1}{2} & \frac{\sqrt{3}}{2} \end{matrix} \right]\left[ \begin{matrix} 2 \\ 0 \end{matrix} \right] = \left[ \begin{matrix} \sqrt{3} \\ 1 \end{matrix} \right]$, a vector of length $2$ at angle $\frac{\pi}{6}$.</p>
+</div>
+
+<h2>Areas and orientation</h2>
+<p>The unit square goes to the parallelogram made by the two columns, whose area is $\left| \det \right|$. Every other region is scaled by the same factor, so a triangle of area $5$ under a matrix with determinant $3$ becomes a triangle of area $15$. A negative determinant also flips the plane over, like a reflection: a counterclockwise trip around a shape becomes a clockwise one.</p>

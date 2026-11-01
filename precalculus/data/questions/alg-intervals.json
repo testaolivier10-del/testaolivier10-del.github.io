@@ -1,0 +1,235 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "pcalc-alg-intervals-1",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which interval describes every $x$ with $-1 \\le x < 4$?",
+   "type": "single",
+   "options": [
+    "$(-1, 4]$",
+    "$[-1, 4)$",
+    "$[-1, 4]$",
+    "$(-1, 4)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A bracket means the endpoint is included ($\\le$ or $\\ge$); a parenthesis means it is not ($<$ or $>$).",
+    "options": [
+     "The brackets are swapped: $-1$ is included (bracket) and $4$ is not (parenthesis).",
+     "Right: $\\le$ includes $-1$, so a bracket; $<$ leaves out $4$, so a parenthesis.",
+     "This includes $4$, but $x < 4$ leaves $4$ out.",
+     "This leaves out $-1$, but $x \\ge -1$ includes it."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-2",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve $3 - 2x > 7$. Write the solution in interval notation.",
+   "type": "single",
+   "options": [
+    "$(-2, \\infty)$",
+    "$(-\\infty, 2)$",
+    "$(-\\infty, -2)$",
+    "$(-\\infty, -2]$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Subtract $3$: $-2x > 4$. Divide by $-2$ and flip: $x < -2$, which is $(-\\infty, -2)$. Check $x = -3$: $3 + 6 = 9 > 7$.",
+    "options": [
+     "This forgets to flip the inequality when dividing by $-2$. Check $x = 0$: $3 > 7$ is false.",
+     "$-2x > 4$ gives $x < -2$, not $x < 2$: $4$ divided by $-2$ is $-2$. Dividing by a negative flips the inequality, and the bound comes out negative.",
+     "Right: $-2x > 4$, and dividing by $-2$ flips the sign: $x < -2$.",
+     "$x = -2$ gives $3 + 4 = 7$, and $7 > 7$ is false, so $-2$ is not included."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-3",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $f(x) = 2x + 3$, which inputs give outputs with $-1 \\le f(x) < 9$?",
+   "type": "single",
+   "options": [
+    "$[-2, 3)$",
+    "$[-1, 9)$",
+    "$[-2, 3]$",
+    "$[-4, 6)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Do the same step to all three parts: subtract $3$ to get $-4 \\le 2x < 6$, then divide by $2$ to get $-2 \\le x < 3$.",
+    "options": [
+     "Right: $-1 \\le 2x + 3 < 9$ becomes $-4 \\le 2x < 6$, so $-2 \\le x < 3$.",
+     "These are the outputs. The question asks for the inputs: solve for $x$.",
+     "$x = 3$ gives $f(3) = 9$, and $9 < 9$ is false, so $3$ is left out.",
+     "This stops after subtracting $3$; divide every part by $2$ as well."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-4",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the domain of $g(x) = \\sqrt{6 - 2x}$ in interval notation?",
+   "type": "single",
+   "options": [
+    "$[3, \\infty)$",
+    "$(-\\infty, 3)$",
+    "$(-\\infty, 6]$",
+    "$(-\\infty, 3]$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The inside of a square root cannot be negative: $6 - 2x \\ge 0$, so $-2x \\ge -6$ and $x \\le 3$ (flip when dividing by $-2$).",
+    "options": [
+     "Dividing $-2x \\ge -6$ by $-2$ flips the sign: $x \\le 3$, not $x \\ge 3$.",
+     "$x = 3$ gives $\\sqrt{0} = 0$, a real number, so $3$ is included.",
+     "Solve $6 - 2x \\ge 0$ for $x$: the $6$ is divided by $2$ as well.",
+     "Right: $6 - 2x \\ge 0$ gives $x \\le 3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-5",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the domain of $h(x) = \\frac{4}{x - 5}$ in interval notation?",
+   "type": "single",
+   "options": [
+    "$(-\\infty, 5) \\cup (5, \\infty)$",
+    "$(-\\infty, 5] \\cup [5, \\infty)$",
+    "$(5, \\infty)$",
+    "$(-\\infty, \\infty)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only $x = 5$ is left out. Skipping one number splits the line into two intervals, joined with the union sign $\\cup$.",
+    "options": [
+     "Right: every real number except $5$, written as two intervals joined by $\\cup$.",
+     "Brackets at $5$ would include it, but $h(5)$ divides by $0$.",
+     "Numbers below $5$ are fine: $h(0) = -\\frac{4}{5}$.",
+     "At $x = 5$ the denominator is $0$, so $5$ is not in the domain."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-6",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Solve $5x - 4 \\le 2x + 11$. What is the largest solution?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "Collect $x$ on one side and numbers on the other: $3x \\le 15$, so $x \\le 5$."
+     },
+     {
+      "value": -5,
+      "why": "$-4$ moves across as $+4$: $3x \\le 11 + 4 = 15$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Subtract $2x$ and add $4$: $3x \\le 15$, so $x \\le 5$. The solutions are $(-\\infty, 5]$, and the largest is $5$."
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-7",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which numbers are in the interval $(-2, 5]$? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$-2$",
+    "$0$",
+    "$5$",
+    "$5.5$"
+   ],
+   "correct": [
+    1,
+    2
+   ],
+   "why": {
+    "correct": "$(-2, 5]$ means $-2 < x \\le 5$: $-2$ is out, $5$ is in, and so is everything between.",
+    "options": [
+     "The parenthesis at $-2$ leaves it out.",
+     "In: $-2 < 0 \\le 5$.",
+     "In: the bracket at $5$ includes it.",
+     "Out: $5.5$ is past the right end, $5$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-8",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $f(x) = 2x + 3$, on which interval is $f(x) \\ge 5$?",
+   "type": "single",
+   "options": [
+    "$(-\\infty, 1]$",
+    "$[1, \\infty)$",
+    "$[5, \\infty)$",
+    "$(1, \\infty)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Solve $2x + 3 \\ge 5$: $2x \\ge 2$, $x \\ge 1$. Dividing by a positive number keeps the direction.",
+    "options": [
+     "This flips the inequality with no reason; the $2$ is positive, so the sign stays.",
+     "Right: $2x + 3 \\ge 5$ gives $2x \\ge 2$, so $x \\ge 1$.",
+     "This is where the outputs are at least $5$; the answer is the inputs.",
+     "$f(1) = 5$ and $5 \\ge 5$ is true, so $1$ is included."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-9",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for solving $-2x + 1 \\ge 9$ in order.",
+   "type": "order",
+   "options": [
+    "Subtract $1$ from both sides: $-2x \\ge 8$",
+    "Divide both sides by $-2$ and flip the sign: $x \\le -4$",
+    "Check a value, such as $x = -5$: $11 \\ge 9$ is true",
+    "Write the answer as $(-\\infty, -4]$"
+   ],
+   "why": {
+    "correct": "Undo the addition, then the multiplication (flipping because $-2$ is negative), check a value, and write the interval with a bracket because $-4$ is included."
+   }
+  }
+ ]
+}

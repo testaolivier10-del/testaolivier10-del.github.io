@@ -1,0 +1,22 @@
+{
+ "polar-curves-rose": {
+  "file": "figures/polar-curves-rose.svg",
+  "ext": "svg",
+  "w": 520,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The polar graph of r = 3 sin(2 theta): a rose with four petals of length 3, centered on the rays pi/4, 3 pi/4, 5 pi/4 and 7 pi/4, each starting and ending at the pole."
+ },
+ "polar-curves-limacon": {
+  "file": "figures/polar-curves-limacon.svg",
+  "ext": "svg",
+  "w": 520,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The polar graph of r = 1 + 2 cos theta: a limacon with a large outer loop reaching farthest to the right and a small inner loop to the right of the pole."
+ }
+}

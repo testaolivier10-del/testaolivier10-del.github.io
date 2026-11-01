@@ -1,0 +1,101 @@
+{
+ "id": "frq-q3-tide",
+ "type": "periodic",
+ "title": "High and low tide at a dock",
+ "calc": false,
+ "points": 6,
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "sinusoidal-modeling"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Depth of water at a dock",
+  "text": "The depth of water at the end of a dock changes with the tide. On one day, high tide, with a depth of 3.1 meters, occurs at 2 a.m., and the next low tide, with a depth of 0.7 meters, occurs at 8 a.m. The sinusoidal function $W$ models the depth of the water, in meters, $t$ hours after midnight. In this model, high tides are 12 hours apart. The graph of $W$ for $2 \\le t \\le 14$ is shown with its axes unscaled. The points $P$, $Q$, $R$, $S$ and $T$ are on the graph: $P$ and $T$ are highest points, $R$ is a lowest point, and $Q$ and $S$ are on the midline.",
+  "figure": "sinusoidal-modeling-tide"
+ },
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Find</b> the coordinates of the points $P$, $Q$, $R$, $S$ and $T$.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "The extremes: $P = (2, 3.1)$, $R = (8, 0.7)$ and $T = (14, 3.1)$",
+     "accept": [
+      "all three correct"
+     ]
+    },
+    {
+     "point": "The midline points: $Q = (5, 1.9)$ and $S = (11, 1.9)$",
+     "accept": [
+      "both correct",
+      "depth 1.9 at times 5 and 11"
+     ]
+    }
+   ],
+   "sample": "High tide at $t = 2$ and low tide at $t = 8$ are half a cycle apart, so the period is 12 hours and the points are 3 hours apart. The midline is $\\frac{3.1 + 0.7}{2} = 1.9$. $P = (2, 3.1)$, $Q = (5, 1.9)$, $R = (8, 0.7)$, $S = (11, 1.9)$, $T = (14, 3.1)$.",
+   "space": "lines"
+  },
+  {
+   "label": "B",
+   "prompt": "The function $W$ is given by $W(t) = a\\cos(b(t + c)) + d$, where $a$, $b$, $c$ and $d$ are constants. <b>Find</b> values of $a$, $b$, $c$ and $d$.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "$b = \\frac{\\pi}{6}$ and $d = 1.9$",
+     "accept": [
+      "$b = \\frac{2\\pi}{12}$",
+      "$b = -\\frac{\\pi}{6}$ with a matching $a$ and $c$"
+     ]
+    },
+    {
+     "point": "$a$ and $c$ that fit the graph: $a = 1.2$ with $c = -2$, or $a = -1.2$ with $c = -8$ (or $c = 4$)",
+     "accept": [
+      "any $c$ that differs from these by a multiple of 12"
+     ]
+    }
+   ],
+   "sample": "$d = \\frac{3.1 + 0.7}{2} = 1.9$ and the amplitude is $\\frac{3.1 - 0.7}{2} = 1.2$. The time from high to low tide, 6 hours, is half a period, so the period is 12 hours and $b = \\frac{2\\pi}{12} = \\frac{\\pi}{6}$. A cosine with $a = 1.2$ is highest where $t + c = 0$; high tide is at $t = 2$, so $c = -2$: $W(t) = 1.2\\cos\\left(\\frac{\\pi}{6}(t - 2)\\right) + 1.9$.",
+   "space": "lines"
+  },
+  {
+   "label": "C(i)",
+   "prompt": "Is $W$ increasing or decreasing on the interval $(8, 11)$? <b>Give a reason</b> for your answer in the context of the problem.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Increasing, with a reason: after low tide at $t = 8$ the water rises toward the next high tide",
+     "accept": [
+      "the depth goes from 0.7 m at $R$ up to 1.9 m at $S$"
+     ]
+    }
+   ],
+   "sample": "$W$ is increasing on $(8, 11)$: low tide is at $t = 8$, and from then the water rises, reaching the midline depth 1.9 m at $t = 11$.",
+   "space": "lines"
+  },
+  {
+   "label": "C(ii)",
+   "prompt": "Is the rate of change of $W$ increasing or decreasing on the interval $(8, 11)$? <b>Explain</b> your reasoning.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Increasing, with a reason: the graph of $W$ is concave up on $(8, 11)$ (below the midline, between the lowest point $R$ and the midline point $S$)",
+     "accept": [
+      "the water rises faster and faster after low tide",
+      "the rate of change of $W$ is increasing because the graph is concave up"
+     ]
+    }
+   ],
+   "sample": "The rate of change of $W$ is increasing on $(8, 11)$. Just after low tide the depth barely changes; the graph is below its midline and concave up there, so the water rises faster and faster until $t = 11$.",
+   "space": "lines"
+  }
+ ]
+}

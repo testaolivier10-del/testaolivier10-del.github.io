@@ -1,0 +1,50 @@
+<p>In the last topic a logarithm answered the question "which exponent?". This page turns that into a statement about functions: an exponential function and the logarithm with the same base are inverse functions. That one fact explains their graphs, their domains and asymptotes, and the way each one changes.</p>
+
+<h2>Two functions that undo each other</h2>
+<p>Take $f(x) = b^x$ and $g(x) = \log_b x$, with the same base $b > 0$, $b \ne 1$. If $f(a) = c$, then $b^a = c$, which means $\log_b c = a$, so $g(c) = a$. Each function sends the other's outputs back to its inputs. They are inverses: $g = f^{-1}$.</p>
+<p>Composing them gives the identity function:</p>
+<ul>
+<li>$\log_b(b^x) = x$ for every real number $x$;</li>
+<li>$b^{\log_b x} = x$ for every $x > 0$ (the logarithm needs a positive input).</li>
+</ul>
+<p>The pair used most is $e^x$ and $\ln x$: $\ln(e^x) = x$ and $e^{\ln x} = x$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Evaluate $2^{\log_2 9}$ and $\ln e^{-4}$.</p>
+<p>$2^x$ undoes $\log_2 x$, so $2^{\log_2 9} = 9$.</p>
+<p>$\ln$ undoes $e^x$, so $\ln e^{-4} = -4$.</p>
+</div>
+
+<h2>The graphs</h2>
+<p>Inverse functions have graphs that are reflections across the line $y = x$, and every feature trades places.</p>
+<table class="compare">
+<thead><tr><th scope="col">Feature</th><th scope="col">$y = b^x$ ($b > 1$)</th><th scope="col">$y = \log_b x$ ($b > 1$)</th></tr></thead>
+<tbody>
+<tr><td>Domain</td><td>$(-\infty, \infty)$</td><td>$(0, \infty)$</td></tr>
+<tr><td>Range</td><td>$(0, \infty)$</td><td>$(-\infty, \infty)$</td></tr>
+<tr><td>Asymptote</td><td>horizontal, $y = 0$</td><td>vertical, $x = 0$</td></tr>
+<tr><td>Key point</td><td>$(0, 1)$</td><td>$(1, 0)$</td></tr>
+<tr><td>Another point</td><td>$(1, b)$</td><td>$(b, 1)$</td></tr>
+</tbody>
+</table>
+<p>The asymptote of the exponential, $\lim_{x \to -\infty} b^x = 0$, becomes the behavior of the logarithm near $0$: $\lim_{x \to 0^+} \log_b x = -\infty$.</p>
+
+<h2>How each one changes</h2>
+<p>An exponential function turns <b>adding</b> to the input into <b>multiplying</b> the output: $b^{x + k} = b^k \cdot b^x$. For $f(x) = 2^x$, each increase of $3$ in $x$ multiplies $f(x)$ by $2^3 = 8$.</p>
+<p>Its inverse does the reverse: <b>multiplying</b> the input of a logarithm <b>adds</b> to the output. Multiplying $x$ by $1{,}000 = 10^3$ adds $3$ to $\log x$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A table gives $h(x) = \log_4 x$ at $x = \frac{1}{16}, \frac{1}{4}, 1, 4, 16, 64$. Describe the pattern.</p>
+<p>Each input is $4$ times the one before, and the outputs are $-2, -1, 0, 1, 2, 3$.</p>
+<p>So equal factors of $4$ in the input give equal steps of $1$ in the output. Swap the rows and you get $4^x$: equal steps of $1$ in the input give equal factors of $4$ in the output.</p>
+</div>
+
+<h2>Inverting a stretched exponential</h2>
+<p>When an exponential has other steps around it, undo those steps first, in reverse order, and use the logarithm for the exponential step.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find the inverse of $f(x) = 2e^x$.</p>
+<p>Swap: $x = 2e^y$.</p>
+<p>Undo the factor $2$: $e^y = \frac{x}{2}$.</p>
+<p>Undo $e$: $y = \ln \frac{x}{2}$. So $f^{-1}(x) = \ln \frac{x}{2}$, defined for $x > 0$, the range of $f$.</p>
+</div>
+
+<h2>Reading the inverse in context</h2>
+<p>If $N(t) = 500 \cdot 2^t$ counts bacteria after $t$ hours, the inverse answers "when?": $t = \log_2 \frac{N}{500}$. The count $4{,}000$ is reached at $t = \log_2 8 = 3$ hours. The exponential takes a time and gives a count; its inverse takes a count and gives a time.</p>

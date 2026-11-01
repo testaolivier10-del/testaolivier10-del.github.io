@@ -1,0 +1,40 @@
+<p>For numbers, every nonzero $a$ has a reciprocal $\frac{1}{a}$ with $a \cdot \frac{1}{a} = 1$. For matrices the role of $1$ is played by the identity $I$, and the role of "nonzero" is played by one number computed from the entries: the determinant.</p>
+
+<h2>The determinant</h2>
+<p>For a $2 \times 2$ matrix,</p>
+$$\det \left[ \begin{matrix} a & b \\ c & d \end{matrix} \right] = ad - bc,$$
+<p>the product down the main diagonal minus the product up the other diagonal. For $A = \left[ \begin{matrix} 4 & 3 \\ 2 & 2 \end{matrix} \right]$, $\det A = 4(2) - 3(2) = 8 - 6 = 2$.</p>
+
+<h2>What the determinant measures</h2>
+<p>Draw the two columns of the matrix as vectors from the origin. They make a parallelogram, and its area is the absolute value of the determinant.</p>
+<figure id="fig-area" data-fig="inverse-determinant-area"><figcaption>Columns $\left\langle 3, 1 \right\rangle$ and $\left\langle 1, 2 \right\rangle$: area $\left| 3(2) - 1(1) \right| = 5$.</figcaption></figure>
+<p>The sign records order: swapping the two columns gives the same parallelogram but changes the sign of the determinant. Doubling one column doubles the area and the determinant; multiplying the whole $2 \times 2$ matrix by $3$ triples both columns, so the determinant is multiplied by $3 \cdot 3 = 9$. When the determinant is $0$, the columns lie along one line and the "parallelogram" is flat.</p>
+
+<h2>The inverse</h2>
+<p>The <b>inverse</b> of a square matrix $A$ is the matrix $A^{-1}$ with $AA^{-1} = A^{-1}A = I$. For a $2 \times 2$ matrix with $\det A \ne 0$:</p>
+$$A^{-1} = \frac{1}{ad - bc}\left[ \begin{matrix} d & -b \\ -c & a \end{matrix} \right].$$
+<p>In words: swap the diagonal entries, change the signs of the other two, divide every entry by the determinant.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the inverse of $A = \left[ \begin{matrix} 4 & 3 \\ 2 & 2 \end{matrix} \right]$ and check it.</p>
+<p>$\det A = 2$. Swap and negate: $\left[ \begin{matrix} 2 & -3 \\ -2 & 4 \end{matrix} \right]$. Divide by $2$: $A^{-1} = \left[ \begin{matrix} 1 & -\frac{3}{2} \\ -1 & 2 \end{matrix} \right]$.</p>
+<p>Check one entry of $AA^{-1}$: row 1 of $A$ times column 2 of $A^{-1}$ is $4\left(-\frac{3}{2}\right) + 3(2) = -6 + 6 = 0$, as it should be. The full product is $I$.</p>
+</div>
+
+<h2>When there is no inverse</h2>
+<p>If $\det A = 0$, the formula would divide by zero, and in fact no inverse exists. Take $B = \left[ \begin{matrix} 6 & 3 \\ 4 & 2 \end{matrix} \right]$, with $\det B = 12 - 12 = 0$. Then $B\left[ \begin{matrix} 1 \\ -2 \end{matrix} \right] = \left[ \begin{matrix} 0 \\ 0 \end{matrix} \right]$, and also $B\left[ \begin{matrix} 0 \\ 0 \end{matrix} \right] = \left[ \begin{matrix} 0 \\ 0 \end{matrix} \right]$. Two different columns give the same result, so no matrix could send $\left[ \begin{matrix} 0 \\ 0 \end{matrix} \right]$ back to the right one.</p>
+
+<h2>Solving a system with the inverse</h2>
+<p>The system $4x + 3y = 7$, $2x + 2y = 4$ is the matrix equation $AX = B$ with $X = \left[ \begin{matrix} x \\ y \end{matrix} \right]$ and $B = \left[ \begin{matrix} 7 \\ 4 \end{matrix} \right]$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Solve it with $A^{-1}$.</p>
+<p>Multiply both sides on the left by $A^{-1}$: $X = A^{-1}B = \left[ \begin{matrix} 1 & -\frac{3}{2} \\ -1 & 2 \end{matrix} \right]\left[ \begin{matrix} 7 \\ 4 \end{matrix} \right]$.</p>
+<p>Row 1: $7 - 6 = 1$. Row 2: $-7 + 8 = 1$. So $x = 1$, $y = 1$. Check: $4 + 3 = 7$ and $2 + 2 = 4$.</p>
+</div>
+<p>The order matters: $A^{-1}B$, not $BA^{-1}$, because $A$ multiplies $X$ from the left.</p>
+<table class="compare">
+<thead><tr><th scope="col">$\det A$</th><th scope="col">Columns</th><th scope="col">Inverse</th><th scope="col">$AX = B$</th></tr></thead>
+<tbody>
+<tr><td>not $0$</td><td>a true parallelogram</td><td>exists</td><td>exactly one solution, $A^{-1}B$</td></tr>
+<tr><td>$0$</td><td>on one line</td><td>does not exist</td><td>no solution or many</td></tr>
+</tbody>
+</table>

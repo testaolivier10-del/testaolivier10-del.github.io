@@ -1,0 +1,5 @@
+{
+ "exponential-model": {
+  "def": "A function model of the form f(t) = ab^t, where a is the initial value and b the growth (or decay) factor per unit of t. It is built from an initial value and a ratio, from two data points, or by exponential regression on a calculator."
+ }
+}

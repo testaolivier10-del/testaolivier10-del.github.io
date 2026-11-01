@@ -1,0 +1,11 @@
+{
+ "special-triangle": {
+  "def": "One of the two right triangles whose sides are known exactly from one side: the 45-45-90 triangle, with sides in the ratio $1 : 1 : \\sqrt{2}$, and the 30-60-90 triangle, with sides $1 : \\sqrt{3} : 2$ (the short leg across from $30^\\circ$)."
+ },
+ "arc-length": {
+  "def": "The length of a piece of a circle. A central angle of $\\theta$ degrees cuts off the fraction $\\frac{\\theta}{360}$ of the circumference, so the arc has length $s = \\frac{\\theta}{360} \\cdot 2\\pi r$."
+ },
+ "circle-equation": {
+  "def": "The equation $(x - h)^2 + (y - k)^2 = r^2$ of the circle with center $(h, k)$ and radius $r$: it says the point $(x, y)$ is at distance $r$ from the center. The circle of radius 1 centered at the origin is $x^2 + y^2 = 1$."
+ }
+}

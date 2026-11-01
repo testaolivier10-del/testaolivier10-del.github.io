@@ -1,0 +1,5 @@
+{
+ "inverse-function": {
+  "def": "The function $f^{-1}$ that undoes $f$: $f^{-1}(b) = a$ exactly when $f(a) = b$. It exists when $f$ is one-to-one (each output comes from exactly one input); then $f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$."
+ }
+}

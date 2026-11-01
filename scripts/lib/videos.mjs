@@ -111,7 +111,7 @@ export function displayTitle(v) {
    not teach, so a chapter called "Next: the elements of life" is not a use
    of a later topic's term. NREMT and ochem have no such check. */
 const NAV_REF = { anp: 'anp-nav-ref', apbio: 'bio-nav-ref', apchem: 'chem-nav-ref', apphys: 'phys-nav-ref',
-  apcalc: 'calc-nav-ref', apstat: 'stat-nav-ref', apenv: 'env-nav-ref', appsych: 'psy-nav-ref' };
+  apcalc: 'calc-nav-ref', apstat: 'stat-nav-ref', apenv: 'env-nav-ref', appsych: 'psy-nav-ref', apprecalc: 'pcalc-nav-ref' };
 
 export function videoBlock(v, { compact = false, kind = 'notes' } = {}) {
   v = { ...v, title: displayTitle(v) };

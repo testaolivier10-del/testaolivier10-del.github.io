@@ -1,0 +1,70 @@
+{
+ "topic": "linear-quadratic-rates",
+ "hook": "Drop a ball from a tall building. It falls $5$ meters in the first second, $15$ in the next, $25$ in the third: the distance per second grows by the same $10$ meters each time. That steady change in the rate is the signature of a quadratic, just as a steady rate is the signature of a line.",
+ "prereq": [
+  {
+   "q": "What is the average rate of change of $f(x) = x^2$ on $[1, 3]$?",
+   "options": [
+    "$4$",
+    "$8$",
+    "$2$",
+    "$5$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{9 - 1}{3 - 1} = 4$.",
+   "review": "rates-of-change"
+  },
+  {
+   "q": "What is the vertex of $y = (x - 4)^2 + 1$?",
+   "options": [
+    "$(4, 1)$",
+    "$(-4, 1)$",
+    "$(4, -1)$",
+    "$(1, 4)$"
+   ],
+   "correct": 0,
+   "why": "Vertex form $a(x - h)^2 + k$ has vertex $(h, k)$.",
+   "review": "alg-quadratics"
+  }
+ ],
+ "figure": {
+  "figure": "linear-quadratic-rates-secant",
+  "caption": "$f(x) = -0.5x^2 + 4x$ is concave down, so between $x = 1$ and $x = 5$ it lies above its secant line: the secant line's $4.5$ underestimates $f(2) = 6$."
+ },
+ "chain": [
+  {
+   "cause": "A function is linear",
+   "effect": "its average rate of change is the same on every interval: the slope"
+  },
+  {
+   "cause": "A function is quadratic and you take equal input steps",
+   "effect": "the first differences change by a constant amount: the second differences are constant"
+  },
+  {
+   "cause": "The average rates over consecutive equal intervals increase (or decrease)",
+   "effect": "the graph is concave up (or concave down) there"
+  },
+  {
+   "cause": "You estimate $f(c)$ with a point on a secant line on an interval where $f$ is concave down",
+   "effect": "the graph lies above the secant line, so the estimate is an underestimate"
+  }
+ ],
+ "ideas": [
+  "The <b>secant line</b> through $(a, f(a))$ and $(b, f(b))$ has slope $\\frac{f(b) - f(a)}{b - a}$, the average rate of change of $f$ on $[a, b]$.",
+  "Linear: constant rate of change. Quadratic: rates over consecutive equal intervals change linearly, so <b>second differences</b> are constant.",
+  "Concave up: graph below the secant line, estimate too big. Concave down: graph above it, estimate too small."
+ ],
+ "misconception": {
+  "wrong": "A secant estimate is an overestimate whenever the function is increasing.",
+  "right": "Over or under depends on concavity on the interval, not on direction. The ball's height rises on $[0, 1]$, but it is concave down on $[0, 3]$, so the secant estimate $6$ is below the true $h(1) = 16$."
+ },
+ "check": [
+  "pcalc-linear-quadratic-rates-1",
+  "pcalc-linear-quadratic-rates-2",
+  "pcalc-linear-quadratic-rates-3",
+  "pcalc-linear-quadratic-rates-6",
+  "pcalc-linear-quadratic-rates-8",
+  "pcalc-linear-quadratic-rates-9"
+ ],
+ "summary": "A linear function has one rate of change. A quadratic's average rates over consecutive equal intervals change by a constant amount, so its second differences are constant; increasing rates mean concave up, decreasing rates concave down. The average rate of change on $[a, b]$ is the slope of the secant line, and a secant estimate is too big where the graph is concave up and too small where it is concave down."
+}

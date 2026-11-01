@@ -1,0 +1,5 @@
+{
+ "log-model": {
+  "def": "A function model of the form $y = a + b\\ln x$ (or with another base), used when equal factors in the input go with equal changes in the output. It is built from two points or by logarithmic regression."
+ }
+}

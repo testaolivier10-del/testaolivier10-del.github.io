@@ -1,0 +1,5 @@
+{
+ "polar-rate": {
+  "def": "How fast the radius r of a polar function changes as the angle changes: the change in r over the change in the angle, in units per radian."
+ }
+}

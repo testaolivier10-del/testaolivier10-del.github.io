@@ -1,0 +1,70 @@
+{
+ "topic": "transformations",
+ "hook": "A designer on a phone app drags a curve 3 pixels right, stretches it to twice its height, then flips it. The app never redraws the curve from scratch; it changes the formula. Each drag or stretch is one small edit to the function.",
+ "prereq": [
+  {
+   "q": "If $f(x) = x^2$, what is $f(x - 3)$?",
+   "options": [
+    "$(x - 3)^2$",
+    "$x^2 - 3$",
+    "$x^2 - 9$",
+    "$x^2 + 3$"
+   ],
+   "correct": 0,
+   "why": "Replace every $x$ with $x - 3$: $f(x - 3) = (x - 3)^2$.",
+   "review": "alg-functions"
+  },
+  {
+   "q": "What is the vertex of $y = (x + 1)^2 - 4$?",
+   "options": [
+    "$(-1, -4)$",
+    "$(1, -4)$",
+    "$(-1, 4)$",
+    "$(1, 4)$"
+   ],
+   "correct": 0,
+   "why": "Vertex form $y = (x - h)^2 + k$ has vertex $(h, k)$; here $h = -1$ and $k = -4$.",
+   "review": "alg-quadratics"
+  }
+ ],
+ "figure": {
+  "figure": "transformations-parent",
+  "caption": "The parent $f(x) = x^2$ and $g(x) = 2f(x - 3) - 1$. Each point $(a, b)$ on $f$ moves to $(a + 3, 2b - 1)$ on $g$."
+ },
+ "chain": [
+  {
+   "cause": "Add a constant outside: $f(x) + k$",
+   "effect": "every output moves by $k$ (a vertical translation)"
+  },
+  {
+   "cause": "Add a constant inside: $f(x + h)$",
+   "effect": "the graph moves $h$ units left when $h > 0$ (a horizontal translation)"
+  },
+  {
+   "cause": "Multiply outside: $a f(x)$",
+   "effect": "outputs are multiplied by $a$ (a vertical dilation; reflection across the $x$-axis if $a < 0$)"
+  },
+  {
+   "cause": "Multiply inside: $f(bx)$",
+   "effect": "inputs are scaled by $\\frac{1}{b}$ (a horizontal dilation; reflection across the $y$-axis if $b < 0$)"
+  }
+ ],
+ "ideas": [
+  "Changes outside the function act on outputs and move the graph up, down, or stretch it vertically. Changes inside act on inputs and work in reverse.",
+  "$f(x - 3)$ moves the graph $3$ right: the old output at $0$ now appears at $x = 3$.",
+  "In $a f(x) + k$, dilate first, then shift. Domain changes come from inside changes; range changes come from outside changes."
+ ],
+ "misconception": {
+  "wrong": "$f(x + 4)$ moves the graph $4$ units right, because of the plus sign.",
+  "right": "It moves $4$ left: $g(-4) = f(0)$, so the point that was at input $0$ is now at input $-4$."
+ },
+ "check": [
+  "pcalc-transformations-1",
+  "pcalc-transformations-2",
+  "pcalc-transformations-3",
+  "pcalc-transformations-9",
+  "pcalc-transformations-12",
+  "pcalc-transformations-15"
+ ],
+ "summary": "$g(x) = a f(b(x - h)) + k$ dilates and reflects $f$ by $a$ and $b$ and translates it $h$ right and $k$ up. Outside changes act on outputs and the range; inside changes act on inputs and the domain, in reverse."
+}

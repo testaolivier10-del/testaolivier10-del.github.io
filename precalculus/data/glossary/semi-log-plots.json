@@ -1,0 +1,5 @@
+{
+ "semi-log": {
+  "def": "A graph with one axis, usually the vertical one, on a logarithmic scale. Exponential data $y = a \\cdot b^x$ appear as a straight line on it, with slope $\\log b$ and intercept $\\log a$."
+ }
+}

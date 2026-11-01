@@ -1,0 +1,12 @@
+{
+ "exponential-functions-growth-decay": {
+  "file": "figures/exponential-functions-growth-decay.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The increasing graph f(x) = 3(2)^x and the decreasing graph g(x) = 3(1/2)^x, both concave up, both through (0, 3), approaching the dashed asymptote y = 0 one on the left and one on the right."
+ }
+}

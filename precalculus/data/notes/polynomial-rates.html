@@ -1,0 +1,37 @@
+<p>Linear and quadratic functions are the first two members of a big family: polynomial functions. Their graphs can rise and fall several times and bend in both directions. This topic gives names to the points where that happens and shows how to find them from a graph, a table or a calculator.</p>
+
+<h2>Polynomial functions: degree and leading term</h2>
+<p>A <b>polynomial function</b> has the form</p>
+<p>$$p(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0,$$</p>
+<p>with whole-number powers and $a_n \ne 0$. The <b>degree</b> is $n$, the highest power. The <b>leading term</b> is $a_n x^n$ and the <b>leading coefficient</b> is $a_n$. A nonzero constant, like $p(x) = 7$, has degree $0$.</p>
+<p>The leading term is the term with the highest power, wherever it is written: in $5 - 3x^4 + 2x$ it is $-3x^4$. For a product, multiply the highest-power parts of the factors: $-2(x - 1)(x + 3)^2$ has leading term $-2 \cdot x \cdot x^2 = -2x^3$.</p>
+
+<h2>Local and global extrema</h2>
+<p>A <b>local maximum</b> of $f$ is an output that is at least as large as the outputs at all nearby inputs; a <b>local minimum</b> is one at most as large. Together they are local extrema. For a polynomial function, they happen where the function switches between increasing and decreasing.</p>
+<figure id="fig-extrema" data-fig="polynomial-rates-cubic"><figcaption>$f(x) = x^3 - 6x^2 + 9x$: local maximum $(1, 4)$, local minimum $(3, 0)$, point of inflection $(2, 2)$.</figcaption></figure>
+<p>When the domain is a closed interval, an endpoint can also be a local extremum. If $f$ falls as it leaves the left endpoint, the endpoint value is higher than its neighbors: a local maximum.</p>
+<p>A <b>global maximum</b> is the greatest output over the whole domain, and a <b>global minimum</b> the least. On a closed interval, compare every local extremum value with both endpoint values.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> $p(x) = \frac{x^4}{4} - 2x^2 + 3$ is defined for $-3 \le x \le 2.5$. Its graph falls to $(-2, -1)$, rises to $(0, 3)$, falls to $(2, -1)$ and rises to the end. Find the global maximum and minimum.</p>
+<p>Candidates: local values $p(-2) = -1$, $p(0) = 3$, $p(2) = -1$; endpoints $p(-3) = \frac{81}{4} - 18 + 3 = 5.25$ and $p(2.5) \approx 0.27$.</p>
+<p>Global maximum $5.25$ (at the endpoint $x = -3$); global minimum $-1$ (at $x = -2$ and $x = 2$).</p>
+</div>
+<p>Two facts help you reason about extrema without a graph:</p>
+<ul>
+<li>Between two distinct real zeros of a polynomial function there is at least one local extremum: to leave the $x$-axis and come back, the graph must turn.</li>
+<li>A polynomial function of even degree has a global maximum or a global minimum, because both ends of its graph go the same way. A quadratic's is at its vertex.</li>
+</ul>
+
+<h2>Points of inflection</h2>
+<p>A <b>point of inflection</b> is where the graph changes concavity: from concave up to concave down, or back. In terms of rates, the rate of change switches from increasing to decreasing, or from decreasing to increasing. In the figure, $f$ is concave down left of $(2, 2)$ and concave up right of it.</p>
+<p>A table of rates over equal intervals shows the switch. If the rates on consecutive unit intervals are $5, 3, 2, 2.5, 4$, they fall and then rise, so the graph changes from concave down to concave up around the interval $[2, 3]$.</p>
+<p>Keep the two kinds of points apart. Extrema are where the <i>direction</i> changes; inflection points are where the <i>bending</i> changes.</p>
+
+<h2>Using a calculator</h2>
+<p>On the calculator part of the exam, use the graphing calculator's maximum and minimum features to locate extrema, and give answers accurate to three decimal places.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A greenhouse's temperature is $T(h) = -0.015h^3 + 0.4h^2 + 52$ degrees Fahrenheit, $0 \le h \le 24$. When is it warmest, and how warm?</p>
+<p>Graph $T$ on $[0, 24]$ and use the maximum feature: $h \approx 17.778$ hours, $T \approx 94.140$ degrees. Check the endpoints: $T(0) = 52$ and $T(24) = 75.04$, both lower, so this is the global maximum.</p>
+<p>Use the stored time. Evaluating at $h = 18$ instead gives $94.12$, which is not accurate to three decimal places.</p>
+</div>
+<p>Describe a stretch of the graph with direction and rate together: on $(12, 17)$, "$T$ is increasing and the rate of change of $T$ is decreasing", because the hourly gains shrink as the peak nears.</p>

@@ -120,6 +120,15 @@ const PAGES = [
   ['/calculus/frq.html', 'the AP® Calculus AB free-response list'],
   ['/calculus/formula-sheet.html', 'the AP® Calculus AB formula page'],
   ...bioPages('calculus', 'AP® Calculus AB'),
+  // AP® Precalculus, the same way, hidden until a unit is published.
+  ['/precalculus/', 'the AP® Precalculus course home'],
+  ['/precalculus/glossary.html', 'the AP® Precalculus glossary'],
+  ['/precalculus/practice.html', 'the AP® Precalculus practice builder'],
+  ['/precalculus/exams.html', 'the AP® Precalculus exams app'],
+  ['/precalculus/frq.html', 'the AP® Precalculus free-response list'],
+  ['/precalculus/formula-sheet.html', 'the AP® Precalculus formula page'],
+  ['/precalculus/justify.html', 'the AP® Precalculus "Make it specific" trainer'],
+  ...bioPages('precalculus', 'AP® Precalculus'),
   // AP® Statistics, the same way, hidden until a unit is published.
   ['/statistics/', 'the AP® Statistics course home'],
   ['/statistics/glossary.html', 'the AP® Statistics glossary'],

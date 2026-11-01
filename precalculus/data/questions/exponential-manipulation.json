@@ -1,0 +1,565 @@
+{
+ "stimuli": {
+  "exponential-manipulation-s1": {
+   "kind": "graph",
+   "title": "The graphs of $y = 2^x$ and $h(x) = 2^{x + 3}$",
+   "plot": {
+    "label": "Graphs of y = 2^x through (0, 1) and h(x) = 2^(x + 3) through (-3, 1) and (0, 8), both approaching the dashed asymptote y = 0 on the left",
+    "x": [
+     -5,
+     3
+    ],
+    "y": [
+     -1,
+     17
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "2^x",
+      "label": "y = 2^x"
+     },
+     {
+      "fn": "2^(x + 3)",
+      "label": "h"
+     }
+    ],
+    "asymptotes": [
+     {
+      "y": 0
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       1
+      ]
+     },
+     {
+      "at": [
+       -3,
+       1
+      ]
+     },
+     {
+      "at": [
+       0,
+       8
+      ]
+     }
+    ]
+   }
+  },
+  "exponential-manipulation-s2": {
+   "kind": "table",
+   "title": "Values of an exponential function $g$",
+   "table": {
+    "caption": "Selected values of the exponential function g",
+    "cols": [
+     "$x$",
+     "0",
+     "1",
+     "2",
+     "3"
+    ],
+    "rows": [
+     [
+      "$g(x)$",
+      "5",
+      "20",
+      "80",
+      "320"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-exponential-manipulation-1",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-manipulation-s1",
+   "q": "Rewrite $h(x) = 2^{x + 3}$ in the form $a(2)^x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "8(2)^x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": 2,
+     "scaled": true,
+     "exponent": "var",
+     "say": "a constant times 2^x"
+    },
+    "lhs": "h(x) =",
+    "mistakes": [
+     {
+      "expr": "2^x + 8",
+      "why": "Exponents add when powers multiply: $2^{x + 3} = 2^x \\cdot 2^3$, a product, not a sum."
+     },
+     {
+      "expr": "3(2)^x",
+      "why": "The constant is $2^3 = 8$, not $3$."
+     },
+     {
+      "expr": "6(2)^x",
+      "why": "$2^3 = 2 \\cdot 2 \\cdot 2 = 8$, not $2 \\cdot 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product rule backward: $2^{x + 3} = 2^x \\cdot 2^3 = 8(2)^x$. The graph shows it: $h(0) = 8$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-2",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "exponential-manipulation-s1",
+   "q": "The graph of $h(x) = 2^{x + 3}$ is the graph of $y = 2^x$ shifted $3$ units left. Which other transformation of $y = 2^x$ gives the same graph?",
+   "type": "single",
+   "options": [
+    "A vertical shift up $3$",
+    "A vertical dilation by a factor of $3$",
+    "A vertical dilation by a factor of $8$",
+    "A horizontal dilation by a factor of $8$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$2^{x + 3} = 8 \\cdot 2^x$, so every output of $2^x$ is multiplied by $8$. For an exponential function, a horizontal translation is the same as a vertical dilation.",
+    "options": [
+     "$2^x + 3$ has asymptote $y = 3$; $h$ keeps $y = 0$.",
+     "The factor is $2^3$, not $3$.",
+     "Shift left $3$ = multiply outputs by $2^3$.",
+     "A horizontal dilation would change the base, not multiply the outputs."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-3",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "exponential-manipulation-s1",
+   "q": "What is $h(-1)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": -4,
+      "why": "That reads $2^{-1}$ as $-2$. $8 \\cdot 2^{-1} = 8 \\cdot \\frac{1}{2} = 4$."
+     },
+     {
+      "value": 16,
+      "why": "That is $h(1) = 2^4$; the input here is $-1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$h(-1) = 2^{-1 + 3} = 2^2 = 4$, or $8 \\cdot 2^{-1} = 4$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-4",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-manipulation-s1",
+   "q": "Which expressions are equivalent to $h(x) = 2^{x + 3}$? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$8(2)^x$",
+    "$4(2)^{x + 1}$",
+    "$2^x + 2^3$",
+    "$(2^x)^3$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$4(2)^{x + 1} = 2^2 \\cdot 2^{x + 1} = 2^{x + 3}$. A sum of powers is not a single power, and $(2^x)^3 = 2^{3x}$.",
+    "options": [
+     "$2^3 \\cdot 2^x$.",
+     "$2^2 \\cdot 2^{x + 1} = 2^{x + 3}$.",
+     "At $x = 0$ this is $9$, but $h(0) = 8$.",
+     "This is $2^{3x}$: the exponents multiply."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-5",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-manipulation-s2",
+   "q": "The table fits $g(x) = 5(4)^x$. Rewrite $g(x)$ with base $2$, in the form $a(2)^{kx}$.",
+   "type": "expr",
+   "expr": {
+    "answer": "5(2)^(2x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     3
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": 2,
+     "scaled": true,
+     "exponent": "kx",
+     "say": "a constant times 2^(kx)"
+    },
+    "lhs": "g(x) =",
+    "mistakes": [
+     {
+      "expr": "5(2)^(x+2)",
+      "why": "That is $5 \\cdot 4 \\cdot 2^x$, a shift. Changing the base multiplies the exponent: $(2^2)^x = 2^{2x}$."
+     },
+     {
+      "expr": "10(2)^x",
+      "why": "This doubles the outputs once; $g$ multiplies by $4$ each step."
+     },
+     {
+      "expr": "5(2)^(x/2)",
+      "why": "A power of a power multiplies exponents: $(2^2)^x = 2^{2x}$, not $2^{x/2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$4 = 2^2$, so $4^x = (2^2)^x = 2^{2x}$ and $g(x) = 5(2)^{2x}$. A horizontal dilation of $5(2)^x$ by a factor of $\\frac{1}{2}$ gives the same graph as changing the base to $4$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-6",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-manipulation-s2",
+   "q": "Which expression is equivalent to $g(x) = 5(4)^x$?",
+   "type": "single",
+   "options": [
+    "$20^x$",
+    "$5(2)^{x + 2}$",
+    "$5(16)^{x/2}$",
+    "$5(4)^{x/2}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$16^{x/2} = (16^{1/2})^x = 4^x$, so $5(16)^{x/2} = 5(4)^x$.",
+    "options": [
+     "The $5$ multiplies; it is not part of the base. $20^1 = 20$ works, but $20^0 = 1 \\ne 5$.",
+     "$5(2)^{x + 2} = 20(2)^x$, which gives $40$ at $x = 1$, not $20$.",
+     "$(16^{1/2})^x = 4^x$.",
+     "This is $5(2)^x$, since $4^{1/2} = 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-7",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-manipulation-s2",
+   "q": "Find $g\\left(\\frac{1}{2}\\right)$ exactly.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 10,
+    "mistakes": [
+     {
+      "value": 12.5,
+      "why": "That is halfway between $5$ and $20$. An exponential multiplies: $4^{1/2} = 2$."
+     },
+     {
+      "value": 2.5,
+      "why": "That multiplies by $\\frac{1}{2}$; the exponent $\\frac{1}{2}$ is a square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$g\\left(\\frac{1}{2}\\right) = 5(4)^{1/2} = 5 \\cdot 2 = 10$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-8",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exponential-manipulation-s2",
+   "q": "Which statement about $g(x - 1)$ is correct?",
+   "type": "single",
+   "options": [
+    "$g(x - 1) = \\frac{5}{4}(4)^x$: shifting right $1$ divides every output by $4$",
+    "$g(x - 1) = 5(4)^x - 1$: shifting right $1$ subtracts $1$",
+    "$g(x - 1) = 5(4)^x - 4$: shifting right $1$ subtracts $4$",
+    "$g(x - 1) = 20(4)^x$: shifting right $1$ multiplies by $4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$g(x - 1) = 5(4)^{x - 1} = 5 \\cdot 4^x \\cdot 4^{-1} = \\frac{5}{4}(4)^x$. Moving one step right means each output is the one before it in the table, which is $\\frac{1}{4}$ as large.",
+    "options": [
+     "$4^{-1} = \\frac{1}{4}$.",
+     "A horizontal shift does not subtract from the output.",
+     "Shifting divides by $4$; it does not subtract $4$.",
+     "That is $g(x + 1)$, a shift left."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-9",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Rewrite $\\left(\\frac{1}{3}\\right)^x$ as a power of $3$.",
+   "type": "expr",
+   "expr": {
+    "answer": "3^(-x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": 3
+    },
+    "mistakes": [
+     {
+      "expr": "-3^x",
+      "why": "A negative exponent is a reciprocal, not a negative number: $3^{-x}$, with the minus in the exponent."
+     },
+     {
+      "expr": "3^(1/x)",
+      "why": "$\\frac{1}{3} = 3^{-1}$, so the exponent is $-1 \\cdot x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{3} = 3^{-1}$, so $\\left(\\frac{1}{3}\\right)^x = (3^{-1})^x = 3^{-x}$. Decay with base $\\frac{1}{3}$ is growth with base $3$ reflected across the $y$-axis."
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-10",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Rewrite $2^{3x}$ in the form $b^x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "8^x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "power",
+     "exponent": "var",
+     "say": "one number to the power x, b^x"
+    },
+    "mistakes": [
+     {
+      "expr": "6^x",
+      "why": "$2^3 = 8$, not $2 \\cdot 3$."
+     },
+     {
+      "expr": "2^x + 3",
+      "why": "An exponent of $3x$ multiplies; it does not add."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Power of a power: $2^{3x} = (2^3)^x = 8^x$. A horizontal dilation by $\\frac{1}{3}$ changes the base from $2$ to $8$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-11",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write $\\frac{4^{x + 1}}{2^x}$ as a single power of $2$.",
+   "type": "expr",
+   "expr": {
+    "answer": "2^(x+2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": 2
+    },
+    "mistakes": [
+     {
+      "expr": "2^(x+1)",
+      "why": "$4^{x + 1}$ is $2^{2(x + 1)} = 2^{2x + 2}$; the whole exponent doubles."
+     },
+     {
+      "expr": "2^(3x+2)",
+      "why": "Dividing subtracts exponents: $2x + 2 - x$."
+     },
+     {
+      "expr": "2^(2x+1)",
+      "why": "$4 = 2^2$, so the exponent $x + 1$ doubles to $2x + 2$ before you subtract $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$4^{x + 1} = (2^2)^{x + 1} = 2^{2x + 2}$. Dividing powers of $2$ subtracts exponents: $\\frac{2^{2x + 2}}{2^x} = 2^{2x + 2 - x} = 2^{x + 2}$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-12",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "If $3^x = 7$, what is $3^{x + 2}$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 63,
+    "mistakes": [
+     {
+      "value": 9,
+      "why": "That adds $2$ to $7$. Adding to the exponent multiplies the power: $7 \\cdot 3^2$."
+     },
+     {
+      "value": 49,
+      "why": "That squares $7$; $3^{x + 2} = 3^x \\cdot 9$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$3^{x + 2} = 3^x \\cdot 3^2 = 7 \\cdot 9 = 63$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-13",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "If $5^x = 2$, what is $5^{2x}$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "That is $5 \\cdot 2$. A power of a power: $5^{2x} = (5^x)^2$."
+     },
+     {
+      "value": 25,
+      "why": "That is $5^2$. Use the given value: $(5^x)^2 = 2^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$5^{2x} = (5^x)^2 = 2^2 = 4$."
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-14",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which is equivalent to $25^{x/2}$?",
+   "type": "single",
+   "options": [
+    "$12.5^x$",
+    "$25^x - 2$",
+    "$5^x$",
+    "$625^x$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$25^{x/2} = (25^{1/2})^x = 5^x$.",
+    "options": [
+     "The exponent $\\frac{1}{2}$ is a square root, not half the base.",
+     "Dividing the exponent by $2$ does not subtract $2$.",
+     "$25^{1/2} = 5$.",
+     "That squares the base; $\\frac{1}{2}$ takes the square root."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-15",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes $2^{x + 3} = 2^x + 8$. Which check shows the error?",
+   "type": "single",
+   "options": [
+    "At $x = 0$: both sides equal $9$, so the forms agree",
+    "At $x = 3$: $2^6 = 64$ and $2^3 + 8 = 64$, so the forms agree",
+    "At $x = 1$: $2^4 = 8$ and $2^1 + 8 = 10$",
+    "At $x = 1$: $2^4 = 16$, but $2^1 + 8 = 10$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "One input with different values is enough to show two forms are not equivalent. The correct rule is $2^{x + 3} = 2^x \\cdot 2^3 = 8 \\cdot 2^x$: adding to the exponent multiplies.",
+    "options": [
+     "$2^{0 + 3} = 8$, not $9$; the forms differ at $x = 0$ too.",
+     "$2^3 + 8 = 16$, not $64$.",
+     "$2^4 = 16$, not $8$; a check needs correct values.",
+     "$16 \\ne 10$, so the forms are not equivalent."
+    ]
+   }
+  }
+ ]
+}

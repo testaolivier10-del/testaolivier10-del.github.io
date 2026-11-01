@@ -1,0 +1,55 @@
+<p>Sine and cosine are the coordinates of a point on the unit circle. The third function you met in Topic 3.2, tangent, is their quotient. It behaves very differently: it has no maximum, its graph breaks into separate branches, and it repeats twice as often. This page builds the graph of tangent from sine and cosine, then reads its period, zeros and asymptotes, and transforms it.</p>
+
+<h2>Tangent as a slope and as a height</h2>
+<p>Put an angle $\theta$ in standard position. Its terminal ray meets the unit circle at $(\cos\theta, \sin\theta)$. The slope of that ray is rise over run:</p>
+<p>$$\tan\theta = \frac{\sin\theta}{\cos\theta}$$</p>
+<p>Extend the ray until it hits the vertical line $x = 1$. Because the ray goes through the origin with slope $\tan\theta$, it reaches that line at height $\tan\theta$ (<a class="figref" href="#fig-tan-height">Figure 1</a>). As $\theta$ grows toward $\frac{\pi}{2}$, the ray gets steeper and the height shoots up. At $\theta = \frac{\pi}{2}$ the ray is vertical, parallel to the line, and never meets it. That is a vertical asymptote.</p>
+<figure id="fig-tan-height" data-fig="tangent-function-slope"><figcaption>The terminal ray meets $x = 1$ at height $\tan\theta$.</figcaption></figure>
+
+<h2>Zeros, asymptotes and period</h2>
+<p>A quotient is $0$ where its top is $0$ and is undefined where its bottom is $0$. So:</p>
+<ul>
+<li><b>Zeros:</b> $\tan x = 0$ where $\sin x = 0$, at $x = k\pi$ for every integer $k$.</li>
+<li><b>Vertical asymptotes:</b> where $\cos x = 0$, at $x = \frac{\pi}{2} + k\pi$. Near each one the outputs grow without bound. Write both sides in limit notation: $\lim_{x \to \pi/2^-} \tan x = \infty$ and $\lim_{x \to \pi/2^+} \tan x = -\infty$.</li>
+<li><b>Period $\pi$:</b> adding $\pi$ to the angle points the ray in the opposite direction. Both $\sin$ and $\cos$ change sign, so their quotient does not change: $\tan(x + \pi) = \tan x$.</li>
+<li><b>Range:</b> every real number, $(-\infty, \infty)$.</li>
+</ul>
+<p>On each branch, such as $\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$, tangent increases. Left of the zero the graph is concave down, and right of it the graph is concave up: on $\left(0, \frac{\pi}{2}\right)$ the rate of change of $\tan x$ is increasing, so equal steps in $x$ give bigger and bigger rises.</p>
+
+<table class="compare">
+<thead><tr><th scope="col">Function</th><th scope="col">Period</th><th scope="col">Range</th><th scope="col">Zeros</th><th scope="col">Vertical asymptotes</th></tr></thead>
+<tbody>
+<tr><td>$\sin x$</td><td>$2\pi$</td><td>$[-1, 1]$</td><td>$x = k\pi$</td><td>none</td></tr>
+<tr><td>$\cos x$</td><td>$2\pi$</td><td>$[-1, 1]$</td><td>$x = \frac{\pi}{2} + k\pi$</td><td>none</td></tr>
+<tr><td>$\tan x$</td><td>$\pi$</td><td>$(-\infty, \infty)$</td><td>$x = k\pi$</td><td>$x = \frac{\pi}{2} + k\pi$</td></tr>
+</tbody>
+</table>
+
+<h2>Transforming tangent</h2>
+<p>The same four changes you used for sinusoids work here. In $f(x) = a\tan(b(x - c)) + d$:</p>
+<ul>
+<li>$a$ stretches the graph vertically (and reflects it if $a < 0$). There is no amplitude, because tangent has no maximum.</li>
+<li>$b$ changes the period to $\frac{\pi}{|b|}$. Notice the $\pi$, not $2\pi$.</li>
+<li>$c$ shifts the graph right $c$ units, so every zero and asymptote moves right $c$.</li>
+<li>$d$ shifts the graph up $d$ units. The "center" points of the branches move to height $d$.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example.</b> Find the period, the vertical asymptotes and one zero of $f(x) = 3\tan\left(2\left(x - \frac{\pi}{4}\right)\right)$.</p>
+<p><b>Period.</b> $b = 2$, so the period is $\frac{\pi}{2}$.</p>
+<p><b>Asymptotes.</b> Set the input of tangent equal to $\frac{\pi}{2} + k\pi$: $2\left(x - \frac{\pi}{4}\right) = \frac{\pi}{2} + k\pi$. Divide by $2$: $x - \frac{\pi}{4} = \frac{\pi}{4} + \frac{k\pi}{2}$. Add $\frac{\pi}{4}$: $x = \frac{\pi}{2} + \frac{k\pi}{2}$. The asymptotes are $\frac{\pi}{2}$ apart, one period, as they should be.</p>
+<p><b>A zero.</b> Set the input equal to $0$: $2\left(x - \frac{\pi}{4}\right) = 0$ gives $x = \frac{\pi}{4}$. Check: $f\left(\frac{\pi}{4}\right) = 3\tan 0 = 0$.</p>
+</div>
+
+<h2>Rates of change on a branch</h2>
+<p>Average rates of change on tangent behave like those of any concave-up or concave-down graph. Take $g(x) = \tan x$ on $\left[0, \frac{\pi}{3}\right]$ with two equal intervals.</p>
+<div class="worked">
+<p><b>Worked example.</b> The average rate of change of $g$ on $\left[0, \frac{\pi}{6}\right]$ is $\frac{\tan(\pi/6) - \tan 0}{\pi/6} = \frac{\sqrt{3}/3}{\pi/6} = \frac{2\sqrt{3}}{\pi}$, the slope of the secant line through $(0, 0)$ and $\left(\frac{\pi}{6}, \frac{\sqrt{3}}{3}\right)$. On $\left[\frac{\pi}{6}, \frac{\pi}{3}\right]$ it is $\frac{\sqrt{3} - \sqrt{3}/3}{\pi/6} = \frac{4\sqrt{3}}{\pi}$. The rates increase over equal intervals, so $g$ is concave up on $\left[0, \frac{\pi}{3}\right]$, and the rate of change of $g$ is increasing there.</p>
+</div>
+<p>Tangent is not proportional to its input. Doubling the angle from $\frac{\pi}{6}$ to $\frac{\pi}{3}$ triples the output, from $\frac{\sqrt{3}}{3}$ to $\sqrt{3}$. Always compute the values instead of scaling them.</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Using $\frac{2\pi}{b}$ for the period. That is the sine rule; tangent uses $\frac{\pi}{b}$.</li>
+<li>Putting asymptotes where $\sin x = 0$. Those are the zeros; asymptotes come from $\cos x = 0$.</li>
+<li>Writing only one side of an asymptote. Give both one-sided limits, each with its sign.</li>
+</ul>

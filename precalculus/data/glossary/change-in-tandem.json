@@ -1,0 +1,14 @@
+{
+ "increasing": {
+  "def": "$f$ is increasing on an interval if larger inputs give larger outputs there: $f(a) < f(b)$ whenever $a < b$ in the interval. It is decreasing if $f(a) > f(b)$ whenever $a < b$."
+ },
+ "covariation": {
+  "def": "Two quantities covary when a change in one goes with a change in the other, as the input and output of a function do."
+ },
+ "rate-of-change": {
+  "def": "How fast a function's output changes compared with its input. A positive rate means the output rises as the input rises; a negative rate means it falls."
+ },
+ "concavity": {
+  "def": "A graph is concave up on an interval when its rate of change is increasing there (it bends upward), and concave down when its rate of change is decreasing (it bends downward)."
+ }
+}

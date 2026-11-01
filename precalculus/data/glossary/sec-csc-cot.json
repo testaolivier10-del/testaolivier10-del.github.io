@@ -1,0 +1,5 @@
+{
+ "reciprocal-trig": {
+  "def": "The secant, cosecant and cotangent functions: $\\sec x = \\frac{1}{\\cos x}$, $\\csc x = \\frac{1}{\\sin x}$ and $\\cot x = \\frac{\\cos x}{\\sin x}$. Each has vertical asymptotes where its denominator is $0$. Secant and cosecant have range $(-\\infty, -1] \\cup [1, \\infty)$ and period $2\\pi$; cotangent has range $(-\\infty, \\infty)$ and period $\\pi$."
+ }
+}

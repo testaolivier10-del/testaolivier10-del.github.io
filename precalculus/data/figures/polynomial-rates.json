@@ -1,0 +1,12 @@
+{
+ "polynomial-rates-cubic": {
+  "file": "figures/polynomial-rates-cubic.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of f(x) = x³ − 6x² + 9x for −0.4 ≤ x ≤ 4.4. It increases to a local maximum at (1, 4), decreases to a local minimum at (3, 0), then increases. Its point of inflection is (2, 2), where it changes from concave down to concave up."
+ }
+}

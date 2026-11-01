@@ -1,0 +1,102 @@
+{
+ "id": "frq-q3-waterwheel",
+ "type": "periodic",
+ "title": "A point on a waterwheel",
+ "calc": false,
+ "points": 6,
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "sinusoidal-transformations"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Height of a point on a waterwheel",
+  "text": "A waterwheel has a radius of 3 meters. Its center is 1 meter above the surface of the water, so the lowest part of the wheel is under water. The wheel turns at a constant speed and completes one full turn every 12 seconds. A point $P$ on the rim of the wheel is at the top of the wheel at time $t = 0$ seconds. The sinusoidal function $h$ models the height of $P$ above the surface of the water, in meters, at time $t$; a negative height means $P$ is under water. The graph of $h$ for one full turn is shown with its axes unscaled. The points $F$, $G$, $J$, $K$ and $M$ are on the graph: $F$ and $M$ are highest points, $J$ is a lowest point, and $G$ and $K$ are at the height of the center of the wheel.",
+  "figure": "sinusoidal-transformations-waterwheel"
+ },
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Find</b> the coordinates of the points $F$, $G$, $J$, $K$ and $M$.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "The extremes: $F = (0, 4)$, $J = (6, -2)$ and $M = (12, 4)$",
+     "accept": [
+      "all three correct",
+      "a negative height for $J$, under water"
+     ]
+    },
+    {
+     "point": "The midline points: $G = (3, 1)$ and $K = (9, 1)$",
+     "accept": [
+      "both correct"
+     ]
+    }
+   ],
+   "sample": "The highest point is $1 + 3 = 4$ m and the lowest is $1 - 3 = -2$ m, 2 m under water. A quarter turn takes 3 seconds. $F = (0, 4)$, $G = (3, 1)$, $J = (6, -2)$, $K = (9, 1)$, $M = (12, 4)$.",
+   "space": "lines"
+  },
+  {
+   "label": "B",
+   "prompt": "The function $h$ is given by $h(t) = a\\sin(b(t + c)) + d$, where $a$, $b$, $c$ and $d$ are constants. <b>Find</b> values of $a$, $b$, $c$ and $d$.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "$b = \\frac{\\pi}{6}$ and $d = 1$",
+     "accept": [
+      "$b = \\frac{2\\pi}{12}$",
+      "$b = -\\frac{\\pi}{6}$ with a matching $a$ and $c$"
+     ]
+    },
+    {
+     "point": "$a$ and $c$ that fit the graph: $a = 3$ with $c = 3$, or $a = -3$ with $c = -3$",
+     "accept": [
+      "any $c$ that differs from these by a multiple of 12",
+      "a check that $h(0) = 4$"
+     ]
+    }
+   ],
+   "sample": "$d = 1$ (the center), amplitude 3 (the radius), period 12 so $b = \\frac{2\\pi}{12} = \\frac{\\pi}{6}$. With $a = 3$ the sine pattern starts (midline, rising) at $K$, $t = 9$, or one period earlier at $t = -3$, so $c = 3$: $h(t) = 3\\sin\\left(\\frac{\\pi}{6}(t + 3)\\right) + 1$. Check: $h(0) = 3\\sin\\frac{\\pi}{2} + 1 = 4$.",
+   "space": "lines"
+  },
+  {
+   "label": "C(i)",
+   "prompt": "<b>Find</b> the average rate of change of $h$ on the interval $[3, 6]$, and <b>explain</b> what its sign means in the context of the problem.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "$-1$ meter per second, with its meaning: on average $P$ moves down 1 meter each second between $t = 3$ and $t = 6$ (the sign is negative because $P$ goes from the center's height down to the bottom of the wheel)",
+     "accept": [
+      "$\\frac{h(6) - h(3)}{6 - 3} = \\frac{-2 - 1}{3} = -1$ with a correct reason for the negative sign"
+     ]
+    }
+   ],
+   "sample": "$\\frac{h(6) - h(3)}{6 - 3} = \\frac{-2 - 1}{3} = -1$ meter per second, the slope of the secant line from $G$ to $J$. It is negative because $P$ moves down, from the height of the center to 2 meters under water.",
+   "space": "lines"
+  },
+  {
+   "label": "C(ii)",
+   "prompt": "Is the rate of change of $h$ increasing or decreasing on the interval $(6, 9)$? <b>Explain</b> your reasoning.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Increasing, with a reason: on $(6, 9)$ the graph is below its midline and concave up (between the lowest point $J$ and the midline point $K$), so $P$ rises faster and faster",
+     "accept": [
+      "the rate of change of $h$ is increasing because the graph is concave up",
+      "$h$ is increasing and the rate of change of $h$ is increasing"
+     ]
+    }
+   ],
+   "sample": "On $(6, 9)$, $P$ rises from the bottom of the wheel toward the height of the center. The graph of $h$ is concave up there, so the rate of change of $h$ is increasing: $P$ starts rising slowly from the bottom and goes up faster and faster.",
+   "space": "lines"
+  }
+ ]
+}

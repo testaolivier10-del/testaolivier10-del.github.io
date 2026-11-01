@@ -1,0 +1,502 @@
+{
+ "stimuli": {
+  "polynomial-end-behavior-s1": {
+   "kind": "graph",
+   "title": "The graph of a polynomial function $q$",
+   "plot": {
+    "label": "Graph of q(x) = -0.1(x + 3)(x + 1)(x - 2)(x - 4): both ends fall; it has two high points at about (-2.2, 2.5) and (3.2, 2.5) and zeros at -3, -1, 2 and 4",
+    "x": [
+     -4.5,
+     5.5
+    ],
+    "y": [
+     -6,
+     4
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "-0.1(x + 3)(x + 1)(x - 2)(x - 4)",
+      "domain": [
+       -3.6,
+       4.6
+      ],
+      "label": "q"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -3,
+       0
+      ]
+     },
+     {
+      "at": [
+       -1,
+       0
+      ]
+     },
+     {
+      "at": [
+       2,
+       0
+      ]
+     },
+     {
+      "at": [
+       4,
+       0
+      ]
+     }
+    ]
+   }
+  },
+  "polynomial-end-behavior-s2": {
+   "kind": "table",
+   "title": "Outputs at large inputs",
+   "table": {
+    "caption": "Values of p(x) = 2x^3 - 50x^2 at large inputs x",
+    "cols": [
+     "$x$",
+     "10",
+     "20",
+     "30",
+     "50",
+     "100"
+    ],
+    "rows": [
+     [
+      "$p(x)$",
+      "-3,000",
+      "-4,000",
+      "9,000",
+      "125,000",
+      "1,500,000"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-polynomial-end-behavior-1",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polynomial-end-behavior-s1",
+   "q": "The graph shows $q(x) = -0.1(x + 3)(x + 1)(x - 2)(x - 4)$. Which describes the right end of the graph?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to \\infty} q(x) = \\infty$",
+    "$\\lim_{x \\to \\infty} q(x) = -\\infty$",
+    "$\\lim_{x \\to \\infty} q(x) = 0$",
+    "$\\lim_{x \\to -\\infty} q(x) = -\\infty$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The leading term is $-0.1x^4$: for large $x$, $x^4$ is huge and positive, and $-0.1$ makes it huge and negative. So $\\lim_{x \\to \\infty} q(x) = -\\infty$.",
+    "options": [
+     "The right end falls, so the outputs decrease without bound.",
+     "Right: as $x$ increases without bound, $q(x)$ decreases without bound.",
+     "The graph does not level off at $0$; it keeps falling.",
+     "This is about the left end, $x \\to -\\infty$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-2",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polynomial-end-behavior-s1",
+   "q": "The graph shows $q(x) = -0.1(x + 3)(x + 1)(x - 2)(x - 4)$. Which describes the left end of the graph?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to -\\infty} q(x) = \\infty$",
+    "$\\lim_{x \\to -\\infty} q(x) = -3$",
+    "$\\lim_{x \\to -\\infty} q(x) = -\\infty$",
+    "$\\lim_{x \\to \\infty} q(x) = -\\infty$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$-0.1x^4$ is negative for every large $|x|$, so both ends fall: $\\lim_{x \\to -\\infty} q(x) = -\\infty$.",
+    "options": [
+     "For even degree, both ends go the same way; here both fall.",
+     "$-3$ is a zero; the graph keeps falling past it.",
+     "Right: $(-x)^4 = x^4$ is positive, times $-0.1$, so the outputs fall without bound.",
+     "True, but that describes the right end."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-3",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polynomial-end-behavior-s1",
+   "q": "The graph shows $q(x) = -0.1(x + 3)(x + 1)(x - 2)(x - 4)$. What are the degree and the sign of the leading coefficient of $q$?",
+   "type": "single",
+   "options": [
+    "Degree $4$, negative",
+    "Degree $4$, positive",
+    "Degree $3$, negative",
+    "Degree $5$, negative"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Leading term $-0.1 \\cdot x \\cdot x \\cdot x \\cdot x = -0.1x^4$: even degree (ends match) and negative (both fall).",
+    "options": [
+     "Right: four factors of $x$, and the leading coefficient is $-0.1$.",
+     "A positive leading coefficient with even degree would make both ends rise.",
+     "Odd degree would send the two ends in opposite directions.",
+     "There are four factors $(x - a)$: degree $4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-4",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polynomial-end-behavior-s1",
+   "q": "The graph shows $q(x) = -0.1(x + 3)(x + 1)(x - 2)(x - 4)$. Which statement about $q$ on all real numbers is supported by its end behavior?",
+   "type": "single",
+   "options": [
+    "$q$ has a global minimum but no global maximum.",
+    "$q$ has a global maximum but no global minimum.",
+    "$q$ has both a global maximum and a global minimum.",
+    "$q$ has neither a global maximum nor a global minimum."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\lim_{x \\to \\pm\\infty} q(x) = -\\infty$: the graph comes up from the bottom on the left and goes back down on the right, so it has a highest point but no lowest.",
+    "options": [
+     "Both ends fall without bound, so there is no lowest output.",
+     "Right: both ends fall, so the outputs have a highest value (about $2.5$) but no lowest.",
+     "Outputs that fall without bound have no least value.",
+     "An even-degree polynomial has one or the other; here, a global maximum."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-5",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polynomial-end-behavior-s1",
+   "q": "The graph shows $q(x) = -0.1(x + 3)(x + 1)(x - 2)(x - 4)$. Which leading term gives the same end behavior as $q$?",
+   "type": "single",
+   "options": [
+    "$0.1x^4$",
+    "$-0.1x^3$",
+    "$-2x^6$",
+    "$0.1x^5$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "End behavior depends only on the degree's parity and the leading coefficient's sign. Even and negative: both ends fall, like $-0.1x^4$ or $-2x^6$.",
+    "options": [
+     "Both ends of $0.1x^4$ rise.",
+     "For odd degree the left end of $-0.1x^3$ rises.",
+     "Right: even degree and a negative coefficient, so both ends fall, as for $q$.",
+     "For odd degree the ends go opposite ways."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-6",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polynomial-end-behavior-s2",
+   "q": "The table gives values of $p(x) = 2x^3 - 50x^2$. Which statement describes the end behavior of $p$ as $x$ increases?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to \\infty} p(x) = -\\infty$",
+    "$\\lim_{x \\to \\infty} p(x) = 1500000$",
+    "$\\lim_{x \\to \\infty} p(x) = \\infty$",
+    "$\\lim_{x \\to \\infty} p(x) = 2$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For large $x$ the leading term $2x^3$ is far bigger than $50x^2$, so $p(x)$ grows without bound: $\\lim_{x \\to \\infty} p(x) = \\infty$.",
+    "options": [
+     "The first values are negative, but by $x = 30$ the outputs grow without bound.",
+     "$1{,}500{,}000$ is one output; the outputs keep growing.",
+     "Right: the leading term $2x^3$ wins for large $x$.",
+     "$2$ is the leading coefficient, not a limit of the outputs."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-7",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polynomial-end-behavior-s2",
+   "q": "The table gives values of $p(x) = 2x^3 - 50x^2$. Why are $p(10)$ and $p(20)$ negative even though $p(x)$ grows without bound?",
+   "type": "single",
+   "options": [
+    "$-50x^2$ is larger in size than $2x^3$ until $x$ passes $25$.",
+    "The table's values were computed incorrectly from the formula.",
+    "So the end behavior is really $\\lim_{x \\to \\infty} p(x) = -\\infty$.",
+    "Negative outputs mean the leading coefficient is negative."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "End behavior is about large inputs. $p(x) = 2x^2(x - 25)$ is negative for $0 < x < 25$ and positive after, so the leading term takes over only past $x = 25$.",
+    "options": [
+     "Right: $2x^3 > 50x^2$ exactly when $x > 25$; after that the leading term dominates.",
+     "$2(1000) - 50(100) = -3000$ is correct.",
+     "The later values grow without bound; the end behavior is about large $x$.",
+     "The leading coefficient, $2$, is positive."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-8",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polynomial-end-behavior-s2",
+   "q": "The table gives values of $p(x) = 2x^3 - 50x^2$. Which describes $p$ as $x$ decreases without bound?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to -\\infty} p(x) = \\infty$",
+    "$\\lim_{x \\to -\\infty} p(x) = -\\infty$",
+    "$\\lim_{x \\to -\\infty} p(x) = 0$",
+    "$\\lim_{x \\to -\\infty} p(x) = -50$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For large negative $x$, $2x^3$ is huge and negative and dominates $-50x^2$: $\\lim_{x \\to -\\infty} p(x) = -\\infty$.",
+    "options": [
+     "$2x^3$ is negative for negative $x$, so the left end falls.",
+     "Right: for odd degree with a positive leading coefficient, the left end falls.",
+     "The outputs do not level off; $2x^3$ grows without bound in size.",
+     "$-50$ is a coefficient, not an output the graph approaches."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-9",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polynomial-end-behavior-s2",
+   "q": "The table gives values of $p(x) = 2x^3 - 50x^2$. What is the largest zero of $p$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 25,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$0$ is a zero (a double one), but $p(x) = 2x^2(x - 25)$ has a larger one."
+     },
+     {
+      "value": 50,
+      "why": "Factor out $2x^2$, not $x^2$: $2x^3 - 50x^2 = 2x^2(x - 25)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2x^3 - 50x^2 = 2x^2(x - 25)$, so the zeros are $0$ and $25$. That is where $p$ turns from negative to positive."
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-10",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the leading term of $f(x) = (2x - 1)^3(x + 4)$?",
+   "type": "expr",
+   "expr": {
+    "answer": "8x^4",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "mistakes": [
+     {
+      "expr": "2x^4",
+      "why": "Cube the whole leading part of $(2x - 1)$: $(2x)^3 = 8x^3$."
+     },
+     {
+      "expr": "6x^4",
+      "why": "$(2x)^3 = 8x^3$, not $6x^3$: cube the $2$ as well."
+     },
+     {
+      "expr": "8x^3",
+      "why": "Multiply by the $x$ from $(x + 4)$ too: $8x^3 \\cdot x = 8x^4$."
+     }
+    ],
+    "form": {
+     "type": "expanded"
+    }
+   },
+   "why": {
+    "correct": "Multiply the leading parts of the factors: $(2x)^3 \\cdot x = 8x^3 \\cdot x = 8x^4$. So $f$ has degree $4$, leading coefficient $8$, and both ends rise."
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-11",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which describes $g(x) = -3x^5 + 100x^4$ as $x \\to -\\infty$?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to -\\infty} g(x) = -\\infty$",
+    "$\\lim_{x \\to -\\infty} g(x) = -3$",
+    "$\\lim_{x \\to -\\infty} g(x) = 100$",
+    "$\\lim_{x \\to -\\infty} g(x) = \\infty$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For large $|x|$ the leading term $-3x^5$ dominates. If $x$ is negative, $x^5$ is negative and $-3x^5$ is positive: $\\lim_{x \\to -\\infty} g(x) = \\infty$.",
+    "options": [
+     "$-3x^5$ is positive for negative $x$: a negative times a negative.",
+     "$-3$ is the leading coefficient, not a value the outputs approach.",
+     "The coefficients do not give the limit; the leading term does.",
+     "Right: the leading term $-3x^5$ is positive and huge for large negative $x$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-12",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For which functions do both $\\lim_{x \\to \\infty} f(x) = -\\infty$ and $\\lim_{x \\to -\\infty} f(x) = -\\infty$ hold? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$f(x) = -x^4 + 1$",
+    "$f(x) = -2x^6 + x$",
+    "$f(x) = x^3$",
+    "$f(x) = -x^3$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Both ends fall exactly when the degree is even and the leading coefficient is negative.",
+    "options": [
+     "Yes: even degree, negative leading coefficient.",
+     "Yes: even degree, negative leading coefficient.",
+     "No: odd degree, so the ends go opposite ways.",
+     "No: its left end rises, $\\lim_{x \\to -\\infty} (-x^3) = \\infty$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-13",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which statement about $\\lim_{x \\to \\infty} f(x)$ for $f(x) = x^2$ is written correctly?",
+   "type": "single",
+   "options": [
+    "$f \\to \\infty$",
+    "$\\lim_{x \\to \\infty} f(x) = \\infty$",
+    "$f(\\infty) = \\infty$",
+    "$\\lim_{x \\to \\infty} f(x) \\to \\infty$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Write limit notation in full: $\\lim_{x \\to \\infty} f(x) = \\infty$. Graders do not accept \"$f \\to \\infty$\" or $f(\\infty)$.",
+    "options": [
+     "It leaves out the input: say $x \\to \\infty$, in limit notation.",
+     "Right: function, input, where the input goes, and where the outputs go.",
+     "$\\infty$ is not an input; $f(\\infty)$ means nothing.",
+     "Do not mix an arrow into the statement: the limit equals $\\infty$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-14",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why must a polynomial function of odd degree have at least one real zero?",
+   "type": "single",
+   "options": [
+    "Its ends go in opposite directions, so the graph must cross the $x$-axis.",
+    "Its leading coefficient is positive.",
+    "It has exactly as many real zeros as its degree, counting each one.",
+    "Its graph always passes through the origin."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For odd degree, $\\lim_{x \\to \\infty} f(x)$ and $\\lim_{x \\to -\\infty} f(x)$ have opposite signs ($\\pm\\infty$). A polynomial's graph is unbroken, so it crosses the $x$-axis somewhere in between.",
+    "options": [
+     "Right: one end is below the axis and the other above, and the graph has no breaks.",
+     "The argument works for negative leading coefficients too.",
+     "Some zeros may be non-real; $x^3 + x$ has only one real zero.",
+     "Many do not: $x^3 + 1$ has odd degree, but its graph meets the $y$-axis at $1$, and its real zero is $x = -1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-15",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is $\\lim_{x \\to \\infty} h(x)$ for $h(x) = x^2(3 - x)^3$?",
+   "type": "single",
+   "options": [
+    "$\\infty$",
+    "$27$",
+    "$0$",
+    "$-\\infty$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Multiply the leading parts: $x^2 \\cdot (-x)^3 = -x^5$. Odd degree, negative coefficient: $\\lim_{x \\to \\infty} h(x) = -\\infty$.",
+    "options": [
+     "$(3 - x)^3$ has leading part $(-x)^3 = -x^3$, which is negative.",
+     "$27$ is the leading part of $3^3$, not the behavior for large $x$.",
+     "The outputs grow in size; they do not shrink to $0$.",
+     "Right: the leading term is $x^2 \\cdot (-x)^3 = -x^5$."
+    ]
+   }
+  }
+ ]
+}

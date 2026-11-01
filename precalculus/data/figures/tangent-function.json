@@ -1,0 +1,12 @@
+{
+ "tangent-function-slope": {
+  "file": "figures/tangent-function-slope.svg",
+  "ext": "svg",
+  "w": 560,
+  "h": 480,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A unit circle with an angle theta in standard position. Its terminal ray passes through (cos theta, sin theta) and continues to the dashed line x = 1, which it meets at (1, tan theta). The vertical segment from the x-axis to that point has length tan theta."
+ }
+}

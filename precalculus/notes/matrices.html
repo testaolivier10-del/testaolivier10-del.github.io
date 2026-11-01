@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrices — AP® Precalculus Notes | LevlPrep</title>
+<meta name="description" content="A matrix (plural matrices ) is a rectangle of numbers arranged in rows and columns.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/matrices.html">
+<meta property="og:title" content="Matrices — AP® Precalculus Notes | LevlPrep">
+<meta property="og:description" content="A matrix (plural matrices ) is a rectangle of numbers arranged in rows and columns.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/matrices.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/matrices.html#reading",
+      "name": "Matrices",
+      "url": "https://levlprep.com/precalculus/notes/matrices.html",
+      "description": "A matrix (plural matrices ) is a rectangle of numbers arranged in rows and columns.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "matrices ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Functions Involving Parameters, Vectors, and Matrices",
+          "item": "https://levlprep.com/precalculus/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Matrices: notes",
+          "item": "https://levlprep.com/precalculus/notes/matrices.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="matrices" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Functions Involving Parameters, Vectors, and Matrices</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Matrices: notes</span></nav>
+<p class="issue">Unit 4 <i></i> Topic 4.10</p>
+<h1 class="deck bk-title" id="r3Title">Matrices</h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/matrices.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="matrices">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fmatrices.html&amp;title=Matrices%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/matrices.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Trigonometric and Polar Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Functions Involving Parameters, Vectors, and Matrices</b><small>14 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 14 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="parametric-functions"><a href="parametric-functions.html"><span class="bk-toc-n">4.1</span>Parametric Functions</a></li><li data-toc-t="parametric-motion"><a href="parametric-motion.html"><span class="bk-toc-n">4.2</span>Parametric Functions Modeling Planar Motion</a></li><li data-toc-t="parametric-rates"><a href="parametric-rates.html"><span class="bk-toc-n">4.3</span>Parametric Functions and Rates of Change</a></li><li data-toc-t="parametric-circles-lines"><a href="parametric-circles-lines.html"><span class="bk-toc-n">4.4</span>Parametrically Defined Circles and Lines</a></li><li data-toc-t="implicit-functions"><a href="implicit-functions.html"><span class="bk-toc-n">4.5</span>Implicitly Defined Functions</a></li><li data-toc-t="conic-sections"><a href="conic-sections.html"><span class="bk-toc-n">4.6</span>Conic Sections</a></li><li data-toc-t="parametrizing-implicit"><a href="parametrizing-implicit.html"><span class="bk-toc-n">4.7</span>Parametrization of Implicitly Defined Functions</a></li><li data-toc-t="vectors"><a href="vectors.html"><span class="bk-toc-n">4.8</span>Vectors</a></li><li data-toc-t="vector-valued-functions"><a href="vector-valued-functions.html"><span class="bk-toc-n">4.9</span>Vector-Valued Functions</a></li><li class="current" data-toc-t="matrices"><a href="#main" aria-current="page"><span class="bk-toc-n">4.10</span>Matrices</a><div class="bk-toc-onpage"><p>On this page</p><a href="#dimensions-and-entries">Dimensions and entries</a><a href="#adding-and-scaling">Adding and scaling</a><a href="#multiplying-row-times-column">Multiplying: row times column</a><a href="#matrices-in-context">Matrices in context</a><a href="#rules-to-keep-straight">Rules to keep straight</a></div></li><li data-toc-t="inverse-determinant"><a href="inverse-determinant.html"><span class="bk-toc-n">4.11</span>The Inverse and Determinant of a Matrix</a></li><li data-toc-t="linear-transformations"><a href="linear-transformations.html"><span class="bk-toc-n">4.12</span>Linear Transformations and Matrices</a></li><li data-toc-t="matrices-as-functions"><a href="matrices-as-functions.html"><span class="bk-toc-n">4.13</span>Matrices as Functions</a></li><li data-toc-t="matrix-modeling"><a href="matrix-modeling.html"><span class="bk-toc-n">4.14</span>Matrices Modeling Contexts</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-algebra.html"><span class="bk-toc-n">S</span>Algebra you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+<p class="bk-lede"><span class="pcalc-beyond pcalc-nav-ref"><b>Beyond the exam.</b> The AP® Precalculus exam does not test this unit. Many classes teach it, and it prepares you for calculus.</span></p>
+    <article class="pcalc-prose bk-prose">
+<p>A <b><span class="gl" tabindex="0" data-c="matrix">matrix</span></b> (plural <b>matrices</b>) is a rectangle of numbers arranged in rows and columns. Matrices organize data, like sales by day and item, and later in this unit they turn into <a class="gl" href="../notes/alg-functions.html" data-c="function">functions</a> that move, rotate and stretch the plane. This page covers the language and the arithmetic, above all how to multiply.</p>
+
+<h2 id="dimensions-and-entries">Dimensions and entries</h2>
+<p>A matrix with <math class="pcalc-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math> rows and <math class="pcalc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> columns has <b>dimensions</b> <math class="pcalc-m"><semantics><mrow><mi>m</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m \times n</annotation></semantics></math> (say "m by n"), rows first. The entry in row <math class="pcalc-m"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math> and column <math class="pcalc-m"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math> is written <math class="pcalc-m"><semantics><mrow><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">a_{ij}</annotation></semantics></math>.</p>
+<math class="pcalc-m" display="block"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>3</mn></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></mtd><mtd><mn>4</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>2</mn></mtd><mtd><mn>5</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">A = \left[ \begin{matrix} 3 &amp; -1 &amp; 4 \\ 0 &amp; 2 &amp; 5 \end{matrix} \right]</annotation></semantics></math>
+<p>is <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo>×</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">2 \times 3</annotation></semantics></math>, and <math class="pcalc-m"><semantics><mrow><msub><mi>a</mi><mn>13</mn></msub><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">a_{13} = 4</annotation></semantics></math> (row 1, column 3). A matrix with one column, such as <math class="pcalc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>5</mn></mtd></mtr><mtr><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} 5 \\ -1 \end{matrix} \right]</annotation></semantics></math>, is a column <a class="gl" href="../notes/vectors.html" data-c="vector">vector</a>.</p>
+
+<h2 id="adding-and-scaling">Adding and scaling</h2>
+<p>Matrices with the same dimensions add entry by entry, and a number times a matrix multiplies every entry:</p>
+<math class="pcalc-m" display="block"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>4</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mo>+</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>3</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>2</mn></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mo>=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>4</mn></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd><mn>2</mn></mtd><mtd><mn>3</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mo>,</mo><mspace width="2em"></mspace><mn>3</mn><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>4</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mo>=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>3</mn></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>6</mn></mrow></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>12</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mo>.</mo></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} 1 &amp; -2 \\ 0 &amp; 4 \end{matrix} \right] + \left[ \begin{matrix} 3 &amp; 1 \\ 2 &amp; -1 \end{matrix} \right] = \left[ \begin{matrix} 4 &amp; -1 \\ 2 &amp; 3 \end{matrix} \right], \qquad 3\left[ \begin{matrix} 1 &amp; -2 \\ 0 &amp; 4 \end{matrix} \right] = \left[ \begin{matrix} 3 &amp; -6 \\ 0 &amp; 12 \end{matrix} \right].</annotation></semantics></math>
+
+<h2 id="multiplying-row-times-column">Multiplying: row times column</h2>
+<p>The product <math class="pcalc-m"><semantics><mrow><mi>A</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">AB</annotation></semantics></math> is defined when the number of columns of <math class="pcalc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> equals the number of rows of <math class="pcalc-m"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math>. If <math class="pcalc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mi>m</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m \times n</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mi>n</mi><mo>×</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">n \times p</annotation></semantics></math>, then <math class="pcalc-m"><semantics><mrow><mi>A</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">AB</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mi>m</mi><mo>×</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">m \times p</annotation></semantics></math>: the outside numbers give the size, the inside numbers must match.</p>
+<p>To find the entry in row <math class="pcalc-m"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math>, column <math class="pcalc-m"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math> of <math class="pcalc-m"><semantics><mrow><mi>A</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">AB</annotation></semantics></math>, take row <math class="pcalc-m"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math> of <math class="pcalc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> and column <math class="pcalc-m"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math> of <math class="pcalc-m"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math>, multiply matching entries and add, just like a dot product.</p>
+<figure id="fig-rc"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="matrices-row-column"><img src="../figures/matrices-row-column.svg" alt="Matrix A with rows (2, -1) and (0, 3) times matrix B with rows (1, 4) and (-2, 1) equals the product with rows (4, 7) and (-6, 3). Row 1 of A and column 2 of B are highlighted, and the entry 7 in row 1, column 2 of the product is boxed: 2 times 4 plus (-1) times 1 = 7." width="580" height="235" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Row 1 of <math class="pcalc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> times column 2 of <math class="pcalc-m"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math> gives the entry in row 1, column 2 of <math class="pcalc-m"><semantics><mrow><mi>A</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">AB</annotation></semantics></math>. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> Find <math class="pcalc-m"><semantics><mrow><mi>A</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">AB</annotation></semantics></math> for <math class="pcalc-m"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>2</mn></mtd><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>3</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">A = \left[ \begin{matrix} 2 &amp; -1 \\ 0 &amp; 3 \end{matrix} \right]</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>B</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>4</mn></mtd></mtr><mtr><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">B = \left[ \begin{matrix} 1 &amp; 4 \\ -2 &amp; 1 \end{matrix} \right]</annotation></semantics></math>.</p>
+<p>Row 1, column 1: <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2(1) + (-1)(-2)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>2</mn><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">= 2 + 2</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">= 4</annotation></semantics></math>. Row 1, column 2: <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">2(4) + (-1)(1) = 7</annotation></semantics></math>.</p>
+<p>Row 2, column 1: <math class="pcalc-m"><semantics><mrow><mn>0</mn><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mn>3</mn><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">0(1) + 3(-2) = -6</annotation></semantics></math>. Row 2, column 2: <math class="pcalc-m"><semantics><mrow><mn>0</mn><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>+</mo><mn>3</mn><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">0(4) + 3(1) = 3</annotation></semantics></math>.</p>
+<p>So <math class="pcalc-m"><semantics><mrow><mi>A</mi><mi>B</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>4</mn></mtd><mtd><mn>7</mn></mtd></mtr><mtr><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>6</mn></mrow></mtd><mtd><mn>3</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">AB = \left[ \begin{matrix} 4 &amp; 7 \\ -6 &amp; 3 \end{matrix} \right]</annotation></semantics></math>. In the other order, <math class="pcalc-m"><semantics><mrow><mi>B</mi><mi>A</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>2</mn></mtd><mtd><mn>11</mn></mtd></mtr><mtr><mtd><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow></mtd><mtd><mn>5</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">BA = \left[ \begin{matrix} 2 &amp; 11 \\ -4 &amp; 5 \end{matrix} \right]</annotation></semantics></math>: a different matrix. Order matters.</p>
+</div>
+
+<h2 id="matrices-in-context">Matrices in context</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> A food truck sells burgers, fries and drinks at $6, $3 and $2. On Saturday it sells <math class="pcalc-m"><semantics><mrow><mn>40</mn></mrow><annotation encoding="application/x-tex">40</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>65</mn></mrow><annotation encoding="application/x-tex">65</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>90</mn></mrow><annotation encoding="application/x-tex">90</annotation></semantics></math>; on Sunday <math class="pcalc-m"><semantics><mrow><mn>55</mn></mrow><annotation encoding="application/x-tex">55</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>50</mn></mrow><annotation encoding="application/x-tex">50</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>70</mn></mrow><annotation encoding="application/x-tex">70</annotation></semantics></math>. Find each day's revenue.</p>
+<p>Put the sales in a <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo>×</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">2 \times 3</annotation></semantics></math> matrix (one row per day) and the prices in a <math class="pcalc-m"><semantics><mrow><mn>3</mn><mo>×</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3 \times 1</annotation></semantics></math> column:</p>
+<math class="pcalc-m" display="block"><semantics><mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>40</mn></mtd><mtd><mn>65</mn></mtd><mtd><mn>90</mn></mtd></mtr><mtr><mtd><mn>55</mn></mtd><mtd><mn>50</mn></mtd><mtd><mn>70</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>6</mn></mtd></mtr><mtr><mtd><mn>3</mn></mtd></mtr><mtr><mtd><mn>2</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mo>=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mrow><mn>40</mn><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo><mo>+</mo><mn>65</mn><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>+</mo><mn>90</mn><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mn>55</mn><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo><mo>+</mo><mn>50</mn><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>+</mo><mn>70</mn><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mo>=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>615</mn></mtd></mtr><mtr><mtd><mn>620</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow><mo>.</mo></mrow><annotation encoding="application/x-tex">\left[ \begin{matrix} 40 &amp; 65 &amp; 90 \\ 55 &amp; 50 &amp; 70 \end{matrix} \right]\left[ \begin{matrix} 6 \\ 3 \\ 2 \end{matrix} \right] = \left[ \begin{matrix} 40(6) + 65(3) + 90(2) \\ 55(6) + 50(3) + 70(2) \end{matrix} \right] = \left[ \begin{matrix} 615 \\ 620 \end{matrix} \right].</annotation></semantics></math>
+<p>Saturday brought in $615 and Sunday $620. The inside dimensions match (<math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math>) and the result is <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo>×</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2 \times 1</annotation></semantics></math>, one revenue per day.</p>
+</div>
+
+<h2 id="rules-to-keep-straight">Rules to keep straight</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Operation, When it is defined, Result"><table class="compare">
+<thead><tr><th scope="col">Operation</th><th scope="col">When it is defined</th><th scope="col">Result</th></tr></thead>
+<tbody>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>A</mi><mo>+</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A + B</annotation></semantics></math></td><td>same dimensions</td><td>same dimensions, entry by entry</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>k</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">kA</annotation></semantics></math></td><td>any matrix</td><td>every entry times <math class="pcalc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>A</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">AB</annotation></semantics></math></td><td>columns of <math class="pcalc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> = rows of <math class="pcalc-m"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></td><td>rows of <math class="pcalc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> by columns of <math class="pcalc-m"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>The <b>identity matrix</b> <math class="pcalc-m"><semantics><mrow><mi>I</mi><mo>=</mo><mrow><mo fence="true" stretchy="true">[</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">I = \left[ \begin{matrix} 1 &amp; 0 \\ 0 &amp; 1 \end{matrix} \right]</annotation></semantics></math> plays the role of the number <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>A</mi><mi>I</mi><mo>=</mo><mi>I</mi><mi>A</mi><mo>=</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">AI = IA = A</annotation></semantics></math> for every <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2 \times 2</annotation></semantics></math> matrix <math class="pcalc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math>. Unlike numbers, though, <math class="pcalc-m"><semantics><mrow><mi>A</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">AB</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>B</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">BA</annotation></semantics></math> are usually different, so always multiply in the order the problem gives.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:matrices">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="vector-valued-functions.html"><span>&larr; Previous</span><b>Vector-Valued Functions</b></a><a class="tb-chapter-link next" href="inverse-determinant.html"><span>Next &rarr;</span><b>The Inverse and Determinant of a Matrix</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/matrices.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:matrices">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

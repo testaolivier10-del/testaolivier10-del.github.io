@@ -1,0 +1,12 @@
+{
+ "sequences-dots": {
+  "file": "figures/sequences-dots.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Dots at n = 0 to 5 for the arithmetic sequence a_n = 2 + 5n (2, 7, 12, 17, 22, 27) and the geometric sequence g_n = 2^n (1, 2, 4, 8, 16, 32); the geometric one passes the arithmetic one at n = 5."
+ }
+}

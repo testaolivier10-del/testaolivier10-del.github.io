@@ -1,0 +1,71 @@
+{
+ "topic": "complex-zeros",
+ "hook": "An engineer reading a vibration signal wants to know where it is zero and whether it passes through zero or just grazes it. For polynomial functions, the factors answer both questions: each factor gives a zero, and its power says whether the graph crosses or touches. Some zeros are not even real, but they still count.",
+ "prereq": [
+  {
+   "q": "Solve $x^2 + 4 = 0$.",
+   "options": [
+    "$x = \\pm 2i$",
+    "$x = \\pm 2$",
+    "$x = \\pm 4i$",
+    "$x = -4$"
+   ],
+   "correct": 0,
+   "why": "$x^2 = -4$, so $x = \\pm\\sqrt{-4} = \\pm 2i$.",
+   "review": "alg-complex-numbers"
+  },
+  {
+   "q": "What is the degree of $-2(x - 1)(x + 3)^2$?",
+   "options": [
+    "$3$",
+    "$2$",
+    "$-2$",
+    "$4$"
+   ],
+   "correct": 0,
+   "why": "$x \\cdot x^2 = x^3$.",
+   "review": "polynomial-rates"
+  }
+ ],
+ "figure": {
+  "figure": "complex-zeros-touch",
+  "caption": "$p(x) = 0.25(x + 2)(x - 1)^2(x - 3)$ crosses the $x$-axis at the zeros of odd multiplicity, $-2$ and $3$, and touches it at the zero of even multiplicity, $1$."
+ },
+ "chain": [
+  {
+   "cause": "$(x - a)^k$ is a factor of $p$ and no higher power is",
+   "effect": "$a$ is a zero of multiplicity $k$"
+  },
+  {
+   "cause": "The multiplicity is even",
+   "effect": "$p$ keeps its sign near $a$: the graph touches the axis without crossing"
+  },
+  {
+   "cause": "$p$ has degree $n$",
+   "effect": "it has exactly $n$ complex zeros counting multiplicity, real or not"
+  },
+  {
+   "cause": "$p$ has real coefficients and a zero $a + bi$ with $b \\ne 0$",
+   "effect": "its conjugate $a - bi$ is a zero too"
+  }
+ ],
+ "ideas": [
+  "<b>Multiplicity</b>: the power of the factor $(x - a)$. Odd: the graph crosses. Even: it touches (a double zero bounces off the axis).",
+  "Degree $n$ means $n$ <b>complex zeros</b> counting multiplicity; non-real ones come in conjugate pairs when the coefficients are real.",
+  "Equally spaced inputs with constant $n$th differences fit degree $n$.",
+  "<b>Even function</b>: $f(-x) = f(x)$, symmetric about the $y$-axis. <b>Odd function</b>: $f(-x) = -f(x)$, symmetric about the origin."
+ ],
+ "misconception": {
+  "wrong": "A polynomial of degree $4$ always has $4$ $x$-intercepts.",
+  "right": "It has $4$ complex zeros counting multiplicity, but some may repeat and some may be non-real. The $p$ in the figure has degree $4$ and only $3$ $x$-intercepts, because the zero $1$ counts twice."
+ },
+ "check": [
+  "pcalc-complex-zeros-1",
+  "pcalc-complex-zeros-2",
+  "pcalc-complex-zeros-3",
+  "pcalc-complex-zeros-6",
+  "pcalc-complex-zeros-7",
+  "pcalc-complex-zeros-10"
+ ],
+ "summary": "Each factor $(x - a)^k$ of a polynomial gives a zero $a$ of multiplicity $k$: the graph crosses at odd multiplicity and touches at even multiplicity. A polynomial of degree $n$ has $n$ complex zeros counting multiplicity, and with real coefficients the non-real ones come in conjugate pairs. Constant $n$th differences point to degree $n$; even and odd functions show mirror symmetry."
+}

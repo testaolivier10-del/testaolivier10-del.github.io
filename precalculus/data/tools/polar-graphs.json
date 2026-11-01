@@ -1,0 +1,15 @@
+{
+ "about": "Polar graphs (docs/apprecalc-spec.md section 6, builder T4). The curves and every number live in precalculus/assets/tools/math/polar-graphs.js; contexts unlock with their topics. Checked by scripts/lib/apprecalc-tool-checks/polar-graphs.mjs.",
+ "slug": "polar-graphs",
+ "kind": "simulator",
+ "topic": "polar-curves",
+ "intro": "<p>A polar curve $r = f(\\theta)$ drawn as the angle sweeps, beside the graph of $r$ against $\\theta$. The current point and its distance from the origin are the same orange in both views, so you can see a value of $r$ become a distance along a ray. The shaded bands show where the point moves away from the origin and where it moves toward it. In Interval, a secant line on the graph of $r$ against $\\theta$ gives the average rate of change of $r$.</p>",
+ "howItWorksTitle": "How the pictures are drawn",
+ "howItWorks": "<ul><li><b>Polar to rectangular:</b> $x = r\\cos\\theta$ and $y = r\\sin\\theta$; back again, $r = \\sqrt{x^2 + y^2}$ and $\\tan\\theta = \\frac{y}{x}$ with $\\theta$ chosen in the point's quadrant.</li><li><b>Negative r:</b> a point with $r < 0$ is $|r|$ units from the origin on the ray opposite the angle. Both views draw those parts dashed.</li><li><b>Distance from the origin</b> is $|r|$. It increases where $r > 0$ and $r$ is increasing, or where $r < 0$ and $r$ is decreasing; it decreases in the other two cases.</li><li><b>Average rate of change</b> of $r$ on $[\\theta_1, \\theta_2]$ is $\\frac{r(\\theta_2) - r(\\theta_1)}{\\theta_2 - \\theta_1}$, the slope of the secant line on the graph of $r$ against $\\theta$, in units of $r$ per radian.</li><li><b>Shapes:</b> $r = a\\cos(n\\theta)$ is a rose with $n$ petals when $n$ is odd and $2n$ when $n$ is even; $r = a + b\\cos\\theta$ has an inner loop when $|a| < |b|$ and is a cardioid when $|a| = |b|$.</li><li><b>Keyboard:</b> on the picture, the arrow keys turn the angle by $\\frac{\\pi}{24}$ (Shift: $\\frac{\\pi}{6}$), Home and End go to $0$ and $2\\pi$.</li></ul>",
+ "curves": ["rose", "limacon", "cardioid", "circle"],
+ "contexts": [
+  { "id": "convert", "topic": "polar-coordinates", "kind": "convert" },
+  { "id": "graph", "topic": "polar-curves", "kind": "graph" },
+  { "id": "rates", "topic": "polar-rates", "kind": "rates" }
+ ]
+}

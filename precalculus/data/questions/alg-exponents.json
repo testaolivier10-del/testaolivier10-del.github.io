@@ -1,0 +1,271 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "pcalc-alg-exponents-1",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Evaluate $8^{2/3}$ without a calculator.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 64,
+      "why": "That is $8^2$. The $3$ in the denominator takes a cube root: $(\\sqrt[3]{8})^2$."
+     },
+     {
+      "value": "16/3",
+      "why": "That multiplies $8$ by $\\frac{2}{3}$. A fractional exponent is a root and a power, not a product."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The denominator $3$ is a cube root and the numerator $2$ is a power: $8^{2/3} = (\\sqrt[3]{8})^2 = 2^2 = 4$."
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-2",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Simplify $(x^3)^2 \\cdot x^{-4}$ to a single power of $x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "x^2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.2,
+     4
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": "x"
+    },
+    "mistakes": [
+     {
+      "expr": "x^5",
+      "why": "A power of a power multiplies the exponents: $(x^3)^2 = x^6$, not $x^5$."
+     },
+     {
+      "expr": "x^10",
+      "why": "Multiplying powers with the same base adds the exponents: $6 + (-4) = 2$."
+     },
+     {
+      "expr": "x^(-24)",
+      "why": "Add the exponents of $x^6 \\cdot x^{-4}$; do not multiply them."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Power of a power multiplies: $(x^3)^2 = x^6$. Same base multiplies by adding exponents: $x^6 \\cdot x^{-4} = x^{6 + (-4)} = x^2$."
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-3",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is $2^{-3}$?",
+   "type": "single",
+   "options": [
+    "$-8$",
+    "$-6$",
+    "$\\frac{1}{6}$",
+    "$\\frac{1}{8}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A negative exponent means the reciprocal: $2^{-3} = \\frac{1}{2^3} = \\frac{1}{8}$.",
+    "options": [
+     "A negative exponent does not make the value negative.",
+     "This multiplies $2$ by $-3$.",
+     "This multiplies $2$ by $3$ in the denominator; $2^3 = 8$.",
+     "Reciprocal of $2^3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-4",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Evaluate $16^{-1/2}$ exactly.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "1/4",
+    "mistakes": [
+     {
+      "value": -4,
+      "why": "The negative exponent gives a reciprocal, not a negative number: $\\frac{1}{4}$."
+     },
+     {
+      "value": -8,
+      "why": "This multiplies $16$ by $-\\frac{1}{2}$. The exponent $\\frac{1}{2}$ is a square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$16^{-1/2} = \\frac{1}{16^{1/2}} = \\frac{1}{\\sqrt{16}} = \\frac{1}{4}$."
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-5",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write $\\sqrt{x^3}$ as a power of $x$, for $x > 0$.",
+   "type": "expr",
+   "expr": {
+    "answer": "x^(3/2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.1,
+     5
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": "x"
+    },
+    "answerTex": "x^{3/2}",
+    "mistakes": [
+     {
+      "expr": "x^(2/3)",
+      "why": "The root goes in the denominator: a square root of $x^3$ is $x^{3/2}$."
+     },
+     {
+      "expr": "x^(3-1/2)",
+      "why": "A root of a power multiplies the exponents: $3 \\cdot \\frac{1}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A square root is the power $\\frac{1}{2}$: $\\sqrt{x^3} = (x^3)^{1/2} = x^{3/2}$."
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-6",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Simplify $(2x^3)^2$.",
+   "type": "single",
+   "options": [
+    "$2x^6$",
+    "$4x^5$",
+    "$4x^6$",
+    "$2x^9$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Square each factor: $2^2 = 4$ and $(x^3)^2 = x^6$, so $(2x^3)^2 = 4x^6$.",
+    "options": [
+     "The $2$ is squared too.",
+     "A power of a power multiplies the exponents, $3 \\cdot 2 = 6$.",
+     "Both factors are squared.",
+     "Square the $2$, and multiply the exponents rather than cubing."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-7",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve $4^x = 32$ by writing both sides as powers of $2$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "5/2",
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "That divides $32$ by $4$. Rewrite with a common base and compare exponents."
+     },
+     {
+      "value": 5,
+      "why": "That is the exponent of $2$; the left side is $2^{2x}$, so $2x = 5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$4^x = (2^2)^x = 2^{2x}$ and $32 = 2^5$. Equal powers of the same base have equal exponents: $2x = 5$, so $x = \\frac{5}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-8",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which expressions equal $\\frac{1}{9}$? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$3^{-2}$",
+    "$27^{-2/3}$",
+    "$-3^2$",
+    "$9^{1/2}$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$3^{-2} = \\frac{1}{9}$, and $27^{-2/3} = \\frac{1}{(\\sqrt[3]{27})^2} = \\frac{1}{9}$.",
+    "options": [
+     "Reciprocal of $3^2$.",
+     "The cube root of $27$ is $3$; squared, $9$; the negative exponent gives $\\frac{1}{9}$.",
+     "This is $-(3^2) = -9$.",
+     "This is $\\sqrt{9} = 3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-9",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes $2^3 \\cdot 2^4 = 4^7$. What is the error?",
+   "type": "single",
+   "options": [
+    "The exponents should be multiplied, giving $2^{12}$",
+    "The base stays $2$; only the exponents are added, giving $2^7$",
+    "The bases should be added, giving $4^{12}$",
+    "There is no error; $4^7 = 2^3 \\cdot 2^4$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "When you multiply powers of the same base, keep the base and add the exponents: $2^3 \\cdot 2^4 = 2^7 = 128$. The student's $4^7 = 16{,}384$ is far too large.",
+    "options": [
+     "Multiplying exponents is for a power of a power, like $(2^3)^4$.",
+     "Keep the base, add the exponents.",
+     "Bases are never combined by this rule, and exponents are added, not multiplied.",
+     "$2^7 = 128$ but $4^7 = 16{,}384$."
+    ]
+   }
+  }
+ ]
+}

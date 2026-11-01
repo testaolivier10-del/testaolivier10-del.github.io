@@ -1,0 +1,67 @@
+{
+ "topic": "rational-holes",
+ "hook": "A graph can look like an ordinary curve and still be missing a single point. On paper that missing point is a small open circle; in a formula it is a factor that cancels. Finding where it is, and how high, is the last piece of reading a rational function.",
+ "prereq": [
+  {
+   "q": "Which vertical asymptotes does $\\frac{x - 3}{(x - 3)(x + 2)}$ have?",
+   "options": [
+    "$x = -2$",
+    "$x = 3$ and $x = -2$",
+    "$x = 3$",
+    "none"
+   ],
+   "correct": 0,
+   "why": "$x - 3$ cancels.",
+   "review": "vertical-asymptotes"
+  },
+  {
+   "q": "Simplify $\\frac{x^2 - 9}{x^2 + x - 6}$.",
+   "options": [
+    "$\\frac{x - 3}{x - 2}$, $x \\ne -3$",
+    "$\\frac{x + 3}{x - 2}$",
+    "$\\frac{-9}{x - 6}$",
+    "$\\frac{x - 3}{x + 2}$"
+   ],
+   "correct": 0,
+   "why": "Cancel $x + 3$, keep the exclusion.",
+   "review": "alg-rational-expressions"
+  }
+ ],
+ "figure": {
+  "figure": "rational-holes-hole",
+  "caption": "$r(x) = \\frac{x^2 + x - 2}{x^2 - 1} = \\frac{x + 2}{x + 1}$ for $x \\ne 1$: a hole at $\\left(1, \\frac{3}{2}\\right)$, a vertical asymptote $x = -1$ and a horizontal asymptote $y = 1$."
+ },
+ "chain": [
+  {
+   "cause": "$(x - a)$ divides the numerator at least as many times as the denominator",
+   "effect": "it cancels completely from the denominator, and the graph has a hole at $x = a$"
+  },
+  {
+   "cause": "You cancel and evaluate the simplified formula at $a$",
+   "effect": "you get the hole's $y$-coordinate $L$, and $\\lim_{x \\to a} r(x) = L$"
+  },
+  {
+   "cause": "The function itself is undefined at $a$",
+   "effect": "the point $(a, L)$ is drawn as an open circle, and $a$ is not a zero even if $L = 0$"
+  }
+ ],
+ "ideas": [
+  "<b>Hole</b> at $x = a$: the multiplicity of $(x - a)$ in the numerator is at least its multiplicity in the denominator.",
+  "Its height is $\\lim_{x \\to a} r(x)$: cancel, then evaluate at $a$.",
+  "Near a hole the outputs approach a number; near a vertical asymptote they grow without bound.",
+  "Write $\\lim_{x \\to a} r(x) = L$, never $r(a) = L$: $r(a)$ is undefined."
+ ],
+ "misconception": {
+  "wrong": "If the numerator and denominator are both $0$ at $x = a$, then $r(a) = 0$.",
+  "right": "$\\frac{0}{0}$ has no value. Cancel the common factor and evaluate the rest: for $\\frac{x^2 - x - 6}{x^2 - 5x + 6}$ at $x = 3$ that gives $5$, the height of a hole."
+ },
+ "check": [
+  "pcalc-rational-holes-1",
+  "pcalc-rational-holes-2",
+  "pcalc-rational-holes-3",
+  "pcalc-rational-holes-6",
+  "pcalc-rational-holes-7",
+  "pcalc-rational-holes-10"
+ ],
+ "summary": "A rational function has a hole at $x = a$ when $(x - a)$ divides the numerator at least as often as the denominator. Cancel the factor and evaluate at $a$ to get the hole's height $L$; then $\\lim_{x \\to a} r(x) = L$ while $r(a)$ is undefined. Near a hole the outputs approach a number, unlike near a vertical asymptote."
+}

@@ -1,0 +1,11 @@
+{
+ "logarithmic-modeling-data": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Scatter plot of reading speed against weeks of practice at 1, 2, 4, 8 and 16 weeks, with the curve y = 52 + 18 ln x passing close to every point.",
+  "ext": "svg",
+  "w": 400,
+  "h": 290
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "rational-function": {
+  "def": "A function $r(x) = \\frac{p(x)}{q(x)}$ where $p$ and $q$ are polynomials and $q$ is not the zero polynomial."
+ },
+ "horizontal-asymptote": {
+  "def": "A line $y = c$ with $\\lim_{x \\to \\infty} r(x) = c$ or $\\lim_{x \\to -\\infty} r(x) = c$. For a rational function: the ratio of leading coefficients when the degrees are equal, $y = 0$ when the denominator's degree is greater."
+ },
+ "slant-asymptote": {
+  "def": "A non-horizontal line $y = mx + b$ that the graph approaches as $x \\to \\pm\\infty$; a rational function has one when the numerator's degree is one more than the denominator's."
+ }
+}

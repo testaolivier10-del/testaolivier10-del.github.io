@@ -189,7 +189,13 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.parseCourse('psychology'), 'appsych');
   assert.equal(A.parseCourse('psych'), 'appsych');
   assert.equal(A.parseCourse('psy'), 'appsych');
-  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych']);
+  // AP® Precalculus (live since its launch): key apprecalc, named by its folder, aliases precalc and pcalc.
+  assert.equal(A.urlKey('apprecalc'), 'precalculus');
+  assert.equal(A.parseCourse('precalculus'), 'apprecalc');
+  assert.equal(A.parseCourse('precalc'), 'apprecalc');
+  assert.equal(A.parseCourse('pcalc'), 'apprecalc');
+  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc']);
+  eq(A.scopeKeys('apprecalc'), ['apprecalc']);
   eq(A.scopeKeys('apenv'), ['apenv']);
   eq(A.scopeKeys('appsych'), ['appsych']);
   eq(A.scopeKeys('ochem'), ['ochem']);

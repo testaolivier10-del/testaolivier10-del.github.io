@@ -1,0 +1,70 @@
+{
+ "topic": "alg-polynomial-algebra",
+ "hook": "An engineer who knows the outputs of a curve's formula still needs its zeros: where a beam's bending is zero, where a profit breaks even. For the curves in this unit, the zeros come from writing the formula as a product. That is factoring, and it is the algebra Topic 1.4 builds on.",
+ "prereq": [
+  {
+   "q": "Solve $x^2 - 5x + 6 = 0$.",
+   "options": [
+    "$x = 2$ or $x = 3$",
+    "$x = -2$ or $x = -3$",
+    "$x = 5$ or $x = 6$",
+    "$x = 1$ or $x = 6$"
+   ],
+   "correct": 0,
+   "why": "$(x - 2)(x - 3) = 0$.",
+   "review": "alg-quadratics"
+  },
+  {
+   "q": "What is $(x + 3)^2$ multiplied out?",
+   "options": [
+    "$x^2 + 6x + 9$",
+    "$x^2 + 9$",
+    "$x^2 + 3x + 9$",
+    "$x^2 + 6x + 6$"
+   ],
+   "correct": 0,
+   "why": "$(x + 3)(x + 3) = x^2 + 3x + 3x + 9$.",
+   "review": "alg-quadratics"
+  }
+ ],
+ "figure": {
+  "figure": "alg-polynomial-algebra-factors",
+  "caption": "$y = x^3 - 9x = x(x - 3)(x + 3)$ crosses the $x$-axis once for each factor: at $x = -3$, $0$ and $3$."
+ },
+ "chain": [
+  {
+   "cause": "Every term shares a factor",
+   "effect": "take it out first: $x^3 - 9x = x(x^2 - 9)$"
+  },
+  {
+   "cause": "A factor matches a pattern ($a^2 - b^2$, $a^3 - b^3$, $a^3 + b^3$)",
+   "effect": "use the pattern: $x^2 - 9 = (x - 3)(x + 3)$"
+  },
+  {
+   "cause": "Four terms pair up with a shared binomial",
+   "effect": "factor by grouping: $x^2(x + 2) - 4(x + 2) = (x^2 - 4)(x + 2)$"
+  },
+  {
+   "cause": "A polynomial is written as a product equal to $0$",
+   "effect": "each factor equal to $0$ gives a solution, and $p(a) = 0$ means $x - a$ is a factor"
+  }
+ ],
+ "ideas": [
+  "A <b>polynomial</b> is a sum of terms $ax^n$ with whole-number powers, like $x^3 + x^2 - 7x + 2$.",
+  "Multiply by distributing every term of one factor over every term of the other, then combine like terms.",
+  "Factor in order: common factor, then patterns (difference of squares, sum or difference of cubes), then grouping."
+ ],
+ "misconception": {
+  "wrong": "To solve $x^3 = 9x$, divide both sides by $x$ to get $x^2 = 9$.",
+  "right": "Dividing by $x$ assumes $x \\ne 0$ and loses the solution $x = 0$. Move everything to one side and factor: $x(x - 3)(x + 3) = 0$."
+ },
+ "check": [
+  "pcalc-alg-polynomial-algebra-1",
+  "pcalc-alg-polynomial-algebra-2",
+  "pcalc-alg-polynomial-algebra-3",
+  "pcalc-alg-polynomial-algebra-5",
+  "pcalc-alg-polynomial-algebra-7",
+  "pcalc-alg-polynomial-algebra-9"
+ ],
+ "summary": "Multiply polynomials by distributing every term and combining like terms. Factor by taking out a common factor first, then using a difference of squares $a^2 - b^2 = (a - b)(a + b)$, a sum or difference of cubes, or grouping. A product equals $0$ when a factor does, and $p(a) = 0$ means $x - a$ is a factor."
+}

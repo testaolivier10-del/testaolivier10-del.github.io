@@ -1,0 +1,515 @@
+{
+ "stimuli": {
+  "parametric-circles-lines-s1": {
+   "kind": "graph",
+   "title": "A circle with a starting point",
+   "figure": "parametric-circles-lines-circle",
+   "text": "<p>A point travels once around the circle shown for $0 \\le t \\le 2\\pi$, starting at the marked point and moving counterclockwise.</p>"
+  },
+  "parametric-circles-lines-s2": {
+   "kind": "graph",
+   "title": "A drone flight",
+   "figure": "parametric-circles-lines-segment",
+   "text": "<p>A drone flies in a straight line at a steady pace from $(-2, 5)$ at $t = 0$ to $(6, 1)$ at $t = 4$ seconds. Coordinates are in meters.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-parametric-circles-lines-1",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-circles-lines-s1",
+   "q": "Which parametric function traces the circle as shown?",
+   "type": "single",
+   "options": [
+    "$(2 + 3\\cos t, 1 + 3\\sin t)$",
+    "$(2 + 3\\cos t, 1 - 3\\sin t)$",
+    "$(2 + 3\\sin t, 1 + 3\\cos t)$",
+    "$(2 + 9\\cos t, 1 + 9\\sin t)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The center is $(2, 1)$ and the radius is $3$. $(2 + 3\\cos t, 1 + 3\\sin t)$ starts at $(5, 1)$ when $t = 0$ and moves counterclockwise.",
+    "options": [
+     "Center $(2, 1)$, radius $3$, start $(5, 1)$, counterclockwise.",
+     "With $1 - 3\\sin t$ the point moves down first from $(5, 1)$: clockwise.",
+     "This starts at $(2, 4)$, the top, and moves clockwise.",
+     "The radius multiplies $\\cos t$ and $\\sin t$; $9$ is the radius squared."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-2",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-circles-lines-s1",
+   "q": "Where is the point when $t = \\frac{\\pi}{2}$?",
+   "type": "single",
+   "options": [
+    "$(2, 4)$",
+    "$(-1, 1)$",
+    "$(2, -2)$",
+    "$(5, 4)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x = 2 + 3\\cos\\frac{\\pi}{2} = 2 + 0 = 2$ and $y = 1 + 3\\sin\\frac{\\pi}{2} = 1 + 3 = 4$: the top of the circle, a quarter turn counterclockwise from the start.",
+    "options": [
+     "A quarter turn counterclockwise from $(5, 1)$ is the top, $(2, 4)$.",
+     "$(-1, 1)$ is at $t = \\pi$, half a turn.",
+     "$(2, -2)$ is at $t = \\frac{3\\pi}{2}$, the bottom.",
+     "$x = 2 + 3\\cos\\frac{\\pi}{2} = 2$, not $5$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-3",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-circles-lines-s1",
+   "q": "For which values of $t$ is the point on the upper half of the circle, $y \\ge 1$?",
+   "type": "single",
+   "options": [
+    "$0 \\le t \\le \\pi$",
+    "$\\frac{\\pi}{2} \\le t \\le \\frac{3\\pi}{2}$",
+    "$\\pi \\le t \\le 2\\pi$",
+    "$0 \\le t \\le \\frac{\\pi}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$y = 1 + 3\\sin t \\ge 1$ exactly when $\\sin t \\ge 0$, which on $[0, 2\\pi]$ is $0 \\le t \\le \\pi$.",
+    "options": [
+     "$\\sin t \\ge 0$ on $[0, \\pi]$.",
+     "On this interval $\\cos t \\le 0$: the left half.",
+     "Here $\\sin t \\le 0$: the lower half.",
+     "This is only the upper right quarter."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-4",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "parametric-circles-lines-s1",
+   "q": "Which change makes the point travel clockwise around the same circle, starting at the same point?",
+   "type": "single",
+   "options": [
+    "Replace $1 + 3\\sin t$ with $1 - 3\\sin t$",
+    "Replace $2 + 3\\cos t$ with $2 - 3\\cos t$",
+    "Let $t$ run from $0$ to $4\\pi$ instead",
+    "Replace the $3$ with $-3$ in both coordinates"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With $y = 1 - 3\\sin t$ the start is still $(5, 1)$, but just after $t = 0$ the point moves down: clockwise.",
+    "options": [
+     "$x$ is unchanged, so the start stays $(5, 1)$, and the point moves down first.",
+     "This starts at $(-1, 1)$, a different point.",
+     "This goes around twice, still counterclockwise.",
+     "This starts at $(-1, 1)$ and still goes counterclockwise."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-5",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-circles-lines-s1",
+   "q": "What is the $x$-coordinate of the point when $t = \\frac{\\pi}{3}$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "7/2",
+    "mistakes": [
+     {
+      "value": "2 + 3*sqrt(3)/2",
+      "why": "$x$ uses cosine: $2 + 3\\cos\\frac{\\pi}{3} = 2 + 3\\left(\\frac{1}{2}\\right)$."
+     },
+     {
+      "value": "3/2",
+      "why": "Add the center's $x$-coordinate: $2 + \\frac{3}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x = 2 + 3\\cos\\frac{\\pi}{3} = 2 + 3\\left(\\frac{1}{2}\\right) = \\frac{7}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-6",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-circles-lines-s2",
+   "q": "Write the drone's $x$-coordinate $x(t)$ for $0 \\le t \\le 4$.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "t"
+    ],
+    "mode": "exact",
+    "answer": "-2 + 2t",
+    "domain": [
+     0,
+     4
+    ],
+    "lhs": "x(t) =",
+    "mistakes": [
+     {
+      "expr": "-2 + 8t",
+      "why": "$8$ is the whole change in $x$ over $4$ seconds; per second it is $\\frac{8}{4} = 2$."
+     },
+     {
+      "expr": "6 - 2t",
+      "why": "This starts at $x = 6$; the drone starts at $(-2, 5)$."
+     },
+     {
+      "expr": "2t",
+      "why": "At $t = 0$ the drone is at $x = -2$: add the starting value."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x$ goes from $-2$ to $6$, a change of $8$, in $4$ seconds: $2$ per second. $x(t) = -2 + 2t$."
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-7",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-circles-lines-s2",
+   "q": "Write the drone's $y$-coordinate $y(t)$ for $0 \\le t \\le 4$.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "t"
+    ],
+    "mode": "exact",
+    "answer": "5 - t",
+    "domain": [
+     0,
+     4
+    ],
+    "lhs": "y(t) =",
+    "mistakes": [
+     {
+      "expr": "5 - 4t",
+      "why": "$-4$ is the whole change in $y$; per second it is $\\frac{-4}{4} = -1$."
+     },
+     {
+      "expr": "1 + t",
+      "why": "This goes from $y = 1$ to $y = 5$, backward. Start at $5$."
+     },
+     {
+      "expr": "5 + t",
+      "why": "$y$ falls from $5$ to $1$, so the rate is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y$ goes from $5$ to $1$, a change of $-4$, in $4$ seconds: $-1$ per second. $y(t) = 5 - t$."
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-8",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "parametric-circles-lines-s2",
+   "q": "Where is the drone at $t = 1$?",
+   "type": "single",
+   "options": [
+    "$(0, 4)$",
+    "$(2, 3)$",
+    "$(6, 4)$",
+    "$(0, 1)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x(1) = -2 + 2(1) = 0$ and $y(1) = 5 - 1 = 4$. After one quarter of the trip it is one quarter of the way: $(0, 4)$.",
+    "options": [
+     "$(x(1), y(1)) = (0, 4)$.",
+     "$(2, 3)$ is the midpoint, at $t = 2$.",
+     "$6$ is the final $x$; at $t = 1$, $x = 0$.",
+     "$y(1) = 5 - 1 = 4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-9",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "parametric-circles-lines-s2",
+   "q": "What is the slope of the drone's path?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-1/2",
+    "mistakes": [
+     {
+      "value": -2,
+      "why": "Slope is the rate of $y$ over the rate of $x$: $\\frac{-1}{2}$, not $\\frac{2}{-1}$."
+     },
+     {
+      "value": -1,
+      "why": "$-1$ is the rate of $y$ per second. Divide it by the rate of $x$, $2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{\\text{rate of } y}{\\text{rate of } x} = \\frac{-1}{2}$, the same as $\\frac{1 - 5}{6 - (-2)} = -\\frac{4}{8}$."
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-10",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "How does $(\\cos t, \\sin t)$ for $0 \\le t \\le 2\\pi$ trace the unit circle?",
+   "type": "single",
+   "options": [
+    "It starts at $(1, 0)$ and goes once around counterclockwise",
+    "It starts at $(0, 1)$ and goes once around clockwise",
+    "It starts at $(1, 0)$ and goes once around clockwise",
+    "It starts at $(0, 1)$ and goes once around counterclockwise"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $t = 0$ the point is $(\\cos 0, \\sin 0) = (1, 0)$; at $t = \\frac{\\pi}{2}$ it is $(0, 1)$. Right to top is counterclockwise.",
+    "options": [
+     "$(1, 0)$ then $(0, 1)$: counterclockwise.",
+     "$(0, 1)$ is the start of $(\\sin t, \\cos t)$.",
+     "From $(1, 0)$ the point rises toward $(0, 1)$, which is counterclockwise.",
+     "At $t = 0$ the point is $(1, 0)$, not $(0, 1)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-11",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many times does $(3\\cos 2t, 3\\sin 2t)$ go around its circle for $0 \\le t \\le 2\\pi$?",
+   "type": "single",
+   "options": [
+    "2",
+    "1",
+    "4",
+    "$\\frac{1}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The angle is $2t$, which runs from $0$ to $4\\pi$: two full turns.",
+    "options": [
+     "$2t$ covers $4\\pi$, two turns.",
+     "One turn needs $2t$ to cover $2\\pi$, which takes only $0 \\le t \\le \\pi$.",
+     "$4\\pi$ of angle is two turns, not four.",
+     "Doubling the angle speeds the point up; it goes around more, not less."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-12",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Describe the trip traced by $(4\\sin t, 4\\cos t)$ for $0 \\le t \\le 2\\pi$.",
+   "type": "single",
+   "options": [
+    "It starts at $(0, 4)$ and goes once around clockwise",
+    "It starts at $(4, 0)$ and goes once around counterclockwise",
+    "It starts at $(0, 4)$ and goes once around counterclockwise",
+    "It starts at $(4, 0)$ and goes once around clockwise"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $t = 0$: $(0, 4)$, the top. At $t = \\frac{\\pi}{2}$: $(4, 0)$, the right side. Top to right is clockwise.",
+    "options": [
+     "Top, then right: clockwise.",
+     "That describes $(4\\cos t, 4\\sin t)$; here sine comes first.",
+     "From the top the point moves to the right side, which is clockwise.",
+     "At $t = 0$, $x = 4\\sin 0 = 0$, so the start is $(0, 4)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-13",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $(4\\cos t, 4\\sin t)$, what is the $y$-coordinate of the point when $t = \\frac{\\pi}{3}$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "2*sqrt(3)",
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$y$ uses sine: $4\\sin\\frac{\\pi}{3} = 4 \\cdot \\frac{\\sqrt{3}}{2}$. $2$ is the $x$-coordinate."
+     },
+     {
+      "value": "sqrt(3)/2",
+      "why": "Multiply by the radius: $4 \\cdot \\frac{\\sqrt{3}}{2} = 2\\sqrt{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y = 4\\sin\\frac{\\pi}{3} = 4 \\cdot \\frac{\\sqrt{3}}{2} = 2\\sqrt{3}$."
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-14",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which parametric functions trace the segment from $(0, 0)$ to $(2, 4)$, starting at $(0, 0)$? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$(2t, 4t)$ for $0 \\le t \\le 1$",
+    "$(t, 2t)$ for $0 \\le t \\le 2$",
+    "$(4t, 2t)$ for $0 \\le t \\le 1$",
+    "$(2t, 4t)$ for $0 \\le t \\le 2$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Each must start at $(0, 0)$ and end at $(2, 4)$. $(2t, 4t)$ on $[0, 1]$ ends at $(2, 4)$; $(t, 2t)$ on $[0, 2]$ ends at $(2, 4)$.",
+    "options": [
+     "Ends at $(2(1), 4(1)) = (2, 4)$.",
+     "Ends at $(2, 2(2)) = (2, 4)$.",
+     "Ends at $(4, 2)$: the coordinates are swapped.",
+     "Ends at $(4, 8)$, past the endpoint."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-15",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A line passes through $(1, 3)$ with slope $2$. If $x(t) = 1 + t$, write $y(t)$ so that $(x(t), y(t))$ traces the line and is at $(1, 3)$ when $t = 0$.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "t"
+    ],
+    "mode": "exact",
+    "answer": "3 + 2t",
+    "domain": [
+     -3,
+     3
+    ],
+    "lhs": "y(t) =",
+    "mistakes": [
+     {
+      "expr": "1 + 2t",
+      "why": "At $t = 0$, $y$ must be $3$, the point's $y$-coordinate."
+     },
+     {
+      "expr": "3 + t/2",
+      "why": "Slope is rate of $y$ over rate of $x$. With $x$ changing by $1$ per unit of $t$, $y$ must change by $2$."
+     },
+     {
+      "expr": "2 + 3t",
+      "why": "The starting value and the rate are swapped: start at $3$, change by $2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x$ changes by $1$ per unit of $t$, and slope $2$ means $y$ changes by $2$ for each $1$ of $x$. Start at $y = 3$: $y(t) = 3 + 2t$."
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-16",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which equation is satisfied by every point of $x(t) = -1 + 5\\cos t$, $y(t) = 4 + 5\\sin t$?",
+   "type": "single",
+   "options": [
+    "$(x + 1)^2 + (y - 4)^2 = 25$",
+    "$(x - 1)^2 + (y + 4)^2 = 25$",
+    "$(x + 1)^2 + (y - 4)^2 = 5$",
+    "$(x - 4)^2 + (y + 1)^2 = 25$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x + 1 = 5\\cos t$ and $y - 4 = 5\\sin t$. Squaring and adding: $25\\cos^2 t + 25\\sin^2 t = 25$, so $(x + 1)^2 + (y - 4)^2 = 25$.",
+    "options": [
+     "Center $(-1, 4)$, radius squared $25$.",
+     "The center is $(-1, 4)$; $(x - 1)^2$ would put it at $x = 1$.",
+     "The right side is the radius squared, $5^2 = 25$.",
+     "The center's coordinates are swapped."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-parametric-circles-lines-17",
+   "unit": "unit-4",
+   "topic": "parametric-circles-lines",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In $(2 + r\\cos t, 1 + r\\sin t)$ for $0 \\le t \\le 2\\pi$, $r$ is increased from $3$ to $5$. Predict each change.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The distance from each point to the center",
+     "answer": "up",
+     "why": "Each point is $r$ units from $(2, 1)$, so the distance grows from $3$ to $5$."
+    },
+    {
+     "name": "The center of the circle",
+     "answer": "none",
+     "why": "The center is the added part, $(2, 1)$, which does not depend on $r$."
+    },
+    {
+     "name": "The interval of $t$ needed for one trip around",
+     "answer": "none",
+     "why": "One trip still takes $t$ from $0$ to $2\\pi$; only the size changes."
+    }
+   ],
+   "why": {
+    "correct": "$r$ sets the size. The center and the parameter interval for one trip stay the same."
+   }
+  }
+ ]
+}

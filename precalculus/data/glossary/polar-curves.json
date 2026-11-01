@@ -1,0 +1,5 @@
+{
+ "polar-function": {
+  "def": "A function $r = f(\\theta)$ whose input is an angle and whose output is a signed distance from the pole. Its graph in the polar plane is all points $(f(\\theta), \\theta)$; families include circles, limaçons and cardioids ($r = a + b\\cos\\theta$) and rose curves ($r = a\\sin(n\\theta)$, $r = a\\cos(n\\theta)$)."
+ }
+}

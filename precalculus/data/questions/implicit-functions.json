@@ -1,0 +1,527 @@
+{
+ "stimuli": {
+  "implicit-functions-s1": {
+   "kind": "graph",
+   "title": "The curve $x^2 + xy + y^2 = 7$",
+   "plot": {
+    "label": "Graph of the closed oval x squared plus xy plus y squared equals 7, tilted along the line y = -x, reaching about 3.06 units left and right of the origin",
+    "x": [
+     -4,
+     4
+    ],
+    "y": [
+     -4,
+     4
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "(-x + sqrt(28 - 3x^2))/2",
+      "domain": [
+       -3.05505,
+       3.05505
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "(-x - sqrt(28 - 3x^2))/2",
+      "domain": [
+       -3.05505,
+       3.05505
+      ],
+      "cls": "s1"
+     }
+    ]
+   }
+  },
+  "implicit-functions-s2": {
+   "kind": "table",
+   "title": "Points on the curve $y^3 + y = x$",
+   "table": {
+    "caption": "Values of y and the matching x = y cubed + y",
+    "cols": [
+     "$y$",
+     "−2",
+     "−1",
+     "0",
+     "1",
+     "2"
+    ],
+    "rows": [
+     [
+      "$x = y^3 + y$",
+      "−10",
+      "−2",
+      "0",
+      "2",
+      "10"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-implicit-functions-1",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "implicit-functions-s1",
+   "q": "Which point is on the curve?",
+   "type": "single",
+   "options": [
+    "$(1, -3)$",
+    "$(1, 3)$",
+    "$(2, 2)$",
+    "$(-1, -3)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Substitute both coordinates: $(1)^2 + (1)(-3) + (-3)^2 = 1 - 3 + 9 = 7$.",
+    "options": [
+     "$1 - 3 + 9 = 7$.",
+     "$1 + 3 + 9 = 13$, not $7$.",
+     "$4 + 4 + 4 = 12$.",
+     "$1 + 3 + 9 = 13$: $(-1)(-3) = +3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-2",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "implicit-functions-s1",
+   "q": "Find every value of $y$ with $(1, y)$ on the curve.",
+   "type": "single",
+   "options": [
+    "$y = 2$ and $y = -3$",
+    "$y = -2$ and $y = 3$",
+    "Just $y = 2$",
+    "$y = 2$ and $y = 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$1 + y + y^2 = 7$ gives $y^2 + y - 6 = 0$, $(y - 2)(y + 3) = 0$: $y = 2$ or $y = -3$.",
+    "options": [
+     "Both roots of $y^2 + y - 6 = 0$.",
+     "The signs are flipped; check $(1, -2)$: $1 - 2 + 4 = 3$.",
+     "The quadratic has a second root, $y = -3$: the point $(1, -3)$ is on the curve too.",
+     "$(1, 3)$ gives $13$; the second root is $-3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-3",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "implicit-functions-s1",
+   "q": "Why is this curve not the graph of a function of $x$?",
+   "type": "single",
+   "options": [
+    "$(1, 2)$ and $(1, -3)$ are both on it: one $x$ with two $y$-values",
+    "Its equation is not solved for $y$, so it gives no function of $x$",
+    "It is a closed curve, and graphs of functions do not close up",
+    "It contains the points $(1, 2)$ and $(2, 1)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A function of $x$ gives one $y$ for each $x$. Here $x = 1$ gives $y = 2$ and $y = -3$.",
+    "options": [
+     "Specific points with the same $x$ settle it.",
+     "Many equations not solved for $y$ still define functions, such as $y^3 + y = x$.",
+     "Being closed is a picture, not a reason; name an $x$ with two $y$-values.",
+     "These points have different $x$-values, which a function allows."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-4",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "implicit-functions-s1",
+   "q": "Solve the equation for $y$ to write the upper piece of the curve as a function of $x$.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "x"
+    ],
+    "mode": "exact",
+    "answer": "(-x + sqrt(28 - 3x^2))/2",
+    "domain": [
+     -3,
+     3
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "(x + sqrt(28 - 3x^2))/2",
+      "why": "In the quadratic formula the first term is $-b = -x$."
+     },
+     {
+      "expr": "-x + sqrt(28 - 3x^2)",
+      "why": "Divide the whole numerator by $2a = 2$."
+     },
+     {
+      "expr": "(-x + sqrt(28 + 3x^2))/2",
+      "why": "$b^2 - 4ac = x^2 - 4(x^2 - 7) = 28 - 3x^2$; the $x^2$ terms subtract."
+     }
+    ]
+   },
+   "why": {
+    "correct": "As a quadratic in $y$: $y^2 + xy + (x^2 - 7) = 0$. Then $y = \\frac{-x \\pm \\sqrt{x^2 - 4(x^2 - 7)}}{2} = \\frac{-x \\pm \\sqrt{28 - 3x^2}}{2}$; the upper piece takes \"+\"."
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-5",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "implicit-functions-s1",
+   "q": "The point $(3, -2)$ is on the curve. Which other points must be on it? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$(-3, 2)$",
+    "$(-2, 3)$",
+    "$(3, 2)$",
+    "$(2, 3)$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Replacing $(x, y)$ with $(-x, -y)$ or with $(y, x)$ leaves $x^2 + xy + y^2$ unchanged, so $(-3, 2)$ and $(-2, 3)$ are on the curve. Check: $9 - 6 + 4 = 7$ and $4 - 6 + 9 = 7$.",
+    "options": [
+     "$9 - 6 + 4 = 7$.",
+     "$4 - 6 + 9 = 7$.",
+     "$9 + 6 + 4 = 19$: the $xy$ term changes sign.",
+     "$4 + 6 + 9 = 19$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-6",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "implicit-functions-s2",
+   "q": "Find $x$ for the point of the curve with $y = 3$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 30,
+    "mistakes": [
+     {
+      "value": 27,
+      "why": "Add $y$ too: $x = 3^3 + 3$."
+     },
+     {
+      "value": 12,
+      "why": "$3^3 = 27$, not $9$: $x = 27 + 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x = (3)^3 + 3 = 27 + 3 = 30$."
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-7",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "implicit-functions-s2",
+   "q": "Which value of $y$ goes with $x = 10$?",
+   "type": "single",
+   "options": [
+    "$y = 2$",
+    "$y = 1010$",
+    "$y = 5$",
+    "$y = 2$ and $y = -2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The table shows $y = 2$ gives $x = 2^3 + 2 = 10$. No other $y$ works, since $y^3 + y$ increases as $y$ increases.",
+    "options": [
+     "$8 + 2 = 10$.",
+     "This puts $10$ in for $y$; $10$ is the $x$-value.",
+     "$5^3 + 5 = 130$.",
+     "$y = -2$ gives $x = -10$, not $10$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-8",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "implicit-functions-s2",
+   "q": "Does $y^3 + y = x$ define $y$ as a function of $x$?",
+   "type": "single",
+   "options": [
+    "Yes: $y^3 + y$ increases with $y$, so each $x$ has one $y$",
+    "No: it is not written in the form $y = f(x)$, so it is no function",
+    "No: $y$ is cubed, so $x = 2$ has three values of $y$",
+    "Yes: the table lists five different values of $y$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$y^3$ and $y$ both increase with $y$, so their sum does too. Two different $y$-values give two different $x$-values, so each $x$ has one $y$.",
+    "options": [
+     "An increasing left side means no $x$ repeats.",
+     "The form does not decide it; one $y$ per $x$ does.",
+     "$y^3 + y = 2$ has one real solution, $y = 1$.",
+     "Five rows cannot show what happens for every $x$; the reason is that $y^3 + y$ increases."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-9",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "implicit-functions-s2",
+   "q": "The average rate of change of $y$ with respect to $x$ is $\\frac{1}{2}$ between $(-2, -1)$ and $(2, 1)$ and $\\frac{1}{8}$ between $(2, 1)$ and $(10, 2)$. What does this suggest?",
+   "type": "single",
+   "options": [
+    "The curve gets less steep as $x$ increases past $2$",
+    "The curve gets steeper as $x$ increases past $2$",
+    "$y$ decreases as $x$ increases past $2$",
+    "The curve is a straight line through the origin"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both rates are positive, so $y$ increases, but the second is smaller: each unit of $x$ adds less to $y$. The curve flattens.",
+    "options": [
+     "A smaller positive slope means less steep.",
+     "Steeper would need a larger slope; $\\frac{1}{8} < \\frac{1}{2}$.",
+     "Positive rates mean $y$ increases with $x$.",
+     "A line has one slope; these differ."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-10",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is an implicitly defined function?",
+   "type": "single",
+   "options": [
+    "An equation linking $x$ and $y$, not solved for $y$",
+    "A function whose formula has no $x$ in it",
+    "A function given by a table of values and nothing else",
+    "A pair of formulas $x(t)$ and $y(t)$ for a curve"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "\"Implicit\" means the relationship is stated as an equation linking $x$ and $y$; the graph is every solution point.",
+    "options": [
+     "An equation links $x$ and $y$; points are its solutions.",
+     "A formula with no $x$ is a constant function, written explicitly.",
+     "A table gives values, not an equation.",
+     "That describes a parametric function."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-11",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which points of $x^2 + y^2 = 25$ have $x = 3$?",
+   "type": "single",
+   "options": [
+    "$(3, 4)$ and $(3, -4)$",
+    "$(3, 4)$, the point above the axis",
+    "$(3, 16)$ and $(3, -16)$",
+    "$(3, 22)$ and $(3, -22)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$9 + y^2 = 25$, so $y^2 = 16$ and $y = 4$ or $y = -4$.",
+    "options": [
+     "Both square roots of $16$.",
+     "$y^2 = 16$ also has the root $y = -4$.",
+     "$16$ is $y^2$; take the square root.",
+     "$25 - 3 = 22$ subtracts $3$, not $3^2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-12",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the positive $x$-intercept of $x^2 + xy + y^2 = 7$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "sqrt(7)",
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "At $y = 0$, $x^2 = 7$; take the square root."
+     },
+     {
+      "value": "7/2",
+      "why": "At $y = 0$ the $xy$ and $y^2$ terms are $0$, so $x^2 = 7$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "On the $x$-axis $y = 0$: $x^2 + 0 + 0 = 7$, so $x = \\sqrt{7}$ (or $-\\sqrt{7}$)."
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-13",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For $x^2 + xy + y^2 = 7$, solving for $y$ gives $y = \\frac{-x \\pm \\sqrt{28 - 3x^2}}{2}$. What is the largest $x$-coordinate of any point on the curve?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "sqrt(28/3)",
+    "mistakes": [
+     {
+      "value": "sqrt(7)",
+      "why": "$\\sqrt{7}$ is where the curve crosses the $x$-axis. It reaches farther right, until $28 - 3x^2 = 0$."
+     },
+     {
+      "value": "sqrt(28)",
+      "why": "Real $y$ needs $3x^2 \\le 28$, so $x^2 \\le \\frac{28}{3}$; divide by $3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Real $y$-values need $28 - 3x^2 \\ge 0$, so $x^2 \\le \\frac{28}{3}$ and $x \\le \\sqrt{\\frac{28}{3}} \\approx 3.055$. There the square root is $0$ and the two pieces meet at one point."
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-14",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pair of functions together make up the graph of $y^2 = x$?",
+   "type": "single",
+   "options": [
+    "$y = \\sqrt{x}$ and $y = -\\sqrt{x}$",
+    "$y = x^2$ and $y = -x^2$",
+    "$y = \\sqrt{x}$ and $y = \\sqrt{-x}$",
+    "$y = \\frac{x}{2}$ and $y = -\\frac{x}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Solve for $y$: $y = \\pm\\sqrt{x}$. The \"+\" piece is the upper half and the \"−\" piece the lower half.",
+    "options": [
+     "$y^2 = x$ gives $y = \\pm\\sqrt{x}$.",
+     "These solve $y = \\pm x^2$, a different relationship.",
+     "$\\sqrt{-x}$ is defined for $x \\le 0$, but $y^2 = x$ has points only for $x \\ge 0$.",
+     "$y^2$ is not $2y$; take a square root."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-15",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Does $xy = 6$ define $y$ as a function of $x$?",
+   "type": "single",
+   "options": [
+    "Yes: $y = \\frac{6}{x}$ gives one $y$ for each $x \\ne 0$",
+    "No: the equation is not solved for $y$, so it is no function",
+    "No: both $(2, 3)$ and $(3, 2)$ are on the graph",
+    "Yes, and the function is defined at $x = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Divide by $x$ (for $x \\ne 0$): $y = \\frac{6}{x}$, one output for each input. At $x = 0$ there is no $y$, since $0 \\cdot y = 6$ has no solution.",
+    "options": [
+     "One $y$ for each allowed $x$.",
+     "It can be solved: $y = \\frac{6}{x}$.",
+     "These have different $x$-values, which a function allows.",
+     "$0 \\cdot y = 6$ has no solution, so $x = 0$ is not in the domain."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-16",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for finding every point of an implicit curve with a given $x$ in order.",
+   "type": "order",
+   "options": [
+    "Substitute the value of $x$ into the equation",
+    "Simplify to an equation in $y$ alone",
+    "Solve for each real value of $y$",
+    "Write each solution as a point $(x, y)$"
+   ],
+   "why": {
+    "correct": "Substitute, simplify, solve completely (there may be several $y$-values), then pair each with the $x$-value."
+   }
+  },
+  {
+   "id": "pcalc-implicit-functions-17",
+   "unit": "unit-4",
+   "topic": "implicit-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In $x^2 + xy + y^2 = c$, the constant $c$ is increased from $7$ to $12$. Predict each change.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The positive $x$-intercept",
+     "answer": "up",
+     "why": "At $y = 0$, $x^2 = c$, so the intercept $\\sqrt{c}$ grows from $\\sqrt{7}$ to $\\sqrt{12}$."
+    },
+    {
+     "name": "The number of points on the curve with $x = 0$",
+     "answer": "none",
+     "why": "At $x = 0$, $y^2 = c$ has two solutions for any positive $c$, so there are still two points."
+    }
+   ],
+   "why": {
+    "correct": "A larger $c$ makes a larger oval of the same shape; the count of crossings of the $y$-axis stays two."
+   }
+  }
+ ]
+}

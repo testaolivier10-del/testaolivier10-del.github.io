@@ -1,0 +1,12 @@
+{
+ "polar-coordinates-points": {
+  "file": "figures/polar-coordinates-points.svg",
+  "ext": "svg",
+  "w": 520,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A polar grid with circles of radius 1 to 4 around the pole and rays every pi/6 radians. Point P is at distance 3 on the ray pi/6, Q at distance 2 on the ray 5 pi/6, R at distance 4 on the ray 3 pi/2 (straight below the pole) and S at distance 1 on the ray pi."
+ }
+}

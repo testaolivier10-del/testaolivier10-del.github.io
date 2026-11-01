@@ -1,0 +1,71 @@
+{
+ "topic": "parametric-rates",
+ "hook": "A skier heads down a slope while a tracker logs how far she has gone horizontally and how much height she has lost, every two seconds. From two rows of that log you can say how fast each coordinate changed, and how steep the stretch of hill between them was.",
+ "prereq": [
+  {
+   "q": "What is the average rate of change of $g(t) = t^2$ on $[1, 3]$?",
+   "options": [
+    "$4$",
+    "$8$",
+    "$2$",
+    "$5$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{g(3) - g(1)}{3 - 1} = \\frac{9 - 1}{2} = 4$, the slope of the secant line through $(1, 1)$ and $(3, 9)$.",
+   "review": "rates-of-change"
+  },
+  {
+   "q": "For $x(t) = t + 2$ and $y(t) = t^2$, where is the point at $t = -1$?",
+   "options": [
+    "$(1, 1)$",
+    "$(1, -1)$",
+    "$(-1, 1)$",
+    "$(3, 1)$"
+   ],
+   "correct": 0,
+   "why": "$x(-1) = -1 + 2 = 1$ and $y(-1) = (-1)^2 = 1$.",
+   "review": "parametric-functions"
+  }
+ ],
+ "figure": {
+  "figure": "parametric-rates-secant",
+  "caption": "From $t = 0$ to $t = 2$ on $(t^2 + 1, 4t - t^2)$, $x$ changes by $4$ and $y$ changes by $4$, so the segment joining the two points has slope $1$."
+ },
+ "chain": [
+  {
+   "cause": "Pick an interval of the parameter, $[t_1, t_2]$",
+   "effect": "find the two points $(x(t_1), y(t_1))$ and $(x(t_2), y(t_2))$"
+  },
+  {
+   "cause": "Divide the change in $x$ by $t_2 - t_1$",
+   "effect": "the average rate of change of $x$ on $[t_1, t_2]$; do the same for $y$"
+  },
+  {
+   "cause": "Divide the change in $y$ by the change in $x$",
+   "effect": "the slope of the segment joining the two points, how steep the path is there on average"
+  },
+  {
+   "cause": "The change in $x$ is $0$ but $y$ changes",
+   "effect": "the segment is vertical and its slope is undefined"
+  }
+ ],
+ "ideas": [
+  "The average rate of change of $x$ on $[t_1, t_2]$ is $\\frac{x(t_2) - x(t_1)}{t_2 - t_1}$; the same for $y$. Units: units of $x$ per unit of $t$.",
+  "The slope of the segment joining the two points is $\\frac{y(t_2) - y(t_1)}{x(t_2) - x(t_1)}$: the average rate of change of $y$ with respect to $x$.",
+  "That slope equals (rate of $y$) divided by (rate of $x$), as long as the change in $x$ is not $0$.",
+  "Over equal intervals of $t$, average rates that increase mean the rate of change is increasing."
+ ],
+ "misconception": {
+  "wrong": "The slope of a parametric path between two points is $\\frac{y(t_2) - y(t_1)}{t_2 - t_1}$.",
+  "right": "That is the average rate of change of $y$ with respect to $t$. The slope of the path compares $y$ with $x$: divide the change in $y$ by the change in $x$."
+ },
+ "check": [
+  "pcalc-parametric-rates-6",
+  "pcalc-parametric-rates-7",
+  "pcalc-parametric-rates-8",
+  "pcalc-parametric-rates-9",
+  "pcalc-parametric-rates-11",
+  "pcalc-parametric-rates-14"
+ ],
+ "summary": "For a parametric function on $[t_1, t_2]$, the average rates of change of $x(t)$ and $y(t)$ say how fast each coordinate changed per unit of $t$. Their quotient, the change in $y$ over the change in $x$, is the slope of the segment joining the two points, an average steepness of the path."
+}

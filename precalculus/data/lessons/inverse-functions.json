@@ -1,0 +1,77 @@
+{
+ "topic": "inverse-functions",
+ "hook": "A weather app shows $20$ degrees Celsius, but you think in Fahrenheit. The app's rule turns Fahrenheit into Celsius; you need the rule that runs the other way. A function that undoes another one, sending every output back to the input it came from, is an inverse function.",
+ "prereq": [
+  {
+   "q": "Let $I(x) = x$ and $f(x) = 2x + 5$. What is $f(I(3))$?",
+   "options": [
+    "$11$",
+    "$3$",
+    "$8$",
+    "$16$"
+   ],
+   "correct": 0,
+   "why": "$I(3) = 3$, so $f(I(3)) = f(3) = 11$.",
+   "review": "composition"
+  },
+  {
+   "q": "Solve $y = 3x - 6$ for $x$.",
+   "options": [
+    "$x = \\frac{y + 6}{3}$",
+    "$x = 3y - 6$",
+    "$x = \\frac{y - 6}{3}$",
+    "$x = 3y + 6$"
+   ],
+   "correct": 0,
+   "why": "Add $6$, then divide by $3$.",
+   "review": "alg-lines"
+  }
+ ],
+ "figure": {
+  "figure": "inverse-functions-reflect",
+  "caption": "$f(x) = \\frac{x^2}{4}$ for $x \\ge 0$ and $f^{-1}(x) = 2\\sqrt{x}$ reflect across $y = x$: the point $(2, 1)$ on $f$ becomes $(1, 2)$ on $f^{-1}$."
+ },
+ "chain": [
+  {
+   "cause": "$f$ sends the input $a$ to the output $b$",
+   "effect": "$f^{-1}$ sends $b$ back to $a$: the point $(a, b)$ becomes $(b, a)$"
+  },
+  {
+   "cause": "Swap every input and output",
+   "effect": "the graph reflects across the line $y = x$, and the domain and range trade places"
+  },
+  {
+   "cause": "Two inputs share an output, such as $h(1) = h(3)$",
+   "effect": "the inverse would need two outputs, so $h$ is not invertible"
+  },
+  {
+   "cause": "Restrict the domain to a piece where $f$ only increases or only decreases",
+   "effect": "that piece has an inverse"
+  },
+  {
+   "cause": "Compose a function with its inverse",
+   "effect": "$f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$: the identity function"
+  }
+ ],
+ "ideas": [
+  "$f^{-1}(b) = a$ means $f(a) = b$. The $-1$ names the inverse function; $f^{-1}(x)$ is not $\\frac{1}{f(x)}$.",
+  "A function is invertible when each output comes from exactly one input (it is one-to-one).",
+  "Justify with specific values: \"$h(1) = h(3) = 1$, so $h$ has no inverse\", never a bare rule name.",
+  "To find a formula, swap $x$ and $y$ in $y = f(x)$ and solve for $y$.",
+  "The domain of $f^{-1}$ is the range of $f$, and the range of $f^{-1}$ is the domain of $f$."
+ ],
+ "misconception": {
+  "wrong": "$f^{-1}(x)$ means $\\frac{1}{f(x)}$, so the inverse of $f(x) = x - 5$ is $\\frac{1}{x - 5}$.",
+  "right": "$f^{-1}$ undoes $f$: it adds the $5$ back, so $f^{-1}(x) = x + 5$. Check with composition: $f(f^{-1}(x)) = (x + 5) - 5 = x$."
+ },
+ "check": [
+  "pcalc-inverse-functions-1",
+  "pcalc-inverse-functions-3",
+  "pcalc-inverse-functions-4",
+  "pcalc-inverse-functions-6",
+  "pcalc-inverse-functions-7",
+  "pcalc-inverse-functions-10",
+  "pcalc-inverse-functions-13"
+ ],
+ "summary": "An inverse function undoes a function: $f^{-1}(b) = a$ exactly when $f(a) = b$. It exists when no output repeats, which you justify with specific values, or after restricting the domain. Find it from a table by swapping rows, from a graph by reflecting across $y = x$, and from a formula by swapping $x$ and $y$ and solving. Composing a function with its inverse gives the identity."
+}

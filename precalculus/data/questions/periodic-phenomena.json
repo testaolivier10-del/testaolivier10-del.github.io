@@ -1,0 +1,403 @@
+{
+ "stimuli": {
+  "periodic-phenomena-s1": {
+   "kind": "graph",
+   "title": "A periodic function $f$",
+   "text": "The graph shows a periodic function $f$ on $[0, 12]$. On each piece, $f$ is linear.",
+   "plot": {
+    "label": "Graph of a periodic function f made of straight pieces: it rises from (0, 2) to (1, 5), falls to (3, -1), rises through (4, 2) to (5, 5), falls to (7, -1), rises to (9, 5), falls to (11, -1) and rises to (12, 2)",
+    "x": [-0.5, 12.5],
+    "y": [-2, 6],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     { "fn": "2 + 3x", "domain": [0, 1], "cls": "s1" },
+     { "fn": "8 - 3x", "domain": [1, 3], "cls": "s1" },
+     { "fn": "3x - 10", "domain": [3, 5], "cls": "s1" },
+     { "fn": "20 - 3x", "domain": [5, 7], "cls": "s1" },
+     { "fn": "3x - 22", "domain": [7, 9], "cls": "s1" },
+     { "fn": "32 - 3x", "domain": [9, 11], "cls": "s1" },
+     { "fn": "3x - 34", "domain": [11, 12], "cls": "s1", "label": "f" }
+    ],
+    "points": [
+     { "at": [1, 5] },
+     { "at": [3, -1] },
+     { "at": [5, 5] },
+     { "at": [7, -1] },
+     { "at": [9, 5] },
+     { "at": [11, -1] }
+    ]
+   }
+  },
+  "periodic-phenomena-s2": {
+   "kind": "table",
+   "title": "Power use of an office building",
+   "table": {
+    "caption": "Power use $P(t)$ of an office building, in kilowatts, $t$ hours after midnight on a weekday. The pattern repeats every 24 hours.",
+    "cols": ["$t$ (hours)", "0", "4", "8", "12", "16", "20", "24"],
+    "rows": [["$P(t)$ (kilowatts)", "30", "26", "52", "64", "58", "40", "30"]]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-periodic-phenomena-1",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "periodic-phenomena-s1",
+   "q": "What is the period of $f$?",
+   "type": "single",
+   "options": ["$4$", "$2$", "$6$", "$12$"],
+   "correct": 0,
+   "why": {
+    "correct": "The highest points are at $x = 1$, $5$ and $9$, four units apart, and the whole pattern on $[1, 5]$ repeats on $[5, 9]$. The period is $4$.",
+    "options": [
+     "From one highest point to the next is $5 - 1 = 4$, and the graph matches from there on.",
+     "That is the distance from a highest point ($x = 1$) to the next lowest point ($x = 3$), only part of a cycle.",
+     "Shifting by 6 does not keep the outputs: $f(1) = 5$ but $f(7) = -1$.",
+     "$f(x + 12) = f(x)$ does hold, but 12 is three periods. The period is the smallest positive value that works."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-2",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "periodic-phenomena-s1",
+   "q": "The pattern in the graph continues for all $x$. What is $f(39)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     { "value": 2, "why": "That is $f(40) = f(0)$. Subtract whole periods from 39: $39 - 9 \\cdot 4 = 3$, so $f(39) = f(3)$." },
+     { "value": 5, "why": "That is $f(1)$. $39 = 9 \\cdot 4 + 3$, so the input lands at $3$ in the first cycle, not at $1$." }
+    ]
+   },
+   "why": {
+    "correct": "The period is $4$ and $39 = 9 \\cdot 4 + 3$, so $f(39) = f(3) = -1$."
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-3",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "periodic-phenomena-s1",
+   "q": "What is the average rate of change of $f$ on $[5, 9]$?",
+   "type": "single",
+   "options": ["$0$", "$-\\frac{3}{2}$", "$\\frac{5}{4}$", "$-3$"],
+   "correct": 0,
+   "why": {
+    "correct": "$[5, 9]$ is exactly one period long, so $f(9) = f(5) = 5$ and the average rate of change is $\\frac{5 - 5}{9 - 5} = 0$: the secant line through $(5, 5)$ and $(9, 5)$ is horizontal.",
+    "options": [
+     "The output ends where it started, so the change in output is $0$.",
+     "This uses $f(7) = -1$ as an endpoint, $\\frac{-1 - 5}{9 - 5}$. The interval ends at $x = 9$, where $f(9) = 5$.",
+     "This is $f(9)$ divided by the length of the interval. A rate needs the change in output, $f(9) - f(5)$.",
+     "That is the slope of the falling piece on $(5, 7)$, not the slope of the secant line from $x = 5$ to $x = 9$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-4",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "periodic-phenomena-s1",
+   "q": "The pattern continues for all $x$. On which interval is $f$ decreasing?",
+   "type": "single",
+   "options": ["$(41, 43)$", "$(43, 45)$", "$(40, 42)$", "$(42, 44)$"],
+   "correct": 0,
+   "why": {
+    "correct": "In the first cycle $f$ decreases on $(1, 3)$. Adding ten periods ($40$) gives $(41, 43)$.",
+    "options": [
+     "$(1, 3)$ plus $10 \\cdot 4 = 40$ is $(41, 43)$.",
+     "This is $(3, 5)$ plus $40$, where $f$ rises from $-1$ to $5$.",
+     "This is $(0, 2)$ plus $40$: $f$ rises on $(40, 41)$ before it starts to fall.",
+     "This is $(2, 4)$ plus $40$: $f$ falls only until $x = 43$ and then rises."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-5",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "periodic-phenomena-s2",
+   "q": "Use the table. What is the building's power use at $t = 52$ hours, in kilowatts?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 26,
+    "unit": "kilowatts",
+    "mistakes": [
+     { "value": 30, "why": "That is $P(0)$ or $P(48)$. $52 = 2 \\cdot 24 + 4$, so subtract two full days and read $P(4)$." },
+     { "value": 64, "why": "That is $P(12)$. Subtract whole periods of 24 hours: $52 - 48 = 4$, so the answer is $P(4)$." }
+    ]
+   },
+   "why": {
+    "correct": "The period is 24 hours and $52 = 2 \\cdot 24 + 4$, so $P(52) = P(4) = 26$ kilowatts."
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-6",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "periodic-phenomena-s2",
+   "q": "What is the average rate of change of $P$ on $[4, 12]$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 4.75,
+    "unit": "kilowatts per hour",
+    "mistakes": [
+     { "value": 38, "why": "That is the change in power, $64 - 26$. Divide by the change in time, $12 - 4 = 8$ hours." },
+     { "value": "4/19", "why": "This divides the change in time by the change in power. Put the change in output on top: $\\frac{64 - 26}{12 - 4}$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{P(12) - P(4)}{12 - 4} = \\frac{64 - 26}{8} = 4.75$ kilowatts per hour, the slope of the secant line through $(4, 26)$ and $(12, 64)$."
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-7",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "periodic-phenomena-s2",
+   "q": "The average rates of change of $P$ on $[4, 8]$ and $[8, 12]$ are $6.5$ and $3$ kilowatts per hour. What do these rates suggest about $P$ on $[4, 12]$?",
+   "type": "single",
+   "options": [
+    "$P$ is increasing and its graph is concave down",
+    "$P$ is increasing and its graph is concave up",
+    "$P$ is decreasing and its graph is concave down",
+    "$P$ is increasing at a constant rate of change"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both rates are positive, so $P$ is increasing. Over equal 4-hour intervals the rate drops from $6.5$ to $3$, so the rate of change of $P$ is decreasing: concave down.",
+    "options": [
+     "Positive rates: increasing. Smaller rate on the later equal interval: concave down.",
+     "Concave up needs the rates to grow over equal intervals; here they shrink from $6.5$ to $3$.",
+     "The rates are positive, so the power use is rising, not falling.",
+     "A constant rate would give equal rates on the two intervals, but $6.5 \\ne 3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-8",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "periodic-phenomena-s2",
+   "q": "What is the average rate of change of $P$ on $[16, 40]$?",
+   "type": "single",
+   "options": [
+    "$0$ kilowatts per hour",
+    "$-0.75$ kilowatts per hour",
+    "More data beyond $t = 24$ is needed",
+    "$\\frac{58}{24}$ kilowatts per hour"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$40 = 16 + 24$, one full period later, so $P(40) = P(16) = 58$. The average rate of change is $\\frac{58 - 58}{24} = 0$.",
+    "options": [
+     "The interval is one period long, so the output returns to $58$.",
+     "This uses $P(20) = 40$ in place of $P(40)$. Shift by a whole period: $P(40) = P(16)$.",
+     "No extra data is needed: the pattern repeats, so $P(40) = P(16) = 58$.",
+     "This divides one output by the time. A rate needs the change in output, which is $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-9",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "A function $g$ satisfies $g(x + 10) = g(x)$ and $g(x + 5) = g(x)$ for every $x$, and no smaller positive number works. What is the period of $g$?",
+   "type": "single",
+   "options": ["$5$", "$10$", "$15$", "$50$"],
+   "correct": 0,
+   "why": {
+    "correct": "The period is the smallest positive $P$ with $g(x + P) = g(x)$ for all $x$. Both 5 and 10 work, and 5 is smaller.",
+    "options": [
+     "The smallest shift that leaves every output unchanged is 5.",
+     "10 works because it is two periods; the period is the smallest shift that works.",
+     "15 also works (three periods), but it is not the smallest.",
+     "This multiplies the two shifts; the period is the smallest shift that works, 5."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-10",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "The brightness $b(t)$ of a lighthouse light seen from a boat repeats every 12 seconds. At $t = 3$ seconds the brightness is $80$ units. Which statement must be true?",
+   "type": "single",
+   "options": ["$b(27) = 80$", "$b(9) = 80$", "$b(6) = 160$", "$b(36) = 80$"],
+   "correct": 0,
+   "why": {
+    "correct": "$27 = 3 + 2 \\cdot 12$, two full periods after $t = 3$, so $b(27) = b(3) = 80$.",
+    "options": [
+     "Adding two periods to $t = 3$ gives $t = 27$, with the same brightness.",
+     "$9 = 3 + 6$ is only half a period later; the light could be at any brightness then.",
+     "Doubling the input does not double the output; nothing says $b(6)$ is $160$.",
+     "$36$ is three periods after $t = 0$, so $b(36) = b(0)$, which need not equal $b(3)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-11",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A function $f$ has period $2$, and $f(x) = x^2$ for $0 \\le x < 2$. What is $f(-0.5)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 2.25,
+    "mistakes": [
+     { "value": 0.25, "why": "That squares $-0.5$, but $f(x) = x^2$ only describes the cycle on $[0, 2)$. Add one period: $f(-0.5) = f(1.5)$." },
+     { "value": 6.25, "why": "That is $f(2.5)$ from the formula, but $2.5$ is outside $[0, 2)$. Shift $-0.5$ by one period of $2$ to land at $1.5$." }
+    ]
+   },
+   "why": {
+    "correct": "$-0.5$ is not in the known cycle $[0, 2)$. Add one period: $f(-0.5) = f(-0.5 + 2) = f(1.5) = 1.5^2 = 2.25$."
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-12",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which quantities are well modeled by a periodic function of time? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "The height above the floor of the tip of a clock's minute hand",
+    "The number of hours of daylight in a city, over many years",
+    "The total distance a car has traveled since it was built",
+    "The balance of a savings account that earns compound interest"
+   ],
+   "correct": [0, 1],
+   "why": {
+    "correct": "The minute hand repeats every hour, and daylight hours repeat every year. Total distance and a growing balance never return to earlier values.",
+    "options": [
+     "The tip returns to the same height every 60 minutes.",
+     "Daylight follows the seasons, so the pattern repeats every year.",
+     "Total distance only grows; it never comes back to an earlier value.",
+     "Compound interest makes the balance keep growing, not repeat."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-13",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "The graph of a periodic function with period 4 is stretched horizontally by a factor of 2: each point $(x, y)$ moves to $(2x, y)$. Predict each change.",
+   "variables": [
+    { "name": "The period", "answer": "up", "why": "One cycle that took 4 units of input now takes 8, so the period doubles to 8." },
+    { "name": "The greatest output", "answer": "none", "why": "Only the inputs move; every output, including the greatest one, stays the same." },
+    { "name": "The number of full cycles on $[0, 24]$", "answer": "down", "why": "Longer cycles fit fewer times: 24 holds six cycles of length 4 but only three of length 8." }
+   ],
+   "why": {
+    "correct": "A horizontal stretch lengthens each cycle without changing the outputs."
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-14",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "type": "order",
+   "q": "A function has period 6, and you know its graph on $[0, 6)$. Put the steps for finding $f(53)$ in order.",
+   "options": [
+    "Divide 53 by the period: $53 = 8 \\cdot 6 + 5$",
+    "Subtract the whole periods: $53 - 48 = 5$",
+    "Note that $f(53) = f(5)$, because shifting by whole periods keeps the output",
+    "Read $f(5)$ from the known cycle"
+   ],
+   "why": {
+    "correct": "Count the whole periods, remove them, use $f(x + P) = f(x)$, then read the value from the one cycle you know."
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-15",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A periodic function $h$ has period 8. What is the average rate of change of $h$ on $[3, 11]$?",
+   "type": "single",
+   "options": [
+    "$0$",
+    "$\\frac{h(11)}{8}$",
+    "$\\frac{1}{8}$",
+    "It depends on the formula for $h$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$11 = 3 + 8$, one period later, so $h(11) = h(3)$ and the average rate of change is $\\frac{h(11) - h(3)}{8} = 0$.",
+    "options": [
+     "One period apart, the outputs are equal, so the change in output is $0$.",
+     "This divides one output by the length of the interval. A rate needs the change in output.",
+     "This is one over the period. It is not a rate of change of $h$.",
+     "Whatever the formula, $h(11) = h(3)$ because the inputs are one period apart."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-periodic-phenomena-16",
+   "unit": "unit-3",
+   "topic": "periodic-phenomena",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A periodic function $f$ has period 10 and is increasing on $(2, 5)$. On which interval must $f$ also be increasing?",
+   "type": "single",
+   "options": ["$(-8, -5)$", "$(7, 10)$", "$(2, 15)$", "$(20, 23)$"],
+   "correct": 0,
+   "why": {
+    "correct": "Subtracting one period from both ends of $(2, 5)$ gives $(-8, -5)$, where the graph is an exact copy.",
+    "options": [
+     "$(2 - 10, 5 - 10) = (-8, -5)$: a copy of the increasing piece.",
+     "This shifts by 5, half a period. Nothing is known about $f$ there.",
+     "This interval is longer than the piece where $f$ is known to increase; $f$ may fall on $(5, 12)$.",
+     "This shifts by 18, which is not a whole number of periods. A shift of 20 gives $(22, 25)$."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "model-selection-symmetric": {
+  "file": "figures/model-selection-symmetric.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Five data points (0, 2), (1, 5), (2, 6), (3, 5) and (4, 2) that rise to a single highest point and fall back symmetrically, with the quadratic model y = -x^2 + 4x + 2 drawn through them."
+ }
+}

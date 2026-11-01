@@ -1,0 +1,5 @@
+{
+ "sinusoidal-model": {
+  "def": "A sinusoidal function $a\\sin(b(t + c)) + d$ or $a\\cos(b(t + c)) + d$ used to describe a periodic context. Its constants come from the greatest and least values, the period and one landmark time, or from a sinusoidal regression on data. It is valid on the domain the context supports."
+ }
+}

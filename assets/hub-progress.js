@@ -183,6 +183,17 @@
       { min: 20, title: 'Behavior Analyst' },
       { min: 30, title: 'Psychology Legend' },
     ],
+    // docs/apprecalc-spec.md decision 8 (proposed; owner to confirm). The first
+    // is also IDENTITY.firstRank in scripts/lib/apprecalc-build.mjs.
+    apprecalc: [
+      { min: 1,  title: 'Function Explorer' },
+      { min: 3,  title: 'Rate Reader' },
+      { min: 6,  title: 'Asymptote Hunter' },
+      { min: 10, title: 'Log Unlocker' },
+      { min: 15, title: 'Circle Turner' },
+      { min: 20, title: 'Model Builder' },
+      { min: 30, title: 'Precalculus Legend' },
+    ],
   };
 
   // Each course names its ranks differently, so a rank shown on its own says
@@ -199,6 +210,7 @@
     { key: 'apstat', rankLabel: 'Statistics rank' },
     { key: 'apenv', rankLabel: 'Environmental Science rank' },
     { key: 'appsych', rankLabel: 'Psychology rank' },
+    { key: 'apprecalc', rankLabel: 'Precalculus rank' },
   ];
   // courses:end
   var COURSE_RANK_LABEL = { hub: 'LevlPrep rank' };

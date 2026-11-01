@@ -1,0 +1,11 @@
+{
+ "pythagorean-identity": {
+  "def": "The identity $\\sin^2 x + \\cos^2 x = 1$, true because $(\\cos x, \\sin x)$ is on the unit circle, and its forms $\\tan^2 x + 1 = \\sec^2 x$ and $1 + \\cot^2 x = \\csc^2 x$."
+ },
+ "sum-identity": {
+  "def": "The sum and difference identities $\\sin(a \\pm b) = \\sin a\\cos b \\pm \\cos a\\sin b$ and $\\cos(a \\pm b) = \\cos a\\cos b \\mp \\sin a\\sin b$, and the double-angle identities $\\sin(2a) = 2\\sin a\\cos a$ and $\\cos(2a) = \\cos^2 a - \\sin^2 a = 2\\cos^2 a - 1 = 1 - 2\\sin^2 a$ that follow from them."
+ },
+ "trig-identity": {
+  "def": "An equation with trigonometric functions that is true for every input where both sides are defined, such as $\\sin^2 x + \\cos^2 x = 1$. Identities let you replace an expression with an equivalent one to find exact values, simplify, or solve equations."
+ }
+}

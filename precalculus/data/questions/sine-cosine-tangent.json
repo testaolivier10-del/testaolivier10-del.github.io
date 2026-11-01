@@ -1,0 +1,376 @@
+{
+ "stimuli": {
+  "sine-cosine-tangent-s1": {
+   "kind": "diagram",
+   "title": "An angle $\\theta$ on the unit circle",
+   "text": "The angle $\\theta$, with $0 < \\theta < 2\\pi$, is in standard position. Its terminal ray meets the unit circle at $P\\left(-\\frac{3}{5}, \\frac{4}{5}\\right)$.",
+   "figure": "sine-cosine-tangent-point-p"
+  },
+  "sine-cosine-tangent-s2": {
+   "kind": "table",
+   "title": "A turning bicycle wheel",
+   "text": "A bicycle wheel has radius 30 cm. A reflector on the rim starts on the positive $x$-axis of a coordinate system centered at the wheel's hub, and the wheel turns counterclockwise. The table gives the distance the reflector has traveled along the rim.",
+   "table": {
+    "caption": "Distance $s(t)$ traveled along the rim, in centimeters, $t$ seconds after the start",
+    "cols": ["$t$ (seconds)", "0", "1", "2", "3"],
+    "rows": [["$s(t)$ (cm)", "0", "45", "90", "135"]]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-sine-cosine-tangent-1",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sine-cosine-tangent-s1",
+   "q": "What is $\\sin\\theta$?",
+   "type": "single",
+   "options": ["$\\frac{4}{5}$", "$-\\frac{3}{5}$", "$-\\frac{4}{3}$", "$\\frac{3}{5}$"],
+   "correct": 0,
+   "why": {
+    "correct": "$\\sin\\theta$ is the $y$-coordinate of $P$: $\\frac{4}{5}$.",
+    "options": [
+     "The height of $P$ is $\\frac{4}{5}$.",
+     "$-\\frac{3}{5}$ is the $x$-coordinate, which is $\\cos\\theta$.",
+     "$-\\frac{4}{3}$ is $\\frac{y}{x}$, which is $\\tan\\theta$.",
+     "This drops the sign of the $x$-coordinate and uses it for sine; sine is the $y$-coordinate."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-2",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sine-cosine-tangent-s1",
+   "q": "What is $\\cos\\theta$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-3/5",
+    "mistakes": [
+     { "value": "3/5", "why": "$P$ is left of the $y$-axis, so its $x$-coordinate, $\\cos\\theta$, is negative." },
+     { "value": "4/5", "why": "That is the $y$-coordinate, $\\sin\\theta$. Cosine is the $x$-coordinate." }
+    ]
+   },
+   "why": {
+    "correct": "$\\cos\\theta$ is the $x$-coordinate of $P$: $-\\frac{3}{5}$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-3",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sine-cosine-tangent-s1",
+   "q": "What is $\\tan\\theta$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-4/3",
+    "mistakes": [
+     { "value": "-3/4", "why": "That is $\\frac{x}{y}$. Tangent is the slope of the terminal ray, $\\frac{\\sin\\theta}{\\cos\\theta} = \\frac{y}{x}$." },
+     { "value": "4/3", "why": "The ray goes up to the left, so its slope is negative: $\\frac{4/5}{-3/5} = -\\frac{4}{3}$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta} = \\frac{4/5}{-3/5} = -\\frac{4}{3}$, the slope of the ray from the origin to $P$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-4",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sine-cosine-tangent-s1",
+   "q": "Which is true about $\\theta$?",
+   "type": "single",
+   "options": [
+    "$\\frac{\\pi}{2} < \\theta < \\pi$",
+    "$0 < \\theta < \\frac{\\pi}{2}$",
+    "$\\pi < \\theta < \\frac{3\\pi}{2}$",
+    "$\\frac{3\\pi}{2} < \\theta < 2\\pi$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$P$ has a negative $x$-coordinate and a positive $y$-coordinate, so it is in Quadrant II, between $\\frac{\\pi}{2}$ and $\\pi$.",
+    "options": [
+     "Quadrant II runs from $\\frac{\\pi}{2}$ to $\\pi$.",
+     "In Quadrant I both coordinates are positive, but $P$ has $x < 0$.",
+     "In Quadrant III both coordinates are negative, but $P$ has $y > 0$.",
+     "In Quadrant IV, $x > 0$ and $y < 0$: the opposite of $P$'s signs."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-5",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sine-cosine-tangent-s1",
+   "q": "What is $\\sin(\\theta + \\pi)$?",
+   "type": "single",
+   "options": ["$-\\frac{4}{5}$", "$\\frac{4}{5}$", "$\\frac{3}{5}$", "$-\\frac{3}{5}$"],
+   "correct": 0,
+   "why": {
+    "correct": "Turning another $\\pi$ (half a turn) sends $P$ to the opposite point on the circle, $\\left(\\frac{3}{5}, -\\frac{4}{5}\\right)$. Its $y$-coordinate is $-\\frac{4}{5}$.",
+    "options": [
+     "Half a turn flips both coordinates' signs, so the height becomes $-\\frac{4}{5}$.",
+     "$\\frac{4}{5}$ would be $\\sin(\\theta + 2\\pi)$: a full turn, back to $P$.",
+     "$\\frac{3}{5}$ is the new $x$-coordinate, $\\cos(\\theta + \\pi)$.",
+     "This is $\\cos\\theta$, the $x$-coordinate of $P$ itself."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-6",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sine-cosine-tangent-s2",
+   "q": "Through what angle, in radians, has the wheel turned at $t = 2$ seconds?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 3,
+    "unit": "radians",
+    "mistakes": [
+     { "value": 90, "why": "That is the arc length in centimeters. Divide by the radius: $\\theta = \\frac{s}{r}$." },
+     { "value": "1/3", "why": "That divides the radius by the arc. Radian measure is arc over radius: $\\frac{90}{30}$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\theta = \\frac{s}{r} = \\frac{90}{30} = 3$ radians."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-7",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sine-cosine-tangent-s2",
+   "q": "At $t = 2$, where is the reflector relative to the hub?",
+   "type": "single",
+   "options": [
+    "Left of the hub and above it (Quadrant II)",
+    "Right of the hub and above it (Quadrant I)",
+    "Left of the hub and below it (Quadrant III)",
+    "Right of the hub and below it (Quadrant IV)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The angle is 3 radians. Since $\\frac{\\pi}{2} \\approx 1.57 < 3 < \\pi \\approx 3.14$, the terminal ray is in Quadrant II.",
+    "options": [
+     "3 is between $\\frac{\\pi}{2}$ and $\\pi$: Quadrant II.",
+     "Quadrant I would need an angle below $\\frac{\\pi}{2} \\approx 1.57$.",
+     "Quadrant III starts at $\\pi \\approx 3.14$, just past 3.",
+     "Quadrant IV needs an angle between $\\frac{3\\pi}{2} \\approx 4.71$ and $2\\pi$; this counts three quarter turns where 3 radians is less than half a turn ($\\pi \\approx 3.14$)."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-8",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sine-cosine-tangent-s2",
+   "q": "The wheel keeps turning at the same rate. At what time $t$, in seconds, does the reflector first get back to its starting point?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "4pi/3",
+    "unit": "seconds",
+    "mistakes": [
+     { "value": "2pi", "why": "That is the angle of a full turn in radians, not the time. The rim distance of a full turn is $2\\pi(30) = 60\\pi$ cm, at 45 cm per second." },
+     { "value": 8, "why": "That treats a full turn as 360 cm. The circumference is $2\\pi r = 60\\pi$ cm." }
+    ]
+   },
+   "why": {
+    "correct": "A full turn is $2\\pi$ radians, or $2\\pi(30) = 60\\pi$ cm along the rim. At 45 cm per second this takes $\\frac{60\\pi}{45} = \\frac{4\\pi}{3}$ seconds, about 4.19 seconds."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-9",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "sine-cosine-tangent-s2",
+   "q": "Let $\\theta$ be the angle the wheel has turned at $t = 3$. Which is true?",
+   "type": "single",
+   "options": [
+    "$\\sin\\theta < 0$ and $\\cos\\theta < 0$",
+    "$\\sin\\theta > 0$ and $\\cos\\theta < 0$",
+    "$\\sin\\theta < 0$ and $\\cos\\theta > 0$",
+    "$\\sin\\theta > 0$ and $\\cos\\theta > 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\theta = \\frac{135}{30} = 4.5$ radians, between $\\pi \\approx 3.14$ and $\\frac{3\\pi}{2} \\approx 4.71$: Quadrant III, where both coordinates are negative.",
+    "options": [
+     "Quadrant III: left of and below the hub.",
+     "These are the Quadrant II signs, where the reflector was at $t = 2$.",
+     "These are the Quadrant IV signs; 4.5 is still less than $\\frac{3\\pi}{2} \\approx 4.71$.",
+     "These are the Quadrant I signs, for angles below $\\frac{\\pi}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-10",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is $150^\\circ$ in radians?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "5pi/6",
+    "mistakes": [
+     { "value": "6pi/5", "why": "That is the conversion factor upside down. Multiply by $\\frac{\\pi}{180}$: $\\frac{150\\pi}{180} = \\frac{5\\pi}{6}$." },
+     { "value": "5pi/3", "why": "That uses $\\pi$ radians $= 90^\\circ$. Half a turn, $180^\\circ$, is $\\pi$ radians." }
+    ]
+   },
+   "why": {
+    "correct": "$150 \\cdot \\frac{\\pi}{180} = \\frac{5\\pi}{6}$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-11",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is $\\frac{7\\pi}{4}$ radians in degrees?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 315,
+    "unit": "degrees",
+    "mistakes": [
+     { "value": 630, "why": "That uses $\\pi = 360^\\circ$. Half a turn is $\\pi$, so $\\pi$ radians $= 180^\\circ$." },
+     { "value": 157.5, "why": "That uses $\\pi = 90^\\circ$. Multiply by $\\frac{180}{\\pi}$: $\\frac{7}{4} \\cdot 180 = 315$." }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{7\\pi}{4} \\cdot \\frac{180}{\\pi} = 7 \\cdot 45 = 315^\\circ$."
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-12",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is $\\sin\\frac{3\\pi}{2}$?",
+   "type": "single",
+   "options": ["$-1$", "$0$", "$1$", "$\\frac{3}{2}$"],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{3\\pi}{2}$ is three quarters of a turn, ending at $(0, -1)$. Its $y$-coordinate is $-1$.",
+    "options": [
+     "The point is $(0, -1)$, so the height is $-1$.",
+     "$0$ is $\\cos\\frac{3\\pi}{2}$, the $x$-coordinate.",
+     "$1$ is $\\sin\\frac{\\pi}{2}$, at the top of the circle.",
+     "Sine is a coordinate on the unit circle, so it is never larger than 1; the angle is not the output."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-13",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The terminal ray of an angle $\\theta$ in standard position passes through the point $(-2, 6)$. What is $\\tan\\theta$?",
+   "type": "single",
+   "options": ["$-3$", "$-\\frac{1}{3}$", "$3$", "$6$"],
+   "correct": 0,
+   "why": {
+    "correct": "$\\tan\\theta$ is the slope of the terminal ray, which goes through $(0, 0)$ and $(-2, 6)$: $\\frac{6 - 0}{-2 - 0} = -3$. The point does not have to be on the unit circle.",
+    "options": [
+     "Rise 6 over run $-2$.",
+     "This is run over rise; slope is rise over run.",
+     "The run is $-2$, so the slope is negative.",
+     "This uses only the $y$-coordinate. Tangent divides it by the $x$-coordinate."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-14",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which angles have the same terminal ray as $\\frac{\\pi}{3}$? Select all that apply.",
+   "type": "multi",
+   "options": ["$\\frac{7\\pi}{3}$", "$-\\frac{5\\pi}{3}$", "$\\frac{4\\pi}{3}$", "$\\frac{2\\pi}{3}$"],
+   "correct": [0, 1],
+   "why": {
+    "correct": "Angles that differ by a multiple of $2\\pi$ share a terminal ray: $\\frac{\\pi}{3} + 2\\pi = \\frac{7\\pi}{3}$ and $\\frac{\\pi}{3} - 2\\pi = -\\frac{5\\pi}{3}$.",
+    "options": [
+     "One extra full turn: $\\frac{\\pi}{3} + 2\\pi$.",
+     "One full turn clockwise: $\\frac{\\pi}{3} - 2\\pi$.",
+     "This differs by $\\pi$, half a turn, so its ray points the opposite way.",
+     "This is the mirror image across the $y$-axis, in Quadrant II."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-15",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For which angle is $\\tan\\theta$ undefined?",
+   "type": "single",
+   "options": ["$\\theta = \\frac{\\pi}{2}$", "$\\theta = \\pi$", "$\\theta = 0$", "$\\theta = \\frac{\\pi}{4}$"],
+   "correct": 0,
+   "why": {
+    "correct": "At $\\frac{\\pi}{2}$ the point is $(0, 1)$: $\\cos\\theta = 0$, so $\\frac{\\sin\\theta}{\\cos\\theta}$ divides by zero. The terminal ray is vertical and has no slope.",
+    "options": [
+     "A vertical ray: $\\cos\\frac{\\pi}{2} = 0$.",
+     "At $\\pi$ the ray is horizontal: $\\tan\\pi = \\frac{0}{-1} = 0$, which is defined.",
+     "At $0$ the ray is horizontal: $\\tan 0 = \\frac{0}{1} = 0$.",
+     "At $\\frac{\\pi}{4}$ the ray has slope $1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sine-cosine-tangent-16",
+   "unit": "unit-3",
+   "topic": "sine-cosine-tangent",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "The angle $\\theta$ increases from $0$ to $\\frac{\\pi}{2}$ and the point $P$ moves along the unit circle. Predict each change.",
+   "variables": [
+    { "name": "$\\sin\\theta$", "answer": "up", "why": "The point climbs from the $x$-axis to the top of the circle, so its height goes from 0 up to 1." },
+    { "name": "$\\cos\\theta$", "answer": "down", "why": "The point moves left from $x = 1$ toward the $y$-axis, so its $x$-coordinate drops from 1 to 0." },
+    { "name": "The distance from $P$ to the origin", "answer": "none", "why": "Every point of the unit circle is 1 unit from the center, so this distance stays 1." }
+   ],
+   "why": {
+    "correct": "In Quadrant I, turning counterclockwise raises the point and moves it left, always on the circle of radius 1."
+   }
+  }
+ ]
+}

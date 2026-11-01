@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 235" width="580" height="235" role="img" aria-labelledby="t d">
+<title id="t">One entry of a matrix product, row times column</title>
+<desc id="d">Matrix A with rows (2, -1) and (0, 3) times matrix B with rows (1, 4) and (-2, 1) equals the product with rows (4, 7) and (-6, 3). Row 1 of A and column 2 of B are highlighted, and the entry 7 in row 1, column 2 of the product is boxed: 2 times 4 plus (-1) times 1 = 7.</desc>
+<rect width="580" height="235" fill="#fff"/>
+<rect x="38" y="50" width="44" height="30" rx="5" fill="#11592F" fill-opacity="0.16"/>
+<text x="60" y="70" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >2</tspan></text>
+<rect x="88" y="50" width="44" height="30" rx="5" fill="#11592F" fill-opacity="0.16"/>
+<text x="110" y="70" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >−1</tspan></text>
+
+<text x="60" y="114" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0</tspan></text>
+
+<text x="110" y="114" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >3</tspan></text>
+<path d="M38,42 H30 V134 H38" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<path d="M132,42 H140 V134 H132" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<text x="12" y="105" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#1F2A28" text-anchor="start" font-weight="bold" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >A</tspan></text>
+
+<text x="230" y="70" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >1</tspan></text>
+<rect x="258" y="50" width="44" height="30" rx="5" fill="#0072B2" fill-opacity="0.16"/>
+<text x="280" y="70" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >4</tspan></text>
+
+<text x="230" y="114" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >−2</tspan></text>
+<rect x="258" y="94" width="44" height="30" rx="5" fill="#0072B2" fill-opacity="0.16"/>
+<text x="280" y="114" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >1</tspan></text>
+<path d="M208,42 H200 V134 H208" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<path d="M302,42 H310 V134 H302" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<text x="180" y="105" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#1F2A28" text-anchor="start" font-weight="bold" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >B</tspan></text>
+<text x="345" y="105" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >=</tspan></text>
+
+<text x="410" y="70" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >4</tspan></text>
+
+<text x="460" y="70" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >7</tspan></text>
+
+<text x="410" y="114" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >−6</tspan></text>
+
+<text x="460" y="114" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >3</tspan></text>
+<path d="M388,42 H380 V134 H388" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<path d="M482,42 H490 V134 H482" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<rect x="438" y="50" width="44" height="30" rx="5" fill="#D55E00" fill-opacity="0.2" stroke="#D55E00" stroke-width="1.6"/>
+<text x="290" y="190" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan fill="#11592F">Row 1 of </tspan><tspan font-weight="bold" fill="#11592F">A</tspan><tspan fill="#0072B2"> times column 2 of </tspan><tspan font-weight="bold" fill="#0072B2">B</tspan><tspan >:  2(4) + (−1)(1) = 7</tspan></text>
+<text x="290" y="214" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >Multiply matching entries and add; 7 goes in row 1, column 2 of the product.</tspan></text>
+</svg>

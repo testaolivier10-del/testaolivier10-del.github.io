@@ -1,0 +1,14 @@
+{
+ "transformation": {
+  "def": "A change to a function that moves, stretches or flips its graph, made by adding to or multiplying the input or the output. The new function is written in terms of the old one, such as $g(x) = 2f(x - 3) + 1$."
+ },
+ "translation": {
+  "def": "A shift of a graph without changing its shape. A vertical translation $g(x) = f(x) + k$ moves every output $k$ units up; a horizontal translation $g(x) = f(x - h)$ moves the graph $h$ units right."
+ },
+ "dilation": {
+  "def": "A stretch or compression of a graph. A vertical dilation $g(x) = af(x)$ multiplies every output by $a$; a horizontal dilation $g(x) = f(bx)$ multiplies every input by $\\frac{1}{b}$."
+ },
+ "reflection": {
+  "def": "A flip of a graph. $g(x) = -f(x)$ is the reflection across the $x$-axis (outputs change sign); $g(x) = f(-x)$ is the reflection across the $y$-axis (inputs change sign)."
+ }
+}

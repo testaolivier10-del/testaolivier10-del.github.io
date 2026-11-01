@@ -44,7 +44,7 @@ const die = (msg) => { console.error(`add-video: ${msg}`); process.exit(1); };
 // The media branch's course names, and the registry's own keys.
 const COURSE_ALIASES = { orgo: 'ochem', ochem: 'ochem', ap: 'anp', anp: 'anp', nremt: 'nremt', apbio: 'apbio', bio: 'apbio',
   apchem: 'apchem', chem: 'apchem', apphys: 'apphys', physics: 'apphys', apcalc: 'apcalc', calc: 'apcalc',
-  apstat: 'apstat', stat: 'apstat', apenv: 'apenv', env: 'apenv', appsych: 'appsych', psy: 'appsych', psych: 'appsych', psychology: 'appsych' };
+  apstat: 'apstat', stat: 'apstat', apenv: 'apenv', env: 'apenv', appsych: 'appsych', psy: 'appsych', psych: 'appsych', psychology: 'appsych', apprecalc: 'apprecalc', precalc: 'apprecalc', pcalc: 'apprecalc', precalculus: 'apprecalc' };
 
 function fromQueue(queuePath, itemId) {
   const q = JSON.parse(readFileSync(queuePath, 'utf8'));

@@ -69,6 +69,7 @@ body[data-course="apcalc"]{--rd-cover:url(../covers/apcalc.svg);--rd-cbg:#4A1230
 body[data-course="apstat"]{--rd-cover:url(../covers/apstat.svg);--rd-cbg:#0E3A52;}
 body[data-course="apenv"]{--rd-cover:url(../covers/apenv.svg);--rd-cbg:#22400F;}
 body[data-course="appsych"]{--rd-cover:url(../covers/appsych.svg);--rd-cbg:#07608A;}
+body[data-course="apprecalc"]{--rd-cover:url(../covers/apprecalc.svg);--rd-cbg:#0B4A33;}
 .xshell:has(>.gx)>.page-head{display:grid;grid-template-columns:minmax(0,1fr);column-gap:32px;align-items:center;background:none;padding:10px 0 4px;margin-top:8px;border-radius:0;}
 .xshell:has(>.gx)>.page-head .eyebrow{justify-self:start;display:inline-flex;align-items:center;gap:6px;border:1.5px solid currentColor;border-radius:999px;padding:3px 12px;font:800 12px/1.35 var(--font-ui);letter-spacing:.05em;text-transform:none;margin:0 0 14px;}
 .xshell:has(>.gx)>.page-head h1{font:900 clamp(40px,6vw,64px)/1 'Inter Display',var(--font-display),system-ui,sans-serif;letter-spacing:-.04em;margin:0 0 12px;text-wrap:balance;}

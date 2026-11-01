@@ -1,0 +1,12 @@
+{
+ "alg-intervals-outputs": {
+  "file": "figures/alg-intervals-outputs.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The line y = 2x + 3. The solid green piece runs from the closed point (−2, −1) to the open point (3, 9): the inputs in [−2, 3) are exactly the ones whose outputs satisfy −1 ≤ 2x + 3 < 9. Dashed horizontal lines mark y = −1 and y = 9."
+ }
+}

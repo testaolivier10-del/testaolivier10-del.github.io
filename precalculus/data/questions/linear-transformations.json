@@ -1,0 +1,449 @@
+{
+ "stimuli": {
+  "linear-transformations-s1": {
+   "kind": "graph",
+   "title": "A square and its image",
+   "figure": "linear-transformations-s1",
+   "text": "<p>A linear transformation $T$ sends the unit square (dashed) to the shaded parallelogram. The arrows show $T(\\left\\langle 1, 0 \\right\\rangle)$ and $T(\\left\\langle 0, 1 \\right\\rangle)$.</p>"
+  },
+  "linear-transformations-s2": {
+   "kind": "table",
+   "title": "A transformation given by a rule",
+   "html": "<p>$$L(\\left\\langle x, y \\right\\rangle) = \\left\\langle x + 2y, 3x - y \\right\\rangle$$</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-linear-transformations-1",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-transformations-s1",
+   "q": "What is the matrix of $T$?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 2 & -1 \\\\ 1 & 1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 2 & 1 \\\\ -1 & 1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} -1 & 2 \\\\ 1 & 1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 2 & -1 \\\\ 1 & -1 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The columns are the images: $T(\\left\\langle 1, 0 \\right\\rangle) = \\left\\langle 2, 1 \\right\\rangle$ and $T(\\left\\langle 0, 1 \\right\\rangle) = \\left\\langle -1, 1 \\right\\rangle$.",
+    "options": [
+     "Images as columns.",
+     "The images were written as rows; they go in as columns.",
+     "The columns are in the wrong order: the image of the first unit vector comes first.",
+     "$T(\\left\\langle 0, 1 \\right\\rangle) = \\left\\langle -1, 1 \\right\\rangle$, so the bottom right entry is $1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-2",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-transformations-s1",
+   "q": "What is $T(\\left\\langle 3, 2 \\right\\rangle)$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 4, 5 \\right\\rangle$",
+    "$\\left\\langle 8, -1 \\right\\rangle$",
+    "$\\left\\langle 5, 5 \\right\\rangle$",
+    "$\\left\\langle 6, 2 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\left[ \\begin{matrix} 2 & -1 \\\\ 1 & 1 \\end{matrix} \\right]\\left[ \\begin{matrix} 3 \\\\ 2 \\end{matrix} \\right] = \\left[ \\begin{matrix} 4 \\\\ 5 \\end{matrix} \\right]$: $3$ copies of $\\left\\langle 2, 1 \\right\\rangle$ plus $2$ copies of $\\left\\langle -1, 1 \\right\\rangle$.",
+    "options": [
+     "$6 - 2 = 4$ and $3 + 2 = 5$.",
+     "This uses the images as rows instead of columns.",
+     "$2(3) + (-1)(2) = 4$, not $5$.",
+     "This multiplies matching entries; use row times column."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-3",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "linear-transformations-s1",
+   "q": "What is the area of the shaded parallelogram?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "$\\det = 2(1) - (-1)(1) = 2 + 1$; subtracting $-1$ adds $1$."
+     },
+     {
+      "value": 5,
+      "why": "The area is the determinant $ad - bc$, not a sum of entries."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The unit square (area $1$) is scaled by $\\det \\left[ \\begin{matrix} 2 & -1 \\\\ 1 & 1 \\end{matrix} \\right] = 2 + 1 = 3$."
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-4",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-transformations-s1",
+   "q": "A triangle of area $5$ is transformed by $T$. What is the area of its image?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 15,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "$3$ is the scale factor; multiply the area $5$ by it."
+     },
+     {
+      "value": 8,
+      "why": "Areas are multiplied by $\\det T = 3$, not increased by $3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Every area is multiplied by $\\left| \\det \\right| = 3$: $5 \\cdot 3 = 15$."
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-5",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-transformations-s1",
+   "q": "Does $T$ flip the plane over, reversing orientation?",
+   "type": "single",
+   "options": [
+    "No: its determinant, $3$, is positive",
+    "Yes: it sends a vector to the left of the $y$-axis",
+    "Yes: one entry of its matrix is negative",
+    "No: its determinant, $1$, is positive"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A flip shows up as a negative determinant. $\\det T = 3 > 0$, so orientation is kept.",
+    "options": [
+     "Positive determinant: no flip.",
+     "Moving some vectors left is not a flip; rotations do that too.",
+     "Single entries do not decide it; the sign of the determinant does.",
+     "$\\det T = 2 + 1 = 3$, not $1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-6",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "linear-transformations-s2",
+   "q": "What is the matrix of $L$?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 1 & 2 \\\\ 3 & -1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 1 & 3 \\\\ 2 & -1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 1 & 2 \\\\ 3 & 1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 2 & 1 \\\\ -1 & 3 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Row 1 holds the coefficients of $x + 2y$; row 2 those of $3x - y$.",
+    "options": [
+     "Coefficients of each output, row by row.",
+     "This puts the first output's coefficients in a column.",
+     "The coefficient of $y$ in $3x - y$ is $-1$.",
+     "The coefficient of $x$ comes first in each row."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-7",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "linear-transformations-s2",
+   "q": "What is $L(\\left\\langle 1, 1 \\right\\rangle)$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 3, 2 \\right\\rangle$",
+    "$\\left\\langle 2, 3 \\right\\rangle$",
+    "$\\left\\langle 3, 4 \\right\\rangle$",
+    "$\\left\\langle 1, 2 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\left\\langle 1 + 2(1), 3(1) - 1 \\right\\rangle = \\left\\langle 3, 2 \\right\\rangle$.",
+    "options": [
+     "$1 + 2 = 3$ and $3 - 1 = 2$.",
+     "The components are swapped.",
+     "$3x - y = 3 - 1 = 2$.",
+     "Apply the rule; the input is $(1, 1)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-8",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-transformations-s2",
+   "q": "Which input does $L$ send to $\\left\\langle 4, 5 \\right\\rangle$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 2, 1 \\right\\rangle$",
+    "$\\left\\langle 4, 5 \\right\\rangle$",
+    "$\\left\\langle 1, 2 \\right\\rangle$",
+    "$\\left\\langle 14, 7 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Solve $x + 2y = 4$ and $3x - y = 5$: from the second, $y = 3x - 5$; then $x + 6x - 10 = 4$, so $x = 2$ and $y = 1$. Check: $L(\\left\\langle 2, 1 \\right\\rangle) = \\left\\langle 4, 5 \\right\\rangle$.",
+    "options": [
+     "$L(\\left\\langle 2, 1 \\right\\rangle) = \\left\\langle 4, 5 \\right\\rangle$.",
+     "$L(\\left\\langle 4, 5 \\right\\rangle) = \\left\\langle 14, 7 \\right\\rangle$; the output is not its own input.",
+     "$L(\\left\\langle 1, 2 \\right\\rangle) = \\left\\langle 5, 1 \\right\\rangle$.",
+     "This is $L(\\left\\langle 4, 5 \\right\\rangle)$, an output, not the input."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-9",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-transformations-s2",
+   "q": "What does $L$ do to areas and orientation?",
+   "type": "single",
+   "options": [
+    "Multiplies areas by $7$ and reverses orientation",
+    "Multiplies areas by $7$ and keeps orientation",
+    "Multiplies areas by $5$ and keeps orientation",
+    "Multiplies areas by $-7$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\det = 1(-1) - 2(3) = -7$. Areas are multiplied by $\\left| -7 \\right| = 7$, and the negative sign means a flip.",
+    "options": [
+     "$\\left| -7 \\right| = 7$, negative sign: flip.",
+     "A negative determinant reverses orientation.",
+     "$ad - bc = -1 - 6 = -7$, not $-1 + 6$.",
+     "Areas are positive; use the absolute value."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-10",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which matrix rotates the plane by $\\frac{\\pi}{2}$ counterclockwise?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 0 & -1 \\\\ 1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0 & 1 \\\\ -1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 1 & 0 \\\\ 0 & -1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} -1 & 0 \\\\ 0 & -1 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A quarter turn counterclockwise sends $\\left\\langle 1, 0 \\right\\rangle$ to $\\left\\langle 0, 1 \\right\\rangle$ and $\\left\\langle 0, 1 \\right\\rangle$ to $\\left\\langle -1, 0 \\right\\rangle$: those are the columns.",
+    "options": [
+     "Columns: images of the two unit vectors.",
+     "This sends $\\left\\langle 1, 0 \\right\\rangle$ to $\\left\\langle 0, -1 \\right\\rangle$: a clockwise quarter turn.",
+     "This is the reflection across the $x$-axis.",
+     "This is a half turn, by $\\pi$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-11",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which matrix reflects the plane across the line $y = x$?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 0 & 1 \\\\ 1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 1 & 0 \\\\ 0 & -1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} -1 & 0 \\\\ 0 & 1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0 & -1 \\\\ -1 & 0 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The reflection swaps the coordinates: $\\left\\langle 1, 0 \\right\\rangle \\to \\left\\langle 0, 1 \\right\\rangle$ and $\\left\\langle 0, 1 \\right\\rangle \\to \\left\\langle 1, 0 \\right\\rangle$.",
+    "options": [
+     "Swap $x$ and $y$.",
+     "This reflects across the $x$-axis.",
+     "This reflects across the $y$-axis.",
+     "This reflects across the line $y = -x$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-12",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the image of $\\left\\langle 2, 0 \\right\\rangle$ under a rotation by $\\frac{\\pi}{6}$ counterclockwise?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle \\sqrt{3}, 1 \\right\\rangle$",
+    "$\\left\\langle 1, \\sqrt{3} \\right\\rangle$",
+    "$\\left\\langle \\sqrt{3}, -1 \\right\\rangle$",
+    "$\\left\\langle 2, 1 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\left\\langle 2\\cos\\frac{\\pi}{6}, 2\\sin\\frac{\\pi}{6} \\right\\rangle = \\left\\langle \\sqrt{3}, 1 \\right\\rangle$, still length $2$.",
+    "options": [
+     "Length $2$ at angle $\\frac{\\pi}{6}$.",
+     "This is at angle $\\frac{\\pi}{3}$.",
+     "This turns clockwise.",
+     "A rotation keeps length: $\\sqrt{4 + 1} \\ne 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-13",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Rotate $\\left\\langle 1, 1 \\right\\rangle$ by $\\frac{\\pi}{4}$ counterclockwise. What is the second component of the image?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "sqrt(2)",
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "Use the rotation: $\\sin\\frac{\\pi}{4}(1) + \\cos\\frac{\\pi}{4}(1) = \\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2}$."
+     },
+     {
+      "value": "sqrt(2)/2",
+      "why": "Both terms contribute: $\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2} = \\sqrt{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\left[ \\begin{matrix} \\frac{\\sqrt{2}}{2} & -\\frac{\\sqrt{2}}{2} \\\\ \\frac{\\sqrt{2}}{2} & \\frac{\\sqrt{2}}{2} \\end{matrix} \\right]\\left[ \\begin{matrix} 1 \\\\ 1 \\end{matrix} \\right] = \\left[ \\begin{matrix} 0 \\\\ \\sqrt{2} \\end{matrix} \\right]$: the vector at angle $\\frac{\\pi}{4}$ turns to point straight up."
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-14",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is $S(\\left\\langle x, y \\right\\rangle) = \\left\\langle x + 1, y \\right\\rangle$ not a linear transformation?",
+   "type": "single",
+   "options": [
+    "$S(\\left\\langle 0, 0 \\right\\rangle) = \\left\\langle 1, 0 \\right\\rangle$, but a linear transformation keeps the origin fixed",
+    "It does not change the $y$-coordinate",
+    "It slides each point the same way, which a matrix can do",
+    "It sends $\\left\\langle 1, 0 \\right\\rangle$ to $\\left\\langle 2, 0 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Any matrix times $\\left[ \\begin{matrix} 0 \\\\ 0 \\end{matrix} \\right]$ is $\\left[ \\begin{matrix} 0 \\\\ 0 \\end{matrix} \\right]$. Here the origin moves to $(1, 0)$, so no matrix gives $S$.",
+    "options": [
+     "The origin moves; a matrix cannot do that.",
+     "Leaving $y$ alone is fine; the reflection across the $y$-axis does too.",
+     "A slide moves the origin, which no matrix can do.",
+     "Sending $\\left\\langle 1, 0 \\right\\rangle$ to $\\left\\langle 2, 0 \\right\\rangle$ is allowed; a stretch does it."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-15",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The shear $\\left[ \\begin{matrix} 1 & 3 \\\\ 0 & 1 \\end{matrix} \\right]$ is applied to $\\left\\langle x, 2 \\right\\rangle$. Write the first component of the image.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "x"
+    ],
+    "mode": "exact",
+    "answer": "x + 6",
+    "domain": [
+     -5,
+     5
+    ],
+    "mistakes": [
+     {
+      "expr": "3x + 2",
+      "why": "Row 1 is $(1, 3)$: $1 \\cdot x + 3 \\cdot 2$."
+     },
+     {
+      "expr": "x + 3",
+      "why": "Multiply the $3$ by the second component, $2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Row 1 times the column: $1(x) + 3(2) = x + 6$."
+   }
+  },
+  {
+   "id": "pcalc-linear-transformations-16",
+   "unit": "unit-4",
+   "topic": "linear-transformations",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Under the dilation $\\left[ \\begin{matrix} k & 0 \\\\ 0 & k \\end{matrix} \\right]$, $k$ is increased from $2$ to $3$. Predict each change.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The area of the image of the unit square",
+     "answer": "up",
+     "why": "The area is $\\det = k^2$, which grows from $4$ to $9$."
+    },
+    {
+     "name": "The direction of the image of $\\left\\langle 1, 1 \\right\\rangle$",
+     "answer": "none",
+     "why": "The image is $\\left\\langle k, k \\right\\rangle$, a longer arrow pointing the same way for any positive $k$."
+    }
+   ],
+   "why": {
+    "correct": "A dilation stretches every vector by $k$ without turning it."
+   }
+  }
+ ]
+}

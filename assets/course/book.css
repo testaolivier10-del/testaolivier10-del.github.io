@@ -16,7 +16,7 @@
 
 /* ---- Shell: the tb-* frame in the course tint --------------------------- */
 .bk{--accent:var(--cink);--tint-accent:var(--ctint);--accent-text:var(--cink);}
-.bk .tb-main > .cx-crumb,.bk .tb-main > .anp-crumb,.bk .tb-main > .bio-crumb,.bk .tb-main > .chem-crumb,.bk .tb-main > .phys-crumb,.bk .tb-main > .calc-crumb,.bk .tb-main > .stat-crumb{margin:0 0 14px;}
+.bk .tb-main > .cx-crumb,.bk .tb-main > .anp-crumb,.bk .tb-main > .bio-crumb,.bk .tb-main > .chem-crumb,.bk .tb-main > .phys-crumb,.bk .tb-main > .calc-crumb,.bk .tb-main > .pcalc-crumb,.bk .tb-main > .stat-crumb{margin:0 0 14px;}
 .bk .tb-toc-btn{justify-self:start;}
 .bk .tb-toc-topic{align-items:flex-start;line-height:1.35;}
 .bk .tb-toc-topic .tb-toc-tick{margin-top:2px;}
@@ -212,6 +212,7 @@ body[data-course="apcalc"]{--bk-cover:url(../covers/apcalc.svg);--bk-cbg:#4A1230
 body[data-course="apstat"]{--bk-cover:url(../covers/apstat.svg);--bk-cbg:#0E3A52;}
 body[data-course="apenv"]{--bk-cover:url(../covers/apenv.svg);--bk-cbg:#22400F;}
 body[data-course="appsych"]{--bk-cover:url(../covers/appsych.svg);--bk-cbg:#07608A;}
+body[data-course="apprecalc"]{--bk-cover:url(../covers/apprecalc.svg);--bk-cbg:#0B4A33;}
 body:not([data-course]) .bk :is(.bk-head,.tb-chapter-head)::after{display:none;}
 @media (min-width:1101px){
   .bk :is(.bk-head,.tb-chapter-head:not(.bk-chap-head)){grid-template-columns:minmax(0,1fr) 260px;}

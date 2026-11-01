@@ -1,0 +1,66 @@
+{
+ "topic": "alg-lines",
+ "hook": "A road sign that warns of a 6% grade means the road drops 6 feet for every 100 feet you drive forward. That ratio is a slope. The next topics measure how fast any function changes by drawing lines through two of its points, so slope and the equation of a line need to be quick and sure.",
+ "prereq": [
+  {
+   "q": "Solve $3x - 4 = 11$.",
+   "options": [
+    "$5$",
+    "$\\frac{7}{3}$",
+    "$15$",
+    "$-5$"
+   ],
+   "correct": 0,
+   "why": "$3x = 15$, so $x = 5$.",
+   "review": "alg-intervals"
+  },
+  {
+   "q": "For $f(x) = x^2$, what is the point $(3, f(3))$?",
+   "options": [
+    "$(3, 9)$",
+    "$(3, 6)$",
+    "$(9, 3)$",
+    "$(3, 3)$"
+   ],
+   "correct": 0,
+   "why": "$f(3) = 9$, so the point is $(3, 9)$.",
+   "review": "alg-functions"
+  }
+ ],
+ "figure": {
+  "figure": "alg-lines-slope",
+  "caption": "The line through $(1, 2)$ and $(4, 8)$ rises $6$ over a run of $3$: slope $\\frac{6}{3} = 2$."
+ },
+ "chain": [
+  {
+   "cause": "Two points $(x_1, y_1)$ and $(x_2, y_2)$ lie on a line",
+   "effect": "its slope is $\\frac{y_2 - y_1}{x_2 - x_1}$, rise over run, subtracted in the same order"
+  },
+  {
+   "cause": "You know one point $(x_1, y_1)$ and the slope $m$",
+   "effect": "point-slope form $y - y_1 = m(x - x_1)$ gives the line, and $y = y_1 + m(x - x_1)$ gives any value on it"
+  },
+  {
+   "cause": "$x$ increases by $\\Delta x$ along a line of slope $m$",
+   "effect": "$y$ changes by $m \\cdot \\Delta x$, the same for every equal step: a line has a constant rate of change"
+  }
+ ],
+ "ideas": [
+  "Slope $m = \\frac{\\text{change in } y}{\\text{change in } x}$: positive rises, negative falls, $0$ is horizontal, a vertical line has none.",
+  "Point-slope form $y - y_1 = m(x - x_1)$; slope-intercept form $y = mx + b$ with $b$ the $y$-intercept.",
+  "In context the slope has units of output per input, like dollars per minute."
+ ],
+ "misconception": {
+  "wrong": "In $y - 3 = 2(x - 1)$, the $y$-intercept is $3$.",
+  "right": "$3$ is the $y$-value at $x = 1$, not at $x = 0$. Solving gives $y = 2x + 1$, so the $y$-intercept is $1$."
+ },
+ "check": [
+  "pcalc-alg-lines-1",
+  "pcalc-alg-lines-2",
+  "pcalc-alg-lines-3",
+  "pcalc-alg-lines-5",
+  "pcalc-alg-lines-6",
+  "pcalc-alg-lines-8"
+ ],
+ "summary": "Slope is the change in $y$ divided by the change in $x$, the same between any two points of a line. Point-slope form $y - y_1 = m(x - x_1)$ builds a line from one point and the slope, and $y = y_1 + m(x - x_1)$ gives its value at any $x$. In context, slope is output units per input unit."
+}

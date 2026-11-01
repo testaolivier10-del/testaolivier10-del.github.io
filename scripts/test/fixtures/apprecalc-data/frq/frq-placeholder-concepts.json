@@ -1,0 +1,117 @@
+{
+ "id": "frq-placeholder-concepts",
+ "type": "concepts",
+ "points": 6,
+ "calc": true,
+ "placeholder": true,
+ "title": "Placeholder: function concepts",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "polar-rates"
+ ],
+ "practices": [
+  "1.A",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Placeholder: values of a function",
+  "table": {
+   "caption": "Placeholder values of a function at selected inputs",
+   "cols": [
+    "$x$",
+    "0",
+    "1",
+    "2"
+   ],
+   "rows": [
+    [
+     "$f(x)$",
+     "1",
+     "3",
+     "7"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A(i)",
+   "prompt": "<b>Find</b> placeholder part (A(i)) of this question.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (A(i)), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (A(i)), written to test the page."
+  },
+  {
+   "label": "A(ii)",
+   "prompt": "<b>Find</b> placeholder part (A(ii)) of this question.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (A(ii)), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (A(ii)), written to test the page."
+  },
+  {
+   "label": "B(i)",
+   "prompt": "<b>Find</b> placeholder part (B(i)) of this question.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (B(i)), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (B(i)), written to test the page."
+  },
+  {
+   "label": "B(ii)",
+   "prompt": "<b>Find</b> placeholder part (B(ii)) of this question.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (B(ii)), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (B(ii)), written to test the page."
+  },
+  {
+   "label": "C",
+   "prompt": "<b>Explain</b> placeholder part (C) of this question.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (C), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part (C), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (C), written to test the page."
+  }
+ ]
+}

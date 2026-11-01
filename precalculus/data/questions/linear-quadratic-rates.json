@@ -1,0 +1,540 @@
+{
+ "stimuli": {
+  "linear-quadratic-rates-s1": {
+   "kind": "table",
+   "title": "Values of $f$ with first and second differences",
+   "table": {
+    "caption": "Values of a function f at equally spaced inputs, with the change in f over each step and the change in those changes",
+    "cols": [
+     "$x$",
+     "0",
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "rows": [
+     [
+      "$f(x)$",
+      "4",
+      "3",
+      "6",
+      "13",
+      "24",
+      "39"
+     ],
+     [
+      "Change in $f$ from the previous $x$",
+      "",
+      "-1",
+      "3",
+      "7",
+      "11",
+      "15"
+     ],
+     [
+      "Change in that change",
+      "",
+      "",
+      "4",
+      "4",
+      "4",
+      "4"
+     ]
+    ]
+   }
+  },
+  "linear-quadratic-rates-s2": {
+   "kind": "graph",
+   "title": "Height of a ball",
+   "plot": {
+    "label": "Graph of h(t) = -5t^2 + 20t + 1, the height of a ball in meters after t seconds, for 0 to 4 seconds, with the secant line through (0, 1) and (3, 16)",
+    "x": [
+     -0.3,
+     4.3
+    ],
+    "y": [
+     -2,
+     24
+    ],
+    "xStep": 1,
+    "yStep": 4,
+    "xLabel": "t (seconds)",
+    "yLabel": "h (meters)",
+    "curves": [
+     {
+      "fn": "-5x^2 + 20x + 1",
+      "domain": [
+       0,
+       4
+      ],
+      "label": "h",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "through": [
+       [
+        0,
+        1
+       ],
+       [
+        3,
+        16
+       ]
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       1
+      ]
+     },
+     {
+      "at": [
+       3,
+       16
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-linear-quadratic-rates-1",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "linear-quadratic-rates-s1",
+   "q": "Using the table, what is the average rate of change of $f$ on $[1, 3]$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "$10$ is the change $f(3) - f(1)$; divide by $3 - 1 = 2$."
+     },
+     {
+      "value": 3,
+      "why": "$3$ is the change over $[1, 2]$ only. Use the ends of $[1, 3]$: $\\frac{13 - 3}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{f(3) - f(1)}{3 - 1} = \\frac{13 - 3}{2} = 5$, the slope of the secant line through $(1, 3)$ and $(3, 13)$."
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-2",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-quadratic-rates-s1",
+   "q": "The second differences in the table are all $4$. What does that show about $f$ on $[0, 5]$?",
+   "type": "single",
+   "options": [
+    "The values fit a linear function, because the change in the change is the same at each step of the table.",
+    "The values fit a quadratic: the rates on consecutive unit intervals rise by $4$ each step.",
+    "$f$ is increasing on $[0, 5]$.",
+    "The average rate of change of $f$ is $4$ on each interval of length $1$."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Over steps of $1$, the first differences are the average rates of change on $[0, 1], [1, 2], \\ldots$. They change by the same amount, $4$, each time: the rates change linearly, which is what a quadratic does.",
+    "options": [
+     "A linear function has constant first differences; these first differences, $-1, 3, 7, 11, 15$, are not constant.",
+     "Right: constant second differences over equal steps are the mark of a quadratic.",
+     "$f(1) = 3 < f(0) = 4$, so $f$ decreases on $[0, 1]$.",
+     "$4$ is the change in the rates, not a rate; the rates are $-1, 3, 7, 11, 15$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-3",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-quadratic-rates-s1",
+   "q": "Which statement about the graph of $f$ on $[0, 5]$ is supported by the table?",
+   "type": "single",
+   "options": [
+    "It is concave down, because the second differences are positive numbers that stay the same.",
+    "It is concave up, because $f(5) > f(0)$.",
+    "It is concave up, because the average rates over consecutive equal intervals increase.",
+    "It is a straight line, because the second differences are constant."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Over equal steps, increasing average rates of change mean the rate of change is increasing, so $f$ is concave up.",
+    "options": [
+     "Positive second differences mean the rates are going up, which is concave up.",
+     "Comparing two outputs gives direction, not concavity. Concavity comes from how the rates change.",
+     "Right: the rates $-1, 3, 7, 11, 15$ increase.",
+     "A line has constant first differences; constant second differences mean a parabola."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-4",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-quadratic-rates-s1",
+   "q": "The pattern in the table continues. Use the differences to find $f(6)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 58,
+    "mistakes": [
+     {
+      "value": 54,
+      "why": "$54 = 39 + 15$ repeats the last first difference. The first differences grow by $4$, so the next one is $19$."
+     },
+     {
+      "value": 43,
+      "why": "$43 = 39 + 4$ adds the second difference. Add the next first difference, $15 + 4 = 19$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Next second difference: $4$. Next first difference: $15 + 4 = 19$. Next value: $f(6) = 39 + 19 = 58$."
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-5",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-quadratic-rates-s1",
+   "q": "What is the slope of the secant line through $(0, f(0))$ and $(5, f(5))$?",
+   "type": "single",
+   "options": [
+    "$35$",
+    "$\\frac{39}{5}$",
+    "$4$",
+    "$7$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The slope of the secant line through two points of a graph is the average rate of change between them: $\\frac{f(5) - f(0)}{5 - 0} = \\frac{39 - 4}{5} = 7$.",
+    "options": [
+     "$35 = f(5) - f(0)$ is the rise; divide by the run, $5$.",
+     "This divides $f(5)$ by $5$; subtract $f(0) = 4$ first.",
+     "$4$ is the second difference, not a slope.",
+     "Right: $\\frac{39 - 4}{5 - 0} = 7$, the average rate of change of $f$ on $[0, 5]$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-6",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "linear-quadratic-rates-s2",
+   "q": "A ball's height is $h(t) = -5t^2 + 20t + 1$ meters after $t$ seconds. What is the slope of the secant line through $(0, h(0))$ and $(3, h(3))$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 5,
+    "unit": "meters per second",
+    "units": [
+     "m/s",
+     "meters/second"
+    ],
+    "mistakes": [
+     {
+      "value": 15,
+      "why": "$15 = h(3) - h(0)$ is the change in height; divide by $3$ seconds."
+     },
+     {
+      "value": 16,
+      "why": "$16$ is $h(3)$, a height. The slope uses two heights: $\\frac{16 - 1}{3 - 0}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$h(0) = 1$ and $h(3) = -45 + 60 + 1 = 16$. Slope $= \\frac{16 - 1}{3 - 0} = 5$ meters per second, the average rate of change of $h$ on $[0, 3]$."
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-7",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-quadratic-rates-s2",
+   "q": "A ball's height is $h(t) = -5t^2 + 20t + 1$ meters after $t$ seconds. Write an equation of the secant line through $(0, h(0))$ and $(3, h(3))$.",
+   "type": "expr",
+   "expr": {
+    "answer": "1 + 5t",
+    "vars": [
+     "t"
+    ],
+    "domain": [
+     0,
+     4
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "16 + 5t",
+      "why": "At $t = 0$ the line passes through $(0, 1)$, so the constant term is $1$, not $16$."
+     },
+     {
+      "expr": "1 + 15t",
+      "why": "$15$ is the rise over all $3$ seconds; the slope is $\\frac{15}{3} = 5$."
+     },
+     {
+      "expr": "16 + 5(t - 1)",
+      "why": "The line passes through $(3, 16)$, so use $t - 3$: $y = 16 + 5(t - 3)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Slope $5$, through $(0, 1)$: $y = 1 + 5t$. Check: at $t = 3$, $y = 16 = h(3)$."
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-8",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "linear-quadratic-rates-s2",
+   "q": "A ball's height is $h(t) = -5t^2 + 20t + 1$ meters after $t$ seconds. Use the secant line on $[0, 3]$ to estimate $h(1)$. Is the estimate an overestimate or an underestimate?",
+   "type": "single",
+   "options": [
+    "$6$; an overestimate, since $h$ is increasing on $[0, 1]$",
+    "$6$; an underestimate, since $h$ is concave down on $[0, 3]$",
+    "$16$; exact, since the point $(1, 16)$ is on the graph of $h$",
+    "$5$; an underestimate, because the slope is positive"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The estimate is a point on the secant line: $y = 1 + 5(1) = 6$. $h$ is concave down on $[0, 3]$ (its rates fall), so its graph lies above the secant line between $t = 0$ and $t = 3$, and $6$ is an underestimate. Indeed $h(1) = 16$.",
+    "options": [
+     "Whether $h$ rises does not decide over or under; the bending does. The graph is above the secant line.",
+     "Right: the secant line gives $1 + 5(1) = 6$, and the true height $h(1) = 16$ is above it.",
+     "$16$ is $h(1)$ itself; the secant line's value at $t = 1$ is $6$.",
+     "$5$ is the slope. The estimate is the line's value at $t = 1$: $1 + 5 \\cdot 1 = 6$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-9",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-quadratic-rates-s2",
+   "q": "A ball's height is $h(t) = -5t^2 + 20t + 1$ meters after $t$ seconds. What happens to the average rates of change of $h$ on $[0, 1]$, $[1, 2]$, $[2, 3]$ and $[3, 4]$?",
+   "type": "single",
+   "options": [
+    "They are $15, 5, -5, -15$: they decrease by $10$ each second.",
+    "They are $16, 21, 16, 1$: they rise, then fall.",
+    "They each equal $5$, the slope of the secant line on $[0, 3]$.",
+    "They are $15, 5, -5, -15$, which drop by $5$ from one to the next."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$h(0), h(1), \\ldots, h(4) = 1, 16, 21, 16, 1$, so the rates over unit intervals are $15, 5, -5, -15$. They change linearly (by $-10$ each step), so $h$ is concave down.",
+    "options": [
+     "Right: a quadratic's rates over consecutive equal intervals change by a constant amount.",
+     "These are heights, not rates of change.",
+     "Only a line has the same rate on every interval.",
+     "$15 - 5 = 10$: the rates drop by $10$ each step."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-10",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the average rate of change of $g(x) = -3x + 7$ on $[-2, 10]$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -3,
+    "mistakes": [
+     {
+      "value": -36,
+      "why": "$-36$ is the change $g(10) - g(-2)$; divide by the $12$ units of input."
+     },
+     {
+      "value": 7,
+      "why": "$7$ is the $y$-intercept; the rate of a linear function is its slope."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A linear function has the same average rate of change on every interval: its slope, $-3$. Check: $\\frac{g(10) - g(-2)}{12} = \\frac{-23 - 13}{12} = -3$."
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-11",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Each table lists outputs at $x = 0, 1, 2, 3, 4$. Which could come from a quadratic function?",
+   "type": "single",
+   "options": [
+    "$5, 8, 11, 14, 17$",
+    "$1, 3, 9, 27, 81$",
+    "$2, 3, 6, 11, 18$",
+    "$0, 1, 0, 1, 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Over equal input steps, a quadratic has constant second differences (and nonconstant first differences). Only $2, 3, 6, 11, 18$ has that: $1, 3, 5, 7$ then $2, 2, 2$.",
+    "options": [
+     "The first differences are all $3$: linear, not quadratic.",
+     "Differences $2, 6, 18, 54$ and then $4, 12, 36$: the second differences are not constant.",
+     "Right: first differences $1, 3, 5, 7$, second differences all $2$.",
+     "Differences $1, -1, 1, -1$ and then $-2, 2, -2$: not constant."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-12",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $q(x) = 3x^2$, write the average rate of change of $q$ on $[x, x + 1]$ as an expression in $x$.",
+   "type": "expr",
+   "expr": {
+    "answer": "6x + 3",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "lhs": "\\frac{q(x + 1) - q(x)}{1} =",
+    "mistakes": [
+     {
+      "expr": "6x",
+      "why": "$3(x + 1)^2 = 3x^2 + 6x + 3$: keep the constant $3$."
+     },
+     {
+      "expr": "3x^2 + 3",
+      "why": "Expand $(x + 1)^2$ fully: $x^2 + 2x + 1$, then multiply by $3$ and subtract $3x^2$."
+     },
+     {
+      "expr": "3(x + 1)^2",
+      "why": "That is $q(x + 1)$; subtract $q(x) = 3x^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$q(x + 1) - q(x) = 3(x^2 + 2x + 1) - 3x^2 = 6x + 3$. It is linear in $x$: a quadratic's rates over unit intervals change by the constant $6$."
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-13",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A function $p$ is concave up on $[2, 6]$. You estimate $p(3)$ with the secant line through $(2, p(2))$ and $(6, p(6))$. What kind of estimate is it?",
+   "type": "single",
+   "options": [
+    "An underestimate, because the secant line is below the graph of $p$",
+    "Exact, because both ends are on the graph",
+    "It depends on whether $p$ is increasing",
+    "An overestimate, because the graph lies below the secant line"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "On an interval where a graph is concave up, it lies below any secant line between two of its points, so a value on the secant line is too big: an overestimate.",
+    "options": [
+     "For a concave up graph it is the other way: the graph sags below the secant line.",
+     "Only the two ends are shared; between them the graph bends away from the line.",
+     "The direction of $p$ does not matter; the concavity on $[2, 6]$ decides.",
+     "Right: concave up on $[2, 6]$ means the graph is below the secant line between $2$ and $6$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-14",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The average rates of change of a function over the consecutive intervals $[0, 1], [1, 2], [2, 3], [3, 4]$ are $4, 1, -2, -5$. Which describes the function on $[0, 4]$?",
+   "type": "single",
+   "options": [
+    "Concave up, with rates that change by $3$ each step",
+    "Concave down, with rates that change by $-3$ each step, as a quadratic's do",
+    "Decreasing on the whole interval $[0, 4]$",
+    "Linear, because the rates change by the same amount from each interval to the next"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The rates decrease, so the function is concave down. They change by $-3$ every step, which is the pattern of a quadratic (constant second differences).",
+    "options": [
+     "The rates go down ($4$ to $-5$), so the graph is concave down.",
+     "Right: decreasing rates mean concave down, and a constant change in the rates fits a quadratic.",
+     "The first two rates are positive, so the function rises on $[0, 2]$.",
+     "A linear function has equal rates, not rates changing by equal amounts."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-15",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "The secant line of $f$ through $(a, f(a))$ and $(b, f(b))$ has slope equal to",
+   "type": "single",
+   "options": [
+    "the average rate of change of $f$ on $[a, b]$",
+    "the change $f(b) - f(a)$",
+    "the average of $f(a)$ and $f(b)$",
+    "$\\frac{b - a}{f(b) - f(a)}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A secant line joins two points of a graph. Its slope, $\\frac{f(b) - f(a)}{b - a}$, is by definition the average rate of change of $f$ on $[a, b]$.",
+    "options": [
+     "Right: both are $\\frac{f(b) - f(a)}{b - a}$.",
+     "That is only the rise; the slope divides it by $b - a$.",
+     "That is a height between the two outputs, not a slope.",
+     "This is run over rise, upside down."
+    ]
+   }
+  }
+ ]
+}

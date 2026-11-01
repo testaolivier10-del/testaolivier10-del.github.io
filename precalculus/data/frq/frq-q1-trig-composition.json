@@ -1,0 +1,175 @@
+{
+ "id": "frq-q1-trig-composition",
+ "type": "concepts",
+ "title": "A trigonometric function and a graph: composites, every solution, and an inverse",
+ "calc": true,
+ "points": 6,
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "inverse-trig"
+ ],
+ "practices": [
+  "1.A",
+  "1.C",
+  "2.B",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "The graph of $f$, and $g(x) = 2\\sin\\left(\\frac{\\pi x}{4}\\right) + 1$",
+  "text": "<p>The graph of the function $f$ on $[0, 8]$ is made of three line segments, through the points $(0, 1)$, $(2, 5)$, $(5, -1)$ and $(8, 2)$. The function $g$ is given by $g(x) = 2\\sin\\left(\\frac{\\pi x}{4}\\right) + 1$. A graphing calculator is allowed; use radian mode.</p>",
+  "plot": {
+   "label": "Graph of f on [0, 8]: line segments from (0, 1) up to (2, 5), down to (5, -1), and up to (8, 2)",
+   "x": [
+    -0.5,
+    8.5
+   ],
+   "y": [
+    -2,
+    6
+   ],
+   "xStep": 1,
+   "yStep": 1,
+   "xLabel": "x",
+   "yLabel": "y",
+   "curves": [
+    {
+     "fn": "1 + 2x",
+     "domain": [
+      0,
+      2
+     ],
+     "label": "f",
+     "ends": [
+      "closed",
+      null
+     ]
+    },
+    {
+     "fn": "5 - 2(x - 2)",
+     "domain": [
+      2,
+      5
+     ],
+     "cls": "s1"
+    },
+    {
+     "fn": "x - 6",
+     "domain": [
+      5,
+      8
+     ],
+     "cls": "s1",
+     "ends": [
+      null,
+      "closed"
+     ]
+    }
+   ],
+   "points": [
+    {
+     "at": [
+      2,
+      5
+     ]
+    },
+    {
+     "at": [
+      5,
+      -1
+     ]
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Find</b> the value of $f(g(2))$. Show the work that leads to your answer.",
+   "rubric": [
+    {
+     "point": "Inner value $g(2) = 3$ shown, and $f(g(2)) = f(3) = 3$",
+     "accept": [
+      "$g(2) = 2\\sin\\frac{\\pi}{2} + 1 = 3$, then $f(3) = 3$",
+      "the inner value 3 written before the final value 3"
+     ]
+    }
+   ],
+   "sample": "$g(2) = 2\\sin\\left(\\frac{\\pi}{2}\\right) + 1 = 2(1) + 1 = 3$. From the graph, $f(3) = 5 - 2(3 - 2) = 3$. So $f(g(2)) = f(3) = 3$."
+  },
+  {
+   "label": "A(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "<b>Find</b> every value of $x$ in $[0, 8]$ for which $f(x) = 1$.",
+   "rubric": [
+    {
+     "point": "All three values, $x = 0$, $x = 4$ and $x = 7$, and no others",
+     "accept": [
+      "$x = 0, 4, 7$"
+     ]
+    }
+   ],
+   "sample": "The horizontal line $y = 1$ meets the graph of $f$ three times: at $x = 0$ on the first segment, at $x = 4$ on the second ($5 - 2(x - 2) = 1$) and at $x = 7$ on the third ($x - 6 = 1$). So $x = 0$, $x = 4$ and $x = 7$."
+  },
+  {
+   "label": "B",
+   "points": 2,
+   "space": "lines",
+   "prompt": "<b>Find</b> every value of $x$ in $[0, 8]$ for which $g(x) = 2.5$. Give each answer correct to three decimal places, and show the setup.",
+   "rubric": [
+    {
+     "point": "Sets up $g(x) = 2.5$ (or $\\sin\\left(\\frac{\\pi x}{4}\\right) = 0.75$) and gives one correct solution",
+     "accept": [
+      "$x \\approx 1.080$ (or $1.079$)",
+      "$x \\approx 2.920$"
+     ]
+    },
+    {
+     "point": "Gives both solutions, $x \\approx 1.080$ and $x \\approx 2.920$, and no others in $[0, 8]$",
+     "accept": [
+      "1.080 and 2.920",
+      "1.079 and 2.920 (truncated)"
+     ]
+    }
+   ],
+   "sample": "$2\\sin\\left(\\frac{\\pi x}{4}\\right) + 1 = 2.5$ gives $\\sin\\left(\\frac{\\pi x}{4}\\right) = 0.75$. In radian mode, $\\frac{\\pi x}{4} = \\sin^{-1}(0.75) \\approx 0.848062$ or $\\pi - 0.848062 \\approx 2.293531$. So $x \\approx 1.080$ or $x \\approx 2.920$. On $[4, 8]$, $\\sin\\left(\\frac{\\pi x}{4}\\right) \\le 0$, so there are no other solutions (graphing $y = g(x)$ and $y = 2.5$ on $[0, 8]$ shows exactly two intersections)."
+  },
+  {
+   "label": "C(i)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "Is $g$ invertible on the interval $[0, 4]$? <b>Give a reason</b> for your answer using values of $g$.",
+   "rubric": [
+    {
+     "point": "No, with two specific inputs in $[0, 4]$ that give the same output",
+     "accept": [
+      "$g(1) = g(3) = \\sqrt{2} + 1$",
+      "$g(0) = g(4) = 1$"
+     ]
+    }
+   ],
+   "sample": "No. $g(1) = 2\\sin\\frac{\\pi}{4} + 1 = \\sqrt{2} + 1$ and $g(3) = 2\\sin\\frac{3\\pi}{4} + 1 = \\sqrt{2} + 1$. Two different inputs in $[0, 4]$ share the output $\\sqrt{2} + 1$, so $g$ has no inverse on $[0, 4]$."
+  },
+  {
+   "label": "C(ii)",
+   "points": 1,
+   "space": "lines",
+   "prompt": "On the interval $[-2, 2]$, $g$ is invertible. <b>Write</b> an expression for $g^{-1}(x)$, for $-1 \\le x \\le 3$.",
+   "rubric": [
+    {
+     "point": "$g^{-1}(x) = \\frac{4}{\\pi}\\sin^{-1}\\left(\\frac{x - 1}{2}\\right)$",
+     "accept": [
+      "$\\frac{4}{\\pi}\\arcsin\\left(\\frac{x - 1}{2}\\right)$",
+      "an equivalent expression"
+     ]
+    }
+   ],
+   "sample": "Swap and solve: $x = 2\\sin\\left(\\frac{\\pi y}{4}\\right) + 1$, so $\\sin\\left(\\frac{\\pi y}{4}\\right) = \\frac{x - 1}{2}$. For $y$ in $[-2, 2]$, $\\frac{\\pi y}{4}$ is in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$, the range of $\\sin^{-1}$, so $\\frac{\\pi y}{4} = \\sin^{-1}\\left(\\frac{x - 1}{2}\\right)$ and $g^{-1}(x) = \\frac{4}{\\pi}\\sin^{-1}\\left(\\frac{x - 1}{2}\\right)$."
+  }
+ ]
+}

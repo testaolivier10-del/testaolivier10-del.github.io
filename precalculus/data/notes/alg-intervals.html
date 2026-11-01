@@ -1,0 +1,37 @@
+<p>Intervals are how precalculus says "these inputs" or "these outputs". You will write them for domains and ranges, for where a function rises or falls, and for the stretch of inputs a question is about. This page covers the notation and how to solve the linear inequalities that produce intervals.</p>
+
+<h2>Interval notation</h2>
+<p>An interval is every real number between two ends. Write the left end, a comma, the right end, and show whether each end is included:</p>
+<table class="compare">
+<thead><tr><th scope="col">Inequality</th><th scope="col">Interval</th><th scope="col">Ends</th></tr></thead>
+<tbody>
+<tr><td>$-1 \le x \le 4$</td><td>$[-1, 4]$</td><td>both included (closed interval)</td></tr>
+<tr><td>$-1 < x < 4$</td><td>$(-1, 4)$</td><td>neither included (open interval)</td></tr>
+<tr><td>$-1 \le x < 4$</td><td>$[-1, 4)$</td><td>$-1$ in, $4$ out</td></tr>
+<tr><td>$x \ge 2$</td><td>$[2, \infty)$</td><td>$2$ in; no right end</td></tr>
+<tr><td>$x < 5$</td><td>$(-\infty, 5)$</td><td>no left end; $5$ out</td></tr>
+</tbody>
+</table>
+<p>A bracket means "included", a parenthesis means "not included". The symbols $\infty$ and $-\infty$ are not numbers you can land on, so they always get a parenthesis. On a graph, an included end gets a closed dot and an excluded end an open dot.</p>
+<p>When a set skips a number, write the pieces and join them with the union sign $\cup$. Every real number except $5$ is $(-\infty, 5) \cup (5, \infty)$.</p>
+
+<h2>Solving linear inequalities</h2>
+<p>A linear inequality, such as $5x - 4 \le 2x + 11$, is solved like an equation: add, subtract, multiply or divide both sides by the same number. One rule is different. <b>Multiplying or dividing by a negative number flips the inequality.</b> The reason: $2 < 3$, but $-2 > -3$. Negation turns the number line around.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Solve $3 - 2x > 7$.</p>
+<p>Subtract $3$ from both sides: $-2x > 4$.</p>
+<p>Divide by $-2$ and flip: $x < -2$. In interval notation, $(-\infty, -2)$.</p>
+<p>Check one value inside: $x = -3$ gives $3 + 6 = 9$, and $9 > 7$. Check the end: $x = -2$ gives $7 > 7$, false, so the parenthesis is right.</p>
+</div>
+
+<h2>Compound inequalities</h2>
+<p>A compound inequality has three parts, like $-1 \le 2x + 3 < 9$. Do every step to all three parts at once.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Which inputs of $f(x) = 2x + 3$ give outputs with $-1 \le f(x) < 9$?</p>
+<p>Subtract $3$ from all parts: $-4 \le 2x < 6$. Divide all parts by $2$: $-2 \le x < 3$. The answer is $[-2, 3)$.</p>
+</div>
+<figure id="fig-intervals" data-fig="alg-intervals-outputs"><figcaption>The inputs in $[-2, 3)$ give the outputs from $-1$ up to, but not including, $9$.</figcaption></figure>
+
+<h2>Domains as intervals</h2>
+<p>The domain rules from the last topic produce inequalities, so domains come out as intervals. For $g(x) = \sqrt{6 - 2x}$, the inside must be at least $0$: $6 - 2x \ge 0$, so $-2x \ge -6$ and $x \le 3$ (flip). The domain is $(-\infty, 3]$, with a bracket because $\sqrt{0} = 0$ is fine.</p>
+<p>Read the question for inputs or outputs. "Which inputs give outputs at least $5$" wants an interval of $x$-values, not $[5, \infty)$.</p>

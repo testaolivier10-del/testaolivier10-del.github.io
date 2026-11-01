@@ -1,0 +1,232 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "pcalc-alg-circles-1",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A 45-45-90 triangle has legs of length $6$. What is the exact length of its hypotenuse?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "6sqrt(2)",
+    "mistakes": [
+     { "value": 12, "why": "That adds the legs. The hypotenuse is $\\sqrt{6^2 + 6^2} = 6\\sqrt{2}$, shorter than the two legs together." },
+     { "value": "3sqrt(2)", "why": "That divides the leg by $\\sqrt{2}$. The hypotenuse is the longest side: multiply, $6\\sqrt{2}$." }
+    ]
+   },
+   "why": {
+    "correct": "The sides are in the ratio $1 : 1 : \\sqrt{2}$, so the hypotenuse is $6\\sqrt{2}$."
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-2",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 30-60-90 triangle has hypotenuse $10$. What is the exact length of the leg across from the $60^\\circ$ angle?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "5sqrt(3)",
+    "mistakes": [
+     { "value": 5, "why": "That is the short leg, across from $30^\\circ$. The leg across from $60^\\circ$ is $\\sqrt{3}$ times the short leg." },
+     { "value": "10sqrt(3)", "why": "That scales the long leg by 10, but the hypotenuse is $2$ in the basic triangle, so the scale factor is 5." }
+    ]
+   },
+   "why": {
+    "correct": "Scale $1 : \\sqrt{3} : 2$ by 5 so that the hypotenuse is 10: the legs are $5$ and $5\\sqrt{3}$, and $5\\sqrt{3}$ is across from $60^\\circ$."
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-3",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the exact value of $\\sin 60^\\circ$?",
+   "type": "single",
+   "options": ["$\\frac{\\sqrt{3}}{2}$", "$\\frac{1}{2}$", "$\\sqrt{3}$", "$\\frac{\\sqrt{2}}{2}$"],
+   "correct": 0,
+   "why": {
+    "correct": "In the 30-60-90 triangle the side across from $60^\\circ$ is $\\sqrt{3}$ and the hypotenuse is $2$, so $\\sin 60^\\circ = \\frac{\\sqrt{3}}{2}$.",
+    "options": [
+     "Opposite $\\sqrt{3}$ over hypotenuse $2$.",
+     "$\\frac{1}{2}$ is $\\sin 30^\\circ$ (or $\\cos 60^\\circ$): it uses the short leg.",
+     "$\\sqrt{3}$ is opposite over adjacent, $\\tan 60^\\circ$.",
+     "$\\frac{\\sqrt{2}}{2}$ belongs to the 45-45-90 triangle."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-4",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the exact value of $\\cos 45^\\circ$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "sqrt(2)/2",
+    "mistakes": [
+     { "value": "sqrt(2)", "why": "That is hypotenuse over leg, upside down. Cosine is adjacent over hypotenuse: $\\frac{1}{\\sqrt{2}} = \\frac{\\sqrt{2}}{2}$." },
+     { "value": 1, "why": "That is $\\tan 45^\\circ$, leg over leg. Cosine divides by the hypotenuse $\\sqrt{2}$." }
+    ]
+   },
+   "why": {
+    "correct": "In the 45-45-90 triangle with legs 1, $\\cos 45^\\circ = \\frac{1}{\\sqrt{2}} = \\frac{\\sqrt{2}}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-5",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A circle has radius 9 cm. What is the exact length, in centimeters, of the arc cut off by a central angle of $80^\\circ$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "4pi",
+    "unit": "cm",
+    "mistakes": [
+     { "value": "8pi", "why": "That uses the diameter 18 in place of the radius. The circumference is $2\\pi r = 18\\pi$; take $\\frac{80}{360}$ of it." },
+     { "value": 720, "why": "That multiplies the angle by the radius. The arc is a fraction of the circumference: $\\frac{80}{360} \\cdot 2\\pi(9)$." }
+    ]
+   },
+   "why": {
+    "correct": "$s = \\frac{80}{360} \\cdot 2\\pi(9) = \\frac{2}{9} \\cdot 18\\pi = 4\\pi$ cm."
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-6",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A central angle of $\\theta$ degrees cuts off an arc exactly as long as the radius $r$. What is $\\theta$, exactly?",
+   "type": "single",
+   "options": ["$\\frac{180}{\\pi}$", "$\\frac{\\pi}{180}$", "$\\frac{360}{r}$", "$1$"],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{\\theta}{360} \\cdot 2\\pi r = r$. Divide by $r$: $\\frac{\\theta}{360} \\cdot 2\\pi = 1$, so $\\theta = \\frac{360}{2\\pi} = \\frac{180}{\\pi} \\approx 57.3$. The radius cancels, so the angle is the same for every circle.",
+    "options": [
+     "Solving $\\frac{\\theta}{360} \\cdot 2\\pi r = r$ gives $\\theta = \\frac{180}{\\pi}$.",
+     "This is the reciprocal, about $0.017$ degrees: far too small to cut off an arc as long as the radius.",
+     "The radius cancels from both sides, so the answer cannot depend on $r$.",
+     "One degree cuts off only $\\frac{1}{360}$ of the circumference, much less than the radius."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-7",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which is an equation of the circle with center $(-3, 4)$ and radius $5$?",
+   "type": "single",
+   "options": [
+    "$(x + 3)^2 + (y - 4)^2 = 25$",
+    "$(x - 3)^2 + (y + 4)^2 = 25$",
+    "$(x + 3)^2 + (y - 4)^2 = 5$",
+    "$(x - 3)^2 + (y - 4)^2 = 25$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$(x - h)^2 + (y - k)^2 = r^2$ with $h = -3$, $k = 4$, $r = 5$: $(x + 3)^2 + (y - 4)^2 = 25$.",
+    "options": [
+     "$x - (-3) = x + 3$, and $r^2 = 25$.",
+     "Both signs are flipped: this circle is centered at $(3, -4)$.",
+     "The right side is the radius squared, $25$, not the radius.",
+     "This circle is centered at $(3, 4)$; subtracting $-3$ gives $x + 3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-8",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which point lies on the circle $x^2 + y^2 = 1$?",
+   "type": "single",
+   "options": [
+    "$\\left(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right)$",
+    "$\\left(\\frac{1}{2}, \\frac{1}{2}\\right)$",
+    "$\\left(\\frac{3}{5}, \\frac{3}{5}\\right)$",
+    "$\\left(\\frac{\\sqrt{3}}{2}, \\frac{\\sqrt{3}}{2}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\left(\\frac{\\sqrt{3}}{2}\\right)^2 + \\left(\\frac{1}{2}\\right)^2 = \\frac{3}{4} + \\frac{1}{4} = 1$.",
+    "options": [
+     "The squares add to exactly 1.",
+     "$\\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}$: the point is inside the circle.",
+     "$\\frac{9}{25} + \\frac{9}{25} = \\frac{18}{25}$: inside the circle. The point $\\left(\\frac{3}{5}, \\frac{4}{5}\\right)$ would be on it.",
+     "$\\frac{3}{4} + \\frac{3}{4} = \\frac{3}{2}$: outside the circle."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-9",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What are the center and radius of the circle $(x - 2)^2 + (y + 1)^2 = 9$?",
+   "type": "single",
+   "options": [
+    "Center $(2, -1)$, radius $3$",
+    "Center $(-2, 1)$, radius $3$",
+    "Center $(2, -1)$, radius $9$",
+    "Center $(2, 1)$, radius $3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Match $(x - h)^2 + (y - k)^2 = r^2$: $h = 2$, $y + 1 = y - (-1)$ gives $k = -1$, and $r^2 = 9$ gives $r = 3$.",
+    "options": [
+     "$h = 2$, $k = -1$, $r = \\sqrt{9} = 3$.",
+     "The signs inside the parentheses are the opposite of the center's coordinates, not the same.",
+     "9 is the radius squared; the radius is 3.",
+     "$y + 1$ means $k = -1$, not $1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-10",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "On the circle $x^2 + y^2 = 1$, start at $(1, 0)$ and turn $30^\\circ$ counterclockwise about the origin. What are the coordinates of the point you reach?",
+   "type": "single",
+   "options": [
+    "$\\left(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right)$",
+    "$\\left(\\frac{1}{2}, \\frac{\\sqrt{3}}{2}\\right)$",
+    "$\\left(\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}\\right)$",
+    "$\\left(\\frac{1}{2}, \\frac{\\sqrt{2}}{2}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Drop a segment from the point to the $x$-axis: a 30-60-90 triangle with hypotenuse 1. The horizontal leg is $\\cos 30^\\circ = \\frac{\\sqrt{3}}{2}$ and the height is $\\sin 30^\\circ = \\frac{1}{2}$.",
+    "options": [
+     "$(\\cos 30^\\circ, \\sin 30^\\circ) = \\left(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right)$.",
+     "This is the point at $60^\\circ$: the coordinates are swapped.",
+     "This is the point at $45^\\circ$.",
+     "$\\left(\\frac{1}{2}\\right)^2 + \\left(\\frac{\\sqrt{2}}{2}\\right)^2 = \\frac{3}{4}$, so this point is not even on the circle."
+    ]
+   }
+  }
+ ]
+}

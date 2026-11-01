@@ -1,0 +1,12 @@
+{
+ "rational-holes-hole": {
+  "file": "figures/rational-holes-hole.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of r(x) = (x² + x − 2)/(x² − 1), which equals (x + 2)/(x + 1) for x ≠ 1. It has a hole (open circle) at (1, 1.5), a dashed vertical asymptote x = −1 and a dashed horizontal asymptote y = 1. Its zero is x = −2."
+ }
+}

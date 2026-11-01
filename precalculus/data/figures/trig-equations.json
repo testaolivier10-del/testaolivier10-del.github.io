@@ -1,0 +1,12 @@
+{
+ "trig-equations-circle": {
+  "file": "figures/trig-equations-circle.svg",
+  "ext": "svg",
+  "w": 520,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A unit circle with the horizontal line y = 1/2 crossing it at two points: one on the terminal ray of pi/6 in Quadrant I and one on the terminal ray of 5 pi/6 in Quadrant II. The two rays are mirror images across the y-axis."
+ }
+}

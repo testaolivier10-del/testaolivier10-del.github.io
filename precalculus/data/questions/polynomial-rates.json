@@ -1,0 +1,546 @@
+{
+ "stimuli": {
+  "polynomial-rates-s1": {
+   "kind": "graph",
+   "title": "The graph of $p$ on $[-3, 2.5]$",
+   "plot": {
+    "label": "Graph of p(x) = x^4/4 - 2x^2 + 3 on the closed interval from -3 to 2.5: it starts at (-3, 5.25), falls to (-2, -1), rises to (0, 3), falls to (2, -1) and rises to (2.5, 0.27)",
+    "x": [
+     -3.5,
+     3
+    ],
+    "y": [
+     -2,
+     6
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^4/4 - 2x^2 + 3",
+      "domain": [
+       -3,
+       2.5
+      ],
+      "label": "p",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -3,
+       5.25
+      ]
+     },
+     {
+      "at": [
+       -2,
+       -1
+      ]
+     },
+     {
+      "at": [
+       0,
+       3
+      ]
+     },
+     {
+      "at": [
+       2,
+       -1
+      ]
+     }
+    ]
+   }
+  },
+  "polynomial-rates-s2": {
+   "kind": "graph",
+   "title": "Temperature in a greenhouse",
+   "plot": {
+    "label": "Graph of T(h) = -0.015h^3 + 0.4h^2 + 52, the temperature in degrees Fahrenheit h hours after midnight, for 0 to 24 hours: it rises from 52 to about 94 near h = 18, then falls to about 75",
+    "x": [
+     -1,
+     25
+    ],
+    "y": [
+     40,
+     100
+    ],
+    "xStep": 4,
+    "yStep": 10,
+    "xLabel": "h (hours)",
+    "yLabel": "T (°F)",
+    "curves": [
+     {
+      "fn": "-0.015x^3 + 0.4x^2 + 52",
+      "domain": [
+       0,
+       24
+      ],
+      "label": "T",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-polynomial-rates-1",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polynomial-rates-s1",
+   "q": "The function $p(x) = \\frac{x^4}{4} - 2x^2 + 3$ is defined only for $-3 \\le x \\le 2.5$. At which inputs does $p$ have a local minimum?",
+   "type": "single",
+   "options": [
+    "$x = -2$ and $x = 2$",
+    "$x = 0$",
+    "$x = -3$ and $x = 0$",
+    "$x = -1$ and $x = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A local minimum is where the output is less than or equal to the outputs at nearby inputs: where $p$ changes from decreasing to increasing, at $x = -2$ and $x = 2$ (both with $p = -1$).",
+    "options": [
+     "Right: $p$ switches from decreasing to increasing at both.",
+     "At $x = 0$, $p$ switches from increasing to decreasing: a local maximum.",
+     "These are local maxima: the output there is greater than at every nearby input.",
+     "At $x = -1$ the graph is still rising and at $x = 1$ it is still falling; it does not turn around at either, so neither is a local minimum."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-2",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polynomial-rates-s1",
+   "q": "The function $p(x) = \\frac{x^4}{4} - 2x^2 + 3$ is defined only for $-3 \\le x \\le 2.5$. What is the global maximum value of $p$ on its domain?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 5.25,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "$3$ is the local maximum at $x = 0$; the left endpoint is higher."
+     },
+     {
+      "value": -3,
+      "why": "$-3$ is the input where the greatest output occurs; the value is $p(-3)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Compare the local maximum values and the endpoint values: $p(0) = 3$, $p(-3) = \\frac{81}{4} - 18 + 3 = 5.25$ and $p(2.5) \\approx 0.27$. The greatest is $5.25$, at the included endpoint $x = -3$."
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-3",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "polynomial-rates-s1",
+   "q": "The function $p(x) = \\frac{x^4}{4} - 2x^2 + 3$ is defined only for $-3 \\le x \\le 2.5$. What is the global minimum value of $p$ on its domain?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$2$ is an input where the least output occurs; the question asks for the output."
+     },
+     {
+      "value": 0.265625,
+      "why": "That is the value at the right endpoint, which is higher than the local minimum values."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The least output is $p(-2) = p(2) = 4 - 8 + 3 = -1$; neither endpoint is lower."
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-4",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polynomial-rates-s1",
+   "q": "The function $p(x) = \\frac{x^4}{4} - 2x^2 + 3$ is defined only for $-3 \\le x \\le 2.5$. How many points of inflection does the graph of $p$ have?",
+   "type": "single",
+   "options": [
+    "One",
+    "Two",
+    "Three",
+    "Four"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A point of inflection is where the graph changes concavity. $p$ is concave up near $x = -2$, concave down near $x = 0$ and concave up near $x = 2$: two switches, at about $x = -1.15$ and $x = 1.15$.",
+    "options": [
+     "Look at both sides: the graph changes from concave up to concave down left of $x = 0$ and back again right of it.",
+     "Right: concave up, then concave down around $x = 0$, then concave up again; it switches twice.",
+     "The turning points $-2$, $0$ and $2$ are extrema, not inflection points.",
+     "Count where the bending changes, not where the direction changes."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-5",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polynomial-rates-s1",
+   "q": "The function $p(x) = \\frac{x^4}{4} - 2x^2 + 3$ is defined only for $-3 \\le x \\le 2.5$. On which interval is $p$ decreasing and concave up?",
+   "type": "single",
+   "options": [
+    "$(-2, -1)$",
+    "$(0, 1)$",
+    "$(-3, -2)$",
+    "$(2, 2.5)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Decreasing: the graph falls, on $(-3, -2)$ and $(0, 2)$. Concave up: it bends upward, near $x = \\pm 2$. Both hold on $(-3, -2)$.",
+    "options": [
+     "On $(-2, -1)$, $p$ is increasing.",
+     "$p$ decreases here, but the graph bends downward (concave down) near $x = 0$.",
+     "Right: the graph falls toward the local minimum at $x = -2$ while bending upward.",
+     "The graph bends upward here, but it rises."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-6",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polynomial-rates-s2",
+   "calc": true,
+   "q": "The temperature in a greenhouse is $T(h) = -0.015h^3 + 0.4h^2 + 52$ degrees Fahrenheit, $h$ hours after midnight, for $0 \\le h \\le 24$. At what time $h$ is the temperature greatest? Give $h$ to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 17.77777777777778,
+    "unit": "hours",
+    "units": [
+     "hour",
+     "h",
+     "hrs"
+    ],
+    "mistakes": [
+     {
+      "value": 24,
+      "why": "$h = 24$ is the right endpoint, where $T(24) \\approx 75.04$; the graph peaks earlier. Use the calculator's maximum feature."
+     },
+     {
+      "value": 94.14,
+      "why": "$94.14$ is the greatest temperature; the question asks for the time."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Graph $T$ on $[0, 24]$ and use the maximum feature: the highest point is at $h \\approx 17.778$ hours. It beats both endpoints, $T(0) = 52$ and $T(24) = 75.04$."
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-7",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polynomial-rates-s2",
+   "calc": true,
+   "q": "The temperature in a greenhouse is $T(h) = -0.015h^3 + 0.4h^2 + 52$ degrees Fahrenheit, $h$ hours after midnight, for $0 \\le h \\le 24$. What is the greatest temperature on $[0, 24]$? Give it to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 94.13991769547326,
+    "unit": "degrees Fahrenheit",
+    "units": [
+     "°F",
+     "degrees",
+     "F"
+    ],
+    "mistakes": [
+     {
+      "value": 94.12,
+      "why": "$94.12 = T(18)$ uses a rounded time. Use the maximum feature, or store the exact time, before evaluating."
+     },
+     {
+      "value": 75.04,
+      "why": "$75.04$ is the value at $h = 24$, not the greatest value."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The maximum feature gives $T \\approx 94.140$ degrees at $h \\approx 17.778$. Evaluating at a rounded $h = 18$ gives $94.12$, which is not accurate to three decimals."
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-8",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "polynomial-rates-s2",
+   "calc": true,
+   "q": "The temperature in a greenhouse is $T(h) = -0.015h^3 + 0.4h^2 + 52$ degrees Fahrenheit, $h$ hours after midnight, for $0 \\le h \\le 24$. Find the average rate of change of $T$ on $[6, 12]$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 3.4200000000000017,
+    "unit": "degrees Fahrenheit per hour",
+    "units": [
+     "°F per hour",
+     "°F/h",
+     "degrees per hour"
+    ],
+    "mistakes": [
+     {
+      "value": 20.52,
+      "why": "$20.52$ is the change in temperature; divide by the $6$ hours."
+     },
+     {
+      "value": 6.9733,
+      "why": "That divides $83.68$ by $12$; use both ends: $\\frac{T(12) - T(6)}{12 - 6}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$T(6) = 63.16$ and $T(12) = 83.68$, so $\\frac{T(12) - T(6)}{12 - 6} = \\frac{20.52}{6} = 3.42$ degrees Fahrenheit per hour, the slope of the secant line on $[6, 12]$."
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-9",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "polynomial-rates-s2",
+   "calc": true,
+   "q": "The temperature in a greenhouse is $T(h) = -0.015h^3 + 0.4h^2 + 52$ degrees Fahrenheit, $h$ hours after midnight, for $0 \\le h \\le 24$. Which describes $T$ on the interval $(12, 17)$?",
+   "type": "single",
+   "options": [
+    "$T$ is increasing, and the rate of change of $T$ is increasing.",
+    "$T$ is decreasing, and the rate of change of $T$ is decreasing.",
+    "$T$ is increasing, and the rate of change of $T$ is decreasing.",
+    "$T$ is decreasing, and the rate of change of $T$ is increasing."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "On $(12, 17)$ the graph rises, so $T$ is increasing. The hourly changes shrink (about $2.97$ from $12$ to $13$, about $0.95$ from $16$ to $17$), so the rate of change of $T$ is decreasing: $T$ is concave down there.",
+    "options": [
+     "The graph bends downward on $(12, 17)$, so the rates are falling. Compare $\\frac{T(13) - T(12)}{1}$ with $\\frac{T(17) - T(16)}{1}$.",
+     "$T$ keeps rising until about $h = 17.778$.",
+     "Right: the temperature rises, but by less each hour as it nears its peak.",
+     "The temperature rises on $(12, 17)$; it falls only after $h \\approx 17.778$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-10",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are the degree and the leading coefficient of $f(x) = -2(x - 1)(x + 3)^2$?",
+   "type": "single",
+   "options": [
+    "Degree $3$, leading coefficient $-2$",
+    "Degree $2$, leading coefficient $-2$",
+    "Degree $3$, leading coefficient $-18$",
+    "Degree $3$, leading coefficient $2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Multiplying the $x$ from each factor gives the leading term $-2 \\cdot x \\cdot x^2 = -2x^3$: degree $3$, leading coefficient $-2$.",
+    "options": [
+     "Right: the highest power is $x \\cdot x^2 = x^3$, with coefficient $-2 \\cdot 1 \\cdot 1 = -2$.",
+     "Count every factor of $x$: $(x - 1)(x + 3)^2$ has three.",
+     "$-18$ is the constant term, $-2(-1)(3)^2$; the leading coefficient multiplies the $x$ in each factor.",
+     "Keep the sign: the factor in front is $-2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-11",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the leading term of $g(x) = 5 - 3x^4 + 2x$?",
+   "type": "single",
+   "options": [
+    "$5$",
+    "$2x$",
+    "$-3x^4$",
+    "$3x^4$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The leading term is the term with the highest power of $x$, wherever it is written: $-3x^4$. The degree is $4$ and the leading coefficient is $-3$.",
+    "options": [
+     "$5$ is written first, but the leading term has the highest power of $x$.",
+     "$2x$ has power $1$; $-3x^4$ has a higher power.",
+     "Right: it has the highest power of $x$, $4$.",
+     "Keep the sign: the term is $-3x^4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-12",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A polynomial function $f$ has zeros at $x = 1$ and $x = 4$ and no zeros between them. Which must be true?",
+   "type": "single",
+   "options": [
+    "$f$ is increasing on $[1, 4]$.",
+    "$f$ has a local maximum or a local minimum between $1$ and $4$.",
+    "$f(2.5) = 0$",
+    "$f$ has a point of inflection at $x = 2.5$."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Between two distinct real zeros, a polynomial function's graph must turn around to come back to the $x$-axis, so it has at least one local extremum there.",
+    "options": [
+     "$f$ starts and ends at $0$ on $[1, 4]$, so it cannot rise the whole way.",
+     "Right: $f$ leaves $0$ and comes back to $0$, so it turns around in between.",
+     "There are no zeros between $1$ and $4$.",
+     "Nothing forces a change in concavity at the midpoint."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-13",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is true of a polynomial function of even degree, such as $x^4 - 3x^2 + x$?",
+   "type": "single",
+   "options": [
+    "It has a global maximum or a global minimum.",
+    "It has a point of inflection at $x = 0$.",
+    "It has a global maximum and a global minimum.",
+    "It has exactly one local extremum."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For even degree, the two ends of the graph both rise or both fall. If they rise, the graph has a lowest point (a global minimum); if they fall, a highest point (a global maximum).",
+    "options": [
+     "Right: both ends of its graph go the same way, so it has a highest or a lowest point.",
+     "Inflection points depend on the function; $x^2$ has none.",
+     "$x^2$ has a global minimum but no global maximum.",
+     "$x^4 - 3x^2 + x$ has three turning points."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-14",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The average rates of change of $f$ on $[0, 1]$, $[1, 2]$, $[2, 3]$, $[3, 4]$ and $[4, 5]$ are $5$, $3$, $2$, $2.5$ and $4$. Where does the graph most likely change from concave down to concave up?",
+   "type": "single",
+   "options": [
+    "Between $x = 0$ and $x = 1$",
+    "Between $x = 4$ and $x = 5$",
+    "Nowhere, because the rates are positive",
+    "Between $x = 2$ and $x = 3$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Falling rates ($5, 3, 2$) mean concave down; rising rates ($2, 2.5, 4$) mean concave up. The change, a point of inflection, sits where the rates stop falling and start rising: around the interval $[2, 3]$.",
+    "options": [
+     "The rates are still falling after $[0, 1]$, so the graph is still concave down there.",
+     "The rates were already rising before $[4, 5]$.",
+     "Positive rates tell you $f$ is increasing; concavity comes from how the rates change.",
+     "Right: the rates fall until $[2, 3]$ and rise after it, so the switch is near there."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-15",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Use a calculator to find the local minimum value of $g(x) = x^3 - 5x + 1$. Give it to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": -3.3033148291193513,
+    "mistakes": [
+     {
+      "value": 1.291,
+      "why": "$1.291$ is the input where the local minimum occurs; the question asks for the output $g(1.291...)$."
+     },
+     {
+      "value": -3.3,
+      "why": "Not accurate to three decimal places: the value is $-3.30331...$, so $-3.303$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Graph $g$ and use the minimum feature near $x = 1.3$: the local minimum is at $x \\approx 1.291$, with value $g \\approx -3.303$."
+   }
+  },
+  {
+   "id": "pcalc-polynomial-rates-16",
+   "unit": "unit-1",
+   "topic": "polynomial-rates",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "On $[-5, 5]$, a polynomial function has local maximum values $3$ and $7$, local minimum values $-2$ and $1$, and endpoint values $f(-5) = 4$ and $f(5) = -6$. What is its global maximum value on $[-5, 5]$?",
+   "type": "single",
+   "options": [
+    "$3$",
+    "$4$",
+    "$7$",
+    "$10$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The global maximum on a closed interval is the greatest of the local maximum values and the endpoint values: $\\max(3, 7, 4, -6) = 7$.",
+    "options": [
+     "$3$ is the smaller of the two local maximum values.",
+     "The endpoint value $4$ is less than the local maximum value $7$.",
+     "Right: compare every candidate: $3$, $7$, $4$ and $-6$. The greatest is $7$.",
+     "Global values are compared, not added: $3 + 7$ is not an output of $f$."
+    ]
+   }
+  }
+ ]
+}

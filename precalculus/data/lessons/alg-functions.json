@@ -1,0 +1,46 @@
+{
+ "topic": "alg-functions",
+ "hook": "Press B4 on a vending machine and you always get the same snack. That one-button, one-snack rule is what makes a function: every input gives exactly one output. Precalculus is the study of functions, so this page sets up the words and notation the whole course uses.",
+ "prereq": [],
+ "figure": {
+  "figure": "alg-functions-graph",
+  "caption": "The graph of $f(x) = \\sqrt{x + 4} - 1$. Read inputs across and outputs up: the zero is $x = -3$, the $y$-intercept is $(0, 1)$ and $f(5) = 2$."
+ },
+ "chain": [
+  {
+   "cause": "Each input of a function has exactly one output",
+   "effect": "$f(3) = 7$ names one point $(3, 7)$ on the graph of $f$"
+  },
+  {
+   "cause": "A formula divides by an expression or takes its square root",
+   "effect": "the domain leaves out inputs that make a denominator $0$ or a square root's inside negative"
+  },
+  {
+   "cause": "An input $a$ gives the output $0$",
+   "effect": "$a$ is a zero of $f$ and the graph meets the $x$-axis at $(a, 0)$"
+  },
+  {
+   "cause": "A piecewise-defined function is evaluated",
+   "effect": "first find the piece whose condition holds for the input, then use only that piece"
+  }
+ ],
+ "ideas": [
+  "<b>Function</b>: each input gives exactly one output. $f(3) = 7$ means the input $3$ gives the output $7$.",
+  "<b>Domain</b>: the inputs a function accepts. <b>Range</b>: the outputs it produces.",
+  "<b>Zero</b>: an input with output $0$, an $x$-intercept of the graph. <b>$y$-intercept</b>: the point $(0, f(0))$.",
+  "To evaluate, replace every $x$ with the input in parentheses: $f(-2)$, $f(x + 1)$."
+ ],
+ "misconception": {
+  "wrong": "$f(x + 1)$ is the same as $f(x) + 1$.",
+  "right": "$f(x + 1)$ changes the input: replace every $x$ with $x + 1$. $f(x) + 1$ changes the output: add $1$ after evaluating. For $f(x) = x^2$ they are $(x + 1)^2$ and $x^2 + 1$, which differ."
+ },
+ "check": [
+  "pcalc-alg-functions-1",
+  "pcalc-alg-functions-2",
+  "pcalc-alg-functions-3",
+  "pcalc-alg-functions-5",
+  "pcalc-alg-functions-9",
+  "pcalc-alg-functions-10"
+ ],
+ "summary": "A function gives each input one output, written $f(\\text{input}) = \\text{output}$. The domain is every allowed input (no zero denominators, no square roots of negatives); the range is every output. Zeros are inputs with output $0$; the $y$-intercept is $(0, f(0))$. Piecewise-defined functions use the piece whose condition the input meets."
+}

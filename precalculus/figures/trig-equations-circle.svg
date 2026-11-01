@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" width="520" height="420" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Two angles with sine 1/2</title>
+<desc id="d">A unit circle with the dashed horizontal line y = 1/2. The line meets the circle at two points, on the terminal rays of pi/6 in Quadrant I and 5 pi/6 in Quadrant II. Each ray makes an angle of pi/6 with the x-axis, so the two rays are mirror images across the y-axis.</desc>
+<rect width="520" height="420" fill="#FFFFFF"/>
+<line x1="40" y1="230" x2="480" y2="230" stroke="#5A6563" stroke-width="1.4"/>
+<line x1="260" y1="408" x2="260" y2="30" stroke="#5A6563" stroke-width="1.4"/>
+<circle cx="260" cy="230" r="160" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<line x1="50" y1="150" x2="470" y2="150" stroke="#0072B2" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="470" y="172" font-size="15" fill="#0072B2" text-anchor="end">y = 1/2</text>
+<line x1="260" y1="230" x2="398.56" y2="150" stroke="#11592F" stroke-width="2.6"/>
+<circle cx="398.56" cy="150" r="5" fill="#11592F" stroke="#11592F" stroke-width="2"/>
+<text x="408.56" y="140" font-size="16" fill="#11592F" text-anchor="start" font-weight="bold">π/6</text>
+<line x1="260" y1="230" x2="121.44" y2="150" stroke="#11592F" stroke-width="2.6"/>
+<circle cx="121.44" cy="150" r="5" fill="#11592F" stroke="#11592F" stroke-width="2"/>
+<text x="111.44" y="140" font-size="16" fill="#11592F" text-anchor="end" font-weight="bold">5π/6</text>
+<path d="M300,230 A40,40 0 0 0 294.64,210" fill="none" stroke="#1F2A28" stroke-width="1.5"/>
+<path d="M220,230 A40,40 0 0 1 225.36,210" fill="none" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="316" y="222" font-size="13" fill="#1F2A28" text-anchor="start">π/6</text>
+<text x="204" y="222" font-size="13" fill="#1F2A28" text-anchor="end">π/6</text>
+<text x="426" y="248" font-size="13" fill="#5A6563" text-anchor="start">1</text>
+</svg>

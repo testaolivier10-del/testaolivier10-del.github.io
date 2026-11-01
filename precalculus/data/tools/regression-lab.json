@@ -1,0 +1,24 @@
+{
+ "about": "Regression lab (docs/apprecalc-spec.md section 6, builder T1). The data sets, the least-squares fits and every number live in precalculus/assets/tools/math/regression-lab.js; a data set and a context unlock with their topics. Checked by scripts/lib/apprecalc-tool-checks/regression-lab.mjs.",
+ "slug": "regression-lab",
+ "kind": "simulator",
+ "topic": "model-construction",
+ "intro": "<p>Fit a model to real-looking data the way a graphing calculator does: linear, quadratic, cubic, quartic, exponential, logarithmic or sinusoidal. The model is drawn through the points, each residual is a short line from the point to the model, and the residual plot sits underneath. Residuals that scatter with no pattern mean the model fits the shape of the data; a curve or a wave in them means another model will do better. Drag the prediction line to read the model's value to three decimal places.</p>",
+ "howItWorksTitle": "How the fits are found",
+ "howItWorks": "<ul><li><b>Least squares.</b> Each model's constants make the sum of the squared residuals as small as possible, the way the calculator's regressions do.</li><li><b>Residual</b> = actual $y$ − predicted $y$. Above the model is positive, below is negative.</li><li><b>Exponential</b> ($y = a \\cdot b^x$) is fit as a line through $(x, \\ln y)$, and <b>logarithmic</b> ($y = a + b\\ln x$) as a line through $(\\ln x, y)$, as ExpReg and LnReg do; so the data need $y > 0$ or $x > 0$.</li><li><b>Sinusoidal</b> ($y = a\\sin(bx + c) + d$): the frequency $b$ is found by search, then $a$, $c$ and $d$ by least squares. Use radians.</li><li><b>Three decimals.</b> Constants are stored, not rounded: a prediction made from rounded constants can miss the third decimal. Round only the final answer.</li><li><b>Pattern test.</b> The residual plot is read by a runs test on the signs of the residuals in order of $x$: long runs of one sign mean a pattern.</li></ul>",
+ "datasets": [
+  { "id": "crickets", "topic": "model-construction" },
+  { "id": "stopping", "topic": "model-construction" },
+  { "id": "box", "topic": "model-construction" },
+  { "id": "caffeine", "topic": "exponential-modeling" },
+  { "id": "practice", "topic": "logarithmic-modeling" },
+  { "id": "daylight", "topic": "sinusoidal-modeling" }
+ ],
+ "contexts": [
+  { "id": "linear", "topic": "model-construction", "kind": "linear" },
+  { "id": "quadratic", "topic": "model-construction", "kind": "quadratic" },
+  { "id": "choose", "topic": "linear-vs-exponential", "kind": "choose" },
+  { "id": "exponential", "topic": "exponential-modeling", "kind": "exponential" },
+  { "id": "residual", "topic": "model-validation", "kind": "residual" }
+ ]
+}

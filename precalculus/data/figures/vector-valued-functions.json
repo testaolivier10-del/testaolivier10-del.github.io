@@ -1,0 +1,22 @@
+{
+ "vector-valued-functions-displacement": {
+  "file": "figures/vector-valued-functions-displacement.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The path of p(t) = <2t, 6t minus t squared> for t from 0 to 6, an arch from (0, 0) up to (6, 9) at t = 3 and down to (12, 0) at t = 6, with points at each whole t. Position vectors p(1) = <2, 5> and p(3) = <6, 9> are drawn from the origin in blue, and the displacement vector p(3) minus p(1) = <4, 4> is drawn from the tip of p(1) to the tip of p(3) in vermillion."
+ },
+ "vector-valued-functions-path": {
+  "file": "figures/vector-valued-functions-path.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The path of a vector-valued function for t from 0 to 6, an arch through (0, 0), (2, 5), (4, 8), (6, 9), (8, 8), (10, 5) and (12, 0) at t = 0, 1, 2, 3, 4, 5 and 6. Position vectors p(1) and p(4) are drawn from the origin to (2, 5) and (8, 8)."
+ }
+}

@@ -1,0 +1,5 @@
+{
+ "rational-expression": {
+  "def": "A quotient of two polynomials, $\\frac{p(x)}{q(x)}$, undefined where $q(x) = 0$. Simplify by cancelling common factors; the inputs excluded from the original stay excluded."
+ }
+}

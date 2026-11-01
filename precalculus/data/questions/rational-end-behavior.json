@@ -1,0 +1,521 @@
+{
+ "stimuli": {
+  "rational-end-behavior-s1": {
+   "kind": "graph",
+   "title": "The graph of $s(x) = \\frac{3x^2 - 3}{x^2 + 2}$",
+   "plot": {
+    "label": "Graph of s(x) = (3x^2 - 3)/(x^2 + 2) for x from -10 to 10, with a dashed horizontal line y = 3: the graph has zeros at -1 and 1, y-intercept -1.5, and rises toward y = 3 on both sides",
+    "x": [
+     -10,
+     10
+    ],
+    "y": [
+     -2,
+     4
+    ],
+    "xStep": 2,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "(3x^2 - 3)/(x^2 + 2)",
+      "label": "s"
+     }
+    ],
+    "asymptotes": [
+     {
+      "y": 3
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -1,
+       0
+      ]
+     },
+     {
+      "at": [
+       1,
+       0
+      ]
+     },
+     {
+      "at": [
+       0,
+       -1.5
+      ]
+     }
+    ]
+   }
+  },
+  "rational-end-behavior-s2": {
+   "kind": "table",
+   "title": "Outputs far from the origin",
+   "table": {
+    "caption": "Values of g(x) = (5x + 2)/(x^2 + 1), rounded to four decimal places",
+    "cols": [
+     "$x$",
+     "-100",
+     "-10",
+     "10",
+     "100",
+     "1000"
+    ],
+    "rows": [
+     [
+      "$g(x)$",
+      "-0.0498",
+      "-0.4752",
+      "0.5149",
+      "0.0502",
+      "0.0050"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-rational-end-behavior-1",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rational-end-behavior-s1",
+   "q": "Which describes the right end of the graph of $s$?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to \\infty} s(x) = \\infty$",
+    "$\\lim_{x \\to \\infty} s(x) = 0$",
+    "$\\lim_{x \\to \\infty} s(x) = 3$",
+    "$\\lim_{x \\to \\infty} s(x) = -1.5$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For large $x$, $s(x)$ behaves like $\\frac{3x^2}{x^2} = 3$: $\\lim_{x \\to \\infty} s(x) = 3$.",
+    "options": [
+     "Top and bottom both have degree $2$, so their quotient levels off.",
+     "$0$ is the limit when the denominator has the higher degree; here the degrees are equal.",
+     "Right: the quotient of the leading terms is $\\frac{3x^2}{x^2} = 3$.",
+     "$-1.5$ is $s(0)$, the $y$-intercept."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-2",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rational-end-behavior-s1",
+   "q": "What is the horizontal asymptote of the graph of $s$?",
+   "type": "single",
+   "options": [
+    "$y = 3$",
+    "$y = 0$",
+    "$x = 3$",
+    "$y = -\\frac{3}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\lim_{x \\to \\pm\\infty} s(x) = 3$, so the line $y = 3$ is a horizontal asymptote.",
+    "options": [
+     "Right: the outputs approach $3$ as $x \\to \\pm\\infty$.",
+     "$y = 0$ would need the denominator to have the higher degree.",
+     "A horizontal asymptote is a horizontal line, $y = c$.",
+     "That is the ratio of the constant terms, $s(0)$; end behavior uses the leading terms."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-3",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rational-end-behavior-s1",
+   "q": "For large values of $|x|$, are the outputs of $s$ above or below $3$?",
+   "type": "single",
+   "options": [
+    "Above $3$, because the graph rises toward the asymptote",
+    "Below $3$, because $s(x) = 3 - \\frac{9}{x^2 + 2}$",
+    "Exactly $3$ once $x$ is large enough",
+    "Above on the right and below on the left"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$3x^2 - 3 = 3(x^2 + 2) - 9$, so $s(x) = 3 - \\frac{9}{x^2 + 2}$. The fraction is positive and shrinks toward $0$: the outputs climb toward $3$ from below.",
+    "options": [
+     "Rising toward $y = 3$ from below means the outputs are under $3$.",
+     "Right: the subtracted fraction is positive, so $s(x) < 3$ for every $x$.",
+     "$\\frac{9}{x^2 + 2}$ gets small but never reaches $0$.",
+     "$s$ is even: $s(-x) = s(x)$, so both sides behave alike."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-4",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rational-end-behavior-s1",
+   "q": "Which describes the left end of the graph of $s$?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to -\\infty} s(x) = -3$",
+    "$\\lim_{x \\to -\\infty} s(x) = -\\infty$",
+    "$\\lim_{x \\to -\\infty} s(x) = 3$",
+    "$\\lim_{x \\to \\infty} s(x) = 3$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The quotient of leading terms, $3$, does not depend on the sign of $x$: $\\lim_{x \\to -\\infty} s(x) = 3$.",
+    "options": [
+     "$(-x)^2$ is positive, so the leading terms give $+3$ on the left as well.",
+     "The degrees are equal, so the outputs level off.",
+     "Right: $\\frac{3x^2}{x^2} = 3$ for negative $x$ too.",
+     "True, but it describes the right end."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-5",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rational-end-behavior-s1",
+   "q": "Which reason explains the end behavior of $s$?",
+   "type": "single",
+   "options": [
+    "The leading terms have the same degree, and $\\frac{3x^2}{x^2} = 3$.",
+    "The zeros of $s$ are $-1$ and $1$, which average to $0$.",
+    "The denominator $x^2 + 2$ is positive for each real $x$.",
+    "$s(0) = -1.5$, and $3$ is double the size of $-1.5$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A rational function's end behavior is the end behavior of the quotient of its leading terms: here $\\frac{3x^2}{x^2} = 3$.",
+    "options": [
+     "Right: equal degrees give a horizontal asymptote at the ratio of the leading coefficients.",
+     "Zeros describe where $s$ is $0$, not what happens for large $|x|$.",
+     "That explains why $s$ is defined everywhere, not where it levels off.",
+     "The value at $0$ has nothing to do with the behavior for large $|x|$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-6",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rational-end-behavior-s2",
+   "q": "The table gives values of $g(x) = \\frac{5x + 2}{x^2 + 1}$. What is $\\lim_{x \\to \\infty} g(x)$?",
+   "type": "single",
+   "options": [
+    "$5$",
+    "$0$",
+    "$\\infty$",
+    "$2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{5x}{x^2} = \\frac{5}{x}$, which goes to $0$. The table agrees: $0.5149$, $0.0502$, $0.0050$.",
+    "options": [
+     "$5$ is the leading coefficient of the top; the bottom's degree is higher.",
+     "Right: the outputs shrink toward $0$ as $x$ grows.",
+     "The outputs get smaller, not larger: $0.0050$ at $x = 1000$.",
+     "$2$ is the constant term of the numerator."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-7",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rational-end-behavior-s2",
+   "q": "The table gives values of $g(x) = \\frac{5x + 2}{x^2 + 1}$. Why does $g$ have the horizontal asymptote $y = 0$?",
+   "type": "single",
+   "options": [
+    "Because $g(0) = 2$",
+    "Because the numerator has a zero at $x = -0.4$",
+    "Because the denominator has the higher degree",
+    "Because the outputs are negative when $x < 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When the denominator's degree is greater, the quotient of leading terms ($\\frac{5}{x}$ here) goes to $0$ at both ends.",
+    "options": [
+     "The value at $0$ does not describe the ends of the graph.",
+     "One zero says nothing about large $|x|$.",
+     "Right: $x^2$ outgrows $5x$, so the quotient shrinks toward $0$.",
+     "The sign tells which side of $0$ the outputs are on, not why they approach $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-8",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rational-end-behavior-s2",
+   "q": "The table gives values of $g(x) = \\frac{5x + 2}{x^2 + 1}$. Which describes the left end of the graph of $g$?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to -\\infty} g(x) = 0$, with outputs below $0$",
+    "$\\lim_{x \\to -\\infty} g(x) = 0$, with outputs above $0$",
+    "$\\lim_{x \\to -\\infty} g(x) = -\\infty$, with outputs below $0$",
+    "$\\lim_{x \\to -\\infty} g(x) = -5$, with outputs below $0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$g(x)$ behaves like $\\frac{5}{x}$, which is negative and approaches $0$ as $x \\to -\\infty$.",
+    "options": [
+     "Right: the values $-0.4752$ and $-0.0498$ are negative and shrink toward $0$.",
+     "For negative $x$ the top $5x + 2$ is negative and the bottom positive.",
+     "The outputs are negative but get closer to $0$, not larger in size.",
+     "$-5$ is not approached; $\\frac{5}{x}$ goes to $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-9",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rational-end-behavior-s2",
+   "q": "The table gives values of $g(x) = \\frac{5x + 2}{x^2 + 1}$. Use the formula to find $g(10)$ exactly, as a fraction.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "52/101",
+    "mistakes": [
+     {
+      "value": 0.5,
+      "why": "$\\frac{5}{10}$ uses only the leading terms; at $x = 10$ the other terms still matter: $\\frac{52}{101}$."
+     },
+     {
+      "value": "52/100",
+      "why": "The denominator is $10^2 + 1 = 101$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$g(10) = \\frac{5(10) + 2}{10^2 + 1} = \\frac{52}{101} \\approx 0.5149$, as in the table."
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-10",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is $\\lim_{x \\to \\infty} \\frac{4x^3 - x}{2x^3 + 5}$?",
+   "type": "single",
+   "options": [
+    "$\\infty$",
+    "$-\\frac{1}{5}$",
+    "$4$",
+    "$2$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Equal degrees: the limit is the ratio of the leading coefficients, $\\frac{4}{2} = 2$.",
+    "options": [
+     "Equal degrees: the outputs level off instead of growing.",
+     "That compares non-leading terms; use the leading terms.",
+     "Divide by the denominator's leading coefficient too: $\\frac{4}{2}$.",
+     "Right: $\\frac{4x^3}{2x^3} = 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-11",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the slant asymptote of $h(x) = \\frac{x^2 + 3x + 1}{x}$.",
+   "type": "expr",
+   "expr": {
+    "answer": "x + 3",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -4,
+     4
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "x",
+      "why": "$x$ is the quotient of the leading terms, but the $3x$ term adds $3$: $\\frac{x^2 + 3x + 1}{x} = x + 3 + \\frac{1}{x}$."
+     },
+     {
+      "expr": "x + 3 + 1/x",
+      "why": "That is $h(x)$ itself. The asymptote drops the part that goes to $0$, $\\frac{1}{x}$."
+     },
+     {
+      "expr": "x + 1",
+      "why": "Split each term: $\\frac{3x}{x} = 3$ and $\\frac{1}{x}$ goes to $0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$h(x) = x + 3 + \\frac{1}{x}$. As $x \\to \\pm\\infty$, $\\frac{1}{x} \\to 0$, so the graph approaches the line $y = x + 3$."
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-12",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which line is a slant asymptote of $k(x) = \\frac{x^2 + 2x + 3}{x + 1}$?",
+   "type": "single",
+   "options": [
+    "$y = x$",
+    "$y = x + 2$",
+    "$y = x + 1$",
+    "$y = 1$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Write the top around $x + 1$: $(x + 1)^2 + 2$. So $k(x) = x + 1 + \\frac{2}{x + 1}$, and for large $|x|$, $k(x)$ is close to $x + 1$.",
+    "options": [
+     "The leading terms give the slope $1$, but the line also needs its intercept: $y = x + 1$.",
+     "$x^2 + 2x + 3 = (x + 1)^2 + 2$, which gives $x + 1$, not $x + 2$.",
+     "Right: $k(x) = x + 1 + \\frac{2}{x + 1}$, and the fraction goes to $0$.",
+     "A horizontal asymptote needs equal degrees; here the top's degree is one more."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-13",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which functions have the horizontal asymptote $y = 0$? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$\\frac{1}{x^2 + 1}$",
+    "$\\frac{x + 1}{x^2 + 4}$",
+    "$\\frac{x^3}{x^2 + 1}$",
+    "$\\frac{2x}{x + 5}$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "The horizontal asymptote is $y = 0$ exactly when the denominator's degree is greater than the numerator's.",
+    "options": [
+     "Yes: the denominator has degree $2$, the numerator $0$.",
+     "Yes: degree $1$ over degree $2$.",
+     "No: the top's degree is one more, so there is a slant asymptote, $y = x$.",
+     "No: equal degrees give $y = 2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-14",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which describes the end behavior of $m(x) = \\frac{x^3 + 1}{x - 2}$?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to \\infty} m(x) = \\infty$ and $\\lim_{x \\to -\\infty} m(x) = \\infty$",
+    "$\\lim_{x \\to \\infty} m(x) = \\infty$ and $\\lim_{x \\to -\\infty} m(x) = -\\infty$",
+    "$\\lim_{x \\to \\infty} m(x) = 1$ and $\\lim_{x \\to -\\infty} m(x) = 1$",
+    "$\\lim_{x \\to \\infty} m(x) = 0$ and $\\lim_{x \\to -\\infty} m(x) = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The quotient of the leading terms is $\\frac{x^3}{x} = x^2$, an even-degree term with a positive coefficient: both ends rise.",
+    "options": [
+     "Right: $\\frac{x^3}{x} = x^2$, which grows without bound at both ends.",
+     "The quotient of leading terms is $x^2$, positive at both ends.",
+     "$1$ would need equal degrees; the top's degree is $2$ more.",
+     "$0$ needs the bottom's degree to be greater."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-15",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A print shop's average cost per poster for $n$ posters is $C(n) = \\frac{500 + 4n}{n}$ dollars. What does $\\lim_{n \\to \\infty} C(n) = 4$ mean?",
+   "type": "single",
+   "options": [
+    "Each poster costs \\$4 to print, however many are ordered.",
+    "The setup cost is \\$4.",
+    "For very large orders, the average cost per poster gets close to \\$4.",
+    "The average cost is at least \\$500 per poster."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$C(n) = 4 + \\frac{500}{n}$. As $n$ grows, $\\frac{500}{n} \\to 0$, so the average cost per poster approaches \\$4.",
+    "options": [
+     "For small orders the \\$500 setup raises the average well above \\$4.",
+     "The setup cost is the \\$500 in the numerator.",
+     "Right: the \\$500 is spread over more posters and matters less and less.",
+     "At $n = 100$ it is $\\frac{900}{100} = 9$ dollars."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-end-behavior-16",
+   "unit": "unit-1",
+   "topic": "rational-end-behavior",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "$f(x) = \\frac{6 - 2x^2}{4x^2 + x}$ has a horizontal asymptote $y = c$. What is $c$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "-1/2",
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "$6$ is a constant term; the leading terms are $-2x^2$ and $4x^2$."
+     },
+     {
+      "value": 0.5,
+      "why": "Keep the sign of the leading coefficient $-2$: $\\frac{-2}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Equal degrees: $c = \\frac{-2}{4} = -\\frac{1}{2}$, the ratio of the leading coefficients."
+   }
+  }
+ ]
+}

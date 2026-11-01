@@ -1,0 +1,117 @@
+{
+ "id": "frq-placeholder-periodic",
+ "type": "periodic",
+ "points": 6,
+ "calc": false,
+ "placeholder": true,
+ "title": "Placeholder: modeling a periodic context",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "polar-rates"
+ ],
+ "practices": [
+  "1.A",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Placeholder: an unscaled sinusoid",
+  "plot": {
+   "label": "Placeholder graph of a sinusoid over one period, with its midline",
+   "x": [
+    0,
+    6.3
+   ],
+   "y": [
+    -1.5,
+    1.5
+   ],
+   "xStep": 1,
+   "yStep": 0.5,
+   "xLabel": "t",
+   "yLabel": "h",
+   "curves": [
+    {
+     "fn": "sin(x)",
+     "domain": [
+      0,
+      6.28
+     ],
+     "label": "h"
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Find</b> placeholder part (A) of this question.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (A), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part (A), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (A), written to test the page."
+  },
+  {
+   "label": "B",
+   "prompt": "<b>Find</b> placeholder part (B) of this question.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (B), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part (B), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (B), written to test the page."
+  },
+  {
+   "label": "C(i)",
+   "prompt": "<b>Find</b> placeholder part (C(i)) of this question.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (C(i)), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (C(i)), written to test the page."
+  },
+  {
+   "label": "C(ii)",
+   "prompt": "<b>Explain</b> placeholder part (C(ii)) of this question.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (C(ii)), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (C(ii)), written to test the page."
+  }
+ ]
+}

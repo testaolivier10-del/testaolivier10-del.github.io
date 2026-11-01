@@ -1,0 +1,95 @@
+/* Vectors and matrices (precalculus/assets/tools/vectors-matrices.js). OWNED BY
+   THIS TOOL ONLY (builder T4). Loaded after pcalc-tools.css. Colors are linked
+   across views: u and column 1 blue (s1), v and column 2 pink (s4), the point
+   orange (s2), x(t) and Δx purple, y(t) and Δy teal, results, displacement and
+   secants the course green; light and dark. */
+.vm-card,.ls-root{--vm-u:var(--pcalc-s1,#0072B2);--vm-v:#B8418A;--vm-p:var(--pcalc-s2,#D55E00);--vm-x:#7A4FB0;--vm-y:var(--pcalc-s3,#009E73);--vm-w:var(--cink,#11592F);--vm-wt:rgba(17,89,47,.13);--vm-path:#4B5563;}
+:root[data-theme="dark"] .vm-card,:root[data-theme="dark"] .ls-root{--vm-v:#E7A5CA;--vm-x:#B9A0EA;--vm-wt:rgba(80,200,130,.16);--vm-path:#C9CED6;}
+
+.vm-stage{display:flex;flex-direction:column;gap:6px;min-height:0;flex:1;}
+.vm-wrap{position:relative;flex:1 1 0;min-height:260px;border-radius:12px;}
+.vm-card:not(.ls-root *) .vm-wrap{height:460px;flex:none;}
+.vm-wrap:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.vm-svg{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;}
+.vm-legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font:700 12.5px var(--font-ui);color:var(--muted);}
+.vm-lg{display:inline-flex;align-items:center;gap:6px;}
+.vm-lg::before{content:"";display:inline-block;width:16px;height:4px;border-radius:2px;background:currentColor;}
+.c-u{--c:var(--vm-u);} .c-v{--c:var(--vm-v);} .c-p{--c:var(--vm-p);} .c-x{--c:var(--vm-x);} .c-y{--c:var(--vm-y);} .c-w{--c:var(--vm-w);} .c-path{--c:var(--vm-path);}
+.vm-lg{color:var(--c,var(--muted));}
+
+.vm-panel{fill:var(--white);stroke:var(--line);stroke-width:1;}
+.vm-grid line{stroke:var(--line);stroke-width:1;}
+.vm-grid line.vm-minor{stroke-opacity:.5;}
+.vm-grid line.vm-ax{stroke:var(--ink);stroke-opacity:.55;stroke-width:1.3;}
+.vm-tk text{fill:var(--muted);font:700 11px var(--font-ui);font-variant-numeric:tabular-nums;}
+.vm-path{fill:none;stroke:var(--vm-path);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;}
+.vm-path.is-ghost{stroke-opacity:.25;stroke-dasharray:3 4;stroke-width:1.6;}
+.vm-chev{fill:none;stroke:var(--vm-path);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.75;}
+.vm-pt{fill:var(--vm-p);stroke:var(--white);stroke-width:2.2;}
+.vm-pt.is-img{fill:var(--white);stroke:var(--vm-p);stroke-width:3;}
+.vm-proj{stroke:var(--c);stroke-width:1.6;stroke-dasharray:4 3;}
+.vm-leg{stroke:var(--c);stroke-width:3;stroke-dasharray:6 4;stroke-linecap:round;}
+.vm-ipt{fill:var(--vm-w);stroke:var(--white);stroke-width:2;}
+.vm-tcurve{fill:none;stroke:var(--c);stroke-width:2.4;}
+.vm-tname{fill:var(--c);font:italic 900 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.vm-cur{stroke:var(--ink);stroke-opacity:.4;stroke-width:1.2;}
+.vm-ishade{fill:var(--vm-w);fill-opacity:.07;}
+.vm-sec{stroke:var(--vm-w);stroke-width:2.6;stroke-linecap:round;}
+.vm-arrow line{stroke:var(--c);stroke-width:3.2;stroke-linecap:round;}
+.vm-arrow path{fill:var(--c);}
+.vm-arrow.is-copy line{stroke-dasharray:6 5;stroke-width:2;stroke-opacity:.7;}
+.vm-arrow.is-copy path{fill-opacity:.7;}
+.vm-zero{fill:var(--c);}
+.vm-alab{fill:var(--c);font:italic 900 13.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;}
+.vm-para{fill:var(--vm-wt);stroke:none;}
+.vm-igrid line{stroke:var(--vm-w);stroke-opacity:.22;stroke-width:1;}
+.vm-igrid line.vm-iax{stroke-opacity:.5;stroke-width:1.5;}
+.vm-usq{fill:none;stroke:var(--ink);stroke-opacity:.5;stroke-width:1.5;stroke-dasharray:4 3;}
+.vm-isq{fill:var(--vm-wt);stroke:var(--vm-w);stroke-width:2;stroke-linejoin:round;}
+.vm-area{fill:var(--vm-w);font:900 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.vm-trip{stroke:var(--vm-p);stroke-width:1.5;stroke-dasharray:3 4;}
+.vm-plab{fill:var(--ink);font:800 12px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.vm-yours{stroke:#D55E00;stroke-width:2.4;stroke-dasharray:7 5;}
+.vm-yours-pt{fill:none;stroke:#D55E00;stroke-width:2.4;stroke-dasharray:3 2;}
+:root[data-theme="dark"] .vm-yours,:root[data-theme="dark"] .vm-yours-pt{stroke:#F29A5C;}
+
+.vm-handle{cursor:grab;outline:none;}
+.vm-handle .vm-halo{fill:var(--c);fill-opacity:.14;}
+.vm-handle .vm-dot{fill:var(--c);stroke:var(--white);stroke-width:2.2;}
+.vm-handle:focus-visible .vm-halo{fill-opacity:.32;stroke:var(--c);stroke-width:2;}
+.vm-handle.is-drag{cursor:grabbing;}
+
+/* dock */
+.vm-views{display:flex;}
+.vm-views > .bt-mode{flex:1;min-width:0;}
+.vm-chips .bt-btn{min-height:40px;padding:0 14px;border-radius:999px;font-size:14px;}
+.vm-card:not(.ls-root *) .vm-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.vm-row{display:flex;align-items:center;gap:10px;}
+.vm-row[hidden],.vm-slot[hidden]{display:none;}
+.vm-row .vm-seg2{flex:1;min-width:0;display:flex;}
+.vm-seg2 > .bt-mode{flex:1;min-width:0;}
+.vm-slot .bt-out{min-width:5.4em;white-space:nowrap;text-align:right;}
+.vm-play{min-height:44px;min-width:92px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;flex:none;}
+.vm-play-i{width:0;height:0;border-style:solid;border-width:7px 0 7px 12px;border-color:transparent transparent transparent currentColor;}
+.vm-play[aria-pressed="true"] .vm-play-i{width:12px;height:14px;border:0;border-left:4px solid currentColor;border-right:4px solid currentColor;box-sizing:border-box;}
+.vm-pv{font-weight:800;color:var(--c,inherit);}
+
+/* Details */
+.vm-feats{margin:8px 0 0;padding-left:1.3em;display:grid;gap:8px;}
+.vm-params{display:grid;gap:10px;}
+.vm-ek{margin:0;color:var(--muted);font-size:14px;}
+.vm-entries{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.vm-entries .vm-ek{grid-column:1 / -1;}
+.vm-e{display:flex;align-items:center;gap:8px;font-weight:800;font-style:italic;color:var(--c);}
+.vm-e input{width:100%;min-height:44px;font:700 16px var(--font-ui);padding:0 10px;border-radius:10px;border:1.5px solid var(--c);background:var(--white);color:var(--ink);}
+
+/* Test yourself figure */
+.vm-figwrap{width:100%;height:340px;min-height:240px;}
+.ls-root .ls-drill-stage .vm-figwrap{height:100%;}
+.vm-fig{display:block;width:100%;height:100%;}
+
+@media (max-width:599.98px){ .vm-legend{display:none;} }
+.ls-root.ls-phone .vm-legend{display:flex;font-size:12px;gap:2px 10px;padding-right:56px;min-height:40px;align-content:center;}
+.ls-root.ls-phone .vm-tk text{font-size:12px;}
+.ls-root.ls-phone .vm-wrap{min-height:200px;}
+.ls-root.ls-phone .vm-views > .bt-mode{font-size:13.5px;padding:0 4px;}

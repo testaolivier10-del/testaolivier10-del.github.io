@@ -1,0 +1,45 @@
+<p>Sine and cosine are functions: put in an angle, get out a number. This page draws their graphs straight from the unit circle, reads off their key features, and describes how they change, using the same rate of change and concavity language you used for polynomials and exponentials.</p>
+
+<h2>Tracing sine from the circle</h2>
+<p>Let a point travel counterclockwise around the unit circle, starting at $(1, 0)$. After it has turned through $\theta$ radians, its height is $\sin\theta$. Plot that height against $\theta$:</p>
+<ul>
+<li>from $\theta = 0$ to $\frac{\pi}{2}$ the point climbs from height $0$ to the top, height $1$;</li>
+<li>from $\frac{\pi}{2}$ to $\pi$ it comes back down to $0$;</li>
+<li>from $\pi$ to $\frac{3\pi}{2}$ it drops to the bottom, $-1$;</li>
+<li>from $\frac{3\pi}{2}$ to $2\pi$ it rises back to $0$, where it started.</li>
+</ul>
+<figure id="fig-unroll" data-fig="sine-cosine-curves-unroll"><figcaption>The point's height at angle $\theta$ becomes the graph's height at $\theta$.</figcaption></figure>
+<p>After $2\pi$ the point repeats its trip, so the graph repeats: $y = \sin\theta$ has period $2\pi$. Turning backwards (negative $\theta$) continues the same wave to the left. The height never goes above $1$ or below $-1$, so the range is $[-1, 1]$.</p>
+
+<h2>Cosine: the horizontal position</h2>
+<p>$\cos\theta$ is the point's $x$-coordinate. It starts at $1$, falls to $0$ at $\frac{\pi}{2}$, reaches $-1$ at $\pi$, returns to $0$ at $\frac{3\pi}{2}$ and to $1$ at $2\pi$. The shape is exactly the sine wave, moved $\frac{\pi}{2}$ to the left: cosine reaches each value a quarter turn earlier than sine does. In symbols, $\cos\theta = \sin\left(\theta + \frac{\pi}{2}\right)$.</p>
+<table class="compare">
+<thead><tr><th scope="col">Feature</th><th scope="col">$y = \sin\theta$</th><th scope="col">$y = \cos\theta$</th></tr></thead>
+<tbody>
+<tr><td>Domain, range</td><td>all reals, $[-1, 1]$</td><td>all reals, $[-1, 1]$</td></tr>
+<tr><td>Period</td><td>$2\pi$</td><td>$2\pi$</td></tr>
+<tr><td>Value at $0$</td><td>$0$</td><td>$1$</td></tr>
+<tr><td>Highest points</td><td>$\theta = \frac{\pi}{2} + 2k\pi$</td><td>$\theta = 2k\pi$</td></tr>
+<tr><td>Zeros</td><td>$\theta = k\pi$</td><td>$\theta = \frac{\pi}{2} + k\pi$</td></tr>
+<tr><td>Increasing on</td><td>$\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$, plus $2k\pi$</td><td>$(\pi, 2\pi)$, plus $2k\pi$</td></tr>
+</tbody>
+</table>
+<p>Here $k$ is any integer. To sketch either graph by hand, plot the five key points of one cycle and join them with a smooth wave, flat at the top and bottom.</p>
+
+<h2>How fast sine changes</h2>
+<p>Think about the point on the circle. Near the right side of the circle (angles near $0$) it moves almost straight up, so its height changes fast. Near the top it moves almost sideways, so its height barely changes. The graph shows the same thing: steep at the zeros, flat at the highest and lowest points.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Use exact values to compare the average rates of change of $\sin\theta$ on $\left[0, \frac{\pi}{6}\right]$, $\left[\frac{\pi}{6}, \frac{\pi}{3}\right]$ and $\left[\frac{\pi}{3}, \frac{\pi}{2}\right]$, and describe the graph on $\left[0, \frac{\pi}{2}\right]$.</p>
+<p>Each interval has length $\frac{\pi}{6}$. The average rate of change on $\left[0, \frac{\pi}{6}\right]$ is $\frac{1/2 - 0}{\pi/6} = \frac{3}{\pi} \approx 0.955$, the slope of the secant line through $(0, 0)$ and $\left(\frac{\pi}{6}, \frac{1}{2}\right)$.</p>
+<p>On $\left[\frac{\pi}{6}, \frac{\pi}{3}\right]$: $\frac{\sqrt{3}/2 - 1/2}{\pi/6} = \frac{3(\sqrt{3} - 1)}{\pi} \approx 0.699$. On $\left[\frac{\pi}{3}, \frac{\pi}{2}\right]$: $\frac{1 - \sqrt{3}/2}{\pi/6} = \frac{3(2 - \sqrt{3})}{\pi} \approx 0.256$.</p>
+<p>All three are positive, so sine is increasing. Over equal intervals they get smaller, so the rate of change of sine is decreasing: the graph is concave down on $\left[0, \frac{\pi}{2}\right]$.</p>
+</div>
+<p>The pattern holds everywhere. Sine is concave down where it is above the axis, on $(0, \pi)$, and concave up where it is below, on $(\pi, 2\pi)$. The concavity changes at the zeros, where the graph is steepest. Cosine behaves the same way: concave down on $\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$, where $\cos\theta > 0$, and concave up on $\left(\frac{\pi}{2}, \frac{3\pi}{2}\right)$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Describe how $y = \cos\theta$ changes on $\left(\pi, \frac{3\pi}{2}\right)$.</p>
+<p>The values go from $\cos\pi = -1$ up to $\cos\frac{3\pi}{2} = 0$, so cosine is increasing. The graph is below the axis, so it is concave up: the rate of change of cosine is increasing too, from $0$ at the lowest point toward its steepest at the zero $\frac{3\pi}{2}$.</p>
+</div>
+<p>Notice the two separate statements: one about how the function changes (increasing), one about how its rate of change changes (increasing). Keep them apart; they will be asked for separately when you model periodic situations.</p>
+
+<h2>Reading values from the graphs</h2>
+<p>Because the graphs come from the circle, every exact value you know is a point on them: $\left(\frac{\pi}{6}, \frac{1}{2}\right)$ on the sine curve, $\left(\frac{2\pi}{3}, -\frac{1}{2}\right)$ on the cosine curve. The symmetry of the circle shows up too. Sine takes the same value at $\theta$ and $\pi - \theta$, so its graph on $[0, \pi]$ is symmetric about $\theta = \frac{\pi}{2}$.</p>

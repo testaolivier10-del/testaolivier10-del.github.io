@@ -143,6 +143,7 @@
 .r3-lesson[data-cover="apstat"] > [class$="-ls-hero"]{background-image:url(../covers/art/apstat.svg)}
 .r3-lesson[data-cover="apenv"] > [class$="-ls-hero"]{background-image:url(../covers/art/apenv.svg)}
 .r3-lesson[data-cover="appsych"] > [class$="-ls-hero"]{background-image:url(../covers/art/appsych.svg)}
+.r3-lesson[data-cover="apprecalc"] > [class$="-ls-hero"]{background-image:url(../covers/art/apprecalc.svg)}
 .r3-lesson > .hero .eyebrow,.r3-lesson > [class$="-ls-hero"] .eyebrow{border:0;padding:0;color:rgba(255,255,255,.76);font:800 13px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;background:none}
 .r3-lesson > .hero h1,.r3-lesson > [class$="-ls-hero"] h1{color:#fff;font:900 clamp(40px,4.6vw,56px)/1 var(--display) !important;letter-spacing:-.04em;margin:10px 0 10px !important}
 .r3-lesson > .hero .lede,.r3-lesson > [class$="-ls-hero"] .lede{color:rgba(255,255,255,.84) !important;font-size:17px;max-width:36em}

@@ -1,0 +1,40 @@
+<p>A rational function is zero where its numerator is zero, with one catch: the input has to be in the domain. Its sign can change at its zeros and also at the inputs where it is undefined. Together these facts let you solve inequalities like $\frac{x - 4}{x + 2} \ge 0$ without a graph, and read them from a graph when you have one.</p>
+
+<h2>Zeros of a rational function</h2>
+<p>A fraction is $0$ exactly when its numerator is $0$ and its denominator is not. So the real zeros of $r(x) = \frac{p(x)}{q(x)}$ are the real zeros of $p$ that are in the domain of $r$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the real zeros of $h(x) = \frac{x^2 - 9}{x^2 + 3x}$.</p>
+<p>Numerator: $x^2 - 9 = (x - 3)(x + 3)$, zero at $3$ and $-3$.</p>
+<p>Denominator: $x(x + 3)$, zero at $0$ and $-3$, so those are excluded.</p>
+<p>$-3$ is excluded, so the only real zero is $x = 3$.</p>
+</div>
+
+<h2>Sign charts</h2>
+<p>Between consecutive "special" inputs, a rational function keeps one sign. The special inputs are the zeros of the numerator and the zeros of the denominator. At either kind, the sign may change, since a factor in the top or the bottom changes sign there (unless its power is even).</p>
+<p>A <b>sign chart</b> records this: mark the special inputs on a number line, pick one test input in each interval, and find the sign there.</p>
+<table class="compare">
+<thead><tr><th scope="col">Interval</th><th scope="col">$(-\infty, -3)$</th><th scope="col">$(-3, -1)$</th><th scope="col">$(-1, 2)$</th><th scope="col">$(2, \infty)$</th></tr></thead>
+<tbody>
+<tr><td>Test input</td><td>$-4$</td><td>$-2$</td><td>$0$</td><td>$3$</td></tr>
+<tr><td>$r(x) = \frac{(x - 2)(x + 3)}{x + 1}$</td><td>$-2$</td><td>$4$</td><td>$-6$</td><td>$1.5$</td></tr>
+<tr><td>Sign</td><td>$-$</td><td>$+$</td><td>$-$</td><td>$+$</td></tr>
+</tbody>
+</table>
+<figure id="fig-sign" data-fig="rational-zeros-sign"><figcaption>The sign of $\frac{(x + 1)(x - 3)}{x - 1}$ changes at its zeros and at $x = 1$, where it is undefined.</figcaption></figure>
+
+<h2>Rational inequalities</h2>
+<p>A <b>rational inequality</b>, such as $r(x) > 0$ or $r(x) \le 0$, is solved by reading the sign chart.</p>
+<ul>
+<li>For $> 0$ or $< 0$: take the intervals with the right sign, endpoints left out.</li>
+<li>For $\ge 0$ or $\le 0$: add the zeros, with brackets.</li>
+<li>An excluded input never belongs to the solution: it always gets a parenthesis.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> Solve $\frac{x - 4}{x + 2} \ge 0$.</p>
+<p>Special inputs: $4$ (zero) and $-2$ (excluded). Test: $x = -3$ gives $\frac{-7}{-1} = 7 > 0$; $x = 0$ gives $-2 < 0$; $x = 5$ gives $\frac{1}{7} > 0$.</p>
+<p>Solution: $(-\infty, -2) \cup [4, \infty)$. Bracket at the zero $4$, parenthesis at the excluded $-2$.</p>
+</div>
+<p>Do not multiply both sides of a rational inequality by a denominator whose sign you do not know; the direction of the inequality depends on it. In context it is often known: for $C(t) = \frac{12t}{t + 2}$ with $t > 0$, the denominator is positive, so $C(t) \ge 8$ becomes $12t \ge 8t + 16$, or $t \ge 4$.</p>
+
+<h2>With a calculator</h2>
+<p>When the numerator does not factor nicely, graph the function and find every zero. For $q(x) = \frac{x^3 - 4x + 1}{x^2 + 2}$ the denominator is never $0$, and the graph crosses the axis near $-2.115$, $0.254$ and $1.861$. Check a wide window so no zero is missed, keep three decimal places, and read the signs between the zeros: $q(x) > 0$ on $(-2.115, 0.254) \cup (1.861, \infty)$.</p>

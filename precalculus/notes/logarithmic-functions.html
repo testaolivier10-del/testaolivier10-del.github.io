@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logarithmic Functions — AP® Precalculus Notes | LevlPrep</title>
+<meta name="description" content="A logarithmic function is the inverse of an exponential function, so its graph is an exponential graph reflected across y = x .">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/logarithmic-functions.html">
+<meta property="og:title" content="Logarithmic Functions — AP® Precalculus Notes | LevlPrep">
+<meta property="og:description" content="A logarithmic function is the inverse of an exponential function, so its graph is an exponential graph reflected across y = x .">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/logarithmic-functions.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/logarithmic-functions.html#reading",
+      "name": "Logarithmic Functions",
+      "url": "https://levlprep.com/precalculus/notes/logarithmic-functions.html",
+      "description": "A logarithmic function is the inverse of an exponential function, so its graph is an exponential graph reflected across y = x .",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "logarithmic functions ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Exponential and Logarithmic Functions",
+          "item": "https://levlprep.com/precalculus/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Logarithmic Functions: notes",
+          "item": "https://levlprep.com/precalculus/notes/logarithmic-functions.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="logarithmic-functions" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Exponential and Logarithmic Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Logarithmic Functions: notes</span></nav>
+<p class="issue">Unit 2 <i></i> Topic 2.11</p>
+<h1 class="deck bk-title" id="r3Title">Logarithmic <span>Functions</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/logarithmic-functions.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="logarithmic-functions">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Flogarithmic-functions.html&amp;title=Logarithmic%20Functions%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/logarithmic-functions.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-1.html"><span class="bk-toc-n">1</span>Polynomial and Rational Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-2.html"><span class="bk-toc-chap-n">2</span><span><b>Exponential and Logarithmic Functions</b><small>15 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-2"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="sequences"><a href="sequences.html"><span class="bk-toc-n">2.1</span>Change in Arithmetic and Geometric Sequences</a></li><li data-toc-t="linear-vs-exponential"><a href="linear-vs-exponential.html"><span class="bk-toc-n">2.2</span>Change in Linear and Exponential Functions</a></li><li data-toc-t="exponential-functions"><a href="exponential-functions.html"><span class="bk-toc-n">2.3</span>Exponential Functions</a></li><li data-toc-t="exponential-manipulation"><a href="exponential-manipulation.html"><span class="bk-toc-n">2.4</span>Exponential Function Manipulation</a></li><li data-toc-t="exponential-modeling"><a href="exponential-modeling.html"><span class="bk-toc-n">2.5</span>Exponential Function Context and Data Modeling</a></li><li data-toc-t="model-validation"><a href="model-validation.html"><span class="bk-toc-n">2.6</span>Competing Function Model Validation</a></li><li data-toc-t="composition"><a href="composition.html"><span class="bk-toc-n">2.7</span>Composition of Functions</a></li><li data-toc-t="inverse-functions"><a href="inverse-functions.html"><span class="bk-toc-n">2.8</span>Inverse Functions</a></li><li data-toc-t="logarithmic-expressions"><a href="logarithmic-expressions.html"><span class="bk-toc-n">2.9</span>Logarithmic Expressions</a></li><li data-toc-t="exp-log-inverses"><a href="exp-log-inverses.html"><span class="bk-toc-n">2.10</span>Inverses of Exponential Functions</a></li><li class="current" data-toc-t="logarithmic-functions"><a href="#main" aria-current="page"><span class="bk-toc-n">2.11</span>Logarithmic Functions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-basic-shape">The basic shape</a><a href="#transformations-move-the-asymptote">Transformations move the asymptote</a><a href="#how-fast-a-logarithmic-function-grows">How fast a logarithmic function grows</a><a href="#with-a-calculator">With a calculator</a></div></li><li data-toc-t="logarithmic-manipulation"><a href="logarithmic-manipulation.html"><span class="bk-toc-n">2.12</span>Logarithmic Function Manipulation</a></li><li data-toc-t="exp-log-equations"><a href="exp-log-equations.html"><span class="bk-toc-n">2.13</span>Exponential and Logarithmic Equations and Inequalities</a></li><li data-toc-t="logarithmic-modeling"><a href="logarithmic-modeling.html"><span class="bk-toc-n">2.14</span>Logarithmic Function Context and Data Modeling</a></li><li data-toc-t="semi-log-plots"><a href="semi-log-plots.html"><span class="bk-toc-n">2.15</span>Semi-log Plots</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Trigonometric and Polar Functions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>A <span class="gl" tabindex="0" data-c="log-function">logarithmic function</span> is the <a class="gl" href="../notes/exp-log-inverses.html" data-c="exp-log-inverse">inverse of an exponential function</a>, so its graph is an exponential graph reflected across <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = x</annotation></semantics></math>. This page lists what that graph looks like, how to describe its behavior near the asymptote and at the far right in <a class="gl" href="../notes/polynomial-end-behavior.html" data-c="limit">limit notation</a>, and how its <a class="gl" href="../notes/change-in-tandem.html" data-c="rate-of-change">rate of change</a> behaves.</p>
+
+<h2 id="the-basic-shape">The basic shape</h2>
+<p>A <b>logarithmic <a class="gl" href="../notes/alg-functions.html" data-c="function">function</a></b> has the form <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>a</mi><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">f(x) = a\log_b x</annotation></semantics></math>, with <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a \ne 0</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b &gt; 0</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>≠</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">b \ne 1</annotation></semantics></math>. Take <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &gt; 0</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">b &gt; 1</annotation></semantics></math>, as in <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\log_2 x</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\ln x</annotation></semantics></math> or <math class="pcalc-m"><semantics><mrow><mn>3</mn><mi>log</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">3\log x</annotation></semantics></math>:</p>
+<ul>
+<li><b><a class="gl" href="../notes/alg-functions.html" data-c="domain">Domain</a></b> <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &gt; 0</annotation></semantics></math>: a <a class="gl" href="../notes/logarithmic-expressions.html" data-c="logarithm">logarithm</a> needs a positive input. <b><a class="gl" href="../notes/alg-functions.html" data-c="range">Range</a></b>: all real numbers.</li>
+<li><b><a class="gl" href="../notes/vertical-asymptotes.html" data-c="vertical-asymptote">Vertical asymptote</a></b> <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>0</mn><mo>+</mo></msup></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 0^+} f(x) = -\infty</annotation></semantics></math>.</li>
+<li><b><a class="gl" href="../notes/polynomial-end-behavior.html" data-c="end-behavior">End behavior</a></b>: <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} f(x) = \infty</annotation></semantics></math>. The growth is slow, but there is no ceiling.</li>
+<li>Always <b>increasing</b> and always <b><a class="gl" href="../notes/change-in-tandem.html" data-c="concavity">concave down</a></b>, so no <a class="gl" href="../notes/polynomial-rates.html" data-c="local-extremum">local maximum</a>, no minimum and no <a class="gl" href="../notes/polynomial-rates.html" data-c="inflection">point of inflection</a>.</li>
+<li>It crosses the <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis at <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 0)</annotation></semantics></math>, because <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\log_b 1 = 0</annotation></semantics></math>, and passes through <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>b</mi><mo>,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(b, a)</annotation></semantics></math>.</li>
+</ul>
+<p>If <math class="pcalc-m"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>b</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 &lt; b &lt; 1</annotation></semantics></math>, or if <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &lt; 0</annotation></semantics></math>, the graph is reflected: it decreases instead. The domain and asymptote do not change.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: y = b^x ( b &gt; 1 ), y = log_b x ( b &gt; 1 )"><table class="compare">
+<thead><tr><th scope="col"></th><th scope="col"><math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>b</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">y = b^x</annotation></semantics></math> (<math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">b &gt; 1</annotation></semantics></math>)</th><th scope="col"><math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = \log_b x</annotation></semantics></math> (<math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">b &gt; 1</annotation></semantics></math>)</th></tr></thead>
+<tbody>
+<tr><td>Asymptote</td><td><math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow></munder><msup><mi>b</mi><mi>x</mi></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to -\infty} b^x = 0</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>0</mn><mo>+</mo></msup></mrow></munder><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 0^+} \log_b x</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">= -\infty</annotation></semantics></math></td></tr>
+<tr><td>Far right</td><td><math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><msup><mi>b</mi><mi>x</mi></msup><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} b^x = \infty</annotation></semantics></math>, fast</td><td><math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></munder><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \infty} \log_b x</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">= \infty</annotation></semantics></math>, slowly</td></tr>
+<tr><td>Concavity</td><td>concave up</td><td>concave down</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="transformations-move-the-asymptote">Transformations move the asymptote</h2>
+<p>The input of the logarithm sets the domain. For <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mi>a</mi><msub><mi>log</mi><mi>b</mi></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>h</mi><mo stretchy="false">)</mo><mo>+</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">= a\log_b(x - h) + k</annotation></semantics></math>, the domain is <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">x &gt; h</annotation></semantics></math> and the vertical asymptote is <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">x = h</annotation></semantics></math>. The <math class="pcalc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> moves the graph up or down but leaves the asymptote where it is.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Describe <math class="pcalc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo stretchy="false">)</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h(x) = \log_2(x + 4) - 1</annotation></semantics></math>.</p>
+<p>Domain: <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>+</mo><mn>4</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x + 4 &gt; 0</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x &gt; -4</annotation></semantics></math>. Vertical asymptote: <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = -4</annotation></semantics></math>.</p>
+<p>Behavior near it, from the right, the only side where <math class="pcalc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> is defined: <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mn>4</mn><mo>+</mo></msup></mrow></munder><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to -4^+} h(x)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">= -\infty</annotation></semantics></math>.</p>
+<p>Zero: <math class="pcalc-m"><semantics><mrow><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\log_2(x + 4) = 1</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>+</mo><mn>4</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x + 4 = 2</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = -2</annotation></semantics></math>.</p>
+</div>
+<p>Write both parts of the limit: the side (<math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mn>4</mn><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">-4^+</annotation></semantics></math>) and the sign (<math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">-\infty</annotation></semantics></math>). Exam readers take points for a missing sign or a limit from the wrong side.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the domain of <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>5</mn><mo>−</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x) = \ln(5 - x)</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mn>5</mn><mo>−</mo><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">5 - x &gt; 0</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x &lt; 5</annotation></semantics></math>. This graph is reflected across a vertical line: the asymptote is <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x = 5</annotation></semantics></math>, approached from the left, <math class="pcalc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>5</mn><mo>−</mo></msup></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 5^-} f(x) = -\infty</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="how-fast-a-logarithmic-function-grows">How fast a logarithmic function grows</h2>
+<p>Equal factors in the input give equal steps in the output. For <math class="pcalc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(x) = 2\log_2(x - 1)</annotation></semantics></math>, the input <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x - 1</annotation></semantics></math> goes <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">2, 4, 8</annotation></semantics></math> (each time doubling) and the output goes <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">2, 4, 6</annotation></semantics></math>: up <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math> each time. So the input has to cover longer and longer stretches for each equal step up.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Use <a class="gl" href="../notes/rates-of-change.html" data-c="aroc">average rates of change</a> of <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">f(x) = \ln x</annotation></semantics></math> on <math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 2]</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[2, 3]</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[3, 4]</annotation></semantics></math> to describe its concavity.</p>
+<p><math class="pcalc-m"><semantics><mrow><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>2</mn><mo>−</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>1</mn></mrow><mn>1</mn></mfrac><mo>≈</mo><mn>0.693</mn></mrow><annotation encoding="application/x-tex">\frac{\ln 2 - \ln 1}{1} \approx 0.693</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>3</mn><mo>−</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>2</mn></mrow><mn>1</mn></mfrac><mo>≈</mo><mn>0.405</mn></mrow><annotation encoding="application/x-tex">\frac{\ln 3 - \ln 2}{1} \approx 0.405</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>4</mn><mo>−</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>3</mn></mrow><mn>1</mn></mfrac><mo>≈</mo><mn>0.288</mn></mrow><annotation encoding="application/x-tex">\frac{\ln 4 - \ln 3}{1} \approx 0.288</annotation></semantics></math>.</p>
+<p>These are <a class="gl" href="../notes/alg-lines.html" data-c="slope">slopes</a> of <a class="gl" href="../notes/linear-quadratic-rates.html" data-c="secant-line">secant lines</a> over equal-length intervals. They are positive, so <math class="pcalc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is increasing, and they decrease, so the rate of change of <math class="pcalc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is decreasing: <math class="pcalc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is concave down on <math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 4]</annotation></semantics></math>.</p>
+</div>
+<p>Keep the two statements apart: "<math class="pcalc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is increasing" is about the outputs, and "the rate of change of <math class="pcalc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is decreasing" is about the slopes.</p>
+
+<h2 id="with-a-calculator">With a calculator</h2>
+<p>When a logarithm is mixed with other terms, as in <math class="pcalc-m"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">p(x) = 4\ln(x + 1) - x</annotation></semantics></math>, there may be no algebra route. Graph it, use the zero, intersect and maximum features, and look at a wide window: <math class="pcalc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> rises and then falls, so an equation such as <math class="pcalc-m"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p(x) = 1</annotation></semantics></math> has two solutions, about <math class="pcalc-m"><semantics><mrow><mn>0.430</mn></mrow><annotation encoding="application/x-tex">0.430</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>7.613</mn></mrow><annotation encoding="application/x-tex">7.613</annotation></semantics></math>. Keep the stored values and give each answer to three decimal places.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:logarithmic-functions">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="exp-log-inverses.html"><span>&larr; Previous</span><b>Inverses of Exponential Functions</b></a><a class="tb-chapter-link next" href="logarithmic-manipulation.html"><span>Next &rarr;</span><b>Logarithmic Function Manipulation</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/logarithmic-functions.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:logarithmic-functions">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

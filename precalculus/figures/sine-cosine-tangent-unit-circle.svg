@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 420" width="740" height="420" role="img" aria-labelledby="sine-cosine-tangent-unit-circle-t sine-cosine-tangent-unit-circle-d" font-family="Arial, Helvetica, sans-serif">
+<title id="sine-cosine-tangent-unit-circle-t">Sine, cosine and tangent on the unit circle</title>
+<desc id="sine-cosine-tangent-unit-circle-d">A circle of radius 1 centered at the origin. An angle theta in standard position starts on the positive x-axis (the initial ray) and turns counterclockwise to the terminal ray, which meets the circle at P. The arc from (1, 0) to P, drawn in green, has length theta, because the radius is 1. A dashed vertical segment from P down to the x-axis has length sine of theta; the horizontal distance from the origin is cosine of theta. So P is (cos theta, sin theta). The slope of the terminal ray is sin theta over cos theta, which is tangent of theta.</desc>
+<rect width="740" height="420" fill="#fff"/>
+<line x1="30" y1="210" x2="410" y2="210" stroke="#1F2A28" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="220" y1="400" x2="220" y2="20" stroke="#1F2A28" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M410 210 l-8 -4 v8 z" fill="#1F2A28"/><path d="M220 20 l-4 8 h8 z" fill="#1F2A28"/>
+<text x="414" y="215" font-size="16" text-anchor="start" fill="#1F2A28"><tspan font-style="italic">x</tspan></text>
+<text x="228" y="24" font-size="16" text-anchor="start" fill="#1F2A28"><tspan font-style="italic">y</tspan></text>
+<circle cx="220" cy="210" r="160" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<line x1="220" y1="210" x2="380" y2="210" stroke="#1F2A28" stroke-width="3" stroke-linecap="round"/>
+<line x1="220" y1="210" x2="313.07" y2="79.85" stroke="#1F2A28" stroke-width="3" stroke-linecap="round"/>
+<path d="M380 210 A160 160 0 0 0 313.07 79.85" fill="none" stroke="#11592F" stroke-width="6" stroke-linecap="round"/>
+<path d="M260 210 A40 40 0 0 0 243.27 177.46" fill="none" stroke="#D55E00" stroke-width="2.5" stroke-linecap="round"/><path d="M241.64 176.3 L254.31 179.21 L248.49 187.35 Z" fill="#D55E00"/>
+<text x="268" y="194" font-size="18" text-anchor="start" fill="#D55E00"><tspan font-style="italic">θ</tspan></text>
+<line x1="313.07" y1="79.85" x2="313.07" y2="210" stroke="#0072B2" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round"/>
+<line x1="220" y1="213" x2="313.07" y2="213" stroke="#D55E00" stroke-width="4" stroke-linecap="round"/>
+<text x="321.07" y="149.93" font-size="16" text-anchor="start" fill="#0072B2" font-weight="bold">sin <tspan font-style="italic">θ</tspan></text>
+<text x="266.53" y="234" font-size="16" text-anchor="middle" fill="#D55E00" font-weight="bold">cos <tspan font-style="italic">θ</tspan></text>
+<circle cx="313.07" cy="79.85" r="6.5" fill="#11592F"/>
+<text x="323.07" y="69.85" font-size="16" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan font-style="italic">P</tspan> = (cos <tspan font-style="italic">θ</tspan>, sin <tspan font-style="italic">θ</tspan>)</text>
+<text x="372.96" y="137.34" font-size="14" text-anchor="start" fill="#11592F">arc length <tspan font-style="italic">θ</tspan></text>
+<text x="388" y="202" font-size="14" text-anchor="start" fill="#1F2A28">1</text>
+<text x="52" y="202" font-size="14" text-anchor="end" fill="#1F2A28">−1</text>
+<text x="226" y="44" font-size="14" text-anchor="start" fill="#1F2A28">1</text>
+<text x="226" y="388" font-size="14" text-anchor="start" fill="#1F2A28">−1</text>
+<text x="290" y="254" font-size="13" text-anchor="start" fill="#5A6563">initial ray</text>
+<text x="250.53" y="134.93" font-size="13" text-anchor="end" fill="#5A6563">terminal ray</text>
+<text x="470" y="90" font-size="16" text-anchor="start" fill="#1F2A28" font-weight="bold">Radius 1, so:</text>
+<text x="470" y="124" font-size="16" text-anchor="start" fill="#D55E00">cos <tspan font-style="italic">θ</tspan> = <tspan font-style="italic">x</tspan>-coordinate of <tspan font-style="italic">P</tspan></text>
+<text x="470" y="156" font-size="16" text-anchor="start" fill="#0072B2">sin <tspan font-style="italic">θ</tspan> = <tspan font-style="italic">y</tspan>-coordinate of <tspan font-style="italic">P</tspan></text>
+<text x="470" y="188" font-size="16" text-anchor="start" fill="#1F2A28">tan <tspan font-style="italic">θ</tspan> = sin <tspan font-style="italic">θ</tspan> / cos <tspan font-style="italic">θ</tspan></text>
+<text x="470" y="212" font-size="16" text-anchor="start" fill="#1F2A28">= slope of the terminal ray</text>
+<text x="470" y="256" font-size="16" text-anchor="start" fill="#11592F"><tspan font-style="italic">θ</tspan> in radians = arc length</text>
+<text x="470" y="280" font-size="16" text-anchor="start" fill="#11592F">cut off on a radius-1 circle</text>
+</svg>

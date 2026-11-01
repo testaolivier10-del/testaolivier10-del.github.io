@@ -1,0 +1,12 @@
+{
+ "alg-polynomial-algebra-factors": {
+  "file": "figures/alg-polynomial-algebra-factors.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of y = x³ − 9x = x(x − 3)(x + 3). It crosses the x-axis at x = −3, 0 and 3, one crossing for each factor: x + 3 = 0, x = 0 and x − 3 = 0."
+ }
+}

@@ -1,0 +1,5 @@
+{
+ "hole": {
+  "def": "A single point missing from a graph. A rational function has a hole at $x = a$ when $(x - a)$ divides the numerator at least as many times as the denominator; its height is $\\lim_{x \\to a} r(x)$, found by cancelling the factor and evaluating."
+ }
+}

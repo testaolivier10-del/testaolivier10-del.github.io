@@ -1,0 +1,65 @@
+{
+ "topic": "alg-systems",
+ "hook": "Three customers report what they paid at a food truck for different orders. From those three receipts you can work out the price of each item. Finding several unknowns from several facts is solving a system, and it is how every model in this course gets its constants.",
+ "prereq": [
+  {
+   "q": "What is the slope of $y = -2x + 7$?",
+   "options": [
+    "$-2$",
+    "$7$",
+    "$2$",
+    "$-\\frac{1}{2}$"
+   ],
+   "correct": 0,
+   "why": "In $y = mx + b$, the slope is $m = -2$.",
+   "review": "alg-lines"
+  },
+  {
+   "q": "Does the point $(1, 5)$ satisfy $y = x^2 + 4$?",
+   "options": [
+    "Yes",
+    "No, it gives $y = 6$",
+    "No, it gives $y = 4$",
+    "No, it gives $y = 3$"
+   ],
+   "correct": 0,
+   "why": "$1^2 + 4 = 5$, so the point is on the graph.",
+   "review": "alg-quadratics"
+  }
+ ],
+ "figure": {
+  "figure": "alg-systems-lines",
+  "caption": "The system $y = 2x - 1$ and $y = -x + 5$ has one solution, $(2, 3)$, the point where the lines cross."
+ },
+ "chain": [
+  {
+   "cause": "Write one equation for each fact (each data point)",
+   "effect": "a system with as many equations as unknowns"
+  },
+  {
+   "cause": "Substitute or add equations to remove one variable at a time",
+   "effect": "one equation in one variable, which you solve"
+  },
+  {
+   "cause": "Work back up and check every original equation",
+   "effect": "all the unknowns, at full precision"
+  }
+ ],
+ "ideas": [
+  "A solution of a system makes every equation true at once; for two lines it is where they cross.",
+  "To fit $y = ax^2 + bx + c$ to three points, substitute each point to get three equations in $a$, $b$ and $c$.",
+  "With a calculator, store each constant; rounding early spoils every value that comes after."
+ ],
+ "misconception": {
+  "wrong": "Substituting $(2, 11)$ into $y = ax^2 + bx + c$ gives $2a + 2b + c = 11$.",
+  "right": "The input is squared for the $a$ term: $a(2)^2 + 2b + c = 11$, so $4a + 2b + c = 11$."
+ },
+ "check": [
+  "pcalc-alg-systems-1",
+  "pcalc-alg-systems-2",
+  "pcalc-alg-systems-4",
+  "pcalc-alg-systems-5",
+  "pcalc-alg-systems-7"
+ ],
+ "summary": "Solve a system by substitution or elimination, removing one variable at a time. Fitting a model through data points means writing one equation per point and solving for the constants, stored at full precision."
+}

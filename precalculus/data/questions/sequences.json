@@ -1,0 +1,548 @@
+{
+ "stimuli": {
+  "sequences-s1": {
+   "kind": "table",
+   "title": "Two sequences",
+   "table": {
+    "caption": "The first five terms of the sequences a and g, for n = 0 to 4",
+    "cols": [
+     "$n$",
+     "0",
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "rows": [
+     [
+      "$a_n$",
+      "5",
+      "8",
+      "11",
+      "14",
+      "17"
+     ],
+     [
+      "$g_n$",
+      "2",
+      "6",
+      "18",
+      "54",
+      "162"
+     ]
+    ]
+   }
+  },
+  "sequences-s2": {
+   "kind": "graph",
+   "title": "A sequence shown as points",
+   "plot": {
+    "label": "Dots at n = 1 to 5 for the terms 48, 24, 12, 6 and 3 of the sequence h, each half of the one before",
+    "x": [
+     0,
+     6
+    ],
+    "y": [
+     0,
+     52
+    ],
+    "xStep": 1,
+    "yStep": 8,
+    "xLabel": "n",
+    "yLabel": "h_n",
+    "points": [
+     {
+      "at": [
+       1,
+       48.0
+      ]
+     },
+     {
+      "at": [
+       2,
+       24.0
+      ]
+     },
+     {
+      "at": [
+       3,
+       12.0
+      ]
+     },
+     {
+      "at": [
+       4,
+       6.0
+      ]
+     },
+     {
+      "at": [
+       5,
+       3.0
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-sequences-1",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 1,
+   "stimulus": "sequences-s1",
+   "q": "Which statement describes the two sequences in the table?",
+   "type": "single",
+   "options": [
+    "$a$ is geometric with common ratio $3$; $g$ is arithmetic with common difference $3$",
+    "$a$ is arithmetic with common difference $3$; $g$ is geometric with common ratio $3$",
+    "Both are arithmetic, with common differences $3$ and $4$",
+    "$a$ is arithmetic with common difference $5$; $g$ is geometric with common ratio $2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Each term of $a$ is $3$ more than the one before ($8 - 5 = 3$, $11 - 8 = 3$, ...). Each term of $g$ is $3$ times the one before ($\\frac{6}{2} = 3$, $\\frac{18}{6} = 3$, ...).",
+    "options": [
+     "The labels are swapped: $a$ adds $3$, $g$ multiplies by $3$.",
+     "Equal differences for $a$; equal ratios for $g$.",
+     "The differences of $g$ are $4, 12, 36, 108$, which are not equal.",
+     "$5$ and $2$ are the first terms $a_0$ and $g_0$, not the difference and ratio."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sequences-2",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sequences-s1",
+   "q": "Using the table, find $a_{20}$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 65,
+    "mistakes": [
+     {
+      "value": 62,
+      "why": "That uses $a_n = 5 + 3(n - 1)$, but the table starts at $n = 0$ with $a_0 = 5$."
+     },
+     {
+      "value": 100,
+      "why": "That is $5 \\cdot 20$; add the difference $3$ twenty times to $5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a_n = a_0 + dn = 5 + 3n$, so $a_{20} = 5 + 3(20) = 65$."
+   }
+  },
+  {
+   "id": "pcalc-sequences-3",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sequences-s1",
+   "q": "Using the table, find $g_6$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 1458,
+    "mistakes": [
+     {
+      "value": 486,
+      "why": "That is $2(3)^5$; the exponent is $6$ when $g_0$ is the first term."
+     },
+     {
+      "value": 46656,
+      "why": "That is $6^6$: multiply $2$ by $3^6$, not $(2 \\cdot 3)^6$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$g_n = g_0 r^n = 2(3)^n$, so $g_6 = 2(3^6) = 2(729) = 1458$."
+   }
+  },
+  {
+   "id": "pcalc-sequences-4",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sequences-s1",
+   "q": "Write an expression for $g_n$, the sequence in the table, in terms of $n$.",
+   "type": "expr",
+   "expr": {
+    "answer": "2(3)^n",
+    "vars": [
+     "n"
+    ],
+    "domain": [
+     0,
+     6
+    ],
+    "mode": "exact",
+    "lhs": "g_n =",
+    "mistakes": [
+     {
+      "expr": "3(2)^n",
+      "why": "The first term is $2$ and the ratio is $3$, not the other way round."
+     },
+     {
+      "expr": "2(3)^(n-1)",
+      "why": "This form needs the first term at $n = 1$. The table starts at $n = 0$, so the exponent is $n$."
+     },
+     {
+      "expr": "2 + 3n",
+      "why": "This adds $3$ each step; $g$ multiplies by $3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A geometric sequence is $g_n = g_0 r^n$ with $g_0 = 2$ and $r = 3$: $g_n = 2(3)^n$. Check: $g_2 = 2 \\cdot 9 = 18$."
+   }
+  },
+  {
+   "id": "pcalc-sequences-5",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sequences-s1",
+   "q": "How do the changes in $a$ and $g$ from one term to the next compare?",
+   "type": "single",
+   "options": [
+    "Both change by equal amounts from each term to the next",
+    "$a$ changes by equal amounts; $g$ changes by increasing amounts",
+    "$a$ changes by increasing amounts; $g$ changes by equal amounts",
+    "Both change by increasing amounts, $g$ faster than $a$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The changes in $a$ are $3, 3, 3, 3$. The changes in $g$ are $4, 12, 36, 108$: each is $3$ times the one before, so they keep increasing.",
+    "options": [
+     "The changes in $g$ are $4, 12, 36, 108$.",
+     "Arithmetic: equal steps. Increasing geometric: steps that grow.",
+     "This swaps the two.",
+     "The changes in $a$ are all $3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sequences-6",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sequences-s2",
+   "q": "The graph shows the terms $h_1$ to $h_5$ of a geometric sequence. What is its common ratio?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": -24,
+      "why": "That is the common difference $24 - 48$. A geometric sequence has a common ratio: divide."
+     },
+     {
+      "value": 2,
+      "why": "Divide a term by the one before it: $\\frac{24}{48}$, not $\\frac{48}{24}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{h_2}{h_1} = \\frac{24}{48} = \\frac{1}{2}$, and every later ratio is also $\\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "pcalc-sequences-7",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sequences-s2",
+   "q": "Write $h_n$ in terms of $n$, using the term $h_1 = 48$.",
+   "type": "expr",
+   "expr": {
+    "answer": "48(1/2)^(n-1)",
+    "vars": [
+     "n"
+    ],
+    "domain": [
+     1,
+     8
+    ],
+    "mode": "exact",
+    "lhs": "h_n =",
+    "mistakes": [
+     {
+      "expr": "48(1/2)^n",
+      "why": "With $h_1 = 48$ the exponent is $n - 1$, so that $h_1 = 48(\\frac{1}{2})^0 = 48$."
+     },
+     {
+      "expr": "48 - 24(n-1)",
+      "why": "This subtracts $24$ each step. Divide by $2$ each step instead."
+     },
+     {
+      "expr": "48(2)^(n-1)",
+      "why": "The terms shrink, so the ratio is $\\frac{1}{2}$, not $2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With a known term $h_k$, $h_n = h_k r^{n - k}$. Here $k = 1$: $h_n = 48\\left(\\frac{1}{2}\\right)^{n - 1}$. Check: $h_3 = 48 \\cdot \\frac{1}{4} = 12$."
+   }
+  },
+  {
+   "id": "pcalc-sequences-8",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sequences-s2",
+   "q": "Find $h_8$ exactly.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "3/8",
+    "mistakes": [
+     {
+      "value": "3/16",
+      "why": "That uses the exponent $8$. From $h_1$ to $h_8$ is $7$ steps."
+     },
+     {
+      "value": -120,
+      "why": "That continues by subtracting $24$; the sequence halves each step."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$h_8 = 48\\left(\\frac{1}{2}\\right)^{7} = \\frac{48}{128} = \\frac{3}{8}$."
+   }
+  },
+  {
+   "id": "pcalc-sequences-9",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sequences-s2",
+   "q": "Why does the graph of $h$ show separate dots instead of a connected curve?",
+   "type": "single",
+   "options": [
+    "The terms get too small to connect with a curve",
+    "Its inputs are whole-number positions, so nothing lies between dots",
+    "A geometric sequence is graphed with a line just for $r > 1$",
+    "The common ratio is a fraction, so the graph breaks apart"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A sequence assigns an output to each whole-number position $n$. There is no term $h_{1.5}$, so nothing is drawn between the dots.",
+    "options": [
+     "Size has nothing to do with it; the inputs are whole numbers.",
+     "Inputs are positions $1, 2, 3, \\ldots$",
+     "Any sequence is graphed as dots for the same reason.",
+     "A ratio of $2$ would also give dots."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sequences-10",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "An arithmetic sequence has $a_4 = 19$ and $a_{10} = 43$. What is its common difference?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 4.0,
+    "mistakes": [
+     {
+      "value": 24,
+      "why": "That is the total change over $6$ steps; divide by the number of steps."
+     },
+     {
+      "value": "24/14",
+      "why": "Divide by the number of steps, $10 - 4 = 6$, not by $4 + 10$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From $n = 4$ to $n = 10$ is $6$ steps, and the terms rise by $43 - 19 = 24$. So $d = \\frac{24}{6} = 4$. In the form $a_n = a_k + d(n - k)$: $a_n = 19 + 4(n - 4)$."
+   }
+  },
+  {
+   "id": "pcalc-sequences-11",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A geometric sequence has $g_2 = 12$ and $g_5 = 96$. What is its common ratio?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "That is $r^3$, the ratio over $3$ steps. Take the cube root."
+     },
+     {
+      "value": 28,
+      "why": "That is the common difference of an arithmetic sequence through these terms, $\\frac{96 - 12}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From $n = 2$ to $n = 5$ is $3$ steps, so $g_5 = g_2 r^3$: $96 = 12r^3$, $r^3 = 8$, and $r = 2$."
+   }
+  },
+  {
+   "id": "pcalc-sequences-12",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "An arithmetic sequence has $a_0 = 7$ and common difference $-3$. Find $a_{15}$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": -38,
+    "mistakes": [
+     {
+      "value": 52,
+      "why": "The difference is $-3$, so the terms go down: $7 - 45$."
+     },
+     {
+      "value": -35,
+      "why": "That is $a_{14}$, from $14$ steps; from $a_0$ to $a_{15}$ is $15$ steps."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a_{15} = a_0 + 15d = 7 + 15(-3) = 7 - 45 = -38$."
+   }
+  },
+  {
+   "id": "pcalc-sequences-13",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "An arithmetic sequence has $a_3 = 10$ and common difference $4$. Which formula gives $a_n$?",
+   "type": "single",
+   "options": [
+    "$a_n = 10 + 4n$",
+    "$a_n = 10 + 4(n - 3)$",
+    "$a_n = 4 + 10(n - 3)$",
+    "$a_n = 10 + 4(n + 3)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Start from the known term and count steps from it: $a_n = a_k + d(n - k) = 10 + 4(n - 3)$. Check: $a_3 = 10$.",
+    "options": [
+     "This gives $a_0 = 10$; but $10$ is the term at $n = 3$.",
+     "Known term $10$ at $k = 3$, steps $n - 3$.",
+     "The difference and the term are swapped.",
+     "Steps from $n = 3$ are $n - 3$, not $n + 3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sequences-14",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which lists could be the first terms of a geometric sequence? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$5, 10, 20, 40$",
+    "$81, 27, 9, 3$",
+    "$2, 4, 6, 8$",
+    "$1, 4, 9, 16$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A geometric sequence has a common ratio: each term divided by the one before gives the same number.",
+    "options": [
+     "Ratio $2$ each time.",
+     "Ratio $\\frac{1}{3}$ each time.",
+     "This adds $2$ each time: arithmetic. Its ratios are $2, 1.5, 1.33\\ldots$",
+     "Ratios $4, 2.25, 1.78\\ldots$ are not equal; these are squares."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sequences-15",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Club A starts with $3$ members and adds $50$ each week. Club B starts with $3$ members and doubles each week. Which statement is correct?",
+   "type": "single",
+   "options": [
+    "A stays ahead for good, because it adds far more members at the start",
+    "They grow the same way, because both clubs start at $3$ members",
+    "B passes A in week $1$, because doubling beats adding $50$",
+    "B passes A eventually: B's gains keep doubling, A's stay at $50$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A is arithmetic: $3 + 50n$. B is geometric: $3(2)^n$. B's gains ($3, 6, 12, 24, \\ldots$) double each week, so they soon exceed $50$. At $n = 6$, A has $303$ and B has $192$; at $n = 7$, A has $353$ and B has $384$.",
+    "options": [
+     "Fixed gains of $50$ are passed by gains that keep doubling.",
+     "The same start does not mean the same kind of change.",
+     "In week $1$, A has $53$ and B has $6$.",
+     "Growing gains beat fixed gains eventually: week $7$ here."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-sequences-16",
+   "unit": "unit-2",
+   "topic": "sequences",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For the arithmetic sequence $a_n = 5 + dn$, the common difference $d$ changes from $3$ to $-2$. Predict each change.",
+   "type": "predict",
+   "variables": [
+    {
+     "name": "The term $a_0$",
+     "answer": "none",
+     "why": "$a_0 = 5 + d \\cdot 0 = 5$ whatever $d$ is."
+    },
+    {
+     "name": "The term $a_4$",
+     "answer": "down",
+     "why": "$a_4 = 5 + 4d$ goes from $17$ to $-3$."
+    },
+    {
+     "name": "The size of the change from one term to the next",
+     "answer": "down",
+     "why": "The step goes from $3$ (up) to $2$ (down), so each change is $2$ in size instead of $3$."
+    }
+   ],
+   "why": {
+    "correct": "The starting term stays; every later term moves by the new difference."
+   }
+  }
+ ]
+}

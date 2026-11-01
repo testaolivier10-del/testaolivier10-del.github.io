@@ -1,0 +1,39 @@
+<p>Many quantities need two pieces of information: not just "how much" but "which way". A wind of 20 km/h from the west is different from a wind of 20 km/h from the north. A <b>vector</b> is a quantity with a magnitude (size) and a direction. You draw it as an arrow; you compute with it through its components.</p>
+
+<h2>Components</h2>
+<p>An arrow from $(x_1, y_1)$ to $(x_2, y_2)$ moves $x_2 - x_1$ across and $y_2 - y_1$ up. Those two numbers are its components:</p>
+$$\mathbf{v} = \left\langle x_2 - x_1, y_2 - y_1 \right\rangle.$$
+<p>Only the move matters, not where the arrow starts. The arrow from $(2, 1)$ to $(1, 4)$ and the arrow from $(0, 0)$ to $(-1, 3)$ are the same vector, $\left\langle -1, 3 \right\rangle$. Another way to write $\left\langle a, b \right\rangle$ is $a\mathbf{i} + b\mathbf{j}$, where $\mathbf{i} = \left\langle 1, 0 \right\rangle$ and $\mathbf{j} = \left\langle 0, 1 \right\rangle$.</p>
+
+<h2>Magnitude and direction</h2>
+<p>The magnitude is the arrow's length, from the Pythagorean theorem: $\left\| \left\langle a, b \right\rangle \right\| = \sqrt{a^2 + b^2}$. Going the other way, a vector with magnitude $m$ pointing at angle $\theta$ from the positive $x$-axis has components $\left\langle m\cos\theta, m\sin\theta \right\rangle$, the same idea as a point on a circle of radius $m$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A boat heads $30^\circ$ north of east at $12$ km/h, and a current pushes it south at $4$ km/h. Find its actual velocity vector and speed.</p>
+<p>Heading: $\left\langle 12\cos 30^\circ, 12\sin 30^\circ \right\rangle = \left\langle 6\sqrt{3}, 6 \right\rangle$, using $\cos 30^\circ = \frac{\sqrt{3}}{2}$ and $\sin 30^\circ = \frac{1}{2}$.</p>
+<p>Current: $\left\langle 0, -4 \right\rangle$ (south is the negative $y$ direction).</p>
+<p>Sum: $\left\langle 6\sqrt{3}, 2 \right\rangle$. Speed: $\sqrt{(6\sqrt{3})^2 + 2^2} = \sqrt{108 + 4} = \sqrt{112} = 4\sqrt{7}$ km/h, a little over $10.5$ km/h.</p>
+</div>
+
+<h2>Adding, subtracting and scaling</h2>
+<p>To add $\mathbf{u} + \mathbf{v}$ on a picture, put the tail of $\mathbf{v}$ at the tip of $\mathbf{u}$; the sum runs from the tail of $\mathbf{u}$ to the tip of $\mathbf{v}$. In components you just add matching entries.</p>
+<figure id="fig-sum" data-fig="vectors-sum"><figcaption>$\left\langle 3, 1 \right\rangle + \left\langle 1, 2 \right\rangle = \left\langle 4, 3 \right\rangle$, tip to tail.</figcaption></figure>
+<table class="compare">
+<thead><tr><th scope="col">Operation</th><th scope="col">Components</th><th scope="col">Picture</th></tr></thead>
+<tbody>
+<tr><td>$\mathbf{u} + \mathbf{v}$</td><td>$\left\langle a + c, b + d \right\rangle$</td><td>tip to tail</td></tr>
+<tr><td>$\mathbf{u} - \mathbf{v}$</td><td>$\left\langle a - c, b - d \right\rangle$</td><td>add the reversed $\mathbf{v}$</td></tr>
+<tr><td>$k\mathbf{u}$</td><td>$\left\langle ka, kb \right\rangle$</td><td>$|k|$ times as long; reversed if $k < 0$</td></tr>
+<tr><td>$\frac{\mathbf{u}}{\left\| \mathbf{u} \right\|}$</td><td>each component over the length</td><td>same direction, length $1$</td></tr>
+</tbody>
+</table>
+<p>The last row is the <b>unit vector</b> in the direction of $\mathbf{u}$. For $\left\langle 5, -12 \right\rangle$, the length is $\sqrt{25 + 144} = 13$, so the unit vector is $\left\langle \frac{5}{13}, -\frac{12}{13} \right\rangle$.</p>
+
+<h2>The dot product and angles</h2>
+<p>The <b>dot product</b> of $\mathbf{u} = \left\langle a, b \right\rangle$ and $\mathbf{v} = \left\langle c, d \right\rangle$ is the number $\mathbf{u} \cdot \mathbf{v} = ac + bd$. It is also $\left\| \mathbf{u} \right\| \left\| \mathbf{v} \right\| \cos\theta$, where $\theta$ is the angle between the two arrows when they start at the same point. So</p>
+$$\cos\theta = \frac{\mathbf{u} \cdot \mathbf{v}}{\left\| \mathbf{u} \right\| \left\| \mathbf{v} \right\|}.$$
+<div class="worked">
+<p><b>Worked example 2.</b> Find the angle between $\left\langle 1, 0 \right\rangle$ and $\left\langle 1, \sqrt{3} \right\rangle$.</p>
+<p>Dot product: $1(1) + 0(\sqrt{3}) = 1$. Lengths: $1$ and $\sqrt{1 + 3} = 2$.</p>
+<p>$\cos\theta = \frac{1}{1 \cdot 2} = \frac{1}{2}$, so $\theta = \frac{\pi}{3}$.</p>
+</div>
+<p>A dot product of $0$ means $\cos\theta = 0$: the vectors are perpendicular. $\left\langle 2, 3 \right\rangle \cdot \left\langle -3, 2 \right\rangle = -6 + 6 = 0$. A positive dot product means the angle is less than $\frac{\pi}{2}$; a negative one, more.</p>

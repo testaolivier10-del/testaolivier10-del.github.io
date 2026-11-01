@@ -1,0 +1,12 @@
+{
+ "transformations-parent": {
+  "file": "figures/transformations-parent.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The parent graph f(x) = x^2 with vertex (0, 0) and the transformed graph g(x) = 2f(x - 3) - 1, narrower, with vertex (3, -1); the point (1, 1) on f moves to (4, 1) on g."
+ }
+}

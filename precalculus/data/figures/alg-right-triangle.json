@@ -1,0 +1,12 @@
+{
+ "alg-right-triangle-sides": {
+  "file": "figures/alg-right-triangle-sides.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A right triangle with the right angle at the lower right corner and the angle theta at the lower left corner. The longest side, across from the right angle, is the hypotenuse. The vertical side across from theta is the side opposite theta. The horizontal side that touches theta and is not the hypotenuse is the side adjacent to theta. To the right: sine of theta is opposite over hypotenuse, cosine of theta is adjacent over hypotenuse, tangent of theta is opposite over adjacent (SOH CAH TOA)."
+ }
+}

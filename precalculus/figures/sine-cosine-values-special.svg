@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 520" width="780" height="520" role="img" aria-labelledby="sine-cosine-values-special-t sine-cosine-values-special-d" font-family="Arial, Helvetica, sans-serif">
+<title id="sine-cosine-values-special-t">Exact sine and cosine values at multiples of pi/6 and pi/4</title>
+<desc id="sine-cosine-values-special-d">A circle of radius 1 centered at the origin with a dot at every multiple of pi/6 and pi/4 from 0 to 2 pi, each labeled with its angle in radians. The first-quadrant points are labeled with their coordinates: at pi/6, (square root of 3 over 2, 1/2); at pi/4, (square root of 2 over 2, square root of 2 over 2); at pi/3, (1/2, square root of 3 over 2). A table to the right lists cosine and sine at 0, pi/6, pi/4, pi/3 and pi/2: cosine 1, root 3 over 2, root 2 over 2, 1/2, 0 and sine 0, 1/2, root 2 over 2, root 3 over 2, 1. The other quadrants repeat these values with signs set by the quadrant.</desc>
+<rect width="780" height="520" fill="#fff"/>
+<line x1="45" y1="260" x2="475" y2="260" stroke="#1F2A28" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="260" y1="475" x2="260" y2="45" stroke="#1F2A28" stroke-width="1.4" stroke-linecap="round"/>
+<circle cx="260" cy="260" r="175" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<line x1="260" y1="260" x2="435" y2="260" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="435" cy="260" r="5" fill="#11592F"/>
+<text x="463" y="265" font-size="14" text-anchor="start" fill="#11592F" font-weight="bold">0</text>
+<line x1="260" y1="260" x2="411.55" y2="172.5" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="411.55" cy="172.5" r="5" fill="#11592F"/>
+<text x="435.8" y="163.5" font-size="14" text-anchor="start" fill="#11592F" font-weight="bold">π/6</text>
+<line x1="260" y1="260" x2="347.5" y2="108.45" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="347.5" cy="108.45" r="5" fill="#11592F"/>
+<text x="361.5" y="89.2" font-size="14" text-anchor="start" fill="#11592F" font-weight="bold">π/3</text>
+<line x1="260" y1="260" x2="260" y2="85" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="260" cy="85" r="5" fill="#11592F"/>
+<text x="260" y="62" font-size="14" text-anchor="middle" fill="#11592F" font-weight="bold">π/2</text>
+<line x1="260" y1="260" x2="172.5" y2="108.45" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="172.5" cy="108.45" r="5" fill="#11592F"/>
+<text x="158.5" y="89.2" font-size="14" text-anchor="end" fill="#11592F" font-weight="bold">2π/3</text>
+<line x1="260" y1="260" x2="108.45" y2="172.5" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="108.45" cy="172.5" r="5" fill="#11592F"/>
+<text x="84.2" y="163.5" font-size="14" text-anchor="end" fill="#11592F" font-weight="bold">5π/6</text>
+<line x1="260" y1="260" x2="85" y2="260" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="85" cy="260" r="5" fill="#11592F"/>
+<text x="57" y="265" font-size="14" text-anchor="end" fill="#11592F" font-weight="bold">π</text>
+<line x1="260" y1="260" x2="108.45" y2="347.5" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="108.45" cy="347.5" r="5" fill="#11592F"/>
+<text x="84.2" y="366.5" font-size="14" text-anchor="end" fill="#11592F" font-weight="bold">7π/6</text>
+<line x1="260" y1="260" x2="172.5" y2="411.55" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="172.5" cy="411.55" r="5" fill="#11592F"/>
+<text x="158.5" y="440.8" font-size="14" text-anchor="end" fill="#11592F" font-weight="bold">4π/3</text>
+<line x1="260" y1="260" x2="260" y2="435" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="260" cy="435" r="5" fill="#11592F"/>
+<text x="260" y="468" font-size="14" text-anchor="middle" fill="#11592F" font-weight="bold">3π/2</text>
+<line x1="260" y1="260" x2="347.5" y2="411.55" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="347.5" cy="411.55" r="5" fill="#11592F"/>
+<text x="361.5" y="440.8" font-size="14" text-anchor="start" fill="#11592F" font-weight="bold">5π/3</text>
+<line x1="260" y1="260" x2="411.55" y2="347.5" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="411.55" cy="347.5" r="5" fill="#11592F"/>
+<text x="435.8" y="366.5" font-size="14" text-anchor="start" fill="#11592F" font-weight="bold">11π/6</text>
+<line x1="260" y1="260" x2="383.74" y2="136.26" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="383.74" cy="136.26" r="5" fill="#0072B2"/>
+<text x="403.54" y="121.46" font-size="14" text-anchor="start" fill="#0072B2" font-weight="bold">π/4</text>
+<line x1="260" y1="260" x2="136.26" y2="136.26" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="136.26" cy="136.26" r="5" fill="#0072B2"/>
+<text x="116.46" y="121.46" font-size="14" text-anchor="end" fill="#0072B2" font-weight="bold">3π/4</text>
+<line x1="260" y1="260" x2="136.26" y2="383.74" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="136.26" cy="383.74" r="5" fill="#0072B2"/>
+<text x="116.46" y="408.54" font-size="14" text-anchor="end" fill="#0072B2" font-weight="bold">5π/4</text>
+<line x1="260" y1="260" x2="383.74" y2="383.74" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="383.74" cy="383.74" r="5" fill="#0072B2"/>
+<text x="403.54" y="408.54" font-size="14" text-anchor="start" fill="#0072B2" font-weight="bold">7π/4</text>
+<text x="395.16" y="182.5" font-size="13" text-anchor="end" fill="#1F2A28">(√3/2, 1/2)</text>
+<text x="369.26" y="148.74" font-size="13" text-anchor="end" fill="#1F2A28">(√2/2, √2/2)</text>
+<text x="335.5" y="122.84" font-size="13" text-anchor="end" fill="#1F2A28">(1/2, √3/2)</text>
+<text x="443" y="280" font-size="1" text-anchor="start" fill="#1F2A28"></text>
+<rect x="550" y="94" width="230" height="40" fill="#E3F3E8"/>
+<text x="585" y="120" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold" font-style="italic">θ</text>
+<text x="655" y="120" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold">cos θ</text>
+<text x="725" y="120" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold">sin θ</text>
+<line x1="550" y1="134" x2="780" y2="134" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<text x="585" y="160" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold">0</text>
+<text x="655" y="160" font-size="16" text-anchor="middle" fill="#1F2A28">1</text>
+<text x="725" y="160" font-size="16" text-anchor="middle" fill="#1F2A28">0</text>
+<line x1="550" y1="174" x2="780" y2="174" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<text x="585" y="200" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold">π/6</text>
+<text x="655" y="200" font-size="16" text-anchor="middle" fill="#1F2A28">√3/2</text>
+<text x="725" y="200" font-size="16" text-anchor="middle" fill="#1F2A28">1/2</text>
+<line x1="550" y1="214" x2="780" y2="214" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<text x="585" y="240" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold">π/4</text>
+<text x="655" y="240" font-size="16" text-anchor="middle" fill="#1F2A28">√2/2</text>
+<text x="725" y="240" font-size="16" text-anchor="middle" fill="#1F2A28">√2/2</text>
+<line x1="550" y1="254" x2="780" y2="254" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<text x="585" y="280" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold">π/3</text>
+<text x="655" y="280" font-size="16" text-anchor="middle" fill="#1F2A28">1/2</text>
+<text x="725" y="280" font-size="16" text-anchor="middle" fill="#1F2A28">√3/2</text>
+<line x1="550" y1="294" x2="780" y2="294" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<text x="585" y="320" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold">π/2</text>
+<text x="655" y="320" font-size="16" text-anchor="middle" fill="#1F2A28">0</text>
+<text x="725" y="320" font-size="16" text-anchor="middle" fill="#1F2A28">1</text>
+<line x1="550" y1="334" x2="780" y2="334" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
+<text x="665" y="370" font-size="14" text-anchor="middle" fill="#5A6563">Other quadrants: same sizes,</text>
+<text x="665" y="390" font-size="14" text-anchor="middle" fill="#5A6563">signs from the quadrant.</text>
+</svg>

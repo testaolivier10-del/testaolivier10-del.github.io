@@ -1,0 +1,11 @@
+{
+ "composition-shift": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graphs of f(x) = square root of x and f(g(x)) = square root of (x - 2): the composite is f moved 2 units right, so (4, 2) moves to (6, 2).",
+  "ext": "svg",
+  "w": 420,
+  "h": 280
+ }
+}

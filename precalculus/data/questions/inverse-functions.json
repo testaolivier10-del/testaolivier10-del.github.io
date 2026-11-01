@@ -1,0 +1,621 @@
+{
+ "stimuli": {
+  "inverse-functions-s1": {
+   "kind": "table",
+   "title": "Values of $f$ and $h$",
+   "table": {
+    "caption": "Values of the functions f and h at x = 0, 1, 2, 3, 4 and 5",
+    "cols": [
+     "$x$",
+     "0",
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "rows": [
+     [
+      "$f(x)$",
+      "-3",
+      "-1",
+      "2",
+      "5",
+      "7",
+      "12"
+     ],
+     [
+      "$h(x)$",
+      "4",
+      "1",
+      "0",
+      "1",
+      "4",
+      "9"
+     ]
+    ]
+   }
+  },
+  "inverse-functions-s2": {
+   "kind": "graph",
+   "title": "The graph of $g$",
+   "plot": {
+    "label": "Graph of the increasing function g(x) = x cubed over 8 plus 1, through (-2, 0), (0, 1) and (2, 2)",
+    "width": 340,
+    "height": 300,
+    "x": [
+     -3,
+     3
+    ],
+    "y": [
+     -3,
+     4
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^3/8 + 1",
+      "domain": [
+       -3,
+       2.9
+      ],
+      "cls": "s1",
+      "label": "g"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -2,
+       0
+      ]
+     },
+     {
+      "at": [
+       0,
+       1
+      ]
+     },
+     {
+      "at": [
+       2,
+       2
+      ]
+     }
+    ]
+   },
+   "text": "The graph shows $g(x) = \\frac{x^3}{8} + 1$, which is increasing."
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-inverse-functions-1",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "inverse-functions-s1",
+   "type": "single",
+   "q": "The function $f$ is invertible. Using the table, what is $f^{-1}(5)$?",
+   "options": [
+    "$3$",
+    "$12$",
+    "$\\frac{1}{12}$",
+    "$\\frac{1}{5}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f^{-1}(5)$ is the input of $f$ whose output is $5$. The table has $f(3) = 5$, so $f^{-1}(5) = 3$.",
+    "options": [
+     "$f(3) = 5$, so the inverse sends $5$ back to $3$.",
+     "This is $f(5) = 12$. The inverse runs the other way: from the output $5$ back to an input.",
+     "This is $\\frac{1}{f(5)}$. The $-1$ in $f^{-1}$ names the inverse function, not a reciprocal.",
+     "This is $5^{-1}$. $f^{-1}(5)$ is an input of $f$, not the reciprocal of $5$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-2",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "inverse-functions-s1",
+   "type": "numeric",
+   "q": "The function $f$ is invertible. Using the table, find $f^{-1}(f(3) + 2)$.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "That is the inner value $f(3) + 2 = 7$. Now find the input of $f$ whose output is $7$."
+     },
+     {
+      "value": 5,
+      "why": "That is $f^{-1}(f(3)) + 2 = 3 + 2$. The $+2$ is inside the inverse: find $f^{-1}(7)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Inside first: $f(3) + 2 = 5 + 2 = 7$. Then $f^{-1}(7) = 4$, because $f(4) = 7$."
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-3",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "inverse-functions-s1",
+   "type": "single",
+   "q": "Which statement correctly decides whether $h$ is invertible, using values from the table?",
+   "options": [
+    "No: $h(1) = 1$ and $h(3) = 1$, so two inputs share the output $1$",
+    "Yes: each input of $h$ has exactly one output",
+    "No: $h(2) = 0$, and an output of $0$ has no inverse",
+    "Yes: $h(5) = 9$ is the largest output in the table"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An invertible function gives each output for one input. $h(1) = h(3) = 1$, so $h^{-1}(1)$ would have to be both $1$ and $3$: $h$ has no inverse.",
+    "options": [
+     "Two inputs, $1$ and $3$, share the output $1$, named with values: this earns the point.",
+     "That makes $h$ a function. To be invertible, each output must also come from one input.",
+     "An output of $0$ is no problem; $h(2) = 0$ comes from one input.",
+     "A largest output says nothing about repeated outputs; $h(1) = h(3)$ does."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-4",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "inverse-functions-s1",
+   "type": "single",
+   "q": "Using the table, which value can be an input of $f^{-1}$?",
+   "options": [
+    "$7$",
+    "$4$",
+    "$0$",
+    "$1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The inputs of $f^{-1}$ are the outputs of $f$: $-3, -1, 2, 5, 7, 12$. Of these choices, only $7$ is one of them.",
+    "options": [
+     "$7 = f(4)$ is an output of $f$, so $f^{-1}(7) = 4$.",
+     "$4$ is an input of $f$, but no input of $f$ gives the output $4$ in the table.",
+     "$0$ is an input of $f$; it is not an output of $f$, so $f^{-1}(0)$ is not in the table.",
+     "$1$ is an input of $f$; $f(1) = -1$, so $1$ is not an output in the table."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-5",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "inverse-functions-s1",
+   "type": "multi",
+   "q": "Using the table, which points are on the graph of $y = f^{-1}(x)$? Select every point that is.",
+   "options": [
+    "$(5, 3)$",
+    "$(3, 5)$",
+    "$(-3, 0)$",
+    "$(1, -1)$"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Each point $(a, b)$ on the graph of $f$ gives the point $(b, a)$ on the graph of $f^{-1}$: input and output trade places.",
+    "options": [
+     "$f(3) = 5$, so $f^{-1}(5) = 3$.",
+     "This point is on the graph of $f$ itself; swap the coordinates.",
+     "$f(0) = -3$, so $f^{-1}(-3) = 0$.",
+     "This point is on the graph of $f$, since $f(1) = -1$; swap the coordinates."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-6",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "inverse-functions-s2",
+   "type": "single",
+   "q": "Use the graph to find $g^{-1}(0)$.",
+   "options": [
+    "$-2$",
+    "$1$",
+    "$0$",
+    "$2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$g^{-1}(0)$ is the input of $g$ whose output is $0$. The graph passes through $(-2, 0)$, so $g^{-1}(0) = -2$.",
+    "options": [
+     "$g(-2) = 0$, so the inverse sends $0$ back to $-2$.",
+     "This is $g(0) = 1$, the forward direction.",
+     "$0$ is the output we start from; the answer is the input that produces it.",
+     "$g(2) = 2$; that point does not have output $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-7",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "inverse-functions-s2",
+   "type": "single",
+   "q": "Which point is on the graph of $y = g^{-1}(x)$?",
+   "options": [
+    "$(1, 0)$",
+    "$(0, 1)$",
+    "$(-2, 0)$",
+    "$(2, 0)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$(0, 1)$ is on the graph of $g$, so $(1, 0)$ is on the graph of $g^{-1}$: the coordinates trade places.",
+    "options": [
+     "$g(0) = 1$, so $g^{-1}(1) = 0$.",
+     "This point is on the graph of $g$ itself.",
+     "This point is on $g$; its swapped partner $(0, -2)$ is on the inverse.",
+     "$g^{-1}(2) = 2$, so the point is $(2, 2)$, not $(2, 0)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-8",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "inverse-functions-s2",
+   "type": "expr",
+   "q": "For $g(x) = \\frac{x^3}{8} + 1$, the function in the graph, write $g^{-1}(x)$.",
+   "expr": {
+    "answer": "2cbrt(x - 1)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "mode": "exact",
+    "lhs": "g^{-1}(x) =",
+    "answerTex": "2\\sqrt[3]{x - 1}",
+    "mistakes": [
+     {
+      "expr": "cbrt(8x - 1)",
+      "why": "Subtract $1$ before multiplying by $8$: $y^3 = 8(x - 1)$."
+     },
+     {
+      "expr": "1/(x^3/8 + 1)",
+      "why": "That is $\\frac{1}{g(x)}$. The inverse undoes $g$; it is not its reciprocal."
+     },
+     {
+      "expr": "2cbrt(x + 1)",
+      "why": "Undo $+1$ by subtracting $1$: $x - 1$ under the cube root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Write $y = \\frac{x^3}{8} + 1$ and swap: $x = \\frac{y^3}{8} + 1$. Then $y^3 = 8(x - 1)$, so $g^{-1}(x) = \\sqrt[3]{8(x - 1)} = 2\\sqrt[3]{x - 1}$."
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-9",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "inverse-functions-s2",
+   "type": "single",
+   "q": "How is the graph of $y = g^{-1}(x)$ related to the graph of $y = g(x)$?",
+   "options": [
+    "It is the reflection across the line $y = x$",
+    "It is the reflection across the $x$-axis",
+    "It is the reflection across the $y$-axis",
+    "It is the reflection across the line $y = -x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Swapping input and output turns each point $(a, b)$ into $(b, a)$, which is a reflection across the line $y = x$.",
+    "options": [
+     "$(a, b)$ and $(b, a)$ are mirror images across $y = x$.",
+     "That reflection gives $y = -g(x)$, which changes the signs of outputs.",
+     "That reflection gives $y = g(-x)$, which changes the signs of inputs.",
+     "That reflection sends $(a, b)$ to $(-b, -a)$, not to $(b, a)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-10",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "type": "expr",
+   "q": "Let $f(x) = \\frac{x - 5}{3}$. Write $f^{-1}(x)$.",
+   "expr": {
+    "answer": "3x + 5",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -4,
+     4
+    ],
+    "mode": "exact",
+    "lhs": "f^{-1}(x) =",
+    "mistakes": [
+     {
+      "expr": "3/(x - 5)",
+      "why": "That is $\\frac{1}{f(x)}$, the reciprocal. $f^{-1}$ undoes $f$; it does not flip the fraction."
+     },
+     {
+      "expr": "3x - 5",
+      "why": "Undo subtracting $5$ by adding $5$."
+     },
+     {
+      "expr": "(x + 5)/3",
+      "why": "Undo the steps in reverse order: multiply by $3$ first, then add $5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f$ subtracts $5$, then divides by $3$. Undo in reverse order: multiply by $3$, then add $5$. So $f^{-1}(x) = 3x + 5$."
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-11",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 3,
+   "type": "expr",
+   "q": "Let $f(x) = \\frac{2x + 1}{x - 3}$ for $x \\ne 3$. Write $f^{-1}(x)$.",
+   "expr": {
+    "answer": "(3x + 1)/(x - 2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -5,
+     5
+    ],
+    "mode": "exact",
+    "lhs": "f^{-1}(x) =",
+    "mistakes": [
+     {
+      "expr": "(x - 3)/(2x + 1)",
+      "why": "That flips the fraction, which is $\\frac{1}{f(x)}$. Swap $x$ and $y$, then solve for $y$."
+     },
+     {
+      "expr": "(3x - 1)/(x - 2)",
+      "why": "Moving $-3x$ across gives $+3x$, and $+1$ stays: $y(x - 2) = 3x + 1$."
+     },
+     {
+      "expr": "(3x + 1)/(x + 2)",
+      "why": "Collect the $y$ terms: $xy - 2y = y(x - 2)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Swap: $x = \\frac{2y + 1}{y - 3}$. Then $xy - 3x = 2y + 1$, so $xy - 2y = 3x + 1$, $y(x - 2) = 3x + 1$ and $f^{-1}(x) = \\frac{3x + 1}{x - 2}$."
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-12",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "q": "The function $f(x) = (x - 2)^2 + 1$ is not invertible on the set of real numbers. On which domain is it invertible?",
+   "options": [
+    "$x \\ge 2$",
+    "$x \\ge 0$",
+    "$x \\ge 1$",
+    "$x \\le 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The vertex is at $x = 2$. To the right of it, $f$ is increasing, so no two inputs share an output.",
+    "options": [
+     "On $x \\ge 2$, $f$ is increasing, so each output comes from one input.",
+     "$f(1) = 2$ and $f(3) = 2$, and both inputs are in $x \\ge 0$: not invertible there.",
+     "$f(1.5) = 1.25$ and $f(2.5) = 1.25$, and both inputs are in $x \\ge 1$.",
+     "$f(1) = 2$ and $f(3) = 2$, and both inputs are in $x \\le 3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-13",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "q": "Let $f(x) = x^2 - 4x$, defined for every real number. Which statement shows that $f$ has no inverse?",
+   "options": [
+    "$f(0) = 0$ and $f(4) = 0$",
+    "$f(0) = 0$ and $f(2) = -4$",
+    "$f(x)$ is a function, so each input has one output",
+    "$f(2) = -4$ is a negative output"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two different inputs, $0$ and $4$, give the same output $0$, so an inverse could not decide which input to return.",
+    "options": [
+     "Two inputs with one shared output: specific values that prove it.",
+     "Different inputs with different outputs show nothing about repeats.",
+     "That is true of every function; it does not decide invertibility.",
+     "A negative output is allowed; repeated outputs are what matter."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-14",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "q": "Which functions are invertible on their whole domain? Select every one that is.",
+   "options": [
+    "$f(x) = x^3 + 2$",
+    "$g(x) = 2^x$",
+    "$h(x) = x^2 + 1$",
+    "$k(x) = |x - 3|$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "An invertible function never repeats an output. $f$ and $g$ are increasing; $h$ and $k$ repeat outputs.",
+    "options": [
+     "$f$ is increasing, so different inputs give different outputs.",
+     "$g$ is increasing, so different inputs give different outputs.",
+     "$h(-1) = h(1) = 2$, so two inputs share an output.",
+     "$k(2) = k(4) = 1$, so two inputs share an output."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-15",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "type": "order",
+   "q": "Put the steps for finding the inverse of $f(x) = 4x - 7$ by algebra in order.",
+   "options": [
+    "Write $y = 4x - 7$",
+    "Swap $x$ and $y$: $x = 4y - 7$",
+    "Solve for $y$: $y = \\frac{x + 7}{4}$",
+    "Write $f^{-1}(x) = \\frac{x + 7}{4}$"
+   ],
+   "why": {
+    "correct": "Swapping $x$ and $y$ trades inputs and outputs; solving for $y$ gives the inverse rule."
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-16",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "q": "The function $C(F) = \\frac{5(F - 32)}{9}$ gives the temperature in degrees Celsius for a temperature of $F$ degrees Fahrenheit. What does $C^{-1}(20)$ represent?",
+   "options": [
+    "The Fahrenheit temperature that equals 20 degrees Celsius",
+    "The Celsius temperature that equals 20 degrees Fahrenheit",
+    "One divided by the Celsius value of 20 degrees Fahrenheit",
+    "The change in Celsius when the temperature rises 20 degrees"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$C$ takes Fahrenheit in and gives Celsius out. Its inverse takes Celsius in and gives Fahrenheit out, so $C^{-1}(20)$ is the Fahrenheit reading for $20$ degrees Celsius.",
+    "options": [
+     "The input $20$ of $C^{-1}$ is a Celsius value; its output is Fahrenheit.",
+     "That is $C(20)$, the forward direction.",
+     "That is $\\frac{1}{C(20)}$; the inverse is not a reciprocal.",
+     "A change in temperature is not what an inverse gives."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-17",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "q": "For $C(F) = \\frac{5(F - 32)}{9}$, find $C^{-1}(20)$, the Fahrenheit temperature that equals $20$ degrees Celsius.",
+   "numeric": {
+    "answer": 68,
+    "unit": "degrees Fahrenheit",
+    "units": [
+     "°F",
+     "F",
+     "degrees F"
+    ],
+    "mistakes": [
+     {
+      "value": "-20/3",
+      "why": "That is $C(20)$, the forward direction. Solve $C(F) = 20$ for $F$ instead."
+     },
+     {
+      "value": "-3/20",
+      "why": "That is $\\frac{1}{C(20)}$. The inverse undoes $C$; it is not a reciprocal."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Solve $\\frac{5(F - 32)}{9} = 20$: $F - 32 = 36$, so $F = 68$. Check: $C(68) = \\frac{5 \\cdot 36}{9} = 20$."
+   }
+  },
+  {
+   "id": "pcalc-inverse-functions-18",
+   "unit": "unit-2",
+   "topic": "inverse-functions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "type": "predict",
+   "q": "$f$ is an increasing function with an inverse $f^{-1}$, both defined for every real number. Predict what happens to each quantity as $x$ increases.",
+   "variables": [
+    {
+     "name": "$f^{-1}(x)$",
+     "answer": "up",
+     "why": "Larger outputs of an increasing $f$ come from larger inputs, so its inverse is increasing too."
+    },
+    {
+     "name": "$f(f^{-1}(x)) - x$",
+     "answer": "none",
+     "why": "$f(f^{-1}(x)) = x$ for every $x$, so the difference stays $0$."
+    },
+    {
+     "name": "$-f^{-1}(x)$",
+     "answer": "down",
+     "why": "$f^{-1}(x)$ increases, so its opposite decreases."
+    }
+   ],
+   "why": {
+    "correct": "The inverse of an increasing function is increasing, and composing a function with its inverse gives the identity."
+   }
+  }
+ ]
+}

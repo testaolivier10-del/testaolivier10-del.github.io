@@ -1,0 +1,11 @@
+{
+ "logarithmic-functions-asymptote": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graph of g(x) = 2 log base 2 of (x - 1), with a dashed vertical asymptote at x = 1 and points (2, 0), (3, 2), (5, 4) and (9, 6).",
+  "ext": "svg",
+  "w": 380,
+  "h": 300
+ }
+}

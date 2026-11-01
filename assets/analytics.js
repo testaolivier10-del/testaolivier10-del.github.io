@@ -47,6 +47,7 @@
     { key: 'apstat', dir: 'statistics' },
     { key: 'apenv', dir: 'environmental-science' },
     { key: 'appsych', dir: 'psychology' },
+    { key: 'apprecalc', dir: 'precalculus' },
   ];
   // courses:end
 

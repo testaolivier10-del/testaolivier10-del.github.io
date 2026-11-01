@@ -1,0 +1,486 @@
+{
+ "stimuli": {
+  "model-construction-s1": {
+   "kind": "table",
+   "title": "Monthly sales of a seasonal plant",
+   "table": {
+    "caption": "Plant sales S, in hundreds of plants, during month t, where t = 1 is March",
+    "cols": [
+     "$t$ (months)",
+     "1",
+     "3",
+     "5"
+    ],
+    "rows": [
+     [
+      "$S$ (hundreds of plants)",
+      "14",
+      "30",
+      "30"
+     ]
+    ]
+   }
+  },
+  "model-construction-s2": {
+   "kind": "table",
+   "title": "Customers at a cafe",
+   "table": {
+    "caption": "Number of customers C in the cafe at x hours after opening",
+    "cols": [
+     "$x$ (hours)",
+     "1",
+     "2",
+     "3",
+     "4",
+     "5",
+     "6"
+    ],
+    "rows": [
+     [
+      "$C$ (customers)",
+      "18",
+      "30",
+      "40",
+      "41",
+      "41",
+      "32"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-model-construction-1",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "model-construction-s1",
+   "q": "A quadratic model $S(t) = at^2 + bt + c$ passes through the three data points. Write and solve the system. What is $a$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "The sign is lost: $16a + 2b = 0$ minus $8a + 2b = 16$ gives $8a = -16$."
+     },
+     {
+      "value": 16,
+      "why": "That is $b$. Eliminate $b$ to reach $a$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The points give $a + b + c = 14$, $9a + 3b + c = 30$ and $25a + 5b + c = 30$. Subtracting in pairs: $8a + 2b = 16$ and $16a + 2b = 0$. Subtracting again: $8a = -16$, so $a = -2$; then $b = 16$ and $c = 0$."
+   }
+  },
+  {
+   "id": "pcalc-model-construction-2",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "model-construction-s1",
+   "q": "Using the data, what is the average rate of change of $S$ on $[1, 3]$, in hundreds of plants per month?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 8.0,
+    "unit": "hundred plants per month",
+    "units": [
+     "hundreds of plants per month",
+     "hundred per month"
+    ],
+    "mistakes": [
+     {
+      "value": 16,
+      "why": "That is the change in sales; divide by the $2$ months."
+     },
+     {
+      "value": 22,
+      "why": "That is the average of the two outputs, not a rate of change."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{S(3) - S(1)}{3 - 1} = \\frac{30 - 14}{2} = 8$ hundred plants per month, the slope of the secant line through $(1, 14)$ and $(3, 30)$."
+   }
+  },
+  {
+   "id": "pcalc-model-construction-3",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "model-construction-s1",
+   "q": "The model is $S(t) = -2t^2 + 16t$. What does it predict for month $t = 6$, in hundreds of plants?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 24,
+    "mistakes": [
+     {
+      "value": 2400,
+      "why": "That is the number of plants; the model's outputs are in hundreds."
+     },
+     {
+      "value": 168,
+      "why": "$168 = 72 + 96$ loses the sign: $-2(6^2) = -2(36) = -72$, so $S(6) = -72 + 96$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$S(6) = -2(36) + 16(6) = -72 + 96 = 24$ hundred plants, or $2{,}400$ plants."
+   }
+  },
+  {
+   "id": "pcalc-model-construction-4",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "model-construction-s1",
+   "q": "For which months does the context allow the model $S(t) = -2t^2 + 16t$ to be used?",
+   "type": "single",
+   "options": [
+    "$0 \\le t \\le 8$, since sales after $t = 8$ would be negative",
+    "$1 \\le t \\le 5$, because those are the months in the table",
+    "$0 \\le t \\le 4$, because sales start to decrease after $t = 4$",
+    "$t \\ge 0$, because a month number is not negative"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$S(t) = -2t(t - 8)$ is $0$ at $t = 0$ and $t = 8$ and negative after $t = 8$. Sales cannot be negative, so the model can be used for $0 \\le t \\le 8$.",
+    "options": [
+     "The model gives negative sales past $t = 8$.",
+     "A model can be used between and somewhat beyond its data if the context allows.",
+     "Monthly sales can go down; a decrease does not break the context.",
+     "This misses the upper bound from negative sales."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-construction-5",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "model-construction-s2",
+   "calc": true,
+   "q": "Use a calculator to find the quadratic regression $C(x) = ax^2 + bx + c$ for the data. What is $a$, correct to three decimal places?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -2.5892857142857215,
+    "mistakes": [
+     {
+      "value": 2.9714,
+      "why": "That is the slope of a linear regression. The question asks for the quadratic regression."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Enter the inputs and outputs as lists and run quadratic regression: $a = -2.589286...$, $b = 21.096429...$, $c = -0.900000...$. So $a \\approx -2.589$. Store all three."
+   }
+  },
+  {
+   "id": "pcalc-model-construction-6",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "model-construction-s2",
+   "calc": true,
+   "q": "Using the stored quadratic regression $C$, what does the model predict for $x = 3.5$ hours? Give the answer correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 41.21874999999998,
+    "mistakes": [
+     {
+      "value": 40.5,
+      "why": "That averages the two table values. Use the regression model, which is curved."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Evaluate with the stored constants: $C(3.5) = 41.218750...$, about $41.219$ customers. Rounding $a$, $b$ and $c$ first would change the third decimal place."
+   }
+  },
+  {
+   "id": "pcalc-model-construction-7",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "model-construction-s2",
+   "calc": true,
+   "q": "Using the stored regression $C$, find the average rate of change of $C$ on $[1, 4]$, in customers per hour, correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 8.15,
+    "unit": "customers per hour",
+    "mistakes": [
+     {
+      "value": "23/3",
+      "why": "That uses the table values, $\\frac{41 - 18}{3}$. The question asks for the rate of the model $C$: evaluate the stored regression at $1$ and $4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{C(4) - C(1)}{4 - 1} = 8.150000...$ customers per hour, the slope of the secant line through $(1, C(1))$ and $(4, C(4))$ on the model."
+   }
+  },
+  {
+   "id": "pcalc-model-construction-8",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "model-construction-s2",
+   "calc": true,
+   "q": "Why should the cafe not use the regression model $C$ to predict customers $12$ hours after opening?",
+   "type": "single",
+   "options": [
+    "Far past the data, the model predicts a negative count",
+    "A quadratic regression is undefined at whole-number inputs",
+    "The model is accurate just at the six data inputs",
+    "The model's average rate of change is positive at $x = 12$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The data stop at $x = 6$. The model keeps falling after its maximum, and $C(12) = -120.6$, a negative count. Predictions far past the data are not supported by the data and here break the context.",
+    "options": [
+     "Far from the data the model is not supported, and here it predicts the impossible.",
+     "Any real input can be put into the formula.",
+     "A model can be used between the data points too.",
+     "The model is decreasing after its maximum, so its rate of change is negative there."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-construction-9",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Light intensity $I$ is inversely proportional to the square of the distance $d$ from the source. At $d = 3$ meters, $I = 200$ units. What is $I$ at $d = 6$ meters?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 50.0,
+    "unit": "units",
+    "mistakes": [
+     {
+      "value": 100,
+      "why": "That is inverse proportion to $d$, not $d^2$: doubling $d$ divides $I$ by $4$, not $2$."
+     },
+     {
+      "value": 800,
+      "why": "Intensity falls as distance grows; it is $200 \\div 4$, not $200 \\cdot 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$I = \\frac{k}{d^2}$ with $200 = \\frac{k}{9}$, so $k = 1800$. At $d = 6$: $I = \\frac{1800}{36} = 50$ units. Doubling the distance divides the intensity by $4$."
+   }
+  },
+  {
+   "id": "pcalc-model-construction-10",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the light in the previous situation, write $I$ as a function of $d$.",
+   "type": "expr",
+   "expr": {
+    "answer": "1800/d^2",
+    "vars": [
+     "d"
+    ],
+    "domain": [
+     1,
+     10
+    ],
+    "mode": "exact",
+    "lhs": "I(d) =",
+    "mistakes": [
+     {
+      "expr": "600/d",
+      "why": "This is inverse proportion to $d$. The intensity is inversely proportional to the square of the distance."
+     },
+     {
+      "expr": "200/d^2",
+      "why": "The constant is $k = 200 \\cdot 3^2 = 1800$, not the intensity $200$."
+     },
+     {
+      "expr": "1800d^2",
+      "why": "Inverse proportion divides by $d^2$; this multiplies."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$I(d) = \\frac{k}{d^2}$, and $200 = \\frac{k}{3^2}$ gives $k = 1800$. So $I(d) = \\frac{1800}{d^2}$."
+   }
+  },
+  {
+   "id": "pcalc-model-construction-11",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "The time $t$ for a crew to paint a fence is inversely proportional to the number of painters $n$. Which model fits?",
+   "type": "single",
+   "options": [
+    "$t = kn$",
+    "$t = k - n$",
+    "$t = \\frac{n}{k}$",
+    "$t = \\frac{k}{n}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Inversely proportional means the product $tn$ is constant: $t = \\frac{k}{n}$. Twice as many painters take half the time.",
+    "options": [
+     "This is direct proportion: more painters would take more time.",
+     "This subtracts; doubling the crew would not halve the time.",
+     "This also grows with $n$.",
+     "More painters, proportionally less time."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-construction-12",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A quadratic model has its maximum at $(4, 32)$ and passes through $(0, 0)$. Write the model $S(t)$ using transformations of $t^2$.",
+   "type": "expr",
+   "expr": {
+    "answer": "-2(t - 4)^2 + 32",
+    "vars": [
+     "t"
+    ],
+    "domain": [
+     -2,
+     10
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "vertex"
+    },
+    "lhs": "S(t) =",
+    "mistakes": [
+     {
+      "expr": "-2(t + 4)^2 + 32",
+      "why": "A maximum at $t = 4$ is a shift right: $(t - 4)$, not $(t + 4)$."
+     },
+     {
+      "expr": "2(t - 4)^2 + 32",
+      "why": "A maximum needs a reflection: $a$ is negative. Solve $0 = 16a + 32$."
+     },
+     {
+      "expr": "-(t - 4)^2 + 32",
+      "why": "Use the point $(0, 0)$ to find $a$: $16a + 32 = 0$ gives $a = -2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Vertex form: $S(t) = a(t - 4)^2 + 32$. Through $(0, 0)$: $0 = 16a + 32$, so $a = -2$ and $S(t) = -2(t - 4)^2 + 32$, which equals $-2t^2 + 16t$."
+   }
+  },
+  {
+   "id": "pcalc-model-construction-13",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "A candle is $20$ cm tall. After burning for $3$ hours it is $14$ cm tall. Assuming it burns at a constant rate, what is the rate of change of its height?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -2,
+    "unit": "cm per hour",
+    "units": [
+     "centimeters per hour",
+     "cm/h"
+    ],
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "The height decreases, so the rate is negative."
+     },
+     {
+      "value": -6,
+      "why": "That is the change in height; divide by the $3$ hours."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{14 - 20}{3 - 0} = -2$ cm per hour. The linear model is $L(t) = 20 - 2t$."
+   }
+  },
+  {
+   "id": "pcalc-model-construction-14",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In the model $L(t) = 20 - 2t$ for the candle's height in cm after $t$ hours, what does the number $-2$ mean?",
+   "type": "single",
+   "options": [
+    "The candle has burned down to nothing after $2$ hours",
+    "The height of the candle after $1$ hour is $2$ cm",
+    "Its height drops $2$ cm per hour of burning",
+    "The candle is $2$ cm shorter now than when it was lit"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$-2$ is the rate of change: output units per input unit, $-2$ cm per hour. Each hour the height drops $2$ cm.",
+    "options": [
+     "$L(t) = 0$ at $t = 10$, not $2$.",
+     "$L(1) = 18$ cm.",
+     "A rate in context: cm per hour.",
+     "That is the change after one hour only, not what the constant means."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-model-construction-15",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A taxi charges $\\$3$ to start plus $\\$2$ per mile for the first $10$ miles, then $\\$1.50$ per mile after that. What does a $14$-mile ride cost?",
+   "type": "single",
+   "options": [
+    "$\\$31$",
+    "$\\$24$",
+    "$\\$26$",
+    "$\\$29$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "First $10$ miles: $3 + 2(10) = 23$. Remaining $4$ miles: $1.5(4) = 6$. Total $\\$29$. A piecewise-defined model uses each rule on its own interval.",
+    "options": [
+     "This charges $\\$2$ for every mile: $3 + 2(14)$.",
+     "This charges $\\$1.50$ for all $14$ miles: $3 + 21$.",
+     "This leaves out the $\\$3$ start fee: $20 + 6$.",
+     "$23 + 6 = 29$."
+    ]
+   }
+  }
+ ]
+}

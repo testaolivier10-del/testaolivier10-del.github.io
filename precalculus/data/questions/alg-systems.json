@@ -1,0 +1,233 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "pcalc-alg-systems-1",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Solve the system $y = x - 1$ and $3x + 2y = 13$ by substitution. What is $x$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is $y$. The question asks for $x$; $y = x - 1 = 2$."
+     },
+     {
+      "value": 2.8,
+      "why": "This drops the parentheses: $2(x - 1) = 2x - 2$, not $2x - 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Substitute $y = x - 1$: $3x + 2(x - 1) = 13$, so $5x - 2 = 13$, $5x = 15$ and $x = 3$. Then $y = 3 - 1 = 2$. Check: $3(3) + 2(2) = 13$."
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-2",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Solve $2x + 3y = 12$ and $4x - 3y = 6$ by elimination. What is $y$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "That is $x$. Substitute $x = 3$ back to find $y$."
+     },
+     {
+      "value": 6,
+      "why": "Divide $3y = 6$ by $3$: $y = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Add the equations to eliminate $y$: $6x = 18$, so $x = 3$. Substitute: $2(3) + 3y = 12$, so $3y = 6$ and $y = 2$."
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-3",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "The lines $y = 2x - 1$ and $y = -x + 5$ are graphed. What is the solution of the system they form?",
+   "type": "single",
+   "options": [
+    "$(3, 2)$",
+    "$(0, -1)$",
+    "$(5, 0)$",
+    "$(2, 3)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Set the outputs equal: $2x - 1 = -x + 5$, so $3x = 6$ and $x = 2$; then $y = 2(2) - 1 = 3$. The solution is where the lines cross, $(2, 3)$.",
+    "options": [
+     "The coordinates are swapped: $x = 2$, $y = 3$.",
+     "This is the $y$-intercept of the first line only.",
+     "This is the $x$-intercept of the second line only.",
+     "The one point on both lines."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-4",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A quadratic $y = ax^2 + bx + c$ passes through $(1, 6)$, $(2, 11)$ and $(3, 18)$. Which system gives $a$, $b$ and $c$?",
+   "type": "single",
+   "options": [
+    "$a + b + c = 6$, $4a + 2b + c = 11$, $9a + 3b + c = 18$",
+    "$a + b + c = 6$, $2a + 2b + c = 11$, $3a + 3b + c = 18$",
+    "$6a + 6b + c = 1$, $11a + 11b + c = 2$, $18a + 18b + c = 3$",
+    "$a + b + c = 6$, $4a + 2b + c = 11$, $6a + 3b + c = 18$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Substitute each point into $y = ax^2 + bx + c$: at $(2, 11)$, $a(2)^2 + b(2) + c = 11$, which is $4a + 2b + c = 11$; the same for the others.",
+    "options": [
+     "Each input is squared for the $a$ term.",
+     "The $x^2$ was not squared: $2^2 = 4$, not $2$.",
+     "The inputs and outputs are swapped.",
+     "$3^2 = 9$, not $6$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-5",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve the system $a + b + c = 6$, $4a + 2b + c = 11$, $9a + 3b + c = 18$. What is $a$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is $b$. From $2a = 2$, $a = 1$."
+     },
+     {
+      "value": 3,
+      "why": "That is $c$. Eliminate $c$ first, then $b$, to reach $a$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Subtract the first equation from the second: $3a + b = 5$. Subtract the second from the third: $5a + b = 7$. Subtract these: $2a = 2$, so $a = 1$. Then $b = 5 - 3 = 2$ and $c = 6 - 1 - 2 = 3$."
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-6",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for solving a system of three equations in $a$, $b$ and $c$ by elimination in order.",
+   "type": "order",
+   "options": [
+    "Subtract pairs of equations to eliminate $c$, leaving two equations in $a$ and $b$",
+    "Subtract those two equations to eliminate $b$ and solve for $a$",
+    "Substitute $a$ into one of the two-variable equations to find $b$",
+    "Substitute $a$ and $b$ into an original equation to find $c$"
+   ],
+   "why": {
+    "correct": "Each step removes one variable, until one equation in one variable is left; then work back up."
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-7",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What can you say about the system $y = 3x + 1$ and $6x - 2y = 4$?",
+   "type": "single",
+   "options": [
+    "It has one solution, at $(1, 4)$",
+    "It has many solutions, because the lines are the same",
+    "It has one solution, at $(0, 1)$",
+    "It has no solution, because the lines are parallel and different"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Rewrite the second: $2y = 6x - 4$, so $y = 3x - 2$. Both lines have slope $3$ but different $y$-intercepts ($1$ and $-2$), so they never meet.",
+    "options": [
+     "$(1, 4)$ is on the first line, but $6 - 8 = -2 \\ne 4$.",
+     "The intercepts differ, so the lines are not the same.",
+     "$(0, 1)$ gives $0 - 2 = -2 \\ne 4$ in the second equation.",
+     "Equal slopes, different intercepts."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-8",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "A quadratic $y = ax^2 + bx + c$ passes through $(0, 2.5)$, $(2, 7.1)$ and $(5, 9.4)$. Use a calculator to solve the system for $a$. Give $a$ correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": -0.3066666666666665,
+    "mistakes": [
+     {
+      "value": 0.3066666666666665,
+      "why": "The sign is lost. Subtracting $10a + 5b = 11.5$ from $25a + 5b = 6.9$ gives $15a = -4.6$, which is negative."
+     },
+     {
+      "value": -0.184,
+      "why": "That divides $-4.6$ by $25$. After eliminating $b$ the equation is $15a = -4.6$, so divide by $15$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The point $(0, 2.5)$ gives $c = 2.5$. The others give $4a + 2b = 4.6$ and $25a + 5b = 6.9$. Solve this pair with the calculator equation solver (or by hand: multiply the first by $2.5$ to get $10a + 5b = 11.5$, subtract from the second, $15a = -4.6$): $a = -0.306667...$, so $a \\approx -0.307$. Store it; do not round before finding $b$."
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-9",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student solves a system for a model's constants, rounds $a$ to $-0.31$, and then uses that value to find $b$. Why is this a problem?",
+   "type": "single",
+   "options": [
+    "Rounded values lose their negative sign",
+    "The rounding error carries into $b$ and every prediction made with the model",
+    "The system has no solution once $a$ is rounded",
+    "Calculators do not accept decimals in a system"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An early rounded value makes every later value a little wrong, and the errors can grow. Store each constant at full precision and round only the final answer to three decimal places.",
+    "options": [
+     "Rounding keeps the sign of a number.",
+     "Store, do not round, until the final answer.",
+     "A rounded value is still a number; the issue is accuracy.",
+     "Calculators solve systems with decimals."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Function Model — AP® Precalculus Notes | LevlPrep</title>
+<meta name="description" content="Function Model Construction and Application explained from scratch: free precalculus study notes with figures and worked examples.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/model-construction.html">
+<meta property="og:title" content="Building a Function Model — AP® Precalculus Notes | LevlPrep">
+<meta property="og:description" content="Function Model Construction and Application explained from scratch: free precalculus study notes with figures and worked examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/model-construction.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/model-construction.html#reading",
+      "name": "Function Model Construction and Application",
+      "url": "https://levlprep.com/precalculus/notes/model-construction.html",
+      "description": "Function Model Construction and Application explained from scratch: free precalculus study notes with figures and worked examples.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "function model construction and application ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Polynomial and Rational Functions",
+          "item": "https://levlprep.com/precalculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Function Model Construction and Application: notes",
+          "item": "https://levlprep.com/precalculus/notes/model-construction.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="model-construction" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Polynomial and Rational Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Function Model Construction and Application: notes</span></nav>
+<p class="issue">Unit 1 <i></i> Topic 1.14</p>
+<h1 class="deck bk-title" id="r3Title">Function Model Construction <span>and Application</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/model-construction.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="model-construction">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fmodel-construction.html&amp;title=Function%20Model%20Construction%20and%20Application%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/model-construction.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Polynomial and Rational Functions</b><small>14 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 14 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="change-in-tandem"><a href="change-in-tandem.html"><span class="bk-toc-n">1.1</span>Change in Tandem</a></li><li data-toc-t="rates-of-change"><a href="rates-of-change.html"><span class="bk-toc-n">1.2</span>Rates of Change</a></li><li data-toc-t="linear-quadratic-rates"><a href="linear-quadratic-rates.html"><span class="bk-toc-n">1.3</span>Rates of Change in Linear and Quadratic Functions</a></li><li data-toc-t="polynomial-rates"><a href="polynomial-rates.html"><span class="bk-toc-n">1.4</span>Polynomial Functions and Rates of Change</a></li><li data-toc-t="complex-zeros"><a href="complex-zeros.html"><span class="bk-toc-n">1.5</span>Polynomial Functions and Complex Zeros</a></li><li data-toc-t="polynomial-end-behavior"><a href="polynomial-end-behavior.html"><span class="bk-toc-n">1.6</span>Polynomial Functions and End Behavior</a></li><li data-toc-t="rational-end-behavior"><a href="rational-end-behavior.html"><span class="bk-toc-n">1.7</span>Rational Functions and End Behavior</a></li><li data-toc-t="rational-zeros"><a href="rational-zeros.html"><span class="bk-toc-n">1.8</span>Rational Functions and Zeros</a></li><li data-toc-t="vertical-asymptotes"><a href="vertical-asymptotes.html"><span class="bk-toc-n">1.9</span>Rational Functions and Vertical Asymptotes</a></li><li data-toc-t="rational-holes"><a href="rational-holes.html"><span class="bk-toc-n">1.10</span>Rational Functions and Holes</a></li><li data-toc-t="equivalent-representations"><a href="equivalent-representations.html"><span class="bk-toc-n">1.11</span>Equivalent Representations of Polynomial and Rational Expressions</a></li><li data-toc-t="transformations"><a href="transformations.html"><span class="bk-toc-n">1.12</span>Transformations of Functions</a></li><li data-toc-t="model-selection"><a href="model-selection.html"><span class="bk-toc-n">1.13</span>Function Model Selection and Assumption Articulation</a></li><li class="current" data-toc-t="model-construction"><a href="#main" aria-current="page"><span class="bk-toc-n">1.14</span>Function Model Construction and Application</a><div class="bk-toc-onpage"><p>On this page</p><a href="#three-ways-to-build-a-model">Three ways to build a model</a><a href="#regression-store-every-constant">Regression: store every constant</a><a href="#using-the-model-values-rates-and">Using the model: values, rates and units</a><a href="#inverse-proportion-and-inverse-square-laws">Inverse proportion and inverse-square laws</a><a href="#the-domain-the-context-allows">The domain the context allows</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Exponential and Logarithmic Functions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>Choosing a model type is half the job. The other half is finding its constants, then using the model honestly: predicting with units, finding <a class="gl" href="../notes/change-in-tandem.html" data-c="rate-of-change">rates of change</a>, and saying where the model stops making sense. This is the work of the exam's modeling question (Question 2), and it is where careful habits earn the most points.</p>
+
+<h2 id="three-ways-to-build-a-model">Three ways to build a model</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: You know, Build the model by, Example"><table class="compare">
+<thead><tr><th scope="col">You know</th><th scope="col">Build the model by</th><th scope="col">Example</th></tr></thead>
+<tbody>
+<tr><td>As many data points as unknown constants</td><td>Substituting each point and solving the system</td><td>Three points give <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> of a <a class="gl" href="../notes/alg-quadratics.html" data-c="quadratic">quadratic</a></td></tr>
+<tr><td>A key feature, such as a vertex, and one more point</td><td>Transformations of a parent <a class="gl" href="../notes/alg-functions.html" data-c="function">function</a></td><td><math class="pcalc-m"><semantics><mrow><mi>S</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>a</mi><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>4</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">S(t) = a(t - 4)^2 + 32</annotation></semantics></math>, then use a point to find <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></td></tr>
+<tr><td>Many data points that do not fit exactly</td><td><span class="gl" tabindex="0" data-c="regression">Regression</span> on the calculator</td><td>Quadratic regression on six data points</td></tr>
+</tbody>
+</table></div>
+
+<div class="worked">
+<p><b>Worked example 1 (a system).</b> A garden center sold <math class="pcalc-m"><semantics><mrow><mn>14</mn></mrow><annotation encoding="application/x-tex">14</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>30</mn></mrow><annotation encoding="application/x-tex">30</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>30</mn></mrow><annotation encoding="application/x-tex">30</annotation></semantics></math> hundred plants in months <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math>. Find the quadratic model <math class="pcalc-m"><semantics><mrow><mi>S</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>a</mi><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>t</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">S(t) = at^2 + bt + c</annotation></semantics></math>.</p>
+<p>Substitute each point: <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">a + b + c = 14</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>9</mn><mi>a</mi><mo>+</mo><mn>3</mn><mi>b</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">9a + 3b + c = 30</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mn>25</mn><mi>a</mi><mo>+</mo><mn>5</mn><mi>b</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">25a + 5b + c = 30</annotation></semantics></math>.</p>
+<p>Eliminate <math class="pcalc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>: the second minus the first gives <math class="pcalc-m"><semantics><mrow><mn>8</mn><mi>a</mi><mo>+</mo><mn>2</mn><mi>b</mi><mo>=</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">8a + 2b = 16</annotation></semantics></math>; the third minus the second gives <math class="pcalc-m"><semantics><mrow><mn>16</mn><mi>a</mi><mo>+</mo><mn>2</mn><mi>b</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">16a + 2b = 0</annotation></semantics></math>.</p>
+<p>Eliminate <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math>: subtract to get <math class="pcalc-m"><semantics><mrow><mn>8</mn><mi>a</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">8a = -16</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">a = -2</annotation></semantics></math>. Then <math class="pcalc-m"><semantics><mrow><mn>16</mn><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mn>2</mn><mi>b</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">16(-2) + 2b = 0</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">b = 16</annotation></semantics></math>, and <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>+</mo><mn>16</mn><mo>+</mo><mi>c</mi><mo>=</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">-2 + 16 + c = 14</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mi>c</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c = 0</annotation></semantics></math>.</p>
+<p>The model is <math class="pcalc-m"><semantics><mrow><mi>S</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><mn>16</mn><mi>t</mi></mrow><annotation encoding="application/x-tex">S(t) = -2t^2 + 16t</annotation></semantics></math>. Check <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">t = 5</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>50</mn><mo>+</mo><mn>80</mn><mo>=</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">-50 + 80 = 30</annotation></semantics></math>.</p>
+</div>
+<figure id="fig-quad"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="model-construction-quadratic"><img src="../figures/model-construction-quadratic.svg" alt="Plant sales S, in hundreds, against month t: the data points (1, 14), (3, 30) and (5, 30) on the parabola S(t) = -2t^2 + 16t, drawn from t = 0 to t = 8 where the sales return to 0." width="640" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The quadratic through the three data points, drawn for the months the context allows. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>The same model comes from transformations. Its maximum is at <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>4</mn><mo>,</mo><mn>32</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(4, 32)</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>S</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>a</mi><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>4</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">S(t) = a(t - 4)^2 + 32</annotation></semantics></math>; the point <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 0)</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mn>0</mn><mo>=</mo><mn>16</mn><mi>a</mi><mo>+</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">0 = 16a + 32</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">a = -2</annotation></semantics></math>.</p>
+
+<h2 id="regression-store-every-constant">Regression: store every constant</h2>
+<p>Real data rarely fall exactly on a curve. A calculator regression (linear, quadratic, cubic or quartic in this unit) chooses the constants that bring the model closest to all the data at once. Enter the inputs and outputs as two lists, choose the regression type you justified from the data and context, and store the result.</p>
+<p>Store, do not round. If <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.589285</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow><annotation encoding="application/x-tex">a = -2.589285...</annotation></semantics></math>, keep every digit in the calculator and use the stored model for every later step. Give only the final answer correct to three decimal places. Rounding a constant early and then predicting with it is the most common way to lose a point on Question 2.</p>
+
+<h2 id="using-the-model-values-rates-and">Using the model: values, rates and units</h2>
+<p>A prediction is an output with its unit: <math class="pcalc-m"><semantics><mrow><mi>S</mi><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>72</mn><mo>+</mo><mn>96</mn><mo>=</mo><mn>24</mn></mrow><annotation encoding="application/x-tex">S(6) = -72 + 96 = 24</annotation></semantics></math> hundred plants. An <a class="gl" href="../notes/rates-of-change.html" data-c="aroc">average rate of change</a> is output units per input unit.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the average rate of change of <math class="pcalc-m"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math> on <math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 3]</annotation></semantics></math> and say what it means.</p>
+<p>The average rate of change of <math class="pcalc-m"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math> on <math class="pcalc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 3]</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mi>S</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>−</mo><mi>S</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mrow><mn>3</mn><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{S(3) - S(1)}{3 - 1}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>30</mn><mo>−</mo><mn>14</mn></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{30 - 14}{2}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">= 8</annotation></semantics></math> hundred plants per month. It is the <a class="gl" href="../notes/alg-lines.html" data-c="slope">slope</a> of the <a class="gl" href="../notes/linear-quadratic-rates.html" data-c="secant-line">secant line</a> through <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>14</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 14)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>30</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 30)</annotation></semantics></math>.</p>
+<p>In context: from month <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math> to month <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math>, sales rose by <math class="pcalc-m"><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math> hundred plants per month on average.</p>
+</div>
+
+<h2 id="inverse-proportion-and-inverse-square-laws">Inverse proportion and inverse-square laws</h2>
+<p>Some contexts call for a rational model. If <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> is <b><span class="gl" tabindex="0" data-c="inverse-variation">inversely proportional</span></b> to <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, then <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mfrac><mi>k</mi><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">y = \frac{k}{x}</annotation></semantics></math>: doubling <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> halves <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, as when more painters share a job. An inverse-square law, <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mfrac><mi>k</mi><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">y = \frac{k}{x^2}</annotation></semantics></math>, divides <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> by <math class="pcalc-m"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math> when <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> doubles, as for the brightness of a light and your distance from it.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Intensity <math class="pcalc-m"><semantics><mrow><mi>I</mi></mrow><annotation encoding="application/x-tex">I</annotation></semantics></math> is inversely proportional to the square of the distance <math class="pcalc-m"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math>, and <math class="pcalc-m"><semantics><mrow><mi>I</mi><mo>=</mo><mn>200</mn></mrow><annotation encoding="application/x-tex">I = 200</annotation></semantics></math> at <math class="pcalc-m"><semantics><mrow><mi>d</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">d = 3</annotation></semantics></math>. Find <math class="pcalc-m"><semantics><mrow><mi>I</mi><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I(d)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>I</mi><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I(6)</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>I</mi><mo>=</mo><mfrac><mi>k</mi><msup><mi>d</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">I = \frac{k}{d^2}</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mn>200</mn><mo>=</mo><mfrac><mi>k</mi><mn>9</mn></mfrac></mrow><annotation encoding="application/x-tex">200 = \frac{k}{9}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1800</mn></mrow><annotation encoding="application/x-tex">k = 1800</annotation></semantics></math>. Then <math class="pcalc-m"><semantics><mrow><mi>I</mi><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1800</mn><msup><mi>d</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">I(d) = \frac{1800}{d^2}</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>I</mi><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1800</mn><mn>36</mn></mfrac><mo>=</mo><mn>50</mn></mrow><annotation encoding="application/x-tex">I(6) = \frac{1800}{36} = 50</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="the-domain-the-context-allows">The domain the context allows</h2>
+<p>A model is only trusted for inputs the situation allows. For <math class="pcalc-m"><semantics><mrow><mi>S</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mi>t</mi><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>8</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">S(t) = -2t(t - 8)</annotation></semantics></math>, the outputs are negative after <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">t = 8</annotation></semantics></math>, and sales cannot be negative, so the model can be used for <math class="pcalc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">0 \le t \le 8</annotation></semantics></math> (<a class="figref" href="#fig-quad">see the figure</a>). Name the bound and the reason, with the values. Also say why predictions far past the last data point are risky: the data no longer support the model there, and its shape (here, falling toward negative values) may not match what really happens.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:model-construction">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="alg-systems.html"><span>&larr; Previous</span><b>Systems of Equations</b></a><a class="tb-chapter-link next" href="alg-exponents.html"><span>Next &rarr;</span><b>Exponent and Radical Rules</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/model-construction.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:model-construction">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

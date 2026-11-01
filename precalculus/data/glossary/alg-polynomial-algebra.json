@@ -1,0 +1,8 @@
+{
+ "polynomial-expression": {
+  "def": "A sum of terms $ax^n$ with whole-number powers $n$, such as $x^3 + x^2 - 7x + 2$."
+ },
+ "factoring": {
+  "def": "Writing an expression as a product: take out a common factor, use patterns such as the difference of squares $a^2 - b^2 = (a - b)(a + b)$ and the sum or difference of cubes, or factor by grouping."
+ }
+}

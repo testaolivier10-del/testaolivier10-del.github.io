@@ -1,0 +1,89 @@
+/* Polar graphs (precalculus/assets/tools/polar-graphs.js). OWNED BY THIS TOOL
+   ONLY (builder T4). Loaded after pcalc-tools.css. The curve is blue (s1), the
+   current point and its r orange (s2) in both views; bands: distance from
+   the origin increasing (green, s3) or decreasing (pink, s4); the interval
+   and its secant in the course green; r < 0 dashed; light and dark. */
+.pg-card,.ls-root{--pg-c:var(--pcalc-s1,#0072B2);--pg-p:var(--pcalc-s2,#D55E00);--pg-a:rgba(0,158,115,.16);--pg-a2:#00805C;--pg-t:rgba(204,121,167,.2);--pg-t2:#A8457F;--pg-i:var(--cink,#11592F);}
+:root[data-theme="dark"] .pg-card,:root[data-theme="dark"] .ls-root{--pg-a:rgba(79,209,170,.16);--pg-a2:#4FD1AA;--pg-t:rgba(231,165,202,.18);--pg-t2:#E7A5CA;}
+
+.pg-stage{display:flex;flex-direction:column;gap:6px;min-height:0;flex:1;}
+.pg-wrap{position:relative;flex:1 1 0;min-height:260px;border-radius:12px;}
+.pg-card:not(.ls-root *) .pg-wrap{height:460px;flex:none;}
+.pg-wrap:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.pg-svg{display:block;width:100%;height:100%;touch-action:none;cursor:crosshair;user-select:none;-webkit-user-select:none;}
+.pg-legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font:700 12.5px var(--font-ui);color:var(--muted);}
+.pg-lg{display:inline-flex;align-items:center;gap:6px;}
+.pg-lg::before{content:"";display:inline-block;width:16px;height:4px;border-radius:2px;background:currentColor;}
+.pg-lg-c{color:var(--pg-c);} .pg-lg-p{color:var(--pg-p);}
+.pg-lg-a::before{height:12px;width:14px;background:var(--pg-a);box-shadow:inset 0 0 0 1.5px var(--pg-a2);}
+.pg-lg-t::before{height:12px;width:14px;background:var(--pg-t);box-shadow:inset 0 0 0 1.5px var(--pg-t2);}
+.pg-lg-n::before{background:repeating-linear-gradient(90deg,var(--pg-c) 0 5px,transparent 5px 8px);}
+
+/* polar grid */
+.pg-grid circle{fill:none;stroke:var(--line);stroke-width:1;}
+.pg-grid circle.pg-rim{stroke:var(--muted);stroke-opacity:.55;}
+.pg-grid line{stroke:var(--line);stroke-width:1;}
+.pg-grid line.pg-ax{stroke:var(--ink);stroke-opacity:.5;stroke-width:1.2;}
+.pg-alab text{fill:var(--muted);font:700 11.5px var(--font-ui);}
+.pg-alab text.pg-rn{font-size:10.5px;}
+.pg-curve{fill:none;stroke:var(--pg-c);stroke-width:2.8;stroke-linejoin:round;stroke-linecap:round;}
+.pg-curve.is-neg{stroke-dasharray:7 5;}
+.pg-ghost{fill:none;stroke:var(--pg-c);stroke-opacity:.22;stroke-width:1.6;stroke-dasharray:3 4;}
+.pg-glow{fill:none;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;}
+.pg-glow.is-away{stroke:var(--pg-a);} .pg-glow.is-toward{stroke:var(--pg-t);} .pg-glow.is-steady{stroke:none;}
+.pg-arc{fill:none;stroke:var(--pg-i);stroke-width:5;stroke-linecap:round;stroke-opacity:.85;}
+.pg-ipt{fill:var(--pg-i);stroke:var(--white);stroke-width:2;}
+.pg-ray{stroke:var(--ink);stroke-opacity:.45;stroke-width:1.3;stroke-dasharray:4 4;}
+.pg-ray.is-strong{stroke-opacity:.75;stroke-width:1.6;}
+.pg-ang{fill:none;stroke:var(--ink);stroke-opacity:.6;stroke-width:1.4;}
+.pg-th{fill:var(--ink);font:italic 800 12.5px var(--font-ui);}
+.pg-rad{stroke:var(--pg-p);stroke-width:3.4;stroke-linecap:round;}
+.pg-rad.is-neg{stroke-dasharray:6 4;}
+.pg-pt{fill:var(--pg-p);stroke:var(--white);stroke-width:2.2;}
+.pg-ring{fill:none;stroke:var(--pg-p);stroke-opacity:.6;stroke-width:1.6;stroke-dasharray:5 4;}
+.pg-ring.is-max{stroke:var(--pg-i);stroke-opacity:.9;}
+.pg-proj{stroke:var(--pg-p);stroke-opacity:.55;stroke-width:1.2;stroke-dasharray:3 3;}
+.pg-plab{fill:var(--ink);font:800 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+
+/* graph of r against θ */
+.pg-panel{fill:var(--white);stroke:var(--line);stroke-width:1;}
+.pg-band.is-away{fill:var(--pg-a);} .pg-band.is-toward{fill:var(--pg-t);}
+.pg-ggrid line{stroke:var(--line);stroke-width:1;}
+.pg-ggrid line.pg-zero{stroke:var(--ink);stroke-opacity:.6;stroke-width:1.3;}
+.pg-gtk text{fill:var(--muted);font:700 11px var(--font-ui);font-variant-numeric:tabular-nums;}
+.pg-gtk text.pg-axl{fill:var(--ink);font:italic 900 13px var(--font-ui);}
+.pg-cur{stroke:var(--ink);stroke-opacity:.45;stroke-width:1.2;}
+.pg-ishade{fill:var(--pg-i);fill-opacity:.07;}
+.pg-sec{stroke:var(--pg-i);stroke-width:2.6;stroke-linecap:round;}
+.pg-yours{stroke:#D55E00;stroke-width:2.4;stroke-dasharray:7 5;fill:none;}
+.pg-yours-t{fill:#B34700;font:800 12px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+:root[data-theme="dark"] .pg-yours{stroke:#F29A5C;} :root[data-theme="dark"] .pg-yours-t{fill:#F29A5C;}
+
+/* dock */
+.pg-chips .bt-btn{min-height:40px;padding:0 14px;border-radius:999px;font-size:14px;}
+.pg-card:not(.ls-root *) .pg-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.pg-row{display:flex;align-items:center;gap:10px;}
+.pg-row .pg-views{flex:1;min-width:0;}
+.pg-slot .bt-out{min-width:4.6em;white-space:nowrap;text-align:right;}
+.pg-play{min-height:44px;min-width:92px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;flex:none;}
+.pg-play-i{width:0;height:0;border-style:solid;border-width:7px 0 7px 12px;border-color:transparent transparent transparent currentColor;}
+.pg-play[aria-pressed="true"] .pg-play-i{width:12px;height:14px;border:0;border-left:4px solid currentColor;border-right:4px solid currentColor;box-sizing:border-box;}
+.pg-views{display:flex;}
+.pg-pv{color:var(--pg-p);font-weight:800;}
+
+/* Why and Details */
+.pg-feats{margin:8px 0 0;padding-left:1.3em;display:grid;gap:8px;}
+.pg-shape{margin:4px 0 10px;}
+.pg-tag.is-away{color:var(--pg-a2);} .pg-tag.is-toward{color:var(--pg-t2);}
+.pg-params{display:grid;gap:10px;}
+
+/* Test yourself figure */
+.pg-figwrap{width:100%;height:340px;min-height:240px;}
+.ls-root .ls-drill-stage .pg-figwrap{height:100%;}
+.pg-fig{display:block;width:100%;height:100%;}
+
+@media (max-width:599.98px){ .pg-legend{display:none;} }
+.ls-root.ls-phone .pg-legend{display:flex;font-size:12px;gap:2px 10px;padding-right:56px;min-height:40px;align-content:center;}
+.ls-root.ls-phone .pg-alab text,.ls-root.ls-phone .pg-gtk text{font-size:12px;}
+.ls-root.ls-phone .pg-wrap{min-height:200px;}
+.ls-root.ls-phone .pg-play{min-width:80px;}

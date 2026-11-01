@@ -1,0 +1,8 @@
+{
+ "function-model": {
+  "def": "A function chosen to describe how one quantity in a real situation depends on another, such as $h(t)$ for height after $t$ seconds. It is chosen from the pattern in the data and from the context, and used to predict and explain."
+ },
+ "model-assumption": {
+  "def": "A condition a function model takes for granted, such as a sheet having no thickness or a rate staying constant. Assumptions include the restricted domain (or contextual domain) and range: only the inputs and outputs the situation allows."
+ }
+}

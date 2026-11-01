@@ -25,6 +25,7 @@
     { key: 'apstat', paid: true },
     { key: 'apenv', paid: true },
     { key: 'appsych', paid: true },
+    { key: 'apprecalc', paid: true },
   ];
   // courses:end
   var COURSE_ORDER = COURSE_LIST.filter(function (c) { return c.paid; }).map(function (c) { return c.key; });

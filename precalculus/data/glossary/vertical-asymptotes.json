@@ -1,0 +1,8 @@
+{
+ "vertical-asymptote": {
+  "def": "A vertical line $x = a$ near which a function's outputs increase or decrease without bound. A rational function has one where $(x - a)$ divides the denominator more times than the numerator."
+ },
+ "one-sided-limit": {
+  "def": "The behavior of $f(x)$ as $x$ approaches $a$ from one side: $\\lim_{x \\to a^-} f(x)$ from the left, $\\lim_{x \\to a^+} f(x)$ from the right. At a vertical asymptote each is $\\infty$ or $-\\infty$."
+ }
+}

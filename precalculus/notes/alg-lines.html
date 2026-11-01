@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lines, Slope and Linear Equations — AP® Precalculus Notes</title>
+<meta name="description" content="A line changes at a steady rate: the same step in x always gives the same change in y .">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/alg-lines.html">
+<meta property="og:title" content="Lines, Slope and Linear Equations — AP® Precalculus Notes">
+<meta property="og:description" content="A line changes at a steady rate: the same step in x always gives the same change in y .">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/alg-lines.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/alg-lines.html#reading",
+      "name": "Lines, Slope and Linear Equations",
+      "url": "https://levlprep.com/precalculus/notes/alg-lines.html",
+      "description": "A line changes at a steady rate: the same step in x always gives the same change in y .",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "lines, slope and linear equations review for precalculus",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Algebra you need",
+          "item": "https://levlprep.com/precalculus/units/skills-algebra.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Lines, Slope and Linear Equations: notes",
+          "item": "https://levlprep.com/precalculus/notes/alg-lines.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="alg-lines" data-unit="skills-algebra">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-algebra.html">Algebra you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Lines, Slope and Linear Equations: notes</span></nav>
+<p class="issue">Skills <i></i></p>
+<h1 class="deck bk-title" id="r3Title">Lines, Slope <span>and Linear Equations</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/alg-lines.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="alg-lines">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Falg-lines.html&amp;title=Lines%2C%20Slope%20and%20Linear%20Equations%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/alg-lines.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Functions Involving Parameters, Vectors, and Matrices</a>
+    <a class="bk-toc-chap" href="../units/skills-algebra.html"><span class="bk-toc-chap-n">S</span><span><b>Algebra you need</b><small>11 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="skills-algebra"><div class="tb-progress-row"><span><b>0</b> of 11 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="alg-functions"><a href="alg-functions.html"><span class="bk-toc-n">S</span>Functions, Graphs and Notation</a></li><li data-toc-t="alg-intervals"><a href="alg-intervals.html"><span class="bk-toc-n">S</span>Interval Notation and Inequalities</a></li><li class="current" data-toc-t="alg-lines"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Lines, Slope and Linear Equations</a><div class="bk-toc-onpage"><p>On this page</p><a href="#slope">Slope</a><a href="#equations-of-a-line">Equations of a line</a><a href="#a-line-through-two-points-of">A line through two points of a curve</a><a href="#slope-in-context">Slope in context</a></div></li><li data-toc-t="alg-quadratics"><a href="alg-quadratics.html"><span class="bk-toc-n">S</span>Quadratics: Zeros and the Quadratic Formula</a></li><li data-toc-t="alg-polynomial-algebra"><a href="alg-polynomial-algebra.html"><span class="bk-toc-n">S</span>Polynomial Arithmetic and Factoring</a></li><li data-toc-t="alg-complex-numbers"><a href="alg-complex-numbers.html"><span class="bk-toc-n">S</span>Complex Numbers</a></li><li data-toc-t="alg-rational-expressions"><a href="alg-rational-expressions.html"><span class="bk-toc-n">S</span>Rational Expressions</a></li><li data-toc-t="alg-systems"><a href="alg-systems.html"><span class="bk-toc-n">S</span>Systems of Equations</a></li><li data-toc-t="alg-exponents"><a href="alg-exponents.html"><span class="bk-toc-n">S</span>Exponent and Radical Rules</a></li><li data-toc-t="alg-right-triangle"><a href="alg-right-triangle.html"><span class="bk-toc-n">S</span>Right-Triangle Trigonometry</a></li><li data-toc-t="alg-circles"><a href="alg-circles.html"><span class="bk-toc-n">S</span>Circles, Arcs and Special Triangles</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>A line changes at a steady rate: the same step in <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> always gives the same change in <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>. That makes lines the measuring stick for every other <a class="gl" href="../notes/alg-functions.html" data-c="function">function</a> in this course. To see how fast a curve changes between two of its points, you draw the line through them and read its <span class="gl" tabindex="0" data-c="slope">slope</span>.</p>
+
+<h2 id="slope">Slope</h2>
+<p>The <b>slope</b> of a line is its rise over its run, the change in <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> divided by the change in <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, between any two of its points:</p>
+<p><math class="pcalc-m" display="block"><semantics><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">m = \frac{y_2 - y_1}{x_2 - x_1}</annotation></semantics></math></p>
+<p>Subtract in the same order on top and bottom. For <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-2, 5)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>4</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>7</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(4, -7)</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>7</mn><mo>−</mo><mn>5</mn></mrow><mrow><mn>4</mn><mo>−</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{-7 - 5}{4 - (-2)}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>12</mn></mrow><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{-12}{6}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">= -2</annotation></semantics></math>.</p>
+<figure id="fig-slope"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="alg-lines-slope"><img src="../figures/alg-lines-slope.svg" alt="The line through (1, 2) and (4, 8). A dashed horizontal run of 3 goes from (1, 2) to (4, 2) and a dashed vertical rise of 6 goes up to (4, 8), so the slope is 6/3 = 2." width="640" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> From <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math> to <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>4</mn><mo>,</mo><mn>8</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(4, 8)</annotation></semantics></math> the run is <math class="pcalc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> and the rise is <math class="pcalc-m"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math>, so the slope is <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math>. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Slope, The line, Example"><table class="compare">
+<thead><tr><th scope="col">Slope</th><th scope="col">The line</th><th scope="col">Example</th></tr></thead>
+<tbody>
+<tr><td>positive</td><td>rises left to right</td><td><math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = 2x + 1</annotation></semantics></math></td></tr>
+<tr><td>negative</td><td>falls left to right</td><td><math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = -3x - 2</annotation></semantics></math></td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td>horizontal</td><td><math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">y = 4</annotation></semantics></math></td></tr>
+<tr><td>undefined</td><td>vertical (run <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>)</td><td><math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = 4</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+
+<h2 id="equations-of-a-line">Equations of a line</h2>
+<p><b><span class="gl" tabindex="0" data-c="line-equation">Point-slope form</span></b> uses one point <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_1, y_1)</annotation></semantics></math> and the slope <math class="pcalc-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub><mo>=</mo><mi>m</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y - y_1 = m(x - x_1)</annotation></semantics></math>. It says that from the known point, <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> changes by <math class="pcalc-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math> times the change in <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. Solved for <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, it is <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mi>m</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = y_1 + m(x - x_1)</annotation></semantics></math>, the form you will use to estimate values.</p>
+<p><b>Slope-intercept form</b> <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">y = mx + b</annotation></semantics></math> has slope <math class="pcalc-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-intercept <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, b)</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the line through <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 10)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>6</mn><mo>,</mo><mn>22</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(6, 22)</annotation></semantics></math>, and its value at <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>.</p>
+<p>Slope: <math class="pcalc-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>22</mn><mo>−</mo><mn>10</mn></mrow><mrow><mn>6</mn><mo>−</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{22 - 10}{6 - 2}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>12</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{12}{4}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">= 3</annotation></semantics></math>.</p>
+<p>Point-slope form from <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 10)</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>−</mo><mn>10</mn><mo>=</mo><mn>3</mn><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y - 10 = 3(x - 2)</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>10</mn><mo>+</mo><mn>3</mn><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = 10 + 3(x - 2)</annotation></semantics></math>.</p>
+<p>At <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>10</mn><mo>+</mo><mn>3</mn><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">y = 10 + 3(1) = 13</annotation></semantics></math>. In slope-intercept form the line is <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">y = 3x + 4</annotation></semantics></math>.</p>
+</div>
+<p>When you rewrite point-slope form, distribute the slope to both terms: <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>−</mo><mn>4</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y - 4 = -3(x + 2)</annotation></semantics></math> becomes <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>−</mo><mn>4</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">y - 4 = -3x - 6</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = -3x - 2</annotation></semantics></math>.</p>
+
+<h2 id="a-line-through-two-points-of">A line through two points of a curve</h2>
+<p>The two points do not have to come from a line. For <math class="pcalc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">f(x) = x^2</annotation></semantics></math>, the points <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, f(2)) = (2, 4)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mi>f</mi><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mn>25</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(5, f(5)) = (5, 25)</annotation></semantics></math> are on a curve, and the line through them has slope <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>25</mn><mo>−</mo><mn>4</mn></mrow><mrow><mn>5</mn><mo>−</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">\frac{25 - 4}{5 - 2} = 7</annotation></semantics></math>. The next topic gives this slope its own name and uses it to measure how fast <math class="pcalc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> changes; the algebra is the same as here.</p>
+
+<h2 id="slope-in-context">Slope in context</h2>
+<p>When <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> are quantities, the slope has units of output per input. For a phone plan <math class="pcalc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo><mo>=</mo><mn>15</mn><mo>+</mo><mn>0.10</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">C(m) = 15 + 0.10m</annotation></semantics></math> dollars for <math class="pcalc-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math> minutes, the slope is <math class="pcalc-m"><semantics><mrow><mn>0.10</mn></mrow><annotation encoding="application/x-tex">0.10</annotation></semantics></math> dollars per minute: each extra minute adds $0.10. The intercept, $15, is the cost at <math class="pcalc-m"><semantics><mrow><mi>m</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">m = 0</annotation></semantics></math>.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-lines">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="change-in-tandem.html"><span>&larr; Previous</span><b>Change in Tandem</b></a><a class="tb-chapter-link next" href="rates-of-change.html"><span>Next &rarr;</span><b>Rates of Change</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/alg-lines.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-lines">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

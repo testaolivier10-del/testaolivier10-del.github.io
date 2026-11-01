@@ -1,0 +1,73 @@
+{
+ "topic": "composition",
+ "hook": "A store takes \\$15 off a jacket, then adds 8% sales tax. Another store adds the tax first and then takes \\$15 off. Each store applies two functions, one after the other, but the totals differ by \\$1.20. Chaining functions is called composition, and the order you chain them in matters.",
+ "prereq": [
+  {
+   "q": "If $g(x) = x^2 - 1$, what is $g(3)$?",
+   "options": [
+    "$8$",
+    "$5$",
+    "$4$",
+    "$9$"
+   ],
+   "correct": 0,
+   "why": "Replace $x$ by $3$: $3^2 - 1 = 8$.",
+   "review": "alg-functions"
+  },
+  {
+   "q": "How is the graph of $y = \\sqrt{x - 2}$ related to the graph of $y = \\sqrt{x}$?",
+   "options": [
+    "Shifted 2 units right",
+    "Shifted 2 units left",
+    "Shifted 2 units down",
+    "Stretched by a factor of 2"
+   ],
+   "correct": 0,
+   "why": "Subtracting $2$ from the input moves the graph $2$ units right.",
+   "review": "transformations"
+  }
+ ],
+ "figure": {
+  "figure": "composition-shift",
+  "caption": "With $g(x) = x - 2$ inside, $f(g(x)) = \\sqrt{x - 2}$: each point of $f(x) = \\sqrt{x}$ moves $2$ units right, and the domain becomes $x \\ge 2$."
+ },
+ "chain": [
+  {
+   "cause": "Start with an input $x$",
+   "effect": "the inner function $g$ turns it into $g(x)$"
+  },
+  {
+   "cause": "Use $g(x)$ as the input of the outer function $f$",
+   "effect": "the output is $f(g(x))$, also written $(f \\circ g)(x)$"
+  },
+  {
+   "cause": "Change the order to $g(f(x))$",
+   "effect": "the output usually changes: composition is not commutative"
+  },
+  {
+   "cause": "An input $x$ gives a $g(x)$ that $f$ cannot take",
+   "effect": "that $x$ is left out of the domain of $f(g(x))$"
+  }
+ ],
+ "ideas": [
+  "$f(g(x))$ means: find $g(x)$ first, then put that output into $f$. Work from the inside out and write the inner value down.",
+  "Order matters. $f(g(x))$ and $g(f(x))$ are usually different functions.",
+  "The domain of $f(g(x))$: inputs $x$ in the domain of $g$ whose outputs $g(x)$ are in the domain of $f$.",
+  "The identity function $I(x) = x$ changes nothing: $f(I(x)) = I(f(x)) = f(x)$, as adding $0$ or multiplying by $1$.",
+  "Composites work in every form: read a table or graph twice, or substitute one formula into the other."
+ ],
+ "misconception": {
+  "wrong": "To find $f(g(2))$, find $f(2)$ first and then put it into $g$.",
+  "right": "Work from the inside out: $g(2)$ first, then use that output as the input of $f$. Show the inner value: $g(2) = 0$, so $f(g(2)) = f(0) = 4$."
+ },
+ "check": [
+  "pcalc-composition-1",
+  "pcalc-composition-2",
+  "pcalc-composition-3",
+  "pcalc-composition-6",
+  "pcalc-composition-7",
+  "pcalc-composition-11",
+  "pcalc-composition-13"
+ ],
+ "summary": "A composite function chains two functions: $f(g(x))$ puts the output of $g$ into $f$. Evaluate from the inside out and show the inner value. The order matters, the domain is the inputs whose inner outputs $f$ can take, and the identity function $I(x) = x$ leaves any function unchanged. You can compose from tables, graphs or formulas, and take a function apart into an inner and an outer step."
+}

@@ -1,0 +1,5 @@
+{
+ "inverse-trig": {
+  "def": "The inverse sine, inverse cosine and inverse tangent functions, $\\sin^{-1} x$, $\\cos^{-1} x$ and $\\tan^{-1} x$ (also written $\\arcsin x$, $\\arccos x$, $\\arctan x$). Each takes a ratio and returns an angle: $\\sin^{-1}$ and $\\tan^{-1}$ in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$ (open for tangent), $\\cos^{-1}$ in $[0, \\pi]$. They are inverses, not reciprocals."
+ }
+}

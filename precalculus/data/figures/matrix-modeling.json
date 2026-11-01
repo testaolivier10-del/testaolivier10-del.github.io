@@ -1,0 +1,12 @@
+{
+ "matrix-modeling-bikes": {
+  "file": "figures/matrix-modeling-bikes.svg",
+  "ext": "svg",
+  "w": 540,
+  "h": 270,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two circles, Station A and Station B. A loop on A is labeled 0.8 and an arrow from A to B is labeled 0.2; an arrow from B to A is labeled 0.3 and a loop on B is labeled 0.7. Each day a bike at A stays with chance 0.8 or moves to B with chance 0.2, and a bike at B moves to A with chance 0.3 or stays with chance 0.7."
+ }
+}

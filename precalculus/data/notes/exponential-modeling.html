@@ -1,0 +1,38 @@
+<p>When a quantity changes by the same factor over equal stretches of time, an exponential model $f(t) = ab^t$ describes it: a phone losing value, a medicine leaving the blood, a gym gaining members. This page builds such models three ways, rewrites them for other time units, and uses them to predict and to find when a value is reached. It is the content of Question 2 whenever the context is exponential.</p>
+
+<h2>Reading $a$ and $b$ in context</h2>
+<p>$a = f(0)$ is the initial value, the amount when $t = 0$. $b$ is the growth factor per unit of $t$: each unit, the amount is multiplied by $b$. A factor $b = 1.035$ means a $3.5\%$ increase per unit; $b = 0.8$ means the amount keeps $80\%$, a $20\%$ decrease. Always say what $t = 0$ is and what one unit of $t$ is.</p>
+
+<h2>Three ways to build the model</h2>
+<table class="compare">
+<thead><tr><th scope="col">You know</th><th scope="col">Find $a$ and $b$ by</th></tr></thead>
+<tbody>
+<tr><td>The initial value and the percent change</td><td>$a$ = initial value, $b = 1 + r$</td></tr>
+<tr><td>Two points</td><td>The ratio of the outputs over the gap in inputs: $b^{\text{gap}} = \text{ratio}$</td></tr>
+<tr><td>Many data points that fit only roughly</td><td>Exponential regression on the calculator</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example 1 (two points).</b> A phone costs $\$800$ new and is worth $\$512$ after $2$ years. Find $V(t) = ab^t$.</p>
+<p>$a = V(0) = 800$.</p>
+<p>Over the $2$-year gap the value is multiplied by $\frac{512}{800} = 0.64$. That is two yearly factors: $b^2 = 0.64$.</p>
+<p>Take the square root (rational exponent $\frac{1}{2}$): $b = 0.64^{1/2} = 0.8$. So $V(t) = 800(0.8)^t$: the phone keeps $80\%$ of its value each year.</p>
+</div>
+<figure id="fig-phone" data-fig="exponential-modeling-phone"><figcaption>$V(t) = 800(0.8)^t$ through $(0, 800)$ and $(2, 512)$.</figcaption></figure>
+<p>If neither point is at $t = 0$, find $b$ the same way, then work back to $a$. Through $(1, 30)$ and $(3, 270)$: $b^2 = 9$, so $b = 3$, and $a \cdot 3^1 = 30$ gives $a = 10$.</p>
+<p>With real data, use exponential regression: enter the lists, run the regression, and store $a$ and $b$ at full precision. For the medicine data on the practice page, the calculator gives $b = 0.79686...$, a decrease of about $20.314\%$ per hour.</p>
+
+<h2>Other time units</h2>
+<p>Rational exponents convert the factor to another unit. If the yearly factor is $1.2$, the monthly factor $m$ satisfies $m^{12} = 1.2$, so $m = 1.2^{1/12}$. The model can be written $P(t) = 1200(1.2^{1/12})^{12t}$, which is the same function as $1200(1.2)^t$.</p>
+<p>Do not split the percent: $20\%$ a year is not $\frac{20}{12}\%$ a month, because each month builds on the last. Likewise, $30\%$ a week is a daily factor of $1.3^{1/7} \approx 1.038$, not $1 + \frac{0.3}{7}$.</p>
+<p>A <b>half-life</b> $h$ means the amount halves every $h$ units: $A(t) = A_0\left(\frac{1}{2}\right)^{t/h}$. After $15$ years with a $5$-year half-life, $80$ grams becomes $80\left(\frac{1}{2}\right)^3 = 10$ grams.</p>
+
+<h2>Predicting and solving</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> For $V(t) = 800(0.8)^t$, find $V(3.5)$ and the time when the phone is worth $\$100$.</p>
+<p>Prediction: $V(3.5) = 800(0.8)^{3.5} = 366.357...$, about $\$366.36$.</p>
+<p>Solving: graph $y = 800(0.8)^t$ and $y = 100$ and find the intersection with the calculator: $t = 9.318...$, so about $9.319$ years. (Store the value; do not round $b$ first.)</p>
+</div>
+
+<h2>Where the model can be trusted</h2>
+<p>A model built from data is supported near that data. Between data points, predictions are usually good. Far past the last data point, nothing in the data shows the pattern continues: the phone may stop losing value at a scrap price, and the body may clear a medicine differently once little is left. Say this with the numbers: "the data stop at $t = 5$, so a prediction at $t = 24$ is not supported by the data." In context, the domain may also have a hard edge, such as a value that cannot fall below a floor.</p>

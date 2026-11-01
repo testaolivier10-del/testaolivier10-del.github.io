@@ -1,0 +1,5 @@
+{
+ "residual": {
+  "def": "Actual value minus predicted value at a data point: positive where a model underestimates, negative where it overestimates. A residual plot graphs the residuals against the input; an appropriate model leaves small residuals with no pattern."
+ }
+}

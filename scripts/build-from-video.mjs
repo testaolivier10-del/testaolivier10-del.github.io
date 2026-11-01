@@ -19,6 +19,7 @@ const COURSES = {
   apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics',
   apenv: 'AP® Environmental Science',
   appsych: 'AP® Psychology',
+  apprecalc: 'AP® Precalculus',
 };
 
 const CSS = `.from-video{margin:0 0 18px;max-width:520px;padding:14px 16px 16px;border:var(--bw,2px) solid var(--line);border-radius:var(--radius);background:var(--white);box-shadow:var(--lift-sm,none);}

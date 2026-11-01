@@ -1,0 +1,11 @@
+{
+ "exp-log-equations-intersect": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graph of y = 2 to the x and the dashed line y = 10, meeting at x = log base 2 of 10, about 3.32, just right of the point (3, 8).",
+  "ext": "svg",
+  "w": 380,
+  "h": 290
+ }
+}

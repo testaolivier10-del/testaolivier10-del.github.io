@@ -1,0 +1,43 @@
+<p>Every topic in this course is about functions: how their outputs change, what their graphs look like, and how to describe them with numbers and words. This page sets up the vocabulary. If your algebra class used these words loosely, read it carefully; the exam reads them strictly.</p>
+
+<h2>What a function is</h2>
+<p>A <b>function</b> is a rule that gives each input exactly one output. A vending machine is a function from buttons to snacks: B4 always gives the same snack. A table, a graph, a formula or a sentence can all describe a function.</p>
+<p>The rule says "exactly one output", not "a different output for each input". Two buttons may give the same snack, and two inputs may share an output. What is not allowed is one input with two outputs.</p>
+<p>We name functions with letters and write the input in parentheses. $f(3) = 7$ means "the input $3$ gives the output $7$". On the graph of $f$, that is the point $(3, 7)$. Keep the two apart: inside the parentheses is always the input.</p>
+
+<h2>Evaluating with function notation</h2>
+<p>To evaluate a function, replace every $x$ in its formula with the input, and put the input in parentheses. Parentheses protect negative signs and whole expressions.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> For $f(x) = x^2 - 3x + 1$, find $f(-2)$ and $f(x + 1)$.</p>
+<p>$f(-2) = (-2)^2 - 3(-2) + 1 = 4 + 6 + 1 = 11$. Without parentheses, $-2^2$ would mean $-4$, a common slip.</p>
+<p>$f(x + 1) = (x + 1)^2 - 3(x + 1) + 1 = x^2 + 2x + 1 - 3x - 3 + 1 = x^2 - x - 1$.</p>
+<p>Notice that $f(x + 1)$ is not $f(x) + 1 = x^2 - 3x + 2$. One changes the input; the other changes the output.</p>
+</div>
+
+<h2>Domain and range</h2>
+<p>The <b>domain</b> of a function is the set of inputs it accepts. The <b>range</b> is the set of outputs it produces. Unless a question says otherwise, the domain of a formula is every real number that gives a real output. Two rules cover almost every case in this course:</p>
+<ul>
+<li>A denominator cannot be $0$.</li>
+<li>The expression under a square root cannot be negative.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the domain of $g(x) = \frac{\sqrt{x - 2}}{x - 5}$.</p>
+<p>Square root: $x - 2 \ge 0$, so $x \ge 2$. Denominator: $x - 5 \ne 0$, so $x \ne 5$. Both must hold: the domain is $x \ge 2$ with $x \ne 5$.</p>
+</div>
+<p>On a graph, the domain is how far the graph reaches left and right, and the range is how far it reaches down and up. The graph of $f(x) = \sqrt{x + 4} - 1$ starts at $(-4, -1)$ and keeps rising to the right, so its domain is $x \ge -4$ and its range is $y \ge -1$.</p>
+<figure id="fig-functions" data-fig="alg-functions-graph"><figcaption>The graph of $f(x) = \sqrt{x + 4} - 1$, with its zero, its $y$-intercept and the point $(5, 2)$.</figcaption></figure>
+
+<h2>Zeros and intercepts</h2>
+<p>A <b>zero</b> of a function is an input whose output is $0$. On the graph, a zero is an $x$-intercept: the graph meets the $x$-axis there. To find zeros from a formula, set the output equal to $0$ and solve. For $h(x) = 2x + 10$: $2x + 10 = 0$ gives $x = -5$.</p>
+<p>The <b>$y$-intercept</b> is the point where the graph crosses the $y$-axis, $(0, f(0))$. A function has at most one $y$-intercept (one input, one output), but it can have many zeros, or none.</p>
+<p>An input outside the domain is never a zero. $k(x) = \frac{1}{x + 3}$ is undefined at $x = -3$, and since its numerator is always $1$ it has no zeros at all.</p>
+
+<h2>Piecewise-defined functions</h2>
+<p>A <b>piecewise-defined function</b> uses different formulas on different parts of its domain. A parking garage might charge \$5 for up to two hours and \$3 for each hour after that:</p>
+<p>$$C(t) = \begin{cases} 5, & 0 < t \le 2 \\ 5 + 3(t - 2), & 2 < t \le 6 \end{cases}$$</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find $C(1.5)$ and $C(4)$.</p>
+<p>$1.5$ meets $0 < t \le 2$, so use the first piece: $C(1.5) = 5$ dollars.</p>
+<p>$4$ meets $2 < t \le 6$, so use the second piece: $C(4) = 5 + 3(4 - 2) = 11$ dollars.</p>
+</div>
+<p>Always check the condition first. The most common slip is plugging the input into the wrong piece.</p>

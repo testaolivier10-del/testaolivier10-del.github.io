@@ -1,0 +1,563 @@
+{
+ "stimuli": {
+  "trig-equations-s1": {
+   "kind": "graph",
+   "title": "The graphs of $y = 2\\sin x$ and $y = 1$",
+   "plot": {
+    "label": "Graph of y = 2 sin x for x from 0 to 4 pi, with the dashed horizontal line y = 1 crossing it",
+    "x": [
+     0,
+     12.566370614359172
+    ],
+    "y": [
+     -3,
+     3
+    ],
+    "piX": true,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "2sin(x)",
+      "domain": [
+       0,
+       12.566370614359172
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "through": [
+       [
+        0,
+        1
+       ],
+       [
+        12.566370614359172,
+        1
+       ]
+      ],
+      "dashed": true,
+      "label": "y = 1"
+     }
+    ],
+    "labels": [
+     {
+      "at": [
+       2,
+       2.5
+      ],
+      "text": "y = 2 sin x",
+      "anchor": "start"
+     }
+    ]
+   }
+  },
+  "trig-equations-s2": {
+   "kind": "graph",
+   "title": "A weight on a spring: $y(t) = 4 + 3\\cos(2t)$",
+   "text": "<p>The height of a weight on a spring is $y(t) = 4 + 3\\cos(2t)$ centimeters above a table, $t$ seconds after it is released, for $0 \\le t \\le 5$. The dashed line is $y = 5$. Use a calculator in radian mode.</p>",
+   "plot": {
+    "label": "Graph of y(t) = 4 + 3 cos(2t) for t from 0 to 5 seconds, oscillating between 1 and 7, with the dashed line y = 5",
+    "x": [
+     0,
+     5.5
+    ],
+    "y": [
+     0,
+     8
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "t (seconds)",
+    "yLabel": "y (cm)",
+    "curves": [
+     {
+      "fn": "4 + 3cos(2x)",
+      "domain": [
+       0,
+       5
+      ],
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "through": [
+       [
+        0,
+        5
+       ],
+       [
+        5.5,
+        5
+       ]
+      ],
+      "dashed": true,
+      "label": "y = 5"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-trig-equations-1",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "trig-equations-s1",
+   "q": "Using the graph, find every solution of $2\\sin x = 1$ on $[0, 2\\pi)$.",
+   "type": "single",
+   "options": [
+    "$x = \\frac{\\pi}{6}$ and $x = \\frac{5\\pi}{6}$",
+    "$x = \\frac{\\pi}{6}$",
+    "$x = \\frac{\\pi}{6}$ and $x = \\frac{7\\pi}{6}$",
+    "$x = \\frac{\\pi}{3}$ and $x = \\frac{2\\pi}{3}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Isolate: $\\sin x = \\frac{1}{2}$. The principal value is $\\sin^{-1}\\frac{1}{2} = \\frac{\\pi}{6}$. Sine is also positive in Quadrant II, at $\\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}$. On the graph, the line $y = 1$ crosses the curve twice in $[0, 2\\pi)$.",
+    "options": [
+     "Right: the principal value and its Quadrant II partner.",
+     "This misses the second solution, $\\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}$, where the line crosses the curve again.",
+     "Adding $\\pi$ works for tangent; $\\sin\\frac{7\\pi}{6} = -\\frac{1}{2}$, not $\\frac{1}{2}$.",
+     "These solve $\\sin x = \\frac{\\sqrt{3}}{2}$; here $\\sin x = \\frac{1}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-2",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "trig-equations-s1",
+   "q": "Using the graph, solve the inequality $2\\sin x > 1$ on $[0, 2\\pi)$.",
+   "type": "single",
+   "options": [
+    "$\\left(\\frac{\\pi}{6}, \\frac{5\\pi}{6}\\right)$",
+    "$\\left[0, \\frac{\\pi}{6}\\right) \\cup \\left(\\frac{5\\pi}{6}, 2\\pi\\right)$",
+    "$\\left(\\frac{\\pi}{6}, 2\\pi\\right)$",
+    "$\\left(\\frac{\\pi}{3}, \\frac{2\\pi}{3}\\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "First solve the equation: $2\\sin x = 1$ at $\\frac{\\pi}{6}$ and $\\frac{5\\pi}{6}$. These cut $[0, 2\\pi)$ into intervals. The curve is above the line $y = 1$ only between them, so the solution is $\\left(\\frac{\\pi}{6}, \\frac{5\\pi}{6}\\right)$. Check a test value: $2\\sin\\frac{\\pi}{2} = 2 > 1$.",
+    "options": [
+     "Right: the curve is above the line between the two crossings.",
+     "That is where $2\\sin x < 1$, below the line.",
+     "After $\\frac{5\\pi}{6}$ the curve drops below the line again.",
+     "These endpoints solve $\\sin x = \\frac{\\sqrt{3}}{2}$, not $\\sin x = \\frac{1}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-3",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "trig-equations-s1",
+   "q": "Using the graph, how many solutions does $2\\sin x = 1$ have on $[0, 4\\pi)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That counts one period. The interval $[0, 4\\pi)$ holds two periods; add $2\\pi$ to each solution."
+     },
+     {
+      "value": 3,
+      "why": "Each period adds two solutions, so the count is even here: $\\frac{\\pi}{6} + 2\\pi$ and $\\frac{5\\pi}{6} + 2\\pi$ are both less than $4\\pi$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each period of length $2\\pi$ has two solutions, so two periods give four: $\\frac{\\pi}{6}$, $\\frac{5\\pi}{6}$, $\\frac{13\\pi}{6}$ and $\\frac{17\\pi}{6}$. On the graph, the line crosses the curve four times."
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-4",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "trig-equations-s1",
+   "q": "Using the graph, find every solution of $2\\sin x = -1$ on $[0, 2\\pi)$.",
+   "type": "single",
+   "options": [
+    "$x = \\frac{7\\pi}{6}$ and $x = \\frac{11\\pi}{6}$",
+    "$x = -\\frac{\\pi}{6}$ and $x = \\frac{7\\pi}{6}$",
+    "$x = \\frac{5\\pi}{6}$ and $x = \\frac{7\\pi}{6}$",
+    "$x = \\frac{4\\pi}{3}$ and $x = \\frac{5\\pi}{3}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\sin x = -\\frac{1}{2}$. The principal value $\\sin^{-1}\\left(-\\frac{1}{2}\\right) = -\\frac{\\pi}{6}$ is outside $[0, 2\\pi)$, so add $2\\pi$: $\\frac{11\\pi}{6}$. The other angle with the same sine is $\\pi - \\left(-\\frac{\\pi}{6}\\right) = \\frac{7\\pi}{6}$.",
+    "options": [
+     "Right: both angles in Quadrants III and IV, inside the interval.",
+     "$-\\frac{\\pi}{6}$ is outside $[0, 2\\pi)$; add $2\\pi$ to get $\\frac{11\\pi}{6}$.",
+     "$\\sin\\frac{5\\pi}{6} = +\\frac{1}{2}$; the sine must be negative.",
+     "These solve $\\sin x = -\\frac{\\sqrt{3}}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-5",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 1,
+   "stimulus": "trig-equations-s1",
+   "q": "Using the graph, what can you say about the solutions of $2\\sin x = 3$?",
+   "type": "single",
+   "options": [
+    "There are no solutions, because $2\\sin x$ is at most $2$",
+    "There is one solution in each period, at the maximum",
+    "$x = \\sin^{-1}\\left(\\frac{3}{2}\\right)$ and $x = \\pi - \\sin^{-1}\\left(\\frac{3}{2}\\right)$",
+    "$x = \\frac{3\\pi}{2}$, where the graph turns"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$2\\sin x = 3$ means $\\sin x = \\frac{3}{2}$, but sine stays between $-1$ and $1$. On the graph, the curve never reaches height $3$, so the line $y = 3$ never meets it.",
+    "options": [
+     "Right: the range of $2\\sin x$ is $[-2, 2]$.",
+     "The maximum of $2\\sin x$ is $2$, below $3$, so the line never touches it.",
+     "$\\sin^{-1}\\left(\\frac{3}{2}\\right)$ is undefined: its input must be in $[-1, 1]$.",
+     "$2\\sin\\frac{3\\pi}{2} = -2$, the minimum, not $3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-6",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "trig-equations-s2",
+   "calc": true,
+   "q": "Find the smallest time $t$ in $[0, 5]$ at which the weight is $5$ centimeters above the table. Give $t$ correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 0.6154797086703874,
+    "unit": "seconds",
+    "mistakes": [
+     {
+      "value": 1.2309594173407747,
+      "why": "That is $2t$. Divide $\\cos^{-1}\\left(\\frac{1}{3}\\right)$ by $2$ to get $t$."
+     },
+     {
+      "value": 35.26439,
+      "why": "That is $\\frac{1}{2}\\cos^{-1}\\left(\\frac{1}{3}\\right)$ in degrees; use radian mode."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Solve $4 + 3\\cos(2t) = 5$: $\\cos(2t) = \\frac{1}{3}$, so $2t = \\cos^{-1}\\left(\\frac{1}{3}\\right) \\approx 1.230959$ and $t \\approx 0.615480$ seconds (radian mode). Or graph $y = 4 + 3\\cos(2t)$ and $y = 5$ and find the first intersection."
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-7",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "trig-equations-s2",
+   "calc": true,
+   "q": "How many times in $[0, 5]$ is the weight exactly $5$ centimeters above the table?",
+   "type": "single",
+   "options": [
+    "$3$",
+    "$2$",
+    "$4$",
+    "$1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\cos(2t) = \\frac{1}{3}$ gives $t \\approx 0.615$, $t = \\pi - 0.615 \\approx 2.526$, $t = \\pi + 0.615 \\approx 3.757$ and $t = 2\\pi - 0.615 \\approx 5.668$. The last is past $5$, so there are three. On a calculator, widen the window to the whole interval $[0, 5]$ to see every crossing.",
+    "options": [
+     "Right: $0.615$, $2.526$ and $3.757$ are in $[0, 5]$; $5.668$ is not.",
+     "The period is $\\pi$, and $[0, 5]$ is longer than one period, so a third crossing fits.",
+     "The fourth crossing, $t \\approx 5.668$, is after $t = 5$.",
+     "The principal value gives one crossing; symmetry and the period give the others."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-8",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "trig-equations-s2",
+   "calc": true,
+   "q": "What is the largest time $t$ in $[0, 5]$ at which the weight is $5$ centimeters above the table?",
+   "type": "single",
+   "options": [
+    "$t \\approx 3.757$",
+    "$t \\approx 5.668$",
+    "$t \\approx 2.526$",
+    "$t \\approx 4.712$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The solutions of $\\cos(2t) = \\frac{1}{3}$ are $t = \\pm 0.615480 + k\\pi$. In $[0, 5]$ they are $0.615$, $2.526$ and $3.757$, so the largest is $\\pi + 0.615480 \\approx 3.757$ (radian mode).",
+    "options": [
+     "Right: $\\pi + 0.615 \\approx 3.757$, the last crossing before $t = 5$.",
+     "$2\\pi - 0.615 \\approx 5.668$ is outside $[0, 5]$.",
+     "$2.526$ is a solution, but a later one, $3.757$, is still in the interval.",
+     "$4.712 \\approx \\frac{3\\pi}{2}$, where $\\cos(2t) = -1$ and the weight is at its lowest, $1$ centimeter."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-9",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "trig-equations-s2",
+   "calc": true,
+   "q": "On which intervals of $[0, 5]$ is the weight more than $5$ centimeters above the table?",
+   "type": "single",
+   "options": [
+    "$[0, 0.615)$ and $(2.526, 3.757)$",
+    "$(0.615, 2.526)$ and $(3.757, 5]$",
+    "$[0, 0.615)$ and $(3.757, 5]$",
+    "$(0.615, 3.757)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$y = 5$ at $t \\approx 0.615$, $2.526$ and $3.757$. Test each piece: $y(0) = 7 > 5$; $y(1.5) = 4 + 3\\cos 3 \\approx 1.03 < 5$; $y(3) = 4 + 3\\cos 6 \\approx 6.88 > 5$; $y(4.5) = 4 + 3\\cos 9 \\approx 1.27 < 5$. So $y > 5$ on $[0, 0.615)$ and $(2.526, 3.757)$.",
+    "options": [
+     "Right: the curve is above the dashed line on those two pieces.",
+     "Those are the pieces below the line, where $y < 5$.",
+     "After $3.757$ the curve drops below the line until $t \\approx 5.668$.",
+     "Inside that interval the weight dips to $1$ centimeter, below $5$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-10",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find every solution of $\\tan x = \\sqrt{3}$ on $[0, 2\\pi)$.",
+   "type": "single",
+   "options": [
+    "$x = \\frac{\\pi}{3}$ and $x = \\frac{4\\pi}{3}$",
+    "$x = \\frac{\\pi}{3}$",
+    "$x = \\frac{\\pi}{3}$ and $x = \\frac{2\\pi}{3}$",
+    "$x = \\frac{\\pi}{3}$, $\\frac{4\\pi}{3}$ and $\\frac{7\\pi}{3}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The principal value is $\\tan^{-1}\\sqrt{3} = \\frac{\\pi}{3}$. Tangent has period $\\pi$, so add $\\pi$: $\\frac{4\\pi}{3}$. Adding $\\pi$ again gives $\\frac{7\\pi}{3}$, which is past $2\\pi$.",
+    "options": [
+     "Right: tangent repeats every $\\pi$, giving two solutions in $[0, 2\\pi)$.",
+     "This misses $\\frac{\\pi}{3} + \\pi = \\frac{4\\pi}{3}$.",
+     "$\\tan\\frac{2\\pi}{3} = -\\sqrt{3}$; the sine-style partner $\\pi - x$ does not work for tangent.",
+     "$\\frac{7\\pi}{3}$ is outside $[0, 2\\pi)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-11",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find every solution of $\\cos(2x) = 0$ on $[0, \\pi)$.",
+   "type": "single",
+   "options": [
+    "$x = \\frac{\\pi}{4}$ and $x = \\frac{3\\pi}{4}$",
+    "$x = \\frac{\\pi}{4}$",
+    "$x = \\frac{\\pi}{2}$ and $x = \\frac{3\\pi}{2}$",
+    "$x = \\frac{\\pi}{4}$, $\\frac{3\\pi}{4}$ and $\\frac{5\\pi}{4}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Let $u = 2x$. For $x$ in $[0, \\pi)$, $u$ is in $[0, 2\\pi)$. $\\cos u = 0$ at $u = \\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$. Divide by $2$: $x = \\frac{\\pi}{4}$ and $\\frac{3\\pi}{4}$.",
+    "options": [
+     "Right: solve for $2x$ on the doubled interval, then divide by $2$.",
+     "This misses $u = \\frac{3\\pi}{2}$, which gives $x = \\frac{3\\pi}{4}$.",
+     "These are values of $2x$; divide by $2$ to get $x$.",
+     "$\\frac{5\\pi}{4}$ is outside $[0, \\pi)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-12",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which values are solutions of $\\cos x = -\\frac{\\sqrt{2}}{2}$? Select every solution.",
+   "type": "multi",
+   "options": [
+    "$\\frac{3\\pi}{4}$",
+    "$\\frac{5\\pi}{4}$",
+    "$-\\frac{\\pi}{4}$",
+    "$\\frac{\\pi}{4}$",
+    "$\\frac{7\\pi}{4}$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$\\cos^{-1}\\left(-\\frac{\\sqrt{2}}{2}\\right) = \\frac{3\\pi}{4}$. Cosine is symmetric about the $x$-axis, so $-\\frac{3\\pi}{4}$ also works, and adding $2\\pi$ gives $\\frac{5\\pi}{4}$. Cosine is negative only in Quadrants II and III.",
+    "options": [
+     "Solution: the principal value, in Quadrant II.",
+     "Solution: $2\\pi - \\frac{3\\pi}{4} = \\frac{5\\pi}{4}$, in Quadrant III.",
+     "Not a solution: $\\cos\\left(-\\frac{\\pi}{4}\\right) = +\\frac{\\sqrt{2}}{2}$.",
+     "Not a solution: $\\cos\\frac{\\pi}{4} = +\\frac{\\sqrt{2}}{2}$.",
+     "Not a solution: Quadrant IV has positive cosine."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-13",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for solving $2\\cos x + 1 = 0$ on $[0, 2\\pi)$ in order.",
+   "type": "order",
+   "options": [
+    "Isolate the cosine: $\\cos x = -\\frac{1}{2}$",
+    "Find the principal value: $\\cos^{-1}\\left(-\\frac{1}{2}\\right) = \\frac{2\\pi}{3}$",
+    "Use symmetry for the other angle with the same cosine: $2\\pi - \\frac{2\\pi}{3} = \\frac{4\\pi}{3}$",
+    "Keep the angles inside $[0, 2\\pi)$ and check each one: $x = \\frac{2\\pi}{3}$ and $x = \\frac{4\\pi}{3}$"
+   ],
+   "why": {
+    "correct": "Undo the outer operations first, then the inverse gives one angle, symmetry gives the second, and the interval decides which angles to keep."
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-14",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the smallest positive solution of $\\sin(3x) = 1$. Give an exact value.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "pi/6",
+    "mistakes": [
+     {
+      "value": "pi/2",
+      "why": "That is the value of $3x$. Divide by $3$ to get $x$."
+     },
+     {
+      "value": "3pi/2",
+      "why": "That multiplies by $3$ instead of dividing."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sin u = 1$ first at $u = \\frac{\\pi}{2}$. With $u = 3x$: $3x = \\frac{\\pi}{2}$, so $x = \\frac{\\pi}{6}$."
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-15",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Find every solution of $\\sin^2 x = \\frac{1}{4}$ on $[0, 2\\pi)$.",
+   "type": "single",
+   "options": [
+    "$\\frac{\\pi}{6}$, $\\frac{5\\pi}{6}$, $\\frac{7\\pi}{6}$ and $\\frac{11\\pi}{6}$",
+    "$\\frac{\\pi}{6}$ and $\\frac{5\\pi}{6}$",
+    "$\\frac{\\pi}{6}$ and $\\frac{11\\pi}{6}$",
+    "$\\frac{\\pi}{12}$, $\\frac{5\\pi}{12}$, $\\frac{13\\pi}{12}$ and $\\frac{17\\pi}{12}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Take square roots and keep both signs: $\\sin x = \\frac{1}{2}$ or $\\sin x = -\\frac{1}{2}$. The first gives $\\frac{\\pi}{6}$ and $\\frac{5\\pi}{6}$; the second gives $\\frac{7\\pi}{6}$ and $\\frac{11\\pi}{6}$.",
+    "options": [
+     "Right: both signs, two angles each.",
+     "This drops $\\sin x = -\\frac{1}{2}$; a square root has a negative partner.",
+     "$\\frac{11\\pi}{6}$ has sine $-\\frac{1}{2}$, so it belongs with $\\frac{7\\pi}{6}$, and $\\frac{5\\pi}{6}$ is missing.",
+     "$\\sin^2 x$ is the square of $\\sin x$, not $\\sin(2x)$; do not halve the angles."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-16",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find every solution of $\\tan x \\sin x = \\sin x$ on $[0, 2\\pi)$.",
+   "type": "single",
+   "options": [
+    "$0$, $\\frac{\\pi}{4}$, $\\pi$ and $\\frac{5\\pi}{4}$",
+    "$\\frac{\\pi}{4}$ and $\\frac{5\\pi}{4}$",
+    "$0$, $\\frac{\\pi}{4}$ and $\\pi$",
+    "$0$, $\\frac{\\pi}{4}$, $\\frac{3\\pi}{4}$ and $\\pi$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Do not divide by $\\sin x$: it can be $0$. Move everything to one side and factor: $\\sin x(\\tan x - 1) = 0$. So $\\sin x = 0$ ($x = 0, \\pi$) or $\\tan x = 1$ ($x = \\frac{\\pi}{4}, \\frac{5\\pi}{4}$). All four are in the interval, and tangent is defined at each.",
+    "options": [
+     "Right: factor, then solve each factor.",
+     "Dividing both sides by $\\sin x$ loses the solutions where $\\sin x = 0$.",
+     "$\\tan x = 1$ again at $\\frac{\\pi}{4} + \\pi = \\frac{5\\pi}{4}$.",
+     "$\\tan\\frac{3\\pi}{4} = -1$, so $\\frac{3\\pi}{4}$ does not solve $\\tan x = 1$, and $\\frac{5\\pi}{4}$ is missing."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-trig-equations-17",
+   "unit": "unit-3",
+   "topic": "trig-equations",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve the inequality $\\cos x \\le \\frac{1}{2}$ on $[0, 2\\pi)$.",
+   "type": "single",
+   "options": [
+    "$\\left[\\frac{\\pi}{3}, \\frac{5\\pi}{3}\\right]$",
+    "$\\left[0, \\frac{\\pi}{3}\\right] \\cup \\left[\\frac{5\\pi}{3}, 2\\pi\\right)$",
+    "$\\left[\\frac{\\pi}{3}, \\frac{2\\pi}{3}\\right]$",
+    "$\\left[\\frac{\\pi}{6}, \\frac{11\\pi}{6}\\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\cos x = \\frac{1}{2}$ at $\\frac{\\pi}{3}$ and $\\frac{5\\pi}{3}$. Test a value between them: $\\cos\\pi = -1 \\le \\frac{1}{2}$. Test outside: $\\cos 0 = 1$, too big. The endpoints count because of the $\\le$.",
+    "options": [
+     "Right: between the two boundary angles, endpoints included.",
+     "That is where $\\cos x \\ge \\frac{1}{2}$.",
+     "$\\cos\\frac{2\\pi}{3} = -\\frac{1}{2}$; the boundary values come from $\\cos x = +\\frac{1}{2}$.",
+     "These are where $\\cos x = \\frac{\\sqrt{3}}{2}$."
+    ]
+   }
+  }
+ ]
+}

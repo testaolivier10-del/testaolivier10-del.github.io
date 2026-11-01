@@ -1,0 +1,56 @@
+<p>In a right triangle, sine and cosine only make sense for angles between $0^\circ$ and $90^\circ$. To model a turning wheel or a tide you need them for every angle, including angles bigger than a full turn and negative angles. The fix is to put the angle on a circle. This page sets up the three ideas the rest of the unit is built on: radians, the unit circle, and sine, cosine and tangent as coordinates and a slope.</p>
+
+<h2>Radians: measuring angles by arcs</h2>
+<p>An angle at the center of a circle cuts off an arc. The bigger the circle, the longer the arc, but the ratio arc length over radius depends only on the angle. That ratio is the angle's <b>radian</b> measure:</p>
+<p style="text-align:center">$\theta = \frac{s}{r}$ (radians), so $s = r\theta$.</p>
+<p>A full turn cuts off the whole circumference: $\frac{2\pi r}{r} = 2\pi$ radians. So $360^\circ = 2\pi$ and</p>
+<p style="text-align:center">$\pi \text{ radians} = 180^\circ$.</p>
+<p>One radian is the angle whose arc is exactly one radius long, about $57.3^\circ$. Calculus and this course use radians by default: when an angle has no degree sign, it is in radians.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Convert $150^\circ$ to radians and $\frac{7\pi}{4}$ to degrees.</p>
+<p>Multiply degrees by $\frac{\pi}{180}$: $150 \cdot \frac{\pi}{180} = \frac{5\pi}{6}$.</p>
+<p>Multiply radians by $\frac{180}{\pi}$: $\frac{7\pi}{4} \cdot \frac{180}{\pi} = 315^\circ$.</p>
+</div>
+<table class="compare">
+<thead><tr><th scope="col">Degrees</th><td>$0^\circ$</td><td>$30^\circ$</td><td>$45^\circ$</td><td>$60^\circ$</td><td>$90^\circ$</td><td>$180^\circ$</td><td>$270^\circ$</td><td>$360^\circ$</td></tr></thead>
+<tbody><tr><th scope="row">Radians</th><td>$0$</td><td>$\frac{\pi}{6}$</td><td>$\frac{\pi}{4}$</td><td>$\frac{\pi}{3}$</td><td>$\frac{\pi}{2}$</td><td>$\pi$</td><td>$\frac{3\pi}{2}$</td><td>$2\pi$</td></tr></tbody>
+</table>
+
+<h2>Angles in standard position</h2>
+<p>An angle is in <b>standard position</b> when its vertex is at the origin and its <b>initial ray</b> lies along the positive $x$-axis. It turns to its <b>terminal ray</b>: counterclockwise for a positive angle, clockwise for a negative one. Turning more than $2\pi$ just goes around again, so $\theta$ and $\theta + 2\pi$ have the same terminal ray. So do $\theta$ and $\theta - 2\pi$, $\theta + 4\pi$, and so on.</p>
+
+<h2>Sine and cosine on the unit circle</h2>
+<p>The <b>unit circle</b> is the circle of radius 1 centered at the origin, $x^2 + y^2 = 1$. The terminal ray of $\theta$ meets it at exactly one point $P$. By definition,</p>
+<p style="text-align:center">$\cos\theta = x$-coordinate of $P$, $\sin\theta = y$-coordinate of $P$, so $P = (\cos\theta, \sin\theta)$.</p>
+<figure id="fig-uc" data-fig="sine-cosine-tangent-unit-circle"><figcaption>The point at angle $\theta$, its coordinates, and the arc of length $\theta$.</figcaption></figure>
+<p>For an acute angle this matches the triangle definition: drop a segment from $P$ to the $x$-axis and you get a right triangle with hypotenuse 1, so opposite $= \sin\theta$ and adjacent $= \cos\theta$. The circle version also works for angles the triangle cannot handle. Because the radius is 1, the angle $\theta$ in radians is also the length of the arc from $(1, 0)$ to $P$: sine and cosine turn an arc length into a coordinate.</p>
+<p>The four points on the axes give values you should know at a glance:</p>
+<table class="compare">
+<thead><tr><th scope="col">$\theta$</th><th scope="col">Point $P$</th><th scope="col">$\cos\theta$</th><th scope="col">$\sin\theta$</th></tr></thead>
+<tbody>
+<tr><td>$0$</td><td>$(1, 0)$</td><td>$1$</td><td>$0$</td></tr>
+<tr><td>$\frac{\pi}{2}$</td><td>$(0, 1)$</td><td>$0$</td><td>$1$</td></tr>
+<tr><td>$\pi$</td><td>$(-1, 0)$</td><td>$-1$</td><td>$0$</td></tr>
+<tr><td>$\frac{3\pi}{2}$</td><td>$(0, -1)$</td><td>$0$</td><td>$-1$</td></tr>
+</tbody>
+</table>
+<p>The quadrant of $P$ sets the signs. In Quadrant I both are positive; in Quadrant II, $\cos\theta < 0$ and $\sin\theta > 0$; in Quadrant III both are negative; in Quadrant IV, $\cos\theta > 0$ and $\sin\theta < 0$.</p>
+
+<h2>Tangent as a slope</h2>
+<p>The terminal ray goes through the origin and $P$, so its slope is rise over run, $\frac{\sin\theta}{\cos\theta}$. That slope is $\tan\theta$:</p>
+<p style="text-align:center">$\tan\theta = \frac{\sin\theta}{\cos\theta}$, defined when $\cos\theta \ne 0$.</p>
+<p>At $\theta = \frac{\pi}{2}$ the ray is vertical, $\cos\theta = 0$, and $\tan\theta$ is undefined. Any point on the ray gives the same slope, not only $P$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> The terminal ray of $\theta$ meets the unit circle at $P\left(-\frac{3}{5}, \frac{4}{5}\right)$. Find $\sin\theta$, $\cos\theta$ and $\tan\theta$, and say where $\theta$ lies if $0 < \theta < 2\pi$.</p>
+<p>Read the coordinates: $\cos\theta = -\frac{3}{5}$ and $\sin\theta = \frac{4}{5}$. Then $\tan\theta = \frac{4/5}{-3/5} = -\frac{4}{3}$, the slope of the ray from the origin to $P$.</p>
+<p>$P$ is in Quadrant II, so $\frac{\pi}{2} < \theta < \pi$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> A point on the rim of a wheel of radius 30 cm moves 90 cm along the rim. Through what angle has the wheel turned, and where is the point if it started on the positive $x$-axis and turned counterclockwise?</p>
+<p>$\theta = \frac{s}{r} = \frac{90}{30} = 3$ radians. Since $\frac{\pi}{2} \approx 1.57 < 3 < \pi \approx 3.14$, the point is in Quadrant II: left of the center and above it.</p>
+</div>
+
+<h2>Why this makes sine and cosine periodic</h2>
+<p>Adding $2\pi$ to an angle brings its terminal ray back to the same place, so</p>
+<p style="text-align:center">$\sin(\theta + 2\pi) = \sin\theta$ and $\cos(\theta + 2\pi) = \cos\theta$.</p>
+<p>So sine and cosine are periodic, with period $2\pi$. The next topic finds their exact values at the angles you meet most, and the one after draws their graphs.</p>

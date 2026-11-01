@@ -1,0 +1,8 @@
+{
+ "extraneous": {
+  "def": "A value produced while solving that does not satisfy the original equation, often because it makes the input of a logarithm zero or negative, or makes $e^x$ negative. Every candidate must be checked in the original."
+ },
+ "exp-log-equation": {
+  "def": "An exponential equation has the unknown in an exponent, such as $3 \\cdot 2^x = 48$; a logarithmic equation has it inside a logarithm, such as $\\log_2(x + 1) = 3$. Each is solved by undoing one function with its inverse."
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "sequence": {
+  "def": "An ordered list of numbers, called terms, written a_0, a_1, a_2, ... or starting at a_1. It is a function whose inputs are whole numbers (the positions), so its graph is a set of separate dots."
+ },
+ "arithmetic-sequence": {
+  "def": "A sequence with a common difference d: each term is the previous term plus d, so a_n = a_0 + dn, or a_n = a_k + d(n - k) from any known term a_k. Its terms change by equal amounts."
+ },
+ "geometric-sequence": {
+  "def": "A sequence with a common ratio r: each term is the previous term times r, so g_n = g_0 r^n, or g_n = g_k r^(n - k) from any known term g_k. Its terms change by amounts that are themselves multiplied by r."
+ }
+}

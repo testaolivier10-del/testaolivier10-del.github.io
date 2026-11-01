@@ -54,6 +54,9 @@ export const PASSES = {
   'env-2027':       { course: 'apenv', until: '2027-06-30T23:59:59-10:00' },
   // AP® Psychology mirrors AP® Environmental Science (docs/appsych-spec.md decision 3).
   'psy-2027':       { course: 'appsych', until: '2027-06-30T23:59:59-10:00' },
+  // AP® Precalculus mirrors AP® Calculus AB (docs/apprecalc-spec.md decision 3).
+  // Not sold until "pcalc-2027" is in the POLAR_PRODUCTS setting (owner checklist).
+  'pcalc-2027':     { course: 'apprecalc', until: '2027-06-30T23:59:59-10:00' },
 };
 
 const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty.call(PASSES, id);
@@ -73,7 +76,7 @@ export function passTerms(pass) {
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
-const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology' };
+const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus' };
 export const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
@@ -735,7 +738,7 @@ export async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-export const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology' };
+export const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology', apprecalc: 'AP® Precalculus' };
 
 export const ENDING_NOTICE_DAYS = 3;
 

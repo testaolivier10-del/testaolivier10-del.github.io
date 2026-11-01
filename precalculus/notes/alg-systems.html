@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Systems of Equations — AP® Precalculus Notes | LevlPrep</title>
+<meta name="description" content="A system of equations is a set of equations that share unknowns and must all be true at once.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/alg-systems.html">
+<meta property="og:title" content="Systems of Equations — AP® Precalculus Notes | LevlPrep">
+<meta property="og:description" content="A system of equations is a set of equations that share unknowns and must all be true at once.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/alg-systems.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/alg-systems.html#reading",
+      "name": "Systems of Equations",
+      "url": "https://levlprep.com/precalculus/notes/alg-systems.html",
+      "description": "A system of equations is a set of equations that share unknowns and must all be true at once.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "systems of equations review for precalculus",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Algebra you need",
+          "item": "https://levlprep.com/precalculus/units/skills-algebra.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Systems of Equations: notes",
+          "item": "https://levlprep.com/precalculus/notes/alg-systems.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="alg-systems" data-unit="skills-algebra">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-algebra.html">Algebra you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Systems of Equations: notes</span></nav>
+<p class="issue">Skills <i></i></p>
+<h1 class="deck bk-title" id="r3Title">Systems <span>of Equations</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/alg-systems.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="alg-systems">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Falg-systems.html&amp;title=Systems%20of%20Equations%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/alg-systems.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Functions Involving Parameters, Vectors, and Matrices</a>
+    <a class="bk-toc-chap" href="../units/skills-algebra.html"><span class="bk-toc-chap-n">S</span><span><b>Algebra you need</b><small>11 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="skills-algebra"><div class="tb-progress-row"><span><b>0</b> of 11 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="alg-functions"><a href="alg-functions.html"><span class="bk-toc-n">S</span>Functions, Graphs and Notation</a></li><li data-toc-t="alg-intervals"><a href="alg-intervals.html"><span class="bk-toc-n">S</span>Interval Notation and Inequalities</a></li><li data-toc-t="alg-lines"><a href="alg-lines.html"><span class="bk-toc-n">S</span>Lines, Slope and Linear Equations</a></li><li data-toc-t="alg-quadratics"><a href="alg-quadratics.html"><span class="bk-toc-n">S</span>Quadratics: Zeros and the Quadratic Formula</a></li><li data-toc-t="alg-polynomial-algebra"><a href="alg-polynomial-algebra.html"><span class="bk-toc-n">S</span>Polynomial Arithmetic and Factoring</a></li><li data-toc-t="alg-complex-numbers"><a href="alg-complex-numbers.html"><span class="bk-toc-n">S</span>Complex Numbers</a></li><li data-toc-t="alg-rational-expressions"><a href="alg-rational-expressions.html"><span class="bk-toc-n">S</span>Rational Expressions</a></li><li class="current" data-toc-t="alg-systems"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Systems of Equations</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-a-solution-is">What a solution is</a><a href="#substitution">Substitution</a><a href="#elimination">Elimination</a><a href="#three-unknowns-a-quadratic-through-three">Three unknowns: a quadratic through three points</a><a href="#with-a-calculator-store-do-not">With a calculator: store, do not round</a></div></li><li data-toc-t="alg-exponents"><a href="alg-exponents.html"><span class="bk-toc-n">S</span>Exponent and Radical Rules</a></li><li data-toc-t="alg-right-triangle"><a href="alg-right-triangle.html"><span class="bk-toc-n">S</span>Right-Triangle Trigonometry</a></li><li data-toc-t="alg-circles"><a href="alg-circles.html"><span class="bk-toc-n">S</span>Circles, Arcs and Special Triangles</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>A <b><span class="gl" tabindex="0" data-c="system">system of equations</span></b> is a set of equations that share unknowns and must all be true at once. In this course you meet systems every time you build a model from data: each data point gives one equation, and the model's constants are the unknowns. This page shows the two hand methods one step at a time, then how to use a calculator without losing accuracy.</p>
+
+<h2 id="what-a-solution-is">What a solution is</h2>
+<p>A solution makes every equation true. For two lines, it is the point on both lines: where they cross.</p>
+<figure id="fig-lines"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="alg-systems-lines"><img src="../figures/alg-systems-lines.svg" alt="The lines y = 2x - 1 and y = -x + 5 crossing at the point (2, 3), the solution of the system." width="640" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = 2x - 1</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi><mo>+</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">y = -x + 5</annotation></semantics></math> cross at <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 3)</annotation></semantics></math>, the solution. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Two lines can also be parallel (same <a class="gl" href="../notes/alg-lines.html" data-c="slope">slope</a>, different intercepts), so there is no solution, or be the same line, so every point on it is a solution.</p>
+
+<h2 id="substitution">Substitution</h2>
+<p>Use substitution when one equation already says what a variable equals.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Solve <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = x - 1</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>3</mn><mi>x</mi><mo>+</mo><mn>2</mn><mi>y</mi><mo>=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">3x + 2y = 13</annotation></semantics></math>.</p>
+<p>Replace <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> in the second equation with <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x - 1</annotation></semantics></math>, in parentheses: <math class="pcalc-m"><semantics><mrow><mn>3</mn><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">3x + 2(x - 1) = 13</annotation></semantics></math>.</p>
+<p>Distribute: <math class="pcalc-m"><semantics><mrow><mn>3</mn><mi>x</mi><mo>+</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>2</mn><mo>=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">3x + 2x - 2 = 13</annotation></semantics></math>. Combine: <math class="pcalc-m"><semantics><mrow><mn>5</mn><mi>x</mi><mo>−</mo><mn>2</mn><mo>=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">5x - 2 = 13</annotation></semantics></math>. Add <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mn>5</mn><mi>x</mi><mo>=</mo><mn>15</mn></mrow><annotation encoding="application/x-tex">5x = 15</annotation></semantics></math>. Divide: <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>.</p>
+<p>Back-substitute: <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn><mo>−</mo><mn>1</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = 3 - 1 = 2</annotation></semantics></math>. Check in the other equation: <math class="pcalc-m"><semantics><mrow><mn>3</mn><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>+</mo><mn>2</mn><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>9</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">3(3) + 2(2) = 9 + 4 = 13</annotation></semantics></math>. The solution is <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 2)</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="elimination">Elimination</h2>
+<p>Use elimination when adding or subtracting the equations makes a variable cancel. Multiply an equation first if the coefficients do not match.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Solve <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn><mi>y</mi><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">2x + 3y = 12</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>4</mn><mi>x</mi><mo>−</mo><mn>3</mn><mi>y</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">4x - 3y = 6</annotation></semantics></math>.</p>
+<p>The <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> terms are <math class="pcalc-m"><semantics><mrow><mn>3</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">3y</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">-3y</annotation></semantics></math>, so add the equations: <math class="pcalc-m"><semantics><mrow><mn>6</mn><mi>x</mi><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">6x = 18</annotation></semantics></math>, and <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>.</p>
+<p>Substitute into the first: <math class="pcalc-m"><semantics><mrow><mn>2</mn><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>+</mo><mn>3</mn><mi>y</mi><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">2(3) + 3y = 12</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mn>3</mn><mi>y</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">3y = 6</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = 2</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="three-unknowns-a-quadratic-through-three">Three unknowns: a quadratic through three points</h2>
+<p>To find <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">y = ax^2 + bx + c</annotation></semantics></math> through three points, substitute each point. The <a class="gl" href="../notes/alg-functions.html" data-c="function">input</a> is squared in the <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> term, so write the powers out.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find the <a class="gl" href="../notes/alg-quadratics.html" data-c="quadratic">quadratic</a> through <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>6</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 6)</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>11</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 11)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>18</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 18)</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>6</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 6)</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mi>b</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mi>c</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">a(1)^2 + b(1) + c = 6</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">a + b + c = 6</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>11</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 11)</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mi>b</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mi>c</mi><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">a(2)^2 + b(2) + c = 11</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mn>4</mn><mi>a</mi><mo>+</mo><mn>2</mn><mi>b</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">4a + 2b + c = 11</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>18</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 18)</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mi>b</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>+</mo><mi>c</mi><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">a(3)^2 + b(3) + c = 18</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mn>9</mn><mi>a</mi><mo>+</mo><mn>3</mn><mi>b</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">9a + 3b + c = 18</annotation></semantics></math>.</p>
+<p>Eliminate <math class="pcalc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>. Second minus first: <math class="pcalc-m"><semantics><mrow><mn>3</mn><mi>a</mi><mo>+</mo><mi>b</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">3a + b = 5</annotation></semantics></math>. Third minus second: <math class="pcalc-m"><semantics><mrow><mn>5</mn><mi>a</mi><mo>+</mo><mi>b</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">5a + b = 7</annotation></semantics></math>.</p>
+<p>Eliminate <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math>. Subtract those two: <math class="pcalc-m"><semantics><mrow><mn>2</mn><mi>a</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2a = 2</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a = 1</annotation></semantics></math>.</p>
+<p>Work back up: <math class="pcalc-m"><semantics><mrow><mn>3</mn><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mi>b</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">3(1) + b = 5</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">b = 2</annotation></semantics></math>; then <math class="pcalc-m"><semantics><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mi>c</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">1 + 2 + c = 6</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mi>c</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">c = 3</annotation></semantics></math>. The model is <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = x^2 + 2x + 3</annotation></semantics></math>. Check <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>11</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 11)</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mn>4</mn><mo>+</mo><mn>4</mn><mo>+</mo><mn>3</mn><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">4 + 4 + 3 = 11</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="with-a-calculator-store-do-not">With a calculator: store, do not round</h2>
+<p>Real data give messy decimals, and the calculator part of the exam expects you to use the calculator's system solver. The rule the readers enforce: keep every constant at full precision until the final answer, then give that answer correct to three decimal places. If you round <math class="pcalc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> to two places and then use it to find <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math>, both <math class="pcalc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> and every prediction made with the model can come out wrong in the third decimal place, and lose the point.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-systems">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="model-selection.html"><span>&larr; Previous</span><b>Function Model Selection and Assumption Articulation</b></a><a class="tb-chapter-link next" href="model-construction.html"><span>Next &rarr;</span><b>Function Model Construction and Application</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/alg-systems.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-systems">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+/* Sinusoid builder (precalculus/assets/tools/sinusoid-builder.js). OWNED BY THIS TOOL
+   ONLY (builder T3). One color per parameter, the same in the formula, the
+   brackets on the graph, the handles and the dock: a orange, d crimson, the
+   period (and b) blue, the shift purple; the student's curve the course green. */
+.sb-card,.ls-root{--sb-a:#C25100;--sb-d:#B0123A;--sb-T:#0072B2;--sb-c:#7A4F9E;--sb-curve:var(--cink,#11592F);--sb-paper:var(--white,#fff);--sb-water:rgba(0,114,178,.22);--sb-sky:rgba(0,114,178,.05);}
+:root[data-theme="dark"] .sb-card,:root[data-theme="dark"] .ls-root{--sb-a:#F29A5C;--sb-d:#F590AC;--sb-T:#6BB4E8;--sb-c:#C3A3E0;--sb-water:rgba(107,180,232,.25);--sb-sky:rgba(107,180,232,.05);}
+
+.sb-stage{display:flex;flex-direction:column;flex:1;min-height:0;}
+.sb-wrap{position:relative;flex:1 1 0;min-height:300px;}
+.sb-card:not(.ls-root *) .sb-wrap{height:480px;flex:none;}
+.sb-svg{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;overflow:hidden;}
+.sb-svg text,.sb-dsvg text{font-family:var(--font-ui);}
+
+.sb-grid{stroke:var(--line);stroke-width:1;}
+.sb-axis{stroke:var(--ink);stroke-width:1.4;opacity:.6;}
+.sb-tk{fill:var(--muted);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums;}
+.sb-axl{fill:var(--muted);font-weight:800;font-size:14px;}
+.sb-curve{fill:none;stroke:var(--sb-curve);stroke-width:3.6;stroke-linejoin:round;stroke-linecap:round;}
+.sb-midline{stroke:var(--sb-d);stroke-width:2;stroke-dasharray:8 6;}
+.sb-midline.is-soft{stroke:var(--muted);stroke-width:1.4;opacity:.7;}
+.sb-amp{stroke:var(--sb-a);stroke-width:3;stroke-linecap:round;}
+.sb-per{fill:none;stroke:var(--sb-T);stroke-width:2.4;}
+.sb-shift{fill:var(--sb-c);}
+.sb-pt{fill:var(--sb-paper);stroke:var(--ink);stroke-width:2.4;}
+.sb-pt.is-ok{fill:var(--sb-curve);stroke:var(--sb-paper);stroke-width:2.4;}
+.sb-cur{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:3 4;opacity:.45;}
+.sb-now{fill:var(--ink);stroke:var(--sb-paper);stroke-width:2;}
+.sb-link{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 5;opacity:.45;}
+.sb-lab{font-weight:800;font-size:15px;fill:var(--ink);paint-order:stroke;stroke:var(--sb-paper);stroke-width:4px;}
+.sb-c-a{fill:var(--sb-a);color:var(--sb-a);} .sb-c-d{fill:var(--sb-d);color:var(--sb-d);} .sb-c-T{fill:var(--sb-T);color:var(--sb-T);} .sb-c-c{fill:var(--sb-c);color:var(--sb-c);} .sb-c-y{fill:var(--ink);}
+.sb-formula{font-weight:900;font-size:24px;fill:var(--ink);font-variant-numeric:tabular-nums;}
+.sb-sub{font-weight:700;font-size:16px;fill:var(--muted);}
+.sb-svg.is-tall .sb-formula{font-size:17px;}
+.sb-svg.is-tall .sb-sub{font-size:12.5px;}
+.sb-svg.is-tall .sb-lab{font-size:13px;}
+.sb-svg.is-tall .sb-tk,.sb-svg.is-tall .sb-axl{font-size:12.5px;}
+
+.sb-handle{cursor:grab;outline:none;}
+.sb-handle .sb-halo{fill-opacity:.16;}
+.sb-handle .sb-hdot{stroke:var(--sb-paper);stroke-width:3;}
+.sb-h-a .sb-halo,.sb-h-a .sb-hdot{fill:var(--sb-a);}
+.sb-h-d .sb-halo,.sb-h-d .sb-hdot{fill:var(--sb-d);}
+.sb-h-T .sb-halo,.sb-h-T .sb-hdot{fill:var(--sb-T);}
+.sb-handle:hover .sb-halo{fill-opacity:.28;}
+.sb-handle:focus-visible .sb-halo{fill-opacity:.34;stroke:currentColor;stroke-width:2.5;}
+.sb-svg.is-drag,.sb-svg.is-drag .sb-handle{cursor:grabbing;}
+
+/* scene art */
+.sb-ground{stroke:var(--ink);stroke-width:2;opacity:.6;}
+.sb-frame{fill:none;stroke:var(--muted);stroke-width:5;stroke-linejoin:round;}
+.sb-plat{fill:var(--line);}
+.sb-wheel{fill:none;stroke:var(--ink);stroke-width:3;opacity:.75;}
+.sb-spoke{stroke:var(--muted);stroke-width:1.4;opacity:.7;}
+.sb-cab{fill:var(--sb-paper);stroke:var(--muted);stroke-width:1.6;}
+.sb-cab.is-me{fill:var(--sb-curve);stroke:var(--sb-curve);}
+.sb-hub{fill:var(--ink);}
+.sb-sky{fill:var(--sb-sky);}
+.sb-water{fill:var(--sb-water);stroke:var(--sb-T);stroke-width:1.6;}
+.sb-bed{fill:#B89B6A;opacity:.55;}
+.sb-pile{fill:#8A6A45;}
+.sb-mark{stroke:var(--ink);stroke-width:1.2;}
+.sb-mk{fill:var(--muted);font-weight:700;font-size:12px;}
+.sb-boat{fill:var(--sb-curve);}
+.sb-mast{stroke:var(--ink);stroke-width:2;}
+.sb-sail{fill:var(--sb-paper);stroke:var(--ink);stroke-width:1.2;}
+.sb-ceil{fill:var(--muted);}
+.sb-coil{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;}
+.sb-mass{fill:var(--sb-curve);}
+.sb-rest{stroke:var(--sb-d);stroke-width:1.4;stroke-dasharray:5 4;}
+.sb-tube{fill:var(--sb-paper);stroke:var(--ink);stroke-width:2;}
+.sb-fluid{fill:var(--sb-d);}
+.sb-bulb{fill:var(--sb-d);stroke:var(--ink);stroke-width:2;}
+
+/* dock */
+.sb-ctl{display:flex;flex-direction:column;gap:10px;}
+.sb-params .bt-mode{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;line-height:1.15;white-space:nowrap;font-variant-numeric:tabular-nums;min-height:52px;padding:4px 6px;}
+.sb-params .sb-pk{font-size:12.5px;}
+.sb-params .sb-pv{font-size:16px;color:var(--ink);}
+.sb-pk{font-weight:900;}
+.sb-pv{font-weight:700;}
+.sb-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.sb-play{display:inline-flex;align-items:center;gap:8px;min-height:44px;}
+.sb-play[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+.sb-out{min-width:3.5em;text-align:right;font-variant-numeric:tabular-nums;}
+.sb-form .bt-mode{font-size:13px;}
+
+/* the drill figure */
+.sb-fig{margin:0;}
+.sb-dsvg{display:block;width:100%;height:auto;max-height:420px;}
+.sb-kp{fill:var(--ink);stroke:var(--sb-paper);stroke-width:2;}
+.sb-kpl{font-size:15px;}
+.sb-iv{fill:var(--cink);fill-opacity:.08;}
+.sb-sec{stroke:var(--sb-c);stroke-width:2.4;stroke-dasharray:7 4;}
+.sb-dtable{margin:0 0 6px;flex:none;}
+.sb-dtable table{font-size:14px;}
+.sb-params .sb-c-T{color:#005A8C;} .sb-params .sb-c-a{color:#A84500;}
+:root[data-theme="dark"] .sb-params .sb-c-T{color:var(--sb-T);} :root[data-theme="dark"] .sb-params .sb-c-a{color:var(--sb-a);}

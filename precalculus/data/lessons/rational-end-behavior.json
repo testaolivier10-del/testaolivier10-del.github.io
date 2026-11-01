@@ -1,0 +1,71 @@
+{
+ "topic": "rational-end-behavior",
+ "hook": "Order more posters and the average cost of each one drops, but never below the cost of the paper and ink. That floor is a horizontal asymptote. Functions that divide one polynomial by another level off, grow without bound, or hug a slanted line, and the leading terms tell you which.",
+ "prereq": [
+  {
+   "q": "What is $\\lim_{x \\to -\\infty} (2x^3 - 50x^2)$?",
+   "options": [
+    "$-\\infty$",
+    "$\\infty$",
+    "$2$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": "The leading term $2x^3$ is negative and huge for large negative $x$.",
+   "review": "polynomial-end-behavior"
+  },
+  {
+   "q": "Which is equal to $\\frac{2x^2 + 3}{x}$ for $x \\ne 0$?",
+   "options": [
+    "$2x + \\frac{3}{x}$",
+    "$2x + 3$",
+    "$2x^2 + \\frac{3}{x}$",
+    "$\\frac{2x + 3}{1}$"
+   ],
+   "correct": 0,
+   "why": "Divide each term by $x$.",
+   "review": "alg-rational-expressions"
+  }
+ ],
+ "figure": {
+  "figure": "rational-end-behavior-ha",
+  "caption": "$r(x) = \\frac{2x^2 - 8}{x^2 + 1}$ levels off at the horizontal asymptote $y = 2$, the quotient of its leading terms $\\frac{2x^2}{x^2}$."
+ },
+ "chain": [
+  {
+   "cause": "$|x|$ grows large in $\\frac{p(x)}{q(x)}$",
+   "effect": "each polynomial behaves like its leading term, so the function behaves like their quotient"
+  },
+  {
+   "cause": "The quotient of leading terms is a constant $c$ (equal degrees)",
+   "effect": "$\\lim_{x \\to \\pm\\infty} r(x) = c$ and $y = c$ is a horizontal asymptote"
+  },
+  {
+   "cause": "The denominator has the higher degree",
+   "effect": "the quotient goes to $0$: the horizontal asymptote is $y = 0$"
+  },
+  {
+   "cause": "The quotient of leading terms is linear (top degree one more)",
+   "effect": "the graph approaches a slant asymptote $y = mx + b$"
+  }
+ ],
+ "ideas": [
+  "A <b>rational function</b> is $r(x) = \\frac{p(x)}{q(x)}$ with polynomials $p$ and $q$.",
+  "End behavior comes from the quotient of the leading terms, written in limit notation.",
+  "<b>Horizontal asymptote</b> $y = c$ when $\\lim_{x \\to \\infty} r(x) = c$ or $\\lim_{x \\to -\\infty} r(x) = c$: equal degrees give the ratio of leading coefficients; a bigger bottom degree gives $y = 0$.",
+  "<b>Slant asymptote</b> when the top's degree is one more: rewrite as a line plus a fraction that goes to $0$."
+ ],
+ "misconception": {
+  "wrong": "A graph can never cross its horizontal asymptote.",
+  "right": "A horizontal asymptote describes the ends only. $\\frac{5x + 2}{x^2 + 1}$ has asymptote $y = 0$ yet crosses it at $x = -0.4$."
+ },
+ "check": [
+  "pcalc-rational-end-behavior-1",
+  "pcalc-rational-end-behavior-2",
+  "pcalc-rational-end-behavior-3",
+  "pcalc-rational-end-behavior-6",
+  "pcalc-rational-end-behavior-7",
+  "pcalc-rational-end-behavior-11"
+ ],
+ "summary": "A rational function's end behavior matches the quotient of its leading terms. Equal degrees give a horizontal asymptote at the ratio of the leading coefficients; a larger denominator degree gives $y = 0$; a numerator one degree larger gives a slant asymptote. State the end behavior in limit notation, such as $\\lim_{x \\to \\infty} r(x) = 3$."
+}

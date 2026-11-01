@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Right-Triangle Trigonometry — AP® Precalculus Notes</title>
+<meta name="description" content="Unit 3 builds sine and cosine as functions of any angle. They start life as something smaller: ratios of the sides of a right triangle.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/alg-right-triangle.html">
+<meta property="og:title" content="Right-Triangle Trigonometry — AP® Precalculus Notes">
+<meta property="og:description" content="Unit 3 builds sine and cosine as functions of any angle. They start life as something smaller: ratios of the sides of a right triangle.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/alg-right-triangle.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/alg-right-triangle.html#reading",
+      "name": "Right-Triangle Trigonometry",
+      "url": "https://levlprep.com/precalculus/notes/alg-right-triangle.html",
+      "description": "Unit 3 builds sine and cosine as functions of any angle. They start life as something smaller: ratios of the sides of a right triangle.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "right-triangle trigonometry review for precalculus",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Algebra you need",
+          "item": "https://levlprep.com/precalculus/units/skills-algebra.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Right-Triangle Trigonometry: notes",
+          "item": "https://levlprep.com/precalculus/notes/alg-right-triangle.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="alg-right-triangle" data-unit="skills-algebra">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-algebra.html">Algebra you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Right-Triangle Trigonometry: notes</span></nav>
+<p class="issue">Skills <i></i></p>
+<h1 class="deck bk-title" id="r3Title">Right-Triangle <span>Trigonometry</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/alg-right-triangle.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="alg-right-triangle">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Falg-right-triangle.html&amp;title=Right-Triangle%20Trigonometry%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/alg-right-triangle.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Functions Involving Parameters, Vectors, and Matrices</a>
+    <a class="bk-toc-chap" href="../units/skills-algebra.html"><span class="bk-toc-chap-n">S</span><span><b>Algebra you need</b><small>11 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="skills-algebra"><div class="tb-progress-row"><span><b>0</b> of 11 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="alg-functions"><a href="alg-functions.html"><span class="bk-toc-n">S</span>Functions, Graphs and Notation</a></li><li data-toc-t="alg-intervals"><a href="alg-intervals.html"><span class="bk-toc-n">S</span>Interval Notation and Inequalities</a></li><li data-toc-t="alg-lines"><a href="alg-lines.html"><span class="bk-toc-n">S</span>Lines, Slope and Linear Equations</a></li><li data-toc-t="alg-quadratics"><a href="alg-quadratics.html"><span class="bk-toc-n">S</span>Quadratics: Zeros and the Quadratic Formula</a></li><li data-toc-t="alg-polynomial-algebra"><a href="alg-polynomial-algebra.html"><span class="bk-toc-n">S</span>Polynomial Arithmetic and Factoring</a></li><li data-toc-t="alg-complex-numbers"><a href="alg-complex-numbers.html"><span class="bk-toc-n">S</span>Complex Numbers</a></li><li data-toc-t="alg-rational-expressions"><a href="alg-rational-expressions.html"><span class="bk-toc-n">S</span>Rational Expressions</a></li><li data-toc-t="alg-systems"><a href="alg-systems.html"><span class="bk-toc-n">S</span>Systems of Equations</a></li><li data-toc-t="alg-exponents"><a href="alg-exponents.html"><span class="bk-toc-n">S</span>Exponent and Radical Rules</a></li><li class="current" data-toc-t="alg-right-triangle"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Right-Triangle Trigonometry</a><div class="bk-toc-onpage"><p>On this page</p><a href="#naming-the-sides">Naming the sides</a><a href="#three-ratios-that-depend-only-on">Three ratios that depend only on the angle</a><a href="#finding-a-missing-side">Finding a missing side</a></div></li><li data-toc-t="alg-circles"><a href="alg-circles.html"><span class="bk-toc-n">S</span>Circles, Arcs and Special Triangles</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>Unit 3 builds sine and cosine as <a class="gl" href="../notes/alg-functions.html" data-c="function">functions</a> of any angle. They start life as something smaller: ratios of the sides of a right triangle. This page is the algebra you need for that first step.</p>
+
+<h2 id="naming-the-sides">Naming the sides</h2>
+<p>In a right triangle the side across from the right angle is the <b><span class="gl" tabindex="0" data-c="hypotenuse">hypotenuse</span></b>; it is always the longest side. The other two sides, the legs, get their names from the acute angle you are working with, called <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> here:</p>
+<ul>
+<li>the <b>opposite side</b> is the leg across from <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math>;</li>
+<li>the <b>adjacent side</b> is the leg that touches <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> (the hypotenuse touches it too, but it already has a name).</li>
+</ul>
+<figure id="fig-sides"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="alg-right-triangle-sides"><img src="../figures/alg-right-triangle-sides.svg" alt="A right triangle with the right angle at the lower right corner and the angle theta at the lower left corner. The longest side, across from the right angle, is the hypotenuse. The vertical side across from theta is the side opposite theta. The horizontal side that touches theta and is not the hypotenuse is the side adjacent to theta. To the right: sine of theta is opposite over hypotenuse, cosine of theta is adjacent over hypotenuse, tangent of theta is opposite over adjacent (SOH CAH TOA)." width="720" height="360" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Opposite, adjacent and hypotenuse, seen from the angle <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math>. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Move to the other acute angle and the two legs swap names. Always ask "opposite to which angle?"</p>
+
+<h2 id="three-ratios-that-depend-only-on">Three ratios that depend only on the angle</h2>
+<p>Any two right triangles with the same acute angle <math class="pcalc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> are similar: one is a scaled copy of the other. Scaling multiplies every side by the same number, so the ratio of any two sides does not change. Each ratio is therefore a property of the angle alone, and each has a name. These are the <b><span class="gl" tabindex="0" data-c="trig-ratio">trigonometric ratios</span></b>:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Ratio, Definition, Memory aid"><table class="compare">
+<thead><tr><th scope="col">Ratio</th><th scope="col">Definition</th><th scope="col">Memory aid</th></tr></thead>
+<tbody>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\sin\theta</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><mtext>opposite</mtext><mtext>hypotenuse</mtext></mfrac></mrow><annotation encoding="application/x-tex">\frac{\text{opposite}}{\text{hypotenuse}}</annotation></semantics></math></td><td>SOH</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\cos\theta</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><mtext>adjacent</mtext><mtext>hypotenuse</mtext></mfrac></mrow><annotation encoding="application/x-tex">\frac{\text{adjacent}}{\text{hypotenuse}}</annotation></semantics></math></td><td>CAH</td></tr>
+<tr><td><math class="pcalc-m"><semantics><mrow><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\tan\theta</annotation></semantics></math></td><td><math class="pcalc-m"><semantics><mrow><mfrac><mtext>opposite</mtext><mtext>adjacent</mtext></mfrac></mrow><annotation encoding="application/x-tex">\frac{\text{opposite}}{\text{adjacent}}</annotation></semantics></math></td><td>TOA</td></tr>
+</tbody>
+</table></div>
+<p>Because the hypotenuse is the longest side, <math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\sin\theta</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\cos\theta</annotation></semantics></math> are between <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math> for an acute angle. <math class="pcalc-m"><semantics><mrow><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\tan\theta</annotation></semantics></math> can be any positive number. When the adjacent side lies flat, <math class="pcalc-m"><semantics><mrow><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\tan\theta</annotation></semantics></math> is the rise over the run of the hypotenuse: its <a class="gl" href="../notes/alg-lines.html" data-c="slope">slope</a>.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A right triangle has legs <math class="pcalc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mn>12</mn></mrow><annotation encoding="application/x-tex">12</annotation></semantics></math>. The angle <math class="pcalc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> is across from the side <math class="pcalc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math>. Find <math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\sin A</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\cos A</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\tan A</annotation></semantics></math>.</p>
+<p>First the hypotenuse: <math class="pcalc-m"><semantics><mrow><msqrt><mrow><msup><mn>5</mn><mn>2</mn></msup><mo>+</mo><msup><mn>12</mn><mn>2</mn></msup></mrow></msqrt><mo>=</mo><msqrt><mn>169</mn></msqrt><mo>=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">\sqrt{5^2 + 12^2} = \sqrt{169} = 13</annotation></semantics></math>.</p>
+<p>From <math class="pcalc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math>: opposite <math class="pcalc-m"><semantics><mrow><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">= 5</annotation></semantics></math>, adjacent <math class="pcalc-m"><semantics><mrow><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">= 12</annotation></semantics></math>, hypotenuse <math class="pcalc-m"><semantics><mrow><mo>=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">= 13</annotation></semantics></math>. So <math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>A</mi><mo>=</mo><mfrac><mn>5</mn><mn>13</mn></mfrac></mrow><annotation encoding="application/x-tex">\sin A = \frac{5}{13}</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>A</mi><mo>=</mo><mfrac><mn>12</mn><mn>13</mn></mfrac></mrow><annotation encoding="application/x-tex">\cos A = \frac{12}{13}</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>A</mi><mo>=</mo><mfrac><mn>5</mn><mn>12</mn></mfrac></mrow><annotation encoding="application/x-tex">\tan A = \frac{5}{12}</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="finding-a-missing-side">Finding a missing side</h2>
+<p>Know one angle and one side? Choose the ratio that uses the side you know and the side you want, write an equation, and solve it.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A ramp's sloped surface is 20 feet long and makes a <math class="pcalc-m"><semantics><mrow><msup><mn>35</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">35^\circ</annotation></semantics></math> angle with the ground. Use <math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msup><mn>35</mn><mo>∘</mo></msup><mo>≈</mo><mn>0.5736</mn></mrow><annotation encoding="application/x-tex">\sin 35^\circ \approx 0.5736</annotation></semantics></math> to find how high the ramp rises.</p>
+<p>The rise is opposite the angle and the 20 feet is the hypotenuse, so use sine: <math class="pcalc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msup><mn>35</mn><mo>∘</mo></msup><mo>=</mo><mfrac><mi>h</mi><mn>20</mn></mfrac></mrow><annotation encoding="application/x-tex">\sin 35^\circ = \frac{h}{20}</annotation></semantics></math>.</p>
+<p>Multiply both sides by 20: <math class="pcalc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>20</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><msup><mn>35</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">= 20 \sin 35^\circ</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">≈</mo><mn>20</mn><mo stretchy="false">(</mo><mn>0.5736</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\approx 20(0.5736)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>11.472</mn></mrow><annotation encoding="application/x-tex">= 11.472</annotation></semantics></math> feet.</p>
+</div>
+<p>If the unknown side is on the bottom of the ratio, you divide instead: with <math class="pcalc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mfrac><mn>6</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\cos\theta = \frac{6}{x}</annotation></semantics></math>, multiply by <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> to get <math class="pcalc-m"><semantics><mrow><mi>x</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">x\cos\theta = 6</annotation></semantics></math>, then <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mn>6</mn><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">x = \frac{6}{\cos\theta}</annotation></semantics></math>.</p>
+<p>The same idea gives formulas. If a hypotenuse has length <math class="pcalc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>, then the opposite side is <math class="pcalc-m"><semantics><mrow><mi>r</mi><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r\sin\theta</annotation></semantics></math> and the adjacent side is <math class="pcalc-m"><semantics><mrow><mi>r</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">r\cos\theta</annotation></semantics></math>. These two expressions come back in the next topics, where they become the coordinates of a point on a circle.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-right-triangle">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="periodic-phenomena.html"><span>&larr; Previous</span><b>Periodic Phenomena</b></a><a class="tb-chapter-link next" href="alg-circles.html"><span>Next &rarr;</span><b>Circles, Arcs and Special Triangles</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/alg-right-triangle.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:alg-right-triangle">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

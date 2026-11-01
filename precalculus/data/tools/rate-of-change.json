@@ -1,0 +1,23 @@
+{
+ "about": "Rate of change (docs/apprecalc-spec.md section 6, builder T1). The contexts, their functions and every number live in precalculus/assets/tools/math/rate-of-change.js; a function and a context unlock with their topics. Checked by scripts/lib/apprecalc-tool-checks/rate-of-change.mjs.",
+ "slug": "rate-of-change",
+ "kind": "simulator",
+ "topic": "rates-of-change",
+ "intro": "<p>An average rate of change is the slope of a secant line. Here the secants are drawn over equal intervals, side by side, each in its own color, with its slope beside it and as a bar below the graph. When the bars grow, the rate of change is increasing and the graph is concave up; when they shrink, it is concave down. In Estimate, use one secant line to estimate a value and see whether the estimate lands over or under the curve, and why.</p>",
+ "howItWorksTitle": "How the rates are found",
+ "howItWorks": "<ul><li><b>Average rate of change</b> of $f$ on $[a, b]$: $\\frac{f(b) - f(a)}{b - a}$, the slope of the secant line through $(a, f(a))$ and $(b, f(b))$, in output units per input unit.</li><li><b>Equal intervals.</b> Compare rates only over intervals of the same length. If they increase from each interval to the next, the rate of change of $f$ is increasing and $f$ is concave up there; if they decrease, concave down. Constant rates mean a line.</li><li><b>Estimate with a secant line</b>: use a point on that line, $f(a) + m(x - a)$, with $m$ the slope.</li><li><b>Over or under</b>: on an interval where $f$ is concave up, the graph lies below the secant line, so the estimate is too big (an overestimate); concave down, it lies above and the estimate is an underestimate. Whether $f$ goes up or down does not decide it.</li><li><b>Keyboard:</b> the points on the graph take the arrow keys (Shift for bigger steps).</li></ul>",
+ "functions": [
+  { "id": "taxi", "topic": "rates-of-change" },
+  { "id": "ball", "topic": "rates-of-change" },
+  { "id": "cubic", "topic": "polynomial-rates" },
+  { "id": "cooling", "topic": "rational-end-behavior" },
+  { "id": "growth", "topic": "exponential-functions" },
+  { "id": "learning", "topic": "logarithmic-functions" }
+ ],
+ "contexts": [
+  { "id": "aroc", "topic": "rates-of-change", "kind": "aroc" },
+  { "id": "estimate", "topic": "rates-of-change", "kind": "estimate" },
+  { "id": "concavity", "topic": "rates-of-change", "kind": "concavity" },
+  { "id": "quadratic", "topic": "linear-quadratic-rates", "kind": "quadratic" }
+ ]
+}

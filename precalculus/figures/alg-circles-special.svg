@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" width="720" height="340" role="img" aria-labelledby="alg-circles-special-t alg-circles-special-d" font-family="Arial, Helvetica, sans-serif">
+<title id="alg-circles-special-t">The 45-45-90 and 30-60-90 right triangles</title>
+<desc id="alg-circles-special-d">Left: a 45-45-90 triangle with two legs of length 1 and a hypotenuse of length square root of 2; both acute angles are 45 degrees. Right: a 30-60-90 triangle with the short leg 1 across from the 30 degree angle, the long leg square root of 3 across from the 60 degree angle, and the hypotenuse 2, twice the short leg.</desc>
+<rect width="720" height="340" fill="#fff"/>
+<path d="M60,290 L210,290 L60,140 Z" fill="#E3F3E8" stroke="#1F2A28" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M60 272 h18 v18" fill="none" stroke="#1F2A28" stroke-width="1.6"/>
+<text x="135" y="316" font-size="19" text-anchor="middle" fill="#1F2A28" font-weight="bold">1</text>
+<text x="46" y="221" font-size="19" text-anchor="end" fill="#1F2A28" font-weight="bold">1</text>
+<text x="147" y="209" font-size="19" text-anchor="start" fill="#11592F" font-weight="bold">√2</text>
+<text x="166" y="280" font-size="15" text-anchor="start" fill="#D55E00">45°</text>
+<text x="68" y="182" font-size="15" text-anchor="start" fill="#D55E00">45°</text>
+<text x="135" y="36" font-size="18" text-anchor="middle" fill="#1F2A28" font-weight="bold">45-45-90</text>
+<path d="M330,290 L537.8460969082653,290 L330,170 Z" fill="#E3F3E8" stroke="#1F2A28" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M330 272 h18 v18" fill="none" stroke="#1F2A28" stroke-width="1.6"/>
+<text x="433.92" y="316" font-size="19" text-anchor="middle" fill="#1F2A28" font-weight="bold">√3</text>
+<text x="316" y="236" font-size="19" text-anchor="end" fill="#1F2A28" font-weight="bold">1</text>
+<text x="445.92" y="222" font-size="19" text-anchor="start" fill="#11592F" font-weight="bold">2</text>
+<text x="475.85" y="280" font-size="15" text-anchor="start" fill="#D55E00">30°</text>
+<text x="338" y="204" font-size="15" text-anchor="start" fill="#D55E00">60°</text>
+<text x="470" y="36" font-size="18" text-anchor="middle" fill="#1F2A28" font-weight="bold">30-60-90</text>
+<text x="470" y="60" font-size="14" text-anchor="middle" fill="#5A6563">hypotenuse = 2 × short leg</text>
+<text x="135" y="60" font-size="14" text-anchor="middle" fill="#5A6563">hypotenuse = √2 × leg</text>
+</svg>

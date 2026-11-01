@@ -1,0 +1,20 @@
+{
+ "semi-log-plots-line": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Semi-log plot of bacteria, in thousands, against hours: the points (0, 3) through (6, 192) for y = 3 times 2 to the t lie on a straight line.",
+  "ext": "svg",
+  "w": 420,
+  "h": 300
+ },
+ "semi-log-plots-set1": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Semi-log plot of app users against years since 2016: five points on a straight line, with A at (0, 20), B at (4, 200) and C at (8, 2,000).",
+  "ext": "svg",
+  "w": 420,
+  "h": 300
+ }
+}

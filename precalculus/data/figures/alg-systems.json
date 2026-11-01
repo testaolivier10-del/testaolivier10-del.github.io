@@ -1,0 +1,12 @@
+{
+ "alg-systems-lines": {
+  "file": "figures/alg-systems-lines.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The lines y = 2x - 1 and y = -x + 5 crossing at the point (2, 3), the solution of the system."
+ }
+}

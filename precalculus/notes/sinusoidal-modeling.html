@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sinusoidal Modeling — AP® Precalculus Notes | LevlPrep</title>
+<meta name="description" content="A context describes something that repeats: a seat on a Ferris wheel, the depth of a harbor, the temperature in a greenhouse.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/sinusoidal-modeling.html">
+<meta property="og:title" content="Sinusoidal Modeling — AP® Precalculus Notes | LevlPrep">
+<meta property="og:description" content="A context describes something that repeats: a seat on a Ferris wheel, the depth of a harbor, the temperature in a greenhouse.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/sinusoidal-modeling.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/sinusoidal-modeling.html#reading",
+      "name": "Sinusoidal Function Context and Data Modeling",
+      "url": "https://levlprep.com/precalculus/notes/sinusoidal-modeling.html",
+      "description": "A context describes something that repeats: a seat on a Ferris wheel, the depth of a harbor, the temperature in a greenhouse.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "sinusoidal function context and data modeling ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Trigonometric and Polar Functions",
+          "item": "https://levlprep.com/precalculus/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Sinusoidal Function Context and Data Modeling: notes",
+          "item": "https://levlprep.com/precalculus/notes/sinusoidal-modeling.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="sinusoidal-modeling" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Trigonometric and Polar Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Sinusoidal Function Context and Data Modeling: notes</span></nav>
+<p class="issue">Unit 3 <i></i> Topic 3.7</p>
+<h1 class="deck bk-title" id="r3Title">Sinusoidal Function Context <span>and Data Modeling</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/sinusoidal-modeling.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="sinusoidal-modeling">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fsinusoidal-modeling.html&amp;title=Sinusoidal%20Function%20Context%20and%20Data%20Modeling%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/sinusoidal-modeling.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Exponential and Logarithmic Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Trigonometric and Polar Functions</b><small>15 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="periodic-phenomena"><a href="periodic-phenomena.html"><span class="bk-toc-n">3.1</span>Periodic Phenomena</a></li><li data-toc-t="sine-cosine-tangent"><a href="sine-cosine-tangent.html"><span class="bk-toc-n">3.2</span>Sine, Cosine, and Tangent</a></li><li data-toc-t="sine-cosine-values"><a href="sine-cosine-values.html"><span class="bk-toc-n">3.3</span>Sine and Cosine Function Values</a></li><li data-toc-t="sine-cosine-curves"><a href="sine-cosine-curves.html"><span class="bk-toc-n">3.4</span>Sine and Cosine Function Graphs</a></li><li data-toc-t="sinusoidal-functions"><a href="sinusoidal-functions.html"><span class="bk-toc-n">3.5</span>Sinusoidal Functions</a></li><li data-toc-t="sinusoidal-transformations"><a href="sinusoidal-transformations.html"><span class="bk-toc-n">3.6</span>Sinusoidal Function Transformations</a></li><li class="current" data-toc-t="sinusoidal-modeling"><a href="#main" aria-current="page"><span class="bk-toc-n">3.7</span>Sinusoidal Function Context and Data Modeling</a><div class="bk-toc-onpage"><p>On this page</p><a href="#step-1-five-points-on-one">Step 1: five points on one cycle</a><a href="#step-2-the-constants">Step 2: the constants</a><a href="#step-3-how-the-quantity-changes">Step 3: how the quantity changes on an interval</a><a href="#models-from-data">Models from data</a><a href="#where-the-model-holds">Where the model holds</a></div></li><li data-toc-t="tangent-function"><a href="tangent-function.html"><span class="bk-toc-n">3.8</span>The Tangent Function</a></li><li data-toc-t="inverse-trig"><a href="inverse-trig.html"><span class="bk-toc-n">3.9</span>Inverse Trigonometric Functions</a></li><li data-toc-t="trig-equations"><a href="trig-equations.html"><span class="bk-toc-n">3.10</span>Trigonometric Equations and Inequalities</a></li><li data-toc-t="sec-csc-cot"><a href="sec-csc-cot.html"><span class="bk-toc-n">3.11</span>The Secant, Cosecant, and Cotangent Functions</a></li><li data-toc-t="trig-identities"><a href="trig-identities.html"><span class="bk-toc-n">3.12</span>Equivalent Representations of Trigonometric Functions</a></li><li data-toc-t="polar-coordinates"><a href="polar-coordinates.html"><span class="bk-toc-n">3.13</span>Trigonometry and Polar Coordinates</a></li><li data-toc-t="polar-curves"><a href="polar-curves.html"><span class="bk-toc-n">3.14</span>Polar Function Graphs</a></li><li data-toc-t="polar-rates"><a href="polar-rates.html"><span class="bk-toc-n">3.15</span>Rates of Change in Polar Functions</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Functions Involving Parameters, Vectors, and Matrices</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+    <article class="pcalc-prose bk-prose">
+<p>This topic puts everything in Unit 3 so far to work. A context describes something that repeats: a seat on a Ferris wheel, the depth of a harbor, the temperature in a greenhouse. You turn the description into a <span class="gl" tabindex="0" data-c="sinusoidal-model">sinusoidal model</span>, read it, and use it. This is exactly what the exam's periodic modeling question (no calculator) asks.</p>
+
+<h2 id="step-1-five-points-on-one">Step 1: five points on one cycle</h2>
+<p>A <a class="gl" href="../notes/sinusoidal-functions.html" data-c="sinusoid">sinusoid</a> passes through five landmark points in each cycle, a quarter period apart: an extreme, a <a class="gl" href="../notes/sinusoidal-functions.html" data-c="midline">midline</a> crossing, the other extreme, the other midline crossing, and the first extreme again. Most periodic questions start by asking for their coordinates.</p>
+<figure id="fig-ferris"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="sinusoidal-modeling-ferris"><img src="../figures/sinusoidal-modeling-ferris.svg" alt="Left: a Ferris wheel on a support above the ground, turning counterclockwise, with a seat S at the lowest point of the wheel, which is above the ground. Right: an unscaled graph of h(t), the height of the seat above the ground, for one turn. The graph starts at its lowest point F, rises through G to its highest point J, falls through K and ends at the lowest point M. G and K are at the height of the center of the wheel. The axes have no scale." width="760" height="360" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> An unscaled graph of a seat's height. <math class="pcalc-m"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">J</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math> are extremes; <math class="pcalc-m"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math> are at the height of the wheel's center. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> A Ferris wheel has diameter 40 m and its center is 25 m above the ground. It turns once every 8 minutes. A seat is at its lowest point at <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>. Give the coordinates of <math class="pcalc-m"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">J</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math> in the figure, where <math class="pcalc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(t)</annotation></semantics></math> is the seat's height in meters.</p>
+<p>The radius is 20 m, so the seat goes from <math class="pcalc-m"><semantics><mrow><mn>25</mn><mo>−</mo><mn>20</mn><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">25 - 20 = 5</annotation></semantics></math> m to <math class="pcalc-m"><semantics><mrow><mn>25</mn><mo>+</mo><mn>20</mn><mo>=</mo><mn>45</mn></mrow><annotation encoding="application/x-tex">25 + 20 = 45</annotation></semantics></math> m. The quarter period is <math class="pcalc-m"><semantics><mrow><mfrac><mn>8</mn><mn>4</mn></mfrac><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{8}{4} = 2</annotation></semantics></math> minutes.</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>F</mi><mo>=</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F = (0, 5)</annotation></semantics></math> lowest, <math class="pcalc-m"><semantics><mrow><mi>G</mi><mo>=</mo><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>25</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G = (2, 25)</annotation></semantics></math> at the center's height going up, <math class="pcalc-m"><semantics><mrow><mi>J</mi><mo>=</mo><mo stretchy="false">(</mo><mn>4</mn><mo>,</mo><mn>45</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">J = (4, 45)</annotation></semantics></math> highest, <math class="pcalc-m"><semantics><mrow><mi>K</mi><mo>=</mo><mo stretchy="false">(</mo><mn>6</mn><mo>,</mo><mn>25</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">K = (6, 25)</annotation></semantics></math> going down, <math class="pcalc-m"><semantics><mrow><mi>M</mi><mo>=</mo><mo stretchy="false">(</mo><mn>8</mn><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">M = (8, 5)</annotation></semantics></math> lowest again.</p>
+</div>
+
+<h2 id="step-2-the-constants">Step 2: the constants</h2>
+<p>From the five points: <math class="pcalc-m"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math> is the midline, <math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>a</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|a|</annotation></semantics></math> the <a class="gl" href="../notes/sinusoidal-functions.html" data-c="amplitude">amplitude</a>, <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mtext>period</mtext></mfrac></mrow><annotation encoding="application/x-tex">b = \frac{2\pi}{\text{period}}</annotation></semantics></math>. If the context gives a <a class="gl" href="../notes/sinusoidal-functions.html" data-c="frequency">frequency</a>, the period is its reciprocal first: 3 cycles per minute is a period of <math class="pcalc-m"><semantics><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{3}</annotation></semantics></math> minute, so <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>6</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">b = 6\pi</annotation></semantics></math>.</p>
+<p>For the shift, match the starting point of the <a class="gl" href="../notes/alg-functions.html" data-c="function">function</a> you choose to a landmark:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Landmark at t = t_0, Simplest form"><table class="compare">
+<thead><tr><th scope="col">Landmark at <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><msub><mi>t</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">t = t_0</annotation></semantics></math></th><th scope="col">Simplest form</th></tr></thead>
+<tbody>
+<tr><td>highest point</td><td><math class="pcalc-m"><semantics><mrow><mi>a</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>+</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">a\cos(b(t - t_0)) + d</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &gt; 0</annotation></semantics></math></td></tr>
+<tr><td>lowest point</td><td><math class="pcalc-m"><semantics><mrow><mi>a</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>+</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">a\cos(b(t - t_0)) + d</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &lt; 0</annotation></semantics></math></td></tr>
+<tr><td>midline, rising</td><td><math class="pcalc-m"><semantics><mrow><mi>a</mi><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>+</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">a\sin(b(t - t_0)) + d</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &gt; 0</annotation></semantics></math></td></tr>
+<tr><td>midline, falling</td><td><math class="pcalc-m"><semantics><mrow><mi>a</mi><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>+</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">a\sin(b(t - t_0)) + d</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &lt; 0</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<div class="worked">
+<p><b>Worked example 2.</b> Write the Ferris wheel model in the form <math class="pcalc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(t)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mi>a</mi><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">(</mo><mi>t</mi><mo>+</mo><mi>c</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>+</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">= a\sin(b(t + c)) + d</annotation></semantics></math>.</p>
+<p><math class="pcalc-m"><semantics><mrow><mi>d</mi><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">d = 25</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>a</mi><mo stretchy="false">|</mo><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">|a| = 20</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mn>8</mn></mfrac><mo>=</mo><mfrac><mi>π</mi><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">b = \frac{2\pi}{8} = \frac{\pi}{4}</annotation></semantics></math>. The seat is at the midline and rising at <math class="pcalc-m"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math>, so with <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">a = 20</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(t)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>20</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><mi>π</mi><mn>4</mn></mfrac><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>+</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">= 20\sin\left(\frac{\pi}{4}(t - 2)\right) + 25</annotation></semantics></math>, which means <math class="pcalc-m"><semantics><mrow><mi>c</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">c = -2</annotation></semantics></math>.</p>
+<p>Check at <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mn>20</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mi>π</mi><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>+</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">20\sin\left(-\frac{\pi}{2}\right) + 25</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>20</mn><mo>+</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">= -20 + 25</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">= 5</annotation></semantics></math>. Correct: the seat starts at the bottom. (<math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">a = -20</annotation></semantics></math> with <math class="pcalc-m"><semantics><mrow><mi>c</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">c = 2</annotation></semantics></math>, or <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>20</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><mi>π</mi><mn>4</mn></mfrac><mi>t</mi></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>+</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">-20\cos\left(\frac{\pi}{4}t\right) + 25</annotation></semantics></math>, are the same function.)</p>
+</div>
+
+<h2 id="step-3-how-the-quantity-changes">Step 3: how the quantity changes on an interval</h2>
+<p>Two separate questions, two separate answers:</p>
+<ul>
+<li><b>Is the quantity increasing or decreasing?</b> Look at whether the graph is heading toward a highest point (increasing) or a lowest point (decreasing).</li>
+<li><b>Is its <a class="gl" href="../notes/change-in-tandem.html" data-c="rate-of-change">rate of change</a> increasing or decreasing?</b> Look at the concavity. Above the midline the graph is <a class="gl" href="../notes/change-in-tandem.html" data-c="concavity">concave down</a>, so the rate of change is decreasing; below it, concave up, rate increasing.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 3.</b> For the seat, describe <math class="pcalc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> on <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 4)</annotation></semantics></math>.</p>
+<p>From <math class="pcalc-m"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math> to <math class="pcalc-m"><semantics><mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">J</annotation></semantics></math> the seat climbs, so <math class="pcalc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> is increasing. The graph is above the midline and bends down toward the top: concave down, so the rate of change of <math class="pcalc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> is decreasing. In words: the seat is rising, but more and more slowly as it nears the top.</p>
+</div>
+<p>Write both statements with the function's name and the interval. <span class="pcalc-trap">"Increasing at a decreasing rate"</span> is calculus wording that the precalculus rubric does not ask for: say "<math class="pcalc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> is increasing and the rate of change of <math class="pcalc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> is decreasing."</p>
+
+<h2 id="models-from-data">Models from data</h2>
+<p>When you have data instead of a description, read the greatest and least values and the cycle length from a table, exactly as above. With a graphing calculator you can also run a <b>sinusoidal <a class="gl" href="../notes/model-construction.html" data-c="regression">regression</a></b>, which chooses all four constants to fit the data as closely as possible. In <a class="gl" href="../notes/sine-cosine-tangent.html" data-c="radian">radian</a> mode, store the constants rather than rounding them, and give final answers correct to three decimal places.</p>
+<div class="worked">
+<p><b>Worked example 4 (calculator).</b> A greenhouse's temperature is modeled by <math class="pcalc-m"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T(t)</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>8</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><mi>π</mi><mn>12</mn></mfrac><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>+</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">= -8\cos\left(\frac{\pi}{12}(t - 4)\right) + 20</annotation></semantics></math> degrees Celsius, <math class="pcalc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> hours after midnight. For how long during the day is it above <math class="pcalc-m"><semantics><mrow><msup><mn>25</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">25^\circ</annotation></semantics></math>C?</p>
+<p>Graph <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>T</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = T(t)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">y = 25</annotation></semantics></math> on <math class="pcalc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>24</mn></mrow><annotation encoding="application/x-tex">0 \le t \le 24</annotation></semantics></math> in radian mode and find the intersections: <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>≈</mo><mn>12.579</mn></mrow><annotation encoding="application/x-tex">t \approx 12.579</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>t</mi><mo>≈</mo><mn>19.421</mn></mrow><annotation encoding="application/x-tex">t \approx 19.421</annotation></semantics></math>. Between them the temperature is above 25, for <math class="pcalc-m"><semantics><mrow><mn>19.421</mn><mo>−</mo><mn>12.579</mn><mo>≈</mo><mn>6.842</mn></mrow><annotation encoding="application/x-tex">19.421 - 12.579 \approx 6.842</annotation></semantics></math> hours. Use the stored values when you subtract.</p>
+</div>
+
+<h2 id="where-the-model-holds">Where the model holds</h2>
+<p>A sinusoidal model repeats forever, but the world does not have to. Tides drift because the real cycle is not exactly the one in the model; temperatures change with the seasons and the weather. Use a model on the <a class="gl" href="../notes/alg-functions.html" data-c="domain">domain</a> the context supports, and expect predictions far beyond the data to get worse.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:sinusoidal-modeling">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="sinusoidal-transformations.html"><span>&larr; Previous</span><b>Sinusoidal Function Transformations</b></a><a class="tb-chapter-link next" href="tangent-function.html"><span>Next &rarr;</span><b>The Tangent Function</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/sinusoidal-modeling.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:sinusoidal-modeling">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<p>An exponential function $f(x) = ab^x$, with $a \ne 0$, $b > 0$ and $b \ne 1$, multiplies its output by $b$ for every unit of input. That one fact decides the shape of every exponential graph: which way it goes, how it bends, and the line it creeps toward. This page reads those features off the formula and writes them the way the exam scores them.</p>
+
+<h2>Growth and decay</h2>
+<p>The number $a$ is the output at $x = 0$, since $b^0 = 1$. The base $b$ decides the direction:</p>
+<ul>
+<li>$b > 1$: each step multiplies by more than $1$. With $a > 0$, the function is increasing: <b>exponential growth</b>.</li>
+<li>$0 < b < 1$: each step multiplies by less than $1$. With $a > 0$, the function is decreasing: <b>exponential decay</b>.</li>
+</ul>
+<figure id="fig-gd" data-fig="exponential-functions-growth-decay"><figcaption>$f(x) = 3(2)^x$ grows and $g(x) = 3\left(\frac{1}{2}\right)^x$ decays; both pass through $(0, 3)$.</figcaption></figure>
+<p>Because every step multiplies by the same $b$, the outputs never turn around. An exponential function is increasing everywhere or decreasing everywhere, so it has no local maximum or minimum. It also has one concavity: concave up when $a > 0$, concave down when $a < 0$ (a reflection across the $x$-axis). So it has no point of inflection either.</p>
+<p>In <a class="figref" href="#fig-gd">the figure</a>, $g$ is decreasing and concave up. Its average rates of change over equal intervals are negative but get closer to $0$: the graph falls, more and more gently. In precalculus words: $g$ is decreasing, and the rate of change of $g$ is increasing.</p>
+
+<h2>Horizontal asymptotes and limit notation</h2>
+<p>Multiplying by $\frac{1}{2}$ again and again makes a number as close to $0$ as you like, without reaching it. So one side of every exponential graph approaches a horizontal asymptote. The readers expect limit notation, written in full:</p>
+<table class="compare">
+<thead><tr><th scope="col">Function</th><th scope="col">One side</th><th scope="col">Other side</th></tr></thead>
+<tbody>
+<tr><td>$f(x) = 3(2)^x$ (growth)</td><td>$\lim_{x \to -\infty} f(x) = 0$</td><td>$\lim_{x \to \infty} f(x) = \infty$</td></tr>
+<tr><td>$g(x) = 3\left(\frac{1}{2}\right)^x$ (decay)</td><td>$\lim_{x \to \infty} g(x) = 0$</td><td>$\lim_{x \to -\infty} g(x) = \infty$</td></tr>
+</tbody>
+</table>
+<p>Adding a constant moves the asymptote. For $h(x) = ab^x + k$, the exponential part approaches $0$, so $h$ approaches $k$, and the asymptote is $y = k$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Describe $h(x) = 2\left(\frac{1}{2}\right)^x + 1$.</p>
+<p>The base $\frac{1}{2}$ and $a = 2 > 0$: $h$ is decreasing and concave up.</p>
+<p>Right side: $2\left(\frac{1}{2}\right)^x \to 0$, so $\lim_{x \to \infty} h(x) = 1$. Left side: $\left(\frac{1}{2}\right)^x = 2^{-x}$ grows without bound, so $\lim_{x \to -\infty} h(x) = \infty$.</p>
+<p>The exponential part takes every positive value, so the range of $h$ is $(1, \infty)$. The asymptote value $1$ itself is never reached.</p>
+</div>
+
+<h2>Spotting a shifted exponential in a table</h2>
+<p>If the outputs do not have a constant ratio, try subtracting a constant first. The outputs $7, 11, 19, 35$ at $x = 0, 1, 2, 3$ have ratios that change, but $7 - 3, 11 - 3, 19 - 3, 35 - 3$ are $4, 8, 16, 32$, which double each step. So $k(x) = 4(2)^x + 3$: an exponential function shifted up $3$, with asymptote $y = 3$.</p>
+
+<h2>Growth factors and percent change</h2>
+<p>In context, the base is called the <b>growth factor</b> (or decay factor). A percent change of $r$ (written as a decimal) gives $b = 1 + r$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A town of $8{,}000$ people grows $4\%$ a year; a $\$20{,}000$ car loses $15\%$ of its value a year. Write each model.</p>
+<p>Town: each year is $104\%$ of the last, so $b = 1 + 0.04 = 1.04$ and $P(t) = 8000(1.04)^t$.</p>
+<p>Car: each year keeps $85\%$ of the value, so $b = 1 - 0.15 = 0.85$ and $V(t) = 20{,}000(0.85)^t$.</p>
+<p>Read it backward too: $Q(t) = 300(0.92)^t$ has $b = 0.92 = 1 - 0.08$, an $8\%$ decrease each unit.</p>
+</div>
+
+<h2>The natural base $e$</h2>
+<p>One base turns up so often in science and finance that it has its own letter: $e \approx 2.71828$, the <b>natural base</b>. $f(x) = e^x$ is an exponential function like any other, increasing and concave up with $\lim_{x \to -\infty} e^x = 0$. Your calculator has an $e^x$ key; use it rather than typing $2.7$, which changes the third decimal place.</p>

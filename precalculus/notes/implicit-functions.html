@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Implicitly Defined Functions — AP® Precalculus Notes</title>
+<meta name="description" content="So far most functions have come as formulas: y = f(x) , or x(t) and y(t) . Many curves are more natural as a single equation tying x and y together.">
+<link rel="canonical" href="https://levlprep.com/precalculus/notes/implicit-functions.html">
+<meta property="og:title" content="Implicitly Defined Functions — AP® Precalculus Notes">
+<meta property="og:description" content="So far most functions have come as formulas: y = f(x) , or x(t) and y(t) . Many curves are more natural as a single equation tying x and y together.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/precalculus/notes/implicit-functions.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/precalculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/pcalc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/precalculus/notes/implicit-functions.html#reading",
+      "name": "Implicitly Defined Functions",
+      "url": "https://levlprep.com/precalculus/notes/implicit-functions.html",
+      "description": "So far most functions have come as formulas: y = f(x) , or x(t) and y(t) . Many curves are more natural as a single equation tying x and y together.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "implicitly defined functions ap precalculus explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/precalculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Precalculus",
+          "item": "https://levlprep.com/precalculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Functions Involving Parameters, Vectors, and Matrices",
+          "item": "https://levlprep.com/precalculus/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Implicitly Defined Functions: notes",
+          "item": "https://levlprep.com/precalculus/notes/implicit-functions.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="pcalc" data-topic="implicit-functions" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="r3 r3-read-top" data-cover="apprecalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="pcalc-crumb pcalc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Precalculus</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Functions Involving Parameters, Vectors, and Matrices</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Implicitly Defined Functions: notes</span></nav>
+<p class="issue">Unit 4 <i></i> Topic 4.5</p>
+<h1 class="deck bk-title" id="r3Title">Implicitly Defined <span>Functions</span></h1>
+<p class="hand pcalc-nav-ref">see every function move</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/implicit-functions.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta pcalc-nav-ref"><span class="bk-small">3 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="implicit-functions">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fprecalculus%2Fnotes%2Fimplicit-functions.html&amp;title=Implicitly%20Defined%20Functions%3A%20precalculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/precalculus/notes/implicit-functions.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apprecalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apprecalc">
+  <button type="button" class="tb-toc-btn" aria-controls="pcalc-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail pcalc-nav-ref bk-rail" id="pcalc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Trigonometric and Polar Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Functions Involving Parameters, Vectors, and Matrices</b><small>14 topics</small></span></a>
+    <div class="pcalc-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 14 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="parametric-functions"><a href="parametric-functions.html"><span class="bk-toc-n">4.1</span>Parametric Functions</a></li><li data-toc-t="parametric-motion"><a href="parametric-motion.html"><span class="bk-toc-n">4.2</span>Parametric Functions Modeling Planar Motion</a></li><li data-toc-t="parametric-rates"><a href="parametric-rates.html"><span class="bk-toc-n">4.3</span>Parametric Functions and Rates of Change</a></li><li data-toc-t="parametric-circles-lines"><a href="parametric-circles-lines.html"><span class="bk-toc-n">4.4</span>Parametrically Defined Circles and Lines</a></li><li class="current" data-toc-t="implicit-functions"><a href="#main" aria-current="page"><span class="bk-toc-n">4.5</span>Implicitly Defined Functions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#explicit-and-implicit">Explicit and implicit</a><a href="#finding-points">Finding points</a><a href="#splitting-a-curve-into-functions">Splitting a curve into functions</a><a href="#symmetry-from-the-equation">Symmetry from the equation</a><a href="#implicit-equations-that-are-functions">Implicit equations that are functions</a></div></li><li data-toc-t="conic-sections"><a href="conic-sections.html"><span class="bk-toc-n">4.6</span>Conic Sections</a></li><li data-toc-t="parametrizing-implicit"><a href="parametrizing-implicit.html"><span class="bk-toc-n">4.7</span>Parametrization of Implicitly Defined Functions</a></li><li data-toc-t="vectors"><a href="vectors.html"><span class="bk-toc-n">4.8</span>Vectors</a></li><li data-toc-t="vector-valued-functions"><a href="vector-valued-functions.html"><span class="bk-toc-n">4.9</span>Vector-Valued Functions</a></li><li data-toc-t="matrices"><a href="matrices.html"><span class="bk-toc-n">4.10</span>Matrices</a></li><li data-toc-t="inverse-determinant"><a href="inverse-determinant.html"><span class="bk-toc-n">4.11</span>The Inverse and Determinant of a Matrix</a></li><li data-toc-t="linear-transformations"><a href="linear-transformations.html"><span class="bk-toc-n">4.12</span>Linear Transformations and Matrices</a></li><li data-toc-t="matrices-as-functions"><a href="matrices-as-functions.html"><span class="bk-toc-n">4.13</span>Matrices as Functions</a></li><li data-toc-t="matrix-modeling"><a href="matrix-modeling.html"><span class="bk-toc-n">4.14</span>Matrices Modeling Contexts</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-algebra.html"><span class="bk-toc-n">S</span>Algebra you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <!-- r3:head -->
+<p class="bk-lede"><span class="pcalc-beyond pcalc-nav-ref"><b>Beyond the exam.</b> The AP® Precalculus exam does not test this unit. Many classes teach it, and it prepares you for calculus.</span></p>
+    <article class="pcalc-prose bk-prose">
+<p>So far most <a class="gl" href="../notes/alg-functions.html" data-c="function">functions</a> have come as formulas: <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = f(x)</annotation></semantics></math>, or <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y(t)</annotation></semantics></math>. Many curves are more natural as a single equation tying <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> together. A circle is the clearest case: <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">x^2 + y^2 = 25</annotation></semantics></math> says "the distance from the origin is 5" without ever saying <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo>…</mo></mrow><annotation encoding="application/x-tex">y = \ldots</annotation></semantics></math>.</p>
+
+<h2 id="explicit-and-implicit">Explicit and implicit</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Form, Example, How you get points"><table class="compare">
+<thead><tr><th scope="col">Form</th><th scope="col">Example</th><th scope="col">How you get points</th></tr></thead>
+<tbody>
+<tr><td>Explicit</td><td><math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = x^2 - 3</annotation></semantics></math></td><td>put in <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, read off <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></td></tr>
+<tr><td>Parametric</td><td><math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>t</mi><mn>2</mn></msup><mo>,</mo><mn>2</mn><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(t^2, 2t)</annotation></semantics></math></td><td>put in <math class="pcalc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>, read off <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></td></tr>
+<tr><td>Implicit</td><td><math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">x^2 + xy + y^2 = 7</annotation></semantics></math></td><td>put in <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, solve for every <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>The graph of an <b><span class="gl" tabindex="0" data-c="implicit">implicitly defined function</span></b> is the set of all points <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x, y)</annotation></semantics></math> that make its equation true. To check whether a point is on the curve, substitute both coordinates: <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math> is on <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">x^2 + xy + y^2 = 7</annotation></semantics></math> because <math class="pcalc-m"><semantics><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">1 + 2 + 4 = 7</annotation></semantics></math>, and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 2)</annotation></semantics></math> is not because <math class="pcalc-m"><semantics><mrow><mn>4</mn><mo>+</mo><mn>4</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">4 + 4 + 4 = 12</annotation></semantics></math>.</p>
+
+<h2 id="finding-points">Finding points</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Find every point of <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">x^2 + xy + y^2 = 7</annotation></semantics></math> with <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>.</p>
+<p>Substitute: <math class="pcalc-m"><semantics><mrow><mn>1</mn><mo>+</mo><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">1 + y + y^2 = 7</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><mi>y</mi><mo>−</mo><mn>6</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y^2 + y - 6 = 0</annotation></semantics></math>.</p>
+<p>Factor: <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>y</mi><mo>+</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(y - 2)(y + 3) = 0</annotation></semantics></math>, so <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = 2</annotation></semantics></math> or <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = -3</annotation></semantics></math>.</p>
+<p>The points are <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, -3)</annotation></semantics></math>. One <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, two <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-values: this curve is not the <a class="gl" href="../notes/alg-functions.html" data-c="function-graph">graph of a function</a> of <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="splitting-a-curve-into-functions">Splitting a curve into functions</h2>
+<p>A curve that fails the vertical line test can often be cut into pieces that pass it. For the circle <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">x^2 + y^2 = 25</annotation></semantics></math>, solving for <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><msqrt><mrow><mn>25</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">y = \pm\sqrt{25 - x^2}</annotation></semantics></math>: the upper half <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msqrt><mrow><mn>25</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">y = \sqrt{25 - x^2}</annotation></semantics></math> and the lower half <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msqrt><mrow><mn>25</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">y = -\sqrt{25 - x^2}</annotation></semantics></math> are each functions of <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>.</p>
+<figure id="fig-halves"  class="pcalc-figure"><div class="pcalc-figimg" data-fig="implicit-functions-halves"><img src="../figures/implicit-functions-halves.svg" alt="The circle x squared plus y squared = 25. Its upper half, y = the square root of 25 minus x squared, is drawn in green and its lower half, y = minus the square root of 25 minus x squared, in blue. A dashed vertical line at x = 3 meets the circle twice, at (3, 4) and (3, -4)." width="380" height="350" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The circle <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">x^2 + y^2 = 25</annotation></semantics></math> as two functions of <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. <span class="pcalc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> Solve <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">x^2 + xy + y^2 = 7</annotation></semantics></math> for <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>.</p>
+<p>Treat it as a <a class="gl" href="../notes/alg-quadratics.html" data-c="quadratic">quadratic</a> in <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mi>y</mi><mo>+</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>7</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y^2 + (x)y + (x^2 - 7) = 0</annotation></semantics></math>, with <math class="pcalc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a = 1</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">b = x</annotation></semantics></math>, <math class="pcalc-m"><semantics><mrow><mi>c</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">c = x^2 - 7</annotation></semantics></math>.</p>
+<p>The <a class="gl" href="../notes/alg-quadratics.html" data-c="quadratic-formula">quadratic formula</a>: <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi><mo>±</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>7</mn><mo stretchy="false">)</mo></mrow></msqrt></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{-x \pm \sqrt{x^2 - 4(x^2 - 7)}}{2}</annotation></semantics></math><wbr><math class="pcalc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi><mo>±</mo><msqrt><mrow><mn>28</mn><mo>−</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{-x \pm \sqrt{28 - 3x^2}}{2}</annotation></semantics></math>.</p>
+<p>The "+" sign gives the upper piece and the "−" sign the lower piece. Check with <math class="pcalc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>: <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>±</mo><msqrt><mn>25</mn></msqrt></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{-1 \pm \sqrt{25}}{2}</annotation></semantics></math> gives <math class="pcalc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">-3</annotation></semantics></math>, as before.</p>
+</div>
+<p>The square root also tells you how wide the curve is. Real values of <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> exist only when <math class="pcalc-m"><semantics><mrow><mn>28</mn><mo>−</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">28 - 3x^2 \ge 0</annotation></semantics></math>, that is <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><msqrt><mfrac><mn>28</mn><mn>3</mn></mfrac></msqrt><mo>≤</mo><mi>x</mi><mo>≤</mo><msqrt><mfrac><mn>28</mn><mn>3</mn></mfrac></msqrt></mrow><annotation encoding="application/x-tex">-\sqrt{\frac{28}{3}} \le x \le \sqrt{\frac{28}{3}}</annotation></semantics></math>. At the two ends the square root is <math class="pcalc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> and the two pieces meet.</p>
+
+<h2 id="symmetry-from-the-equation">Symmetry from the equation</h2>
+<p>You can read symmetry without graphing. Swapping <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> in <math class="pcalc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">x^2 + xy + y^2 = 7</annotation></semantics></math> gives the same equation, so if <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, b)</annotation></semantics></math> is on the curve, so is <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>b</mi><mo>,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(b, a)</annotation></semantics></math>: the curve is symmetric about the line <math class="pcalc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = x</annotation></semantics></math>. Replacing <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> with <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">-x</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> with <math class="pcalc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">-y</annotation></semantics></math> also gives the same equation, so <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi>a</mi><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-a, -b)</annotation></semantics></math> is on it too.</p>
+
+<h2 id="implicit-equations-that-are-functions">Implicit equations that are functions</h2>
+<p>Some implicit equations do give one <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> for each <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. In <math class="pcalc-m"><semantics><mrow><msup><mi>y</mi><mn>3</mn></msup><mo>+</mo><mi>y</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y^3 + y = x</annotation></semantics></math>, the left side increases whenever <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> increases, so two different <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-values can never give the same <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. This defines <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> as a function of <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, even though solving for <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> by hand is hard. A table is easy, though: choose <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, compute <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. From the points <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 1)</annotation></semantics></math> and <math class="pcalc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>10</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(10, 2)</annotation></semantics></math>, the <a class="gl" href="../notes/rates-of-change.html" data-c="aroc">average rate of change</a> of <math class="pcalc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> with respect to <math class="pcalc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> is <math class="pcalc-m"><semantics><mrow><mfrac><mrow><mn>2</mn><mo>−</mo><mn>1</mn></mrow><mrow><mn>10</mn><mo>−</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>8</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{2 - 1}{10 - 2} = \frac{1}{8}</annotation></semantics></math>, the <a class="gl" href="../notes/alg-lines.html" data-c="slope">slope</a> of the segment joining them.</p>
+
+    </article>
+    <p class="pcalc-report-page pcalc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:implicit-functions">Report a problem</button></p>
+    <nav class="tb-chapter-nav pcalc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="parametric-circles-lines.html"><span>&larr; Previous</span><b>Parametrically Defined Circles and Lines</b></a><a class="tb-chapter-link next" href="conic-sections.html"><span>Next &rarr;</span><b>Conic Sections</b></a></nav>
+  </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/implicit-functions.html">Practice this lesson &rarr;</a></div></aside>
+</div>
+<footer class="pcalc-foot xshell">
+  <p class="pcalc-accuracy-note"> This course has not yet been reviewed by an AP® Precalculus teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apprecalc" data-report-question="notes:implicit-functions">Report a problem</button></span></p>
+  <p class="pcalc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPrecalcSection = 'learn'; window.ApPrecalcBase = '../';</script>
+<script src="../assets/pcalc-curriculum.js" defer></script>
+<script src="../assets/pcalc-core.js" defer></script>
+<script src="../assets/pcalc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/pcalc-toc.js" defer></script>
+</body>
+</html>

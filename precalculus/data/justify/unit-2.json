@@ -1,0 +1,503 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 2 (docs/apprecalc-architecture.md, \"Make it specific\"): the reasoning the scoring guidelines reward, with an answer that earns the point, one that misses it and a part-by-part builder. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apprecalc-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-2",
+   "id": "u2-geometric-sequence",
+   "topic": "sequences",
+   "practice": "3.C",
+   "skill": "model",
+   "title": "Arithmetic or geometric",
+   "context": "<p>A sequence has $a_1 = 5$, $a_2 = 15$, $a_3 = 45$ and $a_4 = 135$.</p>",
+   "prompt": "<b>Determine</b> whether the sequence is arithmetic or geometric, and <b>justify</b> your answer.",
+   "checklist": [
+    "Uses the terms at equal steps $n = 1, 2, 3, 4$",
+    "Shows the constant ratio: $\\frac{15}{5} = \\frac{45}{15} = \\frac{135}{45} = 3$",
+    "Shows the differences $10, 30, 90$ are not constant, so it is not arithmetic"
+   ],
+   "earns": {
+    "answer": "The terms are listed at $n = 1, 2, 3, 4$, equal steps of 1. Each term is 3 times the one before: $\\frac{15}{5} = \\frac{45}{15} = \\frac{135}{45} = 3$, a constant ratio, so the sequence is geometric, $a_n = 5 \\cdot 3^{n - 1}$. The differences $10$, $30$ and $90$ are not constant, so it is not arithmetic.",
+    "why": "It uses equal steps, shows the constant ratio with the numbers and rules out the other type with numbers too."
+   },
+   "misses": {
+    "answer": "The numbers get bigger fast, so it is geometric.",
+    "why": "Growing fast is not a reason; the rubric wants the constant ratio over equal steps, with the values."
+   },
+   "specific": {
+    "slots": {
+     "what": {
+      "label": "What is constant",
+      "options": [
+       "the ratio of consecutive terms, 3",
+       "the difference of consecutive terms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The differences are 10, 30 and 90."
+      }
+     },
+     "type": {
+      "label": "So the sequence is",
+      "options": [
+       "geometric",
+       "arithmetic"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An arithmetic sequence has a constant difference."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-exponential-unequal-steps",
+   "topic": "linear-vs-exponential",
+   "practice": "3.C",
+   "skill": "model",
+   "title": "Exponential, with unequal input steps",
+   "context": "<table class=\"pcalc-data\"><tr><th scope=\"row\">$x$</th><td>0</td><td>1</td><td>3</td><td>4</td></tr><tr><th scope=\"row\">$f(x)$</th><td>6</td><td>12</td><td>48</td><td>96</td></tr></table>",
+   "prompt": "<b>Explain</b> why these data can be modeled by an exponential function. Pay attention to the inputs.",
+   "checklist": [
+    "Notices the input steps are not equal, so compares intervals of the same length",
+    "Shows $[0, 1]$ and $[3, 4]$ both multiply the output by $2$: $\\frac{12}{6} = \\frac{96}{48} = 2$",
+    "Shows $[1, 3]$, length 2, multiplies by $\\frac{48}{12} = 4 = 2^2$, consistent with a factor of 2 per unit"
+   ],
+   "earns": {
+    "answer": "The input steps are not all equal, so compare intervals of the same length. On $[0, 1]$ and $[3, 4]$, both of length 1, the output is multiplied by $\\frac{12}{6} = 2$ and $\\frac{96}{48} = 2$. On $[1, 3]$, of length 2, it is multiplied by $\\frac{48}{12} = 4 = 2^2$. Over equal-length input intervals the outputs change by the same factor, so the data are exponential: $f(x) = 6 \\cdot 2^x$.",
+    "why": "It names equal-length input intervals and proportional outputs, with the numbers, and handles the uneven step correctly."
+   },
+   "misses": {
+    "answer": "The outputs double each time, so the data are exponential.",
+    "why": "From x = 1 to x = 3 the output is multiplied by 4, not 2; \"each time\" ignores the unequal input step."
+   },
+   "specific": {
+    "slots": {
+     "compare": {
+      "label": "Compare",
+      "options": [
+       "input intervals of the same length",
+       "each pair of neighboring columns"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The columns are not equally spaced: x jumps from 1 to 3."
+      }
+     },
+     "factor": {
+      "label": "Per unit of x the output is multiplied by",
+      "options": [
+       "2",
+       "4",
+       "6"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "4 is the factor over [1, 3], an interval of length 2.",
+       "2": "6 is the starting value, not the factor."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-residual-pattern",
+   "topic": "model-validation",
+   "practice": "3.C",
+   "skill": "model",
+   "title": "Reading a residual pattern",
+   "context": "<p>A linear model was fit to data at $x = 1$ to $6$. Its residuals, in order, are $3$, $-1$, $-3$, $-2$, $1$ and $4$.</p>",
+   "prompt": "<b>Explain</b> whether the linear model is appropriate for the data.",
+   "checklist": [
+    "Describes the pattern with the values: positive, then negative, then positive again",
+    "Says a good model leaves residuals with no pattern, scattered around 0",
+    "Concludes the linear model is not appropriate and the data bend, so a curved model fits better"
+   ],
+   "earns": {
+    "answer": "The residuals are $3$, $-1$, $-3$, $-2$, $1$ and $4$: positive, then negative, then positive again, a U-shaped pattern. An appropriate model leaves residuals scattered around $0$ with no pattern. Here the line is below the data at both ends and above it in the middle, so the data bend upward and the linear model is not appropriate; a model that curves, such as a quadratic or exponential one, would fit better.",
+    "why": "It reads the pattern from the actual residuals and explains what the pattern says about the data."
+   },
+   "misses": {
+    "answer": "The residuals are small, between $-3$ and $4$, so the linear model is good.",
+    "why": "Small residuals can still have a pattern; the U shape shows a line misses the curve in the data."
+   },
+   "specific": {
+    "slots": {
+     "pattern": {
+      "label": "The residuals show",
+      "options": [
+       "a U-shaped pattern",
+       "no pattern"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "They go from positive to negative and back to positive in order."
+      }
+     },
+     "verdict": {
+      "label": "So the linear model is",
+      "options": [
+       "not appropriate",
+       "appropriate"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A pattern in the residuals means the model misses something systematic in the data."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-cooling-domain",
+   "topic": "exponential-modeling",
+   "practice": "3.C",
+   "skill": "domain",
+   "title": "Why the model starts at t = 0",
+   "context": "<p>The temperature of a cup of tea is modeled by $T(t) = 20 + 70(0.9)^t$ degrees Celsius, $t$ minutes after it is poured.</p>",
+   "prompt": "<b>Explain</b> why the model should not be used for $t < 0$. <b>Use</b> a value of the model in your answer.",
+   "checklist": [
+    "Evaluates the model at a negative time, such as $T(-10) \\approx 220.758$ degrees",
+    "Compares it with the context: water boils at 100 degrees Celsius, so the tea was never that hot",
+    "Concludes the model applies from the pour, $t = 0$, onward"
+   ],
+   "earns": {
+    "answer": "At $t = -10$ the model gives $T(-10) = 20 + 70(0.9)^{-10} \\approx 220.758$ degrees Celsius, hotter than boiling water, $100$ degrees Celsius, which tea in a cup cannot be. Before $t = 0$ the tea had not been poured, so the model applies only for $t \\ge 0$.",
+    "why": "It uses a value of the given model and the context to say where the model stops making sense."
+   },
+   "misses": {
+    "answer": "Time cannot be negative, so t < 0 does not work.",
+    "why": "Negative t is just time before the pour; the point needs a reason from the model and the context, such as the impossible temperature."
+   },
+   "specific": {
+    "slots": {
+     "value": {
+      "label": "The model at t = −10",
+      "options": [
+       "about 220.758 degrees",
+       "about 44.408 degrees"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "This is T(10); with t = −10 the factor 0.9^(−10) is greater than 1."
+      }
+     },
+     "reason": {
+      "label": "This shows the model fails because",
+      "options": [
+       "tea is never hotter than boiling water",
+       "the temperature should keep rising"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cooling tea loses heat over time; the trouble is the impossible starting temperature."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-composition-table",
+   "topic": "composition",
+   "practice": "2.A",
+   "skill": "values",
+   "title": "A composite value from a table",
+   "context": "<table class=\"pcalc-data\"><tr><th scope=\"row\">$x$</th><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><th scope=\"row\">$f(x)$</th><td>3</td><td>1</td><td>4</td><td>2</td></tr><tr><th scope=\"row\">$g(x)$</th><td>2</td><td>4</td><td>1</td><td>3</td></tr></table>",
+   "prompt": "<b>Find</b> $g(f(2))$, showing the inner value.",
+   "checklist": [
+    "Finds the inner value first: $f(2) = 1$",
+    "Then evaluates $g$ at it: $g(1) = 2$"
+   ],
+   "earns": {
+    "answer": "Work from the inside out. The table gives $f(2) = 1$, the inner value. Then $g(f(2)) = g(1) = 2$, also from the table.",
+    "why": "It shows the inner value as its own step, which is the work the scoring guidelines ask for on a composite."
+   },
+   "misses": {
+    "answer": "$g(f(2)) = g(2) \\cdot f(2) = 4 \\cdot 1 = 4$, multiplying the two values.",
+    "why": "A composite is not a product, and the inner value f(2) = 1 never appears."
+   },
+   "specific": {
+    "slots": {
+     "inner": {
+      "label": "The inner value",
+      "options": [
+       "f(2) = 1",
+       "g(2) = 4"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "In g(f(2)), f acts first."
+      }
+     },
+     "outer": {
+      "label": "So g(f(2)) is",
+      "options": [
+       "g(1) = 2",
+       "f(1) = 3",
+       "g(2) · f(2) = 4"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The outer function is g, not f.",
+       "2": "A composite feeds one output into the other function; it is not a product."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-not-invertible-values",
+   "topic": "inverse-functions",
+   "practice": "3.C",
+   "skill": "invertible",
+   "title": "No inverse, shown with values",
+   "context": "<p>Let $h(x) = x^2 - 4x + 7$ for all real numbers $x$.</p>",
+   "prompt": "<b>Explain</b> why $h$ has no inverse function on the set of real numbers. <b>Use</b> specific values of $h$.",
+   "checklist": [
+    "Finds two inputs with the same output, such as $h(1) = 4$ and $h(3) = 4$",
+    "Says an inverse could not tell which input the output came from, so h has no inverse"
+   ],
+   "earns": {
+    "answer": "$h(1) = 1 - 4 + 7 = 4$ and $h(3) = 9 - 12 + 7 = 4$. Two different inputs, $1$ and $3$, give the same output $4$, so $h$ has no inverse on the set of real numbers: an inverse would have to send $4$ back to both $1$ and $3$.",
+    "why": "It uses specific values of the given function, which is what the rubric requires for an invertibility reason."
+   },
+   "misses": {
+    "answer": "h is not invertible because it is a parabola and fails the horizontal line test.",
+    "why": "The horizontal line test with no values earns nothing; the reason must show two inputs of h with the same output."
+   },
+   "specific": {
+    "slots": {
+     "pair": {
+      "label": "Two inputs with the same output",
+      "options": [
+       "h(1) = h(3) = 4",
+       "h(0) = h(2) = 7"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "h(0) = 7 but h(2) = 4 − 8 + 7 = 3."
+      }
+     },
+     "so": {
+      "label": "So",
+      "options": [
+       "h has no inverse",
+       "h is its own inverse"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Sharing an output is what rules out an inverse."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-invertible-table",
+   "topic": "inverse-functions",
+   "practice": "3.C",
+   "skill": "invertible",
+   "title": "Invertible on a set of inputs",
+   "context": "<table class=\"pcalc-data\"><tr><th scope=\"row\">$x$</th><td>$-2$</td><td>$0$</td><td>$1$</td><td>$4$</td></tr><tr><th scope=\"row\">$k(x)$</th><td>$-7$</td><td>$1$</td><td>$3$</td><td>$9$</td></tr></table>",
+   "prompt": "<b>Determine</b> whether $k$ is invertible on the inputs in the table, <b>give</b> a reason using values from the table, and <b>find</b> $k^{-1}(3)$.",
+   "checklist": [
+    "Says the four outputs $-7$, $1$, $3$ and $9$ are all different",
+    "Concludes each output comes from exactly one input, so k is invertible on these inputs",
+    "Uses $k(1) = 3$ to get $k^{-1}(3) = 1$"
+   ],
+   "earns": {
+    "answer": "Yes. The four outputs $-7$, $1$, $3$ and $9$ are all different, so each output comes from exactly one input and $k$ is invertible on $\\{-2, 0, 1, 4\\}$. Since $k(1) = 3$, $k^{-1}(3) = 1$.",
+    "why": "It cites the outputs from the table, ties them to one input each, and reads the inverse value the right way round."
+   },
+   "misses": {
+    "answer": "Yes, it is one-to-one, and $k^{-1}(3) = 9$.",
+    "why": "\"One-to-one\" with no values earns nothing, and 9 is k(4), read along the wrong row; the inverse sends the output 3 back to its input."
+   },
+   "specific": {
+    "slots": {
+     "reason": {
+      "label": "Reason",
+      "options": [
+       "the outputs −7, 1, 3 and 9 are all different",
+       "the inputs are all different"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Inputs of a function are always listed once; what matters is that no output repeats."
+      }
+     },
+     "value": {
+      "label": "k⁻¹(3)",
+      "options": [
+       "1",
+       "9",
+       "1/3"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "k⁻¹(3) is the input whose output is 3.",
+       "2": "The −1 means the inverse function, not the reciprocal."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-single-log",
+   "topic": "logarithmic-manipulation",
+   "practice": "1.B",
+   "skill": "symbolic",
+   "title": "One logarithm, step by step",
+   "prompt": "<b>Rewrite</b> $2\\ln x - \\ln 5 + \\ln 3$ as a single natural logarithm, and <b>state</b> the values of $x$ for which the rewriting holds.",
+   "checklist": [
+    "Uses the power rule first: $2\\ln x = \\ln(x^2)$",
+    "Combines with the quotient and product rules: $\\ln\\left(\\frac{3x^2}{5}\\right)$, one logarithm",
+    "States $x > 0$, the domain of the original expression"
+   ],
+   "earns": {
+    "answer": "Power rule first: $2\\ln x = \\ln(x^2)$. Then $\\ln(x^2) - \\ln 5 + \\ln 3 = \\ln\\left(\\frac{3x^2}{5}\\right)$ by the quotient and product rules. This is one logarithm, and it equals the original expression for $x > 0$, where $\\ln x$ is defined.",
+    "why": "Each log rule is a visible step, the result is a single logarithm, and the domain is stated."
+   },
+   "misses": {
+    "answer": "$2\\ln x - \\ln 5 + \\ln 3 = \\ln(2x - 5 + 3) = \\ln(2x - 2)$.",
+    "why": "Log rules do not turn a sum of logarithms into the logarithm of a sum; the coefficient 2 becomes an exponent."
+   },
+   "specific": {
+    "slots": {
+     "first": {
+      "label": "First step",
+      "options": [
+       "2 ln x = ln(x²)",
+       "2 ln x = ln(2x)"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A coefficient becomes an exponent: 2 ln x = ln(x²)."
+      }
+     },
+     "result": {
+      "label": "Single logarithm",
+      "options": [
+       "ln(3x²/5)",
+       "ln(2x − 2)",
+       "ln(3x²) − ln 5"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Log rules do not make the logarithm of a sum or difference.",
+       "2": "That is still two logarithms."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-quadratic-in-ex",
+   "topic": "exp-log-equations",
+   "practice": "1.A",
+   "skill": "symbolic",
+   "title": "An equation quadratic in e to the x",
+   "prompt": "<b>Solve</b> $e^{2x} - e^x - 6 = 0$ exactly. <b>Explain</b> why any candidate is rejected.",
+   "checklist": [
+    "Substitutes $u = e^x$: $u^2 - u - 6 = 0$, so $(u - 3)(u + 2) = 0$",
+    "Rejects $e^x = -2$ because $e^x > 0$ for every real $x$",
+    "Solves $e^x = 3$: $x = \\ln 3$"
+   ],
+   "earns": {
+    "answer": "Let $u = e^x$, so $e^{2x} = u^2$ and $u^2 - u - 6 = 0$. Factor: $(u - 3)(u + 2) = 0$, so $e^x = 3$ or $e^x = -2$. Reject $e^x = -2$, because $e^x > 0$ for every real $x$. Then $e^x = 3$ gives $x = \\ln 3$.",
+    "why": "The substitution, the factoring, the rejected root with its reason and the exact answer are all shown."
+   },
+   "misses": {
+    "answer": "Factor: $(e^x - 3)(e^x + 2) = 0$, so $x = 3$ or $x = -2$.",
+    "why": "These are the values of e^x, not x; one of them is impossible, and neither is undone with a logarithm."
+   },
+   "specific": {
+    "slots": {
+     "roots": {
+      "label": "With u = eˣ",
+      "options": [
+       "u = 3 or u = −2",
+       "u = −3 or u = 2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "u² − u − 6 factors as (u − 3)(u + 2)."
+      }
+     },
+     "answer": {
+      "label": "So",
+      "options": [
+       "x = ln 3 only",
+       "x = ln 3 or x = ln(−2)",
+       "x = 3 or x = −2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "ln(−2) is not a real number: eˣ is never negative.",
+       "2": "These are values of eˣ; take the natural logarithm."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-log-model-decimals",
+   "topic": "logarithmic-modeling",
+   "practice": "3.B",
+   "skill": "decimals",
+   "title": "Solving a log model without rounding partway",
+   "context": "<p>The height of a young tree is modeled by $H(t) = 4.2 + 1.7\\ln t$ meters, $t$ years after it was planted, for $t \\ge 1$.</p>",
+   "prompt": "<b>Find</b> when the model gives a height of $8$ meters, correct to three decimal places, and <b>explain</b> where rounding is allowed.",
+   "checklist": [
+    "Solves $1.7\\ln t = 3.8$, so $\\ln t = \\frac{3.8}{1.7}$, stored, not rounded",
+    "Gets $t = e^{3.8/1.7} \\approx 9.349$ years",
+    "Notes that rounding $\\frac{3.8}{1.7}$ to $2.2$ first gives $e^{2.2} \\approx 9.025$, which loses the point"
+   ],
+   "earns": {
+    "answer": "$4.2 + 1.7\\ln t = 8$, so $\\ln t = \\frac{3.8}{1.7}$. Store that value and exponentiate: $t = e^{3.8/1.7} \\approx 9.349$ years. Round only at the end; rounding $\\frac{3.8}{1.7}$ to $2.2$ first would give $e^{2.2} \\approx 9.025$, which is not correct to three decimal places.",
+    "why": "It keeps every step exact or stored and rounds only the final answer, and it shows how much rounding partway changes the result."
+   },
+   "misses": {
+    "answer": "$\\ln t = 2.2$, so $t = e^{2.2} = 9.025$ years.",
+    "why": "Rounding 3.8/1.7 ≈ 2.235 to 2.2 partway changes the answer in the first decimal place."
+   },
+   "specific": {
+    "slots": {
+     "store": {
+      "label": "ln t =",
+      "options": [
+       "3.8/1.7, stored",
+       "2.2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rounding here carries the error into the exponent."
+      }
+     },
+     "value": {
+      "label": "So t ≈",
+      "options": [
+       "9.349",
+       "9.025",
+       "9.3"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "This comes from the rounded 2.2.",
+       "2": "A decimal answer needs three decimal places."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

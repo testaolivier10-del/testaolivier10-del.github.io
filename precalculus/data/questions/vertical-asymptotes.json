@@ -1,0 +1,483 @@
+{
+ "stimuli": {
+  "vertical-asymptotes-s1": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = \\frac{x + 1}{(x - 2)^2}$",
+   "plot": {
+    "label": "Graph of f(x) = (x + 1)/(x - 2)^2 with a dashed vertical asymptote x = 2: the graph rises without bound on both sides of x = 2, crosses the x-axis at -1 and approaches y = 0 at both ends",
+    "x": [
+     -6,
+     8
+    ],
+    "y": [
+     -2,
+     8
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "(x + 1)/(x - 2)^2",
+      "label": "f"
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": 2
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -1,
+       0
+      ]
+     },
+     {
+      "at": [
+       0,
+       0.25
+      ]
+     }
+    ]
+   }
+  },
+  "vertical-asymptotes-s2": {
+   "kind": "table",
+   "title": "Outputs near $x = 1$",
+   "table": {
+    "caption": "Values of g(x) = (x^2 + 1)/(x - 1) for inputs close to 1, rounded to two decimal places",
+    "cols": [
+     "$x$",
+     "0.9",
+     "0.99",
+     "0.999",
+     "1.001",
+     "1.01",
+     "1.1"
+    ],
+    "rows": [
+     [
+      "$g(x)$",
+      "-18.10",
+      "-198.01",
+      "-1998.00",
+      "2002.00",
+      "202.01",
+      "22.10"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-vertical-asymptotes-1",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vertical-asymptotes-s1",
+   "q": "What is the vertical asymptote of the graph of $f$?",
+   "type": "single",
+   "options": [
+    "$x = -1$",
+    "$x = 2$",
+    "$y = 0$",
+    "$x = 4$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$x = 2$ makes the denominator $0$ while the numerator is $3$. The outputs grow without bound near $2$, so $x = 2$ is a vertical asymptote.",
+    "options": [
+     "At $x = -1$ the numerator is $0$: that is a zero of $f$, not an asymptote.",
+     "Right: the denominator is $0$ at $x = 2$ and the numerator is not.",
+     "$y = 0$ is the horizontal asymptote.",
+     "$(x - 2)^2$ is $0$ at $x = 2$; squaring does not change where."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-2",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vertical-asymptotes-s1",
+   "q": "Which pair of statements describes $f$ near $x = 2$?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to 2^-} f(x) = \\infty$ and $\\lim_{x \\to 2^+} f(x) = \\infty$",
+    "$\\lim_{x \\to 2^-} f(x) = -\\infty$ and $\\lim_{x \\to 2^+} f(x) = \\infty$",
+    "$\\lim_{x \\to 2^-} f(x) = \\infty$ and $\\lim_{x \\to 2^+} f(x) = -\\infty$",
+    "$f(2) = \\infty$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Near $x = 2$ the numerator is near $3$ (positive) and $(x - 2)^2$ is a small positive number on both sides, so $f(x)$ is large and positive on both sides.",
+    "options": [
+     "Right: both sides rise without bound.",
+     "That pattern goes with an odd power in the denominator; here $(x - 2)^2$ is never negative.",
+     "The right side also rises: $f(2.1) = \\frac{3.1}{0.01} = 310$.",
+     "$f(2)$ is undefined; describe what happens near $2$ with one-sided limits."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-3",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "vertical-asymptotes-s1",
+   "q": "Why does $f$ have the same one-sided behavior on both sides of $x = 2$?",
+   "type": "single",
+   "options": [
+    "Because near $x = 2$ the numerator is positive and $(x - 2)^2$ is positive on both sides",
+    "Because $x = 2$ is a zero of the numerator, so both sides behave the same way",
+    "Because $f$ has a horizontal asymptote, so both ends of the graph behave alike",
+    "Because the graph is symmetric about the vertical line $x = 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The sign of $f$ near the asymptote comes from the signs of its factors. An even power of $(x - 2)$ stays positive, so both one-sided limits have the sign of the numerator, $+$.",
+    "options": [
+     "Right: the denominator's factor has an even power, so it does not change sign at $2$.",
+     "The numerator is $3$ at $x = 2$, not $0$.",
+     "End behavior says nothing about the outputs near $x = 2$.",
+     "It is not: $f(1) = 2$ but $f(3) = 4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-4",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vertical-asymptotes-s1",
+   "q": "What is $\\lim_{x \\to \\infty} f(x)$?",
+   "type": "single",
+   "options": [
+    "$2$",
+    "$1$",
+    "$\\infty$",
+    "$0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The quotient of the leading terms is $\\frac{x}{x^2} = \\frac{1}{x}$, which goes to $0$.",
+    "options": [
+     "$2$ is where the vertical asymptote is, not the end behavior.",
+     "The degrees are not equal: $1$ on top, $2$ below.",
+     "The denominator's degree is higher, so the outputs shrink.",
+     "Right: $\\frac{x}{x^2} = \\frac{1}{x} \\to 0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-5",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vertical-asymptotes-s1",
+   "q": "What is $f(0)$, the $y$-intercept's output?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "1/4",
+    "mistakes": [
+     {
+      "value": -0.25,
+      "why": "$(0 - 2)^2 = 4$, positive."
+     },
+     {
+      "value": 0.5,
+      "why": "The denominator is $(0 - 2)^2 = 4$, not $2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(0) = \\frac{0 + 1}{(0 - 2)^2} = \\frac{1}{4}$."
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-6",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vertical-asymptotes-s2",
+   "calc": true,
+   "q": "The table gives values of $g(x) = \\frac{x^2 + 1}{x - 1}$ near $x = 1$. Which describes $g$ as $x$ approaches $1$ from the left?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to 1^-} g(x) = \\infty$",
+    "$\\lim_{x \\to 1^-} g(x) = -\\infty$",
+    "$\\lim_{x \\to 1^-} g(x) = 2$",
+    "$\\lim_{x \\to 1^+} g(x) = -\\infty$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For $x$ just below $1$, the top is near $2$ and the bottom is a small negative number, so $g(x)$ is a large negative number: $\\lim_{x \\to 1^-} g(x) = -\\infty$.",
+    "options": [
+     "The values to the left of $1$ are negative: $-18.10$, $-198.01$, $-1998.00$.",
+     "Right: the outputs are negative and grow without bound in size.",
+     "$2$ is the numerator's value at $x = 1$, not the limit.",
+     "The notation $1^+$ means from the right; the question asks about the left."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-7",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vertical-asymptotes-s2",
+   "calc": true,
+   "q": "The table gives values of $g(x) = \\frac{x^2 + 1}{x - 1}$ near $x = 1$. Which describes $g$ as $x$ approaches $1$ from the right?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to 1^+} g(x) = \\infty$",
+    "$\\lim_{x \\to 1^+} g(x) = -\\infty$",
+    "$\\lim_{x \\to 1^+} g(x) = 0$",
+    "$g(1) = \\infty$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Just right of $1$, $x - 1$ is a small positive number and the top is near $2$: $\\lim_{x \\to 1^+} g(x) = \\infty$.",
+    "options": [
+     "Right: the outputs $202.01$, $2002.00$ grow without bound.",
+     "To the right of $1$ the bottom is positive, so the outputs are positive.",
+     "The outputs grow as $x$ gets closer to $1$, not shrink.",
+     "$g(1)$ is undefined. Use a one-sided limit."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-8",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "vertical-asymptotes-s2",
+   "calc": true,
+   "q": "The table gives values of $g(x) = \\frac{x^2 + 1}{x - 1}$ near $x = 1$. Besides $x = 1$, which line does the graph of $g$ approach?",
+   "type": "single",
+   "options": [
+    "$y = 1$",
+    "$y = x$",
+    "$y = x + 1$",
+    "$x = -1$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$x^2 + 1 = (x - 1)(x + 1) + 2$, so $g(x) = x + 1 + \\frac{2}{x - 1}$: slant asymptote $y = x + 1$.",
+    "options": [
+     "The top's degree is one more than the bottom's, so the asymptote is slanted.",
+     "The slope is right, but $x^2 + 1 = (x - 1)(x + 1) + 2$ gives the line $y = x + 1$.",
+     "Right: $g(x) = x + 1 + \\frac{2}{x - 1}$, and the fraction goes to $0$ as $x \\to \\pm\\infty$.",
+     "$x = -1$ is not special for $g$: $g(-1) = -1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-9",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vertical-asymptotes-s2",
+   "calc": true,
+   "q": "The table gives values of $g(x) = \\frac{x^2 + 1}{x - 1}$ near $x = 1$. Solve $g(x) = 10$. Give the smaller solution to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 1.2583426132260587,
+    "mistakes": [
+     {
+      "value": 8.742,
+      "why": "That is the larger solution; the graph meets $y = 10$ twice, both right of $x = 1$."
+     },
+     {
+      "value": 1.26,
+      "why": "Not accurate to three decimal places: the value is $1.25834...$, so $1.258$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Graph $y = g(x)$ and $y = 10$ and find both intersections: $x \\approx 1.258$ and $x \\approx 8.742$ (exactly $5 \\pm \\sqrt{14}$, from $x^2 - 10x + 11 = 0$)."
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-10",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which vertical asymptotes does $h(x) = \\frac{x - 3}{(x - 3)(x + 2)}$ have?",
+   "type": "single",
+   "options": [
+    "$x = 3$ and $x = -2$",
+    "$x = -2$",
+    "$x = 3$",
+    "$y = 0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A vertical asymptote sits at a zero of the denominator whose multiplicity is greater than in the numerator. $x - 3$ appears once in each, so $x = 3$ is not an asymptote; $x + 2$ appears only below, so $x = -2$ is.",
+    "options": [
+     "The factor $x - 3$ cancels: near $x = 3$ the outputs approach $\\frac{1}{5}$ instead of growing.",
+     "Right: after cancelling, $\\frac{1}{x + 2}$ still has a zero denominator at $-2$.",
+     "At $x = 3$ the numerator is $0$ too, with the same multiplicity, so there is no asymptote there.",
+     "That is the horizontal asymptote."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-11",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which describes $k(x) = \\frac{x + 2}{x + 4}$ as $x \\to -4^+$?",
+   "type": "single",
+   "options": [
+    "$\\lim_{x \\to -4^+} k(x) = \\infty$",
+    "$\\lim_{x \\to -4^+} k(x) = -\\infty$",
+    "$\\lim_{x \\to -4^+} k(x) = 1$",
+    "$\\lim_{x \\to -4^+} k(x) = -2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For $x$ just right of $-4$: $x + 2 \\approx -2 < 0$ and $x + 4 > 0$ and small. The quotient is negative and large in size.",
+    "options": [
+     "Test $x = -3.9$: $\\frac{-1.9}{0.1} = -19$, negative.",
+     "Right: the top is near $-2$ and the bottom a small positive number.",
+     "$1$ is the horizontal asymptote's value, for $x \\to \\pm\\infty$.",
+     "$-2$ is the numerator's value; the denominator near $0$ makes the outputs grow."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-12",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "$f$ has a vertical asymptote at $x = 3$, and its outputs decrease without bound as $x$ approaches $3$ from the left. Which statement is written correctly?",
+   "type": "single",
+   "options": [
+    "$f(3) = -\\infty$",
+    "$\\lim_{x \\to 3^-} f(x) = -\\infty$",
+    "$\\lim_{x \\to 3^+} f(x) = -\\infty$",
+    "$\\lim_{x \\to -\\infty} f(x) = 3$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "\"From the left\" is $x \\to 3^-$; \"decrease without bound\" is $= -\\infty$. Graders accept only the full one-sided limit.",
+    "options": [
+     "$f(3)$ does not exist; use a limit.",
+     "Right: the function, the one-sided approach $3^-$ and the behavior $-\\infty$.",
+     "$3^+$ means from the right; the question describes the left.",
+     "This describes end behavior, not behavior near $x = 3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-13",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which functions have a vertical asymptote at $x = 2$? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$\\frac{1}{x - 2}$",
+    "$\\frac{x - 2}{x^2 - 4}$",
+    "$\\frac{x + 2}{x^2 - 4}$",
+    "$\\frac{x}{x^2 + 4}$"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Cancel common factors first; a vertical asymptote remains where a factor of the denominator is left over.",
+    "options": [
+     "Yes: the denominator is $0$ at $2$ and the numerator is not.",
+     "No: it equals $\\frac{1}{x + 2}$ for $x \\ne 2$, so its outputs approach $\\frac{1}{4}$ near $2$.",
+     "Yes: it equals $\\frac{1}{x - 2}$ for $x \\ne -2$.",
+     "No: $x^2 + 4$ is never $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-14",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A gas in a piston has pressure $P(V) = \\frac{600}{V}$ kilopascals at volume $V$ liters. What does $\\lim_{V \\to 0^+} P(V) = \\infty$ mean in context?",
+   "type": "single",
+   "options": [
+    "At volume $0$ the pressure is infinite.",
+    "As the volume shrinks toward $0$, the pressure grows without bound.",
+    "As the volume grows, the pressure grows without bound.",
+    "The pressure approaches $600$ kilopascals."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$V \\to 0^+$: volume decreasing toward $0$ through positive values. $\\frac{600}{V}$ then becomes as large as you like.",
+    "options": [
+     "$P(0)$ is undefined; the limit describes volumes near $0$, not at $0$.",
+     "Right: $V \\to 0^+$ means positive volumes getting close to $0$.",
+     "Larger volume gives smaller pressure: $\\frac{600}{V}$ decreases.",
+     "$600$ is the constant in the formula."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-vertical-asymptotes-15",
+   "unit": "unit-1",
+   "topic": "vertical-asymptotes",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which function has vertical asymptotes $x = -1$ and $x = 3$ and horizontal asymptote $y = 2$?",
+   "type": "single",
+   "options": [
+    "$\\frac{2x^2}{(x + 1)(x - 3)}$",
+    "$\\frac{2x^2}{(x - 1)(x + 3)}$",
+    "$\\frac{2x}{(x + 1)(x - 3)}$",
+    "$\\frac{x^2}{2(x + 1)(x - 3)}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Factors $(x + 1)$ and $(x - 3)$ below give the vertical asymptotes; equal degrees with ratio $\\frac{2}{1}$ give $y = 2$. The numerator $2x^2$ is not $0$ at $-1$ or $3$.",
+    "options": [
+     "Right: zeros of the denominator at $-1$ and $3$, and $\\frac{2x^2}{x^2} = 2$.",
+     "These asymptotes are at $x = 1$ and $x = -3$.",
+     "Degree $1$ over degree $2$ gives $y = 0$.",
+     "The leading coefficients give $\\frac{1}{2}$, not $2$."
+    ]
+   }
+  }
+ ]
+}
