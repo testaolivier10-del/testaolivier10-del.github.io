@@ -738,7 +738,7 @@
   {
    "status": "scheduled",
    "added_on": "2026-10-30",
-   "date": "2026-11-05",
+   "date": "2026-10-31",
    "buffer": "6ae61dfbab019b90871412aa",
    "yt_buffer": "6ae61e0d1ee172cd6db1fd35",
    "youtube_id": null,
@@ -758,12 +758,13 @@
    "pin_question": "Baking soda or flour: which one makes a grease fire worse?",
    "review_blob": "09930a99d4bc2b51bf8042bbd1c8ecffbe628726",
    "approved_on": "2026-10-30",
-   "approved_blob": "09930a99d4bc2b51bf8042bbd1c8ecffbe628726"
+   "approved_blob": "09930a99d4bc2b51bf8042bbd1c8ecffbe628726",
+   "reschedule_pending": "post now (Olivier 2026-10-31 8:50pm PT); Buffer still has it at 2026-11-05"
   },
   {
    "status": "scheduled",
    "added_on": "2026-10-30",
-   "date": "2026-11-06",
+   "date": "2026-11-01",
    "buffer": "6ae61e19ab019b9087141ce4",
    "yt_buffer": "6ae61e2aab019b90871420f8",
    "youtube_id": null,
@@ -783,7 +784,8 @@
    "pin_question": "Could an astronaut floating in space flip around the same way?",
    "review_blob": "05db7ca795ab6f596396edba51d44a258cda7f2a",
    "approved_on": "2026-10-30",
-   "approved_blob": "05db7ca795ab6f596396edba51d44a258cda7f2a"
+   "approved_blob": "05db7ca795ab6f596396edba51d44a258cda7f2a",
+   "reschedule_pending": "move to 2026-11-01 6pm PT (Olivier 2026-10-31); Buffer still has it at 2026-11-06"
   }
  ]
 }
