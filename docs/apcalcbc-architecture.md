@@ -180,9 +180,9 @@ them from AB's `pages.json` and links them to `/calculus/tools/<slug>.html` (too
 trainers", unit pages, home, formula page) once that page exists and the topic is published in BC. They are
 never built under `calculus-bc/`; what a student answers there counts in Calculus AB (needs-author `ab-trainers`).
 
-## Registration (hidden until launch)
+## Registration (live since the launch, Premium not on sale)
 
-Twinned with every AB point: `assets/courses.js` (order 12, `status: 'hidden'`) and every generated course list
+Twinned with every AB point: `assets/courses.js` (order 12, `status: 'live'` since the launch, after AP® Precalculus at 11) and every generated course list
 (`node scripts/build-courses.mjs`); `assets/premium.js` (`cbc-2027`, $25 through 2027-06-30, `onSale: false`,
 free tier, rows); `assets/exam-date.js` (2027-05-10); `assets/hub-progress.js` ranks; `assets/tutor.js`
 (pages, fallback, starters, greeting); `assets/site-search-all.js` source; `assets/theme.css` accent and

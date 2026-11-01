@@ -26,9 +26,11 @@ an id, the question, what was done meanwhile, and who decides. AB's open points 
 - **ab-trainers**: BC links AB's ten trainers on their AB pages rather than building them again, so answers
   there count in Calculus AB, not BC. Building them under `/calculus-bc/` would mean parameterizing the ten
   tool scripts the way the core runtime is now (Phase 2 work). Confirm.
-- **launch-checklist** (filled at launch): apply `2026-10o-apcalcbc.sql`, create the Polar product "AP® Calculus
-  BC Premium (through June 30, 2027)" $25, add `"cbc-2027"` to `POLAR_PRODUCTS` in the Worker settings, remove
-  `onSale: false`, set the registry status, merge.
+- **launch-checklist** (launch, 2026-10-31): the course is published and live with Premium not on sale. The owner
+  steps are in `docs/apcalcbc-spec.md` section 9: merge PR #123 then this one, apply `2026-10n-apprecalc.sql` then
+  `2026-10o-apcalcbc.sql` (renamed from `2026-10n-apcalcbc.sql` at launch so it sorts after Precalculus), create the
+  Polar product "AP® Calculus BC Premium (through June 30, 2027)" $25 with the founding discount, add `"cbc-2027"`
+  to `POLAR_PRODUCTS` in the Worker settings, remove `onSale: false`.
 
 ## For the course (Phase 1 and later)
 
@@ -41,7 +43,8 @@ an id, the question, what was done meanwhile, and who decides. AB's open points 
   the exam is AB content). Practice exams use the BC unit weights only (`unitRange`).
 - **justify-counts** (Phase 3): AB's trainer holds 3-5 prompts per unit and 32+ in all; BC's counts (Units 9
   and 10 and the BC topics of 6-8) are set in Phase 3. The content check skips AB's counts for BC.
-- **frq-grader**: the AI FRQ grader is not wired for BC (`docs/frq-grader.md`); decide at launch.
+- **frq-grader**: the AI FRQ grader is not wired for BC (`docs/frq-grader.md`). At launch it stays off for BC, as it
+  is shipped off everywhere; wire it when the grader launches.
 - **ab-score-calculator**: BC has no score calculator and no readiness band (owner 2026-10-14, 2026-10-26). AB
   still has its score calculator page live (`calculus/score-calculator.html`) and its band; left as is.
 - **teacher-review**: the "not yet reviewed by an AP® Calculus BC teacher" note stays until a teacher reviews

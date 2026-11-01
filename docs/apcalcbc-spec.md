@@ -84,11 +84,11 @@ One branch, `claude/apcalcbc`, one PR at the end.
 |---|---|---|
 | R | Research: `docs/apcalcbc-research/framework.md`, `market.md`; this spec | **done 2026-10-31** |
 | 0 | Course shell on the AB runtime: how BC reads AB's data (section 8 decision 1), BC map (111 topics + math chapter), dependency map, generator, runtime, checks, tests, fixture, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-10-31** (decision 8; `docs/apcalcbc-architecture.md`, `docs/apcalcbc-phase0.md`) |
-| 1 | Content: the 30 BC-only topics (lessons, notes, banks with stimulus sets, glossary, figures), BC FRQs (Q2/Q5/Q6 types), BC edits to 6.14 | to do |
-| 2 | BC trainers (section 6) | to do |
+| 1 | Content: the 30 BC-only topics (lessons, notes, banks with stimulus sets, glossary, figures), BC FRQs (Q2/Q5/Q6 types), BC edits to 6.14 | **done 2026-10-31** (decision 9; 33 BC topics with the three math topics, 510 BC questions, 9 BC FRQs) |
+| 2 | BC trainers (section 6) | **done 2026-10-31** (all six, Explore and Test yourself; reviewed in Phase 4) |
 | 3 | Two practice exams (BC unit mix, BC FRQ slots), unit tests for 9 and 10, justification prompts, formula page additions, cram kit | **done 2026-10-31** (decision 10) |
 | 4 | Independent accuracy checks (Unit 6-8 BC topics, Unit 9, Unit 10, tools, exams) | **done 2026-10-31**: four independent reviews (`docs/apcalcbc-reviews/units-6-8.md`, `unit-9.md`, `unit-10.md`, `tools-exams.md`); no wrong keys; two FRQ rubrics tightened, one double-key item and one polar-lab area readout fixed |
-| Launch | Publish, generators, continuity pass, "twelve courses" wording, full CI with browser checks, PR | to do |
+| Launch | Publish, generators, continuity pass, "twelve courses" wording, full CI with browser checks, PR | **done 2026-10-31** (decision 11, `docs/apcalcbc-reviews/launch.md`); Premium waits for the owner checklist (section 9); merges after AP® Precalculus (PR #123) |
 
 ### 5a. Authoring split
 
@@ -201,10 +201,39 @@ slip is named). FRQs self-scored with one rubric line per point and full-credit 
     - **Cram kit**: no code change needed; tested on BC's ten units and the two forms.
     - Tests: `scripts/test/apcalcbc-practice-exams.test.mjs`. AB's build byte-identical.
 
+11. (2026-10-31, launch) **Published and live, Premium not on sale.** Built on the AP® Precalculus branch (PR #123
+    merged in, a merge, both courses registered everywhere; BC is order 12). All eleven chapters in
+    `calculus-bc/data/published.json` (`skills-math`, `unit-1`..`unit-10`: 121 topics, 1,902 bank questions of which
+    510 are BC's own), `status: 'live'`, every generator rerun (hub and 404 cards, premium page, terms, sitemap,
+    search, pricing, home facts, manifest), "twelve courses" wording, `sources.html` section, changelog entry,
+    `robots.txt` (already hid `calculus-bc/data/notes/`), `sw.js` v102, a cover for each BC trainer
+    (`assets/covers/tools/apcalcbc/`; the ten AB-linked trainers keep AB's art, `coverKey`). The social card was
+    already rendered (Phase 0). Fixes found on the way: the SQL migration is renamed `2026-10o-apcalcbc.sql` so it
+    sorts after `2026-10n-apprecalc.sql`, and its course lists include `apprecalc`; the site's question total counts
+    BC's own questions only (`apcalcbcOwn`), not AB's twice; course search maps `apcalcbc` to `calculus-bc` in URLs;
+    BC copies of AB free-response questions name the AB page as canonical and leave the sitemap (as BC's AB topics).
+    `onSale: false` stays until the owner checklist below. The "not yet reviewed by an AP® Calculus BC teacher" note
+    stays; no score calculator, readiness band or Beta label. AB's build byte-identical.
+
 ## 9. Open items for the owner
 
-- Confirm the identity (decision 7) and the free tier (decision 6) and free trainers (section 6).
+- Confirm the identity (decision 7), the free tier (decision 6) and the free trainer `series-lab` (section 6), now
+  live.
 - Confirm two Phase 0 choices: BC renders AB's topic pages under `/calculus-bc/` (canonical to AB), and links
   AB's trainers rather than rebuilding them (needs-author `ab-pages-in-bc`, `ab-trainers`).
-- Whether an AB pass holder gets a discount on the BC pass (the shared pricing has no upgrade path today).
-- Launch checklist (filled at launch): migration, Polar product, Worker `POLAR_PRODUCTS` line, `onSale`, merge.
+- Whether an AB pass holder gets a discount on the BC pass (the shared pricing has no upgrade path today; nothing
+  was built).
+
+**Launch checklist (owner), to put AP® Calculus BC Premium on sale:**
+- [ ] Merge AP® Precalculus (PR #123) first, then this PR (it contains #123's commits).
+- [ ] Apply `scripts/sql/migrations/2026-10n-apprecalc.sql`, then `scripts/sql/migrations/2026-10o-apcalcbc.sql`
+      in Supabase (adds `apcalcbc` to the three course checks and the six functions with a course list, which
+      already include `apprecalc`; check the live function bodies first).
+- [ ] Create the Polar product "AP® Calculus BC Premium (through June 30, 2027)", one-time, $25, and make sure the
+      "Founding member" discount applies to it.
+- [ ] Add `"cbc-2027": "<id>"` to `POLAR_PRODUCTS` in the Cloudflare Worker (levlprep-ask) settings; the Worker code
+      already knows the pass (`worker/src/premium.js`) and redeploys on merge.
+- [ ] Remove `onSale: false` from `COURSES.apcalcbc` in `assets/premium.js`, bump `sw.js`, and grant owner access.
+- [ ] Confirm the identity (violet accent, cover, icon, headline, ranks), the free tier (Units 1 and 2, "Math you
+      need", 9.1-9.3), the free trainer `series-lab`, and whether AB pass holders get a discount on BC.
+- [ ] Optional: an AP® Calculus BC teacher reviews the course (the "not yet reviewed" note stays until then).

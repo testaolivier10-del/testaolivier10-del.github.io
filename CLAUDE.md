@@ -52,8 +52,10 @@ docs still describe every shared format. Research: `docs/apcalcbc-research/`. Ho
 `build-apcalcbc.mjs`; AB topics read from `calculus/data/`, never copied; AB's runtime with `window.ApCalcCourse`),
 interval items and BC FRQ slots: `docs/apcalcbc-architecture.md`; writing rules on top of AB's:
 `docs/apcalcbc-authoring-guide.md`; map (an overlay on AB's): `docs/apcalcbc-phase0.md`; open points:
-`docs/apcalcbc-needs-author.md`; briefs (authors A-D, builders T1-T3): `docs/apcalcbc-briefs/`. Hidden until
-launch. AB's build must stay byte-identical: run `node scripts/build-apcalc.mjs --check` after any shared change.
+`docs/apcalcbc-needs-author.md`; briefs (authors A-D, builders T1-T3): `docs/apcalcbc-briefs/`; launch log:
+`docs/apcalcbc-reviews/launch.md`. Published and live; Premium not on sale (`onSale: false`) until the owner
+checklist in spec section 9; merges after AP® Precalculus. AB's build must stay byte-identical: run
+`node scripts/build-apcalc.mjs --check` after any shared change.
 
 ## AP® Statistics course
 
