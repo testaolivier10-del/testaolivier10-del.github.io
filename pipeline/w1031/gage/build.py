@@ -20,6 +20,8 @@ from lpk import *
 from figure import Person
 import ctchars as tchars
 import layout as L
+import skull as SKL
+import scenekit as SK
 
 ID = 'w1031-02-phineas-gage'
 OUT = f'/home/claude/lp/w1031/out/{ID}'
@@ -35,6 +37,7 @@ CAP = Captions(WD.w, {'eighteen': '1848', 'forty': '', 'eight,': ''})
 for ch in CAP.chunks:
     ch[:] = [x for x in ch if x['d'] != '']
 CAP.chunks = [ch for ch in CAP.chunks if ch]
+SK.merge_singles(CAP)
 rng = np.random.default_rng(7)
 
 SUN = (255, 214, 150)
@@ -50,17 +53,19 @@ def sky(c, u_dusk=0.0, top=-2600):
 
 
 def clouds(c, t):
-    for k, (y, x0, sc, a) in enumerate(((-300, 200, 1.0, 200), (-900, 700, 1.3, 180), (-1500, 300, 1.1, 170), (-2100, 800, 1.4, 160), (300, 120, 0.8, 150))):
+    """flat clouds: puffs unioned with round bottoms, a soft lavender underside and a warm rim on the sunlit top
+    right, all drawn opaque. None of them reaches the title zone at the end of the tilt."""
+    for k, (y, x0, sc) in enumerate(((-700, 160, 1.0), (-1000, 640, 1.2))):
         x = x0 + 14 * t
         p = skia.Path()
-        for dx, dy, r in ((0, 0, 60), (70, -24, 70), (150, -6, 64), (220, 8, 50), (-60, 10, 46)):
+        for dx, dy, r in ((0, 0, 60), (70, -24, 70), (150, -6, 64), (220, 8, 50), (-60, 10, 46), (110, 22, 50), (30, 24, 44)):
             p.addCircle(x + dx * sc, y + dy * sc, r * sc)
-        p.addRect(skia.Rect(x - 100 * sc, y, x + 270 * sc, y + 40 * sc)); p.setFillType(skia.PathFillType.kWinding)
-        c.drawPath(p, P((250, 240, 226), a))
-        q = skia.Path(p); q.offset(0, 14 * sc); d = skia.Op(p, q, skia.PathOp.kDifference_PathOp)
-        c.drawPath(p, P((214, 206, 214), a * 0.35)) if d is None else None
-        r = rim_of(p, (-6, 6))
-        if r is not None: c.drawPath(r, P((255, 222, 170), a * 0.9))
+        p = skia.Op(p, p, skia.PathOp.kUnion_PathOp) or p
+        c.drawPath(p, P((248, 240, 230)))
+        q = skia.Path(p); q.offset(-8 * sc, -16 * sc)
+        c.save(); c.clipPath(q, skia.ClipOp.kDifference, True); c.drawPath(p, P((226, 216, 226))); c.restore()
+        q = skia.Path(p); q.offset(-6, 6)
+        c.save(); c.clipPath(q, skia.ClipOp.kDifference, True); c.drawPath(p, P((255, 222, 170))); c.restore()
 
 
 def sun(c, x, y, u=1.0):
@@ -102,25 +107,30 @@ WALL_R = [(1380, 500), (1110, 560), (960, 650), (870, 780), (820, 940), (790, 11
 
 def walls(c, t, u_dusk=0.0):
     base = mix((150, 128, 112), (96, 74, 86), u_dusk); sh = mix((112, 92, 88), (66, 50, 66), u_dusk)
-    lit = mix((196, 170, 140), (176, 112, 96), u_dusk)
-    # left wall: in shade (sun from the right); right wall: lit face
+    lit = mix((196, 170, 140), (176, 112, 96), u_dusk); deep = tuple(v * 0.78 for v in sh)
+    # left wall: in shade (sun from the right); stepped ledges of bedrock with lit tops and darker risers
     pl = poly(WALL_L + [(360, 3200), (-900, 3200), (-900, 520)])
     c.drawPath(pl, P(sh))
     c.save(); c.clipPath(pl, skia.ClipOp.kIntersect, True)
     for i, (y0, x0) in enumerate(((620, 60), (760, 170), (900, 250), (1040, 300))):
-        c.drawPath(poly([(x0 - 200, y0), (x0 + 30, y0 - 20), (x0 + 60, y0 + 90), (x0 - 220, y0 + 120)]), P(mix(sh, base, 0.45)))
-        c.drawLine(x0 - 220, y0 + 120, x0 + 60, y0 + 90, SP(tuple(v * 0.8 for v in sh), 4))
+        top = poly([(x0 - 260, y0 + 6), (x0 + 30, y0 - 20), (x0 + 50, y0 + 8), (x0 - 250, y0 + 34)])
+        c.drawPath(top, P(mix(sh, base, 0.55)))
+        c.drawPath(poly([(x0 - 250, y0 + 34), (x0 + 50, y0 + 8), (x0 + 60, y0 + 90), (x0 - 220, y0 + 120)]), P(mix(sh, base, 0.2)))
+        c.drawPath(poly([(x0 + 50, y0 + 8), (x0 + 60, y0 + 90), (x0 + 40, y0 + 94), (x0 + 34, y0 + 10)]), P(deep))
+        c.drawLine(x0 - 140, y0 + 44, x0 - 120, y0 + 96, SP(deep, 2.5)); c.drawLine(x0 - 40, y0 + 30, x0 - 50, y0 + 70, SP(deep, 2))
     c.restore()
-    r = rim_of(poly(WALL_L + [(360, 1600)]), (3, 0))
     pr = poly(WALL_R + [(760, 3200), (2000, 3200), (2000, 500)])
     c.drawPath(pr, P(base))
     c.save(); c.clipPath(pr, skia.ClipOp.kIntersect, True)
-    for (y0, x0) in ((600, 1060), (720, 950), (860, 880), (1000, 840)):
-        c.drawPath(poly([(x0, y0), (x0 + 240, y0 - 30), (x0 + 260, y0 + 70), (x0 + 20, y0 + 100)]), P(lit))
-        c.drawPath(poly([(x0 + 20, y0 + 100), (x0 + 260, y0 + 70), (x0 + 250, y0 + 90), (x0 + 24, y0 + 118)]), P(sh))
-    # drill marks: vertical half pipes left in the rock by earlier blasts
-    for x in (900, 940, 1000):
-        c.drawLine(x, 900, x - 6, 1060, SP(sh, 5))
+    # lit slabs: each a lit face, a narrow top facet catching the sun and a shaded underside, a crack or two
+    for k, (y0, x0, w_, h_) in enumerate(((600, 1060, 250, 92), (722, 952, 230, 100), (866, 884, 210, 88), (1004, 846, 190, 84))):
+        face = poly([(x0, y0), (x0 + w_, y0 - 28), (x0 + w_ + 18, y0 + h_ - 28), (x0 + 16, y0 + h_)])
+        c.drawPath(face, P(lit))
+        c.drawPath(poly([(x0, y0), (x0 + w_, y0 - 28), (x0 + w_ - 10, y0 - 40), (x0 - 8, y0 - 12)]), P(mix(lit, (255, 236, 200), 0.35)))
+        c.drawPath(poly([(x0 + 16, y0 + h_), (x0 + w_ + 18, y0 + h_ - 28), (x0 + w_ + 14, y0 + h_ - 10), (x0 + 22, y0 + h_ + 18)]), P(sh))
+        c.drawPath(poly([(x0, y0), (x0 + 16, y0 + h_), (x0 + 6, y0 + h_ + 4), (x0 - 8, y0 + 4)]), P(mix(sh, base, 0.4)))
+        cx_ = x0 + w_ * (0.35 + 0.2 * (k % 2))
+        c.drawLine(cx_, y0 - 6, cx_ + 10, y0 + h_ * 0.6, SP(mix(lit, sh, 0.55), 2.2))
     c.restore()
     rr = rim_of(pr, (-4, 0))
     if rr is not None: c.drawPath(rr, P(RIM, 160))
@@ -132,12 +142,93 @@ def ground(c, t, u_dusk=0.0):
     rs = np.random.default_rng(11)
     for k in range(260):
         x = rs.uniform(-500, 1600); y = rs.uniform(1180, 1900)
-        r = rs.uniform(2, 6) * (0.5 + (y - 1150) / 700)
-        c.drawOval(skia.Rect(x - r * 1.5, y - r, x + r * 1.5, y + r * 0.6), P(tuple(v * rs.uniform(0.7, 0.95) for v in g)))
-    # wooden sleepers stacked by the far wall, a hand cart and two far workers
+        r = rs.uniform(2, 6) * (0.5 + (y - 1150) / 700); f_ = rs.uniform(0.7, 0.95)
+        c.drawOval(skia.Rect(x - r * 1.5, y - r, x + r * 1.5, y + r * 0.6), P(tuple(v * f_ for v in g)))
+    props(c, t, u_dusk)
+
+
+def props(c, t, u_dusk=0.0):
+    """a stack of planks and a powder keg by the far wall, each with a soft contact shadow"""
+    wood, wood_sh, end = mix((150, 108, 70), (90, 64, 60), u_dusk), mix((112, 78, 52), (66, 46, 48), u_dusk), mix((196, 160, 112), (130, 96, 80), u_dusk)
+    c.drawOval(skia.Rect(740, 1150, 930, 1172), P((70, 50, 40), 110, MaskFilter=blur(6)))
     for k in range(4):
-        y = 1160 - k * 14
-        c.drawPath(poly([(760, y), (900, y - 6), (904, y + 10), (764, y + 16)]), P(mix((112, 80, 56), (70, 50, 52), u_dusk)))
+        y = 1156 - k * 12; x0 = 752 + (k % 2) * 6
+        c.drawPath(poly([(x0, y - 10), (x0 + 136, y - 14), (x0 + 136, y - 3), (x0, y + 1)]), P(wood if k % 2 == 0 else wood_sh))
+        c.drawPath(poly([(x0 + 136, y - 14), (x0 + 146, y - 12), (x0 + 146, y - 1), (x0 + 136, y - 3)]), P(end))
+    kx, ky = 910, 1160
+    keg = smooth_closed([(kx - 18, ky - 50), (kx + 18, ky - 50), (kx + 23, ky - 25), (kx + 18, ky), (kx - 18, ky), (kx - 23, ky - 25)])
+    flat(c, keg, mix((126, 88, 58), (80, 56, 56), u_dusk), mix((94, 64, 44), (58, 40, 44), u_dusk), sh_off=(8, 0), rim=RIM, rim_d=(-3, 0), rim_a=200)
+    for yy in (ky - 42, ky - 10):
+        c.drawLine(kx - 20, yy, kx + 20, yy, SP(mix((70, 66, 70), (44, 40, 52), u_dusk), 3))
+    c.drawOval(skia.Rect(kx - 18, ky - 56, kx + 18, ky - 45), P(end))
+
+
+def ledge(c, t, u_dusk=0.0):
+    """the bedrock outcrop Gage stands on, with the drilled hole he is tamping: an angular sunlit top with a crack and
+    a small step, faceted front faces, loose rubble along its foot"""
+    top_c = mix((168, 150, 132), (118, 96, 104), u_dusk)
+    face, face_sh, deep = mix((128, 110, 98), (86, 66, 80), u_dusk), mix((104, 88, 82), (70, 54, 68), u_dusk), mix((80, 68, 66), (54, 42, 56), u_dusk)
+    top = poly([(-200, 1300), (60, 1296), (180, 1288), (300, 1294), (430, 1290), (560, 1298), (690, 1304), (760, 1316), (792, 1338), (770, 1356),
+                (640, 1362), (420, 1366), (200, 1362), (-200, 1358)])
+    c.drawPath(top, P(top_c))
+    c.drawPath(poly([(560, 1298), (690, 1304), (760, 1316), (792, 1338), (700, 1330), (600, 1316)]), P(mix(top_c, (255, 232, 196), 0.28)))   # sunlit step
+    c.drawPath(poly([(-200, 1300), (60, 1296), (180, 1288), (160, 1300), (-200, 1310)]), P(mix(top_c, face_sh, 0.35)))                         # far edge in shade
+    for pts in ([(80, 1320), (140, 1332), (170, 1352)], [(470, 1300), (500, 1318), (488, 1340)]):
+        p = skia.Path(); p.moveTo(*pts[0]); [p.lineTo(*q_) for q_ in pts[1:]]; c.drawPath(p, SP(face_sh, 2.2))
+    fr = poly([(-200, 1356), (200, 1360), (420, 1364), (640, 1360), (770, 1354), (792, 1338), (808, 1400), (760, 1446), (520, 1462), (240, 1458), (-200, 1450)])
+    c.drawPath(fr, P(face))
+    c.save(); c.clipPath(fr, skia.ClipOp.kIntersect, True)
+    for x0, x1, col in ((100, 170, face_sh), (330, 360, face_sh), (560, 610, face_sh), (700, 820, deep)):
+        c.drawPath(poly([(x0, 1350), (x1, 1350), (x1 + 24, 1470), (x0 - 6, 1470)]), P(col))
+    c.drawPath(poly([(-200, 1420), (820, 1420), (820, 1470), (-200, 1470)]), P(deep, 120))
+    c.restore()
+    # rubble along the foot of the ledge
+    rs = np.random.default_rng(61)
+    for k in range(14):
+        x = rs.uniform(-60, 840); r = rs.uniform(8, 20); y = 1452 + rs.uniform(-6, 10)
+        pr_ = poly([(x - r, y), (x - r * 0.5, y - r * 0.8), (x + r * 0.6, y - r * 0.7), (x + r, y), (x, y + r * 0.3)])
+        flat(c, pr_, face, deep, sh_off=(6, -2), rim=RIM, rim_d=(-2.5, 2), rim_a=150)
+    rr = rim_of(top, (-5, 2))
+    if rr is not None: c.drawPath(rr, P(RIM, 140))
+    # the drill hole: a small dark mouth with a sunlit lip
+    hx, hy = HOLE
+    c.drawOval(skia.Rect(hx - 17, hy - 6, hx + 17, hy + 6), P((40, 30, 30)))
+    c.drawArc(skia.Rect(hx - 17, hy - 6, hx + 17, hy + 6), 20, 140, False, SP(mix(top_c, (255, 232, 196), 0.4), 2.5))
+
+
+def _rock(c, x, y, r, seed, base, sh, top):
+    """a near rock: an irregular body, a lit top facet toward the sun (right), a shaded left face, a soft foot shadow"""
+    rs = np.random.default_rng(seed)
+    pts = [(x + r * (0.85 + 0.3 * rs.uniform()) * math.cos(a), y + r * 0.62 * (0.85 + 0.3 * rs.uniform()) * math.sin(a))
+           for a in np.linspace(math.pi, 2 * math.pi, 7)]
+    body = poly(pts + [(x + r * 1.02, y + r * 0.16), (x - r * 1.02, y + r * 0.16)])
+    c.drawOval(skia.Rect(x - r * 1.2, y + r * 0.02, x + r * 1.25, y + r * 0.3), P((40, 30, 30), 90, MaskFilter=blur(4)))
+    c.drawPath(body, P(base))
+    c.save(); c.clipPath(body, skia.ClipOp.kIntersect, True)
+    c.drawPath(poly([pts[2], pts[3], pts[5], (x + r, y - r * 0.05), (x + r * 0.3, y - r * 0.15), (x - r * 0.2, y - r * 0.25)]), P(top))
+    c.drawPath(poly([(x - r * 1.2, y + r), (x - r * 1.2, y - r), pts[2], (x - r * 0.25, y - r * 0.2), (x - r * 0.05, y + r)]), P(sh))
+    c.restore()
+
+
+def fg_rubble(c, t, dx=0.0, u_dusk=0.0, y0=1600):
+    """near layer under the captions (screen space, parallax): blasted rock and gravel to the bottom of the frame,
+    darker and more saturated than the scene"""
+    c.save(); c.translate(dx, 0)
+    g_ = mix((120, 100, 82), (70, 52, 64), u_dusk)
+    gp_ = jag([(-200, y0 + 30), (100, y0 + 4), (360, y0 + 24), (620, y0), (900, y0 + 20), (1300, y0 + 6)], 51, 6, 26)
+    c.drawPath(ridge(gp_, 2200), P(g_))
+    gp2 = jag([(-200, y0 + 170), (200, y0 + 150), (520, y0 + 176), (820, y0 + 150), (1300, y0 + 170)], 53, 6, 26)
+    c.drawPath(ridge(gp2, 2200), P(tuple(v * 0.82 for v in g_)))
+    rs = np.random.default_rng(52)
+    for k in range(90):
+        x = rs.uniform(-150, 1250); y = rs.uniform(y0 + 30, max(y0 + 31, 1950)); r = rs.uniform(3, 9); f_ = rs.uniform(0.7, 1.15)
+        c.drawOval(skia.Rect(x - r * 1.4, y - r * 0.8, x + r * 1.4, y + r * 0.6), P(tuple(min(255, v * f_) for v in g_)))
+    base, sh, top = mix((140, 122, 108), (88, 66, 78), u_dusk), mix((104, 88, 80), (60, 46, 58), u_dusk), mix((196, 176, 150), (130, 100, 104), u_dusk)
+    for k, (x, y, r) in enumerate(((40, y0 + 50, 70), (200, y0 + 80, 38), (880, y0 + 40, 86), (1050, y0 + 90, 60), (620, y0 + 110, 34),
+                                   (420, y0 + 130, 28), (120, y0 + 230, 90), (560, y0 + 250, 60), (960, y0 + 260, 100), (330, y0 + 300, 44))):
+        if y - r > 1930: continue
+        _rock(c, x, y, r, 70 + k, base, sh, top)
+    c.restore()
 
 
 def far_workers(c, t, u_dusk=0.0):
@@ -170,7 +261,8 @@ HOLE = (TX0 + 265 * TS, TY0 + 1138 * TS)
 _cm = tchars.tamp_upper_matrix(0.0, 0.0).mapXY(*tchars.CHEEK)   # where the cheek is in the held pose at the blast
 CHEEK = (TX0 + _cm.x() * TS, TY0 + _cm.y() * TS)
 FOOT = (TX0 + 470 * TS, 1335)
-ROD_L = 150 * S            # 3 ft 7 in for a man about 5 ft 6 in tall
+ROD_L = math.dist(tchars.ROD_TOP, tchars.ROD_BOT) * TS     # the held iron's length, kept in flight (3 ft 7 in)
+ROD_WK = 0.62
 
 
 def rod(c, x0, y0, x1, y1, a=255, glint=0.0, wk=1.0):
@@ -178,10 +270,11 @@ def rod(c, x0, y0, x1, y1, a=255, glint=0.0, wk=1.0):
     dx, dy = x1 - x0, y1 - y0; d = math.hypot(dx, dy) or 1
     nx, ny = -dy / d, dx / d; w = 5.0 * S * wk
     tx, ty = x0 + dx * 0.74, y0 + dy * 0.74
-    body = poly([(x0 + nx * w, y0 + ny * w), (tx + nx * w, ty + ny * w), (x1 + nx * 0.8, y1 + ny * 0.8), (x1 - nx * 0.8, y1 - ny * 0.8),
+    pw = max(0.8, w * 0.2)
+    body = poly([(x0 + nx * w, y0 + ny * w), (tx + nx * w, ty + ny * w), (x1 + nx * pw, y1 + ny * pw), (x1 - nx * pw, y1 - ny * pw),
                  (tx - nx * w, ty - ny * w), (x0 - nx * w, y0 - ny * w)])
     flat(c, body, (86, 88, 100), (58, 58, 72), sh_off=(-3, 0), rim=(255, 220, 170), rim_d=(-2.5, 0), rim_a=220, a=a)
-    c.drawLine(x0 + nx * 1.5, y0 + ny * 1.5, x1 + nx * 0.4, y1 + ny * 0.4, SP((176, 180, 196), 1.6, a * 0.8))
+    c.drawLine(x0 + nx * w * 0.35, y0 + ny * w * 0.35, tx + nx * w * 0.35, ty + ny * w * 0.35, SP((176, 180, 196), max(1.2, w * 0.3), a * 0.8))
     if glint > 0.02:
         gx, gy = x0 + dx * 0.6, y0 + dy * 0.6
         L_ = 40 * glint
@@ -213,116 +306,79 @@ def gage_tamping(c, t, knock=0.0, hold=True):
         c.save(); c.clipRect(skia.Rect(-500, -3000, 2000, HOLE[1] + 2))
         rod(c, bot[0], bot[1], top[0], top[1], wk=0.62)
         c.restore()
-    tchars.draw_tamp(c, t, TX0, TY0, TS, lift, br, knock, hat_fly=smooth((t - T['off'] - 0.25) / 0.9) if T['off'] < t < T['went'] else 0.0)
+    # the entry wound under his left cheekbone appears the moment the iron hits his cheek (about 0.12 s after "off")
+    wound = smooth((t - T['off'] - 0.12) / 0.15) if T['off'] < t < T['went'] else 0.0
+    if knock < 0.05:
+        if hasattr(tchars, 'TAMP_FEET') and not tchars.TAMP_FEET:      # first frame (stills): measure the boots once
+            tchars.draw_tamp(skia.Surface(8, 8).getCanvas(), t, TX0, TY0, TS, lift, br, 0.0)
+        for xl, xr, gy in getattr(tchars, 'TAMP_FEET', []):
+            c.drawOval(skia.Rect(xl - 10, gy - 7, xr + 14, gy + 9), P((50, 36, 32), 120, MaskFilter=blur(5)))
+    tchars.draw_tamp(c, t, TX0, TY0, TS, lift, br, knock, hat_fly=smooth((t - T['off'] - 0.25) / 0.9) if T['off'] < t < T['went'] else 0.0, wound=wound)
 
 
-def _old_gage_tamping(c, t, knock=0.0):
-    fx, fy = FOOT
-    br = 1.5 * math.sin(t * 1.7)
-    lift = tamp_phase(t) if t < T['spark'] else max(0.0, 1 - (t - T['spark']) / 0.25) * 0.0
-    up = 46 * S * lift
-    c.save()
-    if knock > 0:
-        # thrown back by the blast: rotates back about the heels and sits down hard
-        c.translate(fx + 30 * S, fy); c.rotate(-28 * smooth(knock)); c.translate(40 * S * smooth(knock), 0); c.translate(-(fx + 30 * S), -fy)
-    s = S
-    hip = (fx - 2 * s, fy - 100 * s)
-    neck = (fx - 44 * s, fy - 168 * s + br * 0.4 - 4 * s * lift)
-    head = (fx - 62 * s, fy - 186 * s + br * 0.4 - 4 * s * lift)
-    hx = HOLE[0]
-    hdN = (hx + 4 * s, fy - 128 * s - up)
-    hdF = (hx + 2 * s, fy - 104 * s - up)
-    shN = (neck[0] - 2 * s, neck[1] + 10 * s); shF = (neck[0] + 6 * s, neck[1] + 8 * s)
-    from lpk import ik2
-    elN = ik2(shN, hdN, 32 * s, 30 * s, bend=1)
-    elF = ik2(shF, hdF, 32 * s, 30 * s, bend=1)
-    J = dict(head=head, neck=neck, hip=hip, shN=shN, elN=elN, hdN=hdN, shF=shF, elF=elF, hdF=hdF,
-             knN=(fx - 18 * s, fy - 52 * s), ftN=(fx - 20 * s, fy - 4 * s), knF=(fx + 8 * s, fy - 50 * s), ftF=(fx + 16 * s, fy - 4 * s))
-    if t < T['off']:
-        rod(c, hx, fy - up + 10, hx, fy - up - ROD_L + 10)
-    GAGE.draw(c, J, face=-1)
-    c.restore()
-
-
-def gage_ground(c, t, x, y, sit=0.0, s=S, talk=0.0):
-    """lying on his back after the blast (sit 0) .. sitting up on one arm (sit 1)"""
-    g = Person(s=s, shirt=(226, 210, 184), vest=(86, 64, 56), pants=(78, 72, 92), skin=(216, 164, 124), hat=(68, 54, 48),
-               boots=(52, 40, 36), hair=(84, 58, 40), light=1, rim=RIM, hatted=False)
-    u = smooth(sit)
-    hip = (x, y - 18 * s)
-    ang = math.radians(lerp(178, 118, u))        # torso direction from the hip (180 = flat to the left)
-    L_ = 76 * s
-    neck = (hip[0] + L_ * math.cos(ang), hip[1] - L_ * math.sin(ang) * (1 if u > 0 else 0.15))
-    head = (neck[0] - 12 * s * math.cos(ang - 0.4), neck[1] - 22 * s - 4 * s * u)
-    nod = 0.08 * math.sin(t * 6) * talk
-    shN = (neck[0] + 6 * s, neck[1] + 8 * s); shF = shN
-    hdF = (neck[0] + 4 * s, y - 6 * s) if u > 0.3 else (neck[0] - 30 * s, y - 6 * s)
-    from lpk import ik2
-    elF = ik2(shF, hdF, 32 * s, 30 * s, bend=-1)
-    hdN = (neck[0] + (40 + 10 * math.sin(t * 3) * talk) * s, neck[1] + (20 - 10 * talk) * s)
-    elN = ik2(shN, hdN, 32 * s, 30 * s, bend=1)
-    J = dict(head=head, neck=neck, hip=hip, shN=shN, elN=elN, hdN=hdN, shF=shF, elF=elF, hdF=hdF,
-             knN=(x + 48 * s, y - 40 * s), ftN=(x + 96 * s, y - 6 * s), knF=(x + 52 * s, y - 20 * s), ftF=(x + 102 * s, y - 4 * s))
-    c.drawOval(skia.Rect(x - 120 * s, y - 10 * s, x + 120 * s, y + 8 * s), P((60, 40, 40), 70, MaskFilter=blur(8)))
-    g.draw(c, J, face=-1, tilt=nod)
-    return head
-
-
-def worker_run(c, t, x, y, s, col_shirt, face=-1, run=1.0, stop_t=None, hatted=True, beard=False):
-    w = Person(s=s, shirt=col_shirt, vest=(70, 60, 58), pants=(70, 66, 84), hat=(60, 50, 46), light=1, rim=RIM, hatted=hatted, beard=beard)
-    ph = t * 9 * run
-    a = math.sin(ph) * run
-    hip = (x, y - 100 * s)
-    neck = (x - 10 * s * face * -1 * run, y - 176 * s)
-    head = (neck[0] - 6 * s, neck[1] - 26 * s)
-    from lpk import ik2
-    ftN = (x + 34 * s * a * face * -1, y - 4 * s - max(0, 14 * s * math.sin(ph + 1.5)) * run)
-    ftF = (x - 34 * s * a * face * -1, y - 4 * s - max(0, 14 * s * math.sin(ph + 1.5 + math.pi)) * run)
-    knN = ik2(hip, ftN, 52 * s, 50 * s, bend=1 if face < 0 else -1)
-    knF = ik2(hip, ftF, 52 * s, 50 * s, bend=1 if face < 0 else -1)
-    sh = (neck[0], neck[1] + 10 * s)
-    hdN = (sh[0] - 30 * s * a * face * -1, sh[1] + 52 * s); hdF = (sh[0] + 30 * s * a * face * -1, sh[1] + 52 * s)
-    elN = ik2(sh, hdN, 32 * s, 30 * s, bend=-1 if face < 0 else 1); elF = ik2(sh, hdF, 32 * s, 30 * s, bend=-1 if face < 0 else 1)
-    J = dict(head=head, neck=neck, hip=hip, shN=sh, elN=elN, hdN=hdN, shF=sh, elF=elF, hdF=hdF, knN=knN, ftN=ftN, knF=knF, ftF=ftF)
-    c.drawOval(skia.Rect(x - 50 * s, y - 6 * s, x + 50 * s, y + 6 * s), P((60, 40, 40), 70, MaskFilter=blur(6)))
-    w.draw(c, J, face=face)
+def _puff(cx, cy, r, seed, t):
+    rs = np.random.default_rng(seed)
+    pts = [(cx + r * (0.82 + 0.25 * rs.uniform()) * math.cos(a) + 3 * math.sin(t * 2 + a * 3), cy + r * (0.78 + 0.25 * rs.uniform()) * math.sin(a))
+           for a in np.linspace(0, 2 * math.pi, 9, endpoint=False)]
+    return smooth_closed(pts)
 
 
 def blast(c, t, x, y):
-    """powder blast at the hole: white core flash, orange fireball lobes, dust and rock chips flung out"""
+    """the powder goes off in the drill hole: a white flash, spark streaks and rock chips out of the hole, a short
+    yellow and orange fireball, then layered smoke and dust rolling up (lit from the sun on the right)"""
     u = t - T['off']
-    if u < 0 or u > 3.0: return
-    f = math.exp(-u / 0.12)
-    c.drawCircle(x, y - 40, 260 * (0.6 + u), P((255, 236, 200), 230 * f, MaskFilter=blur(60), BlendMode=skia.BlendMode.kScreen))
-    grow = 1 - math.exp(-u / 0.3)
-    # dust: soft brown grey volumes rolling out and up, two tones, fading as they spread
-    for k in range(7):
-        a = math.radians(-90 + (k - 3) * 26)
-        r = 80 + 420 * grow * (0.8 + 0.2 * math.sin(k * 2.3))
-        cx, cy = x + r * math.cos(a) * 1.2, y - 40 + r * math.sin(a) * 0.7
-        rr = (80 + 170 * grow) * (0.9 + 0.1 * math.sin(t * 3 + k))
-        al = 230 * (1 - smooth((u - 0.6) / 2.2))
-        c.drawCircle(cx, cy, rr, P((176, 156, 136), al))
-        c.drawCircle(cx - rr * 0.25, cy + rr * 0.2, rr * 0.8, P((140, 122, 112), al * 0.8))
-        c.drawCircle(cx + rr * 0.3, cy - rr * 0.35, rr * 0.45, P((226, 206, 176), al * 0.9))
-    # fireball core: flickering lobes, orange to yellow, gone in half a second
-    fa = 1 - smooth(u / 0.5)
-    if fa > 0:
-        pts = [(x + (130 + 170 * grow) * math.cos(i * math.pi / 8) * (0.8 + 0.25 * math.sin(i * 2.7 + t * 30)),
-                y - 90 + (110 + 210 * grow) * math.sin(i * math.pi / 8) * 0.8 * (0.8 + 0.25 * math.cos(i * 1.9 + t * 25))) for i in range(16)]
-        fb = smooth_closed(pts)
-        c.drawPath(fb, P((255, 150, 60), 255 * fa))
-        c.save(); c.scale(1, 1)
-        inner = smooth_closed([(x + (px - x) * 0.6, y - 90 + (py - y + 90) * 0.6) for px, py in pts])
-        c.drawPath(inner, P((255, 224, 130), 255 * fa))
+    if u < 0 or u > 3.2: return
+    f = math.exp(-u / 0.10)
+    c.drawCircle(x, y - 40, 300 * (0.5 + u), P((255, 240, 210), 230 * f, MaskFilter=blur(60), BlendMode=skia.BlendMode.kScreen))
+    grow = 1 - math.exp(-u / 0.35)
+    # smoke and dust: three layered masses; each layer's puffs are merged into one billowing shape and toned as one
+    # (a darker underside, a sunlit top right), kept mostly left of his legs so his body never reads as cut
+    rs = np.random.default_rng(31)
+    al = (1 - smooth((u - 0.8) / 2.3)) * (1 - smooth((u - 0.75) / 0.5))
+    for layer, (col, lit_, dark_, n) in enumerate((((112, 98, 92), (150, 132, 118), (90, 78, 74), 6), ((150, 132, 118), (196, 176, 150), (122, 106, 98), 6),
+                                                    ((186, 168, 146), (232, 214, 184), (156, 138, 122), 5))):
+        mass = skia.Path(); mass.setFillType(skia.PathFillType.kWinding)
+        for k in range(n):
+            a = math.radians(-118 + rs.uniform(-40, 30)); sp = rs.uniform(0.6, 1.0)
+            d = (40 + 360 * grow * sp)
+            cx, cy = x + d * math.cos(a) * 1.1 - 20 * u, y - 30 + d * math.sin(a) * 0.9 - 80 * u * (layer + 1) / 3
+            r = (46 + 140 * grow) * rs.uniform(0.6, 1.0) * (1 - 0.15 * layer)
+            mass.addPath(_puff(cx, cy, r, 100 + layer * 10 + k, t))
+        c.saveLayer(None, skia.Paint(Alphaf=max(0.0, min(1.0, 0.92 * al))))
+        c.drawPath(mass, P(col))
+        q = skia.Path(mass); q.offset(0, -22)
+        c.save(); c.clipPath(q, skia.ClipOp.kDifference, True); c.drawPath(mass, P(dark_)); c.restore()
+        q = skia.Path(mass); q.offset(-26, 22)
+        c.save(); c.clipPath(q, skia.ClipOp.kDifference, True); c.drawPath(mass, P(lit_)); c.restore()
         c.restore()
-    rs = np.random.default_rng(21)
-    for k in range(26):
-        a = math.radians(rs.uniform(-170, -10)); v = rs.uniform(500, 1200)
-        px = x + v * math.cos(a) * u; py = y + v * math.sin(a) * u + 900 * u * u
-        if py > y + 30: continue
-        r = rs.uniform(4, 10)
-        c.drawPath(poly([(px - r, py), (px, py - r * 0.8), (px + r, py + r * 0.2), (px, py + r)]), P((96, 80, 76), 255 * (1 - smooth(u / 1.4))))
+    # fireball: short lived lobes out of the hole, yellow core inside orange
+    fa = 1 - smooth(u / 0.35)
+    if fa > 0:
+        for col, k_ in (((255, 140, 50), 1.0), ((255, 200, 90), 0.66), ((255, 246, 206), 0.32)):
+            pts = [(x + (60 + 150 * grow) * k_ * math.cos(a) * (0.75 + 0.3 * math.sin(a * 3.7 + t * 31)),
+                    y - 20 - (40 + 160 * grow) * k_ * 0.9 + (40 + 150 * grow) * k_ * math.sin(a) * (0.75 + 0.3 * math.cos(a * 2.9 + t * 27)))
+                   for a in np.linspace(0, 2 * math.pi, 14, endpoint=False)]
+            c.drawPath(smooth_closed(pts), P(col, 255 * fa))
+    # spark streaks: short bright lines flying out of the hole, fading in 0.4 s
+    sa = 1 - smooth(u / 0.45)
+    if sa > 0:
+        rs2 = np.random.default_rng(22)
+        for k in range(26):
+            a = math.radians(rs2.uniform(-165, -15)); v = rs2.uniform(600, 1500)
+            px = x + v * math.cos(a) * u; py = y + v * math.sin(a) * u + 700 * u * u
+            c.drawLine(px, py, px - v * math.cos(a) * 0.05, py - (v * math.sin(a) + 1400 * u) * 0.05, SP((255, 228, 150), 3, 255 * sa))
+    # rock chips from the hole: angular, two tones, tumbling on ballistic arcs
+    rs3 = np.random.default_rng(23)
+    for k in range(18):
+        a = math.radians(rs3.uniform(-160, -20)); v = rs3.uniform(500, 1100); spin = rs3.uniform(-14, 14)
+        px = x + v * math.cos(a) * u; py = y + v * math.sin(a) * u + 1000 * u * u
+        if py > y + 20 or u > 1.6: continue
+        r = rs3.uniform(5, 12)
+        c.save(); c.translate(px, py); c.rotate(math.degrees(spin * u))
+        chip = poly([(-r, -r * 0.3), (-r * 0.2, -r), (r, -r * 0.4), (r * 0.6, r * 0.7), (-r * 0.6, r * 0.6)])
+        c.drawPath(chip, P((120, 104, 96)))
+        c.drawPath(poly([(-r * 0.2, -r), (r, -r * 0.4), (r * 0.2, -r * 0.1)]), P((196, 176, 150)))
+        c.restore()
 
 
 def sparks(c, t, x, y, t0, n=14, scale=1.0):
@@ -337,87 +393,169 @@ def sparks(c, t, x, y, t0, n=14, scale=1.0):
     c.drawCircle(x, y, 28 * scale, P((255, 220, 150), 200 * math.exp(-u / 0.06), MaskFilter=blur(10), BlendMode=skia.BlendMode.kScreen))
 
 
-def scene_cut(c, t, cam):
-    """the rock cut: cam = (dx, dy, zoom) about the screen centre"""
-    dx, dy, z = cam
-    c.save()
-    c.translate(540, 960); c.scale(z, z); c.translate(-540 + dx, -960 + dy)
-    sky(c)
-    sun(c, 900, 600)
-    far(c, t, par=dx)
-    walls(c, t)
-    ground(c, t)
-    None
-    return
+# the sit shot: ground line and placement (checked so the group stays 40+ px inside the frame, above the watermark)
+SIT_GROUND, SIT_S, SIT_GX, SIT_WX = 1352, 0.5, -10, 440
 
 
-# ===================================================================== the head cutaway (his own head, left side)
-HC = (560, 860)          # head centre on screen
-HS = 3.2
+# ===================================================================== the landing, looking down the cut
+VP = (610, 930)                 # vanishing point of the cut floor
+NEAR_Y = 1330                   # screen y of the ground at the hole (depth scale 1)
+FAR_SIT_S = 0.36                # Gage dazed by the hole, near the camera
+LAND_F = 0.34                   # depth scale where the iron comes down, about 80 ft further down the cut
 
 
-def head_xray(c, t, a, hl=0.0, path_u=0.0, rod_u=-1.0, labels=0.0):
-    """Gage's head in profile facing left (so the viewer sees his LEFT side), skin glass, skull and brain inside.
-    path_u: how much of the iron's path is drawn (entry under the cheekbone to the exit at the top front)."""
+def gp(X, f):
+    """a point on the cut floor: lateral offset X (px at the near depth), depth scale f (1 near .. 0 at the VP)"""
+    return VP[0] + X * f, VP[1] + (NEAR_Y - VP[1]) * f
+
+
+def scene_far(c, t, z=1.0):
+    c.save(); c.translate(540, 1100); c.scale(z, z); c.translate(-540, -1100)
+    sky(c); sun(c, 880, 650)
+    c.save(); c.translate(0, 50); far(c, t); c.restore()
+    # the floor of the cut: hazy and pale far away, warmer and darker near
+    floor = poly([(-200, VP[1]), (1300, VP[1]), (1300, 2200), (-200, 2200)])
+    sh = skia.GradientShader.MakeLinear([skia.Point(0, VP[1]), skia.Point(0, 1700)], [C((214, 192, 160)), C((176, 148, 112)), C((140, 114, 90))], [0, 0.4, 1])
+    c.drawPath(floor, skia.Paint(AntiAlias=True, Shader=sh))
+    rs = np.random.default_rng(71)
+    for k in range(240):
+        f = rs.uniform(0.08, 1.6) ** 1.4; X = rs.uniform(-1400, 1400)
+        x, y = gp(X, f); r = 4 * f + 0.6
+        if -20 < x < 1100: c.drawOval(skia.Rect(x - r * 1.5, y - r * 0.7, x + r * 1.5, y + r * 0.5), P((132, 108, 86), 200))
+    # the two rock walls converging on the far end, strata running to the vanishing point
+    for side in (-1, 1):
+        base = (112, 92, 88) if side < 0 else (176, 152, 126)
+        lit_ = (140, 118, 104) if side < 0 else (214, 188, 152)
+        foot_near, foot_far = gp(side * 520, 1.2), gp(side * 520, 0.06)
+        top_near, top_far = (foot_near[0] + side * 160, 360), (foot_far[0] + side * 30, VP[1] - 120)
+        wall = poly([foot_far, top_far, top_near, (side * 2000 + 540, 300), (side * 2000 + 540, 2200), foot_near])
+        c.drawPath(wall, P(base))
+        c.save(); c.clipPath(wall, skia.ClipOp.kIntersect, True)
+        for k in range(5):
+            u0 = k / 5.0
+            a0 = (foot_near[0] + (top_near[0] - foot_near[0]) * u0, foot_near[1] + (top_near[1] - foot_near[1]) * u0)
+            b0 = (foot_far[0] + (top_far[0] - foot_far[0]) * u0, foot_far[1] + (top_far[1] - foot_far[1]) * u0)
+            u1 = (k + 0.5) / 5.0
+            a1 = (foot_near[0] + (top_near[0] - foot_near[0]) * u1, foot_near[1] + (top_near[1] - foot_near[1]) * u1)
+            b1 = (foot_far[0] + (top_far[0] - foot_far[0]) * u1, foot_far[1] + (top_far[1] - foot_far[1]) * u1)
+            c.drawPath(poly([a0, b0, b1, a1]), P(mix(base, lit_, 0.55 if k % 2 else 0.25)))
+        c.restore()
+        # rock facets: irregular plates on the face, lit or shaded, shrinking with depth
+        c.save(); c.clipPath(wall, skia.ClipOp.kIntersect, True)
+        rsf = np.random.default_rng(80 + side)
+        def wp(f, v):
+            fl = (foot_far[0] + (foot_near[0] - foot_far[0]) * (f - 0.06) / 1.14, foot_far[1] + (foot_near[1] - foot_far[1]) * (f - 0.06) / 1.14)
+            tp_ = (top_far[0] + (top_near[0] - top_far[0]) * (f - 0.06) / 1.14, top_far[1] + (top_near[1] - top_far[1]) * (f - 0.06) / 1.14)
+            return fl[0] + (tp_[0] - fl[0]) * v, fl[1] + (tp_[1] - fl[1]) * v
+        for k in range(26):
+            f = rsf.uniform(0.1, 1.15); df = rsf.uniform(0.05, 0.16) * f; v = rsf.uniform(0.05, 0.85); dv = rsf.uniform(0.06, 0.14)
+            q = poly([wp(f, v), wp(f + df, v + rsf.uniform(-0.02, 0.02)), wp(f + df * 0.9, v + dv), wp(f + df * 0.1, v + dv * 1.1)])
+            col = mix(base, lit_, rsf.uniform(0.2, 1.0)) if rsf.uniform() < 0.6 else tuple(x * 0.84 for x in base)
+            c.drawPath(q, P(col))
+        c.restore()
+        if side > 0:
+            rr = rim_of(wall, (6, 0))
+            if rr is not None: c.drawPath(rr, P(RIM, 170))
+    # a plank stack and a keg at the far end give the scale there
+    c.restore()
+
+
+def far_shot(c, t):
+    """the iron comes down about 80 ft away down the cut, tumbling end over end, and lands on its side; Gage sits
+    dazed by the smoking hole near the camera; a dashed flight arc in the air joins the hole to where it lies"""
+    z = 1.0 + 0.03 * smooth((t - T['landed']) / 3.0)
+    scene_far(c, t, z)
+    c.save(); c.translate(540, 1100); c.scale(z, z); c.translate(-540, -1100)
+    hole = gp(-190, 1.0)
+    land = gp(120, LAND_F)
+    L_far = ROD_L / 0.86 * 0.5 * LAND_F * 1.4         # the iron at that depth (about 3 of his head lengths there)
+    tf = T['feet']
+    # lying on the floor it points along the cut, toward the far end (so it is foreshortened like the floor)
+    vx, vy = VP[0] - land[0], VP[1] - land[1]; vn = math.hypot(vx, vy)
+    lie_ang = math.pi / 2 + 0.12             # lying across the floor, a little skewed
+    L_lie = L_far * 0.95
+    slide = (16.0, 0.0)
+    if t < tf:
+        u = smooth((t - T['landed'] + 0.15) / (tf - T['landed'] + 0.15))
+        cx_, cy_ = land[0] - 120 * (1 - u), land[1] - 560 * (1 - u) ** 1.6 - L_far * 0.1
+        ang = lie_ang + 9.0 * (1 - u)
+    else:
+        d = t - tf
+        b = max(0.0, math.sin(min(1.0, d / 0.32) * math.pi)) * 18 * math.exp(-d * 3)
+        cx_, cy_ = land[0] + slide[0] * smooth(d / 0.6), land[1] + slide[1] * smooth(d / 0.6) - b - 2
+        ang = lie_ang + 0.4 * math.exp(-d / 0.12) * math.cos(d * 20)
+    L_now = L_far if t < tf else lerp(L_far, L_lie, smooth((t - tf) / 0.25))
+    dx_, dy_ = math.sin(ang) * L_now / 2, -math.cos(ang) * L_now / 2
+    # its shadow on the ground (grows as it comes down)
+    sh_k = 1.0 if t >= tf else smooth((t - T['landed']) / (tf - T['landed']))
+    c.save(); c.translate(land[0] + (slide[0] if t >= tf else 0), land[1] + 4 + (slide[1] if t >= tf else 0)); c.rotate(math.degrees(lie_ang) - 90)
+    c.drawOval(skia.Rect(-L_lie * 0.55 * sh_k, -4, L_lie * 0.55 * sh_k, 4), P((70, 52, 40), 160 * sh_k, MaskFilter=blur(3)))
+    c.restore()
+    # the iron: dark round bar, a warm rim on top, its last foot tapering to the point
+    x0, y0, x1, y1 = cx_ - dx_, cy_ - dy_, cx_ + dx_, cy_ + dy_
+    nx, ny = -(y1 - y0) / L_now, (x1 - x0) / L_now; w = 3.6
+    tx, ty = x0 + (x1 - x0) * 0.72, y0 + (y1 - y0) * 0.72
+    body = poly([(x0 + nx * w, y0 + ny * w), (tx + nx * w, ty + ny * w), (x1, y1), (tx - nx * w, ty - ny * w), (x0 - nx * w, y0 - ny * w)])
+    c.drawPath(body, P((52, 52, 64)))
+    q = skia.Path(body); q.offset(1.5, 2); c.save(); c.clipPath(q, skia.ClipOp.kDifference, True); c.drawPath(body, P((255, 214, 160))); c.restore()
+    # a small dust puff where it hits: soft, one tone, drifting off
+    if t >= tf:
+        d = t - tf
+        al = 170 * (1 - smooth((d - 0.2) / 1.2))
+        for k in range(4):
+            r = (8 + 22 * smooth(d / 0.8)) * (0.8 + 0.15 * k)
+            c.drawCircle(land[0] - 30 + k * 26 + 14 * d, land[1] - 6 - 10 * k * smooth(d / 1.0), r, P((214, 192, 158), al, MaskFilter=blur(5)))
+    # the hole, still smoking, and Gage on the ground beside it
+    lx_, ly_ = hole
+    top_ = poly([(lx_ - 120, ly_ - 6), (lx_ - 60, ly_ - 22), (lx_ + 40, ly_ - 26), (lx_ + 120, ly_ - 12), (lx_ + 130, ly_ + 8), (lx_ + 40, ly_ + 18), (lx_ - 110, ly_ + 14)])
+    face_ = poly([(lx_ - 110, ly_ + 14), (lx_ + 40, ly_ + 18), (lx_ + 130, ly_ + 8), (lx_ + 134, ly_ + 40), (lx_ + 30, ly_ + 54), (lx_ - 116, ly_ + 46)])
+    c.drawOval(skia.Rect(lx_ - 140, ly_ + 34, lx_ + 150, ly_ + 62), P((70, 52, 40), 110, MaskFilter=blur(6)))
+    c.drawPath(face_, P((120, 104, 94))); c.drawPath(poly([(lx_ + 40, ly_ + 18), (lx_ + 130, ly_ + 8), (lx_ + 134, ly_ + 40), (lx_ + 30, ly_ + 54)]), P((98, 84, 80)))
+    c.drawPath(top_, P((168, 150, 132)))
+    c.drawPath(poly([(lx_ + 40, ly_ - 26), (lx_ + 120, ly_ - 12), (lx_ + 130, ly_ + 8), (lx_ + 60, ly_)]), P((196, 178, 154)))
+    c.drawOval(skia.Rect(lx_ - 14, ly_ - 5, lx_ + 14, ly_ + 5), P((40, 30, 30)))
+    c.drawArc(skia.Rect(lx_ - 14, ly_ - 5, lx_ + 14, ly_ + 5), 20, 140, False, SP((214, 196, 170), 2.2))
+    for k in range(5):
+        uu = ((t * 0.35 + k * 0.2) % 1.0)
+        c.drawCircle(hole[0] + 20 * math.sin(t + k), hole[1] - 40 - 300 * uu, 26 + 60 * uu, P((150, 140, 132), 90 * (1 - uu), MaskFilter=blur(10)))
+    tchars.draw_sit(c, t, hole[0] - 1060 * FAR_SIT_S, NEAR_Y - 14 - 735 * FAR_SIT_S, FAR_SIT_S, talk=0.0, daze=1.0)
+    # the flight: a dashed arc in the air from the hole to where it lies (in perspective: dashes thin with depth)
+    if t >= tf - 0.1:
+        k_ = smooth((t - tf + 0.1) / 0.45)
+        n = 26
+        def ap(u):
+            f = 1 / (1 + (1 / LAND_F - 1) * u)
+            X = -190 + (310 + slide[0] / LAND_F) * u
+            gx, gy = gp(X, f)
+            return gx, gy - 560 * f * 4 * u * (1 - u) * (1 - 0.3 * u), f
+        for i in range(n):
+            u0, u1 = i / n, (i + 0.55) / n
+            if u0 > k_: break
+            a_ = ap(u0); b_ = ap(min(u1, k_))
+            c.drawLine(a_[0], a_[1], b_[0], b_[1], SP((255, 210, 63), max(2.5, 9 * a_[2]), 235))
+    c.restore()
+
+
+# ===================================================================== the head x-ray (his own head, left side)
+HC = (728, 960)          # head centre on screen (labels sit in the free band left of the face)
+HS = 2.75
+
+
+def head_xray(c, t, a, hl=0.0, track_u=0.0, tip_s=None):
+    """Gage's head as an x-ray in profile facing left (the viewer sees his LEFT side): skull, brain, the iron to
+    scale (lib/skull.py)"""
     if a <= 0.01: return
     c.saveLayer(None, skia.Paint(Alphaf=a))
     lgrad(c, skia.Rect(0, 0, W, H), 0, H, [(24, 30, 58), (36, 52, 84), (20, 26, 48)])
     for k in range(8):   # soft background shapes breathing
         x = 140 + k * 130; y = 300 + 160 * math.sin(k * 1.9 + t * 0.25)
         c.drawCircle(x, y + k * 140, 120 + 20 * math.sin(t * 0.6 + k), P((60, 84, 120), 40, MaskFilter=blur(40)))
-    c.save(); c.translate(*HC); c.scale(HS, HS)
-    br = 0.6 * math.sin(t * 1.6)
-    c.translate(0, br)
-    # skin silhouette (neck, head facing left, ear, nose)
-    skin = smooth_closed([(60, -120), (10, -138), (-50, -128), (-92, -96), (-112, -50), (-118, -10), (-130, 18), (-122, 30), (-112, 40),
-                          (-116, 58), (-106, 70), (-100, 92), (-80, 108), (-52, 112), (-36, 130), (-30, 190), (60, 200), (64, 120),
-                          (96, 60), (104, 0), (96, -60), (82, -100)])
-    c.drawPath(skin, P((226, 168, 132), 70))
-    c.drawPath(skin, SP((255, 200, 160), 3, 150))
-    # skull: cranium, orbit, cheekbone (zygomatic arch), upper jaw and mandible
-    cran = smooth_closed([(58, -110), (10, -128), (-46, -118), (-84, -88), (-100, -46), (-102, -16), (-90, 4), (-70, 6), (-40, 0),
-                          (0, 6), (46, 20), (76, 30), (92, -10), (86, -60)])
-    c.drawPath(cran, P((236, 226, 204), 80))
-    c.drawPath(cran, SP((246, 238, 220), 4, 200))
-    c.drawOval(skia.Rect(-100, -34, -60, 6), SP((255, 246, 228), 5, 240)); c.drawOval(skia.Rect(-96, -30, -64, 2), P((20, 26, 50), 120))              # orbit
-    c.drawPath(smooth_closed([(-70, 12), (-30, 8), (10, 16), (12, 24), (-30, 20), (-72, 26)]), P((246, 238, 220), 180))   # zygomatic arch
-    jaw = smooth_closed([(-88, 34), (-60, 30), (-10, 34), (20, 30), (24, 66), (8, 96), (-40, 104), (-72, 100), (-88, 80)])
-    c.drawPath(jaw, SP((246, 238, 220), 3.5, 170))
-    for k in range(6):
-        c.drawLine(-86 + k * 8, 58, -86 + k * 8, 66, SP((246, 238, 220), 2, 150))
-    # brain: lobes inside the cranium; the frontal lobe is its own piece so it can light up
-    c.save(); c.clipPath(cran, skia.ClipOp.kIntersect, True)
-    brain = smooth_closed([(52, -100), (8, -116), (-40, -106), (-74, -80), (-88, -44), (-82, -18), (-50, -12), (-10, -4), (30, 6), (64, 12), (80, -20), (76, -64)])
-    c.drawPath(brain, P((214, 140, 160)))
-    front = smooth_closed([(-6, -114), (-40, -106), (-74, -80), (-88, -44), (-82, -18), (-50, -12), (-20, -10), (-14, -40), (-10, -80)])
-    fcol = mix((214, 140, 160), (255, 190, 96), hl)
-    c.drawPath(front, P(fcol))
-    if hl > 0.02:
-        c.drawPath(front, P((255, 210, 120), 120 * hl * (0.8 + 0.2 * math.sin(t * 5)), MaskFilter=blur(14), BlendMode=skia.BlendMode.kScreen))
-    for pts in ([(-70, -60), (-50, -70), (-30, -60), (-20, -76)], [(-80, -36), (-56, -44), (-36, -30), (-18, -44)], [(0, -90), (20, -80), (40, -94), (60, -70)],
-                [(10, -40), (30, -50), (50, -30), (66, -40)], [(-40, -96), (-24, -88), (-8, -100)]):
-        p = skia.Path(); p.moveTo(*pts[0])
-        for q in pts[1:]: p.lineTo(*q)
-        c.drawPath(p, SP((176, 102, 126), 2.2))
-    c.drawPath(smooth_closed([(-12, -6), (20, 0), (40, 2), (30, -16), (0, -22)]), P((190, 118, 140)))  # temporal lobe hint
+    SKL.draw_xray(c, HC[0], HC[1], HS, t, hl, track_u, tip_s, top_y=(540 - HC[1]) / HS)
     c.restore()
-    # the iron's path: in under the left cheekbone, behind the left eye, out the top front near the midline
-    E0, E1 = (-66, 28), (-34, -132)
-    if path_u > 0:
-        x = lerp(E0[0], E1[0], path_u); y = lerp(E0[1], E1[1], path_u)
-        c.drawLine(*E0, x, y, SP((255, 120, 90), 7, 220))
-        c.drawLine(*E0, x, y, SP((255, 210, 170), 2, 255))
-        c.drawCircle(*E0, 6, P((255, 120, 90)))
-    if rod_u >= 0:
-        # a ghost of the iron sliding along the path, point first
-        d = (E1[0] - E0[0], E1[1] - E0[1]); n = math.hypot(*d); ux, uy = d[0] / n, d[1] / n
-        tip = (E0[0] + ux * n * rod_u * 1.6 - ux * 30, E0[1] + uy * n * rod_u * 1.6 - uy * 30)
-        tail = (tip[0] - ux * 130, tip[1] - uy * 130)
-        c.save(); c.clipRect(skia.Rect(-200, -134, 200, 300))
-        rod(c, tail[0], tail[1], tip[0], tip[1], a=200 * smooth(rod_u / 0.12), wk=0.13)
-        c.restore()
-    c.restore()
-    c.restore()
+
+
+def xp(p):
+    return SKL.to_screen(HC[0], HC[1], HS, p)
 
 
 # ===================================================================== dusk: he walks away, friends watch
@@ -432,17 +570,11 @@ def scene_dusk(c, t, u):
     for k in range(90):
         x_, y_ = rs_.uniform(-50, 1130), rs_.uniform(1130, 1900); r_ = rs_.uniform(2, 6) * (0.5 + (y_ - 1100) / 600)
         c.drawOval(skia.Rect(x_ - r_ * 1.5, y_ - r_, x_ + r_ * 1.5, y_ + r_ * 0.6), P((88, 64, 76)))
-    c.drawPath(poly([(700, 980), (860, 980), (860, 1110), (700, 1110)]), P((80, 60, 76)))
-    c.drawPath(poly([(690, 990), (780, 930), (870, 990)]), P((60, 44, 60)))
-    c.drawRect(skia.Rect(740, 1020, 770, 1050), P((255, 196, 110), 220 + 30 * math.sin(t * 3)))
-    c.drawRect(skia.Rect(720, 1000, 790, 1070), P((255, 196, 110), 60, MaskFilter=blur(20)))
     # Gage stands apart, turning his head away; his two friends watch him, uneasy; long shadows away from the low sun
-    for x_, w_ in ((560, 420),):        # Gage's own contact shadow moves with him (cperson)
-        c.drawOval(skia.Rect(x_ + 10, 1405, x_ + w_ + 60, 1440), P((40, 28, 44), 120, MaskFilter=blur(10)))
     turn = smooth((t - T['friends'] - 0.2) / 0.8)
     tn = ((120, 70, 120), 0.22)
-    tchars.draw_dusk_gage(c, t, 60, 1425 - 690 * 1.05, 1.05, turn, tint=tn, walk_t0=T['friends'] + 0.4)   # he turns and walks slowly away
-    tchars.draw_dusk_friends(c, t, 600, 1425 - 688 * 1.05, 1.05, lean=smooth((t - T['longer']) / 0.8), tint=tn)
+    tchars.draw_dusk_gage(c, t, 230, 1346 - 690 * 0.98, 0.98, turn, tint=tn, walk_t0=T['friends'] + 0.4)   # he turns and walks slowly away
+    tchars.draw_dusk_friends(c, t, 540, 1346 - 688 * 0.98, 0.98, lean=smooth((t - T['longer']) / 0.8), tint=tn)
     motes(c, t, 26, (0, 900, 1080, 1400), (255, 200, 150))
 
 
@@ -455,8 +587,8 @@ def titles(c, t):
     L.title(c, [[('ABOUT ', Wt), ('80 FEET', Y)], [('AWAY', Wt)]], t, T['landed'], T['somehow'] - 0.1)
     L.title(c, [[('AND HE ', Wt), ('LIVED', Y)]], t, T['somehow'], T['but'] - 0.1)
     L.title(c, [[('TORN THROUGH', Wt)], [('HIS ', Wt), ('BRAIN', Y)]], t, T['but'], T['and2'] - 0.1)
-    L.title(c, [[('NO LONGER', Wt)], [('GAGE', R)]], t, T['and2'], T['all'] - 0.1)
-    L.title(c, [[('ONE ', Wt), ('SPARK', Y)]], t, T['all'], None)
+    L.title(c, [[('NO LONGER', Wt)], [('GAGE', R)]], t, T['and2'], T['all'] - 0.62)
+    L.title(c, [[('ONE ', Wt), ('SPARK', Y)]], t, T['all'] + 0.1, None)
 
 
 def frame(t):
@@ -466,21 +598,19 @@ def frame(t):
     # ---------------- A: tamping, the spark, the blast, the iron shoots up (0 .. went)
     if t < T['went'] - 0.35 or t >= T['all'] - 0.25:
         tt = t if t < T['went'] else (t - T['all'] + 0.25) % 2.0 + 0.2   # the loop back reuses the opening
-        tilt = 0.0 if t >= T['went'] else smooth((t - T['off'] - 0.3) / 1.6)
+        tilt = 0.0 if t >= T['went'] else smooth((t - T['off'] - 0.25) / 0.5)
         zoom = 1.0 + 0.08 * smooth(tt / 5.0) if t < T['off'] else 1.08
         shake = 0.0
         if T['off'] <= t < T['off'] + 0.6:
             shake = 14 * math.exp(-(t - T['off']) / 0.15) * math.sin(t * 90)
-        dy = 1500 * tilt
+        dy = 1900 * tilt
         c.save()
         c.translate(540 + shake, 960); c.scale(zoom, zoom); c.translate(-540, -960 + dy)
         sky(c); clouds(c, tt); sun(c, 960, 500)
         far(c, tt, par=-20 * tilt)
-        walls(c, tt); ground(c, tt); None
+        walls(c, tt); ground(c, tt); ledge(c, tt)
         motes(c, tt, 30)
         knock = smooth((t - T['off'] - 0.4) / 0.4) if (t >= T['off'] and t < T['went']) else 0.0
-        c.drawOval(skia.Rect(HOLE[0] - 50, HOLE[1] - 9, HOLE[0] + 50, HOLE[1] + 9), P((52, 36, 32)))
-        c.drawOval(skia.Rect(HOLE[0] - 50, HOLE[1] - 9, HOLE[0] + 50, HOLE[1] + 9), SP((120, 96, 80), 3))
         if T['off'] <= t < T['went']:
             u = t - T['off']
             view_c = 960 - dy
@@ -491,13 +621,16 @@ def frame(t):
             tx_, ty_ = hx + dvx * tip, hy + dvy * tip
             cx0, cy0 = tx_ - dvx * ROD_L * 0.5, ty_ - dvy * ROD_L * 0.5
             blend = smooth((u - 0.6) / 0.8)
-            y_mid = lerp(cy0, view_c + 380 - 420 * smooth((u - 0.4) / 2.6), blend)
+            y_mid = lerp(cy0, view_c + 40 - 300 * smooth((u - 0.4) / 2.6), blend)
             xm = lerp(cx0, CHEEK[0] + 40, blend)
             ang = lerp(math.atan2(dvx, -dvy), 0.10, smooth((u - 0.6) / 1.0))
             x0, y0 = xm - math.sin(ang) * ROD_L / 2, y_mid + math.cos(ang) * ROD_L / 2
             x1, y1 = xm + math.sin(ang) * ROD_L / 2, y_mid - math.cos(ang) * ROD_L / 2
             if (tip - ROD_L) < dn + 300:
-                rod(c, x0, y0, x1, y1)
+                # it only ever comes up out of the hole: nothing of it below the rock surface
+                c.save(); c.clipRect(skia.Rect(-2000, -4000, 3000, HOLE[1] - 2))
+                rod(c, x0, y0, x1, y1, wk=ROD_WK)
+                c.restore()
         gage_tamping(c, tt if t >= T['all'] - 0.25 else t, knock, hold=(t < T['off'] or t >= T['all'] - 0.25))
         # spark on each strike near the end, and the big one on "spark"
         if t < T['spark']:
@@ -520,82 +653,59 @@ def frame(t):
             tx_, ty_ = hx + dvx * tip, hy + dvy * tip
             cx0, cy0 = tx_ - dvx * ROD_L * 0.5, ty_ - dvy * ROD_L * 0.5
             blend = smooth((u - 0.6) / 0.8)
-            y_mid = lerp(cy0, view_c + 380 - 420 * smooth((u - 0.4) / 2.6), blend)
+            y_mid = lerp(cy0, view_c + 40 - 300 * smooth((u - 0.4) / 2.6), blend)
             xm = lerp(cx0, CHEEK[0] + 40, blend)
             ang = lerp(math.atan2(dvx, -dvy), 0.10, smooth((u - 0.6) / 1.0))
             x0, y0 = xm - math.sin(ang) * ROD_L / 2, y_mid + math.cos(ang) * ROD_L / 2
             x1, y1 = xm + math.sin(ang) * ROD_L / 2, y_mid - math.cos(ang) * ROD_L / 2
             behind = (tip - ROD_L) < dn + 300
             if not behind:
-                if u > 0.9:
-                    for k in range(5):
-                        o = 40 + k * 60
-                        c.drawLine(x0 - math.sin(ang) * o, y0 + math.cos(ang) * o, x0 - math.sin(ang) * (o + 90), y0 + math.cos(ang) * (o + 90), SP((255, 240, 220), 3, 70 - k * 12))
-                rod(c, x0, y0, x1, y1, glint=math.exp(-((t - T['skull'] - 0.1) / 0.25) ** 2))
+                c.save(); c.clipRect(skia.Rect(-2000, -4000, 3000, HOLE[1] - 2))
+                rod(c, x0, y0, x1, y1, glint=math.exp(-((t - T['skull'] - 0.1) / 0.25) ** 2), wk=ROD_WK)
+                c.restore()
             hf = 0.6 * math.exp(-((u - 0.13) / 0.06) ** 2)
             if hf > 0.02:
                 hd = CHEEK
                 c.drawCircle(*hd, 60, P((255, 250, 235), 200 * hf, MaskFilter=blur(30), BlendMode=skia.BlendMode.kScreen))
         c.restore()
+        if dy * zoom * 1.25 < 600: fg_rubble(c, t, 0, y0=1600 + dy * zoom * 1.25)
+        sky_k = smooth((tilt - 0.4) / 0.5) if t < T['went'] else 0.0
+        if sky_k > 0.01:
+            hz = skia.GradientShader.MakeLinear([skia.Point(0, 1000), skia.Point(0, 1920)], [C((178, 204, 232), 0), C((196, 216, 238), 255 * sky_k)])
+            c.drawRect(skia.Rect(0, 1000, W, H), skia.Paint(Shader=hz))
     a1 = 1.0 if T['went'] - 0.35 <= t < T['landed'] - 0.15 else 0.0
     a2 = 1.0 if T['but'] - 0.05 <= t < T['and2'] - 0.2 else 0.0
     a = max(a1, a2)
-    # ---------------- C: the iron lands about 80 ft away; he sits up and talks (landed .. but)
+    # ---------------- C: the iron lands about 80 ft away (looking down the cut); he sits up and talks (landed .. but)
     if T['landed'] - 0.5 <= t < T['but'] + 0.2 and a < 0.99:
-        u = t - T['landed']
-        c.save()
         close = t >= T['somehow'] - 0.05
         if not close:
-            z = 0.74 + 0.04 * smooth((t - T['landed']) / 5.0)
-            c.translate(540, 1100); c.scale(z, z); c.translate(-760, -1240)
+            far_shot(c, t)
+            fg_rubble(c, t, 0, y0=1610)
         else:
+            c.save()
             z = 1.0 + 0.05 * smooth((t - T['somehow']) / 3.5)
             c.translate(540, 1300); c.scale(z, z); c.translate(-540, -1300)
-        sky(c); sun(c, 900, 560); far(c, t); walls(c, t); ground(c, t); None
-        if not close:
-            # the blast hole, still smoking, where he stood
-            c.drawOval(skia.Rect(HOLE[0] - 50, HOLE[1] - 9, HOLE[0] + 50, HOLE[1] + 9), P((52, 36, 32)))
-            for k in range(5):
-                uu = ((t * 0.35 + k * 0.2) % 1.0)
-                c.drawCircle(HOLE[0] + 20 * math.sin(t + k), HOLE[1] - 40 - 260 * uu, 30 + 50 * uu, P((150, 140, 132), 120 * (1 - uu)))
-        # the landing spot far to the right; iron falls point first and sticks in the gravel
-        lx, ly = 1180, 1330
-        fall = smooth((t - T['landed'] + 0.4) / (T['feet'] - T['landed'] + 0.4))
-        if t < T['feet']:
-            yy = ly - 700 * (1 - fall)
-            rod(c, lx + 8, yy - ROD_L * 0.9, lx, yy)
-        else:
-            rod(c, lx + 30, ly - ROD_L * 0.66, lx, ly + 10)
-            d = t - T['feet']
-            if d < 1.6:
-                for k in range(7):
-                    c.drawCircle(lx + (k - 3) * 22 * (1 + d), ly - 10 - 40 * d * (1 - d / 2.0), 22 + 30 * d, P((196, 172, 140), 160 * (1 - d / 1.6)))
-        # distance chip: dashed line from Gage to the iron
-        if T['feet'] - 0.2 <= t < T['somehow'] and not close:
-            k = smooth((t - T['feet'] + 0.2) / 0.3)
-            for i in range(24):
-                x0 = HOLE[0] + i * 46
-                if x0 > HOLE[0] + (lx - HOLE[0]) * k: break
-                c.drawLine(x0, 1380, x0 + 24, 1380, SP((255, 210, 63), 7))
-            L.chip(c, 'ABOUT 80 FT', (HOLE[0] + lx) / 2, 1320, (255, 210, 63), 64, k)
-        if close:
-            # dust still hanging; he sits up and talks while two workers kneel by him
+            sky(c); sun(c, 900, 560); far(c, t); walls(c, t); ground(c, t)
+            # dust still hanging; he sits up and talks while two workers kneel by him; everyone 40+ px inside the
+            # frame and standing on ground above the watermark and caption
             for k in range(6):
                 c.drawOval(skia.Rect(100 + k * 170 + 30 * math.sin(t * 0.3 + k) - 200, 1120 + 20 * math.sin(t * 0.5 + k) - 70, 100 + k * 170 + 30 * math.sin(t * 0.3 + k) + 200, 1120 + 20 * math.sin(t * 0.5 + k) + 70), P((226, 206, 176), 40, MaskFilter=blur(40)))
-            c.drawOval(skia.Rect(0, 1380, 600, 1420), P((90, 64, 52), 90, MaskFilter=blur(10)))
-            c.drawOval(skia.Rect(520, 1385, 1080, 1420), P((90, 64, 52), 90, MaskFilter=blur(10)))
-            tchars.draw_workers(c, t, 425, 1420 - 730 * 0.54, 0.54)
-            tchars.draw_sit(c, t, -80, 1420 - 735 * 0.58, 0.58, talk=smooth((t - T['talking']) / 0.3), daze=1 - smooth((t - T['talking']) / 0.6))
-        motes(c, t, 30)
-        c.restore()
+            gy = SIT_GROUND
+            tchars.draw_workers(c, t, SIT_WX, gy - 730 * SIT_S * 0.54 / 0.58, SIT_S * 0.54 / 0.58)
+            tchars.draw_sit(c, t, SIT_GX, gy - 735 * SIT_S, SIT_S, talk=smooth((t - T['talking']) / 0.3), daze=1 - smooth((t - T['talking']) / 0.6))
+            motes(c, t, 30)
+            c.restore()
+            fg_rubble(c, t, 0, y0=1600)
     # ---------------- D: afterward, dusk (and2 .. all)
-    if T['and2'] - 0.3 <= t < T['all'] and a < 0.99:
+    if T['and2'] - 0.3 <= t < T['all'] - 0.25 and a < 0.99:
         u = smooth((t - T['and2'] + 0.3) / (T['all'] - T['and2'] + 0.3))
         c.save()
         z = 1.0 + 0.05 * u
         c.translate(540, 960); c.scale(z, z); c.translate(-540, -960)
         scene_dusk(c, t, u * 4)
         c.restore()
+        fg_rubble(c, t, 0, u_dusk=0.85, y0=1610)
         fa = 1 - smooth((t - T['and2'] + 0.3) / 0.3)
         if fa > 0: c.drawRect(skia.Rect(0, 0, W, H), P((10, 10, 20), 255 * fa))
     # ---------------- B: the head cutaway (went .. landed) and again (but .. and2)
@@ -604,32 +714,43 @@ def frame(t):
     a = max(a1, a2)
     if a > 0.01:
         if a1 >= a2:
-            pu = smooth((t - T['went']) / (T['came'] + 0.9 - T['went']))
-            ru = (t - T['went'] - 0.1) / (T['came'] + 1.0 - T['went'])
-            # a round lens grows from his head (iris) as the cut comes in
-            head_xray(c, t, 1.0, 0.0, pu, ru if 0 <= ru <= 1 else -1)
+            # the iron's point: at the cheek on "under", behind the eye on "cheekbone", out the top on "top"
+            n_ = SKL.rod_dir()[2]
+            tw = WD.at('under'); tc_ = WD.at('cheekbone'); tt_ = WD.at('top')
+            if t < tw: tip = lerp(-70, 0, smooth((t - T['went'] + 0.35) / (tw - T['went'] + 0.35)))
+            elif t < tc_: tip = lerp(0, 52, (t - tw) / (tc_ - tw))
+            elif t < tt_: tip = lerp(52, n_, smooth((t - tc_) / (tt_ - tc_)))
+            else: tip = n_ + 320 * smooth((t - tt_) / 0.9)
+            head_xray(c, t, 1.0, 0.0, max(0.0, min(1.0, tip / n_)), tip)
             fl = 1 - smooth((t - T['went'] + 0.35) / 0.12)
             if fl > 0: c.drawRect(skia.Rect(0, 0, W, H), P((255, 250, 240), 170 * fl))
         else:
             hl = smooth((t - T['frontal']) / 0.4)
-            head_xray(c, t, a2, hl, 1.0, -1)
-            for word, txt, x, y, col in (('frontal', 'LEFT FRONTAL LOBE', 300, 540, (255, 190, 96)), ('plans', 'PLANS AHEAD', 820, 600, (46, 230, 214)), ('keeps', 'KEEPS YOU IN CHECK', 760, 690, (46, 230, 214))):
-                u = smooth((t - T[word]) / 0.25)
+            head_xray(c, t, a2, hl, 1.0, None)
+            # labels outside the head, each with its own leader and dot; the iron's track never crosses a label
+            for word, txt, x, y, col, anc in (('frontal', 'LEFT FRONTAL LOBE', 236, 650, (255, 190, 96), (-84, -64)),
+                                              ('plans', 'PLANS AHEAD', 200, 760, (46, 230, 214), (-88, -40)),
+                                              ('keeps', 'KEEPS YOU IN CHECK', 238, 870, (46, 230, 214), (-84, -14))):
+                u = smooth((t - T[word] + 0.05) / 0.12)
                 if u > 0:
-                    anc = (HC[0] - 62 * HS, HC[1] - 76 * HS) if word == 'frontal' else (HC[0] - 30 * HS, HC[1] - 60 * HS)
-                    L.chip(c, txt, x, y, col, 42, a2 * u, 0.9 + 0.1 * u, anchor=anc)
+                    L.chip(c, txt, x, y, col, 30, a2 * u, 0.94 + 0.06 * u, anchor=xp(anc))
     # dips between sections
-    for tc in (T['all'] - 0.25,):
-        d = abs(t - tc)
-        if d < 0.25: c.drawRect(skia.Rect(0, 0, W, H), P((10, 10, 20), 255 * (1 - d / 0.25)))
+    in_sky = T['off'] + 0.5 <= t < T['went'] - 0.35
     vg = skia.GradientShader.MakeRadial(skia.Point(W / 2, H * 0.5), H * 0.72, [C((0, 0, 0), 0), C((0, 0, 0), 0), C((10, 6, 20), 130)], [0, 0.62, 1.0])
-    c.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Shader=vg))
+    if not in_sky: c.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Shader=vg))
     # ---------------- layout
     L.fades(c)
     L.badge(c, 'AP PSYCHOLOGY')
     titles(c, t)
     if t < END + 0.3: L.watermark(c)
-    CAP.draw(c, t)
+    tc_ = T['all'] - 0.25
+    if not (tc_ - 0.1 <= t < tc_ + 0.3): CAP.draw(c, t)      # no text over the fade into the bright tamp
+    # one clean transition from dusk to the bright tamp: everything (captions too) fades to black, then back up
+    tc = T['all'] - 0.25
+    if tc - 0.35 <= t < tc:
+        c.drawRect(skia.Rect(0, 0, W, H), P((10, 10, 20), 255 * smooth((t - tc + 0.35) / 0.35)))
+    elif tc <= t < tc + 0.3:
+        c.drawRect(skia.Rect(0, 0, W, H), P((10, 10, 20), 255 * (1 - smooth((t - tc) / 0.3))))
     end_line(c, t, END + 0.3)
     return surf
 

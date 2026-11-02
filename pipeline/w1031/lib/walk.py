@@ -91,6 +91,11 @@ class Gait:
         heel = an + self._rot(self.heel, pitch); toe = an + self._rot(self.toe, pitch)
         return an, pitch, heel, toe, planted
 
+    def state_at(self, d):
+        """the state after the body has travelled d px (phase tied to distance, so the planted feet stay locked even
+        when the travel speed changes, e.g. a sled that eases in and out)"""
+        return self.state(self.t0 + d / self.v)
+
     def state(self, t, stop=None):
         """the pose fields for time t: x, y (pelvis), leg targets, foot pitches, arms, lean; plus foot points"""
         st = self.st

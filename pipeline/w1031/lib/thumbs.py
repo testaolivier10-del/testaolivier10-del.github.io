@@ -58,26 +58,10 @@ def gage():
     m = load('/home/claude/lp/w1031/gage/build.py', 'gage')
     bg = clean(m, 2.0, f'{OUT}/w1031-02-phineas-gage/clean_a.png')
     bg2 = clean(m, 10.5, f'{OUT}/w1031-02-phineas-gage/clean_b.png')
-    def head(c):
-        c.save(); c.translate(0, 0)
-        skin = None
-        m.head_xray(c, 11.0, 1.0, 0.6, 1.0, -1)
-        c.restore()
-    # A: the x-ray head with the iron through it, cut to the head shape
+    # A: the x-ray head (lib/skull.py) with the iron through it, point out of the top
     def headcut(c):
-        p = skia.Path()
-        pts = [(60, -120), (10, -138), (-50, -128), (-92, -96), (-112, -50), (-118, -10), (-130, 18), (-122, 30), (-112, 40),
-               (-116, 58), (-106, 70), (-100, 92), (-80, 108), (-52, 112), (-36, 130), (-30, 190), (60, 200), (64, 120),
-               (96, 60), (104, 0), (96, -60), (82, -100)]
-        from lpk import smooth_closed
-        sk = smooth_closed([(m.HC[0] + x * m.HS, m.HC[1] + y * m.HS) for x, y in pts])
-        c.save(); c.clipPath(sk, skia.ClipOp.kIntersect, True)
-        m.head_xray(c, 11.0, 1.0, 0.7, 1.0, -1)
-        c.restore()
-        # the iron through the skull, point out of the top
-        E0 = (m.HC[0] - 58 * m.HS, m.HC[1] + 44 * m.HS); E1 = (m.HC[0] - 34 * m.HS, m.HC[1] - 132 * m.HS)
-        d = (E1[0] - E0[0], E1[1] - E0[1]); n = math.hypot(*d); ux, uy = d[0] / n, d[1] / n
-        m.rod(c, E0[0] - ux * 140, E0[1] - uy * 140, E1[0] + ux * 200, E1[1] + uy * 200)
+        import skull as SKL
+        SKL.draw_xray(c, m.HC[0], m.HC[1], m.HS, 11.0, 0.7, 1.0, SKL.rod_dir()[2] + 180)
     ha = hero(headcut)
     def burst_g(cv):
         tp.burst(cv, 470, 1240, 90, tp.RED)
@@ -108,7 +92,8 @@ def cold():
         d.line(pts, fill=(255, 70, 70), width=16, joint='curve')
     a = compose(bg, ha, 760, 540, 1150, 'ONE ROUGH LIFT', 'CAN STOP HIS HEART', 'NREMT  EMT TRAPS #2', (63, 194, 169), f'{OUT}/w1031-01-cold-heart/thumb_a.png', graphic=pulse, box=tp.RED, box_txt=tp.WHITE)
     def hrt(c):
-        m.heart(c, 540, 960, 3.2, 3.0, 0, 0.0)
+        import heart as HT
+        HT.draw_heart(c, 540, 1000, 2.6, 3.0, 0.0, 0.0)
     hb = hero(hrt)
     b = compose(bg, hb, 1050, 540, 1150, 'TOO COLD', 'HANDLE GENTLY', 'NREMT  EMT TRAPS #2', (63, 194, 169), f'{OUT}/w1031-01-cold-heart/thumb_b.png', graphic=pulse)
     return a, b

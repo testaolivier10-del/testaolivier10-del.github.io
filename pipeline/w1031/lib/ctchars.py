@@ -38,12 +38,12 @@ def _light_from(rim, default_sd, rim_col=(255, 206, 120), rim_a=200):
 
 
 # ===================================================================== the casts
-GAGE = Spec(name='Phineas Gage', height=1.0, build=1.04, legs=0.96, shoulders=1.02, head=1.0, jaw=1.08, chin=0.25, nose='straight', nose_size=0.62,
-            ear_back=0.16, cheek_tone=0.85, jaw_shadow=0.9, sideburn=True,
+GAGE = Spec(name='Phineas Gage', height=1.0, build=1.04, legs=0.8, torso=1.42, shoulders=1.02, head=1.0, jaw=1.08, chin=0.25, nose='straight', nose_size=0.62,
+            ear_back=0.16, cheek_tone=0.0, jaw_shadow=0.0, sideburn=False,
             eye=0.95, brow=1.15, skin=(240, 174, 132), skin_sh=(212, 132, 100), hair=(64, 38, 28), hair_sh=(46, 26, 20),
             hair_style='side_part',
-            top=dict(kind='shirt', col=(248, 236, 206), sh=(224, 204, 168), sleeves='rolled', collar=True),
-            vest=dict(col=(104, 70, 46), sh=(78, 50, 34), buttons=(60, 40, 28), v=0.68), suspenders=(66, 42, 30),
+            top=dict(kind='shirt', col=(248, 236, 206), sh=(224, 204, 168), sleeves='rolled', collar=False),
+            vest=dict(col=(104, 70, 46), sh=(78, 50, 34), buttons=(60, 40, 28), v=0.86), suspenders=(66, 42, 30),
             trousers=dict(col=(86, 102, 118), sh=(60, 74, 88), loose=1.1),
             boots=dict(col=(140, 80, 46), sh=(104, 58, 36), sole=(70, 42, 30), kind='boot', size=1.14),
             hat=dict(kind='brim', col=(134, 88, 54), sh=(104, 66, 40), band=(76, 48, 32), y=0.4, w=1.6, h=0.72))
@@ -97,7 +97,27 @@ RESC_ORANGE = Spec(name='rescuer orange', height=0.94, build=0.92, shoulders=0.9
 P_GAGE, P_GAGE_SCAR = Person(GAGE), Person(GAGE_SCAR)
 P_RED, P_DARK, P_RED_D, P_DARK_D = Person(RED), Person(DARK), Person(RED_DUSK), Person(DARK_DUSK)
 P_PAT, P_RR, P_RO = Person(PATIENT), Person(RESC_RED), Person(RESC_ORANGE)
-P_PAT_WARM = Person(Spec(**{**PATIENT.__dict__, 'cold': 0.0}))     # wrapped on the sled, warming
+P_PAT_WARM = Person(Spec(**{**PATIENT.__dict__, 'cold': 0.0}))
+P_PAT_SLED = Person(Spec(**{**PATIENT.__dict__, 'cold': 0.0, 'hair_style': 'none', 'hat': dict(kind='beanie', col=(40, 52, 106), sh=(30, 38, 84), y=0.36)}))     # wrapped on the sled, warming
+
+
+def plant(per, pose, side, pt, finger_dir=(-1.0, 0.0), prefer=(0.3, 1.0), kind='flat', back=34.0):
+    """set an arm so the palm rests on the point pt (a surface: ground, knee, thigh, rim) with the fingers along finger_dir"""
+    pt = V(pt); fd = V(finger_dir) / (np.hypot(*finger_dir) + 1e-9)
+    J = per.skeleton(pose); u = J['R'] / (per.HEAD_R * per.sp.head)
+    tgt = pt - fd * back * u
+    for _ in range(3):
+        setattr(pose, 'arm_' + side, ('ik', tuple(tgt), prefer))
+        J = per.skeleton(pose)
+        d = J['wr_' + side] - J['el_' + side]; d = d / (np.hypot(*d) + 1e-9)
+        tgt = pt - (d * 0.5 + fd * 0.5) * back * u
+    setattr(pose, 'arm_' + side, ('ik', tuple(tgt), prefer))
+    J = per.skeleton(pose)
+    d = J['wr_' + side] - J['el_' + side]
+    rot = math.degrees(math.atan2(fd[1], fd[0]) - math.atan2(d[1], d[0]))
+    rot = (rot + 180) % 360 - 180
+    setattr(pose, 'hand_' + side, kind); setattr(pose, 'hand_rot_' + side, max(-70.0, min(70.0, rot)))
+    return pose
 
 
 def _in_ref(c, x0, y0, s, fn, flip=False):
@@ -125,22 +145,24 @@ def _rod_x(y):
     return ROD_BOT[0] + (y - ROD_BOT[1]) * (ROD_TOP[0] - ROD_BOT[0]) / (ROD_TOP[1] - ROD_BOT[1])
 
 
-def tamp_pose(t, lift, br, knock=0.0):
+def tamp_pose(t, lift, br, knock=0.0, wound=0.0):
     m = tamp_upper_matrix(lift, br)
     rot = 11.0 * lift - 3.0 + 0.4 * br
     hp = m.mapXY(*TAMP_PIVOT)
     g1 = m.mapXY(*TAMP_GRIP); ox, oy = g1.x() - TAMP_GRIP[0], g1.y() - TAMP_GRIP[1]
     u = TAMP_S
-    gf = V(_rod_x(452) + ox, 452 + oy); gn = V(_rod_x(540) + ox, 540 + oy)
-    # weight into the rod: chest leaning over the hands, front knee bent, back leg long
-    pose = Pose(x=hp.x() + 30, y=hp.y() + 18, s=TAMP_S, face=-1, yaw=0.14, lean=10 - 0.8 * rot, hunch=2, br=br, nod=6 - 0.3 * rot, neck_lean=-14, ground=1150,
-                leg_f=('ik', (378, 1150 - 70), (-1, -0.1)), leg_n=('ik', (640, 1150 - 70), (-1, -0.3)), foot_f=0.0, foot_n=0.0,
-                hand_n='grip', hand_f='grip', mouth='closed', brow_ang=0.0, brow_up=0.0, eyes='open', look=(0.5, 0.5), blink=blink_at(t, 0.3), t=t)
+    gf = V(_rod_x(418) + ox, 418 + oy); gn = V(_rod_x(462) + ox, 462 + oy)      # fists stacked at chest height
+    # tamping: square over the iron, feet flat about shoulder width (turned a little toward us so the stance reads as
+    # width, not a stride), knees soft, chest leaning over his hands, looking down at the hole
+    pose = Pose(x=hp.x() + 44, y=1150 - P_GAGE.standing_hip(Pose(s=TAMP_S)) * 0.95 + 16 * (1 - lift), s=TAMP_S, face=-1, yaw=0.24, hips_yaw=0.4,
+                lean=9 - 0.6 * rot, hunch=-2, br=br, nod=20 - 0.4 * rot, neck_lean=-6, ground=1150,
+                leg_f=('ik', (470, 1150 - 70), (-1, -0.15)), leg_n=('ik', (560, 1150 - 70), (-1, -0.15)), foot_f=0.0, foot_n=0.0,
+                hand_n='grip', hand_f='grip', mouth='closed', brow_ang=0.0, brow_up=0.0, eyes='open', look=(0.0, 0.9), blink=blink_at(t, 0.3), t=t, wound=wound)
     J = P_GAGE.skeleton(pose)
     for side, g in (('n', gn), ('f', gf)):
         d = g - J['sh_' + side]; d = d / (np.hypot(*d) + 1e-9)
         w = g - d * 40 * u
-        setattr(pose, 'arm_' + side, ('ik', tuple(w), (0.3, 1.0)))
+        setattr(pose, 'arm_' + side, ('ik', tuple(w), (1.0, 0.35)))       # elbows bent back and out: pushing down
     if knock > 0:
         k = smooth(knock); ka = smooth(knock * 2.4)       # the arms are thrown faster than the body tips
         pose.nod = pose.nod - 8 * k; pose.lean = pose.lean - 12 * k; pose.neck_lean = pose.neck_lean + 6 * k
@@ -176,11 +198,18 @@ def _cheek_rest():
     return (r.x(), r.y())
 
 
-def draw_tamp(c, t, x0, y0, s, lift, br, knock=0.0, heel=(600.0, 1150.0), hat_fly=0.0):
-    """knock: 0..1, thrown backward (to the right, away from the blast) about the heel; hat_fly: 0..1 the hat flies off"""
-    pose = tamp_pose(t, lift, br, knock)
+TAMP_FEET = []     # [(x_left, x_right, ground_y)] in screen px per boot, set by draw_tamp (unrotated), for contact shadows
+
+
+def draw_tamp(c, t, x0, y0, s, lift, br, knock=0.0, heel=None, hat_fly=0.0, wound=0.0):
+    """knock: 0..1, thrown backward (to the right, away from the blast) about the heel; hat_fly: 0..1 the hat flies off;
+    wound: 0..1 the entry wound under his left cheekbone (the scene sets it from the moment of impact)"""
+    pose = tamp_pose(t, lift, br, knock, wound)
     lt = Light(sd=(0.75, -0.66), rim=(255, 206, 120), rim_a=210)
     c.save()
+    if heel is None:           # he tips back about his back heel, so his whole body (boots included) stays joined
+        Jh = P_GAGE.skeleton(tamp_pose(t, lift, br, 0.0))
+        heel = (float(Jh['an_n'][0]) + 30.0, 1150.0)
     if knock > 0:
         c.translate(x0 + heel[0] * s, y0 + heel[1] * s); c.rotate(24 * knock); c.translate(-(x0 + heel[0] * s), -(y0 + heel[1] * s))
     c.save(); c.translate(x0, y0); c.scale(s, s)
@@ -191,6 +220,7 @@ def draw_tamp(c, t, x0, y0, s, lift, br, knock=0.0, heel=(600.0, 1150.0), hat_fl
         hm = rot_about(hc[0] + d[0], hc[1] + d[1], 220 * hat_fly); hm.preTranslate(*d)
         pose.hat_m = hm
     J = P_GAGE.draw(c, pose, lt, t)
+    TAMP_FEET[:] = [(x0 + float(J['an_' + k][0] - 40 * TAMP_S) * s, x0 + float(J['an_' + k][0] + 150 * TAMP_S) * s, y0 + 1150 * s) for k in ('n', 'f')]
     if hat_fly > 0:
         # the hat is drawn last, in flight, with its own rim
         H = P_GAGE.head_model(pose, J)
@@ -219,22 +249,23 @@ def grip_screen(x0, y0, s, lift, br):
 
 
 # ===================================================================== Gage sitting, talking (ref/gage_sit.png frame)
-def sit_pose(t, talk, daze):
+def sit_pose(t, talk, daze, wound=1.0):
     br = math.sin(t * 1.5)
     nod = (2.5 * math.sin(t * 5.5) * talk) + (-3 * daze * (0.5 + 0.5 * math.sin(t * 0.9)))
     wave = 7 * math.sin(t * 4.2) * talk - 10 * (1 - talk)
     hx, hy = 640 + 10 * math.sin(t * 4.2) * talk, 330 + 30 * (1 - talk) + 6 * math.cos(t * 4.2) * talk
     return Pose(x=780, y=640 - 2 * br, s=1.12, face=-1, yaw=0.3, hat_off=True, lean=-17, hunch=-2, br=br, head_face=1, head_yaw=0.5, nod=4 + nod, roll=3,
-                leg_f=('ik', (160, 700), (-1, -1)), foot_f=-82, leg_n=('ik', (395, 676), (0, -1)), foot_n=-6,
+                leg_f=('ik', (160, 700), (-1, -1)), foot_f=-82, leg_n=('ik', (395, 676), (0, -1)), foot_n='auto',
                 arm_f=('ik', (1020, 690), (1, -0.4)), hand_f='flat', hand_rot_f=0,
                 arm_n=('ik', (hx, hy), (0.4, 1.0)), hand_n='gesture', hand_rot_n=wave - 30,
                 mouth='talk' if talk > 0.05 else 'closed', talk=0.5 + 0.5 * math.sin(t * 11) if talk > 0.05 else 0.0,
                 brow_up=0.05 * daze, brow_ang=0.4 * daze + 0.25, eyes='half' if daze > 0.6 else 'open', blink=blink_at(t, 1.1),
-                look=(0.3, 0.0), ground=735, far_leg_front=False, t=t)
+                look=(0.3, 0.0), ground=735, far_leg_front=False, t=t, wound=wound)
 
 
-def draw_sit(c, t, x0, y0, s, talk=0.0, daze=1.0):
-    pose = sit_pose(t, talk, daze)
+def draw_sit(c, t, x0, y0, s, talk=0.0, daze=1.0, wound=1.0):
+    pose = sit_pose(t, talk, daze, wound)
+    plant(P_GAGE, pose, 'f', (1018, 733), finger_dir=(1, 0.05), prefer=(1, -0.4))
     lt = Light(sd=(0.75, -0.66), rim=(255, 206, 120), rim_a=200)
     _in_ref(c, x0, y0, s, lambda cv: P_GAGE.draw(cv, pose, lt, t))
 
@@ -245,15 +276,23 @@ def workers_poses(t):
     g = 722
     red = Pose(x=598, y=P_RED.kneel_hip_y(0.98, g, 12), s=0.98, face=-1, yaw=0.36, lean=26, hunch=10, br=br, nod=6 + 2.0 * math.sin(t * 1.3), head_yaw=0.42,
                neck_lean=-10,
-               leg_f=('ik', (432, g - 66), (-1, -1)), foot_f=0, leg_n=('fk2', 12, -84), foot_n=68,
+               leg_f=('ik', (432, g - 66), (-1, -1)), foot_f='auto', leg_n=('fk2', 12, -74), foot_n='auto',
                arm_f=('ik', (330 + 8 * math.sin(t * 1.7), 540 + 10 * math.sin(t * 1.7)), (0.2, 1)), hand_f='open', hand_rot_f=-20,
                arm_n=('ik', (650, 530), (1, 0.2)), hand_n='relaxed', brow_ang=0.7, brow_up=0.03, mouth='sad', look=(-0.5, -0.3),
                blink=blink_at(t, 0.5), ground=g, t=t)
     dark_ = Pose(x=915, y=P_DARK.kneel_hip_y(0.98, g, 8), s=0.98, face=-1, yaw=0.32, lean=14, hunch=6, br=math.sin(t * 1.1 + 1), nod=8 + 1.5 * math.sin(t * 1.1 + 1), head_yaw=0.42,
-                 leg_f=('ik', (772, g - 66), (-1, -1)), foot_f=0, leg_n=('fk2', 8, -84), foot_n=68,
+                 leg_f=('ik', (772, g - 66), (-1, -1)), foot_f='auto', leg_n=('fk2', 8, -74), foot_n='auto',
                  arm_f=('ik', (835, 505), (1, 0.4)), hand_f='relaxed', hand_rot_f=10, far_arm_front=True,
-                 arm_n=('ik', (1000, 470), (1, 0.5)), hand_n='fist', brow_ang=0.8, brow_up=0.03, mouth='sad', look=(-0.8, 0.1),
+                 arm_n=('ik', (1000, 470), (1, 0.5)), hand_n='relaxed', brow_ang=0.8, brow_up=0.03, mouth='sad', look=(-0.8, 0.1),
                  blink=blink_at(t, 1.9), ground=g, t=t)
+    # hands on surfaces: the red man reaches to the ground toward Gage and steadies himself on his front knee; the dark
+    # man rests a forearm on his front knee and sets his other hand on his hip
+    Jr = P_RED.skeleton(red); Jd = P_DARK.skeleton(dark_)
+    # the red man reaches toward Gage, hand open and low, palm down (about to steady him)
+    red.arm_f = ('ik', (268 + 6 * math.sin(t * 1.7), 548 + 4 * math.sin(t * 1.3)), (0.3, 1.0)); red.hand_f = 'gesture'; red.hand_rot_f = 20
+    plant(P_DARK, dark_, 'n', Jd['pelvis'] + V(26, -10), finger_dir=(-0.3, 1), prefer=(1, 0.2), kind='relaxed')
+    plant(P_RED, red, 'n', Jr['kn_f'] + V(10, -36), finger_dir=(-1, 0.5), prefer=(1, 0.3), kind='relaxed')
+    plant(P_DARK, dark_, 'f', Jd['kn_f'] + V(-6, -40), finger_dir=(-1, 0.7), prefer=(1, 0.4), kind='relaxed')
     return red, dark_
 
 
@@ -274,12 +313,12 @@ def dusk_gage_pose(t, turn, walk_u=None):
     br = math.sin(t * 1.4)
     pose = Pose(x=140, y=690 - P_GAGE_SCAR.standing_hip(Pose(s=DUSK_GAGE_S)) * 0.995, s=DUSK_GAGE_S, face=1, yaw=0.62, lean=2, br=br,
                 head_yaw=0.62 - 0.55 * turn, head_face=1 if turn < 0.55 else -1, nod=-3 + 2 * turn, roll=2 * turn,
-                arm_n=('ang', 0, 8, 9), arm_f=('ang', 0, 8, 7), leg_n=('ang', 0, 0, 3), leg_f=('ang', 0, 0, 3),
+                arm_n=('ang', 4, 20, 9), arm_f=('ang', 2, 18, 7), leg_n=('ang', 0, 0, 3), leg_f=('ang', 0, 0, 3),
                 eyes='open', blink=0.55 if turn < 0.3 else 0.4, mouth='sad', brow_ang=0.6, look=(0, -0.8), ground=690, t=t)
     return pose
 
 
-DUSK_WALK = dict(t0=None, v=74.0, step_scale=0.62)
+DUSK_WALK = dict(t0=None, v=185.0, step_scale=1.0)
 
 
 def draw_dusk_gage(c, t, x0, y0, s, turn=0.0, tint=None, walk_t0=None):
@@ -291,7 +330,7 @@ def draw_dusk_gage(c, t, x0, y0, s, turn=0.0, tint=None, walk_t0=None):
     if walk_t0 is not None and t > walk_t0:
         u = t - walk_t0
         g = dusk_gait()
-        TT = 0.8
+        TT = 0.3
         st, feet = g.state(max(0.0, u - TT))
         if u < TT:
             # he turns through facing us: yaw opens to front on his own side, then closes on the other side
@@ -307,11 +346,20 @@ def draw_dusk_gage(c, t, x0, y0, s, turn=0.0, tint=None, walk_t0=None):
             for k_, v_ in st.items(): setattr(pose, k_, v_)
             pose.yaw = 0.12; pose.head_face = -1; pose.head_yaw = 0.22; pose.nod = 2 + st['nod']; pose.lean = 2 + 1.0 * math.sin(u * 3); pose.hunch = 0; pose.neck_lean = -4
             pose.hand_n = pose.hand_f = 'relaxed'
+            # soft elbows while walking: the gait's swing angle with an extra bend
+            pose.arm_n = ('ang', st['arm_n'][1], st['arm_n'][2] + 22); pose.arm_f = ('ang', st['arm_f'][1], st['arm_f'][2] + 22)
+    if walk_t0 is None or t <= walk_t0:
+        Jg = P_GAGE_SCAR.skeleton(pose); ug = Jg['R'] / (P_GAGE_SCAR.HEAD_R * P_GAGE_SCAR.sp.head)
+        for sd in ('n', 'f'):
+            sh_ = Jg['sh_' + sd]; o = 1 if sh_[0] > Jg['pelvis'][0] else -1
+            L_ = (P_GAGE_SCAR.UPPER + P_GAGE_SCAR.FORE) * ug
+            setattr(pose, 'arm_' + sd, ('ik', (sh_[0] + o * 6 * ug + 0.32 * L_, sh_[1] + 0.9 * L_), (-1, 0.2)))
+        pose.hand_n = pose.hand_f = 'relaxed'
     _in_ref(c, x0, y0, s, lambda cv: P_GAGE_SCAR.draw(cv, pose, lt, t))
 
 
 def dusk_gait():
-    return Gait(P_GAGE_SCAR, DUSK_GAGE_S, 140, 690, dir=-1, v=DUSK_WALK['v'], style='slow', yaw=0.12, step_scale=DUSK_WALK['step_scale'])
+    return Gait(P_GAGE_SCAR, DUSK_GAGE_S, 140, 690, dir=-1, v=DUSK_WALK['v'], style='walk', yaw=0.12, step_scale=DUSK_WALK['step_scale'])
 
 
 def draw_dusk_friends(c, t, x0, y0, s, lean=0.0, tint=None):
@@ -320,10 +368,10 @@ def draw_dusk_friends(c, t, x0, y0, s, lean=0.0, tint=None):
     br = math.sin(t * 1.2)
     red = Pose(x=135, y=690 - P_RED_D.standing_hip(Pose(s=s1)) * 0.995, s=s1, face=-1, yaw=0.62, lean=1, br=br,
                nod=8 + 4 * lean + 1.2 * math.sin(t * 1.2), roll=3 * lean, head_yaw=0.66,
-               arm_n=('ang', 0, 6, 12), arm_f=('ang', 0, 6, 8), hand_n='fist', hand_f='relaxed', leg_n=('ang', 0, 0, 3), leg_f=('ang', 0, 0, 3),
+               arm_n=('ang', 6, 26, 12), arm_f=('ang', 4, 22, 8), hand_n='relaxed', hand_f='relaxed', leg_n=('ang', 0, 0, 3), leg_f=('ang', 0, 0, 3),
                brow_ang=0.6, brow_up=0.03, mouth='frown', look=(-0.6, 0.0), blink=blink_at(t, 0.4), ground=690, t=t)
     sh_d = 0.0
-    dk = Pose(x=300, y=690 - P_DARK_D.standing_hip(Pose(s=s2)) * 0.995, s=s2, face=-1, yaw=0.55, lean=2, br=math.sin(t * 1.0 + 2),
+    dk = Pose(x=350, y=690 - P_DARK_D.standing_hip(Pose(s=s2)) * 0.995, s=s2, face=-1, yaw=0.55, lean=2, br=math.sin(t * 1.0 + 2),
               nod=6 + 3 * lean + 1.0 * math.sin(t * 1.0 + 2), roll=-4 * lean, head_yaw=0.6,
               leg_n=('ang', 0, 0, 3), leg_f=('ang', 0, 0, 3), brow_ang=0.7, brow_up=0.05, mouth='sad', look=(-0.7, 0.0),
               blink=blink_at(t, 2.2), ground=690, t=t, far_arm_front=True)
@@ -332,6 +380,13 @@ def draw_dusk_friends(c, t, x0, y0, s, lean=0.0, tint=None):
     chest = J['at'](0.58)[0]
     dk.arm_n = ('ik', tuple(chest + V(-62, 14)), (0.4, 1)); dk.hand_n = 'fist'
     dk.arm_f = ('ik', tuple(chest + V(36, 0)), (-0.4, 1)); dk.hand_f = 'fist'
+    # the red man's arms hang with soft elbows, hands relaxed at the top of the thighs
+    Jr = P_RED_D.skeleton(red); ur = Jr['R'] / (P_RED_D.HEAD_R * P_RED_D.sp.head)
+    for sd in ('n', 'f'):
+        sh_ = Jr['sh_' + sd]; o = 1 if sh_[0] > Jr['pelvis'][0] else -1
+        L_ = (P_RED_D.UPPER + P_RED_D.FORE) * ur
+        setattr(red, 'arm_' + sd, ('ik', (sh_[0] + o * 0.1 * L_ - 0.12 * L_, sh_[1] + 0.92 * L_), (o, -0.3)))
+    red.hand_n = red.hand_f = 'relaxed'
     def fn(cv):
         P_DARK_D.draw(cv, dk, lt, t)
         P_RED_D.draw(cv, red, lt, t)
@@ -350,19 +405,25 @@ def ice_poses(t, lift_px, lean):
                leg_n=('fk2', -18, 12), leg_f=('fk2', 18, -12), mouth='talk', talk=0.12, eyes='open', blink=0.48, brow_ang=0.75, brow_up=0.08, look=(0.0, -0.3), t=t, far_arm_front=True)
     J = P_PAT.skeleton(pat)
     k = smooth((L - 70) / 110.0)
-    # hands on the ice in front, then hanging as he is lifted
-    ice_n = V(PATIENT_X - 100, 688); ice_f = V(PATIENT_X + 180, 666)
-    hang_n = J['sh_n'] + V(-92, 64); hang_f = J['sh_f'] + V(92, 64)      # he clutches the rescuers' forearms
-    pat.arm_n = ('ik', tuple(ice_n * (1 - k) + hang_n * k), (-0.6 * (1 - k), 1.0 * k - 0.2 * (1 - k))); pat.hand_n = 'flat' if k < 0.5 else 'fist'; pat.hand_rot_n = 25 * (1 - k)
-    pat.arm_f = ('ik', tuple(ice_f * (1 - k) + hang_f * k), (0.6 * (1 - k), 1.0 * k - 0.2 * (1 - k))); pat.hand_f = 'flat' if k < 0.5 else 'fist'; pat.hand_rot_f = -25 * (1 - k)
+    # forearms and hands rest on the ice of the far rim at the sides of the hole (above the waterline, never in front of
+    # the near lip); when he is lifted his arms hang limp at his sides, hands open
+    rim_n = V(PATIENT_X - 252, 612); rim_f = V(PATIENT_X + 252, 612)
+    hang_n = J['sh_n'] + V(26, 200); hang_f = J['sh_f'] + V(-26, 200)
+    pat.arm_n = ('ik', tuple(rim_n * (1 - k) + hang_n * k), (-0.7 * (1 - k) - 0.3 * k, -0.5 * (1 - k) + 0.2 * k)); pat.hand_n = 'flat' if k < 0.5 else 'relaxed'; pat.hand_rot_n = 0
+    pat.arm_f = ('ik', tuple(rim_f * (1 - k) + hang_f * k), (0.7 * (1 - k) + 0.3 * k, -0.5 * (1 - k) + 0.2 * k)); pat.hand_f = 'flat' if k < 0.5 else 'relaxed'; pat.hand_rot_f = 0
+    if k < 0.5:
+        plant(P_PAT, pat, 'n', rim_n, finger_dir=(-1, 0.0), prefer=(-0.7, -0.5)); plant(P_PAT, pat, 'f', rim_f, finger_dir=(1, 0.0), prefer=(0.7, -0.5))
     J = P_PAT.skeleton(pat)
-    grip_l = J['sh_n'] + V(-42, 28); grip_r = J['sh_f'] + V(42, 28)
+    # the rescuers' hands go under his armpits, on the jacket
+    grip_l = J['sh_n'] + V(-8, 62); grip_r = J['sh_f'] + V(8, 62)
     up = lean
-    red = Pose(x=232 - 20 * up, y=478 - 40 * up, s=0.78, face=1, yaw=0.32, lean=36 - 26 * up, hunch=10, br=br, nod=14 - 10 * up, head_yaw=0.36,
-               leg_f=('ik', (128, 628), (1, 0.5)), foot_f=70, leg_n=('ik', (352, 628 - 62), (1, -1)), foot_n=0,
+    # kneeling on one knee: back knee on the ice with the shin flat and toes tucked; front foot flat on solid ice
+    # outside the rim, the front thigh running from the hip to a knee below the chest
+    red = Pose(x=244 + 24 * up, y=P_RR.kneel_hip_y(0.78, 650, 4) - 12 * up, s=0.78, face=1, yaw=0.32, lean=40 - 12 * up, hunch=8 - 4 * up, br=br, nod=14 - 10 * up, head_yaw=0.36,
+               leg_f=('fk2', -4 - 10 * up, -100), foot_f=96, leg_n=('ik', (262 + 24 * up, 650 - 62), (1, -0.6)), foot_n='auto', near_leg_front=True,
                hand_n='grip', hand_f='grip', mouth='closed', brow_ang=-0.3, look=(0.5, 0.2), blink=blink_at(t, 0.8), ground=650, t=t)
-    org = Pose(x=1080 + 20 * up, y=500 - 40 * up, s=0.72, face=-1, yaw=0.32, lean=36 - 26 * up, hunch=10, br=math.sin(t * 1.5 + 1), nod=12 - 8 * up, head_yaw=0.4,
-               leg_f=('ik', (1188, 628), (-1, 0.5)), foot_f=70, leg_n=('ik', (968, 628 - 58), (-1, -1)), foot_n=0,
+    org = Pose(x=1070 - 24 * up, y=P_RO.kneel_hip_y(0.72, 650, 4) - 12 * up, s=0.72, face=-1, yaw=0.32, lean=40 - 12 * up, hunch=8 - 4 * up, br=math.sin(t * 1.5 + 1), nod=12 - 8 * up, head_yaw=0.4,
+               leg_f=('fk2', -4 - 10 * up, -100), foot_f=96, leg_n=('ik', (1056 - 24 * up, 650 - 58), (-1, -0.6)), foot_n='auto', near_leg_front=True,
                hand_n='grip', hand_f='grip', mouth='closed', brow_ang=-0.2, look=(-0.5, 0.2), blink=blink_at(t, 2.0), ground=650, t=t)
     for p_, per, a, b in ((red, P_RR, grip_l, J['sh_n'] + V(10, -6)), (org, P_RO, grip_r, J['sh_f'] + V(-10, -6))):
         Jr = per.skeleton(p_)
@@ -375,8 +436,8 @@ def draw_ice(c, t, x0, y0, s, lift_px=0.0, lean=0.0, water_y=636, rim=None):
     lt = _light_from(rim, (0.75, -0.66), rim_col=(196, 214, 255), rim_a=190)
     def fn(cv):
         clip = skia.Path(); clip.addRect(skia.Rect(-2000, -2000, 4000, water_y + 6))
-        P_RO.draw(cv, org, lt, t, shadow=False)
-        P_RR.draw(cv, red, lt, t, shadow=False)
+        P_RO.draw(cv, org, lt, t)
+        P_RR.draw(cv, red, lt, t)
         if smooth((lift_px - 70) / 110.0) > 0.4:
             cv.save(); cv.clipPath(clip, skia.ClipOp.kIntersect, True)
             P_PAT.draw(cv, pat, lt, t, clip_body=clip)
@@ -410,7 +471,45 @@ def _sled_parts():
 SLED_LAMP = [(655.0, 210.0), (700.0, 285.0)]      # helmet lamp and mouth (ref coords), for the build's beam and breath
 
 
-def draw_sled(c, t, x0, y0, s):
+SLED_ROPE_HAND = [(-200.0, 600.0)]   # where the pulling rescuer's rope meets him (ref coords), for the build's rope
+SLED_TAG_HAND = [(1200.0, 640.0)]    # the walking rescuer's hand on the tag line
+
+
+def _sled_walkers(t, travel, br):
+    """two rescuers walking left with the sled (foot locked, phase tied to the distance travelled): one beside its
+    tail with a hand on the rail, one ahead pulling the rope. Positions are in the sled's frame (ref coords); their
+    feet are planted in the world, so in this frame a planted foot slides right by exactly the sled's travel."""
+    out = []
+    for per, x_rel, style, s_, seed in ((P_RR, 1345.0, 'trudge', 0.84, 0.0), (P_RO, -180.0, 'trudge', 0.8, 0.37)):
+        g = Gait(per, s_, x_rel, 735, dir=-1, v=60.0, style=style, yaw=0.18)
+        st, feet = g.state_at(travel + seed * g.step * 2)
+        off = travel + seed * g.step * 2                     # back to the sled frame (the gait moved him left by this much)
+        def sh(p): return (p[0] + off, p[1])
+        pose = Pose(s=s_, yaw=0.18, hips_yaw=0.0, br=br, ground=735, t=t, eyes='open', mouth='closed', look=(-0.6, 0.1), blink=blink_at(t, seed * 5))
+        for k_, v_ in st.items(): setattr(pose, k_, v_)
+        pose.x += off
+        pose.leg_n = ('ik', sh(st['leg_n'][1]), st['leg_n'][2]); pose.leg_f = ('ik', sh(st['leg_f'][1]), st['leg_f'][2])
+        if per is P_RR:           # stooping beside the tail, near hand on the sled's rail, the other arm swinging
+            pose.lean = 24; pose.hunch = 8; pose.neck_lean = -16
+            pose.head_yaw = 0.3; pose.nod = 6 + st['nod']; pose.brow_ang = 0.3; pose.look = (-0.6, 0.5)
+            plant(per, pose, 'n', (1196, 404), finger_dir=(-1, 0.0), prefer=(1, 0.3), kind='grip')
+            plant(per, pose, 'f', (1226, 400), finger_dir=(-1, 0.0), prefer=(1, 0.3), kind='grip')
+            J = per.skeleton(pose)
+            SLED_TAG_HAND[:] = [tuple(J['wr_n'])]
+        else:                     # rope over the shoulder, both hands on it in front of the chest, leaning into it
+            J = per.skeleton(pose)
+            ch = J['at'](0.75)[0]
+            pose.arm_n = ('ik', tuple(ch + V(-30, 40)), (1, 0.6)); pose.arm_f = ('ik', tuple(ch + V(-6, 20)), (1, 0.6))
+            pose.hand_n = pose.hand_f = 'grip'; pose.brow_ang = -0.2; pose.head_yaw = 0.25
+            J = per.skeleton(pose)
+            SLED_ROPE_HAND[:] = [tuple(J['sh_f'] + V(4, -6))]     # the rope runs over his far shoulder, behind him
+        out.append((per, pose))
+    return out
+
+
+def draw_sled(c, t, x0, y0, s, travel=None):
+    """travel: None keeps the rescuer kneeling behind the sled, hands on the patient; a number (ref px the sled has
+    moved left in the world so far) draws two rescuers walking with it instead (see P_TO_S.md)"""
     lt = Light(sd=(0.75, -0.66), rim=(255, 236, 200), rim_a=150)
     br = math.sin(t * 1.4)
     body, lip, inner = _sled_parts()
@@ -422,6 +521,29 @@ def draw_sled(c, t, x0, y0, s):
                 hand_f='flat', hand_rot_f=20, hand_n='grip', hand_rot_n=-60, eyes='open', mouth='closed', brow_ang=0.25, look=(-0.5, -0.3),
                 blink=blink_at(t, 1.4), t=t)
     resc.arm_f = ('ik', (600 + 4 * math.sin(t * 1.1), 524 + 3 * math.sin(t * 1.1)), (0.3, 1)); resc.arm_n = ('ik', (760, 616), (1, 0.3))
+    if travel is not None:
+        walkers = _sled_walkers(t, travel, br)
+        def fn2(cv):
+            walkers[1][0].draw(cv, walkers[1][1], lt, t)                        # the puller ahead on the rope
+            cv.drawPath(inner, P(SLED_DK))
+            draw_wrapped_patient(cv, lt, t)
+            plate(cv, lt, body, SLED_O, SLED_O_SH, 120, k=0.3)
+            cv.drawPath(inter(poly([(100, 690), (1160, 690), (1160, 740), (100, 740)]), body), P(lt.col(SLED_O_SH)))
+            plate(cv, lt, lip, (252, 150, 64), SLED_O_SH, 20, k=0.4)
+            for x_, w_ in ((150, 64), (380, 92), (790, 96), (1044, 40)):
+                cv.drawPath(_rr(x_, 652, x_ + w_, 668, 7), P((150, 150, 160) if x_ in (380, 790) else (200, 84, 26)))
+            per, pose = walkers[0]
+            J = per.draw(cv, pose, lt, t)                                       # beside the tail, hand on the rail
+            # the sled's rear handle bar: from the tail up to the walker's hand height
+            hx_, hy_ = SLED_TAG_HAND[0]
+            # a T handle: an upright from the sled tail and a crossbar he holds with both hands
+            bar = union([tube([V(1146, 640), V(1176, 520), V(hx_ + 22, hy_ + 2)], [9, 8, 8]), hull2(V(hx_ - 34, hy_ + 8), 9, V(hx_ + 66, hy_ + 4), 9)])
+            plate(cv, lt, bar, (150, 156, 172), (104, 110, 128), 18, k=0.4)
+            H = per.head_model(pose, J)
+            SLED_LAMP[:] = [tuple(H.p(0, 0.66, 1.2)[0]), tuple(H.p(0, -0.62, 1.0)[0])]
+        _in_ref(c, x0, y0, s, fn2)
+        return
+
     def fn(cv):
         # the rescuer first (behind the sled), then the sled's inside, the patient, the near wall, and his arms on top
         cv.save(); cv.clipRect(skia.Rect(-2000, -2000, 4000, 712))      # nothing of him shows below the ice line behind the sled
@@ -453,11 +575,22 @@ def draw_wrapped_patient(c, lt, t):
         boot = smooth_closed([(bx - 10, by - 30), (bx + 24, by - 30), (bx + 32, by + 70), (bx + 18, by + 110), (bx - 6, by + 108), (bx - 12, by + 20)])
         plate(c, lt, boot, (34, 36, 52), (24, 26, 38), 40, k=0.3)
     # head (profile, lying on his back, face up), beanie
-    pose = Pose(x=0, y=0, s=0.76, face=1, yaw=0.08, roll=-86, eyes='closed', mouth='closed', brow_ang=0.5, t=t)
-    H = Head(V(222, 576), Person.HEAD_R * 0.76 * PATIENT.head, 1, 0.08, 0.0, -86.0)
-    J = dict(head=H.c, R=H.R, neck=V(290, 586))
-    P_PAT_WARM.draw_head(c, lt, pose, J, 0.76, t)
+    # lying on his back, head to the left, face turned a little toward us (nose up, beanie over the crown), a short
+    # neck into the hood of the blanket, which folds round the back of his head
+    pose = Pose(x=0, y=0, s=0.76, face=1, yaw=0.0, head_yaw=0.08, roll=-90, eyes='closed', mouth='closed', brow_ang=0.5, t=t)
+    Hd = Head(V(206, 574), Person.HEAD_R * 0.76 * PATIENT.head, 1, 0.08, 0.0, -90.0)
+    J = dict(head=Hd.c, R=Hd.R, neck=Hd.p(0, -1.2, -0.3)[0])
+    hood = smooth_closed([(330, 532), (300, 540), (262, 600), (250, 628), (292, 636), (334, 630), (346, 600)])
+    plate(c, lt, hood, (214, 220, 230), (176, 182, 196), 60, k=0.3)
+    P_PAT_SLED.draw_head(c, lt, pose, J, 0.76, t)
     plate(c, lt, wrap, (200, 206, 216), (164, 170, 184), 110, k=0.32)
+    # the hood's front fold tucks under his jaw
+    fold_ = smooth_closed([(330, 540), (314, 552), (308, 596), (322, 626), (346, 620), (344, 570)])
+    plate(c, lt, fold_, (214, 220, 230), (176, 182, 196), 30, k=0.3)
+    for sx_ in (520, 860):
+        st_ = inter(poly([(sx_, 500), (sx_ + 26, 500), (sx_ + 30, 640), (sx_ + 4, 640)]), wrap)
+        c.drawPath(st_, P(lt.col((40, 46, 70))))
+        c.drawRect(skia.Rect(sx_ + 2, 576, sx_ + 26, 596), P(lt.col((180, 184, 196))))
     c.save(); c.clipPath(wrap, skia.ClipOp.kIntersect, True)
     for pts in ([(430, 540), (520, 600), (600, 620)], [(640, 540), (720, 590), (760, 626)], [(860, 548), (900, 590), (960, 620)], [(330, 560), (380, 600)]):
         c.drawPath(tube([V(p) for p in pts], [5] * len(pts)), P(lt.col((176, 182, 196))))

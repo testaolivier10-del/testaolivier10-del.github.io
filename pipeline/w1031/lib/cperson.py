@@ -327,6 +327,7 @@ class Spec:
     cheek_tone: float = 0.0     # strength of a soft shade under the cheekbone and along the jaw
     jaw_shadow: float = 0.0     # strength of the shadow the jaw casts on the neck
     sideburn: bool = False      # a sideburn in front of the ear (shows under hats)
+    torso: float = 1.0          # torso (spine) length factor
     blush: float = 0.0
     # garments
     top: dict = field(default_factory=lambda: dict(kind='shirt', col=(244, 230, 196), sh=(214, 194, 156), sleeves='long', collar=True))
@@ -348,7 +349,8 @@ class Pose:
                     foot_n=0.0, foot_f=0.0, hand_n='relaxed', hand_f='relaxed', hand_rot_n=0.0, hand_rot_f=0.0,
                     eyes='open', blink=0.0, look=(0.0, 0.0), brow_ang=0.0, brow_up=0.0, mouth='closed', talk=0.0,
                     ground=None, far_arm_front=None, far_leg_front=False, hat_m=None, hat_off=False, hips_yaw=None,
-                    cuffs_up=False, sway=0.0, t=0.0, near_arm_behind=False, arms_crossed=False)
+                    cuffs_up=False, sway=0.0, t=0.0, near_arm_behind=False, arms_crossed=False,
+                    wound=0.0, near_leg_front=False)
 
     def __init__(self, **kw):
         for k, v in self.DEFAULTS.items(): setattr(self, k, v)
@@ -418,7 +420,7 @@ class Person:
     def lengths(self, pose):
         u = self.u(pose); L = self.sp.legs
         return dict(thigh=self.THIGH * u * L, shin=self.SHIN * u * L, upper=self.UPPER * u, fore=self.FORE * u,
-                    hand=self.HAND * u, spine=self.SPINE * u, R=self.HEAD_R * u * self.sp.head, u=u)
+                    hand=self.HAND * u, spine=self.SPINE * u * self.sp.torso, R=self.HEAD_R * u * self.sp.head, u=u)
 
     def kneel_hip_y(self, s, ground, thigh_ang, knee_r=40.0):
         """pelvis y for a pose whose kneeling leg has its knee on the ground"""
@@ -480,8 +482,8 @@ class Person:
         hy = pose.hips_yaw if pose.hips_yaw is not None else yaw
         hip_c, ha = at(0.0)
         hupv = V(f * math.sin(math.radians(ha)), -math.cos(math.radians(ha))); hnf = V(-hupv[1], hupv[0]); hnf = hnf if hnf[0] * f >= 0 else -hnf
-        J['hip_n'] = hip_c - hnf * 56 * b * u * hy + hnf * 4 * u * (1 - hy) + hupv * 4 * u
-        J['hip_f'] = hip_c + hnf * 56 * b * u * hy - hnf * 4 * u * (1 - hy) + hupv * 4 * u
+        J['hip_n'] = hip_c - hnf * 46 * b * u * hy + hnf * 4 * u * (1 - hy) + hupv * 4 * u
+        J['hip_f'] = hip_c + hnf * 46 * b * u * hy - hnf * 4 * u * (1 - hy) + hupv * 4 * u
         # head
         R = Ln['R']
         na = neck_a + pose.neck_lean
@@ -552,7 +554,7 @@ class Person:
         hp, kn, an = J['hip_' + side], J['kn_' + side], J['an_' + side]
         th = [hp, hp * 0.55 + kn * 0.45, kn]
         sh = [kn, kn * 0.7 + an * 0.3, an]
-        rt = [(64 + extra) * b * u, (55 + extra) * b * u, (40 + extra) * b * u]
+        rt = [(60 + extra) * b * u, (54 + extra) * b * u, (40 + extra) * b * u]
         rs = [(40 + extra) * b * u, (42 + extra) * b * u, (25 + extra) * b * u]
         return th, rt, sh, rs
 
@@ -562,6 +564,8 @@ class Person:
         an = J['an_' + side]; f = pose.face
         pitch = getattr(pose, 'foot_' + side)
         kind = bt.get('kind', 'boot')
+        if isinstance(pitch, str) and pitch == 'auto':
+            pitch = self.auto_pitch(pose, J, side, u)
         top = -96 if kind == 'tall' else (-62 if kind == 'boot' else -26)
         pts = [(-30, top), (-37, 6), (-42, 40), (-40, 54), (-30, 58), (118, 58), (138, 52), (142, 38), (130, 22), (96, 10), (54, -4), (30, top + 10), (24, top)]
         sole = [(-42, 44), (-42, 60), (-6, 60), (-4, 50), (14, 52), (30, 56), (120, 60), (139, 55), (143, 46), (40, 48), (-4, 44)]
@@ -574,6 +578,18 @@ class Person:
             return an + V(f * x2, y2)
         wid = 1 + 0.35 * pose.yaw
         return smooth_closed([tr((q[0], q[1])) for q in pts], 1.0), poly([tr(q) for q in sole]), tr((60, 58)), tr((-40, 56)), tr((140, 50))
+
+    def auto_pitch(self, pose, J, side, u):
+        """the foot pitch whose lowest sole point lands on pose.ground (searching from flat to toes tucked)"""
+        bt = self.sp.boots or {}; bs = bt.get('size', 1.12); sq = 1 - 0.72 * pose.yaw
+        an = J['an_' + side]; g = pose.ground if pose.ground is not None else an[1] + 60 * u * bs
+        best, bp = 1e9, 0.0
+        for p in range(-20, 101, 2):
+            r = math.radians(p)
+            low = max(an[1] + (x * sq * u * bs) * math.sin(r) + (60 * u * bs) * math.cos(r) for x in (-40, 140))
+            e = abs(low - g) + (0 if low <= g + 2 else 1000)
+            if e < best: best, bp = e, p
+        return float(bp)
 
     # -------------------------------------------------------------- hands
     def hand_shape(self, kind, u, size):
@@ -611,8 +627,8 @@ class Person:
             main = union(parts)
             lines = [((40 * s, -8 * s), (72 * s, -16 * s)), ((40 * s, 3 * s), (78 * s, -2 * s)), ((40 * s, 14 * s), (74 * s, 14 * s))]
         elif kind == 'flat':
-            main = union([T([(0, 0), (44, 0)], [18, 21]), T([(40, 0), (70, 1), (94, 3)], [21, 18, 14]), T([(10, 14), (26, 26), (40, 30)], [10, 9, 7.5])])
-            lines = [((52 * s, -8 * s), (92 * s, -6 * s)), ((52 * s, 2 * s), (94 * s, 4 * s)), ((52 * s, 11 * s), (90 * s, 12 * s))]
+            main = union([T([(0, 0), (44, 0)], [18, 21]), T([(40, 0), (70, 1), (94, 3)], [21, 18, 14]), T([(12, 16), (28, 32), (44, 40)], [10, 9, 7.5])])
+            lines = [((52 * s, -8 * s), (92 * s, -6 * s)), ((52 * s, 2 * s), (94 * s, 4 * s)), ((52 * s, 11 * s), (90 * s, 12 * s)), ((20 * s, 16 * s), (40 * s, 22 * s))]
         else:   # relaxed: fingers curl a little toward the palm
             main = union([T([(0, 0), (40, 0)], [19, 22]), T([(38, -2), (62, -6), (80, -14)], [21, 17, 13]), T([(10, 14), (26, 24), (38, 26)], [10, 9, 7.5])])
             lines = [((50 * s, -12 * s), (76 * s, -20 * s)), ((52 * s, 0), (80 * s, -6 * s))]
@@ -637,7 +653,7 @@ class Person:
         else:
             base, sh = self.sp.skin, self.sp.skin_sh
         plate(c, lt, main, base, sh, 46 * u, far=far)
-        ln = dark(sh, 0.88)
+        ln = dark(sh, 0.88) if not gl else mix(base, (255, 255, 255), 0.28)     # glove seams read lighter
         for p0, p1 in lines:
             q0 = m.mapXY(*p0); q1 = m.mapXY(*p1)
             c.drawLine(q0.x(), q0.y(), q1.x(), q1.y(), skia.Paint(AntiAlias=True, Color=C(lt.col(dark(ln, far))), StrokeWidth=max(1.0, 3.2 * u), StrokeCap=skia.Paint.kRound_Cap, Style=skia.Paint.kStroke_Style))
@@ -727,6 +743,7 @@ class Person:
         return union(sil)
 
     def draw_leg(self, c, lt, pose, J, side, u, far=1.0, seat=None):
+        side_ = side
         sp = self.sp; tr = sp.trousers or {}
         th, rt, sh, rs = self.leg_parts(J, side, u)
         loose = tr.get('loose', 1.0)
@@ -746,6 +763,13 @@ class Person:
         d = an - kn; d = d / (np.hypot(*d) + 1e-9)
         cuff = an + d * (10 if (bt or {}).get('kind') != 'tall' else -26) * u
         legp = tube(thx + [shx[1], cuff], rtx + [rsx[1], rsx[-1]])
+        # the top of the thigh tube must not poke out above the hips as a bump: keep it below a line across the
+        # pelvis (perpendicular to the spine), then add the seat
+        r1 = J['rings'][1]; pc = r1[1] + r1[5] * 30 * u; upv = r1[5]; side = V(-upv[1], upv[0])
+        below = poly([pc + side * 3000, pc - side * 3000, pc - side * 3000 - upv * 3000, pc + side * 3000 - upv * 3000])
+        tdir = (J['kn_' + side_] - J['hip_' + side_]); tdir = tdir / (np.hypot(*tdir) + 1e-9)
+        if float(np.dot(tdir, -upv)) > 0.7:      # only a thigh that hangs down; a raised thigh keeps its round top
+            legp = inter(legp, below)
         if seat is not None: legp = union([legp, seat])
         plate(c, lt, legp, tr.get('col', (90, 90, 100)), tr.get('sh', (60, 60, 70)), 92 * u, far=far)
         self.bend_folds(c, lt, legp, th[0], th[2], sh[2], rtx[2], tr.get('sh', (60, 60, 70)), far, n=2)
@@ -767,17 +791,13 @@ class Person:
         sp = self.sp; top = sp.top or {}; f = pose.face; yaw = pose.yaw
         kind = top.get('kind', 'shirt')
         ex = dict(puffer=20, suit=6, coat=8).get(kind, 3)
-        body = self.torso_path(J, 0.26, 1.0, ex, u)
+        body = self.torso_path(J, 0.12, 1.0, ex, u)
         col, sh = top.get('col'), top.get('sh')
         sil = [body]
         if kind == 'puffer':
             # big quilted jacket from the hips up, high collar
             body = union([self.torso_path(J, -0.1, 1.0, ex, u), self.torso_path(J, -0.16, 0.06, ex + 14, u)])
-            r0 = J['rings'][0]; pc0 = J['at'](-0.12)[0]
-            for k in range(5):
-                f_ = -1 + 2 * k / 4
-                q = pc0 + r0[2] * (r0[3] + ex * u + 14 * u) * f_ * 0.95 - r0[5] * (8 + 6 * (k % 2)) * u
-                body = union([body, circle(q, (26 + 4 * (k % 2)) * u)])
+
         if kind == 'coat':
             body = union([self.torso_path(J, -0.2, 1.0, ex, u), self.torso_path(J, -0.2, 0.4, ex + 14, u)])
             th_n = J['hip_n'] * 0.15 + J['kn_n'] * 0.85; th_f = J['hip_f'] * 0.15 + J['kn_f'] * 0.85
@@ -788,7 +808,7 @@ class Person:
         if kind in ('shirt', 'tee', 'suit', 'coat'):
             # waist folds where the shirt is tucked or gathered: short creases rising from the waist
             if kind in ('shirt', 'tee'):
-                for ff, fr, ln in ((0.3, 0.2, 0.22), (0.31, -0.4, 0.18)):
+                for ff, fr, ln in ((0.31, 0.2, 0.22), (0.32, -0.4, 0.18)):
                     pc, a_ = at(ff); r_ = J['rings'][2]
                     p0 = pc + r_[2] * (r_[3] * fr if fr > 0 else r_[4] * fr)
                     p1 = p0 + r_[5] * ln * self.SPINE * u + r_[2] * 16 * u
@@ -845,7 +865,8 @@ class Person:
         if top.get('collar') and kind in ('shirt', 'suit', 'coat'):
             nc, na = at(1.0); r = J['rings'][-1]
             fwdc = front_c(0.97, ex)
-            cl = smooth_closed([nc - r[2] * 22 * u - r[5] * 6 * u, fwdc + r[5] * 18 * u, fwdc - r[5] * 26 * u + r[2] * 6 * u, nc + r[2] * 8 * u - r[5] * 12 * u])
+            kc = 0.55 + 0.45 * yaw          # a profile collar is a small turned down flap, not a bib
+            cl = smooth_closed([nc - r[2] * 16 * u * kc - r[5] * 6 * u, fwdc + r[5] * 14 * u * kc, fwdc - r[5] * 18 * u * kc + r[2] * 4 * u, nc + r[2] * 6 * u - r[5] * 10 * u * kc])
             if kind == 'suit':
                 cl = hull2(nc - r[2] * 14 * u, 36 * u, nc + r[2] * 12 * u + r[5] * 6 * u, 32 * u)
             plate(c, lt, cl, mix(col, (255, 255, 255), 0.1) if kind != 'suit' else dark(col, 0.92), sh, 30 * u, k=0.4)
@@ -856,7 +877,7 @@ class Person:
         # vest
         if sp.vest:
             vs = sp.vest
-            vb = self.torso_path(J, 0.18, 0.97, ex + 2.5, u)
+            vb = self.torso_path(J, 0.04, 0.97, ex + 2.5, u)
             # opening: a V at the front centre, wider at the top
             ops = []
             top_c = front_c(0.99, ex + 30)
@@ -893,7 +914,7 @@ class Person:
 
     def draw_seat(self, J, u):
         """the trousers' seat: torso from the crotch to the waist"""
-        return self.torso_path(J, -0.2, 0.33, 4, u)
+        return self.torso_path(J, -0.2, 0.32, 4, u)
 
     def draw_belt(self, c, lt, J, u, pose):
         if not self.sp.belt: return
@@ -915,8 +936,17 @@ class Person:
         for y in np.linspace(-0.55, 0.98, 9):
             r = math.sqrt(max(0.0, 1 - y * y))
             for a in np.linspace(0, 2 * math.pi, 28, endpoint=False):
-                pts.append(H.p(k * r * math.cos(a) * 0.96, k * y * top + 0.08 + dy, k * r * math.sin(a) * 1.03 - 0.04 + dz)[0])
+                zz = math.sin(a); bk = 1.03 if zz > 0 else 1.18 + 0.14 * max(0.0, min(1.0, (y + 0.3) / 0.5)) * (1 - max(0.0, y - 0.55) / 0.45)
+                pts.append(H.p(k * r * math.cos(a) * 0.96, k * y * top + 0.08 + dy, k * r * zz * bk - 0.04 + dz)[0])
         pts.append(H.p(0, 0.08 + dy + k * top, -0.08 + dz)[0])
+        # a round occiput: a small ball at the back of the skull so a profile never ends in a flat edge behind the ear
+        for a_ in np.linspace(0, 2 * math.pi, 16, endpoint=False):
+            for b_ in (-0.6, 0.0, 0.6):
+                rr = 0.55 * math.cos(b_)
+                pts.append(H.p(k * rr * math.cos(a_) * 0.9, k * (-0.15 + rr * math.sin(a_)) + dy, k * (-0.62 + 0.55 * math.sin(b_) * 0.0 - 0.35 * abs(math.cos(a_ / 2))) + dz)[0])
+        # the occiput: the back of the skull rounds down behind the ears to the nape
+        for x_, y_, z_ in ((0.0, -0.4, -1.1), (0.0, -0.64, -0.92), (0.42, -0.6, -0.84), (-0.42, -0.6, -0.84), (0.0, -0.82, -0.68)):
+            pts.append(H.p(k * x_, k * y_ + dy, k * z_ - 0.04 + dz)[0])
         return pts
 
     def profile_curve(self, H):
@@ -936,7 +966,7 @@ class Person:
                     (0.72 * jw, -0.8, -0.06), (-0.72 * jw, -0.8, -0.06), (0.78, -0.45, -0.3), (-0.78, -0.45, -0.3),
                     (0.83, -0.28, 0.4), (-0.83, -0.28, 0.4), (0.6, -0.72, 0.55), (-0.6, -0.72, 0.55)]
         pts = self.cranium(H) + [H.p(*q)[0] for q in face_pts]
-        hull = poly(convex_hull(pts))
+        hull = smooth_closed(convex_hull(pts), 0.7)
         # the midline profile, so brow, nose bridge, lips and chin show as soft curves when the head turns
         prof = self.profile_curve(H)
         fr = [H.p(0, y, z)[0] for y, z in prof]; bk = [H.p(0, y, 0.25)[0] for y, z in prof]
@@ -953,18 +983,27 @@ class Person:
         return smooth_closed(convex_hull([H.p(*q)[0] for q in pts]), 1.0)
 
     def hair_cut(self, H, front_y=0.45, side_y=0.12, nape=-0.5):
-        """region of the head BELOW the hairline (face, ears, neck), as the union of two halves"""
-        halves = []
+        """region of the head BELOW the hairline (face, ears, neck): the face in front of the ears (hairline across the
+        forehead, temples, sideburn line) swept down, plus the nape below the hair at the back swept down. The back of
+        the skull between the ears and the nape stays hair at any head turn or nod."""
+        # sweep along the head's own down axis (a bowed head sweeps forward, not into the back of the skull)
+        dv = H.p(0, -1, 0.3)[0] - H.p(0, 0, 0.3)[0]; dvn = float(np.hypot(*dv)) + 1e-9
+        down = dv / dvn * H.R * 4
+        face = []
+        for x_ in np.linspace(-0.85, 0.85, 9):
+            z_ = math.sqrt(max(0.0, 1 - x_ * x_ - front_y * front_y)) * 1.02
+            face.append((x_, front_y - 0.1 * x_ * x_, z_))
         for sx in (1, -1):
-            line = [(0, front_y, 0.95), (0.45 * sx, front_y - 0.02, 0.85), (0.8 * sx, front_y - 0.12, 0.5), (0.9 * sx, side_y, 0.22),
-                    (0.98 * sx, side_y - 0.32, 0.12), (0.99 * sx, side_y - 0.34, -0.25), (0.75 * sx, nape + 0.05, -0.6), (0, nape, -0.95)]
-            pr = [H.p(*q) for q in line]
-            if max(d for _, d in pr) < -0.15: continue
-            pts = [q for q, _ in pr]
-            down = V(-math.sin(H.roll), math.cos(H.roll)) * H.R * 4
-            for i in range(len(pts) - 1):
-                halves.append(poly([pts[i], pts[i + 1], pts[i + 1] + down, pts[i] + down]))
-        return union(halves)
+            face += [(0.97 * sx, side_y, 0.04), (0.99 * sx, side_y - 0.3, -0.12), (0.9 * sx, -0.7, -0.1)]
+        pts = [H.p(*q)[0] for q in face]
+        sweep = smooth_closed(convex_hull(pts + [p + down for p in pts]), 0.5)
+        # only in front of the ears: the face sweep must never eat the back of the skull, whatever the nod
+        front = poly(convex_hull([H.p(x_, y_, z_)[0] for x_ in (-3, 3) for y_ in (-4, 3) for z_ in (-0.14, 3)]))
+        reg = [inter(sweep, front)]
+        back = [(0.0, nape, -0.6), (0.55, nape + 0.08, -0.54), (-0.55, nape + 0.08, -0.54), (0.88, nape + 0.42, -0.3), (-0.88, nape + 0.42, -0.3)]
+        bp = [H.p(*q)[0] for q in back]
+        reg.append(smooth_closed(convex_hull(bp + [p + down for p in bp]), 0.5))
+        return union(reg)
 
     def draw_head(self, c, lt, pose, J, u, t=0.0):
         sp = self.sp; H = self.head_model(pose, J); R = H.R
@@ -978,15 +1017,28 @@ class Person:
             bun = circle(bp, R * 0.36)
             plate(c, lt, bun, sp.hair, sp.hair_sh, R * 0.7)
         # neck
-        nb = J['neck']; ntop = H.p(0, -0.6, -0.15)[0]
-        neck = hull2(nb, R * 0.42, ntop, R * 0.4)
-        plate(c, lt, neck, ssh, dark(ssh, 0.88), R, k=0.25)
+        nb = J['neck']; ntop = H.p(0, -0.62, -0.3)[0]
+        # the neck column runs from the collar up into the skull behind the jaw, so the nape shows behind it
+        bvec = H.p(0, -0.7, -0.85)[0] - H.p(0, -0.7, 0.0)[0]
+        nape_pt = H.p(0, -0.72, -0.78)[0]
+        neck = union([hull2(nb, R * 0.46, ntop, R * 0.44), hull2(nb + (ntop - nb) * 0.3, R * 0.46, H.p(0, -0.7, -0.5)[0], R * 0.4),
+                      hull2(nb + bvec * 0.35, R * 0.44, nape_pt, R * 0.42)])     # the back of the neck up to the occiput
+        plate(c, lt, neck, ssh, dark(ssh, 0.88), R, k=0.25, hi=0, k2=0)
         self._neck = neck
         if sp.jaw_shadow > 0:
             js = skia.Path(hs); dn = V(-math.sin(H.roll), math.cos(H.roll)) * R * 0.16; js.offset(float(dn[0]), float(dn[1]))
             c.save(); c.clipPath(neck, skia.ClipOp.kIntersect, True)
             c.drawPath(js, P(lt.col(dark(ssh, 0.8)), 255 * sp.jaw_shadow)); c.restore()
-        plate(c, lt, hs, skin, ssh, R * 2.0, k=0.1)
+        plate(c, lt, hs, skin, ssh, R * 2.0, k=0.1, hi=0.06, k2=0)
+        # under the jaw: everything below the jaw line (chin to jaw angle, then back to the nape) takes the neck's tone,
+        # so the jaw reads as one clean edge and the head's lower hull never shows as a pale band (double chin)
+        hyaw = pose.yaw if pose.head_yaw is None else pose.head_yaw
+        c.save(); c.clipPath(hs, skia.ClipOp.kIntersect, True)
+        dn_ = V(-math.sin(H.roll), math.cos(H.roll)) * R * 4
+        for sx in ((1, -1) if hyaw < 0.3 else ()):     # profiles only: in turned views the jaw edge reads by itself
+            jl = [H.p(0, -1.13, 0.46)[0], H.p(0.42 * sx * sp.jaw, -1.07, 0.38)[0], H.p(0.68 * sx * sp.jaw, -0.93, -0.12)[0], H.p(0.68 * sx, -0.92, -0.5)[0], H.p(0.3 * sx, -0.92, -0.8)[0]]
+            c.drawPath(poly(convex_hull(jl + [p + dn_ for p in jl])), P(lt.col(ssh)))
+        c.restore()
         if sp.cheek_tone > 0:
             c.save(); c.clipPath(hs, skia.ClipOp.kIntersect, True)
             for sx in (1, -1):
@@ -1021,12 +1073,12 @@ class Person:
             plate(c, lt, bd, bc, dark(bc, 0.8), R * 1.6, k=0.18)
         # hair cap
         if style != 'none':
-            cp = self.cranium(H, 1.06, 0.03, -0.03)
+            cp = self.cranium(H, 1.06, 0.03, -0.03) + [H.p(x_, y_, z_)[0] for x_, y_, z_ in ((0, -1.08, -0.62), (0.5, -1.0, -0.56), (-0.5, -1.0, -0.56), (0.82, -0.62, -0.5), (-0.82, -0.62, -0.5), (0, -0.85, -0.86), (0.4, -0.8, -0.8), (-0.4, -0.8, -0.8))]
             lumps = []
             if style == 'side_part':
                 # volume over the forehead, swept to one side (part on the person's left)
                 cp = cp + [H.p(x_, y_, z_)[0] for x_, y_, z_ in ((0.2, 1.12, 0.45), (-0.35, 1.08, 0.4), (0.55, 0.95, 0.5), (0.0, 0.95, 0.78), (-0.55, 0.9, 0.5))]
-            vol = [poly(convex_hull(cp))]
+            vol = [smooth_closed(convex_hull(cp), 0.7)]
             if style == 'curly':
                 for a in np.linspace(0, 2 * math.pi, 9, endpoint=False):
                     q, _ = H.p(1.0 * math.cos(a), 0.55 + 0.25 * math.sin(a * 2), 1.0 * math.sin(a)); vol.append(circle(q, R * 0.3))
@@ -1036,7 +1088,7 @@ class Person:
                 vol.append(tube([q0, q0 + V(-H.face * R * 0.35 + sw, R * 0.6), q0 + V(-H.face * R * 0.3 + sw * 1.6, R * 1.2)], [R * 0.25, R * 0.22, R * 0.12]))
             vol = union(vol)
             fy = 0.52 if style != 'cropped' else 0.58
-            cut = self.hair_cut(H, front_y=fy, side_y=0.14 if style != 'cropped' else 0.25, nape=-0.42)
+            cut = self.hair_cut(H, front_y=fy, side_y=0.14 if style != 'cropped' else 0.25, nape=-1.3)
             hp = diff(vol, cut)
             if sp.hat and not pose.hat_off and pose.hat_m is None and sp.hat.get('kind') in ('brim', 'flatcap', 'beanie', 'helmet'):
                 hy = {'brim': sp.hat.get('y', 0.38), 'flatcap': 0.45, 'beanie': sp.hat.get('y', 0.3), 'helmet': 0.3}[sp.hat['kind']]
@@ -1046,11 +1098,11 @@ class Person:
                 hp = union([hp] + [diff(l, self.hair_cut(H, front_y=0.62, side_y=0.3, nape=-0.3)) for l in lumps])
             if sp.sideburn:
                 for sx in (1, -1):
-                    pts = [(0.9 * sx, 0.3, 0.06), (0.95 * sx, -0.12, 0.02), (0.98 * sx, -0.16, -0.08), (0.98 * sx, 0.3, -0.14)]
+                    pts = [(0.92 * sx, 0.3, 0.1), (0.96 * sx, -0.08, 0.04), (0.99 * sx, -0.1, -0.04), (0.99 * sx, 0.3, -0.12)]
                     pr = [H.p(*q) for q in pts]
                     if max(d for _, d in pr) < -0.05: continue
                     hp = union([hp, inter(smooth_closed([q for q, _ in pr]), hs)])
-            plate(c, lt, hp, sp.hair, sp.hair_sh, R * 1.6, k=0.14, hi=0.16)
+            plate(c, lt, hp, sp.hair, sp.hair_sh, R * 1.6, k=0.12, hi=0.1, k2=0)
             hair_vol = hp
         # ears
         for sx in (1, -1):
@@ -1131,6 +1183,16 @@ class Person:
             upn = V(-math.sin(H.roll), -math.cos(H.roll))
             pts = [a + upn * th * 0.55, b + upn * th * 0.6, e + upn * th * 0.15, e - upn * th * 0.15, b - upn * th * 0.4, a - upn * th * 0.45]
             c.drawPath(smooth_closed(pts), P(lt.col(bcol)))
+        if pose.wound > 0:
+            a, d1 = H.p(0.5, -0.24, 0.8)
+            if d1 > 0.05:
+                w_ = R * (0.05 + 0.03 * pose.wound)
+                o = skia.Rect(float(a[0] - w_ * 1.3), float(a[1] - w_ * 0.8), float(a[0] + w_ * 1.3), float(a[1] + w_ * 0.8))
+                c.drawOval(o.makeOutset(R * 0.04, R * 0.04), P(lt.col(mix(ssh, (170, 60, 60), 0.6)), 220 * min(1.0, pose.wound * 1.5)))
+                c.drawOval(o, P(lt.col((70, 20, 24)), 255 * min(1.0, pose.wound * 1.5)))
+                if pose.wound > 0.5:   # a trickle of blood down the cheek
+                    b = H.p(0.5, -0.42, 0.78)[0]
+                    c.drawPath(hull2(a, R * 0.03, b, R * 0.02), P(lt.col((150, 34, 36)), 230))
         # scar: healed, on the left cheek (the person's left = +x in head coords seen from the front)
         if sp.scar:
             a, d1 = H.p(0.5, -0.18, 0.84); b, d2 = H.p(0.28, -0.52, 0.92)
@@ -1308,11 +1370,16 @@ class Person:
             if pose.far_leg_front:
                 add(body_layer(lambda: self.draw_leg(c, lt, pose, J, 'n', u, 1.0, seat=seat)), tr_sh, 'leg')
                 add(body_layer(lambda: self.draw_leg(c, lt, pose, J, 'f', u, far_k if pose.yaw < 0.7 else 0.95)), dark(tr_sh, far_k), 'leg')
+            elif pose.near_leg_front:
+                add(body_layer(lambda: self.draw_leg(c, lt, pose, J, 'f', u, far_k if pose.yaw < 0.7 else 0.95)), dark(tr_sh, far_k), 'leg')
             else:
                 add(body_layer(lambda: self.draw_leg(c, lt, pose, J, 'f', u, far_k if pose.yaw < 0.7 else 0.95)), dark(tr_sh, far_k), 'leg')
                 add(body_layer(lambda: self.draw_leg(c, lt, pose, J, 'n', u, 1.0, seat=seat)), tr_sh, 'leg')
         if 'torso' not in skip:
             add(body_layer(lambda: self.draw_torso(c, lt, pose, J, u)), top_sh, 'torso')
+        if pose.near_leg_front and 'legs' not in skip:
+            # a raised front knee: the near thigh runs from the hip over the torso's lower edge to the knee
+            add(body_layer(lambda: self.draw_leg(c, lt, pose, J, 'n', u, 1.0, seat=None)), tr_sh, 'leg')
             b = body_layer(lambda: self.draw_belt(c, lt, J, u, pose))
         if not far_arm_behind and 'arm_f' not in skip:
             add(self.draw_arm(c, lt, pose, J, 'f', u, 0.93), top_sh, 'arm')
@@ -1334,9 +1401,9 @@ class Person:
         for key in ('an_n', 'an_f', 'kn_n', 'kn_f', 'wr_n', 'wr_f', 'pelvis'):
             q = J[key]
             if abs(q[1] + (55 * u if key.startswith('an') else 30 * u) - g) < 30 * u:
-                w = (100 if key.startswith('an') else 70) * u
+                w = (120 if key.startswith('an') else 80) * u
                 cx = q[0] + (pose.face * 40 * u if key.startswith('an') else 0)
-                c.drawOval(skia.Rect(float(cx - w), float(g - 10 * u), float(cx + w), float(g + 10 * u)), P((30, 20, 30), 70, MaskFilter=skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 5 * u + 0.5)))
+                c.drawOval(skia.Rect(float(cx - w), float(g - 12 * u), float(cx + w), float(g + 12 * u)), P((30, 20, 30), 120, MaskFilter=skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 7 * u + 0.5)))
 
 
 def blink_at(t, seed=0.0, period=3.7):
