@@ -112,8 +112,9 @@
     fig.querySelector('.pc-title').innerHTML = '<b>' + esc(ch.title) + '</b> <span>' + esc(PC.familyOf(ch.family).name) + '</span>';
     var list = fig.querySelector('.pc-chain');
     list.innerHTML = chainHtml(ch, n, { more: n < ch.links.length - 1 && opts.more !== false, missed: opts.missed });
-    var now = list.querySelector('.is-now');
-    if(now && now.scrollIntoView && list.scrollHeight > list.clientHeight + 4){ try{ now.scrollIntoView({ block: 'nearest' }); }catch(e){} }
+    // The newest link in view (the list scrolls; the page does not).
+    list.scrollTop = list.scrollHeight;
+    if(window.requestAnimationFrame) requestAnimationFrame(function(){ list.scrollTop = list.scrollHeight; });
     var ga = graphAt(ch, n), box = fig.querySelector('.pc-graph');
     box.hidden = !ga;
     if(ga){
