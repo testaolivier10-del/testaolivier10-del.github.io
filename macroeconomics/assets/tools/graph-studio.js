@@ -62,6 +62,16 @@
     if(!k.out || !o) return [];
     return [k.out.y, k.out.x].map(function(w){ return { html: esc(WORD[w] || w) + ' <span aria-hidden="true">' + ARROW[o[w]] + '</span><span class="sr-only"> ' + SAY[o[w]] + '</span>', tone: o[w] === 'same' ? 'ghost' : 'readout' }; });
   }
+  /* ApMacroGrade.graph words a wrong axis as "The vertical axis of the
+     supply and demand is ..." (the kind's title); say it with the graph's
+     usual name. Proposed for mac-grade.js in the T1 report. */
+  var GNAME = { ppc: 'PPC', sd: 'supply and demand graph', adas: 'AD-AS graph', money: 'money market graph', reserves: 'reserve market graph', lf: 'loanable funds graph', phillips: 'Phillips curve graph', forex: 'foreign exchange graph' };
+  function axisNote(n){
+    return String(n || '').replace(/^The (horizontal|vertical) axis of the (.+?) is /, function(m, a, t){
+      var id = Object.keys(G.KINDS).filter(function(k){ return G.KINDS[k].title.toLowerCase() === t; })[0];
+      return 'The ' + a + ' axis of the ' + (GNAME[id] || t) + ' is ';
+    });
+  }
   function moved(sh){ return Object.keys(sh || {}).some(function(c){ return Math.abs(sh[c]) > 1e-9; }); }
 
   T.mount(SLUG, function(app, data){
@@ -456,7 +466,7 @@
         function keep(cur){ resp = cur; }
         function reveal(){
           var K = p.key;
-          if(x.kind === 'choice'){ var c = f.querySelector('input[value="' + x.correct + '"]'); if(c) c.checked = true; fb.innerHTML = '<span class="mac-mark no">Shown</span> ' + esc(x.why[x.correct]); }
+          if(x.kind === 'choice'){ var c = f.querySelector('input[value="' + x.correct + '"]'); if(c) c.checked = true; fb.innerHTML = '<span class="mac-mark no">Shown</span> ' + esc(x.why[x.correct].replace(/^Yes\. /, '')); }
           else {
             var cur = current();
             if(x.task === 'labels') cur.labels = K.labels;
@@ -490,7 +500,7 @@
             var cur = current(), b = blankNote(cur);
             if(b){ fb.innerHTML = '<span class="bt-small">' + esc(b) + '</span>'; return; }
             var pt = grade(cur);
-            ok = pt.ok; note = pt.ok ? okNote(x.task, cur) : pt.note;
+            ok = pt.ok; note = pt.ok ? okNote(x.task, cur) : axisNote(pt.note);
             if(ok) keep(cur);
           }
           tries++;
