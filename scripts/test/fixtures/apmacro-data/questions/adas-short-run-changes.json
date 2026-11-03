@@ -1,0 +1,622 @@
+{
+ "stimuli": {
+  "adas-short-run-changes-s1": {
+   "kind": "data",
+   "title": "Placeholder: a price index and real GDP over four years",
+   "invented": true,
+   "table": {
+    "caption": "Placeholder: price index and real GDP (invented data for practice)",
+    "cols": [
+     "Year",
+     "Price index",
+     "Real GDP (billions)"
+    ],
+    "rows": [
+     [
+      "1",
+      "90",
+      "900"
+     ],
+     [
+      "2",
+      "100",
+      "950"
+     ],
+     [
+      "3",
+      "110",
+      "920"
+     ],
+     [
+      "4",
+      "105",
+      "900"
+     ]
+    ]
+   }
+  },
+  "adas-short-run-changes-s2": {
+   "kind": "graph",
+   "title": "Placeholder: an AD-AS graph after a shift",
+   "graph": {
+    "kind": "adas",
+    "show": {
+     "SRAS": -1
+    }
+   }
+  },
+  "adas-short-run-changes-s3": {
+   "kind": "text",
+   "title": "Placeholder: a drought and an oil shock",
+   "text": "<p>Placeholder scenario: a drought and a rise in oil prices raise costs for firms across the economy, and the price level rises while real output falls.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-adas-short-run-changes-1",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Placeholder: a sharp rise in oil prices raises firms' costs. In the short run, what happens to the price level and real output?",
+   "options": [
+    "The price level rises and real output falls",
+    "Both rise",
+    "Both fall",
+    "The price level falls and real output rises"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: higher input costs shift SRAS left.",
+    "options": [
+     "Right: SRAS shifts left, so the price level rises and output falls.",
+     "That is a rise in aggregate demand.",
+     "That is a fall in aggregate demand.",
+     "That is a rise in short-run aggregate supply."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-2",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Placeholder: input costs rise across the economy. Shift the right curve and mark the new short-run equilibrium.",
+   "why": {
+    "correct": "Placeholder: higher input costs shift SRAS left; the price level rises and output falls."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SRAS",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in input costs",
+     "outcome": {
+      "price level": "up",
+      "output": "down"
+     }
+    },
+    "slips": {
+     "AD": "Placeholder: input costs change what firms can supply at each price level, so they shift SRAS, not AD."
+    }
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-3",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Placeholder: label the axes and the curves of the AD-AS graph.",
+   "why": {
+    "correct": "Placeholder: the price level on the vertical axis, real GDP on the horizontal one."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-4",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Placeholder: the MPC is 0.8 and the government raises spending by 20 billion dollars. By how much can real GDP change at most, in billions of dollars?",
+   "why": {
+    "correct": "Placeholder: the spending multiplier is $\\frac{1}{1 - 0.8} = 5$, so $20 \\times 5 = 100$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "totalChange",
+     "args": [
+      20,
+      {
+       "fn": "spendingMultiplier",
+       "args": [
+        0.8
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        20,
+        5
+       ]
+      },
+      "why": "Placeholder: you divided the change by the multiplier; to find the effect on output, multiply it."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-5",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Placeholder: which event in the table shifts aggregate demand rather than supply?",
+   "options": [
+    "A rise in consumer confidence",
+    "A fall in oil prices",
+    "A rise in nominal wages",
+    "A drought that cuts crop yields"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: confidence changes consumption $C$, part of $AD = C + I + G + (X - M)$.",
+    "options": [
+     "Right: consumption is part of AD.",
+     "Input costs shift SRAS.",
+     "Wages are input costs for firms.",
+     "A supply shock shifts SRAS."
+    ]
+   },
+   "stimulus": "adas-short-run-changes-s1"
+  },
+  {
+   "id": "mac-adas-short-run-changes-6",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Placeholder: according to the table, in which year did the price level rise while output fell?",
+   "options": [
+    "Year 3",
+    "Year 1",
+    "Year 2",
+    "Year 4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: in Year 3 the index rose and real GDP fell.",
+    "options": [
+     "Right: the index rose and output fell.",
+     "Both rose in Year 1.",
+     "Both rose in Year 2.",
+     "Both fell in Year 4."
+    ]
+   },
+   "stimulus": "adas-short-run-changes-s1"
+  },
+  {
+   "id": "mac-adas-short-run-changes-7",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "stimulus": "adas-short-run-changes-s1",
+   "q": "Placeholder: by what percent did the price index rise from Year 2 to Year 3?",
+   "why": {
+    "correct": "Placeholder: $\\frac{110 - 100}{100} \\times 100 = 10$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "inflation",
+     "args": [
+      100,
+      110
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 110,
+      "why": "Placeholder: 110 is the index itself; the inflation rate is its percent change."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-8",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "stimulus": "adas-short-run-changes-s1",
+   "q": "Placeholder: which years in the table fit a rise in aggregate demand? Select all that apply.",
+   "options": [
+    "Year 1",
+    "Year 2",
+    "Year 3",
+    "Year 4"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Placeholder: a rise in AD raises both the index and output.",
+    "options": [
+     "Right: both rose.",
+     "Right: both rose.",
+     "The index rose but output fell.",
+     "Both fell."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-9",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Placeholder: the graph shows a shift. Which event could have caused it?",
+   "options": [
+    "A rise in input costs",
+    "A rise in government spending",
+    "A fall in taxes",
+    "A rise in exports"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: SRAS moved left.",
+    "options": [
+     "Right: higher input costs shift SRAS left.",
+     "That shifts AD right.",
+     "That shifts AD right.",
+     "That shifts AD right."
+    ]
+   },
+   "stimulus": "adas-short-run-changes-s2"
+  },
+  {
+   "id": "mac-adas-short-run-changes-10",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Placeholder: what happened to the price level in the graph?",
+   "options": [
+    "It rose",
+    "It fell",
+    "It stayed the same",
+    "It rose and then fell"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the new crossing is higher.",
+    "options": [
+     "Right: the new equilibrium is higher.",
+     "The crossing moved up.",
+     "The crossing moved.",
+     "The graph shows one shift."
+    ]
+   },
+   "stimulus": "adas-short-run-changes-s2"
+  },
+  {
+   "id": "mac-adas-short-run-changes-11",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Placeholder: what happened to unemployment in the short run after the shift in the graph?",
+   "options": [
+    "It rose",
+    "It fell",
+    "It stayed the same",
+    "It fell a great deal"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: lower output means fewer workers are needed.",
+    "options": [
+     "Right: output fell.",
+     "Output fell, not rose.",
+     "Output changed.",
+     "Output fell, so unemployment rose."
+    ]
+   },
+   "stimulus": "adas-short-run-changes-s2"
+  },
+  {
+   "id": "mac-adas-short-run-changes-12",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Placeholder: build the chain from a rise in consumer confidence to the price level.",
+   "why": {
+    "correct": "Placeholder: confidence raises consumption, so AD rises and the price level rises."
+   },
+   "specific": {
+    "frame": "Consumption ___, so ___ shifts ___, and the price level ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Placeholder: consumption rises because confidence rose, so AD shifts right and the price level rises.",
+    "slots": {
+     "spending": {
+      "label": "Consumption",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: more confidence means more spending, not less."
+      }
+     },
+     "curve": {
+      "label": "The curve",
+      "options": [
+       "aggregate demand",
+       "short-run aggregate supply"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: consumption is part of AD."
+      }
+     },
+     "direction": {
+      "label": "Which way",
+      "options": [
+       "right",
+       "left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: more spending at every price level is a shift right."
+      }
+     },
+     "price": {
+      "label": "The price level",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: AD to the right along an upward SRAS raises the price level."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-13",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Placeholder: put the links of the chain in order, from a tax cut to output.",
+   "options": [
+    "Disposable income rises",
+    "Consumption rises",
+    "Aggregate demand shifts right",
+    "Real output rises"
+   ],
+   "why": {
+    "correct": "Placeholder: each link causes the next."
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-14",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Placeholder: in the scenario, which kind of inflation is described?",
+   "options": [
+    "Cost-push inflation",
+    "Demand-pull inflation",
+    "Disinflation",
+    "Deflation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: rising costs pushed prices up.",
+    "options": [
+     "Right: costs pushed prices up.",
+     "Demand did not rise.",
+     "Inflation did not slow.",
+     "Prices rose."
+    ]
+   },
+   "stimulus": "adas-short-run-changes-s3"
+  },
+  {
+   "id": "mac-adas-short-run-changes-15",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Placeholder: in the scenario, what happened to real output?",
+   "options": [
+    "It fell",
+    "It rose",
+    "It stayed the same",
+    "It doubled"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: SRAS moved left.",
+    "options": [
+     "Right: SRAS shifted left.",
+     "SRAS fell, so output fell.",
+     "The curve moved.",
+     "Nothing doubled."
+    ]
+   },
+   "stimulus": "adas-short-run-changes-s3"
+  },
+  {
+   "id": "mac-adas-short-run-changes-16",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Placeholder: what is stagflation in the scenario's words?",
+   "options": [
+    "Rising prices with falling output",
+    "Falling prices with rising output",
+    "Rising prices with rising output",
+    "Falling prices with falling output"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: both bad news at once.",
+    "options": [
+     "Right: prices up, output down.",
+     "That is the reverse.",
+     "That is a rise in AD.",
+     "That is a fall in AD."
+    ]
+   },
+   "stimulus": "adas-short-run-changes-s3"
+  },
+  {
+   "id": "mac-adas-short-run-changes-17",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Placeholder: mark a point showing a higher price level and lower output than the starting equilibrium, on the original AD curve.",
+   "why": {
+    "correct": "Placeholder: up and to the left along AD."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "AD",
+      "x": "down",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-18",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Placeholder: the government raises spending during a recession. In the short run, what happens to real output?",
+   "options": [
+    "It rises",
+    "It falls",
+    "It stays the same",
+    "It falls to zero"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: government spending is part of AD.",
+    "options": [
+     "Right: AD shifts right.",
+     "AD rose, not fell.",
+     "AD moved.",
+     "Output does not vanish."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-19",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Placeholder: wages rise across the economy faster than productivity. Which curve shifts?",
+   "options": [
+    "Short-run aggregate supply, to the left",
+    "Aggregate demand, to the right",
+    "Long-run aggregate supply, to the right",
+    "Aggregate demand, to the left"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: wages are input costs.",
+    "options": [
+     "Right: higher costs shift SRAS left.",
+     "Wages for firms are costs, not spending.",
+     "Potential output did not grow.",
+     "Spending did not fall."
+    ]
+   }
+  }
+ ]
+}

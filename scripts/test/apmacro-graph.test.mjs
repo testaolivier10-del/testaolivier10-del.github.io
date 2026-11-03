@@ -1,0 +1,130 @@
+/* ApMacroGraph (macroeconomics/assets/mac-graph.js) and ApMacroGrade.graph
+   (mac-grade.js): the nine graphs as a model (curves after their shifts,
+   exact equilibria, the outcome against the start), the authored-spec
+   checker the content check runs, the grader that names the slip, and the
+   SVG (role="img", its state in words, labels, the old curve kept faded, the
+   key drawn on request). The DOM half (drag, touch, keys) is exercised in a
+   browser by check-console's macroeconomics flow once a unit is published;
+   here its pure state machine is tested through the response shape. */
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { createBrowser } from './harness.mjs';
+
+const B = createBrowser();
+for (const f of ['mac-graph.js', 'mac-grade.js']) B.load(`macroeconomics/assets/${f}`);
+const M = B.window.ApMacroGraph, G = B.window.ApMacroGrade;
+const plain = x => JSON.parse(JSON.stringify(x));
+
+const cost = { kind: 'adas', do: ['shift', 'equilibrium'], key: { shifts: [{ curve: 'SRAS', dir: 'left' }], because: 'a rise in input costs', outcome: { 'price level': 'up', output: 'down' } } };
+
+test('the nine graphs, each with its axes and curves', () => {
+  assert.deepEqual(Object.keys(M.KINDS), ['ppc', 'sd', 'adas', 'money', 'reserves', 'lf', 'phillips', 'forex']);
+  assert.equal(M.KINDS.adas.curves.map(c => c.id).join(' '), 'AD SRAS LRAS');
+  assert.equal(M.labelText(M.KINDS.money.y), 'Nominal interest rate');
+  assert.equal(M.labelText(M.KINDS.lf.y), 'Real interest rate');
+  assert.equal(M.labelText('fxPrice', { currency: 'euro', other: 'dollar' }), 'Price of the euro (dollars per euro)', 'the other currency per unit of this one');
+  assert.equal(M.labelText('fxPriceFlipped', { currency: 'euro', other: 'dollar' }), 'Price of the euro (euros per dollar)');
+  assert.equal(M.labelText('goodX', { x: 'Wheat' }), 'Wheat');
+});
+
+test('geometry: equilibria are exact, shifts move them, the outcome compares new with old', () => {
+  assert.deepEqual(plain(M.eq(cost, {})), [5, 5]);
+  assert.deepEqual(plain(M.eq(cost, { SRAS: -1 })), [4.5, 5.5]);
+  assert.deepEqual(plain(M.outcome(cost, { SRAS: -1 })), { output: 'down', 'price level': 'up' });
+  assert.deepEqual(plain(M.outcome(cost, { AD: 1 })), { output: 'up', 'price level': 'up' });
+  assert.deepEqual(plain(M.outcome(cost, { AD: 1, SRAS: 1 })), { output: 'up', 'price level': 'same' }, 'equal shifts: an indeterminate axis shows as same');
+  // Money market: vertical MS. A rise in MS lowers the nominal rate.
+  const money = { kind: 'money', do: [] };
+  assert.deepEqual(plain(M.outcome(money, { MS: 1 })), { 'quantity of money': 'up', 'nominal interest rate': 'down' });
+  // Reserve market (ample): demand flat where vertical supply crosses it; raising the administered rate shifts the flat part up.
+  const res = { kind: 'reserves', do: [] };
+  assert.deepEqual(plain(M.eq(res, {})), [7, 3]);
+  assert.deepEqual(plain(M.outcome(res, { RD: 1 })), { 'quantity of reserves': 'same', 'policy rate': 'up' });
+  assert.deepEqual(plain(M.outcome(res, { RS: 1 })), { 'quantity of reserves': 'up', 'policy rate': 'same' }, 'with ample reserves, more reserves leave the rate alone');
+  // Phillips: SRPC crosses LRPC at the natural rate.
+  assert.deepEqual(plain(M.outcome({ kind: 'phillips', do: [] }, { SRPC: 1 })), { 'unemployment rate': 'same', 'inflation rate': 'up' });
+  assert.equal(M.eq({ kind: 'ppc', do: [] }, {}), null, 'a PPC has no equilibrium');
+  assert.equal(M.region({ kind: 'ppc', do: [] }, {}, [2, 2]), 'inside');
+  assert.equal(M.region({ kind: 'ppc', do: [] }, {}, [7 * 0.6, 7 * 0.8]), 'on');
+  assert.equal(M.region({ kind: 'ppc', do: [] }, { PPC: 1 }, [7 * 0.6, 7 * 0.8]), 'inside', 'growth puts the old point inside');
+});
+
+test('the checker: known kinds and curves, a direction the curve can move, an outcome the key gives, a cause', () => {
+  assert.deepEqual(plain(M.check(cost)), []);
+  assert.match(M.check({ ...cost, kind: 'is-lm' })[0], /graph.kind must be one of/);
+  assert.ok(M.check({ ...cost, key: { ...cost.key, shifts: [{ curve: 'MS', dir: 'left' }] } }).some(e => /unknown curve "MS"/.test(e)));
+  assert.ok(M.check({ ...cost, key: { ...cost.key, shifts: [{ curve: 'SRAS', dir: 'up' }] } }).some(e => /right or left/.test(e)));
+  assert.ok(M.check({ ...cost, key: { ...cost.key, outcome: { 'price level': 'down', output: 'down' } } }).some(e => /"down" but the key shifts give "up"/.test(e)), 'a stated outcome the shifts contradict');
+  assert.ok(M.check({ ...cost, key: { ...cost.key, because: '' } }).some(e => /because/.test(e)));
+  assert.ok(M.check({ ...cost, do: ['equilibrium'] }).some(e => /needs "shift"/.test(e)));
+  assert.ok(M.check({ kind: 'forex', do: ['label'], key: {} }).some(e => /currencies/.test(e)));
+  assert.ok(M.check({ kind: 'ppc', do: ['point'], names: { x: 'A', y: 'B' }, key: { point: { region: 'beside' } } }).some(e => /inside, on or outside/.test(e)));
+  assert.ok(M.check({ ...cost, start: { SRAS: 3 } }).some(e => /from -2 to 2/.test(e)));
+  assert.ok(M.check({ ...cost, movable: ['AD'] }).some(e => /leaves out SRAS/.test(e)));
+});
+
+test('grading: one point per task, the slip named in the reader\'s terms', () => {
+  const right = G.graph(cost, { shifts: { SRAS: -1 }, eq: [4.5, 5.5] });
+  assert.equal(right.correct, true); assert.deepEqual(plain(right.points.map(p => p.id)), ['shift', 'equilibrium', 'outcome']);
+  const wrongCurve = G.graph(cost, { shifts: { AD: -1 }, eq: [4.5, 4.5] });
+  assert.equal(wrongCurve.slip, 'You shifted aggregate demand; a rise in input costs shifts short-run aggregate supply.');
+  assert.equal(wrongCurve.points.find(p => p.id === 'equilibrium').ok, true, 'E2 where the drawn curves cross: consistent, as readers score it');
+  assert.equal(wrongCurve.points.find(p => p.id === 'outcome').ok, false);
+  const backwards = G.graph(cost, { shifts: { SRAS: 1 }, eq: [5.5, 4.5] });
+  assert.match(backwards.slip, /right curve, but it shifts left, not right/);
+  const extra = G.graph(cost, { shifts: { SRAS: -1, AD: 1 }, eq: [5, 6] });
+  assert.match(extra.slip, /aggregate demand stays put/);
+  const offEq = G.graph(cost, { shifts: { SRAS: -1 }, eq: [5, 5] });
+  assert.equal(offEq.slip, 'Put E2 where the curves you drew cross now.');
+  assert.equal(G.graph(cost, { shifts: {}, eq: [5, 5] }).valid, false);
+  // An authored slip wins over the generic line.
+  const withSlip = { ...cost, slips: { AD: 'Input costs change what firms supply at each price level: SRAS, not AD.' } };
+  assert.equal(G.graph(withSlip, { shifts: { AD: -1 }, eq: [4.5, 4.5] }).slip, withSlip.slips.AD);
+  // Two curves in the key: both must move.
+  const both = { kind: 'adas', do: ['shift'], key: { shifts: [{ curve: 'AD', dir: 'right' }, { curve: 'SRAS', dir: 'left' }], because: 'a war that raises spending and costs' } };
+  assert.match(G.graph(both, { shifts: { AD: 1 } }).slip, /Short-run aggregate supply shifts too/);
+  assert.equal(G.graph(both, { shifts: { AD: 1, SRAS: -1 } }).correct, true);
+});
+
+test('labels: every axis and curve, the flipped currency axis named', () => {
+  const fx = { kind: 'forex', do: ['label'], names: { currency: 'euro', other: 'dollar' }, key: {} };
+  const all = { x: 'fxQuantity', y: 'fxPrice', D: 'D', S: 'S' };
+  assert.equal(G.graph(fx, { labels: all }).correct, true);
+  assert.match(G.graph(fx, { labels: { ...all, y: 'fxPriceFlipped' } }).slip, /units of the other currency per unit of this one: Price of the euro \(dollars per euro\)/);
+  const ad = { kind: 'adas', do: ['label'], key: {} };
+  assert.match(G.graph(ad, { labels: { x: 'realGdp', y: 'price', AD: 'AD', SRAS: 'SRAS', LRAS: 'LRAS' } }).slip, /vertical axis .* is Price level, not Price/);
+  assert.match(G.graph(ad, { labels: { x: 'realGdp', y: 'priceLevel', AD: 'SRAS', SRAS: 'AD', LRAS: 'LRAS' } }).slip, /wrong label/);
+  assert.deepEqual(plain(M.labelOptions(ad, 'y')), ['priceLevel', 'price', 'inflation', 'nominalRate'], 'the confusions readers report are the choices');
+});
+
+test('points: inside, on or outside a PPC; on a curve; up or down from the equilibrium', () => {
+  const ppc = { kind: 'ppc', do: ['point'], names: { x: 'Wheat', y: 'Cloth' }, key: { point: { region: 'inside' } } };
+  assert.equal(G.graph(ppc, { point: [2, 2] }).correct, true);
+  assert.match(G.graph(ppc, { point: [8, 8] }).slip, /inside the curve/);
+  const along = { kind: 'adas', do: ['point'], key: { point: { on: 'AD', x: 'down', y: 'up' } } };
+  assert.equal(G.graph(along, { point: [4, 6] }).correct, true);
+  assert.match(G.graph(along, { point: [6, 4] }).slip, /to the left and higher/);
+  assert.match(G.graph(along, { point: [4, 8] }).slip, /belongs on aggregate demand/);
+});
+
+test('SVG: a named picture of its own state, labels hidden until chosen, the old curve kept, the key on request', () => {
+  const s0 = M.svg(cost, {});
+  assert.match(s0, /^<svg class="mac-graph-svg" viewBox="0 0 320 300" role="img" aria-label="Aggregate demand and aggregate supply graph: /);
+  assert.match(s0, />Real GDP</); assert.match(s0, />Price level</);
+  const s1 = M.svg(cost, { shifts: { SRAS: -1 }, eq: [4.5, 5.5] });
+  assert.match(s1, /short-run aggregate supply shifted left/);
+  assert.match(s1, /At the new crossing the price level is higher and the output is lower/);
+  assert.match(s1, /class="mac-gr-curve is-old"/, 'the starting curve stays, faded');
+  assert.match(s1, />E2</);
+  assert.match(M.svg(cost, { key: true }), /class="mac-gr-curve is-key"/);
+  const lab = M.svg({ kind: 'adas', do: ['label'], key: {} }, {});
+  assert.equal((lab.match(/>\?</g) || []).length, 5, 'two axes and three curves ask to be labeled');
+  for (const k of Object.keys(M.KINDS)) assert.doesNotThrow(() => M.svg({ kind: k, do: [], names: { x: 'A', y: 'B', currency: 'euro', other: 'dollar' } }, {}), k);
+  assert.throws(() => M.svg({ kind: 'nope' }, {}), /unknown graph kind/);
+});
+
+test('the FRQ kit ticks auto rubric points from the same grader (a long question\'s graph part)', () => {
+  const part = { kind: 'adas', do: ['label', 'shift', 'equilibrium'], key: { shifts: [{ curve: 'AD', dir: 'right' }], because: 'a rise in consumer confidence', outcome: { 'price level': 'up', output: 'up' } } };
+  const r = G.graph(part, { shifts: { AD: 1 }, eq: [5.5, 5.5], labels: { x: 'realGdp', y: 'priceLevel', AD: 'AD', SRAS: 'SRAS', LRAS: 'LRAS' } });
+  assert.deepEqual(plain(r.points.map(p => [p.id, p.ok])), [['labels', true], ['shift', true], ['equilibrium', true], ['outcome', true]]);
+});

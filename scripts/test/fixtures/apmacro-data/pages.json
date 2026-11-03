@@ -1,0 +1,231 @@
+{
+ "about": "The AP Macroeconomics app pages. scripts/build-apmacro.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in macroeconomics/assets/<script>, which mounts into #app. \"static\": true marks a generated page that is not an app (teachers.html). premium names the Premium feature (ApMacroCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/apmacro-spec.md decision 2). tools[] are the eight trainers of docs/apmacro-spec.md section 6, pre-registered in Phase 0: page macroeconomics/tools/<slug>.html, script macroeconomics/assets/tools/<slug>.js, model macroeconomics/assets/tools/math/<slug>.js (ApMacroMath.<camelSlug>), content macroeconomics/data/tools/<slug>.json, validator scripts/lib/apmacro-tool-checks/<slug>.mjs, test scripts/test/apmacro-tool-<slug>.test.mjs (docs/apmacro-architecture.md, \"Tools\"). topic is the tool's context topic: the tool is built only when its data file exists and that topic is published. FREE OR PREMIUM is set here and only here: a tool with \"premium\": \"tools\" is Premium; graph-studio, ppc-trade and indicators-lab carry none and are free (docs/apmacro-spec.md section 6, proposed; owner to confirm).",
+ "apps": [
+  {
+   "slug": "practice",
+   "premium": "question-bank",
+   "section": "practice",
+   "h1": "Practice",
+   "title": "Practice questions",
+   "desc": "Macroeconomics practice by unit, topic or skill: graphs to shift and label, calculations, data and scenario sets, and causal chains made specific.",
+   "card": "Drill a unit, a topic or a skill, with graphs to shift, calculations and data sets.",
+   "script": "pages/practice.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "review",
+   "premium": "review",
+   "section": "review",
+   "h1": "Review",
+   "title": "Spaced review",
+   "desc": "Your macroeconomics spaced review queue: every question you missed comes back just before you would forget it.",
+   "card": "Missed questions come back when you are about to forget them.",
+   "script": "pages/review.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "exams",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Exams",
+   "title": "Unit tests and practice exams",
+   "desc": "Timed macroeconomics unit tests and full practice exams in the May 2027 format: 60 multiple-choice questions, then one long and two short free-response questions.",
+   "card": "Unit tests and full timed practice exams in the May 2027 format.",
+   "script": "pages/exams.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "frq",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Free-response practice",
+   "title": "Free-response practice",
+   "desc": "Macroeconomics free-response practice: long and short questions with graphs you draw on the page, a point-by-point rubric and a full-credit sample.",
+   "card": "One long and two short questions, with rubrics, graphs you draw on the page and sample answers.",
+   "script": "pages/frq.js",
+   "css": [
+    "pages/pages.css",
+    "../../assets/course/reading.css"
+   ]
+  },
+  {
+   "slug": "justify",
+   "premium": "justify",
+   "section": "exams",
+   "h1": "Make it specific",
+   "title": "Make it specific",
+   "desc": "Macroeconomics written answers made specific enough to score: causal chains with every link, the right tool, the right curve and the multiplier the right way.",
+   "lede": "Write the answer, then check it against the rubric and two model answers: one that earns the point and one that loses it.",
+   "card": "Causal chains with every link, the right tool and the right curve, checked against a rubric.",
+   "script": "pages/justify.js",
+   "studio": true,
+   "css": [
+    "pages/pages.css",
+    "pages/entry.css"
+   ]
+  },
+  {
+   "slug": "cram",
+   "section": "exams",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Cram kit",
+   "title": "Cram kit",
+   "desc": "Macroeconomics cram plans counted back from your exam date: three or two weeks, day by day, weighted by unit, with timed sets and practice exams.",
+   "lede": "A 3-week or 2-week plan counted back from your exam date, day by day: unit sheets and notes, a timed mixed set and one free-response question each study day, two full practice exams and rest days. Print it and tick the days off.",
+   "card": "3-week and 2-week plans to exam day, and timed mixed sets.",
+   "script": "pages/cram.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "flashcards",
+   "section": "practice",
+   "h1": "Flashcards",
+   "title": "Flashcards",
+   "desc": "Spaced-repetition macroeconomics flashcards built from the glossary and the formulas you must know, by unit and topic.",
+   "card": "Spaced-repetition cards from the glossary and the formulas.",
+   "script": "pages/flashcards.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "tools",
+   "section": "tools",
+   "h1": "Tools",
+   "title": "Trainers",
+   "desc": "Macroeconomics trainers: the graph studio, PPC and trade, indicators, multipliers, AD-AS, reserves, policy chains and foreign exchange.",
+   "card": "Trainers and simulators, then the questions about what you saw.",
+   "script": "pages/tools.js",
+   "css": [
+    "pages/pages.css",
+    "../../assets/course/reading.css"
+   ]
+  },
+  {
+   "slug": "dashboard",
+   "section": "dashboard",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Dashboard",
+   "title": "Your dashboard",
+   "desc": "Your macroeconomics mastery by unit, topic and skill, with every miss linked to the lesson that teaches it.",
+   "card": "Mastery by unit, topic and skill.",
+   "script": "pages/dashboard.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "search",
+   "section": "",
+   "h1": "Search",
+   "title": "Search the course",
+   "desc": "Search every macroeconomics lesson, notes page, glossary term and tool in the course.",
+   "script": "pages/search.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "teachers",
+   "section": "",
+   "h1": "For teachers",
+   "title": "For teachers",
+   "desc": "For macroeconomics teachers: stable share links, printable notes and unit sheets, and Google Classroom sharing, with no new student data collected.",
+   "lede": "Share any notes page, lesson or unit sheet with a stable link. Students need no account, and nothing they do leaves their device unless they choose to sign in.",
+   "static": true
+  }
+ ],
+ "tools": [
+  {
+   "slug": "graph-studio",
+   "kind": "simulator",
+   "topic": "shifts-movements",
+   "name": "Graph studio",
+   "title": "Graph Studio",
+   "desc": "All nine graphs drawn, labeled and shifted by hand, graded point by point the way readers score them, with the slip named.",
+   "blurb": "Draw, label and shift all nine graphs, graded per rubric point.",
+   "lede": "Shift the curve, mark the new equilibrium, see what the reader sees.",
+   "studio": true
+  },
+  {
+   "slug": "ppc-trade",
+   "kind": "simulator",
+   "topic": "comparative-advantage",
+   "name": "PPC and trade",
+   "title": "PPC and Trade Trainer",
+   "desc": "PPC shapes and shifts, opportunity cost, comparative advantage from output and input data, and terms of trade that help both sides.",
+   "blurb": "Opportunity cost, comparative advantage and terms of trade.",
+   "lede": "Find who gives up less, then trade on terms that help both.",
+   "studio": true
+  },
+  {
+   "slug": "indicators-lab",
+   "kind": "skill",
+   "topic": "price-indices-inflation",
+   "name": "Indicators lab",
+   "title": "Economic Indicators Lab",
+   "desc": "GDP by expenditure, CPI and inflation, the deflator, real versus nominal, and unemployment types and rates, each calculation checked step by step.",
+   "blurb": "GDP, CPI, inflation, the deflator and unemployment rates.",
+   "lede": "Every indicator calculated and read the way the exam asks.",
+   "studio": true
+  },
+  {
+   "slug": "multiplier-lab",
+   "kind": "skill",
+   "topic": "multipliers",
+   "name": "Multiplier lab",
+   "title": "Multiplier Lab",
+   "desc": "Spending, tax and balanced-budget multipliers, closing a gap with the direction first and the gap divided, and the money multiplier.",
+   "blurb": "Spending, tax and money multipliers, and closing a gap.",
+   "lede": "Direction first, then divide the gap by the right multiplier.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "adas-lab",
+   "kind": "simulator",
+   "topic": "long-run-self-adjustment",
+   "name": "AD-AS lab",
+   "title": "AD-AS Lab",
+   "desc": "Short-run shocks to aggregate demand and supply and the long-run self-adjustment with its cause, linked to the Phillips curve.",
+   "blurb": "Shocks, gaps and self-adjustment on the AD-AS graph.",
+   "lede": "Shock the economy, then watch wages and SRAS bring it back.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "reserves-lab",
+   "kind": "simulator",
+   "topic": "monetary-policy",
+   "name": "Reserves lab",
+   "title": "Bank Reserves Lab",
+   "desc": "Ample versus limited reserves: the reserve market and the money market side by side, and every Federal Reserve tool, each with its effect on rates and output.",
+   "blurb": "Ample and limited reserves, and every Fed tool.",
+   "lede": "Move the administered rate and see what the policy rate does.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "policy-chain",
+   "kind": "simulator",
+   "topic": "policy-short-run",
+   "name": "Policy chain",
+   "title": "Policy Chain Builder",
+   "desc": "Build the causal chain link by link for fiscal, monetary and open-economy shocks, each link graded, so no step gets skipped.",
+   "blurb": "Causal chains for every policy, link by link.",
+   "lede": "Every link named, from the policy to the price level.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "forex-lab",
+   "kind": "simulator",
+   "topic": "foreign-exchange-market",
+   "name": "Forex lab",
+   "title": "Foreign Exchange Lab",
+   "desc": "Currency axes the right way round, demand and supply shifts, appreciation and depreciation, net exports and capital flows.",
+   "blurb": "Currency markets, appreciation, net exports and capital flows.",
+   "lede": "Read the axis right, shift the right curve, follow the money.",
+   "studio": true,
+   "premium": "tools"
+  }
+ ]
+}
