@@ -166,7 +166,10 @@
       "ab_test": "none",
       "endscreen_set": true,
       "comment_pinned": true,
-      "endscreen_next": "best"
+      "endscreen_next": "best",
+      "thumb_b": "long/yt-nremt-35-thumb_b.png",
+      "thumb_c": "long/yt-nremt-35-thumb_c.png",
+      "thumb_v2": "2026-11-02 house style remake"
     },
     {
       "id": "yt-ap-02-terminology-directional-terms",
@@ -198,7 +201,8 @@
       "ab_test": false,
       "endscreen_set": false,
       "comment_id": "UgymvxlNlIb3U-ZGUx14AaABAg",
-      "comment_pinned": true
+      "comment_pinned": true,
+      "thumb_v2": "2026-11-02 house style remake"
     },
     {
       "id": "yt-apbio-02-elements-macromolecules",
