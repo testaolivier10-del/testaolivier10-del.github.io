@@ -35,7 +35,7 @@ import { courseBanner } from './lib/covers.mjs';
 import { apToolsHubMain, swapMain, toolBand, apPageR3, apFrqItemR3 } from './lib/r3-tools.mjs';
 import { apHomeMain } from './lib/course-home.mjs';
 import { MCQ_PARTS, FRQ_PARTS, FRQ_TOTAL } from './lib/apmacro-exams.mjs';
-import { join, dirname } from 'node:path';
+import { join, dirname, resolve } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { Hub } from './lib/hub.mjs';
 import { courseTitle } from './lib/page-title.mjs';
@@ -56,6 +56,9 @@ import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
 const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
 const OUT = args.includes('--out') ? args[args.indexOf('--out') + 1] : join(ROOT, 'macroeconomics');
+// A checkpoint once ran this with --out at the repository root, which wrote the course's
+// assets/ and app pages over the site's own index.html, search.html and the rest. Refuse it.
+if (resolve(OUT) === resolve(ROOT)) { console.error('--out is the repository root: it would overwrite the site\'s own pages. Give the macroeconomics/ tree its own folder.'); process.exit(2); }
 const map = loadMap();
 // APMACRO_DATA points the build at another data folder (tests use the
 // placeholder sample in scripts/test/fixtures/apmacro-data, never macroeconomics/data).
