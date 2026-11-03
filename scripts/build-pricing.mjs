@@ -713,12 +713,6 @@ function hubPcalcCard() {
   /* The hero's course count (owner, 2026-10-12: it said "Three courses" with
      five live): every open course, from the registry. */
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
-  for (const [re, txt] of [
-    [/(<div class="eyebrow">)\w+( courses &middot; free to start<\/div>)/, `$1${word.toLowerCase()}$2`],
-  ]) {
-    if (!re.test(src)) throw new Error(`${rel}: the hero no longer matches ${re}`);
-    src = src.replace(re, txt);
-  }
   /* The try one question (Olivier, 2026-10-26: NREMT should not lead the homepage): every open course's
      own sample question from its course home (scripts/lib/course-homes.json, already published there), one
      picked per visit and never the same course twice in a row. The NREMT question in the markup is the
@@ -729,14 +723,10 @@ function hubPcalcCard() {
      own questions: its bank also serves AB's, which apcalc already counts. */
   const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv, appsych: N.appsych, apprecalc: N.apprecalc, apcalcbc: N.apcalcbcOwn };
   const allQ = OPEN.reduce((n, c) => n + (BANK[c.key] || 0), 0);
-  const facts = [
-    `${fmt(allQ)} practice questions, each one explained`,
-    'Notes free forever in every course',
-    `One level and one streak across all ${word.toLowerCase()} courses`,
-    'No ads',
-  ];
+  /* The facts strip under the hero is gone (owner comment 2026-11-02: clutter, it repeated the pill and the
+     Free box); the question total, the one fact nothing else said, moved into the hero pill. */
   src = between(src, '<!-- hero-facts:start -->', '<!-- hero-facts:end -->',
-    `    <div class="fact-row">\n${facts.map((f) => `      <span><span class="dot"></span>${f}</span>`).join('\n')}\n    </div>`, rel);
+    `    <div class="eyebrow">${word.toLowerCase()} courses &middot; ${fmt(allQ)} questions &middot; free to start</div>`, rel);
   const m = src.indexOf('<!-- levlprep-structured-data -->');
   if (m === -1) throw new Error('index.html: no <!-- levlprep-structured-data --> marker');
   const s0 = src.indexOf('<script type="application/ld+json">', m);
