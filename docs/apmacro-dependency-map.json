@@ -1,0 +1,2970 @@
+{
+ "about": "AP Macroeconomics concept dependency map (docs/apmacro-spec.md, docs/apmacro-phase0.md): the 42 topics of the CED in order, the \"Graph skills you need\" topics (placed before Unit 1), and every concept with the topic that teaches it and the concepts it depends on. Built by Phase 0 from docs/apmacro-ced-map.json.",
+ "version": 1,
+ "ced": {
+  "edition": "Course and Exam Description, effective fall 2025, unchanged for 2026-27 (6 units, 42 topics)",
+  "effective": "Exam format of May 2027",
+  "note": "Built from docs/apmacro-ced-map.json, itself from docs/apmacro-research/framework.md. Essential knowledge for 3.7 to 6.6 from scoring guidelines and Chief Reader Reports (docs/apmacro-needs-author.md, ced-text)."
+ },
+ "practicesConfirmed": false,
+ "bigIdeas": [
+  {
+   "id": "MEA",
+   "name": "Economic Measurements",
+   "summary": "How output, prices, unemployment and money are measured."
+  },
+  {
+   "id": "MKT",
+   "name": "Markets",
+   "summary": "How buyers and sellers set prices and quantities."
+  },
+  {
+   "id": "MOD",
+   "name": "Macroeconomic Models",
+   "summary": "Models (PPC, AD-AS, money and loanable funds markets, Phillips curves) that predict outcomes."
+  },
+  {
+   "id": "POL",
+   "name": "Macroeconomic Policies",
+   "summary": "How fiscal and monetary policy change outcomes."
+  }
+ ],
+ "practices": [
+  {
+   "id": 1,
+   "name": "Principles and Models",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C",
+    "1.D"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Interpretation",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Manipulation",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Graphing and Visuals",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C"
+   ],
+   "mcqWeight": [
+    0,
+    0
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "id": "course",
+   "title": "Units"
+  },
+  {
+   "id": "skills",
+   "title": "Graph skills you need"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "unit-1",
+   "n": 1,
+   "part": "course",
+   "title": "Basic Economic Concepts",
+   "weight": [
+    5,
+    10
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "ppc-trade",
+      "title": "PPC and trade: PPC shapes and shifts, opportunity cost, comparative advantage from output and input data, terms of trade that help both sides",
+      "topic": "comparative-advantage"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-ppc-trade-short",
+      "title": "Two countries' PPCs: opportunity cost, comparative advantage and terms of trade that help both",
+      "topic": "opportunity-cost-ppc",
+      "type": "short",
+      "author": "A",
+      "graph": "ppc"
+     },
+     {
+      "id": "frq-market-shift-short",
+      "title": "A market after a change in input costs: the curve that shifts, the new price and quantity, and the shortage at the old price",
+      "topic": "market-equilibrium",
+      "type": "short",
+      "author": "A",
+      "graph": "sd"
+     }
+    ],
+    "stimulusThemes": [],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  },
+  {
+   "id": "unit-2",
+   "n": 2,
+   "part": "course",
+   "title": "Economic Indicators and the Business Cycle",
+   "weight": [
+    12,
+    17
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "indicators-lab",
+      "title": "Indicators lab: GDP by expenditure, CPI and inflation, the deflator, real versus nominal, unemployment types and rates",
+      "topic": "price-indices-inflation"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-unemployment-short",
+      "title": "Labor force data: the unemployment and participation rates, discouraged workers, and the type of unemployment in a downturn",
+      "topic": "unemployment",
+      "type": "short",
+      "author": "B"
+     },
+     {
+      "id": "frq-real-nominal-short",
+      "title": "Nominal GDP and a price index over two years: the deflator, real GDP, and whether output grew",
+      "topic": "real-nominal-gdp",
+      "type": "short",
+      "author": "B"
+     }
+    ],
+    "stimulusThemes": [],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  },
+  {
+   "id": "unit-3",
+   "n": 3,
+   "part": "course",
+   "title": "National Income and Price Determination",
+   "weight": [
+    17,
+    27
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "multiplier-lab",
+      "title": "Multiplier lab: spending, tax and balanced-budget multipliers, closing a gap (divide, direction first), the money multiplier",
+      "topic": "multipliers"
+     },
+     {
+      "id": "adas-lab",
+      "title": "AD-AS lab: short-run shocks and long-run self-adjustment with the cause, linked to the Phillips curve",
+      "topic": "long-run-self-adjustment"
+     },
+     {
+      "id": "justify",
+      "title": "Make it specific: a causal chain built link by link (policy, rate, spending, AD, output and price level) and checked against a rubric",
+      "topic": "fiscal-policy"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-recession-long",
+      "title": "A recessionary gap: AD-AS with LRAS, the fiscal policy and multiplier that close it, the money market and the long-run self-adjustment if nothing is done",
+      "topic": "long-run-self-adjustment",
+      "type": "long",
+      "author": "C",
+      "graph": "adas"
+     },
+     {
+      "id": "frq-multiplier-short",
+      "title": "An MPC and a gap: the spending and tax multipliers, the change in spending that closes the gap, and why a tax cut must be larger",
+      "topic": "multipliers",
+      "type": "short",
+      "author": "C"
+     },
+     {
+      "id": "frq-self-adjustment-short",
+      "title": "An inflationary gap left alone: what shifts in the long run and why, with the new price level and output",
+      "topic": "long-run-self-adjustment",
+      "type": "short",
+      "author": "C",
+      "graph": "adas"
+     }
+    ],
+    "stimulusThemes": [],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  },
+  {
+   "id": "unit-4",
+   "n": 4,
+   "part": "course",
+   "title": "Financial Sector",
+   "weight": [
+    18,
+    23
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "reserves-lab",
+      "title": "Reserves lab: ample versus limited reserves, the reserve market and money market side by side, every Fed tool",
+      "topic": "monetary-policy"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-ample-reserves-long",
+      "title": "A central bank with ample reserves fights a recession: the administered rate, the reserve market graph, investment, AD and the price level, then the loanable funds market",
+      "topic": "monetary-policy",
+      "type": "long",
+      "author": "D",
+      "graph": "reserves"
+     },
+     {
+      "id": "frq-open-market-long",
+      "title": "Limited reserves and an inflationary gap: the open market operation, the money market, bond prices, AD and unemployment",
+      "topic": "monetary-policy",
+      "type": "long",
+      "author": "D",
+      "graph": "money"
+     },
+     {
+      "id": "frq-money-multiplier-short",
+      "title": "A bank balance sheet: required and excess reserves, the most one bank can lend and the most the money supply can change",
+      "topic": "banking-money-supply",
+      "type": "short",
+      "author": "D"
+     },
+     {
+      "id": "frq-money-market-short",
+      "title": "A rise in the price level: money demand, the nominal interest rate and bond prices",
+      "topic": "money-market",
+      "type": "short",
+      "author": "D",
+      "graph": "money"
+     }
+    ],
+    "stimulusThemes": [],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  },
+  {
+   "id": "unit-5",
+   "n": 5,
+   "part": "course",
+   "title": "Long-Run Consequences of Stabilization Policies",
+   "weight": [
+    20,
+    30
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "policy-chain",
+      "title": "Policy chain: the causal chain for fiscal, monetary and open-economy shocks, link by link",
+      "topic": "policy-short-run"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-phillips-long",
+      "title": "A negative supply shock: AD-AS, the short- and long-run Phillips curves, expected inflation and the path back to the natural rate",
+      "topic": "phillips-curve",
+      "type": "long",
+      "author": "E",
+      "graph": "phillips"
+     },
+     {
+      "id": "frq-deficit-long",
+      "title": "Deficit spending at full employment: AD-AS, the loanable funds market, crowding out and long-run growth on the PPC",
+      "topic": "crowding-out",
+      "type": "long",
+      "author": "E",
+      "graph": "lf"
+     },
+     {
+      "id": "frq-phillips-short",
+      "title": "A demand shock on the Phillips curves: the short-run move and where the economy ends in the long run",
+      "topic": "phillips-curve",
+      "type": "short",
+      "author": "E",
+      "graph": "phillips"
+     },
+     {
+      "id": "frq-crowding-out-short",
+      "title": "Government borrowing: the real interest rate, private investment and the capital stock",
+      "topic": "crowding-out",
+      "type": "short",
+      "author": "E",
+      "graph": "lf"
+     }
+    ],
+    "stimulusThemes": [],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  },
+  {
+   "id": "unit-6",
+   "n": 6,
+   "part": "course",
+   "title": "Open Economy: International Trade and Finance",
+   "weight": [
+    10,
+    13
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "forex-lab",
+      "title": "Forex lab: currency axes the right way round, demand and supply shifts, appreciation, net exports and capital flows",
+      "topic": "foreign-exchange-market"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-open-economy-long",
+      "title": "Higher real interest rates in one country: loanable funds, capital flows, the foreign exchange market, the currency and net exports",
+      "topic": "foreign-exchange-market",
+      "type": "long",
+      "author": "F",
+      "graph": "forex"
+     },
+     {
+      "id": "frq-balance-payments-short",
+      "title": "Balance of payments entries: the current account, the capital and financial account and why they sum to zero",
+      "topic": "balance-of-payments",
+      "type": "short",
+      "author": "F"
+     },
+     {
+      "id": "frq-forex-short",
+      "title": "Higher inflation abroad: the market for the dollar, appreciation and net exports",
+      "topic": "fx-policy-changes",
+      "type": "short",
+      "author": "F",
+      "graph": "forex"
+     }
+    ],
+    "stimulusThemes": [],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  },
+  {
+   "id": "graph-skills",
+   "part": "skills",
+   "title": "Graph skills you need",
+   "tools": {
+    "simulators": [
+     {
+      "id": "graph-studio",
+      "title": "Graph studio (flagship): draw, label and shift all nine graphs (PPC, supply and demand, AD-AS, money market, reserve market, loanable funds, short- and long-run Phillips curves, foreign exchange), graded per rubric point with the slip named",
+      "topic": "shifts-movements"
+     }
+    ],
+    "frqThemes": [],
+    "stimulusThemes": [],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  }
+ ],
+ "topics": [
+  {
+   "id": "scarcity",
+   "ced": "1.1",
+   "title": "Scarcity",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "scarcity macroeconomics explained"
+  },
+  {
+   "id": "opportunity-cost-ppc",
+   "ced": "1.2",
+   "title": "Opportunity Cost and the Production Possibilities Curve (PPC)",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.C",
+    "2.A",
+    "4.A",
+    "4.B",
+    "4.C"
+   ],
+   "practices": [
+    1,
+    2,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "opportunity cost and the production possibilities curve (ppc) macroeconomics explained"
+  },
+  {
+   "id": "comparative-advantage",
+   "ced": "1.3",
+   "title": "Comparative Advantage and Gains from Trade",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "2.A",
+    "2.C"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "comparative advantage and gains from trade macroeconomics explained"
+  },
+  {
+   "id": "demand",
+   "ced": "1.4",
+   "title": "Demand",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.A",
+    "4.A"
+   ],
+   "practices": [
+    1,
+    2,
+    4
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "demand macroeconomics explained"
+  },
+  {
+   "id": "supply",
+   "ced": "1.5",
+   "title": "Supply",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.A",
+    "4.A"
+   ],
+   "practices": [
+    1,
+    2,
+    4
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "supply macroeconomics explained"
+  },
+  {
+   "id": "market-equilibrium",
+   "ced": "1.6",
+   "title": "Market Equilibrium, Disequilibrium, and Changes in Equilibrium",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "2.A",
+    "3.A",
+    "4.A",
+    "4.B",
+    "4.C"
+   ],
+   "practices": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "market equilibrium, disequilibrium, and changes in equilibrium macroeconomics explained"
+  },
+  {
+   "id": "gdp-circular-flow",
+   "ced": "2.1",
+   "title": "The Circular Flow and GDP",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.C",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "MEA"
+   ],
+   "searchPhrase": "the circular flow and gdp macroeconomics explained"
+  },
+  {
+   "id": "gdp-limitations",
+   "ced": "2.2",
+   "title": "Limitations of GDP",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.D",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "MEA"
+   ],
+   "searchPhrase": "limitations of gdp macroeconomics explained"
+  },
+  {
+   "id": "unemployment",
+   "ced": "2.3",
+   "title": "Unemployment",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "1.C",
+    "2.A",
+    "2.C"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "MEA"
+   ],
+   "searchPhrase": "unemployment macroeconomics explained"
+  },
+  {
+   "id": "price-indices-inflation",
+   "ced": "2.4",
+   "title": "Price Indices and Inflation",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "2.C",
+    "3.C"
+   ],
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "bigIdeas": [
+    "MEA"
+   ],
+   "searchPhrase": "price indices and inflation macroeconomics explained"
+  },
+  {
+   "id": "inflation-costs",
+   "ced": "2.5",
+   "title": "Costs of Inflation",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "MEA"
+   ],
+   "searchPhrase": "costs of inflation macroeconomics explained"
+  },
+  {
+   "id": "real-nominal-gdp",
+   "ced": "2.6",
+   "title": "Real v. Nominal GDP",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "2.C",
+    "3.C"
+   ],
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "bigIdeas": [
+    "MEA"
+   ],
+   "searchPhrase": "real v. nominal gdp macroeconomics explained"
+  },
+  {
+   "id": "business-cycles",
+   "ced": "2.7",
+   "title": "Business Cycles",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "4.A"
+   ],
+   "practices": [
+    1,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "business cycles macroeconomics explained"
+  },
+  {
+   "id": "aggregate-demand",
+   "ced": "3.1",
+   "title": "Aggregate Demand (AD)",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.A",
+    "4.A"
+   ],
+   "practices": [
+    1,
+    2,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "aggregate demand (ad) macroeconomics explained"
+  },
+  {
+   "id": "multipliers",
+   "ced": "3.2",
+   "title": "Multipliers",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "2.C",
+    "3.C"
+   ],
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "multipliers macroeconomics explained"
+  },
+  {
+   "id": "sras",
+   "ced": "3.3",
+   "title": "Short-Run Aggregate Supply (SRAS)",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.A",
+    "4.A"
+   ],
+   "practices": [
+    1,
+    2,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "short-run aggregate supply (sras) macroeconomics explained"
+  },
+  {
+   "id": "lras",
+   "ced": "3.4",
+   "title": "Long-Run Aggregate Supply (LRAS)",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A",
+    "4.A"
+   ],
+   "practices": [
+    1,
+    2,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "long-run aggregate supply (lras) macroeconomics explained"
+  },
+  {
+   "id": "adas-equilibrium",
+   "ced": "3.5",
+   "title": "Equilibrium in the Aggregate Demand-Aggregate Supply (AD-AS) Model",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A",
+    "4.A",
+    "4.B"
+   ],
+   "practices": [
+    1,
+    2,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "equilibrium in the aggregate demand-aggregate supply (ad-as) model macroeconomics explained"
+  },
+  {
+   "id": "adas-short-run-changes",
+   "ced": "3.6",
+   "title": "Changes in the AD-AS Model in the Short Run",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B",
+    "3.A",
+    "4.C"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "changes in the ad-as model in the short run macroeconomics explained"
+  },
+  {
+   "id": "long-run-self-adjustment",
+   "ced": "3.7",
+   "title": "Long-Run Self-Adjustment",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B",
+    "3.A",
+    "4.C"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "long-run self-adjustment macroeconomics explained"
+  },
+  {
+   "id": "fiscal-policy",
+   "ced": "3.8",
+   "title": "Fiscal Policy",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B",
+    "3.A",
+    "3.C",
+    "4.C"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "fiscal policy macroeconomics explained"
+  },
+  {
+   "id": "automatic-stabilizers",
+   "ced": "3.9",
+   "title": "Automatic Stabilizers",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "automatic stabilizers macroeconomics explained"
+  },
+  {
+   "id": "financial-assets",
+   "ced": "4.1",
+   "title": "Financial Assets",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "financial assets macroeconomics explained"
+  },
+  {
+   "id": "nominal-real-rates",
+   "ced": "4.2",
+   "title": "Nominal v. Real Interest Rates",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "2.A",
+    "2.C"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "MEA"
+   ],
+   "searchPhrase": "nominal v. real interest rates macroeconomics explained"
+  },
+  {
+   "id": "money-functions",
+   "ced": "4.3",
+   "title": "Definition, Measurement, and Functions of Money",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "MEA"
+   ],
+   "searchPhrase": "definition, measurement, and functions of money macroeconomics explained"
+  },
+  {
+   "id": "banking-money-supply",
+   "ced": "4.4",
+   "title": "Banking and the Expansion of the Money Supply",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "2.C",
+    "3.C"
+   ],
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "bigIdeas": [
+    "MEA"
+   ],
+   "searchPhrase": "banking and the expansion of the money supply macroeconomics explained"
+  },
+  {
+   "id": "money-market",
+   "ced": "4.5",
+   "title": "The Money Market",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A",
+    "3.A",
+    "4.A",
+    "4.B",
+    "4.C"
+   ],
+   "practices": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "the money market macroeconomics explained"
+  },
+  {
+   "id": "monetary-policy",
+   "ced": "4.6",
+   "title": "Monetary Policy",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B",
+    "3.A",
+    "3.B",
+    "4.A",
+    "4.C"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "monetary policy macroeconomics explained"
+  },
+  {
+   "id": "loanable-funds",
+   "ced": "4.7",
+   "title": "The Loanable Funds Market",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A",
+    "3.A",
+    "3.B",
+    "4.A",
+    "4.C"
+   ],
+   "practices": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "the loanable funds market macroeconomics explained"
+  },
+  {
+   "id": "policy-short-run",
+   "ced": "5.1",
+   "title": "Fiscal and Monetary Policy Actions in the Short Run",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B",
+    "3.A",
+    "3.B",
+    "4.C"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "fiscal and monetary policy actions in the short run macroeconomics explained"
+  },
+  {
+   "id": "phillips-curve",
+   "ced": "5.2",
+   "title": "The Phillips Curve",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A",
+    "3.A",
+    "4.A",
+    "4.B",
+    "4.C"
+   ],
+   "practices": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "the phillips curve macroeconomics explained"
+  },
+  {
+   "id": "money-growth-inflation",
+   "ced": "5.3",
+   "title": "Money Growth and Inflation",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.C",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "money growth and inflation macroeconomics explained"
+  },
+  {
+   "id": "deficits-debt",
+   "ced": "5.4",
+   "title": "Government Deficits and the National Debt",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.C",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "government deficits and the national debt macroeconomics explained"
+  },
+  {
+   "id": "crowding-out",
+   "ced": "5.5",
+   "title": "Crowding Out",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B",
+    "3.B",
+    "4.C"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "crowding out macroeconomics explained"
+  },
+  {
+   "id": "economic-growth",
+   "ced": "5.6",
+   "title": "Economic Growth",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A",
+    "3.A",
+    "4.A",
+    "4.C"
+   ],
+   "practices": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "economic growth macroeconomics explained"
+  },
+  {
+   "id": "growth-policy",
+   "ced": "5.7",
+   "title": "Public Policy and Economic Growth",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "public policy and economic growth macroeconomics explained"
+  },
+  {
+   "id": "balance-of-payments",
+   "ced": "6.1",
+   "title": "Balance of Payments Accounts",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.C",
+    "2.C"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "MEA"
+   ],
+   "searchPhrase": "balance of payments accounts macroeconomics explained"
+  },
+  {
+   "id": "exchange-rates",
+   "ced": "6.2",
+   "title": "Exchange Rates",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.C"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "MEA"
+   ],
+   "searchPhrase": "exchange rates macroeconomics explained"
+  },
+  {
+   "id": "foreign-exchange-market",
+   "ced": "6.3",
+   "title": "The Foreign Exchange Market",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A",
+    "4.A",
+    "4.B"
+   ],
+   "practices": [
+    1,
+    2,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "the foreign exchange market macroeconomics explained"
+  },
+  {
+   "id": "fx-policy-changes",
+   "ced": "6.4",
+   "title": "Effect of Changes in Policies and Economic Conditions on the Foreign Exchange Market",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B",
+    "3.B",
+    "4.C"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "effect of changes in policies and economic conditions on the foreign exchange market macroeconomics explained"
+  },
+  {
+   "id": "fx-net-exports",
+   "ced": "6.5",
+   "title": "Changes in the Foreign Exchange Market and Net Exports",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B",
+    "3.B"
+   ],
+   "practices": [
+    2,
+    3
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "changes in the foreign exchange market and net exports macroeconomics explained"
+  },
+  {
+   "id": "real-rates-financial-flows",
+   "ced": "6.6",
+   "title": "Real Interest Rates and International Capital Flows",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B",
+    "3.B",
+    "4.C"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "MOD"
+   ],
+   "searchPhrase": "real interest rates and international capital flows macroeconomics explained"
+  },
+  {
+   "id": "axes-points",
+   "ced": null,
+   "title": "Axes, Variables and Points",
+   "chapter": "graph-skills",
+   "kind": "skill",
+   "skills": [
+    "4.A"
+   ],
+   "practices": [
+    4
+   ],
+   "before": "scarcity",
+   "searchPhrase": "axes, variables and points economics graphs"
+  },
+  {
+   "id": "slopes-curves",
+   "ced": null,
+   "title": "Slopes and Curve Shapes",
+   "chapter": "graph-skills",
+   "kind": "skill",
+   "skills": [
+    "4.A"
+   ],
+   "practices": [
+    4
+   ],
+   "before": "scarcity",
+   "searchPhrase": "slopes and curve shapes economics graphs"
+  },
+  {
+   "id": "shifts-movements",
+   "ced": null,
+   "title": "Shifts Versus Movements Along a Curve",
+   "chapter": "graph-skills",
+   "kind": "skill",
+   "skills": [
+    "4.B",
+    "4.C"
+   ],
+   "practices": [
+    4
+   ],
+   "before": "scarcity",
+   "searchPhrase": "shifts versus movements along a curve economics graphs"
+  },
+  {
+   "id": "curves-crossing",
+   "ced": null,
+   "title": "Where Curves Cross",
+   "chapter": "graph-skills",
+   "kind": "skill",
+   "skills": [
+    "4.B",
+    "4.C"
+   ],
+   "practices": [
+    4
+   ],
+   "before": "scarcity",
+   "searchPhrase": "where curves cross economics graphs"
+  }
+ ],
+ "everydayWords": {
+  "about": "Common words a student already roughly knows. They may be used in their everyday sense before the topic that teaches them; the technical terms of the same concept stay strict (\"aggregate demand\", \"real interest rate\", \"money multiplier\" are not used early).",
+  "words": [
+   "goods",
+   "services",
+   "trade",
+   "money",
+   "interest",
+   "interest rate",
+   "interest rates",
+   "inflation",
+   "bond",
+   "bonds",
+   "stock",
+   "stocks",
+   "consumption",
+   "investment",
+   "government spending",
+   "exports",
+   "imports",
+   "unemployed",
+   "reserves",
+   "recession",
+   "expansion",
+   "productivity",
+   "assets",
+   "liabilities",
+   "demand",
+   "supply",
+   "equilibrium",
+   "axes"
+  ]
+ },
+ "concepts": [
+  {
+   "id": "scarcity",
+   "term": "scarcity",
+   "aliases": [],
+   "taughtIn": "scarcity",
+   "dependsOn": []
+  },
+  {
+   "id": "factors-of-production",
+   "term": "factors of production",
+   "aliases": [
+    "factor of production",
+    "land, labor, capital and entrepreneurship"
+   ],
+   "taughtIn": "scarcity",
+   "dependsOn": [
+    "scarcity"
+   ]
+  },
+  {
+   "id": "economic-system",
+   "term": "economic system",
+   "aliases": [
+    "market economy",
+    "command economy",
+    "mixed economy"
+   ],
+   "taughtIn": "scarcity",
+   "dependsOn": [
+    "scarcity"
+   ]
+  },
+  {
+   "id": "goods-services",
+   "term": "goods and services",
+   "aliases": [
+    "goods",
+    "services"
+   ],
+   "taughtIn": "scarcity",
+   "dependsOn": []
+  },
+  {
+   "id": "opportunity-cost",
+   "term": "opportunity cost",
+   "aliases": [
+    "opportunity costs"
+   ],
+   "taughtIn": "opportunity-cost-ppc",
+   "dependsOn": [
+    "scarcity"
+   ]
+  },
+  {
+   "id": "ppc",
+   "term": "production possibilities curve",
+   "aliases": [
+    "PPC",
+    "production possibilities frontier",
+    "PPF"
+   ],
+   "taughtIn": "opportunity-cost-ppc",
+   "dependsOn": [
+    "opportunity-cost",
+    "factors-of-production"
+   ]
+  },
+  {
+   "id": "efficiency",
+   "term": "productive efficiency",
+   "aliases": [
+    "efficient point",
+    "inefficient point"
+   ],
+   "taughtIn": "opportunity-cost-ppc",
+   "dependsOn": [
+    "ppc"
+   ]
+  },
+  {
+   "id": "increasing-cost",
+   "term": "increasing opportunity cost",
+   "aliases": [
+    "constant opportunity cost"
+   ],
+   "taughtIn": "opportunity-cost-ppc",
+   "dependsOn": [
+    "ppc"
+   ]
+  },
+  {
+   "id": "ppc-growth",
+   "term": "PPC shift",
+   "aliases": [
+    "outward shift of the PPC"
+   ],
+   "taughtIn": "opportunity-cost-ppc",
+   "dependsOn": [
+    "ppc"
+   ]
+  },
+  {
+   "id": "absolute-advantage",
+   "term": "absolute advantage",
+   "aliases": [],
+   "taughtIn": "comparative-advantage",
+   "dependsOn": [
+    "opportunity-cost"
+   ]
+  },
+  {
+   "id": "comparative-advantage",
+   "term": "comparative advantage",
+   "aliases": [],
+   "taughtIn": "comparative-advantage",
+   "dependsOn": [
+    "opportunity-cost"
+   ]
+  },
+  {
+   "id": "specialization",
+   "term": "specialization",
+   "aliases": [
+    "specialize"
+   ],
+   "taughtIn": "comparative-advantage",
+   "dependsOn": [
+    "comparative-advantage"
+   ]
+  },
+  {
+   "id": "terms-of-trade",
+   "term": "terms of trade",
+   "aliases": [],
+   "taughtIn": "comparative-advantage",
+   "dependsOn": [
+    "comparative-advantage"
+   ]
+  },
+  {
+   "id": "gains-from-trade",
+   "term": "gains from trade",
+   "aliases": [
+    "trade",
+    "mutually beneficial trade"
+   ],
+   "taughtIn": "comparative-advantage",
+   "dependsOn": [
+    "terms-of-trade"
+   ]
+  },
+  {
+   "id": "law-of-demand",
+   "term": "law of demand",
+   "aliases": [
+    "demand curve",
+    "demand"
+   ],
+   "taughtIn": "demand",
+   "dependsOn": [
+    "goods-services"
+   ]
+  },
+  {
+   "id": "quantity-demanded",
+   "term": "quantity demanded",
+   "aliases": [],
+   "taughtIn": "demand",
+   "dependsOn": [
+    "law-of-demand"
+   ]
+  },
+  {
+   "id": "demand-shifter",
+   "term": "determinant of demand",
+   "aliases": [
+    "demand shifter",
+    "normal good",
+    "inferior good",
+    "substitute",
+    "complement"
+   ],
+   "taughtIn": "demand",
+   "dependsOn": [
+    "law-of-demand"
+   ]
+  },
+  {
+   "id": "law-of-supply",
+   "term": "law of supply",
+   "aliases": [
+    "supply curve",
+    "supply"
+   ],
+   "taughtIn": "supply",
+   "dependsOn": [
+    "goods-services"
+   ]
+  },
+  {
+   "id": "quantity-supplied",
+   "term": "quantity supplied",
+   "aliases": [],
+   "taughtIn": "supply",
+   "dependsOn": [
+    "law-of-supply"
+   ]
+  },
+  {
+   "id": "supply-shifter",
+   "term": "determinant of supply",
+   "aliases": [
+    "supply shifter",
+    "input costs",
+    "subsidy"
+   ],
+   "taughtIn": "supply",
+   "dependsOn": [
+    "law-of-supply"
+   ]
+  },
+  {
+   "id": "equilibrium",
+   "term": "market equilibrium",
+   "aliases": [
+    "equilibrium price",
+    "equilibrium quantity",
+    "equilibrium"
+   ],
+   "taughtIn": "market-equilibrium",
+   "dependsOn": [
+    "law-of-demand",
+    "law-of-supply"
+   ]
+  },
+  {
+   "id": "shortage",
+   "term": "shortage",
+   "aliases": [],
+   "taughtIn": "market-equilibrium",
+   "dependsOn": [
+    "equilibrium"
+   ]
+  },
+  {
+   "id": "surplus",
+   "term": "surplus",
+   "aliases": [],
+   "taughtIn": "market-equilibrium",
+   "dependsOn": [
+    "equilibrium"
+   ]
+  },
+  {
+   "id": "indeterminate",
+   "term": "indeterminate change",
+   "aliases": [
+    "indeterminate"
+   ],
+   "taughtIn": "market-equilibrium",
+   "dependsOn": [
+    "equilibrium"
+   ]
+  },
+  {
+   "id": "circular-flow",
+   "term": "circular flow model",
+   "aliases": [
+    "circular flow"
+   ],
+   "taughtIn": "gdp-circular-flow",
+   "dependsOn": [
+    "goods-services",
+    "factors-of-production"
+   ]
+  },
+  {
+   "id": "gdp",
+   "term": "gross domestic product",
+   "aliases": [
+    "GDP"
+   ],
+   "taughtIn": "gdp-circular-flow",
+   "dependsOn": [
+    "circular-flow"
+   ]
+  },
+  {
+   "id": "expenditure-approach",
+   "term": "expenditure approach",
+   "aliases": [
+    "C + I + G + (X - M)",
+    "consumption",
+    "investment",
+    "government spending",
+    "net exports"
+   ],
+   "taughtIn": "gdp-circular-flow",
+   "dependsOn": [
+    "gdp"
+   ]
+  },
+  {
+   "id": "final-goods",
+   "term": "final goods",
+   "aliases": [
+    "intermediate goods",
+    "value added"
+   ],
+   "taughtIn": "gdp-circular-flow",
+   "dependsOn": [
+    "gdp"
+   ]
+  },
+  {
+   "id": "exports-imports",
+   "term": "exports",
+   "aliases": [
+    "imports"
+   ],
+   "taughtIn": "gdp-circular-flow",
+   "dependsOn": [
+    "gdp"
+   ]
+  },
+  {
+   "id": "nonmarket",
+   "term": "nonmarket activity",
+   "aliases": [
+    "underground economy",
+    "informal economy"
+   ],
+   "taughtIn": "gdp-limitations",
+   "dependsOn": [
+    "gdp"
+   ]
+  },
+  {
+   "id": "gdp-per-capita",
+   "term": "GDP per capita",
+   "aliases": [
+    "real GDP per capita"
+   ],
+   "taughtIn": "gdp-limitations",
+   "dependsOn": [
+    "gdp"
+   ]
+  },
+  {
+   "id": "labor-force",
+   "term": "labor force",
+   "aliases": [
+    "labor force participation rate",
+    "participation rate"
+   ],
+   "taughtIn": "unemployment",
+   "dependsOn": [
+    "gdp"
+   ]
+  },
+  {
+   "id": "unemployment-rate",
+   "term": "unemployment rate",
+   "aliases": [
+    "unemployed"
+   ],
+   "taughtIn": "unemployment",
+   "dependsOn": [
+    "labor-force"
+   ]
+  },
+  {
+   "id": "frictional",
+   "term": "frictional unemployment",
+   "aliases": [],
+   "taughtIn": "unemployment",
+   "dependsOn": [
+    "unemployment-rate"
+   ]
+  },
+  {
+   "id": "structural",
+   "term": "structural unemployment",
+   "aliases": [],
+   "taughtIn": "unemployment",
+   "dependsOn": [
+    "unemployment-rate"
+   ]
+  },
+  {
+   "id": "cyclical",
+   "term": "cyclical unemployment",
+   "aliases": [],
+   "taughtIn": "unemployment",
+   "dependsOn": [
+    "unemployment-rate"
+   ]
+  },
+  {
+   "id": "natural-rate",
+   "term": "natural rate of unemployment",
+   "aliases": [
+    "natural rate",
+    "full employment"
+   ],
+   "taughtIn": "unemployment",
+   "dependsOn": [
+    "frictional",
+    "structural"
+   ]
+  },
+  {
+   "id": "discouraged",
+   "term": "discouraged worker",
+   "aliases": [
+    "discouraged workers",
+    "underemployed"
+   ],
+   "taughtIn": "unemployment",
+   "dependsOn": [
+    "labor-force"
+   ]
+  },
+  {
+   "id": "price-index",
+   "term": "price index",
+   "aliases": [
+    "market basket",
+    "base year"
+   ],
+   "taughtIn": "price-indices-inflation",
+   "dependsOn": [
+    "gdp"
+   ]
+  },
+  {
+   "id": "cpi",
+   "term": "consumer price index",
+   "aliases": [
+    "CPI"
+   ],
+   "taughtIn": "price-indices-inflation",
+   "dependsOn": [
+    "price-index"
+   ]
+  },
+  {
+   "id": "inflation",
+   "term": "inflation",
+   "aliases": [
+    "inflation rate"
+   ],
+   "taughtIn": "price-indices-inflation",
+   "dependsOn": [
+    "price-index"
+   ]
+  },
+  {
+   "id": "deflation",
+   "term": "deflation",
+   "aliases": [
+    "disinflation"
+   ],
+   "taughtIn": "price-indices-inflation",
+   "dependsOn": [
+    "inflation"
+   ]
+  },
+  {
+   "id": "substitution-bias",
+   "term": "substitution bias",
+   "aliases": [],
+   "taughtIn": "price-indices-inflation",
+   "dependsOn": [
+    "cpi"
+   ]
+  },
+  {
+   "id": "real-value",
+   "term": "real value",
+   "aliases": [
+    "nominal value",
+    "real wage",
+    "nominal wage"
+   ],
+   "taughtIn": "price-indices-inflation",
+   "dependsOn": [
+    "price-index"
+   ]
+  },
+  {
+   "id": "unexpected-inflation",
+   "term": "unanticipated inflation",
+   "aliases": [
+    "unexpected inflation",
+    "anticipated inflation"
+   ],
+   "taughtIn": "inflation-costs",
+   "dependsOn": [
+    "inflation"
+   ]
+  },
+  {
+   "id": "fixed-income",
+   "term": "fixed income",
+   "aliases": [
+    "fixed incomes",
+    "borrowers and lenders"
+   ],
+   "taughtIn": "inflation-costs",
+   "dependsOn": [
+    "unexpected-inflation"
+   ]
+  },
+  {
+   "id": "menu-costs",
+   "term": "menu costs",
+   "aliases": [
+    "shoe-leather costs"
+   ],
+   "taughtIn": "inflation-costs",
+   "dependsOn": [
+    "inflation"
+   ]
+  },
+  {
+   "id": "nominal-gdp",
+   "term": "nominal GDP",
+   "aliases": [],
+   "taughtIn": "real-nominal-gdp",
+   "dependsOn": [
+    "gdp"
+   ]
+  },
+  {
+   "id": "real-gdp",
+   "term": "real GDP",
+   "aliases": [
+    "real output"
+   ],
+   "taughtIn": "real-nominal-gdp",
+   "dependsOn": [
+    "nominal-gdp",
+    "price-index"
+   ]
+  },
+  {
+   "id": "gdp-deflator",
+   "term": "GDP deflator",
+   "aliases": [],
+   "taughtIn": "real-nominal-gdp",
+   "dependsOn": [
+    "real-gdp"
+   ]
+  },
+  {
+   "id": "growth-rate",
+   "term": "growth rate of real GDP",
+   "aliases": [
+    "economic growth rate"
+   ],
+   "taughtIn": "real-nominal-gdp",
+   "dependsOn": [
+    "real-gdp"
+   ]
+  },
+  {
+   "id": "business-cycle",
+   "term": "business cycle",
+   "aliases": [
+    "expansion",
+    "contraction",
+    "peak",
+    "trough",
+    "recession"
+   ],
+   "taughtIn": "business-cycles",
+   "dependsOn": [
+    "real-gdp",
+    "cyclical"
+   ]
+  },
+  {
+   "id": "potential-output",
+   "term": "potential output",
+   "aliases": [
+    "full-employment output"
+   ],
+   "taughtIn": "business-cycles",
+   "dependsOn": [
+    "natural-rate",
+    "real-gdp"
+   ]
+  },
+  {
+   "id": "output-gap",
+   "term": "output gap",
+   "aliases": [
+    "recessionary gap",
+    "inflationary gap",
+    "positive output gap",
+    "negative output gap"
+   ],
+   "taughtIn": "business-cycles",
+   "dependsOn": [
+    "potential-output"
+   ]
+  },
+  {
+   "id": "ad",
+   "term": "aggregate demand",
+   "aliases": [
+    "AD",
+    "aggregate demand curve"
+   ],
+   "taughtIn": "aggregate-demand",
+   "dependsOn": [
+    "expenditure-approach",
+    "price-index"
+   ]
+  },
+  {
+   "id": "wealth-effect",
+   "term": "wealth effect",
+   "aliases": [
+    "real wealth effect",
+    "interest rate effect",
+    "exchange rate effect"
+   ],
+   "taughtIn": "aggregate-demand",
+   "dependsOn": [
+    "ad"
+   ]
+  },
+  {
+   "id": "ad-shifter",
+   "term": "determinant of aggregate demand",
+   "aliases": [
+    "AD shifter"
+   ],
+   "taughtIn": "aggregate-demand",
+   "dependsOn": [
+    "ad"
+   ]
+  },
+  {
+   "id": "disposable-income",
+   "term": "disposable income",
+   "aliases": [],
+   "taughtIn": "multipliers",
+   "dependsOn": [
+    "gdp"
+   ]
+  },
+  {
+   "id": "mpc",
+   "term": "marginal propensity to consume",
+   "aliases": [
+    "MPC"
+   ],
+   "taughtIn": "multipliers",
+   "dependsOn": [
+    "disposable-income"
+   ]
+  },
+  {
+   "id": "mps",
+   "term": "marginal propensity to save",
+   "aliases": [
+    "MPS"
+   ],
+   "taughtIn": "multipliers",
+   "dependsOn": [
+    "mpc"
+   ]
+  },
+  {
+   "id": "spending-multiplier",
+   "term": "spending multiplier",
+   "aliases": [
+    "expenditure multiplier",
+    "multiplier effect"
+   ],
+   "taughtIn": "multipliers",
+   "dependsOn": [
+    "mpc",
+    "mps",
+    "ad"
+   ]
+  },
+  {
+   "id": "tax-multiplier",
+   "term": "tax multiplier",
+   "aliases": [],
+   "taughtIn": "multipliers",
+   "dependsOn": [
+    "spending-multiplier"
+   ]
+  },
+  {
+   "id": "balanced-budget-multiplier",
+   "term": "balanced-budget multiplier",
+   "aliases": [],
+   "taughtIn": "multipliers",
+   "dependsOn": [
+    "tax-multiplier"
+   ]
+  },
+  {
+   "id": "sras",
+   "term": "short-run aggregate supply",
+   "aliases": [
+    "SRAS",
+    "short-run aggregate supply curve"
+   ],
+   "taughtIn": "sras",
+   "dependsOn": [
+    "real-gdp",
+    "price-index"
+   ]
+  },
+  {
+   "id": "sticky-wages",
+   "term": "sticky wages",
+   "aliases": [
+    "sticky prices",
+    "sticky wage"
+   ],
+   "taughtIn": "sras",
+   "dependsOn": [
+    "sras"
+   ]
+  },
+  {
+   "id": "sras-shifter",
+   "term": "determinant of short-run aggregate supply",
+   "aliases": [
+    "SRAS shifter",
+    "supply shock"
+   ],
+   "taughtIn": "sras",
+   "dependsOn": [
+    "sras"
+   ]
+  },
+  {
+   "id": "lras",
+   "term": "long-run aggregate supply",
+   "aliases": [
+    "LRAS",
+    "long-run aggregate supply curve"
+   ],
+   "taughtIn": "lras",
+   "dependsOn": [
+    "potential-output",
+    "sras",
+    "ppc"
+   ]
+  },
+  {
+   "id": "long-run",
+   "term": "long run",
+   "aliases": [
+    "short run"
+   ],
+   "taughtIn": "lras",
+   "dependsOn": [
+    "sras"
+   ]
+  },
+  {
+   "id": "ad-as-model",
+   "term": "AD-AS model",
+   "aliases": [
+    "AD-AS graph",
+    "short-run equilibrium",
+    "long-run equilibrium"
+   ],
+   "taughtIn": "adas-equilibrium",
+   "dependsOn": [
+    "ad",
+    "sras",
+    "lras"
+   ]
+  },
+  {
+   "id": "price-level",
+   "term": "price level",
+   "aliases": [
+    "aggregate price level"
+   ],
+   "taughtIn": "adas-equilibrium",
+   "dependsOn": [
+    "ad-as-model"
+   ]
+  },
+  {
+   "id": "demand-pull",
+   "term": "demand-pull inflation",
+   "aliases": [],
+   "taughtIn": "adas-short-run-changes",
+   "dependsOn": [
+    "ad-as-model",
+    "inflation"
+   ]
+  },
+  {
+   "id": "cost-push",
+   "term": "cost-push inflation",
+   "aliases": [
+    "stagflation"
+   ],
+   "taughtIn": "adas-short-run-changes",
+   "dependsOn": [
+    "ad-as-model",
+    "inflation",
+    "sras-shifter"
+   ]
+  },
+  {
+   "id": "ad-shock",
+   "term": "demand shock",
+   "aliases": [
+    "positive demand shock",
+    "negative demand shock"
+   ],
+   "taughtIn": "adas-short-run-changes",
+   "dependsOn": [
+    "ad-shifter",
+    "ad-as-model"
+   ]
+  },
+  {
+   "id": "self-adjustment",
+   "term": "long-run self-adjustment",
+   "aliases": [
+    "self-correction",
+    "self-adjustment"
+   ],
+   "taughtIn": "long-run-self-adjustment",
+   "dependsOn": [
+    "output-gap",
+    "sticky-wages",
+    "ad-as-model"
+   ]
+  },
+  {
+   "id": "fiscal-policy",
+   "term": "fiscal policy",
+   "aliases": [
+    "expansionary fiscal policy",
+    "contractionary fiscal policy",
+    "discretionary fiscal policy"
+   ],
+   "taughtIn": "fiscal-policy",
+   "dependsOn": [
+    "ad",
+    "spending-multiplier",
+    "tax-multiplier",
+    "output-gap"
+   ]
+  },
+  {
+   "id": "transfer-payments",
+   "term": "transfer payments",
+   "aliases": [
+    "transfer payment"
+   ],
+   "taughtIn": "fiscal-policy",
+   "dependsOn": [
+    "fiscal-policy"
+   ]
+  },
+  {
+   "id": "automatic-stabilizer",
+   "term": "automatic stabilizer",
+   "aliases": [
+    "automatic stabilizers",
+    "progressive tax",
+    "unemployment compensation"
+   ],
+   "taughtIn": "automatic-stabilizers",
+   "dependsOn": [
+    "fiscal-policy",
+    "transfer-payments",
+    "business-cycle"
+   ]
+  },
+  {
+   "id": "financial-asset",
+   "term": "financial asset",
+   "aliases": [
+    "bond",
+    "bonds",
+    "stock",
+    "stocks",
+    "liquidity"
+   ],
+   "taughtIn": "financial-assets",
+   "dependsOn": [
+    "goods-services"
+   ]
+  },
+  {
+   "id": "bond-price-rate",
+   "term": "bond prices and interest rates",
+   "aliases": [
+    "bond price"
+   ],
+   "taughtIn": "financial-assets",
+   "dependsOn": [
+    "financial-asset"
+   ]
+  },
+  {
+   "id": "interest-rate",
+   "term": "interest rate",
+   "aliases": [
+    "interest",
+    "interest rates"
+   ],
+   "taughtIn": "financial-assets",
+   "dependsOn": [
+    "financial-asset"
+   ]
+  },
+  {
+   "id": "nominal-rate",
+   "term": "nominal interest rate",
+   "aliases": [],
+   "taughtIn": "nominal-real-rates",
+   "dependsOn": [
+    "interest-rate"
+   ]
+  },
+  {
+   "id": "real-rate",
+   "term": "real interest rate",
+   "aliases": [],
+   "taughtIn": "nominal-real-rates",
+   "dependsOn": [
+    "nominal-rate",
+    "inflation",
+    "unexpected-inflation"
+   ]
+  },
+  {
+   "id": "money",
+   "term": "money",
+   "aliases": [
+    "functions of money",
+    "medium of exchange",
+    "unit of account",
+    "store of value"
+   ],
+   "taughtIn": "money-functions",
+   "dependsOn": [
+    "financial-asset"
+   ]
+  },
+  {
+   "id": "money-supply-measures",
+   "term": "M1",
+   "aliases": [
+    "M2",
+    "money supply measures"
+   ],
+   "taughtIn": "money-functions",
+   "dependsOn": [
+    "money"
+   ]
+  },
+  {
+   "id": "fractional-reserve",
+   "term": "fractional reserve banking",
+   "aliases": [
+    "bank reserves",
+    "reserves"
+   ],
+   "taughtIn": "banking-money-supply",
+   "dependsOn": [
+    "money"
+   ]
+  },
+  {
+   "id": "balance-sheet",
+   "term": "balance sheet",
+   "aliases": [
+    "T-account",
+    "assets",
+    "liabilities"
+   ],
+   "taughtIn": "banking-money-supply",
+   "dependsOn": [
+    "fractional-reserve"
+   ]
+  },
+  {
+   "id": "required-reserves",
+   "term": "required reserves",
+   "aliases": [
+    "reserve requirement",
+    "required reserve ratio",
+    "excess reserves"
+   ],
+   "taughtIn": "banking-money-supply",
+   "dependsOn": [
+    "fractional-reserve"
+   ]
+  },
+  {
+   "id": "money-multiplier",
+   "term": "money multiplier",
+   "aliases": [
+    "deposit multiplier"
+   ],
+   "taughtIn": "banking-money-supply",
+   "dependsOn": [
+    "required-reserves"
+   ]
+  },
+  {
+   "id": "money-creation",
+   "term": "money creation",
+   "aliases": [
+    "expansion of the money supply"
+   ],
+   "taughtIn": "banking-money-supply",
+   "dependsOn": [
+    "money-multiplier",
+    "balance-sheet"
+   ]
+  },
+  {
+   "id": "money-market",
+   "term": "money market",
+   "aliases": [
+    "money market graph"
+   ],
+   "taughtIn": "money-market",
+   "dependsOn": [
+    "nominal-rate",
+    "money"
+   ]
+  },
+  {
+   "id": "money-demand",
+   "term": "money demand",
+   "aliases": [
+    "demand for money",
+    "transaction demand",
+    "asset demand"
+   ],
+   "taughtIn": "money-market",
+   "dependsOn": [
+    "money-market"
+   ]
+  },
+  {
+   "id": "money-supply",
+   "term": "money supply",
+   "aliases": [
+    "money supply curve"
+   ],
+   "taughtIn": "money-market",
+   "dependsOn": [
+    "money-market",
+    "money-supply-measures"
+   ]
+  },
+  {
+   "id": "central-bank",
+   "term": "central bank",
+   "aliases": [
+    "Federal Reserve",
+    "the Fed"
+   ],
+   "taughtIn": "monetary-policy",
+   "dependsOn": [
+    "money-supply"
+   ]
+  },
+  {
+   "id": "ample-reserves",
+   "term": "ample reserves",
+   "aliases": [
+    "ample-reserves framework",
+    "reserve market",
+    "market for reserves"
+   ],
+   "taughtIn": "monetary-policy",
+   "dependsOn": [
+    "central-bank",
+    "fractional-reserve"
+   ]
+  },
+  {
+   "id": "policy-rate",
+   "term": "policy rate",
+   "aliases": [
+    "federal funds rate",
+    "administered rates",
+    "interest on reserves",
+    "IORB"
+   ],
+   "taughtIn": "monetary-policy",
+   "dependsOn": [
+    "ample-reserves",
+    "nominal-rate"
+   ]
+  },
+  {
+   "id": "limited-reserves",
+   "term": "limited reserves",
+   "aliases": [
+    "limited-reserves framework",
+    "open market operations",
+    "discount rate"
+   ],
+   "taughtIn": "monetary-policy",
+   "dependsOn": [
+    "central-bank",
+    "required-reserves"
+   ]
+  },
+  {
+   "id": "monetary-policy",
+   "term": "monetary policy",
+   "aliases": [
+    "expansionary monetary policy",
+    "contractionary monetary policy"
+   ],
+   "taughtIn": "monetary-policy",
+   "dependsOn": [
+    "policy-rate",
+    "limited-reserves",
+    "ad"
+   ]
+  },
+  {
+   "id": "loanable-funds",
+   "term": "loanable funds market",
+   "aliases": [
+    "loanable funds",
+    "supply of loanable funds",
+    "demand for loanable funds"
+   ],
+   "taughtIn": "loanable-funds",
+   "dependsOn": [
+    "real-rate"
+   ]
+  },
+  {
+   "id": "national-saving",
+   "term": "national saving",
+   "aliases": [
+    "private saving",
+    "public saving"
+   ],
+   "taughtIn": "loanable-funds",
+   "dependsOn": [
+    "loanable-funds"
+   ]
+  },
+  {
+   "id": "policy-mix",
+   "term": "policy mix",
+   "aliases": [
+    "combined fiscal and monetary policy"
+   ],
+   "taughtIn": "policy-short-run",
+   "dependsOn": [
+    "fiscal-policy",
+    "monetary-policy"
+   ]
+  },
+  {
+   "id": "causal-chain",
+   "term": "causal chain",
+   "aliases": [
+    "transmission mechanism"
+   ],
+   "taughtIn": "policy-short-run",
+   "dependsOn": [
+    "monetary-policy",
+    "fiscal-policy"
+   ]
+  },
+  {
+   "id": "srpc",
+   "term": "short-run Phillips curve",
+   "aliases": [
+    "SRPC",
+    "Phillips curve"
+   ],
+   "taughtIn": "phillips-curve",
+   "dependsOn": [
+    "inflation",
+    "unemployment-rate",
+    "ad-as-model"
+   ]
+  },
+  {
+   "id": "lrpc",
+   "term": "long-run Phillips curve",
+   "aliases": [
+    "LRPC"
+   ],
+   "taughtIn": "phillips-curve",
+   "dependsOn": [
+    "srpc",
+    "natural-rate"
+   ]
+  },
+  {
+   "id": "expected-inflation",
+   "term": "expected inflation",
+   "aliases": [
+    "inflation expectations"
+   ],
+   "taughtIn": "phillips-curve",
+   "dependsOn": [
+    "srpc"
+   ]
+  },
+  {
+   "id": "quantity-theory",
+   "term": "quantity theory of money",
+   "aliases": [
+    "equation of exchange",
+    "M x V = P x Y"
+   ],
+   "taughtIn": "money-growth-inflation",
+   "dependsOn": [
+    "money-supply",
+    "inflation",
+    "real-gdp"
+   ]
+  },
+  {
+   "id": "velocity",
+   "term": "velocity of money",
+   "aliases": [
+    "velocity"
+   ],
+   "taughtIn": "money-growth-inflation",
+   "dependsOn": [
+    "quantity-theory"
+   ]
+  },
+  {
+   "id": "money-neutrality",
+   "term": "long-run neutrality of money",
+   "aliases": [
+    "money neutrality"
+   ],
+   "taughtIn": "money-growth-inflation",
+   "dependsOn": [
+    "quantity-theory",
+    "lras"
+   ]
+  },
+  {
+   "id": "budget-deficit",
+   "term": "budget deficit",
+   "aliases": [
+    "budget surplus",
+    "balanced budget"
+   ],
+   "taughtIn": "deficits-debt",
+   "dependsOn": [
+    "fiscal-policy"
+   ]
+  },
+  {
+   "id": "national-debt",
+   "term": "national debt",
+   "aliases": [
+    "government debt"
+   ],
+   "taughtIn": "deficits-debt",
+   "dependsOn": [
+    "budget-deficit"
+   ]
+  },
+  {
+   "id": "crowding-out",
+   "term": "crowding out",
+   "aliases": [],
+   "taughtIn": "crowding-out",
+   "dependsOn": [
+    "budget-deficit",
+    "loanable-funds"
+   ]
+  },
+  {
+   "id": "economic-growth",
+   "term": "economic growth",
+   "aliases": [
+    "long-run growth"
+   ],
+   "taughtIn": "economic-growth",
+   "dependsOn": [
+    "ppc-growth",
+    "lras",
+    "gdp-per-capita"
+   ]
+  },
+  {
+   "id": "human-capital",
+   "term": "human capital",
+   "aliases": [
+    "physical capital",
+    "productivity"
+   ],
+   "taughtIn": "economic-growth",
+   "dependsOn": [
+    "economic-growth"
+   ]
+  },
+  {
+   "id": "growth-policy",
+   "term": "growth policy",
+   "aliases": [
+    "supply-side policy",
+    "supply-side fiscal policy"
+   ],
+   "taughtIn": "growth-policy",
+   "dependsOn": [
+    "economic-growth",
+    "human-capital"
+   ]
+  },
+  {
+   "id": "balance-of-payments",
+   "term": "balance of payments",
+   "aliases": [],
+   "taughtIn": "balance-of-payments",
+   "dependsOn": [
+    "exports-imports"
+   ]
+  },
+  {
+   "id": "current-account",
+   "term": "current account",
+   "aliases": [
+    "trade balance",
+    "balance of trade"
+   ],
+   "taughtIn": "balance-of-payments",
+   "dependsOn": [
+    "balance-of-payments"
+   ]
+  },
+  {
+   "id": "financial-account",
+   "term": "capital and financial account",
+   "aliases": [
+    "financial account",
+    "CFA"
+   ],
+   "taughtIn": "balance-of-payments",
+   "dependsOn": [
+    "balance-of-payments"
+   ]
+  },
+  {
+   "id": "exchange-rate",
+   "term": "exchange rate",
+   "aliases": [
+    "exchange rates"
+   ],
+   "taughtIn": "exchange-rates",
+   "dependsOn": [
+    "money"
+   ]
+  },
+  {
+   "id": "appreciation",
+   "term": "appreciation",
+   "aliases": [
+    "depreciation",
+    "appreciate",
+    "depreciate"
+   ],
+   "taughtIn": "exchange-rates",
+   "dependsOn": [
+    "exchange-rate"
+   ]
+  },
+  {
+   "id": "fx-market",
+   "term": "foreign exchange market",
+   "aliases": [
+    "foreign exchange",
+    "market for a currency",
+    "currency market"
+   ],
+   "taughtIn": "foreign-exchange-market",
+   "dependsOn": [
+    "exchange-rate",
+    "law-of-demand",
+    "law-of-supply"
+   ]
+  },
+  {
+   "id": "fx-determinant",
+   "term": "determinant of exchange rates",
+   "aliases": [
+    "relative interest rates",
+    "relative price levels",
+    "relative incomes"
+   ],
+   "taughtIn": "fx-policy-changes",
+   "dependsOn": [
+    "fx-market",
+    "appreciation"
+   ]
+  },
+  {
+   "id": "fx-net-exports",
+   "term": "exchange rate effect on net exports",
+   "aliases": [
+    "net exports and the exchange rate"
+   ],
+   "taughtIn": "fx-net-exports",
+   "dependsOn": [
+    "appreciation",
+    "ad"
+   ]
+  },
+  {
+   "id": "capital-flows",
+   "term": "international capital flows",
+   "aliases": [
+    "capital inflow",
+    "capital outflow",
+    "financial capital flows"
+   ],
+   "taughtIn": "real-rates-financial-flows",
+   "dependsOn": [
+    "real-rate",
+    "fx-determinant",
+    "financial-account"
+   ]
+  },
+  {
+   "id": "axis",
+   "term": "axis (graph)",
+   "aliases": [
+    "axes",
+    "horizontal axis",
+    "vertical axis",
+    "labeled axis"
+   ],
+   "taughtIn": "axes-points",
+   "dependsOn": []
+  },
+  {
+   "id": "coordinate",
+   "term": "coordinate point",
+   "aliases": [
+    "ordered pair"
+   ],
+   "taughtIn": "axes-points",
+   "dependsOn": [
+    "axis"
+   ]
+  },
+  {
+   "id": "direct-relationship",
+   "term": "direct relationship",
+   "aliases": [
+    "positive relationship",
+    "inverse relationship",
+    "negative relationship"
+   ],
+   "taughtIn": "axes-points",
+   "dependsOn": [
+    "coordinate"
+   ]
+  },
+  {
+   "id": "slope",
+   "term": "slope",
+   "aliases": [
+    "rise over run"
+   ],
+   "taughtIn": "slopes-curves",
+   "dependsOn": [
+    "coordinate"
+   ]
+  },
+  {
+   "id": "curve-shape",
+   "term": "upward-sloping curve",
+   "aliases": [
+    "downward-sloping curve",
+    "vertical line",
+    "horizontal line"
+   ],
+   "taughtIn": "slopes-curves",
+   "dependsOn": [
+    "slope"
+   ]
+  },
+  {
+   "id": "movement-along",
+   "term": "movement along a curve",
+   "aliases": [],
+   "taughtIn": "shifts-movements",
+   "dependsOn": [
+    "curve-shape"
+   ]
+  },
+  {
+   "id": "curve-shift",
+   "term": "shift of a curve",
+   "aliases": [
+    "curve shift",
+    "shifts right",
+    "shifts left"
+   ],
+   "taughtIn": "shifts-movements",
+   "dependsOn": [
+    "movement-along"
+   ]
+  },
+  {
+   "id": "ceteris-paribus",
+   "term": "ceteris paribus",
+   "aliases": [
+    "all else equal"
+   ],
+   "taughtIn": "shifts-movements",
+   "dependsOn": [
+    "curve-shift"
+   ]
+  },
+  {
+   "id": "intersection",
+   "term": "intersection point",
+   "aliases": [
+    "where the curves cross"
+   ],
+   "taughtIn": "curves-crossing",
+   "dependsOn": [
+    "curve-shape"
+   ]
+  },
+  {
+   "id": "comparative-statics",
+   "term": "before-and-after comparison",
+   "aliases": [
+    "comparing equilibria"
+   ],
+   "taughtIn": "curves-crossing",
+   "dependsOn": [
+    "intersection",
+    "curve-shift"
+   ]
+  }
+ ],
+ "circularDependencies": []
+}

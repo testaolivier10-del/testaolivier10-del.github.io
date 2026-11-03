@@ -78,12 +78,41 @@ One branch, `claude/apmacro`, one PR at the end.
 | Phase | What | Status |
 |---|---|---|
 | R | Research: `docs/apmacro-research/framework.md`, `market.md`; this spec | **done 2026-11-03** |
-| 0 | Fork AP® Psychology: runtime `macroeconomics/assets/` (`mac-*`), `ApMacroCalc`, `graph` item and FRQ part, generator, checks, tests, fixture, registration hidden, SQL migration; then CED and dependency maps, exam config, tool scaffolding, architecture, authoring guide, briefs, needs-author | in progress |
+| 0 | Fork AP® Psychology: runtime `macroeconomics/assets/` (`mac-*`), `ApMacroCalc`, `graph` item and FRQ part, generator, checks, tests, fixture, registration hidden, SQL migration; then CED and dependency maps, exam config, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-11-03** (section 5b) |
 | 1 | Content: lessons, notes, banks (with stimulus sets and `graph` items), FRQs, glossary, figures | |
 | 2 | Trainers (section 6) | |
 | 3 | Two practice exams, unit tests, "Make it specific" prompts, graph and formula page, cram kit | |
 | 4 | Independent accuracy checks per unit group, tools and exams | |
 | Launch | Publish, generators, continuity pass, "thirteen courses" wording, full CI with browser checks, PR | |
+
+### 5b. Phase 0 as built (2026-11-03)
+
+- Runtime `macroeconomics/assets/` forked from AP® Psychology in one rename pass, then changed as listed in
+  `docs/apmacro-architecture.md` ("Runtime differences"): `ApMacroCalc` (`mac-calc.js`: GDP, CPI, inflation, the
+  deflator, real values, unemployment and participation rates, real interest rates, the spending, tax,
+  balanced-budget and money multipliers, reserves, closing a gap, velocity, exchange rates) in place of
+  `ApPsychStats`; study summaries, AAQ/EBQ, the 988 note, the myth and mental-health rules and the statistics
+  plot kinds dropped; every shared layer hook kept.
+- New item format `graph` and FRQ part type `graph` (architecture "Graphs"): `mac-graph.js` (`ApMacroGraph`: the
+  nine graphs as a model, the spec checker, the SVG and the drag, touch and keyboard renderer) and
+  `ApMacroGrade.graph` (one point per task: labels, shift, equilibrium, outcome, point; the slip named). FRQ
+  graph parts drawn on the page, "Check my graph" ticking the `auto` rubric points.
+- Exam config for May 2027 in `scripts/lib/apmacro-exams.mjs` and `pages/exams.js` (compared by a test): 60 MCQ
+  in 70 min (66%); 3 FRQs in 60 min with a 10-minute reading period (33%), long 10 then two short 5; four-function
+  calculator; Fri 2027-05-07 (`assets/exam-date.js`, `pages/cram.js`). `MCQ_OPTIONS` 4 and `EXAM_SETS` pending
+  needs-author `mcq-options`, `mcq-sets`. No score calculator, band or Beta label; the "not yet reviewed" note kept.
+- Map: `docs/apmacro-ced-map.json`, `docs/apmacro-dependency-map.json` (42 CED topics, 4 graph skills topics in
+  `graph-skills` before Unit 1, 132 starting concepts, 18 FRQ themes per 5a), explained in `docs/apmacro-phase0.md`.
+- Generator `scripts/build-apmacro.mjs`, checks `check-apmacro-map.mjs`, `check-apmacro-content.mjs` (graph specs
+  the grader must score right, the reader-report slips, neutral language, no PPI calculation, no microeconomics),
+  tests `scripts/test/apmacro-*.test.mjs` (calc and graph new), fixture `scripts/test/fixtures/apmacro-data/`
+  (every item format, graph items of each task, a long and a short FRQ with graph parts).
+- Eight trainer stubs (four files each), registered in `macroeconomics/data/pages.json`.
+- Registration hidden, twinning every AP® Psychology point (`docs/apmacro-architecture.md`, "Registration"); SQL
+  migration `scripts/sql/migrations/2026-11a-apmacro.sql` written, not applied. Identity provisional (section 9,
+  needs-author `identity`): yellow-green, hue 88°, the widest gap left on the wheel.
+- Docs: architecture, authoring guide, phase0, needs-author, briefs (`docs/apmacro-briefs/`: common briefs for
+  content, tools and review; authors A-F, builders T1-T4).
 
 ### 5a. Authors and builders (Phase 1 and 2)
 
@@ -142,9 +171,19 @@ student draws in the page (the AI grader hook only when its eval passes).
    for the reserve requirement and money multiplier, always labeled.
 8. (2026-11-03) **Topics 3.7-6.6 essential knowledge** comes from scoring guidelines, Chief Reader Reports and
    standard economics because the CED text could not be read past 3.6; logged in needs-author for a person to check.
+9. (2026-11-03) **Phase 0 done, as built** (section 5b, `docs/apmacro-architecture.md`). Choices the spec left open:
+   (a) graph items grade magnitude never, only the curve, its direction and the new equilibrium against the old
+   (an indeterminate axis is left out of the key); E2 is graded where the student's own curves cross, so the
+   equilibrium point follows from the student's shift as readers score consistency; (b) graphing skills 4.A-4.C
+   are a topic focus but only graph items carry them; (c) set kinds `data`, `graph`, `text`; (d) "Make it
+   specific" skills `chain`, `tool`, `graph`, `multiplier`, `selfadjust`, `currency`, `calculate`, `identify`;
+   (e) the site shell budget went from 341 to 342 KB and the course shell is 83 KB (measured 81.5, the graph
+   module included).
 
 ## 9. Open items for the owner
 
-- Confirm the identity, the free tier (decision 6) and free trainers (section 6) once built.
+- Confirm the identity (provisional in Phase 0: yellow-green accent `#355A0A`, the supply and demand cover, headline
+  "every graph, every shift.", ranks Scarcity Spotter to Macroeconomics Legend; needs-author `identity`), the free
+  tier (decision 6) and free trainers (section 6) once built.
 
 **Launch checklist (owner), to put AP® Macroeconomics Premium on sale:** filled at launch.

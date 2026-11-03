@@ -95,6 +95,17 @@ forms, no calculus words): `docs/apprecalc-authoring-guide.md`; map: `docs/appre
 `docs/apprecalc-reviews/launch.md`. Published and live; Premium on sale once merged (Worker setting in spec
 section 9); Unit 4 is "beyond the exam".
 
+## AP® Macroeconomics course
+
+`docs/apmacro-spec.md` is the source of truth (owner brief, research summary, build plan with the author and
+builder split, decisions); read it before AP® Macroeconomics work and update it in the same commit. Research:
+`docs/apmacro-research/`. Formats, `ApMacroCalc`, the `graph` item and FRQ graph parts (`mac-graph.js`,
+`ApMacroGrade.graph`) and tool layout: `docs/apmacro-architecture.md`; writing rules (graph labeling, ample
+reserves, causal chains with every link, divide the gap, the currency axis ratio, no released questions):
+`docs/apmacro-authoring-guide.md`; map: `docs/apmacro-phase0.md`; open points: `docs/apmacro-needs-author.md`;
+briefs (authors A-F, builders T1-T4): `docs/apmacro-briefs/`. Registered hidden; Premium `onSale: false` until
+the owner checklist in spec section 9; SQL migration `2026-11a-apmacro.sql` not applied.
+
 ## AI FRQ grader (AP® courses)
 
 `docs/frq-grader.md` is the status file (owner decisions, design, setup, eval and launch rule). Worker:
