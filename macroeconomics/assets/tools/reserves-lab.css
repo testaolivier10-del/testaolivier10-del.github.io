@@ -94,11 +94,6 @@
 .rl-qpanel{min-width:0;}
 .rl-taccount{max-width:420px;margin:0 auto;}
 .rl-taccount td{font-variant-numeric:tabular-nums;}
-/* A graph step: the drawn graph is the answer, so its option list (which
-   the drawing selects) is not shown; the step says what is drawn. */
-.cd-step:has(.rl-gmark) .cd-opts{display:none;}
-.rl-gmark{display:block;margin-top:4px;font:700 13px var(--font-ui);color:var(--muted);}
-.rl-gmark:empty{display:none;}
 .ls-root .rl-qfig .mac-gr-stage{max-width:min(560px, calc((100svh - 330px) * 1.07));}
 .ls-root.ls-phone .rl-qfig .mac-gr-stage{max-width:100%;}
 .rl-short{display:none;}

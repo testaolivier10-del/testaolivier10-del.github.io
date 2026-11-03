@@ -55,11 +55,7 @@
 .fxl-shock select{width:100%;}
 
 /* Test yourself */
-.cd-step:has(.fxl-gstep) .cd-opts{display:none;}
 .fxl-qfig{margin:0;}
 .fxl-qfig .mac-gr-stage{max-width:520px;}
-.fxl-pts{display:inline-flex;flex-wrap:wrap;gap:4px 8px;margin-left:2px;}
-.fxl-pt{font:800 12.5px var(--font-ui);padding:1px 8px;border-radius:999px;background:var(--paper);}
-.fxl-pt.ok{color:var(--good-text,#1B7F3A);} .fxl-pt.no{color:var(--bad-text,#B3261E);}
 .fxl-fig.is-narrow .fxl-strip{justify-content:flex-start;padding-right:52px;}
 .fxl-fig.is-narrow .fxl-chip{font-size:12px;padding:4px 10px;}

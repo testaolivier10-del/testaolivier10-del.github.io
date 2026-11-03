@@ -12,6 +12,7 @@
      eq(spec, offsets)         the equilibrium [x, y] of the kind's pair, or null
      outcome(spec, offsets)    { <axis word>: 'up' | 'down' | 'same' } against the start
      keyOffsets(spec)          the key's end state, each key shift one step
+     keyResponse(spec)         the response a full-credit answer gives (key shifts, E2, labels, point)
      region(spec, offsets, p)  'inside' | 'on' | 'outside' the PPC
      labelText(id, names)      an axis label as shown ("Nominal interest rate")
      labelOptions(spec, slot)  the choices a label dropdown offers (ids)
@@ -156,6 +157,24 @@
     var off = {}, cs = curves(spec, {}), key = (spec && spec.key) || {};
     (key.shifts || []).forEach(function(s){ var c = find(cs, s.curve); if(c) off[s.curve] = (off[s.curve] || 0) + dirSign(c.shape, s.dir); });
     return off;
+  }
+  /* The response a full-credit answer gives (the key drawn as a student
+     would): the key's shifts, E2 where the shifted curves cross, every
+     label right, and the point the key asks for. Used to check that a key
+     grades right (tool validators) and to show the key as the student's
+     own graph after a miss (the AD-AS and forex labs). */
+  function keyResponse(spec){
+    var k = kindOf(spec), does = spec.do || [], key = spec.key || {}, off = keyOffsets(spec), labels = {};
+    if(does.indexOf('label') > -1) labelSlots(spec).forEach(function(s){ labels[s] = s === 'x' || s === 'y' ? k[s] : s; });
+    var r = { shifts: off, eq: does.indexOf('equilibrium') > -1 ? eq(spec, off) : null, point: null, labels: labels };
+    var P = key.point;
+    if(does.indexOf('point') > -1 && P){
+      if(P.region){ var c = find(curves(spec, {}), 'PPC'), a = c.at / Math.SQRT2; r.point = P.region === 'on' ? [r6(a), r6(a)] : P.region === 'inside' ? [r6(a / 2), r6(a / 2)] : [Math.min(10, r6(a + 1.2)), Math.min(10, r6(a + 1.2))]; }
+      else if(P.on){ var e0 = eq(spec, {}) || [5, 5], dx = P.x === 'up' ? 1 : P.x === 'down' ? -1 : 0, cv = find(curves(spec, {}), P.on);
+        r.point = cv.shape === 'vertical' ? [cv.at, e0[1] + (P.y === 'up' ? 1 : P.y === 'down' ? -1 : 0)] : [e0[0] + dx, y(cv, e0[0] + dx)]; }
+      else { var e1 = eq(spec, {}) || [5, 5]; r.point = [e1[0] + (P.x === 'up' ? 1 : P.x === 'down' ? -1 : 0), e1[1] + (P.y === 'up' ? 1 : P.y === 'down' ? -1 : 0)]; }
+    }
+    return r;
   }
   function region(spec, offsets, p){
     var c = find(curves(spec, offsets), 'PPC');
@@ -417,7 +436,11 @@
       if(say) live.textContent = say;
       wireSvg();
     }
-    function changed(say){ paint(say); if(opts.onChange) opts.onChange(get()); }
+    // Every change by the student: opts.onChange, and a "macgraph:change"
+    // event on the host (detail: the response), so a page that did not make
+    // the mount (ApMacroTools.drill's graph step) can listen too.
+    function fire(){ var r = get(); if(opts.onChange) opts.onChange(r); try{ host.dispatchEvent(new CustomEvent('macgraph:change', { detail: r })); }catch(e){} }
+    function changed(say){ paint(say); fire(); }
     function shift(c, d){
       if(opts.readonly || movable.indexOf(c) < 0) return;
       var cur = st.shifts[c] || 0, nx = d === 0 ? 0 : Math.max(-MAX_STEPS, Math.min(MAX_STEPS, cur + d));
@@ -480,7 +503,7 @@
         if(want !== cur) shift(drag.curve, want - cur);
       } else { st[drag.pt] = [clamp(at[0]), clamp(at[1])]; paint(); }
     });
-    function end(){ if(drag && drag.pt && opts.onChange) opts.onChange(get()); if(drag && drag.pt) live.textContent = (drag.pt === 'eq' ? 'E2 ' : 'Point ') + ptState(st[drag.pt]); drag = null; }
+    function end(){ if(drag && drag.pt) fire(); if(drag && drag.pt) live.textContent = (drag.pt === 'eq' ? 'E2 ' : 'Point ') + ptState(st[drag.pt]); drag = null; }
     stage.addEventListener('pointerup', end); stage.addEventListener('pointercancel', end);
     function get(){
       var r = { shifts: {}, eq: st.eq ? st.eq.slice() : null, point: st.point ? st.point.slice() : null, labels: {} };
@@ -500,7 +523,7 @@
     return { el: host, get: get, set: set, reset: function(){ resetState(); paint(); }, showKey: function(on){ st.key = on !== false; paint(); }, lock: lock };
   }
 
-  root.ApMacroGraph = { KINDS: KINDS, TASKS: TASKS, CURVE: CURVE, AXIS: AXIS, curves: curves, y: y, eq: eq, outcome: outcome, keyOffsets: keyOffsets,
+  root.ApMacroGraph = { KINDS: KINDS, TASKS: TASKS, CURVE: CURVE, AXIS: AXIS, curves: curves, y: y, eq: eq, outcome: outcome, keyOffsets: keyOffsets, keyResponse: keyResponse,
     region: region, distTo: distTo, dirWord: dirWord, dirSign: dirSign, axisOf: axisOf, curveName: curveName, labelText: labelText, labelOptions: labelOptions,
     labelSlots: labelSlots, optionText: optionText, check: check, svg: svg, describe: describe, mount: mount, find: find };
 })(typeof window !== 'undefined' ? window : globalThis);

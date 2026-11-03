@@ -65,13 +65,13 @@ test('forex-lab: numbers are their recipes; the axis and the mirror market are r
 
 test('forex-lab: the grader catches the flipped ratio and the wrong curve', () => {
   const { M, Grade, Graph, model } = runtime('forex-lab');
-  const p = model.generate(M.rng(5), ctxOf('axis'), 'axis'), g = p.steps[0].graph;
+  const p = model.generate(M.rng(5), ctxOf('axis'), 'axis'), g = p.steps[0].spec;
   const ok = { x: 'fxQuantity', y: 'fxPrice', D: 'D', S: 'S' };
   assert.equal(Grade.graph(g, { labels: ok }).correct, true);
   const flipped = Grade.graph(g, { labels: { ...ok, y: 'fxPriceFlipped' } });
   assert.equal(flipped.correct, false);
   assert.match(flipped.slip, /per unit of this one/);
-  const q = model.generate(M.rng(6), ctxOf('shifts'), 'shift'), gs = q.steps[0].graph, k = gs.key.shifts[0];
+  const q = model.generate(M.rng(6), ctxOf('shifts'), 'shift'), gs = q.steps[0].spec, k = gs.key.shifts[0];
   const other = k.curve === 'D' ? 'S' : 'D', dir = k.dir === 'right' ? 1 : -1;
   const r = Grade.graph(gs, { shifts: { [other]: dir }, eq: Graph.eq(gs, { [other]: dir }) });
   assert.equal(r.correct, false);
@@ -85,8 +85,8 @@ test('forex-lab: planted mistakes are caught by the recheck', () => {
   p.steps[2].correct = (p.steps[2].correct + 1) % 4;
   assert.ok(recheck(p, c, 'planted').some(e => /mirror keyed/.test(e)));
   const q = model.generate(M.rng(22), c, 'shift');
-  q.steps[0].graph.key.shifts[0].curve = q.steps[0].graph.key.shifts[0].curve === 'D' ? 'S' : 'D';
-  q.figure.spec = q.steps[0].graph;
+  q.steps[0].spec.key.shifts[0].curve = q.steps[0].spec.key.shifts[0].curve === 'D' ? 'S' : 'D';
+  q.figure.spec = q.steps[0].spec;
   assert.ok(recheck(q, c, 'planted').some(e => /graph key/.test(e)));
   const a = model.generate(M.rng(23), ctxOf('axis'), 'axis');
   a.steps.find(s => s.key === 'inverse').cell.answer = a.answer.p2;

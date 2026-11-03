@@ -15,9 +15,9 @@
    for (E1/E2/E3, YF, the gap, shift arrows) in the same coordinates.
 
    Test yourself: ApMacroTools.drill with the model's four kinds. A graph
-   step mounts ApMacroGraph on the stage; its Check grades the drawing with
-   ApMacroGrade.graph and ticks the step's hidden option, so drill() records
-   it as "adas-lab:<context>:graph" like any step. */
+   step is drill's "graph" kind, mounted on the stage figure (graphHost):
+   drill grades it with ApMacroGrade.graph and records it as
+   "adas-lab:<context>:graph" like any step. */
 (function(){
   'use strict';
   var T = window.ApMacroTools, M = window.ApMacroMath, A = M && M.adasLab, G = window.ApMacroGraph, GR = window.ApMacroGrade;
@@ -343,26 +343,17 @@
   }
 
   /* ------------------------------------------------------ test yourself */
-  var live = { p: null, gr: null };
-  var MARK = function(k){ return '<span class="adl-gstep" data-key="' + k + '" hidden></span>'; };
-  function keyResponse(spec){
-    var off = G.keyOffsets(spec), r = { shifts: off, eq: G.eq(spec, off), point: null, labels: {} };
-    var P = spec.key && spec.key.point;
-    if(P && P.on){ var e0 = G.eq(spec, {}), dx = P.x === 'up' ? 1 : P.x === 'down' ? -1 : 0; r.point = [e0[0] + dx, G.y(G.find(G.curves(spec, {}), P.on), e0[0] + dx)]; }
-    return r;
-  }
+  /* The drill's graph steps are ApMacroTools.drill's "graph" kind: the graph
+     is mounted on the stage figure here (graphHost hands drill the mount),
+     drill grades it with ApMacroGrade.graph, marks each point and locks it. */
   function quiz(host, data){
     T.drill(host, data, { slug: 'adas-lab', noun: 'drill',
-      generate: function(r, ctx, type){
-        var p = A.generate(r, ctx, type);
-        p.steps.forEach(function(s){ if(s.graph) s.label += MARK(s.key); });
-        return p;
-      },
+      generate: function(r, ctx, type){ return A.generate(r, ctx, type); },
       types: [{ value: 'shock', label: 'Short-run shocks' }, { value: 'gap', label: 'Gaps in numbers' }, { value: 'selfadjust', label: 'Long-run self-adjustment' }, { value: 'phillips', label: 'The Phillips curve link' }],
       typeLabel: 'Kind of problem',
       title: function(p){ return { shock: 'A short-run shock', gap: 'Reading a gap', selfadjust: 'Long-run self-adjustment', phillips: 'The Phillips curve link' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){
-        live.p = p; live.gr = null; api.gr = null;
+        api.gr = null;
         if(!p.figure) return;
         var f = document.createElement('figure');
         f.className = 'cd-fig adl-qfig';
@@ -373,34 +364,15 @@
         }
         var d = document.createElement('div');
         f.appendChild(d);
-        api.gr = live.gr = G.mount(d, p.figure.spec, {});
+        api.gr = G.mount(d, p.figure.spec, {});
       },
+      graphHost: function(s, api){ return api.gr; },
       onStep: function(s, right, api){
-        if(!s.graph || !api.gr) return;
-        var g = GR.graph(s.graph, api.gr.get());
+        if(s.kind !== 'graph' || !api.gr) return;
         // Wrong or shown: the graph takes the key's shape (drawn as the student's,
         // so later steps read the right picture); right: it stays as drawn.
-        if(!g.correct) api.gr.set(keyResponse(s.graph));
-        api.gr.lock();
+        if(!GR.graph(s.spec, api.gr.get()).correct) api.gr.set(G.keyResponse(s.spec));
       }
     });
   }
-  // A graph step's Check: grade the drawing, tick the hidden option, word the slip.
-  document.addEventListener('submit', function(e){
-    var f = e.target, mk = f && f.querySelector && f.querySelector('.adl-gstep');
-    if(!mk || !live.p || !live.gr) return;
-    var s = live.p.steps.filter(function(x){ return x.key === mk.getAttribute('data-key'); })[0];
-    if(!s) return;
-    var g = GR.graph(s.graph, live.gr.get()), fb = f.querySelector('.cd-fb');
-    if(!g.valid){
-      e.preventDefault(); e.stopImmediatePropagation();
-      if(fb) fb.innerHTML = '<span class="bt-small">' + ((s.graph.do || []).indexOf('point') > -1 ? 'Tap the graph to place the point first.' : (s.graph.do || []).indexOf('label') > -1 ? 'Choose the labels under the graph first.' : 'Move a curve on the graph first: drag it, or tab to its handle and use the arrow keys.') + '</span>';
-      return;
-    }
-    var marks = g.points.map(function(pt){ return '<span class="adl-pt ' + (pt.ok ? 'ok' : 'no') + '">' + esc({ shift: 'Shift', equilibrium: 'New equilibrium', outcome: 'Outcome', labels: 'Labels', point: 'Point' }[pt.id] || pt.id) + (pt.ok ? ' ✓' : ' ✗') + '</span>'; }).join(' ');
-    s.why[1] = '<b>' + esc(g.slip || 'Not yet.') + '</b> <span class="adl-pts">' + marks + '</span>';
-    s.why[0] = s.why[0].replace(/ <span class="adl-pts">[\s\S]*$/, '') + ' <span class="adl-pts">' + marks + '</span>';
-    var r = f.querySelector('input[type=radio][value="' + (g.correct ? 0 : 1) + '"]');
-    if(r) r.checked = true;
-  }, true);
 })();

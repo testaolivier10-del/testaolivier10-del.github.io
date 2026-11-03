@@ -521,12 +521,35 @@
        row    { row, cells: [cell...] }    one row of an ICE table, a cell per species
        coef   { row, cells: [cell...] }    the change row, typed as −x, +2x, 0
        choice { options, optionsHtml?, correct, fixed?, why: [...] }
+       graph  { spec, explain? }           a graph to draw (ApMacroGraph.mount with spec),
+                                           graded by ApMacroGrade.graph: ok when correct, the
+                                           slip as the note, each rubric point marked; Check
+                                           stays disabled until something on the graph moved;
+                                           "Show the answer" draws the key (showKey) and locks it.
+                                           Mounted in the step, or where o.graphHost(step, api)
+                                           says: an element to mount in, or a mount the page
+                                           already made (its changes heard through the
+                                           "macgraph:change" event ApMacroGraph fires on its el).
+                                           api.graph is the mount, for o.onStep.
      Each step is checked on its own; a wrong answer gets the feedback for
      the specific slip it matches, and the student can try again or show the
      answer. The first try is what is recorded, as "<slug>:<context>:<step>".
      o: { slug, generate, types?: [{ value, label }], typeLabel?, contexts?,
      extra(host, problem, api)?, onVol(v, step, api)?, onStep(step, right, api)?,
-     title(problem)?, newLabel? } */
+     graphHost(step, api)?, title(problem)?, newLabel? } */
+  var GPT = { labels: 'Labels', shift: 'Shift', equilibrium: 'New equilibrium', outcome: 'Outcome', point: 'Point' };
+  function graphMarks(g){
+    return '<span class="cd-gpts">' + g.points.map(function(pt){ return '<span class="cd-gpt ' + (pt.ok ? 'ok' : 'no') + '">' + esc(GPT[pt.id] || pt.id) + ' <span aria-hidden="true">' + (pt.ok ? '\u2713' : '\u2717') + '</span><span class="sr-only">' + (pt.ok ? 'right' : 'not yet') + '</span></span>'; }).join(' ') + '</span>';
+  }
+  function graphMoved(r){
+    if(!r) return false;
+    for(var c in (r.shifts || {})) if(r.shifts[c]) return true;
+    return !!r.point || Object.keys(r.labels || {}).length > 0;
+  }
+  function graphTodo(spec){
+    var d = spec.do || [];
+    return d.indexOf('point') > -1 ? 'Tap the graph to place the point first.' : d.indexOf('shift') > -1 ? 'Move a curve on the graph first: drag it, or tab to its handle and use the arrow keys.' : 'Choose the labels under the graph first.';
+  }
   // Macroeconomics drills have no ICE "coef" rows; the step kind stays
   // for a tool that wants a row of symbolic cells, parsed by its own model.
   var parseCoef = function(raw){ return M.parseCoef ? M.parseCoef(raw) : numOf(raw); };
@@ -580,6 +603,8 @@
             // spaces) with a plain-text name, so a formula-only label is named.
             return '<div class="bt-radio cd-opt" data-k="' + k + '"><input type="radio" name="' + sid + '" id="' + id + '" value="' + k + '"' + (s.optionsHtml ? '' : ' aria-label="' + esc(plainText(String(s.options[k]))) + '"') + '><label for="' + id + '">' + (s.optionsHtml ? '<span class="cd-pic-n">Picture ' + (n + 1) + '</span>' + s.optionsHtml[k] : '<span class="cd-opt-t">' + s.options[k] + '</span>') + '</label></div>';
           }).join('') + '</fieldset>';
+        } else if(s.kind === 'graph'){
+          body = '<div class="cd-graph"></div><p class="bt-small cd-ghint" id="' + sid + '-g">' + graphTodo(s.spec) + '</p>';
         } else {
           body = '<p class="bt-small cd-rowhint">Type each value in the ' + esc(s.row) + ' row of the table.</p>';
         }
@@ -599,6 +624,17 @@
           if(activeRow.closest('.ls-stage-body') && activeRow.scrollIntoView){ try{ activeRow.scrollIntoView({ block: 'nearest' }); }catch(e){} }
         }
         var fb = el.querySelector('.cd-fb'), input = el.querySelector('.cd-num input'), uIn = el.querySelector('.cd-u'), range = el.querySelector('.cd-vol input');
+        var gr = null;
+        if(s.kind === 'graph'){
+          var go = el.querySelector('button[type=submit]'), gHint = el.querySelector('.cd-ghint'), gBox = el.querySelector('.cd-graph');
+          var heard = function(){ if(done || !gr || !graphMoved(gr.get())) return; go.disabled = false; gHint.hidden = true; };
+          var gh = o.graphHost ? o.graphHost(s, api) : null;
+          if(gh && typeof gh.get === 'function'){ gr = gh; gBox.remove(); gr.el.addEventListener('macgraph:change', heard); }
+          else { if(gh && gh.nodeType === 1) gBox.remove(); gr = window.ApMacroGraph.mount(gh && gh.nodeType === 1 ? gh : gBox, s.spec, { onChange: heard }); }
+          go.disabled = true; go.setAttribute('aria-describedby', sid + '-g');
+          api.graph = gr;
+          heard();
+        }
         if(range){
           var sync = function(v){ if(o.onVol) o.onVol(v, s, api); };
           range.addEventListener('input', function(){ input.value = M.fixed(+range.value, 1); sync(+range.value); });
@@ -611,6 +647,7 @@
           done = true;
           el.querySelectorAll('input').forEach(function(x){ if(x.type === 'radio' || x.type === 'range') x.disabled = true; else x.readOnly = true; });
           rowInputs.forEach(function(x){ if(x) x.readOnly = true; });
+          if(gr) gr.lock();
           if(s.row) row1('[data-row="' + s.row + '"]').classList.remove('is-active');
         }
         function next(right){
@@ -619,16 +656,17 @@
           if(o.onStep) o.onStep(s, right, api);
           step(i + 1);
           var nx = host.lastElementChild;
-          if(nx && nx !== el){ var f = nx.querySelector('input:not([readonly]):not([disabled])') || row1('tr.is-active input'); if(f) f.focus(); }
+          if(nx && nx !== el){ var f = nx.querySelector('input:not([readonly]):not([disabled])') || row1('tr.is-active input') || nx.querySelector('.mac-gr-handle, .mac-gr-labels select'); if(f) f.focus(); }
         }
         function reveal(){
           if(s.kind === 'num' || s.kind === 'vol'){ input.value = shownNum(s.cell, s.d); if(range){ range.value = String(s.cell.answer); if(o.onVol) o.onVol(s.cell.answer, s, api); } }
           else if(s.kind === 'unit'){ input.value = window.ApMacroGrade.formatKey({ answer: s.cell.numeric.answer }); uIn.value = s.cell.numeric.unit || ''; }
           else if(s.kind === 'row') s.cells.forEach(function(c, k){ if(rowInputs[k]) rowInputs[k].value = M.fmt(c.answer, 3); });
           else if(s.kind === 'coef') s.cells.forEach(function(c, k){ if(rowInputs[k]) rowInputs[k].value = coefText(c.answer); });
+          else if(s.kind === 'graph') gr.showKey(true);
           else { var c = el.querySelector('input[value="' + s.correct + '"]'); if(c) c.checked = true; }
           el.classList.add('is-shown');
-          fb.innerHTML = '<span class="mac-mark no">Shown</span> The answer is filled in. ' + (s.kind === 'choice' ? s.why[s.correct] : '');
+          fb.innerHTML = '<span class="mac-mark no">Shown</span> ' + (s.kind === 'graph' ? 'The key is drawn dashed on the graph. ' + (s.explain || '') : 'The answer is filled in. ' + (s.kind === 'choice' ? s.why[s.correct] : ''));
           lock(); next(false);
         }
         function check(){
@@ -656,16 +694,20 @@
               else if(!g.ok){ ok = false; notes.push('<b>' + esc(who) + ':</b> ' + (g.why || (s.kind === 'coef' ? 'Write the change as a multiple of x, from the coefficient: −x, +2x.' : 'Not this value. Recheck the arithmetic.'))); }
               rowInputs[k].classList.toggle('is-wrong', !!raw && !g.ok); rowInputs[k].classList.toggle('is-right', !!g.ok);
             });
+          } else if(s.kind === 'graph'){
+            var gg = window.ApMacroGrade.graph(s.spec, gr.get());
+            if(!gg.valid || !graphMoved(gr.get())) blank = true;
+            else { ok = gg.correct; notes.push(ok ? (s.explain || '') + ' ' + graphMarks(gg) : esc(gg.slip || 'Not yet.') + ' ' + graphMarks(gg)); }
           } else {
             var c = el.querySelector('input:checked');
             if(!c) blank = true;
             else { var pick = +c.value; ok = pick === s.correct; notes.push(s.why[pick]); }
           }
-          if(blank){ fb.innerHTML = '<span class="bt-small">' + (s.kind === 'choice' ? 'Choose an answer first.' : s.kind === 'coef' ? 'Fill every cell of the row' + (s.kind === 'coef' ? ': write 0, −x, +2x and so on.' : '.') : 'Type a number first, for example 0.25 or 1.8e-5.') + '</span>'; return; }
+          if(blank){ fb.innerHTML = '<span class="bt-small">' + (s.kind === 'graph' ? graphTodo(s.spec) : s.kind === 'choice' ? 'Choose an answer first.' : s.kind === 'coef' ? 'Fill every cell of the row' + (s.kind === 'coef' ? ': write 0, −x, +2x and so on.' : '.') : 'Type a number first, for example 0.25 or 1.8e-5.') + '</span>'; return; }
           tries++;
           if(ok){
             el.classList.add('is-right');
-            fb.innerHTML = '<span class="mac-mark ok">Correct</span> ' + (s.kind === 'choice' ? notes[0] : '');
+            fb.innerHTML = '<span class="mac-mark ok">Correct</span> ' + (s.kind === 'choice' || s.kind === 'graph' ? notes[0] : '');
             lock(); next(tries === 1);
             return;
           }

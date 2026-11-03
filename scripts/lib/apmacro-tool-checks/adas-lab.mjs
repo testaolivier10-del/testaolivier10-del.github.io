@@ -45,9 +45,8 @@ export function recheck(p, ctx, w) {
   const pick = k => { const s = step(k); return s ? s.options[s.correct] : ''; };
   if (!ctx.types.includes(p.type)) errs.push(`${w}: type ${p.type} is not one of the context's types`);
   if (p.topic !== ctx.topic) errs.push(`${w}: topic ${p.topic} is not the context's ${ctx.topic}`);
-  for (const s of p.steps) if (s.graph) {
-    if (s.options.length !== 2 || s.correct !== 0) errs.push(`${w}: graph step ${s.key} must have the two fixed options, right first`);
-    if (!p.figure || JSON.stringify(p.figure.spec) !== JSON.stringify(s.graph)) errs.push(`${w}: graph step ${s.key} grades a different graph from the one drawn`);
+  for (const s of p.steps) if (s.kind === 'graph') {
+    if (!p.figure || JSON.stringify(p.figure.spec) !== JSON.stringify(s.spec)) errs.push(`${w}: graph step ${s.key} grades a different graph from the one drawn`);
   }
   if (p.type === 'gap') {
     const a = p.answer, gap = a.Y - a.yf, cyc = a.u - a.un;
@@ -67,7 +66,7 @@ export function recheck(p, ctx, w) {
   const a = curve === 'AD' ? dir : 0, s = curve === 'SRAS' ? dir : 0;
   const [x1, y1] = crossing(a, s);
   if (p.type === 'shock') {
-    const g = step('graph').graph, k = (g.key.shifts || [])[0] || {};
+    const g = step('graph').spec, k = (g.key.shifts || [])[0] || {};
     if (g.key.shifts.length !== 1 || k.curve !== curve || k.dir !== word(dir)) errs.push(`${w}: graph key ${k.curve} ${k.dir}, expected ${curve} ${word(dir)}`);
     const wrongEq = (cv, d) => { const sh = { [cv]: d }; return { shifts: sh, eq: Graph.eq(g, sh) }; };
     gradeSpec(Graph, Grade, g, w, errs, { list: { 'the other curve': wrongEq(other, dir), 'the wrong direction': wrongEq(curve, -dir), 'E2 left on E1': { shifts: { [curve]: dir }, eq: [5, 5] } } });
@@ -75,7 +74,7 @@ export function recheck(p, ctx, w) {
     if (pick('outcome') !== `The price level ${pl} and real GDP ${y}`) errs.push(`${w}: outcome keyed "${pick('outcome')}", expected price level ${pl}, real GDP ${y}`);
     if (!pick('gap').toLowerCase().includes(x1 < 5 ? 'recessionary' : 'inflationary')) errs.push(`${w}: gap keyed "${pick('gap')}"`);
   } else if (p.type === 'selfadjust') {
-    const g = step('graph').graph, rec = x1 < 5, k = (g.key.shifts || [])[0] || {};
+    const g = step('graph').spec, rec = x1 < 5, k = (g.key.shifts || [])[0] || {};
     if ((g.start || {})[curve] !== dir) errs.push(`${w}: the starting gap is not the cause's shift`);
     if (g.key.shifts.length !== 1 || k.curve !== 'SRAS' || k.dir !== (rec ? 'right' : 'left')) errs.push(`${w}: self-adjustment keyed ${k.curve} ${k.dir}`);
     // After the key the economy is back on LRAS (x = 5).
@@ -87,7 +86,7 @@ export function recheck(p, ctx, w) {
     if (!/natural rate of unemployment/.test(pick('unemp'))) errs.push(`${w}: unemployment keyed "${pick('unemp')}"`);
     if (!p.text.includes(rec ? 'recessionary gap' : 'inflationary gap')) errs.push(`${w}: the text names the wrong gap`);
   } else if (p.type === 'phillips') {
-    const g = step('graph').graph;
+    const g = step('graph').spec;
     const expMove = curve === 'AD' ? (dir > 0 ? 'A move up along SRPC' : 'A move down along SRPC') : (dir < 0 ? 'SRPC shifts right' : 'SRPC shifts left');
     if (!pick('move').startsWith(expMove)) errs.push(`${w}: move keyed "${pick('move')}", expected ${expMove}`);
     if (curve === 'AD') {

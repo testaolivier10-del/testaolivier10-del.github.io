@@ -37,7 +37,7 @@ export function stepsSound(p, w, errs) {
   const { M } = runtime();
   if (!Array.isArray(p.steps) || !p.steps.length) { errs.push(`${w}: no steps`); return; }
   if (!Array.isArray(p.solution) || !p.solution.length) errs.push(`${w}: no worked solution`);
-  const text = [p.text, ...(p.solution || []), ...p.steps.flatMap(s => [s.label, s.hint || '', ...(s.options || []), ...(s.why || [])])].join(' ');
+  const text = [p.text, ...(p.solution || []), ...p.steps.flatMap(s => [s.label, s.hint || '', ...(s.options || []), ...(Array.isArray(s.why) ? s.why : []), s.explain || ''])].join(' ');
   if (BAD.test(text)) errs.push(`${w}: a text prints NaN, undefined or Infinity`);
   const keys = new Set();
   for (const s of p.steps) {
@@ -51,6 +51,28 @@ export function stepsSound(p, w, errs) {
       if (!N || !Number.isFinite(N.answer)) { errs.push(`${w}: step ${s.key} has no finite answer`); continue; }
       if (!M.diagnoseUnit(s.cell, { value: String(N.answer), unit: N.unit || '' }).ok) errs.push(`${w}: step ${s.key}: its own key is graded wrong`);
       for (const m of N.mistakes || []) if (M.diagnoseUnit(s.cell, { value: String(m.value), unit: N.unit || '' }).ok) errs.push(`${w}: step ${s.key}: mistake ${m.value} would be graded right`);
+      continue;
+    }
+    // A graph step (ApMacroTools.drill kind "graph"): a spec the checker
+    // passes, whose key (and every key.alt) ApMacroGrade.graph scores full,
+    // and an untouched graph that does not pass.
+    // (Graph Studio runs its own drill: its graph steps carry a task and the
+    // problem's spec, and its validator checks them.)
+    if (s.kind === 'graph' && !s.spec && s.task) continue;
+    if (s.kind === 'graph') {
+      const { Graph: G, Grade: GR } = runtime();
+      if (!s.spec || typeof s.spec !== 'object') { errs.push(`${w}: step ${s.key}: a graph step needs spec`); continue; }
+      for (const m of G.check(s.spec)) errs.push(`${w}: step ${s.key}: ${m}`);
+      if (G.check(s.spec).length) continue;
+      if (!GR.graph(s.spec, G.keyResponse(s.spec)).correct) errs.push(`${w}: step ${s.key}: its own key is graded wrong`);
+      for (const [j, set] of ((s.spec.key && s.spec.key.alt) || []).entries()) {
+        const sp = { ...s.spec, key: { ...s.spec.key, shifts: set, alt: undefined, outcome: undefined } };
+        const r = G.keyResponse(sp);
+        if (!GR.graph(s.spec, r).correct) errs.push(`${w}: step ${s.key}: key.alt[${j}] drawn is graded wrong`);
+      }
+      const none = GR.graph(s.spec, { shifts: {}, eq: G.eq(s.spec, {}), point: null, labels: {} });
+      if (none.valid && none.correct) errs.push(`${w}: step ${s.key}: an untouched graph is graded right`);
+      if (s.explain && BAD.test(s.explain)) errs.push(`${w}: step ${s.key}: its explanation prints NaN or undefined`);
       continue;
     }
     const cells = s.cell ? [s.cell] : s.cells || [];

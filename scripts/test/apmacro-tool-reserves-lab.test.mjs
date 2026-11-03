@@ -53,18 +53,16 @@ test('reserves-lab: ample vs limited, the rules the exam scores', () => {
   const errs = []; effects(model, errs); assert.deepEqual(errs, []);
 });
 
-test('reserves-lab: a graph step grades only the key drawing right, and the bridge picks the drawn option', () => {
+test('reserves-lab: the shift step is a drill graph step that grades only the key drawing right', () => {
   for (const [id, seeds] of [['ample', 40], ['limited', 40]]) for (let i = 1; i <= seeds; i++) {
-    const p = model.generate(M.rng(i * 31), ctx(id), 'shift'), st = p.steps.find(s => s.graph);
-    assert.equal(Graph.check(st.graph.spec).length, 0);
-    st.graph.classes.forEach((sh, k) => {
-      assert.equal(Grade.graph(st.graph.spec, { shifts: sh }).correct, k === st.correct);
-      assert.equal(model.optionOf(st, sh), k);
-    });
+    const p = model.generate(M.rng(i * 31), ctx(id), 'shift'), st = p.steps.find(s => s.kind === 'graph');
+    assert.equal(st.key, 'shift', 'the recorded step id stays "shift"');
+    assert.equal(Graph.check(st.spec).length, 0);
+    const key = Graph.keyOffsets(st.spec), c = Object.keys(key)[0];
+    for (const k of model.classes(st.spec)) assert.equal(Grade.graph(st.spec, { shifts: k.shifts }).correct, JSON.stringify(k.shifts) === JSON.stringify(key));
     // Two steps the same way still counts as that curve (magnitude is never graded).
-    const key = Graph.keyOffsets(st.graph.spec), c = Object.keys(key)[0];
-    assert.equal(model.optionOf(st, { [c]: key[c] * 2 }), st.correct);
-    assert.equal(model.optionOf(st, {}), -1);
+    assert.equal(Grade.graph(st.spec, { shifts: { [c]: key[c] * 2 } }).correct, true);
+    assert.equal(Grade.graph(st.spec, { shifts: {} }).correct, false);
   }
 });
 
@@ -89,8 +87,8 @@ test('reserves-lab: the validator catches planted mistakes', () => {
   assert.ok(bad(p => { const s = p.steps.find(x => x.key === 'tool'); s.options[s.correct] = (p.given.stance > 0 ? 'Sell bonds' : 'Buy bonds') + '.'; }, 'ample', 'tool').length);
   // The money market keyed in an ample-reserves question.
   assert.ok(bad(p => { const s = p.steps.find(x => x.key === 'graph'); s.options[s.correct] = 'The money market: the money supply shifts left.'; }, 'ample', 'tool').length);
-  // A graph step whose right option is moved to a wrong drawing.
-  assert.ok(bad(p => { const s = p.steps.find(x => x.graph); s.correct = (s.correct + 1) % s.options.length; }, 'ample', 'shift').length);
+  // A graph step keyed the wrong way.
+  assert.ok(bad(p => { const s = p.steps.find(x => x.kind === 'graph'), k = s.spec.key.shifts[0]; k.dir = { up: 'down', down: 'up', left: 'right', right: 'left' }[k.dir]; }, 'ample', 'shift').length);
   // A wrong money multiplier.
   assert.ok(bad(p => { p.steps[1].cell.answer *= 0.9; }, 'multiplier', 'multiplier').length);
   // The validator's own frame bites.

@@ -15,8 +15,8 @@
    same trades) share one color, supply of X and demand for Y the other.
 
    Test yourself: ApMacroTools.drill with the model's four kinds; a graph step
-   is checked as in the AD-AS lab (its Check grades the drawing and ticks the
-   step's hidden option, so drill() records "forex-lab:<context>:graph"). */
+   is drill's "graph" kind, mounted on the stage figure (graphHost), recorded
+   as "forex-lab:<context>:graph". */
 (function(){
   'use strict';
   var T = window.ApMacroTools, M = window.ApMacroMath, F = M && M.forexLab, G = window.ApMacroGraph, GR = window.ApMacroGrade, C = window.ApMacroCalc;
@@ -257,52 +257,28 @@
   }
 
   /* ------------------------------------------------------ test yourself */
-  var live = { p: null, gr: null };
-  function keyResponse(spec){
-    var off = G.keyOffsets(spec), k = G.KINDS[spec.kind], labels = {};
-    if((spec.do || []).indexOf('label') > -1) G.labelSlots(spec).forEach(function(s){ labels[s] = s === 'x' || s === 'y' ? k[s] : s; });
-    return { shifts: off, eq: (spec.do || []).indexOf('equilibrium') > -1 ? G.eq(spec, off) : null, point: null, labels: labels };
-  }
+  /* Graph steps are ApMacroTools.drill's "graph" kind, mounted on the stage
+     figure (graphHost hands drill the mount). */
   function quiz(host, data){
     T.drill(host, data, { slug: 'forex-lab', noun: 'drill',
-      generate: function(r, ctx, type){
-        var p = F.generate(r, ctx, type);
-        p.steps.forEach(function(s){ if(s.graph) s.label += '<span class="fxl-gstep" data-key="' + s.key + '" hidden></span>'; });
-        return p;
-      },
+      generate: function(r, ctx, type){ return F.generate(r, ctx, type); },
       types: [{ value: 'axis', label: 'Read the exchange rate' }, { value: 'shift', label: 'Shift the right curve' }, { value: 'nx', label: 'Net exports' }, { value: 'flows', label: 'Interest rates and capital flows' }],
       typeLabel: 'Kind of problem',
       title: function(p){ return { axis: 'Reading the exchange rate', shift: 'Which curve shifts?', nx: 'Exchange rates and net exports', flows: 'Real interest rates and capital flows' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){
-        live.p = p; live.gr = null; api.gr = null;
+        api.gr = null;
         if(!p.figure) return;
         var f = document.createElement('figure');
         f.className = 'cd-fig fxl-qfig';
         var d = document.createElement('div');
         f.appendChild(d); el.appendChild(f);
-        api.gr = live.gr = G.mount(d, p.figure.spec, {});
+        api.gr = G.mount(d, p.figure.spec, {});
       },
+      graphHost: function(s, api){ return api.gr; },
       onStep: function(s, right, api){
-        if(!s.graph || !api.gr) return;
-        if(!GR.graph(s.graph, api.gr.get()).correct) api.gr.set(keyResponse(s.graph));
-        api.gr.lock();
+        if(s.kind !== 'graph' || !api.gr) return;
+        if(!GR.graph(s.spec, api.gr.get()).correct) api.gr.set(G.keyResponse(s.spec));
       }
     });
   }
-  document.addEventListener('submit', function(e){
-    var f = e.target, mk = f && f.querySelector && f.querySelector('.fxl-gstep');
-    if(!mk || !live.p || !live.gr) return;
-    var s = live.p.steps.filter(function(x){ return x.key === mk.getAttribute('data-key'); })[0];
-    if(!s) return;
-    var g = GR.graph(s.graph, live.gr.get()), fb = f.querySelector('.cd-fb');
-    if(!g.valid){
-      e.preventDefault(); e.stopImmediatePropagation();
-      if(fb) fb.innerHTML = '<span class="bt-small">' + ((s.graph.do || []).indexOf('label') > -1 ? 'Choose the labels under the graph first.' : 'Move a curve on the graph first: drag it, or tab to its handle and use the arrow keys.') + '</span>';
-      return;
-    }
-    var marks = g.points.map(function(pt){ return '<span class="fxl-pt ' + (pt.ok ? 'ok' : 'no') + '">' + esc({ shift: 'Shift', equilibrium: 'New equilibrium', outcome: 'Outcome', labels: 'Labels', point: 'Point' }[pt.id] || pt.id) + (pt.ok ? ' ✓' : ' ✗') + '</span>'; }).join(' ');
-    s.why[1] = '<b>' + esc(g.slip || 'Not yet.') + '</b> <span class="fxl-pts">' + marks + '</span>';
-    var r = f.querySelector('input[type=radio][value="' + (g.correct ? 0 : 1) + '"]');
-    if(r) r.checked = true;
-  }, true);
 })();

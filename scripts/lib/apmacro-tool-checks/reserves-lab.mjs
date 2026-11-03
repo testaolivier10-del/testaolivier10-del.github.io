@@ -71,21 +71,23 @@ export function recheck(p, c, w, errs) {
     const ch = right(stepOf(p, 'chain'));
     need(ch.includes('investment ' + (tight ? 'falls' : 'rises')) && ch.includes('AD shifts ' + (tight ? 'left' : 'right')), 'the chain key is wrong');
   } else if (p.type === 'shift') {
-    const st = p.steps.find(s => s.graph);
+    const st = p.steps.find(s => s.kind === 'graph');
     need(!!st, 'no graph step');
     if (!st) return;
-    const spec = st.graph.spec;
+    const spec = st.spec;
     for (const e of Graph.check(spec)) errs.push(`${w}: graph spec: ${e}`);
     const key = spec.key.shifts[0];
     if (g.fw === 'ample') need(g.tool === 'omo' ? key.curve === 'RS' && key.dir === (tight ? 'left' : 'right') : key.curve === 'RD' && key.dir === (tight ? 'up' : 'down'), 'the key shifts the wrong curve or way');
     else need(spec.kind === 'money' && key.curve === 'MS' && key.dir === (tight ? 'left' : 'right'), 'the limited-reserves key is not the money supply');
     need(spec.kind === (g.fw === 'ample' ? 'reserves' : 'money'), 'the graph kind does not fit the framework');
-    st.graph.classes.forEach((sh, i) => {
-      const r = Grade.graph(spec, { shifts: sh });
-      if (r.correct !== (i === st.correct)) errs.push(`${w}: option ${i} (${st.options[i]}) is graded ${r.correct ? 'right' : 'wrong'} by ApMacroGrade.graph`);
-      if (model.optionOf(st, sh) !== i) errs.push(`${w}: the drawn graph for option ${i} selects option ${model.optionOf(st, sh)}`);
-    });
-    need(model.optionOf(st, {}) === -1, 'an empty graph selects an option');
+    // Of the end states a student can draw (one curve one way, or several),
+    // only the key's grades right, and every other one names its slip.
+    const ks = model.classes(spec), keyed = JSON.stringify(Graph.keyOffsets(spec));
+    for (const k of ks) {
+      const r = Grade.graph(spec, { shifts: k.shifts });
+      if (r.correct !== (JSON.stringify(k.shifts) === keyed)) errs.push(`${w}: drawing "${k.text}" is graded ${r.correct ? 'right' : 'wrong'} by ApMacroGrade.graph`);
+      else if (!r.correct && !r.slip) errs.push(`${w}: drawing "${k.text}" has no slip line`);
+    }
     // The rate, read off the graph as drawn with the key's shift.
     const o = Graph.outcome(spec.kind === 'reserves' ? { ...spec } : spec, Graph.keyOffsets(spec));
     const d = spec.kind === 'reserves' ? o['policy rate'] : o['nominal interest rate'];

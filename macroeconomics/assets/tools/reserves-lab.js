@@ -21,15 +21,11 @@
    Details: every tool in both frameworks (a table) and the money multiplier
    worked from ApMacroCalc.
 
-   Test yourself: ApMacroTools.drill over the model's generate(). A graph
-   step (problem.steps[i].graph) is drawn with ApMacroGraph.mount on the
-   stage and graded through ApMacroGrade.graph: the model lists the end
-   states the step tells apart (one per curve and way, "several"), each an
-   option of a choice step whose radios are hidden; dragging or arrow-keying
-   a curve selects the option that matches the drawn graph, so Check grades
-   exactly what was drawn and names the grader's slip. (A `graph` step kind
-   in ApMacroTools.drill would replace this bridge; see docs/apmacro-briefs
-   report.) */
+   Test yourself: ApMacroTools.drill over the model's generate(). The shift
+   step is drill's "graph" kind: drawn with ApMacroGraph.mount on the stage
+   figure (graphHost hands drill the mount), graded by ApMacroGrade.graph,
+   each point marked and the grader's slip named; recorded as
+   "reserves-lab:<context>:shift" as before. */
 (function(){
   'use strict';
   var T = window.ApMacroTools, M = window.ApMacroMath, G = window.ApMacroGraph;
@@ -260,30 +256,16 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { tool: 'The right tool for the framework', shift: 'Shift the right curve', multiplier: 'Money multiplier' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.st = {}; figure(el, p, api); },
-      onStep: function(s, right, api){ api.st[s.key] = true; if(s.graph && api.g){ if(!right){ api.g.showKey(true); } api.g.lock(); } after(api); }
+      graphHost: function(s, api){ return api.g; },
+      // A miss on the graph step leaves the key drawn dashed beside the student's graph.
+      onStep: function(s, right, api){ api.st[s.key] = true; if(s.kind === 'graph' && api.g && !right) api.g.showKey(true); after(api); }
     });
-    // A graph step with nothing drawn yet: say so (instead of "Choose an answer first").
-    host.addEventListener('submit', function(e){
-      var f = e.target; if(!f.querySelector || !f.querySelector('.rl-gmark')) return;
-      if(f.querySelector('.cd-opts input:checked')) return;
-      e.preventDefault(); e.stopImmediatePropagation();
-      var fb = f.querySelector('.cd-fb'); if(fb) fb.innerHTML = '<span class="bt-small">Shift a curve first: drag it on the graph, or tab to its button and use the arrow keys.</span>';
-    }, true);
   }
-  function stepForm(api){ var m = api.area.querySelector('.rl-gmark'); return m ? m.closest('form') : null; }
   function figure(el, p, api){
     var g = p.figure;
     if(g.kind === 'graph'){
-      var st = p.steps.filter(function(s){ return s.graph; })[0];
       el.innerHTML = '<figure class="cd-fig rl-qfig"><figcaption class="rl-qcap"><b>' + TITLE[g.spec.kind] + '</b> <span>' + (g.spec.kind === 'reserves' ? 'ample reserves' : 'limited reserves') + '</span></figcaption><div class="rl-mount"></div><div class="rl-after"></div></figure>';
-      api.g = G.mount(el.querySelector('.rl-mount'), g.spec, { onChange: function(resp){
-        var f = stepForm(api); if(!f) return;
-        var k = RL.optionOf(st, resp.shifts), mk = f.querySelector('.rl-gmark');
-        f.querySelectorAll('.cd-opts input').forEach(function(x){ x.checked = +x.value === k; });
-        if(mk) mk.textContent = k < 0 ? 'Your graph: nothing shifted yet.' : 'Your graph: ' + st.options[k].replace(/\.$/, '').toLowerCase() + '.';
-      } });
-      var f0 = function(){ var f = stepForm(api), mk = f && f.querySelector('.rl-gmark'); if(mk && !mk.textContent) mk.textContent = 'Your graph: nothing shifted yet.'; };
-      setTimeout(f0, 0);
+      api.g = G.mount(el.querySelector('.rl-mount'), g.spec, {});
     } else if(g.kind === 'show'){
       el.innerHTML = '<figure class="cd-fig rl-qfig rl-qshow"><div class="rl-qrow"></div></figure>';
     } else if(g.kind === 'bank'){

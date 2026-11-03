@@ -18,7 +18,7 @@
      value(curve, dir)         +1 X appreciates, -1 depreciates
      rate(base, y)             the price of X shown at height y (display only)
      generate(r, ctx, type)    a drill problem; types axis, shift, nx, flows
-   A graph step is a choice step that carries `graph` (see adas-lab's model). */
+   A graph step is ApMacroTools.drill's "graph" kind ({ kind: 'graph', spec, explain }). */
 (function(root){
   'use strict';
   var M = root.ApMacroMath;
@@ -116,10 +116,10 @@
     for(var k in (extra || {})) s[k] = extra[k];
     return s;
   }
+  /* A graph step: ApMacroTools.drill's "graph" kind (drawn with
+     ApMacroGraph, graded by ApMacroGrade.graph); explain is shown when right. */
   function graphStep(key, label, spec, practice, okWhy){
-    return { key: key, kind: 'choice', graph: spec, label: label, fixed: true,
-      options: ['The graph shows it', 'The graph is not right yet'], correct: 0,
-      why: [okWhy, 'Check the curve, its direction and the new point.'], practice: practice, level: 'apply' };
+    return { key: key, kind: 'graph', spec: spec, label: label, explain: okWhy, practice: practice, level: 'apply' };
   }
   function setup(r){
     var p = r.pick(PAIRS);

@@ -268,6 +268,18 @@ scripts/lib/apmacro-tool-checks/<slug>.mjs      the validator for data/tools/<sl
 scripts/test/apmacro-tool-<slug>.test.mjs       its tests
 ```
 
+**Graph steps in drills.** `ApMacroTools.drill` has a step kind `graph` (`{ key, kind: 'graph', spec, label,
+explain?, practice }`, added by the integrator 2026-11-03): the spec is a graph item's, mounted with
+`ApMacroGraph.mount` in the step or wherever the page's `o.graphHost(step, api)` points (an element, or a mount the
+page made on its stage figure; drill hears it through the `macgraph:change` event every mount now fires on its
+host). Check stays disabled until something on the graph moved; `ApMacroGrade.graph` grades it (correct is right,
+the slip is the note, each rubric point is marked under it); "Show the answer" draws the key (`showKey(true)`) and
+locks the graph; `api.graph` is the mount, for `o.onStep`. `_drills.mjs` `stepsSound` checks that the spec passes
+`ApMacroGraph.check`, that its key and every `key.alt` drawn (`ApMacroGraph.keyResponse`) grade right and that an
+untouched graph does not. `reserves-lab` (step `shift`), `adas-lab` and `forex-lab` (step `graph`) use it in place
+of their hidden-choice bridges, with the same recorded step ids; Graph Studio keeps its own drill (its graph steps
+carry `task`, checked by its validator); `policy-chain`'s drill has no graph step (its graphs follow the links).
+
 Slugs and topics: `graph-studio` (shifts-movements), `ppc-trade` (comparative-advantage), `indicators-lab`
 (price-indices-inflation), `multiplier-lab` (multipliers), `adas-lab` (long-run-self-adjustment), `reserves-lab`
 (monetary-policy), `policy-chain` (policy-short-run), `forex-lab` (foreign-exchange-market). `_shared.mjs` loads

@@ -48,13 +48,12 @@ export function recheck(p, ctx, w) {
   const pick = k => { const s = step(k); return s ? s.options[s.correct] : ''; };
   if (!ctx.types.includes(p.type)) errs.push(`${w}: type ${p.type} is not one of the context's types`);
   if (p.topic !== ctx.topic) errs.push(`${w}: topic ${p.topic} is not the context's ${ctx.topic}`);
-  for (const s of p.steps) if (s.graph) {
-    if (s.options.length !== 2 || s.correct !== 0) errs.push(`${w}: graph step ${s.key} must have the two fixed options, right first`);
-    if (!p.figure || JSON.stringify(p.figure.spec) !== JSON.stringify(s.graph)) errs.push(`${w}: graph step ${s.key} grades a different graph from the one drawn`);
+  for (const s of p.steps) if (s.kind === 'graph') {
+    if (!p.figure || JSON.stringify(p.figure.spec) !== JSON.stringify(s.spec)) errs.push(`${w}: graph step ${s.key} grades a different graph from the one drawn`);
   }
   const a = p.answer || {}, X = a.X, Y = a.Y;
   if (!X || !Y || X === Y) { errs.push(`${w}: the two currencies are not named`); return errs; }
-  const g = step('graph') && step('graph').graph;
+  const g = step('graph') && step('graph').spec;
   if (g && (g.names.currency !== X || g.names.other !== Y)) errs.push(`${w}: the graph is not the market for ${plural(X)}`);
   if (p.type === 'axis') {
     const inv = 1 / a.p2, cost = a.A * a.p2, up = a.p2 > a.p1;

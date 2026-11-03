@@ -18,9 +18,9 @@
                                  srpc, point, longRunS }
      generate(r, ctx, type)    a drill problem for ApMacroTools.drill; types
                                shock, gap, selfadjust, phillips
-   A graph step is a choice step that carries `graph` (its ApMacroGraph spec):
-   the page grades the student's graph with ApMacroGrade.graph and ticks the
-   matching option (0: right, 1: not yet), so drill() records it like any step. */
+   A graph step is ApMacroTools.drill's "graph" kind ({ kind: 'graph', spec,
+   explain }): drill() grades the student's graph with ApMacroGrade.graph and
+   records it as "adas-lab:<context>:graph", as before. */
 (function(root){
   'use strict';
   var M = root.ApMacroMath;
@@ -75,11 +75,10 @@
     for(var k in (extra || {})) s[k] = extra[k];
     return s;
   }
-  /* A graph step (see the header): option 0 "right", 1 "not yet". */
+  /* A graph step: ApMacroTools.drill's "graph" kind (drawn with
+     ApMacroGraph, graded by ApMacroGrade.graph); explain is shown when right. */
   function graphStep(key, label, spec, practice, okWhy){
-    return { key: key, kind: 'choice', graph: spec, label: label, fixed: true,
-      options: ['The graph shows it', 'The graph is not right yet'], correct: 0,
-      why: [okWhy, 'Check the curve, its direction and the new point.'], practice: practice, level: 'apply' };
+    return { key: key, kind: 'graph', spec: spec, label: label, explain: okWhy, practice: practice, level: 'apply' };
   }
   function thousands(x){ return M.minus(String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ',')); }
   function pickOrder(r, list){ return M.shuffle(r, list); }

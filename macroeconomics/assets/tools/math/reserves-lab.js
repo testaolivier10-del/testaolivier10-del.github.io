@@ -33,7 +33,6 @@
      classes(spec)              the end states a graph step tells apart, with the
                                 grader's slip for each (ApMacroGrade.graph)
      classify(spec, shifts)     a student's drawn shifts -> the index of its class
-     optionOf(step, shifts)     the same for a graph step's options (the page's bridge)
      multiplier(x, rr)          the limited-reserves numbers (ApMacroCalc recipes)
      generate(rng, ctx, type)   the drills:
        tool        the framework and the situation named: the stance, the tool,
@@ -174,19 +173,6 @@
     return -1;
   }
 
-  /* The option of a graph step (its graph.classes, in option order) that
-     matches the drawn shifts; -1 when nothing moved. */
-  function optionOf(st, shifts){
-    var moved = Object.keys(shifts || {}).filter(function(c){ return shifts[c]; });
-    if(!moved.length) return -1;
-    for(var k = 0; k < st.graph.classes.length; k++){
-      var c = st.graph.classes[k], ck = Object.keys(c);
-      if(moved.length > 1){ if(ck.length > 1) return k; continue; }
-      if(ck.length === 1 && ck[0] === moved[0] && (c[ck[0]] > 0) === (shifts[moved[0]] > 0)) return k;
-    }
-    return -1;
-  }
-
   /* ---------------------------------------------- numbers */
   function multiplier(x, rr){
     return { mm: E('moneyMultiplier', [rr]), max: E('maxMoneyChange', [x, rr]), recipes: { mm: { fn: 'moneyMultiplier', args: [rr] }, max: { fn: 'maxMoneyChange', args: [x, rr] } } };
@@ -287,14 +273,12 @@
     discount: function(t){ return 'a ' + (t ? 'higher' : 'lower') + ' discount rate'; },
     rr: function(t){ return 'a ' + (t ? 'higher' : 'lower') + ' reserve requirement'; }
   };
+  /* The shift step: ApMacroTools.drill's "graph" kind (drawn with
+     ApMacroGraph, graded by ApMacroGrade.graph, the slip named by the grader
+     or the spec's slips). The key stays "shift", as recorded before. */
   function graphStep(spec, label){
-    var ks = classes(spec), right = -1;
-    ks.forEach(function(k, i){ if(k.ok) right = i; });
-    var order = [right].concat(ks.map(function(k, i){ return i; }).filter(function(i){ return i !== right; }));
     var good = 'Right curve, right way: ' + GR().curveName(spec.key.shifts[0].curve) + ' shifts ' + spec.key.shifts[0].dir + ' with ' + spec.key.because + '.';
-    var st = choice('shift', label + '<span class="rl-gmark"></span>', order.map(function(i){ return [ks[i].text + '.', ks[i].ok ? good : ks[i].note]; }), '4.C', { fixed: true });
-    st.graph = { spec: spec, classes: order.map(function(i){ return ks[i].shifts; }) };
-    return st;
+    return { key: 'shift', kind: 'graph', spec: spec, label: label, explain: good, practice: '4.C', level: 'apply' };
   }
   function genShift(r, c){
     var fw = c.framework || 'ample', s = r.pick([1, -1]), tight = s > 0, steps, text, spec, sol, toolId;
@@ -375,7 +359,7 @@
   var GEN = { tool: genTool, shift: genShift, multiplier: genMultiplier };
   M.register('reservesLab', {
     FRAMEWORKS: FRAMEWORKS, TOOLS: TOOLS, START: START, toolOf: toolOf, fwOf: fwOf, specs: specs, effect: effect,
-    classes: classes, classify: classify, optionOf: optionOf, multiplier: multiplier, SITUATION: SITUATION,
+    classes: classes, classify: classify, multiplier: multiplier, SITUATION: SITUATION,
     TYPES: Object.keys(GEN),
     generate: function(r, ctx, type){
       var types = ctx.types || Object.keys(GEN);

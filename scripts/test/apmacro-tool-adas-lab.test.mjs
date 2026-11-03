@@ -72,13 +72,13 @@ test('adas-lab: the model agrees with ApMacroGraph and ApMacroCalc', () => {
 test('adas-lab: the grader names the reader-report slips on a graph step', () => {
   const { M, Graph, Grade, model } = runtime('adas-lab');
   const p = model.generate(M.rng(4242), ctxOf('selfadjust'), 'selfadjust');
-  const g = p.steps.find(s => s.graph).graph, rec = p.answer.gap === 'recessionary';
+  const g = p.steps.find(s => s.kind === 'graph').spec, rec = p.answer.gap === 'recessionary';
   const viaAD = Grade.graph(g, { shifts: { AD: rec ? 1 : -1 }, eq: Graph.eq(g, { AD: rec ? 1 : -1 }) });
   assert.equal(viaAD.correct, false);
   assert.match(viaAD.slip, /nominal wages and SRAS/);
-  const sh = p.steps.find(s => s.graph);
-  assert.equal(sh.options.length, 2); assert.equal(sh.correct, 0);
-  const shock = model.generate(M.rng(77), ctxOf('shocks'), 'shock'), gs = shock.steps[0].graph, other = gs.key.shifts[0].curve === 'AD' ? 'SRAS' : 'AD';
+  const sh = p.steps.find(s => s.kind === 'graph');
+  assert.equal(sh.kind, 'graph'); assert.ok(sh.explain, 'a graph step says why when right');
+  const shock = model.generate(M.rng(77), ctxOf('shocks'), 'shock'), gs = shock.steps[0].spec, other = gs.key.shifts[0].curve === 'AD' ? 'SRAS' : 'AD';
   assert.match(Grade.graph(gs, { shifts: { [other]: 1 }, eq: null }).slip, /shifts (AD|SRAS), not (AD|SRAS)/);
 });
 
@@ -86,7 +86,7 @@ test('adas-lab: planted mistakes are caught by the recheck', () => {
   const { M, model } = runtime('adas-lab');
   const c = ctxOf('shocks');
   const p = model.generate(M.rng(5), c, 'shock');
-  const k = p.steps[0].graph.key.shifts[0];
+  const k = p.steps[0].spec.key.shifts[0];
   k.dir = k.dir === 'right' ? 'left' : 'right';
   assert.ok(recheck(p, c, 'planted').some(e => /graph key/.test(e)));
   const q = model.generate(M.rng(6), c, 'shock');
@@ -96,8 +96,8 @@ test('adas-lab: planted mistakes are caught by the recheck', () => {
   g.steps[0].cell.answer = -g.steps[0].cell.answer;
   assert.ok(recheck(g, ctxOf('gaps'), 'planted').some(e => /gap/.test(e)));
   const s = model.generate(M.rng(8), ctxOf('selfadjust'), 'selfadjust');
-  s.steps[1].graph.key.shifts = [{ curve: 'AD', dir: s.answer.gap === 'recessionary' ? 'right' : 'left' }];
-  s.figure.spec = s.steps[1].graph;
+  s.steps[1].spec.key.shifts = [{ curve: 'AD', dir: s.answer.gap === 'recessionary' ? 'right' : 'left' }];
+  s.figure.spec = s.steps[1].spec;
   assert.ok(recheck(s, ctxOf('selfadjust'), 'planted').some(e => /self-adjustment keyed/.test(e)));
   const ph = model.generate(M.rng(9), ctxOf('phillips'), 'phillips');
   ph.steps[2].correct = (ph.steps[2].correct + 1) % 4;

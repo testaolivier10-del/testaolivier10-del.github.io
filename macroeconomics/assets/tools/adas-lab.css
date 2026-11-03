@@ -67,11 +67,7 @@
 .adl-btns .btn-press:disabled{opacity:.55;cursor:default;}
 .adl-shock select{width:100%;}
 
-/* Test yourself: a graph step's options are the graph itself */
-.cd-step:has(.adl-gstep) .cd-opts{display:none;}
+/* Test yourself: the stage figure holds drill's graph step */
 .adl-qfig{margin:0;}
 .adl-qfig .mac-gr-stage{max-width:520px;}
-.adl-pts{display:inline-flex;flex-wrap:wrap;gap:4px 8px;margin-left:2px;}
-.adl-pt{font:800 12.5px var(--font-ui);padding:1px 8px;border-radius:999px;background:var(--surface2,#f2f2f2);}
-.adl-pt.ok{color:var(--good-text,#1B7F3A);} .adl-pt.no{color:var(--bad-text,#B3261E);}
 @media (prefers-reduced-motion: reduce){.adl-tab,.adl-h{transition:none;}}
