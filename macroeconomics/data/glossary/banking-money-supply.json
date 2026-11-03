@@ -19,5 +19,8 @@
  },
  "central-bank": {
   "def": "The institution that oversees a country's banks and money. In the United States it is the Federal Reserve, which sets reserve requirements and interest rate policy."
+ },
+ "limited-reserves": {
+  "def": "A banking system in which banks hold few reserves beyond what the reserve requirement makes them hold, so the requirement limits how much they can lend and the money multiplier applies. The central bank changes interest rates there by changing the quantity of reserves and so the money supply."
  }
 }

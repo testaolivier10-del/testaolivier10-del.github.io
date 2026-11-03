@@ -69,6 +69,9 @@ Notable ordering choices (each is a `dependsOn` the check enforces):
   (3.8) can use the gaps.
 - `ample-reserves` and `policy-rate` (4.6) depend on `fractional-reserve` and `required-reserves` (4.4): the
   limited-reserves framework is taught first, then the ample one the Federal Reserve now uses (spec decision 7).
+  The term `limited-reserves` itself is taught in 4.4, with the money multiplier it makes work, so 4.4 and 4.5
+  items can name the framework they set (integrator, 2026-11-03); its tools, `open-market-operations` and
+  `discount-rate`, stay in 4.6.
 - `crowding-out` (5.5) depends on `loanable-funds` (4.7) and `budget-deficit` (5.4); `capital-flows` (6.6) on
   `real-rate` (4.2) and the foreign exchange determinants (6.4).
 

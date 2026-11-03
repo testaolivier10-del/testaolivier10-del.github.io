@@ -2679,14 +2679,32 @@
    "id": "limited-reserves",
    "term": "limited reserves",
    "aliases": [
-    "limited-reserves framework",
-    "open market operations",
-    "discount rate"
+    "limited-reserves framework"
    ],
-   "taughtIn": "monetary-policy",
+   "taughtIn": "banking-money-supply",
    "dependsOn": [
     "central-bank",
     "required-reserves"
+   ]
+  },
+  {
+   "id": "open-market-operations",
+   "term": "open market operations",
+   "aliases": [],
+   "taughtIn": "monetary-policy",
+   "dependsOn": [
+    "limited-reserves",
+    "bond-price-rate"
+   ]
+  },
+  {
+   "id": "discount-rate",
+   "term": "discount rate",
+   "aliases": [],
+   "taughtIn": "monetary-policy",
+   "dependsOn": [
+    "limited-reserves",
+    "central-bank"
    ]
   },
   {

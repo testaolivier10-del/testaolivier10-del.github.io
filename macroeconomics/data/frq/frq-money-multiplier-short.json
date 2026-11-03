@@ -14,7 +14,7 @@
   "3.C",
   "2.A"
  ],
- "scenario": "Harbor Bank is a commercial bank in a banking system where the reserve requirement limits lending: banks lend all of their excess reserves, and borrowers keep none of their loans as cash. Its balance sheet is shown below.",
+ "scenario": "Harbor Bank is a commercial bank in a banking system with limited reserves, where the reserve requirement limits lending: banks lend all of their excess reserves, and borrowers keep none of their loans as cash. Its balance sheet is shown below.",
  "stimulus": {
   "title": "Balance sheet of Harbor Bank",
   "invented": true,

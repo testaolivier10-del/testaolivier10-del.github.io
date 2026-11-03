@@ -48,7 +48,7 @@
  "ideas": [
   "In <b>fractional reserve banking</b>, banks keep part of deposits as reserves and lend the rest. A <b>balance sheet</b> lists assets (reserves, loans, bonds) and liabilities (deposits).",
   "<b>Required reserves</b> = deposits x required reserve ratio. <b>Excess reserves</b> = total reserves - required reserves. One bank can lend its excess reserves.",
-  "The <b>money multiplier</b> is 1 / required reserve ratio. The most the money supply can grow is excess reserves x the money multiplier.",
+  "The <b>money multiplier</b> is 1 / required reserve ratio. The most the money supply can grow is excess reserves x the money multiplier. This is the <b>limited reserves</b> picture: banks hold few reserves beyond the required amount, so the reserve requirement limits lending.",
   "A cash deposit does not change the money supply at first; new money is created when banks lend."
  ],
  "misconception": {
