@@ -89,7 +89,16 @@ code; written parts would need their own calibration before the grader is turned
 
 ## Author B (Unit 2)
 
-### b-cycle-graph: no business cycle graph kind (open, 2026-11-03)
+### b-cycle-graph: no business cycle graph kind (decided, 2026-11-03)
+
+Decided by the integrator: no `cycle` kind for now. It is not cheap: real GDP against time is not a pair of
+curves that shift to a new equilibrium, so `ApMacroGraph`'s model (shapes, shifts, `eq`, `outcome`), the checker
+and `ApMacroGrade.graph` would each need a second paradigm (phases and turning points along a time path), and the
+drag renderer a different control. What Unit 2 needs is covered: the cycle as a lesson figure and as `ApMacroPlot`
+line data sets that set items ask about (peak, trough, expansion, the output gap against potential), and the PPC
+for unemployment. No released scoring guideline we read asks students to draw the cycle. Reopen if a person finds
+that the exam does; then a `cycle` kind with `do: ["point"]` (place the peak, trough or a recession) is the
+smallest useful version. The original note:
 
 Topic 2.7's focus skills include 4.A, but `mac-graph.js` has no business cycle kind (real GDP against time with
 potential output), so Unit 2 has no drawable business cycle item. Unit 2's graph items use the PPC instead
