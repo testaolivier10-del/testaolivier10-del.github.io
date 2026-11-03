@@ -20,6 +20,7 @@ const COURSES = {
   apenv: 'AP® Environmental Science',
   appsych: 'AP® Psychology',
   apprecalc: 'AP® Precalculus',
+  apmacro: 'AP® Macroeconomics',
   apcalcbc: 'AP® Calculus BC',
 };
 

@@ -19,7 +19,10 @@ const FN = /(?:create or replace function|create function) public\.(\w+)\(.*?\n\
 const blocks = (sql) => new Map([...sql.matchAll(FN)].map((m) => [m[1], m[0]]));
 // schema.sql as it was before AP® Calculus BC (2026-10o-apcalcbc.sql only adds 'apcalcbc'),
 // for the tests of earlier course migrations.
-const PRE_BC = SCHEMA.replaceAll(", 'apprecalc', 'apcalcbc')", ", 'apprecalc')");
+// The schema before AP® Macroeconomics (2026-11a), then before AP® Calculus BC (2026-10o):
+// each later course migration only adds its key at the end of every course list.
+const PRE_MAC = SCHEMA.replaceAll(", 'apcalcbc', 'apmacro')", ", 'apcalcbc')");
+const PRE_BC = PRE_MAC.replaceAll(", 'apprecalc', 'apcalcbc')", ", 'apprecalc')");
 
 const WORKER_ONLY = ['unsubscribe_email_reminder', 'premium_add_pass', 'premium_refund_order', 'premium_rechain', 'count_premium_paid',
   'frq_grade_take', 'frq_grade_give_back', 'count_frq_grade', 'referral_email_key', 'referral_welcome', 'referral_reward'];
@@ -271,9 +274,8 @@ test('2026-10n-apprecalc.sql adds apprecalc to every course check and course lis
   assert.match(mig, /NOT APPLIED/);
 });
 
-test('2026-10o-apcalcbc.sql adds apcalcbc to every course check and course list, runs last (after AP® Precalculus), matches schema.sql, and is not granted to browsers where it must not be', () => {
+test('2026-10o-apcalcbc.sql adds apcalcbc to every course check and course list, runs after AP® Precalculus, matches schema.sql, and is not granted to browsers where it must not be', () => {
   const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
-  assert.equal(files[files.length - 1], '2026-10o-apcalcbc.sql', 'runs after every earlier migration');
   assert.ok(files.indexOf('2026-10o-apcalcbc.sql') > files.indexOf('2026-10n-apprecalc.sql'), 'runs after AP® Precalculus');
   const mig = readFileSync('scripts/sql/migrations/2026-10o-apcalcbc.sql', 'utf8');
   const LIST = "('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc')";
@@ -283,11 +285,31 @@ test('2026-10o-apcalcbc.sql adds apcalcbc to every course check and course list,
   for (const f of ['report_question', 'join_waitlist', 'count_premium_step', 'premium_add_pass', 'record_exam_completion', 'count_premium_paid']) {
     assert.ok(fns.has(f), `${f} is redefined`);
     assert.ok(fns.get(f).includes(LIST), `${f} accepts apcalcbc`);
+    assert.equal(fns.get(f).trim(), blocks(PRE_MAC).get(f).trim(), `${f} matches schema.sql`);
+  }
+  assert.match(fns.get('premium_add_pass'), /p_until timestamptz default null/, 'the fixed-date pass parameter is kept');
+  for (const f of ['premium_add_pass', 'count_premium_paid']) assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`));
+  assert.doesNotMatch(mig + PRE_MAC, /'appsych'\)|'apprecalc'\)/, 'no course list stops at appsych or apprecalc');
+  assert.match(mig, /NOT APPLIED/);
+});
+
+test('2026-11a-apmacro.sql adds apmacro to every course check and course list, runs last (after AP® Calculus BC), matches schema.sql, and is not granted to browsers where it must not be', () => {
+  const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
+  assert.equal(files[files.length - 1], '2026-11a-apmacro.sql', 'runs after every earlier migration');
+  assert.ok(files.indexOf('2026-11a-apmacro.sql') > files.indexOf('2026-10o-apcalcbc.sql'), 'runs after AP® Calculus BC');
+  const mig = readFileSync('scripts/sql/migrations/2026-11a-apmacro.sql', 'utf8');
+  const LIST = "('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro')";
+  for (const t of ['premium_passes', 'premium_funnel', 'exam_completions'])
+    assert.ok(mig.includes(`add constraint ${t}_course_check check (course in ${LIST})`), `${t} check lists apmacro`);
+  const fns = blocks(mig);
+  for (const f of ['report_question', 'join_waitlist', 'count_premium_step', 'premium_add_pass', 'record_exam_completion', 'count_premium_paid']) {
+    assert.ok(fns.has(f), `${f} is redefined`);
+    assert.ok(fns.get(f).includes(LIST), `${f} accepts apmacro`);
     assert.equal(fns.get(f).trim(), blocks(SCHEMA).get(f).trim(), `${f} matches schema.sql`);
   }
   assert.match(fns.get('premium_add_pass'), /p_until timestamptz default null/, 'the fixed-date pass parameter is kept');
   for (const f of ['premium_add_pass', 'count_premium_paid']) assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`));
-  assert.doesNotMatch(mig + SCHEMA, /'appsych'\)|'apprecalc'\)/, 'no course list stops at appsych or apprecalc');
+  assert.doesNotMatch(mig + SCHEMA, /'appsych'\)|'apprecalc'\)|'apcalcbc'\)/, 'no course list stops at appsych, apprecalc or apcalcbc');
   assert.match(mig, /NOT APPLIED/);
 });
 

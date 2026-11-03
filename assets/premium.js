@@ -560,6 +560,54 @@
         ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
       ],
     },
+    apmacro: {
+      name: 'AP® Macroeconomics',
+      // Not on sale yet (docs/apmacro-spec.md decision 3): onSale false until
+      // the owner checklist (spec section 9): migration
+      // scripts/sql/migrations/2026-11a-apmacro.sql applied, Polar product
+      // macro-2027, Worker POLAR_PRODUCTS.
+      onSale: false,
+      dailyFree: 15,
+      // The free tier (docs/apmacro-spec.md decision 6, proposed): Units 1 and 2
+      // and every "Graph skills you need" lesson. Keep in step with FREE_UNITS
+      // in scripts/lib/apmacro-build.mjs.
+      freeChapters: ['unit-1', 'unit-2'],
+      compare: 'UWorld is $149 and Fiveable is $79 a year (checked November 2026).',
+      passes: [
+        { id: 'macro-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
+      ],
+      free: [
+        'Every notes page, the glossary, the flashcards and the printable unit sheets',
+        'The graphs and formulas you must know, explained, and the cram-kit study plan outline',
+        'Every lesson in Units 1 and 2, and every "Graph skills you need" lesson',
+        '15 practice or review questions a day from any unit',
+        'One full practice exam',
+        'Three trainers: the graph studio, PPC and trade, and the indicators lab',
+        'Your progress, XP, streak and weak topics',
+      ],
+      premium: [
+        'Every interactive lesson',
+        'Unlimited practice and review from the whole question bank',
+        'Every trainer: the multiplier lab, the AD-AS lab, the reserves lab, the policy chain and the forex lab',
+        'All free-response questions, unit tests and practice exams',
+        'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
+        'The full dashboard: mastery by unit, topic and skill',
+      ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Notes, glossary, flashcards and unit sheets', 'yes', 'yes'],
+        ['The graphs and formulas to know, explained', 'yes', 'yes'],
+        ['Interactive lessons', 'Units 1 and 2, and graph skills lessons', 'Every unit'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Trainers', 'Three', 'Every trainer'],
+        ['Free-response questions and unit tests', 'no', 'yes'],
+        ['Full practice exams', 'One', 'Every one'],
+        ['Cram kit study plan', 'Outline', 'Fitted to your weakest units'],
+        ['Mastery dashboard', 'no', 'By unit, topic and skill'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
+      ],
+    },
   };
 
   // Which course a page belongs to, for returnCourse().
@@ -577,6 +625,7 @@
     { key: 'appsych', path: '/psychology/' },
     { key: 'apprecalc', path: '/precalculus/' },
     { key: 'apcalcbc', path: '/calculus-bc/' },
+    { key: 'apmacro', path: '/macroeconomics/' },
   ];
   // courses:end
 

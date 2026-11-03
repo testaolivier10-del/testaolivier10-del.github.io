@@ -5238,5 +5238,372 @@
   "note": "2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
+ "apmacro": {
+  "name": "AP® Macroeconomics",
+  "short": "AP® Macroeconomics",
+  "tabname": "AP® Macroeconomics",
+  "pill": "AP® Macroeconomics · free to start",
+  "beta": true,
+  "h1a": "AP® Macroeconomics,",
+  "h1b": "every graph, every shift.",
+  "hand": "every graph, every shift",
+  "lede": "Each topic taught from scratch for the May 2027 exam, then practice that has you draw and shift every graph, and causal chains built link by link the way the readers score them.",
+  "btn1": "Start the first lesson",
+  "btn2": "All units",
+  "btn3": "Graph studio",
+  "trust": [
+   "note",
+   "Every notes page is free, and so are the lessons in the graph skills chapter and Units 1 and 2. 15 practice questions a day are free too."
+  ],
+  "pills": [
+   "Every notes page free",
+   "Units 1 and 2 lessons free",
+   "Unit sheets free to print",
+   "Progress saved on your device"
+  ],
+  "strip_label": "The exam",
+  "strip": [
+   [
+    "Section I",
+    "60 questions",
+    "multiple choice · 70 minutes"
+   ],
+   [
+    "Section II",
+    "3 free response",
+    "one long, two short · 60 minutes"
+   ],
+   [
+    "The question bank",
+    "0 questions",
+    "every option explained"
+   ],
+   [
+    "Practice exams",
+    "Full length",
+    "both sections, timed, one free"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Axes, Variables and Points",
+   "Graph skills you need. Its lessons and every notes page are free.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Missed questions come back",
+   "Anything you miss returns when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "A little every day",
+   "Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 15 practice questions a day are free.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "Scarcity Spotter",
+   [
+    "Units",
+    "Graph skills you need"
+   ],
+   ""
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with the graph skills: a lesson that checks what you need first, then walks it one step at a time.",
+    "Start the first lesson →"
+   ],
+   [
+    "Practice what you learned",
+    "Drill a unit, a topic or a skill, with graphs to shift, calculations and data sets. 15 a day are free.",
+    "Practice now →"
+   ],
+   [
+    "Sit a practice exam",
+    "Unit tests and full timed practice exams in the May 2027 format.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "units",
+  "map_h": [
+   "6 units,",
+   "in order"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "6 units and 42 topics in the order of the course framework, for the May 2027 exam, plus a graph skills chapter before Unit 1. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.",
+   "Practice questions that ask you to apply a model to a new situation, as the exam does, many in sets that share one table, graph or scenario. Every option has its own explanation, and every graph item is checked point by point: the labels, the curve that moves, its direction and the new equilibrium.",
+   "<b class=\"ink\">The course is being built.</b> Units appear here as each one passes its accuracy review."
+  ],
+  "map_lede": "Each unit's share of the multiple-choice section, from the course framework. Every notes page is free; the lessons in the graph skills chapter and Units 1 and 2 are free too. The graph skills come first: axes and points, slopes and curve shapes, shifts versus movements along a curve, and reading where curves cross.",
+  "units": [
+   [
+    "1",
+    "Basic Economic Concepts",
+    "6 topics",
+    "5 to 10%",
+    true,
+    false
+   ],
+   [
+    "2",
+    "Economic Indicators and the Business Cycle",
+    "7 topics",
+    "12 to 17%",
+    true,
+    false
+   ],
+   [
+    "3",
+    "National Income and Price Determination",
+    "9 topics",
+    "17 to 27%",
+    false,
+    false
+   ],
+   [
+    "4",
+    "Financial Sector",
+    "7 topics",
+    "18 to 23%",
+    false,
+    false
+   ],
+   [
+    "5",
+    "Long-Run Consequences of Stabilization Policies",
+    "7 topics",
+    "20 to 30%",
+    false,
+    false
+   ],
+   [
+    "6",
+    "Open Economy: International Trade and Finance",
+    "6 topics",
+    "10 to 13%",
+    false,
+    false
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Every topic,",
+    "in notes"
+   ],
+   "p": "A free notes page for every topic, in framework order, with a printable sheet for each unit and a glossary of every term.",
+   "chips": [
+    [
+     "Flashcards",
+     ""
+    ],
+    [
+     "Cram kit",
+     ""
+    ],
+    [
+     "Make it specific",
+     ""
+    ],
+    [
+     "Glossary",
+     ""
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Section II",
+   "big": "3",
+   "bigs": "free response questions on the exam",
+   "p": "One long question worth 10 points and two short ones worth 5, with rubrics, graphs checked point by point and sample answers.",
+   "cta": "Try a free response",
+   "small": "Unit tests and full timed practice exams in the May 2027 format."
+  },
+  "guide": {
+   "eye": "How to use it, every time",
+   "h": "Four steps, every time you study.",
+   "p": "",
+   "items": [
+    "<b>Read the lesson.</b> It checks what you need first, then applies each model to a situation, one step at a time.",
+    "<b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "<b>Train the hard parts.</b> Every graph, the multipliers, the reserve market, the policy chains and the foreign exchange market, each checked step by step.",
+    "<b>Check your mastery.</b> Your dashboard shows it by unit, topic and skill, and every miss links to its lesson."
+   ],
+   "cta": "Open your dashboard"
+  },
+  "tools_h": "Eight trainers ",
+  "tools_h2": null,
+  "tools_lede": "Draw and shift every graph the exam asks for, find comparative advantage, compute the indicators, close a gap with the right multiplier, run the reserve market and the foreign exchange market, and build each policy chain link by link. The graph studio, PPC and trade, and the indicators lab are free.",
+  "tools": [
+   [
+    "Graph studio",
+    "Draw, label and shift all nine graphs, graded per rubric point.",
+    "free"
+   ],
+   [
+    "PPC and trade",
+    "Opportunity cost, comparative advantage and terms of trade.",
+    "free"
+   ],
+   [
+    "Indicators lab",
+    "GDP, CPI, inflation, the deflator and unemployment rates.",
+    "free"
+   ],
+   [
+    "Multiplier lab",
+    "Spending, tax and money multipliers, and closing a gap.",
+    "Premium"
+   ],
+   [
+    "AD-AS lab",
+    "Shocks, gaps and self-adjustment on the AD-AS graph.",
+    "Premium"
+   ],
+   [
+    "Reserves lab",
+    "Ample and limited reserves, and every Fed tool.",
+    "Premium"
+   ],
+   [
+    "Policy chain",
+    "Causal chains for every policy, link by link.",
+    "Premium"
+   ],
+   [
+    "Forex lab",
+    "Currency markets, appreciation, net exports and capital flows.",
+    "Premium"
+   ]
+  ],
+  "tools_also": [],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "small",
+    "eye": "Only in AP® Macroeconomics",
+    "h": "Graphs and formulas you must know",
+    "p": "No formula sheet on the exam: every calculation and every graph, when to use it and the classic trap."
+   },
+   {
+    "kind": "small",
+    "eye": "Only in AP® Macroeconomics",
+    "h": "Make it specific",
+    "p": "Causal chains with every link, the right tool and the right curve, built part by part and checked against a rubric."
+   }
+  ],
+  "grid": [
+   [
+    "Practice",
+    "Drill a unit, a topic or a skill, with graphs to shift, calculations and data sets."
+   ],
+   [
+    "Review",
+    "Missed questions come back when you are about to forget them."
+   ],
+   [
+    "Exams",
+    "Unit tests and full timed practice exams in the May 2027 format."
+   ],
+   [
+    "Free-response practice",
+    "One long and two short questions, with rubrics, graphs you draw on the page and sample answers."
+   ]
+  ],
+  "sample": {
+   "tags": [
+    "Unit 3 · National Income and Price Determination",
+    "Free unit practice test"
+   ],
+   "q": "Oil prices rise sharply across the economy. In the short run, what happens to the price level and real output?",
+   "opts": [
+    "The price level rises and real output falls",
+    "Both rise",
+    "Both fall",
+    "The price level falls and real output rises"
+   ],
+   "more": "Take a free unit practice test",
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One question like the ones in the bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read the situation"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See which curve moved and why"
+    ]
+   ],
+   "note": ""
+  },
+  "deal": {
+   "free": [
+    "Every notes page, the glossary, the flashcards and the printable unit sheets",
+    "The graphs and formulas you must know, explained, and the cram-kit study plan outline",
+    "Every lesson in Units 1 and 2, and every \"Graph skills you need\" lesson",
+    "15 practice or review questions a day from any unit",
+    "One full practice exam",
+    "Three trainers: the graph studio, PPC and trade, and the indicators lab"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "$17.50",
+   "was": "$25",
+   "note": "Founding price until 31 January 2027. One pass, good through 30 June 2027, the end of the exam season.",
+   "prem": [
+    "Every interactive lesson",
+    "Unlimited practice and review from the whole question bank",
+    "Every trainer: the multiplier lab, the AD-AS lab, the reserves lab, the policy chain and the forex lab",
+    "All free-response questions, unit tests and practice exams",
+    "The cram kit: a study plan fitted to your weakest units, and timed mixed sets",
+    "The full dashboard: mastery by unit, topic and skill"
+   ],
+   "name": "AP® Macroeconomics"
+  },
+  "foot": [
+   "AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": "This course has not yet been reviewed by an AP® Macroeconomics teacher. It follows the published course framework and open sources, listed on the Sources page. Spot a mistake?",
+  "trainh": "Eight trainers for what the exam marks hardest.",
+  "hidden": true,
+  "ink": "#355A0A",
+  "tint": "#EEF4E0",
+  "bbg": "#2E4D0C",
+  "bac": "#C8F07A",
+  "t1": "AP®",
+  "t2": "Macroeconomics",
+  "coverhand": "every graph, every shift",
+  "try": {
+   "ok": 0,
+   "title": "A cost shock shifts supply, not demand.",
+   "why": "Higher input costs shift short-run aggregate supply to the left, so the price level rises while real output falls: stagflation. A change in spending would shift aggregate demand instead."
+  },
+  "note": "2027 exam",
+  "mapsub": "Pick a unit to open its lessons and practice."
+ },
  "_founder": "Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep."
 }

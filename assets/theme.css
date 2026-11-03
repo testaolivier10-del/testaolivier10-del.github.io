@@ -272,11 +272,19 @@ body[data-course="appsych"]{--ctint:#E3F0F8;--cink:#084F78;}
    in precalculus/assets/pcalc.css and IDENTITY.accent in scripts/lib/apprecalc-build.mjs). */
 body[data-course="apprecalc"]{--ctint:#E3F3E8;--cink:#11592F;}
 :root[data-theme="dark"] body[data-course="apprecalc"]{--ctint:rgba(80,200,130,0.10);--cink:#ACE4BF;}
+/* AP Macroeconomics: yellow-green, hue 88° (PROVISIONAL, docs/apmacro-spec.md
+   section 9; the widest gap left on the wheel, between Environmental
+   Science's olive at 63° and Biology's leaf green at 109°). --cink on
+   --ctint: 7.1:1 light (8.0:1 on white); dark 13:1 on the card (the same
+   values as body.mac in macroeconomics/assets/mac.css and IDENTITY.accent in
+   scripts/lib/apmacro-build.mjs). */
+body[data-course="apmacro"]{--ctint:#EEF4E0;--cink:#355A0A;}
+:root[data-theme="dark"] body[data-course="apmacro"]{--ctint:rgba(160,200,90,0.10);--cink:#CDE6A0;}
 /* Primary buttons in the course color (--cink, page-colored text). Contrast,
    light / dark: ochem 8.4 / 10.5, A&P 6.5 / 10.5, Biology 6.6 / 12.3,
    Chemistry 8.6 / 10.7, Physics 8.4 / 12.1, Calculus 9.4 / 10.8, Calculus BC 9.7 / 11.2, Statistics 9.8 / 10.9, Environmental Science 8.6 / 12.5, Psychology 8.3 / 12.2,
    Precalculus 8.0 / 12.9. */
-body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-course="apchem"],[data-course="apphys"],[data-course="apcalc"],[data-course="apcalcbc"],[data-course="apstat"],[data-course="apenv"],[data-course="appsych"],[data-course="apprecalc"],.bio,.chem,.phys,.calc){--btn-bg:var(--cink);--btn-ink:var(--paper);}
+body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-course="apchem"],[data-course="apphys"],[data-course="apcalc"],[data-course="apcalcbc"],[data-course="apstat"],[data-course="apenv"],[data-course="appsych"],[data-course="apprecalc"],[data-course="apmacro"],.bio,.chem,.phys,.calc){--btn-bg:var(--cink);--btn-ink:var(--paper);}
 
 /* The same pairs for a course's card outside its pages (hub cards, polish A3). */
 [data-tint="ochem"]{--ctint:#ECE8FB;--cink:#4B3BA8;}
@@ -290,6 +298,7 @@ body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-cour
 [data-tint="apenv"]{--ctint:#EFF0DA;--cink:#474A10;}
 [data-tint="appsych"]{--ctint:#E3F0F8;--cink:#084F78;}
 [data-tint="apprecalc"]{--ctint:#E3F3E8;--cink:#11592F;}
+[data-tint="apmacro"]{--ctint:#EEF4E0;--cink:#355A0A;}
 :root[data-theme="dark"] [data-tint="ochem"]{--ctint:rgba(156,143,224,0.18);--cink:#C9C0F2;}
 :root[data-theme="dark"] [data-tint="anp"]{--ctint:rgba(236,132,108,0.07);--cink:#F2B9A9;}
 :root[data-theme="dark"] [data-tint="bio"]{--ctint:rgba(140,200,110,0.08);--cink:#B6E2A2;}
@@ -301,6 +310,7 @@ body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-cour
 :root[data-theme="dark"] [data-tint="apenv"]{--ctint:rgba(200,200,100,0.10);--cink:#DCDB98;}
 :root[data-theme="dark"] [data-tint="appsych"]{--ctint:rgba(80,170,220,0.10);--cink:#A8D8F0;}
 :root[data-theme="dark"] [data-tint="apprecalc"]{--ctint:rgba(80,200,130,0.10);--cink:#ACE4BF;}
+:root[data-theme="dark"] [data-tint="apmacro"]{--ctint:rgba(160,200,90,0.10);--cink:#CDE6A0;}
 
 /* ==========================================================================
    2. Base

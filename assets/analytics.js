@@ -49,6 +49,7 @@
     { key: 'appsych', dir: 'psychology' },
     { key: 'apprecalc', dir: 'precalculus' },
     { key: 'apcalcbc', dir: 'calculus-bc' },
+    { key: 'apmacro', dir: 'macroeconomics' },
   ];
   // courses:end
 

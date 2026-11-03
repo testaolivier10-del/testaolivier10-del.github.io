@@ -45,6 +45,9 @@
   13. AP® Precalculus's the same way (<!-- hub-pcalc:start/end -->,
       <!-- nf-pcalc:start/end -->, precalculus/manifest.json), hidden until its
       first unit is published (docs/apprecalc-spec.md).
+  14. AP® Macroeconomics's the same way (<!-- hub-mac:start/end -->,
+      <!-- nf-mac:start/end -->, macroeconomics/manifest.json), hidden until
+      its first unit is published (docs/apmacro-spec.md).
   14. AP® Calculus BC's the same way (<!-- hub-cbc:start/end -->,
       <!-- nf-cbc:start/end -->, calculus-bc/manifest.json), hidden until its
       launch (docs/apcalcbc-spec.md). */
@@ -86,7 +89,7 @@ const ORDER = PAID.filter((c) => isOpen(c)).map((c) => c.key);
 const AP_SOURCES = [['Fiveable', 'https://fiveable.me/pricing']];
 const COMPARE_SOURCES = {
   nremt: [['App Store', 'https://apps.apple.com/us/app/pocket-prep-ems-2026/id1503584128']],
-  apbio: AP_SOURCES, apchem: AP_SOURCES, apphys: AP_SOURCES, apcalc: AP_SOURCES, apstat: AP_SOURCES, apenv: AP_SOURCES, appsych: AP_SOURCES, apprecalc: AP_SOURCES, apcalcbc: AP_SOURCES,
+  apbio: AP_SOURCES, apchem: AP_SOURCES, apphys: AP_SOURCES, apcalc: AP_SOURCES, apstat: AP_SOURCES, apenv: AP_SOURCES, appsych: AP_SOURCES, apprecalc: AP_SOURCES, apcalcbc: AP_SOURCES, apmacro: [...AP_SOURCES, ['UWorld', 'https://collegeprep.uworld.com/ap/']],
 };
 const PRICES = ORDER.flatMap((k) => COURSES[k].passes.map((x) => x.price));
 const LOW = Math.min(...PRICES), HIGH = Math.max(...PRICES);
@@ -99,6 +102,7 @@ const ENV = ORDER.includes('apenv');
 const PSY = ORDER.includes('appsych');
 const PCALC = ORDER.includes('apprecalc');
 const CBC = ORDER.includes('apcalcbc');
+const MAC = ORDER.includes('apmacro');
 /* Once every topic in the map is published the card stops promising more.
    "N published topics" keeps clear of check-site's ochem topic-count claim. */
 const CHEM_ALL = N.apchemTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apchem-dependency-map.json'), 'utf8')).topics.length;
@@ -111,10 +115,12 @@ const PSY_MAP = join(ROOT, 'docs', 'appsych-dependency-map.json');
 const PSY_ALL = existsSync(PSY_MAP) && N.appsychTopics >= JSON.parse(readFileSync(PSY_MAP, 'utf8')).topics.length;
 const PCALC_MAP = join(ROOT, 'docs', 'apprecalc-dependency-map.json');
 const PCALC_ALL = existsSync(PCALC_MAP) && N.apprecalcTopics >= JSON.parse(readFileSync(PCALC_MAP, 'utf8')).topics.length;
+const MAC_MAP = join(ROOT, 'docs', 'apmacro-dependency-map.json');
+const MAC_ALL = existsSync(MAC_MAP) && N.apmacroTopics >= JSON.parse(readFileSync(MAC_MAP, 'utf8')).topics.length;
 const CBC_ALL = N.apcalcbcTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apcalcbc-ced-map.json'), 'utf8')).bcTotal;
 const BIO_ALL = N.apbioTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apbio-dependency-map.json'), 'utf8')).topics.length;
-// Any course that uses the College Board's mark (AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics, AP® Environmental Science, AP® Psychology, AP® Precalculus, AP® Calculus BC).
-const MARK = BIO || CHEM || PHYS || CALC || STAT || ENV || PSY || PCALC || CBC;
+// Any course that uses the College Board's mark (AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics, AP® Environmental Science, AP® Psychology, AP® Precalculus, AP® Calculus BC, AP® Macroeconomics).
+const MARK = BIO || CHEM || PHYS || CALC || STAT || ENV || PSY || PCALC || CBC || MAC;
 // The College Board sentence, on every page that uses the mark (docs/apbio-spec.md).
 const TM_HTML = `<p class="tm-note">${esc(DISCLAIMER)}</p>`;
 const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
@@ -680,6 +686,10 @@ function hubPsyCard() {
   return apCard({ href: 'psychology/', tint: 'appsych', cover: 'appsych', t2: 'Psychology', hand: 'every concept, applied', name: 'AP® Psychology',
     line: published(PSY_ALL, N.appsychTopics, 'with every concept applied to a situation') });
 }
+function hubMacCard() {
+  return apCard({ href: 'macroeconomics/', tint: 'apmacro', cover: 'apmacro', t2: 'Macroeconomics', hand: 'every graph, every shift', name: 'AP® Macroeconomics',
+    line: published(MAC_ALL, N.apmacroTopics, 'with every graph you shift and label by hand') });
+}
 function hubPcalcCard() {
   return apCard({ href: 'precalculus/', tint: 'apprecalc', cover: 'apprecalc', t2: 'Precalculus', hand: 'see every function move', name: 'AP® Precalculus',
     line: published(PCALC_ALL, N.apprecalcTopics, 'with every function you can drag and watch') });
@@ -699,6 +709,7 @@ function hubPcalcCard() {
   src = between(src, '<!-- hub-psy:start -->', '<!-- hub-psy:end -->', PSY ? hubPsyCard() : '', rel);
   src = between(src, '<!-- hub-pcalc:start -->', '<!-- hub-pcalc:end -->', PCALC ? hubPcalcCard() : '', rel);
   src = between(src, '<!-- hub-cbc:start -->', '<!-- hub-cbc:end -->', CBC ? hubCbcCard() : '', rel);
+  src = between(src, '<!-- hub-mac:start -->', '<!-- hub-mac:end -->', MAC ? hubMacCard() : '', rel);
   /* The hero's course count (owner, 2026-10-12: it said "Three courses" with
      five live): every open course, from the registry. */
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
@@ -716,7 +727,7 @@ function hubPcalcCard() {
   /* The desktop facts row (polish 2026-10-17, A2): course-neutral, counted
      from every open course's bank, never typed. AP® Calculus BC counts only its
      own questions: its bank also serves AB's, which apcalc already counts. */
-  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv, appsych: N.appsych, apprecalc: N.apprecalc, apcalcbc: N.apcalcbcOwn };
+  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv, appsych: N.appsych, apprecalc: N.apprecalc, apcalcbc: N.apcalcbcOwn, apmacro: N.apmacro };
   const allQ = OPEN.reduce((n, c) => n + (BANK[c.key] || 0), 0);
   const facts = [
     `${fmt(allQ)} practice questions, each one explained`,
@@ -757,7 +768,7 @@ function hubPcalcCard() {
   const out = src.replace(/(The full )[\d,]+(-question bank[^\n]*\/\/ count:)(nremt|ochem|anp)/g,
     (_, a, b, k) => `${a}${fmt(N[k])}${b}${k}`);
   // AP® Biology and AP® Chemistry state no count while their banks grow unit by unit.
-  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys' && x !== 'apcalc' && x !== 'apstat' && x !== 'apenv' && x !== 'appsych' && x !== 'apprecalc' && x !== 'apcalcbc')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
+  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys' && x !== 'apcalc' && x !== 'apstat' && x !== 'apenv' && x !== 'appsych' && x !== 'apprecalc' && x !== 'apcalcbc' && x !== 'apmacro')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
   put(rel, out);
 }
 
@@ -766,7 +777,7 @@ function hubPcalcCard() {
 /* Manifests never carry the AP® mark (docs/apbio-spec.md, "Trademark": no
    "AP" in meta tags or ad copy, and an install name is both): AP® Biology's
    app is "Biology". */
-const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus', apstat: 'Statistics', apenv: 'Environmental Science', apcalcbc: 'Calculus BC', appsych: 'Psychology', apprecalc: 'Precalculus' };
+const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus', apstat: 'Statistics', apenv: 'Environmental Science', apcalcbc: 'Calculus BC', appsych: 'Psychology', apprecalc: 'Precalculus', apmacro: 'Macroeconomics' };
 const MANIFESTS = {
   'manifest.json': {
     name: 'LevlPrep — NREMT-EMT, Organic Chemistry and A&P study tools',
@@ -812,6 +823,11 @@ const MANIFESTS = {
     name: 'LevlPrep Psychology',
     short_name: 'LevlPrep Psychology',
     description: `Psychology on the course framework, in its order, for the May 2027 exam: every notes page is free forever and Unit 1 is fully interactive, with the research skills you need; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
+  },
+  'macroeconomics/manifest.json': {
+    name: 'LevlPrep Macroeconomics',
+    short_name: 'LevlPrep Macro',
+    description: `Macroeconomics on the course framework, in its order, for the May 2027 exam: every notes page is free forever and Units 1 and 2 are fully interactive, with the graph skills you need; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
   },
   'precalculus/manifest.json': {
     name: 'LevlPrep Precalculus',
@@ -901,6 +917,11 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
       <p>${CBC_ALL ? `All ${fmt(N.apcalcbcTopics)} published topics` : `${fmt(N.apcalcbcTopics)} published topic${N.apcalcbcTopics === 1 ? '' : 's'} so far`}, every Calculus AB topic and every BC topic in the order of the course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-cbc:start -->', '<!-- nf-cbc:end -->', CBC ? cbc : '', rel);
+  const mac = `    <a class="card nf-card" href="/macroeconomics/"><img class="sp-cv" src="/assets/covers/apmacro.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Macroeconomics</h2>
+      <p>${MAC_ALL ? `All ${fmt(N.apmacroTopics)} published topics` : `${fmt(N.apmacroTopics)} published topic${N.apmacroTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one and every graph to shift by hand.</p>
+    </a>`;
+  out = between(out, '<!-- nf-mac:start -->', '<!-- nf-mac:end -->', MAC ? mac : '', rel);
   put(rel, out);
 }
 

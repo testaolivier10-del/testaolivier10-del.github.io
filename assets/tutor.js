@@ -47,6 +47,7 @@
     { key: 'appsych', dir: 'psychology' },
     { key: 'apprecalc', dir: 'precalculus' },
     { key: 'apcalcbc', dir: 'calculus-bc' },
+    { key: 'apmacro', dir: 'macroeconomics' },
   ];
   // courses:end
   function courseKey(){
@@ -181,6 +182,14 @@
       .catch(function(){ return []; });
   }
 
+  // AP® Macroeconomics's, the same way (scripts/build-apmacro.mjs).
+  function macPages(){
+    return fetch('/macroeconomics/assets/notes-index.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(list){ return list.length ? list.concat([{ file: '/macroeconomics/glossary.html', title: 'Glossary', data: '/macroeconomics/assets/glossary.json' }]) : list; })
+      .catch(function(){ return []; });
+  }
+
   function resolvePages(){
     var k = courseKey();
     if(k === 'ochem') return ochemPages();
@@ -194,6 +203,7 @@
     if(k === 'apenv') return envPages();
     if(k === 'appsych') return psyPages();
     if(k === 'apprecalc') return pcalcPages();
+    if(k === 'apmacro') return macPages();
     return Promise.resolve(NREMT_PAGES);
   }
 
@@ -211,6 +221,7 @@
     if(k === 'apenv') return '<a href="/environmental-science/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'appsych') return '<a href="/psychology/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apprecalc') return '<a href="/precalculus/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
+    if(k === 'apmacro') return '<a href="/macroeconomics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     return '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
   }
 
@@ -1155,6 +1166,12 @@
       'How do I write end behavior in limit notation?',
       'What does concave up say about the average rates of change?',
       'How do I find the period and phase shift of a sinusoid?'
+    ],
+    apmacro: [
+      'Which curve shifts when input costs rise?',
+      'How does the Fed change interest rates with ample reserves?',
+      'How do I use the multiplier to close a recessionary gap?',
+      'Which way do I label the axes of a foreign exchange graph?'
     ]
   };
 
@@ -1170,6 +1187,7 @@
     apstat: 'Ask me anything from this course: every published Statistics notes page and the glossary are indexed. I can define a term, explain a calculation or a conclusion step by step, or point you at the page it came from.',
     apenv: 'Ask me anything from this course: every published Environmental Science notes page and the glossary are indexed. I can define a term, explain a calculation or a cause-and-effect chain step by step, or point you at the page it came from.',
     appsych: 'Ask me anything from this course: every published Psychology notes page and the glossary are indexed. I can define a term, apply a concept to a situation, or point you at the page it came from.',
+    apmacro: 'Ask me anything from this course: every published Macroeconomics notes page and the glossary are indexed. I can define a term, walk a policy through its causal chain, or point you at the page it came from.',
     apprecalc: 'Ask me anything from this course: every published Precalculus notes page and the glossary are indexed. I can define a term, work through a function step by step, or point you at the page it came from.'
   };
 
