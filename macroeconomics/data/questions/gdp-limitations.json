@@ -13,7 +13,7 @@
     ],
     "rows": [
      [
-      "Arland",
+      "Halvet",
       "800",
       "40"
      ],
@@ -50,7 +50,7 @@
    "diff": 2,
    "type": "numeric",
    "practice": "1.C",
-   "q": "What is GDP per capita in Arland, in dollars per person?",
+   "q": "What is GDP per capita in Halvet, in dollars per person?",
    "stimulus": "gdp-limitations-s1",
    "why": {
     "correct": "Divide GDP by population: $\\frac{800 \\text{ billion}}{40 \\text{ million}} = 20{,}000$ dollars per person."
@@ -84,16 +84,16 @@
    "options": [
     "Berovia, at about 30,000 dollars per person",
     "Cestia, because its total GDP is the largest",
-    "Arland, because it is in the middle on both counts",
+    "Halvet, because it is in the middle on both counts",
     "They are equal once population is taken into account"
    ],
    "correct": 0,
    "why": {
     "correct": "GDP per capita divides output by the number of people, so a small country can produce more per person than a large one.",
     "options": [
-     "Right: $300 \\text{ billion} / 10 \\text{ million} = 30{,}000$, more than Arland (20,000) or Cestia (15,000).",
-     "Cestia has the most output in total but twice as many people as Arland, so only 15,000 per person.",
-     "Arland's 20,000 per person is below Berovia's 30,000.",
+     "Right: $300 \\text{ billion} / 10 \\text{ million} = 30{,}000$, more than Halvet (20,000) or Cestia (15,000).",
+     "Cestia has the most output in total but twice as many people as Halvet, so only 15,000 per person.",
+     "Halvet's 20,000 per person is below Berovia's 30,000.",
      "Dividing each GDP by its population gives 20,000, 30,000 and 15,000: not equal."
     ]
    }
@@ -133,13 +133,13 @@
    "diff": 3,
    "type": "single",
    "practice": "1.D",
-   "q": "A student concludes from the table that a typical person in Berovia is better off than a typical person in Arland. Which fact, if true, would most weaken that conclusion?",
+   "q": "A student concludes from the table that a typical person in Berovia is better off than a typical person in Halvet. Which fact, if true, would most weaken that conclusion?",
    "stimulus": "gdp-limitations-s1",
    "options": [
     "Most of Berovia's income goes to a small share of its people",
-    "Berovia has a smaller population than Arland",
+    "Berovia has a smaller population than Halvet",
     "Both countries count GDP in dollars",
-    "Arland's total GDP is larger than Berovia's"
+    "Halvet's total GDP is larger than Berovia's"
    ],
    "correct": 0,
    "why": {

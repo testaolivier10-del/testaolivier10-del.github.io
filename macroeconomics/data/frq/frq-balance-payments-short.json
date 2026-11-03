@@ -19,10 +19,10 @@
   "invented": true,
   "text": "<p>The table shows entries in the balance of payments of Arland, an invented country, for one year. Positive numbers are money received by Arland residents; negative numbers are money paid by them.</p>",
   "table": {
-   "caption": "Arland's balance of payments entries, billions of dollars (invented data)",
+   "caption": "Arland's balance of payments entries, billions of arls (invented data)",
    "cols": [
     "Entry",
-    "Billions of dollars"
+    "Billions of arls"
    ],
    "rows": [
     [
@@ -63,14 +63,14 @@
    "prompt": "<b>Calculate</b> Arland's current account balance. Show your work.",
    "rubric": [
     {
-     "point": "Current account balance of -70 billion dollars (a deficit of 70 billion), with the work shown: 240 - 310 + 90 - 60 - 10 - 20",
+     "point": "Current account balance of -70 billion arls (a deficit of 70 billion), with the work shown: 240 - 310 + 90 - 60 - 10 - 20",
      "accept": [
-      "\"a deficit of 70 billion dollars\" with the work",
+      "\"a deficit of 70 billion arls\" with the work",
       "(240 + 90) - (310 + 60) - 10 - 20 = -70"
      ]
     }
    ],
-   "sample": "Current account = exports of goods and services - imports of goods and services + net income + net transfers = (240 + 90) - (310 + 60) + (-10) + (-20) = 330 - 370 - 30 = -70. The current account balance is -70 billion dollars, a deficit of 70 billion dollars."
+   "sample": "Current account = exports of goods and services - imports of goods and services + net income + net transfers = (240 + 90) - (310 + 60) + (-10) + (-20) = 330 - 370 - 30 = -70. The current account balance is -70 billion arls, a deficit of 70 billion arls."
   },
   {
    "label": "B",
@@ -78,13 +78,13 @@
    "prompt": "<b>Identify</b> Arland's capital and financial account balance, and state whether it is a surplus or a deficit.",
    "rubric": [
     {
-     "point": "Capital and financial account balance of +70 billion dollars, a surplus",
+     "point": "Capital and financial account balance of +70 billion arls, a surplus",
      "accept": [
       "the opposite of the current account balance from part (A), stated as a surplus or deficit consistently"
      ]
     }
    ],
-   "sample": "The capital and financial account balance is +70 billion dollars, a surplus."
+   "sample": "The capital and financial account balance is +70 billion arls, a surplus."
   },
   {
    "label": "C",
@@ -107,27 +107,27 @@
    "prompt": "<b>Calculate</b> the value of Arland assets bought by foreign residents during the year. Show your work.",
    "rubric": [
     {
-     "point": "140 billion dollars, with the work: capital and financial account balance = foreign purchases of Arland assets - Arland purchases of foreign assets, so 70 = F - 70 and F = 140",
+     "point": "140 billion arls, with the work: capital and financial account balance = foreign purchases of Arland assets - Arland purchases of foreign assets, so 70 = F - 70 and F = 140",
      "accept": [
       "an answer consistent with the balance found in part (B), with the work shown"
      ]
     }
    ],
-   "sample": "The capital and financial account balance equals foreign purchases of Arland assets minus Arland residents' purchases of foreign assets: 70 = F - 70, so F = 70 + 70 = 140 billion dollars."
+   "sample": "The capital and financial account balance equals foreign purchases of Arland assets minus Arland residents' purchases of foreign assets: 70 = F - 70, so F = 70 + 70 = 140 billion arls."
   },
   {
    "label": "E",
    "points": 1,
-   "prompt": "Suppose instead that Arland's exports of services had been 20 billion dollars higher, with every other current account entry unchanged. What would Arland's capital and financial account balance have been?",
+   "prompt": "Suppose instead that Arland's exports of services had been 20 billion arls higher, with every other current account entry unchanged. What would Arland's capital and financial account balance have been?",
    "rubric": [
     {
-     "point": "+50 billion dollars: the current account balance would be -50, so the capital and financial account surplus is 20 billion dollars smaller",
+     "point": "+50 billion arls: the current account balance would be -50, so the capital and financial account surplus is 20 billion arls smaller",
      "accept": [
-      "an answer 20 billion dollars below the part (B) balance, if part (B) was wrong"
+      "an answer 20 billion arls below the part (B) balance, if part (B) was wrong"
      ]
     }
    ],
-   "sample": "The current account balance would be -70 + 20 = -50 billion dollars, so the capital and financial account balance would be +50 billion dollars, a surplus 20 billion dollars smaller than before."
+   "sample": "The current account balance would be -70 + 20 = -50 billion arls, so the capital and financial account balance would be +50 billion arls, a surplus 20 billion arls smaller than before."
   }
  ]
 }

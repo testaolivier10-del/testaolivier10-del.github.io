@@ -145,7 +145,16 @@ answer, and the FRQ rubric `accept` lists say the other shift also earns the poi
 only for the keyed one. A grader option for alternative keys (a shared-file change to `mac-graph.js` /
 `mac-grade.js`) would let prompts be worded as the exam words them.
 
-### f-invented-countries: invented countries, real currencies in the notes (open, 2026-11-03)
+### f-invented-countries: invented countries, real currencies in the notes (resolved as a rule, 2026-11-03)
+
+The integrator set one rule (authoring guide, "Invented countries"): graded content (items, FRQs, tool drills) uses
+invented countries with invented currencies, teaching text may use real currencies labeled illustrative. Applied:
+`frq-forex-short` now calls Arland's currency the arl (as every other Unit 6 item does) and Unit 6's balance of
+payments counts Arland's amounts in arls; Arland, used by authors A-E as well, is now Unit 6's alone (Dornia,
+Halvet, Quillon, Quentar, Sundra elsewhere), and the other names two sets shared were split (Calder, Ostra, Pell,
+Tamsin, Velora). The forex lab's drills moved to invented currencies; Graph Studio's forex words dropped the crown,
+peso, mark, franc and florin. The owner may still prefer real countries in graded content (the exam uses them); one
+rule now, in one place. The original note:
 
 Every item and FRQ uses invented countries (Arland with the arl, Belvia with the bel; in `frq-forex-short`
 Arland's currency is called the dollar to match the theme title). The notes, lesson hooks and figures use the
@@ -441,7 +450,9 @@ against the CED (3.6, 3.7, 5.2, 6.2-6.6) before Units 3, 5 and 6 are reviewed:
   the now pricier American goods", "European investors buy more American bonds") so one curve is the answer, and
   the slip line names the other side's buyers. A grader `key.alt` would let prompts say only "the real interest
   rate rises".
-- **t4-real-currencies: real countries and currencies in the drills.** The drills use the dollar, euro, peso,
+- **t4-real-currencies: real countries and currencies in the drills.** (Resolved 2026-11-03 by the rule in
+  `f-invented-countries`: the drills now use invented countries and currencies, `DRILL_CUR` and `DRILL_PAIRS` in the
+  model, with the same price ranges; Explore keeps the real pairs, labeled illustrative.) The drills use the dollar, euro, peso,
   pound and rupee with their economies (Author F's items use invented countries). Prices of a currency come from
   short lists near recent values (for example 1.00 to 1.25 dollars per euro, 16 to 25 pesos per dollar), so the
   inverse and conversion steps are realistic; Explore's rates are illustrative and labeled so.

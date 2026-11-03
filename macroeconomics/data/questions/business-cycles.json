@@ -160,8 +160,8 @@
   },
   "business-cycles-s2": {
    "kind": "text",
-   "title": "A slowdown in Arland",
-   "text": "<p>In Arland, households and firms cut back on spending. For two quarters in a row real GDP falls, stores report weak sales and factories cut shifts. The unemployment rate rises from 4.5% to 7.0%. Economists estimate Arland's natural rate of unemployment at 4.5%.</p>"
+   "title": "A slowdown in Halvet",
+   "text": "<p>In Halvet, households and firms cut back on spending. For two quarters in a row real GDP falls, stores report weak sales and factories cut shifts. The unemployment rate rises from 4.5% to 7.0%. Economists estimate Halvet's natural rate of unemployment at 4.5%.</p>"
   },
   "business-cycles-s3": {
    "kind": "text",
@@ -333,7 +333,7 @@
    "diff": 1,
    "type": "single",
    "practice": "1.B",
-   "q": "Which phase of the business cycle is Arland in?",
+   "q": "Which phase of the business cycle is Halvet in?",
    "stimulus": "business-cycles-s2",
    "options": [
     "A contraction",
@@ -347,7 +347,7 @@
     "options": [
      "Right: real GDP is falling and unemployment is rising.",
      "In an expansion real GDP rises; here it is falling.",
-     "A peak is a single turning point, and Arland has been falling for two quarters.",
+     "A peak is a single turning point, and Halvet has been falling for two quarters.",
      "Unemployment is 7.0%, well above the 4.5% natural rate."
     ]
    }
@@ -360,7 +360,7 @@
    "diff": 2,
    "type": "numeric",
    "practice": "1.C",
-   "q": "What is Arland's cyclical unemployment rate now?",
+   "q": "What is Halvet's cyclical unemployment rate now?",
    "stimulus": "business-cycles-s2",
    "why": {
     "correct": "Cyclical = actual - natural $= 7.0 - 4.5 = 2.5\\%$."
@@ -394,7 +394,7 @@
    "diff": 2,
    "type": "single",
    "practice": "2.C",
-   "q": "How does Arland's real GDP now compare with its potential output?",
+   "q": "How does Halvet's real GDP now compare with its potential output?",
    "stimulus": "business-cycles-s2",
    "options": [
     "It is below potential: a negative (recessionary) output gap",

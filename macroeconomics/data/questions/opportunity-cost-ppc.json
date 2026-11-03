@@ -2,10 +2,10 @@
  "stimuli": {
   "opportunity-cost-ppc-s1": {
    "kind": "data",
-   "title": "Arland's production possibilities",
+   "title": "Dornia's production possibilities",
    "invented": true,
    "table": {
-    "caption": "Five combinations of wheat and tractors Arland (an invented country) can produce in a year using all its resources efficiently (invented data for practice)",
+    "caption": "Five combinations of wheat and tractors Dornia (an invented country) can produce in a year using all its resources efficiently (invented data for practice)",
     "cols": [
      "Combination",
      "Wheat (millions of bushels)",
@@ -246,9 +246,9 @@
    "type": "numeric",
    "practice": "1.C",
    "stimulus": "opportunity-cost-ppc-s1",
-   "q": "Using the table, what is the opportunity cost per million bushels of wheat when Arland moves from combination 2 to combination 3?",
+   "q": "Using the table, what is the opportunity cost per million bushels of wheat when Dornia moves from combination 2 to combination 3?",
    "why": {
-    "correct": "Arland gains 10 million bushels of wheat and gives up $18 - 14 = 4$ thousand tractors, so each million bushels costs $\\frac{4}{10} = 0.4$ thousand tractors."
+    "correct": "Dornia gains 10 million bushels of wheat and gives up $18 - 14 = 4$ thousand tractors, so each million bushels costs $\\frac{4}{10} = 0.4$ thousand tractors."
    },
    "numeric": {
     "from": {
@@ -292,7 +292,7 @@
    "type": "numeric",
    "practice": "1.C",
    "stimulus": "opportunity-cost-ppc-s1",
-   "q": "Using the table, how many thousand tractors does Arland give up in total to move from combination 3 to combination 4?",
+   "q": "Using the table, how many thousand tractors does Dornia give up in total to move from combination 3 to combination 4?",
    "why": {
     "correct": "Tractors fall from 14 thousand to 8 thousand: $14 - 8 = 6$ thousand tractors given up for 10 million more bushels of wheat."
    },
@@ -325,11 +325,11 @@
    "type": "single",
    "practice": "2.C",
    "stimulus": "opportunity-cost-ppc-s1",
-   "q": "What does the table show about Arland's opportunity cost of wheat as it makes more wheat?",
+   "q": "What does the table show about Dornia's opportunity cost of wheat as it makes more wheat?",
    "options": [
     "It stays the same: each extra 10 million bushels costs 2 thousand tractors",
     "It rises: each extra 10 million bushels costs more tractors than the last",
-    "It falls: wheat gets cheaper to make as Arland makes more",
+    "It falls: wheat gets cheaper to make as Dornia makes more",
     "It is impossible to find from a table"
    ],
    "correct": 1,
@@ -338,7 +338,7 @@
     "options": [
      "Only the first step costs 2 thousand; later steps cost more.",
      "Right: 2, then 4, then 6, then 8 thousand tractors.",
-     "The cost of wheat rises, not falls, as Arland moves along.",
+     "The cost of wheat rises, not falls, as Dornia moves along.",
      "The differences between rows give the costs directly."
     ]
    }
@@ -352,7 +352,7 @@
    "type": "single",
    "practice": "3.A",
    "stimulus": "opportunity-cost-ppc-s1",
-   "q": "Could Arland produce 25 million bushels of wheat and 14 thousand tractors in the same year?",
+   "q": "Could Dornia produce 25 million bushels of wheat and 14 thousand tractors in the same year?",
    "options": [
     "No: that combination lies outside its PPC",
     "Yes: it lies inside its PPC, with resources to spare",
@@ -361,7 +361,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "At 20 million bushels Arland can make at most 14 thousand tractors; making more wheat means fewer tractors, so 25 million and 14 thousand is outside the curve.",
+    "correct": "At 20 million bushels Dornia can make at most 14 thousand tractors; making more wheat means fewer tractors, so 25 million and 14 thousand is outside the curve.",
     "options": [
      "Right: more wheat than combination 3 with the same tractors is out of reach.",
      "A point inside would need fewer tractors than the curve allows at 25 million bushels.",
@@ -379,7 +379,7 @@
    "type": "single",
    "practice": "2.C",
    "stimulus": "opportunity-cost-ppc-s1",
-   "q": "Arland is producing 20 million bushels of wheat and 10 thousand tractors. What does this tell you?",
+   "q": "Dornia is producing 20 million bushels of wheat and 10 thousand tractors. What does this tell you?",
    "options": [
     "It is producing at an efficient point",
     "It has the best technology in the world",
@@ -388,7 +388,7 @@
    ],
    "correct": 3,
    "why": {
-    "correct": "With 20 million bushels Arland could make 14 thousand tractors; making only 10 thousand puts it inside the PPC.",
+    "correct": "With 20 million bushels Dornia could make 14 thousand tractors; making only 10 thousand puts it inside the PPC.",
     "options": [
      "An efficient point lies on the curve: 14 thousand tractors at this wheat output.",
      "The table says nothing about other countries' technology.",

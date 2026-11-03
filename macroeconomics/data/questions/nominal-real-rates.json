@@ -38,7 +38,7 @@
   "nominal-real-rates-s2": {
    "kind": "text",
    "title": "A fixed-rate car loan and a surprise in inflation",
-   "text": "<p>A bank in the invented country of Arland lends Sam money for a car at a fixed nominal interest rate of 7% a year. When the loan is made, both Sam and the bank expect inflation of 3% a year. Over the next year, inflation turns out to be 6%.</p>"
+   "text": "<p>A bank in the invented country of Quentar lends Sam money for a car at a fixed nominal interest rate of 7% a year. When the loan is made, both Sam and the bank expect inflation of 3% a year. Over the next year, inflation turns out to be 6%.</p>"
   }
  },
  "items": [
@@ -251,7 +251,7 @@
    "type": "single",
    "practice": "3.A",
    "stimulus": "nominal-real-rates-s2",
-   "q": "If lenders in Arland now expect inflation to stay at 6%, what most likely happens to the nominal rates they charge on new car loans?",
+   "q": "If lenders in Quentar now expect inflation to stay at 6%, what most likely happens to the nominal rates they charge on new car loans?",
    "options": [
     "They rise, to keep the real rate lenders want",
     "They fall, because borrowers are gaining",

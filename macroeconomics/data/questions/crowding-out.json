@@ -2,7 +2,7 @@
  "stimuli": {
   "crowding-out-s1": {
    "kind": "graph",
-   "title": "The loanable funds market in Pell (invented) after more government borrowing",
+   "title": "The loanable funds market in Garrow (invented) after more government borrowing",
    "graph": {
     "kind": "lf",
     "show": {
@@ -181,7 +181,7 @@
    "diff": 1,
    "type": "single",
    "practice": "2.A",
-   "q": "The graph shows Pell's loanable funds market after its government increased its borrowing. What happened to the real interest rate?",
+   "q": "The graph shows Garrow's loanable funds market after its government increased its borrowing. What happened to the real interest rate?",
    "options": [
     "It fell, because the government added funds to the market",
     "It rose, because the supply of loanable funds decreased",
@@ -208,7 +208,7 @@
    "diff": 3,
    "type": "single",
    "practice": "2.B",
-   "q": "The total quantity of loanable funds is larger on the graph. Why does private investment in Pell still fall?",
+   "q": "The total quantity of loanable funds is larger on the graph. Why does private investment in Garrow still fall?",
    "options": [
     "The government takes part of the larger quantity, and at the higher real rate private borrowers want less",
     "Private investment rises, because the total quantity of funds rose",
@@ -235,7 +235,7 @@
    "diff": 2,
    "type": "single",
    "practice": "3.B",
-   "q": "If Pell keeps borrowing this way for many years, what happens to its capital stock and potential output?",
+   "q": "If Garrow keeps borrowing this way for many years, what happens to its capital stock and potential output?",
    "options": [
     "Both grow faster, because government spending replaces private investment",
     "Both grow more slowly than they would have, because private investment is lower",
@@ -262,7 +262,7 @@
    "diff": 3,
    "type": "single",
    "practice": "3.B",
-   "q": "Which change in Pell would reduce the crowding out of private investment caused by the government's borrowing?",
+   "q": "Which change in Garrow would reduce the crowding out of private investment caused by the government's borrowing?",
    "options": [
     "A rise in government borrowing that shifts the demand for loanable funds right",
     "A fall in private saving that shifts the supply of loanable funds left",

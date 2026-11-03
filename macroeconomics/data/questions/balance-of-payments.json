@@ -5,7 +5,7 @@
    "title": "Arland's international transactions in one year",
    "invented": true,
    "table": {
-    "caption": "Arland's transactions with the rest of the world, billions of dollars (invented data for practice)",
+    "caption": "Arland's transactions with the rest of the world, billions of arls (invented data for practice)",
     "cols": [
      "Transaction",
      "Amount"
@@ -62,9 +62,9 @@
    "type": "numeric",
    "practice": "1.C",
    "stimulus": "balance-of-payments-s1",
-   "q": "Use the table. What is Arland's balance of trade in goods and services, in billions of dollars? Write a deficit as a negative number.",
+   "q": "Use the table. What is Arland's balance of trade in goods and services, in billions of arls? Write a deficit as a negative number.",
    "why": {
-    "correct": "Exports minus imports, goods and services together: $(300 + 120) - (380 + 90) = 420 - 470 = -50$. Arland bought 50 billion dollars more from abroad than it sold, a trade deficit."
+    "correct": "Exports minus imports, goods and services together: $(300 + 120) - (380 + 90) = 420 - 470 = -50$. Arland bought 50 billion arls more from abroad than it sold, a trade deficit."
    },
    "numeric": {
     "from": {
@@ -113,7 +113,7 @@
    "type": "numeric",
    "practice": "1.C",
    "stimulus": "balance-of-payments-s1",
-   "q": "Use the table. What is Arland's current account balance, in billions of dollars? Write a deficit as a negative number.",
+   "q": "Use the table. What is Arland's current account balance, in billions of arls? Write a deficit as a negative number.",
    "why": {
     "correct": "The current account adds the balance of trade, net income and net transfers: $-50 + (45 - 30) - 25 = -60$. Purchases of foreign assets are not in it; they belong to the capital and financial account."
    },
@@ -275,9 +275,9 @@
    "type": "numeric",
    "practice": "2.C",
    "stimulus": "balance-of-payments-s1",
-   "q": "Use the table. What is Arland's capital and financial account balance, in billions of dollars? Write a deficit as a negative number.",
+   "q": "Use the table. What is Arland's capital and financial account balance, in billions of arls? Write a deficit as a negative number.",
    "why": {
-    "correct": "The two accounts sum to zero: current account + capital and financial account = 0, so the capital and financial account is $-(-60) = +60$, a surplus. Arland paid for its extra purchases by selling 60 billion dollars more of assets to foreigners than it bought from them."
+    "correct": "The two accounts sum to zero: current account + capital and financial account = 0, so the capital and financial account is $-(-60) = +60$, a surplus. Arland paid for its extra purchases by selling 60 billion arls more of assets to foreigners than it bought from them."
    },
    "numeric": {
     "from": {
@@ -379,9 +379,9 @@
    "type": "numeric",
    "practice": "2.C",
    "stimulus": "balance-of-payments-s1",
-   "q": "Use the table and your capital and financial account balance. What value of Arland assets did foreign residents buy that year, in billions of dollars?",
+   "q": "Use the table and your capital and financial account balance. What value of Arland assets did foreign residents buy that year, in billions of arls?",
    "why": {
-    "correct": "The capital and financial account balance is foreign purchases of Arland assets minus Arland purchases of foreign assets: $60 = F - 90$, so $F = 60 + 90 = 150$ billion dollars."
+    "correct": "The capital and financial account balance is foreign purchases of Arland assets minus Arland purchases of foreign assets: $60 = F - 90$, so $F = 60 + 90 = 150$ billion arls."
    },
    "numeric": {
     "from": {
@@ -527,7 +527,7 @@
         }
        ]
       },
-      "why": "That is the net balance. Foreign purchases are larger, because Arland residents also bought 90 billion dollars of foreign assets: 60 + 90 = 150."
+      "why": "That is the net balance. Foreign purchases are larger, because Arland residents also bought 90 billion arls of foreign assets: 60 + 90 = 150."
      }
     ]
    }
@@ -679,10 +679,10 @@
    "diff": 1,
    "type": "single",
    "practice": "2.C",
-   "q": "Corland, an invented country, has a current account surplus of 35 billion dollars this year. What is its capital and financial account balance?",
+   "q": "Corland, an invented country, has a current account surplus of 35 billion arls this year. What is its capital and financial account balance?",
    "options": [
-    "A surplus of 35 billion dollars",
-    "A deficit of 35 billion dollars",
+    "A surplus of 35 billion arls",
+    "A deficit of 35 billion arls",
     "Zero, because asset trades are not counted",
     "It depends on the government budget balance"
    ],
@@ -828,7 +828,7 @@
    "diff": 2,
    "type": "specific",
    "practice": "2.A",
-   "q": "Arland has a current account deficit of 80 billion dollars. Build an answer that identifies its capital and financial account balance and explains why.",
+   "q": "Arland has a current account deficit of 80 billion arls. Build an answer that identifies its capital and financial account balance and explains why.",
    "why": {
     "correct": "The two accounts sum to zero, and the reason is how the extra purchases are paid for: Arland sells assets to foreigners or borrows from them."
    },
@@ -837,13 +837,13 @@
     "write": {
      "mechanism": true
     },
-    "model": "Arland's capital and financial account has a surplus of 80 billion dollars, because the two accounts sum to zero: Arland pays for buying more from the rest of the world than it sells by selling 80 billion dollars more of assets to foreigners (or borrowing from them) than it buys.",
+    "model": "Arland's capital and financial account has a surplus of 80 billion arls, because the two accounts sum to zero: Arland pays for buying more from the rest of the world than it sells by selling 80 billion arls more of assets to foreigners (or borrowing from them) than it buys.",
     "slots": {
      "claim": {
       "label": "The balance",
       "options": [
-       "a surplus of 80 billion dollars",
-       "a deficit of 80 billion dollars",
+       "a surplus of 80 billion arls",
+       "a deficit of 80 billion arls",
        "a balance of zero"
       ],
       "correct": 0,

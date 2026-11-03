@@ -20,7 +20,7 @@
   "3.A",
   "3.C"
  ],
- "scenario": "The invented country of Calder is producing above full-employment output, and its price level is rising. Calder's central bank operates with <b>limited reserves</b>.",
+ "scenario": "The invented country of Varne is producing above full-employment output, and its price level is rising. Varne's central bank operates with <b>limited reserves</b>.",
  "parts": [
   {
    "label": "A",
@@ -99,7 +99,7 @@
   {
    "label": "C",
    "points": 1,
-   "prompt": "What happens to the prices of existing bonds in Calder because of the open market operation? <b>Explain</b>.",
+   "prompt": "What happens to the prices of existing bonds in Varne because of the open market operation? <b>Explain</b>.",
    "rubric": [
     {
      "point": "States that bond prices fall, because the central bank's sales add to the supply of bonds (equivalently, because interest rates rise and bond prices move opposite to them)",
@@ -113,7 +113,7 @@
   {
    "label": "D",
    "points": 2,
-   "prompt": "<b>Explain</b> how the change in the nominal interest rate you showed in part B affects aggregate demand in Calder.",
+   "prompt": "<b>Explain</b> how the change in the nominal interest rate you showed in part B affects aggregate demand in Varne.",
    "rubric": [
     {
      "point": "States that interest-sensitive spending (investment, or consumption of durable goods) decreases, because borrowing costs more",
@@ -133,7 +133,7 @@
   {
    "label": "E",
    "points": 1,
-   "prompt": "Based on your answer to part D, what happens to unemployment in Calder in the short run?",
+   "prompt": "Based on your answer to part D, what happens to unemployment in Varne in the short run?",
    "rubric": [
     {
      "point": "States that unemployment increases (consistent with a decrease in AD)",
@@ -147,7 +147,7 @@
   {
    "label": "F(i)",
    "points": 1,
-   "prompt": "The required reserve ratio in Calder is 0.1. <b>Calculate</b> the money multiplier. Show your work.",
+   "prompt": "The required reserve ratio in Varne is 0.1. <b>Calculate</b> the money multiplier. Show your work.",
    "rubric": [
     {
      "point": "Money multiplier = 1 / 0.1 = 10, with the work shown",

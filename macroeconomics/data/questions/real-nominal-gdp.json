@@ -33,10 +33,10 @@
   },
   "real-nominal-gdp-s2": {
    "kind": "data",
-   "title": "Nominal GDP and the GDP deflator in Arland",
+   "title": "Nominal GDP and the GDP deflator in Halvet",
    "invented": true,
    "table": {
-    "caption": "Arland, Year 1 is the base year (nominal GDP in billions of dollars; invented data for practice)",
+    "caption": "Halvet, Year 1 is the base year (nominal GDP in billions of dollars; invented data for practice)",
     "cols": [
      "Year",
      "Nominal GDP",
@@ -477,7 +477,7 @@
    "diff": 2,
    "type": "numeric",
    "practice": "1.C",
-   "q": "What is Arland's real GDP in Year 2, in billions of dollars?",
+   "q": "What is Halvet's real GDP in Year 2, in billions of dollars?",
    "stimulus": "real-nominal-gdp-s2",
    "why": {
     "correct": "Real GDP $= \\frac{\\text{nominal GDP}}{\\text{deflator}} \\times 100 = \\frac{900}{120} \\times 100 = 750$ billion dollars."
@@ -522,7 +522,7 @@
    "diff": 2,
    "type": "single",
    "practice": "2.C",
-   "q": "Did Arland's output of goods and services grow from Year 1 to Year 2?",
+   "q": "Did Halvet's output of goods and services grow from Year 1 to Year 2?",
    "stimulus": "real-nominal-gdp-s2",
    "options": [
     "No: real GDP fell from 800 to 750",
@@ -549,7 +549,7 @@
    "diff": 3,
    "type": "numeric",
    "practice": "3.C",
-   "q": "What is the growth rate of Arland's real GDP from Year 2 to Year 3?",
+   "q": "What is the growth rate of Halvet's real GDP from Year 2 to Year 3?",
    "stimulus": "real-nominal-gdp-s2",
    "why": {
     "correct": "Real GDP in Year 3 is $\\frac{990}{110} \\times 100 = 900$. Growth $= \\frac{900 - 750}{750} \\times 100 = 20\\%$."
@@ -597,7 +597,7 @@
    "diff": 2,
    "type": "single",
    "practice": "2.C",
-   "q": "What happened to prices of the goods in Arland's GDP from Year 2 to Year 3?",
+   "q": "What happened to prices of the goods in Halvet's GDP from Year 2 to Year 3?",
    "stimulus": "real-nominal-gdp-s2",
    "options": [
     "They fell on average, because the deflator fell from 120 to 110",

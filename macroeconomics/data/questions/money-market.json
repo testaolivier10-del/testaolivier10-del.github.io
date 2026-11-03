@@ -13,7 +13,7 @@
   "money-market-s2": {
    "kind": "text",
    "title": "A recession in an invented economy",
-   "text": "<p>Real GDP in the invented country of Velora falls sharply in a recession, while the price level barely changes. Households and firms buy fewer goods and services. Velora's central bank keeps the money supply where it was.</p>"
+   "text": "<p>Real GDP in the invented country of Venna falls sharply in a recession, while the price level barely changes. Households and firms buy fewer goods and services. Venna's central bank keeps the money supply where it was.</p>"
   }
  },
  "items": [
@@ -134,7 +134,7 @@
    "type": "graph",
    "practice": "4.C",
    "stimulus": "money-market-s2",
-   "q": "On the money market graph, show the effect of Velora's recession and mark the new equilibrium.",
+   "q": "On the money market graph, show the effect of Venna's recession and mark the new equilibrium.",
    "why": {
     "correct": "Lower real GDP means fewer transactions, so people need less money: money demand shifts left, and with a fixed money supply the nominal interest rate falls."
    },
@@ -175,7 +175,7 @@
    "type": "single",
    "practice": "2.A",
    "stimulus": "money-market-s2",
-   "q": "Why does the recession change the demand for money in Velora?",
+   "q": "Why does the recession change the demand for money in Venna?",
    "options": [
     "People buy fewer goods, so they need less money for transactions",
     "Interest rates fall, so people want more money",
@@ -202,7 +202,7 @@
    "type": "single",
    "practice": "3.B",
    "stimulus": "money-market-s2",
-   "q": "What happens to the prices of existing bonds in Velora?",
+   "q": "What happens to the prices of existing bonds in Venna?",
    "options": [
     "They fall, because people need less money",
     "They rise, as the nominal interest rate falls",
@@ -229,7 +229,7 @@
    "type": "single",
    "practice": "2.B",
    "stimulus": "money-market-s2",
-   "q": "Suppose Velora's price level had also fallen during the recession. How would that change your answer about money demand?",
+   "q": "Suppose Venna's price level had also fallen during the recession. How would that change your answer about money demand?",
    "options": [
     "Money demand would fall by more",
     "Money demand would rise instead",

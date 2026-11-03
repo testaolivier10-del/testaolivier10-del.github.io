@@ -33,9 +33,9 @@
       { "good": "printers", "sub": "copy shop printing", "comp": "printer ink", "input": "plastic" }
     ],
     "forex": [
-      { "home": "Arland", "cur": "crown", "abroad": "Beland", "other": "peso" },
-      { "home": "Corvia", "cur": "mark", "abroad": "Delmar", "other": "franc" },
-      { "home": "Estora", "cur": "florin", "abroad": "Fennick", "other": "dollar" }
+      { "home": "Garvon", "cur": "garv", "abroad": "Nelland", "other": "nell" },
+      { "home": "Ombra", "cur": "omb", "abroad": "Pradia", "other": "prad" },
+      { "home": "Estora", "cur": "esto", "abroad": "Tulmar", "other": "tul" }
     ]
   },
   "graphs": [
@@ -99,7 +99,7 @@
       "link": "Beside it, AD-AS: the same shock seen as output and the price level." },
     { "id": "forex", "topic": "foreign-exchange-market", "title": "Foreign exchange market",
       "shows": "The market for one currency: foreigners demand it to buy the country's goods and assets, and its own residents supply it to buy foreign ones.",
-      "axes": "Price of the currency in the other currency per unit of this one (pesos per crown in the market for crowns), and Quantity of the currency. The ratio upside down loses the point.",
+      "axes": "Price of the currency in the other currency per unit of this one (nells per garv in the market for garvs), and Quantity of the currency. The ratio upside down loses the point.",
       "shifters": [
         { "curve": "D", "list": ["Foreign demand for the country's exports (foreign incomes, tastes)", "Relative real interest rates: higher here pulls financial capital in", "Relative price levels"] },
         { "curve": "S", "list": ["The country's demand for imports (its own incomes, tastes)", "Its residents buying foreign assets (higher rates abroad)"] }

@@ -61,6 +61,9 @@ test('forex-lab: numbers are their recipes; the axis and the mirror market are r
     assert.equal(Math.sign(eX[1] - 5), model.value(s.curve, s.dir), `${s.id}: value`);
   }
   for (const p of model.PAIRS) assert.ok(p[2].length >= 3 && p[3].length >= 3 && model.CUR[p[0]] && model.CUR[p[1]], p.join(' '));
+  // The drills use invented countries and currencies (authoring guide, "Invented countries").
+  for (const p of model.DRILL_PAIRS) assert.ok(p[2].length >= 3 && p[3].length >= 3 && model.DRILL_CUR[p[0]] && model.DRILL_CUR[p[1]], p.join(' '));
+  for (let i = 1; i <= 20; i++) assert.ok(model.DRILL_CUR[model.generate(M.rng(i), DATA.contexts[i % DATA.contexts.length]).answer.X], 'a drill names an invented currency');
 });
 
 test('forex-lab: the grader catches the flipped ratio and the wrong curve', () => {

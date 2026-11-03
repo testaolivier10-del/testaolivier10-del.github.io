@@ -2,10 +2,10 @@
  "stimuli": {
   "money-growth-inflation-s1": {
    "kind": "data",
-   "title": "Money, velocity and real GDP in Ostra (invented)",
+   "title": "Money, velocity and real GDP in Kelvar (invented)",
    "invented": true,
    "table": {
-    "caption": "Ostra, an invented country: money supply, velocity and real GDP",
+    "caption": "Kelvar, an invented country: money supply, velocity and real GDP",
     "cols": [
      "Year",
      "Money supply (billions of dollars)",
@@ -43,7 +43,7 @@
    "diff": 1,
    "type": "numeric",
    "practice": "1.C",
-   "q": "Use $M \\times V = P \\times Y$. What is Ostra's nominal GDP in Year 1, in billions of dollars?",
+   "q": "Use $M \\times V = P \\times Y$. What is Kelvar's nominal GDP in Year 1, in billions of dollars?",
    "why": {
     "correct": "Nominal GDP is $P \\times Y = M \\times V = 500 \\times 4 = 2{,}000$ billion dollars."
    },
@@ -78,7 +78,7 @@
    "diff": 2,
    "type": "numeric",
    "practice": "1.C",
-   "q": "What is Ostra's price level in Year 2? Give it as a number, where 1.0 means the base-year price level.",
+   "q": "What is Kelvar's price level in Year 2? Give it as a number, where 1.0 means the base-year price level.",
    "why": {
     "correct": "$P = \\frac{M \\times V}{Y} = \\frac{550 \\times 4}{2{,}000} = 1.1$."
    },
@@ -135,7 +135,7 @@
    "diff": 2,
    "type": "numeric",
    "practice": "2.C",
-   "q": "By what percent did Ostra's price level rise from Year 1 to Year 2?",
+   "q": "By what percent did Kelvar's price level rise from Year 1 to Year 2?",
    "why": {
     "correct": "The Year 1 price level is $\\frac{500 \\times 4}{2{,}000} = 1.0$ and the Year 2 level is 1.1, so prices rose $\\frac{1.1 - 1.0}{1.0} \\times 100 = 10$ percent."
    },

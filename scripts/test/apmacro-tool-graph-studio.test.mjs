@@ -83,7 +83,7 @@ test('graph-studio: the result and shift-or-movement steps', () => {
   assert.deepEqual(J(m2.steps.map(x => x.key)), ['move', 'shift']);
   assert.equal(m2.steps[0].options[m2.steps[0].correct], 'A shift of supply');
   const fx = GS.generate(M.rng(7), { ...ctx('forex'), only: ['fx-imports'] }, 'shift', DATA), o = fx.steps.find(x => x.key === 'outcome');
-  assert.match(o.options[o.correct], /^The (crown|mark|florin) depreciates and the quantity of \w+s traded rises\.$/);
+  assert.match(o.options[o.correct], /^The (garv|omb|esto) depreciates and the quantity of \w+s traded rises\.$/);
 });
 
 test('graph-studio: planted economics mistakes are caught', () => {
@@ -124,8 +124,8 @@ test('graph-studio: linked views', () => {
   assert.deepEqual(J(shock.state.shifts), { SRPC: 1 }, 'SRAS left: SRPC right');
   assert.ok(shock.state.point[0] > 5 && shock.state.point[1] > 5, 'stagflation: both higher');
   assert.deepEqual(J(GS.linked('adas', { LRAS: 1 }).state.shifts), { LRPC: -1 });
-  const fx = GS.linked('forex', { D: 1 }, { currency: 'crown', other: 'peso' });
-  assert.deepEqual(J(fx.spec.names), { currency: 'peso', other: 'crown' });
-  assert.deepEqual(J(fx.state.shifts), { S: 1 }, 'demand for crowns is supply of pesos');
+  const fx = GS.linked('forex', { D: 1 }, { currency: 'garv', other: 'nell' });
+  assert.deepEqual(J(fx.spec.names), { currency: 'nell', other: 'garv' });
+  assert.deepEqual(J(fx.state.shifts), { S: 1 }, 'demand for garvs is supply of nells');
   assert.equal(GS.linked('sd', { D: 1 }), null);
 });

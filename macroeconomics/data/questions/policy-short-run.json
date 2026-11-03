@@ -2,8 +2,8 @@
  "stimuli": {
   "policy-short-run-s1": {
    "kind": "text",
-   "title": "Arland in a recession (invented country)",
-   "text": "<p>Arland, an invented country, is in a recession. Real GDP is below full-employment output, and the unemployment rate is 8 percent while the natural rate is 5 percent. Arland's central bank operates in an <b>ample-reserves framework</b>: it steers its policy rate with the interest rate it pays on reserve balances. Arland's legislature can also change government spending or taxes.</p>"
+   "title": "Sundra in a recession (invented country)",
+   "text": "<p>Sundra, an invented country, is in a recession. Real GDP is below full-employment output, and the unemployment rate is 8 percent while the natural rate is 5 percent. Sundra's central bank operates in an <b>ample-reserves framework</b>: it steers its policy rate with the interest rate it pays on reserve balances. Sundra's legislature can also change government spending or taxes.</p>"
   },
   "policy-short-run-s2": {
    "kind": "graph",
@@ -65,7 +65,7 @@
    "diff": 2,
    "type": "single",
    "practice": "2.A",
-   "q": "Which action by Arland's central bank would move real GDP back toward full employment?",
+   "q": "Which action by Sundra's central bank would move real GDP back toward full employment?",
    "options": [
     "Sell government bonds to drain reserves",
     "Lower the interest rate it pays on reserve balances",
@@ -92,7 +92,7 @@
    "diff": 2,
    "type": "order",
    "practice": "2.B",
-   "q": "Arland's central bank lowers the interest rate it pays on reserve balances. Put the links of the chain in order, from the action to the result.",
+   "q": "Sundra's central bank lowers the interest rate it pays on reserve balances. Put the links of the chain in order, from the action to the result.",
    "options": [
     "The interest rate on reserve balances falls",
     "The policy rate falls",
@@ -114,7 +114,7 @@
    "diff": 2,
    "type": "single",
    "practice": "2.A",
-   "q": "Suppose Arland's legislature cuts personal income taxes instead. What is the first link in the chain from the tax cut to AD?",
+   "q": "Suppose Sundra's legislature cuts personal income taxes instead. What is the first link in the chain from the tax cut to AD?",
    "options": [
     "Disposable income rises, so households spend more",
     "The policy rate falls, so firms borrow more",
@@ -141,7 +141,7 @@
    "diff": 3,
    "type": "single",
    "practice": "2.B",
-   "q": "Arland's central bank lowers its administered rates and, at the same time, the legislature raises government spending. Compared with either policy alone, what happens to AD and to the interest rate?",
+   "q": "Sundra's central bank lowers its administered rates and, at the same time, the legislature raises government spending. Compared with either policy alone, what happens to AD and to the interest rate?",
    "options": [
     "AD rises by more; the interest rate falls for sure",
     "AD rises by more; the interest rate rises for sure",

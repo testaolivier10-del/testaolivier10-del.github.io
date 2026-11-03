@@ -31,6 +31,16 @@ Chief Reader Reports and the 2026 scoring guidelines).
 - **Invented data are labeled.** Every table or chart is `"invented": true` or carries a `source` naming the
   publisher and year ("Bureau of Labor Statistics (2025)") with the numbers as published. Countries in scenarios
   are invented ("Country X", "Arland") unless the point is a real, cited fact.
+- **Invented countries (one rule, 2026-11-03).** Graded content (items, FRQs, tool drills) uses invented countries
+  with invented currencies; a real economy or central bank never "does" something in a question. Teaching text
+  (notes, lesson hooks, figures, a trainer's Explore view) may use real currencies (the dollar, the euro) with
+  made-up rates labeled "suppose" or "illustrative", for intuition. Each scenario set keeps its own names, used
+  by no other set: Unit 6 and the open-economy FRQs are Arland (currency the arl) and Belvia (the bel), with all
+  of Arland's amounts in arls; other units and FRQs each have their own countries (Dornia and Belmar in Unit 1,
+  Halvet in Unit 2, Quillon in Unit 3's aggregate demand set, Quentar in 4.2, Sundra in 5.5, and so on), Graph
+  Studio's forex words (Garvon and the garv, Nelland and the nell, ...) and the forex lab's drills (Korvania and
+  the kor, Seluna and the sel, ...) theirs. Before naming a new country, search `macroeconomics/data` and the
+  tool models for it.
 - **Neutral on politics.** Policy is taught as cause and effect, never as good or bad. No parties, no named
   politicians, no "should" about real policy debates (the content check refuses party names).
 - Write the mark as **"AP®"**, only as an adjective before a capitalized noun ("the AP® Macroeconomics exam").

@@ -43,6 +43,27 @@
     ['rupee', 'dollar', [0.0115, 0.012, 0.0125], [800, 2000, 4000]],
     ['dollar', 'pound', [0.75, 0.8, 0.85], [20, 50, 100]]
   ];
+  /* The drills' currencies (graded content uses invented countries and
+     currencies, docs/apmacro-authoring-guide.md "Invented countries"): the
+     same pairs and price ranges as the real ones above, which only the
+     Explore view uses, labeled illustrative. */
+  var DRILL_CUR = {
+    kor: { place: 'Korvania', people: 'Korvanians', adj: 'Korvanian', bank: 'the Bank of Korvania' },
+    sel: { place: 'Seluna', people: 'Selunans', adj: 'Selunan', bank: 'the Bank of Seluna' },
+    vash: { place: 'Vashtia', people: 'Vashtians', adj: 'Vashtian', bank: 'the Bank of Vashtia' },
+    ruv: { place: 'Ruvelle', people: 'Ruvellans', adj: 'Ruvellan', bank: 'the Bank of Ruvelle' },
+    nim: { place: 'Nimbria', people: 'Nimbrians', adj: 'Nimbrian', bank: 'the Bank of Nimbria' }
+  };
+  var DRILL_PAIRS = [
+    ['sel', 'kor', [1, 1.1, 1.2, 1.25], [20, 40, 50, 100]],
+    ['kor', 'sel', [0.8, 0.9, 0.95, 1], [20, 50, 100, 200]],
+    ['vash', 'kor', [0.04, 0.05, 0.0625], [200, 400, 1000]],
+    ['kor', 'vash', [16, 18, 20, 25], [10, 20, 50]],
+    ['ruv', 'sel', [1.1, 1.15, 1.2, 1.25], [20, 40, 100]],
+    ['sel', 'ruv', [0.8, 0.85, 0.9], [20, 40, 100]],
+    ['nim', 'kor', [0.0115, 0.012, 0.0125], [800, 2000, 4000]],
+    ['kor', 'ruv', [0.75, 0.8, 0.85], [20, 50, 100]]
+  ];
   function pairOf(X, Y){ for(var i = 0; i < PAIRS.length; i++) if(PAIRS[i][0] === X && PAIRS[i][1] === Y) return PAIRS[i]; return null; }
   function poss(place){ return place + (/s$/.test(place) ? '\u2019' : '\u2019s'); }
   function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -122,8 +143,8 @@
     return { key: key, kind: 'graph', spec: spec, label: label, explain: okWhy, practice: practice, level: 'apply' };
   }
   function setup(r){
-    var p = r.pick(PAIRS);
-    return { X: p[0], Y: p[1], H: CUR[p[0]], F: CUR[p[1]], rates: p[2], amounts: p[3] };
+    var p = r.pick(DRILL_PAIRS);
+    return { X: p[0], Y: p[1], H: DRILL_CUR[p[0]], F: DRILL_CUR[p[1]], rates: p[2], amounts: p[3] };
   }
   function curveText(c, d, X){ return (c === 'D' ? 'Demand for ' : 'Supply of ') + pl(X) + ' shifts ' + (d > 0 ? 'right' : 'left'); }
   function valueChoice(z, v){
@@ -306,5 +327,5 @@
     return GEN[t](r, ctx || {});
   }
 
-  M.register('forexLab', { CUR: CUR, PAIRS: PAIRS, SHOCKS: SHOCKS, shock: shock, mirror: mirror, value: value, rate: rate, K: K, plural: pl, cap: cap, pairOf: pairOf, TYPES: TYPES, generate: generate });
+  M.register('forexLab', { CUR: CUR, PAIRS: PAIRS, DRILL_CUR: DRILL_CUR, DRILL_PAIRS: DRILL_PAIRS, SHOCKS: SHOCKS, shock: shock, mirror: mirror, value: value, rate: rate, K: K, plural: pl, cap: cap, pairOf: pairOf, TYPES: TYPES, generate: generate });
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -42,8 +42,8 @@
   },
   "aggregate-demand-s2": {
    "kind": "text",
-   "title": "Three news stories from Arland",
-   "text": "<p>Arland is an invented country. In one month its newspapers report three stories:</p><ol><li>Home and stock prices in Arland jump, so households feel richer.</li><li>A deep recession hits Arland's main trading partner, so foreign incomes fall.</li><li>Arland's firms expect sales to boom next year and plan new factories.</li></ol><p>Assume nothing else changes, including the price level, unless a question says so.</p>"
+   "title": "Three news stories from Quillon",
+   "text": "<p>Quillon is an invented country. In one month its newspapers report three stories:</p><ol><li>Home and stock prices in Quillon jump, so households feel richer.</li><li>A deep recession hits Quillon's main trading partner, so foreign incomes fall.</li><li>Quillon's firms expect sales to boom next year and plan new factories.</li></ol><p>Assume nothing else changes, including the price level, unless a question says so.</p>"
   }
  },
  "items": [
@@ -209,7 +209,7 @@
    "type": "single",
    "practice": "2.A",
    "stimulus": "aggregate-demand-s2",
-   "q": "How does story 1 (rising home and stock prices) affect Arland's aggregate demand?",
+   "q": "How does story 1 (rising home and stock prices) affect Quillon's aggregate demand?",
    "options": [
     "AD shifts left, because households save their gains instead of spending them",
     "There is a movement down along AD, because the price level falls",
@@ -236,21 +236,21 @@
    "type": "single",
    "practice": "2.A",
    "stimulus": "aggregate-demand-s2",
-   "q": "How does story 2 (a recession abroad) affect Arland's aggregate demand?",
+   "q": "How does story 2 (a recession abroad) affect Quillon's aggregate demand?",
    "options": [
-    "AD shifts right, because Arland's imports become cheaper",
-    "AD shifts right, because foreign workers move to Arland",
+    "AD shifts right, because Quillon's imports become cheaper",
+    "AD shifts right, because foreign workers move to Quillon",
     "AD is unaffected, because the recession happens in another country",
-    "AD shifts left, because foreigners buy fewer of Arland's exports"
+    "AD shifts left, because foreigners buy fewer of Quillon's exports"
    ],
    "correct": 3,
    "why": {
-    "correct": "Exports depend on foreign incomes. When they fall, Arland's net exports fall and AD shifts left.",
+    "correct": "Exports depend on foreign incomes. When they fall, Quillon's net exports fall and AD shifts left.",
     "options": [
-     "A recession abroad lowers foreign incomes; the main effect is fewer exports for Arland, not cheaper imports.",
-     "The story is about foreign spending on Arland's goods. Nothing in it says workers move.",
-     "Exports are part of Arland's AD, so a fall in foreign buying reaches Arland directly.",
-     "Right: lower foreign incomes cut foreign spending on Arland's goods, so net exports and AD fall."
+     "A recession abroad lowers foreign incomes; the main effect is fewer exports for Quillon, not cheaper imports.",
+     "The story is about foreign spending on Quillon's goods. Nothing in it says workers move.",
+     "Exports are part of Quillon's AD, so a fall in foreign buying reaches Quillon directly.",
+     "Right: lower foreign incomes cut foreign spending on Quillon's goods, so net exports and AD fall."
     ]
    }
   },
@@ -263,7 +263,7 @@
    "type": "single",
    "practice": "1.B",
    "stimulus": "aggregate-demand-s2",
-   "q": "Which component of Arland's aggregate demand changes first because of story 3?",
+   "q": "Which component of Quillon's aggregate demand changes first because of story 3?",
    "options": [
     "Investment",
     "Consumption",
@@ -290,13 +290,13 @@
    "type": "multi",
    "practice": "2.B",
    "stimulus": "aggregate-demand-s2",
-   "q": "Considering all three stories together, which statements about Arland's AD are correct? Select all that apply.",
+   "q": "Considering all three stories together, which statements about Quillon's AD are correct? Select all that apply.",
    "options": [
     "Stories 1 and 3 each shift AD to the right",
     "Story 2 shifts AD to the left",
     "The overall direction of the AD shift depends on how large each change is",
     "No story shifts AD, because the price level is unchanged",
-    "Story 2 moves Arland along its AD curve",
+    "Story 2 moves Quillon along its AD curve",
     "Story 3 raises AD later, once the factories are finished"
    ],
    "correct": [
