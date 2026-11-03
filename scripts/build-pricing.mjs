@@ -210,7 +210,7 @@ function ticketHtml() {
   return `<div class="sp-panel pp-ticket" data-founding-until="${founding.until}">
       <p class="hand">founding price</p>
       <p class="pp-big">${FOUNDING.off}% <span>off</span></p>
-      <p class="pp-till">every pass, until ${esc(longDate(founding.until))}; full price from ${esc(dayAfterUS(founding.until))}</p>
+      <p class="pp-till">every pass, until ${esc(longDate(founding.until))}</p>
       <ul class="pp-rows">${rows.map((r) => `<li><span>${esc(r.text)}</span><span><b>${money(foundingPrice(r.price))}</b> <small>then ${money(r.price)}</small></span></li>`).join('')}</ul>
     </div>
     ${plain}`;
@@ -353,6 +353,14 @@ function premiumPage() {
   .pp-day:empty{display:none;}
   .pp .pp-len{display:block;font:700 11.5px var(--font-ui);color:var(--muted);text-align:right;}
   .pp-compare{margin:6px 0 0;font-size:14px;color:var(--muted);}
+  .pp-faq{display:block;}
+  .pp-faq .sp-h2{margin:0 0 18px;}
+  .pp-faq .sp-qa{display:block;columns:2;column-gap:12px;}
+  .pp-faq .sp-qa details{break-inside:avoid;margin:0 0 10px;}
+  .pp-faq-more{margin:8px 0 0;color:var(--muted);font-size:15px;}
+  .pp-faq-more a{color:var(--accent-text);}
+  .pp-faq-more b{color:var(--ink);font-weight:800;user-select:all;}
+  @media (max-width:860px){.pp-faq .sp-qa{columns:1;}}
 </style>
 <script type="application/ld+json">
 ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
@@ -371,11 +379,9 @@ ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
 <div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
   <section class="sp-hero pp-hero" aria-labelledby="ppTitle">
     <div>
-      <span class="sp-pill">Free vs Premium</span>
       <h1 id="ppTitle">What&rsquo;s free,<span>and what Premium adds.</span></h1>
       <p class="hand">one payment, never a subscription</p>
-      <p class="lede">Every course is free to start. Premium is one payment per course that never renews, from ${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(LOW))} (founding price until ${longDate(founding.until)})</span><span data-founding-after="${founding.until}" hidden>${money(LOW)}</span>` : money(LOW)}.</p>
-      <div class="sp-btns"><a class="btn-chan" href="#courses">Compare your course</a><a class="btn-ghost" href="/#subjects">Start free</a></div>
+      <div class="sp-btns"><a class="btn-chan" href="#courses">Compare your course</a></div>
     </div>
     ${ticketHtml()}
   </section>
@@ -394,30 +400,17 @@ ${ORDER.map(courseSection).join('\n')}
     </div>
   </section>
 
-  <section class="sp-sec" aria-labelledby="ppHow">
-    <div class="sp-sh"><h2 class="sp-h2" id="ppHow">How a pass <span>works</span></h2></div>
-    <ol class="sp-steps" style="list-style:none;margin:0;padding:0">
-      <li class="sp-box sp-step"><span class="n" aria-hidden="true">1</span><h3>Start free</h3><p>Everything free works without an account: the notes, and each course&rsquo;s free practice.</p></li>
-      <li class="sp-box sp-step"><span class="n" aria-hidden="true">2</span><h3>Buy one course</h3><p>A free account holds the pass, so it follows you to every device.</p></li>
-      <li class="sp-box sp-step"><span class="n" aria-hidden="true">3</span><h3>Study without limits</h3><p>Everything Premium adds, until the pass ends. Buying another adds its days after this one.</p></li>
-      <li class="sp-box sp-step"><span class="n" aria-hidden="true">4</span><h3>It ends on its own</h3><p>No renewal. Your progress stays and the free parts keep working.</p></li>
-    </ol>
-  </section>
-
-  <section class="sp-faq sp-sec" aria-labelledby="ppRules">
-    <div class="sp-faq__intro">
-      <h2 class="sp-h2" id="ppRules">The rules, <span>in plain words</span></h2>
-      <p class="hand">no fine print</p>
-      <p>${esc(FREE_SENTENCE)}</p>
-      <p>The details are in the <a href="terms.html#premium">terms</a>.</p>
-    </div>
+  <section class="sp-faq pp-faq sp-sec" aria-labelledby="ppRules">
+    <h2 class="sp-h2" id="ppRules">Questions <span>before you buy</span></h2>
     <div class="sp-qa pp-rules">
-      <details class="sp-box" open><summary>Is this a subscription?</summary><p><strong>One-time, never a subscription.</strong> Prices are in US dollars; sales tax or VAT is added at checkout and shown before you pay. Polar, our merchant of record, sells the pass and sends the receipt.</p></details>
-      <details class="sp-box"><summary>Do I need an account?</summary><p><strong>Buying needs a free account</strong>, so the pass follows you to every device. Everything free works without one.</p></details>
-      <details class="sp-box"><summary>How do refunds work?</summary><p>Refund a pass yourself, in full, from your <a href="account.html">Account</a> page within 7 days of buying it. Once per account and email address.</p></details>
-      <details class="sp-box"><summary>What happens when a pass ends?</summary><p>Your progress, XP and streaks stay; only the Premium parts lock again. Buying another pass adds its days after the current one.${DATED.length ? ` A pass with an end date (${esc(listWords(DATED.map((k) => COURSES[k].name)))}) runs through that date <a href="terms.html#fixed-date">whenever it is bought</a>.` : ''}</p></details>
-      <details class="sp-box"><summary>I&rsquo;m under 18. Can I buy one?</summary><p>You need a parent or guardian&rsquo;s permission, and they accept the <a href="terms.html#premium">terms</a> for you; under 16, they should make the purchase.</p></details>
+      <details class="sp-box"><summary>What stays free?</summary><p>${esc(FREE_SENTENCE)}</p></details>
+      <details class="sp-box"><summary>Is this a subscription?</summary><p>No. One payment, and the pass ends on its own. Prices are in US dollars; any sales tax or VAT is shown before you pay.</p></details>
+      <details class="sp-box"><summary>Do I need an account?</summary><p>Only to buy, so the pass follows you to every device. Everything free works without one.</p></details>
+      <details class="sp-box"><summary>Can I get a refund?</summary><p>Yes, in full, within 7 days, from your <a href="account.html">Account</a> page. Once per account.</p></details>
+      <details class="sp-box"><summary>What happens when a pass ends?</summary><p>Your progress stays; only the Premium parts lock again. A second pass starts when the first one ends.${DATED.length ? ` A pass with an end date (${esc(listWords(DATED.map((k) => COURSES[k].name)))}) runs through that date <a href="terms.html#fixed-date">whenever it is bought</a>.` : ''}</p></details>
+      <details class="sp-box"><summary>I&rsquo;m under 18. Can I buy one?</summary><p>With a parent or guardian&rsquo;s permission; under 16, they should make the purchase.</p></details>
     </div>
+    <p class="pp-faq-more">Every detail is in the <a href="terms.html#premium">terms</a>. Something else? Email <b>hello@levlprep.com</b>.</p>
   </section>
 </div>
 <div class="xshell narrow">

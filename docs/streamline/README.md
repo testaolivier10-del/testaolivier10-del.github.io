@@ -20,3 +20,10 @@ Olivier: the site "feels too busy"; go one page at a time, in a draft he comment
 - Facts strip removed (clutter).
 - Questions: heading on top, two independent columns (price and terms; how it is made), "Who makes LevlPrep?"
   names Olivier, email line at the end.
+
+## Premium and Search (owner comments 2026-11-02)
+- Premium hero: no pill, no paragraph, one button; ticket line "every pass, until <date>".
+- Premium "How a pass works" removed; "The rules" became "Questions before you buy" (two columns, short answers,
+  "What stays free?" first, which keeps the free sentence the premium-copy site rule needs).
+- Search: "Private by design" box, the footer privacy line and the "Try heart SN2..." hints removed; the
+  privacy point is one line on privacy.html.
