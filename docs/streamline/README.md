@@ -51,8 +51,8 @@ Olivier: the site "feels too busy"; go one page at a time, in a draft he comment
 ## Round of 2026-11-03 morning
 - Course homes: "Video lessons" (up to 3) and "Tools" (3) are separate rows again.
 - Dashboards (`assets/course/dash.css`): the first section starts below the band (the label overlapped it).
-- AP® unit sheets: `assets/course/sheet-view.js`/`.css`, loaded by `site-chrome.js` `mountSheetView()` on
-  `main.*-sheet` pages, show a card; "Open the sheet" opens it full screen with Print and Close; print unchanged.
+- AP® unit sheets (one sheet per lesson, owner follow-up): `assets/course/sheet-view.js`/`.css`, loaded by `site-chrome.js` `mountSheetView()` on
+  `main.*-sheet` pages, list the lessons; each opens alone full screen (prev, next, Print that lesson, Close).
 - AP® free-response lists (`*/assets/pages/frq.js`): grouped by type, plain rows (title, first unit); band hand
   line "the written part of the exam" and a one-line lede (`apPageR3` in `scripts/lib/r3-tools.mjs`).
 - Tool cards (`toolCard` in r3-tools.mjs and hub.js): no topic or skill label; only `.cx-tool-count` stays.

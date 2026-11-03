@@ -42,9 +42,13 @@ TRYJS = ("<script>(function(){[].forEach.call(document.querySelectorAll('form.tr
          "if(f.classList.contains('done'))return;var l=e.target.closest('label');if(l)l.classList.add('picked');f.classList.add('done');"
          "[].forEach.call(f.querySelectorAll('input'),function(i){i.disabled=true;});});f.addEventListener('submit',function(e){e.preventDefault();});});"
          "[].forEach.call(document.querySelectorAll('form'),function(f){f.addEventListener('submit',function(e){e.preventDefault();});});"
-         "var c=document.querySelector('.sv-card'),v=document.querySelector('.sv-view'),g=document.querySelector('.sv-grid');"
-         "if(c&&v&&g){c.addEventListener('click',function(){v.querySelector('.sv-page').appendChild(g);v.hidden=false;});"
-         "v.addEventListener('click',function(e){var b=e.target.closest('[data-sv]');if(e.target===v||(b&&b.getAttribute('data-sv')==='close')){v.hidden=true;}});}"
+         "var L=document.querySelector('.sv-list'),v=document.querySelector('.sv-view'),G=document.querySelector('.sv-grid');"
+         "if(L&&v&&G){var S=[].slice.call(G.children).filter(function(s){return s.querySelector('h2')}),pg=v.querySelector('.sv-page'),hd=v.querySelector('.sv-head'),c=-1;"
+         "function put(i){if(c>-1)G.insertBefore(S[c],S[c+1]&&S[c+1].parentNode===G?S[c+1]:null);c=i;pg.appendChild(S[i]);hd.textContent=S[i].querySelector('h2').textContent;"
+         "v.querySelector('[data-sv=prev]').disabled=i===0;v.querySelector('[data-sv=next]').disabled=i===S.length-1;}"
+         "L.addEventListener('click',function(e){var b=e.target.closest('.sv-item');if(b){put(+b.getAttribute('data-i'));v.hidden=false;}});"
+         "v.addEventListener('click',function(e){var b=e.target.closest('[data-sv]'),a=b&&b.getAttribute('data-sv');"
+         "if(a==='close'||e.target===v){v.hidden=true;}else if(a==='prev'&&c>0)put(c-1);else if(a==='next'&&c<S.length-1)put(c+1);});}"
          "})();</script>")
 
 async def freeze(ctx, group, path, label, assets):
