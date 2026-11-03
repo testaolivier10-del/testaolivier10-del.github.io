@@ -231,13 +231,16 @@ export function graphProblems(G) {
   const k = Graph.KINDS[G.kind];
   if ((G.do || []).includes('equilibrium') && k.out && !G.key.outcome) out.push('graph.key.outcome: say what happens to both axes at the new equilibrium (up, down or same), as readers score it');
   // The key graded as right by the grader itself, and the common slip graded wrong.
-  const keyResp = { shifts: Graph.keyOffsets(G), eq: Graph.eq(G, Graph.keyOffsets(G)), labels: Object.fromEntries(Graph.labelSlots(G).map(sl => [sl, sl === 'x' || sl === 'y' ? k[sl] : sl])), point: null };
-  if ((G.do || []).includes('point')) {
-    const P = G.key.point || {}, e0 = Graph.eq(G, {}) || [5, 5];
-    keyResp.point = P.region === 'inside' ? [2, 2] : P.region === 'outside' ? [8, 8] : P.region === 'on' ? (() => { const c = Graph.curves(G, {})[0]; return [c.at * 0.6, c.at * 0.8]; })() : P.on ? (() => { const c = Graph.find(Graph.curves(G, {}), P.on); return [e0[0] + (P.x === 'down' ? -1 : 1), Graph.y(c, e0[0] + (P.x === 'down' ? -1 : 1))]; })() : [e0[0] + (P.x === 'down' ? -1 : P.x === 'up' ? 1 : 0), e0[1] + (P.y === 'down' ? -1 : P.y === 'up' ? 1 : 0)];
-  }
+  // ApMacroGraph.keyResponse: the key drawn as a student would (shifts, E2, labels, the point).
+  const keyResp = Graph.keyResponse(G);
   const g = Grade.graph(G, keyResp);
   if (!g.correct) out.push(`graph: the key itself is not graded right (${g.slip || 'check the key'})`);
+  // Every other accepted shift set (key.alt), drawn, is graded right too.
+  for (const [j, set] of ((G.key && G.key.alt) || []).entries()) {
+    const r = Graph.keyResponse({ ...G, key: { ...G.key, shifts: set, alt: undefined } });
+    const ga = Grade.graph(G, r);
+    if (!ga.correct) out.push(`graph.key.alt[${j}]: drawn, it is not graded right (${ga.slip || 'check it'})`);
+  }
   return out;
 }
 

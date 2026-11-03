@@ -160,7 +160,11 @@ follow nominal rates in the short run). Confirm wording against the CED 6.4/6.6 
 
 ## Author A (graph skills chapter and Unit 1)
 
-### a-ppc-straight: the `ppc` graph kind is bowed only (open, 2026-11-03)
+### a-ppc-straight: the `ppc` graph kind is bowed only (resolved, 2026-11-03)
+
+Resolved by the integrator: `mac-graph.js` has a straight-line PPC (`linear: true`, intercepts from `ends`), with
+the checker and grader. `frq-ppc-trade-short` part A now draws Kestria's straight PPC (36 corn, 12 fabric, shown
+on the axes) with labels and point U inside; its rubric and sample name the straight line. The original note:
 
 `mac-graph.js` draws every PPC as a quarter circle (increasing opportunity cost). Comparative advantage problems
 use constant-cost, straight-line PPCs (CED 1.3; the lesson figure `comparative-advantage-two-ppcs` draws them
@@ -423,7 +427,11 @@ against the CED (3.6, 3.7, 5.2, 6.2-6.6) before Units 3, 5 and 6 are reviewed:
 
 ## T3: Multiplier Lab, Economic Indicators Lab, PPC and Trade Trainer (open, 2026-11-03)
 
-### t3-ppc-straight: straight-line PPCs are drawn as data (open, 2026-11-03)
+### t3-ppc-straight: straight-line PPCs are drawn as data (resolved, 2026-11-03)
+
+Resolved by the integrator: the straight PPC exists (`a-ppc-straight`). The trade view stays on `ApMacroPlot`:
+it draws both countries' lines, before and after trade, on one figure, and `ApMacroGraph` draws one PPC per graph,
+so moving it would split the figure in two and lose the comparison; nothing on it is graded. The original note:
 
 Related to `a-ppc-straight`. `ApMacroGraph`'s `ppc` kind is bowed only, so the PPC and Trade Trainer draws the
 bowed PPC (shapes, shifts, inside/on/outside, increasing cost) with `ApMacroGraph` and the two countries'

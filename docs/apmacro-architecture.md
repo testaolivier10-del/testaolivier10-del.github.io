@@ -129,6 +129,11 @@ graded. The ninth graph students draw (the bank balance sheet) is a table, not a
   (`up`/`down` from the starting equilibrium); any combination.
 - `slips`: per wrong curve, the sentence shown when the student moves it instead of the key's.
 - `names`: the goods of a PPC (`x`, `y`), the two currencies of a forex graph (`currency`, `other`).
+- `linear: true` (PPC only, added 2026-11-03): a straight-line PPC, constant opportunity cost (comparative
+  advantage, CED 1.3); `ends: { x, y }` (with `linear`) gives the most of each good in the problem's units, sets
+  the line's slope (the larger intercept reaches 7) and is printed on the axes at the starting line. Shifts,
+  `region` (inside, on, outside the line), the grader and the checker work as for the bowed curve. A bowed PPC
+  is unchanged (no `linear`).
 - `pointLabel`: the placed point's label (default `X`).
 
 A graph stimulus (`kind: "graph"`) carries `graph: { kind, names?, show: { curve: steps } }` and is drawn as given

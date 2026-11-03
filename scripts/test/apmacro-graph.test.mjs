@@ -128,3 +128,35 @@ test('the FRQ kit ticks auto rubric points from the same grader (a long question
   const r = G.graph(part, { shifts: { AD: 1 }, eq: [5.5, 5.5], labels: { x: 'realGdp', y: 'priceLevel', AD: 'AD', SRAS: 'SRAS', LRAS: 'LRAS' } });
   assert.deepEqual(plain(r.points.map(p => [p.id, p.ok])), [['labels', true], ['shift', true], ['equilibrium', true], ['outcome', true]]);
 });
+
+test('a straight-line PPC (linear, ends): constant cost, inside/on/outside, shifts out, intercepts drawn', () => {
+  const sp = { kind: 'ppc', linear: true, ends: { x: 36, y: 12 }, names: { x: 'Corn', y: 'Fabric' }, do: ['label', 'point'], pointLabel: 'U', key: { point: { region: 'inside' } } };
+  assert.deepEqual(plain(M.check(sp)), []);
+  const c = M.curves(sp, {})[0];
+  assert.equal(c.shape, 'ppcline');
+  assert.ok(Math.abs(M.y(c, 0) - 7 / 3) < 1e-9 && Math.abs(M.y(c, 7)) < 1e-9, 'a 3:1 line from (0, 7/3) to (7, 0)');
+  assert.ok(Math.abs((M.y(c, 1) - M.y(c, 2)) - (M.y(c, 5) - M.y(c, 6))) < 1e-9, 'the same cost everywhere');
+  assert.equal(M.region(sp, {}, [1, 0.5]), 'inside');
+  assert.equal(M.region(sp, {}, [3.5, 7 / 6]), 'on');
+  assert.equal(M.region(sp, {}, [6, 2]), 'outside');
+  assert.equal(G.graph(sp, M.keyResponse(sp)).correct, true);
+  assert.equal(G.graph(sp, { ...M.keyResponse(sp), point: [6, 2] }).correct, false);
+  const svg = M.svg(sp, { labelsShown: true });
+  assert.match(svg, />36<\/text>/); assert.match(svg, />12<\/text>/);
+  const grow = { kind: 'ppc', linear: true, names: { x: 'A', y: 'B' }, do: ['shift'], key: { shifts: [{ curve: 'PPC', dir: 'out' }], because: 'more workers arrive' } };
+  assert.deepEqual(plain(M.check(grow)), []);
+  assert.equal(G.graph(grow, { shifts: { PPC: 1 } }).correct, true);
+  assert.match(G.graph(grow, { shifts: { PPC: -1 } }).slip, /shifts out, not in/);
+  assert.ok(M.check({ ...grow, kind: 'sd', linear: true }).some(m => /linear/.test(m)), 'linear is for a PPC');
+  assert.ok(M.check({ ...grow, ends: { x: 3, y: 1 }, linear: undefined }).some(m => /ends/.test(m)), 'ends needs linear');
+  // A bowed PPC is unchanged.
+  assert.equal(M.curves({ kind: 'ppc', names: { x: 'A', y: 'B' } }, {})[0].shape, 'ppc');
+});
+
+test('keyResponse: the key drawn as a student would grades full for every kind of task', () => {
+  const specs = [cost,
+    { kind: 'sd', do: ['label', 'shift', 'equilibrium'], key: { shifts: [{ curve: 'D', dir: 'right' }], because: 'a rise in income', outcome: { price: 'up', quantity: 'up' } } },
+    { kind: 'phillips', do: ['point'], pointLabel: 'B', key: { point: { on: 'SRPC', x: 'down', y: 'up' } } },
+    { kind: 'ppc', names: { x: 'A', y: 'B' }, do: ['point'], key: { point: { region: 'outside' } } }];
+  for (const s of specs) { assert.deepEqual(plain(M.check(s)), [], JSON.stringify(s)); assert.equal(G.graph(s, M.keyResponse(s)).correct, true, s.kind); }
+});

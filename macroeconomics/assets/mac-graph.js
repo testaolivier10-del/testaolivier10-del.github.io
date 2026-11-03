@@ -98,21 +98,35 @@
   var MAX_STEPS = 3;
   function kindOf(spec){ var k = KINDS[spec && spec.kind]; if(!k) throw new Error('ApMacroGraph: unknown graph kind "' + (spec && spec.kind) + '" (one of ' + Object.keys(KINDS).join(', ') + ')'); return k; }
   function axisOf(shape){ return VERTICAL_SHIFT[shape] ? 'y' : 'x'; }
+  // A straight-line PPC (spec.linear, constant opportunity cost) has shape
+  // 'ppcline'; both PPC shapes shift out or in.
+  function isPpc(shape){ return shape === 'ppc' || shape === 'ppcline'; }
   function dirWord(shape, steps){
     if(!steps) return 'none';
-    if(shape === 'ppc') return steps > 0 ? 'out' : 'in';
+    if(isPpc(shape)) return steps > 0 ? 'out' : 'in';
     if(VERTICAL_SHIFT[shape]) return steps > 0 ? 'up' : 'down';
     return steps > 0 ? 'right' : 'left';
   }
   function dirSign(shape, dir){
-    var plus = shape === 'ppc' ? 'out' : VERTICAL_SHIFT[shape] ? 'up' : 'right', minus = shape === 'ppc' ? 'in' : VERTICAL_SHIFT[shape] ? 'down' : 'left';
+    var plus = isPpc(shape) ? 'out' : VERTICAL_SHIFT[shape] ? 'up' : 'right', minus = isPpc(shape) ? 'in' : VERTICAL_SHIFT[shape] ? 'down' : 'left';
     return dir === plus ? 1 : dir === minus ? -1 : 0;
   }
 
   /* ---------------------------------------------------------- geometry */
+  /* A straight PPC's intercepts as shares of `at`: spec.ends { x, y } (the
+     most of each good, in the problem's own units) sets the ratio, the
+     larger one reaching `at`; without ends both reach `at`. */
+  function lineShares(spec){
+    var e = spec.ends, x = e && +e.x > 0 ? +e.x : 1, y = e && +e.y > 0 ? +e.y : 1, m = Math.max(x, y);
+    return [x / m, y / m];
+  }
   function curves(spec, offsets){
-    var k = kindOf(spec), start = spec.start || {}, off = offsets || {};
-    return k.curves.map(function(c){ return { id: c.id, shape: c.shape, at: c.at + (start[c.id] || 0) + (off[c.id] || 0), base: c.at + (start[c.id] || 0), steps: off[c.id] || 0 }; });
+    var k = kindOf(spec), start = spec.start || {}, off = offsets || {}, line = spec.kind === 'ppc' && spec.linear, sh = line ? lineShares(spec) : null;
+    return k.curves.map(function(c){
+      var o = { id: c.id, shape: c.shape, at: c.at + (start[c.id] || 0) + (off[c.id] || 0), base: c.at + (start[c.id] || 0), steps: off[c.id] || 0 };
+      if(line && c.shape === 'ppc'){ o.shape = 'ppcline'; o.kx = sh[0]; o.ky = sh[1]; }
+      return o;
+    });
   }
   function find(list, id){ for(var i = 0; i < list.length; i++) if(list[i].id === id) return list[i]; return null; }
   function y(c, x){
@@ -122,6 +136,7 @@
     else if(c.shape === 'horizontal') v = c.at;
     else if(c.shape === 'rdemand') v = x < 4 ? c.at + (4 - x) * 1.5 : c.at;
     else if(c.shape === 'ppc'){ if(x < 0 || x > c.at) return null; v = Math.sqrt(c.at * c.at - x * x); }
+    else if(c.shape === 'ppcline'){ var X = c.at * c.kx; if(x < 0 || x > X + 1e-9) return null; v = c.at * c.ky * (1 - x / X); }
     else return null;   // vertical: no height function
     return v;
   }
@@ -169,7 +184,8 @@
     var r = { shifts: off, eq: does.indexOf('equilibrium') > -1 ? eq(spec, off) : null, point: null, labels: labels };
     var P = key.point;
     if(does.indexOf('point') > -1 && P){
-      if(P.region){ var c = find(curves(spec, {}), 'PPC'), a = c.at / Math.SQRT2; r.point = P.region === 'on' ? [r6(a), r6(a)] : P.region === 'inside' ? [r6(a / 2), r6(a / 2)] : [Math.min(10, r6(a + 1.2)), Math.min(10, r6(a + 1.2))]; }
+      if(P.region){ var c = find(curves(spec, {}), 'PPC'), ax = c.shape === 'ppcline' ? c.at * c.kx / 2 : c.at / Math.SQRT2, ay = c.shape === 'ppcline' ? c.at * c.ky / 2 : c.at / Math.SQRT2;
+        r.point = P.region === 'on' ? [r6(ax), r6(ay)] : P.region === 'inside' ? [r6(ax / 2), r6(ay / 2)] : [Math.min(10, r6(ax + 1.5)), Math.min(10, r6(ay + 1.5))]; }
       else if(P.on){ var e0 = eq(spec, {}) || [5, 5], dx = P.x === 'up' ? 1 : P.x === 'down' ? -1 : 0, cv = find(curves(spec, {}), P.on);
         r.point = cv.shape === 'vertical' ? [cv.at, e0[1] + (P.y === 'up' ? 1 : P.y === 'down' ? -1 : 0)] : [e0[0] + dx, y(cv, e0[0] + dx)]; }
       else { var e1 = eq(spec, {}) || [5, 5]; r.point = [e1[0] + (P.x === 'up' ? 1 : P.x === 'down' ? -1 : 0), e1[1] + (P.y === 'up' ? 1 : P.y === 'down' ? -1 : 0)]; }
@@ -179,6 +195,11 @@
   function region(spec, offsets, p){
     var c = find(curves(spec, offsets), 'PPC');
     if(!c || !p) return null;
+    if(c.shape === 'ppcline'){
+      // Signed distance from the line x / X + y / Y = 1 (negative inside).
+      var X = c.at * c.kx, Y = c.at * c.ky, dl = (p[0] / X + p[1] / Y - 1) * X * Y / Math.hypot(X, Y);
+      return Math.abs(dl) <= 0.4 ? 'on' : dl < 0 ? 'inside' : 'outside';
+    }
     var d = Math.sqrt(p[0] * p[0] + p[1] * p[1]);
     return Math.abs(d - c.at) <= 0.4 ? 'on' : d < c.at ? 'inside' : 'outside';
   }
@@ -219,6 +240,8 @@
     var ids = k.curves.map(function(c){ return c.id; });
     Object.keys(spec.start || {}).forEach(function(c){ if(ids.indexOf(c) < 0) bad('graph.start: unknown curve "' + c + '" (a ' + spec.kind + ' graph has ' + ids.join(', ') + ')'); else if(!Number.isInteger(spec.start[c]) || Math.abs(spec.start[c]) > 2) bad('graph.start.' + c + ' is a whole number of steps from -2 to 2'); });
     if(spec.kind === 'ppc' && (!spec.names || !spec.names.x || !spec.names.y)) bad('graph.names.x and .y name the two goods of a PPC');
+    if(spec.linear !== undefined && (spec.kind !== 'ppc' || typeof spec.linear !== 'boolean')) bad('graph.linear (true: a straight-line PPC, constant opportunity cost) is for a ppc graph');
+    if(spec.ends !== undefined && (!spec.linear || !(+spec.ends.x > 0) || !(+spec.ends.y > 0))) bad('graph.ends { x, y } gives a straight PPC\'s intercepts (the most of each good, both positive) and needs linear: true');
     if(spec.kind === 'forex' && (!spec.names || !spec.names.currency || !spec.names.other)) bad('graph.names.currency and .other name the two currencies (the market is for the currency)');
     var key = spec.key || {};
     if(does.indexOf('shift') > -1){
@@ -228,7 +251,7 @@
         var c = find(curves(spec, {}), s.curve);
         if(!c){ bad('graph.key.shifts[' + i + ']: unknown curve "' + s.curve + '"'); return; }
         if(seen[s.curve]) bad('graph.key.shifts: ' + s.curve + ' is listed twice'); seen[s.curve] = 1;
-        if(!dirSign(c.shape, s.dir)) bad('graph.key.shifts[' + i + ']: ' + s.curve + ' shifts ' + (c.shape === 'ppc' ? 'out or in' : VERTICAL_SHIFT[c.shape] ? 'up or down' : 'right or left') + ', not "' + s.dir + '"');
+        if(!dirSign(c.shape, s.dir)) bad('graph.key.shifts[' + i + ']: ' + s.curve + ' shifts ' + (isPpc(c.shape) ? 'out or in' : VERTICAL_SHIFT[c.shape] ? 'up or down' : 'right or left') + ', not "' + s.dir + '"');
         var at = c.at + dirSign(c.shape, s.dir);
         if(at < 1 || at > 9) bad('graph.key.shifts[' + i + ']: the shifted ' + s.curve + ' leaves the graph; move graph.start');
       });
@@ -273,6 +296,7 @@
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function pathOf(c){
     if(c.shape === 'vertical') return 'M' + f1(px(c.at)) + ' ' + f1(py(10)) + 'V' + f1(py(0));
+    if(c.shape === 'ppcline') return 'M' + f1(px(0)) + ' ' + f1(py(Math.min(10, c.at * c.ky))) + 'L' + f1(px(Math.min(10, c.at * c.kx))) + ' ' + f1(py(0));
     var pts = [];
     for(var x = 0; x <= 10 + 1e-9; x += 0.05){ var h = y(c, x); if(h != null && h >= -1e-9 && h <= 10 + 1e-9) pts.push(f1(px(x)) + ' ' + f1(py(h))); }
     if(c.shape === 'ppc' && pts.length) pts.push(f1(px(c.at)) + ' ' + f1(py(0)));
@@ -286,11 +310,16 @@
      line, high; vertical curves: right of the line at the top, the old and
      new one staggered; the PPC: just outside the curve at 45 degrees. */
   var LX = 8.6;
-  function labelAt(c){
+  function labelAt(c, inside){
     if(c.shape === 'vertical') return [px(c.at) + 5, py(9.6) + 6 + (Math.round(c.at) % 2 ? 0 : 15), 'start'];
     if(c.shape === 'down'){ var x2 = LX, y2 = 5 - (x2 - c.at); if(y2 < 0.5){ y2 = 0.5; x2 = c.at + 4.5; } return [px(x2) + 6, py(y2) + 3, 'start']; }
     if(c.shape === 'up'){ var x1 = LX, y1 = 5 + (x1 - c.at); if(y1 > 9.6){ y1 = 9.6; x1 = c.at + 4.6; } return [px(x1) - 7, py(y1) - 3, 'end']; }
     if(c.shape === 'ppc'){ var r = (c.at + 0.45) / Math.SQRT2; return [px(r) + 2, py(r) - 2, 'start']; }
+    // A straight PPC: outside the line at its middle; the old line of a shift
+    // (inside) is labeled inside it, further along, so PPC1 and PPC2 never touch.
+    if(c.shape === 'ppcline'){ var X = c.at * c.kx, Y = c.at * c.ky, n = Math.hypot(X, Y);
+      if(inside) return [px(X * 0.64 - 0.5 * Y / n) - 2, py(Y * 0.36 - 0.5 * X / n) + 4, 'end'];
+      return [px(X / 2 + 0.45 * Y / n) + 2, py(Y / 2 + 0.45 * X / n) - 2, 'start']; }
     return [px(9.6), py(c.at) - 6, 'end'];
   }
   function curveLabel(id, n, at, cls){
@@ -307,6 +336,7 @@
     if(c.shape === 'vertical'){ y0 = y1 = 8.4; x0 = b.at; x1 = c.at; }
     else if(c.shape === 'down'){ y0 = y1 = 7.6; x0 = b.at - 2.6; x1 = c.at - 2.6; }
     else if(c.shape === 'up'){ y0 = y1 = 2.4; x0 = b.at - 2.6; x1 = c.at - 2.6; }
+    else if(c.shape === 'ppcline'){ var cs = Math.cos(Math.PI / 3), sn = Math.sin(Math.PI / 3), rb = 1 / (cs / (b.at * b.kx) + sn / (b.at * b.ky)), rc = 1 / (cs / (c.at * c.kx) + sn / (c.at * c.ky)); x0 = rb * cs; y0 = rb * sn; x1 = rc * cs; y1 = rc * sn; }
     else if(c.shape === 'ppc'){ var k = Math.cos(Math.PI / 3); x0 = b.at * k; y0 = b.at * Math.sin(Math.PI / 3); x1 = c.at * k; y1 = c.at * Math.sin(Math.PI / 3); }
     else { x0 = x1 = 8.2; y0 = b.at; y1 = c.at; }
     if(x0 < 0.3 || x1 < 0.3 || y0 < 0 || y1 > 10) return '';
@@ -360,10 +390,17 @@
     }
     now.forEach(function(c, i){
       var moved = !!c.steps, b = base[i], lab = askLabels && !labels[c.id] ? null : (labels[c.id] || c.id);
-      if(moved) g.push('<path class="mac-gr-curve is-old" d="' + pathOf(b) + '"/>' + (lab ? curveLabel(lab, '1', labelAt(b), 'is-old') : '') + arrowOf(b, c));
+      if(moved) g.push('<path class="mac-gr-curve is-old" d="' + pathOf(b) + '"/>' + (lab ? curveLabel(lab, '1', labelAt(b, b.shape === 'ppcline' && c.steps > 0), 'is-old') : '') + arrowOf(b, c));
       g.push('<g class="mac-gr-c" data-curve="' + esc(c.id) + '"><path class="mac-gr-curve' + (state.focus === c.id ? ' is-focus' : '') + '" d="' + pathOf(c) + '"/>' +
         '<path class="mac-gr-grab" d="' + pathOf(c) + '"/></g>' + (lab ? curveLabel(lab, moved ? '2' : '', labelAt(c)) : '<text class="mac-gr-clabel" x="' + f1(labelAt(c)[0]) + '" y="' + f1(labelAt(c)[1]) + '" text-anchor="' + labelAt(c)[2] + '">?<tspan class="mac-gr-sub" dy="3">' + (i + 1) + '</tspan></text>'));
     });
+    // A straight PPC with spec.ends: the starting curve's intercepts as numbers
+    // on the axes (the most of each good), as the exam's trade graphs show them.
+    if(spec.linear && spec.ends){ var pc = find(base, 'PPC');
+      if(pc && pc.shape === 'ppcline' && !(spec.start && spec.start.PPC)){
+        g.push('<text class="mac-gr-mark is-end" x="' + f1(px(pc.at * pc.kx)) + '" y="' + (T + PH + 13) + '" text-anchor="middle">' + esc(spec.ends.x) + '</text>');
+        g.push('<text class="mac-gr-mark is-end" x="' + (L - 4) + '" y="' + f1(py(pc.at * pc.ky) + 4) + '" text-anchor="end">' + esc(spec.ends.y) + '</text>');
+      } }
     // E1 and E2 with their axis marks; the E2 label goes on the side away
     // from a vertical curve just right of it (LRAS, LRPC, MS, RS).
     var two = state.eq && e0 && (Math.abs(state.eq[0] - e0[0]) > 1e-6 || Math.abs(state.eq[1] - e0[1]) > 1e-6);

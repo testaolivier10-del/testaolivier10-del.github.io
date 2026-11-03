@@ -46,9 +46,14 @@
    "label": "A",
    "points": 2,
    "type": "graph",
-   "prompt": "<b>Draw</b> a correctly labeled production possibilities curve for Kestria, with corn on the horizontal axis and fabric on the vertical axis. <b>Plot</b> a point U that shows Kestria's output when some of its workers are unemployed.",
+   "prompt": "<b>Draw</b> a correctly labeled production possibilities curve for one Kestria worker, with corn on the horizontal axis and fabric on the vertical axis, showing the most of each good the worker can produce. <b>Plot</b> a point U that shows Kestria's output when some of its workers are unemployed.",
    "graph": {
     "kind": "ppc",
+    "linear": true,
+    "ends": {
+     "x": 36,
+     "y": 12
+    },
     "names": {
      "x": "Corn",
      "y": "Fabric"
@@ -66,10 +71,9 @@
    },
    "rubric": [
     {
-     "point": "A correctly labeled PPC: corn on the horizontal axis, fabric on the vertical axis, and the curve labeled PPC (or Kestria)",
+     "point": "A correctly labeled straight-line PPC from 12 bolts of fabric to 36 bushels of corn: corn on the horizontal axis, fabric on the vertical axis, and the curve labeled PPC (or Kestria)",
      "accept": [
-      "a straight-line PPC from 36 bushels of corn to 12 bolts of fabric",
-      "axes labeled with the two goods by name"
+      "axes labeled with the two goods by name, and a straight line between the two endpoints"
      ],
      "auto": "labels"
     },
@@ -81,7 +85,7 @@
      "auto": "point"
     }
    ],
-   "sample": "The horizontal axis is labeled Corn and the vertical axis Fabric. Kestria's PPC is a straight line from 12 bolts of fabric on the vertical axis to 36 bushels of corn on the horizontal axis (constant opportunity cost), labeled PPC. Point U sits inside the line, below and to the left of it, because unemployed workers mean Kestria produces less of both goods than it could."
+   "sample": "The horizontal axis is labeled Corn and the vertical axis Fabric. The PPC is a straight line (constant opportunity cost) from 12 bolts of fabric on the vertical axis to 36 bushels of corn on the horizontal axis, labeled PPC. Point U sits inside the line, below and to the left of it, because unemployed workers mean Kestria produces less of both goods than it could."
   },
   {
    "label": "B",
