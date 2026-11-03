@@ -39,7 +39,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ROOT, loadMap, ALLOWED_LICENSES, hasApToken, trademarkProblems, fromValue, specificSlots } from './lib/apmacro-build.mjs';
-import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, JUSTIFY_SKILLS, JUSTIFY_PER_CHAPTER } from './lib/apmacro-exams.mjs';
+import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, checkFifth, checkGraphs, examVersion, JUSTIFY_SKILLS, JUSTIFY_PER_CHAPTER, JUSTIFY_PER_SKILLS_CHAPTER, MCQ_OPTIONS as EXAM_OPTIONS } from './lib/apmacro-exams.mjs';
 import { scanPage, indexMap } from './lib/apmacro-map.mjs';
 import { Tex, Plot, Grade, Stats, Graph } from './lib/apmacro-mathlib.mjs';
 export { trademarkProblems };
@@ -92,7 +92,10 @@ export function excludedProblems(t) {
   for (const [re, what] of EXCLUDED) if (re.test(String(t ?? ''))) out.push(`mentions ${what}`);
   return out;
 }
-// Multiple choice on the exam has four options (A-D; framework.md section 5).
+// Single-answer questions in the practice bank have four options. The exam
+// has five, (A) to (E) (needs-author mcq-options): a practice exam adds a
+// fifth to each bank question it uses (data/exams/fifth.json), and its
+// exam-only questions have five (EXAM_OPTIONS, scripts/lib/apmacro-exams.mjs).
 export const MCQ_OPTIONS = 4;
 export const SKILL_RE = /^[1-4]\.[A-D]$/;
 // Graphing (practice 4) is assessed only in Section II (framework.md
@@ -300,7 +303,7 @@ export function specificProblems(S) {
   return out;
 }
 
-export function checkItem(q, { topic, map, stimuli, err, idRe }) {
+export function checkItem(q, { topic, map, stimuli, err, idRe, nOptions }) {
   const w = `item ${q.id || '(no id)'}`;
   if (!q.id || !(idRe || new RegExp(`^mac-${topic.id}-\\d+$`)).test(q.id)) err(`${w}: id must be ${idRe ? 'mac-exam-<form>-<nn>' : `mac-${topic.id}-<n>`}`);
   if (!TYPES.includes(q.type)) err(`${w}: type must be one of ${TYPES.join(', ')}`);
@@ -328,7 +331,8 @@ export function checkItem(q, { topic, map, stimuli, err, idRe }) {
   } else {
     const n = (q.options || []).length;
     const min = q.type === 'order' ? 3 : 2;
-    if (q.type === 'single' && n !== MCQ_OPTIONS) err(`${w}: a single-answer item has exactly ${MCQ_OPTIONS} options, as on the exam`);
+    const nOpt = nOptions || MCQ_OPTIONS;
+    if (q.type === 'single' && n !== nOpt) err(`${w}: a single-answer item has exactly ${nOpt} options${nOptions ? ' (an exam-only question, as on the exam)' : ' (the practice bank; a practice exam adds a fifth)'}`);
     if (n < min) err(`${w}: needs at least ${min} options`);
     if (n > 6) err(`${w}: at most 6 options`);
     if (new Set((q.options || []).map(o => strip(o).trim().toLowerCase())).size !== n) err(`${w}: duplicate options`);
@@ -721,8 +725,8 @@ if (isMain) {
     for (const q of ex.items) {
       const topic = map.topicById(q.topic);
       if (!topic) { bad2(`${q.id}: unknown topic "${q.topic}"`); continue; }
-      if (q.type !== 'single') bad2(`${q.id}: exam-only items are four-option single-answer questions`);
-      checkItem(q, { topic, map, stimuli: ex.stimuli, err: bad2, idRe: /^mac-exam-\d+-\d{2}$/ });
+      if (q.type !== 'single') bad2(`${q.id}: exam-only items are ${EXAM_OPTIONS}-option single-answer questions`);
+      checkItem(q, { topic, map, stimuli: ex.stimuli, err: bad2, idRe: /^mac-exam-\d+-\d{2}$/, nOptions: EXAM_OPTIONS });
       // The ordering rule: a full practice exam is taken after the whole course,
       // so nothing outside the course's terms (scanned from its last topic).
       const last = map.topics.filter(t => t.chapter.startsWith('unit-')).pop();
@@ -738,20 +742,25 @@ if (isMain) {
     // Lesson check items (on the free lessons) never go in a form: checkForms skips them as set fillers too.
     const lessonChecks = new Set();
     for (const t of map.topics) { const p = join(DATA, 'lessons', `${t.id}.json`); if (exists(p)) for (const id of readJson(p).check || []) lessonChecks.add(id); }
-    for (const e of checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id], stimuli: stimOf, lessonChecks })) bad2(e);
-    for (const e of checkJustify(prompts, { map, trademarkProblems, scanPage })) bad2(e);
-    // As AP® Psychology: 40+ prompts, 6 to 9 per unit and in the graph skills
-    // chapter (JUSTIFY_PER_CHAPTER).
-    if (prompts.length < 40) bad2(`the "Make it specific" trainer has ${prompts.length} prompts; it needs at least 40`);
-    for (const u of map.chapters) { const n = prompts.filter(p => p.unit === u.id).length, [lo, hi] = JUSTIFY_PER_CHAPTER; if (n < lo || n > hi) bad2(`${u.id} has ${n} "Make it specific" prompts (${lo} to ${hi})`); }
-    for (const k of Object.keys(JUSTIFY_SKILLS)) if (prompts.length && !prompts.some(p => p.skill === k)) bad2(`no "Make it specific" prompt practises "${k}"`);
-    // Each form: mostly bank items that are not lesson-check items (those are on
-    // the free lessons), plus 12-14 exam-only items of its own.
-    for (const f of ex.forms) {
-      const ids = (f.mcq || []).flat(), own = ids.filter(id => examItems.has(id)).length;
-      if (own < 20 || own > 30) bad2(`${f.id}: ${own} exam-only items (20 to 30)`);
-      for (const id of ids.filter(id => lessonChecks.has(id))) bad2(`${f.id}: ${id} is a lesson check item; use one a student has not met on a free lesson`);
+    for (const e of checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id], stimuli: stimOf, lessonChecks, fifth: ex.fifth })) bad2(e);
+    // The fifth options (bank questions as a form serves them), checked as authored text and,
+    // with the exam-only items, for the length tell and the test-wise limits form by form.
+    for (const e of checkFifth(ex.fifth, { bank, forms: ex.forms })) bad2(e);
+    for (const [id, f] of Object.entries(ex.fifth || {})) for (const t of [f.option, f.why]) {
+      for (const m of [...mathProblems(t), ...excludedProblems(t), ...mythProblems(t), ...languageProblems(t), ...trademarkProblems(t)]) bad2(`fifth option for ${id}: ${m}`);
+      const m = strip(t).match(POS_RE); if (m) bad2(`fifth option for ${id}: says "${m[0]}"; options are shuffled`);
     }
+    for (const f of ex.forms) {
+      const served = (f.mcq || []).flat().map(id => examItems.get(id) || (bank.get(id) && examVersion(bank.get(id), ex.fifth))).filter(Boolean);
+      const lt = lengthTell(served); if (lt) bad2(`${f.id}: ${lt}`);
+      for (const e of testWise(served)) bad2(`${f.id}: ${e}`);
+    }
+    for (const e of checkGraphs(examItems, ex.stimuli)) bad2(e);
+    for (const e of checkJustify(prompts, { map, trademarkProblems, scanPage })) bad2(e);
+    // About ten prompts per unit (as AP® Precalculus), a few in the graph skills chapter.
+    if (prompts.length < 50) bad2(`the "Make it specific" trainer has ${prompts.length} prompts; it needs at least 50`);
+    for (const u of map.chapters) { const n = prompts.filter(p => p.unit === u.id).length, [lo, hi] = u.part === 'course' ? JUSTIFY_PER_CHAPTER : JUSTIFY_PER_SKILLS_CHAPTER; if (n < lo || n > hi) bad2(`${u.id} has ${n} "Make it specific" prompts (${lo} to ${hi})`); }
+    for (const k of Object.keys(JUSTIFY_SKILLS)) if (prompts.length && !prompts.some(p => p.skill === k)) bad2(`no "Make it specific" prompt practises "${k}"`);
     for (const q of ex.items) if (!ex.forms.some(f => (f.mcq || []).flat().includes(q.id))) bad2(`${q.id}: an exam-only item in no form`);
     for (const e of checkNumbers(examItems, prompts)) bad2(e);
     console.log(`AP Macroeconomics exams: ${ex.forms.length} practice exams, ${ex.items.length} exam-only items, ${prompts.length} "Make it specific" prompts, ${examFails} failing.`);

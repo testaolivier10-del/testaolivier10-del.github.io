@@ -17,7 +17,7 @@
                                    (EXAM_NUMBERS and JUSTIFY_NUMBERS) */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { Stats } from './apmacro-mathlib.mjs';
+import { Stats, Graph } from './apmacro-mathlib.mjs';
 
 const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
 const strip = s => String(s ?? '').replace(/<\/?[A-Za-z!][^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -302,11 +302,100 @@ export function checkJustify(prompts, ctx) {
    slip they name, each one an option) and { id, has: [...], check? } for a
    prompt. */
 const C = (fn, ...args) => Stats.evaluate({ fn, args });
-// Phase 3 fills these: every number an exam-only item keys and every
-// number a prompt derives, recomputed with ApMacroCalc (C above).
-export const EXAM_NUMBERS = [];
-export const JUSTIFY_NUMBERS = [];
-void C;
+// Numbers as the options print them: thousands with commas, a fixed number of decimals.
+const fmt = (v, d = 0) => Number(v.toFixed(d)).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+const pc = (v, d = 0) => `${fmt(v, d)}%`;
+const usd = (v, d = 0) => `\\$${fmt(v, d)}`;
+const sm = mpc => C('spendingMultiplier', mpc);
+export const EXAM_NUMBERS = [
+  // Vorland's labor survey (exam-1-s1): 12 unemployed of a labor force of 228 + 12.
+  { id: 'mac-exam-1-01', key: pc(C('unemploymentRate', 12, C('laborForce', 228, 12))),
+    also: [pc(C('pct', 12, 400)), pc(C('pct', 12, 228), 1), pc(C('participationRate', C('laborForce', 228, 12), 400)), pc(C('pct', 160, 400))],
+    check: () => C('add', 228, 12, 160) === 400 },
+  // Pellara: a 200 billion recessionary gap, MPC 0.75; the tax multiplier's answer is a distractor.
+  { id: 'mac-exam-1-02', key: `An increase of ${usd(C('gapChange', 200, sm(0.75)))} billion`,
+    also: [`An increase of ${usd(C('totalChange', 200, sm(0.75)))} billion`, `An increase of about ${usd(C('gapChange', 200, C('abs', C('taxMultiplier', 0.75))), 1)} billion`, `A decrease of ${usd(C('gapChange', 200, sm(0.75)))} billion`] },
+  // Quarin Community Bank (exam-1-s4): reserves 150, deposits 500, ratio 0.2.
+  { id: 'mac-exam-1-05', key: usd(C('maxMoneyChange', C('excessReserves', 150, 500, 0.2), 0.2)),
+    also: [usd(C('excessReserves', 150, 500, 0.2)), usd(C('totalChange', 150, C('moneyMultiplier', 0.2))), usd(C('totalChange', 500, C('moneyMultiplier', 0.2))), usd(C('requiredReserves', 500, 0.2))],
+    check: () => C('add', 150, 350) === 500 },
+  // Rastova (exam-1-s7): the debt after deficits of 100 and 50 and a surplus of 20.
+  { id: 'mac-exam-1-09', key: `${fmt(C('sub', 2000, C('add', C('budgetBalance', 900, 1000), C('budgetBalance', 950, 1000), C('budgetBalance', 1020, 1000))))} billion dollars`,
+    also: [`${fmt(C('sub', 2000, C('add', C('budgetBalance', 900, 1000), C('budgetBalance', 950, 1000))))} billion dollars`, `${fmt(C('add', 2000, C('abs', C('budgetBalance', 900, 1000)), C('abs', C('budgetBalance', 950, 1000)), C('abs', C('budgetBalance', 1020, 1000))))} billion dollars`,
+      `${fmt(C('add', 2000, C('budgetBalance', 900, 1000), C('budgetBalance', 950, 1000), C('budgetBalance', 1020, 1000)))} billion dollars`, `${fmt(C('neg', C('add', C('budgetBalance', 900, 1000), C('budgetBalance', 950, 1000), C('budgetBalance', 1020, 1000))))} billion dollars`] },
+  // Ulma's CPI (exam-2-s1): 120 then 126.
+  { id: 'mac-exam-2-01', key: pc(C('inflation', 120, 126)),
+    also: [pc(C('sub', 126, 120)), pc(C('sub', 126, 100)), `About ${pc(C('pct', C('sub', 126, 120), 126), 1)}`] },
+  // Ibera: MPC 0.8, a 40 billion tax cut (a tax change of -40).
+  { id: 'mac-exam-2-02', key: `An increase of ${usd(C('totalChange', -40, C('taxMultiplier', 0.8)))} billion`,
+    also: [`An increase of ${usd(C('totalChange', 40, sm(0.8)))} billion`, `A decrease of ${usd(C('totalChange', -40, C('taxMultiplier', 0.8)))} billion`, `An increase of ${usd(C('mul', 0.8, 40))} billion`],
+    check: () => C('totalChange', -40, C('taxMultiplier', 0.8)) > 0 },
+  // Merrin: 7% nominal, 2% expected inflation, 4% actual.
+  { id: 'mac-exam-2-05', key: pc(C('realRate', 7, 4)), also: [pc(C('realRate', 7, 2)), pc(C('nominalRate', 7, 4)), pc(C('sub', 4, 2)), pc(C('nominalRate', 7, 2))] },
+  // Evrin: M 500, P 2, Y 1,000.
+  { id: 'mac-exam-2-08', key: fmt(C('velocity', 2, 1000, 500)), also: [fmt(C('div', 500, C('mul', 2, 1000)), 2), fmt(C('div', 1000, 500)), fmt(C('add', C('mul', 2, 1000), 500)), fmt(C('sub', C('mul', 2, 1000), 500))] },
+  // Dovar and Lisk (exam-2-s5): capital flows to the higher real rate.
+  { id: 'mac-exam-2-10', key: 'Into Dovar; the dov appreciates', check: () => C('realRate', 6, 2) > C('realRate', 8, 6) && C('realRate', 8, 6) > 0 },
+];
+/* Every exam-only question that reads a graph: the stimulus as drawn
+   (ApMacroGraph, the student's own renderer) must show what the key says:
+   the curves that moved and which way, the outcome on each axis, or where
+   the economy sits against LRAS. */
+export const EXAM_GRAPHS = [
+  { id: 'mac-exam-1-03', gap: 'recessionary' },
+  { id: 'mac-exam-1-04', shifts: { RD: 'up' }, outcome: { 'policy rate': 'up', 'quantity of reserves': 'same' } },
+  { id: 'mac-exam-1-06', shifts: { SRPC: 'right' }, outcome: { 'inflation rate': 'up', 'unemployment rate': 'same' } },
+  { id: 'mac-exam-1-08', shifts: { DLF: 'right' }, outcome: { 'real interest rate': 'up', 'quantity of loanable funds': 'up' } },
+  { id: 'mac-exam-1-10', shifts: { D: 'left' }, outcome: { 'value of the currency': 'down', 'quantity of the currency': 'down' } },
+  { id: 'mac-exam-2-03', gap: 'inflationary' },
+  { id: 'mac-exam-2-04', shifts: { MS: 'left' }, outcome: { 'nominal interest rate': 'up', 'quantity of money': 'down' } },
+  { id: 'mac-exam-2-07', shifts: { PPC: 'out' } },
+];
+/* stimuli: { id: stimulus }. Problems with the graphs exam-only keys read. */
+export function checkGraphs(items, stimuli) {
+  const errs = [];
+  for (const g of EXAM_GRAPHS) {
+    const q = items.get(g.id), st = q && stimuli[q.stimulus];
+    if (!st || st.kind !== 'graph') { errs.push(`graphs: ${g.id} has no graph stimulus`); continue; }
+    const spec = { kind: st.graph.kind, start: st.graph.start || {}, names: st.graph.names }, show = st.graph.show || {};
+    const curves = Graph.curves(spec, {});
+    const moved = Object.fromEntries(Object.entries(show).filter(([, v]) => v).map(([c, v]) => [c, Graph.dirWord(Graph.find(curves, c).shape, v)]));
+    if (g.shifts && JSON.stringify(moved) !== JSON.stringify(g.shifts)) errs.push(`graphs: ${g.id}'s graph shows ${JSON.stringify(moved)}, the key reads ${JSON.stringify(g.shifts)}`);
+    if (g.outcome) { const o = Graph.outcome(spec, show) || {}; for (const [k, v] of Object.entries(g.outcome)) if (o[k] !== v) errs.push(`graphs: ${g.id}: ${k} is ${o[k]} in the graph, the key reads ${v}`); }
+    if (g.gap) {
+      const e = Graph.eq(spec, show), lras = Graph.find(Graph.curves(spec, show), 'LRAS');
+      const at = !e || !lras ? null : e[0] < lras.at - 1e-9 ? 'recessionary' : e[0] > lras.at + 1e-9 ? 'inflationary' : 'none';
+      if (at !== g.gap) errs.push(`graphs: ${g.id}'s graph shows ${at || 'no'} gap, the key reads ${g.gap}`);
+    }
+  }
+  for (const q of items.values()) if (q.stimulus && stimuli[q.stimulus] && stimuli[q.stimulus].kind === 'graph' && !EXAM_GRAPHS.some(g => g.id === q.id)) errs.push(`graphs: ${q.id} reads a graph that EXAM_GRAPHS does not check`);
+  return errs;
+}
+/* Every number a "Make it specific" prompt derives, recomputed: each `has`
+   string must appear in the prompt's context, task, checklist or model
+   answer, with the number from ApMacroCalc. */
+export const JUSTIFY_NUMBERS = [
+  { id: 'gs-slope-units', has: [`20 / 2 = ${fmt(C('div', C('sub', 70, 50), C('sub', 4, 2)))} points per hour`] },
+  { id: 'u1-ppc-opportunity-cost', has: [`80 - 60 = ${fmt(C('sub', 80, 60))} tons`, `20 / 10 = ${fmt(C('opportunityCost', C('sub', 80, 60), C('sub', 20, 10)))} tons of wheat`] },
+  { id: 'u1-ppc-bowed', has: [`${fmt(C('opportunityCost', C('sub', 90, 80), 10))}, ${fmt(C('opportunityCost', C('sub', 80, 60), 10))}, then ${fmt(C('opportunityCost', C('sub', 60, 30), 10))} tons per tractor`] },
+  { id: 'u1-comparative-advantage', has: [`6 / 3 = ${fmt(C('opportunityCost', 6, 3))} bolts`, `4 / 4 = ${fmt(C('opportunityCost', 4, 4))} bolt`], check: () => C('opportunityCost', 4, 4) < C('opportunityCost', 6, 3) },
+  { id: 'u1-terms-of-trade', has: ['1.5 bolts'], check: () => C('opportunityCost', 4, 4) < 1.5 && 1.5 < C('opportunityCost', 6, 3) },
+  { id: 'u2-gdp-expenditure', has: [`= ${fmt(C('gdp', 600, 150, 200, 80, 100))} billion dollars`] },
+  { id: 'u2-unemployment-rate', has: [`190 + 10 = ${fmt(C('laborForce', 190, 10))} million`, `10 / 200 x 100 = ${pc(C('unemploymentRate', 10, C('laborForce', 190, 10)))}`, `about ${pc(C('participationRate', C('laborForce', 190, 10), 300), 1)}`] },
+  { id: 'u2-cyclical', has: [`2% + 3% = ${pc(C('naturalRate', 2, 3))}`, `7% - 5% = ${pc(C('cyclicalRate', 7, C('naturalRate', 2, 3)))}`] },
+  { id: 'u2-cpi-inflation', has: [`270 / 250 x 100 = ${fmt(C('cpi', 270, 250))}`, `(108 - 100) / 100 x 100 = ${pc(C('inflation', 100, C('cpi', 270, 250)))}`] },
+  { id: 'u2-real-gdp', has: [`1,320 / 110 x 100 = ${fmt(C('realValue', 1320, 110))} billion dollars`] },
+  { id: 'u2-output-gap', has: [`900 - 860 = ${fmt(C('sub', 900, 860))} billion dollars below`] },
+  { id: 'u3-spending-multiplier', has: [`1 / 0.1 = ${fmt(sm(0.9))}`, `20 x 10 = ${fmt(C('totalChange', 20, sm(0.9)))} billion dollars`] },
+  { id: 'u3-close-gap-spending', has: [`1 / (1 - 0.75) = ${fmt(sm(0.75))}`, `120 / 4 = an increase of ${fmt(C('gapChange', 120, sm(0.75)))} billion dollars`] },
+  { id: 'u3-close-gap-tax', has: [`0.75 / 0.25 = ${fmt(C('abs', C('taxMultiplier', 0.75)))}`, `120 / 3 = ${fmt(C('gapChange', 120, C('abs', C('taxMultiplier', 0.75))))} billion dollars`], check: () => C('gapChange', 120, C('abs', C('taxMultiplier', 0.75))) > C('gapChange', 120, sm(0.75)) },
+  { id: 'u4-real-rate', has: [`8% - 3% = ${pc(C('realRate', 8, 3))}`, `8% - 6% = ${pc(C('realRate', 8, 6))}`] },
+  { id: 'u4-excess-reserves', has: [`1,000 x 0.1 = \\$${fmt(C('requiredReserves', 1000, 0.1))}`, `1,000 - 100 = \\$${fmt(C('excessReserves', 1000, 1000, 0.1))}`, `1 / 0.1 = ${fmt(C('moneyMultiplier', 0.1))}`, `900 x 10 = \\$${fmt(C('maxMoneyChange', C('excessReserves', 1000, 1000, 0.1), 0.1))}`] },
+  { id: 'u5-velocity', has: [`2 x 500 = ${fmt(C('mul', 2, 500))} billion dollars`, `1,000 / 200 = ${fmt(C('velocity', 2, 500, 200))}`] },
+  { id: 'u5-deficit-debt', has: [`3,000 - 3,400 = ${fmt(C('budgetBalance', 3000, 3400))}`, `10,000 + 400 = ${fmt(C('sub', 10000, C('budgetBalance', 3000, 3400)))} billion dollars`] },
+  { id: 'u6-bop-balance', has: [`-50 + 50 = 0`, `surplus of 50 billion arls`], check: () => C('add', -50, C('neg', -50)) === 0 },
+  { id: 'u6-exchange-calc', has: [`1 / 4 = ${fmt(C('inverseRate', 4), 2)} arls`, `100 x 0.25 = ${fmt(C('convert', 100, C('inverseRate', 4)))} arls`] },
+];
 /* items: Map(id -> item); prompts: list. Returns problems. */
 export function checkNumbers(items, prompts) {
   const errs = [];

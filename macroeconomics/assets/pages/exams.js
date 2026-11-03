@@ -254,7 +254,7 @@
       FORMS.map(function(f){ return '<label class="cx-pill"><input type="radio" name="form" value="' + f.id + '"' + (cfg.form === f.id ? ' checked' : '') + '><span>' + esc(f.title) + '</span></label>'; }).join('') +
       '<label class="cx-pill"><input type="radio" name="form" value=""' + (cfg.form ? '' : ' checked') + '><span>New mixed exam</span></label></div></fieldset>' : '';
     var fm = formById(cfg.form);
-    var fmt = '<p>Section I: 60 multiple-choice questions in 70 min (' + WEIGHTS.mcq + '% of the score), alone and in sets that share a data table, a graph or a scenario. Section II: 3 free-response questions in 60 min, including a ' + FRQ_READING_MIN + '-minute reading period (' + WEIGHTS.frq + '%): one long question worth 10 points (about 25 min), then two short ones worth 5 points each (about 12 min each). A four-function calculator in both sections. Then you score your free responses with the rubrics, graphs checked point by point.</p>';
+    var fmt = '<p>Section I: 60 multiple-choice questions in 70 min (' + WEIGHTS.mcq + '% of the score), five choices each; each question stands alone, some with their own graph, data table or scenario. Section II: 3 free-response questions in 60 min, including a ' + FRQ_READING_MIN + '-minute reading period (' + WEIGHTS.frq + '%): one long question worth 10 points (about 25 min), then two short ones worth 5 points each (about 12 min each). A four-function calculator in both sections. Then you score your free responses with the rubrics, graphs checked point by point.</p>';
     if(fm){
       var fu = {}; fm.mcq.forEach(function(b){ b.forEach(function(id){ var q = byIdQ(id); if(q) fu[q.unit] = (fu[q.unit] || 0) + 1; }); });
       var secPick = '<fieldset class="cx-group"><legend>Section</legend><div class="cx-pills">' + [['', 'Whole exam'], ['1', 'Section I only (60 questions, 70 min)'], ['2', 'Section II only (3 questions, 60 min)']].map(function(o){
@@ -376,13 +376,17 @@
     var own = {}; OWN.items.forEach(function(q){ own[q.id] = q; });
     var btn = app.querySelector('.mac-pr-start');
     if(btn){ btn.disabled = true; btn.textContent = 'Loading questions…'; }
+    // Every question a form uses comes in assets/exams/items.json with its five
+    // options; the bank's four-option copy is the fallback.
     var fromBank = ids.filter(function(id){ return !own[id]; }).map(function(id){ return byIdQ(id) || id; });
     Promise.all([Core.loadQuestions(BASE, fromBank), Promise.all(f.frq.map(function(id){ return K.load(BASE, id); }))]).then(function(r){
       var by = {}; r[0].forEach(function(q){ by[q.id] = q; });
       var qs = ids.map(function(id){
         if(by[id]) return by[id];
         var q = own[id]; if(!q) return null;
-        q = JSON.parse(JSON.stringify(q)); q.own = true;
+        // own: written for this exam only (mac-exam-*); a bank question served
+        // with its fifth option is still the bank's, so a miss reaches Review.
+        q = JSON.parse(JSON.stringify(q)); q.own = /^mac-exam-/.test(q.id);
         if(q.stimulus && OWN.stimuli[q.stimulus]) q.stim = OWN.stimuli[q.stimulus];
         return q;
       });
@@ -564,7 +568,7 @@
       stage.appendChild(box);
       run.els[q.id] = box;
       // A set's stimulus is shown with each of its questions.
-      Q.hydrate(box, [q], { exam: true, record: false, flag: OWN.items.some(function(x){ return x.id === q.id; }) ? 'session' : undefined, onAnswer: function(res){ lockedIn(q, box, res); } });
+      Q.hydrate(box, [q], { exam: true, record: false, flag: /^mac-exam-/.test(q.id) ? 'session' : undefined, onAnswer: function(res){ lockedIn(q, box, res); } });
       var nEl = box.querySelector('.mac-q-n'); if(nEl) nEl.textContent = (i + 1) + '.';
       var chk = box.querySelector('.mac-check'); if(chk) chk.textContent = 'Lock in answer';
     }
@@ -836,7 +840,7 @@
     }
     var t = TOPIC[q.topic];
     return '<li class="mac-q mac-ex-ritem ' + cls + '"><p class="mac-ex-verdict"><span class="mac-ex-vtag">' + verdict + (r.score > 0 && !r.correct ? ' (' + Math.round(r.score * 100) + '%)' : '') + '</span><span class="mac-small">' + esc(t ? t.title : '') + ' · Practice ' + esc(q.practice || '') + '</span></p>' +
-      (q.stim ? '<details class="mac-ex-stimd"><summary>Show the ' + esc((q.stim.kind === 'study' ? 'study' : q.stim.kind === 'data' ? 'data' : 'figure')) + ': ' + (q.stim.title || '') + '</summary>' + Q.stimulusPanel(q.stimulus, q.stim) + '</details>' : '') +
+      (q.stim ? '<details class="mac-ex-stimd"><summary>Show the ' + esc((q.stim.kind === 'graph' ? 'graph' : q.stim.kind === 'data' ? 'data' : 'scenario')) + ': ' + (q.stim.title || '') + '</summary>' + Q.stimulusPanel(q.stimulus, q.stim) + '</details>' : '') +
       '<p class="mac-q-stem"><span class="mac-q-n">' + n + '.</span> ' + html(q.q) + '</p>' + body + (why.correct ? '<p class="mac-ex-why"><b>Why:</b> ' + html(why.correct) + '</p>' : '') +
       '<p class="mac-ex-links"><a href="' + BASE + 'lessons/' + q.topic + '.html">Lesson</a> <span aria-hidden="true">&middot;</span> <a href="' + BASE + 'notes/' + q.topic + '.html">Notes</a>' + (window.LevlReport ? ' ' + window.LevlReport.button('apmacro', q.id) : '') + '</p></li>';
   }
