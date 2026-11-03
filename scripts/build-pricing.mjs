@@ -548,7 +548,7 @@ const PRICE_SHORT = `A one-time pass for one course, from ${money(LOW)} to ${mon
 const FAQ = [
   ['Is LevlPrep free?', FREE_SENTENCE],
   ['How much does Premium cost?', PRICE],
-  [MARK ? 'Is LevlPrep affiliated with the NREMT, ATI, OpenStax or the College Board?' : 'Is LevlPrep affiliated with the NREMT, ATI or OpenStax?', AFFILIATION],
+  [MARK ? 'Is LevlPrep affiliated with the NREMT or the College Board?' : 'Is LevlPrep affiliated with the NREMT?', AFFILIATION],
 ];
 
 function homeTry() {
@@ -581,21 +581,32 @@ f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e
 /* Who makes this, how the questions are written and what changes, folded into the FAQ instead of a row of
    cards under it (Olivier, 2026-10-26). They carry links, so they are written as HTML and stay out of the
    FAQPage data. */
+/* Homepage questions, owner comment 2026-11-02 ("make this area better"): ordered by what a new visitor
+   asks first, short answers, and "Who makes LevlPrep?" now says who. */
 const HOME_ABOUT_QA = [
-  ['Who makes LevlPrep?', 'An independent project, not a company or a training program. Premium is an optional one-time pass, and <a href="premium.html">what is free</a> is listed course by course. No ads.'],
-  ['How are the questions written?', 'Every question in every course is original, written for LevlPrep with an explanation on each one: NREMT questions to current national guidelines and the five domains of the Registry&rsquo;s 2025 EMT exam, every other course&rsquo;s questions to the topic that teaches them. Automated checks look for answer-position and length tells. <a href="sources.html">Sources and checks</a>.'],
-  ['How do I see what changed?', 'Corrected questions, new lessons and site fixes are listed, dated, on <a href="changelog.html">What&rsquo;s new</a>.'],
+  ['How are the questions written?', 'Each one is original and written for LevlPrep, with an explanation for every answer choice. NREMT questions follow current national guidelines and the Registry&rsquo;s 2025 exam outline; every other question follows the lesson that teaches it. <a href="sources.html">Sources and checks</a>.'],
+  ['Who makes LevlPrep?', 'Olivier Testa, an EMT who passed the NREMT studying with LevlPrep. It is an independent project, not a company or a training program, and it has no ads. <a href="about.html">Why I built it</a>.'],
+  ['How do I see what changed?', 'Every corrected question, new lesson and fix is listed by date on <a href="changelog.html">What&rsquo;s new</a>.'],
 ];
 
 function hubFaq() {
+  const item = (q, a) => `      <details class="faq-item"><summary>${q}</summary>
+      <p>${a}</p></details>`;
+  const shown = FAQ.map(([q, a], i) => [esc(q), `${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}`]);
+  // Two columns, each its own list so opening one answer never leaves a gap beside it:
+  // price and terms on the left, how it is made on the right.
+  const left = [shown[0], shown[1], shown[2]], right = HOME_ABOUT_QA;
   return `  <section class="home-faq" aria-labelledby="home-faq-h">
     <h2 id="home-faq-h">Questions</h2>
     <div class="hub-faq">
-${FAQ.map(([q, a], i) => `      <details class="faq-item"><summary>${esc(q)}</summary>
-      <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p></details>`).join('\n')}
-${HOME_ABOUT_QA.map(([q, a]) => `      <details class="faq-item"><summary>${q}</summary>
-      <p>${a}</p></details>`).join('\n')}
+      <div class="faq-col">
+${left.map(([q, a]) => item(q, a)).join('\n')}
+      </div>
+      <div class="faq-col">
+${right.map(([q, a]) => item(q, a)).join('\n')}
+      </div>
     </div>
+    <p class="faq-more">Something else? Email <b>hello@levlprep.com</b>.</p>
   </section>`;
 }
 
