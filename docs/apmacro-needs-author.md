@@ -17,8 +17,10 @@ topic's `skills` in the map is our reading of what it practices. Check against t
 
 ## balanced-budget: is the balanced-budget multiplier in the CED? (open, 2026-11-03)
 
-It was not seen in the readable CED text (3.2 names the spending and tax multipliers). `ApMacroCalc` has it and
-the formulas page leaves it out; authors teach it only as a consequence of the two multipliers until confirmed.
+It was not seen in the readable CED text (3.2 names the spending and tax multipliers). `ApMacroCalc` has it;
+authors teach it only as a consequence of the two multipliers until confirmed. The formula page has had a row for
+it since 2026-11-03 (the spending and tax multipliers added, = 1), because the course names it in `multipliers`
+(notes, lesson, glossary) and asks it (`mac-multipliers-12`); drop the row with the item if the CED leaves it out.
 
 ## quantity-theory: MV = PY and money neutrality wording (open, 2026-11-03)
 
@@ -103,11 +105,13 @@ code; written parts would need their own calibration before the grader is turned
 (`EXAM_NUMBERS`) and the graphs checked (`EXAM_GRAPHS`), but the Phase 4 exam review should read every stem,
 distractor and explanation, and the 100 fifth options in `fifth.json`.
 
-### phase3-sras-1: mac-sras-1 has two right answers (open, 2026-11-03, for the Unit 3 reviewer)
+### phase3-sras-1: mac-sras-1 has two right answers (resolved, 2026-11-03)
 
 It asks which year SRAS shifted left "because of an input price"; Year 2 (oil) is keyed, but Year 4's nominal wage
-rise (20 to 22, same output per worker) is an input price too. Left out of the forms (`mac-sras-5` used instead);
-not edited, since it is reviewer content.
+rise (20 to 22, same output per worker) is an input price too. Left out of the forms (`mac-sras-5` used instead).
+Resolved by the integrator: rewritten in place to ask for a higher price of a raw material with the nominal wage
+and output per worker as in Year 1 (only Year 2, oil); Year 4 replaced the weak "Year 1" option as a distractor
+whose explanation says a wage is the price of labor. Id and key position unchanged; it can now join a form.
 
 ### phase3-frq-choice: which FRQs the exams use (open, 2026-11-03)
 
@@ -123,8 +127,35 @@ leaned on exam-only items because their standalone bank questions ran out.
 
 ### phase3-formula-page: what the page lists and flags (open, 2026-11-03)
 
-28 rows (no balanced-budget multiplier, `balanced-budget`), 10 flagged "Easy to forget" from the reader reports, 8
-graph kinds and the balance sheet. A teacher should confirm nothing expected by heart is missing.
+29 rows (the balanced-budget multiplier added 2026-11-03, as the course teaches it; see `balanced-budget`), 10
+flagged "Easy to forget" from the reader reports, 8 graph kinds and the balance sheet. A teacher should confirm
+nothing expected by heart is missing.
+
+### phase3-integration: review points the integrator closed (resolved, 2026-11-03)
+
+- **Indeterminate outcomes** (Unit 6 review, grader limit): with two curves shifting, an outcome axis whose direction
+  depends on the sizes (`ApMacroGraph.indeterminate`) is never graded and the checker refuses it in a key, even as
+  "same"; an alt is scored on the key's outcome words its own shifts decide. `frq-forex-short` A drawn with both
+  shifts at different sizes now keeps the outcome point. The two long-run items that end at full employment
+  (`mac-long-run-self-adjustment-10`, `mac-money-growth-inflation-11`) pin output with `key.hold`. Tests on every
+  `key.alt` at unequal sizes.
+- **Country names** (Units 0-2 and Unit 3 reviews): the authoring guide now says dollars are fine in graded
+  content with no exchange rate, invented currencies wherever currencies are compared (Unit 6, forex), and letter
+  names (Country X) are generic and may repeat across units (one country per letter within a set). Nothing renamed.
+  "Sundra in 5.5" corrected to 5.1 (5.5 is Garrow and Ferro).
+- **Label crowding** (Unit 3 and 5 reviews): shifted pairs are labeled on their outer sides, the old vertical
+  curve at its foot, E labels off the lines (`sras-s2`, `adas-short-run-changes-s2`, `mac-adas-equilibrium-9`,
+  `mac-economic-growth-11`, `mac-growth-policy-12`, `mac-lras-12`), checked on rendered PNGs of every bank graph.
+- **New equilibrium on stimuli** (Unit 5 review): `showEq: true` marks E2 and its axis marks; on in
+  `policy-short-run-s2` and `crowding-out-s1`, whose explanations now name E2 and r2.
+- **Limited reserves in 4.4** (Unit 4 review): the term is taught in `banking-money-supply` (lesson idea, glossary;
+  the notes already used it); open market operations and the discount rate stay 4.6 concepts.
+  `mac-banking-money-supply-11`, `mac-money-market-10` and `frq-money-multiplier-short` now name the framework.
+- **Key positions** (Units 0-2 review): a content-check rule (`keyPositionTell`): no position holds the key in more
+  than 40% of a topic's single-answer items, every position at least once with two items per position; also for
+  the exam-only items and each served form. Ten Unit 4 and 6 items and all 20 exam-only items were rotated (key and
+  explanation swapped with another option; keys and ids unchanged). A bank question's fifth option in a form is
+  still always last, so a form's E keys come from exam-only items only (form 1: 2 of 60, form 2: 2 of 60).
 
 ## Author B (Unit 2)
 
@@ -196,6 +227,9 @@ only for the keyed one. A grader option for alternative keys (a shared-file chan
 
 ### f-invented-countries: invented countries, real currencies in the notes (resolved as a rule, 2026-11-03)
 
+Clarified 2026-11-03 (phase3-integration): dollars stay in closed-economy graded content, invented currencies only
+where currencies are compared, letter names generic.
+
 The integrator set one rule (authoring guide, "Invented countries"): graded content (items, FRQs, tool drills) uses
 invented countries with invented currencies, teaching text may use real currencies labeled illustrative. Applied:
 `frq-forex-short` now calls Arland's currency the arl (as every other Unit 6 item does) and Unit 6's balance of
@@ -237,11 +271,16 @@ depends on the shape), and its sample describes a straight line while the on-pag
 curve. A person (or builder T1/T3) should decide whether Graph Studio needs a straight `ppc` shape (for example a
 `linear: true` option), after which part A could ask for the endpoints and a point outside after trade.
 
-### a-ppc-growth-words: "economic growth" before Topic 5.6 (open, 2026-11-03)
+### a-ppc-growth-words: "economic growth" before Topic 5.6 (resolved, 2026-11-03)
 
 The CED's 1.2 knowledge links an outward PPC shift to growth, but the map teaches `economic-growth` in 5.6, so
 Unit 1 says "growth" and "more resources or better technology" and names economic growth only inside a preview
 box. Check whether the map should teach the term in 1.2 instead.
+
+Resolved by the integrator: CED 1.2 says "Economic growth results in an outward shift of the PPC", so the map now
+teaches `economic-growth` in 1.2 (pull-forward, `fullIn: ["economic-growth"]`, a `circularDependencies` entry);
+5.6 stays the main topic (glossary links go there; `human-capital` carries the LRAS and per-capita dependencies).
+The 1.2 preview box became teaching text and the lesson names the term.
 
 ### a-shortage-scarcity: shortage named in 1.1 only in a preview box (open, 2026-11-03)
 
@@ -282,7 +321,7 @@ wages") in `sras` and `long-run-self-adjustment`. A lead should decide whether t
 on output is MPC / MPS times the transfer (keyed as `totalChange(-transfer, taxMultiplier)`). Standard college
 macro, but the CED text for 3.8 was not read (ced-text); confirm that transfers are treated this way.
 
-### c-balanced-budget-use: one item and one notes paragraph derive the balanced-budget multiplier (open, 2026-11-03)
+### c-balanced-budget-use: one item and one notes paragraph derive the balanced-budget multiplier (open on the CED, 2026-11-03; formula row added)
 
 Per the `balanced-budget` entry, `multipliers` derives it only as a consequence of the two multipliers (G and T
 up by 50 with MPC 0.8: +250 - 200 = +50; `mac-multipliers-12`), with the name given once. Drop the item if the CED

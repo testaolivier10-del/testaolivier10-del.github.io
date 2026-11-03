@@ -135,6 +135,10 @@ export const EQ = [
       [D`\frac{1}{1 - 0.8}`, { fn: 'spendingMultiplier', args: [0.8] }, '', 0]],
     [D`\text{tax multiplier} = \frac{-\text{MPC}}{\text{MPS}}`, 'The tax multiplier (negative: a tax rise lowers output).', 'The effect of a change in taxes or transfers.', 'Its size is always one less than the spending multiplier, and a tax cut raises output.', 'Unit 3', 'multipliers', ['multiplier-lab'], 'taxMultiplier',
       [D`\frac{-0.8}{0.2}`, { fn: 'taxMultiplier', args: [0.8] }, '', 0], true],
+    // Taught in multipliers as the sum of the two (needs-author c-balanced-budget-use): a row because the
+    // course names it and asks it (mac-multipliers-12); drop it with the item if the CED leaves it out.
+    [D`\text{balanced-budget multiplier} = \frac{1}{\text{MPS}} + \frac{-\text{MPC}}{\text{MPS}} = 1`, 'The balanced-budget multiplier: the spending and tax multipliers added.', 'Government purchases and taxes rise (or fall) by the same amount.', 'It is 1, not 0: the two effects do not cancel, so output rises by the amount of the change.', 'Unit 3', 'multipliers', ['multiplier-lab'], 'balancedBudgetMultiplier',
+      [D`\frac{1}{0.2} + \frac{-0.8}{0.2}`, { fn: 'balancedBudgetMultiplier', args: [0.8] }, '', 0]],
     [D`\Delta \text{real GDP} = \text{change in spending} \times \text{multiplier}`, 'The largest change in real GDP from a change in spending or taxes.', 'Forward: from a policy or a shock to its effect on output.', 'Use the tax multiplier for taxes and transfers, the spending multiplier for purchases and investment.', 'Unit 3', 'multipliers', ['multiplier-lab'], 'totalChange',
       [D`20 \times 5`, { fn: 'totalChange', args: [20, 5] }, '', 0]],
     [D`\text{change needed} = \frac{\text{gap}}{\text{multiplier}}`, 'The change in spending that closes a gap.', 'Backward: from a recessionary or inflationary gap to the policy.', 'Divide, do not multiply; decide the direction first.', 'Unit 3', 'fiscal-policy', ['multiplier-lab'], 'gapChange',
