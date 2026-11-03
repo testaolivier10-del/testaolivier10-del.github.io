@@ -50,15 +50,15 @@
   var DRILL_CUR = {
     kor: { place: 'Korvania', people: 'Korvanians', adj: 'Korvanian', bank: 'the Bank of Korvania' },
     sel: { place: 'Seluna', people: 'Selunans', adj: 'Selunan', bank: 'the Bank of Seluna' },
-    vash: { place: 'Vashtia', people: 'Vashtians', adj: 'Vashtian', bank: 'the Bank of Vashtia' },
+    varo: { place: 'Vashtia', people: 'Vashtians', adj: 'Vashtian', bank: 'the Bank of Vashtia' },
     ruv: { place: 'Ruvelle', people: 'Ruvellans', adj: 'Ruvellan', bank: 'the Bank of Ruvelle' },
     nim: { place: 'Nimbria', people: 'Nimbrians', adj: 'Nimbrian', bank: 'the Bank of Nimbria' }
   };
   var DRILL_PAIRS = [
     ['sel', 'kor', [1, 1.1, 1.2, 1.25], [20, 40, 50, 100]],
     ['kor', 'sel', [0.8, 0.9, 0.95, 1], [20, 50, 100, 200]],
-    ['vash', 'kor', [0.04, 0.05, 0.0625], [200, 400, 1000]],
-    ['kor', 'vash', [16, 18, 20, 25], [10, 20, 50]],
+    ['varo', 'kor', [0.04, 0.05, 0.0625], [200, 400, 1000]],
+    ['kor', 'varo', [16, 18, 20, 25], [10, 20, 50]],
     ['ruv', 'sel', [1.1, 1.15, 1.2, 1.25], [20, 40, 100]],
     ['sel', 'ruv', [0.8, 0.85, 0.9], [20, 40, 100]],
     ['nim', 'kor', [0.0115, 0.012, 0.0125], [800, 2000, 4000]],

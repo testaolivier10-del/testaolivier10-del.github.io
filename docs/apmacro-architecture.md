@@ -189,7 +189,9 @@ published (to add with the first published unit).
 ### FRQ graph parts
 
 An FRQ part with `"type": "graph"` carries a `graph` spec (as a graph item's, checked the same way) and the
-student draws it on the page (`frq-kit.js` mounts it; the draft is saved with the written answers). Each rubric
+student draws it on the page (`frq-kit.js` mounts it; the draft is saved with the written answers): in exams
+through `questionHtml(f, { write: true })`, and on the stable page `frq/<id>.html` through `ApMacroFrq.track(f)`
+(added 2026-11-03; before it that page offered only text boxes, so "Check my graph" had nothing to check). Each rubric
 line may name `auto` (`labels`, `shift`, `equilibrium`, `outcome`, `point`): "Check my graph" ticks those boxes
 from `ApMacroGrade.graph` as an estimate the student can change; the self-score stays the student's. Paper gets
 a grid (`.mac-frq-grid`). Example (the long placeholder FRQ's part A, 4 points):

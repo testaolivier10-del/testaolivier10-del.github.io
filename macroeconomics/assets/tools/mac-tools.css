@@ -173,7 +173,7 @@
 .cd-step.is-shown{box-shadow:inset 4px 0 0 var(--muted);}
 /* A graph step (kind "graph"): the graph in the step, or on the stage; each rubric point marked after Check. */
 .cd-graph{max-width:520px;}
-.cd-gpts{display:inline-flex;flex-wrap:wrap;gap:4px 8px;margin-left:2px;vertical-align:middle;}
+.cd-gpts{display:flex;flex-wrap:wrap;gap:4px 8px;margin:6px 0 4px;}
 .cd-gpt{font:800 12.5px var(--font-ui);padding:1px 8px;border-radius:999px;background:var(--paper);}
 .cd-gpt.ok{color:var(--good-text);} .cd-gpt.no{color:var(--bad-text);}
 .cd-step button[type=submit][disabled]{opacity:.55;cursor:not-allowed;}

@@ -98,7 +98,9 @@
         '<p class="mac-small">Your answers save on this device as you type. They are never sent anywhere.</p>' +
         '<div class="mac-fq-write">' + f.parts.map(function(p, i){
           var tid = 'fqw-' + p.label;
-          return '<div class="mac-fq-part"><label class="mac-fq-alabel" for="' + tid + '">Part (' + K.esc(p.label) + '), ' + plural(p.points, 'point') + '</label>' +
+          // A graph part is drawn here too (ApMacroGraph, saved with the draft; "Check my graph" under the rubric).
+          var gbox = p.type === 'graph' && p.graph && K.track ? '<p class="mac-small">Draw the graph for part (' + K.esc(p.label) + '):</p><div class="mac-fq-graph" data-gk="' + K.esc(K.graphKey(f, i)) + '"></div>' : '';
+          return '<div class="mac-fq-part">' + gbox + '<label class="mac-fq-alabel" for="' + tid + '">Part (' + K.esc(p.label) + '), ' + plural(p.points, 'point') + '</label>' +
             '<textarea id="' + tid + '" class="mac-fq-answer" rows="' + Math.min(10, 3 + p.points * 2) + '" data-part="' + K.esc(p.label) + '">' + K.esc(K.draft(id)[p.label] || '') + '</textarea></div>';
         }).join('') + '</div>' +
         '<div class="mac-pr-actions"><button type="button" class="btn-press" data-act="reveal">Show the rubric and score yourself</button></div>' +
@@ -107,6 +109,7 @@
         '<label class="mac-ex-check mac-fq-printopt"><input type="checkbox" id="mac-fq-printrub"> <span>When I print, add the rubric and sample answers on a separate page</span></label>' +
         (saved ? '<p class="mac-small">Last saved self-score: ' + saved.got + ' of ' + saved.of + ' (best ' + saved.best + ').</p>' : '') +
       '</section>';
+      if(K.track) K.track(f);
       app.querySelectorAll('.mac-fq-answer').forEach(function(t){
         var timer = 0;
         t.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(function(){ K.saveDraft(id, t.getAttribute('data-part'), t.value); }, 300); });

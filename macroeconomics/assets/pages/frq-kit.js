@@ -138,6 +138,10 @@
     return g + (p.write ? '<div class="mac-fq-flags" data-frq="' + esc(f.id) + '" data-part="' + i + '" aria-live="polite"></div>' : '');
   }
   var checks = {};
+  /* track(f): a page that writes its own answer boxes (frq/<id>.html) lets its
+     graph parts (.mac-fq-graph[data-gk="<id>:<part index>"]) mount and its
+     "Check my graph" buttons work, as questionHtml(f, { write: true }) does. */
+  function track(f){ checks[f.id] = f; wireChecks(); mountGraphs(document.body); }
   function wireChecks(){
     if(typeof document === 'undefined' || wireChecks.on) return;
     wireChecks.on = true;
@@ -223,6 +227,6 @@
     }catch(e){}
   }
 
-  window.ApMacroFrq = { mountGraphs: mountGraphs, graphCheck: graphCheck, TYPES: TYPES, ORDER: ORDER, index: index, load: load, questionHtml: questionHtml, rubricHtml: rubricHtml, score: score, checked: checked,
+  window.ApMacroFrq = { mountGraphs: mountGraphs, graphCheck: graphCheck, track: track, graphKey: graphKey, TYPES: TYPES, ORDER: ORDER, index: index, load: load, questionHtml: questionHtml, rubricHtml: rubricHtml, score: score, checked: checked,
     bookletHtml: bookletHtml, printOnly: printOnly, draft: draft, saveDraft: saveDraft, scores: scores, saveScore: saveScore, esc: esc };
 })();
