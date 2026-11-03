@@ -379,17 +379,25 @@
    "level": "apply",
    "diff": 2,
    "type": "graph",
-   "practice": "4.A",
-   "q": "Before drawing any shift, a student must label the saving-and-borrowing graph in full. Label both axes and both curves of the loanable funds market.",
+   "practice": "4.B",
+   "q": "At a real interest rate below the equilibrium rate, firms want to borrow more. Label the axes and curves of the loanable funds graph, then mark point C on the demand curve at a real interest rate below equilibrium.",
    "why": {
-    "correct": "Loanable funds: the real interest rate on the vertical axis and the quantity of loanable funds on the horizontal axis, with demand (DLF) sloping down and supply (SLF) sloping up."
+    "correct": "Loanable funds: the real interest rate (vertical) and the quantity of loanable funds (horizontal), DLF sloping down and SLF up. Along DLF a lower real rate means more borrowing, so C sits down and to the right of the equilibrium."
    },
    "graph": {
     "kind": "lf",
     "do": [
-     "label"
+     "label",
+     "point"
     ],
-    "key": {}
+    "pointLabel": "C",
+    "key": {
+     "point": {
+      "on": "DLF",
+      "x": "up",
+      "y": "down"
+     }
+    }
    }
   },
   {

@@ -89,3 +89,16 @@
   .ml-chip{padding:3px 8px;}
   .ml-barbox{min-height:150px;}
 }
+/* Definite heights for the bar charts that share the stage with a table,
+   so the chart never collapses (phone and desktop). */
+.ml-qbars{flex:none;height:clamp(180px,36vh,420px);}
+.ml-fig[data-v="money"] .ml-barbox{flex:none;height:clamp(170px,34vh,380px);}
+@media (max-width:640px){
+  .ml-qbars{height:30svh;min-height:170px;}
+  .ml-fig[data-v="money"] .ml-barbox{height:24svh;min-height:150px;margin-bottom:0;}
+  .ml-t td span{display:inline;}
+  .ml-t td span::after{content:" ";}
+  .ml-t td b{display:inline;margin:0 0 0 2px;}
+  .ml-t td b::after{content:"";display:block;margin-bottom:3px;}
+  .ml-qfig-money .ml-t{font-size:12px;}
+}

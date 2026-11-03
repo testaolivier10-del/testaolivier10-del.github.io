@@ -83,3 +83,9 @@
 .ls-phone .pc-graph{flex:1.7 1 0;min-height:190px;}
 .ls-phone .pc-chainbox{flex:1 1 0;min-height:84px;}
 .ls-phone .pc-link.is-next{display:none;}
+/* A phone shows the newest link only (the whole chain is under Why). */
+.ls-phone .pc-link:not(.is-now){display:none;}
+.ls-phone .pc-chainbox{flex:0 0 auto;min-height:0;}
+.ls-phone .pc-chain{overflow:visible;padding-right:46px;}
+.ls-phone .pc-graph{flex:1 1 auto;min-height:170px;}
+.mac-graph-svg.is-forex .mac-gr-alabel{font-size:10.5px;}

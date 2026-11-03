@@ -101,3 +101,11 @@
 .rl-gmark:empty{display:none;}
 .ls-root .rl-qfig .mac-gr-stage{max-width:min(560px, calc((100svh - 330px) * 1.07));}
 .ls-root.ls-phone .rl-qfig .mac-gr-stage{max-width:100%;}
+.rl-short{display:none;}
+.ls-phone .rl-long{display:none;}
+.ls-phone .rl-short{display:inline;}
+.ls-phone .rl-panels > .rl-chain{grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;}
+.ls-phone .rl-link{min-height:40px;}
+.ls-phone .rl-link-n{font-size:12.5px;}
+.ls-phone .rl-g{min-height:150px;}
+.mac-graph-svg.is-forex .mac-gr-alabel{font-size:10.5px;}

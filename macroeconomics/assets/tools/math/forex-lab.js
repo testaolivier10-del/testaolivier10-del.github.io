@@ -107,7 +107,7 @@
   function value(curve, dir){ return curve === 'D' ? dir : -dir; }
   /* The price of X drawn at height y (5 is the starting rate). The mirror market
      sits at 10 - y, so its price is exactly 1 / this one. Display only. */
-  var K = 0.2;
+  var K = 0.1;
   function rate(base, y){ return base * Math.exp(K * (y - 5)); }
 
   /* ------------------------------------------------------------ steps */

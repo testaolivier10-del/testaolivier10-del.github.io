@@ -65,7 +65,7 @@
   function graphSvg(kind, spec, shifts, t, label){
     var moved = Object.keys(shifts).some(function(c){ return Math.abs(shifts[c]) > 1e-6; });
     var e0 = G.eq(spec, {}), e1 = moved ? G.eq(spec, shifts) : null;
-    var html = G.svg(spec, { shifts: shifts, eq: e1 }, { label: label });
+    var html = G.svg(spec, { shifts: shifts, eq: e1 }, { label: label }).replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg is-' + kind + '"');
     var extra = [];
     var base = G.curves(spec, {}), now = G.curves(spec, shifts);
     now.forEach(function(c, i){
@@ -187,6 +187,7 @@
       el.innerHTML = links.map(function(l, i){
         var d = l[2], on = d && d !== 'same';
         var sym = !d ? '' : l[1] === 'AD' ? (d === 'up' ? '→' : d === 'down' ? '←' : '–') : arrowOf(d);
+        var short = { 'Policy rate': 'PR', 'Interest rates': 'i', 'Investment': 'I', 'AD': 'AD', 'Real GDP': 'Y', 'Price level': 'PL' }[l[1]];
         var words = !d ? 'not yet' : l[1] === 'AD' ? (d === 'up' ? 'shifts right' : d === 'down' ? 'shifts left' : 'no shift') : word(d);
         return '<li class="rl-link is-' + l[0] + (on ? ' is-on' : d ? ' is-flat' : '') + '" style="--i:' + i + '"><span class="rl-link-n">' + l[1] + '</span><span class="rl-link-d" aria-hidden="true">' + (sym || '·') + '</span><span class="sr-only">' + words + '</span></li>';
       }).join('');
@@ -223,7 +224,7 @@
       T.explain($('.rl-say'), whyHead, body);
       if(LS){
         LS.caption(e ? esc(line()) : '<b>' + esc(RL.fwOf(fw).name) + ':</b> ' + esc(RL.fwOf(fw).line) + ' Pick an action.', 'explore');
-        LS.pills(e ? [{ html: 'Policy rate ' + arrowOf(e.rate) + ' \u00b7 AD ' + (e.ad === 'none' ? 'no shift' : e.ad === 'left' ? '\u2190' : '\u2192'), tone: e.rate === 'same' ? 'ghost' : 'accent' }] : [], 'left', 'explore');
+        LS.pills(e && !LS.root.classList.contains('ls-phone') ? [{ html: 'Policy rate ' + arrowOf(e.rate) + ' \u00b7 AD ' + (e.ad === 'none' ? 'no shift' : e.ad === 'left' ? '\u2190' : '\u2192'), tone: e.rate === 'same' ? 'ghost' : 'accent' }] : [], 'left', 'explore');
       }
     }
     function nums(){

@@ -67,7 +67,7 @@
     var shifts = g.shifts || {}, moved = Object.keys(shifts).some(function(c){ return shifts[c]; });
     var e0 = G.eq(spec, {}), e1 = moved ? G.eq(spec, shifts) : null;
     var label = TITLE[g.kind] + ' graph: ' + G.describe(spec, { shifts: shifts });
-    var html = G.svg(spec, { shifts: shifts, eq: e1 }, { label: label }), extra = [];
+    var html = G.svg(spec, { shifts: shifts, eq: e1 }, { label: label }).replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg is-' + g.kind + '"'), extra = [];
     var base = G.curves(spec, {}), now = G.curves(spec, shifts);
     now.forEach(function(c, i){
       var b = base[i]; if(Math.abs(c.at - b.at) < 0.15) return;
@@ -175,7 +175,7 @@
       T.explain($('.pc-say'), head, body);
       if(LS){
         LS.caption(n === 0 ? '<b>' + esc(c.title) + ':</b> ' + esc(c.intro) + ' Press Next link.' : '<b>Link ' + (n + 1) + ' of ' + c.links.length + ':</b> ' + esc(cap(l.say)) + '.', 'explore');
-        LS.pills([{ html: (n + 1) + ' of ' + c.links.length + ' links', tone: last ? 'good' : 'ghost' }], 'left', 'explore');
+        LS.pills(LS.root.classList.contains('ls-phone') ? [] : [{ html: (n + 1) + ' of ' + c.links.length + ' links', tone: last ? 'good' : 'ghost' }], 'left', 'explore');
       }
       builderState = null; writePanel();
     }
