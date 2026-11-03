@@ -191,10 +191,10 @@
       "shifts": [{ "curve": "S", "dir": "right" }],
       "why": ["More sellers offer more at every price: supply shifts right.", "The price falls and the quantity rises."] },
     { "id": "sd-along-d", "graph": "sd", "topic": "shifts-movements", "title": "The price rises; buyers buy less", "shifter": "own-price",
-      "cause": "The price of {good} rises, and buyers choose to buy less of it.", "along": "D",
+      "cause": "The price of {good} rises, and buyers choose to buy less.", "along": "D",
       "why": ["The good's own price is on the vertical axis, so a change in it moves buyers along the demand curve: a change in quantity demanded, not in demand."] },
     { "id": "sd-along-s", "graph": "sd", "topic": "shifts-movements", "title": "The price rises; sellers offer more", "shifter": "own-price",
-      "cause": "The price of {good} rises, and producers offer more of it for sale.", "along": "S",
+      "cause": "The price of {good} rises, and producers offer more for sale.", "along": "S",
       "why": ["The good's own price is on the vertical axis, so a change in it moves sellers along the supply curve: a change in quantity supplied, not in supply."] },
 
     { "id": "adas-confidence", "graph": "adas", "topic": "aggregate-demand", "title": "Consumer confidence rises", "shifter": "confidence-up",

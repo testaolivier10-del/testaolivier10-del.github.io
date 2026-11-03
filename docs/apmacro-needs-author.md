@@ -192,3 +192,133 @@ Demand shifters taught: tastes, income (normal and inferior goods), prices of su
 expectations, number of buyers. Supply shifters taught: input costs, technology, taxes and subsidies on producers,
 expectations, number of sellers. "Prices of other goods the producer could make" is left out of supply (standard in
 college texts, not in our CED summary). A person should check both lists against the CED 1.4 and 1.5 text.
+
+## Author C (Unit 3)
+
+### c-expected-inflation: inflation expectations shift SRAS in 3.3, but the map teaches the term in 5.2 (open, 2026-11-03)
+
+Our CED summary for 3.3 lists inflation expectations as an SRAS shifter, but the map's `expected-inflation`
+concept (aliases "inflation expectations") is taught in `phillips-curve` (author E), so Unit 3 cannot use the term.
+Unit 3 says it in plain words instead ("workers expect prices to rise faster and bargain for higher nominal
+wages") in `sras` and `long-run-self-adjustment`. A lead should decide whether to move `expected-inflation` to
+`sras` (it depends only on `inflation`) so the CED term can be used from 3.3.
+
+### c-transfer-multiplier: the effect of a transfer as MPC / MPS (open, 2026-11-03)
+
+`fiscal-policy` teaches that a change in transfer payments raises disposable income like a tax cut, so its effect
+on output is MPC / MPS times the transfer (keyed as `totalChange(-transfer, taxMultiplier)`). Standard college
+macro, but the CED text for 3.8 was not read (ced-text); confirm that transfers are treated this way.
+
+### c-balanced-budget-use: one item and one notes paragraph derive the balanced-budget multiplier (open, 2026-11-03)
+
+Per the `balanced-budget` entry, `multipliers` derives it only as a consequence of the two multipliers (G and T
+up by 50 with MPC 0.8: +250 - 200 = +50; `mac-multipliers-12`), with the name given once. Drop the item if the CED
+leaves it out.
+
+### c-fiscal-lags: lags named in fiscal-policy (open, 2026-11-03)
+
+`fiscal-policy` names recognition, decision and implementation lags as why discretionary policy can arrive late
+(one item, `mac-fiscal-policy-14`). Standard, but not seen in the readable CED; check it is in scope for 3.8.
+
+### c-long-frq-money: the long FRQ's money market part (open, 2026-11-03)
+
+`frq-recession-long` part D asks for the effect of higher real GDP on the money market with the money supply
+held constant, stated as a limited-reserves framework (it lists `money-market` and `monetary-policy`, so it
+unlocks with 4.6). Readers have scored this shape (money demand right, nominal rate up); check the framework
+wording is what a 2027 reader expects, given that under ample reserves the central bank would hold the policy rate.
+
+### c-downward-stickiness: why self-adjustment from a recession is slow (open, 2026-11-03)
+
+`long-run-self-adjustment` says nominal wages are especially slow to fall (contracts, reluctance to cut pay). Standard
+in college texts; the CED text for 3.7 was not read.
+
+## Author E (Unit 5)
+
+### e-lrpc-shift-srpc: does the SRPC move with LRPC when the natural rate changes? (open, 2026-11-03)
+
+`phillips-curve` item 13 (a fall in the natural rate) lets the student move LRPC only (`movable: ["LRPC"]`), so
+the key is "LRPC left" and nothing else can be marked wrong. Some texts also shift the SRPC with it, so that it
+still crosses LRPC at expected inflation. A person should check how the scoring guidelines treat the SRPC in that
+case before an item lets both curves move.
+
+### e-phillips-long-run: the long run after a demand shock (open, 2026-11-03)
+
+The lessons, items 10-12 and `frq-phillips-short` C say the SRPC shifts right (or left) in the long run "as
+expected inflation adjusts", and the economy returns to LRPC at the new inflation rate; the item stems state the
+expectations assumption ("households and firms come to expect the higher inflation rate"). This is the standard
+reader-report treatment; confirm it matches the CED 5.2 wording. After a negative supply shock with no policy,
+the content (and `frq-phillips-long` D and E) says nominal wages fall, SRAS shifts back right, the SRPC shifts
+back left, and the economy returns to its starting inflation and unemployment rates.
+
+### e-crowding-out-curve: demand or supply for government borrowing (open, 2026-11-03)
+
+As in `f-one-curve-keys`: every `lf` graph item and FRQ graph part in `crowding-out` and both E FRQs says "show
+the borrowing as a change in the demand for loanable funds", and the `SLF` slip line and the notes say a
+supply-side drawing (lower public saving) also raises the real rate. The FRQ rubrics do not list the supply
+shift as accepted because the prompt fixes the curve; revisit if a grader option for alternative keys is added.
+
+### e-quantity-theory-scope: velocity arithmetic and the growth-rate form (open, 2026-11-03)
+
+Adds to `quantity-theory`. `money-growth-inflation` computes velocity (nominal GDP / M), the price level from
+M x V / Y, and long-run inflation from "money growth + velocity growth - real output growth" (items 1-3, 5, 8,
+9, notes). The growth-rate form is an approximation, labeled "about" in every stem. Confirm both are in scope for
+5.3 before Unit 5 is reviewed; if the CED stops at M x V = P x Y in words, items 5 and 8 can become qualitative.
+
+### e-growth-policy-scope: what 5.7 includes (open, 2026-11-03)
+
+The 5.7 content covers investment incentives, smaller deficits (less crowding out), education and training,
+public health, research funding and patents, infrastructure, and supply-side fiscal policy (incentives to work,
+save and invest, with its AD effect in the short run). It says the size of supply-side effects "remains debated"
+and takes no side. Institutions and property rights appear in one closing notes sentence only. A person should
+check the list against the CED 5.7 text (`ced-text`).
+
+### e-real-facts: real-world facts in hooks and notes (open, 2026-11-03)
+
+Unchecked against a source in this pass, stated cautiously: US real GDP per person "roughly three times" its 1960
+level and output per hour "several times" (`economic-growth` hook and notes); Germany 1923 and Zimbabwe 2008 as
+hyperinflations from money creation to pay government bills (`money-growth-inflation`); low unemployment with
+high inflation in the 1960s and stagflation after the 1970s oil price jumps (`phillips-curve` hook). Verify
+before publishing; every number in items is invented and labeled.
+
+### e-frq-scenario: FRQ scenario text sits in part A's prompt (open, 2026-11-03)
+
+The FRQ format has no field for a text scenario above the parts (`stimulus` is checked as a data table), so each
+E FRQ opens its part A prompt with the scenario. A text `scenario` field rendered above the parts (generator and
+`checkFrq`) would match the exam's layout; until then the wording works as it stands.
+
+## Author D (Unit 4)
+
+### d-m1-savings: savings deposits moved into M1 in May 2020 (open, 2026-11-03)
+
+U.S. official statistics have counted savings deposits in M1 since May 2020; older textbooks (and possibly the
+CED's 4.3 text, not read) put them in M2 only. `money-functions` teaches the current definition and says older
+books differ; no item asks where savings deposits go, and no table includes them (M1 items use currency and
+checkable deposits; M2 adds small time deposits and retail money market funds). A person should check the CED's
+4.3 wording and decide whether to state one definition.
+
+### d-expected-inflation: "expected inflation" is a 5.2 concept but 4.2 needs it (open, 2026-11-03)
+
+The map teaches `expected-inflation` ("expected inflation", "inflation expectations") in `phillips-curve` (5.2),
+but the real interest rate (4.2) is the nominal rate minus expected inflation. Smallest fix made: the alias
+"expected inflation rate" on `real-rate` (4.2), and Unit 4 always writes "the expected inflation rate". A person
+(or author E) may prefer to move the term itself to 4.2.
+
+### d-lf-government: government borrowing as a demand shift or a supply shift (open, 2026-11-03)
+
+`loanable-funds` and `frq-ample-reserves-long` teach government borrowing as DLF shifting right and say that
+showing lower public saving as SLF shifting left also raises the real rate (the FRQ rubric accepts both). Check
+that both are accepted on the current scoring guidelines.
+
+### d-bond-yield: computing a bond's yield (open, 2026-11-03)
+
+`financial-assets` has a worked example and two numeric items for the yield on a bond's price (yearly payment /
+price x 100), to make the inverse link concrete. The exam is not known to ask for this calculation; a person
+should confirm it is in scope or drop the two items (mac-financial-assets-3 and -15).
+
+### d-ample-tools: what Unit 4 teaches about the ample-reserves tools (open, 2026-11-03)
+
+Taught: interest on reserve balances as the main administered rate, the ON RRP rate as a floor for other lenders,
+the federal funds rate trading between them (just below IORB), the reserve requirement at zero since March 2020,
+open market operations used to keep reserves ample. Not taught: the discount (primary credit) rate as an
+administered rate in the ample framework (it is taught only as a limited-reserves tool). The reserve market graph
+draws one flat level (IORB), as `mac-graph.js` does (see `reserve-graph`). Check against the CED's 4.6.

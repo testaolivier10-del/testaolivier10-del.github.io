@@ -5,7 +5,7 @@
    top, the chain under it, scrolled to the newest link. */
 .pc-card{display:grid;gap:14px;}
 .pc-fig{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:18px;align-items:stretch;min-height:0;}
-.ls-root .pc-fig{flex:1 1 auto;height:100%;}
+.ls-root .pc-fig{flex:1 1 auto;min-height:300px;}
 .pc-fig.no-g{grid-template-columns:minmax(0,1fr);}
 .pc-chainbox{display:flex;flex-direction:column;gap:8px;min-height:0;min-width:0;}
 .pc-title{margin:0;font:800 15px/1.3 var(--font-ui);color:var(--ink);}
@@ -29,8 +29,8 @@
 .pc-graph[hidden]{display:none;}
 .pc-gcap{margin:0 0 4px;font:800 14px/1.3 var(--font-ui);color:var(--ink);}
 .pc-gcap span{font-weight:600;font-size:12.5px;color:var(--muted);margin-left:6px;}
-.pc-g{flex:1 1 auto;min-height:0;display:flex;justify-content:center;align-items:flex-start;}
-.pc-g .mac-graph-svg{width:100%;height:auto;max-width:520px;max-height:100%;}
+.pc-g{position:relative;flex:1 1 auto;min-height:180px;}
+.pc-g .mac-graph-svg{position:absolute;inset:0;width:100%;height:100%;}
 .pc-mark{font:800 12px var(--font-ui);fill:var(--ink);}
 .pc-mark.is-old{fill:var(--muted);}
 .pc-mark.is-note{font-weight:700;font-size:11px;fill:var(--muted);}
@@ -76,4 +76,10 @@
 .ls-stage.is-big .pc-graph{order:0;}
 
 /* test yourself: the same stage */
-.ls-drill-stage .pc-fig{height:100%;}
+.ls-drill-stage .pc-fig{flex:1 1 auto;min-height:300px;}
+.ls-drill-stage{display:flex;flex-direction:column;}
+.ls-drill-stage > .cd-extra{flex:1 1 auto;display:flex;flex-direction:column;min-height:0;}
+.ls-phone .pc-fig{display:flex;flex-direction:column;}
+.ls-phone .pc-graph{flex:1.7 1 0;min-height:190px;}
+.ls-phone .pc-chainbox{flex:1 1 0;min-height:84px;}
+.ls-phone .pc-link.is-next{display:none;}

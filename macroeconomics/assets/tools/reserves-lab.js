@@ -88,7 +88,7 @@
       var rd = G.find(now, 'RD');
       extra.push(mark('IORB rate', px(4.05), py(rd.at) + 15, 'is-note'));
     }
-    return html.replace('</svg>', extra.join('') + '</svg>');
+    return html.replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg" preserveAspectRatio="xMidYMin meet"').replace('</svg>', extra.join('') + '</svg>');
   }
   /* Where ApMacroGraph puts a curve's label (mac-graph.js labelAt), so the
      old curve's label can be moved off the new one when the two sit a step

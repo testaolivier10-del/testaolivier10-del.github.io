@@ -48,20 +48,27 @@
 .gs-qfig{flex:1;min-height:0;margin:0;display:flex;flex-direction:column;gap:6px;}
 .gs-qhost{flex:1;min-height:0;}
 .gs-rubric{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;flex:none;}
-.gs-rubric li{display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 4px;border-radius:999px;border:1.5px solid var(--line);font:700 12.5px var(--font-ui);color:var(--muted);background:var(--surface,#fff);}
+.gs-rubric li{display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 4px;border-radius:999px;border:1.5px solid var(--line);font:700 12.5px var(--font-ui);color:var(--muted);background:var(--white);}
 .gs-rk{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--paper);font:800 11px var(--font-ui);color:var(--muted);}
 .gs-rubric li.is-cur{border-color:var(--cink);color:var(--ink);}
-.gs-rubric li.is-cur .gs-rk{background:var(--cink);color:var(--white,#fff);}
+.gs-rubric li.is-cur .gs-rk{background:var(--cink);color:var(--white);}
 .gs-rubric li.is-ok{border-color:var(--good-text,#1B7F3A);color:var(--good-text,#1B7F3A);}
-.gs-rubric li.is-ok .gs-rk{background:var(--good-text,#1B7F3A);color:var(--white,#fff);}
+.gs-rubric li.is-ok .gs-rk{background:var(--good-text,#1B7F3A);color:var(--white);}
 .gs-rubric li.is-no{border-color:var(--bad-text,#B3261E);color:var(--bad-text,#B3261E);}
-.gs-rubric li.is-no .gs-rk{background:var(--bad-text,#B3261E);color:var(--white,#fff);}
+.gs-rubric li.is-no .gs-rk{background:var(--bad-text,#B3261E);color:var(--white);}
 .gs-stepctl{display:flex;flex-direction:column;gap:8px;}
 .gs-stepctl .mac-gr-labels{margin:0;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));}
 .gs-stepctl .mac-gr-controls{justify-content:flex-start;margin:0;}
 .gs-hint{margin:0;}
 
-/* A phone: the stage is the picture; the linked view takes turns with it. */
+/* A phone: the stage is the picture; the linked view takes turns with it.
+   In Test yourself the graph is the answer (curves are dragged on it), so
+   its stage keeps at least about half the screen; the dock scrolls under it
+   and its Check row stays pinned. */
 .ls-root.ls-phone .gs-views{gap:0;}
 .ls-root.ls-phone .gs-link-h{font-size:12px;}
+.ls-root.ls-phone .gs-hint{display:none;}
+@media (max-width:640px) and (orientation:portrait){
+  body[data-app="tool-graph-studio"] .ls-root.ls-quiz .ls-stage{min-height:min(50svh,420px);}
+}
 @media (prefers-reduced-motion: reduce){ .gs-rubric li{transition:none;} }

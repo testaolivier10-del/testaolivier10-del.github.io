@@ -68,8 +68,11 @@
     var L = 46, R = 10, Tp = 22, B = 34, pw = w - L - R, ph = h - Tp - B;
     var hi = 0, lo = 0;
     cols.forEach(function(c){ var pos = 0, neg = 0; c.parts.forEach(function(p){ if(p.v > 0) pos += p.v; else neg += p.v; }); if(c.outline != null){ pos = Math.max(pos, c.outline); neg = Math.min(neg, c.outline); } hi = Math.max(hi, pos); lo = Math.min(lo, neg); });
+    if(o.scale){ if(hi > 0 || lo === 0) hi = Math.max(hi, o.scale); else lo = Math.min(lo, -o.scale); }
     if(hi === 0 && lo === 0) hi = 1;
     var span = hi - lo, sy = function(v){ return Tp + (hi - v) / span * ph; }, cw = pw / cols.length, bw = Math.min(46, cw * 0.62);
+    // Narrow: value labels only where they fit (the first and the strong columns).
+    var tight = cw < 44;
     var g = ['<line class="ml-zero" x1="' + L + '" x2="' + (w - R) + '" y1="' + f1(sy(0)) + '" y2="' + f1(sy(0)) + '"/>'];
     g.push('<text class="ml-ax" x="' + (L - 6) + '" y="' + f1(sy(hi) + 4) + '" text-anchor="end">' + esc(o.fmt(hi)) + '</text>');
     if(lo < 0) g.push('<text class="ml-ax" x="' + (L - 6) + '" y="' + f1(sy(lo) + 4) + '" text-anchor="end">' + esc(o.fmt(lo)) + '</text>');
@@ -85,9 +88,10 @@
         g.push('<rect class="ml-bar ' + (p.cls || '') + '" x="' + f1(x) + '" y="' + f1(top) + '" width="' + f1(bw) + '" height="' + f1(hh) + '" rx="3"' + (p.op != null ? ' style="opacity:' + p.op + '"' : '') + '/>');
       });
       var labV = c.value != null ? c.value : up + dn, labY = labV >= 0 ? sy(Math.max(up, c.outline || 0)) - 6 : sy(Math.min(dn, c.outline || 0)) + 14;
-      if(c.show !== false) g.push('<text class="ml-val' + (c.strong ? ' is-strong' : '') + '" x="' + f1(cx) + '" y="' + f1(labY) + '" text-anchor="middle">' + esc(o.fmt(labV)) + '</text>');
+      if(c.q) g.push('<text class="ml-val is-strong ml-q" x="' + f1(cx) + '" y="' + f1(sy(0) - 8) + '" text-anchor="middle">?</text>');
+      else if(c.show !== false && (!tight || i === 0 || c.strong)) g.push('<text class="ml-val' + (c.strong ? ' is-strong' : '') + '" x="' + f1(cx) + '" y="' + f1(labY) + '" text-anchor="middle">' + esc(o.fmt(labV)) + '</text>');
       if(c.dot != null) g.push('<circle class="ml-dot" cx="' + f1(cx) + '" cy="' + f1(sy(c.dot)) + '" r="4.5"/>');
-      g.push('<text class="ml-xl' + (c.strong ? ' is-strong' : '') + '" x="' + f1(cx) + '" y="' + (h - B + 16) + '" text-anchor="middle">' + esc(c.label) + '</text>');
+      g.push('<text class="ml-xl' + (c.strong ? ' is-strong' : '') + '" x="' + f1(cx) + '" y="' + (h - B + 16) + '" text-anchor="middle">' + esc(tight && c.short != null ? c.short : c.label) + '</text>');
     });
     g.push('<text class="ml-axname" x="' + f1(L + pw / 2) + '" y="' + (h - 4) + '" text-anchor="middle">' + esc(o.xName) + '</text>');
     g.push('<text class="ml-axname" x="4" y="13">' + esc(o.yName) + '</text>');
@@ -176,7 +180,8 @@
       var r = st.view === 'ripple' ? drawRipple() : st.view === 'gap' ? drawGap() : drawMoney();
       T.explain(sayEl, r.head, r.body);
       det.innerHTML = r.det;
-      if(LS){ if(r.head !== lastCap){ LS.caption(r.head, 'explore'); lastCap = r.head; } LS.pills(r.pills || [], 'left', 'explore'); if(pane) pane.setup(st.gkind === 'recessionary' ? 'Recessionary, ' + usd(st.gsize) + ' billion' : 'Inflationary, ' + usd(st.gsize) + ' billion'); }
+      if(LS){ var row = LS.root.querySelector('.mac-ls-setup'); if(row) row.hidden = st.view !== 'gap';
+        if(r.head !== lastCap){ LS.caption(r.head, 'explore'); lastCap = r.head; } LS.pills(r.pills || [], 'left', 'explore'); if(pane) pane.setup(st.gkind === 'recessionary' ? 'Recessionary, ' + usd(st.gsize) + ' billion' : 'Inflationary, ' + usd(st.gsize) + ' billion'); }
       if(full) say(r.head.replace(/<[^>]+>/g, ''));
     }
     function drawRipple(){
@@ -246,8 +251,7 @@
       var cols = m.rounds.map(function(v, i){ return { label: 'Bank ' + (i + 1), parts: [{ v: v, cls: 'is-g' }] }; });
       if(m.now) cols.unshift({ label: 'Deposit', parts: [{ v: m.now, cls: 'is-now' }] });
       cols.push({ label: 'Total', strong: true, parts: (m.now ? [{ v: m.now, cls: 'is-now' }] : []).concat(m.rounds.map(function(v, i){ return { v: v, cls: 'is-sum', op: Math.max(0.35, 1 - i * 0.08) }; })), outline: m.dm, value: m.dm });
-      var narrow = (box.clientWidth || 600) < 520;
-      if(narrow) cols.forEach(function(c){ c.label = c.label.replace('Bank ', 'B').replace('Deposit', 'Dep.'); });
+      cols.forEach(function(c){ c.short = c.label.replace('Bank ', '').replace('Deposit', 'D'); });
       bars(box, cols, { fmt: function(v){ return usd(Math.round(v)); }, xName: 'Each bank lends its excess reserves; the loan is redeposited', yName: 'New money ($ million)',
         label: 'Money creation: ' + (m.now ? 'a new deposit of ' + usd(m.now, 'million') + ', then ' : '') + 'loans of ' + usd(m.rounds[0], 'million') + ', ' + usd(m.rounds[1], 'million') + ' and so on, up to ' + usd(m.dm, 'million') + ' in all.' });
       figs.money.querySelector('.ml-read').innerHTML = '<span class="ml-chip">Excess reserves ' + usd(m.ex, 'million') + '</span><span class="ml-op">×</span><span class="ml-chip">1 ÷ ' + n(st.rr) + ' = ' + n(m.mm) + '</span>' + (m.now ? '<span class="ml-op">+</span><span class="ml-chip">deposit ' + usd(m.now) + '</span>' : '') + '<span class="ml-op">=</span><span class="ml-chip is-total">ΔM up to ' + usd(m.dm, 'million') + '</span>';
@@ -284,6 +288,10 @@
   }
 
   /* ============================================================ test yourself */
+  /* Every problem has a picture on the stage: the AD-AS graph of the gap
+     (AD shifts once the policy is found), the spending rounds of the change
+     (the total shows once it is found), or the first bank's balance sheet and
+     its loan rounds. */
   function quiz(host, data){
     var fig = null, prob = null;
     var kinds = [];
@@ -292,24 +300,48 @@
       types: kinds.map(function(k){ return { value: k, label: ML.TITLE[k] }; }), typeLabel: 'Problem type',
       generate: ML.generate, title: function(p){ return p.title; },
       extra: function(el, p){
-        prob = p; fig = null;
-        if(p.type !== 'gap') return;
-        var v = p.values, rec = v.kind === 'recessionary';
-        fig = document.createElement('div'); fig.className = 'ml-qfig';
+        prob = p;
+        fig = document.createElement('div'); fig.className = 'ml-qfig ml-qfig-' + p.type;
         el.appendChild(fig);
-        paint(false);
-        function paint(closed){
-          paintOnly(closed); tidy(fig);
-        }
-        function paintOnly(closed){
-          var spec = { kind: 'adas', start: { AD: rec ? -1 : 1 }, do: [] }, sh = closed ? { AD: rec ? 1 : -1 } : {};
-          fig.innerHTML = G.svg(spec, { shifts: sh, eq: closed ? G.eq(spec, sh) : null }, { label: 'AD-AS graph: real GDP of ' + usd(v.y, 'billion') + ' is ' + (rec ? 'below' : 'above') + ' full employment (' + usd(v.yf, 'billion') + ', at LRAS).' + (closed ? ' AD has shifted to close the gap.' : '') }) +
-            '<p class="ml-qcap">Real GDP ' + usd(v.y, 'billion') + ' · full employment ' + usd(v.yf, 'billion') + (closed ? ' · AD shifted ' + (rec ? 'right' : 'left') + ' by ' + (v.tool === 'G' ? 'purchases' : 'taxes') + ' of ' + usd(Math.abs(v.need), 'billion') : '') + '</p>';
-        }
-        fig.paint = paint;
-        requestAnimationFrame(function(){ tidy(fig); });
+        fig.done = {};
+        fig.paint = function(){ paintFig(fig, p); };
+        requestAnimationFrame(fig.paint);
+        if(window.ResizeObserver){ var k0 = ''; new ResizeObserver(function(){ var k = fig.clientWidth + 'x' + fig.clientHeight; if(k !== k0 && fig.isConnected){ k0 = k; fig.paint(); } }).observe(fig); }
       },
-      onStep: function(s){ if(prob && prob.type === 'gap' && s.key === 'size' && fig && fig.paint) fig.paint(true); }
+      onStep: function(s){ if(fig && prob){ fig.done[s.key] = 1; fig.paint(); } }
     });
+  }
+  function paintFig(fig, p){
+    var v = p.values, done = fig.done;
+    if(p.type === 'gap'){
+      var rec = v.kind === 'recessionary', closed = !!done.size;
+      var spec = { kind: 'adas', start: { AD: rec ? -1 : 1 }, do: [] }, sh = closed ? { AD: rec ? 1 : -1 } : {};
+      fig.innerHTML = '<div class="ml-qgraph">' + G.svg(spec, { shifts: sh, eq: closed ? G.eq(spec, sh) : null }, { label: 'AD-AS graph: real GDP of ' + usd(v.y, 'billion') + ' is ' + (rec ? 'below' : 'above') + ' full employment (' + usd(v.yf, 'billion') + ', at LRAS).' + (closed ? ' AD has shifted to close the gap.' : '') }) + '</div>' +
+        '<p class="ml-qcap">Real GDP ' + usd(v.y, 'billion') + ' · full employment ' + usd(v.yf, 'billion') + (closed ? ' · AD shifted ' + (rec ? 'right' : 'left') + ' by ' + (v.tool === 'G' ? 'purchases' : 'taxes') + ' of ' + usd(Math.abs(v.need), 'billion') : '') + '</p>';
+      tidy(fig);
+      return;
+    }
+    if(p.type === 'money'){
+      var m = ML.money(v.scn, v.rr, v.X, 8), showEx = !!done.ex, showDm = !!done.dm;
+      var bonds = v.scn === 'buyBank' ? -v.X : v.scn === 'sellBank' ? v.X : 0;
+      fig.innerHTML = '<table class="ml-t"><caption>Bank 1: what changes</caption><thead><tr><th scope="col">Assets</th><th scope="col">Liabilities</th></tr></thead><tbody><tr><td>' +
+        '<span>Required reserves</span><b>' + (showEx ? usd(m.req) : '?') + '</b><span>Excess reserves</span><b class="is-ex">' + (showEx ? usd(m.ex) : '?') + '</b>' + (bonds ? '<span>Bonds</span><b>' + usd(bonds) + '</b>' : '') + '</td><td><span>Checking deposits</span><b>' + usd(m.deposit) + '</b></td></tr></tbody></table>' +
+        '<div class="ml-qbars"></div>';
+      var cols = m.rounds.map(function(x, i){ return { label: 'Bank ' + (i + 1), short: String(i + 1), parts: showEx ? [{ v: x, cls: 'is-g' }] : [], show: showEx }; });
+      if(m.now) cols.unshift({ label: 'Deposit', short: 'D', parts: [{ v: m.now, cls: 'is-now' }] });
+      cols.push(showDm ? { label: 'Total', strong: true, parts: (m.now ? [{ v: m.now, cls: 'is-now' }] : []).concat(m.rounds.map(function(x, i){ return { v: x, cls: 'is-sum', op: Math.max(0.35, 1 - i * 0.08) }; })), outline: m.dm, value: m.dm } : { label: 'Total', strong: true, parts: [], q: true });
+      bars(fig.querySelector('.ml-qbars'), cols, { fmt: function(x){ return usd(Math.round(x)); }, xName: 'Loans, bank by bank', yName: 'New money ($ million)',
+        label: showDm ? 'Loan rounds adding up to ' + usd(m.dm, 'million') + '.' : 'Loan rounds, to be found.', scale: showEx ? null : Math.abs(v.X / v.rr) });
+      return;
+    }
+    // multiplier and total: the spending rounds
+    var kind = p.type === 'total' ? (v.tool === 'T' ? 'T' : 'G') : 'G', amt = p.type === 'total' ? v.change : 1;
+    var R = ML.ripple(kind, v.mpc, amt, 8), shown = p.type === 'total' ? !!done.dy : !!done.k;
+    var cols2 = R.rounds.map(function(rd, i){ return { label: String(i + 1), parts: [{ v: rd.net, cls: kind === 'T' ? 'is-t' : 'is-g' }] }; });
+    cols2.push({ label: '…', parts: [], show: false });
+    cols2.push(shown ? { label: 'Total', strong: true, parts: R.rounds.map(function(rd, i){ return { v: rd.net, cls: 'is-sum', op: Math.max(0.35, 1 - i * 0.08) }; }), outline: R.total, value: R.total } : { label: 'Total', strong: true, parts: [], q: true });
+    fig.innerHTML = '<p class="ml-qcap">' + (p.type === 'total' ? 'The rounds of spending from this change' : 'One extra dollar of spending, round by round') + '</p><div class="ml-qbars"></div>';
+    bars(fig.querySelector('.ml-qbars'), cols2, { fmt: function(x){ return p.type === 'total' ? usd(Math.round(x * 10) / 10) : '$' + n(x); }, xName: 'Round of spending', yName: p.type === 'total' ? 'Change in spending ($ billion)' : 'Dollars',
+      label: 'Spending rounds: each is ' + n(v.mpc) + ' of the one before' + (shown ? ', adding up to ' + (p.type === 'total' ? usd(R.total, 'billion') : '$' + n(R.total)) + '.' : '; the total is to be found.'), scale: shown ? null : Math.abs(R.total) });
   }
 })();

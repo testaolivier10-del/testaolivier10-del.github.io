@@ -91,7 +91,7 @@
         extra.push(mark('Y<tspan class="pc-sub" dy="3">F</tspan>', px(5) + 4, py(10) + 24, 'is-note'));
       }
     }
-    return html.replace('</svg>', extra.join('') + '</svg>');
+    return html.replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg" preserveAspectRatio="xMidYMin meet"').replace('</svg>', extra.join('') + '</svg>');
   }
   /* The graph that goes with link i: the newest link up to i that has one. */
   function graphAt(ch, i){ for(var k = Math.min(i, ch.links.length - 1); k >= 0; k--) if(ch.links[k].graph) return { g: ch.links[k].graph, k: k }; return null; }
@@ -113,8 +113,9 @@
     var list = fig.querySelector('.pc-chain');
     list.innerHTML = chainHtml(ch, n, { more: n < ch.links.length - 1 && opts.more !== false, missed: opts.missed });
     // The newest link in view (the list scrolls; the page does not).
-    list.scrollTop = list.scrollHeight;
-    if(window.requestAnimationFrame) requestAnimationFrame(function(){ list.scrollTop = list.scrollHeight; });
+    var now = list.querySelector('.is-now');
+    function show(){ if(now) list.scrollTop = Math.max(0, now.offsetTop - list.offsetTop + now.offsetHeight - list.clientHeight + 4); }
+    show(); if(window.requestAnimationFrame) requestAnimationFrame(show);
     var ga = graphAt(ch, n), box = fig.querySelector('.pc-graph');
     box.hidden = !ga;
     if(ga){

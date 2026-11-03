@@ -1,0 +1,68 @@
+/* Foreign exchange lab (macroeconomics/assets/tools/forex-lab.js). OWNED BY THIS
+   TOOL ONLY (builder T4). The graphs are ApMacroGraph's (mac.css, "Graphs");
+   this file links colors across the two markets (demand for X and supply of
+   Y, the same trades, in the course ink; supply of X and demand for Y in
+   blue), lays the markets side by side (one at a time on a narrow stage) and
+   styles the annotations, the result strip and Test yourself's graph steps. */
+.fxl-fig,.fxl-qfig{--fxl-1:var(--cink);--fxl-2:#0B67A6;--fxl-up:#1B6E35;--fxl-down:#A4381C;}
+:root[data-theme="dark"] .fxl-fig,:root[data-theme="dark"] .fxl-qfig{--fxl-2:#7CC0F0;--fxl-up:#8FD6A2;--fxl-down:#F4A58A;}
+.fxl-fig{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0;width:100%;position:relative;}
+.mac-ls-stage>.fxl-fig{flex:1 1 auto;min-height:0;justify-content:center;justify-content:safe center;}
+.mac-ls-stage>.fxl-fig.is-narrow{justify-content:flex-start;}
+.mac-ls-stage>.fxl-fig.is-narrow .fxl-panels{flex:1 1 auto;min-height:0;grid-template-rows:minmax(0,1fr);}
+.mac-ls-stage>.fxl-fig.is-narrow .fxl-panel{min-height:0;height:100%;}
+.mac-ls-stage>.fxl-fig.is-narrow .fxl-svg{flex:1 1 auto;min-height:0;display:flex;justify-content:center;}
+.mac-ls-stage>.fxl-fig.is-narrow .fxl-svg svg{width:100%;height:100%;}
+.fxl-panels{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 18px;align-items:start;max-width:980px;width:100%;margin:0 auto;}
+.fxl-fig.is-narrow .fxl-panels{grid-template-columns:minmax(0,1fr);}
+.fxl-fig.is-narrow[data-panel="x"] .fxl-p-y,.fxl-fig.is-narrow[data-panel="y"] .fxl-p-x{display:none;}
+.fxl-panel{min-width:0;display:flex;flex-direction:column;align-items:center;}
+.fxl-ph{margin:0;font:700 14px var(--font-ui);color:var(--ink);text-align:center;}
+.fxl-fig.is-narrow .fxl-ph{display:none;}
+.fxl-svg{width:100%;max-width:520px;}
+.fxl-sx{touch-action:none;}
+.fxl-svg svg{display:block;width:100%;height:auto;}
+.fxl-tabs{display:none;gap:8px;justify-content:flex-start;align-items:center;min-height:44px;flex-wrap:wrap;}
+.fxl-fig.is-narrow .fxl-tabs{display:flex;}
+.fxl-tab{min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;}
+.fxl-tab.on{background:var(--cink);border-color:var(--cink);color:var(--white);}
+.fxl-handles{display:flex;gap:8px;justify-content:center;margin-top:2px;}
+.fxl-fig.is-narrow .fxl-handles{position:absolute;top:0;right:0;margin:0;}
+.fxl-h{min-height:44px;min-width:64px;padding:4px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;}
+.fxl-h[data-c="D"]{border-color:var(--fxl-1);} .fxl-h[data-c="S"]{border-color:var(--fxl-2);}
+.fxl-h.is-moved{background:var(--ctint);}
+.fxl-h span{color:var(--muted);}
+.fxl-h:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.fxl-mirror{margin:2px 0 0;font:700 12.5px/1.4 var(--font-ui);color:var(--muted);text-align:center;}
+.fxl-fig.is-narrow .fxl-mirror{display:none;}
+
+/* the same trades, the same color */
+.fxl-p-x [data-curve="D"] .mac-gr-curve,.fxl-p-y [data-curve="S"] .mac-gr-curve{stroke:var(--fxl-1);}
+.fxl-p-x [data-curve="S"] .mac-gr-curve,.fxl-p-y [data-curve="D"] .mac-gr-curve{stroke:var(--fxl-2);}
+.fxl-p-x .mac-gr-clabel.fxl-c-D,.fxl-p-y .mac-gr-clabel.fxl-c-S{fill:var(--fxl-1);}
+.fxl-p-x .mac-gr-clabel.fxl-c-S,.fxl-p-y .mac-gr-clabel.fxl-c-D{fill:var(--fxl-2);}
+.fxl-p-y .mac-gr-grab{cursor:default;}
+.fxl-arrow{fill:none;stroke-width:2.2;stroke-linecap:round;}
+.fxl-head{stroke:none;}
+.fxl-arrow.fxl-k1{stroke:var(--fxl-1);} .fxl-head.fxl-k1{fill:var(--fxl-1);}
+.fxl-arrow.fxl-k2{stroke:var(--fxl-2);} .fxl-head.fxl-k2{fill:var(--fxl-2);}
+.fxl-rate{fill:var(--cink);font:800 11px var(--font-ui);}
+.fxl-rate.is-old{fill:var(--muted);}
+.fxl-plabel{font-size:12.5px;}
+.mac-gr-eq.fxl-now{fill:var(--cink);}
+.mac-gr-guide.fxl-now{stroke:var(--cink);}
+.fxl-strip{display:flex;flex-wrap:wrap;gap:6px 10px;justify-content:center;min-height:30px;}
+.fxl-chip{font:700 13px/1.35 var(--font-ui);padding:5px 12px;border-radius:999px;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);}
+.fxl-chip.is-up b{color:var(--fxl-up);} .fxl-chip.is-down b{color:var(--fxl-down);}
+.fxl-ctl{display:grid;gap:10px;}
+.fxl-btns{display:flex;flex-wrap:wrap;gap:8px;}
+.fxl-shock select{width:100%;}
+
+/* Test yourself */
+.cd-step:has(.fxl-gstep) .cd-opts{display:none;}
+.fxl-qfig{margin:0;}
+.fxl-qfig .mac-gr-stage{max-width:520px;}
+.fxl-qfig .mac-gr-handle{background:var(--white);color:var(--ink);}
+.fxl-pts{display:inline-flex;flex-wrap:wrap;gap:4px 8px;margin-left:2px;}
+.fxl-pt{font:800 12.5px var(--font-ui);padding:1px 8px;border-radius:999px;background:var(--paper);}
+.fxl-pt.ok{color:var(--good-text,#1B7F3A);} .fxl-pt.no{color:var(--bad-text,#B3261E);}
