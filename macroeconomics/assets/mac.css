@@ -495,8 +495,12 @@ table.mac-data td{font-variant-numeric:tabular-nums;}
 .mac-gr-eq.is-old{fill:var(--muted,#777);cursor:default;}
 .mac-gr-eq.is-point{fill:var(--accent,#C24E00);}
 .mac-gr-plabel{fill:var(--ink);font-weight:800;}
+.mac-gr-plabel.is-old{fill:var(--muted,#777);font-weight:700;}
+.mac-gr-arrow{fill:none;stroke:var(--cink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.mac-gr-mark{fill:var(--cink);font-weight:800;font-size:11px;}
+.mac-gr-mark.is-old{fill:var(--muted,#777);font-weight:700;}
 .mac-gr-controls{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:.5em 0;}
-.mac-gr-handle{min-height:44px;padding:6px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface,#fff);color:var(--ink);font:700 13px var(--font-ui);}
+.mac-gr-handle{min-height:44px;padding:6px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--white,#fff);color:var(--ink);font:700 13px var(--font-ui);}
 .mac-gr-handle span{font-weight:600;color:var(--muted);}
 .mac-gr-handle:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
 .mac-gr-handle[aria-disabled="true"]{opacity:.7;}

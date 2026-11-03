@@ -23,5 +23,20 @@
   "slug": "forex-lab",
   "title": "Foreign Exchange Lab",
   "file": "apmacro/forex-lab.svg"
+ },
+ {
+  "slug": "ppc-trade",
+  "title": "PPC and Trade Trainer",
+  "file": "apmacro/ppc-trade.svg"
+ },
+ {
+  "slug": "indicators-lab",
+  "title": "Economic Indicators Lab",
+  "file": "apmacro/indicators-lab.svg"
+ },
+ {
+  "slug": "multiplier-lab",
+  "title": "Multiplier Lab",
+  "file": "apmacro/multiplier-lab.svg"
  }
 ]

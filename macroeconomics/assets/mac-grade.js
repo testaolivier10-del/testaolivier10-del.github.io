@@ -330,7 +330,32 @@
   // point within 0.3 is on the drawn crossing and a point on the old one is not.
   var EQ_TOL = 0.3;
   function GR(){ return root.ApMacroGraph; }
+  // The graph's usual name in a label note ("the vertical axis of the AD-AS graph").
+  var GNAME = { ppc: 'PPC', sd: 'supply and demand graph', adas: 'AD-AS graph', money: 'money market graph', reserves: 'reserve market graph',
+    lf: 'loanable funds graph', phillips: 'Phillips curve graph', forex: 'foreign exchange graph' };
+  /* key.alt: other accepted shift sets ([[{ curve, dir }]]), for the changes the exam
+     credits either way (a deficit as DLF right or SLF left; docs/apmacro-needs-author.md
+     f-one-curve-keys). The response is graded against the key and each alternative,
+     and the best result is kept, so the equilibrium and outcome follow the graph the
+     student drew. */
   function graph(spec, resp){
+    var alts = (spec && spec.key && spec.key.alt) || [];
+    var best = graph1(spec, resp), sh = (resp && resp.shifts) || {};
+    // On a tie, the set whose curves the student moved explains the slip best.
+    var mine = function(set){ var cs = set.map(function(x){ return x.curve; }).sort().join(), mv = Object.keys(sh).filter(function(c){ return sh[c]; }).sort().join(); return cs === mv; };
+    var bestMine = mine((spec.key && spec.key.shifts) || []);
+    alts.forEach(function(a){
+      var k = {}; for(var x in spec.key) if(x !== 'alt' && x !== 'outcome') k[x] = spec.key[x];
+      k.shifts = a;
+      var s2 = {}; for(var y in spec) s2[y] = spec[y];
+      s2.key = k;
+      if(spec.key.outcome){ var o = GR().outcome(s2, GR().keyOffsets(s2)); if(o) k.outcome = o; }
+      var g = graph1(s2, resp);
+      if(g.right > best.right || (g.right === best.right && !bestMine && mine(a))){ best = g; bestMine = mine(a); }
+    });
+    return best;
+  }
+  function graph1(spec, resp){
     var M = GR();
     if(!M) throw new Error('ApMacroGrade.graph needs ApMacroGraph (mac-graph.js)');
     var k = M.KINDS[spec.kind], does = spec.do || [], key = spec.key || {}, r = resp || {}, sh = r.shifts || {}, pts = [];
@@ -344,7 +369,7 @@
         var got = (r.labels || {})[first];
         note = !got ? 'Label the ' + (first === 'x' ? 'horizontal' : 'vertical') + ' axis.' :
           got === 'fxPriceFlipped' ? 'The price of a currency is in units of the other currency per unit of this one: ' + M.labelText('fxPrice', spec.names) + '.' :
-          'The ' + (first === 'x' ? 'horizontal' : 'vertical') + ' axis of the ' + k.title.toLowerCase() + ' is ' + M.labelText(k[first], spec.names) + ', not ' + M.labelText(got, spec.names) + '.';
+          'The ' + (first === 'x' ? 'horizontal' : 'vertical') + ' axis of the ' + (GNAME[spec.kind] || k.title.toLowerCase()) + ' is ' + M.labelText(k[first], spec.names) + ', not ' + M.labelText(got, spec.names) + '.';
       } else if(first) note = (r.labels || {})[first] ? 'One curve has the wrong label: check which curve is ' + M.curveName(first) + '.' : 'Label every curve.';
       pts.push({ id: 'labels', ok: !wrong.length, note: note });
     }

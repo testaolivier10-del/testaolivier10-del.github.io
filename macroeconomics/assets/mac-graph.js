@@ -214,6 +214,11 @@
         if(at < 1 || at > 9) bad('graph.key.shifts[' + i + ']: the shifted ' + s.curve + ' leaves the graph; move graph.start');
       });
       if(!key.because || String(key.because).length < 8) bad('graph.key.because names the cause in a few words ("a rise in input costs"), for the slip feedback');
+      // key.alt: other accepted shift sets (ApMacroGrade.graph keeps the best).
+      (key.alt || []).forEach(function(set, j){
+        if(!Array.isArray(set) || !set.length){ bad('graph.key.alt[' + j + '] is a list of { curve, dir } shifts'); return; }
+        set.forEach(function(s){ var c = find(curves(spec, {}), s.curve); if(!c || !dirSign(c.shape, s.dir)) bad('graph.key.alt[' + j + ']: ' + s.curve + ' ' + s.dir + ' is not a shift of this graph'); });
+      });
     }
     if(key.outcome){
       if(!k.out) bad('graph.key.outcome: a ' + spec.kind + ' graph has no equilibrium');
@@ -254,17 +259,63 @@
     if(c.shape === 'ppc' && pts.length) pts.push(f1(px(c.at)) + ' ' + f1(py(0)));
     return pts.length ? 'M' + pts.join('L') : '';
   }
-  // Where a curve's label sits: past its visible end.
+  /* Where a curve's label sits, and its anchor. Lines have slope -1 or +1,
+     so labels read at one x (8.6) sit a whole step apart in height when a
+     curve shifts a step: D1 and D2, SRAS1 and SRAS2 never touch, and none
+     sits on the x axis (the Phase 0 note: D1 and D2 crowded the corner).
+     Down curves: right of the line, low; up curves: left of (above) the
+     line, high; vertical curves: right of the line at the top, the old and
+     new one staggered; the PPC: just outside the curve at 45 degrees. */
+  var LX = 8.6;
   function labelAt(c){
-    if(c.shape === 'vertical') return [px(c.at) + 4, py(10) + 10];
-    if(c.shape === 'up'){ var x1 = Math.min(10, c.at + 5); return [px(x1) - 4, py(y(c, x1)) - 4]; }
-    if(c.shape === 'down'){ var x2 = Math.min(10, c.at + 5); return [px(x2) - 2, py(y(c, x2)) + 2]; }
-    if(c.shape === 'ppc') return [px(c.at * 0.72) + 4, py(c.at * 0.72) - 4];
-    return [px(9.2), py(c.at) - 5];
+    if(c.shape === 'vertical') return [px(c.at) + 5, py(9.6) + 6 + (Math.round(c.at) % 2 ? 0 : 15), 'start'];
+    if(c.shape === 'down'){ var x2 = LX, y2 = 5 - (x2 - c.at); if(y2 < 0.5){ y2 = 0.5; x2 = c.at + 4.5; } return [px(x2) + 6, py(y2) + 3, 'start']; }
+    if(c.shape === 'up'){ var x1 = LX, y1 = 5 + (x1 - c.at); if(y1 > 9.6){ y1 = 9.6; x1 = c.at + 4.6; } return [px(x1) - 7, py(y1) - 3, 'end']; }
+    if(c.shape === 'ppc'){ var r = (c.at + 0.45) / Math.SQRT2; return [px(r) + 2, py(r) - 2, 'start']; }
+    return [px(9.6), py(c.at) - 6, 'end'];
   }
   function curveLabel(id, n, at, cls){
     var c = CURVE[id] || [id, ''], sub = c[1] + (n ? n : '');
-    return '<text class="mac-gr-clabel ' + (cls || '') + '" x="' + f1(at[0]) + '" y="' + f1(at[1]) + '" text-anchor="end">' + esc(c[0]) + (sub ? '<tspan class="mac-gr-sub" dy="3">' + esc(sub) + '</tspan>' : '') + '</text>';
+    return '<text class="mac-gr-clabel ' + (cls || '') + '" x="' + f1(at[0]) + '" y="' + f1(at[1]) + '" text-anchor="' + (at[2] || 'end') + '">' + esc(c[0]) + (sub ? '<tspan class="mac-gr-sub" dy="3">' + esc(sub) + '</tspan>' : '') + '</text>';
+  }
+  /* The arrow that shows a shift's direction (authoring guide: "a shift
+     shows its direction with an arrow"), drawn between the old and the new
+     curve away from the equilibrium. */
+  function arrowOf(b, c){
+    var d = c.at - b.at;
+    if(Math.abs(d) < 0.15) return '';
+    var x0, y0, x1, y1;
+    if(c.shape === 'vertical'){ y0 = y1 = 8.4; x0 = b.at; x1 = c.at; }
+    else if(c.shape === 'down'){ y0 = y1 = 7.6; x0 = b.at - 2.6; x1 = c.at - 2.6; }
+    else if(c.shape === 'up'){ y0 = y1 = 2.4; x0 = b.at - 2.6; x1 = c.at - 2.6; }
+    else if(c.shape === 'ppc'){ var k = Math.cos(Math.PI / 3); x0 = b.at * k; y0 = b.at * Math.sin(Math.PI / 3); x1 = c.at * k; y1 = c.at * Math.sin(Math.PI / 3); }
+    else { x0 = x1 = 8.2; y0 = b.at; y1 = c.at; }
+    if(x0 < 0.3 || x1 < 0.3 || y0 < 0 || y1 > 10) return '';
+    var X0 = px(x0), Y0 = py(y0), X1 = px(x1), Y1 = py(y1), L2 = Math.hypot(X1 - X0, Y1 - Y0), ux = (X1 - X0) / L2, uy = (Y1 - Y0) / L2;
+    // stop short of both curves, with a head at the new one
+    var a = [X0 + ux * 4, Y0 + uy * 4], e = [X1 - ux * 4, Y1 - uy * 4], h = 6;
+    return '<path class="mac-gr-arrow" d="M' + f1(a[0]) + ' ' + f1(a[1]) + 'L' + f1(e[0]) + ' ' + f1(e[1]) + 'M' + f1(e[0] - ux * h - uy * h * 0.6) + ' ' + f1(e[1] - uy * h + ux * h * 0.6) + 'L' + f1(e[0]) + ' ' + f1(e[1]) + 'L' + f1(e[0] - ux * h + uy * h * 0.6) + ' ' + f1(e[1] - uy * h - ux * h * 0.6) + '"/>';
+  }
+  /* The value marks on the axes at E1 and E2 (P1, P2; Q1, Q2), as readers
+     ask for them; left out while the axes are still to be labeled, since
+     they would give the labels away. */
+  var MARK = { sd: ['Q', 'P'], adas: ['Y', 'PL'], money: ['M', 'i'], reserves: ['R', 'i'], lf: ['Q', 'r'], phillips: ['u', '\u03c0'], forex: ['Q', 'XR'] };
+  // other: the other equilibrium's point, so two marks less than a step
+  // apart on an axis sit on either side instead of on top of each other.
+  function marks(kind, p, n, cls, other){
+    var m = MARK[kind];
+    if(!m || !p) return '';
+    var sub = function(t){ return esc(t) + (n ? '<tspan class="mac-gr-sub" dy="3">' + n + '</tspan>' : ''); };
+    var out = '';
+    if(!other || Math.abs(other[0] - p[0]) > 1e-6){
+      var close = other && Math.abs(other[0] - p[0]) < 1, anc = close ? (p[0] < other[0] ? 'end' : 'start') : 'middle', dx = close ? (p[0] < other[0] ? 2 : -2) : 0;
+      out += '<text class="mac-gr-mark ' + (cls || '') + '" x="' + f1(px(p[0]) + dx) + '" y="' + (T + PH + 13) + '" text-anchor="' + anc + '">' + sub(m[0]) + '</text>';
+    }
+    if(!other || Math.abs(other[1] - p[1]) > 1e-6){
+      var closeY = other && Math.abs(other[1] - p[1]) < 0.7, dy = closeY ? (p[1] < other[1] ? 5 : -2) : 4;
+      out += '<text class="mac-gr-mark ' + (cls || '') + '" x="' + (L - 4) + '" y="' + f1(py(p[1]) + dy) + '" text-anchor="end">' + sub(m[1]) + '</text>';
+    }
+    return out;
   }
   function guides(p, cls){
     return '<path class="mac-gr-guide ' + (cls || '') + '" d="M' + f1(px(0)) + ' ' + f1(py(p[1])) + 'H' + f1(px(p[0])) + 'V' + f1(py(0)) + '"/>';
@@ -279,8 +330,9 @@
     var g = [];
     g.push('<rect class="mac-gr-hit" x="' + L + '" y="' + T + '" width="' + PW + '" height="' + PH + '"/>');
     g.push('<path class="mac-gr-axis" d="M' + L + ' ' + T + 'V' + (T + PH) + 'H' + (L + PW) + '"/>');
-    g.push('<text class="mac-gr-alabel" x="' + (L + PW) + '" y="' + (T + PH + 20) + '" text-anchor="end">' + esc(nm('x')) + '</text>');
-    g.push('<text class="mac-gr-alabel" transform="translate(' + (L - 12) + ' ' + T + ') rotate(-90)" text-anchor="end">' + esc(nm('y')) + '</text>');
+    // The axis titles sit clear of the value marks (P1, Q1) beside the axes.
+    g.push('<text class="mac-gr-alabel" x="' + (L + PW) + '" y="' + (T + PH + 31) + '" text-anchor="end">' + esc(nm('x')) + '</text>');
+    g.push('<text class="mac-gr-alabel" transform="translate(' + (L - 34) + ' ' + T + ') rotate(-90)" text-anchor="end">' + esc(nm('y')) + '</text>');
     var base = curves(spec, {}), now = curves(spec, shifts);
     var e0 = eq(spec, {});
     if(state.key){
@@ -289,13 +341,24 @@
     }
     now.forEach(function(c, i){
       var moved = !!c.steps, b = base[i], lab = askLabels && !labels[c.id] ? null : (labels[c.id] || c.id);
-      if(moved) g.push('<path class="mac-gr-curve is-old" d="' + pathOf(b) + '"/>' + (lab ? curveLabel(lab, '1', labelAt(b), 'is-old') : ''));
+      if(moved) g.push('<path class="mac-gr-curve is-old" d="' + pathOf(b) + '"/>' + (lab ? curveLabel(lab, '1', labelAt(b), 'is-old') : '') + arrowOf(b, c));
       g.push('<g class="mac-gr-c" data-curve="' + esc(c.id) + '"><path class="mac-gr-curve' + (state.focus === c.id ? ' is-focus' : '') + '" d="' + pathOf(c) + '"/>' +
-        '<path class="mac-gr-grab" d="' + pathOf(c) + '"/></g>' + (lab ? curveLabel(lab, moved ? '2' : '', labelAt(c)) : '<text class="mac-gr-clabel" x="' + f1(labelAt(c)[0]) + '" y="' + f1(labelAt(c)[1]) + '" text-anchor="end">?</text>'));
+        '<path class="mac-gr-grab" d="' + pathOf(c) + '"/></g>' + (lab ? curveLabel(lab, moved ? '2' : '', labelAt(c)) : '<text class="mac-gr-clabel" x="' + f1(labelAt(c)[0]) + '" y="' + f1(labelAt(c)[1]) + '" text-anchor="' + labelAt(c)[2] + '">?<tspan class="mac-gr-sub" dy="3">' + (i + 1) + '</tspan></text>'));
     });
-    if(e0){ g.push(guides(e0, 'is-old')); g.push('<circle class="mac-gr-eq is-old" cx="' + f1(px(e0[0])) + '" cy="' + f1(py(e0[1])) + '" r="4"/>'); }
-    if(state.eq){ g.push(guides(state.eq)); g.push('<g class="mac-gr-pt" data-pt="eq"><circle class="mac-gr-eq" cx="' + f1(px(state.eq[0])) + '" cy="' + f1(py(state.eq[1])) + '" r="6"/><text class="mac-gr-plabel" x="' + f1(px(state.eq[0]) + 9) + '" y="' + f1(py(state.eq[1]) - 8) + '">E2</text></g>'); }
-    if(state.point) g.push('<g class="mac-gr-pt" data-pt="point"><circle class="mac-gr-eq is-point" cx="' + f1(px(state.point[0])) + '" cy="' + f1(py(state.point[1])) + '" r="6"/><text class="mac-gr-plabel" x="' + f1(px(state.point[0]) + 9) + '" y="' + f1(py(state.point[1]) - 8) + '">' + esc(spec.pointLabel || 'X') + '</text></g>');
+    // E1 and E2 with their axis marks; the E2 label goes on the side away
+    // from a vertical curve just right of it (LRAS, LRPC, MS, RS).
+    var two = state.eq && e0 && (Math.abs(state.eq[0] - e0[0]) > 1e-6 || Math.abs(state.eq[1] - e0[1]) > 1e-6);
+    if(e0){ g.push(guides(e0, 'is-old')); g.push('<circle class="mac-gr-eq is-old" cx="' + f1(px(e0[0])) + '" cy="' + f1(py(e0[1])) + '" r="4"/>');
+      if(!askLabels) g.push(marks(spec.kind, e0, two ? '1' : '', 'is-old', two ? state.eq : null));
+      if(two) g.push('<text class="mac-gr-plabel is-old" x="' + f1(px(e0[0]) + (state.eq[0] > e0[0] ? -8 : 8)) + '" y="' + f1(py(e0[1]) + (state.eq[1] > e0[1] ? 15 : -8)) + '" text-anchor="' + (state.eq[0] > e0[0] ? 'end' : 'start') + '">E1</text>'); }
+    if(state.eq){
+      var vNear = now.some(function(c){ return c.shape === 'vertical' && c.at > state.eq[0] + 0.05 && c.at - state.eq[0] < 1.4; });
+      var right = !vNear, lx = px(state.eq[0]) + (right ? 9 : -9);
+      g.push(guides(state.eq)); if(two && !askLabels) g.push(marks(spec.kind, state.eq, '2', '', e0));
+      g.push('<g class="mac-gr-pt" data-pt="eq"><circle class="mac-gr-eq" cx="' + f1(px(state.eq[0])) + '" cy="' + f1(py(state.eq[1])) + '" r="6"/><text class="mac-gr-plabel" x="' + f1(lx) + '" y="' + f1(py(state.eq[1]) - 8) + '" text-anchor="' + (right ? 'start' : 'end') + '">E2</text></g>'); }
+    if(state.point){
+      var pNear = now.some(function(c){ return c.shape === 'vertical' && c.at > state.point[0] + 0.05 && c.at - state.point[0] < 1.4; });
+      g.push('<g class="mac-gr-pt" data-pt="point"><circle class="mac-gr-eq is-point" cx="' + f1(px(state.point[0])) + '" cy="' + f1(py(state.point[1])) + '" r="6"/><text class="mac-gr-plabel" x="' + f1(px(state.point[0]) + (pNear ? -9 : 9)) + '" y="' + f1(py(state.point[1]) - 8) + '" text-anchor="' + (pNear ? 'end' : 'start') + '">' + esc(spec.pointLabel || 'X') + '</text></g>'); }
     var label = opts.label || (k.title + ' graph: ' + describe(spec, state));
     return '<svg class="mac-graph-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">' + g.join('') + '</svg>';
   }
