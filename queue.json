@@ -768,7 +768,7 @@
       "pin_tt": "comment_only"
     },
     {
-      "status": "scheduled",
+      "status": "posted",
       "added_on": "2026-10-30",
       "date": "2026-11-01",
       "buffer": "6ae6b565ab019b90873c1656",
@@ -896,7 +896,7 @@
       "yt_no_hashtags": true,
       "buffer": "6ae82aec1a965d64fbf1884f",
       "yt_buffer": "6ae82b0ac60bdbcc33db92e1",
-      "youtube_id": null,
+      "youtube_id": "mvjnSvwYbi0",
       "shorts_thumb": false,
       "thumb_v2": true,
       "cta": "none",
