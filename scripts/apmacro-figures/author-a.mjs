@@ -90,7 +90,7 @@ function add(topic, id, w, h, title, desc, body, alt) {
   for (let v = 0; v <= 10; v += 2) { g.push(text(F.X(v), F.Y(0) + 18, String(v), { anchor: 'middle', size: 12, fill: GREY })); }
   [[0, '40'], [4, '60'], [7, '75'], [9, '85']].forEach(([v, s]) => g.push(text(F.X(0) - 8, F.Y(v) + 4, s, { anchor: 'end', size: 12, fill: GREY })));
   for (const [x, y, n, c] of pts) { g.push(guides(F, [x, y], null, null, { fill: ACC })); g.push(text(F.X(x) + 10, F.Y(y) - 8, `${n} ${c}`, { size: 14, bold: true, fill: ACC })); }
-  g.push(text(330, 400, 'Each point is one pair of values: read across to the horizontal axis, up to the vertical axis.', { anchor: 'middle', size: 13, fill: GREY }));
+  g.push(text(330, 400, 'Each point is one pair of values: read down to the horizontal axis and across to the vertical axis.', { anchor: 'middle', size: 13, fill: GREY }));
   add('axes-points', 'axes-points-plane', 640, 410, 'Reading points on a labeled graph',
     'A graph with Hours studied on the horizontal axis and Test score on the vertical axis. Three points with dashed lines to both axes: Q at 2 hours and a score of 60, R at 5 hours and 75, T at 8 hours and 85. The points rise to the right: a direct relationship. Invented data for practice.',
     g.join('\n'), 'A labeled graph with hours studied across the bottom and test score up the side, showing three points, Q (2, 60), R (5, 75) and T (8, 85), each with dashed lines to both axes; the scores rise as hours rise.');

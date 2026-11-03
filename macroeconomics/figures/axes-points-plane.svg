@@ -22,5 +22,5 @@
 <text x="330" y="112" font-size="14" fill="#355A0A" font-weight="700">R (5, 75)</text>
 <line x1="90" y1="60" x2="458" y2="60" stroke="#6B7370" stroke-width="1.4" stroke-dasharray="5 4"/><line x1="458" y1="60" x2="458" y2="330" stroke="#6B7370" stroke-width="1.4" stroke-dasharray="5 4"/><circle cx="458" cy="60" r="5" fill="#355A0A"/>
 <text x="468" y="52" font-size="14" fill="#355A0A" font-weight="700">T (8, 85)</text>
-<text x="330" y="400" font-size="13" fill="#6B7370" text-anchor="middle">Each point is one pair of values: read across to the horizontal axis, up to the vertical axis.</text>
+<text x="330" y="400" font-size="13" fill="#6B7370" text-anchor="middle">Each point is one pair of values: read down to the horizontal axis and across to the vertical axis.</text>
 </svg>
