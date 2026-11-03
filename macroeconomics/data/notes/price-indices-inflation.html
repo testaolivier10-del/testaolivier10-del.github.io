@@ -1,0 +1,54 @@
+<h2>Pricing the same basket every year</h2>
+<p>Prices of single goods jump around: gas rises one month and falls the next, phones get cheaper while rent climbs. To see what is happening to prices <b>in general</b>, economists pick a <b>market basket</b>, a fixed list of goods and quantities, and price the very same basket each year. Comparing its cost with its cost in a chosen <b>base year</b> gives a <b>price index</b>:</p>
+<p>$\text{price index} = \frac{\text{cost of the basket this year}}{\text{cost of the basket in the base year}} \times 100$</p>
+<p>The base year's index is always 100. The <b>consumer price index (CPI)</b> uses a basket of the goods and services typical urban households buy: food, housing, gas, clothing, medical care, entertainment and more.</p>
+<figure id="fig-basket" data-fig="price-indices-inflation-basket"><figcaption>The same basket priced in three years (invented data): costs of \$200, \$220 and \$242 give a CPI of 100, 110 and 121.</figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example: a three-good CPI (invented data).</b></p>
+<p>The basket is 10 pizzas, 20 gallons of gas and 5 movie tickets. 2024 is the base year.</p>
+<table class="compare">
+<thead><tr><th>Year</th><th>Cost of the basket</th><th>CPI</th></tr></thead>
+<tbody>
+<tr><td>2024</td><td>$10 \times 8 + 20 \times 3 + 5 \times 12 = 200$</td><td>$\frac{200}{200} \times 100 = 100$</td></tr>
+<tr><td>2025</td><td>$10 \times 9 + 20 \times 3.5 + 5 \times 12 = 220$</td><td>$\frac{220}{200} \times 100 = 110$</td></tr>
+<tr><td>2026</td><td>$10 \times 10 + 20 \times 3.6 + 5 \times 14 = 242$</td><td>$\frac{242}{200} \times 100 = 121$</td></tr>
+</tbody>
+</table>
+<p>The slips: adding the prices without multiplying by the quantities, leaving out the "× 100", and turning the fraction upside down (base year on top).</p>
+</div>
+
+<h2>The inflation rate</h2>
+<p><b>Inflation</b> is a rise in prices in general across the economy. The <b>inflation rate</b> is the percent change in a price index:</p>
+<p>$\text{inflation rate} = \frac{\text{new index} - \text{old index}}{\text{old index}} \times 100$</p>
+<p>From 2024 to 2025: $\frac{110 - 100}{100} \times 100 = 10\%$. From 2025 to 2026: $\frac{121 - 110}{110} \times 100 = 10\%$. The index rose 11 points the second year, but on a larger base, so the rate is the same. Always divide by the <b>old</b> index.</p>
+<p>A CPI of 121 also tells you prices are 21% higher than in the base year. It does not mean prices rose 121%, and it is not this year's inflation rate.</p>
+
+<h2>Deflation and disinflation</h2>
+<table class="compare">
+<thead><tr><th>Term</th><th>What happens to the index</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Inflation</td><td>Rises</td><td>100 to 104: 4% inflation</td></tr>
+<tr><td>Disinflation</td><td>Still rises, but more slowly</td><td>104 to 107: about 2.9%, down from 4%</td></tr>
+<tr><td>Deflation</td><td>Falls</td><td>107 to 106: negative inflation</td></tr>
+</tbody>
+</table>
+<p>Disinflation is not deflation: when the inflation rate falls from 4% to 3%, prices are still going up.</p>
+
+<h2>Real and nominal values</h2>
+<p>A <b>nominal value</b> is measured in dollars of the day; a <b>real value</b> is adjusted for prices, measured in base-year dollars:</p>
+<p>$\text{real value} = \frac{\text{nominal value}}{\text{price index}} \times 100$</p>
+<div class="worked">
+<p><b>Worked example: a real wage.</b></p>
+<p>Rosa earns a <b>nominal wage</b> of \$30 an hour, and the CPI is 120. Her <b>real wage</b> is $\frac{30}{120} \times 100 = 25$ base-year dollars an hour: her pay buys what \$25 bought in the base year.</p>
+<p>Going the other way: a \$40,000 base-year salary needs $40{,}000 \times \frac{125}{100} = 50{,}000$ dollars today if the CPI is 125.</p>
+<p>A shortcut for changes: the percent change in a real value is about the percent change in the nominal value minus the inflation rate. A 3% raise with 5% inflation is about a 2% fall in the real wage.</p>
+</div>
+
+<h2>Why the CPI overstates inflation</h2>
+<ul>
+<li><b>Substitution bias.</b> When beef doubles in price, families buy less beef and more chicken. The fixed basket still prices the old amount of beef, so it overstates how much their cost of living rose.</li>
+<li><b>New goods.</b> A fixed basket is slow to include new products, which often fall in price after they appear.</li>
+<li><b>Quality changes.</b> If a laptop costs 5% more but is much better, part of the higher price buys quality, yet a simple index counts it all as inflation.</li>
+</ul>
+<p>Statistics offices update baskets and adjust for quality to shrink these biases, but they remain a standard reason a fixed-basket index can overstate inflation. One limit of the course: the AP® Macroeconomics exam does not ask you to calculate a producer price index.</p>

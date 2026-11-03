@@ -1,0 +1,575 @@
+{
+ "stimuli": {
+  "gdp-circular-flow-s1": {
+   "kind": "data",
+   "title": "Spending in Country X for one year",
+   "invented": true,
+   "table": {
+    "caption": "Country X, one year (billions of dollars; invented data for practice)",
+    "cols": [
+     "Category",
+     "Amount"
+    ],
+    "rows": [
+     [
+      "Consumption spending by households",
+      "600"
+     ],
+     [
+      "Investment spending by firms",
+      "150"
+     ],
+     [
+      "Government purchases of goods and services",
+      "200"
+     ],
+     [
+      "Exports",
+      "80"
+     ],
+     [
+      "Imports",
+      "100"
+     ],
+     [
+      "Transfer payments (pensions and other benefit checks)",
+      "90"
+     ]
+    ]
+   }
+  },
+  "gdp-circular-flow-s2": {
+   "kind": "text",
+   "title": "From wheat to a loaf of bread",
+   "text": "<p>In Country X a farmer grows wheat and sells it to a mill for \\$50. The mill grinds it into flour and sells the flour to a bakery for \\$120. The bakery bakes bread and sells all of it to shoppers for \\$300. Nothing else is produced along this chain this year.</p>"
+  },
+  "gdp-circular-flow-s3": {
+   "kind": "text",
+   "title": "A week in a small town",
+   "text": "<p>Lena works at a bike factory and is paid a wage. She rents a spare room in her house to a coffee shop that uses it for storage. On Saturday she spends part of her pay on a new bike from the factory and a haircut. The factory uses the money from bike sales to pay its workers, rent its building and pay interest on a loan from a local family.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-gdp-circular-flow-1",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is GDP in Country X, in billions of dollars?",
+   "stimulus": "gdp-circular-flow-s1",
+   "why": {
+    "correct": "Use the expenditure approach and leave out transfer payments: $600 + 150 + 200 + (80 - 100) = 930$ billion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "gdp",
+     "args": [
+      600,
+      150,
+      200,
+      80,
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        600,
+        150,
+        200,
+        80,
+        100
+       ]
+      },
+      "why": "You added imports. Imports are subtracted: they are already inside consumption, investment and government purchases but were produced abroad."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "gdp",
+         "args": [
+          600,
+          150,
+          200,
+          80,
+          100
+         ]
+        },
+        90
+       ]
+      },
+      "why": "You counted transfer payments. A pension check pays for nothing produced this year, so it is not part of GDP; it is counted when the money is spent."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        600,
+        150,
+        200
+       ]
+      },
+      "why": "You left out net exports. Add exports and subtract imports: $X - M = 80 - 100 = -20$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-2",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What are net exports in Country X, in billions of dollars?",
+   "stimulus": "gdp-circular-flow-s1",
+   "why": {
+    "correct": "Net exports are exports minus imports: $80 - 100 = -20$ billion dollars. More was bought from abroad than sold abroad."
+   },
+   "numeric": {
+    "from": {
+     "fn": "netExports",
+     "args": [
+      80,
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "The size is right but the sign is wrong. Net exports are exports minus imports, and imports are larger here, so the answer is negative."
+     },
+     {
+      "value": 180,
+      "why": "You added exports and imports. Net exports subtract imports from exports."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-3",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why is the \\$90 billion of transfer payments in the table left out of GDP?",
+   "stimulus": "gdp-circular-flow-s1",
+   "options": [
+    "No good or service is produced in exchange for the payment",
+    "The government pays it, and government spending is not part of GDP",
+    "It is counted later as part of net exports",
+    "It is too small a share of GDP to be worth measuring"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "GDP measures the market value of what is produced. A transfer payment buys no new good or service, so it is left out; when the person spends it, that spending is counted.",
+    "options": [
+     "Right: GDP counts production. A transfer moves income from taxpayers to the person receiving it, with nothing produced in return.",
+     "Government purchases of goods and services, such as roads and teachers' work, are in GDP as G. Transfers are what is left out.",
+     "Net exports are exports minus imports. A pension check is not a sale to or a purchase from another country.",
+     "Size has nothing to do with it; a transfer of any size is left out because nothing is produced in exchange."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-4",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Next year households in Country X buy \\$20 billion more of imported phones, and nothing else in the table changes. What happens to Country X's GDP?",
+   "stimulus": "gdp-circular-flow-s1",
+   "options": [
+    "It stays the same: the extra consumption is offset by imports",
+    "It rises by \\$20 billion, because consumption spending rose",
+    "It falls by \\$20 billion, because imports are subtracted",
+    "It rises by \\$40 billion, counting both the spending and the imports"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Spending on imports shows up in C and again, with a minus sign, in M. The two cancel, so domestic GDP does not change: the phones were made in another country.",
+    "options": [
+     "Right: consumption rises by 20 and imports rise by 20, so $C + I + G + (X - M)$ is unchanged. The phones were produced abroad.",
+     "Consumption did rise, but imports rose by the same amount, and imports are subtracted.",
+     "Imports are subtracted, but the same 20 billion was added in consumption, so the two cancel.",
+     "Imports are subtracted, not added; adding them counts foreign production as domestic."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-5",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "How much does this chain add to Country X's GDP, in dollars?",
+   "stimulus": "gdp-circular-flow-s2",
+   "why": {
+    "correct": "Count only the final good, the bread sold to shoppers: \\$300. The wheat and the flour are intermediate goods; their value is already inside the price of the bread."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      300
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        50,
+        120,
+        300
+       ]
+      },
+      "why": "You added every sale. The wheat and flour are intermediate goods already inside the bread's price, so adding them counts them twice."
+     },
+     {
+      "value": 120,
+      "why": "That is the price of the flour, an intermediate good. GDP counts the final good sold to the people who use it: the bread."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-6",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is the value added by the bakery, in dollars?",
+   "stimulus": "gdp-circular-flow-s2",
+   "why": {
+    "correct": "Value added is what a firm sells its output for minus what it paid for intermediate goods: $300 - 120 = 180$ dollars. Adding every stage's value added ($50 + 70 + 180 = 300$) gives the same total as the final good."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      300,
+      120
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 300,
+      "why": "That is the bakery's sales. Value added subtracts what the bakery paid for flour: $300 - 120$."
+     },
+     {
+      "value": 250,
+      "why": "You subtracted the price of the wheat. The bakery bought flour for \\$120, so subtract that."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-7",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A student adds $50 + 120 + 300$ to measure what this chain adds to GDP. What is the error?",
+   "stimulus": "gdp-circular-flow-s2",
+   "options": [
+    "Double counting: the wheat and flour are inside the bread's price",
+    "Leaving out the farmer's costs, which are also part of GDP",
+    "Counting the bread, which is a consumer good and not part of GDP",
+    "Mixing goods and services, which are measured in separate accounts"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Adding every sale along a chain counts the same production more than once. GDP counts only final goods and services, which is the same as adding the value added at each stage.",
+    "options": [
+     "Right: the \\$300 loaf already includes the \\$120 of flour, which includes the \\$50 of wheat. Count final goods or value added, never every sale.",
+     "The farmer's costs are earlier sales or payments to factors; adding more items would make the double counting worse.",
+     "Consumer goods, counted as C, are the largest part of GDP. The bread is the one sale that should be counted.",
+     "GDP adds final goods and services together at market value. The error is counting intermediate goods."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-8",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the circular flow model, in which market does Lena sell her work to the bike factory?",
+   "stimulus": "gdp-circular-flow-s3",
+   "options": [
+    "The factor market",
+    "The product market",
+    "The market for used goods",
+    "The foreign sector"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Households own the factors of production (land, labor, capital and entrepreneurship) and sell them to firms in the factor market. Her wage is part of household income.",
+    "options": [
+     "Right: labor is a factor of production. Households sell it to firms in the factor (resource) market and receive wages.",
+     "The product market is where firms sell goods and services, such as the bike and the haircut, to households.",
+     "There is no such market in the circular flow model, and her work is a new factor service, not a used good.",
+     "The bike factory is in her town; the foreign sector covers trade with other countries."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-9",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "The coffee shop pays Lena for the use of her spare room. In the circular flow, that payment is",
+   "stimulus": "gdp-circular-flow-s3",
+   "options": [
+    "rent: income to a household from the factor market",
+    "spending by a household in the product market",
+    "a transfer payment, because no good is produced",
+    "revenue that the coffee shop earns"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Firms pay four kinds of factor income: wages for labor, rent for land and property, interest for capital and profit for entrepreneurship. All flow to households.",
+    "options": [
+     "Right: the room is land or property she owns; the payment for its use is rent, a factor income.",
+     "The coffee shop, a firm, is doing the paying, and it is paying for the use of a factor, not buying a finished product.",
+     "The coffee shop gets the use of the storage space in exchange; that is a factor service, so it is rent.",
+     "Revenue flows to the seller of a product. Here the coffee shop is the one paying, so for Lena it is income."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-10",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the links of the circular flow in order, starting with Lena's spending on a new bike.",
+   "stimulus": "gdp-circular-flow-s3",
+   "options": [
+    "Lena spends money on a bike in the product market",
+    "The bike factory receives it as revenue",
+    "The factory pays wages, rent and interest in the factor market",
+    "Households receive those payments as income and can spend again"
+   ],
+   "why": {
+    "correct": "Spending on output becomes firms' revenue, revenue pays for the factors of production, and the factor payments are households' income. That is why total spending on final goods equals total income."
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-11",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are counted in this year's GDP of the United States? Select all that apply.",
+   "options": [
+    "A house built and sold this year",
+    "A haircut bought at a local salon",
+    "A car built in Ohio by a company based in Japan",
+    "A ten-year-old car bought from a neighbor",
+    "Shares of stock bought through an app",
+    "A pension check mailed to a retiree"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "GDP is the market value of final goods and services produced within a country in a year. New production counts; used goods, financial trades and transfers do not.",
+    "options": [
+     "Right: a newly built home is counted, as residential investment.",
+     "Right: a service produced this year and sold at market value.",
+     "Right: GDP counts what is produced inside the country's borders, whoever owns the factory.",
+     "A used good was counted in the year it was made; reselling it produces nothing new.",
+     "A stock purchase is a financial exchange of ownership, not production of a good or service.",
+     "A transfer payment: nothing is produced in exchange, so it is left out."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-12",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A bakery buys a new delivery truck made this year in the same country. In which part of GDP is the truck counted?",
+   "options": [
+    "Investment",
+    "Consumption",
+    "Government purchases",
+    "It is an intermediate good and is not counted"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Investment in GDP means spending on new capital (machines, tools, buildings), new homes and changes in inventories. Capital goods are final goods, not intermediate ones.",
+    "options": [
+     "Right: new capital goods bought by firms are investment spending.",
+     "Consumption is spending by households on goods and services for their own use, not a firm's capital.",
+     "The bakery is a private firm, not the government.",
+     "The truck is not used up in making one loaf; it is a capital good used for years, so it is a final good counted as investment."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-13",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In GDP accounting, which of these is investment?",
+   "options": [
+    "A firm builds a new warehouse",
+    "A family buys shares of a technology company",
+    "A student puts savings into a bank account",
+    "A household buys a new washing machine"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In everyday speech \"investing\" means buying stocks; in GDP it means buying new capital goods, new homes or adding to inventories.",
+    "options": [
+     "Right: new capital built this year is investment.",
+     "Buying stock moves ownership of a company from one person to another; it is saving, not investment spending in GDP.",
+     "A deposit is saving; investment in GDP is spending on new capital goods.",
+     "A household's purchase of a durable good is consumption."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-14",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A furniture maker builds 100 chairs this year but sells only 80. How do the 20 unsold chairs enter this year's GDP?",
+   "options": [
+    "As investment, an addition to inventory",
+    "They are not counted until a household buys them",
+    "As consumption, because chairs are consumer goods",
+    "As government purchases"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Inventory changes are part of investment. That keeps GDP a measure of production: output made this year is counted this year, whether or not it has been sold.",
+    "options": [
+     "Right: goods produced and not yet sold are added to inventories, which are part of investment, so production is counted in the year it happens.",
+     "GDP counts production in the year it happens. When the chairs sell next year, inventory falls by the same amount, so they are not counted twice.",
+     "Nobody has consumed them yet; unsold output goes into inventory investment.",
+     "No government bought the chairs."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-15",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "An engineer who is a citizen of Country X works all year in Country Z. Her output is counted in",
+   "options": [
+    "the GDP of Country Z",
+    "the GDP of Country X",
+    "the GDP of both countries",
+    "the GDP of neither country, because she is abroad"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The \"domestic\" in gross domestic product means inside the country's borders.",
+    "options": [
+     "Right: GDP measures production inside a country's borders, whoever does it.",
+     "GDP is about where production happens, not the worker's citizenship.",
+     "Counting it in both would double count one person's production.",
+     "Her work produces services in Country Z, so it is part of Country Z's GDP."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-16",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Why does GDP measured by adding up spending on final goods equal GDP measured by adding up incomes?",
+   "options": [
+    "Each dollar spent on final goods is income to someone as a factor payment",
+    "The government sets total incomes equal to total spending each year by law",
+    "Households spend their whole income, so saving in the economy is zero",
+    "Imports are added to income and subtracted from spending in the accounts"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Spending, income and value added are three ways of measuring the same production: one person's spending is another's income.",
+    "options": [
+     "Right: the circular flow shows spending on output returning to households as factor income, so the two totals match.",
+     "No one sets them equal; they match because a purchase is income to the seller and, through the firm, to the owners of the factors.",
+     "Households do save; spending and income are equal because each sale is someone's income, not because saving is zero.",
+     "Imports are subtracted in the expenditure approach; they are not added to anyone's income at home."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-circular-flow-17",
+   "unit": "unit-2",
+   "topic": "gdp-circular-flow",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which is the best definition of gross domestic product?",
+   "options": [
+    "The market value of final goods and services produced in a country in a year",
+    "The total value of the sales made in a country in a year",
+    "The total income earned by a country's citizens anywhere in the world",
+    "The value of goods a country sells to other countries in a year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each word matters: market value (prices times quantities), final (not intermediate), produced (not resold), domestic (within the borders), in a given year.",
+    "options": [
+     "Right: market value, final goods only, produced within the borders, in one year.",
+     "Adding up sales would include intermediate goods, used goods and stocks, which GDP leaves out.",
+     "GDP is about production inside the borders, whoever owns or does it.",
+     "Those are exports, one part of GDP."
+    ]
+   }
+  }
+ ]
+}

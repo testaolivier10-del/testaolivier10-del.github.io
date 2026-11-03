@@ -1,0 +1,23 @@
+{
+ "labor-force": {
+  "def": "Everyone who is employed or unemployed. The labor force participation rate is the labor force divided by the adult population, times 100."
+ },
+ "unemployment-rate": {
+  "def": "The percent of the labor force that is unemployed: unemployed divided by labor force, times 100. A person is unemployed if they have no job, are available and looked for work recently."
+ },
+ "frictional": {
+  "def": "Unemployment while people search between jobs or enter the labor force, such as a nurse who moved and is applying for nursing jobs."
+ },
+ "structural": {
+  "def": "Unemployment when workers' skills or locations do not match the jobs available, often after technology or the pattern of demand changes."
+ },
+ "cyclical": {
+  "def": "Unemployment caused by a fall in total spending and output during a downturn; it equals the actual unemployment rate minus the natural rate."
+ },
+ "natural-rate": {
+  "def": "The unemployment rate when cyclical unemployment is zero: frictional plus structural unemployment. When the actual rate equals it, the economy is at full employment."
+ },
+ "discouraged": {
+  "def": "A person who wants a job but has stopped looking because they believe none is available. Discouraged workers are not in the labor force; underemployed workers have part-time jobs but want full-time ones."
+ }
+}

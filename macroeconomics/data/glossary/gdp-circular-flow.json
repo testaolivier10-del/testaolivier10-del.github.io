@@ -1,0 +1,20 @@
+{
+ "circular-flow": {
+  "def": "A model of the economy in which households sell factors of production to firms for income and spend that income on firms' goods and services, so money and goods flow in opposite loops."
+ },
+ "gdp": {
+  "def": "Gross domestic product: the market value of all final goods and services produced within a country in a given year."
+ },
+ "expenditure-approach": {
+  "def": "Measuring GDP by adding spending on final goods and services: consumption + investment + government purchases + net exports, or $C + I + G + (X - M)$."
+ },
+ "final-goods": {
+  "def": "Goods and services bought by their final users. Intermediate goods are used up to make other goods and are left out of GDP; value added is a firm's sales minus what it paid for intermediate goods."
+ },
+ "exports-imports": {
+  "def": "Exports are goods and services produced at home and sold abroad; imports are produced abroad and bought at home. Net exports are $X - M$."
+ },
+ "transfer-payments": {
+  "def": "Payments from the government to people, such as pensions and other benefit checks, for which no good or service is produced in return. They are not part of GDP."
+ }
+}

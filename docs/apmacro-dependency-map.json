@@ -130,7 +130,20 @@
       "graph": "sd"
      }
     ],
-    "stimulusThemes": [],
+    "stimulusThemes": [
+     { "title": "A town choosing how to use one empty lot (factors of production)", "topic": "scarcity", "stimulus": "text", "author": "A" },
+     { "title": "How three invented economies answer what, how and for whom", "topic": "scarcity", "stimulus": "data", "author": "A" },
+     { "title": "A PPC table: opportunity cost and increasing cost", "topic": "opportunity-cost-ppc", "stimulus": "data", "author": "A" },
+     { "title": "A PPC after an outward shift", "topic": "opportunity-cost-ppc", "stimulus": "graph", "author": "A" },
+     { "title": "Output and input tables for comparative advantage and terms of trade", "topic": "comparative-advantage", "stimulus": "data", "author": "A" },
+     { "title": "A demand schedule and a change in demand", "topic": "demand", "stimulus": "data", "author": "A" },
+     { "title": "Events in a city's electric scooter market (demand shifters)", "topic": "demand", "stimulus": "text", "author": "A" },
+     { "title": "A supply schedule and a change in supply", "topic": "supply", "stimulus": "data", "author": "A" },
+     { "title": "Events in the smartphone market (supply shifters)", "topic": "supply", "stimulus": "text", "author": "A" },
+     { "title": "A market schedule: equilibrium, shortage and surplus", "topic": "market-equilibrium", "stimulus": "data", "author": "A" },
+     { "title": "A market after one curve shifted", "topic": "market-equilibrium", "stimulus": "graph", "author": "A" },
+     { "title": "Two shifts at once in the blueberry market", "topic": "market-equilibrium", "stimulus": "text", "author": "A" }
+    ],
     "comparisonTables": [],
     "pathways": []
    }
@@ -168,7 +181,15 @@
       "author": "B"
      }
     ],
-    "stimulusThemes": [],
+    "stimulusThemes": [
+     { "title": "A labor market survey: the labor force, the unemployment and participation rates, discouraged workers", "topic": "unemployment", "stimulus": "data", "author": "B" },
+     { "title": "A market basket priced over three years: the CPI and the inflation rate", "topic": "price-indices-inflation", "stimulus": "data", "author": "B" },
+     { "title": "Nominal GDP and the GDP deflator: real GDP, growth and deflation", "topic": "real-nominal-gdp", "stimulus": "data", "author": "B" },
+     { "title": "Real GDP and potential output over ten quarters: phases and output gaps", "topic": "business-cycles", "stimulus": "data", "author": "B" },
+     { "title": "A PPC shifting out: potential output, recessions inside the curve", "topic": "business-cycles", "stimulus": "graph", "author": "B" },
+     { "title": "Five workers: frictional, structural and cyclical unemployment, retirees and discouraged workers", "topic": "unemployment", "stimulus": "text", "author": "B" },
+     { "title": "A fixed-rate loan when inflation surprises: who gains and who loses", "topic": "inflation-costs", "stimulus": "text", "author": "B" }
+    ],
     "comparisonTables": [],
     "pathways": []
    }
@@ -225,7 +246,27 @@
       "graph": "adas"
      }
     ],
-    "stimulusThemes": [],
+    "stimulusThemes": [
+     { "title": "Spending components at an unchanged price level: shift or movement along AD", "topic": "aggregate-demand", "stimulus": "data" },
+     { "title": "News stories that shift aggregate demand", "topic": "aggregate-demand", "stimulus": "text" },
+     { "title": "Disposable income and consumption: MPC, MPS and the multiplier", "topic": "multipliers", "stimulus": "data" },
+     { "title": "A recessionary gap and an MPC: spending or tax change that closes it", "topic": "multipliers", "stimulus": "text" },
+     { "title": "Input prices and productivity year by year: SRAS shifts", "topic": "sras", "stimulus": "data" },
+     { "title": "A leftward SRAS shift on the AD-AS graph", "topic": "sras", "stimulus": "graph" },
+     { "title": "Resources and full-employment output over decades: LRAS shifts", "topic": "lras", "stimulus": "data" },
+     { "title": "A hurricane, a port and a spending boom: what moves LRAS", "topic": "lras", "stimulus": "text" },
+     { "title": "Output, full-employment output and unemployment in three countries: gaps", "topic": "adas-equilibrium", "stimulus": "data" },
+     { "title": "A recessionary gap on the AD-AS graph", "topic": "adas-equilibrium", "stimulus": "graph" },
+     { "title": "Price level, real GDP and unemployment year by year: which shock", "topic": "adas-short-run-changes", "stimulus": "data" },
+     { "title": "Cost-push inflation on the AD-AS graph", "topic": "adas-short-run-changes", "stimulus": "graph" },
+     { "title": "Two shocks at once: the indeterminate outcome", "topic": "adas-short-run-changes", "stimulus": "text" },
+     { "title": "Wages, prices and output after a fall in spending with no policy", "topic": "long-run-self-adjustment", "stimulus": "data" },
+     { "title": "An inflationary gap left alone", "topic": "long-run-self-adjustment", "stimulus": "graph" },
+     { "title": "Six proposals to close a recessionary gap", "topic": "fiscal-policy", "stimulus": "data" },
+     { "title": "An overheated economy and contractionary fiscal policy", "topic": "fiscal-policy", "stimulus": "text" },
+     { "title": "A progressive income tax schedule", "topic": "automatic-stabilizers", "stimulus": "data" },
+     { "title": "Unemployment compensation and taxes in a recession", "topic": "automatic-stabilizers", "stimulus": "text" }
+    ],
     "comparisonTables": [],
     "pathways": []
    }
@@ -280,7 +321,24 @@
       "graph": "money"
      }
     ],
-    "stimulusThemes": [],
+    "stimulusThemes": [
+     { "title": "An existing bond and the interest rate on new bonds (table)", "topic": "financial-assets", "stimulus": "data", "author": "D" },
+     { "title": "Four loans and the inflation their lenders expect (table)", "topic": "nominal-real-rates", "stimulus": "data", "author": "D" },
+     { "title": "What the people of an invented country hold: M1 and M2 (table)", "topic": "money-functions", "stimulus": "data", "author": "D" },
+     { "title": "A bank balance sheet with required and excess reserves (table)", "topic": "banking-money-supply", "stimulus": "data", "author": "D" },
+     { "title": "Administered rates, reserves and the policy rate in an ample-reserves system (table)", "topic": "monetary-policy", "stimulus": "data", "author": "D" },
+     { "title": "Saving and the government's accounts: national saving (table)", "topic": "loanable-funds", "stimulus": "data", "author": "D" },
+     { "title": "A money market after money demand shifts", "topic": "money-market", "stimulus": "graph", "author": "D" },
+     { "title": "A reserve market with ample reserves after an administered-rate cut", "topic": "monetary-policy", "stimulus": "graph", "author": "D" },
+     { "title": "A loanable funds market after more borrowing", "topic": "loanable-funds", "stimulus": "graph", "author": "D" },
+     { "title": "Three places for savings: money, a bond and a stock", "topic": "financial-assets", "stimulus": "text", "author": "D" },
+     { "title": "A fixed-rate loan and a surprise in inflation", "topic": "nominal-real-rates", "stimulus": "text", "author": "D" },
+     { "title": "Shells as money on an invented island", "topic": "money-functions", "stimulus": "text", "author": "D" },
+     { "title": "A cash deposit in a fractional reserve banking system", "topic": "banking-money-supply", "stimulus": "text", "author": "D" },
+     { "title": "A recession and the demand for money", "topic": "money-market", "stimulus": "text", "author": "D" },
+     { "title": "Limited reserves and an inflationary gap: an open market sale", "topic": "monetary-policy", "stimulus": "text", "author": "D" },
+     { "title": "A savings plan and the supply of loanable funds", "topic": "loanable-funds", "stimulus": "text", "author": "D" }
+    ],
     "comparisonTables": [],
     "pathways": []
    }
@@ -336,7 +394,23 @@
       "graph": "lf"
      }
     ],
-    "stimulusThemes": [],
+    "stimulusThemes": [
+     { "title": "A recession in Arland: the central bank (ample reserves) and the legislature", "topic": "policy-short-run", "stimulus": "text", "author": "E" },
+     { "title": "An AD-AS graph after a fall in aggregate demand", "topic": "policy-short-run", "stimulus": "graph", "author": "E" },
+     { "title": "Fiscal and central bank actions in four countries, in both reserves frameworks", "topic": "policy-short-run", "stimulus": "data", "author": "E" },
+     { "title": "Unemployment and inflation over four years: movements along and shifts of the SRPC", "topic": "phillips-curve", "stimulus": "data", "author": "E" },
+     { "title": "A spending boom from the short run to the long run on the Phillips curves", "topic": "phillips-curve", "stimulus": "text", "author": "E" },
+     { "title": "Money, velocity and real GDP: the price level from the quantity theory", "topic": "money-growth-inflation", "stimulus": "data", "author": "E" },
+     { "title": "Fast money growth to pay government bills", "topic": "money-growth-inflation", "stimulus": "text", "author": "E" },
+     { "title": "Four years of a government budget: deficits, a surplus and the debt", "topic": "deficits-debt", "stimulus": "data", "author": "E" },
+     { "title": "A smaller deficit and a headline about the debt", "topic": "deficits-debt", "stimulus": "text", "author": "E" },
+     { "title": "A loanable funds graph after more government borrowing", "topic": "crowding-out", "stimulus": "graph", "author": "E" },
+     { "title": "Deficit spending at full employment and its chain", "topic": "crowding-out", "stimulus": "text", "author": "E" },
+     { "title": "Real GDP and population in three countries: growth per person", "topic": "economic-growth", "stimulus": "data", "author": "E" },
+     { "title": "A PPC for capital and consumer goods shifting out", "topic": "economic-growth", "stimulus": "graph", "author": "E" },
+     { "title": "Four programs and the channels of growth", "topic": "growth-policy", "stimulus": "text", "author": "E" },
+     { "title": "Schooling, investment and growth in four countries", "topic": "growth-policy", "stimulus": "data", "author": "E" }
+    ],
     "comparisonTables": [],
     "pathways": []
    }
@@ -383,7 +457,20 @@
       "graph": "forex"
      }
     ],
-    "stimulusThemes": [],
+    "stimulusThemes": [
+     { "title": "A country's transactions table: balance of trade, current account and capital and financial account", "topic": "balance-of-payments", "stimulus": "data" },
+     { "title": "Five transactions to place in the right account, credit or debit", "topic": "balance-of-payments", "stimulus": "text" },
+     { "title": "Exchange rates over three years: reciprocals, conversions, appreciation", "topic": "exchange-rates", "stimulus": "data" },
+     { "title": "An importer's costs when the exchange rate moves", "topic": "exchange-rates", "stimulus": "text" },
+     { "title": "The market for a currency at equilibrium: axes, buyers and sellers", "topic": "foreign-exchange-market", "stimulus": "graph" },
+     { "title": "The market for a currency after demand shifts, and the mirror market", "topic": "foreign-exchange-market", "stimulus": "graph" },
+     { "title": "A central bank raises its administered rate (ample reserves): both currency markets", "topic": "fx-policy-changes", "stimulus": "text" },
+     { "title": "Inflation, real interest rates and growth in two countries: which way the currency moves", "topic": "fx-policy-changes", "stimulus": "data" },
+     { "title": "Exports and imports before and after an appreciation", "topic": "fx-net-exports", "stimulus": "data" },
+     { "title": "A depreciating currency: exports, imports, AD and output", "topic": "fx-net-exports", "stimulus": "text" },
+     { "title": "Loanable funds after more government borrowing: capital flows, the currency, net exports", "topic": "real-rates-financial-flows", "stimulus": "graph" },
+     { "title": "A central bank lowers rates (ample reserves): outflows, the balance of payments, the currency", "topic": "real-rates-financial-flows", "stimulus": "text" }
+    ],
     "comparisonTables": [],
     "pathways": []
    }
@@ -401,7 +488,11 @@
      }
     ],
     "frqThemes": [],
-    "stimulusThemes": [],
+    "stimulusThemes": [
+     { "title": "A table of prices and tickets sold, read as ordered pairs", "topic": "axes-points", "stimulus": "data", "author": "A" },
+     { "title": "A coffee shop's month: shift or movement along the curve", "topic": "shifts-movements", "stimulus": "text", "author": "A" },
+     { "title": "A market graph after one curve moved: the new crossing", "topic": "curves-crossing", "stimulus": "graph", "author": "A" }
+    ],
     "comparisonTables": [],
     "pathways": []
    }
@@ -1446,6 +1537,18 @@
    "dependsOn": []
   },
   {
+   "id": "trade-off",
+   "term": "trade-off",
+   "aliases": [
+    "trade-offs",
+    "tradeoff"
+   ],
+   "taughtIn": "scarcity",
+   "dependsOn": [
+    "scarcity"
+   ]
+  },
+  {
    "id": "opportunity-cost",
    "term": "opportunity cost",
    "aliases": [
@@ -1505,6 +1608,29 @@
    ]
   },
   {
+   "id": "capital-goods",
+   "term": "capital goods",
+   "aliases": [
+    "consumer goods"
+   ],
+   "taughtIn": "opportunity-cost-ppc",
+   "dependsOn": [
+    "factors-of-production",
+    "ppc"
+   ]
+  },
+  {
+   "id": "attainable",
+   "term": "unattainable",
+   "aliases": [
+    "attainable"
+   ],
+   "taughtIn": "opportunity-cost-ppc",
+   "dependsOn": [
+    "ppc"
+   ]
+  },
+  {
    "id": "absolute-advantage",
    "term": "absolute advantage",
    "aliases": [],
@@ -1555,6 +1681,17 @@
    ]
   },
   {
+   "id": "output-input-method",
+   "term": "output method",
+   "aliases": [
+    "input method"
+   ],
+   "taughtIn": "comparative-advantage",
+   "dependsOn": [
+    "opportunity-cost"
+   ]
+  },
+  {
    "id": "law-of-demand",
    "term": "law of demand",
    "aliases": [
@@ -1584,6 +1721,17 @@
     "inferior good",
     "substitute",
     "complement"
+   ],
+   "taughtIn": "demand",
+   "dependsOn": [
+    "law-of-demand"
+   ]
+  },
+  {
+   "id": "income-substitution",
+   "term": "substitution effect",
+   "aliases": [
+    "income effect"
    ],
    "taughtIn": "demand",
    "dependsOn": [
@@ -1665,6 +1813,17 @@
    "taughtIn": "market-equilibrium",
    "dependsOn": [
     "equilibrium"
+   ]
+  },
+  {
+   "id": "disequilibrium",
+   "term": "disequilibrium",
+   "aliases": [],
+   "taughtIn": "market-equilibrium",
+   "dependsOn": [
+    "equilibrium",
+    "shortage",
+    "surplus"
    ]
   },
   {
@@ -2168,7 +2327,7 @@
    "aliases": [
     "short run"
    ],
-   "taughtIn": "lras",
+   "taughtIn": "sras",
    "dependsOn": [
     "sras"
    ]
@@ -2194,9 +2353,9 @@
    "aliases": [
     "aggregate price level"
    ],
-   "taughtIn": "adas-equilibrium",
+   "taughtIn": "aggregate-demand",
    "dependsOn": [
-    "ad-as-model"
+    "price-index"
    ]
   },
   {
@@ -2271,9 +2430,9 @@
    "aliases": [
     "transfer payment"
    ],
-   "taughtIn": "fiscal-policy",
+   "taughtIn": "gdp-circular-flow",
    "dependsOn": [
-    "fiscal-policy"
+    "gdp"
    ]
   },
   {
@@ -2341,7 +2500,9 @@
   {
    "id": "real-rate",
    "term": "real interest rate",
-   "aliases": [],
+   "aliases": [
+    "expected inflation rate"
+   ],
    "taughtIn": "nominal-real-rates",
    "dependsOn": [
     "nominal-rate",
@@ -2368,7 +2529,8 @@
    "term": "M1",
    "aliases": [
     "M2",
-    "money supply measures"
+    "money supply measures",
+    "money market funds"
    ],
    "taughtIn": "money-functions",
    "dependsOn": [
@@ -2467,10 +2629,10 @@
    "aliases": [
     "money supply curve"
    ],
-   "taughtIn": "money-market",
+   "taughtIn": "banking-money-supply",
    "dependsOn": [
-    "money-market",
-    "money-supply-measures"
+    "money-supply-measures",
+    "money-creation"
    ]
   },
   {
@@ -2480,7 +2642,7 @@
     "Federal Reserve",
     "the Fed"
    ],
-   "taughtIn": "monetary-policy",
+   "taughtIn": "banking-money-supply",
    "dependsOn": [
     "money-supply"
    ]
@@ -2749,12 +2911,25 @@
    "id": "current-account",
    "term": "current account",
    "aliases": [
-    "trade balance",
-    "balance of trade"
+    "current account deficit",
+    "current account surplus"
    ],
    "taughtIn": "balance-of-payments",
    "dependsOn": [
     "balance-of-payments"
+   ]
+  },
+  {
+   "id": "balance-of-trade",
+   "term": "balance of trade",
+   "aliases": [
+    "trade balance",
+    "balance of trade in goods and services"
+   ],
+   "taughtIn": "balance-of-payments",
+   "dependsOn": [
+    "exports-imports",
+    "current-account"
    ]
   },
   {

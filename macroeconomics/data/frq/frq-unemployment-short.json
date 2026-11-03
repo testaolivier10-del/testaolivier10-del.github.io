@@ -1,0 +1,121 @@
+{
+ "id": "frq-unemployment-short",
+ "type": "short",
+ "points": 5,
+ "title": "Labor force data in Country Y: unemployment and participation rates, discouraged workers and a downturn",
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "unemployment"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "1.B",
+  "2.C"
+ ],
+ "stimulus": {
+  "title": "Labor market survey in Country Y",
+  "invented": true,
+  "table": {
+   "caption": "Country Y, one month (millions of people; invented data for practice)",
+   "cols": [
+    "Group",
+    "Millions"
+   ],
+   "rows": [
+    [
+     "Adult population (16 and older, not in an institution or the military)",
+     "200"
+    ],
+    [
+     "Employed",
+     "114"
+    ],
+    [
+     "Unemployed",
+     "6"
+    ],
+    [
+     "Not in the labor force",
+     "80"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A(i)",
+   "points": 1,
+   "prompt": "Using the data in the table, <b>calculate</b> the unemployment rate in Country Y. Show your work.",
+   "rubric": [
+    {
+     "point": "Unemployment rate of 5%, with work shown: labor force 114 + 6 = 120, then 6 / 120 x 100",
+     "accept": [
+      "6 / (114 + 6) x 100 = 5%",
+      "0.05 x 100 = 5 percent, with the labor force of 120 shown"
+     ]
+    }
+   ],
+   "sample": "The labor force is the employed plus the unemployed: $114 + 6 = 120$ million. The unemployment rate is $\\frac{6}{120} \\times 100 = 5\\%$."
+  },
+  {
+   "label": "A(ii)",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the labor force participation rate in Country Y. Show your work.",
+   "rubric": [
+    {
+     "point": "Participation rate of 60%, with work shown: 120 / 200 x 100",
+     "accept": [
+      "(114 + 6) / 200 x 100 = 60%"
+     ]
+    }
+   ],
+   "sample": "The participation rate is the labor force divided by the adult population: $\\frac{120}{200} \\times 100 = 60\\%$."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "Suppose 2 million of the unemployed people in the table stop looking for work because they believe no jobs are available, and nothing else changes. Will the unemployment rate increase, decrease or stay the same? <b>Explain</b>.",
+   "rubric": [
+    {
+     "point": "Decrease, because the discouraged workers are no longer counted as unemployed or in the labor force (the rate becomes 4 / 118 x 100, about 3.4%)",
+     "accept": [
+      "Decrease, because people who stop looking leave the labor force",
+      "Decrease, because discouraged workers are not counted as unemployed"
+     ]
+    }
+   ],
+   "sample": "The unemployment rate will decrease. People who stop looking for work are discouraged workers: they are no longer counted as unemployed and they leave the labor force. The rate becomes $\\frac{4}{118} \\times 100 \\approx 3.4\\%$, even though no one found a job."
+  },
+  {
+   "label": "C(i)",
+   "points": 1,
+   "prompt": "Starting again from the table, total spending in Country Y falls sharply, firms lay off workers, and the unemployment rate rises to 8%. Country Y's natural rate of unemployment is 5%. <b>Identify</b> the type of unemployment that increased.",
+   "rubric": [
+    {
+     "point": "Cyclical unemployment",
+     "accept": [
+      "Cyclical"
+     ]
+    }
+   ],
+   "sample": "Cyclical unemployment increased, because the layoffs were caused by a fall in total spending and output."
+  },
+  {
+   "label": "C(ii)",
+   "points": 1,
+   "prompt": "<b>Calculate</b> Country Y's cyclical unemployment rate after the layoffs. Show your work.",
+   "rubric": [
+    {
+     "point": "3%, with work shown: actual rate minus natural rate, 8% - 5%",
+     "accept": [
+      "8 - 5 = 3 percent"
+     ]
+    }
+   ],
+   "sample": "Cyclical unemployment is the actual rate minus the natural rate: $8\\% - 5\\% = 3\\%$."
+  }
+ ]
+}

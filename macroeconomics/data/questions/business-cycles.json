@@ -1,0 +1,803 @@
+{
+ "stimuli": {
+  "business-cycles-s1": {
+   "kind": "data",
+   "title": "Real GDP and potential output in Country X over ten quarters",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart of real GDP and potential output in Country X over ten quarters (invented data)",
+    "xLabel": "Quarter",
+    "yLabel": "Real GDP (billions of dollars)",
+    "x": [
+     1,
+     10
+    ],
+    "y": [
+     98,
+     110
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "series": [
+     {
+      "name": "Real GDP",
+      "points": [
+       [
+        1,
+        100
+       ],
+       [
+        2,
+        103
+       ],
+       [
+        3,
+        106
+       ],
+       [
+        4,
+        108
+       ],
+       [
+        5,
+        107
+       ],
+       [
+        6,
+        104
+       ],
+       [
+        7,
+        101
+       ],
+       [
+        8,
+        102
+       ],
+       [
+        9,
+        105
+       ],
+       [
+        10,
+        108
+       ]
+      ]
+     },
+     {
+      "name": "Potential output",
+      "points": [
+       [
+        1,
+        100
+       ],
+       [
+        2,
+        101
+       ],
+       [
+        3,
+        102
+       ],
+       [
+        4,
+        103
+       ],
+       [
+        5,
+        104
+       ],
+       [
+        6,
+        105
+       ],
+       [
+        7,
+        106
+       ],
+       [
+        8,
+        107
+       ],
+       [
+        9,
+        108
+       ],
+       [
+        10,
+        109
+       ]
+      ],
+      "dashed": true
+     }
+    ]
+   },
+   "table": {
+    "caption": "Country X, billions of dollars (invented data for practice)",
+    "cols": [
+     "Quarter",
+     "1",
+     "2",
+     "3",
+     "4",
+     "5",
+     "6",
+     "7",
+     "8",
+     "9",
+     "10"
+    ],
+    "rows": [
+     [
+      "Real GDP",
+      "100",
+      "103",
+      "106",
+      "108",
+      "107",
+      "104",
+      "101",
+      "102",
+      "105",
+      "108"
+     ],
+     [
+      "Potential output",
+      "100",
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109"
+     ]
+    ]
+   }
+  },
+  "business-cycles-s2": {
+   "kind": "text",
+   "title": "A slowdown in Arland",
+   "text": "<p>In Arland, households and firms cut back on spending. For two quarters in a row real GDP falls, stores report weak sales and factories cut shifts. The unemployment rate rises from 4.5% to 7.0%. Economists estimate Arland's natural rate of unemployment at 4.5%.</p>"
+  },
+  "business-cycles-s3": {
+   "kind": "text",
+   "title": "A boom in Berovia",
+   "text": "<p>Berovia's economy is booming. Firms are running extra shifts and paying overtime, and some workers have put off retiring to take well-paid jobs. The unemployment rate is 3.0%, while the natural rate is estimated at 5.0%. Prices are rising faster each month.</p>"
+  },
+  "business-cycles-s4": {
+   "kind": "graph",
+   "title": "A shift of Country W's production possibilities curve",
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Consumer goods",
+     "y": "Capital goods"
+    },
+    "show": {
+     "PPC": 1
+    }
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-business-cycles-1",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In which quarter does Country X reach a peak?",
+   "stimulus": "business-cycles-s1",
+   "options": [
+    "Quarter 4",
+    "Quarter 10",
+    "Quarter 7",
+    "Quarter 9"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A peak is the turning point where an expansion ends and a contraction begins.",
+    "options": [
+     "Right: real GDP rises to 108 in Quarter 4 and falls afterward, so Quarter 4 is the turning point at the top.",
+     "Real GDP is 108 again in Quarter 10, but it is still rising at the end of the data; there is no turning point yet.",
+     "Quarter 7 is the lowest point, the trough.",
+     "Real GDP is still rising in Quarter 9, which is part of an expansion."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-2",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Between which quarters is Country X in a contraction?",
+   "stimulus": "business-cycles-s1",
+   "options": [
+    "From Quarter 4 to Quarter 7",
+    "From Quarter 1 to Quarter 4",
+    "From Quarter 7 to Quarter 10",
+    "From Quarter 1 to Quarter 10"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The business cycle has two phases, expansion and contraction; the peak and the trough are the turning points between them.",
+    "options": [
+     "Right: real GDP falls from 108 to 101 between the peak and the trough.",
+     "Real GDP rises from 100 to 108 then: an expansion.",
+     "Real GDP rises from 101 to 108 then: the next expansion.",
+     "The whole period has both an expansion and a contraction."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-3",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is the output gap in Quarter 7, in billions of dollars? (Use a negative number if output is below potential.)",
+   "stimulus": "business-cycles-s1",
+   "why": {
+    "correct": "Output gap = real GDP - potential output $= 101 - 106 = -5$ billion dollars: a negative (recessionary) gap."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      101,
+      106
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "The size is right but the sign is wrong. Output gap = actual real GDP minus potential output, and actual is below potential here."
+     },
+     {
+      "value": 0,
+      "why": "Quarter 7 is the lowest point, but the gap compares real GDP with potential output: $101 - 106$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-4",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In Quarter 4, real GDP is 108 and potential output is 103. Which statement describes the economy then?",
+   "stimulus": "business-cycles-s1",
+   "options": [
+    "There is a positive (inflationary) gap, and unemployment is below its natural rate",
+    "There is a negative gap, and unemployment is above its natural rate",
+    "There is no gap, because it is the peak",
+    "There is a positive gap, and unemployment is above its natural rate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A positive output gap goes with unemployment below the natural rate and rising inflation; a negative gap goes with cyclical unemployment.",
+    "options": [
+     "Right: output above potential means firms are stretching their workers, so unemployment is below the natural rate and inflation tends to rise.",
+     "Output is above potential, so the gap is positive, not negative.",
+     "A peak is a turning point in real GDP; the gap compares real GDP with potential output.",
+     "Producing more than potential takes more workers, so unemployment is below, not above, the natural rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-5",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "What most likely happens to cyclical unemployment in Country X from Quarter 4 to Quarter 7?",
+   "stimulus": "business-cycles-s1",
+   "options": [
+    "It rises as real GDP falls below potential",
+    "It falls as real GDP falls",
+    "It stays at zero, because potential output keeps growing",
+    "It rises, because potential output falls"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In a contraction, output falls and cyclical unemployment rises. In an expansion the reverse happens.",
+    "options": [
+     "Right: firms produce less, need fewer workers and lay some off.",
+     "Less output means fewer workers are needed, so unemployment rises.",
+     "Potential output grows, but actual output falls below it: that gap is cyclical unemployment.",
+     "Potential output keeps rising in the data; it is actual output that falls."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-6",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which phase of the business cycle is Arland in?",
+   "stimulus": "business-cycles-s2",
+   "options": [
+    "A contraction",
+    "An expansion",
+    "A peak",
+    "Full employment"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A contraction is a period of falling real GDP. When it is severe and lasting it is called a recession.",
+    "options": [
+     "Right: real GDP is falling and unemployment is rising.",
+     "In an expansion real GDP rises; here it is falling.",
+     "A peak is a single turning point, and Arland has been falling for two quarters.",
+     "Unemployment is 7.0%, well above the 4.5% natural rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-7",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is Arland's cyclical unemployment rate now?",
+   "stimulus": "business-cycles-s2",
+   "why": {
+    "correct": "Cyclical = actual - natural $= 7.0 - 4.5 = 2.5\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "cyclicalRate",
+     "args": [
+      7,
+      4.5
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 11.5,
+      "why": "You added the actual and natural rates. Cyclical unemployment is the actual rate minus the natural rate."
+     },
+     {
+      "value": 7,
+      "why": "That is the actual rate. Subtract the natural rate to find the cyclical part."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-8",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "How does Arland's real GDP now compare with its potential output?",
+   "stimulus": "business-cycles-s2",
+   "options": [
+    "It is below potential: a negative (recessionary) output gap",
+    "It is above potential: a positive output gap",
+    "It equals potential, because the natural rate is 4.5%",
+    "It can't be compared without knowing prices"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cyclical unemployment and a negative output gap are two views of the same thing: the economy is producing below its full-employment output.",
+    "options": [
+     "Right: unemployment above the natural rate means the economy is producing less than it could at full employment.",
+     "A positive gap goes with unemployment below the natural rate, not above it.",
+     "Output equals potential when the actual rate equals the natural rate; here it is higher.",
+     "The unemployment rates are enough: cyclical unemployment means output is below potential."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-9",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "What kind of output gap does Berovia have?",
+   "stimulus": "business-cycles-s3",
+   "options": [
+    "A positive (inflationary) output gap",
+    "A negative (recessionary) output gap",
+    "No output gap, because the economy is growing",
+    "A negative gap, because prices are rising"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Unemployment below the natural rate means the economy is producing beyond its potential output for now.",
+    "options": [
+     "Right: unemployment is below the natural rate, so real GDP is above potential output.",
+     "A negative gap comes with unemployment above the natural rate.",
+     "Growing output can be above, at or below potential; here it is above.",
+     "Rising prices point the other way: they come with a positive gap."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-10",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.A",
+   "q": "How can Berovia produce more than its potential output?",
+   "stimulus": "business-cycles-s3",
+   "options": [
+    "By running workers and machines harder for a while",
+    "By having more workers than the adult population",
+    "By counting the same output twice in the GDP figures",
+    "By moving to a point outside its PPC"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Potential output is what the economy produces at the natural rate of unemployment. Above it, firms and workers are stretched, which can last only for a while.",
+    "options": [
+     "Right: potential is the sustainable full-employment level; extra shifts and overtime can push output above it temporarily.",
+     "The labor force can't exceed the adult population; output rises because people work more hours.",
+     "GDP counts final goods once; the extra output is real production.",
+     "A point outside the PPC can't be reached with current resources; a boom stretches how hard they are used."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-11",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Why are prices in Berovia rising faster each month?",
+   "stimulus": "business-cycles-s3",
+   "options": [
+    "Firms are short of workers and capacity, so they raise wages and prices",
+    "Cyclical unemployment is high, so firms raise prices",
+    "Output is below potential, so goods are scarce",
+    "The natural rate has risen to 5.0%"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Near the peak of an expansion, when output is above potential, inflation tends to rise; in a contraction it tends to slow.",
+    "options": [
+     "Right: with output above potential, spending runs ahead of what firms can easily produce, and inflation tends to rise.",
+     "Unemployment is below the natural rate; there is no cyclical unemployment.",
+     "Output is above potential here.",
+     "The natural rate is given as 5.0%; nothing says it rose, and that would not raise prices each month."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-12",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "The graph shows Country W's production possibilities curve shifting out over a decade. Which event could cause this shift?",
+   "stimulus": "business-cycles-s4",
+   "options": [
+    "More workers and better technology",
+    "A recession that leaves factories idle",
+    "A boom in which firms pay overtime",
+    "A rise in the inflation rate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The PPC shows what the economy can produce with full use of its resources, so it shifts out when resources or technology grow: potential output rises.",
+    "options": [
+     "Right: more resources or better technology let the economy produce more of both goods, so the PPC and potential output grow.",
+     "A recession moves production to a point inside the PPC; the curve itself does not move.",
+     "A boom pushes output above potential for a while; it does not add resources.",
+     "Faster price increases do not add workers, capital or technology."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-13",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "What does the shift in the graph show about Country W's potential output?",
+   "stimulus": "business-cycles-s4",
+   "options": [
+    "It increased",
+    "It decreased",
+    "It stayed the same, because just the curve moved",
+    "It can't be told from a PPC"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Potential output corresponds to the PPC: producing on the curve is full employment, and an outward shift is growth in potential output.",
+    "options": [
+     "Right: an outward PPC shift means the economy can produce more at full employment.",
+     "A decrease would be an inward shift of the curve.",
+     "The curve is what the economy can produce at full employment; when it moves out, potential output rises.",
+     "Points on the PPC are full-employment output, so its shift shows the change in potential."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-14",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Before the shift, Country W was in a recession with high cyclical unemployment. Where was it producing compared with the original PPC?",
+   "stimulus": "business-cycles-s4",
+   "options": [
+    "At a point inside the original curve",
+    "At a point on the original curve",
+    "At a point outside the original curve",
+    "On the new curve, because of the shift"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A recession is a point inside the PPC; the economy at full employment is on it; growth in potential output shifts the curve out.",
+    "options": [
+     "Right: idle workers and machines mean output below what the economy could produce.",
+     "On the curve means full employment; a recession has cyclical unemployment.",
+     "Points outside the curve can't be reached with the resources the economy had.",
+     "The new curve shows later, larger potential; in the recession it was below even the old one."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-15",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Country W is in a deep recession: factories sit idle and many workers cannot find jobs. Mark a point on its PPC graph that shows where it is producing.",
+   "why": {
+    "correct": "Idle workers and machines mean the economy produces less than it could: a point inside the PPC."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Consumer goods",
+     "y": "Capital goods"
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "R",
+    "key": {
+     "point": {
+      "region": "inside"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-business-cycles-16",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Country W recovers until real GDP equals its potential output and unemployment equals its natural rate. Mark a point on its PPC graph that shows where it is producing now.",
+   "why": {
+    "correct": "At potential output the economy is at full employment and uses its resources efficiently, so it produces on the PPC."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Consumer goods",
+     "y": "Capital goods"
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "F",
+    "key": {
+     "point": {
+      "region": "on"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-business-cycles-17",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "recall",
+   "diff": 1,
+   "type": "order",
+   "practice": "1.A",
+   "q": "Put the parts of one business cycle in order, starting at a peak.",
+   "options": [
+    "Peak",
+    "Contraction",
+    "Trough",
+    "Expansion"
+   ],
+   "why": {
+    "correct": "From a peak, output falls in a contraction to a trough, then rises in an expansion toward the next peak. The phases are expansion and contraction; peak and trough are the turning points."
+   }
+  },
+  {
+   "id": "mac-business-cycles-18",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is potential output?",
+   "options": [
+    "The real GDP an economy produces at full employment",
+    "The largest real GDP an economy has reached in the past",
+    "The real GDP an economy produces with zero unemployment",
+    "The real GDP at the trough of a business cycle"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Potential (full-employment) output is the sustainable level, at the natural rate of unemployment. It grows over time as the economy gains resources and better technology.",
+    "options": [
+     "Right: output when unemployment is at its natural rate.",
+     "A past high may have been above potential during a boom.",
+     "Full employment leaves frictional and structural unemployment.",
+     "At a trough output is usually far below potential."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-19",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Over many decades, Country Z's real GDP rises through several expansions and contractions. Which line best describes its potential output over that time?",
+   "options": [
+    "A rising trend line that real GDP moves above and below",
+    "A flat line, because potential is fixed",
+    "A line that moves up and down with each expansion and contraction",
+    "A line that stays above real GDP in each year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Real GDP fluctuates around potential output, which follows a long-term upward trend.",
+    "options": [
+     "Right: potential output grows over time, and the business cycle swings around it.",
+     "Potential grows as the labor force, capital and technology grow.",
+     "Actual real GDP swings; potential is the smoother trend.",
+     "In booms real GDP rises above potential, so the gap is sometimes positive."
+    ]
+   }
+  },
+  {
+   "id": "mac-business-cycles-20",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Build the explanation: households and firms in Country V cut their spending sharply. Explain what happens to output and unemployment.",
+   "why": {
+    "correct": "Less spending means firms sell less, so they produce less and need fewer workers: real GDP falls below potential (a negative output gap) and cyclical unemployment rises."
+   },
+   "specific": {
+    "frame": "Total spending ___, so real GDP ___, which creates a ___ output gap, and cyclical unemployment ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Total spending falls, so firms sell less and produce less: real GDP falls below potential output, which leads to a negative (recessionary) output gap. Cyclical unemployment rises because firms need fewer workers.",
+    "slots": {
+     "spending": {
+      "label": "Total spending",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Households and firms cut their spending, so total spending falls."
+      }
+     },
+     "output": {
+      "label": "Real GDP",
+      "options": [
+       "falls below potential",
+       "rises above potential"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Firms sell less, so they produce less: output falls, it does not rise."
+      }
+     },
+     "gap": {
+      "label": "The output gap",
+      "options": [
+       "negative (recessionary)",
+       "positive (inflationary)"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Output below potential is a negative gap; a positive gap is output above potential."
+      }
+     },
+     "unemployment": {
+      "label": "Cyclical unemployment",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Producing less takes fewer workers, so firms lay people off and cyclical unemployment rises."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-business-cycles-21",
+   "unit": "unit-2",
+   "topic": "business-cycles",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these usually happen during a contraction? Select all that apply.",
+   "options": [
+    "Cyclical unemployment rises",
+    "Real GDP rises faster than potential output",
+    "The unemployment rate falls below the natural rate",
+    "Potential output shrinks to match real GDP"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "In a contraction real GDP falls, often below potential, and cyclical unemployment rises; inflation tends to slow.",
+    "options": [
+     "Right: firms produce less and lay off workers.",
+     "That describes an expansion.",
+     "That happens near the peak of a boom, not in a contraction.",
+     "Potential output keeps its trend; actual output falls below it."
+    ]
+   }
+  }
+ ]
+}
