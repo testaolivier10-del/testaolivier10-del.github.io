@@ -210,8 +210,8 @@ test('each reader carries its own chapters\' cards, once, with no YouTube src', 
     if (!existsSync(join(ROOT, rel))) continue;
     const html = readFileSync(join(ROOT, rel), 'utf8');
     const cards = readerCards(rel, videos);
-    const want = videos.data.videos.filter((v) => v.course === course && v.pages.some((p) => /\/notes\//.test(p))).length;
-    assert.equal(cards.length, want, `${rel}: one card per video with a notes page`);
+    const want = videos.data.videos.filter((v) => v.course === course).reduce((n, v) => n + v.pages.filter((p) => /\/notes\//.test(p)).length, 0);
+    assert.equal(cards.length, want, `${rel}: one card per notes page that shows a video`);
     assert.equal(html.split(R_START).length - 1, cards.length ? 1 : 0, `${rel}: reader block present only with a video`);
     assert.equal(applyVideo(rel, html, videos), html, `${rel}: up to date`);
     for (const c of cards) {
