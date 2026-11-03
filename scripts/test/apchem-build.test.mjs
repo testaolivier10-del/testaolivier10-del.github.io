@@ -60,7 +60,7 @@ test('the course home has its own headline and the cobalt flask, not Biology\'s'
   const { root } = build('unit-1');
   const home = readFileSync(join(root, 'chem/index.html'), 'utf8');
   assert.match(home, /<h1 class="mast" id="r3Title">AP®<span>Chemistry<\/span><\/h1>/);
-  assert.match(home, /<p class="deck">AP® Chemistry, <span>one particle at a time\.<\/span><\/p>/);
+  assert.doesNotMatch(home, /<p class="deck">/); // the second tagline is off course homes (owner 2026-11-02)
   assert.doesNotMatch(home, /Biology|osmosis|Water Watcher/);
   assert.match(home, /assets\/chem\.css/);
 });
