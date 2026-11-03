@@ -446,8 +446,12 @@ const SHELL_BUDGETS = [
      ApPsychStats, the graph model and renderer (mac-graph.js, every graph
      item and FRQ graph part) and its grader in mac-grade.js. Measured 81.5 KB
      in Phase 0 before any unit is published (AP® Psychology's 69.2 plus the
-     graph module); 83 leaves room for the built curriculum. */
-  ['macroeconomics', 83],
+     graph module); 83 left room for the built curriculum. Raised to 89 at
+     integration (2026-11-03): the builders' renderer work (labels, arrows,
+     axis marks, key.alt) and the integrator's (straight PPC, point names,
+     label placement, keyResponse) took mac-graph.js from 9.6 to 14.5 KB
+     gzipped; measured 87.1, with the same room for the curriculum. */
+  ['macroeconomics', 89],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

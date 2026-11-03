@@ -179,6 +179,17 @@ student draws in the page (the AI grader hook only when its eval passes).
    specific" skills `chain`, `tool`, `graph`, `multiplier`, `selfadjust`, `currency`, `calculate`, `identify`;
    (e) the site shell budget went from 341 to 342 KB and the course shell is 83 KB (measured 81.5, the graph
    module included).
+10. (2026-11-03) **Integration of the authors' and builders' work** (the integrator, for the lead; details in
+   `docs/apmacro-architecture.md` and `docs/apmacro-needs-author.md`): (a) drills have a `graph` step kind and the
+   reserves, AD-AS and forex labs use it; (b) a straight-line PPC (`linear`, `ends`); (c) `key.alt` used wherever
+   the exam accepts either shift, with prompts worded as the exam words them; (d) FRQs have a text `scenario`
+   before the parts; (e) `expected-inflation` is taught in 3.3 (`sras`); (f) one invented-country rule: graded
+   content uses invented countries and currencies, each scenario set its own names; teaching text may use real
+   currencies labeled illustrative; (g) renderer point names (E3, YF, uN), label placement and exported plot box,
+   with the tools' local workarounds removed; (h) no business cycle graph kind for now; (i) the course shell
+   budget is 89 KB (measured 87.1; mac-graph.js grew from 9.6 to 14.5 KB gzipped across the builders' and the
+   integrator's work); (j) a checkpoint build had written the course over the site's own `index.html`,
+   `search.html` and four other root pages: restored, and the generator refuses `--out` at the repository root.
 
 ## 9. Open items for the owner
 
