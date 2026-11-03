@@ -405,7 +405,7 @@
    "practice": "4.C",
    "q": "Years later, the finished highways cut shipping times and costs for firms across the economy. Shift the curve that shows the long-run effect on productive capacity.",
    "why": {
-    "correct": "Better infrastructure raises productivity, so potential output rises and LRAS shifts right."
+    "correct": "Better infrastructure raises productivity, so potential output rises and LRAS shifts right. (Lower costs can shift SRAS right too; drawing both shifts right is also accepted.)"
    },
    "graph": {
     "kind": "adas",
@@ -424,10 +424,23 @@
        "dir": "right"
       }
      ],
-     "because": "better infrastructure that raises productivity"
+     "because": "better infrastructure that raises productivity",
+     "alt": [
+      [
+       {
+        "curve": "LRAS",
+        "dir": "right"
+       },
+       {
+        "curve": "SRAS",
+        "dir": "right"
+       }
+      ]
+     ]
     },
     "slips": {
-     "AD": "The question asks about capacity once the highways are built; that is LRAS, not spending."
+     "AD": "The question asks about capacity once the highways are built; that is LRAS, not spending.",
+     "SRAS": "The question asks about capacity, so LRAS must shift right. Shifting SRAS right as well, for the lower shipping costs, is accepted; shifting SRAS alone is not."
     }
    }
   },

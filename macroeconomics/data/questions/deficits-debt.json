@@ -5,7 +5,7 @@
    "title": "The budget of Brenna (invented), billions of dollars",
    "invented": true,
    "table": {
-    "caption": "Brenna, an invented country, owed 1,000 billion dollars at the start of Year 1. Outlays include spending, transfer payments and interest on the debt.",
+    "caption": "Brenna, an invented country, owed 1,200 billion dollars at the start of Year 1. Outlays include spending, transfer payments and interest on the debt.",
     "cols": [
      "Year",
      "Tax revenue",
@@ -14,23 +14,23 @@
     "rows": [
      [
       "1",
-      "800",
-      "900"
+      "760",
+      "850"
      ],
      [
       "2",
-      "850",
-      "920"
+      "800",
+      "860"
      ],
      [
       "3",
-      "900",
-      "880"
+      "880",
+      "850"
      ],
      [
       "4",
-      "820",
-      "960"
+      "790",
+      "920"
      ]
     ]
    }
@@ -78,30 +78,30 @@
    "practice": "1.C",
    "q": "What is Brenna's budget balance in Year 2, in billions of dollars? Use a negative number for a deficit.",
    "why": {
-    "correct": "Budget balance $=$ revenue $-$ outlays $= 850 - 920 = -70$: a deficit of 70 billion dollars."
+    "correct": "Budget balance $=$ revenue $-$ outlays $= 800 - 860 = -60$: a deficit of 60 billion dollars."
    },
    "numeric": {
     "from": {
      "fn": "budgetBalance",
      "args": [
-      850,
-      920
+      800,
+      860
      ]
     },
     "mistakes": [
      {
-      "value": 70,
-      "why": "The size is right but the sign is not: outlays are larger than revenue, so the balance is negative, a deficit of 70."
+      "value": 60,
+      "why": "The size is right but the sign is not: outlays are larger than revenue, so the balance is negative, a deficit of 60."
      },
      {
       "from": {
        "fn": "add",
        "args": [
-        850,
-        920
+        800,
+        860
        ]
       },
-      "why": "You added revenue and outlays. The balance is revenue minus outlays: 850 - 920."
+      "why": "You added revenue and outlays. The balance is revenue minus outlays: 800 - 860."
      }
     ]
    },
@@ -117,21 +117,21 @@
    "practice": "2.C",
    "q": "How much does Brenna owe at the end of Year 3, in billions of dollars?",
    "why": {
-    "correct": "Deficits of 100 and 70 add to the debt and the surplus of 20 reduces it: $1{,}000 + 100 + 70 - 20 = 1{,}150$ billion dollars."
+    "correct": "Deficits of 90 and 60 add to the debt and the surplus of 30 reduces it: $1{,}200 + 90 + 60 - 30 = 1{,}320$ billion dollars."
    },
    "numeric": {
     "from": {
      "fn": "sub",
      "args": [
-      1000,
+      1200,
       {
        "fn": "add",
        "args": [
         {
          "fn": "budgetBalance",
          "args": [
-          800,
-          900
+          760,
+          850
          ]
         },
         {
@@ -140,15 +140,15 @@
           {
            "fn": "budgetBalance",
            "args": [
-            850,
-            920
+            800,
+            860
            ]
           },
           {
            "fn": "budgetBalance",
            "args": [
-            900,
-            880
+            880,
+            850
            ]
           }
          ]
@@ -162,34 +162,34 @@
       "from": {
        "fn": "add",
        "args": [
-        1000,
+        1200,
         {
          "fn": "add",
          "args": [
-          100,
+          90,
           {
            "fn": "add",
            "args": [
-            70,
-            20
+            60,
+            30
            ]
           }
          ]
         }
        ]
       },
-      "why": "You added the Year 3 surplus to the debt. A surplus pays some debt off: 1,000 + 100 + 70 - 20."
+      "why": "You added the Year 3 surplus to the debt. A surplus pays some debt off: 1,200 + 90 + 60 - 30."
      },
      {
       "from": {
        "fn": "sub",
        "args": [
-        1000,
+        1200,
         {
          "fn": "add",
          "args": [
-          100,
-          70
+          90,
+          60
          ]
         }
        ]
@@ -220,9 +220,9 @@
     "correct": "The debt falls only in a year with a surplus.",
     "options": [
      "The deficit was smaller than in Year 1, but a smaller deficit still adds to the debt.",
-     "Year 4 has the largest deficit, 140, so the debt rose the most.",
-     "Right: revenue (900) exceeded outlays (880), a surplus of 20 that pays down the debt.",
-     "Outlays exceeded revenue by 100, so the debt rose."
+     "Year 4 has the largest deficit, 130, so the debt rose the most.",
+     "Right: revenue (880) exceeded outlays (850), a surplus of 30 that pays down the debt.",
+     "Outlays exceeded revenue by 90, so the debt rose."
     ]
    },
    "stimulus": "deficits-debt-s1"
@@ -235,7 +235,7 @@
    "diff": 3,
    "type": "single",
    "practice": "2.A",
-   "q": "Brenna passed no new tax or spending law in Year 4, yet its deficit jumped to 140. What is the most likely reason?",
+   "q": "Brenna passed no new tax or spending law in Year 4, yet its deficit jumped to 130. What is the most likely reason?",
    "options": [
     "A recession cut tax revenue and raised transfer payments through automatic stabilizers",
     "An economic boom raised tax revenue faster than outlays",

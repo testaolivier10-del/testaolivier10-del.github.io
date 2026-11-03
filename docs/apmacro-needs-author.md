@@ -310,7 +310,14 @@ save and invest, with its AD effect in the short run). It says the size of suppl
 and takes no side. Institutions and property rights appear in one closing notes sentence only. A person should
 check the list against the CED 5.7 text (`ced-text`).
 
-### e-real-facts: real-world facts in hooks and notes (open, 2026-11-03)
+### e-real-facts: real-world facts in hooks and notes (resolved by the Unit 5 reviewer, 2026-11-03)
+
+Checked (`docs/apmacro-reviews/unit-5.md`): US real GDP per person was 19,614 (2017 dollars) in 1960 Q1 and
+71,751 in 2026 Q3 (BEA via FRED, A939RX0Q048SBEA), 3.7 times; nonfarm business output per hour rose from index
+32.0 to 120.0 (BLS via FRED, OPHNFB), 3.75 times. The hook and notes now say "about three and a half times" for
+both (they said "several times" and "roughly three times"). The 1960s trade-off and 1970s oil-shock stagflation
+match CRS report RL34428; Germany 1923 and Zimbabwe 2008 as money-financed hyperinflations match standard
+accounts (Hanke and Kwok, Cato Journal 2009, for Zimbabwe). The original note:
 
 Unchecked against a source in this pass, stated cautiously: US real GDP per person "roughly three times" its 1960
 level and output per hour "several times" (`economic-growth` hook and notes); Germany 1923 and Zimbabwe 2008 as

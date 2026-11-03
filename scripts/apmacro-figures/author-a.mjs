@@ -151,8 +151,8 @@ function add(topic, id, w, h, title, desc, body, alt) {
 { // opportunity-cost-ppc: bowed PPC, points, growth
   const F = frame(90, 30, 420, 320, 'Pizzas (thousands)', 'Robots (thousands)');
   const g = [...F.g];
-  g.push(`<path d="M${ppcPath(F, 9.4)}" fill="none" stroke="${GREY}" stroke-width="2.4" stroke-dasharray="7 5"/>`, text(F.X(7.3), F.Y(6.4), 'PPC_2', { fill: GREY, bold: true }));
-  g.push(`<path d="M${ppcPath(F, 7.5)}" fill="none" stroke="${ACC}" stroke-width="3.2"/>`, text(F.X(5.6) - 8, F.Y(4.6) - 14, 'PPC_1', { fill: ACC, bold: true, anchor: 'end' }));
+  g.push(`<path d="M${ppcPath(F, 9.4)}" fill="none" stroke="${GREY}" stroke-width="2.4" stroke-dasharray="7 5"/>`, text(F.X(4.6), F.Y(8.6), 'PPC_2', { fill: GREY, bold: true }));
+  g.push(`<path d="M${ppcPath(F, 7.5)}" fill="none" stroke="${ACC}" stroke-width="3.2"/>`, text(F.X(0.4), F.Y(6.5), 'PPC_1', { fill: ACC, bold: true }));
   const P = [[3, Math.sqrt(7.5 ** 2 - 9), 'F', INK], [6, Math.sqrt(7.5 ** 2 - 36), 'G', INK], [3, 3, 'U', CER], [7, 6.5, 'Z', VERM]];
   for (const [x, y, n, c] of P) g.push(dot(F.X(x), F.Y(y), { fill: c }), text(F.X(x) + 9, F.Y(y) - 8, n, { bold: true, fill: c, size: 15 }));
   g.push(line(F.X(5.2), F.Y(5.2), F.X(6.3), F.Y(6.3), { stroke: GREY, w: 2, arrow: 'opportunity-cost-ppc-points-ar' }));
@@ -220,21 +220,21 @@ function add(topic, id, w, h, title, desc, body, alt) {
     g.join('\n'), 'A supply graph for bicycles: a movement along S1 from J to K when the price rises (a change in quantity supplied), and a shift left from S1 to S2 when input costs rise (a decrease in supply).');
 }
 { // market-equilibrium: shortage at a price below equilibrium
-  const qd = 70, qs = 40; // at a price of $2 (invented)
+  const qd = 75, qs = 45; // at a price of $2: the cocoa schedule in the notes and set s1 (invented)
   const short = Calc.sub(qd, qs);
-  const F = frame(90, 30, 420, 300, 'Quantity of lemonade (cups)', 'Price per cup');
+  const F = frame(90, 30, 420, 300, 'Quantity of cocoa (cups)', 'Price per cup');
   const g = [...F.g];
   g.push(curve(F, [1, 9], [9, 1], 'D', { stroke: CER }), curve(F, [1, 1], [9, 9], 'S'));
-  g.push(guides(F, [5, 5], 'Q*', 'P* = $3'), text(F.X(5) + 10, F.Y(5) + 5, 'E', { bold: true }));
+  g.push(guides(F, [5, 5], 'Q* = 60', 'P* = $3'), text(F.X(5) + 10, F.Y(5) + 5, 'E', { bold: true }));
   g.push(line(F.X(0), F.Y(3), F.X(7.6), F.Y(3), { stroke: VERM, w: 2 }), text(F.X(0) - 6, F.Y(3) + 5, '$2', { anchor: 'end', size: 13, fill: VERM }));
   g.push(dot(F.X(3), F.Y(3), { fill: VERM, r: 4 }), dot(F.X(7), F.Y(3), { fill: VERM, r: 4 }));
   g.push(line(F.X(3), F.Y(2.2), F.X(7), F.Y(2.2), { stroke: VERM, w: 1.6 }), line(F.X(3), F.Y(2), F.X(3), F.Y(2.4), { stroke: VERM, w: 1.6 }), line(F.X(7), F.Y(2), F.X(7), F.Y(2.4), { stroke: VERM, w: 1.6 }));
   g.push(text(F.X(5), F.Y(2.2) + 18, `shortage = ${qd} - ${qs} = ${short} cups`, { anchor: 'middle', size: 13, fill: VERM, bold: true }));
   g.push(text(F.X(3), F.Y(3) - 10, `Qs ${qs}`, { anchor: 'middle', size: 12, fill: VERM }), text(F.X(7), F.Y(3) - 10, `Qd ${qd}`, { anchor: 'middle', size: 12, fill: VERM }));
-  g.push(text(540, 90, 'At $3 the quantities match:', { size: 13 }), text(540, 108, 'equilibrium E.', { size: 13 }), text(540, 146, 'At $2, buyers want 70 cups', { size: 13, fill: VERM }), text(540, 164, 'but sellers offer 40: a', { size: 13, fill: VERM }), text(540, 182, 'shortage of 30 cups, so the', { size: 13, fill: VERM }), text(540, 200, 'price is pushed up toward $3.', { size: 13, fill: VERM }));
+  g.push(text(540, 90, 'At $3 the quantities match:', { size: 13 }), text(540, 108, 'equilibrium E.', { size: 13 }), text(540, 146, 'At $2, buyers want 75 cups', { size: 13, fill: VERM }), text(540, 164, 'but sellers offer 45: a', { size: 13, fill: VERM }), text(540, 182, 'shortage of 30 cups, so the', { size: 13, fill: VERM }), text(540, 200, 'price is pushed up toward $3.', { size: 13, fill: VERM }));
   add('market-equilibrium', 'market-equilibrium-shortage', 800, 380, 'Equilibrium and a shortage below the equilibrium price',
-    'Demand D and supply S for lemonade cross at E, an equilibrium price of $3. At a price of $2, the quantity demanded is 70 cups and the quantity supplied is 40, a shortage of 30 cups, which pushes the price up toward $3. Invented data for practice.',
-    g.join('\n'), 'A supply and demand graph for lemonade with equilibrium E at $3; at a price of $2, quantity demanded (70 cups) exceeds quantity supplied (40 cups), a shortage of 30 cups.');
+    'Demand D and supply S for cups of cocoa cross at E, an equilibrium price of $3 and quantity of 60 cups. At a price of $2, the quantity demanded is 75 cups and the quantity supplied is 45, a shortage of 30 cups, which pushes the price up toward $3. Invented data for practice.',
+    g.join('\n'), 'A supply and demand graph for cocoa with equilibrium E at $3 and 60 cups; at a price of $2, quantity demanded (75 cups) exceeds quantity supplied (45 cups), a shortage of 30 cups.');
 }
 { // market-equilibrium: both curves shift
   const g = [];

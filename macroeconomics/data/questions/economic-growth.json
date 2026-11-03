@@ -357,7 +357,7 @@
    "practice": "4.C",
    "q": "Over a decade, more workers finish technical training and firms install more modern equipment. Shift the right curve on the AD-AS graph.",
    "why": {
-    "correct": "More human and physical capital raise potential output, so LRAS shifts right."
+    "correct": "More human and physical capital raise potential output, so LRAS shifts right. (Lower costs can shift SRAS right too; drawing both shifts right is also accepted.)"
    },
    "graph": {
     "kind": "adas",
@@ -376,11 +376,23 @@
        "dir": "right"
       }
      ],
-     "because": "more human and physical capital"
+     "because": "more human and physical capital",
+     "alt": [
+      [
+       {
+        "curve": "LRAS",
+        "dir": "right"
+       },
+       {
+        "curve": "SRAS",
+        "dir": "right"
+       }
+      ]
+     ]
     },
     "slips": {
      "AD": "Training and equipment raise what the economy can produce; that is LRAS. A change in spending would shift AD.",
-     "SRAS": "This question asks about the economy's long-run capacity, which is LRAS."
+     "SRAS": "Training and modern equipment raise the economy's long-run capacity, so LRAS must shift right. Shifting SRAS right as well, for lower costs, is accepted; shifting SRAS alone is not."
     }
    }
   },

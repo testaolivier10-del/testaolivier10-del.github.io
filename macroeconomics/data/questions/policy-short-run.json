@@ -7,7 +7,7 @@
   },
   "policy-short-run-s2": {
    "kind": "graph",
-   "title": "Country Z after a fall in aggregate demand (invented)",
+   "title": "Tolmar after a fall in aggregate demand (invented)",
    "graph": {
     "kind": "adas",
     "show": {
@@ -141,21 +141,21 @@
    "diff": 3,
    "type": "single",
    "practice": "2.B",
-   "q": "Sundra's central bank lowers its administered rates and, at the same time, the legislature raises government spending. Compared with either policy alone, what happens to AD and to the interest rate?",
+   "q": "Sundra's central bank lowers its administered rates and, at the same time, the legislature raises government spending. Compared with either policy alone, what happens to AD and to the interest rates banks charge on loans?",
    "options": [
-    "AD rises by more; the interest rate falls for sure",
-    "AD rises by more; the interest rate rises for sure",
-    "AD rises by more; the effect on the interest rate is indeterminate",
-    "The effect on AD is indeterminate, and the interest rate falls for sure"
+    "AD rises by more; loan rates fall for sure",
+    "AD rises by more; loan rates rise for sure",
+    "AD rises by more; the effect on loan rates is indeterminate",
+    "The effect on AD is indeterminate, and loan rates fall for sure"
    ],
    "correct": 2,
    "why": {
-    "correct": "When two policies push AD the same way, the AD effect is clear and the interest rate effect is the one that depends on sizes.",
+    "correct": "When two policies push AD the same way, the AD effect is clear and the effect on loan rates is the one that depends on sizes. (The policy rate itself falls, because it follows the administered rates; loan rates also feel the extra borrowing and spending.)",
     "options": [
-     "The monetary move lowers the rate, but the higher spending and income raise the demand for money and for borrowing, which push it up.",
-     "The fiscal move pushes the rate up, but the lower administered rate pulls it down. Without the sizes you cannot say which wins.",
-     "Right: both policies push AD right. The spending rise pushes interest rates up while the monetary move pushes them down, so the net change in the interest rate cannot be told without sizes.",
-     "Both policies are expansionary, so they push AD the same way. It is the interest rate whose change is unclear."
+     "The monetary move pulls loan rates down, but the higher spending and income raise the demand for money and for borrowing, which push them up.",
+     "The fiscal move pushes loan rates up, but the lower administered rate pulls them down. Without the sizes you cannot say which wins.",
+     "Right: both policies push AD right. The spending rise pushes loan rates up while the monetary move pulls them down, so the net change cannot be told without sizes.",
+     "Both policies are expansionary, so they push AD the same way. It is loan rates whose change is unclear."
     ]
    },
    "stimulus": "policy-short-run-s1"
@@ -248,7 +248,7 @@
    "diff": 1,
    "type": "single",
    "practice": "1.B",
-   "q": "The graph shows Country Z after aggregate demand fell from AD1 to AD2. LRAS marks full-employment output. What does the new short-run equilibrium show?",
+   "q": "The graph shows Tolmar after aggregate demand fell from AD1 to AD2. LRAS marks full-employment output. What does the new short-run equilibrium show?",
    "options": [
     "An inflationary gap: output is above full employment",
     "No gap: output is still at full employment",
@@ -302,7 +302,7 @@
    "diff": 2,
    "type": "single",
    "practice": "3.A",
-   "q": "Suppose Country Z uses no policy at all. What happens to its economy in the long run?",
+   "q": "Suppose Tolmar uses no policy at all. What happens to its economy in the long run?",
    "options": [
     "Nominal wages rise, SRAS shifts left, and output returns to full employment",
     "LRAS shifts left to meet the lower level of output",
@@ -329,7 +329,7 @@
    "diff": 2,
    "type": "numeric",
    "practice": "3.C",
-   "q": "Country Z's recessionary gap is 200 billion dollars and its MPC is 0.75. By how much would government spending have to rise to close the gap, in billions of dollars?",
+   "q": "Tolmar's recessionary gap is 200 billion dollars and its MPC is 0.75. By how much would government spending have to rise to close the gap, in billions of dollars?",
    "why": {
     "correct": "The spending multiplier is $\\frac{1}{1 - 0.75} = 4$. Divide the gap by it: $200 \\div 4 = 50$ billion dollars of new government spending."
    },
@@ -444,16 +444,16 @@
    "q": "In Bela, which variable's change cannot be determined without knowing the sizes of the two policies?",
    "options": [
     "Real output",
-    "The interest rate",
+    "Interest rates on loans",
     "The price level",
     "The unemployment rate"
    ],
    "correct": 1,
    "why": {
-    "correct": "Two expansionary policies give a clear AD effect; their effects on the interest rate point opposite ways.",
+    "correct": "Two expansionary policies give a clear AD effect; their effects on loan rates point opposite ways. (Bela's policy rate itself falls, because it follows the administered rate.)",
     "options": [
      "Both policies raise AD, so real output rises in the short run.",
-     "Right: higher spending pushes interest rates up while the lower administered rate pulls them down.",
+     "Right: higher spending pushes loan rates up while the lower administered rate pulls them down.",
      "Both policies raise AD, so the price level rises.",
      "Higher output means firms hire more, so unemployment falls."
     ]
@@ -495,7 +495,7 @@
    "diff": 2,
    "type": "graph",
    "practice": "4.C",
-   "q": "Country Q has an inflationary gap: AD crosses SRAS to the right of LRAS. Its central bank, which operates with ample reserves, raises the interest rate on reserve balances. Shift the right curve and mark the new short-run equilibrium.",
+   "q": "Ruskel, an invented country, has an inflationary gap: AD crosses SRAS to the right of LRAS. Its central bank, which operates with ample reserves, raises the interest rate on reserve balances. Shift the right curve and mark the new short-run equilibrium.",
    "why": {
     "correct": "The higher policy rate lowers investment, so AD shifts left; at the new equilibrium the price level and real output are lower."
    },

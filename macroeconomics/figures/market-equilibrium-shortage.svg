@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380" role="img" aria-labelledby="market-equilibrium-shortage-t market-equilibrium-shortage-d" font-family="Arial, Helvetica, sans-serif">
 <title id="market-equilibrium-shortage-t">Equilibrium and a shortage below the equilibrium price</title>
-<desc id="market-equilibrium-shortage-d">Demand D and supply S for lemonade cross at E, an equilibrium price of $3. At a price of $2, the quantity demanded is 70 cups and the quantity supplied is 40, a shortage of 30 cups, which pushes the price up toward $3. Invented data for practice.</desc>
+<desc id="market-equilibrium-shortage-d">Demand D and supply S for cups of cocoa cross at E, an equilibrium price of $3 and quantity of 60 cups. At a price of $2, the quantity demanded is 75 cups and the quantity supplied is 45, a shortage of 30 cups, which pushes the price up toward $3. Invented data for practice.</desc>
 <defs><marker id="market-equilibrium-shortage-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="market-equilibrium-shortage-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="market-equilibrium-shortage-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="market-equilibrium-shortage-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker></defs><rect width="800" height="380" fill="#FFFFFF"/>
 <line x1="90" y1="24" x2="90" y2="330" stroke="#1F2A28" stroke-width="2"/>
 <line x1="90" y1="330" x2="516" y2="330" stroke="#1F2A28" stroke-width="2"/>
-<text x="510" y="368" font-size="14" fill="#1F2A28" text-anchor="end" font-weight="700">Quantity of lemonade (cups)</text>
+<text x="510" y="368" font-size="14" fill="#1F2A28" text-anchor="end" font-weight="700">Quantity of cocoa (cups)</text>
 <text x="56" y="30" font-size="14" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 56 30)">Price per cup</text>
 <line x1="132" y1="60" x2="468" y2="300" stroke="#084F78" stroke-width="3"/><text x="474" y="304" font-size="15" fill="#084F78" font-weight="700">D</text>
 <line x1="132" y1="300" x2="468" y2="60" stroke="#355A0A" stroke-width="3"/><text x="474" y="64" font-size="15" fill="#355A0A" font-weight="700">S</text>
-<line x1="90" y1="180" x2="300" y2="180" stroke="#6B7370" stroke-width="1.4" stroke-dasharray="5 4"/><line x1="300" y1="180" x2="300" y2="330" stroke="#6B7370" stroke-width="1.4" stroke-dasharray="5 4"/><text x="84" y="185" font-size="13" fill="#1F2A28" text-anchor="end">P* = $3</text><text x="300" y="348" font-size="13" fill="#1F2A28" text-anchor="middle">Q*</text><circle cx="300" cy="180" r="5" fill="#1F2A28"/>
+<line x1="90" y1="180" x2="300" y2="180" stroke="#6B7370" stroke-width="1.4" stroke-dasharray="5 4"/><line x1="300" y1="180" x2="300" y2="330" stroke="#6B7370" stroke-width="1.4" stroke-dasharray="5 4"/><text x="84" y="185" font-size="13" fill="#1F2A28" text-anchor="end">P* = $3</text><text x="300" y="348" font-size="13" fill="#1F2A28" text-anchor="middle">Q* = 60</text><circle cx="300" cy="180" r="5" fill="#1F2A28"/>
 <text x="310" y="185" font-size="14" fill="#1F2A28" font-weight="700">E</text>
 <line x1="90" y1="240" x2="409.2" y2="240" stroke="#D55E00" stroke-width="2"/>
 <text x="84" y="245" font-size="13" fill="#D55E00" text-anchor="end">$2</text>
@@ -17,13 +17,13 @@
 <line x1="216" y1="264" x2="384" y2="264" stroke="#D55E00" stroke-width="1.6"/>
 <line x1="216" y1="270" x2="216" y2="258" stroke="#D55E00" stroke-width="1.6"/>
 <line x1="384" y1="270" x2="384" y2="258" stroke="#D55E00" stroke-width="1.6"/>
-<text x="300" y="282" font-size="13" fill="#D55E00" text-anchor="middle" font-weight="700">shortage = 70 - 40 = 30 cups</text>
-<text x="216" y="230" font-size="12" fill="#D55E00" text-anchor="middle">Qs 40</text>
-<text x="384" y="230" font-size="12" fill="#D55E00" text-anchor="middle">Qd 70</text>
+<text x="300" y="282" font-size="13" fill="#D55E00" text-anchor="middle" font-weight="700">shortage = 75 - 45 = 30 cups</text>
+<text x="216" y="230" font-size="12" fill="#D55E00" text-anchor="middle">Qs 45</text>
+<text x="384" y="230" font-size="12" fill="#D55E00" text-anchor="middle">Qd 75</text>
 <text x="540" y="90" font-size="13" fill="#1F2A28">At $3 the quantities match:</text>
 <text x="540" y="108" font-size="13" fill="#1F2A28">equilibrium E.</text>
-<text x="540" y="146" font-size="13" fill="#D55E00">At $2, buyers want 70 cups</text>
-<text x="540" y="164" font-size="13" fill="#D55E00">but sellers offer 40: a</text>
+<text x="540" y="146" font-size="13" fill="#D55E00">At $2, buyers want 75 cups</text>
+<text x="540" y="164" font-size="13" fill="#D55E00">but sellers offer 45: a</text>
 <text x="540" y="182" font-size="13" fill="#D55E00">shortage of 30 cups, so the</text>
 <text x="540" y="200" font-size="13" fill="#D55E00">price is pushed up toward $3.</text>
 </svg>
