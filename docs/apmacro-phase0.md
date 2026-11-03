@@ -72,6 +72,10 @@ Notable ordering choices (each is a `dependsOn` the check enforces):
   The term `limited-reserves` itself is taught in 4.4, with the money multiplier it makes work, so 4.4 and 4.5
   items can name the framework they set (integrator, 2026-11-03); its tools, `open-market-operations` and
   `discount-rate`, stay in 4.6.
+- `economic-growth` is taught in 1.2 (`opportunity-cost-ppc`) with `fullIn: ["economic-growth"]` and a pull-forward
+  entry in `circularDependencies` (integrator, 2026-11-03): CED 1.2 says an outward PPC shift is economic growth, so
+  Unit 1 names it; 5.6 stays its main topic (real GDP per capita, LRAS right, the sources, which `human-capital`
+  now carries as dependencies), and glossary links on later pages go to 5.6.
 - `crowding-out` (5.5) depends on `loanable-funds` (4.7) and `budget-deficit` (5.4); `capital-flows` (6.6) on
   `real-rate` (4.2) and the foreign exchange determinants (6.4).
 

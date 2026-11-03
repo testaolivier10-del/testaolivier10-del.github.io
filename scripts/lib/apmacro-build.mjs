@@ -464,7 +464,9 @@ export function glossify(C, html, { depth, topic, seen, index }) {
     marks.sort((a, b) => b.start - a.start);
     for (const k of marks) {
       const c = C.map.concepts.find(x => x.id === k.id);
-      const href = c && C.built.has(c.taughtIn) && c.taughtIn !== topic ? `${depth}notes/${c.taughtIn}.html` : null;
+      // A term taught early and in full later (fullIn: economic growth in 1.2, then 5.6) links to its main topic.
+      const home = c && (((c.fullIn || []).find(x => C.built.has(x) && x !== topic)) || c.taughtIn);
+      const href = c && c.taughtIn !== topic && C.built.has(home) && home !== topic ? `${depth}notes/${home}.html` : null;
       const tag = href ? `<a class="gl" href="${href}" data-c="${k.id}">${k.word}</a>` : `<span class="gl" tabindex="0" data-c="${k.id}">${k.word}</span>`;
       s = s.slice(0, k.start) + tag + s.slice(k.end);
     }

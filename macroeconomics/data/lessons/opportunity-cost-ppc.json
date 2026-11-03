@@ -41,7 +41,7 @@
  ],
  "figure": {
   "figure": "opportunity-cost-ppc-points",
-  "caption": "Points on the PPC are efficient, U inside shows idle resources, Z outside is out of reach now, and PPC2 shows growth from more resources or better technology."
+  "caption": "Points on the PPC are efficient, U inside shows idle resources, Z outside is out of reach now, and PPC2 shows economic growth from more resources or better technology."
  },
  "chain": [
   {
@@ -65,7 +65,7 @@
   "<b>Opportunity cost</b>: the value of the next-best alternative given up. Per unit, it is what you give up divided by what you gain.",
   "On the <b>PPC</b>: efficient. Inside: idle or misused resources (a recession). Outside: unattainable with today's resources and technology.",
   "Bowed out means <b>increasing opportunity cost</b> (specialized resources); a straight line means constant opportunity cost.",
-  "More resources or better technology shift the PPC <b>outward</b>; a disaster shifts it inward. Moving resources between the two goods is a movement along it."
+  "More resources or better technology shift the PPC <b>outward</b>, which is <b>economic growth</b>; a disaster shifts it inward. Moving resources between the two goods is a movement along it."
  ],
  "misconception": {
   "wrong": "Putting idle factories back to work shifts the PPC outward.",
