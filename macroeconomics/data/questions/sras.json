@@ -61,20 +61,20 @@
    "type": "single",
    "practice": "2.C",
    "stimulus": "sras-s1",
-   "q": "Based on the table, in which year did Country V's SRAS curve shift to the left compared with Year 1, because of an input price?",
+   "q": "Based on the table, in which year did a higher price of a raw material, with the nominal wage and output per worker the same as in Year 1, shift Country V's SRAS curve to the left?",
    "options": [
     "Year 2",
     "Year 3",
-    "Year 1",
+    "Year 4",
     "No year, because the price level is not in the table"
    ],
    "correct": 0,
    "why": {
-    "correct": "Higher oil prices raise firms' costs at every price level, so they supply less real output: SRAS shifts left.",
+    "correct": "Oil is the raw material in the table. Its higher price in Year 2 raises firms' costs at every price level, so they supply less real output: SRAS shifts left.",
     "options": [
      "Right: oil rose from 60 to 90 dollars a barrel with wages and output per worker unchanged, so costs per unit rose.",
      "In Year 3 output per worker rose with costs unchanged, which shifts SRAS right.",
-     "Year 1 is the starting point the other years are compared with.",
+     "Year 4's higher nominal wage also shifts SRAS left, but a wage is the price of labor, not of a raw material such as oil.",
      "SRAS shifts with input prices and productivity at a given price level. The table shows exactly those."
     ]
    }
