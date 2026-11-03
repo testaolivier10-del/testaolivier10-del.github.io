@@ -3,115 +3,384 @@
 <head>
 <script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
 <link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Search the course — AP® Macroeconomics | LevlPrep</title>
-<meta name="description" content="Search every macroeconomics lesson, notes page, glossary term and tool in the course.">
+<title>Search All Courses | LevlPrep</title>
+<meta name="description" content="Search all twelve LevlPrep courses: NREMT-EMT, ochem, A&amp;P, biology, chemistry, physics, precalculus, calculus AB and BC, stats, env science and psychology.">
 <meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://levlprep.com/macroeconomics/search.html">
-<meta property="og:title" content="Search the course — AP® Macroeconomics | LevlPrep">
-<meta property="og:description" content="Search every macroeconomics lesson, notes page, glossary term and tool in the course.">
+<link rel="canonical" href="https://levlprep.com/search.html">
+<meta property="og:title" content="Search All Courses | LevlPrep">
+<meta property="og:description" content="Search all twelve LevlPrep courses: NREMT-EMT, ochem, A&amp;P, biology, chemistry, physics, precalculus, calculus AB and BC, stats, env science and psychology.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://levlprep.com/macroeconomics/search.html">
+<meta property="og:url" content="https://levlprep.com/search.html">
 <meta property="og:site_name" content="LevlPrep">
-<meta property="og:image" content="https://levlprep.com/macroeconomics/assets/og-image.png">
+<meta property="og:image" content="https://levlprep.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="../assets/theme.css">
-<script src="../assets/errors.js" defer></script>
-<script src="../assets/account.js" defer></script>
-<script src="../assets/hub-progress.js" defer></script>
-<script src="../assets/chime.js" defer></script>
-<script src="../assets/site-chrome.js" defer></script>
-<link rel="stylesheet" href="assets/mac.css">
-<link rel="stylesheet" href="../assets/fonts/fonts.css">
-<!-- levlprep-structured-data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://levlprep.com/macroeconomics/search.html#page",
-      "name": "Search",
-      "url": "https://levlprep.com/macroeconomics/search.html",
-      "description": "Search every macroeconomics lesson, notes page, glossary term and tool in the course.",
-      "isPartOf": {
-        "@id": "https://levlprep.com/macroeconomics/#course"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "LevlPrep",
-          "item": "https://levlprep.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "AP® Macroeconomics",
-          "item": "https://levlprep.com/macroeconomics/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Search",
-          "item": "https://levlprep.com/macroeconomics/search.html"
-        }
-      ]
-    }
-  ]
-}
-</script>
-<link rel="stylesheet" href="../assets/course/r3.css">
-<link rel="stylesheet" href="../assets/course/r3-reading.css">
+<link rel="stylesheet" href="assets/theme.css">
+<script>if(/[?&]embed=1(&|$)/.test(location.search))document.documentElement.classList.add("ss-embed");</script>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/site-pages.css">
+<style>
+  /* Search in the light channel look (docs/site-redesign.md, round 2).
+     Shared parts are in assets/site-pages.css. */
+  .ss-sec{padding-top:0;}
+  .ss-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start;}
+  .ss{min-width:0;}
+  .ss-hero{padding-bottom:26px;}
+  .ss-hero h1{font-size:clamp(40px,5vw,62px);}
+  .ss-hero .lede{font-size:16px;margin:0;}
+  .ss-box{position:relative;}
+  .ss-icon{position:absolute;left:18px;top:50%;width:22px;height:22px;transform:translateY(-50%);color:var(--muted);pointer-events:none;}
+  .ss-input#ssQ{width:100%;box-sizing:border-box;min-height:60px;padding:12px 18px 12px 52px;border-radius:16px;border:2px solid var(--ink);background:var(--white);color:var(--ink);font:800 19px var(--font-ui);box-shadow:0 20px 40px -30px rgba(11,26,51,.5);}
+  .ss-input#ssQ:focus{outline:3px solid var(--accent);outline-offset:3px;box-shadow:0 20px 40px -30px rgba(11,26,51,.5);}
+  .ss-help{margin:10px 0 0;font:600 13px/1.6 var(--font-ui);color:var(--muted);}
+  .ss-help kbd,.ss-keys kbd{font:800 11.5px var(--font-ui);background:var(--white);border:1.5px solid var(--line);border-bottom-width:3px;border-radius:6px;padding:0 6px;color:var(--muted);}
+  @media (hover:none) and (pointer:coarse){.ss-help{display:none;}}
+  /* On a wide screen the Keys panel beside the results says the same. */
+  @media (min-width:901px){html:not(.ss-embed) .ss-help{display:none;}}
+  .ss-chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;}
+  .ss-chip{min-height:40px;padding:8px 14px;border-radius:var(--radius-pill);border:0;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line);font:800 14px var(--font-ui);color:var(--ink);cursor:pointer;}
+  .ss-chip span{color:var(--muted);font-weight:700;margin-left:4px;font-size:12.5px;}
+  .ss-chip[aria-pressed="true"]{background:var(--chan);color:var(--on-chan);box-shadow:none;}
+  .ss-chip[aria-pressed="true"] span{color:inherit;opacity:.75;}
+  .ss-chip:focus-visible,.ss-more:focus-visible,.ss-try:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+  .ss-status{margin:14px 0 0;min-height:1.5em;font:700 13.5px/1.5 var(--font-ui);color:var(--muted);}
+  .ss-group{margin-top:18px;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:20px 22px 14px;}
+  .ss-gh{display:flex;align-items:center;gap:12px;margin:0 0 6px;font:900 21px/1.2 var(--display);letter-spacing:-.025em;color:var(--ink);}
+  .ss-gh .n{font:700 13px var(--font-ui);letter-spacing:0;color:var(--muted);}
+  .ss-cv{width:44px;height:44px;border-radius:10px;object-fit:cover;object-position:right center;flex-shrink:0;background:var(--panel);}
+  .ss-list{list-style:none;margin:0;padding:0;display:grid;}
+  #ssResults > .ss-list{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:6px 22px;}
+  .ss-list li{border-top:1px solid var(--line);}
+  .ss-list li:first-child{border-top:0;}
+  .ss-group .ss-list li:first-child{border-top:1px solid var(--line);}
+  .ss-hit{display:flex;flex-direction:column;gap:4px;padding:13px 4px;border-radius:10px;color:var(--ink);text-decoration:none;}
+  .ss-hit:hover .ss-title{color:var(--accent-text);}
+  .ss-hit:focus-visible{outline:3px solid var(--accent);outline-offset:0;}
+  .ss-kind{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font:800 11.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text);}
+  .ss-badge{font:800 11px var(--font-ui);letter-spacing:.03em;padding:2px 8px;border-radius:var(--radius-pill);background:var(--c-tint);color:var(--c-ink);text-transform:none;}
+  .ss-title{font:900 17px/1.35 var(--font-ui);overflow-wrap:anywhere;letter-spacing:-.01em;}
+  .ss-snip{font:600 14.5px/1.55 var(--font-ui);color:var(--muted);overflow-wrap:anywhere;}
+  .ss-hit mark{background:var(--tint-amber);color:var(--ink);border-radius:3px;padding:0 2px;}
+  .ss-more{margin:6px 0 4px;border:0;background:none;padding:8px 2px;font:800 14px var(--font-ui);color:var(--accent-text);text-decoration:underline;cursor:pointer;}
+  .ss-none{margin-top:18px;font:700 15px/1.6 var(--font-ui);color:var(--muted);}
+  .ss-tries{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+  .ss-try{border:0;background:none;padding:4px 2px;font:800 14px var(--font-ui);color:var(--accent-text);text-decoration:underline;cursor:pointer;}
+  .ss-side{display:grid;gap:16px;position:sticky;top:calc(var(--chrome-row1-h,64px) + 20px);}
+  .ss-pnl{padding:20px;}
+  .ss-pnl h2{margin:0 0 8px;font:900 18px var(--display);letter-spacing:-.02em;color:var(--ink);}
+  .ss-pnl p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55;}
+  .ss-keys{display:grid;gap:8px;margin:0;font-size:14.5px;color:var(--muted);}
+  .ss-keys div{display:flex;justify-content:space-between;gap:8px;}
+  .ss-keys dt{font-weight:600;}
+  .ss-keys dd{margin:0;}
+  @media (max-width:900px){.ss-layout{grid-template-columns:minmax(0,1fr);}.ss-side{position:static;}.ss-keys-pnl{display:none;}}
+  @media (max-width:560px){.ss-input#ssQ{font-size:17px;min-height:54px;}.ss-group{padding:16px 16px 10px;}#ssResults > .ss-list{padding:4px 16px;}}
+  /* One colour per course, the same tints the courses open with. */
+  [data-c="nremt"]{--c-tint:#DFF2ED;--c-ink:#0F5F53;}
+  [data-c="ochem"]{--c-tint:#ECE8FB;--c-ink:#4B3BA8;}
+  [data-c="anp"]{--c-tint:#FBE9E4;--c-ink:#A33B26;}
+  [data-c="apbio"]{--c-tint:#E4F1DD;--c-ink:#2D6A1F;}
+  [data-c="apchem"]{--c-tint:#E3EAFA;--c-ink:#1D44A6;}
+  [data-c="apphys"]{--c-tint:#FBEED5;--c-ink:#734200;}
+  [data-c="apcalc"]{--c-tint:#FCE8EE;--c-ink:#8C1036;}
+  [data-c="apprecalc"]{--c-tint:#E3F3E8;--c-ink:#11592F;}
+  [data-c="apcalcbc"]{--c-tint:#F1E7FA;--c-ink:#5A1E96;}
+  :root[data-theme="dark"] [data-c="nremt"]{--c-tint:rgba(63,194,169,0.16);--c-ink:#9FE6D6;}
+  :root[data-theme="dark"] [data-c="ochem"]{--c-tint:rgba(156,143,224,0.2);--c-ink:#C9C0F2;}
+  :root[data-theme="dark"] [data-c="anp"]{--c-tint:rgba(236,132,108,0.2);--c-ink:#F2B9A9;}
+  :root[data-theme="dark"] [data-c="apbio"]{--c-tint:rgba(140,200,110,0.16);--c-ink:#B6E2A2;}
+  :root[data-theme="dark"] [data-c="apchem"]{--c-tint:rgba(90,130,230,0.2);--c-ink:#B3C8F7;}
+  :root[data-theme="dark"] [data-c="apphys"]{--c-tint:rgba(235,165,50,0.16);--c-ink:#F5CF8A;}
+  :root[data-theme="dark"] [data-c="apcalc"]{--c-tint:rgba(232,80,122,0.16);--c-ink:#F7B8CA;}
+  :root[data-theme="dark"] [data-c="apprecalc"]{--c-tint:rgba(80,200,130,0.16);--c-ink:#ACE4BF;}
+  :root[data-theme="dark"] [data-c="apcalcbc"]{--c-tint:rgba(160,112,224,0.18);--c-ink:#D6BFF5;}
+  /* ?embed=1: this page inside the "/" search overlay every page opens
+     (site-chrome.js), so only the box, chips and results show. */
+  .ss-embed #site-header,.ss-embed .skip-link,.ss-embed .ss-hero,.ss-embed .ss-help,.ss-embed .xsection:has(> footer),.ss-embed .ss-side{display:none;}
+  .ss-embed .ss-layout{display:block;}
+  .ss-embed body{background-image:none;}
+  .ss-embed body{background:var(--white);}
+  .ss-embed .xshell{padding-top:6px;padding-bottom:24px;}.ss-embed .xsection{margin-top:0;padding-top:0;}
+</style>
 </head>
-<body class="mac" data-app="search">
-<header id="site-header"></header>
-<div class="course-nav"></div>
-<div class="r3 r3-read-top r3-pagetop" data-cover="apmacro">
-<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
-<nav class="cx-crumb mac-crumb mac-nav-ref" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">AP® Macroeconomics</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Search</span></nav>
-<p class="issue">AP&reg; Macroeconomics <i></i> Search</p>
-<h1 class="deck" id="r3Title">Search <span>the whole course</span></h1>
-<p class="hand mac-nav-ref">one box for everything</p>
-<p class="lede">Search every macroeconomics lesson, notes page, glossary term and tool in the course.</p>
-</div><div class="art" aria-hidden="true"><img src="../assets/covers/art/apmacro.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+<body class="sp-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="site-header" data-site-header>
+  <div class="site-header__inner">
+    <span class="site-header__brand-row"><a class="site-header__brand" href="/" aria-label="LevlPrep home"><span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span></a></span>
+  </div>
+</header>
+
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
+  <div class="sp-hero sp-hero--solo ss-hero">
+    <div>
+    <span class="sp-pill">Search</span>
+    <h1>Find it in <span>every course.</span></h1>
+    <p class="hand">notes, lessons, terms, tools and questions</p>
+    <p class="lede">NREMT-EMT, Organic Chemistry, Anatomy &amp; Physiology, AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics, AP® Environmental Science, AP® Psychology, AP® Precalculus and AP® Calculus BC: notes and textbook, lessons, glossary terms, tools and practice questions.</p>
+    </div>
+  </div>
+
+  <div class="xsection ss-sec">
+    <div class="ss-layout">
+    <div class="ss">
+      <div class="ss-box">
+        <label class="sr-only" for="ssQ">Search all courses</label>
+        <svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <input type="search" id="ssQ" class="ss-input" placeholder="Search notes, terms, questions" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-describedby="ssStatus ssHelp" aria-controls="ssResults">
+      </div>
+      <p class="ss-help" id="ssHelp">Results appear as you type. <kbd>&darr;</kbd> moves into the results, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> between them, <kbd>Enter</kbd> opens one, <kbd>Esc</kbd> returns here. <kbd>/</kbd> jumps back to the box.</p>
+      <div class="ss-chips" id="ssChips" role="group" aria-label="Course"></div>
+      <div class="ss-status" id="ssStatus" role="status" aria-live="polite"></div>
+      <div id="ssResults"></div>
+      <noscript><p class="ss-none">Search runs in your browser and needs JavaScript. Each course&rsquo;s notes and glossary work without it: <a href="nremt/">NREMT</a>, <a href="ochem/">Organic Chemistry</a>, <a href="anatomy-physiology/">Anatomy &amp; Physiology</a>, <a href="bio/">AP&reg; Biology</a>, <a href="chem/">AP&reg; Chemistry</a>, <a href="physics/">AP&reg; Physics 1</a>, <a href="calculus/">AP&reg; Calculus AB</a>, <a href="statistics/">AP&reg; Statistics</a>, <a href="environmental-science/">AP&reg; Environmental Science</a>, <a href="psychology/">AP&reg; Psychology</a>, <a href="precalculus/">AP&reg; Precalculus</a> and <a href="calculus-bc/">AP&reg; Calculus BC</a>.</p></noscript>
+    </div>
+    <aside class="ss-side" aria-label="About search">
+      <div class="sp-box ss-pnl"><h2 class="sp-d">Private by design</h2><p>Search runs in your browser. Nothing you type is sent anywhere, and a course&rsquo;s material only downloads when a search needs it.</p></div>
+      <div class="sp-box ss-pnl ss-keys-pnl"><h2 class="sp-d">Keys</h2>
+        <dl class="ss-keys"><div><dt>Jump to search</dt><dd><kbd>/</kbd></dd></div><div><dt>Into the results</dt><dd><kbd>&darr;</kbd></dd></div><div><dt>Between results</dt><dd><kbd>&uarr;</kbd> <kbd>&darr;</kbd></dd></div><div><dt>Open one</dt><dd><kbd>Enter</kbd></dd></div><div><dt>Back to the box</dt><dd><kbd>Esc</kbd></dd></div></dl></div>
+    </aside>
+    </div>
+  </div>
 </div>
-<main id="main" class="xshell mac-app r3 r3-page r3-search" data-cover="apmacro">
-  <!-- r3:head -->
-  <div id="app" class="mac-app-mount" data-slug="search"><noscript><p>This page needs JavaScript. Every notes page works without it.</p></noscript></div>
-</main>
-<footer class="mac-foot xshell">
-  <p class="mac-accuracy-note"> This course has not yet been reviewed by an AP® Macroeconomics teacher. It follows the published course framework and open textbooks, listed on the <a href="../sources.html">Sources</a> page. Spot a mistake? <span class="mac-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apmacro" data-report-question="page:search">Report a problem</button></span></p>
-  <p class="mac-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
-  <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
-</footer>
-<link rel="stylesheet" href="../assets/course/base.css">
-<link rel="stylesheet" href="../assets/course/hub.css">
-<script src="../assets/course/hub.js" defer></script>
-<link rel="stylesheet" href="assets/pages/pages.css">
-<script src="../assets/report-question.js" defer></script>
-<script src="../assets/premium.js" defer></script>
-<script>window.ApMacroSection = ''; window.ApMacroBase = '';</script>
-<script src="assets/mac-curriculum.js" defer></script>
-<script src="assets/mac-core.js" defer></script>
-<script src="assets/mac-nav.js" defer></script>
-<script src="../assets/course/glossary-tip.js" data-glossary="assets/glossary.json" data-course-root="" defer></script>
-<script src="assets/mac-math.js" defer></script>
-<script src="assets/mac-calc.js" defer></script>
-<script src="assets/mac-graph.js" defer></script>
-<script src="assets/mac-grade.js" defer></script>
-<script src="assets/mac-questions.js" defer></script>
-<script src="assets/pages/search.js" defer></script>
+<div class="xshell">
+  <div class="xsection">
+    <footer style="margin-top:0">
+      <p>Runs in your browser. Nothing you type is sent anywhere. A course&rsquo;s material is only downloaded when a search needs it.</p>
+      <p class="tm-note">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+      <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </footer>
+  </div>
+</div>
+<script src="assets/errors.js" defer></script>
+<script src="assets/account.js" defer></script>
+<script src="assets/reminders.js" defer></script>
+<script src="assets/hub-progress.js" defer></script>
+<script src="assets/site-chrome.js" defer></script>
+<script src="assets/site-search.js" defer></script>
+<script src="assets/site-search-all.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  if(window.HubProgress) window.HubProgress.mount('hub');
+
+  /* The site-wide search. What each course contributes, and when it is
+     fetched, is assets/site-search-all.js; ranking is assets/site-search.js.
+     This is only the page: the box, the course chips, the grouped results and
+     the keyboard. */
+  // Tells scripts/check-a11y.mjs (and anything else waiting on the page) to
+  // wait for data-content-ready: results arrive over the network.
+  document.documentElement.setAttribute('data-content-async', '');
+  var S = window.LevlSearch, A = window.LevlSearchAll;
+  // In the overlay, a result opens in the page that opened the overlay, and
+  // Esc from an empty box closes the overlay.
+  var EMBED = document.documentElement.classList.contains('ss-embed') && window.parent !== window;
+  if(EMBED){ var baseEl = document.createElement('base'); baseEl.target = '_top'; document.head.appendChild(baseEl); }
+  function closeEmbed(){ try{ window.parent.postMessage({ levl: 'close-search' }, location.origin); }catch(e){} }
+  var box = document.getElementById('ssQ');
+  var chipsEl = document.getElementById('ssChips');
+  var statusEl = document.getElementById('ssStatus');
+  var resultsEl = document.getElementById('ssResults');
+  if(!S || !A){ document.documentElement.setAttribute('data-content-ready', ''); statusEl.textContent = 'Search did not load. Check your connection and reload the page.'; return; }
+
+  var PER_GROUP = 5;      // hits per course when searching all of them
+  var PER_COURSE = 100;   // the most any one course returns
+  var INDEX = {}, state = {}, missing = {};
+  A.COURSES.forEach(function(c){ INDEX[c.key] = []; state[c.key] = 'idle'; missing[c.key] = []; });
+
+  var params = new URLSearchParams(location.search);
+  var scope = A.parseCourse(params.get('course'));
+  box.value = params.get('q') || '';
+
+  function esc(s){ return S.escapeHtml(s == null ? '' : s); }
+
+  function ensure(keys){
+    keys.forEach(function(k){
+      if(state[k] !== 'idle') return;
+      state[k] = 'loading';
+      A.load(k, function(key, chunks){
+        INDEX[key] = INDEX[key].concat(chunks);
+        schedule();
+      }, function(key, miss){
+        state[key] = 'done';
+        missing[key] = miss;
+        schedule();
+      });
+    });
+  }
+
+  function syncUrl(q){
+    var p = new URLSearchParams();
+    if(q) p.set('q', q);
+    if(scope !== 'all') p.set('course', A.urlKey ? A.urlKey(scope) : scope);
+    var s = p.toString();
+    try{ history.replaceState(null, '', s ? '?' + s : location.pathname); }catch(e){}
+  }
+
+  var lastCounts = {};
+  function renderChips(){
+    var q = box.value.trim();
+    var chips = [{ key: 'all', label: 'All' }].concat(A.COURSES.map(function(c){ return { key: c.key, label: c.label }; }));
+    chipsEl.innerHTML = chips.map(function(c){
+      var n = '';
+      if(q){
+        if(c.key === 'all'){
+          var total = 0, known = true, capped = false;
+          A.COURSES.forEach(function(x){
+            if(lastCounts[x.key] == null) known = false;
+            else { total += lastCounts[x.key]; if(lastCounts[x.key] >= PER_COURSE) capped = true; }
+          });
+          if(known) n = total + (capped ? '+' : '');
+        } else if(lastCounts[c.key] != null) n = lastCounts[c.key] >= PER_COURSE ? PER_COURSE + '+' : lastCounts[c.key];
+      }
+      return '<button type="button" class="ss-chip" data-scope="' + c.key + '" aria-pressed="' + (c.key === scope) + '">' + esc(c.label) +
+        (n !== '' ? ' <span>' + n + '</span>' : '') + '</button>';
+    }).join('');
+  }
+
+  function hitHtml(h, terms, showCourse){
+    var href = h.frag ? S.textFragment(h.file, terms) : h.file;
+    var course = A.courseOf(h.course);
+    var kind = h.opensSection ? 'Practice question · opens its section' : h.kind;
+    return '<li><a class="ss-hit" href="' + esc(href) + '" data-c="' + h.course + '">' +
+      '<span class="ss-kind">' + (showCourse ? '<span class="ss-badge">' + esc(course.label) + '</span>' : '') + esc(kind) + '</span>' +
+      '<span class="ss-title">' + S.highlight(h.heading, terms, { lead: 1000, span: 1000 }) + '</span>' +
+      '<span class="ss-snip">' + h.snippet + '</span></a></li>';
+  }
+
+  function loadingNames(keys){
+    return keys.filter(function(k){ return state[k] === 'loading'; }).map(function(k){ return A.courseOf(k).name; });
+  }
+
+  function run(){
+    var q = box.value.trim();
+    syncUrl(q);
+    if(!q){
+      document.documentElement.setAttribute('data-content-ready', '');
+      lastCounts = {};
+      renderChips();
+      statusEl.textContent = '';
+      resultsEl.innerHTML = '<p class="ss-none">Try <span class="ss-tries">' + ['heart', 'SN2', 'epinephrine', 'pKa', 'OPQRST'].map(function(t){
+        return '<button type="button" class="ss-try" data-try="' + esc(t) + '">' + esc(t) + '</button>';
+      }).join('') + '</span></p>';
+      return;
+    }
+    var keys = A.scopeKeys(scope);
+    ensure(keys);
+    var terms = S.tokenize(q);
+
+    // Ranked per course, so a course with a huge question bank cannot crowd
+    // the others out of a shared top-N, and every loaded course's chip can
+    // say how many it found.
+    var byCourse = {};
+    lastCounts = {};
+    A.COURSES.forEach(function(c){
+      if(!INDEX[c.key].length && state[c.key] !== 'done') return;
+      byCourse[c.key] = S.rank(INDEX[c.key], q, { limit: PER_COURSE, maxPerSource: 2 });
+      lastCounts[c.key] = byCourse[c.key].length;
+    });
+    renderChips();
+
+    var pending = loadingNames(keys);
+    if(!pending.length) document.documentElement.setAttribute('data-content-ready', '');
+    var all = [];
+    keys.forEach(function(k){ if(byCourse[k]) all = all.concat(byCourse[k]); });
+    var html = '';
+    if(scope === 'all'){
+      A.groupByCourse(all).forEach(function(g){
+        var shown = g.hits.slice(0, PER_GROUP);
+        html += '<section class="ss-group" aria-labelledby="ssg-' + g.course + '" data-c="' + g.course + '">' +
+          '<h2 class="ss-gh" id="ssg-' + g.course + '"><img class="ss-cv" src="assets/covers/' + g.course + '.svg" alt="" width="640" height="320" loading="lazy" decoding="async">' + esc(g.name) +
+          ' <span class="n">' + (g.hits.length >= PER_COURSE ? PER_COURSE + '+' : g.hits.length) + '</span></h2>' +
+          '<ul class="ss-list">' + shown.map(function(h){ return hitHtml(h, terms, false); }).join('') + '</ul>' +
+          (g.hits.length > shown.length ? '<button type="button" class="ss-more" data-scope="' + g.course + '">Show all ' +
+            (g.hits.length >= PER_COURSE ? PER_COURSE + '+' : g.hits.length) + ' ' + esc(g.label) + ' results</button>' : '') +
+          '</section>';
+      });
+    } else if(all.length){
+      html = '<ul class="ss-list" style="margin-top:18px">' + all.map(function(h){ return hitHtml(h, terms, true); }).join('') + '</ul>';
+    }
+
+    var where = scope === 'all' ? '' : ' in ' + A.courseOf(scope).name;
+    if(!html){
+      html = pending.length ? '' : '<p class="ss-none">No matches for &ldquo;' + esc(q) + '&rdquo;' + esc(where) + '.' +
+        (scope !== 'all' ? ' <button type="button" class="ss-try" data-scope="all">Search all courses</button>' : ' Try fewer words, or a related term.') + '</p>';
+    }
+    resultsEl.innerHTML = html;
+
+    var miss = [];
+    keys.forEach(function(k){ if(missing[k].length) miss.push(A.courseOf(k).label + ' ' + missing[k].join(', ')); });
+    var capped = keys.some(function(k){ return byCourse[k] && byCourse[k].length >= PER_COURSE; });
+    statusEl.textContent = (all.length ? all.length + (capped ? '+' : '') + (all.length === 1 ? ' result' : ' results') + where : (pending.length ? '' : 'No results' + where)) +
+      (pending.length ? (all.length ? ' so far. ' : '') + 'Loading ' + pending.join(', ') + '…' : '.') +
+      (miss.length ? ' Could not load ' + miss.join('; ') + ' (offline?).' : '');
+  }
+
+  // Index updates arrive in bursts as sources land; render once per frame.
+  var queued = false;
+  function schedule(){
+    if(queued) return;
+    queued = true;
+    setTimeout(function(){ queued = false; if(box.value.trim()) run(); }, 60);
+  }
+
+  function setScope(next, focusFirst){
+    scope = next;
+    run();
+    if(focusFirst){
+      var first = resultsEl.querySelector('.ss-hit');
+      if(first) first.focus(); else box.focus();
+    } else {
+      var chip = chipsEl.querySelector('[data-scope="' + next + '"]');
+      if(chip) chip.focus();
+    }
+  }
+
+  chipsEl.addEventListener('click', function(e){
+    var b = e.target.closest('button[data-scope]'); if(b) setScope(b.getAttribute('data-scope'));
+  });
+  resultsEl.addEventListener('click', function(e){
+    var more = e.target.closest('.ss-more, .ss-try[data-scope]');
+    if(more){ setScope(more.getAttribute('data-scope'), true); return; }
+    var t = e.target.closest('[data-try]');
+    if(t){ box.value = t.getAttribute('data-try'); run(); box.focus(); }
+  });
+
+  var timer = 0;
+  box.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(run, 120); });
+
+  /* Keyboard: Down from the box enters the results; Up/Down move between
+     them (Home/End jump); Escape returns to the box, or clears it. */
+  function focusables(){ return Array.prototype.slice.call(resultsEl.querySelectorAll('.ss-hit, .ss-more')); }
+  box.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowDown'){ var h = focusables(); if(h[0]){ e.preventDefault(); h[0].focus(); } }
+    else if(e.key === 'Enter'){ clearTimeout(timer); run(); var f = focusables()[0]; if(f && f.tagName === 'A'){ e.preventDefault(); (EMBED ? window.top : window).location.href = f.href; } }
+    else if(e.key === 'Escape' && box.value){ e.preventDefault(); box.value = ''; run(); }
+    else if(e.key === 'Escape' && EMBED){ e.preventDefault(); closeEmbed(); }
+  });
+  resultsEl.addEventListener('keydown', function(e){
+    var h = focusables(), i = h.indexOf(document.activeElement);
+    if(i < 0) return;
+    if(e.key === 'ArrowDown'){ e.preventDefault(); if(h[i + 1]) h[i + 1].focus(); }
+    else if(e.key === 'ArrowUp'){ e.preventDefault(); (i ? h[i - 1] : box).focus(); }
+    else if(e.key === 'Home'){ e.preventDefault(); h[0].focus(); }
+    else if(e.key === 'End'){ e.preventDefault(); h[h.length - 1].focus(); }
+    else if(e.key === 'Escape'){ e.preventDefault(); box.focus(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === '/' && document.activeElement !== box && !/INPUT|TEXTAREA|SELECT/.test((e.target && e.target.tagName) || '')){ e.preventDefault(); box.focus(); box.select(); }
+  });
+
+  run();
+  if(!box.value) box.focus({ preventScroll: true });
+});
+</script>
 </body>
 </html>
