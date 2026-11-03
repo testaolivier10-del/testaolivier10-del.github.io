@@ -71,7 +71,7 @@
     now.forEach(function(c, i){
       var b = base[i]; if(Math.abs(c.at - b.at) < 0.15) return;
       if(c.shape === 'vertical') extra.push(arrow(b.at, 8.3, c.at, 8.3));
-      else if(c.shape === 'rdemand') extra.push(arrow(5.4, b.at, 5.4, c.at));
+      else if(c.shape === 'rdemand') extra.push(arrow(6.4, b.at, 6.4, c.at));
       else if(c.shape === 'down') extra.push(arrow(b.at - 3, 8, c.at - 3, 8));
       else if(c.shape === 'up') extra.push(arrow(b.at + 3, 8, c.at + 3, 8));
     });

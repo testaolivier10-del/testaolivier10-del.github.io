@@ -1,0 +1,27 @@
+[
+ {
+  "slug": "graph-studio",
+  "title": "Graph Studio",
+  "file": "apmacro/graph-studio.svg"
+ },
+ {
+  "slug": "reserves-lab",
+  "title": "Bank Reserves Lab",
+  "file": "apmacro/reserves-lab.svg"
+ },
+ {
+  "slug": "policy-chain",
+  "title": "Policy Chain Builder",
+  "file": "apmacro/policy-chain.svg"
+ },
+ {
+  "slug": "adas-lab",
+  "title": "AD-AS Lab",
+  "file": "apmacro/adas-lab.svg"
+ },
+ {
+  "slug": "forex-lab",
+  "title": "Foreign Exchange Lab",
+  "file": "apmacro/forex-lab.svg"
+ }
+]

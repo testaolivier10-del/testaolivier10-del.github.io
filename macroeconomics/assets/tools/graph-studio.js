@@ -94,7 +94,7 @@
         '<figure class="gs-pane gs-link" hidden><figcaption class="gs-link-h"></figcaption><div class="gs-link-svg"></div></figure></div></div>' +
       '<div class="gs-ctl">' +
         '<div class="gs-graphs ls-scroll" role="group" aria-label="Graph">' + graphs.map(function(x){ return '<button type="button" class="tchip gs-chip" data-g="' + x.id + '" aria-pressed="false">' + esc(GS.SHORT[x.id]) + '</button>'; }).join('') + '</div>' +
-        '<div class="gs-row"><label class="gs-scen-l" for="' + nid + '-s">What happens</label><select class="bt-select gs-scen" id="' + nid + '-s"></select>' +
+        '<div class="gs-row" data-ls-primary><label class="gs-scen-l" for="' + nid + '-s">What happens</label><select class="bt-select gs-scen" id="' + nid + '-s"></select>' +
           '<button type="button" class="btn-press sm ls-btn ls-pri gs-show">Show me</button></div>' +
         '<div class="gs-hand"></div><p class="gs-cap" aria-live="polite"></p>' +
       '</div>' +
@@ -302,7 +302,9 @@
       LS.setupRow = sp;
       sp.setup('Practice this graph');
       update();
-      if(s.mode() === 'explore') T.hintSlot(s, R.scen, 'Start here: pick what happens', { before: R.scen.parentNode });
+      // The scenario row is the pinned primary control on a phone, so the tip's
+      // target is in view at every width.
+      if(s.mode() === 'explore' && s.hint) s.hint({ target: R.scen, text: 'Start here: pick what happens, then drag the curve it moves' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(layout, 40); }).observe(R.fig); }
     }
     var g0 = graphs.filter(function(x){ return x.id === 'sd'; })[0] || graphs[0];

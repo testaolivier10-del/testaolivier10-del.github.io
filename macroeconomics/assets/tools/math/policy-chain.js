@@ -209,7 +209,7 @@
 
   /* The choice step for link i (i >= 1). */
   var SKIP_WHY = function(ch, i){ return 'Not yet: that comes later. First, ' + lc(ch.links[i].say) + '. Name every link in order.'; };
-  function lc(t){ return t.charAt(0).toLowerCase() + t.slice(1); }
+  function lc(t){ return /^[A-Z]{2}/.test(t) ? t : t.charAt(0).toLowerCase() + t.slice(1); }
   function cap(t){ return t.charAt(0).toUpperCase() + t.slice(1); }
   function next(ch, i, r){
     var link = ch.links[i], seen = {}, opts = [];
@@ -269,7 +269,7 @@
   }
 
   M.register('policyChain', {
-    FAMILIES: FAMILIES, familyOf: familyOf, chain: chain, next: next, builder: builder, write: write, covered: covered,
+    FAMILIES: FAMILIES, familyOf: familyOf, lc: lc, chain: chain, next: next, builder: builder, write: write, covered: covered,
     TYPES: FAMILIES.map(function(f){ return f.id; }),
     generate: generate
   });

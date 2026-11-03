@@ -357,7 +357,7 @@
       "shifts": [{ "curve": "SRPC", "dir": "right" }],
       "slips": { "LRPC": "A supply shock is a short-run change: it shifts SRPC. LRPC moves only when the natural rate of unemployment changes." },
       "why": ["SRAS left raises the price level and lowers output, so inflation and unemployment both rise: SRPC shifts right.", "That is stagflation. LRPC stays at the natural rate."] },
-    { "id": "ph-natural", "graph": "phillips", "topic": "phillips-curve", "title": "The natural rate falls", "shifter": "natural-rate-down", "noEq": true,
+    { "id": "ph-natural", "graph": "phillips", "topic": "phillips-curve", "title": "The natural rate falls", "shifter": "natural-rate-down", "noEq": true, "drill": false,
       "cause": "Better job-matching services cut frictional unemployment, so the natural rate of unemployment falls.", "because": "a lower natural rate of unemployment",
       "shifts": [{ "curve": "LRPC", "dir": "left" }],
       "slips": { "SRPC": "The natural rate of unemployment is where LRPC stands, so a lower natural rate shifts LRPC left." },

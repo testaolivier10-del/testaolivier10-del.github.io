@@ -144,7 +144,7 @@
 
   /* --------------------------------------- shift or movement along */
   var ALONG = { sd: ['D', 'S'], adas: ['AD', 'SRAS'] };
-  function moveChoice(sc){
+  function moveChoice(sc, words){
     var G = GR(), cs = ALONG[sc.graph] || [], keys = [];
     cs.forEach(function(c){ keys.push({ shift: c }); });
     cs.forEach(function(c){ keys.push({ along: c }); });
@@ -156,7 +156,7 @@
       correct: keys.map(function(k){ return JSON.stringify(k); }).indexOf(JSON.stringify(want)),
       why: keys.map(function(k){
         var right = JSON.stringify(k) === JSON.stringify(want);
-        if(right) return sc.along ? 'Yes. Only ' + vAxis + ' changed, and it is on an axis, so the economy slides along ' + name(sc.along) + '.' : 'Yes. ' + cap(fill(sc.because, {})) + ' is not on either axis, so it shifts the whole ' + name(want.shift) + ' curve.';
+        if(right) return sc.along ? 'Yes. Only ' + vAxis + ' changed, and it is on an axis, so the economy slides along ' + name(sc.along) + '.' : 'Yes. ' + cap(fill(sc.because, words)) + ' is not on either axis, so it shifts the whole ' + name(want.shift) + ' curve.';
         if(k.along && !sc.along) return 'A movement along a curve comes only from a change in the variable on its axis (' + vAxis + '). This change is not on an axis, so it shifts a curve.';
         if(k.shift && sc.along) return 'Only ' + vAxis + ' changed, and it is on the vertical axis: that is a movement along a curve, not a shift.';
         if(k.shift) return 'Ask who the change affects: here it is ' + (want.shift === 'D' || want.shift === 'AD' ? 'buyers' : 'sellers') + ', so it shifts ' + name(want.shift) + ', not ' + name(k.shift) + '.';
@@ -229,7 +229,7 @@
         var oc = outcomeChoice(r, sc.graph, spec.key.outcome, spec.names);
         s.kind = 'choice'; s.label = LABELS.outcome; s.options = oc.options; s.keys = oc.keys; s.correct = oc.correct; s.why = oc.why;
       } else if(t === 'move'){
-        var mc = moveChoice(sc);
+        var mc = moveChoice(sc, words);
         s.kind = 'choice'; s.label = LABELS.move; s.options = mc.options; s.keys = mc.keys; s.correct = mc.correct; s.why = mc.why; s.fixed = true;
       } else {
         s.kind = 'graph'; s.task = t === 'labels' ? 'labels' : t;

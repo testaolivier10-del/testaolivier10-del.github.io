@@ -26,7 +26,6 @@
   'use strict';
   var T = window.ApMacroTools, M = window.ApMacroMath, G = window.ApMacroGraph;
   var app0 = document.getElementById('app');
-  if(app0 && !app0.getAttribute('data-details-title')) app0.setAttribute('data-details-title', 'Write it out');
   if(!T || !M || !M.policyChain || M.policyChain.stub || !G) return;
   var PC = M.policyChain, esc = T.esc;
   var GL = 50, GT = 14, PW = 250, PH = 226;
@@ -72,7 +71,7 @@
     now.forEach(function(c, i){
       var b = base[i]; if(Math.abs(c.at - b.at) < 0.15) return;
       if(c.shape === 'vertical') extra.push(arrow(b.at, 8.3, c.at, 8.3));
-      else if(c.shape === 'rdemand') extra.push(arrow(5.4, b.at, 5.4, c.at));
+      else if(c.shape === 'rdemand') extra.push(arrow(6.4, b.at, 6.4, c.at));
       else if(c.shape === 'down') extra.push(arrow(b.at - 3, 8, c.at - 3, 8));
       else if(c.shape === 'up') extra.push(arrow(b.at + 3.6, 8.6, c.at + 3.6, 8.6));
       var at = labelAt(b), to = labelAt(c);
@@ -138,6 +137,7 @@
         '<div class="ls-seg pc-vars" role="group" aria-label="Version"></div>' +
         '<div class="ls-seg pc-dirs" role="group" aria-label="Direction"></div>' +
         '<div class="pc-go"><button type="button" class="ls-btn pc-back">Back</button><button type="button" class="ls-btn ls-pri pc-next">Next link</button></div>' +
+        '<button type="button" class="ls-linkrow pc-writebtn"><span><span class="ls-k">Write it out</span><span class="ls-v">the chain as a sentence, then in your words</span></span></button>' +
       '</div>' +
       '<div class="pc-say"></div>' +
       '<div class="pc-write"></div><p class="sr-only pc-live"></p></section>';
@@ -153,6 +153,7 @@
       if((b = e.target.closest('.pc-dirs button'))){ act(); dir = +b.getAttribute('data-d'); n = 0; sync(); return; }
       if(e.target.closest('.pc-next')){ act(); var c = ch(); if(n < c.links.length - 1){ n++; sync(); say('Link ' + (n + 1) + ' of ' + c.links.length + ': ' + c.links[n].say + '.'); } else { n = 0; sync(); say('Back to the start: ' + c.links[0].say + '.'); } return; }
       if(e.target.closest('.pc-back')){ act(); if(n > 0){ n--; sync(); say('Link ' + (n + 1) + ': ' + ch().links[n].say + '.'); } return; }
+      if(e.target.closest('.pc-writebtn')){ if(LS) LS.open('details'); return; }
       if(e.target.closest('.pc-bcheck')){ checkBuilder(); return; }
       if(e.target.closest('.pc-bnew')){ builderState = null; writePanel(); }
     }
@@ -169,7 +170,7 @@
       paint($('.pc-fig'), c, n);
       var l = c.links[n];
       var head = '<b>' + esc(cap(l.say)) + '.</b>' + (n ? ' Link ' + (n + 1) + ' of ' + c.links.length + '.' : ' ' + esc(c.intro));
-      var body = '<ol class="ls-steps pc-steps">' + c.links.slice(0, n + 1).map(function(x, k){ return '<li>' + (k ? esc(cap(c.links[k - 1].say).replace(/\.$/, '')) + ', so ' + esc(x.say.charAt(0).toLowerCase() + x.say.slice(1)) : esc(cap(x.say))) + '.</li>'; }).join('') + '</ol>' +
+      var body = '<ol class="ls-steps pc-steps">' + c.links.slice(0, n + 1).map(function(x, k){ return '<li>' + (k ? esc(cap(c.links[k - 1].say).replace(/\.$/, '')) + ', so ' + esc(PC.lc(x.say)) : esc(cap(x.say))) + '.</li>'; }).join('') + '</ol>' +
         (l.traps.length ? '<p class="mac-slip"><b>The slip readers see here:</b> ' + esc(l.traps[0][0]) + '. ' + esc(l.traps[0][1]) + '</p>' : '') +
         (last ? '<p>That is the whole chain. Every link counts: an "explain" point is earned only when each step is named in order.</p>' : '');
       T.explain($('.pc-say'), head, body);
@@ -212,7 +213,7 @@
       if(!text.trim()){ el.innerHTML = '<li class="bt-small">Start with the ' + (c.family === 'selfadjust' ? 'gap' : 'policy') + ', then name every link.</li>'; return; }
       var fl = window.ApMacroGrade.flags(W, text), cov = PC.covered(c, text), miss = c.links.filter(function(l, i){ return !cov[i]; });
       el.innerHTML = fl.map(function(f){ return '<li class="' + (f.ok ? 'is-ok' : 'is-no') + '">' + (f.ok ? (f.rule === 'directional' ? 'You say which way things move.' : f.rule === 'mechanism' ? 'You link the steps (because, so, leads to).' : 'OK.') : esc(f.hint)) + '</li>'; }).join('') +
-        '<li class="' + (miss.length ? 'is-no' : 'is-ok') + '">' + (miss.length ? 'Links you have not named yet: ' + miss.map(function(l){ return esc(l.say.charAt(0).toLowerCase() + l.say.slice(1)); }).join('; ') + '.' : 'Every link is named.') + '</li>';
+        '<li class="' + (miss.length ? 'is-no' : 'is-ok') + '">' + (miss.length ? 'Links you have not named yet: ' + miss.map(function(l){ return esc(PC.lc(l.say)); }).join('; ') + '.' : 'Every link is named.') + '</li>';
     }
 
     function studio(pane, s){

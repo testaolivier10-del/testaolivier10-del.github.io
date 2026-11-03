@@ -258,7 +258,7 @@
   function genFlows(r, ctx){
     var z = setup(r), X = z.X, Y = z.Y, H = z.H, F = z.F, d = r() < 0.5 ? 1 : -1;
     var sh = shock(d > 0 ? 'rate-h' : 'rate-h-down'), spec = shiftSpec(z, sh), v = value('D', d), vc = valueChoice(z, v);
-    var fl = ['Into ' + H.place + ': more ' + F.adj + ' money buys ' + H.adj + ' assets', 'Out of ' + H.place + ': less ' + F.adj + ' money buys ' + H.adj + ' assets', 'Neither: interest rates affect only goods trade'];
+    var fl = ['More flows into ' + H.place + ': ' + F.adj + ' investors buy more ' + H.adj + ' assets', 'Less flows into ' + H.place + ' (a net outflow): ' + F.adj + ' investors buy fewer ' + H.adj + ' assets', 'No change: interest rates affect only trade in goods'];
     var flWhy = [
       d > 0 ? 'Right: a higher real return draws foreign saving, so financial capital flows into ' + H.place + ' (a financial account inflow).' : 'A lower real return makes ' + H.adj + ' assets less attractive: less capital flows in, not more.',
       d < 0 ? 'Right: a lower real return makes ' + H.adj + ' assets less attractive, so less financial capital flows into ' + H.place + '.' : 'A higher real return makes ' + H.adj + ' assets more attractive: capital flows in, not out.',

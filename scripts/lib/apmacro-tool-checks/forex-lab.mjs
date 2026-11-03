@@ -88,7 +88,7 @@ export function recheck(p, ctx, w) {
     if (pick('mirror') !== m) errs.push(`${w}: mirror keyed "${pick('mirror')}", expected "${m}"`);
   } else if (p.type === 'flows') {
     if (curve !== 'D') errs.push(`${w}: a home real-rate change is keyed on foreign buying (demand)`);
-    if (!pick('flow').startsWith(dir > 0 ? 'Into' : 'Out of')) errs.push(`${w}: flow keyed "${pick('flow')}"`);
+    if (!pick('flow').startsWith(dir > 0 ? 'More flows into' : 'Less flows into')) errs.push(`${w}: flow keyed "${pick('flow')}"`);
     if (pick('nx') !== (up ? 'Net exports fall' : 'Net exports rise')) errs.push(`${w}: net exports keyed "${pick('nx')}"`);
   } else errs.push(`${w}: unknown type ${p.type}`);
   return errs;

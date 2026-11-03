@@ -28,7 +28,9 @@
 .adl-fig.is-narrow .adl-tabs{display:flex;justify-content:flex-start;min-height:44px;align-items:center;}
 /* Narrow: the AD and SRAS handles share the top row with the graph switch. */
 .adl-fig.is-narrow .adl-handles{position:absolute;top:0;right:0;margin:0;}
-.adl-fig.is-narrow .adl-h{min-width:0;padding:4px 10px;}
+.adl-fig.is-narrow .adl-h{min-width:44px;padding:4px 10px;}
+.adl-fig.is-narrow .adl-h span{display:none;}
+.adl-fig.is-narrow .adl-tabs{gap:6px;}
 .adl-fig.is-narrow .adl-link{display:none;}
 .adl-fig.is-narrow:not(.has-pc) .adl-handles{position:static;}
 .adl-tab{min-height:44px;padding:0 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;}

@@ -79,7 +79,7 @@
     var shockOpts = [{ value: '', label: 'Choose a shock…' }];
     host.innerHTML =
       '<figure class="adl-fig' + (hasPC ? ' has-pc' : '') + '">' +
-        (hasPC ? '<div class="adl-tabs" role="group" aria-label="Which graph"><button type="button" class="tchip adl-tab on" data-p="adas" aria-pressed="true">AD-AS</button><button type="button" class="tchip adl-tab" data-p="pc" aria-pressed="false">Phillips curves</button></div>' : '') +
+        (hasPC ? '<div class="adl-tabs" role="group" aria-label="Which graph"><button type="button" class="tchip adl-tab on" data-p="adas" aria-pressed="true">AD-AS</button><button type="button" class="tchip adl-tab" data-p="pc" aria-pressed="false">Phillips</button></div>' : '') +
         '<div class="adl-panels"><div class="adl-panel adl-p-adas"><div class="adl-svg adl-adas"></div>' +
           '<div class="adl-handles"><button type="button" class="adl-h" data-c="AD" aria-label="Aggregate demand: use the left and right arrow keys to shift it; Home puts it back">AD <span aria-hidden="true">↔</span></button>' +
           '<button type="button" class="adl-h" data-c="SRAS" aria-label="Short-run aggregate supply: use the left and right arrow keys to shift it; Home puts it back">SRAS <span aria-hidden="true">↔</span></button></div></div>' +
@@ -204,7 +204,7 @@
           if(head.length < 200) head += ' ' + (adOnly ? 'Phillips curve: ' + (st.a > 0 ? 'up' : 'down') + ' along SRPC, A to B.' : srOnly ? 'Phillips curve: SRPC shifts ' + (st.s < 0 ? 'right.' : 'left.') : '');
         }
       }
-      T.explain(host.querySelector('.adl-say') || $('.adl-say'), head, '<ol class="ls-steps">' + body.map(function(b){ return '<li>' + b + '</li>'; }).join('') + '</ol>');
+      T.explain(host.querySelector('.adl-say') || $('.adl-say'), head, '<ol class="ls-steps">' + body.map(function(b){ return '<li><span>' + b + '</span></li>'; }).join('') + '</ol>');
       nums(S);
       if(LS){ LS.caption(head, 'explore'); if(sp) sp.open(); }
       say(String(head).replace(/<[^>]+>/g, ''));

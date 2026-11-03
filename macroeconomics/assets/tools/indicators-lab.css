@@ -1,0 +1,95 @@
+/* Economic indicators lab (macroeconomics/assets/tools/indicators-lab.js). OWNED BY THIS
+   TOOL ONLY (builder T3). Scoped to .ind-* (and the readout chips this page
+   shares in name with the multiplier lab, which is never loaded with it).
+   Colors: --cink for counted spending, warm for imports and cyclical
+   unemployment, muted for what is left out. */
+.ind-card,.ls-root{--ind-warm:#B54700;--ind-amber:#9A6700;--ind-blue:#084F78;--ind-out:#AEB7C2;}
+:root[data-theme="dark"] .ind-card,:root[data-theme="dark"] .ls-root{--ind-warm:#F29A5C;--ind-amber:#F3C04F;--ind-blue:#8CC8E8;--ind-out:#4A5568;}
+.ind-stage{display:flex;flex-direction:column;flex:1;min-height:0;}
+.ind-fig{display:flex;flex-direction:column;gap:8px;flex:1;min-height:0;padding-bottom:34px;}
+.ind-fig[hidden]{display:none;}
+.ind-gdpbox{position:relative;flex:1;min-height:170px;}
+.ind-svg{position:absolute;inset:0;width:100%;height:100%;font:700 12px var(--font-ui);}
+.ml-zero{stroke:var(--ink);stroke-width:1.4;}
+.ind-col{fill:var(--cink);transition:y .35s ease,height .35s ease;}
+.ind-col.is-X{fill:var(--ind-blue);}
+.ind-col.is-M{fill:var(--ind-warm);}
+.ind-col.is-gdp{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
+.ind-col.is-hit{stroke:var(--ink);stroke-width:2.5;}
+.ind-cv{fill:var(--ink);}
+.ind-cn{fill:var(--muted);font-size:13px;font-weight:800;}
+.ind-cn.is-gdp{fill:var(--cink);}
+.ind-axn{fill:var(--ink);font-weight:800;}
+@media (prefers-reduced-motion:reduce){.ind-col,.ind-dot{transition:none;}}
+.ind-tx{padding:10px 12px;border-radius:14px;background:var(--surface2);border:1px solid var(--line);}
+.ind-tx p{margin:0;}
+.ind-txk{font:700 12px var(--font-ui);color:var(--muted);}
+.ind-txt{font:600 15px/1.35 var(--font-ui);color:var(--ink);margin:2px 0 !important;}
+.ind-txp{display:inline-block;font:800 13px var(--font-ui);padding:2px 10px;border-radius:999px;background:var(--ctint);color:var(--cink);}
+.ind-txp.is-none{background:var(--line);color:var(--ink);}
+.ind-tray{font:600 13px var(--font-ui);}
+.ind-trayh{margin:0 0 4px;font-weight:800;color:var(--muted);}
+.ind-tray ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0;}
+.ind-tray li{padding:3px 9px;border-radius:999px;border:1.5px dashed var(--line);color:var(--ink);}
+.ind-tray li span{color:var(--muted);}
+.ind-tray li.is-hit{border-color:var(--ink);}
+.ind-empty{margin:0;color:var(--muted);}
+.ind-read{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;font:700 14px var(--font-ui);}
+.ml-chip{padding:5px 10px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);white-space:nowrap;}
+.ml-chip.is-total{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+.ml-op{color:var(--muted);font-weight:800;}
+.ind-plot{flex:1;min-height:130px;display:flex;justify-content:center;}
+.ind-plot .mac-plot{width:100%;height:auto;max-height:100%;}
+/* Jobs */
+.ind-jobgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.8fr);gap:16px;align-items:center;flex:1;min-height:0;}
+.ind-waffle{display:flex;justify-content:center;min-height:0;height:100%;}
+.ind-wsvg{width:100%;height:100%;max-width:360px;max-height:100%;}
+.ind-dot{transition:fill .4s ease;fill:var(--ind-out);}
+.ind-dot.is-emp,.ind-sw.is-emp{fill:var(--cink);background:var(--cink);}
+.ind-dot.is-uf,.ind-sw.is-uf{fill:var(--ind-blue);background:var(--ind-blue);}
+.ind-dot.is-us,.ind-sw.is-us{fill:var(--ind-amber);background:var(--ind-amber);}
+.ind-dot.is-uc,.ind-sw.is-uc{fill:var(--ind-warm);background:var(--ind-warm);}
+.ind-dot.is-dis{fill:none;stroke:var(--ind-warm);stroke-width:2.5;stroke-dasharray:3 3;}
+.ind-sw.is-dis{background:none;border:2px dashed var(--ind-warm);}
+.ind-sw.is-out{background:var(--ind-out);}
+.ind-legend ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font:600 13.5px var(--font-ui);color:var(--ink);}
+.ind-legend li{display:flex;align-items:center;gap:8px;}
+.ind-legend b{margin-left:auto;}
+.ind-sw{display:inline-block;width:14px;height:14px;border-radius:50%;flex:none;box-sizing:border-box;}
+.ind-small{font-size:12px;color:var(--muted);margin:8px 0 0;}
+.ind-rates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;}
+.ind-rate{padding:8px 10px;border-radius:12px;background:var(--ctint);display:flex;flex-direction:column;}
+.ind-rate span{font:700 12px var(--font-ui);color:var(--muted);}
+.ind-rate b{font:800 20px var(--font-ui);color:var(--cink);}
+.ind-rate em{font:600 11px var(--font-ui);color:var(--muted);font-style:normal;}
+/* Controls */
+.ind-ctl,.ind-group{display:flex;flex-direction:column;gap:10px;}
+.ind-group[hidden]{display:none;}
+.ind-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.ind-row .btn-press{flex:1;min-height:44px;}
+.ind-lbl{margin:0;font:700 13px var(--font-ui);color:var(--muted);}
+.ind-events{display:flex;flex-wrap:wrap;gap:6px;}
+.ind-ev,.ind-reset,.ind-new{min-height:44px;}
+.ind-reset{align-self:flex-start;}
+/* Drill tables */
+.ind-qfig{display:flex;justify-content:center;align-items:center;flex:1;overflow:auto;}
+.ind-tbl{border-collapse:collapse;font:600 15px var(--font-ui);color:var(--ink);min-width:min(100%,340px);}
+.ind-tbl caption{font-weight:800;text-align:left;padding-bottom:6px;color:var(--muted);font-size:13px;}
+.ind-tbl th,.ind-tbl td{padding:7px 12px;border-bottom:1px solid var(--line);text-align:left;}
+.ind-tbl thead th{border-bottom:2px solid var(--ink);font-size:13px;}
+.ind-tbl .r{text-align:right;font-variant-numeric:tabular-nums;}
+@media (max-width:640px){
+  .ind-jobgrid{grid-template-columns:1fr 1fr;gap:8px;align-items:start;}
+  .ind-legend ul{font-size:11.5px;gap:3px;}
+  .ind-small{display:none;}
+  .ind-rates{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;}
+  .ind-rate{padding:4px 8px;}
+  .ind-rate b{font-size:16px;}
+  .ind-rate em{display:none;}
+  .ind-txt{font-size:14px;}
+  .ind-tbl{font-size:13.5px;}
+  .ind-tbl th,.ind-tbl td{padding:5px 8px;}
+  .ind-read{font-size:12px;gap:3px;}
+  .ml-chip{padding:3px 7px;}
+}
+@media (min-width:1000px){.ind-tbl{font-size:17px;}.ind-tbl caption{font-size:14px;}}

@@ -299,7 +299,7 @@
   function genShift(r, c){
     var fw = c.framework || 'ample', s = r.pick([1, -1]), tight = s > 0, steps, text, spec, sol, toolId;
     if(fw === 'ample'){
-      toolId = r.pick(c.tools || ['iorb', 'onrrp', 'iorb', 'omo']);
+      toolId = r.pick(c.tools || ['iorb', 'iorb', 'omo']);
       var t = toolOf(toolId), act = t.acts[tight ? 0 : 1];
       var ef = effect('ample', toolId, s);
       text = '<p>The Federal Reserve operates with <b>ample reserves</b>. It decides to ' + act.charAt(0).toLowerCase() + act.slice(1) + '.</p>';

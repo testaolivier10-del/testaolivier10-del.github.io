@@ -322,3 +322,101 @@ the federal funds rate trading between them (just below IORB), the reserve requi
 open market operations used to keep reserves ample. Not taught: the discount (primary credit) rate as an
 administered rate in the ample framework (it is taught only as a limited-reserves tool). The reserve market graph
 draws one flat level (IORB), as `mac-graph.js` does (see `reserve-graph`). Check against the CED's 4.6.
+
+## Builder T1 (Graph Studio)
+
+### t1-lras-drill: LRAS shifts are in Explore only (open, 2026-11-03)
+
+Graph Studio's Explore shows "more labor and capital" as LRAS and SRAS both shifting right (real output up, price
+level down) and says SRAS usually moves with LRAS. The drills leave LRAS shifts out, because scoring guidelines
+differ on whether SRAS must shift too, and `ApMacroGrade.graph` would mark the other answer wrong. The same holds
+for a lower natural rate of unemployment (LRPC left, Explore only: does SRPC shift left with it?). A person should
+say which answer readers credit; then the scenarios `adas-capacity` and `ph-natural` can be drilled
+(`"drill": false` in `macroeconomics/data/tools/graph-studio.json`).
+
+### t1-deficit-alt: a deficit graded either way in the drills (open, 2026-11-03)
+
+As in `d-lf-government` and `e-crowding-out-curve`: the drill accepts DLF right or SLF left for "the government
+borrows to cover a larger deficit" (the tool grades the shift against both keys with `ApMacroGrade.graph`, keeps the
+one the student drew, and the result step follows that graph: quantity of loanable funds up for DLF, down for
+SLF). Confirm both are credited on the current scoring guidelines. The shared grader could do this for every item
+(`key.alt`, proposed in the T1 report).
+
+### t1-phillips-shock: a supply shock on the Phillips curves (open, 2026-11-03)
+
+"Oil prices jump, so SRAS shifts left" is drilled as SRPC shifting right with no E2 step, because `mac-graph.js`
+places the Phillips equilibrium where SRPC meets LRPC (the expected inflation rate), while the short-run point after
+the shock is to the right of LRPC. An AD shift is drilled as a point on SRPC (up and to the left for more AD).
+Check that this matches how readers score the shock.
+
+### t1-axis-marks: value marks on the axes (open, 2026-11-03)
+
+The renderer change proposed in the T1 report labels E1 and E2 on both axes with P, Q (supply and demand), PL, Y
+(AD-AS), i, M (money market), i, R (reserve market), r, Q (loanable funds), π, u (Phillips curves) and XR, Q
+(foreign exchange), with subscripts 1 and 2. Check the letters against the CED's graph appendix (`graph-labels`).
+
+### t1-free-explore: Explore is free for every graph (open, 2026-11-03)
+
+Spec section 6 makes Graph Studio free as "Explore plus the PPC and supply-and-demand drills". Built that way:
+Explore draws all eight graph kinds for everyone; the drills for the other graphs (and the AD-AS
+shift-or-movement drill) ask `ApMacroCore.locked` and show the Premium gate. The shift-or-movement drill on supply
+and demand (topic `shifts-movements`, graph skills) is free. The owner should confirm.
+
+## T2: Bank Reserves Lab and Policy Chain Builder (open, 2026-11-03)
+
+Judgment calls in `macroeconomics/assets/tools/math/reserves-lab.js` and `policy-chain.js` for a person to confirm
+against the CED (4.4-4.6, 5.1, 5.5, 6.6) before Unit 4 is reviewed:
+
+- **Money market under ample reserves.** The lab draws the money market beside the reserve market and, when an
+  administered rate changes, shifts the money supply so the nominal interest rate follows the policy rate (the
+  quantity of money falls as lending slows). The sources read say only that the nominal rate follows the federal
+  funds rate; they do not say how the money market is drawn in the ample framework. The drills never ask for the
+  money market in an ample-reserves question (they key the reserve market, as the reader reports say).
+- **The discount rate with ample reserves.** Treated as the ceiling of the range, set above IORB and moved with it;
+  changed alone it does not move the policy rate. In the limited framework it shifts reserve supply (discount
+  lending) and the money supply. Confirm the CED lists it this way.
+- **The ON RRP rate.** Explore shows raising it lifting the flat part of reserve demand (the Fed moves it with
+  IORB); the drills key only the IORB rate as the ample-reserves tool, so no item turns on the ON RRP rate alone.
+  Ties to `reserve-graph` (one flat part drawn, not two bounds).
+- **Reserve requirement, limited reserves.** Shown as reserve demand shifting (vertical step of the steep part)
+  and the money supply shifting; the multiplier drill uses 1 / ratio on a bank's new excess reserves (the Fed
+  buys bonds from a bank, so all of it is excess). Ratios 0.10, 0.20, 0.25.
+- **Limited reserves on the reserve market.** Drawn with reserve supply on the steep part of reserve demand
+  (`start: { RS: -5 }`, outside the item checker's -2 to 2 for authored items, Explore only).
+- **Chains.** Fiscal (spending: policy, AD, outcome; taxes add disposable income and consumption), monetary
+  (ample: IORB, policy rate, other rates, investment, AD, outcome; limited: bonds, money supply, nominal rate,
+  ...), open economy (relative real rates, capital flows, demand for the dollar, appreciation, net exports, AD),
+  crowding out (deficit, demand for loanable funds, real rate, investment, capital and growth), self-adjustment
+  (gap, wages and input prices, SRAS, back to full employment). Confirm the link granularity readers expect
+  (for example whether "other interest rates" is a separate link from the policy rate).
+
+## T4: AD-AS Lab and Foreign Exchange Lab (open, 2026-11-03)
+
+Judgment calls in `macroeconomics/assets/tools/math/adas-lab.js` and `forex-lab.js` for a person to confirm
+against the CED (3.6, 3.7, 5.2, 6.2-6.6) before Units 3, 5 and 6 are reviewed:
+
+- **t4-phillips-map: the AD-AS to Phillips link.** Each AD-AS point maps to one Phillips point: unemployment
+  falls as real GDP rises past Y<sub>F</sub>, inflation is drawn at the price-level height, and SRPC shifts
+  opposite to SRAS. So an AD shock moves along SRPC, a supply shock shifts SRPC (stagflation), and self-adjustment
+  shifts SRPC back to LRPC: after an AD rise the economy ends on LRPC at higher inflation (expected inflation
+  rose), after a one-time supply shock at the starting inflation rate. Confirm readers score the long run this
+  way (the drill's last step turns on it). As `t1-phillips-shock`, a supply shock is drilled as SRPC shifting, with
+  no E2 step.
+- **t4-shock-list: the causes and their curves.** AD: confidence, wealth, government purchases, personal income
+  taxes, incomes abroad (exports), business expectations, interest rates (investment). SRAS: oil and energy prices,
+  nominal wages, a drought, expected inflation, input prices, a per-unit subsidy. Technology and productivity are
+  left out (they move LRAS too, `t1-lras-drill`).
+- **t4-one-curve-forex: one keyed curve per change.** As `f-one-curve-keys`: a price-level or real-interest-rate
+  change can shift both demand and supply of a currency; every scenario names the actor ("Mexicans buy fewer of
+  the now pricier American goods", "European investors buy more American bonds") so one curve is the answer, and
+  the slip line names the other side's buyers. A grader `key.alt` would let prompts say only "the real interest
+  rate rises".
+- **t4-real-currencies: real countries and currencies in the drills.** The drills use the dollar, euro, peso,
+  pound and rupee with their economies (Author F's items use invented countries). Prices of a currency come from
+  short lists near recent values (for example 1.00 to 1.25 dollars per euro, 16 to 25 pesos per dollar), so the
+  inverse and conversion steps are realistic; Explore's rates are illustrative and labeled so.
+- **t4-flows-wording: a lower real interest rate.** The capital-flow step keys "less flows into" the country (a
+  net outflow) when its real interest rate falls and foreign investors buy fewer of its bonds; confirm the wording
+  readers accept ("financial capital flows out").
+- **t4-skills: practice codes on drill steps.** Graph shifts 4.C, axis labels 4.A, outcomes 3.A, explanations of
+  an effect 2.B or 3.B, calculations 2.B, definitions 1.A. Check against the CED skill list.

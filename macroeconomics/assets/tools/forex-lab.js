@@ -171,7 +171,7 @@
         }
         if(sh && sh.set === 'policy') body.push((sh.curve === 'D' ? (sh.dir > 0 ? 'More financial capital flows into ' + n.H.place : 'Less financial capital flows into ' + n.H.place) : 'Financial capital flows out of ' + n.H.place + ' toward ' + n.Fo.place) + ': investors follow the higher real interest rate, and buying assets abroad takes that country\u2019s currency.');
       }
-      T.explain($('.fxl-say'), head, '<ol class="ls-steps">' + body.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ol>');
+      T.explain($('.fxl-say'), head, '<ol class="ls-steps">' + body.map(function(x){ return '<li><span>' + x + '</span></li>'; }).join('') + '</ol>');
       nums(a, b);
       if(LS){ LS.caption(head, 'explore'); if(sp) sp.open(); }
       say(String(head).replace(/<[^>]+>/g, ''));
