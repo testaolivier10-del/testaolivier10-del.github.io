@@ -293,6 +293,61 @@
           "Next: hybridization"
         ]
       ]
+    },
+    {
+      "id": "6AvwcGHTlmI",
+      "course": "anp",
+      "title": "Medical Terminology and Directional Terms for A&P (Word Parts, Anatomical Position)",
+      "seconds": 883,
+      "posted": "2026-11-02",
+      "pages": [
+        "anatomy-physiology/notes/word-parts.html",
+        "anatomy-physiology/lessons/word-parts.html",
+        "anatomy-physiology/notes/anatomical-position.html",
+        "anatomy-physiology/lessons/anatomical-position.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          58,
+          "Words built from parts"
+        ],
+        [
+          184,
+          "Prefixes and suffixes"
+        ],
+        [
+          332,
+          "Decode any term"
+        ],
+        [
+          423,
+          "The anatomical position"
+        ],
+        [
+          533,
+          "Up, down, front and back"
+        ],
+        [
+          586,
+          "Middle, side, near and far"
+        ],
+        [
+          711,
+          "Surface, depth and sides"
+        ],
+        [
+          815,
+          "Recap"
+        ],
+        [
+          856,
+          "Next: planes and cavities"
+        ]
+      ]
     }
   ]
 }
