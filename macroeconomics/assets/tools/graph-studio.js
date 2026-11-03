@@ -362,8 +362,10 @@
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h" tabindex="-1">' + esc(GS.SHORT[ctx.graph]) + ' drills are part of Premium</h2></div>' + (g || '<p>These drills are part of Premium.</p>') +
         '<p class="bt-small">The PPC, supply and demand, and shift-or-movement drills are free, and Explore draws every graph.</p><div class="bt-actions"><button type="button" class="btn-press sm ls-btn ls-pri gs-free">Practice supply and demand</button></div>';
       area.querySelector('.gs-free').addEventListener('click', function(){ ctxSel = 'sd'; gsel.value = 'sd'; code = 0; draw(true); });
-      stage.innerHTML = ''; why.innerHTML = ''; det.innerHTML = '';
-      if(s){ s.caption('Pick a free graph above, or unlock every drill with Premium.', 'quiz'); s.pills([], 'left', 'quiz'); }
+      var w0 = GS.namesFor(ctx.graph, null, data), sp0 = { kind: ctx.graph, do: [] };
+      if(w0.names) sp0.names = w0.names;
+      stage.innerHTML = '<figure class="gs-qfig"><div class="gs-host"><div class="mac-gr-stage">' + G.svg(sp0, {}) + '</div></div></figure>'; why.innerHTML = ''; det.innerHTML = '';
+      if(s){ s.caption('The PPC and supply-and-demand drills are free, and Explore draws this graph for everyone.', 'quiz'); s.pills([{ html: 'Premium', tone: 'accent' }], 'left', 'quiz'); }
     }
 
     function draw(focus){
