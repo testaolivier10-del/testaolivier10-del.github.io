@@ -183,7 +183,14 @@ subscripts (`{ x: 'F' }` gives YF on AD-AS, `{ x: 'N' }` uN on the Phillips curv
 (the same output at E1 and E3) is printed once. E1 and E2 are drawn with subscripts. Curve labels are placed in
 one pass: a label that would overlap another label or cross another curve's line moves a line down or up, the
 old curve of a shift smaller than a step is labeled away from the new one, and E2's label goes left if it would
-sit on a curve label. `ApMacroGraph.px`, `py` and `BOX` give the plot box in viewBox units, so a page draws on
+sit on a curve label. A whole-step shift labels the pair on their outer sides (`pairLabels`, integrator
+2026-11-03, after the Unit 3 and 5 reviews): the right-hand curve keeps the right-hand place, the other takes the
+left-hand side of its line (SRAS1 below and right of its line when SRAS2 is left of it, AD2 below and left of its
+line), and a vertical pair puts the new label at the top on its outer side and the old one at its foot (LRAS1 low,
+LRAS2 high, so they no longer crowd SRAS at the top). E labels sit level with the point on the right, or on the
+left in the wedge between the guide and the down curve (below it when the other point is straight above, as in
+the long run on LRAS); on the flat part of reserve demand they stay above the line. The key's label is left out
+where the student's curve already lies on the key's. `ApMacroGraph.px`, `py` and `BOX` give the plot box in viewBox units, so a page draws on
 top of the SVG without copying its numbers; `plural()` keeps yen, yuan, won, rand and baht unchanged. The AD-AS,
 forex, reserves and policy-chain pages dropped their own arrows, axis marks, relabels and coordinates for these. Styles: `macroeconomics/assets/mac.css`,
 section "Graphs". `opts.onChange(response)`, `opts.readonly`; `lock()` after answering.

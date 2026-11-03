@@ -363,6 +363,29 @@
       return [px(X / 2 + 0.45 * Y / n) + 2, py(Y / 2 + 0.45 * X / n) - 2, 'start']; }
     return [px(9.6), py(c.at) - 6, 'end'];
   }
+  /* A whole-step shift labels the two curves on their outer sides, so each
+     label sits beside its own line and never between the pair (SRAS1 under
+     SRAS2 at the top, AD2 against the AD1 line, LRAS1 beside LRAS2): the
+     curve further right keeps the right-hand place (labelAt), the other one
+     takes the left-hand side of its line; a vertical curve's old line is
+     labeled at its foot, away from the new one. Returns [new, old]. */
+  function pairLabels(c, b){
+    var right = c.at > b.at, nw = labelAt(c), od = labelAt(b);
+    if(c.shape === 'up'){
+      // The right-hand curve of an up pair: below and right of its line.
+      var lo = function(q){ var x = Math.min(q.at + 1.6, 8.2), yv = 5 + (x - q.at); return [px(x) + 8, py(yv) + 12, 'start']; };
+      if(right) nw = lo(c); else od = lo(b);
+    } else if(c.shape === 'down'){
+      // The left-hand curve of a down pair: below and left of its line, low.
+      var ll = function(q){ var x = q.at + 3.4, yv = 5 - (x - q.at); return [px(x) - 6, py(yv) + 14, 'end']; };
+      if(right) od = ll(b); else nw = ll(c);
+    } else if(c.shape === 'vertical'){
+      // The new line's label at the top on its outer side, the old one's at its foot on the other.
+      nw = right ? [px(c.at) + 5, py(9.6) + 1, 'start'] : [px(c.at) - 5, py(9.6) + 1, 'end'];
+      od = right ? [px(b.at) - 5, py(0.6), 'end'] : [px(b.at) + 5, py(0.6), 'start'];
+    }
+    return [nw, od];
+  }
   function curveLabel(id, n, at, cls){
     var c = CURVE[id] || [id, ''], sub = c[1] + (n ? n : '');
     return '<text class="mac-gr-clabel ' + (cls || '') + '" x="' + f1(at[0]) + '" y="' + f1(at[1]) + '" text-anchor="' + (at[2] || 'end') + '">' + esc(c[0]) + (sub ? '<tspan class="mac-gr-sub" dy="3">' + esc(sub) + '</tspan>' : '') + '</text>';
@@ -459,19 +482,22 @@
       if(fallback){ placed.push(fallback[1]); return fallback[0]; }
       placed.push(box(id, n, at)); return at;
     }
+    var whole = function(c, i){ return c.steps && Math.abs(c.at - base[i].at) >= 1 - 1e-9 && c.shape !== 'ppc' && c.shape !== 'ppcline' && c.shape !== 'rdemand'; };
     var pos = now.map(function(c, i){
       var lab = askLabels && !labels[c.id] ? null : (labels[c.id] || c.id);
-      return place(lab || '?', c.steps ? cn : String(i + 1), labelAt(c), i);
+      return place(lab || '?', c.steps ? cn : String(i + 1), whole(c, i) ? pairLabels(c, base[i])[0] : labelAt(c), i);
     });
     var oldPos = now.map(function(c, i){
       var b = base[i], lab = askLabels && !labels[c.id] ? null : (labels[c.id] || c.id);
       if(!c.steps || !lab) return null;
-      return place(lab, n0, Math.abs(c.at - b.at) < 1 - 1e-9 ? labelAway(b) : labelAt(b, b.shape === 'ppcline' && c.steps > 0), -1);
+      return place(lab, n0, whole(c, i) ? pairLabels(c, b)[1] : Math.abs(c.at - b.at) < 1 - 1e-9 ? labelAway(b) : labelAt(b, b.shape === 'ppcline' && c.steps > 0), -1);
     });
     if(state.key){
       var ko = keyOffsets(spec);
       // The key's curve, dashed in the success color, labeled as the answer's new curve (SRAS2), not "SRASkey".
-      curves(spec, ko).forEach(function(c){ if(ko[c.id]) g.push('<path class="mac-gr-curve is-key" d="' + pathOf(c) + '"/>' + curveLabel(c.id, cn, place(c.id, cn, labelAt(c), now.map(function(q){ return q.id; }).indexOf(c.id)), 'is-key')); });
+      // Where the student's curve already lies on the key's, its label serves both.
+      curves(spec, ko).forEach(function(c){ if(!ko[c.id]) return; var j = now.map(function(q){ return q.id; }).indexOf(c.id), same = j > -1 && Math.abs(now[j].at - c.at) < 1e-9;
+        g.push('<path class="mac-gr-curve is-key" d="' + pathOf(c) + '"/>' + (same ? '' : curveLabel(c.id, cn, place(c.id, cn, Math.abs(c.at - base[j].at) >= 1 - 1e-9 ? pairLabels(c, base[j])[0] : labelAt(c), j), 'is-key'))); });
     }
     now.forEach(function(c, i){
       var moved = !!c.steps, b = base[i], lab = askLabels && !labels[c.id] ? null : (labels[c.id] || c.id), at = pos[i];
@@ -488,19 +514,33 @@
       } }
     // E1 and E2 with their axis marks; the E2 label goes on the side away
     // from a vertical curve just right of it (LRAS, LRPC, MS, RS).
+    // E labels: a down curve and an up curve crossing at the point fill its
+    // four diagonals and the guides run left and down from it, so a label on
+    // the right sits level with the point and one on the left sits in the
+    // wedge between the guide and the down curve (above-left at 45 degrees lay
+    // on AD). On the flat part of reserve demand the line runs level, so the
+    // label goes above it, to one side. Returns [x, y] for a start (right) or
+    // end (left) anchor.
+    function flatAt(p){ return now.concat(base).some(function(c){ return c.shape === 'rdemand' && p[0] >= 4 - 1e-9 && Math.abs(p[1] - c.at) < 1e-6; }); }
+    function eAt(p, left, below){
+      if(flatAt(p)) return [px(p[0]) + (left ? -8 : 8), py(p[1]) + (below ? 15 : -8)];
+      // below: the other point is straight above (the long run on LRAS), whose
+      // new curves cross the upper-left wedge, so the label takes the lower-left one.
+      return left ? [px(p[0]) - 17, py(p[1]) + (below ? 14 : -3)] : [px(p[0]) + 10, py(p[1]) + 4];
+    }
     var two = state.eq && e0 && (Math.abs(state.eq[0] - e0[0]) > 1e-6 || Math.abs(state.eq[1] - e0[1]) > 1e-6);
     if(e0){ g.push(guides(e0, 'is-old')); g.push('<circle class="mac-gr-eq is-old" cx="' + f1(px(e0[0])) + '" cy="' + f1(py(e0[1])) + '" r="4"/>');
       if(!askLabels) g.push(marks(spec.kind, e0, two ? n0 : '', 'is-old', two ? state.eq : null, state.marks0, true));
       // E1 on the side away from E2 (left of it when the new point is straight above or below, as on LRAS).
       var e1Left = state.eq && state.eq[0] > e0[0] - 1e-6;
-      if(two) g.push('<text class="mac-gr-plabel is-old" x="' + f1(px(e0[0]) + (e1Left ? -8 : 8)) + '" y="' + f1(py(e0[1]) + (state.eq[1] > e0[1] ? 15 : -8)) + '" text-anchor="' + (e1Left ? 'end' : 'start') + '">' + eName(n0) + '</text>'); }
+      if(two){ var a1 = eAt(e0, e1Left, flatAt(e0) ? state.eq[1] > e0[1] : Math.abs(state.eq[0] - e0[0]) < 1e-6 && state.eq[1] > e0[1]); g.push('<text class="mac-gr-plabel is-old" x="' + f1(a1[0]) + '" y="' + f1(a1[1]) + '" text-anchor="' + (e1Left ? 'end' : 'start') + '">' + eName(n0) + '</text>'); } }
     if(state.eq){
       var vNear = now.some(function(c){ return c.shape === 'vertical' && c.at > state.eq[0] + 0.05 && c.at - state.eq[0] < 1.4; });
-      var right = !vNear, lx = px(state.eq[0]) + (right ? 9 : -9);
+      var right = !vNear, ea = eAt(state.eq, !right), lx = ea[0], ly = ea[1];
       // E2's label goes left if it would sit on a curve label (DR beside E2 on the flat part).
-      if(right){ var eb = [lx, py(state.eq[1]) - 19, lx + 18, py(state.eq[1]) - 4]; if(placed.some(function(q){ return hit(q, eb); })){ right = false; lx = px(state.eq[0]) - 9; } }
+      if(right){ var eb = [lx, ly - 11, lx + 18, ly + 4]; if(placed.some(function(q){ return hit(q, eb); })){ right = false; ea = eAt(state.eq, true); lx = ea[0]; ly = ea[1]; } }
       g.push(guides(state.eq)); if(two && !askLabels) g.push(marks(spec.kind, state.eq, n1, '', e0));
-      g.push('<g class="mac-gr-pt" data-pt="eq"><circle class="mac-gr-eq" cx="' + f1(px(state.eq[0])) + '" cy="' + f1(py(state.eq[1])) + '" r="6"/><text class="mac-gr-plabel" x="' + f1(lx) + '" y="' + f1(py(state.eq[1]) - 8) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + eName(n1) + '</text></g>'); }
+      g.push('<g class="mac-gr-pt" data-pt="eq"><circle class="mac-gr-eq" cx="' + f1(px(state.eq[0])) + '" cy="' + f1(py(state.eq[1])) + '" r="6"/><text class="mac-gr-plabel" x="' + f1(lx) + '" y="' + f1(ly) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + eName(n1) + '</text></g>'); }
     if(state.point){
       var pNear = now.some(function(c){ return c.shape === 'vertical' && c.at > state.point[0] + 0.05 && c.at - state.point[0] < 1.4; });
       g.push('<g class="mac-gr-pt" data-pt="point"><circle class="mac-gr-eq is-point" cx="' + f1(px(state.point[0])) + '" cy="' + f1(py(state.point[1])) + '" r="6"/><text class="mac-gr-plabel" x="' + f1(px(state.point[0]) + (pNear ? -9 : 9)) + '" y="' + f1(py(state.point[1]) - 8) + '" text-anchor="' + (pNear ? 'end' : 'start') + '">' + esc(spec.pointLabel || 'X') + '</text></g>'); }
