@@ -182,13 +182,13 @@
       "captions": "long/yt-ap-02-captions.srt",
       "playlist": "Anatomy and Physiology | LevlPrep",
       "date": "2026-11-02",
-      "status": "approved",
+      "status": "posted",
       "approved_on": "2026-10-30",
       "youtube_id": "6AvwcGHTlmI",
       "thumbnail_set": true,
       "playlist_added": true,
       "captions_set": true,
-      "pr_url": "",
+      "pr_url": "https://github.com/testaolivier10-del/testaolivier10-del.github.io/pull/125",
       "started": "2026-10-29",
       "note": "PILOT of the new long format (knight v3 standard, traced reference people). Thumbnail options: thumb, thumb-b, thumb-c.",
       "review_blob": "74a1b5f295b7133fa41b25c5edcd38ca8e015220",
@@ -196,7 +196,9 @@
       "thumb_b": "long/yt-ap-02-thumb-b.png",
       "thumb_c": "long/yt-ap-02-thumb-c.png",
       "ab_test": false,
-      "endscreen_set": false
+      "endscreen_set": false,
+      "comment_id": "UgymvxlNlIb3U-ZGUx14AaABAg",
+      "comment_pinned": false
     },
     {
       "id": "yt-apbio-02-elements-macromolecules",
