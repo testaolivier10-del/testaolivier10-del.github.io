@@ -57,6 +57,16 @@
         "curve": "S",
         "dir": "left"
        }
+      ],
+      [
+       {
+        "curve": "D",
+        "dir": "right"
+       },
+       {
+        "curve": "S",
+        "dir": "left"
+       }
       ]
      ]
     },

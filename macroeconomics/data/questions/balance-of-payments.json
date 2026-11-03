@@ -679,10 +679,10 @@
    "diff": 1,
    "type": "single",
    "practice": "2.C",
-   "q": "Corland, an invented country, has a current account surplus of 35 billion arls this year. What is its capital and financial account balance?",
+   "q": "Belvia has a current account surplus of 35 billion bels this year. What is its capital and financial account balance?",
    "options": [
-    "A surplus of 35 billion arls",
-    "A deficit of 35 billion arls",
+    "A surplus of 35 billion bels",
+    "A deficit of 35 billion bels",
     "Zero, because asset trades are not counted",
     "It depends on the government budget balance"
    ],
@@ -691,7 +691,7 @@
     "correct": "Current account + capital and financial account = 0, so +35 is matched by -35.",
     "options": [
      "The two balances sum to zero, so they have opposite signs: a current account surplus means a capital and financial account deficit.",
-     "Right: 35 + (-35) = 0. Corland earns more from the rest of the world than it spends there and uses the extra to buy foreign assets (or lend abroad).",
+     "Right: 35 + (-35) = 0. Belvia earns more from the rest of the world than it spends there and uses the extra to buy foreign assets (or lend abroad).",
      "The capital and financial account records asset purchases and is not zero here; the two accounts together sum to zero.",
      "The budget balance is not part of the balance of payments; the current account balance alone gives the answer."
     ]

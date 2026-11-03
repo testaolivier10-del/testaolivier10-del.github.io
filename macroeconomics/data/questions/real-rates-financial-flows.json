@@ -561,11 +561,11 @@
    "diff": 2,
    "type": "single",
    "practice": "1.D",
-   "q": "Foreign residents buy 90 billion dollars more of Arland's assets than Arland residents buy of foreign assets this year. Which must be true of Arland's current account?",
+   "q": "Foreign residents buy 90 billion arls more of Arland's assets than Arland residents buy of foreign assets this year. Which must be true of Arland's current account?",
    "options": [
-    "It has a surplus of 90 billion dollars",
+    "It has a surplus of 90 billion arls",
     "It is balanced, because asset trades are not in the current account",
-    "It has a deficit of 90 billion dollars",
+    "It has a deficit of 90 billion arls",
     "It equals Arland's government budget deficit"
    ],
    "correct": 2,

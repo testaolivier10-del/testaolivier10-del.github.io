@@ -547,7 +547,7 @@
     "A winery that sells most of its wine in Belvia, priced in arls",
     "A store that imports clothes from Belvia, priced in bels",
     "A firm that owes a loan payable in bels",
-    "A travel agency that sells Arland holidays in Belvia"
+    "An Arland travel agency selling trips to Belvia to Arland residents"
    ],
    "correct": 0,
    "why": {
@@ -556,7 +556,7 @@
      "Right: its wine now costs Belvian buyers more bels, so it sells less abroad.",
      "Each arl buys more bels, so its imported clothes cost it fewer arls: it gains.",
      "Each arl buys more bels, so the loan takes fewer arls to repay.",
-     "Holidays in Belvia, priced in bels, are now cheaper for Arland travelers, which helps the agency."
+     "Trips to Belvia, priced in bels, are now cheaper for Arland travelers, so the agency sells more of them."
     ]
    }
   },

@@ -403,11 +403,12 @@
     "The number of bels per arl rises",
     "The bel appreciates against the arl",
     "The number of arls per bel rises",
-    "A Belvian good with an unchanged bel price costs more arls",
+    "A Belvian good with an unchanged bel price costs fewer arls",
     "An Arland good with an unchanged arl price costs fewer bels"
    ],
    "correct": [
-    0
+    0,
+    3
    ],
    "why": {
     "correct": "An arl appreciation raises bels per arl and is the same thing as a bel depreciation; Belvian goods get cheaper in arls and Arland goods dearer in bels.",
@@ -415,7 +416,7 @@
      "Right: appreciation means each arl buys more bels.",
      "When one currency appreciates the other depreciates: each bel now buys less of an arl.",
      "Arls per bel is the reciprocal of bels per arl, so it falls when the arl appreciates.",
-     "Each arl buys more bels, so the same bel price takes fewer arls.",
+     "Right: each arl buys more bels, so the same bel price takes fewer arls.",
      "Each arl now costs more bels, so an arl-priced good costs Belvian buyers more bels."
     ]
    }
