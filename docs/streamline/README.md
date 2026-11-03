@@ -27,3 +27,15 @@ Olivier: the site "feels too busy"; go one page at a time, in a draft he comment
   "What stays free?" first, which keeps the free sentence the premium-copy site rule needs).
 - Search: "Private by design" box, the footer privacy line and the "Try heart SN2..." hints removed; the
   privacy point is one line on privacy.html.
+
+## NREMT comments, applied to every course (owner 2026-11-02: "can probably mostly be applied to all courses")
+- Course homes (`scripts/lib/r3-home.mjs`, all 12): hero is name, hand line, one sentence, two buttons (no deck line,
+  hero link, pills, founder); level card hidden (top bar level badge carries the level; the hidden card keeps the
+  home scripts' ids); "How this course works" and the notes card removed; newest video and top three tools in one
+  "Watch and try" row; contents sub is its first sentence; no "try one, it's free"; Questions full width, two
+  columns; founder line in "Who makes LevlPrep?".
+- Practice (all engines): the weakest-topics option says "Missed questions wait in Review".
+- NREMT exams: facts strip and "How the exam is built" removed (`build-r3-inner.mjs` writes the markers empty);
+  the adaptive explanation is a fine-print details `#catHow` in the footer, opened by the results link.
+- Tools hubs: no featured tool (NREMT Body Map, A&P Lab Practical are the first cards).
+- Search: no course list line.

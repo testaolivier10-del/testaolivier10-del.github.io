@@ -258,6 +258,8 @@
     // when the mode has nothing to choose or say.
     function paintPick(){
       var html = pickerHtml(), stepEl = app.querySelector('.anp-pr-pickstep');
+      // The weak-topics mode also points to Review (owner 2026-11-02).
+      if(html && state.mode === 'weak') html += '<p class="cx-small">Missed questions wait in <a href="review.html">Review</a>.</p>';
       app.querySelector('.anp-pr-pick').innerHTML = html;
       app.querySelector('.anp-pr-pick-h').textContent = PICK_H[state.mode] || '';
       stepEl.hidden = !html;

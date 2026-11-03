@@ -225,7 +225,8 @@
 
     if(weak.length){
       html += '<section><h2 class="cx-h2">Where you are weakest</h2>' +
-        '<div class="module-card">' + conceptRowsHtml(weak, { drill: true }) + '</div></section>';
+        '<div class="module-card">' + conceptRowsHtml(weak, { drill: true }) + '</div>' +
+        '<p class="cx-small">Missed questions wait in <a href="review.html">Review</a>.</p></section>';
     }
     if(strong.length){
       html += '<section><h2 class="cx-h2">Holding up well</h2>' +

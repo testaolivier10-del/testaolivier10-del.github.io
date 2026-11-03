@@ -81,10 +81,11 @@ const hub = toolsHubMain({
   h1: 'What a question bank <span>can&rsquo;t test.</span>', hand: 'anatomy, sounds, calls and the skill stations',
   lede: 'Practice the parts a question bank can&rsquo;t test: anatomy, sounds, protocol flow, call simulations and the skill sheets.',
   cta: { href: 'body-map.html', label: 'Open the body map' }, cta2: { href: 'search.html', label: 'Search everything' },
-  featured: { slug: 'body-map', href: 'body-map.html', name: 'Body Map', kick: 'Featured tool &middot; Anatomy', hand: 'A real 3D model. Click any part.',
-    desc: 'Turn the body, tap a region and get the structures, the landmarks and the assessment findings that go with it.', cta: 'Open the body map', credit: CREDIT },
+  /* No featured tool (owner 2026-11-02: no one tool gets its own section); the body map is the first card. */
+  featured: null,
   groups: [
-    { big: true, h: 'Six more <span>tools</span>', p: 'Sounds, calls, drugs and the skill stations.', label: 'More tools', cards: [
+    { big: true, h: 'Seven <span>tools</span>', p: 'Anatomy, sounds, calls, drugs and the skill stations.', label: 'Tools', cards: [
+      card('body-map', 'Body Map', 'A real 3D model: turn the body, tap a region, get the structures and findings.', 'Anatomy'),
       card('sound-trainer', 'Sound Trainer', 'Wheezes, crackles, stridor and heart sounds, by ear.', 'Lung and heart sounds'),
       card('scenario-sim', 'Scenarios', `${cap(word(N.calls))} branching calls, dispatch to handover.`, `${N.calls} calls`, true),
       card('formulary', 'Drug Formulary', `The ${word(N.drugs)} core EMT drugs: give or withhold, doses and what stops you.`, `${N.drugs} drugs`),
@@ -96,7 +97,7 @@ const hub = toolsHubMain({
       card('mnemonics', 'Mnemonics', 'The core EMT mnemonics, letter by letter.', 'Letter by letter'),
     ] },
   ],
-  note: 'Flow diagrams and the station list are general structure, not scored sheets. Verify against your program&rsquo;s documents. Or <a href="search.html">search everything at once</a>.',
+  note: `Flow diagrams and the station list are general structure, not scored sheets. Verify against your program&rsquo;s documents. Body Map ${CREDIT.replace(/^Figure/, 'figure')}`,
 });
 put('nremt/tools.html', '<!-- r3-tools:start -->', '<!-- r3-tools:end -->', `<!-- r3-tools:start -->\n${hub}\n<!-- r3-tools:end -->`, null);
 
