@@ -62,9 +62,13 @@
      undone by the long run): a faded straight line of ApMacroGraph's shape. */
   function ghost(shape, at, id, n){
     var x0 = Math.max(0, at - 5), x1 = Math.min(10, at + 5), yy = function(x){ return shape === 'up' ? 5 + (x - at) : 5 - (x - at); };
-    var lx = x1, ly = yy(x1);
+    // the label where ApMacroGraph puts a curve's (labelAt: read at x = 8.6), so it sits a step from the live one
+    var lx = 8.6, ly = yy(lx), anc = shape === 'up' ? 'end' : 'start';
+    // an up curve's top end is where LRAS is labeled: label the ghost low, right of the line
+    if(shape === 'up'){ lx = Math.max(x0, 0) + 1.6; ly = yy(lx) - 0.9; anc = 'start'; }
+    if(shape === 'down' && ly < 0.5){ ly = 0.5; lx = at + 4.5; }
     return '<path class="mac-gr-curve is-old adl-ghost" d="M' + f1(px(x0)) + ' ' + f1(py(yy(x0))) + 'L' + f1(px(x1)) + ' ' + f1(py(yy(x1))) + '"/>' +
-      '<text class="mac-gr-clabel is-old" x="' + f1(px(lx) - (shape === 'up' ? 4 : 2)) + '" y="' + f1(py(ly) + (shape === 'up' ? -4 : 2)) + '" text-anchor="end">' + id + '<tspan class="mac-gr-sub" dy="3">' + n + '</tspan></text>';
+      '<text class="mac-gr-clabel is-old" x="' + f1(px(lx) + 6) + '" y="' + f1(py(ly) + 3) + '" text-anchor="' + anc + '">' + id + '<tspan class="mac-gr-sub" dy="3">' + n + '</tspan></text>';
   }
   function inject(svg, extra){ return svg.replace('</svg>', extra + '</svg>'); }
 
@@ -123,6 +127,8 @@
       var svg = tag(G.svg(spec, { shifts: shifts, focus: st.focus, eq: (moved || lr) && S.eq ? S.eq : null }, { label: label })), x = [];
       // E1 sits on LRAS: its output mark is full-employment output, YF.
       svg = svg.replace(/(<text class="mac-gr-mark is-old"[^>]*>)Y(<tspan class="mac-gr-sub" dy="3">1<\/tspan>)?<\/text>/, '$1Y<tspan class="mac-gr-sub" dy="3">F</tspan></text>');
+      // Back on LRAS the renderer leaves the shared output mark out: put YF back.
+      if(svg.indexOf('>Y<tspan class="mac-gr-sub" dy="3">F</tspan>') < 0) x.push('<text class="mac-gr-mark is-old" x="' + f1(px(5)) + '" y="253" text-anchor="middle">Y<tspan class="mac-gr-sub" dy="3">F</tspan></text>');
       if(lr) svg = relabel(svg, 3);
       else svg = svg.replace('>E2</text></g>', '>E<tspan class="mac-gr-sub" dy="3">2</tspan></text></g>');
       svg = svg.replace(/>E1<\/text>/, '>E<tspan class="mac-gr-sub" dy="3">1</tspan></text>');
