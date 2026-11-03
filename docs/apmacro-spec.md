@@ -138,7 +138,8 @@ One branch, `claude/apmacro`, one PR at the end.
   (choices and trade, output and prices, unemployment, multipliers, banks and interest rates and money, exchange
   rates), every one an ApMacroCalc recipe with a worked line; 10 rows and 4 graphs (money, reserves, loanable
   funds, forex) flagged "Easy to forget" and listed at the top; the 8 graph kinds drawn plus the bank balance
-  sheet. The balanced-budget multiplier stays off (needs-author `balanced-budget`).
+  sheet. The balanced-budget multiplier was added as a 29th row on 2026-11-03 (decision 12), since the course
+  teaches it; it goes with `mac-multipliers-12` if the CED leaves it out (needs-author `balanced-budget`).
 - **Unit tests** never show a practice-exam question (`unitSample` skips them, filling with recall and then lesson
   check items), 12 per unit. Cram kit tested with the real topics, FRQs, prompts and forms.
 - Content check: exam-only items are checked as five-option items; fifth options for repeats, absolutes, math,
@@ -228,6 +229,16 @@ student draws in the page (the AI grader hook only when its eval passes).
    standalone Section I questions from the fall 2026 CED; the bank stays at four options and the forms add a fifth
    per question rather than rewriting 456 reviewed items; exam-only items only where a unit's standalone bank
    questions ran out (Unit 5 most) and to put graph-reading questions in each form.
+
+12. (2026-11-03, Phase 3 integration; details in needs-author `phase3-integration`) (a) an outcome axis two shifts
+   leave to their sizes is never keyed or graded (`ApMacroGraph.indeterminate`), and a long run back to full
+   employment pins output with `key.hold`; (b) the country rule clarified: dollars where no exchange rate is
+   involved, invented currencies where currencies are compared, letter names generic; (c) shifted pairs labeled
+   on their outer sides, E labels off the lines; (d) graph stimuli can mark the new equilibrium (`showEq`);
+   (e) `limited-reserves` is taught in 4.4; (f) a key-position balance rule in the content check, with keys rotated
+   to pass; (g) `economic-growth` is taught in 1.2 (pull-forward) with 5.6 as its main topic; (h) `mac-sras-1`
+   rewritten to one key; (i) the formula page lists the balanced-budget multiplier. The course shell measures
+   88.7 KB of its 89 KB budget.
 
 ## 9. Open items for the owner
 

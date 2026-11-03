@@ -172,12 +172,9 @@
     var o = {}; o[k.out.x] = cmp(e1[0], e0[0]); o[k.out.y] = cmp(e1[1], e0[1]);
     return o;
   }
-  /* With two or more curves shifting, an outcome axis can go either way
-     depending on how far each moves (both curves right: quantity up, price
-     up or down). An axis is indeterminate when the shifts' directions, at
-     sizes of a half or a whole step each, do not all give the same answer.
-     set: [{ curve, dir }] or { curve: steps } (the signs are read). One
-     shift alone never is. */
+  /* The outcome axes two or more shifts leave to their sizes: the answers
+     at a half or a whole step each disagree. set: [{ curve, dir }] or
+     { curve: steps }. */
   function indeterminate(spec, set){
     var k = kindOf(spec), cs = curves(spec, {}), sign = {};
     if(!k.out || !set) return [];
@@ -363,24 +360,18 @@
       return [px(X / 2 + 0.45 * Y / n) + 2, py(Y / 2 + 0.45 * X / n) - 2, 'start']; }
     return [px(9.6), py(c.at) - 6, 'end'];
   }
-  /* A whole-step shift labels the two curves on their outer sides, so each
-     label sits beside its own line and never between the pair (SRAS1 under
-     SRAS2 at the top, AD2 against the AD1 line, LRAS1 beside LRAS2): the
-     curve further right keeps the right-hand place (labelAt), the other one
-     takes the left-hand side of its line; a vertical curve's old line is
-     labeled at its foot, away from the new one. Returns [new, old]. */
+  /* A whole-step shift labels the pair on their outer sides (the right one
+     as labelAt, the left one left of its line; an old vertical at its
+     foot), never between them. Returns [new, old]. */
   function pairLabels(c, b){
     var right = c.at > b.at, nw = labelAt(c), od = labelAt(b);
     if(c.shape === 'up'){
-      // The right-hand curve of an up pair: below and right of its line.
       var lo = function(q){ var x = Math.min(q.at + 1.6, 8.2), yv = 5 + (x - q.at); return [px(x) + 8, py(yv) + 12, 'start']; };
       if(right) nw = lo(c); else od = lo(b);
     } else if(c.shape === 'down'){
-      // The left-hand curve of a down pair: below and left of its line, low.
       var ll = function(q){ var x = q.at + 3.4, yv = 5 - (x - q.at); return [px(x) - 6, py(yv) + 14, 'end']; };
       if(right) od = ll(b); else nw = ll(c);
     } else if(c.shape === 'vertical'){
-      // The new line's label at the top on its outer side, the old one's at its foot on the other.
       nw = right ? [px(c.at) + 5, py(9.6) + 1, 'start'] : [px(c.at) - 5, py(9.6) + 1, 'end'];
       od = right ? [px(b.at) - 5, py(0.6), 'end'] : [px(b.at) + 5, py(0.6), 'start'];
     }
@@ -495,7 +486,6 @@
     if(state.key){
       var ko = keyOffsets(spec);
       // The key's curve, dashed in the success color, labeled as the answer's new curve (SRAS2), not "SRASkey".
-      // Where the student's curve already lies on the key's, its label serves both.
       curves(spec, ko).forEach(function(c){ if(!ko[c.id]) return; var j = now.map(function(q){ return q.id; }).indexOf(c.id), same = j > -1 && Math.abs(now[j].at - c.at) < 1e-9;
         g.push('<path class="mac-gr-curve is-key" d="' + pathOf(c) + '"/>' + (same ? '' : curveLabel(c.id, cn, place(c.id, cn, Math.abs(c.at - base[j].at) >= 1 - 1e-9 ? pairLabels(c, base[j])[0] : labelAt(c), j), 'is-key'))); });
     }
@@ -514,18 +504,12 @@
       } }
     // E1 and E2 with their axis marks; the E2 label goes on the side away
     // from a vertical curve just right of it (LRAS, LRPC, MS, RS).
-    // E labels: a down curve and an up curve crossing at the point fill its
-    // four diagonals and the guides run left and down from it, so a label on
-    // the right sits level with the point and one on the left sits in the
-    // wedge between the guide and the down curve (above-left at 45 degrees lay
-    // on AD). On the flat part of reserve demand the line runs level, so the
-    // label goes above it, to one side. Returns [x, y] for a start (right) or
-    // end (left) anchor.
+    // E labels clear of the lines: right, level with the point; left, in the
+    // wedge over the guide (under it when the other point is straight above);
+    // above the flat part of reserve demand.
     function flatAt(p){ return now.concat(base).some(function(c){ return c.shape === 'rdemand' && p[0] >= 4 - 1e-9 && Math.abs(p[1] - c.at) < 1e-6; }); }
     function eAt(p, left, below){
       if(flatAt(p)) return [px(p[0]) + (left ? -8 : 8), py(p[1]) + (below ? 15 : -8)];
-      // below: the other point is straight above (the long run on LRAS), whose
-      // new curves cross the upper-left wedge, so the label takes the lower-left one.
       return left ? [px(p[0]) - 17, py(p[1]) + (below ? 14 : -3)] : [px(p[0]) + 10, py(p[1]) + 4];
     }
     var two = state.eq && e0 && (Math.abs(state.eq[0] - e0[0]) > 1e-6 || Math.abs(state.eq[1] - e0[1]) > 1e-6);
