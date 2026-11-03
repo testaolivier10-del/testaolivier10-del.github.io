@@ -327,7 +327,7 @@
     T.studioVirtual(body, function(){ return parts; });
     T.studioVirtual(app, function(){ return [fb]; });
     T.studioKeep(s);
-    s.add('stage', stage); s.add('why', fb); s.add('why', data); s.add('details', det);
+    s.add('stage', stage); s.add('why', fb); s.add('details', data); s.add('details', det);
     det.appendChild(form.querySelector('.gb-pick'));
     var h2 = form.querySelector(':scope > h2'); if(h2) h2.classList.add('sr-only');
     s.add('dock', form);

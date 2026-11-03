@@ -189,13 +189,12 @@
     o.mount.innerHTML =
       '<div class="cx-sr">' +
         '<div class="cx-search"><label class="sr-only" for="' + P + '-q">' + esc(o.label || 'Search the course') + '</label>' + ICON +
-          '<input type="search" id="' + P + '-q" placeholder="' + esc(o.placeholder || 'Search the course') + '" autocomplete="off" spellcheck="false" aria-describedby="' + P + '-status ' + P + '-help" aria-controls="' + P + '-results"></div>' +
-        '<div class="cx-sr-status" id="' + P + '-status" role="status" aria-live="polite">Building the search index&hellip;</div>' +
+          '<input type="search" id="' + P + '-q" placeholder="Search the entire course" autocomplete="off" spellcheck="false" aria-describedby="' + P + '-status ' + P + '-help" aria-controls="' + P + '-results"></div>' +
+        '<div class="cx-sr-status" id="' + P + '-status" role="status" aria-live="polite"></div>' +
         '<p class="cx-sr-help" id="' + P + '-help">Results appear as you type. <kbd>&darr;</kbd> moves into the results, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> between them, <kbd>Enter</kbd> opens one, <kbd>Esc</kbd> returns here.</p>' +
         '<p class="cx-sr-all"><a id="' + P + '-all" href="' + esc(o.allHref) + '">Search all courses &rarr;</a></p>' +
         '<div class="cx-pills cx-sr-filters" id="' + P + '-filters" role="group" aria-label="Filter results by kind"></div>' +
         '<div id="' + P + '-results" class="cx-sr-results"></div>' +
-        '<p class="cx-sr-foot">Runs in your browser. Nothing is sent anywhere.</p>' +
       '</div>';
     var box = doc.getElementById(P + '-q'), statusEl = doc.getElementById(P + '-status');
     var filtersEl = doc.getElementById(P + '-filters'), resultsEl = doc.getElementById(P + '-results'), allLink = doc.getElementById(P + '-all');
@@ -207,15 +206,15 @@
     // The same index line in every course: what is searchable, by kind.
     function indexLine(){
       var c = counts(INDEX), ks = order(c);
-      return (INDEX.length ? 'Searching ' + INDEX.length.toLocaleString() + ' passages: ' + ks.map(function(k){ return c[k].toLocaleString() + ' ' + k.toLowerCase(); }).join(', ') + '.' : 'Nothing indexed yet.') +
-        (pending ? ' Still indexing…' : '') +
+      void c; void ks;
+      return (pending ? 'Still indexing…' : '') +
         (missing.length ? ' ' + missing.join(' and ') + ' could not be loaded (offline?), so ' + (missing.length > 1 ? 'they are' : 'it is') + ' left out.' : '');
     }
     // The same line in every course: what is searchable, by kind, and how
     // many results the current query has.
     function setStatus(n){
       if(!S) return;
-      statusEl.textContent = (n != null ? n.toLocaleString() + (n === 1 ? ' result. ' : ' results. ') : '') + indexLine();
+      statusEl.textContent = ((n != null ? n.toLocaleString() + (n === 1 ? ' result. ' : ' results. ') : '') + indexLine()).trim();
     }
     function renderFilters(hits){
       var c = counts(hits), ks = order(c);

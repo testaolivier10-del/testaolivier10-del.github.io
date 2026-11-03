@@ -188,7 +188,7 @@
           (opts.course ? ' <span class="ls-course">' + esc(opts.course) + '</span>' : '') + '</h1>' +
         '<span class="ls-sp"></span>' +
         (menuO.tutor === false ? '' : '<button type="button" class="ls-tutor-btn" data-ls-act="tutor"><span class="ls-tutor-dot">' + icon('bot') + '</span>Ask the tutor</button>') +
-        (slim ? '' : '<button type="button" class="ls-ib ls-help" aria-label="Why? Explain what is on screen" aria-controls="' + ids.why + '">' + icon('help') + '</button>') +
+        (slim ? '' : '<button type="button" class="ls-ib ls-help" aria-label="Explanation of what is on screen" aria-controls="' + ids.why + '">' + icon('help') + '</button>') +
         '<div class="ls-menu-wrap"><button type="button" class="ls-ib ls-more" aria-label="More" aria-haspopup="true" aria-expanded="false" aria-controls="' + ids.menu + '">' + icon('more') + '</button>' +
           '<div class="ls-menu" id="' + ids.menu + '" hidden></div></div>' +
       '</header>' +
@@ -208,15 +208,15 @@
           '<div class="ls-modes"></div>' +
           '<div class="ls-cap"><div class="ls-capw"><p class="ls-caption" id="' + ids.cap + '" aria-live="polite"></p>' +
             '<button type="button" class="ls-capmore" aria-controls="' + ids.cap + '" aria-expanded="false" hidden>More</button></div>' +
-            '<button type="button" class="ls-why" aria-controls="' + ids.why + '">' + icon('bulb') + '<span>Why?</span></button></div>' +
+            '<button type="button" class="ls-why" aria-controls="' + ids.why + '">' + icon('bulb') + '<span>' + esc(opts.whyTitle || 'Explanation') + '</span></button></div>' +
           '<div class="ls-dock-body"></div>' +
           '<button type="button" class="ls-detbtn" aria-controls="' + ids.det + '" hidden>' + icon('sliders') + '<span class="ls-detbtn-t"></span>' + icon('chev', 'ls-detbtn-c') + '</button>' +
         '</section>' +
         '<aside class="ls-sheet" aria-labelledby="' + ids.sheetH + '" tabindex="-1" hidden>' +
           '<div class="ls-grab" aria-hidden="true"></div>' +
-          '<div class="ls-sheet-head"><h2 class="sr-only" id="' + ids.sheetH + '">Why and more</h2>' +
+          '<div class="ls-sheet-head"><h2 class="ls-sheet-t" id="' + ids.sheetH + '">' + esc(opts.whyTitle || 'Explanation') + '</h2>' +
             '<div class="ls-seg ls-tabs" role="tablist" aria-label="Why, or the rest of the tool">' +
-              '<button type="button" role="tab" id="' + ids.why + '-tab" aria-controls="' + ids.why + '" aria-selected="true" data-tab="why">' + esc(opts.whyTitle || 'Why') + '</button>' +
+              '<button type="button" role="tab" id="' + ids.why + '-tab" aria-controls="' + ids.why + '" aria-selected="true" data-tab="why">' + esc(opts.whyTitle || 'Explanation') + '</button>' +
               '<button type="button" role="tab" id="' + ids.det + '-tab" aria-controls="' + ids.det + '" aria-selected="false" tabindex="-1" data-tab="details"></button>' +
             '</div>' +
             '<button type="button" class="ls-ib ls-close" aria-label="Close">' + icon('close') + '</button></div>' +
@@ -276,7 +276,8 @@
       if(!detTab) return;
       var has = detHas(), t = has ? (detTitle || 'Data & settings') : 'About';
       detTab.textContent = t;
-      detBtn.hidden = !has;
+      // About gets its own button too, so credits and how-to are never hidden behind Explanation.
+      detBtn.hidden = !has && aboutS.hidden;
       detBtn.querySelector('.ls-detbtn-t').textContent = t;
     }
     s.detailsTitle = function(t){ detTitle = t || ''; paintDet(); return s; };
@@ -377,6 +378,10 @@
       });
       whyP.hidden = tab !== 'why';
       q('.ls-det-panel').hidden = tab !== 'details';
+      /* Owner 2026-11-03: the sheet shows only what its button named (Explanation, or Data & settings / About);
+         nothing else is tucked behind a second tab. */
+      var tt = root.querySelector('.ls-tabs [data-tab="' + tab + '"]'), th = q('.ls-sheet-t');
+      if(th && tt) th.textContent = tt.textContent;
     }
     function focusables(){
       return Array.prototype.filter.call(sheet.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea, summary, [tabindex]:not([tabindex="-1"])'), function(el){

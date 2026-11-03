@@ -39,3 +39,11 @@ Olivier: the site "feels too busy"; go one page at a time, in a draft he comment
   the adaptive explanation is a fine-print details `#catHow` in the footer, opened by the results link.
 - Tools hubs: no featured tool (NREMT Body Map, A&P Lab Practical are the first cards).
 - Search: no course list line.
+
+## Search and tools (owner 2026-11-03)
+- Course search (`assets/course/hub.js`, every course): box says "Search the entire course"; no passage counts line,
+  no "Runs in your browser" note; the status line only shows the result count (and indexing or offline notes).
+- Tool frame (`assets/course/tool-studio.js`, every tool): "Why?" became "Explanation"; the sheet shows one thing
+  with a title (no tab strip); Data & settings or About always has its own dock button. Lab practical credits moved
+  to About; AP® graph builder data table moved to Data & settings.
+- Process note: before finishing, re-read every comment thread; reply to each one marked awaiting a reply.

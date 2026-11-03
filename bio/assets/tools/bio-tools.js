@@ -227,7 +227,7 @@
     el.classList.add('bt-clamp');
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'bt-whymore'; b.hidden = true; b.setAttribute('aria-expanded', 'false');
-    b.textContent = 'Why? Read the rest';
+    b.textContent = 'Read the full explanation';
     el.parentNode.insertBefore(b, el.nextSibling);
     var open = false;
     function check(){
@@ -236,11 +236,11 @@
     }
     b.addEventListener('click', function(){
       open = !open; el.classList.toggle('is-open', open);
-      b.textContent = open ? 'Show less' : 'Why? Read the rest'; b.setAttribute('aria-expanded', String(open));
+      b.textContent = open ? 'Show less' : 'Read the full explanation'; b.setAttribute('aria-expanded', String(open));
       check();
     });
     if(window.MutationObserver) new MutationObserver(function(){
-      open = false; el.classList.remove('is-open'); b.textContent = 'Why? Read the rest'; b.setAttribute('aria-expanded', 'false');
+      open = false; el.classList.remove('is-open'); b.textContent = 'Read the full explanation'; b.setAttribute('aria-expanded', 'false');
       requestAnimationFrame(check);
     }).observe(el, { childList: true, characterData: true, subtree: true });
     if(window.ResizeObserver) new ResizeObserver(function(){ check(); }).observe(el);

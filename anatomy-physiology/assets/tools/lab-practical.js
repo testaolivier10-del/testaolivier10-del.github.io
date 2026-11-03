@@ -352,7 +352,7 @@
             cw.innerHTML = '<h3 class="ls-h">Figure credit</h3>';
             cw.appendChild(cr);
             credits.push(cw);
-            fig.querySelector('figcaption').innerHTML = '<p class="lp-credit lp-credit-s">Figure: OpenStax, CC BY 4.0. Full credit under <b>Why?</b></p>';
+            fig.querySelector('figcaption').innerHTML = '<p class="lp-credit lp-credit-s">Figure: OpenStax, CC BY 4.0. Full credit under <b>About</b></p>';
           }
         }
         if(info) dock.unshift(info);
@@ -399,7 +399,7 @@
       }
     });
     if(det.length){ var d = document.createElement('div'); d.className = 'ls-sec lp-ls-det'; det.forEach(function(x){ d.appendChild(x); }); ST.put('details', d); }
-    credits.forEach(function(c){ ST.put('why', c); });
+    credits.forEach(function(c){ ST.put('about', c); });
     if(pick) ST.put('dock', pick);
     ST.stage.scrollTop = 0;
     root.classList.toggle('lp-ls-fill', !root.querySelector('.lp-figure'));
