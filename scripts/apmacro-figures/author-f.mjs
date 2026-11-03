@@ -88,7 +88,7 @@ const add = (topic, id, w, h, title, alt, body) => FIGS.push({ topic, id, w, h, 
 {
   const W = 820, H = 430;
   let b = '';
-  b += T(W / 2, 34, 'The balance of payments of Arland (invented numbers, billions of dollars)', { anchor: 'middle', size: 16, weight: 'bold' });
+  b += T(W / 2, 34, 'The balance of payments of Arland (invented numbers, billions of arls)', { anchor: 'middle', size: 16, weight: 'bold' });
   // Current account
   b += R(30, 60, 360, 270, { fill: WARM, stroke: C2 });
   b += T(210, 88, 'Current account', { anchor: 'middle', size: 15, weight: 'bold', fill: C2 });
@@ -112,7 +112,7 @@ const add = (topic, id, w, h, title, alt, body) => FIGS.push({ topic, id, w, h, 
   b += T(610, 316, 'a surplus: assets sold abroad pay for it', { anchor: 'middle', size: 12, fill: INK });
   b += box(210, 352, 400, 56, 'Sum: -100 + (+100) = 0\nEvery purchase from abroad is paid for somehow.', { fill: TINT, stroke: C1, size: 14 });
   add('balance-of-payments', 'balance-of-payments-accounts', W, H, 'The two accounts of the balance of payments',
-    'Two panels for the invented country Arland, in billions of dollars. Current account: exports of goods and services plus 400, imports minus 520, net income from abroad plus 30, net transfers minus 10, for a current account balance of minus 100, a deficit. Capital and financial account: foreigners buy Arland assets plus 250, Arlanders buy foreign assets minus 150, for a balance of plus 100, a surplus. The two balances sum to zero.', b);
+    'Two panels for the invented country Arland, in billions of arls. Current account: exports of goods and services plus 400, imports minus 520, net income from abroad plus 30, net transfers minus 10, for a current account balance of minus 100, a deficit. Capital and financial account: foreigners buy Arland assets plus 250, Arlanders buy foreign assets minus 150, for a balance of plus 100, a surplus. The two balances sum to zero.', b);
 }
 
 /* 6.2: one exchange rate written both ways, and what appreciation means. */

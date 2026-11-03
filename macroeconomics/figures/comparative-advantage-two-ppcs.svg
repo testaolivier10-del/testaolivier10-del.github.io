@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400" role="img" aria-labelledby="comparative-advantage-two-ppcs-t comparative-advantage-two-ppcs-d" font-family="Arial, Helvetica, sans-serif">
 <title id="comparative-advantage-two-ppcs-t">Two countries, two straight PPCs, two opportunity costs</title>
-<desc id="comparative-advantage-two-ppcs-d">Per-worker production possibilities for Arland (40 bushels of wheat or 20 yards of cloth a day) and Belmar (30 bushels of wheat or 10 yards of cloth). One yard of cloth costs Arland 2 bushels of wheat and Belmar 3, so Arland has the comparative advantage in cloth; one bushel of wheat costs Arland half a yard of cloth and Belmar a third of a yard, so Belmar has the comparative advantage in wheat. Invented data for practice.</desc>
+<desc id="comparative-advantage-two-ppcs-d">Per-worker production possibilities for Dornia (40 bushels of wheat or 20 yards of cloth a day) and Belmar (30 bushels of wheat or 10 yards of cloth). One yard of cloth costs Dornia 2 bushels of wheat and Belmar 3, so Dornia has the comparative advantage in cloth; one bushel of wheat costs Dornia half a yard of cloth and Belmar a third of a yard, so Belmar has the comparative advantage in wheat. Invented data for practice.</desc>
 <defs><marker id="comparative-advantage-two-ppcs-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="comparative-advantage-two-ppcs-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="comparative-advantage-two-ppcs-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="comparative-advantage-two-ppcs-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker></defs><rect width="800" height="400" fill="#FFFFFF"/>
 <line x1="90" y1="24" x2="90" y2="350" stroke="#1F2A28" stroke-width="2"/>
 <line x1="90" y1="350" x2="496" y2="350" stroke="#1F2A28" stroke-width="2"/>
@@ -14,17 +14,17 @@
 <text x="82" y="208.5" font-size="12" fill="#6B7370" text-anchor="end">10</text>
 <text x="82" y="63.1" font-size="12" fill="#6B7370" text-anchor="end">20</text>
 <line x1="90" y1="59.1" x2="490" y2="350" stroke="#355A0A" stroke-width="3"/>
-<text x="264" y="175.3" font-size="15" fill="#355A0A" font-weight="700">Arland</text>
+<text x="264" y="175.3" font-size="15" fill="#355A0A" font-weight="700">Dornia</text>
 <line x1="90" y1="204.5" x2="390" y2="350" stroke="#084F78" stroke-width="3"/>
 <text x="176" y="240.2" font-size="15" fill="#084F78" font-weight="700">Belmar</text>
 <text x="530" y="70" font-size="14" fill="#1F2A28" font-weight="700">Opportunity cost of</text>
 <text x="530" y="92" font-size="14" fill="#1F2A28" font-weight="700">1 yard of cloth:</text>
-<text x="530" y="118" font-size="13" fill="#355A0A">Arland 2 bushels of wheat</text>
+<text x="530" y="118" font-size="13" fill="#355A0A">Dornia 2 bushels of wheat</text>
 <text x="530" y="140" font-size="13" fill="#084F78">Belmar 3 bushels of wheat</text>
 <text x="530" y="180" font-size="14" fill="#1F2A28" font-weight="700">Opportunity cost of</text>
 <text x="530" y="202" font-size="14" fill="#1F2A28" font-weight="700">1 bushel of wheat:</text>
-<text x="530" y="228" font-size="13" fill="#355A0A">Arland 0.5 yard of cloth</text>
+<text x="530" y="228" font-size="13" fill="#355A0A">Dornia 0.5 yard of cloth</text>
 <text x="530" y="250" font-size="13" fill="#084F78">Belmar 1/3 yard of cloth</text>
-<text x="530" y="292" font-size="13" fill="#1F2A28" font-weight="700">Lower cost of cloth: Arland</text>
+<text x="530" y="292" font-size="13" fill="#1F2A28" font-weight="700">Lower cost of cloth: Dornia</text>
 <text x="530" y="312" font-size="13" fill="#1F2A28" font-weight="700">Lower cost of wheat: Belmar</text>
 </svg>

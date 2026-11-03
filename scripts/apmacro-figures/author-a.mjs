@@ -181,17 +181,17 @@ function add(topic, id, w, h, title, desc, body, alt) {
   const g = [...F.g];
   [0, 10, 20, 30, 40].forEach(v => g.push(text(F.X(sx(v)), F.Y(0) + 18, String(v), { anchor: 'middle', size: 12, fill: GREY })));
   [10, 20].forEach(v => g.push(text(F.X(0) - 8, F.Y(sy(v)) + 4, String(v), { anchor: 'end', size: 12, fill: GREY })));
-  g.push(curve(F, [0, sy(Cl)], [sx(W), 0], null), text(F.X(sx(W * 0.42)) + 6, F.Y(sy(Cl * 0.58)) - 6, 'Arland', { fill: ACC, bold: true, size: 15 }));
+  g.push(curve(F, [0, sy(Cl)], [sx(W), 0], null), text(F.X(sx(W * 0.42)) + 6, F.Y(sy(Cl * 0.58)) - 6, 'Dornia', { fill: ACC, bold: true, size: 15 }));
   g.push(curve(F, [0, sy(BC)], [sx(BW), 0], null, { stroke: CER }), text(F.X(sx(BW * 0.3)) - 4, F.Y(sy(BC * 0.7)) - 8, 'Belmar', { fill: CER, bold: true, size: 15 }));
   g.push(text(530, 70, 'Opportunity cost of', { size: 14, bold: true }), text(530, 92, '1 yard of cloth:', { size: 14, bold: true }));
-  g.push(text(530, 118, `Arland ${oc.aCloth} bushels of wheat`, { size: 13, fill: ACC }), text(530, 140, `Belmar ${oc.bCloth} bushels of wheat`, { size: 13, fill: CER }));
+  g.push(text(530, 118, `Dornia ${oc.aCloth} bushels of wheat`, { size: 13, fill: ACC }), text(530, 140, `Belmar ${oc.bCloth} bushels of wheat`, { size: 13, fill: CER }));
   g.push(text(530, 180, 'Opportunity cost of', { size: 14, bold: true }), text(530, 202, '1 bushel of wheat:', { size: 14, bold: true }));
-  g.push(text(530, 228, `Arland ${oc.aWheat} yard of cloth`, { size: 13, fill: ACC }), text(530, 250, `Belmar 1/3 yard of cloth`, { size: 13, fill: CER }));
-  g.push(text(530, 292, 'Lower cost of cloth: Arland', { size: 13, bold: true }), text(530, 312, 'Lower cost of wheat: Belmar', { size: 13, bold: true }));
+  g.push(text(530, 228, `Dornia ${oc.aWheat} yard of cloth`, { size: 13, fill: ACC }), text(530, 250, `Belmar 1/3 yard of cloth`, { size: 13, fill: CER }));
+  g.push(text(530, 292, 'Lower cost of cloth: Dornia', { size: 13, bold: true }), text(530, 312, 'Lower cost of wheat: Belmar', { size: 13, bold: true }));
   if (Math.abs(oc.bWheat - 1 / 3) > 1e-9) throw new Error('Belmar wheat cost changed: update the label');
   add('comparative-advantage', 'comparative-advantage-two-ppcs', 800, 400, 'Two countries, two straight PPCs, two opportunity costs',
-    'Per-worker production possibilities for Arland (40 bushels of wheat or 20 yards of cloth a day) and Belmar (30 bushels of wheat or 10 yards of cloth). One yard of cloth costs Arland 2 bushels of wheat and Belmar 3, so Arland has the comparative advantage in cloth; one bushel of wheat costs Arland half a yard of cloth and Belmar a third of a yard, so Belmar has the comparative advantage in wheat. Invented data for practice.',
-    g.join('\n'), 'Two straight production possibilities lines for one worker a day: Arland, 40 bushels of wheat or 20 yards of cloth, and Belmar, 30 bushels of wheat or 10 yards of cloth, with the opportunity costs: cloth costs Arland 2 bushels and Belmar 3; wheat costs Arland half a yard and Belmar a third of a yard.');
+    'Per-worker production possibilities for Dornia (40 bushels of wheat or 20 yards of cloth a day) and Belmar (30 bushels of wheat or 10 yards of cloth). One yard of cloth costs Dornia 2 bushels of wheat and Belmar 3, so Dornia has the comparative advantage in cloth; one bushel of wheat costs Dornia half a yard of cloth and Belmar a third of a yard, so Belmar has the comparative advantage in wheat. Invented data for practice.',
+    g.join('\n'), 'Two straight production possibilities lines for one worker a day: Dornia, 40 bushels of wheat or 20 yards of cloth, and Belmar, 30 bushels of wheat or 10 yards of cloth, with the opportunity costs: cloth costs Dornia 2 bushels and Belmar 3; wheat costs Dornia half a yard and Belmar a third of a yard.');
 }
 { // demand: movement and shift
   const F = frame(90, 30, 420, 300, 'Quantity of concert tickets', 'Price');

@@ -133,7 +133,7 @@ function add(topic, id, w, h, title, alt, body) {
 /* 4.4: a bank balance sheet (T-account) and its reserves. */
 {
   const W = 760, H = 360;
-  let b = text(380, 36, 'Arland Savings Bank (invented), required reserve ratio 0.1', { anchor: 'middle', bold: true, size: 17 });
+  let b = text(380, 36, 'Quentar Savings Bank (invented), required reserve ratio 0.1', { anchor: 'middle', bold: true, size: 17 });
   b += line(120, 60, 640, 60, { sw: 2.5 }) + line(380, 60, 380, 230, { sw: 2.5 });
   b += text(250, 84, 'Assets', { anchor: 'middle', bold: true, size: 16 }) + text(510, 84, 'Liabilities', { anchor: 'middle', bold: true, size: 16 });
   b += text(140, 120, 'Reserves', { size: 15 }) + text(360, 120, '$300', { anchor: 'end', size: 15, bold: true });
