@@ -539,17 +539,17 @@
    "options": [
     "They fall by \\$1,000",
     "They fall by \\$100",
-    "They fall by \\$900",
-    "They do not change"
+    "They do not change",
+    "They fall by \\$900"
    ],
-   "correct": 2,
+   "correct": 3,
    "why": {
     "correct": "A withdrawal lowers reserves by its full amount and required reserves by the ratio times that amount; excess falls by the difference.",
     "options": [
      "Reserves fall by \\$1,000, but required reserves also fall by \\$100, so excess falls by \\$900.",
      "\\$100 is the drop in required reserves. Excess reserves fall by \\$1,000 - \\$100.",
-     "Right: reserves fall \\$1,000 and required reserves fall \\$100 (10% of the smaller deposits).",
-     "Cash paid out comes from reserves, so excess reserves fall."
+     "Cash paid out comes from reserves, so excess reserves fall.",
+     "Right: reserves fall \\$1,000 and required reserves fall \\$100 (10% of the smaller deposits)."
     ]
    }
   },
@@ -680,18 +680,18 @@
    "q": "In the United States, which institution sets the reserve requirement for banks?",
    "options": [
     "Congress, in the yearly budget",
-    "The Federal Reserve, the central bank",
+    "The Department of the Treasury",
     "Each commercial bank, for itself",
-    "The Department of the Treasury"
+    "The Federal Reserve, the central bank"
    ],
-   "correct": 1,
+   "correct": 3,
    "why": {
     "correct": "The central bank, the Federal Reserve in the United States, sets the reserve requirement.",
     "options": [
      "Congress sets taxes and spending; bank reserve rules come from the central bank.",
-     "Right: the Federal Reserve sets reserve requirements and oversees the banking system.",
+     "The Treasury manages government finances; the Federal Reserve sets reserve rules.",
      "Banks choose to hold extra reserves, but the requirement is set for them.",
-     "The Treasury manages government finances; the Federal Reserve sets reserve rules."
+     "Right: the Federal Reserve sets reserve requirements and oversees the banking system."
     ]
    }
   }

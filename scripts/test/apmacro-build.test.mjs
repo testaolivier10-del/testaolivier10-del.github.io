@@ -282,3 +282,13 @@ test('no help note in this course: the field and the pasted line are refused', (
   const editL = fn => d => { const p = join(d, 'lessons', `${T}.json`); const L = JSON.parse(readFileSync(p, 'utf8')); fn(L); writeFileSync(p, JSON.stringify(L)); };
   assert.match(broken(editL(L => { L.help = true; })), /"help" is not used in macroeconomics/);
 });
+
+test('key position balance: no option holds the key in more than 40% of a topic, every position used once there are enough items', async () => {
+  const { keyPositionTell } = await import('../check-apmacro-content.mjs');
+  const q = (c, extra = {}) => ({ type: 'single', options: ['a', 'b', 'c', 'd'], correct: c, ...extra });
+  assert.equal(keyPositionTell([0, 1, 2, 3, 0, 1, 2, 3].map(c => q(c))), null);
+  assert.match(keyPositionTell([0, 0, 0, 1, 2, 3].map(c => q(c))), /option 1 in 3 of 6/);
+  assert.match(keyPositionTell([0, 1, 2, 0, 1, 2, 0, 1, 2].map(c => q(c))), /never option 4/);
+  assert.equal(keyPositionTell([0, 0, 0, 0, 0].map(c => q(c, { fixed: true }))), null, 'fixed items keep their order');
+  assert.equal(keyPositionTell([0, 0, 1, 2].map(c => q(c))), null, 'too few items to judge');
+});

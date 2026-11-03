@@ -170,6 +170,11 @@ formula needs it; in prose write AD2).
   its type.
 - **Four options** for single-answer items (needs-author `mcq-options`), similar lengths (the key is the longest
   at most 40% of the time), each option's explanation naming the error by content, never by letter.
+- **Mix the key's position.** Pages shuffle options, but the static HTML, print and fixed items show them as
+  written, so in each topic (and in the exam-only items and each served form) no position holds the key in more
+  than 40% of the single-answer items, and with two or more items per position every position holds it at least
+  once (`keyPositionTell` in the content check). To fix a topic, swap the key with another option and swap their
+  explanations with them; the key itself and the ids never change.
 - At least 60% apply/analyze. At least 40% of a topic's items in stimulus sets of 3-5 items: `data` (a table or
   chart), `graph` (an economics graph as given, `stimulus.graph`), `text` (a scenario).
 - `numeric` items for every calculation; `graph` items wherever the topic has a graph (shift, equilibrium, label,

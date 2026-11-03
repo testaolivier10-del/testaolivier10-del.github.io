@@ -550,18 +550,18 @@
    "q": "The rate is 2.5 bels per arl. A traveler from Belvia trades 1,000 bels for arls. How many arls does the traveler get?",
    "options": [
     "2,500 arls",
-    "400 arls",
+    "250 arls",
     "1,000 arls",
-    "250 arls"
+    "400 arls"
    ],
-   "correct": 1,
+   "correct": 3,
    "why": {
     "correct": "1,000 bels / 2.5 bels per arl = 400 arls.",
     "options": [
      "That multiplies by bels per arl. Bels divided by bels per arl gives arls: 1,000 / 2.5 = 400.",
-     "Right: each arl costs 2.5 bels, so 1,000 bels buy 1,000 / 2.5 = 400 arls.",
+     "That divides by 4, not 2.5. 1,000 / 2.5 = 400 arls.",
      "That treats the two currencies as worth the same; the rate says one arl costs 2.5 bels.",
-     "That divides by 4, not 2.5. 1,000 / 2.5 = 400 arls."
+     "Right: each arl costs 2.5 bels, so 1,000 bels buy 1,000 / 2.5 = 400 arls."
     ]
    }
   }

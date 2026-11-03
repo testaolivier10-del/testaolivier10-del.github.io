@@ -137,17 +137,17 @@
    "options": [
     "It falls, because the real interest rate rose",
     "It stays the same, because saving did not change",
-    "It rises, as savers lend more at the higher rate",
-    "It is not shown on the graph"
+    "It is not shown on the graph",
+    "It rises, as savers lend more at the higher rate"
    ],
-   "correct": 2,
+   "correct": 3,
    "why": {
     "correct": "When demand shifts right along an upward-sloping supply curve, both the real interest rate and the quantity rise.",
     "options": [
      "A higher rate cuts borrowing along the old demand, but here demand shifted right.",
      "Saving rises along the supply curve as the real rate rises.",
-     "Right: the higher real rate draws out more saving, a movement along supply.",
-     "One curve shifted, so both changes are clear: the rate and the quantity rise."
+     "One curve shifted, so both changes are clear: the rate and the quantity rise.",
+     "Right: the higher real rate draws out more saving, a movement along supply."
     ]
    }
   },
@@ -478,18 +478,18 @@
    "q": "What goes on the vertical axis of the loanable funds graph?",
    "options": [
     "The nominal interest rate",
-    "The real interest rate",
+    "The quantity of loanable funds",
     "The price level",
-    "The quantity of loanable funds"
+    "The real interest rate"
    ],
-   "correct": 1,
+   "correct": 3,
    "why": {
     "correct": "Loanable funds: real interest rate (r) on the vertical axis. Writing \"nominal\" loses the graph point.",
     "options": [
      "The nominal rate goes on the money market graph. Saving and borrowing decisions depend on the real rate.",
-     "Right: savers and borrowers care about the return and cost after inflation.",
+     "That goes on the horizontal axis.",
      "The price level goes on the AD-AS graph.",
-     "That goes on the horizontal axis."
+     "Right: savers and borrowers care about the return and cost after inflation."
     ]
    }
   },

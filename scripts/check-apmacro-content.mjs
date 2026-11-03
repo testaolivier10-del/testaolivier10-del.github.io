@@ -117,7 +117,7 @@ export function mathProblems(t) { return Tex.check(String(t ?? '')); }
 const RAW = new Set(['answer', 'id', 'topic', 'unit', 'units', 'type', 'kind', 'stimulus', 'figure', 'practice', 'level', 'set', 'mode', 'from', 'source']);
 const allStrings = v => typeof v === 'string' ? [v] : Array.isArray(v) ? v.flatMap(allStrings)
   : v && typeof v === 'object' ? Object.entries(v).flatMap(([k, x]) => k === 'plot' || k === 'chart' || k === 'graph' || (RAW.has(k) && typeof x !== 'object') ? [] : allStrings(x)) : [];
-export const MIN_ITEMS = 15, MIN_HIGHER = 0.6, MIN_IN_SETS = 0.4, SET_MIN = 3, SET_MAX = 5, LONGEST_MAX = 0.4;
+export const MIN_ITEMS = 15, MIN_HIGHER = 0.6, MIN_IN_SETS = 0.4, SET_MIN = 3, SET_MAX = 5, LONGEST_MAX = 0.4, KEY_POS_MAX = 0.4;
 // An explanation never names an option by letter or position: options are shuffled.
 export const POS_RE = /\b[Oo]ptions?\s+(one|two|three|four|five|[1-6]|[A-F])\b|\b(first|second|third|fourth|fifth|last|above|below)\s+(option|choice|answer)\b|\b(choice|answer)\s+[A-F]\b|\(\s*[A-E]\s*\)|\b[A-E]\s+(and|or)\s+[A-E]\b|\bthe (other )?(options|choices) above\b/;
 
@@ -182,6 +182,24 @@ export function lengthTell(items) {
   if (singles.length < 5) return null;
   const longest = singles.filter(q => { const L = q.options.map(o => strip(o).trim().length); return L[q.correct] > Math.max(...L.filter((_, i) => i !== q.correct)); }).length;
   return longest / singles.length > LONGEST_MAX + 1e-9 ? `the correct option is the longest in ${longest} of ${singles.length} single-answer items (at most 40%): even out the option lengths` : null;
+}
+
+/* Per topic (and for the exam-only items and each served form): the key's
+   position in the authored order is balanced, like its length. The page
+   shuffles options, but the static question HTML, print and a fixed item show
+   them as written, so no position holds the key in more than 40% of the
+   single-answer items, and once there are at least two items per position
+   every position holds it at least once. Fixed items (a scale, an order) are
+   left out: their order is the content. */
+export function keyPositionTell(items) {
+  const singles = items.filter(q => q.type === 'single' && !q.fixed && (q.options || []).length >= 3 && Number.isInteger(q.correct));
+  if (singles.length < 5) return null;
+  const n = Math.min(...singles.map(q => q.options.length)), count = Array(Math.max(...singles.map(q => q.options.length))).fill(0);
+  for (const q of singles) count[q.correct]++;
+  const top = Math.max(...count), at = count.indexOf(top);
+  if (top / singles.length > KEY_POS_MAX + 1e-9) return `the key is option ${at + 1} in ${top} of ${singles.length} single-answer items (at most 40%): rotate options with their explanations (counts ${count.join(', ')})`;
+  if (singles.length >= 2 * n) { const never = count.slice(0, n).findIndex(c => c === 0); if (never > -1) return `the key is never option ${never + 1} in ${singles.length} single-answer items: rotate options with their explanations (counts ${count.join(', ')})`; }
+  return null;
 }
 
 function checkStimulus(sid, s, figures, err) {
@@ -424,6 +442,8 @@ export function checkTopic(map, id, { glossary, figures }) {
     if (topic.kind === 'concept' && items.length && inSets / items.length < MIN_IN_SETS) err(`questions: ${(100 * inSets / items.length).toFixed(0)}% of items are in stimulus sets; at least 40%`);
     const lt = lengthTell(items);
     if (lt) err(`questions: ${lt}`);
+    const kp = keyPositionTell(items);
+    if (kp) err(`questions: ${kp}`);
   }
 
   // --- lesson
@@ -734,7 +754,7 @@ if (isMain) {
       for (const p of scanPage(map, `<p>${textOfItem(q)}</p>`, last.id)) bad2(`${q.id}: ORDER: ${p}`);
       for (const p of trademarkProblems(textOfItem(q))) bad2(`${q.id}: trademark: ${p}`);
     }
-    if (ex.items.length) { const lt = lengthTell(ex.items); if (lt) bad2(`exam-only items: ${lt}`); }
+    if (ex.items.length) { const lt = lengthTell(ex.items); if (lt) bad2(`exam-only items: ${lt}`); const kp = keyPositionTell(ex.items); if (kp) bad2(`exam-only items: ${kp}`); }
     for (const e of [...testWise(ex.items), ...duplicates([...allItems, ...ex.items.map(q => ({ ...q, topic: `exam:${q.topic}` }))]).filter(e => /mac-exam-/.test(e))]) bad2(e);
     const frqs = {};
     for (const f of exists(frqDir) ? readdirSync(frqDir).filter(f => f.endsWith('.json')) : []) { const d = readJson(join(frqDir, f)); frqs[d.id] = d; }
@@ -754,6 +774,7 @@ if (isMain) {
     for (const f of ex.forms) {
       const served = (f.mcq || []).flat().map(id => examItems.get(id) || (bank.get(id) && examVersion(bank.get(id), ex.fifth))).filter(Boolean);
       const lt = lengthTell(served); if (lt) bad2(`${f.id}: ${lt}`);
+      const kp = keyPositionTell(served); if (kp) bad2(`${f.id}: ${kp}`);
       for (const e of testWise(served)) bad2(`${f.id}: ${e}`);
     }
     for (const e of checkGraphs(examItems, ex.stimuli)) bad2(e);

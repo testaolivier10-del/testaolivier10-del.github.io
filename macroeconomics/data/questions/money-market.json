@@ -345,18 +345,18 @@
    "q": "Why does the money demand curve slope down?",
    "options": [
     "A higher price level means people need less money",
-    "The nominal interest rate is the opportunity cost of holding money",
+    "Banks lend more when interest rates rise",
     "The central bank supplies less money at high rates",
-    "Banks lend more when interest rates rise"
+    "The nominal interest rate is the opportunity cost of holding money"
    ],
-   "correct": 1,
+   "correct": 3,
    "why": {
     "correct": "Money pays little or no interest, so the interest given up on bonds is the cost of holding it: higher rates, less money demanded.",
     "options": [
      "A higher price level shifts money demand right; it does not explain the slope.",
-     "Right: when bonds pay more, holding cash costs more, so people hold less of it.",
+     "That is about lending, not about how much money people choose to hold.",
      "The money supply is vertical; the slope of demand comes from households' choices.",
-     "That is about lending, not about how much money people choose to hold."
+     "Right: when bonds pay more, holding cash costs more, so people hold less of it."
     ]
    }
   },
@@ -396,19 +396,19 @@
    "practice": "3.A",
    "q": "In the money market, the nominal interest rate is above equilibrium. How does the market move back to equilibrium?",
    "options": [
-    "People hold more money than they want, buy bonds, and the rate falls",
+    "People hold more money than they want, sell bonds, and the rate rises",
     "People want more money, sell bonds, and the rate rises",
     "The central bank lowers the money supply until the rate matches",
-    "People hold more money than they want, sell bonds, and the rate rises"
+    "People hold more money than they want, buy bonds, and the rate falls"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "A surplus of money leads people to buy bonds: bond prices rise and interest rates fall until people want to hold the money that exists.",
     "options": [
-     "Right: buying bonds raises bond prices, which lowers interest rates.",
+     "With surplus money, people buy bonds, which lowers the rate.",
      "Above equilibrium people want less money than exists, not more.",
      "The market adjusts through bond buying; the supply does not have to change.",
-     "With surplus money, people buy bonds, which lowers the rate."
+     "Right: buying bonds raises bond prices, which lowers interest rates."
     ]
    }
   },

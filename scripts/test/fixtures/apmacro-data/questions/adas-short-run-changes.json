@@ -187,17 +187,17 @@
    "practice": "1.B",
    "q": "Placeholder: which event in the table shifts aggregate demand rather than supply?",
    "options": [
-    "A rise in consumer confidence",
     "A fall in oil prices",
+    "A rise in consumer confidence",
     "A rise in nominal wages",
     "A drought that cuts crop yields"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Placeholder: confidence changes consumption $C$, part of $AD = C + I + G + (X - M)$.",
     "options": [
-     "Right: consumption is part of AD.",
      "Input costs shift SRAS.",
+     "Right: consumption is part of AD.",
      "Wages are input costs for firms.",
      "A supply shock shifts SRAS."
     ]
@@ -214,18 +214,18 @@
    "practice": "2.C",
    "q": "Placeholder: according to the table, in which year did the price level rise while output fell?",
    "options": [
-    "Year 3",
-    "Year 1",
     "Year 2",
+    "Year 1",
+    "Year 3",
     "Year 4"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Placeholder: in Year 3 the index rose and real GDP fell.",
     "options": [
-     "Right: the index rose and output fell.",
-     "Both rose in Year 1.",
      "Both rose in Year 2.",
+     "Both rose in Year 1.",
+     "Right: the index rose and output fell.",
      "Both fell in Year 4."
     ]
    },
@@ -301,19 +301,19 @@
    "practice": "1.B",
    "q": "Placeholder: the graph shows a shift. Which event could have caused it?",
    "options": [
-    "A rise in input costs",
+    "A rise in exports",
     "A rise in government spending",
     "A fall in taxes",
-    "A rise in exports"
+    "A rise in input costs"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "Placeholder: SRAS moved left.",
     "options": [
-     "Right: higher input costs shift SRAS left.",
      "That shifts AD right.",
      "That shifts AD right.",
-     "That shifts AD right."
+     "That shifts AD right.",
+     "Right: higher input costs shift SRAS left."
     ]
    },
    "stimulus": "adas-short-run-changes-s2"
@@ -355,17 +355,17 @@
    "practice": "3.A",
    "q": "Placeholder: what happened to unemployment in the short run after the shift in the graph?",
    "options": [
-    "It rose",
     "It fell",
+    "It rose",
     "It stayed the same",
     "It fell a great deal"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Placeholder: lower output means fewer workers are needed.",
     "options": [
-     "Right: output fell.",
      "Output fell, not rose.",
+     "Right: output fell.",
      "Output changed.",
      "Output fell, so unemployment rose."
     ]
@@ -468,18 +468,18 @@
    "practice": "1.B",
    "q": "Placeholder: in the scenario, which kind of inflation is described?",
    "options": [
-    "Cost-push inflation",
-    "Demand-pull inflation",
     "Disinflation",
+    "Demand-pull inflation",
+    "Cost-push inflation",
     "Deflation"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Placeholder: rising costs pushed prices up.",
     "options": [
-     "Right: costs pushed prices up.",
-     "Demand did not rise.",
      "Inflation did not slow.",
+     "Demand did not rise.",
+     "Right: costs pushed prices up.",
      "Prices rose."
     ]
    },
@@ -495,19 +495,19 @@
    "practice": "3.A",
    "q": "Placeholder: in the scenario, what happened to real output?",
    "options": [
-    "It fell",
+    "It doubled",
     "It rose",
     "It stayed the same",
-    "It doubled"
+    "It fell"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "Placeholder: SRAS moved left.",
     "options": [
-     "Right: SRAS shifted left.",
+     "Nothing doubled.",
      "SRAS fell, so output fell.",
      "The curve moved.",
-     "Nothing doubled."
+     "Right: SRAS shifted left."
     ]
    },
    "stimulus": "adas-short-run-changes-s3"
@@ -576,17 +576,17 @@
    "practice": "2.A",
    "q": "Placeholder: the government raises spending during a recession. In the short run, what happens to real output?",
    "options": [
-    "It rises",
     "It falls",
+    "It rises",
     "It stays the same",
     "It falls to zero"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Placeholder: government spending is part of AD.",
     "options": [
-     "Right: AD shifts right.",
      "AD rose, not fell.",
+     "Right: AD shifts right.",
      "AD moved.",
      "Output does not vanish."
     ]
@@ -602,18 +602,18 @@
    "practice": "1.B",
    "q": "Placeholder: wages rise across the economy faster than productivity. Which curve shifts?",
    "options": [
-    "Short-run aggregate supply, to the left",
-    "Aggregate demand, to the right",
     "Long-run aggregate supply, to the right",
+    "Aggregate demand, to the right",
+    "Short-run aggregate supply, to the left",
     "Aggregate demand, to the left"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Placeholder: wages are input costs.",
     "options": [
-     "Right: higher costs shift SRAS left.",
-     "Wages for firms are costs, not spending.",
      "Potential output did not grow.",
+     "Wages for firms are costs, not spending.",
+     "Right: higher costs shift SRAS left.",
      "Spending did not fall."
     ]
    }

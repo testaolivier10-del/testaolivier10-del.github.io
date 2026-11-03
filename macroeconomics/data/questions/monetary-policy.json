@@ -385,18 +385,18 @@
    "q": "The data show the federal funds rate trading just below the interest on reserve balances each year. What does that tell you about the framework?",
    "options": [
     "Reserves are limited, so the money supply sets the rate",
-    "Reserves are ample, so administered rates set the rate",
+    "The reserve requirement sets the rate",
     "Banks are short of reserves and borrow at the discount rate",
-    "The reserve requirement sets the rate"
+    "Reserves are ample, so administered rates set the rate"
    ],
-   "correct": 1,
+   "correct": 3,
    "why": {
     "correct": "With ample reserves, the policy rate settles near the administered rates (between the overnight reverse repurchase rate and interest on reserve balances).",
     "options": [
      "Big changes in reserves left the rate unchanged, which is the sign of ample reserves.",
-     "Right: the rate sits at the level the administered rates set and moves only when they move.",
+     "The table shows no reserve requirement; the rate follows the administered rates.",
      "Banks short of reserves would bid the rate up, not hold it just below interest on reserves.",
-     "The table shows no reserve requirement; the rate follows the administered rates."
+     "Right: the rate sits at the level the administered rates set and moves only when they move."
     ]
    }
   },
@@ -599,18 +599,18 @@
    "q": "A central bank that operates with limited reserves lowers the discount rate. What happens to the money supply and interest rates?",
    "options": [
     "The money supply falls and interest rates rise",
-    "The money supply rises and interest rates fall",
+    "Neither changes, since the discount rate is a fee",
     "The money supply rises and interest rates rise",
-    "Neither changes, since the discount rate is a fee"
+    "The money supply rises and interest rates fall"
    ],
-   "correct": 1,
+   "correct": 3,
    "why": {
     "correct": "The discount rate is what the central bank charges banks for loans of reserves; lowering it is expansionary.",
     "options": [
      "Cheaper borrowing from the central bank adds reserves, which raises the money supply.",
-     "Right: banks borrow more reserves, lend more, and the money supply rises.",
+     "The discount rate is the cost of borrowing reserves, so it changes bank lending.",
      "More money lowers the nominal interest rate on the money market.",
-     "The discount rate is the cost of borrowing reserves, so it changes bank lending."
+     "Right: banks borrow more reserves, lend more, and the money supply rises."
     ]
    }
   },
@@ -653,17 +653,17 @@
    "practice": "1.A",
    "q": "What is the federal funds rate?",
    "options": [
-    "The rate the government pays on its bonds",
     "The rate banks charge each other for overnight loans of reserves",
+    "The rate the government pays on its bonds",
     "The rate banks charge their best business customers",
     "The rate of inflation the central bank aims for"
    ],
-   "correct": 1,
+   "correct": 0,
    "why": {
     "correct": "The federal funds rate, the rate on overnight loans of reserves between banks, is the Federal Reserve's policy rate.",
     "options": [
-     "That is a Treasury bond rate, which the policy rate influences but is not.",
      "Right: it is the Federal Reserve's policy rate.",
+     "That is a Treasury bond rate, which the policy rate influences but is not.",
      "That is a bank lending rate, which moves with the policy rate.",
      "That is an inflation target, not an interest rate."
     ]
