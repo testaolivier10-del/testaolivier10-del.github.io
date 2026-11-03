@@ -420,3 +420,51 @@ against the CED (3.6, 3.7, 5.2, 6.2-6.6) before Units 3, 5 and 6 are reviewed:
   readers accept ("financial capital flows out").
 - **t4-skills: practice codes on drill steps.** Graph shifts 4.C, axis labels 4.A, outcomes 3.A, explanations of
   an effect 2.B or 3.B, calculations 2.B, definitions 1.A. Check against the CED skill list.
+
+## T3: Multiplier Lab, Economic Indicators Lab, PPC and Trade Trainer (open, 2026-11-03)
+
+### t3-ppc-straight: straight-line PPCs are drawn as data (open, 2026-11-03)
+
+Related to `a-ppc-straight`. `ApMacroGraph`'s `ppc` kind is bowed only, so the PPC and Trade Trainer draws the
+bowed PPC (shapes, shifts, inside/on/outside, increasing cost) with `ApMacroGraph` and the two countries'
+constant-cost PPCs in the trade view and the output and terms drills with `ApMacroPlot` (a data figure from the
+countries' outputs, nothing graded on it). If T1 or the lead adds a straight `ppc` shape, the trade view can move
+to it.
+
+### t3-gap-model: closing a gap uses the simple multiplier (open, 2026-11-03)
+
+As the exam does, the change in real GDP is change × multiplier with a constant price level ("the largest
+change"), and the policy change is gap ÷ multiplier. The Close a gap view draws AD moving toward LRAS by the share
+of the gap the student's policy closes (the gap closes exactly at gap ÷ multiplier); with an upward SRAS the real
+effect would be a little smaller, which the Why sheet says. Confirm the wording "largest change" matches how
+readers credit it.
+
+### t3-balanced-budget: equal rises in purchases and taxes (open, 2026-11-03)
+
+Related to `balanced-budget`. One drill step asks the effect of purchases and taxes both rising by X and keys
+"real GDP rises by X", reasoned as the two multiplier effects added (X × 1/MPS minus X × MPC/MPS), never as a
+separate formula; the Multiplier view has the same case. Drop both if the CED leaves it out.
+
+### t3-money-cases: the four money creation cases (open, 2026-11-03)
+
+Limited-reserves model, labeled every time, with the ample-reserves contrast in each worked solution: a cash
+deposit changes excess reserves by (1 − rr)X and the money supply by at most (1 − rr)X / rr (the deposit itself is
+not new money); the Fed buying bonds from a bank: X / rr; from the public (sellers deposit the payment): X of new
+deposits plus (1 − rr)X / rr of loans = X / rr; selling bonds to a bank: −X / rr. Confirm the public case is
+scored as X / rr on current scoring guidelines (some sources ask only for the loans).
+
+### t3-indicators: counting and classifying (open, 2026-11-03)
+
+GDP: a newly built house is investment, unsold output is inventory investment, a foreign tourist's hotel stay is an
+export, transfers, financial assets, used and intermediate goods, unpaid household work and a US-owned factory
+abroad are left out; an import is shown in Explore as counted in C or I and subtracted as M (the count drill leaves
+imports out, since "where does it go" has two answers). Unemployment: a new graduate searching is frictional,
+discouraged workers are out of the labor force; seasonal unemployment is not used. Check against the CED's 2.1-2.3.
+
+### t3-graph-labels: two label clashes in `ApMacroGraph.svg` (open, 2026-11-03, for T1 or the lead)
+
+A vertical curve's label (LRAS, MS, LRPC) is drawn with `text-anchor="end"` 4 px right of its line, so the text
+sits on the line; the faded and the shifted curve's labels collide when the shift is small; the PPC's label sits
+where a point on the curve often is. T3's tools work around all three on the rendered SVG (`tidy()` in
+`multiplier-lab.js`, `clearLabel()` in `ppc-trade.js`); a fix in `labelAt`/`curveLabel` would make the
+workarounds unnecessary.
