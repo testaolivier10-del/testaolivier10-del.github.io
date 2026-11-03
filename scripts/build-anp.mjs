@@ -873,7 +873,7 @@ const HUB_ICON = {
 };
 // Which array holds a tool's items, and what one is called.
 const HUB_ITEMS = {
-  'anatomy-3d': ['structures', 'structure'],
+  'lab-practical': ['stations', 'station'], 'anatomy-3d': ['structures', 'structure'],
   predict: ['scenarios', 'scenario'], 'feedback-loops': ['loops', 'loop'], pathways: ['pathways', 'pathway'],
   graphs: ['graphs', 'graph'], calculators: ['calculators', 'calculator'], 'word-roots': ['terms', 'term'],
 };
@@ -982,24 +982,16 @@ function toolsHubR3() {
   const labData = hubToolCounts('lab-practical');
   const figN = Object.keys(labData.figures).length;
   const others = tools.filter(t => t.slug !== 'lab-practical');
-  const featHtml = `<p class="kicker">Featured tool &middot; ${esc(HUB_SKILL['lab-practical'])} <i></i></p>
-<section class="feat r3-feat" aria-labelledby="cx-feat-h" data-tool="lab-practical" data-n="${labData.n}" data-ch="${chCounts(labData.by)}" data-unit="station,stations" data-chq="1"${lab.premium ? ' data-premium="1"' : ''}><div>
-  <p class="cx-feat-kick r3-feat-kick">${esc(lab.tag || '')}</p>
-  <h2 class="cname" id="cx-feat-h">${esc(lab.name)}</h2>
-  <p class="cdesc">${esc(lab.blurb)} Every structure tells you what it does and which lesson teaches it.</p>
-  <ul class="anp-hub-modes r3-modes" aria-label="Modes">${LAB_MODES.map(m => `<li><a class="anp-hub-mode${m.key === 'quiz' ? ' is-on' : ''}" href="tools/lab-practical.html#${m.key}" data-hash="${m.key}"><b><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${m.icon}</svg>${esc(m.label)}</b><span>${esc(m.blurb)}</span></a></li>`).join('')}</ul>
-  <p class="r3-feat-row"><a class="btn-gold" href="tools/lab-practical.html">Start the lab practical &rarr;</a> <span class="cx-feat-stats"><b>${figN}</b> figures &middot; <b>${labData.sets.length}</b> sets &middot; <span class="cx-tool-count"><b>${labData.n}</b> stations</span></span></p>
-  <p class="cx-tool-status" aria-live="polite"></p>
-</div><a class="fig tcfig" href="tools/lab-practical.html" tabindex="-1" aria-hidden="true"><img src="${coverSrc('anp', 'lab-practical', '../')}" alt="" width="640" height="320" decoding="async"></a></section>`;
+  void LAB_MODES; void figN; /* no featured tool (owner 2026-11-02); the lab practical is the first card */
   return toolsHubMain({
     key: 'anp', up: '../', status: true, mountClass: 'anp-app-mount',
     crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: esc(COURSE_NAME), href: 'index.html' }, { name: 'Tools' }],
     h1: 'Start at <span>the lab bench.</span>', hand: 'then work the physiology',
     lede: `${numWord(tools.length)} tools. Name structures on real figures and a 3D body, then work the physiology. Every tool explains its answers, and what you miss goes into your <a href="review.html">review queue</a>.`,
     cta: { href: 'tools/lab-practical.html', label: 'Start the lab practical' }, cta2: { href: 'search.html', label: 'Search everything' },
-    before: '<div class="anp-hub-filter" hidden></div>', featHtml,
-    groups: [{ big: true, h: `${numWord(others.length)} more ways <span>to practice</span>`, p: 'Anatomy in 3D, physiology, numbers and words.', label: 'More tools',
-      cards: others.map(t => {
+    before: '<div class="anp-hub-filter" hidden></div>',
+    groups: [{ big: true, h: `${numWord(tools.length)} ways <span>to practice</span>`, p: 'Real figures, anatomy in 3D, physiology, numbers and words.', label: 'Tools',
+      cards: [lab, ...others].map(t => {
         const c = hubToolCounts(t.slug);
         const [pl, sg] = HUB_ITEMS[t.slug];
         return { slug: t.slug, href: `tools/${t.slug}.html`, name: t.name, desc: t.tag || t.blurb, free: !t.premium,

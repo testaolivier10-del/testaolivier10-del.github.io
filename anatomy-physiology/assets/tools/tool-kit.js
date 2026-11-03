@@ -249,7 +249,7 @@
   function why(html, opts){
     opts = opts || {};
     if(!html) return '';
-    return '<details class="kt-why"' + (opts.open ? ' open' : '') + '><summary>' + esc(opts.label || 'Why?') + '</summary><div class="kt-why-b">' + html + '</div></details>';
+    return '<details class="kt-why"' + (opts.open ? ' open' : '') + '><summary>' + esc(opts.label || 'Explanation') + '</summary><div class="kt-why-b">' + html + '</div></details>';
   }
   function more(html, opts){
     opts = opts || {};

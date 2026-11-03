@@ -84,11 +84,11 @@ test('the course home has its own headline, crimson and the integral sign, not P
   const { root } = build('unit-6');
   const home = readFileSync(join(root, 'calculus/index.html'), 'utf8');
   assert.match(home, /<h1 class="mast" id="r3Title">AP®<span>Calculus AB<\/span><\/h1>/);
-  assert.match(home, /<p class="deck">AP® Calculus AB, <span>one idea at a time\.<\/span><\/p>/);
+  assert.doesNotMatch(home, /<p class="deck">/); // the second tagline is off course homes (owner 2026-11-02)
   assert.doesNotMatch(home, /Chemistry|Biology|Physics|force|pendulum|Point Particle/);
   assert.match(home, /assets\/calc\.css/);
   assert.match(home, /data-cover="apcalc"/);
-  assert.match(home, /assets\/covers\/apcalc\.svg/);
+  assert.match(home, /assets\/covers\/art\/apcalc\.svg/); // the band drawing; the notes card cover is off the home (owner 2026-11-02)
   const css = readFileSync('calculus/assets/calc.css', 'utf8');
   assert.match(css, /body\.calc\{--ctint:#FCE8EE;--cink:#8C1036;\}/);
   assert.match(readFileSync('assets/theme.css', 'utf8'), /body\[data-course="apcalc"\]\{--ctint:#FCE8EE;--cink:#8C1036;\}/);

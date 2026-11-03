@@ -69,15 +69,11 @@ export function r3HomeMain(key, ctx) {
   const band = `<section class="band" aria-labelledby="r3Title"><div class="hwrap"><div>
 <p class="issue">${d.pill}${beta} <i></i> ${d.note}</p>
 <h1 class="mast" id="r3Title">${d.t1}<span>${d.t2}</span></h1>
-<p class="deck">${d.h1a} <span>${d.h1b}</span></p>
 <p class="hand">${d.hand}</p>
-<p class="lede">${ctx.lede || d.lede}</p>
+<p class="lede">${String(ctx.lede || d.lede).split(/(?<=[.!?])\s+(?=[A-Z])/)[0]}</p>
 <div class="hero-ctas"><a class="btn-chan" id="heroPrimaryCta" href="${ctx.primaryHref}">${d.btn1}</a>${ctx.primaryScript || ''}<a class="btn-ghost" href="${L.btn2 || '#try'}">${d.btn2}</a></div>
 <a class="hero-continue" id="r3Resume" href="#" hidden><small>Pick up where you left off</small><b id="r3ResumeLabel"></b></a>
 <script>try{var r=(JSON.parse(localStorage.getItem('levl_resume')||'{}')||{})[${JSON.stringify(key)}];if(r&&typeof r.url==='string'&&/^\\/[^\\/]/.test(r.url)){var a=document.getElementById('r3Resume');a.href=r.url;document.getElementById('r3ResumeLabel').textContent=r.label||'Your last page';a.hidden=false;}}catch(e){}</script>
-<p class="hero-alt"><a href="${L.btn3}">${d.btn3} &rarr;</a></p>
-<ul class="hero-pills" aria-label="At a glance">${d.pills.map((p) => `<li>${p}</li>`).join('')}</ul>
-<p class="founder"><span class="av" aria-hidden="true">OT</span><span>${FOUNDER} <a href="${up}about.html">Why I built it</a></span></p>
 </div><div class="art" aria-hidden="true"><img src="${up}assets/covers/art/${key}.svg" alt="" width="640" height="400" decoding="async" fetchpriority="high"></div></div></section>`;
 
   /* ---- In this course: the map, as a contents list ---- */
@@ -132,7 +128,7 @@ export function r3HomeMain(key, ctx) {
   const topic = key === 'nremt' ? s.tags[0] : s.tags[s.tags.length - 1];
   const tq = `tq-${key}`;
   const tryq = `<form class="tryq" id="tryq" aria-labelledby="${tq}">
-      <div class="tryq__top"><span class="pill">${d.short} &middot; ${topic}</span><p class="hand">try one, it&rsquo;s free</p></div>
+      <div class="tryq__top"><span class="pill">${d.short} &middot; ${topic}</span></div>
       <p class="tryq__stem" id="${tq}">${s.q}</p>
       <fieldset><legend>Choose one answer</legend>${s.opts.map((o, i) => `<label${i === T.ok ? ' class="ok"' : ''}><input type="radio" name="${tq}">${o}</label>`).join('')}</fieldset>
       <p class="hand tryq__tip">pick one to see why</p>
@@ -141,7 +137,7 @@ export function r3HomeMain(key, ctx) {
     </form>
 <script>(function(){var f=document.getElementById('tryq');if(!f)return;f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e.target.closest('label').classList.add('picked');f.classList.add('done');[].forEach.call(f.querySelectorAll('input'),function(i){i.disabled=true;});});f.addEventListener('submit',function(e){e.preventDefault();});})();</script>`;
 
-  const lead = `<div class="lead"><section class="contents" aria-labelledby="toc-h"><h2 id="toc-h">In this <span>course</span></h2><p class="sub">${d.map_lede}${d.mapsub ? ` ${d.mapsub}` : ''}</p><ol class="toc">${toc}</ol></section><div id="try">${tryq}</div></div>`;
+  const lead = `<div class="lead"><section class="contents" aria-labelledby="toc-h"><h2 id="toc-h">In this <span>course</span></h2><p class="sub">${String(d.map_lede).split(/(?<=\.)\s/)[0]}</p><ol class="toc">${toc}</ol></section><div id="try">${tryq}</div></div>`;
 
   /* ---- fact strip ---- */
   const facts = `<div class="fact-row" aria-label="${d.strip_label}">${(ctx.strip || d.strip).map(([, b, st]) => `<span><span class="dot"></span><span><b>${b}</b> ${st}</span></span>`).join('')}</div>${d.strip_note ? `<p class="fact-note">${d.strip_label}. ${d.strip_note}</p>` : ''}`;
@@ -161,7 +157,7 @@ export function r3HomeMain(key, ctx) {
   const reviewHref = L.review || 'review.html';
   const goalHref = L.goal || 'practice.html';
   const reviewHead = H.kind === 'ochem' ? 'h3' : 'h2';
-  const progress = `<div class="r3-progress">
+  const progress = `<div class="r3-progress" hidden>
     <div class="hub-progress-card" id="${id('Level', 'heroProgress', 'heroProgress')}">
       <div class="hub-progress-top">
         <span class="hub-level-ring" id="${id('LvRing', 'heroLevelRing', 'heroLevelRing')}" aria-hidden="true">L1</span>
@@ -208,7 +204,7 @@ export function r3HomeMain(key, ctx) {
      the extra tool lines live on the Tools page. */
   const top = d.tools.slice(0, 3);
   const allN = d.tools.length;
-  const toolsBlock = `<p class="kicker">Tools <i></i></p><div class="dept">${top.map(toolRow).join('')}</div><p class="tools-more"><a class="go" href="${L.tools || 'tools.html'}">${allN > 3 ? `All ${allN} tools` : 'All tools'} &rarr;</a></p>${credit}`;
+  const toolsMore = `<a class="go" href="${L.tools || 'tools.html'}">${allN > 3 ? `All ${allN} tools` : 'All tools'} &rarr;</a>`;
 
   /* ---- only in this course ---- */
   const xs = d.extras.map((x, i) => {
@@ -287,7 +283,7 @@ export function r3HomeMain(key, ctx) {
   if (d.beta) qa.push(['Has this course been reviewed?', `${d.beta_note} <a href="${up}about.html#report">Report a problem</a>.`]);
   qa.push(['Is this course free?', d.trust[0] === 'note' ? d.trust[1] : `All notes are free forever. ${d.deal.free[0]}.`]);
   qa.push(['Is LevlPrep affiliated with the exam?', d.foot.join(' ')]);
-  qa.push(['Who makes LevlPrep?', `An independent project, not a company or a training program. Premium is an optional one-time pass, and <a href="${up}premium.html">what is free</a> is listed course by course. No ads.`]);
+  qa.push(['Who makes LevlPrep?', `${FOUNDER} <a href="${up}about.html">Why I built it</a>. An independent project, not a company or a training program. Premium is an optional one-time pass, and <a href="${up}premium.html">what is free</a> is listed course by course. No ads.`]);
   qa.push(['How are the questions written?', `Every question in every course is original, written for LevlPrep with an explanation on each one. Automated checks look for answer-position and length tells. <a href="${up}sources.html">Sources and checks</a>.`]);
   qa.push(['How do I see what changed?', `Corrected questions, new lessons and site fixes are listed, dated, on <a href="${up}changelog.html">What&rsquo;s new</a>.`]);
   const faq = `<section class="home-faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2><div class="hub-faq">${qa.map(([q, a]) => `<details class="faq-item"><summary>${q}</summary><div class="ans">${a}</div></details>`).join('')}</div></section>`;
@@ -303,12 +299,18 @@ export function r3HomeMain(key, ctx) {
      iframe. Nothing when the course has no video yet. scripts/add-video.mjs reruns the home builders. ---- */
   const vids = (ctx.videos || loadVideos().data.videos || []).filter((v) => v.course === key)
     .sort((a, b) => String(b.posted).localeCompare(String(a.posted))).slice(0, 3);
-  const watch = !vids.length ? '' : `<p class="kicker">Watch the lessons <i></i></p><div class="vstrip">${vids.map((v) => {
+  /* The newest video and the top three tools share one row, so neither leaves a half-empty row
+     (owner 2026-11-02: no empty space). Every video is still on its notes page and the channel. */
+  const vcards = vids.map((v) => {
     const page = (v.pages || []).find((p) => /\/notes\//.test(p)) || v.pages[0];
     const t = displayTitle(v);
     const srcset = THUMB_WIDTHS.map((w) => `${up}${THUMB_DIR}/${v.id}-${w}.webp ${w}w`).join(', ');
     return `<a class="vcard" href="${up}${page}"><span class="vthumb"><img src="${up}${THUMB_DIR}/${v.id}-480.webp" srcset="${srcset}" sizes="(max-width: 760px) 100vw, 340px" width="1280" height="720" alt="" loading="lazy" decoding="async"><span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" focusable="false"><path d="M8 5.5v13l10.5-6.5z"/></svg></span><span class="vlen">${clock(v.seconds)}</span></span><span class="vtitle">${attr(t).replace(/</g, "&lt;")}</span><span class="vmeta">Video lesson &middot; ${Math.max(1, Math.round(v.seconds / 60))} min</span></a>`;
-  }).join('')}</div><p class="tools-more"><a class="go" href="https://www.youtube.com/@LevlPrep">All videos on our YouTube channel &rarr;</a></p>`;
+  }).join('');
+  /* Owner 2026-11-03: videos and tools in their own rows again (up to three videos, then three tools), each
+     with a plain heading and its "all" link, no kicker rule. */
+  const media = (vids.length ? `<section class="media" aria-labelledby="media-v"><div class="media-h"><h2 id="media-v">Video <span>lessons</span></h2><p><a class="go" href="https://www.youtube.com/@LevlPrep">All videos &rarr;</a></p></div><div class="vstrip">${vcards}</div></section>` : '')
+    + `<section class="media" aria-labelledby="media-t"><div class="media-h"><h2 id="media-t">Tools</h2><p>${toolsMore}</p></div><div class="dept">${top.map(toolRow).join('')}</div>${credit}</section>`;
 
   return `<main id="main" class="r3 r3-home" data-cover="${key}">
 ${band}
@@ -316,8 +318,7 @@ ${band}
 ${lead}
 ${facts}
 ${progress}
-${story}
-${watch ? watch + '\n' : ''}${toolsBlock}
+${media}
 ${deal}
 ${faq}
 ${about}

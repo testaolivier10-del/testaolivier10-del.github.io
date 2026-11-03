@@ -261,7 +261,7 @@
     function paintPick(){
       var stepEl = app.querySelector('.phys-pr-pickstep'), h = '', html = '';
       if(state.mode === 'build'){ h = 'Choose the questions'; html = filtersHtml(); }
-      else if(state.mode === 'weak'){ var w = weakTopics(); h = 'Where you are weakest'; html = '<p class="phys-small">' + (w.length ? 'Lowest mastery right now: ' + w.map(function(x){ return esc(x.title) + ' (' + Core.pct(x.value) + ')'; }).join(', ') + '.' : '') + '</p>'; }
+      else if(state.mode === 'weak'){ var w = weakTopics(); h = 'Where you are weakest'; html = '<p class="phys-small">' + (w.length ? 'Lowest mastery right now: ' + w.map(function(x){ return esc(x.title) + ' (' + Core.pct(x.value) + ')'; }).join(', ') + '.' : '') + '</p>' + '<p class="phys-small">Missed questions wait in <a href="review.html">Review</a>.</p>'; }
       app.querySelector('.phys-pr-pick-h').textContent = h;
       app.querySelector('.phys-pr-pick').innerHTML = html;
       stepEl.hidden = !html;

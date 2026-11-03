@@ -97,11 +97,11 @@ test('the course home has its own headline, forest green and the unit-circle ico
   const { root } = build('unit-3');
   const home = readFileSync(join(root, 'precalculus/index.html'), 'utf8');
   assert.match(home, /<h1 class="mast" id="r3Title">AP®<span>Precalculus<\/span><\/h1>/);
-  assert.match(home, /<p class="deck">AP® Precalculus, <span>every function in motion\.<\/span><\/p>/);
+  assert.doesNotMatch(home, /<p class="deck">/); // the second tagline is off course homes (owner 2026-11-02)
   assert.doesNotMatch(home, /Calculus AB|derivative|integral|Limit Seeker|Chemistry|Psychology/);
   assert.match(home, /assets\/pcalc\.css/);
   assert.match(home, /data-cover="apprecalc"/);
-  assert.match(home, /assets\/covers\/apprecalc\.svg/);
+  assert.match(home, /assets\/covers\/art\/apprecalc\.svg/); // the band drawing; the notes card cover is off the home (owner 2026-11-02)
   assert.equal(IDENTITY.accent.ink, '#11592F');
   assert.equal(IDENTITY.firstRank, 'Function Explorer');
   const css = readFileSync('precalculus/assets/pcalc.css', 'utf8');

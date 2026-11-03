@@ -453,3 +453,8 @@ html.ls-page{scroll-padding-bottom:calc(var(--ls-act-h, 0px) + var(--ls-pbar-h, 
   .ls-why{height:44px;}
   .ls-scroll{margin-right:0;}
 }
+
+/* Owner 2026-11-03: one thing per sheet; the title says what it is. */
+.ls-sheet .ls-tabs{display:none}
+.ls-sheet .ls-sheet-t{margin:0;font:900 17px var(--font-ui);letter-spacing:-.01em;color:var(--ink)}
+.ls-sheet-head .ls-sheet-t{flex:1}

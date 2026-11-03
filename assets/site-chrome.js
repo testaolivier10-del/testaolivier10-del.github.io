@@ -576,6 +576,20 @@
     mountAnalytics();
     mountReminders();
     mountMotion();
+    mountSheetView();
+  }
+
+  /* AP® unit sheets open on click (owner 2026-11-03): assets/course/sheet-view.js and .css, on those pages only. */
+  function mountSheetView(){
+    if(window.__levlSheetView || !document.querySelector('main[class*="-sheet"] [class$="-sheet-grid"]')) return;
+    window.__levlSheetView = true;
+    var css = document.createElement('link');
+    css.rel = 'stylesheet'; css.href = '/assets/course/sheet-view.css';
+    document.head.appendChild(css);
+    var el = document.createElement('script');
+    el.src = '/assets/course/sheet-view.js';
+    el.defer = true;
+    document.head.appendChild(el);
   }
 
   /* The same row 1 for the pages outside any course: the hub, search, 404,

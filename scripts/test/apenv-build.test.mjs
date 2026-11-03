@@ -104,11 +104,11 @@ test('the course home has its own headline, olive and its own icon, not Statisti
   const { root } = build('unit-3');
   const home = readFileSync(join(root, `${D}/index.html`), 'utf8');
   assert.match(home, /<h1 class="mast" id="r3Title">AP® Environmental<span>Science<\/span><\/h1>/);
-  assert.match(home, /<p class="deck">AP® Environmental Science, <span>one system at a time\.<\/span><\/p>/);
+  assert.doesNotMatch(home, /<p class="deck">/); // the second tagline is off course homes (owner 2026-11-02)
   assert.doesNotMatch(home, /Statistics|Chemistry|Calculus|Physics|Data Collector|bell curve|score-calculator/);
   assert.match(home, /assets\/env\.css/);
   assert.match(home, /data-cover="apenv"/);
-  assert.match(home, /assets\/covers\/apenv\.svg/);
+  assert.match(home, /assets\/covers\/art\/apenv\.svg/); // the band drawing; the notes card cover is off the home (owner 2026-11-02)
   const css = readFileSync(`${D}/assets/env.css`, 'utf8');
   assert.match(css, /body\.env\{--ctint:#EFF0DA;--cink:#474A10;\}/);
   assert.match(readFileSync('assets/theme.css', 'utf8'), /body\[data-course="apenv"\]\{--ctint:#EFF0DA;--cink:#474A10;\}/);

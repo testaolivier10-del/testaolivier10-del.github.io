@@ -125,7 +125,6 @@
     <span class="sp-pill">Search</span>
     <h1>Find it in <span>every course.</span></h1>
     <p class="hand">notes, lessons, terms, tools and questions</p>
-    <p class="lede">NREMT-EMT, Organic Chemistry, Anatomy &amp; Physiology, AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics, AP® Environmental Science, AP® Psychology, AP® Precalculus and AP® Calculus BC: notes and textbook, lessons, glossary terms, tools and practice questions.</p>
     </div>
   </div>
 
@@ -144,7 +143,6 @@
       <noscript><p class="ss-none">Search runs in your browser and needs JavaScript. Each course&rsquo;s notes and glossary work without it: <a href="nremt/">NREMT</a>, <a href="ochem/">Organic Chemistry</a>, <a href="anatomy-physiology/">Anatomy &amp; Physiology</a>, <a href="bio/">AP&reg; Biology</a>, <a href="chem/">AP&reg; Chemistry</a>, <a href="physics/">AP&reg; Physics 1</a>, <a href="calculus/">AP&reg; Calculus AB</a>, <a href="statistics/">AP&reg; Statistics</a>, <a href="environmental-science/">AP&reg; Environmental Science</a>, <a href="psychology/">AP&reg; Psychology</a>, <a href="precalculus/">AP&reg; Precalculus</a> and <a href="calculus-bc/">AP&reg; Calculus BC</a>.</p></noscript>
     </div>
     <aside class="ss-side" aria-label="About search">
-      <div class="sp-box ss-pnl"><h2 class="sp-d">Private by design</h2><p>Search runs in your browser. Nothing you type is sent anywhere, and a course&rsquo;s material only downloads when a search needs it.</p></div>
       <div class="sp-box ss-pnl ss-keys-pnl"><h2 class="sp-d">Keys</h2>
         <dl class="ss-keys"><div><dt>Jump to search</dt><dd><kbd>/</kbd></dd></div><div><dt>Into the results</dt><dd><kbd>&darr;</kbd></dd></div><div><dt>Between results</dt><dd><kbd>&uarr;</kbd> <kbd>&darr;</kbd></dd></div><div><dt>Open one</dt><dd><kbd>Enter</kbd></dd></div><div><dt>Back to the box</dt><dd><kbd>Esc</kbd></dd></div></dl></div>
     </aside>
@@ -154,7 +152,6 @@
 <div class="xshell">
   <div class="xsection">
     <footer style="margin-top:0">
-      <p>Runs in your browser. Nothing you type is sent anywhere. A course&rsquo;s material is only downloaded when a search needs it.</p>
       <p class="tm-note">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
       <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
@@ -267,9 +264,7 @@ document.addEventListener('DOMContentLoaded', function(){
       lastCounts = {};
       renderChips();
       statusEl.textContent = '';
-      resultsEl.innerHTML = '<p class="ss-none">Try <span class="ss-tries">' + ['heart', 'SN2', 'epinephrine', 'pKa', 'OPQRST'].map(function(t){
-        return '<button type="button" class="ss-try" data-try="' + esc(t) + '">' + esc(t) + '</button>';
-      }).join('') + '</span></p>';
+      resultsEl.innerHTML = '';
       return;
     }
     var keys = A.scopeKeys(scope);
