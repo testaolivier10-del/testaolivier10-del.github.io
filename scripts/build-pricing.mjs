@@ -556,7 +556,7 @@ function homeTry() {
   const items = OPEN.map((c) => {
     const d = H[c.key];
     if (!d || !d.sample || !d.try || !Array.isArray(d.sample.opts)) return null;
-    return { k: c.key, pill: `${d.short || d.name} &middot; ${(d.sample.tags || [])[0] || 'Sample'}`, q: d.sample.q, o: d.sample.opts,
+    return { k: c.key, pill: `${d.short || d.name}`, q: d.sample.q, o: d.sample.opts,
       ok: d.try.ok, t: d.try.title, w: d.try.why, href: `${c.dir}/practice.html`, name: d.short || d.name };
   }).filter(Boolean);
   const json = JSON.stringify(items).replace(/</g, '\\u003c');
@@ -714,7 +714,7 @@ function hubPcalcCard() {
      five live): every open course, from the registry. */
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
   for (const [re, txt] of [
-    [/(<div class="eyebrow">Free to start &middot; )\w+( courses &middot; notes free forever<\/div>)/, `$1${word.toLowerCase()}$2`],
+    [/(<div class="eyebrow">)\w+( courses &middot; free to start<\/div>)/, `$1${word.toLowerCase()}$2`],
   ]) {
     if (!re.test(src)) throw new Error(`${rel}: the hero no longer matches ${re}`);
     src = src.replace(re, txt);
