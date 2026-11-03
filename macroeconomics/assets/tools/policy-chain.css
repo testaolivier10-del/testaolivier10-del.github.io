@@ -31,12 +31,6 @@
 .pc-gcap span{font-weight:600;font-size:12.5px;color:var(--muted);margin-left:6px;}
 .pc-g{position:relative;flex:1 1 auto;min-height:180px;}
 .pc-g .mac-graph-svg{position:absolute;inset:0;width:100%;height:100%;}
-.pc-mark{font:800 12px var(--font-ui);fill:var(--ink);}
-.pc-mark.is-old{fill:var(--muted);}
-.pc-mark.is-note{font-weight:700;font-size:11px;fill:var(--muted);}
-.pc-sub{font-size:9px;}
-.pc-arrow path{fill:none;stroke:var(--cink);stroke-width:2;stroke-linecap:round;}
-.pc-arrow .pc-head{fill:var(--cink);stroke:none;}
 
 /* the dock */
 .pc-ctl{display:flex;flex-direction:column;gap:10px;}
@@ -53,12 +47,12 @@
 /* write it out */
 .pc-sentence{font:600 15px/2.2 var(--font-ui);color:var(--ink);}
 .pc-blank{min-height:40px;max-width:100%;margin:2px 0;font:600 14px var(--font-ui);border-radius:10px;}
-.pc-blank.is-right{outline:2px solid var(--ok,#1B7F3A);}
+.pc-blank.is-right{outline:2px solid var(--good-text,#1F6E3E);}
 .pc-blank.is-wrong{outline:2px solid var(--bad,#B3261E);}
 .pc-text{width:100%;min-height:96px;margin-top:6px;font:500 15px/1.5 var(--font-ui);padding:10px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);box-sizing:border-box;}
 .pc-hints{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px;}
 .pc-hints li{font:600 13.5px/1.45 var(--font-ui);padding-left:22px;position:relative;color:var(--ink);}
-.pc-hints li.is-ok::before{content:"\2713";position:absolute;left:2px;color:var(--ok,#1B7F3A);font-weight:900;}
+.pc-hints li.is-ok::before{content:"\2713";position:absolute;left:2px;color:var(--good-text,#1F6E3E);font-weight:900;}
 .pc-hints li.is-no::before{content:"\2022";position:absolute;left:5px;color:var(--muted);font-weight:900;}
 
 /* phones: the graph on top, the chain under it */

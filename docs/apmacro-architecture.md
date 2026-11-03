@@ -166,8 +166,20 @@ movable curve and one per point, each a 44-px target: arrow keys move a curve on
 point half a step; pointer drag (mouse, pen, touch; `touch-action: none` on the stage) moves a curve along its
 shift axis in whole steps or a point in quarter steps; a tap places the point. Labels are `<select>`s under the
 graph. The starting curve stays drawn, faded and dashed, with subscript 1; the moved one gets subscript 2. After
-Check, `showKey()` draws the key's curves dashed in the success color. Colors are theme tokens (`--cink`,
-`--muted`, `--ok`, `--ink`), so light and dark follow the site theme. Styles: `macroeconomics/assets/mac.css`,
+Check, `showKey()` draws the key's curves dashed in the success color, labeled as the new curve (SRAS2). Colors
+are theme tokens (`--cink`, `--muted`, `--good-text`, `--ink`; `--good-text` replaced the undefined `--ok`), so
+light and dark follow the site theme.
+
+`svg(spec, state)` options added by the integrator (2026-11-03), all optional: `state.n0`/`state.n1` name the
+start and the current point (default 1 and 2: E1/E2 and the axis marks P1/P2; a long-run story passes `n1: '3'`
+for E3, PL3, Y3), `state.curveN` the moved curves' subscript (default 2), `state.marks0` the start's own axis-mark
+subscripts (`{ x: 'F' }` gives YF on AD-AS, `{ x: 'N' }` uN on the Phillips curves); a mark both points share
+(the same output at E1 and E3) is printed once. E1 and E2 are drawn with subscripts. Curve labels are placed in
+one pass: a label that would overlap another label or cross another curve's line moves a line down or up, the
+old curve of a shift smaller than a step is labeled away from the new one, and E2's label goes left if it would
+sit on a curve label. `ApMacroGraph.px`, `py` and `BOX` give the plot box in viewBox units, so a page draws on
+top of the SVG without copying its numbers; `plural()` keeps yen, yuan, won, rand and baht unchanged. The AD-AS,
+forex, reserves and policy-chain pages dropped their own arrows, axis marks, relabels and coordinates for these. Styles: `macroeconomics/assets/mac.css`,
 section "Graphs". `opts.onChange(response)`, `opts.readonly`; `lock()` after answering.
 
 Tests: `scripts/test/apmacro-graph.test.mjs` (model, checker, grader, SVG); `apmacro-questions.test.mjs` (the

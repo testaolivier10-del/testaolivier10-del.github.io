@@ -9,8 +9,7 @@
    self-adjustment), its version and its direction, then step through it
    with Next link. The stage holds the chain so far (each link a card, the
    newest one marked) beside the graph for the newest link that has one,
-   drawn by ApMacroGraph.svg (this file only adds the shift arrow and the
-   axis marks): the reserve market for an administered rate, the money
+   drawn by ApMacroGraph.svg (arrows and axis marks included): the reserve market for an administered rate, the money
    market for bonds, loanable funds for crowding out, the market for
    dollars for capital flows, AD-AS for output and prices. The old curve
    stays faded and dashed with subscript 1.
@@ -28,13 +27,8 @@
   var app0 = document.getElementById('app');
   if(!T || !M || !M.policyChain || M.policyChain.stub || !G) return;
   var PC = M.policyChain, esc = T.esc;
-  var GL = 50, GT = 14, PW = 250, PH = 226;
-  function px(x){ return GL + x / 10 * PW; }
-  function py(v){ return GT + (10 - v) / 10 * PH; }
-  function f1(v){ return (Math.round(v * 10) / 10).toFixed(1); }
   function cap(t){ return t.charAt(0).toUpperCase() + t.slice(1); }
   var TITLE = { reserves: 'Reserve market', money: 'Money market', adas: 'AD-AS', lf: 'Loanable funds market', forex: 'Foreign exchange market for dollars' };
-  var MARK = { reserves: 'PR', money: 'i', adas: 'PL', lf: 'r', forex: 'XR' };
 
   T.mount('policy-chain', function(app, data){
     var ex = null;
@@ -45,52 +39,16 @@
   });
 
   /* ------------------------------------------------ drawing */
-  function arrow(x1, y1, x2, y2){
-    var a = [px(x1), py(y1)], b = [px(x2), py(y2)], dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy);
-    if(L < 6) return '';
-    var ux = dx / L, uy = dy / L, h = 7, w = 4.5, bx = b[0] - ux * h, by = b[1] - uy * h;
-    return '<g class="pc-arrow"><path d="M' + f1(a[0]) + ' ' + f1(a[1]) + 'L' + f1(bx) + ' ' + f1(by) + '"/><path class="pc-head" d="M' + f1(b[0]) + ' ' + f1(b[1]) + 'L' + f1(bx - uy * w) + ' ' + f1(by + ux * w) + 'L' + f1(bx + uy * w) + ' ' + f1(by - ux * w) + 'Z"/></g>';
-  }
-  function mark(t, x, y, cls, anchor){ return '<text class="pc-mark ' + (cls || '') + '" x="' + f1(x) + '" y="' + f1(y) + '" text-anchor="' + (anchor || 'start') + '">' + t + '</text>'; }
-  function sub(main, n){ return esc(main) + (n ? '<tspan class="pc-sub" dy="3">' + n + '</tspan>' : ''); }
-  function r1(v){ return String(Math.round(v * 10) / 10); }
-  function labelAt(c){
-    if(c.shape === 'vertical') return [px(c.at) + 4, py(10) + 10];
-    if(c.shape === 'up'){ var x1 = Math.min(10, c.at + 5); return [px(x1) - 4, py(G.y(c, x1)) - 4]; }
-    if(c.shape === 'down'){ var x2 = Math.min(10, c.at + 5); return [px(x2) - 2, py(G.y(c, x2)) + 2]; }
-    return null;
-  }
-  /* A link's graph: ApMacroGraph.svg with the shift, E2, the arrow and the marks. */
+  /* A link's graph: ApMacroGraph.svg with the shift and E2; the renderer draws
+     the arrow, the old curve's label clear of the new one and the axis marks
+     (YF at the start on AD-AS). */
   function graphSvg(g){
     var spec = { kind: g.kind }; if(g.start) spec.start = g.start; if(g.names) spec.names = g.names;
     var shifts = g.shifts || {}, moved = Object.keys(shifts).some(function(c){ return shifts[c]; });
-    var e0 = G.eq(spec, {}), e1 = moved ? G.eq(spec, shifts) : null;
+    var e1 = moved ? G.eq(spec, shifts) : null;
     var label = TITLE[g.kind] + ' graph: ' + G.describe(spec, { shifts: shifts });
-    var html = G.svg(spec, { shifts: shifts, eq: e1 }, { label: label }).replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg is-' + g.kind + '"'), extra = [];
-    var base = G.curves(spec, {}), now = G.curves(spec, shifts);
-    now.forEach(function(c, i){
-      var b = base[i]; if(Math.abs(c.at - b.at) < 0.15) return;
-      if(c.shape === 'vertical') extra.push(arrow(b.at, 8.3, c.at, 8.3));
-      else if(c.shape === 'rdemand') extra.push(arrow(6.4, b.at, 6.4, c.at));
-      else if(c.shape === 'down') extra.push(arrow(b.at - 3, 8, c.at - 3, 8));
-      else if(c.shape === 'up') extra.push(arrow(b.at + 3.6, 8.6, c.at + 3.6, 8.6));
-      var at = labelAt(b), to = labelAt(c);
-      if(at && to && Math.abs(at[1] - to[1]) <= 12 && Math.abs(at[0] - to[0]) <= 30){
-        var from = 'class="mac-gr-clabel is-old" x="' + r1(at[0]) + '" y="' + r1(at[1]) + '"';
-        html = html.replace(from, 'class="mac-gr-clabel is-old" x="' + r1(at[0]) + '" y="' + r1(at[1] + (c.shape === 'vertical' ? 16 : -13)) + '"');
-      }
-    });
-    if(e0){
-      var hi = e1 && Math.abs(e1[1] - e0[1]) > 0.2, right = e1 && Math.abs(e1[0] - e0[0]) > 0.2, nm = MARK[g.kind];
-      extra.push(mark(sub(nm, e1 ? '1' : ''), px(0) + 4, py(e0[1]) + (hi && e1[1] > e0[1] ? 14 : -4), 'is-y' + (e1 ? ' is-old' : '')));
-      if(e1 && hi) extra.push(mark(sub(nm, '2'), px(0) + 4, py(e1[1]) + (e1[1] > e0[1] ? -4 : 14), 'is-y'));
-      if(g.kind === 'adas'){
-        extra.push(mark(sub('Y', e1 ? '1' : ''), px(e0[0]) + (right && e1[0] < e0[0] ? 4 : -4), py(0) - 5, 'is-x' + (e1 ? ' is-old' : ''), right && e1[0] < e0[0] ? 'start' : 'end'));
-        if(e1 && right) extra.push(mark(sub('Y', '2'), px(e1[0]) + (e1[0] < e0[0] ? -4 : 4), py(0) - 5, 'is-x', e1[0] < e0[0] ? 'end' : 'start'));
-        extra.push(mark('Y<tspan class="pc-sub" dy="3">F</tspan>', px(5) + 4, py(10) + 24, 'is-note'));
-      }
-    }
-    return html.replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg" preserveAspectRatio="xMidYMin meet"').replace('</svg>', extra.join('') + '</svg>');
+    var html = G.svg(spec, { shifts: shifts, eq: e1, marks0: g.kind === 'adas' && !(g.start && g.start.AD) ? { x: 'F' } : null }, { label: label }).replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg is-' + g.kind + '"');
+    return html.replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg" preserveAspectRatio="xMidYMin meet"');
   }
   /* The graph that goes with link i: the newest link up to i that has one. */
   function graphAt(ch, i){ for(var k = Math.min(i, ch.links.length - 1); k >= 0; k--) if(ch.links[k].graph) return { g: ch.links[k].graph, k: k }; return null; }

@@ -71,3 +71,5 @@
 .adl-qfig{margin:0;}
 .adl-qfig .mac-gr-stage{max-width:520px;}
 @media (prefers-reduced-motion: reduce){.adl-tab,.adl-h{transition:none;}}
+/* A phone: room under the axis title for the stage's Enlarge button (it sat on "Real GDP"). */
+.ls-root.ls-phone .mac-ls-stage>.adl-fig{padding-bottom:40px;box-sizing:border-box;}

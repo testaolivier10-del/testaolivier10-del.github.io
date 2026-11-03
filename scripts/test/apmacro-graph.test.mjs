@@ -115,8 +115,24 @@ test('SVG: a named picture of its own state, labels hidden until chosen, the old
   assert.match(s1, /short-run aggregate supply shifted left/);
   assert.match(s1, /At the new crossing the price level is higher and the output is lower/);
   assert.match(s1, /class="mac-gr-curve is-old"/, 'the starting curve stays, faded');
-  assert.match(s1, />E2</);
-  assert.match(M.svg(cost, { key: true }), /class="mac-gr-curve is-key"/);
+  const sub = n => `<tspan class="mac-gr-sub" dy="3">${n}</tspan>`;
+  assert.ok(s1.includes(`>E${sub(2)}</text>`) && s1.includes(`>E${sub(1)}</text>`), 'E1 and E2 with subscripts');
+  assert.ok(s1.includes(`>PL${sub(2)}</text>`) && s1.includes(`>Y${sub(1)}</text>`), 'value marks at both points');
+  const key = M.svg(cost, { key: true });
+  assert.match(key, /class="mac-gr-curve is-key"/);
+  assert.ok(key.includes(`>SRAS${sub(2)}</text>`) && !/key<\/tspan>/.test(key), 'the key curve is SRAS2, not "SRASkey"');
+  // A long-run story: E3, PL3 and Y3; the start's output mark is YF and, shared with E3, printed once.
+  const lr = { kind: 'adas', do: [] }, s3 = M.svg(lr, { shifts: { AD: 1, SRAS: -1 }, eq: M.eq(lr, { AD: 1, SRAS: -1 }), n1: 3, marks0: { x: 'F' } });
+  assert.ok(s3.includes(`>E${sub(3)}</text>`) && s3.includes(`>PL${sub(3)}</text>`));
+  assert.equal(s3.split(`>Y${sub('F')}</text>`).length - 1, 1, 'YF once, for both points');
+  assert.ok(!s3.includes(`>Y${sub(3)}</text>`), 'no Y3 on top of YF');
+  // A shift smaller than a step (an animation frame): the old and new labels sit apart.
+  const pos = svg => [...svg.matchAll(/<text class="mac-gr-clabel[^"]*" x="([\d.]+)" y="([\d.]+)"[^>]*>SRAS/g)].map(m => [+m[1], +m[2]]);
+  const [a, b] = pos(M.svg({ kind: 'adas', do: [] }, { shifts: { SRAS: -0.3 } }));
+  assert.ok(Math.hypot(a[0] - b[0], a[1] - b[1]) > 30, `SRAS1 and SRAS2 apart (${JSON.stringify([a, b])})`);
+  assert.equal(M.plural('yen'), 'yen'); assert.equal(M.plural('arl'), 'arls');
+  assert.equal(M.labelText('fxPrice', { currency: 'dollar', other: 'yen' }), 'Price of the dollar (yen per dollar)');
+  assert.equal(typeof M.px, 'function'); assert.equal(M.px(0), M.BOX.L); assert.equal(M.py(0), M.BOX.T + M.BOX.PH);
   const lab = M.svg({ kind: 'adas', do: ['label'], key: {} }, {});
   assert.equal((lab.match(/>\?</g) || []).length, 5, 'two axes and three curves ask to be labeled');
   for (const k of Object.keys(M.KINDS)) assert.doesNotThrow(() => M.svg({ kind: k, do: [], names: { x: 'A', y: 'B', currency: 'euro', other: 'dollar' } }, {}), k);

@@ -27,14 +27,7 @@
 /* The curve the tool moves in the course accent (ApMacroGraph's default);
    the rate marks and the new equilibrium's guides in the rate colour. */
 .rl-fig .rl-mark,.rl-qfig .rl-mark{font:800 12px var(--font-ui);fill:var(--ink);}
-.rl-mark.is-old{fill:var(--muted);}
-.rl-mark.is-y:not(.is-old){fill:var(--rl-rate);}
-.rl-panel[data-g="adas"] .rl-mark.is-y:not(.is-old),.rl-qpanel .rl-mark.is-x:not(.is-old){fill:var(--rl-ad);}
-.rl-panel[data-g="adas"] .rl-mark.is-x:not(.is-old){fill:var(--rl-ad);}
 .rl-mark.is-note{font-weight:700;font-size:11px;fill:var(--muted);}
-.rl-sub{font-size:9px;}
-.rl-arrow path{fill:none;stroke:var(--cink);stroke-width:2;stroke-linecap:round;}
-.rl-arrow .rl-head{fill:var(--cink);stroke:none;}
 .rl-panel[data-g="reserves"] .mac-gr-guide:not(.is-old),.rl-panel[data-g="money"] .mac-gr-guide:not(.is-old){stroke:var(--rl-rate);}
 .rl-panel[data-g="adas"] .mac-gr-guide:not(.is-old){stroke:var(--rl-ad);}
 .rl-panel[data-g="adas"] [data-curve="AD"] .mac-gr-curve:not(.is-old){stroke:var(--rl-ad);}

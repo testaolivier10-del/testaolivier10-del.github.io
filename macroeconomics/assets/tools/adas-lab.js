@@ -26,10 +26,8 @@
   if(A.stub){ app.innerHTML = '<p class="mac-soon">This trainer is being built. Meanwhile, read the <a href="../learn.html">free notes</a>.</p>'; return; }
   var esc = T.esc;
 
-  /* The graph's plot box in viewBox units (mac-graph.js draws 320 x 300 with
-     the plot at x 50-300, y 14-240, data 0-10 on both axes). */
-  function px(x){ return 50 + x * 25; }
-  function py(v){ return 14 + (10 - v) * 22.6; }
+  /* The graph's plot box in viewBox units, from the shared renderer. */
+  var px = G.px, py = G.py;
   function f1(v){ return Math.round(v * 10) / 10; }
   function reduced(){ return T.reduced ? T.reduced() : false; }
   function ease(t){ return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
@@ -109,29 +107,19 @@
 
     /* -------- the two pictures */
     function eqNow(){ return A.state(st.a, st.s); }
-    /* The shared renderer draws the curves, the shift arrows, E1 and E2 with
-       their axis marks (Y1, PL1 ...). This adds what the exam story needs:
-       YF for the starting output, E3 for the long run (with the short-run E2
-       and curve kept faded), the gap, and on the Phillips graph A, B, C and uN. */
-    function relabel(svg, n){
-      // the current point and its axis marks read E3, Y3, PL3 in the long run
-      return svg.replace('>E2</text></g>', '>E' + '<tspan class="mac-gr-sub" dy="3">' + n + '</tspan></text></g>')
-        .replace(/(<text class="mac-gr-mark "[^>]*>[^<]*<tspan class="mac-gr-sub" dy="3">)2(<\/tspan>)/g, '$1' + n + '$2');
-    }
+    /* The shared renderer draws the curves, the shift arrows, E1 and E2 (E3
+       in the long run, n1) with their axis marks, YF and uN at the start
+       (marks0). This adds what the exam story needs: the short-run E2 and
+       curve kept faded in the long run, the gap, and on the Phillips graph
+       A and the short-run B. */
     function adasSvg(){
       var S = eqNow(), spec = { kind: 'adas' }, shifts = {};
       if(Math.abs(st.a) > 1e-6) shifts.AD = st.a;
       if(Math.abs(st.s) > 1e-6) shifts.SRAS = st.s;
       var moved = Object.keys(shifts).length > 0, lr = st.phase === 'long' && st.sr;
       var label = 'Aggregate demand and aggregate supply graph: ' + G.describe(spec, { shifts: shifts }) + ' ' + gapSentence(S);
-      var svg = tag(G.svg(spec, { shifts: shifts, focus: st.focus, eq: (moved || lr) && S.eq ? S.eq : null }, { label: label })), x = [];
-      // E1 sits on LRAS: its output mark is full-employment output, YF.
-      svg = svg.replace(/(<text class="mac-gr-mark is-old"[^>]*>)Y(<tspan class="mac-gr-sub" dy="3">1<\/tspan>)?<\/text>/, '$1Y<tspan class="mac-gr-sub" dy="3">F</tspan></text>');
-      // Back on LRAS the renderer leaves the shared output mark out: put YF back.
-      if(svg.indexOf('>Y<tspan class="mac-gr-sub" dy="3">F</tspan>') < 0) x.push('<text class="mac-gr-mark is-old" x="' + f1(px(5)) + '" y="253" text-anchor="middle">Y<tspan class="mac-gr-sub" dy="3">F</tspan></text>');
-      if(lr) svg = relabel(svg, 3);
-      else svg = svg.replace('>E2</text></g>', '>E<tspan class="mac-gr-sub" dy="3">2</tspan></text></g>');
-      svg = svg.replace(/>E1<\/text>/, '>E<tspan class="mac-gr-sub" dy="3">1</tspan></text>');
+      // E1 sits on LRAS: its output mark is full-employment output, YF; the long-run point is E3.
+      var svg = tag(G.svg(spec, { shifts: shifts, focus: st.focus, eq: (moved || lr) && S.eq ? S.eq : null, n1: lr ? '3' : '2', marks0: { x: 'F' } }, { label: label })), x = [];
       if(st.labels && S.gap !== 'none' && Math.abs(S.gapSize) > 0.08){
         var gy = py(0.75);
         x.push('<path class="adl-gap" d="M' + f1(px(S.eq[0])) + ' ' + f1(gy) + 'H' + f1(px(5)) + '"/><path class="adl-gapend" d="M' + f1(px(S.eq[0])) + ' ' + f1(gy - 5) + 'v10M' + f1(px(5)) + ' ' + f1(gy - 5) + 'v10"/>');
@@ -147,9 +135,8 @@
       var moved = Math.abs(st.a) > 1e-6 || Math.abs(st.s) > 1e-6, lr = st.phase === 'long' && st.sr;
       var spec = { kind: 'phillips', pointLabel: lr ? 'C' : 'B' };
       var label = 'Phillips curves: ' + G.describe(spec, { shifts: shifts }) + ' ' + pcSentence(S);
-      var svg = tag(G.svg(spec, { shifts: shifts, point: moved || lr ? S.point : null }, { label: label })), x = [];
       // A sits on LRPC: its unemployment mark is the natural rate, uN.
-      svg = svg.replace(/(<text class="mac-gr-mark is-old"[^>]*>)u(<tspan class="mac-gr-sub" dy="3">1<\/tspan>)?<\/text>/, '$1u<tspan class="mac-gr-sub" dy="3">N</tspan></text>');
+      var svg = tag(G.svg(spec, { shifts: shifts, point: moved || lr ? S.point : null, marks0: { x: 'N' } }, { label: label })), x = [];
       if(lr && Math.abs(st.srSras - st.s) > 0.2 && Math.abs(st.srSras) > 0.2) x.push(ghost('down', 5 - st.srSras, 'SRPC', '2'));
       if(st.labels) x.push('<text class="mac-gr-plabel is-old adl-plabel" x="' + f1(px(5) - 7) + '" y="' + f1(py(5) + 17) + '" text-anchor="end">A</text>');
       if((moved || lr) && S.point){

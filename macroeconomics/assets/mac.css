@@ -481,13 +481,13 @@ table.mac-data td{font-variant-numeric:tabular-nums;}
 .mac-gr-alabel{fill:var(--ink);font-weight:800;}
 .mac-gr-curve{fill:none;stroke:var(--cink);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;}
 .mac-gr-curve.is-old{stroke:var(--muted,#777);stroke-width:2;stroke-dasharray:2 5;}
-.mac-gr-curve.is-key{stroke:var(--ok,#1B7F3A);stroke-width:2.2;stroke-dasharray:8 5;}
+.mac-gr-curve.is-key{stroke:var(--good-text,#1F6E3E);stroke-width:2.2;stroke-dasharray:8 5;}
 .mac-gr-curve.is-focus{stroke-width:4.2;}
 .mac-gr-grab{fill:none;stroke:transparent;stroke-width:24;cursor:grab;}
 .mac-gr-c:active .mac-gr-grab{cursor:grabbing;}
 .mac-gr-clabel{fill:var(--cink);font-weight:800;font-size:13px;}
 .mac-gr-clabel.is-old{fill:var(--muted,#777);}
-.mac-gr-clabel.is-key{fill:var(--ok,#1B7F3A);}
+.mac-gr-clabel.is-key{fill:var(--good-text,#1F6E3E);}
 .mac-gr-sub{font-size:9px;}
 .mac-gr-guide{fill:none;stroke:var(--cink);stroke-width:1.1;stroke-dasharray:3 4;}
 .mac-gr-guide.is-old{stroke:var(--muted,#777);}

@@ -59,3 +59,6 @@
 .fxl-qfig .mac-gr-stage{max-width:520px;}
 .fxl-fig.is-narrow .fxl-strip{justify-content:flex-start;padding-right:52px;}
 .fxl-fig.is-narrow .fxl-chip{font-size:12px;padding:4px 10px;}
+/* A phone: each chip on one line (the units are on the graph's axis), clear of the Enlarge button. */
+.fxl-fig.is-narrow .fxl-chip{white-space:nowrap;}
+@media (max-width: 420px){ .fxl-fig.is-narrow .fxl-unit{display:none;} }

@@ -6,8 +6,8 @@
    then Test yourself) on the Tool Studio.
 
    Explore: three linked graphs, every one drawn by ApMacroGraph.svg (no
-   second renderer; this file only adds shift arrows and the PR / i / PL / Y
-   axis marks on top of its SVG): the reserve market (the policy rate), the
+   second renderer; the renderer draws the shift arrows and axis marks, this
+   file adds only the IORB rate note): the reserve market (the policy rate), the
    money market (the nominal interest rate) and AD-AS (real output and the
    price level). The dock holds the framework switch (ample | limited), the
    five Fed tools and the tool's two actions. A shift glides from the old
@@ -31,11 +31,9 @@
   var T = window.ApMacroTools, M = window.ApMacroMath, G = window.ApMacroGraph;
   if(!T || !M || !M.reservesLab || M.reservesLab.stub || !G) return;
   var RL = M.reservesLab, esc = T.esc;
-  var GW = 320, GH = 300, GL = 50, GT = 14, PW = 250, PH = 226;
-  function px(x){ return GL + x / 10 * PW; }
-  function py(v){ return GT + (10 - v) / 10 * PH; }
+  // The plot box of ApMacroGraph's viewBox, from the shared renderer.
+  var px = G.px, py = G.py;
   function f1(v){ return (Math.round(v * 10) / 10).toFixed(1); }
-  var ARROW = 'rl-arrow';
 
   T.mount('reserves-lab', function(app, data){
     var ex = null;
@@ -46,66 +44,21 @@
   });
 
   /* ------------------------------------------------ drawing helpers */
-  /* An arrow from (x1, y1) to (x2, y2) in graph units, drawn over the SVG. */
-  function arrow(x1, y1, x2, y2, cls){
-    var a = [px(x1), py(y1)], b = [px(x2), py(y2)], dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy);
-    if(L < 6) return '';
-    var ux = dx / L, uy = dy / L, h = 7, w = 4.5, bx = b[0] - ux * h, by = b[1] - uy * h;
-    return '<g class="' + ARROW + (cls ? ' ' + cls : '') + '"><path d="M' + f1(a[0]) + ' ' + f1(a[1]) + 'L' + f1(bx) + ' ' + f1(by) + '"/>' +
-      '<path class="rl-head" d="M' + f1(b[0]) + ' ' + f1(b[1]) + 'L' + f1(bx - uy * w) + ' ' + f1(by + ux * w) + 'L' + f1(bx + uy * w) + ' ' + f1(by - ux * w) + 'Z"/></g>';
-  }
   function mark(t, x, y, cls, anchor){ return '<text class="rl-mark ' + (cls || '') + '" x="' + f1(x) + '" y="' + f1(y) + '" text-anchor="' + (anchor || 'start') + '">' + t + '</text>'; }
-  function sub(main, n){ return esc(main) + '<tspan class="rl-sub" dy="3">' + n + '</tspan>'; }
   /* A graph from ApMacroGraph.svg with its shifts (fractional while it
-     glides), the new equilibrium, the arrow and the axis marks. */
+     glides) and the new equilibrium: the renderer draws the shift arrow, the
+     old curve's label clear of the new one and the axis marks (YF at the
+     start on AD-AS); this adds only the IORB rate note on the reserve market. */
   function graphSvg(kind, spec, shifts, t, label){
     var moved = Object.keys(shifts).some(function(c){ return Math.abs(shifts[c]) > 1e-6; });
-    var e0 = G.eq(spec, {}), e1 = moved ? G.eq(spec, shifts) : null;
-    var html = G.svg(spec, { shifts: shifts, eq: e1 }, { label: label }).replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg is-' + kind + '"');
-    var extra = [];
-    var base = G.curves(spec, {}), now = G.curves(spec, shifts);
-    now.forEach(function(c, i){
-      var b = base[i]; if(Math.abs(c.at - b.at) < 0.15) return;
-      if(c.shape === 'vertical') extra.push(arrow(b.at, 8.3, c.at, 8.3));
-      else if(c.shape === 'rdemand') extra.push(arrow(6.4, b.at, 6.4, c.at));
-      else if(c.shape === 'down') extra.push(arrow(b.at - 3, 8, c.at - 3, 8));
-      else if(c.shape === 'up') extra.push(arrow(b.at + 3, 8, c.at + 3, 8));
-    });
-    html = nudgeOld(html, base, now);
-    var names = { reserves: ['PR', 'Q'], money: ['i', 'M'], adas: ['PL', 'Y'] }[kind];
-    if(e0){
-      var hi = e1 && Math.abs(e1[1] - e0[1]) > 0.2, right = e1 && Math.abs(e1[0] - e0[0]) > 0.2;
-      extra.push(mark(sub(names[0], e1 ? '1' : ''), px(0) + 4, py(e0[1]) + (hi && e1[1] > e0[1] ? 14 : -4), 'is-y' + (e1 ? ' is-old' : '')));
-      if(kind === 'adas') extra.push(mark(sub(names[1], e1 ? '1' : ''), px(e0[0]) + (right && e1[0] < e0[0] ? 4 : -4), py(0) - 5, 'is-x' + (e1 ? ' is-old' : ''), right && e1[0] < e0[0] ? 'start' : 'end'));
-      if(e1 && hi) extra.push(mark(sub(names[0], '2'), px(0) + 4, py(e1[1]) + (e1[1] > e0[1] ? -4 : 14), 'is-y'));
-      if(e1 && right && kind === 'adas') extra.push(mark(sub(names[1], '2'), px(e1[0]) + (e1[0] < e0[0] ? -4 : 4), py(0) - 5, 'is-x', e1[0] < e0[0] ? 'end' : 'start'));
-    }
+    var e1 = moved ? G.eq(spec, shifts) : null;
+    var html = G.svg(spec, { shifts: shifts, eq: e1, marks0: kind === 'adas' ? { x: 'F' } : null }, { label: label }).replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg is-' + kind + '"');
+    var extra = [], now = G.curves(spec, shifts);
     if(kind === 'reserves' && t && t.ample){
       var rd = G.find(now, 'RD');
-      extra.push(mark('IORB rate', px(4.05), py(rd.at) + 15, 'is-note'));
+      extra.push(mark('IORB rate', px(4.05), py(rd.at) - 6, 'is-note'));   // above the flat part, clear of the shift arrow
     }
     return html.replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg" preserveAspectRatio="xMidYMin meet"').replace('</svg>', extra.join('') + '</svg>');
-  }
-  /* Where ApMacroGraph puts a curve's label (mac-graph.js labelAt), so the
-     old curve's label can be moved off the new one when the two sit a step
-     apart (both vertical labels at the top, both demand labels at the foot). */
-  function r1(v){ return String(Math.round(v * 10) / 10); }
-  function labelAt(c){
-    if(c.shape === 'vertical') return [px(c.at) + 4, py(10) + 10];
-    if(c.shape === 'up'){ var x1 = Math.min(10, c.at + 5); return [px(x1) - 4, py(G.y(c, x1)) - 4]; }
-    if(c.shape === 'down'){ var x2 = Math.min(10, c.at + 5); return [px(x2) - 2, py(G.y(c, x2)) + 2]; }
-    return null;
-  }
-  function nudgeOld(html, base, now){
-    now.forEach(function(c, i){
-      var b = base[i]; if(Math.abs(c.at - b.at) < 0.15) return;
-      var at = labelAt(b), to = labelAt(c); if(!at || !to) return;
-      if(Math.abs(at[1] - to[1]) > 12 || Math.abs(at[0] - to[0]) > 30) return;
-      var from = 'class="mac-gr-clabel is-old" x="' + r1(at[0]) + '" y="' + r1(at[1]) + '"';
-      var dy = c.shape === 'vertical' ? 16 : -13;
-      html = html.replace(from, 'class="mac-gr-clabel is-old" x="' + r1(at[0]) + '" y="' + r1(at[1] + dy) + '"');
-    });
-    return html;
   }
   var TITLE = { reserves: 'Reserve market', money: 'Money market', adas: 'AD-AS' };
   var SUBT = { reserves: 'sets the policy rate', money: 'the nominal interest rate', adas: 'real output and the price level' };

@@ -25,9 +25,8 @@
   if(F.stub){ app.innerHTML = '<p class="mac-soon">This trainer is being built. Meanwhile, read the <a href="../learn.html">free notes</a>.</p>'; return; }
   var esc = T.esc, pl = F.plural, cap = F.cap;
 
-  // The plot box of ApMacroGraph's 320 x 300 viewBox (data 0-10 on both axes).
-  function px(x){ return 50 + x * 25; }
-  function py(v){ return 14 + (10 - v) * 22.6; }
+  // The plot box of ApMacroGraph's 320 x 300 viewBox, from the shared renderer.
+  var px = G.px, py = G.py;
   function f1(v){ return Math.round(v * 10) / 10; }
   function reduced(){ return T.reduced ? T.reduced() : false; }
   function ease(t){ return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
@@ -133,8 +132,8 @@
       var n = names(), v = valueWord(a.e);
       if(v === 'same'){ strip.innerHTML = '<span class="fxl-chip">' + cap(n.X) + ' and ' + n.Y + ' at their starting values</span>'; return; }
       var up = v === 'up';
-      strip.innerHTML = '<span class="fxl-chip ' + (up ? 'is-up' : 'is-down') + '"><b>' + cap(n.X) + ' ' + (up ? 'appreciates ↑' : 'depreciates ↓') + '</b>' + (st.nums ? ' ' + fmtRate(a.r0) + ' → ' + fmtRate(a.r1) + ' ' + pl(n.Y) + ' per ' + n.X : '') + '</span>' +
-        '<span class="fxl-chip ' + (up ? 'is-down' : 'is-up') + '"><b>' + cap(n.Y) + ' ' + (up ? 'depreciates ↓' : 'appreciates ↑') + '</b>' + (st.nums ? ' ' + fmtRate(b.r0) + ' → ' + fmtRate(b.r1) + ' ' + pl(n.X) + ' per ' + n.Y : '') + '</span>';
+      strip.innerHTML = '<span class="fxl-chip ' + (up ? 'is-up' : 'is-down') + '"><b>' + cap(n.X) + ' ' + (up ? 'appreciates ↑' : 'depreciates ↓') + '</b>' + (st.nums ? ' ' + fmtRate(a.r0) + ' → ' + fmtRate(a.r1) + '<span class="fxl-unit"> ' + pl(n.Y) + ' per ' + n.X + '</span>' : '') + '</span>' +
+        '<span class="fxl-chip ' + (up ? 'is-down' : 'is-up') + '"><b>' + cap(n.Y) + ' ' + (up ? 'depreciates ↓' : 'appreciates ↑') + '</b>' + (st.nums ? ' ' + fmtRate(b.r0) + ' → ' + fmtRate(b.r1) + '<span class="fxl-unit"> ' + pl(n.X) + ' per ' + n.Y + '</span>' : '') + '</span>';
     }
     function words(a, b){
       var n = names(), sh = st.shock && F.shock(st.shock), v = valueWord(a.e), head, body = [], up = v === 'up';
