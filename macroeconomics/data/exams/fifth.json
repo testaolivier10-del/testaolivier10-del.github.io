@@ -1,0 +1,401 @@
+{
+ "about": "The fifth answer choice for each bank question a practice exam uses (docs/apmacro-architecture.md, \"Practice exams\"). The exam has five choices, (A) to (E) (needs-author mcq-options); the practice bank keeps four. The generator serves each question in a form with its four options, then this one, and its explanation (why). Keys and explanations of the four stay in the bank.",
+ "options": {
+  "mac-scarcity-10": {
+   "option": "Economic growth, because she finds more uses for her time",
+   "why": "Growth would mean more time or resources; she still has three hours, so choosing among her wants is scarcity."
+  },
+  "mac-opportunity-cost-ppc-17": {
+   "option": "It shifts out for consumer goods and in for capital goods",
+   "why": "More capital raises what the economy can make of both goods, so the curve shifts outward; no part of it moves in."
+  },
+  "mac-comparative-advantage-13": {
+   "option": "The country with the absolute advantage gains, and the other loses",
+   "why": "Gains from trade come from different opportunity costs; with equal costs neither country gains, whoever has the absolute advantage."
+  },
+  "mac-demand-14": {
+   "option": "Each extra unit costs sellers more to make",
+   "why": "Rising cost per unit explains why supply slopes up; the demand curve is about buyers' choices at each price."
+  },
+  "mac-supply-14": {
+   "option": "Sellers make more units at low prices to keep their revenue up",
+   "why": "At a lower price, producing extra units is less worthwhile, so the quantity supplied falls; that is why supply slopes up."
+  },
+  "mac-gdp-circular-flow-16": {
+   "option": "Profit is left out of both totals, so they match",
+   "why": "Profit is income to the owners of firms and is counted in the income total; it is part of why spending and income match."
+  },
+  "mac-gdp-circular-flow-15": {
+   "option": "the GDP of whichever country collects her income tax",
+   "why": "GDP counts output produced inside a country's borders, whoever produces it; where her taxes go does not change that."
+  },
+  "mac-gdp-limitations-16": {
+   "option": "One has a higher GDP per capita than the other",
+   "why": "The question says the two have the same GDP per capita, so this is not a difference between them."
+  },
+  "mac-unemployment-16": {
+   "option": "She counts as a discouraged worker, so the rate is unaffected",
+   "why": "A discouraged worker has no job and has stopped looking; Ivy has a job, so the survey counts her as employed."
+  },
+  "mac-price-indices-inflation-13": {
+   "option": "It falls by about 8%",
+   "why": "The real wage changes by about the nominal change minus inflation: $3\\% - 5\\% = -2\\%$, not the two added together."
+  },
+  "mac-inflation-costs-15": {
+   "option": "The bank gains, because the houses it lent against are worth more",
+   "why": "The loan is repaid in a fixed number of dollars; a higher house price does not raise what the bank is paid, so surprise inflation hurts the lender."
+  },
+  "mac-real-nominal-gdp-16": {
+   "option": "It leaves out the prices of services",
+   "why": "The deflator covers every final good and service produced in the country, services included."
+  },
+  "mac-business-cycles-19": {
+   "option": "A line that stays below real GDP in each year",
+   "why": "In contractions real GDP falls below potential, so potential output cannot sit below real GDP in every year."
+  },
+  "mac-aggregate-demand-13": {
+   "option": "Its exports fall, because foreign buyers have less to spend",
+   "why": "Foreign incomes have not changed; a lower price level makes Country Z's goods cheaper abroad, so its exports rise."
+  },
+  "mac-aggregate-demand-2": {
+   "option": "It shifts right, because net exports rose by 20",
+   "why": "Net exports did rise by 20, but investment fell by 50, so total planned spending at each price level fell by 30."
+  },
+  "mac-multipliers-14": {
+   "option": "The firm's workers save the whole of their extra income",
+   "why": "If every extra dollar were saved there would be no further rounds of spending, so total spending would rise by the first million alone."
+  },
+  "mac-sras-5": {
+   "option": "A rise in the price level that lets firms charge more",
+   "why": "A change in the price level is a movement along SRAS, not a shift of the curve."
+  },
+  "mac-lras-16": {
+   "option": "Vertical at the price level where AD meets SRAS",
+   "why": "LRAS stands at full-employment real GDP on the horizontal axis; it is not placed at a price level."
+  },
+  "mac-adas-equilibrium-12": {
+   "option": "A recessionary gap of 50 billion dollars, with unemployment below the natural rate",
+   "why": "Output above LRAS is an inflationary gap, not a recessionary one; unemployment is below the natural rate there."
+  },
+  "mac-adas-short-run-changes-14": {
+   "option": "AD shifts left: the price level rises and real GDP falls",
+   "why": "A leftward AD shift lowers both the price level and real GDP; a higher price level with lower output comes from SRAS shifting left."
+  },
+  "mac-long-run-self-adjustment-14": {
+   "option": "The original price level with real GDP back at full employment",
+   "why": "Nominal wages rise and SRAS shifts left, so output returns to full employment at a higher price level, not the old one."
+  },
+  "mac-fiscal-policy-14": {
+   "option": "The spending is counted in GDP once the bill passes, not when it is spent",
+   "why": "GDP counts spending when the goods and services are produced; the problem is timing, since the money may arrive after the gap has closed."
+  },
+  "mac-automatic-stabilizers-15": {
+   "option": "Tax collections rise in the downturn, so AD shifts right",
+   "why": "A fixed tax per household does not change with income, so collections stay the same in a downturn; nothing pushes AD right."
+  },
+  "mac-financial-assets-12": {
+   "option": "Creating new money to pay for the factory",
+   "why": "Only the central bank creates money this way; a company that sells bonds is borrowing from the people who buy them."
+  },
+  "mac-financial-assets-18": {
+   "option": "A government bond",
+   "why": "A bond can be sold quickly in the bond market, so it is more liquid than a house, which takes weeks and fees to sell."
+  },
+  "mac-nominal-real-rates-15": {
+   "option": "The real rate is the same as the nominal rate",
+   "why": "The two differ by expected inflation; they are equal when expected inflation is zero, which is not the general case."
+  },
+  "mac-nominal-real-rates-8": {
+   "option": "A fixed nominal rate agreed before the surprise",
+   "why": "A fixed nominal rate is what left the bank exposed: when inflation came in above what was expected, the real rate it earned fell."
+  },
+  "mac-money-functions-10": {
+   "option": "The difficulty of saving for the future",
+   "why": "Saving is about money as a store of value; the plumber's problem is trading today, which money as a medium of exchange solves."
+  },
+  "mac-money-functions-15": {
+   "option": "The bank deposits that back each bill",
+   "why": "Fiat money is backed by no commodity or deposit; its value rests on government decree and people's willingness to accept it."
+  },
+  "mac-banking-money-supply-14": {
+   "option": "They rise by \\$100",
+   "why": "Required reserves fall by \\$100, but reserves fall by the full \\$1,000, so excess reserves fall by $1{,}000 - 100 = 900$ dollars."
+  },
+  "mac-money-market-14": {
+   "option": "The central bank raises the money supply until the rate matches",
+   "why": "The market moves back by itself: people buy bonds with the money they do not want to hold, bond prices rise and the rate falls."
+  },
+  "mac-monetary-policy-18": {
+   "option": "The money supply falls and interest rates fall",
+   "why": "A lower discount rate makes borrowing reserves cheaper, so banks lend more and the money supply rises, not falls."
+  },
+  "mac-loanable-funds-17": {
+   "option": "A higher real interest rate makes borrowers want more funds",
+   "why": "Borrowers want fewer funds at a higher rate, which is why demand slopes down; supply slopes up because savers lend more."
+  },
+  "mac-policy-short-run-15": {
+   "option": "Both shift SRAS; fiscal policy through taxes, monetary policy through wages",
+   "why": "In the short run both work on demand: spending, taxes and interest rates change AD, not SRAS."
+  },
+  "mac-policy-short-run-12": {
+   "option": "Aggregate demand",
+   "why": "Both actions in Bela are expansionary, so AD rises for sure; the interest rate is the variable the two push in opposite directions."
+  },
+  "mac-phillips-curve-17": {
+   "option": "The economy moves down along the SRPC: inflation falls and unemployment rises",
+   "why": "A movement along the SRPC comes from a change in AD; a supply shock shifts the SRPC itself, here to the left."
+  },
+  "mac-phillips-curve-15": {
+   "option": "In the long run, inflation and unemployment rise and fall together",
+   "why": "The vertical LRPC says unemployment is at the natural rate whatever inflation is: no long-run link at all, not a positive one."
+  },
+  "mac-money-growth-inflation-13": {
+   "option": "In the long run, the money supply returns to its old level by itself",
+   "why": "Nothing removes the new money; output returns to full employment because wages and prices adjust up, leaving a higher price level."
+  },
+  "mac-money-growth-inflation-7": {
+   "option": "They fall, because loans will be repaid in more valuable money",
+   "why": "High expected inflation means money will be worth less when loans are repaid, so lenders raise nominal rates."
+  },
+  "mac-deficits-debt-12": {
+   "option": "It shrinks, because higher rates cut spending on programs",
+   "why": "The question holds programs unchanged; higher rates raise interest outlays, so the deficit grows."
+  },
+  "mac-crowding-out-15": {
+   "option": "When firms have many profitable projects and the government borrows nothing",
+   "why": "Crowding out comes from government borrowing; with no new borrowing there is nothing to crowd private investment out."
+  },
+  "mac-economic-growth-14": {
+   "option": "Productivity matters mainly in recessions, when it raises AD",
+   "why": "Productivity raises output per worker and LRAS year after year; it is a long-run supply story, not a recession fix."
+  },
+  "mac-growth-policy-15": {
+   "option": "The money supply rises, so the real interest rate falls",
+   "why": "Transfers are fiscal policy and do not change the money supply; their main effect is on consumption and AD."
+  },
+  "mac-balance-of-payments-14": {
+   "option": "Its current account balance rises, because fewer goods leave the country",
+   "why": "Exports are a credit in the current account, so fewer exports lower the current account balance."
+  },
+  "mac-exchange-rates-15": {
+   "option": "Student A, while Student B describes a different change",
+   "why": "Both students describe the same move from its two sides: when the arl buys more bels, each bel buys fewer arls."
+  },
+  "mac-foreign-exchange-market-15": {
+   "option": "Demand for arls falls, and supply of bels falls",
+   "why": "Arland buyers need bels to pay Belvian sellers, so they supply arls and demand bels; neither of these falls."
+  },
+  "mac-fx-policy-changes-15": {
+   "option": "It appreciates, because the money supply in Arland rises",
+   "why": "More money and lower Arland interest rates make Arland assets less attractive, so demand for arls falls and the arl depreciates."
+  },
+  "mac-fx-net-exports-15": {
+   "option": "An Arland family planning a holiday in Belvia",
+   "why": "A stronger arl buys more bels, so a holiday in Belvia gets cheaper for the family; they gain from the appreciation."
+  },
+  "mac-real-rates-financial-flows-16": {
+   "option": "Into Arland, because its real interest rate is higher",
+   "why": "Arland's real rate is $7\\% - 4\\% = 3\\%$ and Belvia's is $5\\% - 1\\% = 4\\%$, so Belvia's real rate is the higher one."
+  },
+  "mac-scarcity-11": {
+   "option": "Economic growth",
+   "why": "Growth would raise what the city can do in total; here a fixed budget went to one use and another was given up, a trade-off."
+  },
+  "mac-opportunity-cost-ppc-18": {
+   "option": "The economy produces at a point inside the curve",
+   "why": "A point inside the curve means unused resources; it says nothing about why the curve itself is bowed."
+  },
+  "mac-demand-15": {
+   "option": "Coffee and tea",
+   "why": "Coffee and tea are substitutes: a rise in the price of one raises the demand for the other. Complements are used together."
+  },
+  "mac-supply-9": {
+   "option": "Demand for honey decreases this month",
+   "why": "The makers' expectations shift supply; and buyers who expect a higher price would buy more now, not less."
+  },
+  "mac-market-equilibrium-10": {
+   "option": "\\$1",
+   "why": "At \\$1 the new quantity demanded is 120 cups and the quantity supplied 30, a shortage, not an equilibrium."
+  },
+  "mac-gdp-circular-flow-14": {
+   "option": "As exports, because they leave the factory",
+   "why": "Exports are sales to buyers abroad; chairs made this year and not yet sold are counted as investment in inventory."
+  },
+  "mac-gdp-limitations-15": {
+   "option": "GDP leaves out the value of used goods sold this year",
+   "why": "Used goods are left out of GDP, but that is not this example; here the price stays the same while the phone does far more."
+  },
+  "mac-unemployment-17": {
+   "option": "It stays the same, because new graduates are counted once they are hired",
+   "why": "People without a job who are looking for one count as unemployed from the start, so the rate rises at once."
+  },
+  "mac-price-indices-inflation-15": {
+   "option": "The cost of the basket in that year",
+   "why": "The index divides the basket's cost by its own base-year cost and multiplies by 100, so it is 100, not a dollar amount."
+  },
+  "mac-inflation-costs-16": {
+   "option": "Inflation lowers the price of the machines the factory needs",
+   "why": "Inflation is a rise in the general price level; the planning problem is that future costs and prices are hard to predict."
+  },
+  "mac-inflation-costs-14": {
+   "option": "Interest on a savings account whose rate is reset with inflation",
+   "why": "A rate reset with inflation keeps up with prices, so this income is not fixed in dollars."
+  },
+  "mac-real-nominal-gdp-14": {
+   "option": "Real GDP is zero, because no inflation has happened yet",
+   "why": "In the base year real GDP is output valued at base-year prices, which are that year's prices, so it equals nominal GDP."
+  },
+  "mac-business-cycles-10": {
+   "option": "By importing more goods than it exports",
+   "why": "Imports are produced abroad and do not add to Berovia's output; producing above potential comes from using resources harder for a while."
+  },
+  "mac-aggregate-demand-17": {
+   "option": "SRAS shifts right, because workers keep more of their pay",
+   "why": "The tax cut raises disposable income and consumption, which shifts AD; SRAS depends on firms' costs of production."
+  },
+  "mac-multipliers-9": {
+   "option": "The MPS equals 1 divided by the MPC",
+   "why": "The MPC and MPS add up to 1, so the MPS is $1 - \\text{MPC}$; 1 divided by the MPS is the spending multiplier."
+  },
+  "mac-sras-16": {
+   "option": "LRAS shifts right",
+   "why": "Rules that raise the cost of each unit lower what firms supply at each price level; they shift SRAS left and add no capacity."
+  },
+  "mac-lras-4": {
+   "option": "It would shift inward, because the population grew",
+   "why": "More labor and capital raise what the economy can produce, so the curve shifts outward, not inward."
+  },
+  "mac-adas-equilibrium-16": {
+   "option": "On the vertical axis where AD meets LRAS",
+   "why": "YF is a level of real GDP, so it goes on the horizontal axis where LRAS stands, not on the price level axis."
+  },
+  "mac-adas-short-run-changes-4": {
+   "option": "AD shifted right: the price level and real GDP both rose",
+   "why": "From Year 3 to Year 4 the price level fell from 110 to 108 and real GDP from 820 to 790, so AD shifted left."
+  },
+  "mac-adas-short-run-changes-8": {
+   "option": "It falls at first, then returns to its old level",
+   "why": "Higher fuel costs shift SRAS left and the foreign boom shifts AD right; both push the price level up at once."
+  },
+  "mac-long-run-self-adjustment-13": {
+   "option": "It names AD; the mechanism is LRAS shifting right",
+   "why": "LRAS stays where it is; the economy returns to it because falling nominal wages shift SRAS right."
+  },
+  "mac-long-run-self-adjustment-15": {
+   "option": "The government raises spending to shift AD right",
+   "why": "The question says no policy is used; lower wages and input prices shift SRAS back right on their own."
+  },
+  "mac-fiscal-policy-15": {
+   "option": "It is lower, because the gap closes sooner",
+   "why": "Closing the gap sooner does not lower prices; spending shifts AD right, so the price level ends higher than with self-adjustment."
+  },
+  "mac-automatic-stabilizers-11": {
+   "option": "The central bank decides when they start",
+   "why": "Automatic stabilizers are parts of the tax and transfer system; they act without a new decision by the central bank or the legislature."
+  },
+  "mac-financial-assets-13": {
+   "option": "It is the share of a deposit a bank keeps as reserves",
+   "why": "That describes a reserve ratio; an interest rate is the yearly cost of borrowing, as a percent of the loan."
+  },
+  "mac-nominal-real-rates-4": {
+   "option": "The lender expects inflation of zero",
+   "why": "Loan D's lender expects inflation of 5%; the real rate is $5\\% - 5\\% = 0$, which means no gain in buying power."
+  },
+  "mac-money-functions-13": {
+   "option": "It rises by \\$2,000 as the bank lends",
+   "why": "Right away, \\$200 of cash in M1 becomes \\$200 of checkable deposits in M1, so M1 is unchanged; any lending comes later."
+  },
+  "mac-banking-money-supply-11": {
+   "option": "It falls from 20 to 10",
+   "why": "With a ratio of 0.1 the money multiplier is $\\frac{1}{0.1} = 10$, and with 0.2 it is $\\frac{1}{0.2} = 5$."
+  },
+  "mac-money-market-18": {
+   "option": "Money demand is vertical, so money supply is drawn the same way",
+   "why": "Money demand slopes down; the money supply is vertical because the central bank sets its quantity."
+  },
+  "mac-money-market-13": {
+   "option": "The inflation rate",
+   "why": "The vertical axis is the nominal interest rate, the opportunity cost of holding money instead of bonds."
+  },
+  "mac-monetary-policy-21": {
+   "option": "Printing currency to pay for government spending",
+   "why": "With ample reserves the central bank moves the policy rate with its administered rates; paying for government spending is not a monetary policy tool."
+  },
+  "mac-monetary-policy-4": {
+   "option": "Neither gap; aggregate demand does not change",
+   "why": "The graph shows a change in the policy rate, and a change in interest rates shifts AD in the short run."
+  },
+  "mac-loanable-funds-8": {
+   "option": "National saving falls to 300 and the real rate falls",
+   "why": "National saving is now $400 - 100 = 300$; balancing the budget raises it to 400, so it rises, and the real rate falls."
+  },
+  "mac-loanable-funds-4": {
+   "option": "It rises, because the supply of loanable funds shifted right",
+   "why": "The supply curve did not move; demand shifted right, the real rate rose, and savers lent more along the supply curve."
+  },
+  "mac-policy-short-run-4": {
+   "option": "AD is unchanged; the interest rate falls for sure",
+   "why": "Both policies are expansionary, so AD rises by more than with either one alone."
+  },
+  "mac-phillips-curve-18": {
+   "option": "The PPC, which bows outward",
+   "why": "The PPC is not part of the AD-AS model; the LRPC matches LRAS, both vertical at full employment."
+  },
+  "mac-money-growth-inflation-10": {
+   "option": "The share of extra income that people save",
+   "why": "That is the MPS; velocity is how many times a year the average dollar is spent on final output."
+  },
+  "mac-deficits-debt-10": {
+   "option": "A surplus appears, because output rises",
+   "why": "Lower taxes and more spending widen the deficit; a recovery may offset part of it, not turn it into a surplus."
+  },
+  "mac-crowding-out-13": {
+   "option": "A rise in private investment when government spending raises demand",
+   "why": "That is the opposite effect; crowding out is a fall in private investment as government borrowing raises the real rate."
+  },
+  "mac-crowding-out-8": {
+   "option": "A fall in the real interest rate caused by more government borrowing",
+   "why": "More government borrowing raises the real interest rate, which is what crowds out investment; it does not lower it."
+  },
+  "mac-economic-growth-12": {
+   "option": "Financial capital",
+   "why": "Financial capital is money raised to invest; the nurse's new skill is human capital, the knowledge and skill of workers."
+  },
+  "mac-economic-growth-5": {
+   "option": "Alton's nominal GDP rose faster than Breck's",
+   "why": "Both raised real GDP by 10 percent; per capita growth depends on population, and Breck's grew as fast as its output."
+  },
+  "mac-growth-policy-13": {
+   "option": "Physical capital",
+   "why": "Patents reward invention, which is new technology; physical capital is machines, tools and buildings."
+  },
+  "mac-growth-policy-9": {
+   "option": "Lowering interest rates to raise investment",
+   "why": "That is monetary policy; supply-side fiscal policy uses taxes and spending to raise incentives and shift LRAS right."
+  },
+  "mac-balance-of-payments-12": {
+   "option": "As a credit in the capital and financial account",
+   "why": "Interest paid abroad is income leaving the country, a debit in the current account; it is not a sale of a financial asset."
+  },
+  "mac-exchange-rates-13": {
+   "option": "The rate moves from 4 bels per arl to 2 bels per arl",
+   "why": "Fewer bels per arl means each bel costs more arls, so the tuition fixed in bels costs the student more."
+  },
+  "mac-foreign-exchange-market-14": {
+   "option": "When the arl is cheaper, Belvians earn more bels",
+   "why": "Belvian incomes in bels do not change with the price of the arl; Arland goods cost fewer bels, so Belvians want more arls."
+  },
+  "mac-fx-policy-changes-16": {
+   "option": "Supply of bels falls next month, so nothing changes now",
+   "why": "Expectations act now: traders buy bels today to gain from the expected rise, so demand for bels rises and the bel appreciates now."
+  },
+  "mac-fx-net-exports-4": {
+   "option": "They rose by twice the amount Arland's fell",
+   "why": "With two countries trading with each other alone, one's net exports are the other's net imports, so Belvia's rose by exactly what Arland's fell."
+  },
+  "mac-real-rates-financial-flows-18": {
+   "option": "The real rate rises by more, because the arl appreciates",
+   "why": "The appreciation follows the inflow; the inflow itself adds to the supply of loanable funds, so the real rate rises by less."
+  }
+ }
+}
