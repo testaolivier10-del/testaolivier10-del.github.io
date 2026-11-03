@@ -10,5 +10,8 @@
  },
  "long-run": {
   "def": "The short run is the period in which nominal wages and some prices are fixed; the long run is long enough for all wages and prices to adjust."
+ },
+ "expected-inflation": {
+  "def": "The inflation rate households and firms expect, which they build into wages and prices. A rise in expected inflation raises nominal wage demands and production costs, so SRAS shifts left."
  }
 }

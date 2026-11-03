@@ -317,7 +317,7 @@
    "diff": 2,
    "type": "single",
    "practice": "2.A",
-   "q": "Workers across the economy come to expect prices to rise faster next year, and they bargain for higher nominal wages now. What happens to SRAS?",
+   "q": "Expected inflation rises across the economy: workers expect prices to rise faster next year, and they bargain for higher nominal wages now. What happens to SRAS?",
    "options": [
     "It shifts right, because firms expect to sell at higher prices",
     "It does not move, because nothing has happened to prices yet",
@@ -326,7 +326,7 @@
    ],
    "correct": 3,
    "why": {
-    "correct": "When workers expect faster price growth, they ask for higher nominal wages; that raises costs and shifts SRAS left.",
+    "correct": "When expected inflation rises, workers ask for higher nominal wages; that raises costs and shifts SRAS left.",
     "options": [
      "Expecting higher prices raises wage demands, which raises costs; that shifts SRAS left.",
      "Wages are bargained on what workers expect, so costs rise now.",

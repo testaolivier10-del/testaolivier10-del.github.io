@@ -205,7 +205,12 @@ college texts, not in our CED summary). A person should check both lists against
 
 ## Author C (Unit 3)
 
-### c-expected-inflation: inflation expectations shift SRAS in 3.3, but the map teaches the term in 5.2 (open, 2026-11-03)
+### c-expected-inflation: inflation expectations shift SRAS in 3.3, but the map teaches the term in 5.2 (resolved, 2026-11-03)
+
+Resolved by the integrator: `expected-inflation` (aliases "inflation expectations", "expected inflation rate") is now
+taught in `sras` (3.3, the earliest topic that needs it in CED order), depending only on `inflation`, with its
+glossary entry moved from `phillips-curve` to `sras`. The `sras` lesson, notes table and `mac-sras-10` now use the
+term. The original note:
 
 Our CED summary for 3.3 lists inflation expectations as an SRAS shifter, but the map's `expected-inflation`
 concept (aliases "inflation expectations") is taught in `phillips-curve` (author E), so Unit 3 cannot use the term.
@@ -313,7 +318,10 @@ books differ; no item asks where savings deposits go, and no table includes them
 checkable deposits; M2 adds small time deposits and retail money market funds). A person should check the CED's
 4.3 wording and decide whether to state one definition.
 
-### d-expected-inflation: "expected inflation" is a 5.2 concept but 4.2 needs it (open, 2026-11-03)
+### d-expected-inflation: "expected inflation" is a 5.2 concept but 4.2 needs it (resolved, 2026-11-03)
+
+Resolved with `c-expected-inflation`: the term is taught in 3.3, "expected inflation rate" is now its alias (no
+longer `real-rate`'s), and `real-rate` depends on it. Unit 4's wording stands. The original note:
 
 The map teaches `expected-inflation` ("expected inflation", "inflation expectations") in `phillips-curve` (5.2),
 but the real interest rate (4.2) is the nominal rate minus expected inflation. Smallest fix made: the alias

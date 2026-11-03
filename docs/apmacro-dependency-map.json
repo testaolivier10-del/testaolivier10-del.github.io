@@ -2500,14 +2500,13 @@
   {
    "id": "real-rate",
    "term": "real interest rate",
-   "aliases": [
-    "expected inflation rate"
-   ],
+   "aliases": [],
    "taughtIn": "nominal-real-rates",
    "dependsOn": [
     "nominal-rate",
     "inflation",
-    "unexpected-inflation"
+    "unexpected-inflation",
+    "expected-inflation"
    ]
   },
   {
@@ -2783,11 +2782,12 @@
    "id": "expected-inflation",
    "term": "expected inflation",
    "aliases": [
-    "inflation expectations"
+    "inflation expectations",
+    "expected inflation rate"
    ],
-   "taughtIn": "phillips-curve",
+   "taughtIn": "sras",
    "dependsOn": [
-    "srpc"
+    "inflation"
    ]
   },
   {
