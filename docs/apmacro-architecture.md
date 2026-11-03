@@ -215,7 +215,7 @@ As AP® Psychology (lessons, notes, glossary, descriptions, pages, published), w
 
 ### Questions: `data/questions/<topic>.json`
 
-`{ stimuli: { id: {...} }, items: [...] }`. Types: `single` (4 options; needs-author `mcq-options`), `multi`,
+`{ stimuli: { id: {...} }, items: [...] }`. Types: `single` (4 options in the bank; exam forms serve 5, see "Practice exams"), `multi`,
 `order`, `numeric`, `specific`, `graph`. `practice` is a skill id `1.A`-`1.D`, `2.A`-`2.C`, `3.A`-`3.C`, or
 `4.A`-`4.C` on a graph item only (graphing is assessed only in Section II).
 
@@ -261,8 +261,21 @@ One place in node (`scripts/lib/apmacro-exams.mjs`) and one in the browser (`pag
 `scripts/test/apmacro-exams.test.mjs`: Section I `MCQ_PARTS` 60 in 70 minutes (66%); Section II `FRQ_PARTS` 3 in
 60 minutes with a 10-minute reading period (33%), `FRQ_ORDER` long, short, short, `FRQ_POINTS` { long: 10, short:
 5 }; four-function calculator in both; `EXAM_DATE` 2027-05-07 (also `assets/exam-date.js`, `pages/cram.js`
-`DEFAULT_EXAM`). `MCQ_OPTIONS` 4 until needs-author `mcq-options` is answered. `EXAM_SETS` data 0-6, graph 0-6,
-text 0-4 until `mcq-sets`. Results show the two sections apart with their weights; no composite, no band.
+`DEFAULT_EXAM`). `MCQ_OPTIONS` 5 (the bank's `BANK_OPTIONS` 4); Section I questions stand alone, one stimulus per
+question (`EXAM_SETS`, `EXAM_STIMULI`, `EXAM_ONLY`). Results show the two sections apart with their weights; no
+composite, no band.
+
+### Practice exams (Phase 3)
+
+`data/exams/forms.json` (two forms; `mcq` is 60 one-question blocks in course order, `frq` long, short, short),
+`items.json` (exam-only five-option items `mac-exam-<form>-<nn>` and their stimuli `exam-<form>-s<n>`) and
+`fifth.json` (`options: { <bank id>: { option, why } }`, the fifth choice of each bank question a form uses).
+`checkForms`, `checkFifth`, `checkNumbers` (`EXAM_NUMBERS`, `JUSTIFY_NUMBERS`) and `checkGraphs` (`EXAM_GRAPHS`)
+run in the content check and the tests. The generator writes `assets/exams/forms.json` and `items.json` with every
+question of the live forms as served (`examVersion`: four bank options plus the fifth, explanations inline, the
+stimuli they need); `pages/exams.js` uses those copies and marks only `mac-exam-*` items as exam-only. The formula
+page's `EQ` rows take an optional tenth field, `true` for "Easy to forget"; `GRAPHS` a fourth; `BALANCE_SHEET` is
+the T-account card.
 
 ## Runtime differences from AP® Psychology
 

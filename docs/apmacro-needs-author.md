@@ -30,15 +30,23 @@ The ample-reserves framework is taught as the Fed's current system (spec decisio
 alongside for the reserve requirement and the money multiplier. Confirm the CED's essential knowledge for 4.4 and
 4.6 and when the ample-reserves framework entered it; the reader reports test both.
 
-## mcq-options: four or five answer choices on the 2027 digital exam (open, 2026-11-03)
+## mcq-options: four or five answer choices on the 2027 digital exam (resolved 2026-11-03, Phase 3)
 
-Older exams had five; other digital AP® exams use four. `MCQ_OPTIONS` is 4 (`scripts/lib/apmacro-exams.mjs`) and
-the content check holds single-answer items to it. Change it in one place if the answer is five.
+**Five, (A) to (E).** The CED effective fall 2026 (https://apcentral.collegeboard.org/media/pdf/ap-macroeconomics-course-and-exam-description.pdf,
+sample exam questions) prints every multiple-choice question with five choices, and College Board's course changes
+page (https://apcentral.collegeboard.org/courses/how-ap-develops-courses-and-exams/course-changes-overview) lists no
+change for AP® Macroeconomics while it lists "MCQ answer choices reduced from 5 to 4" for the two English courses.
+The exam page (https://apcentral.collegeboard.org/courses/ap-macroeconomics/exam) gives 60 questions in 70 minutes
+and no count. `MCQ_OPTIONS` is 5; the bank keeps 4 (`BANK_OPTIONS`) and each form adds a fifth per question
+(`data/exams/fifth.json`). A person with Bluebook's test preview should confirm. Open: whether the practice bank
+should move to five options too (456 items; a content pass, not done).
 
-## mcq-sets: set counts in Section I (open, 2026-11-03)
+## mcq-sets: set counts in Section I (resolved 2026-11-03, Phase 3)
 
-Whether Section I has stimulus sets and how many is not published. `EXAM_SETS` allows 0-6 data, 0-6 graph and
-0-4 scenario sets in a form until a person confirms.
+**Standalone questions.** The CED's sample questions each carry their own table or graph; none is shared by two
+questions. The forms put each stimulus with one question (`checkForms` refuses a shared one across both forms).
+How many questions carry a stimulus is not published: `EXAM_SETS` (data 2-12, graph 3-10, text 0-8) and
+`EXAM_STIMULI` (8-22 a form) are our estimate; the forms have 13 and 19.
 
 ## practice-weights: skill weights in Section I are not published (open, 2026-11-03)
 
@@ -86,6 +94,37 @@ Spec decision 6, proposed: Unit 1 alone is only 5-10% of the exam. Free trainers
 
 The hook is in `pages/frq.js` as in every course; `FRQ_COURSES` does not list `apmacro`. Graph parts are checked by
 code; written parts would need their own calibration before the grader is turned on.
+
+## Phase 3
+
+### phase3-exam-only: 20 exam-only questions need the exam review (open, 2026-11-03)
+
+`macroeconomics/data/exams/items.json`, 10 a form, five options each, with 13 stimuli. Keys are recomputed
+(`EXAM_NUMBERS`) and the graphs checked (`EXAM_GRAPHS`), but the Phase 4 exam review should read every stem,
+distractor and explanation, and the 100 fifth options in `fifth.json`.
+
+### phase3-sras-1: mac-sras-1 has two right answers (open, 2026-11-03, for the Unit 3 reviewer)
+
+It asks which year SRAS shifted left "because of an input price"; Year 2 (oil) is keyed, but Year 4's nominal wage
+rise (20 to 22, same output per worker) is an input price too. Left out of the forms (`mac-sras-5` used instead);
+not edited, since it is reviewer content.
+
+### phase3-frq-choice: which FRQs the exams use (open, 2026-11-03)
+
+Form 1 `frq-recession-long`, `frq-real-nominal-short`, `frq-forex-short`; form 2 `frq-phillips-long`,
+`frq-money-multiplier-short`, `frq-ppc-trade-short`. The released long questions are mostly AD-AS with policy; both
+longs are. Confirm the mix (`frq-open-market-long`, `frq-ample-reserves-long`, `frq-deficit-long`,
+`frq-open-economy-long` stay practice).
+
+### phase3-unit-split: 5, 9, 13, 12, 14 and 7 questions a unit (open, 2026-11-03)
+
+Near the midpoints of the CED ranges of 60; skill weights stay unconfirmed (`practice-weights`). Units 4 and 5
+leaned on exam-only items because their standalone bank questions ran out.
+
+### phase3-formula-page: what the page lists and flags (open, 2026-11-03)
+
+28 rows (no balanced-budget multiplier, `balanced-budget`), 10 flagged "Easy to forget" from the reader reports, 8
+graph kinds and the balance sheet. A teacher should confirm nothing expected by heart is missing.
 
 ## Author B (Unit 2)
 

@@ -81,7 +81,7 @@ One branch, `claude/apmacro`, one PR at the end.
 | 0 | Fork AP® Psychology: runtime `macroeconomics/assets/` (`mac-*`), `ApMacroCalc`, `graph` item and FRQ part, generator, checks, tests, fixture, registration hidden, SQL migration; then CED and dependency maps, exam config, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-11-03** (section 5b) |
 | 1 | Content: lessons, notes, banks (with stimulus sets and `graph` items), FRQs, glossary, figures | |
 | 2 | Trainers (section 6) | |
-| 3 | Two practice exams, unit tests, "Make it specific" prompts, graph and formula page, cram kit | |
+| 3 | Two practice exams, unit tests, "Make it specific" prompts, graph and formula page, cram kit | **built 2026-11-03** (section 5c, decision 11): two forms in the May 2027 format (60 standalone five-option MCQs in course order, U1 5, U2 9, U3 13, U4 12, U5 14, U6 7; 50 bank questions each with a fifth option in `data/exams/fifth.json` plus 10 exam-only; FRQs long, short, short on different units); 20 exam-only items (numbers in `EXAM_NUMBERS`, graphs in `EXAM_GRAPHS`); 64 "Make it specific" prompts (10 per unit, 4 in graph skills, every skill, a builder on each, numbers in `JUSTIFY_NUMBERS`); formula page 28 rows, 10 flagged easy to forget, 8 graphs (4 flagged) and the balance sheet; unit tests and cram kit tested on the real forms; open points under "Phase 3" in needs-author |
 | 4 | Independent accuracy checks per unit group, tools and exams | |
 | Launch | Publish, generators, continuity pass, "thirteen courses" wording, full CI with browser checks, PR | |
 
@@ -113,6 +113,39 @@ One branch, `claude/apmacro`, one PR at the end.
   needs-author `identity`): yellow-green, hue 88°, the widest gap left on the wheel.
 - Docs: architecture, authoring guide, phase0, needs-author, briefs (`docs/apmacro-briefs/`: common briefs for
   content, tools and review; authors A-F, builders T1-T4).
+
+### 5c. Phase 3 as built (2026-11-03)
+
+- **Format decisions** (needs-author `mcq-options`, `mcq-sets`, resolved): five answer choices, (A) to (E): the CED
+  effective fall 2026 prints every sample MCQ with five choices, and College Board's course changes page lists no
+  cut to four for this course (it does for the two English courses). Section I questions stand alone: a graph,
+  table or scenario belongs to one question (the CED samples), so no stimulus carries two questions in a form.
+  `MCQ_OPTIONS` 5, `BANK_OPTIONS` 4, `EXAM_SETS` (per kind) and `EXAM_STIMULI` 8-22 a form, `EXAM_ONLY` 8-16
+  (`scripts/lib/apmacro-exams.mjs`).
+- **Forms** (`macroeconomics/data/exams/forms.json`): one question a block, in course order, by unit weight (5, 9,
+  13, 12, 14, 7). The practice bank keeps four options; each of the 100 bank questions the forms use gets a fifth
+  in `fifth.json` (option and why), merged by `examVersion` into `assets/exams/items.json`, which serves all 120
+  questions with five options and explanations inline (`pages/exams.js` prefers it; a miss on a bank question still
+  reaches Review). 20 exam-only items (`items.json`, `mac-exam-<form>-<nn>`, 13 stimuli: 5 data, 8 graph), keys
+  recomputed in `EXAM_NUMBERS` (ApMacroCalc, distractors from the slips) and every graph read checked against
+  `ApMacroGraph` in `EXAM_GRAPHS` (`checkGraphs`). Stimulus questions per form: 13 (data 5, graph 6, text 2) and
+  19 (10, 6, 3). Section II: form 1 `frq-recession-long`, `frq-real-nominal-short`, `frq-forex-short`; form 2
+  `frq-phillips-long`, `frq-money-multiplier-short`, `frq-ppc-trade-short`; no unit in two FRQs of a form.
+- **Prompts** (`macroeconomics/data/justify/*.json`): 64, ten per unit and four in graph skills, every skill (graph 12,
+  identify 18, calculate 15, chain 6, tool 4, currency 4, selfadjust 3, multiplier 2), a builder on each, first 3
+  free, 20 with numbers in `JUSTIFY_NUMBERS`. `JUSTIFY_PER_CHAPTER` 8-12, graph skills 3-6.
+- **Formula page** (`EQ`, `GRAPHS`, `BALANCE_SHEET` in `scripts/lib/apmacro-entry.mjs`): 28 rows in six groups
+  (choices and trade, output and prices, unemployment, multipliers, banks and interest rates and money, exchange
+  rates), every one an ApMacroCalc recipe with a worked line; 10 rows and 4 graphs (money, reserves, loanable
+  funds, forex) flagged "Easy to forget" and listed at the top; the 8 graph kinds drawn plus the bank balance
+  sheet. The balanced-budget multiplier stays off (needs-author `balanced-budget`).
+- **Unit tests** never show a practice-exam question (`unitSample` skips them, filling with recall and then lesson
+  check items), 12 per unit. Cram kit tested with the real topics, FRQs, prompts and forms.
+- Content check: exam-only items are checked as five-option items; fifth options for repeats, absolutes, math,
+  language and position words; the length tell and test-wise limits run on each form as served. Exams page: format
+  text says five choices and standalone questions; sections apart, no composite, no band, no Beta label, the "not
+  yet reviewed" note kept (tested). Walked in Chromium at 1280 light and 360 dark: start, graph MCQ 24, FRQ 1 part A
+  graph (AD shifted, E2, labels), end, self-score, results.
 
 ### 5a. Authors and builders (Phase 1 and 2)
 
@@ -190,6 +223,11 @@ student draws in the page (the AI grader hook only when its eval passes).
    budget is 89 KB (measured 87.1; mac-graph.js grew from 9.6 to 14.5 KB gzipped across the builders' and the
    integrator's work); (j) a checkpoint build had written the course over the site's own `index.html`,
    `search.html` and four other root pages: restored, and the generator refuses `--out` at the repository root.
+
+11. (2026-11-03, Phase 3) **Exams, prompts and the formula page as built** (section 5c): five choices and
+   standalone Section I questions from the fall 2026 CED; the bank stays at four options and the forms add a fifth
+   per question rather than rewriting 456 reviewed items; exam-only items only where a unit's standalone bank
+   questions ran out (Unit 5 most) and to put graph-reading questions in each form.
 
 ## 9. Open items for the owner
 
