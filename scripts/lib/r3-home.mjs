@@ -298,7 +298,7 @@ export function r3HomeMain(key, ctx) {
      the same-origin thumbnail linking to its notes page (where the click-to-load player is), never an
      iframe. Nothing when the course has no video yet. scripts/add-video.mjs reruns the home builders. ---- */
   const vids = (ctx.videos || loadVideos().data.videos || []).filter((v) => v.course === key)
-    .sort((a, b) => String(b.posted).localeCompare(String(a.posted))).slice(0, 1);
+    .sort((a, b) => String(b.posted).localeCompare(String(a.posted))).slice(0, 3);
   /* The newest video and the top three tools share one row, so neither leaves a half-empty row
      (owner 2026-11-02: no empty space). Every video is still on its notes page and the channel. */
   const vcards = vids.map((v) => {
@@ -307,7 +307,10 @@ export function r3HomeMain(key, ctx) {
     const srcset = THUMB_WIDTHS.map((w) => `${up}${THUMB_DIR}/${v.id}-${w}.webp ${w}w`).join(', ');
     return `<a class="vcard" href="${up}${page}"><span class="vthumb"><img src="${up}${THUMB_DIR}/${v.id}-480.webp" srcset="${srcset}" sizes="(max-width: 760px) 100vw, 340px" width="1280" height="720" alt="" loading="lazy" decoding="async"><span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" focusable="false"><path d="M8 5.5v13l10.5-6.5z"/></svg></span><span class="vlen">${clock(v.seconds)}</span></span><span class="vtitle">${attr(t).replace(/</g, "&lt;")}</span><span class="vmeta">Video lesson &middot; ${Math.max(1, Math.round(v.seconds / 60))} min</span></a>`;
   }).join('');
-  const media = `<section class="media" aria-labelledby="media-h"><div class="media-h"><h2 id="media-h">${vids.length ? 'Watch and <span>try</span>' : 'Try the <span>tools</span>'}</h2><p>${vids.length ? '<a class="go" href="https://www.youtube.com/@LevlPrep">All videos &rarr;</a>' : ''}${toolsMore}</p></div><div class="media-row${vids.length ? '' : ' no-vid'}">${vcards}<div class="dept">${top.map(toolRow).join('')}</div></div>${credit}</section>`;
+  /* Owner 2026-11-03: videos and tools in their own rows again (up to three videos, then three tools), each
+     with a plain heading and its "all" link, no kicker rule. */
+  const media = (vids.length ? `<section class="media" aria-labelledby="media-v"><div class="media-h"><h2 id="media-v">Video <span>lessons</span></h2><p><a class="go" href="https://www.youtube.com/@LevlPrep">All videos &rarr;</a></p></div><div class="vstrip">${vcards}</div></section>` : '')
+    + `<section class="media" aria-labelledby="media-t"><div class="media-h"><h2 id="media-t">Tools</h2><p>${toolsMore}</p></div><div class="dept">${top.map(toolRow).join('')}</div>${credit}</section>`;
 
   return `<main id="main" class="r3 r3-home" data-cover="${key}">
 ${band}

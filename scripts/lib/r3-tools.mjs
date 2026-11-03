@@ -63,10 +63,13 @@ ${ctas ? `<div class="hero-ctas">${ctas}</div>` : ''}
 }
 
 /* One tool card. t: { key, up, slug, href, name, desc, foot, premium (bool), attrs, status (bool) } */
+/* Owner 2026-11-03: no topic or skill label under a tool (the name already says what it is). Only an item count
+   the hub script updates (.cx-tool-count) stays. */
+function toolFoot(f) { const m = /<span class="cx-tool-count">[\s\S]*?<\/span><\/span>|<span class="cx-tool-count">[\s\S]*?<\/span>/.exec(f || ''); return m ? m[0] : ''; }
 export function toolCard(t) {
   const has = t.slug && toolCover(t.key, t.slug);
   const cover = has ? `<span class="tc" aria-hidden="true"><img src="${coverSrc(t.key, t.slug, t.up)}" alt="" width="640" height="320" loading="lazy" decoding="async"></span>` : '';
-  return `<li><a class="cx-tool r3-tool" href="${t.href}"${t.attrs || ''}>${cover}<span class="cx-tool-top"><span class="cx-tool-name">${esc(t.name)}</span>${t.free ? '<span class="tag free">Free</span>' : ''}</span><span class="cx-tool-desc">${esc(t.desc || '')}</span>${t.status ? '<span class="cx-tool-status"></span>' : ''}<span class="cx-tool-foot"><span>${t.foot || ''}</span><span class="cx-tool-go">Open <span aria-hidden="true">&rarr;</span></span></span></a></li>`;
+  return `<li><a class="cx-tool r3-tool" href="${t.href}"${t.attrs || ''}>${cover}<span class="cx-tool-top"><span class="cx-tool-name">${esc(t.name)}</span>${t.free ? '<span class="tag free">Free</span>' : ''}</span><span class="cx-tool-desc">${esc(t.desc || '')}</span>${t.status ? '<span class="cx-tool-status"></span>' : ''}<span class="cx-tool-foot"><span>${toolFoot(t.foot)}</span><span class="cx-tool-go">Open <span aria-hidden="true">&rarr;</span></span></span></a></li>`;
 }
 
 /* The hub's <main>. o: {
@@ -170,7 +173,8 @@ export function r3PageMain(page, o) {
 export function apPageR3(slug, page, ctx) {
   const k = ctx.key, C = COURSE_SHORT[k];
   if (slug === 'frq') return r3PageMain(page, { key: k, up: '../', beta: true, pageClass: 'r3-frqlist', kicker: `${C} &middot; Free response`,
-    h1: 'Free-response <span>practice.</span>', hand: 'every part scored point by point',
+    h1: 'Free-response <span>practice.</span>', hand: 'the written part of the exam',
+    lede: 'Pick a question, write your answer, then score it yourself with the rubric.',
     cta: ctx.frqFirst ? { href: ctx.frqFirst, label: 'Start with the first question' } : null });
   if (slug === 'cram') return r3PageMain(page, { key: k, up: '../', beta: true, pageClass: 'r3-cram', kicker: `${C} &middot; Cram kit`,
     h1: 'Counted back from <span>your exam date.</span>', hand: 'study days, practice exams and rest days',

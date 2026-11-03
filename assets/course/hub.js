@@ -151,7 +151,7 @@
       '<span class="cx-tool-name">' + esc(t.name) + '</span>' +
       '<span class="cx-tool-desc">' + esc(t.desc || '') + '</span>' +
       (t.status != null ? '<span class="cx-tool-status">' + t.status + '</span>' : '') +
-      '<span class="cx-tool-foot"><span>' + (t.foot || '') + '</span><span class="cx-tool-go">Open <span aria-hidden="true">&rarr;</span></span></span>' +
+      '<span class="cx-tool-foot"><span>' + ((String(t.foot || '').match(/<span class="cx-tool-count">[\s\S]*?<\/span>(<\/span>)?/) || [''])[0]) + '</span><span class="cx-tool-go">Open <span aria-hidden="true">&rarr;</span></span></span>' +
     '</a></li>';
   }
   function toolGrid(cards, label){

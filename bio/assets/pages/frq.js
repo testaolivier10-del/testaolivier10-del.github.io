@@ -65,19 +65,23 @@
       app.innerHTML = '<form class="bio-fq-filters" aria-label="Filter free-response questions">' +
         '<label class="bio-pr-field"><span>Question type</span><select id="bio-fq-type">' + opt('', 'All six types', filter.type) + K.ORDER.map(function(t){ return opt(t, K.TYPES[t] + ' (' + (have[t] || 0) + ')', filter.type); }).join('') + '</select></label>' +
         '<label class="bio-pr-field"><span>Unit</span><select id="bio-fq-unit">' + opt('', 'Every unit', filter.unit) + units.map(function(u){ return opt(u, unitName(u) + (UNIT[u] ? ': ' + UNIT[u].title : ''), filter.unit); }).join('') + '</select></label>' +
-        '</form><p class="bio-small" id="bio-fq-count" role="status" aria-live="polite"></p><ul class="bio-fq-list"></ul>' +
-        '<p class="bio-small bio-fq-how">How it works: read the prompt and the data, write your answer (it stays on this device), then reveal the rubric and check each point you earned. Every question has a printable answer sheet with lined space.</p>';
+        '</form><p class="bio-small" id="bio-fq-count" role="status" aria-live="polite"></p><ul class="bio-fq-list fq-groups"></ul>';
       function paint(){
         var sc = K.scores();
         var shown = all.filter(function(f){ return (!filter.type || f.type === filter.type) && (!filter.unit || f.units.indexOf(filter.unit) > -1); });
         app.querySelector('#bio-fq-count').textContent = plural(shown.length, 'question') + (filter.type || filter.unit ? ' match.' : '.');
         var missing = K.ORDER.filter(function(t){ return !have[t]; });
-        app.querySelector('.bio-fq-list').innerHTML = shown.map(function(f){
-          var s = sc[f.id];
-          return '<li><a class="bio-fq-card" href="' + BASE + 'frq/' + f.id + '.html"><span class="bio-fq-card-k">' + esc(K.TYPES[f.type]) + ' &middot; ' + plural(f.points, 'point') + '</span>' +
-            '<b>' + esc(f.title) + '</b><span class="bio-small">' + esc(f.units.map(unitName).join(', ')) + (f.placeholder ? ' &middot; placeholder, not checked for accuracy' : '') +
-            (s ? ' &middot; your best: ' + s.best + ' of ' + s.of : '') + '</span></a></li>';
-        }).join('') + (missing.length && !filter.type ? '<li class="bio-small bio-fq-missing">Not written yet: ' + missing.map(function(t){ return esc(K.TYPES[t]); }).join('; ') + '.</li>' : '');
+        /* Owner 2026-11-03 ("too much, make it neater"): grouped by question type, one plain row per question. */
+        void missing;
+        app.querySelector('.bio-fq-list').innerHTML = K.ORDER.map(function(t){
+          var qs = shown.filter(function(f){ return f.type === t; });
+          if(!qs.length) return '';
+          return '<li class="fq-group"><h2 class="fq-gh">' + esc(K.TYPES[t]) + ' <small>' + plural(qs[0].points, 'point') + ' each</small></h2><ul>' + qs.map(function(f){
+            var s = sc[f.id];
+            return '<li><a class="fq-row" href="' + BASE + 'frq/' + f.id + '.html"><b>' + esc(f.title) + '</b><span>' + esc(unitName(f.units[0])) + (f.placeholder ? ' &middot; not yet checked' : '') +
+              (s ? ' &middot; your best ' + s.best + '/' + s.of : '') + '</span></a></li>';
+          }).join('') + '</ul></li>';
+        }).join('');
         try{ var q = new URLSearchParams(); if(filter.type) q.set('type', filter.type); if(filter.unit) q.set('unit', filter.unit); history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '')); }catch(e){}
       }
       app.querySelector('form').addEventListener('change', function(e){ if(e.target.id === 'bio-fq-type') filter.type = e.target.value; else filter.unit = e.target.value; paint(); });

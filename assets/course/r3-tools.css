@@ -158,3 +158,16 @@ body:has(main.r3-tools) [data-crumb]{display:none}
 @media (max-width:640px){.r3-frqlist #app > form{grid-template-columns:1fr}}
 /* NREMT reference pages (nremt-studio.js, slim): the band is hidden on a phone too, like the full studio */
 @media (max-width:999.98px){body.nx-slim-on .r3-toolband{display:none}}
+
+/* Free-response list, owner 2026-11-03: grouped by question type, plain rows. */
+.fq-groups{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:28px}
+.fq-group > ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.fq-gh{margin:0 0 8px;font:900 19px/1.25 var(--display,var(--font-ui));letter-spacing:-.015em;color:var(--ink)}
+.fq-gh small{font:700 13px var(--font-ui);color:var(--muted);letter-spacing:0;margin-left:6px}
+.fq-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 2px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.fq-row:hover b{color:var(--accent-text,var(--accent))}
+.fq-row b{font:800 15.5px/1.35 var(--font-ui);min-width:0}
+.fq-row span{flex:none;font:700 13px var(--font-ui);color:var(--muted);text-align:right}
+@media (max-width:640px){.fq-row{flex-direction:column;gap:2px}.fq-row span{text-align:left}}
+.r3 .fq-groups .fq-gh,.r3 .r3-page-body .fq-groups .fq-gh{font:900 19px/1.25 var(--display,var(--font-ui)) !important;letter-spacing:-.015em !important;margin:0 0 8px !important}
+.r3 .fq-groups > .fq-group + .fq-group{margin-top:30px}

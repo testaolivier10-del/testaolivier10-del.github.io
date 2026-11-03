@@ -41,7 +41,11 @@ def nav_html(cur):
 TRYJS = ("<script>(function(){[].forEach.call(document.querySelectorAll('form.tryq'),function(f){f.addEventListener('change',function(e){"
          "if(f.classList.contains('done'))return;var l=e.target.closest('label');if(l)l.classList.add('picked');f.classList.add('done');"
          "[].forEach.call(f.querySelectorAll('input'),function(i){i.disabled=true;});});f.addEventListener('submit',function(e){e.preventDefault();});});"
-         "[].forEach.call(document.querySelectorAll('form'),function(f){f.addEventListener('submit',function(e){e.preventDefault();});});})();</script>")
+         "[].forEach.call(document.querySelectorAll('form'),function(f){f.addEventListener('submit',function(e){e.preventDefault();});});"
+         "var c=document.querySelector('.sv-card'),v=document.querySelector('.sv-view'),g=document.querySelector('.sv-grid');"
+         "if(c&&v&&g){c.addEventListener('click',function(){v.querySelector('.sv-page').appendChild(g);v.hidden=false;});"
+         "v.addEventListener('click',function(e){var b=e.target.closest('[data-sv]');if(e.target===v||(b&&b.getAttribute('data-sv')==='close')){v.hidden=true;}});}"
+         "})();</script>")
 
 async def freeze(ctx, group, path, label, assets):
     pg = await ctx.new_page()

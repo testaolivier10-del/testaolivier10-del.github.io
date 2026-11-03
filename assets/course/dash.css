@@ -177,3 +177,8 @@
   .d5 .d5-btn{width:100%;justify-content:center;}
 }
 @media (prefers-reduced-motion:reduce){.d5-more > summary::after{transition:none;}}
+
+/* Owner 2026-11-03: the page body tucks 56px up into the coloured band, which is right for a card but put the
+   first "1 · right now" label on top of the band. On dashboards the first section starts below the band. */
+.r3-inner .r3-body .d5 > .d5-sec:first-child{margin-top:84px;}
+@media (max-width:860px){.r3-inner .r3-body .d5 > .d5-sec:first-child{margin-top:72px;}}
