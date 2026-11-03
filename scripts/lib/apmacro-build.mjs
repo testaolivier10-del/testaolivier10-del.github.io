@@ -615,7 +615,8 @@ export function stimulusBody(C, s, depth = '') {
   if (s.table) out.push(`<div class="table-wrap" tabindex="0" role="region" aria-label="${esc(text(s.table.caption || s.title || 'Data table'))}">${tableHtml(s.table)}</div>`);
   if (s.plot) out.push(`<div class="mac-plot-wrap">${Plot.svg(s.plot)}</div>`);
   // An economics graph as given (no task): its start state, or a shown end state.
-  if (s.graph) out.push(`<div class="mac-plot-wrap">${Graph.svg({ ...s.graph, do: [] }, { shifts: s.graph.show || {}, labelsShown: true })}</div>`);
+  // showEq: true also marks the new crossing (E2, with P2 and Q2 on the axes) of a graph after a shift.
+  if (s.graph) { const g = { ...s.graph, do: [] }, sh = s.graph.show || {}; out.push(`<div class="mac-plot-wrap">${Graph.svg(g, { shifts: sh, labelsShown: true, eq: s.graph.showEq ? Graph.eq(g, sh) : null })}</div>`); }
   if (s.chart) out.push(chartSvg(s.chart, s.title));
   if (s.figure && C.figures[s.figure]) out.push(`<figure class="mac-figure">${figureImg(C, s.figure, depth)}<figcaption>${credit(C.figures[s.figure])}</figcaption></figure>`);
   if (s.html) out.push(`<div class="mac-stim-html">${s.html}</div>`);

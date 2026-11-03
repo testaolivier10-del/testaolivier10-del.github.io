@@ -12,7 +12,8 @@
     "kind": "adas",
     "show": {
      "AD": -1
-    }
+    },
+    "showEq": true
    }
   },
   "policy-short-run-s3": {
@@ -262,7 +263,7 @@
      "The new equilibrium is to the left of LRAS, not to the right.",
      "Output moved away from LRAS when AD fell.",
      "In a recessionary gap unemployment is above the natural rate, not below it.",
-     "Right: AD2 crosses SRAS to the left of LRAS, so real GDP is below full-employment output."
+     "Right: AD2 crosses SRAS at E2, to the left of LRAS, so real GDP is below full-employment output."
     ]
    },
    "stimulus": "policy-short-run-s2"

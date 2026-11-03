@@ -145,8 +145,11 @@ graded. The ninth graph students draw (the bank balance sheet) is a table, not a
   is unchanged (no `linear`).
 - `pointLabel`: the placed point's label (default `X`).
 
-A graph stimulus (`kind: "graph"`) carries `graph: { kind, names?, show: { curve: steps } }` and is drawn as given
-at build time; set items then ask about it.
+A graph stimulus (`kind: "graph"`) carries `graph: { kind, names?, show: { curve: steps }, showEq? }` and is drawn
+as given at build time; set items then ask about it. `showEq: true` (integrator, 2026-11-03) also marks the new
+crossing, E2 with its axis marks (r1 and r2, PL1 and PL2), for a stimulus "after the shift" whose items read the new
+equilibrium (`policy-short-run-s2`, `crowding-out-s1`); without it only the old equilibrium is marked. The content
+check refuses it on a graph with no shift.
 
 ### Response and grading (`ApMacroGrade.graph(spec, response)`)
 

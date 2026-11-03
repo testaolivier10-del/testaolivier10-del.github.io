@@ -194,7 +194,8 @@ function checkStimulus(sid, s, figures, err) {
   if (s.plot) { try { Plot.svg(s.plot); } catch (e) { err(`${w}: plot: ${e.message}`); } }
   if (s.graph) {
     if (!Graph.KINDS[s.graph.kind]) err(`${w}: graph.kind must be one of ${Object.keys(Graph.KINDS).join(', ')}`);
-    else { for (const c of Object.keys(s.graph.show || {})) if (!Graph.KINDS[s.graph.kind].curves.some(x => x.id === c)) err(`${w}: graph.show: unknown curve "${c}"`); try { Graph.svg({ ...s.graph, do: [] }, { shifts: s.graph.show || {} }); } catch (e) { err(`${w}: graph: ${e.message}`); } }
+    else { for (const c of Object.keys(s.graph.show || {})) if (!Graph.KINDS[s.graph.kind].curves.some(x => x.id === c)) err(`${w}: graph.show: unknown curve "${c}"`); try { Graph.svg({ ...s.graph, do: [] }, { shifts: s.graph.show || {} }); } catch (e) { err(`${w}: graph: ${e.message}`); }
+      if (s.graph.showEq !== undefined && (s.graph.showEq !== true || !Object.values(s.graph.show || {}).some(Boolean) || !Graph.eq({ ...s.graph, do: [] }, s.graph.show))) err(`${w}: graph.showEq (true) marks the new equilibrium of a graph whose show shifts a curve; this one has no shift or no new crossing`); }
   }
   if (s.set !== undefined) err(`${w}: "set" is not used; the stimulus kind (data, graph, text) is the set kind`);
   if (s.study !== undefined) err(`${w}: "study" is not used in macroeconomics`);

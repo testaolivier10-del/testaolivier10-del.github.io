@@ -7,7 +7,8 @@
     "kind": "lf",
     "show": {
      "DLF": 1
-    }
+    },
+    "showEq": true
    }
   },
   "crowding-out-s2": {
@@ -194,7 +195,7 @@
     "options": [
      "The government is borrowing, so it takes funds out; demand rose and the rate rose.",
      "The graph shows the demand curve moving; supply stayed put.",
-     "Right: DLF shifted right along an upward-sloping supply curve, so the new crossing is higher: the real interest rate rose.",
+     "Right: DLF shifted right along an upward-sloping supply curve, so the new crossing E2 is higher: the real interest rate rose from r1 to r2.",
      "The quantity rose, but along a supply curve that slopes up, which means a higher rate."
     ]
    },
