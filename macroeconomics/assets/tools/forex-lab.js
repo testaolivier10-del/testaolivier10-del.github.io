@@ -42,19 +42,8 @@
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
 
-  function arrowH(x1, x2, y, cls){
-    var d = x2 > x1 ? 1 : -1;
-    return '<path class="fxl-arrow ' + cls + '" d="M' + f1(x1) + ' ' + f1(y) + 'H' + f1(x2 - d * 1.5) + '"/><path class="fxl-head ' + cls + '" d="M' + f1(x2) + ' ' + f1(y) + 'l' + (-d * 7) + ' -4.5v9z"/>';
-  }
-  function dot(p, label, cls, side){
-    var x = px(p[0]), y = py(p[1]), lx = side === 'left' ? x - 10 : x + 10;
-    return '<circle class="mac-gr-eq ' + (cls || '') + '" cx="' + f1(x) + '" cy="' + f1(y) + '" r="' + (cls === 'is-old' ? 4 : 5.5) + '"/>' +
-      (label ? '<text class="mac-gr-plabel fxl-plabel ' + (cls || '') + '" x="' + f1(lx) + '" y="' + f1(y + 4) + '" text-anchor="' + (side === 'left' ? 'end' : 'start') + '">' + label + '</text>' : '');
-  }
-  function guides(p, cls){ return '<path class="mac-gr-guide ' + (cls || '') + '" d="M' + f1(px(0)) + ' ' + f1(py(p[1])) + 'H' + f1(px(p[0])) + 'V' + f1(py(0)) + '"/>'; }
   function tag(svg){ return svg.replace(/(<g class="mac-gr-c" data-curve="(\w+)">[\s\S]*?<\/g>)<text class="mac-gr-clabel /g, '$1<text class="mac-gr-clabel fxl-c-$2 '); }
   function inject(svg, extra){ return svg.replace('</svg>', extra + '</svg>'); }
-  var E = function(n){ return 'E<tspan class="mac-gr-sub" dy="3">' + n + '</tspan>'; };
 
   /* ------------------------------------------------------------ explore */
   function explore(host){
@@ -123,15 +112,9 @@
       var spec = { kind: 'forex', names: { currency: X, other: Y } }, e = G.eq(spec, shifts), moved = Object.keys(shifts).length > 0;
       var r0 = which === 'x' ? n.base : C.evaluate({ fn: 'inverseRate', args: [n.base] }), r1 = F.rate(r0, e[1]);
       var label = 'The market for ' + pl(X) + ', priced in ' + pl(Y) + ' per ' + X + ': ' + G.describe(spec, { shifts: shifts }) + (moved ? ' The ' + X + (e[1] > 5 ? ' appreciates' : e[1] < 5 ? ' depreciates' : ' keeps its value') + (st.nums ? ', from ' + fmtRate(r0) + ' to ' + fmtRate(r1) + ' ' + pl(Y) + ' per ' + X : '') + '.' : '');
-      var svg = tag(G.svg(spec, { shifts: shifts, focus: which === 'x' ? st.focus : null }, { label: label })), x = [];
-      var side = e[0] < 5 - 1e-6 || (Math.abs(e[0] - 5) < 1e-6 && e[1] < 5) ? 'left' : 'right';
-      if(moved){
-        x.push('<text class="mac-gr-plabel is-old fxl-plabel" x="' + f1(px(5) + (side === 'left' ? 10 : -10)) + '" y="' + f1(py(5) + 4) + '" text-anchor="' + (side === 'left' ? 'start' : 'end') + '">' + E(1) + '</text>');
-        x.push(guides(e, 'fxl-now'), dot(e, E(2), 'fxl-now', side));
-        // which color: in the first market D is the "X-buying" family; in the mirror, S is
-        if(Math.abs(sh.D) >= 0.25) x.push(arrowH(px(7.8), px(7.8 + sh.D), py(2.2) - 9, which === 'x' ? 'fxl-k1' : 'fxl-k2'));
-        if(Math.abs(sh.S) >= 0.25) x.push(arrowH(px(6.6), px(6.6 + sh.S), py(6.6) - 9, which === 'x' ? 'fxl-k2' : 'fxl-k1'));
-      }
+      // The shared renderer draws the shift arrows, E1 and E2 and their axis marks (XR1, Q1 ...).
+      var svg = tag(G.svg(spec, { shifts: shifts, eq: moved ? e : null, focus: which === 'x' ? st.focus : null }, { label: label })), x = [];
+      svg = svg.replace(/>E([12])<\/text>/g, '>E<tspan class="mac-gr-sub" dy="3">$1</tspan></text>');
       if(st.nums){
         x.push('<text class="fxl-rate is-old" x="' + f1(px(0) + 5) + '" y="' + f1(py(5) + (moved && e[1] > 5 ? 14 : -5)) + '">' + fmtRate(r0) + '</text>');
         if(moved && Math.abs(e[1] - 5) > 0.05) x.push('<text class="fxl-rate" x="' + f1(px(0) + 5) + '" y="' + f1(py(e[1]) + (e[1] > 5 ? -5 : 14)) + '">' + fmtRate(r1) + '</text>');

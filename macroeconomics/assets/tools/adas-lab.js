@@ -45,10 +45,6 @@
   });
 
   /* ------------------------------------------------------ annotations */
-  function arrowH(x1, x2, y, cls){
-    var d = x2 > x1 ? 1 : -1;
-    return '<path class="adl-arrow ' + (cls || '') + '" d="M' + f1(x1) + ' ' + f1(y) + 'H' + f1(x2 - d * 1.5) + '"/><path class="adl-head ' + (cls || '') + '" d="M' + f1(x2) + ' ' + f1(y) + 'l' + (-d * 7) + ' -4.5v9z"/>';
-  }
   function dot(p, label, cls, side){
     // side: the free wedge between the crossing curves, left or right of the point
     var x = px(p[0]), y = py(p[1]), lx = side === 'left' ? x - 10 : x + 10;
@@ -88,7 +84,7 @@
       '<div class="adl-ctl"><div class="adl-shockrow"></div><div class="adl-btns"><button type="button" class="btn-press sm adl-long" disabled>Run the long run</button><button type="button" class="bt-btn adl-reset">Start over</button></div></div>' +
       '<div class="adl-say"></div><div class="adl-nums"></div>' +
       T.moreHtml('<div class="bt-radio"><input type="checkbox" id="adl-stack"><label for="adl-stack">Add each shock to the last one (stack shocks)</label></div>' +
-        '<div class="bt-radio"><input type="checkbox" id="adl-lab" checked><label for="adl-lab">Mark E1, E2, Y<sub>F</sub>, the gap and the shift arrows</label></div>' +
+        '<div class="bt-radio"><input type="checkbox" id="adl-lab" checked><label for="adl-lab">Mark the gap and the points A, B, C</label></div>' +
         '<p class="bt-small">You can also drag AD or SRAS on the graph, or tab to its handle and use the arrow keys.</p>', 'stack shocks, graph marks');
     var $ = function(sel){ return (LS ? LS.root : host).querySelector(sel) || host.querySelector(sel); };
     var fig = host.querySelector('.adl-fig'), adasEl = host.querySelector('.adl-adas'), pcEl = host.querySelector('.adl-pc');
@@ -109,52 +105,49 @@
 
     /* -------- the two pictures */
     function eqNow(){ return A.state(st.a, st.s); }
+    /* The shared renderer draws the curves, the shift arrows, E1 and E2 with
+       their axis marks (Y1, PL1 ...). This adds what the exam story needs:
+       YF for the starting output, E3 for the long run (with the short-run E2
+       and curve kept faded), the gap, and on the Phillips graph A, B, C and uN. */
+    function relabel(svg, n){
+      // the current point and its axis marks read E3, Y3, PL3 in the long run
+      return svg.replace('>E2</text></g>', '>E' + '<tspan class="mac-gr-sub" dy="3">' + n + '</tspan></text></g>')
+        .replace(/(<text class="mac-gr-mark "[^>]*>[^<]*<tspan class="mac-gr-sub" dy="3">)2(<\/tspan>)/g, '$1' + n + '$2');
+    }
     function adasSvg(){
       var S = eqNow(), spec = { kind: 'adas' }, shifts = {};
       if(Math.abs(st.a) > 1e-6) shifts.AD = st.a;
       if(Math.abs(st.s) > 1e-6) shifts.SRAS = st.s;
-      var moved = Object.keys(shifts).length > 0;
+      var moved = Object.keys(shifts).length > 0, lr = st.phase === 'long' && st.sr;
       var label = 'Aggregate demand and aggregate supply graph: ' + G.describe(spec, { shifts: shifts }) + ' ' + gapSentence(S);
-      var svg = tag(G.svg(spec, { shifts: shifts, focus: st.focus }, { label: label })), x = [];
-      if(st.labels){
-        x.push('<text class="adl-tick" x="' + px(5) + '" y="254" text-anchor="middle">' + sub('Y', 'F') + '</text>');
-        // E1's label goes on the side away from the point the economy moved to.
-        var away = (st.phase === 'long' && st.sr ? st.sr[0] : S.eq[0]) < 5 ? 'right' : 'left';
-        if(moved || (st.phase === 'long' && st.sr)) x.push('<text class="mac-gr-plabel is-old adl-plabel" x="' + f1(px(5) + (away === 'left' ? -10 : 10)) + '" y="' + f1(py(5) + 4) + '" text-anchor="' + (away === 'left' ? 'end' : 'start') + '">E' + '<tspan class="mac-gr-sub" dy="3">1</tspan></text>');
-        if(Math.abs(st.a) >= 0.25) x.push(arrowH(px(7.8), px(7.8 + st.a), py(2.2) - 9, 'adl-k-AD'));
-        if(Math.abs(st.s) >= 0.25) x.push(arrowH(px(6.6), px(6.6 + st.s), py(6.6) - 9, 'adl-k-SRAS'));
-        if(S.gap !== 'none' && Math.abs(S.gapSize) > 0.08){
-          var gy = py(0.75);
-          x.push('<path class="adl-gap" d="M' + f1(px(S.eq[0])) + ' ' + f1(gy) + 'H' + f1(px(5)) + '"/><path class="adl-gapend" d="M' + f1(px(S.eq[0])) + ' ' + f1(gy - 5) + 'v10M' + f1(px(5)) + ' ' + f1(gy - 5) + 'v10"/>');
-          var mid = (px(S.eq[0]) + px(5)) / 2;
-          x.push('<text class="adl-gaplabel" x="' + f1(mid) + '" y="' + f1(gy - 8) + '" text-anchor="middle">' + (S.gap === 'recessionary' ? 'Recessionary gap' : 'Inflationary gap') + '</text>');
-        }
+      var svg = tag(G.svg(spec, { shifts: shifts, focus: st.focus, eq: (moved || lr) && S.eq ? S.eq : null }, { label: label })), x = [];
+      // E1 sits on LRAS: its output mark is full-employment output, YF.
+      svg = svg.replace(/(<text class="mac-gr-mark is-old"[^>]*>)Y(<tspan class="mac-gr-sub" dy="3">1<\/tspan>)?<\/text>/, '$1Y<tspan class="mac-gr-sub" dy="3">F</tspan></text>');
+      if(lr) svg = relabel(svg, 3);
+      else svg = svg.replace('>E2</text></g>', '>E<tspan class="mac-gr-sub" dy="3">2</tspan></text></g>');
+      svg = svg.replace(/>E1<\/text>/, '>E<tspan class="mac-gr-sub" dy="3">1</tspan></text>');
+      if(st.labels && S.gap !== 'none' && Math.abs(S.gapSize) > 0.08){
+        var gy = py(0.75);
+        x.push('<path class="adl-gap" d="M' + f1(px(S.eq[0])) + ' ' + f1(gy) + 'H' + f1(px(5)) + '"/><path class="adl-gapend" d="M' + f1(px(S.eq[0])) + ' ' + f1(gy - 5) + 'v10M' + f1(px(5)) + ' ' + f1(gy - 5) + 'v10"/>');
+        x.push('<text class="adl-gaplabel" x="' + f1((px(S.eq[0]) + px(5)) / 2) + '" y="' + f1(gy - 8) + '" text-anchor="middle">' + (S.gap === 'recessionary' ? 'Recessionary gap' : 'Inflationary gap') + '</text>');
       }
-      var lr = st.phase === 'long' && st.sr;
       if(lr && Math.abs(st.srSras - st.s) > 0.2 && Math.abs(st.srSras) > 0.2) x.push(ghost('up', 5 + st.srSras, 'SRAS', '2'));
-      if((moved || lr) && S.eq){
-        if(lr) x.push(dot(st.sr, st.labels ? 'E<tspan class="mac-gr-sub" dy="3">2</tspan>' : '', 'is-old', st.sr[0] < 5 ? 'left' : 'right'));
-        x.push(guides(S.eq, 'adl-now'), dot(S.eq, st.labels ? 'E<tspan class="mac-gr-sub" dy="3">' + (st.phase === 'long' ? 3 : 2) + '</tspan>' : '', 'adl-now', lr ? (st.sr[0] < 5 ? 'right' : 'left') : S.eq[0] < 5 ? 'left' : 'right'));
-      }
+      if(lr) x.push(dot(st.sr, st.labels ? 'E<tspan class="mac-gr-sub" dy="3">2</tspan>' : '', 'is-old', st.sr[0] < 5 ? 'left' : 'right'));
       return inject(svg, x.join(''));
     }
     function pcSvg(){
       var S = eqNow(), shifts = {};
       if(Math.abs(S.srpc) > 1e-6) shifts.SRPC = S.srpc;
-      var moved = Math.abs(st.a) > 1e-6 || Math.abs(st.s) > 1e-6;
-      var letter = st.phase === 'long' ? 'C' : 'B';
-      var spec = { kind: 'phillips', pointLabel: letter };
+      var moved = Math.abs(st.a) > 1e-6 || Math.abs(st.s) > 1e-6, lr = st.phase === 'long' && st.sr;
+      var spec = { kind: 'phillips', pointLabel: lr ? 'C' : 'B' };
       var label = 'Phillips curves: ' + G.describe(spec, { shifts: shifts }) + ' ' + pcSentence(S);
-      var lr = st.phase === 'long' && st.sr;
       var svg = tag(G.svg(spec, { shifts: shifts, point: moved || lr ? S.point : null }, { label: label })), x = [];
+      // A sits on LRPC: its unemployment mark is the natural rate, uN.
+      svg = svg.replace(/(<text class="mac-gr-mark is-old"[^>]*>)u(<tspan class="mac-gr-sub" dy="3">1<\/tspan>)?<\/text>/, '$1u<tspan class="mac-gr-sub" dy="3">N</tspan></text>');
       if(lr && Math.abs(st.srSras - st.s) > 0.2 && Math.abs(st.srSras) > 0.2) x.push(ghost('down', 5 - st.srSras, 'SRPC', '2'));
-      if(st.labels){
-        x.push('<text class="adl-tick" x="' + px(5) + '" y="254" text-anchor="middle">' + sub('u', 'N') + '</text>');
-        x.push('<text class="mac-gr-plabel is-old adl-plabel" x="' + f1(px(5) - 7) + '" y="' + f1(py(5) + 17) + '" text-anchor="end">A</text>');
-        if(Math.abs(S.srpc) >= 0.25) x.push(arrowH(px(7.8), px(7.8 + S.srpc), py(2.2) - 9, 'adl-k-SRAS'));
-      }
+      if(st.labels) x.push('<text class="mac-gr-plabel is-old adl-plabel" x="' + f1(px(5) - 7) + '" y="' + f1(py(5) + 17) + '" text-anchor="end">A</text>');
       if((moved || lr) && S.point){
-        if(lr){ var b = [10 - st.sr[0], st.sr[1]]; x.push(dot(b, st.labels ? 'B' : '', 'is-old')); }
+        if(lr) x.push(dot([10 - st.sr[0], st.sr[1]], st.labels ? 'B' : '', 'is-old'));
         x.push(guides(S.point, 'adl-now'));
       }
       return inject(svg, x.join(''));

@@ -56,10 +56,6 @@
 .adl-fig [data-curve="LRAS"] .mac-gr-grab,.adl-fig .adl-pc .mac-gr-grab{cursor:default;}
 
 /* annotations */
-.adl-arrow{fill:none;stroke-width:2.2;stroke-linecap:round;}
-.adl-head{stroke:none;}
-.adl-arrow.adl-k-AD{stroke:var(--adl-ad);} .adl-head.adl-k-AD{fill:var(--adl-ad);}
-.adl-arrow.adl-k-SRAS{stroke:var(--adl-sras);} .adl-head.adl-k-SRAS{fill:var(--adl-sras);}
 .adl-gap,.adl-gapend{fill:none;stroke:var(--adl-gap);stroke-width:2.2;stroke-linecap:round;}
 .adl-gaplabel{fill:var(--adl-gap);font:800 11px var(--font-ui);}
 .adl-tick{fill:var(--ink);font:800 12px var(--font-ui);}
@@ -79,4 +75,3 @@
 .adl-pt{font:800 12.5px var(--font-ui);padding:1px 8px;border-radius:999px;background:var(--surface2,#f2f2f2);}
 .adl-pt.ok{color:var(--good-text,#1B7F3A);} .adl-pt.no{color:var(--bad-text,#B3261E);}
 @media (prefers-reduced-motion: reduce){.adl-tab,.adl-h{transition:none;}}
-.adl-qfig .mac-gr-handle{background:var(--white);color:var(--ink);}

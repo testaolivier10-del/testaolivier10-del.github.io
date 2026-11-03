@@ -461,10 +461,7 @@ abroad are left out; an import is shown in Explore as counted in C or I and subt
 imports out, since "where does it go" has two answers). Unemployment: a new graduate searching is frictional,
 discouraged workers are out of the labor force; seasonal unemployment is not used. Check against the CED's 2.1-2.3.
 
-### t3-graph-labels: two label clashes in `ApMacroGraph.svg` (open, 2026-11-03, for T1 or the lead)
+### t3-graph-labels: label clashes in `ApMacroGraph.svg` (resolved, 2026-11-03)
 
-A vertical curve's label (LRAS, MS, LRPC) is drawn with `text-anchor="end"` 4 px right of its line, so the text
-sits on the line; the faded and the shifted curve's labels collide when the shift is small; the PPC's label sits
-where a point on the curve often is. T3's tools work around all three on the rendered SVG (`tidy()` in
-`multiplier-lab.js`, `clearLabel()` in `ppc-trade.js`); a fix in `labelAt`/`curveLabel` would make the
-workarounds unnecessary.
+Vertical-curve labels over their line, colliding old and new labels and the PPC label under a point: fixed in the
+shared renderer by the lead; T3's local workarounds were removed and the graphs rechecked at 360 and 1280 px.
