@@ -96,7 +96,8 @@ curves that shift to a new equilibrium, so `ApMacroGraph`'s model (shapes, shift
 and `ApMacroGrade.graph` would each need a second paradigm (phases and turning points along a time path), and the
 drag renderer a different control. What Unit 2 needs is covered: the cycle as a lesson figure and as `ApMacroPlot`
 line data sets that set items ask about (peak, trough, expansion, the output gap against potential), and the PPC
-for unemployment. No released scoring guideline we read asks students to draw the cycle. Reopen if a person finds
+for unemployment. The research (`framework.md` section 8, "Every graph students must draw") lists the graphs FRQs ask for, and
+the business cycle is not among them. Reopen if a person finds
 that the exam does; then a `cycle` kind with `do: ["point"]` (place the peak, trough or a recession) is the
 smallest useful version. The original note:
 
