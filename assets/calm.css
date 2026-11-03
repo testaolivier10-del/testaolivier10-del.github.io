@@ -1,0 +1,66 @@
+/* Calm layer (preview, owner 2026-11-02: "it just feels too busy").
+   One focal point per screen, at most one line under a headline, no decoration
+   that does not help a decision, fewer boxes. Course colour stays as an accent only.
+   Loaded after every other stylesheet; selectors are prefixed with html to win. */
+
+/* 1. No grid paper, no glow */
+html body.home,html body{background-image:none!important}
+html .r3 .band{background:transparent!important;background-image:none!important;color:var(--ink)!important;overflow:visible}
+html .r3 .band::after{display:none!important}
+
+/* 2. No handwritten lines, eyebrow labels, rule labels or founder line in headers */
+html .hand,html .tryq__tip,html .r3 .band .issue,html .home-hero .eyebrow,html .r3 .kicker,html .r3 .fact-row,html .fact-row,
+html .home-hero .founder,html .r3 .band .founder,html .r3 .band .hero-pills,html .r3 .band .hero-alt,html .tryq__top .pill{display:none!important}
+
+/* 3. The header: a plain title row, no drawing, no tall coloured block */
+html .r3 .band .art{display:none!important}
+html .r3 .band .hwrap{grid-template-columns:minmax(0,1fr)!important;padding-top:28px!important;padding-bottom:20px!important;gap:0!important;border-bottom:1px solid var(--line)}
+html .r3 .band .mast{font:900 clamp(34px,4vw,46px)/1.05 var(--display)!important;letter-spacing:-.03em!important;color:var(--ink)!important}
+html .r3 .band .mast span{display:inline!important;color:var(--accent)!important}
+html .r3 .band .deck,html .r3 .band.short .deck{font:900 clamp(28px,3vw,36px)/1.1 var(--display)!important;letter-spacing:-.025em!important;color:var(--ink)!important;margin:4px 0 6px!important}
+html .r3 .band .deck span{color:var(--accent)!important;display:inline!important}
+html .r3 .band .lede{color:var(--muted)!important;font-size:16px!important;max-width:44em;margin:4px 0 14px!important}
+html .r3 .band .r3-crumb,html .r3 .band .crumbs,html .r3 .band .crumbs a,html .r3 .band [aria-current]{color:var(--muted)!important}
+html .r3 .band .r3-crumb a{color:var(--muted)!important}
+html .r3 .band .btn-chan{background:var(--ink)!important;color:var(--paper,#fff)!important;box-shadow:none!important}
+html .r3 .band .btn-ghost{color:var(--ink)!important;box-shadow:inset 0 0 0 1.5px var(--line)!important;background:transparent!important}
+html .r3 .band .hero-free,html .r3 .band .free{color:var(--muted)!important}
+html .r3 .band a:not(.btn-chan):not(.btn-ghost){color:var(--accent)!important}
+html .r3 .band .d5-lvl{color:var(--ink)!important;box-shadow:inset 0 0 0 1.5px var(--line)!important}
+html .r3 .band .d5-lvl small{color:var(--muted)!important}
+html .r3 .band [class*="chip"],html .r3 .band [class*="pill"]{color:var(--muted)!important;border-color:var(--line)!important;background:transparent!important}
+html .r3 .band *{text-shadow:none!important}
+
+/* 4. Content no longer overlaps the header */
+html .r3 .lead,html .r3 .lead.after-short{margin-top:28px!important}
+html .r3-under,html .r3 .r3-body{margin-top:0}
+html .cx-study .cx-layout,html .r3 .xshell{margin-top:24px}
+
+/* 5. Fewer boxes: flat cards, hairlines, no floating shadows */
+html .r3 .contents,html .tryq,html .r3 .plan,html .cx-card,html .cx-builder,html .r3 .step,html .cx-empty{box-shadow:none!important}
+html .r3 .contents{border-radius:16px}
+html .r3 .toc .n{font-size:28px!important;color:var(--muted)!important}
+html .r3 .toc .w small{color:var(--muted)!important}
+html .r3 .toc .w{font-size:16px!important}
+html .r3 .toc li a{padding:10px 0!important}
+
+/* 6. Side links are quiet outlines, not navy blocks */
+html .cx-link{background:transparent!important;color:var(--ink)!important;box-shadow:inset 0 0 0 1.5px var(--line)!important}
+html .cx-link small{color:var(--muted)!important}
+
+/* 7. Homepage: headline, one line, one action beside the question */
+html .home .lede{font-size:17px!important}
+html .home h1{font-size:clamp(40px,4.6vw,58px)!important}
+
+/* 8. Phone: same rules */
+@media (max-width:860px){
+  html .r3 .band .hwrap{padding-top:20px!important;padding-bottom:16px!important}
+  html .r3 .lead{margin-top:20px!important}
+}
+
+/* Homepage, page 1 of the one-at-a-time pass */
+html .home-hero .hero-more{display:none!important}
+html .home-hero{padding:56px 0 64px!important;gap:64px!important}
+html #subjects .home-sh p{display:none!important}
+html .subject-grid .ccard{box-shadow:none!important}
+html .home-hero .tryq::before{content:"Try one";display:block;font:800 12.5px var(--font-ui);color:var(--muted);margin:0 0 10px}

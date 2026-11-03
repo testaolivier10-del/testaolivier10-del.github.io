@@ -100,7 +100,13 @@
 
     var met = false;
     try { met = localStorage.getItem(MET_KEY) === '1'; } catch(e){}
-    if(!met) setTimeout(function(){ tip.classList.add('show'); }, 1200);
+    /* Streamline pass (owner 2026-11-02): the label greets a first visit for a few seconds, then the
+       button stands alone (its aria-label still names it). */
+    if(!met) setTimeout(function(){
+      tip.classList.add('show');
+      try { localStorage.setItem(MET_KEY, '1'); } catch(e){}
+      setTimeout(function(){ tip.classList.remove('show'); }, 6000);
+    }, 1200);
 
     // Reaching for the button is the earliest honest signal that someone is
     // about to ask, so the assistant starts downloading then.

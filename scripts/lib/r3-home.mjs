@@ -69,15 +69,12 @@ export function r3HomeMain(key, ctx) {
   const band = `<section class="band" aria-labelledby="r3Title"><div class="hwrap"><div>
 <p class="issue">${d.pill}${beta} <i></i> ${d.note}</p>
 <h1 class="mast" id="r3Title">${d.t1}<span>${d.t2}</span></h1>
-<p class="deck">${d.h1a} <span>${d.h1b}</span></p>
 <p class="hand">${d.hand}</p>
 <p class="lede">${ctx.lede || d.lede}</p>
 <div class="hero-ctas"><a class="btn-chan" id="heroPrimaryCta" href="${ctx.primaryHref}">${d.btn1}</a>${ctx.primaryScript || ''}<a class="btn-ghost" href="${L.btn2 || '#try'}">${d.btn2}</a></div>
 <a class="hero-continue" id="r3Resume" href="#" hidden><small>Pick up where you left off</small><b id="r3ResumeLabel"></b></a>
 <script>try{var r=(JSON.parse(localStorage.getItem('levl_resume')||'{}')||{})[${JSON.stringify(key)}];if(r&&typeof r.url==='string'&&/^\\/[^\\/]/.test(r.url)){var a=document.getElementById('r3Resume');a.href=r.url;document.getElementById('r3ResumeLabel').textContent=r.label||'Your last page';a.hidden=false;}}catch(e){}</script>
-<p class="hero-alt"><a href="${L.btn3}">${d.btn3} &rarr;</a></p>
-<ul class="hero-pills" aria-label="At a glance">${d.pills.map((p) => `<li>${p}</li>`).join('')}</ul>
-<p class="founder"><span class="av" aria-hidden="true">OT</span><span>${FOUNDER} <a href="${up}about.html">Why I built it</a></span></p>
+<p class="hero-free">${d.pills.filter((p) => !/^Progress saved|^Private by default|^No subscription/.test(p)).join(' &middot; ')}</p>
 </div><div class="art" aria-hidden="true"><img src="${up}assets/covers/art/${key}.svg" alt="" width="640" height="400" decoding="async" fetchpriority="high"></div></div></section>`;
 
   /* ---- In this course: the map, as a contents list ---- */
@@ -132,7 +129,7 @@ export function r3HomeMain(key, ctx) {
   const topic = key === 'nremt' ? s.tags[0] : s.tags[s.tags.length - 1];
   const tq = `tq-${key}`;
   const tryq = `<form class="tryq" id="tryq" aria-labelledby="${tq}">
-      <div class="tryq__top"><span class="pill">${d.short} &middot; ${topic}</span><p class="hand">try one, it&rsquo;s free</p></div>
+      <div class="tryq__top"><span class="pill">${d.short} &middot; ${topic}</span></div>
       <p class="tryq__stem" id="${tq}">${s.q}</p>
       <fieldset><legend>Choose one answer</legend>${s.opts.map((o, i) => `<label${i === T.ok ? ' class="ok"' : ''}><input type="radio" name="${tq}">${o}</label>`).join('')}</fieldset>
       <p class="hand tryq__tip">pick one to see why</p>
@@ -141,10 +138,10 @@ export function r3HomeMain(key, ctx) {
     </form>
 <script>(function(){var f=document.getElementById('tryq');if(!f)return;f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e.target.closest('label').classList.add('picked');f.classList.add('done');[].forEach.call(f.querySelectorAll('input'),function(i){i.disabled=true;});});f.addEventListener('submit',function(e){e.preventDefault();});})();</script>`;
 
-  const lead = `<div class="lead"><section class="contents" aria-labelledby="toc-h"><h2 id="toc-h">In this <span>course</span></h2><p class="sub">${d.map_lede}${d.mapsub ? ` ${d.mapsub}` : ''}</p><ol class="toc">${toc}</ol></section><div id="try">${tryq}</div></div>`;
+  /* ---- exam facts: one line under the contents list, where they explain the percentages ---- */
+  const factLine = `<p class="toc-facts"><b>${d.strip_label}:</b> ${(ctx.strip || d.strip).map(([, b, st]) => `${b} ${st}`).join(' &middot; ')}.${d.strip_note ? ` ${d.strip_note}` : ''}</p>`;
+  const lead = `<div class="lead"><section class="contents" aria-labelledby="toc-h"><h2 id="toc-h">In this <span>course</span></h2><p class="sub">${String(d.map_lede).split(/(?<=\.)\s/)[0]}</p><ol class="toc">${toc}</ol>${factLine}</section><div id="try">${tryq}</div></div>`;
 
-  /* ---- fact strip ---- */
-  const facts = `<div class="fact-row" aria-label="${d.strip_label}">${(ctx.strip || d.strip).map(([, b, st]) => `<span><span class="dot"></span><span><b>${b}</b> ${st}</span></span>`).join('')}</div>${d.strip_note ? `<p class="fact-note">${d.strip_label}. ${d.strip_note}</p>` : ''}`;
 
   /* ---- progress card ---- */
   const H = ctx.hooks;
@@ -161,11 +158,11 @@ export function r3HomeMain(key, ctx) {
   const reviewHref = L.review || 'review.html';
   const goalHref = L.goal || 'practice.html';
   const reviewHead = H.kind === 'ochem' ? 'h3' : 'h2';
-  const progress = `<div class="r3-progress">
+  const progress = `<div class="r3-progress r3-slim">
     <div class="hub-progress-card" id="${id('Level', 'heroProgress', 'heroProgress')}">
       <div class="hub-progress-top">
         <span class="hub-level-ring" id="${id('LvRing', 'heroLevelRing', 'heroLevelRing')}" aria-hidden="true">L1</span>
-        <div><p class="hub-level-title" id="${id('LvTitle', 'heroLevelTitle', 'heroLevelTitle')}">${lvTitle}</p><p class="hub-level-sub"><span id="${id('LvSub', 'heroLevelSub', 'heroLevelSub')}">Level 1 &middot; 0 XP</span> &middot; <span id="${id('XpLabel', 'heroXpLabel', 'heroXpLabel')}">0 / 100 XP to Level 2</span>. One level and one streak count across every LevlPrep course.</p></div>
+        <div><p class="hub-level-title" id="${id('LvTitle', 'heroLevelTitle', 'heroLevelTitle')}">${lvTitle}</p><p class="hub-level-sub"><span id="${id('LvSub', 'heroLevelSub', 'heroLevelSub')}">Level 1 &middot; 0 XP</span> &middot; <span id="${id('XpLabel', 'heroXpLabel', 'heroXpLabel')}">0 / 100 XP to Level 2</span><span class="hub-static">. One level and one streak count across every LevlPrep course.</span></p></div>
         <span class="hub-streak" id="${id('Streak', 'heroStreak', 'heroStreak')}" hidden><b id="${id('StreakN', 'heroStreakCount', 'heroStreakCount')}">0</b>-day streak</span>
       </div>
       <div class="hub-track" aria-hidden="true"><div class="hub-fill" id="${id('XpFill', 'heroXpFill', 'heroXpFill')}" style="width:2%"></div></div>
@@ -189,7 +186,18 @@ export function r3HomeMain(key, ctx) {
     <span class="cdesc">${n.p}</span><span class="chiprow">${chips}</span></div>`;
   const steps = d.steps.map(([a, b, g], i) => `<div class="step"><span class="n">${i + 1}</span><h3>${a}</h3><p>${b} <a class="go" href="${(L.steps || [])[i]}">${g}</a></p></div>`).join('');
   const examCard = `<a class="ccard" href="${L.exam}"><span class="clock"><b>${e.big}</b><span>${e.bigs}</span></span><span class="cmeta"><span class="cname">${e.cta}</span><span class="tag">${e.eye}</span></span><span class="cdesc">${e.p}${e.small ? ` ${e.small}` : ''}</span></a>`;
-  const story = `<p class="kicker">The lead <i></i></p><section class="story" aria-label="Notes, exams and how this course works">${notesCard}<div class="col"><h3>How this course works</h3>${steps}${examCard}</div></section>`;
+  void notesCard; void steps; void examCard;
+  const chipLinks = n.chips.map(([t2], i) => ((L.chips || [])[i] ? `<a href="${L.chips[i]}">${t2}</a>` : '')).filter(Boolean);
+  const stepLinks = [
+    [`<a href="${L.notes}">${n.cta.replace(/^Open the /, '').replace(/^./, (c) => c.toUpperCase())}</a>`, ...chipLinks.slice(0, Math.ceil(chipLinks.length / 2))],
+    chipLinks.slice(Math.ceil(chipLinks.length / 2)),
+    [`<a href="${L.exam}">${e.cta}</a>`],
+  ];
+  const study = `<section class="study" aria-labelledby="study-h"><h2 class="study-h" id="study-h">How to <span>study it</span></h2><div class="study-row">${d.steps.map(([a, b, g2], i) => {
+    const go = `<a class="go" href="${(L.steps || [])[i]}">${g2}</a>`;
+    const extra = (stepLinks[i] || []).filter((x) => !x.includes(`href="${(L.steps || [])[i]}"`));
+    return `<div class="step"><span class="n">${i + 1}</span><h3>${a}${i === 0 ? ' <span class="tag free">Notes free forever</span>' : ''}</h3><p>${b}</p><p class="step-go">${go}</p>${extra.length ? `<p class="links">${extra.join('')}</p>` : ''}</div>`;
+  }).join('')}</div></section>`;
 
   /* ---- tools, each with its own cover ---- */
   const toolRow = ([nm, desc, t]) => {
@@ -208,7 +216,7 @@ export function r3HomeMain(key, ctx) {
      the extra tool lines live on the Tools page. */
   const top = d.tools.slice(0, 3);
   const allN = d.tools.length;
-  const toolsBlock = `<p class="kicker">Tools <i></i></p><div class="dept">${top.map(toolRow).join('')}</div><p class="tools-more"><a class="go" href="${L.tools || 'tools.html'}">${allN > 3 ? `All ${allN} tools` : 'All tools'} &rarr;</a></p>${credit}`;
+  const toolsMore = `<a class="go" href="${L.tools || 'tools.html'}">${allN > 3 ? `All ${allN} tools` : 'All tools'} &rarr;</a>`;
 
   /* ---- only in this course ---- */
   const xs = d.extras.map((x, i) => {
@@ -255,12 +263,11 @@ export function r3HomeMain(key, ctx) {
     const name = d.deal.name;
     const free = pc.free.filter((x) => !/^Your progress/.test(x));
     const esc = (t) => String(t).replace(/&(?![a-z]+;|#\d+;)/g, '&amp;').replace(/</g, '&lt;');
-    const freeNote = d.trust && d.trust[0] === 'note' ? `<p class="freenote">${d.trust[1]}</p>` : '';
     deal = `<section class="home-deal" id="r3Deal" aria-label="Free and Premium">
     <div class="plan">
       <span class="pill">Free</span>
       <h3>Everything to start</h3>
-      <p class="plan__note">Start now, with no card.</p>${freeNote}
+      <p class="plan__note">Start now, with no card.</p>
       <ul>${free.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
       <a class="btn-ghost" href="${L.freeCta || ctx.primaryHref}">${d.deal.freecta}</a>
     </div>
@@ -281,13 +288,13 @@ export function r3HomeMain(key, ctx) {
   const g = d.guide;
   const qa = [[d.covers_h, d.covers.join(' ')]];
   const gp = g.p ? `${g.p} ` : '';
-  qa.push([g.h, `${gp}<a href="${L.guide}">${g.cta}</a>.<ul>${g.items.map((x) => `<li>${x}</li>`).join('')}</ul>`]);
+  qa.push([/\?$/.test(g.h) ? g.h : 'How should I study with this course?', `${gp}<a href="${L.guide}">${g.cta}</a>.<ul>${g.items.map((x) => `<li>${x}</li>`).join('')}</ul>`]);
   qa.push([s.legend_title || 'What kinds of questions are there?', `<ul class="legend">${s.legend.map(([a, b]) => `<li><i>${a}</i>${b}</li>`).join('')}</ul>${s.note || ''}`]);
   if (d.strip_note) qa.push(['Are the exam figures current?', d.strip_note]);
   if (d.beta) qa.push(['Has this course been reviewed?', `${d.beta_note} <a href="${up}about.html#report">Report a problem</a>.`]);
   qa.push(['Is this course free?', d.trust[0] === 'note' ? d.trust[1] : `All notes are free forever. ${d.deal.free[0]}.`]);
   qa.push(['Is LevlPrep affiliated with the exam?', d.foot.join(' ')]);
-  qa.push(['Who makes LevlPrep?', `An independent project, not a company or a training program. Premium is an optional one-time pass, and <a href="${up}premium.html">what is free</a> is listed course by course. No ads.`]);
+  qa.push(['Who makes LevlPrep?', `${FOUNDER} <a href="${up}about.html">Why I built it</a>. An independent project, not a company or a training program. Premium is an optional one-time pass, and <a href="${up}premium.html">what is free</a> is listed course by course. No ads.`]);
   qa.push(['How are the questions written?', `Every question in every course is original, written for LevlPrep with an explanation on each one. Automated checks look for answer-position and length tells. <a href="${up}sources.html">Sources and checks</a>.`]);
   qa.push(['How do I see what changed?', `Corrected questions, new lessons and site fixes are listed, dated, on <a href="${up}changelog.html">What&rsquo;s new</a>.`]);
   const faq = `<section class="home-faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2><div class="hub-faq">${qa.map(([q, a]) => `<details class="faq-item"><summary>${q}</summary><div class="ans">${a}</div></details>`).join('')}</div></section>`;
@@ -302,22 +309,22 @@ export function r3HomeMain(key, ctx) {
      the same-origin thumbnail linking to its notes page (where the click-to-load player is), never an
      iframe. Nothing when the course has no video yet. scripts/add-video.mjs reruns the home builders. ---- */
   const vids = (ctx.videos || loadVideos().data.videos || []).filter((v) => v.course === key)
-    .sort((a, b) => String(b.posted).localeCompare(String(a.posted))).slice(0, 3);
-  const watch = !vids.length ? '' : `<p class="kicker">Watch the lessons <i></i></p><div class="vstrip">${vids.map((v) => {
+    .sort((a, b) => String(b.posted).localeCompare(String(a.posted))).slice(0, 1);
+  const vcards = vids.map((v) => {
     const page = (v.pages || []).find((p) => /\/notes\//.test(p)) || v.pages[0];
     const t = displayTitle(v);
     const srcset = THUMB_WIDTHS.map((w) => `${up}${THUMB_DIR}/${v.id}-${w}.webp ${w}w`).join(', ');
     return `<a class="vcard" href="${up}${page}"><span class="vthumb"><img src="${up}${THUMB_DIR}/${v.id}-480.webp" srcset="${srcset}" sizes="(max-width: 760px) 100vw, 340px" width="1280" height="720" alt="" loading="lazy" decoding="async"><span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" focusable="false"><path d="M8 5.5v13l10.5-6.5z"/></svg></span><span class="vlen">${clock(v.seconds)}</span></span><span class="vtitle">${attr(t).replace(/</g, "&lt;")}</span><span class="vmeta">Video lesson &middot; ${Math.max(1, Math.round(v.seconds / 60))} min</span></a>`;
-  }).join('')}</div><p class="tools-more"><a class="go" href="https://www.youtube.com/@LevlPrep">All videos on our YouTube channel &rarr;</a></p>`;
+  }).join('');
+  const media = `<section class="media" aria-labelledby="media-h"><div class="media-h"><h2 id="media-h">${vids.length ? 'Watch and <span>try</span>' : 'Try the <span>tools</span>'}</h2><p>${vids.length ? '<a class="go" href="https://www.youtube.com/@LevlPrep">All videos &rarr;</a>' : ''}${toolsMore}</p></div><div class="media-row${vids.length ? '' : ' no-vid'}">${vcards}<div class="dept">${top.map(toolRow).join('')}</div></div>${credit}</section>`;
 
   return `<main id="main" class="r3 r3-home" data-cover="${key}">
 ${band}
 <div class="hwrap">
 ${lead}
-${facts}
 ${progress}
-${story}
-${watch ? watch + '\n' : ''}${toolsBlock}
+${study}
+${media}
 ${deal}
 ${faq}
 ${about}
