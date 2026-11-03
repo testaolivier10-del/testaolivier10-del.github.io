@@ -39,11 +39,6 @@
   }
   /* The plot frame of ApMacroGraph.svg (viewBox 320 x 300, plot from x 50,
      y 14, 250 by 226, data 0-10): used only to read a tap on the graph. */
-  /* The PPC's label sits where the point often is: move it clear (a local
-     workaround for ApMacroGraph.svg, in the T3 report). */
-  function clearLabel(svg){
-    try{ var cl = svg.querySelector('text.mac-gr-clabel:not(.is-old)'), pg = svg.querySelector('[data-pt]'); if(cl && pg){ var a = cl.getBBox(), b = pg.getBBox(); if(a.x < b.x + b.width + 4 && b.x < a.x + a.width + 4 && a.y < b.y + b.height + 4 && b.y < a.y + a.height + 4){ cl.setAttribute('x', String(+cl.getAttribute('x') + 34)); cl.setAttribute('y', String(+cl.getAttribute('y') + 30)); } } }catch(e){}
-  }
   var GF = { W: 320, H: 300, L: 50, T: 14, PW: 250, PH: 226 };
   var NAMES = { x: 'Robots', y: 'Pizzas' };
   var RWHY = {
@@ -121,7 +116,6 @@
       var lab = 'Production possibilities curve for robots and pizzas' + (st.shift ? ', shifted ' + (st.shift > 0 ? 'out' : 'in') + ' from the faded original' : '') + '. The economy is at ' + Math.round(pt[0] * 10) + ' robots and ' + Math.round(pt[1] * 10) + ' pizzas, ' + reg + ' the curve.';
       box.innerHTML = G.svg({ kind: 'ppc', names: NAMES, do: ['point'], pointLabel: 'Now' }, { shifts: sh, point: pt }, { label: lab });
       var svg = box.querySelector('svg');
-      clearLabel(svg);
       svg.addEventListener('pointerdown', function(ev){
         var b = svg.getBoundingClientRect(), px = (ev.clientX - b.left) * GF.W / b.width, py = (ev.clientY - b.top) * GF.H / b.height;
         var dx = (px - GF.L) / GF.PW * 10, dy = 10 - (py - GF.T) / GF.PH * 10;
@@ -196,7 +190,6 @@
         el.appendChild(box);
         if(p.fig.graph){
           box.innerHTML = '<div class="pt-qgraph">' + G.svg(p.fig.graph, { point: p.fig.point }, { label: 'Production possibilities curve for ' + p.fig.graph.names.x.toLowerCase() + ' and ' + p.fig.graph.names.y.toLowerCase() + ' with point X marked.' }) + '</div>';
-          requestAnimationFrame(function(){ var sv = box.querySelector('svg'); if(sv) clearLabel(sv); });
           return;
         }
         box.innerHTML = (p.fig.html || '') + (p.fig.plot ? '<div class="pt-qplot"></div>' : '');

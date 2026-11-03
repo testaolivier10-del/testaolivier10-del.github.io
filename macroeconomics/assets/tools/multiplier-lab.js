@@ -43,24 +43,6 @@
     return { el: el, set: set };
   }
   function f1(v){ return Math.round(v * 10) / 10; }
-  /* Local workaround for two label clashes in ApMacroGraph.svg (reported to the
-     lead, docs/apmacro-needs-author.md T3): a vertical curve's label is drawn
-     over its own line, and the faded and the shifted curve's labels collide
-     when the shift is small. Runs on the rendered SVG only. */
-  var VERT = /^(LRAS|MS|LRPC)/;
-  function tidy(host){
-    var svg = host && host.querySelector('svg.mac-graph-svg');
-    if(!svg || !svg.getBBox) return;
-    var ts = [].slice.call(svg.querySelectorAll('text.mac-gr-clabel'));
-    ts.forEach(function(t){ if(VERT.test(t.textContent)){ t.setAttribute('text-anchor', 'start'); t.setAttribute('x', String(+t.getAttribute('x') + 4)); } });
-    for(var pass = 0; pass < 3; pass++) for(var i = 0; i < ts.length; i++) for(var j = 0; j < ts.length; j++){
-      if(i === j) continue;
-      var a, b;
-      try{ a = ts[i].getBBox(); b = ts[j].getBBox(); }catch(e){ return; }
-      var hit = a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height;
-      if(hit && ts[i].classList.contains('is-old')) ts[i].setAttribute('y', String(+ts[i].getAttribute('y') - 14));
-    }
-  }
   /* Signed bars with a zero line: cols [{ label, parts: [{ v, cls }], dot?, note? }].
      Drawn at the box's pixel size so the text stays readable at 360 px. */
   function bars(box, cols, o){
@@ -223,7 +205,6 @@
       var lab = 'AD-AS graph: ' + (rec ? 'a recessionary gap, real GDP below full employment at LRAS' : 'an inflationary gap, real GDP above full employment at LRAS') + '. ' +
         (steps ? 'AD has shifted ' + (steps > 0 ? 'right' : 'left') + '; ' + (closed ? 'the new equilibrium is at full employment.' : state === 'over' ? 'it has gone past full employment.' : state === 'wrong' ? 'the gap is wider.' : 'part of the gap is left.') : 'AD has not moved.');
       figs.gap.querySelector('.ml-graph').innerHTML = G.svg(spec, { shifts: shifts, eq: e }, { label: lab });
-      tidy(figs.gap.querySelector('.ml-graph'));
       var pctClosed = Math.max(-100, Math.min(200, g.frac * 100));
       figs.gap.querySelector('.ml-meter').innerHTML = '<p class="ml-mh">Gap: ' + usd(st.gsize, 'billion') + ' ' + (rec ? 'below' : 'above') + ' full employment</p>' +
         '<div class="ml-track" aria-hidden="true"><span class="ml-fill is-' + state + '" style="width:' + Math.max(0, Math.min(100, pctClosed / 2)) + '%"></span><i class="ml-goal"></i></div>' +
@@ -262,7 +243,6 @@
       void res;
       var mspec = { kind: 'money', do: [] }, msh = m.dm ? { MS: m.dm > 0 ? 1 : -1 } : {};
       figs.money.querySelector('.ml-mm').innerHTML = G.svg(mspec, { shifts: msh, eq: m.dm ? G.eq(mspec, msh) : null }, { label: 'Money market (limited reserves): money supply ' + (m.dm > 0 ? 'shifts right and the nominal interest rate falls' : 'shifts left and the nominal interest rate rises') + '.' });
-      tidy(figs.money.querySelector('.ml-mm'));
       var head = { cash: 'A cash deposit: no new money at first, but loans can add up to <b>' + usd(m.dm, 'million') + '</b>.',
         buyBank: 'The Fed buys bonds from a bank: all ' + usd(st.X, 'million') + ' is excess, so the money supply can grow by <b>' + usd(m.dm, 'million') + '</b>.',
         buyPublic: 'The Fed buys bonds from the public: ' + usd(st.X, 'million') + ' of new deposits plus loans, up to <b>' + usd(m.dm, 'million') + '</b>.',
@@ -318,7 +298,6 @@
       var spec = { kind: 'adas', start: { AD: rec ? -1 : 1 }, do: [] }, sh = closed ? { AD: rec ? 1 : -1 } : {};
       fig.innerHTML = '<div class="ml-qgraph">' + G.svg(spec, { shifts: sh, eq: closed ? G.eq(spec, sh) : null }, { label: 'AD-AS graph: real GDP of ' + usd(v.y, 'billion') + ' is ' + (rec ? 'below' : 'above') + ' full employment (' + usd(v.yf, 'billion') + ', at LRAS).' + (closed ? ' AD has shifted to close the gap.' : '') }) + '</div>' +
         '<p class="ml-qcap">Real GDP ' + usd(v.y, 'billion') + ' · full employment ' + usd(v.yf, 'billion') + (closed ? ' · AD shifted ' + (rec ? 'right' : 'left') + ' by ' + (v.tool === 'G' ? 'purchases' : 'taxes') + ' of ' + usd(Math.abs(v.need), 'billion') : '') + '</p>';
-      tidy(fig);
       return;
     }
     if(p.type === 'money'){
