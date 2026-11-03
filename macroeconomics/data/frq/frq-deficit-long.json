@@ -21,12 +21,13 @@
   "2.B",
   "3.B"
  ],
+ "scenario": "Tamsin, an invented country, is in long-run equilibrium at full employment. Its government raises spending on public services by 60 billion dollars a year and pays for it by borrowing, so its budget deficit grows. Assume Tamsin's central bank takes no action.",
  "parts": [
   {
    "label": "A",
    "points": 3,
    "type": "graph",
-   "prompt": "Tamsin, an invented country, is in long-run equilibrium at full employment. Its government raises spending on public services by 60 billion dollars a year and pays for it by borrowing, so its budget deficit grows. Assume Tamsin's central bank takes no action. <b>Draw</b> a correctly labeled AD-AS graph showing Tamsin's long-run equilibrium, with LRAS, PL1 and YF. <b>Show</b> the short-run effect of the rise in government spending, labeling the new price level PL2 and real output Y2.",
+   "prompt": "<b>Draw</b> a correctly labeled AD-AS graph showing Tamsin's long-run equilibrium, with LRAS, PL1 and YF. <b>Show</b> the short-run effect of the rise in government spending, labeling the new price level PL2 and real output Y2.",
    "graph": {
     "kind": "adas",
     "do": [

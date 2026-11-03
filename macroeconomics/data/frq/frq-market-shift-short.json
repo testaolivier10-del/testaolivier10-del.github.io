@@ -35,12 +35,13 @@
    ]
   }
  },
+ "scenario": "Cheese is an input in making frozen pizza, and its price rises sharply.",
  "parts": [
   {
    "label": "A",
    "points": 3,
    "type": "graph",
-   "prompt": "Cheese is an input in making frozen pizza, and its price rises sharply. <b>Draw</b> a correctly labeled graph of the market for frozen pizza and <b>show</b> the effect of the rise in the price of cheese. Label the new equilibrium price P2 and the new equilibrium quantity Q2.",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the market for frozen pizza and <b>show</b> the effect of the rise in the price of cheese. Label the new equilibrium price P2 and the new equilibrium quantity Q2.",
    "graph": {
     "kind": "sd",
     "do": [

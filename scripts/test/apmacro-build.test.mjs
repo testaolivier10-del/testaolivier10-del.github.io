@@ -187,7 +187,9 @@ test('FRQ pages: long (10 points) then short (5), graph parts carried with their
   assert.deepEqual(A.graph.do, ['label', 'shift', 'equilibrium']);
   assert.deepEqual(A.rubric.map(r => r.auto), ['labels', 'shift', 'equilibrium', 'outcome'], 'one rubric point per graph check');
   assert.match(long.stimulus.html, /<table/);
+  assert.match(long.scenario, /^A placeholder economy/, 'the scenario goes out with the question');
   const page = readFileSync(join(root, `${D}/frq/frq-placeholder-long.html`), 'utf8');
+  assert.ok(page.indexOf('class="mac-frq-scenario"') > -1 && page.indexOf('class="mac-frq-scenario"') < page.indexOf('class="mac-frq-parts"'), 'the scenario before the parts');
   assert.match(page, /class="mac-lines"/, 'printable lined space');
   assert.match(page, /class="mac-frq-grid"/, 'a grid to draw the graph on paper');
   assert.match(page, /four-function calculator/);
@@ -263,6 +265,8 @@ test('an FRQ out of the exam shape fails the content check', () => {
   assert.match(broken(editF('frq-placeholder-long', f => { f.parts[0].graph.key.outcome = { output: 'up' }; })), /key shifts give "down"/);
   assert.match(broken(editF('frq-placeholder-long', f => { f.parts[2].label = 'third'; })), /label is A, B/);
   assert.match(broken(editF('frq-placeholder-short', f => { f.study = {}; })), /"study" is not used/);
+  assert.match(broken(editF('frq-placeholder-long', f => { f.scenario = '<table><tr><td>A placeholder economy in a table</td></tr></table>'; })), /scenario is plain text/);
+  assert.match(broken(editF('frq-placeholder-long', f => { f.scenario = 'A placeholder economy. <b>Draw</b> its graph.'; })), /the tasks .* go in the parts/);
 });
 
 test('an FRQ may not use a term taught after the topic it unlocks with; refiling it on that topic fixes it', () => {

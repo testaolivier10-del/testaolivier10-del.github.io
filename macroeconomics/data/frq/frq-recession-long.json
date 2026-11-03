@@ -22,12 +22,13 @@
   "2.B",
   "3.B"
  ],
+ "scenario": "Calder is an invented country in a recessionary gap: its real GDP is 80 billion dollars below full-employment output. Its marginal propensity to consume (MPC) is 0.75. The government decides to raise its purchases of goods and services.",
  "parts": [
   {
    "label": "A",
    "points": 3,
    "type": "graph",
-   "prompt": "Calder is an invented country in a recessionary gap: its real GDP is 80 billion dollars below full-employment output. Its marginal propensity to consume (MPC) is 0.75. The government decides to raise its purchases of goods and services. <b>Draw</b> a correctly labeled AD-AS graph showing Calder's recessionary gap, with LRAS, and <b>show</b> the short-run effect of the rise in government purchases on the price level and real GDP.",
+   "prompt": "<b>Draw</b> a correctly labeled AD-AS graph showing Calder's recessionary gap, with LRAS, and <b>show</b> the short-run effect of the rise in government purchases on the price level and real GDP.",
    "graph": {
     "kind": "adas",
     "do": [

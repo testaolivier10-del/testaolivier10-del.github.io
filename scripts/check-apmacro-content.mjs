@@ -552,6 +552,13 @@ export function checkFrq(fid, f, map, figures = {}) {
   for (const k of ['study', 'sources', 'restricted', 'graphSpec', 'drawSpec']) if (f[k] !== undefined) err(`"${k}" is not used in macroeconomics FRQs`);
   for (const t of allStrings({ ...f, parts: (f.parts || []).map(p => ({ ...p, graph: undefined })) })) for (const m of [...excludedProblems(t), ...mythProblems(t), ...languageProblems(t)]) err(m);
   for (const t of allStrings(f)) for (const m of mathProblems(t)) err(`math: ${m}`);
+  // scenario: the text that sets the question up, shown before the parts (and
+  // before the data). Plain text with inline emphasis only.
+  if (f.scenario !== undefined) {
+    if (typeof f.scenario !== 'string' || strip(f.scenario).trim().length < 20) err('scenario is the text before the parts (a sentence or more)');
+    else { const tags = [...f.scenario.matchAll(/<\/?([a-z0-9]+)[^>]*>/gi)].map(m => m[1].toLowerCase()).filter(t => !['b', 'i', 'em', 'strong', 'sub', 'sup'].includes(t)); if (tags.length) err(`scenario is plain text with inline emphasis only, not <${tags[0]}>`); }
+    if (/<b>(Draw|Identify|Calculate|Explain|Show|Plot|Label|Define|State)<\/b>/.test(f.scenario || '')) err('scenario sets the question up; the tasks (Draw, Identify, ...) go in the parts');
+  }
   if (f.stimulus) checkStimulus(`${fid}.stimulus`, { kind: 'data', ...f.stimulus }, figures, err);
   if (f.type === 'long' && !(f.parts || []).some(p => p.type === 'graph')) err('a long question has at least one graph part (type "graph")');
   if (map) {

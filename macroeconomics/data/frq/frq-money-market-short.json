@@ -17,12 +17,13 @@
   "2.A",
   "3.B"
  ],
+ "scenario": "The price level in the invented country of Wren rises, and its central bank keeps the money supply unchanged.",
  "parts": [
   {
    "label": "A",
    "points": 3,
    "type": "graph",
-   "prompt": "The price level in the invented country of Wren rises, and its central bank keeps the money supply unchanged. <b>Draw</b> a correctly labeled graph of the money market and <b>show</b> the effect of the rise in the price level on the nominal interest rate.",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the money market and <b>show</b> the effect of the rise in the price level on the nominal interest rate.",
    "graph": {
     "kind": "money",
     "do": [

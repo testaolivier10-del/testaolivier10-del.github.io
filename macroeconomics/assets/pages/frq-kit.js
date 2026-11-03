@@ -59,10 +59,12 @@
   function load(b, id){ return get(b, 'assets/frq/' + id + '.json'); }
   function placePaths(h){ return String(h || '').replace(/(src|href)="figures\//g, '$1="' + base() + 'figures/'); }
   /* A question's data (a table, a chart), when it has any (built by build-apmacro.mjs). */
+  /* The scenario (text before the parts, f.scenario), then the data. */
   function stim(f){
-    if(!f.stimulus) return '';
+    var sc = f.scenario ? '<p class="mac-fq-scenario">' + f.scenario + '</p>' : '';
+    if(!f.stimulus) return sc;
     var id = 'frqs-' + f.id + '-' + (++uid);
-    return '<section class="mac-stim" aria-labelledby="' + id + '"><p class="mac-stim-k">Data</p><h3 id="' + id + '">' + (f.stimulus.title || '') + '</h3>' + placePaths(f.stimulus.html) + '</section>';
+    return sc + '<section class="mac-stim" aria-labelledby="' + id + '"><p class="mac-stim-k">Data</p><h3 id="' + id + '">' + (f.stimulus.title || '') + '</h3>' + placePaths(f.stimulus.html) + '</section>';
   }
   /* A graph part (type "graph", docs/apmacro-architecture.md): drawn on the
      page with ApMacroGraph (paper gets a grid), and its rubric points that

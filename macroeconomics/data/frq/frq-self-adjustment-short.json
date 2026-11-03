@@ -15,12 +15,13 @@
   "2.A",
   "3.A"
  ],
+ "scenario": "Rivon is an invented country whose real GDP is above full-employment output, and its government takes no policy action.",
  "parts": [
   {
    "label": "A",
    "points": 3,
    "type": "graph",
-   "prompt": "Rivon is an invented country whose real GDP is above full-employment output, and its government takes no policy action. <b>Draw</b> a correctly labeled AD-AS graph showing Rivon's current short-run equilibrium, with LRAS, and <b>show</b> the long-run adjustment and the new long-run equilibrium.",
+   "prompt": "<b>Draw</b> a correctly labeled AD-AS graph showing Rivon's current short-run equilibrium, with LRAS, and <b>show</b> the long-run adjustment and the new long-run equilibrium.",
    "graph": {
     "kind": "adas",
     "do": [

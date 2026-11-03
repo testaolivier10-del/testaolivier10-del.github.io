@@ -18,12 +18,13 @@
   "2.A",
   "3.B"
  ],
+ "scenario": "The government of Corvel, an invented country, runs a large budget deficit and pays for it by borrowing.",
  "parts": [
   {
    "label": "A",
    "points": 3,
    "type": "graph",
-   "prompt": "The government of Corvel, an invented country, runs a large budget deficit and pays for it by borrowing. <b>Draw</b> a correctly labeled graph of Corvel's loanable funds market. <b>Show</b> the effect of the government's borrowing on the real interest rate, and label the new real interest rate r2.",
+   "prompt": "<b>Draw</b> a correctly labeled graph of Corvel's loanable funds market. <b>Show</b> the effect of the government's borrowing on the real interest rate, and label the new real interest rate r2.",
    "graph": {
     "kind": "lf",
     "do": [

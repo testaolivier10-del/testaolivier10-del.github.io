@@ -20,11 +20,12 @@
   "3.A",
   "3.C"
  ],
+ "scenario": "The invented country of Calder is producing above full-employment output, and its price level is rising. Calder's central bank operates with <b>limited reserves</b>.",
  "parts": [
   {
    "label": "A",
    "points": 1,
-   "prompt": "The invented country of Calder is producing above full-employment output, and its price level is rising. Calder's central bank operates with <b>limited reserves</b>. <b>Identify</b> the open market operation the central bank should use to close the gap.",
+   "prompt": "<b>Identify</b> the open market operation the central bank should use to close the gap.",
    "rubric": [
     {
      "point": "States that the central bank sells government bonds (an open market sale)",

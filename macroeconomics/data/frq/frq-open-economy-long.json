@@ -21,12 +21,13 @@
   "2.B",
   "3.B"
  ],
+ "scenario": "Arland and Belvia are invented countries that trade with each other, and savers in each can buy assets in the other. Arland's currency is the arl and Belvia's is the bel. Both economies begin in long-run equilibrium. Arland's government increases its spending and pays for it by borrowing, which raises its budget deficit.",
  "parts": [
   {
    "label": "A",
    "points": 3,
    "type": "graph",
-   "prompt": "Arland and Belvia are invented countries that trade with each other, and savers in each can buy assets in the other. Arland's currency is the arl and Belvia's is the bel. Both economies begin in long-run equilibrium. Arland's government increases its spending and pays for it by borrowing, which raises its budget deficit. <b>Draw</b> a correctly labeled graph of the loanable funds market in Arland and <b>show</b> the effect of the increase in government borrowing on the real interest rate in Arland.",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the loanable funds market in Arland and <b>show</b> the effect of the increase in government borrowing on the real interest rate in Arland.",
    "graph": {
     "kind": "lf",
     "do": [

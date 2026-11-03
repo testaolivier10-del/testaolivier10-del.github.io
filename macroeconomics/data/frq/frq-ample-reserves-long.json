@@ -19,11 +19,12 @@
   "3.A",
   "3.B"
  ],
+ "scenario": "The invented country of Ostra is in a recession: real GDP is below full-employment output. Ostra's central bank operates with <b>ample reserves</b>.",
  "parts": [
   {
    "label": "A",
    "points": 1,
-   "prompt": "The invented country of Ostra is in a recession: real GDP is below full-employment output. Ostra's central bank operates with <b>ample reserves</b>. <b>Identify</b> the change the central bank should make to its administered interest rates to close the gap.",
+   "prompt": "<b>Identify</b> the change the central bank should make to its administered interest rates to close the gap.",
    "rubric": [
     {
      "point": "States that the central bank lowers the interest rate on reserve balances (an administered rate)",

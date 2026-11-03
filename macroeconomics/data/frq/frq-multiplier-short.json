@@ -14,11 +14,12 @@
   "3.C",
   "2.A"
  ],
+ "scenario": "Pellam is an invented country whose real GDP is 200 billion dollars below full-employment output. Its marginal propensity to consume (MPC) is 0.8. Assume the price level does not change.",
  "parts": [
   {
    "label": "A",
    "points": 1,
-   "prompt": "Pellam is an invented country whose real GDP is 200 billion dollars below full-employment output. Its marginal propensity to consume (MPC) is 0.8. Assume the price level does not change. <b>Calculate</b> Pellam's spending multiplier. Show your work.",
+   "prompt": "<b>Calculate</b> Pellam's spending multiplier. Show your work.",
    "rubric": [
     {
      "point": "Spending multiplier of 5, with work shown: 1 / (1 - 0.8) or 1 / 0.2",

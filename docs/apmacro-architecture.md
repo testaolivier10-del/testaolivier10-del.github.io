@@ -216,10 +216,13 @@ Statistics (2025)"). The bank index marks each item's set kind (`d`, `g`, `t`).
 
 ### FRQ: `data/frq/<id>.json`
 
-`{ id, type: "long" | "short", title, points: 10 | 5, units, topics, practices, stimulus?, parts: [{ label,
+`{ id, type: "long" | "short", title, points: 10 | 5, units, topics, practices, scenario?, stimulus?, parts: [{ label,
 prompt, points, rubric: [{ point, accept, auto? }], sample, type?, graph?, write? }] }`. Labels `A`-`H`, sub-parts
-`A(i)`. A long question has at least one graph part. `stimulus` (optional) is a data table or chart shown above the
-parts. No `study`, `sources` or `restricted`.
+`A(i)`. A long question has at least one graph part. `scenario` (optional, added 2026-11-03) is the text that sets
+the question up, shown before the data and the parts as the exam lays it out (plain text with inline emphasis
+only; no task verbs, which belong to the parts); `stimulus` (optional) is a data table or chart shown above the
+parts. Both go out in `assets/frq/<id>.json`, the FRQ page and `frq-kit.js` (practice, exams, print). No `study`,
+`sources` or `restricted`.
 
 ## Generator: `scripts/build-apmacro.mjs` (+ `scripts/lib/apmacro-build.mjs`, `apmacro-entry.mjs`, `apmacro-exams.mjs`, `apmacro-mathlib.mjs`)
 

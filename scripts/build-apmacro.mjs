@@ -778,8 +778,9 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
   const FRQ_TYPE_NAME = { long: 'Long free-response question', short: 'Short free-response question' };
   const FRQ_MINUTES = { long: 25, short: 12 };
   const FRQ_ORDER = Object.keys(FRQ_TYPE_NAME);
-  /* What the student reads besides the prompts: the question's data (a
-     table, a chart), when it has any. */
+  /* What the student reads besides the prompts: the scenario (f.scenario,
+     text shown before the parts, as the exam sets a question up), then the
+     question's data (a table, a chart), when it has any. */
   const frqStimulus = f => f.stimulus ? { kind: 'data', ...f.stimulus } : null;
   const frqs = Object.values(C.frq)
     .filter(f => f && f.id && FRQ_TYPE_NAME[f.type] && (f.units || []).length && f.units.every(u => C.published.has(u)) && (f.topics || []).every(t => map.topicById(t)))
@@ -790,6 +791,7 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
     return {
       id: f.id, type: f.type, typeName: FRQ_TYPE_NAME[f.type], points: f.points, title: frqTitle(f), units: f.units, topics: f.topics, practices: f.practices,
       ...(f.placeholder ? { placeholder: true } : {}),
+      ...(f.scenario ? { scenario: f.scenario } : {}),
       ...(frqStimulus(f) ? { stimulus: { title: frqStimulus(f).title || '', html: stimulusBody(C, frqStimulus(f), '') } } : {}),
       parts: f.parts.map(p => ({ label: p.label, prompt: p.prompt, points: p.points, rubric: p.rubric, sample: p.sample, ...(p.type ? { type: p.type } : {}), ...(p.graph ? { graph: p.graph } : {}), ...(p.write ? { write: p.write } : {}) })),
     };
@@ -818,6 +820,7 @@ ${bodyOpen(` data-frq="${f.id}"`)}
   <article class="mac-frq" aria-labelledby="h-frq-q">
     <h2 id="h-frq-q" class="sr-only">The question</h2>
     <p class="mac-frq-print-head">Name: ______________________ &nbsp; Date: ____________ &nbsp; ${esc(title)} (${f.points} points)</p>
+    ${f.scenario ? `<p class="mac-frq-scenario">${f.scenario}</p>` : ''}
     ${frqStimulus(f) ? stimulusPanel(`frq-${f.id}-1`, frqStimulus(f), stimulusBody(C, frqStimulus(f), depth)) : ''}
     <ol class="mac-frq-parts">${f.parts.map(p => `<li class="mac-frq-part" data-part="${esc(p.label)}"><p class="mac-frq-prompt"><b class="mac-frq-label">(${esc(p.label)})</b> ${p.prompt} <span class="mac-small">[${p.points} point${p.points === 1 ? '' : 's'}]</span></p>${p.type === 'graph' ? '<div class="mac-frq-grid" aria-hidden="true"></div>' + lines(3) : lines(Math.max(5, p.points * 6))}</li>`).join('')}</ol>
   </article>

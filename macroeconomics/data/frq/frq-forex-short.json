@@ -17,12 +17,13 @@
   "3.B",
   "2.A"
  ],
+ "scenario": "Arland and Belvia are invented countries that trade with each other. Arland's currency is the dollar and Belvia's is the bel. Belvia's inflation rate rises sharply while Arland's does not change.",
  "parts": [
   {
    "label": "A",
    "points": 3,
    "type": "graph",
-   "prompt": "Arland and Belvia are invented countries that trade with each other. Arland's currency is the dollar and Belvia's is the bel. Belvia's inflation rate rises sharply while Arland's does not change. <b>Draw</b> a correctly labeled graph of the foreign exchange market for Arland's dollar and <b>show</b> the effect of the change in Belvia's inflation rate on the international value of the dollar.",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the foreign exchange market for Arland's dollar and <b>show</b> the effect of the change in Belvia's inflation rate on the international value of the dollar.",
    "graph": {
     "kind": "forex",
     "names": {

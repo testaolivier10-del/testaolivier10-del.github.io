@@ -15,12 +15,13 @@
   "2.A",
   "3.A"
  ],
+ "scenario": "Sorell, an invented country, is in long-run equilibrium with unemployment at its natural rate of 4 percent and actual and expected inflation of 3 percent. Then a sharp fall in consumer confidence lowers consumption spending.",
  "parts": [
   {
    "label": "A",
    "points": 3,
    "type": "graph",
-   "prompt": "Sorell, an invented country, is in long-run equilibrium with unemployment at its natural rate of 4 percent and actual and expected inflation of 3 percent. Then a sharp fall in consumer confidence lowers consumption spending. <b>Draw</b> a correctly labeled graph of the short-run and long-run Phillips curves. Label the starting point A. <b>Show</b> the short-run effect of the fall in consumption by placing point B.",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the short-run and long-run Phillips curves. Label the starting point A. <b>Show</b> the short-run effect of the fall in consumption by placing point B.",
    "graph": {
     "kind": "phillips",
     "do": [

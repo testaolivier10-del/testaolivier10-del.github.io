@@ -294,7 +294,10 @@ hyperinflations from money creation to pay government bills (`money-growth-infla
 high inflation in the 1960s and stagflation after the 1970s oil price jumps (`phillips-curve` hook). Verify
 before publishing; every number in items is invented and labeled.
 
-### e-frq-scenario: FRQ scenario text sits in part A's prompt (open, 2026-11-03)
+### e-frq-scenario: FRQ scenario text sits in part A's prompt (resolved, 2026-11-03)
+
+Resolved by the integrator: FRQs have a text `scenario` field shown before the parts (generator, `checkFrq`,
+`frq-kit.js`); the opening scenario of part A moved there in 13 FRQs (every author's, not only E's). The original note:
 
 The FRQ format has no field for a text scenario above the parts (`stimulus` is checked as a data table), so each
 E FRQ opens its part A prompt with the scenario. A text `scenario` field rendered above the parts (generator and

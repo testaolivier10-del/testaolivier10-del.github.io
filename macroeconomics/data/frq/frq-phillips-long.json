@@ -19,12 +19,13 @@
   "3.A",
   "3.B"
  ],
+ "scenario": "Velmar, an invented country, is in long-run equilibrium with an unemployment rate of 5 percent, equal to its natural rate, and actual and expected inflation of 2 percent. Then a sudden, large rise in the world price of oil raises production costs for firms across Velmar.",
  "parts": [
   {
    "label": "A",
    "points": 3,
    "type": "graph",
-   "prompt": "Velmar, an invented country, is in long-run equilibrium with an unemployment rate of 5 percent, equal to its natural rate, and actual and expected inflation of 2 percent. Then a sudden, large rise in the world price of oil raises production costs for firms across Velmar. <b>Draw</b> a correctly labeled AD-AS graph showing Velmar's long-run equilibrium, with LRAS, the price level PL1 and full-employment output YF. On your graph, <b>show</b> the short-run effect of the rise in the price of oil, labeling the new price level PL2 and real output Y2.",
+   "prompt": "<b>Draw</b> a correctly labeled AD-AS graph showing Velmar's long-run equilibrium, with LRAS, the price level PL1 and full-employment output YF. On your graph, <b>show</b> the short-run effect of the rise in the price of oil, labeling the new price level PL2 and real output Y2.",
    "graph": {
     "kind": "adas",
     "do": [

@@ -157,6 +157,8 @@ formula needs it; in prose write AD2).
 - `numeric` items for every calculation; `graph` items wherever the topic has a graph (shift, equilibrium, label,
   point); `specific` items for causal chains.
 - No `calc` flag (a four-function calculator is allowed throughout), no `setup` items.
+- An FRQ's setup ("Arland is in a recessionary gap ...") goes in its `scenario`, shown before the parts; each part's
+  `prompt` starts with its task verb (<b>Draw</b>, <b>Identify</b>, <b>Calculate</b>, <b>Explain</b>).
 
 ## Level and voice
 
