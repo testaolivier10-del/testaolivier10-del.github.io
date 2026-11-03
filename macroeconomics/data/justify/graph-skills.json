@@ -1,0 +1,216 @@
+{
+ "about": "\"Make it specific\" prompts for the graph skills chapter (docs/apmacro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmacro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "graph-skills",
+   "id": "gs-axes-label",
+   "topic": "axes-points",
+   "practice": "1.A",
+   "skill": "graph",
+   "title": "Labeling a graph from a table",
+   "context": "<p>A teacher records hours studied and test scores.</p><table class=\"mac-data\"><tr><th scope=\"row\">Hours studied</th><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><th scope=\"row\">Test score (points)</th><td>60</td><td>70</td><td>80</td><td>85</td></tr></table>",
+   "prompt": "<b>Describe</b> how to label a graph of these data, and <b>identify</b> the point for a student who studies 3 hours.",
+   "checklist": [
+    "Puts hours studied on the horizontal axis and the test score on the vertical axis, each with its units",
+    "Names the point (3, 80) as hours first, then score",
+    "Says the graph shows a direct relationship: more hours, a higher score"
+   ],
+   "earns": {
+    "answer": "Hours studied goes on the horizontal axis (hours) and the test score on the vertical axis (points). The student who studies 3 hours is the point (3, 80): 3 across, then up to 80. The scores rise as hours rise, so the graph shows a direct relationship.",
+    "why": "Both axes are named with their units, the point is read in the right order, and the relationship is named."
+   },
+   "misses": {
+    "answer": "Put the numbers on the graph and plot the point 80, 3.",
+    "why": "No axis is named, and the point is written with the score first, so it lands in the wrong place."
+   },
+   "specific": {
+    "slots": {
+     "x": {
+      "label": "Horizontal axis",
+      "options": [
+       "Hours studied",
+       "Test score"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The score depends on the hours, so the hours go across and the score goes up."
+      }
+     },
+     "point": {
+      "label": "The point",
+      "options": [
+       "(3, 80)",
+       "(80, 3)"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A point is written across first, then up: (hours, score)."
+      }
+     },
+     "rel": {
+      "label": "The relationship",
+      "options": [
+       "direct: both rise together",
+       "inverse: one rises as the other falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The score rises when hours rise, which is a direct relationship."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "graph-skills",
+   "id": "gs-slope-units",
+   "topic": "slopes-curves",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "The slope between two points",
+   "context": "<p>A piano student's practice hours and recital score:</p><table class=\"mac-data\"><tr><th scope=\"row\">Practice (hours)</th><td>2</td><td>4</td></tr><tr><th scope=\"row\">Score (points)</th><td>50</td><td>70</td></tr></table>",
+   "prompt": "<b>Calculate</b> the slope of the line from 2 hours to 4 hours on the graph of these data, and <b>explain</b> what it means.",
+   "checklist": [
+    "Writes rise over run with the two points: (70 - 50) divided by (4 - 2)",
+    "Gets 10 points per hour, with the units",
+    "Says each extra hour of practice adds about 10 points on this part of the graph"
+   ],
+   "earns": {
+    "answer": "The slope is the rise over the run: (70 - 50) / (4 - 2) = 20 / 2 = 10 points per hour. Each extra hour of practice between 2 and 4 hours adds about 10 points to the score.",
+    "why": "The rise and the run come from the two points, the answer has its units, and the meaning is stated."
+   },
+   "misses": {
+    "answer": "The slope is 20, because the score goes up by 20.",
+    "why": "That is the rise alone; the slope divides it by the run, 2 hours, and gives no units."
+   },
+   "specific": {
+    "slots": {
+     "top": {
+      "label": "On top",
+      "options": [
+       "the change in score, 70 - 50",
+       "the change in hours, 4 - 2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Slope is rise over run: the change in the vertical variable goes on top."
+      }
+     },
+     "value": {
+      "label": "The slope",
+      "options": [
+       "10 points per hour",
+       "20 points",
+       "0.1 hours per point"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "20 is the rise; divide by the run of 2 hours.",
+       "2": "That is run over rise; flip it."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "graph-skills",
+   "id": "gs-shift-move",
+   "topic": "shifts-movements",
+   "practice": "1.D",
+   "skill": "identify",
+   "title": "A movement along a curve or a shift",
+   "prompt": "A graph shows a runner's heart rate against her running speed. <b>Explain</b> whether each change moves her along the curve or shifts the whole curve: (1) she runs faster; (2) after months of training, her heart rate is lower at every speed.",
+   "checklist": [
+    "Says a change in the variable on an axis (speed) is a movement along the curve",
+    "Says a change in something not on the axes (fitness) shifts the whole curve",
+    "States the direction of the shift: down, a lower heart rate at each speed"
+   ],
+   "earns": {
+    "answer": "(1) Speed is on the horizontal axis, so running faster is a movement along the curve to a higher heart rate. (2) Fitness is not on either axis, so training shifts the whole curve: it moves down, because her heart rate is lower at every speed.",
+    "why": "It tells the two cases apart by whether the change is on an axis, and it gives the direction of the shift."
+   },
+   "misses": {
+    "answer": "Both shift the curve, because her heart rate changes.",
+    "why": "A change in heart rate alone does not say which; only a factor off the axes shifts the curve, and the direction is missing."
+   },
+   "specific": {
+    "slots": {
+     "faster": {
+      "label": "Running faster",
+      "options": [
+       "a movement along the curve",
+       "a shift of the curve"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Speed is on an axis, so a change in it moves along the curve."
+      }
+     },
+     "training": {
+      "label": "After training",
+      "options": [
+       "the curve shifts down",
+       "a movement along the curve",
+       "the curve shifts up"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fitness is not on an axis, so it shifts the curve.",
+       "2": "Her heart rate is lower at every speed, so the curve moves down."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "graph-skills",
+   "id": "gs-crossing-compare",
+   "topic": "curves-crossing",
+   "practice": "2.B",
+   "skill": "identify",
+   "title": "Before and after a crossing point moves",
+   "prompt": "Two lines cross at point E1. One line shifts right, and they now cross at E2, up and to the right of E1. <b>Describe</b> the change on both axes and how to show it on the graph.",
+   "checklist": [
+    "Compares E2 with E1 on the horizontal axis: higher",
+    "Compares E2 with E1 on the vertical axis: higher",
+    "Labels the new line and the new crossing point, with dashed lines to both axes"
+   ],
+   "earns": {
+    "answer": "E2 is to the right of E1, so the value on the horizontal axis is higher, and E2 is above E1, so the value on the vertical axis is higher too. On the graph, label the shifted line with a 2, mark E2 where the lines now cross, and draw dashed lines from E1 and E2 to both axes so the two values can be compared.",
+    "why": "Both axes are compared before and after, and the graph shows the new line and point clearly."
+   },
+   "misses": {
+    "answer": "The crossing point moved, so both lines changed.",
+    "why": "Only one line shifted; and the answer never says which way each value changed."
+   },
+   "specific": {
+    "slots": {
+     "x": {
+      "label": "Horizontal axis",
+      "options": [
+       "higher at E2",
+       "lower at E2",
+       "the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "E2 is to the right of E1, so the horizontal value is higher.",
+       "2": "E2 is not straight above E1; it moved right."
+      }
+     },
+     "y": {
+      "label": "Vertical axis",
+      "options": [
+       "higher at E2",
+       "lower at E2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "E2 is above E1, so the vertical value is higher."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

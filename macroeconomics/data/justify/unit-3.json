@@ -1,0 +1,545 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 3 (docs/apmacro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmacro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-3",
+   "id": "u3-ad-slope",
+   "topic": "aggregate-demand",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "Why aggregate demand slopes down",
+   "prompt": "<b>Explain</b> why a fall in the price level raises the quantity of real output demanded, using the wealth effect.",
+   "checklist": [
+    "Says a lower price level raises the buying power of people's savings (real wealth)",
+    "Says higher real wealth raises consumption",
+    "Calls it a movement along AD, not a shift"
+   ],
+   "earns": {
+    "answer": "When the price level falls, the savings people hold buy more, so their real wealth rises. Feeling wealthier, households consume more, so the quantity of real output demanded rises. This is a movement down along the AD curve, not a shift of it.",
+    "why": "It names the mechanism step by step and keeps it a movement along the curve."
+   },
+   "misses": {
+    "answer": "When prices fall, people buy more, like on a demand curve for one good.",
+    "why": "AD is not a single good's demand: the reason has to be a whole-economy effect such as the wealth effect, and it is not named."
+   },
+   "specific": {
+    "slots": {
+     "wealth": {
+      "label": "A lower price level makes real wealth",
+      "options": [
+       "rise",
+       "fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The same savings buy more at lower prices, so real wealth rises."
+      }
+     },
+     "graph": {
+      "label": "On the AD-AS graph",
+      "options": [
+       "a movement along AD",
+       "AD shifts right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The price level is on an axis, so its change moves along AD."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-confidence-chain",
+   "topic": "aggregate-demand",
+   "practice": "2.A",
+   "skill": "chain",
+   "title": "A fall in confidence, link by link",
+   "prompt": "Households in Quell become worried about their jobs. <b>Explain</b> the effect on real output and the price level in the short run, naming every link.",
+   "checklist": [
+    "Says worried households cut consumption",
+    "Says lower consumption shifts AD left",
+    "Says real output falls and the price level falls, so unemployment rises"
+   ],
+   "earns": {
+    "answer": "Worried households save more and cut consumption, which lowers aggregate demand, so AD shifts left. With AD lower, firms sell less, so real output falls and the price level falls, which raises unemployment.",
+    "why": "Every link from the worry to output and prices is there, in order."
+   },
+   "misses": {
+    "answer": "People are worried, so real output falls.",
+    "why": "It jumps from the cause to the result; consumption and AD, the links between them, are missing."
+   },
+   "specific": {
+    "slots": {
+     "c": {
+      "label": "First, consumption",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Worried households spend less and save more."
+      }
+     },
+     "ad": {
+      "label": "Then AD",
+      "options": [
+       "shifts left",
+       "shifts right",
+       "does not move, as only SRAS changes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less consumption at every price level lowers AD.",
+       "2": "Consumption is part of AD, so AD moves."
+      }
+     },
+     "pl": {
+      "label": "The price level",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A leftward AD shift lowers the price level along SRAS."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-spending-multiplier",
+   "topic": "multipliers",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "The largest change from new investment",
+   "prompt": "In Corvane the MPC is 0.9. Firms raise investment by 20 billion dollars. <b>Calculate</b> the spending multiplier and the largest possible change in real GDP.",
+   "checklist": [
+    "Multiplier = 1 / (1 - MPC) = 1 / 0.1 = 10",
+    "Change in real GDP = 20 x 10 = 200 billion dollars",
+    "Says it is an increase, the most it can be with no price changes"
+   ],
+   "earns": {
+    "answer": "The spending multiplier is 1 / (1 - 0.9) = 1 / 0.1 = 10. The largest possible change in real GDP is 20 x 10 = 200 billion dollars, an increase, because each round of spending becomes someone's income and part of it is spent again.",
+    "why": "The multiplier formula and the product are both shown, with the direction."
+   },
+   "misses": {
+    "answer": "Real GDP rises by 20 / 0.9, about 22 billion dollars.",
+    "why": "The multiplier is 1 over the MPS, not over the MPC, and the investment is multiplied, not divided."
+   },
+   "specific": {
+    "slots": {
+     "m": {
+      "label": "The spending multiplier",
+      "options": [
+       "10",
+       "about 1.1",
+       "9"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is 1 divided by the MPC; use 1 divided by the MPS.",
+       "2": "That is MPC divided by MPS, the size of the tax multiplier."
+      }
+     },
+     "dy": {
+      "label": "The largest change in real GDP",
+      "options": [
+       "200 billion dollars",
+       "20 billion dollars",
+       "2 billion dollars"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The first round alone; rounds of spending add more.",
+       "2": "That divides the investment by the multiplier."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-close-gap-spending",
+   "topic": "fiscal-policy",
+   "practice": "3.C",
+   "skill": "multiplier",
+   "title": "Closing a gap with government purchases",
+   "prompt": "Orvel has a recessionary gap of 120 billion dollars and an MPC of 0.75. <b>Calculate</b> the smallest change in government purchases that closes the gap, and <b>show</b> your work.",
+   "checklist": [
+    "Says purchases must rise, because the gap is recessionary",
+    "Finds the multiplier: 1 / (1 - 0.75) = 4",
+    "Divides the gap by the multiplier: 120 / 4 = 30 billion dollars"
+   ],
+   "earns": {
+    "answer": "The gap is recessionary, so purchases must rise. The spending multiplier is 1 / (1 - 0.75) = 4, so the change needed is the gap divided by the multiplier: 120 / 4 = an increase of 30 billion dollars.",
+    "why": "Direction first, then the gap divided by the right multiplier, with the work shown."
+   },
+   "misses": {
+    "answer": "Government purchases should rise by 120 x 4 = 480 billion dollars.",
+    "why": "That multiplies the gap; the multiplier turns the change into the gap, so the change is the gap divided by it."
+   },
+   "specific": {
+    "slots": {
+     "dir": {
+      "label": "Purchases should",
+      "options": [
+       "rise",
+       "fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A recessionary gap needs more spending."
+      }
+     },
+     "op": {
+      "label": "The change is",
+      "options": [
+       "gap / multiplier",
+       "gap x multiplier"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Multiplying gives a change four times too large in every round."
+      }
+     },
+     "val": {
+      "label": "The change",
+      "options": [
+       "30 billion dollars",
+       "480 billion dollars",
+       "120 billion dollars"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That multiplies by 4.",
+       "2": "That is the whole gap; the multiplier makes up the rest."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-close-gap-tax",
+   "topic": "fiscal-policy",
+   "practice": "3.C",
+   "skill": "multiplier",
+   "title": "Closing the same gap with a tax cut",
+   "prompt": "Orvel (above) uses a tax cut instead. <b>Calculate</b> the tax cut that closes the 120 billion dollar recessionary gap with an MPC of 0.75, and <b>explain</b> why it is larger than the change in purchases.",
+   "checklist": [
+    "Finds the tax multiplier: 0.75 / 0.25 = 3 (in size)",
+    "Divides the gap by it: 120 / 3 = a tax cut of 40 billion dollars",
+    "Explains households save part of a tax cut before spending it, so the first round is smaller"
+   ],
+   "earns": {
+    "answer": "The tax multiplier is MPC / MPS = 0.75 / 0.25 = 3 in size. The tax cut that closes the gap is the gap divided by it: 120 / 3 = 40 billion dollars. It is larger than the 30 billion change in purchases because households save a quarter of a tax cut before spending the rest.",
+    "why": "It uses the tax multiplier, divides, and explains the difference from purchases."
+   },
+   "misses": {
+    "answer": "Cut taxes by 30 billion dollars, the same as the change in purchases.",
+    "why": "A tax cut has a smaller multiplier (3, not 4), so it must be larger to close the same gap."
+   },
+   "specific": {
+    "slots": {
+     "m": {
+      "label": "The tax multiplier, in size",
+      "options": [
+       "3",
+       "4",
+       "0.75"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "4 is the spending multiplier.",
+       "2": "That is the MPC; the tax multiplier is MPC / MPS."
+      }
+     },
+     "cut": {
+      "label": "The tax cut",
+      "options": [
+       "40 billion dollars",
+       "30 billion dollars",
+       "360 billion dollars"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That uses the spending multiplier.",
+       "2": "That multiplies the gap by 3."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-sras-wages",
+   "topic": "sras",
+   "practice": "3.A",
+   "skill": "graph",
+   "title": "Higher nominal wages on the AD-AS graph",
+   "prompt": "Workers across Fendle win higher nominal wages. <b>Explain</b> the effect on a correctly labeled AD-AS graph, and <b>identify</b> the changes in the price level and real output.",
+   "checklist": [
+    "Says SRAS shifts left, because wage costs rise at every price level",
+    "Says AD does not shift, since spending plans are unchanged",
+    "States the price level rises and real output falls (cost-push inflation)"
+   ],
+   "earns": {
+    "answer": "Higher nominal wages raise firms' costs at every price level, so SRAS shifts left (SRAS1 to SRAS2), while AD stays put. The new short-run equilibrium has a higher price level and lower real output: cost-push inflation.",
+    "why": "Right curve, right direction, the reason, and both outcomes against the old equilibrium."
+   },
+   "misses": {
+    "answer": "Higher wages give workers more to spend, so AD shifts right and real output rises.",
+    "why": "Wage costs are what a nationwide wage rise changes first; the answer shifts AD instead of SRAS."
+   },
+   "specific": {
+    "slots": {
+     "curve": {
+      "label": "The curve that shifts",
+      "options": [
+       "SRAS, to the left",
+       "AD, to the right",
+       "LRAS, to the left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Wages are a cost of production, so supply moves.",
+       "2": "LRAS depends on resources and technology, not on wages."
+      }
+     },
+     "out": {
+      "label": "Real output",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A leftward SRAS shift lowers output along AD."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-lras-vertical",
+   "topic": "lras",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "Why LRAS is vertical",
+   "prompt": "<b>Explain</b> why the long-run aggregate supply curve is vertical at full-employment output.",
+   "checklist": [
+    "Says in the long run wages and other input prices fully adjust to the price level",
+    "Says output then depends on resources and technology, not on the price level",
+    "Places LRAS at full-employment output (YF)"
+   ],
+   "earns": {
+    "answer": "In the long run, nominal wages and other input prices adjust fully to the price level, so a higher price level no longer makes production more profitable. Output then depends on the economy's resources and technology, so it is the same at any price level: LRAS is vertical at full-employment output, YF.",
+    "why": "It gives the long-run adjustment of input prices and what sets output instead."
+   },
+   "misses": {
+    "answer": "LRAS is vertical because the economy is at its maximum output.",
+    "why": "Full employment is not the most an economy can ever produce, and no reason is given for output not depending on the price level."
+   },
+   "specific": {
+    "slots": {
+     "why": {
+      "label": "In the long run",
+      "options": [
+       "input prices adjust to the price level",
+       "prices stop changing"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Prices can still change; what matters is that wages catch up with them."
+      }
+     },
+     "at": {
+      "label": "LRAS stands at",
+      "options": [
+       "full-employment output",
+       "the highest output possible"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Output can exceed YF for a while, so YF is not a maximum."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-selfadjust-recession",
+   "topic": "long-run-self-adjustment",
+   "practice": "2.A",
+   "skill": "selfadjust",
+   "title": "Out of a recessionary gap with no policy",
+   "prompt": "Lanmore is in a recessionary gap, and the government does nothing. <b>Explain</b> how the economy returns to full employment in the long run, and <b>identify</b> the change in the price level.",
+   "checklist": [
+    "Says unemployment above the natural rate puts downward pressure on nominal wages",
+    "Says lower wages and input prices shift SRAS right",
+    "Says output returns to full employment at a lower price level"
+   ],
+   "earns": {
+    "answer": "With output below full employment, unemployment is above the natural rate, so over time nominal wages and other input prices fall. Lower costs shift SRAS right, which raises real output back to full employment, where SRAS meets AD on LRAS, at a lower price level.",
+    "why": "It gives the cause (falling wages), the curve (SRAS shifts right) and both results."
+   },
+   "misses": {
+    "answer": "The economy recovers on its own as AD rises back to normal.",
+    "why": "Self-adjustment works through wages and SRAS; nothing here makes AD rise."
+   },
+   "specific": {
+    "slots": {
+     "w": {
+      "label": "Nominal wages",
+      "options": [
+       "fall",
+       "rise"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "High unemployment pushes wages down, not up."
+      }
+     },
+     "curve": {
+      "label": "The curve that shifts",
+      "options": [
+       "SRAS, to the right",
+       "AD, to the right",
+       "LRAS, to the left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "No policy or spending change moves AD.",
+       "2": "LRAS does not move to meet the economy."
+      }
+     },
+     "pl": {
+      "label": "The price level ends",
+      "options": [
+       "lower",
+       "higher"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "SRAS shifting right lowers the price level along AD."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-selfadjust-inflationary",
+   "topic": "long-run-self-adjustment",
+   "practice": "2.A",
+   "skill": "selfadjust",
+   "title": "Out of an inflationary gap with no policy",
+   "prompt": "Lanmore later has an inflationary gap, and again there is no policy. <b>Explain</b> the long-run adjustment and its effect on the price level.",
+   "checklist": [
+    "Says unemployment below the natural rate pushes nominal wages up",
+    "Says higher wages shift SRAS left",
+    "Says output returns to full employment at a higher price level"
+   ],
+   "earns": {
+    "answer": "Output is above full employment, so unemployment is below the natural rate and workers win higher nominal wages. Higher costs shift SRAS left, which lowers real output back to full employment at a higher price level.",
+    "why": "It names the wage cause, the SRAS shift and both outcomes."
+   },
+   "misses": {
+    "answer": "Prices rise until people buy less, so output falls back to full employment.",
+    "why": "It describes a movement along AD with no cause; the adjustment is rising wages shifting SRAS left."
+   },
+   "specific": {
+    "slots": {
+     "w": {
+      "label": "Nominal wages",
+      "options": [
+       "rise",
+       "fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A tight labor market pushes wages up."
+      }
+     },
+     "curve": {
+      "label": "SRAS shifts",
+      "options": [
+       "left",
+       "right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher costs lower what firms supply at each price level."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-stabilizer-chain",
+   "topic": "automatic-stabilizers",
+   "practice": "2.A",
+   "skill": "chain",
+   "title": "How an income tax cushions a downturn",
+   "prompt": "Real output falls in Pradin, which has a progressive income tax and unemployment benefits. <b>Explain</b> how these automatically soften the fall in output, naming every link.",
+   "checklist": [
+    "Says incomes fall, so tax collections fall and benefit payments rise",
+    "Says disposable income falls by less than income",
+    "Says consumption falls by less, so AD falls by less and output falls less"
+   ],
+   "earns": {
+    "answer": "As output and incomes fall, people pay less income tax and more people receive unemployment benefits, so disposable income falls by less than income. Consumption then falls by less, which means AD shifts left by less, so real output falls less than it would without them.",
+    "why": "Every link from lower income to a smaller fall in output is named."
+   },
+   "misses": {
+    "answer": "The tax and benefits help the economy in a recession.",
+    "why": "It gives no mechanism: nothing says taxes fall, benefits rise, or how that keeps consumption and AD up."
+   },
+   "specific": {
+    "slots": {
+     "tax": {
+      "label": "In the downturn, tax collections",
+      "options": [
+       "fall",
+       "rise"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lower incomes mean less income tax is owed."
+      }
+     },
+     "di": {
+      "label": "Disposable income",
+      "options": [
+       "falls by less than income",
+       "falls by more than income"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lower taxes and more benefits cushion the fall."
+      }
+     },
+     "ad": {
+      "label": "AD",
+      "options": [
+       "falls by less",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The stabilizers soften the fall in AD; they do not reverse it."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

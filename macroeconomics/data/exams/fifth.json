@@ -65,6 +65,10 @@
    "option": "The firm's workers save the whole of their extra income",
    "why": "If every extra dollar were saved there would be no further rounds of spending, so total spending would rise by the first million alone."
   },
+  "mac-sras-10": {
+   "option": "LRAS shifts left, because workers expect to produce less",
+   "why": "Expected inflation changes wage costs and so SRAS; it does not change the economy's capacity at full employment, which sets LRAS."
+  },
   "mac-sras-5": {
    "option": "A rise in the price level that lets firms charge more",
    "why": "A change in the price level is a movement along SRAS, not a shift of the curve."
