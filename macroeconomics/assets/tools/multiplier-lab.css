@@ -102,3 +102,9 @@
   .ml-t td b::after{content:"";display:block;margin-bottom:3px;}
   .ml-qfig-money .ml-t{font-size:12px;}
 }
+@media (max-width:640px){
+  .ml-qfig-money{gap:4px;}
+  .ml-qfig-money .ml-qbars{height:20svh;min-height:130px;flex:none;margin-bottom:30px;}
+  .ml-qfig-money .ml-t caption{margin-bottom:0;}
+  .ml-qfig-money .ml-t td{padding:3px 6px;}
+}

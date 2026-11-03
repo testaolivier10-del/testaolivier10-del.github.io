@@ -189,7 +189,7 @@
         var sym = !d ? '' : l[1] === 'AD' ? (d === 'up' ? '→' : d === 'down' ? '←' : '–') : arrowOf(d);
         var short = { 'Policy rate': 'PR', 'Interest rates': 'i', 'Investment': 'I', 'AD': 'AD', 'Real GDP': 'Y', 'Price level': 'PL' }[l[1]];
         var words = !d ? 'not yet' : l[1] === 'AD' ? (d === 'up' ? 'shifts right' : d === 'down' ? 'shifts left' : 'no shift') : word(d);
-        return '<li class="rl-link is-' + l[0] + (on ? ' is-on' : d ? ' is-flat' : '') + '" style="--i:' + i + '"><span class="rl-link-n">' + l[1] + '</span><span class="rl-link-d" aria-hidden="true">' + (sym || '·') + '</span><span class="sr-only">' + words + '</span></li>';
+        return '<li class="rl-link is-' + l[0] + (on ? ' is-on' : d ? ' is-flat' : '') + '" style="--i:' + i + '"><span class="rl-link-n" aria-hidden="true"><span class="rl-long">' + l[1] + '</span><span class="rl-short">' + short + '</span></span><span class="rl-link-d" aria-hidden="true">' + (sym || '·') + '</span><span class="sr-only">' + l[1] + ': ' + words + '</span></li>';
       }).join('');
     }
     function redraw(){
