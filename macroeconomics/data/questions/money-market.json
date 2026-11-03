@@ -1,0 +1,546 @@
+{
+ "stimuli": {
+  "money-market-s1": {
+   "kind": "graph",
+   "title": "A money market after a shift",
+   "graph": {
+    "kind": "money",
+    "show": {
+     "MD": 1
+    }
+   }
+  },
+  "money-market-s2": {
+   "kind": "text",
+   "title": "A recession in an invented economy",
+   "text": "<p>Real GDP in the invented country of Velora falls sharply in a recession, while the price level barely changes. Households and firms buy fewer goods and services. Velora's central bank keeps the money supply where it was.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-money-market-1",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "money-market-s1",
+   "q": "The graph shows money demand shifting from MD1 to MD2. Which event could have caused this shift?",
+   "options": [
+    "A rise in the nominal interest rate",
+    "A rise in the price level",
+    "A rise in the money supply",
+    "Wider use of payment cards and phone apps"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Money demand shifts with the price level, real GDP and payment technology; the interest rate moves along it.",
+    "options": [
+     "A change in the interest rate moves along money demand; it does not shift it.",
+     "Right: higher prices mean people need more money for the same purchases, so MD shifts right.",
+     "That would shift the vertical MS curve, not MD.",
+     "Easier payments let people hold less money, which shifts MD left."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-market-2",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "money-market-s1",
+   "q": "In the graph, what happens to the equilibrium nominal interest rate?",
+   "options": [
+    "It falls, because more money is demanded",
+    "It stays the same, because the money supply is fixed",
+    "It rises, from i1 to i2",
+    "It rises at first, then returns to i1"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With a vertical money supply, a rightward shift of money demand raises the nominal interest rate and leaves the quantity of money unchanged.",
+    "options": [
+     "More money demanded with a fixed supply pushes the rate up, not down.",
+     "The fixed supply is why the rate must rise to balance the larger demand.",
+     "Right: MD2 crosses the vertical MS at a higher nominal interest rate.",
+     "With MS unchanged, the new equilibrium stays at the higher rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-market-3",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "money-market-s1",
+   "q": "As the economy moves to the new equilibrium in the graph, what happens to the prices of existing bonds?",
+   "options": [
+    "They fall, as people sell bonds to get money",
+    "They rise, as people buy bonds",
+    "They do not change, since bonds are not money",
+    "They rise, because interest rates rise"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Bond prices and interest rates move in opposite directions; selling bonds to raise money pushes bond prices down.",
+    "options": [
+     "Right: to hold more money, people sell bonds, which lowers bond prices and raises interest rates.",
+     "People want more money, so they sell bonds rather than buy them.",
+     "Bonds are how people adjust their money holdings, so their prices move.",
+     "Bond prices move opposite to interest rates: the rate rises, so bond prices fall."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-market-4",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "money-market-s1",
+   "q": "In the graph, what happens to the quantity of money in the new equilibrium?",
+   "options": [
+    "It rises, because demand rose",
+    "It stays the same",
+    "It falls, because the interest rate rose",
+    "It rises, then falls back"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A shift of money demand along a vertical money supply changes the interest rate, not the quantity of money.",
+    "options": [
+     "The money supply is vertical: the central bank fixes the quantity, so it does not rise.",
+     "Right: the vertical MS fixes the quantity; only the interest rate changes.",
+     "The quantity is set by the vertical MS and does not move with the rate.",
+     "The quantity of money stays where MS is throughout."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-market-5",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "stimulus": "money-market-s2",
+   "q": "On the money market graph, show the effect of Velora's recession and mark the new equilibrium.",
+   "why": {
+    "correct": "Lower real GDP means fewer transactions, so people need less money: money demand shifts left, and with a fixed money supply the nominal interest rate falls."
+   },
+   "graph": {
+    "kind": "money",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "MD",
+     "MS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "MD",
+       "dir": "left"
+      }
+     ],
+     "because": "a fall in real GDP",
+     "outcome": {
+      "nominal interest rate": "down",
+      "quantity of money": "same"
+     }
+    },
+    "slips": {
+     "MS": "The scenario says the central bank keeps the money supply where it was. Lower income changes how much money people want to hold: money demand."
+    }
+   }
+  },
+  {
+   "id": "mac-money-market-6",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "money-market-s2",
+   "q": "Why does the recession change the demand for money in Velora?",
+   "options": [
+    "People buy fewer goods, so they need less money for transactions",
+    "Interest rates fall, so people want more money",
+    "The central bank prints less money",
+    "Prices rise, so people need more money"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The transaction demand for money depends on nominal GDP: fewer purchases mean less money is needed.",
+    "options": [
+     "Right: the transaction demand for money falls with real GDP.",
+     "That is a movement along money demand, which follows from the shift; it is not the cause.",
+     "The scenario says the money supply is unchanged.",
+     "The scenario says the price level barely changes."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-market-7",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "money-market-s2",
+   "q": "What happens to the prices of existing bonds in Velora?",
+   "options": [
+    "They fall, because people need less money",
+    "They rise, as the nominal interest rate falls",
+    "They are unchanged, since the money supply is fixed",
+    "They fall, as the nominal interest rate falls"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A fall in money demand lowers the nominal interest rate, and lower interest rates mean higher prices for existing bonds.",
+    "options": [
+     "With less money needed, people use the extra to buy bonds, which raises bond prices.",
+     "Right: people put money they no longer need into bonds, so bond prices rise and rates fall.",
+     "The fixed supply is why the interest rate, and bond prices, must change.",
+     "Bond prices move opposite to interest rates: a lower rate means higher bond prices."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-market-8",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "money-market-s2",
+   "q": "Suppose Velora's price level had also fallen during the recession. How would that change your answer about money demand?",
+   "options": [
+    "Money demand would fall by more",
+    "Money demand would rise instead",
+    "Money demand would not change",
+    "Money supply would shift left instead"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Money demand depends on nominal GDP, the price level times real GDP; a fall in either shifts it left.",
+    "options": [
+     "Right: lower prices and lower real output both mean less money is needed for purchases.",
+     "Lower prices mean each purchase takes less money, so demand falls further, not rises.",
+     "Both the price level and real GDP shift money demand.",
+     "The price level shifts money demand; the money supply is set by the central bank."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-market-9",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and the curves of the money market graph.",
+   "why": {
+    "correct": "The money market has the nominal interest rate on the vertical axis and the quantity of money on the horizontal axis, with downward-sloping money demand (MD) and vertical money supply (MS)."
+   },
+   "graph": {
+    "kind": "money",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mac-money-market-10",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The central bank increases the money supply. Shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "More money shifts the vertical money supply right; people hold the extra money only at a lower nominal interest rate."
+   },
+   "graph": {
+    "kind": "money",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "MD",
+     "MS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "MS",
+       "dir": "right"
+      }
+     ],
+     "because": "an increase in the money supply",
+     "outcome": {
+      "nominal interest rate": "down",
+      "quantity of money": "up"
+     }
+    },
+    "slips": {
+     "MD": "The central bank changed how much money exists, which is the money supply, not how much people want to hold."
+    }
+   }
+  },
+  {
+   "id": "mac-money-market-11",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Mark point A on the money demand curve at a nominal interest rate above the equilibrium rate.",
+   "why": {
+    "correct": "Along MD, a higher nominal interest rate means a smaller quantity of money demanded, so A sits up and to the left of the equilibrium."
+   },
+   "graph": {
+    "kind": "money",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "A",
+    "key": {
+     "point": {
+      "on": "MD",
+      "x": "down",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-money-market-12",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why does the money demand curve slope down?",
+   "options": [
+    "A higher price level means people need less money",
+    "The nominal interest rate is the opportunity cost of holding money",
+    "The central bank supplies less money at high rates",
+    "Banks lend more when interest rates rise"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Money pays little or no interest, so the interest given up on bonds is the cost of holding it: higher rates, less money demanded.",
+    "options": [
+     "A higher price level shifts money demand right; it does not explain the slope.",
+     "Right: when bonds pay more, holding cash costs more, so people hold less of it.",
+     "The money supply is vertical; the slope of demand comes from households' choices.",
+     "That is about lending, not about how much money people choose to hold."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-market-13",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What goes on the vertical axis of the money market graph?",
+   "options": [
+    "The real interest rate",
+    "The price level",
+    "The nominal interest rate",
+    "The quantity of money"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Money market: nominal interest rate (vertical) and quantity of money (horizontal). Writing \"real\" loses the graph point.",
+    "options": [
+     "The real rate goes on a different graph later in this unit. The money market uses the nominal rate.",
+     "The price level goes on the AD-AS graph.",
+     "Right: the opportunity cost of holding money is the nominal rate.",
+     "The quantity of money is on the horizontal axis."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-market-14",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the money market, the nominal interest rate is above equilibrium. How does the market move back to equilibrium?",
+   "options": [
+    "People hold more money than they want, buy bonds, and the rate falls",
+    "People want more money, sell bonds, and the rate rises",
+    "The central bank lowers the money supply until the rate matches",
+    "People hold more money than they want, sell bonds, and the rate rises"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A surplus of money leads people to buy bonds: bond prices rise and interest rates fall until people want to hold the money that exists.",
+    "options": [
+     "Right: buying bonds raises bond prices, which lowers interest rates.",
+     "Above equilibrium people want less money than exists, not more.",
+     "The market adjusts through bond buying; the supply does not have to change.",
+     "With surplus money, people buy bonds, which lowers the rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-market-15",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these shift the money demand curve to the right? Select all that apply.",
+   "options": [
+    "A rise in the price level",
+    "A rise in real GDP",
+    "A rise in the nominal interest rate",
+    "Wider use of payment cards and phone apps"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Money demand shifts right with nominal GDP (the price level or real output); the nominal interest rate moves along it.",
+    "options": [
+     "Right: each purchase takes more money.",
+     "Right: more transactions need more money.",
+     "A rate change is a movement along money demand, not a shift.",
+     "Easier payments reduce how much money people hold, a shift to the left."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-market-16",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "analyze",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the links in order, from a rise in the price level to bond prices.",
+   "options": [
+    "The price level rises",
+    "People need more money for the same purchases, so money demand shifts right",
+    "People sell bonds to get money",
+    "Bond prices fall and the nominal interest rate rises"
+   ],
+   "why": {
+    "correct": "Each link causes the next: more money demanded, bonds sold, bond prices down, the interest rate up."
+   }
+  },
+  {
+   "id": "mac-money-market-17",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain how a rise in the price level affects the nominal interest rate when the money supply does not change.",
+   "why": {
+    "correct": "A higher price level raises money demand; with a fixed money supply the nominal interest rate rises (and bond prices fall)."
+   },
+   "specific": {
+    "frame": "The price level rises, so money demand shifts ___; with a vertical money supply the nominal interest rate ___, and the prices of existing bonds ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "The price level rises, so people need more money for the same purchases and money demand shifts right; because the money supply is fixed, the nominal interest rate increases and the prices of existing bonds decrease.",
+    "slots": {
+     "direction": {
+      "label": "Money demand shifts",
+      "options": [
+       "right",
+       "left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher prices mean more money is needed for each purchase, so demand rises."
+      }
+     },
+     "rate": {
+      "label": "The nominal interest rate",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More demand for a fixed supply raises the price of holding money, the interest rate."
+      }
+     },
+     "price": {
+      "label": "Bond prices",
+      "options": [
+       "fall",
+       "rise"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Bond prices move opposite to interest rates."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-money-market-18",
+   "unit": "unit-4",
+   "topic": "money-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why is the money supply drawn as a vertical line on the money market graph?",
+   "options": [
+    "People want the same amount of money at any interest rate",
+    "Banks hold more reserves when interest rates rise",
+    "The central bank sets the quantity of money, whatever the interest rate",
+    "The quantity of money grows as interest rates rise"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In the money market model the central bank fixes the quantity of money, so the money supply curve is vertical.",
+    "options": [
+     "That would describe money demand, which slopes down.",
+     "The graph treats the quantity of money as set by the central bank, not by rates.",
+     "Right: the quantity does not respond to the rate, so supply is vertical.",
+     "That would be an upward-sloping supply curve, not a vertical one."
+    ]
+   }
+  }
+ ]
+}

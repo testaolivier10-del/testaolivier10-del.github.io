@@ -1,0 +1,12 @@
+{
+ "curves-crossing-before-after": {
+  "file": "figures/curves-crossing-before-after.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 370,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A downward curve D crosses an upward curve S1 at point E1 (P1, Q1); after the upward curve shifts left to S2, the new crossing E2 has a higher price P2 and a smaller quantity Q2."
+ }
+}

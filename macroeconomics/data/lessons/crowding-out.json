@@ -1,0 +1,75 @@
+{
+ "topic": "crowding-out",
+ "hook": "A government borrows heavily to pay for a new program. Months later a small manufacturer finds that the loan for its new production line costs more than it did a year ago, and it puts the project off. Nobody told the firm to stop investing; the government simply became a big new borrower in the same market for saving.",
+ "prereq": [
+  {
+   "q": "On the loanable funds graph, what does government borrowing to cover a deficit do?",
+   "options": [
+    "It shifts the demand for loanable funds right",
+    "It shifts the supply of loanable funds right",
+    "It shifts the money supply left",
+    "It moves the economy along the supply curve only"
+   ],
+   "correct": 0,
+   "why": "The government is an extra borrower, so demand for loanable funds rises.",
+   "review": "loanable-funds"
+  },
+  {
+   "q": "A government's outlays exceed its tax revenue this year. What does it do?",
+   "options": [
+    "It borrows the difference, adding to the national debt",
+    "It repays part of the national debt",
+    "It lowers the policy rate",
+    "It runs a budget surplus"
+   ],
+   "correct": 0,
+   "why": "A deficit is financed by borrowing, which adds to the debt.",
+   "review": "deficits-debt"
+  }
+ ],
+ "figure": {
+  "figure": "crowding-out-lf",
+  "caption": "Government borrowing shifts the demand for loanable funds right; the real interest rate rises and private investment falls."
+ },
+ "chain": [
+  {
+   "cause": "The government runs a deficit and borrows",
+   "effect": "the demand for loanable funds shifts right"
+  },
+  {
+   "cause": "Demand for loanable funds rises",
+   "effect": "the real interest rate rises"
+  },
+  {
+   "cause": "The real interest rate rises",
+   "effect": "private investment and interest-sensitive consumption fall"
+  },
+  {
+   "cause": "Private investment falls",
+   "effect": "part of the rise in AD from the deficit spending is offset"
+  },
+  {
+   "cause": "Investment stays lower year after year",
+   "effect": "the capital stock and potential output grow more slowly"
+  }
+ ],
+ "ideas": [
+  "<b>Crowding out</b>: government borrowing raises the real interest rate, and private investment falls.",
+  "Draw it on the <b>loanable funds</b> graph: Real interest rate (vertical), Quantity of loanable funds (horizontal); government borrowing shifts DLF right (or, in another view, lower public saving shifts SLF left). Either way the real rate rises.",
+  "In the short run crowding out shrinks the AD effect of deficit spending. In the long run it leaves a smaller capital stock, so potential output grows more slowly.",
+  "Crowding out is largest near full employment and smallest in a deep recession, when private borrowing is weak."
+ ],
+ "misconception": {
+  "wrong": "Deficit spending lowers the real interest rate, because the government puts money into the economy.",
+  "right": "To spend more than it collects, the government borrows. That adds to the demand for loanable funds, so the real interest rate rises and private investment falls."
+ },
+ "check": [
+  "mac-crowding-out-2",
+  "mac-crowding-out-5",
+  "mac-crowding-out-6",
+  "mac-crowding-out-7",
+  "mac-crowding-out-12",
+  "mac-crowding-out-16"
+ ],
+ "summary": "When a government borrows to pay for a deficit, the demand for loanable funds rises and the real interest rate rises. Private investment and other interest-sensitive spending fall, offsetting part of the boost to AD. Year after year, lower investment means a smaller capital stock and slower growth of potential output. Crowding out is strongest near full employment and is eased by more private saving."
+}

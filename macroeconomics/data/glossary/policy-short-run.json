@@ -1,0 +1,8 @@
+{
+ "causal-chain": {
+  "def": "The ordered links from a policy action to its result: for monetary policy, the tool, the policy rate, other interest rates, interest-sensitive spending, AD, then output, the price level and unemployment."
+ },
+ "policy-mix": {
+  "def": "Fiscal and monetary policy used at the same time. When both push AD the same way the AD effect is clear but the interest rate effect may not be; when they push opposite ways the AD effect is indeterminate."
+ }
+}

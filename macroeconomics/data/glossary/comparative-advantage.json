@@ -1,0 +1,20 @@
+{
+ "absolute-advantage": {
+  "def": "The ability to produce more of a good than another producer with the same resources, or the same amount with fewer resources."
+ },
+ "comparative-advantage": {
+  "def": "The ability to produce a good at a lower opportunity cost than another producer. Specializing by comparative advantage is what creates gains from trade."
+ },
+ "specialization": {
+  "def": "Concentrating production on the goods a person or country makes at the lowest opportunity cost, and trading for the rest."
+ },
+ "terms-of-trade": {
+  "def": "The rate at which one good is exchanged for another in trade, such as 1 hat for 2.5 shirts. Both sides gain when it lies between their two opportunity costs."
+ },
+ "gains-from-trade": {
+  "def": "The extra goods both sides get when they specialize by comparative advantage and trade, letting each consume beyond its own production possibilities."
+ },
+ "output-input-method": {
+  "def": "Two ways to read trade data. Output data give units made per worker (the cost of one good is the other good's output divided by its own); input data give hours per unit (the cost of one good is its own hours divided by the other good's hours)."
+ }
+}

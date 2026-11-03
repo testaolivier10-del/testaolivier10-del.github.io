@@ -1,0 +1,538 @@
+{
+ "stimuli": {
+  "supply-s1": {
+   "kind": "data",
+   "title": "A honey farm's supply schedule",
+   "invented": true,
+   "table": {
+    "caption": "Jars of honey a farm offers each week at four prices (invented data for practice)",
+    "cols": [
+     "Price per jar (\\$)",
+     "Quantity supplied per week"
+    ],
+    "rows": [
+     [
+      "4",
+      "20"
+     ],
+     [
+      "6",
+      "40"
+     ],
+     [
+      "8",
+      "60"
+     ],
+     [
+      "10",
+      "80"
+     ]
+    ]
+   }
+  },
+  "supply-s2": {
+   "kind": "text",
+   "title": "A year in the smartphone market",
+   "text": "<p>In one year in the market for smartphones in Tamsin, an invented country: (1) the price of the computer chips used in every phone falls by a third; (2) three new phone makers open factories; (3) the government puts a new tax of \\$20 on every phone a maker sells; (4) a popular video makes buyers want the newest phones more than ever.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-supply-1",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The price of flour rises. Shift the right curve the right way in the market for bread.",
+   "why": {
+    "correct": "Higher input costs make each loaf costlier to make, so bakers offer fewer loaves at every price: supply shifts left."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in the price of flour, an input"
+    },
+    "slips": {
+     "D": "Flour is an input for bakers, so its price shifts supply; buyers' wants have not changed."
+    }
+   }
+  },
+  {
+   "id": "mac-supply-2",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A new machine lets furniture makers build chairs faster and more cheaply. Shift the right curve the right way in the market for chairs.",
+   "why": {
+    "correct": "Better technology lowers the cost of each chair, so makers offer more at every price: supply shifts right."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "a technology that lowers the cost of making chairs"
+    },
+    "slips": {
+     "D": "The machine changes what makers can offer, so it shifts supply, not demand."
+    }
+   }
+  },
+  {
+   "id": "mac-supply-3",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The government pays solar panel makers a subsidy for each panel they produce. Shift the right curve the right way in the market for solar panels.",
+   "why": {
+    "correct": "A subsidy lowers producers' cost per unit, so they offer more at every price: supply shifts right."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "a subsidy paid to producers for each panel"
+    },
+    "slips": {
+     "D": "The subsidy goes to producers, so it shifts supply."
+    }
+   }
+  },
+  {
+   "id": "mac-supply-4",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The government starts collecting a tax from producers on every bottle of soda sold. Shift the right curve the right way in the market for soda.",
+   "why": {
+    "correct": "A per-unit tax on producers works like a higher cost, so they offer less at every price: supply shifts left."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left"
+      }
+     ],
+     "because": "a tax collected from producers on each bottle"
+    },
+    "slips": {
+     "D": "The tax is paid by producers, so it shifts supply."
+    }
+   }
+  },
+  {
+   "id": "mac-supply-5",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The market price of honey rises and nothing else changes. Place point X where the farm ends up on its supply curve.",
+   "why": {
+    "correct": "A higher price moves sellers up along the supply curve to a larger quantity supplied. The curve does not shift."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "S",
+      "x": "up",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-supply-6",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "stimulus": "supply-s1",
+   "q": "Using the table, by how many jars a week does the quantity supplied rise when the price rises from \\$6 to \\$10?",
+   "why": {
+    "correct": "At \\$6 the farm offers 40 jars and at \\$10 it offers 80: $80 - 40 = 40$ more jars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      80,
+      40
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That is the change in price. The question asks for the change in the quantity supplied: 80 - 40."
+     },
+     {
+      "value": 120,
+      "why": "You added the quantities. The change is the difference: 80 - 40."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-supply-7",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "supply-s1",
+   "q": "What does the table show?",
+   "options": [
+    "An increase in supply as the price rises",
+    "The law of supply: a higher price brings a larger quantity supplied",
+    "An inverse relationship between price and quantity supplied",
+    "A shift of the supply curve to the right each time the price changes"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Each \\$2 rise in price brings 20 more jars offered, along one supply curve: the law of supply.",
+    "options": [
+     "A price change moves along the supply curve; supply itself does not change.",
+     "Right: price and quantity supplied rise together.",
+     "Both rise together: a direct relationship.",
+     "The table is one supply curve; only the price changes."
+    ]
+   }
+  },
+  {
+   "id": "mac-supply-8",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "supply-s1",
+   "q": "A drought raises the farm's costs, and it now offers 10 fewer jars at every price in the table. What happened?",
+   "options": [
+    "Supply decreased: the supply curve shifted left",
+    "Quantity supplied fell along the same supply curve",
+    "Supply increased, because honey became scarcer",
+    "Demand for honey decreased"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fewer jars offered at every price, because of higher costs, is a decrease in supply: a shift left.",
+    "options": [
+     "Right: a cost increase shifts supply left.",
+     "A movement along the curve needs a change in the honey price.",
+     "Offering less at every price is a decrease in supply.",
+     "The drought changed the farm's costs, not what buyers want."
+    ]
+   }
+  },
+  {
+   "id": "mac-supply-9",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "supply-s1",
+   "q": "Honey makers expect the price of honey to rise sharply next month. What happens to the supply of honey this month?",
+   "options": [
+    "It increases, because makers rush to produce more honey",
+    "The quantity supplied rises along the curve this month",
+    "It is unchanged until the price actually rises",
+    "It decreases, because makers hold back jars to sell later at the higher price"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Expectations are a determinant of supply. Expecting a higher price later, sellers offer less now: today's supply shifts left.",
+    "options": [
+     "Producing more takes time; the jars on hand are held back for the higher price.",
+     "Today's price has not changed, so there is no movement along the curve.",
+     "Expectations shift supply before the price changes.",
+     "Right: sellers store jars for next month."
+    ]
+   }
+  },
+  {
+   "id": "mac-supply-10",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "supply-s2",
+   "q": "Event (1): the price of chips falls by a third. What happens in the smartphone market?",
+   "options": [
+    "Supply decreases, because the chip makers now earn less per chip",
+    "Demand increases, because phones get cheaper to buy",
+    "Supply increases, because each phone costs less to make",
+    "Quantity supplied falls along the supply curve"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Chips are an input. Lower input costs mean makers offer more phones at every price: supply shifts right.",
+    "options": [
+     "The question is about phone makers, whose costs fell.",
+     "The chip price changes phone makers' costs, not what buyers want at each price.",
+     "Right: lower input costs shift supply right.",
+     "The phone price did not change, so this is a shift, not a movement."
+    ]
+   }
+  },
+  {
+   "id": "mac-supply-11",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "supply-s2",
+   "q": "Event (2): three new phone makers open factories. What happens to the market supply of phones?",
+   "options": [
+    "It decreases, because existing makers lose customers",
+    "It increases, because there are more sellers",
+    "It stays the same, because demand did not change",
+    "Quantity supplied rises along the curve"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The number of sellers is a determinant of supply: more sellers shift market supply right.",
+    "options": [
+     "Existing makers may sell less, but the market as a whole offers more.",
+     "Right: more sellers offer more phones at every price.",
+     "Supply can shift without any change in demand.",
+     "No price change is described, so the curve itself shifts."
+    ]
+   }
+  },
+  {
+   "id": "mac-supply-12",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "supply-s2",
+   "q": "Event (3): a tax of \\$20 is collected from makers on every phone sold. What happens to the supply of phones?",
+   "options": [
+    "It decreases: the supply curve shifts left",
+    "It increases: the supply curve shifts right",
+    "The quantity supplied rises along the curve",
+    "It is unchanged, because buyers pay the price"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A per-unit tax on sellers raises their cost of each phone, so they offer fewer at every price.",
+    "options": [
+     "Right: a tax on producers works like a higher cost.",
+     "A subsidy would shift supply right; a tax shifts it left.",
+     "The tax changes costs, which shifts the curve rather than moving along it.",
+     "The tax is collected from makers, so their offers change."
+    ]
+   }
+  },
+  {
+   "id": "mac-supply-13",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "supply-s2",
+   "q": "Event (4): a popular video makes buyers want new phones more. Which curve does this event shift?",
+   "options": [
+    "The supply curve, to the right",
+    "The supply curve, to the left",
+    "Neither curve; it is a movement along supply",
+    "The demand curve, to the right"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Tastes are a determinant of demand, not supply. The video shifts demand right; the supply curve stays put.",
+    "options": [
+     "Makers' costs and numbers have not changed, so supply stays put.",
+     "Nothing here reduces what makers can offer at each price.",
+     "A change in tastes shifts a curve; it is the demand curve that moves.",
+     "Right: buyers' tastes shift demand."
+    ]
+   }
+  },
+  {
+   "id": "mac-supply-14",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why does the supply curve slope upward?",
+   "options": [
+    "Buyers want more at higher prices",
+    "Sellers' costs fall as the price rises",
+    "A higher price makes it worthwhile for sellers to produce more, even as extra output gets costlier",
+    "A higher price attracts more buyers"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Producing more usually costs more per extra unit, and a higher price covers those costs and makes the extra output profitable, so quantity supplied rises with price.",
+    "options": [
+     "Buyers want less at higher prices; supply describes sellers.",
+     "Sellers' costs do not fall because the price rose.",
+     "Right: a higher price covers the cost of extra output.",
+     "Buyers are part of demand, not supply."
+    ]
+   }
+  },
+  {
+   "id": "mac-supply-15",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A reporter writes, \"The price of gasoline rose, so the supply of gasoline increased.\" How should the sentence be fixed?",
+   "options": [
+    "\"The supply of gasoline decreased\"; higher prices lower supply",
+    "\"The quantity supplied of gasoline increased\"; supply itself did not change",
+    "\"The demand for gasoline increased\"; price affects buyers",
+    "\"Supply and quantity supplied both increased\""
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A change in the good's own price changes the quantity supplied (a movement along the supply curve). \"Supply\" means the whole curve.",
+    "options": [
+     "A higher price raises the quantity supplied; it does not lower supply.",
+     "Right: a price change is a movement along the curve.",
+     "The sentence is about sellers, and buyers want less at a higher price.",
+     "Only the quantity supplied changes; the curve stays put."
+    ]
+   }
+  },
+  {
+   "id": "mac-supply-16",
+   "unit": "unit-1",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make the explanation specific: the price of flour rises. Fill in each blank to explain what happens in the market for bread.",
+   "why": {
+    "correct": "Name the input, the effect on cost, and the direction of the shift."
+   },
+   "specific": {
+    "frame": "Flour is ___ for bakers, so its higher price ___ their cost of each loaf, and the supply of bread shifts ___.",
+    "slots": {
+     "because": {
+      "label": "What flour is",
+      "options": [
+       "an input",
+       "a substitute"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Bakers use flour to make bread; it is an input, not something buyers choose instead of bread."
+      }
+     },
+     "change": {
+      "label": "Bakers' cost",
+      "options": [
+       "raises",
+       "lowers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A dearer input makes each loaf cost more to make."
+      }
+     },
+     "direction": {
+      "label": "Which way supply shifts",
+      "options": [
+       "left",
+       "right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher costs mean fewer loaves offered at every price, a shift left."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Flour is an input for bakers, so a higher flour price raises the cost of making each loaf, and as a result bakers offer fewer loaves at every price: the supply of bread decreases and shifts left."
+   }
+  }
+ ]
+}

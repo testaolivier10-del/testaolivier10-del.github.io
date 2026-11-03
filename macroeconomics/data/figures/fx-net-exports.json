@@ -1,0 +1,12 @@
+{
+ "fx-net-exports-chain": {
+  "file": "figures/fx-net-exports-chain.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 450,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A flow chart. The dollar appreciates, so each dollar buys more foreign currency. Two branches: US goods cost more abroad (a 20-dollar shirt costs 16 euros at 0.80 euro per dollar and 18 euros at 0.90), so US exports fall; foreign goods cost less in the US (a 45-euro jacket costs 56.25 dollars at 0.80 euro per dollar and 50 dollars at 0.90), so US imports rise. Both lower net exports, X minus M, so aggregate demand shifts left and real GDP and the price level fall in the short run. Made-up rates."
+ }
+}

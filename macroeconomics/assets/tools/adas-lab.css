@@ -1,0 +1,80 @@
+/* AD-AS lab (macroeconomics/assets/tools/adas-lab.js). OWNED BY THIS TOOL ONLY
+   (builder T4). The graphs are ApMacroGraph's (mac.css, "Graphs"); this file
+   links colors across the two graphs (AD in the course ink; SRAS and SRPC,
+   which move together, in blue; LRAS and LRPC in ink), lays the two graphs
+   side by side (one at a time on a narrow stage) and styles the annotation
+   layer and the graph steps of Test yourself. */
+.adl-fig,.adl-qfig{--adl-ad:var(--cink);--adl-sras:#0B67A6;--adl-lr:var(--ink);--adl-gap:#9A4A00;}
+:root[data-theme="dark"] .adl-fig,:root[data-theme="dark"] .adl-qfig{--adl-sras:#7CC0F0;--adl-gap:#F2B26B;}
+.adl-fig{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0;width:100%;position:relative;}
+/* On the Tool Studio stage: wide, the graphs sit centered; narrow (a phone), the
+   figure fills the stage and the graph scales to fit its height. */
+.mac-ls-stage>.adl-fig{flex:1 1 auto;min-height:0;justify-content:center;justify-content:safe center;}
+.mac-ls-stage>.adl-fig.is-narrow{justify-content:flex-start;}
+.mac-ls-stage>.adl-fig.is-narrow .adl-panels{flex:1 1 auto;min-height:0;grid-template-rows:minmax(0,1fr);}
+.mac-ls-stage>.adl-fig.is-narrow .adl-panel{min-height:0;height:100%;}
+.mac-ls-stage>.adl-fig.is-narrow .adl-svg{flex:1 1 auto;min-height:0;display:flex;justify-content:center;}
+.mac-ls-stage>.adl-fig.is-narrow .adl-svg svg{width:100%;height:100%;}
+.adl-panels{display:grid;grid-template-columns:minmax(0,1fr);gap:10px 18px;align-items:start;max-width:980px;width:100%;margin:0 auto;}
+.adl-fig.has-pc .adl-panels{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+.adl-fig.is-narrow .adl-panels{grid-template-columns:minmax(0,1fr);}
+.adl-fig.is-narrow[data-panel="adas"] .adl-p-pc,.adl-fig.is-narrow[data-panel="pc"] .adl-p-adas{display:none;}
+.adl-panel{min-width:0;display:flex;flex-direction:column;align-items:center;}
+.adl-svg{width:100%;max-width:520px;touch-action:none;}
+.adl-fig:not(.has-pc) .adl-svg{max-width:520px;}
+.adl-svg svg{display:block;width:100%;height:auto;}
+.adl-pc{touch-action:auto;}
+.adl-tabs{display:none;gap:8px;justify-content:center;flex-wrap:wrap;}
+.adl-fig.is-narrow .adl-tabs{display:flex;justify-content:flex-start;min-height:44px;align-items:center;}
+/* Narrow: the AD and SRAS handles share the top row with the graph switch. */
+.adl-fig.is-narrow .adl-handles{position:absolute;top:0;right:0;margin:0;}
+.adl-fig.is-narrow .adl-h{min-width:0;padding:4px 10px;}
+.adl-fig.is-narrow .adl-link{display:none;}
+.adl-fig.is-narrow:not(.has-pc) .adl-handles{position:static;}
+.adl-tab{min-height:44px;padding:0 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;}
+.adl-tab.on{background:var(--cink);border-color:var(--cink);color:var(--white,#fff);}
+:root[data-theme="dark"] .adl-tab.on{color:#1b2410;}
+.adl-link{margin:2px 0 0;font:700 12.5px/1.4 var(--font-ui);color:var(--muted);text-align:center;}
+.adl-handles{display:flex;gap:8px;justify-content:center;margin-top:2px;}
+.adl-h{min-height:44px;min-width:76px;padding:4px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;}
+.adl-h[data-c="AD"]{border-color:var(--adl-ad);}
+.adl-h[data-c="SRAS"]{border-color:var(--adl-sras);}
+.adl-h.is-moved{background:var(--ctint);}
+.adl-h:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.adl-h span{color:var(--muted);}
+
+/* curve colors, the same curve family in both graphs */
+.adl-fig [data-curve="AD"] .mac-gr-curve{stroke:var(--adl-ad);}
+.adl-fig [data-curve="SRAS"] .mac-gr-curve,.adl-fig [data-curve="SRPC"] .mac-gr-curve{stroke:var(--adl-sras);}
+.adl-fig [data-curve="LRAS"] .mac-gr-curve,.adl-fig [data-curve="LRPC"] .mac-gr-curve{stroke:var(--adl-lr);stroke-width:2.4;}
+.adl-fig .mac-gr-clabel.adl-c-AD{fill:var(--adl-ad);}
+.adl-fig .mac-gr-clabel.adl-c-SRAS,.adl-fig .mac-gr-clabel.adl-c-SRPC{fill:var(--adl-sras);}
+.adl-fig .mac-gr-clabel.adl-c-LRAS,.adl-fig .mac-gr-clabel.adl-c-LRPC{fill:var(--adl-lr);}
+.adl-fig [data-curve="AD"] .mac-gr-grab,.adl-fig [data-curve="SRAS"] .mac-gr-grab{cursor:grab;}
+.adl-fig [data-curve="LRAS"] .mac-gr-grab,.adl-fig .adl-pc .mac-gr-grab{cursor:default;}
+
+/* annotations */
+.adl-arrow{fill:none;stroke-width:2.2;stroke-linecap:round;}
+.adl-head{stroke:none;}
+.adl-arrow.adl-k-AD{stroke:var(--adl-ad);} .adl-head.adl-k-AD{fill:var(--adl-ad);}
+.adl-arrow.adl-k-SRAS{stroke:var(--adl-sras);} .adl-head.adl-k-SRAS{fill:var(--adl-sras);}
+.adl-gap,.adl-gapend{fill:none;stroke:var(--adl-gap);stroke-width:2.2;stroke-linecap:round;}
+.adl-gaplabel{fill:var(--adl-gap);font:800 11px var(--font-ui);}
+.adl-tick{fill:var(--ink);font:800 12px var(--font-ui);}
+.adl-plabel{font-size:12.5px;}
+.mac-gr-eq.adl-now,.adl-fig .mac-gr-eq.is-point{fill:var(--cink);}
+.mac-gr-guide.adl-now{stroke:var(--cink);}
+.adl-ctl{display:grid;gap:10px;}
+.adl-btns{display:flex;flex-wrap:wrap;gap:8px;}
+.adl-btns .btn-press:disabled{opacity:.55;cursor:default;}
+.adl-shock select{width:100%;}
+
+/* Test yourself: a graph step's options are the graph itself */
+.cd-step:has(.adl-gstep) .cd-opts{display:none;}
+.adl-qfig{margin:0;}
+.adl-qfig .mac-gr-stage{max-width:520px;}
+.adl-pts{display:inline-flex;flex-wrap:wrap;gap:4px 8px;margin-left:2px;}
+.adl-pt{font:800 12.5px var(--font-ui);padding:1px 8px;border-radius:999px;background:var(--surface2,#f2f2f2);}
+.adl-pt.ok{color:var(--good-text,#1B7F3A);} .adl-pt.no{color:var(--bad-text,#B3261E);}
+@media (prefers-reduced-motion: reduce){.adl-tab,.adl-h{transition:none;}}
+.adl-qfig .mac-gr-handle{background:var(--white);color:var(--ink);}

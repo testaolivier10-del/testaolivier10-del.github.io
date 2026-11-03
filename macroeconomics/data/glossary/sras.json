@@ -1,0 +1,14 @@
+{
+ "sras": {
+  "def": "Short-run aggregate supply: the total real output firms supply at each price level while nominal wages and some prices are fixed. The SRAS curve slopes up."
+ },
+ "sticky-wages": {
+  "def": "Nominal wages (and some prices) that do not adjust right away when the price level changes, often because of contracts. They make SRAS slope up."
+ },
+ "sras-shifter": {
+  "def": "A change in production costs at a given price level, such as input prices, productivity, taxes or subsidies on firms. A sudden economy-wide one is a supply shock."
+ },
+ "long-run": {
+  "def": "The short run is the period in which nominal wages and some prices are fixed; the long run is long enough for all wages and prices to adjust."
+ }
+}

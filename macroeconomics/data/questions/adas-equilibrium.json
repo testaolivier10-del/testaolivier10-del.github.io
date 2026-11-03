@@ -1,0 +1,549 @@
+{
+ "stimuli": {
+  "adas-equilibrium-s1": {
+   "kind": "data",
+   "title": "Output and unemployment in three countries",
+   "invented": true,
+   "table": {
+    "caption": "Real GDP, full-employment real GDP and unemployment in three invented countries this year (invented data for practice)",
+    "cols": [
+     "Country",
+     "Real GDP (billions of dollars)",
+     "Full-employment real GDP (billions of dollars)",
+     "Unemployment rate (%)",
+     "Natural rate of unemployment (%)"
+    ],
+    "rows": [
+     [
+      "Alta",
+      "940",
+      "1,000",
+      "7.5",
+      "5"
+     ],
+     [
+      "Bora",
+      "1,000",
+      "1,000",
+      "5",
+      "5"
+     ],
+     [
+      "Cresh",
+      "1,060",
+      "1,000",
+      "3.5",
+      "5"
+     ]
+    ]
+   }
+  },
+  "adas-equilibrium-s2": {
+   "kind": "graph",
+   "title": "The AD-AS graph for Country D",
+   "graph": {
+    "kind": "adas",
+    "start": {
+     "AD": -1
+    },
+    "show": {}
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-adas-equilibrium-1",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "adas-equilibrium-s1",
+   "q": "Based on the table, which country has a recessionary gap?",
+   "options": [
+    "Alta",
+    "Bora",
+    "Cresh",
+    "Alta and Cresh"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A recessionary gap means real GDP is below full-employment output, with unemployment above the natural rate: Alta.",
+    "options": [
+     "Right: Alta's real GDP (940) is below full-employment output (1,000), and its unemployment is above the natural rate.",
+     "Bora produces exactly its full-employment output: it is in long-run equilibrium.",
+     "Cresh produces more than full-employment output, an inflationary gap.",
+     "Cresh's output is above full employment, which is the opposite kind of gap."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-2",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "adas-equilibrium-s1",
+   "q": "Using the table, calculate the size of Alta's output gap, in billions of dollars (as a positive number).",
+   "why": {
+    "correct": "Gap $=$ full-employment real GDP $-$ real GDP $= 1{,}000 - 940 = 60$ billion dollars, a recessionary gap."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      1000,
+      940
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "That is the gap as a percent of full-employment output. The question asks for billions of dollars: $1{,}000 - 940$."
+     },
+     {
+      "value": 2.5,
+      "why": "That is the gap in unemployment rates. The output gap is measured in real GDP: $1{,}000 - 940$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-3",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "adas-equilibrium-s1",
+   "q": "Based on the table, how does Cresh's short-run equilibrium compare with its LRAS?",
+   "options": [
+    "It lies on LRAS, because the economy is growing",
+    "It lies to the right of LRAS, with unemployment below the natural rate",
+    "It lies to the left of LRAS, with unemployment above the natural rate",
+    "It lies to the right of LRAS, with unemployment above the natural rate"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Cresh produces above full employment: its AD and SRAS cross to the right of LRAS, and unemployment (3.5%) is below the natural rate (5%).",
+    "options": [
+     "On LRAS, output would equal 1,000. Cresh produces 1,060.",
+     "Right: output of 1,060 exceeds full-employment output, an inflationary gap.",
+     "That describes Alta, not Cresh.",
+     "When output is above potential, firms hire more, so unemployment is below the natural rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-4",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "adas-equilibrium-s1",
+   "q": "Based on the table, which country is in long-run equilibrium?",
+   "options": [
+    "Alta, because unemployment is high enough to keep prices from rising",
+    "Cresh, because it produces the most real GDP of the three",
+    "Bora, because AD and SRAS cross on LRAS at full-employment output",
+    "No country, because each one has some unemployment"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Long-run equilibrium: AD, SRAS and LRAS meet at one point, with output at full employment. Bora fits.",
+    "options": [
+     "High unemployment means output is below potential, so Alta is not in long-run equilibrium.",
+     "Producing above potential is an inflationary gap, not long-run equilibrium.",
+     "Right: output equals full-employment output and unemployment equals the natural rate.",
+     "Full employment allows natural unemployment. Bora's 5% is its natural rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-5",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "adas-equilibrium-s2",
+   "q": "According to the graph, what kind of gap does Country D have?",
+   "options": [
+    "An inflationary gap, because AD and SRAS cross to the left of LRAS",
+    "No gap, because AD and SRAS cross each other",
+    "No gap, because LRAS passes through the AD curve",
+    "A recessionary gap, because AD and SRAS cross to the left of LRAS"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In the graph, AD meets SRAS at an output to the left of LRAS: real GDP is below potential, a recessionary gap.",
+    "options": [
+     "Left of LRAS means output below potential, which is a recessionary gap.",
+     "They cross, which sets short-run output, but not on LRAS, so there is a gap.",
+     "LRAS crosses AD on any such graph; what matters is whether AD and SRAS meet on LRAS. Here they meet to its left.",
+     "Right: short-run output is below full-employment output."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-6",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "adas-equilibrium-s2",
+   "q": "According to the graph, how does Country D's unemployment rate compare with its natural rate?",
+   "options": [
+    "It is above the natural rate, because output is below full employment",
+    "It is below the natural rate, because output is below full employment",
+    "It equals the natural rate, because SRAS crosses AD",
+    "There is no way to compare them, as unemployment is not on the graph"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Output below full employment means unemployment above the natural rate: there is cyclical unemployment.",
+    "options": [
+     "Right: producing less than potential needs fewer workers, so cyclical unemployment is positive.",
+     "Lower output means fewer jobs, so unemployment is above, not below, the natural rate.",
+     "Unemployment equals the natural rate only at full-employment output, on LRAS.",
+     "Output tells you: below YF, unemployment is above the natural rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-7",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "stimulus": "adas-equilibrium-s2",
+   "q": "Which statement about Country D's position in the graph is correct?",
+   "options": [
+    "It is a long-run equilibrium, because AD equals SRAS",
+    "It is a short-run equilibrium but not a long-run equilibrium",
+    "It is not an equilibrium, because firms want to produce more",
+    "It is both a short-run and a long-run equilibrium"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Where AD meets SRAS is a short-run equilibrium. It is also a long-run equilibrium only if that point is on LRAS.",
+    "options": [
+     "A long-run equilibrium also needs output on LRAS, at full employment.",
+     "Right: planned spending equals output supplied at SRAS, but output is off LRAS.",
+     "At the AD-SRAS crossing, the output firms supply equals what buyers plan to buy.",
+     "Output is below YF, so it is not on LRAS."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-8",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and the three curves of this AD-AS graph.",
+   "why": {
+    "correct": "Vertical axis: Price level. Horizontal axis: Real GDP. AD slopes down, SRAS slopes up, LRAS is vertical at full-employment output."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-9",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The economy starts in long-run equilibrium. Households and firms grow pessimistic and cut their spending. Shift the right curve and mark the new short-run equilibrium.",
+   "why": {
+    "correct": "Less spending shifts AD left. The new short-run equilibrium is left of LRAS, with a lower price level and lower real GDP: a recessionary gap."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "left"
+      }
+     ],
+     "because": "a fall in consumer and business spending",
+     "outcome": {
+      "price level": "down",
+      "output": "down"
+     }
+    },
+    "slips": {
+     "SRAS": "Pessimism cuts spending, which is aggregate demand. Production costs did not change, so SRAS stays put."
+    }
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-10",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "This economy is in an inflationary gap. Mark a point X on the AD curve that would be a long-run equilibrium at the same LRAS.",
+   "why": {
+    "correct": "Long-run equilibrium is on LRAS. Moving along AD to full-employment output means less output and a higher price level than now."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "point"
+    ],
+    "start": {
+     "AD": 1
+    },
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "AD",
+      "x": "down",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-11",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What defines short-run equilibrium in the AD-AS model?",
+   "options": [
+    "The price level and real GDP where AD crosses LRAS",
+    "Real GDP at full employment",
+    "The price level and real GDP where AD crosses SRAS",
+    "The price level at which unemployment is zero"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Short-run equilibrium: where AD meets SRAS. Long-run equilibrium: where AD, SRAS and LRAS all meet.",
+    "options": [
+     "AD crossing LRAS gives the long-run outcome only when SRAS passes through the same point.",
+     "That is where LRAS stands. Short-run output can differ from it.",
+     "Right: there, planned spending equals the output firms supply.",
+     "Even at full employment there is natural unemployment; equilibrium is where AD meets SRAS."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-12",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "An economy's AD and SRAS cross at a real GDP of 1,200 billion dollars, and LRAS is at 1,150 billion dollars. Which describes the economy?",
+   "options": [
+    "A recessionary gap of 50 billion dollars, with unemployment above the natural rate",
+    "An inflationary gap of 50 billion dollars, with unemployment above the natural rate",
+    "Long-run equilibrium, because AD and SRAS cross",
+    "An inflationary gap of 50 billion dollars, with unemployment below the natural rate"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Real GDP 1,200 > full-employment 1,150: an inflationary (positive) gap of 50 billion dollars, unemployment below the natural rate.",
+    "options": [
+     "Output is above potential, not below it.",
+     "Above-potential output needs more workers, so unemployment is below the natural rate.",
+     "The crossing is 50 billion to the right of LRAS, so the economy is not at long-run equilibrium.",
+     "Right: output exceeds potential by 50 billion, so firms are hiring beyond full employment."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-13",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "An economy is in long-run equilibrium. Which statements are correct? Select all that apply.",
+   "options": [
+    "AD, SRAS and LRAS cross at one point",
+    "Unemployment equals the natural rate",
+    "Unemployment is zero",
+    "Real GDP is above full-employment output",
+    "The price level has stopped changing for good"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "In long-run equilibrium, AD meets SRAS on LRAS: output is at full employment and unemployment equals the natural rate.",
+    "options": [
+     "Right: that is what long-run equilibrium means on the graph.",
+     "Right: output is at full employment, so there is no cyclical unemployment.",
+     "Frictional and structural unemployment remain at full employment.",
+     "In long-run equilibrium real GDP equals full-employment output.",
+     "A long-run equilibrium can shift when AD or supply changes; it is a resting point, not a permanent one."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-14",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Full-employment real GDP is 2,000 billion dollars and actual real GDP is 1,900 billion dollars. Calculate the recessionary gap as a percent of full-employment output.",
+   "why": {
+    "correct": "$\\frac{2{,}000 - 1{,}900}{2{,}000} \\times 100 = 5\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "pct",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        2000,
+        1900
+       ]
+      },
+      2000
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 100,
+      "why": "100 is the gap in billions of dollars. As a percent, divide it by full-employment output and multiply by 100."
+     },
+     {
+      "from": {
+       "fn": "pct",
+       "args": [
+        100,
+        1900
+       ]
+      },
+      "why": "You divided by actual output. The gap is measured against full-employment output, 2,000."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-15",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: describe an economy whose AD and SRAS cross to the left of LRAS.",
+   "why": {
+    "correct": "Output is below full employment, a recessionary gap, so unemployment is above the natural rate."
+   },
+   "specific": {
+    "frame": "Real GDP is ___ full-employment output, which is a ___ gap, so unemployment is ___ the natural rate.",
+    "write": {
+     "directional": true
+    },
+    "model": "Real GDP is below full-employment output, which is a recessionary gap, so unemployment is higher than the natural rate because firms need fewer workers.",
+    "slots": {
+     "output": {
+      "label": "Real GDP",
+      "options": [
+       "below",
+       "above"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Left of LRAS on the horizontal axis means less output."
+      }
+     },
+     "gap": {
+      "label": "The gap",
+      "options": [
+       "recessionary",
+       "inflationary"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An inflationary gap has output above full employment."
+      }
+     },
+     "unemployment": {
+      "label": "Unemployment",
+      "options": [
+       "above",
+       "below"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lower output needs fewer workers, so unemployment is higher."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-adas-equilibrium-16",
+   "unit": "unit-3",
+   "topic": "adas-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "On an AD-AS graph, the short-run equilibrium is at PL1 and Y1, and Y1 is to the right of LRAS. Where should YF be labeled?",
+   "options": [
+    "On the horizontal axis where LRAS stands, to the left of Y1",
+    "On the horizontal axis at Y1",
+    "On the vertical axis at PL1",
+    "On the horizontal axis to the right of Y1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Label YF where LRAS meets the real GDP axis; with Y1 to its right, the gap between them is the inflationary gap.",
+    "options": [
+     "Right: YF is full-employment output, where the vertical LRAS meets the real GDP axis.",
+     "Y1 is actual output. In an inflationary gap it is to the right of YF.",
+     "YF is an output level, so it goes on the real GDP axis.",
+     "Y1 is right of LRAS, so YF lies to the left of Y1."
+    ]
+   }
+  }
+ ]
+}

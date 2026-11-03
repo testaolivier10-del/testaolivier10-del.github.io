@@ -1,0 +1,611 @@
+{
+ "stimuli": {
+  "fx-net-exports-s1": {
+   "kind": "data",
+   "title": "Arland's trade before and after the arl appreciates",
+   "invented": true,
+   "table": {
+    "caption": "Arland's exports and imports in billions of arls, the year before and the year after the arl appreciates against the bel; Arland trades with Belvia alone (invented data for practice)",
+    "cols": [
+     "Year",
+     "Exports",
+     "Imports"
+    ],
+    "rows": [
+     [
+      "Before",
+      "500",
+      "450"
+     ],
+     [
+      "After",
+      "470",
+      "490"
+     ]
+    ]
+   }
+  },
+  "fx-net-exports-s2": {
+   "kind": "text",
+   "title": "Coffee, machines and a weaker bel",
+   "text": "<p>The bel, Belvia's currency, depreciates against the arl, Arland's currency. Belvian farms sell coffee to Arland, priced in bels. Belvian factories buy machines from Arland, priced in arls. Belvia's economy is producing below full employment. (Arland, Belvia and their currencies are invented.)</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-fx-net-exports-1",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "fx-net-exports-s1",
+   "q": "Use the table. What were Arland's net exports in the year before the appreciation, in billions of arls?",
+   "why": {
+    "correct": "Net exports are exports minus imports: $500 - 450 = 50$ billion arls."
+   },
+   "numeric": {
+    "from": {
+     "fn": "netExports",
+     "args": [
+      500,
+      450
+     ]
+    },
+    "mistakes": [
+     {
+      "value": -50,
+      "why": "Net exports are exports minus imports, not imports minus exports: 500 - 450 = +50."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-2",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "stimulus": "fx-net-exports-s1",
+   "q": "Use the table. By how much did Arland's net exports change from the year before to the year after, in billions of arls? Write a decrease as a negative number.",
+   "why": {
+    "correct": "Before: $500 - 450 = 50$. After: $470 - 490 = -20$. Change: $-20 - 50 = -70$ billion arls. Exports fell and imports rose, so net exports fell on both counts."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      {
+       "fn": "netExports",
+       "args": [
+        470,
+        490
+       ]
+      },
+      {
+       "fn": "netExports",
+       "args": [
+        500,
+        450
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "netExports",
+       "args": [
+        470,
+        490
+       ]
+      },
+      "why": "That is the level of net exports after the appreciation. The change subtracts the level before: -20 - 50 = -70."
+     },
+     {
+      "value": 70,
+      "why": "The size is right, but net exports fell, so the change is negative: -70."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-3",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "fx-net-exports-s1",
+   "q": "Use the table. Other things equal, what happens to Arland's aggregate demand?",
+   "options": [
+    "It shifts right, because exports are still large",
+    "It does not shift, because imports are not part of GDP",
+    "It shifts left, because net exports fell",
+    "Short-run aggregate supply shifts left instead"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Lower net exports shift AD left.",
+    "options": [
+     "What moves AD is the change in net exports, and net exports fell.",
+     "Net exports, exports minus imports, are part of AD; a rise in imports lowers net exports.",
+     "Right: net exports are a component of AD (C + I + G + X - M), and they fell by 70 billion arls, so AD shifts left.",
+     "A change in net exports is a change in spending, so it shifts AD."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-4",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "fx-net-exports-s1",
+   "q": "Arland trades with Belvia alone. What happened to Belvia's net exports?",
+   "options": [
+    "They fell, along with Arland's",
+    "They did not change, since the arl changed value",
+    "They fell, because Belvian goods became dearer",
+    "They rose by the amount Arland's fell"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "One country's net exports are the other's net imports.",
+    "options": [
+     "Arland's imports are Belvia's exports, so when Arland's net exports fall, Belvia's rise.",
+     "The bel depreciated against the arl in the same move, which makes Belvian goods cheaper in Arland.",
+     "The bel depreciated, so Belvian goods became cheaper for Arland buyers.",
+     "Right: with two countries, Arland's exports are Belvia's imports and Arland's imports are Belvia's exports, so Belvia's net exports rose by 70 billion arls' worth."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-5",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "fx-net-exports-s2",
+   "q": "What happens to Belvia's coffee exports to Arland, other things equal?",
+   "options": [
+    "They rise, because Belvian coffee costs fewer arls",
+    "They fall, because each bel is worth less",
+    "They do not change, because the bel price is unchanged",
+    "They fall, because coffee costs Arland buyers more arls"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A depreciating currency makes the country's exports cheaper abroad.",
+    "options": [
+     "Right: each arl now buys more bels, so coffee priced in bels is cheaper for Arland buyers, and they buy more.",
+     "The farms still get their bel price; what changes is that the coffee is cheaper for Arland buyers.",
+     "The bel price is the same, but the arl price is lower, and Arland buyers pay in arls.",
+     "A weaker bel makes bel-priced goods cheaper in arls, not dearer."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-6",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "fx-net-exports-s2",
+   "q": "What happens to Belvian factories' purchases of machines from Arland, other things equal?",
+   "options": [
+    "They rise, because the machines are cheaper in bels",
+    "They fall, because each machine costs more bels",
+    "They do not change, because the arl price is unchanged",
+    "They rise, because Belvia exports more coffee"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A depreciating currency makes imports dearer at home, so imports fall.",
+    "options": [
+     "Each bel buys fewer arls, so arl-priced machines cost more bels, not fewer.",
+     "Right: the bel depreciated, so the arl price of a machine takes more bels, and Belvian factories buy fewer imported machines.",
+     "The arl price is the same, but Belvian factories pay in bels, and the bel price rose.",
+     "More coffee sales raise exports; the question is about imports, which get dearer."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-7",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "fx-net-exports-s2",
+   "q": "Putting both effects together, what happens to Belvia's aggregate demand?",
+   "options": [
+    "It shifts left, because the bel lost value",
+    "It does not shift, because the two effects cancel",
+    "It shifts right, because net exports rise",
+    "Short-run aggregate supply shifts right instead"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Depreciation raises net exports, so AD shifts right.",
+    "options": [
+     "A weaker bel raises exports and lowers imports, so net exports and AD rise.",
+     "Both effects push the same way: exports rise and imports fall, so net exports rise.",
+     "Right: higher exports and lower imports raise net exports, a part of AD, so AD shifts right.",
+     "Net exports are spending, a part of AD."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-8",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "fx-net-exports-s2",
+   "q": "In the short run, what happens to Belvia's real output and unemployment?",
+   "options": [
+    "Real output falls and unemployment rises",
+    "Real output rises and unemployment rises",
+    "Real output and unemployment do not change, since prices do the adjusting",
+    "Real output rises and unemployment falls"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "AD right in the short run: output up, unemployment down, price level up.",
+    "options": [
+     "That would follow a fall in AD; here AD rises.",
+     "More output takes more workers, so unemployment falls in the short run.",
+     "Below full employment, a rise in AD raises output along the upward-sloping SRAS curve.",
+     "Right: AD shifts right along SRAS, so real output rises and firms hire more, lowering unemployment."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-9",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The arl appreciates sharply against other currencies. Considering only the effect on Arland's net exports, shift the right curve on Arland's AD-AS graph and mark the new short-run equilibrium.",
+   "why": {
+    "correct": "An appreciation makes Arland exports dearer abroad and imports cheaper at home, so net exports fall and AD shifts left. In the short run the price level and real output both fall."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "left"
+      }
+     ],
+     "because": "lower net exports after the arl appreciates",
+     "outcome": {
+      "price level": "down",
+      "output": "down"
+     }
+    },
+    "slips": {
+     "SRAS": "The question asks about net exports, a part of aggregate demand. Lower net exports shift AD, not SRAS."
+    }
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-10",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The bel depreciates against other currencies. Considering only the effect on Belvia's net exports, draw Belvia's AD-AS graph: label it, shift the right curve and mark the new short-run equilibrium.",
+   "why": {
+    "correct": "A depreciation makes Belvian exports cheaper abroad and imports dearer at home, so net exports rise and AD shifts right: the price level and real output rise in the short run. The axes are Real GDP and Price level."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "right"
+      }
+     ],
+     "because": "higher net exports after the bel depreciates",
+     "outcome": {
+      "price level": "up",
+      "output": "up"
+     }
+    },
+    "slips": {
+     "SRAS": "Higher net exports are more spending on Belvian goods, which shifts AD, not SRAS."
+    }
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-11",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Arland's currency appreciates and its net exports fall, so its AD shifts left. Mark the new short-run equilibrium as a point on the original SRAS curve.",
+   "why": {
+    "correct": "With AD lower and SRAS unchanged, the economy slides down the SRAS curve: a lower price level and lower real output than at the starting equilibrium."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "SRAS",
+      "x": "down",
+      "y": "down"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-12",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A machine made in Arland is priced at 2,000 arls. The exchange rate moves from 3 bels per arl to 4 bels per arl. By how many bels does the price rise for a buyer in Belvia?",
+   "why": {
+    "correct": "Before: $2{,}000 \\times 3 = 6{,}000$ bels. After: $2{,}000 \\times 4 = 8{,}000$ bels. The price rises by $8{,}000 - 6{,}000 = 2{,}000$ bels, though the arl price did not change."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      {
+       "fn": "convert",
+       "args": [
+        2000,
+        4
+       ]
+      },
+      {
+       "fn": "convert",
+       "args": [
+        2000,
+        3
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "convert",
+       "args": [
+        2000,
+        4
+       ]
+      },
+      "why": "That is the new price in bels. The question asks how much it rose: 8,000 - 6,000 = 2,000 bels."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          2000,
+          3
+         ]
+        },
+        {
+         "fn": "div",
+         "args": [
+          2000,
+          4
+         ]
+        }
+       ]
+      },
+      "why": "You divided by bels per arl. An arl price times bels per arl gives bels: 2,000 x 4 = 8,000 and 2,000 x 3 = 6,000."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-13",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "The arl appreciates against the bel. Build the chain from the appreciation to Arland's real output in the short run.",
+   "why": {
+    "correct": "Each link: dearer exports and cheaper imports, lower net exports, AD left, lower real output."
+   },
+   "specific": {
+    "frame": "Arland goods cost more bels and Belvian goods cost fewer arls, so net exports ___; ___; and real output ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "The appreciation makes Arland's goods cost more bels and Belvian goods cost fewer arls, so Arland's exports fall and its imports rise. Net exports fall, and because net exports are part of aggregate demand, AD shifts left, so Arland's real output falls in the short run.",
+    "slots": {
+     "netExports": {
+      "label": "Net exports",
+      "options": [
+       "fall",
+       "rise"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Dearer exports and cheaper imports both lower net exports."
+      }
+     },
+     "curve": {
+      "label": "The curve",
+      "options": [
+       "AD shifts left",
+       "AD shifts right",
+       "SRAS shifts left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lower net exports reduce spending, which moves AD left, not right.",
+       "2": "Net exports are spending, part of AD; the change shifts AD."
+      }
+     },
+     "output": {
+      "label": "Real output",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "With AD to the left along SRAS, real output falls in the short run."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-14",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Arland's real income rises during an expansion. A classmate predicts that Arland's net exports will rise because Arland is producing more. Which response is best?",
+   "options": [
+    "Right: more output means more goods to sell abroad",
+    "Right, as long as the arl does not change in value",
+    "Wrong: net exports do not depend on income",
+    "Wrong: higher income raises imports, so net exports tend to fall"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Higher domestic income raises imports, so net exports fall.",
+    "options": [
+     "Exports depend mainly on foreign incomes and prices; higher Arland income mainly raises Arland's imports.",
+     "Even with an unchanged exchange rate, higher Arland income raises imports, which lowers net exports.",
+     "Income matters: higher Arland income raises imports.",
+     "Right: Arland households spend part of their extra income on imported goods, so imports rise and net exports fall, other things equal."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-15",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Which Arland business is most likely hurt when the arl appreciates against the bel?",
+   "options": [
+    "A winery that sells most of its wine in Belvia, priced in arls",
+    "A store that imports clothes from Belvia, priced in bels",
+    "A firm that owes a loan payable in bels",
+    "A travel agency that sells Arland holidays in Belvia"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An appreciation hurts exporters: their goods cost more abroad.",
+    "options": [
+     "Right: its wine now costs Belvian buyers more bels, so it sells less abroad.",
+     "Each arl buys more bels, so its imported clothes cost it fewer arls: it gains.",
+     "Each arl buys more bels, so the loan takes fewer arls to repay.",
+     "Holidays in Belvia, priced in bels, are now cheaper for Arland travelers, which helps the agency."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-16",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "After the arl appreciates, Arland's net exports fall while its income and transfers with the rest of the world do not change. What happens to its balance of payments?",
+   "options": [
+    "Its current account balance falls, and its capital and financial account balance rises",
+    "Both balances fall by the same amount",
+    "Its current account balance rises, because the arl is worth more",
+    "Nothing changes, because the exchange rate is not in the accounts"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Lower net exports lower the current account balance; the capital and financial account balance rises by the same amount.",
+    "options": [
+     "Right: net exports are part of the current account, which falls; the two accounts sum to zero, so the capital and financial account balance rises by the same amount.",
+     "The two balances sum to zero, so when one falls the other rises.",
+     "Net exports fell, and they are part of the current account, so its balance falls.",
+     "The exchange rate is not an entry, but the trade it changes is."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-net-exports-17",
+   "unit": "unit-6",
+   "topic": "fx-net-exports",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the links in order, from an appreciation of the arl to Arland's output in the short run.",
+   "options": [
+    "The arl appreciates against the bel",
+    "Arland goods cost more bels and Belvian goods cost fewer arls",
+    "Arland exports fall and imports rise",
+    "Arland net exports fall",
+    "Arland AD shifts left",
+    "Arland real output and price level fall in the short run"
+   ],
+   "why": {
+    "correct": "Every link counts on the free-response section: currency, prices to each buyer, exports and imports, net exports, AD, output."
+   }
+  }
+ ]
+}

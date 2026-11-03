@@ -1,0 +1,193 @@
+{
+ "id": "frq-deficit-long",
+ "type": "long",
+ "points": 10,
+ "title": "Deficit spending at full employment in Tamsin: AD-AS, loanable funds and growth",
+ "units": [
+  "unit-3",
+  "unit-4",
+  "unit-5"
+ ],
+ "topics": [
+  "fiscal-policy",
+  "loanable-funds",
+  "crowding-out",
+  "economic-growth"
+ ],
+ "practices": [
+  "4.A",
+  "4.C",
+  "2.A",
+  "2.B",
+  "3.B"
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "points": 3,
+   "type": "graph",
+   "prompt": "Tamsin, an invented country, is in long-run equilibrium at full employment. Its government raises spending on public services by 60 billion dollars a year and pays for it by borrowing, so its budget deficit grows. Assume Tamsin's central bank takes no action. <b>Draw</b> a correctly labeled AD-AS graph showing Tamsin's long-run equilibrium, with LRAS, PL1 and YF. <b>Show</b> the short-run effect of the rise in government spending, labeling the new price level PL2 and real output Y2.",
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS",
+     "LRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in government spending",
+     "outcome": {
+      "price level": "up",
+      "output": "up"
+     }
+    },
+    "slips": {
+     "SRAS": "Government spending is part of total spending, so it shifts AD; it does not change firms' costs.",
+     "LRAS": "Spending on current public services raises demand, not the economy's capacity."
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled AD-AS graph: Price level and Real GDP axes, a downward-sloping AD, an upward-sloping SRAS and a vertical LRAS, with the starting equilibrium at YF and PL1",
+     "accept": [
+      "PL and Y as axis labels"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "AD shifted to the right (AD2)",
+     "accept": [
+      "an arrow showing the rightward shift"
+     ],
+     "auto": "shift"
+    },
+    {
+     "point": "The new short-run equilibrium where AD2 crosses SRAS, with PL2 above PL1 and Y2 above YF",
+     "accept": [
+      "higher price level and output marked on the axes"
+     ],
+     "auto": "equilibrium"
+    }
+   ],
+   "sample": "The graph has Price level on the vertical axis and Real GDP on the horizontal axis, with AD1, SRAS and a vertical LRAS crossing at PL1 and YF. Government spending is part of AD, so AD shifts right to AD2. AD2 crosses SRAS at a higher price level, PL2, and a higher real output, Y2, to the right of LRAS."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>Identify</b> how Tamsin's unemployment rate in the short run compares with its natural rate.",
+   "rubric": [
+    {
+     "point": "States that the unemployment rate is below the natural rate",
+     "accept": [
+      "unemployment falls below the natural rate"
+     ]
+    }
+   ],
+   "sample": "Real output is above full employment, so Tamsin's unemployment rate is below its natural rate."
+  },
+  {
+   "label": "C",
+   "points": 3,
+   "type": "graph",
+   "prompt": "<b>Draw</b> a correctly labeled graph of Tamsin's loanable funds market. <b>Show</b> the effect of the government's borrowing as a change in the demand for loanable funds, and label the new real interest rate r2.",
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DLF",
+     "SLF"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "DLF",
+       "dir": "right"
+      }
+     ],
+     "because": "more government borrowing",
+     "outcome": {
+      "real interest rate": "up",
+      "quantity of loanable funds": "up"
+     }
+    },
+    "slips": {
+     "SLF": "The question asks you to show the borrowing as a change in demand: the government is an extra borrower."
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled graph: Real interest rate on the vertical axis, Quantity of loanable funds on the horizontal axis, a downward-sloping demand and an upward-sloping supply of loanable funds",
+     "accept": [
+      "r and Q as axis labels"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "The demand for loanable funds shifted to the right",
+     "accept": [
+      "an arrow showing the rightward shift of DLF"
+     ],
+     "auto": "shift"
+    },
+    {
+     "point": "A new equilibrium with a higher real interest rate, r2 above r1",
+     "accept": [
+      "the higher real rate marked on the vertical axis"
+     ],
+     "auto": "outcome"
+    }
+   ],
+   "sample": "The vertical axis is the Real interest rate and the horizontal axis the Quantity of loanable funds. DLF slopes down and SLF slopes up, crossing at r1. The government's borrowing adds to the demand for loanable funds, so DLF shifts right to DLF2. The new equilibrium has a higher real interest rate, r2, and a larger quantity of loanable funds."
+  },
+  {
+   "label": "D",
+   "points": 2,
+   "prompt": "<b>Explain</b> how the change in the real interest rate you showed in part C affects private investment and the growth of Tamsin's capital stock.",
+   "rubric": [
+    {
+     "point": "Explains that the higher real interest rate makes borrowing more costly, so private investment falls (crowding out)",
+     "accept": [
+      "firms borrow and invest less at the higher real rate"
+     ]
+    },
+    {
+     "point": "Explains that lower investment means the capital stock grows more slowly",
+     "accept": [
+      "less new physical capital is added",
+      "a smaller capital stock than otherwise"
+     ]
+    }
+   ],
+   "sample": "The higher real interest rate raises the cost of borrowing for firms, so some investment projects no longer pay and private investment falls: the government's borrowing crowds it out. Because investment is what adds machines, equipment and buildings, lower investment means Tamsin's capital stock grows more slowly than it would have."
+  },
+  {
+   "label": "E",
+   "points": 1,
+   "prompt": "Compared with what would have happened without the borrowing, will Tamsin's production possibilities curve shift outward by more, by less or by the same amount in the future? <b>Explain</b>.",
+   "rubric": [
+    {
+     "point": "By less, because the slower growth of the capital stock (less physical capital) slows the growth of productive capacity",
+     "accept": [
+      "LRAS shifts right by less, if linked to lower investment"
+     ]
+    }
+   ],
+   "sample": "By less. Lower private investment means less physical capital is added each year, so Tamsin's productive capacity grows more slowly and its PPC shifts out by less than it would have without the borrowing."
+  }
+ ]
+}

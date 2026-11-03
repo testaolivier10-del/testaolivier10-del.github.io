@@ -1,0 +1,8 @@
+{
+ "money-market": {
+  "def": "The market where the demand for money meets the money supply. Its graph has the nominal interest rate on the vertical axis and the quantity of money on the horizontal axis."
+ },
+ "money-demand": {
+  "def": "How much money people want to hold at each nominal interest rate. It slopes down because the interest rate is the cost of holding money (asset demand), and it rises with the price level and real GDP (transaction demand)."
+ }
+}

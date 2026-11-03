@@ -1,0 +1,330 @@
+{
+ "stimuli": {
+  "axes-points-s1": {
+   "kind": "data",
+   "title": "Movie tickets at four prices",
+   "invented": true,
+   "table": {
+    "caption": "Price of a movie ticket and tickets sold per day at one theater (invented data for practice)",
+    "cols": [
+     "Price per ticket (\\$)",
+     "Tickets sold per day"
+    ],
+    "rows": [
+     [
+      "6",
+      "500"
+     ],
+     [
+      "8",
+      "400"
+     ],
+     [
+      "10",
+      "300"
+     ],
+     [
+      "12",
+      "200"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-axes-points-1",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label this graph of a market. Price goes up the side, quantity goes across the bottom, and each curve carries its name.",
+   "why": {
+    "correct": "Price is on the vertical axis and Quantity on the horizontal axis; the falling curve is D (demand) and the rising one is S (supply). Readers check every label."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mac-axes-points-2",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The marked point is where the market starts. Place point X on curve S so that it shows a larger quantity and a higher price than the marked point.",
+   "why": {
+    "correct": "A larger quantity is farther right on the horizontal axis, and a higher price is farther up the vertical axis, so X sits up and to the right of the starting point."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "S",
+      "x": "up",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-axes-points-3",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "axes-points-s1",
+   "q": "On a graph with quantity on the horizontal axis and price on the vertical axis, which ordered pair plots the row for a price of \\$10?",
+   "options": [
+    "(10, 300)",
+    "(300, 10)",
+    "(300, 300)",
+    "(10, 10)"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An ordered pair lists the horizontal value first: 300 tickets across, then \\$10 up.",
+    "options": [
+     "This puts the price first, which would place price on the horizontal axis.",
+     "Right: horizontal value (300 tickets) first, vertical value (\\$10) second.",
+     "Both numbers are the quantity; the price of \\$10 is missing.",
+     "Both numbers are the price; the 300 tickets are missing."
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-4",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "axes-points-s1",
+   "q": "What kind of relationship does the table show between the price of a ticket and the number of tickets sold?",
+   "options": [
+    "An inverse relationship: as price rises, tickets sold fall",
+    "A direct relationship: as the price rises, tickets sold rise",
+    "No relationship: tickets sold do not depend on price",
+    "A relationship that rises and then falls"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each \\$2 rise in price comes with 100 fewer tickets sold, so the two move in opposite directions.",
+    "options": [
+     "Right: the variables move in opposite directions.",
+     "In a direct relationship both would rise together; here tickets fall as price rises.",
+     "Tickets sold change in every row as price changes.",
+     "Tickets sold fall in every row; they never turn back up."
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-5",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "stimulus": "axes-points-s1",
+   "q": "Using the table, by how many tickets a day do sales fall when the price rises from \\$8 to \\$12?",
+   "why": {
+    "correct": "At \\$8 the theater sells 400 tickets and at \\$12 it sells 200: $400 - 200 = 200$ fewer tickets."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      400,
+      200
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That is the change in price (\\$12 - \\$8). The question asks for the change in tickets, the other column."
+     },
+     {
+      "value": 600,
+      "why": "You added the two quantities. A change is the new value minus the old one: 400 - 200."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-6",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "axes-points-s1",
+   "q": "If the pattern in the table continues, how many tickets a day would the theater sell at a price of \\$14?",
+   "options": [
+    "150",
+    "200",
+    "300",
+    "100"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Each \\$2 rise cuts sales by 100 tickets, so \\$14 brings 200 - 100 = 100.",
+    "options": [
+     "That cuts sales by only 50; the table shows 100 fewer for each \\$2.",
+     "That is the number sold at \\$12, as if sales stopped falling.",
+     "That is the number sold at \\$10, two steps back.",
+     "Right: the pattern is 100 fewer tickets for each \\$2."
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-7",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "As the outdoor temperature rises over a week, a cafe sells fewer cups of hot chocolate. Which statement describes these two variables?",
+   "options": [
+    "They have a direct relationship, moving together",
+    "They have no relationship",
+    "They have an inverse relationship",
+    "Temperature depends on cups sold"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "One rises while the other falls, which is an inverse (negative) relationship.",
+    "options": [
+     "A direct relationship means both rise or both fall together.",
+     "Sales change as the temperature changes, so they are related.",
+     "Right: higher temperature comes with fewer cups sold.",
+     "The cafe sales follow the weather, not the other way round."
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-8",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which pair of variables is most likely to have a direct relationship?",
+   "options": [
+    "The price of a snack and the number of snacks bought",
+    "Hours worked in a week and that week's pay",
+    "Hours spent on a phone game and hours left for sleep",
+    "The price of a bus fare and the number of riders"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "More hours worked bring more pay: both rise together.",
+    "options": [
+     "Buyers usually buy fewer snacks at a higher price, an inverse relationship.",
+     "Right: both rise together.",
+     "More time on a game leaves less time for sleep, an inverse relationship.",
+     "A higher fare usually means fewer riders, an inverse relationship."
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-9",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "On a graph with hours studied across the bottom and test score up the side, point Q is (0, 40). What does it show?",
+   "options": [
+    "A student who studied 0 hours and scored 40",
+    "A student who studied 40 hours and scored 0",
+    "A score that rose by 40 points",
+    "The average of 0 and 40"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The first number is the horizontal value (hours studied) and the second the vertical value (score).",
+    "options": [
+     "Right: 0 on the horizontal axis, 40 on the vertical axis.",
+     "This reverses the order; the horizontal value comes first.",
+     "A single point shows one pair of values, not a change.",
+     "An ordered pair is two separate values, not something to average."
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-10",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "recall",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "A reader checks your graph for its labeling point. Which features must it have? Select all that apply.",
+   "options": [
+    "A label on the horizontal axis",
+    "A label on each curve",
+    "A title written above the graph",
+    "Each curve drawn in a different color"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Readers look for every axis and every curve labeled. A title and colors are not scored.",
+    "options": [
+     "Right: each axis must be labeled.",
+     "Right: each curve carries its name, such as D or S.",
+     "A title is fine but not what earns the point.",
+     "Colors do not earn points; handwritten graphs on the exam are in one color."
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-11",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A student draws a market graph with Quantity up the side and Price across the bottom, and labels everything else correctly. What happens to the labeling point?",
+   "options": [
+    "It is earned, because both axes carry a label",
+    "It is earned if the curves are drawn neatly",
+    "It is lost only if the curves are unlabeled too",
+    "It is lost, because the axes are swapped from the standard graph"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A market graph puts Price on the vertical axis and Quantity on the horizontal axis. Swapped axes are wrong axes.",
+    "options": [
+     "A label must be the right one on the right axis, not just present.",
+     "Neat curves do not fix swapped axes.",
+     "The axes alone are enough to lose the point.",
+     "Right: the standard axes are part of the point."
+    ]
+   }
+  }
+ ]
+}

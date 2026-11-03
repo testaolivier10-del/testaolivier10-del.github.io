@@ -1,0 +1,12 @@
+{
+ "fx-policy-changes-demand-shift": {
+  "file": "figures/fx-policy-changes-demand-shift.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A graph of the market for dollars, with Quantity of dollars on the horizontal axis and Price of the dollar (euros per dollar) on the vertical axis. Demand shifts right from D1 to D2 along an unchanged supply curve S1; the equilibrium moves from E1 to E2, the exchange rate rises from XR1 to XR2 and the quantity from Q1 to Q2. Beside it, the chain: US real interest rates rise relative to Europe, European savers demand more dollars to buy US bonds, demand shifts right, the dollar appreciates; in the market for euros the supply of euros rises and the euro depreciates."
+ }
+}

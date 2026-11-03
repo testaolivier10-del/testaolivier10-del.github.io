@@ -1,0 +1,84 @@
+{
+ "topic": "opportunity-cost-ppc",
+ "hook": "Tonight you can study for a test or work a shift that pays \\$80. Choose the test, and the cost is not zero: it is the \\$80 you did not earn. Countries face the same kind of choice, only bigger: more tractors means less wheat. The production possibilities curve puts that choice on a graph.",
+ "prereq": [
+  {
+   "q": "Which statement describes scarcity?",
+   "options": [
+    "Wants are greater than the resources to meet them",
+    "A store has run out of a product",
+    "Prices are high",
+    "A country is poor"
+   ],
+   "correct": 0,
+   "why": "Scarcity is the gap between unlimited wants and limited resources.",
+   "review": "scarcity"
+  },
+  {
+   "q": "A curve that bows outward from the origin has a slope that",
+   "options": [
+    "gets steeper as it falls toward the horizontal axis",
+    "stays the same everywhere",
+    "is positive",
+    "is zero"
+   ],
+   "correct": 0,
+   "why": "A bowed-out curve starts flat and gets steeper as it falls.",
+   "review": "slopes-curves"
+  },
+  {
+   "q": "Machines and tools used to make other goods are which factor of production?",
+   "options": [
+    "Capital",
+    "Land",
+    "Labor",
+    "Entrepreneurship"
+   ],
+   "correct": 0,
+   "why": "Capital is made goods used in production.",
+   "review": "scarcity"
+  }
+ ],
+ "figure": {
+  "figure": "opportunity-cost-ppc-points",
+  "caption": "Points on the PPC are efficient, U inside shows idle resources, Z outside is out of reach now, and PPC2 shows growth from more resources or better technology."
+ },
+ "chain": [
+  {
+   "cause": "An economy uses all its resources efficiently",
+   "effect": "it produces at a point on its PPC"
+  },
+  {
+   "cause": "It moves along the PPC to make more of one good",
+   "effect": "it gives up some of the other good: the opportunity cost"
+  },
+  {
+   "cause": "Resources are not equally suited to both goods",
+   "effect": "each extra unit costs more of the other good, so the PPC bows outward"
+  },
+  {
+   "cause": "Resources grow or technology improves",
+   "effect": "the whole PPC shifts outward, and points once out of reach become possible"
+  }
+ ],
+ "ideas": [
+  "<b>Opportunity cost</b>: the value of the next-best alternative given up. Per unit, it is what you give up divided by what you gain.",
+  "On the <b>PPC</b>: efficient. Inside: idle or misused resources (a recession). Outside: unattainable with today's resources and technology.",
+  "Bowed out means <b>increasing opportunity cost</b> (specialized resources); a straight line means constant opportunity cost.",
+  "More resources or better technology shift the PPC <b>outward</b>; a disaster shifts it inward. Moving resources between the two goods is a movement along it."
+ ],
+ "misconception": {
+  "wrong": "Putting idle factories back to work shifts the PPC outward.",
+  "right": "Idle resources put the economy inside its PPC; using them moves the economy toward the curve. Only more resources or better technology shift the curve itself outward."
+ },
+ "check": [
+  "mac-opportunity-cost-ppc-2",
+  "mac-opportunity-cost-ppc-5",
+  "mac-opportunity-cost-ppc-7",
+  "mac-opportunity-cost-ppc-8",
+  "mac-opportunity-cost-ppc-9",
+  "mac-opportunity-cost-ppc-15",
+  "mac-opportunity-cost-ppc-16"
+ ],
+ "summary": "Opportunity cost is the next-best alternative you give up, and the production possibilities curve shows it for a whole economy: every point on the curve is efficient, points inside mean idle resources, and points outside are out of reach for now. A bowed-out PPC means increasing opportunity cost, a straight one constant cost. More resources or better technology shift the curve outward; moving resources from one good to the other is a movement along it."
+}

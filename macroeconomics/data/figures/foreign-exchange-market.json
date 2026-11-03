@@ -1,0 +1,12 @@
+{
+ "foreign-exchange-market-mirror": {
+  "file": "figures/foreign-exchange-market-mirror.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two foreign exchange graphs side by side. Left: the market for euros, with Quantity of euros on the horizontal axis and Price of the euro (dollars per euro) on the vertical axis, a downward demand curve and an upward supply curve crossing at E1, with exchange rate XR1 and quantity Q1. Right: the market for dollars, with Quantity of dollars and Price of the dollar (euros per dollar). Notes: demand for euros comes from people buying European goods, services and assets; supply of euros from Europeans buying American ones; more demand for euros is the same trades as more supply of dollars."
+ }
+}

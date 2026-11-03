@@ -1,0 +1,201 @@
+{
+ "id": "frq-ample-reserves-long",
+ "type": "long",
+ "points": 10,
+ "title": "Ample reserves in a recession: the reserve market, investment, output and loanable funds",
+ "units": [
+  "unit-3",
+  "unit-4"
+ ],
+ "topics": [
+  "fiscal-policy",
+  "monetary-policy",
+  "loanable-funds"
+ ],
+ "practices": [
+  "2.A",
+  "4.A",
+  "4.C",
+  "3.A",
+  "3.B"
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "points": 1,
+   "prompt": "The invented country of Ostra is in a recession: real GDP is below full-employment output. Ostra's central bank operates with <b>ample reserves</b>. <b>Identify</b> the change the central bank should make to its administered interest rates to close the gap.",
+   "rubric": [
+    {
+     "point": "States that the central bank lowers the interest rate on reserve balances (an administered rate)",
+     "accept": [
+      "lowers interest on reserves",
+      "lowers IORB",
+      "lowers the administered rates",
+      "lowers the overnight reverse repurchase rate together with interest on reserves"
+     ]
+    }
+   ],
+   "sample": "The central bank should lower the interest rate it pays on reserve balances (and its other administered rate, the overnight reverse repurchase rate). Buying bonds would not be the tool here, because reserves are ample."
+  },
+  {
+   "label": "B",
+   "points": 3,
+   "type": "graph",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the market for reserves and <b>show</b> the effect of the action you identified in part A on the policy rate.",
+   "graph": {
+    "kind": "reserves",
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "RD",
+     "RS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "RD",
+       "dir": "down"
+      }
+     ],
+     "because": "a cut in the interest rate on reserve balances",
+     "outcome": {
+      "policy rate": "down",
+      "quantity of reserves": "same"
+     }
+    },
+    "slips": {
+     "RS": "With ample reserves the central bank does not move the rate by shifting reserve supply; lowering the administered rate moves the flat part of reserve demand down."
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled reserve market: policy rate (federal funds rate) on the vertical axis, quantity of reserves on the horizontal axis, reserve demand flat in the ample range and a vertical reserve supply crossing it in the flat part",
+     "accept": [
+      "federal funds rate on the vertical axis",
+      "FFR and quantity of reserves"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "The flat part of reserve demand (set by the administered rate) shifted down, with reserve supply unchanged",
+     "accept": [
+      "the IORB line shifted down"
+     ],
+     "auto": "shift"
+    },
+    {
+     "point": "A lower policy rate shown on the vertical axis (FFR2 below FFR1) with the quantity of reserves unchanged",
+     "accept": [
+      "the federal funds rate falls from FFR1 to FFR2"
+     ],
+     "auto": "outcome"
+    }
+   ],
+   "sample": "Vertical axis: policy rate (federal funds rate). Horizontal axis: quantity of reserves. Reserve demand DR1 slopes down and then turns flat at the interest on reserve balances; the vertical reserve supply SR crosses it in the flat part at FFR1. Lowering the interest on reserve balances moves the flat part down to DR2, so SR now crosses it at FFR2, below FFR1. The quantity of reserves is unchanged."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Explain</b> how the change in the policy rate you showed in part B affects investment spending in Ostra.",
+   "rubric": [
+    {
+     "point": "States that investment increases, because a lower policy rate lowers other interest rates and so the cost of borrowing for firms",
+     "accept": [
+      "investment rises because borrowing is cheaper",
+      "lower interest rates make more investment projects profitable"
+     ]
+    }
+   ],
+   "sample": "Investment increases. The lower policy rate pulls down other interest rates, such as the rates on business loans, so borrowing to buy equipment and buildings costs less and more projects are worth doing."
+  },
+  {
+   "label": "D",
+   "points": 2,
+   "prompt": "Based on your answer to part C, <b>identify</b> the short-run effect on each of the following in Ostra: (i) real output; (ii) the price level.",
+   "rubric": [
+    {
+     "point": "Real output increases (with AD shifting right)",
+     "accept": [
+      "real GDP rises"
+     ]
+    },
+    {
+     "point": "The price level increases",
+     "accept": [
+      "the price level rises"
+     ]
+    }
+   ],
+   "sample": "Higher investment raises aggregate demand, so AD shifts right. In the short run (i) real output increases and (ii) the price level increases."
+  },
+  {
+   "label": "E(i)",
+   "points": 2,
+   "type": "graph",
+   "prompt": "Suppose instead that Ostra's government uses expansionary fiscal policy: it raises government spending and borrows to pay for it. <b>Draw</b> a correctly labeled graph of the loanable funds market and <b>show</b> the effect of the government borrowing on the real interest rate.",
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DLF",
+     "SLF"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "DLF",
+       "dir": "right"
+      }
+     ],
+     "because": "an increase in government borrowing",
+     "outcome": {
+      "real interest rate": "up",
+      "quantity of loanable funds": "up"
+     }
+    },
+    "slips": {
+     "SLF": "The government is borrowing, so the usual answer shifts the demand for loanable funds right. (Lower public saving shown as supply shifting left also raises the real rate; say which you drew.)"
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled loanable funds graph: real interest rate on the vertical axis, quantity of loanable funds on the horizontal axis, downward-sloping DLF and upward-sloping SLF",
+     "accept": [
+      "r and QLF"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "Demand for loanable funds shifted right (or supply shifted left), with a higher real interest rate shown",
+     "accept": [
+      "DLF right and r2 above r1",
+      "SLF left and r2 above r1"
+     ],
+     "auto": "shift"
+    }
+   ],
+   "sample": "Vertical axis: real interest rate (r). Horizontal axis: quantity of loanable funds. DLF1 slopes down and SLF slopes up, crossing at r1. Government borrowing shifts demand right to DLF2, which crosses SLF at r2, above r1."
+  },
+  {
+   "label": "E(ii)",
+   "points": 1,
+   "prompt": "Based on your answer to part E(i), <b>explain</b> how the change in the real interest rate affects private investment in Ostra.",
+   "rubric": [
+    {
+     "point": "States that private investment decreases, because the higher real interest rate raises the cost of borrowing for firms",
+     "accept": [
+      "private investment falls because borrowing costs more"
+     ]
+    }
+   ],
+   "sample": "Private investment decreases. The higher real interest rate raises the cost of borrowing, so firms carry out fewer investment projects; the government takes a larger share of the loanable funds."
+  }
+ ]
+}

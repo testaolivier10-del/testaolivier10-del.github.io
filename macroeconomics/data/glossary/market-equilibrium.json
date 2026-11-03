@@ -1,0 +1,17 @@
+{
+ "equilibrium": {
+  "def": "Market equilibrium: the price and quantity at which the quantity demanded equals the quantity supplied, where the demand and supply curves cross."
+ },
+ "shortage": {
+  "def": "At a price below equilibrium, the amount by which quantity demanded exceeds quantity supplied (Qd minus Qs). A shortage pushes the price up."
+ },
+ "surplus": {
+  "def": "At a price above equilibrium, the amount by which quantity supplied exceeds quantity demanded (Qs minus Qd). A surplus pushes the price down."
+ },
+ "indeterminate": {
+  "def": "When demand and supply both shift, the change in either price or quantity that cannot be known without the sizes of the shifts."
+ },
+ "disequilibrium": {
+  "def": "Any price at which quantity demanded and quantity supplied are not equal, so there is a shortage or a surplus and the price tends to move."
+ }
+}

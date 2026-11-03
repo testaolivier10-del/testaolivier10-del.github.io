@@ -1,0 +1,588 @@
+{
+ "stimuli": {
+  "opportunity-cost-ppc-s1": {
+   "kind": "data",
+   "title": "Arland's production possibilities",
+   "invented": true,
+   "table": {
+    "caption": "Five combinations of wheat and tractors Arland (an invented country) can produce in a year using all its resources efficiently (invented data for practice)",
+    "cols": [
+     "Combination",
+     "Wheat (millions of bushels)",
+     "Tractors (thousands)"
+    ],
+    "rows": [
+     [
+      "1",
+      "0",
+      "20"
+     ],
+     [
+      "2",
+      "10",
+      "18"
+     ],
+     [
+      "3",
+      "20",
+      "14"
+     ],
+     [
+      "4",
+      "30",
+      "8"
+     ],
+     [
+      "5",
+      "40",
+      "0"
+     ]
+    ]
+   }
+  },
+  "opportunity-cost-ppc-s2": {
+   "kind": "graph",
+   "title": "Bellmark's production possibilities, then and now",
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Food",
+     "y": "Machines"
+    },
+    "show": {
+     "PPC": 1
+    }
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-opportunity-cost-ppc-1",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label this production possibilities curve for an economy that makes pizzas (on the horizontal axis) and robots (on the vertical axis).",
+   "why": {
+    "correct": "Each axis is one of the two goods, by name: Pizzas across, Robots up. The curve is the PPC."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Pizzas",
+     "y": "Robots"
+    },
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-2",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A recession leaves many factories idle and many workers without jobs. Place point U to show what the economy produces.",
+   "why": {
+    "correct": "Idle resources mean the economy produces less of both goods than it could: a point inside the PPC."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Pizzas",
+     "y": "Robots"
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "U",
+    "key": {
+     "point": {
+      "region": "inside"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-3",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Place point Z at a combination of pizzas and robots the economy cannot produce with its current resources and technology.",
+   "why": {
+    "correct": "Combinations outside the PPC are unattainable now; they need more resources or better technology."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Pizzas",
+     "y": "Robots"
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "Z",
+    "key": {
+     "point": {
+      "region": "outside"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-4",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Every worker and machine is employed in its best use. Place point F to show one combination the economy could produce.",
+   "why": {
+    "correct": "Using all resources efficiently puts the economy on the PPC."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Pizzas",
+     "y": "Robots"
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "F",
+    "key": {
+     "point": {
+      "region": "on"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-5",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A new technology raises how much of both goods the economy can make. Show the change on the graph.",
+   "why": {
+    "correct": "Better technology lets the economy make more of both goods: the whole PPC shifts outward."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Pizzas",
+     "y": "Robots"
+    },
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "PPC"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "PPC",
+       "dir": "out"
+      }
+     ],
+     "because": "a new technology that raises output of both goods"
+    }
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-6",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A hurricane destroys many factories and farms. Show the change on the graph.",
+   "why": {
+    "correct": "Fewer resources mean less of both goods can be made: the PPC shifts inward."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Pizzas",
+     "y": "Robots"
+    },
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "PPC"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "PPC",
+       "dir": "in"
+      }
+     ],
+     "because": "a hurricane that destroys factories and farms"
+    }
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-7",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "opportunity-cost-ppc-s1",
+   "q": "Using the table, what is the opportunity cost per million bushels of wheat when Arland moves from combination 2 to combination 3?",
+   "why": {
+    "correct": "Arland gains 10 million bushels of wheat and gives up $18 - 14 = 4$ thousand tractors, so each million bushels costs $\\frac{4}{10} = 0.4$ thousand tractors."
+   },
+   "numeric": {
+    "from": {
+     "fn": "opportunityCost",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        18,
+        14
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        20,
+        10
+       ]
+      }
+     ]
+    },
+    "places": 1,
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "You divided the wheat gained by the tractors given up. Opportunity cost is what is given up per unit gained: 4 / 10."
+     },
+     {
+      "value": 4,
+      "why": "That is the total cost of the 10 million bushels. The question asks per million bushels: divide by 10."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-8",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "opportunity-cost-ppc-s1",
+   "q": "Using the table, how many thousand tractors does Arland give up in total to move from combination 3 to combination 4?",
+   "why": {
+    "correct": "Tractors fall from 14 thousand to 8 thousand: $14 - 8 = 6$ thousand tractors given up for 10 million more bushels of wheat."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      14,
+      8
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "That is the number of tractors still made at combination 4. The cost is how many were given up: 14 - 8."
+     },
+     {
+      "value": 10,
+      "why": "That is the wheat gained. The opportunity cost is measured in the good given up, tractors."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-9",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "opportunity-cost-ppc-s1",
+   "q": "What does the table show about Arland's opportunity cost of wheat as it makes more wheat?",
+   "options": [
+    "It stays the same: each extra 10 million bushels costs 2 thousand tractors",
+    "It rises: each extra 10 million bushels costs more tractors than the last",
+    "It falls: wheat gets cheaper to make as Arland makes more",
+    "It is impossible to find from a table"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The tractors given up for each extra 10 million bushels are 2, 4, 6 and 8 thousand: increasing opportunity cost, so the PPC is bowed out.",
+    "options": [
+     "Only the first step costs 2 thousand; later steps cost more.",
+     "Right: 2, then 4, then 6, then 8 thousand tractors.",
+     "The cost of wheat rises, not falls, as Arland moves along.",
+     "The differences between rows give the costs directly."
+    ]
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-10",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "opportunity-cost-ppc-s1",
+   "q": "Could Arland produce 25 million bushels of wheat and 14 thousand tractors in the same year?",
+   "options": [
+    "No: that combination lies outside its PPC",
+    "Yes: it lies inside its PPC, with resources to spare",
+    "Yes: it lies on its PPC",
+    "Yes, once it gives up some wheat"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At 20 million bushels Arland can make at most 14 thousand tractors; making more wheat means fewer tractors, so 25 million and 14 thousand is outside the curve.",
+    "options": [
+     "Right: more wheat than combination 3 with the same tractors is out of reach.",
+     "A point inside would need fewer tractors than the curve allows at 25 million bushels.",
+     "Points on the curve between combinations 3 and 4 have fewer than 14 thousand tractors.",
+     "Giving up wheat would bring the point back toward the curve, but the question asks about 25 million bushels."
+    ]
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-11",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "opportunity-cost-ppc-s1",
+   "q": "Arland is producing 20 million bushels of wheat and 10 thousand tractors. What does this tell you?",
+   "options": [
+    "It is producing at an efficient point",
+    "It has the best technology in the world",
+    "It has just lost a large share of its factories in a hurricane",
+    "Some of its resources are unemployed or used inefficiently"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "With 20 million bushels Arland could make 14 thousand tractors; making only 10 thousand puts it inside the PPC.",
+    "options": [
+     "An efficient point lies on the curve: 14 thousand tractors at this wheat output.",
+     "The table says nothing about other countries' technology.",
+     "Being inside the curve shows idle resources; it does not say why.",
+     "Right: inside the curve, so resources are idle or misused."
+    ]
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-12",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "opportunity-cost-ppc-s2",
+   "q": "What change could explain the move from the faded curve to the new one in the graph?",
+   "options": [
+    "Bellmark puts its idle factories back to work",
+    "The price of machines rises",
+    "Bellmark gains more workers and better machines",
+    "Bellmark shifts workers from making food to making machines"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The whole curve moved outward, so Bellmark can now make more of both goods: more resources or better technology.",
+    "options": [
+     "Using idle resources moves a point toward the existing curve; the curve itself stays put.",
+     "A price change does not change what can be produced.",
+     "Right: more or better resources shift the PPC out.",
+     "Moving workers between goods is a movement along the curve."
+    ]
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-13",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "opportunity-cost-ppc-s2",
+   "q": "A combination of food and machines lay just outside Bellmark's faded curve. Where does it lie now?",
+   "options": [
+    "It is still unattainable, because the whole curve shifted",
+    "It may now be attainable, on or inside the new curve",
+    "It is now inside the faded curve",
+    "It has moved to the horizontal axis"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An outward shift brings combinations that were just out of reach onto or inside the new curve.",
+    "options": [
+     "The outward shift is exactly what makes some of those points reachable.",
+     "Right: the new curve reaches farther out.",
+     "The faded curve did not move; the point stays where it was relative to it.",
+     "A point does not move when the curve shifts."
+    ]
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-14",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "opportunity-cost-ppc-s2",
+   "q": "Bellmark's new curve still bows outward. What does that shape tell you?",
+   "options": [
+    "Resources are not equally good at making food and machines",
+    "Each extra unit of food costs the same number of machines",
+    "Bellmark has idle resources",
+    "Bellmark is unable to make more of both goods"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A bowed-out PPC shows increasing opportunity cost, because resources suited to one good are moved into the other as output of it grows.",
+    "options": [
+     "Right: specialized resources give increasing opportunity cost.",
+     "A constant cost would give a straight line.",
+     "Idle resources put a point inside the curve; the shape says nothing about it.",
+     "The curve just shifted out, so it can make more of both than before."
+    ]
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-15",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Jordan's Saturday options, in order of preference, are a hike with friends, a paid work shift worth \\$80, and studying. If Jordan goes on the hike, what is the opportunity cost?",
+   "options": [
+    "The work shift and the studying, added together",
+    "Nothing, because the hike is free",
+    "The studying, because it ranks last",
+    "The \\$80 work shift, the next-best choice"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Opportunity cost is the value of the next-best alternative given up, here the work shift. Jordan could not have done both other options with the same time.",
+    "options": [
+     "Jordan could have done only one of the other two, so only the best of them counts.",
+     "Even a free activity costs the time that could have earned \\$80.",
+     "The lowest-ranked option is not what Jordan would have done instead.",
+     "Right: only the next-best option counts."
+    ]
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-16",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A country's PPC is a straight line from 60 thousand shirts (and no jackets) to 20 thousand jackets (and no shirts). What is the opportunity cost of one jacket, in shirts?",
+   "why": {
+    "correct": "Making all 20 thousand jackets means giving up all 60 thousand shirts, so one jacket costs $\\frac{60}{20} = 3$ shirts. A straight line means the cost is the same everywhere on it."
+   },
+   "numeric": {
+    "from": {
+     "fn": "opportunityCost",
+     "args": [
+      60,
+      20
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.333,
+      "why": "That is the cost of one shirt in jackets (20 / 60). For a jacket, divide the shirts given up by the jackets gained: 60 / 20."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-17",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "q": "An economy spends more of its resources this year on factories and machines and less on consumer goods. What happens to its PPC in the future?",
+   "options": [
+    "It shifts in, because people have fewer consumer goods today",
+    "It stays where it is, because total resources are unchanged",
+    "It shifts out farther, because the extra capital raises future production",
+    "It becomes a straight line"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Capital goods made today add to the resources of tomorrow, so the future PPC shifts out more than it would have.",
+    "options": [
+     "Choosing capital goods over consumer goods is a movement along today's curve, not a loss of resources.",
+     "The new capital adds to future resources.",
+     "Right: more capital today means more production possible later.",
+     "The shape depends on how suited resources are to each good, not on this choice."
+    ]
+   }
+  },
+  {
+   "id": "mac-opportunity-cost-ppc-18",
+   "unit": "unit-1",
+   "topic": "opportunity-cost-ppc",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why is a production possibilities curve usually bowed outward rather than straight?",
+   "options": [
+    "Each resource is equally good at making both goods",
+    "Some resources are better at making one good than the other",
+    "The economy has idle resources at each point",
+    "Prices rise as output rises"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "As an economy makes more of one good, it must use resources less and less suited to it, so each extra unit costs more of the other good.",
+    "options": [
+     "Equally suited resources would give a straight line.",
+     "Right: specialized resources create increasing opportunity cost.",
+     "Idle resources put the economy inside the curve; they do not shape it.",
+     "The PPC shows quantities that can be produced, not prices."
+    ]
+   }
+  }
+ ]
+}

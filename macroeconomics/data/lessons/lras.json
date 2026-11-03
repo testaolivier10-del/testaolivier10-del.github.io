@@ -1,0 +1,84 @@
+{
+ "topic": "lras",
+ "hook": "Picture an economy where every price, including every wage, has doubled. A worker earns twice as much and pays twice as much for everything. A firm sells for twice as much and pays twice as much for labor and materials. Is anyone better off? Is any more being produced? No: the country has the same workers, machines and know-how as before. That is the long-run view of supply.",
+ "prereq": [
+  {
+   "q": "What does an outward shift of a production possibilities curve show?",
+   "options": [
+    "The economy can produce more of both goods",
+    "The economy is using fewer resources",
+    "Unemployment has risen",
+    "Prices have risen"
+   ],
+   "correct": 0,
+   "why": "An outward PPC shift means more resources or better technology: more of both goods is possible.",
+   "review": "opportunity-cost-ppc"
+  },
+  {
+   "q": "Why does the SRAS curve slope upward?",
+   "options": [
+    "Nominal wages and some prices are sticky in the short run",
+    "Households buy more when prices rise",
+    "The government raises spending when prices rise",
+    "Firms' costs rise as fast as prices"
+   ],
+   "correct": 0,
+   "why": "With sticky wages, a higher price level makes extra output profitable.",
+   "review": "sras"
+  },
+  {
+   "q": "What is potential output?",
+   "options": [
+    "Real GDP when the economy is at full employment",
+    "The highest real GDP ever recorded",
+    "Real GDP in a recession",
+    "Nominal GDP divided by population"
+   ],
+   "correct": 0,
+   "why": "Potential (full-employment) output is the real GDP produced when unemployment is at its natural rate.",
+   "review": "business-cycles"
+  }
+ ],
+ "figure": {
+  "figure": "lras-curve",
+  "caption": "Left: LRAS is vertical at full-employment output YF, whatever the price level. Right: more resources or better technology shift LRAS right."
+ },
+ "chain": [
+  {
+   "cause": "The price level rises and, over time, wages and input prices rise just as much",
+   "effect": "production is no more profitable than before"
+  },
+  {
+   "cause": "Production is no more profitable",
+   "effect": "real output returns to full-employment output"
+  },
+  {
+   "cause": "Output is at full employment at every price level",
+   "effect": "LRAS is vertical at YF"
+  },
+  {
+   "cause": "The economy gains resources or better technology",
+   "effect": "YF rises: LRAS shifts right and the PPC shifts out"
+  }
+ ],
+ "ideas": [
+  "In the <b>long run</b> all wages and prices adjust, so real output is set by resources and technology, not by the price level.",
+  "<b>Long-run aggregate supply (LRAS)</b> is vertical at full-employment output (potential output, YF).",
+  "LRAS shifts right with more or better labor, more capital, more land and resources, or better technology; it shifts left when productive capacity is lost.",
+  "LRAS and the PPC tell the same story: when LRAS shifts right, the PPC shifts out.",
+  "Changes in spending (AD) or in the price level do not move LRAS."
+ ],
+ "misconception": {
+  "wrong": "If the price level keeps rising, firms will keep producing more, so a higher price level raises real output for good.",
+  "right": "Higher prices raise output only while wages lag. Once wages and input prices catch up, output is back at full employment: LRAS is vertical."
+ },
+ "check": [
+  "mac-lras-8",
+  "mac-lras-9",
+  "mac-lras-11",
+  "mac-lras-12",
+  "mac-lras-14",
+  "mac-lras-15"
+ ],
+ "summary": "In the long run, nominal wages and input prices catch up with the price level, so real output depends only on resources and technology. LRAS is vertical at full-employment output, and it shifts right when the economy gains labor, capital or better technology, just as the PPC shifts out. Spending and the price level do not move it."
+}

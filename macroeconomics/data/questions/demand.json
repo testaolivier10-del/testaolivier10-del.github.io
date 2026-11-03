@@ -1,0 +1,596 @@
+{
+ "stimuli": {
+  "demand-s1": {
+   "kind": "data",
+   "title": "A smoothie stand's demand schedule",
+   "invented": true,
+   "table": {
+    "caption": "Smoothies buyers want each day at five prices (invented data for practice)",
+    "cols": [
+     "Price per smoothie (\\$)",
+     "Quantity demanded per day"
+    ],
+    "rows": [
+     [
+      "2",
+      "100"
+     ],
+     [
+      "3",
+      "80"
+     ],
+     [
+      "4",
+      "60"
+     ],
+     [
+      "5",
+      "40"
+     ],
+     [
+      "6",
+      "20"
+     ]
+    ]
+   }
+  },
+  "demand-s2": {
+   "kind": "text",
+   "title": "A year in Hollis's electric scooter market",
+   "text": "<p>Hollis is an invented city where many people rent electric scooters by the ride. Over one year: (1) the price of gasoline jumps, making car trips more expensive; (2) a new university campus opens, bringing 10,000 students to the city; (3) the scooter company announces that ride prices will drop sharply next month; (4) the scooter company raises its own price per ride from \\$3 to \\$4.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-demand-1",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Buyers' incomes rise, and pizza is a normal good. Shift the right curve the right way in the market for pizza.",
+   "why": {
+    "correct": "For a normal good, higher incomes raise the quantity demanded at every price: demand shifts right."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in buyers' incomes for a normal good"
+    },
+    "slips": {
+     "S": "Income belongs to buyers, so it shifts demand; it does not change pizza makers' costs."
+    }
+   }
+  },
+  {
+   "id": "mac-demand-2",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The price of gasoline rises sharply. Shift the right curve the right way in the market for large, fuel-hungry SUVs.",
+   "why": {
+    "correct": "Gasoline and SUVs are complements. Dearer gas makes owning an SUV more costly, so fewer SUVs are wanted at every price: demand shifts left."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in the price of gasoline, a complement"
+    },
+    "slips": {
+     "S": "Gasoline is used with SUVs by buyers, so its price shifts demand for SUVs, not the supply of SUVs."
+    }
+   }
+  },
+  {
+   "id": "mac-demand-3",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The price of coffee rises. Shift the right curve the right way in the market for tea.",
+   "why": {
+    "correct": "Coffee and tea are substitutes. When coffee costs more, some buyers switch to tea: demand for tea shifts right."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in the price of coffee, a substitute"
+    },
+    "slips": {
+     "S": "Coffee's price changes what tea buyers want, so it shifts the demand for tea."
+    }
+   }
+  },
+  {
+   "id": "mac-demand-4",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The price of movie tickets falls and nothing else changes. Place point X where buyers end up on the demand curve.",
+   "why": {
+    "correct": "A change in the good's own price moves buyers along the demand curve: a lower price, a larger quantity demanded. The curve does not shift."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "D",
+      "x": "up",
+      "y": "down"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-demand-5",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Incomes in a town rise, and for its residents store-brand instant noodles are an inferior good. Shift the right curve the right way in the market for these noodles.",
+   "why": {
+    "correct": "An inferior good is one buyers want less of as their incomes rise (they switch to pricier options), so demand shifts left."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in incomes for an inferior good"
+    },
+    "slips": {
+     "S": "Income belongs to buyers, so it shifts demand, not the noodle makers' supply."
+    }
+   }
+  },
+  {
+   "id": "mac-demand-6",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "demand-s1",
+   "q": "Which law does the table illustrate?",
+   "options": [
+    "The law of demand: as price rises, demand shifts to the left",
+    "The law of demand: as price rises, quantity demanded falls",
+    "A direct relationship between price and quantity demanded",
+    "A change in demand caused by a change in income"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Each \\$1 rise in price comes with 20 fewer smoothies wanted, along one demand curve: the law of demand.",
+    "options": [
+     "A price change moves along the curve; it does not shift demand.",
+     "Right: price and quantity demanded move in opposite directions.",
+     "Price and quantity demanded move in opposite directions: an inverse relationship.",
+     "Only the price changes in the table, so the curve itself does not move."
+    ]
+   }
+  },
+  {
+   "id": "mac-demand-7",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "stimulus": "demand-s1",
+   "q": "Using the table, by how many smoothies a day does the quantity demanded fall when the price rises from \\$3 to \\$5?",
+   "why": {
+    "correct": "At \\$3 buyers want 80 and at \\$5 they want 40: $80 - 40 = 40$ fewer smoothies a day."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      80,
+      40
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is the change in price. The question asks for the change in the quantity demanded: 80 - 40."
+     },
+     {
+      "value": 120,
+      "why": "You added the two quantities. A change is the difference: 80 - 40."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-demand-8",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "stimulus": "demand-s1",
+   "q": "The stand raises its price from \\$4 to \\$5. How should you describe what happens?",
+   "options": [
+    "Quantity demanded falls from 60 to 40, a movement along the demand curve",
+    "Demand decreases, so the demand curve shifts left",
+    "Demand increases, because the stand earns more per smoothie",
+    "Quantity demanded rises, because the price rose"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A change in the good's own price changes the quantity demanded, a movement along the curve, not demand itself.",
+    "options": [
+     "Right: a movement along the curve, from 60 to 40.",
+     "Demand shifts only when something other than the smoothie price changes.",
+     "The stand's earnings do not change how many smoothies buyers want at each price.",
+     "The law of demand says quantity demanded falls as price rises."
+    ]
+   }
+  },
+  {
+   "id": "mac-demand-9",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "demand-s1",
+   "q": "A heat wave arrives, and at every price buyers now want 30 more smoothies a day than the table shows. What happened?",
+   "options": [
+    "Quantity demanded increased along the same demand curve",
+    "Demand decreased: the curve shifted left",
+    "The law of demand stopped holding",
+    "Demand increased: the whole demand curve shifted right"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "More wanted at every price, because of the weather, is a change in demand: a shift right.",
+    "options": [
+     "A movement along the curve needs a change in the smoothie price.",
+     "More smoothies are wanted, so demand rose, not fell.",
+     "Price and quantity demanded still move in opposite directions on the new curve.",
+     "Right: a non-price change shifts demand right."
+    ]
+   }
+  },
+  {
+   "id": "mac-demand-10",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "demand-s2",
+   "q": "Event (1): gasoline prices jump. What happens to the demand for scooter rides in Hollis?",
+   "options": [
+    "It decreases, because gasoline and scooter rides are complements for riders",
+    "The quantity demanded rises along the same curve",
+    "It increases, because scooter rides are a substitute for car trips",
+    "It does not change, because scooters do not use gasoline"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When car trips cost more, some riders switch to scooters, a substitute: demand for scooter rides shifts right.",
+    "options": [
+     "Complements are used together; scooters replace car trips instead.",
+     "The scooter price did not change, so this is a shift, not a movement.",
+     "Right: a dearer substitute raises demand.",
+     "The link is through car trips, which compete with scooter rides."
+    ]
+   }
+  },
+  {
+   "id": "mac-demand-11",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "demand-s2",
+   "q": "Event (2): 10,000 students arrive. How does this affect the scooter market?",
+   "options": [
+    "Demand decreases, because students have low incomes",
+    "Demand increases, because there are more buyers",
+    "Supply increases, because more scooters are needed",
+    "Quantity demanded rises because the price falls"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The number of buyers is a determinant of demand: more buyers shift demand right.",
+    "options": [
+     "Even students with low incomes add riders the market did not have.",
+     "Right: more buyers, more rides wanted at every price.",
+     "The scenario is about riders, the buyers; it says nothing about scooter makers.",
+     "No price change is described for this event."
+    ]
+   }
+  },
+  {
+   "id": "mac-demand-12",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "demand-s2",
+   "q": "Event (3): riders learn that ride prices will drop sharply next month. What happens to demand for rides this month?",
+   "options": [
+    "It decreases, because riders wait for the lower price",
+    "It increases, because riders expect a bargain",
+    "It is unchanged until the price of a ride actually falls",
+    "The quantity demanded rises along the curve"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Expectations are a determinant of demand. Expecting a lower price soon, buyers put off rides now: today's demand shifts left.",
+    "options": [
+     "Right: buyers delay purchases until the price falls.",
+     "The bargain is next month, so buyers wait for it.",
+     "Expectations shift demand before the price changes.",
+     "The price has not changed yet, so there is no movement along the curve."
+    ]
+   }
+  },
+  {
+   "id": "mac-demand-13",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "demand-s2",
+   "q": "Event (4): the company raises its own ride price from \\$3 to \\$4. How does the graph of the scooter market show this?",
+   "options": [
+    "A shift of the demand curve to the left",
+    "A shift of the demand curve to the right",
+    "A movement down along the demand curve to a larger quantity demanded",
+    "A movement up along the demand curve to a smaller quantity demanded"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The good's own price is on the vertical axis, so a higher price moves riders up along the same demand curve.",
+    "options": [
+     "The ride price is on the axis, so it does not shift demand.",
+     "A higher price does not raise demand; it lowers the quantity demanded.",
+     "Down along the curve would be a lower price.",
+     "Right: a movement along the curve."
+    ]
+   }
+  },
+  {
+   "id": "mac-demand-14",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why does the demand curve slope downward?",
+   "options": [
+    "Sellers offer less at lower prices, so buyers buy less",
+    "Buyers' incomes rise whenever a price falls",
+    "A lower price lets buyers afford more (income effect) and makes the good cheaper than its alternatives (substitution effect)",
+    "A lower price attracts new sellers into the market"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Two effects explain the law of demand: a lower price raises buyers' purchasing power (income effect) and makes the good a better deal than substitutes (substitution effect).",
+    "options": [
+     "Demand describes buyers; sellers' behavior is a separate curve.",
+     "A lower price raises what incomes can buy, but the incomes themselves do not change.",
+     "Right: the income and substitution effects.",
+     "Sellers are not part of the demand curve."
+    ]
+   }
+  },
+  {
+   "id": "mac-demand-15",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which pair of goods are complements?",
+   "options": [
+    "Butter and margarine",
+    "Hot dogs and hot dog buns",
+    "Train tickets and bus tickets",
+    "Paper books and e-books"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Complements are used together, so a higher price of one lowers demand for the other.",
+    "options": [
+     "They replace each other: substitutes.",
+     "Right: they are bought and used together.",
+     "They replace each other: substitutes.",
+     "They replace each other: substitutes."
+    ]
+   }
+  },
+  {
+   "id": "mac-demand-16",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A student writes, \"The price of pizza went up, so the demand for pizza fell.\" How should the sentence be fixed?",
+   "options": [
+    "\"The quantity demanded of pizza fell\"; demand itself did not change",
+    "\"The demand for pizza rose\"; higher prices raise demand",
+    "\"The supply of pizza fell\"; prices affect sellers, not buyers",
+    "\"Demand fell and quantity demanded rose\"; both changed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A change in the good's own price changes the quantity demanded (a movement along the curve). \"Demand\" means the whole curve.",
+    "options": [
+     "Right: the price change is a movement along the curve.",
+     "A price rise lowers the quantity demanded; it does not raise demand.",
+     "Buyers respond to the price too; the sentence is about buyers.",
+     "Quantity demanded falls when price rises, and demand stays put."
+    ]
+   }
+  },
+  {
+   "id": "mac-demand-17",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make the explanation specific: the price of coffee rises. Fill in each blank to explain what happens in the market for tea.",
+   "why": {
+    "correct": "Name the change, the link between the goods, and the direction of the shift."
+   },
+   "specific": {
+    "frame": "Coffee's price ___, so some buyers switch to tea because the two are ___, and the demand for tea shifts ___.",
+    "slots": {
+     "change": {
+      "label": "Coffee's price",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The scenario says the price of coffee rises."
+      }
+     },
+     "because": {
+      "label": "How the goods relate",
+      "options": [
+       "substitutes",
+       "complements"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Complements are used together; tea replaces coffee, so they are substitutes."
+      }
+     },
+     "direction": {
+      "label": "Which way demand shifts",
+      "options": [
+       "right",
+       "left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More tea is wanted at every price, a shift right."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "The price of coffee rises, so some buyers switch to tea because the two are substitutes, and as a result the demand for tea increases: the demand curve shifts right."
+   }
+  },
+  {
+   "id": "mac-demand-18",
+   "unit": "unit-1",
+   "topic": "demand",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.A",
+   "q": "Which events would shift the demand for gasoline-powered cars to the left? Select all that apply.",
+   "options": [
+    "The price of gasoline rises",
+    "The price of gasoline-powered cars rises",
+    "Buyers' incomes rise, and these cars are a normal good",
+    "Many families move into the area"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Gasoline is a complement to these cars, so a dearer complement lowers demand for them. The other events either raise demand or move buyers along the curve.",
+    "options": [
+     "Right: a dearer complement shifts demand left.",
+     "The cars' own price moves buyers along the demand curve; it does not shift it.",
+     "For a normal good, higher incomes shift demand right.",
+     "More buyers shift demand right."
+    ]
+   }
+  }
+ ]
+}

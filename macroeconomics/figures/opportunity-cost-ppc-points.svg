@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400" role="img" aria-labelledby="opportunity-cost-ppc-points-t opportunity-cost-ppc-points-d" font-family="Arial, Helvetica, sans-serif">
+<title id="opportunity-cost-ppc-points-t">A production possibilities curve: points on, inside and outside, and growth</title>
+<desc id="opportunity-cost-ppc-points-d">A bowed-out PPC1 for pizzas (horizontal) and robots (vertical). F and G sit on the curve and are efficient; U sits inside, with idle resources; Z sits outside and cannot be produced now. A dashed PPC2 farther out, with an arrow from PPC1, shows growth from more resources or better technology.</desc>
+<defs><marker id="opportunity-cost-ppc-points-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="opportunity-cost-ppc-points-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="opportunity-cost-ppc-points-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="opportunity-cost-ppc-points-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker></defs><rect width="800" height="400" fill="#FFFFFF"/>
+<line x1="90" y1="24" x2="90" y2="350" stroke="#1F2A28" stroke-width="2"/>
+<line x1="90" y1="350" x2="516" y2="350" stroke="#1F2A28" stroke-width="2"/>
+<text x="510" y="388" font-size="14" fill="#1F2A28" text-anchor="end" font-weight="700">Pizzas (thousands)</text>
+<text x="56" y="30" font-size="14" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 56 30)">Robots (thousands)</text>
+<path d="M90 49.2L96.9 49.2L103.8 49.4L110.7 49.6L117.5 49.9L124.4 50.3L131.3 50.8L138.1 51.4L144.9 52.1L151.8 52.9L158.6 53.8L165.3 54.7L172.1 55.8L178.8 56.9L185.5 58.1L192.2 59.4L198.8 60.9L205.4 62.3L212 63.9L218.5 65.6L225 67.3L231.5 69.2L237.9 71.1L244.3 73.1L250.6 75.2L256.8 77.4L263.1 79.6L269.2 82L275.3 84.4L281.4 86.9L287.4 89.5L293.3 92.2L299.2 94.9L305 97.7L310.8 100.6L316.4 103.6L322.1 106.6L327.6 109.8L333.1 113L338.5 116.2L343.8 119.6L349 123L354.2 126.5L359.3 130L364.3 133.6L369.2 137.3L374 141L378.7 144.9L383.4 148.7L388 152.7L392.4 156.6L396.8 160.7L401.1 164.8L405.3 169L409.4 173.2L413.4 177.5L417.3 181.8L421.1 186.2L424.8 190.6L428.4 195.1L431.9 199.6L435.3 204.2L438.6 208.8L441.8 213.4L444.8 218.1L447.8 222.9L450.7 227.7L453.4 232.5L456.1 237.3L458.6 242.2L461 247.1L463.3 252.1L465.5 257L467.5 262.1L469.5 267.1L471.3 272.1L473.1 277.2L474.7 282.3L476.2 287.5L477.5 292.6L478.8 297.8L479.9 302.9L481 308.1L481.9 313.3L482.6 318.6L483.3 323.8L483.8 329L484.3 334.3L484.6 339.5L484.7 344.8L484.8 350" fill="none" stroke="#6B7370" stroke-width="2.4" stroke-dasharray="7 5"/>
+<text x="396.6" y="145.2" font-size="14" fill="#6B7370" font-weight="700">PPC<tspan font-size="10" dy="4">2</tspan></text>
+<path d="M90 110L95.5 110L101 110.1L106.5 110.3L112 110.6L117.5 110.9L122.9 111.3L128.4 111.8L133.8 112.3L139.3 113L144.7 113.6L150.1 114.4L155.5 115.2L160.9 116.2L166.2 117.1L171.5 118.2L176.8 119.3L182.1 120.5L187.3 121.7L192.6 123.1L197.7 124.5L202.9 125.9L208 127.5L213.1 129.1L218.1 130.7L223.1 132.5L228.1 134.3L233 136.2L237.9 138.1L242.7 140.1L247.5 142.2L252.2 144.3L256.9 146.5L261.6 148.7L266.1 151L270.7 153.4L275.2 155.8L279.6 158.3L283.9 160.9L288.2 163.5L292.5 166.1L296.7 168.9L300.8 171.6L304.8 174.5L308.8 177.4L312.7 180.3L316.6 183.3L320.4 186.3L324.1 189.4L327.7 192.5L331.3 195.7L334.8 199L338.2 202.2L341.6 205.6L344.8 208.9L348 212.3L351.1 215.8L354.2 219.3L357.1 222.8L360 226.4L362.8 230L365.5 233.6L368.1 237.3L370.7 241L373.1 244.8L375.5 248.6L377.8 252.4L380 256.2L382.1 260.1L384.1 264L386 267.9L387.8 271.9L389.6 275.8L391.2 279.8L392.8 283.8L394.3 287.9L395.6 291.9L396.9 296L398.1 300.1L399.2 304.2L400.2 308.3L401.1 312.5L401.9 316.6L402.7 320.8L403.3 324.9L403.8 329.1L404.2 333.3L404.6 337.4L404.8 341.6L405 345.8L405 350" fill="none" stroke="#355A0A" stroke-width="3.2"/>
+<text x="317.2" y="188.8" font-size="14" fill="#355A0A" text-anchor="end" font-weight="700">PPC<tspan font-size="10" dy="4">1</tspan></text>
+<circle cx="216" cy="130" r="5" fill="#1F2A28"/>
+<text x="225" y="122" font-size="15" fill="#1F2A28" font-weight="700">F</text>
+<circle cx="342" cy="206" r="5" fill="#1F2A28"/>
+<text x="351" y="198" font-size="15" fill="#1F2A28" font-weight="700">G</text>
+<circle cx="216" cy="254" r="5" fill="#084F78"/>
+<text x="225" y="246" font-size="15" fill="#084F78" font-weight="700">U</text>
+<circle cx="384" cy="142" r="5" fill="#D55E00"/>
+<text x="393" y="134" font-size="15" fill="#D55E00" font-weight="700">Z</text>
+<line x1="308.4" y1="183.6" x2="354.6" y2="148.4" stroke="#6B7370" stroke-width="2" marker-end="url(#opportunity-cost-ppc-points-ar)"/>
+<text x="560" y="80" font-size="13" fill="#1F2A28">F, G: on the curve, efficient</text>
+<text x="560" y="104" font-size="13" fill="#084F78">U: inside, resources idle</text>
+<text x="560" y="128" font-size="13" fill="#D55E00">Z: outside, not reachable now</text>
+<text x="560" y="152" font-size="13" fill="#6B7370">PPC2: more resources or</text>
+<text x="560" y="170" font-size="13" fill="#6B7370">better technology</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 770 400" width="770" height="400" role="img" aria-labelledby="scarcity-choices-t scarcity-choices-d" font-family="Arial, Helvetica, sans-serif">
+<title id="scarcity-choices-t">Scarcity: unlimited wants, limited resources</title>
+<desc id="scarcity-choices-d">Two boxes, unlimited wants and limited resources (land, labor, capital and entrepreneurship), lead to scarcity, which forces three choices: what to produce, how to produce it and for whom.</desc>
+<defs><marker id="scarcity-choices-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="scarcity-choices-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="scarcity-choices-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="scarcity-choices-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker></defs><rect width="770" height="400" fill="#FFFFFF"/>
+<rect x="30" y="40" width="250" height="120" rx="8" fill="#FBE6D9" stroke="#D55E00" stroke-width="1.6"/>
+<text x="155" y="75" font-size="18" fill="#1F2A28" text-anchor="middle" font-weight="700">Wants</text>
+<text x="155" y="102" font-size="13" fill="#1F2A28" text-anchor="middle">unlimited: people always</text>
+<text x="155" y="120" font-size="13" fill="#1F2A28" text-anchor="middle">want more goods and services</text>
+<rect x="30" y="200" width="250" height="170" rx="8" fill="#E6EEDA" stroke="#355A0A" stroke-width="1.6"/>
+<text x="155" y="232" font-size="18" fill="#1F2A28" text-anchor="middle" font-weight="700">Resources</text>
+<text x="155" y="254" font-size="13" fill="#1F2A28" text-anchor="middle">limited (the factors of production)</text>
+<text x="50" y="282" font-size="13" fill="#1F2A28">Land: natural resources</text>
+<text x="50" y="304" font-size="13" fill="#1F2A28">Labor: human effort</text>
+<text x="50" y="326" font-size="13" fill="#1F2A28">Capital: tools, machines, buildings</text>
+<text x="50" y="348" font-size="13" fill="#1F2A28">Entrepreneurship: organizing, risk</text>
+<line x1="290" y1="100" x2="380" y2="190" stroke="#1F2A28" stroke-width="2.4" marker-end="url(#scarcity-choices-ar)"/>
+<line x1="290" y1="285" x2="380" y2="210" stroke="#1F2A28" stroke-width="2.4" marker-end="url(#scarcity-choices-ar)"/>
+<rect x="390" y="150" width="120" height="100" rx="8" fill="#F3F6EE" stroke="#1F2A28" stroke-width="1.6"/>
+<text x="450" y="195" font-size="17" fill="#1F2A28" text-anchor="middle" font-weight="700">Scarcity</text>
+<text x="450" y="217" font-size="13" fill="#1F2A28" text-anchor="middle">so we choose</text>
+<line x1="515" y1="200" x2="560" y2="200" stroke="#1F2A28" stroke-width="2.4" marker-end="url(#scarcity-choices-ar)"/>
+<rect x="570" y="110" width="170" height="48" rx="8" fill="#FFFFFF" stroke="#084F78" stroke-width="1.6"/>
+<text x="655" y="140" font-size="14" fill="#084F78" text-anchor="middle" font-weight="700">What to produce?</text>
+<rect x="570" y="174" width="170" height="48" rx="8" fill="#FFFFFF" stroke="#084F78" stroke-width="1.6"/>
+<text x="655" y="204" font-size="14" fill="#084F78" text-anchor="middle" font-weight="700">How to produce it?</text>
+<rect x="570" y="238" width="170" height="48" rx="8" fill="#FFFFFF" stroke="#084F78" stroke-width="1.6"/>
+<text x="655" y="268" font-size="14" fill="#084F78" text-anchor="middle" font-weight="700">For whom?</text>
+</svg>

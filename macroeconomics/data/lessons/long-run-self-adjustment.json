@@ -1,0 +1,72 @@
+{
+ "topic": "long-run-self-adjustment",
+ "hook": "Suppose a country slides into a recession and its government does nothing at all. Do the empty factories and long unemployment lines stay forever? Economists say no: over time, as wage contracts come up for renewal and suppliers reset prices, the economy finds its way back to full employment. It is slow, and how it happens is the point the exam rewards most often in this unit.",
+ "prereq": [
+  {
+   "q": "In a recessionary gap, how does unemployment compare with the natural rate?",
+   "options": [
+    "It is above the natural rate",
+    "It is below the natural rate",
+    "It equals the natural rate",
+    "It is zero"
+   ],
+   "correct": 0,
+   "why": "Output below full employment means fewer jobs: unemployment above the natural rate.",
+   "review": "adas-equilibrium"
+  },
+  {
+   "q": "A fall in nominal wages across the economy shifts which curve, and which way?",
+   "options": [
+    "SRAS to the right",
+    "SRAS to the left",
+    "AD to the right",
+    "LRAS to the left"
+   ],
+   "correct": 0,
+   "why": "Lower wages lower firms' costs at every price level, so SRAS shifts right.",
+   "review": "sras"
+  }
+ ],
+ "figure": {
+  "figure": "long-run-self-adjustment-recession",
+  "caption": "From a recessionary gap at Y1, falling nominal wages shift SRAS1 right to SRAS2, which meets AD on LRAS at YF and a lower price level PL2."
+ },
+ "chain": [
+  {
+   "cause": "Real GDP is below full-employment output (recessionary gap)",
+   "effect": "unemployment is above the natural rate"
+  },
+  {
+   "cause": "Unemployment is above the natural rate",
+   "effect": "nominal wages and input prices fall as contracts are renewed"
+  },
+  {
+   "cause": "Nominal wages and input prices fall",
+   "effect": "SRAS shifts right"
+  },
+  {
+   "cause": "SRAS shifts right along AD",
+   "effect": "real GDP rises to full-employment output and the price level falls"
+  }
+ ],
+ "ideas": [
+  "<b>Long-run self-adjustment</b>: with no policy, the economy returns to full employment because <b>nominal wages and input prices adjust and SRAS shifts</b>.",
+  "Recessionary gap: unemployment above the natural rate, nominal wages fall, SRAS shifts <b>right</b>; the price level falls and output rises to YF.",
+  "Inflationary gap: unemployment below the natural rate, nominal wages rise, SRAS shifts <b>left</b>; the price level rises and output falls to YF.",
+  "The mechanism is never a shift in AD. In the long run, a change in AD changes only the price level.",
+  "It can be slow, especially downward, because nominal wages resist cuts."
+ ],
+ "misconception": {
+  "wrong": "An economy in a recession recovers on its own because spending picks up and AD shifts back to the right.",
+  "right": "Self-adjustment runs through the supply side: high unemployment lowers nominal wages and input prices, so SRAS shifts right until output is back at full employment."
+ },
+ "check": [
+  "mac-long-run-self-adjustment-5",
+  "mac-long-run-self-adjustment-6",
+  "mac-long-run-self-adjustment-7",
+  "mac-long-run-self-adjustment-8",
+  "mac-long-run-self-adjustment-11",
+  "mac-long-run-self-adjustment-12"
+ ],
+ "summary": "Left alone, an economy closes its own output gap through nominal wages and input prices. In a recessionary gap, high unemployment pushes wages down, SRAS shifts right, and output returns to full employment at a lower price level; in an inflationary gap, wages rise and SRAS shifts left, raising the price level. AD is not the mechanism, and in the long run AD changes only the price level."
+}

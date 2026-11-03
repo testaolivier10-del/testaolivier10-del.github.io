@@ -1,0 +1,11 @@
+{
+ "demand-pull": {
+  "def": "Inflation caused by aggregate demand shifting right: more spending pulls up the price level while real GDP rises in the short run."
+ },
+ "cost-push": {
+  "def": "Inflation caused by short-run aggregate supply shifting left, as when input costs rise: the price level rises while real GDP falls. Rising prices with falling output is stagflation."
+ },
+ "ad-shock": {
+  "def": "A sudden change in spending at every price level that shifts AD. A positive demand shock shifts it right; a negative one shifts it left."
+ }
+}

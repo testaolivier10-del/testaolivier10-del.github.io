@@ -1,0 +1,71 @@
+{
+ "topic": "economic-growth",
+ "hook": "An hour of work in the United States today produces several times what an hour produced in 1960, so real GDP per person is roughly three times as high. Business cycles came and went along the way, but the long climb came from something else: more and better machines, more skilled workers, and better ideas about how to produce.",
+ "prereq": [
+  {
+   "q": "What does an outward shift of a PPC show?",
+   "options": [
+    "The economy can produce more of both goods",
+    "The economy is using its resources less fully",
+    "The opportunity cost of one good has risen",
+    "Prices have risen"
+   ],
+   "correct": 0,
+   "why": "An outward shift means more production possibilities: more resources or better technology.",
+   "review": "opportunity-cost-ppc"
+  },
+  {
+   "q": "What does the LRAS curve show?",
+   "options": [
+    "Full-employment output, which does not depend on the price level",
+    "Total spending at each price level",
+    "Output firms supply while wages are sticky",
+    "The natural rate of unemployment"
+   ],
+   "correct": 0,
+   "why": "LRAS is vertical at potential output, set by resources and technology.",
+   "review": "lras"
+  }
+ ],
+ "figure": {
+  "figure": "economic-growth-ppc-lras",
+  "caption": "Economic growth: the PPC shifts out and LRAS shifts right."
+ },
+ "chain": [
+  {
+   "cause": "Firms invest in equipment, workers gain skills, technology improves",
+   "effect": "productivity (output per worker) rises"
+  },
+  {
+   "cause": "Productivity rises",
+   "effect": "potential output rises"
+  },
+  {
+   "cause": "Potential output rises",
+   "effect": "LRAS shifts right and the PPC shifts out"
+  },
+  {
+   "cause": "Output grows faster than population",
+   "effect": "real GDP per capita, the average standard of living, rises"
+  }
+ ],
+ "ideas": [
+  "<b>Economic growth</b> is a sustained rise in potential output and real GDP per capita, shown by the PPC shifting out and LRAS shifting right.",
+  "Its sources: more <b>physical capital</b> (machines, buildings), more <b>human capital</b> (skills, education, health), better <b>technology</b>, and more or better natural resources and labor.",
+  "<b>Productivity</b>, output per worker, is what lets living standards keep rising; per capita growth is roughly output growth minus population growth.",
+  "Choosing more capital goods today costs consumer goods now but shifts the PPC out further later. Moving from inside the PPC to the curve is recovery, not growth."
+ ],
+ "misconception": {
+  "wrong": "Moving from a point inside the PPC to a point on it is economic growth.",
+  "right": "That is recovery: idle workers and factories go back to work. Economic growth is the PPC itself shifting out (and LRAS shifting right), because the economy can produce more than before."
+ },
+ "check": [
+  "mac-economic-growth-1",
+  "mac-economic-growth-2",
+  "mac-economic-growth-3",
+  "mac-economic-growth-4",
+  "mac-economic-growth-9",
+  "mac-economic-growth-15"
+ ],
+ "summary": "Long-run economic growth is a sustained rise in potential output and real GDP per capita. It comes from more physical capital, more human capital, better technology and more resources, all of which raise productivity. On the graphs, the PPC shifts out and LRAS shifts right. Living standards rise when output grows faster than population, and a choice of more capital goods today raises growth later."
+}

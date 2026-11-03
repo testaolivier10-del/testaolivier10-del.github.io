@@ -1,0 +1,605 @@
+{
+ "stimuli": {
+  "fx-policy-changes-s1": {
+   "kind": "text",
+   "title": "Belvia's central bank raises rates",
+   "text": "<p>Belvia's central bank works in an <b>ample-reserves</b> framework. It raises the interest rate it pays on reserve balances, so Belvia's policy rate rises, and other interest rates in Belvia follow. Expected inflation does not change, so Belvia's real interest rates rise relative to those in Arland. Savers in Arland can buy bonds in either country. (Arland and Belvia are invented; Arland's currency is the arl and Belvia's is the bel.)</p>"
+  },
+  "fx-policy-changes-s2": {
+   "kind": "data",
+   "title": "Arland and Belvia, Year 1 and Year 2",
+   "invented": true,
+   "table": {
+    "caption": "Inflation, real interest rates and real GDP growth in Arland and Belvia, percent (invented data for practice)",
+    "cols": [
+     "Measure",
+     "Arland, Year 1",
+     "Arland, Year 2",
+     "Belvia, Year 1",
+     "Belvia, Year 2"
+    ],
+    "rows": [
+     [
+      "Inflation rate",
+      "2",
+      "6",
+      "2",
+      "2"
+     ],
+     [
+      "Real interest rate",
+      "1",
+      "3",
+      "1",
+      "1"
+     ],
+     [
+      "Growth of real GDP",
+      "2",
+      "4",
+      "2",
+      "2"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-fx-policy-changes-1",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "fx-policy-changes-s1",
+   "q": "What happens in the market for bels?",
+   "options": [
+    "The supply of bels increases, so the bel depreciates",
+    "The demand for bels increases, so the bel appreciates",
+    "The demand for bels decreases, so the bel depreciates",
+    "Nothing changes, because interest rates are not traded"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Higher relative real interest rates in Belvia raise the demand for bels, so the bel appreciates.",
+    "options": [
+     "Belvians have more reason to keep their savings at home, not less, so they do not offer more bels.",
+     "Right: Belvian bonds now pay a higher real return, so Arland savers demand bels to buy them, and the price of the bel rises.",
+     "Higher real interest rates make Belvian assets more attractive, which raises demand for bels.",
+     "Bonds are traded across borders, and buying Belvian bonds requires bels."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-2",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "fx-policy-changes-s1",
+   "q": "What is the matching change in the market for arls?",
+   "options": [
+    "The supply of arls increases, so the arl depreciates",
+    "The demand for arls increases, so the arl appreciates",
+    "The supply of arls decreases, so the arl appreciates",
+    "The demand for arls decreases, so the arl appreciates"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "More demand for bels is more supply of arls: the bel appreciates and the arl depreciates.",
+    "options": [
+     "Right: Arland savers sell arls to get the bels they need for Belvian bonds, so the supply of arls rises and the arl depreciates.",
+     "The new buyers of Belvian bonds are paying with arls, so they supply arls rather than demand them.",
+     "Arland savers offer more arls, not fewer, to buy Belvian bonds.",
+     "A fall in demand would lower the price of the arl, not raise it."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-3",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "fx-policy-changes-s1",
+   "q": "Which action by Arland savers links the higher Belvian interest rates to the currency markets?",
+   "options": [
+    "They buy more Belvian goods for their homes",
+    "They save less, since Arland rates did not change",
+    "They use bels to buy more Arland bonds",
+    "They sell arls for bels to buy Belvian bonds"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Savers move funds toward the higher real return, buying that country's currency to buy its bonds.",
+    "options": [
+     "The scenario is about where savers put their savings, not about goods.",
+     "The change that matters is the gap between the two countries' real rates and where savers put their funds.",
+     "Arland savers hold arls, and the higher return is on Belvian bonds, not Arland bonds.",
+     "Right: to earn the higher real return on Belvian bonds, they need bels, which they buy with arls."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-4",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "stimulus": "fx-policy-changes-s1",
+   "q": "A student writes that Belvia's central bank raised rates by selling bonds on the open market. Why does that answer not fit this scenario?",
+   "options": [
+    "Selling bonds is fiscal policy, set by the government",
+    "Selling bonds would lower interest rates, not raise them",
+    "With ample reserves, the bank moves its policy rate by changing administered rates such as interest on reserves",
+    "It fits: the two frameworks use the same tools"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An ample-reserves question uses the administered rates (interest on reserves), not open market operations.",
+    "options": [
+     "Open market operations are a central bank tool, but in a limited-reserves framework, not the ample-reserves one the scenario sets.",
+     "In a limited-reserves system, selling bonds raises interest rates; the problem is that it is the wrong framework here.",
+     "Right: the scenario sets an ample-reserves framework, whose tool is the rate paid on reserves. Selling bonds to shrink the money supply is the limited-reserves tool.",
+     "The frameworks use different tools and different graphs; the question names ample reserves, so its tool is the administered rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-5",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "fx-policy-changes-s2",
+   "q": "Considering only the change in inflation rates, what happens to the value of the arl against the bel?",
+   "options": [
+    "It appreciates, because prices in Arland are higher",
+    "It does not change, since real rates are what move currencies",
+    "It depreciates, because Arland goods become relatively dearer",
+    "It appreciates, because Belvians need more arls for each Arland good"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Higher relative inflation in Arland lowers demand for arls and raises their supply: the arl depreciates.",
+    "options": [
+     "Higher prices make Arland goods less attractive to Belvians, which lowers the demand for arls.",
+     "Relative price levels are a shifter too: they change what each side wants to buy from the other.",
+     "Right: Arland prices rise faster than Belvia's, so Belvians buy fewer Arland goods (less demand for arls) and Arland residents buy more Belvian goods (more supply of arls).",
+     "Belvians buy fewer Arland goods when they get dearer; total demand for arls falls."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-6",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "fx-policy-changes-s2",
+   "q": "Considering only the change in real interest rates, what happens to the value of the arl?",
+   "options": [
+    "It appreciates, as Belvian savers demand arls to buy Arland bonds",
+    "It depreciates, because borrowing in Arland costs more",
+    "It depreciates, as Arland savers buy Belvian bonds",
+    "It does not change, because nominal rates are not shown"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A higher relative real interest rate raises demand for the currency, so it appreciates.",
+    "options": [
+     "Right: Arland's real rate rose from 1 to 3 percent while Belvia's stayed at 1, so Arland assets are more attractive and demand for arls rises.",
+     "What matters for the currency is the return to savers: a higher real rate draws foreign buyers of Arland bonds.",
+     "Belvian bonds now pay less than Arland bonds in real terms, so Arland savers have less reason to buy them.",
+     "The real interest rate is what savers compare, and the table gives it."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-7",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "stimulus": "fx-policy-changes-s2",
+   "q": "Which changes in the table, each taken on its own, tend to make the arl depreciate? Select all that apply.",
+   "options": [
+    "The rise in Arland's inflation rate",
+    "The rise in Arland's real interest rate",
+    "The faster growth of Arland's real GDP",
+    "The steady inflation rate in Belvia"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Relatively higher inflation and relatively faster income growth at home both push the arl down; a relatively higher real interest rate pushes it up.",
+    "options": [
+     "Right: Arland goods become relatively dearer, so demand for arls falls and supply rises.",
+     "This one tends to make the arl appreciate, by drawing foreign savers.",
+     "Right: higher Arland incomes raise Arland imports, so Arland residents supply more arls.",
+     "An unchanged Belvian rate shifts nothing on its own; it is the gap with Arland's rate that matters."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-8",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "fx-policy-changes-s2",
+   "q": "All three changes in Arland happen at once. What can you conclude about the value of the arl?",
+   "options": [
+    "It depreciates, because two of the three changes push it down",
+    "It appreciates, because interest rates outweigh the rest",
+    "It does not change, because the effects cancel out exactly",
+    "It is indeterminate: the changes push in opposite directions"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "With shifters pushing opposite ways, the direction is indeterminate without their sizes.",
+    "options": [
+     "Counting changes does not decide it; the sizes of the shifts do, and the table does not give them.",
+     "The table gives no way to compare the sizes of the effects.",
+     "They push in opposite directions, but nothing says they are equal.",
+     "Right: higher relative inflation and income growth push the arl down, the higher relative real rate pushes it up, and the net effect depends on their sizes."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-9",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Arland's real interest rates rise relative to Belvia's, and Belvian savers buy more bonds issued in Arland. In the market for arls, shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "Belvian savers need arls to buy Arland bonds, so the demand for arls shifts right. The price of the arl in bels rises: the arl appreciates."
+   },
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "arl",
+     "other": "bel"
+    },
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "Belvian savers buying more Arland bonds",
+     "outcome": {
+      "value of the currency": "up",
+      "quantity of the currency": "up"
+     }
+    },
+    "slips": {
+     "S": "Belvian savers buy arls with bels, which is demand for arls. The supply of arls comes from Arland residents."
+    }
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-10",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Real income in Arland rises faster than in Belvia, and Arland households buy more goods imported from Belvia. Draw the market for arls: label it, shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "Higher incomes raise Arland imports. Arland households sell arls for bels to pay for them, so the supply of arls shifts right: the arl depreciates while the quantity of arls traded rises."
+   },
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "arl",
+     "other": "bel"
+    },
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "Arland households buying more imports as their incomes rise",
+     "outcome": {
+      "value of the currency": "down",
+      "quantity of the currency": "up"
+     }
+    },
+    "slips": {
+     "D": "Rising Arland incomes change what Arland residents buy abroad, and they pay with arls: that is the supply of arls, not demand."
+    }
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-11",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Arland's price level rises faster than Belvia's. Belvians buy fewer Arland goods, and Arland residents buy more Belvian goods. In the market for arls, shift both curves and mark the new equilibrium.",
+   "why": {
+    "correct": "Fewer Belvian purchases shift the demand for arls left; more Arland purchases abroad shift the supply of arls right. Both push the price of the arl down, so the arl depreciates. The quantity of arls traded could rise or fall: it depends on the sizes of the shifts."
+   },
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "arl",
+     "other": "bel"
+    },
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "left"
+      },
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "higher inflation in Arland than in Belvia",
+     "outcome": {
+      "value of the currency": "down"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-12",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "In the market for arls, mark a point on the demand curve where the price of the arl is lower than at the equilibrium.",
+   "why": {
+    "correct": "Down the demand curve, a cheaper arl makes Arland goods cheaper for Belvians, so the quantity of arls demanded is larger."
+   },
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "arl",
+     "other": "bel"
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "D",
+      "x": "up",
+      "y": "down"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-13",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Arland's central bank works in an ample-reserves framework and wants to tighten policy. Build the chain from its action to the value of the arl.",
+   "why": {
+    "correct": "In the ample-reserves framework the tool is the administered rate. Higher Arland interest rates (with expected inflation unchanged, higher real rates) draw foreign savers, who demand arls."
+   },
+   "specific": {
+    "frame": "The central bank ___; interest rates in Arland ___; ___ shifts right; the arl ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "The central bank raises the interest rate it pays on reserve balances, so the policy rate and other Arland interest rates rise. Because Arland's real interest rates are now higher relative to Belvia's, Belvian savers buy more Arland bonds, so the demand for arls shifts right and the arl appreciates.",
+    "slots": {
+     "tool": {
+      "label": "The action",
+      "options": [
+       "raises the interest rate it pays on reserve balances",
+       "sells government bonds on the open market",
+       "raises income taxes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Selling bonds is the limited-reserves tool; the question sets ample reserves, where the bank changes administered rates.",
+       "2": "Taxes are fiscal policy, set by the government, not a central bank tool."
+      }
+     },
+     "rate": {
+      "label": "Interest rates",
+      "options": [
+       "rise",
+       "fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Tightening raises the policy rate and the rates that follow it."
+      }
+     },
+     "curve": {
+      "label": "The curve",
+      "options": [
+       "the demand for arls",
+       "the supply of arls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Foreign savers buying Arland bonds need arls: they demand arls. (Arland savers keeping funds at home would, if anything, supply fewer arls.)"
+      }
+     },
+     "currency": {
+      "label": "The arl",
+      "options": [
+       "appreciates",
+       "depreciates"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More demand for arls raises their price in bels: the arl appreciates."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-14",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Arland's government raises spending and pays for it by borrowing, so it runs a larger budget deficit. Through the loanable funds market, what happens to the arl?",
+   "options": [
+    "It appreciates: the real interest rate rises, so foreign savers want Arland bonds",
+    "It depreciates: a budget deficit makes Arland poorer",
+    "It depreciates: the real interest rate falls as the government spends",
+    "Nothing happens, because a budget deficit is not a trade deficit"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "More government borrowing raises the real interest rate, drawing demand for the currency: it appreciates.",
+    "options": [
+     "Right: government borrowing raises the demand for loanable funds, the real interest rate in Arland rises relative to Belvia's, and Belvian savers demand arls to buy Arland bonds.",
+     "The link to the currency runs through the real interest rate, which rises when the government borrows more.",
+     "Government borrowing raises the demand for loanable funds, which raises the real interest rate.",
+     "They are different measures, but the borrowing still changes interest rates and so the currency."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-15",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Arland's central bank works in a limited-reserves framework and buys government bonds on the open market. What happens to the arl, other things equal?",
+   "options": [
+    "It appreciates, because the central bank is buying",
+    "It depreciates, because Arland interest rates fall",
+    "It does not change, because bond purchases are domestic",
+    "It depreciates, because Arland inflation falls"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Expansionary monetary policy lowers interest rates, so the currency depreciates.",
+    "options": [
+     "Buying bonds adds reserves and money, which lowers interest rates; lower rates make Arland assets less attractive.",
+     "Right: in a limited-reserves system, buying bonds raises the money supply and lowers interest rates, so Arland assets pay less, demand for arls falls and supply rises.",
+     "The purchases change Arland interest rates, and those rates affect what foreign and Arland savers want to buy.",
+     "Expansionary monetary policy would, if anything, raise inflation; the short-run link here is lower interest rates."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-16",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Currency traders come to expect that the bel will appreciate against the arl next month. What happens in the market for bels now?",
+   "options": [
+    "Demand for bels falls, since traders wait for next month",
+    "Supply of bels rises, so the bel depreciates now",
+    "Nothing happens until the appreciation arrives",
+    "Demand for bels rises now, so the bel appreciates now"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Expected appreciation raises demand for a currency today.",
+    "options": [
+     "Traders who expect a rise want to buy before it happens, which raises demand now.",
+     "Holders of bels who expect a rise are less willing to sell them, not more.",
+     "Expectations act at once: buying in advance moves the price today.",
+     "Right: traders buy bels today to sell them later at a higher price, so demand rises and the bel appreciates now."
+    ]
+   }
+  },
+  {
+   "id": "mac-fx-policy-changes-17",
+   "unit": "unit-6",
+   "topic": "fx-policy-changes",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Consumers in Belvia lose interest in cars made in Arland and buy fewer of them. What happens in the market for arls?",
+   "options": [
+    "Demand for arls falls, so the arl depreciates",
+    "Supply of arls falls, so the arl appreciates",
+    "Demand for arls rises, so the arl appreciates",
+    "Supply of arls rises, so the arl depreciates"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A change in tastes abroad away from Arland goods lowers demand for arls.",
+    "options": [
+     "Right: Belvians need fewer arls to pay for Arland cars, so demand for arls shifts left and the price of the arl falls.",
+     "Belvian buyers are on the demand side of the arl market; the change is in demand.",
+     "Fewer purchases of Arland cars mean fewer arls wanted, not more.",
+     "The arl does depreciate, but through lower demand from Belvian buyers, not more supply from Arland residents."
+    ]
+   }
+  }
+ ]
+}

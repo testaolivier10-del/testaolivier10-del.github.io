@@ -1,0 +1,12 @@
+{
+ "sras-curve": {
+  "file": "figures/sras-curve.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two graphs with the price level on the vertical axis and real GDP on the horizontal axis. Left: along one upward-sloping SRAS curve, a higher price level PL2 goes with more output Y2. Right: SRAS1 shifts left to SRAS2."
+ }
+}

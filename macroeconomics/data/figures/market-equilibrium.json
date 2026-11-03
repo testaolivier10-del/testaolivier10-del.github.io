@@ -1,0 +1,22 @@
+{
+ "market-equilibrium-shortage": {
+  "file": "figures/market-equilibrium-shortage.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A supply and demand graph for lemonade with equilibrium E at $3; at a price of $2, quantity demanded (70 cups) exceeds quantity supplied (40 cups), a shortage of 30 cups."
+ },
+ "market-equilibrium-double-shift": {
+  "file": "figures/market-equilibrium-double-shift.svg",
+  "ext": "svg",
+  "w": 740,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two supply and demand graphs where both curves shift: when both increase, quantity rises but the price change is indeterminate; when demand rises and supply falls, price rises but the quantity change is indeterminate."
+ }
+}

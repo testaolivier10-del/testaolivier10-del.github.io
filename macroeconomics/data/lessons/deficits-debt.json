@@ -1,0 +1,71 @@
+{
+ "topic": "deficits-debt",
+ "hook": "A news report says the government's deficit fell this year, and in the same breath that the national debt hit a record. Both can be true. A deficit is one year's gap between what a government pays out and what it collects; the debt is the total it owes from every year so far. Shrinking a deficit still adds to the debt, just more slowly.",
+ "prereq": [
+  {
+   "q": "Which is an example of contractionary fiscal policy?",
+   "options": [
+    "Raising income taxes",
+    "Cutting income taxes",
+    "Raising government spending",
+    "Lowering the policy rate"
+   ],
+   "correct": 0,
+   "why": "Higher taxes lower disposable income and consumption, shifting AD left.",
+   "review": "fiscal-policy"
+  },
+  {
+   "q": "How do automatic stabilizers act in a recession?",
+   "options": [
+    "Tax revenue falls and transfer payments rise with no new law",
+    "Tax rates rise automatically to balance the budget",
+    "The central bank lowers its policy rate",
+    "Government spending falls automatically"
+   ],
+   "correct": 0,
+   "why": "Progressive taxes collect less and benefits such as unemployment compensation pay out more as incomes fall.",
+   "review": "automatic-stabilizers"
+  }
+ ],
+ "figure": {
+  "figure": "deficits-debt-flow",
+  "caption": "Each deficit adds to the debt; a surplus subtracts (invented numbers)."
+ },
+ "chain": [
+  {
+   "cause": "Outlays exceed tax revenue in a year",
+   "effect": "the government runs a budget deficit"
+  },
+  {
+   "cause": "The government runs a deficit",
+   "effect": "it borrows the difference by selling bonds"
+  },
+  {
+   "cause": "It sells bonds",
+   "effect": "the national debt rises by the amount of the deficit"
+  },
+  {
+   "cause": "A recession lowers revenue and raises transfers",
+   "effect": "the deficit widens even with no new law"
+  }
+ ],
+ "ideas": [
+  "<b>Budget balance</b> = tax revenue - outlays. Negative is a <b>deficit</b>, positive a <b>surplus</b>, zero a <b>balanced budget</b>. Outlays include spending, transfer payments and interest on the debt.",
+  "The <b>national debt</b> is the total owed: past deficits minus past surpluses. A deficit is a flow over one year; the debt is a stock at a point in time.",
+  "A smaller deficit still raises the debt. Only a surplus lowers it.",
+  "Expansionary fiscal policy and recessions (through automatic stabilizers) widen deficits; contractionary policy and expansions shrink them."
+ ],
+ "misconception": {
+  "wrong": "When the deficit falls, the national debt falls.",
+  "right": "The debt falls only when the government runs a surplus. A smaller deficit means the debt grows more slowly, because the government is still borrowing."
+ },
+ "check": [
+  "mac-deficits-debt-1",
+  "mac-deficits-debt-2",
+  "mac-deficits-debt-3",
+  "mac-deficits-debt-4",
+  "mac-deficits-debt-7",
+  "mac-deficits-debt-11"
+ ],
+ "summary": "A budget deficit is one year's excess of government outlays over tax revenue; a surplus is the reverse. The government borrows to cover a deficit, so the national debt, a stock, rises by each deficit and falls only with a surplus. Expansionary fiscal policy and recessions widen deficits, contractionary policy and expansions narrow them, and interest on the debt is itself part of outlays."
+}

@@ -1,0 +1,12 @@
+{
+ "money-growth-inflation-longrun": {
+  "file": "figures/money-growth-inflation-longrun.svg",
+  "ext": "svg",
+  "w": 620,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An AD-AS graph: AD shifts right after money growth, then SRAS shifts left as wages adjust, ending at full-employment output with a higher price level."
+ }
+}

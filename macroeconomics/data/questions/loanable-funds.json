@@ -1,0 +1,630 @@
+{
+ "stimuli": {
+  "loanable-funds-s1": {
+   "kind": "graph",
+   "title": "A loanable funds market after a shift",
+   "graph": {
+    "kind": "lf",
+    "show": {
+     "DLF": 1
+    }
+   }
+  },
+  "loanable-funds-s2": {
+   "kind": "data",
+   "title": "Saving in the invented country of Brin",
+   "invented": true,
+   "table": {
+    "caption": "Yearly saving and the government's accounts in Brin, in billions of dollars (invented data for practice).",
+    "cols": [
+     "Item",
+     "Billions of dollars"
+    ],
+    "rows": [
+     [
+      "Private saving (households and firms)",
+      "400"
+     ],
+     [
+      "Tax revenue",
+      "900"
+     ],
+     [
+      "Government spending (including transfers)",
+      "1,000"
+     ]
+    ]
+   }
+  },
+  "loanable-funds-s3": {
+   "kind": "text",
+   "title": "A new savings plan in Lorne",
+   "text": "<p>The invented country of Lorne starts a retirement savings plan that lets households keep more of the interest they earn. Households respond by saving a larger share of their income. Nothing else changes.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-loanable-funds-1",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "loanable-funds-s1",
+   "q": "The graph shows the demand for loanable funds shifting right. Which event could have caused it?",
+   "options": [
+    "Households decide to save more of their income",
+    "The real interest rate falls",
+    "The government borrows more to pay for new spending",
+    "Firms expect lower profits from new equipment"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The demand for loanable funds comes from borrowers: firms that invest, households and the government.",
+    "options": [
+     "More saving shifts the supply of loanable funds right, not demand.",
+     "A change in the real interest rate moves along the curves; it does not shift them.",
+     "Right: government borrowing adds to the demand for loanable funds.",
+     "Gloomier firms borrow less, which shifts demand left."
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-2",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "loanable-funds-s1",
+   "q": "In the graph, what happens to the equilibrium real interest rate?",
+   "options": [
+    "It rises",
+    "It falls",
+    "It stays the same",
+    "It falls, then returns"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A rise in the demand for loanable funds raises the real interest rate and the quantity of loanable funds.",
+    "options": [
+     "Right: more demand for a given supply of loanable funds raises their price, the real interest rate.",
+     "A rightward shift of demand along upward-sloping supply raises the rate.",
+     "The demand shift moves the equilibrium up along the supply curve.",
+     "The new equilibrium stays at the higher rate while the shift lasts."
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-3",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "loanable-funds-s1",
+   "q": "Suppose the shift in the graph came from more government borrowing. What happens to the amount private firms borrow for investment?",
+   "options": [
+    "It rises, because more funds are lent in total",
+    "It does not change, because firms' demand did not shift",
+    "It falls, because the real interest rate is higher",
+    "It rises, because the government is spending more"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Government borrowing raises the real interest rate, and the higher rate lowers the quantity of private investment.",
+    "options": [
+     "More is lent in total, but the government takes a bigger share at a higher real rate.",
+     "Firms' demand did not shift, but the higher real rate moves them along it to less borrowing.",
+     "Right: at the higher real rate, some private investment projects no longer pay off.",
+     "Government spending does not lower firms' borrowing costs; the higher real rate raises them."
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-4",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "loanable-funds-s1",
+   "q": "In the graph, what happens to the quantity of loanable funds?",
+   "options": [
+    "It falls, because the real interest rate rose",
+    "It stays the same, because saving did not change",
+    "It rises, as savers lend more at the higher rate",
+    "It is not shown on the graph"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When demand shifts right along an upward-sloping supply curve, both the real interest rate and the quantity rise.",
+    "options": [
+     "A higher rate cuts borrowing along the old demand, but here demand shifted right.",
+     "Saving rises along the supply curve as the real rate rises.",
+     "Right: the higher real rate draws out more saving, a movement along supply.",
+     "One curve shifted, so both changes are clear: the rate and the quantity rise."
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-5",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "loanable-funds-s2",
+   "q": "What is public saving in Brin, in billions of dollars?",
+   "why": {
+    "correct": "Public saving = tax revenue - government spending = 900 - 1,000 = -100 billion. The government spends more than it collects."
+   },
+   "numeric": {
+    "from": {
+     "fn": "budgetBalance",
+     "args": [
+      900,
+      1000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 100,
+      "why": "The size is right, but the government spends more than it collects, so public saving is negative: -100."
+     },
+     {
+      "value": 1900,
+      "why": "Public saving is revenue minus spending, not their sum."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-6",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "loanable-funds-s2",
+   "q": "What is national saving in Brin, in billions of dollars?",
+   "why": {
+    "correct": "National saving = private saving + public saving = 400 + (-100) = 300 billion."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      400,
+      {
+       "fn": "budgetBalance",
+       "args": [
+        900,
+        1000
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 500,
+      "why": "You added 100 instead of -100. Public saving is negative here, so it lowers national saving."
+     },
+     {
+      "value": 400,
+      "why": "400 is private saving alone. Add public saving, which is -100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-7",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "loanable-funds-s2",
+   "q": "What does Brin's public saving tell you about the loanable funds market?",
+   "options": [
+    "The government adds \\$100 billion to the supply of loanable funds",
+    "The government has to borrow \\$100 billion, adding to the demand for loanable funds",
+    "The government plays no part, since private saving is what counts",
+    "Households have to save \\$100 billion less"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "When public saving is negative, the government borrows, which adds to the demand for loanable funds (or, put the other way, lowers national saving).",
+    "options": [
+     "Public saving is negative, so the government takes funds out rather than adding them.",
+     "Right: it spends \\$100 billion more than it collects and borrows the difference.",
+     "Government borrowing and saving are part of the market.",
+     "Private saving is given as 400; it is the government that borrows."
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-8",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "loanable-funds-s2",
+   "q": "Brin raises taxes so that tax revenue equals government spending, and private saving stays at 400. What happens to national saving and the real interest rate?",
+   "options": [
+    "National saving falls and the real rate rises",
+    "National saving rises to 400 and the real rate falls",
+    "Both are unchanged, since private saving is the same",
+    "National saving rises and the real rate rises"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Less government borrowing means more national saving and a lower real interest rate.",
+    "options": [
+     "Public saving rises from -100 to 0, so national saving rises, not falls.",
+     "Right: with no government borrowing, there is less demand for loanable funds, so the real rate falls.",
+     "Public saving changed from -100 to 0, so national saving changes.",
+     "Less government borrowing lowers the real interest rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-9",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "stimulus": "loanable-funds-s3",
+   "q": "On the loanable funds graph, show the effect of Lorne's savings plan and mark the new equilibrium.",
+   "why": {
+    "correct": "More household saving shifts the supply of loanable funds right, so the real interest rate falls and the quantity of loanable funds rises."
+   },
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DLF",
+     "SLF"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SLF",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in household saving",
+     "outcome": {
+      "real interest rate": "down",
+      "quantity of loanable funds": "up"
+     }
+    },
+    "slips": {
+     "DLF": "Saving is the source of loanable funds, so more saving shifts supply, not demand."
+    }
+   }
+  },
+  {
+   "id": "mac-loanable-funds-10",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "loanable-funds-s3",
+   "q": "After the savings plan, what happens to business investment in Lorne?",
+   "options": [
+    "It rises, because the real interest rate falls",
+    "It falls, because households spend less",
+    "It does not change, because firms' demand did not shift",
+    "It falls, because the real interest rate rises"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "More saving lowers the real interest rate, so the quantity of loanable funds borrowed for investment rises.",
+    "options": [
+     "Right: cheaper borrowing makes more investment projects worth doing.",
+     "The loanable funds market shows the lower real rate raising investment.",
+     "Demand did not shift, but the lower real rate moves firms along it to more borrowing.",
+     "More saving lowers the real interest rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-11",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "loanable-funds-s3",
+   "q": "In the scenario, who supplies loanable funds?",
+   "options": [
+    "Firms that want to build factories",
+    "Households that save part of their income",
+    "The central bank, by setting the policy rate",
+    "Stores that sell goods to households"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Savers supply loanable funds; borrowers, such as investing firms and a government that spends more than it collects, demand them.",
+    "options": [
+     "Firms that invest are borrowers: the demand side.",
+     "Right: saving is the supply of loanable funds.",
+     "The loanable funds market is about saving and borrowing; the policy rate is another graph.",
+     "Selling goods is not lending; savers supply loanable funds."
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-12",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Before drawing any shift, a student must label the saving-and-borrowing graph in full. Label both axes and both curves of the loanable funds market.",
+   "why": {
+    "correct": "Loanable funds: the real interest rate on the vertical axis and the quantity of loanable funds on the horizontal axis, with demand (DLF) sloping down and supply (SLF) sloping up."
+   },
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mac-loanable-funds-13",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Firms become more optimistic about the profits from new equipment. Shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "More planned investment means more borrowing at each real rate: the demand for loanable funds shifts right, raising the real interest rate and the quantity of loanable funds."
+   },
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DLF",
+     "SLF"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "DLF",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in planned investment by firms",
+     "outcome": {
+      "real interest rate": "up",
+      "quantity of loanable funds": "up"
+     }
+    },
+    "slips": {
+     "SLF": "Optimistic firms want to borrow more, which is the demand for loanable funds. Supply comes from savers."
+    }
+   }
+  },
+  {
+   "id": "mac-loanable-funds-14",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Mark point B on the supply of loanable funds curve at a real interest rate above the equilibrium rate.",
+   "why": {
+    "correct": "Along SLF, a higher real interest rate draws out more saving, so B sits up and to the right of the equilibrium."
+   },
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "B",
+    "key": {
+     "point": {
+      "on": "SLF",
+      "x": "up",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-loanable-funds-15",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What goes on the vertical axis of the loanable funds graph?",
+   "options": [
+    "The nominal interest rate",
+    "The real interest rate",
+    "The price level",
+    "The quantity of loanable funds"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Loanable funds: real interest rate (r) on the vertical axis. Writing \"nominal\" loses the graph point.",
+    "options": [
+     "The nominal rate goes on the money market graph. Saving and borrowing decisions depend on the real rate.",
+     "Right: savers and borrowers care about the return and cost after inflation.",
+     "The price level goes on the AD-AS graph.",
+     "That goes on the horizontal axis."
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-16",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these shift the demand for loanable funds to the right? Select all that apply.",
+   "options": [
+    "The government borrows more to cover its spending",
+    "Firms expect lower returns on new investment",
+    "Households save a larger share of their income",
+    "The real interest rate falls"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Demand for loanable funds shifts with borrowing plans: government borrowing and firms' expected returns on investment.",
+    "options": [
+     "Right: the government becomes a bigger borrower.",
+     "Gloomier firms borrow less at each real rate, a shift to the left.",
+     "More saving shifts supply right, not demand.",
+     "That is a movement along demand, not a shift."
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-17",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why does the supply of loanable funds slope upward?",
+   "options": [
+    "A higher real interest rate rewards saving, so people save and lend more",
+    "Banks are required to lend more when rates rise",
+    "Inflation rises as the real interest rate rises",
+    "The government saves more when rates rise"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Saving responds to the reward for saving, the real interest rate: a higher rate brings out more loanable funds.",
+    "options": [
+     "Right: the real rate is the reward for saving.",
+     "No rule makes banks lend more; savers choose to supply more at higher rates.",
+     "The real rate already removes inflation; the slope comes from savers' choices.",
+     "Public saving depends on taxes and spending, not on the slope of supply."
+    ]
+   }
+  },
+  {
+   "id": "mac-loanable-funds-18",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "analyze",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the links in order, from more government borrowing to private investment.",
+   "options": [
+    "The government borrows more",
+    "The demand for loanable funds shifts right",
+    "The real interest rate rises",
+    "Borrowing costs rise for firms",
+    "The quantity of private investment falls"
+   ],
+   "why": {
+    "correct": "Government borrowing raises the real interest rate, and the higher rate lowers private investment."
+   }
+  },
+  {
+   "id": "mac-loanable-funds-19",
+   "unit": "unit-4",
+   "topic": "loanable-funds",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain how more government borrowing affects private investment.",
+   "why": {
+    "correct": "Government borrowing raises the demand for loanable funds, the real interest rate rises, and private investment falls because borrowing costs more."
+   },
+   "specific": {
+    "frame": "The government borrows more, so the ___ for loanable funds shifts ___; the real interest rate ___, so private investment ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "The government borrows more, so the demand for loanable funds shifts right; the real interest rate increases, so private investment decreases because borrowing becomes more costly for firms.",
+    "slots": {
+     "curve": {
+      "label": "Which curve",
+      "options": [
+       "demand",
+       "supply"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The government is a borrower here, so it adds to demand. (Showing lower national saving as supply shifting left also raises the rate.)"
+      }
+     },
+     "direction": {
+      "label": "Which way",
+      "options": [
+       "right",
+       "left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More borrowing at each rate is a shift to the right."
+      }
+     },
+     "rate": {
+      "label": "The real interest rate",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More demand for the same supply raises the real rate."
+      }
+     },
+     "spending": {
+      "label": "Private investment",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A higher real rate makes borrowing for investment costlier, so it falls."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

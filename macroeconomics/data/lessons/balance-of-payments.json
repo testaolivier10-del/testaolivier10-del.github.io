@@ -1,0 +1,72 @@
+{
+ "topic": "balance-of-payments",
+ "hook": "Every time someone in the United States buys a phone assembled abroad, streams a show made by a foreign studio, or sells a Treasury bond to an investor in another country, money crosses a border. Countries keep one record of all of it, and that record has a rule that never breaks: its two halves always add up to zero.",
+ "prereq": [
+  {
+   "q": "In GDP = C + I + G + (X - M), what does X - M stand for?",
+   "options": [
+    "Net exports",
+    "Total exports",
+    "Government purchases from abroad",
+    "Investment by foreign firms"
+   ],
+   "correct": 0,
+   "why": "X is exports and M is imports, so X - M is net exports: what a country sells abroad minus what it buys from abroad.",
+   "review": "gdp-circular-flow"
+  },
+  {
+   "q": "Which of these is a financial asset?",
+   "options": [
+    "A government bond",
+    "A haircut",
+    "A loaf of bread bought for dinner",
+    "An hour of a worker's time"
+   ],
+   "correct": 0,
+   "why": "A bond is a claim to future payments, a financial asset. The others are goods, services or labor.",
+   "review": "financial-assets"
+  }
+ ],
+ "figure": {
+  "figure": "balance-of-payments-accounts",
+  "caption": "A current account deficit of 100 is matched by a capital and financial account surplus of 100: the two halves of the balance of payments sum to zero."
+ },
+ "chain": [
+  {
+   "cause": "A country pays the rest of the world more for goods, services, income and transfers than it receives from it",
+   "effect": "its current account balance is negative, a current account deficit"
+  },
+  {
+   "cause": "Those extra purchases still have to be paid for",
+   "effect": "the country sells assets (bonds, stocks, land, firms) to foreigners or borrows from them"
+  },
+  {
+   "cause": "Foreigners buy more of its assets than it buys of theirs",
+   "effect": "its capital and financial account is in surplus by exactly the size of the current account deficit"
+  },
+  {
+   "cause": "Every payment has a matching entry",
+   "effect": "current account + capital and financial account = 0"
+  }
+ ],
+ "ideas": [
+  "The <b>balance of payments</b> records every transaction between a country's residents and the rest of the world over a period. Money coming in is a credit (+); money going out is a debit (-).",
+  "The <b>current account</b> holds the balance of trade in goods and services (net exports), net income from abroad (interest, dividends, wages) and net transfers (gifts, aid, money sent home).",
+  "The <b>capital and financial account</b> records purchases and sales of assets: bonds, stocks, bank deposits, real estate and whole firms. A foreigner buying a domestic asset is a credit; a resident buying a foreign asset is a debit.",
+  "Current account + capital and financial account = 0. A current account deficit is matched by a capital and financial account surplus of the same size.",
+  "A government budget deficit (outlays above revenue) is not a trade deficit or a current account deficit."
+ ],
+ "misconception": {
+  "wrong": "The capital and financial account has nothing to do with trade, so a current account deficit tells you nothing about it.",
+  "right": "They are two sides of the same payments. A country that buys more from abroad than it sells pays the difference by selling assets or borrowing abroad, so a current account deficit of 60 means a capital and financial account surplus of 60."
+ },
+ "check": [
+  "mac-balance-of-payments-1",
+  "mac-balance-of-payments-2",
+  "mac-balance-of-payments-3",
+  "mac-balance-of-payments-9",
+  "mac-balance-of-payments-10",
+  "mac-balance-of-payments-11"
+ ],
+ "summary": "The balance of payments has two halves. The current account records trade in goods and services, income and transfers; the capital and financial account records purchases and sales of assets. Because every purchase from abroad is paid for somehow, the two balances sum to zero: a current account deficit comes with a capital and financial account surplus of the same size. And a budget deficit is a different thing altogether."
+}

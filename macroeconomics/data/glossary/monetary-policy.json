@@ -1,0 +1,14 @@
+{
+ "ample-reserves": {
+  "def": "A framework in which banks hold so many reserves that reserve supply sits in the flat part of reserve demand, so changing the quantity of reserves does not move the policy rate. The central bank sets the rate with administered rates. Its graph is the reserve market."
+ },
+ "policy-rate": {
+  "def": "The interest rate a central bank targets; for the Federal Reserve it is the federal funds rate, what banks charge each other for overnight loans of reserves. With ample reserves it is set by administered rates such as the interest on reserve balances (IORB)."
+ },
+ "limited-reserves": {
+  "def": "A framework in which banks hold few reserves beyond what is required, so the central bank changes interest rates by changing reserves and the money supply: open market operations (buying or selling bonds), the discount rate and the reserve requirement."
+ },
+ "monetary-policy": {
+  "def": "Actions by the central bank to change interest rates and so shift aggregate demand. Expansionary policy lowers rates to fight a recessionary gap; contractionary policy raises them to fight an inflationary gap."
+ }
+}

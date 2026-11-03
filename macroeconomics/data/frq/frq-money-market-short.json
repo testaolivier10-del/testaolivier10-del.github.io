@@ -1,0 +1,109 @@
+{
+ "id": "frq-money-market-short",
+ "type": "short",
+ "points": 5,
+ "title": "A rise in the price level: money demand, the nominal interest rate and bond prices",
+ "units": [
+  "unit-3",
+  "unit-4"
+ ],
+ "topics": [
+  "adas-equilibrium",
+  "money-market"
+ ],
+ "practices": [
+  "4.A",
+  "4.C",
+  "2.A",
+  "3.B"
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "points": 3,
+   "type": "graph",
+   "prompt": "The price level in the invented country of Wren rises, and its central bank keeps the money supply unchanged. <b>Draw</b> a correctly labeled graph of the money market and <b>show</b> the effect of the rise in the price level on the nominal interest rate.",
+   "graph": {
+    "kind": "money",
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "MD",
+     "MS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "MD",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in the price level",
+     "outcome": {
+      "nominal interest rate": "up",
+      "quantity of money": "same"
+     }
+    },
+    "slips": {
+     "MS": "The central bank keeps the money supply unchanged. A higher price level raises how much money people need: money demand shifts."
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled money market: nominal interest rate on the vertical axis, quantity of money on the horizontal axis, downward-sloping MD and vertical MS",
+     "accept": [
+      "i and quantity of money"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "Money demand shifted right",
+     "accept": [
+      "MD1 to MD2 to the right"
+     ],
+     "auto": "shift"
+    },
+    {
+     "point": "A higher nominal interest rate shown on the vertical axis (i2 above i1)",
+     "accept": [
+      "i rises from i1 to i2"
+     ],
+     "auto": "outcome"
+    }
+   ],
+   "sample": "Vertical axis: nominal interest rate (i). Horizontal axis: quantity of money. The vertical MS crosses MD1 at i1. The higher price level shifts money demand right to MD2, which crosses MS at i2, above i1; the quantity of money is unchanged."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>Explain</b> why money demand changes when the price level rises.",
+   "rubric": [
+    {
+     "point": "Explains that at higher prices people need more money for the same purchases (transaction demand rises)",
+     "accept": [
+      "each purchase takes more money",
+      "nominal GDP rises so more money is needed for transactions"
+     ]
+    }
+   ],
+   "sample": "With a higher price level, each purchase costs more, so households and firms need to hold more money to make the same transactions. The transaction demand for money rises at every interest rate."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "Based on your answer to part A, what happens to the prices of existing bonds in Wren? <b>Explain</b>.",
+   "rubric": [
+    {
+     "point": "States that bond prices fall, because bond prices move opposite to interest rates (people sell bonds to get money)",
+     "accept": [
+      "bond prices decrease because the interest rate rose"
+     ]
+    }
+   ],
+   "sample": "Bond prices fall. To hold more money, people sell bonds, which pushes bond prices down; that is why the interest rate rises, since bond prices and interest rates move in opposite directions."
+  }
+ ]
+}

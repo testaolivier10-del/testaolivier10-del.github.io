@@ -1,0 +1,127 @@
+{
+ "id": "frq-market-shift-short",
+ "type": "short",
+ "points": 5,
+ "title": "The frozen pizza market after the price of cheese rises",
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "supply",
+  "market-equilibrium"
+ ],
+ "practices": [
+  "4.A",
+  "4.C",
+  "1.C",
+  "2.A"
+ ],
+ "stimulus": {
+  "title": "The frozen pizza market at the old price",
+  "invented": true,
+  "table": {
+   "caption": "Weekly quantities in an invented country's market for frozen pizza at the original equilibrium price of \\$6, after the price of cheese rises",
+   "cols": [
+    "Price per pizza",
+    "Quantity demanded (pizzas per week)",
+    "Quantity supplied (pizzas per week)"
+   ],
+   "rows": [
+    [
+     "\\$6",
+     "500",
+     "350"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "points": 3,
+   "type": "graph",
+   "prompt": "Cheese is an input in making frozen pizza, and its price rises sharply. <b>Draw</b> a correctly labeled graph of the market for frozen pizza and <b>show</b> the effect of the rise in the price of cheese. Label the new equilibrium price P2 and the new equilibrium quantity Q2.",
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in the price of cheese, an input",
+     "outcome": {
+      "price": "up",
+      "quantity": "down"
+     }
+    },
+    "slips": {
+     "D": "Cheese is an input for pizza makers, so its price shifts supply; buyers' wants have not changed."
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled graph: Price on the vertical axis, Quantity on the horizontal axis, and labeled demand and supply curves",
+     "accept": [
+      "P and Q on the axes",
+      "D and S on the curves"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "The supply curve shifted to the left (S1 to S2)",
+     "accept": [
+      "a leftward shift of supply with an arrow"
+     ],
+     "auto": "shift"
+    },
+    {
+     "point": "A new equilibrium where D meets S2, with P2 higher than P1 and Q2 lower than Q1",
+     "accept": [
+      "the new price and quantity marked on the axes, P2 above P1 and Q2 below Q1"
+     ],
+     "auto": "outcome"
+    }
+   ],
+   "sample": "Price is on the vertical axis and Quantity on the horizontal axis. D slopes down and S1 slopes up, crossing at P1 and Q1. The rise in the price of cheese raises the cost of making each pizza, so supply shifts left to S2 (arrow from S1 to S2). S2 meets D at a higher price, P2, and a smaller quantity, Q2, both marked with dashed lines to the axes."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "Use the data in the table. <b>Calculate</b> the shortage at the original price of \\$6 after the price of cheese rises. Show your work.",
+   "rubric": [
+    {
+     "point": "150 pizzas per week, with work shown (500 - 350)",
+     "accept": [
+      "quantity demanded minus quantity supplied: 500 - 350 = 150"
+     ]
+    }
+   ],
+   "sample": "Shortage = quantity demanded - quantity supplied = $500 - 350 = 150$ pizzas per week."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Explain</b> how the shortage in part B moves the market to its new equilibrium.",
+   "rubric": [
+    {
+     "point": "The shortage pushes the price up, and as it rises the quantity demanded falls and the quantity supplied rises until they are equal at the new equilibrium",
+     "accept": [
+      "buyers compete for the scarce pizzas, so the price is bid up until quantity demanded equals quantity supplied"
+     ]
+    }
+   ],
+   "sample": "At \\$6, buyers want 150 more pizzas than sellers offer, so buyers compete for the scarce pizzas and sellers raise their prices. As the price rises, the quantity demanded falls (a movement along D) and the quantity supplied rises (a movement along S2) until the two are equal at the new equilibrium price P2."
+  }
+ ]
+}

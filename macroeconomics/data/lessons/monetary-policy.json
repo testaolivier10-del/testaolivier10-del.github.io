@@ -1,0 +1,84 @@
+{
+ "topic": "monetary-policy",
+ "hook": "When the news says \"the Fed raised rates a quarter point,\" no one at the Federal Reserve sets your car loan rate. What it changes is the interest it pays banks on the reserves they keep there. Within days, rates on loans, mortgages and savings accounts move too, and over the next year, so does spending across the whole economy.",
+ "prereq": [
+  {
+   "q": "The money supply increases and money demand does not change. What happens to the nominal interest rate?",
+   "options": [
+    "It falls",
+    "It rises",
+    "It stays the same",
+    "It doubles"
+   ],
+   "correct": 0,
+   "why": "MS shifts right along downward-sloping MD, so the nominal interest rate falls.",
+   "review": "money-market"
+  },
+  {
+   "q": "The required reserve ratio is 0.1 and banks get \\$1,000 of new excess reserves. What is the most the money supply can grow?",
+   "options": [
+    "\\$10,000",
+    "\\$1,000",
+    "\\$100",
+    "\\$900"
+   ],
+   "correct": 0,
+   "why": "Excess reserves x 1 / ratio = \\$1,000 x 10 = \\$10,000.",
+   "review": "banking-money-supply"
+  },
+  {
+   "q": "Which of these shifts aggregate demand to the right?",
+   "options": [
+    "A rise in investment spending",
+    "A rise in input costs",
+    "A fall in consumer confidence",
+    "A fall in exports"
+   ],
+   "correct": 0,
+   "why": "Investment is part of AD = C + I + G + (X - M).",
+   "review": "aggregate-demand"
+  }
+ ],
+ "figure": {
+  "figure": "monetary-policy-two-frameworks",
+  "caption": "The same expansionary goal in two frameworks: buying bonds shifts the money supply (limited reserves); lowering administered rates lowers the flat part of reserve demand (ample reserves)."
+ },
+ "chain": [
+  {
+   "cause": "With ample reserves, the central bank lowers its administered rates (interest on reserve balances)",
+   "effect": "the flat part of reserve demand moves down, so the policy rate falls"
+  },
+  {
+   "cause": "The policy rate falls",
+   "effect": "other interest rates fall, so investment and interest-sensitive consumption rise"
+  },
+  {
+   "cause": "Investment and consumption rise",
+   "effect": "aggregate demand shifts right"
+  },
+  {
+   "cause": "Aggregate demand shifts right",
+   "effect": "real output and the price level rise and unemployment falls in the short run"
+  }
+ ],
+ "ideas": [
+  "<b>Monetary policy</b> is the central bank changing interest rates to shift AD: expansionary (lower rates) for a recessionary gap, contractionary (higher rates) for an inflationary gap.",
+  "<b>Limited reserves</b> (money market graph): <b>open market operations</b> (buy bonds to raise the money supply, sell to lower it), the <b>discount rate</b> and the reserve requirement shift MS.",
+  "<b>Ample reserves</b> (reserve market graph): the central bank sets <b>administered rates</b>, mainly <b>interest on reserves</b>; the flat part of reserve demand moves with them, and so does the <b>policy rate</b>.",
+  "With ample reserves, shifting reserve supply in the flat part leaves the policy rate alone. Always say which framework a question sets."
+ ],
+ "misconception": {
+  "wrong": "With ample reserves, the central bank lowers the policy rate by buying bonds and drawing a money supply shift on the money market graph.",
+  "right": "With ample reserves, it lowers its administered rates and you draw the reserve market: the flat part of reserve demand moves down. Buying bonds and the money market belong to the limited-reserves framework."
+ },
+ "check": [
+  "mac-monetary-policy-13",
+  "mac-monetary-policy-14",
+  "mac-monetary-policy-20",
+  "mac-monetary-policy-1",
+  "mac-monetary-policy-2",
+  "mac-monetary-policy-3",
+  "mac-monetary-policy-22"
+ ],
+ "summary": "Monetary policy is the central bank changing interest rates to shift aggregate demand. With limited reserves, open market operations, the discount rate and the reserve requirement change the money supply, shown on the money market graph. With ample reserves, the Federal Reserve sets administered rates, mainly the interest on reserve balances; on the reserve market graph the flat part of reserve demand moves with them and the policy rate follows, while shifts in reserve supply leave the rate alone. Lower rates raise investment and interest-sensitive consumption, so AD rises; higher rates do the reverse."
+}

@@ -1,0 +1,71 @@
+{
+ "topic": "demand",
+ "hook": "When a smoothie stand drops its price on a hot afternoon, the line gets longer. When a new campus opens next door, the line gets longer too, even at the old price. Both mean more smoothies sold, but economists describe them in completely different words, and the exam scores the difference.",
+ "prereq": [
+  {
+   "q": "A change in the variable on one of a graph's axes causes",
+   "options": [
+    "a movement along the curve",
+    "a shift of the curve",
+    "a new axis",
+    "a steeper curve"
+   ],
+   "correct": 0,
+   "why": "Only a change off the axes shifts a curve.",
+   "review": "shifts-movements"
+  },
+  {
+   "q": "A downward-sloping curve shows an",
+   "options": [
+    "inverse relationship",
+    "direct relationship",
+    "unrelated pair",
+    "upward trend"
+   ],
+   "correct": 0,
+   "why": "Downward sloping means one rises as the other falls.",
+   "review": "slopes-curves"
+  }
+ ],
+ "figure": {
+  "figure": "demand-curve-shift",
+  "caption": "A lower price moves buyers along D1 (a change in quantity demanded); a change in something else shifts the curve to D2 (a change in demand)."
+ },
+ "chain": [
+  {
+   "cause": "The price of a good falls",
+   "effect": "buyers can afford more and the good is cheaper than its substitutes (income and substitution effects)"
+  },
+  {
+   "cause": "Buyers respond to the lower price",
+   "effect": "the quantity demanded rises: a movement along the demand curve"
+  },
+  {
+   "cause": "Something other than the price changes (tastes, income, related prices, expectations, number of buyers)",
+   "effect": "buyers want a different amount at every price"
+  },
+  {
+   "cause": "Buyers want more at every price",
+   "effect": "demand increases: the whole curve shifts right"
+  }
+ ],
+ "ideas": [
+  "<b>Law of demand</b>: as a good's price rises, the quantity demanded falls, other things equal, because of the income and substitution effects.",
+  "A change in the good's own price changes the <b>quantity demanded</b> (a movement along the curve). Anything else changes <b>demand</b> (a shift).",
+  "Demand shifters: tastes, income (normal goods up, inferior goods down), prices of substitutes and complements, expectations, and the number of buyers."
+ ],
+ "misconception": {
+  "wrong": "When the price of a good rises, the demand for it falls.",
+  "right": "A higher price lowers the quantity demanded, a movement along the demand curve. Demand itself, the whole curve, shifts only when something other than the good's own price changes."
+ },
+ "check": [
+  "mac-demand-1",
+  "mac-demand-2",
+  "mac-demand-6",
+  "mac-demand-7",
+  "mac-demand-8",
+  "mac-demand-9",
+  "mac-demand-16"
+ ],
+ "summary": "The law of demand says that as a good's price rises, the quantity demanded falls, other things equal, because of the income and substitution effects. A change in the good's own price moves buyers along the demand curve; a change in tastes, income, the prices of substitutes or complements, expectations or the number of buyers shifts the whole curve. Keep the words straight: quantity demanded for a movement, demand for a shift."
+}

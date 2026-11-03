@@ -1,0 +1,11 @@
+{
+ "financial-asset": {
+  "def": "A claim on money or future income, such as money, a bond or a share of stock. Bonds are loans to the issuer; stocks are shares of ownership. Liquidity is how easily an asset becomes money without losing value."
+ },
+ "bond-price-rate": {
+  "def": "The prices of existing bonds move opposite to market interest rates. A bond pays a fixed amount, so when new bonds pay more, buyers pay less for an old one."
+ },
+ "interest-rate": {
+  "def": "The price of borrowing: what a borrower pays each year for the use of money, as a percent of the amount borrowed. To a lender it is the reward for lending."
+ }
+}

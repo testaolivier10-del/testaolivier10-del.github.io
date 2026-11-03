@@ -1,0 +1,49 @@
+<p>Most money is not cash. It is checkable deposits, and most deposits were created by banks making loans. This topic shows how, with one table (the balance sheet), two subtractions and one division. It uses the <b>limited-reserves</b> picture of banking, in which the reserves banks are required to hold limit how much they can lend; the exam still tests it, and a later topic in this unit compares it with how the central bank works today.</p>
+
+<h2>Fractional reserve banking</h2>
+<p>A bank takes deposits and makes loans. It does not keep every deposited dollar: on a normal day only a few customers withdraw, so the bank holds a fraction as <b>reserves</b> (cash in its vault and its own deposit account at the central bank) and lends the rest. That is <b>fractional reserve banking</b>. The <b>central bank</b>, the Federal Reserve in the United States, oversees banks and can set a <b>reserve requirement</b>: the share of deposits banks must hold as reserves, the <b>required reserve ratio</b>.</p>
+
+<h2>The balance sheet</h2>
+<figure id="fig-tacct" data-fig="banking-money-supply-balance-sheet"><figcaption>A bank balance sheet. Required reserves are deposits times the ratio; excess reserves are the rest of the bank's reserves.</figcaption></figure>
+<p>A bank's <b>balance sheet</b>, or T-account, lists what it owns and what it owes. The two sides balance.</p>
+<table class="compare">
+<thead><tr><th>Assets (what the bank owns or is owed)</th><th>Liabilities (what the bank owes) and owners' equity</th></tr></thead>
+<tbody>
+<tr><td>Reserves: vault cash and deposits at the central bank</td><td>Checkable deposits: owed to customers on demand</td></tr>
+<tr><td>Loans to households and firms</td><td>Owners' equity: what the bank is worth to its owners</td></tr>
+<tr><td>Securities, such as government bonds</td><td></td></tr>
+</tbody>
+</table>
+<p>Two numbers come from it:</p>
+<ul>
+<li><b>Required reserves</b> = checkable deposits x required reserve ratio.</li>
+<li><b>Excess reserves</b> = total reserves - required reserves. This is what one bank can safely lend right now.</li>
+</ul>
+
+<h2>How a loan creates money</h2>
+<p>When a bank lends \$900, it adds \$900 to the borrower's checking account. Nobody else's deposit got smaller, so the money supply, M1, is now \$900 larger. The borrower spends the money; the seller deposits it in another bank; that bank keeps its required share and lends its new excess reserves; and so on. Each round is smaller than the last, and the rounds add up to a multiple of the first.</p>
+<p>The <b>money multiplier</b> gives the maximum: $\text{money multiplier} = \frac{1}{\text{required reserve ratio}}$. With a ratio of 0.1 the multiplier is 10; with 0.2 it is 5; with 0.25 it is 4. So the most the money supply can grow is excess reserves x the money multiplier.</p>
+<div class="worked">
+<p><b>Worked example: a cash deposit.</b> The required reserve ratio is 0.1. Jordan deposits \$5,000 of cash that had been under a mattress.</p>
+<ol>
+<li><b>Money supply right away:</b> currency held by the public falls by \$5,000 and checkable deposits rise by \$5,000. M1 does not change.</li>
+<li><b>Required reserves on the new deposit:</b> \$5,000 x 0.1 = \$500.</li>
+<li><b>New excess reserves:</b> the bank's reserves rose by \$5,000, so excess reserves rise by \$5,000 - \$500 = \$4,500. That is the most this bank can lend.</li>
+<li><b>Money multiplier:</b> 1 / 0.1 = 10.</li>
+<li><b>Most the money supply can grow:</b> \$4,500 x 10 = \$45,000.</li>
+</ol>
+<p>The method: find the excess reserves first, then multiply by 1 / ratio. Do not multiply the whole deposit: the \$5,000 was already money.</p>
+</div>
+<p class="mac-slip">A common slip is to multiply the whole cash deposit by the multiplier (\$5,000 x 10 = \$50,000). The deposit only changed the form of existing money; new money comes from lending the \$4,500 of excess reserves.</p>
+<p>When new reserves come from outside the banking system and no deposit is added (the central bank can do this, as you will see), all of them are excess reserves, so the most the money supply can grow is the full amount times the multiplier.</p>
+
+<h2>Why the real change is usually smaller</h2>
+<p>The multiplier assumes banks lend every dollar of excess reserves and every loan is redeposited. In practice banks may keep extra reserves, especially when they are worried about losses, and people hold some of their money as cash. Both cut the chain of lending short, so the actual increase is smaller than the maximum. A withdrawal runs the chain backward: reserves fall by the full amount, required reserves fall by the ratio times it, and excess reserves fall by the difference.</p>
+<p>In the United States the reserve requirement has been zero since March 2020, part of a change in how the Federal Reserve sets interest rates that a later topic in this unit explains. The exam still asks you to use required reserves and the money multiplier, so learn both.</p>
+
+<h2>For your exam</h2>
+<ul>
+<li>Show the formula: "required reserves = \$200,000 x 0.2 = \$40,000; excess = \$50,000 - \$40,000 = \$10,000."</li>
+<li>One bank can lend its excess reserves; the whole system can create up to excess reserves x 1 / ratio.</li>
+<li>A higher required reserve ratio means a smaller money multiplier and less money creation.</li>
+</ul>

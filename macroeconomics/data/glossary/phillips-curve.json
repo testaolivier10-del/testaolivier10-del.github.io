@@ -1,0 +1,11 @@
+{
+ "srpc": {
+  "def": "The short-run Phillips curve: a downward-sloping curve showing the short-run trade-off between the inflation rate and the unemployment rate. A change in AD moves the economy along it."
+ },
+ "lrpc": {
+  "def": "The long-run Phillips curve: a vertical line at the natural rate of unemployment, showing that in the long run unemployment returns to the natural rate whatever the inflation rate."
+ },
+ "expected-inflation": {
+  "def": "The inflation rate households and firms expect, which they build into wages and prices. A rise in expected inflation shifts the SRPC right; the SRPC crosses LRPC at the expected rate."
+ }
+}

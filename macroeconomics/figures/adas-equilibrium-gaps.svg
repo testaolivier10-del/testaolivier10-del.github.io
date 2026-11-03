@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 350" width="660" height="350" role="img" aria-labelledby="adas-equilibrium-gaps-t adas-equilibrium-gaps-d" font-family="Arial, Helvetica, sans-serif">
+<title id="adas-equilibrium-gaps-t">Recessionary and inflationary gaps</title>
+<desc id="adas-equilibrium-gaps-d">Two AD-AS graphs, each with AD, SRAS and a vertical LRAS at full-employment output YF. Left: AD crosses SRAS at Y1, to the left of YF, a recessionary gap. Right: AD crosses SRAS at Y1, to the right of YF, an inflationary gap with a higher price level.</desc>
+<defs><marker id="adas-equilibrium-gaps-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9A4A00"/></marker></defs>
+<rect width="660" height="350" fill="#FFFFFF"/>
+<text x="185" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2A28">Recessionary gap: Y1 &lt; YF</text>
+<path d="M60 40V270H310" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="310" y="304" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Real GDP</text>
+<text transform="translate(30 40) rotate(-90)" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Price level</text>
+<path d="M185 49.2V270" fill="none" stroke="#1F5C8A" stroke-width="2.8" stroke-linecap="round"/>
+<text x="190" y="61.2" text-anchor="start" font-size="13" font-weight="700" fill="#1F5C8A">LRAS</text>
+<path d="M80 251.6L290 58.4" fill="none" stroke="#355A0A" stroke-width="2.8" stroke-linecap="round"/>
+<text x="294" y="56.4" text-anchor="start" font-size="13" font-weight="700" fill="#355A0A">SRAS</text>
+<path d="M67.5 92.9L240 251.6" fill="none" stroke="#9A4A00" stroke-width="2.8" stroke-linecap="round"/>
+<text x="244" y="263.6" text-anchor="start" font-size="13" font-weight="700" fill="#9A4A00">AD</text>
+<path d="M60 178H160V270" fill="none" stroke="#1F2A28" stroke-width="1.1" stroke-dasharray="3 4"/>
+<circle cx="160" cy="178" r="4.5" fill="#1F2A28"/>
+<text x="55" y="182" text-anchor="end" font-size="12" font-weight="700" fill="#1F2A28">PL1</text>
+<text x="160" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A28">Y1</text>
+<text x="185" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A28">YF</text>
+<path d="M160 291V296H185V291" fill="none" stroke="#1F5C8A" stroke-width="1.6"/>
+<text x="172.5" y="310" text-anchor="middle" font-size="12" font-weight="700" fill="#1F5C8A">gap</text>
+<text x="505" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2A28">Inflationary gap: Y1 &gt; YF</text>
+<path d="M380 40V270H630" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="630" y="304" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Real GDP</text>
+<text transform="translate(350 40) rotate(-90)" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Price level</text>
+<path d="M505 49.2V270" fill="none" stroke="#1F5C8A" stroke-width="2.8" stroke-linecap="round"/>
+<text x="510" y="61.2" text-anchor="start" font-size="13" font-weight="700" fill="#1F5C8A">LRAS</text>
+<path d="M400 251.6L610 58.4" fill="none" stroke="#355A0A" stroke-width="2.8" stroke-linecap="round"/>
+<text x="614" y="56.4" text-anchor="start" font-size="13" font-weight="700" fill="#355A0A">SRAS</text>
+<path d="M450 58.4L625 219.4" fill="none" stroke="#9A4A00" stroke-width="2.8" stroke-linecap="round"/>
+<text x="625" y="235.4" text-anchor="middle" font-size="13" font-weight="700" fill="#9A4A00">AD</text>
+<path d="M380 132H530V270" fill="none" stroke="#1F2A28" stroke-width="1.1" stroke-dasharray="3 4"/>
+<circle cx="530" cy="132" r="4.5" fill="#1F2A28"/>
+<text x="375" y="136" text-anchor="end" font-size="12" font-weight="700" fill="#1F2A28">PL1</text>
+<text x="530" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A28">Y1</text>
+<text x="505" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A28">YF</text>
+<path d="M505 291V296H530V291" fill="none" stroke="#1F5C8A" stroke-width="1.6"/>
+<text x="517.5" y="310" text-anchor="middle" font-size="12" font-weight="700" fill="#1F5C8A">gap</text>
+</svg>

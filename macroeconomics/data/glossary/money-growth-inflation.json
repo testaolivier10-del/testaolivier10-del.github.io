@@ -1,0 +1,11 @@
+{
+ "quantity-theory": {
+  "def": "The theory built on the equation of exchange, M x V = P x Y: if velocity and real output are steady, the price level moves in proportion to the money supply, so in the long run faster money growth means higher inflation."
+ },
+ "velocity": {
+  "def": "The average number of times a dollar is spent on final goods and services in a year: nominal GDP divided by the money supply."
+ },
+ "money-neutrality": {
+  "def": "The idea that in the long run a change in the money supply changes only nominal variables, such as the price level and nominal GDP, and not real output, unemployment or the real interest rate."
+ }
+}

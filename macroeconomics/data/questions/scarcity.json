@@ -1,0 +1,465 @@
+{
+ "stimuli": {
+  "scarcity-s1": {
+   "kind": "text",
+   "title": "One empty lot in Riverton",
+   "text": "<p>The town of Riverton (an invented town) owns one empty lot downtown. Residents want a park, store owners want a parking garage, and a grocery chain offers to lease the lot for a new store. Building the garage would take a crew of 40 construction workers, two cranes and a fleet of dump trucks, and a local developer has offered to put up her own savings to run the project.</p>"
+  },
+  "scarcity-s2": {
+   "kind": "data",
+   "title": "How three economies decide",
+   "invented": true,
+   "table": {
+    "caption": "Who answers the basic economic questions in three invented countries",
+    "cols": [
+     "Country",
+     "Who decides what is produced",
+     "Who owns most businesses",
+     "How most prices are set"
+    ],
+    "rows": [
+     [
+      "Lorna",
+      "Households and firms, through buying and selling",
+      "Private owners",
+      "By buyers and sellers in markets"
+     ],
+     [
+      "Pavlo",
+      "Government planners",
+      "The government",
+      "By the government"
+     ],
+     [
+      "Quill",
+      "Mostly households and firms; the government runs schools and roads",
+      "Mostly private owners",
+      "Mostly in markets, with some government rules"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-scarcity-1",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "scarcity-s1",
+   "q": "What makes the choice about Riverton's lot an economic problem?",
+   "options": [
+    "The town has run out of money for any project",
+    "The lot cannot be used for a park, a garage and a store at the same time",
+    "Store owners care more than residents do",
+    "The grocery chain sets the price of the lease"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Scarcity: one limited resource and several wants for it, so the town must choose.",
+    "options": [
+     "The scenario says nothing about the budget; even a rich town faces the choice.",
+     "Right: limited land, unlimited wants for it, so a choice must be made.",
+     "How much each group cares does not create the problem; the limited lot does.",
+     "The lease price matters for the choice but does not create the scarcity."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-2",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "scarcity-s1",
+   "q": "Which factor of production is the lot itself?",
+   "options": [
+    "Land",
+    "Labor",
+    "Capital",
+    "Entrepreneurship"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Land means natural resources and the ground itself.",
+    "options": [
+     "Right: the lot is a natural resource.",
+     "Labor is human effort, such as the construction crew.",
+     "Capital is made tools and buildings, such as the cranes.",
+     "Entrepreneurship is the organizing and risk-taking of the developer."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-3",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "scarcity-s1",
+   "q": "In the garage plan, which item is capital?",
+   "options": [
+    "The 40 construction workers",
+    "The empty lot",
+    "The developer's willingness to risk her savings",
+    "The two cranes and the dump trucks"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Capital is goods made to produce other goods: machines, tools, buildings.",
+    "options": [
+     "Workers supply labor.",
+     "The lot is land.",
+     "Taking the risk and organizing the project is entrepreneurship.",
+     "Right: cranes and trucks are made tools used in production."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-4",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "scarcity-s1",
+   "q": "The developer offers her own savings to run the garage project. Which factor of production does she supply, and why?",
+   "options": [
+    "Capital, because she provides money",
+    "Labor, because she works on the project",
+    "Entrepreneurship, because she organizes the project and takes the risk",
+    "Land, because the garage sits on the lot"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Entrepreneurship combines the other factors and bears the risk. Money by itself is not a factor; it buys factors.",
+    "options": [
+     "In economics capital means tools, machines and buildings, not money.",
+     "Her role is to organize and take the risk, not to do the construction work.",
+     "Right: she organizes and risks her savings.",
+     "The lot is land, but she does not supply it; the town owns it."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-5",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "scarcity-s2",
+   "q": "Which country in the table has a command economy?",
+   "options": [
+    "Lorna",
+    "Pavlo",
+    "Quill",
+    "Lorna and Quill together"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In a command economy the government decides what is produced, owns the businesses and sets prices.",
+    "options": [
+     "Lorna leaves every decision to buyers and sellers: a market economy.",
+     "Right: planners decide, the state owns, the state sets prices.",
+     "Quill mixes markets with some government roles: a mixed economy.",
+     "Pavlo is the country that fits a command economy."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-6",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "stimulus": "scarcity-s2",
+   "q": "Which country in the table is closest to how most real economies work?",
+   "options": [
+    "Quill, a mixed economy",
+    "Lorna, a pure market economy",
+    "Pavlo, a pure command economy",
+    "Pavlo and Lorna equally"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Most economies today rely mainly on markets but give government some roles (schools, roads, rules): mixed economies.",
+    "options": [
+     "Right: markets plus some government roles.",
+     "No real economy leaves out government entirely.",
+     "Few economies plan everything centrally.",
+     "They are opposite ends; real economies sit between them."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-7",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "scarcity-s2",
+   "q": "In Lorna, how is the \"for whom\" question mostly answered?",
+   "options": [
+    "By government planners assigning goods to each household",
+    "By giving each household the same amount",
+    "By the order in which people line up",
+    "By who is willing and able to pay market prices"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In a market economy, goods go to buyers who will pay the price, so incomes and prices decide who gets what.",
+    "options": [
+     "That is how Pavlo answers it.",
+     "Equal shares are a planning choice, not a market outcome.",
+     "Prices, not lines, ration goods in a market economy.",
+     "Right: willingness and ability to pay."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-8",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "scarcity-s2",
+   "q": "In Pavlo, a factory manager is told to make 500 tractors this year. Which basic question has the government answered?",
+   "options": [
+    "For whom to produce",
+    "Whether resources are scarce",
+    "What to produce",
+    "How much to charge buyers"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Setting the output of each good answers \"what to produce\" (and how much).",
+    "options": [
+     "\"For whom\" is about who receives the tractors.",
+     "Scarcity is not a choice; it is why the plan is needed.",
+     "Right: the plan sets what (and how many).",
+     "Prices may also be set, but the order is about output."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-9",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement about scarcity is accurate?",
+   "options": [
+    "It ends once a country becomes rich enough",
+    "It exists because wants are greater than the resources to meet them",
+    "It applies to goods but not to time",
+    "It means a store has sold out of a product"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Scarcity is the gap between unlimited wants and limited resources. Rich countries and rich people face it too.",
+    "options": [
+     "Wealthy societies still cannot have everything they want.",
+     "Right: limited resources, unlimited wants.",
+     "Time is one of the scarcest resources there is.",
+     "A sold-out product is a temporary market problem; scarcity is permanent."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-10",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A student has three free hours on Saturday and wants to study, work a paid shift and see friends. What does this show?",
+   "options": [
+    "Scarcity: limited time forces a choice among wants",
+    "An economic system answering the question of for whom to produce",
+    "A command decision by the student's parents",
+    "A factor of production called entrepreneurship"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Time is limited and the wants are not, so the student must choose.",
+    "options": [
+     "Right: a limited resource and competing wants.",
+     "Economic systems answer questions for a whole society.",
+     "Nothing says anyone else decides.",
+     "The student is not organizing a business or taking a business risk."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-11",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A city council spends this year's budget on a new bridge, so it repairs fewer school buildings. What is this an example of?",
+   "options": [
+    "A command economy",
+    "An increase in resources",
+    "A choice with nothing given up",
+    "A trade-off"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Choosing more of one thing means less of another: a trade-off.",
+    "options": [
+     "A city budget choice happens in every economic system.",
+     "The budget did not grow; it was divided.",
+     "School repairs were given up.",
+     "Right: the bridge comes at the cost of school repairs."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-12",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are capital in the economic sense? Select all that apply.",
+   "options": [
+    "A delivery van owned by a bakery",
+    "A robot arm on a car assembly line",
+    "Cash a bakery keeps in its bank account",
+    "Crude oil still in the ground"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Capital is goods made to help produce other goods. Money is not a factor of production, and oil in the ground is land.",
+    "options": [
+     "Right: a made good used to deliver bread.",
+     "Right: a machine used to build cars.",
+     "Money buys factors of production but is not one.",
+     "An unextracted natural resource is land."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-13",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which is a service rather than a good?",
+   "options": [
+    "A pair of scissors",
+    "A bottle of shampoo",
+    "A haircut",
+    "A barber's chair"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A service is an action done for someone; a good is a physical item.",
+    "options": [
+     "Scissors are a good (and capital for a barber).",
+     "Shampoo is a good.",
+     "Right: the haircut is work done for you.",
+     "The chair is a good (and capital for a barber)."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-14",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A country discovers a large new field of natural gas. Which factor of production has it gained more of?",
+   "options": [
+    "Labor",
+    "Land",
+    "Capital",
+    "Entrepreneurship"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Natural resources count as land in economics.",
+    "options": [
+     "Labor is human effort; no workers were added.",
+     "Right: natural resources are land.",
+     "Capital is made goods; the gas is natural.",
+     "Entrepreneurship is organizing and risk-taking; nothing here adds it."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-15",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A neighbor says, \"Scarcity is not a problem for billionaires.\" What is the best reply?",
+   "options": [
+    "They still face limited time and must choose how to use it and their money",
+    "They are right: with enough money each want is met",
+    "They are right, at least in a market economy",
+    "Scarcity applies to governments, not to people"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Even very rich people have limited time and face choices among wants, so scarcity applies to everyone.",
+    "options": [
+     "Right: time, at least, is always limited.",
+     "Money cannot buy more hours in a day, and wants keep growing.",
+     "Scarcity does not depend on the economic system.",
+     "Every person, firm and government faces scarcity."
+    ]
+   }
+  },
+  {
+   "id": "mac-scarcity-16",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.A",
+   "q": "Put the steps from scarcity to a decision in order.",
+   "options": [
+    "Wants are greater than the resources available",
+    "Resources are scarce",
+    "People must choose how to use them",
+    "Each choice gives up something else (a trade-off)"
+   ],
+   "why": {
+    "correct": "Unlimited wants meet limited resources, which is scarcity; scarcity forces choices, and every choice is a trade-off."
+   }
+  }
+ ]
+}

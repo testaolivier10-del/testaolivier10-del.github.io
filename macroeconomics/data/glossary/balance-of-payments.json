@@ -1,0 +1,14 @@
+{
+ "balance-of-payments": {
+  "def": "The record of every transaction between a country's residents and the rest of the world over a period, such as a year. It has two parts, the current account and the capital and financial account, which sum to zero."
+ },
+ "current-account": {
+  "def": "The part of the balance of payments that records the balance of trade in goods and services, net income from abroad (interest, dividends, wages) and net transfers. A negative balance is a current account deficit."
+ },
+ "financial-account": {
+  "def": "The part of the balance of payments that records purchases and sales of assets, such as bonds, stocks, real estate and firms. A foreign purchase of a domestic asset is a credit; a resident's purchase of a foreign asset is a debit."
+ },
+ "balance-of-trade": {
+  "def": "Exports of goods and services minus imports of goods and services: net exports. It is the largest part of the current account; a negative balance is a trade deficit."
+ }
+}

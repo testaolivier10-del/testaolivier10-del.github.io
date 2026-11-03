@@ -1,0 +1,12 @@
+{
+ "demand-curve-shift": {
+  "file": "figures/demand-curve-shift.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 370,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A demand graph for concert tickets: a movement along D1 from J to K when the price falls (a change in quantity demanded), and a shift from D1 to D2 when something else changes (a change in demand)."
+ }
+}

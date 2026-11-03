@@ -1,0 +1,109 @@
+{
+ "id": "frq-crowding-out-short",
+ "type": "short",
+ "points": 5,
+ "title": "Government borrowing in Corvel: the real interest rate, investment and the capital stock",
+ "units": [
+  "unit-4",
+  "unit-5"
+ ],
+ "topics": [
+  "loanable-funds",
+  "deficits-debt",
+  "crowding-out"
+ ],
+ "practices": [
+  "4.A",
+  "4.C",
+  "2.A",
+  "3.B"
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "points": 3,
+   "type": "graph",
+   "prompt": "The government of Corvel, an invented country, runs a large budget deficit and pays for it by borrowing. <b>Draw</b> a correctly labeled graph of Corvel's loanable funds market. <b>Show</b> the effect of the government's borrowing as a change in the demand for loanable funds, and label the new real interest rate r2.",
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DLF",
+     "SLF"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "DLF",
+       "dir": "right"
+      }
+     ],
+     "because": "more government borrowing",
+     "outcome": {
+      "real interest rate": "up",
+      "quantity of loanable funds": "up"
+     }
+    },
+    "slips": {
+     "SLF": "The question asks you to show the borrowing as a change in demand: the government is an extra borrower."
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled graph: Real interest rate on the vertical axis, Quantity of loanable funds on the horizontal axis, a downward-sloping demand and an upward-sloping supply of loanable funds",
+     "accept": [
+      "r and Q as axis labels"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "The demand for loanable funds shifted to the right",
+     "accept": [
+      "an arrow showing the rightward shift of DLF"
+     ],
+     "auto": "shift"
+    },
+    {
+     "point": "A new equilibrium with a higher real interest rate, r2 above r1",
+     "accept": [
+      "the higher real rate marked on the vertical axis"
+     ],
+     "auto": "outcome"
+    }
+   ],
+   "sample": "The vertical axis is the Real interest rate and the horizontal axis the Quantity of loanable funds; DLF slopes down and SLF slopes up, crossing at r1. The government's borrowing shifts DLF right to DLF2, so the real interest rate rises to r2."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>Explain</b> how the change in the real interest rate affects private investment in Corvel.",
+   "rubric": [
+    {
+     "point": "Explains that the higher real interest rate raises the cost of borrowing, so private investment falls",
+     "accept": [
+      "crowding out: firms invest less at the higher real rate"
+     ]
+    }
+   ],
+   "sample": "The higher real interest rate makes borrowing more costly for firms, so they carry out fewer investment projects and private investment falls. The government's borrowing crowds out private investment."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Identify</b> the effect of the change in private investment on the growth of Corvel's capital stock and potential output over time.",
+   "rubric": [
+    {
+     "point": "States that both grow more slowly (the capital stock and potential output are smaller than they would otherwise be)",
+     "accept": [
+      "slower growth of the capital stock and of full-employment output"
+     ]
+    }
+   ],
+   "sample": "With less private investment, fewer machines and buildings are added each year, so Corvel's capital stock, and with it potential output, grows more slowly than it would have."
+  }
+ ]
+}

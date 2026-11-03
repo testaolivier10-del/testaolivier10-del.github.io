@@ -1,0 +1,67 @@
+{
+ "topic": "foreign-exchange-market",
+ "hook": "A carmaker based in Japan sells cars in Ohio and is paid in dollars, but it pays its workers in Japan in yen. A student from Ohio heading to Tokyo needs yen too. Every day millions of trades like these swap one currency for another, and the price they settle on is the exchange rate. That market can be drawn as a supply and demand graph, as long as you label it right.",
+ "prereq": [
+  {
+   "q": "In any market, what happens when the price is above equilibrium?",
+   "options": [
+    "A surplus pushes the price down",
+    "A shortage pushes the price up",
+    "Demand shifts right",
+    "Supply shifts left"
+   ],
+   "correct": 0,
+   "why": "Above equilibrium the quantity supplied is larger than the quantity demanded, so sellers lower the price.",
+   "review": "market-equilibrium"
+  },
+  {
+   "q": "The exchange rate is 1.25 dollars per euro. What is that the price of?",
+   "options": [
+    "One euro, in dollars",
+    "One dollar, in euros",
+    "A basket of European goods",
+    "A European government bond"
+   ],
+   "correct": 0,
+   "why": "\"Dollars per euro\" is the number of dollars one euro costs: the price of the euro.",
+   "review": "exchange-rates"
+  }
+ ],
+ "figure": {
+  "figure": "foreign-exchange-market-mirror",
+  "caption": "The market for euros (price in dollars per euro) and the market for dollars (price in euros per dollar). Demand comes from people abroad buying the country's goods and assets; supply comes from the currency's own holders buying foreign ones."
+ },
+ "chain": [
+  {
+   "cause": "Americans want more European goods, services or assets",
+   "effect": "they need more euros, so the demand for euros shifts right"
+  },
+  {
+   "cause": "Demand for euros rises with supply unchanged",
+   "effect": "the price of the euro in dollars rises: the euro appreciates"
+  },
+  {
+   "cause": "Americans pay for those euros with dollars",
+   "effect": "the supply of dollars shifts right in the market for dollars, so the dollar depreciates"
+  }
+ ],
+ "ideas": [
+  "In the <b>foreign exchange market</b> for a currency, the horizontal axis is the quantity of that currency and the vertical axis is its price in the other currency per unit: dollars per euro in the market for euros.",
+  "Demand for a currency comes from people abroad who want the country's goods, services and assets. Supply comes from the currency's own holders who want foreign goods, services and assets.",
+  "Demand slopes down: a cheaper euro makes European goods cheaper for Americans, so they want more euros. Supply slopes up: a dearer euro makes American goods cheaper for Europeans, so they offer more euros.",
+  "One set of trades shows in both markets as mirror changes: more demand for euros is more supply of dollars."
+ ],
+ "misconception": {
+  "wrong": "In the market for euros, the vertical axis is the number of euros per dollar.",
+  "right": "In the market for euros, the vertical axis is the price of one euro: dollars per euro. The currency being traded is the one in the denominator of the price."
+ },
+ "check": [
+  "mac-foreign-exchange-market-1",
+  "mac-foreign-exchange-market-2",
+  "mac-foreign-exchange-market-3",
+  "mac-foreign-exchange-market-4",
+  "mac-foreign-exchange-market-9",
+  "mac-foreign-exchange-market-10"
+ ],
+ "summary": "The foreign exchange market is a supply and demand market for a currency. Draw it with the quantity of the currency across the bottom and its price in the other currency per unit up the side. Foreigners buying the country's goods and assets demand its currency; its own residents buying foreign goods and assets supply it. The same trades show up as the mirror change in the market for the other currency, so when one currency appreciates, the other depreciates."
+}

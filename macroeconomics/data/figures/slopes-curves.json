@@ -1,0 +1,12 @@
+{
+ "slopes-curves-shapes": {
+  "file": "figures/slopes-curves-shapes.svg",
+  "ext": "svg",
+  "w": 700,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four small graphs: an upward-sloping line (positive slope), a downward-sloping line (negative slope), a vertical line and a horizontal line, each with a note on what it means."
+ }
+}

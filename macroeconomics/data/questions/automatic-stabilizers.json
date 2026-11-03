@@ -1,0 +1,569 @@
+{
+ "stimuli": {
+  "automatic-stabilizers-s1": {
+   "kind": "data",
+   "title": "Country K's income tax",
+   "invented": true,
+   "table": {
+    "caption": "Country K's income tax schedule: each rate applies to the part of a year's income in its bracket (invented data for practice)",
+    "cols": [
+     "Part of yearly income",
+     "Tax rate on that part"
+    ],
+    "rows": [
+     [
+      "First 40,000 dollars",
+      "10%"
+     ],
+     [
+      "Everything above 40,000 dollars",
+      "20%"
+     ]
+    ]
+   }
+  },
+  "automatic-stabilizers-s2": {
+   "kind": "text",
+   "title": "A recession in Country N",
+   "text": "<p>Country N is an invented country. Over one year of recession, its unemployment rate rises from 5% to 8%. With no new law passed, payments of unemployment compensation rise from 10 billion to 25 billion dollars, and income tax collections fall from 300 billion to 270 billion dollars as incomes shrink.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-automatic-stabilizers-1",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "automatic-stabilizers-s1",
+   "q": "Using the table, calculate the yearly income tax, in dollars, of a worker in Country K who earns 60,000 dollars.",
+   "why": {
+    "correct": "$0.10 \\times 40{,}000 + 0.20 \\times (60{,}000 - 40{,}000) = 4{,}000 + 4{,}000 = 8{,}000$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        40000,
+        0.1
+       ]
+      },
+      {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          60000,
+          40000
+         ]
+        },
+        0.2
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        60000,
+        0.2
+       ]
+      },
+      "why": "You taxed the whole income at 20%. The 20% rate applies only to the part above 40,000; the first 40,000 is taxed at 10%."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        60000,
+        0.1
+       ]
+      },
+      "why": "You taxed the whole income at 10%. The part above 40,000 is taxed at 20%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-2",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "automatic-stabilizers-s1",
+   "q": "Using the table, the same worker's income falls to 50,000 dollars in a recession. Calculate the new yearly income tax, in dollars.",
+   "why": {
+    "correct": "$0.10 \\times 40{,}000 + 0.20 \\times 10{,}000 = 4{,}000 + 2{,}000 = 6{,}000$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        40000,
+        0.1
+       ]
+      },
+      {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          50000,
+          40000
+         ]
+        },
+        0.2
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        50000,
+        0.2
+       ]
+      },
+      "why": "The 20% rate applies only to the 10,000 above 40,000, not to all 50,000."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-3",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "automatic-stabilizers-s1",
+   "q": "The worker's income fell by about 17% (from 60,000 to 50,000 dollars). Based on the table, how did the tax bill and after-tax income change?",
+   "options": [
+    "The tax fell by 25%, so after-tax income fell by less than 17%",
+    "The tax fell by about 17%, the same as income",
+    "The tax rose, because the worker moved into a lower bracket",
+    "After-tax income fell by more than 17%, because taxes were still paid"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With a progressive tax, the tax bill falls faster than income, which cushions disposable income in a recession.",
+    "options": [
+     "Right: tax fell from 8,000 to 6,000 (25%), so after-tax income fell from 52,000 to 44,000, about 15%.",
+     "A tax with rising rates falls faster than income: here by 25%.",
+     "A lower income means less tax, not more.",
+     "Taxes fell faster than income, so after-tax income fell by less."
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-4",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "automatic-stabilizers-s1",
+   "q": "Based on the table, what kind of tax does Country K have, and why does it act as an automatic stabilizer?",
+   "options": [
+    "A proportional tax: everyone pays the same share of income",
+    "A progressive tax: its bill falls faster than income",
+    "A progressive tax: the government raises rates during recessions",
+    "A regressive tax: lower incomes pay a larger share"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A progressive income tax takes a larger share of higher incomes; when incomes fall, collections fall faster with no change in the law.",
+    "options": [
+     "The rate rises from 10% to 20% on higher income, so the share is not the same.",
+     "Right: higher rates on higher income make tax bills shrink faster than income when incomes fall.",
+     "The rates in the table stay the same; the tax bill changes because income changes.",
+     "Higher incomes pay a larger share here, so the tax is progressive."
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-5",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "automatic-stabilizers-s2",
+   "q": "In Country N, why did unemployment compensation rise from 10 billion to 25 billion dollars with no new law?",
+   "options": [
+    "The government voted to raise benefits to fight the recession",
+    "Workers who kept their jobs received pay raises",
+    "More people qualified under the existing rules",
+    "Firms paid more to the program because their profits rose"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Eligibility is set in advance, so payments rise automatically as unemployment rises: an automatic stabilizer.",
+    "options": [
+     "The scenario says no new law was passed. The rise is automatic.",
+     "Unemployment compensation goes to people who lost jobs, not to employed workers.",
+     "Right: the program pays whoever qualifies, so payments rise by themselves when unemployment rises.",
+     "Profits fall in a recession, and the rise is in payments to the unemployed."
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-6",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "automatic-stabilizers-s2",
+   "q": "In Country N, what is the effect of the rise in unemployment compensation and the fall in taxes on aggregate demand?",
+   "options": [
+    "AD rises, ending the recession",
+    "AD falls by more, because the government pays more out",
+    "AD is unaffected, because the changes happened without a new law",
+    "AD falls by less than it would have"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Higher transfers and lower taxes keep disposable income from falling as far, so consumption and AD fall by less than without them.",
+    "options": [
+     "The stabilizers soften the fall; they do not reverse it or close the gap.",
+     "Payments to households support their spending, so AD falls by less.",
+     "Automatic or not, more income for households supports consumption and AD.",
+     "Right: the stabilizers cushion household spending, so the fall in AD is smaller."
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-7",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "automatic-stabilizers-s2",
+   "q": "Calculate the percent change in Country N's income tax collections over the year.",
+   "why": {
+    "correct": "$\\frac{270 - 300}{300} \\times 100 = -10\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "growth",
+     "args": [
+      300,
+      270
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "Collections fell, so the percent change is negative: $-10\\%$."
+     },
+     {
+      "value": 30,
+      "why": "30 is the change in billions of dollars. Divide it by the starting 300 and multiply by 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-8",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "stimulus": "automatic-stabilizers-s2",
+   "q": "Which of the following are automatic stabilizers? Select all that apply.",
+   "options": [
+    "Unemployment compensation paid under existing rules",
+    "A progressive income tax",
+    "A new law that cuts tax rates for one year to fight a recession",
+    "A bill that funds new bridges during a recession",
+    "Food aid for low-income families whose eligibility depends on income",
+    "Falling nominal wages during a recession"
+   ],
+   "correct": [
+    0,
+    1,
+    4
+   ],
+   "why": {
+    "correct": "Automatic stabilizers are taxes and transfers that respond to the business cycle by themselves; a new law is discretionary.",
+    "options": [
+     "Right: payments rise and fall with unemployment by themselves.",
+     "Right: collections rise and fall faster than income with no new law.",
+     "A deliberate new law is discretionary fiscal policy.",
+     "A new spending decision is discretionary, not automatic.",
+     "Right: more families qualify when incomes fall, so payments rise by themselves.",
+     "That is the economy's self-adjustment through SRAS, not a government program."
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-9",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is an automatic stabilizer?",
+   "options": [
+    "A tax or transfer that moves with the cycle on its own",
+    "A new spending bill passed quickly during a recession",
+    "The fall in nominal wages that shifts SRAS right in a recession",
+    "A rule that holds the price level steady from year to year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Automatic stabilizers, such as progressive income taxes and unemployment compensation, respond to the cycle by themselves.",
+    "options": [
+     "Right: it softens swings in disposable income and spending by itself.",
+     "A new bill is discretionary fiscal policy, however fast it passes.",
+     "That is long-run self-adjustment, which works through wages and SRAS.",
+     "Automatic stabilizers work through taxes and transfers, not through a price rule."
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-10",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "During a boom, incomes and employment rise quickly. How do automatic stabilizers affect aggregate demand?",
+   "options": [
+    "They speed its rise, because the government collects more to spend",
+    "They slow its rise",
+    "They have no effect, as they act just in recessions",
+    "They shift SRAS left, ending the boom"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In a boom, progressive taxes take a growing share of income and fewer people qualify for transfers, so AD rises by less.",
+    "options": [
+     "Higher tax collections take income from households; with no new law, G does not rise.",
+     "Right: disposable income rises by less, so consumption and AD rise by less.",
+     "They work in both directions: they cushion recessions and slow booms.",
+     "Taxes on household income and transfers work through spending, which is AD."
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-11",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Why can automatic stabilizers act faster than discretionary fiscal policy?",
+   "options": [
+    "They have a larger multiplier than government purchases",
+    "They act on SRAS, which moves faster than AD",
+    "They need no new decision to take effect",
+    "They are set by firms, which react faster than governments"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Discretionary policy has to be recognized, decided and carried out; automatic stabilizers respond as soon as incomes change.",
+    "options": [
+     "Their speed comes from needing no decision, not from a bigger multiplier.",
+     "They act on disposable income and spending, which is AD.",
+     "Right: the rules are already in place, so payments and taxes respond at once.",
+     "They are government tax and transfer rules, not decisions by firms."
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-12",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A student says: \"In a recession, automatic stabilizers push SRAS right and bring output back to full employment.\" What is wrong?",
+   "options": [
+    "Nothing: automatic stabilizers are the self-adjustment mechanism",
+    "They push SRAS left, not right",
+    "They make the recession deeper, so output falls further",
+    "They soften the fall in AD; wages and SRAS do the long-run work"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Automatic stabilizers reduce the swing in AD; they do not close the gap. The long-run return to full employment comes from wages and SRAS.",
+    "options": [
+     "Readers mark this wrong. Self-adjustment works through nominal wages and SRAS, not through taxes and transfers.",
+     "They do not act on SRAS at all; they act on disposable income and AD.",
+     "They make it milder, by keeping disposable income and spending from falling as much.",
+     "Right: stabilizers cushion spending, while self-adjustment is falling wages shifting SRAS."
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-13",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the chain in order, from a recession to how automatic stabilizers affect spending.",
+   "options": [
+    "Real GDP and incomes fall in a recession",
+    "Tax collections fall faster than income and unemployment compensation rises",
+    "Disposable income falls by less than income",
+    "Consumption falls by less",
+    "AD falls by less, so the recession is milder"
+   ],
+   "why": {
+    "correct": "Each link matters for the point: lower taxes and higher transfers support disposable income, then consumption, then AD."
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-14",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain how unemployment compensation acts as an automatic stabilizer in a recession.",
+   "why": {
+    "correct": "Payments rise as unemployment rises, supporting disposable income and consumption, so AD falls by less."
+   },
+   "specific": {
+    "frame": "As unemployment rises, unemployment compensation payments ___, so disposable income falls by ___. Consumption falls by ___, and AD ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "As unemployment rises, unemployment compensation payments increase, so disposable income falls by less than it would have. Because households keep more to spend, consumption falls by less, and AD falls by less, which makes the recession milder.",
+    "slots": {
+     "change": {
+      "label": "Payments",
+      "options": [
+       "rise",
+       "fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More unemployed people qualify, so payments rise."
+      }
+     },
+     "link": {
+      "label": "Disposable income",
+      "options": [
+       "less",
+       "more"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Payments add to household income, so it falls by less."
+      }
+     },
+     "spending": {
+      "label": "Consumption",
+      "options": [
+       "less",
+       "more"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Households with more income cut their spending less."
+      }
+     },
+     "curve": {
+      "label": "AD",
+      "options": [
+       "falls by less",
+       "rises enough to end the recession"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Stabilizers soften the fall; they do not close the gap."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-15",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Country S replaces its progressive income tax with one flat tax of a fixed dollar amount per household, the same whatever the income. How does this change the economy's response to a fall in AD?",
+   "options": [
+    "Disposable income falls by more, so recessions get deeper",
+    "Disposable income falls by less, so recessions get milder",
+    "Nothing changes, because tax collections are the same on average",
+    "SRAS shifts right faster, so the economy adjusts sooner"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A tax that does not change with income is not an automatic stabilizer, so swings in income pass straight through to spending.",
+    "options": [
+     "Right: a fixed tax does not fall when incomes fall, so it no longer cushions spending.",
+     "A fixed tax stays the same as income falls, so it removes the cushion.",
+     "What matters is how collections change over the cycle; a fixed tax does not move.",
+     "The tax change works on disposable income and AD, not on wages and SRAS."
+    ]
+   }
+  },
+  {
+   "id": "mac-automatic-stabilizers-16",
+   "unit": "unit-3",
+   "topic": "automatic-stabilizers",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In a recession, automatic stabilizers raise transfers and lower tax collections. Which statement is correct?",
+   "options": [
+    "They close the recessionary gap at once",
+    "They shrink the fall in output but leave a gap",
+    "They raise output above full employment",
+    "They work by lowering firms' production costs"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Automatic stabilizers dampen the business cycle: the fall in AD is smaller, but a recessionary gap can remain.",
+    "options": [
+     "They respond only as much as incomes fall, which softens the fall but leaves a gap.",
+     "Right: they make swings smaller; closing a gap takes self-adjustment or discretionary policy.",
+     "They slow the fall in AD; they do not push output past potential.",
+     "They work through household disposable income and spending."
+    ]
+   }
+  }
+ ]
+}

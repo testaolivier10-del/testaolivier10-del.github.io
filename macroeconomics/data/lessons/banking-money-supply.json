@@ -1,0 +1,67 @@
+{
+ "topic": "banking-money-supply",
+ "hook": "You deposit your paycheck, and the bank does not keep it in a drawer with your name on it. It keeps a small slice and lends the rest to someone buying a car. That borrower now has spendable money too, while your balance is untouched. This is how banks create money, and why a single deposit can support many times its size in new loans.",
+ "prereq": [
+  {
+   "q": "Which of these is counted in M1?",
+   "options": [
+    "Checkable deposits",
+    "Small time deposits",
+    "Shares of stock",
+    "Unused credit card limits"
+   ],
+   "correct": 0,
+   "why": "M1 counts currency held by the public and checkable deposits.",
+   "review": "money-functions"
+  },
+  {
+   "q": "You deposit \\$100 of cash into checking. What happens to M1 at that moment?",
+   "options": [
+    "It does not change",
+    "It rises by \\$100",
+    "It falls by \\$100",
+    "It doubles"
+   ],
+   "correct": 0,
+   "why": "Currency turns into a checkable deposit; both are in M1.",
+   "review": "money-functions"
+  }
+ ],
+ "figure": {
+  "figure": "banking-money-supply-balance-sheet",
+  "caption": "A bank balance sheet: required reserves are deposits times the ratio, and excess reserves are what is left to lend."
+ },
+ "chain": [
+  {
+   "cause": "A bank receives a deposit",
+   "effect": "it keeps the required reserves (deposits x ratio) and has excess reserves to lend"
+  },
+  {
+   "cause": "The bank lends its excess reserves",
+   "effect": "a new checkable deposit is created, so the money supply rises"
+  },
+  {
+   "cause": "The borrowed money is spent and redeposited in other banks",
+   "effect": "they lend again, so the money supply can grow by up to excess reserves x 1 / required reserve ratio"
+  }
+ ],
+ "ideas": [
+  "In <b>fractional reserve banking</b>, banks keep part of deposits as reserves and lend the rest. A <b>balance sheet</b> lists assets (reserves, loans, bonds) and liabilities (deposits).",
+  "<b>Required reserves</b> = deposits x required reserve ratio. <b>Excess reserves</b> = total reserves - required reserves. One bank can lend its excess reserves.",
+  "The <b>money multiplier</b> is 1 / required reserve ratio. The most the money supply can grow is excess reserves x the money multiplier.",
+  "A cash deposit does not change the money supply at first; new money is created when banks lend."
+ ],
+ "misconception": {
+  "wrong": "When \\$1,000 of cash is deposited and the ratio is 0.1, the money supply grows by \\$10,000.",
+  "right": "The \\$1,000 was already money. Only the \\$900 of excess reserves is lent, so the money supply grows by at most \\$900 x 10 = \\$9,000."
+ },
+ "check": [
+  "mac-banking-money-supply-9",
+  "mac-banking-money-supply-10",
+  "mac-banking-money-supply-12",
+  "mac-banking-money-supply-5",
+  "mac-banking-money-supply-6",
+  "mac-banking-money-supply-7"
+ ],
+ "summary": "Banks hold a fraction of deposits as reserves and lend the rest. Required reserves are deposits times the required reserve ratio, which the central bank sets, and excess reserves are the rest of a bank's reserves. A bank creates money when it lends its excess reserves, because the loan becomes a new deposit. As loans are spent and redeposited, the money supply can grow by up to excess reserves times the money multiplier, 1 / required reserve ratio, less when banks hold extra reserves or people hold cash."
+}

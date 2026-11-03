@@ -1,0 +1,12 @@
+{
+ "money-functions-m1-m2": {
+  "file": "figures/money-functions-m1-m2.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Nested boxes. M1, inside M2, holds currency held by the public, checkable deposits and savings deposits, which the Federal Reserve has counted in M1 since May 2020. M2 adds small time deposits under 100,000 dollars and retail money market funds. A separate box lists what is not money: credit cards, stocks and bonds, and houses, cars and gold."
+ }
+}

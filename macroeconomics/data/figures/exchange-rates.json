@@ -1,0 +1,12 @@
+{
+ "exchange-rates-two-quotes": {
+  "file": "figures/exchange-rates-two-quotes.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Suppose 1 euro equals 1.25 dollars; flipped, 1 dollar equals 0.80 euro, because 1 divided by 1.25 is 0.80. When the rate changes to 1 euro equals 1.50 dollars, the euro appreciates (it buys more dollars, and a 40-euro ticket costs 60 dollars instead of 50) and the dollar depreciates (it buys about 0.67 euro instead of 0.80). Made-up rates for practice."
+ }
+}

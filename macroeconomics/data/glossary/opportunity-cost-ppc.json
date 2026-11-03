@@ -1,0 +1,23 @@
+{
+ "opportunity-cost": {
+  "def": "The value of the next-best alternative given up when you make a choice. Per unit, it is the amount of the other good given up divided by the amount gained."
+ },
+ "ppc": {
+  "def": "The production possibilities curve: a graph of every combination of two goods an economy can make when it uses all its resources and technology efficiently."
+ },
+ "efficiency": {
+  "def": "Productive efficiency: making the most output possible with the resources available, shown by a point on the PPC. A point inside the curve is inefficient, with resources idle or misused."
+ },
+ "increasing-cost": {
+  "def": "Increasing opportunity cost: each extra unit of a good costs more of the other good than the last, because resources are not equally suited to both; it bows the PPC outward. A straight PPC shows constant opportunity cost."
+ },
+ "ppc-growth": {
+  "def": "An outward shift of the whole PPC, caused by more resources or better technology, so the economy can make more of both goods. A loss of resources shifts it inward."
+ },
+ "capital-goods": {
+  "def": "Capital goods are made goods used to produce other goods, such as machines and factories; consumer goods are used by households. Making more capital goods today shifts the future PPC outward more."
+ },
+ "attainable": {
+  "def": "A combination on or inside the PPC is attainable with today's resources and technology; a combination outside it is unattainable until the curve shifts outward."
+ }
+}

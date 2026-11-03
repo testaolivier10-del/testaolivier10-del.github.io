@@ -1,0 +1,12 @@
+{
+ "automatic-stabilizers-flow": {
+  "file": "figures/automatic-stabilizers-flow.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A flow diagram: in a recession incomes and jobs fall, so progressive income tax bills fall faster than income and unemployment compensation rises; disposable income falls by less, so consumption and aggregate demand fall by less. In a boom the same programs work in reverse."
+ }
+}

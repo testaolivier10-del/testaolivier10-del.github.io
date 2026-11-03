@@ -1,0 +1,12 @@
+{
+ "multipliers-rounds": {
+  "file": "figures/multipliers-rounds.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A bar chart of new spending in each round when the MPC is 0.8 and the first round is 100: 100, 80, 64, 51.2, 41 and 32.8. All rounds add up to 500, five times the first round."
+ }
+}

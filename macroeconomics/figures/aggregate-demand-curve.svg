@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" role="img" aria-labelledby="aggregate-demand-curve-t aggregate-demand-curve-d" font-family="Arial, Helvetica, sans-serif">
+<title id="aggregate-demand-curve-t">Movement along AD and a shift of AD</title>
+<desc id="aggregate-demand-curve-d">Two graphs with the price level on the vertical axis and real GDP on the horizontal axis. Left: one downward-sloping AD curve; a fall in the price level from PL1 to PL2 moves along it from Y1 to a larger Y2. Right: AD1 shifts right to AD2 when spending rises at every price level.</desc>
+<defs><marker id="aggregate-demand-curve-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9A4A00"/></marker></defs>
+<rect width="640" height="330" fill="#FFFFFF"/>
+<text x="185" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2A28">A movement along AD</text>
+<path d="M60 40V270H310" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="310" y="304" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Real GDP</text>
+<text transform="translate(30 40) rotate(-90)" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Price level</text>
+<path d="M80 58.4L290 251.6" fill="none" stroke="#355A0A" stroke-width="2.8" stroke-linecap="round"/>
+<text x="294" y="263.6" text-anchor="start" font-size="13" font-weight="700" fill="#355A0A">AD</text>
+<path d="M60 132H160V270" fill="none" stroke="#1F2A28" stroke-width="1.1" stroke-dasharray="3 4"/>
+<circle cx="160" cy="132" r="4.5" fill="#1F2A28"/>
+<text x="55" y="136" text-anchor="end" font-size="12" font-weight="700" fill="#1F2A28">PL1</text>
+<text x="160" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A28">Y1</text>
+<text x="168" y="125" font-size="12" font-weight="700" fill="#1F2A28">A</text>
+<path d="M60 178H210V270" fill="none" stroke="#1F2A28" stroke-width="1.1" stroke-dasharray="3 4"/>
+<circle cx="210" cy="178" r="4.5" fill="#1F2A28"/>
+<text x="55" y="182" text-anchor="end" font-size="12" font-weight="700" fill="#1F2A28">PL2</text>
+<text x="210" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A28">Y2</text>
+<text x="218" y="171" font-size="12" font-weight="700" fill="#1F2A28">B</text>
+<path d="M168.8 140L201.3 170" stroke="#9A4A00" stroke-width="2.2" marker-end="url(#aggregate-demand-curve-ar)"/>
+<text x="495" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2A28">A shift of AD</text>
+<path d="M370 40V270H620" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="620" y="304" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Real GDP</text>
+<text transform="translate(340 40) rotate(-90)" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Price level</text>
+<path d="M377.5 81.4L562.5 251.6" fill="none" stroke="#6B7472" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 5"/>
+<text x="566.5" y="263.6" text-anchor="start" font-size="13" font-weight="700" fill="#6B7472">AD<tspan font-size="10" dy="3">1</tspan></text>
+<path d="M427.5 58.4L615 230.9" fill="none" stroke="#355A0A" stroke-width="2.8" stroke-linecap="round"/>
+<text x="615" y="246.9" text-anchor="middle" font-size="13" font-weight="700" fill="#355A0A">AD<tspan font-size="10" dy="3">2</tspan></text>
+<path d="M455 141.2L510 141.2" stroke="#9A4A00" stroke-width="2.2" marker-end="url(#aggregate-demand-curve-ar)"/>
+</svg>

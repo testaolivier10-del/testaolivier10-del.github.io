@@ -1,0 +1,8 @@
+{
+ "intersection": {
+  "def": "The point where two curves cross. On a market graph it gives the one price at which the quantity buyers want equals the quantity sellers offer."
+ },
+ "comparative-statics": {
+  "def": "Comparing the crossing point before and after a curve shifts (E1 and E2), on both axes, to say which way each variable moved."
+ }
+}

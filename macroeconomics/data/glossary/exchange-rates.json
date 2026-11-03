@@ -1,0 +1,8 @@
+{
+ "exchange-rate": {
+  "def": "The price of one currency in units of another, such as 1.25 dollars per euro. The same rate written the other way is its reciprocal: 0.80 euro per dollar."
+ },
+ "appreciation": {
+  "def": "A rise in the value of a currency: one unit buys more of another currency than before. Its opposite, depreciation, is a fall in value; when one currency appreciates against another, the other depreciates."
+ }
+}

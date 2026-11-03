@@ -1,0 +1,115 @@
+{
+ "id": "frq-forex-short",
+ "type": "short",
+ "points": 5,
+ "title": "Higher inflation abroad: the market for the dollar, appreciation and net exports",
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "foreign-exchange-market",
+  "fx-policy-changes",
+  "fx-net-exports"
+ ],
+ "practices": [
+  "4.A",
+  "4.C",
+  "3.B",
+  "2.A"
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "points": 3,
+   "type": "graph",
+   "prompt": "Arland and Belvia are invented countries that trade with each other. Arland's currency is the dollar and Belvia's is the bel. Belvia's inflation rate rises sharply while Arland's does not change, so goods made in Arland become cheaper relative to Belvian goods, and Belvian residents buy more of them. <b>Draw</b> a correctly labeled graph of the foreign exchange market for Arland's dollar and <b>show</b> the effect of the increase in Belvian purchases of Arland goods on the international value of the dollar.",
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "dollar",
+     "other": "bel"
+    },
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "Belvian residents buying more Arland goods",
+     "outcome": {
+      "value of the currency": "up",
+      "quantity of the currency": "up"
+     }
+    },
+    "slips": {
+     "S": "Belvian buyers need dollars to pay for Arland goods, so the demand for dollars shifts right. (Arland residents buying fewer Belvian goods would shift supply left, which is also accepted; this check looks for the demand shift the question describes.)"
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled foreign exchange market for the dollar: Price of the dollar in bels per dollar on the vertical axis, Quantity of dollars on the horizontal axis, a downward-sloping demand and an upward-sloping supply of dollars",
+     "accept": [
+      "\"Exchange rate (bels per dollar)\"",
+      "\"Value of the dollar (bels/dollar)\""
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "The demand for dollars shifted to the right",
+     "accept": [
+      "the supply of dollars shifted to the left, or both shifts, with the price of the dollar higher; tick this yourself if you drew that"
+     ],
+     "auto": "shift"
+    },
+    {
+     "point": "A higher price of the dollar at the new equilibrium (XR2 above XR1): the dollar appreciates",
+     "accept": [
+      "the appreciation stated in words with the higher exchange rate shown"
+     ],
+     "auto": "outcome"
+    }
+   ],
+   "sample": "The graph has Price of the dollar (bels per dollar) on the vertical axis and Quantity of dollars on the horizontal axis, with demand D1 sloping down and supply S1 sloping up, crossing at XR1. Belvian residents need dollars to buy more Arland goods, so the demand for dollars shifts right from D1 to D2. At the new equilibrium the price of the dollar rises from XR1 to XR2: the dollar appreciates."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>Identify</b> what happens to the international value of the bel relative to the dollar.",
+   "rubric": [
+    {
+     "point": "States that the bel depreciates (each bel buys fewer dollars), consistent with part (A)",
+     "accept": [
+      "\"the bel loses value against the dollar\"",
+      "\"the price of the bel in dollars falls\""
+     ]
+    }
+   ],
+   "sample": "The bel depreciates against the dollar: since each dollar now costs more bels, each bel buys fewer dollars."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "Considering only the change in the value of the dollar in part (A), will Arland's net exports increase, decrease or stay the same? <b>Explain</b>.",
+   "rubric": [
+    {
+     "point": "States that net exports decrease and explains that the appreciated dollar makes Arland's exports more expensive for Belvian buyers and Belvian imports cheaper for Arland buyers",
+     "accept": [
+      "consistent with the direction shown in part (A)",
+      "\"Arland goods cost more bels and Belvian goods cost fewer dollars, so exports fall and imports rise\""
+     ]
+    }
+   ],
+   "sample": "Arland's net exports will decrease. The dollar appreciated, so each dollar costs more bels: Arland's goods become more expensive for Belvian buyers, so Arland exports fall, and Belvian goods become cheaper in dollars, so Arland imports rise."
+  }
+ ]
+}

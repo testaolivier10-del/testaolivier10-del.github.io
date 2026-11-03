@@ -1,0 +1,562 @@
+{
+ "stimuli": {
+  "economic-growth-s1": {
+   "kind": "data",
+   "title": "Output and population in three invented countries",
+   "invented": true,
+   "table": {
+    "caption": "Real GDP (billions of base-year dollars) and population (millions) in three invented countries",
+    "cols": [
+     "Country",
+     "Real GDP, Year 1",
+     "Real GDP, Year 2",
+     "Population, Year 1",
+     "Population, Year 2"
+    ],
+    "rows": [
+     [
+      "Alton",
+      "400",
+      "440",
+      "20",
+      "20"
+     ],
+     [
+      "Breck",
+      "300",
+      "330",
+      "30",
+      "33"
+     ],
+     [
+      "Corin",
+      "200",
+      "210",
+      "10",
+      "10"
+     ]
+    ]
+   }
+  },
+  "economic-growth-s2": {
+   "kind": "graph",
+   "title": "The production possibilities curve of Hale (invented)",
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Consumer goods",
+     "y": "Capital goods"
+    },
+    "show": {
+     "PPC": 1
+    }
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-economic-growth-1",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What do economists mean by long-run economic growth?",
+   "options": [
+    "A rise in nominal GDP from one year to the next",
+    "A recovery from a recession, back to full-employment output and jobs",
+    "A sustained rise in real GDP per capita as capacity grows",
+    "A rise in the price level caused by strong demand"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Economic growth: the PPC shifts out and LRAS shifts right, so real GDP per capita can rise year after year.",
+    "options": [
+     "Nominal GDP can rise just because prices rise; growth is measured in real terms.",
+     "Moving back to full employment uses idle resources; it does not raise capacity.",
+     "Right: growth is an increase in potential output (and output per person) over many years.",
+     "A higher price level is inflation, not growth."
+    ]
+   }
+  },
+  {
+   "id": "mac-economic-growth-2",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is the growth rate of Alton's real GDP from Year 1 to Year 2?",
+   "why": {
+    "correct": "$\\frac{440 - 400}{400} \\times 100 = 10$ percent."
+   },
+   "numeric": {
+    "from": {
+     "fn": "growth",
+     "args": [
+      400,
+      440
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "That is the change in billions of dollars. The growth rate is the change divided by the starting value: 40 / 400 x 100."
+     }
+    ]
+   },
+   "stimulus": "economic-growth-s1"
+  },
+  {
+   "id": "mac-economic-growth-3",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "q": "What is the growth rate of Corin's real GDP per capita from Year 1 to Year 2?",
+   "why": {
+    "correct": "Real GDP per capita goes from $\\frac{200}{10} = 20$ to $\\frac{210}{10} = 21$ thousand dollars, a growth rate of $\\frac{21 - 20}{20} \\times 100 = 5$ percent."
+   },
+   "numeric": {
+    "from": {
+     "fn": "growth",
+     "args": [
+      {
+       "fn": "perCapita",
+       "args": [
+        200,
+        10
+       ]
+      },
+      {
+       "fn": "perCapita",
+       "args": [
+        210,
+        10
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 21,
+      "why": "That is Corin's real GDP per capita in Year 2 (21 thousand dollars). The growth rate is its percent change from 20 to 21."
+     }
+    ]
+   },
+   "stimulus": "economic-growth-s1"
+  },
+  {
+   "id": "mac-economic-growth-4",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In which country did the average standard of living, measured by real GDP per capita, not rise?",
+   "options": [
+    "Alton",
+    "Breck",
+    "Corin",
+    "Alton and Corin"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Living standards follow real GDP per capita, not total real GDP.",
+    "options": [
+     "Alton's real GDP rose 10 percent with no change in population, so output per person rose.",
+     "Right: real GDP and population both grew 10 percent, so real GDP per capita stayed at 10 thousand dollars.",
+     "Corin's real GDP per capita rose from 20 to 21 thousand dollars.",
+     "Output per person rose in both Alton and Corin."
+    ]
+   },
+   "stimulus": "economic-growth-s1"
+  },
+  {
+   "id": "mac-economic-growth-5",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Alton and Breck both raised real GDP by 10 percent. Why did only Alton's real GDP per capita rise?",
+   "options": [
+    "Breck's price level rose faster, so its real GDP did not really grow",
+    "Alton's population fell, so each person got more of the same output",
+    "Breck's figures are nominal GDP, which overstates growth",
+    "Breck's population grew as fast as its output did"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "To raise living standards, output must grow faster than population.",
+    "options": [
+     "The table is in base-year dollars, so price changes are already removed.",
+     "Alton's population stayed at 20 million; its output rose.",
+     "Both countries' figures are real GDP.",
+     "Right: per capita growth is roughly output growth minus population growth: 10 - 10 = 0 for Breck."
+    ]
+   },
+   "stimulus": "economic-growth-s1"
+  },
+  {
+   "id": "mac-economic-growth-6",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "The graph shows Hale's PPC for capital goods and consumer goods moving from PPC1 to PPC2. Which event could cause it?",
+   "options": [
+    "New production technology that lets each worker make more of both goods",
+    "A recession that leaves many workers and factories idle",
+    "A rise in the price level of consumer goods",
+    "A shift of workers from making capital goods to making consumer goods"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The PPC shifts out when resources grow or technology improves: economic growth.",
+    "options": [
+     "Right: better technology raises what the economy can produce, so the PPC shifts out.",
+     "Idle resources put the economy at a point inside the PPC; the curve itself does not move.",
+     "Prices are not on the PPC; it shows quantities the economy can produce.",
+     "That is a movement along the PPC, not a shift of it."
+    ]
+   },
+   "stimulus": "economic-growth-s2"
+  },
+  {
+   "id": "mac-economic-growth-7",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which change on Hale's AD-AS graph shows the same event as the PPC shifting out?",
+   "options": [
+    "AD shifts right, raising real output and the price level",
+    "SRAS shifts left, raising the price level",
+    "LRAS shifts right, to a higher full-employment output",
+    "LRAS shifts left, to a lower full-employment output"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Growth on two graphs: the PPC shifts out and LRAS shifts right.",
+    "options": [
+     "AD shows spending, not capacity; a rise in spending alone does not shift the PPC.",
+     "A leftward SRAS shift lowers output; it is a supply shock, not growth.",
+     "Right: the PPC and LRAS both show the economy's capacity; growth moves both.",
+     "More capacity moves LRAS right, not left."
+    ]
+   },
+   "stimulus": "economic-growth-s2"
+  },
+  {
+   "id": "mac-economic-growth-8",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Hale and a neighbor have the same PPC this year. Hale chooses a point with more capital goods and fewer consumer goods. What is the likely result?",
+   "options": [
+    "Hale's PPC shifts in, because fewer consumer goods lower living standards",
+    "Hale's PPC shifts out further in the future, at the cost of fewer consumer goods today",
+    "Both PPCs shift out by the same amount, because they start equal",
+    "Hale moves inside its PPC, because it gives up consumer goods"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Investing in capital goods today is a trade-off: less consumption now, more production possibilities later.",
+    "options": [
+     "Producing capital goods adds to capacity; the curve does not shrink.",
+     "Right: capital goods add to the capital stock, which raises future capacity; the opportunity cost is consumption now.",
+     "The country that builds more capital gains more capacity.",
+     "Choosing a different point on the PPC is still efficient; it is a movement along the curve."
+    ]
+   },
+   "stimulus": "economic-growth-s2"
+  },
+  {
+   "id": "mac-economic-growth-9",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A new technology raises productivity in both industries. Shift the PPC to show the effect.",
+   "why": {
+    "correct": "Better technology lets the same resources produce more of both goods, so the PPC shifts out."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Consumer goods",
+     "y": "Capital goods"
+    },
+    "do": [
+     "shift"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "PPC",
+       "dir": "out"
+      }
+     ],
+     "because": "better technology in both industries"
+    }
+   }
+  },
+  {
+   "id": "mac-economic-growth-10",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Place point X to show an economy in a recession, with unemployed workers and idle factories.",
+   "why": {
+    "correct": "Idle resources put the economy inside its PPC. Returning to the curve is recovery, not economic growth."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Consumer goods",
+     "y": "Capital goods"
+    },
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "region": "inside"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-economic-growth-11",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Over a decade, more workers finish technical training and firms install more modern equipment. Shift the right curve on the AD-AS graph.",
+   "why": {
+    "correct": "More human and physical capital raise potential output, so LRAS shifts right."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "AD",
+     "SRAS",
+     "LRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "LRAS",
+       "dir": "right"
+      }
+     ],
+     "because": "more human and physical capital"
+    },
+    "slips": {
+     "AD": "Training and equipment raise what the economy can produce; that is LRAS. A change in spending would shift AD.",
+     "SRAS": "This question asks about the economy's long-run capacity, which is LRAS."
+    }
+   }
+  },
+  {
+   "id": "mac-economic-growth-12",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A nurse completes a two-year course that lets her do more complex work. In growth terms, what has increased?",
+   "options": [
+    "Human capital",
+    "Physical capital",
+    "Natural resources",
+    "Aggregate demand"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Human capital: education, training, experience and health that raise what a worker can produce.",
+    "options": [
+     "Right: the skills and knowledge workers gain through education and training are human capital.",
+     "Physical capital is equipment, buildings and machines, not skills.",
+     "Natural resources are land, minerals, water and the like.",
+     "Training changes what a worker can produce, not total spending."
+    ]
+   }
+  },
+  {
+   "id": "mac-economic-growth-13",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Select every change that would raise an economy's long-run growth.",
+   "options": [
+    "Firms build more factories and buy more machines",
+    "Researchers develop a faster way to produce steel",
+    "The price level rises 5 percent",
+    "Consumer confidence jumps and AD shifts right"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Growth comes from more and better capital, more skills, better technology and more resources.",
+    "options": [
+     "Right: more physical capital raises output per worker.",
+     "Right: better technology raises what the same resources can make.",
+     "Inflation changes prices, not the economy's capacity.",
+     "A rise in spending moves output in the short run; it does not raise potential output."
+    ]
+   }
+  },
+  {
+   "id": "mac-economic-growth-14",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why do economists say productivity is the key to a country's standard of living over time?",
+   "options": [
+    "Real GDP per capita keeps rising for decades when output per worker keeps rising",
+    "Higher productivity raises the price level, which raises nominal incomes",
+    "Higher productivity raises the money supply, which raises spending",
+    "Higher productivity shifts AD right, which raises output in the short run"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Productivity, output per worker or per hour, rises with physical capital, human capital and technology.",
+    "options": [
+     "Right: the share of people working cannot rise forever, so lasting gains come from each worker producing more.",
+     "Productivity gains raise real output; they tend to hold prices down, not push them up.",
+     "The central bank sets the money supply; productivity sets capacity.",
+     "Productivity is a supply-side change that shifts LRAS."
+    ]
+   }
+  },
+  {
+   "id": "mac-economic-growth-15",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "An economy's real GDP rises 4 percent as it recovers from a recession. Over the same years, its full-employment output does not change. Is this economic growth?",
+   "options": [
+    "Yes: any rise in real GDP, for whatever reason, counts as economic growth",
+    "No: idle resources went back to work; capacity did not rise",
+    "Yes: real GDP per capita rose, so the PPC shifted out",
+    "No: growth is counted when nominal GDP rises, not real GDP"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Recovery moves the economy toward its PPC; growth shifts the PPC out.",
+    "options": [
+     "A rise in real GDP can be recovery; growth means capacity rises.",
+     "Right: on the PPC the economy moved from inside toward the curve; the curve did not shift out.",
+     "Output per person can rise during a recovery while the PPC stays put.",
+     "Growth is measured in real terms, and a rise in nominal GDP alone could be inflation."
+    ]
+   }
+  },
+  {
+   "id": "mac-economic-growth-16",
+   "unit": "unit-5",
+   "topic": "economic-growth",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Build the chain from new investment to higher living standards.",
+   "why": {
+    "correct": "More capital and skills raise productivity, potential output rises (LRAS right, PPC out), and if output grows faster than population, real GDP per capita rises."
+   },
+   "specific": {
+    "frame": "Firms install new machines and workers gain skills, so ___ rises. Potential output rises, so LRAS shifts ___ and the PPC shifts ___. If output grows faster than population, real GDP ___ rises.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Firms install new machines and workers gain skills, so productivity rises. Potential output rises, which shifts LRAS right and the PPC out, and because output grows faster than population, real GDP per capita rises.",
+    "slots": {
+     "change": {
+      "label": "What rises first",
+      "options": [
+       "productivity",
+       "the price level"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "New capital and skills let each worker produce more; prices are not the channel."
+      }
+     },
+     "direction": {
+      "label": "Which way LRAS shifts",
+      "options": [
+       "right",
+       "left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More capacity is a shift right."
+      }
+     },
+     "curve": {
+      "label": "Which way the PPC shifts",
+      "options": [
+       "out",
+       "in"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More capacity moves the PPC outward."
+      }
+     },
+     "output": {
+      "label": "What measures living standards",
+      "options": [
+       "per capita",
+       "in nominal terms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nominal GDP rises with prices too; living standards are real output per person."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

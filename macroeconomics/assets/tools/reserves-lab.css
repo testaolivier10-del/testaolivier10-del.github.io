@@ -1,0 +1,101 @@
+/* Bank Reserves Lab (macroeconomics/assets/tools/reserves-lab.js). OWNED BY THIS TOOL ONLY (builder T2).
+   The graphs are ApMacroGraph's (mac.css, "Graphs"); this file lays them out
+   and colours them by role: the course accent for the curve the tool moves,
+   one "rate" colour shared by the reserve market's policy rate, the money
+   market's interest rate and the chain's rate links, and a second colour
+   for AD and what follows. Every mark is also written, so colour is never
+   the only cue. */
+.rl-card,.rl-fig,.rl-qfig{--rl-rate:#A84400;--rl-rate-tint:#FBEADF;--rl-ad:#0B5C8A;--rl-ad-tint:#E3F0F8;}
+:root[data-theme="dark"] :is(.rl-card,.rl-fig,.rl-qfig){--rl-rate:#F6B082;--rl-rate-tint:rgba(242,154,92,.16);--rl-ad:#8CC8E8;--rl-ad-tint:rgba(80,170,220,.16);}
+.rl-card{display:grid;gap:14px;}
+
+/* ---------------------------------------------------------- the stage */
+/* Desktop: a 2 x 2 grid that fills the stage (reserve market beside the
+   money market, AD-AS under them beside the chain); each graph is as large
+   as its cell allows. Phone: one graph at a time under its tab. */
+.rl-fig{display:flex;flex-direction:column;gap:10px;min-height:0;}
+.ls-root .rl-fig{flex:1 1 auto;height:100%;}
+.rl-fig .rl-tabs{display:none;}
+.rl-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:10px 18px;min-height:0;flex:1 1 auto;}
+.rl-panel{margin:0;min-width:0;min-height:0;display:flex;flex-direction:column;}
+.rl-panel figcaption,.rl-qcap{display:flex;flex-wrap:wrap;gap:2px 8px;align-items:baseline;margin:0 0 4px;font:800 14px/1.3 var(--font-ui);color:var(--ink);}
+.rl-panel figcaption span,.rl-qcap span{font-weight:600;font-size:12.5px;color:var(--muted);}
+.rl-g{flex:1 1 auto;min-height:0;display:flex;justify-content:center;align-items:flex-start;}
+.rl-g .mac-graph-svg{width:100%;height:auto;max-width:100%;max-height:100%;}
+.rl-qpanel .mac-graph-svg{max-width:420px;margin:0 auto;}
+/* The curve the tool moves in the course accent (ApMacroGraph's default);
+   the rate marks and the new equilibrium's guides in the rate colour. */
+.rl-fig .rl-mark,.rl-qfig .rl-mark{font:800 12px var(--font-ui);fill:var(--ink);}
+.rl-mark.is-old{fill:var(--muted);}
+.rl-mark.is-y:not(.is-old){fill:var(--rl-rate);}
+.rl-panel[data-g="adas"] .rl-mark.is-y:not(.is-old),.rl-qpanel .rl-mark.is-x:not(.is-old){fill:var(--rl-ad);}
+.rl-panel[data-g="adas"] .rl-mark.is-x:not(.is-old){fill:var(--rl-ad);}
+.rl-mark.is-note{font-weight:700;font-size:11px;fill:var(--muted);}
+.rl-sub{font-size:9px;}
+.rl-arrow path{fill:none;stroke:var(--cink);stroke-width:2;stroke-linecap:round;}
+.rl-arrow .rl-head{fill:var(--cink);stroke:none;}
+.rl-panel[data-g="reserves"] .mac-gr-guide:not(.is-old),.rl-panel[data-g="money"] .mac-gr-guide:not(.is-old){stroke:var(--rl-rate);}
+.rl-panel[data-g="adas"] .mac-gr-guide:not(.is-old){stroke:var(--rl-ad);}
+.rl-panel[data-g="adas"] [data-curve="AD"] .mac-gr-curve:not(.is-old){stroke:var(--rl-ad);}
+
+/* the chain under the graphs */
+.rl-chain{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);grid-auto-rows:minmax(0,1fr);gap:6px;}
+.rl-panels > .rl-chain{grid-column:2;grid-row:2;align-self:stretch;padding:24px 52px 0 0;}
+.rl-link{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-height:36px;padding:4px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface,#fff);text-align:center;
+  transition:background .25s ease, border-color .25s ease, opacity .25s ease;transition-delay:calc(var(--i) * 70ms);}
+.rl-link{flex-direction:row;justify-content:space-between;gap:10px;}
+.rl-link + .rl-link::before{content:"";position:absolute;top:-6px;left:50%;width:2px;height:6px;background:var(--line);}
+.rl-link-n{font:800 13.5px/1.2 var(--font-ui);color:var(--muted);text-align:left;}
+.rl-link-d{font:900 20px/1.1 var(--font-ui);color:var(--muted);}
+.rl-link.is-on{border-color:currentColor;}
+.rl-link.is-rate.is-on{color:var(--rl-rate);background:var(--rl-rate-tint);}
+.rl-link.is-spend.is-on,.rl-link.is-ad.is-on,.rl-link.is-out.is-on{color:var(--rl-ad);background:var(--rl-ad-tint);}
+.rl-link.is-on .rl-link-n,.rl-link.is-on .rl-link-d{color:inherit;}
+.rl-link.is-flat{opacity:.7;}
+@media (prefers-reduced-motion: reduce){ .rl-link{transition:none;} }
+
+/* ----------------------------------------------------------- the dock */
+.rl-ctl{display:flex;flex-direction:column;gap:10px;}
+.rl-fw{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+.rl-tools{display:flex;flex-wrap:wrap;gap:6px;}
+.rl-tool{min-height:44px;padding:0 12px;font-size:14px;}
+.rl-tool[aria-pressed="true"]{border-color:var(--cink);color:var(--cink);box-shadow:inset 0 0 0 1.5px var(--cink);}
+.rl-tool.is-other{border-style:dashed;}
+.rl-acts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;}
+.ls-root .rl-act,.rl-act{min-height:48px;padding:4px 10px;white-space:normal;line-height:1.2;text-align:center;}
+.rl-tbl td,.rl-tbl th{font-size:13.5px;}
+
+/* phones: one graph at a time, under its tab; the chain in two rows */
+.ls-phone .rl-fig .rl-tabs{display:flex;}
+.ls-phone .rl-tabs > button{font-size:13px;padding:0 6px;}
+.ls-phone .rl-panels{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;}
+.ls-phone .rl-panels > .rl-chain{grid-column:1;grid-row:2;padding:0 46px 0 0;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:auto;}
+.ls-phone .rl-panel{display:none;}
+.ls-phone .rl-fig[data-view="reserves"] .rl-panel[data-g="reserves"],
+.ls-phone .rl-fig[data-view="money"] .rl-panel[data-g="money"],
+.ls-phone .rl-fig[data-view="adas"] .rl-panel[data-g="adas"]{display:flex;}
+.ls-phone .rl-link{flex-direction:column;justify-content:center;gap:0;min-height:40px;padding:2px 3px;}
+.ls-phone .rl-link-d{font-size:16px;}
+.ls-phone .rl-link-n{font-size:11.5px;text-align:center;}
+.ls-phone .rl-link + .rl-link::before{display:none;}
+.ls-stage.is-big .rl-panels{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));}
+.ls-stage.is-big .rl-panels > .rl-chain{grid-column:2;grid-row:2;grid-template-columns:minmax(0,1fr);}
+.ls-stage.is-big .rl-panel{display:flex !important;}
+.ls-stage.is-big .rl-fig .rl-tabs{display:none;}
+
+/* ---------------------------------------------------- test yourself */
+.rl-qfig{margin:0;width:100%;}
+.rl-qfig .mac-graph{width:100%;}
+.rl-qfig .mac-graph{margin:0;}
+.rl-qrow,.rl-after{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;align-items:start;}
+.rl-after:empty{display:none;}
+.rl-qpanel{min-width:0;}
+.rl-taccount{max-width:420px;margin:0 auto;}
+.rl-taccount td{font-variant-numeric:tabular-nums;}
+/* A graph step: the drawn graph is the answer, so its option list (which
+   the drawing selects) is not shown; the step says what is drawn. */
+.cd-step:has(.rl-gmark) .cd-opts{display:none;}
+.rl-gmark{display:block;margin-top:4px;font:700 13px var(--font-ui);color:var(--muted);}
+.rl-gmark:empty{display:none;}
+.ls-root .rl-qfig .mac-gr-stage{max-width:min(560px, calc((100svh - 330px) * 1.07));}
+.ls-root.ls-phone .rl-qfig .mac-gr-stage{max-width:100%;}

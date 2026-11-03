@@ -1,0 +1,91 @@
+{
+ "id": "frq-multiplier-short",
+ "type": "short",
+ "points": 5,
+ "title": "Closing a recessionary gap in Pellam with spending or taxes",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "multipliers"
+ ],
+ "practices": [
+  "1.C",
+  "3.C",
+  "2.A"
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "points": 1,
+   "prompt": "Pellam is an invented country whose real GDP is 200 billion dollars below full-employment output. Its marginal propensity to consume (MPC) is 0.8. Assume the price level does not change. <b>Calculate</b> Pellam's spending multiplier. Show your work.",
+   "rubric": [
+    {
+     "point": "Spending multiplier of 5, with work shown: 1 / (1 - 0.8) or 1 / 0.2",
+     "accept": [
+      "1 / MPS = 1 / 0.2 = 5"
+     ]
+    }
+   ],
+   "sample": "MPS = 1 - 0.8 = 0.2, so the spending multiplier is 1 / 0.2 = 5."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>Calculate</b> Pellam's tax multiplier. Show your work.",
+   "rubric": [
+    {
+     "point": "Tax multiplier of -4 (or 4 stated as the size of a tax change's effect), with work shown: -0.8 / 0.2",
+     "accept": [
+      "-MPC / MPS = -0.8 / 0.2 = -4",
+      "a size of 4 with a tax cut raising output"
+     ]
+    }
+   ],
+   "sample": "The tax multiplier is -MPC / MPS = -0.8 / 0.2 = -4: each dollar of tax cut raises real GDP by 4 dollars."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the change in government purchases that would close the gap, and <b>state</b> whether purchases must increase or decrease. Show your work.",
+   "rubric": [
+    {
+     "point": "An increase of 40 billion dollars, from 200 / 5, with the direction stated",
+     "accept": [
+      "raise G by 40 billion dollars (200 / 5)"
+     ]
+    }
+   ],
+   "sample": "The gap is a recessionary gap, so purchases must increase. Increase = gap / spending multiplier = 200 / 5 = 40 billion dollars."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "Suppose instead Pellam closes the gap with a change in taxes alone. <b>Calculate</b> the change in taxes needed. Show your work.",
+   "rubric": [
+    {
+     "point": "A tax cut of 50 billion dollars, from 200 / 4, with the direction stated",
+     "accept": [
+      "cut taxes by 50 billion dollars (200 / 4)",
+      "-50 billion dollars with the work 200 / -4"
+     ]
+    }
+   ],
+   "sample": "Taxes must be cut. Tax cut = gap / size of the tax multiplier = 200 / 4 = 50 billion dollars."
+  },
+  {
+   "label": "E",
+   "points": 1,
+   "prompt": "<b>Explain</b> why the tax cut in part D must be larger than the increase in government purchases in part C.",
+   "rubric": [
+    {
+     "point": "Households save part of a tax cut (the MPS share), so the first round of new spending from a tax cut is smaller than from the same rise in purchases, which is spent in full",
+     "accept": [
+      "the tax multiplier is smaller than the spending multiplier because part of a tax cut is saved"
+     ]
+    }
+   ],
+   "sample": "A rise in government purchases is spent in full in the first round. A tax cut raises disposable income, but households spend only 80 percent of it and save 20 percent, so the first round of new spending is smaller. That is why the tax multiplier (4 in size) is smaller than the spending multiplier (5), and a larger tax cut is needed."
+  }
+ ]
+}

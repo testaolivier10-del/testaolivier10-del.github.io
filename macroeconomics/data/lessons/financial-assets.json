@@ -1,0 +1,68 @@
+{
+ "topic": "financial-assets",
+ "hook": "Your grandparents bought a savings bond years ago that pays a fixed amount every year. Then interest rates on new bonds jump. Their bond still pays exactly what it promised, yet if they tried to sell it today, buyers would offer less than they paid. Nothing about the bond changed. What changed is what else a saver can get, and that is the key to every financial asset.",
+ "prereq": [
+  {
+   "q": "Inflation turns out higher than borrowers and lenders expected when they agreed on a loan. Who gains?",
+   "options": [
+    "The borrower",
+    "The lender",
+    "Neither",
+    "Both equally"
+   ],
+   "correct": 0,
+   "why": "The borrower repays with dollars that buy less than expected, so unanticipated inflation helps borrowers and hurts lenders.",
+   "review": "inflation-costs"
+  },
+  {
+   "q": "Which part of aggregate demand is a firm's purchase of a new factory?",
+   "options": [
+    "Investment",
+    "Consumption",
+    "Government spending",
+    "Net exports"
+   ],
+   "correct": 0,
+   "why": "Spending by firms on new capital goods, such as factories and equipment, is investment.",
+   "review": "aggregate-demand"
+  }
+ ],
+ "figure": {
+  "figure": "financial-assets-bond-seesaw",
+  "caption": "Interest rates and the prices of existing bonds move in opposite directions."
+ },
+ "chain": [
+  {
+   "cause": "Market interest rates rise",
+   "effect": "new bonds pay more than an existing bond with a fixed payment"
+  },
+  {
+   "cause": "New bonds pay more than the existing bond",
+   "effect": "fewer buyers want the existing bond at its old price"
+  },
+  {
+   "cause": "Fewer buyers want the existing bond",
+   "effect": "its price falls until its yield matches the new market rate"
+  }
+ ],
+ "ideas": [
+  "A <b>financial asset</b> is a claim on money or future income: money, <b>bonds</b> (loans to a government or firm) and <b>stocks</b> (shares of ownership).",
+  "Assets trade off three things: <b>liquidity</b> (how easily they become money at full value), <b>risk</b> and <b>return</b>. Money is the most liquid and pays little or no interest.",
+  "The <b>interest rate</b> is the price of borrowing: the yearly charge as a percent of the amount borrowed, and the reward a lender earns.",
+  "A bond pays a fixed amount, so its price moves <b>opposite</b> to market interest rates: rates up, bond prices down."
+ ],
+ "misconception": {
+  "wrong": "When interest rates rise, bonds become more valuable because \"bonds pay interest.\"",
+  "right": "New bonds pay more, but existing bonds keep their old, lower payment, so their prices fall. Higher interest rates mean lower prices for existing bonds."
+ },
+ "check": [
+  "mac-financial-assets-9",
+  "mac-financial-assets-10",
+  "mac-financial-assets-11",
+  "mac-financial-assets-14",
+  "mac-financial-assets-1",
+  "mac-financial-assets-2",
+  "mac-financial-assets-3"
+ ],
+ "summary": "Financial assets are claims on money or future income: money, bonds and stocks. A bond is a loan to its issuer and a stock is a share of ownership. Assets trade off liquidity, risk and return, and money is the most liquid. The interest rate is the price of borrowing. Because a bond pays a fixed amount, its price moves opposite to market interest rates."
+}

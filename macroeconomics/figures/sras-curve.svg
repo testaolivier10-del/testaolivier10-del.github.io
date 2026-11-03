@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" role="img" aria-labelledby="sras-curve-t sras-curve-d" font-family="Arial, Helvetica, sans-serif">
+<title id="sras-curve-t">Movement along SRAS and a shift of SRAS</title>
+<desc id="sras-curve-d">Two graphs with the price level on the vertical axis and real GDP on the horizontal axis. Left: an upward-sloping SRAS curve; a higher price level PL2 goes with more output Y2. Right: SRAS1 shifts left to SRAS2 when input costs such as nominal wages rise.</desc>
+<defs><marker id="sras-curve-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9A4A00"/></marker></defs>
+<rect width="640" height="330" fill="#FFFFFF"/>
+<text x="185" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2A28">A movement along SRAS</text>
+<path d="M60 40V270H310" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="310" y="304" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Real GDP</text>
+<text transform="translate(30 40) rotate(-90)" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Price level</text>
+<path d="M80 251.6L290 58.4" fill="none" stroke="#355A0A" stroke-width="2.8" stroke-linecap="round"/>
+<text x="294" y="56.4" text-anchor="start" font-size="13" font-weight="700" fill="#355A0A">SRAS</text>
+<path d="M60 178H160V270" fill="none" stroke="#1F2A28" stroke-width="1.1" stroke-dasharray="3 4"/>
+<circle cx="160" cy="178" r="4.5" fill="#1F2A28"/>
+<text x="55" y="182" text-anchor="end" font-size="12" font-weight="700" fill="#1F2A28">PL1</text>
+<text x="160" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A28">Y1</text>
+<path d="M60 132H210V270" fill="none" stroke="#1F2A28" stroke-width="1.1" stroke-dasharray="3 4"/>
+<circle cx="210" cy="132" r="4.5" fill="#1F2A28"/>
+<text x="55" y="136" text-anchor="end" font-size="12" font-weight="700" fill="#1F2A28">PL2</text>
+<text x="210" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A28">Y2</text>
+<path d="M168.8 170L201.3 140" stroke="#9A4A00" stroke-width="2.2" marker-end="url(#sras-curve-ar)"/>
+<text x="495" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2A28">A shift of SRAS</text>
+<path d="M370 40V270H620" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="620" y="304" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Real GDP</text>
+<text transform="translate(340 40) rotate(-90)" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Price level</text>
+<path d="M427.5 251.6L615 79.1" fill="none" stroke="#6B7472" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 5"/>
+<text x="615" y="71.1" text-anchor="middle" font-size="13" font-weight="700" fill="#6B7472">SRAS<tspan font-size="10" dy="3">1</tspan></text>
+<path d="M377.5 228.6L562.5 58.4" fill="none" stroke="#355A0A" stroke-width="2.8" stroke-linecap="round"/>
+<text x="566.5" y="56.4" text-anchor="start" font-size="13" font-weight="700" fill="#355A0A">SRAS<tspan font-size="10" dy="3">2</tspan></text>
+<path d="M535 168.8L480 168.8" stroke="#9A4A00" stroke-width="2.2" marker-end="url(#sras-curve-ar)"/>
+</svg>

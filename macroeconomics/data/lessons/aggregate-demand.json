@@ -1,0 +1,84 @@
+{
+ "topic": "aggregate-demand",
+ "hook": "In the spring of a strong year, car dealers sell out, factories hire, and new houses go up on every edge of town. Then the stock market drops and the mood flips: families put off buying, firms cancel orders. Nothing about the country's workers or machines changed overnight. What changed was how much everyone planned to spend. Aggregate demand is that total plan, for the whole economy at once.",
+ "prereq": [
+  {
+   "q": "Which expression gives GDP by the expenditure approach?",
+   "options": [
+    "C + I + G + (X - M)",
+    "C + I + G + X + M",
+    "C + I + G - X",
+    "Wages + profits - taxes"
+   ],
+   "correct": 0,
+   "why": "GDP by spending adds consumption, investment, government spending and net exports (exports minus imports).",
+   "review": "gdp-circular-flow"
+  },
+  {
+   "q": "What does a price index such as the CPI measure?",
+   "options": [
+    "The cost of a fixed basket of goods relative to a base year",
+    "The number of goods produced in a year",
+    "The interest rate on savings",
+    "Total spending in the economy"
+   ],
+   "correct": 0,
+   "why": "A price index tracks the cost of a fixed basket against the base year, so it shows the overall level of prices.",
+   "review": "price-indices-inflation"
+  },
+  {
+   "q": "On a demand curve for one good, what does a change in that good's own price cause?",
+   "options": [
+    "A movement along the demand curve",
+    "A shift of the demand curve to the right",
+    "A shift of the demand curve to the left",
+    "A shift of the supply curve"
+   ],
+   "correct": 0,
+   "why": "A change in the variable on the axis moves along the curve; anything else shifts it.",
+   "review": "shifts-movements"
+  }
+ ],
+ "figure": {
+  "figure": "aggregate-demand-curve",
+  "caption": "Left: a change in the price level moves along AD. Right: a change in spending at every price level shifts AD."
+ },
+ "chain": [
+  {
+   "cause": "The price level falls",
+   "effect": "savings buy more, interest rates fall and domestic goods get cheaper than foreign goods"
+  },
+  {
+   "cause": "Real wealth rises, borrowing gets cheaper and exports rise",
+   "effect": "consumption, investment and net exports rise"
+  },
+  {
+   "cause": "Spending rises because the price level fell",
+   "effect": "real GDP demanded rises: a movement down along AD"
+  },
+  {
+   "cause": "Spending changes for any other reason (wealth, expectations, taxes, foreign incomes)",
+   "effect": "the whole AD curve shifts"
+  }
+ ],
+ "ideas": [
+  "<b>Aggregate demand (AD)</b> is the total real output that households, firms, the government and foreigners plan to buy at each <b>price level</b>: $AD = C + I + G + (X - M)$.",
+  "AD slopes down because of three effects of a lower price level: the <b>real wealth effect</b> (savings buy more), the <b>interest rate effect</b> (lower interest rates raise investment) and the <b>exchange rate effect</b> (domestic goods are cheaper than foreign goods).",
+  "A change in the price level moves the economy <b>along</b> AD. A change in C, I, G or X - M for any other reason <b>shifts</b> AD.",
+  "Shifters: wealth, consumer and business expectations, household debt, taxes, interest rates at a given price level, government purchases, foreign incomes.",
+  "The axes are always <b>Price level</b> (vertical) and <b>Real GDP</b> (horizontal), never \"price\" and \"quantity\"."
+ ],
+ "misconception": {
+  "wrong": "AD slopes down for the same reason a demand curve for pizza does: people switch to it when it gets cheaper.",
+  "right": "When the whole price level falls, there is no cheaper domestic good to switch to. AD slopes down because of the real wealth effect, the interest rate effect and the exchange rate effect."
+ },
+ "check": [
+  "mac-aggregate-demand-9",
+  "mac-aggregate-demand-10",
+  "mac-aggregate-demand-12",
+  "mac-aggregate-demand-14",
+  "mac-aggregate-demand-15",
+  "mac-aggregate-demand-16"
+ ],
+ "summary": "Aggregate demand is total planned spending on real output at each price level, C + I + G + (X - M). It slopes down because a lower price level raises real wealth, lowers interest rates and makes domestic goods cheaper than foreign ones. A change in the price level moves along AD; a change in spending for any other reason shifts it."
+}
