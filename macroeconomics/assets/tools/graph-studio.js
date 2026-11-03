@@ -99,14 +99,14 @@
         '<div class="gs-hand"></div><p class="gs-cap" aria-live="polite"></p>' +
       '</div>' +
       '<div class="gs-say"></div>' +
-      T.moreHtml('<div class="gs-opts"><button type="button" class="bt-btn gs-practise">Test yourself on this graph</button></div><p class="bt-small">Explore draws every graph free. The drills for graphs after Unit 2 are part of Premium.</p>', 'practice this graph') +
+      T.moreHtml('<div class="gs-opts"><button type="button" class="bt-btn gs-drill">Test yourself on this graph</button></div><p class="bt-small">Explore draws every graph free. The drills for graphs after Unit 2 are part of Premium.</p>', 'practice this graph') +
       '<div class="gs-nums"></div></section>';
     var R = {
       fig: host.querySelector('.gs-fig'), sw: host.querySelector('.gs-sw'), main: host.querySelector('.gs-main'), mainHost: host.querySelector('.gs-host'),
       link: host.querySelector('.gs-link'), linkH: host.querySelector('.gs-link-h'), linkSvg: host.querySelector('.gs-link-svg'),
       ctl: host.querySelector('.gs-ctl'), chips: host.querySelector('.gs-graphs'), scen: host.querySelector('.gs-scen'), show: host.querySelector('.gs-show'),
       hand: host.querySelector('.gs-hand'), cap: host.querySelector('.gs-cap'), say: host.querySelector('.gs-say'), nums: host.querySelector('.gs-nums'),
-      prac: host.querySelector('.gs-practise')
+      prac: host.querySelector('.gs-drill')
     };
     var cue = T.cue('Pick what happens, then drag the curve you think it shifts.');
     R.ctl.insertBefore(cue.el, R.ctl.firstChild);
@@ -289,7 +289,7 @@
       if(!b) return;
       if(b.classList.contains('gs-chip')){ act(); pickGraph(b.getAttribute('data-g')); }
       else if(b.classList.contains('gs-show')) showMe();
-      else if(b.classList.contains('gs-practise')) practise(g.id);
+      else if(b.classList.contains('gs-drill')) practise(g.id);
       else if(b.parentNode === R.sw){ view = b.getAttribute('data-v'); layout(); }
     }
     host.addEventListener('click', onClick);
