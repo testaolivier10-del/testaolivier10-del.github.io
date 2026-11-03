@@ -531,10 +531,10 @@
    "practice": "2.A",
    "q": "Why does the supply of loanable funds slope upward?",
    "options": [
-    "A higher real interest rate rewards saving, so people save and lend more",
+    "A higher real rate rewards saving, so people save more",
     "Banks are required to lend more when rates rise",
     "Inflation rises as the real interest rate rises",
-    "The government saves more when rates rise"
+    "The government saves more when interest rates rise"
    ],
    "correct": 0,
    "why": {
@@ -575,7 +575,7 @@
    "diff": 2,
    "type": "specific",
    "practice": "2.A",
-   "q": "Make it specific: explain how more government borrowing affects private investment.",
+   "q": "Make it specific: show more government borrowing as a change on the demand side of the loanable funds market, and explain how it affects private investment.",
    "why": {
     "correct": "Government borrowing raises the demand for loanable funds, the real interest rate rises, and private investment falls because borrowing costs more."
    },
@@ -595,7 +595,7 @@
       ],
       "correct": 0,
       "why": {
-       "1": "The government is a borrower here, so it adds to demand. (Showing lower national saving as supply shifting left also raises the rate.)"
+       "1": "The question asks for the demand side: the government is a borrower, so it adds to demand. (Showing lower national saving as supply shifting left also raises the rate, and the exam accepts it when the question does not name a side.)"
       }
      },
      "direction": {

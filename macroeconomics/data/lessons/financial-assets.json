@@ -1,6 +1,6 @@
 {
  "topic": "financial-assets",
- "hook": "Your grandparents bought a savings bond years ago that pays a fixed amount every year. Then interest rates on new bonds jump. Their bond still pays exactly what it promised, yet if they tried to sell it today, buyers would offer less than they paid. Nothing about the bond changed. What changed is what else a saver can get, and that is the key to every financial asset.",
+ "hook": "Your grandparents bought a company bond years ago that pays a fixed amount every year. Then interest rates on new bonds jump. Their bond still pays exactly what it promised, yet if they tried to sell it today, buyers would offer less than they paid. Nothing about the bond changed. What changed is what else a saver can get, and that is the key to every financial asset.",
  "prereq": [
   {
    "q": "Inflation turns out higher than borrowers and lenders expected when they agreed on a loan. Who gains?",

@@ -99,7 +99,7 @@
   {
    "label": "C",
    "points": 1,
-   "prompt": "What happens to the prices of existing bonds in Varne because of the open market operation? <b>Explain</b>.",
+   "prompt": "<b>Explain</b> what happens to the prices of existing bonds in Varne because of the open market operation.",
    "rubric": [
     {
      "point": "States that bond prices fall, because the central bank's sales add to the supply of bonds (equivalently, because interest rates rise and bond prices move opposite to them)",
@@ -133,7 +133,7 @@
   {
    "label": "E",
    "points": 1,
-   "prompt": "Based on your answer to part D, what happens to unemployment in Varne in the short run?",
+   "prompt": "Based on your answer to part D, <b>identify</b> what happens to unemployment in Varne in the short run.",
    "rubric": [
     {
      "point": "States that unemployment increases (consistent with a decrease in AD)",

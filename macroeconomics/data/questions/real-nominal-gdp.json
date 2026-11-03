@@ -600,19 +600,19 @@
    "q": "What happened to prices of the goods in Halvet's GDP from Year 2 to Year 3?",
    "stimulus": "real-nominal-gdp-s2",
    "options": [
+    "They stayed the same, because both years are after the base year",
     "They fell on average, because the deflator fell from 120 to 110",
     "They rose, because nominal GDP rose",
-    "They rose 10%, the change in nominal GDP",
-    "They stayed the same, because both years are after the base year"
+    "They rose 10%, the change in nominal GDP"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "The GDP deflator is a price index for everything in GDP, so its percent change measures inflation or, here, deflation.",
     "options": [
+     "Being after the base year says nothing about the change between two later years.",
      "Right: a falling deflator is deflation for the goods in GDP, about 8.3%.",
      "Nominal GDP rose because real output rose a lot; the deflator, the price measure, fell.",
-     "The change in nominal GDP mixes prices and output; the deflator shows prices fell.",
-     "Being after the base year says nothing about the change between two later years."
+     "The change in nominal GDP mixes prices and output; the deflator shows prices fell."
     ]
    }
   },
@@ -627,19 +627,19 @@
    "q": "Based on the full article, what happened to Country Q's real GDP this year?",
    "stimulus": "real-nominal-gdp-s3",
    "options": [
-    "It fell by about 1%",
-    "It rose by about 6%, a record",
     "It rose by about 13%",
-    "It rose by about 5%, after population growth"
+    "It rose by about 5%, after population growth",
+    "It fell by about 1%",
+    "It rose by about 6%, a record"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Nominal GDP growth is about real growth plus inflation, so real growth is about nominal growth minus the change in the deflator.",
     "options": [
-     "Right: real growth is about nominal growth minus the rise in the deflator: $6 - 7 = -1\\%$.",
-     "Six percent is the nominal rise, which includes higher prices.",
      "A rising deflator is subtracted from nominal growth, not added.",
-     "Population growth matters for output per person, but the first step is removing price changes."
+     "Population growth matters for output per person, but the first step is removing price changes.",
+     "Right: real growth is about nominal growth minus the rise in the deflator: $6 - 7 = -1\\%$.",
+     "Six percent is the nominal rise, which includes higher prices."
     ]
    }
   },
@@ -654,19 +654,19 @@
    "q": "Which measure would best show whether the typical living standard in Country Q rose this year?",
    "stimulus": "real-nominal-gdp-s3",
    "options": [
-    "Real GDP per capita",
     "Nominal GDP",
     "The GDP deflator",
-    "Nominal GDP per capita"
+    "Nominal GDP per capita",
+    "Real GDP per capita"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "Real GDP per capita adjusts for both prices and population. Here real GDP fell about 1% and the population grew 1%, so it fell about 2%.",
     "options": [
-     "Right: it removes price changes and divides by population, giving output per person.",
      "Nominal GDP includes the 7% rise in prices and ignores population.",
      "The deflator is a price index; it says nothing about output per person.",
-     "Dividing by population helps, but nominal figures still include the rise in prices."
+     "Dividing by population helps, but nominal figures still include the rise in prices.",
+     "Right: it removes price changes and divides by population, giving output per person."
     ]
    }
   },
@@ -779,19 +779,19 @@
    "practice": "1.A",
    "q": "In the base year, how do nominal GDP and real GDP compare?",
    "options": [
+    "They can't be compared in the base year",
     "They are equal, and the GDP deflator is 100",
     "Nominal GDP is larger, because it uses current prices",
-    "Real GDP is larger, because it removes inflation",
-    "They can't be compared in the base year"
+    "Real GDP is larger, because it removes inflation"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Real GDP uses base-year prices and nominal GDP uses current prices. In the base year these are the same prices, so the deflator is 100.",
     "options": [
+     "They can: they are equal by definition.",
      "Right: in the base year, current prices are the base-year prices.",
      "In the base year current prices are base-year prices, so the two are the same.",
-     "There is nothing to remove in the base year: the prices are the same.",
-     "They can: they are equal by definition."
+     "There is nothing to remove in the base year: the prices are the same."
     ]
    }
   },
@@ -805,19 +805,19 @@
    "practice": "1.D",
    "q": "Why do economists use real GDP rather than nominal GDP to measure changes in output over time?",
    "options": [
-    "Real GDP holds prices fixed, so only quantities move it",
-    "Real GDP includes used goods and transfers",
     "Real GDP is measured in current prices",
-    "Real GDP is larger than nominal GDP in each year"
+    "Real GDP is larger than nominal GDP in each year",
+    "Real GDP holds prices fixed, so only quantities move it",
+    "Real GDP includes used goods and transfers"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Valuing every year's output at the same base-year prices means changes in real GDP reflect changes in production.",
     "options": [
-     "Right: nominal GDP can rise from higher prices alone; real GDP removes that.",
-     "Real and nominal GDP count the same goods; only the prices used differ.",
      "That is nominal GDP; real GDP uses base-year prices.",
-     "Real GDP is smaller than nominal after the base year when prices have risen."
+     "Real GDP is smaller than nominal after the base year when prices have risen.",
+     "Right: nominal GDP can rise from higher prices alone; real GDP removes that.",
+     "Real and nominal GDP count the same goods; only the prices used differ."
     ]
    }
   },
@@ -831,19 +831,19 @@
    "practice": "1.D",
    "q": "How does the GDP deflator differ from the consumer price index?",
    "options": [
-    "It prices everything produced in the country, not a basket",
     "It measures the cost of a fixed basket bought by typical households",
     "It is measured in dollars, not as an index",
-    "It includes the prices of imported consumer goods"
+    "It includes the prices of imported consumer goods",
+    "It prices everything produced in the country, not a basket"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "The deflator is a price index for everything in GDP; the CPI is a price index for a basket of consumer goods and services.",
     "options": [
-     "Right: the deflator includes investment and government purchases and leaves out imports; the CPI prices what households buy, imports included.",
      "That describes the CPI.",
      "Both are indexes with a base year of 100.",
-     "Imports are not produced in the country, so they are outside GDP and its deflator; the CPI includes them."
+     "Imports are not produced in the country, so they are outside GDP and its deflator; the CPI includes them.",
+     "Right: the deflator includes investment and government purchases and leaves out imports; the CPI prices what households buy, imports included."
     ]
    }
   },
@@ -857,27 +857,27 @@
    "practice": "2.B",
    "q": "Nominal GDP rose last year. Which of these could explain the rise? Select all that apply.",
    "options": [
+    "Prices fell 4% while output stayed the same",
     "Output rose while prices stayed the same",
     "Prices rose while output stayed the same",
     "Prices rose 5% while output fell 2%",
     "Prices and output both fell",
-    "Prices stayed the same while output fell",
-    "Prices fell 4% while output stayed the same"
+    "Prices stayed the same while output fell"
    ],
    "correct": [
-    0,
     1,
-    2
+    2,
+    3
    ],
    "why": {
     "correct": "Nominal GDP is output times current prices, so it can rise from more output, higher prices or both. Only real GDP isolates output.",
     "options": [
+     "Lower prices on the same output mean lower nominal GDP.",
      "Right: more output at the same prices raises nominal GDP.",
      "Right: higher prices on the same output raise nominal GDP.",
      "Right: nominal GDP rises by about $5 - 2 = 3\\%$.",
      "If both fell, nominal GDP would fall too.",
-     "At constant prices, less output means lower nominal GDP.",
-     "Lower prices on the same output mean lower nominal GDP."
+     "At constant prices, less output means lower nominal GDP."
     ]
    }
   }

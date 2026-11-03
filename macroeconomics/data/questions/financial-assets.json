@@ -386,8 +386,8 @@
    "q": "Why is an interest rate called the price of borrowing?",
    "options": [
     "It is the fee a bank charges to open an account",
-    "It is what a borrower pays to use someone else's money for a year, as a percent",
-    "It is the total amount a borrower repays at the end",
+    "It is the yearly cost of using borrowed money, as a percent",
+    "It is the total amount a borrower repays at the end of the loan",
     "It is the price of the goods bought with the loan"
    ],
    "correct": 1,

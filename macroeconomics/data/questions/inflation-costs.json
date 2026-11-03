@@ -119,19 +119,19 @@
    "q": "Suppose instead that prices had risen only 1% over the year. Who would have gained compared with what both sides planned?",
    "stimulus": "inflation-costs-s1",
    "options": [
+    "Both sides equally, because prices rose a little",
     "The credit union: repaid dollars buy more than planned",
     "Maya, because her interest rate was fixed for the whole year",
-    "Neither side, because inflation was positive",
-    "Both sides equally, because prices rose a little"
+    "Neither side, because inflation was positive"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "The surprise runs both ways. Lower-than-anticipated inflation helps lenders and savers and hurts fixed-rate borrowers.",
     "options": [
+     "A surprise moves purchasing power from one side to the other; it cannot help both.",
      "Right: inflation below what both sides planned on helps the lender and hurts the fixed-rate borrower.",
      "With inflation lower than planned, each dollar she repays is worth more, so the fixed rate costs her more.",
-     "What matters is the surprise: actual inflation of 1% versus the 3% both planned on.",
-     "A surprise moves purchasing power from one side to the other; it cannot help both."
+     "What matters is the surprise: actual inflation of 1% versus the 3% both planned on."
     ]
    }
   },
@@ -146,19 +146,19 @@
    "q": "Why would the loan have redistributed little if both sides had correctly anticipated 8% inflation?",
    "stimulus": "inflation-costs-s1",
    "options": [
-    "They would have agreed on a higher interest rate",
-    "Anticipated inflation does not raise prices",
     "Borrowing is not allowed when inflation is high",
-    "The credit union would have refused to lend at a fixed rate"
+    "The credit union would have refused to lend at a fixed rate",
+    "They would have agreed on a higher interest rate",
+    "Anticipated inflation does not raise prices"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Anticipated inflation is priced into contracts. It is the unanticipated part that moves purchasing power between borrowers and lenders.",
     "options": [
-     "Right: when inflation is anticipated, lenders build it into the interest rate, so the borrower pays back enough to keep the lender's purchasing power.",
-     "Anticipated inflation raises prices just as much; people simply plan for it.",
      "Nothing stops lending during inflation; the rate is set to allow for it.",
-     "Lenders can lend at a fixed rate if it includes the inflation they anticipate."
+     "Lenders can lend at a fixed rate if it includes the inflation they anticipate.",
+     "Right: when inflation is anticipated, lenders build it into the interest rate, so the borrower pays back enough to keep the lender's purchasing power.",
+     "Anticipated inflation raises prices just as much; people simply plan for it."
     ]
    }
   },
@@ -173,19 +173,19 @@
    "q": "How does the jump in inflation affect Ruth?",
    "stimulus": "inflation-costs-s2",
    "options": [
-    "She is hurt: her pension buys less",
     "She gains, because her pension stays the same",
     "She is unaffected, because she is retired",
-    "She gains, because retirees spend less"
+    "She gains, because retirees spend less",
+    "She is hurt: her pension buys less"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "People on fixed incomes, such as a pension that does not rise with prices, lose purchasing power when inflation is higher than planned.",
     "options": [
-     "Right: a fixed income in dollars loses purchasing power when prices rise faster than planned.",
      "The same dollars buy fewer goods when prices rise, so she can afford less.",
      "Retirees still buy goods and services, so rising prices matter to them.",
-     "Spending less does not protect a fixed income from rising prices."
+     "Spending less does not protect a fixed income from rising prices.",
+     "Right: a fixed income in dollars loses purchasing power when prices rise faster than planned."
     ]
    }
   },
@@ -227,19 +227,19 @@
    "q": "Lucia reprinting her menus is an example of which cost of inflation?",
    "stimulus": "inflation-costs-s2",
    "options": [
+    "Unemployment costs",
     "Menu costs",
     "Shoe-leather costs",
-    "Substitution bias",
-    "Unemployment costs"
+    "Substitution bias"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Menu costs are the real resources used to change prices. They rise with how often prices must change.",
     "options": [
+     "Lucia keeps her restaurant open; the cost here is updating prices.",
      "Right: the cost of changing posted prices, such as printing menus or updating price tags and websites.",
      "Shoe-leather costs are the time and effort of holding less cash, as Tom does.",
-     "Substitution bias is a measurement problem with the CPI, not a cost to a firm.",
-     "Lucia keeps her restaurant open; the cost here is updating prices."
+     "Substitution bias is a measurement problem with the CPI, not a cost to a firm."
     ]
    }
   },
@@ -254,19 +254,19 @@
    "q": "Tom keeping less cash and making more trips to the bank is an example of which cost of inflation?",
    "stimulus": "inflation-costs-s2",
    "options": [
-    "Shoe-leather costs",
-    "Menu costs",
     "A fixed-income loss",
-    "Deflation"
+    "Deflation",
+    "Shoe-leather costs",
+    "Menu costs"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Inflation makes cash lose purchasing power, so people hold less of it and spend time and effort managing their money.",
     "options": [
-     "Right: the time and effort of holding less cash so it does not lose value, named for wearing out shoes on trips to the bank.",
-     "Menu costs are a seller's costs of changing prices.",
      "Tom is changing how he holds money, not living on a fixed payment.",
-     "Prices are rising, not falling."
+     "Prices are rising, not falling.",
+     "Right: the time and effort of holding less cash so it does not lose value, named for wearing out shoes on trips to the bank.",
+     "Menu costs are a seller's costs of changing prices."
     ]
    }
   },
@@ -281,19 +281,19 @@
    "q": "In which year does the saver's account buy less at the end of the year than at the start?",
    "stimulus": "inflation-costs-s3",
    "options": [
-    "Year 3",
     "Year 1",
     "Year 2",
-    "Each year, because inflation is above zero"
+    "Each year, because inflation is above zero",
+    "Year 3"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "Savings lose purchasing power when inflation is higher than the interest they earn.",
     "options": [
-     "Right: prices rose 5% while the account grew 3%, so the balance buys about 2% less.",
      "The balance grew 3% while prices rose 1%, so it buys more.",
      "The balance and prices both rose 3%, so its purchasing power stayed about the same.",
-     "The balance keeps up with prices when its interest is at least as high as inflation."
+     "The balance keeps up with prices when its interest is at least as high as inflation.",
+     "Right: prices rose 5% while the account grew 3%, so the balance buys about 2% less."
     ]
    }
   },
@@ -335,19 +335,19 @@
    "q": "The bank set the 3% rate when it anticipated inflation of about 1%. Who gains in Year 3?",
    "stimulus": "inflation-costs-s3",
    "options": [
+    "Neither, because the rate is set by the bank",
     "The bank, which borrows from its savers at a fixed rate",
     "The saver, because the interest rate is fixed",
-    "Both, because the account still grows",
-    "Neither, because the rate is set by the bank"
+    "Both, because the account still grows"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "A deposit is a loan from the saver to the bank. When inflation turns out higher than anticipated, the borrower (the bank) gains and the lender (the saver) loses.",
     "options": [
+     "Who sets the rate does not matter; the surprise in inflation does.",
      "Right: a saver lends to the bank. Inflation above what the bank anticipated means it repays savers in dollars worth less.",
      "The fixed rate is below inflation in Year 3, so the saver loses purchasing power.",
-     "The account grows in dollars, but less than prices; the bank, as borrower, is the one that gains.",
-     "Who sets the rate does not matter; the surprise in inflation does."
+     "The account grows in dollars, but less than prices; the bank, as borrower, is the one that gains."
     ]
    }
   },
@@ -361,19 +361,19 @@
    "practice": "3.A",
    "q": "Prices unexpectedly fall 2% in a year. Who is hurt?",
    "options": [
-    "People repaying fixed-rate loans",
-    "Lenders receiving fixed payments",
     "People on fixed pensions",
-    "Savers earning a fixed interest rate"
+    "Savers earning a fixed interest rate",
+    "People repaying fixed-rate loans",
+    "Lenders receiving fixed payments"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Unanticipated deflation reverses the effects of unanticipated inflation: lenders and fixed-income earners gain, fixed-rate borrowers lose.",
     "options": [
-     "Right: with deflation the dollars they repay buy more than the dollars they borrowed, so the burden of the debt grows.",
-     "Deflation makes the dollars they receive worth more, so lenders gain.",
      "A fixed pension buys more when prices fall.",
-     "Their savings buy more as prices fall, so savers gain."
+     "Their savings buy more as prices fall, so savers gain.",
+     "Right: with deflation the dollars they repay buy more than the dollars they borrowed, so the burden of the debt grows.",
+     "Deflation makes the dollars they receive worth more, so lenders gain."
     ]
    }
   },
@@ -387,22 +387,22 @@
    "practice": "1.A",
    "q": "Which costs of inflation occur even when everyone anticipates it correctly? Select all that apply.",
    "options": [
+    "Losses to people whose pensions rise with the CPI",
     "Menu costs of changing prices often",
     "Shoe-leather costs of holding less cash",
-    "A transfer of purchasing power from lenders to borrowers",
-    "Losses to people whose pensions rise with the CPI"
+    "A transfer of purchasing power from lenders to borrowers"
    ],
    "correct": [
-    0,
-    1
+    1,
+    2
    ],
    "why": {
     "correct": "Menu and shoe-leather costs come with any inflation. The redistribution between borrowers and lenders comes from the unanticipated part.",
     "options": [
+     "An indexed pension keeps up with prices, so its owner is protected.",
      "Right: prices must still be changed, even when everyone planned on it.",
      "Right: cash still loses value, so people still hold less of it.",
-     "When inflation is anticipated, it is built into interest rates, so the transfer happens only when inflation is a surprise.",
-     "An indexed pension keeps up with prices, so its owner is protected."
+     "When inflation is anticipated, it is built into interest rates, so the transfer happens only when inflation is a surprise."
     ]
    }
   },
@@ -416,19 +416,19 @@
    "practice": "1.A",
    "q": "Which is an example of a fixed income?",
    "options": [
-    "A pension that pays the same dollar amount every month",
     "A wage that rises each year by the rise in the CPI",
     "Profits from a business whose prices rise with inflation",
-    "A salary renegotiated each year to match prices"
+    "A salary renegotiated each year to match prices",
+    "A pension that pays the same dollar amount every month"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "A fixed income is a set number of dollars, so its purchasing power falls when prices rise.",
     "options": [
-     "Right: its dollar amount does not change when prices rise.",
      "That income is indexed to prices, so it is not fixed in purchasing power or in dollars.",
      "Business income can rise as the firm raises its prices.",
-     "A salary that is adjusted to prices is not fixed."
+     "A salary that is adjusted to prices is not fixed.",
+     "Right: its dollar amount does not change when prices rise."
     ]
    }
   },
@@ -468,19 +468,19 @@
    "practice": "2.A",
    "q": "Why does high, unpredictable inflation make it harder for a firm to plan a new factory?",
    "options": [
+    "Factories are not counted in GDP during inflation",
     "The firm can't tell what future costs and prices will be",
     "Inflation makes factories illegal to build",
-    "Inflation lowers the number of workers in the labor force",
-    "Factories are not counted in GDP during inflation"
+    "Inflation lowers the number of workers in the labor force"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Uncertainty is a cost of inflation: when people cannot predict prices, they hesitate to sign long contracts or make long-lived investments.",
     "options": [
+     "A new factory is investment in GDP whatever the inflation rate.",
      "Right: uncertainty about inflation makes long-term contracts and plans riskier.",
      "No such rule exists; the problem is uncertainty about future prices.",
-     "Inflation itself does not shrink the labor force.",
-     "A new factory is investment in GDP whatever the inflation rate."
+     "Inflation itself does not shrink the labor force."
     ]
    }
   }

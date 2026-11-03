@@ -250,19 +250,19 @@
    "q": "What type of unemployment does Ben experience?",
    "stimulus": "unemployment-s2",
    "options": [
+    "He is not in the labor force",
     "Structural",
     "Frictional",
-    "Cyclical",
-    "He is not in the labor force"
+    "Cyclical"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Structural unemployment is a mismatch between workers' skills or locations and the jobs on offer, often after technology or the pattern of demand changes.",
     "options": [
+     "He is out of work and looking, so he is unemployed and in the labor force.",
      "Right: his skills no longer match the jobs available, because technology changed the industry.",
      "Frictional unemployment is time spent searching between jobs a worker is qualified for; Ben lacks the skills the open jobs need.",
-     "Cyclical unemployment comes from a fall in spending in a downturn; Ben's job vanished because the technology changed.",
-     "He is out of work and looking, so he is unemployed and in the labor force."
+     "Cyclical unemployment comes from a fall in spending in a downturn; Ben's job vanished because the technology changed."
     ]
    }
   },
@@ -277,19 +277,19 @@
    "q": "What type of unemployment does Chen experience?",
    "stimulus": "unemployment-s2",
    "options": [
-    "Cyclical",
-    "Structural",
     "Frictional",
-    "Seasonal"
+    "Seasonal",
+    "Cyclical",
+    "Structural"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Cyclical unemployment rises when the economy's total spending and output fall and firms lay off workers.",
     "options": [
-     "Right: he lost his job because spending fell during a recession.",
-     "His skills still fit car sales; the jobs disappeared because sales fell, not because his skills became outdated.",
      "He did not leave to search for a better match; he was laid off when demand fell.",
-     "Nothing suggests a regular yearly pattern; the cause is the recession."
+     "Nothing suggests a regular yearly pattern; the cause is the recession.",
+     "Right: he lost his job because spending fell during a recession.",
+     "His skills still fit car sales; the jobs disappeared because sales fell, not because his skills became outdated."
     ]
    }
   },
@@ -304,19 +304,19 @@
    "q": "How are Dee and Eli counted in the official statistics?",
    "stimulus": "unemployment-s2",
    "options": [
-    "Both are outside the labor force, so neither counts as unemployed",
     "Both are unemployed, because neither has a job",
     "Dee is outside the labor force and Eli is unemployed",
-    "Eli is outside the labor force and Dee is unemployed"
+    "Eli is outside the labor force and Dee is unemployed",
+    "Both are outside the labor force, so neither counts as unemployed"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "Only people who are jobless, available and actively looking count as unemployed. Retirees and discouraged workers are outside the labor force.",
     "options": [
-     "Right: neither is looking for work. Dee is retired and Eli is a discouraged worker.",
      "Having no job is not enough: an unemployed person must be available and have looked for work recently.",
      "Eli stopped looking, so he is a discouraged worker and is outside the labor force too.",
-     "Dee is retired and not looking, so she is not unemployed."
+     "Dee is retired and not looking, so she is not unemployed.",
+     "Right: neither is looking for work. Dee is retired and Eli is a discouraged worker."
     ]
    }
   },
@@ -331,21 +331,21 @@
    "q": "Which of these people is counted in the natural rate of unemployment? Select all that apply.",
    "stimulus": "unemployment-s2",
    "options": [
+    "Eli",
     "Ana",
     "Chen",
-    "Dee",
-    "Eli"
+    "Dee"
    ],
    "correct": [
-    0
+    1
    ],
    "why": {
     "correct": "Natural rate = frictional + structural, so Ana (frictional) counts, as Ben (structural) would. Cyclical unemployment is not part of it, and people outside the labor force are not unemployed at all.",
     "options": [
+     "He has stopped looking, so he is a discouraged worker outside the labor force, not unemployed.",
      "Right: her search after moving is frictional unemployment, part of the natural rate.",
      "His job loss in a recession is cyclical, which is not part of the natural rate.",
-     "She is retired and outside the labor force, so she is not unemployed at all.",
-     "He has stopped looking, so he is a discouraged worker outside the labor force, not unemployed."
+     "She is retired and outside the labor force, so she is not unemployed at all."
     ]
    }
   },
@@ -461,19 +461,19 @@
    "q": "In which year of the table is Country Z at full employment?",
    "stimulus": "unemployment-s3",
    "options": [
+    "No year, because unemployment is above zero in each",
     "Year 1",
     "Year 2",
-    "Year 3",
-    "No year, because unemployment is above zero in each"
+    "Year 3"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Full employment is when the actual unemployment rate equals the natural rate: some frictional and structural unemployment remains.",
     "options": [
+     "Full employment means zero cyclical unemployment, not zero unemployment.",
      "Right: the actual rate equals the natural rate (5.0%), so cyclical unemployment is zero.",
      "At 8.0% the actual rate is above the natural rate, so there is cyclical unemployment.",
-     "At 4.5% the actual rate is below the natural rate, beyond full employment.",
-     "Full employment means zero cyclical unemployment, not zero unemployment."
+     "At 4.5% the actual rate is below the natural rate, beyond full employment."
     ]
    }
   },
@@ -551,19 +551,19 @@
    "practice": "1.A",
    "q": "Which statement about the natural rate of unemployment is correct?",
    "options": [
-    "It is the unemployment rate when cyclical unemployment is zero",
-    "It is an unemployment rate of zero percent",
     "It is the sum of frictional and cyclical unemployment",
-    "It is one fixed number, the same in each country"
+    "It is one fixed number, the same in each country",
+    "It is the unemployment rate when cyclical unemployment is zero",
+    "It is an unemployment rate of zero percent"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Natural rate = frictional + structural. When the actual rate equals it, the economy is at full employment.",
     "options": [
-     "Right: at the natural rate only frictional and structural unemployment remain.",
-     "People are always changing jobs and retraining, so some unemployment remains at full employment.",
      "The natural rate is frictional plus structural; cyclical unemployment is the part above it.",
-     "It differs across countries and can change over time with job search tools, training and labor laws."
+     "It differs across countries and can change over time with job search tools, training and labor laws.",
+     "Right: at the natural rate only frictional and structural unemployment remain.",
+     "People are always changing jobs and retraining, so some unemployment remains at full employment."
     ]
    }
   },
@@ -577,19 +577,19 @@
    "practice": "1.D",
    "q": "Ivy works 10 hours a week at a store but wants full-time work. How does the way she is counted affect the unemployment rate as a measure of joblessness?",
    "options": [
-    "She counts as employed, so the rate understates unused labor",
     "She counts as unemployed, so the rate overstates joblessness",
     "She counts as outside the labor force, so the rate is unaffected",
-    "She counts as half employed and half unemployed"
+    "She counts as half employed and half unemployed",
+    "She counts as employed, so the rate understates unused labor"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "Underemployed and discouraged workers both make the official unemployment rate a low reading of how much labor goes unused.",
     "options": [
-     "Right: part-time workers who want full-time jobs are underemployed but counted as employed.",
      "Anyone with paid work in the survey week counts as employed, even part-time.",
      "She has a job, so she is in the labor force as employed.",
-     "The survey has no half categories: she is employed."
+     "The survey has no half categories: she is employed.",
+     "Right: part-time workers who want full-time jobs are underemployed but counted as employed."
     ]
    }
   },

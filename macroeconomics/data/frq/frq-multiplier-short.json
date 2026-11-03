@@ -62,7 +62,7 @@
   {
    "label": "D",
    "points": 1,
-   "prompt": "Suppose instead Pellam closes the gap with a change in taxes alone. <b>Calculate</b> the change in taxes needed. Show your work.",
+   "prompt": "Suppose instead Pellam closes the gap with a change in taxes alone. <b>Calculate</b> the change in taxes needed, and <b>state</b> whether taxes must increase or decrease. Show your work.",
    "rubric": [
     {
      "point": "A tax cut of 50 billion dollars, from 200 / 4, with the direction stated",

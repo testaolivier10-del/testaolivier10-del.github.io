@@ -160,11 +160,11 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "A zero real rate means the interest just offsets expected inflation rate: dollars grow, buying power does not.",
+    "correct": "A zero real rate means the interest just offsets the expected inflation rate: dollars grow, buying power does not.",
     "options": [
      "In dollars the lender gains 5%; it is buying power that stays the same.",
-     "Right: 5% - 5% = 0%, so the extra dollars just keep up with expected inflation rate.",
-     "That would need a 5% real rate. Here expected inflation rate cancels the 5% nominal rate.",
+     "Right: 5% - 5% = 0%, so the extra dollars just keep up with the expected inflation rate.",
+     "That would need a 5% real rate. Here the expected inflation rate cancels the 5% nominal rate.",
      "It pays 5% in dollars. Zero is the real rate, not the nominal one."
     ]
    }
@@ -419,11 +419,11 @@
       "from": {
        "fn": "sub",
        "args": [
-        4,
-        2
+        2,
+        4
        ]
       },
-      "why": "You subtracted. To find the nominal rate, add the expected inflation rate to the real rate the lender wants."
+      "why": "You subtracted the expected inflation rate. That gives the real rate from a nominal rate; to find the nominal rate, add it: 2% + 4%."
      },
      {
       "value": 2,

@@ -53,7 +53,7 @@
   "The <b>AD-AS model</b> puts AD, SRAS and LRAS on one graph: Price level (PL) up the side, Real GDP (Y) along the bottom.",
   "<b>Short-run equilibrium</b> is where AD crosses SRAS; label it PL1 and Y1 with dashed lines to both axes.",
   "<b>Long-run equilibrium</b> is where AD and SRAS cross on LRAS: output at full employment (YF), unemployment at the natural rate.",
-  "Y1 < YF: a <b>recessionary gap</b>, unemployment above the natural rate. Y1 > YF: an <b>inflationary gap</b>, unemployment below it."
+  "Y1 &lt; YF: a <b>recessionary gap</b>, unemployment above the natural rate. Y1 &gt; YF: an <b>inflationary gap</b>, unemployment below it."
  ],
  "misconception": {
   "wrong": "Wherever AD crosses SRAS, the economy is at full employment, because that is the equilibrium.",

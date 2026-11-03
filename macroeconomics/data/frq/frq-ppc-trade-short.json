@@ -17,6 +17,7 @@
   "2.A",
   "2.C"
  ],
+ "scenario": "Kestria and Lomar are two invented countries that each produce corn and fabric. The table shows the most corn or the most fabric one worker in each country can produce in a day; each country faces a constant opportunity cost.",
  "stimulus": {
   "title": "Corn and fabric in Kestria and Lomar",
   "invented": true,
@@ -46,7 +47,7 @@
    "label": "A",
    "points": 2,
    "type": "graph",
-   "prompt": "<b>Draw</b> a correctly labeled production possibilities curve for one Kestria worker, with corn on the horizontal axis and fabric on the vertical axis, showing the most of each good the worker can produce. <b>Plot</b> a point U that shows Kestria's output when some of its workers are unemployed.",
+   "prompt": "<b>Draw</b> a correctly labeled production possibilities curve for one Kestria worker, with corn on the horizontal axis and fabric on the vertical axis, showing the most of each good the worker can produce. <b>Plot</b> a point U that shows the worker's output on a day when the worker is idle for part of the day.",
    "graph": {
     "kind": "ppc",
     "linear": true,
@@ -85,7 +86,7 @@
      "auto": "point"
     }
    ],
-   "sample": "The horizontal axis is labeled Corn and the vertical axis Fabric. The PPC is a straight line (constant opportunity cost) from 12 bolts of fabric on the vertical axis to 36 bushels of corn on the horizontal axis, labeled PPC. Point U sits inside the line, below and to the left of it, because unemployed workers mean Kestria produces less of both goods than it could."
+   "sample": "The horizontal axis is labeled Corn and the vertical axis Fabric. The PPC is a straight line (constant opportunity cost) from 12 bolts of fabric on the vertical axis to 36 bushels of corn on the horizontal axis, labeled PPC. Point U sits inside the line, below and to the left of it, because a worker who is idle for part of the day produces less of both goods than the worker could."
   },
   {
    "label": "B",

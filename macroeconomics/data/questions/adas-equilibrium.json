@@ -233,7 +233,7 @@
     "It is a long-run equilibrium, because AD equals SRAS",
     "It is a short-run equilibrium but not a long-run equilibrium",
     "It is not an equilibrium, because firms want to produce more",
-    "It is both a short-run and a long-run equilibrium"
+    "It is both a short-run and a long-run equilibrium at the same time"
    ],
    "correct": 1,
    "why": {
@@ -314,9 +314,9 @@
    "diff": 2,
    "type": "graph",
    "practice": "4.B",
-   "q": "This economy is in an inflationary gap. Mark a point X on the AD curve that would be a long-run equilibrium at the same LRAS.",
+   "q": "This economy is in an inflationary gap. A long-run equilibrium at the same LRAS would sit on this AD curve where AD meets LRAS. Mark a point X on AD between today's equilibrium and LRAS, showing which way the price level and real GDP differ from today.",
    "why": {
-    "correct": "Long-run equilibrium is on LRAS. Moving along AD to full-employment output means less output and a higher price level than now."
+    "correct": "Long-run equilibrium is on LRAS. Moving up along AD toward full-employment output means less real GDP and a higher price level than now."
    },
    "graph": {
     "kind": "adas",
@@ -347,7 +347,7 @@
    "q": "What defines short-run equilibrium in the AD-AS model?",
    "options": [
     "The price level and real GDP where AD crosses LRAS",
-    "Real GDP at full employment",
+    "Real GDP at full employment, whatever the price level",
     "The price level and real GDP where AD crosses SRAS",
     "The price level at which unemployment is zero"
    ],
@@ -530,9 +530,9 @@
    "q": "On an AD-AS graph, the short-run equilibrium is at PL1 and Y1, and Y1 is to the right of LRAS. Where should YF be labeled?",
    "options": [
     "On the horizontal axis where LRAS stands, to the left of Y1",
-    "On the horizontal axis at Y1",
-    "On the vertical axis at PL1",
-    "On the horizontal axis to the right of Y1"
+    "On the horizontal axis at Y1, where AD crosses SRAS",
+    "On the vertical axis at PL1, level with the equilibrium",
+    "On the horizontal axis to the right of Y1, beyond the equilibrium"
    ],
    "correct": 0,
    "why": {

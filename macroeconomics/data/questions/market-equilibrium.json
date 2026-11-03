@@ -523,10 +523,10 @@
    "stimulus": "market-equilibrium-s3",
    "q": "What happens to the equilibrium quantity of blueberries?",
    "options": [
-    "It rises",
-    "It falls",
+    "It rises, because demand increased",
+    "It falls, because supply decreased",
     "It is indeterminate without the sizes of the shifts",
-    "It stays the same"
+    "It stays the same, because the shifts cancel"
    ],
    "correct": 2,
    "why": {
@@ -550,10 +550,10 @@
    "stimulus": "market-equilibrium-s3",
    "q": "What extra information would tell you whether the quantity of blueberries sold rises or falls?",
    "options": [
-    "Whether the price of blueberries rises",
-    "Whether the increase in demand is larger or smaller than the decrease in supply",
-    "How many growers live in the region",
-    "Whether blueberries are a normal good"
+    "Whether the price of blueberries rises or falls",
+    "The relative sizes of the demand and supply shifts",
+    "How many blueberry growers live in the region",
+    "Whether blueberries are a normal or inferior good"
    ],
    "correct": 1,
    "why": {

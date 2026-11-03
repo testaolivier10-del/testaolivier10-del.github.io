@@ -406,8 +406,8 @@
    "practice": "1.B",
    "q": "Why is a credit card not counted as money?",
    "options": [
-    "It is not accepted in enough stores",
-    "Paying with it is a loan from the card issuer, repaid later with money",
+    "It is not accepted in enough stores and online shops",
+    "Paying with it is a loan, repaid later with money",
     "It earns interest for the cardholder",
     "Its value changes with stock prices"
    ],
@@ -416,7 +416,7 @@
     "correct": "A credit card is a way to borrow. The checkable deposit or currency used to pay the bill is the money.",
     "options": [
      "Credit cards are widely accepted; the issue is what paying with one is.",
-     "Right: the card creates a debt; the money is what pays off the bill.",
+     "Right: the card creates a debt to the card issuer; the money is what pays off the bill.",
      "Credit cards charge the holder interest; they do not pay it.",
      "A card's use does not depend on stock prices; it is a way to borrow."
     ]

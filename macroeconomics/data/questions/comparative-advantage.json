@@ -13,7 +13,7 @@
     ],
     "rows": [
      [
-      "Corvia",
+      "Marnovia",
       "24",
       "8"
      ],
@@ -61,9 +61,9 @@
    "type": "numeric",
    "practice": "1.C",
    "stimulus": "comparative-advantage-s1",
-   "q": "Using the table, what is Corvia's opportunity cost of making one hat, in shirts?",
+   "q": "Using the table, what is Marnovia's opportunity cost of making one hat, in shirts?",
    "why": {
-    "correct": "A Corvian worker who makes 8 hats gives up 24 shirts, so one hat costs $\\frac{24}{8} = 3$ shirts."
+    "correct": "A Marnovian worker who makes 8 hats gives up 24 shirts, so one hat costs $\\frac{24}{8} = 3$ shirts."
    },
    "numeric": {
     "from": {
@@ -93,7 +93,7 @@
    "q": "Which country has the absolute advantage in hats?",
    "options": [
     "Delmont, because it has the lower opportunity cost of making hats",
-    "Corvia, because one worker makes 8 hats a day to Delmont's 6",
+    "Marnovia, because one worker makes 8 hats a day to Delmont's 6",
     "Delmont, because it makes fewer shirts per worker",
     "Neither, because both countries make hats"
    ],
@@ -104,7 +104,7 @@
      "Lower opportunity cost is comparative advantage, not absolute advantage.",
      "Right: more hats from one worker.",
      "Making fewer shirts does not mean making more hats.",
-     "Absolute advantage compares how much each makes, and Corvia makes more."
+     "Absolute advantage compares how much each makes, and Marnovia makes more."
     ]
    }
   },
@@ -119,14 +119,14 @@
    "stimulus": "comparative-advantage-s1",
    "q": "Which country has the comparative advantage in hats?",
    "options": [
-    "Delmont, because a hat costs it 2 shirts and costs Corvia 3",
-    "Corvia, because each of its workers makes more hats per day",
-    "Corvia, because it makes more of both goods",
+    "Delmont, because a hat costs it 2 shirts and costs Marnovia 3",
+    "Marnovia, because each of its workers makes more hats per day",
+    "Marnovia, because it makes more of both goods",
     "Delmont, because it makes fewer shirts"
    ],
    "correct": 0,
    "why": {
-    "correct": "Comparative advantage is the lower opportunity cost. A hat costs Delmont $\\frac{12}{6} = 2$ shirts and Corvia 3 shirts.",
+    "correct": "Comparative advantage is the lower opportunity cost. A hat costs Delmont $\\frac{12}{6} = 2$ shirts and Marnovia 3 shirts.",
     "options": [
      "Right: 2 shirts is less than 3.",
      "More hats per worker is absolute advantage.",
@@ -146,14 +146,14 @@
    "stimulus": "comparative-advantage-s1",
    "q": "If both countries specialize by comparative advantage, what does each produce?",
    "options": [
-    "Corvia makes both, because it is better at both",
-    "Corvia makes hats and Delmont makes shirts",
+    "Marnovia makes both, because it is better at both",
+    "Marnovia makes hats and Delmont makes shirts",
     "Each makes half of each good",
-    "Corvia makes shirts and Delmont makes hats"
+    "Marnovia makes shirts and Delmont makes hats"
    ],
    "correct": 3,
    "why": {
-    "correct": "A shirt costs Corvia $\\frac{8}{24}$, a third of a hat, and Delmont half a hat, so Corvia specializes in shirts and Delmont in hats.",
+    "correct": "A shirt costs Marnovia $\\frac{8}{24}$, a third of a hat, and Delmont half a hat, so Marnovia specializes in shirts and Delmont in hats.",
     "options": [
      "Specializing by absolute advantage misses the gains from trade.",
      "This reverses the comparative advantages.",
@@ -180,12 +180,12 @@
    ],
    "correct": 2,
    "why": {
-    "correct": "The price of a hat must lie between the two opportunity costs, 2 shirts (Delmont) and 3 shirts (Corvia). Delmont sells hats for more than 2 shirts; Corvia buys them for less than 3.",
+    "correct": "The price of a hat must lie between the two opportunity costs, 2 shirts (Delmont) and 3 shirts (Marnovia). Delmont sells hats for more than 2 shirts; Marnovia buys them for less than 3.",
     "options": [
      "Delmont gives up 2 shirts to make a hat, so selling it for 1.5 loses shirts.",
-     "Corvia can make a hat for 3 shirts itself, so it will not pay 3.5.",
+     "Marnovia can make a hat for 3 shirts itself, so it will not pay 3.5.",
      "Right: 2.5 is between 2 and 3.",
-     "Corvia can make a hat for 3 shirts itself, so it will not pay 4."
+     "Marnovia can make a hat for 3 shirts itself, so it will not pay 4."
     ]
    }
   },
@@ -257,9 +257,9 @@
    "q": "Which country has the comparative advantage in chairs?",
    "options": [
     "Fenwick, because a chair costs it a third of a table and costs Ellis half a table",
-    "Ellis, because it needs fewer hours per chair",
-    "Ellis, because it is faster at both goods",
-    "Fenwick, because it needs more hours per table"
+    "Ellis, because it needs fewer hours per chair than Fenwick",
+    "Ellis, because it is faster at making both goods",
+    "Fenwick, because it needs more hours to make a table"
    ],
    "correct": 0,
    "why": {
@@ -311,7 +311,7 @@
    "options": [
     "Absolute advantage: the assistant types faster than the surgeon",
     "Scarcity: there is not enough typing to go around",
-    "Comparative advantage: an hour of typing costs the surgeon far more surgery than it costs the assistant",
+    "Comparative advantage: the assistant's opportunity cost of typing is lower",
     "Increasing opportunity cost: typing gets harder the more she does"
    ],
    "correct": 2,
@@ -336,9 +336,9 @@
    "q": "Can one country have the comparative advantage in both of two goods?",
    "options": [
     "Yes: if it has the absolute advantage in both",
-    "No: if its opportunity cost of one good is lower, its opportunity cost of the other is higher",
-    "Yes: if it has more workers",
-    "Yes: if its PPC is farther out"
+    "No: a lower cost of one good means a higher cost of the other",
+    "Yes: if it has more workers than the other country",
+    "Yes: if its PPC lies farther from the origin"
    ],
    "correct": 1,
    "why": {
@@ -440,9 +440,9 @@
    "diff": 3,
    "type": "numeric",
    "practice": "3.C",
-   "q": "In Corvia one worker makes 24 shirts or 8 hats a day. Corvia trades for hats at 1 hat for 2.5 shirts. How many shirts does Corvia save on each hat it buys instead of making it?",
+   "q": "In Marnovia one worker makes 24 shirts or 8 hats a day. Marnovia trades for hats at 1 hat for 2.5 shirts. How many shirts does Marnovia save on each hat it buys instead of making it?",
    "why": {
-    "correct": "Making a hat costs Corvia $\\frac{24}{8} = 3$ shirts; buying one costs 2.5 shirts, so Corvia saves $3 - 2.5 = 0.5$ shirt per hat."
+    "correct": "Making a hat costs Marnovia $\\frac{24}{8} = 3$ shirts; buying one costs 2.5 shirts, so Marnovia saves $3 - 2.5 = 0.5$ shirt per hat."
    },
    "numeric": {
     "from": {
@@ -462,11 +462,11 @@
     "mistakes": [
      {
       "value": 2.5,
-      "why": "That is the price Corvia pays. The gain is its own opportunity cost (3 shirts) minus that price."
+      "why": "That is the price Marnovia pays. The gain is its own opportunity cost (3 shirts) minus that price."
      },
      {
       "value": 3,
-      "why": "That is what a hat costs Corvia to make. The gain is that cost minus the 2.5 shirts it pays."
+      "why": "That is what a hat costs Marnovia to make. The gain is that cost minus the 2.5 shirts it pays."
      }
     ]
    }

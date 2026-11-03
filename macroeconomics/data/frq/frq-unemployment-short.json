@@ -15,6 +15,7 @@
   "1.B",
   "2.C"
  ],
+ "scenario": "A monthly survey in Country Y, an invented country, sorts its adults into the groups shown in the table.",
  "stimulus": {
   "title": "Labor market survey in Country Y",
   "invented": true,

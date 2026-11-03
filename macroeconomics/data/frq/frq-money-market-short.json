@@ -95,7 +95,7 @@
   {
    "label": "C",
    "points": 1,
-   "prompt": "Based on your answer to part A, what happens to the prices of existing bonds in Wren? <b>Explain</b>.",
+   "prompt": "Based on your answer to part A, <b>explain</b> what happens to the prices of existing bonds in Wren.",
    "rubric": [
     {
      "point": "States that bond prices fall, because bond prices move opposite to interest rates (people sell bonds to get money)",

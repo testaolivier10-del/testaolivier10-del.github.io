@@ -179,21 +179,21 @@
    "type": "single",
    "practice": "2.A",
    "stimulus": "monetary-policy-s2",
-   "q": "Which open market operation should Pell's central bank use to close the inflationary gap?",
+   "q": "Pell's central bank uses an open market operation to close the inflationary gap. Which operation should it use, and what does it do to bank reserves?",
    "options": [
-    "Buy government bonds",
-    "Lower the discount rate",
-    "Sell government bonds",
-    "Lower the required reserve ratio"
+    "Buy government bonds, which adds reserves",
+    "Sell government bonds, which adds reserves",
+    "Sell government bonds, which drains reserves",
+    "Buy government bonds, which drains bank reserves"
    ],
    "correct": 2,
    "why": {
     "correct": "With limited reserves, selling bonds is contractionary: it lowers reserves and the money supply, raising interest rates.",
     "options": [
-     "Buying bonds adds reserves and raises the money supply, which would push AD and prices higher.",
-     "A lower discount rate makes it cheaper for banks to borrow reserves, which raises the money supply.",
-     "Right: selling bonds drains reserves, so the money supply falls and interest rates rise.",
-     "A lower ratio raises the money multiplier and the money supply: expansionary, not contractionary."
+     "Buying bonds does add reserves, but more reserves raise the money supply and push AD and prices higher: expansionary.",
+     "Selling is the right operation, but banks pay for the bonds with reserves, so reserves fall, not rise.",
+     "Right: banks pay for the bonds with reserves, so reserves and the money supply fall and interest rates rise.",
+     "The central bank pays for bonds it buys with new reserves, so buying adds reserves, and it is expansionary."
     ]
    }
   },

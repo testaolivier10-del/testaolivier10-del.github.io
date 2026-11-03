@@ -7,6 +7,6 @@
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "A bar chart of new spending in each round when the MPC is 0.8 and the first round is 100: 100, 80, 64, 51.2, 41 and 32.8. All rounds add up to 500, five times the first round."
+  "alt": "A bar chart of new spending in each round when the MPC is 0.8 and the first round is 100: 100, 80, 64, 51.2, 41.0 and 32.8 (rounded). All rounds add up to 500, five times the first round."
  }
 }

@@ -15,6 +15,7 @@
   "2.C",
   "3.C"
  ],
+ "scenario": "Country Z, an invented country, reports its nominal GDP and its GDP deflator. Year 1 is the base year.",
  "stimulus": {
   "title": "Nominal GDP and the GDP deflator in Country Z",
   "invented": true,

@@ -85,21 +85,21 @@ add('aggregate-demand-curve', 640, 330, 'Movement along AD and a shift of AD',
 
 // 3.2 Multipliers: rounds of spending with MPC 0.8 (a bar chart, drawn here).
 {
-  const rounds = [100, 80, 64, 51.2, 41, 32.8], w = 640, h = 360, ox = 70, oy = 40, pw = 520, ph = 230;
-  const g = [`<text x="${ox + pw / 2}" y="24" text-anchor="middle" font-size="15" font-weight="700" fill="${INK}">New spending in each round (MPC = 0.8, first round 100)</text>`];
+  const rounds = [0, 1, 2, 3, 4, 5].map(k => 100 * Math.pow(0.8, k)), w = 640, h = 360, ox = 70, oy = 54, pw = 520, ph = 230;
+  const g = [`<text x="${ox + pw / 2}" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="${INK}">New spending in each round (MPC = 0.8, first round 100)</text>`];
   g.push(`<path d="M${ox} ${oy}V${oy + ph}H${ox + pw}" fill="none" stroke="${INK}" stroke-width="1.8"/>`);
   [0, 25, 50, 75, 100].forEach(v => { const y = oy + ph - v / 100 * ph; g.push(`<text x="${ox - 6}" y="${f1(y + 4)}" text-anchor="end" font-size="12" fill="${INK}">${v}</text><path d="M${ox} ${f1(y)}H${ox + pw}" stroke="#D9DEDC" stroke-width="1"/>`); });
   rounds.forEach((v, i) => {
     const bw = 58, x = ox + 18 + i * 80, y = oy + ph - v / 100 * ph;
     g.push(`<rect x="${x}" y="${f1(y)}" width="${bw}" height="${f1(v / 100 * ph)}" fill="${i ? C1 : C2}"/>`);
-    g.push(`<text x="${x + bw / 2}" y="${f1(y - 6)}" text-anchor="middle" font-size="12" font-weight="700" fill="${INK}">${v}</text>`);
+    g.push(`<text x="${x + bw / 2}" y="${f1(y - 6)}" text-anchor="middle" font-size="12" font-weight="700" fill="${INK}">${i < 4 ? f1(v) : v.toFixed(1)}</text>`);
     g.push(`<text x="${x + bw / 2}" y="${oy + ph + 16}" text-anchor="middle" font-size="12" fill="${INK}">${i + 1}</text>`);
   });
   g.push(`<text x="${ox + pw}" y="${oy + ph + 36}" text-anchor="end" font-size="13" font-weight="700" fill="${INK}">Round of spending</text>`);
   g.push(`<text transform="translate(${ox - 40} ${oy}) rotate(-90)" text-anchor="end" font-size="13" font-weight="700" fill="${INK}">New spending (millions of dollars)</text>`);
   g.push(`<text x="${ox + pw}" y="${oy + 22}" text-anchor="end" font-size="13" font-weight="700" fill="${C3}">All rounds add up to 100 × 5 = 500</text>`);
   FIGS['multipliers-rounds'] = svgDoc('multipliers-rounds', w, h, 'Rounds of spending behind the multiplier',
-    'A bar chart of new spending in each round when the MPC is 0.8 and the first round is 100 million dollars: 100, then 80, 64, 51.2, 41 and 32.8, each round 0.8 times the one before. All rounds together add up to 500, five times the first.', g.join('\n'));
+    'A bar chart of new spending in each round when the MPC is 0.8 and the first round is 100 million dollars: 100, then 80, 64, 51.2, 41.0 and 32.8 (rounded), each round 0.8 times the one before. All rounds together add up to 500, five times the first.', g.join('\n'));
 }
 
 // 3.3 SRAS: upward slope and a leftward shift.

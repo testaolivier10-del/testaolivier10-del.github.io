@@ -167,7 +167,7 @@ const figs = {};
 
 /* 4. 5.3: money growth in the long run only raises the price level. */
 {
-  const id = 'money-growth-inflation-longrun', W = 620, H = 430;
+  const id = 'money-growth-inflation-longrun', W = 620, H = 465;
   let b = lines(W / 2, 30, ['More money in the long run: a higher price level, the same real GDP'], { size: 18, weight: 'bold' });
   const a = panel(id, 110, 90, 380, 270, { x: 'Real GDP', y: 'Price level' });
   a.vert(5, { stroke: INK }).label(5.1, 9.7, 'LRAS', '');
@@ -177,11 +177,11 @@ const figs = {};
   a.up(3.6, { stroke: VER }).label(7.4, 9.5, 'SRAS', '2', { fill: VER });
   a.arrow(5.6, 3.0, 7.0, 3.0, { color: 'arB', stroke: BLU });
   a.arrow(6.8, 7.9, 5.6, 7.9, { color: 'arV', stroke: VER });
-  a.point(5, 5, { xlab: lab('Y', 'F'), ylab: lab('PL', '1'), name: 'A', nameDx: 8, nameDy: 18 });
+  a.point(5, 5, { xlab: lab('Y', 'F'), ylab: lab('PL', '1'), name: 'A', nameDx: 13, nameDy: 20 });
   a.dot(5.7, 5.7, 'B', { fill: BLU });
   a.point(5, 6.4, { fill: ACC, ylab: lab('PL', '3'), name: 'C', nameDx: -22 });
   b += a.svg();
-  b += lines(W / 2, 404, ['A to B: more money raises AD (short run). B to C: nominal wages catch up and SRAS shifts left.', 'In the long run (C), real GDP is back at full employment; only the price level is higher.'], { size: 13, fill: GREY });
+  b += lines(W / 2, 432, ['A to B: more money raises AD (short run). B to C: nominal wages catch up and SRAS shifts left.', 'In the long run (C), real GDP is back at full employment; only the price level is higher.'], { size: 13, fill: GREY });
   figs[id] = { topic: 'money-growth-inflation', w: W, h: H, svg: svg(id, W, H, 'The long-run effect of more money on AD-AS',
     'An AD-AS graph with a vertical LRAS at full-employment output YF. A rise in the money supply shifts AD right from AD1 to AD2, moving the economy from A to B with more output and a higher price level. Nominal wages then rise and SRAS shifts left from SRAS1 to SRAS2, so the economy ends at C on LRAS: real GDP back at YF and a higher price level PL3.', b),
     alt: 'An AD-AS graph: AD shifts right after money growth, then SRAS shifts left as wages adjust, ending at full-employment output with a higher price level.' };
@@ -245,7 +245,7 @@ const figs = {};
   a.ppc(8, { stroke: ACC }).label(6.0, 6.0, 'PPC', '2', { fill: ACC });
   a.arrow(4.0, 4.0, 5.3, 5.3, { color: 'arA', stroke: ACC });
   a.dot(2.2, 2.0, 'X', { fill: INK, dx: 8, dy: 4 });
-  a.note(2.2, 1.0, 'inside: idle resources', { fill: GREY, anchor: 'start' });
+  a.note(1.2, 1.0, 'idle resources', { fill: GREY, anchor: 'start' });
   const p = panel(id, 520, 80, 300, 250, { x: 'Real GDP', y: 'Price level', title: 'AD-AS' });
   p.vert(4, { stroke: GREY, dash: '6 5', sw: 2 }).label(4.1, 9.7, 'LRAS', '1', { fill: GREY });
   p.vert(6, { stroke: ACC }).label(6.1, 9.7, 'LRAS', '2', { fill: ACC });

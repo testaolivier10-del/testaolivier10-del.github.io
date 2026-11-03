@@ -498,19 +498,19 @@
    "q": "How does the fixed basket affect the CPI's measure of how much living costs rose in Country Y?",
    "stimulus": "price-indices-inflation-s2",
    "options": [
+    "It shows no rise, because chicken prices did not change",
     "It overstates the rise, because families switched to cheaper chicken",
     "It understates the rise, because beef doubled in price",
-    "It measures the rise exactly, because both meats stay in the basket",
-    "It shows no rise, because chicken prices did not change"
+    "It measures the rise exactly, because both meats stay in the basket"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Substitution bias: when a price rises, people buy less of it and more of a substitute. A fixed basket misses the switch and overstates the rise in the cost of living.",
     "options": [
+     "Beef is in the basket, and its price doubled, so the index rises.",
      "Right: the CPI prices the old amount of beef, but families now buy less of it, so their actual costs rose less.",
      "The doubling is fully counted at the old quantity of beef; the error goes the other way.",
-     "Keeping quantities fixed ignores how families changed what they buy.",
-     "Beef is in the basket, and its price doubled, so the index rises."
+     "Keeping quantities fixed ignores how families changed what they buy."
     ]
    }
   },
@@ -525,19 +525,19 @@
    "q": "What is the name for this problem with the consumer price index?",
    "stimulus": "price-indices-inflation-s2",
    "options": [
-    "Substitution bias",
-    "Double counting",
     "Deflation",
-    "The underground economy"
+    "The underground economy",
+    "Substitution bias",
+    "Double counting"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Substitution bias is one reason the CPI can overstate inflation; new goods and quality improvements are others.",
     "options": [
-     "Right: a fixed basket ignores that consumers substitute away from goods whose prices rise.",
-     "Double counting is a GDP measurement problem with intermediate goods.",
      "Deflation is a fall in prices in general; here prices rose.",
-     "That is unreported market activity, a limitation of GDP."
+     "That is unreported market activity, a limitation of GDP.",
+     "Right: a fixed basket ignores that consumers substitute away from goods whose prices rise.",
+     "Double counting is a GDP measurement problem with intermediate goods."
     ]
    }
   },
@@ -552,19 +552,19 @@
    "q": "Besides substitution, which change would also make a fixed-basket CPI overstate the rise in the cost of living?",
    "stimulus": "price-indices-inflation-s2",
    "options": [
-    "A good in the basket costs 5% more but is now much better made",
     "A good in the basket costs 5% more with no change in quality",
     "The statistics office surveys more stores",
-    "A good outside the basket rises in price"
+    "A good outside the basket rises in price",
+    "A good in the basket costs 5% more but is now much better made"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "Quality improvements and new goods, like substitution, make the CPI overstate how much more it costs to live as well as before.",
     "options": [
-     "Right: part of the higher price pays for higher quality, but the CPI records it all as a price rise.",
      "That is a true price rise; the CPI measures it correctly.",
      "Surveying more stores makes prices more accurate; it does not bias them up.",
-     "A good outside the basket does not move the index at all."
+     "A good outside the basket does not move the index at all.",
+     "Right: part of the higher price pays for higher quality, but the CPI records it all as a price rise."
     ]
    }
   },
@@ -606,19 +606,19 @@
    "q": "In which year did Country Z have deflation?",
    "stimulus": "price-indices-inflation-s3",
    "options": [
+    "No year, because the CPI stayed above 100",
     "Year 4",
     "Year 3",
-    "Year 2",
-    "No year, because the CPI stayed above 100"
+    "Year 2"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Deflation means the index itself falls, so the inflation rate is negative.",
     "options": [
+     "Deflation is a fall in the index from one year to the next, whatever its level.",
      "Right: the CPI fell from 107 to 106, so prices fell on average.",
      "The CPI rose in Year 3 (from 104 to 107); only the rate of increase slowed.",
-     "The CPI rose from 100 to 104 in Year 2, which is inflation.",
-     "Deflation is a fall in the index from one year to the next, whatever its level."
+     "The CPI rose from 100 to 104 in Year 2, which is inflation."
     ]
    }
   },
@@ -744,19 +744,19 @@
    "practice": "2.A",
    "q": "Over a year, Sam's nominal wage rises 3% while the CPI rises 5%. What happens to his real wage?",
    "options": [
-    "It falls by about 2%",
-    "It rises by about 3%",
     "It rises by about 8%",
-    "It stays the same, because he got a raise"
+    "It stays the same, because he got a raise",
+    "It falls by about 2%",
+    "It rises by about 3%"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Percent change in a real value is about the percent change in the nominal value minus the inflation rate: $3 - 5 = -2\\%$.",
     "options": [
-     "Right: prices rose faster than his pay, so each hour of work buys about 2% less.",
-     "That is his nominal wage; the real wage also accounts for the 5% rise in prices.",
      "Price increases lower the real wage; they are not added to the raise.",
-     "A raise smaller than inflation still leaves him able to buy less."
+     "A raise smaller than inflation still leaves him able to buy less.",
+     "Right: prices rose faster than his pay, so each hour of work buys about 2% less.",
+     "That is his nominal wage; the real wage also accounts for the 5% rise in prices."
     ]
    }
   },
@@ -770,19 +770,19 @@
    "practice": "1.B",
    "q": "A country's CPI is 130. What does that number mean?",
    "options": [
-    "The basket costs 30% more than it did in the base year",
     "Prices rose 130% since the base year",
     "The inflation rate this year is 130%",
-    "The basket costs 130 dollars"
+    "The basket costs 130 dollars",
+    "The basket costs 30% more than it did in the base year"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "A price index compares a cost with the base year, where the index is 100. The rise since the base year is the index minus 100, in percent.",
     "options": [
-     "Right: the base year is 100, so 130 is 30% higher.",
      "An index of 130 is 30% above 100, not 130% above it.",
      "The index level is not the inflation rate; the rate compares this year's index with last year's.",
-     "The index is a ratio times 100, not a dollar amount."
+     "The index is a ratio times 100, not a dollar amount.",
+     "Right: the base year is 100, so 130 is 30% higher."
     ]
    }
   },
@@ -822,22 +822,22 @@
    "practice": "1.A",
    "q": "Which statements about inflation are correct? Select all that apply.",
    "options": [
+    "Disinflation means prices are falling",
     "Inflation is a rise in prices in general across the economy",
     "The inflation rate is the percent change in a price index",
-    "A rise in the price of one good is inflation",
-    "Disinflation means prices are falling"
+    "A rise in the price of one good is inflation"
    ],
    "correct": [
-    0,
-    1
+    1,
+    2
    ],
    "why": {
     "correct": "Inflation is a general rise in prices; disinflation is a slower rise; deflation is a fall in prices in general.",
     "options": [
+     "Disinflation means inflation is slowing; prices are still rising.",
      "Right: it is a general rise, measured by a price index, not a rise in one price.",
      "Right: $\\frac{\\text{new} - \\text{old}}{\\text{old}} \\times 100$.",
-     "One price can rise while others fall; inflation is a rise in prices in general.",
-     "Disinflation means inflation is slowing; prices are still rising."
+     "One price can rise while others fall; inflation is a rise in prices in general."
     ]
    }
   }

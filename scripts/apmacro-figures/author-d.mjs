@@ -133,7 +133,7 @@ function add(topic, id, w, h, title, alt, body) {
 /* 4.4: a bank balance sheet (T-account) and its reserves. */
 {
   const W = 760, H = 360;
-  let b = text(380, 36, 'Quentar Savings Bank (invented), required reserve ratio 0.1', { anchor: 'middle', bold: true, size: 17 });
+  let b = text(380, 36, 'An invented bank, required reserve ratio 0.1', { anchor: 'middle', bold: true, size: 17 });
   b += line(120, 60, 640, 60, { sw: 2.5 }) + line(380, 60, 380, 230, { sw: 2.5 });
   b += text(250, 84, 'Assets', { anchor: 'middle', bold: true, size: 16 }) + text(510, 84, 'Liabilities', { anchor: 'middle', bold: true, size: 16 });
   b += text(140, 120, 'Reserves', { size: 15 }) + text(360, 120, '$300', { anchor: 'end', size: 15, bold: true });
@@ -199,7 +199,7 @@ function add(topic, id, w, h, title, alt, body) {
   let b = F.body;
   b += poly(F, [[1, 1], [9, 9]], { stroke: INK }) + sub(F.X(9) + 4, F.Y(9) + 4, 'S', 'LF');
   b += poly(F, [[1, 9], [9, 1]], { stroke: INK }) + sub(F.X(9) + 4, F.Y(1) + 4, 'D', 'LF1');
-  b += poly(F, [[2.6, 9.4], [10, 2]], { stroke: BLUE }) + sub(F.X(9.6), F.Y(2.4) - 10, 'D', 'LF2', { fill: BLUE, anchor: 'end' });
+  b += poly(F, [[2.6, 9.4], [10, 2]], { stroke: BLUE }) + sub(F.X(10) + 4, F.Y(2) + 4, 'D', 'LF2', { fill: BLUE });
   b += line(F.X(3), F.Y(7), F.X(4.2), F.Y(7.6), { stroke: VERM, sw: 2.5, arrow: 'arrV' });
   b += guides(F, 5, 5, ['Q', '1'], ['r', '1']) + guides(F, 6, 6, ['Q', '2'], ['r', '2'], BLUE) + dot(F.X(5), F.Y(5)) + dot(F.X(6), F.Y(6), BLUE);
   add('loanable-funds', 'loanable-funds-government-borrowing', W, H, 'Loanable funds: more government borrowing raises the real interest rate',

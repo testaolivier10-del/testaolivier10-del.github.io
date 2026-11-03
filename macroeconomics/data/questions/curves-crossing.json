@@ -137,10 +137,10 @@
    "practice": "1.A",
    "q": "On a market graph, what does the point where the two curves cross show?",
    "options": [
-    "The highest price buyers will pay",
-    "The one price at which the quantity buyers want equals the quantity sellers offer",
-    "The lowest price sellers will accept",
-    "The price at which nothing is sold"
+    "The highest price buyers will pay for the good",
+    "The price at which the quantity buyers want equals the quantity offered",
+    "The lowest price sellers will accept for the good",
+    "The price at which buyers and sellers trade nothing"
    ],
    "correct": 1,
    "why": {
@@ -288,8 +288,8 @@
       "why": "You added the two quantities. The gap between them is the larger minus the smaller: 80 - 20."
      },
      {
-      "value": 30,
-      "why": "That is the gap at \\$15 plus another row. Read the \\$10 row only: 80 wanted, 20 offered."
+      "value": 80,
+      "why": "That is the number buyers want. The question asks how many more they want than sellers offer: 80 - 20."
      }
     ]
    }
@@ -332,9 +332,9 @@
    "q": "To compare two crossings on an exam graph, what should you show?",
    "options": [
     "The new crossing by itself, since the old one no longer matters",
-    "The curves alone, since the crossings are obvious",
-    "The new curve drawn over the old one with no labels",
-    "Both crossings, each with dashed lines to both axes, labeled with the old and new price and quantity"
+    "The two curves alone, since the crossings are obvious from them",
+    "The new curve drawn over the old one, with no labels needed",
+    "Both crossings, labeled, with dashed lines to the old and new price and quantity"
    ],
    "correct": 3,
    "why": {
