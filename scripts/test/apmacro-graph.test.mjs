@@ -176,3 +176,49 @@ test('keyResponse: the key drawn as a student would grades full for every kind o
     { kind: 'ppc', names: { x: 'A', y: 'B' }, do: ['point'], key: { point: { region: 'outside' } } }];
   for (const s of specs) { assert.deepEqual(plain(M.check(s)), [], JSON.stringify(s)); assert.equal(G.graph(s, M.keyResponse(s)).correct, true, s.kind); }
 });
+
+test('two shifts: an axis that depends on the sizes is indeterminate, never keyed and never graded as same', async () => {
+  const both = { kind: 'sd', do: ['shift', 'equilibrium'], key: { shifts: [{ curve: 'D', dir: 'right' }, { curve: 'S', dir: 'right' }], because: 'higher incomes and cheaper inputs', outcome: { quantity: 'up' } } };
+  assert.deepEqual(plain(M.indeterminate(both, both.key.shifts)), ['price']);
+  assert.deepEqual(plain(M.indeterminate(both, { D: 2, S: 1 })), ['price'], 'a response is read by its signs');
+  assert.deepEqual(plain(M.indeterminate(cost, cost.key.shifts)), [], 'one shift is never indeterminate');
+  assert.deepEqual(plain(M.check(both)), []);
+  assert.ok(M.check({ ...both, key: { ...both.key, outcome: { quantity: 'up', price: 'same' } } }).some(m => /depends on their sizes/.test(m)), 'a key may not claim the indeterminate axis');
+  // Unequal sizes keep every point: the price is not graded.
+  const r = G.graph(both, { shifts: { D: 2, S: 1 }, eq: M.eq(both, { D: 2, S: 1 }) });
+  assert.equal(r.correct, true, r.slip);
+  // A long-run story pins output with key.hold: unequal sizes then miss it.
+  const lr = { kind: 'adas', do: ['shift', 'equilibrium'], key: { shifts: [{ curve: 'AD', dir: 'right' }, { curve: 'SRAS', dir: 'left' }], because: 'an export boom, then rising wages', outcome: { 'price level': 'up', output: 'same' }, hold: ['output'] } };
+  assert.deepEqual(plain(M.check(lr)), []);
+  assert.ok(M.check({ ...lr, key: { ...lr.key, hold: undefined } }).some(m => /key\.hold/.test(m)), 'output "same" without hold is refused');
+  assert.equal(G.graph(lr, M.keyResponse(lr)).correct, true);
+  const off = { AD: 1, SRAS: -2 }, bad = G.graph(lr, { shifts: off, eq: M.eq(lr, off) });
+  assert.equal(bad.points.find(p => p.id === 'outcome').ok, false, 'the long run ends at full employment');
+  assert.ok(M.check({ ...lr, key: { ...lr.key, hold: ['price level'] } }).some(m => /key\.hold lists/.test(m)));
+});
+
+test('frq-forex-short A and every key.alt: an alt with two shifts of different sizes keeps the outcome point', async () => {
+  const fs = await import('node:fs');
+  const f = JSON.parse(fs.readFileSync(new URL('../../macroeconomics/data/frq/frq-forex-short.json', import.meta.url), 'utf8'));
+  const g = f.parts.find(p => p.label === 'A').graph;
+  for (const sh of [{ D: 1 }, { S: -1 }, { D: 1, S: -1 }, { D: 2, S: -1 }, { D: 1, S: -2 }]) {
+    const r = G.graph(g, { shifts: sh, eq: M.eq(g, sh), labels: M.keyResponse(g).labels });
+    assert.equal(r.correct, true, JSON.stringify(sh) + ': ' + r.slip);
+  }
+  // Every bank and FRQ graph with key.alt: each alt drawn at unequal sizes (where it has two curves) grades right.
+  const path = await import('node:path');
+  const root = new URL('../../macroeconomics/data/', import.meta.url).pathname, seen = [];
+  const walk = d => fs.readdirSync(d).flatMap(n => { const p = path.join(d, n); return fs.statSync(p).isDirectory() ? walk(p) : p.endsWith('.json') ? [p] : []; });
+  const visit = (o, w) => { if (o && typeof o === 'object') { if (o.kind && o.key && o.key.alt) seen.push([w, o]); for (const k in o) visit(o[k], w); } };
+  for (const p of walk(root)) visit(JSON.parse(fs.readFileSync(p, 'utf8')), path.basename(p));
+  assert.ok(seen.length >= 10);
+  for (const [w, s] of seen) for (const set of [s.key.shifts, ...s.key.alt]) {
+    const sizes = set.length > 1 ? [1, 2] : [1];
+    for (const big of sizes) {
+      const sh = {}; set.forEach((x, i) => { sh[x.curve] = M.dirSign(M.find(M.curves(s, {}), x.curve).shape, x.dir) * (i === 0 ? big : 1); });
+      const resp = { ...M.keyResponse(s), shifts: sh }; if ((s.do || []).includes('equilibrium')) resp.eq = M.eq(s, sh);
+      const r = G.graph(s, resp);
+      assert.equal(r.correct, true, `${w} ${JSON.stringify(sh)}: ${r.slip}`);
+    }
+  }
+});

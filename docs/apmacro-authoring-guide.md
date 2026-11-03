@@ -78,8 +78,10 @@ describe or ask for:
   own holders buying foreign ones. A change in one currency's market shows as the mirror change in the other's.
 - **Graph items must be gradable by code.** Every `graph` item or FRQ graph part names its kind, the curve or
   curves that move and which way, the cause (`because`), and the outcome on both axes when the kind has an
-  equilibrium. If an outcome is indeterminate (both curves shift), leave that axis out of `outcome` and ask about
-  it in words. The content check runs the grader on your key; a key it cannot score right fails.
+  equilibrium. If an outcome is indeterminate (two curves shift and that axis depends on the sizes), leave it out
+  of `outcome` and ask about it in words; the checker refuses it, even as "same". A long-run story that ends at
+  full employment (AD right, then SRAS left) keeps "output": "same" with `"hold": ["output"]`. The content check
+  runs the grader on your key; a key it cannot score right fails.
 - **When the exam accepts either shift, key both (`key.alt`)** and word the prompt as the exam does, without
   naming the curve or the actor: government borrowing (DLF right, or SLF left as lower public saving), a change
   in relative real interest rates or capital flows (demand for the currency one way, or its supply the other),

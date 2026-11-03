@@ -349,7 +349,12 @@
       k.shifts = a;
       var s2 = {}; for(var y in spec) s2[y] = spec[y];
       s2.key = k;
-      if(spec.key.outcome){ var o = GR().outcome(s2, GR().keyOffsets(s2)); if(o) k.outcome = o; }
+      // The alt's outcome is read off its own shifts, on the words the key
+      // states, leaving out any its shifts leave to their sizes.
+      if(spec.key.outcome){
+        var o = GR().outcome(s2, GR().keyOffsets(s2)), ind = GR().indeterminate(s2, a), hold = spec.key.hold || [];
+        if(o){ k.outcome = {}; Object.keys(spec.key.outcome).forEach(function(w){ if(w in o && (ind.indexOf(w) < 0 || hold.indexOf(w) > -1)) k.outcome[w] = o[w]; }); }
+      }
       var g = graph1(s2, resp);
       if(g.right > best.right || (g.right === best.right && !bestMine && mine(a))){ best = g; bestMine = mine(a); }
     });
@@ -395,7 +400,11 @@
       var at = M.eq(spec, sh), E = r.eq, near = at && E && Math.abs(E[0] - at[0]) <= EQ_TOL && Math.abs(E[1] - at[1]) <= EQ_TOL;
       pts.push({ id: 'equilibrium', ok: !!near, note: near ? '' : !at ? 'The curves you drew do not cross on the graph.' : 'Put E2 where the curves you drew cross now.' });
       if(key.outcome){
-        var o = M.outcome(spec, sh) || {}, ws = Object.keys(key.outcome), off = ws.filter(function(w){ return o[w] !== key.outcome[w]; });
+        // An axis the shifts leave to their sizes (two curves moving) is not
+        // graded, whichever set (the key's or the student's) makes it so,
+        // unless key.hold pins it (a long run that returns to full employment).
+        var hold = key.hold || [], ind = M.indeterminate(spec, key.shifts).concat(M.indeterminate(spec, sh));
+        var o = M.outcome(spec, sh) || {}, ws = Object.keys(key.outcome).filter(function(w){ return ind.indexOf(w) < 0 || hold.indexOf(w) > -1; }), off = ws.filter(function(w){ return o[w] !== key.outcome[w]; });
         var word = function(d){ return d === 'up' ? 'rises' : d === 'down' ? 'falls' : 'stays the same'; };
         pts.push({ id: 'outcome', ok: shiftOk && !!near && !off.length, note: !shiftOk ? 'The new equilibrium follows from the right shift.' : !near ? 'Mark the new equilibrium to show what happens.' :
           off.length ? 'At the new equilibrium the ' + off[0] + ' ' + word(key.outcome[off[0]]) + '.' : '' });

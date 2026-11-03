@@ -61,8 +61,9 @@
     if(does.indexOf('shift') > -1 && (alt || sc.shifts)){
       spec.key = { shifts: (alt || sc.shifts).map(function(s){ return { curve: s.curve, dir: s.dir }; }), because: fill(sc.because, w.words) };
       if(does.indexOf('equilibrium') > -1){
-        var o = G.outcome(spec, G.keyOffsets(spec));
-        if(o) spec.key.outcome = o;
+        // An axis two shifts leave to their sizes is never keyed (mac-graph.js indeterminate).
+        var o = G.outcome(spec, G.keyOffsets(spec)), ind = G.indeterminate ? G.indeterminate(spec, spec.key.shifts) : [];
+        if(o){ ind.forEach(function(w){ delete o[w]; }); spec.key.outcome = o; }
       }
     }
     if(does.indexOf('point') > -1){ spec.key = { point: JSON.parse(JSON.stringify(sc.point)) }; spec.pointLabel = sc.pointLabel || 'X'; }

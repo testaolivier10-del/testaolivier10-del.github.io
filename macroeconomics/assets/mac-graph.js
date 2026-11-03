@@ -12,6 +12,8 @@
      eq(spec, offsets)         the equilibrium [x, y] of the kind's pair, or null
      outcome(spec, offsets)    { <axis word>: 'up' | 'down' | 'same' } against the start
      keyOffsets(spec)          the key's end state, each key shift one step
+     indeterminate(spec, set)  the outcome axes a set of two or more shifts
+                               leaves to the sizes ([] for one shift)
      keyResponse(spec)         the response a full-credit answer gives (key shifts, E2, labels, point)
      region(spec, offsets, p)  'inside' | 'on' | 'outside' the PPC
      labelText(id, names)      an axis label as shown ("Nominal interest rate")
@@ -170,6 +172,29 @@
     var o = {}; o[k.out.x] = cmp(e1[0], e0[0]); o[k.out.y] = cmp(e1[1], e0[1]);
     return o;
   }
+  /* With two or more curves shifting, an outcome axis can go either way
+     depending on how far each moves (both curves right: quantity up, price
+     up or down). An axis is indeterminate when the shifts' directions, at
+     sizes of a half or a whole step each, do not all give the same answer.
+     set: [{ curve, dir }] or { curve: steps } (the signs are read). One
+     shift alone never is. */
+  function indeterminate(spec, set){
+    var k = kindOf(spec), cs = curves(spec, {}), sign = {};
+    if(!k.out || !set) return [];
+    if(Array.isArray(set)) set.forEach(function(s){ var c = find(cs, s.curve); if(c && dirSign(c.shape, s.dir)) sign[s.curve] = dirSign(c.shape, s.dir); });
+    else Object.keys(set).forEach(function(c){ if(set[c]) sign[c] = set[c] > 0 ? 1 : -1; });
+    var ids = Object.keys(sign);
+    if(ids.length < 2) return [];
+    var seen = {}, n = Math.pow(2, ids.length);
+    for(var m = 0; m < n; m++){
+      var off = {};
+      ids.forEach(function(c, i){ off[c] = sign[c] * ((m >> i) & 1 ? 0.5 : 1); });
+      var o = outcome(spec, off);
+      if(!o) continue;
+      Object.keys(o).forEach(function(w){ (seen[w] = seen[w] || {})[o[w]] = 1; });
+    }
+    return Object.keys(seen).filter(function(w){ return Object.keys(seen[w]).length > 1; });
+  }
   function keyOffsets(spec){
     var off = {}, cs = curves(spec, {}), key = (spec && spec.key) || {};
     (key.shifts || []).forEach(function(s){ var c = find(cs, s.curve); if(c) off[s.curve] = (off[s.curve] || 0) + dirSign(c.shape, s.dir); });
@@ -267,13 +292,17 @@
     if(key.outcome){
       if(!k.out) bad('graph.key.outcome: a ' + spec.kind + ' graph has no equilibrium');
       else {
-        var got = outcome(spec, keyOffsets(spec)) || {};
+        var got = outcome(spec, keyOffsets(spec)) || {}, indet = indeterminate(spec, key.shifts), hold = key.hold || [];
         Object.keys(key.outcome).forEach(function(w){
           if(!(w in got)) bad('graph.key.outcome: "' + w + '" is not an axis of this graph (' + k.out.x + ', ' + k.out.y + ')');
           else if(DIRS.indexOf(key.outcome[w]) < 0) bad('graph.key.outcome.' + w + ' is up, down or same');
+          else if(indet.indexOf(w) > -1 && !(hold.indexOf(w) > -1 && key.outcome[w] === 'same')) bad('graph.key.outcome.' + w + ': with these shifts the ' + w + ' depends on their sizes, so leave it out of the key and ask about it in words' + (key.outcome[w] === 'same' ? ' (a long-run story that ends where it started on this axis lists it in key.hold)' : ''));
           else if(got[w] !== key.outcome[w]) bad('graph.key.outcome.' + w + ' is "' + key.outcome[w] + '" but the key shifts give "' + got[w] + '"' + ((key.shifts || []).length > 1 ? ' (with equal shifts; an outcome that depends on the sizes is left out)' : ''));
         });
       }
+    }
+    if(key.hold !== undefined){
+      if(!Array.isArray(key.hold) || !key.hold.every(function(w){ return key.outcome && key.outcome[w] === 'same'; })) bad('graph.key.hold lists outcome words the key gives as "same" (the long run returns to where it started on that axis)');
     }
     if(does.indexOf('equilibrium') > -1 && !eq(spec, keyOffsets(spec))) bad('graph: the key shifts leave no equilibrium on the graph');
     if(does.indexOf('point') > -1){
@@ -620,7 +649,7 @@
     return { el: host, get: get, set: set, reset: function(){ resetState(); paint(); }, showKey: function(on){ st.key = on !== false; paint(); }, lock: lock };
   }
 
-  root.ApMacroGraph = { KINDS: KINDS, TASKS: TASKS, CURVE: CURVE, AXIS: AXIS, curves: curves, y: y, eq: eq, outcome: outcome, keyOffsets: keyOffsets, keyResponse: keyResponse,
+  root.ApMacroGraph = { KINDS: KINDS, TASKS: TASKS, CURVE: CURVE, AXIS: AXIS, curves: curves, y: y, eq: eq, outcome: outcome, indeterminate: indeterminate, keyOffsets: keyOffsets, keyResponse: keyResponse,
     region: region, distTo: distTo, dirWord: dirWord, dirSign: dirSign, axisOf: axisOf, curveName: curveName, labelText: labelText, labelOptions: labelOptions,
     labelSlots: labelSlots, optionText: optionText, check: check, svg: svg, describe: describe, mount: mount, find: find,
     // The plot box in viewBox units (320 x 300), so a page can draw on top of the SVG in its coordinates.

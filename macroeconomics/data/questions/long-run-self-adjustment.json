@@ -377,7 +377,10 @@
      "outcome": {
       "price level": "up",
       "output": "same"
-     }
+     },
+     "hold": [
+      "output"
+     ]
     }
    }
   },

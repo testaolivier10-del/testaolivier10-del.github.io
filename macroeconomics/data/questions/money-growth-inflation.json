@@ -437,7 +437,10 @@
      "outcome": {
       "price level": "up",
       "output": "same"
-     }
+     },
+     "hold": [
+      "output"
+     ]
     },
     "slips": {
      "LRAS": "Money does not change the economy's resources or technology, so LRAS stays at full-employment output."

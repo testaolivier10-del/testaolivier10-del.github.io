@@ -123,9 +123,15 @@ graded. The ninth graph students draw (the bank balance sheet) is a table, not a
 - `movable`: the curves the student may move (default all). The key's curves must be in it.
 - `key.shifts`: each curve that moves and its direction (`left`/`right`, `up`/`down`, `out`/`in`); one step
   each. `key.because`: the cause in a few words, used in the slip line. `key.outcome`: `up`, `down` or `same`
-  per outcome word; the checker refuses an outcome the key's shifts do not give (so an indeterminate axis is
-  left out). `key.alt` (builder T1): other accepted shift sets, each a list of `{ curve, dir }`; the grader scores
-  the response against the key and every alt and keeps the best (an alt's outcome is read off its own shifts),
+  per outcome word; the checker refuses an outcome the key's shifts do not give. With two or more curves shifting,
+  an axis whose direction depends on the sizes (`ApMacroGraph.indeterminate(spec, set)`: the directions at half
+  and whole steps disagree) must be left out of `key.outcome`, and the grader never grades it, whether the key's or
+  the student's shifts make it so (integrator, 2026-11-03; before, equal steps made it "same" and unequal ones lost
+  the point). `key.hold` (a list of outcome words the key gives as `same`) is the one exception: a long-run story
+  that returns to full employment (AD right, then SRAS left) pins output, so "output same" is graded there.
+  `key.alt` (builder T1): other accepted shift sets, each a list of `{ curve, dir }`; the grader scores
+  the response against the key and every alt and keeps the best (an alt's outcome is read off its own shifts, on
+  the words `key.outcome` names, without the axes that alt leaves to the sizes),
   and the content check (`graphProblems`) and the drill check (`stepsSound`) grade every alt drawn
   (`ApMacroGraph.keyResponse`). Used where the exam accepts either shift (authoring guide).
 - `key.point` (with `do: ["point"]`): `region` (`inside`, `on`, `outside` a PPC), `on` (a curve id), `x`/`y`
