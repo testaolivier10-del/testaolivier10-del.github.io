@@ -642,12 +642,12 @@ function hubLd() {
 export function courseCard({ href, tint, cover, t1, t2, hand, name, tag, line }) {
   return `        <a class="ccard" href="${href}" data-tint="${tint}">
           <span class="cover" data-cover="${cover}"><img src="assets/covers/${cover}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>${t1}<span>${t2}</span></b><em>${hand}</em></span></span>
-          <span class="cmeta"><span class="cname">${name}</span>${tag ? `<span class="tag${tag === 'Beta' ? ' tag--beta' : ''}">${tag}</span>` : ''}</span>
+          <span class="cmeta"><span class="cname">${name}</span><span class="tag${tag === 'Beta' ? ' tag--beta' : ''}">${tag}</span></span>
           <span class="cdesc">${line}</span>
         </a>`;
 }
 const published = (all, topics, rest) => (all ? `All ${fmt(topics)} published topics, ${rest}.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, ${rest}.`);
-const apCard = (o) => courseCard({ tag: '', t1: 'AP®', ...o });
+const apCard = (o) => courseCard({ tag: 'Free to start', t1: 'AP®', ...o });
 function hubBioCard() {
   return apCard({ href: 'bio/', tint: 'bio', cover: 'apbio', t2: 'Biology', hand: 'every unit, data questions', name: 'AP® Biology',
     line: published(BIO_ALL, N.apbioTopics, 'with data-heavy practice like the real exam') });
@@ -702,6 +702,12 @@ function hubPcalcCard() {
   /* The hero's course count (owner, 2026-10-12: it said "Three courses" with
      five live): every open course, from the registry. */
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
+  for (const [re, txt] of [
+    [/(<div class="eyebrow">Free to start &middot; )\w+( courses &middot; notes free forever<\/div>)/, `$1${word.toLowerCase()}$2`],
+  ]) {
+    if (!re.test(src)) throw new Error(`${rel}: the hero no longer matches ${re}`);
+    src = src.replace(re, txt);
+  }
   /* The try one question (Olivier, 2026-10-26: NREMT should not lead the homepage): every open course's
      own sample question from its course home (scripts/lib/course-homes.json, already published there), one
      picked per visit and never the same course twice in a row. The NREMT question in the markup is the
@@ -712,10 +718,14 @@ function hubPcalcCard() {
      own questions: its bank also serves AB's, which apcalc already counts. */
   const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv, appsych: N.appsych, apprecalc: N.apprecalc, apcalcbc: N.apcalcbcOwn };
   const allQ = OPEN.reduce((n, c) => n + (BANK[c.key] || 0), 0);
-  /* Streamline pass (owner 2026-11-02): the facts row repeated the pill above the headline, so the pill
-     carries the one new fact (the question total) and the row is gone. */
+  const facts = [
+    `${fmt(allQ)} practice questions, each one explained`,
+    'Notes free forever in every course',
+    `One level and one streak across all ${word.toLowerCase()} courses`,
+    'No ads',
+  ];
   src = between(src, '<!-- hero-facts:start -->', '<!-- hero-facts:end -->',
-    `    <div class="eyebrow">${word[0].toUpperCase()}${word.slice(1).toLowerCase()} courses &middot; ${fmt(allQ)} questions &middot; notes free forever</div>`, rel);
+    `    <div class="fact-row">\n${facts.map((f) => `      <span><span class="dot"></span>${f}</span>`).join('\n')}\n    </div>`, rel);
   const m = src.indexOf('<!-- levlprep-structured-data -->');
   if (m === -1) throw new Error('index.html: no <!-- levlprep-structured-data --> marker');
   const s0 = src.indexOf('<script type="application/ld+json">', m);
