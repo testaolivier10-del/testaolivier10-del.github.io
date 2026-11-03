@@ -410,18 +410,3 @@
   .cx-q .cx-opt{min-height:56px;font-size:16px;padding:12px 14px;}
   .cx-q .cx-opt .letter{flex-basis:30px;width:30px;height:30px;}
 }
-
-/* ---- Streamline pass (owner 2026-11-02): Practice setup ---- */
-.cx-sharebox{margin-top:12px;border:1px dashed var(--line);border-radius:12px;padding:0 14px}
-.cx-sharebox > summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:10px 0;font:800 14px var(--font-ui);color:var(--muted)}
-.cx-sharebox > summary::-webkit-details-marker{display:none}
-.cx-sharebox > summary::after{content:var(--disclose);font:900 20px/1 var(--font-ui);transition:transform .15s ease}
-.cx-sharebox[open] > summary::after{transform:rotate(90deg)}
-.cx-sharebox > summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
-.cx-sharebox[open]{padding-bottom:12px}
-.cx-study [data-slug="practice"] .cx-choice,.cx-study[data-slug="practice"] .cx-choice{min-height:0;padding:12px 14px}
-.cx-study [data-slug="practice"] .cx-choice b,.cx-study[data-slug="practice"] .cx-choice b{font-size:15px}
-.cx-study [data-slug="practice"] .cx-choice span span,.cx-study[data-slug="practice"] .cx-choice span span{font-size:12.5px}
-.cx-study [data-slug="practice"] .cx-link,.cx-study[data-slug="practice"] .cx-link{background:var(--white);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);padding:11px 14px}
-.cx-study [data-slug="practice"] .cx-link:hover,.cx-study[data-slug="practice"] .cx-link:hover{background:var(--white);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
-.cx-study [data-slug="practice"] .cx-link small,.cx-study[data-slug="practice"] .cx-link small{color:var(--muted)}

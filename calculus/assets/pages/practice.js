@@ -169,13 +169,11 @@
   function shareHtml(){
     var url = SITE + 'practice.html' + (query() ? '?' + query() : '');
     var title = setLabel() + ': calculus question set';
-    var wasOpen = !!document.querySelector('.cx-sharebox[open]');
-    /* Tucked behind one line (owner 2026-11-02): teachers open it, students skip it. */
-    return '<details class="cx-sharebox"' + (wasOpen ? ' open' : '') + '><summary>Share or print this set</summary><div class="calc-share" role="group" aria-label="Share or print this question set">' +
+    return '<div class="calc-share" role="group" aria-label="Share or print this question set">' +
       '<a class="calc-share-btn" href="https://classroom.google.com/share?url=' + encodeURIComponent(url) + '&amp;title=' + encodeURIComponent(title) + '" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a>' +
       '<button type="button" class="calc-share-btn" data-copy="' + esc(url) + '">Copy link</button>' +
       '<button type="button" class="calc-share-btn" data-act="worksheet">Print as a worksheet</button></div>' +
-      '<label class="cx-check calc-pr-keyopt"><input type="checkbox" id="calc-ws-key"> <span>Add the answer key on a separate page</span></label></details>';
+      '<label class="cx-check calc-pr-keyopt"><input type="checkbox" id="calc-ws-key"> <span>Add the answer key on a separate page</span></label>';
   }
 
   /* ------------------------------------------------------------ setup */

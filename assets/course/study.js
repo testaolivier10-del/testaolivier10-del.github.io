@@ -146,9 +146,8 @@
       };
     }
     var start = findAction(/^(start|study|begin|resume)/i, document.querySelector('.cx-start') || undefined) || findAction(/^(start|study|begin)/i);
-    /* On Practice the builder's own Start button sits on the same screen, so the band has none (owner 2026-11-02). */
     return { kicker: B.base.kicker, h1a: B.base.h1a, h1b: B.base.h1b, hand: B.base.hand,
-      cta: start && B.page !== 'practice' ? [{ label: txt(start), el: start }] : [] };
+      cta: start ? [{ label: txt(start), el: start }] : [] };
   }
   var pending = 0, placeLede = function(){};
   function refresh(){ if (pending) return; pending = requestAnimationFrame(function(){ pending = 0; placeLede(); paint(state()); }); }
@@ -185,8 +184,7 @@
     /* Some engines draw their first panel after this runs; the lede follows
        it there as soon as it appears (placeLede, on every refresh). */
     placeLede = function(){
-      /* Practice drops the copy (owner 2026-11-02): the builder right under it says the same thing. */
-      if (!lede || m[2] === 'practice' || main.querySelector('.cx-lede')) return;
+      if (!lede || main.querySelector('.cx-lede')) return;
       var panel = main.querySelector('.cx-main > .cx-builder, .cx-main > .cx-card:not(.cx-deckcard), .cx-main > .cx-deck');
       if (!panel) return;
       /* A copy, so an engine that redraws the panel gets it back next time. */
