@@ -255,9 +255,18 @@
   }
 
   /* --------------------------------------------------- type: flows */
+  /* A real interest rate change moves both sides of the market: foreign
+     investors buy more (or fewer) of its bonds, which is demand for X, and
+     its own investors buy fewer (or more) foreign bonds, which is supply of
+     X. The exam accepts either, so this kind says only that the rate
+     changed and keys both (key.alt): the value, flow and net export steps
+     are the same either way. */
   function genFlows(r, ctx){
     var z = setup(r), X = z.X, Y = z.Y, H = z.H, F = z.F, d = r() < 0.5 ? 1 : -1;
     var sh = shock(d > 0 ? 'rate-h' : 'rate-h-down'), spec = shiftSpec(z, sh), v = value('D', d), vc = valueChoice(z, v);
+    spec.key.alt = [[{ curve: 'S', dir: d > 0 ? 'left' : 'right' }]];
+    spec.slips = { S: 'Both curves can show it: ' + F.adj + ' investors buying ' + (d > 0 ? 'more' : 'fewer') + ' ' + H.adj + ' bonds shift the demand for ' + pl(X) + ' ' + (d > 0 ? 'right' : 'left') + ', and ' + H.adj + ' investors buying ' + (d > 0 ? 'fewer' : 'more') + ' foreign bonds shift the supply of ' + pl(X) + ' ' + (d > 0 ? 'left' : 'right') + '. Shifting supply ' + (d > 0 ? 'right' : 'left') + ' would move the price the wrong way.' };
+    var either = sh.l(H, F, X, Y) + ' (Or: ' + H.adj + ' investors buy ' + (d > 0 ? 'fewer' : 'more') + ' foreign bonds, so the supply of ' + pl(X) + ' shifts ' + (d > 0 ? 'left' : 'right') + '; either way the ' + X + ' ' + (v > 0 ? 'appreciates' : 'depreciates') + '.)';
     var fl = ['More flows into ' + H.place + ': ' + F.adj + ' investors buy more ' + H.adj + ' assets', 'Less flows into ' + H.place + ' (a net outflow): ' + F.adj + ' investors buy fewer ' + H.adj + ' assets', 'No change: interest rates affect only trade in goods'];
     var flWhy = [
       d > 0 ? 'Right: a higher real return draws foreign saving, so financial capital flows into ' + H.place + ' (a financial account inflow).' : 'A lower real return makes ' + H.adj + ' assets less attractive: less capital flows in, not more.',
@@ -272,17 +281,17 @@
     ];
     return {
       type: 'flows', ctx: ctx.id, topic: ctx.topic,
-      text: '<p><b>' + sh.t(H, F, X, Y) + '</b> The graph is the market for ' + pl(X) + '.</p>',
+      text: '<p><b>The real interest rate in ' + H.place + ' ' + (d > 0 ? 'rises' : 'falls') + ' relative to ' + F.place + '.</b> The graph is the market for ' + pl(X) + '.</p>',
       figure: { spec: spec },
       steps: [
         choice('flow', 'Which way does financial capital flow?', fl, d > 0 ? 0 : 1, flWhy, '2.A', { fixed: true }),
-        graphStep('graph', 'Shift the curve in the market for ' + pl(X) + ', then put E2 where the curves cross now.', spec, '4.C', sh.l(H, F, X, Y)),
+        graphStep('graph', 'Show the change in the market for ' + pl(X) + ': shift a curve, then put E2 where the curves cross now.', spec, '4.C', either),
         choice('value', 'What happens to the value of the ' + X + '?', vc.opts, vc.correct, vc.why, '3.A'),
         choice('nx', 'Through the exchange rate, what happens to ' + poss(H.place) + ' net exports?', nx, v > 0 ? 0 : 1, nxWhy, '3.B', { fixed: true })
       ],
       solution: [
         'Real interest rate in ' + H.place + ' ' + (d > 0 ? 'up' : 'down') + ' → financial capital ' + (d > 0 ? 'flows in' : 'inflow falls') + '.',
-        sh.l(H, F, X, Y),
+        either,
         'The ' + X + ' ' + (v > 0 ? 'appreciates' : 'depreciates') + ' → ' + H.adj + ' net exports ' + (v > 0 ? 'fall' : 'rise') + '.'
       ],
       answer: { dir: d, value: v, X: X, Y: Y }, shock: sh.id

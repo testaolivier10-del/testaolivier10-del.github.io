@@ -241,9 +241,9 @@
    "diff": 2,
    "type": "graph",
    "practice": "4.C",
-   "q": "Arland's real interest rates rise relative to Belvia's, and financial capital flows into Arland. Draw the market for arls: label it, shift the right curve and mark the new equilibrium.",
+   "q": "Arland's real interest rates rise relative to Belvia's, and financial capital flows into Arland. Draw the market for arls: label it, shift a curve and mark the new equilibrium.",
    "why": {
-    "correct": "Belvian savers need arls to buy Arland assets, so the demand for arls shifts right and the arl appreciates. The vertical axis is the price of the arl: bels per arl."
+    "correct": "Belvian savers need arls to buy Arland assets, so the demand for arls shifts right and the arl appreciates (Arland savers keeping their funds at home, the supply of arls shifting left, is also accepted). The vertical axis is the price of the arl: bels per arl."
    },
    "graph": {
     "kind": "forex",
@@ -271,10 +271,18 @@
      "outcome": {
       "value of the currency": "up",
       "quantity of the currency": "up"
-     }
+     },
+     "alt": [
+      [
+       {
+        "curve": "S",
+        "dir": "left"
+       }
+      ]
+     ]
     },
     "slips": {
-     "S": "Savers abroad buying Arland assets demand arls. The supply of arls comes from Arland residents buying foreign things."
+     "S": "Capital flowing into Arland raises the price of the arl: Belvian savers demand more arls, or Arland savers supply fewer arls to buy Belvian assets. Shifting supply right would lower it."
     }
    }
   },
@@ -326,9 +334,9 @@
    "diff": 2,
    "type": "graph",
    "practice": "4.C",
-   "q": "Arland's real interest rates rise relative to Belvia's, and Belvian savers move their funds to Arland. Show the effect in the market for bels: shift the right curve and mark the new equilibrium.",
+   "q": "Real interest rates in Arland rise above those in Belvia, so financial capital flows from Belvia to Arland. Show the effect in the market for bels, the currency of Belvia: shift a curve and mark the new equilibrium.",
    "why": {
-    "correct": "Belvian savers sell bels to buy arls, so the supply of bels shifts right and the bel depreciates (its price in arls falls), the mirror of the arl appreciating."
+    "correct": "Belvian savers sell bels to buy Arland assets, so the supply of bels shifts right and the bel depreciates (its price in arls falls), the mirror of the arl appreciating. (Arland savers buying fewer Belvian assets, the demand for bels shifting left, also lowers the price of the bel and is also accepted.)"
    },
    "graph": {
     "kind": "forex",
@@ -351,14 +359,22 @@
        "dir": "right"
       }
      ],
-     "because": "Belvian savers selling bels to buy Arland assets",
+     "because": "higher real interest rates in Arland",
      "outcome": {
       "value of the currency": "down",
       "quantity of the currency": "up"
-     }
+     },
+     "alt": [
+      [
+       {
+        "curve": "D",
+        "dir": "left"
+       }
+      ]
+     ]
     },
     "slips": {
-     "D": "Belvian savers are selling bels to get arls, so in the market for bels they add to supply, not demand."
+     "D": "Higher real interest rates in Arland lower the price of the bel: Belvian savers supply more bels to buy arls, or Arland savers demand fewer bels. Shifting the demand for bels right would raise it."
     }
    }
   },

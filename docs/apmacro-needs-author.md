@@ -129,7 +129,13 @@ The 6.1 notes say, in a "going further" aside only, that central bank purchases 
 recorded with the other asset trades in the capital and financial account (some textbooks show an official
 reserves line). No item asks about it. Confirm the CED's treatment before adding items.
 
-### f-one-curve-keys: forex and loanable funds keys that name one of two accepted shifts (open, 2026-11-03)
+### f-one-curve-keys: forex and loanable funds keys that name one of two accepted shifts (resolved, 2026-11-03)
+
+Resolved by the integrator with `key.alt`: `mac-fx-policy-changes-9` and `-11`, `mac-real-rates-financial-flows-9`
+and `-11`, `frq-forex-short` A and `frq-open-economy-long` A and C now say only what changed (relative real
+interest rates, relative price levels, inflation abroad, government borrowing) and grade either accepted shift (both
+for relative price levels); rubric lines name both. Items about one side (tourists, imports, income) still name it.
+Still for a person: confirm both are credited on current scoring guidelines. The original note:
 
 The exam accepts either shift for several changes: government borrowing (demand for loanable funds right, or
 supply left), a capital inflow (demand for the currency right, or supply left), higher inflation abroad (demand
@@ -254,7 +260,11 @@ reader-report treatment; confirm it matches the CED 5.2 wording. After a negativ
 the content (and `frq-phillips-long` D and E) says nominal wages fall, SRAS shifts back right, the SRPC shifts
 back left, and the economy returns to its starting inflation and unemployment rates.
 
-### e-crowding-out-curve: demand or supply for government borrowing (open, 2026-11-03)
+### e-crowding-out-curve: demand or supply for government borrowing (resolved, 2026-11-03)
+
+Resolved by the integrator: `mac-crowding-out-2` and `-3`, `frq-crowding-out-short` A and `frq-deficit-long` C no
+longer fix the curve ("show the effect of the borrowing on the real interest rate"); they key DLF and accept SLF
+the other way (`key.alt`), with rubric lines and samples naming both. The original note:
 
 As in `f-one-curve-keys`: every `lf` graph item and FRQ graph part in `crowding-out` and both E FRQs says "show
 the borrowing as a change in the demand for loanable funds", and the `SLF` slip line and the notes say a
@@ -307,7 +317,10 @@ but the real interest rate (4.2) is the nominal rate minus expected inflation. S
 "expected inflation rate" on `real-rate` (4.2), and Unit 4 always writes "the expected inflation rate". A person
 (or author E) may prefer to move the term itself to 4.2.
 
-### d-lf-government: government borrowing as a demand shift or a supply shift (open, 2026-11-03)
+### d-lf-government: government borrowing as a demand shift or a supply shift (resolved in the grader, 2026-11-03)
+
+The integrator added `key.alt` (SLF left) to `frq-ample-reserves-long` E(i), so the automatic check now credits
+both, as its rubric already did. Still for a person: confirm both on the current scoring guidelines. The original note:
 
 `loanable-funds` and `frq-ample-reserves-long` teach government borrowing as DLF shifting right and say that
 showing lower public saving as SLF shifting left also raises the real rate (the FRQ rubric accepts both). Check
@@ -338,7 +351,7 @@ for a lower natural rate of unemployment (LRPC left, Explore only: does SRPC shi
 say which answer readers credit; then the scenarios `adas-capacity` and `ph-natural` can be drilled
 (`"drill": false` in `macroeconomics/data/tools/graph-studio.json`).
 
-### t1-deficit-alt: a deficit graded either way in the drills (open, 2026-11-03)
+### t1-deficit-alt: a deficit graded either way in the drills (open, 2026-11-03; `key.alt` now shared and used by content)
 
 As in `d-lf-government` and `e-crowding-out-curve`: the drill accepts DLF right or SLF left for "the government
 borrows to cover a larger deficit" (the tool grades the shift against both keys with `ApMacroGrade.graph`, keeps the
@@ -410,7 +423,9 @@ against the CED (3.6, 3.7, 5.2, 6.2-6.6) before Units 3, 5 and 6 are reviewed:
   taxes, incomes abroad (exports), business expectations, interest rates (investment). SRAS: oil and energy prices,
   nominal wages, a drought, expected inflation, input prices, a per-unit subsidy. Technology and productivity are
   left out (they move LRAS too, `t1-lras-drill`).
-- **t4-one-curve-forex: one keyed curve per change.** As `f-one-curve-keys`: a price-level or real-interest-rate
+- **t4-one-curve-forex: one keyed curve per change.** (Partly resolved 2026-11-03: the "Interest rates and capital
+  flows" drill now says only "the real interest rate in X rises relative to Y" and accepts either side through
+  `key.alt`; the "shift" kind keeps naming the actor because its mirror-market step follows the curve drawn.) As `f-one-curve-keys`: a price-level or real-interest-rate
   change can shift both demand and supply of a currency; every scenario names the actor ("Mexicans buy fewer of
   the now pricier American goods", "European investors buy more American bonds") so one curve is the answer, and
   the slip line names the other side's buyers. A grader `key.alt` would let prompts say only "the real interest

@@ -272,9 +272,9 @@
    "diff": 2,
    "type": "graph",
    "practice": "4.C",
-   "q": "Arland's real interest rates rise relative to Belvia's, and Belvian savers buy more bonds issued in Arland. In the market for arls, shift the right curve and mark the new equilibrium.",
+   "q": "Arland's central bank raises its policy rate to fight inflation, and expected inflation does not change, so Arland's real interest rates rise relative to Belvia's. In the market for arls, show the effect and mark the new equilibrium.",
    "why": {
-    "correct": "Belvian savers need arls to buy Arland bonds, so the demand for arls shifts right. The price of the arl in bels rises: the arl appreciates."
+    "correct": "Belvian savers want Arland bonds and need arls to buy them, so the demand for arls shifts right; the price of the arl in bels rises: the arl appreciates. (Arland savers buying fewer Belvian bonds, the supply of arls shifting left, also raises the price of the arl and is also accepted.)"
    },
    "graph": {
     "kind": "forex",
@@ -297,14 +297,22 @@
        "dir": "right"
       }
      ],
-     "because": "Belvian savers buying more Arland bonds",
+     "because": "tighter monetary policy in Arland",
      "outcome": {
       "value of the currency": "up",
       "quantity of the currency": "up"
-     }
+     },
+     "alt": [
+      [
+       {
+        "curve": "S",
+        "dir": "left"
+       }
+      ]
+     ]
     },
     "slips": {
-     "S": "Belvian savers buy arls with bels, which is demand for arls. The supply of arls comes from Arland residents."
+     "S": "Higher real interest rates in Arland make its assets more attractive: Belvians demand more arls, or Arland residents supply fewer arls to buy Belvian assets. Either raises the price of the arl; shifting supply right would lower it."
     }
    }
   },
@@ -361,9 +369,9 @@
    "diff": 3,
    "type": "graph",
    "practice": "4.C",
-   "q": "Arland's price level rises faster than Belvia's. Belvians buy fewer Arland goods, and Arland residents buy more Belvian goods. In the market for arls, shift both curves and mark the new equilibrium.",
+   "q": "Arland's price level rises faster than Belvia's. In the market for arls, show the effect and mark the new equilibrium.",
    "why": {
-    "correct": "Fewer Belvian purchases shift the demand for arls left; more Arland purchases abroad shift the supply of arls right. Both push the price of the arl down, so the arl depreciates. The quantity of arls traded could rise or fall: it depends on the sizes of the shifts."
+    "correct": "Arland goods become relatively dearer: Belvians buy fewer of them, so the demand for arls shifts left, and Arland residents buy more Belvian goods, so the supply of arls shifts right. Either shift, or both, pushes the price of the arl down: the arl depreciates. With both, the quantity of arls traded could rise or fall: it depends on the sizes of the shifts."
    },
    "graph": {
     "kind": "forex",
@@ -393,7 +401,21 @@
      "because": "higher inflation in Arland than in Belvia",
      "outcome": {
       "value of the currency": "down"
-     }
+     },
+     "alt": [
+      [
+       {
+        "curve": "D",
+        "dir": "left"
+       }
+      ],
+      [
+       {
+        "curve": "S",
+        "dir": "right"
+       }
+      ]
+     ]
     }
    }
   },

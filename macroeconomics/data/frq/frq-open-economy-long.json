@@ -49,10 +49,18 @@
      "outcome": {
       "real interest rate": "up",
       "quantity of loanable funds": "up"
-     }
+     },
+     "alt": [
+      [
+       {
+        "curve": "SLF",
+        "dir": "left"
+       }
+      ]
+     ]
     },
     "slips": {
-     "SLF": "Government borrowing is shown here as more demand for loanable funds. (A shift of supply to the left, for lower public saving, also earns the point on the exam; this check looks for the demand shift.)"
+     "SLF": "Government borrowing raises the real interest rate either way: the demand for loanable funds shifts right (the government borrows more) or the supply shifts left (public saving falls); both are accepted. Shifting supply right would lower it."
     }
    },
    "rubric": [
@@ -66,9 +74,9 @@
      "auto": "labels"
     },
     {
-     "point": "The demand for loanable funds shifted to the right",
+     "point": "The demand for loanable funds shifted to the right, or the supply of loanable funds shifted to the left (government borrowing as lower public saving)",
      "accept": [
-      "the supply of loanable funds shifted to the left (government borrowing as lower public saving); the automatic check looks only for the demand shift, so tick this yourself if you drew that"
+      "an arrow showing the shift, with the curve named"
      ],
      "auto": "shift"
     },
@@ -142,10 +150,18 @@
      "outcome": {
       "value of the currency": "up",
       "quantity of the currency": "up"
-     }
+     },
+     "alt": [
+      [
+       {
+        "curve": "S",
+        "dir": "left"
+       }
+      ]
+     ]
     },
     "slips": {
-     "S": "Belvian savers buying Arland assets need arls, so the demand for arls shifts right. (A leftward shift of supply, as Arland savers buy fewer Belvian assets, is also accepted on the exam; this check looks for the demand shift.)"
+     "S": "Capital flowing into Arland raises the price of the arl: Belvian savers demand more arls, or Arland savers supply fewer arls to buy Belvian assets; both are accepted. Shifting supply right would lower it."
     }
    },
    "rubric": [
@@ -158,9 +174,9 @@
      "auto": "labels"
     },
     {
-     "point": "The demand for arls shifted to the right, consistent with part (B)(i)",
+     "point": "The demand for arls shifted to the right, or the supply of arls shifted to the left, consistent with part (B)(i)",
      "accept": [
-      "the supply of arls shifted to the left; the automatic check looks only for the demand shift, so tick this yourself if you drew that"
+      "an arrow showing the shift, with the curve named"
      ],
      "auto": "shift"
     },

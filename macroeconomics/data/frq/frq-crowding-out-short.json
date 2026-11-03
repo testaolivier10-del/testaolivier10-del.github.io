@@ -23,7 +23,7 @@
    "label": "A",
    "points": 3,
    "type": "graph",
-   "prompt": "The government of Corvel, an invented country, runs a large budget deficit and pays for it by borrowing. <b>Draw</b> a correctly labeled graph of Corvel's loanable funds market. <b>Show</b> the effect of the government's borrowing as a change in the demand for loanable funds, and label the new real interest rate r2.",
+   "prompt": "The government of Corvel, an invented country, runs a large budget deficit and pays for it by borrowing. <b>Draw</b> a correctly labeled graph of Corvel's loanable funds market. <b>Show</b> the effect of the government's borrowing on the real interest rate, and label the new real interest rate r2.",
    "graph": {
     "kind": "lf",
     "do": [
@@ -46,10 +46,18 @@
      "outcome": {
       "real interest rate": "up",
       "quantity of loanable funds": "up"
-     }
+     },
+     "alt": [
+      [
+       {
+        "curve": "SLF",
+        "dir": "left"
+       }
+      ]
+     ]
     },
     "slips": {
-     "SLF": "The question asks you to show the borrowing as a change in demand: the government is an extra borrower."
+     "SLF": "Government borrowing raises the real interest rate either way: the demand for loanable funds shifts right (the government borrows more) or the supply shifts left (public saving falls); both are accepted. Shifting supply right would lower it."
     }
    },
    "rubric": [
@@ -61,21 +69,21 @@
      "auto": "labels"
     },
     {
-     "point": "The demand for loanable funds shifted to the right",
+     "point": "The demand for loanable funds shifted to the right, or the supply of loanable funds shifted to the left (lower public saving)",
      "accept": [
-      "an arrow showing the rightward shift of DLF"
+      "an arrow showing the rightward shift of DLF or the leftward shift of SLF"
      ],
      "auto": "shift"
     },
     {
-     "point": "A new equilibrium with a higher real interest rate, r2 above r1",
+     "point": "A new equilibrium with a higher real interest rate, r2 above r1, consistent with the shift drawn",
      "accept": [
       "the higher real rate marked on the vertical axis"
      ],
      "auto": "outcome"
     }
    ],
-   "sample": "The vertical axis is the Real interest rate and the horizontal axis the Quantity of loanable funds; DLF slopes down and SLF slopes up, crossing at r1. The government's borrowing shifts DLF right to DLF2, so the real interest rate rises to r2."
+   "sample": "The vertical axis is the Real interest rate and the horizontal axis the Quantity of loanable funds; DLF slopes down and SLF slopes up, crossing at r1. The government's borrowing shifts DLF right to DLF2, so the real interest rate rises to r2. (Showing the borrowing as lower public saving, SLF shifting left, also raises the real interest rate to r2 and earns the point.)"
   },
   {
    "label": "B",

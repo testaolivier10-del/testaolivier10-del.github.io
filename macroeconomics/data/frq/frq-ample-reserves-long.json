@@ -158,10 +158,18 @@
      "outcome": {
       "real interest rate": "up",
       "quantity of loanable funds": "up"
-     }
+     },
+     "alt": [
+      [
+       {
+        "curve": "SLF",
+        "dir": "left"
+       }
+      ]
+     ]
     },
     "slips": {
-     "SLF": "The government is borrowing, so the usual answer shifts the demand for loanable funds right. (Lower public saving shown as supply shifting left also raises the real rate; say which you drew.)"
+     "SLF": "Government borrowing raises the real interest rate either way: the demand for loanable funds shifts right (the government borrows more) or the supply shifts left (public saving falls); both are accepted. Shifting supply right would lower it."
     }
    },
    "rubric": [

@@ -22,7 +22,7 @@
    "label": "A",
    "points": 3,
    "type": "graph",
-   "prompt": "Arland and Belvia are invented countries that trade with each other. Arland's currency is the dollar and Belvia's is the bel. Belvia's inflation rate rises sharply while Arland's does not change, so goods made in Arland become cheaper relative to Belvian goods, and Belvian residents buy more of them. <b>Draw</b> a correctly labeled graph of the foreign exchange market for Arland's dollar and <b>show</b> the effect of the increase in Belvian purchases of Arland goods on the international value of the dollar.",
+   "prompt": "Arland and Belvia are invented countries that trade with each other. Arland's currency is the dollar and Belvia's is the bel. Belvia's inflation rate rises sharply while Arland's does not change. <b>Draw</b> a correctly labeled graph of the foreign exchange market for Arland's dollar and <b>show</b> the effect of the change in Belvia's inflation rate on the international value of the dollar.",
    "graph": {
     "kind": "forex",
     "names": {
@@ -45,14 +45,22 @@
        "dir": "right"
       }
      ],
-     "because": "Belvian residents buying more Arland goods",
+     "because": "higher inflation in Belvia",
      "outcome": {
       "value of the currency": "up",
       "quantity of the currency": "up"
-     }
+     },
+     "alt": [
+      [
+       {
+        "curve": "S",
+        "dir": "left"
+       }
+      ]
+     ]
     },
     "slips": {
-     "S": "Belvian buyers need dollars to pay for Arland goods, so the demand for dollars shifts right. (Arland residents buying fewer Belvian goods would shift supply left, which is also accepted; this check looks for the demand shift the question describes.)"
+     "S": "Higher inflation in Belvia makes Arland goods relatively cheaper: Belvians demand more dollars to buy them, or Arland residents buy fewer Belvian goods and supply fewer dollars; both are accepted. Shifting supply right would lower the price of the dollar."
     }
    },
    "rubric": [
@@ -65,9 +73,9 @@
      "auto": "labels"
     },
     {
-     "point": "The demand for dollars shifted to the right",
+     "point": "The demand for dollars shifted to the right, or the supply of dollars shifted to the left (or both)",
      "accept": [
-      "the supply of dollars shifted to the left, or both shifts, with the price of the dollar higher; tick this yourself if you drew that"
+      "both shifts drawn, with the price of the dollar higher"
      ],
      "auto": "shift"
     },
@@ -79,7 +87,7 @@
      "auto": "outcome"
     }
    ],
-   "sample": "The graph has Price of the dollar (bels per dollar) on the vertical axis and Quantity of dollars on the horizontal axis, with demand D1 sloping down and supply S1 sloping up, crossing at XR1. Belvian residents need dollars to buy more Arland goods, so the demand for dollars shifts right from D1 to D2. At the new equilibrium the price of the dollar rises from XR1 to XR2: the dollar appreciates."
+   "sample": "The graph has Price of the dollar (bels per dollar) on the vertical axis and Quantity of dollars on the horizontal axis, with demand D1 sloping down and supply S1 sloping up, crossing at XR1. Belvian goods become relatively dearer, so Belvian residents buy more Arland goods and need dollars to pay for them: the demand for dollars shifts right from D1 to D2. At the new equilibrium the price of the dollar rises from XR1 to XR2: the dollar appreciates. (Arland residents buying fewer Belvian goods, the supply of dollars shifting left, would also raise the price of the dollar.)"
   },
   {
    "label": "B",

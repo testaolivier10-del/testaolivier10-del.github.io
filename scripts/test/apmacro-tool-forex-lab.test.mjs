@@ -99,3 +99,18 @@ test('forex-lab: planted mistakes are caught by the recheck', () => {
   assert.ok(recheck(f, ctxOf('flows'), 'planted').some(e => /flow keyed/.test(e)));
   assert.ok(check({ ...DATA, contexts: [{ id: 'x', topic: 'exchange-rates', types: ['axis'], set: 'nope' }] }, map).some(e => /set is one of/.test(e)));
 });
+
+test('forex-lab: a real interest rate change says only that, and either side of the market is graded right', () => {
+  const { M, Graph, Grade, model } = runtime('forex-lab');
+  for (let i = 1; i <= 20; i++) {
+    const p = model.generate(M.rng(i * 13), ctxOf('flows'), 'flows'), s = p.steps.find(x => x.kind === 'graph'), g = s.spec;
+    assert.match(p.text, /The real interest rate in .* (rises|falls) relative to/);
+    assert.doesNotMatch(p.text, /investors buy/, 'no actor named');
+    const d = p.answer.dir;
+    assert.equal(Grade.graph(g, Graph.keyResponse(g)).correct, true);
+    const sh = { S: -d };
+    assert.equal(Grade.graph(g, { shifts: sh, eq: Graph.eq(g, sh) }).correct, true, 'supply the other way is accepted');
+    const wrong = { S: d };
+    assert.equal(Grade.graph(g, { shifts: wrong, eq: Graph.eq(g, wrong) }).correct, false);
+  }
+});

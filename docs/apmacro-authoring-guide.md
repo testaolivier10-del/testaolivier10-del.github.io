@@ -70,6 +70,15 @@ describe or ask for:
   curves that move and which way, the cause (`because`), and the outcome on both axes when the kind has an
   equilibrium. If an outcome is indeterminate (both curves shift), leave that axis out of `outcome` and ask about
   it in words. The content check runs the grader on your key; a key it cannot score right fails.
+- **When the exam accepts either shift, key both (`key.alt`)** and word the prompt as the exam does, without
+  naming the curve or the actor: government borrowing (DLF right, or SLF left as lower public saving), a change
+  in relative real interest rates or capital flows (demand for the currency one way, or its supply the other),
+  a change in relative price levels or inflation abroad (the same pair). `key.alt` lists each other accepted set
+  of shifts (`[[{ "curve": "SLF", "dir": "left" }]]`); the grader keeps the best match, the outcome is read off
+  the curves the student drew, and the content check grades every set drawn. The rubric line names both
+  ("The demand for loanable funds shifted right, or the supply shifted left"), and the `slips` line for the other
+  curve explains the shift that would move the price the wrong way. Name the actor only when the question is
+  about one side ("tourists from Belvia visit": demand only).
 
 ## The ample reserves framework (decision 7)
 

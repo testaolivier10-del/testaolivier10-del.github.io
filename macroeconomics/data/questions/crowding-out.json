@@ -45,9 +45,9 @@
    "diff": 2,
    "type": "graph",
    "practice": "4.C",
-   "q": "A government increases its budget deficit and borrows to pay for it. Show the borrowing as a change in the demand for loanable funds, and mark the new equilibrium.",
+   "q": "A government increases its budget deficit and borrows to pay for it. Show the effect on the loanable funds market and mark the new equilibrium.",
    "why": {
-    "correct": "The government is an extra borrower, so the demand for loanable funds shifts right; the real interest rate and the quantity of loanable funds rise."
+    "correct": "The government is an extra borrower, so the demand for loanable funds shifts right and the real interest rate rises. (Drawing the deficit as lower public saving, the supply of loanable funds shifting left, also raises the real interest rate and is also accepted.)"
    },
    "graph": {
     "kind": "lf",
@@ -70,10 +70,18 @@
      "outcome": {
       "real interest rate": "up",
       "quantity of loanable funds": "up"
-     }
+     },
+     "alt": [
+      [
+       {
+        "curve": "SLF",
+        "dir": "left"
+       }
+      ]
+     ]
     },
     "slips": {
-     "SLF": "This item shows government borrowing as a change in demand: the government is one more borrower. (Some textbooks show the same deficit as lower public saving, a fall in supply; both raise the real interest rate.)"
+     "SLF": "The deficit raises the real interest rate either way: the demand for loanable funds shifts right (the government borrows more), or the supply shifts left (public saving falls). Shifting supply right would lower it."
     }
    }
   },
@@ -85,9 +93,9 @@
    "diff": 2,
    "type": "graph",
    "practice": "4.C",
-   "q": "A government that had been borrowing every year moves to a balanced budget and stops borrowing. Show the change as a change in the demand for loanable funds, and mark the new equilibrium.",
+   "q": "A government that had been borrowing every year moves to a balanced budget and stops borrowing. Show the effect on the loanable funds market and mark the new equilibrium.",
    "why": {
-    "correct": "With one less borrower, the demand for loanable funds shifts left; the real interest rate falls, and private investment rises along the demand curve."
+    "correct": "With one less borrower, the demand for loanable funds shifts left; the real interest rate falls, and private investment rises along the demand curve. (Drawing it as higher public saving, the supply of loanable funds shifting right, also lowers the real interest rate and is also accepted.)"
    },
    "graph": {
     "kind": "lf",
@@ -110,10 +118,18 @@
      "outcome": {
       "real interest rate": "down",
       "quantity of loanable funds": "down"
-     }
+     },
+     "alt": [
+      [
+       {
+        "curve": "SLF",
+        "dir": "right"
+       }
+      ]
+     ]
     },
     "slips": {
-     "SLF": "This item shows government borrowing as a change in demand: the government is one more borrower. (Some textbooks show the same deficit as lower public saving, a fall in supply; both raise the real interest rate.)"
+     "SLF": "A smaller deficit lowers the real interest rate either way: the demand for loanable funds shifts left (the government borrows less), or the supply shifts right (public saving rises). Shifting supply left would raise it."
     }
    }
   },

@@ -87,6 +87,10 @@ export function recheck(p, ctx, w) {
     if (pick('mirror') !== m) errs.push(`${w}: mirror keyed "${pick('mirror')}", expected "${m}"`);
   } else if (p.type === 'flows') {
     if (curve !== 'D') errs.push(`${w}: a home real-rate change is keyed on foreign buying (demand)`);
+    // Either side is accepted (key.alt): the supply of X the other way, with the same change in its value.
+    const alt = (((g && g.key.alt) || [])[0] || [])[0] || {};
+    if (alt.curve !== 'S' || alt.dir !== word(-dir)) errs.push(`${w}: the accepted other shift should be supply ${word(-dir)}, not ${alt.curve} ${alt.dir}`);
+    else { const { Graph } = runtime('forex-lab'), a = Graph.outcome(g, { S: -dir }), k = Graph.outcome(g, { D: dir }); if (a['value of the currency'] !== k['value of the currency']) errs.push(`${w}: the two accepted shifts move the value of ${X} different ways`); }
     if (!pick('flow').startsWith(dir > 0 ? 'More flows into' : 'Less flows into')) errs.push(`${w}: flow keyed "${pick('flow')}"`);
     if (pick('nx') !== (up ? 'Net exports fall' : 'Net exports rise')) errs.push(`${w}: net exports keyed "${pick('nx')}"`);
   } else errs.push(`${w}: unknown type ${p.type}`);
