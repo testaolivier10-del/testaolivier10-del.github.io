@@ -58,26 +58,21 @@
   .founder .av{flex:none;width:38px;height:38px;border-radius:50%;background:#0B1A33;color:#2EE6D6;display:grid;place-items:center;font:900 13px var(--font-ui);}
   .founder a{color:var(--accent-text);}
   #fromVideo.fv-wait{min-height:414px;}@media(min-width:600px){#fromVideo.fv-wait{min-height:314px;}}
-  /* The try-one question: answering it shows why, before any sign-up. */
-  .tryq{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 24px 50px -32px rgba(11,26,51,.4);}
-  .tryq__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-  .tryq__top .hand{margin:0;font-size:19px;}
-  .tryq__stem{font:900 20px/1.28 var(--font-ui);color:var(--ink);margin:0 0 14px;letter-spacing:-.01em;}
-  .tryq fieldset{border:0;margin:0;padding:0;display:grid;gap:8px;}
-  .tryq legend{position:absolute;left:-9999px;}
-  .tryq label{display:flex;gap:12px;align-items:center;min-height:48px;box-sizing:border-box;padding:10px 14px;border-radius:12px;background:var(--surface2);border:1.5px solid transparent;font-weight:700;cursor:pointer;}
-  .tryq label:hover{border-color:var(--line);}
-  .tryq input{flex:none;width:20px;height:20px;margin:0;accent-color:var(--ink);}
-  .tryq.done label{cursor:default;}
-  .tryq.done label.ok{background:var(--tint-good);border-color:var(--good);}
-  .tryq.done label.picked:not(.ok){background:var(--tint-bad);border-color:var(--bad);}
-  .tryq__why,.tryq__more{display:none;}
-  .tryq.done .tryq__why{display:block;margin-top:12px;border-radius:12px;padding:12px 14px;background:var(--tint-good);border-left:4px solid var(--good);font-size:15px;color:var(--ink);}
-  .tryq__why b{display:block;}
-  .tryq.done .tryq__more{display:block;margin:12px 0 0;font-weight:900;}
-  .tryq__more a{color:var(--accent-text);}
-  .tryq.done .tryq__tip{display:none;}
-  .tryq__tip{margin:12px 0 0;}
+  /* The path preview (owner 2026-11-04): what every course's Path looks like, in place of the try-one question. */
+  .pp-card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:0 24px 50px -32px rgba(11,26,51,.4);display:flex;flex-direction:column;gap:14px;}
+  .pp-card .pill{align-self:flex-start;color:var(--accent-text);}
+  .pp-card .pp-t{font:900 22px/1.2 var(--font-ui);margin:0;color:var(--ink);}
+  .pp-row{display:flex;align-items:flex-start;margin:4px 0 0;padding:0;list-style:none;}
+  .pp-row li{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;text-align:center;font:800 13px/1.25 var(--font-ui);color:var(--ink);}
+  .pp-row li::before{content:"";position:absolute;top:23px;left:-50%;right:50%;height:7px;background:var(--line);}
+  .pp-row li:first-child::before{display:none;}
+  .pp-row .done::before,.pp-row .now::before{background:var(--accent);}
+  .pp-row i{position:relative;z-index:1;font-style:normal;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--white);box-shadow:inset 0 0 0 3px var(--line);color:var(--muted);}
+  .pp-row .done i{background:var(--accent);color:var(--on-accent-fill,#fff);box-shadow:none;}
+  .pp-row .now i{background:#FFD23F;color:#0B1A33;box-shadow:0 0 0 6px rgba(255,210,63,.35);}
+  .pp-row .todo span{color:var(--muted);}
+  .pp-row svg{width:22px;height:22px;}
+  .pp-card .hand{margin:0;font-size:19px;}
   /* The counted facts, as a strip under the hero. */
   .fact-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 44px;}
   .fact-row > span{display:flex;align-items:center;gap:9px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font:800 14px/1.35 var(--font-ui);color:var(--ink);}
@@ -211,27 +206,21 @@
     <p class="lede">NREMT, Organic Chemistry, A&amp;P and ten AP® Exams, taught in order.</p>
     <div class="hero-ctas">
       <a class="btn-chan" href="#subjects">Choose your course</a>
-      <a class="btn-ghost hero-more" href="#tryq">Try a question first</a>
     </div>
     <p class="founder"><span class="av" aria-hidden="true">OT</span><span>By Olivier Testa, an EMT who passed the NREMT with it. <a href="about.html">Why I built it</a></span></p>
     </div>
-    <form class="tryq" id="tryq" aria-labelledby="tryq-stem">
-      <div class="tryq__top"><span class="pill">NREMT</span></div>
-      <p class="tryq__stem" id="tryq-stem">Bright red blood is spurting from a thigh wound. Firm pressure isn&rsquo;t stopping it. What&rsquo;s next?</p>
-      <fieldset>
-        <legend>Choose one answer</legend>
-        <label><input type="radio" name="tryq">Elevate the leg above the heart</label>
-        <label class="ok"><input type="radio" name="tryq">Tourniquet, 2 to 3 inches above the wound</label>
-        <label><input type="radio" name="tryq">Add more gauze and keep pressing</label>
-        <label><input type="radio" name="tryq">Check for a pulse below the wound</label>
-      </fieldset>
-      <p class="hand tryq__tip">pick one to see why</p>
-      <div class="tryq__why" role="status" aria-live="polite"><b>A tourniquet, above the wound.</b>Arterial bleeding from a limb that direct pressure can&rsquo;t control gets a tourniquet 2 to 3 inches above the wound, never over a joint. Elevating the leg and checking a pulse waste time the patient doesn&rsquo;t have.</div>
-      <p class="tryq__more"><a href="nremt/practice.html">Keep going with free NREMT questions</a></p>
-    </form>
-<!-- home-try:start -->
-    <script src="assets/home-try.js" defer></script>
-<!-- home-try:end -->
+    <div class="pp-card">
+      <span class="pill">Every course has a path</span>
+      <p class="pp-t">Start where you are. Add only what you are missing.</p>
+      <ol class="pp-row" aria-label="An example path through a course">
+        <li class="done"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Atomic structure</span></li>
+        <li class="done"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Orbitals</span></li>
+        <li class="now"><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></i><span>Hybridization</span></li>
+        <li class="todo"><i aria-hidden="true"></i><span>Bonding</span></li>
+        <li class="todo"><i aria-hidden="true"></i><span>Chapter test</span></li>
+      </ol>
+      <p class="hand">three quick questions, then follow it at your own pace</p>
+    </div>
   </section>
 
   <div id="hubProgress" hidden></div>

@@ -117,27 +117,19 @@ export function r3HomeMain(key, ctx) {
     return `<li>${tocLinks[i] ? `<a href="${tocLinks[i]}">${inner}</a>` : `<div class="toc-row">${inner}</div>`}</li>`;
   }).join('');
 
-  /* ---- try one: the builder's live bank question when it passes one (ctx.sample), else the board's ---- */
-  const s = { ...d.sample }, T = { ...d.try };
-  if (ctx.sample) {
-    const live = ctx.sample;
-    if (norm(live.q) !== norm(s.q)) T.title = `Answer: ${live.opts[live.ok]}.`;
-    s.q = live.q; s.opts = live.opts; T.ok = live.ok; T.why = live.why ? ` ${live.why}` : T.why;
-    if (live.more) s.more = live.more;
-  }
-  const topic = key === 'nremt' ? s.tags[0] : s.tags[s.tags.length - 1];
-  const tq = `tq-${key}`;
-  const tryq = `<form class="tryq" id="tryq" aria-labelledby="${tq}">
-      <div class="tryq__top"><span class="pill">${d.short} &middot; ${topic}</span></div>
-      <p class="tryq__stem" id="${tq}">${s.q}</p>
-      <fieldset><legend>Choose one answer</legend>${s.opts.map((o, i) => `<label${i === T.ok ? ' class="ok"' : ''}><input type="radio" name="${tq}">${o}</label>`).join('')}</fieldset>
-      <p class="hand tryq__tip">pick one to see why</p>
-      <div class="tryq__why" role="status"><b>${T.title}</b>${T.why}</div>
-      <p class="tryq__more"><a href="${L.tryMore || (ctx.sample && ctx.sample.moreHref) || ctx.primaryHref}">${s.more} &rarr;</a></p>
-    </form>
-<script>(function(){var f=document.getElementById('tryq');if(!f)return;f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e.target.closest('label').classList.add('picked');f.classList.add('done');[].forEach.call(f.querySelectorAll('input'),function(i){i.disabled=true;});});f.addEventListener('submit',function(e){e.preventDefault();});})();</script>`;
+  /* ---- ways to study: in place of the try one question (owner 2026-11-04: it was clutter). The three
+     ways a student works outside the path, each to the course's own page. ---- */
+  // The board's sample card still feeds the FAQ's "What kinds of questions are there?" answer.
+  const s = { ...d.sample };
+  const WAYS = [
+    ['practice.html', 'Practice', 'Questions on any topic, and every answer explains why.', '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>'],
+    ['review.html', 'Review', 'What you missed comes back right before you would forget it.', '<path d="M3 12a9 9 0 019-9 9 9 0 017 3.4M21 12a9 9 0 01-9 9 9 9 0 01-7-3.4"/><path d="M21 3v4h-4M3 21v-4h4"/>'],
+    ['exams.html', 'Exams', 'Timed and full length, like the real thing.', '<circle cx="12" cy="14" r="7"/><path d="M12 14V10.5M10 3h4M12 3v4M18.5 7.5l1.5-1.5"/>'],
+  ];
+  const ways = `<section class="ways" aria-labelledby="ways-h"><span class="pill">Ways to study</span><h2 id="ways-h">Pick how you <span>want to work</span></h2><ul>${WAYS.map(([href, name, line, ic]) =>
+    `<li><a href="${href}"><span class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ic}</svg></span><span class="tx"><b>${name}</b><small>${line}</small></span></a></li>`).join('')}</ul></section>`;
 
-  const lead = `<div class="lead"><section class="contents" aria-labelledby="toc-h"><h2 id="toc-h">In this <span>course</span></h2><p class="sub">${String(d.map_lede).split(/(?<=\.)\s/)[0]}</p><ol class="toc">${toc}</ol></section><div id="try">${tryq}</div></div>`;
+  const lead = `<div class="lead"><section class="contents" aria-labelledby="toc-h"><h2 id="toc-h">In this <span>course</span></h2><p class="sub">${String(d.map_lede).split(/(?<=\.)\s/)[0]}</p><ol class="toc">${toc}</ol></section>${ways}</div>`;
 
   /* ---- fact strip ---- */
   const facts = `<div class="fact-row" aria-label="${d.strip_label}">${(ctx.strip || d.strip).map(([, b, st]) => `<span><span class="dot"></span><span><b>${b}</b> ${st}</span></span>`).join('')}</div>${d.strip_note ? `<p class="fact-note">${d.strip_label}. ${d.strip_note}</p>` : ''}`;
