@@ -9,6 +9,8 @@
      tables   neighbouring cells whose text is closer than MIN_GAP px
      svg      two <text> labels in one figure overlapping
      svg      a label poking out past its figure's edge (clipped)
+     svg      a line, curve or arrow drawn through a label
+              (add data-legib-ok to a line that crosses a label on purpose)
      figures  the standalone .svg figure files, opened on their own
 
    USAGE
@@ -97,10 +99,13 @@ function scan({ MIN_GAP, OVERLAP }) {
     let box = { l: -1e9, r: 1e9, t: -1e9, b: 1e9 };
     for (let el = svg; el && el !== document.documentElement; el = el.parentElement) {
       const s = getComputedStyle(el);
-      if (s.overflowX === 'visible' && s.overflowY === 'visible') continue;
+      /* Only hidden/clip cuts content off; a scrolling box can still be scrolled to it. */
+      const cut = v => v === 'hidden' || v === 'clip';
+      if (/auto|scroll/.test(s.overflowX + s.overflowY)) break;   // scrolls: everything inside is reachable
+      if (!cut(s.overflowX) && !cut(s.overflowY)) continue;
       const r = el.getBoundingClientRect();
-      if (s.overflowX !== 'visible') { box.l = Math.max(box.l, r.left); box.r = Math.min(box.r, r.right); }
-      if (s.overflowY !== 'visible') { box.t = Math.max(box.t, r.top); box.b = Math.min(box.b, r.bottom); }
+      if (cut(s.overflowX)) { box.l = Math.max(box.l, r.left); box.r = Math.min(box.r, r.right); }
+      if (cut(s.overflowY)) { box.t = Math.max(box.t, r.top); box.b = Math.min(box.b, r.bottom); }
     }
     return box;
   };
@@ -160,7 +165,9 @@ function scan({ MIN_GAP, OVERLAP }) {
       if (small > 0 && (w * h) / small > OVERLAP) found.push({ kind: 'svg-overlap', text: `${label(A.t)} / ${label(B.t)}` });
     }
     /* Lines and arrows drawn across a label. */
-    const strokes = [...svg.querySelectorAll('line,path,polyline')].filter(g => {
+    /* data-legib-ok on a line marks a deliberate crossing (a strike-through
+       showing units cancel); a rotated label's box is too loose to test. */
+    const strokes = [...svg.querySelectorAll('line,path,polyline')].filter(g => !g.closest('[data-legib-ok]')).filter(g => {
       const s = getComputedStyle(g); return s.stroke !== 'none' && parseFloat(s.strokeWidth) > 0 && vis(g) && g.getTotalLength;
     });
     for (const g of strokes) {
@@ -172,6 +179,7 @@ function scan({ MIN_GAP, OVERLAP }) {
       const pts = [];
       for (let k = 0; k <= n; k++) { const p = g.getPointAtLength(len * k / n); pts.push(new DOMPoint(p.x, p.y).matrixTransform(m)); }
       for (const { t, r, halo } of texts) {
+        const tm = t.getScreenCTM(); if (tm && Math.abs(tm.b) > 0.05 * Math.hypot(tm.a, tm.b)) continue;
         /* A halo hides thin grid and guide lines behind a label; it does not
            make a label sitting on a thick curve or arrow look clean. */
         if (halo && thin && (g.compareDocumentPosition(halo) & Node.DOCUMENT_POSITION_FOLLOWING)) continue;
