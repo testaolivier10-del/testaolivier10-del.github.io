@@ -574,7 +574,7 @@ FIGURES.push({
   section: 'polymer-basics',
   lessons: ['polymer-basics'],
   anchor: 'Halfway through, the flask holds dimers, trimers and other short pieces, and almost no long chains.</p>',
-  viewBox: '0 0 340 336',
+  viewBox: '0 0 340 344',
   alt: 'Two panels of 48 monomer units each, halfway through reaction. The chain-growth panel has two long chains of twelve units and twenty-four separate monomers. The step-growth panel has twenty-four short pieces of one to four units and no long chains',
   build() {
     let s = '';

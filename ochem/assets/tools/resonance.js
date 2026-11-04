@@ -299,6 +299,16 @@
     }
 
     elFound.innerHTML = '<div class="res-grid">' + cards + blanks + '</div>';
+    // On a phone the card thumbnails have their labels raised, so a charge
+    // badge would sit on its atom's letter; tools.css moves it 6 units further
+    // out along this direction (layout only, legibility sweep 2026-11).
+    Array.prototype.forEach.call(elFound.querySelectorAll('.res-card .atom-chg'), function(g){
+      var k = g.parentNode.querySelector('.atom-knock'), c = g.querySelector('.chg-bg');
+      if(!k || !c) return;
+      var dx = c.cx.baseVal.value - k.cx.baseVal.value, dy = c.cy.baseVal.value - k.cy.baseVal.value, n = Math.hypot(dx, dy) || 1;
+      g.style.setProperty('--chg-dx', (dx / n * 6).toFixed(1) + 'px');
+      g.style.setProperty('--chg-dy', (dy / n * 6).toFixed(1) + 'px');
+    });
 
     var left = remaining();
     elProgress.innerHTML =

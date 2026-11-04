@@ -233,7 +233,7 @@ FIGURES.push({
   section: 'peptides-proteins',
   lessons: ['peptides-proteins'],
   anchor: '',
-  viewBox: '0 0 340 410',
+  viewBox: '0 0 340 418',
   alt: 'Top: Gly-Ala, H2N–CH2–C(=O)–NH–CH(CH3)–COOH, with the glycine residue shaded teal on the left and the alanine residue shaded green on the right; the free NH2 is on glycine (N-terminus) and the free COOH on alanine (C-terminus). Bottom: Ala-Gly, H2N–CH(CH3)–C(=O)–NH–CH2–COOH, with the shading swapped: alanine now carries the free NH2 and glycine the free COOH.',
   build() {
     let s = '';

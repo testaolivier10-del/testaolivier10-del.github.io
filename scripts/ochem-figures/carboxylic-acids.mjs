@@ -97,7 +97,7 @@ function carboxyl(Q, x, y, o = {}) {
    ====================================================================== */
 const structureCells = [
   ['ACETIC ACID', ['sp² carbon: three groups, flat, 120° apart'], (Q, w) => {
-    const m = carboxyl(Q, w / 2 - 20, 108, { H: true, arrows: true });
+    const m = carboxyl(Q, w / 2 - 20, 116, { H: true, arrows: true });
     let s = m.s;
     const a1 = at(m.c, 150, 27), a2 = at(m.c, 30, 27);
     s += `<path class="fg-bond-soft" d="M${r2(a1.x)} ${r2(a1.y)} A27 27 0 0 0 ${r2(a2.x)} ${r2(a2.y)}"></path>`;
@@ -105,7 +105,7 @@ const structureCells = [
     return s;
   }],
   ['MINOR CONTRIBUTOR', ['charges separated, so it counts for less', 'but the C–OH bond gains double-bond character'], (Q, w) => {
-    const m = carboxyl(Q, w / 2 - 20, 108, { H: true, topDouble: false, topKind: 'warn', rightKind: 'warn' });
+    const m = carboxyl(Q, w / 2 - 20, 116, { H: true, topDouble: false, topKind: 'warn', rightKind: 'warn' });
     return m.s;
   }],
 ];

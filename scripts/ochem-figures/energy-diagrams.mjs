@@ -378,7 +378,7 @@ FIGURES.push({
     const c = tailCurves(x0, yB, W, H, Ea, false);
     s += c.g;
     s += text(c.X(1.05) + 6, c.Y(c.f(1.05, 1)), 'cool', { cls: 'fg-tag-mut', anchor: 'start' });
-    s += text(c.X(1.4), c.Y(c.f(1.4, 1.8)) - 10, 'warm', { cls: 'fg-tag', anchor: 'start' });
+    s += text(c.X(2.55), c.Y(c.f(2.55, 1.8)) - 12, 'warm', { cls: 'fg-tag', anchor: 'start' });
     s += text(c.X(Ea) + 8, 58, 'energy needed to reach the transition state', { cls: 'fg-tag-warn', anchor: 'start' });
     s += text(c.X(Ea) + 8, 74, '(set by ΔG‡)', { cls: 'fg-sm', anchor: 'start' });
     s += text(c.X(5.2), 204, 'shaded: molecules that can cross', { cls: 'fg-sm', anchor: 'start' });
