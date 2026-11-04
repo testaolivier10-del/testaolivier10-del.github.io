@@ -10,6 +10,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { clearTicks } from '../lib/apcalc-fig-ticks.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const OUT = join(ROOT, 'calculus', 'figures');
@@ -318,5 +319,5 @@ make('ivt-continuous-vs-jump', 800, 380, 'The Intermediate Value Theorem: why co
   });
 
 mkdirSync(OUT, { recursive: true });
-for (const [id, s] of Object.entries(figs)) writeFileSync(join(OUT, `${id}.svg`), s);
+for (const [id, s] of Object.entries(figs)) writeFileSync(join(OUT, `${id}.svg`), clearTicks(s));
 console.log(`Wrote ${Object.keys(figs).length} figures to calculus/figures/.`);

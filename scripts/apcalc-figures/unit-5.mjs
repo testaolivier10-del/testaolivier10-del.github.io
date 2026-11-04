@@ -10,6 +10,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { clearTicks } from '../lib/apcalc-fig-ticks.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const OUT = join(ROOT, 'calculus', 'figures');
@@ -489,5 +490,5 @@ function sheet(x0, y0, W, H, cut, scale, labels) {
 }
 
 mkdirSync(OUT, { recursive: true });
-for (const f of figures) writeFileSync(join(OUT, `${f.id}.svg`), f.svg);
+for (const f of figures) writeFileSync(join(OUT, `${f.id}.svg`), clearTicks(f.svg));
 console.log(`Unit 5 figures: wrote ${figures.length} to calculus/figures/`);

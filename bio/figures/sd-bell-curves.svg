@@ -11,7 +11,7 @@
   <line x1="320" y1="30" x2="320" y2="268" stroke="#1F2A28" stroke-width="1.5" stroke-dasharray="5 4"/>
   <g font-size="14"><text x="104" y="280">x̄ − 2s</text><text x="212" y="280">x̄ − s</text><text x="320" y="280">x̄ = 10 g</text><text x="428" y="280">x̄ + s</text><text x="536" y="280">x̄ + 2s</text></g>
   <g stroke="#1F2A28" stroke-width="2"><line x1="104" y1="260" x2="104" y2="266"/><line x1="212" y1="260" x2="212" y2="266"/><line x1="428" y1="260" x2="428" y2="266"/><line x1="536" y1="260" x2="536" y2="266"/></g>
-  <text x="320" y="215" font-weight="700">about 68%</text>
+  <text x="388" y="215" font-weight="700">about 68%</text>
   <text x="320" y="306">about 95% between x̄ − 2s and x̄ + 2s</text>
   <text x="400" y="56" fill="#D55E00" font-weight="700" text-anchor="start">s = 0.3 g (consistent)</text>
   <text x="470" y="150" fill="#0072B2" font-weight="700" text-anchor="start">s = 1.8 g (variable)</text>

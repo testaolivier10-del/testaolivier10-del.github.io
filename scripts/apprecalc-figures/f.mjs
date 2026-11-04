@@ -58,11 +58,13 @@ function panel(box, xr, yr, o = {}) {
   const lx = o.xLabelEvery || xs, ly = o.yLabelEvery || ys;
   for (let v = Math.ceil(xr[0] / lx) * lx; v <= xr[1] + 1e-9; v += lx) {
     if (Math.abs(v) < 1e-9 || (o.skipX || []).includes(v)) continue;
-    out.push(text(sx(v), sy(ax) + 15, num(v), { size: 11, anchor: 'middle', color: MUTED }));
+    const X = sx(v), Y = sy(ax);
+    out.push({ tick: num(v), cands: [[X, Y + 15, 'middle'], [X, Y - 6, 'middle'], ...[3, 7, 11].flatMap(d => [[X - d, Y + 15, 'end'], [X + d, Y + 15, 'start'], [X - d, Y - 6, 'end'], [X + d, Y - 6, 'start']])] });
   }
   for (let v = Math.ceil(yr[0] / ly) * ly; v <= yr[1] + 1e-9; v += ly) {
     if (Math.abs(v) < 1e-9 || (o.skipY || []).includes(v)) continue;
-    out.push(text(sx(ay) - 5, sy(v) + 4, num(v), { size: 11, anchor: 'end', color: MUTED }));
+    const X = sx(ay), Y = sy(v) + 4;
+    out.push({ tick: num(v), cands: [[X - 5, Y, 'end'], [X + 5, Y, 'start'], ...[12, 19, 26].flatMap(d => [[X - d, Y, 'end'], [X + d, Y, 'start']]), [X - 5, Y + 9, 'end'], [X - 5, Y - 9, 'end'], [X + 5, Y + 9, 'start'], [X + 5, Y - 9, 'start']] });
   }
   if (o.origin !== false && xr[0] < 0 && yr[0] < 0) out.push(text(sx(0) - 5, sy(0) + 15, '0', { size: 11, anchor: 'end', color: MUTED }));
   out.push(text(px + pw - 2, sy(ax) - 6, [I(o.xLabel || 'x')], { size: 13, anchor: 'end', color: MUTED }));
@@ -104,7 +106,41 @@ function vec(P, a, b, o = {}) {
 function poly(P, pts, o = {}) {
   return `<polygon points="${pts.map(([x, y]) => `${r2(P.sx(x))},${r2(P.sy(y))}`).join(' ')}" fill="${o.fill || 'none'}" fill-opacity="${o.opacity ?? 0.18}" stroke="${o.color || GREEN}" stroke-width="${o.width || 2}"${o.dashed ? ' stroke-dasharray="5 4"' : ''}/>`;
 }
+/* Axis numbers (the { tick } entries a panel leaves in the body) are placed last: each tries its
+   usual spot, then the other side of its axis, then a little further out, and keeps the first
+   spot that no curve, arrow, dot or label covers (legibility sweep 2026-11). */
+function placeTicks(items) {
+  const ink = [], attr = (el, a) => { const m = el.match(new RegExp(`\\s${a}="([^"]*)"`)); return m ? m[1] : null; };
+  const seg = (x1, y1, x2, y2) => { const n = Math.max(2, Math.ceil(Math.hypot(x2 - x1, y2 - y1) / 2)); for (let i = 0; i <= n; i++) ink.push([x1 + (x2 - x1) * i / n, y1 + (y2 - y1) * i / n]); };
+  const patch = (l, t, r, b) => { for (let X = l; X <= r; X += 2) for (let Y = t; Y <= b; Y += 2) ink.push([X, Y]); };
+  for (const it of items) for (const el of typeof it === 'string' ? it.match(/<(path|line|polygon|circle|text)\b[^>]*>(?:[\s\S]*?<\/text>)?/g) || [] : []) {
+    const tag = el.match(/^<(\w+)/)[1], sw = +(attr(el, 'stroke-width') || 1), stroke = attr(el, 'stroke');
+    if (tag === 'text') {
+      const fs = +attr(el, 'font-size'), X = +attr(el, 'x'), Y = +attr(el, 'y'), str = el.replace(/<[^>]+>/g, '').replace(/\u200b/g, ''), w = 0.56 * fs * [...str].length, a = attr(el, 'text-anchor');
+      const l = a === 'middle' ? X - w / 2 : a === 'end' ? X - w : X;
+      patch(l, Y - 0.8 * fs, l + w, Y + 0.25 * fs);
+    } else if (tag === 'circle') { const X = +attr(el, 'cx'), Y = +attr(el, 'cy'), r = +attr(el, 'r') + 1; patch(X - r, Y - r, X + r, Y + r); }
+    else if (tag === 'line') { if (stroke !== GRID && sw >= 1.8) seg(+attr(el, 'x1'), +attr(el, 'y1'), +attr(el, 'x2'), +attr(el, 'y2')); }
+    else {
+      const pts = (tag === 'polygon' ? attr(el, 'points') : attr(el, 'd')).match(/-?[\d.]+/g).map(Number), P = [];
+      for (let i = 0; i + 1 < pts.length; i += 2) P.push([pts[i], pts[i + 1]]);
+      const filled = /Z/.test(attr(el, 'd') || '') && attr(el, 'fill') !== 'none';
+      if (filled) { const xs = P.map(q => q[0]), ys = P.map(q => q[1]); patch(Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)); }
+      else if (sw >= 1.8 && !/[ACQSTachv]/.test(attr(el, 'd') || '')) { if (tag === 'polygon') P.push(P[0]); for (let i = 1; i < P.length; i++) seg(...P[i - 1], ...P[i]); }
+    }
+  }
+  const hits = ([x, y, a], str) => {
+    const w = 6.4 * [...str].length, l = a === 'middle' ? x - w / 2 : a === 'end' ? x - w : x, t = y - 9;
+    return ink.filter(([X, Y]) => X > l - 3 && X < l + w + 3 && Y > t - 3 && Y < y + 4).length;
+  };
+  return items.filter(it => it && it.tick).map(({ tick, cands }) => {
+    const n = cands.map(c => hits(c, tick)), [x, y, a] = cands[n.indexOf(0) >= 0 ? n.indexOf(0) : n.indexOf(Math.min(...n))];
+    return text(x, y, tick, { size: 11, anchor: a, color: MUTED });
+  });
+}
 function svgDoc(w, h, title, desc, body) {
+  const items = body.flat(Infinity);
+  body = [items.filter(it => typeof it === 'string'), placeTicks(items)];
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-labelledby="t d">
 <title id="t">${esc(title)}</title>
 <desc id="d">${esc(desc)}</desc>
@@ -259,7 +295,7 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
     [P.svg, polyline(P, sampleParam(t => [3 * Math.cos(t), 3 * Math.sin(t)], 0, 2 * PI), { color: MUTED, width: 1.2, dashed: true }),
       polyline(P, sampleParam(e, 0, 2 * PI)), travelArrows(P, e, [PI / 2 + 0.2, PI + 0.3, 3 * PI / 2 + 0.2]),
       `<line x1="${r2(P.sx(pt[0]))}" y1="${r2(P.sy(3 * Math.sin(t0)))}" x2="${r2(P.sx(pt[0]))}" y2="${r2(P.sy(0))}" stroke="${BLUE}" stroke-width="1.6" stroke-dasharray="4 4"/>`,
-      dot(P, pt, { color: GREEN }), label(P, pt, [{ t: '(3 cos ' }, I('t'), { t: ', 2 sin ' }, I('t'), { t: ')' }], 8, 14, { size: 12 }),
+      dot(P, pt, { color: GREEN }), label(P, pt, [{ t: '(3 cos ' }, I('t'), { t: ', 2 sin ' }, I('t'), { t: ')' }], 8, -12, { size: 12 }),
       dot(P, [3, 0]), label(P, [3, 0], [I('t'), { t: ' = 0' }], 6, 16, { size: 12 })]);
 }
 {

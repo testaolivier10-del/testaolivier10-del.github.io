@@ -212,7 +212,7 @@ FIGS['wrench-lever-arm'] = () => {
   const u = [(ox - fx), (oy - fy)], uL = Math.hypot(...u), un = [u[0] / uL, u[1] / uL];
   const k = 12;
   s += `<polyline points="${r1(fx + un[0] * k)},${r1(fy + un[1] * k)} ${r1(fx + un[0] * k - d[0] * k)},${r1(fy + un[1] * k - d[1] * k)} ${r1(fx - d[0] * k)},${r1(fy - d[1] * k)}" fill="none" stroke="${C.amber}" stroke-width="1.6"/>`;
-  { const mx = (ox + fx) / 2, my = (oy + fy) / 2, ang = Math.atan2(fy - oy, fx - ox) * 180 / Math.PI, ox2 = mx - 18 * Math.sin(ang * Math.PI / 180), oy2 = my + 18 * Math.cos(ang * Math.PI / 180);
+  { const mx = (ox + fx) / 2, my = (oy + fy) / 2, ang = Math.atan2(fy - oy, fx - ox) * 180 / Math.PI, ox2 = mx - 24 * Math.sin(ang * Math.PI / 180), oy2 = my + 24 * Math.cos(ang * Math.PI / 180);
     s += `<text x="${r1(ox2)}" y="${r1(oy2)}" font-size="14" font-weight="bold" fill="${C.amber}" text-anchor="middle" transform="rotate(${r1(ang)} ${r1(ox2)} ${r1(oy2)})">lever arm ${sub('r', '⊥')} = r sin θ</text>`; }
   // panel
   const px = 470, py = 300;
@@ -326,7 +326,7 @@ FIGS['flywheel-energy'] = () => {
     s += dot(x, y, 5, C.velocity) + arrow(x, y, x + d[0] * 62, y + d[1] * 62, C.velocity, { width: 3 });
   }
   s += text(24, 56, 'pieces of the rim move in', { size: 13, color: C.velocity, weight: 'bold' }) + text(24, 72, 'opposite directions', { size: 13, color: C.velocity, weight: 'bold' });
-  s += text(cx + 12, cy + 24, `${sub('v', 'cm')} = 0`, { size: 14, weight: 'bold' });
+  s += text(cx + 22, cy + 52, `${sub('v', 'cm')} = 0`, { size: 14, weight: 'bold' });
   const px = 450, py = 70;
   s += panel(px, py, 290, 290);
   s += text(px + 16, py + 34, `${sub('K', 'rot')} = ½Iω²`, { size: 22, weight: 'bold', color: C.amber });

@@ -59,7 +59,7 @@
   <text x="140" y="334" font-size="12" text-anchor="end">millions of years</text>
   <!-- combustion -->
   <path d="M44,358 C30,320 14,250 14,200 L14,120 C14,40 120,10 266,24" fill="none" stroke="#8E3B2E" stroke-width="3.5" marker-end="url(#cc-r)"/>
-  <text x="34" y="306" font-size="13" font-weight="700" fill="#8E3B2E" text-anchor="start" transform="rotate(-90 34 306)">burning (combustion)</text>
+  <text x="34" y="282" font-size="13" font-weight="700" fill="#8E3B2E" text-anchor="start" transform="rotate(-90 34 282)" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">burning (combustion)</text>
   <!-- ocean exchange -->
   <path d="M492,34 C580,34 640,90 646,156" fill="none" stroke="#0072B2" stroke-width="2.5" marker-end="url(#cc-b)"/>
   <path d="M600,158 C590,110 550,70 494,62" fill="none" stroke="#0072B2" stroke-width="2.5" marker-end="url(#cc-b)"/>

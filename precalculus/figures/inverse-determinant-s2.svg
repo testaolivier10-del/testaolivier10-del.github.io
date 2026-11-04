@@ -19,6 +19,18 @@
 <line x1="40" y1="16" x2="340" y2="16" stroke="#E3E8E6" stroke-width="1"/>
 <line x1="40" y1="232.67" x2="340" y2="232.67" stroke="#7A8583" stroke-width="1.4"/>
 <line x1="82.86" y1="16" x2="82.86" y2="276" stroke="#7A8583" stroke-width="1.4"/>
+<text x="77.86" y="247.67" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0</tspan></text>
+<text x="338" y="226.67" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">x</tspan></text>
+<text x="88.86" y="28" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5B6664" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">y</tspan></text>
+<polygon points="82.86,232.67 254.29,189.33 297.14,59.33 125.71,102.67" fill="#11592F" fill-opacity="0.18" stroke="#11592F" stroke-width="1.6"/>
+<circle cx="82.86" cy="232.67" r="3.4" fill="#1F2A28" stroke="#1F2A28" stroke-width="1.8"/>
+<circle cx="254.29" cy="189.33" r="3.4" fill="#1F2A28" stroke="#1F2A28" stroke-width="1.8"/>
+<circle cx="297.14" cy="59.33" r="3.4" fill="#1F2A28" stroke="#1F2A28" stroke-width="1.8"/>
+<circle cx="125.71" cy="102.67" r="3.4" fill="#1F2A28" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="76.86" y="226.67" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >(0, 0)</tspan></text>
+<text x="260.29" y="205.33" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1F2A28" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >(4, 1)</tspan></text>
+<text x="303.14" y="53.33" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1F2A28" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >(5, 4)</tspan></text>
+<text x="131.71" y="96.67" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1F2A28" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >(1, 3)</tspan></text>
 <text x="40" y="247.67" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >−1</tspan></text>
 <text x="125.71" y="247.67" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >1</tspan></text>
 <text x="168.57" y="247.67" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >2</tspan></text>
@@ -32,16 +44,4 @@
 <text x="77.86" y="106.67" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >3</tspan></text>
 <text x="77.86" y="63.33" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >4</tspan></text>
 <text x="77.86" y="20" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >5</tspan></text>
-<text x="77.86" y="247.67" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0</tspan></text>
-<text x="338" y="226.67" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">x</tspan></text>
-<text x="88.86" y="28" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5B6664" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">y</tspan></text>
-<polygon points="82.86,232.67 254.29,189.33 297.14,59.33 125.71,102.67" fill="#11592F" fill-opacity="0.18" stroke="#11592F" stroke-width="1.6"/>
-<circle cx="82.86" cy="232.67" r="3.4" fill="#1F2A28" stroke="#1F2A28" stroke-width="1.8"/>
-<circle cx="254.29" cy="189.33" r="3.4" fill="#1F2A28" stroke="#1F2A28" stroke-width="1.8"/>
-<circle cx="297.14" cy="59.33" r="3.4" fill="#1F2A28" stroke="#1F2A28" stroke-width="1.8"/>
-<circle cx="125.71" cy="102.67" r="3.4" fill="#1F2A28" stroke="#1F2A28" stroke-width="1.8"/>
-<text x="76.86" y="226.67" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >(0, 0)</tspan></text>
-<text x="260.29" y="205.33" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1F2A28" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >(4, 1)</tspan></text>
-<text x="303.14" y="53.33" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1F2A28" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >(5, 4)</tspan></text>
-<text x="131.71" y="96.67" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1F2A28" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >(1, 3)</tspan></text>
 </svg>

@@ -19,7 +19,7 @@
   <text x="450" y="182" font-size="14">small number: negative exponent</text>
   <line x1="270" y1="196" x2="270" y2="226" stroke="#1D44A6" stroke-width="2"/>
   <text x="260" y="250" font-size="14" text-anchor="middle" fill="#1D44A6">coefficient: at least 1, less than 10</text>
-  <line x1="396" y1="140" x2="500" y2="232" stroke="#C2410C" stroke-width="2"/>
+  <line x1="400" y1="160" x2="500" y2="232" stroke="#C2410C" stroke-width="2"/>
   <text x="530" y="250" font-size="14" text-anchor="middle" fill="#C2410C">exponent: places the point moved</text>
 </g>
 </svg>

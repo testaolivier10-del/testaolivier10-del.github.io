@@ -54,7 +54,7 @@
 <line x1="256" y1="140" x2="264" y2="140" stroke="#1F2A28" stroke-width="1.2"/>
 <text x="252" y="144.5" font-size="13" text-anchor="end" fill="#1F2A28">2</text>
 <line x1="256" y1="90" x2="264" y2="90" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="252" y="94.5" font-size="13" text-anchor="end" fill="#1F2A28">3</text>
+<text x="268" y="94.5" font-size="13" text-anchor="start" fill="#1F2A28">3</text>
 <line x1="256" y1="40" x2="264" y2="40" stroke="#1F2A28" stroke-width="1.2"/>
 <text x="252" y="44.5" font-size="13" text-anchor="end" fill="#1F2A28">4</text>
 <text x="472" y="245" font-size="15" font-style="italic" fill="#1F2A28">x</text>

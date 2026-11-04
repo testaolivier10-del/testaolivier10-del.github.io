@@ -22,27 +22,27 @@
 <line x1="62" y1="18" x2="620" y2="18" stroke="#E4E8E6" stroke-width="1"/>
 <line x1="62" y1="226.8" x2="620" y2="226.8" stroke="#1F2A28" stroke-width="1.4"/>
 <line x1="101.86" y1="18" x2="101.86" y2="366" stroke="#1F2A28" stroke-width="1.4"/>
-<text x="181.57" y="243.8" font-size="13" fill="#1F2A28" text-anchor="middle">1</text>
-<text x="261.29" y="243.8" font-size="13" fill="#1F2A28" text-anchor="middle">2</text>
-<text x="341" y="243.8" font-size="13" fill="#1F2A28" text-anchor="middle">3</text>
-<text x="420.71" y="243.8" font-size="13" fill="#1F2A28" text-anchor="middle">4</text>
-<text x="500.43" y="243.8" font-size="13" fill="#1F2A28" text-anchor="middle">5</text>
-<text x="580.14" y="243.8" font-size="13" fill="#1F2A28" text-anchor="middle">6</text>
-<text x="94.86" y="370.5" font-size="13" fill="#1F2A28" text-anchor="end">−80</text>
-<text x="94.86" y="335.7" font-size="13" fill="#1F2A28" text-anchor="end">−60</text>
-<text x="94.86" y="300.9" font-size="13" fill="#1F2A28" text-anchor="end">−40</text>
-<text x="94.86" y="266.1" font-size="13" fill="#1F2A28" text-anchor="end">−20</text>
-<text x="94.86" y="196.5" font-size="13" fill="#1F2A28" text-anchor="end">20</text>
-<text x="94.86" y="161.7" font-size="13" fill="#1F2A28" text-anchor="end">40</text>
-<text x="94.86" y="126.9" font-size="13" fill="#1F2A28" text-anchor="end">60</text>
-<text x="94.86" y="92.1" font-size="13" fill="#1F2A28" text-anchor="end">80</text>
-<text x="94.86" y="57.3" font-size="13" fill="#1F2A28" text-anchor="end">100</text>
-<text x="94.86" y="22.5" font-size="13" fill="#1F2A28" text-anchor="end">120</text>
 <text x="341" y="408" font-size="14" fill="#1F2A28" text-anchor="middle" font-style="italic">t (weeks)</text>
 <text transform="translate(16 192) rotate(-90)" font-size="14" fill="#1F2A28" text-anchor="middle" font-style="italic">residual (followers)</text>
 <g clip-path="url(#c)">
 <line x1="62" y1="226.8" x2="620" y2="226.8" stroke="#1F2A28" stroke-width="1.6"/>
 </g>
+<text x="177.57" y="243.8" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">1</text>
+<text x="257.29" y="243.8" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">2</text>
+<text x="337" y="219.8" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">3</text>
+<text x="416.71" y="243.8" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">4</text>
+<text x="500.43" y="219.8" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">5</text>
+<text x="576.14" y="243.8" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">6</text>
+<text x="94.86" y="370.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">−80</text>
+<text x="94.86" y="335.7" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">−60</text>
+<text x="94.86" y="300.9" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">−40</text>
+<text x="94.86" y="266.1" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">−20</text>
+<text x="94.86" y="196.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">20</text>
+<text x="87.86" y="161.7" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">40</text>
+<text x="94.86" y="126.9" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">60</text>
+<text x="94.86" y="92.1" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">80</text>
+<text x="94.86" y="57.3" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">100</text>
+<text x="94.86" y="22.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">120</text>
 <rect x="96.86" y="136.66" width="10" height="10" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
 <rect x="176.57" y="215.59" width="10" height="10" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>
 <rect x="256.29" y="266.67" width="10" height="10" fill="#D55E00" stroke="#D55E00" stroke-width="2"/>

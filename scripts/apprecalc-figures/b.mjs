@@ -22,6 +22,20 @@ const n2 = v => +v.toFixed(2);
    curves:[{f, domain, color, dashed, width}], lines:[{x}|{y}|{slope, b}, color, dashed],
    points:[{at:[x,y], open, color, shape}], labels:[{at:[x,y], text, color, anchor, dx, dy}],
    xTickFmt, yTickFmt } */
+/* Tick labels avoid the drawing: each number tries its usual place, then the other side of
+   its axis, and keeps the first place no thick curve or line runs through (legibility sweep). */
+function sampleSeg(ink, X1, Y1, X2, Y2) { const n = Math.max(2, Math.ceil(Math.hypot(X2 - X1, Y2 - Y1) / 2)); const r = []; for (let i = 0; i <= n; i++) r.push([X1 + (X2 - X1) * i / n, Y1 + (Y2 - Y1) * i / n]); ink.push(r); }
+function tickPlace(ink, box, str, cands) {
+  const w = 7.4 * [...str].length, hits = c => {
+    const l = c.anchor === 'middle' ? c.x - w / 2 : c.anchor === 'end' ? c.x - w : c.x, t = c.y - 12;
+    let k = 0; for (const run of ink) for (const [X, Y] of run) if (X > l - 4 && X < l + w + 4 && Y > t - 3 && Y < c.y + 5 && (run.free || (X >= box.l && X <= box.r && Y >= box.t && Y <= box.b))) k++;
+    return k;
+  };
+  let best = cands[0], bh = Infinity;
+  for (const c of cands) { const h = hits(c); if (h === 0) return c; if (h < bh) { bh = h; best = c; } }
+  return best;
+}
+
 function plot(s) {
   const W = s.w || 640, H = s.h || 420, L = 62, R = 20, T = 18, B = 54;
   const [x0, x1] = s.x, [y0, y1] = s.y;
@@ -40,8 +54,14 @@ function plot(s) {
   out.push(`<line x1="${L}" y1="${n2(ax)}" x2="${W - R}" y2="${n2(ax)}" stroke="${INK}" stroke-width="1.4"/>`);
   out.push(`<line x1="${n2(ay)}" y1="${T}" x2="${n2(ay)}" y2="${H - B}" stroke="${INK}" stroke-width="1.4"/>`);
   const fx = s.xTickFmt || (v => String(v)), fy = s.yTickFmt || (v => String(v));
-  for (const v of xt) if (v !== 0 || ay === L) out.push(`<text x="${n2(sx(v))}" y="${n2(ax + 17)}" font-size="13" fill="${INK}" text-anchor="middle">${esc(fx(v)).replace('-', '−')}</text>`);
-  for (const v of yt) if (v !== 0 || ax === H - B) out.push(`<text x="${n2(ay - 7)}" y="${n2(sy(v) + 4.5)}" font-size="13" fill="${INK}" text-anchor="end">${esc(fy(v)).replace('-', '−')}</text>`);
+  // tick labels are drawn after the curves (below), with a white halo, so a curve never runs through a number
+  const ink = [], box = { l: L, r: W - R, t: T, b: H - B };
+  const tickText = () => {
+    const o = [], tx = (c, str) => o.push(`<text x="${n2(c.x)}" y="${n2(c.y)}" font-size="13" fill="${INK}" text-anchor="${c.anchor}" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">${str}</text>`);
+    for (const v of xt) if (v !== 0 || ay === L) { const str = esc(fx(v)).replace('-', '−'); tx(tickPlace(ink, box, str, [{ x: sx(v), y: ax + 17, anchor: 'middle' }, { x: sx(v), y: ax - 7, anchor: 'middle' }, { x: sx(v) - 4, y: ax + 17, anchor: 'end' }, { x: sx(v) + 4, y: ax + 17, anchor: 'start' }, { x: sx(v) - 4, y: ax - 7, anchor: 'end' }, { x: sx(v) + 4, y: ax - 7, anchor: 'start' }]), str); }
+    for (const v of yt) if (v !== 0 || ax === H - B) { const str = esc(fy(v)).replace('-', '−'); tx(tickPlace(ink, box, str, [{ x: ay - 7, y: sy(v) + 4.5, anchor: 'end' }, { x: ay + 7, y: sy(v) + 4.5, anchor: 'start' }, ...[14, 22, 30, 38].flatMap(d => [{ x: ay - d, y: sy(v) + 4.5, anchor: 'end' }, { x: ay + d, y: sy(v) + 4.5, anchor: 'start' }])]), str); }
+    return o;
+  };
   out.push(`<text x="${n2((L + W - R) / 2)}" y="${H - 12}" font-size="14" fill="${INK}" text-anchor="middle" font-style="italic">${esc(s.xLabel)}</text>`);
   out.push(`<text transform="translate(16 ${n2((T + H - B) / 2)}) rotate(-90)" font-size="14" fill="${INK}" text-anchor="middle" font-style="italic">${esc(s.yLabel)}</text>`);
   out.push('<g clip-path="url(#c)">');
@@ -58,9 +78,19 @@ function plot(s) {
       if (!Number.isFinite(y) || y > y1 + 3 * (y1 - y0) || y < y0 - 3 * (y1 - y0)) { if (runs[runs.length - 1].length) runs.push([]); continue; }
       runs[runs.length - 1].push(`${n2(sx(x))},${n2(sy(y))}`);
     }
+    for (const r of runs) if (r.length > 1) ink.push(r.map(q => q.split(',').map(Number)));
     for (const r of runs) if (r.length > 1) out.push(`<polyline points="${r.join(' ')}" fill="none" stroke="${COLORS[c.color || 'green']}" stroke-width="${c.width || 2.6}"${c.dashed ? ' stroke-dasharray="7 5"' : ''} stroke-linejoin="round" stroke-linecap="round"/>`);
   }
   out.push('</g>');
+  // labels and dots are things a tick number must not sit on either: add their boxes as solid patches
+  const patch = (l, t, r, b) => { const run = []; for (let X = l; X <= r; X += 2) for (let Y = t; Y <= b; Y += 2) run.push([X, Y]); run.free = true; ink.push(run); };
+  for (const p of s.points || []) patch(sx(p.at[0]) - 6, sy(p.at[1]) - 6, sx(p.at[0]) + 6, sy(p.at[1]) + 6);
+  for (const t of s.labels || []) {
+    const fs = t.size || 14, w = 0.56 * fs * [...t.text].length, X = sx(t.at[0]) + (t.dx || 0), Y = sy(t.at[1]) + (t.dy || 0);
+    const l = t.anchor === 'middle' ? X - w / 2 : t.anchor === 'end' ? X - w : X;
+    patch(l, Y - 0.8 * fs, l + w, Y + 0.25 * fs);
+  }
+  out.push(...tickText());
   for (const p of s.points || []) {
     const c = COLORS[p.color || 'ink'], X = n2(sx(p.at[0])), Y = n2(sy(p.at[1]));
     if (p.shape === 'square') out.push(`<rect x="${X - 5}" y="${Y - 5}" width="10" height="10" fill="${p.open ? '#FFFFFF' : c}" stroke="${c}" stroke-width="2"/>`);
@@ -115,7 +145,7 @@ export const FIGURES = [
     x: [-0.5, 4.5], y: [0, 7], xStep: 1, yStep: 1, xLabel: 'x', yLabel: 'y',
     curves: [{ f: x => -x * x + 4 * x + 2, color: 'blue', width: 2.2 }],
     points: [0, 1, 2, 3, 4].map(x => ({ at: [x, -x * x + 4 * x + 2], color: 'ink', r: 5.5 })),
-    labels: [{ at: [2, 6], text: 'highest point (2, 6)', dy: -12, anchor: 'middle' }, { at: [3.3, 3.6], text: 'y = −x² + 4x + 2', color: 'blue' }],
+    labels: [{ at: [2, 6], text: 'highest point (2, 6)', dy: -12, anchor: 'middle' }, { at: [2, 3.6], text: 'y = −x² + 4x + 2', color: 'blue', anchor: 'middle' }],
   },
   {
     id: 'model-construction-quadratic', w: 640, h: 420,

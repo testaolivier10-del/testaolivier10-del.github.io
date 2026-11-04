@@ -19,24 +19,24 @@
 <line x1="62" y1="38.47" x2="620" y2="38.47" stroke="#E4E8E6" stroke-width="1"/>
 <line x1="62" y1="366" x2="620" y2="366" stroke="#1F2A28" stroke-width="1.4"/>
 <line x1="108.5" y1="18" x2="108.5" y2="366" stroke="#1F2A28" stroke-width="1.4"/>
-<text x="201.5" y="383" font-size="13" fill="#1F2A28" text-anchor="middle">1</text>
-<text x="294.5" y="383" font-size="13" fill="#1F2A28" text-anchor="middle">2</text>
-<text x="387.5" y="383" font-size="13" fill="#1F2A28" text-anchor="middle">3</text>
-<text x="480.5" y="383" font-size="13" fill="#1F2A28" text-anchor="middle">4</text>
-<text x="573.5" y="383" font-size="13" fill="#1F2A28" text-anchor="middle">5</text>
-<text x="101.5" y="370.5" font-size="13" fill="#1F2A28" text-anchor="end">0</text>
-<text x="101.5" y="329.56" font-size="13" fill="#1F2A28" text-anchor="end">4</text>
-<text x="101.5" y="288.62" font-size="13" fill="#1F2A28" text-anchor="end">8</text>
-<text x="101.5" y="247.68" font-size="13" fill="#1F2A28" text-anchor="end">12</text>
-<text x="101.5" y="206.74" font-size="13" fill="#1F2A28" text-anchor="end">16</text>
-<text x="101.5" y="165.79" font-size="13" fill="#1F2A28" text-anchor="end">20</text>
-<text x="101.5" y="124.85" font-size="13" fill="#1F2A28" text-anchor="end">24</text>
-<text x="101.5" y="83.91" font-size="13" fill="#1F2A28" text-anchor="end">28</text>
-<text x="101.5" y="42.97" font-size="13" fill="#1F2A28" text-anchor="end">32</text>
 <text x="341" y="408" font-size="14" fill="#1F2A28" text-anchor="middle" font-style="italic">n</text>
 <text transform="translate(16 192) rotate(-90)" font-size="14" fill="#1F2A28" text-anchor="middle" font-style="italic">term value</text>
 <g clip-path="url(#c)">
 </g>
+<text x="201.5" y="383" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">1</text>
+<text x="294.5" y="383" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">2</text>
+<text x="387.5" y="383" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">3</text>
+<text x="480.5" y="383" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">4</text>
+<text x="573.5" y="383" font-size="13" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">5</text>
+<text x="94.5" y="370.5" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">0</text>
+<text x="101.5" y="329.56" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">4</text>
+<text x="101.5" y="288.62" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">8</text>
+<text x="101.5" y="247.68" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">12</text>
+<text x="101.5" y="206.74" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">16</text>
+<text x="101.5" y="165.79" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">20</text>
+<text x="101.5" y="124.85" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">24</text>
+<text x="101.5" y="83.91" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">28</text>
+<text x="101.5" y="42.97" font-size="13" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">32</text>
 <circle cx="108.5" cy="345.53" r="5.5" fill="#11592F" stroke="#11592F" stroke-width="2"/>
 <circle cx="201.5" cy="294.35" r="5.5" fill="#11592F" stroke="#11592F" stroke-width="2"/>
 <circle cx="294.5" cy="243.18" r="5.5" fill="#11592F" stroke="#11592F" stroke-width="2"/>

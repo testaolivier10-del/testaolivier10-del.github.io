@@ -12,6 +12,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { clearTicks } from '../lib/apcalc-fig-ticks.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const args = process.argv.slice(2);
@@ -403,6 +404,6 @@ const figs = {};
 }
 
 mkdirSync(OUT, { recursive: true });
-for (const [id, f] of Object.entries(figs)) writeFileSync(join(OUT, `${id}.svg`), f.svg);
+for (const [id, f] of Object.entries(figs)) writeFileSync(join(OUT, `${id}.svg`), clearTicks(f.svg));
 if (args.includes('--meta')) console.log(JSON.stringify(Object.fromEntries(Object.entries(figs).map(([id, f]) => [id, { w: f.w, h: f.h }]))));
 console.log(`Unit 6 figures: ${Object.keys(figs).length} written to ${OUT}`);

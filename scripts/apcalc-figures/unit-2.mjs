@@ -9,6 +9,7 @@
 import { writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { clearTicks } from '../lib/apcalc-fig-ticks.mjs';
 import { Expr } from '../lib/apcalc-mathlib.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
@@ -356,7 +357,7 @@ FIGS['tangent-sec-squared'] = () => {
 const want = process.argv.slice(2);
 for (const [id, make] of Object.entries(FIGS)) {
   if (want.length && !want.includes(id)) continue;
-  writeFileSync(join(OUT, `${id}.svg`), make());
+  writeFileSync(join(OUT, `${id}.svg`), clearTicks(make()));
   console.log(`calculus/figures/${id}.svg`);
 }
 export { FIGS };

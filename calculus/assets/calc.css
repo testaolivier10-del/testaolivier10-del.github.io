@@ -48,6 +48,8 @@ math.calc-m mtext{font-family:var(--font-body,inherit);}
 :root[data-theme="dark"] .calc-plot text.s1{fill:#F590AC;} :root[data-theme="dark"] .calc-plot text.s2{fill:#6BB4E8;} :root[data-theme="dark"] .calc-plot text.s3{fill:#52CFA6;}
 /* Series strokes are for paths, lines and points: a label in a series colour keeps a plain glyph. */
 .calc-plot text.s4,.calc-plot text.s5,:root[data-theme="dark"] .calc-plot text.s1,:root[data-theme="dark"] .calc-plot text.s2,:root[data-theme="dark"] .calc-plot text.s3,:root[data-theme="dark"] .calc-plot text.s4,:root[data-theme="dark"] .calc-plot text.s5{stroke:none;}
+/* Numbers and labels sit over the curves with a white halo (calc-plot.js places them clear of curves). */
+:root .calc-plot g.calc-plot-ticks text,:root .calc-plot g.calc-plot-labels text,:root[data-theme] .calc-plot g.calc-plot-labels text[class]{paint-order:stroke;stroke:var(--white,#fff);stroke-width:3.5px;stroke-linejoin:round;}
 /* A typed expression: the box, its left-hand side and the live preview. */
 .calc-expr{display:grid;gap:6px;}
 .calc-expr label{font:800 14px var(--font-ui);}

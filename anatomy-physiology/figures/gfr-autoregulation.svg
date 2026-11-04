@@ -39,7 +39,7 @@
 <circle cx="405.0" cy="110.4" r="6" fill="#1F2A28"/>
 <text x="415.0" y="102.4" font-size="15" font-weight="800">B</text>
 <circle cx="688.5" cy="76.8" r="6" fill="#1F2A28"/>
-<text x="698.5" y="68.8" font-size="15" font-weight="800">C</text>
+<text x="698.5" y="96.8" font-size="15" font-weight="800">C</text>
 <text x="405" y="386" font-size="13.5" font-weight="700" text-anchor="middle">Mean arterial pressure (mm Hg)</text>
 <text x="28" y="200" font-size="13.5" font-weight="700" text-anchor="middle" transform="rotate(-90 28 200)">GFR (mL/min)</text>
 </g></svg>

@@ -13,7 +13,7 @@
   <path d="M87.3,90.7 A150,150 0 0 1 190.0,50.0 L190.0,112.0 A88,88 0 0 0 129.8,135.9 Z" fill="#F6D2BD" stroke="#ffffff" stroke-width="3"/>
   <text x="303" y="161" font-size="18" font-weight="700" text-anchor="middle">G1</text><text x="303" y="178" font-size="12" text-anchor="middle">growth</text>
   <text x="153" y="311" font-size="18" font-weight="700" text-anchor="middle">S</text><text x="153" y="328" font-size="12" text-anchor="middle">DNA copied</text>
-  <text x="75" y="168" font-size="18" font-weight="700" text-anchor="middle">G2</text><text x="75" y="185" font-size="12" text-anchor="middle">growth, prep</text>
+  <text x="75" y="168" font-size="18" font-weight="700" text-anchor="middle">G2</text><text x="73" y="185" font-size="12" text-anchor="middle">growth,</text><text x="73" y="199" font-size="12" text-anchor="middle">prep</text>
   <text x="146" y="95" font-size="18" font-weight="700" text-anchor="middle">M</text>
   <text x="190" y="194" font-size="15" font-weight="700" text-anchor="middle">Interphase</text>
   <text x="190" y="212" font-size="12" text-anchor="middle">G1 + S + G2</text>

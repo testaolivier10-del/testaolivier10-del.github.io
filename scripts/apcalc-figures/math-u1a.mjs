@@ -9,6 +9,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { clearTicks } from '../lib/apcalc-fig-ticks.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const OUT = join(ROOT, 'calculus', 'figures');
@@ -537,7 +538,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const only = process.argv.slice(2);
   for (const [id, make] of Object.entries(FIGS)) {
     if (only.length && !only.includes(id)) continue;
-    writeFileSync(join(OUT, `${id}.svg`), make());
+    writeFileSync(join(OUT, `${id}.svg`), clearTicks(make()));
     console.log(`wrote calculus/figures/${id}.svg`);
   }
 }
