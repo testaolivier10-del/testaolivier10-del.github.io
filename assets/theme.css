@@ -783,7 +783,7 @@ strong,b{font-weight:900;}
 /* Every header control is a 44px target (WCAG 2.5.5) while staying a 34px
    circle to look at: the hit area is a transparent ring around it. */
 .nav-right .theme-toggle,.nav-right .level-badge{position:relative;}
-.nav-right .theme-toggle::after,.nav-right .level-badge::after{content:"";position:absolute;inset:-5px;border-radius:50%;}
+.nav-right .theme-toggle::after,.nav-right .level-badge::after{content:"";position:absolute;inset:-5px;border-radius:999px;}
 .account-btn{position:relative;}
 .account-btn::after{content:"";position:absolute;left:0;right:0;top:-5px;bottom:-5px;}
 
@@ -795,14 +795,19 @@ strong,b{font-weight:900;}
 }
 .nav-streak svg{width:15px;height:15px;flex-shrink:0;}
 
-/* Header level badge — a ring, matching the mockup. */
+/* Header level badge: the level and a progress bar to the next one (owner 2026-11-03). */
 .level-badge{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:34px;height:34px;border-radius:50%;
-  border:2.5px solid var(--accent);background:var(--tint-accent);color:var(--accent-text);
-  font:900 11.5px var(--font-ui);text-decoration:none;flex-shrink:0;
+  display:inline-flex;align-items:center;gap:7px;
+  height:34px;padding:0 11px 0 10px;border-radius:999px;box-sizing:border-box;
+  border:1.5px solid var(--line);background:var(--white);color:var(--accent-text);
+  font:900 12.5px var(--font-ui);text-decoration:none;flex-shrink:0;
 }
-.level-badge:hover{background:var(--accent);color:var(--on-accent-fill);}
+.level-badge:hover{border-color:var(--accent);}
+.level-badge .lb-lv{font:inherit;}
+.level-badge .lb-bar{display:block;width:52px;height:7px;border-radius:999px;background:var(--tint-accent);overflow:hidden;}
+.level-badge .lb-bar i{display:block;height:100%;min-width:4px;border-radius:999px;background:var(--accent);transition:width .6s ease;}
+@media (max-width:420px){.level-badge{gap:5px;padding:0 9px;}.level-badge .lb-bar{width:30px;}}
+@media (prefers-reduced-motion:reduce){.level-badge .lb-bar i{transition:none;}}
 
 .theme-toggle{
   display:inline-flex;align-items:center;justify-content:center;

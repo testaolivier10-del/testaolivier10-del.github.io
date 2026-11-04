@@ -654,7 +654,10 @@
     var badge = document.getElementById('levelBadge');
     if(badge){
       var info = levelInfo();
-      badge.textContent = 'L' + info.level;
+      /* Owner 2026-11-03: a real progress bar, the level and how far it is to the next one. */
+      var pct = Math.max(0, Math.min(100, Math.round(100 * info.into / Math.max(1, info.span))));
+      badge.innerHTML = '<b class="lb-lv">L' + info.level + '</b><span class="lb-bar" aria-hidden="true"><i style="width:' + pct + '%"></i></span>';
+      badge.style.setProperty('--lb-pct', pct + '%');
       badge.title = 'Level ' + info.level + ' · ' + (COURSE_RANK_LABEL[context] || 'Rank') + ': ' + info.title + ' — ' + info.total + ' XP (' + info.into + '/' + info.span + ' to Level ' + (info.level + 1) + ')';
       badge.setAttribute('aria-label', 'Level ' + info.level + ', ' + (COURSE_RANK_LABEL[context] || 'rank') + ' ' + info.title);
       // A brand-new visitor has earned nothing, so there is no level to show.
