@@ -1012,7 +1012,7 @@
     var sol = wrapEl('ls-sec calc-ls-sol', [].slice.call(fb.children).filter(function(x){ return !x.matches('.calc-verdict, .calc-report, .kg'); }));
     own('why', sol, { first: true });
     ST.pills([{ html: ok ? 'Correct' : 'Not quite', tone: ok ? 'good' : 'bad' }], 'left', 'practice');
-    ST.caption('The worked solution, step by step, is under <b>Why?</b> Press Next problem for another.', 'practice');
+    ST.caption('The worked solution, step by step, is under <b>Explanation</b> Press Next problem for another.', 'practice');
   }
 
   /* ------------------------------------------------------ load */

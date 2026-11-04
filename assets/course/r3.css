@@ -473,3 +473,22 @@
 .r3 .plan--premium .plan__note span[data-founding-until]{color:#FFD23F;font-weight:800;}
 .r3 .plan__alt,.r3 .plan__compare{display:block;margin:10px 0 0;color:#fff;font-weight:800;}
 .r3 .plan__compare{color:#2EE6D6;}
+
+/* Questions, owner comment 2026-11-02 ("questions on the left, then the questions in the middle, then empty
+   space on each side"): heading on top, the questions in two columns across the full width. */
+.r3 .home-faq{display:block}
+.r3 .home-faq h2{margin:0 0 18px}
+.r3 .home-faq .hub-faq{max-width:none;columns:2;column-gap:40px}
+.r3 .home-faq .faq-item{break-inside:avoid}
+@media (max-width:860px){.r3 .home-faq .hub-faq{columns:1}}
+/* Video and top tools in one row */
+.r3.r3-home .band .mast + .hand{margin-top:22px}
+.r3 .media{margin:0 0 44px}
+.r3 .media-h{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin:0 0 14px}
+.r3 .media-h h2{font:900 26px var(--display);letter-spacing:-.02em;margin:0}
+.r3 .media-h h2 span{color:var(--accent)}
+.r3 .media-h p{margin:0;display:flex;gap:18px}
+.r3 .media-h .go{font:900 14px var(--font-ui);color:var(--accent-text,var(--accent));text-decoration:none}
+.r3 .media .vstrip{margin:0}
+.r3 .media .dept{margin:0}
+.r3 .media .dept a{border-top:0;padding-top:0}

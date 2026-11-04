@@ -62,11 +62,11 @@ test('the course home has its own headline and the amber pendulum, not Chemistry
   const { root } = build('unit-1');
   const home = readFileSync(join(root, 'physics/index.html'), 'utf8');
   assert.match(home, /<h1 class="mast" id="r3Title">AP®<span>Physics 1<\/span><\/h1>/);
-  assert.match(home, /<p class="deck">AP® Physics 1, <span>one force at a time\.<\/span><\/p>/);
+  assert.doesNotMatch(home, /<p class="deck">/); // the second tagline is off course homes (owner 2026-11-02)
   assert.doesNotMatch(home, /Chemistry|Biology|particle|Mole Counter/);
   assert.match(home, /assets\/phys\.css/);
   assert.match(home, /data-cover="apphys"/);
-  assert.match(home, /assets\/covers\/apphys\.svg/);
+  assert.match(home, /assets\/covers\/art\/apphys\.svg/); // the band drawing; the notes card cover is off the home (owner 2026-11-02)
   const css = readFileSync('physics/assets/phys.css', 'utf8');
   assert.match(css, /body\.phys\{--ctint:#FBEED5;--cink:#734200;\}/);
   assert.match(readFileSync('assets/theme.css', 'utf8'), /body\[data-course="apphys"\]\{--ctint:#FBEED5;--cink:#734200;\}/);

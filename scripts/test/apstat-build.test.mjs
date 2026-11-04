@@ -90,11 +90,11 @@ test('the course home has its own headline, plum and the bell curve, not Calculu
   const { root } = build('unit-4');
   const home = readFileSync(join(root, 'statistics/index.html'), 'utf8');
   assert.match(home, /<h1 class="mast" id="r3Title">AP®<span>Statistics<\/span><\/h1>/);
-  assert.match(home, /<p class="deck">AP® Statistics, <span>one idea at a time\.<\/span><\/p>/);
+  assert.doesNotMatch(home, /<p class="deck">/); // the second tagline is off course homes (owner 2026-11-02)
   assert.doesNotMatch(home, /Chemistry|Biology|Physics|Calculus|derivative|integral|Limit Seeker|score-calculator/);
   assert.match(home, /assets\/stat\.css/);
   assert.match(home, /data-cover="apstat"/);
-  assert.match(home, /assets\/covers\/apstat\.svg/);
+  assert.match(home, /assets\/covers\/art\/apstat\.svg/); // the band drawing; the notes card cover is off the home (owner 2026-11-02)
   const css = readFileSync('statistics/assets/stat.css', 'utf8');
   assert.match(css, /body\.stat\{--ctint:#F5E6F4;--cink:#6E2470;\}/);
   assert.match(readFileSync('assets/theme.css', 'utf8'), /body\[data-course="apstat"\]\{--ctint:#F5E6F4;--cink:#6E2470;\}/);

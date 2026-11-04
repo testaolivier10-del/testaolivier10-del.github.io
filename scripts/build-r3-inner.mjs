@@ -66,7 +66,10 @@ for (const p of PAGES) {
   const old = readFileSync(path, 'utf8');
   const w = bandWords(p.key, p.slug);
   let html = between(old, 'r3-band', shortBand({ key: p.key, crumbs: p.crumbs, ...w, lede: p.lede, ledeId: p.ledeId, id: p.id }), p.file);
-  if (p.file === 'nremt/exams.html') html = between(html, 'r3-exams-built', examsBuilt(), p.file);
+  /* "How the exam is built" is off the exams page (owner 2026-11-02: the exam should stay simple, like Practice,
+     Review and Flashcards); the markers stay so it can come back. */
+  if (p.file === 'nremt/exams.html') html = between(html, 'r3-exams-built', '', p.file);
+  void examsBuilt;
   if (p.file === 'nremt/exam-day.html') html = between(html, 'r3-toc', toc(html), p.file);
   if (w.cta && w.cta.start && !html.includes(START_SCRIPT)) throw new Error(`build-r3-inner: ${p.file} needs the band's start script before </body>`);
   if (html !== old) {

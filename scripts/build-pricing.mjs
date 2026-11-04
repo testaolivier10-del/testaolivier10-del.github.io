@@ -216,7 +216,7 @@ function ticketHtml() {
   return `<div class="sp-panel pp-ticket" data-founding-until="${founding.until}">
       <p class="hand">founding price</p>
       <p class="pp-big">${FOUNDING.off}% <span>off</span></p>
-      <p class="pp-till">every pass, until ${esc(longDate(founding.until))}; full price from ${esc(dayAfterUS(founding.until))}</p>
+      <p class="pp-till">every pass, until ${esc(longDate(founding.until))}</p>
       <ul class="pp-rows">${rows.map((r) => `<li><span>${esc(r.text)}</span><span><b>${money(foundingPrice(r.price))}</b> <small>then ${money(r.price)}</small></span></li>`).join('')}</ul>
     </div>
     ${plain}`;
@@ -359,6 +359,14 @@ function premiumPage() {
   .pp-day:empty{display:none;}
   .pp .pp-len{display:block;font:700 11.5px var(--font-ui);color:var(--muted);text-align:right;}
   .pp-compare{margin:6px 0 0;font-size:14px;color:var(--muted);}
+  .pp-faq{display:block;}
+  .pp-faq .sp-h2{margin:0 0 18px;}
+  .pp-faq .sp-qa{display:block;columns:2;column-gap:12px;}
+  .pp-faq .sp-qa details{break-inside:avoid;margin:0 0 10px;}
+  .pp-faq-more{margin:8px 0 0;color:var(--muted);font-size:15px;}
+  .pp-faq-more a{color:var(--accent-text);}
+  .pp-faq-more b{color:var(--ink);font-weight:800;user-select:all;}
+  @media (max-width:860px){.pp-faq .sp-qa{columns:1;}}
 </style>
 <script type="application/ld+json">
 ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
@@ -377,11 +385,9 @@ ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
 <div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
   <section class="sp-hero pp-hero" aria-labelledby="ppTitle">
     <div>
-      <span class="sp-pill">Free vs Premium</span>
       <h1 id="ppTitle">What&rsquo;s free,<span>and what Premium adds.</span></h1>
       <p class="hand">one payment, never a subscription</p>
-      <p class="lede">Every course is free to start. Premium is one payment per course that never renews, from ${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(LOW))} (founding price until ${longDate(founding.until)})</span><span data-founding-after="${founding.until}" hidden>${money(LOW)}</span>` : money(LOW)}.</p>
-      <div class="sp-btns"><a class="btn-chan" href="#courses">Compare your course</a><a class="btn-ghost" href="/#subjects">Start free</a></div>
+      <div class="sp-btns"><a class="btn-chan" href="#courses">Compare your course</a></div>
     </div>
     ${ticketHtml()}
   </section>
@@ -400,30 +406,17 @@ ${ORDER.map(courseSection).join('\n')}
     </div>
   </section>
 
-  <section class="sp-sec" aria-labelledby="ppHow">
-    <div class="sp-sh"><h2 class="sp-h2" id="ppHow">How a pass <span>works</span></h2></div>
-    <ol class="sp-steps" style="list-style:none;margin:0;padding:0">
-      <li class="sp-box sp-step"><span class="n" aria-hidden="true">1</span><h3>Start free</h3><p>Everything free works without an account: the notes, and each course&rsquo;s free practice.</p></li>
-      <li class="sp-box sp-step"><span class="n" aria-hidden="true">2</span><h3>Buy one course</h3><p>A free account holds the pass, so it follows you to every device.</p></li>
-      <li class="sp-box sp-step"><span class="n" aria-hidden="true">3</span><h3>Study without limits</h3><p>Everything Premium adds, until the pass ends. Buying another adds its days after this one.</p></li>
-      <li class="sp-box sp-step"><span class="n" aria-hidden="true">4</span><h3>It ends on its own</h3><p>No renewal. Your progress stays and the free parts keep working.</p></li>
-    </ol>
-  </section>
-
-  <section class="sp-faq sp-sec" aria-labelledby="ppRules">
-    <div class="sp-faq__intro">
-      <h2 class="sp-h2" id="ppRules">The rules, <span>in plain words</span></h2>
-      <p class="hand">no fine print</p>
-      <p>${esc(FREE_SENTENCE)}</p>
-      <p>The details are in the <a href="terms.html#premium">terms</a>.</p>
-    </div>
+  <section class="sp-faq pp-faq sp-sec" aria-labelledby="ppRules">
+    <h2 class="sp-h2" id="ppRules">Questions <span>before you buy</span></h2>
     <div class="sp-qa pp-rules">
-      <details class="sp-box" open><summary>Is this a subscription?</summary><p><strong>One-time, never a subscription.</strong> Prices are in US dollars; sales tax or VAT is added at checkout and shown before you pay. Polar, our merchant of record, sells the pass and sends the receipt.</p></details>
-      <details class="sp-box"><summary>Do I need an account?</summary><p><strong>Buying needs a free account</strong>, so the pass follows you to every device. Everything free works without one.</p></details>
-      <details class="sp-box"><summary>How do refunds work?</summary><p>Refund a pass yourself, in full, from your <a href="account.html">Account</a> page within 7 days of buying it. Once per account and email address.</p></details>
-      <details class="sp-box"><summary>What happens when a pass ends?</summary><p>Your progress, XP and streaks stay; only the Premium parts lock again. Buying another pass adds its days after the current one.${DATED.length ? ` A pass with an end date (${esc(listWords(DATED.map((k) => COURSES[k].name)))}) runs through that date <a href="terms.html#fixed-date">whenever it is bought</a>.` : ''}</p></details>
-      <details class="sp-box"><summary>I&rsquo;m under 18. Can I buy one?</summary><p>You need a parent or guardian&rsquo;s permission, and they accept the <a href="terms.html#premium">terms</a> for you; under 16, they should make the purchase.</p></details>
+      <details class="sp-box"><summary>What stays free?</summary><p>${esc(FREE_SENTENCE)}</p></details>
+      <details class="sp-box"><summary>Is this a subscription?</summary><p>No. One payment, and the pass ends on its own. Prices are in US dollars; any sales tax or VAT is shown before you pay.</p></details>
+      <details class="sp-box"><summary>Do I need an account?</summary><p>Only to buy, so the pass follows you to every device. Everything free works without one.</p></details>
+      <details class="sp-box"><summary>Can I get a refund?</summary><p>Yes, in full, within 7 days, from your <a href="account.html">Account</a> page. Once per account.</p></details>
+      <details class="sp-box"><summary>What happens when a pass ends?</summary><p>Your progress stays; only the Premium parts lock again. A second pass starts when the first one ends.${DATED.length ? ` A pass with an end date (${esc(listWords(DATED.map((k) => COURSES[k].name)))}) runs through that date <a href="terms.html#fixed-date">whenever it is bought</a>.` : ''}</p></details>
+      <details class="sp-box"><summary>I&rsquo;m under 18. Can I buy one?</summary><p>With a parent or guardian&rsquo;s permission; under 16, they should make the purchase.</p></details>
     </div>
+    <p class="pp-faq-more">Every detail is in the <a href="terms.html#premium">terms</a>. Something else? Email <b>hello@levlprep.com</b>.</p>
   </section>
 </div>
 <div class="xshell narrow">
@@ -554,7 +547,7 @@ const PRICE_SHORT = `A one-time pass for one course, from ${money(LOW)} to ${mon
 const FAQ = [
   ['Is LevlPrep free?', FREE_SENTENCE],
   ['How much does Premium cost?', PRICE],
-  [MARK ? 'Is LevlPrep affiliated with the NREMT, ATI, OpenStax or the College Board?' : 'Is LevlPrep affiliated with the NREMT, ATI or OpenStax?', AFFILIATION],
+  [MARK ? 'Is LevlPrep affiliated with the NREMT or the College Board?' : 'Is LevlPrep affiliated with the NREMT?', AFFILIATION],
 ];
 
 function homeTry() {
@@ -562,7 +555,7 @@ function homeTry() {
   const items = OPEN.map((c) => {
     const d = H[c.key];
     if (!d || !d.sample || !d.try || !Array.isArray(d.sample.opts)) return null;
-    return { k: c.key, pill: `${d.short || d.name} &middot; ${(d.sample.tags || [])[0] || 'Sample'}`, q: d.sample.q, o: d.sample.opts,
+    return { k: c.key, pill: `${d.short || d.name}`, q: d.sample.q, o: d.sample.opts,
       ok: d.try.ok, t: d.try.title, w: d.try.why, href: `${c.dir}/practice.html`, name: d.short || d.name };
   }).filter(Boolean);
   const json = JSON.stringify(items).replace(/</g, '\\u003c');
@@ -587,21 +580,32 @@ f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e
 /* Who makes this, how the questions are written and what changes, folded into the FAQ instead of a row of
    cards under it (Olivier, 2026-10-26). They carry links, so they are written as HTML and stay out of the
    FAQPage data. */
+/* Homepage questions, owner comment 2026-11-02 ("make this area better"): ordered by what a new visitor
+   asks first, short answers, and "Who makes LevlPrep?" now says who. */
 const HOME_ABOUT_QA = [
-  ['Who makes LevlPrep?', 'An independent project, not a company or a training program. Premium is an optional one-time pass, and <a href="premium.html">what is free</a> is listed course by course. No ads.'],
-  ['How are the questions written?', 'Every question in every course is original, written for LevlPrep with an explanation on each one: NREMT questions to current national guidelines and the five domains of the Registry&rsquo;s 2025 EMT exam, every other course&rsquo;s questions to the topic that teaches them. Automated checks look for answer-position and length tells. <a href="sources.html">Sources and checks</a>.'],
-  ['How do I see what changed?', 'Corrected questions, new lessons and site fixes are listed, dated, on <a href="changelog.html">What&rsquo;s new</a>.'],
+  ['How are the questions written?', 'Each one is original and written for LevlPrep, with an explanation for every answer choice. NREMT questions follow current national guidelines and the Registry&rsquo;s 2025 exam outline; every other question follows the lesson that teaches it. <a href="sources.html">Sources and checks</a>.'],
+  ['Who makes LevlPrep?', 'Olivier Testa, an EMT who passed the NREMT studying with LevlPrep. It is an independent project, not a company or a training program, and it has no ads. <a href="about.html">Why I built it</a>.'],
+  ['How do I see what changed?', 'Every corrected question, new lesson and fix is listed by date on <a href="changelog.html">What&rsquo;s new</a>.'],
 ];
 
 function hubFaq() {
+  const item = (q, a) => `      <details class="faq-item"><summary>${q}</summary>
+      <p>${a}</p></details>`;
+  const shown = FAQ.map(([q, a], i) => [esc(q), `${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}`]);
+  // Two columns, each its own list so opening one answer never leaves a gap beside it:
+  // price and terms on the left, how it is made on the right.
+  const left = [shown[0], shown[1], shown[2]], right = HOME_ABOUT_QA;
   return `  <section class="home-faq" aria-labelledby="home-faq-h">
     <h2 id="home-faq-h">Questions</h2>
     <div class="hub-faq">
-${FAQ.map(([q, a], i) => `      <details class="faq-item"><summary>${esc(q)}</summary>
-      <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p></details>`).join('\n')}
-${HOME_ABOUT_QA.map(([q, a]) => `      <details class="faq-item"><summary>${q}</summary>
-      <p>${a}</p></details>`).join('\n')}
+      <div class="faq-col">
+${left.map(([q, a]) => item(q, a)).join('\n')}
+      </div>
+      <div class="faq-col">
+${right.map(([q, a]) => item(q, a)).join('\n')}
+      </div>
     </div>
+    <p class="faq-more">Something else? Email <b>hello@levlprep.com</b>.</p>
   </section>`;
 }
 
@@ -713,12 +717,6 @@ function hubPcalcCard() {
   /* The hero's course count (owner, 2026-10-12: it said "Three courses" with
      five live): every open course, from the registry. */
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
-  for (const [re, txt] of [
-    [/(<div class="eyebrow">Free to start &middot; )\w+( courses &middot; notes free forever<\/div>)/, `$1${word.toLowerCase()}$2`],
-  ]) {
-    if (!re.test(src)) throw new Error(`${rel}: the hero no longer matches ${re}`);
-    src = src.replace(re, txt);
-  }
   /* The try one question (Olivier, 2026-10-26: NREMT should not lead the homepage): every open course's
      own sample question from its course home (scripts/lib/course-homes.json, already published there), one
      picked per visit and never the same course twice in a row. The NREMT question in the markup is the
@@ -729,14 +727,10 @@ function hubPcalcCard() {
      own questions: its bank also serves AB's, which apcalc already counts. */
   const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv, appsych: N.appsych, apprecalc: N.apprecalc, apcalcbc: N.apcalcbcOwn, apmacro: N.apmacro };
   const allQ = OPEN.reduce((n, c) => n + (BANK[c.key] || 0), 0);
-  const facts = [
-    `${fmt(allQ)} practice questions, each one explained`,
-    'Notes free forever in every course',
-    `One level and one streak across all ${word.toLowerCase()} courses`,
-    'No ads',
-  ];
+  /* The facts strip under the hero is gone (owner comment 2026-11-02: clutter, it repeated the pill and the
+     Free box); the question total, the one fact nothing else said, moved into the hero pill. */
   src = between(src, '<!-- hero-facts:start -->', '<!-- hero-facts:end -->',
-    `    <div class="fact-row">\n${facts.map((f) => `      <span><span class="dot"></span>${f}</span>`).join('\n')}\n    </div>`, rel);
+    `    <div class="eyebrow">${word.toLowerCase()} courses &middot; ${fmt(allQ)} questions &middot; free to start</div>`, rel);
   const m = src.indexOf('<!-- levlprep-structured-data -->');
   if (m === -1) throw new Error('index.html: no <!-- levlprep-structured-data --> marker');
   const s0 = src.indexOf('<script type="application/ld+json">', m);

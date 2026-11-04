@@ -272,7 +272,7 @@
     function paintPick(){
       var stepEl = app.querySelector('.calc-pr-pickstep'), h = '', html = '';
       if(state.mode === 'build'){ h = 'Choose the questions'; html = filtersHtml(); }
-      else if(state.mode === 'weak'){ var w = weakTopics(); h = 'Where you are weakest'; html = '<p class="calc-small">' + (w.length ? 'Lowest mastery right now: ' + w.map(function(x){ return esc(x.title) + ' (' + Core.pct(x.value) + ')'; }).join(', ') + '.' : '') + '</p>'; }
+      else if(state.mode === 'weak'){ var w = weakTopics(); h = 'Where you are weakest'; html = '<p class="calc-small">' + (w.length ? 'Lowest mastery right now: ' + w.map(function(x){ return esc(x.title) + ' (' + Core.pct(x.value) + ')'; }).join(', ') + '.' : '') + '</p>' + '<p class="calc-small">Missed questions wait in <a href="review.html">Review</a>.</p>'; }
       app.querySelector('.calc-pr-pick-h').textContent = h;
       app.querySelector('.calc-pr-pick').innerHTML = html;
       stepEl.hidden = !html;
