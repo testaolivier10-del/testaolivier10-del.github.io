@@ -1,5 +1,5 @@
 {
- "about": "The fifth answer choice for each bank question a practice exam uses (docs/apmacro-architecture.md, \"Practice exams\"). The exam has five choices, (A) to (E) (needs-author mcq-options); the practice bank keeps four. The generator serves each question in a form with its four options, then this one, and its explanation (why). Keys and explanations of the four stay in the bank.",
+ "about": "The fifth answer choice for each bank question a practice exam uses (docs/apmacro-architecture.md, \"Practice exams\"). The exam has five choices, (A) to (E) (needs-author mcq-options); the practice bank keeps four. The generator serves each question in a form with its four options and this one, put in at a fixed position from the question's id (fifthAt in scripts/lib/apmacro-exams.mjs, so the fifth is not always (E)), with its explanation (why). Keys and explanations of the four stay in the bank.",
  "options": {
   "mac-scarcity-10": {
    "option": "Economic growth, because she finds more uses for her time",
@@ -30,8 +30,8 @@
    "why": "GDP counts output produced inside a country's borders, whoever produces it; where her taxes go does not change that."
   },
   "mac-gdp-limitations-16": {
-   "option": "One has a higher GDP per capita than the other",
-   "why": "The question says the two have the same GDP per capita, so this is not a difference between them."
+   "option": "One's residents earn a higher average income from production",
+   "why": "Spending on final output is income to someone, so GDP per capita is also average income per person; with equal GDP per capita, average incomes match and the measure would show any gap."
   },
   "mac-unemployment-16": {
    "option": "She counts as a discouraged worker, so the rate is unaffected",
@@ -99,7 +99,7 @@
   },
   "mac-financial-assets-12": {
    "option": "Creating new money to pay for the factory",
-   "why": "Only the central bank creates money this way; a company that sells bonds is borrowing from the people who buy them."
+   "why": "Selling bonds creates no new money; the company borrows money that already exists from the people who buy the bonds and promises to repay it with interest."
   },
   "mac-financial-assets-18": {
    "option": "A government bond",
@@ -331,7 +331,7 @@
   },
   "mac-loanable-funds-8": {
    "option": "National saving falls to 300 and the real rate falls",
-   "why": "National saving is now $400 - 100 = 300$; balancing the budget raises it to 400, so it rises, and the real rate falls."
+   "why": "National saving starts at $400 - 100 = 300$, with the deficit of 100 subtracted; balancing the budget raises it to 400, so it rises, and the real rate falls."
   },
   "mac-loanable-funds-4": {
    "option": "It rises, because the supply of loanable funds shifted right",

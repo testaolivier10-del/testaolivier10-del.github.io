@@ -26,6 +26,8 @@
   var M = root.ApMacroMath;
   if(!M) return;
   function calc(fn){ return M.Calc().evaluate({ fn: fn, args: [].slice.call(arguments, 1) }); }
+  // An amount of a good: "0.5 shoes", but "1 unit of shoes" (goods may be plural or mass nouns).
+  function amt(v, g){ var s = n(v); return s === '1' ? '1 unit of ' + g : s + ' ' + g; }
   function n(x, d){
     var s = M.fixed(Math.abs(x), d == null ? 2 : d).replace(/\.?0+$/, '');
     if(s === '') s = '0';
@@ -193,7 +195,7 @@
         { value: calc('opportunityCost', gained, gave), why: 'That is upside down: it is the cost of one ' + y0.replace(/s$/, '') + ' in ' + x0 + '. For one unit of ' + x0 + ', divide the ' + y0 + ' given up by the ' + x0 + ' gained.' },
         { value: gave, why: 'That is the cost of all ' + gained + ' extra ' + x0 + '. Divide by ' + gained + ' for one unit.' }
       ], { hint: 'Given up ÷ gained', practice: '3.A' }),
-      choice('shape', 'What happens to the opportunity cost of ' + x0 + ' as more ' + x0 + ' is made?', [
+      choice('shape', 'What happens to the opportunity cost of ' + x0 + ' as the economy makes more of it?', [
         shape === 'up' ? 'It rises: the PPC is bowed out' : 'It stays the same: the PPC is a straight line',
         shape === 'up' ? 'It stays the same: the PPC is a straight line' : 'It rises: the PPC is bowed out',
         'It falls: the PPC bows in toward the origin'
@@ -241,25 +243,25 @@
     var absX = c.A.x === c.B.x ? null : c.A.x > c.B.x ? c.A : c.B;
     var steps = [
       num('ocA', 'In ' + c.A.name + ', the opportunity cost of 1 unit of ' + X + ' (in ' + Y + ')', ocA, [
-        { value: calc('opportunityCost', c.A.x, c.A.y), why: 'That is upside down: it is the cost of one unit of ' + Y + '. With output data, one ' + X + ' costs ' + Y + ' ÷ ' + X + ' = ' + c.A.y + ' ÷ ' + c.A.x + '.' }
+        { value: calc('opportunityCost', c.A.x, c.A.y), why: 'That is upside down: it is the cost of one unit of ' + Y + '. With output data, one unit of ' + X + ' costs ' + Y + ' ÷ ' + X + ' = ' + c.A.y + ' ÷ ' + c.A.x + '.' }
       ], { hint: 'Output data: the other good ÷ this good', practice: '3.A' }),
       num('ocB', 'In ' + c.B.name + ', the opportunity cost of 1 unit of ' + X + ' (in ' + Y + ')', ocB, [
-        { value: calc('opportunityCost', c.B.x, c.B.y), why: 'That is upside down: one ' + X + ' costs ' + Y + ' ÷ ' + X + ' = ' + c.B.y + ' ÷ ' + c.B.x + '.' }
+        { value: calc('opportunityCost', c.B.x, c.B.y), why: 'That is upside down: one unit of ' + X + ' costs ' + Y + ' ÷ ' + X + ' = ' + c.B.y + ' ÷ ' + c.B.x + '.' }
       ], { practice: '3.A' }),
       choice('ca', 'Which country has the comparative advantage in ' + X + '?', [ca.name, other.name, 'Neither: comparative advantage needs one country to make more of both goods'], [
-        'Right: ' + ca.name + ' gives up less ' + Y + ' for each unit of ' + X + ' (' + n(Math.min(ocA, ocB)) + ' against ' + n(Math.max(ocA, ocB)) + ').',
-        other.name + '\'s opportunity cost of ' + X + ' is higher (' + n(Math.max(ocA, ocB)) + ' ' + Y + ').' + (absX === other ? ' It makes more ' + X + ' (an absolute advantage), but comparative advantage goes to the lower opportunity cost.' : ''),
+        'Right: ' + ca.name + ' gives up fewer units of ' + Y + ' for each unit of ' + X + ' (' + n(Math.min(ocA, ocB)) + ' against ' + n(Math.max(ocA, ocB)) + ').',
+        other.name + '\'s opportunity cost of ' + X + ' is higher (' + amt(Math.max(ocA, ocB), Y) + ').' + (absX === other ? ' It makes more ' + X + ' (an absolute advantage), but comparative advantage goes to the lower opportunity cost.' : ''),
         'Comparative advantage only needs the opportunity costs to differ, which they do. Making more of both is absolute advantage.'
       ], { practice: '2.B' }),
       choice('spec', 'If they specialize and trade, what should ' + other.name + ' make?', [c.goods[1], c.goods[0], 'Some of each good'], [
-        'Right: ' + other.name + ' has the lower opportunity cost of ' + Y + ' (' + n(other === c.A ? 1 / ocA : 1 / ocB) + ' ' + X + ' per unit, against ' + n(ca === c.A ? 1 / ocA : 1 / ocB) + '), so it specializes in ' + Y + '.',
+        'Right: ' + other.name + ' has the lower opportunity cost of ' + Y + ' (' + amt(other === c.A ? 1 / ocA : 1 / ocB, X) + ' per unit, against ' + n(ca === c.A ? 1 / ocA : 1 / ocB) + '), so it specializes in ' + Y + '.',
         ca.name + ' makes ' + X + ' at the lower cost, so ' + other.name + ' should make the other good.',
         'The gains from trade come from each country specializing in the good it makes at the lower opportunity cost.'
       ], { practice: '1.D', level: 'analyze' })
     ];
     return { type: 'output', fig: { html: outTable(c), plot: outPlot(c) }, values: { c: c, ocA: ocA, ocB: ocB, ca: ca.name }, text: '<p>' + c.A.name + ' and ' + c.B.name + ' each use all their resources to make ' + X + ' or ' + Y + '. The table shows the most each could make of one good if it made none of the other.</p>', steps: steps,
       solution: [
-        c.A.name + ': 1 ' + X + ' costs ' + c.A.y + ' ÷ ' + c.A.x + ' = <b>' + n(ocA) + ' ' + Y + '</b>. ' + c.B.name + ': ' + c.B.y + ' ÷ ' + c.B.x + ' = <b>' + n(ocB) + ' ' + Y + '</b>.',
+        c.A.name + ': 1 unit of ' + X + ' costs ' + c.A.y + ' ÷ ' + c.A.x + ' = <b>' + amt(ocA, Y) + '</b>. ' + c.B.name + ': ' + c.B.y + ' ÷ ' + c.B.x + ' = <b>' + amt(ocB, Y) + '</b>.',
         '<b>' + ca.name + '</b> has the lower opportunity cost of ' + X + ', so the comparative advantage in ' + X + '; ' + other.name + ' has it in ' + Y + '.',
         'Absolute advantage (who makes more) does not decide trade: ' + (absX ? absX.name + ' can make more ' + X + '.' : 'they make the same amount of ' + X + '.')
       ] };
@@ -275,21 +277,21 @@
       [a, b].map(function(k){ return '<tr><th scope="row">' + k.name + '</th><td class="r">' + k.hx + ' h</td><td class="r">' + k.hy + ' h</td></tr>'; }).join('') + '</tbody></table>';
     var steps = [
       num('ocA', 'In ' + a.name + ', the opportunity cost of 1 unit of ' + X + ' (in ' + Y + ')', ocA, [
-        { value: calc('opportunityCost', a.hy, a.hx), why: 'That is the output-data rule used on input data. With hours per unit, the hours spent on one ' + X + ' (' + a.hx + ') could make ' + a.hx + ' ÷ ' + a.hy + ' units of ' + Y + '.' }
+        { value: calc('opportunityCost', a.hy, a.hx), why: 'That is the output-data rule used on input data. With hours per unit, the hours spent on one unit of ' + X + ' (' + a.hx + ') could make ' + a.hx + ' ÷ ' + a.hy + ' units of ' + Y + '.' }
       ], { hint: 'Input data: this good\'s hours ÷ the other good\'s hours', practice: '3.A' }),
       num('ocB', 'In ' + b.name + ', the opportunity cost of 1 unit of ' + X + ' (in ' + Y + ')', ocB, [
-        { value: calc('opportunityCost', b.hy, b.hx), why: 'Upside down. With hours per unit, one ' + X + ' costs ' + b.hx + ' ÷ ' + b.hy + ' units of ' + Y + '.' }
+        { value: calc('opportunityCost', b.hy, b.hx), why: 'Upside down. With hours per unit, one unit of ' + X + ' costs ' + b.hx + ' ÷ ' + b.hy + ' units of ' + Y + '.' }
       ], { practice: '3.A' }),
       choice('ca', 'Which country has the comparative advantage in ' + X + '?', [ca.name, other.name, 'Whichever country needs fewer hours to make ' + X], [
-        'Right: ' + ca.name + ' gives up less ' + Y + ' for each ' + X + ' (' + n(Math.min(ocA, ocB)) + ' against ' + n(Math.max(ocA, ocB)) + ').',
-        other.name + ' gives up more ' + Y + ' (' + n(Math.max(ocA, ocB)) + ') for each unit of ' + X + '.',
+        'Right: ' + ca.name + ' gives up fewer units of ' + Y + ' for each unit of ' + X + ' (' + n(Math.min(ocA, ocB)) + ' against ' + n(Math.max(ocA, ocB)) + ').',
+        other.name + ' gives up more ' + Y + ' (' + amt(Math.max(ocA, ocB), Y) + ') for each unit of ' + X + '.',
         'Fewer hours is absolute advantage. Comparative advantage compares opportunity costs: hours for ' + X + ' ÷ hours for ' + Y + '.'
       ], { practice: '2.B', level: 'analyze' })
     ];
     return { type: 'input', fig: { html: fig }, values: { a: a, b: b, ocA: ocA, ocB: ocB, ca: ca.name, goods: goods }, text: '<p>The table shows how many hours of labor ' + a.name + ' and ' + b.name + ' need to make one unit of each good (input data).</p>', steps: steps,
       solution: [
-        'Input data: an hour spent on one good is an hour not spent on the other. In ' + a.name + ', one ' + X + ' takes ' + a.hx + ' h, enough for ' + a.hx + ' ÷ ' + a.hy + ' = <b>' + n(ocA) + ' ' + Y + '</b>.',
-        'In ' + b.name + ': ' + b.hx + ' ÷ ' + b.hy + ' = <b>' + n(ocB) + ' ' + Y + '</b>.',
+        'Input data: an hour spent on one good is an hour not spent on the other. In ' + a.name + ', one unit of ' + X + ' takes ' + a.hx + ' h, enough for ' + a.hx + ' ÷ ' + a.hy + ' = <b>' + amt(ocA, Y) + '</b>.',
+        'In ' + b.name + ': ' + b.hx + ' ÷ ' + b.hy + ' = <b>' + amt(ocB, Y) + '</b>.',
         '<b>' + ca.name + '</b> has the lower opportunity cost of ' + X + ': the comparative advantage. (With output data the ratio is the other way: ' + Y + ' made ÷ ' + X + ' made.)'
       ] };
   }
@@ -304,11 +306,11 @@
     var t = function(v){ return '1 ' + X.replace(/s$/, '') + ' for ' + n(v) + ' ' + Y; };
     var steps = [
       choice('exp', 'Which country should export ' + X + '?', [xer.name, yer.name], [
-        'Right: ' + xer.name + ' makes ' + X + ' at the lower opportunity cost (' + n(lo) + ' ' + Y + ' per unit, against ' + n(hi) + ').',
-        yer.name + ' gives up more ' + Y + ' for each unit of ' + X + ' (' + n(hi) + '), so it should export ' + Y + ' instead.'
+        'Right: ' + xer.name + ' makes ' + X + ' at the lower opportunity cost (' + amt(lo, Y) + ' per unit, against ' + n(hi) + ').',
+        yer.name + ' gives up more ' + Y + ' for each unit of ' + X + ' (' + amt(hi, Y) + '), so it should export ' + Y + ' instead.'
       ], { practice: '2.B' }),
       choice('tot', 'Which terms of trade make both countries better off?', [t(good), t(below), t(above), t(lo)], [
-        'Right: ' + n(good) + ' is between the two opportunity costs, ' + n(lo) + ' and ' + n(hi) + '. ' + xer.name + ' gets more ' + Y + ' than it could make itself, and ' + yer.name + ' pays less ' + Y + ' than making ' + X + ' would cost it.',
+        'Right: ' + n(good) + ' is between the two opportunity costs, ' + n(lo) + ' and ' + n(hi) + '. ' + xer.name + ' gets more ' + Y + ' than it could make itself, and ' + yer.name + ' pays fewer units of ' + Y + ' than making ' + X + ' would cost it.',
         'Below ' + n(lo) + ', ' + xer.name + ' would get fewer ' + Y + ' than it gives up making ' + X + ': it loses. Terms must lie between the two opportunity costs.',
         'Above ' + n(hi) + ', ' + yer.name + ' would pay more ' + Y + ' than it would give up making ' + X + ' itself: it loses.',
         'At exactly ' + n(lo) + ', ' + xer.name + ' gains nothing: it gets the same as it could make itself. Both gain only strictly between ' + n(lo) + ' and ' + n(hi) + '.'
@@ -316,7 +318,7 @@
     ];
     return { type: 'terms', fig: { html: outTable(c), plot: outPlot(c) }, values: { c: c, lo: lo, hi: hi, good: good, below: below, above: above, xer: xer.name }, text: '<p>' + c.A.name + ' and ' + c.B.name + ' can make ' + X + ' or ' + Y + '. The table shows the most each could make of one good with all its resources.</p>', steps: steps,
       solution: [
-        'Opportunity cost of 1 ' + X.replace(/s$/, '') + ': ' + c.A.name + ' ' + c.A.y + ' ÷ ' + c.A.x + ' = ' + n(ocA) + ' ' + Y + '; ' + c.B.name + ' ' + c.B.y + ' ÷ ' + c.B.x + ' = ' + n(ocB) + ' ' + Y + '.',
+        'Opportunity cost of 1 ' + X.replace(/s$/, '') + ': ' + c.A.name + ' ' + c.A.y + ' ÷ ' + c.A.x + ' = ' + amt(ocA, Y) + '; ' + c.B.name + ' ' + c.B.y + ' ÷ ' + c.B.x + ' = ' + amt(ocB, Y) + '.',
         '<b>' + xer.name + '</b> exports ' + X + ' (lower cost); ' + yer.name + ' exports ' + Y + '.',
         'Both gain when the price of 1 ' + X.replace(/s$/, '') + ' is <b>between ' + n(lo) + ' and ' + n(hi) + ' ' + Y + '</b>, such as ' + n(good) + '.'
       ] };

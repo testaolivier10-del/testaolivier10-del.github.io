@@ -85,13 +85,23 @@ export function loadExams(dataDir) {
 }
 
 /* A bank question as a form serves it: its four options and their
-   explanations, then the form's fifth option (data/exams/fifth.json:
-   { option, why }) and its explanation. The key's index is unchanged; the
-   page shuffles the options. */
+   explanations with the form's fifth option (data/exams/fifth.json:
+   { option, why }) and its explanation put in at FIFTH_AT(id), a fixed
+   position from the id, so the fifth is not always (E) and (E) is not the
+   key only on exam-only questions. The key moves with its option; the page
+   shuffles the options, but print and the review show this order. */
+export function fifthAt(id) {
+  let h = 0;
+  for (const c of String(id)) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  return h % MCQ_OPTIONS;
+}
 export function examVersion(q, fifth) {
   const f = fifth && fifth[q.id];
   if (!f) return q;
-  return { ...q, options: [...q.options, f.option], why: { ...q.why, options: [...((q.why || {}).options || []), f.why] } };
+  const at = Math.min(fifthAt(q.id), q.options.length);
+  const put = (a, x) => [...a.slice(0, at), x, ...a.slice(at)];
+  const correct = Number.isInteger(q.correct) && q.correct >= at ? q.correct + 1 : q.correct;
+  return { ...q, options: put(q.options, f.option), correct, why: { ...q.why, options: put((q.why || {}).options || [], f.why) } };
 }
 
 /* The fifth options: each one for a bank question a form uses, different

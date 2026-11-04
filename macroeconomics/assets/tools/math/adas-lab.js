@@ -206,7 +206,7 @@
       ],
       solution: [
         'Output gap = ' + thousands(Y) + ' \u2212 ' + thousands(yf) + ' = ' + M.minus(String(gap)) + ' billion dollars' + (rec ? ' (a shortfall).' : '.'),
-        'Real GDP is ' + (rec ? 'below' : 'above') + ' full employment: a ' + (rec ? 'recessionary' : 'inflationary') + ' gap.',
+        'Real GDP is ' + (rec ? 'below' : 'above') + ' full employment: ' + (rec ? 'a recessionary' : 'an inflationary') + ' gap.',
         'Cyclical unemployment = ' + u + '% − ' + un + '% = ' + M.fmt(cyc, 3) + '%' + (rec ? '' : ' (below the natural rate)') + '.',
         rec ? 'Nominal wages fall, SRAS shifts right, and output returns to full employment at a lower price level.' : 'Nominal wages rise, SRAS shifts left, and output returns to full employment at a higher price level.'
       ],

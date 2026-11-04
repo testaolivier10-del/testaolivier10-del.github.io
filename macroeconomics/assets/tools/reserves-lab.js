@@ -89,7 +89,7 @@
 
     function onClick(e){
       var b;
-      if((b = e.target.closest('.rl-fw button'))){ act(); fw = b.getAttribute('data-fw'); stance = 0; snap(); sync(); redraw(); say(line()); return; }
+      if((b = e.target.closest('.rl-fw button'))){ act(); fw = b.getAttribute('data-fw'); stance = 0; if(RL.toolOf(tool).fw !== fw) tool = fw === 'ample' ? 'iorb' : 'omo'; snap(); sync(); redraw(); say(line()); return; }
       if((b = e.target.closest('.rl-tool'))){ act(); tool = b.getAttribute('data-t'); stance = 0; glide(); sync(); say(line()); return; }
       if((b = e.target.closest('.rl-act'))){ act(); stance = +b.getAttribute('data-s'); glide(); sync(); say(line()); return; }
       if((b = e.target.closest('.rl-tabs button'))){ view = b.getAttribute('data-g'); sync(); return; }
@@ -148,6 +148,8 @@
         var spec = sp[k];
         var lab = TITLE[k] + ' graph: ' + G.describe(spec, { shifts: roundShifts(shown[k]) });
         p.innerHTML = graphSvg(k, spec, shown[k], { ample: ample }, lab);
+        // With ample reserves the policy graph is the reserve market; the money market only follows the policy rate.
+        var cap = $('.rl-panel[data-g="' + k + '"] figcaption span'); if(cap) cap.textContent = k === 'money' && ample ? 'follows the policy rate' : SUBT[k];
       });
       chain();
     }

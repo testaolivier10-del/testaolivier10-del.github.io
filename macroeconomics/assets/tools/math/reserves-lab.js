@@ -235,7 +235,7 @@
     ], '4.C');
     return choice('graph', 'Which graph shows the policy, and how?', [
       ['The money market: the money supply shifts ' + (tight ? 'left' : 'right') + '.', 'With limited reserves the tool changes the quantity of money: the money supply shifts ' + (tight ? 'left' : 'right') + ' and the nominal interest rate ' + (tight ? 'rises' : 'falls') + '.'],
-      ['The money market: money demand shifts ' + (tight ? 'left' : 'right') + '.', 'Central bank tools change the money supply. Money demand depends on the price level, real output and the interest rate, not on the Fed’s tools.'],
+      ['The money market: money demand shifts ' + (tight ? 'left' : 'right') + '.', 'Central bank tools change the money supply. Money demand shifts with the price level and real output (a change in the interest rate moves along it), not with the Fed’s tools.'],
       ['The reserve market: the flat part of reserve demand shifts ' + (tight ? 'up' : 'down') + '.', 'That is how the ample-reserves graph shows a change in administered rates. This question sets limited reserves, so draw the money market.'],
       ['The money market: the money supply shifts ' + (tight ? 'right' : 'left') + '.', 'Right graph, wrong way: that would ' + (tight ? 'lower' : 'raise') + ' the nominal interest rate.']
     ], '4.C');
@@ -259,7 +259,7 @@
     var ef = effect(fw, toolId, s);
     var sol = [
       (tight ? 'An inflationary gap calls for contractionary policy: raise the policy rate.' : 'A recessionary gap calls for expansionary policy: lower the policy rate.'),
-      (fw === 'ample' ? 'With ample reserves the tool is the administered rate: ' : 'With limited reserves use a tool that changes the quantity of reserves: ') + act.toLowerCase() + '.',
+      (fw === 'ample' ? 'With ample reserves the tool is the administered rate: ' : 'With limited reserves use a tool that changes the quantity of reserves: ') + act.charAt(0).toLowerCase() + act.slice(1) + '.',
       fw === 'ample' ? 'On the reserve market the flat part of reserve demand shifts ' + (tight ? 'up' : 'down') + ', and the policy rate ' + (tight ? 'rises' : 'falls') + ' with it.' : 'On the money market the money supply shifts ' + (tight ? 'left' : 'right') + ', and the nominal interest rate ' + (tight ? 'rises' : 'falls') + '.',
       'Interest rates ' + (tight ? 'rise' : 'fall') + ' → investment ' + (tight ? 'falls' : 'rises') + ' → AD shifts ' + ef.ad + ' → real output ' + (tight ? 'falls' : 'rises') + ', the price level ' + (tight ? 'falls' : 'rises') + ', unemployment ' + (tight ? 'rises' : 'falls') + '.'
     ];

@@ -97,7 +97,7 @@
         links = [
           L('policy', w(d, 'The central bank buys government bonds', 'The central bank sells government bonds'), w(d, 'The central bank sells government bonds', 'The central bank buys government bonds'), [], null, ['bond']),
           L('money', w(d, 'Bank reserves rise, so the money supply increases', 'Bank reserves fall, so the money supply decreases'), w(d, 'The money supply decreases', 'The money supply increases'), [
-            [w(d, 'Money demand increases', 'Money demand decreases'), 'Buying or selling bonds changes banks’ reserves, so it shifts the money supply. Money demand depends on income, the price level and the interest rate.'],
+            [w(d, 'Money demand increases', 'Money demand decreases'), 'Buying or selling bonds changes banks’ reserves, so it shifts the money supply. Money demand shifts with income and the price level, not with the central bank’s bond trades.'],
             [w(d, 'The demand for loanable funds increases', 'The demand for loanable funds decreases'), 'Open market operations are drawn on the money market: the money supply shifts.']
           ], { kind: 'money', shifts: { MS: d } }, ['money supply']),
           L('rate', w(d, 'The nominal interest rate falls', 'The nominal interest rate rises'), w(d, 'The nominal interest rate rises', 'The nominal interest rate falls'), [
@@ -129,10 +129,10 @@
         L('capital', w(d, 'Financial capital flows into the United States as foreigners buy more US assets', 'Financial capital flows out of the United States as foreigners buy fewer US assets'),
           w(d, 'Financial capital flows out of the United States', 'Financial capital flows into the United States'), [
           [w(d, 'US exports rise', 'US exports fall'), 'Interest rates move financial capital first. Trade changes later, through the exchange rate.'],
-          [w(d, 'US saving falls', 'US saving rises'), 'The question is about where lenders put their funds: higher returns attract foreign financial capital.']
+          [w(d, 'US saving falls', 'US saving rises'), 'The question is about where lenders put their funds: financial capital moves toward the higher real interest rate.']
         ], null, ['financial capital', 'capital flow', 'capital inflow', 'capital outflow', 'assets']),
         L('demand', w(d, 'Demand for the dollar increases on the foreign exchange market', 'Demand for the dollar decreases on the foreign exchange market'), w(d, 'Demand for the dollar decreases', 'Demand for the dollar increases'), [
-          [w(d, 'The supply of dollars increases', 'The supply of dollars decreases'), 'Foreigners need dollars to buy US assets, so it is the demand for dollars that changes. The supply comes from US holders buying foreign goods and assets.']
+          [w(d, 'The supply of dollars increases', 'The supply of dollars decreases'), w(d, 'Foreigners buying more US assets need more dollars, so the demand for dollars increases. The supply of dollars comes from US holders buying foreign assets, and they buy fewer now, so it does not rise.', 'Foreigners buying fewer US assets need fewer dollars, so the demand for dollars decreases. The supply of dollars comes from US holders buying foreign assets, and they buy more now, so it does not fall.')]
         ], fxD, ['demand for the dollar', 'demand for dollars']),
         L('value', w(d, 'The dollar appreciates', 'The dollar depreciates'), w(d, 'The dollar depreciates', 'The dollar appreciates'), [
           ['The dollar’s value stays the same because the euro adjusts instead', 'An exchange rate is one price seen from two sides: if the dollar buys more euros, the euro buys fewer dollars.']
@@ -155,7 +155,7 @@
           [w(d, 'The money supply increases', 'The money supply decreases'), 'Borrowing from savers does not create money. Crowding out is drawn on the loanable funds market.']
         ], lf, ['loanable funds', 'borrow']),
         L('rate', w(d, 'The real interest rate rises', 'The real interest rate falls'), w(d, 'The real interest rate falls', 'The real interest rate rises'), [
-          [w(d, 'The nominal interest rate rises because the money supply falls', 'The nominal interest rate falls because the money supply rises'), 'Nothing happened to the money supply. More government borrowing raises the real interest rate in the loanable funds market.']
+          [w(d, 'The nominal interest rate rises because the money supply falls', 'The nominal interest rate falls because the money supply rises'), 'Nothing happened to the money supply. A change in government borrowing moves the real interest rate in the loanable funds market.']
         ], lf, ['real interest rate', 'interest rate']),
         L('invest', w(d, 'Private investment falls: it is crowded out', 'Private investment rises: it is crowded in'), w(d, 'Private investment rises', 'Private investment falls'), [
           [w(d, 'Consumption rises because saving earns more', 'Consumption falls because saving earns less'), 'The link readers look for is investment: a ' + w(d, 'higher', 'lower') + ' real interest rate makes borrowing for capital ' + w(d, 'costlier', 'cheaper') + '.']

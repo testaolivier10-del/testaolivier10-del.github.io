@@ -157,7 +157,7 @@
       correct: keys.map(function(k){ return JSON.stringify(k); }).indexOf(JSON.stringify(want)),
       why: keys.map(function(k){
         var right = JSON.stringify(k) === JSON.stringify(want);
-        if(right) return sc.along ? 'Yes. Only ' + vAxis + ' changed, and it is on an axis, so the economy slides along ' + name(sc.along) + '.' : 'Yes. ' + cap(fill(sc.because, words)) + ' is not on either axis, so it shifts the whole ' + name(want.shift) + ' curve.';
+        if(right) return sc.along ? 'Yes. Only ' + vAxis + ' changed, and it is on an axis, so the economy slides along ' + name(sc.along) + '.' : 'Yes. That change, ' + fill(sc.because, words) + ', is not on either axis, so it shifts the whole ' + name(want.shift) + ' curve.';
         if(k.along && !sc.along) return 'A movement along a curve comes only from a change in the variable on its axis (' + vAxis + '). This change is not on an axis, so it shifts a curve.';
         if(k.shift && sc.along) return 'Only ' + vAxis + ' changed, and it is on the vertical axis: that is a movement along a curve, not a shift.';
         if(k.shift) return 'Ask who the change affects: here it is ' + (want.shift === 'D' || want.shift === 'AD' ? 'buyers' : 'sellers') + ', so it shifts ' + name(want.shift) + ', not ' + name(k.shift) + '.';
@@ -242,7 +242,7 @@
     var key = keyResponse(spec), sol = [];
     if(tasks.indexOf('labels') > -1) sol.push('Labels: the vertical axis is ' + G.labelText(k.y, spec.names) + ', the horizontal axis ' + G.labelText(k.x, spec.names) + '; the curves are ' + k.curves.map(function(c){ return G.curveName(c.id) + ' (' + G.CURVE[c.id][0] + G.CURVE[c.id][1] + ')'; }).join(', ') + '.');
     if(type === 'move') sol.push(sc.along ? 'Only a variable on an axis changed, so this is a movement along ' + G.curveName(sc.along) + ', not a shift.' : 'The change is not on an axis, so it shifts a whole curve: ' + G.curveName(sc.shifts[0].curve) + '.');
-    if(spec.key && spec.key.shifts) sol.push(cap(fill(sc.because, words)) + ' shifts ' + spec.key.shifts.map(function(s){ return G.curveName(s.curve) + ' ' + s.dir; }).join(' and ') + '.' + (alts.length ? ' (Also accepted: ' + alts.map(function(a){ return a.key.shifts.map(function(s){ return G.curveName(s.curve) + ' ' + s.dir; }).join(' and '); }).join('; ') + '.)' : ''));
+    if(spec.key && spec.key.shifts) sol.push('With ' + fill(sc.because, words) + ', ' + spec.key.shifts.map(function(s){ return G.curveName(s.curve) + ' shifts ' + s.dir; }).join(' and ') + '.' + (alts.length ? ' (Also accepted: ' + alts.map(function(a){ return a.key.shifts.map(function(s){ return G.curveName(s.curve) + ' ' + s.dir; }).join(' and '); }).join('; ') + '.)' : ''));
     if(tasks.indexOf('equilibrium') > -1) sol.push('E2 is where ' + k.eq.map(function(c){ return G.CURVE[c][0] + G.CURVE[c][1]; }).join(' and ') + ' cross after the shift. ' + outcomeText(sc.graph, spec.key.outcome, spec.names));
     if(sc.point) sol.push('Point ' + (spec.pointLabel || 'X') + ': ' + fill(sc.pointWhy || '', words));
     (sc.why || []).forEach(function(x){ sol.push(fill(x, words)); });

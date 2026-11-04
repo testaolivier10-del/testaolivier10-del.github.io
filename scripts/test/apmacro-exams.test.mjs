@@ -32,7 +32,7 @@ import { execFileSync } from 'node:child_process';
 import { loadMap, trademarkProblems } from '../lib/apmacro-build.mjs';
 import { Tex, Calc, Graph, Grade } from '../lib/apmacro-mathlib.mjs';
 import { scanPage } from '../lib/apmacro-map.mjs';
-import { loadExams, loadJustify, FREE_JUSTIFY, JUSTIFY_PER_CHAPTER, JUSTIFY_PER_SKILLS_CHAPTER, checkNumbers, checkForms, checkJustify, checkFifth, checkGraphs, examVersion, formUnits, unitRange, MCQ_OPTIONS, BANK_OPTIONS, EXAM_STIMULI, EXAM_ONLY, EXAM_GRAPHS, MCQ_TOTAL, MCQ_PARTS, FRQ_PARTS, FRQ_POINTS, FRQ_TOTAL, FRQ_ORDER, EXAM_SETS, JUSTIFY_SKILLS, EXAM_NUMBERS, JUSTIFY_NUMBERS, MCQ_WEIGHT, FRQ_WEIGHT, EXAM_DATE } from '../lib/apmacro-exams.mjs';
+import { loadExams, loadJustify, FREE_JUSTIFY, JUSTIFY_PER_CHAPTER, JUSTIFY_PER_SKILLS_CHAPTER, checkNumbers, checkForms, checkJustify, checkFifth, checkGraphs, examVersion, fifthAt, formUnits, unitRange, MCQ_OPTIONS, BANK_OPTIONS, EXAM_STIMULI, EXAM_ONLY, EXAM_GRAPHS, MCQ_TOTAL, MCQ_PARTS, FRQ_PARTS, FRQ_POINTS, FRQ_TOTAL, FRQ_ORDER, EXAM_SETS, JUSTIFY_SKILLS, EXAM_NUMBERS, JUSTIFY_NUMBERS, MCQ_WEIGHT, FRQ_WEIGHT, EXAM_DATE } from '../lib/apmacro-exams.mjs';
 import { EQ, NOT_ON, TABLES, GRAPHS, BALANCE_SHEET, workedTex, workedValue, formulaCards } from '../lib/apmacro-entry.mjs';
 
 const map = loadMap();
@@ -292,7 +292,13 @@ test('the two practice exams pass every assembly rule, in the May 2027 format', 
     for (const id of ids) {
       const q = examItems.get(id) || examVersion(bankR.get(id), ex.fifth);
       assert.equal(q.options.length, 5, id); assert.equal(q.why.options.length, 5, id);
-      if (bankR.has(id)) { assert.equal(q.correct, bankR.get(id).correct); assert.deepEqual(q.options.slice(0, 4), bankR.get(id).options); }
+      if (bankR.has(id)) {
+        // The fifth goes in at fifthAt(id); the bank's four keep their order and the key moves with its option.
+        const b = bankR.get(id), at = fifthAt(id);
+        assert.equal(q.options[at], ex.fifth[id].option, id); assert.equal(q.why.options[at], ex.fifth[id].why, id);
+        assert.deepEqual(q.options.filter((_, i) => i !== at), b.options, id); assert.deepEqual(q.why.options.filter((_, i) => i !== at), b.why.options, id);
+        assert.equal(q.options[q.correct], b.options[b.correct], id);
+      }
     }
     const kinds = {}; for (const id of ids) { const st = rctx.stimuli(qOf(id).stimulus); if (st) kinds[st.kind] = (kinds[st.kind] || 0) + 1; }
     const n = Object.values(kinds).reduce((a, b) => a + b, 0);
@@ -309,6 +315,7 @@ test('the two practice exams pass every assembly rule, in the May 2027 format', 
   const stims = all.map(id => qOf(id).stimulus).filter(Boolean);
   assert.equal(new Set(stims).size, stims.length, 'no stimulus carries two questions');
   assert.equal(Object.keys(ex.fifth).length, 100, 'a fifth option for each of the 100 bank questions');
+  assert.equal(new Set(Object.keys(ex.fifth).map(fifthAt)).size, MCQ_OPTIONS, 'the fifth option is placed at every position, not always (E)');
   assert.ok(ex.items.every(q => ex.forms.some(f => f.mcq.flat().includes(q.id))), 'every exam-only item is used');
 });
 

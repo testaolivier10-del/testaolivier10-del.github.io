@@ -288,7 +288,7 @@ composite, no band.
 `fifth.json` (`options: { <bank id>: { option, why } }`, the fifth choice of each bank question a form uses).
 `checkForms`, `checkFifth`, `checkNumbers` (`EXAM_NUMBERS`, `JUSTIFY_NUMBERS`) and `checkGraphs` (`EXAM_GRAPHS`)
 run in the content check and the tests. The generator writes `assets/exams/forms.json` and `items.json` with every
-question of the live forms as served (`examVersion`: four bank options plus the fifth, explanations inline, the
+question of the live forms as served (`examVersion`: four bank options plus the fifth at `fifthAt(id)`, a fixed position from the id, the key moving with its option, explanations inline, the
 stimuli they need); `pages/exams.js` uses those copies and marks only `mac-exam-*` items as exam-only. The formula
 page's `EQ` rows take an optional tenth field, `true` for "Easy to forget"; `GRAPHS` a fourth; `BALANCE_SHEET` is
 the T-account card.

@@ -196,7 +196,7 @@
       if(sc.along) return 'Only ' + (g.id === 'sd' ? 'the price' : 'the price level') + ' changed: a movement along ' + G.curveName(sc.along) + ' to point X, not a shift.';
       if(sc.point) return 'Point ' + (sc.pointLabel || 'X') + ' is ' + GS.fill(sc.pointWhy, words().words);
       var sp = scSpec(sc);
-      return capFirst(GS.fill(sc.because, words().words)) + ' shifts ' + sp.key.shifts.map(function(s){ return G.curveName(s.curve) + ' ' + s.dir; }).join(' and ') + '.' + (sp.key.outcome ? ' ' + GS.outcomeText(g.id, sp.key.outcome, spec.names) : '');
+      return 'With ' + GS.fill(sc.because, words().words) + ', ' + sp.key.shifts.map(function(s){ return G.curveName(s.curve) + ' shifts ' + s.dir; }).join(' and ') + '.' + (sp.key.outcome ? ' ' + GS.outcomeText(g.id, sp.key.outcome, spec.names) : '');
     }
     function whyBox(o, v){
       var head, body = '';
@@ -208,7 +208,7 @@
         if(sc.along) steps.push('<li><span><b>Shift or movement?</b> Only a variable on an axis changed, so this is a movement along ' + esc(G.curveName(sc.along)) + '.</span></li>');
         else if(sc.point) steps.push('<li><span><b>Where.</b> Point ' + esc(sc.pointLabel || 'X') + ' is ' + esc(GS.fill(sc.pointWhy, w)) + '</span></li>');
         else {
-          steps.push('<li><span><b>Which curve, which way.</b> ' + esc(capFirst(GS.fill(sc.because, w))) + ' shifts ' + esc(sp.key.shifts.map(function(s){ return G.curveName(s.curve) + ' ' + s.dir; }).join(' and ')) + '.</span></li>');
+          steps.push('<li><span><b>Which curve, which way.</b> ' + esc('With ' + GS.fill(sc.because, w) + ', ' + sp.key.shifts.map(function(s){ return G.curveName(s.curve) + ' shifts ' + s.dir; }).join(' and ')) + '.</span></li>');
           if(sp.key.outcome) steps.push('<li><span><b>The new equilibrium.</b> E2 is where the curves cross now: ' + esc(GS.outcomeText(g.id, sp.key.outcome, spec.names).toLowerCase()) + '</span></li>');
         }
         head = '<b>' + esc(sc.title) + '.</b> ' + (v ? esc(v.ok ? 'You have it.' : v.note) : 'Try it on the graph first, then read why.');
@@ -488,7 +488,7 @@
         function shownNote(t){
           var k = G.KINDS[p.graph];
           if(t === 'labels') return 'Vertical axis: ' + G.labelText(k.y, p.spec.names) + '. Horizontal axis: ' + G.labelText(k.x, p.spec.names) + '.';
-          if(t === 'shift') return capFirst(p.spec.key.because) + ' shifts ' + p.spec.key.shifts.map(function(z){ return G.curveName(z.curve) + ' ' + z.dir; }).join(' and ') + ' (dashed in green).';
+          if(t === 'shift') return 'With ' + p.spec.key.because + ', ' + p.spec.key.shifts.map(function(z){ return G.curveName(z.curve) + ' shifts ' + z.dir; }).join(' and ') + ' (dashed in green).';
           if(t === 'equilibrium') return 'E2 sits where the curves cross now.';
           if(t === 'point') return 'Point ' + (p.spec.pointLabel || 'X') + ' is ' + p.pointWhy;
           return '';

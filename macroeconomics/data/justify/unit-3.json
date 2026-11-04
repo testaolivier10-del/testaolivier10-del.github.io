@@ -204,7 +204,7 @@
       ],
       "correct": 0,
       "why": {
-       "1": "Multiplying gives a change four times too large in every round."
+       "1": "Multiplying by 4 gives 480, sixteen times the change that closes the gap."
       }
      },
      "val": {
