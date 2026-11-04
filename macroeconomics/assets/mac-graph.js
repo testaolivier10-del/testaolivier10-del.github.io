@@ -578,11 +578,11 @@
       (does.indexOf('point') > -1 ? '<button type="button" class="mac-gr-handle" data-pt="point" aria-describedby="' + id + '-h">Point: <span></span></button>' : '') +
       (opts.readonly ? '' : '<button type="button" class="btn-outline sm mac-gr-reset">Start over</button>');
     function curveState(c){ var cs = find(curves(spec, st.shifts), c); return cs.steps ? 'shifted ' + dirWord(cs.shape, cs.steps) + (Math.abs(cs.steps) > 1 ? ' ' + Math.abs(cs.steps) : '') : 'not shifted'; }
-    function ptState(p){ return p ? 'at ' + p[0] + ', ' + p[1] : 'not placed'; }
+    function ptState(p, w){ var q = w === 'eq' && eq(spec, st.shifts); return !p ? 'not placed' : q && Math.abs(p[0] - q[0]) + Math.abs(p[1] - q[1]) < 1e-6 ? 'where the curves cross' : 'placed'; }
     function paint(say){
       stage.innerHTML = svg(spec, st);
       controls.querySelectorAll('[data-curve]').forEach(function(b){ b.querySelector('span').textContent = curveState(b.getAttribute('data-curve')); });
-      controls.querySelectorAll('[data-pt]').forEach(function(b){ b.querySelector('span').textContent = ptState(st[b.getAttribute('data-pt')]); });
+      controls.querySelectorAll('[data-pt]').forEach(function(b){ var w = b.getAttribute('data-pt'); b.querySelector('span').textContent = ptState(st[w], w); });
       if(say) live.textContent = say;
       wireSvg();
     }
@@ -603,7 +603,7 @@
       if(opts.readonly) return;
       var p = st[which] || [5, 5];
       st[which] = [clamp(p[0] + dx), clamp(p[1] + dy)];
-      changed((which === 'eq' ? 'E2 ' : 'Point ') + ptState(st[which]));
+      changed((which === 'eq' ? 'E2 ' : 'Point ') + ptState(st[which], which) + ' (' + st[which].join(', ') + ')');
     }
     controls.addEventListener('keydown', function(e){
       var b = e.target.closest('.mac-gr-handle'); if(!b) return;
@@ -653,7 +653,7 @@
         if(want !== cur) shift(drag.curve, want - cur);
       } else { st[drag.pt] = [clamp(at[0]), clamp(at[1])]; paint(); }
     });
-    function end(){ if(drag && drag.pt) fire(); if(drag && drag.pt) live.textContent = (drag.pt === 'eq' ? 'E2 ' : 'Point ') + ptState(st[drag.pt]); drag = null; }
+    function end(){ if(drag && drag.pt) fire(); if(drag && drag.pt) live.textContent = (drag.pt === 'eq' ? 'E2 ' : 'Point ') + ptState(st[drag.pt], drag.pt) + ' (' + st[drag.pt].join(', ') + ')'; drag = null; }
     stage.addEventListener('pointerup', end); stage.addEventListener('pointercancel', end);
     function get(){
       var r = { shifts: {}, eq: st.eq ? st.eq.slice() : null, point: st.point ? st.point.slice() : null, labels: {} };
