@@ -216,9 +216,11 @@ export function readerCards(rel, videos = loadVideos()) {
       } else {
         at = `section[id="${m[1]}"] > .bk-sec-head, section[id="${m[1]}"] > .tb-section-head`;
       }
-      const html = videoBlock(v, { kind: 'reader' })
+      let html = videoBlock(v, { kind: 'reader' })
         .replace(START + '\n', '').replace('\n' + END + '\n', '')
         .replace(/\n  <link rel="stylesheet"[^>]*>/, '').replace(/\n  <script[^>]*><\/script>/, '');
+      // A video shown in several sections of one reader needs a distinct heading id per card.
+      if (out.some((c) => c.id === v.id)) html = html.split(`lpv-h-${v.id}`).join(`lpv-h-${v.id}-${m[1]}`);
       out.push({ id: v.id, at, html });
     }
   }
