@@ -48,3 +48,8 @@
 :root[data-theme="dark"] .r3[data-cover]{--accent-text:var(--bac)}
 .lvt-gb td{vertical-align:middle}
 .lvt-gb .lvt-score{display:inline;text-align:center}
+/* Sample class strip (?demo=1) */
+.lvt-demo{background:var(--accent-soft,#eef6e9);border-bottom:1px solid var(--line,#e3e8ef)}
+.lvt-demo .hwrap{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.lvt-demo p{margin:0;font-size:15px}
+.lvt-demo .btn-chan{padding:8px 14px;font-size:14px}
