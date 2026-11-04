@@ -106,17 +106,28 @@
     if(part) s += (s ? ' + ' : '') + part + ' topic' + (part > 1 ? 's' : '');
     return s || 'nothing yet';
   }
+  // A stretch is one course unit in course order, with the skill topics woven into it (AP® skills units are spread
+  // through the year, so a skill topic belongs to the course unit it sits in, never to a stretch of its own).
+  function courseUnits(){
+    var cus = [];
+    U.forEach(function(u, ui){ if(u.label === 'Skills') return; var ts = T.filter(function(t){ return t.u === ui; }); if(ts.length) cus.push({ u: ui, a: ts[0].i, b: ts[ts.length - 1].i }); });
+    cus.sort(function(x, y){ return x.a - y.a; });
+    cus.forEach(function(c, k){ c.from = k ? cus[k - 1].b + 1 : 0; c.to = k < cus.length - 1 ? c.b : T.length - 1; });
+    return cus;
+  }
+  function stretchOf(ti){ var cus = courseUnits(); for(var k = 0; k < cus.length; k++) if(ti <= cus[k].to) return { c: cus[k], next: cus[k + 1] || null }; return { c: cus[cus.length - 1], next: null }; }
+  function stretchTopics(c){ return T.filter(function(t){ return t.i >= c.from && t.i <= c.to; }); }
   function stops(){
     var st = [], m = S.mode;
     if(m === 'self'){
       var rem = T.filter(function(t){ return !isF(t.id); });
       if(!rem.length){ st.push({ kind: 'sum', title: 'Every topic', sub: 'done', state: 'done' }); st.push({ kind: 'finish', title: 'Exam review', sub: 'what is next', state: 'now' }); return st; }
-      var cu = rem[0].u, before = T.filter(function(t){ return t.u < cu && isF(t.id); }).length, c = 0;
+      var sr = stretchOf(rem[0].i), cs = sr.c, cu = cs.u, before = T.filter(function(t){ return t.i < cs.from && isF(t.id); }).length, c = 0;
       if(before) st.push({ kind: 'sum', title: 'Done so far', sub: coveredSummary(), state: 'done' });
-      T.filter(function(t){ return t.u === cu; }).forEach(function(t){ st.push(topicStop(t)); c++; if(c % 3 === 0) st.push({ kind: 'review', title: 'Review mix', sub: 'your recent misses', state: 'todo' }); });
+      stretchTopics(cs).forEach(function(t){ st.push(topicStop(t)); c++; if(c % 3 === 0) st.push({ kind: 'review', title: 'Review mix', sub: 'your recent misses', state: 'todo' }); });
       var test = D.tests[U[cu].id];
       if(test) st.push({ kind: 'test', title: U[cu].label + ' test', sub: 'checkpoint', state: 'todo', url: abs(test) });
-      if(cu < U.length - 1) st.push({ kind: 'unit', title: U[cu + 1].label, sub: U[cu + 1].title, state: 'todo', u: cu + 1 });
+      if(sr.next) st.push({ kind: 'unit', title: U[sr.next.u].label, sub: U[sr.next.u].title, state: 'todo', u: sr.next.u });
     } else if(m === 'class'){
       var a = BY[S.anchor];
       if(T.some(function(t){ return isF(t.id); })) st.push({ kind: 'sum', title: 'Covered and done', sub: coveredSummary(), state: 'done' });
@@ -125,9 +136,9 @@
       st.push({ kind: 'review', title: 'Review mix', sub: 'while your class is on it', state: 'todo' });
       var nx = T.filter(function(t){ return t.i > a.i && !isF(t.id); }).slice(0, 3);
       nx.forEach(function(t){ st.push(topicStop(t, { state: 'faded' })); });
-      var lastT = nx.length ? nx[nx.length - 1] : a, restU = T.filter(function(t){ return t.u === lastT.u && t.i > lastT.i && !isF(t.id); }).length;
-      if(restU) st.push({ kind: 'unit', title: 'Rest of ' + U[lastT.u].label, sub: restU + ' more topic' + (restU > 1 ? 's' : ''), state: 'faded', u: lastT.u });
-      else if(lastT.u < U.length - 1) st.push({ kind: 'unit', title: U[lastT.u + 1].label, sub: U[lastT.u + 1].title, state: 'faded', u: lastT.u + 1 });
+      var lastT = nx.length ? nx[nx.length - 1] : a, ls = stretchOf(lastT.i), restU = T.filter(function(t){ return t.i > lastT.i && t.i <= ls.c.to && !isF(t.id); }).length;
+      if(restU) st.push({ kind: 'unit', title: 'Rest of ' + U[ls.c.u].label, sub: restU + ' more topic' + (restU > 1 ? 's' : ''), state: 'faded', u: ls.c.u });
+      else if(ls.next) st.push({ kind: 'unit', title: U[ls.next.u].label, sub: U[ls.next.u].title, state: 'faded', u: ls.next.u });
     } else if(m === 'cram'){
       var list = S.cram.kind === 'exam'
         ? T.filter(function(t){ return !isF(t.id); }).sort(function(x, y){ var ax = acc(x.id), ay = acc(y.id); return (ax == null ? 101 : ax) - (ay == null ? 101 : ay) || x.i - y.i; }).slice(0, 6)
@@ -151,7 +162,7 @@
     if(s.kind === 'review') return abs(D.review);
     if(s.kind === 'test') return s.url;
     if(s.kind === 'mix') return s.timed ? (abs(D.exams) || abs(D.practice)) : abs(D.practice);
-    if(s.kind === 'unit'){ var t = T.filter(function(x){ return x.u === s.u && !isF(x.id); })[0]; return t ? startUrl(t) : ''; }
+    if(s.kind === 'unit'){ var cs = courseUnits().filter(function(c){ return c.u === s.u; })[0], t = T.filter(function(x){ return (cs ? x.i >= cs.from && x.i <= cs.to : x.u === s.u) && !isF(x.id); })[0]; return t ? startUrl(t) : ''; }
     if(s.kind === 'finish') return abs(D.exams) || abs(D.review);
     return '';
   }
@@ -436,8 +447,8 @@
     if(id === 'on'){ body = '<p class="lp-q">What is your class on right now?</p>' + pickerHTML(SU.anchor); canNext = !!SU.anchor; }
     if(id === 'covered'){
       var a = BY[SU.anchor];
-      if(!SU.pre){ SU.pre = 1; T.forEach(function(t){ if(t.u < a.u) SU.covered[t.id] = 1; }); }
-      body = '<p class="lp-q">What has your class already covered?</p><p class="lp-sub">We guessed everything before ' + esc(lower(U[a.u].label)) + '. Fix anything that is wrong. Classes go in all kinds of orders, and that is fine.</p>' + covHTML(SU.covered, a.id);
+      var as = stretchOf(a.i).c; if(!SU.pre){ SU.pre = 1; T.forEach(function(t){ if(t.i < as.from) SU.covered[t.id] = 1; }); }
+      body = '<p class="lp-q">What has your class already covered?</p><p class="lp-sub">We guessed everything before ' + esc(lower(U[as.u].label)) + '. Fix anything that is wrong. Classes go in all kinds of orders, and that is fine.</p>' + covHTML(SU.covered, a.id);
     }
     if(id === 'deadline'){
       var opts = D.exam.date ? [['exam', 'The ' + D.exam.label + ' (' + niceDate(D.exam.date) + ')'], ['date', 'A different date'], ['none', 'No deadline']] : [['date', 'Pick a date'], ['none', 'No deadline']];

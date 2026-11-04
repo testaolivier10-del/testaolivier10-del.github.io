@@ -47,6 +47,11 @@ Skipping the questions gives "on my own" from the beginning. Changing mode keeps
   device only, like the exam date (`<course>_exam_date`, which the path reads and writes). Lessons and answers come
   from each course's own progress, which syncs as before, so what a student finishes shows on every device.
 
+## Stretches
+A stretch is one course unit in course order. AP® skills units are spread through the year, so their topics belong to
+the course unit they sit in (`courseUnits()` and `stretchOf()` in path.js); before 2026-11-04 the path showed a whole
+skills unit as the stretch (owner report: AP® Bio started on every stats skill after 1.1).
+
 ## Done means
 A topic stop is done when the course records its lesson as finished (AP® and A&P `lessons`, ochem
 `ochem_progress[id].completed` or `ochem_textbook_read`, NREMT `nremt_lessons_v1`), or the student marked it done
