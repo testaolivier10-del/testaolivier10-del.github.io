@@ -198,11 +198,12 @@
       "approved_blob": "74a1b5f295b7133fa41b25c5edcd38ca8e015220",
       "thumb_b": "long/yt-ap-02-thumb-b.png",
       "thumb_c": "long/yt-ap-02-thumb-c.png",
-      "ab_test": false,
+      "ab_test": "running",
       "endscreen_set": false,
       "comment_id": "UgymvxlNlIb3U-ZGUx14AaABAg",
       "comment_pinned": true,
-      "thumb_v2": "2026-11-02 house style remake"
+      "thumb_v2": "2026-11-02 house style remake",
+      "ab_started": "2026-11-03"
     },
     {
       "id": "yt-apbio-02-elements-macromolecules",
