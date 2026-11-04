@@ -36,7 +36,7 @@ browser checks and a continuity look at 360 and 1280, light and dark; (6) spec, 
   Exams"), search page (meta, og, noscript links, a macro tint), sources meta, `cross-course.js`, `r3-home.mjs`,
   `r3-reading.mjs` and `check-weight.mjs` comments.
 - `sources.html`: an AP® Macroeconomics section. `changelog.html`: "New course: AP® Macroeconomics" (3 November
-  2026). `robots.txt` hides `macroeconomics/data/notes/`. `sw.js` v105.
+  2026). `robots.txt` hides `macroeconomics/data/notes/`. `sw.js` v106.
 - Social card `macroeconomics/assets/og-image.png` re-rendered (three lines, fits).
 - Trainer covers: all eight in `assets/covers/tools/apmacro/` with `index.json` (made in Phase 2); looked at, kept.
 

@@ -245,7 +245,7 @@ student draws in the page (the AI grader hook only when its eval passes).
    `macroeconomics/data/published.json` (`graph-skills`, `unit-1`..`unit-6`: 46 topics, 764 bank questions),
    `status: 'live'` in `assets/courses.js`, every generator rerun (hub and 404 cards, premium page, sitemap, search,
    pricing, home facts, course homes), "thirteen courses" and "ten AP® Exams" wording, `sources.html` section,
-   changelog entry, `robots.txt`, `sw.js` v105, the social card rendered, eight trainer covers. Identity: accent,
+   changelog entry, `robots.txt`, `sw.js` v106, the social card rendered, eight trainer covers. Identity: accent,
    headline and ranks kept; cover and icon redrawn as AD-AS with LRAS (supply and demand read as micro, and the old
    art ran under the long title); one-word long names scale on a phone (`mast-long`). Course home says "2027
    exam". `apmacro` in the FRQ grader's `FRQ_COURSES` (still shipped off). The AD and SRAS lessons' Check yourself
