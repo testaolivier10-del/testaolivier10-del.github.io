@@ -1,4 +1,4 @@
-"""Voice each chapter of the long video as ONE ElevenLabs take (Jeremy, eleven_v3, stability 0.5, similarity 0.75),
+"""Voice each chapter of the long video as ONE ElevenLabs take (Jeremy, eleven_v4, stability 0.5, similarity 0.75),
 then write out/vo/<chapter>.mp3 and out/vo/<chapter>.json: per beat its spoken words with times and its cue times.
 usage: python3 voice.py [chapter ids comma separated | all-missing]"""
 import json, sys, base64, subprocess, os, time, re
@@ -36,7 +36,7 @@ for ch in S.CHAPTERS:
         continue
     beats = [(b['key'], tokens(b['vo'])) for b in ch['beats']]
     text = ' '.join(S.clean(b['vo']) for b in ch['beats'])
-    body = {'text': text, 'model_id': 'eleven_v3', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.75}}
+    body = {'text': text, 'model_id': 'eleven_v4', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.75}}
     json.dump(body, open('/tmp/lv_body.json', 'w'))
     for k in range(3):
         r = subprocess.run(['curl', '-s', '-w', '%{http_code}', '-X', 'POST', '-H', f'xi-api-key: {key}', '-H', 'Content-Type: application/json',
