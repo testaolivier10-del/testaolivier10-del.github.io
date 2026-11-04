@@ -73,14 +73,16 @@ test('EXECUTE is revoked from anon and authenticated everywhere, and by default'
 
 test('every RPC the browser calls is granted; Worker-only functions are not', () => {
   const grants = new Map();
-  for (const m of MIG.matchAll(/grant execute on function public\.(\w+)\([^)]*\) to ([a-z_, ]+);/g)) {
+  // Grants from every migration: a later one (teacher classes, 2026-11b) adds its own browser RPCs.
+  const ALL = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort().map((f) => readFileSync(join('scripts/sql/migrations', f), 'utf8')).join('\n');
+  for (const m of ALL.matchAll(/grant execute on function public\.(\w+)\([^)]*\) to ([a-z_, ]+);/g)) {
     grants.set(m[1], m[2].split(',').map((s) => s.trim()));
   }
   for (const name of browserRpcs()) {
     assert.ok(grants.has(name), `the browser calls ${name}() but the migration grants it to nobody`);
   }
   for (const name of WORKER_ONLY) {
-    assert.ok(!grants.has(name), `${name}() must stay Worker-only (service role)`);
+    assert.ok(!(grants.get(name) || []).some((r) => r === 'anon' || r === 'authenticated'), `${name}() must stay Worker-only (service role)`);
   }
 });
 
@@ -295,7 +297,10 @@ test('2026-10o-apcalcbc.sql adds apcalcbc to every course check and course list,
 
 test('2026-11a-apmacro.sql adds apmacro to every course check and course list, runs last (after AP® Calculus BC), matches schema.sql, and is not granted to browsers where it must not be', () => {
   const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
-  assert.equal(files[files.length - 1], '2026-11a-apmacro.sql', 'runs after every earlier migration');
+  // The last course migration: anything after it (teacher classes, 2026-11b) must not redefine a course list.
+  for (const f of files.slice(files.indexOf('2026-11a-apmacro.sql') + 1))
+    for (const fn of ['report_question', 'join_waitlist', 'count_premium_step', 'premium_add_pass', 'record_exam_completion', 'count_premium_paid'])
+      assert.ok(!blocks(readFileSync(join('scripts/sql/migrations', f), 'utf8')).has(fn), `${f} must not redefine ${fn} after the last course migration`);
   assert.ok(files.indexOf('2026-11a-apmacro.sql') > files.indexOf('2026-10o-apcalcbc.sql'), 'runs after AP® Calculus BC');
   const mig = readFileSync('scripts/sql/migrations/2026-11a-apmacro.sql', 'utf8');
   const LIST = "('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro')";

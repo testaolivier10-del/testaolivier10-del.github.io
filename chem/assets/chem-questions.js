@@ -287,6 +287,8 @@
       wrap.classList.add('is-answered');
       var result = { correct: g.correct, score: g.score, q: q, pick: pick };
       if(opts.record !== false && window.ApChemCore) window.ApChemCore.record(q.id, g.correct, { topic: q.topic, unit: q.unit, practice: q.practice, level: q.level, diff: q.diff, src: 'q' });
+      // The answer picked, for a teacher's class view (docs/teacher-classes.md): this device only, read into the class summary.
+      if(opts.record !== false && typeof pick === 'number') try{ var pk = 'apchem' + '_picks_v1', po = JSON.parse(localStorage.getItem(pk) || '{}') || {}; po[q.id] = pick; localStorage.setItem(pk, JSON.stringify(po)); }catch(e){}
       if(!opts.exam){
         var verdict = g.correct ? 'Correct.' : g.score > 0 && part ? part : 'Not quite.';
         // On the study pages, the shared feedback box (assets/course/study.css).

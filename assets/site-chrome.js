@@ -1051,7 +1051,7 @@
      of the shell every page pays for, and lets a results screen hook them in
      with one line. Each module loads once; callers queue until it lands, and
      a module that fails to load (offline, blocked) simply never calls back. */
-  var LAZY = { share: 'LevlShare', milestones: 'LevlMilestones', 'next-step': 'LevlNext', 'cross-course': 'LevlCross', 'heard-from': 'LevlHeardFrom', 'analytics-page': 'LevlAnalyticsPage', invite: 'LevlInvite' };
+  var LAZY = { share: 'LevlShare', milestones: 'LevlMilestones', 'next-step': 'LevlNext', 'cross-course': 'LevlCross', 'heard-from': 'LevlHeardFrom', 'analytics-page': 'LevlAnalyticsPage', invite: 'LevlInvite', 'class/class-student': 'LevlClassStudent' };
   var lazyWait = {};
   function lazy(name, cb){
     var g = LAZY[name];
@@ -1087,6 +1087,19 @@
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoSite);
   else autoSite();
+
+  /* Teacher classes (docs/teacher-classes.md): on an AP® course page, for someone
+     signed in, fetch the student's side of classes. It does nothing for a
+     student in no class of this course beyond one cached read. */
+  var CLASS_DIRS = /^\/(bio|chem|physics|calculus|calculus-bc|statistics|environmental-science|psychology|precalculus|macroeconomics)\//;
+  function classBoot(){
+    if(!CLASS_DIRS.test(location.pathname)) return;
+    var signedIn = false;
+    try{ for(var i = 0; i < localStorage.length; i++) if(/^sb-.+-auth-token$/.test(localStorage.key(i))){ signedIn = true; break; } }catch(e){}
+    if(signedIn) lazy('class/class-student', function(){});
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', classBoot);
+  else classBoot();
 
   window.LevlChrome = {
     render: render,
