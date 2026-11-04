@@ -953,7 +953,7 @@
       "yt_no_hashtags": true,
       "buffer": "6ae82b2a7817c41d1a48fd34",
       "yt_buffer": "6ae82b3364604db3144407e6",
-      "youtube_id": null,
+      "youtube_id": "AvX1mWH5YWc",
       "shorts_thumb": false,
       "thumb_v2": true,
       "cta": "spoken",
@@ -963,7 +963,8 @@
       "review_blob": "65a5d6980ad41d319c3b235e964a8f8c04db2f6b",
       "approved_on": "2026-11-02",
       "approved_blob": "65a5d6980ad41d319c3b235e964a8f8c04db2f6b",
-      "note": "2026-11-02: rebuilt v2 approved by Olivier (\"after that all shorts are good\"); Buffer posts must point at the new file pinned at the commit that holds this blob."
+      "note": "2026-11-02: rebuilt v2 approved by Olivier (\"after that all shorts are good\"); Buffer posts must point at the new file pinned at the commit that holds this blob.",
+      "pin_comment_id": "Ugw7UWVwKgyc7X6FPwR4AaABAg"
     },
     {
       "id": "w1101-03-speed-camera",
