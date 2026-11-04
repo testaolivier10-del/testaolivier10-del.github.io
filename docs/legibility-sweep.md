@@ -29,6 +29,9 @@ Playwright's own Chromium download is blocked in the cloud container; use the sy
 
 ## Status
 
-- Full sweep (5,808 renders) done 2026-11-03. Tables clean. 130 pages/figures still flagged after the checker
-  was tightened (A&P 26, calculus AB+BC 39, precalculus 30, ochem 8, bio/chem/env/physics/psych 18), being fixed.
-- Not covered: figures that only appear after clicking inside a tool.
+- First full sweep 2026-11-03: tables clean, 130 pages/figures flagged (A&P 26, calculus AB+BC 39, precalculus 30,
+  ochem 8, bio/chem/env/physics/psych 18). All fixed, plus 9 env figures and a few found by eye.
+- Final full sweep 2026-11-04: 3,269 files, 5,808 renders, 0 flags.
+- CI runs the check on every changed page or figure (`checks.yml`, accessibility job; `ci-local.sh` with BROWSER=1).
+- Not covered: figures that only appear after clicking inside a tool. A&P figures scale down to small text on phones
+  (unchanged by this pass). Some tick numbers now sit slightly off their usual spot to clear a curve.
