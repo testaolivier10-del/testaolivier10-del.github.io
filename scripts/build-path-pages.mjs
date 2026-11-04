@@ -31,7 +31,8 @@ function build(c) {
     .replace(/(<meta property="og:title" content=")[^"]*"/, `$1${title}"`)
     .replace(/(<meta name="description" content=")[^"]*"/, `$1${desc}"`)
     .replace(/(<meta property="og:description" content=")[^"]*"/, `$1${desc}"`)
-    .replace(/review\.html"/g, 'path.html"');
+    .replace(/review\.html"/g, 'path.html"')
+    .replace(/(<span aria-current="page">)Review(<\/span>)/, '$1Your path$2');
   if (!/name="robots"/.test(html)) html = html.replace('</title>', `</title>\n${NOINDEX}`);
   // Page scripts: keep the chrome and progress ones, drop the review queue's.
   html = html.replace(/<script\b([^>]*)\bsrc="([^"]+)"([^>]*)><\/script>\n?/g, (m, a, s) => (KEEP.test(s) ? m : ''));

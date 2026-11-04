@@ -17,6 +17,25 @@ around never undoes anything.
    what is next.
 Skipping the questions gives "on my own" from the beginning. Changing mode keeps everything.
 
+**Class mode is off for now (owner, 2026-11-04):** it comes back once teacher classes exist. The setup offers only
+"On my own" and "Cramming"; a saved class path loads as "on my own" (what it marked covered still counts as done).
+The class code in path.js (anchor, prerequisites, picker, check-in) is kept, unused, for that return.
+
+## Redesign (owner, 2026-11-04; design canvas https://claude.ai/artifact/1nEhGFgYb2XEX2bF3wCdd9)
+- **Path page, one view** (no "this stretch / whole course" toggle). Left: title, a one-line meta with Change, the
+  selected stop's card (Start, Already know it?, Mark done) and the course map: every unit with its topics as small
+  numbered squares (S for a skill, a star for the unit test). Tapping a square scrolls the path to it and selects it.
+  Sticky on desktop, stacked above the path on phones. Right: the whole course drawn as one winding path, a section
+  per course unit: its topics in order (skills woven in), a practice set every 4 topics, a review, the unit test,
+  and a full practice exam at the very end. Finished part solid in the course color, the rest gray dashes.
+- A practice, review or test stop is done once marked, or once any later topic is done. The current stop is the
+  first one not done. Stop keys: a topic's id, else `x:p<unit>-<n>`, `x:r<unit>`, `x:t<unit>`, `x:exam`.
+- Cramming draws its own stops on the same path, as one section.
+- **Home card:** before a path exists, "Create your personalized path" (the three questions as chips, Create my
+  path, Open full path). After: "Up next" with Continue and Open full path over a small path of the last two stops
+  done, the current one and the next three. No "you are here" label: the current stop is the large yellow one.
+- Without a path, the Path page still draws the course-order path, with a "Create my path" card on top.
+
 ## Rules (so no student gets stuck)
 - The class is the boss: the path never claims to know the teacher's next topic.
 - One tap to re-center ("My class is on…", or any topic in the whole course view). Progress belongs to topics, not to
@@ -48,7 +67,7 @@ Skipping the questions gives "on my own" from the beginning. Changing mode keeps
   from each course's own progress, which syncs as before, so what a student finishes shows on every device.
 
 ## Stretches
-A stretch is one course unit in course order. AP® skills units are spread through the year, so their topics belong to
+A stretch (now: one section of the path) is one course unit in course order. AP® skills units are spread through the year, so their topics belong to
 the course unit they sit in (`courseUnits()` and `stretchOf()` in path.js); before 2026-11-04 the path showed a whole
 skills unit as the stretch (owner report: AP® Bio started on every stats skill after 1.1).
 
