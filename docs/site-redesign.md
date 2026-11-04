@@ -183,3 +183,11 @@ R10-Progress kicker layout and `assets/course/r3-db.js` no longer drive any dash
 The Premium page course list uses `assets/covers/thumb/<course>.svg`: the course cover with its drawing centered and
 fitted to a square, so the small tiles show the drawing in the middle instead of at the right edge. Regenerate with
 `node scripts/make-cover-thumbs.cjs` after changing a cover.
+
+### No try-one question (owner 2026-11-04)
+The try-one question was clutter, so it is gone from the homepage and every course home (and `assets/home-try.js`
+with it). The homepage hero shows a path preview instead (`.pp-card` in index.html: "Every course has a path").
+Course homes keep In this course on the left; the right is now Ways to study (`.ways` in `assets/course/r3.css`,
+written by `scripts/lib/r3-home.mjs`): Practice, Review and Exams, each to the course's own page. The path card stays
+first, across the top. NREMT's "See a sample question" button is now "All chapters". The sample question in
+`scripts/lib/course-homes.json` still feeds the FAQ's "What kinds of questions are there?".

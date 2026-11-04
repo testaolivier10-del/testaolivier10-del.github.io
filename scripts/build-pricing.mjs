@@ -550,32 +550,6 @@ const FAQ = [
   [MARK ? 'Is LevlPrep affiliated with the NREMT or the College Board?' : 'Is LevlPrep affiliated with the NREMT?', AFFILIATION],
 ];
 
-function homeTry() {
-  const H = JSON.parse(readFileSync(join(ROOT, 'scripts/lib/course-homes.json'), 'utf8'));
-  const items = OPEN.map((c) => {
-    const d = H[c.key];
-    if (!d || !d.sample || !d.try || !Array.isArray(d.sample.opts)) return null;
-    return { k: c.key, pill: `${d.short || d.name}`, q: d.sample.q, o: d.sample.opts,
-      ok: d.try.ok, t: d.try.title, w: d.try.why, href: `${c.dir}/practice.html`, name: d.short || d.name };
-  }).filter(Boolean);
-  const json = JSON.stringify(items).replace(/</g, '\\u003c');
-  // The questions and the script live in assets/home-try.js (written here), so the homepage stays inside
-  // its weight budget; the page keeps the NREMT question as its no-JavaScript fallback.
-  const js = `/* Written by scripts/build-pricing.mjs from scripts/lib/course-homes.json; do not edit. */
-(function(){var DATA=${json};
-var f=document.getElementById('tryq');if(!f)return;var all=DATA;
-var ok=1;if(all.length){var last=null;try{last=localStorage.getItem('levl_tryq_last');}catch(e){}
-var pool=all.filter(function(x){return x.k!==last;});var it=(pool.length?pool:all)[Math.floor(Math.random()*(pool.length||all.length))];
-try{localStorage.setItem('levl_tryq_last',it.k);}catch(e){}ok=it.ok;
-f.querySelector('.pill').innerHTML=it.pill;document.getElementById('tryq-stem').innerHTML=it.q;
-var fs=f.querySelector('fieldset');fs.querySelectorAll('label').forEach(function(l){l.remove();});
-it.o.forEach(function(t,i){var l=document.createElement('label');var inp=document.createElement('input');inp.type='radio';inp.name='tryq';l.appendChild(inp);var sp=document.createElement('span');sp.innerHTML=t;l.appendChild(sp);if(i===ok)l.className='ok';fs.appendChild(l);});
-var why=f.querySelector('.tryq__why');why.innerHTML='<b>'+it.t+'</b>'+it.w;var m=f.querySelector('.tryq__more a');m.href=it.href;m.textContent='Keep going with free '+it.name+' questions';}
-f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e.target.closest('label').classList.add('picked');f.classList.add('done');[].forEach.call(f.querySelectorAll('input'),function(i){i.disabled=true;});});f.addEventListener('submit',function(e){e.preventDefault();});})();
-`;
-  put('assets/home-try.js', js);
-  return `    <script src="assets/home-try.js" defer></script>`;
-}
 
 /* Who makes this, how the questions are written and what changes, folded into the FAQ instead of a row of
    cards under it (Olivier, 2026-10-26). They carry links, so they are written as HTML and stay out of the
@@ -717,11 +691,8 @@ function hubPcalcCard() {
   /* The hero's course count (owner, 2026-10-12: it said "Three courses" with
      five live): every open course, from the registry. */
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
-  /* The try one question (Olivier, 2026-10-26: NREMT should not lead the homepage): every open course's
-     own sample question from its course home (scripts/lib/course-homes.json, already published there), one
-     picked per visit and never the same course twice in a row. The NREMT question in the markup is the
-     no-JavaScript fallback. */
-  src = between(src, '<!-- home-try:start -->', '<!-- home-try:end -->', homeTry(), rel);
+  /* The try one question was removed (owner 2026-11-04: clutter); the hero shows a path preview instead,
+     written in index.html, and assets/home-try.js is gone. */
   /* The desktop facts row (polish 2026-10-17, A2): course-neutral, counted
      from every open course's bank, never typed. AP® Calculus BC counts only its
      own questions: its bank also serves AB's, which apcalc already counts. */

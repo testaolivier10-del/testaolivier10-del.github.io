@@ -2,7 +2,7 @@
    the course home (boards docs/redesign-r3/r10/boards/R10-*, markup reference docs/redesign-r3/r10/R10-SYSTEM.md).
    Everything is scoped to .r3 (the page's <main>) so it cannot leak into pages not yet rebuilt.
    Parts: the cover band (.band, tall on the home, .band.short on inner pages), .lead, .contents and .toc,
-   .tryq, .fact-row, the progress card (.hub-progress-card), .kicker, .ruled-h, .story, .ccard, .step,
+   .ways, .fact-row, the progress card (.hub-progress-card), .kicker, .ruled-h, .story, .ccard, .step,
    .dept (tool rows with .tc covers), .feat, .else-x, .home-deal (.plan), .home-faq, .about-row.
    Course colour: --accent and --ctint (light and dark) and the band's --bbg and --bac, set per
    data-cover below. Neutral colours come from assets/theme.css, so dark mode follows. */
@@ -40,25 +40,6 @@
 .r3 .founder{display:flex;gap:12px;align-items:center;margin-top:20px;font-size:14.5px;color:var(--muted);max-width:32em;}
 .r3 .founder .av{flex:none;width:38px;height:38px;border-radius:50%;background:var(--r3-navy);color:#2EE6D6;display:grid;place-items:center;font:900 13px var(--font-ui);}
 .r3 .founder a{color:var(--accent-text);}
-.r3 .tryq{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 24px 50px -32px rgba(11,26,51,.4);}
-.r3 .tryq__top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 12px;margin-bottom:12px;}
-.r3 .tryq__top .hand{margin:0;font-size:19px;white-space:nowrap;}
-.r3 .tryq__stem{font:900 20px/1.28 var(--font-ui);color:var(--ink);margin:0 0 14px;letter-spacing:-.01em;}
-.r3 .tryq fieldset{border:0;margin:0;padding:0;display:grid;gap:8px;}
-.r3 .tryq legend{position:absolute;left:-9999px;}
-.r3 .tryq label{display:flex;gap:12px;align-items:center;min-height:48px;box-sizing:border-box;padding:10px 14px;border-radius:12px;background:var(--surface2);border:1.5px solid transparent;font-weight:700;cursor:pointer;}
-.r3 .tryq label:hover{border-color:var(--line);}
-.r3 .tryq input{flex:none;width:20px;height:20px;margin:0;accent-color:var(--ink);}
-.r3 .tryq.done label{cursor:default;}
-.r3 .tryq.done label.ok{background:var(--tint-good);border-color:var(--good);}
-.r3 .tryq.done label.picked:not(.ok){background:var(--tint-bad);border-color:var(--bad);}
-.r3 .tryq__why,.r3 .tryq__more{display:none;}
-.r3 .tryq.done .tryq__why{display:block;margin-top:12px;border-radius:12px;padding:12px 14px;background:var(--tint-good);border-left:4px solid var(--good);font-size:15px;color:var(--ink);}
-.r3 .tryq__why b{display:block;}
-.r3 .tryq.done .tryq__more{display:block;margin:12px 0 0;font-weight:900;}
-.r3 .tryq__more a{color:var(--accent-text);}
-.r3 .tryq.done .tryq__tip{display:none;}
-.r3 .tryq__tip{margin:12px 0 0;}
 .r3 .fact-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 44px;}
 .r3 .fact-row > span{display:flex;align-items:center;gap:9px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font:800 14px/1.35 var(--font-ui);color:var(--ink);}
 .r3 .fact-row .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;}
@@ -200,6 +181,16 @@
 .r3 .band .founder .av{background:#FFD23F;color:#0B1A33}
 .r3 .band .art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))}
 .r3 .lead{display:grid;grid-template-columns:1fr 440px;gap:36px;margin:-110px 0 44px;position:relative;z-index:2}
+/* Ways to study (owner 2026-11-04): beside In this course, where the try one question was. */
+.r3 .ways{align-self:start;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 24px 50px -32px rgba(11,26,51,.4)}
+.r3 .ways h2{font-size:24px!important;line-height:1.1!important;margin:8px 0 14px!important}
+.r3 .ways ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.r3 .ways a{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;border:1.5px solid var(--line);background:var(--white);text-decoration:none;color:var(--ink)}
+.r3 .ways a:hover{border-color:var(--accent)}
+.r3 .ways .ic{flex:none;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--ctint);color:var(--accent)}
+.r3 .ways .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.r3 .ways b{font:900 17px var(--font-ui)}
+.r3 .ways small{font:600 14px/1.4 var(--font-ui);color:var(--muted)}
 .r3 .contents{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px 26px;box-shadow:0 24px 50px -32px rgba(11,26,51,.4)}
 .r3 .contents h2{font-size:30px!important;margin:0 0 4px!important}
 .r3 .contents .sub{margin:0 0 14px;color:var(--muted);font-size:15px}
@@ -210,7 +201,6 @@
 .r3 .toc small{font-size:14px;color:var(--muted)}
 .r3 .toc .w{text-align:right;font:900 20px var(--display);letter-spacing:-.02em;min-width:7.5em}
 .r3 .toc .w small{display:block;font:800 12.5px/1.3 var(--font-ui);letter-spacing:0;color:var(--accent);text-wrap:balance}
-.r3 .lead .tryq{align-self:start}
 .r3 .kicker{font:900 13px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px;display:flex;align-items:center;gap:12px}
 .r3 .kicker i{flex:1;height:2px;background:var(--ink);opacity:.9}
 .r3 .story{display:grid;grid-template-columns:1.35fr 1fr;gap:32px;margin:0 0 48px}
@@ -283,8 +273,6 @@
   .r3 .sticky-cta{display:flex;position:sticky;bottom:64px;z-index:5;margin:0 -16px;padding:10px 16px;background:var(--paper);border-top:1px solid var(--line)}
   .r3 .sticky-cta .btn-chan{flex:1;text-align:center}
   .r3 .home h1{font-size:44px}
-  .r3 .tryq{padding:18px}
-  .r3 .tryq__stem{font-size:18.5px}
   .r3 .mk{width:30px;height:30px}
   .r3 .logo{font-size:20px}
   .r3 .crs{font-size:14px;padding-left:10px}
@@ -390,8 +378,6 @@
   .r3 .hero-ctas .btn-ghost{display:none}
   .r3 .fact-row{grid-template-columns:1fr 1fr;margin-bottom:34px}
   .r3 .fact-note{margin-top:-24px}
-  .r3 .tryq{padding:18px}
-  .r3 .tryq__stem{font-size:18.5px}
   .r3 .sticky-cta{display:flex;position:sticky;bottom:calc(64px + env(safe-area-inset-bottom));z-index:5;margin:0 -16px;padding:10px 16px;background:var(--paper);border-top:1px solid var(--line)}
   .r3 .sticky-cta .btn-chan{flex:1;text-align:center}
   .r3 .hwrap{padding:0 16px}

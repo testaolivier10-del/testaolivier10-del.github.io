@@ -50,7 +50,7 @@ function nremt() {
     doms, lede,
     tools: NREMT_TOOLS.map(([name, s]) => ({ slug: s, name, href: `${s}.html` })),
     links: {
-      btn2: '#try', btn3: 'exam-day.html',
+      btn2: 'study-notes.html', btn3: 'exam-day.html',
       toc: doms.map(([n]) => `practice.html?domain=${encodeURIComponent(n.replace(/&amp;/g, '&'))}`),
       notes: 'study-notes.html', chips: d.notes.chips.map(([t]) => chip(t)),
       steps: ['practice.html', 'study-notes.html', 'exams.html'], exam: 'exams.html',
