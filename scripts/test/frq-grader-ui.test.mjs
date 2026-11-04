@@ -1,5 +1,5 @@
 /* The page half of the AI grader (assets/course/frq-grader.js): off until
-   launch, shared by all six AP® courses, beside the self-score and never in
+   launch, shared by all seven AP® courses, beside the self-score and never in
    place of it, escaping everything the model wrote. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';

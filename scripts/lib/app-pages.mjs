@@ -43,6 +43,9 @@ export const APP_STATE_PAGES = [
   'precalculus/dashboard.html',
   'precalculus/review.html',
   'precalculus/search.html',
+  'macroeconomics/dashboard.html',
+  'macroeconomics/review.html',
+  'macroeconomics/search.html',
 ];
 
 export const NOINDEX = '<meta name="robots" content="noindex, follow">';
