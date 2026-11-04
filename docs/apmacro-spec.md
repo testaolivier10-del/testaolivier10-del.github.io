@@ -264,14 +264,14 @@ student draws in the page (the AI grader hook only when its eval passes).
       `2026-10o-apcalcbc.sql` exactly; afterwards all six functions and all three course checks list `apmacro`.
       Owner access granted the same day (`grant`, to 2099-12-31). Was: apply migration
       `scripts/sql/migrations/2026-11a-apmacro.sql` (adds `apmacro` to the three course checks and the six functions).
-- [ ] Create the Polar product "AP® Macroeconomics Premium (through June 30, 2027)", one-time, at the AP® price
-      ($25), and make sure the "Founding member" discount applies to it.
-- [ ] Add `"macro-2027": "<id>"` to `POLAR_PRODUCTS` in the Cloudflare Worker (levlprep-ask) settings; the Worker
-      code already knows the pass (`worker/src/premium.js`) and redeploys on merge.
-- [ ] Remove `onSale: false` from `COURSES.apmacro` in `assets/premium.js` and bump `sw.js` (Claude does this once
-      the Polar product id exists; owner access is already granted).
-- [ ] Confirm the identity (accent, cover, icon, headline, ranks), the free tier ("Graph skills you need", Units 1
+- [x] (2026-11-04) Polar product id `60386850-0817-41de-8149-b04ba43dd45c`, one-time, $25; the Founding member
+      discount has no product list, so it covers every product. Was: create the Polar product "AP® Macroeconomics
+      Premium (through June 30, 2027)", one-time, at the AP® price ($25), with the Founding member discount.
+- [x] (2026-11-04) `"macro-2027": "60386850-0817-41de-8149-b04ba43dd45c"` in `POLAR_PRODUCTS` (Cloudflare Worker
+      levlprep-ask settings, deployed; `keep_vars = true` keeps it on the merge deploy).
+- [x] (2026-11-04) Removed `onSale: false` from `COURSES.apmacro`; `sw.js` v107.
+- [x] (2026-11-04) Owner said do everything and go live: the proposed defaults stand. Was: confirm the identity (accent, cover, icon, headline, ranks), the free tier ("Graph skills you need", Units 1
       and 2) and the three free trainers (Graph Studio, partly: Explore plus the PPC and supply-and-demand drills;
       PPC and trade; the indicators lab).
-- [ ] Merge the PR (after the Worker line, if Premium goes on sale with the merge).
+- [x] (2026-11-04) PR #129 merged by Claude at the owner's request.
 - [ ] Optional: an AP® Macroeconomics teacher reviews the course (the "not yet reviewed" note stays until then).

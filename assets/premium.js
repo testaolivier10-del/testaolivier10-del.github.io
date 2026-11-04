@@ -519,11 +519,8 @@
     },
     apmacro: {
       name: 'AP® Macroeconomics',
-      // Not on sale yet (docs/apmacro-spec.md decision 3): onSale false until
-      // the owner checklist (spec section 9): migration
-      // scripts/sql/migrations/2026-11a-apmacro.sql applied, Polar product
-      // macro-2027, Worker POLAR_PRODUCTS.
-      onSale: false,
+      // On sale since 2026-11-04 (docs/apmacro-spec.md section 9): migration
+      // applied, Polar product macro-2027, Worker POLAR_PRODUCTS set.
       dailyFree: 15,
       // The free tier (docs/apmacro-spec.md decision 6, proposed): Units 1 and 2
       // and every "Graph skills you need" lesson. Keep in step with FREE_UNITS

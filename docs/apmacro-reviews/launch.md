@@ -79,3 +79,10 @@ browser checks and a continuity look at 360 and 1280, light and dark; (6) spec, 
   three tests written for the hidden course (now live) and the site-search scope list (now has `apmacro`).
 - Looked at, 360 and 1280, light and dark: course home, the AD lesson, practice, exams, FRQ list (grouped), Graph
   Studio ("Explanation" button). No horizontal overflow. The hub card and band show the new cover.
+
+## 6. Premium on sale (2026-11-04)
+
+- Owner asked for everything to go live. Migration applied and owner access granted (spec section 9). Polar product
+  `60386850-0817-41de-8149-b04ba43dd45c` made through the dashboard API ($25 one-time; the Founding member discount
+  has no product list, so it applies). Worker `POLAR_PRODUCTS` now has `macro-2027` (deployed; checked after reload;
+  the other 14 entries unchanged). `onSale: false` removed, `sw.js` v107, PR #129 merged.

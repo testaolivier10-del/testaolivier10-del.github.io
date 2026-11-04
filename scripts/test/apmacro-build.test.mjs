@@ -87,7 +87,7 @@ test('a published unit builds every page kind, math rendered and graphs drawn, a
   const block = prem.slice(prem.indexOf('    apmacro: {'), prem.indexOf('\n    },', prem.indexOf('    apmacro: {')));
   assert.deepEqual(FREE_UNITS, ['unit-1', 'unit-2']);
   assert.match(block, /freeChapters: \['unit-1', 'unit-2'\]/);
-  assert.match(block, /onSale: false/, 'not on sale until the owner checklist');
+  assert.doesNotMatch(block, /onSale: false/); // on sale since the owner checklist (spec section 9)
   assert.match(block, /id: 'macro-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30'/);
 });
 
@@ -106,7 +106,6 @@ test('published and live everywhere it is registered (spec decision 13), Premium
   assert.match(readFileSync('sitemap.xml', 'utf8'), /macroeconomics\/lessons\//, 'in the sitemap');
   assert.match(readFileSync('index.html', 'utf8'), /<!-- hub-mac:start -->\s*<a class="ccard" href="macroeconomics\/"/, 'a hub card');
   assert.match(readFileSync('404.html', 'utf8'), /<!-- nf-mac:start -->\s*\S/, 'a 404 card');
-  assert.match(readFileSync('assets/premium.js', 'utf8'), /apmacro: \{[\s\S]*?onSale: false,/, 'not on sale until the owner checklist');
   assert.match(readFileSync('worker/src/premium.js', 'utf8'), /'macro-2027': +\{ course: 'apmacro', until: '2027-06-30T23:59:59-10:00' \}/);
   assert.match(readFileSync('sw.js', 'utf8'), /COURSE_URLS\['macroeconomics'\]/);
   assert.match(readFileSync('assets/exam-date.js', 'utf8'), /apmacro: \{ date: '2027-05-07'/);
