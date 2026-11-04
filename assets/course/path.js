@@ -38,6 +38,7 @@
     play: '<svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>',
     review: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9M20 4v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     trophy: '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M7 4h10v4a5 5 0 0 1-10 0zM7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    bolt: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M13 2.5L4.5 14H11l-1 7.5L19.5 10H13z" fill="currentColor"/></svg>',
     arrow: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     mix: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 7h4l8 10h4M4 17h4l2.5-3M14 10l2-3h4M17 4l3 3-3 3M17 14l3 3-3 3" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     cal: '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="2.3"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></svg>',
@@ -49,7 +50,7 @@
 
   /* ---------- state ---------- */
   function blank(){ return { v: 1, mode: null, anchor: null, covered: {}, done: {}, dl: 'none', cram: { kind: 'test', topics: [], date: '' }, seen: 0, ack: {} }; }
-  function load(){ var s = parse(SK); if(!s || s.v !== 1) return blank(); var b = blank(); for(var k in b) if(!(k in s)) s[k] = b[k]; if(s.anchor && !BY[s.anchor]) s.anchor = null; if(s.mode === 'class' && !s.anchor) s.mode = 'self'; return s; }
+  function load(){ var s = parse(SK); if(!s || s.v !== 1) return blank(); var b = blank(); for(var k in b) if(!(k in s)) s[k] = b[k]; if(s.anchor && !BY[s.anchor]) s.anchor = null; if(s.mode === 'class') s.mode = 'self'; return s; }
   function save(){ try{ localStorage.setItem(SK, JSON.stringify(S)); }catch(e){} }
 
   /* The exam date is shared with the Dashboard's countdown (assets/exam-date.js). */
@@ -106,17 +107,34 @@
     if(part) s += (s ? ' + ' : '') + part + ' topic' + (part > 1 ? 's' : '');
     return s || 'nothing yet';
   }
+  // A stretch is one course unit in course order, with the skill topics woven into it (AP® skills units are spread
+  // through the year, so a skill topic belongs to the course unit it sits in, never to a stretch of its own).
+  function courseUnits(){
+    var cus = [];
+    U.forEach(function(u, ui){ if(u.label === 'Skills') return; var ts = T.filter(function(t){ return t.u === ui; }); if(ts.length) cus.push({ u: ui, a: ts[0].i, b: ts[ts.length - 1].i }); });
+    cus.sort(function(x, y){ return x.a - y.a; });
+    cus.forEach(function(c, k){ c.from = k ? cus[k - 1].b + 1 : 0; c.to = k < cus.length - 1 ? c.b : T.length - 1; });
+    return cus;
+  }
+  function stretchOf(ti){ var cus = courseUnits(); for(var k = 0; k < cus.length; k++) if(ti <= cus[k].to) return { c: cus[k], next: cus[k + 1] || null }; return { c: cus[cus.length - 1], next: null }; }
+  function stretchTopics(c){ return T.filter(function(t){ return t.i >= c.from && t.i <= c.to; }); }
   function stops(){
     var st = [], m = S.mode;
     if(m === 'self'){
-      var rem = T.filter(function(t){ return !isF(t.id); });
-      if(!rem.length){ st.push({ kind: 'sum', title: 'Every topic', sub: 'done', state: 'done' }); st.push({ kind: 'finish', title: 'Exam review', sub: 'what is next', state: 'now' }); return st; }
-      var cu = rem[0].u, before = T.filter(function(t){ return t.u < cu && isF(t.id); }).length, c = 0;
-      if(before) st.push({ kind: 'sum', title: 'Done so far', sub: coveredSummary(), state: 'done' });
-      T.filter(function(t){ return t.u === cu; }).forEach(function(t){ st.push(topicStop(t)); c++; if(c % 3 === 0) st.push({ kind: 'review', title: 'Review mix', sub: 'your recent misses', state: 'todo' }); });
-      var test = D.tests[U[cu].id];
-      if(test) st.push({ kind: 'test', title: U[cu].label + ' test', sub: 'checkpoint', state: 'todo', url: abs(test) });
-      if(cu < U.length - 1) st.push({ kind: 'unit', title: U[cu + 1].label, sub: U[cu + 1].title, state: 'todo', u: cu + 1 });
+      // The whole course in order: each course unit's topics (skills woven in), a practice set every 4 topics, a review
+      // and the unit test at the end of the unit, and a full practice exam at the very end.
+      var cus = courseUnits();
+      cus.forEach(function(c, k){
+        var ts = stretchTopics(c), cnt = 0;
+        ts.forEach(function(t, j){ st.push(topicStop(t, { cu: k })); cnt++; if(cnt % 4 === 0 && j < ts.length - 1) st.push({ kind: 'mix', id: 'x:p' + c.u + '-' + cnt, title: 'Practice set', sub: 'the last few topics', state: 'todo', cu: k }); });
+        if(D.review) st.push({ kind: 'review', id: 'x:r' + c.u, title: 'Review your misses', sub: U[c.u].label, state: 'todo', cu: k });
+        var test = D.tests[U[c.u].id];
+        if(test) st.push({ kind: 'test', id: 'x:t' + c.u, title: U[c.u].label + ' test', sub: 'checkpoint', state: 'todo', url: abs(test), cu: k });
+      });
+      if(D.exams) st.push({ kind: 'exam', id: 'x:exam', title: 'Full practice exam', sub: 'the last stop', state: 'todo', cu: cus.length - 1 });
+      // A practice, review or test stop counts as done once marked, or once any later topic is done.
+      var lastT = -1; st.forEach(function(x, i){ if(x.kind === 'topic' && x.state === 'done') lastT = i; });
+      st.forEach(function(x, i){ if(x.kind !== 'topic' && (S.done[x.id] || i < lastT)) x.state = 'done'; });
     } else if(m === 'class'){
       var a = BY[S.anchor];
       if(T.some(function(t){ return isF(t.id); })) st.push({ kind: 'sum', title: 'Covered and done', sub: coveredSummary(), state: 'done' });
@@ -125,9 +143,9 @@
       st.push({ kind: 'review', title: 'Review mix', sub: 'while your class is on it', state: 'todo' });
       var nx = T.filter(function(t){ return t.i > a.i && !isF(t.id); }).slice(0, 3);
       nx.forEach(function(t){ st.push(topicStop(t, { state: 'faded' })); });
-      var lastT = nx.length ? nx[nx.length - 1] : a, restU = T.filter(function(t){ return t.u === lastT.u && t.i > lastT.i && !isF(t.id); }).length;
-      if(restU) st.push({ kind: 'unit', title: 'Rest of ' + U[lastT.u].label, sub: restU + ' more topic' + (restU > 1 ? 's' : ''), state: 'faded', u: lastT.u });
-      else if(lastT.u < U.length - 1) st.push({ kind: 'unit', title: U[lastT.u + 1].label, sub: U[lastT.u + 1].title, state: 'faded', u: lastT.u + 1 });
+      var lastT = nx.length ? nx[nx.length - 1] : a, ls = stretchOf(lastT.i), restU = T.filter(function(t){ return t.i > lastT.i && t.i <= ls.c.to && !isF(t.id); }).length;
+      if(restU) st.push({ kind: 'unit', title: 'Rest of ' + U[ls.c.u].label, sub: restU + ' more topic' + (restU > 1 ? 's' : ''), state: 'faded', u: ls.c.u });
+      else if(ls.next) st.push({ kind: 'unit', title: U[ls.next.u].label, sub: U[ls.next.u].title, state: 'faded', u: ls.next.u });
     } else if(m === 'cram'){
       var list = S.cram.kind === 'exam'
         ? T.filter(function(t){ return !isF(t.id); }).sort(function(x, y){ var ax = acc(x.id), ay = acc(y.id); return (ax == null ? 101 : ax) - (ay == null ? 101 : ay) || x.i - y.i; }).slice(0, 6)
@@ -139,9 +157,11 @@
       st.push({ kind: 'day', title: S.cram.kind === 'exam' ? 'The ' + D.exam.label : 'Test day', sub: dd ? niceDate(dd) : 'date not set', state: 'todo' });
     }
     var now = -1;
+    if(m === 'self') st.forEach(function(s, i){ if(now < 0 && s.state === 'todo') now = i; });
     st.forEach(function(s, i){ if(now < 0 && s.state === 'todo' && s.kind === 'topic') now = i; });
     if(now < 0) st.forEach(function(s, i){ if(now < 0 && s.state === 'todo') now = i; });
     if(now >= 0) st[now].state = 'now';
+    st.forEach(function(s, i){ s.key = s.kind === 'topic' ? s.id : (s.id || 'k' + i); });
     return st;
   }
   function nowStop(){ var st = stops(); for(var i = 0; i < st.length; i++) if(st[i].state === 'now') return st[i]; return null; }
@@ -151,8 +171,8 @@
     if(s.kind === 'review') return abs(D.review);
     if(s.kind === 'test') return s.url;
     if(s.kind === 'mix') return s.timed ? (abs(D.exams) || abs(D.practice)) : abs(D.practice);
-    if(s.kind === 'unit'){ var t = T.filter(function(x){ return x.u === s.u && !isF(x.id); })[0]; return t ? startUrl(t) : ''; }
-    if(s.kind === 'finish') return abs(D.exams) || abs(D.review);
+    if(s.kind === 'unit'){ var cs = courseUnits().filter(function(c){ return c.u === s.u; })[0], t = T.filter(function(x){ return (cs ? x.i >= cs.from && x.i <= cs.to : x.u === s.u) && !isF(x.id); })[0]; return t ? startUrl(t) : ''; }
+    if(s.kind === 'finish' || s.kind === 'exam') return abs(D.exams) || abs(D.review);
     return '';
   }
 
@@ -176,156 +196,167 @@
       return '<li class="' + (x[3] ? 'ok' : on && i === 0 ? 'on' : '') + '"><a href="' + esc(x[1]) + '"><i>' + (x[3] ? '✓' : i + 1) + '</i>' + x[0] + (x[2] ? ' <em>Premium</em>' : '') + '</a></li>';
     }).join('') + '</ol>';
   }
-  function detailHTML(s){
-    var k = '', title = s.title, why = '', steps = '', acts = '', free = '';
+  /* ---------- one stop, in the side card of the Path page ---------- */
+  var KINDLBL = { topic: 'Read', skill: 'Skill', mix: 'Practice', review: 'Review', test: 'Unit test', exam: 'Exam' };
+  function isSkill(t){ return !!(t && U[t.u] && U[t.u].label === 'Skills'); }
+  function stopKind(s){ return s.kind === 'topic' ? (isSkill(BY[s.id]) ? 'skill' : 'topic') : s.kind === 'day' || s.kind === 'finish' ? 'exam' : s.kind; }
+  function stopTitle(s){ return s.kind === 'topic' ? tName(BY[s.id]) : s.title; }
+  function selHTML(s){
+    if(!s) return '';
+    var k = s.state === 'done' ? 'Done' : s.state === 'now' ? 'Up next' : KINDLBL[stopKind(s)] || '', acts = '', note = '';
     if(s.kind === 'topic'){
       var t = BY[s.id];
-      title = tName(t);
-      k = s.state === 'done' ? 'Done' : s.state === 'faded' ? 'Maybe later · not set' : s.state === 'now' ? (s.pre ? 'Up next · before your class topic' : s.cls ? 'Up next · your class topic' : 'Up next') : s.cls ? 'Your class topic' : s.pre ? 'Before your class topic' : 'Coming up';
-      if(s.pre) why = esc(BY[S.anchor].t) + ' builds on this' + (s.why ? ' (' + esc(s.why) + ')' : '') + ', and you have not covered it yet. One short stop here, then on to your class topic.';
-      else if(s.cls) why = 'What your class is on right now. When your class moves on, tap “My class is on…” and the path follows.';
-      else if(s.state === 'faded') why = 'Many classes do this next, but yours might not. This part of the path redraws as soon as you say what your class is on.';
-      else if(s.cram) why = s.acc == null ? 'One of your test topics. You have not practiced it here yet.' : 'One of your test topics. You have about ' + s.acc + '% right on it so far' + (s.acc < 60 ? ', so it comes first.' : '.');
-      else if(s.state === 'done') why = 'You finished this. Its questions come back in review so it stays fresh.';
-      else why = esc(unitLabel(U[t.u])) + '.';
-      steps = stepList(t, s.state === 'now');
-      if(t.l && !t.f && !hasPass()) free = 'The notes and practice finish this stop for free. The interactive lesson is in Premium.';
-      if(s.state === 'done') acts = '<a class="lp-btn gold" href="' + esc(startUrl(t)) + '">Go over it again</a><button type="button" class="lp-link" data-act="undone" data-id="' + esc(t.id) + '">Not done after all</button>';
-      else if(s.state === 'faded') acts = '<button type="button" class="lp-btn gold" data-act="anchor" data-id="' + esc(t.id) + '">My class is on this now</button><a class="lp-link" href="' + esc(startUrl(t)) + '">Get ahead anyway</a>';
-      else acts = '<a class="lp-btn gold" href="' + esc(startUrl(t)) + '">' + (s.state === 'now' ? 'Start' : 'Jump here') + '</a>' +
-        (s.state === 'now' && D.practice ? '<button type="button" class="lp-link" data-act="check" data-id="' + esc(t.id) + '">Know it already? Quick check</button>' : '') +
-        '<button type="button" class="lp-link" data-act="markdone" data-id="' + esc(t.id) + '">Mark this stop done</button>';
-    } else if(s.kind === 'sum'){
-      k = 'Done'; title = s.title;
-      why = S.mode === 'class' ? 'You said your class already covered these, so the path skips them. Their questions still come back in review.' : 'Everything you have finished. It stays done, even if you change how you study.';
-      steps = '<ol class="lp-steps"><li class="ok"><i>✓</i>' + esc(coveredSummary()) + '</li></ol>';
-      acts = '<button type="button" class="lp-btn gold" data-act="whole">See it in the whole course</button>';
-    } else if(s.kind === 'review'){
-      k = s.state === 'now' ? 'Up next' : 'Review'; why = 'Questions you missed recently, plus a few from topics you finished earlier, so they stick.';
-      acts = D.review ? '<a class="lp-btn gold" href="' + esc(abs(D.review)) + '">Open review</a>' : '';
-    } else if(s.kind === 'test'){
-      k = 'Checkpoint'; why = 'Checks the whole ' + (D.kind === 'ap' ? 'unit' : 'chapter') + '. Anything you miss goes into review.';
-      acts = '<a class="lp-btn gold" href="' + esc(s.url) + '">Take the test</a>';
-    } else if(s.kind === 'unit'){
-      var u = U[s.u]; k = s.state === 'faded' ? 'Maybe later · not set' : 'Next'; title = unitLabel(u);
-      why = s.state === 'faded' ? 'If your class follows the usual order. It rearranges itself when your class goes somewhere else.' : 'The path continues here.';
-      if(u.w) steps = '<ol class="lp-steps"><li><i>%</i>' + esc(u.w) + ' of the exam</li></ol>';
-      acts = '<button type="button" class="lp-btn gold" data-act="whole">See it in the whole course</button>';
-    } else if(s.kind === 'mix'){
-      k = 'Practice'; why = s.timed ? 'A timed set at test speed, after your weakest topics.' : 'A mixed set across your test topics, because mixing them up is what the test does.';
-      var url = stopUrl(s); acts = url ? '<a class="lp-btn gold" href="' + esc(url) + '">' + (s.timed ? 'Open exams' : 'Open practice') + '</a>' : '';
-    } else if(s.kind === 'day'){
-      k = 'The finish line'; why = S.cram.kind === 'exam' ? 'Your path aims to cover your weakest topics before then.' : 'Your test. After it, the path asks what is next.';
-      acts = '<button type="button" class="lp-link" data-act="setup">Change the date</button>';
-    } else if(s.kind === 'finish'){
-      k = 'You did it'; title = 'Every topic, done';
-      why = 'You have been through the whole course. Exam review goes after your weakest topics first.';
-      acts = '<button type="button" class="lp-btn gold" data-act="toexam">Switch to exam review</button>';
+      if(s.state === 'done') acts = '<a class="lp-btn gold" href="' + esc(startUrl(t)) + '">Open again</a><div class="lnk"><button type="button" class="lp-link" data-act="undone" data-id="' + esc(t.id) + '">Not done after all</button></div>';
+      else acts = '<a class="lp-btn gold" href="' + esc(startUrl(t)) + '">' + (s.state === 'now' ? 'Start' : 'Jump here') + '</a><div class="lnk">' +
+        (D.practice ? '<button type="button" class="lp-link" data-act="check" data-id="' + esc(t.id) + '">Already know it?</button>' : '') +
+        '<button type="button" class="lp-link" data-act="markdone" data-id="' + esc(t.id) + '">Mark done</button></div>';
+      if(t.l && !t.f && !hasPass() && s.state !== 'done') note = 'Notes and practice are free. The interactive lesson is Premium.';
+      if(s.cram) note = s.acc == null ? 'Not practiced here yet.' : 'About ' + s.acc + '% right so far.';
+    } else {
+      var url = stopUrl(s), lbl = s.kind === 'mix' ? (s.timed ? 'Open exams' : 'Start practice') : s.kind === 'review' ? 'Start review' : s.kind === 'test' ? 'Take the test' : s.kind === 'exam' ? 'Open exams' : '';
+      if(url && lbl) acts = '<a class="lp-btn gold" href="' + esc(url) + '">' + lbl + '</a>';
+      if(s.id && s.state !== 'done' && s.kind !== 'day') acts += '<div class="lnk"><button type="button" class="lp-link" data-act="markdone" data-id="' + esc(s.id) + '">Mark done</button></div>';
+      if(s.kind === 'day') acts = '<div class="lnk"><button type="button" class="lp-link" data-act="setup">Change the date</button></div>';
+      if(s.kind === 'finish') acts = '<button type="button" class="lp-btn gold" data-act="toexam">Switch to exam review</button>';
     }
-    return '<div class="tx"><p class="lp-k">' + k + '</p><h3>' + esc(title) + '</h3>' + (why ? '<p>' + why + '</p>' : '') + (free ? '<p class="free">' + free + '</p>' : '') + '</div>' + (steps || '<span></span>') + '<div class="act">' + acts + '</div>';
+    return '<p class="lp-k">' + esc(k) + '</p><h3>' + esc(stopTitle(s)) + '</h3>' + (note ? '<p class="free">' + note + '</p>' : '') + '<div class="act">' + acts + '</div>';
   }
 
-  /* ---------- drawing the path ---------- */
-  function nodeIcon(s){ if(s.state === 'done') return ICON.check; if(s.kind === 'review') return ICON.review; if(s.kind === 'test' || s.kind === 'finish') return ICON.trophy; if(s.kind === 'unit') return ICON.arrow; if(s.kind === 'mix') return ICON.mix; if(s.kind === 'day') return ICON.cal; if(s.state === 'now') return ICON.play; if(s.cls) return ICON.flag; return ICON.book; }
-  var SEL = null;
-  function drawStage(host){
-    var st = stops();
-    if(SEL == null || SEL >= st.length){ SEL = 0; st.forEach(function(s, i){ if(s.state === 'now') SEL = i; }); }
-    var w = host.clientWidth || 1000, vert = w < 640, pts = [], W, H, i;
-    if(vert){ W = Math.max(300, w); st.forEach(function(s, i){ pts.push([Math.round(W * (i % 2 ? 0.7 : 0.3)), 90 + i * 124]); }); H = 90 + (st.length - 1) * 124 + 90; }
-    else { var gap = 142; W = Math.max(w, 90 + gap * (st.length - 1) + 90); var off = (W - gap * (st.length - 1)) / 2; st.forEach(function(s, i){ pts.push([Math.round(off + i * gap), i % 2 ? 92 : 168]); }); H = 270; }
-    var seg = '';
-    for(i = 1; i < pts.length; i++){
-      var a = pts[i - 1], b = pts[i], s = st[i], cl = s.state === 'faded' ? 'faded' : (s.state === 'done' || s.state === 'now') ? 'done' : 'todo';
-      var d = vert ? 'M' + a[0] + ' ' + a[1] + ' C ' + a[0] + ' ' + (a[1] + b[1]) / 2 + ', ' + b[0] + ' ' + (a[1] + b[1]) / 2 + ', ' + b[0] + ' ' + b[1]
-        : 'M' + a[0] + ' ' + a[1] + ' C ' + (a[0] + b[0]) / 2 + ' ' + a[1] + ', ' + (a[0] + b[0]) / 2 + ' ' + b[1] + ', ' + b[0] + ' ' + b[1];
-      seg += '<path class="ln ' + cl + '" d="' + d + '"/>';
+  /* ---------- the stops, in groups (one per course unit, or one for cramming) ---------- */
+  function groups(){
+    var st = stops(), out = [];
+    if(S.mode === 'cram'){ out.push({ k: S.cram.kind === 'exam' ? 'Exam review' : 'Your test', t: S.cram.kind === 'exam' ? 'Weakest topics first' : 'The topics on your test', stops: st }); }
+    else {
+      var by = {};
+      st.forEach(function(s){ var g = s.cu || 0; if(!by[g]){ by[g] = { cu: g, stops: [] }; out.push(by[g]); } by[g].stops.push(s); });
+      var cus = courseUnits();
+      out.forEach(function(g){ var u = U[cus[g.cu].u], ts = g.stops.filter(function(s){ return s.kind === 'topic'; }), dn = ts.filter(function(s){ return s.state === 'done'; }).length;
+        g.k = u.label + (u.w ? ' · ' + u.w + ' of the exam' : ''); g.t = u.title || u.label; g.c = dn ? dn + ' of ' + ts.length + ' done' : ts.length + ' topic' + (ts.length > 1 ? 's' : ''); g.short = u.label === 'Skills' ? 'Skills' : u.label; });
     }
-    var html = '<div class="lp-stage' + (vert ? ' vert' : '') + '" style="width:' + W + 'px;height:' + H + 'px"><svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true">' + seg + '</svg>';
-    var ff = -1; st.forEach(function(s, i){ if(ff < 0 && s.state === 'faded') ff = i; });
-    if(ff >= 0 && vert){ var p = pts[ff]; html += '<span class="lp-fadenote" style="left:' + W / 2 + 'px;top:' + (p[1] - 70) + 'px">if your class follows the usual order</span>'; }
-    st.forEach(function(s, i){
-      var p = pts[i], c = 'lp-n ' + (vert && i % 2 ? 'lbl-left ' : '') + s.state + (s.cls ? ' cls' : '') + (s.kind === 'test' || s.kind === 'finish' ? ' test' : '') + (s.kind === 'day' ? ' day' : '') + (i === SEL ? ' sel' : '');
-      html += '<button type="button" class="' + c + '" data-i="' + i + '" style="left:' + p[0] + 'px;top:' + p[1] + 'px" aria-pressed="' + (i === SEL) + '" aria-label="' + esc(s.title) + '">' +
-        (s.state === 'now' ? '<span class="bub">' + (s.kind === 'topic' ? 'Start' : 'Next') + '</span>' : '') +
-        (s.cls && s.state !== 'done' ? '<span class="flag">your class</span>' : '') +
-        '<span class="dot">' + nodeIcon(s) + '</span><span class="lb">' + esc(s.title) + '<small>' + esc(s.pre ? 'before your class topic' : s.sub || '') + '</small></span></button>';
+    var gi = 0; out.forEach(function(g, k){ g.id = 'lpu-' + k; g.stops.forEach(function(s){ s.gi = gi++; }); });
+    return out;
+  }
+  function stopFace(s){
+    if(s.state === 'done') return ICON.check;
+    if(s.state === 'now') return ICON.play;
+    var k = stopKind(s);
+    if(k === 'topic'){ var t = BY[s.id]; return t.n ? '<span class="num">' + esc(t.n) + '</span>' : ICON.book; }
+    if(k === 'skill') return '<span class="num">S</span>';
+    return k === 'mix' ? ICON.bolt : k === 'review' ? ICON.review : k === 'test' ? ICON.flag : ICON.trophy;
+  }
+
+  /* ---------- drawing the whole path ---------- */
+  var SEL = null;
+  function drawTrack(host){
+    var gs = groups(), all = [], W = host.clientWidth || 640, wide = W >= 560, gap = wide ? 104 : 96, top = 64, html = '';
+    var nowG = -1; gs.forEach(function(g){ g.stops.forEach(function(s){ all.push(s); if(s.state === 'now' && nowG < 0) nowG = s.gi; }); });
+    if(SEL == null || !all.some(function(s){ return s.key === SEL; })) SEL = (all[nowG] || all[all.length - 1] || {}).key;
+    var amp = Math.min(170, W * 0.26), g0 = 0;
+    gs.forEach(function(g, k){
+      var n = g.stops.length, H = top + (n - 1) * gap + 70, pts = g.stops.map(function(s, i){
+        var j = g0 + i; return wide ? [Math.round(W / 2 + amp * Math.sin(j * 0.78)), top + i * gap] : [Math.round(52 + 22 * Math.sin(j * 0.9)), top + i * gap]; });
+      g0 += n;
+      var d = function(a, b, lead, tail){ var s = ''; for(var i = a; i <= b; i++){ var p = pts[i]; if(i === a) s += lead ? 'M' + p[0] + ' 0 L' + p[0] + ' ' + p[1] : 'M' + p[0] + ' ' + p[1]; else { var q = pts[i - 1], m = (q[1] + p[1]) / 2; s += ' C' + q[0] + ' ' + m + ' ' + p[0] + ' ' + m + ' ' + p[0] + ' ' + p[1]; } } if(tail) s += ' L' + pts[b][0] + ' ' + H; return s; };
+      var first = g.stops[0].gi, last = g.stops[n - 1].gi, reach = nowG < 0 ? n - 1 : nowG > last ? n - 1 : nowG >= first ? nowG - first : -1;
+      var svg = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true"><path class="ln todo" d="' + d(0, n - 1, k > 0, k < gs.length - 1) + '"/>' +
+        (reach >= 0 ? '<path class="ln done" d="' + d(0, reach, k > 0, reach === n - 1 && k < gs.length - 1 && nowG > last) + '"/>' : '') + '</svg>';
+      var nodes = g.stops.map(function(s, i){
+        var p = pts[i], kd = stopKind(s), right = wide && p[0] >= W / 2, off = s.state === 'now' ? 58 : 44;
+        var lab = wide ? (right ? 'right:' + (W - p[0] + off) + 'px;text-align:right' : 'left:' + (p[0] + off) + 'px') : 'left:' + (p[0] + off) + 'px;right:0';
+        return '<button type="button" class="lp-s ' + kd + ' ' + s.state + (s.key === SEL ? ' sel' : '') + '" id="lps-' + s.gi + '" data-stop="' + esc(s.key) + '" style="left:' + p[0] + 'px;top:' + p[1] + 'px" aria-pressed="' + (s.key === SEL) + '" aria-label="' + esc(stopTitle(s)) + '"><span class="dot">' + stopFace(s) + '</span></button>' +
+          '<p class="lp-sl ' + s.state + '" style="top:' + p[1] + 'px;' + lab + '"><small>' + esc(s.state === 'now' ? 'Up next · ' + KINDLBL[kd] : s.state === 'done' ? KINDLBL[kd] + ' · done' : KINDLBL[kd]) + '</small>' + esc(stopTitle(s)) + '</p>';
+      }).join('');
+      html += '<section class="lp-g" id="' + g.id + '"><div class="lp-gb' + (nowG >= first && nowG <= last ? ' cur' : '') + '"><div><small>' + esc(g.k) + '</small><b>' + esc(g.t) + '</b></div>' + (g.c ? '<span>' + esc(g.c) + '</span>' : '') + '</div>' +
+        '<div class="lp-tr" style="height:' + H + 'px">' + svg + nodes + '</div></section>';
     });
-    host.innerHTML = html + '</div>';
-    $$('.lp-n', host).forEach(function(b){ b.addEventListener('click', function(){ SEL = +b.getAttribute('data-i'); drawStage(host); var det = $('#lpDet'); if(det) det.innerHTML = detailHTML(stops()[SEL]); }); });
-    if(!vert){ var sel = $('.lp-n.sel', host), sc = host.parentNode; if(sel && sc.scrollWidth > sc.clientWidth) sc.scrollLeft = Math.max(0, parseInt(sel.style.left, 10) - sc.clientWidth / 2); }
+    host.innerHTML = html;
+    return { gs: gs, all: all };
+  }
+  function mapHTML(gs){
+    var tot = 0, dn = 0;
+    var rows = gs.map(function(g){
+      var tn = 0, chips = g.stops.filter(function(s){ return s.kind === 'topic' || s.kind === 'test' || s.kind === 'exam' || s.kind === 'day'; }).map(function(s){
+        if(s.kind === 'topic'){ tot++; tn++; if(s.state === 'done') dn++; }
+        var kd = stopKind(s), t = s.kind === 'topic' ? BY[s.id] : null;
+        return '<button type="button" class="c ' + kd + ' ' + s.state + (s.key === SEL ? ' sel' : '') + '" data-go="' + esc(s.key) + '" title="' + esc(stopTitle(s)) + '" aria-label="' + esc(stopTitle(s)) + '">' + (t ? esc(t.n || (kd === 'skill' ? 'S' : String(tn))) : '★') + '</button>';
+      }).join('');
+      return '<div class="u"><a href="#' + g.id + '">' + esc(g.short ? g.short + ' · ' + g.t : g.k) + '</a><div class="cs">' + chips + '</div></div>';
+    }).join('');
+    return '<div class="hd"><b>' + (S.mode === 'cram' ? 'Your list' : 'Course') + '</b><span>' + dn + ' / ' + tot + '</span></div>' + rows;
   }
 
   /* ---------- the Path page ---------- */
-  var ZOOM = 'stretch';
   function metaHTML(){
-    var bits = ['<span class="lp-chip">' + sm(S.mode === 'self' ? ICON.self : S.mode === 'class' ? ICON.cls : ICON.clock, 16) + modeLabel() + '</span>'];
-    var dd = deadline(), n = dd ? daysTo(dd) : null;
-    if(S.mode === 'cram' && n != null && n >= 0) bits.push('<span class="lp-chip cd">' + (n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : 'In ' + n + ' days') + '</span>');
-    if(S.mode === 'class' && S.anchor) bits.push('<span>Your class is on <b style="color:var(--ink)">' + esc(BY[S.anchor].t) + '</b></span>');
-    var p = pace();
-    if(p) bits.push('<span>about ' + p + ' min a day' + (S.mode !== 'cram' && dd ? ' to be ready by ' + niceDate(dd) : '') + '</span>');
-    else if(S.mode !== 'cram') bits.push('<span>no deadline, go at your own pace</span>');
-    return bits.join('');
+    var dd = deadline(), n = dd ? daysTo(dd) : null, bits = [];
+    bits.push(S.mode === 'cram' ? modeLabel() : 'On my own');
+    if(dd && n != null && n >= 0) bits.push(S.mode === 'cram' ? (n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : 'In ' + n + ' days') : 'Exam ' + new Date(dd + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+    var p = pace(); if(p) bits.push('about ' + p + ' min a day');
+    return esc(bits.join(' · ')) + ' · <button type="button" class="lp-link" data-act="setup">Change</button>';
   }
   function bannersHTML(){
     var b = '', ex = examDate(), n = ex ? daysTo(ex) : null;
-    if(S.mode === 'class' && S.anchor && isF(S.anchor) && S.ack.anchor !== S.anchor)
-      b += '<div class="lp-banner cool"><div class="tx"><b>Your class topic is done: ' + esc(BY[S.anchor].t) + '.</b><p>The path does not guess what your teacher does next. What is your class on now?</p></div><div class="lp-row"><button type="button" class="lp-btn sm" data-act="picker">Something new</button><button type="button" class="lp-link" data-act="still">Still on it</button></div></div>';
     if(n != null && n > 0 && n <= 49 && S.mode !== 'cram' && !S.ack.exam)
-      b += '<div class="lp-banner cool"><div class="tx"><b>The ' + esc(D.exam.label) + ' is about ' + Math.max(1, Math.round(n / 7)) + ' week' + (n > 10 ? 's' : '') + ' away.</b><p>Switch to exam review? It goes after the topics you have not done yet, weakest first. Everything you have done stays done.</p></div><div class="lp-row"><button type="button" class="lp-btn sm" data-act="toexam">Switch to exam review</button><button type="button" class="lp-link" data-act="ackexam">Not yet</button></div></div>';
+      b += '<div class="lp-banner cool"><div class="tx"><b>The ' + esc(D.exam.label) + ' is about ' + Math.max(1, Math.round(n / 7)) + ' week' + (n > 10 ? 's' : '') + ' away.</b><p>Switch to exam review? Weakest topics first. Everything you did stays done.</p></div><div class="lp-row"><button type="button" class="lp-btn sm" data-act="toexam">Switch</button><button type="button" class="lp-link" data-act="ackexam">Not yet</button></div></div>';
     if(BEHIND && pace())
-      b += '<div class="lp-banner warm"><div class="tx"><b>You missed a few days. That is fine.</b><p>New pace: about ' + pace() + ' minutes a day.' + (D.kind === 'nremt' ? '' : ' Your free questions a day still cover it.') + '</p></div><div class="lp-row"><button type="button" class="lp-btn sm" data-act="okbehind">Okay</button><button type="button" class="lp-link" data-act="setup">Change the date</button></div></div>';
+      b += '<div class="lp-banner warm"><div class="tx"><b>You missed a few days. That is fine.</b><p>New pace: about ' + pace() + ' minutes a day.</p></div><div class="lp-row"><button type="button" class="lp-btn sm" data-act="okbehind">Okay</button><button type="button" class="lp-link" data-act="setup">Change the date</button></div></div>';
     return b;
   }
+  var DRAWN = null;
+  function selStop(){ if(!DRAWN) return null; for(var i = 0; i < DRAWN.all.length; i++) if(DRAWN.all[i].key === SEL) return DRAWN.all[i]; return null; }
   function renderPath(){
     var host = $('#levlPath'); if(!host) return;
-    if(!S.mode){
-      host.innerHTML = '<div class="lp-top"><div><span class="lp-pill">' + esc(D.name) + '</span><h1>Your <span>path</span></h1></div></div><div class="lp-card lp-new"><div class="tx"><h2 class="lp-h2">No path yet</h2><p class="lp-p">Three quick taps and you get a path that starts in the right place, adds only what you are missing and sets a daily pace. Every unit stays open, and you can still open any of it from Learn.</p></div><div class="lp-row"><button type="button" class="lp-btn" data-act="setup">Make my path</button><button type="button" class="lp-link" data-act="skip">Skip, just follow the course order</button></div></div>';
-      return;
-    }
-    var tools = '<div class="lp-seg" role="group" aria-label="How much of the path to show"><button type="button" data-zoom="stretch" aria-pressed="' + (ZOOM === 'stretch') + '">This stretch</button><button type="button" data-zoom="whole" aria-pressed="' + (ZOOM === 'whole') + '">Whole course</button></div>' +
-      (S.mode === 'class' ? '<button type="button" class="lp-btn ghost sm" data-act="picker">My class is on…</button>' : '') +
-      '<button type="button" class="lp-link" data-act="setup">Change how I study</button>';
-    var body = ZOOM === 'stretch'
-      ? '<div class="lp-card"><div class="lp-scroll"><div id="lpStage"></div></div><div class="lp-det" id="lpDet" aria-live="polite"></div><p class="lp-hand" style="margin-top:12px;font-size:19px">' + (S.mode === 'cram' ? 'weakest topics first, then timed practice' : S.mode === 'class' ? 'faded stops follow the usual order, and redraw when your class moves' : 'jump anywhere, everything you finish stays done') + '</p></div>'
-      : '<div class="lp-card">' + wholeHTML() + '</div>';
-    host.innerHTML = '<div class="lp-top"><div><span class="lp-pill">' + esc(D.name) + ' · your path</span><h1>Your <span>path</span></h1><div class="lp-meta">' + metaHTML() + '</div></div><div class="lp-tools">' + tools + '</div></div>' + bannersHTML() + body +
+    var made = !!S.mode; if(!made) S.mode = 'self';
+    host.innerHTML = '<div class="lp-lay"><aside class="lp-side"><div class="lp-head"><span class="lp-pill">' + esc(D.name) + '</span><h1>Your <span>path</span></h1>' +
+      (made ? '<p class="lp-meta2">' + metaHTML() + '</p>' : '') + '</div>' + (made ? bannersHTML() : '') +
+      (made ? '' : '<div class="lp-card lp-make"><h3>Create your <span>personalized path</span></h3><p>Three quick questions and it starts in the right place.</p><button type="button" class="lp-btn gold" data-act="setup">Create my path</button></div>') +
+      '<div class="lp-card lp-selc" id="lpSel" aria-live="polite"></div><div class="lp-card lp-map" id="lpMap"></div></aside>' +
+      '<div class="lp-trw"><div id="lpTrack"></div><p class="lp-hand lp-tnote">jump anywhere, everything you finish stays done</p></div></div>' +
       '<p class="lp-note">Your path’s answers are saved on this device. What you finish counts everywhere you are logged in.</p>';
-    if(ZOOM === 'stretch'){ drawStage($('#lpStage')); $('#lpDet').innerHTML = detailHTML(stops()[SEL]); }
+    DRAWN = drawTrack($('#lpTrack'));
+    $('#lpSel').innerHTML = selHTML(selStop());
+    $('#lpMap').innerHTML = mapHTML(DRAWN.gs);
+    if(!made) S.mode = null;
   }
-  function wholeHTML(){
-    var cur = nowStop(), cid = cur && cur.id;
-    var leg = '<div class="lp-legend"><span><i style="background:var(--lp-ac)"></i>done</span>' + (S.mode === 'class' ? '<span><i style="background:var(--lp-ct);box-shadow:inset 0 0 0 1px var(--lp-ac)"></i>covered in class</span><span><i style="box-shadow:inset 0 0 0 2px var(--lp-ac)"></i>your class is here</span>' : '') + (S.mode === 'cram' && S.cram.kind === 'test' ? '<span><i style="box-shadow:inset 0 0 0 2px #0B1A33"></i>on your test</span>' : '') + '<span><i style="background:#FFD23F"></i>up next</span><span><i></i>not started</span></div>';
-    var rows = U.map(function(u, ui){
-      var ts = T.filter(function(t){ return t.u === ui; }); if(!ts.length) return '';
-      var dn = ts.filter(function(t){ return isF(t.id); }).length, here = S.mode === 'class' && BY[S.anchor].u === ui;
-      var stt = dn === ts.length ? (ts.every(function(t){ return S.covered[t.id]; }) ? 'covered in class' : 'all done') : here ? 'your class is here' : dn ? dn + ' of ' + ts.length + ' done' : 'not started';
-      return '<div class="lp-unit"><div class="nm"><b>' + esc(unitLabel(u)) + '</b><small>' + ts.length + ' topic' + (ts.length > 1 ? 's' : '') + (u.w ? ' · ' + esc(u.w) + ' of the exam' : '') + '</small></div><div class="ts">' +
-        ts.map(function(t){ var c = 'lp-t' + (courseDone(t.id) || S.done[t.id] ? ' done' : S.covered[t.id] ? ' cov' : '') + (t.id === cid ? ' now' : '') + (S.mode === 'class' && t.id === S.anchor ? ' cls' : '') + (S.mode === 'cram' && S.cram.kind === 'test' && S.cram.topics.indexOf(t.id) >= 0 ? ' cram' : '');
-          return '<button type="button" class="' + c + '" data-topic="' + esc(t.id) + '">' + (t.n ? '<b>' + esc(t.n) + '</b>' : '') + esc(t.t) + '</button>'; }).join('') +
-        '</div><span class="st">' + stt + '</span></div>';
-    }).join('');
-    return '<div class="lp-whole"><p class="lp-sub">Tap any topic to ' + (S.mode === 'class' ? 'tell the path your class is on it, or mark it covered' : S.mode === 'cram' ? 'add it to your test or open it' : 'open it or mark it as already known') + '.' + (S.mode === 'class' ? ' After your class topic, the path shows the usual order, and it moves when your class does.' : '') + '</p>' + leg + rows + '</div>';
+  function select(key, scroll){
+    SEL = key;
+    $$('#lpTrack .lp-s').forEach(function(b){ var on = b.getAttribute('data-stop') === key; b.classList.toggle('sel', on); b.setAttribute('aria-pressed', on); });
+    $$('#lpMap .c').forEach(function(b){ b.classList.toggle('sel', b.getAttribute('data-go') === key); });
+    var made = !!S.mode; if(!made) S.mode = 'self';
+    $('#lpSel').innerHTML = selHTML(selStop());
+    if(!made) S.mode = null;
+    if(scroll){ var b = $('#lpTrack [data-stop="' + key.replace(/"/g, '') + '"]'); if(b) b.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
   }
 
   /* ---------- the course home card ---------- */
+  function miniHTML(list, ni){
+    var X = [6, 22, 40, 58, 75, 92], Y = [150, 80, 125, 70, 140, 85], P = list.map(function(s, i){ return [X[i] * 10, Y[i]]; });
+    var d = function(a, b){ var s = ''; for(var i = a; i <= b; i++){ var p = P[i]; if(i === a) s += 'M' + p[0] + ' ' + p[1]; else { var q = P[i - 1], m = (q[0] + p[0]) / 2; s += ' C' + m + ' ' + q[1] + ' ' + m + ' ' + p[1] + ' ' + p[0] + ' ' + p[1]; } } return s; };
+    var svg = '<svg viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true">' + (list.length > 1 ? '<path class="ln todo" d="' + d(Math.max(0, ni), list.length - 1) + '"/>' : '') + (ni > 0 ? '<path class="ln done" d="' + d(0, ni) + '"/>' : '') + '</svg>';
+    return '<div class="lp-strip"><div class="in">' + svg + list.map(function(s, i){
+      var kd = stopKind(s);
+      return '<a class="lp-ms ' + kd + ' ' + s.state + '" href="' + esc(stopUrl(s) || abs('path.html')) + '" style="left:' + X[i] + '%;top:' + Y[i] + 'px" aria-label="' + esc(stopTitle(s)) + '"><span class="dot">' + stopFace(s) + '</span></a><p class="lp-ml ' + s.state + '" style="left:' + X[i] + '%;top:' + (Y[i] + (s.state === 'now' ? 46 : 32)) + 'px">' + esc(stopTitle(s)) + '</p>';
+    }).join('') + '</div></div>';
+  }
   function renderHome(){
     var main = $('main.r3-home'), lead = main && $('.lead', main); if(!lead) return;
     var slot = $('#lpSlot');
     if(!slot){ slot = document.createElement('div'); slot.id = 'lpSlot'; slot.className = 'lp-slot'; lead.parentNode.insertBefore(slot, lead); }
     var pathHref = abs('path.html');
     if(!S.mode){
-      slot.innerHTML = '<div class="lp-card lp-new"><div class="tx"><span class="lp-pill">New · your path</span><h2 class="lp-h2">A path made for <span>how you study.</span></h2><p class="lp-p">On your own, alongside a class, or cramming for a test. Three quick taps and it starts you in the right place, adds only what you are missing, and sets a daily pace. Every unit stays open.</p></div><div class="lp-row"><button type="button" class="lp-btn" data-act="setup">Make my path</button><p class="lp-hand">or just start below</p></div></div>';
+      slot.innerHTML = '<div class="lp-card lp-hnew"><div class="tx"><span class="lp-pill">Your path</span><h2 class="lp-h2">Create your <span>personalized path</span></h2><p class="lp-p">Three quick questions, then a path through all of ' + esc(D.name) + ', in course order.</p>' +
+        '<ol class="lp-qs"><li>How you’re studying</li><li>What you already know</li><li>When your exam is</li></ol>' +
+        '<div class="lp-row"><button type="button" class="lp-btn gold" data-act="setup">Create my path</button><a class="lp-btn ghost" href="' + esc(pathHref) + '">Open full path</a></div></div></div>';
       return;
     }
-    var st = stops(), ni = 0; st.forEach(function(s, i){ if(s.state === 'now') ni = i; });
-    var from = Math.max(0, ni - 1), mini = st.slice(from, from + 5), n = st[ni];
-    var why = n.pre ? 'Added because ' + lower(BY[S.anchor].t) + ' builds on it.' : n.cls ? 'What your class is on right now.' : n.cram ? 'One of your test topics, weakest first.' : n.kind === 'topic' ? 'Next in the course order.' : '';
-    slot.innerHTML = '<div class="lp-card lp-prev"><div class="tx"><p class="lp-k" style="color:var(--muted)">Your path · ' + modeLabel() + '</p><h2 class="lp-h2" style="margin:0">Up next: <span>' + esc(n.kind === 'topic' ? BY[n.id].t : n.title) + '</span></h2>' + (why ? '<p class="lp-p">' + why + '</p>' : '') +
-      '<div class="lp-row" style="margin-top:6px">' + (stopUrl(n) ? '<a class="lp-btn" href="' + esc(stopUrl(n)) + '">Continue</a>' : '') + '<a class="lp-btn ghost" href="' + esc(pathHref) + '">Open your path</a></div></div>' +
-      '<div class="lp-mini" aria-label="Your next stops">' + mini.map(function(s){ return '<div class="m ' + s.state + (s.cls ? ' cls' : '') + '"><span class="d">' + sm(nodeIcon(s), 20) + '</span>' + esc(s.title) + '<small>' + (s.state === 'now' ? 'up next' : s.state === 'faded' ? 'maybe later' : s.state === 'done' ? 'done' : '') + '</small></div>'; }).join('') + '</div></div>';
-    var url = stopUrl(n);
+    var st = stops(), ni = -1; st.forEach(function(s, i){ if(ni < 0 && s.state === 'now') ni = i; });
+    if(ni < 0) ni = st.length - 1;
+    var n = st[ni], from = Math.max(0, ni - 2), mini = st.slice(from, from + 6), url = stopUrl(n);
+    var cus = S.mode === 'cram' ? null : courseUnits(), u = cus && n.cu != null ? U[cus[n.cu].u] : null;
+    var inU = u ? st.filter(function(s){ return s.cu === n.cu && s.kind === 'topic'; }) : [], dU = inU.filter(function(s){ return s.state === 'done'; }).length;
+    slot.innerHTML = '<div class="lp-card lp-hcard"><div class="hd"><div><p class="lp-k">Your path · ' + esc(u ? unitLabel(u) : modeLabel()) + '</p><h2 class="lp-h2">Up next: <span>' + esc(stopTitle(n)) + '</span></h2></div>' +
+      '<div class="lp-row">' + (url ? '<a class="lp-btn gold" href="' + esc(url) + '">Continue</a>' : '') + '<a class="lp-btn ghost" href="' + esc(pathHref) + '">Open full path</a></div></div>' +
+      miniHTML(mini, ni - from) +
+      '<div class="ft"><p class="lp-hand">jump anywhere, everything you finish stays done</p>' + (u ? '<span>' + dU + ' of ' + inU.length + ' in ' + esc(u.label) + '</span>' : '') + '</div></div>';
     [$('#heroPrimaryCta'), $('.sticky-cta a')].forEach(function(a){ if(a && url){ a.textContent = 'Continue your path'; a.setAttribute('href', url); a.classList.remove('cta-pending'); } });
   }
 
@@ -426,7 +457,7 @@
   function stepSetup(){
     var steps = suSteps(), id = steps[SU.i], last = SU.how && SU.i === steps.length - 1, body = '', canNext = true;
     if(id === 'how'){
-      body = '<p class="lp-q">How are you studying?</p><div class="lp-opts">' + [['self', 'On my own', 'No class, or I want to learn it start to finish.', ICON.self], ['class', 'Alongside a class', 'I want to keep up with what my class is doing.', ICON.cls], ['cram', 'Cramming for a test', 'I have a date coming up and not much time.', ICON.clock]].map(function(o){
+      body = '<p class="lp-q">How are you studying?</p><div class="lp-opts">' + [['self', 'On my own', 'Learn it start to finish, in course order.', ICON.self], ['cram', 'Cramming for a test', 'I have a date coming up and not much time.', ICON.clock]].map(function(o){
         return '<button type="button" class="lp-opt" data-how="' + o[0] + '" aria-pressed="' + (SU.how === o[0]) + '"><span class="ic">' + o[3] + '</span><span><b>' + o[1] + '</b><small>' + o[2] + '</small></span></button>'; }).join('') + '</div>';
       canNext = !!SU.how;
     }
@@ -436,8 +467,8 @@
     if(id === 'on'){ body = '<p class="lp-q">What is your class on right now?</p>' + pickerHTML(SU.anchor); canNext = !!SU.anchor; }
     if(id === 'covered'){
       var a = BY[SU.anchor];
-      if(!SU.pre){ SU.pre = 1; T.forEach(function(t){ if(t.u < a.u) SU.covered[t.id] = 1; }); }
-      body = '<p class="lp-q">What has your class already covered?</p><p class="lp-sub">We guessed everything before ' + esc(lower(U[a.u].label)) + '. Fix anything that is wrong. Classes go in all kinds of orders, and that is fine.</p>' + covHTML(SU.covered, a.id);
+      var as = stretchOf(a.i).c; if(!SU.pre){ SU.pre = 1; T.forEach(function(t){ if(t.i < as.from) SU.covered[t.id] = 1; }); }
+      body = '<p class="lp-q">What has your class already covered?</p><p class="lp-sub">We guessed everything before ' + esc(lower(U[as.u].label)) + '. Fix anything that is wrong. Classes go in all kinds of orders, and that is fine.</p>' + covHTML(SU.covered, a.id);
     }
     if(id === 'deadline'){
       var opts = D.exam.date ? [['exam', 'The ' + D.exam.label + ' (' + niceDate(D.exam.date) + ')'], ['date', 'A different date'], ['none', 'No deadline']] : [['date', 'Pick a date'], ['none', 'No deadline']];
@@ -514,9 +545,9 @@
 
   /* ---------- events ---------- */
   function onClick(e){
-    var a = e.target.closest('[data-act]'), z = e.target.closest('[data-zoom]'), tp = e.target.closest('[data-topic]');
-    if(tp && e.target.closest('.lp-whole')){ openTopic(tp.getAttribute('data-topic')); return; }
-    if(z){ ZOOM = z.getAttribute('data-zoom'); SEL = null; renderPath(); return; }
+    var a = e.target.closest('[data-act]'), sp = e.target.closest('#lpTrack [data-stop]'), go = e.target.closest('#lpMap [data-go]');
+    if(sp){ select(sp.getAttribute('data-stop'), false); return; }
+    if(go){ select(go.getAttribute('data-go'), true); return; }
     if(!a || !(a.closest('.lp-ov') || a.closest('#levlPath') || a.closest('#lpSlot') || a.closest('#lpEnd'))) return;
     var act = a.getAttribute('data-act'), id = a.getAttribute('data-id');
     if(act === 'setup') openSetup();
@@ -532,7 +563,6 @@
     else if(act === 'markdone'){ S.done[id] = 1; save(); closeM(); SEL = null; track('path_stop_done', {}); toast('Stop done. On to the next one.'); renderAll(); }
     else if(act === 'undone'){ delete S.done[id]; delete S.covered[id]; save(); SEL = null; renderAll(); }
     else if(act === 'check') openCheck(id);
-    else if(act === 'whole'){ ZOOM = 'whole'; renderPath(); }
     else if(act === 'still'){ S.ack.anchor = S.anchor; save(); toast('Okay. Review and gaps while your class finishes it.'); renderAll(); }
     else if(act === 'offno'){ S.ack['off:' + id] = 1; save(); renderAll(); }
     else if(act === 'okbehind'){ BEHIND = false; S.ack.behind = today(); save(); renderPath(); }
@@ -554,7 +584,7 @@
     document.addEventListener(KEY + ':progress', function(){ renderAll(); });
     window.addEventListener(KEY + ':progress', function(){ renderAll(); });
     if(PAGE_T){ var was = isF(PAGE_T.id); setInterval(function(){ readProgress(); var nowDone = isF(PAGE_T.id); if(nowDone !== was){ was = nowDone; renderEnd(); } }, 4000); }
-    var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ var h = $('#lpStage'); if(h) drawStage(h); }, 150); });
+    var rt, lw = window.innerWidth; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ if(window.innerWidth !== lw && $('#lpTrack')){ lw = window.innerWidth; renderPath(); } }, 150); });
   }
   window.LevlPath = { course: KEY, open: function(){ if(D) openSetup(); } };
   fetch('/assets/path/' + KEY + '.json', { credentials: 'same-origin' }).then(function(r){ return r.ok ? r.json() : null; }).then(function(d){
