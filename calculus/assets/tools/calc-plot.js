@@ -235,7 +235,7 @@
       out.push('<circle class="calc-plot-pt ' + esc(p.cls || 's1') + (p.open ? ' is-open' : '') + '" cx="' + r2(cx) + '" cy="' + r2(cy) + '" r="4"/>');
       marks.push([cx, cy]);
       if(p.label) later.push({ text: plain(p.label), cls: '', at: [[cx, cy]],
-        d: [[7, -7, 'start'], [-7, -7, 'end'], [7, 15, 'start'], [-7, 15, 'end'], [0, -10, 'middle'], [0, 19, 'middle'], [9, 4, 'start'], [-9, 4, 'end'], [10, -14, 'start'], [-10, -14, 'end']] });
+        d: [[7, -7, 'start'], [-7, -7, 'end'], [7, 15, 'start'], [-7, 15, 'end'], [0, -10, 'middle'], [0, 19, 'middle'], [9, 4, 'start'], [-9, 4, 'end'], [10, -14, 'start'], [-10, -14, 'end'], [7, -22, 'start'], [-7, -22, 'end'], [7, 28, 'start'], [-7, 28, 'end']] });
     });
 
     /* Labels go last, over everything, each with a white halo, and each in the

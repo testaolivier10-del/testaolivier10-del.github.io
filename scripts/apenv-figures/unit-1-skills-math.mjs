@@ -187,7 +187,7 @@ const add = (topic, fig) => figs.push({ topic, ...fig });
   b += box(...SE, 'Ocean sediments and\nsedimentary rock', { fill: '#EDE7DC', stroke: GREY });
   b += box(...FF, 'Fossil fuels\ncoal, oil, natural gas', { fill: '#E9E6DA', stroke: INK });
   // atmosphere <-> living things
-  b += arrow(300, 78, 160, 170, 'Photosynthesis', { color: GREEN, mk: 'green', dx: 16, dy: 16, anchor: 'start', weight: 'bold' });
+  b += arrow(300, 78, 160, 170, 'Photosynthesis', { color: GREEN, mk: 'green', dx: -42, dy: 36, anchor: 'start', weight: 'bold' });
   b += arrow(120, 170, 280, 66, 'Respiration', { color: INK, dx: -16, dy: -10, anchor: 'end', weight: 'bold' });
   // living things -> soil
   b += arrow(110, 228, 110, 360, 'Wastes and\ndead matter', { color: '#8C6D46', mk: 'ink', dx: -40, dy: -6 });
