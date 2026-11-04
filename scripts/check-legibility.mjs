@@ -114,34 +114,48 @@ const files = args.length ? args : walk(ROOT).filter(f => {
 
 const srv = await serve();
 const base = `http://127.0.0.1:${srv.address().port}/`;
-const browser = await chromium.launch({ executablePath: process.env.CHROME || undefined });
+let browser;
+async function launch() { browser = await chromium.launch({ executablePath: process.env.CHROME || undefined }); }
+await launch();
 const report = [];
 const jobs = [];
 for (const f of files) for (const w of (f.endsWith('.svg') ? [WIDTHS[0]] : WIDTHS)) jobs.push([f, w]);
 
-let next = 0, done = 0;
+/* A fresh page per render: one long-lived page leaks memory over thousands of
+   renders until Chrome dies. If Chrome dies anyway, relaunch and retry once. */
+let next = 0, done = 0, relaunching = null;
+async function render(f, w) {
+  const ctx = await browser.newContext({ viewport: { width: w, height: 900 }, deviceScaleFactor: 1 });
+  try {
+    await ctx.route(u => !u.href.startsWith(base), r => r.abort());
+    const page = await ctx.newPage();
+    await page.goto(base + f, { waitUntil: 'load', timeout: 20000 });
+    await page.waitForTimeout(250);
+    await page.evaluate(() => document.fonts && document.fonts.ready);
+    return await page.evaluate(scan, { MIN_GAP, OVERLAP });
+  } finally { await ctx.close().catch(() => {}); }
+}
 async function worker() {
-  const ctxs = {};
-  for (const w of WIDTHS) {
-    ctxs[w] = await browser.newContext({ viewport: { width: w, height: 900 }, deviceScaleFactor: 1 });
-    await ctxs[w].route(u => !u.href.startsWith(base), r => r.abort());
-  }
-  const pages = {}; for (const w of WIDTHS) pages[w] = await ctxs[w].newPage();
   while (next < jobs.length) {
     const [f, w] = jobs[next++];
-    const page = pages[w];
-    try {
-      await page.goto(base + f, { waitUntil: 'load', timeout: 20000 });
-      await page.waitForTimeout(250);
-      await page.evaluate(() => document.fonts && document.fonts.ready);
-      const found = await page.evaluate(scan, { MIN_GAP, OVERLAP });
-      for (const x of found) report.push({ file: f, width: w, ...x });
-    } catch (e) { report.push({ file: f, width: w, kind: 'load-error', text: String(e.message).slice(0, 80) }); }
+    for (let attempt = 0; ; attempt++) {
+      try {
+        for (const x of await render(f, w)) report.push({ file: f, width: w, ...x });
+        break;
+      } catch (e) {
+        if (attempt === 0 && !browser.isConnected()) {
+          relaunching = relaunching || launch().finally(() => { relaunching = null; });
+          await relaunching; continue;
+        }
+        report.push({ file: f, width: w, kind: 'load-error', text: String(e.message).split('\n')[0].slice(0, 80) });
+        break;
+      }
+    }
     if (++done % 200 === 0) process.stderr.write(`${done}/${jobs.length}\n`);
   }
 }
 await Promise.all(Array.from({ length: CONC }, worker));
-await browser.close(); srv.close();
+await browser.close().catch(() => {}); srv.close();
 
 if (process.env.OUT) fs.writeFileSync(process.env.OUT, JSON.stringify(report, null, 1));
 const byKind = {};
