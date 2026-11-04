@@ -193,15 +193,20 @@
     function inkBox(l, t, r, b){ for(var X = l; X <= r; X += 2) for(var Y = t; Y <= b; Y += 2) ink.push([X, Y]); }
     function inkText(x, y, str, anchor, size){ var w = 0.6 * size * String(str).length, l = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x; inkBox(l, y - 0.8 * size, l + w, y + 0.25 * size); }
     function placeTicks(){
-      return tickQ.map(function(t){
-        var w = 6.4 * String(t.s).replace(/&[a-z]+;/g, '#').length, best = 0, bh = Infinity;
+      // A tick number's box at candidate c; other numbers keep a 5px gap so two never read as one.
+      function box(t, c){ var w = 6.4 * String(t.s).replace(/&[a-z]+;/g, '#').length, l = c[2] === 'middle' ? c[0] - w / 2 : c[2] === 'end' ? c[0] - w : c[0]; return [l, c[1] - 9, l + w, c[1] + 3]; }
+      var at = tickQ.map(function(t){ return box(t, t.c[0]); });
+      return tickQ.map(function(t, j){
+        var best = 0, bh = Infinity;
         for(var k = 0; k < t.c.length; k++){
-          var c = t.c[k], l = c[2] === 'middle' ? c[0] - w / 2 : c[2] === 'end' ? c[0] - w : c[0], h = 0;
-          for(var i = 0; i < ink.length; i++){ var q = ink[i]; if(q[0] > l - 3 && q[0] < l + w + 3 && q[1] > c[1] - 11 && q[1] < c[1] + 4) h++; }
+          var c = t.c[k], bx = box(t, c), h = 0;
+          for(var i = 0; i < ink.length; i++){ var q = ink[i]; if(q[0] > bx[0] - 3 && q[0] < bx[2] + 3 && q[1] > bx[1] && q[1] < bx[3] + 1) h++; }
+          for(var m = 0; m < at.length; m++) if(m !== j && bx[0] < at[m][2] + 5 && bx[2] > at[m][0] - 5 && bx[1] < at[m][3] && bx[3] > at[m][1]) h += 100;
           if(h < bh){ bh = h; best = k; }
           if(!h) break;
         }
         var b = t.c[best];
+        at[j] = box(t, b);
         return '<text x="' + r2(b[0]) + '" y="' + r2(b[1]) + '" text-anchor="' + b[2] + '">' + t.s + '</text>';
       }).join('');
     }
@@ -302,7 +307,7 @@
     dots.forEach(function(p){
       if(p.at[0] < x0 || p.at[0] > x1 || p.at[1] < y0 || p.at[1] > y1) return;
       out.push('<circle class="pcalc-plot-pt ' + esc(p.cls || 's1') + (p.open ? ' is-open' : '') + '" cx="' + r2(F.sx(p.at[0])) + '" cy="' + r2(F.sy(p.at[1])) + '" r="4"/>');
-      inkBox(F.sx(p.at[0]) - 5, F.sy(p.at[1]) - 5, F.sx(p.at[0]) + 5, F.sy(p.at[1]) + 5);
+      inkBox(F.sx(p.at[0]) - 4, F.sy(p.at[1]) - 4, F.sx(p.at[0]) + 4, F.sy(p.at[1]) + 4);
       if(p.label) inkText(F.sx(p.at[0]) + 7, F.sy(p.at[1]) - 7, plain(p.label), 'start', 11);
       if(p.label) out.push('<text class="pcalc-plot-label" x="' + r2(F.sx(p.at[0]) + 7) + '" y="' + r2(F.sy(p.at[1]) - 7) + '">' + esc(plain(p.label)) + '</text>');
     });
