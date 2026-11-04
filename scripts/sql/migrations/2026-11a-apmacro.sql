@@ -2,7 +2,7 @@
 -- course (docs/apmacro-spec.md, the owner checklist). Named 2026-11a-apmacro so it
 -- sorts after 2026-10o-apcalcbc.sql (AP® Calculus BC, the twelfth course), whose
 -- course lists it extends: migrations run, and are compared with schema.sql, in
--- file-name order. Apply it after the AP® Calculus BC one. Applied in Supabase 2026-11-04.
+-- file-name order. Apply it after the AP® Calculus BC one. NOT APPLIED anywhere yet.
 --
 -- Run once, BEFORE the AP® Macroeconomics pass goes on sale: Supabase dashboard ->
 -- SQL Editor -> New query -> paste -> Run. Needs 2026-10o-apcalcbc.sql (and the
