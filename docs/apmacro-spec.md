@@ -260,14 +260,16 @@ student draws in the page (the AI grader hook only when its eval passes).
 - The rest is in `docs/apmacro-needs-author.md` (teacher questions, `ced-text`, `adas-early-graphs`).
 
 **Launch checklist (owner), to put AP® Macroeconomics Premium on sale:**
-- [ ] Apply migration `scripts/sql/migrations/2026-11a-apmacro.sql` in Supabase (adds `apmacro` to the three course
-      checks and the six functions with a course list; it lists every course including `apprecalc` and
-      `apcalcbc`; needs `2026-10o-apcalcbc.sql` applied first; check the live function bodies first, as before).
+- [x] (2026-11-04) Applied in Supabase as `2026_11a_apmacro` after checking the six live function bodies matched
+      `2026-10o-apcalcbc.sql` exactly; afterwards all six functions and all three course checks list `apmacro`.
+      Owner access granted the same day (`grant`, to 2099-12-31). Was: apply migration
+      `scripts/sql/migrations/2026-11a-apmacro.sql` (adds `apmacro` to the three course checks and the six functions).
 - [ ] Create the Polar product "AP® Macroeconomics Premium (through June 30, 2027)", one-time, at the AP® price
       ($25), and make sure the "Founding member" discount applies to it.
 - [ ] Add `"macro-2027": "<id>"` to `POLAR_PRODUCTS` in the Cloudflare Worker (levlprep-ask) settings; the Worker
       code already knows the pass (`worker/src/premium.js`) and redeploys on merge.
-- [ ] Remove `onSale: false` from `COURSES.apmacro` in `assets/premium.js`, bump `sw.js`, and grant owner access.
+- [ ] Remove `onSale: false` from `COURSES.apmacro` in `assets/premium.js` and bump `sw.js` (Claude does this once
+      the Polar product id exists; owner access is already granted).
 - [ ] Confirm the identity (accent, cover, icon, headline, ranks), the free tier ("Graph skills you need", Units 1
       and 2) and the three free trainers (Graph Studio, partly: Explore plus the PPC and supply-and-demand drills;
       PPC and trade; the indicators lab).
