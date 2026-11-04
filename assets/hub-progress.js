@@ -205,7 +205,7 @@
       { min: 20, title: 'Model Builder' },
       { min: 30, title: 'Precalculus Legend' },
     ],
-    // docs/apmacro-spec.md section 9 (PROVISIONAL; the lead picks them). The
+    // docs/apmacro-spec.md decision 13 (owner to confirm). The
     // first is also IDENTITY.firstRank in scripts/lib/apmacro-build.mjs.
     apmacro: [
       { min: 1,  title: 'Scarcity Spotter' },

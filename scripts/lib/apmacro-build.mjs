@@ -36,20 +36,19 @@ export const COURSE_HTML = 'AP&reg; Macroeconomics';
 export const COURSE_ID = `${SITE}${BASE}#course`;
 export const DISCLAIMER = 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.';
 export const BETA_NOTE = 'This course has not yet been reviewed by an AP® Macroeconomics teacher.';
-/* THE COURSE IDENTITY, in one place (docs/apmacro-spec.md section 9:
-   PROVISIONAL, the lead picks the accent, icon, headline and ranks; owner to
-   confirm). The accent's CSS values live in assets/theme.css
+/* THE COURSE IDENTITY, in one place (docs/apmacro-spec.md decision 13:
+   the accent, icon, headline and ranks; owner to confirm). The accent's CSS values live in assets/theme.css
    (body[data-course="apmacro"]) and macroeconomics/assets/mac.css (body.mac);
    the ranks in assets/hub-progress.js TITLES.apmacro. Change the rest here
    and rebuild. */
 export const IDENTITY = {
   headline: 'every graph, every shift.',
-  // Yellow-green, hue 85°: the widest gap left on the wheel, between
-  // Environmental Science's olive (63°) and Biology's green (109°); darker
+  // Yellow-green, hue 85° (confirmed at launch, decision 13): the widest gap left on the
+  // wheel, between Environmental Science's olive (63°) and Biology's green (109°); darker
   // and greener than the olive. Light ink 8.0:1 on white.
   accent: { ink: '#355A0A', tint: '#EEF4E0', darkInk: '#CDE6A0', darkTint: 'rgba(160,200,90,0.10)', soft: '#B8DA7A' },
-  // A supply and demand cross with an arrow: 24-px stroke paths, as every course card.
-  iconPaths: '<path d="M4 4v16h16"/><path d="M7 7l10 10"/><path d="M7 17L17 7"/><path d="M14 4h3v3" stroke-opacity=".75"/>',
+  // AD-AS with LRAS, as the cover (decision 13): 24-px stroke paths, as every course card.
+  iconPaths: '<path d="M4 3v17h17"/><path d="M12 5v15"/><path d="M7 7l10 10"/><path d="M7 17L17 7"/>',
   firstRank: 'Scarcity Spotter',
 };
 // THE FREE TIER, in one place (docs/apmacro-spec.md decision 6, proposed):

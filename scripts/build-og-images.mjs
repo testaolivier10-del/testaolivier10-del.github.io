@@ -177,7 +177,7 @@ const CARDS = [
     sub: 'Free notes for every topic, functions you can drag and watch, and the four free-response questions drilled part by part.',
   },
   /* AP® Macroeconomics (folder macroeconomics/), the same rules: no mark, no
-     counts (docs/apmacro-spec.md section 9, identity provisional). Render with
+     counts (docs/apmacro-spec.md decision 13). Render with
      ONLY=macroeconomics/assets/og-image.png. */
   {
     out: 'macroeconomics/assets/og-image.png',

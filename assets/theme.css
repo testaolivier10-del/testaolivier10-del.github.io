@@ -272,8 +272,8 @@ body[data-course="appsych"]{--ctint:#E3F0F8;--cink:#084F78;}
    in precalculus/assets/pcalc.css and IDENTITY.accent in scripts/lib/apprecalc-build.mjs). */
 body[data-course="apprecalc"]{--ctint:#E3F3E8;--cink:#11592F;}
 :root[data-theme="dark"] body[data-course="apprecalc"]{--ctint:rgba(80,200,130,0.10);--cink:#ACE4BF;}
-/* AP Macroeconomics: yellow-green, hue 88° (PROVISIONAL, docs/apmacro-spec.md
-   section 9; the widest gap left on the wheel, between Environmental
+/* AP Macroeconomics: yellow-green, hue 88° (docs/apmacro-spec.md decision 13,
+   owner to confirm; the widest gap left on the wheel, between Environmental
    Science's olive at 63° and Biology's leaf green at 109°). --cink on
    --ctint: 7.1:1 light (8.0:1 on white); dark 13:1 on the card (the same
    values as body.mac in macroeconomics/assets/mac.css and IDENTITY.accent in

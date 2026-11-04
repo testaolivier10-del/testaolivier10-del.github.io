@@ -5,8 +5,8 @@
    what this course adds: stimulus panels and sets, numeric answers, charts,
    unit pages, the printable unit sheet and the course home.
 
-   The course color, PROVISIONAL (docs/apmacro-spec.md section 9: the lead
-   picks the accent): yellow-green, hue 85°, the widest gap on the wheel
+   The course color (docs/apmacro-spec.md decision 13, owner to
+   confirm): yellow-green, hue 85°, the widest gap on the wheel
    (between Environmental Science's olive, 63°, and Biology's green, 109°),
    on every page (body.mac), the same values as body[data-course="apmacro"]
    in assets/theme.css and IDENTITY.accent in scripts/lib/apmacro-build.mjs.

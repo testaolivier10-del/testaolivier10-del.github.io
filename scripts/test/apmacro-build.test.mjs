@@ -125,7 +125,7 @@ test('the course home has its own headline, accent and cover, not AP® Psycholog
   assert.match(css, /body\.mac\{--ctint:#EEF4E0;--cink:#355A0A;\}/);
   assert.match(readFileSync('assets/theme.css', 'utf8'), /body\[data-course="apmacro"\]\{--ctint:#EEF4E0;--cink:#355A0A;\}/);
   assert.ok(existsSync('assets/covers/apmacro.svg') && existsSync('assets/covers/art/apmacro.svg') && existsSync('assets/covers/thumb/apmacro.svg'));
-  // The provisional accent is a hue no other course uses (every course's ink in theme.css, at least 15° apart).
+  // The accent is a hue no other course uses (every course's ink in theme.css, at least 15° apart).
   const theme = readFileSync('assets/theme.css', 'utf8');
   const hue = h => { const [r, g, b] = [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255); const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn; if (!d) return 0; const x = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; return (x * 60 + 360) % 360; };
   const inks = [...theme.matchAll(/^body\[data-course="([a-z]+)"\]\{--ctint:#[0-9A-F]+;--cink:(#[0-9A-F]{6});\}/gm)].map(m => [m[1], hue(m[2])]);
