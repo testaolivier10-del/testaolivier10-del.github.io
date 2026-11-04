@@ -63,8 +63,17 @@ function scan({ MIN_GAP, OVERLAP }) {
   const found = [];
   const vis = el => { const r = el.getBoundingClientRect(); const s = getComputedStyle(el);
     return r.width > 0 && r.height > 0 && s.visibility !== 'hidden' && s.display !== 'none' && +s.opacity !== 0; };
-  const textRect = el => { const rg = document.createRange(); rg.selectNodeContents(el);
-    const rs = [...rg.getClientRects()].filter(r => r.width > 0.5); if (!rs.length) return null;
+  /* Visible text only: screen-reader-only spans (1px boxes) are skipped. */
+  const textRect = el => { const rs = [];
+    const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    for (let n; (n = tw.nextNode());) {
+      if (!n.textContent.trim()) continue;
+      const pr = n.parentElement.getBoundingClientRect();
+      if (pr.width <= 2 || pr.height <= 2) continue;
+      const rg = document.createRange(); rg.selectNodeContents(n);
+      rs.push(...[...rg.getClientRects()].filter(r => r.width > 0.5));
+    }
+    if (!rs.length) return null;
     return { l: Math.min(...rs.map(r => r.left)), r: Math.max(...rs.map(r => r.right)),
       t: Math.min(...rs.map(r => r.top)), b: Math.max(...rs.map(r => r.bottom)) }; };
   const label = el => (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40);
@@ -94,6 +103,27 @@ function scan({ MIN_GAP, OVERLAP }) {
       if (s.overflowY !== 'visible') { box.t = Math.max(box.t, r.top); box.b = Math.min(box.b, r.bottom); }
     }
     return box;
+  };
+  /* Is the stroke really drawn at this point? Hit testing respects clip paths
+     (a curve running off the top of its plot is cut there) and stacking (a
+     line behind a filled box does not show). Pointer events are forced on for
+     the test so lines marked pointer-events:none still count. */
+  if (!document.getElementById('legib-pe')) {
+    const st = document.createElementNS(document.documentElement.namespaceURI === 'http://www.w3.org/2000/svg' ? 'http://www.w3.org/2000/svg' : 'http://www.w3.org/1999/xhtml', 'style');
+    st.id = 'legib-pe'; st.textContent = 'svg, svg * { pointer-events: visiblePainted !important; }';
+    (document.head || document.documentElement).appendChild(st);
+  }
+  const painted = (g, p) => {
+    if (p.x < 0 || p.y < 0 || p.x >= innerWidth || p.y >= innerHeight) return true;
+    const hits = document.elementsFromPoint(p.x, p.y);
+    const i = hits.indexOf(g);
+    if (i < 0) return false;
+    for (const e of hits.slice(0, i)) {
+      if (e.closest('text') || !(e instanceof SVGGraphicsElement)) continue;
+      const s = getComputedStyle(e);
+      if (s.fill !== 'none' && !/rgba\(.*, 0\)$/.test(s.fill) && +s.fillOpacity * +s.opacity >= 0.6) return false;
+    }
+    return true;
   };
   const isHalo = t => { const s = getComputedStyle(t); return s.stroke !== 'none' && parseFloat(s.strokeWidth) >= 2 && s.fill === s.stroke; };
 
@@ -146,7 +176,7 @@ function scan({ MIN_GAP, OVERLAP }) {
            make a label sitting on a thick curve or arrow look clean. */
         if (halo && thin && (g.compareDocumentPosition(halo) & Node.DOCUMENT_POSITION_FOLLOWING)) continue;
         const pad = Math.min(3, r.height * 0.2);
-        const inside = pts.filter(p => p.x > r.left + pad && p.x < r.right - pad && p.y > r.top + pad && p.y < r.bottom - pad).length;
+        const inside = pts.filter(p => p.x > r.left + pad && p.x < r.right - pad && p.y > r.top + pad && p.y < r.bottom - pad && painted(g, p)).length;
         if (inside >= 3) found.push({ kind: 'svg-line-through', text: label(t) });
       }
     }
@@ -181,6 +211,9 @@ async function render(f, w) {
     await page.goto(base + f, { waitUntil: 'load', timeout: 20000 });
     await page.waitForTimeout(250);
     await page.evaluate(() => document.fonts && document.fonts.ready);
+    /* Hit testing only works on screen, so make the screen as tall as the page. */
+    const h = await page.evaluate(() => Math.min(document.documentElement.scrollHeight, 16000));
+    if (h > 900) { await page.setViewportSize({ width: w, height: h }); await page.waitForTimeout(150); }
     return await page.evaluate(scan, { MIN_GAP, OVERLAP });
   } finally { await ctx.close().catch(() => {}); }
 }
