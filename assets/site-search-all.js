@@ -36,7 +36,7 @@
     { key: 'appsych', searchLabel: 'Psychology', name: 'AP® Psychology', dir: 'psychology', aliases: ['psychology', 'psych', 'psy'], status: 'live' },
     { key: 'apprecalc', searchLabel: 'Precalculus', name: 'AP® Precalculus', dir: 'precalculus', aliases: ['precalculus', 'precalc', 'pcalc'], status: 'live' },
     { key: 'apcalcbc', searchLabel: 'Calculus BC', name: 'AP® Calculus BC', dir: 'calculus-bc', aliases: ['calculus-bc', 'calc-bc', 'calcbc', 'bc'], status: 'live' },
-    { key: 'apmacro', searchLabel: 'Macroeconomics', name: 'AP® Macroeconomics', dir: 'macroeconomics', aliases: ['macroeconomics', 'macro', 'mac'], status: 'hidden' },
+    { key: 'apmacro', searchLabel: 'Macroeconomics', name: 'AP® Macroeconomics', dir: 'macroeconomics', aliases: ['macroeconomics', 'macro', 'mac'], status: 'live' },
   ];
   // courses:end
   var COURSES = COURSE_LIST.filter(function (c) { return c.status !== 'hidden'; }).map(function (c) {
