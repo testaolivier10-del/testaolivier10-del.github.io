@@ -934,7 +934,8 @@
       "review_blob": "dcdc11bb1c305a14d90b04e1916d07469790aeb0",
       "approved_on": "2026-11-02",
       "approved_blob": "dcdc11bb1c305a14d90b04e1916d07469790aeb0",
-      "note": "2026-11-02: rebuilt v2 approved by Olivier (\"after that all shorts are good\"); Buffer posts must point at the new file pinned at the commit that holds this blob."
+      "note": "2026-11-02: rebuilt v2 approved by Olivier (\"after that all shorts are good\"); Buffer posts must point at the new file pinned at the commit that holds this blob.",
+      "pin_comment_id": "Ugx6UxdUPNVV12Cg2id4AaABAg"
     },
     {
       "id": "w1101-04-cane-toads",
