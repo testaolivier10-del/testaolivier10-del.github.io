@@ -436,7 +436,7 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
   };
   body.push(arc(180, 98, 360, 98, -60, INK, '0.2', 270, 52));
   body.push(arc(360, 142, 180, 142, 60, INK, '0.3', 270, 196));
-  const loop = (x, up, lab, color) => [`<path d="M${x - 22},${cy - (R - 6)} C${x - 50},${cy - 110} ${x + 50},${cy - 110} ${x + 20},${cy - (R - 4)}" fill="none" stroke="${color}" stroke-width="2"/>`, head(x + 20, cy - (R - 4), -12, 16, color, 11), text(x, cy - 92, lab, { size: 15, anchor: 'middle', color })];
+  const loop = (x, up, lab, color) => [`<path d="M${x - 22},${cy - (R - 6)} C${x - 50},${cy - 110} ${x + 50},${cy - 110} ${x + 20},${cy - (R - 4)}" fill="none" stroke="${color}" stroke-width="2"/>`, head(x + 20, cy - (R - 4), -12, 16, color, 11), text(x, cy - 99, lab, { size: 15, anchor: 'middle', color })];
   body.push(loop(140, true, '0.8', GREEN), loop(400, true, '0.7', BLUE));
   body.push(text(270, 238, 'Each day, a bike at A stays with chance 0.8 and moves to B with chance 0.2;', { size: 12, anchor: 'middle', color: MUTED }));
   body.push(text(270, 256, 'a bike at B moves to A with chance 0.3 and stays with chance 0.7.', { size: 12, anchor: 'middle', color: MUTED }));

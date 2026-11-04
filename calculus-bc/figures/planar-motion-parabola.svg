@@ -15,7 +15,7 @@
 <circle cx="185" cy="160" r="4.5" fill="#5A1E96" stroke="#5A1E96" stroke-width="2"/>
 <line x1="85" y1="310" x2="473" y2="310" stroke="#D55E00" stroke-width="3" stroke-linecap="round"/><polygon points="485,310 473,315.4 473,304.6" fill="#D55E00"/>
 <text xml:space="preserve" x="285" y="340" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#D55E00" text-anchor="middle" font-weight="bold" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round"><tspan >displacement ⟨8, 0⟩, length 8</tspan></text>
-<text xml:space="preserve" x="285" y="98" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#5A1E96" text-anchor="middle" font-weight="bold" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round"><tspan >distance along the path ≈ 11.83</tspan></text>
+<text xml:space="preserve" x="285" y="200" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#5A1E96" text-anchor="middle" font-weight="bold" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round"><tspan >distance along the path ≈ 11.83</tspan></text>
 <text xml:space="preserve" x="585" y="110" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#1F2A28" text-anchor="start" font-weight="bold"><tspan >r(t) = ⟨2t, 4t − t²⟩</tspan></text>
 <text xml:space="preserve" x="585" y="135" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#1F2A28" text-anchor="start" font-weight="normal"><tspan >0 ≤ t ≤ 4</tspan></text>
 <text xml:space="preserve" x="585" y="175" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#0072B2" text-anchor="start" font-weight="normal"><tspan >v(1) = ⟨2, 2⟩</tspan></text>

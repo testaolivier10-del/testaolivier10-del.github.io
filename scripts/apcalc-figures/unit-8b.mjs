@@ -515,7 +515,7 @@ FIGS['disc-solid-x-axis'] = () => revolutionFigure({
   },
   cam: { az: -0.42, el: 0.28, F: 30 }, fit: [380, 60, 730, 380],
   R: Math.sqrt, a: 0, b: 4, x0: 2.3, dx: 0.3,
-  draw3d: cam => radiusArrow(cam, 2.3, 0, Math.sqrt(2.45), '#0072B2', `${it('r')} = √${it('x')}`, { dx: -10, anchor: 'end', dy: -6 }) + (() => { const T = cam.P([4.7, 0, 0]); return text(T[0] - 4, T[1] + 22, `axis: the ${it('x')}-axis`, { anchor: 'end', size: 13 }); })()
+  draw3d: cam => radiusArrow(cam, 2.3, 0, Math.sqrt(2.45), '#0072B2', `${it('r')} = √${it('x')}`, { dx: -10, anchor: 'end', dy: -6 }) + (() => { const T = cam.P([4.7, 0, 0]); return text(T[0] - 26, T[1] + 22, `axis: the ${it('x')}-axis`, { anchor: 'end', size: 13 }); })()   // clear of the end face's rim
 });
 
 FIGS['disc-solid-line'] = () => revolutionFigure({
@@ -563,7 +563,7 @@ FIGS['washer-solid-x-axis'] = () => revolutionFigure({
   draw3d: cam => radiusArrow(cam, 2.525, 0, Math.sqrt(2.525), '#0072B2', `${it('R')} = √${it('x')}`, { dx: -10, anchor: 'end', dy: -20 }) + (() => {
     const A = cam.P([2.525, 0, 0]), B = cam.P([2.525, 0, -1]);
     return arrow(A[0], A[1], B[0], B[1], C.verm, 2.2, 9) + text(B[0] - 8, B[1] + 6, `${it('r')} = 1`, { anchor: 'end', size: 14, weight: 'bold', color: C.verm });
-  })() + (() => { const T = cam.P([4.75, 0, 0]); return text(T[0] + 4, T[1] + 24, `axis: the ${it('x')}-axis`, { anchor: 'end', size: 13 }); })()
+  })() + (() => { const S = cam.P([0.25, 0, 0]); return text(S[0] + 8, S[1] + 20, `axis: the ${it('x')}-axis`, { anchor: 'end', size: 13 }); })()   // under the axis where it enters the solid: the end face has rims across it
 });
 
 FIGS['washer-solid-line'] = () => revolutionFigure({

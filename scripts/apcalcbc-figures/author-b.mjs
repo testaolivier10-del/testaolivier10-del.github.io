@@ -339,7 +339,7 @@ const figs = {};
   b.push(dot(P, X(1), Y(1), { r: 4.5 }));
   b.push(vec(P, 0, 0, 8, 0, { color: VERM, width: 3 }));
   b.push(label(P, 4, 0, 'displacement ⟨8, 0⟩, length 8', { dy: 30, anchor: 'middle', color: VERM, bold: true }));
-  b.push(label(P, 4, 4, 'distance along the path ≈ 11.83', { dy: -12, anchor: 'middle', color: EMERALD, bold: true }));
+  b.push(label(P, 4, 2.2, 'distance along the path ≈ 11.83', { dy: 0, anchor: 'middle', color: EMERALD, bold: true }));   // inside the arch, clear of the velocity arrow
   const tx = 585;
   b.push(text(tx, 110, 'r(t) = ⟨2t, 4t − t²⟩', { size: 14, bold: true }));
   b.push(text(tx, 135, '0 ≤ t ≤ 4', { size: 14 }));

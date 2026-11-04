@@ -72,7 +72,7 @@
 <line x1="232.5" y1="438.5" x2="232.5" y2="446.5" stroke="#1F2A28" stroke-width="1.2"/>
 <text x="229.5" y="434.5" font-size="13" text-anchor="end" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">−1</text>
 <line x1="347.5" y1="438.5" x2="347.5" y2="446.5" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="350.5" y="434.5" font-size="13" text-anchor="start" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">1</text>
+<text x="347.5" y="434.5" font-size="13" text-anchor="middle" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">1</text>
 <line x1="405" y1="438.5" x2="405" y2="446.5" stroke="#1F2A28" stroke-width="1.2"/>
 <text x="405" y="434.5" font-size="13" text-anchor="middle" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">2</text>
 <line x1="462.5" y1="438.5" x2="462.5" y2="446.5" stroke="#1F2A28" stroke-width="1.2"/>

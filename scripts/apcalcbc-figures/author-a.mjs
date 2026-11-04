@@ -66,7 +66,8 @@ function panel(o) {
     a.push(`<polygon fill="${INK}" points="${r2(sx(ay))},${top - 14} ${r2(sx(ay) - 4)},${top - 5} ${r2(sx(ay) + 4)},${top - 5}"/>`);
     for (const v of xt) if (v !== ay && (!o.xEvery || Math.abs(v / o.xEvery - Math.round(v / o.xEvery)) < 1e-9)) {
       a.push(`<line x1="${r2(sx(v))}" y1="${r2(sy(ax) - 4)}" x2="${r2(sx(v))}" y2="${r2(sy(ax) + 4)}" stroke="${INK}" stroke-width="1.2"/>`);
-      a.push(text(sx(v), sy(ax) + 18, (o.xTick || fmt)(v), { size: 13, anchor: 'middle', color: MUTED, halo: true }));
+      // xTicksBelow: the numbers along the bottom of the grid, for a graph whose curves hug the x-axis.
+      a.push(text(sx(v), (o.xTicksBelow ? top + height : sy(ax)) + 18, (o.xTick || fmt)(v), { size: 13, anchor: 'middle', color: MUTED, halo: true }));
     }
     for (const v of yt) if (v !== ax && (!o.yEvery || Math.abs(v / o.yEvery - Math.round(v / o.yEvery)) < 1e-9)) {
       a.push(`<line x1="${r2(sx(ay) - 4)}" y1="${r2(sy(v))}" x2="${r2(sx(ay) + 4)}" y2="${r2(sy(v))}" stroke="${INK}" stroke-width="1.2"/>`);
@@ -165,7 +166,7 @@ const figs = {};
   const id = 'partial-fractions-split';
   const W = 760, H = 460;
   const f = x => (x + 7) / ((x - 1) * (x + 3)), g1 = x => 2 / (x - 1), g2 = x => -1 / (x + 3);
-  const P = panel({ left: 70, top: 56, width: 600, height: 330, x: [-7, 5], y: [-6, 6], xStep: 1, yStep: 1, xEvery: 1, yEvery: 2, xLabel: [{ t: 'x', i: true }], yLabel: [{ t: 'y', i: true }] });
+  const P = panel({ left: 70, top: 56, width: 600, height: 330, x: [-7, 5], y: [-6, 6], xStep: 1, yStep: 1, xEvery: 1, yEvery: 2, xTicksBelow: true, xLabel: [{ t: 'x', i: true }], yLabel: [{ t: 'y', i: true }] });
   const b = [...P.out];
   b.push(seg(P, 1, -6, 1, 6, { color: MUTED, dash: '5 5', width: 1.2 }), seg(P, -3, -6, -3, 6, { color: MUTED, dash: '5 5', width: 1.2 }));
   b.push(P.axes());
@@ -174,7 +175,7 @@ const figs = {};
   b.push(brk(g2, [-3], { color: VERM, width: 2, dash: '7 5' }));
   b.push(brk(f, [-3, 1], { color: EMERALD, width: 3 }));
   b.push(text(P.sx(1) - 6, P.sy(5.6), 'x = 1', { size: 13, color: MUTED, anchor: 'end' }), text(P.sx(-3) + 6, P.sy(5.6), 'x = −3', { size: 13, color: MUTED }));
-  b.push(text(P.sx(3.1), P.sy(2.4), [{ t: '(x + 7) / ((x − 1)(x + 3))', b: true }], { anchor: 'middle', size: 14.5, color: EMERALD, halo: true }));
+  b.push(text(P.sx(3.1), P.sy(-3.5), [{ t: '(x + 7) / ((x − 1)(x + 3))', b: true }], { anchor: 'middle', size: 14.5, color: EMERALD, halo: true }));   // the empty lower right: every curve crosses the space beside its upper branch
   b.push(text(P.sx(4.1), P.sy(1.45), '2/(x − 1)', { anchor: 'middle', size: 14, color: BLUE, halo: true }));
   b.push(text(P.sx(-5.2), P.sy(1.2), '−1/(x + 3)', { anchor: 'middle', size: 14, color: VERM, halo: true }));
   b.push(text(W / 2, 26, 'One fraction is the sum of two simple ones:  (x + 7)/((x − 1)(x + 3)) = 2/(x − 1) − 1/(x + 3)', { anchor: 'middle', size: 15, bold: true }));

@@ -188,6 +188,23 @@
     var showX = spec.ticks !== false && spec.xTicks !== false, showY = spec.ticks !== false && spec.yTicks !== false;
     var xt = spec.piX ? piTicks(x0, x1) : ticks(x0, x1, 7, spec.xStep), yt = spec._yTicks || ticks(y0, y1, 6, spec.yStep);
     var yLab = spec._yLabel || fmtTick;
+    var tickQ = [], tickAt = -1, ink = [];
+    function inkSeg(x1, y1, x2, y2){ var n = Math.max(2, Math.ceil(Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)) / 2)); for(var i = 0; i <= n; i++) ink.push([x1 + (x2 - x1) * i / n, y1 + (y2 - y1) * i / n]); }
+    function inkBox(l, t, r, b){ for(var X = l; X <= r; X += 2) for(var Y = t; Y <= b; Y += 2) ink.push([X, Y]); }
+    function inkText(x, y, str, anchor, size){ var w = 0.6 * size * String(str).length, l = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x; inkBox(l, y - 0.8 * size, l + w, y + 0.25 * size); }
+    function placeTicks(){
+      return tickQ.map(function(t){
+        var w = 6.4 * String(t.s).replace(/&[a-z]+;/g, '#').length, best = 0, bh = Infinity;
+        for(var k = 0; k < t.c.length; k++){
+          var c = t.c[k], l = c[2] === 'middle' ? c[0] - w / 2 : c[2] === 'end' ? c[0] - w : c[0], h = 0;
+          for(var i = 0; i < ink.length; i++){ var q = ink[i]; if(q[0] > l - 3 && q[0] < l + w + 3 && q[1] > c[1] - 11 && q[1] < c[1] + 4) h++; }
+          if(h < bh){ bh = h; best = k; }
+          if(!h) break;
+        }
+        var b = t.c[best];
+        return '<text x="' + r2(b[0]) + '" y="' + r2(b[1]) + '" text-anchor="' + b[2] + '">' + t.s + '</text>';
+      }).join('');
+    }
     // Grid
     if(spec.grid === true || (spec.grid !== false && spec.ticks !== false)){
       out.push('<g class="pcalc-plot-grid">' + (showX ? xt : []).map(function(v){ return '<line x1="' + r2(F.sx(v)) + '" y1="' + T + '" x2="' + r2(F.sx(v)) + '" y2="' + B + '"/>'; }).join('') +
@@ -215,11 +232,26 @@
         xt.filter(function(v){ return Math.abs(v) > 1e-12 || ay === L; }).map(function(v){ var px = r2(F.sx(v)); return '<line x1="' + px + '" y1="' + r2(ax - 3) + '" x2="' + px + '" y2="' + r2(ax + 3) + '"/>'; }).join('') +
         yt.filter(function(v){ return Math.abs(v) > 1e-12 || ax === B; }).map(function(v){ var py = r2(F.sy(v)); return '<line x1="' + r2(ay - 3) + '" y1="' + py + '" x2="' + r2(ay + 3) + '" y2="' + py + '"/>'; }).join('') + '</g>');
       var lab = [];
-      xt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ay !== L) return; lab.push('<text x="' + r2(F.sx(v)) + '" y="' + r2(Math.min(F.h - 4, ax + 15)) + '" text-anchor="middle">' + (spec.piX ? piLabel(v) : fmtTick(v)) + '</text>'); });
-      yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ax !== B) return; lab.push('<text x="' + r2(Math.max(10, ay - 6)) + '" y="' + r2(F.sy(v) + 4) + '" text-anchor="end">' + yLab(v) + '</text>'); });
+      // Tick numbers are placed at the end (see placeTicks): each keeps its usual spot unless a curve,
+      // line, point or label covers it, then tries the other side of its axis or a little further out.
+      xt.forEach(function(v){
+        if(Math.abs(v) < 1e-12 && ay !== L) return;
+        var X = F.sx(v), Y = Math.min(F.h - 4, ax + 15), c = [[X, Y, 'middle'], [X, ax - 6, 'middle']];
+        [3, 7, 11].forEach(function(d){ c.push([X - d, Y, 'end'], [X + d, Y, 'start'], [X - d, ax - 6, 'end'], [X + d, ax - 6, 'start']); });
+        tickQ.push({ s: spec.piX ? piLabel(v) : fmtTick(v), c: c });
+      });
+      yt.forEach(function(v){
+        if(Math.abs(v) < 1e-12 && ax !== B) return;
+        var Y = F.sy(v) + 4, c = [[Math.max(10, ay - 6), Y, 'end'], [ay + 6, Y, 'start']];
+        [14, 22, 30].forEach(function(d){ if(ay - d > 10) c.push([ay - d, Y, 'end']); c.push([ay + d, Y, 'start']); });
+        tickQ.push({ s: yLab(v), c: c });
+      });
+      tickAt = out.length;
       if(spec.xLabel) lab.push('<text class="pcalc-plot-axlabel" x="' + (R - 2) + '" y="' + r2(Math.max(T + 10, ax - 6)) + '" text-anchor="end">' + esc(plain(spec.xLabel)) + '</text>');
       if(spec.yLabel) lab.push('<text class="pcalc-plot-axlabel" x="' + r2(ay + 6) + '" y="' + (T + 10) + '" text-anchor="start">' + esc(plain(spec.yLabel)) + '</text>');
-      out.push('<g class="pcalc-plot-ticks">' + lab.join('') + '</g>');
+      out.push('<g class="pcalc-plot-ticks">\u0000' + lab.join('') + '</g>');
+      if(spec.xLabel) inkText(R - 2, Math.max(T + 10, ax - 6), plain(spec.xLabel), 'end', 11);
+      if(spec.yLabel) inkText(ay + 6, T + 10, plain(spec.yLabel), 'start', 11);
     }
     (spec.asymptotes || []).forEach(function(a){
       if(a.x != null) out.push('<line class="pcalc-plot-asym" x1="' + r2(F.sx(a.x)) + '" y1="' + T + '" x2="' + r2(F.sx(a.x)) + '" y2="' + B + '"/>');
@@ -245,12 +277,15 @@
       var e = lineEnds(l, F);
       if(!e) return;
       out.push('<line class="pcalc-plot-line ' + esc(l.cls || 's2') + (l.dashed ? ' is-dashed' : '') + '" x1="' + r2(F.sx(e[0][0])) + '" y1="' + r2(F.sy(e[0][1])) + '" x2="' + r2(F.sx(e[1][0])) + '" y2="' + r2(F.sy(e[1][1])) + '"/>');
+      inkSeg(F.sx(e[0][0]), F.sy(e[0][1]), F.sx(e[1][0]), F.sy(e[1][1]));
+      if(l.label) inkText(F.sx(e[1][0]) - 4, F.sy(e[1][1]) - 6, plain(l.label), 'end', 11);
       if(l.label) out.push('<text class="pcalc-plot-label" x="' + r2(F.sx(e[1][0]) - 4) + '" y="' + r2(F.sy(e[1][1]) - 6) + '" text-anchor="end">' + esc(plain(l.label)) + '</text>');
     });
     var dots = [];
     (spec.curves || []).forEach(function(c, i){
       var f = toFn(c.fn), d = c.domain || F.x, runs = sample(f, Math.max(d[0], x0), Math.min(d[1], x1), F, c.samples);
       out.push('<path class="pcalc-plot-curve ' + esc(c.cls || 's' + (i % 5 + 1)) + (c.dashed ? ' is-dashed' : '') + '" d="' + pathOf(runs, F) + '"/>');
+      runs.forEach(function(r){ for(var k = 1; k < r.length; k++) inkSeg(F.sx(r[k - 1][0]), F.sy(r[k - 1][1]), F.sx(r[k][0]), F.sy(r[k][1])); });
       (c.ends || []).forEach(function(kind, j){
         if(!kind) return;
         var x = d[j], y = f(x);
@@ -259,6 +294,7 @@
       });
       if(c.label && runs.length){
         var lr = runs[runs.length - 1], lp = lr[lr.length - 1];
+        inkText(Math.min(R - 2, F.sx(lp[0]) + 4), Math.max(T + 10, F.sy(lp[1]) - 4), plain(c.label), F.sx(lp[0]) > R - 30 ? 'end' : 'start', 11);
         out.push('<text class="pcalc-plot-label ' + esc(c.cls || 's' + (i % 5 + 1)) + '" x="' + r2(Math.min(R - 2, F.sx(lp[0]) + 4)) + '" y="' + r2(Math.max(T + 10, F.sy(lp[1]) - 4)) + '" text-anchor="' + (F.sx(lp[0]) > R - 30 ? 'end' : 'start') + '">' + esc(plain(c.label)) + '</text>');
       }
     });
@@ -266,11 +302,15 @@
     dots.forEach(function(p){
       if(p.at[0] < x0 || p.at[0] > x1 || p.at[1] < y0 || p.at[1] > y1) return;
       out.push('<circle class="pcalc-plot-pt ' + esc(p.cls || 's1') + (p.open ? ' is-open' : '') + '" cx="' + r2(F.sx(p.at[0])) + '" cy="' + r2(F.sy(p.at[1])) + '" r="4"/>');
+      inkBox(F.sx(p.at[0]) - 5, F.sy(p.at[1]) - 5, F.sx(p.at[0]) + 5, F.sy(p.at[1]) + 5);
+      if(p.label) inkText(F.sx(p.at[0]) + 7, F.sy(p.at[1]) - 7, plain(p.label), 'start', 11);
       if(p.label) out.push('<text class="pcalc-plot-label" x="' + r2(F.sx(p.at[0]) + 7) + '" y="' + r2(F.sy(p.at[1]) - 7) + '">' + esc(plain(p.label)) + '</text>');
     });
     (spec.labels || []).forEach(function(t){
+      inkText(F.sx(t.at[0]), F.sy(t.at[1]), plain(t.text), t.anchor || 'middle', 11);
       out.push('<text class="pcalc-plot-label" x="' + r2(F.sx(t.at[0])) + '" y="' + r2(F.sy(t.at[1])) + '" text-anchor="' + (t.anchor || 'middle') + '">' + esc(plain(t.text)) + '</text>');
     });
+    if(tickAt >= 0) out[tickAt] = out[tickAt].replace('\u0000', placeTicks());
     return '<svg class="pcalc-plot" viewBox="0 0 ' + F.w + ' ' + F.h + '" width="' + F.w + '" height="' + F.h + '" role="img" aria-label="' + esc(plain(spec.label)) + '">' + out.join('') + '</svg>';
   }
 

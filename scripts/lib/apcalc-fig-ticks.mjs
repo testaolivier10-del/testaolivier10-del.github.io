@@ -107,7 +107,7 @@ export function clearTicks(svg) {
   }).filter(t => Number.isFinite(t.x) && Number.isFinite(t.y));
   all.forEach(t => { t.box = boxOf(t.x, t.y, t.plain, t.anchor, t.size); });
   const cost = (b, self, strokesOnly) => {
-    const g = { l: b.l - 1, r: b.r + 1, t: b.t - 1, b: b.b + 1 };
+    const g = { l: b.l - 0.5, r: b.r + 0.5, t: b.t - 0.5, b: b.b + 0.5 };
     let c = 0;
     if (b.l < 0 || b.t < 0 || b.r > W || b.b > H) c += 100;
     for (const s of segs) {
@@ -126,9 +126,11 @@ export function clearTicks(svg) {
     if (t.anchor === 'middle') {
       const up = -Math.round(size * 1.85);
       const down = Math.round(size * 0.7);
-      cands.push([x - 3, y, 'end'], [x + 3, y, 'start'], [x, y + up, 'middle'], [x - 3, y + up, 'end'], [x + 3, y + up, 'start'], [x, y + down, 'middle']);
+      cands.push([x - 3, y, 'end'], [x + 3, y, 'start'], [x, y + Math.round(size * 0.4), 'middle'], [x, y - Math.round(size * 0.3), 'middle'],
+        [x, y + up, 'middle'], [x - 3, y + up, 'end'], [x + 3, y + up, 'start'], [x, y + down, 'middle']);
     } else if (t.anchor === 'end') {
-      cands.push([x, y - Math.round(size * 0.6), 'end'], [x, y + Math.round(size * 0.6), 'end'], [x + 16, y, 'start'], [x + 16, y - Math.round(size * 0.6), 'start'], [x + 16, y + Math.round(size * 0.6), 'start']);
+      const k = Math.round(size * 0.6), k2 = Math.round(size * 0.95);
+      cands.push([x, y - k, 'end'], [x, y + k, 'end'], [x + 16, y, 'start'], [x + 16, y - k, 'start'], [x + 16, y + k, 'start'], [x, y - k2, 'end'], [x, y + k2, 'end']);
     } else {
       cands.push([x, y - Math.round(size * 0.6), 'start'], [x, y + Math.round(size * 0.6), 'start'], [x - 16, y, 'end']);
     }

@@ -55,17 +55,26 @@ function panel(o) {
   parts.push(`<path d="M${left + w + 10} ${r2(ax)} l-8 -4 v8 z" fill="${INK}"/>`);
   parts.push(`<line x1="${r2(ay)}" y1="${top + h}" x2="${r2(ay)}" y2="${top - 10}" stroke="${INK}" stroke-width="1.4"/>`);
   parts.push(`<path d="M${r2(ay)} ${top - 10} l-4 8 h8 z" fill="${INK}"/>`);
+  /* Tick numbers are placed when the panel is written out (out()), after everything else is drawn:
+     each takes its usual spot unless a curve, arrow, dot or label covers it, then the other side of
+     its axis, then a little further along (legibility sweep 2026-11). */
+  const ticks = [], ink = [];
+  const inkSeg = (x1, y1, x2, y2, clipped) => { const n = Math.max(2, Math.ceil(Math.hypot(x2 - x1, y2 - y1) / 2)); for (let i = 0; i <= n; i++) { const X = x1 + (x2 - x1) * i / n, Y = y1 + (y2 - y1) * i / n; if (!clipped || (X >= left - 6 && X <= left + w + 6 && Y >= top - 6 && Y <= top + h + 6)) ink.push([X, Y]); } };
+  const inkBox = (l, t, r, b) => { for (let X = l; X <= r; X += 2) for (let Y = t; Y <= b; Y += 2) ink.push([X, Y]); };
+  const inkPts = (pts, width, clipped) => { if (width >= 1.8) for (let i = 1; i < pts.length; i++) inkSeg(sx(pts[i - 1][0]), sy(pts[i - 1][1]), sx(pts[i][0]), sy(pts[i][1]), clipped); };
   const tl = o.xTickLabel || (v => minus(+v.toFixed(4)));
   const yl = o.yTickLabel || (v => minus(+v.toFixed(4)));
   for (const v of o.xTicks || []) {
     if (Math.abs(v) < 1e-12 && ay !== left) continue;
     parts.push(`<line x1="${r2(sx(v))}" y1="${r2(ax - 4)}" x2="${r2(sx(v))}" y2="${r2(ax + 4)}" stroke="${INK}" stroke-width="1.2"/>`);
-    parts.push(`<text x="${r2(sx(v))}" y="${r2(ax + 19)}" font-size="13" text-anchor="middle" fill="${INK}">${esc(tl(v))}</text>`);
+    const X = sx(v);
+    ticks.push({ s: esc(tl(v)), cands: [[X, ax + 19, 'middle'], [X, ax - 9, 'middle'], ...[4, 9, 14].flatMap(d => [[X - d, ax + 19, 'end'], [X + d, ax + 19, 'start'], [X - d, ax - 9, 'end'], [X + d, ax - 9, 'start']])] });
   }
   for (const v of o.yTicks || []) {
     if (Math.abs(v) < 1e-12 && ax !== top + h) continue;
     parts.push(`<line x1="${r2(ay - 4)}" y1="${r2(sy(v))}" x2="${r2(ay + 4)}" y2="${r2(sy(v))}" stroke="${INK}" stroke-width="1.2"/>`);
-    parts.push(`<text x="${r2(ay - 8)}" y="${r2(sy(v) + 4.5)}" font-size="13" text-anchor="end" fill="${INK}">${esc(yl(v))}</text>`);
+    const Y = sy(v) + 4.5;
+    ticks.push({ s: esc(yl(v)), cands: [[ay - 8, Y, 'end'], [ay + 8, Y, 'start'], ...[16, 24, 32].flatMap(d => [[ay - d, Y, 'end'], [ay + d, Y, 'start']])] });
   }
   if (o.origin) parts.push(`<text x="${r2(ay - 8)}" y="${r2(ax + 17)}" font-size="14" text-anchor="end" fill="${INK}" font-style="italic">O</text>`);
   if (o.xLabel) parts.push(`<text x="${left + w + 14}" y="${r2(ax + 5)}" font-size="15" font-style="italic" fill="${INK}">${o.xLabel}</text>`);
@@ -78,14 +87,17 @@ function panel(o) {
       const pts = [];
       for (let i = 0; i <= n; i++) { const x = a + (b - a) * i / n; pts.push([x, f(x)]); }
       parts.push(`<path d="${pathOf(pts)}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linejoin="round" stroke-linecap="round"${dash ? ` stroke-dasharray="${dash}"` : ''} clip-path="url(#${clip})"/>`);
+      inkPts(pts.filter(q => Number.isFinite(q[1])), width, true);
       return P;
     },
     poly(pts, { color = GREEN, width = 3, dash = null } = {}) {
       parts.push(`<path d="${pathOf(pts)}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linejoin="round" stroke-linecap="round"${dash ? ` stroke-dasharray="${dash}"` : ''}/>`);
+      inkPts(pts, width, false);
       return P;
     },
     seg(p, q, { color = INK, width = 1.5, dash = null } = {}) {
       parts.push(`<line x1="${r2(sx(p[0]))}" y1="${r2(sy(p[1]))}" x2="${r2(sx(q[0]))}" y2="${r2(sy(q[1]))}" stroke="${color}" stroke-width="${width}"${dash ? ` stroke-dasharray="${dash}"` : ''}/>`);
+      inkPts([p, q], width, false);
       return P;
     },
     hline(y, { color = MUTED, dash = '7 5', width = 1.5 } = {}) {
@@ -98,27 +110,41 @@ function panel(o) {
     },
     dot(p, { color = GREEN, open = false, r = 5 } = {}) {
       parts.push(`<circle cx="${r2(sx(p[0]))}" cy="${r2(sy(p[1]))}" r="${r}" fill="${open ? '#FFFFFF' : color}" stroke="${color}" stroke-width="2"/>`);
+      inkBox(sx(p[0]) - r - 1, sy(p[1]) - r - 1, sx(p[0]) + r + 1, sy(p[1]) + r + 1);
       return P;
     },
     text(p, s, { color = INK, size = 14, anchor = 'start', dx = 0, dy = 0, italic = false, bold = false } = {}) {
       parts.push(`<text x="${r2(sx(p[0]) + dx)}" y="${r2(sy(p[1]) + dy)}" font-size="${size}" text-anchor="${anchor}" fill="${color}"${italic ? ' font-style="italic"' : ''}${bold ? ' font-weight="bold"' : ''}>${s}</text>`);
+      { const n = s.replace(/<[^>]+>/g, '').replace(/&[a-z]+;/g, '#').length, tw = 0.56 * size * n, X = sx(p[0]) + dx, Y = sy(p[1]) + dy, l = anchor === 'middle' ? X - tw / 2 : anchor === 'end' ? X - tw : X; inkBox(l, Y - 0.8 * size, l + tw, Y + 0.25 * size); }
       return P;
     },
     /* A vertical double arrow from (x, y1) to (x, y2). */
     varrow(x, y1, y2, { color = VERM, width = 2 } = {}) {
       const X = r2(sx(x)), A = sy(y1), B = sy(y2), s = B < A ? 1 : -1;
       parts.push(`<line x1="${X}" y1="${r2(A - s * 2)}" x2="${X}" y2="${r2(B + s * 2)}" stroke="${color}" stroke-width="${width}"/>`);
+      inkSeg(sx(x) - 5, A, sx(x) - 5, B); inkSeg(sx(x) + 5, A, sx(x) + 5, B); inkSeg(sx(x), A, sx(x), B);
       parts.push(`<path d="M${X} ${r2(B)} l-5 ${s * 9} h10 z" fill="${color}"/><path d="M${X} ${r2(A)} l-5 ${-s * 9} h10 z" fill="${color}"/>`);
       return P;
     },
     harrow(y, x1, x2, { color = BLUE, width = 2, both = true } = {}) {
       const Y = r2(sy(y)), A = sx(x1), B = sx(x2);
       parts.push(`<line x1="${r2(A + (both ? 2 : 0))}" y1="${Y}" x2="${r2(B - 2)}" y2="${Y}" stroke="${color}" stroke-width="${width}"/>`);
+      inkSeg(A, sy(y) - 5, B, sy(y) - 5); inkSeg(A, sy(y) + 5, B, sy(y) + 5); inkSeg(A, sy(y), B, sy(y));
       parts.push(`<path d="M${r2(B)} ${Y} l-9 -5 v10 z" fill="${color}"/>`);
       if (both) parts.push(`<path d="M${r2(A)} ${Y} l9 -5 v10 z" fill="${color}"/>`);
       return P;
     },
-    out() { return parts.flat().join('\n'); },
+    out() {
+      const hits = ([x, y, a], str) => {
+        const tw = 7 * str.replace(/&[a-z]+;/g, '#').length, l = a === 'middle' ? x - tw / 2 : a === 'end' ? x - tw : x;
+        return ink.filter(([X, Y]) => X > l - 3 && X < l + tw + 3 && Y > y - 13 && Y < y + 4).length;
+      };
+      const tt = ticks.map(({ s, cands }) => {
+        const n = cands.map(c => hits(c, s)), [x, y, a] = cands[n.indexOf(0) >= 0 ? n.indexOf(0) : n.indexOf(Math.min(...n))];
+        return `<text x="${r2(x)}" y="${r2(y)}" font-size="13" text-anchor="${a}" fill="${INK}" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">${s}</text>`;
+      });
+      return parts.flat().concat(tt).join('\n');
+    },
   };
   return P;
 }
@@ -415,8 +441,8 @@ fig('sinusoidal-transformations-shift', 'sinusoidal-transformations', 740, 360,
     P.harrow(1, 0, PI / 4, { color: BLUE, both: false });
     P.text([PI / 8, 1], 'shift π/4', { dy: -10, anchor: 'middle', color: BLUE, bold: true, size: 13 });
     P.dot([PI / 4, 1]).dot([3 * PI / 4, 3]).dot([7 * PI / 4, -1]);
-    P.text([3 * PI / 4, 3], 'max 3', { dx: 10, dy: 4, size: 13 });
-    P.text([7 * PI / 4, -1], 'min −1', { dx: 10, dy: 4, size: 13 });
+    P.text([3 * PI / 4, 3], 'max 3', { dy: -12, anchor: 'middle', size: 13 });
+    P.text([7 * PI / 4, -1], 'min −1', { dy: 22, anchor: 'middle', size: 13 });
     P.text([9 * PI / 4, 1], 'midline y = 1', { dy: -8, anchor: 'end', color: VERM, size: 13 });
     P.text([PI / 2, 1], `${it('y')} = sin ${it('θ')}`, { dy: 18, dx: 6, color: MUTED, size: 13 });
     return P.out() + txt(370, 345, `${it('g')}(${it('θ')}) = 2 sin(${it('θ')} − π/4) + 1`, { size: 16, anchor: 'middle', color: GREEN, bold: true });
