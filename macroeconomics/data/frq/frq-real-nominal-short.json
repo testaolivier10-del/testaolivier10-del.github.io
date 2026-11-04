@@ -1,0 +1,118 @@
+{
+ "id": "frq-real-nominal-short",
+ "type": "short",
+ "points": 5,
+ "title": "Nominal GDP and the GDP deflator in Country Z: real GDP, output growth and prices",
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "price-indices-inflation",
+  "real-nominal-gdp"
+ ],
+ "practices": [
+  "1.C",
+  "2.C",
+  "3.C"
+ ],
+ "scenario": "Country Z, an invented country, reports its nominal GDP and its GDP deflator. Year 1 is the base year.",
+ "stimulus": {
+  "title": "Nominal GDP and the GDP deflator in Country Z",
+  "invented": true,
+  "table": {
+   "caption": "Country Z, Year 1 is the base year (nominal GDP in billions of dollars; invented data for practice)",
+   "cols": [
+    "Year",
+    "Nominal GDP",
+    "GDP deflator"
+   ],
+   "rows": [
+    [
+     "1",
+     "500",
+     "100"
+    ],
+    [
+     "2",
+     "600",
+     "125"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "points": 1,
+   "prompt": "<b>Calculate</b> Country Z's real GDP in Year 2. Show your work.",
+   "rubric": [
+    {
+     "point": "480 billion dollars, with work shown: 600 / 125 x 100",
+     "accept": [
+      "(600 / 125) x 100 = 480",
+      "600 / 1.25 = 480"
+     ]
+    }
+   ],
+   "sample": "Real GDP is nominal GDP divided by the deflator, times 100: $\\frac{600}{125} \\times 100 = 480$ billion dollars."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "Did Country Z's output of goods and services increase, decrease or stay the same from Year 1 to Year 2? <b>Explain</b> using your answer to part A.",
+   "rubric": [
+    {
+     "point": "Decreased, because real GDP fell from 500 (Year 1, the base year, where real equals nominal) to 480, even though nominal GDP rose",
+     "accept": [
+      "Decreased, because real GDP fell from 500 to 480",
+      "Decreased, with a real GDP consistent with the answer to part A that is below 500"
+     ]
+    }
+   ],
+   "sample": "Output decreased. In the base year real GDP equals nominal GDP, 500 billion, and real GDP in Year 2 is 480 billion. Nominal GDP rose only because prices rose 25%; the quantity of output fell."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the inflation rate from Year 1 to Year 2, measured by the GDP deflator. Show your work.",
+   "rubric": [
+    {
+     "point": "25%, with work shown: (125 - 100) / 100 x 100",
+     "accept": [
+      "(125 - 100) / 100 x 100 = 25 percent"
+     ]
+    }
+   ],
+   "sample": "The inflation rate is the percent change in the deflator: $\\frac{125 - 100}{100} \\times 100 = 25\\%$."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "In Year 3, Country Z's nominal GDP is 660 billion dollars and its real GDP is 550 billion dollars. <b>Calculate</b> the GDP deflator for Year 3. Show your work.",
+   "rubric": [
+    {
+     "point": "120, with work shown: 660 / 550 x 100 (an index number, not a percent or dollars)",
+     "accept": [
+      "(660 / 550) x 100 = 120"
+     ]
+    }
+   ],
+   "sample": "The GDP deflator is nominal GDP divided by real GDP, times 100: $\\frac{660}{550} \\times 100 = 120$."
+  },
+  {
+   "label": "E",
+   "points": 1,
+   "prompt": "Based on your answer to part D, <b>identify</b> whether Country Z had inflation, disinflation or deflation from Year 2 to Year 3. <b>Explain</b>.",
+   "rubric": [
+    {
+     "point": "Deflation, because the deflator fell (from 125 to 120 or to the value found in part D), so prices fell on average",
+     "accept": [
+      "Deflation, because the price index decreased",
+      "An answer consistent with a part D deflator compared with 125"
+     ]
+    }
+   ],
+   "sample": "Country Z had deflation. The GDP deflator fell from 125 in Year 2 to 120 in Year 3, so the prices of the goods and services in GDP fell on average (by 4%)."
+  }
+ ]
+}

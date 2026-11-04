@@ -130,6 +130,15 @@
       path: '/precalculus/', dir: 'precalculus', storagePrefix: 'apprecalc_', rankLabel: 'Precalculus rank',
       searchLabel: 'Precalculus', aliases: ['precalculus', 'precalc', 'pcalc'], paid: true, status: 'live', order: 11,
     },
+    {
+      // As AP® Psychology (docs/apmacro-spec.md decision 2): the mark only in
+      // the full names, never in a URL; the key travels as its folder,
+      // "macroeconomics". Was 'hidden' until published; 'live' since the launch
+      // (docs/apmacro-spec.md decision 13).
+      key: 'apmacro', short: 'Macroeconomics', name: 'AP® Macroeconomics', productName: 'AP® Macroeconomics',
+      path: '/macroeconomics/', dir: 'macroeconomics', storagePrefix: 'apmacro_', rankLabel: 'Macroeconomics rank',
+      searchLabel: 'Macroeconomics', aliases: ['macroeconomics', 'macro', 'mac'], paid: true, status: 'live', order: 13,
+    },
   ];
 
   var list = LIST.slice().sort(function (a, b) { return a.order - b.order; });

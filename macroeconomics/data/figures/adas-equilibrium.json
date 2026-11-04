@@ -1,0 +1,12 @@
+{
+ "adas-equilibrium-gaps": {
+  "file": "figures/adas-equilibrium-gaps.svg",
+  "ext": "svg",
+  "w": 660,
+  "h": 350,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two AD-AS graphs with LRAS at full-employment output YF. Left: AD crosses SRAS at Y1, to the left of YF, a recessionary gap. Right: AD crosses SRAS at Y1, to the right of YF, an inflationary gap."
+ }
+}

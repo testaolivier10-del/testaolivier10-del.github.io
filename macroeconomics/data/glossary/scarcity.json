@@ -1,0 +1,17 @@
+{
+ "scarcity": {
+  "def": "The basic economic problem: people's wants are greater than the limited resources available to satisfy them, so choices must be made."
+ },
+ "factors-of-production": {
+  "def": "The resources used to make goods and services: land (natural resources), labor (human effort), capital (tools, machines and buildings) and entrepreneurship (organizing production and taking risks)."
+ },
+ "economic-system": {
+  "def": "The way a society answers what to produce, how and for whom. A market economy leaves it to buyers and sellers, a command economy to government planners, and a mixed economy combines the two."
+ },
+ "goods-services": {
+  "def": "Goods are physical items people value, such as bread or a car; services are actions done for someone, such as a haircut or a lesson."
+ },
+ "trade-off": {
+  "def": "Giving up some of one thing to get more of another. Because resources are scarce, every choice involves a trade-off."
+ }
+}

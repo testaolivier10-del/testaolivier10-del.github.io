@@ -1,0 +1,71 @@
+{
+ "topic": "inflation-costs",
+ "hook": "Your grandparents may remember buying a house with a fixed-rate loan in the 1970s, when prices rose much faster than anyone had planned. Their monthly payment stayed the same while their pay rose with prices, so the loan got easier to repay every year. The bank that lent to them came out behind. Inflation is not just higher prices: when it surprises people, it quietly moves purchasing power from some people to others.",
+ "prereq": [
+  {
+   "q": "The CPI goes from 100 to 108 in a year. What is the inflation rate?",
+   "options": [
+    "8%",
+    "108%",
+    "1.08%",
+    "0.08%"
+   ],
+   "correct": 0,
+   "why": "$\\frac{108 - 100}{100} \\times 100 = 8\\%$.",
+   "review": "price-indices-inflation"
+  },
+  {
+   "q": "Rosa's nominal wage rises 3% while prices rise 5%. What happens to her real wage?",
+   "options": [
+    "It falls by about 2%",
+    "It rises by about 3%",
+    "It rises by about 8%",
+    "It stays the same"
+   ],
+   "correct": 0,
+   "why": "Prices rose faster than her pay, so her pay buys less: about $3 - 5 = -2\\%$.",
+   "review": "price-indices-inflation"
+  }
+ ],
+ "figure": {
+  "figure": "inflation-costs-winners",
+  "caption": "Inflation that people did not anticipate helps fixed-rate borrowers and hurts lenders, savers and people on fixed incomes; a surprise in the other direction does the reverse."
+ },
+ "chain": [
+  {
+   "cause": "Inflation turns out higher than borrowers and lenders anticipated",
+   "effect": "the dollars repaid on a fixed-rate loan buy less than both sides planned"
+  },
+  {
+   "cause": "The repaid dollars buy less",
+   "effect": "the borrower gains purchasing power and the lender loses it"
+  },
+  {
+   "cause": "Prices rise while a pension stays the same in dollars",
+   "effect": "people on fixed incomes can buy less"
+  },
+  {
+   "cause": "Prices change often, even when the change is anticipated",
+   "effect": "firms pay menu costs and households pay shoe-leather costs"
+  }
+ ],
+ "ideas": [
+  "<b>Unanticipated inflation</b> helps fixed-rate borrowers and hurts lenders, savers and people on <b>fixed incomes</b>. Lower-than-anticipated inflation, or deflation, does the reverse.",
+  "<b>Anticipated inflation</b> is built into interest rates and contracts, so it moves much less purchasing power.",
+  "<b>Menu costs</b> (changing prices) and <b>shoe-leather costs</b> (holding less cash) come with any inflation.",
+  "Indexing pay or pensions to the CPI protects people from inflation; uncertainty about inflation makes long-term plans riskier."
+ ],
+ "misconception": {
+  "wrong": "Inflation hurts everyone equally, because prices rise for everyone.",
+  "right": "Inflation that people did not anticipate redistributes: fixed-rate borrowers gain while lenders, savers and people on fixed incomes lose. People whose incomes rise with prices are roughly protected."
+ },
+ "check": [
+  "mac-inflation-costs-1",
+  "mac-inflation-costs-2",
+  "mac-inflation-costs-5",
+  "mac-inflation-costs-7",
+  "mac-inflation-costs-9",
+  "mac-inflation-costs-12"
+ ],
+ "summary": "When inflation is higher than people anticipated, fixed-rate borrowers repay in dollars that buy less, so they gain while lenders, savers and people on fixed incomes lose; lower-than-anticipated inflation reverses this. Anticipated inflation is built into contracts. Any inflation brings menu costs and shoe-leather costs, and unpredictable inflation makes long-term planning harder."
+}

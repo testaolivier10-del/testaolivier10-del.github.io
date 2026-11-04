@@ -1,0 +1,71 @@
+{
+ "topic": "gdp-limitations",
+ "hook": "Suppose a parent quits a paid job to care for their own children at home. The children get the same care, maybe better, yet the country's GDP goes down. Suppose instead a factory pollutes a river and towns pay crews to clean it up: GDP goes up. GDP is the best single measure of how much an economy produces, and knowing what it misses is what lets you use it well.",
+ "prereq": [
+  {
+   "q": "Which of these is counted in GDP?",
+   "options": [
+    "A haircut bought at a salon",
+    "A used car bought from a neighbor",
+    "A pension check from the government",
+    "Shares of stock bought online"
+   ],
+   "correct": 0,
+   "why": "GDP counts new final goods and services sold at market value. Used goods, transfer payments and financial trades are left out.",
+   "review": "gdp-circular-flow"
+  },
+  {
+   "q": "What does the expenditure approach add up?",
+   "options": [
+    "Consumption, investment, government purchases and net exports",
+    "Every sale made in the economy",
+    "Wages and transfer payments",
+    "Exports and imports"
+   ],
+   "correct": 0,
+   "why": "$GDP = C + I + G + (X - M)$: spending on final goods and services.",
+   "review": "gdp-circular-flow"
+  }
+ ],
+ "figure": {
+  "figure": "gdp-limitations-counted",
+  "caption": "GDP counts market production of final goods; nonmarket and unreported activity, leisure, pollution and how income is shared are left out."
+ },
+ "chain": [
+  {
+   "cause": "GDP counts only goods and services sold at a market price",
+   "effect": "unpaid home production, volunteer work and leisure are left out"
+  },
+  {
+   "cause": "Some sales are paid in cash and never reported",
+   "effect": "the underground economy is missed and measured GDP understates production"
+  },
+  {
+   "cause": "GDP adds up spending without asking what it is for",
+   "effect": "cleaning up pollution raises GDP while the damage itself is not subtracted"
+  },
+  {
+   "cause": "A larger population makes total GDP larger on its own",
+   "effect": "GDP per capita (output divided by population) is used to compare living standards, though it hides how income is shared"
+  }
+ ],
+ "ideas": [
+  "<b>Nonmarket activity</b> (cooking for your family, volunteering) and the <b>underground economy</b> (unreported cash work) are left out, so GDP understates production.",
+  "GDP gives no value to leisure, does not subtract pollution, and can miss quality improvements.",
+  "<b>GDP per capita</b> = GDP divided by population: the better measure for comparing material living standards.",
+  "GDP per capita is an average: it says nothing about how income is shared, health or the environment."
+ ],
+ "misconception": {
+  "wrong": "A country with a bigger GDP has a higher standard of living.",
+  "right": "Total GDP grows with population. Divide by population first, and remember GDP per capita still leaves out leisure, home production, the environment and how income is shared."
+ },
+ "check": [
+  "mac-gdp-limitations-1",
+  "mac-gdp-limitations-2",
+  "mac-gdp-limitations-5",
+  "mac-gdp-limitations-9",
+  "mac-gdp-limitations-12",
+  "mac-gdp-limitations-13"
+ ],
+ "summary": "GDP measures market production, so it leaves out nonmarket activity such as home production, the underground economy, the value of leisure and environmental damage, and it can miss quality gains. To compare living standards, use GDP per capita (GDP divided by population), keeping in mind that an average hides how income is shared."
+}

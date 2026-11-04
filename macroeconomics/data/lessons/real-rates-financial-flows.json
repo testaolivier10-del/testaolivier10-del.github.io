@@ -1,0 +1,83 @@
+{
+ "topic": "real-rates-financial-flows",
+ "hook": "A pension fund in Tokyo, an insurer in London and a family in Toronto can all buy US Treasury bonds with a few clicks. When US real interest rates rise compared with rates at home, many of them do. To buy those bonds they first have to buy dollars, and that one decision runs through three markets: loanable funds, the currency market and trade.",
+ "prereq": [
+  {
+   "q": "A government borrows more to fund a budget deficit. In its loanable funds market, what happens?",
+   "options": [
+    "Demand for loanable funds shifts right and the real interest rate rises",
+    "Supply of loanable funds shifts right and the real interest rate falls",
+    "Demand shifts left and the real interest rate falls",
+    "Nothing, because government borrowing is not lending"
+   ],
+   "correct": 0,
+   "why": "Government borrowing adds to the demand for loanable funds, raising the real interest rate.",
+   "review": "loanable-funds"
+  },
+  {
+   "q": "US real interest rates rise relative to Europe's. In the market for dollars, what happens?",
+   "options": [
+    "Demand for dollars rises and the dollar appreciates",
+    "Supply of dollars rises and the dollar depreciates",
+    "Demand for dollars falls and the dollar depreciates",
+    "Nothing, because interest rates are not traded"
+   ],
+   "correct": 0,
+   "why": "Savers abroad buy dollars to buy US bonds, so demand for dollars rises.",
+   "review": "fx-policy-changes"
+  },
+  {
+   "q": "A country has a capital and financial account surplus of 50. What is its current account balance?",
+   "options": [
+    "-50",
+    "+50",
+    "0",
+    "+100"
+   ],
+   "correct": 0,
+   "why": "The two balances sum to zero, so the current account balance is -50.",
+   "review": "balance-of-payments"
+  }
+ ],
+ "figure": {
+  "figure": "real-rates-financial-flows-links",
+  "caption": "More US government borrowing raises the US real interest rate (loanable funds), financial capital flows in, demand for dollars rises and the dollar appreciates, so net exports fall."
+ },
+ "chain": [
+  {
+   "cause": "A country's real interest rate rises relative to other countries' (for example, its government borrows more)",
+   "effect": "its assets pay savers a higher real return than assets abroad"
+  },
+  {
+   "cause": "Savers abroad move funds toward the higher real return",
+   "effect": "financial capital flows in, and the capital and financial account balance rises"
+  },
+  {
+   "cause": "Savers abroad need the country's currency to buy its assets",
+   "effect": "the demand for its currency rises, so the currency appreciates"
+  },
+  {
+   "cause": "The currency appreciates",
+   "effect": "exports cost more abroad and imports cost less at home, so net exports and the current account balance fall"
+  }
+ ],
+ "ideas": [
+  "<b>Financial capital flows</b> toward the country with the higher <b>real</b> interest rate, other things equal: savers compare returns after expected inflation.",
+  "A capital inflow raises the capital and financial account balance and the demand for the currency, so the currency appreciates and net exports fall. The current account balance falls by the same amount, keeping the sum at zero.",
+  "The inflow also adds to the supply of loanable funds in the receiving country, which holds down its real interest rate; in the sending country, the supply of loanable funds falls.",
+  "Lower relative real rates, as after expansionary monetary policy, send capital out: the currency depreciates and net exports rise."
+ ],
+ "misconception": {
+  "wrong": "Financial capital flows toward the country with the higher nominal interest rate.",
+  "right": "Savers compare real returns: nominal rate minus expected inflation. A country paying 7% with 4% expected inflation (3% real) draws less than one paying 5% with 1% expected inflation (4% real)."
+ },
+ "check": [
+  "mac-real-rates-financial-flows-1",
+  "mac-real-rates-financial-flows-2",
+  "mac-real-rates-financial-flows-3",
+  "mac-real-rates-financial-flows-4",
+  "mac-real-rates-financial-flows-9",
+  "mac-real-rates-financial-flows-17"
+ ],
+ "summary": "Relative real interest rates steer financial capital between countries. When one country's real rate rises above others', savers abroad buy its assets: financial capital flows in, its capital and financial account balance rises, the demand for its currency rises and the currency appreciates, so its net exports and current account balance fall. The inflow also adds to its supply of loanable funds. Write the whole chain, link by link, and use the real interest rate."
+}

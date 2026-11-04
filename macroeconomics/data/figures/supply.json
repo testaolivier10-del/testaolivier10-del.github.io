@@ -1,0 +1,12 @@
+{
+ "supply-curve-shift": {
+  "file": "figures/supply-curve-shift.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 370,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A supply graph for bicycles: a movement along S1 from J to K when the price rises (a change in quantity supplied), and a shift left from S1 to S2 when input costs rise (a decrease in supply)."
+ }
+}

@@ -1,0 +1,661 @@
+{
+ "stimuli": {
+  "unemployment-s1": {
+   "kind": "data",
+   "title": "Labor market survey in Country X",
+   "invented": true,
+   "table": {
+    "caption": "Country X, one month (millions of people; invented data for practice)",
+    "cols": [
+     "Group",
+     "Millions"
+    ],
+    "rows": [
+     [
+      "Adult population (16 and older, not in an institution or the military)",
+      "250"
+     ],
+     [
+      "Employed (full-time or part-time)",
+      "150"
+     ],
+     [
+      "Unemployed (no job, available, looked in the past 4 weeks)",
+      "10"
+     ],
+     [
+      "Not in the labor force",
+      "90"
+     ],
+     [
+      "   of whom: discouraged workers",
+      "2"
+     ]
+    ]
+   }
+  },
+  "unemployment-s2": {
+   "kind": "text",
+   "title": "Five people in Country Y",
+   "text": "<p><b>Ana</b> quit her job as a nurse to move closer to her family and is applying for nursing jobs in her new city. <b>Ben</b> ran a printing press for 20 years; the plant replaced its presses with digital machines, and the jobs open near him need computer skills he does not have. <b>Chen</b> was laid off from a car dealership when sales fell during a recession; he is looking for work. <b>Dee</b> retired at 67 and is not looking for work. <b>Eli</b> lost his job a year ago and has stopped looking because he believes no one is hiring.</p>"
+  },
+  "unemployment-s3": {
+   "kind": "data",
+   "title": "Unemployment rates in Country Z over three years",
+   "invented": true,
+   "table": {
+    "caption": "Country Z unemployment (percent of the labor force; invented data for practice)",
+    "cols": [
+     "Year",
+     "Actual unemployment rate",
+     "Frictional unemployment rate",
+     "Structural unemployment rate"
+    ],
+    "rows": [
+     [
+      "1",
+      "5.0",
+      "2.0",
+      "3.0"
+     ],
+     [
+      "2",
+      "8.0",
+      "2.0",
+      "3.0"
+     ],
+     [
+      "3",
+      "4.5",
+      "2.0",
+      "3.0"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-unemployment-1",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is the labor force in Country X, in millions of people?",
+   "stimulus": "unemployment-s1",
+   "why": {
+    "correct": "The labor force is the employed plus the unemployed: $150 + 10 = 160$ million. People not in the labor force are not part of it."
+   },
+   "numeric": {
+    "from": {
+     "fn": "laborForce",
+     "args": [
+      150,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 150,
+      "why": "That is only the employed. The labor force also includes the unemployed, people without a job who are looking: $150 + 10$."
+     },
+     {
+      "value": 250,
+      "why": "That is the adult population. The labor force leaves out the 90 million who are neither working nor looking."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-2",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is the unemployment rate in Country X?",
+   "stimulus": "unemployment-s1",
+   "why": {
+    "correct": "Unemployment rate $= \\frac{\\text{unemployed}}{\\text{labor force}} \\times 100 = \\frac{10}{160} \\times 100 = 6.25\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "unemploymentRate",
+     "args": [
+      10,
+      {
+       "fn": "laborForce",
+       "args": [
+        150,
+        10
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "pct",
+       "args": [
+        10,
+        250
+       ]
+      },
+      "why": "You divided by the adult population. The unemployment rate divides by the labor force (employed + unemployed = 160 million)."
+     },
+     {
+      "from": {
+       "fn": "pct",
+       "args": [
+        10,
+        150
+       ]
+      },
+      "why": "You divided by the employed. The denominator is the whole labor force: the employed plus the unemployed."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-3",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is the labor force participation rate in Country X?",
+   "stimulus": "unemployment-s1",
+   "why": {
+    "correct": "Participation rate $= \\frac{\\text{labor force}}{\\text{adult population}} \\times 100 = \\frac{160}{250} \\times 100 = 64\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "participationRate",
+     "args": [
+      {
+       "fn": "laborForce",
+       "args": [
+        150,
+        10
+       ]
+      },
+      250
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "pct",
+       "args": [
+        150,
+        250
+       ]
+      },
+      "why": "You used only the employed. The labor force is the employed plus the unemployed, 160 million."
+     },
+     {
+      "from": {
+       "fn": "pct",
+       "args": [
+        90,
+        250
+       ]
+      },
+      "why": "That is the share not in the labor force. Participation is the share that is in it: 160 out of 250."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-4",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "q": "If the 2 million discouraged workers in the table were counted as unemployed, what would happen to the unemployment rate?",
+   "stimulus": "unemployment-s1",
+   "options": [
+    "It would rise, to about 7.4%",
+    "It would fall, because the labor force would be larger",
+    "It would stay at 6.25%, because they have no job either way",
+    "It would rise, to 8%, because 2 is added to 6"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Discouraged workers want a job but have stopped looking, so they are not in the labor force. Leaving them out makes the official rate understate joblessness.",
+    "options": [
+     "Right: the unemployed would be 12 and the labor force 162, so $\\frac{12}{162} \\times 100 \\approx 7.4\\%$.",
+     "The labor force grows by 2, but the unemployed grow by the same 2 from a much smaller base, so the rate rises.",
+     "Moving them into the labor force as unemployed changes both the top and the bottom of the fraction.",
+     "Rates are not added like that; recompute the fraction $\\frac{12}{162}$."
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-5",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "What type of unemployment does Ben experience?",
+   "stimulus": "unemployment-s2",
+   "options": [
+    "He is not in the labor force",
+    "Structural",
+    "Frictional",
+    "Cyclical"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Structural unemployment is a mismatch between workers' skills or locations and the jobs on offer, often after technology or the pattern of demand changes.",
+    "options": [
+     "He is out of work and looking, so he is unemployed and in the labor force.",
+     "Right: his skills no longer match the jobs available, because technology changed the industry.",
+     "Frictional unemployment is time spent searching between jobs a worker is qualified for; Ben lacks the skills the open jobs need.",
+     "Cyclical unemployment comes from a fall in spending in a downturn; Ben's job vanished because the technology changed."
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-6",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "What type of unemployment does Chen experience?",
+   "stimulus": "unemployment-s2",
+   "options": [
+    "Frictional",
+    "Seasonal",
+    "Cyclical",
+    "Structural"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Cyclical unemployment rises when the economy's total spending and output fall and firms lay off workers.",
+    "options": [
+     "He did not leave to search for a better match; he was laid off when demand fell.",
+     "Nothing suggests a regular yearly pattern; the cause is the recession.",
+     "Right: he lost his job because spending fell during a recession.",
+     "His skills still fit car sales; the jobs disappeared because sales fell, not because his skills became outdated."
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-7",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "How are Dee and Eli counted in the official statistics?",
+   "stimulus": "unemployment-s2",
+   "options": [
+    "Both are unemployed, because neither has a job",
+    "Dee is outside the labor force and Eli is unemployed",
+    "Eli is outside the labor force and Dee is unemployed",
+    "Both are outside the labor force, so neither counts as unemployed"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Only people who are jobless, available and actively looking count as unemployed. Retirees and discouraged workers are outside the labor force.",
+    "options": [
+     "Having no job is not enough: an unemployed person must be available and have looked for work recently.",
+     "Eli stopped looking, so he is a discouraged worker and is outside the labor force too.",
+     "Dee is retired and not looking, so she is not unemployed.",
+     "Right: neither is looking for work. Dee is retired and Eli is a discouraged worker."
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-8",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these people is counted in the natural rate of unemployment? Select all that apply.",
+   "stimulus": "unemployment-s2",
+   "options": [
+    "Eli",
+    "Ana",
+    "Chen",
+    "Dee"
+   ],
+   "correct": [
+    1
+   ],
+   "why": {
+    "correct": "Natural rate = frictional + structural, so Ana (frictional) counts, as Ben (structural) would. Cyclical unemployment is not part of it, and people outside the labor force are not unemployed at all.",
+    "options": [
+     "He has stopped looking, so he is a discouraged worker outside the labor force, not unemployed.",
+     "Right: her search after moving is frictional unemployment, part of the natural rate.",
+     "His job loss in a recession is cyclical, which is not part of the natural rate.",
+     "She is retired and outside the labor force, so she is not unemployed at all."
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-9",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is Country Z's natural rate of unemployment?",
+   "stimulus": "unemployment-s3",
+   "why": {
+    "correct": "Natural rate = frictional + structural $= 2.0 + 3.0 = 5.0\\%$. It is the same in every year of the table."
+   },
+   "numeric": {
+    "from": {
+     "fn": "naturalRate",
+     "args": [
+      2,
+      3
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "That is the actual rate in Year 2. The natural rate adds only frictional and structural unemployment."
+     },
+     {
+      "value": 2,
+      "why": "That is only frictional unemployment. Add structural unemployment too: $2 + 3$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-10",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is the cyclical unemployment rate in Year 2?",
+   "stimulus": "unemployment-s3",
+   "why": {
+    "correct": "Cyclical = actual - natural $= 8.0 - 5.0 = 3.0\\%$. Actual = natural + cyclical."
+   },
+   "numeric": {
+    "from": {
+     "fn": "cyclicalRate",
+     "args": [
+      8,
+      {
+       "fn": "naturalRate",
+       "args": [
+        2,
+        3
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 13,
+      "why": "You added the actual and natural rates. Cyclical unemployment is the actual rate minus the natural rate."
+     },
+     {
+      "value": 6,
+      "why": "You subtracted only the frictional rate. Subtract the whole natural rate, frictional plus structural: $8 - 5$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-11",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In Year 3 the actual unemployment rate (4.5%) is below the natural rate. What does that mean?",
+   "stimulus": "unemployment-s3",
+   "options": [
+    "Cyclical unemployment is negative; output is beyond full employment",
+    "Frictional unemployment has disappeared",
+    "The data contain an error: the actual rate can't be below the natural rate",
+    "The economy is in a recession"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cyclical unemployment is the actual rate minus the natural rate; it is negative when the economy runs hot and positive in a downturn.",
+    "options": [
+     "Right: $4.5 - 5.0 = -0.5$. Workers are scarce, so output is above its sustainable level for now.",
+     "The table still shows 2.0% frictional unemployment in Year 3.",
+     "The actual rate can fall below the natural rate for a while when the economy is booming.",
+     "In a recession cyclical unemployment is positive, so the actual rate is above the natural rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-12",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In which year of the table is Country Z at full employment?",
+   "stimulus": "unemployment-s3",
+   "options": [
+    "No year, because unemployment is above zero in each",
+    "Year 1",
+    "Year 2",
+    "Year 3"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Full employment is when the actual unemployment rate equals the natural rate: some frictional and structural unemployment remains.",
+    "options": [
+     "Full employment means zero cyclical unemployment, not zero unemployment.",
+     "Right: the actual rate equals the natural rate (5.0%), so cyclical unemployment is zero.",
+     "At 8.0% the actual rate is above the natural rate, so there is cyclical unemployment.",
+     "At 4.5% the actual rate is below the natural rate, beyond full employment."
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-13",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Country W has high cyclical unemployment: many willing workers cannot find jobs. Mark a point on its production possibilities curve graph that shows where it is producing.",
+   "why": {
+    "correct": "Unemployed workers are resources left idle, so the economy produces inside its PPC: less of both goods than it could."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Consumer goods",
+     "y": "Capital goods"
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "U",
+    "key": {
+     "point": {
+      "region": "inside"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-unemployment-14",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Over ten years, many more adults in Country W join the labor force, and they find jobs. Show the effect on Country W's production possibilities curve.",
+   "why": {
+    "correct": "More labor is more of a factor of production, so the economy can make more of both goods: the PPC shifts out."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Consumer goods",
+     "y": "Capital goods"
+    },
+    "do": [
+     "shift"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "PPC",
+       "dir": "out"
+      }
+     ],
+     "because": "a larger labor force"
+    },
+    "slips": {
+     "PPC": "More workers is more of a factor of production: the curve moves out, not in."
+    }
+   }
+  },
+  {
+   "id": "mac-unemployment-15",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement about the natural rate of unemployment is correct?",
+   "options": [
+    "It is the sum of frictional and cyclical unemployment",
+    "It is one fixed number, the same in each country",
+    "It is the unemployment rate when cyclical unemployment is zero",
+    "It is an unemployment rate of zero percent"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Natural rate = frictional + structural. When the actual rate equals it, the economy is at full employment.",
+    "options": [
+     "The natural rate is frictional plus structural; cyclical unemployment is the part above it.",
+     "It differs across countries and can change over time with job search tools, training and labor laws.",
+     "Right: at the natural rate only frictional and structural unemployment remain.",
+     "People are always changing jobs and retraining, so some unemployment remains at full employment."
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-16",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Ivy works 10 hours a week at a store but wants full-time work. How does the way she is counted affect the unemployment rate as a measure of joblessness?",
+   "options": [
+    "She counts as unemployed, so the rate overstates joblessness",
+    "She counts as outside the labor force, so the rate is unaffected",
+    "She counts as half employed and half unemployed",
+    "She counts as employed, so the rate understates unused labor"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Underemployed and discouraged workers both make the official unemployment rate a low reading of how much labor goes unused.",
+    "options": [
+     "Anyone with paid work in the survey week counts as employed, even part-time.",
+     "She has a job, so she is in the labor force as employed.",
+     "The survey has no half categories: she is employed.",
+     "Right: part-time workers who want full-time jobs are underemployed but counted as employed."
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-17",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "q": "One spring, 3 million students finish school in Country V and start looking for work; no one loses a job. What happens to the unemployment rate right away?",
+   "options": [
+    "It rises, because new job seekers enter the labor force as unemployed",
+    "It falls, because the labor force grows",
+    "It stays the same, because no one was laid off",
+    "It rises, because the graduates were counted as employed while in school"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The unemployment rate depends on who is looking, not just on layoffs. New entrants searching for work add to frictional unemployment.",
+    "options": [
+     "Right: the graduates are now available and looking, so they join the labor force as unemployed until they find jobs.",
+     "The labor force grows, but by people who are all unemployed, so the share unemployed rises.",
+     "Unemployment can rise without layoffs when new searchers enter the labor force.",
+     "Full-time students not looking for work are outside the labor force, not employed."
+    ]
+   }
+  },
+  {
+   "id": "mac-unemployment-18",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Country V's labor force is 80 million and its unemployment rate is 5%. How many people are unemployed, in millions?",
+   "why": {
+    "correct": "Unemployed = rate × labor force $= 0.05 \\times 80 = 4$ million."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        5,
+        80
+       ]
+      },
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 400,
+      "why": "You multiplied 5 by 80 but did not divide by 100. Five percent is 0.05, so $0.05 \\times 80 = 4$."
+     },
+     {
+      "value": 16,
+      "why": "You divided 80 by 5. Five percent of 80 is $0.05 \\times 80$."
+     }
+    ]
+   }
+  }
+ ]
+}

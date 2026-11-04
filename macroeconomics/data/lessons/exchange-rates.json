@@ -1,0 +1,67 @@
+{
+ "topic": "exchange-rates",
+ "hook": "A student in Chicago is saving for a summer in Spain. The rent there is set in euros, but her savings are in dollars, so one number decides how far her money goes: how many dollars it takes to buy one euro. When that number moves, her summer gets cheaper or dearer without any price in Spain changing.",
+ "prereq": [
+  {
+   "q": "A US tourist pays for a hotel in Spain. How does the balance of payments record it?",
+   "options": [
+    "As an import of services, a debit in the US current account",
+    "As a credit in the US capital and financial account",
+    "As an export of services by the United States",
+    "It is not recorded, since no asset is bought"
+   ],
+   "correct": 0,
+   "why": "Money leaves the US to pay for a service bought abroad: an import of services, a current account debit.",
+   "review": "balance-of-payments"
+  },
+  {
+   "q": "Which function of money lets you compare the prices of two things, such as a jacket and a phone?",
+   "options": [
+    "Unit of account",
+    "Store of value",
+    "Medium of exchange",
+    "Legal tender"
+   ],
+   "correct": 0,
+   "why": "A unit of account is a common measure of value. An exchange rate lets you compare prices set in two different units.",
+   "review": "money-functions"
+  }
+ ],
+ "figure": {
+  "figure": "exchange-rates-two-quotes",
+  "caption": "One rate written two ways (1.25 dollars per euro is 0.80 euro per dollar). When a euro buys more dollars, the euro appreciates and the dollar depreciates."
+ },
+ "chain": [
+  {
+   "cause": "The price of a euro rises from 1.25 dollars to 1.50 dollars",
+   "effect": "each euro buys more dollars: the euro appreciates"
+  },
+  {
+   "cause": "Each euro buys more dollars",
+   "effect": "each dollar buys fewer euros (0.80 to about 0.67): the dollar depreciates"
+  },
+  {
+   "cause": "The dollar depreciates against the euro",
+   "effect": "goods priced in euros cost Americans more dollars, and goods priced in dollars cost Europeans fewer euros"
+  }
+ ],
+ "ideas": [
+  "An <b>exchange rate</b> is the price of one currency in units of another: \"1.25 dollars per euro\" is the price of one euro.",
+  "The same rate can be written either way; one quote is the reciprocal of the other: 1.25 dollars per euro is $\\frac{1}{1.25} = 0.80$ euro per dollar.",
+  "A currency <b>appreciates</b> when one unit buys more of the other currency, and <b>depreciates</b> when it buys less. When one currency appreciates, the other depreciates.",
+  "To convert a price, multiply it by a rate whose units cancel: euros times dollars per euro gives dollars."
+ ],
+ "misconception": {
+  "wrong": "A bigger number in an exchange rate quote always means that currency got stronger.",
+  "right": "It depends on the units. In \"dollars per euro\", a bigger number means the euro appreciated and the dollar depreciated. Flip the quote to euros per dollar and the same change makes the number smaller."
+ },
+ "check": [
+  "mac-exchange-rates-1",
+  "mac-exchange-rates-2",
+  "mac-exchange-rates-3",
+  "mac-exchange-rates-9",
+  "mac-exchange-rates-10",
+  "mac-exchange-rates-11"
+ ],
+ "summary": "An exchange rate is the price of one currency in another, and it can be written two ways that are reciprocals of each other. When one unit of a currency buys more of the other currency, it has appreciated, and the other has depreciated by the same change. Read the units before you compare two rates or convert a price: the units tell you which currency the number is the price of."
+}

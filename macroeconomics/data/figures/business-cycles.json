@@ -1,0 +1,12 @@
+{
+ "business-cycles-phases": {
+  "file": "figures/business-cycles-phases.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 480,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graph of real GDP against time. Potential output is a rising dashed line. Actual real GDP waves around it: an expansion up to a peak, a contraction down to a trough, then another expansion. Output above potential is a positive, or inflationary, output gap; output below potential is a negative, or recessionary, output gap."
+ }
+}

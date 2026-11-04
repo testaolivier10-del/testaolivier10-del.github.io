@@ -1,0 +1,680 @@
+{
+ "stimuli": {
+  "market-equilibrium-s1": {
+   "kind": "data",
+   "title": "The market for cups of cocoa",
+   "invented": true,
+   "table": {
+    "caption": "Cups of cocoa demanded and supplied each day at five prices at a winter fair (invented data for practice)",
+    "cols": [
+     "Price per cup (\\$)",
+     "Quantity demanded",
+     "Quantity supplied"
+    ],
+    "rows": [
+     [
+      "1",
+      "90",
+      "30"
+     ],
+     [
+      "2",
+      "75",
+      "45"
+     ],
+     [
+      "3",
+      "60",
+      "60"
+     ],
+     [
+      "4",
+      "45",
+      "75"
+     ],
+     [
+      "5",
+      "30",
+      "90"
+     ]
+    ]
+   }
+  },
+  "market-equilibrium-s2": {
+   "kind": "graph",
+   "title": "A market after one curve shifted",
+   "graph": {
+    "kind": "sd",
+    "show": {
+     "S": 1
+    }
+   }
+  },
+  "market-equilibrium-s3": {
+   "kind": "text",
+   "title": "Two shifts at once in the blueberry market",
+   "text": "<p>In the same summer, a widely shared study reports that blueberries are good for memory, and a late frost destroys part of the blueberry crop in the main growing region.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-market-equilibrium-1",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A popular study reports that eating oatmeal is healthy. Shift the right curve in the market for oatmeal and mark the new equilibrium.",
+   "why": {
+    "correct": "Tastes shift demand right. The new equilibrium is up and to the right along supply: a higher equilibrium price and quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "a change in tastes toward oatmeal",
+     "outcome": {
+      "price": "up",
+      "quantity": "up"
+     }
+    },
+    "slips": {
+     "S": "The study changes what buyers want, so it shifts demand; oatmeal makers' costs are unchanged."
+    }
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-2",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A drought destroys much of the orange crop. Shift the right curve in the market for orange juice and mark the new equilibrium.",
+   "why": {
+    "correct": "Supply shifts left along demand: the equilibrium price rises and the equilibrium quantity falls."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left"
+      }
+     ],
+     "because": "a drought that raises the cost of oranges, the input",
+     "outcome": {
+      "price": "up",
+      "quantity": "down"
+     }
+    },
+    "slips": {
+     "D": "The drought changes what juice makers can offer, so it shifts supply, not demand."
+    }
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-3",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Better robots cut the cost of making bicycles. Shift the right curve and mark the new equilibrium in the bicycle market.",
+   "why": {
+    "correct": "Supply shifts right along demand: the equilibrium price falls and the equilibrium quantity rises."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "a technology that lowers the cost of making bicycles",
+     "outcome": {
+      "price": "down",
+      "quantity": "up"
+     }
+    },
+    "slips": {
+     "D": "Technology changes producers' costs, so it shifts supply."
+    }
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-4",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The price of hot dogs, a complement, rises sharply. Shift the right curve and mark the new equilibrium in the market for hot dog buns.",
+   "why": {
+    "correct": "Demand for buns shifts left along supply: the equilibrium price and quantity both fall."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in the price of hot dogs, a complement",
+     "outcome": {
+      "price": "down",
+      "quantity": "down"
+     }
+    },
+    "slips": {
+     "S": "Hot dogs are bought with buns by buyers, so their price shifts the demand for buns."
+    }
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-5",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "In the market for laptops, buyers' incomes rise (laptops are a normal good) and a new chip lowers the cost of making them. Shift both curves and mark the new equilibrium.",
+   "why": {
+    "correct": "Both curves shift right, so the equilibrium quantity rises for sure. The change in price depends on which shift is larger, so it is indeterminate without the sizes."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      },
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "higher incomes and a lower cost of making laptops",
+     "outcome": {
+      "quantity": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-6",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "market-equilibrium-s1",
+   "q": "Using the table, what is the equilibrium price of a cup of cocoa?",
+   "options": [
+    "\\$2",
+    "\\$3",
+    "\\$4",
+    "\\$1"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "At \\$3 the quantity demanded (60) equals the quantity supplied (60).",
+    "options": [
+     "At \\$2, 75 are demanded but only 45 supplied.",
+     "Right: 60 demanded and 60 supplied.",
+     "At \\$4, 75 are supplied but only 45 demanded.",
+     "At \\$1, 90 are demanded but only 30 supplied."
+    ]
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-7",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "market-equilibrium-s1",
+   "q": "Using the table, how large is the shortage at a price of \\$2?",
+   "why": {
+    "correct": "A shortage is quantity demanded minus quantity supplied: $75 - 45 = 30$ cups."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      75,
+      45
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 120,
+      "why": "You added the two quantities. A shortage is the gap between them: 75 - 45."
+     },
+     {
+      "value": -30,
+      "why": "You subtracted the wrong way. At a price below equilibrium, quantity demanded is larger, so the shortage is 75 - 45 = 30."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-8",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "market-equilibrium-s1",
+   "q": "Using the table, how large is the surplus at a price of \\$5?",
+   "why": {
+    "correct": "A surplus is quantity supplied minus quantity demanded: $90 - 30 = 60$ cups."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      90,
+      30
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 120,
+      "why": "You added the two quantities. A surplus is the gap between them: 90 - 30."
+     },
+     {
+      "value": 30,
+      "why": "That is the quantity demanded. The surplus is quantity supplied minus quantity demanded: 90 - 30."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-9",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "market-equilibrium-s1",
+   "q": "The fair sets the price of cocoa at \\$4. What happens next in this market, if the price is free to change?",
+   "options": [
+    "A surplus of 30 cups pushes the price down toward \\$3",
+    "A shortage of 30 cups pushes the price up toward \\$5",
+    "The market stays at \\$4, because sellers set the price",
+    "A surplus of 30 cups pushes the price up"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At \\$4, 75 cups are supplied and 45 demanded, a surplus of 30. Sellers with unsold cups cut prices until the market reaches \\$3.",
+    "options": [
+     "Right: unsold cups push the price down.",
+     "Above equilibrium there is a surplus, not a shortage.",
+     "With unsold cups, sellers compete by cutting prices.",
+     "A surplus pushes the price down, not up."
+    ]
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-10",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "market-equilibrium-s1",
+   "q": "Cold weather arrives, and buyers now want 30 more cups at every price in the table. What is the new equilibrium price?",
+   "options": [
+    "\\$3",
+    "\\$5",
+    "\\$2",
+    "\\$4"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The new quantities demanded are 120, 105, 90, 75 and 60. At \\$4, 75 cups are demanded and 75 supplied.",
+    "options": [
+     "At \\$3, 90 would now be demanded but only 60 supplied.",
+     "At \\$5, 90 would be supplied but only 60 demanded.",
+     "At \\$2, 105 would be demanded but only 45 supplied.",
+     "Right: 75 demanded and 75 supplied at \\$4."
+    ]
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-11",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "market-equilibrium-s2",
+   "q": "Which curve shifted in the graph, and which way?",
+   "options": [
+    "Supply shifted left",
+    "Demand shifted right",
+    "Supply shifted right",
+    "Demand shifted left"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The faded S1 lies to the left of the new supply curve, and demand has one position.",
+    "options": [
+     "The new supply curve is to the right of S1, not the left.",
+     "Demand has one position in the graph.",
+     "Right: the new supply curve lies to the right of S1.",
+     "Demand has one position in the graph."
+    ]
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-12",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "market-equilibrium-s2",
+   "q": "How did the equilibrium change in the graph?",
+   "options": [
+    "The price rose and the quantity rose",
+    "The price fell and the quantity rose",
+    "The price fell and the quantity fell",
+    "The price rose and the quantity fell"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Supply shifted right down along demand: a lower equilibrium price, a larger equilibrium quantity.",
+    "options": [
+     "That would follow a rise in demand.",
+     "Right: down and to the right along demand.",
+     "That would follow a fall in demand.",
+     "That would follow a fall in supply."
+    ]
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-13",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "market-equilibrium-s2",
+   "q": "Which event could explain the change in the graph?",
+   "options": [
+    "Several new firms enter the market",
+    "The price of a key input rises",
+    "Buyers' incomes rise for a normal good",
+    "A substitute good becomes cheaper"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "More sellers raise the quantity offered at every price, shifting supply right.",
+    "options": [
+     "Right: more sellers shift supply right.",
+     "A dearer input shifts supply left.",
+     "Higher incomes for a normal good shift demand, which stayed put.",
+     "A cheaper substitute shifts demand left, and demand stayed put."
+    ]
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-14",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "market-equilibrium-s3",
+   "q": "What happens to the equilibrium price of blueberries?",
+   "options": [
+    "It falls",
+    "It stays the same",
+    "It is indeterminate",
+    "It rises"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The study shifts demand right and the frost shifts supply left. Both push the price up, so the price rises for sure.",
+    "options": [
+     "Neither shift lowers the price.",
+     "Both shifts push the price the same way.",
+     "When both shifts push price the same way, the price change is certain.",
+     "Right: both shifts raise the price."
+    ]
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-15",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "market-equilibrium-s3",
+   "q": "What happens to the equilibrium quantity of blueberries?",
+   "options": [
+    "It rises, because demand increased",
+    "It falls, because supply decreased",
+    "It is indeterminate without the sizes of the shifts",
+    "It stays the same, because the shifts cancel"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Higher demand pushes quantity up and lower supply pushes it down. Which wins depends on the sizes of the two shifts.",
+    "options": [
+     "That holds only if the demand shift is the larger one.",
+     "That holds only if the supply shift is the larger one.",
+     "Right: the two shifts pull quantity in opposite directions.",
+     "That holds only if the shifts exactly offset."
+    ]
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-16",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "market-equilibrium-s3",
+   "q": "What extra information would tell you whether the quantity of blueberries sold rises or falls?",
+   "options": [
+    "Whether the price of blueberries rises or falls",
+    "The relative sizes of the demand and supply shifts",
+    "How many blueberry growers live in the region",
+    "Whether blueberries are a normal or inferior good"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Quantity rises if the demand shift is larger and falls if the supply shift is larger.",
+    "options": [
+     "The price rises in either case, so it does not settle the quantity.",
+     "Right: the relative sizes decide it.",
+     "The number of growers alone does not give the size of the supply shift.",
+     "The study shifted demand through tastes; income plays no part here."
+    ]
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-17",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A city holds the price of parking below its equilibrium level. What does the market show?",
+   "options": [
+    "A shortage: drivers want more spaces than are offered",
+    "A surplus: more spaces are offered than drivers want",
+    "Equilibrium, because the city set the price",
+    "A shift of demand to the left"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Below equilibrium, quantity demanded is greater than quantity supplied: a shortage.",
+    "options": [
+     "Right: too low a price leaves more wanted than offered.",
+     "A surplus comes from a price above equilibrium.",
+     "Setting a price does not make quantities match.",
+     "The price is on the axis, so the curves stay put."
+    ]
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-18",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make the explanation specific: at the current price, buyers want more of a good than sellers offer. Fill in each blank.",
+   "why": {
+    "correct": "A shortage pushes the price up, which lowers the quantity demanded and raises the quantity supplied until the market clears."
+   },
+   "specific": {
+    "frame": "There is a ___, so the price ___; as it does, the quantity demanded ___ and the quantity supplied rises until they are equal.",
+    "slots": {
+     "concept": {
+      "label": "What the market has",
+      "options": [
+       "shortage",
+       "surplus"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A surplus means more is offered than wanted; here more is wanted than offered."
+      }
+     },
+     "price": {
+      "label": "The price",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Buyers compete for the scarce units, so the price is bid up, not down."
+      }
+     },
+     "change": {
+      "label": "Quantity demanded",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A higher price lowers the quantity demanded, by the law of demand."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "There is a shortage, so buyers bid the price up because there are not enough units; as the price rises, the quantity demanded falls and the quantity supplied rises until the two are equal at equilibrium."
+   }
+  },
+  {
+   "id": "mac-market-equilibrium-19",
+   "unit": "unit-1",
+   "topic": "market-equilibrium",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.A",
+   "q": "Which events would lower the equilibrium price of wheat, other things equal? Select all that apply.",
+   "options": [
+    "A new seed raises the wheat harvest per acre",
+    "A drought cuts the wheat harvest",
+    "Bakers want more wheat to meet a rise in bread sales",
+    "The price of fertilizer, an input, rises"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Only a rise in supply or a fall in demand lowers the equilibrium price. The new seed shifts supply right; each other event shifts supply left or demand right, which raises the price.",
+    "options": [
+     "Right: higher yields shift supply right, lowering the price.",
+     "A smaller harvest shifts supply left, raising the price.",
+     "More wheat wanted shifts demand right, raising the price.",
+     "A dearer input shifts supply left, raising the price."
+    ]
+   }
+  }
+ ]
+}

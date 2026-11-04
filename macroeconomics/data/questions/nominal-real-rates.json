@@ -1,0 +1,591 @@
+{
+ "stimuli": {
+  "nominal-real-rates-s1": {
+   "kind": "data",
+   "title": "Four loans and the inflation their lenders expect",
+   "invented": true,
+   "table": {
+    "caption": "Nominal interest rates on four one-year loans and the expected inflation rate when each loan was made (invented data for practice).",
+    "cols": [
+     "Loan",
+     "Nominal interest rate",
+     "Expected inflation rate"
+    ],
+    "rows": [
+     [
+      "A",
+      "6%",
+      "2%"
+     ],
+     [
+      "B",
+      "4%",
+      "5%"
+     ],
+     [
+      "C",
+      "9%",
+      "3%"
+     ],
+     [
+      "D",
+      "5%",
+      "5%"
+     ]
+    ]
+   }
+  },
+  "nominal-real-rates-s2": {
+   "kind": "text",
+   "title": "A fixed-rate car loan and a surprise in inflation",
+   "text": "<p>A bank in the invented country of Quentar lends Sam money for a car at a fixed nominal interest rate of 7% a year. When the loan is made, both Sam and the bank expect inflation of 3% a year. Over the next year, inflation turns out to be 6%.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-nominal-real-rates-1",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "nominal-real-rates-s1",
+   "q": "What is the real interest rate on Loan C, in percent?",
+   "why": {
+    "correct": "Real rate = nominal rate minus the expected inflation rate: $ 9 - 3 = 6\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "realRate",
+     "args": [
+      9,
+      3
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        9,
+        3
+       ]
+      },
+      "why": "You added the expected inflation rate. Inflation eats into what the lender gains, so subtract it: 9% - 3%."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        9,
+        3
+       ]
+      },
+      "why": "You divided. The real rate is a difference: the nominal rate minus the expected inflation rate."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-2",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "nominal-real-rates-s1",
+   "q": "Which loan has a negative real interest rate?",
+   "options": [
+    "Loan A",
+    "Loan B",
+    "Loan C",
+    "Loan D"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A real rate is negative when the expected inflation rate is higher than the nominal rate.",
+    "options": [
+     "Loan A: 6% - 2% = 4%, a positive real rate.",
+     "Right: 4% - 5% = -1%. The lender expects to be repaid with less buying power than it lent.",
+     "Loan C: 9% - 3% = 6%, the highest real rate in the table.",
+     "Loan D: 5% - 5% = 0%, zero rather than negative."
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-3",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "nominal-real-rates-s1",
+   "q": "Which loan gives its lender the largest expected gain in buying power?",
+   "options": [
+    "Loan A, at 4% real",
+    "Loan D, since its two rates match",
+    "Loan B, with the lowest inflation risk",
+    "Loan C, at 6% real"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The real interest rate measures the gain in buying power, so compare real rates, not nominal ones.",
+    "options": [
+     "Loan A's real rate is 4%, lower than Loan C's.",
+     "Matching rates give a real rate of zero: no gain in buying power.",
+     "Loan B has the highest expected inflation rate and a negative real rate.",
+     "Right: 9% - 3% = 6%, the largest real rate, so the largest expected gain in buying power."
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-4",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "nominal-real-rates-s1",
+   "q": "What does Loan D's real interest rate tell its lender?",
+   "options": [
+    "The lender expects to lose money in dollars",
+    "The lender expects no gain in buying power",
+    "The lender expects to earn 5% more buying power",
+    "The loan pays no interest in dollars"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A zero real rate means the interest just offsets the expected inflation rate: dollars grow, buying power does not.",
+    "options": [
+     "In dollars the lender gains 5%; it is buying power that stays the same.",
+     "Right: 5% - 5% = 0%, so the extra dollars just keep up with the expected inflation rate.",
+     "That would need a 5% real rate. Here the expected inflation rate cancels the 5% nominal rate.",
+     "It pays 5% in dollars. Zero is the real rate, not the nominal one."
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-5",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "nominal-real-rates-s2",
+   "q": "What real interest rate did the bank actually earn over the year, in percent?",
+   "why": {
+    "correct": "After the fact, use the inflation that happened: $ 7 - 6 = 1\\%$. The bank planned on $ 7 - 3 = 4\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "realRate",
+     "args": [
+      7,
+      6
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "realRate",
+       "args": [
+        7,
+        3
+       ]
+      },
+      "why": "4% is the real rate the bank expected. Over the year inflation was 6%, so the real rate earned was 7% - 6%."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        7,
+        6
+       ]
+      },
+      "why": "Inflation is subtracted from the nominal rate, not added: 7% - 6%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-6",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "nominal-real-rates-s2",
+   "q": "Who gained from the surprise in inflation, and why?",
+   "options": [
+    "The bank, because prices rose faster",
+    "Sam, because his real rate fell",
+    "Neither, because the nominal rate stayed at 7%",
+    "Both, because incomes rose with prices"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Unanticipated inflation helps fixed-rate borrowers and hurts lenders, because the real value of the repayment falls.",
+    "options": [
+     "Faster inflation means the bank is repaid in dollars that buy less than it planned, so it loses.",
+     "Right: Sam repays with dollars that buy less than expected; his real rate fell from an expected 4% to 1%.",
+     "The nominal rate is fixed, which is why the surprise moves buying power from the lender to the borrower.",
+     "A surprise in inflation moves buying power between them: one side gains what the other loses."
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-7",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "nominal-real-rates-s2",
+   "q": "If lenders in Quentar now expect inflation to stay at 6%, what most likely happens to the nominal rates they charge on new car loans?",
+   "options": [
+    "They rise, to keep the real rate lenders want",
+    "They fall, because borrowers are gaining",
+    "They stay at 7%, because the real rate fell",
+    "They fall to the inflation rate of 6%"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Nominal rate = real rate + expected inflation rate. When the expected inflation rate rises, nominal rates rise with it.",
+    "options": [
+     "Right: to earn a 4% real rate with a 6% expected inflation rate, lenders ask about 10% nominal.",
+     "Lenders protect themselves from inflation by charging more, not less.",
+     "At 7% nominal and a 6% expected inflation rate lenders would earn 1% real, so they raise the nominal rate.",
+     "At 6% nominal the real rate would be zero; lenders want a positive real return."
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-8",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "nominal-real-rates-s2",
+   "q": "Which loan term would have protected the bank from this surprise?",
+   "options": [
+    "A longer repayment period",
+    "A lower fixed nominal rate",
+    "A smaller down payment from Sam",
+    "A nominal rate that adjusts with inflation"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Adjustable or inflation-linked rates move with inflation, so a surprise does not shift buying power from lender to borrower.",
+    "options": [
+     "A longer loan at a fixed rate exposes the bank to more years of surprise inflation.",
+     "A lower fixed rate would leave the bank with an even lower real return.",
+     "The down payment changes the loan size, not how inflation changes the real return.",
+     "Right: a variable rate that rises with inflation keeps the real rate close to what was agreed."
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-9",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is a nominal interest rate?",
+   "options": [
+    "The rate stated on a loan, in dollars",
+    "The rate after the expected inflation rate is subtracted",
+    "The rate a central authority sets for banks",
+    "The interest rate measured in goods instead of dollars"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Nominal means \"in dollars as stated.\" The real rate adjusts it for inflation.",
+    "options": [
+     "Right: the nominal rate is the rate written on the loan, before any adjustment for inflation.",
+     "That is the real interest rate.",
+     "That describes one particular rate, not what \"nominal\" means.",
+     "Measuring in buying power is the real rate; nominal is in dollars."
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-10",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which formula gives the real interest rate?",
+   "options": [
+    "Nominal rate plus the expected inflation rate",
+    "Nominal rate divided by the expected inflation rate",
+    "Nominal rate minus the expected inflation rate",
+    "Expected inflation rate minus the nominal rate"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Real interest rate = nominal interest rate - expected inflation rate.",
+    "options": [
+     "Adding inflation gives a larger number; inflation reduces the buying power gained, so subtract.",
+     "The real rate is a difference, not a ratio.",
+     "Right: what is left after inflation is the gain in buying power.",
+     "That is the real rate with its sign flipped."
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-11",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A savings bond pays a nominal interest rate of 5%, and savers expect 2% inflation. What is the expected real interest rate, in percent?",
+   "why": {
+    "correct": "$ 5 - 2 = 3\\%$: savers expect their buying power to grow about 3% a year."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "realRate",
+     "args": [
+      5,
+      2
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        5,
+        2
+       ]
+      },
+      "why": "You added the expected inflation rate. Subtract it: 5% - 2%."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        5,
+        2
+       ]
+      },
+      "why": "You divided. The real rate is the nominal rate minus the expected inflation rate."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-12",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "A lender wants a real interest rate of 2% and expects inflation of 4%. What nominal interest rate should it charge, in percent?",
+   "why": {
+    "correct": "Nominal = real + expected inflation rate: $ 2 + 4 = 6\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "nominalRate",
+     "args": [
+      2,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        2,
+        4
+       ]
+      },
+      "why": "You subtracted the expected inflation rate. That gives the real rate from a nominal rate; to find the nominal rate, add it: 2% + 4%."
+     },
+     {
+      "value": 2,
+      "why": "2% is the real rate the lender wants. The nominal rate adds the 4% expected inflation rate."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-13",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Prices fall by 2% over a year, though everyone expected them to rise by 2%. A firm repays a loan at a fixed 5% nominal rate. How is the firm affected?",
+   "options": [
+    "It gains, because prices fell",
+    "It is not affected, because its rate was fixed",
+    "It loses, because its real rate rose",
+    "It loses, because its nominal rate rose"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Unexpected deflation is the reverse of unexpected inflation: it hurts fixed-rate borrowers and helps lenders.",
+    "options": [
+     "Falling prices raise the buying power of each dollar the firm repays, which hurts the borrower.",
+     "The fixed rate is why the surprise matters: the real rate rose from 3% to 7%.",
+     "Right: it repays with dollars worth more than expected; the real rate turned out 5 - (-2) = 7%, not the 3% the firm planned.",
+     "The nominal rate stayed at 5%; the real rate rose because prices fell."
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-14",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Inflation turns out much higher than expected. Which of these are hurt? Select all that apply.",
+   "options": [
+    "A bank holding many fixed-rate home loans",
+    "A family repaying a fixed-rate home loan",
+    "A student repaying a fixed-rate student loan",
+    "A firm repaying a fixed-rate business loan"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Unanticipated inflation moves buying power from lenders to borrowers when rates are fixed.",
+    "options": [
+     "Right: it is repaid in dollars that buy less than planned.",
+     "The family gains: its fixed payments are worth less in buying power.",
+     "The student is a borrower, so the surprise lowers the real cost of the loan.",
+     "The firm is a borrower, so it gains from the surprise."
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-15",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why do economists say a firm deciding whether to borrow for new equipment cares about the real interest rate?",
+   "options": [
+    "The real rate is the rate written on the loan",
+    "Lenders ignore inflation when they set rates",
+    "The real rate is set by the government each year",
+    "It measures the true cost of borrowing in buying power"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Borrowing decisions depend on the real interest rate, the cost of borrowing after inflation.",
+    "options": [
+     "The written rate is the nominal rate.",
+     "Lenders do build the expected inflation rate into nominal rates.",
+     "Lenders and borrowers set loan rates; the real rate is the nominal rate minus the expected inflation rate.",
+     "Right: with inflation, the firm's prices and revenue rise too, so the real rate is the true cost."
+    ]
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-16",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain who gains when inflation turns out higher than expected on a fixed-rate loan.",
+   "why": {
+    "correct": "Higher-than-expected inflation lowers the real interest rate the borrower actually pays, so the borrower gains and the lender loses."
+   },
+   "specific": {
+    "frame": "Inflation turns out higher than expected, so the real interest rate on the loan is ___ than agreed; the ___ gains, because the dollars repaid buy ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Inflation turned out higher than expected, so the real interest rate on the loan is lower than agreed, which means the borrower gains because the dollars repaid buy less than the lender expected.",
+    "slots": {
+     "rate": {
+      "label": "The real rate",
+      "options": [
+       "lower",
+       "higher"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Real rate = nominal - inflation. More inflation with the same nominal rate means a lower real rate."
+      }
+     },
+     "claim": {
+      "label": "Who gains",
+      "options": [
+       "borrower",
+       "lender"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The lender is repaid in dollars worth less than planned, so the lender loses."
+      }
+     },
+     "change": {
+      "label": "What the repaid dollars buy",
+      "options": [
+       "less than expected",
+       "more than expected"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher inflation means each dollar buys less, not more."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-nominal-real-rates-17",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the steps in order to find a real interest rate.",
+   "options": [
+    "Read the nominal interest rate on the loan",
+    "Find the expected inflation rate for the same period",
+    "Subtract the expected inflation rate from the nominal rate",
+    "State the result as the gain in buying power, in percent"
+   ],
+   "why": {
+    "correct": "Nominal rate first, then inflation, then the subtraction: real = nominal - expected inflation rate."
+   }
+  }
+ ]
+}

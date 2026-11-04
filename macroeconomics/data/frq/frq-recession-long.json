@@ -1,0 +1,199 @@
+{
+ "id": "frq-recession-long",
+ "type": "long",
+ "points": 10,
+ "title": "A recessionary gap in Calder: fiscal policy, the money market and self-adjustment",
+ "units": [
+  "unit-3",
+  "unit-4"
+ ],
+ "topics": [
+  "long-run-self-adjustment",
+  "fiscal-policy",
+  "multipliers",
+  "money-market",
+  "monetary-policy"
+ ],
+ "practices": [
+  "4.A",
+  "4.C",
+  "3.C",
+  "2.A",
+  "2.B",
+  "3.B"
+ ],
+ "scenario": "Calder is an invented country in a recessionary gap: its real GDP is 80 billion dollars below full-employment output. Its marginal propensity to consume (MPC) is 0.75. The government decides to raise its purchases of goods and services.",
+ "parts": [
+  {
+   "label": "A",
+   "points": 3,
+   "type": "graph",
+   "prompt": "<b>Draw</b> a correctly labeled AD-AS graph showing Calder's recessionary gap, with LRAS, and <b>show</b> the short-run effect of the rise in government purchases on the price level and real GDP.",
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "start": {
+     "AD": -1
+    },
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in government purchases",
+     "outcome": {
+      "price level": "up",
+      "output": "up"
+     }
+    },
+    "slips": {
+     "SRAS": "Government purchases are part of aggregate demand, so they shift AD, not SRAS."
+    }
+   },
+   "rubric": [
+    {
+     "point": "Correctly labeled graph: Price level and Real GDP on the axes, AD, SRAS and a vertical LRAS, with the starting output to the left of full-employment output",
+     "accept": [
+      "PL and Y (or real output) as axis labels"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "AD shifted to the right",
+     "accept": [],
+     "auto": "shift"
+    },
+    {
+     "point": "New short-run equilibrium with a higher price level and higher real GDP than the starting equilibrium",
+     "accept": [],
+     "auto": "outcome"
+    }
+   ],
+   "sample": "The graph has Price level on the vertical axis and Real GDP on the horizontal axis. AD1 and SRAS cross at PL1 and Y1, to the left of the vertical LRAS at YF. AD1 shifts right to AD2, which crosses SRAS at PL2 and Y2: the price level rises from PL1 to PL2 and real GDP rises from Y1 toward YF."
+  },
+  {
+   "label": "B(i)",
+   "points": 1,
+   "prompt": "<b>Calculate</b> Calder's spending multiplier. Show your work.",
+   "rubric": [
+    {
+     "point": "Spending multiplier of 4, with work shown: 1 / (1 - 0.75) or 1 / 0.25",
+     "accept": []
+    }
+   ],
+   "sample": "MPS = 1 - 0.75 = 0.25, so the spending multiplier is 1 / 0.25 = 4."
+  },
+  {
+   "label": "B(ii)",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the minimum increase in government purchases that closes the gap, assuming the price level does not change. Show your work.",
+   "rubric": [
+    {
+     "point": "20 billion dollars, from 80 / 4 (consistent with the multiplier in B(i))",
+     "accept": [
+      "the gap divided by the multiplier from B(i)"
+     ]
+    }
+   ],
+   "sample": "Increase in purchases = gap / spending multiplier = 80 / 4 = 20 billion dollars."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "Suppose the government cut taxes instead. <b>Explain</b> why the tax cut needed to close the same gap is larger than your answer in part B(ii).",
+   "rubric": [
+    {
+     "point": "Households save part of a tax cut (MPS share), so less of it is spent in the first round than an equal rise in purchases; the tax multiplier (3 in size) is smaller",
+     "accept": [
+      "the tax multiplier is smaller in size than the spending multiplier because part of the tax cut is saved"
+     ]
+    }
+   ],
+   "sample": "A rise in purchases is spent in full, but households spend only 75 percent of a tax cut and save 25 percent. The tax multiplier (-0.75 / 0.25 = -3) is smaller in size than the spending multiplier (4), so the tax cut must be larger: 80 / 3, about 26.7 billion dollars."
+  },
+  {
+   "label": "D",
+   "points": 2,
+   "type": "graph",
+   "prompt": "Assume Calder's central bank works in a limited-reserves framework and holds the money supply constant. <b>Draw</b> a money market graph and <b>show</b> the effect of the rise in real GDP from part A on the nominal interest rate.",
+   "graph": {
+    "kind": "money",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "MD",
+     "MS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "MD",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in real GDP, which raises the demand for money",
+     "outcome": {
+      "nominal interest rate": "up",
+      "quantity of money": "same"
+     }
+    },
+    "slips": {
+     "MS": "The central bank holds the money supply constant here. Higher real GDP raises the demand for money, which shifts MD."
+    }
+   },
+   "rubric": [
+    {
+     "point": "Money demand (MD) shifted to the right, with a vertical money supply that does not move",
+     "accept": [],
+     "auto": "shift"
+    },
+    {
+     "point": "A higher nominal interest rate at the new equilibrium",
+     "accept": [],
+     "auto": "outcome"
+    }
+   ],
+   "sample": "On a graph with Nominal interest rate on the vertical axis and Quantity of money on the horizontal axis, MS is vertical. Higher real GDP means more transactions, so MD1 shifts right to MD2, and the nominal interest rate rises from i1 to i2."
+  },
+  {
+   "label": "E(i)",
+   "points": 1,
+   "prompt": "Suppose instead that Calder's government had taken no action. <b>Explain</b> how the economy would return to full-employment output in the long run.",
+   "rubric": [
+    {
+     "point": "Unemployment above the natural rate lowers nominal wages and input prices, so SRAS shifts right until output reaches full-employment output",
+     "accept": [
+      "falling nominal wages lower costs and shift SRAS right"
+     ]
+    }
+   ],
+   "sample": "With output below full employment, unemployment is above the natural rate. As contracts are renewed, nominal wages and input prices fall, which lowers firms' costs and shifts SRAS to the right until it crosses AD on LRAS at full-employment output."
+  },
+  {
+   "label": "E(ii)",
+   "points": 1,
+   "prompt": "Compared with the long-run equilibrium reached through the rise in government purchases, <b>identify</b> whether the price level at the long-run equilibrium in part E(i) is higher, lower or the same.",
+   "rubric": [
+    {
+     "point": "Lower",
+     "accept": [
+      "the price level is lower with self-adjustment"
+     ]
+    }
+   ],
+   "sample": "Lower. The rise in purchases moves AD right along SRAS, raising the price level; self-adjustment moves SRAS right along AD, lowering it."
+  }
+ ]
+}

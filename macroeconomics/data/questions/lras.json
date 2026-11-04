@@ -1,0 +1,553 @@
+{
+ "stimuli": {
+  "lras-s1": {
+   "kind": "data",
+   "title": "Resources and full-employment output in Country L",
+   "invented": true,
+   "table": {
+    "caption": "Country L every ten years: labor force at full employment, machines and buildings, and full-employment real GDP (invented data for practice)",
+    "cols": [
+     "Year",
+     "Labor force (millions)",
+     "Machines and buildings (index)",
+     "Full-employment real GDP (billions of dollars)"
+    ],
+    "rows": [
+     [
+      "2000",
+      "20",
+      "100",
+      "500"
+     ],
+     [
+      "2010",
+      "22",
+      "110",
+      "550"
+     ],
+     [
+      "2020",
+      "22",
+      "100",
+      "520"
+     ],
+     [
+      "2030",
+      "24",
+      "120",
+      "660"
+     ]
+    ]
+   }
+  },
+  "lras-s2": {
+   "kind": "text",
+   "title": "A year on the island of Tolva",
+   "text": "<p>Tolva is an invented island nation. In one year:</p><ol><li>A hurricane destroys a fifth of Tolva's factories and its main power plant.</li><li>Tolva finishes a new deep-water port that lets firms ship goods far more cheaply, for good.</li><li>Tolva's households, cheered by a sports victory, spend more on restaurants and travel.</li></ol>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-lras-1",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "lras-s1",
+   "q": "Using the table, calculate the percent change in Country L's full-employment real GDP from 2000 to 2010.",
+   "why": {
+    "correct": "$\\frac{550 - 500}{500} \\times 100 = 10\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "growth",
+     "args": [
+      500,
+      550
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 50,
+      "why": "50 is the change in billions of dollars. The percent change divides it by the 2000 value: $\\frac{50}{500} \\times 100$."
+     },
+     {
+      "from": {
+       "fn": "growth",
+       "args": [
+        550,
+        500
+       ]
+      },
+      "why": "You divided by the 2010 value. A percent change is measured from the earlier value, 500."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-lras-2",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "lras-s1",
+   "q": "Based on the table, what happened to Country L's LRAS curve between 2010 and 2020?",
+   "options": [
+    "It shifted left, as the stock of machines and buildings fell",
+    "It shifted right, because the labor force stayed at 22 million",
+    "It did not shift, because the labor force did not change",
+    "It moved down, because the price level fell"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "LRAS sits at full-employment output. That output fell from 550 to 520 billion dollars, so LRAS shifted left.",
+    "options": [
+     "Right: fewer capital goods lower full-employment output from 550 to 520, so LRAS shifts left.",
+     "An unchanged labor force does not raise potential output; capital fell, so LRAS shifted left.",
+     "LRAS depends on all resources and technology, and capital fell.",
+     "LRAS is vertical, so the price level does not move it. Its position is full-employment output."
+    ]
+   }
+  },
+  {
+   "id": "mac-lras-3",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "lras-s1",
+   "q": "Based on the table, in which ten years did Country L's LRAS shift right by the most?",
+   "options": [
+    "2000 to 2010",
+    "2020 to 2030",
+    "2010 to 2020",
+    "No decade, because a vertical LRAS curve does not shift"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Compare full-employment real GDP: +50, -30, then +140. LRAS moved right by the most from 2020 to 2030.",
+    "options": [
+     "LRAS shifted right then, but by 50 billion, less than the 140 billion of 2020 to 2030.",
+     "Right: full-employment output rose by 140 billion, as both labor and capital grew.",
+     "In those years full-employment output fell, so LRAS shifted left.",
+     "LRAS is vertical, but it shifts whenever full-employment output changes."
+    ]
+   }
+  },
+  {
+   "id": "mac-lras-4",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "stimulus": "lras-s1",
+   "q": "From 2020 to 2030, how would Country L's production possibilities curve (PPC) change, and why?",
+   "options": [
+    "It would shift inward, because more of the resources are used",
+    "It would not change, because a PPC shows just two goods",
+    "It would shift outward, as labor and capital grew",
+    "The economy would move from a point inside the PPC to a point on it"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A rise in resources moves full-employment output and the PPC together: LRAS right, PPC out.",
+    "options": [
+     "Using more resources does not shrink what can be made; more resources move the PPC out.",
+     "The PPC shows the limits on producing two goods, and those limits widen with more resources.",
+     "Right: LRAS shifting right and the PPC shifting out show the same rise in productive capacity.",
+     "That is a fall in unemployment of existing resources. Here the resources themselves grew."
+    ]
+   }
+  },
+  {
+   "id": "mac-lras-5",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "lras-s2",
+   "q": "How does event 1 (the hurricane) affect Tolva's LRAS?",
+   "options": [
+    "LRAS shifts right, because rebuilding raises spending on new factories",
+    "LRAS is unaffected, because the labor force is the same",
+    "There is a movement along LRAS to a higher price level",
+    "LRAS shifts left, as Tolva has less capital to produce with"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The hurricane destroys capital, so the most Tolva can produce at full employment falls: LRAS shifts left.",
+    "options": [
+     "Rebuilding is spending (AD); it does not add capacity until the factories are rebuilt.",
+     "Labor is one resource; Tolva also lost capital, which lowers what full employment can produce.",
+     "LRAS is vertical at full-employment output. A loss of factories moves its position.",
+     "Right: losing capital lowers full-employment output."
+    ]
+   }
+  },
+  {
+   "id": "mac-lras-6",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "lras-s2",
+   "q": "Which event shifts Tolva's LRAS to the right?",
+   "options": [
+    "Event 2, the new port",
+    "Event 1, the hurricane",
+    "Event 3, the rise in household spending",
+    "Events 1 and 3 together"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A lasting improvement in infrastructure raises productive capacity, so full-employment output and LRAS rise.",
+    "options": [
+     "Right: a lasting fall in shipping costs raises what Tolva's resources can produce.",
+     "Losing factories shifts LRAS left, not right.",
+     "More spending shifts AD. It does not add to resources or technology.",
+     "Neither raises capacity: one destroys capital and the other is spending."
+    ]
+   }
+  },
+  {
+   "id": "mac-lras-7",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "stimulus": "lras-s2",
+   "q": "Why does event 3, the rise in household spending, not shift Tolva's LRAS?",
+   "options": [
+    "Household spending is too small a part of GDP to matter",
+    "Spending shifts AD; LRAS depends on resources and technology",
+    "Restaurants and travel are services, which do not count in GDP",
+    "LRAS shifts when the government acts, not when households do"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Spending is demand. Full-employment output comes from the quantity and quality of resources and technology.",
+    "options": [
+     "Consumption is the largest part of spending. It still does not change productive capacity.",
+     "Right: spending shifts AD; LRAS is set by what full employment of resources can produce.",
+     "Services do count in GDP. The point is that spending does not create new resources.",
+     "Many private changes shift LRAS, such as new technology or a larger labor force."
+    ]
+   }
+  },
+  {
+   "id": "mac-lras-8",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why is the long-run aggregate supply curve vertical?",
+   "options": [
+    "In the long run firms are unable to raise their prices, so they stop expanding output",
+    "In the long run the economy runs out of extra workers, so firms stop hiring more",
+    "Wages and prices fully adjust, so output depends on resources, not the price level",
+    "In the long run demand for goods stops changing"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When wages and prices all adjust, a change in the price level changes costs as much as revenues, so output returns to potential: LRAS is vertical at full-employment output.",
+    "options": [
+     "In the long run every price can change. It is because all prices and wages adjust that output does not respond.",
+     "Output can rise above full employment for a time. The curve is vertical because wages catch up in the long run.",
+     "Right: once nominal wages catch up with prices, a higher price level no longer makes more output profitable.",
+     "Demand changes in the long run too. The vertical curve is about supply once wages adjust."
+    ]
+   }
+  },
+  {
+   "id": "mac-lras-9",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "The price level in an economy doubles, and over time every nominal wage and input price doubles too. What happens to real output in the long run?",
+   "options": [
+    "It doubles, because prices doubled",
+    "It falls by half, because goods are twice as expensive",
+    "It rises above full employment for good",
+    "It stays at full-employment output"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In the long run, the price level and all input prices move together, so real output is at potential whatever the price level: that is LRAS.",
+    "options": [
+     "Higher prices raise output only while wages are stuck. Once wages double too, output is back at potential.",
+     "Incomes doubled as well. In the long run, output is set by resources, not by the price level.",
+     "Output above full employment cannot last once wages and input prices adjust.",
+     "Right: costs rose as much as prices, so production is no more profitable than before."
+    ]
+   }
+  },
+  {
+   "id": "mac-lras-10",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of the following would shift a country's LRAS to the right? Select all that apply.",
+   "options": [
+    "More adults join the labor force",
+    "Workers become more skilled through better training",
+    "Firms build more factories and machines",
+    "Consumers become more confident and spend more",
+    "The price level rises",
+    "Firms' wage contracts expire and are renegotiated"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "LRAS moves with the quantity and quality of resources (labor, capital, land) and with technology.",
+    "options": [
+     "Right: more labor raises full-employment output.",
+     "Right: higher-quality labor raises output per worker.",
+     "Right: more capital raises productive capacity.",
+     "More spending shifts AD, not LRAS.",
+     "LRAS is vertical; a change in the price level does not move it.",
+     "Renegotiating wages moves SRAS; it does not change resources or technology."
+    ]
+   }
+  },
+  {
+   "id": "mac-lras-11",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A country adopts a new technology that lets every factory produce more with the same workers and machines. Shift the long-run aggregate supply curve to show the effect on full-employment output.",
+   "why": {
+    "correct": "Better technology raises what full employment of resources can produce, so LRAS shifts right."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "AD",
+     "LRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "LRAS",
+       "dir": "right"
+      }
+     ],
+     "because": "an improvement in technology"
+    },
+    "slips": {
+     "AD": "Technology changes what the economy can produce, not what people plan to buy, so it shifts LRAS, not AD."
+    }
+   }
+  },
+  {
+   "id": "mac-lras-12",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "An earthquake destroys many factories, roads and power lines, which raises costs now and lowers what the economy can produce at full employment. Shift every curve this changes.",
+   "why": {
+    "correct": "Lost capital lowers full-employment output (LRAS left) and raises production costs at every price level now (SRAS left)."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "AD",
+     "SRAS",
+     "LRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "LRAS",
+       "dir": "left"
+      },
+      {
+       "curve": "SRAS",
+       "dir": "left"
+      }
+     ],
+     "because": "the loss of factories, roads and power lines"
+    },
+    "slips": {
+     "AD": "The earthquake destroys productive capacity. That shifts the supply curves, not spending."
+    }
+   }
+  },
+  {
+   "id": "mac-lras-13",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Country P makes wheat and cloth. Many skilled workers move to Country P and find jobs. Shift its production possibilities curve to show the change in what it can produce.",
+   "why": {
+    "correct": "More labor lets Country P make more of both goods: the PPC shifts out, as LRAS shifts right."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Wheat",
+     "y": "Cloth"
+    },
+    "do": [
+     "shift"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "PPC",
+       "dir": "out"
+      }
+     ],
+     "because": "a rise in the labor force"
+    }
+   }
+  },
+  {
+   "id": "mac-lras-14",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "How are a country's LRAS curve and its production possibilities curve (PPC) related?",
+   "options": [
+    "Both show capacity: as LRAS shifts right, the PPC shifts out",
+    "When LRAS shifts right, the PPC shifts inward",
+    "LRAS shows planned spending, while the PPC shows production",
+    "They are unrelated, because a PPC is about two goods rather than total output"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A point on the PPC is full employment of resources; that output is where LRAS stands. Both move with resources and technology.",
+    "options": [
+     "Right: more resources or better technology move both.",
+     "More capacity moves the PPC out, not in.",
+     "LRAS is supply: full-employment output. Spending is AD.",
+     "The two goods on a PPC stand for all the economy makes, and its frontier moves with LRAS."
+    ]
+   }
+  },
+  {
+   "id": "mac-lras-15",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain why LRAS is vertical.",
+   "why": {
+    "correct": "In the long run nominal wages and input prices adjust to the price level, so output returns to full employment at any price level."
+   },
+   "specific": {
+    "frame": "In the long run, nominal wages and input prices ___ with the price level, so a higher price level makes production ___ profitable. Real output stays at ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In the long run, nominal wages and input prices adjust with the price level, so a higher price level makes production no more profitable than before. Because costs rise as much as prices, real output stays at full-employment output.",
+    "slots": {
+     "change": {
+      "label": "Wages and input prices",
+      "options": [
+       "adjust",
+       "stay fixed"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fixed wages describe the short run. In the long run contracts are renegotiated."
+      }
+     },
+     "because": {
+      "label": "Profitability",
+      "options": [
+       "no more",
+       "much more"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Costs rise as much as prices, so the extra profit disappears."
+      }
+     },
+     "output": {
+      "label": "Output",
+      "options": [
+       "full-employment output",
+       "a higher level each year the price level rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A higher price level does not add resources, so output cannot stay above potential."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-lras-16",
+   "unit": "unit-3",
+   "topic": "lras",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Full-employment real GDP in Country N is 800 billion dollars. Where does Country N's LRAS curve stand?",
+   "options": [
+    "Horizontal at the current price level",
+    "Vertical at a real GDP of 800 billion dollars",
+    "Sloping up through 800 billion dollars",
+    "Vertical at whatever real GDP the economy produces this year"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "LRAS stands at potential output (YF), here 800 billion dollars, whatever the price level.",
+    "options": [
+     "LRAS is vertical, not horizontal: output, not the price level, is fixed in the long run.",
+     "Right: LRAS is vertical at full-employment output.",
+     "An upward slope describes SRAS. In the long run the curve is vertical.",
+     "Actual output can be above or below full employment. LRAS stands at full-employment output."
+    ]
+   }
+  }
+ ]
+}

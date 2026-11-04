@@ -1,0 +1,72 @@
+{
+ "topic": "scarcity",
+ "hook": "Your town has one empty lot. Some residents want a park, store owners want a parking garage, and a grocery chain wants to lease it. Everyone has a good reason, and there is only one lot. That single, ordinary problem, more wants than resources, is where all of economics starts.",
+ "prereq": [
+  {
+   "q": "On a market graph, which variable goes on the vertical axis?",
+   "options": [
+    "Price",
+    "Quantity",
+    "Income",
+    "Time"
+   ],
+   "correct": 0,
+   "why": "Price is vertical and Quantity horizontal on every market graph.",
+   "review": "axes-points"
+  },
+  {
+   "q": "A variable on one of a graph's axes changes. On the graph you see",
+   "options": [
+    "a movement along the curve",
+    "a shift of the curve",
+    "a new axis",
+    "no change"
+   ],
+   "correct": 0,
+   "why": "Only a change off the axes shifts a curve.",
+   "review": "shifts-movements"
+  }
+ ],
+ "figure": {
+  "figure": "scarcity-choices",
+  "caption": "Unlimited wants and limited resources create scarcity, which forces every society to choose what to produce, how and for whom."
+ },
+ "chain": [
+  {
+   "cause": "People's wants are unlimited, but land, labor, capital and entrepreneurship are limited",
+   "effect": "resources are scarce"
+  },
+  {
+   "cause": "Resources are scarce",
+   "effect": "every person, firm and government must choose how to use them"
+  },
+  {
+   "cause": "Choosing one use of a resource",
+   "effect": "means giving up another use: a trade-off"
+  },
+  {
+   "cause": "A whole society faces those choices",
+   "effect": "its economic system decides what to produce, how and for whom"
+  }
+ ],
+ "ideas": [
+  "<b>Scarcity</b>: wants are greater than the resources to meet them. It applies to rich and poor, and to time as well as money.",
+  "The four <b>factors of production</b>: land (natural resources), labor (human effort), capital (tools, machines, buildings) and entrepreneurship (organizing and risk-taking). Money is not one of them.",
+  "Every choice is a <b>trade-off</b>: using a resource one way means not using it another way.",
+  "Market, command and mixed <b>economic systems</b> answer what, how and for whom in different ways; most real economies are mixed."
+ ],
+ "misconception": {
+  "wrong": "Money is capital, so a business that borrows money has gained a factor of production.",
+  "right": "In economics, capital means made goods used to produce other goods, such as machines and buildings. Money buys factors of production but is not one itself."
+ },
+ "check": [
+  "mac-scarcity-1",
+  "mac-scarcity-2",
+  "mac-scarcity-3",
+  "mac-scarcity-4",
+  "mac-scarcity-9",
+  "mac-scarcity-12",
+  "mac-scarcity-15"
+ ],
+ "summary": "Scarcity means wants are greater than the resources to meet them, so every person, business and government must choose, and every choice is a trade-off. The resources are the four factors of production: land, labor, capital and entrepreneurship. A society's economic system, market, command or mixed, decides what to produce, how to produce it and for whom; most real economies mix markets with some government roles."
+}

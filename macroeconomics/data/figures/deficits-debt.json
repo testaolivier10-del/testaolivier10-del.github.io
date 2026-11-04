@@ -1,0 +1,12 @@
+{
+ "deficits-debt-flow": {
+  "file": "figures/deficits-debt-flow.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Bars of an invented national debt: 1,100, 1,170, 1,150 and 1,290 billion dollars after deficits of 100 and 70, a surplus of 20, and a deficit of 140."
+ }
+}

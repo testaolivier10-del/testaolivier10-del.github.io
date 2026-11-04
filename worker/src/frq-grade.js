@@ -1,4 +1,4 @@
-/* The AI free-response grader for the six AP® courses (docs/frq-grader.md).
+/* The AI free-response grader for the seven AP® courses (docs/frq-grader.md).
 
    POST /frq/grade  { course: 'apbio', id: 'frq-agar-shape', answers: { a: '...', b: '...' } }
    with the student's Supabase session, from the site's own Origin.
@@ -41,7 +41,7 @@ import { MODELS, extractText } from './ai.js';
 import { questionText, rubricText } from './frq-text.js';
 import { calibrationText } from './frq-calibration.js';
 
-export const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv'];
+export const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro'];
 export const DAILY_CAP = 10;
 export const DEFAULT_MODEL = 'claude-haiku-5-5';
 // Bump when the instructions, the schema or the checks change in a way that
@@ -114,6 +114,12 @@ const COURSE_CONVENTIONS = {
 - Answers must be specific: a cause-and-effect chain names each link and a direction (increase or decrease); "affects" with no direction is not enough. A hypothesis is a statement with a direction, not a question.
 - A proposed solution or policy must be the kind the rubric asks for (for example a law or rule, not a technology) and say how it works.
 - Keep commonly confused ideas apart: the greenhouse effect versus ozone depletion, bioaccumulation versus biomagnification.`,
+  apmacro: `COURSE CONVENTIONS: AP® Macroeconomics.
+- A calculation point needs the correct value and, when the rubric says "with work shown", the work (the numbers and the operation). A correct number with no work earns nothing on such a point.
+- Directions matter: increase or decrease, left or right, appreciate or depreciate. A change with no direction, or the wrong one, does not earn the point. Closing a gap divides the gap by the multiplier; multiplying instead is wrong.
+- An "explain" point needs the cause and every link of the causal chain the rubric names (for example: lower interest rate, more investment, aggregate demand increases, real output rises); skipping a link the rubric requires does not earn it.
+- Keep commonly confused ideas apart: real versus nominal, cyclical versus natural unemployment, the reserve market (ample reserves, the Fed's administered rates) versus the money market, a shift of a curve versus a movement along it, and the currency on each axis of a foreign exchange graph.
+- Graph parts cannot be seen; grade only what the student wrote for them, as instruction 9 says.`,
 };
 
 export function systemBlocks(course) {

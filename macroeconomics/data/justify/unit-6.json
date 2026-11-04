@@ -1,0 +1,513 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 6 (docs/apmacro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmacro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-6",
+   "id": "u6-bop-entries",
+   "topic": "balance-of-payments",
+   "practice": "1.B",
+   "skill": "identify",
+   "title": "Where a transaction goes in the balance of payments",
+   "prompt": "<b>Identify</b> where each is recorded in Arland's balance of payments: (1) an Arland firm sells machines to a buyer in Belvia; (2) an Arland resident buys bonds issued in Belvia.",
+   "checklist": [
+    "(1) a credit in the current account (an export)",
+    "(2) a debit in the capital and financial account (buying a foreign asset)",
+    "Explains the rule: goods and services in the current account, assets in the capital and financial account"
+   ],
+   "earns": {
+    "answer": "(1) Selling machines abroad is an export of goods, recorded as a credit in Arland's current account. (2) Buying Belvian bonds is a purchase of a foreign asset, an outflow recorded as a debit in Arland's capital and financial account. Trade in goods and services goes in the current account; trade in assets goes in the capital and financial account.",
+    "why": "Each entry is in the right account with the right sign, and the rule is stated."
+   },
+   "misses": {
+    "answer": "Both go in the current account, because money changes hands in both.",
+    "why": "Assets such as bonds go in the capital and financial account; only goods, services, income and transfers go in the current account."
+   },
+   "specific": {
+    "slots": {
+     "m": {
+      "label": "The machine sale",
+      "options": [
+       "current account, credit",
+       "current account, debit",
+       "capital and financial account, credit"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An export brings payment in, so it is a credit.",
+       "2": "Machines are goods, so they go in the current account."
+      }
+     },
+     "b": {
+      "label": "The bond purchase",
+      "options": [
+       "capital and financial account, debit",
+       "current account, debit"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Bonds are financial assets, so they go in the capital and financial account."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-bop-balance",
+   "topic": "balance-of-payments",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "The two accounts balance",
+   "prompt": "Arland's current account has a deficit of 50 billion arls, and its central bank buys and sells no reserves. <b>Calculate</b> the balance of the capital and financial account, and <b>explain</b> why.",
+   "checklist": [
+    "Says the two accounts sum to zero when the central bank does not trade reserves",
+    "Gets a capital and financial account surplus of 50 billion arls",
+    "Explains Arland pays for its extra imports by selling assets or borrowing from abroad"
+   ],
+   "earns": {
+    "answer": "With no reserve transactions, the current account and the capital and financial account sum to zero, so the capital and financial account has a surplus of 50 billion arls: -50 + 50 = 0. Arland pays for buying more than it sells by selling assets to, or borrowing from, the rest of the world.",
+    "why": "It applies the balancing rule with the numbers and explains what the surplus means."
+   },
+   "misses": {
+    "answer": "The capital and financial account also has a deficit of 50 billion arls.",
+    "why": "The two accounts offset each other; a current account deficit means a capital and financial account surplus."
+   },
+   "specific": {
+    "slots": {
+     "sign": {
+      "label": "The capital and financial account",
+      "options": [
+       "a surplus",
+       "a deficit"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "It offsets the current account, so it has the opposite sign."
+      }
+     },
+     "size": {
+      "label": "Its size",
+      "options": [
+       "50 billion arls",
+       "100 billion arls",
+       "0"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The two sum to zero, so it is 50.",
+       "2": "A deficit on one side means a surplus on the other."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-exchange-calc",
+   "topic": "exchange-rates",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Reading an exchange rate both ways",
+   "prompt": "The exchange rate is 4 bels per arl. <b>Calculate</b> the price of one bel in arls, and the cost in arls of a Belvian bicycle priced at 100 bels.",
+   "checklist": [
+    "One bel costs 1 / 4 = 0.25 arls",
+    "The bicycle costs 100 x 0.25 = 25 arls (or 100 / 4)",
+    "States the rate the right way round: bels per arl, so dividing by 4 turns bels into arls"
+   ],
+   "earns": {
+    "answer": "If 1 arl buys 4 bels, one bel costs 1 / 4 = 0.25 arls. The bicycle costs 100 x 0.25 = 25 arls, the same as 100 / 4.",
+    "why": "Both prices are found with the rate used the right way round, and the work is shown."
+   },
+   "misses": {
+    "answer": "The bicycle costs 100 x 4 = 400 arls in Arland's currency.",
+    "why": "That multiplies by bels per arl; to turn bels into arls divide by 4 (or multiply by 0.25 arls per bel)."
+   },
+   "specific": {
+    "slots": {
+     "inv": {
+      "label": "One bel in arls",
+      "options": [
+       "0.25 arls",
+       "4 arls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "4 is bels per arl; flip it for arls per bel."
+      }
+     },
+     "bike": {
+      "label": "The bicycle",
+      "options": [
+       "25 arls",
+       "400 arls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That multiplies bels by bels per arl."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-forex-axes",
+   "topic": "foreign-exchange-market",
+   "practice": "1.A",
+   "skill": "currency",
+   "title": "Labeling the market for arls",
+   "prompt": "<b>Describe</b> how to label a correctly drawn graph of the foreign exchange market for arls, and <b>identify</b> who demands and who supplies arls.",
+   "checklist": [
+    "Vertical axis: the price of the arl in bels (bels per arl); horizontal axis: quantity of arls",
+    "Demand for arls comes from Belvians buying Arland goods, services and assets",
+    "Supply of arls comes from Arland residents buying Belvian goods, services and assets"
+   ],
+   "earns": {
+    "answer": "The vertical axis is the price of the arl in the other currency, bels per arl, and the horizontal axis is the quantity of arls. Belvians who want Arland goods, services or assets demand arls; Arland residents who want Belvian goods, services or assets supply arls to get bels.",
+    "why": "The axis ratio is the right way round, and both sides of the market are named."
+   },
+   "misses": {
+    "answer": "The vertical axis is arls per bel, and Arland residents demand arls.",
+    "why": "In the market for arls the price is bels per arl; and Arland residents supply arls when they buy abroad."
+   },
+   "specific": {
+    "slots": {
+     "y": {
+      "label": "Vertical axis",
+      "options": [
+       "bels per arl",
+       "arls per bel"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the price of the bel; in the market for arls, price the arl in bels."
+      }
+     },
+     "d": {
+      "label": "Demand for arls comes from",
+      "options": [
+       "Belvians buying from Arland",
+       "Arland residents buying from Belvia"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Arland residents buying abroad need bels, so they supply arls."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-forex-incomes",
+   "topic": "fx-policy-changes",
+   "practice": "3.A",
+   "skill": "currency",
+   "title": "Higher incomes abroad and the arl",
+   "prompt": "Incomes in Belvia rise, and Belvians buy more goods made in Arland. <b>Explain</b> the effect on the market for arls and on the value of the arl.",
+   "checklist": [
+    "Says the demand for arls shifts right",
+    "Says the supply of arls does not change",
+    "Says the arl appreciates: its price in bels rises"
+   ],
+   "earns": {
+    "answer": "Belvians need arls to buy Arland goods, so the demand for arls shifts right. Supply does not change, so the price of the arl in bels rises: the arl appreciates.",
+    "why": "The right curve moves the right way for the right reason, and the change in value is named."
+   },
+   "misses": {
+    "answer": "The supply of arls rises, so the arl depreciates.",
+    "why": "Belvians buying Arland goods demand arls; nothing here makes Arland residents supply more."
+   },
+   "specific": {
+    "slots": {
+     "curve": {
+      "label": "The curve that moves",
+      "options": [
+       "demand for arls, right",
+       "supply of arls, right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Supply comes from Arland residents buying abroad, which did not change."
+      }
+     },
+     "v": {
+      "label": "The arl",
+      "options": [
+       "appreciates",
+       "depreciates"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More demand raises the arl's price in bels."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-forex-rates",
+   "topic": "fx-policy-changes",
+   "practice": "3.B",
+   "skill": "currency",
+   "title": "A higher real interest rate and the arl",
+   "prompt": "Arland's real interest rate rises relative to Belvia's. <b>Explain</b> the effect on the market for arls and on the value of the arl.",
+   "checklist": [
+    "Says Belvian savers want more Arland assets",
+    "Says the demand for arls shifts right (and Arland residents supply fewer arls)",
+    "Says the arl appreciates: its price in bels rises"
+   ],
+   "earns": {
+    "answer": "A higher real interest rate makes Arland's financial assets more attractive, so Belvian savers buy more of them and need arls to do it. The demand for arls shifts right (and Arland residents buy fewer Belvian assets, so they supply fewer arls), and the arl appreciates.",
+    "why": "It links the rate to asset purchases, names the curve, and gives the change in value."
+   },
+   "misses": {
+    "answer": "The arl depreciates because Arland's interest rate is higher.",
+    "why": "A higher real rate draws foreign savers in, which raises the demand for the arl, so it appreciates."
+   },
+   "specific": {
+    "slots": {
+     "who": {
+      "label": "Who wants more arls",
+      "options": [
+       "Belvian savers buying Arland assets",
+       "Arland residents buying Belvian goods"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Arland residents buying abroad supply arls, not demand them."
+      }
+     },
+     "v": {
+      "label": "The arl",
+      "options": [
+       "appreciates",
+       "depreciates"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher demand for arls raises their price in bels."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-appreciation-chain",
+   "topic": "fx-net-exports",
+   "practice": "2.A",
+   "skill": "chain",
+   "title": "From a stronger arl to aggregate demand",
+   "prompt": "The arl appreciates against the bel. <b>Explain</b> the effect on Arland's net exports and aggregate demand, naming every link.",
+   "checklist": [
+    "Says Arland goods cost more in bels, so Belvians buy fewer: exports fall",
+    "Says Belvian goods cost fewer arls, so Arland buys more: imports rise",
+    "Says net exports fall, so AD shifts left"
+   ],
+   "earns": {
+    "answer": "A stronger arl makes Arland goods cost more in bels, so Belvians buy fewer of them and Arland's exports fall. It also makes Belvian goods cheaper in arls, so Arland imports rise. With exports down and imports up, net exports fall, which lowers aggregate demand, so AD shifts left.",
+    "why": "Every link from the exchange rate to AD is named, for both exports and imports."
+   },
+   "misses": {
+    "answer": "The arl is stronger, so Arland's economy grows.",
+    "why": "A stronger currency lowers net exports, which lowers AD; the answer reverses the effect and skips every link."
+   },
+   "specific": {
+    "slots": {
+     "x": {
+      "label": "Arland's exports",
+      "options": [
+       "fall",
+       "rise"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Its goods now cost Belvians more bels."
+      }
+     },
+     "nx": {
+      "label": "Net exports",
+      "options": [
+       "fall",
+       "rise"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Exports fall and imports rise, so net exports fall."
+      }
+     },
+     "ad": {
+      "label": "AD",
+      "options": [
+       "shifts left",
+       "shifts right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lower net exports lower AD."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-mirror",
+   "topic": "foreign-exchange-market",
+   "practice": "3.B",
+   "skill": "currency",
+   "title": "The mirror market for bels",
+   "prompt": "Belvians buy more Arland goods, so the demand for arls rises. <b>Explain</b> what happens in the market for bels at the same time.",
+   "checklist": [
+    "Says Belvians supply bels to buy arls",
+    "Says the supply of bels shifts right",
+    "Says the bel depreciates, the mirror of the arl appreciating"
+   ],
+   "earns": {
+    "answer": "To buy arls, Belvians offer bels, so the supply of bels shifts right in the market for bels. The price of the bel in arls falls: the bel depreciates. It is the mirror of the arl appreciating in the market for arls.",
+    "why": "It names the curve in the other market and its direction, and links it to the first market."
+   },
+   "misses": {
+    "answer": "The demand for bels rises too, so both currencies appreciate.",
+    "why": "Two currencies cannot both appreciate against each other; Belvians supply bels to buy arls."
+   },
+   "specific": {
+    "slots": {
+     "curve": {
+      "label": "In the market for bels",
+      "options": [
+       "supply shifts right",
+       "demand shifts right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Belvians are giving up bels, so they supply them."
+      }
+     },
+     "v": {
+      "label": "The bel",
+      "options": [
+       "depreciates",
+       "appreciates"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "If the arl buys more bels, each bel buys fewer arls."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-policy-chain",
+   "topic": "real-rates-financial-flows",
+   "practice": "2.B",
+   "skill": "chain",
+   "title": "Lower rates, capital flows and net exports",
+   "prompt": "Arland's central bank lowers its policy rate, lowering Arland's real interest rate. <b>Explain</b> the effect on capital flows, the value of the arl and Arland's net exports, naming every link.",
+   "checklist": [
+    "Says lower real rates make Arland assets less attractive, so financial capital flows out",
+    "Says less demand for arls (and more supply) makes the arl depreciate",
+    "Says a weaker arl makes Arland exports cheaper abroad, so net exports rise"
+   ],
+   "earns": {
+    "answer": "A lower real interest rate makes Arland's assets less attractive, so financial capital flows out of Arland. Belvians demand fewer arls and Arland residents supply more arls to buy Belvian assets, which makes the arl depreciate. A weaker arl makes Arland's exports cheaper in bels and imports dearer in arls, so Arland's net exports rise.",
+    "why": "Every link from the rate to net exports is named in order."
+   },
+   "misses": {
+    "answer": "Lower rates make the arl weaker, so Arland exports more.",
+    "why": "The capital flow that links the rate to the arl is missing, and net exports (exports minus imports) are not named."
+   },
+   "specific": {
+    "slots": {
+     "k": {
+      "label": "Financial capital",
+      "options": [
+       "flows out of Arland",
+       "flows into Arland"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A lower real rate makes Arland's assets pay less, so savers move funds out."
+      }
+     },
+     "arl": {
+      "label": "The arl",
+      "options": [
+       "depreciates",
+       "appreciates"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less demand and more supply of arls lower their price."
+      }
+     },
+     "nx": {
+      "label": "Net exports",
+      "options": [
+       "rise",
+       "fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A weaker arl makes Arland's goods cheaper abroad."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-ample-open",
+   "topic": "real-rates-financial-flows",
+   "practice": "3.B",
+   "skill": "tool",
+   "title": "The central bank's tool in an open economy",
+   "prompt": "Arland, which has ample reserves, is in a recession. <b>Identify</b> the action its central bank would take and <b>explain</b> its effect on the arl.",
+   "checklist": [
+    "Names lowering the interest rate on reserve balances (its administered rate)",
+    "Says the policy rate and Arland's interest rates fall",
+    "Says capital flows out and the arl depreciates, which raises net exports"
+   ],
+   "earns": {
+    "answer": "The central bank lowers its administered rates, chiefly the interest rate on reserve balances, which lowers the policy rate and other Arland interest rates. Lower rates make Arland assets less attractive, so financial capital flows out and the arl depreciates, which raises net exports and adds to AD.",
+    "why": "The tool fits the framework and the problem, and its effect on the currency is linked through capital flows."
+   },
+   "misses": {
+    "answer": "The central bank sells bonds to strengthen the arl.",
+    "why": "With ample reserves the tool is the administered rate, and a recession calls for lower rates, not tighter policy."
+   },
+   "specific": {
+    "slots": {
+     "tool": {
+      "label": "The tool",
+      "options": [
+       "lower the interest rate on reserve balances",
+       "sell government bonds",
+       "raise the interest rate on reserve balances"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Open market operations are the limited-reserves tool, and selling bonds is contractionary.",
+       "2": "Raising rates would deepen the recession."
+      }
+     },
+     "arl": {
+      "label": "The arl",
+      "options": [
+       "depreciates",
+       "appreciates"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lower Arland rates send capital out, lowering the demand for arls."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

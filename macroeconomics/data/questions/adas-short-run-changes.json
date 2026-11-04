@@ -1,0 +1,619 @@
+{
+ "stimuli": {
+  "adas-short-run-changes-s1": {
+   "kind": "data",
+   "title": "Country E over four years",
+   "invented": true,
+   "table": {
+    "caption": "Country E: price level (GDP deflator), real GDP and unemployment (invented data for practice)",
+    "cols": [
+     "Year",
+     "Price level (index)",
+     "Real GDP (billions of dollars)",
+     "Unemployment rate (%)"
+    ],
+    "rows": [
+     [
+      "1",
+      "100",
+      "800",
+      "5.0"
+     ],
+     [
+      "2",
+      "104",
+      "840",
+      "4.2"
+     ],
+     [
+      "3",
+      "110",
+      "820",
+      "5.5"
+     ],
+     [
+      "4",
+      "108",
+      "790",
+      "6.4"
+     ]
+    ]
+   }
+  },
+  "adas-short-run-changes-s2": {
+   "kind": "graph",
+   "title": "A shift in Country F's AD-AS graph",
+   "graph": {
+    "kind": "adas",
+    "show": {
+     "SRAS": -1
+    }
+   }
+  },
+  "adas-short-run-changes-s3": {
+   "kind": "text",
+   "title": "Two shocks at once in Merovia",
+   "text": "<p>Merovia is an invented country in long-run equilibrium. In the same quarter, two things happen: a worldwide rise in the price of fuel raises costs for most Merovian firms, and a boom in Merovia's main trading partner raises foreign purchases of Merovian goods.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-adas-short-run-changes-1",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "adas-short-run-changes-s1",
+   "q": "Using the table, calculate Country E's inflation rate from Year 2 to Year 3.",
+   "why": {
+    "correct": "$\\frac{110 - 104}{104} \\times 100 \\approx 5.8\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "inflation",
+     "args": [
+      104,
+      110
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "6 is the change in index points. The inflation rate divides it by the Year 2 index: $\\frac{6}{104} \\times 100$."
+     },
+     {
+      "from": {
+       "fn": "inflation",
+       "args": [
+        110,
+        104
+       ]
+      },
+      "why": "You divided by the Year 3 index. Measure the change from the earlier year, 104."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-2",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "adas-short-run-changes-s1",
+   "q": "Based on the table, which change from Year 1 to Year 2 best fits the data?",
+   "options": [
+    "AD shifted right: the price level and real GDP both rose",
+    "SRAS shifted left: the price level rose and real GDP fell",
+    "AD shifted left: the price level and real GDP both fell",
+    "SRAS shifted right: the price level fell and real GDP rose"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From Year 1 to Year 2 the price level and output both rose and unemployment fell: a rightward AD shift.",
+    "options": [
+     "Right: both rising together is the mark of a rise in AD, demand-pull inflation.",
+     "Real GDP rose from 800 to 840, so this is not a fall in SRAS.",
+     "Both rose from Year 1 to Year 2.",
+     "The price level rose from 100 to 104, so SRAS did not shift right."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-3",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "adas-short-run-changes-s1",
+   "q": "Based on the table, what most likely happened from Year 2 to Year 3?",
+   "options": [
+    "A positive demand shock: AD shifted right, raising the price level and real GDP",
+    "A negative supply shock: SRAS shifted left",
+    "A negative demand shock: AD shifted left, lowering the price level and real GDP",
+    "A positive supply shock: SRAS shifted right, lowering the price level"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The price level rose while real GDP fell and unemployment rose: the pattern of a leftward SRAS shift.",
+    "options": [
+     "Real GDP fell from 840 to 820, so AD did not rise.",
+     "Right: prices up, output down and unemployment up together is cost-push inflation, stagflation.",
+     "The price level rose, which a fall in AD alone would not do.",
+     "The price level rose from 104 to 110."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-4",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "adas-short-run-changes-s1",
+   "q": "Based on the table, which shift best explains the change from Year 3 to Year 4?",
+   "options": [
+    "SRAS shifted left: the price level fell and real GDP fell",
+    "SRAS shifted right: the price level fell and real GDP fell",
+    "AD shifted left: the price level and real GDP both fell",
+    "AD shifted right: unemployment rose"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "From Year 3 to Year 4 the price level fell (110 to 108), real GDP fell and unemployment rose: AD shifted left.",
+    "options": [
+     "A leftward SRAS shift raises the price level; here it fell.",
+     "A rightward SRAS shift raises real GDP; here it fell.",
+     "Right: both falling together, with unemployment rising, is a negative demand shock.",
+     "More AD raises output and lowers unemployment."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-5",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "adas-short-run-changes-s2",
+   "q": "According to the graph, what happens to the price level and real GDP after the shift?",
+   "options": [
+    "The price level and real GDP both rise",
+    "The price level falls and real GDP rises",
+    "The price level and real GDP both fall",
+    "The price level rises and real GDP falls"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The new SRAS crosses AD higher and further left: a higher price level and lower real GDP.",
+    "options": [
+     "Both rise when AD shifts right. Here SRAS shifted left.",
+     "That is a rightward SRAS shift, the opposite of the graph.",
+     "Both fall when AD shifts left. Here AD did not move.",
+     "Right: SRAS shifted left, so the equilibrium moved up and to the left along AD."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-6",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "adas-short-run-changes-s2",
+   "q": "What kind of inflation does the graph show?",
+   "options": [
+    "Cost-push inflation",
+    "Demand-pull inflation",
+    "Disinflation",
+    "Deflation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A leftward SRAS shift raises the price level while output falls: cost-push inflation.",
+    "options": [
+     "Right: rising costs shifted SRAS left and pushed the price level up.",
+     "Demand-pull comes from AD shifting right; AD did not move here.",
+     "Disinflation is a slowdown in inflation. Here the price level rises because of a cost increase.",
+     "Deflation is a falling price level. Here it rises."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-7",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "adas-short-run-changes-s2",
+   "q": "In the short run, what happens to Country F's unemployment rate after the shift in the graph?",
+   "options": [
+    "It falls, because the price level rises",
+    "It rises, as firms need fewer workers to produce less",
+    "It stays the same, because AD did not move",
+    "It falls, because higher costs force firms to hire more workers"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Real GDP falls, so firms need fewer workers and unemployment rises: higher prices and higher unemployment together, stagflation.",
+    "options": [
+     "A higher price level here comes with lower output, which cuts jobs.",
+     "Right: lower output means fewer jobs, so unemployment rises along with the price level.",
+     "Output fell, so employment falls too, whichever curve moved.",
+     "Higher costs lead firms to produce less, so they hire fewer workers."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-8",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "adas-short-run-changes-s3",
+   "q": "In Merovia, what is the short-run effect of the two shocks on the price level?",
+   "options": [
+    "It falls",
+    "It stays the same, because the shocks cancel",
+    "It rises",
+    "It depends on the sizes of the two shocks"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "SRAS shifts left and AD shifts right: each alone raises the price level, so together it surely rises.",
+    "options": [
+     "Neither shock lowers the price level; both raise it.",
+     "They cancel for output, perhaps, but both push the price level the same way: up.",
+     "Right: the fuel shock (SRAS left) and the export boom (AD right) both push the price level up.",
+     "The sizes matter for output, not for the price level, which both shocks raise."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-9",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "adas-short-run-changes-s3",
+   "q": "In Merovia, what is the short-run effect of the two shocks on real GDP?",
+   "options": [
+    "It rises, because exports are part of AD",
+    "It falls, because higher fuel costs reduce output",
+    "It stays the same, because the two effects cancel",
+    "It is indeterminate: it depends on which shift is larger"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "One shift pushes output down and the other up, so the net change in real GDP depends on their sizes.",
+    "options": [
+     "The export boom raises output, but the fuel shock lowers it at the same time.",
+     "The fuel shock lowers output, but the export boom raises it.",
+     "They cancel only if the shifts happen to be equal in effect; without sizes, it is indeterminate.",
+     "Right: the fuel shock lowers output and the export boom raises it."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-10",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.C",
+   "stimulus": "adas-short-run-changes-s3",
+   "q": "Show both of Merovia's shocks on the AD-AS graph and mark the new short-run equilibrium.",
+   "why": {
+    "correct": "The fuel shock shifts SRAS left and the export boom shifts AD right. The price level rises; the change in real GDP depends on the sizes."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SRAS",
+       "dir": "left"
+      },
+      {
+       "curve": "AD",
+       "dir": "right"
+      }
+     ],
+     "because": "higher fuel costs and more foreign purchases",
+     "outcome": {
+      "price level": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-11",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The world price of oil falls sharply. Shift the right curve and mark the new short-run equilibrium.",
+   "why": {
+    "correct": "Cheaper oil lowers costs, so SRAS shifts right: the price level falls and real GDP rises."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SRAS",
+       "dir": "right"
+      }
+     ],
+     "because": "a fall in the price of oil",
+     "outcome": {
+      "price level": "down",
+      "output": "up"
+     }
+    },
+    "slips": {
+     "AD": "Oil is an input for firms. A fall in its price lowers costs and shifts SRAS, not AD."
+    }
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-12",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Consumer confidence rises sharply and households spend more. Shift the right curve and mark the new short-run equilibrium.",
+   "why": {
+    "correct": "More consumption shifts AD right: the price level and real GDP both rise."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in consumer spending",
+     "outcome": {
+      "price level": "up",
+      "output": "up"
+     }
+    },
+    "slips": {
+     "SRAS": "Confidence changes how much households spend, which is aggregate demand. Firms' costs did not change."
+    }
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-13",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "How does demand-pull inflation differ from cost-push inflation in the short run?",
+   "options": [
+    "With demand-pull, real GDP rises; with cost-push, real GDP falls",
+    "With demand-pull, the price level falls; with cost-push, it rises",
+    "Demand-pull comes from higher wages; cost-push from more spending",
+    "They have the same effects, but different names"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both raise the price level. Demand-pull (AD right) raises output and lowers unemployment; cost-push (SRAS left) lowers output and raises unemployment.",
+    "options": [
+     "Right: AD right raises both prices and output, SRAS left raises prices but lowers output.",
+     "Both raise the price level. The difference is what happens to output.",
+     "Switched: higher wages raise costs (cost-push); more spending is demand-pull.",
+     "Their effects on output and unemployment are opposite."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-14",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A rise in interest rates at an unchanged price level leads firms to cancel plans for new equipment. What happens in the short run?",
+   "options": [
+    "SRAS shifts left: the price level rises and real GDP falls",
+    "AD shifts left: the price level falls, real GDP falls and unemployment rises",
+    "AD shifts left: the price level falls and unemployment falls",
+    "AD shifts right: firms have more cash to spend on other things"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Less investment at every price level shifts AD left: lower price level, lower real GDP, higher unemployment.",
+    "options": [
+     "Investment is spending, which is AD. Firms' production costs today did not change.",
+     "Right: less investment is a negative demand shock.",
+     "Lower output means fewer jobs, so unemployment rises.",
+     "Canceled investment is less spending, which shifts AD left."
+    ]
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-15",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain the short-run effect of a rise in nominal wages across the economy.",
+   "why": {
+    "correct": "Higher wages raise firms' costs, so SRAS shifts left: the price level rises and real output falls."
+   },
+   "specific": {
+    "frame": "Nominal wages rise, so firms' costs ___ and ___ shifts to the ___. The price level ___ and real output ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Nominal wages rise, so firms' costs increase and SRAS shifts to the left because firms supply less at each price level. The price level rises and real output falls.",
+    "slots": {
+     "change": {
+      "label": "Costs",
+      "options": [
+       "rise",
+       "fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Wages are the main input cost, so higher wages raise costs."
+      }
+     },
+     "curve": {
+      "label": "The curve",
+      "options": [
+       "SRAS",
+       "AD"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A wage is a cost for firms; it shifts supply."
+      }
+     },
+     "direction": {
+      "label": "Which way",
+      "options": [
+       "left",
+       "right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher costs mean less output supplied at each price level."
+      }
+     },
+     "price": {
+      "label": "Price level",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "SRAS left moves the equilibrium up along AD."
+      }
+     },
+     "output": {
+      "label": "Real output",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Moving up and to the left along AD lowers output."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-16",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the chain in order, from a boom in a trading partner to unemployment in the short run.",
+   "options": [
+    "Foreign incomes rise",
+    "Foreigners buy more of our exports",
+    "Net exports rise and AD shifts right",
+    "Real GDP and the price level rise",
+    "Firms hire more workers and unemployment falls"
+   ],
+   "why": {
+    "correct": "Each link causes the next: more exports raise AD, output rises, and producing more needs more workers."
+   }
+  },
+  {
+   "id": "mac-adas-short-run-changes-17",
+   "unit": "unit-3",
+   "topic": "adas-short-run-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which events would cause stagflation, a higher price level together with lower real output, in the short run? Select all that apply.",
+   "options": [
+    "A sharp rise in the price of energy",
+    "A drought that ruins harvests across the country",
+    "A rise in government purchases",
+    "A fall in household wealth",
+    "A new technology that raises output per worker"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Stagflation comes from a negative supply shock: SRAS shifts left.",
+    "options": [
+     "Right: higher input costs shift SRAS left.",
+     "Right: it raises food and input costs, shifting SRAS left.",
+     "More spending shifts AD right: prices and output both rise.",
+     "Less spending shifts AD left: prices and output both fall.",
+     "Higher productivity shifts SRAS right: prices fall and output rises."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "fractional-reserve": {
+  "def": "A banking system in which banks keep only part of their deposits as reserves (vault cash and deposits at the central bank) and lend out the rest."
+ },
+ "balance-sheet": {
+  "def": "A table of what a bank owns (assets: reserves, loans, bonds) and what it owes (liabilities: deposits), with owners' equity balancing the two sides. Also called a T-account."
+ },
+ "required-reserves": {
+  "def": "The reserves a bank must hold: its deposits times the required reserve ratio. Excess reserves are any reserves above that amount, which the bank can lend."
+ },
+ "money-multiplier": {
+  "def": "The most the money supply can grow for each dollar of new excess reserves: 1 divided by the required reserve ratio. With a ratio of 0.1 it is 10."
+ },
+ "money-creation": {
+  "def": "Banks create money when they lend excess reserves, because each loan becomes a new deposit; as loans are spent and redeposited, the money supply expands by a multiple."
+ },
+ "money-supply": {
+  "def": "The total amount of money in an economy, usually measured by M1. Banks expand it when they lend, and the central bank influences it."
+ },
+ "central-bank": {
+  "def": "The institution that oversees a country's banks and money. In the United States it is the Federal Reserve, which sets reserve requirements and interest rate policy."
+ },
+ "limited-reserves": {
+  "def": "A banking system in which banks hold few reserves beyond what the reserve requirement makes them hold, so the requirement limits how much they can lend and the money multiplier applies. The central bank changes interest rates there by changing the quantity of reserves and so the money supply."
+ }
+}

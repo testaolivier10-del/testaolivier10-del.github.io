@@ -1,0 +1,11 @@
+{
+ "axis": {
+  "def": "One of the two number lines of a graph: the horizontal axis runs across the bottom and the vertical axis runs up the side. Each is labeled with the variable it measures."
+ },
+ "coordinate": {
+  "def": "A point on a graph written as an ordered pair (horizontal value, vertical value), such as (300, 10)."
+ },
+ "direct-relationship": {
+  "def": "A direct (positive) relationship: two variables rise or fall together. In an inverse (negative) relationship, one rises as the other falls."
+ }
+}

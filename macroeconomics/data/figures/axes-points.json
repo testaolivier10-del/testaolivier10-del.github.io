@@ -1,0 +1,12 @@
+{
+ "axes-points-plane": {
+  "file": "figures/axes-points-plane.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 410,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A labeled graph with hours studied across the bottom and test score up the side, showing three points, Q (2, 60), R (5, 75) and T (8, 85), each with dashed lines to both axes; the scores rise as hours rise."
+ }
+}

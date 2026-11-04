@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 460" width="820" height="460" role="img" aria-labelledby="price-indices-inflation-basket-t price-indices-inflation-basket-d" font-family="Arial, Helvetica, sans-serif">
+<title id="price-indices-inflation-basket-t">A market basket and the consumer price index</title>
+<desc id="price-indices-inflation-basket-d">A bar chart of invented data: the cost of the same market basket was $200, $220, $242 in 2024 (base), 2025, 2026. Divided by the base-year cost and multiplied by 100, the consumer price index is 100, 110, 121. The inflation rate from 2024 to 2025 is 10 percent and from 2025 to 2026 is also 10 percent, even though the index rose 10 points and then 11 points.</desc>
+<defs><marker id="price-indices-inflation-basket-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="price-indices-inflation-basket-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="price-indices-inflation-basket-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="price-indices-inflation-basket-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="820" height="460" fill="#FFFFFF"/>
+<text x="410" y="30" font-size="17" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="410" dy="0">Same basket, three years: the CPI compares each cost with the base year</tspan></text>
+<line x1="110" y1="390" x2="760" y2="390" stroke="#1F2A28" stroke-width="2"/>
+<line x1="110" y1="390" x2="110" y2="80" stroke="#1F2A28" stroke-width="2"/>
+<line x1="105" y1="390" x2="110" y2="390" stroke="#1F2A28" stroke-width="2"/>
+<text x="101" y="395" font-size="12" text-anchor="end" fill="#5B6664"><tspan x="101" dy="0">$0</tspan></text>
+<line x1="105" y1="332.3" x2="110" y2="332.3" stroke="#1F2A28" stroke-width="2"/>
+<text x="101" y="337.3" font-size="12" text-anchor="end" fill="#5B6664"><tspan x="101" dy="0">$50</tspan></text>
+<line x1="110" y1="332.3" x2="760" y2="332.3" stroke="#DDE2E0" stroke-width="1"/>
+<line x1="105" y1="274.6" x2="110" y2="274.6" stroke="#1F2A28" stroke-width="2"/>
+<text x="101" y="279.6" font-size="12" text-anchor="end" fill="#5B6664"><tspan x="101" dy="0">$100</tspan></text>
+<line x1="110" y1="274.6" x2="760" y2="274.6" stroke="#DDE2E0" stroke-width="1"/>
+<line x1="105" y1="216.9" x2="110" y2="216.9" stroke="#1F2A28" stroke-width="2"/>
+<text x="101" y="221.9" font-size="12" text-anchor="end" fill="#5B6664"><tspan x="101" dy="0">$150</tspan></text>
+<line x1="110" y1="216.9" x2="760" y2="216.9" stroke="#DDE2E0" stroke-width="1"/>
+<line x1="105" y1="159.2" x2="110" y2="159.2" stroke="#1F2A28" stroke-width="2"/>
+<text x="101" y="164.2" font-size="12" text-anchor="end" fill="#5B6664"><tspan x="101" dy="0">$200</tspan></text>
+<line x1="110" y1="159.2" x2="760" y2="159.2" stroke="#DDE2E0" stroke-width="1"/>
+<line x1="105" y1="101.5" x2="110" y2="101.5" stroke="#1F2A28" stroke-width="2"/>
+<text x="101" y="106.5" font-size="12" text-anchor="end" fill="#5B6664"><tspan x="101" dy="0">$250</tspan></text>
+<line x1="110" y1="101.5" x2="760" y2="101.5" stroke="#DDE2E0" stroke-width="1"/>
+<text x="34" y="240" font-size="14" text-anchor="middle" fill="#1F2A28" transform="rotate(-90 34 240)">Cost of the market basket</text>
+<text x="435" y="440" font-size="14" text-anchor="middle" fill="#1F2A28"><tspan x="435" dy="0">Year (invented data)</tspan></text>
+<rect x="170" y="159.2" width="120" height="230.8" rx="2" fill="#F2F4F3" stroke="#1F2A28" stroke-width="2"/>
+<text x="230" y="129.2" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="230" dy="0">$200</tspan></text>
+<text x="230" y="149.2" font-size="14" text-anchor="middle" fill="#355A0A" font-weight="bold"><tspan x="230" dy="0">CPI 100</tspan></text>
+<text x="230" y="412" font-size="14" text-anchor="middle" fill="#1F2A28"><tspan x="230" dy="0">2024 (base)</tspan></text>
+<rect x="370" y="136.2" width="120" height="253.8" rx="2" fill="#EEF4E0" stroke="#355A0A" stroke-width="2"/>
+<text x="430" y="106.2" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="430" dy="0">$220</tspan></text>
+<text x="430" y="126.2" font-size="14" text-anchor="middle" fill="#355A0A" font-weight="bold"><tspan x="430" dy="0">CPI 110</tspan></text>
+<text x="430" y="412" font-size="14" text-anchor="middle" fill="#1F2A28"><tspan x="430" dy="0">2025</tspan></text>
+<text x="330" y="196.2" font-size="13" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="330" dy="0">+10%</tspan><tspan x="330" dy="16.25">inflation</tspan></text>
+<rect x="570" y="110.8" width="120" height="279.2" rx="2" fill="#EEF4E0" stroke="#355A0A" stroke-width="2"/>
+<text x="630" y="80.8" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="630" dy="0">$242</tspan></text>
+<text x="630" y="100.8" font-size="14" text-anchor="middle" fill="#355A0A" font-weight="bold"><tspan x="630" dy="0">CPI 121</tspan></text>
+<text x="630" y="412" font-size="14" text-anchor="middle" fill="#1F2A28"><tspan x="630" dy="0">2026</tspan></text>
+<text x="530" y="170.8" font-size="13" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="530" dy="0">+10%</tspan><tspan x="530" dy="16.25">inflation</tspan></text>
+</svg>

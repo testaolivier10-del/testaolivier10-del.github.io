@@ -1,0 +1,885 @@
+{
+ "stimuli": {
+  "real-nominal-gdp-s1": {
+   "kind": "data",
+   "title": "A two-good economy over two years",
+   "invented": true,
+   "table": {
+    "caption": "Country X produces only apples and bread; Year 1 is the base year (invented data for practice)",
+    "cols": [
+     "Year",
+     "Apples (quantity)",
+     "Price of apples",
+     "Bread (loaves)",
+     "Price of bread"
+    ],
+    "rows": [
+     [
+      "1",
+      "100",
+      "\\$2.00",
+      "50",
+      "\\$4.00"
+     ],
+     [
+      "2",
+      "120",
+      "\\$2.50",
+      "50",
+      "\\$5.00"
+     ]
+    ]
+   }
+  },
+  "real-nominal-gdp-s2": {
+   "kind": "data",
+   "title": "Nominal GDP and the GDP deflator in Halvet",
+   "invented": true,
+   "table": {
+    "caption": "Halvet, Year 1 is the base year (nominal GDP in billions of dollars; invented data for practice)",
+    "cols": [
+     "Year",
+     "Nominal GDP",
+     "GDP deflator"
+    ],
+    "rows": [
+     [
+      "1",
+      "800",
+      "100"
+     ],
+     [
+      "2",
+      "900",
+      "120"
+     ],
+     [
+      "3",
+      "990",
+      "110"
+     ]
+    ]
+   }
+  },
+  "real-nominal-gdp-s3": {
+   "kind": "text",
+   "title": "A headline about record GDP",
+   "text": "<p>A news site in Country Q reports: \"GDP hits a record! Nominal GDP rose 6% this year, the biggest jump in a decade.\" Further down, the article notes that the GDP deflator rose 7% over the same year and that the population grew 1%.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-real-nominal-gdp-1",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is nominal GDP in Year 2, in dollars?",
+   "stimulus": "real-nominal-gdp-s1",
+   "why": {
+    "correct": "Nominal GDP uses each year's own prices: $120 \\times 2.50 + 50 \\times 5 = 300 + 250 = 550$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        120,
+        2.5
+       ]
+      },
+      {
+       "fn": "mul",
+       "args": [
+        50,
+        5
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          120,
+          2
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          50,
+          4
+         ]
+        }
+       ]
+      },
+      "why": "That uses Year 1 prices, which gives real GDP. Nominal GDP values Year 2 output at Year 2 prices."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-2",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is real GDP in Year 2, measured in Year 1 prices, in dollars?",
+   "stimulus": "real-nominal-gdp-s1",
+   "why": {
+    "correct": "Real GDP values this year's quantities at base-year prices: $120 \\times 2 + 50 \\times 4 = 240 + 200 = 440$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        120,
+        2
+       ]
+      },
+      {
+       "fn": "mul",
+       "args": [
+        50,
+        4
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          120,
+          2.5
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          50,
+          5
+         ]
+        }
+       ]
+      },
+      "why": "That is nominal GDP, at Year 2 prices. Real GDP keeps prices at the base year so only quantities change."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          100,
+          2
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          50,
+          4
+         ]
+        }
+       ]
+      },
+      "why": "That uses Year 1 quantities as well as Year 1 prices: it is Year 1 GDP. Use Year 2 quantities."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-3",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is the GDP deflator in Year 2?",
+   "stimulus": "real-nominal-gdp-s1",
+   "why": {
+    "correct": "Deflator $= \\frac{\\text{nominal GDP}}{\\text{real GDP}} \\times 100 = \\frac{550}{440} \\times 100 = 125$. Prices of the goods in GDP are 25% above the base year."
+   },
+   "numeric": {
+    "from": {
+     "fn": "deflator",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          120,
+          2.5
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          50,
+          5
+         ]
+        }
+       ]
+      },
+      {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          120,
+          2
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          50,
+          4
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "deflator",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            120,
+            2
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            50,
+            4
+           ]
+          }
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            120,
+            2.5
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            50,
+            5
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      "why": "The fraction is upside down: you divided real by nominal. The deflator is nominal over real, times 100, and it is above 100 when prices have risen."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            120,
+            2.5
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            50,
+            5
+           ]
+          }
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            120,
+            2
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            50,
+            4
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      "why": "You divided but did not multiply by 100. The deflator is an index, with the base year at 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-4",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "By what percent did real GDP grow from Year 1 to Year 2?",
+   "stimulus": "real-nominal-gdp-s1",
+   "why": {
+    "correct": "Real GDP was $400$ in Year 1 (the base year, so real equals nominal) and $440$ in Year 2: $\\frac{440 - 400}{400} \\times 100 = 10\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "growth",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          100,
+          2
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          50,
+          4
+         ]
+        }
+       ]
+      },
+      {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          120,
+          2
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          50,
+          4
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "growth",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            100,
+            2
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            50,
+            4
+           ]
+          }
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            120,
+            2.5
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            50,
+            5
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      "why": "That is the growth of nominal GDP, which includes the price rise. Compare real GDP in the two years to see how much output grew."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-5",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is Halvet's real GDP in Year 2, in billions of dollars?",
+   "stimulus": "real-nominal-gdp-s2",
+   "why": {
+    "correct": "Real GDP $= \\frac{\\text{nominal GDP}}{\\text{deflator}} \\times 100 = \\frac{900}{120} \\times 100 = 750$ billion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "realValue",
+     "args": [
+      900,
+      120
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "nominalValue",
+       "args": [
+        900,
+        120
+       ]
+      },
+      "why": "You multiplied by the deflator. Prices rose, so to remove the price rise divide by the deflator, then multiply by 100."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        900,
+        120
+       ]
+      },
+      "why": "You divided by the deflator but did not multiply by 100. The deflator is an index on a base of 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-6",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Did Halvet's output of goods and services grow from Year 1 to Year 2?",
+   "stimulus": "real-nominal-gdp-s2",
+   "options": [
+    "No: real GDP fell from 800 to 750",
+    "Yes: nominal GDP rose from 800 to 900",
+    "Yes: the deflator rose from 100 to 120",
+    "The data are not enough to say"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "To judge whether output grew, compare real GDP. Nominal GDP can rise with no growth at all if prices rise enough.",
+    "options": [
+     "Right: nominal GDP rose only because prices rose 20%; output itself fell.",
+     "Nominal GDP mixes output and prices; here the whole rise, and more, is higher prices.",
+     "A rising deflator shows prices went up, not output.",
+     "Nominal GDP and the deflator are all you need: divide to get real GDP."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-7",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "What is the growth rate of Halvet's real GDP from Year 2 to Year 3?",
+   "stimulus": "real-nominal-gdp-s2",
+   "why": {
+    "correct": "Real GDP in Year 3 is $\\frac{990}{110} \\times 100 = 900$. Growth $= \\frac{900 - 750}{750} \\times 100 = 20\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "growth",
+     "args": [
+      {
+       "fn": "realValue",
+       "args": [
+        900,
+        120
+       ]
+      },
+      {
+       "fn": "realValue",
+       "args": [
+        990,
+        110
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "growth",
+       "args": [
+        900,
+        990
+       ]
+      },
+      "why": "That is nominal GDP growth. Convert each year to real GDP first (750 and 900), then find the percent change."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-8",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "What happened to prices of the goods in Halvet's GDP from Year 2 to Year 3?",
+   "stimulus": "real-nominal-gdp-s2",
+   "options": [
+    "They stayed the same, because both years are after the base year",
+    "They fell on average, because the deflator fell from 120 to 110",
+    "They rose, because nominal GDP rose",
+    "They rose 10%, the change in nominal GDP"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The GDP deflator is a price index for everything in GDP, so its percent change measures inflation or, here, deflation.",
+    "options": [
+     "Being after the base year says nothing about the change between two later years.",
+     "Right: a falling deflator is deflation for the goods in GDP, about 8.3%.",
+     "Nominal GDP rose because real output rose a lot; the deflator, the price measure, fell.",
+     "The change in nominal GDP mixes prices and output; the deflator shows prices fell."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-9",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Based on the full article, what happened to Country Q's real GDP this year?",
+   "stimulus": "real-nominal-gdp-s3",
+   "options": [
+    "It rose by about 13%",
+    "It rose by about 5%, after population growth",
+    "It fell by about 1%",
+    "It rose by about 6%, a record"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Nominal GDP growth is about real growth plus inflation, so real growth is about nominal growth minus the change in the deflator.",
+    "options": [
+     "A rising deflator is subtracted from nominal growth, not added.",
+     "Population growth matters for output per person, but the first step is removing price changes.",
+     "Right: real growth is about nominal growth minus the rise in the deflator: $6 - 7 = -1\\%$.",
+     "Six percent is the nominal rise, which includes higher prices."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-10",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Which measure would best show whether the typical living standard in Country Q rose this year?",
+   "stimulus": "real-nominal-gdp-s3",
+   "options": [
+    "Nominal GDP",
+    "The GDP deflator",
+    "Nominal GDP per capita",
+    "Real GDP per capita"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Real GDP per capita adjusts for both prices and population. Here real GDP fell about 1% and the population grew 1%, so it fell about 2%.",
+    "options": [
+     "Nominal GDP includes the 7% rise in prices and ignores population.",
+     "The deflator is a price index; it says nothing about output per person.",
+     "Dividing by population helps, but nominal figures still include the rise in prices.",
+     "Right: it removes price changes and divides by population, giving output per person."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-11",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why is the headline misleading?",
+   "stimulus": "real-nominal-gdp-s3",
+   "options": [
+    "The rise in nominal GDP came from higher prices, not more output",
+    "Nominal GDP leaves out government purchases",
+    "A 6% rise in nominal GDP is too small to be a record",
+    "GDP can't rise in a year when population grows"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Headlines about nominal GDP mix output and prices. Divide by the deflator to see what happened to production.",
+    "options": [
+     "Right: with prices up 7%, the 6% rise in nominal GDP hides a fall in real output.",
+     "Nominal GDP includes C, I, G and net exports; the problem is prices.",
+     "Whether it is a record in nominal terms is not the issue; nominal GDP is the wrong measure of output.",
+     "GDP can rise with population; the issue is that prices rose more than GDP."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-12",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A country's nominal GDP is 600 billion dollars and its real GDP is 500 billion dollars. What is its GDP deflator?",
+   "why": {
+    "correct": "$\\frac{600}{500} \\times 100 = 120$. Prices of the goods in GDP are 20% above the base year."
+   },
+   "numeric": {
+    "from": {
+     "fn": "deflator",
+     "args": [
+      600,
+      500
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "deflator",
+       "args": [
+        500,
+        600
+       ]
+      },
+      "why": "The fraction is upside down: real over nominal. The deflator is nominal over real, times 100."
+     },
+     {
+      "value": 1.2,
+      "why": "You divided but did not multiply by 100. A deflator is an index, so the base year is 100, not 1."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-13",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "In a year before the base year, a country's nominal GDP is 400 billion dollars and its GDP deflator is 80. What is its real GDP, in billions of dollars?",
+   "why": {
+    "correct": "$\\frac{400}{80} \\times 100 = 500$ billion. Prices were lower than in the base year, so real GDP (at base-year prices) is larger than nominal GDP."
+   },
+   "numeric": {
+    "from": {
+     "fn": "realValue",
+     "args": [
+      400,
+      80
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "nominalValue",
+       "args": [
+        400,
+        80
+       ]
+      },
+      "why": "You multiplied by the deflator. Divide by it, then multiply by 100: with a deflator below 100, real GDP comes out above nominal."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-14",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In the base year, how do nominal GDP and real GDP compare?",
+   "options": [
+    "They can't be compared in the base year",
+    "They are equal, and the GDP deflator is 100",
+    "Nominal GDP is larger, because it uses current prices",
+    "Real GDP is larger, because it removes inflation"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Real GDP uses base-year prices and nominal GDP uses current prices. In the base year these are the same prices, so the deflator is 100.",
+    "options": [
+     "They can: they are equal by definition.",
+     "Right: in the base year, current prices are the base-year prices.",
+     "In the base year current prices are base-year prices, so the two are the same.",
+     "There is nothing to remove in the base year: the prices are the same."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-15",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Why do economists use real GDP rather than nominal GDP to measure changes in output over time?",
+   "options": [
+    "Real GDP is measured in current prices",
+    "Real GDP is larger than nominal GDP in each year",
+    "Real GDP holds prices fixed, so only quantities move it",
+    "Real GDP includes used goods and transfers"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Valuing every year's output at the same base-year prices means changes in real GDP reflect changes in production.",
+    "options": [
+     "That is nominal GDP; real GDP uses base-year prices.",
+     "Real GDP is smaller than nominal after the base year when prices have risen.",
+     "Right: nominal GDP can rise from higher prices alone; real GDP removes that.",
+     "Real and nominal GDP count the same goods; only the prices used differ."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-16",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "How does the GDP deflator differ from the consumer price index?",
+   "options": [
+    "It measures the cost of a fixed basket bought by typical households",
+    "It is measured in dollars, not as an index",
+    "It includes the prices of imported consumer goods",
+    "It prices everything produced in the country, not a basket"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The deflator is a price index for everything in GDP; the CPI is a price index for a basket of consumer goods and services.",
+    "options": [
+     "That describes the CPI.",
+     "Both are indexes with a base year of 100.",
+     "Imports are not produced in the country, so they are outside GDP and its deflator; the CPI includes them.",
+     "Right: the deflator includes investment and government purchases and leaves out imports; the CPI prices what households buy, imports included."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-nominal-gdp-17",
+   "unit": "unit-2",
+   "topic": "real-nominal-gdp",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "Nominal GDP rose last year. Which of these could explain the rise? Select all that apply.",
+   "options": [
+    "Prices fell 4% while output stayed the same",
+    "Output rose while prices stayed the same",
+    "Prices rose while output stayed the same",
+    "Prices rose 5% while output fell 2%",
+    "Prices and output both fell",
+    "Prices stayed the same while output fell"
+   ],
+   "correct": [
+    1,
+    2,
+    3
+   ],
+   "why": {
+    "correct": "Nominal GDP is output times current prices, so it can rise from more output, higher prices or both. Only real GDP isolates output.",
+    "options": [
+     "Lower prices on the same output mean lower nominal GDP.",
+     "Right: more output at the same prices raises nominal GDP.",
+     "Right: higher prices on the same output raise nominal GDP.",
+     "Right: nominal GDP rises by about $5 - 2 = 3\\%$.",
+     "If both fell, nominal GDP would fall too.",
+     "At constant prices, less output means lower nominal GDP."
+    ]
+   }
+  }
+ ]
+}

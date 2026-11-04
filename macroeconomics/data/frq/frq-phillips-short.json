@@ -1,0 +1,93 @@
+{
+ "id": "frq-phillips-short",
+ "type": "short",
+ "points": 5,
+ "title": "A fall in consumer confidence in Sorell: the Phillips curves in the short and long run",
+ "units": [
+  "unit-5"
+ ],
+ "topics": [
+  "phillips-curve"
+ ],
+ "practices": [
+  "4.A",
+  "4.B",
+  "2.A",
+  "3.A"
+ ],
+ "scenario": "Sorell, an invented country, is in long-run equilibrium with unemployment at its natural rate of 4 percent and actual and expected inflation of 3 percent. Then a sharp fall in consumer confidence lowers consumption spending.",
+ "parts": [
+  {
+   "label": "A",
+   "points": 3,
+   "type": "graph",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the short-run and long-run Phillips curves. Label the starting point A. <b>Show</b> the short-run effect of the fall in consumption by placing point B.",
+   "graph": {
+    "kind": "phillips",
+    "do": [
+     "label",
+     "point"
+    ],
+    "pointLabel": "B",
+    "key": {
+     "point": {
+      "on": "SRPC",
+      "x": "up",
+      "y": "down"
+     }
+    }
+   },
+   "rubric": [
+    {
+     "point": "Correctly labeled axes and curves: Inflation rate on the vertical axis, Unemployment rate on the horizontal axis, a downward-sloping SRPC and a vertical LRPC",
+     "accept": [
+      "SRPC1 for the curve"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "LRPC vertical at 4 percent, with point A where SRPC crosses LRPC at 3 percent inflation",
+     "accept": [
+      "4 percent and 3 percent marked on the axes"
+     ]
+    },
+    {
+     "point": "Point B on the same SRPC, below and to the right of A: inflation below 3 percent and unemployment above 4 percent",
+     "accept": [
+      "a movement along SRPC shown with an arrow"
+     ],
+     "auto": "point"
+    }
+   ],
+   "sample": "The vertical axis is the Inflation rate and the horizontal axis the Unemployment rate. LRPC is vertical at 4 percent. SRPC slopes down and crosses LRPC at point A, at 3 percent inflation. Point B is on the same SRPC, down and to the right of A: unemployment above 4 percent and inflation below 3 percent."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>Explain</b> why the economy moves along the short-run Phillips curve to point B rather than shifting the curve.",
+   "rubric": [
+    {
+     "point": "Explains that the fall in consumption lowers AD, so output falls (unemployment rises) and prices rise more slowly (inflation falls), while expected inflation and costs are unchanged, so the economy moves along SRPC",
+     "accept": [
+      "a change in AD is a movement along the SRPC; only supply shocks or changes in expected inflation shift it"
+     ]
+    }
+   ],
+   "sample": "Lower consumption shifts AD left. Real output falls, so unemployment rises, and the price level rises more slowly, so inflation falls. Because expected inflation and production costs have not changed, the short-run trade-off is the same, so the economy moves along SRPC to B instead of the curve shifting."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "Assume no policy action, and that households and firms come to expect the lower inflation rate. <b>Identify</b> the direction the short-run Phillips curve shifts in the long run, and Sorell's long-run unemployment rate.",
+   "rubric": [
+    {
+     "point": "The SRPC shifts to the left (down), and unemployment returns to 4 percent, the natural rate",
+     "accept": [
+      "SRPC shifts down; unemployment at the natural rate on LRPC"
+     ]
+    }
+   ],
+   "sample": "As expected inflation falls, the SRPC shifts to the left, and unemployment returns to the natural rate of 4 percent on LRPC, now with inflation below 3 percent."
+  }
+ ]
+}

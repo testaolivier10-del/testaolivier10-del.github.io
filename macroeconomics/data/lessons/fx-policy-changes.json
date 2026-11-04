@@ -1,0 +1,83 @@
+{
+ "topic": "fx-policy-changes",
+ "hook": "When a central bank raises interest rates, the news often says its currency \"strengthened\" the same afternoon. Nothing about the country's goods changed in a few hours. What changed is how attractive its bonds are to savers around the world, and savers have to buy the currency to buy the bonds.",
+ "prereq": [
+  {
+   "q": "A bond pays a nominal interest rate of 5% and expected inflation is 2%. What is the real interest rate?",
+   "options": [
+    "3%",
+    "7%",
+    "2.5%",
+    "10%"
+   ],
+   "correct": 0,
+   "why": "Real rate = nominal rate - expected inflation: 5 - 2 = 3 percent.",
+   "review": "nominal-real-rates"
+  },
+  {
+   "q": "In an ample-reserves framework, how does a central bank raise its policy rate?",
+   "options": [
+    "It raises administered rates, such as the interest rate it pays on reserves",
+    "It sells government bonds to shrink the money supply",
+    "It raises the reserve requirement",
+    "It asks the government to raise taxes"
+   ],
+   "correct": 0,
+   "why": "With ample reserves, the central bank moves the policy rate by changing the administered rates it sets.",
+   "review": "monetary-policy"
+  },
+  {
+   "q": "In the market for euros, who demands euros?",
+   "options": [
+    "People outside Europe buying European goods, services or assets",
+    "Europeans buying goods from the United States",
+    "European banks lending to European firms",
+    "European governments collecting taxes"
+   ],
+   "correct": 0,
+   "why": "Demand for a currency comes from people abroad who want things priced in it.",
+   "review": "foreign-exchange-market"
+  }
+ ],
+ "figure": {
+  "figure": "fx-policy-changes-demand-shift",
+  "caption": "Higher US real interest rates relative to Europe raise the demand for dollars: D shifts right and the dollar appreciates from XR1 to XR2."
+ },
+ "chain": [
+  {
+   "cause": "A country's real interest rates rise relative to other countries'",
+   "effect": "its bonds and other assets pay savers more than those abroad"
+  },
+  {
+   "cause": "Savers abroad want more of its assets",
+   "effect": "they need its currency, so the demand for its currency shifts right"
+  },
+  {
+   "cause": "The demand for the currency rises",
+   "effect": "its price in other currencies rises: the currency appreciates"
+  },
+  {
+   "cause": "Savers abroad pay for that currency with their own",
+   "effect": "the supply of the other currency rises in its own market, so the other currency depreciates: the mirror change"
+  }
+ ],
+ "ideas": [
+  "Four shifters to know: <b>tastes</b> for a country's goods; <b>relative incomes</b> (higher income at home raises imports, so the supply of the home currency rises); <b>relative price levels</b> (higher inflation at home lowers demand for the home currency and raises its supply); <b>relative interest rates</b> (a higher real rate at home raises demand for the home currency).",
+  "Expectations matter too: if traders expect a currency to appreciate, they buy it now, and it appreciates now.",
+  "Policy works through these shifters. Contractionary monetary policy (raising administered rates with ample reserves, or selling bonds with limited reserves) and borrowing to fund a budget deficit both raise interest rates, so the currency appreciates.",
+  "When demand and supply both shift, say what is certain (the price) and call the other indeterminate."
+ ],
+ "misconception": {
+  "wrong": "When a country's income rises, its currency appreciates, because its economy is stronger.",
+  "right": "Higher income at home raises spending on imports. Residents sell their currency to buy foreign goods, so the supply of the home currency shifts right and it depreciates, other things equal."
+ },
+ "check": [
+  "mac-fx-policy-changes-1",
+  "mac-fx-policy-changes-2",
+  "mac-fx-policy-changes-3",
+  "mac-fx-policy-changes-4",
+  "mac-fx-policy-changes-9",
+  "mac-fx-policy-changes-14"
+ ],
+ "summary": "A currency's value moves when its demand or supply shifts, and four shifters do most of the work: tastes, relative incomes, relative price levels and relative real interest rates, plus expectations. Higher real interest rates at home raise demand for the home currency, so it appreciates; higher inflation or faster income growth at home push it down. Policy acts through these: anything that raises a country's interest rates, such as contractionary monetary policy or more government borrowing, tends to make its currency appreciate. Always name the curve that shifts and say which way."
+}

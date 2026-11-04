@@ -1,0 +1,12 @@
+{
+ "lras-curve": {
+  "file": "figures/lras-curve.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two graphs with the price level on the vertical axis and real GDP on the horizontal axis. Left: a vertical LRAS at full-employment output YF; price levels PL1 and PL2 both go with the same output. Right: LRAS1 at YF1 shifts right to LRAS2 at YF2."
+ }
+}

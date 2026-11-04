@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 360" width="820" height="360" role="img" aria-labelledby="inflation-costs-winners-t inflation-costs-winners-d" font-family="Arial, Helvetica, sans-serif">
+<title id="inflation-costs-winners-t">Who gains and who loses from unexpected inflation</title>
+<desc id="inflation-costs-winners-d">A table of who gains and who loses when inflation turns out different from what people expected. Borrower with a fixed-rate loan: gains when inflation is higher than expected, loses when it is lower than expected. Lender or saver at a fixed rate: loses when inflation is higher than expected, gains when it is lower than expected. Person on a fixed income: loses when inflation is higher than expected, gains when it is lower than expected. Worker whose pay rises with the CPI: about even when inflation is higher than expected, about even when it is lower than expected.</desc>
+<defs><marker id="inflation-costs-winners-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="inflation-costs-winners-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="inflation-costs-winners-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="inflation-costs-winners-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="820" height="360" fill="#FFFFFF"/>
+<text x="410" y="30" font-size="18" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="410" dy="0">Inflation that people did not expect moves purchasing power</tspan></text>
+<rect x="400" y="52" width="190" height="60" rx="0" fill="#F2F4F3" stroke="#1F2A28" stroke-width="1.5"/>
+<rect x="600" y="52" width="190" height="60" rx="0" fill="#F2F4F3" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="495" y="77" font-size="14" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="495" dy="0">Inflation higher</tspan><tspan x="495" dy="17.5">than expected</tspan></text>
+<text x="695" y="77" font-size="14" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="695" dy="0">Inflation lower</tspan><tspan x="695" dy="17.5">than expected</tspan></text>
+<rect x="20" y="112" width="380" height="56" rx="0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="36" y="146" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="36" dy="0">Borrower with a fixed-rate loan</tspan></text>
+<rect x="400" y="112" width="190" height="56" rx="0" fill="#EEF4E0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="495" y="146" font-size="16" text-anchor="middle" fill="#355A0A" font-weight="bold"><tspan x="495" dy="0">gains</tspan></text>
+<rect x="600" y="112" width="190" height="56" rx="0" fill="#FBEDE3" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="695" y="146" font-size="16" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="695" dy="0">loses</tspan></text>
+<rect x="20" y="168" width="380" height="56" rx="0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="36" y="202" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="36" dy="0">Lender or saver at a fixed rate</tspan></text>
+<rect x="400" y="168" width="190" height="56" rx="0" fill="#FBEDE3" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="495" y="202" font-size="16" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="495" dy="0">loses</tspan></text>
+<rect x="600" y="168" width="190" height="56" rx="0" fill="#EEF4E0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="695" y="202" font-size="16" text-anchor="middle" fill="#355A0A" font-weight="bold"><tspan x="695" dy="0">gains</tspan></text>
+<rect x="20" y="224" width="380" height="56" rx="0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="36" y="258" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="36" dy="0">Person on a fixed income</tspan></text>
+<rect x="400" y="224" width="190" height="56" rx="0" fill="#FBEDE3" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="495" y="258" font-size="16" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="495" dy="0">loses</tspan></text>
+<rect x="600" y="224" width="190" height="56" rx="0" fill="#EEF4E0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="695" y="258" font-size="16" text-anchor="middle" fill="#355A0A" font-weight="bold"><tspan x="695" dy="0">gains</tspan></text>
+<rect x="20" y="280" width="380" height="56" rx="0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="36" y="314" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="36" dy="0">Worker whose pay rises with the CPI</tspan></text>
+<rect x="400" y="280" width="190" height="56" rx="0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="495" y="314" font-size="16" text-anchor="middle" fill="#5B6664" font-weight="bold"><tspan x="495" dy="0">about even</tspan></text>
+<rect x="600" y="280" width="190" height="56" rx="0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="695" y="314" font-size="16" text-anchor="middle" fill="#5B6664" font-weight="bold"><tspan x="695" dy="0">about even</tspan></text>
+<text x="20" y="352" font-size="13" text-anchor="start" fill="#5B6664"><tspan x="20" dy="0">Anticipated inflation is built into interest rates and contracts, so it moves much less purchasing power.</tspan></text>
+</svg>

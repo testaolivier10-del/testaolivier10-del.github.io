@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 400" width="860" height="400" role="img" aria-labelledby="phillips-curve-supply-shock-t phillips-curve-supply-shock-d" font-family="Arial, Helvetica, sans-serif">
+<title id="phillips-curve-supply-shock-t">A supply shock on AD-AS and the Phillips curves</title>
+<desc id="phillips-curve-supply-shock-d">Left: SRAS shifts left from SRAS1 to SRAS2, so equilibrium moves from A at full employment to B with a higher price level PL2 and lower real GDP Y2. Right: the short-run Phillips curve shifts right from SRPC1 to SRPC2; the economy moves from A at the natural rate to B with both higher unemployment and higher inflation. LRPC stays vertical at the natural rate.</desc>
+<defs><marker id="phillips-curve-supply-shock-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="phillips-curve-supply-shock-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="phillips-curve-supply-shock-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="phillips-curve-supply-shock-arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker></defs>
+<rect width="860" height="400" fill="#FFFFFF"/>
+<text x="430" y="30" font-size="19" font-weight="bold" fill="#1F2A28" text-anchor="middle">A negative supply shock shifts the short-run Phillips curve right</text><text x="230" y="66" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="middle">AD-AS</text>
+<path d="M80 80V330H380" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<text x="380" y="366" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">Real GDP</text>
+<text transform="translate(66 80) rotate(-90)" font-size="13" fill="#1F2A28" text-anchor="end">Price level</text>
+<line x1="230" y1="322.5" x2="230" y2="90" stroke="#6B7672" stroke-width="2"/>
+<text x="233" y="87.5" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="start">LRAS</text>
+<line x1="110" y1="105" x2="350" y2="305" stroke="#1F2A28" stroke-width="2.6"/>
+<text x="353" y="297.5" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="start">AD</text>
+<line x1="110" y1="305" x2="350" y2="105" stroke="#6B7672" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="353" y="102.5" font-size="13" font-weight="bold" fill="#6B7672" text-anchor="start">SRAS<tspan font-size="10" dy="4">1</tspan></text>
+<line x1="80" y1="292.5" x2="305" y2="105" stroke="#D55E00" stroke-width="2.6"/>
+<text x="305" y="95" font-size="13" font-weight="bold" fill="#D55E00" text-anchor="start">SRAS<tspan font-size="10" dy="4">2</tspan></text>
+<line x1="278" y1="150" x2="242" y2="150" stroke="#D55E00" stroke-width="2.2" marker-end="url(#phillips-curve-supply-shock-arV)"/>
+<path d="M80 205H230V330" fill="none" stroke="#6B7672" stroke-width="1.4" stroke-dasharray="4 4"/>
+<circle cx="230" cy="205" r="5" fill="#1F2A28"/>
+<text x="230" y="346" font-size="12" fill="#1F2A28" text-anchor="middle">Y<tspan font-size="10" dy="4">F</tspan></text>
+<text x="76" y="209" font-size="12" fill="#1F2A28" text-anchor="end">PL<tspan font-size="10" dy="4">1</tspan></text>
+<text x="238" y="197" font-size="13" font-weight="bold" fill="#1F2A28">A</text>
+<path d="M80 186.3H207.5V330" fill="none" stroke="#6B7672" stroke-width="1.4" stroke-dasharray="4 4"/>
+<circle cx="207.5" cy="186.3" r="5" fill="#D55E00"/>
+<text x="207.5" y="346" font-size="12" fill="#1F2A28" text-anchor="middle">Y<tspan font-size="10" dy="4">2</tspan></text>
+<text x="76" y="190.3" font-size="12" fill="#1F2A28" text-anchor="end">PL<tspan font-size="10" dy="4">2</tspan></text>
+<text x="199.5" y="174.3" font-size="13" font-weight="bold" fill="#D55E00">B</text><text x="670" y="66" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="middle">Phillips curves</text>
+<path d="M520 80V330H820" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<text x="820" y="366" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">Unemployment rate</text>
+<text transform="translate(506 80) rotate(-90)" font-size="13" fill="#1F2A28" text-anchor="end">Inflation rate</text>
+<line x1="670" y1="322.5" x2="670" y2="90" stroke="#6B7672" stroke-width="2"/>
+<text x="673" y="87.5" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="start">LRPC</text>
+<line x1="550" y1="105" x2="790" y2="305" stroke="#6B7672" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="766" y="320" font-size="13" font-weight="bold" fill="#6B7672" text-anchor="end">SRPC<tspan font-size="10" dy="4">1</tspan></text>
+<line x1="595" y1="105" x2="820" y2="292.5" stroke="#D55E00" stroke-width="2.6"/>
+<text x="802" y="270" font-size="13" font-weight="bold" fill="#D55E00" text-anchor="start">SRPC<tspan font-size="10" dy="4">2</tspan></text>
+<line x1="709" y1="245" x2="748" y2="245" stroke="#D55E00" stroke-width="2.2" marker-end="url(#phillips-curve-supply-shock-arV)"/>
+<path d="M520 205H670V330" fill="none" stroke="#6B7672" stroke-width="1.4" stroke-dasharray="4 4"/>
+<circle cx="670" cy="205" r="5" fill="#1F2A28"/>
+<text x="670" y="346" font-size="12" fill="#1F2A28" text-anchor="middle">u<tspan font-size="10" dy="4">n</tspan></text>
+<text x="650" y="197" font-size="13" font-weight="bold" fill="#1F2A28">A</text>
+<path d="M520 192.5H700V330" fill="none" stroke="#6B7672" stroke-width="1.4" stroke-dasharray="4 4"/>
+<circle cx="700" cy="192.5" r="5" fill="#D55E00"/>
+<text x="708" y="184.5" font-size="13" font-weight="bold" fill="#D55E00">B</text><text x="430" y="384" font-size="13" font-weight="normal" fill="#6B7672" text-anchor="middle">Output falls (unemployment rises) while the price level rises faster: inflation and unemployment rise together, stagflation.</text>
+</svg>

@@ -1,0 +1,93 @@
+{
+ "id": "frq-placeholder-short",
+ "type": "short",
+ "points": 5,
+ "placeholder": true,
+ "title": "Placeholder: a demand shock, short question",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "adas-short-run-changes"
+ ],
+ "practices": [
+  "4.C",
+  "2.A"
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Show</b> the effect of a rise in consumer confidence on a correctly labeled AD-AS graph.",
+   "points": 3,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "shift"
+    },
+    {
+     "point": "Placeholder rubric point 2 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "equilibrium"
+    },
+    {
+     "point": "Placeholder rubric point 3 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "outcome"
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part A, long enough to read.",
+   "type": "graph",
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in consumer confidence",
+     "outcome": {
+      "price level": "up",
+      "output": "up"
+     }
+    }
+   }
+  },
+  {
+   "label": "B",
+   "prompt": "<b>Explain</b> what happens to the price level and why.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part B, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part B, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part B, long enough to read."
+  }
+ ]
+}

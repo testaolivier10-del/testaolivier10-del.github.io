@@ -1,0 +1,45 @@
+{
+ "topic": "axes-points",
+ "hook": "A friend texts you a screenshot of a graph: two lines, no labels, and the message \"prices are going crazy\". Without the labels you cannot tell what is rising, what is falling or by how much. Every graph in this course, from a pizza market to the whole economy, starts with the same two questions: what is on each axis, and what does one point mean?",
+ "figure": {
+  "figure": "axes-points-plane",
+  "caption": "Each point is one pair of values: read down to the horizontal axis and across to the vertical axis. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "You label the horizontal axis and the vertical axis",
+   "effect": "every point on the graph stands for one pair of values"
+  },
+  {
+   "cause": "A point is written as an ordered pair (horizontal, vertical)",
+   "effect": "you can plot a row of a table or read one off the graph"
+  },
+  {
+   "cause": "Several points rise together or move in opposite directions",
+   "effect": "the graph shows a direct or an inverse relationship"
+  },
+  {
+   "cause": "A reader sees every axis and curve labeled",
+   "effect": "your graph can earn its labeling point on the exam"
+  }
+ ],
+ "ideas": [
+  "The <b>horizontal axis</b> runs across the bottom; the <b>vertical axis</b> runs up the side. A market graph puts <b>Price</b> on the vertical axis and <b>Quantity</b> on the horizontal one.",
+  "A <b>point</b> is an ordered pair (horizontal value, vertical value): (300, 10) is 300 across and 10 up.",
+  "In a <b>direct relationship</b> both variables rise together; in an <b>inverse relationship</b> one rises as the other falls.",
+  "On the exam an unlabeled or swapped axis loses the graph point, even when the drawing is right."
+ ],
+ "misconception": {
+  "wrong": "If the picture is right, the labels do not matter.",
+  "right": "Readers score labels first: every axis and every curve. A correct picture with a missing or swapped label still loses the labeling point."
+ },
+ "check": [
+  "mac-axes-points-1",
+  "mac-axes-points-3",
+  "mac-axes-points-4",
+  "mac-axes-points-5",
+  "mac-axes-points-7",
+  "mac-axes-points-11"
+ ],
+ "summary": "Every economics graph has two labeled axes, and every point on it is one ordered pair: the horizontal value first, then the vertical value. Points that rise together show a direct relationship; points that move in opposite directions show an inverse one. Label every axis and every curve, with the standard variable on each axis, because that is the first thing a reader checks."
+}

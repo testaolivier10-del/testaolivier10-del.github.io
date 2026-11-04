@@ -1,0 +1,173 @@
+{
+ "id": "frq-placeholder-long",
+ "type": "long",
+ "points": 10,
+ "placeholder": true,
+ "title": "Placeholder: a supply shock, long question",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "adas-short-run-changes"
+ ],
+ "practices": [
+  "4.A",
+  "4.C",
+  "2.A",
+  "3.C"
+ ],
+ "scenario": "A placeholder economy is in long-run equilibrium when input costs rise across the economy.",
+ "stimulus": {
+  "title": "Placeholder: price index and real GDP",
+  "invented": true,
+  "table": {
+   "caption": "Placeholder: price index and real GDP (invented data)",
+   "cols": [
+    "Year",
+    "Price index"
+   ],
+   "rows": [
+    [
+     "1",
+     "100"
+    ],
+    [
+     "2",
+     "110"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Draw</b> a correctly labeled AD-AS graph and <b>show</b> the effect of a rise in input costs.",
+   "points": 4,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "Placeholder rubric point 2 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "shift"
+    },
+    {
+     "point": "Placeholder rubric point 3 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "equilibrium"
+    },
+    {
+     "point": "Placeholder rubric point 4 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "outcome"
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part A, long enough to read.",
+   "type": "graph",
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SRAS",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in input costs",
+     "outcome": {
+      "price level": "up",
+      "output": "down"
+     }
+    }
+   }
+  },
+  {
+   "label": "B",
+   "prompt": "<b>Calculate</b> the inflation rate from Year 1 to Year 2. Show your work.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part B, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part B, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part B, long enough to read."
+  },
+  {
+   "label": "C",
+   "prompt": "<b>Explain</b> what happens to unemployment in the short run.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part C, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part C, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part C, long enough to read."
+  },
+  {
+   "label": "D(i)",
+   "prompt": "<b>Identify</b> the kind of inflation.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part D(i), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part D(i), long enough to read."
+  },
+  {
+   "label": "D(ii)",
+   "prompt": "<b>Explain</b> your answer to D(i).",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part D(ii), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part D(ii), long enough to read."
+  }
+ ]
+}

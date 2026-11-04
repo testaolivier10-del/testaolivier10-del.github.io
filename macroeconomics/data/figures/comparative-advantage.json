@@ -1,0 +1,12 @@
+{
+ "comparative-advantage-two-ppcs": {
+  "file": "figures/comparative-advantage-two-ppcs.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two straight production possibilities lines for one worker a day: Dornia, 40 bushels of wheat or 20 yards of cloth, and Belmar, 30 bushels of wheat or 10 yards of cloth, with the opportunity costs: cloth costs Dornia 2 bushels and Belmar 3; wheat costs Dornia half a yard and Belmar a third of a yard."
+ }
+}

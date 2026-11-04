@@ -1,0 +1,576 @@
+{
+ "stimuli": {
+  "crowding-out-s1": {
+   "kind": "graph",
+   "title": "The loanable funds market in Garrow (invented) after more government borrowing",
+   "graph": {
+    "kind": "lf",
+    "show": {
+     "DLF": 1
+    },
+    "showEq": true
+   }
+  },
+  "crowding-out-s2": {
+   "kind": "text",
+   "title": "Deficit spending in Ferro (invented country)",
+   "text": "<p>Ferro, an invented country, is at full employment. Its legislature raises government spending by 100 billion dollars a year and pays for it by borrowing, so the budget deficit grows. Assume Ferro's central bank takes no action.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-crowding-out-1",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and both curves of the loanable funds market graph.",
+   "why": {
+    "correct": "The real interest rate is on the vertical axis and the quantity of loanable funds on the horizontal axis; the demand for loanable funds slopes down and the supply slopes up."
+   },
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mac-crowding-out-2",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A government increases its budget deficit and borrows to pay for it. Show the effect on the loanable funds market and mark the new equilibrium.",
+   "why": {
+    "correct": "The government is an extra borrower, so the demand for loanable funds shifts right and the real interest rate rises. (Drawing the deficit as lower public saving, the supply of loanable funds shifting left, also raises the real interest rate and is also accepted.)"
+   },
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DLF",
+     "SLF"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "DLF",
+       "dir": "right"
+      }
+     ],
+     "because": "more government borrowing",
+     "outcome": {
+      "real interest rate": "up",
+      "quantity of loanable funds": "up"
+     },
+     "alt": [
+      [
+       {
+        "curve": "SLF",
+        "dir": "left"
+       }
+      ]
+     ]
+    },
+    "slips": {
+     "SLF": "The deficit raises the real interest rate either way: the demand for loanable funds shifts right (the government borrows more), or the supply shifts left (public saving falls). Shifting supply right would lower it."
+    }
+   }
+  },
+  {
+   "id": "mac-crowding-out-3",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A government that had been borrowing every year moves to a balanced budget and stops borrowing. Show the effect on the loanable funds market and mark the new equilibrium.",
+   "why": {
+    "correct": "With one less borrower, the demand for loanable funds shifts left; the real interest rate falls, and private investment rises along the demand curve. (Drawing it as higher public saving, the supply of loanable funds shifting right, also lowers the real interest rate and is also accepted.)"
+   },
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DLF",
+     "SLF"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "DLF",
+       "dir": "left"
+      }
+     ],
+     "because": "the government no longer borrowing",
+     "outcome": {
+      "real interest rate": "down",
+      "quantity of loanable funds": "down"
+     },
+     "alt": [
+      [
+       {
+        "curve": "SLF",
+        "dir": "right"
+       }
+      ]
+     ]
+    },
+    "slips": {
+     "SLF": "A smaller deficit lowers the real interest rate either way: the demand for loanable funds shifts left (the government borrows less), or the supply shifts right (public saving rises). Shifting supply left would raise it."
+    }
+   }
+  },
+  {
+   "id": "mac-crowding-out-4",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "While the government keeps borrowing, households decide to save a larger share of their incomes. Shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "More private saving shifts the supply of loanable funds right, which lowers the real interest rate and eases the crowding out of private investment."
+   },
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DLF",
+     "SLF"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SLF",
+       "dir": "right"
+      }
+     ],
+     "because": "more household saving",
+     "outcome": {
+      "real interest rate": "down",
+      "quantity of loanable funds": "up"
+     }
+    },
+    "slips": {
+     "DLF": "Saving is the source of loanable funds, so more saving shifts supply, not demand."
+    }
+   }
+  },
+  {
+   "id": "mac-crowding-out-5",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.A",
+   "q": "The graph shows Garrow's loanable funds market after its government increased its borrowing. What happened to the real interest rate?",
+   "options": [
+    "It fell, because the government added funds to the market",
+    "It rose, because the supply of loanable funds decreased",
+    "It rose, because the demand for loanable funds increased",
+    "It stayed the same, because the quantity of funds also rose"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "More borrowing shifts demand right, and the real interest rate rises.",
+    "options": [
+     "The government is borrowing, so it takes funds out; demand rose and the rate rose.",
+     "The graph shows the demand curve moving; supply stayed put.",
+     "Right: DLF shifted right along an upward-sloping supply curve, so the new crossing E2 is higher: the real interest rate rose from r1 to r2.",
+     "The quantity rose, but along a supply curve that slopes up, which means a higher rate."
+    ]
+   },
+   "stimulus": "crowding-out-s1"
+  },
+  {
+   "id": "mac-crowding-out-6",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "The total quantity of loanable funds is larger on the graph. Why does private investment in Garrow still fall?",
+   "options": [
+    "The government takes part of the larger quantity, and at the higher real rate private borrowers want less",
+    "Private investment rises, because the total quantity of funds rose",
+    "Savers lend less at the higher real rate, so there is less to invest",
+    "Firms invest less because the government's spending lowers their costs"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "This is crowding out: government borrowing raises the real interest rate, and private investment falls.",
+    "options": [
+     "Right: private firms move up along their own demand as the rate rises, so they borrow less; the government's borrowing makes up more than the increase in the total.",
+     "The extra quantity, and then some, goes to the government; private borrowing falls at the higher rate.",
+     "Savers lend more at a higher rate; supply slopes up.",
+     "Lower costs would encourage investment; the cause is the higher cost of borrowing."
+    ]
+   },
+   "stimulus": "crowding-out-s1"
+  },
+  {
+   "id": "mac-crowding-out-7",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "If Garrow keeps borrowing this way for many years, what happens to its capital stock and potential output?",
+   "options": [
+    "Both grow faster, because government spending replaces private investment",
+    "Both grow more slowly than they would have, because private investment is lower",
+    "The capital stock grows faster but potential output grows more slowly",
+    "Neither changes, since the borrowing affects interest rates rather than real output"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Crowding out has a long-run cost: a smaller capital stock and slower growth of potential output.",
+    "options": [
+     "Spending on current services does not add to the capital stock the way private investment does.",
+     "Right: investment adds factories and machines; with less of it the capital stock and the economy's capacity grow more slowly.",
+     "Less investment means slower growth of the capital stock, not faster.",
+     "Interest rates change investment, and investment builds the capital stock that sets potential output."
+    ]
+   },
+   "stimulus": "crowding-out-s1"
+  },
+  {
+   "id": "mac-crowding-out-8",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which change in Garrow would reduce the crowding out of private investment caused by the government's borrowing?",
+   "options": [
+    "A rise in government borrowing that shifts the demand for loanable funds right",
+    "A fall in private saving that shifts the supply of loanable funds left",
+    "A rise in expected inflation that raises nominal interest rates",
+    "A rise in private saving that shifts the supply of loanable funds right"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Crowding out depends on how far the real interest rate rises; more saving limits the rise.",
+    "options": [
+     "More government borrowing would raise the rate further and crowd out more investment.",
+     "Less saving raises the real rate, adding to crowding out.",
+     "A higher nominal rate driven by expected inflation does not lower the real rate firms face.",
+     "Right: more saving pushes the real rate back down, so less private investment is crowded out."
+    ]
+   },
+   "stimulus": "crowding-out-s1"
+  },
+  {
+   "id": "mac-crowding-out-9",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the short run, what happens on Ferro's AD-AS graph?",
+   "options": [
+    "AD shifts right: real GDP rises above full employment and the price level rises",
+    "SRAS shifts right: real GDP rises and the price level falls",
+    "AD shifts left: higher interest rates lower total spending",
+    "LRAS shifts right: the extra spending raises potential output"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Deficit spending first raises AD; crowding out only offsets part of that rise.",
+    "options": [
+     "Right: government spending is part of AD, so AD shifts right past full-employment output.",
+     "Government spending is a demand-side change; it does not lower firms' costs.",
+     "Crowding out offsets part of the rise in AD, but the spending increase itself shifts AD right.",
+     "Spending on current programs raises demand; potential output depends on resources and technology."
+    ]
+   },
+   "stimulus": "crowding-out-s2"
+  },
+  {
+   "id": "mac-crowding-out-10",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "In Ferro's loanable funds market, what happens to demand and to the real interest rate?",
+   "options": [
+    "Demand for loanable funds falls, and the real interest rate falls",
+    "Demand for loanable funds rises, and the real interest rate rises",
+    "Supply of loanable funds rises, and the real interest rate falls",
+    "Demand for loanable funds rises, and the real interest rate falls"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Government borrowing raises the demand for loanable funds and the real interest rate.",
+    "options": [
+     "Borrowing to pay for spending adds demand, it does not remove it.",
+     "Right: the government is an extra borrower, so demand shifts right and the real rate rises.",
+     "The government is borrowing, not lending.",
+     "More demand along an upward-sloping supply curve raises the rate."
+    ]
+   },
+   "stimulus": "crowding-out-s2"
+  },
+  {
+   "id": "mac-crowding-out-11",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "In Ferro, government spending rises by 100 billion dollars, and the higher real interest rate lowers private investment by 40 billion dollars. The MPC is 0.8. Assuming both changes in spending have the same multiplier, what is the largest net change in AD, in billions of dollars?",
+   "why": {
+    "correct": "Net new spending is $100 - 40 = 60$; the multiplier is $\\frac{1}{1 - 0.8} = 5$, so AD rises by at most $60 \\times 5 = 300$ billion dollars, not the 500 billion the spending alone would give."
+   },
+   "numeric": {
+    "from": {
+     "fn": "totalChange",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        100,
+        40
+       ]
+      },
+      {
+       "fn": "spendingMultiplier",
+       "args": [
+        0.8
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "totalChange",
+       "args": [
+        100,
+        {
+         "fn": "spendingMultiplier",
+         "args": [
+          0.8
+         ]
+        }
+       ]
+      },
+      "why": "You left out the crowded-out investment. The net change in spending is 100 - 40 = 60, then times the multiplier of 5."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        100,
+        40
+       ]
+      },
+      "why": "That is the net change in spending before the multiplier. Multiply it by 1 / (1 - 0.8) = 5."
+     }
+    ]
+   },
+   "stimulus": "crowding-out-s2"
+  },
+  {
+   "id": "mac-crowding-out-12",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build the crowding-out chain for Ferro.",
+   "why": {
+    "correct": "Borrowing raises the demand for loanable funds, the real interest rate rises, private investment falls, and the capital stock grows more slowly."
+   },
+   "specific": {
+    "frame": "The government borrows, so the ___ for loanable funds rises. The real interest rate ___, so private investment ___, and the capital stock grows more ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "The government borrows, so the demand for loanable funds rises. The real interest rate rises, which makes borrowing costlier for firms, so private investment falls, and as a result the capital stock grows more slowly.",
+    "slots": {
+     "curve": {
+      "label": "Which curve",
+      "options": [
+       "demand",
+       "supply"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "In this chain the government is an extra borrower, which adds to demand."
+      }
+     },
+     "rate": {
+      "label": "The real interest rate",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More demand for funds raises their price, the real interest rate."
+      }
+     },
+     "spending": {
+      "label": "Private investment",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A higher real rate makes investment projects costlier, so firms invest less."
+      }
+     },
+     "trend": {
+      "label": "The capital stock",
+      "options": [
+       "slowly",
+       "quickly"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less investment adds fewer machines and factories, so the capital stock grows more slowly."
+      }
+     }
+    }
+   },
+   "stimulus": "crowding-out-s2"
+  },
+  {
+   "id": "mac-crowding-out-13",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is crowding out?",
+   "options": [
+    "A fall in government spending when a boom in private investment raises interest rates",
+    "A fall in private investment when government borrowing raises the real interest rate",
+    "A rise in imports when government spending raises incomes",
+    "A rise in prices when too much money chases too few goods"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Crowding out: deficit spending financed by borrowing raises the real interest rate and lowers private investment.",
+    "options": [
+     "Crowding out runs the other way: government borrowing displaces private investment.",
+     "Right: the government's demand for funds pushes up the real rate, and interest-sensitive private spending falls.",
+     "Higher income does raise imports, but that is not crowding out.",
+     "That describes inflation from money growth."
+    ]
+   }
+  },
+  {
+   "id": "mac-crowding-out-14",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.B",
+   "q": "A government raises its deficit by borrowing more. Select every result of crowding out.",
+   "options": [
+    "A higher real interest rate",
+    "Lower private investment spending",
+    "A faster-growing capital stock",
+    "A lower real interest rate that encourages borrowing"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Higher real interest rate, lower private investment, slower growth of the capital stock.",
+    "options": [
+     "Right: more demand for loanable funds raises the real rate.",
+     "Right: firms invest less at the higher real rate.",
+     "Less investment means the capital stock grows more slowly.",
+     "The real rate rises, not falls."
+    ]
+   }
+  },
+  {
+   "id": "mac-crowding-out-15",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "When is crowding out likely to be largest?",
+   "options": [
+    "When the economy is in a deep recession and many firms have stopped borrowing to invest",
+    "When the government runs a budget surplus and repays its bonds",
+    "When the economy is at full employment and the supply of saving is not growing",
+    "When households save much more at the same time the government borrows"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Crowding out is strongest near full employment and weakest in a deep recession.",
+    "options": [
+     "In a deep recession private demand for funds is weak, so government borrowing raises the real rate less.",
+     "A surplus lowers the demand for loanable funds; there is no borrowing to crowd anything out.",
+     "Right: with output at capacity, extra government borrowing mostly bids funds away from private borrowers, so the real rate rises a lot.",
+     "More saving pushes the real rate back down, which reduces crowding out."
+    ]
+   }
+  },
+  {
+   "id": "mac-crowding-out-16",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Which graph shows crowding out most directly, and with which axis label?",
+   "options": [
+    "The loanable funds market, with the real interest rate on the vertical axis",
+    "The money market, with the real interest rate on the vertical axis",
+    "The loanable funds market, with the nominal interest rate on the vertical axis",
+    "The AD-AS graph, with the interest rate on the vertical axis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Loanable funds: real interest rate and quantity of loanable funds. Money market: nominal interest rate and quantity of money.",
+    "options": [
+     "Right: crowding out works through the real interest rate that savers earn and borrowers pay.",
+     "The money market's vertical axis is the nominal interest rate, not the real one.",
+     "Loanable funds are priced by the real interest rate; \"nominal\" there loses the label point.",
+     "The AD-AS graph has the price level on its vertical axis."
+    ]
+   }
+  }
+ ]
+}

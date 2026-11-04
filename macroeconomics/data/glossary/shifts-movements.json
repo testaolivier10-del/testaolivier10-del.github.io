@@ -1,0 +1,11 @@
+{
+ "movement-along": {
+  "def": "A move from one point to another on the same curve, caused by a change in a variable on one of the graph's axes, such as the price of the good."
+ },
+ "curve-shift": {
+  "def": "The whole curve moving to a new position because something other than the graphed variables changed; right means a larger quantity at every price, left a smaller one."
+ },
+ "ceteris-paribus": {
+  "def": "Latin for \"other things equal\": the rule that a curve holds every influence fixed except the two variables it graphs."
+ }
+}

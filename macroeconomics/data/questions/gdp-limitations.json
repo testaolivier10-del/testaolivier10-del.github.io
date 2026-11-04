@@ -1,0 +1,489 @@
+{
+ "stimuli": {
+  "gdp-limitations-s1": {
+   "kind": "data",
+   "title": "Output and population in three countries",
+   "invented": true,
+   "table": {
+    "caption": "One year of output and population (invented data for practice)",
+    "cols": [
+     "Country",
+     "GDP (billions of dollars)",
+     "Population (millions)"
+    ],
+    "rows": [
+     [
+      "Halvet",
+      "800",
+      "40"
+     ],
+     [
+      "Berovia",
+      "300",
+      "10"
+     ],
+     [
+      "Cestia",
+      "1,200",
+      "80"
+     ]
+    ]
+   }
+  },
+  "gdp-limitations-s2": {
+   "kind": "text",
+   "title": "Three changes in Country Y",
+   "text": "<p>Three things happen in Country Y this year. (1) Omar quits his paid job as a cook at a restaurant to cook at home for his own family, as much food as before. (2) A chemical plant leaks into a river, and towns spend millions of dollars cleaning it up. (3) A new law gives every full-time worker two more weeks of paid vacation; people work fewer hours and say they are happier.</p>"
+  },
+  "gdp-limitations-s3": {
+   "kind": "text",
+   "title": "Cash work in Country Z",
+   "text": "<p>In Country Z, many house painters, street vendors and tutors are paid in cash and never report the sales to the government. Officials estimate that this unreported work equals about a fifth of the output they measure. Country W, next door, has about the same production per person, but almost all of its sales are recorded.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-gdp-limitations-1",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is GDP per capita in Halvet, in dollars per person?",
+   "stimulus": "gdp-limitations-s1",
+   "why": {
+    "correct": "Divide GDP by population: $\\frac{800 \\text{ billion}}{40 \\text{ million}} = 20{,}000$ dollars per person."
+   },
+   "numeric": {
+    "from": {
+     "fn": "perCapita",
+     "args": [
+      800000000000,
+      40000000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "You divided 800 by 40 but dropped the billions and millions. A billion divided by a million is a thousand, so the answer is 20 thousand dollars."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-2",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Which country in the table has the highest GDP per capita?",
+   "stimulus": "gdp-limitations-s1",
+   "options": [
+    "Berovia, at about 30,000 dollars per person",
+    "Cestia, because its total GDP is the largest",
+    "Halvet, because it is in the middle on both counts",
+    "They are equal once population is taken into account"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "GDP per capita divides output by the number of people, so a small country can produce more per person than a large one.",
+    "options": [
+     "Right: $300 \\text{ billion} / 10 \\text{ million} = 30{,}000$, more than Halvet (20,000) or Cestia (15,000).",
+     "Cestia has the most output in total but twice as many people as Halvet, so only 15,000 per person.",
+     "Halvet's 20,000 per person is below Berovia's 30,000.",
+     "Dividing each GDP by its population gives 20,000, 30,000 and 15,000: not equal."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-3",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Cestia has the largest GDP in the table. What do the data suggest about living standards there?",
+   "stimulus": "gdp-limitations-s1",
+   "options": [
+    "Its people work the most hours, because output is the largest",
+    "Output per person is the lowest of the three countries",
+    "Living standards are the highest, because total output is the highest",
+    "Living standards are impossible to compare using GDP data"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Total GDP measures the size of an economy. To compare material living standards, divide by population.",
+    "options": [
+     "The table shows nothing about hours worked; a big total mostly reflects a big population.",
+     "Right: 1,200 billion shared by 80 million people is 15,000 each, the least in the table.",
+     "Total GDP ignores how many people share it; per person, Cestia is lowest.",
+     "GDP per capita is a reasonable first comparison of material living standards, with limits."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-4",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A student concludes from the table that a typical person in Berovia is better off than a typical person in Halvet. Which fact, if true, would most weaken that conclusion?",
+   "stimulus": "gdp-limitations-s1",
+   "options": [
+    "Both countries count GDP in dollars",
+    "Halvet's total GDP is larger than Berovia's",
+    "Most of Berovia's income goes to a small share of its people",
+    "Berovia has a smaller population than Halvet"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "GDP per capita says nothing about how output is shared, so it can hide large differences between the average and the typical person.",
+    "options": [
+     "Using the same unit makes the comparison fairer, not weaker.",
+     "Total GDP is not the measure the student used; per person, Berovia is higher.",
+     "Right: GDP per capita is an average. If income is very unequal, the typical person can earn far less than the average.",
+     "The table already shows that, and per capita figures account for it."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-5",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "How does change (1), Omar cooking at home instead of at the restaurant, affect measured GDP?",
+   "stimulus": "gdp-limitations-s2",
+   "options": [
+    "GDP stays the same, because the same amount of food is made",
+    "GDP rises, because home cooking saves his family money",
+    "GDP is unchanged, because household work is part of consumption",
+    "GDP falls, though about as much food is cooked as before"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "GDP counts only market production. The same work done unpaid at home disappears from GDP, which is why home production makes GDP understate output.",
+    "options": [
+     "The food is still made, but no longer sold in a market, so GDP no longer counts it.",
+     "Saving money on meals is not production sold at a market price.",
+     "Consumption counts what households buy, not unpaid work they do for themselves.",
+     "Right: his paid cooking was a market sale; cooking for his family is nonmarket activity, which GDP leaves out."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-6",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "How does change (2), the river spill and its cleanup, show a limitation of GDP as a measure of well-being?",
+   "stimulus": "gdp-limitations-s2",
+   "options": [
+    "Cleanup spending adds to GDP; the river damage is not subtracted",
+    "The cleanup lowers GDP, because money spent fixing harm is subtracted",
+    "The spill raises GDP directly, because pollution has a market value",
+    "The spill has no effect, because towns are not part of GDP"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "GDP counts spending, not whether the spending repairs harm. Pollution and the loss of natural resources are not subtracted.",
+    "options": [
+     "Right: GDP counts the market value of the cleanup work and ignores the lost clean water, so it can rise while well-being falls.",
+     "GDP has no line that subtracts harm; paid cleanup is counted like any other service.",
+     "Pollution itself is not sold; only the cleanup work is counted.",
+     "Local government purchases, including cleanup work, are counted in G."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-7",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "How does change (3), two more weeks of paid vacation, show a limitation of GDP?",
+   "stimulus": "gdp-limitations-s2",
+   "options": [
+    "Leisure is counted in GDP at the value of the wage",
+    "Output may fall though people value the extra leisure",
+    "GDP rises, because workers are still paid during the vacations",
+    "GDP is unchanged, because leisure is part of consumption"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "GDP measures market output. Free time has value to people, but it has no market price and is left out.",
+    "options": [
+     "GDP gives leisure no value at all; that is the limitation.",
+     "Right: fewer hours worked can mean less output, but GDP gives no value to the leisure gained.",
+     "Being paid during vacation does not produce more goods or services; the pay is a cost to firms, not new output.",
+     "Leisure is not bought in a market, so it is not part of consumption."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-8",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.D",
+   "q": "Which of these are left out of GDP? Select all that apply.",
+   "stimulus": "gdp-limitations-s2",
+   "options": [
+    "Meals the restaurant sells after Omar leaves",
+    "Meals Omar cooks at home for his family",
+    "The value of the extra vacation time",
+    "The harm the spill did to the river",
+    "Wages paid to the cleanup crews",
+    "A new water filter a town buys after the spill"
+   ],
+   "correct": [
+    1,
+    2,
+    3
+   ],
+   "why": {
+    "correct": "GDP counts market production. Home production, leisure and environmental damage are outside it; paid work and new goods sold are inside.",
+    "options": [
+     "Restaurant meals are market sales and are counted.",
+     "Right: unpaid home production is nonmarket activity.",
+     "Right: leisure has no market price.",
+     "Right: GDP does not subtract environmental damage.",
+     "Paid cleanup work is a market service and is counted.",
+     "A new good bought by a local government is counted in G."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-9",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "How does the unreported cash work in Country Z affect its official GDP?",
+   "stimulus": "gdp-limitations-s3",
+   "options": [
+    "It has no effect, because GDP is estimated from spending",
+    "It lowers production, because cash work is illegal",
+    "Official GDP understates what Country Z produces",
+    "Official GDP overstates what Country Z produces"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Activity in the underground economy is production that statisticians cannot see, so measured GDP is lower than actual production.",
+    "options": [
+     "Spending that is never recorded cannot be added in; the estimate misses it.",
+     "The work produces real goods and services; the question is whether GDP records it.",
+     "Right: the painting, selling and tutoring are real market production, but unrecorded sales are missed.",
+     "Missing sales make the official number too low, not too high."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-10",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Using official GDP per capita alone, how would Country Z compare with Country W?",
+   "stimulus": "gdp-limitations-s3",
+   "options": [
+    "Country Z would look richer than it is relative to Country W",
+    "The two would look the same, because they produce the same per person",
+    "Country W would look poorer, because it records more sales",
+    "Country Z would look poorer than it is relative to Country W"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Comparing GDP across countries assumes both measure production equally well. A large underground economy breaks that assumption.",
+    "options": [
+     "Unrecorded work lowers Z's official number, so Z looks poorer, not richer.",
+     "They produce about the same, but only W's production is fully recorded.",
+     "Recording more sales raises W's measured GDP, so W looks richer.",
+     "Right: both produce about the same per person, but a fifth of Z's output is unrecorded, so its official figure is lower."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-11",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Country Z makes it simple and cheap for street vendors to register their businesses, and many do. The vendors sell exactly what they sold before. What happens to measured GDP?",
+   "stimulus": "gdp-limitations-s3",
+   "options": [
+    "It rises, although actual production is unchanged",
+    "It falls, because registration costs vendors money",
+    "It stays the same, because production did not change",
+    "It rises by the same amount as the vendors' extra production"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Moving activity from the informal economy into recorded markets changes measured GDP, not actual output. Read GDP changes with this in mind.",
+    "options": [
+     "Right: sales that were unrecorded are now recorded, so measured GDP rises while output is the same.",
+     "The registration is described as cheap, and vendors sell the same amount, so output does not fall.",
+     "Production did not change, but measurement did: more of it is now recorded.",
+     "The vendors produce no extra; only the recorded share of the same output changes."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-12",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Why is GDP per capita a better measure than total GDP for comparing material living standards across countries?",
+   "options": [
+    "It subtracts the cost of pollution from output",
+    "It adjusts for the number of people who share the output",
+    "It includes the value of leisure and home production",
+    "It shows how evenly income is shared within a country"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A country with a larger population has a larger GDP for that reason alone; per capita figures remove the effect of size.",
+    "options": [
+     "No version of GDP subtracts pollution.",
+     "Right: dividing by population gives output per person.",
+     "GDP per capita leaves those out, exactly as total GDP does.",
+     "It is an average and shows nothing about how income is shared."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-13",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In Country V, GDP rises 2% in a year while the population rises 3%. What happens to GDP per capita?",
+   "options": [
+    "It rises by 5%, adding the two percent changes",
+    "It stays the same, because both GDP and population grew",
+    "It falls: the population grew faster than output",
+    "It rises by 2%, the same as the rise in GDP"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "GDP per capita rises only when output grows faster than population: here it falls by about 1%.",
+    "options": [
+     "The population is in the denominator, so its growth pulls per capita output down.",
+     "Both grew, but at different speeds, so the ratio changes.",
+     "Right: output per person falls when the number of people rises faster than output.",
+     "Per capita figures divide by population, which grew too."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-14",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Country V's GDP is 600 billion dollars and its population is 30 million. Next year GDP is 660 billion and the population is 33 million. What is GDP per capita next year, in dollars per person?",
+   "why": {
+    "correct": "$\\frac{660 \\text{ billion}}{33 \\text{ million}} = 20{,}000$ dollars per person, the same as this year ($600 / 30 = 20$ thousand): output and population both grew 10%."
+   },
+   "numeric": {
+    "from": {
+     "fn": "perCapita",
+     "args": [
+      660000000000,
+      33000000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 22000,
+      "why": "You divided next year's GDP by this year's population. Use next year's population, 33 million."
+     },
+     {
+      "value": 20,
+      "why": "The digits are right but the units were dropped: billions divided by millions gives thousands, so the answer is 20,000 dollars."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-15",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A smartphone today costs about the same as one did ten years ago but does far more. Which limitation of GDP does this show?",
+   "options": [
+    "GDP leaves out goods produced by firms based abroad",
+    "GDP counts the phone twice, once when made and once when sold",
+    "GDP leaves out goods that households buy for themselves",
+    "GDP counts the price paid and can miss gains in quality"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "GDP adds market values. When quality rises faster than price, GDP understates how much better off people are.",
+    "options": [
+     "GDP counts production inside the borders, whoever owns the firm; that is not the issue here.",
+     "A new phone is counted once, as a final good.",
+     "Household purchases are consumption, the largest part of GDP.",
+     "Right: if the price is the same, GDP counts the same value, though buyers get a much better good."
+    ]
+   }
+  },
+  {
+   "id": "mac-gdp-limitations-16",
+   "unit": "unit-2",
+   "topic": "gdp-limitations",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Two countries have the same GDP per capita. Which difference between them would GDP per capita fail to show?",
+   "options": [
+    "One has much cleaner air and longer life spans than the other",
+    "One has twice the population and twice the total GDP",
+    "One produces more final goods per person than the other",
+    "One has a larger total market value of final output"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "GDP per capita measures market output per person. Health, leisure, the environment and how income is shared all matter to well-being and are left out.",
+    "options": [
+     "Right: health, the environment and other parts of well-being are outside GDP.",
+     "Doubling both leaves GDP per capita the same, and total GDP shows the difference in size.",
+     "Then their GDP per capita would differ; it would not be the same.",
+     "A larger total is visible in total GDP."
+    ]
+   }
+  }
+ ]
+}

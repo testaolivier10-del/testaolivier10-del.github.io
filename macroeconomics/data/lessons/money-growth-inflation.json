@@ -1,0 +1,71 @@
+{
+ "topic": "money-growth-inflation",
+ "hook": "Germany in 1923 and Zimbabwe in 2008 both printed money to pay government bills, and prices rose so fast that shops changed price tags several times a day. Few economies go that far, but the same rule works at any speed: when the money supply grows much faster than the output it buys, the price level rises.",
+ "prereq": [
+  {
+   "q": "Real GDP measures output at which prices?",
+   "options": [
+    "Base-year prices, so it changes only when output changes",
+    "This year's prices",
+    "Prices adjusted for the money supply",
+    "The prices of imports"
+   ],
+   "correct": 0,
+   "why": "Real GDP values output at constant (base-year) prices; nominal GDP uses current prices.",
+   "review": "real-nominal-gdp"
+  },
+  {
+   "q": "In the limited-reserves framework, the central bank buys bonds. What happens on the money market graph?",
+   "options": [
+    "The money supply shifts right and the nominal interest rate falls",
+    "Money demand shifts right and the nominal rate rises",
+    "The money supply shifts left and the nominal rate rises",
+    "Nothing: the graph shows only money demand"
+   ],
+   "correct": 0,
+   "why": "Buying bonds adds reserves and money, so the vertical money supply curve shifts right.",
+   "review": "money-market"
+  }
+ ],
+ "figure": {
+  "figure": "money-growth-inflation-longrun",
+  "caption": "More money raises AD in the short run; once wages adjust, only the price level is higher."
+ },
+ "chain": [
+  {
+   "cause": "The money supply grows faster than real output",
+   "effect": "nominal spending, M x V, grows faster than output"
+  },
+  {
+   "cause": "Nominal spending grows faster",
+   "effect": "AD shifts right"
+  },
+  {
+   "cause": "Output above full employment pushes nominal wages up",
+   "effect": "SRAS shifts left until output returns to full employment"
+  },
+  {
+   "cause": "Real output ends where it started",
+   "effect": "the price level is higher: faster money growth means higher inflation"
+  }
+ ],
+ "ideas": [
+  "The equation of exchange: $M \\times V = P \\times Y$. M is the money supply, V velocity, P the price level and Y real output, so $P \\times Y$ is nominal GDP.",
+  "<b>Velocity</b> is how often the average dollar is spent on final goods and services in a year: $V = \\frac{P \\times Y}{M}$.",
+  "In the long run, V is steady and Y is set by resources and technology, so P moves with M. In growth rates: inflation $\\approx$ money growth + velocity growth - real output growth.",
+  "<b>Money neutrality</b>: in the long run money changes nominal variables (the price level, nominal GDP, nominal wages and interest rates), not real GDP or unemployment. In the short run, sticky wages let money change output."
+ ],
+ "misconception": {
+  "wrong": "Printing more money makes a country richer in the long run.",
+  "right": "Real output depends on resources and technology. Extra money with no extra output raises the price level, so each dollar buys less; real GDP ends where it started."
+ },
+ "check": [
+  "mac-money-growth-inflation-1",
+  "mac-money-growth-inflation-2",
+  "mac-money-growth-inflation-4",
+  "mac-money-growth-inflation-11",
+  "mac-money-growth-inflation-12",
+  "mac-money-growth-inflation-15"
+ ],
+ "summary": "The quantity theory says M x V = P x Y. With velocity steady and real output fixed by resources and technology in the long run, the price level rises in proportion to the money supply, so sustained inflation comes from money growing faster than output. Money is neutral in the long run: it changes nominal variables, not real GDP or unemployment, although it can change output in the short run while wages are sticky."
+}

@@ -1,0 +1,12 @@
+{
+ "financial-assets-bond-seesaw": {
+  "file": "figures/financial-assets-bond-seesaw.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two panels. Left: when market interest rates rise, the price of an existing bond falls, because new bonds pay more than the old one. Right: when market interest rates fall, the price of an existing bond rises, because the old bond pays more than new ones."
+ }
+}

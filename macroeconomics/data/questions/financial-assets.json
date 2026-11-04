@@ -1,0 +1,573 @@
+{
+ "stimuli": {
+  "financial-assets-s1": {
+   "kind": "data",
+   "title": "An existing bond and the interest rate on new bonds",
+   "invented": true,
+   "table": {
+    "caption": "A bond bought new in Year 1 for \\$1,000 pays \\$50 of interest each year. The interest rate on new bonds of the same risk changes over time (invented data for practice).",
+    "cols": [
+     "Year",
+     "Interest rate on new bonds",
+     "Yearly payment on the old bond"
+    ],
+    "rows": [
+     [
+      "1",
+      "5%",
+      "\\$50"
+     ],
+     [
+      "2",
+      "8%",
+      "\\$50"
+     ],
+     [
+      "3",
+      "4%",
+      "\\$50"
+     ],
+     [
+      "4",
+      "5%",
+      "\\$50"
+     ]
+    ]
+   }
+  },
+  "financial-assets-s2": {
+   "kind": "text",
+   "title": "Three places for \\$5,000 of savings",
+   "text": "<p>Dana has saved \\$5,000 from a summer job and is weighing three choices: keep it in a checking account that pays almost no interest, buy a bond issued by a large company that pays a fixed 5% a year for ten years, or buy shares of stock in a young technology company whose price has swung up and down a lot.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-financial-assets-1",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "financial-assets-s1",
+   "q": "In which year would the owner of the old bond most likely have to sell it for less than \\$1,000?",
+   "options": [
+    "Year 2",
+    "Year 3",
+    "Year 4",
+    "Year 1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When the interest rate on new bonds rises above what an old bond pays, the old bond is worth less, so its price falls.",
+    "options": [
+     "Right: new bonds pay 8%, more than the old bond's 5%, so buyers offer less than \\$1,000 for it.",
+     "New bonds pay 4% in Year 3, less than the old bond, so its price rises above \\$1,000.",
+     "New bonds pay 5% again, the same as the old bond, so its price returns to about \\$1,000.",
+     "In Year 1 the bond pays the market rate, so it sells for about the \\$1,000 it cost."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-2",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "financial-assets-s1",
+   "q": "In Year 3, what most likely happens to the price of the old bond, and why?",
+   "options": [
+    "It falls, because the interest rate fell",
+    "It rises, because it pays more than new bonds",
+    "It stays at \\$1,000, because the payment is fixed",
+    "It rises, because the bond pays more each year"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Bond prices and interest rates move in opposite directions: lower rates on new bonds raise the price of an old bond with a higher payment.",
+    "options": [
+     "A fall in market interest rates makes the old, higher payment more attractive, so its price rises.",
+     "Right: \\$50 a year beats the 4% new bonds pay, so buyers bid its price above \\$1,000.",
+     "The payment is fixed, but its price is not: buyers compare it with what new bonds pay.",
+     "The yearly payment stays \\$50; the price rises because new bonds pay less, not because the payment grew."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-3",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "financial-assets-s1",
+   "q": "In Year 2 a buyer pays \\$625 for the old bond. What interest rate does the buyer earn, as a percent of the price paid? (Divide the yearly payment by the price.)",
+   "why": {
+    "correct": "The yield is the yearly payment over the price: $\\frac{50}{625} \\times 100 = 8\\%$, the same as new bonds pay. A lower price is how an old bond comes to pay the market rate."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "pct",
+     "args": [
+      50,
+      625
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "5% is what the bond pays on its original \\$1,000 price. The buyer paid \\$625, so divide \\$50 by \\$625."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        625,
+        50
+       ]
+      },
+      "why": "You divided the price by the payment. The rate is the payment over the price, times 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-4",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "financial-assets-s1",
+   "q": "Across the four years, what does the table show about interest rates and the prices of existing bonds?",
+   "options": [
+    "They move in the same direction",
+    "They are unrelated, since the payment is fixed",
+    "They move in opposite directions",
+    "Prices change but rates stay fixed"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A bond pays a fixed amount, so its price adjusts until its yield matches the market rate: rates up, prices down, and the reverse.",
+    "options": [
+     "When the new-bond rate rose in Year 2, the old bond's price fell, so the two moved opposite ways.",
+     "The fixed payment is exactly why the price must change when market rates change.",
+     "Right: the rate rose and the price fell in Year 2; the rate fell and the price rose in Year 3.",
+     "The column of new-bond rates changes from year to year; it is the yearly payment that is fixed."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-5",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "financial-assets-s2",
+   "q": "Which of Dana's choices is the most liquid?",
+   "options": [
+    "The checking account",
+    "The company bond",
+    "The technology stock",
+    "The three are equally liquid"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Liquidity is how easily an asset becomes spendable money without losing value. Money itself is the most liquid asset.",
+    "options": [
+     "Right: checking deposits can be spent right away, at full value, so they are the most liquid.",
+     "A bond must be sold first, and its price may have changed, so it is less liquid than a checking deposit.",
+     "Stock must be sold first and its price swings, so it is less liquid than a checking deposit.",
+     "They differ: money in checking is spendable at once, while the bond and stock must be sold at an uncertain price."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-6",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "financial-assets-s2",
+   "q": "If Dana buys the company bond, what is she doing?",
+   "options": [
+    "Buying part ownership of the company",
+    "Opening a deposit at the company",
+    "Paying the company for future goods",
+    "Lending money to the company"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A bond is an IOU: the issuer borrows and promises fixed interest payments and repayment at the end.",
+    "options": [
+     "Ownership is what a share of stock gives. A bond is a loan.",
+     "Companies do not take deposits; banks do. A bond is a loan to the company.",
+     "A bond buys no goods. It is a promise to repay borrowed money with interest.",
+     "Right: a bond is a loan; the company promises to pay interest and repay the amount borrowed."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-7",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "financial-assets-s2",
+   "q": "Why might the technology stock offer Dana a higher expected return than the checking account?",
+   "options": [
+    "Its return is guaranteed by the company",
+    "It carries more risk, so buyers want more return",
+    "It is more liquid than a checking account",
+    "Its price can rise but not fall"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Assets trade off liquidity, risk and return: a riskier, less liquid asset has to offer a higher expected return to attract buyers.",
+    "options": [
+     "Stock returns are not promised; the company owes stockholders no fixed payment.",
+     "Right: savers take on a risky asset when they expect to be paid more for the risk.",
+     "Stock is less liquid than checking. Higher return comes with more risk, not more liquidity.",
+     "The scenario says its price swings both ways; that risk is why its expected return is higher."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-8",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "financial-assets-s2",
+   "q": "A year after Dana buys the bond, interest rates on new company bonds rise to 7%. What happens to the market price of Dana's bond?",
+   "options": [
+    "It rises, since rates on bonds went up",
+    "It stays the same, since her payment is fixed",
+    "It falls, since new bonds pay more",
+    "It falls, since the company now pays her less"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A rise in market interest rates lowers the price of existing bonds that pay a lower fixed rate.",
+    "options": [
+     "Higher rates on new bonds make Dana's 5% bond less attractive, so its price falls.",
+     "Her payment is fixed, so her bond's price has to fall for a buyer to earn the new, higher rate.",
+     "Right: a buyer can get 7% elsewhere, so they pay less than she did for her 5% bond.",
+     "The company still pays her 5% a year; the price falls because new bonds pay more."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-9",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does liquidity measure?",
+   "options": [
+    "How much interest an asset pays each year",
+    "How likely an asset is to lose value",
+    "How easily an asset becomes money without losing value",
+    "How many people own the asset"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Liquidity is the ease of turning an asset into money, the medium people spend, without a loss in value.",
+    "options": [
+     "That is its return. Liquidity is about turning an asset into money.",
+     "That is risk. Liquidity is about how easily it becomes spendable money.",
+     "Right: money is perfectly liquid; a house is far less so.",
+     "Ownership counts are not liquidity. Liquidity is about converting the asset to money."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-10",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement compares stocks and bonds correctly?",
+   "options": [
+    "A stock is a loan to a firm; a bond is a share of ownership",
+    "A stock is a share of ownership; a bond is a loan to the issuer",
+    "Both are loans that pay a fixed interest rate",
+    "Both are shares of ownership in the issuer"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Stocks are equity (ownership); bonds are debt (loans), which pay set interest and repay the amount borrowed.",
+    "options": [
+     "That is reversed: a stock is ownership and a bond is a loan.",
+     "Right: stockholders own part of the firm; bondholders are lenders.",
+     "A stock is not a loan and pays no fixed rate; its dividends and price can change.",
+     "A bond gives no ownership. It is a promise to repay a loan with interest."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-11",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Market interest rates fall sharply. What happens to people who already own bonds paying a fixed 6%?",
+   "options": [
+    "They lose, because their payments are cut",
+    "They gain, because their bonds' prices rise",
+    "Nothing happens, because their rate is fixed",
+    "They gain, because their bonds now pay more interest"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Falling interest rates raise the prices of existing bonds, so current bondholders gain.",
+    "options": [
+     "Their fixed payments do not change; the market value of their bonds rises.",
+     "Right: their 6% bonds now pay more than new ones, so buyers pay more for them.",
+     "The fixed rate is why the price changes: their bonds become more valuable.",
+     "The yearly payment stays the same; the gain is a higher price for the bond."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-12",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A company sells new bonds to pay for a new factory. In economic terms, what is the company doing?",
+   "options": [
+    "Borrowing from the people who buy the bonds",
+    "Selling ownership shares to new investors",
+    "Lending money to the bond buyers",
+    "Saving part of its profit for later"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Firms finance investment either by borrowing (bonds, loans) or by selling ownership (stock).",
+    "options": [
+     "Right: selling bonds is borrowing; the company will pay interest and repay the buyers.",
+     "Selling ownership shares is issuing stock. Bonds are borrowing.",
+     "The money flows to the company; the buyers are the lenders, not the borrowers.",
+     "The company raises outside money by borrowing; it is not saving its own profit."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-13",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why is an interest rate called the price of borrowing?",
+   "options": [
+    "It is the fee a bank charges to open an account",
+    "It is the yearly cost of using borrowed money, as a percent",
+    "It is the total amount a borrower repays at the end of the loan",
+    "It is the price of the goods bought with the loan"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The interest rate is the yearly cost of borrowing, as a percent of the amount borrowed; to a lender it is the reward for lending.",
+    "options": [
+     "An account fee is not interest. Interest is paid for the use of borrowed money over time.",
+     "Right: a 6% rate means \\$6 a year for each \\$100 borrowed.",
+     "The total repaid includes the amount borrowed; the rate is the yearly charge as a percent.",
+     "The goods have their own prices. Interest is the cost of the borrowed money itself."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-14",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are financial assets? Select all that apply.",
+   "options": [
+    "Shares of stock in a company",
+    "A house a family lives in",
+    "A delivery truck a bakery owns",
+    "A meal eaten at a restaurant"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Financial assets are claims on money or future income, such as money, bonds and stocks; trucks and buildings are physical assets.",
+    "options": [
+     "Right: stock is a claim on a firm's profits and assets.",
+     "A house is a physical (real) asset: it gives shelter, not a claim on someone else's income.",
+     "A truck is a physical (real) asset used to produce goods, not a financial claim.",
+     "A meal is a good that is used up; it is not an asset at all."
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-15",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A bond pays \\$60 of interest a year. Hana buys it for \\$1,200. What interest rate does she earn on what she paid, in percent?",
+   "why": {
+    "correct": "Divide the yearly payment by the price paid: $\\frac{60}{1200} \\times 100 = 5\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "pct",
+     "args": [
+      60,
+      1200
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        1200,
+        60
+       ]
+      },
+      "why": "You divided the price by the payment. Put the yearly payment on top: \\$60 / \\$1,200, times 100."
+     },
+     {
+      "value": 6,
+      "why": "A 6% rate would be \\$60 on a \\$1,000 price. Hana paid \\$1,200, so she earns less: divide by \\$1,200."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-financial-assets-16",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the links in order, from a rise in market interest rates to the price of an existing bond.",
+   "options": [
+    "Market interest rates rise",
+    "New bonds offer higher interest payments than the existing bond",
+    "Fewer buyers want the existing bond at its old price",
+    "The price of the existing bond falls until its yield matches the market rate"
+   ],
+   "why": {
+    "correct": "Each link causes the next: higher rates on new bonds lower demand for old, lower-paying bonds, so their prices fall."
+   }
+  },
+  {
+   "id": "mac-financial-assets-17",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain what a fall in market interest rates does to the price of an existing bond.",
+   "why": {
+    "correct": "Lower rates on new bonds make the old, fixed payment more attractive, so buyers pay more for the existing bond."
+   },
+   "specific": {
+    "frame": "Market interest rates fall, so new bonds pay ___ than the existing bond; buyers ___ the existing bond, and its price ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "When market interest rates fall, new bonds pay less than the existing bond, so more buyers want the existing bond and its price rises, because its fixed payment now beats what new bonds offer.",
+    "slots": {
+     "link": {
+      "label": "What new bonds pay",
+      "options": [
+       "less",
+       "more"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lower market rates mean new bonds pay less, not more."
+      }
+     },
+     "change": {
+      "label": "What buyers do",
+      "options": [
+       "want more of",
+       "want less of"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The existing bond now pays more than new ones, so it is more attractive, not less."
+      }
+     },
+     "price": {
+      "label": "The bond price",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Bond prices move opposite to interest rates: rates fall, prices rise."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-financial-assets-18",
+   "unit": "unit-4",
+   "topic": "financial-assets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which asset is the least liquid?",
+   "options": [
+    "A \\$20 bill in a wallet",
+    "A checking account balance",
+    "A savings account balance",
+    "A rental house"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The longer and costlier it is to turn an asset into spendable money at full value, the less liquid it is.",
+    "options": [
+     "Currency is money itself, the most liquid asset there is.",
+     "A checking balance can be spent by card or check right away.",
+     "Savings can be moved to checking or withdrawn quickly at full value.",
+     "Right: selling a house takes weeks and its price is uncertain, so it is the least liquid."
+    ]
+   }
+  }
+ ]
+}

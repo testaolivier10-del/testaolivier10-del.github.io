@@ -1,0 +1,729 @@
+{
+ "stimuli": {
+  "multipliers-s1": {
+   "kind": "data",
+   "title": "Disposable income and consumption in Country Q",
+   "invented": true,
+   "table": {
+    "caption": "Household disposable income and consumption in Country Q, billions of dollars (invented data for practice)",
+    "cols": [
+     "Disposable income",
+     "Consumption",
+     "Saving"
+    ],
+    "rows": [
+     [
+      "1,000",
+      "900",
+      "100"
+     ],
+     [
+      "1,100",
+      "980",
+      "120"
+     ],
+     [
+      "1,200",
+      "1,060",
+      "140"
+     ]
+    ]
+   }
+  },
+  "multipliers-s2": {
+   "kind": "text",
+   "title": "Brenland's recessionary gap",
+   "text": "<p>Brenland is an invented country. Its real GDP is 120 billion dollars below full-employment output, a recessionary gap of 120 billion dollars. Brenland's marginal propensity to consume (MPC) is 0.75. Assume the price level stays the same, so the full multiplier effect reaches real GDP, and that the government changes only one of its spending or its taxes at a time.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-multipliers-1",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "multipliers-s1",
+   "q": "Using the table, calculate Country Q's marginal propensity to consume (MPC).",
+   "why": {
+    "correct": "MPC $= \\frac{\\Delta C}{\\Delta \\text{DI}} = \\frac{980 - 900}{1{,}100 - 1{,}000} = \\frac{80}{100} = 0.8$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        980,
+        900
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        1100,
+        1000
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        900,
+        1000
+       ]
+      },
+      "why": "You divided total consumption by total disposable income. The MPC uses the changes: $\\frac{\\Delta C}{\\Delta \\text{DI}}$."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        100,
+        80
+       ]
+      },
+      "why": "You divided the change in income by the change in consumption. Put the change in consumption on top."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-2",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "multipliers-s1",
+   "q": "Using the table, calculate Country Q's marginal propensity to save (MPS).",
+   "why": {
+    "correct": "MPS $= \\frac{\\Delta S}{\\Delta \\text{DI}} = \\frac{20}{100} = 0.2$, which is also $1 - \\text{MPC} = 1 - 0.8$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mps",
+     "args": [
+      0.8
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        100,
+        1000
+       ]
+      },
+      "why": "You used total saving over total income. The MPS uses the changes: $\\frac{\\Delta S}{\\Delta \\text{DI}} = \\frac{20}{100}$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-3",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "multipliers-s1",
+   "q": "Using the table, calculate Country Q's spending multiplier.",
+   "why": {
+    "correct": "Spending multiplier $= \\frac{1}{\\text{MPS}} = \\frac{1}{0.2} = 5$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "spendingMultiplier",
+     "args": [
+      0.8
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        1,
+        0.8
+       ]
+      },
+      "why": "You divided 1 by the MPC. The spending multiplier is $\\frac{1}{1 - \\text{MPC}} = \\frac{1}{\\text{MPS}}$."
+     },
+     {
+      "from": {
+       "fn": "neg",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          0.8,
+          0.2
+         ]
+        }
+       ]
+      },
+      "why": "That is the tax multiplier, $-\\frac{\\text{MPC}}{\\text{MPS}}$. The spending multiplier is $\\frac{1}{\\text{MPS}}$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-4",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "multipliers-s1",
+   "q": "Using the table, if government spending in Country Q rises by 20 billion dollars and the price level does not change, by how much does real GDP rise, in billions of dollars?",
+   "why": {
+    "correct": "Change in real GDP $= \\Delta G \\times$ spending multiplier $= 20 \\times 5 = 100$ billion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "totalChange",
+     "args": [
+      20,
+      {
+       "fn": "spendingMultiplier",
+       "args": [
+        0.8
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        20,
+        5
+       ]
+      },
+      "why": "You divided. Going from a change in spending to its effect on real GDP, multiply by the multiplier; divide only when working back from a gap to the spending needed."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        20,
+        0.8
+       ]
+      },
+      "why": "You multiplied by the MPC. Use the spending multiplier, $\\frac{1}{\\text{MPS}} = 5$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-5",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "multipliers-s2",
+   "q": "By how much must Brenland's government raise its spending, in billions of dollars, to close the gap?",
+   "why": {
+    "correct": "Spending multiplier $= \\frac{1}{1 - 0.75} = 4$. Direction first: a recessionary gap needs more spending. Then divide: $\\frac{120}{4} = 30$ billion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "gapChange",
+     "args": [
+      120,
+      {
+       "fn": "spendingMultiplier",
+       "args": [
+        0.75
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        120,
+        4
+       ]
+      },
+      "why": "You multiplied the gap by the multiplier. Divide it: the multiplier turns the 30 of new spending into the 120 of new output."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        120,
+        0.75
+       ]
+      },
+      "why": "You multiplied the gap by the MPC. Find the multiplier first ($\\frac{1}{\\text{MPS}} = 4$), then divide the gap by it."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-6",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "apply",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "multipliers-s2",
+   "q": "If Brenland instead closes the gap with a tax cut alone, by how much must it cut taxes, in billions of dollars?",
+   "why": {
+    "correct": "Tax multiplier $= -\\frac{\\text{MPC}}{\\text{MPS}} = -\\frac{0.75}{0.25} = -3$. Divide the gap by its size: $\\frac{120}{3} = 40$, a tax cut of 40 billion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "abs",
+     "args": [
+      {
+       "fn": "gapChange",
+       "args": [
+        120,
+        {
+         "fn": "taxMultiplier",
+         "args": [
+          0.75
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "gapChange",
+       "args": [
+        120,
+        {
+         "fn": "spendingMultiplier",
+         "args": [
+          0.75
+         ]
+        }
+       ]
+      },
+      "why": "You used the spending multiplier (4). A tax change works through consumption, so use the tax multiplier, $-\\frac{\\text{MPC}}{\\text{MPS}} = -3$."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        120,
+        3
+       ]
+      },
+      "why": "You multiplied the gap by the tax multiplier. Divide the gap by it."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-7",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "multipliers-s2",
+   "q": "Why must Brenland's tax cut be larger than its spending increase to close the same gap?",
+   "options": [
+    "Households save part of a tax cut, so the first round of new spending is smaller",
+    "A tax cut lowers the MPC, so later rounds of spending shrink",
+    "Tax cuts take longer to reach households than government purchases",
+    "The tax multiplier is larger than the spending multiplier"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A rise in government spending is spent in full in the first round. A tax cut raises disposable income, and households save the MPS share of it, so the tax multiplier is one smaller.",
+    "options": [
+     "Right: of a 40 tax cut, households spend 0.75 × 40 = 30 and save 10. Government spending enters in full.",
+     "The MPC does not change. The tax cut is smaller in effect because part of it is saved at the very first round.",
+     "Timing is not what the multipliers measure. The tax multiplier is smaller because part of a tax cut is saved.",
+     "It is smaller in size: 3 against 4 here. That is why a bigger tax cut is needed."
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-8",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "multipliers-s2",
+   "q": "Which pair of actions could close Brenland's gap?",
+   "options": [
+    "Cut government spending or raise taxes",
+    "Raise government spending or cut taxes",
+    "Raise government spending and raise taxes by twice as much",
+    "Cut taxes and cut government spending by the same amount"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Direction first: output is below full employment, so the government must add to spending (raise G or cut taxes).",
+    "options": [
+     "Those lower spending and would widen a recessionary gap. They fit an inflationary gap.",
+     "Right: a recessionary gap needs more spending, so G rises or taxes fall.",
+     "Raising taxes by twice as much would cut consumption by more than the extra G adds.",
+     "The spending cut lowers output by more than the tax cut raises it, so output falls."
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-9",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement about the MPC and the MPS is correct?",
+   "options": [
+    "They add up to the spending multiplier",
+    "The MPC is consumption divided by disposable income",
+    "They add up to 1",
+    "The MPS rises whenever the MPC rises"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An extra dollar of disposable income is either consumed or saved, so MPC + MPS = 1.",
+    "options": [
+     "The multiplier is 1 / MPS, not MPC + MPS.",
+     "That is the share of all income spent. The MPC is the change in consumption over the change in disposable income.",
+     "Right: MPC + MPS = 1.",
+     "Because they add to 1, a higher MPC means a lower MPS."
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-10",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Country A has an MPC of 0.9 and Country B an MPC of 0.75. Each raises government spending by 10 billion dollars, with the price level unchanged. Which is correct?",
+   "options": [
+    "Real GDP rises by 40 billion in A and by 100 billion in B",
+    "Real GDP rises by 9 billion in A and by 7.5 billion in B",
+    "Real GDP rises by 10 billion in both, because the spending is the same",
+    "Real GDP rises by 100 billion in A and by 40 billion in B"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The higher the MPC, the more of each round is re-spent and the larger the multiplier: 10 in A, 4 in B.",
+    "options": [
+     "The multipliers are switched. A higher MPC means more is re-spent each round, so A's multiplier is the larger.",
+     "You multiplied by the MPC. The spending multiplier is 1 / MPS.",
+     "Each dollar is re-spent in rounds, so output rises by more than the first 10 billion, and by more where the MPC is higher.",
+     "Right: A's multiplier is 1/0.1 = 10 and B's is 1/0.25 = 4."
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-11",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "The MPC is 0.9. The government cuts taxes by 10 billion dollars and the price level does not change. By how much does real GDP rise, in billions of dollars?",
+   "why": {
+    "correct": "Tax multiplier $= -\\frac{0.9}{0.1} = -9$. A tax cut is a change of $-10$, so $\\Delta Y = -10 \\times -9 = 90$ billion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "totalChange",
+     "args": [
+      -10,
+      {
+       "fn": "taxMultiplier",
+       "args": [
+        0.9
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "totalChange",
+       "args": [
+        10,
+        {
+         "fn": "spendingMultiplier",
+         "args": [
+          0.9
+         ]
+        }
+       ]
+      },
+      "why": "You used the spending multiplier (10). A tax cut is partly saved, so use the tax multiplier, $-\\frac{\\text{MPC}}{\\text{MPS}} = -9$."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        10,
+        9
+       ]
+      },
+      "why": "You divided. To find the effect of a known tax change on real GDP, multiply it by the tax multiplier."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-12",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "The MPC is 0.8. The government raises its spending by 50 billion dollars and raises taxes by 50 billion dollars at the same time. With the price level unchanged, by how much does real GDP change, in billions of dollars?",
+   "why": {
+    "correct": "Spending: $50 \\times 5 = 250$. Taxes: $50 \\times (-4) = -200$. Together $250 - 200 = 50$: output rises by the amount of the spending, so the balanced-budget multiplier is 1."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "totalChange",
+       "args": [
+        50,
+        {
+         "fn": "spendingMultiplier",
+         "args": [
+          0.8
+         ]
+        }
+       ]
+      },
+      {
+       "fn": "totalChange",
+       "args": [
+        50,
+        {
+         "fn": "taxMultiplier",
+         "args": [
+          0.8
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "The two changes do not cancel. The spending is spent in full, while households would have saved part of the tax, so the spending effect (250) is larger than the tax effect (200)."
+     },
+     {
+      "value": 450,
+      "why": "You added the tax effect instead of subtracting it. A tax rise lowers consumption, so its effect is $50 \\times (-4) = -200$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-13",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "3.C",
+   "q": "Put the steps for finding the change in government spending that closes a recessionary gap in order.",
+   "options": [
+    "Find the MPC (and the MPS = 1 - MPC)",
+    "Compute the spending multiplier, 1 / MPS",
+    "Decide the direction: a recessionary gap needs more spending",
+    "Divide the gap by the multiplier"
+   ],
+   "why": {
+    "correct": "MPC, multiplier, direction, then divide the gap by the multiplier. Multiplying the gap is the most common slip."
+   }
+  },
+  {
+   "id": "mac-multipliers-14",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A city gives a firm 1 million dollars to build a new stadium. Why can total spending in the economy rise by more than 1 million dollars?",
+   "options": [
+    "Those who earn the million re-spend part of it, round after round",
+    "Prices rise, so each dollar of the stadium counts for more",
+    "The firm deposits the money in a bank, and the deposit counts as new spending",
+    "The government counts the stadium twice when measuring GDP"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The spending multiplier: new spending becomes someone's income, who spends the MPC share of it, and so on round after round.",
+    "options": [
+     "Right: each round of income is partly re-spent, so the first million sets off more rounds of spending.",
+     "The multiplier is about real output from rounds of re-spending, not about prices.",
+     "Saving is a leak from the rounds. It is the re-spending that multiplies.",
+     "GDP counts the stadium once. The extra comes from new spending by the people who earned the million."
+    ]
+   }
+  },
+  {
+   "id": "mac-multipliers-15",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain how the multiplier works for a rise in government spending.",
+   "why": {
+    "correct": "The new spending is income for someone, who spends the MPC share of it, and that spending is income for someone else."
+   },
+   "specific": {
+    "frame": "Government spending rises, so incomes ___. Households spend the ___ share of the new income, which becomes ___ income for others, so real GDP rises by ___ the first change.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Government spending rises, so incomes increase. Households spend the MPC share of the new income, which becomes more income for others, so real GDP rises by a multiple of the first change because each round is partly re-spent.",
+    "slots": {
+     "output": {
+      "label": "Incomes",
+      "options": [
+       "rise",
+       "fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Government purchases pay workers and firms, so incomes rise."
+      }
+     },
+     "multiplier": {
+      "label": "The share spent",
+      "options": [
+       "MPC",
+       "MPS"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The MPS is the share saved, which leaks out of the rounds."
+      }
+     },
+     "link": {
+      "label": "Next round",
+      "options": [
+       "more",
+       "less"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Spending by one household is income for another, so income rises again."
+      }
+     },
+     "change": {
+      "label": "How much",
+      "options": [
+       "a multiple of",
+       "less than"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Each round adds more spending, so the total exceeds the first change."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-multipliers-16",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The government raises its purchases of goods and services. Shift the aggregate demand curve to show the effect.",
+   "why": {
+    "correct": "More government spending raises spending at every price level, and the multiplier makes the shift larger than the purchase itself."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "AD"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in government spending"
+    },
+    "slips": {
+     "AD": "More government spending raises spending at every price level, so AD shifts right."
+    }
+   }
+  },
+  {
+   "id": "mac-multipliers-17",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which change would make an economy's spending multiplier larger? Select all that apply.",
+   "options": [
+    "A rise in the MPC",
+    "A rise in the MPS",
+    "A rise in government spending",
+    "A cut in taxes"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "The spending multiplier is 1 / MPS. Only a higher MPC (a lower MPS) makes it larger.",
+    "options": [
+     "Right: more of each round is re-spent, so 1 / MPS gets larger.",
+     "More saving each round means a smaller multiplier.",
+     "More spending is multiplied by the same multiplier; it does not change the multiplier.",
+     "A tax cut is a change multiplied by the tax multiplier; it does not raise the MPC."
+    ]
+   }
+  }
+ ]
+}

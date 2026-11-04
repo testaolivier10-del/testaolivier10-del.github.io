@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 600" width="820" height="600" role="img" aria-labelledby="gdp-circular-flow-diagram-t gdp-circular-flow-diagram-d" font-family="Arial, Helvetica, sans-serif">
+<title id="gdp-circular-flow-diagram-t">The circular flow of a simple economy</title>
+<desc id="gdp-circular-flow-diagram-d">Households on the left and firms on the right. Across the top, in the product market, firms sell goods and services to households and households pay for them with spending, which becomes firms' revenue. Across the bottom, in the factor market, households sell land, labor, capital and entrepreneurship to firms, and firms pay them income: wages, rent, interest and profit. Money flows run around the outside loop; goods, services and factors run around the inside loop in the opposite direction.</desc>
+<defs><marker id="gdp-circular-flow-diagram-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="gdp-circular-flow-diagram-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="gdp-circular-flow-diagram-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="gdp-circular-flow-diagram-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="820" height="600" fill="#FFFFFF"/>
+<text x="410" y="30" font-size="18" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="410" dy="0">The circular flow: spending on output is someone's income</tspan></text>
+<rect x="30" y="265" width="200" height="90" rx="8" fill="#EEF4E0" stroke="#1F2A28" stroke-width="2"/>
+<text x="130" y="305" font-size="18" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="130" dy="0">Households</tspan></text>
+<text x="130" y="328" font-size="12" text-anchor="middle" fill="#5B6664"><tspan x="130" dy="0">own the factors of production</tspan></text>
+<rect x="590" y="265" width="200" height="90" rx="8" fill="#EEF4E0" stroke="#1F2A28" stroke-width="2"/>
+<text x="690" y="305" font-size="18" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="690" dy="0">Firms</tspan></text>
+<text x="690" y="328" font-size="12" text-anchor="middle" fill="#5B6664"><tspan x="690" dy="0">produce goods and services</tspan></text>
+<rect x="310" y="85" width="200" height="80" rx="8" fill="#F2F4F3" stroke="#1F2A28" stroke-width="2"/>
+<text x="410" y="120" font-size="17" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="410" dy="0">Product market</tspan></text>
+<text x="410" y="142" font-size="12" text-anchor="middle" fill="#5B6664"><tspan x="410" dy="0">goods and services are sold</tspan></text>
+<rect x="310" y="455" width="200" height="80" rx="8" fill="#F2F4F3" stroke="#1F2A28" stroke-width="2"/>
+<text x="410" y="490" font-size="17" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="410" dy="0">Factor market</tspan></text>
+<text x="410" y="512" font-size="12" text-anchor="middle" fill="#5B6664"><tspan x="410" dy="0">land, labor, capital, entrepreneurship</tspan></text>
+<path d="M100 265 L100 105 L306 105" fill="none" stroke="#355A0A" stroke-width="2.5" marker-end="url(#gdp-circular-flow-diagram-g)" stroke-linejoin="round"/>
+<text x="108" y="95" font-size="14" text-anchor="start" fill="#355A0A" font-weight="bold"><tspan x="108" dy="0">Spending ($)</tspan></text>
+<path d="M510 105 L720 105 L720 261" fill="none" stroke="#355A0A" stroke-width="2.5" marker-end="url(#gdp-circular-flow-diagram-g)" stroke-linejoin="round"/>
+<text x="712" y="95" font-size="14" text-anchor="end" fill="#355A0A" font-weight="bold"><tspan x="712" dy="0">Revenue ($)</tspan></text>
+<path d="M720 355 L720 515 L514 515" fill="none" stroke="#355A0A" stroke-width="2.5" marker-end="url(#gdp-circular-flow-diagram-g)" stroke-linejoin="round"/>
+<text x="712" y="540" font-size="14" text-anchor="end" fill="#355A0A" font-weight="bold"><tspan x="712" dy="0">Payments for factors ($)</tspan></text>
+<path d="M310 515 L100 515 L100 359" fill="none" stroke="#355A0A" stroke-width="2.5" marker-end="url(#gdp-circular-flow-diagram-g)" stroke-linejoin="round"/>
+<text x="30" y="540" font-size="14" text-anchor="start" fill="#355A0A" font-weight="bold"><tspan x="30" dy="0">Income ($): wages, rent, interest, profit</tspan></text>
+<path d="M650 265 L650 145 L514 145" fill="none" stroke="#084F78" stroke-width="2.5" stroke-dasharray="7 4" marker-end="url(#gdp-circular-flow-diagram-b)" stroke-linejoin="round"/>
+<text x="560" y="172" font-size="13" text-anchor="start" fill="#084F78"><tspan x="560" dy="0">Goods and</tspan><tspan x="560" dy="16.25">services</tspan></text>
+<path d="M310 145 L160 145 L160 261" fill="none" stroke="#084F78" stroke-width="2.5" stroke-dasharray="7 4" marker-end="url(#gdp-circular-flow-diagram-b)" stroke-linejoin="round"/>
+<text x="172" y="172" font-size="13" text-anchor="start" fill="#084F78"><tspan x="172" dy="0">Goods and</tspan><tspan x="172" dy="16.25">services</tspan></text>
+<path d="M160 355 L160 475 L306 475" fill="none" stroke="#084F78" stroke-width="2.5" stroke-dasharray="7 4" marker-end="url(#gdp-circular-flow-diagram-b)" stroke-linejoin="round"/>
+<text x="172" y="435" font-size="13" text-anchor="start" fill="#084F78"><tspan x="172" dy="0">Factors of</tspan><tspan x="172" dy="16.25">production</tspan></text>
+<path d="M510 475 L650 475 L650 359" fill="none" stroke="#084F78" stroke-width="2.5" stroke-dasharray="7 4" marker-end="url(#gdp-circular-flow-diagram-b)" stroke-linejoin="round"/>
+<text x="560" y="435" font-size="13" text-anchor="start" fill="#084F78"><tspan x="560" dy="0">Factors of</tspan><tspan x="560" dy="16.25">production</tspan></text>
+<line x1="300" y1="295" x2="340" y2="295" stroke="#355A0A" stroke-width="2.5"/>
+<text x="348" y="300" font-size="13" text-anchor="start" fill="#355A0A"><tspan x="348" dy="0">money (outer loop)</tspan></text>
+<line x1="300" y1="325" x2="340" y2="325" stroke="#084F78" stroke-width="2.5" stroke-dasharray="7 4"/>
+<text x="348" y="330" font-size="13" text-anchor="start" fill="#084F78"><tspan x="348" dy="0">real things (inner loop)</tspan></text>
+</svg>

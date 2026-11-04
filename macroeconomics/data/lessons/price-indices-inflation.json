@@ -1,0 +1,72 @@
+{
+ "topic": "price-indices-inflation",
+ "hook": "A movie ticket that cost $\\$5$ when your parents were teenagers costs about $\\$15$ today. Did movies get three times better, or did money buy less? To answer, economists price the same basket of goods year after year. That one idea, a fixed basket, gives the consumer price index, the inflation rate, and a way to tell whether a raise actually makes you better off.",
+ "prereq": [
+  {
+   "q": "In GDP, what is consumption?",
+   "options": [
+    "Household spending on goods and services",
+    "Firms' spending on new capital",
+    "Government purchases",
+    "Exports minus imports"
+   ],
+   "correct": 0,
+   "why": "Consumption (C) is what households spend. The CPI tracks the prices of a basket of what households buy.",
+   "review": "gdp-circular-flow"
+  },
+  {
+   "q": "Why does a smartphone that costs the same as ten years ago show a limitation of GDP?",
+   "options": [
+    "GDP counts the price paid and can miss gains in quality",
+    "GDP leaves out goods made abroad",
+    "GDP counts used phones",
+    "GDP leaves out consumer goods"
+   ],
+   "correct": 0,
+   "why": "Market values can miss quality gains. The same problem shows up in price indexes.",
+   "review": "gdp-limitations"
+  }
+ ],
+ "figure": {
+  "figure": "price-indices-inflation-basket",
+  "caption": "The same basket priced in three years: dividing each cost by the base-year cost and multiplying by 100 gives the CPI."
+ },
+ "chain": [
+  {
+   "cause": "A fixed basket of goods is priced each year",
+   "effect": "its cost this year divided by its cost in the base year, times 100, is the consumer price index"
+  },
+  {
+   "cause": "The index rises from one year to the next",
+   "effect": "the percent change in the index is the inflation rate"
+  },
+  {
+   "cause": "Prices rise faster than a person's pay",
+   "effect": "their real wage (nominal wage divided by the index, times 100) falls"
+  },
+  {
+   "cause": "Consumers switch away from goods whose prices rose",
+   "effect": "the fixed basket overstates the rise in the cost of living (substitution bias)"
+  }
+ ],
+ "ideas": [
+  "<b>CPI</b> $= \\frac{\\text{cost of basket this year}}{\\text{cost in base year}} \\times 100$. The base year is 100.",
+  "<b>Inflation rate</b> $= \\frac{\\text{new index} - \\text{old index}}{\\text{old index}} \\times 100$. Divide by the old index, not 100.",
+  "<b>Real value</b> $= \\frac{\\text{nominal value}}{\\text{price index}} \\times 100$: what money buys in base-year dollars.",
+  "<b>Deflation</b>: prices fall. <b>Disinflation</b>: inflation slows but prices still rise. <b>Substitution bias</b> and quality gains make the CPI overstate inflation."
+ ],
+ "misconception": {
+  "wrong": "A CPI of 130 means prices rose 130%, and a falling inflation rate means prices are falling.",
+  "right": "A CPI of 130 means prices are 30% above the base year. A falling inflation rate is disinflation: prices still rise, just more slowly. Only deflation means prices fall."
+ },
+ "check": [
+  "mac-price-indices-inflation-1",
+  "mac-price-indices-inflation-2",
+  "mac-price-indices-inflation-3",
+  "mac-price-indices-inflation-5",
+  "mac-price-indices-inflation-8",
+  "mac-price-indices-inflation-11",
+  "mac-price-indices-inflation-14"
+ ],
+ "summary": "A price index compares the cost of a fixed basket with its cost in the base year (index 100). The consumer price index uses a basket households buy; the inflation rate is the percent change in the index. Dividing a nominal value by the index and multiplying by 100 gives a real value. Substitution bias, new goods and quality gains make the CPI overstate inflation."
+}

@@ -1,0 +1,73 @@
+{
+ "topic": "unemployment",
+ "hook": "Two friends have no paid job. One is sending out applications every day; the other gave up months ago because nobody called back. Only the first counts as unemployed. The unemployment rate is one of the most watched numbers in the news, and its definitions decide who is in it, who is left out, and why some unemployment never goes away even in good times.",
+ "prereq": [
+  {
+   "q": "An economy produces at a point inside its production possibilities curve. What does that show?",
+   "options": [
+    "Some resources are unused or used inefficiently",
+    "The economy is producing more than it can",
+    "The economy has grown",
+    "The economy is using every resource fully"
+   ],
+   "correct": 0,
+   "why": "A point inside the PPC means the economy could produce more of both goods: some resources, such as workers, are idle.",
+   "review": "opportunity-cost-ppc"
+  },
+  {
+   "q": "Labor is which of these?",
+   "options": [
+    "A factor of production",
+    "A final good",
+    "A transfer payment",
+    "An intermediate good"
+   ],
+   "correct": 0,
+   "why": "Land, labor, capital and entrepreneurship are the factors of production that households sell in the factor market.",
+   "review": "gdp-circular-flow"
+  }
+ ],
+ "figure": {
+  "figure": "unemployment-labor-force",
+  "caption": "The adult population splits into the labor force (employed and unemployed) and those not in it; only people looking for work count as unemployed."
+ },
+ "chain": [
+  {
+   "cause": "A person has no job, is available, and looked for work in the past four weeks",
+   "effect": "they are counted as unemployed and are in the labor force"
+  },
+  {
+   "cause": "A jobless person stops looking because they think no jobs exist",
+   "effect": "they become a discouraged worker, outside the labor force, so the measured rate understates joblessness"
+  },
+  {
+   "cause": "Spending and output fall in a recession",
+   "effect": "firms lay off workers and cyclical unemployment rises above zero"
+  },
+  {
+   "cause": "Cyclical unemployment returns to zero",
+   "effect": "the actual rate equals the natural rate (frictional + structural): full employment"
+  }
+ ],
+ "ideas": [
+  "Labor force = employed + unemployed. <b>Unemployment rate</b> $= \\frac{\\text{unemployed}}{\\text{labor force}} \\times 100$; <b>participation rate</b> $= \\frac{\\text{labor force}}{\\text{adult population}} \\times 100$.",
+  "<b>Frictional</b>: searching between jobs. <b>Structural</b>: skills or location do not match the jobs. <b>Cyclical</b>: caused by a downturn in spending.",
+  "<b>Natural rate</b> = frictional + structural; actual = natural + cyclical. Full employment does not mean zero unemployment.",
+  "Retirees and <b>discouraged workers</b> are outside the labor force; part-time workers who want full-time jobs count as employed."
+ ],
+ "misconception": {
+  "wrong": "Anyone without a job is unemployed, and full employment means 0% unemployment.",
+  "right": "Only jobless people who are looking count as unemployed; retirees and discouraged workers are outside the labor force. At full employment frictional and structural unemployment remain: the actual rate equals the natural rate."
+ },
+ "check": [
+  "mac-unemployment-1",
+  "mac-unemployment-2",
+  "mac-unemployment-3",
+  "mac-unemployment-5",
+  "mac-unemployment-6",
+  "mac-unemployment-9",
+  "mac-unemployment-10",
+  "mac-unemployment-13"
+ ],
+ "summary": "The labor force is the employed plus the unemployed; the unemployment rate divides the unemployed by the labor force, and the participation rate divides the labor force by the adult population. Frictional and structural unemployment make up the natural rate; cyclical unemployment is the actual rate minus the natural rate. Discouraged and underemployed workers make the official rate understate joblessness."
+}

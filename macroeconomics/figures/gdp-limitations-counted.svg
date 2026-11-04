@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 430" width="820" height="430" role="img" aria-labelledby="gdp-limitations-counted-t gdp-limitations-counted-d" font-family="Arial, Helvetica, sans-serif">
+<title id="gdp-limitations-counted-t">What GDP counts and what it leaves out</title>
+<desc id="gdp-limitations-counted-d">Two columns. Counted in GDP: New consumer goods and services (C); New capital, new homes, added inventory (I); Government purchases of goods and services (G); Exports minus imports (X − M). Left out of GDP or of what it can show: Intermediate goods (already in the final price); Used goods, stocks and bonds; Transfer payments such as pensions; Unpaid home production and volunteer work; Underground (unreported) market activity; Leisure, pollution, how income is shared.</desc>
+<defs><marker id="gdp-limitations-counted-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="gdp-limitations-counted-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="gdp-limitations-counted-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="gdp-limitations-counted-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="820" height="430" fill="#FFFFFF"/>
+<text x="410" y="32" font-size="18" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="410" dy="0">What GDP counts, and what it leaves out</tspan></text>
+<rect x="30" y="55" width="360" height="350" rx="8" fill="#EEF4E0" stroke="#355A0A" stroke-width="2"/>
+<text x="210" y="88" font-size="17" text-anchor="middle" fill="#355A0A" font-weight="bold"><tspan x="210" dy="0">Counted in GDP</tspan></text>
+<text x="52" y="130" font-size="18" text-anchor="start" fill="#355A0A" font-weight="bold"><tspan x="52" dy="0">✓</tspan></text>
+<text x="76" y="130" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="76" dy="0">New consumer goods and services (C)</tspan></text>
+<text x="52" y="182" font-size="18" text-anchor="start" fill="#355A0A" font-weight="bold"><tspan x="52" dy="0">✓</tspan></text>
+<text x="76" y="182" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="76" dy="0">New capital, new homes, added inventory</tspan><tspan x="76" dy="17.5">(I)</tspan></text>
+<text x="52" y="234" font-size="18" text-anchor="start" fill="#355A0A" font-weight="bold"><tspan x="52" dy="0">✓</tspan></text>
+<text x="76" y="234" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="76" dy="0">Government purchases of goods and</tspan><tspan x="76" dy="17.5">services (G)</tspan></text>
+<text x="52" y="286" font-size="18" text-anchor="start" fill="#355A0A" font-weight="bold"><tspan x="52" dy="0">✓</tspan></text>
+<text x="76" y="286" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="76" dy="0">Exports minus imports (X − M)</tspan></text>
+<rect x="430" y="55" width="360" height="350" rx="8" fill="#FBEDE3" stroke="#D55E00" stroke-width="2"/>
+<text x="610" y="88" font-size="17" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="610" dy="0">Left out (or hidden) in GDP</tspan></text>
+<text x="452" y="125" font-size="18" text-anchor="start" fill="#D55E00" font-weight="bold"><tspan x="452" dy="0">✗</tspan></text>
+<text x="476" y="125" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="476" dy="0">Intermediate goods (already in the final</tspan><tspan x="476" dy="17.5">price)</tspan></text>
+<text x="452" y="171" font-size="18" text-anchor="start" fill="#D55E00" font-weight="bold"><tspan x="452" dy="0">✗</tspan></text>
+<text x="476" y="171" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="476" dy="0">Used goods, stocks and bonds</tspan></text>
+<text x="452" y="217" font-size="18" text-anchor="start" fill="#D55E00" font-weight="bold"><tspan x="452" dy="0">✗</tspan></text>
+<text x="476" y="217" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="476" dy="0">Transfer payments such as pensions</tspan></text>
+<text x="452" y="263" font-size="18" text-anchor="start" fill="#D55E00" font-weight="bold"><tspan x="452" dy="0">✗</tspan></text>
+<text x="476" y="263" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="476" dy="0">Unpaid home production and volunteer</tspan><tspan x="476" dy="17.5">work</tspan></text>
+<text x="452" y="309" font-size="18" text-anchor="start" fill="#D55E00" font-weight="bold"><tspan x="452" dy="0">✗</tspan></text>
+<text x="476" y="309" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="476" dy="0">Underground (unreported) market activity</tspan></text>
+<text x="452" y="355" font-size="18" text-anchor="start" fill="#D55E00" font-weight="bold"><tspan x="452" dy="0">✗</tspan></text>
+<text x="476" y="355" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="476" dy="0">Leisure, pollution, how income is shared</tspan></text>
+</svg>

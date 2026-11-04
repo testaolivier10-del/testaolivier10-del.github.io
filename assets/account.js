@@ -1051,6 +1051,7 @@
     { storagePrefix: 'appsych_' },
     { storagePrefix: 'apprecalc_' },
     { storagePrefix: 'apcalcbc_' },
+    { storagePrefix: 'apmacro_' },
   ];
   // courses:end
   var CLEAR_PREFIXES = ['hub_'].concat(COURSE_LIST.map(function(c){ return c.storagePrefix; }), ['levlprep_']);
@@ -1960,6 +1961,7 @@
     { key: 'appsych', path: '/psychology/' },
     { key: 'apprecalc', path: '/precalculus/' },
     { key: 'apcalcbc', path: '/calculus-bc/' },
+    { key: 'apmacro', path: '/macroeconomics/' },
   ];
   // courses:end
   function inviteJson(k){ try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch(e){ return null; } }

@@ -1,0 +1,72 @@
+{
+ "topic": "multipliers",
+ "hook": "A town gets a new factory that pays 10 million dollars a year in wages. The workers spend most of it at local shops, restaurants and garages. The shop owners and their staff spend most of what they earn too. By the end of the year the town's total spending has grown by far more than 10 million dollars. That chain of re-spending is the multiplier.",
+ "prereq": [
+  {
+   "q": "Which component of GDP is household spending on goods and services?",
+   "options": [
+    "Consumption",
+    "Investment",
+    "Government spending",
+    "Net exports"
+   ],
+   "correct": 0,
+   "why": "Consumption (C) is household spending on goods and services.",
+   "review": "gdp-circular-flow"
+  },
+  {
+   "q": "What shifts the aggregate demand curve to the right?",
+   "options": [
+    "A rise in spending at every price level",
+    "A fall in the price level",
+    "A rise in the price level",
+    "A fall in government spending"
+   ],
+   "correct": 0,
+   "why": "More spending at every price level shifts AD right; a change in the price level moves along it.",
+   "review": "aggregate-demand"
+  }
+ ],
+ "figure": {
+  "figure": "multipliers-rounds",
+  "caption": "With an MPC of 0.8, each round of new spending is 0.8 times the one before; all rounds add up to five times the first."
+ },
+ "chain": [
+  {
+   "cause": "Government spending rises by 100",
+   "effect": "incomes of workers and firms rise by 100"
+  },
+  {
+   "cause": "Incomes rise by 100 and the MPC is 0.8",
+   "effect": "households spend 80 more, which is income for others"
+  },
+  {
+   "cause": "Each round is 0.8 times the last",
+   "effect": "total spending rises by 100 × 1 / 0.2 = 500"
+  },
+  {
+   "cause": "A tax cut of 100 instead",
+   "effect": "households spend only 80 at first, so output rises by 400"
+  }
+ ],
+ "ideas": [
+  "<b>MPC</b> $= \\frac{\\Delta C}{\\Delta \\text{DI}}$ and <b>MPS</b> $= \\frac{\\Delta S}{\\Delta \\text{DI}}$, where DI is <b>disposable income</b> (income after taxes). MPC + MPS = 1.",
+  "<b>Spending multiplier</b> $= \\frac{1}{1 - \\text{MPC}} = \\frac{1}{\\text{MPS}}$. <b>Tax multiplier</b> $= -\\frac{\\text{MPC}}{\\text{MPS}}$: negative, and one smaller in size.",
+  "Effect of a change: $\\Delta Y = \\Delta G \\times$ multiplier. Closing a gap: <b>direction first, then divide the gap by the multiplier</b>.",
+  "A tax cut must be larger than a spending increase to close the same gap, because households save part of a tax cut.",
+  "Raising spending and taxes by the same amount still raises output by that amount: the balanced-budget multiplier is 1."
+ ],
+ "misconception": {
+  "wrong": "To close a 200 billion dollar gap with a multiplier of 5, raise spending by 200 × 5 = 1,000 billion dollars.",
+  "right": "The multiplier enlarges the spending, so divide the gap by it: 200 / 5 = 40 billion dollars of new spending."
+ },
+ "check": [
+  "mac-multipliers-5",
+  "mac-multipliers-6",
+  "mac-multipliers-7",
+  "mac-multipliers-8",
+  "mac-multipliers-10",
+  "mac-multipliers-13"
+ ],
+ "summary": "Each new dollar of spending becomes someone's income, who spends the MPC share of it, so output rises by a multiple of the first change. The spending multiplier is 1 / MPS; the tax multiplier is -MPC / MPS, one smaller in size because part of a tax cut is saved. To close a gap, choose the direction first, then divide the gap by the multiplier."
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 400" width="860" height="400" role="img" aria-labelledby="economic-growth-ppc-lras-t economic-growth-ppc-lras-d" font-family="Arial, Helvetica, sans-serif">
+<title id="economic-growth-ppc-lras-t">Economic growth on the PPC and the AD-AS graph</title>
+<desc id="economic-growth-ppc-lras-d">Left: a production possibilities curve for capital goods and consumer goods shifts out from PPC1 to PPC2; a point X inside the curve marks idle resources. Right: an AD-AS graph where the vertical long-run aggregate supply curve shifts right from LRAS1 at YF1 to LRAS2 at YF2.</desc>
+<defs><marker id="economic-growth-ppc-lras-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="economic-growth-ppc-lras-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="economic-growth-ppc-lras-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="economic-growth-ppc-lras-arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker></defs>
+<rect width="860" height="400" fill="#FFFFFF"/>
+<text x="430" y="30" font-size="19" font-weight="bold" fill="#1F2A28" text-anchor="middle">Economic growth on two graphs</text><text x="230" y="66" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="middle">Production possibilities curve</text>
+<path d="M80 80V330H380" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<text x="380" y="366" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">Consumer goods</text>
+<text transform="translate(66 80) rotate(-90)" font-size="13" fill="#1F2A28" text-anchor="end">Capital goods</text>
+<path d="M260 330L259.8 322.1L259 314.3L257.8 306.5L256.1 298.8L253.9 291.2L251.2 283.6L248 276.2L244.4 269L240.4 261.9L235.9 255L231 248.3L225.6 241.8L219.9 235.6L213.8 229.6L207.3 223.9L200.4 218.5L193.3 213.4L185.8 208.6L178 204.2L170 200.1L161.7 196.3L153.2 193L144.5 190L135.6 187.3L126.6 185.1L117.4 183.3L108.2 181.8L98.8 180.8L89.4 180.2L80 180" fill="none" stroke="#6B7672" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="152" y="215" font-size="13" font-weight="bold" fill="#6B7672" text-anchor="start">PPC<tspan font-size="10" dy="4">1</tspan></text>
+<path d="M320 330L319.7 319.5L318.7 309.1L317 298.7L314.8 288.4L311.8 278.2L308.3 268.2L304.1 258.3L299.3 248.7L293.8 239.2L287.8 230L281.3 221.1L274.2 212.4L266.5 204.1L258.4 196.2L249.7 188.6L240.6 181.4L231 174.6L221.1 168.2L210.7 162.3L200 156.8L189 151.8L177.6 147.3L166 143.3L154.2 139.8L142.1 136.8L129.9 134.4L117.5 132.5L105.1 131.1L92.6 130.3L80 130" fill="none" stroke="#355A0A" stroke-width="2.6"/>
+<text x="260" y="180" font-size="13" font-weight="bold" fill="#355A0A" text-anchor="start">PPC<tspan font-size="10" dy="4">2</tspan></text>
+<line x1="200" y1="230" x2="239" y2="197.5" stroke="#355A0A" stroke-width="2.2" marker-end="url(#economic-growth-ppc-lras-arA)"/>
+<circle cx="146" cy="280" r="5" fill="#1F2A28"/><text x="154" y="284" font-size="13" font-weight="bold" fill="#1F2A28">X</text>
+<text x="116" y="305" font-size="12" font-weight="normal" fill="#6B7672" text-anchor="start">idle resources</text><text x="670" y="66" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="middle">AD-AS</text>
+<path d="M520 80V330H820" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<text x="820" y="366" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">Real GDP</text>
+<text transform="translate(506 80) rotate(-90)" font-size="13" fill="#1F2A28" text-anchor="end">Price level</text>
+<line x1="640" y1="322.5" x2="640" y2="90" stroke="#6B7672" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="643" y="87.5" font-size="13" font-weight="bold" fill="#6B7672" text-anchor="start">LRAS<tspan font-size="10" dy="4">1</tspan></text>
+<line x1="700" y1="322.5" x2="700" y2="90" stroke="#355A0A" stroke-width="2.6"/>
+<text x="703" y="87.5" font-size="13" font-weight="bold" fill="#355A0A" text-anchor="start">LRAS<tspan font-size="10" dy="4">2</tspan></text>
+<line x1="649" y1="122.5" x2="691" y2="122.5" stroke="#355A0A" stroke-width="2.2" marker-end="url(#economic-growth-ppc-lras-arA)"/>
+<text x="640" y="347.5" font-size="12" font-weight="bold" fill="#6B7672" text-anchor="middle">Y<tspan font-size="10" dy="4">F1</tspan></text>
+<text x="700" y="347.5" font-size="12" font-weight="bold" fill="#355A0A" text-anchor="middle">Y<tspan font-size="10" dy="4">F2</tspan></text><text x="430" y="384" font-size="13" font-weight="normal" fill="#6B7672" text-anchor="middle">More physical and human capital, better technology or more resources: the PPC shifts out and LRAS shifts right.</text>
+</svg>

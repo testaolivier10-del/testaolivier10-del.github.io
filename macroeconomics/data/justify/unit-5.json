@@ -1,0 +1,519 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 5 (docs/apmacro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmacro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-5",
+   "id": "u5-policy-mix",
+   "topic": "policy-short-run",
+   "practice": "2.B",
+   "skill": "identify",
+   "title": "Two expansionary policies at once",
+   "prompt": "Sundra's legislature cuts income taxes while its central bank, with ample reserves, lowers the interest rate on reserve balances. <b>Explain</b> the effect on aggregate demand and on interest rates in the short run.",
+   "checklist": [
+    "Says both policies raise AD, so AD rises for sure",
+    "Says the tax cut pushes interest rates up while the lower administered rate pushes them down",
+    "Concludes the change in interest rates is indeterminate without the sizes"
+   ],
+   "earns": {
+    "answer": "Both policies are expansionary: the tax cut raises disposable income and consumption, and the lower administered rate lowers borrowing costs, so AD rises for sure. But the tax cut raises the demand for money and borrowing, which pushes interest rates up, while the central bank's action pushes them down, so the change in interest rates is indeterminate without their sizes.",
+    "why": "It signs the variable both policies move the same way and explains why the other cannot be signed."
+   },
+   "misses": {
+    "answer": "Aggregate demand rises, and interest rates in Sundra fall for sure.",
+    "why": "The fall in rates is not certain: the tax cut pushes rates up, so without sizes the change is indeterminate."
+   },
+   "specific": {
+    "slots": {
+     "ad": {
+      "label": "Aggregate demand",
+      "options": [
+       "rises",
+       "is indeterminate"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Both policies push AD the same way, so its change can be signed."
+      }
+     },
+     "i": {
+      "label": "Interest rates",
+      "options": [
+       "indeterminate",
+       "fall",
+       "rise"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The tax cut pushes rates up, so a fall is not certain.",
+       "2": "The central bank pushes rates down, so a rise is not certain."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-phillips-ad",
+   "topic": "phillips-curve",
+   "practice": "3.A",
+   "skill": "graph",
+   "title": "A fall in AD on the Phillips curves",
+   "prompt": "Starting at long-run equilibrium, AD in Varden falls. <b>Explain</b> the short-run effect on a correctly labeled graph of the Phillips curves.",
+   "checklist": [
+    "Labels the axes: inflation rate and unemployment rate, with the LRPC vertical at the natural rate",
+    "Says the economy moves down along the SRPC (the curve does not shift)",
+    "Says unemployment rises above the natural rate and inflation falls"
+   ],
+   "earns": {
+    "answer": "On the Phillips curve graph (inflation rate on the vertical axis, unemployment rate on the horizontal, LRPC vertical at the natural rate), a fall in AD moves the economy down along the SRPC to a new point. Unemployment rises above the natural rate and the inflation rate falls; neither curve shifts in the short run.",
+    "why": "Correct axes, a movement along the SRPC, and both outcomes compared with the start."
+   },
+   "misses": {
+    "answer": "The SRPC shifts right, so unemployment and inflation both rise.",
+    "why": "A change in AD moves the economy along the SRPC; a rightward shift comes from expected inflation or a supply shock."
+   },
+   "specific": {
+    "slots": {
+     "move": {
+      "label": "On the graph",
+      "options": [
+       "a movement down along the SRPC",
+       "the SRPC shifts right",
+       "the LRPC shifts right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Only expected inflation or a supply shock shifts the SRPC.",
+       "2": "The natural rate has not changed."
+      }
+     },
+     "pi": {
+      "label": "The inflation rate",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Weaker demand slows the rise in prices."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-phillips-shock",
+   "topic": "phillips-curve",
+   "practice": "3.A",
+   "skill": "graph",
+   "title": "A supply shock on the Phillips curves",
+   "prompt": "A sharp rise in energy prices hits firms across Varden. <b>Explain</b> the effect on the short-run Phillips curve and on inflation and unemployment.",
+   "checklist": [
+    "Says SRAS shifts left in the AD-AS model",
+    "Says the SRPC shifts right (up)",
+    "Says inflation and unemployment both rise (stagflation)"
+   ],
+   "earns": {
+    "answer": "Higher energy costs shift SRAS left, raising the price level faster while real output falls. On the Phillips curves this is a rightward shift of the SRPC: at each unemployment rate, inflation is higher. Both the inflation rate and the unemployment rate rise.",
+    "why": "It links the supply shock to the SRPC shift and states both outcomes."
+   },
+   "misses": {
+    "answer": "The economy moves up along the SRPC: inflation rises and unemployment falls.",
+    "why": "That is the effect of more AD; a supply shock shifts the SRPC, and unemployment rises with inflation."
+   },
+   "specific": {
+    "slots": {
+     "curve": {
+      "label": "The SRPC",
+      "options": [
+       "shifts right",
+       "does not move: a movement along it"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A movement along the SRPC comes from AD; this is a supply shock."
+      }
+     },
+     "u": {
+      "label": "Unemployment",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Firms produce less, so they employ fewer workers."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-phillips-longrun",
+   "topic": "phillips-curve",
+   "practice": "2.A",
+   "skill": "selfadjust",
+   "title": "Back to the natural rate after a rise in AD",
+   "prompt": "Varden's AD rises from long-run equilibrium, and unemployment falls below the natural rate. There is no policy response. <b>Explain</b> what happens in the long run, on the Phillips curves and in the AD-AS model.",
+   "checklist": [
+    "Says workers come to expect the higher inflation and win higher nominal wages",
+    "Says SRAS shifts left in the AD-AS model, and the SRPC shifts right",
+    "Says unemployment returns to the natural rate at a higher inflation rate"
+   ],
+   "earns": {
+    "answer": "The higher inflation comes to be expected, so workers bargain for higher nominal wages. Higher wage costs shift SRAS left in the AD-AS model, and on the Phillips curves the SRPC shifts right. Unemployment returns to the natural rate on the LRPC, but at a higher inflation rate than before.",
+    "why": "It names the cause (expected inflation and wages), the SRAS and SRPC shifts, and where the economy ends."
+   },
+   "misses": {
+    "answer": "Unemployment stays low because inflation is higher.",
+    "why": "In the long run there is no trade-off; the answer has no expectations, no shift and no return to the natural rate."
+   },
+   "specific": {
+    "slots": {
+     "exp": {
+      "label": "Expected inflation",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "People see higher inflation and come to expect it."
+      }
+     },
+     "srpc": {
+      "label": "The SRPC",
+      "options": [
+       "shifts right",
+       "shifts left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher expected inflation raises inflation at each unemployment rate."
+      }
+     },
+     "end": {
+      "label": "In the long run, unemployment",
+      "options": [
+       "returns to the natural rate",
+       "stays below the natural rate"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The LRPC is vertical: below the natural rate cannot last."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-money-neutral",
+   "topic": "money-growth-inflation",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "Money growth in the long run",
+   "prompt": "Rellan's central bank raises the money supply by 10% a year for many years. Velocity is steady. <b>Explain</b> the long-run effect on real output and the price level, using the quantity theory of money.",
+   "checklist": [
+    "Writes the equation of exchange, M x V = P x Y",
+    "Says real output in the long run is set by resources and technology, not money",
+    "Says faster money growth shows up as faster growth of the price level (inflation)"
+   ],
+   "earns": {
+    "answer": "By M x V = P x Y, with V steady, faster growth of M means faster growth of P x Y. In the long run real output Y is set by resources and technology, not by money, so the extra money growth shows up as a faster rise in the price level P: inflation. Money is neutral in the long run.",
+    "why": "It uses the equation, says why output does not follow money, and draws the conclusion for prices."
+   },
+   "misses": {
+    "answer": "More money lets people buy more, so real output grows faster.",
+    "why": "That can happen for a while in the short run; in the long run output depends on resources, so the extra money raises prices."
+   },
+   "specific": {
+    "slots": {
+     "y": {
+      "label": "Long-run real output",
+      "options": [
+       "set by resources and technology",
+       "grows with the money supply"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Money is neutral in the long run; output depends on what the economy can produce."
+      }
+     },
+     "p": {
+      "label": "The extra money growth shows up as",
+      "options": [
+       "inflation",
+       "higher real output",
+       "lower velocity"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Output does not follow money in the long run.",
+       "2": "The question holds velocity steady."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-velocity",
+   "topic": "money-growth-inflation",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Computing velocity",
+   "prompt": "In Rellan the money supply is 200 billion dollars, the price level is 2 and real output is 500 billion dollars. <b>Calculate</b> the velocity of money, and <b>show</b> your work.",
+   "checklist": [
+    "Rearranges the equation to V = (P x Y) / M",
+    "Finds nominal GDP: 2 x 500 = 1,000 billion dollars",
+    "Gets V = 1,000 / 200 = 5 times a year"
+   ],
+   "earns": {
+    "answer": "From M x V = P x Y, velocity is V = (P x Y) / M. Nominal GDP is 2 x 500 = 1,000 billion dollars, so V = 1,000 / 200 = 5: the average dollar is spent on final output 5 times a year.",
+    "why": "It rearranges the equation, computes nominal GDP, and divides, with every step shown."
+   },
+   "misses": {
+    "answer": "Velocity is 500 / 200 = 2.5 times a year in Rellan.",
+    "why": "That leaves out the price level; velocity divides nominal GDP (P x Y) by the money supply."
+   },
+   "specific": {
+    "slots": {
+     "top": {
+      "label": "On top",
+      "options": [
+       "nominal GDP, P x Y",
+       "real output, Y"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Velocity counts spending in dollars, so use nominal GDP."
+      }
+     },
+     "v": {
+      "label": "Velocity",
+      "options": [
+       "5",
+       "2.5",
+       "0.2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That uses real output alone.",
+       "2": "That divides money by nominal GDP; flip it."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-deficit-debt",
+   "topic": "deficits-debt",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "A deficit and the national debt",
+   "prompt": "Ostin's government collects 3,000 billion dollars in taxes and spends 3,400 billion dollars this year. Its national debt was 10,000 billion dollars at the start of the year. <b>Calculate</b> the budget balance and the debt at the end of the year.",
+   "checklist": [
+    "Budget balance = revenue - outlays = 3,000 - 3,400 = -400: a deficit of 400 billion dollars",
+    "Debt at the end = 10,000 + 400 = 10,400 billion dollars",
+    "Says a deficit is one year's shortfall while the debt is the total owed"
+   ],
+   "earns": {
+    "answer": "The budget balance is revenue minus outlays: 3,000 - 3,400 = -400, a deficit of 400 billion dollars. The government borrows to cover it, so the debt rises to 10,000 + 400 = 10,400 billion dollars. The deficit is this year's shortfall; the debt is the total owed from all past deficits.",
+    "why": "Both numbers come with their steps, and the two ideas are kept apart."
+   },
+   "misses": {
+    "answer": "The national debt is 400 billion dollars this year.",
+    "why": "400 billion is the deficit, one year's shortfall; the debt adds it to the 10,000 billion already owed."
+   },
+   "specific": {
+    "slots": {
+     "bal": {
+      "label": "The budget balance",
+      "options": [
+       "a deficit of 400 billion dollars",
+       "a surplus of 400 billion dollars"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Outlays are more than revenue, so the balance is negative."
+      }
+     },
+     "debt": {
+      "label": "The debt at the end of the year",
+      "options": [
+       "10,400 billion dollars",
+       "400 billion dollars",
+       "9,600 billion dollars"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the deficit alone.",
+       "2": "A deficit adds to the debt; it does not reduce it."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-crowding-chain",
+   "topic": "crowding-out",
+   "practice": "2.A",
+   "skill": "chain",
+   "title": "From government borrowing to long-run growth",
+   "prompt": "Ostin's government borrows to cover its deficit. <b>Explain</b> how this can affect long-run economic growth, naming every link.",
+   "checklist": [
+    "Says government borrowing raises the demand for loanable funds",
+    "Says the real interest rate rises, so private investment falls (crowding out)",
+    "Says less investment means a smaller capital stock, so long-run growth is slower"
+   ],
+   "earns": {
+    "answer": "Government borrowing raises the demand for loanable funds, which raises the real interest rate. At the higher rate firms borrow less, so private investment falls: crowding out. Less investment means the capital stock grows more slowly, which slows long-run economic growth.",
+    "why": "Every link from borrowing to growth is named, in order."
+   },
+   "misses": {
+    "answer": "Government borrowing slows economic growth.",
+    "why": "Only the start and the end: the loanable funds market, the real rate, investment and capital are all missing."
+   },
+   "specific": {
+    "slots": {
+     "lf": {
+      "label": "Borrowing raises",
+      "options": [
+       "the demand for loanable funds",
+       "the supply of loanable funds"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The government borrows, so it demands funds."
+      }
+     },
+     "r": {
+      "label": "The real interest rate",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More demand for funds raises their price."
+      }
+     },
+     "k": {
+      "label": "Then",
+      "options": [
+       "investment and the capital stock grow less",
+       "consumption falls, so growth is faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Growth depends on capital, which the higher rate makes costlier."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-growth-graph",
+   "topic": "economic-growth",
+   "practice": "3.A",
+   "skill": "graph",
+   "title": "Growth on two graphs",
+   "prompt": "Over a decade, workers in Pirro gain skills and firms adopt better technology. <b>Explain</b> how this shows on Pirro's PPC and on its LRAS curve.",
+   "checklist": [
+    "Says the PPC shifts outward",
+    "Says LRAS shifts right, raising full-employment output",
+    "Names the causes: more human capital and better technology raise productivity"
+   ],
+   "earns": {
+    "answer": "More skills (human capital) and better technology raise productivity, so the economy can produce more of everything. Its PPC shifts outward, and its LRAS curve shifts right, from LRAS1 to LRAS2, raising full-employment output: economic growth.",
+    "why": "Both graphs move the right way, and the causes are named."
+   },
+   "misses": {
+    "answer": "AD shifts right because people earn more.",
+    "why": "Growth from skills and technology is a change in what the economy can produce, so it moves the PPC and LRAS, not AD."
+   },
+   "specific": {
+    "slots": {
+     "ppc": {
+      "label": "The PPC",
+      "options": [
+       "shifts outward",
+       "stays the same, with output moving onto it"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Moving onto the curve uses idle resources; here capacity itself grows."
+      }
+     },
+     "lras": {
+      "label": "LRAS",
+      "options": [
+       "shifts right",
+       "shifts left",
+       "does not move"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More productive workers raise capacity.",
+       "2": "Capacity grew, so LRAS moves."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-supply-side",
+   "topic": "growth-policy",
+   "practice": "1.D",
+   "skill": "tool",
+   "title": "A policy for growth, not for a recession",
+   "prompt": "Pirro wants faster long-run growth in real GDP per person. <b>Identify</b> one policy that would most likely work and <b>explain</b> why a one-time rise in transfer payments would not.",
+   "checklist": [
+    "Names a policy that adds capacity: tax credits for investment, spending on education or research",
+    "Says it raises physical or human capital or technology, shifting LRAS right",
+    "Says transfers raise AD for a while but add no capacity"
+   ],
+   "earns": {
+    "answer": "Tax credits for business investment would add to physical capital, and spending on education would raise human capital; either raises productivity and shifts LRAS right, lifting real GDP per person over time. A one-time rise in transfer payments raises consumption and AD for a while, but adds no resources or technology, so it does not raise long-run growth.",
+    "why": "It names a capacity policy with its mechanism and explains why the demand policy is different."
+   },
+   "misses": {
+    "answer": "Raise transfer payments so people spend more and the economy grows.",
+    "why": "Spending more raises AD for a while; long-run growth needs more capital, skills or technology."
+   },
+   "specific": {
+    "slots": {
+     "policy": {
+      "label": "A growth policy",
+      "options": [
+       "tax credits for investment in new equipment",
+       "a one-time rise in transfer payments"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Transfers raise demand, not capacity."
+      }
+     },
+     "curve": {
+      "label": "It shifts",
+      "options": [
+       "LRAS right",
+       "AD right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A demand shift does not raise long-run capacity."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

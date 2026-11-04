@@ -1,0 +1,8 @@
+{
+ "nonmarket": {
+  "def": "Production not sold in a market, such as cooking for your own family or volunteer work. The underground (informal) economy is market activity that goes unreported. Both are missing from measured GDP."
+ },
+ "gdp-per-capita": {
+  "def": "GDP divided by population: output per person, the usual measure for comparing material living standards across countries or over time."
+ }
+}

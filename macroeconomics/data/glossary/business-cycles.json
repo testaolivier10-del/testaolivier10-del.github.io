@@ -1,0 +1,11 @@
+{
+ "business-cycle": {
+  "def": "The repeated rise and fall of real GDP around its trend: an expansion (rising output) and a contraction (falling output), with a peak and a trough as the turning points. A severe, lasting contraction is a recession."
+ },
+ "potential-output": {
+  "def": "The real GDP an economy produces when unemployment is at its natural rate: full-employment output. It grows over time."
+ },
+ "output-gap": {
+  "def": "Real GDP minus potential output. A negative (recessionary) gap means output is below potential and there is cyclical unemployment; a positive (inflationary) gap means output is above potential."
+ }
+}

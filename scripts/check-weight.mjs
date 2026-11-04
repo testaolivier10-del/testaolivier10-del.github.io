@@ -29,7 +29,7 @@
    Every page loads the same shell: theme.css, the two typefaces, account.js,
    site-chrome.js and the rest of /assets/. That is most of a first visit and
    nothing at all on every visit after, since it is one cache entry for the
-   whole site. Counted into all twelve page budgets it would put every page
+   whole site. Counted into all thirteen page budgets it would put every page
    within a few KB of every other — exactly the resolution at which a
    page-specific regression disappears. So:
 
@@ -179,10 +179,13 @@ const SHELL_BUDGETS = [
   /* 340 -> 341 for registering AP® Precalculus (docs/apprecalc-spec.md, Phase 0): the eleventh course in
      every generated course list, its premium.js entry, ranks, tutor starters and loader, search source, exam
      date, the theme tint and the shared selector twins (+1.1 KB in those files; the shell measured 339.7 KB, its largest page load). */
-  /* 341 -> 341.5 for the guided study path (docs/guided-path.md, owner 2026-11-03): the Path tab, its icon and
+  /* 341 -> 342 for registering AP® Macroeconomics (docs/apmacro-spec.md, Phase 0): the thirteenth course in
+     every generated course list, its premium.js entry, ranks, tutor starters and loader, search source, exam
+     date, the theme tint and the shared selector twins (measured 340.9 KB with it; 342 keeps the usual margin). */
+  /* 342 -> 342.5 for the guided study path (docs/guided-path.md, owner 2026-11-03): the Path tab, its icon and
      the loader in site-chrome.js (+0.2 KB, comments cut). path.js, path.css and the path data load later and
-     only on course pages, so they are not in this number. Measured 341.1 KB. */
-  ['site', 341.5],
+     only on course pages, so they are not in this number. */
+  ['site', 342.5],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -441,6 +444,17 @@ const SHELL_BUDGETS = [
      runs is AB's and counts in the calculus shell above. Measured 8.1 KB before any unit is published
      (the curriculum lists all 121 topics already); 10 leaves room for the built flags. */
   ['calculus-bc', 10],
+  /* AP® Macroeconomics (macroeconomics/, a fork of the AP® Psychology runtime,
+     docs/apmacro-spec.md decision 1): ApMacroCalc (mac-calc.js) in place of
+     ApPsychStats, the graph model and renderer (mac-graph.js, every graph
+     item and FRQ graph part) and its grader in mac-grade.js. Measured 81.5 KB
+     in Phase 0 before any unit is published (AP® Psychology's 69.2 plus the
+     graph module); 83 left room for the built curriculum. Raised to 89 at
+     integration (2026-11-03): the builders' renderer work (labels, arrows,
+     axis marks, key.alt) and the integrator's (straight PPC, point names,
+     label placement, keyResponse) took mac-graph.js from 9.6 to 14.5 KB
+     gzipped; measured 87.1, with the same room for the curriculum. */
+  ['macroeconomics', 89],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -733,6 +747,15 @@ const BUDGETS = [
   ['precalculus/tools.html', 5],
   ['precalculus/formula-sheet.html', 12],
   ['precalculus/justify.html', 5],
+  ['macroeconomics/index.html', 8.5], // round 3 course home, see nremt/index.html
+  ['macroeconomics/practice.html', 3],
+  ['macroeconomics/exams.html', 3],
+  ['macroeconomics/frq.html', 3],
+  ['macroeconomics/glossary.html', 30],
+  ['macroeconomics/tools.html', 5],
+  // 15: published, every term on the page links to its glossary entry (the 29 rows and nine drawn graphs measured 14.2 at launch).
+  ['macroeconomics/formula-sheet.html', 15],
+  ['macroeconomics/justify.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
@@ -1169,6 +1192,19 @@ function weigh(pageRel) {
     if (sheet) BUDGETS.push([`precalculus/unit-sheets/${sheet}`, 14]);
   }
 }
+/* The same for AP® Macroeconomics (macroeconomics/assets/notes-index.json, build-apmacro.mjs),
+   with AP® Psychology's budgets as the reference until the first unit is published. */
+{
+  const idx = join(ROOT, 'macroeconomics', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    BUDGETS.push([`macroeconomics/lessons/${id}.html`, 22], [`macroeconomics/notes/${id}.html`, 22]);
+    const sheets = join(ROOT, 'macroeconomics', 'unit-sheets');
+    const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
+    if (sheet) BUDGETS.push([`macroeconomics/unit-sheets/${sheet}`, 14]);
+  }
+}
 /* The same for AP® Calculus AB (calculus/assets/notes-index.json, build-apcalc.mjs).
    Math is MathML on the page, so a calculus page is heavier than its text. */
 {
@@ -1312,6 +1348,14 @@ if (existsSync(PCALC_BANK_DIR)) {
   }
 }
 DATA_BUDGETS.push(['precalculus/assets/glossary.json', 150], ['precalculus/assets/notes-index.json', 4], ['precalculus/assets/summaries.json', 40]);
+/* AP® Macroeconomics's, the same (build-apmacro.mjs packs by gzipped size, as AP® Psychology). */
+const MAC_BANK_DIR = join(ROOT, 'macroeconomics', 'assets', 'bank');
+if (existsSync(MAC_BANK_DIR)) {
+  for (const f of readdirSync(MAC_BANK_DIR).filter(f => f.endsWith('.json')).sort()) {
+    DATA_BUDGETS.push([`macroeconomics/assets/bank/${f}`, f === 'index.json' ? 8 : f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
+  }
+}
+DATA_BUDGETS.push(['macroeconomics/assets/glossary.json', 150], ['macroeconomics/assets/notes-index.json', 4], ['macroeconomics/assets/summaries.json', 40]);
 
 const dataRows = [];
 for (const [rel, budgetKb] of DATA_BUDGETS) {

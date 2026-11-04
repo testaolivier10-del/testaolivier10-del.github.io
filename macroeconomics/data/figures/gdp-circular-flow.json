@@ -1,0 +1,12 @@
+{
+ "gdp-circular-flow-diagram": {
+  "file": "figures/gdp-circular-flow-diagram.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 600,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Circular flow diagram. In the product market, households spend money on goods and services and firms receive it as revenue. In the factor market, households supply land, labor, capital and entrepreneurship and receive wages, rent, interest and profit as income. Money moves around the outer loop, real goods and factors around the inner loop the other way."
+ }
+}

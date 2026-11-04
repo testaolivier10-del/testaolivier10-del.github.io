@@ -1,0 +1,797 @@
+{
+ "stimuli": {
+  "monetary-policy-s1": {
+   "kind": "graph",
+   "title": "A reserve market with ample reserves, after a policy change",
+   "graph": {
+    "kind": "reserves",
+    "show": {
+     "RD": -1
+    }
+   }
+  },
+  "monetary-policy-s2": {
+   "kind": "text",
+   "title": "Limited reserves and rising prices in Pell",
+   "text": "<p>The invented country of Pell has a central bank that operates with <b>limited reserves</b>: banks hold few reserves beyond what is required, so the amount of reserves sets the money supply. Pell's economy is producing above full employment, and the price level is rising quickly.</p>"
+  },
+  "monetary-policy-s3": {
+   "kind": "data",
+   "title": "Administered rates, reserves and the policy rate in an ample-reserves system",
+   "invented": true,
+   "table": {
+    "caption": "A central bank that operates with ample reserves (invented data for practice). Rates in percent; reserves in billions of dollars.",
+    "cols": [
+     "Year",
+     "Interest on reserve balances",
+     "Overnight reverse repurchase rate",
+     "Reserves",
+     "Federal funds rate"
+    ],
+    "rows": [
+     [
+      "1",
+      "2.0",
+      "1.9",
+      "3,000",
+      "1.95"
+     ],
+     [
+      "2",
+      "2.0",
+      "1.9",
+      "3,300",
+      "1.95"
+     ],
+     [
+      "3",
+      "2.5",
+      "2.4",
+      "3,300",
+      "2.45"
+     ],
+     [
+      "4",
+      "2.5",
+      "2.4",
+      "3,000",
+      "2.45"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-monetary-policy-1",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "monetary-policy-s1",
+   "q": "The central bank operates with ample reserves. The graph shows the flat part of reserve demand moving down from DR1 to DR2. Which action caused this?",
+   "options": [
+    "Buying government bonds from banks",
+    "Lowering the interest rate it pays on reserve balances",
+    "Raising the required reserve ratio",
+    "Lowering taxes on bank profits"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With ample reserves, the central bank moves the policy rate by changing its administered rates, mainly the interest on reserve balances, which sets the height of the flat part of reserve demand.",
+    "options": [
+     "Buying bonds adds reserves, which would move the vertical supply curve; with ample reserves that leaves the rate alone.",
+     "Right: banks will not lend reserves for less than the central bank pays them, so a lower administered rate lowers the flat part.",
+     "Reserve requirements are not how an ample-reserves central bank sets its rate.",
+     "Taxes are fiscal policy; the shift shows a change in an administered rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-2",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "monetary-policy-s1",
+   "q": "In the graph, what happens to the policy rate (the federal funds rate) and the quantity of reserves?",
+   "options": [
+    "The policy rate falls and the quantity of reserves rises",
+    "Both stay the same, since reserve supply did not move",
+    "The policy rate falls and the quantity of reserves is unchanged",
+    "The policy rate rises and the quantity of reserves falls"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Lowering the administered rate lowers the flat part of reserve demand, so the federal funds rate falls; reserve supply, and so the quantity, stay put.",
+    "options": [
+     "Reserve supply did not move, so the quantity of reserves is unchanged.",
+     "The flat part of demand moved down, so the rate where supply crosses it fell.",
+     "Right: the vertical supply now crosses demand at a lower flat part.",
+     "The flat part moved down, so the rate fell."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-3",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "monetary-policy-s1",
+   "q": "After the change in the graph, what happens to business investment in the short run?",
+   "options": [
+    "It falls, because banks have fewer reserves",
+    "It rises, because borrowing costs fall",
+    "It does not change, because investment depends on taxes",
+    "It falls, because savers earn less interest"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A lower policy rate lowers other interest rates, which raises interest-sensitive spending such as business investment.",
+    "options": [
+     "The quantity of reserves did not change; interest rates fell.",
+     "Right: a lower policy rate pulls other interest rates down, so more investment projects pay off.",
+     "Investment is interest sensitive: lower rates make borrowing cheaper.",
+     "Lower rates encourage borrowing and spending; investment rises."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-4",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "monetary-policy-s1",
+   "q": "Which economic problem is the policy in the graph most likely aimed at, and what is its short-run effect on aggregate demand?",
+   "options": [
+    "An inflationary gap; aggregate demand falls",
+    "A recessionary gap; aggregate demand falls",
+    "An inflationary gap; aggregate demand rises",
+    "A recessionary gap; aggregate demand rises"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Lowering the policy rate is expansionary monetary policy, used to close a recessionary gap by raising aggregate demand.",
+    "options": [
+     "A lower policy rate is expansionary: it raises aggregate demand, which would widen an inflationary gap.",
+     "Lower interest rates raise spending, so aggregate demand rises, not falls.",
+     "Raising AD in an inflationary gap would push prices higher; this policy fits a recession.",
+     "Right: lower rates raise investment and consumption, so AD shifts right and output rises."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-5",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "monetary-policy-s2",
+   "q": "Pell's central bank uses an open market operation to close the inflationary gap. Which operation should it use, and what does it do to bank reserves?",
+   "options": [
+    "Buy government bonds, which adds reserves",
+    "Sell government bonds, which adds reserves",
+    "Sell government bonds, which drains reserves",
+    "Buy government bonds, which drains bank reserves"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With limited reserves, selling bonds is contractionary: it lowers reserves and the money supply, raising interest rates.",
+    "options": [
+     "Buying bonds does add reserves, but more reserves raise the money supply and push AD and prices higher: expansionary.",
+     "Selling is the right operation, but banks pay for the bonds with reserves, so reserves fall, not rise.",
+     "Right: banks pay for the bonds with reserves, so reserves and the money supply fall and interest rates rise.",
+     "The central bank pays for bonds it buys with new reserves, so buying adds reserves, and it is expansionary."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-6",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "stimulus": "monetary-policy-s2",
+   "q": "On the money market graph, show the effect of the central bank's bond sale and mark the new equilibrium.",
+   "why": {
+    "correct": "Selling bonds takes reserves out of banks, so the money supply shifts left and the nominal interest rate rises."
+   },
+   "graph": {
+    "kind": "money",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "MD",
+     "MS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "MS",
+       "dir": "left"
+      }
+     ],
+     "because": "a central bank sale of bonds",
+     "outcome": {
+      "nominal interest rate": "up",
+      "quantity of money": "down"
+     }
+    },
+    "slips": {
+     "MD": "A bond sale changes how much money exists, the money supply. It does not change how much money people want to hold at each rate."
+    }
+   }
+  },
+  {
+   "id": "mac-monetary-policy-7",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "monetary-policy-s2",
+   "q": "After the bond sale, what happens to Pell's price level and real output in the short run?",
+   "options": [
+    "Both fall",
+    "Both rise",
+    "The price level falls and real output rises",
+    "Neither changes, because the money supply is not part of AD"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Contractionary monetary policy raises interest rates, lowers interest-sensitive spending and shifts AD left, lowering the price level and real output.",
+    "options": [
+     "Right: higher interest rates cut investment and consumption, so AD shifts left; the price level and real output fall.",
+     "Higher interest rates reduce spending, so AD falls, not rises.",
+     "A leftward shift of AD lowers both, not just the price level.",
+     "The money supply works through interest rates, which change investment and consumption, parts of AD."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-8",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "monetary-policy-s2",
+   "q": "What happens to the prices of existing bonds in Pell after the central bank sells bonds?",
+   "options": [
+    "They rise, because bonds are in demand",
+    "They fall, as interest rates rise",
+    "They do not change, because bonds are not money",
+    "They rise, because interest rates rise"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A central bank sale of bonds lowers bond prices and raises interest rates.",
+    "options": [
+     "The central bank is adding bonds to the market, which pushes prices down.",
+     "Right: selling bonds pushes bond prices down, which is the same as interest rates rising.",
+     "The money supply falls through the bond sale itself, which lowers bond prices.",
+     "Bond prices move opposite to interest rates."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-9",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "monetary-policy-s3",
+   "q": "In which year did the central bank tighten (contract) monetary policy?",
+   "options": [
+    "Year 2",
+    "Year 3",
+    "Year 4",
+    "Year 1"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With ample reserves, the central bank raises its policy rate by raising its administered rates.",
+    "options": [
+     "In Year 2 reserves rose but the administered rates and the federal funds rate did not change.",
+     "Right: it raised both administered rates by half a point, and the federal funds rate rose with them.",
+     "In Year 4 reserves fell, but the administered rates and the policy rate stayed where Year 3 put them.",
+     "Year 1 is the starting point; there is no change to read."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-10",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "monetary-policy-s3",
+   "q": "Reserves rose by \\$300 billion in Year 2, yet the federal funds rate did not change. Why?",
+   "options": [
+    "Banks were required to hold the new reserves",
+    "The new reserves were too small to count",
+    "Reserve supply was in the flat part of reserve demand",
+    "The central bank sold bonds to cancel them out"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In the ample range, reserve demand is flat at the administered rate, so shifting reserve supply leaves the policy rate unchanged.",
+    "options": [
+     "The issue is the shape of reserve demand, not a requirement.",
+     "\\$300 billion is large; the rate did not move because supply was already in the flat part of demand.",
+     "Right: with ample reserves, more reserves slide supply along the flat part, so the rate stays at the administered level.",
+     "Reserves did rise in the table, so nothing was canceled."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-11",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "monetary-policy-s3",
+   "q": "After the change in Year 3, what most likely happens to the interest rates banks charge on new car loans and mortgages?",
+   "options": [
+    "They rise",
+    "They fall",
+    "They stay the same, since reserves did not change",
+    "They fall at first, then rise"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Changes in the policy rate pass through to other interest rates, such as loan and mortgage rates.",
+    "options": [
+     "Right: a higher policy rate raises banks' cost of funds and pulls other interest rates up.",
+     "The policy rate rose, so other rates tend to rise with it.",
+     "Reserves were the same, but the policy rate rose, and other rates follow it.",
+     "There is no reason for an early fall; rates move up with the policy rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-12",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "monetary-policy-s3",
+   "q": "The data show the federal funds rate trading just below the interest on reserve balances each year. What does that tell you about the framework?",
+   "options": [
+    "Reserves are limited, so the money supply sets the rate",
+    "The reserve requirement sets the rate",
+    "Banks are short of reserves and borrow at the discount rate",
+    "Reserves are ample, so administered rates set the rate"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "With ample reserves, the policy rate settles near the administered rates (between the overnight reverse repurchase rate and interest on reserve balances).",
+    "options": [
+     "Big changes in reserves left the rate unchanged, which is the sign of ample reserves.",
+     "The table shows no reserve requirement; the rate follows the administered rates.",
+     "Banks short of reserves would bid the rate up, not hold it just below interest on reserves.",
+     "Right: the rate sits at the level the administered rates set and moves only when they move."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-13",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and the curves of the reserve market graph (ample reserves).",
+   "why": {
+    "correct": "The reserve market has the policy rate (the federal funds rate) on the vertical axis and the quantity of reserves on the horizontal axis, with reserve demand (DR) and a vertical reserve supply (SR). It is not the money market."
+   },
+   "graph": {
+    "kind": "reserves",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mac-monetary-policy-14",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The central bank operates with ample reserves and wants to fight inflation. It raises the interest rate it pays on reserve balances. Shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "Raising the administered rate raises the flat part of reserve demand, so the federal funds rate rises; reserve supply, and the quantity of reserves, stay the same."
+   },
+   "graph": {
+    "kind": "reserves",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "RD",
+     "RS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "RD",
+       "dir": "up"
+      }
+     ],
+     "because": "a rise in the interest rate on reserve balances",
+     "outcome": {
+      "policy rate": "up",
+      "quantity of reserves": "same"
+     }
+    },
+    "slips": {
+     "RS": "With ample reserves, moving reserve supply along the flat part does not change the rate. The central bank raises its administered rate, which moves the flat part of reserve demand up."
+    }
+   }
+  },
+  {
+   "id": "mac-monetary-policy-15",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "With ample reserves, the central bank buys bonds and adds reserves, but leaves its administered rates unchanged. Show the effect on the reserve market and mark the new equilibrium.",
+   "why": {
+    "correct": "Adding reserves shifts reserve supply right, but in the flat part of reserve demand the policy rate stays at the administered rate; only the quantity of reserves rises."
+   },
+   "graph": {
+    "kind": "reserves",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "RD",
+     "RS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "RS",
+       "dir": "right"
+      }
+     ],
+     "because": "a central bank purchase of bonds that adds reserves",
+     "outcome": {
+      "policy rate": "same",
+      "quantity of reserves": "up"
+     }
+    },
+    "slips": {
+     "RD": "Reserve demand moves only when the administered rates change, and the question says they did not. Buying bonds adds reserves: the supply curve."
+    }
+   }
+  },
+  {
+   "id": "mac-monetary-policy-16",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A central bank that operates with limited reserves buys government bonds. On the money market graph, shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "Buying bonds adds reserves; banks lend the excess, so the money supply shifts right and the nominal interest rate falls."
+   },
+   "graph": {
+    "kind": "money",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "MD",
+     "MS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "MS",
+       "dir": "right"
+      }
+     ],
+     "because": "a central bank purchase of bonds",
+     "outcome": {
+      "nominal interest rate": "down",
+      "quantity of money": "up"
+     }
+    },
+    "slips": {
+     "MD": "Buying bonds changes how much money exists, the money supply, not how much money people want at each rate."
+    }
+   }
+  },
+  {
+   "id": "mac-monetary-policy-17",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "A central bank that operates with limited reserves buys \\$20 million of government bonds from commercial banks. The required reserve ratio is 0.2. What is the most the money supply can increase, in millions of dollars?",
+   "why": {
+    "correct": "Banks receive \\$20 million of new reserves with no new deposits, so all of it is excess. Money multiplier = 1 / 0.2 = 5, so the most the money supply can grow is \\$20 million x 5 = \\$100 million."
+   },
+   "numeric": {
+    "from": {
+     "fn": "maxMoneyChange",
+     "args": [
+      20,
+      0.2
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "20 is the first round: the new reserves. Banks lend them and the loans are redeposited, so multiply by 1 / 0.2 = 5."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        20,
+        0.2
+       ]
+      },
+      "why": "You multiplied by the ratio. The money multiplier is 1 / 0.2 = 5."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        16,
+        5
+       ]
+      },
+      "why": "No deposit was added, so nothing is held back as required reserves: the full \\$20 million is excess."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-18",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A central bank that operates with limited reserves lowers the discount rate. What happens to the money supply and interest rates?",
+   "options": [
+    "The money supply falls and interest rates rise",
+    "Neither changes, since the discount rate is a fee",
+    "The money supply rises and interest rates rise",
+    "The money supply rises and interest rates fall"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The discount rate is what the central bank charges banks for loans of reserves; lowering it is expansionary.",
+    "options": [
+     "Cheaper borrowing from the central bank adds reserves, which raises the money supply.",
+     "The discount rate is the cost of borrowing reserves, so it changes bank lending.",
+     "More money lowers the nominal interest rate on the money market.",
+     "Right: banks borrow more reserves, lend more, and the money supply rises."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-19",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are expansionary monetary policy actions? Select all that apply.",
+   "options": [
+    "With limited reserves, buying government bonds",
+    "With ample reserves, lowering the interest rate on reserve balances",
+    "With limited reserves, raising the required reserve ratio",
+    "With ample reserves, raising the overnight reverse repurchase rate"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Expansionary policy lowers interest rates: buying bonds, lowering the discount rate or the reserve ratio (limited reserves), or lowering administered rates (ample reserves).",
+    "options": [
+     "Right: it adds reserves and raises the money supply.",
+     "Right: it lowers the flat part of reserve demand and the policy rate.",
+     "A higher ratio shrinks the money multiplier: contractionary.",
+     "Raising an administered rate raises the policy rate: contractionary."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-20",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is the federal funds rate?",
+   "options": [
+    "The rate banks charge each other for overnight loans of reserves",
+    "The rate the government pays on its bonds",
+    "The rate banks charge their best business customers",
+    "The rate of inflation the central bank aims for"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The federal funds rate, the rate on overnight loans of reserves between banks, is the Federal Reserve's policy rate.",
+    "options": [
+     "Right: it is the Federal Reserve's policy rate.",
+     "That is a Treasury bond rate, which the policy rate influences but is not.",
+     "That is a bank lending rate, which moves with the policy rate.",
+     "That is an inflation target, not an interest rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-21",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "With ample reserves, what is the central bank's main tool for moving the policy rate?",
+   "options": [
+    "Changing the required reserve ratio",
+    "Buying and selling bonds to shift reserve supply",
+    "Setting its administered rates, mainly interest on reserve balances",
+    "Changing taxes and government spending"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With ample reserves, administered rates (interest on reserve balances and the overnight reverse repurchase rate) set the policy rate.",
+    "options": [
+     "With ample reserves, banks hold far more than required, so the ratio does not bind.",
+     "In the ample range, shifting reserve supply does not move the rate.",
+     "Right: the policy rate follows the rates the central bank pays.",
+     "That is fiscal policy, set by the government, not the central bank."
+    ]
+   }
+  },
+  {
+   "id": "mac-monetary-policy-22",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "analyze",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "A central bank with ample reserves fights a recession. Put the links in order.",
+   "options": [
+    "The central bank lowers its administered rates",
+    "The policy rate (federal funds rate) falls",
+    "Other interest rates, such as loan and mortgage rates, fall",
+    "Investment and interest-sensitive consumption rise",
+    "Aggregate demand shifts right, so real output rises and unemployment falls"
+   ],
+   "why": {
+    "correct": "Every link matters on the exam: the tool, the policy rate, other rates, interest-sensitive spending, AD, then output and unemployment."
+   }
+  },
+  {
+   "id": "mac-monetary-policy-23",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: a central bank with ample reserves faces an inflationary gap. Build the chain from its action to the price level.",
+   "why": {
+    "correct": "Raising the administered rates raises the policy rate and other interest rates, which lowers investment and AD, so the price level falls (or rises more slowly)."
+   },
+   "specific": {
+    "frame": "The central bank ___ the interest rate on reserve balances, so the policy rate ___; borrowing costs rise, so investment ___; aggregate demand shifts ___, and the price level ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "The central bank raises the interest rate on reserve balances, so the policy rate rises; because borrowing costs rise, investment decreases, aggregate demand shifts left, and the price level decreases.",
+    "slots": {
+     "tool": {
+      "label": "The action",
+      "options": [
+       "raises",
+       "lowers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lowering the administered rate is expansionary; an inflationary gap calls for a higher rate."
+      }
+     },
+     "rate": {
+      "label": "The policy rate",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The policy rate follows the administered rate up."
+      }
+     },
+     "spending": {
+      "label": "Investment",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher borrowing costs make fewer projects worth doing."
+      }
+     },
+     "direction": {
+      "label": "AD shifts",
+      "options": [
+       "left",
+       "right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less investment means less spending at every price level: a shift left."
+      }
+     },
+     "price": {
+      "label": "The price level",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A leftward AD shift lowers the price level."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

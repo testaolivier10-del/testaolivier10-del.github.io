@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 370" width="800" height="370" role="img" aria-labelledby="demand-curve-shift-t demand-curve-shift-d" font-family="Arial, Helvetica, sans-serif">
+<title id="demand-curve-shift-t">A change in quantity demanded versus a change in demand</title>
+<desc id="demand-curve-shift-d">A demand curve D1 for concert tickets, with an arrow along it from J to K: a lower price raises the quantity demanded. A second curve D2 to the right, with an arrow from D1: an increase in demand, caused by a change in tastes, income, the prices of related goods, expectations or the number of buyers.</desc>
+<defs><marker id="demand-curve-shift-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="demand-curve-shift-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="demand-curve-shift-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="demand-curve-shift-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker></defs><rect width="800" height="370" fill="#FFFFFF"/>
+<line x1="90" y1="24" x2="90" y2="330" stroke="#1F2A28" stroke-width="2"/>
+<line x1="90" y1="330" x2="516" y2="330" stroke="#1F2A28" stroke-width="2"/>
+<text x="510" y="368" font-size="14" fill="#1F2A28" text-anchor="end" font-weight="700">Quantity of concert tickets</text>
+<text x="56" y="30" font-size="14" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 56 30)">Price</text>
+<line x1="111" y1="60" x2="426" y2="285" stroke="#6B7370" stroke-width="2.5" stroke-dasharray="7 5"/><text x="432" y="289" font-size="15" fill="#6B7370" font-weight="700">D<tspan font-size="11" dy="4">1</tspan></text>
+<line x1="195" y1="60" x2="510" y2="285" stroke="#355A0A" stroke-width="3"/><text x="516" y="289" font-size="15" fill="#355A0A" font-weight="700">D<tspan font-size="11" dy="4">2</tspan></text>
+<circle cx="195" cy="120" r="5" fill="#D55E00"/>
+<text x="187" y="114" font-size="14" fill="#D55E00" text-anchor="end" font-weight="700">J</text>
+<circle cx="300" cy="195" r="5" fill="#D55E00"/>
+<text x="292" y="189" font-size="14" fill="#D55E00" text-anchor="end" font-weight="700">K</text>
+<line x1="211.8" y1="132" x2="283.2" y2="183" stroke="#D55E00" stroke-width="2" marker-end="url(#demand-curve-shift-arV)"/>
+<line x1="325.2" y1="150" x2="392.4" y2="150" stroke="#355A0A" stroke-width="2.4" marker-end="url(#demand-curve-shift-arA)"/>
+<text x="540" y="70" font-size="13" fill="#D55E00">J to K: the price falls, so the</text>
+<text x="540" y="88" font-size="13" fill="#D55E00">quantity demanded rises</text>
+<text x="540" y="106" font-size="13" fill="#D55E00">(a movement along D1)</text>
+<text x="540" y="150" font-size="13" fill="#355A0A" font-weight="700">D1 to D2: demand increases</text>
+<text x="540" y="168" font-size="13" fill="#355A0A">(a shift): tastes, income, related</text>
+<text x="540" y="186" font-size="13" fill="#355A0A">prices, expectations or the</text>
+<text x="540" y="204" font-size="13" fill="#355A0A">number of buyers changed</text>
+</svg>

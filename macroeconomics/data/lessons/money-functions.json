@@ -1,0 +1,68 @@
+{
+ "topic": "money-functions",
+ "hook": "A dollar bill costs a few cents to print, and nothing backs it but trust. Yet a store hands you a sandwich for it, and you can save it for next year. People have used shells, salt, cigarettes and gold as money. What makes something money is not what it is made of but the jobs it does.",
+ "prereq": [
+  {
+   "q": "What is liquidity?",
+   "options": [
+    "How easily an asset becomes money without losing value",
+    "How much interest an asset pays",
+    "How risky an asset is",
+    "How many people own an asset"
+   ],
+   "correct": 0,
+   "why": "Liquidity is how easily an asset turns into spendable money at full value.",
+   "review": "financial-assets"
+  },
+  {
+   "q": "Which of these is a financial asset?",
+   "options": [
+    "A share of stock",
+    "A pizza",
+    "A factory machine",
+    "An hour of labor"
+   ],
+   "correct": 0,
+   "why": "A share of stock is a claim on a firm's future income; the others are goods or resources.",
+   "review": "financial-assets"
+  }
+ ],
+ "figure": {
+  "figure": "money-functions-m1-m2",
+  "caption": "M1, the most spendable money, sits inside M2; credit cards, stocks and bonds are not money."
+ },
+ "chain": [
+  {
+   "cause": "Barter needs a double coincidence of wants",
+   "effect": "people adopt one thing everyone accepts in trade: money as a medium of exchange"
+  },
+  {
+   "cause": "Everyone accepts the same money",
+   "effect": "prices are stated in it, so money becomes the unit of account"
+  },
+  {
+   "cause": "Money keeps its buying power over time",
+   "effect": "people can save it, so it works as a store of value, until high inflation erodes it"
+  }
+ ],
+ "ideas": [
+  "Money has three functions: <b>medium of exchange</b> (accepted in payment), <b>unit of account</b> (prices are stated in it) and <b>store of value</b> (it holds buying power over time).",
+  "<b>Fiat money</b> has value because the government declares it money and people accept it; commodity money, such as gold, is valued as a good.",
+  "<b>M1</b> is currency held by the public, checkable deposits and other deposits you can withdraw at once. <b>M2</b> adds small time deposits and retail money market funds.",
+  "Credit cards, stocks and bonds are not money: a card is a loan, and stocks and bonds must be sold for money first."
+ ],
+ "misconception": {
+  "wrong": "A credit card is money, because you can pay with it.",
+  "right": "Paying by credit card is borrowing from the card issuer. The money is the checkable deposit or cash that later pays the bill."
+ },
+ "check": [
+  "mac-money-functions-9",
+  "mac-money-functions-11",
+  "mac-money-functions-12",
+  "mac-money-functions-14",
+  "mac-money-functions-1",
+  "mac-money-functions-2",
+  "mac-money-functions-3"
+ ],
+ "summary": "Money is whatever people accept as a medium of exchange, use as a unit of account and hold as a store of value. Modern money is fiat money, valued because the government declares it money and people accept it. M1 counts the most spendable money: currency held by the public and checkable deposits. M2 adds less liquid near-money, such as small time deposits and retail money market funds. Credit cards, stocks and bonds are not money."
+}

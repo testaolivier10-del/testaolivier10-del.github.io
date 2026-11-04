@@ -1,0 +1,8 @@
+{
+ "slope": {
+  "def": "How steep a line is: the change in the vertical value divided by the change in the horizontal value between two points (rise over run)."
+ },
+ "curve-shape": {
+  "def": "An upward-sloping curve rises to the right (positive slope); a downward-sloping curve falls to the right (negative slope). A vertical line keeps the horizontal value fixed; a horizontal line keeps the vertical value fixed."
+ }
+}

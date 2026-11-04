@@ -1,0 +1,494 @@
+{
+ "stimuli": {
+  "comparative-advantage-s1": {
+   "kind": "data",
+   "title": "Shirts and hats: output per worker",
+   "invented": true,
+   "table": {
+    "caption": "Most shirts or hats one worker can make in a day in two invented countries (output data)",
+    "cols": [
+     "Country",
+     "Shirts per worker per day",
+     "Hats per worker per day"
+    ],
+    "rows": [
+     [
+      "Marnovia",
+      "24",
+      "8"
+     ],
+     [
+      "Delmont",
+      "12",
+      "6"
+     ]
+    ]
+   }
+  },
+  "comparative-advantage-s2": {
+   "kind": "data",
+   "title": "Tables and chairs: hours per unit",
+   "invented": true,
+   "table": {
+    "caption": "Hours of labor needed to make one table or one chair in two invented countries (input data)",
+    "cols": [
+     "Country",
+     "Hours per table",
+     "Hours per chair"
+    ],
+    "rows": [
+     [
+      "Ellis",
+      "2",
+      "1"
+     ],
+     [
+      "Fenwick",
+      "6",
+      "2"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-comparative-advantage-1",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "comparative-advantage-s1",
+   "q": "Using the table, what is Marnovia's opportunity cost of making one hat, in shirts?",
+   "why": {
+    "correct": "A Marnovian worker who makes 8 hats gives up 24 shirts, so one hat costs $\\frac{24}{8} = 3$ shirts."
+   },
+   "numeric": {
+    "from": {
+     "fn": "opportunityCost",
+     "args": [
+      24,
+      8
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.333,
+      "why": "That is the cost of one shirt in hats (8 / 24). For one hat, divide the shirts given up by the hats gained: 24 / 8."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-2",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "comparative-advantage-s1",
+   "q": "Which country has the absolute advantage in hats?",
+   "options": [
+    "Delmont, because it has the lower opportunity cost of making hats",
+    "Marnovia, because one worker makes 8 hats a day to Delmont's 6",
+    "Delmont, because it makes fewer shirts per worker",
+    "Neither, because both countries make hats"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Absolute advantage means more output from the same resources: 8 hats per worker beats 6.",
+    "options": [
+     "Lower opportunity cost is comparative advantage, not absolute advantage.",
+     "Right: more hats from one worker.",
+     "Making fewer shirts does not mean making more hats.",
+     "Absolute advantage compares how much each makes, and Marnovia makes more."
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-3",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "comparative-advantage-s1",
+   "q": "Which country has the comparative advantage in hats?",
+   "options": [
+    "Delmont, because a hat costs it 2 shirts and costs Marnovia 3",
+    "Marnovia, because each of its workers makes more hats per day",
+    "Marnovia, because it makes more of both goods",
+    "Delmont, because it makes fewer shirts"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Comparative advantage is the lower opportunity cost. A hat costs Delmont $\\frac{12}{6} = 2$ shirts and Marnovia 3 shirts.",
+    "options": [
+     "Right: 2 shirts is less than 3.",
+     "More hats per worker is absolute advantage.",
+     "A country can have the absolute advantage in both goods but the comparative advantage in only one.",
+     "The comparison is of opportunity costs, not of shirt output alone."
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-4",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "comparative-advantage-s1",
+   "q": "If both countries specialize by comparative advantage, what does each produce?",
+   "options": [
+    "Marnovia makes both, because it is better at both",
+    "Marnovia makes hats and Delmont makes shirts",
+    "Each makes half of each good",
+    "Marnovia makes shirts and Delmont makes hats"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A shirt costs Marnovia $\\frac{8}{24}$, a third of a hat, and Delmont half a hat, so Marnovia specializes in shirts and Delmont in hats.",
+    "options": [
+     "Specializing by absolute advantage misses the gains from trade.",
+     "This reverses the comparative advantages.",
+     "Splitting production gives up the gains from specializing.",
+     "Right: each makes the good with its lower opportunity cost."
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-5",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "comparative-advantage-s1",
+   "q": "Which terms of trade would benefit both countries?",
+   "options": [
+    "1 hat for 1.5 shirts",
+    "1 hat for 3.5 shirts",
+    "1 hat for 2.5 shirts",
+    "1 hat for 4 shirts"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The price of a hat must lie between the two opportunity costs, 2 shirts (Delmont) and 3 shirts (Marnovia). Delmont sells hats for more than 2 shirts; Marnovia buys them for less than 3.",
+    "options": [
+     "Delmont gives up 2 shirts to make a hat, so selling it for 1.5 loses shirts.",
+     "Marnovia can make a hat for 3 shirts itself, so it will not pay 3.5.",
+     "Right: 2.5 is between 2 and 3.",
+     "Marnovia can make a hat for 3 shirts itself, so it will not pay 4."
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-6",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "comparative-advantage-s2",
+   "q": "Using the table, what is Fenwick's opportunity cost of making one table, in chairs?",
+   "why": {
+    "correct": "With input data, divide the hours: the 6 hours a table takes could make $\\frac{6}{2} = 3$ chairs, so one table costs Fenwick 3 chairs."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      6,
+      2
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.333,
+      "why": "You inverted it, as you would with output data. With hours per unit, a table costs (hours per table) / (hours per chair) = 6 / 2 chairs."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-7",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "comparative-advantage-s2",
+   "q": "Which country has the absolute advantage in chairs?",
+   "options": [
+    "Fenwick, because it needs more hours per chair",
+    "Ellis, because it needs 1 hour per chair to Fenwick's 2",
+    "Fenwick, because it has the lower opportunity cost of chairs",
+    "Neither, because both need hours to make chairs"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With input data, the absolute advantage goes to whoever needs fewer resources per unit: 1 hour beats 2.",
+    "options": [
+     "More hours per unit means less efficient, not more.",
+     "Right: fewer hours per chair.",
+     "Lower opportunity cost is comparative advantage, not absolute advantage.",
+     "Absolute advantage compares the hours needed, and Ellis needs fewer."
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-8",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "comparative-advantage-s2",
+   "q": "Which country has the comparative advantage in chairs?",
+   "options": [
+    "Fenwick, because a chair costs it a third of a table and costs Ellis half a table",
+    "Ellis, because it needs fewer hours per chair than Fenwick",
+    "Ellis, because it is faster at making both goods",
+    "Fenwick, because it needs more hours to make a table"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A chair costs Ellis $\\frac{1}{2}$ of a table and Fenwick $\\frac{2}{6}$, a third of a table, so Fenwick has the lower opportunity cost.",
+    "options": [
+     "Right: a third of a table is less than half.",
+     "Fewer hours per chair is absolute advantage.",
+     "Being faster at both gives Ellis the absolute advantage in both, not the comparative advantage in both.",
+     "Hours per table alone do not give the cost of a chair."
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-9",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "stimulus": "comparative-advantage-s2",
+   "q": "A student says, \"Ellis needs fewer hours for both goods, so trade with Fenwick cannot help Ellis.\" What is wrong with the claim?",
+   "options": [
+    "Nothing: a country with the absolute advantage in both goods gains nothing from trading with others",
+    "Ellis gains if Fenwick also has an absolute advantage in something",
+    "Trade helps Ellis if it switches to making chairs",
+    "Ellis gains by making tables and buying chairs at a price below its own opportunity cost"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Gains from trade come from comparative advantage. Ellis gives up 2 chairs per table; if it can get a chair for less than half a table from Fenwick, it ends up with more of both.",
+    "options": [
+     "Both sides can gain whenever their opportunity costs differ.",
+     "Absolute advantage is not needed for gains from trade.",
+     "Ellis's comparative advantage is in tables, so it gains by making tables.",
+     "Right: comparative advantage, not absolute advantage, drives the gains."
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-10",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A surgeon types faster than her assistant but pays the assistant to do her typing. Which idea explains this?",
+   "options": [
+    "Absolute advantage: the assistant types faster than the surgeon",
+    "Scarcity: there is not enough typing to go around",
+    "Comparative advantage: the assistant's opportunity cost of typing is lower",
+    "Increasing opportunity cost: typing gets harder the more she does"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The surgeon has the absolute advantage in typing, but her opportunity cost of typing (surgery not done) is much higher, so the assistant has the comparative advantage in it.",
+    "options": [
+     "The surgeon types faster, so she has the absolute advantage in typing.",
+     "The choice is about who should type, not a lack of typing.",
+     "Right: the lower opportunity cost belongs to the assistant.",
+     "Nothing suggests her typing gets harder; her time is simply worth more in surgery."
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-11",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Can one country have the comparative advantage in both of two goods?",
+   "options": [
+    "Yes: if it has the absolute advantage in both",
+    "No: a lower cost of one good means a higher cost of the other",
+    "Yes: if it has more workers than the other country",
+    "Yes: if its PPC lies farther from the origin"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The opportunity cost of one good is the reciprocal of the opportunity cost of the other, so a lower cost of one means a higher cost of the other.",
+    "options": [
+     "Absolute advantage in both is possible; comparative advantage in both is not.",
+     "Right: the two costs are reciprocals.",
+     "More workers can give an absolute advantage, not a comparative advantage in both.",
+     "A larger PPC shows more output, not lower opportunity costs of both."
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-12",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "Two countries specialize by comparative advantage and trade at terms between their opportunity costs. Which results follow? Select all that apply.",
+   "options": [
+    "Their combined output of the two goods can rise",
+    "Each can consume a combination outside its own PPC",
+    "The country with the absolute advantage in both goods gains and the other loses",
+    "Each country's PPC shifts outward"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Specializing raises total output, and trading lets each country consume beyond its own production possibilities. Neither country's ability to produce changes.",
+    "options": [
+     "Right: each makes what it makes at the lower cost.",
+     "Right: trade lets consumption go beyond what each could make alone.",
+     "At terms between the two costs, both gain.",
+     "Trade does not change resources or technology, so the PPCs stay put."
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-13",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Two countries have the same opportunity cost of wheat in terms of cloth. What does this imply about trade between them?",
+   "options": [
+    "Neither gains from specializing and trading these goods",
+    "Both gain a great deal",
+    "The larger country gains and the smaller loses",
+    "They gain as long as the terms of trade are set high enough"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Gains from trade come from differences in opportunity costs. With equal costs, there is no price at which both do better than making the goods themselves.",
+    "options": [
+     "Right: no difference in costs, no gain.",
+     "Gains need different opportunity costs.",
+     "Size does not create comparative advantage.",
+     "With equal costs there is no range between them for the terms of trade."
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-14",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why must mutually beneficial terms of trade lie between the two countries' opportunity costs?",
+   "options": [
+    "The richer country sets the price",
+    "Prices in trade are set at the exact average of the two costs",
+    "Countries trade goods they are unable to make",
+    "Each country must get a good for less than it costs to make at home"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A country buys a good from abroad only if it pays less than its own opportunity cost, and sells only if it receives more than its own; both conditions hold only between the two costs.",
+    "options": [
+     "Wealth does not set the terms; the opportunity costs do.",
+     "Any price between the costs works; the average is one choice.",
+     "Countries often trade goods they could make, as the examples show.",
+     "Right: both must beat their own opportunity cost."
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-15",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "In Marnovia one worker makes 24 shirts or 8 hats a day. Marnovia trades for hats at 1 hat for 2.5 shirts. How many shirts does Marnovia save on each hat it buys instead of making it?",
+   "why": {
+    "correct": "Making a hat costs Marnovia $\\frac{24}{8} = 3$ shirts; buying one costs 2.5 shirts, so Marnovia saves $3 - 2.5 = 0.5$ shirt per hat."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      {
+       "fn": "opportunityCost",
+       "args": [
+        24,
+        8
+       ]
+      },
+      2.5
+     ]
+    },
+    "places": 1,
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "That is the price Marnovia pays. The gain is its own opportunity cost (3 shirts) minus that price."
+     },
+     {
+      "value": 3,
+      "why": "That is what a hat costs Marnovia to make. The gain is that cost minus the 2.5 shirts it pays."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-comparative-advantage-16",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.C",
+   "q": "Put the steps for finding comparative advantage from an output table in order.",
+   "options": [
+    "Find each country's opportunity cost of each good",
+    "Compare the two countries' opportunity costs for each good",
+    "Give each good to the country with its lower opportunity cost",
+    "Choose terms of trade between the two opportunity costs"
+   ],
+   "why": {
+    "correct": "Costs first, then the comparison, then specialization, then a price between the two costs."
+   }
+  }
+ ]
+}

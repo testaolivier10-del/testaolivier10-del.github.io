@@ -1,0 +1,12 @@
+{
+ "crowding-out-lf": {
+  "file": "figures/crowding-out-lf.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A loanable funds graph where the demand for loanable funds shifts right and the real interest rate rises, beside the chain from government borrowing to lower private investment and a slower-growing capital stock."
+ }
+}

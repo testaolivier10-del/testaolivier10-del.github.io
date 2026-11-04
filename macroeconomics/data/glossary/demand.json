@@ -1,0 +1,14 @@
+{
+ "law-of-demand": {
+  "def": "As the price of a good rises, the quantity buyers want falls, other things equal; the demand curve slopes downward."
+ },
+ "quantity-demanded": {
+  "def": "The amount of a good buyers want at one particular price. A change in the good's own price changes the quantity demanded, a movement along the demand curve."
+ },
+ "demand-shifter": {
+  "def": "Anything other than the good's own price that changes demand and shifts the curve: tastes, income (normal and inferior goods), the prices of substitutes and complements, expectations and the number of buyers."
+ },
+ "income-substitution": {
+  "def": "The two reasons demand slopes down: a lower price makes the good cheaper than its alternatives (substitution effect) and raises what buyers' incomes can buy (income effect)."
+ }
+}

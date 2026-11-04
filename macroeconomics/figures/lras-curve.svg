@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" role="img" aria-labelledby="lras-curve-t lras-curve-d" font-family="Arial, Helvetica, sans-serif">
+<title id="lras-curve-t">LRAS at full-employment output, and a shift of LRAS</title>
+<desc id="lras-curve-d">Two graphs with the price level on the vertical axis and real GDP on the horizontal axis. Left: a vertical LRAS at full-employment output YF; the price levels PL1 and PL2 both go with the same output. Right: LRAS1 at YF1 shifts right to LRAS2 at YF2 when the economy gains resources or better technology.</desc>
+<defs><marker id="lras-curve-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9A4A00"/></marker></defs>
+<rect width="640" height="330" fill="#FFFFFF"/>
+<text x="185" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2A28">LRAS is vertical at YF</text>
+<path d="M60 40V270H310" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="310" y="304" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Real GDP</text>
+<text transform="translate(30 40) rotate(-90)" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Price level</text>
+<path d="M185 49.2V270" fill="none" stroke="#355A0A" stroke-width="2.8" stroke-linecap="round"/>
+<text x="190" y="61.2" text-anchor="start" font-size="13" font-weight="700" fill="#355A0A">LRAS</text>
+<path d="M60 109H185V270" fill="none" stroke="#1F2A28" stroke-width="1.1" stroke-dasharray="3 4"/>
+<circle cx="185" cy="109" r="4.5" fill="#1F2A28"/>
+<text x="55" y="113" text-anchor="end" font-size="12" font-weight="700" fill="#1F2A28">PL2</text>
+<path d="M60 189.5H185V270" fill="none" stroke="#1F2A28" stroke-width="1.1" stroke-dasharray="3 4"/>
+<circle cx="185" cy="189.5" r="4.5" fill="#1F2A28"/>
+<text x="55" y="193.5" text-anchor="end" font-size="12" font-weight="700" fill="#1F2A28">PL1</text>
+<text x="185" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A28">YF</text>
+<text x="495" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2A28">More resources shift LRAS right</text>
+<path d="M370 40V270H620" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="620" y="304" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Real GDP</text>
+<text transform="translate(340 40) rotate(-90)" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Price level</text>
+<path d="M470 49.2V270" fill="none" stroke="#6B7472" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 5"/>
+<text x="475" y="61.2" text-anchor="start" font-size="13" font-weight="700" fill="#6B7472">LRAS<tspan font-size="10" dy="3">1</tspan></text>
+<path d="M532.5 49.2V270" fill="none" stroke="#355A0A" stroke-width="2.8" stroke-linecap="round"/>
+<text x="537.5" y="61.2" text-anchor="start" font-size="13" font-weight="700" fill="#355A0A">LRAS<tspan font-size="10" dy="3">2</tspan></text>
+<path d="M370 269.8H470V270" fill="none" stroke="#6B7472" stroke-width="1.1" stroke-dasharray="3 4"/>
+<circle cx="470" cy="269.8" r="4.5" fill="#6B7472"/>
+<text x="470" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#6B7472">YF1</text>
+<path d="M370 269.8H532.5V270" fill="none" stroke="#1F2A28" stroke-width="1.1" stroke-dasharray="3 4"/>
+<circle cx="532.5" cy="269.8" r="4.5" fill="#1F2A28"/>
+<text x="532.5" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A28">YF2</text>
+<path d="M475 132L527.5 132" stroke="#9A4A00" stroke-width="2.2" marker-end="url(#lras-curve-ar)"/>
+</svg>

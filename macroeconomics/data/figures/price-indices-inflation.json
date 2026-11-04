@@ -1,0 +1,12 @@
+{
+ "price-indices-inflation-basket": {
+  "file": "figures/price-indices-inflation-basket.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Bar chart of invented data: the same market basket cost $200 in 2024, the base year, $220 in 2025 and $242 in 2026, so the CPI is 100, 110 and 121. Inflation is 10 percent each year, although the index rose 10 points and then 11 points."
+ }
+}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 470" width="820" height="470" role="img" aria-labelledby="unemployment-labor-force-t unemployment-labor-force-d" font-family="Arial, Helvetica, sans-serif">
+<title id="unemployment-labor-force-t">Who counts as unemployed</title>
+<desc id="unemployment-labor-force-d">A tree. The adult population (people 16 and older who are not in an institution or on active military duty) splits into the labor force and people not in the labor force. The labor force splits into employed (including part-time workers) and unemployed (no job, available, and looked for work in the past four weeks). Not in the labor force includes retirees, full-time students, people caring for family at home and discouraged workers. Underneath: unemployment rate equals unemployed divided by the labor force times 100; labor force participation rate equals the labor force divided by the adult population times 100.</desc>
+<defs><marker id="unemployment-labor-force-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="unemployment-labor-force-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="unemployment-labor-force-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="unemployment-labor-force-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="820" height="470" fill="#FFFFFF"/>
+<text x="410" y="30" font-size="18" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="410" dy="0">Who is in the labor force, and who is unemployed</tspan></text>
+<rect x="235" y="48" width="350" height="62" rx="8" fill="#F2F4F3" stroke="#1F2A28" stroke-width="2"/>
+<text x="410" y="74" font-size="17" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="410" dy="0">Adult population</tspan></text>
+<text x="410" y="96" font-size="12" text-anchor="middle" fill="#5B6664"><tspan x="410" dy="0">16 and older, not in an institution or the military</tspan></text>
+<rect x="60" y="160" width="320" height="62" rx="8" fill="#EEF4E0" stroke="#355A0A" stroke-width="2"/>
+<text x="220" y="186" font-size="17" text-anchor="middle" fill="#355A0A" font-weight="bold"><tspan x="220" dy="0">Labor force</tspan></text>
+<text x="220" y="207" font-size="13" text-anchor="middle" fill="#5B6664"><tspan x="220" dy="0">employed + unemployed</tspan></text>
+<rect x="440" y="160" width="330" height="120" rx="8" fill="#FBEDE3" stroke="#D55E00" stroke-width="2"/>
+<text x="605" y="186" font-size="17" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="605" dy="0">Not in the labor force</tspan></text>
+<text x="605" y="210" font-size="13" text-anchor="middle" fill="#1F2A28"><tspan x="605" dy="0">retirees, full-time students,</tspan><tspan x="605" dy="16.25">people caring for family at home,</tspan><tspan x="605" dy="16.25">discouraged workers</tspan></text>
+<line x1="410" y1="110" x2="220" y2="156" stroke="#1F2A28" stroke-width="2" marker-end="url(#unemployment-labor-force-ink)"/>
+<line x1="410" y1="110" x2="605" y2="156" stroke="#1F2A28" stroke-width="2" marker-end="url(#unemployment-labor-force-ink)"/>
+<rect x="20" y="280" width="190" height="84" rx="8" fill="#F2F4F3" stroke="#1F2A28" stroke-width="2"/>
+<text x="115" y="306" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="115" dy="0">Employed</tspan></text>
+<text x="115" y="328" font-size="12" text-anchor="middle" fill="#5B6664"><tspan x="115" dy="0">has a job, full-time</tspan><tspan x="115" dy="15">or part-time</tspan></text>
+<rect x="230" y="280" width="190" height="84" rx="8" fill="#F2F4F3" stroke="#1F2A28" stroke-width="2"/>
+<text x="325" y="306" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="325" dy="0">Unemployed</tspan></text>
+<text x="325" y="328" font-size="12" text-anchor="middle" fill="#5B6664"><tspan x="325" dy="0">no job, available, and</tspan><tspan x="325" dy="15">looked in the past 4 weeks</tspan></text>
+<line x1="220" y1="222" x2="115" y2="276" stroke="#1F2A28" stroke-width="2" marker-end="url(#unemployment-labor-force-ink)"/>
+<line x1="220" y1="222" x2="325" y2="276" stroke="#1F2A28" stroke-width="2" marker-end="url(#unemployment-labor-force-ink)"/>
+<rect x="20" y="386" width="780" height="66" rx="8" fill="#FFFFFF" stroke="#5B6664" stroke-width="1.5"/>
+<text x="40" y="413" font-size="15" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="40" dy="0">Unemployment rate = unemployed ÷ labor force × 100</tspan></text>
+<text x="40" y="438" font-size="15" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="40" dy="0">Labor force participation rate = labor force ÷ adult population × 100</tspan></text>
+</svg>

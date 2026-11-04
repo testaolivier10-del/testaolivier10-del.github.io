@@ -137,6 +137,7 @@
     { key: 'appsych', short: 'Psychology', dir: 'psychology' },
     { key: 'apprecalc', short: 'Precalculus', dir: 'precalculus' },
     { key: 'apcalcbc', short: 'Calculus BC', dir: 'calculus-bc' },
+    { key: 'apmacro', short: 'Macroeconomics', dir: 'macroeconomics' },
   ];
   // courses:end
   var COURSE_SHORT = {};

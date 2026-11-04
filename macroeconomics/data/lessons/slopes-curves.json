@@ -1,0 +1,71 @@
+{
+ "topic": "slopes-curves",
+ "hook": "A bus fare app shows two lines: one climbing steeply, one barely tilting. Both \"go up\", but one says fares jump fast with distance and the other says they hardly change. The tilt of a line, its slope, is the number that tells them apart, and the shape of every economics curve is a statement about how two variables move.",
+ "prereq": [
+  {
+   "q": "On a graph, the ordered pair (20, 7) means",
+   "options": [
+    "20 across on the horizontal axis and 7 up the vertical axis",
+    "20 up the vertical axis and 7 across",
+    "a change of 20 followed by a change of 7",
+    "the point halfway between 20 and 7"
+   ],
+   "correct": 0,
+   "why": "The horizontal value comes first, then the vertical value.",
+   "review": "axes-points"
+  },
+  {
+   "q": "Two variables rise together. Their relationship is",
+   "options": [
+    "direct",
+    "inverse",
+    "unrelated",
+    "reversed"
+   ],
+   "correct": 0,
+   "why": "A direct relationship means both rise or fall together.",
+   "review": "axes-points"
+  }
+ ],
+ "figure": {
+  "figure": "slopes-curves-shapes",
+  "caption": "Four shapes: upward sloping (positive slope), downward sloping (negative slope), a vertical line and a horizontal line."
+ },
+ "chain": [
+  {
+   "cause": "You pick two points on a line",
+   "effect": "you can find the rise (change in the vertical value) and the run (change in the horizontal value)"
+  },
+  {
+   "cause": "You divide the rise by the run",
+   "effect": "you get the slope, positive if the line rises and negative if it falls"
+  },
+  {
+   "cause": "A line is vertical or horizontal",
+   "effect": "one variable stays fixed while the other changes"
+  },
+  {
+   "cause": "A curve bows outward",
+   "effect": "its slope changes along it, getting steeper as it falls"
+  }
+ ],
+ "ideas": [
+  "<b>Slope</b> = rise over run = change in the vertical value divided by the change in the horizontal value.",
+  "Upward sloping: positive slope, a direct relationship. Downward sloping: negative slope, an inverse relationship.",
+  "A <b>vertical line</b> keeps the horizontal value fixed; a <b>horizontal line</b> keeps the vertical value fixed and has a slope of zero.",
+  "A straight line has one slope everywhere; a bowed curve does not."
+ ],
+ "misconception": {
+  "wrong": "Slope is run over rise: how far across for each step up.",
+  "right": "Slope is rise over run: the change in the vertical value divided by the change in the horizontal value. Flipping them gives the reciprocal, a different number."
+ },
+ "check": [
+  "mac-slopes-curves-1",
+  "mac-slopes-curves-3",
+  "mac-slopes-curves-4",
+  "mac-slopes-curves-6",
+  "mac-slopes-curves-10",
+  "mac-slopes-curves-11"
+ ],
+ "summary": "Slope is rise over run, the change in the vertical value divided by the change in the horizontal value. A line that rises to the right has a positive slope, one that falls has a negative slope, a horizontal line has a slope of zero, and a vertical line keeps the horizontal value fixed. A straight line has the same slope at every point, while a bowed curve changes slope as you move along it."
+}

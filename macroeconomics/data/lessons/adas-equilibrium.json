@@ -1,0 +1,71 @@
+{
+ "topic": "adas-equilibrium",
+ "hook": "Two economies report the same real GDP growth this year. In one, factories have idle shifts and job ads are scarce. In the other, firms are paying overtime and still cannot find workers. To tell them apart you need more than output: you need to know where output stands against what the economy can produce at full employment. The AD-AS model puts both on one graph.",
+ "prereq": [
+  {
+   "q": "What is a recessionary gap?",
+   "options": [
+    "Real GDP below potential output",
+    "Real GDP above potential output",
+    "A fall in the price level",
+    "A rise in the unemployment rate to zero"
+   ],
+   "correct": 0,
+   "why": "A recessionary (negative) gap is real GDP below potential (full-employment) output.",
+   "review": "business-cycles"
+  },
+  {
+   "q": "Where does LRAS stand?",
+   "options": [
+    "Vertical at full-employment output",
+    "Sloping up through full-employment output",
+    "Horizontal at the current price level",
+    "Wherever AD crosses SRAS"
+   ],
+   "correct": 0,
+   "why": "In the long run output is at potential at any price level: LRAS is vertical at YF.",
+   "review": "lras"
+  }
+ ],
+ "figure": {
+  "figure": "adas-equilibrium-gaps",
+  "caption": "Left: AD meets SRAS left of LRAS, a recessionary gap. Right: AD meets SRAS right of LRAS, an inflationary gap."
+ },
+ "chain": [
+  {
+   "cause": "AD crosses SRAS",
+   "effect": "the short-run price level (PL1) and real GDP (Y1) are set"
+  },
+  {
+   "cause": "Y1 is to the left of LRAS",
+   "effect": "a recessionary gap: unemployment above the natural rate"
+  },
+  {
+   "cause": "Y1 is to the right of LRAS",
+   "effect": "an inflationary gap: unemployment below the natural rate"
+  },
+  {
+   "cause": "AD and SRAS cross on LRAS",
+   "effect": "long-run equilibrium at full employment"
+  }
+ ],
+ "ideas": [
+  "The <b>AD-AS model</b> puts AD, SRAS and LRAS on one graph: Price level (PL) up the side, Real GDP (Y) along the bottom.",
+  "<b>Short-run equilibrium</b> is where AD crosses SRAS; label it PL1 and Y1 with dashed lines to both axes.",
+  "<b>Long-run equilibrium</b> is where AD and SRAS cross on LRAS: output at full employment (YF), unemployment at the natural rate.",
+  "Y1 &lt; YF: a <b>recessionary gap</b>, unemployment above the natural rate. Y1 &gt; YF: an <b>inflationary gap</b>, unemployment below it."
+ ],
+ "misconception": {
+  "wrong": "Wherever AD crosses SRAS, the economy is at full employment, because that is the equilibrium.",
+  "right": "AD crossing SRAS is only a short-run equilibrium. Output is at full employment only when that crossing lies on LRAS."
+ },
+ "check": [
+  "mac-adas-equilibrium-5",
+  "mac-adas-equilibrium-6",
+  "mac-adas-equilibrium-7",
+  "mac-adas-equilibrium-8",
+  "mac-adas-equilibrium-9",
+  "mac-adas-equilibrium-11"
+ ],
+ "summary": "The AD-AS model shows the price level and real GDP where AD meets SRAS (short-run equilibrium). Comparing that output with LRAS shows the gap: left of LRAS is a recessionary gap with unemployment above the natural rate, right of LRAS an inflationary gap with unemployment below it. Long-run equilibrium is where all three curves meet."
+}

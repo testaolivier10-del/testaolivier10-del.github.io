@@ -1,0 +1,609 @@
+{
+ "stimuli": {
+  "real-rates-financial-flows-s1": {
+   "kind": "graph",
+   "title": "Arland's loanable funds market after its government borrows more (Arland and its trading partner Belvia are invented)",
+   "graph": {
+    "kind": "lf",
+    "show": {
+     "DLF": 1
+    }
+   }
+  },
+  "real-rates-financial-flows-s2": {
+   "kind": "text",
+   "title": "Belvia's central bank lowers rates",
+   "text": "<p>Belvia's central bank works in an <b>ample-reserves</b> framework. To fight a recession, it lowers the interest rate it pays on reserve balances, so the policy rate and other interest rates in Belvia fall. Expected inflation stays the same, so Belvia's real interest rates fall relative to Arland's. Savers in both countries can buy assets in either one. (Arland and Belvia are invented; the arl and the bel are their currencies.)</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-real-rates-financial-flows-1",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "real-rates-financial-flows-s1",
+   "q": "What happened to Arland's real interest rate?",
+   "options": [
+    "It fell, because more funds were lent",
+    "It rose, because the demand for loanable funds increased",
+    "It did not change, because supply did not shift",
+    "It rose, because the supply of loanable funds shifted left"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Demand for loanable funds right: the real interest rate rises.",
+    "options": [
+     "The demand for loanable funds rose, which raises the real interest rate along the supply curve.",
+     "Right: government borrowing shifted the demand for loanable funds right, so the real interest rate rose.",
+     "A shift in demand alone moves the equilibrium along the supply curve, changing the rate.",
+     "The graph shows demand shifting right; supply did not move."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-2",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "real-rates-financial-flows-s1",
+   "q": "Belvia's real interest rate does not change. Which way does financial capital flow?",
+   "options": [
+    "From Belvia into Arland",
+    "From Arland into Belvia",
+    "It does not flow, because the change was in government borrowing",
+    "It flows both ways equally, so there is no net flow"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Financial capital flows toward the higher relative real interest rate.",
+    "options": [
+     "Right: Arland assets now pay a higher real return than Belvian ones, so savers move funds into Arland, a capital inflow for Arland.",
+     "Savers move toward the higher real return, which is now in Arland.",
+     "The cause does not matter to savers; the higher real return does.",
+     "The gap in real interest rates makes the net flow go toward Arland."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-3",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "real-rates-financial-flows-s1",
+   "q": "What happens in the market for arls?",
+   "options": [
+    "The supply of arls rises, and the arl depreciates",
+    "The demand for arls falls, and the arl depreciates",
+    "The demand for arls rises, and the arl appreciates",
+    "Nothing, because loanable funds are not currency"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The capital inflow raises demand for arls: the arl appreciates.",
+    "options": [
+     "Foreign savers buying Arland assets need arls: they demand arls, they do not supply them.",
+     "More foreign savers want Arland assets, so demand for arls rises.",
+     "Right: to buy Arland assets, Belvian savers need arls, so demand for arls shifts right and the arl appreciates.",
+     "The funds come from abroad, so they must be changed into arls first."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-4",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "real-rates-financial-flows-s1",
+   "q": "Following the chain from the loanable funds market, what happens to Arland's net exports, other things equal?",
+   "options": [
+    "They rise, because more funds flow into Arland",
+    "They do not change, because the flow is in the financial account",
+    "They rise, because the arl appreciates",
+    "They fall, because the arl appreciates"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Higher real rate, capital inflow, demand for arls, appreciation, lower net exports.",
+    "options": [
+     "The inflow is in the capital and financial account; through the stronger arl it lowers net exports.",
+     "The appreciation of the arl changes the prices that foreign and Arland buyers face, which changes trade.",
+     "An appreciation makes Arland exports dearer abroad and imports cheaper, so net exports fall.",
+     "Right: the stronger arl makes Arland goods cost more bels and Belvian goods fewer arls, so exports fall, imports rise and net exports fall."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-5",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "real-rates-financial-flows-s2",
+   "q": "Which way does financial capital flow?",
+   "options": [
+    "Out of Belvia, into Arland",
+    "Out of Arland, into Belvia",
+    "Into both countries equally",
+    "It does not flow, because the change was in monetary policy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Lower real rates in Belvia send financial capital out of Belvia toward Arland.",
+    "options": [
+     "Right: Arland assets now pay a higher real return than Belvian ones, so savers move funds toward Arland.",
+     "Belvia's real rates fell, so its assets pay less; savers move away from them.",
+     "A gap in real returns pulls funds one way: toward the higher rate.",
+     "Monetary policy changed the interest rates, and savers respond to the rates."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-6",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "real-rates-financial-flows-s2",
+   "q": "What happens to Belvia's balance of payments, other things equal?",
+   "options": [
+    "Its capital and financial account balance rises",
+    "Its capital and financial account balance falls, and its current account balance rises",
+    "Both balances fall",
+    "Neither changes, because interest rates are not entries"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Capital outflow: the capital and financial account balance falls and the current account balance rises.",
+    "options": [
+     "Funds leaving Belvia to buy Arland assets are debits, so the balance falls.",
+     "Right: the outflow lowers the capital and financial account balance; since the two sum to zero, the current account balance rises by the same amount (the weaker bel raises net exports).",
+     "The two balances sum to zero, so they move in opposite directions.",
+     "The rates are not entries, but the asset purchases and trade they cause are."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-7",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "real-rates-financial-flows-s2",
+   "q": "What happens to the value of the bel?",
+   "options": [
+    "It appreciates, because the central bank acted",
+    "It does not change, since the change was in interest rates",
+    "It depreciates, because Belvian savers supply bels to buy Arland assets",
+    "It appreciates, because Belvians now save less"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Lower relative real rates: more bels offered for arls, so the bel depreciates.",
+    "options": [
+     "Lower interest rates make Belvian assets less attractive, which weakens the bel.",
+     "The change in rates moves savers, and savers buy and sell currencies.",
+     "Right: the supply of bels rises (and foreign demand for bels falls), so the price of the bel falls.",
+     "The currency moves with the demand for and supply of bels; here the supply of bels rises."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-8",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "real-rates-financial-flows-s2",
+   "q": "Through the currency, what happens to Belvia's net exports and aggregate demand?",
+   "options": [
+    "Net exports rise and AD shifts right",
+    "Net exports fall and AD shifts left",
+    "Net exports rise and AD shifts left",
+    "Net exports do not change, but AD shifts right"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In an open economy, expansionary monetary policy also works through a weaker currency and higher net exports.",
+    "options": [
+     "Right: the weaker bel makes Belvian goods cheaper abroad and imports dearer at home, so net exports rise, adding to the rise in interest-sensitive spending.",
+     "A weaker bel raises net exports; it does not lower them.",
+     "Net exports are part of AD, so higher net exports shift AD right.",
+     "The currency effect adds to AD through higher net exports."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-9",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Arland's real interest rates rise relative to Belvia's, and financial capital flows into Arland. Draw the market for arls: label it, shift a curve and mark the new equilibrium.",
+   "why": {
+    "correct": "Belvian savers need arls to buy Arland assets, so the demand for arls shifts right and the arl appreciates (Arland savers keeping their funds at home, the supply of arls shifting left, is also accepted). The vertical axis is the price of the arl: bels per arl."
+   },
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "arl",
+     "other": "bel"
+    },
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "financial capital flowing into Arland",
+     "outcome": {
+      "value of the currency": "up",
+      "quantity of the currency": "up"
+     },
+     "alt": [
+      [
+       {
+        "curve": "S",
+        "dir": "left"
+       }
+      ]
+     ]
+    },
+    "slips": {
+     "S": "Capital flowing into Arland raises the price of the arl: Belvian savers demand more arls, or Arland savers supply fewer arls to buy Belvian assets. Shifting supply right would lower it."
+    }
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-10",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Foreign savers move funds into Arland to earn its higher real interest rates. In Arland's loanable funds market, shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "The funds from abroad are lent in Arland, so the supply of loanable funds shifts right. The real interest rate falls back somewhat and the quantity of loanable funds rises."
+   },
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DLF",
+     "SLF"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SLF",
+       "dir": "right"
+      }
+     ],
+     "because": "foreign saving flowing into Arland",
+     "outcome": {
+      "real interest rate": "down",
+      "quantity of loanable funds": "up"
+     }
+    },
+    "slips": {
+     "DLF": "Foreign savers add to the funds available to lend in Arland: that is the supply of loanable funds, not demand."
+    }
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-11",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Real interest rates in Arland rise above those in Belvia, so financial capital flows from Belvia to Arland. Show the effect in the market for bels, the currency of Belvia: shift a curve and mark the new equilibrium.",
+   "why": {
+    "correct": "Belvian savers sell bels to buy Arland assets, so the supply of bels shifts right and the bel depreciates (its price in arls falls), the mirror of the arl appreciating. (Arland savers buying fewer Belvian assets, the demand for bels shifting left, also lowers the price of the bel and is also accepted.)"
+   },
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "bel",
+     "other": "arl"
+    },
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "higher real interest rates in Arland",
+     "outcome": {
+      "value of the currency": "down",
+      "quantity of the currency": "up"
+     },
+     "alt": [
+      [
+       {
+        "curve": "D",
+        "dir": "left"
+       }
+      ]
+     ]
+    },
+    "slips": {
+     "D": "Higher real interest rates in Arland lower the price of the bel: Belvian savers supply more bels to buy arls, or Arland savers demand fewer bels. Shifting the demand for bels right would raise it."
+    }
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-12",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "In Arland's loanable funds market, mark a point on the supply curve where the real interest rate is higher than at the equilibrium.",
+   "why": {
+    "correct": "Up the supply curve, a higher real interest rate brings out more saving: a larger quantity of loanable funds supplied."
+   },
+   "graph": {
+    "kind": "lf",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "SLF",
+      "x": "up",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-13",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Arland's government borrows more to fund a budget deficit; Belvia's real interest rate does not change. Build the chain to Arland's net exports.",
+   "why": {
+    "correct": "Every link: more borrowing, higher real interest rate, capital inflow, more demand for arls, appreciation, lower net exports."
+   },
+   "specific": {
+    "frame": "The real interest rate in Arland ___; financial capital ___; the arl ___; Arland's net exports ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Government borrowing raises the demand for loanable funds, so Arland's real interest rate rises above Belvia's. Because Arland assets now pay more, financial capital flows into Arland and Belvian savers demand more arls, so the arl appreciates. Arland goods then cost more bels and Belvian goods fewer arls, so Arland's net exports fall.",
+    "slots": {
+     "rate": {
+      "label": "The real interest rate",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Government borrowing raises the demand for loanable funds, which raises the real interest rate."
+      }
+     },
+     "flow": {
+      "label": "Financial capital",
+      "options": [
+       "flows into Arland",
+       "flows out of Arland"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Savers move funds toward the higher real return, which is now in Arland."
+      }
+     },
+     "currency": {
+      "label": "The arl",
+      "options": [
+       "appreciates",
+       "depreciates"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The inflow raises demand for arls, so the arl appreciates."
+      }
+     },
+     "netExports": {
+      "label": "Net exports",
+      "options": [
+       "fall",
+       "rise"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A stronger arl makes exports dearer and imports cheaper, so net exports fall."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-14",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the links in order, from a rise in Arland's real interest rate to its net exports.",
+   "options": [
+    "Arland's real interest rate rises relative to Belvia's",
+    "Financial capital flows into Arland as foreign savers buy Arland assets",
+    "The demand for arls increases",
+    "The arl appreciates",
+    "Arland's net exports fall"
+   ],
+   "why": {
+    "correct": "Relative real rates, capital flows, the demand for the currency, appreciation, net exports: the open-economy chain readers check link by link."
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-15",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "2.C",
+   "q": "Bonds in Belvia pay a nominal interest rate of 5%, and expected inflation in Belvia is 1%. What is the real interest rate on Belvian bonds, in percent?",
+   "why": {
+    "correct": "Real rate = nominal rate - expected inflation: $5 - 1 = 4$ percent."
+   },
+   "numeric": {
+    "from": {
+     "fn": "realRate",
+     "args": [
+      5,
+      1
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        5,
+        1
+       ]
+      },
+      "why": "You added expected inflation. The real rate takes it away: 5 - 1 = 4 percent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-16",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Bonds in Arland pay a nominal rate of 7% with expected inflation of 4%. Bonds in Belvia pay 5% with expected inflation of 1%. Other things equal, which way does financial capital tend to flow?",
+   "options": [
+    "Into Arland, because 7% is the higher of the two nominal rates",
+    "Into Belvia, because its real interest rate is higher",
+    "Into Arland, because its inflation is higher",
+    "Neither way, because both pay a positive rate"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Real rates: Arland 3%, Belvia 4%. Capital flows toward the higher real rate.",
+    "options": [
+     "Savers compare real returns: Arland pays 7 - 4 = 3 percent real, Belvia 5 - 1 = 4 percent real.",
+     "Right: the real rate is 3 percent in Arland and 4 percent in Belvia, so savers move toward Belvia even though Arland's nominal rate is higher.",
+     "Higher expected inflation lowers the real return, which makes Arland less attractive, not more.",
+     "Funds move toward the higher real return, and the two real rates differ."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-17",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Foreign residents buy 90 billion arls more of Arland's assets than Arland residents buy of foreign assets this year. Which must be true of Arland's current account?",
+   "options": [
+    "It has a surplus of 90 billion arls",
+    "It is balanced, because asset trades are not in the current account",
+    "It has a deficit of 90 billion arls",
+    "It equals Arland's government budget deficit"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A capital and financial account surplus of 90 means a current account deficit of 90.",
+    "options": [
+     "The two balances sum to zero, so a capital and financial account surplus of 90 is matched by a current account deficit of 90.",
+     "Asset trades are not in the current account, but the two balances still sum to zero, so the current account is in deficit.",
+     "Right: the net inflow is a capital and financial account surplus of 90, so the current account balance is -90.",
+     "The budget balance is not part of the balance of payments."
+    ]
+   }
+  },
+  {
+   "id": "mac-real-rates-financial-flows-18",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Compared with an economy closed to foreign savers, how does the inflow of foreign saving change the effect of more government borrowing on Arland's real interest rate?",
+   "options": [
+    "The real rate rises by more, because foreigners also borrow",
+    "The real rate rises by less, because foreign saving adds to the supply of loanable funds",
+    "The real rate falls, because the inflow is larger than the new borrowing",
+    "The real rate is unaffected, because foreign saving goes to the currency market"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Capital inflows add to the supply of loanable funds, so the real rate rises less than it would in a closed economy.",
+    "options": [
+     "Foreign savers are lenders here; they add to the supply of loanable funds.",
+     "Right: the inflow shifts the supply of loanable funds right, which holds down the rise in the real interest rate and so softens the crowding out of private investment.",
+     "The inflow happens only while Arland's real rate stays above Belvia's, so it limits the rise rather than reversing it.",
+     "The funds pass through the currency market, but they are then lent in Arland's loanable funds market."
+    ]
+   }
+  }
+ ]
+}

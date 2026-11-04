@@ -1,0 +1,12 @@
+{
+ "adas-short-run-changes-shocks": {
+  "file": "figures/adas-short-run-changes-shocks.svg",
+  "ext": "svg",
+  "w": 660,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two AD-AS graphs. Left: AD1 shifts right to AD2; the price level rises from PL1 to PL2 and real GDP rises from Y1 to Y2. Right: SRAS1 shifts left to SRAS2; the price level rises from PL1 to PL2 while real GDP falls from Y1 to Y2."
+ }
+}

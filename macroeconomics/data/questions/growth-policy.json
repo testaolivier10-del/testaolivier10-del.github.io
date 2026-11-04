@@ -1,0 +1,582 @@
+{
+ "stimuli": {
+  "growth-policy-s1": {
+   "kind": "text",
+   "title": "Four programs in Navar (invented country)",
+   "text": "<p>The government of Navar, an invented country, is choosing among four programs of about the same cost:</p><ol><li>a tax credit for firms that buy new equipment;</li><li>grants that pay for apprenticeships in skilled trades;</li><li>a one-time cash payment to every household;</li><li>funding for university research on cheaper batteries.</li></ol>"
+  },
+  "growth-policy-s2": {
+   "kind": "data",
+   "title": "Schooling, investment and growth in four invented countries",
+   "invented": true,
+   "table": {
+    "caption": "Averages over 20 years in four invented countries",
+    "cols": [
+     "Country",
+     "Average years of schooling",
+     "Investment (% of GDP)",
+     "Growth of real GDP per capita (% a year)"
+    ],
+    "rows": [
+     [
+      "Kova",
+      "12",
+      "25",
+      "3.0"
+     ],
+     [
+      "Lith",
+      "8",
+      "15",
+      "1.0"
+     ],
+     [
+      "Mera",
+      "12",
+      "15",
+      "2.0"
+     ],
+     [
+      "Nolo",
+      "8",
+      "25",
+      "2.0"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-growth-policy-1",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which program mainly raises AD in the short run without directly adding to Navar's productive capacity?",
+   "options": [
+    "The tax credit for firms that buy new equipment",
+    "The apprenticeship grants",
+    "The battery research funding",
+    "The one-time cash payment to households"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Spending that adds capital, skills or technology can shift LRAS; a cash transfer shifts AD.",
+    "options": [
+     "Equipment is physical capital, which raises future capacity.",
+     "Apprenticeships build human capital, which raises what workers can produce.",
+     "Research can improve technology, which raises capacity.",
+     "Right: the payment raises disposable income and consumption (AD), but it adds no capital, skills or technology."
+    ]
+   },
+   "stimulus": "growth-policy-s1"
+  },
+  {
+   "id": "mac-growth-policy-2",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Through which channel do the apprenticeship grants promote growth?",
+   "options": [
+    "More human capital: workers gain skills that raise productivity",
+    "More physical capital: firms buy more machines",
+    "Higher AD: apprentices spend the wages they earn, which shifts AD right",
+    "A lower price level: skilled workers accept lower wages"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Human capital channel: education and training raise output per worker.",
+    "options": [
+     "Right: training and education build human capital.",
+     "That is the equipment tax credit's channel.",
+     "Their spending raises AD in the short run, but growth comes from their higher productivity.",
+     "The growth channel is what workers can produce, not their wages."
+    ]
+   },
+   "stimulus": "growth-policy-s1"
+  },
+  {
+   "id": "mac-growth-policy-3",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "Which of these policies aim to shift Navar's LRAS to the right? Select all that apply.",
+   "options": [
+    "The tax credit for new equipment",
+    "The apprenticeship grants",
+    "The one-time cash payment to households",
+    "The battery research funding",
+    "A new tax on business investment",
+    "A cut in funding for public universities"
+   ],
+   "correct": [
+    0,
+    1,
+    3
+   ],
+   "why": {
+    "correct": "Policies aimed at physical capital, human capital and technology aim at LRAS.",
+    "options": [
+     "Right: it encourages investment in physical capital.",
+     "Right: they build human capital.",
+     "It raises spending (AD), not capacity.",
+     "Right: it aims at better technology.",
+     "Taxing investment discourages building physical capital, which works against LRAS.",
+     "Less funding for higher education works against human capital and research."
+    ]
+   },
+   "stimulus": "growth-policy-s1"
+  },
+  {
+   "id": "mac-growth-policy-4",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Navar is at full employment and pays for the programs by borrowing. Which effect could reduce the growth they produce?",
+   "options": [
+    "Lower real interest rates that encourage too much private saving",
+    "Higher real interest rates that crowd out private investment",
+    "A fall in the price level that lowers nominal GDP",
+    "A rightward shift of SRAS that lowers output"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Deficit-financed growth programs can be partly offset by crowding out.",
+    "options": [
+     "Government borrowing raises real rates, it does not lower them.",
+     "Right: more government borrowing raises the demand for loanable funds and the real rate, so private investment, and the capital it adds, falls.",
+     "Extra spending at full employment tends to raise the price level.",
+     "A rightward SRAS shift raises output; borrowing works through interest rates."
+    ]
+   },
+   "stimulus": "growth-policy-s1"
+  },
+  {
+   "id": "mac-growth-policy-5",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Compare Mera and Lith, which have the same investment share. What do the data suggest?",
+   "options": [
+    "More investment is associated with faster growth",
+    "Schooling has no link to growth",
+    "More schooling goes with faster growth of real GDP per capita",
+    "Lith grew faster than Mera because it spent much less on schooling"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Holding investment fixed, the pair isolates schooling, a measure of human capital. With invented data and four countries, it is a pattern, not proof.",
+    "options": [
+     "Investment is the same in Mera and Lith, so this pair cannot show its effect.",
+     "Mera, with more schooling, grew faster than Lith.",
+     "Right: with investment the same, Mera's extra schooling goes with 1 point faster growth.",
+     "Lith grew more slowly: 1.0 percent against Mera's 2.0 percent."
+    ]
+   },
+   "stimulus": "growth-policy-s2"
+  },
+  {
+   "id": "mac-growth-policy-6",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which pair of countries best shows the link between physical capital and growth?",
+   "options": [
+    "Mera and Lith",
+    "Nolo and Lith",
+    "Kova and Lith",
+    "Mera and Nolo"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "To see one factor, compare countries that differ only in that factor.",
+    "options": [
+     "They differ in schooling, not investment.",
+     "Right: they have the same schooling, and Nolo's higher investment goes with faster growth.",
+     "They differ in both schooling and investment, so the effects are mixed together.",
+     "They differ in both, and their growth rates are equal."
+    ]
+   },
+   "stimulus": "growth-policy-s2"
+  },
+  {
+   "id": "mac-growth-policy-7",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Lith wants to grow more like Kova. Which pair of policies fits the data?",
+   "options": [
+    "Expand schooling and give firms incentives to invest in equipment",
+    "Raise taxes on investment and cut school funding to balance the budget",
+    "Send each household a cash payment each year",
+    "Raise the money supply faster to raise spending"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Growth policy aims at the sources of growth: human capital, physical capital and technology.",
+    "options": [
+     "Right: Kova leads Lith in both schooling and investment.",
+     "Both would move Lith further from Kova.",
+     "Cash transfers raise AD; they do not build human or physical capital.",
+     "Faster money growth raises inflation in the long run, not capacity."
+    ]
+   },
+   "stimulus": "growth-policy-s2"
+  },
+  {
+   "id": "mac-growth-policy-8",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "q": "Kova's real GDP per capita is 20,000 dollars this year and grows at its table rate. What will it be next year, in dollars?",
+   "why": {
+    "correct": "$20{,}000 \\times 1.03 = 20{,}600$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      20000,
+      {
+       "fn": "add",
+       "args": [
+        1,
+        {
+         "fn": "div",
+         "args": [
+          3,
+          100
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "unit": "dollars",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        20000,
+        3
+       ]
+      },
+      "why": "You added 3 dollars. Growth of 3 percent means 3 percent of 20,000, which is 600 dollars."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        20000,
+        3
+       ]
+      },
+      "why": "You multiplied by 3. A 3 percent rise multiplies by 1.03."
+     }
+    ]
+   },
+   "stimulus": "growth-policy-s2"
+  },
+  {
+   "id": "mac-growth-policy-9",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is supply-side fiscal policy?",
+   "options": [
+    "Central bank actions that change the supply of money",
+    "Changes in government spending meant to raise AD in a recession, with no aim at capacity",
+    "Tax and spending changes meant to raise incentives to work, save and invest, shifting LRAS right",
+    "Limits on how much firms may produce"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Supply-side policies target LRAS through incentives and investment.",
+    "options": [
+     "That is monetary policy.",
+     "That is demand-side (stabilization) fiscal policy.",
+     "Right: supply-side policy aims at the economy's capacity, not just at spending.",
+     "Supply-side policy aims to raise production, not limit it."
+    ]
+   }
+  },
+  {
+   "id": "mac-growth-policy-10",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A government cuts tax rates on wages and on business investment. What effects are expected in the short run and the long run?",
+   "options": [
+    "Short run: AD shifts right. Long run: if work and investment rise, LRAS shifts right too",
+    "Short run: LRAS shifts left. Long run: AD shifts left",
+    "Short run: nothing changes. Long run: the price level falls",
+    "Short run: SRAS shifts left. Long run: the deficit closes the gap by itself"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Many policies work on both sides: AD in the short run, LRAS in the long run.",
+    "options": [
+     "Right: lower taxes raise disposable income and spending now; stronger incentives to work and invest can raise capacity later. How large that second effect is remains debated.",
+     "Lower taxes raise spending and, if anything, capacity; neither curve shifts left.",
+     "Tax cuts raise disposable income right away, so AD shifts right in the short run.",
+     "A tax cut does not raise firms' costs, and a deficit does not close a gap by itself."
+    ]
+   }
+  },
+  {
+   "id": "mac-growth-policy-11",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A government at full employment begins building a large network of highways. Show the short-run effect of the construction spending itself, and mark the new short-run equilibrium.",
+   "why": {
+    "correct": "Government spending is part of AD, so AD shifts right; in the short run real output and the price level rise."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS",
+     "LRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "right"
+      }
+     ],
+     "because": "more government spending on construction",
+     "outcome": {
+      "price level": "up",
+      "output": "up"
+     }
+    },
+    "slips": {
+     "LRAS": "The finished highways can raise capacity later; while they are being built, the spending shows up as higher AD."
+    }
+   }
+  },
+  {
+   "id": "mac-growth-policy-12",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Years later, the finished highways cut shipping times and costs for firms across the economy. Shift the curve that shows the long-run effect on productive capacity.",
+   "why": {
+    "correct": "Better infrastructure raises productivity, so potential output rises and LRAS shifts right. (Lower costs can shift SRAS right too; drawing both shifts right is also accepted.)"
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "AD",
+     "SRAS",
+     "LRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "LRAS",
+       "dir": "right"
+      }
+     ],
+     "because": "better infrastructure that raises productivity",
+     "alt": [
+      [
+       {
+        "curve": "LRAS",
+        "dir": "right"
+       },
+       {
+        "curve": "SRAS",
+        "dir": "right"
+       }
+      ]
+     ]
+    },
+    "slips": {
+     "AD": "The question asks about capacity once the highways are built; that is LRAS, not spending.",
+     "SRAS": "The question asks about capacity, so LRAS must shift right. Shifting SRAS right as well, for the lower shipping costs, is accepted; shifting SRAS alone is not."
+    }
+   }
+  },
+  {
+   "id": "mac-growth-policy-13",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Stronger patent protection for new inventions is a policy aimed mainly at which source of growth?",
+   "options": [
+    "Human capital",
+    "Technology",
+    "Natural resources",
+    "Aggregate demand"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Research funding and patents target technology.",
+    "options": [
+     "Human capital is workers' skills and education.",
+     "Right: patents let inventors earn a return on new ideas, which encourages research and new methods.",
+     "Patents cover ideas, not land or minerals.",
+     "Patents work on the supply side, through innovation."
+    ]
+   }
+  },
+  {
+   "id": "mac-growth-policy-14",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "How can reducing government budget deficits promote long-run growth?",
+   "options": [
+    "Smaller deficits raise AD, which raises potential output",
+    "Smaller deficits raise the money supply, which raises real output",
+    "Smaller deficits raise the price level, which raises nominal GDP",
+    "Less government borrowing lowers real interest rates, so private investment and the capital stock grow faster"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Deficit reduction can support growth by freeing saving for private investment.",
+    "options": [
+     "Cutting a deficit lowers AD in the short run; the growth effect works through investment.",
+     "The budget does not set the money supply, and money is neutral in the long run.",
+     "Growth is about real capacity, not nominal values.",
+     "Right: smaller deficits reduce crowding out."
+    ]
+   }
+  },
+  {
+   "id": "mac-growth-policy-15",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "q": "An economy at full employment raises transfer payments to households. What is the main effect, and on which curve?",
+   "options": [
+    "AD shifts right: the price level rises, with little lasting output gain",
+    "LRAS shifts right, so potential output rises and the PPC shifts outward",
+    "SRAS shifts right, so the price level falls",
+    "AD shifts left, so output falls"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Policies that raise spending shift AD; only those that raise capacity shift LRAS.",
+    "options": [
+     "Right: transfers raise disposable income and spending, but at full employment they mostly push up prices; they do not add capacity.",
+     "Transfers raise spending, not capital, skills or technology.",
+     "Transfers do not lower firms' costs.",
+     "More transfers raise spending, shifting AD right."
+    ]
+   }
+  },
+  {
+   "id": "mac-growth-policy-16",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Build the chain from a job-training program to long-run growth.",
+   "why": {
+    "correct": "Training builds human capital, productivity rises, potential output rises, and LRAS shifts right."
+   },
+   "specific": {
+    "frame": "The program trains workers, so ___ capital rises. Each worker can produce more, so productivity ___. Potential output rises, so ___ shifts right.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "The program trains workers, so human capital rises. Each worker can produce more, which means productivity rises. As a result potential output rises, so LRAS shifts right and the PPC shifts out.",
+    "slots": {
+     "concept": {
+      "label": "Which capital",
+      "options": [
+       "human",
+       "physical"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Training adds skills, which is human capital; physical capital is equipment."
+      }
+     },
+     "change": {
+      "label": "Productivity",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More skills mean more output per worker."
+      }
+     },
+     "curve": {
+      "label": "Which curve shifts right",
+      "options": [
+       "LRAS",
+       "AD"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher capacity shifts LRAS; AD shows spending."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

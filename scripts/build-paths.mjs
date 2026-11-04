@@ -70,6 +70,7 @@ const AP = {
   apenv: { file: 'environmental-science/assets/env-curriculum.js', g: 'ApEnvCurriculum', maps: ['apenv'] },
   appsych: { file: 'psychology/assets/psy-curriculum.js', g: 'ApPsychCurriculum', maps: ['appsych'] },
   apprecalc: { file: 'precalculus/assets/pcalc-curriculum.js', g: 'ApPrecalcCurriculum', maps: ['apprecalc'] },
+  apmacro: { file: 'macroeconomics/assets/mac-curriculum.js', g: 'ApMacroCurriculum', maps: ['apmacro'] },
 };
 
 /* Concepts -> topic prerequisites. order: topic id -> position. A link's

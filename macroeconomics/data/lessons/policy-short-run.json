@@ -1,0 +1,75 @@
+{
+ "topic": "policy-short-run",
+ "hook": "In a downturn, car dealers see fewer buyers, factories cut shifts and the jobless rate climbs. Two groups can respond: the legislature, which sets spending and taxes, and the central bank, which steers interest rates. They pull different levers, but both work by changing total spending, and an exam answer earns credit only when it names every link in between.",
+ "prereq": [
+  {
+   "q": "An economy is in a recessionary gap. Which fiscal action shifts AD to the right?",
+   "options": [
+    "Cutting income taxes",
+    "Raising income taxes",
+    "Cutting government spending",
+    "Cutting transfer payments"
+   ],
+   "correct": 0,
+   "why": "Lower taxes raise disposable income and consumption, so AD shifts right.",
+   "review": "fiscal-policy"
+  },
+  {
+   "q": "In the ample-reserves framework, how does a central bank lower its policy rate?",
+   "options": [
+    "It lowers the interest rate it pays on reserve balances",
+    "It sells government bonds",
+    "It raises the reserve requirement",
+    "It cuts income taxes"
+   ],
+   "correct": 0,
+   "why": "With ample reserves the policy rate follows the administered rates, such as the interest rate on reserve balances.",
+   "review": "monetary-policy"
+  }
+ ],
+ "figure": {
+  "figure": "policy-short-run-chains",
+  "caption": "The monetary chain (ample reserves) and the fiscal chain, link by link."
+ },
+ "chain": [
+  {
+   "cause": "The central bank lowers the interest rate on reserve balances (ample reserves)",
+   "effect": "the policy rate falls"
+  },
+  {
+   "cause": "The policy rate falls",
+   "effect": "loan rates and other interest rates fall"
+  },
+  {
+   "cause": "Borrowing is cheaper",
+   "effect": "investment and interest-sensitive consumption rise"
+  },
+  {
+   "cause": "Spending rises at each price level",
+   "effect": "AD shifts right"
+  },
+  {
+   "cause": "AD shifts right",
+   "effect": "real GDP and the price level rise, and unemployment falls"
+  }
+ ],
+ "ideas": [
+  "A recessionary gap calls for <b>expansionary</b> policy: more government spending, lower taxes, or a lower policy rate. An inflationary gap calls for <b>contractionary</b> policy, every arrow reversed.",
+  "Name every link: tool, interest rate, interest-sensitive spending, AD, then real output, the price level and unemployment. For a tax change the first links are disposable income and consumption.",
+  "State the framework. <b>Ample reserves</b>: change the administered rates (interest on reserve balances); show it on the reserve market graph. <b>Limited reserves</b>: buy or sell bonds; show it on the money market graph.",
+  "The <b>policy mix</b>: two policies pushing AD the same way give a clear AD effect, but expansionary fiscal policy pushes interest rates up while expansionary monetary policy pulls them down. Policies pushing opposite ways make the AD effect indeterminate."
+ ],
+ "misconception": {
+  "wrong": "A lower policy rate raises AD directly.",
+  "right": "The policy rate reaches AD only through spending: lower interest rates make borrowing cheaper, so investment and interest-sensitive consumption rise, and that extra spending shifts AD right. Skipping the spending link is a common way to lose the point."
+ },
+ "check": [
+  "mac-policy-short-run-1",
+  "mac-policy-short-run-2",
+  "mac-policy-short-run-3",
+  "mac-policy-short-run-5",
+  "mac-policy-short-run-14",
+  "mac-policy-short-run-16"
+ ],
+ "summary": "In the short run, fiscal and monetary policy both work by shifting AD. Expansionary policy (more spending, lower taxes, a lower policy rate) closes a recessionary gap; contractionary policy closes an inflationary one. Each explanation names every link, states the reserves framework and its tool, and treats a policy mix carefully: when one variable is pushed two ways, its change is indeterminate."
+}

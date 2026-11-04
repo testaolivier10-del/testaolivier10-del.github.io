@@ -1,0 +1,8 @@
+{
+ "money": {
+  "def": "Anything widely accepted in payment for goods and services. Its three functions are a medium of exchange, a unit of account and a store of value."
+ },
+ "money-supply-measures": {
+  "def": "M1 is the most spendable money: currency held by the public, checkable deposits and other deposits that can be withdrawn at once. M2 is M1 plus small time deposits and retail money market funds."
+ }
+}

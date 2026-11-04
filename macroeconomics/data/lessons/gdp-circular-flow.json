@@ -1,0 +1,70 @@
+{
+ "topic": "gdp-circular-flow",
+ "hook": "A bakery sells a \\$300 batch of bread. The flour in it cost \\$120 and the wheat in the flour cost \\$50. How much did the economy produce: \\$300 or \\$470? A country adds up millions of sales like these to get one number for its output, and getting it right means knowing what to count, what to leave out, and why one person's spending is always another person's income.",
+ "prereq": [
+  {
+   "q": "Which of these is a factor of production?",
+   "options": [
+    "Labor",
+    "Money in a savings account",
+    "A share of stock",
+    "A finished bicycle"
+   ],
+   "correct": 0,
+   "why": "The factors of production are land, labor, capital and entrepreneurship. Households own them and sell their services to firms.",
+   "review": "scarcity"
+  },
+  {
+   "q": "In a market, the price buyers pay times the quantity sold is",
+   "options": [
+    "the total spending on that good",
+    "the shortage at that price",
+    "the opportunity cost of the good",
+    "the quantity demanded"
+   ],
+   "correct": 0,
+   "why": "Price times quantity is total spending, which is also the sellers' revenue. GDP adds this up for final goods and services.",
+   "review": "market-equilibrium"
+  }
+ ],
+ "figure": {
+  "figure": "gdp-circular-flow-diagram",
+  "caption": "Households sell factors to firms and buy their output; every dollar of spending on output returns to households as income."
+ },
+ "chain": [
+  {
+   "cause": "Households spend on goods and services in the product market",
+   "effect": "firms receive that spending as revenue"
+  },
+  {
+   "cause": "Firms receive revenue",
+   "effect": "they pay wages, rent, interest and profit to households in the factor market"
+  },
+  {
+   "cause": "Households receive factor income",
+   "effect": "they spend it again, so total spending on final output equals total income"
+  },
+  {
+   "cause": "GDP adds up spending on final goods only",
+   "effect": "intermediate goods, used goods, financial trades and transfer payments are left out"
+  }
+ ],
+ "ideas": [
+  "<b>GDP</b> is the market value of all <b>final goods</b> and services produced within a country in a year.",
+  "The <b>expenditure approach</b>: $GDP = C + I + G + (X - M)$. Imports are subtracted because they are already inside C, I and G but were made abroad.",
+  "In GDP, <b>investment</b> means new capital, new homes and added inventory, not buying stocks.",
+  "Left out: <b>intermediate goods</b> (double counting), used goods, stocks and bonds, and <b>transfer payments</b>. Counting each stage's <b>value added</b> gives the same total as counting final goods."
+ ],
+ "misconception": {
+  "wrong": "Adding up every sale in the economy, including the flour and the wheat, gives GDP.",
+  "right": "Only final goods count. The bread's price already includes the flour and wheat, so adding them counts the same production two or three times."
+ },
+ "check": [
+  "mac-gdp-circular-flow-1",
+  "mac-gdp-circular-flow-2",
+  "mac-gdp-circular-flow-5",
+  "mac-gdp-circular-flow-11",
+  "mac-gdp-circular-flow-12"
+ ],
+ "summary": "The circular flow shows households selling factors of production to firms and buying their output, so spending on final goods equals income. GDP is the market value of final goods and services produced within a country in a year, measured by $C + I + G + (X - M)$. Intermediate goods, used goods, financial trades and transfer payments are left out."
+}

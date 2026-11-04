@@ -1,0 +1,72 @@
+{
+ "topic": "adas-short-run-changes",
+ "hook": "In some years, prices rise and jobs are plentiful at the same time. In others, prices rise while factories lay people off, the painful mix called stagflation. Both are inflation, but they come from opposite sides of the economy. Knowing which curve moved tells you what happens to output and jobs too.",
+ "prereq": [
+  {
+   "q": "Which change shifts SRAS to the left?",
+   "options": [
+    "A rise in input prices",
+    "A rise in consumer spending",
+    "A fall in the price level",
+    "A rise in productivity"
+   ],
+   "correct": 0,
+   "why": "Higher input prices raise costs at every price level: SRAS shifts left.",
+   "review": "sras"
+  },
+  {
+   "q": "Where is short-run equilibrium in the AD-AS model?",
+   "options": [
+    "Where AD crosses SRAS",
+    "Where AD crosses LRAS",
+    "Where SRAS crosses LRAS",
+    "At full-employment output"
+   ],
+   "correct": 0,
+   "why": "Short-run equilibrium is where planned spending (AD) equals output supplied (SRAS).",
+   "review": "adas-equilibrium"
+  }
+ ],
+ "figure": {
+  "figure": "adas-short-run-changes-shocks",
+  "caption": "Left: AD shifts right, raising the price level and real GDP (demand-pull). Right: SRAS shifts left, raising the price level and lowering real GDP (cost-push)."
+ },
+ "chain": [
+  {
+   "cause": "Spending rises at every price level (a positive demand shock)",
+   "effect": "AD shifts right"
+  },
+  {
+   "cause": "AD shifts right along SRAS",
+   "effect": "the price level and real GDP rise; unemployment falls (demand-pull inflation)"
+  },
+  {
+   "cause": "Input costs rise across the economy (a negative supply shock)",
+   "effect": "SRAS shifts left"
+  },
+  {
+   "cause": "SRAS shifts left along AD",
+   "effect": "the price level rises, real GDP falls and unemployment rises (cost-push inflation)"
+  }
+ ],
+ "ideas": [
+  "A <b>demand shock</b> shifts AD: positive (right) raises the price level and real GDP; negative (left) lowers both.",
+  "A <b>supply shock</b> shifts SRAS: negative (left) raises the price level and lowers real GDP; positive (right) does the reverse.",
+  "<b>Demand-pull inflation</b>: AD right. <b>Cost-push inflation</b>: SRAS left, with higher unemployment too (<b>stagflation</b>).",
+  "In the short run, unemployment moves opposite to real GDP.",
+  "When AD and SRAS both shift, one outcome is <b>indeterminate</b>: say which, and why."
+ ],
+ "misconception": {
+  "wrong": "Any rise in the price level means aggregate demand rose, so output must have risen too.",
+  "right": "A leftward SRAS shift also raises the price level, but output falls. Check what happened to output before naming the cause."
+ },
+ "check": [
+  "mac-adas-short-run-changes-5",
+  "mac-adas-short-run-changes-6",
+  "mac-adas-short-run-changes-7",
+  "mac-adas-short-run-changes-11",
+  "mac-adas-short-run-changes-13",
+  "mac-adas-short-run-changes-15"
+ ],
+ "summary": "In the short run, a shift of AD moves the price level and real GDP in the same direction (demand-pull inflation when AD rises), while a shift of SRAS moves them in opposite directions (cost-push inflation and stagflation when SRAS falls). Unemployment moves opposite to output. When both curves shift, one of the two outcomes is indeterminate."
+}

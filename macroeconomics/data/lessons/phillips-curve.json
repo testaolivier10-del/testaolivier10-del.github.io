@@ -1,0 +1,87 @@
+{
+ "topic": "phillips-curve",
+ "hook": "In the 1960s, years when jobs were easy to find also tended to be years when prices rose fast. Then in the 1970s, after oil prices jumped, many countries had high inflation and high unemployment at the same time. The Phillips curves explain both: a short-run trade-off that holds while expectations stay put, and a long run with no trade-off at all.",
+ "prereq": [
+  {
+   "q": "AD shifts right while SRAS stays put. What happens in the short run?",
+   "options": [
+    "Real GDP and the price level rise",
+    "Real GDP falls and the price level rises",
+    "Real GDP rises and the price level falls",
+    "Both fall"
+   ],
+   "correct": 0,
+   "why": "A rightward AD shift along an upward-sloping SRAS raises both output and the price level.",
+   "review": "adas-short-run-changes"
+  },
+  {
+   "q": "What is the natural rate of unemployment made of?",
+   "options": [
+    "Frictional plus structural unemployment",
+    "Cyclical unemployment alone",
+    "Frictional plus cyclical unemployment",
+    "Discouraged workers plus the unemployed"
+   ],
+   "correct": 0,
+   "why": "The natural rate is frictional plus structural; cyclical unemployment is zero at full employment.",
+   "review": "unemployment"
+  },
+  {
+   "q": "In a recessionary gap with no policy action, what moves the economy back to full employment?",
+   "options": [
+    "Nominal wages fall, so SRAS shifts right",
+    "Nominal wages rise, so SRAS shifts left",
+    "LRAS shifts left",
+    "AD shifts right on its own"
+   ],
+   "correct": 0,
+   "why": "High unemployment pushes nominal wages and input prices down, shifting SRAS right.",
+   "review": "long-run-self-adjustment"
+  }
+ ],
+ "figure": {
+  "figure": "phillips-curve-adas-link",
+  "caption": "A rise in AD on the AD-AS graph is a movement up and to the left along the SRPC."
+ },
+ "chain": [
+  {
+   "cause": "AD shifts right",
+   "effect": "real output rises and the price level rises faster"
+  },
+  {
+   "cause": "Output rises",
+   "effect": "unemployment falls below the natural rate"
+  },
+  {
+   "cause": "Unemployment falls while inflation rises",
+   "effect": "the economy moves up and to the left along the SRPC"
+  },
+  {
+   "cause": "Inflation stays above what people expected",
+   "effect": "expected inflation rises and nominal wages rise"
+  },
+  {
+   "cause": "Expected inflation rises",
+   "effect": "the SRPC shifts right, and unemployment returns to the natural rate at a higher inflation rate"
+  }
+ ],
+ "ideas": [
+  "Axes: <b>Inflation rate</b> on the vertical axis, <b>Unemployment rate</b> on the horizontal one. SRPC slopes down; LRPC is vertical at the natural rate of unemployment.",
+  "A change in <b>AD</b> is a movement <b>along</b> the SRPC: AD right means lower unemployment and higher inflation; AD left the reverse.",
+  "The SRPC <b>shifts</b> when SRAS shifts or expected inflation changes. A negative supply shock or higher expected inflation shifts it right; a positive supply shock or lower expected inflation shifts it left.",
+  "Where SRPC crosses LRPC, actual inflation equals expected inflation. LRPC matches LRAS: a change in the natural rate shifts LRPC."
+ ],
+ "misconception": {
+  "wrong": "A rise in AD shifts the short-run Phillips curve.",
+  "right": "A rise in AD moves the economy along the SRPC, to lower unemployment and higher inflation. The SRPC itself shifts only when SRAS shifts (a supply shock) or when expected inflation changes."
+ },
+ "check": [
+  "mac-phillips-curve-2",
+  "mac-phillips-curve-3",
+  "mac-phillips-curve-5",
+  "mac-phillips-curve-6",
+  "mac-phillips-curve-7",
+  "mac-phillips-curve-16"
+ ],
+ "summary": "The short-run Phillips curve slopes down: changes in AD trade unemployment for inflation along it. Supply shocks and changes in expected inflation shift it. The long-run Phillips curve is vertical at the natural rate of unemployment, matching LRAS, so in the long run unemployment returns to the natural rate and only inflation depends on what people expect."
+}

@@ -1,0 +1,845 @@
+{
+ "stimuli": {
+  "price-indices-inflation-s1": {
+   "kind": "data",
+   "title": "A three-good market basket in Country X",
+   "invented": true,
+   "table": {
+    "caption": "Prices in Country X; the basket is 10 pizzas, 20 gallons of gas and 5 movie tickets; 2024 is the base year (invented data for practice)",
+    "cols": [
+     "Good (quantity in the basket)",
+     "2024 price",
+     "2025 price",
+     "2026 price"
+    ],
+    "rows": [
+     [
+      "Pizza (10)",
+      "\\$8.00",
+      "\\$9.00",
+      "\\$10.00"
+     ],
+     [
+      "Gas (20 gallons)",
+      "\\$3.00",
+      "\\$3.50",
+      "\\$3.60"
+     ],
+     [
+      "Movie ticket (5)",
+      "\\$12.00",
+      "\\$12.00",
+      "\\$14.00"
+     ]
+    ]
+   }
+  },
+  "price-indices-inflation-s2": {
+   "kind": "text",
+   "title": "Beef, chicken and a fixed basket",
+   "text": "<p>In Country Y the consumer price index basket includes 10 pounds of beef and 10 pounds of chicken each month. This year a disease among cattle doubles the price of beef while the price of chicken stays the same. Most families respond by buying much less beef and more chicken. The statistics office keeps the basket the same for the year.</p>"
+  },
+  "price-indices-inflation-s3": {
+   "kind": "data",
+   "title": "Consumer price index in Country Z",
+   "invented": true,
+   "table": {
+    "caption": "Country Z consumer price index, Year 1 is the base year (invented data for practice)",
+    "cols": [
+     "Year",
+     "CPI"
+    ],
+    "rows": [
+     [
+      "1",
+      "100"
+     ],
+     [
+      "2",
+      "104"
+     ],
+     [
+      "3",
+      "107"
+     ],
+     [
+      "4",
+      "106"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-price-indices-inflation-1",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What does the market basket cost in 2025, in dollars?",
+   "stimulus": "price-indices-inflation-s1",
+   "why": {
+    "correct": "Multiply each price by its quantity and add: $10 \\times 9 + 20 \\times 3.50 + 5 \\times 12 = 90 + 70 + 60 = 220$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        10,
+        9
+       ]
+      },
+      {
+       "fn": "mul",
+       "args": [
+        20,
+        3.5
+       ]
+      },
+      {
+       "fn": "mul",
+       "args": [
+        5,
+        12
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 24.5,
+      "why": "You added the three prices. The basket holds 10 pizzas, 20 gallons and 5 tickets: multiply each price by its quantity first."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-2",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "With 2024 as the base year, what is the consumer price index for 2025?",
+   "stimulus": "price-indices-inflation-s1",
+   "why": {
+    "correct": "The basket cost $200$ in 2024 and $220$ in 2025. $CPI = \\frac{220}{200} \\times 100 = 110$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "cpi",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          10,
+          9
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          20,
+          3.5
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          5,
+          12
+         ]
+        }
+       ]
+      },
+      {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          10,
+          8
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          20,
+          3
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          5,
+          12
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            10,
+            9
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            20,
+            3.5
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            5,
+            12
+           ]
+          }
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            10,
+            8
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            20,
+            3
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            5,
+            12
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      "why": "You divided but did not multiply by 100. An index is the ratio times 100, so the base year is 100."
+     },
+     {
+      "from": {
+       "fn": "cpi",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            10,
+            8
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            20,
+            3
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            5,
+            12
+           ]
+          }
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            10,
+            9
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            20,
+            3.5
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            5,
+            12
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      "why": "The fraction is upside down. Put the year you are measuring on top: cost in 2025 over cost in the base year."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-3",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is the inflation rate from 2025 to 2026, measured by this index?",
+   "stimulus": "price-indices-inflation-s1",
+   "why": {
+    "correct": "The basket costs $242$ in 2026, so the CPI is $121$. Inflation $= \\frac{121 - 110}{110} \\times 100 = 10\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "inflation",
+     "args": [
+      {
+       "fn": "cpi",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            10,
+            9
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            20,
+            3.5
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            5,
+            12
+           ]
+          }
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            10,
+            8
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            20,
+            3
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            5,
+            12
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "fn": "cpi",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            10,
+            10
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            20,
+            3.6
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            5,
+            14
+           ]
+          }
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "mul",
+           "args": [
+            10,
+            8
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            20,
+            3
+           ]
+          },
+          {
+           "fn": "mul",
+           "args": [
+            5,
+            12
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 21,
+      "why": "That is the rise since the base year (121 - 100). The inflation rate for one year compares 2026 with 2025."
+     },
+     {
+      "value": 11,
+      "why": "That is the rise in index points. Divide the change by the starting index: $\\frac{11}{110} \\times 100$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-4",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "The index rose 10 points from 2024 to 2025 and 11 points from 2025 to 2026. What does that say about inflation in the two years?",
+   "stimulus": "price-indices-inflation-s1",
+   "options": [
+    "Inflation was 10% in both years",
+    "Inflation was higher from 2025 to 2026",
+    "Inflation was lower from 2025 to 2026",
+    "Inflation was 10% and then 21%"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The inflation rate is a percent change, so divide the change in the index by the starting value of the index.",
+    "options": [
+     "Right: $\\frac{10}{100} = 10\\%$ and $\\frac{11}{110} = 10\\%$. The same percent rise adds more points to a larger index.",
+     "More points is not a higher rate: 11 points on a base of 110 is the same 10%.",
+     "The rate was the same; the larger starting index is why the points rose more.",
+     "21 is the rise from the base year to 2026, over two years."
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-5",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "How does the fixed basket affect the CPI's measure of how much living costs rose in Country Y?",
+   "stimulus": "price-indices-inflation-s2",
+   "options": [
+    "It shows no rise, because chicken prices did not change",
+    "It overstates the rise, because families switched to cheaper chicken",
+    "It understates the rise, because beef doubled in price",
+    "It measures the rise exactly, because both meats stay in the basket"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Substitution bias: when a price rises, people buy less of it and more of a substitute. A fixed basket misses the switch and overstates the rise in the cost of living.",
+    "options": [
+     "Beef is in the basket, and its price doubled, so the index rises.",
+     "Right: the CPI prices the old amount of beef, but families now buy less of it, so their actual costs rose less.",
+     "The doubling is fully counted at the old quantity of beef; the error goes the other way.",
+     "Keeping quantities fixed ignores how families changed what they buy."
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-6",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is the name for this problem with the consumer price index?",
+   "stimulus": "price-indices-inflation-s2",
+   "options": [
+    "Deflation",
+    "The underground economy",
+    "Substitution bias",
+    "Double counting"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Substitution bias is one reason the CPI can overstate inflation; new goods and quality improvements are others.",
+    "options": [
+     "Deflation is a fall in prices in general; here prices rose.",
+     "That is unreported market activity, a limitation of GDP.",
+     "Right: a fixed basket ignores that consumers substitute away from goods whose prices rise.",
+     "Double counting is a GDP measurement problem with intermediate goods."
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-7",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Besides substitution, which change would also make a fixed-basket CPI overstate the rise in the cost of living?",
+   "stimulus": "price-indices-inflation-s2",
+   "options": [
+    "A good in the basket costs 5% more with no change in quality",
+    "The statistics office surveys more stores",
+    "A good outside the basket rises in price",
+    "A good in the basket costs 5% more but is now much better made"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Quality improvements and new goods, like substitution, make the CPI overstate how much more it costs to live as well as before.",
+    "options": [
+     "That is a true price rise; the CPI measures it correctly.",
+     "Surveying more stores makes prices more accurate; it does not bias them up.",
+     "A good outside the basket does not move the index at all.",
+     "Right: part of the higher price pays for higher quality, but the CPI records it all as a price rise."
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-8",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In which year did Country Z have disinflation?",
+   "stimulus": "price-indices-inflation-s3",
+   "options": [
+    "Year 3",
+    "Year 4",
+    "Year 2",
+    "Year 1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Disinflation is a fall in the inflation rate while prices keep rising. Deflation is a fall in prices themselves.",
+    "options": [
+     "Right: inflation fell from 4% to about 2.9%, but prices still rose, so that is disinflation.",
+     "The CPI fell in Year 4, which is deflation, not disinflation.",
+     "Year 2 is the first year with inflation (4%); there is no earlier rate for it to fall from.",
+     "Year 1 is the base year, so there is no earlier index to compare it with."
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-9",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In which year did Country Z have deflation?",
+   "stimulus": "price-indices-inflation-s3",
+   "options": [
+    "No year, because the CPI stayed above 100",
+    "Year 4",
+    "Year 3",
+    "Year 2"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Deflation means the index itself falls, so the inflation rate is negative.",
+    "options": [
+     "Deflation is a fall in the index from one year to the next, whatever its level.",
+     "Right: the CPI fell from 107 to 106, so prices fell on average.",
+     "The CPI rose in Year 3 (from 104 to 107); only the rate of increase slowed.",
+     "The CPI rose from 100 to 104 in Year 2, which is inflation."
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-10",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What was the inflation rate in Year 2?",
+   "stimulus": "price-indices-inflation-s3",
+   "why": {
+    "correct": "$\\frac{104 - 100}{100} \\times 100 = 4\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "inflation",
+     "args": [
+      100,
+      104
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 104,
+      "why": "104 is the index itself. Inflation is the percent change in the index: $\\frac{104 - 100}{100} \\times 100$."
+     },
+     {
+      "value": 0.04,
+      "why": "You found the fraction but did not multiply by 100 to make it a percent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-11",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Rosa earns a nominal wage of $\\$30$ an hour. The CPI is 120. What is her real wage in base-year dollars per hour?",
+   "why": {
+    "correct": "Real value $= \\frac{\\text{nominal value}}{\\text{price index}} \\times 100 = \\frac{30}{120} \\times 100 = 25$ base-year dollars an hour."
+   },
+   "numeric": {
+    "from": {
+     "fn": "realValue",
+     "args": [
+      30,
+      120
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "nominalValue",
+       "args": [
+        30,
+        120
+       ]
+      },
+      "why": "You multiplied by the index. Prices are higher than in the base year, so the wage buys less: divide by the index, then multiply by 100."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        30,
+        120
+       ]
+      },
+      "why": "You divided by the index but did not multiply by 100. The index is in units where the base year is 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-12",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "A job paid $\\$40{,}000$ a year in the base year. The CPI is now 125. What nominal salary would buy the same goods today, in dollars?",
+   "why": {
+    "correct": "Nominal value $= \\text{real value} \\times \\frac{\\text{price index}}{100} = 40{,}000 \\times 1.25 = 50{,}000$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "nominalValue",
+     "args": [
+      40000,
+      125
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "realValue",
+       "args": [
+        40000,
+        125
+       ]
+      },
+      "why": "You divided by the index. To keep up with prices that are 25% higher, the salary must be larger: multiply by $\\frac{125}{100}$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-13",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Over a year, Sam's nominal wage rises 3% while the CPI rises 5%. What happens to his real wage?",
+   "options": [
+    "It rises by about 8%",
+    "It stays the same, because he got a raise",
+    "It falls by about 2%",
+    "It rises by about 3%"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Percent change in a real value is about the percent change in the nominal value minus the inflation rate: $3 - 5 = -2\\%$.",
+    "options": [
+     "Price increases lower the real wage; they are not added to the raise.",
+     "A raise smaller than inflation still leaves him able to buy less.",
+     "Right: prices rose faster than his pay, so each hour of work buys about 2% less.",
+     "That is his nominal wage; the real wage also accounts for the 5% rise in prices."
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-14",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A country's CPI is 130. What does that number mean?",
+   "options": [
+    "Prices rose 130% since the base year",
+    "The inflation rate this year is 130%",
+    "The basket costs 130 dollars",
+    "The basket costs 30% more than it did in the base year"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A price index compares a cost with the base year, where the index is 100. The rise since the base year is the index minus 100, in percent.",
+    "options": [
+     "An index of 130 is 30% above 100, not 130% above it.",
+     "The index level is not the inflation rate; the rate compares this year's index with last year's.",
+     "The index is a ratio times 100, not a dollar amount.",
+     "Right: the base year is 100, so 130 is 30% higher."
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-15",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is the value of a price index in its base year?",
+   "options": [
+    "100",
+    "0",
+    "1",
+    "The inflation rate in that year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Every index is scaled so the base year equals 100, which makes other years easy to read as percents of it.",
+    "options": [
+     "Right: the base-year cost divided by itself is 1, times 100 is 100.",
+     "The index measures cost relative to the base year; a value of 0 would mean the basket was free.",
+     "The ratio is 1, but an index multiplies it by 100.",
+     "The base year sets the reference point; its index is 100 whatever inflation was."
+    ]
+   }
+  },
+  {
+   "id": "mac-price-indices-inflation-16",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which statements about inflation are correct? Select all that apply.",
+   "options": [
+    "Disinflation means prices are falling",
+    "Inflation is a rise in prices in general across the economy",
+    "The inflation rate is the percent change in a price index",
+    "A rise in the price of one good is inflation"
+   ],
+   "correct": [
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Inflation is a general rise in prices; disinflation is a slower rise; deflation is a fall in prices in general.",
+    "options": [
+     "Disinflation means inflation is slowing; prices are still rising.",
+     "Right: it is a general rise, measured by a price index, not a rise in one price.",
+     "Right: $\\frac{\\text{new} - \\text{old}}{\\text{old}} \\times 100$.",
+     "One price can rise while others fall; inflation is a rise in prices in general."
+    ]
+   }
+  }
+ ]
+}

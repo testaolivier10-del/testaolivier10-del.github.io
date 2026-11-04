@@ -30,7 +30,7 @@ export const THUMB_WIDTHS = [480, 960];
 export const COURSE_DIRS = {
   nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem',
   apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science',
-  appsych: 'psychology',
+  appsych: 'psychology', apmacro: 'macroeconomics',
 };
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -111,7 +111,7 @@ export function displayTitle(v) {
    not teach, so a chapter called "Next: the elements of life" is not a use
    of a later topic's term. NREMT and ochem have no such check. */
 const NAV_REF = { anp: 'anp-nav-ref', apbio: 'bio-nav-ref', apchem: 'chem-nav-ref', apphys: 'phys-nav-ref',
-  apcalc: 'calc-nav-ref', apcalcbc: 'calc-nav-ref', apstat: 'stat-nav-ref', apenv: 'env-nav-ref', appsych: 'psy-nav-ref', apprecalc: 'pcalc-nav-ref' };
+  apcalc: 'calc-nav-ref', apcalcbc: 'calc-nav-ref', apstat: 'stat-nav-ref', apenv: 'env-nav-ref', appsych: 'psy-nav-ref', apprecalc: 'pcalc-nav-ref', apmacro: 'mac-nav-ref' };
 
 export function videoBlock(v, { compact = false, kind = 'notes' } = {}) {
   v = { ...v, title: displayTitle(v) };
@@ -216,9 +216,11 @@ export function readerCards(rel, videos = loadVideos()) {
       } else {
         at = `section[id="${m[1]}"] > .bk-sec-head, section[id="${m[1]}"] > .tb-section-head`;
       }
-      const html = videoBlock(v, { kind: 'reader' })
+      let html = videoBlock(v, { kind: 'reader' })
         .replace(START + '\n', '').replace('\n' + END + '\n', '')
         .replace(/\n  <link rel="stylesheet"[^>]*>/, '').replace(/\n  <script[^>]*><\/script>/, '');
+      // A video shown in several sections of one reader needs a distinct heading id per card.
+      if (out.some((c) => c.id === v.id)) html = html.split(`lpv-h-${v.id}`).join(`lpv-h-${v.id}-${m[1]}`);
       out.push({ id: v.id, at, html });
     }
   }

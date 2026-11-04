@@ -1,0 +1,118 @@
+{
+ "id": "frq-money-multiplier-short",
+ "type": "short",
+ "points": 5,
+ "title": "A bank balance sheet: required and excess reserves, lending and the money supply",
+ "units": [
+  "unit-4"
+ ],
+ "topics": [
+  "banking-money-supply"
+ ],
+ "practices": [
+  "1.C",
+  "3.C",
+  "2.A"
+ ],
+ "scenario": "Harbor Bank is a commercial bank in a banking system with limited reserves, where the reserve requirement limits lending: banks lend all of their excess reserves, and borrowers keep none of their loans as cash. Its balance sheet is shown below.",
+ "stimulus": {
+  "title": "Balance sheet of Harbor Bank",
+  "invented": true,
+  "table": {
+   "caption": "Balance sheet of the invented Harbor Bank, in dollars. The required reserve ratio is 0.2, and Harbor Bank has no other liabilities (invented data).",
+   "cols": [
+    "Assets",
+    "Dollars",
+    "Liabilities",
+    "Dollars"
+   ],
+   "rows": [
+    [
+     "Reserves",
+     "150,000",
+     "Checkable deposits",
+     "500,000"
+    ],
+    [
+     "Loans",
+     "350,000",
+     "",
+     ""
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "points": 1,
+   "prompt": "<b>Calculate</b> Harbor Bank's required reserves. Show your work.",
+   "rubric": [
+    {
+     "point": "\\$500,000 x 0.2 = \\$100,000, with the work shown",
+     "accept": [
+      "100,000"
+     ]
+    }
+   ],
+   "sample": "Required reserves = checkable deposits x required reserve ratio = \\$500,000 x 0.2 = \\$100,000."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>Calculate</b> Harbor Bank's excess reserves. Show your work.",
+   "rubric": [
+    {
+     "point": "\\$150,000 - \\$100,000 = \\$50,000, with the work shown (or consistent with part A)",
+     "accept": [
+      "50,000"
+     ]
+    }
+   ],
+   "sample": "Excess reserves = total reserves - required reserves = \\$150,000 - \\$100,000 = \\$50,000."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Identify</b> the maximum amount Harbor Bank can lend right now.",
+   "rubric": [
+    {
+     "point": "\\$50,000, its excess reserves (or consistent with part B)",
+     "accept": [
+      "equal to its excess reserves"
+     ]
+    }
+   ],
+   "sample": "Harbor Bank can lend at most its excess reserves, \\$50,000."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "If Harbor Bank lends the amount in part C, <b>calculate</b> the maximum change in the money supply for the whole banking system. Show your work.",
+   "rubric": [
+    {
+     "point": "An increase of \\$50,000 x (1 / 0.2) = \\$250,000, with the money multiplier shown (or consistent with part C)",
+     "accept": [
+      "250,000",
+      "50,000 x 5"
+     ]
+    }
+   ],
+   "sample": "Money multiplier = 1 / 0.2 = 5. Maximum change in the money supply = \\$50,000 x 5 = \\$250,000 increase."
+  },
+  {
+   "label": "E",
+   "points": 1,
+   "prompt": "Separately, a customer deposits \\$10,000 of cash into a checking account at Harbor Bank. <b>Explain</b> what happens to the money supply (M1) at the moment of the deposit.",
+   "rubric": [
+    {
+     "point": "States that M1 does not change, because currency held by the public falls by the same \\$10,000 that checkable deposits rise",
+     "accept": [
+      "no change because cash turns into a deposit"
+     ]
+    }
+   ],
+   "sample": "M1 does not change at the moment of the deposit. Currency held by the public falls by \\$10,000 and checkable deposits rise by \\$10,000, and both are part of M1. New money is created only later, if the bank lends its new excess reserves."
+  }
+ ]
+}

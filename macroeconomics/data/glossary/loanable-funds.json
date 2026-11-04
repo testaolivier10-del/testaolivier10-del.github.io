@@ -1,0 +1,8 @@
+{
+ "loanable-funds": {
+  "def": "The market where savers supply funds and borrowers demand them. Its graph has the real interest rate on the vertical axis and the quantity of loanable funds on the horizontal axis."
+ },
+ "national-saving": {
+  "def": "Private saving (by households and firms) plus public saving (tax revenue minus government spending). It is the main source of the supply of loanable funds."
+ }
+}

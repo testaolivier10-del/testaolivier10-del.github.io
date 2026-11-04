@@ -1,0 +1,589 @@
+{
+ "stimuli": {
+  "deficits-debt-s1": {
+   "kind": "data",
+   "title": "The budget of Brenna (invented), billions of dollars",
+   "invented": true,
+   "table": {
+    "caption": "Brenna, an invented country, owed 1,200 billion dollars at the start of Year 1. Outlays include spending, transfer payments and interest on the debt.",
+    "cols": [
+     "Year",
+     "Tax revenue",
+     "Government outlays"
+    ],
+    "rows": [
+     [
+      "1",
+      "760",
+      "850"
+     ],
+     [
+      "2",
+      "800",
+      "860"
+     ],
+     [
+      "3",
+      "880",
+      "850"
+     ],
+     [
+      "4",
+      "790",
+      "920"
+     ]
+    ]
+   }
+  },
+  "deficits-debt-s2": {
+   "kind": "text",
+   "title": "A headline in Tarvia (invented country)",
+   "text": "<p>Last year the government of Tarvia, an invented country, ran a budget deficit of 80 billion dollars. This year its deficit is 50 billion dollars. A news headline reads: \"Tarvia cuts its debt.\"</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-deficits-debt-1",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is a government's budget deficit?",
+   "options": [
+    "The total amount the government owes from past borrowing",
+    "The amount by which its outlays exceed its tax revenue in one year",
+    "The amount by which imports exceed exports in one year",
+    "The amount by which the government's tax revenue exceeds its outlays in one year"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Deficit = outlays - tax revenue, measured over one year. The debt is the running total.",
+    "options": [
+     "That is the national debt, a stock built up from past deficits.",
+     "Right: a deficit is a yearly flow, outlays (spending, transfers and interest) minus revenue.",
+     "That is a trade gap between a country and the rest of the world, not the government budget.",
+     "Revenue above outlays is a budget surplus."
+    ]
+   }
+  },
+  {
+   "id": "mac-deficits-debt-2",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "What is Brenna's budget balance in Year 2, in billions of dollars? Use a negative number for a deficit.",
+   "why": {
+    "correct": "Budget balance $=$ revenue $-$ outlays $= 800 - 860 = -60$: a deficit of 60 billion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "budgetBalance",
+     "args": [
+      800,
+      860
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 60,
+      "why": "The size is right but the sign is not: outlays are larger than revenue, so the balance is negative, a deficit of 60."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        800,
+        860
+       ]
+      },
+      "why": "You added revenue and outlays. The balance is revenue minus outlays: 800 - 860."
+     }
+    ]
+   },
+   "stimulus": "deficits-debt-s1"
+  },
+  {
+   "id": "mac-deficits-debt-3",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "q": "How much does Brenna owe at the end of Year 3, in billions of dollars?",
+   "why": {
+    "correct": "Deficits of 90 and 60 add to the debt and the surplus of 30 reduces it: $1{,}200 + 90 + 60 - 30 = 1{,}320$ billion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      1200,
+      {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "budgetBalance",
+         "args": [
+          760,
+          850
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "budgetBalance",
+           "args": [
+            800,
+            860
+           ]
+          },
+          {
+           "fn": "budgetBalance",
+           "args": [
+            880,
+            850
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        1200,
+        {
+         "fn": "add",
+         "args": [
+          90,
+          {
+           "fn": "add",
+           "args": [
+            60,
+            30
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      "why": "You added the Year 3 surplus to the debt. A surplus pays some debt off: 1,200 + 90 + 60 - 30."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        1200,
+        {
+         "fn": "add",
+         "args": [
+          90,
+          60
+         ]
+        }
+       ]
+      },
+      "why": "You subtracted the deficits. Deficits are borrowed, so they add to the debt."
+     }
+    ]
+   },
+   "stimulus": "deficits-debt-s1"
+  },
+  {
+   "id": "mac-deficits-debt-4",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In which year did Brenna's national debt fall?",
+   "options": [
+    "Year 2",
+    "Year 4",
+    "Year 3",
+    "Year 1"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The debt falls only in a year with a surplus.",
+    "options": [
+     "The deficit was smaller than in Year 1, but a smaller deficit still adds to the debt.",
+     "Year 4 has the largest deficit, 130, so the debt rose the most.",
+     "Right: revenue (880) exceeded outlays (850), a surplus of 30 that pays down the debt.",
+     "Outlays exceeded revenue by 90, so the debt rose."
+    ]
+   },
+   "stimulus": "deficits-debt-s1"
+  },
+  {
+   "id": "mac-deficits-debt-5",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Brenna passed no new tax or spending law in Year 4, yet its deficit jumped to 130. What is the most likely reason?",
+   "options": [
+    "A recession cut tax revenue and raised transfer payments through automatic stabilizers",
+    "An economic boom raised tax revenue faster than outlays",
+    "The central bank raised the money supply, which raised outlays",
+    "A budget surplus in Year 3 raised the interest owed in Year 4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Automatic stabilizers make the deficit grow in recessions and shrink in expansions, with no new law.",
+    "options": [
+     "Right: falling incomes lower tax collections and more people qualify for unemployment benefits, so the deficit widens without any new law.",
+     "A boom raises revenue, which would shrink the deficit, not widen it.",
+     "Monetary policy does not set the government's outlays or tax revenue.",
+     "A surplus lowers the debt, which lowers interest owed."
+    ]
+   },
+   "stimulus": "deficits-debt-s1"
+  },
+  {
+   "id": "mac-deficits-debt-6",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Is the headline correct?",
+   "options": [
+    "Yes: a smaller deficit means the debt is now 30 billion dollars smaller",
+    "No: the deficit fell, but the 50 billion borrowed this year still adds to the debt",
+    "Yes: a deficit and a debt are two names for the same thing",
+    "No: a smaller deficit makes the debt rise faster than it did before"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Cutting the deficit slows the growth of the debt. Only a surplus shrinks it.",
+    "options": [
+     "The 30 billion is the drop in this year's borrowing, not repayment of debt.",
+     "Right: the debt rises by each year's deficit; it falls only with a surplus.",
+     "A deficit is one year's gap; the debt is the total owed from past years.",
+     "The debt still rises, but by less than last year (50 instead of 80)."
+    ]
+   },
+   "stimulus": "deficits-debt-s2"
+  },
+  {
+   "id": "mac-deficits-debt-7",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "How does Tarvia's government pay for its 50 billion dollar deficit?",
+   "options": [
+    "It borrows, by selling government bonds",
+    "It raises the reserve requirement for banks",
+    "It cuts transfer payments by 50 billion dollars",
+    "It records the deficit as an export to other countries"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Deficits are financed by borrowing; the bonds sold are the debt.",
+    "options": [
+     "Right: a government covers a deficit by borrowing from households, firms, banks and foreign lenders.",
+     "A reserve requirement is a central bank tool; it does not raise money for the government budget.",
+     "That would shrink the deficit, but it is a policy choice, not how an existing deficit is paid for.",
+     "A budget deficit is about the government's own revenue and outlays."
+    ]
+   },
+   "stimulus": "deficits-debt-s2"
+  },
+  {
+   "id": "mac-deficits-debt-8",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Tarvia wants to move toward a balanced budget. Which action does that, and what does it do to AD?",
+   "options": [
+    "Raising government spending, which shifts AD right",
+    "Cutting income taxes, which shifts AD left",
+    "Raising transfer payments, which shifts AD left",
+    "Raising income taxes, which shifts AD left"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Moves that shrink a deficit (higher taxes, lower spending) are contractionary fiscal policy.",
+    "options": [
+     "More spending widens the deficit.",
+     "A tax cut lowers revenue (wider deficit) and raises consumption (AD right).",
+     "More transfers raise outlays and disposable income: a wider deficit and AD right.",
+     "Right: more revenue shrinks the deficit, and lower disposable income lowers consumption, so AD shifts left."
+    ]
+   },
+   "stimulus": "deficits-debt-s2"
+  },
+  {
+   "id": "mac-deficits-debt-9",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A government spends 4.5 trillion dollars (including transfers and interest) and collects 3.9 trillion dollars in taxes this year. How large is its budget deficit, in trillions of dollars? Give the size as a positive number.",
+   "why": {
+    "correct": "Deficit $=$ outlays $-$ revenue $= 4.5 - 3.9 = 0.6$ trillion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "neg",
+     "args": [
+      {
+       "fn": "budgetBalance",
+       "args": [
+        3.9,
+        4.5
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        4.5,
+        3.9
+       ]
+      },
+      "why": "You added outlays and revenue. The deficit is the gap between them: 4.5 - 3.9."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-deficits-debt-10",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "During a recession, a legislature cuts taxes and raises spending to close the gap. What happens to the budget?",
+   "options": [
+    "The deficit shrinks, because the policy raises output",
+    "The national debt falls, because the economy recovers",
+    "The deficit grows (or a surplus shrinks)",
+    "Nothing changes, because the two policies cancel out"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Expansionary fiscal policy raises the deficit; contractionary fiscal policy lowers it.",
+    "options": [
+     "Higher output brings in some tax revenue, but the tax cuts and new spending widen the deficit.",
+     "The added borrowing adds to the debt.",
+     "Right: lower revenue and higher outlays widen the gap between them.",
+     "Both a tax cut and a spending rise widen the deficit; they do not cancel."
+    ]
+   }
+  },
+  {
+   "id": "mac-deficits-debt-11",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Which statement correctly compares a budget deficit with the national debt?",
+   "options": [
+    "A deficit is a flow over one year; the debt is a stock, the total owed at a point in time",
+    "A deficit is the total owed; the debt is the amount borrowed this year",
+    "A deficit is owed to foreigners; the debt is owed to citizens",
+    "A deficit is measured in percent; the debt in dollars"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Deficit or surplus: one year's budget gap (a flow). Debt: the accumulated total (a stock).",
+    "options": [
+     "Right: each year's deficit flows into the debt, like water into a tub.",
+     "That reverses the two terms.",
+     "Both deficits and debt can be financed at home or abroad; that is not the difference.",
+     "Both can be measured in dollars or as a percent of GDP."
+    ]
+   }
+  },
+  {
+   "id": "mac-deficits-debt-12",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Interest rates on new government bonds rise. With no change in tax law or programs, what happens to the deficit over the next few years?",
+   "options": [
+    "It shrinks, because higher rates bring the government more revenue",
+    "It grows, because interest on the debt is part of government outlays",
+    "It stays the same, because interest is not part of the budget",
+    "It disappears, because higher rates lower the price of existing bonds"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A larger debt or higher interest rates raise interest outlays, which add to the deficit.",
+    "options": [
+     "The government pays interest on its bonds; it does not collect it.",
+     "Right: as old bonds are replaced at higher rates, interest payments and so outlays rise.",
+     "Interest on the debt is counted in government outlays.",
+     "Lower prices of existing bonds do not change what the government owes in interest."
+    ]
+   }
+  },
+  {
+   "id": "mac-deficits-debt-13",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "Select every change that, by itself, makes a government's budget deficit larger.",
+   "options": [
+    "A recession that lowers income tax collections",
+    "A rise in unemployment benefits paid as more people lose jobs",
+    "A rise in tax rates on income",
+    "A cut in spending on government programs"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Anything that lowers revenue or raises outlays (spending, transfers, interest) widens a deficit.",
+    "options": [
+     "Right: lower revenue widens the deficit.",
+     "Right: higher transfer payments raise outlays.",
+     "Higher tax rates raise revenue and shrink the deficit.",
+     "Lower outlays shrink the deficit."
+    ]
+   }
+  },
+  {
+   "id": "mac-deficits-debt-14",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A government runs a balanced budget this year. What happens to the national debt?",
+   "options": [
+    "It falls to zero, because a balanced budget pays off what is owed",
+    "It rises by the amount of tax revenue collected",
+    "It falls by the amount of government spending",
+    "It stays about the same: no new borrowing, no repayment"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Deficit: debt rises. Balanced budget: debt about unchanged. Surplus: debt falls.",
+    "options": [
+     "A balanced budget only stops the debt from growing; past debt is still owed.",
+     "Taxes pay for outlays; they do not add to the debt.",
+     "Spending is covered by taxes this year; it does not repay debt.",
+     "Right: with revenue equal to outlays, the government neither adds to the debt nor pays it down."
+    ]
+   }
+  },
+  {
+   "id": "mac-deficits-debt-15",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Build the chain from a recession to a larger national debt.",
+   "why": {
+    "correct": "Lower incomes cut tax revenue and raise transfer payments, so the deficit widens, the government borrows more, and the debt grows."
+   },
+   "specific": {
+    "frame": "In a recession, incomes fall, so tax revenue ___ and transfer payments ___. The budget deficit ___, the government sells more ___, and the national debt ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "In a recession, incomes fall, so tax revenue falls and transfer payments rise. As a result the budget deficit grows, the government sells more bonds to borrow the difference, and the national debt rises.",
+    "slots": {
+     "change": {
+      "label": "Tax revenue",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lower incomes and profits mean less tax is collected."
+      }
+     },
+     "link": {
+      "label": "Transfer payments",
+      "options": [
+       "rise",
+       "fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More people qualify for unemployment benefits and other transfers in a recession."
+      }
+     },
+     "direction": {
+      "label": "The deficit",
+      "options": [
+       "grows",
+       "shrinks"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lower revenue and higher outlays widen the gap."
+      }
+     },
+     "tool": {
+      "label": "What the government sells",
+      "options": [
+       "bonds",
+       "reserves"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The government borrows by selling bonds; reserves are bank balances at the central bank."
+      }
+     },
+     "trend": {
+      "label": "The debt",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Each year's deficit is added to the debt."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

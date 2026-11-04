@@ -1,0 +1,699 @@
+{
+ "stimuli": {
+  "banking-money-supply-s1": {
+   "kind": "data",
+   "title": "The balance sheet of the Bank of Tarn",
+   "invented": true,
+   "table": {
+    "caption": "Balance sheet of the invented Bank of Tarn, in dollars. The required reserve ratio is 0.2 (invented data for practice).",
+    "cols": [
+     "Assets",
+     "Dollars",
+     "Liabilities and owners' equity",
+     "Dollars"
+    ],
+    "rows": [
+     [
+      "Reserves",
+      "50,000",
+      "Checkable deposits",
+      "200,000"
+     ],
+     [
+      "Loans",
+      "150,000",
+      "Owners' equity",
+      "50,000"
+     ],
+     [
+      "Government bonds",
+      "50,000",
+      "",
+      ""
+     ]
+    ]
+   }
+  },
+  "banking-money-supply-s2": {
+   "kind": "text",
+   "title": "A cash deposit in a fractional reserve banking system",
+   "text": "<p>In the invented country of Zell, the required reserve ratio is 0.1, banks lend all of their excess reserves, and people keep no extra cash. Jordan finds \\$5,000 in cash under a mattress and deposits it in a checking account at Zell First Bank.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-banking-money-supply-1",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "banking-money-supply-s1",
+   "q": "How much must the Bank of Tarn hold as required reserves, in dollars?",
+   "why": {
+    "correct": "Required reserves = checkable deposits x required reserve ratio = \\$200,000 x 0.2 = \\$40,000."
+   },
+   "numeric": {
+    "from": {
+     "fn": "requiredReserves",
+     "args": [
+      200000,
+      0.2
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        50000,
+        0.2
+       ]
+      },
+      "why": "You applied the ratio to reserves. The requirement is a share of deposits: \\$200,000 x 0.2."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        200000,
+        0.8
+       ]
+      },
+      "why": "160,000 is the part of deposits the bank does not have to hold. Required reserves are \\$200,000 x 0.2."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-2",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "banking-money-supply-s1",
+   "q": "What are the Bank of Tarn's excess reserves, in dollars?",
+   "why": {
+    "correct": "Excess reserves = total reserves - required reserves = \\$50,000 - \\$40,000 = \\$10,000."
+   },
+   "numeric": {
+    "from": {
+     "fn": "excessReserves",
+     "args": [
+      50000,
+      200000,
+      0.2
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 50000,
+      "why": "50,000 is all of its reserves. Subtract the \\$40,000 it is required to hold."
+     },
+     {
+      "value": 40000,
+      "why": "40,000 is the required part. Excess reserves are what is left: \\$50,000 - \\$40,000."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-3",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "banking-money-supply-s1",
+   "q": "What is the most the Bank of Tarn can lend right now, in dollars?",
+   "why": {
+    "correct": "A single bank can lend its excess reserves, \\$10,000. If it lent more, its reserves would fall below the requirement once the loan was spent."
+   },
+   "numeric": {
+    "from": {
+     "fn": "maxLoans",
+     "args": [
+      {
+       "fn": "excessReserves",
+       "args": [
+        50000,
+        200000,
+        0.2
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "maxMoneyChange",
+       "args": [
+        {
+         "fn": "excessReserves",
+         "args": [
+          50000,
+          200000,
+          0.2
+         ]
+        },
+        0.2
+       ]
+      },
+      "why": "50,000 is the most the whole banking system can create. One bank can lend only its own excess reserves."
+     },
+     {
+      "value": 150000,
+      "why": "150,000 is the loans it has already made. New lending is limited to its excess reserves."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-4",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "banking-money-supply-s1",
+   "q": "If the Bank of Tarn lends all of its excess reserves, what is the most the money supply can increase across the whole banking system, in dollars?",
+   "why": {
+    "correct": "Money multiplier = $\\frac{1}{0.2} = 5$, so the most the money supply can grow is \\$10,000 x 5 = \\$50,000."
+   },
+   "numeric": {
+    "from": {
+     "fn": "maxMoneyChange",
+     "args": [
+      {
+       "fn": "excessReserves",
+       "args": [
+        50000,
+        200000,
+        0.2
+       ]
+      },
+      0.2
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "excessReserves",
+       "args": [
+        50000,
+        200000,
+        0.2
+       ]
+      },
+      "why": "10,000 is the first loan. Each loan is redeposited and partly lent again, so multiply by 1 / 0.2 = 5."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "excessReserves",
+         "args": [
+          50000,
+          200000,
+          0.2
+         ]
+        },
+        0.2
+       ]
+      },
+      "why": "You multiplied by the ratio. The money multiplier is 1 / 0.2 = 5."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        50000,
+        5
+       ]
+      },
+      "why": "Use excess reserves, not total reserves: the required \\$40,000 cannot be lent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-5",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "banking-money-supply-s2",
+   "q": "How much do Zell First Bank's excess reserves rise because of the deposit, in dollars?",
+   "why": {
+    "correct": "The bank's reserves and deposits both rise by \\$5,000. It must hold \\$5,000 x 0.1 = \\$500, so excess reserves rise by \\$4,500."
+   },
+   "numeric": {
+    "from": {
+     "fn": "excessReserves",
+     "args": [
+      5000,
+      5000,
+      0.1
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 5000,
+      "why": "The whole deposit becomes reserves, but 10% of it, \\$500, is required. Excess reserves rise by \\$4,500."
+     },
+     {
+      "from": {
+       "fn": "requiredReserves",
+       "args": [
+        5000,
+        0.1
+       ]
+      },
+      "why": "500 is the required part. Excess reserves are the rest: \\$5,000 - \\$500."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-6",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "banking-money-supply-s2",
+   "q": "What happens to the money supply (M1) at the moment Jordan makes the deposit?",
+   "options": [
+    "It rises by \\$5,000",
+    "It does not change",
+    "It falls by \\$5,000",
+    "It rises by \\$50,000"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A cash deposit changes the form of money, not the amount. New money is created when the bank lends its excess reserves.",
+    "options": [
+     "Checkable deposits rise by \\$5,000, but currency held by the public falls by \\$5,000.",
+     "Right: currency becomes a checkable deposit, and both are counted in M1.",
+     "The cash left the public, but the same amount is now a checkable deposit.",
+     "That is the deposit times the multiplier, and money creation happens later, through new loans."
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-7",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "banking-money-supply-s2",
+   "q": "What is the most the money supply of Zell can increase as a result of Jordan's deposit, in dollars?",
+   "why": {
+    "correct": "New money comes from lending the excess reserves: \\$4,500 x (1 / 0.1) = \\$45,000. The \\$5,000 deposit itself was already money."
+   },
+   "numeric": {
+    "from": {
+     "fn": "maxMoneyChange",
+     "args": [
+      {
+       "fn": "excessReserves",
+       "args": [
+        5000,
+        5000,
+        0.1
+       ]
+      },
+      0.1
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        5000,
+        10
+       ]
+      },
+      "why": "You multiplied the whole deposit. It was already money (as cash), so only the excess reserves, \\$4,500, create new money."
+     },
+     {
+      "value": 4500,
+      "why": "4,500 is the first new loan. Each loan is redeposited and lent again, so multiply by 1 / 0.1 = 10."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-8",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "banking-money-supply-s2",
+   "q": "Suppose instead that Zell's banks keep some excess reserves and people hold some of their loans as cash. How does the money supply change compare with your answer to the last question?",
+   "options": [
+    "It is larger, because more cash is in circulation",
+    "It is the same, because the multiplier depends on the ratio",
+    "It is smaller, because less is lent at each round",
+    "It is zero, because no loans are made"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The money multiplier gives the maximum. Banks holding excess reserves and people holding cash make the actual change smaller.",
+    "options": [
+     "Cash held outside banks is not redeposited, so it stops the chain of lending.",
+     "The simple multiplier assumes banks lend everything and people redeposit everything.",
+     "Right: excess reserves held and cash kept out of banks both shrink each round of lending.",
+     "Some lending still happens; the total is smaller than the maximum, not zero."
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-9",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is fractional reserve banking?",
+   "options": [
+    "Banks keep part of their deposits as reserves and lend out the rest",
+    "Banks hold 100% of deposits as reserves",
+    "Banks lend just the money their owners put in",
+    "Banks hold a fraction of their loans as cash for customers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In fractional reserve banking, banks hold a fraction of deposits as reserves and lend the rest, which lets them create money.",
+    "options": [
+     "Right: a fraction is held back; the rest becomes loans.",
+     "That would be 100% reserve banking; such banks create no money.",
+     "Banks lend out depositors' money, not just owners' equity.",
+     "Reserves are a share of deposits, not of loans."
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-10",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "The required reserve ratio is 0.25. What is the money multiplier?",
+   "why": {
+    "correct": "Money multiplier = $\\frac{1}{\\text{required reserve ratio}} = \\frac{1}{0.25} = 4$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "moneyMultiplier",
+     "args": [
+      0.25
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.25,
+      "why": "0.25 is the ratio itself. The multiplier is 1 divided by the ratio."
+     },
+     {
+      "value": 25,
+      "why": "You used 25 (the percent) instead of 1 / 0.25. Write the ratio as a decimal: 1 / 0.25 = 4."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        1,
+        0.75
+       ]
+      },
+      "why": "You used 1 - 0.25. The money multiplier is 1 divided by the required reserve ratio, not by the share lent out."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-11",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "With limited reserves, banks lend all of their excess reserves. The central bank raises the required reserve ratio from 0.1 to 0.2. What happens to the money multiplier?",
+   "options": [
+    "It doubles from 10 to 20",
+    "It falls from 10 to 5",
+    "It rises from 5 to 10",
+    "It stays at 10, since deposits are unchanged"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The money multiplier is 1 / required reserve ratio, so a higher ratio means a smaller multiplier and less money creation.",
+    "options": [
+     "A higher ratio means banks lend less of each deposit, so the multiplier falls.",
+     "Right: 1 / 0.1 = 10 and 1 / 0.2 = 5.",
+     "At 0.1 the multiplier is 10, and at 0.2 it is 5; it falls.",
+     "The multiplier depends on the ratio, so it changes when the ratio does."
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-12",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A bank lends \\$8,000 to a customer by adding it to her checking account. What happens to the money supply right away?",
+   "options": [
+    "It is unchanged, because the bank lent its own money",
+    "It falls by \\$8,000, because the bank's reserves fall",
+    "It rises by \\$8,000",
+    "It rises by \\$80,000"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Banks create money when they lend: the loan becomes a new deposit the borrower can spend.",
+    "options": [
+     "The new deposit is spendable money that did not exist before, so the money supply rises.",
+     "Reserves in a bank are not counted in M1; the new deposit is.",
+     "Right: the loan creates a new checkable deposit, which is money.",
+     "The full multiplied amount comes only after many rounds of lending, if at all."
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-13",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "On a commercial bank's balance sheet, which of these is a liability?",
+   "options": [
+    "Its customers' checkable deposits",
+    "The loans it has made",
+    "Its reserves at the central bank",
+    "The government bonds it holds"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Assets are what the bank owns or is owed (reserves, loans, bonds); liabilities are what it owes (deposits).",
+    "options": [
+     "Right: the bank owes deposits to its customers on demand.",
+     "Loans are assets: borrowers owe the bank.",
+     "Reserves are assets the bank owns.",
+     "Bonds the bank owns are assets: the government owes the bank."
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-14",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "The required reserve ratio is 0.1. A customer withdraws \\$1,000 in cash from her checking account. How do the bank's excess reserves change?",
+   "options": [
+    "They fall by \\$1,000",
+    "They fall by \\$100",
+    "They do not change",
+    "They fall by \\$900"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A withdrawal lowers reserves by its full amount and required reserves by the ratio times that amount; excess falls by the difference.",
+    "options": [
+     "Reserves fall by \\$1,000, but required reserves also fall by \\$100, so excess falls by \\$900.",
+     "\\$100 is the drop in required reserves. Excess reserves fall by \\$1,000 - \\$100.",
+     "Cash paid out comes from reserves, so excess reserves fall.",
+     "Right: reserves fall \\$1,000 and required reserves fall \\$100 (10% of the smaller deposits)."
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-15",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are assets of a commercial bank? Select all that apply.",
+   "options": [
+    "Reserves held in its vault and at the central bank",
+    "Loans it has made to households and firms",
+    "Checkable deposits of its customers",
+    "Its owners' equity"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Assets: reserves, loans and securities such as bonds. Liabilities: deposits. Owners' equity balances the two sides.",
+    "options": [
+     "Right: reserves are money the bank owns.",
+     "Right: loans are owed to the bank.",
+     "Deposits are liabilities: the bank owes them to customers.",
+     "Owners' equity is on the liabilities side: what the bank is worth to its owners."
+    ]
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-16",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the links in order, from new excess reserves to a larger money supply.",
+   "options": [
+    "A bank has new excess reserves",
+    "It lends them, creating a new checkable deposit",
+    "The borrower spends the money, and the seller deposits it in another bank",
+    "That bank keeps the required share and lends its new excess reserves",
+    "The rounds repeat, so the money supply can grow by up to excess reserves x 1 / ratio"
+   ],
+   "why": {
+    "correct": "Each round of lending and redepositing creates new deposits, which is why money creation multiplies."
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-17",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain how a bank with excess reserves can increase the money supply.",
+   "why": {
+    "correct": "Lending excess reserves creates new checkable deposits; when the borrowed money is spent and redeposited, other banks lend again, so the money supply grows by a multiple."
+   },
+   "specific": {
+    "frame": "The bank ___ its excess reserves, which creates new ___; when that money is redeposited, other banks lend again, so the money supply ___ by up to excess reserves times ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "The bank lends its excess reserves, which creates new checkable deposits; because the borrowed money is spent and redeposited, other banks lend again, so the money supply increases by up to excess reserves times the money multiplier.",
+    "slots": {
+     "tool": {
+      "label": "What the bank does",
+      "options": [
+       "lends",
+       "holds"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Reserves held in the vault create no new money; lending does."
+      }
+     },
+     "link": {
+      "label": "What lending creates",
+      "options": [
+       "checkable deposits",
+       "required reserves"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lending creates deposits for the borrower; required reserves are what banks must hold back."
+      }
+     },
+     "direction": {
+      "label": "The money supply",
+      "options": [
+       "increases",
+       "decreases"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "New loans add deposits, so the money supply rises."
+      }
+     },
+     "multiplier": {
+      "label": "The multiplier",
+      "options": [
+       "1 / required reserve ratio",
+       "the required reserve ratio"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Multiplying by the ratio shrinks the amount; the money multiplier is 1 divided by the ratio."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-banking-money-supply-18",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In the United States, which institution sets the reserve requirement for banks?",
+   "options": [
+    "Congress, in the yearly budget",
+    "The Department of the Treasury",
+    "Each commercial bank, for itself",
+    "The Federal Reserve, the central bank"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The central bank, the Federal Reserve in the United States, sets the reserve requirement.",
+    "options": [
+     "Congress sets taxes and spending; bank reserve rules come from the central bank.",
+     "The Treasury manages government finances; the Federal Reserve sets reserve rules.",
+     "Banks choose to hold extra reserves, but the requirement is set for them.",
+     "Right: the Federal Reserve sets reserve requirements and oversees the banking system."
+    ]
+   }
+  }
+ ]
+}

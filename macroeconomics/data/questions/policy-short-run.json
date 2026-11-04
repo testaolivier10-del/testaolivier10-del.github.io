@@ -1,0 +1,616 @@
+{
+ "stimuli": {
+  "policy-short-run-s1": {
+   "kind": "text",
+   "title": "Sundra in a recession (invented country)",
+   "text": "<p>Sundra, an invented country, is in a recession. Real GDP is below full-employment output, and the unemployment rate is 8 percent while the natural rate is 5 percent. Sundra's central bank operates in an <b>ample-reserves framework</b>: it steers its policy rate with the interest rate it pays on reserve balances. Sundra's legislature can also change government spending or taxes.</p>"
+  },
+  "policy-short-run-s2": {
+   "kind": "graph",
+   "title": "Tolmar after a fall in aggregate demand (invented)",
+   "graph": {
+    "kind": "adas",
+    "show": {
+     "AD": -1
+    },
+    "showEq": true
+   }
+  },
+  "policy-short-run-s3": {
+   "kind": "data",
+   "title": "Policy actions in four invented countries",
+   "invented": true,
+   "table": {
+    "caption": "Fiscal and central bank actions in four invented countries",
+    "cols": [
+     "Country",
+     "Starting point",
+     "Fiscal action",
+     "Central bank action (framework)"
+    ],
+    "rows": [
+     [
+      "Bela",
+      "Recessionary gap",
+      "Raises government spending",
+      "Lowers the interest rate on reserve balances (ample)"
+     ],
+     [
+      "Coro",
+      "Inflationary gap",
+      "Raises income taxes",
+      "Raises the interest rate on reserve balances (ample)"
+     ],
+     [
+      "Dren",
+      "Recessionary gap",
+      "Cuts income taxes",
+      "Sells government bonds (limited)"
+     ],
+     [
+      "Esk",
+      "Inflationary gap",
+      "Cuts government spending",
+      "Buys government bonds (limited)"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-policy-short-run-1",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which action by Sundra's central bank would move real GDP back toward full employment?",
+   "options": [
+    "Sell government bonds to drain reserves",
+    "Lower the interest rate it pays on reserve balances",
+    "Raise the interest rate it pays on reserve balances",
+    "Raise the required reserve ratio for banks"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In the ample-reserves framework the central bank moves the policy rate with its administered rates. Lowering the interest rate on reserve balances lowers the policy rate, which starts the expansionary chain.",
+    "options": [
+     "Selling bonds is a limited-reserves tool, and it is contractionary. With ample reserves, a change in the quantity of reserves in the flat part of reserve demand leaves the policy rate where it is.",
+     "Right: a lower administered rate pulls the policy rate down, loan rates fall, and investment and consumption rise, shifting AD right.",
+     "That raises the policy rate, which lowers investment and shifts AD left: the wrong direction in a recession.",
+     "A reserve requirement belongs to the limited-reserves framework, and raising it would be contractionary anyway."
+    ]
+   },
+   "stimulus": "policy-short-run-s1"
+  },
+  {
+   "id": "mac-policy-short-run-2",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.B",
+   "q": "Sundra's central bank lowers the interest rate it pays on reserve balances. Put the links of the chain in order, from the action to the result.",
+   "options": [
+    "The interest rate on reserve balances falls",
+    "The policy rate falls",
+    "Loan rates and other interest rates fall",
+    "Investment and interest-sensitive consumption rise",
+    "Aggregate demand shifts right",
+    "Real GDP rises and unemployment falls"
+   ],
+   "why": {
+    "correct": "Tool, policy rate, other interest rates, interest-sensitive spending, AD, then output and unemployment. Each link causes the next; a written answer that skips one loses the point."
+   },
+   "stimulus": "policy-short-run-s1"
+  },
+  {
+   "id": "mac-policy-short-run-3",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Suppose Sundra's legislature cuts personal income taxes instead. What is the first link in the chain from the tax cut to AD?",
+   "options": [
+    "Disposable income rises, so households spend more",
+    "The policy rate falls, so firms borrow more",
+    "Production costs fall for firms, so SRAS shifts right",
+    "Potential output rises, so LRAS shifts right"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The fiscal chain for taxes runs: taxes fall, disposable income rises, consumption rises (by the MPC times the tax cut), AD shifts right, then output rises and unemployment falls.",
+    "options": [
+     "Right: a tax cut leaves households more after-tax income, and part of it is spent (the MPC), which raises consumption and AD.",
+     "A tax cut is fiscal policy; it does not work through the central bank's policy rate.",
+     "A cut in personal income taxes changes what households can spend. It is a demand-side change.",
+     "In the short-run model the tax cut works through spending. LRAS depends on resources and technology."
+    ]
+   },
+   "stimulus": "policy-short-run-s1"
+  },
+  {
+   "id": "mac-policy-short-run-4",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Sundra's central bank lowers its administered rates and, at the same time, the legislature raises government spending. Compared with either policy alone, what happens to AD and to the interest rates banks charge on loans?",
+   "options": [
+    "AD rises by more; loan rates fall for sure",
+    "AD rises by more; loan rates rise for sure",
+    "AD rises by more; the effect on loan rates is indeterminate",
+    "The effect on AD is indeterminate, and loan rates fall for sure"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When two policies push AD the same way, the AD effect is clear and the effect on loan rates is the one that depends on sizes. (The policy rate itself falls, because it follows the administered rates; loan rates also feel the extra borrowing and spending.)",
+    "options": [
+     "The monetary move pulls loan rates down, but the higher spending and income raise the demand for money and for borrowing, which push them up.",
+     "The fiscal move pushes loan rates up, but the lower administered rate pulls them down. Without the sizes you cannot say which wins.",
+     "Right: both policies push AD right. The spending rise pushes loan rates up while the monetary move pulls them down, so the net change cannot be told without sizes.",
+     "Both policies are expansionary, so they push AD the same way. It is loan rates whose change is unclear."
+    ]
+   },
+   "stimulus": "policy-short-run-s1"
+  },
+  {
+   "id": "mac-policy-short-run-5",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "An economy has an inflationary gap, and its central bank operates with ample reserves. Build the chain for the right monetary policy.",
+   "why": {
+    "correct": "Raising the administered rate raises the policy rate; higher borrowing costs lower investment, so AD shifts left and the price level and real output fall."
+   },
+   "specific": {
+    "frame": "The central bank ___ the interest rate on reserve balances, so the policy rate ___. Borrowing costs more, so ___ falls, AD shifts ___, and ___ fall.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "The central bank raises the interest rate on reserve balances, so the policy rate rises. Borrowing costs more, so investment falls, which shifts AD left, and as a result the price level and real output fall toward full employment.",
+    "slots": {
+     "policy": {
+      "label": "The action",
+      "options": [
+       "raises",
+       "lowers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lowering it is expansionary; an inflationary gap needs a contractionary move."
+      }
+     },
+     "rate": {
+      "label": "The policy rate",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The policy rate follows the administered rate up."
+      }
+     },
+     "spending": {
+      "label": "The spending that falls",
+      "options": [
+       "investment",
+       "government spending",
+       "potential output"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Monetary policy works through interest-sensitive private spending, not the government budget.",
+       "2": "Potential output is set by resources and technology, not by the policy rate."
+      }
+     },
+     "direction": {
+      "label": "Which way AD shifts",
+      "options": [
+       "left",
+       "right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less spending at each price level is a shift left."
+      }
+     },
+     "price": {
+      "label": "What falls",
+      "options": [
+       "the price level and real output",
+       "full-employment output"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Full-employment output (LRAS) does not move in the short run; the equilibrium moves along SRAS."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-policy-short-run-6",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "The graph shows Tolmar after aggregate demand fell from AD1 to AD2. LRAS marks full-employment output. What does the new short-run equilibrium show?",
+   "options": [
+    "An inflationary gap: output is above full employment",
+    "No gap: output is still at full employment",
+    "A recessionary gap with unemployment below the natural rate",
+    "A recessionary gap: output is below full employment"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Read the gap from where AD and SRAS cross relative to LRAS: to the left is a recessionary gap.",
+    "options": [
+     "The new equilibrium is to the left of LRAS, not to the right.",
+     "Output moved away from LRAS when AD fell.",
+     "In a recessionary gap unemployment is above the natural rate, not below it.",
+     "Right: AD2 crosses SRAS at E2, to the left of LRAS, so real GDP is below full-employment output."
+    ]
+   },
+   "stimulus": "policy-short-run-s2"
+  },
+  {
+   "id": "mac-policy-short-run-7",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which pair of policies would both push AD from AD2 back toward AD1?",
+   "options": [
+    "A rise in taxes and a lower policy rate",
+    "A cut in taxes and a lower policy rate",
+    "A cut in government spending and a higher policy rate",
+    "A rise in government spending and a higher policy rate"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "To close a recessionary gap both tools point the same way: more government spending or lower taxes, and a lower policy rate.",
+    "options": [
+     "The tax rise lowers consumption and works against the lower policy rate.",
+     "Right: both are expansionary. The tax cut raises consumption; the lower policy rate raises investment.",
+     "Both are contractionary: they would push AD further left.",
+     "The higher policy rate lowers investment and works against the spending rise."
+    ]
+   },
+   "stimulus": "policy-short-run-s2"
+  },
+  {
+   "id": "mac-policy-short-run-8",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Suppose Tolmar uses no policy at all. What happens to its economy in the long run?",
+   "options": [
+    "Nominal wages rise, SRAS shifts left, and output returns to full employment",
+    "LRAS shifts left to meet the lower level of output",
+    "Nominal wages fall, SRAS shifts right, and output returns to full employment",
+    "AD shifts back right on its own as the price level falls"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Self-adjustment works through SRAS: in a recessionary gap, falling nominal wages and input prices shift SRAS right. Policy is used because that process can be slow.",
+    "options": [
+     "Wages rise when unemployment is below the natural rate. Here it is above it, and a leftward SRAS shift would lower output further.",
+     "Full-employment output depends on resources and technology; a fall in spending does not move it.",
+     "Right: unemployment above the natural rate pushes nominal wages and other input prices down, so SRAS shifts right until output reaches full employment.",
+     "A fall in the price level is a movement along AD, not a shift of it. The long-run fix comes from SRAS."
+    ]
+   },
+   "stimulus": "policy-short-run-s2"
+  },
+  {
+   "id": "mac-policy-short-run-9",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Tolmar's recessionary gap is 200 billion dollars and its MPC is 0.75. By how much would government spending have to rise to close the gap, in billions of dollars?",
+   "why": {
+    "correct": "The spending multiplier is $\\frac{1}{1 - 0.75} = 4$. Divide the gap by it: $200 \\div 4 = 50$ billion dollars of new government spending."
+   },
+   "numeric": {
+    "from": {
+     "fn": "gapChange",
+     "args": [
+      200,
+      {
+       "fn": "spendingMultiplier",
+       "args": [
+        0.75
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        200,
+        {
+         "fn": "spendingMultiplier",
+         "args": [
+          0.75
+         ]
+        }
+       ]
+      },
+      "why": "You multiplied the gap by the multiplier. The multiplier makes each dollar of spending count several times, so divide the gap by it: 200 / 4 = 50."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        200,
+        0.75
+       ]
+      },
+      "why": "You divided by the MPC. Divide by the spending multiplier, 1 / (1 - 0.75) = 4."
+     }
+    ]
+   },
+   "stimulus": "policy-short-run-s2"
+  },
+  {
+   "id": "mac-policy-short-run-10",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "In which countries do the fiscal and central bank actions push AD in opposite directions? Select all that apply.",
+   "options": [
+    "Bela",
+    "Coro",
+    "Dren",
+    "Esk"
+   ],
+   "correct": [
+    2,
+    3
+   ],
+   "why": {
+    "correct": "Dren and Esk mix an expansionary action with a contractionary one, so the net effect on AD depends on their sizes.",
+    "options": [
+     "Both of Bela's actions are expansionary, so they push AD the same way.",
+     "Both of Coro's actions are contractionary, so they push AD the same way.",
+     "Right: the tax cut raises AD, but selling bonds shrinks the money supply, raises interest rates and lowers AD.",
+     "Right: the spending cut lowers AD, but buying bonds expands the money supply, lowers interest rates and raises AD."
+    ]
+   },
+   "stimulus": "policy-short-run-s3"
+  },
+  {
+   "id": "mac-policy-short-run-11",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "In Coro, what happens to the policy rate, investment and the price level?",
+   "options": [
+    "The policy rate rises, investment rises, the price level rises",
+    "The policy rate falls, investment rises, the price level falls",
+    "The policy rate is unchanged, investment falls, the price level falls",
+    "The policy rate rises, investment falls, the price level falls"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Contractionary monetary policy with ample reserves: higher administered rate, higher policy rate, less investment, AD left, lower price level and output.",
+    "options": [
+     "A higher rate makes borrowing dearer, so investment falls, not rises.",
+     "Raising the interest rate on reserves raises the policy rate.",
+     "In the ample-reserves framework the policy rate follows the administered rates, so raising them raises the policy rate.",
+     "Right: a higher administered rate lifts the policy rate, borrowing costs rise, investment falls and AD shifts left, lowering the price level."
+    ]
+   },
+   "stimulus": "policy-short-run-s3"
+  },
+  {
+   "id": "mac-policy-short-run-12",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In Bela, which variable's change cannot be determined without knowing the sizes of the two policies?",
+   "options": [
+    "Real output",
+    "Interest rates on loans",
+    "The price level",
+    "The unemployment rate"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Two expansionary policies give a clear AD effect; their effects on loan rates point opposite ways. (Bela's policy rate itself falls, because it follows the administered rate.)",
+    "options": [
+     "Both policies raise AD, so real output rises in the short run.",
+     "Right: higher spending pushes loan rates up while the lower administered rate pulls them down.",
+     "Both policies raise AD, so the price level rises.",
+     "Higher output means firms hire more, so unemployment falls."
+    ]
+   },
+   "stimulus": "policy-short-run-s3"
+  },
+  {
+   "id": "mac-policy-short-run-13",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Dren's central bank sells government bonds. On which graph is that action shown, and what does it show?",
+   "options": [
+    "The money market: the money supply shifts left and the nominal interest rate rises",
+    "The reserve market: the administered rate rises and so does the policy rate",
+    "The loanable funds market: the supply of funds shifts right and the real interest rate falls",
+    "The money market: money demand shifts right and the nominal interest rate rises"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Match the tool to the framework: open market operations and the money market graph in limited reserves; administered rates and the reserve market graph in ample reserves.",
+    "options": [
+     "Right: Dren uses the limited-reserves framework, so the bond sale shrinks the money supply on the money market graph.",
+     "That is the ample-reserves tool. Dren's table entry says it uses limited reserves and sells bonds.",
+     "The bond sale drains money from banks; it does not add to the supply of loanable funds.",
+     "A bond sale changes the quantity of money the central bank supplies, not how much money people want to hold."
+    ]
+   },
+   "stimulus": "policy-short-run-s3"
+  },
+  {
+   "id": "mac-policy-short-run-14",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Ruskel, an invented country, has an inflationary gap: AD crosses SRAS to the right of LRAS. Its central bank, which operates with ample reserves, raises the interest rate on reserve balances. Shift the right curve and mark the new short-run equilibrium.",
+   "why": {
+    "correct": "The higher policy rate lowers investment, so AD shifts left; at the new equilibrium the price level and real output are lower."
+   },
+   "graph": {
+    "kind": "adas",
+    "start": {
+     "AD": 1
+    },
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "left"
+      }
+     ],
+     "because": "a higher policy rate that lowers investment",
+     "outcome": {
+      "price level": "down",
+      "output": "down"
+     }
+    },
+    "slips": {
+     "SRAS": "A higher policy rate changes how much firms and households borrow and spend, so it shifts AD; it does not change production costs."
+    }
+   }
+  },
+  {
+   "id": "mac-policy-short-run-15",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Which statement correctly compares fiscal and monetary policy in the short run?",
+   "options": [
+    "Fiscal policy shifts AD; monetary policy shifts SRAS through interest costs",
+    "Monetary policy shifts AD in limited reserves but LRAS in ample reserves",
+    "Both shift AD; fiscal policy works through spending or taxes, monetary policy through interest rates",
+    "Both shift LRAS by changing how much the economy can produce"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Fiscal and monetary policy are both stabilization tools that shift AD; they differ in the first links of their chains.",
+    "options": [
+     "Interest rates change borrowing and spending, so monetary policy shifts AD.",
+     "The framework changes the tool and the graph, not the curve the policy shifts.",
+     "Right: each is a demand-side tool, with a different first link in the chain.",
+     "Stabilization policy aims at spending in the short run; LRAS depends on resources and technology."
+    ]
+   }
+  },
+  {
+   "id": "mac-policy-short-run-16",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A rise in government spending raises real GDP and the price level. On the money market graph, what happens, and why?",
+   "options": [
+    "Money supply rises because the government is spending more money, so the nominal interest rate falls",
+    "Money demand rises, as more output at higher prices takes more money, so the nominal rate rises",
+    "Money demand falls because higher prices make money worth less, so the nominal interest rate falls",
+    "Money supply falls because the government borrows from banks, so the nominal interest rate rises"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Expansionary fiscal policy raises money demand (more transactions at higher prices), which pushes the nominal interest rate up. That is why the interest rate effect of a policy mix can be unclear.",
+    "options": [
+     "The central bank sets the money supply; government spending does not shift it.",
+     "Right: more nominal spending raises the transaction demand for money; with money supply fixed, the nominal interest rate rises.",
+     "Higher prices mean people need more money for the same purchases, not less.",
+     "Government borrowing shows up in the loanable funds market, not as a shift in the money supply."
+    ]
+   }
+  },
+  {
+   "id": "mac-policy-short-run-17",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.A",
+   "q": "An economy has an inflationary gap. Select every action that would shift AD to the left.",
+   "options": [
+    "Raising income taxes",
+    "Raising the interest rate on reserve balances (ample reserves)",
+    "Buying government bonds on the open market (limited reserves)",
+    "Raising transfer payments to households"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Contractionary fiscal policy (higher taxes, lower spending or transfers) and contractionary monetary policy (a higher policy rate, or a bond sale with limited reserves) shift AD left.",
+    "options": [
+     "Right: lower disposable income lowers consumption.",
+     "Right: a higher policy rate lowers investment and interest-sensitive consumption.",
+     "Buying bonds adds to the money supply and lowers interest rates: that is expansionary.",
+     "More transfers raise disposable income and consumption: that is expansionary."
+    ]
+   }
+  }
+ ]
+}

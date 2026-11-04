@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 360" width="740" height="360" role="img" aria-labelledby="market-equilibrium-double-shift-t market-equilibrium-double-shift-d" font-family="Arial, Helvetica, sans-serif">
+<title id="market-equilibrium-double-shift-t">When both curves shift, one change is indeterminate</title>
+<desc id="market-equilibrium-double-shift-d">Left: demand and supply both increase; the new crossing is to the right, so quantity rises, but whether price rises or falls depends on which shift is larger. Right: demand increases and supply decreases; the new crossing is higher, so price rises, but the change in quantity depends on the sizes of the shifts.</desc>
+<defs><marker id="market-equilibrium-double-shift-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="market-equilibrium-double-shift-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="market-equilibrium-double-shift-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="market-equilibrium-double-shift-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker></defs><rect width="740" height="360" fill="#FFFFFF"/>
+<text x="195" y="28" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Demand up, supply up</text>
+<line x1="70" y1="44" x2="70" y2="270" stroke="#1F2A28" stroke-width="2"/>
+<line x1="70" y1="270" x2="326" y2="270" stroke="#1F2A28" stroke-width="2"/>
+<text x="320" y="308" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">Quantity</text>
+<text x="36" y="50" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 36 50)">Price</text>
+<line x1="95" y1="72" x2="295" y2="248" stroke="#6B7370" stroke-width="2" stroke-dasharray="7 5"/><text x="301" y="252" font-size="15" fill="#6B7370" font-weight="700">D<tspan font-size="11" dy="4">1</tspan></text>
+<line x1="95" y1="248" x2="295" y2="72" stroke="#6B7370" stroke-width="2" stroke-dasharray="7 5"/><text x="301" y="70" font-size="15" fill="#6B7370" font-weight="700">S<tspan font-size="11" dy="4">1</tspan></text>
+<line x1="132.5" y1="72" x2="307.5" y2="226" stroke="#084F78" stroke-width="3"/><text x="313.5" y="230" font-size="15" fill="#084F78" font-weight="700">D<tspan font-size="11" dy="4">2</tspan></text>
+<line x1="132.5" y1="248" x2="307.5" y2="94" stroke="#355A0A" stroke-width="3"/><text x="313.5" y="98" font-size="15" fill="#355A0A" font-weight="700">S<tspan font-size="11" dy="4">2</tspan></text>
+<circle cx="195" cy="160" r="5" fill="#6B7370"/>
+<circle cx="232.5" cy="160" r="5" fill="#D55E00"/>
+<text x="195" y="330" font-size="12" fill="#6B7370" text-anchor="middle">Quantity rises for sure;</text>
+<text x="195" y="346" font-size="12" fill="#6B7370" text-anchor="middle">price depends on the sizes.</text>
+<text x="555" y="28" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Demand up, supply down</text>
+<line x1="430" y1="44" x2="430" y2="270" stroke="#1F2A28" stroke-width="2"/>
+<line x1="430" y1="270" x2="686" y2="270" stroke="#1F2A28" stroke-width="2"/>
+<text x="680" y="308" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">Quantity</text>
+<text x="396" y="50" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 396 50)">Price</text>
+<line x1="455" y1="72" x2="655" y2="248" stroke="#6B7370" stroke-width="2" stroke-dasharray="7 5"/><text x="661" y="252" font-size="15" fill="#6B7370" font-weight="700">D<tspan font-size="11" dy="4">1</tspan></text>
+<line x1="455" y1="248" x2="655" y2="72" stroke="#6B7370" stroke-width="2" stroke-dasharray="7 5"/><text x="661" y="84" font-size="15" fill="#6B7370" font-weight="700">S<tspan font-size="11" dy="4">1</tspan></text>
+<line x1="492.5" y1="72" x2="667.5" y2="226" stroke="#084F78" stroke-width="3"/><text x="673.5" y="230" font-size="15" fill="#084F78" font-weight="700">D<tspan font-size="11" dy="4">2</tspan></text>
+<line x1="430" y1="237" x2="630" y2="61" stroke="#355A0A" stroke-width="3"/><text x="600" y="55" font-size="15" fill="#355A0A" font-weight="700">S<tspan font-size="11" dy="4">2</tspan></text>
+<circle cx="555" cy="160" r="5" fill="#6B7370"/>
+<circle cx="555" cy="127" r="5" fill="#D55E00"/>
+<text x="555" y="330" font-size="12" fill="#6B7370" text-anchor="middle">Price rises for sure;</text>
+<text x="555" y="346" font-size="12" fill="#6B7370" text-anchor="middle">quantity depends on the sizes.</text>
+</svg>

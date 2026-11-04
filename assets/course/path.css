@@ -16,6 +16,7 @@ body[data-course="apstat"]{--lp-ac:#6E2470;--lp-ct:#F5E6F4;--lp-bg:#0E3A52;--lp-
 body[data-course="apenv"]{--lp-ac:#474A10;--lp-ct:#EFF0DA;--lp-bg:#22400F;--lp-ba:#A6DB5C}
 body[data-course="appsych"]{--lp-ac:#084F78;--lp-ct:#E3F0F8;--lp-bg:#07608A;--lp-ba:#FFD23F}
 body[data-course="apprecalc"]{--lp-ac:#11592F;--lp-ct:#E3F3E8;--lp-bg:#0B4A33;--lp-ba:#8AF0C0}
+body[data-course="apmacro"]{--lp-ac:#355A0A;--lp-ct:#EEF4E0;--lp-bg:#2E4D0C;--lp-ba:#C8F07A}
 :root[data-theme="dark"] body{--lp-ac:var(--lp-ba);--lp-ct:color-mix(in srgb,var(--lp-ba) 15%,transparent)}
 
 .lp-slot{position:relative;z-index:3;margin:-110px 0 24px}

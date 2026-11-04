@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" width="420" height="360" role="img" aria-labelledby="long-run-self-adjustment-recession-t long-run-self-adjustment-recession-d" font-family="Arial, Helvetica, sans-serif">
+<title id="long-run-self-adjustment-recession-t">Self-adjustment from a recessionary gap</title>
+<desc id="long-run-self-adjustment-recession-d">An AD-AS graph with a vertical LRAS at YF. AD crosses SRAS1 at Y1, below YF, at price level PL1. As nominal wages fall, SRAS1 shifts right to SRAS2, which crosses AD on LRAS at YF and a lower price level PL2.</desc>
+<defs><marker id="long-run-self-adjustment-recession-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9A4A00"/></marker></defs>
+<rect width="420" height="360" fill="#FFFFFF"/>
+<text x="220" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2A28">Wages fall, SRAS shifts right</text>
+<path d="M80 40V280H360" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="360" y="314" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Real GDP</text>
+<text transform="translate(50 40) rotate(-90)" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A28">Price level</text>
+<path d="M220 49.6V280" fill="none" stroke="#1F5C8A" stroke-width="2.8" stroke-linecap="round"/>
+<text x="225" y="61.6" text-anchor="start" font-size="13" font-weight="700" fill="#1F5C8A">LRAS</text>
+<path d="M88.4 95.2L281.6 260.8" fill="none" stroke="#9A4A00" stroke-width="2.8" stroke-linecap="round"/>
+<text x="285.6" y="272.8" text-anchor="start" font-size="13" font-weight="700" fill="#9A4A00">AD</text>
+<path d="M102.4 260.8L337.6 59.2" fill="none" stroke="#6B7472" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 5"/>
+<text x="341.6" y="57.2" text-anchor="start" font-size="13" font-weight="700" fill="#6B7472">SRAS<tspan font-size="10" dy="3">1</tspan></text>
+<path d="M158.4 260.8L354.4 92.8" fill="none" stroke="#355A0A" stroke-width="2.8" stroke-linecap="round"/>
+<text x="354.4" y="84.8" text-anchor="middle" font-size="13" font-weight="700" fill="#355A0A">SRAS<tspan font-size="10" dy="3">2</tspan></text>
+<path d="M80 184H192V280" fill="none" stroke="#6B7472" stroke-width="1.1" stroke-dasharray="3 4"/>
+<circle cx="192" cy="184" r="4.5" fill="#6B7472"/>
+<text x="75" y="188" text-anchor="end" font-size="12" font-weight="700" fill="#6B7472">PL1</text>
+<text x="192" y="296" text-anchor="middle" font-size="12" font-weight="700" fill="#6B7472">Y1</text>
+<path d="M80 208H220V280" fill="none" stroke="#1F2A28" stroke-width="1.1" stroke-dasharray="3 4"/>
+<circle cx="220" cy="208" r="4.5" fill="#1F2A28"/>
+<text x="75" y="212" text-anchor="end" font-size="12" font-weight="700" fill="#1F2A28">PL2</text>
+<text x="220" y="296" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A28">YF</text>
+<path d="M264.8 121.6L315.2 121.6" stroke="#9A4A00" stroke-width="2.2" marker-end="url(#long-run-self-adjustment-recession-ar)"/>
+</svg>

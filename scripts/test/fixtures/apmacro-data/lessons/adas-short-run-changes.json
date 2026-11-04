@@ -1,0 +1,62 @@
+{
+ "topic": "adas-short-run-changes",
+ "hook": "Placeholder hook for the test fixture: when oil prices jump, gas stations raise prices and some factories slow down at the same time. The AD-AS model shows why both happen together.",
+ "prereq": [
+  {
+   "q": "Placeholder: what does the short-run aggregate supply curve show?",
+   "options": [
+    "Output firms supply at each price level",
+    "Spending at each price level",
+    "Output at full employment",
+    "The interest rate"
+   ],
+   "correct": 0,
+   "why": "Placeholder: SRAS links the price level to output supplied.",
+   "review": "sras"
+  },
+  {
+   "q": "Placeholder: what is consumption part of?",
+   "options": [
+    "Aggregate demand",
+    "Aggregate supply",
+    "The labor force",
+    "Potential output"
+   ],
+   "correct": 0,
+   "why": "Placeholder: AD is C + I + G + (X - M).",
+   "review": "aggregate-demand"
+  }
+ ],
+ "figure": null,
+ "chain": [
+  {
+   "cause": "Input costs rise",
+   "effect": "SRAS shifts left"
+  },
+  {
+   "cause": "SRAS shifts left",
+   "effect": "the price level rises and real output falls"
+  },
+  {
+   "cause": "Real output falls",
+   "effect": "unemployment rises in the short run"
+  }
+ ],
+ "ideas": [
+  "Placeholder: a change in spending shifts AD; a change in costs shifts SRAS.",
+  "Placeholder: demand-pull inflation comes from AD, cost-push from SRAS."
+ ],
+ "misconception": {
+  "wrong": "Placeholder: any rise in the price level means AD rose.",
+  "right": "Placeholder: a leftward SRAS shift also raises the price level, but output falls."
+ },
+ "check": [
+  "mac-adas-short-run-changes-1",
+  "mac-adas-short-run-changes-2",
+  "mac-adas-short-run-changes-4",
+  "mac-adas-short-run-changes-5",
+  "mac-adas-short-run-changes-6",
+  "mac-adas-short-run-changes-7"
+ ],
+ "summary": "Placeholder summary: in the short run, a shift in aggregate demand moves the price level and output the same way, while a shift in short-run aggregate supply moves them in opposite directions, which is why a supply shock brings stagflation."
+}

@@ -1,0 +1,1296 @@
+{
+ "about": "Topic map of the AP Macroeconomics Course and Exam Description (effective fall 2025, unchanged for 2026-27), in LevlPrep's own words from docs/apmacro-research/framework.md. Every topic title is official (Course at a Glance). Objectives and knowledge are our summaries; for 3.7 to 6.6 they come from scoring guidelines and Chief Reader Reports (the CED text could not be read past 3.6) and say so in source. No CED text is reproduced.",
+ "ced": {
+  "title": "AP Macroeconomics Course and Exam Description",
+  "edition": "Effective fall 2025 (6 units, 42 topics); no substantive change for 2026-27 (one wording fix in 2.7; PPI calculation excluded)",
+  "effective": "Fall 2025; exam May 2027",
+  "officialUrls": [
+   "https://apcentral.collegeboard.org/media/pdf/ap-macroeconomics-course-and-exam-description.pdf",
+   "https://apcentral.collegeboard.org/media/pdf/ap-macroeconomics-course-at-a-glance.pdf",
+   "https://apcentral.collegeboard.org/courses/ap-macroeconomics/exam"
+  ],
+  "verification": "All 42 titles from the Course at a Glance. CED text readable for Units 1-2 and Topics 3.2-3.6. Per-topic focus skills are ours (needs-author topic-skills). Read 2026-11-03."
+ },
+ "bigIdeas": [
+  {
+   "id": "MEA",
+   "name": "Economic Measurements",
+   "summary": "How output, prices, unemployment and money are measured."
+  },
+  {
+   "id": "MKT",
+   "name": "Markets",
+   "summary": "How buyers and sellers set prices and quantities."
+  },
+  {
+   "id": "MOD",
+   "name": "Macroeconomic Models",
+   "summary": "Models (PPC, AD-AS, money and loanable funds markets, Phillips curves) that predict outcomes."
+  },
+  {
+   "id": "POL",
+   "name": "Macroeconomic Policies",
+   "summary": "How fiscal and monetary policy change outcomes."
+  }
+ ],
+ "practices": [
+  {
+   "id": 1,
+   "name": "Principles and Models",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C",
+    "1.D"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ],
+   "skillNames": {
+    "1.A": "Describe economic concepts, principles or models",
+    "1.B": "Identify an economic concept, principle or model from an example",
+    "1.C": "Identify an economic concept, principle or model using data or calculations",
+    "1.D": "Describe similarities, differences and limitations of concepts, principles or models"
+   }
+  },
+  {
+   "id": 2,
+   "name": "Interpretation",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ],
+   "skillNames": {
+    "2.A": "Explain how an outcome occurs or what action achieves it",
+    "2.B": "Explain outcomes when several variables or actions change",
+    "2.C": "Interpret an outcome using data or calculations"
+   }
+  },
+  {
+   "id": 3,
+   "name": "Manipulation",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ],
+   "skillNames": {
+    "3.A": "Determine an outcome using a model",
+    "3.B": "Determine the effects of a change on other markets",
+    "3.C": "Determine effects using data or calculations"
+   }
+  },
+  {
+   "id": 4,
+   "name": "Graphing and Visuals",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C"
+   ],
+   "mcqWeight": [
+    0,
+    0
+   ],
+   "skillNames": {
+    "4.A": "Draw an accurately labeled graph or visual",
+    "4.B": "Show a specific situation on a labeled graph",
+    "4.C": "Show the effect of a change on a labeled graph"
+   }
+  }
+ ],
+ "units": [
+  {
+   "n": 1,
+   "id": "unit-1",
+   "title": "Basic Economic Concepts",
+   "weight": "5-10%",
+   "topics": [
+    {
+     "id": "1.1",
+     "slug": "scarcity",
+     "title": "Scarcity",
+     "bigIdea": "MKT",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how scarcity forces choices about using limited resources."
+     ],
+     "knowledge": [
+      "Wants are unlimited and resources (land, labor, capital, entrepreneurship) are limited, so every society chooses what to produce, how and for whom.",
+      "Economic systems (market, command, mixed) answer those questions differently."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "1.2",
+     "slug": "opportunity-cost-ppc",
+     "title": "Opportunity Cost and the Production Possibilities Curve (PPC)",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.A",
+      "1.C",
+      "2.A",
+      "4.A",
+      "4.B",
+      "4.C"
+     ],
+     "practices": [
+      1,
+      2,
+      4
+     ],
+     "objectives": [
+      "Use the PPC to show opportunity cost, efficiency and growth, and calculate opportunity cost from a graph or table."
+     ],
+     "knowledge": [
+      "Opportunity cost is the next-best alternative given up.",
+      "A bowed-out PPC shows increasing opportunity cost; a straight one constant cost.",
+      "Points inside are inefficient (unemployed resources), on the curve efficient, outside unattainable now; growth shifts the curve out."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "1.3",
+     "slug": "comparative-advantage",
+     "title": "Comparative Advantage and Gains from Trade",
+     "bigIdea": "MKT",
+     "skills": [
+      "1.C",
+      "2.A",
+      "2.C"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Identify absolute and comparative advantage from data and find terms of trade that benefit both sides."
+     ],
+     "knowledge": [
+      "Absolute advantage is producing more with the same resources; comparative advantage is the lower opportunity cost.",
+      "Specializing by comparative advantage and trading at terms between the two opportunity costs leaves both sides better off.",
+      "Output and input data give the same comparative advantage when read correctly."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "1.4",
+     "slug": "demand",
+     "title": "Demand",
+     "bigIdea": "MKT",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.A",
+      "4.A"
+     ],
+     "practices": [
+      1,
+      2,
+      4
+     ],
+     "objectives": [
+      "Explain the law of demand and tell a change in quantity demanded from a change in demand."
+     ],
+     "knowledge": [
+      "Quantity demanded falls as price rises (substitution and income effects), all else equal.",
+      "A price change moves along the demand curve; tastes, income, prices of related goods, expectations and the number of buyers shift it."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "1.5",
+     "slug": "supply",
+     "title": "Supply",
+     "bigIdea": "MKT",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.A",
+      "4.A"
+     ],
+     "practices": [
+      1,
+      2,
+      4
+     ],
+     "objectives": [
+      "Explain the law of supply and tell a change in quantity supplied from a change in supply."
+     ],
+     "knowledge": [
+      "Quantity supplied rises with price, all else equal.",
+      "Input costs, technology, taxes and subsidies, expectations and the number of sellers shift supply."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "1.6",
+     "slug": "market-equilibrium",
+     "title": "Market Equilibrium, Disequilibrium, and Changes in Equilibrium",
+     "bigIdea": "MKT",
+     "skills": [
+      "1.C",
+      "2.A",
+      "3.A",
+      "4.A",
+      "4.B",
+      "4.C"
+     ],
+     "practices": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Find and show equilibrium, a shortage or surplus, and how a shift changes price and quantity."
+     ],
+     "knowledge": [
+      "Equilibrium is where quantity demanded equals quantity supplied.",
+      "Below it a shortage (Qd minus Qs) pushes price up; above it a surplus pushes price down.",
+      "When both curves shift, one of price or quantity is indeterminate without the sizes."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "id": "unit-2",
+   "title": "Economic Indicators and the Business Cycle",
+   "weight": "12-17%",
+   "topics": [
+    {
+     "id": "2.1",
+     "slug": "gdp-circular-flow",
+     "title": "The Circular Flow and GDP",
+     "bigIdea": "MEA",
+     "skills": [
+      "1.A",
+      "1.C",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Describe the circular flow and measure GDP by the expenditure, income and value-added approaches."
+     ],
+     "knowledge": [
+      "GDP is the market value of final goods and services produced in a country in a year.",
+      "Expenditure: C + I + G + (X - M); intermediate goods, used goods and transfers are not counted."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.2",
+     "slug": "gdp-limitations",
+     "title": "Limitations of GDP",
+     "bigIdea": "MEA",
+     "skills": [
+      "1.D",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain what GDP leaves out as a measure of well-being."
+     ],
+     "knowledge": [
+      "GDP leaves out nonmarket and underground activity, leisure, the environment and how output is shared."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.3",
+     "slug": "unemployment",
+     "title": "Unemployment",
+     "bigIdea": "MEA",
+     "skills": [
+      "1.B",
+      "1.C",
+      "2.A",
+      "2.C"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Calculate the unemployment and participation rates and tell frictional, structural and cyclical unemployment apart."
+     ],
+     "knowledge": [
+      "Unemployment rate = unemployed / labor force x 100; participation rate = labor force / adult population x 100.",
+      "Natural rate = frictional + structural; cyclical = actual minus natural.",
+      "Discouraged workers are not in the labor force, so the rate understates joblessness."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.4",
+     "slug": "price-indices-inflation",
+     "title": "Price Indices and Inflation",
+     "bigIdea": "MEA",
+     "skills": [
+      "1.C",
+      "2.C",
+      "3.C"
+     ],
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Calculate a price index, the inflation rate and a real value, and name what a price index misses."
+     ],
+     "knowledge": [
+      "CPI = cost of a fixed basket now / cost in the base year x 100.",
+      "Inflation is the percent change in a price index; deflation is a falling price level, disinflation a falling inflation rate.",
+      "Substitution bias can overstate inflation. (Calculating the PPI is beyond the course.)"
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.5",
+     "slug": "inflation-costs",
+     "title": "Costs of Inflation",
+     "bigIdea": "MEA",
+     "skills": [
+      "1.A",
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain who gains and who loses from inflation, expected and unexpected."
+     ],
+     "knowledge": [
+      "Unexpected inflation helps borrowers with fixed rates and hurts lenders, savers and people on fixed incomes.",
+      "Inflation also brings menu and shoe-leather costs."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.6",
+     "slug": "real-nominal-gdp",
+     "title": "Real v. Nominal GDP",
+     "bigIdea": "MEA",
+     "skills": [
+      "1.C",
+      "2.C",
+      "3.C"
+     ],
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Convert nominal GDP to real GDP with the GDP deflator and calculate growth."
+     ],
+     "knowledge": [
+      "Nominal GDP uses current prices; real GDP uses base-year prices.",
+      "GDP deflator = nominal GDP / real GDP x 100; real GDP = nominal / deflator x 100."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.7",
+     "slug": "business-cycles",
+     "title": "Business Cycles",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.A",
+      "1.B",
+      "4.A"
+     ],
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Describe the phases of the business cycle and connect them to unemployment and inflation."
+     ],
+     "knowledge": [
+      "The business cycle alternates expansion and contraction around the economy's potential output.",
+      "In a contraction cyclical unemployment rises; near the peak inflationary pressure builds."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "id": "unit-3",
+   "title": "National Income and Price Determination",
+   "weight": "17-27%",
+   "topics": [
+    {
+     "id": "3.1",
+     "slug": "aggregate-demand",
+     "title": "Aggregate Demand (AD)",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.A",
+      "4.A"
+     ],
+     "practices": [
+      1,
+      2,
+      4
+     ],
+     "objectives": [
+      "Explain why AD slopes down and what shifts it."
+     ],
+     "knowledge": [
+      "AD slopes down because of the real wealth, interest rate and exchange rate effects.",
+      "Changes in C, I, G or X - M not caused by the price level shift AD."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.2",
+     "slug": "multipliers",
+     "title": "Multipliers",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.C",
+      "2.C",
+      "3.C"
+     ],
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Calculate MPC, MPS and the spending and tax multipliers, and the change in spending or taxes that closes a gap."
+     ],
+     "knowledge": [
+      "MPC = change in consumption / change in disposable income; MPC + MPS = 1.",
+      "Spending multiplier = 1 / MPS; tax multiplier = -MPC / MPS.",
+      "To close a gap, divide the gap by the multiplier; the direction comes first."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.3",
+     "slug": "sras",
+     "title": "Short-Run Aggregate Supply (SRAS)",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.A",
+      "4.A"
+     ],
+     "practices": [
+      1,
+      2,
+      4
+     ],
+     "objectives": [
+      "Explain why SRAS slopes up and what shifts it."
+     ],
+     "knowledge": [
+      "In the short run nominal wages and some prices are sticky, so output rises with the price level.",
+      "Input prices, productivity and inflation expectations shift SRAS."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.4",
+     "slug": "lras",
+     "title": "Long-Run Aggregate Supply (LRAS)",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.A",
+      "2.A",
+      "4.A"
+     ],
+     "practices": [
+      1,
+      2,
+      4
+     ],
+     "objectives": [
+      "Explain why LRAS is vertical at full-employment output and how it links to the PPC."
+     ],
+     "knowledge": [
+      "In the long run wages and prices are flexible, so output returns to potential whatever the price level.",
+      "LRAS sits at full-employment output; it shifts with the quantity and quality of resources and technology, as the PPC does."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.5",
+     "slug": "adas-equilibrium",
+     "title": "Equilibrium in the Aggregate Demand-Aggregate Supply (AD-AS) Model",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.A",
+      "2.A",
+      "4.A",
+      "4.B"
+     ],
+     "practices": [
+      1,
+      2,
+      4
+     ],
+     "objectives": [
+      "Show short- and long-run equilibrium and recessionary and inflationary gaps on the AD-AS graph."
+     ],
+     "knowledge": [
+      "Short-run equilibrium is where AD meets SRAS; long-run equilibrium also lies on LRAS.",
+      "Output below potential is a recessionary gap, above it an inflationary gap."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.6",
+     "slug": "adas-short-run-changes",
+     "title": "Changes in the AD-AS Model in the Short Run",
+     "bigIdea": "MOD",
+     "skills": [
+      "2.A",
+      "2.B",
+      "3.A",
+      "4.C"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Show how AD and SRAS shocks change output, the price level and unemployment in the short run."
+     ],
+     "knowledge": [
+      "A positive AD shock raises output and the price level (demand-pull inflation); a negative SRAS shock raises the price level and lowers output (cost-push inflation, stagflation)."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.7",
+     "slug": "long-run-self-adjustment",
+     "title": "Long-Run Self-Adjustment",
+     "bigIdea": "MOD",
+     "skills": [
+      "2.A",
+      "2.B",
+      "3.A",
+      "4.C"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Explain how the economy returns to full employment on its own, through SRAS, with the cause."
+     ],
+     "knowledge": [
+      "With no policy, nominal wages and input prices adjust: in a recessionary gap they fall and SRAS shifts right; in an inflationary gap they rise and SRAS shifts left, until output is back at potential.",
+      "AD and automatic stabilizers are not the self-adjustment mechanism."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.8",
+     "slug": "fiscal-policy",
+     "title": "Fiscal Policy",
+     "bigIdea": "POL",
+     "skills": [
+      "2.A",
+      "2.B",
+      "3.A",
+      "3.C",
+      "4.C"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Explain how changes in government spending and taxes close a gap, with the multiplier."
+     ],
+     "knowledge": [
+      "Expansionary fiscal policy raises spending or cuts taxes; contractionary does the reverse.",
+      "A change in spending has a bigger effect than the same change in taxes."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.9",
+     "slug": "automatic-stabilizers",
+     "title": "Automatic Stabilizers",
+     "bigIdea": "POL",
+     "skills": [
+      "1.A",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how progressive taxes and transfers soften the business cycle without new laws."
+     ],
+     "knowledge": [
+      "Progressive income taxes and unemployment compensation change by themselves with the cycle, supporting disposable income and consumption in a downturn."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "id": "unit-4",
+   "title": "Financial Sector",
+   "weight": "18-23%",
+   "topics": [
+    {
+     "id": "4.1",
+     "slug": "financial-assets",
+     "title": "Financial Assets",
+     "bigIdea": "MKT",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Describe money, bonds and stocks, and why bond prices and interest rates move in opposite directions."
+     ],
+     "knowledge": [
+      "Assets differ in liquidity, return and risk.",
+      "When interest rates rise, the prices of existing bonds fall, and the reverse."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.2",
+     "slug": "nominal-real-rates",
+     "title": "Nominal v. Real Interest Rates",
+     "bigIdea": "MEA",
+     "skills": [
+      "1.C",
+      "2.A",
+      "2.C"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Calculate the real interest rate and explain who gains when inflation differs from what was expected."
+     ],
+     "knowledge": [
+      "Real interest rate = nominal rate minus expected inflation.",
+      "Unexpected inflation lowers the real rate a lender earns, so borrowers gain."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.3",
+     "slug": "money-functions",
+     "title": "Definition, Measurement, and Functions of Money",
+     "bigIdea": "MEA",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Name the functions of money and what M1 and M2 include."
+     ],
+     "knowledge": [
+      "Money is a medium of exchange, a unit of account and a store of value.",
+      "M1 is currency, checkable deposits and savings deposits; M2 adds small time deposits and money market funds."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.4",
+     "slug": "banking-money-supply",
+     "title": "Banking and the Expansion of the Money Supply",
+     "bigIdea": "MEA",
+     "skills": [
+      "1.C",
+      "2.C",
+      "3.C"
+     ],
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Use a bank balance sheet, the reserve requirement and the money multiplier to find how much loans can change the money supply."
+     ],
+     "knowledge": [
+      "Fractional reserve banks keep part of deposits as reserves and lend the rest.",
+      "Required reserves = deposits x reserve ratio; excess = total reserves minus required; money multiplier = 1 / reserve ratio (limited reserves).",
+      "A deposit of cash does not change the money supply at first; new loans do."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.5",
+     "slug": "money-market",
+     "title": "The Money Market",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.A",
+      "2.A",
+      "3.A",
+      "4.A",
+      "4.B",
+      "4.C"
+     ],
+     "practices": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Draw the money market and show how a change in money demand or supply changes the nominal interest rate."
+     ],
+     "knowledge": [
+      "Money demand slopes down against the nominal interest rate (the opportunity cost of holding money); it shifts with the price level and real GDP.",
+      "Money supply is vertical, set by the central bank."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.6",
+     "slug": "monetary-policy",
+     "title": "Monetary Policy",
+     "bigIdea": "POL",
+     "skills": [
+      "2.A",
+      "2.B",
+      "3.A",
+      "3.B",
+      "4.A",
+      "4.C"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Explain how the central bank sets interest rates with ample reserves (administered rates) and with limited reserves (open market operations), and the effects on output."
+     ],
+     "knowledge": [
+      "With ample reserves the Federal Reserve sets its policy rate with administered rates, chiefly the interest on reserves; reserve supply crosses reserve demand in its flat range.",
+      "With limited reserves open market operations, the discount rate and the reserve requirement shift money supply.",
+      "A lower policy rate raises investment and consumption, so AD rises."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.7",
+     "slug": "loanable-funds",
+     "title": "The Loanable Funds Market",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.A",
+      "2.A",
+      "3.A",
+      "3.B",
+      "4.A",
+      "4.C"
+     ],
+     "practices": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Draw the loanable funds market and show how saving, borrowing and government deficits change the real interest rate."
+     ],
+     "knowledge": [
+      "Saving supplies loanable funds and borrowing demands them; the price is the real interest rate.",
+      "Government borrowing raises the demand for loanable funds (or lowers supply), raising the real rate."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "id": "unit-5",
+   "title": "Long-Run Consequences of Stabilization Policies",
+   "weight": "20-30%",
+   "topics": [
+    {
+     "id": "5.1",
+     "slug": "policy-short-run",
+     "title": "Fiscal and Monetary Policy Actions in the Short Run",
+     "bigIdea": "POL",
+     "skills": [
+      "2.A",
+      "2.B",
+      "3.A",
+      "3.B",
+      "4.C"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Trace a fiscal or monetary action through every link to output, the price level and unemployment."
+     ],
+     "knowledge": [
+      "A complete chain names each link: policy, interest rate, investment and consumption, AD, output and price level.",
+      "Fiscal and monetary policy can work together or against each other (the policy mix)."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "5.2",
+     "slug": "phillips-curve",
+     "title": "The Phillips Curve",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.A",
+      "2.A",
+      "3.A",
+      "4.A",
+      "4.B",
+      "4.C"
+     ],
+     "practices": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Draw the short- and long-run Phillips curves and show how AD shocks, supply shocks and expectations move them."
+     ],
+     "knowledge": [
+      "The short-run Phillips curve slopes down: an AD shift trades unemployment for inflation along it.",
+      "The long-run Phillips curve is vertical at the natural rate; a supply shock or a change in expected inflation shifts the short-run curve."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "5.3",
+     "slug": "money-growth-inflation",
+     "title": "Money Growth and Inflation",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.A",
+      "1.C",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Use the quantity theory of money to explain long-run inflation."
+     ],
+     "knowledge": [
+      "M x V = P x Y; with velocity and real output steady in the long run, faster money growth means higher inflation."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "5.4",
+     "slug": "deficits-debt",
+     "title": "Government Deficits and the National Debt",
+     "bigIdea": "POL",
+     "skills": [
+      "1.A",
+      "1.C",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Tell a budget deficit from the national debt and explain how they change."
+     ],
+     "knowledge": [
+      "A deficit is one year's outlays above tax revenue; the national debt is the sum of past deficits minus surpluses."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "5.5",
+     "slug": "crowding-out",
+     "title": "Crowding Out",
+     "bigIdea": "POL",
+     "skills": [
+      "2.A",
+      "2.B",
+      "3.B",
+      "4.C"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Explain how deficit spending raises the real interest rate and lowers private investment and long-run growth."
+     ],
+     "knowledge": [
+      "Government borrowing raises the demand for loanable funds, the real interest rate rises and private investment falls.",
+      "Less investment means a smaller capital stock and slower long-run growth."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "5.6",
+     "slug": "economic-growth",
+     "title": "Economic Growth",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.A",
+      "2.A",
+      "3.A",
+      "4.A",
+      "4.C"
+     ],
+     "practices": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Show economic growth on the PPC and LRAS and explain what causes it."
+     ],
+     "knowledge": [
+      "Growth in real GDP per capita comes from more and better physical and human capital, natural resources and technology.",
+      "It shows as the PPC and LRAS shifting out."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "5.7",
+     "slug": "growth-policy",
+     "title": "Public Policy and Economic Growth",
+     "bigIdea": "POL",
+     "skills": [
+      "1.B",
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain policies that promote long-run growth."
+     ],
+     "knowledge": [
+      "Spending on education, infrastructure and research, and incentives to save and invest, raise long-run growth.",
+      "Supply-side policies aim at LRAS rather than AD."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "id": "unit-6",
+   "title": "Open Economy: International Trade and Finance",
+   "weight": "10-13%",
+   "topics": [
+    {
+     "id": "6.1",
+     "slug": "balance-of-payments",
+     "title": "Balance of Payments Accounts",
+     "bigIdea": "MEA",
+     "skills": [
+      "1.A",
+      "1.C",
+      "2.C"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Record transactions in the current account and the capital and financial account, which sum to zero."
+     ],
+     "knowledge": [
+      "The current account records trade in goods and services, net income and transfers; the capital and financial account records asset purchases.",
+      "A current account deficit is matched by a financial account surplus."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "6.2",
+     "slug": "exchange-rates",
+     "title": "Exchange Rates",
+     "bigIdea": "MEA",
+     "skills": [
+      "1.A",
+      "1.C"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Read and convert exchange rates and tell appreciation from depreciation."
+     ],
+     "knowledge": [
+      "An exchange rate is the price of one currency in units of another; one rate is the reciprocal of the other.",
+      "A currency appreciates when it buys more of the other currency."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "6.3",
+     "slug": "foreign-exchange-market",
+     "title": "The Foreign Exchange Market",
+     "bigIdea": "MOD",
+     "skills": [
+      "1.A",
+      "2.A",
+      "4.A",
+      "4.B"
+     ],
+     "practices": [
+      1,
+      2,
+      4
+     ],
+     "objectives": [
+      "Draw the market for a currency with the price in units of the other currency per unit of this one."
+     ],
+     "knowledge": [
+      "Demand for a currency comes from foreigners buying its goods and assets; supply from its holders buying foreign goods and assets.",
+      "The vertical axis is the price of the currency in the other currency per unit (dollars per euro in the market for euros)."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "6.4",
+     "slug": "fx-policy-changes",
+     "title": "Effect of Changes in Policies and Economic Conditions on the Foreign Exchange Market",
+     "bigIdea": "MOD",
+     "skills": [
+      "2.A",
+      "2.B",
+      "3.B",
+      "4.C"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Explain how tastes, relative incomes, relative price levels and relative interest rates shift a currency's demand and supply."
+     ],
+     "knowledge": [
+      "Higher relative real interest rates raise demand for a currency; higher relative inflation lowers it.",
+      "A shift in one country's currency market shows up in the other's as the mirror shift."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "6.5",
+     "slug": "fx-net-exports",
+     "title": "Changes in the Foreign Exchange Market and Net Exports",
+     "bigIdea": "MOD",
+     "skills": [
+      "2.A",
+      "2.B",
+      "3.B"
+     ],
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Explain how appreciation and depreciation change net exports and AD."
+     ],
+     "knowledge": [
+      "An appreciating currency makes exports dearer and imports cheaper, so net exports and AD fall."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "6.6",
+     "slug": "real-rates-financial-flows",
+     "title": "Real Interest Rates and International Capital Flows",
+     "bigIdea": "MOD",
+     "skills": [
+      "2.A",
+      "2.B",
+      "3.B",
+      "4.C"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Explain how relative real interest rates move financial capital between countries and change the currency and net exports."
+     ],
+     "knowledge": [
+      "Higher relative real interest rates draw financial capital in, raising demand for the currency, so it appreciates and net exports fall."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/apmacro-research/framework.md section 3 (from scoring guidelines and Chief Reader Reports, not the CED text: needs-author ced-text); focus skills ours (needs-author topic-skills)"
+    }
+   ]
+  }
+ ],
+ "skillsTopics": [
+  {
+   "slug": "axes-points",
+   "title": "Axes, Variables and Points",
+   "before": "scarcity",
+   "skills": [
+    "4.A"
+   ],
+   "practices": [
+    4
+   ],
+   "objectives": [
+    "Read and label two axes, plot a point and tell a positive from a negative relationship."
+   ],
+   "knowledge": [
+    "Each axis is one variable with its name and units; a point is one pair of values.",
+    "A curve rising left to right shows a positive (direct) relationship; falling, a negative (inverse) one."
+   ]
+  },
+  {
+   "slug": "slopes-curves",
+   "title": "Slopes and Curve Shapes",
+   "before": "scarcity",
+   "skills": [
+    "4.A"
+   ],
+   "practices": [
+    4
+   ],
+   "objectives": [
+    "Find a slope and tell upward, downward, vertical and horizontal curves apart."
+   ],
+   "knowledge": [
+    "Slope is rise over run; a vertical line means the horizontal variable does not respond, a horizontal line that the vertical one does not."
+   ]
+  },
+  {
+   "slug": "shifts-movements",
+   "title": "Shifts Versus Movements Along a Curve",
+   "before": "scarcity",
+   "skills": [
+    "4.B",
+    "4.C"
+   ],
+   "practices": [
+    4
+   ],
+   "objectives": [
+    "Tell a movement along a curve (a change in a variable on an axis) from a shift of the curve (a change in anything else)."
+   ],
+   "knowledge": [
+    "A change in a variable on an axis moves you along the curve.",
+    "A change in anything else shifts the whole curve: right means more at every price, left means less."
+   ]
+  },
+  {
+   "slug": "curves-crossing",
+   "title": "Where Curves Cross",
+   "before": "scarcity",
+   "skills": [
+    "4.B",
+    "4.C"
+   ],
+   "practices": [
+    4
+   ],
+   "objectives": [
+    "Read where two curves cross and compare the new crossing with the old one."
+   ],
+   "knowledge": [
+    "Where two curves cross, both relationships hold at once.",
+    "After a shift, compare the new crossing with the old one on each axis: higher, lower or the same."
+   ]
+  }
+ ],
+ "topicCount": 42,
+ "topicCountByUnit": {
+  "1": 6,
+  "2": 7,
+  "3": 9,
+  "4": 7,
+  "5": 7,
+  "6": 6
+ },
+ "exam": {
+  "date2027": "2027-05-07",
+  "day": "Friday",
+  "session": "Session 2",
+  "totalTime": "about 2 h 10 min",
+  "delivery": "Hybrid digital: multiple choice in Bluebook; free responses shown in Bluebook and handwritten (graphs drawn by hand) in a paper booklet.",
+  "mcq": {
+   "questions": 60,
+   "minutes": 70,
+   "weight": "66%",
+   "options": "not confirmed (5 on older exams; needs-author mcq-options)"
+  },
+  "frq": {
+   "questions": 3,
+   "minutes": 60,
+   "readingMinutes": 10,
+   "weight": "33%",
+   "types": {
+    "long": "Q1, 10 points, half the section, about 25 min",
+    "short": "Q2 and Q3, 5 points each, a quarter of the section each, about 12 min each"
+   }
+  },
+  "calculator": "Four-function (add, subtract, multiply, divide, square root, percent) on both sections; Bluebook has one built in.",
+  "reference": "No formula sheet."
+ }
+}

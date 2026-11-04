@@ -1,0 +1,503 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 2 (docs/apmacro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmacro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-2",
+   "id": "u2-gdp-expenditure",
+   "topic": "gdp-circular-flow",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "GDP from spending",
+   "context": "<p>Corlin, an invented country, billions of dollars in one year:</p><table class=\"mac-data\"><tr><th scope=\"row\">Consumption</th><td>600</td></tr><tr><th scope=\"row\">Investment</th><td>150</td></tr><tr><th scope=\"row\">Government purchases of goods and services</th><td>200</td></tr><tr><th scope=\"row\">Exports</th><td>80</td></tr><tr><th scope=\"row\">Imports</th><td>100</td></tr><tr><th scope=\"row\">Transfer payments</th><td>50</td></tr></table>",
+   "prompt": "<b>Calculate</b> Corlin's GDP, and <b>explain</b> why one item in the table is left out.",
+   "checklist": [
+    "Uses GDP = C + I + G + (X - M): 600 + 150 + 200 + (80 - 100)",
+    "Gets a GDP of 930 billion dollars for the year",
+    "Leaves out transfer payments because they buy no new good or service"
+   ],
+   "earns": {
+    "answer": "GDP = C + I + G + (X - M) = 600 + 150 + 200 + (80 - 100) = 930 billion dollars. Transfer payments (50 billion) are left out: they move income from taxpayers to recipients but pay for no new good or service.",
+    "why": "It writes the formula with the values, gets the total, and gives the reason for the item left out."
+   },
+   "misses": {
+    "answer": "GDP is 600 + 150 + 200 + 80 + 100 + 50 = 1,180 billion dollars.",
+    "why": "Imports are subtracted, not added, and transfer payments are not purchases of output."
+   },
+   "specific": {
+    "slots": {
+     "m": {
+      "label": "Imports",
+      "options": [
+       "subtracted",
+       "added"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Imports are made abroad, so they are taken out of spending on domestic output."
+      }
+     },
+     "tr": {
+      "label": "Transfer payments",
+      "options": [
+       "left out",
+       "added to G"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Transfers buy no good or service, so they are not part of government purchases."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-gdp-left-out",
+   "topic": "gdp-circular-flow",
+   "practice": "1.B",
+   "skill": "identify",
+   "title": "What GDP counts",
+   "prompt": "This year Ada buys a used car for \\$8,000 and shares in a company for \\$2,000. <b>Explain</b> how each purchase affects this year's GDP.",
+   "checklist": [
+    "Says the used car adds nothing: it was produced and counted in an earlier year",
+    "Says the shares add nothing: they are a transfer of ownership, not new output",
+    "Adds that a dealer's fee for the sale would count, as a service produced this year"
+   ],
+   "earns": {
+    "answer": "Neither purchase adds to this year's GDP. The used car was counted in the year it was made, so selling it again is not new production. Shares in a company pass ownership of a company from one person to another; no good or service is produced. Only a fee paid this year to a dealer or broker for the sale would count, as a service produced now.",
+    "why": "It gives the reason for each purchase in terms of new final production and notes what would count."
+   },
+   "misses": {
+    "answer": "Both add to GDP, \\$10,000 in all, because Ada paid for them this year.",
+    "why": "Spending is counted only when it buys new final goods and services; a used car and company shares are neither."
+   },
+   "specific": {
+    "slots": {
+     "car": {
+      "label": "The used car",
+      "options": [
+       "not counted this year",
+       "counted as consumption"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "It was counted when it was produced, so counting it again would double count."
+      }
+     },
+     "shares": {
+      "label": "The shares",
+      "options": [
+       "not counted",
+       "counted as investment"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "In GDP, investment means new capital goods, not shares in a company."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-gdp-per-capita",
+   "topic": "gdp-limitations",
+   "practice": "1.D",
+   "skill": "identify",
+   "title": "GDP per capita and well-being",
+   "prompt": "Country L's GDP grows 2% a year while its population grows 3% a year. <b>Explain</b> what happens to GDP per capita, and <b>identify</b> one thing GDP per capita still leaves out about well-being.",
+   "checklist": [
+    "States GDP per capita falls, because population grows faster than GDP",
+    "Names one thing left out, such as leisure, pollution, nonmarket work or how income is shared",
+    "Links that item to why GDP per capita is an imperfect measure"
+   ],
+   "earns": {
+    "answer": "GDP per capita is GDP divided by population. Population is growing faster than GDP, so GDP per capita falls, even though total GDP grows. It still leaves out nonmarket activity, such as care given at home, so it understates what people produce and enjoy.",
+    "why": "It reasons from the two growth rates to the per-person result and names a specific limitation with its effect."
+   },
+   "misses": {
+    "answer": "GDP per capita rises because GDP is growing.",
+    "why": "Total GDP grows, but more slowly than the population, so the amount per person falls; no limitation is named."
+   },
+   "specific": {
+    "slots": {
+     "pc": {
+      "label": "GDP per capita",
+      "options": [
+       "falls",
+       "rises",
+       "stays the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Population grows by more than GDP, so each person's share shrinks.",
+       "2": "The two growth rates differ, so the ratio changes."
+      }
+     },
+     "left": {
+      "label": "Something it leaves out",
+      "options": [
+       "unpaid care work at home",
+       "spending on new houses"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "New houses are counted, as investment."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-unemployment-rate",
+   "topic": "unemployment",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Unemployment and participation rates",
+   "context": "<p>Sennet, an invented country, millions of people:</p><table class=\"mac-data\"><tr><th scope=\"row\">Adult population</th><td>300</td></tr><tr><th scope=\"row\">Employed</th><td>190</td></tr><tr><th scope=\"row\">Unemployed</th><td>10</td></tr></table>",
+   "prompt": "<b>Calculate</b> Sennet's unemployment rate and its labor force participation rate, and <b>show</b> your work.",
+   "checklist": [
+    "Finds the labor force: 190 + 10 = 200 million",
+    "Unemployment rate: 10 / 200 x 100 = 5%",
+    "Participation rate: 200 / 300 x 100, about 66.7%"
+   ],
+   "earns": {
+    "answer": "The labor force is the employed plus the unemployed: 190 + 10 = 200 million. The unemployment rate is 10 / 200 x 100 = 5%. The participation rate is the labor force divided by the adult population: 200 / 300 x 100, about 66.7%.",
+    "why": "Each rate has its formula with the right denominator and the values filled in."
+   },
+   "misses": {
+    "answer": "The unemployment rate is 10 / 300, about 3.3%, and participation is 190 / 300.",
+    "why": "The unemployment rate divides by the labor force, not the adult population, and the labor force includes the unemployed."
+   },
+   "specific": {
+    "slots": {
+     "lf": {
+      "label": "The labor force",
+      "options": [
+       "200 million",
+       "190 million",
+       "300 million"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The unemployed are part of the labor force too.",
+       "2": "300 million is the adult population, which includes people not in the labor force."
+      }
+     },
+     "ur": {
+      "label": "The unemployment rate",
+      "options": [
+       "5%",
+       "about 3.3%",
+       "about 5.3%"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That divides by adults; divide by the labor force.",
+       "2": "That divides by the employed; divide by the labor force."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-cyclical",
+   "topic": "unemployment",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Natural and cyclical unemployment",
+   "prompt": "Halvet's unemployment rate is 7%. Frictional unemployment is 2% and structural unemployment is 3%. <b>Calculate</b> the natural rate and cyclical unemployment, and <b>explain</b> what the cyclical rate tells you.",
+   "checklist": [
+    "Natural rate = frictional + structural = 2% + 3% = 5%",
+    "Cyclical = actual - natural = 7% - 5% = 2%",
+    "Says positive cyclical unemployment means output is below potential: a downturn"
+   ],
+   "earns": {
+    "answer": "The natural rate is frictional plus structural: 2% + 3% = 5%. Cyclical unemployment is the actual rate minus the natural rate: 7% - 5% = 2%. A positive cyclical rate means the economy is producing below its potential output, as in a contraction.",
+    "why": "Both formulas are written with values, and the meaning of the cyclical rate is stated."
+   },
+   "misses": {
+    "answer": "The natural rate is 7%, because that is the unemployment rate.",
+    "why": "The natural rate leaves out cyclical unemployment; it is frictional plus structural, 5%."
+   },
+   "specific": {
+    "slots": {
+     "nat": {
+      "label": "The natural rate",
+      "options": [
+       "5%",
+       "7%",
+       "12%"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "7% is the actual rate, which includes cyclical unemployment.",
+       "2": "That adds the actual rate too; the natural rate is frictional plus structural."
+      }
+     },
+     "cyc": {
+      "label": "Cyclical unemployment",
+      "options": [
+       "2%",
+       "4%"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That subtracts structural alone; subtract the whole natural rate."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-structural",
+   "topic": "unemployment",
+   "practice": "1.B",
+   "skill": "identify",
+   "title": "Naming a type of unemployment",
+   "prompt": "Pia ran a printing press for 15 years. Her plant switched to digital machines, and the jobs near her need computer skills she does not have. She is looking for work. <b>Identify</b> the type of unemployment and <b>explain</b> your answer.",
+   "checklist": [
+    "Names structural unemployment",
+    "Explains her skills no longer match the jobs available",
+    "Says it is not cyclical: the cause is a change in technology, not a downturn"
+   ],
+   "earns": {
+    "answer": "Pia is structurally unemployed. The jobs open near her need skills she lacks, because technology changed what her industry needs; her skills no longer match the jobs. It is not cyclical, since the cause is not a fall in overall spending but a change in technology.",
+    "why": "It names the type, ties it to the skills mismatch, and rules out the near miss."
+   },
+   "misses": {
+    "answer": "Pia is cyclically unemployed, because she lost her job.",
+    "why": "Losing a job does not make unemployment cyclical; here the cause is a mismatch of skills after a change in technology."
+   },
+   "specific": {
+    "slots": {
+     "type": {
+      "label": "The type",
+      "options": [
+       "structural",
+       "cyclical",
+       "frictional"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cyclical unemployment comes from a downturn in the whole economy.",
+       "2": "Frictional unemployment is the time it takes to find a job one has the skills for."
+      }
+     },
+     "why": {
+      "label": "Because",
+      "options": [
+       "her skills do not match the jobs available",
+       "the economy is in a contraction"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nothing says the economy is in a downturn; her skills are the problem."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-cpi-inflation",
+   "topic": "price-indices-inflation",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "A price index and the inflation rate",
+   "prompt": "A basket of goods cost \\$250 in the base year and \\$270 a year later. <b>Calculate</b> the CPI for the later year and the inflation rate between the two years.",
+   "checklist": [
+    "CPI = 270 / 250 x 100 = 108",
+    "Inflation rate = (108 - 100) / 100 x 100 = 8%",
+    "Notes the base year's CPI is 100"
+   ],
+   "earns": {
+    "answer": "The CPI is the basket's cost now over its cost in the base year, times 100: 270 / 250 x 100 = 108. The base year is 100, so the inflation rate is (108 - 100) / 100 x 100 = 8%.",
+    "why": "The index and the rate each come with their formula and values."
+   },
+   "misses": {
+    "answer": "Prices went up by \\$20, so inflation is 20%.",
+    "why": "Inflation is the percent change in the index, (108 - 100) / 100, not the dollar change in the basket."
+   },
+   "specific": {
+    "slots": {
+     "cpi": {
+      "label": "The CPI",
+      "options": [
+       "108",
+       "92.6",
+       "20"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That divides the base-year cost by the later cost; flip it.",
+       "2": "20 is the change in dollars, not an index."
+      }
+     },
+     "rate": {
+      "label": "The inflation rate",
+      "options": [
+       "8%",
+       "20%",
+       "108%"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Divide the change by the starting value.",
+       "2": "108 is the index level, not its change."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-unanticipated",
+   "topic": "inflation-costs",
+   "practice": "2.A",
+   "skill": "identify",
+   "title": "Who loses from surprise inflation",
+   "prompt": "Joss lent his sister \\$1,000 for a year at a fixed 3%, expecting prices to be stable. Inflation turns out to be 6%. <b>Explain</b> who gains and who loses from the inflation.",
+   "checklist": [
+    "Says Joss (the lender) loses: the dollars repaid buy less than he expected",
+    "Says his sister (the borrower) gains: she repays in dollars worth less",
+    "Ties the effect to the inflation being unanticipated"
+   ],
+   "earns": {
+    "answer": "The inflation was not anticipated, so the fixed 3% did not cover it. Joss is repaid \\$1,030, but prices rose 6%, so those dollars buy less than the \\$1,000 he lent: the lender loses. His sister gains, because she repays in dollars that are worth less than when she borrowed.",
+    "why": "It names both sides, explains with buying power, and ties it to the inflation being unexpected."
+   },
+   "misses": {
+    "answer": "Everyone loses from inflation because prices are higher.",
+    "why": "Unanticipated inflation moves buying power from lenders to borrowers; the borrower here gains."
+   },
+   "specific": {
+    "slots": {
+     "lender": {
+      "label": "Joss, the lender",
+      "options": [
+       "loses",
+       "gains"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The dollars he gets back buy less than he expected."
+      }
+     },
+     "borrower": {
+      "label": "His sister, the borrower",
+      "options": [
+       "gains",
+       "loses"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "She repays in dollars worth less, which helps her."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-real-gdp",
+   "topic": "real-nominal-gdp",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Real GDP from the deflator",
+   "prompt": "Riven's nominal GDP is 1,320 billion dollars and its GDP deflator is 110. <b>Calculate</b> real GDP, and <b>explain</b> what the deflator says about prices compared with the base year.",
+   "checklist": [
+    "Real GDP = nominal / deflator x 100 = 1,320 / 110 x 100",
+    "Gets 1,200 billion dollars",
+    "Says prices are 10% higher than in the base year"
+   ],
+   "earns": {
+    "answer": "Real GDP = nominal GDP / deflator x 100 = 1,320 / 110 x 100 = 1,200 billion dollars. A deflator of 110 means prices are on average 10% higher than in the base year, so real GDP is smaller than nominal GDP.",
+    "why": "It divides by the deflator (not multiplies), shows the values, and reads the deflator correctly."
+   },
+   "misses": {
+    "answer": "Real GDP is 1,320 x 1.1 = 1,452 billion dollars.",
+    "why": "That multiplies by the deflator; removing price increases means dividing by it."
+   },
+   "specific": {
+    "slots": {
+     "op": {
+      "label": "To remove price changes",
+      "options": [
+       "divide by the deflator and multiply by 100",
+       "multiply by the deflator"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Multiplying adds the price rise again; divide to take it out."
+      }
+     },
+     "value": {
+      "label": "Real GDP",
+      "options": [
+       "1,200 billion dollars",
+       "1,452 billion dollars",
+       "1,210 billion dollars"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That multiplies by 1.1.",
+       "2": "That subtracts 110 from nominal GDP."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-output-gap",
+   "topic": "business-cycles",
+   "practice": "1.C",
+   "skill": "identify",
+   "title": "An output gap",
+   "prompt": "Bracken's potential output is 900 billion dollars, and its real GDP this year is 860 billion dollars. <b>Identify</b> the output gap and <b>explain</b> what it implies for unemployment.",
+   "checklist": [
+    "Finds real GDP is 40 billion dollars below potential output",
+    "Calls it a negative output gap",
+    "Says unemployment is above the natural rate: cyclical unemployment is positive"
+   ],
+   "earns": {
+    "answer": "Real GDP is 860, which is 900 - 860 = 40 billion dollars below potential output: a negative output gap. The economy is not using all its resources, so unemployment is above the natural rate and cyclical unemployment is positive.",
+    "why": "It sizes the gap, names its sign, and links it to unemployment."
+   },
+   "misses": {
+    "answer": "The economy is 860 billion dollars, so it is in a boom.",
+    "why": "Real GDP below potential means a negative gap and high unemployment, not a boom."
+   },
+   "specific": {
+    "slots": {
+     "gap": {
+      "label": "The gap",
+      "options": [
+       "negative, 40 billion dollars",
+       "positive, 40 billion dollars"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Real GDP is below potential, so the gap is negative."
+      }
+     },
+     "u": {
+      "label": "Unemployment",
+      "options": [
+       "above the natural rate",
+       "below the natural rate"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Output below potential means idle workers, so unemployment is above the natural rate."
+      }
+     }
+    }
+   }
+  }
+ ]
+}
