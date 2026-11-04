@@ -750,7 +750,8 @@ const BUDGETS = [
   ['macroeconomics/frq.html', 3],
   ['macroeconomics/glossary.html', 30],
   ['macroeconomics/tools.html', 5],
-  ['macroeconomics/formula-sheet.html', 14],
+  // 15: published, every term on the page links to its glossary entry (the 29 rows and nine drawn graphs measured 14.2 at launch).
+  ['macroeconomics/formula-sheet.html', 15],
   ['macroeconomics/justify.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has

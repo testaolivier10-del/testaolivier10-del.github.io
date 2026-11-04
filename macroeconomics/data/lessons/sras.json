@@ -63,10 +63,10 @@
  "check": [
   "mac-sras-8",
   "mac-sras-9",
-  "mac-sras-11",
-  "mac-sras-13",
   "mac-sras-14",
-  "mac-sras-15"
+  "mac-sras-4",
+  "mac-sras-2",
+  "mac-sras-17"
  ],
  "summary": "SRAS shows the real output firms supply at each price level while wages and some prices are sticky, so it slopes up. A change in the price level moves along SRAS. Changes in input prices, productivity, taxes and rules on firms, or the wages workers bargain for, shift it: higher costs shift SRAS left, lower costs shift it right."
 }

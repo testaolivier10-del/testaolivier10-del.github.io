@@ -1,6 +1,6 @@
 # AP® Macroeconomics course: spec and status
 
-The source of truth for LevlPrep's thirteenth course. A fresh session reads this file, `CLAUDE.md`,
+The source of truth for LevlPrep's thirteenth course (published and live since 2026-11-03, decision 13). A fresh session reads this file, `CLAUDE.md`,
 `docs/apmacro-research/framework.md` and `market.md`, not the chat history. When the plan changes, update this file
 in the same commit. Open points for a person go in `docs/apmacro-needs-author.md`.
 
@@ -83,7 +83,7 @@ One branch, `claude/apmacro`, one PR at the end.
 | 2 | Trainers (section 6) | |
 | 3 | Two practice exams, unit tests, "Make it specific" prompts, graph and formula page, cram kit | **built 2026-11-03** (section 5c, decision 11): two forms in the May 2027 format (60 standalone five-option MCQs in course order, U1 5, U2 9, U3 13, U4 12, U5 14, U6 7; 50 bank questions each with a fifth option in `data/exams/fifth.json` plus 10 exam-only; FRQs long, short, short on different units); 20 exam-only items (numbers in `EXAM_NUMBERS`, graphs in `EXAM_GRAPHS`); 64 "Make it specific" prompts (10 per unit, 4 in graph skills, every skill, a builder on each, numbers in `JUSTIFY_NUMBERS`); formula page 28 rows, 10 flagged easy to forget, 8 graphs (4 flagged) and the balance sheet; unit tests and cram kit tested on the real forms; open points under "Phase 3" in needs-author |
 | 4 | Independent accuracy checks per unit group, tools and exams | |
-| Launch | Publish, generators, continuity pass, "thirteen courses" wording, full CI with browser checks, PR | |
+| Launch | Publish, generators, continuity pass, "thirteen courses" wording, full CI with browser checks, PR | **done 2026-11-03** (decision 13, `docs/apmacro-reviews/launch.md`); PR opened by the lead |
 
 ### 5b. Phase 0 as built (2026-11-03)
 
@@ -240,10 +240,36 @@ student draws in the page (the AI grader hook only when its eval passes).
    rewritten to one key; (i) the formula page lists the balanced-budget multiplier. The course shell measures
    88.7 KB of its 89 KB budget.
 
+13. (2026-11-03, launch) **Published and live, Premium not on sale.** main merged first (the calmer site, #126,
+   applied to macro: grouped FRQ list, the Review line on weakest topics, "Explanation"). All seven chapters in
+   `macroeconomics/data/published.json` (`graph-skills`, `unit-1`..`unit-6`: 46 topics, 764 bank questions),
+   `status: 'live'` in `assets/courses.js`, every generator rerun (hub and 404 cards, premium page, sitemap, search,
+   pricing, home facts, course homes), "thirteen courses" and "ten AP® Exams" wording, `sources.html` section,
+   changelog entry, `robots.txt`, `sw.js` v105, the social card rendered, eight trainer covers. Identity: accent,
+   headline and ranks kept; cover and icon redrawn as AD-AS with LRAS (supply and demand read as micro, and the old
+   art ran under the long title); one-word long names scale on a phone (`mast-long`). Course home says "2027
+   exam". `apmacro` in the FRQ grader's `FRQ_COURSES` (still shipped off). The AD and SRAS lessons' Check yourself
+   lost their AD-AS graph items (they draw LRAS before 3.5; needs-author `adas-early-graphs`). `onSale: false`
+   stays until the owner checklist below.
+
 ## 9. Open items for the owner
 
-- Confirm the identity (provisional in Phase 0: yellow-green accent `#355A0A`, the supply and demand cover, headline
-  "every graph, every shift.", ranks Scarcity Spotter to Macroeconomics Legend; needs-author `identity`), the free
-  tier (decision 6) and free trainers (section 6) once built.
+- Confirm the identity (decision 13: yellow-green accent `#355A0A`, the AD-AS cover and icon, headline "every graph,
+  every shift.", ranks Scarcity Spotter to Macroeconomics Legend; needs-author `identity`), the free tier (decision
+  6) and free trainers (section 6), now live.
+- The rest is in `docs/apmacro-needs-author.md` (teacher questions, `ced-text`, `adas-early-graphs`).
 
-**Launch checklist (owner), to put AP® Macroeconomics Premium on sale:** filled at launch.
+**Launch checklist (owner), to put AP® Macroeconomics Premium on sale:**
+- [ ] Apply migration `scripts/sql/migrations/2026-11a-apmacro.sql` in Supabase (adds `apmacro` to the three course
+      checks and the six functions with a course list; it lists every course including `apprecalc` and
+      `apcalcbc`; needs `2026-10o-apcalcbc.sql` applied first; check the live function bodies first, as before).
+- [ ] Create the Polar product "AP® Macroeconomics Premium (through June 30, 2027)", one-time, at the AP® price
+      ($25), and make sure the "Founding member" discount applies to it.
+- [ ] Add `"macro-2027": "<id>"` to `POLAR_PRODUCTS` in the Cloudflare Worker (levlprep-ask) settings; the Worker
+      code already knows the pass (`worker/src/premium.js`) and redeploys on merge.
+- [ ] Remove `onSale: false` from `COURSES.apmacro` in `assets/premium.js`, bump `sw.js`, and grant owner access.
+- [ ] Confirm the identity (accent, cover, icon, headline, ranks), the free tier ("Graph skills you need", Units 1
+      and 2) and the three free trainers (Graph Studio, partly: Explore plus the PPC and supply-and-demand drills;
+      PPC and trade; the indicators lab).
+- [ ] Merge the PR (after the Worker line, if Premium goes on sale with the merge).
+- [ ] Optional: an AP® Macroeconomics teacher reviews the course (the "not yet reviewed" note stays until then).

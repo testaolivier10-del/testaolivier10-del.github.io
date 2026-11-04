@@ -199,7 +199,12 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.parseCourse('calculus-bc'), 'apcalcbc');
   assert.equal(A.parseCourse('calcbc'), 'apcalcbc');
   eq(A.scopeKeys('apcalcbc'), ['apcalcbc']);
-  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc']);
+  // AP® Macroeconomics (live since its launch): key apmacro, named by its folder, aliases macro and mac.
+  assert.equal(A.urlKey('apmacro'), 'macroeconomics');
+  assert.equal(A.parseCourse('macroeconomics'), 'apmacro');
+  assert.equal(A.parseCourse('macro'), 'apmacro');
+  eq(A.scopeKeys('apmacro'), ['apmacro']);
+  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro']);
   eq(A.scopeKeys('apprecalc'), ['apprecalc']);
   eq(A.scopeKeys('apenv'), ['apenv']);
   eq(A.scopeKeys('appsych'), ['appsych']);

@@ -78,9 +78,10 @@ with vertical reserve supply crossing in the flat part; raising the administered
 The scoring guidelines describe "bounds" on the policy rate (interest on reserves and the ON RRP rate). Decide
 whether the graph needs both bounds drawn before Unit 4 is reviewed.
 
-## identity: accent, cover, icon, headline and ranks (open, 2026-11-03)
+## identity: accent, cover, icon, headline and ranks (lead decided at launch, owner to confirm, 2026-11-03)
 
-All provisional (spec section 9): yellow-green accent hue 88° (`#355A0A` on `#EEF4E0`, dark `#CDE6A0`; the widest
+Launch (spec decision 13): accent, headline and ranks kept; cover and icon redrawn as AD-AS with LRAS (AD shifts
+right, new short-run equilibrium in gold). Was provisional (spec section 9): yellow-green accent hue 88° (`#355A0A` on `#EEF4E0`, dark `#CDE6A0`; the widest
 gap on the wheel, between Environmental Science's olive and Biology's green), cover `#2E4D0C` with `#C8F07A` (a
 supply and demand cross with a shifted curve), icon the same cross, headline "every graph, every shift.", ranks
 Scarcity Spotter to Macroeconomics Legend. One place: `IDENTITY` in `scripts/lib/apmacro-build.mjs`, with
@@ -92,10 +93,22 @@ Scarcity Spotter to Macroeconomics Legend. One place: `IDENTITY` in `scripts/lib
 Spec decision 6, proposed: Unit 1 alone is only 5-10% of the exam. Free trainers `graph-studio`, `ppc-trade`,
 `indicators-lab` (spec section 6). Owner to confirm.
 
-## frq-grader: the AI FRQ grader is not wired for this course (open, 2026-11-03)
+## frq-grader: the AI FRQ grader is wired, still off (launch, 2026-11-03)
+
+At launch `apmacro` joined `FRQ_COURSES` with conventions, a calibration example and four eval cases on text-only
+FRQs (`docs/frq-grader.md`); the eval has not been rerun. Was:
 
 The hook is in `pages/frq.js` as in every course; `FRQ_COURSES` does not list `apmacro`. Graph parts are checked by
 code; written parts would need their own calibration before the grader is turned on.
+
+## adas-early-graphs: AD-AS graphs before SRAS and LRAS are taught (open, launch 2026-11-03)
+
+Every `adas` graph draws AD, SRAS and LRAS. Once published, the map check found them in the Check yourself of 3.1
+(aggregate demand: `mac-aggregate-demand-14`, `-15`) and 3.3 (SRAS: `mac-sras-11`, `-13`, the `sras-s2` stimulus
+items, and `mac-sras-15`, which names LRAS), before 3.4 and 3.5 teach SRAS and LRAS. They were swapped in the
+lessons for other bank questions not on a practice exam; they stay in Practice and the unit tests. To bring graph
+drawing back into those two lessons: a graph spec option that hides curves not yet taught (`mac-graph.js`, in the
+course shell budget, 88.7 of 89 KB) or preview boxes in the dependency map.
 
 ## Phase 3
 

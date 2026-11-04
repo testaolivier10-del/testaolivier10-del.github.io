@@ -103,8 +103,9 @@ builder split, decisions); read it before AP® Macroeconomics work and update it
 `ApMacroGrade.graph`) and tool layout: `docs/apmacro-architecture.md`; writing rules (graph labeling, ample
 reserves, causal chains with every link, divide the gap, the currency axis ratio, no released questions):
 `docs/apmacro-authoring-guide.md`; map: `docs/apmacro-phase0.md`; open points: `docs/apmacro-needs-author.md`;
-briefs (authors A-F, builders T1-T4): `docs/apmacro-briefs/`. Registered hidden; Premium `onSale: false` until
-the owner checklist in spec section 9; SQL migration `2026-11a-apmacro.sql` not applied.
+briefs (authors A-F, builders T1-T4): `docs/apmacro-briefs/`; launch log: `docs/apmacro-reviews/launch.md`. Published
+and live; Premium not on sale (`onSale: false`) until the owner checklist in spec section 9 (SQL migration
+`2026-11a-apmacro.sql` not applied, Polar product, Worker setting).
 
 ## AI FRQ grader (AP® courses)
 

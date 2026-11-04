@@ -76,9 +76,9 @@
   "mac-aggregate-demand-9",
   "mac-aggregate-demand-10",
   "mac-aggregate-demand-12",
-  "mac-aggregate-demand-14",
-  "mac-aggregate-demand-15",
-  "mac-aggregate-demand-16"
+  "mac-aggregate-demand-16",
+  "mac-aggregate-demand-7",
+  "mac-aggregate-demand-11"
  ],
  "summary": "Aggregate demand is total planned spending on real output at each price level, C + I + G + (X - M). It slopes down because a lower price level raises real wealth, lowers interest rates and makes domestic goods cheaper than foreign ones. A change in the price level moves along AD; a change in spending for any other reason shifts it."
 }

@@ -98,14 +98,15 @@ test('nothing published: no topic pages, every page noindex', () => {
   for (const f of html) assert.match(readFileSync(f, 'utf8'), /<meta name="robots" content="noindex/, f);
 });
 
-test('nothing is published yet, and the course is registered hidden everywhere it is registered', () => {
-  assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters, []);
-  assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'apmacro'[\s\S]*?aliases: \['macroeconomics', 'macro', 'mac'\], paid: true, status: 'hidden', order: 13/);
-  assert.match(readFileSync('assets/site-search-all.js', 'utf8'), /key: 'apmacro'[^\n]*status: 'hidden'/);
-  assert.doesNotMatch(readFileSync('premium.html', 'utf8'), /apmacro|macroeconomics/i, 'not on the pricing page');
-  assert.doesNotMatch(readFileSync('sitemap.xml', 'utf8'), /macroeconomics/, 'not in the sitemap');
-  assert.match(readFileSync('index.html', 'utf8'), /<!-- hub-mac:start -->\s*<!-- hub-mac:end -->/, 'no hub card');
-  assert.match(readFileSync('404.html', 'utf8'), /<!-- nf-mac:start -->\s*<!-- nf-mac:end -->/, 'no 404 card');
+test('published and live everywhere it is registered (spec decision 13), Premium not on sale yet', () => {
+  assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters, ['graph-skills', 'unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6']);
+  assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'apmacro'[\s\S]*?aliases: \['macroeconomics', 'macro', 'mac'\], paid: true, status: 'live', order: 13/);
+  assert.match(readFileSync('assets/site-search-all.js', 'utf8'), /key: 'apmacro'[^\n]*status: 'live'/);
+  assert.match(readFileSync('premium.html', 'utf8'), /AP® Macroeconomics/, 'on the pricing page');
+  assert.match(readFileSync('sitemap.xml', 'utf8'), /macroeconomics\/lessons\//, 'in the sitemap');
+  assert.match(readFileSync('index.html', 'utf8'), /<!-- hub-mac:start -->\s*<a class="ccard" href="macroeconomics\/"/, 'a hub card');
+  assert.match(readFileSync('404.html', 'utf8'), /<!-- nf-mac:start -->\s*\S/, 'a 404 card');
+  assert.match(readFileSync('assets/premium.js', 'utf8'), /apmacro: \{[\s\S]*?onSale: false,/, 'not on sale until the owner checklist');
   assert.match(readFileSync('worker/src/premium.js', 'utf8'), /'macro-2027': +\{ course: 'apmacro', until: '2027-06-30T23:59:59-10:00' \}/);
   assert.match(readFileSync('sw.js', 'utf8'), /COURSE_URLS\['macroeconomics'\]/);
   assert.match(readFileSync('assets/exam-date.js', 'utf8'), /apmacro: \{ date: '2027-05-07'/);
@@ -114,7 +115,7 @@ test('nothing is published yet, and the course is registered hidden everywhere i
 test('the course home has its own headline, accent and cover, not AP® Psychology\'s', () => {
   const { root } = build('unit-3');
   const home = readFileSync(join(root, `${D}/index.html`), 'utf8');
-  assert.match(home, /<h1 class="mast" id="r3Title">AP®<span>Macroeconomics<\/span><\/h1>/);
+  assert.match(home, /<h1 class="mast mast-long" id="r3Title">AP®<span>Macroeconomics<\/span><\/h1>/); // one long word scales on a phone
   assert.doesNotMatch(home, /<p class="deck">/); // the second tagline is off course homes (owner 2026-11-02)
   assert.doesNotMatch(home, /Psychology|neuron|Curious Observer|Article analysis|Statistics you must know|score-calculator/);
   assert.match(home, /assets\/mac\.css/);
