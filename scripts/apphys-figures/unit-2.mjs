@@ -517,7 +517,7 @@ FIGS['circular-flat-curve'] = () => {
   s += line(px, py, cx, cy, C.grey, 1, '4 4');
   // the car drives clockwise (up the right side, toward the top): v is tangent, perpendicular to the radius
   s += kinArrow(px - 26, py - 26, px - 80, py - 80, C.velocity) + text(px - 92, py - 82, 'v', { size: 15, color: C.velocity, weight: 'bold', italic: true });
-  s += kinArrow(px - 24, py + 24, px - 70, py + 70, C.accel) + text(px - 100, py + 92, 'a toward center', { size: 13, color: C.accel, weight: 'bold' });
+  s += kinArrow(px - 24, py + 24, px - 70, py + 70, C.accel) + text(px - 114, py + 98, 'a toward center', { anchor: 'end', size: 13, color: C.accel, weight: 'bold' });
   s += text(200, 360, 'Velocity is tangent; acceleration points in.', { anchor: 'middle', size: 12.5, color: C.grey });
   s += panel(396, 46, 344, 334, 'Free-body diagram (car seen from behind)');
   const fx = 580, fy = 210;
@@ -673,8 +673,8 @@ export const STIM = {
   elevatorScale: () => {
     let s = rect(40, 20, 110, 220, { fill: '#F7F7F4', stroke: C.ink, width: 2.4, rx: 4 }) + line(95, 4, 95, 20, C.ink, 2);
     s += rect(65, 224, 60, 12, { fill: C.metal, rx: 2 }) + person(95, 224, 120);
-    s += line(128, 230, 166, 230, C.grey, 1.2) + text(170, 228, 'bathroom scale', { size: 12.5, color: C.grey }) + text(170, 244, 'under the rider', { size: 12.5, color: C.grey });
-    return svgInline(260, 250, 'A rider stands on a bathroom scale on the floor of an elevator.', s);
+    s += line(128, 230, 160, 230, C.grey, 1.2) + text(164, 228, 'bathroom scale', { size: 12.5, color: C.grey }) + text(164, 244, 'under the rider', { size: 12.5, color: C.grey });
+    return svgInline(272, 250, 'A rider stands on a bathroom scale on the floor of an elevator.', s);
   },
   // 2.7: crate on a ramp at rest
   crateRamp: () => {

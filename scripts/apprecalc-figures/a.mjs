@@ -27,6 +27,20 @@ const minus = s => String(s).replace(/-/g, '−');
    curves: [{ fn, domain, color, dashed, width }], vlines: [{ x, color }], hlines: [{ y, color }],
    segs: [{ from: [x, y], to: [x, y], color, dashed }], lines: [{ through: [[x1, y1], [x2, y2]], color, dashed }],
    points: [{ at, open, color, shape }], labels: [{ at, text, color, anchor, dx, dy, size, bold }] } */
+/* Tick labels avoid the drawing: each number tries its usual place, then the other side of
+   its axis, and keeps the first place no thick curve or line runs through (legibility sweep). */
+function sampleSeg(ink, X1, Y1, X2, Y2) { const n = Math.max(2, Math.ceil(Math.hypot(X2 - X1, Y2 - Y1) / 2)); const r = []; for (let i = 0; i <= n; i++) r.push([X1 + (X2 - X1) * i / n, Y1 + (Y2 - Y1) * i / n]); ink.push(r); }
+function tickPlace(ink, box, str, cands) {
+  const w = 7.4 * [...str].length, hits = c => {
+    const l = c.anchor === 'middle' ? c.x - w / 2 : c.anchor === 'end' ? c.x - w : c.x, t = c.y - 12;
+    let k = 0; for (const run of ink) for (const [X, Y] of run) if (X > l - 4 && X < l + w + 4 && Y > t - 3 && Y < c.y + 5 && (run.free || (X >= box.l && X <= box.r && Y >= box.t && Y <= box.b))) k++;
+    return k;
+  };
+  let best = cands[0], bh = Infinity;
+  for (const c of cands) { const h = hits(c); if (h === 0) return c; if (h < bh) { bh = h; best = c; } }
+  return best;
+}
+
 function plot(s) {
   const W = s.w || 640, H = s.h || 420, L = 56, R = 20, T = 18, B = 50;
   const [x0, x1] = s.x, [y0, y1] = s.y;
@@ -43,8 +57,14 @@ function plot(s) {
   const ax = y0 <= 0 && 0 <= y1 ? sy(0) : H - B, ay = x0 <= 0 && 0 <= x1 ? sx(0) : L;
   out.push(`<line x1="${L}" y1="${n2(ax)}" x2="${W - R}" y2="${n2(ax)}" stroke="${INK}" stroke-width="1.4"/>`);
   out.push(`<line x1="${n2(ay)}" y1="${T}" x2="${n2(ay)}" y2="${H - B}" stroke="${INK}" stroke-width="1.4"/>`);
-  for (const v of xt) if (v !== 0) out.push(`<text x="${n2(sx(v))}" y="${n2(ax + 17)}" font-size="13" fill="${INK}" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">${minus(v)}</text>`);
-  for (const v of yt) if (v !== 0) out.push(`<text x="${n2(ay - 6)}" y="${n2(sy(v) + 4.5)}" font-size="13" fill="${INK}" text-anchor="end" paint-order="stroke" stroke="#FFFFFF" stroke-width="3">${minus(v)}</text>`);
+  // tick labels are drawn after the curves (below) so a curve never runs through a number
+  const ink = [], box = { l: L, r: W - R, t: T, b: H - B };
+  const tickText = () => {
+    const o = [], tx = (c, str) => o.push(`<text x="${n2(c.x)}" y="${n2(c.y)}" font-size="13" fill="${INK}" text-anchor="${c.anchor}" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">${str}</text>`);
+    for (const v of xt) if (v !== 0) tx(tickPlace(ink, box, minus(v), [{ x: sx(v), y: ax + 17, anchor: 'middle' }, { x: sx(v), y: ax - 7, anchor: 'middle' }, { x: sx(v) - 4, y: ax + 17, anchor: 'end' }, { x: sx(v) + 4, y: ax + 17, anchor: 'start' }, { x: sx(v) - 4, y: ax - 7, anchor: 'end' }, { x: sx(v) + 4, y: ax - 7, anchor: 'start' }]), minus(v));
+    for (const v of yt) if (v !== 0) tx(tickPlace(ink, box, minus(v), [{ x: ay - 6, y: sy(v) + 4.5, anchor: 'end' }, { x: ay + 6, y: sy(v) + 4.5, anchor: 'start' }, ...[14, 22, 30, 38].flatMap(d => [{ x: ay - d, y: sy(v) + 4.5, anchor: 'end' }, { x: ay + d, y: sy(v) + 4.5, anchor: 'start' }])]), minus(v));
+    return o;
+  };
   out.push(`<text x="${W - R - 4}" y="${n2(ax - 8)}" font-size="15" fill="${INK}" text-anchor="end" font-style="italic">${esc(s.xLabel || 'x')}</text>`);
   out.push(`<text x="${n2(ay + 8)}" y="${T + 14}" font-size="15" fill="${INK}" font-style="italic">${esc(s.yLabel || 'y')}</text>`);
   out.push('<g clip-path="url(#c)">');
@@ -53,7 +73,9 @@ function plot(s) {
   for (const l of s.lines || []) {
     const [[a, b], [c, d]] = l.through, m = (d - b) / (c - a), yAt = x => b + m * (x - a);
     out.push(`<line x1="${n2(sx(x0))}" y1="${n2(sy(yAt(x0)))}" x2="${n2(sx(x1))}" y2="${n2(sy(yAt(x1)))}" stroke="${COLORS[l.color || 'blue']}" stroke-width="2"${l.dashed ? ' stroke-dasharray="7 5"' : ''}/>`);
+    sampleSeg(ink, sx(x0), sy(yAt(x0)), sx(x1), sy(yAt(x1)));
   }
+  for (const g of s.segs || []) sampleSeg(ink, sx(g.from[0]), sy(g.from[1]), sx(g.to[0]), sy(g.to[1]));
   for (const g of s.segs || []) out.push(`<line x1="${n2(sx(g.from[0]))}" y1="${n2(sy(g.from[1]))}" x2="${n2(sx(g.to[0]))}" y2="${n2(sy(g.to[1]))}" stroke="${COLORS[g.color || 'blue']}" stroke-width="2"${g.dashed === false ? '' : ' stroke-dasharray="6 4"'}/>`);
   for (const c of s.curves || []) {
     const f = Expr.fn(c.fn, ['x']);
@@ -66,9 +88,19 @@ function plot(s) {
       if (prev && Math.abs(prev[1] - y) > 1.5 * span) runs.push([]);
       runs[runs.length - 1].push([x, y]);
     }
+    for (const r of runs) if (r.length > 1) ink.push(r.map(([x, y]) => [sx(x), sy(y)]));
     for (const r of runs) if (r.length > 1) out.push(`<polyline points="${r.map(([x, y]) => `${n2(sx(x))},${n2(sy(y))}`).join(' ')}" fill="none" stroke="${COLORS[c.color || 'green']}" stroke-width="${c.width || 2.8}"${c.dashed ? ' stroke-dasharray="7 5"' : ''} stroke-linejoin="round" stroke-linecap="round"/>`);
   }
   out.push('</g>');
+  // labels and dots are things a tick number must not sit on either: add their boxes as solid patches
+  const patch = (l, t, r, b) => { const run = []; for (let X = l; X <= r; X += 2) for (let Y = t; Y <= b; Y += 2) run.push([X, Y]); run.free = true; ink.push(run); };
+  for (const p of s.points || []) patch(sx(p.at[0]) - 6, sy(p.at[1]) - 6, sx(p.at[0]) + 6, sy(p.at[1]) + 6);
+  for (const t of s.labels || []) {
+    const fs = t.size || 14, w = 0.56 * fs * [...t.text].length, X = sx(t.at[0]) + (t.dx || 0), Y = sy(t.at[1]) + (t.dy || 0);
+    const l = t.anchor === 'middle' ? X - w / 2 : t.anchor === 'end' ? X - w : X;
+    patch(l, Y - 0.8 * fs, l + w, Y + 0.25 * fs);
+  }
+  out.push(...tickText());
   for (const p of s.points || []) {
     const c = COLORS[p.color || 'ink'], X = n2(sx(p.at[0])), Y = n2(sy(p.at[1]));
     if (p.shape === 'square') out.push(`<rect x="${n2(X - 5)}" y="${n2(Y - 5)}" width="10" height="10" fill="${p.open ? '#FFFFFF' : c}" stroke="${c}" stroke-width="2"/>`);
@@ -99,7 +131,7 @@ export const FIGURES = [
     curves: [{ fn: '(x^3 - 12x)/4', domain: [-4, 4] }],
     vlines: [{ x: 0, color: 'verm' }],
     points: [{ at: [-2, 4] }, { at: [2, -4] }, { at: [-4, -4] }, { at: [4, 4] }],
-    labels: [{ at: [-3.6, 1.2], text: 'increasing', color: 'blue', anchor: 'end', dx: 40 }, { at: [0.25, 1.9], text: 'decreasing', color: 'blue' }, { at: [3.55, -2.6], text: 'increasing', color: 'blue' }, { at: [-4.3, 5.3], text: 'concave down', color: 'verm', bold: true }, { at: [0.3, -5.4], text: 'concave up', color: 'verm', bold: true }, { at: [-2, 4], text: '(-2, 4)', dy: -12, anchor: 'middle' }, { at: [2, -4], text: '(2, -4)', dy: 22, anchor: 'middle' }] },
+    labels: [{ at: [-2.9, 0.4], text: 'increasing', color: 'blue' }, { at: [0.25, 1.9], text: 'decreasing', color: 'blue' }, { at: [2.9, -3.7], text: 'increasing', color: 'blue' }, { at: [-4.3, 5.3], text: 'concave down', color: 'verm', bold: true }, { at: [0.3, -5.4], text: 'concave up', color: 'verm', bold: true }, { at: [-2, 4], text: '(-2, 4)', dy: -12, anchor: 'middle' }, { at: [2, -4], text: '(2, -4)', dy: 22, anchor: 'middle' }] },
   { id: 'alg-lines-slope', topic: 'alg-lines', x: [-1, 6], y: [-1, 10],
     title: 'Slope as rise over run',
     desc: 'The line through (1, 2) and (4, 8). A dashed horizontal run of 3 goes from (1, 2) to (4, 2) and a dashed vertical rise of 6 goes up to (4, 8), so the slope is 6/3 = 2.',
@@ -113,27 +145,27 @@ export const FIGURES = [
     curves: [{ fn: '4sqrt(x)', domain: [0, 9.5] }],
     lines: [{ through: [[1, 4], [4, 8]] }],
     points: [{ at: [1, 4] }, { at: [4, 8] }],
-    labels: [{ at: [1, 4], text: '(1, f(1)) = (1, 4)', dx: 10, dy: 20 }, { at: [4, 8], text: '(4, f(4)) = (4, 8)', dx: 10, dy: 22 }, { at: [5.6, 11.6], text: 'slope = 4/3', color: 'blue', bold: true }, { at: [8.9, 12.6], text: 'f', color: 'green', bold: true, size: 16 }] },
+    labels: [{ at: [1, 4], text: '(1, f(1)) = (1, 4)', dx: 10, dy: 20 }, { at: [4, 8], text: '(4, f(4)) = (4, 8)', dx: 10, dy: 22 }, { at: [4.4, 11.6], text: 'slope = 4/3', color: 'blue', bold: true }, { at: [8.9, 12.6], text: 'f', color: 'green', bold: true, size: 16 }] },
   { id: 'alg-quadratics-parabola', topic: 'alg-quadratics', x: [-3, 5], y: [-5, 6],
     title: 'The parabola y = x² − 2x − 3',
     desc: 'The parabola y = x² − 2x − 3 = (x − 1)² − 4 opens upward. Its vertex is (1, −4), on the dashed axis of symmetry x = 1. Its zeros are x = −1 and x = 3, and its y-intercept is (0, −3).',
     curves: [{ fn: 'x^2 - 2x - 3' }],
     vlines: [{ x: 1 }],
     points: [{ at: [-1, 0] }, { at: [3, 0] }, { at: [1, -4], color: 'green' }, { at: [0, -3] }],
-    labels: [{ at: [-1, 0], text: '(-1, 0)', dx: -8, dy: -10, anchor: 'end' }, { at: [3, 0], text: '(3, 0)', dx: 8, dy: -10 }, { at: [1, -4], text: 'vertex (1, -4)', dx: 10, dy: 4 }, { at: [0, -3], text: '(0, -3)', dx: -8, dy: 4, anchor: 'end' }, { at: [1, 5.2], text: 'x = 1', dx: 8, color: 'soft' }] },
+    labels: [{ at: [-1, 0], text: '(-1, 0)', dx: -8, dy: -10, anchor: 'end' }, { at: [3, 0], text: '(3, 0)', dx: 8, dy: -10 }, { at: [1, -4], text: 'vertex (1, -4)', dx: 10, dy: 22 }, { at: [0, -3], text: '(0, -3)', dx: -8, dy: 4, anchor: 'end' }, { at: [1, 5.2], text: 'x = 1', dx: 8, color: 'soft' }] },
   { id: 'linear-quadratic-rates-secant', topic: 'linear-quadratic-rates', x: [-0.5, 8.5], y: [-1, 10],
     title: 'A secant line on f(x) = −0.5x² + 4x',
     desc: 'The graph of f(x) = −0.5x² + 4x for 0 ≤ x ≤ 8 and the blue secant line through (1, 3.5) and (5, 7.5), which has slope 1. At x = 2 the secant line gives 4.5 (square) while the graph gives f(2) = 6 (dot): the graph is concave down and lies above the secant line between x = 1 and x = 5.',
     curves: [{ fn: '-0.5x^2 + 4x', domain: [0, 8] }],
     lines: [{ through: [[1, 3.5], [5, 7.5]] }],
     points: [{ at: [1, 3.5] }, { at: [5, 7.5] }, { at: [2, 4.5], color: 'blue', shape: 'square' }, { at: [2, 6], color: 'green' }],
-    labels: [{ at: [1, 3.5], text: '(1, 3.5)', dx: 10, dy: 18 }, { at: [5, 7.5], text: '(5, 7.5)', dy: 58, anchor: 'middle' }, { at: [2, 4.5], text: 'secant gives 4.5', dx: 10, dy: 18, color: 'blue' }, { at: [2, 6], text: 'f(2) = 6', dx: -10, dy: -8, anchor: 'end', color: 'green' }, { at: [6.3, 9.6], text: 'secant line', color: 'blue', bold: true }] },
+    labels: [{ at: [1, 3.5], text: '(1, 3.5)', dx: 10, dy: 18 }, { at: [5, 7.5], text: '(5, 7.5)', dy: 58, anchor: 'middle' }, { at: [2, 4.5], text: 'secant gives 4.5', dx: 10, dy: 18, color: 'blue' }, { at: [2, 6], text: 'f(2) = 6', dx: -10, dy: -8, anchor: 'end', color: 'green' }, { at: [6.6, 8.2], text: 'secant line', color: 'blue', bold: true }] },
   { id: 'alg-polynomial-algebra-factors', topic: 'alg-polynomial-algebra', x: [-4.5, 4.5], y: [-15, 15], yStep: 5,
     title: 'Each factor of x³ − 9x gives a zero',
     desc: 'The graph of y = x³ − 9x = x(x − 3)(x + 3). It crosses the x-axis at x = −3, 0 and 3, one crossing for each factor: x + 3 = 0, x = 0 and x − 3 = 0.',
     curves: [{ fn: 'x^3 - 9x' }],
     points: [{ at: [-3, 0], color: 'green' }, { at: [0, 0], color: 'green' }, { at: [3, 0], color: 'green' }],
-    labels: [{ at: [-3, 0], text: 'x + 3 = 0', dx: 8, dy: 44 }, { at: [0, 0], text: 'x = 0', dx: 10, dy: -12 }, { at: [3, 0], text: 'x - 3 = 0', dy: -14, anchor: 'middle' }, { at: [-4.3, 12.5], text: 'y = x(x - 3)(x + 3)', bold: true, color: 'green' }] },
+    labels: [{ at: [-3, 0], text: 'x + 3 = 0', dx: 8, dy: 44 }, { at: [0, 0], text: 'x = 0', dx: 10, dy: -12 }, { at: [3, 0], text: 'x - 3 = 0', dx: -10, dy: -10, anchor: 'end' }, { at: [-4.3, 12.5], text: 'y = x(x - 3)(x + 3)', bold: true, color: 'green' }] },
   { id: 'polynomial-rates-cubic', topic: 'polynomial-rates', x: [-1, 5], y: [-3, 7],
     title: 'Local extrema and a point of inflection of f(x) = x³ − 6x² + 9x',
     desc: 'The graph of f(x) = x³ − 6x² + 9x for −0.4 ≤ x ≤ 4.4. It increases to a local maximum at (1, 4), decreases to a local minimum at (3, 0), then increases. Its point of inflection is (2, 2), where it changes from concave down to concave up.',
@@ -156,7 +188,7 @@ export const FIGURES = [
     title: 'End behavior of p(x) = −0.5x³ + 3x',
     desc: 'The graph of p(x) = −0.5x³ + 3x. Its leading term is −0.5x³ (odd degree, negative leading coefficient): the left end rises without bound and the right end falls without bound.',
     curves: [{ fn: '-0.5x^3 + 3x', domain: [-3.6, 3.6] }],
-    labels: [{ at: [-3.9, 7.1], text: 'lim x→-∞ p(x) = ∞', color: 'blue', bold: true }, { at: [3.9, -7.1], text: 'lim x→∞ p(x) = -∞', color: 'blue', bold: true, anchor: 'end' }, { at: [0.5, 4.6], text: 'leading term -0.5x³', color: 'green' }] },
+    labels: [{ at: [-2.8, 7.1], text: 'lim x→-∞ p(x) = ∞', color: 'blue', bold: true }, { at: [2.6, -7.1], text: 'lim x→∞ p(x) = -∞', color: 'blue', bold: true, anchor: 'end' }, { at: [0.5, 4.6], text: 'leading term -0.5x³', color: 'green' }] },
   { id: 'alg-rational-expressions-missing', topic: 'alg-rational-expressions', x: [-4, 5], y: [-2, 7],
     title: 'The graph of y = (x² − 4)/(x − 2)',
     desc: 'The graph of y = (x² − 4)/(x − 2) is the line y = x + 2 with one point missing: an open circle at (2, 4), because x = 2 is not in the domain of the original expression.',
@@ -190,7 +222,7 @@ export const FIGURES = [
     curves: [{ fn: '(x^2 + x - 2)/(x^2 - 1)' }],
     vlines: [{ x: -1, color: 'verm' }], hlines: [{ y: 1, color: 'verm' }],
     points: [{ at: [1, 1.5], open: true, color: 'green' }, { at: [-2, 0] }],
-    labels: [{ at: [1, 1.5], text: 'hole (1, 1.5)', dx: 10, dy: -10, color: 'green', bold: true }, { at: [-1, 5.3], text: 'x = -1', dx: 6, color: 'verm' }, { at: [-4.9, 1], text: 'y = 1', dy: -8, color: 'verm' }, { at: [-2, 0], text: '(-2, 0)', dx: -8, dy: 36, anchor: 'end' }] },
+    labels: [{ at: [1, 1.5], text: 'hole (1, 1.5)', dx: 10, dy: -10, color: 'green', bold: true }, { at: [-1, 5.3], text: 'x = -1', dx: -6, anchor: 'end', color: 'verm' }, { at: [-4.9, 1], text: 'y = 1', dy: -8, color: 'verm' }, { at: [-2, 0], text: '(-2, 0)', dx: -8, dy: 36, anchor: 'end' }] },
 ];
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

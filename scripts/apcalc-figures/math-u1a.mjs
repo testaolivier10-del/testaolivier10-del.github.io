@@ -9,6 +9,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { clearTicks } from '../lib/apcalc-fig-ticks.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const OUT = join(ROOT, 'calculus', 'figures');
@@ -155,7 +156,7 @@ FIGS['fn-reading-graph'] = () => {
   P.curve(f1, -4, 1); P.curve(f2, 1, 5);
   P.dot(-4, f1(-4)); P.dot(1, f1(1), { open: true }); P.dot(1, 5); P.dot(5, 1);
   P.label(1, 5, '(1, 5)', { dx: 10, dy: -8, weight: 'bold', color: C.crim });
-  P.label(1, 3.5, 'open dot', { dx: 12, dy: 5, size: 14, color: C.soft, weight: 'bold' });
+  P.label(1, 3.5, 'open dot', { dx: 12, dy: 40, size: 14, color: C.soft, weight: 'bold' });
   P.seg(1, 0, 1, 5, C.blue, 1.6, '5 5');
   P.label(-3.9, 3.2, '<i>y</i> = <i>f</i>(<i>x</i>)', { color: C.crim, weight: 'bold', size: 17 });
   // domain bracket under the axis
@@ -184,8 +185,8 @@ FIGS['fn-shifts'] = () => {
   P.curve(x => (x - 2) ** 2 + 1, -1.4, 5.4);
   P.dot(0, 0, { color: C.blue }); P.dot(2, 1);
   P.arrow(0.15, 0, 1.85, 0, C.ink, { width: 2.2 }); P.arrow(2, 0.1, 2, 0.85, C.ink, { width: 2.2 });
-  P.label(0.8, 0, 'right 2', { dy: -10, anchor: 'middle', size: 14, weight: 'bold' });
-  P.label(2, 0.62, 'up 1', { dx: -8, dy: 5, anchor: 'end', size: 14, weight: 'bold' });
+  P.label(1.4, 0, 'right 2', { dy: -8, anchor: 'middle', size: 14, weight: 'bold' });
+  P.label(2, 0.72, 'up 1', { dx: -8, dy: 5, anchor: 'end', size: 14, weight: 'bold' });
   P.label(-2.55, 6.5, '<i>y</i> = <i>x</i><sup>2</sup>', { anchor: 'end', color: C.blue, weight: 'bold', size: 16 });
   P.label(3.9, 2.4, '<i>y</i> = (<i>x</i> − 2)<sup>2</sup> + 1', { anchor: 'start', color: C.crim, weight: 'bold', size: 16 });
   P.label(0, 0, '(0, 0)', { dx: -8, dy: 20, anchor: 'end', size: 14, color: C.blue, weight: 'bold' });
@@ -537,7 +538,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const only = process.argv.slice(2);
   for (const [id, make] of Object.entries(FIGS)) {
     if (only.length && !only.includes(id)) continue;
-    writeFileSync(join(OUT, `${id}.svg`), make());
+    writeFileSync(join(OUT, `${id}.svg`), clearTicks(make()));
     console.log(`wrote calculus/figures/${id}.svg`);
   }
 }

@@ -495,6 +495,27 @@
     /* Space-filling hides the sticks: at van der Waals radius the spheres
        are already touching, and a bond drawn through them would only be
        visible where the surface it is meant to connect has a gap. */
+    /* Drawn radius and label size of atom i, shared by the bonds and the atoms. */
+    function atomDisc(i){
+      var a = mol.atoms[i], p = pts[i], s = styleFor(a);
+      var r = mode === 'space'
+        ? vdwOf(a.el) * o.scale * p.k * 0.50
+        : (mode === 'wire' ? Math.max(5, s.r * o.scale * p.k * 0.38)
+                           : s.r * o.scale * p.k * 0.86);
+      return { r: r, fs: Math.max(8, r * (mode === 'space' ? 0.55 : 0.92)) };
+    }
+    /* A bond drawn in front of an atom (its midpoint nearer the viewer) would
+       otherwise run across that atom's letter: stop it at the letter's edge
+       (legibility sweep 2026-11; layout only, the bond still meets the sphere). */
+    function bondEnd(i, zBond, toward, sw){
+      var p = pts[i], a = mol.atoms[i], d = atomDisc(i);
+      if(!opt.labels || d.r <= 7 || p.z >= zBond) return { x: p.x, y: p.y };
+      var cut = d.fs * (0.3 + 0.3 * String(a.label || 'X').length) + sw / 2;
+      var vx = toward.x - p.x, vy = toward.y - p.y, l = Math.sqrt(vx*vx + vy*vy) || 1;
+      var t = Math.min(cut, l) / l;
+      return { x: p.x + vx * t, y: p.y + vy * t };
+    }
+
     if(mode !== 'space'){
       mol.bonds.forEach(function(b){
         var pa = pts[b.a], pb = pts[b.b];
@@ -513,17 +534,17 @@
         var sw = b.order > 1 ? w * 0.58 : w;
         var op = fade(z);
 
+        var ea = bondEnd(b.a, z, mid, sw), eb = bondEnd(b.b, z, mid, sw);
         offs.forEach(function(f){
           var ox = nx*f, oy = ny*f;
+          var half = function(e, color){
+            if(Math.abs(e.x - mid.x) < 0.05 && Math.abs(e.y - mid.y) < 0.05) return '';
+            return '<line x1="' + (e.x+ox).toFixed(1) + '" y1="' + (e.y+oy).toFixed(1) +
+              '" x2="' + (mid.x+ox).toFixed(1) + '" y2="' + (mid.y+oy).toFixed(1) +
+              '" stroke="' + color + '" stroke-width="' + sw.toFixed(1) + '" stroke-linecap="round"/>';
+          };
           items.push({ z: z, svg:
-            '<g opacity="' + op + '">' +
-            '<line x1="' + (pa.x+ox).toFixed(1) + '" y1="' + (pa.y+oy).toFixed(1) +
-            '" x2="' + (mid.x+ox).toFixed(1) + '" y2="' + (mid.y+oy).toFixed(1) +
-            '" stroke="' + sa.color + '" stroke-width="' + sw.toFixed(1) + '" stroke-linecap="round"/>' +
-            '<line x1="' + (mid.x+ox).toFixed(1) + '" y1="' + (mid.y+oy).toFixed(1) +
-            '" x2="' + (pb.x+ox).toFixed(1) + '" y2="' + (pb.y+oy).toFixed(1) +
-            '" stroke="' + sb.color + '" stroke-width="' + sw.toFixed(1) + '" stroke-linecap="round"/>' +
-            '</g>'
+            '<g opacity="' + op + '">' + half(ea, sa.color) + half(eb, sb.color) + '</g>'
           });
         });
       });

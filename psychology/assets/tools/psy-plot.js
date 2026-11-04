@@ -176,7 +176,19 @@
     var xt = spec.xTicks === false ? [] : spec.xTickList ? spec.xTickList.map(function(t){ return t.v; }) : spec.piX ? piTicks(x0, x1) : ticks(x0, x1, 7, spec.xStep), yt = spec.yTicks === false ? [] : spec.yTickList ? spec.yTickList.map(function(t){ return t.v; }) : ticks(y0, y1, 6, spec.yStep);
     var xText = function(v){ var t = spec.xTickList && spec.xTickList.filter(function(u){ return u.v === v; })[0]; return t ? esc(String(t.text)) : spec.piX ? piLabel(v) : fmtTick(spec.absX ? Math.abs(v) : v); };
     var yText = function(v){ var t = spec.yTickList && spec.yTickList.filter(function(u){ return u.v === v; })[0]; return t ? String(t.text) : fmtTick(v); };
-    var extraH = 0;
+    // A bar's category name wider than its slot goes on two lines (split at
+    // the space nearest the middle), and the picture grows by one line for it.
+    var slot = F.sx(x0 + 1) - F.sx(x0);
+    var twoLines = function(t){
+      var s = String(plain(t.text)), sp = [];
+      if(!t.wrap || textW(s) <= slot - 4) return null;
+      for(var i = 0; i < s.length; i++) if(s[i] === ' ') sp.push(i);
+      if(!sp.length) return null;
+      var k = sp.reduce(function(a, b){ return Math.abs(b - s.length / 2) < Math.abs(a - s.length / 2) ? b : a; });
+      return [s.slice(0, k), s.slice(k + 1)];
+    };
+    var catWrap = (spec.labels || []).some(twoLines) ? 12 : 0;
+    var extraH = catWrap;
     // Grid
     if(spec.grid !== false){
       out.push('<g class="psy-plot-grid">' + xt.map(function(v){ return '<line x1="' + r2(F.sx(v)) + '" y1="' + T + '" x2="' + r2(F.sx(v)) + '" y2="' + B + '"/>'; }).join('') +
@@ -208,7 +220,7 @@
       // the bottom edge (every data plot), so it never covers the data; the
       // picture grows by one line for it. Inside the plot only when the axis
       // runs through it (a function plot through y = 0).
-      if(spec.xLabel && ax === B){ extraH = 16; lab.push('<text class="psy-plot-axlabel" x="' + r2((L + R) / 2) + '" y="' + r2(B + 31) + '" text-anchor="middle">' + esc(plain(spec.xLabel)) + '</text>'); }
+      if(spec.xLabel && ax === B){ extraH = 16 + catWrap; lab.push('<text class="psy-plot-axlabel" x="' + r2((L + R) / 2) + '" y="' + r2(B + 31 + catWrap) + '" text-anchor="middle">' + esc(plain(spec.xLabel)) + '</text>'); }
       else if(spec.xLabel) lab.push('<text class="psy-plot-axlabel" x="' + (R - 2) + '" y="' + r2(Math.max(T + 10, ax - 6)) + '" text-anchor="end">' + esc(plain(spec.xLabel)) + '</text>');
       if(spec.yLabel && spec.rightAxis) lab.push('<text class="psy-plot-axlabel" x="4" y="14" text-anchor="start">' + esc(plain(spec.yLabel)) + '</text>');
       else if(spec.yLabel) lab.push('<text class="psy-plot-axlabel" x="' + r2(ay + 6) + '" y="' + (T + 10) + '" text-anchor="start">' + esc(plain(spec.yLabel)) + '</text>');
@@ -255,7 +267,9 @@
       if(p.label) out.push('<text class="psy-plot-label" x="' + r2(F.sx(p.at[0]) + 7) + '" y="' + r2(F.sy(p.at[1]) - 7) + '">' + esc(plain(p.label)) + '</text>');
     });
     (spec.labels || []).forEach(function(t){
-      out.push('<text class="psy-plot-label' + (t.cls ? ' ' + esc(t.cls) : '') + '" x="' + r2(F.sx(t.at[0])) + '" y="' + r2(F.sy(t.at[1]) + (t.cls ? 4 : 0)) + '" text-anchor="' + (t.anchor || 'middle') + '">' + esc(plain(t.text)) + '</text>');
+      var two = twoLines(t), tx = r2(F.sx(t.at[0]));
+      out.push('<text class="psy-plot-label' + (t.cls ? ' ' + esc(t.cls) : '') + '" x="' + tx + '" y="' + r2(F.sy(t.at[1]) + (t.cls ? 4 : 0)) + '" text-anchor="' + (t.anchor || 'middle') + '">' +
+        (two ? '<tspan x="' + tx + '">' + esc(two[0]) + '</tspan><tspan x="' + tx + '" dy="12">' + esc(two[1]) + '</tspan>' : esc(plain(t.text))) + '</text>');
     });
     // A legend for two or more series, inside the picture so it travels with it.
     // Entries flow left to right and wrap to a new row rather than run into
@@ -326,8 +340,8 @@
       o.x = [0, cats.length]; o.y = spec.y || fitY(all.concat([0])); o.xTicks = false;
       var gw = 0.7 / groups.length;
       cats.forEach(function(c, j){
-        groups.forEach(function(g, gi){ var x0 = j + 0.15 + gi * gw; o.rects.push({ x0: x0, x1: x0 + gw * 0.92, y0: 0, y1: g.values[j], cls: g.cls || 's' + (gi % 5 + 1) }); });
-        o.labels.push({ at: [j + 0.5, o.y[0] - (o.y[1] - o.y[0]) * 0.07], text: c });
+        groups.forEach(function(g, gi){ var x0 = j + 0.15 + gi * gw; o.rects.push({ x0: x0, x1: x0 + gw * 0.92, y0: Math.min(Math.max(0, o.y[0]), o.y[1]), y1: g.values[j], cls: g.cls || 's' + (gi % 5 + 1) }); });
+        o.labels.push({ at: [j + 0.5, o.y[0] - (o.y[1] - o.y[0]) * 0.07], text: c, wrap: true });
       });
       o.legend = groups.length > 1 ? groups.map(function(g, gi){ return { name: g.name, cls: g.cls || 's' + (gi % 5 + 1) }; }) : null;
     } else if(spec.kind === 'scatter'){

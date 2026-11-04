@@ -375,11 +375,11 @@ FIGURES.push({
   section: 'enolate-regiochemistry',
   anchor: '<span class="k">Worked example &mdash; one ketone, two products</span>',
   alt: 'Two rows of curved-arrow mechanisms. Top: the kinetic enolate’s C6 attacks the carbon of CH3–I and iodide leaves, giving 2,6-dimethylcyclohexanone with the new methyl on C6 highlighted. Bottom: the thermodynamic enolate’s C2 attacks CH3–I, giving 2,2-dimethylcyclohexanone, where C2 now carries two methyls.',
-  viewBox: '0 0 760 380',
+  viewBox: '0 0 760 394',
   build() {
-    let s = alkylRow(100, true);
-    s += rule(20, 196, 740, 196);
-    s += alkylRow(292, false);
+    let s = alkylRow(114, true);
+    s += rule(20, 210, 740, 210);
+    s += alkylRow(306, false);
     return s;
   },
   caption: 'The new methyl, highlighted, goes to the carbon at the far end of the C=C from the oxygen. The oxygen’s electrons rebuild the C=O.',

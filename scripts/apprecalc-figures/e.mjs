@@ -164,7 +164,7 @@ const FIGS = {
     b.push(P.curve(x => Math.cos(2 * x), -0.2, 2 * PI + 0.2, GREEN));
     b.push(text(P.sx(PI - 0.6), P.sy(1.2), 'cos²x', { fill: BLUE, size: 14, anchor: 'start' }));
     b.push(text(P.sx(PI / 2 - 0.3), P.sy(1.2), 'sin²x', { fill: VERM, size: 14, anchor: 'start' }));
-    b.push(text(P.sx(PI + 0.25), P.sy(-0.75), 'cos(2x) = cos²x − sin²x', { fill: GREEN, size: 15, anchor: 'start', weight: 'bold' }));
+    b.push(text(P.sx(PI), P.sy(-1.25), 'cos(2x) = cos²x − sin²x', { fill: GREEN, size: 15, anchor: 'middle', weight: 'bold' }));
     return doc(W, H, 'cos(2x) as the difference of cos squared and sin squared',
       'For x from 0 to 2 pi: dashed graphs of cos squared x and sin squared x, each between 0 and 1, and the solid graph of cos(2x), between -1 and 1 with period pi. At every x the solid height equals the blue dashed height minus the orange dashed height; for example at x = 0 it is 1 - 0 = 1 and at x = pi/2 it is 0 - 1 = -1.', b);
   },

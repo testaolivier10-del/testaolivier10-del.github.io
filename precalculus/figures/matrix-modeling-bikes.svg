@@ -14,10 +14,10 @@
 <text x="270" y="196" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#1F2A28" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0.3</tspan></text>
 <path d="M118,80 C90,10 190,10 160,78" fill="none" stroke="#11592F" stroke-width="2"/>
 <path d="M160,78 L162.2,65.9 L171,72.5 Z" fill="#11592F"/>
-<text x="140" y="28" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#11592F" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0.8</tspan></text>
+<text x="140" y="21" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#11592F" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0.8</tspan></text>
 <path d="M378,80 C350,10 450,10 420,78" fill="none" stroke="#0072B2" stroke-width="2"/>
 <path d="M420,78 L422.2,65.9 L431,72.5 Z" fill="#0072B2"/>
-<text x="400" y="28" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#0072B2" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0.7</tspan></text>
+<text x="400" y="21" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#0072B2" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0.7</tspan></text>
 <text x="270" y="238" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >Each day, a bike at A stays with chance 0.8 and moves to B with chance 0.2;</tspan></text>
 <text x="270" y="256" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >a bike at B moves to A with chance 0.3 and stays with chance 0.7.</tspan></text>
 </svg>

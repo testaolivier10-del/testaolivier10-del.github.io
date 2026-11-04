@@ -1,6 +1,6 @@
 #!/bin/bash
 # Runs every job in .github/workflows/checks.yml locally, in one go.
-# BROWSER=1 adds check-a11y and check-console (needs playwright + axe-core
+# BROWSER=1 adds check-a11y, check-console and check-legibility (changed pages) (needs playwright + axe-core
 # installed with `npm ci --ignore-scripts`, from package.json).
 # Usage: [BROWSER=1] scripts/ci-local.sh [repo-dir]
 cd "${1:-$(dirname "$0")/..}"
@@ -22,6 +22,8 @@ if [ "$BROWSER" = 1 ]; then
   export CHECK_A11Y_PORT=$((20000 + RANDOM % 20000)) CHECK_CONSOLE_PORT=$((40000 + RANDOM % 20000))
   run node scripts/check-a11y.mjs --check
   run node scripts/check-console.mjs --check
+  lfiles=$(git diff --name-only --diff-filter=d origin/main...HEAD -- '*.html' '*.svg' 2>/dev/null | grep -v -E '(^|/)(data|docs)/' || true)
+  [ -n "$lfiles" ] && run env CHROME="${CHROME:-$CHROMIUM_PATH}" node scripts/check-legibility.mjs $lfiles
 fi
 [ $fail = 0 ] && echo "ALL PASS"
 exit $fail

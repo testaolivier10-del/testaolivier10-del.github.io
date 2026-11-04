@@ -10,6 +10,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { clearTicks } from '../lib/apcalc-fig-ticks.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const OUT = join(ROOT, 'calculus', 'figures');
@@ -233,9 +234,10 @@ make('continuity-intervals', 760, 420, 'Where a piecewise function is continuous
       body.push(text(sx(b) + 2, yb + 6, lb, { size: 20, anchor: 'middle', color, weight: 'bold' }));
       body.push(text((sx(a) + sx(b)) / 2, yb + 30, txt, { size: 13.5, anchor: 'middle', color, weight: 'bold' }));
     };
-    seg(-2, 0.94, '', ')', C.blue, '(−∞, 1)');
-    seg(1.06, 2.92, '[', ')', C.green, '[1, 3)');
-    seg(3.08, 6, '(', '', C.verm, '(3, ∞)');
+    // A small gap at x = 1 and x = 3 keeps the two brackets that meet there apart.
+    seg(-2, 0.88, '', ')', C.blue, '(−∞, 1)');
+    seg(1.12, 2.88, '[', ')', C.green, '[1, 3)');
+    seg(3.12, 6, '(', '', C.verm, '(3, ∞)');
     body.push(text(60, 334, 'Intervals where ' + it('f') + ' is continuous:', { size: 13, color: C.ink, weight: 'bold' }));
   });
 
@@ -318,5 +320,5 @@ make('ivt-continuous-vs-jump', 800, 380, 'The Intermediate Value Theorem: why co
   });
 
 mkdirSync(OUT, { recursive: true });
-for (const [id, s] of Object.entries(figs)) writeFileSync(join(OUT, `${id}.svg`), s);
+for (const [id, s] of Object.entries(figs)) writeFileSync(join(OUT, `${id}.svg`), clearTicks(s));
 console.log(`Wrote ${Object.keys(figs).length} figures to calculus/figures/.`);

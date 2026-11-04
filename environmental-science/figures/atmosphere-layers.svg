@@ -51,7 +51,7 @@
 <text x="632" y="58" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="end">Thermosphere</text>
 <text x="632" y="72" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="end">very thin air;</text><text x="632" y="85" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="end">temperature rises sharply</text>
 <rect x="92" y="333.18" width="22" height="78.18" rx="0" fill="#0072B2" stroke="none" stroke-width="1.5" opacity="0.35"/>
-<text x="120" y="370.27" font-size="11.5" font-weight="bold" fill="#0072B2" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Ozone layer</text><text x="120" y="384.65" font-size="11.5" font-weight="bold" fill="#0072B2" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">(about 15-35 km)</text>
+<text x="96" y="305.82" font-size="11.5" font-weight="bold" fill="#0072B2" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Ozone layer</text><text x="96" y="320.19" font-size="11.5" font-weight="bold" fill="#0072B2" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">(about 15-35 km)</text>
 <line x1="90" y1="470" x2="640" y2="470" stroke="#1F2A28" stroke-width="1.4"/>
 <line x1="90" y1="470" x2="90" y2="40" stroke="#1F2A28" stroke-width="1.4"/>
 <text x="365" y="510" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="middle">Temperature (°C)</text>

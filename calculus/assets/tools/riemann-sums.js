@@ -359,8 +359,8 @@
     var fs = figSize(520, 300, true), ps = reveal ? R.pieces(f, R.partition(a, b, nS), k.sumKind) : [];
     var spec = { label: 'A sketch of a rate that is ' + (up ? 'increasing' : 'decreasing') + ' and concave ' + k.conc + ', with no scale on the vertical axis', width: fs[0], height: fs[1], x: [a - L * 0.05, b + L * 0.05], y: [0, 9.5], xLabel: k.v + ' (' + k.varUnit + ')', yLabel: k.rate + '(' + k.v + ')',
       curves: [{ fn: f, domain: [a, b], cls: 's1', label: k.rate }] };
-    // no numbers up the vertical axis: only the shape is given (y tick labels are the unclassed end-anchored texts)
-    var svg = stripsSvg({ spec: spec, pieces: ps, kind: k.sumKind, marks: QM }).replace(/<g class="calc-plot-ticks">[\s\S]*?<\/g>/, function(g){ return g.replace(/<text x="[^"]*" y="[^"]*" text-anchor="end">[^<]*<\/text>/g, ''); });
+    // no numbers up the vertical axis: only the shape is given (y tick labels are the unclassed end- or start-anchored texts)
+    var svg = stripsSvg({ spec: spec, pieces: ps, kind: k.sumKind, marks: QM }).replace(/<g class="calc-plot-ticks">[\s\S]*?<\/g>/, function(g){ return g.replace(/<text x="[^"]*" y="[^"]*" text-anchor="(?:end|start)">[^<]*<\/text>/g, ''); });
     el.innerHTML = '<figure class="rs-qfig">' + svg + '<figcaption class="bt-small">A sketch with the stated shape, no vertical scale: any rate with these signs gives the same answer' + (reveal ? '. The ' + esc(R.NAME[k.sumKind]) + ', drawn' : '') + '.</figcaption></figure>';
   }
   function figure(el, p, reveal){

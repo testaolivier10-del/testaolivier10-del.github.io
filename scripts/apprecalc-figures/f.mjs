@@ -58,11 +58,13 @@ function panel(box, xr, yr, o = {}) {
   const lx = o.xLabelEvery || xs, ly = o.yLabelEvery || ys;
   for (let v = Math.ceil(xr[0] / lx) * lx; v <= xr[1] + 1e-9; v += lx) {
     if (Math.abs(v) < 1e-9 || (o.skipX || []).includes(v)) continue;
-    out.push(text(sx(v), sy(ax) + 15, num(v), { size: 11, anchor: 'middle', color: MUTED }));
+    const X = sx(v), Y = sy(ax);
+    out.push({ tick: num(v), cands: [[X, Y + 15, 'middle'], [X, Y - 6, 'middle'], ...[3, 7, 11].flatMap(d => [[X - d, Y + 15, 'end'], [X + d, Y + 15, 'start'], [X - d, Y - 6, 'end'], [X + d, Y - 6, 'start']])] });
   }
   for (let v = Math.ceil(yr[0] / ly) * ly; v <= yr[1] + 1e-9; v += ly) {
     if (Math.abs(v) < 1e-9 || (o.skipY || []).includes(v)) continue;
-    out.push(text(sx(ay) - 5, sy(v) + 4, num(v), { size: 11, anchor: 'end', color: MUTED }));
+    const X = sx(ay), Y = sy(v) + 4;
+    out.push({ tick: num(v), cands: [[X - 5, Y, 'end'], [X + 5, Y, 'start'], ...[12, 19, 26].flatMap(d => [[X - d, Y, 'end'], [X + d, Y, 'start']]), [X - 5, Y + 9, 'end'], [X - 5, Y - 9, 'end'], [X + 5, Y + 9, 'start'], [X + 5, Y - 9, 'start']] });
   }
   if (o.origin !== false && xr[0] < 0 && yr[0] < 0) out.push(text(sx(0) - 5, sy(0) + 15, '0', { size: 11, anchor: 'end', color: MUTED }));
   out.push(text(px + pw - 2, sy(ax) - 6, [I(o.xLabel || 'x')], { size: 13, anchor: 'end', color: MUTED }));
@@ -104,7 +106,41 @@ function vec(P, a, b, o = {}) {
 function poly(P, pts, o = {}) {
   return `<polygon points="${pts.map(([x, y]) => `${r2(P.sx(x))},${r2(P.sy(y))}`).join(' ')}" fill="${o.fill || 'none'}" fill-opacity="${o.opacity ?? 0.18}" stroke="${o.color || GREEN}" stroke-width="${o.width || 2}"${o.dashed ? ' stroke-dasharray="5 4"' : ''}/>`;
 }
+/* Axis numbers (the { tick } entries a panel leaves in the body) are placed last: each tries its
+   usual spot, then the other side of its axis, then a little further out, and keeps the first
+   spot that no curve, arrow, dot or label covers (legibility sweep 2026-11). */
+function placeTicks(items) {
+  const ink = [], attr = (el, a) => { const m = el.match(new RegExp(`\\s${a}="([^"]*)"`)); return m ? m[1] : null; };
+  const seg = (x1, y1, x2, y2) => { const n = Math.max(2, Math.ceil(Math.hypot(x2 - x1, y2 - y1) / 2)); for (let i = 0; i <= n; i++) ink.push([x1 + (x2 - x1) * i / n, y1 + (y2 - y1) * i / n]); };
+  const patch = (l, t, r, b) => { for (let X = l; X <= r; X += 2) for (let Y = t; Y <= b; Y += 2) ink.push([X, Y]); };
+  for (const it of items) for (const el of typeof it === 'string' ? it.match(/<(path|line|polygon|circle|text)\b[^>]*>(?:[\s\S]*?<\/text>)?/g) || [] : []) {
+    const tag = el.match(/^<(\w+)/)[1], sw = +(attr(el, 'stroke-width') || 1), stroke = attr(el, 'stroke');
+    if (tag === 'text') {
+      const fs = +attr(el, 'font-size'), X = +attr(el, 'x'), Y = +attr(el, 'y'), str = el.replace(/<[^>]+>/g, '').replace(/\u200b/g, ''), w = 0.56 * fs * [...str].length, a = attr(el, 'text-anchor');
+      const l = a === 'middle' ? X - w / 2 : a === 'end' ? X - w : X;
+      patch(l, Y - 0.8 * fs, l + w, Y + 0.25 * fs);
+    } else if (tag === 'circle') { const X = +attr(el, 'cx'), Y = +attr(el, 'cy'), r = +attr(el, 'r') + 1; patch(X - r, Y - r, X + r, Y + r); }
+    else if (tag === 'line') { if (stroke !== GRID && sw >= 1.8) seg(+attr(el, 'x1'), +attr(el, 'y1'), +attr(el, 'x2'), +attr(el, 'y2')); }
+    else {
+      const pts = (tag === 'polygon' ? attr(el, 'points') : attr(el, 'd')).match(/-?[\d.]+/g).map(Number), P = [];
+      for (let i = 0; i + 1 < pts.length; i += 2) P.push([pts[i], pts[i + 1]]);
+      const filled = /Z/.test(attr(el, 'd') || '') && attr(el, 'fill') !== 'none';
+      if (filled) { const xs = P.map(q => q[0]), ys = P.map(q => q[1]); patch(Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)); }
+      else if (sw >= 1.8 && !/[ACQSTachv]/.test(attr(el, 'd') || '')) { if (tag === 'polygon') P.push(P[0]); for (let i = 1; i < P.length; i++) seg(...P[i - 1], ...P[i]); }
+    }
+  }
+  const hits = ([x, y, a], str) => {
+    const w = 6.4 * [...str].length, l = a === 'middle' ? x - w / 2 : a === 'end' ? x - w : x, t = y - 9;
+    return ink.filter(([X, Y]) => X > l - 3 && X < l + w + 3 && Y > t - 3 && Y < y + 4).length;
+  };
+  return items.filter(it => it && it.tick).map(({ tick, cands }) => {
+    const n = cands.map(c => hits(c, tick)), [x, y, a] = cands[n.indexOf(0) >= 0 ? n.indexOf(0) : n.indexOf(Math.min(...n))];
+    return text(x, y, tick, { size: 11, anchor: a, color: MUTED });
+  });
+}
 function svgDoc(w, h, title, desc, body) {
+  const items = body.flat(Infinity);
+  body = [items.filter(it => typeof it === 'string'), placeTicks(items)];
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-labelledby="t d">
 <title id="t">${esc(title)}</title>
 <desc id="d">${esc(desc)}</desc>
@@ -126,7 +162,7 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
   fig('parametric-functions', 'parametric-functions-trace', 460, 350, 'A parametric curve traced as t increases',
     'The curve x(t) = t squared minus 2t, y(t) = 2t minus 1 for t from -1 to 3, a parabola opening to the right. Points are marked at t = -1 (3, -3), t = 0 (0, -1), t = 1 (-1, 1), t = 2 (0, 3) and t = 3 (3, 5). Arrows show the point moves left and up until t = 1, then right and up.',
     [P.svg, polyline(P, sampleParam(f, -1, 3)), travelArrows(P, f, [-0.5, 0.5, 1.5, 2.5]),
-      ts.map(t => dot(P, f(t))), ts.map(t => label(P, f(t), [...tlabel(t), { t: '  (' + f(t).map(num).join(', ') + ')' }], t === 1 ? -8 : 10, t === 1 ? -8 : t === 0 ? 16 : 4, { size: 12, anchor: t === 1 ? 'end' : 'start' }))]);
+      ts.map(t => dot(P, f(t))), ts.map(t => label(P, f(t), [...tlabel(t), { t: '  (' + f(t).map(num).join(', ') + ')' }], t === 1 || t === 0 ? -8 : 10, t === 1 ? -8 : t === 0 ? 16 : 4, { size: 12, anchor: t === 1 || t === 0 ? 'end' : 'start' }))]);
 }
 {
   const f = t => [t * t - 4, t * t * t - 4 * t];
@@ -145,7 +181,7 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
   const f = t => [t ** 3 - 6 * t * t + 9 * t, 4 * t - t * t];
   const P = panel([40, 16, 380, 250], [-1, 5], [-1, 5], { xStep: 1, yStep: 1 });
   const ts = [0, 1, 2, 3, 4];
-  const off = { 0: [10, 16], 1: [8, -8], 2: [-8, -10], 3: [-10, -8], 4: [8, -8] };
+  const off = { 0: [10, 16], 1: [8, -8], 2: [-8, -10], 3: [-10, -8], 4: [8, 14] };
   fig('parametric-motion', 'parametric-motion-path', 460, 300, 'The path of a particle from t = 0 to t = 4',
     'The path of a particle with x(t) = t cubed minus 6t squared plus 9t and y(t) = 4t minus t squared for t from 0 to 4. It starts at (0, 0) at t = 0, moves right and up to (4, 3) at t = 1, turns and moves left through (2, 4) at t = 2, the highest point, to (0, 3) at t = 3, then turns again and moves right and down to (4, 0) at t = 4, crossing its earlier path near (2, 1).',
     [P.svg, polyline(P, sampleParam(f, 0, 4)), travelArrows(P, f, [0.5, 1.6, 2.5, 3.6]),
@@ -166,10 +202,10 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
       body.push(`<line x1="${r2(P.sx(b[0]))}" y1="${r2(P.sy(a[1]))}" x2="${r2(P.sx(b[0]))}" y2="${r2(P.sy(b[1]))}" stroke="${BLUE}" stroke-width="1.8" stroke-dasharray="5 4"/>`);
       body.push(text((P.sx(a[0]) + P.sx(b[0])) / 2, P.sy(0) + 30, [{ t: 'change in ' }, I('x'), { t: ' = 4' }], { size: 12, anchor: 'middle', color: BLUE }));
       body.push(text(P.sx(b[0]) + 6, (P.sy(0) + P.sy(4)) / 2 + 22, [{ t: 'change in ' }, I('y'), { t: ' = 4' }], { size: 12, color: BLUE }));
-      body.push(text(P.sx(2.4), P.sy(2.3), [{ t: 'slope 1' }], { size: 12, color: VERM, anchor: 'end' }));
+      body.push(text(P.sx(4.8), P.sy(1.1), [{ t: 'slope 1' }], { size: 12, color: VERM, anchor: 'end' }));
     }
     body.push(ts.map(t => dot(P, f(t))));
-    body.push(ts.map(t => label(P, f(t), tlabel(t), t === 0 ? -6 : t === 4 ? -6 : 0, t === 0 ? -8 : t === 4 ? -12 : -10, { size: 12, anchor: t === 0 || t === 4 ? 'end' : 'middle' })));
+    body.push(ts.map(t => label(P, f(t), tlabel(t), t === 0 || t === 1 ? -8 : t === 4 ? -6 : 0, t === 0 ? -8 : t === 1 ? 2 : t === 4 ? 18 : -10, { size: 12, anchor: t === 0 || t === 1 || t === 4 ? 'end' : 'middle' })));
     fig('parametric-rates', id, 480, 300, title, alt, body);
   };
   mk('parametric-rates-secant', true, 'The segment between two points of a parametric curve',
@@ -259,7 +295,7 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
     [P.svg, polyline(P, sampleParam(t => [3 * Math.cos(t), 3 * Math.sin(t)], 0, 2 * PI), { color: MUTED, width: 1.2, dashed: true }),
       polyline(P, sampleParam(e, 0, 2 * PI)), travelArrows(P, e, [PI / 2 + 0.2, PI + 0.3, 3 * PI / 2 + 0.2]),
       `<line x1="${r2(P.sx(pt[0]))}" y1="${r2(P.sy(3 * Math.sin(t0)))}" x2="${r2(P.sx(pt[0]))}" y2="${r2(P.sy(0))}" stroke="${BLUE}" stroke-width="1.6" stroke-dasharray="4 4"/>`,
-      dot(P, pt, { color: GREEN }), label(P, pt, [{ t: '(3 cos ' }, I('t'), { t: ', 2 sin ' }, I('t'), { t: ')' }], 8, 14, { size: 12 }),
+      dot(P, pt, { color: GREEN }), label(P, pt, [{ t: '(3 cos ' }, I('t'), { t: ', 2 sin ' }, I('t'), { t: ')' }], 8, -12, { size: 12 }),
       dot(P, [3, 0]), label(P, [3, 0], [I('t'), { t: ' = 0' }], 6, 16, { size: 12 })]);
 }
 {
@@ -300,10 +336,12 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
       vec(P, [0, 0], f(a), { color: BLUE, width: 2 }), vec(P, [0, 0], f(b), { color: BLUE, width: 2 })];
     if (disp) body.push(vec(P, f(a), f(b), { color: VERM, width: 2.2 }));
     body.push([0, 1, 2, 3, 4, 5, 6].map(t => dot(P, f(t), { r: 3.4 })));
-    body.push([0, 1, 2, 3, 4, 5, 6].map(t => label(P, f(t), tlabel(t), t >= 3 ? 6 : -6, t === 3 ? -10 : -6, { size: 11, anchor: t >= 3 ? 'start' : 'end' })));
-    body.push(label(P, [f(a)[0] / 2, f(a)[1] / 2], [{ t: 'p', b: true }, { t: '(' + a + ')' }], 8, 4, { size: 13, color: BLUE }));
+    body.push([0, 1, 2, 3, 4, 5, 6].map(t => label(P, f(t), tlabel(t), t >= 3 ? 6 : -6, t === 3 ? -10 : t === 6 ? 14 : -6, { size: 11, anchor: t >= 3 ? 'start' : 'end' })));
+    // with p(3) drawn the wedge right of p(1) is too narrow for its name, so it goes just left of the curve
+    body.push(disp ? label(P, [1.45, 4.4], [{ t: 'p', b: true }, { t: '(' + a + ')' }], 0, 0, { size: 13, color: BLUE, anchor: 'end' })
+      : label(P, [f(a)[0] * 0.75, f(a)[1] * 0.75], [{ t: 'p', b: true }, { t: '(' + a + ')' }], 6, 10, { size: 13, color: BLUE }));
     body.push(label(P, [f(b)[0] * 0.6, f(b)[1] * 0.6], [{ t: 'p', b: true }, { t: '(' + b + ')' }], 8, 12, { size: 13, color: BLUE }));
-    if (disp) body.push(label(P, [(f(a)[0] + f(b)[0]) / 2, (f(a)[1] + f(b)[1]) / 2], 'displacement', 0, -10, { size: 12, color: VERM, anchor: 'middle' }));
+    if (disp) body.push(label(P, [3.1, 9.0], 'displacement', 0, 0, { size: 12, color: VERM, anchor: 'end' }));
     fig('vector-valued-functions', id, 480, 300, title, alt, body);
   };
   mk('vector-valued-functions-displacement', 1, 3, true, 'Position vectors and a displacement vector',
@@ -398,7 +436,7 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
   };
   body.push(arc(180, 98, 360, 98, -60, INK, '0.2', 270, 52));
   body.push(arc(360, 142, 180, 142, 60, INK, '0.3', 270, 196));
-  const loop = (x, up, lab, color) => [`<path d="M${x - 22},${cy - (R - 6)} C${x - 50},${cy - 110} ${x + 50},${cy - 110} ${x + 20},${cy - (R - 4)}" fill="none" stroke="${color}" stroke-width="2"/>`, head(x + 20, cy - (R - 4), -12, 16, color, 11), text(x, cy - 92, lab, { size: 15, anchor: 'middle', color })];
+  const loop = (x, up, lab, color) => [`<path d="M${x - 22},${cy - (R - 6)} C${x - 50},${cy - 110} ${x + 50},${cy - 110} ${x + 20},${cy - (R - 4)}" fill="none" stroke="${color}" stroke-width="2"/>`, head(x + 20, cy - (R - 4), -12, 16, color, 11), text(x, cy - 99, lab, { size: 15, anchor: 'middle', color })];
   body.push(loop(140, true, '0.8', GREEN), loop(400, true, '0.7', BLUE));
   body.push(text(270, 238, 'Each day, a bike at A stays with chance 0.8 and moves to B with chance 0.2;', { size: 12, anchor: 'middle', color: MUTED }));
   body.push(text(270, 256, 'a bike at B moves to A with chance 0.3 and stays with chance 0.7.', { size: 12, anchor: 'middle', color: MUTED }));

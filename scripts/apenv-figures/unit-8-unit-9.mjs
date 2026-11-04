@@ -245,7 +245,7 @@ FIG.push((() => {
   // left: greenhouse effect
   b += panel(10, 'The greenhouse effect', VERM);
   b += R(11, 330, 358, 89, { fill: '#E7EFE2' }) + T(190, 408, 'Earth’s surface', { anchor: 'middle', weight: 'bold', size: 13, fill: GREEN });
-  b += R(11, 150, 358, 180, { fill: '#FBF1EA' }) + T(24, 168, 'Troposphere', { size: 12.5, weight: 'bold', fill: VERM });
+  b += R(11, 150, 358, 180, { fill: '#FBF1EA' }) + T(98, 190, 'Troposphere', { size: 12.5, weight: 'bold', fill: VERM });
   b += C(45, 72, 22, { fill: '#F3C64A' }) + T(45, 112, 'Sun', { anchor: 'middle', size: 12.5 });
   b += L(68, 88, 92, 326, { stroke: '#C99A00', w: 3, arrow: 'ink' }) + T(90, 136, 'sunlight', { size: 12, fill: '#8A6A00' });
   b += wave(258, 326, 246, 220, VERM, 'verm');
@@ -253,7 +253,7 @@ FIG.push((() => {
   b += wave(320, 326, 340, 62, VERM, 'verm');
   b += T(332, 56, 'some IR escapes', { anchor: 'end', size: 12, fill: VERM });
   for (const [x, y] of [[244, 212], [290, 236], [200, 200], [276, 192]]) b += C(x, y, 7, { fill: '#FFFFFF', stroke: VERM, w: 2 });
-  b += TL(140, 262, 'Greenhouse gases\nabsorb infrared and send\npart of it back down.', { anchor: 'middle', size: 12, lh: 15 });
+  b += TL(153, 262, 'Greenhouse gases\nabsorb infrared and\nsend part of it\nback down.', { anchor: 'middle', size: 12, lh: 15 });
   b += T(250, 172, 'CO₂, CH₄, N₂O, H₂O, CFCs', { anchor: 'middle', size: 12, weight: 'bold', fill: VERM });
   b += T(190, 355, 'surface gives off infrared (IR)', { anchor: 'middle', size: 12, fill: VERM });
   b += T(190, 382, 'Result: the lower atmosphere warms', { anchor: 'middle', size: 12.5, weight: 'bold' });

@@ -10,6 +10,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { clearTicks } from '../lib/apcalc-fig-ticks.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const OUT = join(ROOT, 'calculus', 'figures');
@@ -351,8 +352,9 @@ const range = (a, b, s = 1) => { const o = []; for (let v = a; v <= b + 1e-9; v 
   b.push(dot(Q.sx(-1), Q.sy(0), { color: C.blue }), dot(Q.sx(3), Q.sy(0), { color: C.blue }), dot(Q.sx(1), Q.sy(-4), { color: C.verm }));
   b.push(text(P.sx(-1), P.sy(f(-1)) - 12, 'peak', { size: 13.5, anchor: 'middle', halo: true }), text(P.sx(3), P.sy(f(3)) + 24, 'valley', { size: 13.5, anchor: 'middle', halo: true }));
   b.push(text(P.sx(1) + 10, P.sy(f(1)) - 8, 'inflection', { size: 13.5, color: C.verm, halo: true }));
-  b.push(text(Q.sx(-1) - 10, Q.sy(0) - 26, `${fName(PRIME)} = 0`, { size: 13.5, anchor: 'end', halo: true }), text(Q.sx(3) + 10, Q.sy(0) - 26, `${fName(PRIME)} = 0`, { size: 13.5, halo: true }));
-  b.push(text(Q.sx(1) + 10, Q.sy(-4) + 4, `lowest point of ${fName(PRIME)}`, { size: 13.5, color: C.verm, halo: true }));
+  // Each label on the side of its point that the curve does not pass through.
+  b.push(text(Q.sx(-1) - 10, Q.sy(0) + 34, `${fName(PRIME)} = 0`, { size: 13.5, anchor: 'end', halo: true }), text(Q.sx(3) - 10, Q.sy(0) - 14, `${fName(PRIME)} = 0`, { size: 13.5, anchor: 'end', halo: true }));
+  b.push(text(Q.sx(1) + 10, Q.sy(-4) + 20, `lowest point of ${fName(PRIME)}`, { size: 13.5, color: C.verm, halo: true }));
   b.push(text(P.sx(4.6), P.sy(4.6), fName(), { size: 18, color: C.crimson, weight: 'bold', anchor: 'end' }));
   b.push(text(Q.sx(4.5), Q.sy(5.4), fName(PRIME), { size: 18, color: C.blue, weight: 'bold', anchor: 'end' }));
   b.push(text(660, 120, `${fName()}(${it('x')}) = ${it('x')}³/3 ${MINUS} ${it('x')}²`, { size: 14, color: C.crimson }), text(700, 140, `${MINUS} 3${it('x')} + 2`, { size: 14, color: C.crimson }));
@@ -489,5 +491,5 @@ function sheet(x0, y0, W, H, cut, scale, labels) {
 }
 
 mkdirSync(OUT, { recursive: true });
-for (const f of figures) writeFileSync(join(OUT, `${f.id}.svg`), f.svg);
+for (const f of figures) writeFileSync(join(OUT, `${f.id}.svg`), clearTicks(f.svg));
 console.log(`Unit 5 figures: wrote ${figures.length} to calculus/figures/`);

@@ -44,7 +44,7 @@
   <text x="140" y="86" font-size="13" font-weight="700" fill="#A04500" text-anchor="end">heat</text>
   <text x="110" y="176" font-size="13" font-weight="700" fill="#A04500" text-anchor="end">heat</text>
   <text x="70" y="266" font-size="13" font-weight="700" fill="#A04500" text-anchor="end">heat</text>
-  <text x="34" y="342" font-size="13" font-weight="700" fill="#A04500" text-anchor="start">heat</text>
+  <text x="34" y="334" font-size="13" font-weight="700" fill="#A04500" text-anchor="start">heat</text>
   <text x="20" y="130" font-size="12" fill="#A04500">from cellular</text>
   <text x="20" y="146" font-size="12" fill="#A04500">respiration at</text>
   <text x="20" y="162" font-size="12" fill="#A04500">every level</text>
@@ -58,10 +58,10 @@
   <path d="M402,184 C480,184 520,205 562,214" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#tef-a)"/>
   <path d="M442,274 C500,274 530,250 562,240" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#tef-a)"/>
   <path d="M482,358 C530,358 550,290 584,270" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#tef-a)"/>
-  <text x="470" y="132" font-size="12" text-anchor="middle">dead bodies</text>
-  <text x="470" y="147" font-size="12" text-anchor="middle">and wastes</text>
+  <text x="440" y="152" font-size="12" text-anchor="middle">dead bodies</text>
+  <text x="440" y="167" font-size="12" text-anchor="middle">and wastes</text>
   <line x1="700" y1="184" x2="700" y2="120" stroke="#D55E00" stroke-width="3" marker-end="url(#tef-h)"/>
-  <text x="692" y="140" font-size="13" font-weight="700" fill="#A04500" text-anchor="end">heat</text>
+  <text x="684" y="140" font-size="13" font-weight="700" fill="#A04500" text-anchor="end">heat</text>
 
   <!-- nutrients back to producers -->
   <path d="M640,268 L640,428 L300,428 L300,398" fill="none" stroke="#009E73" stroke-width="3" marker-end="url(#tef-g)"/>

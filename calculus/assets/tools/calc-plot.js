@@ -158,26 +158,24 @@
       var pts = top.concat(bot.reverse()).map(function(p){ return r2(F.sx(p[0])) + ',' + r2(F.sy(p[1])); }).join(' ');
       out.push('<polygon class="calc-plot-shade' + (s.cls ? ' ' + esc(s.cls) : '') + '" points="' + pts + '"/>');
     });
-    // Axes, ticks, labels
+    // Axes (lines only; their numbers are placed with the other labels, below)
+    var ax = y0 <= 0 && y1 >= 0 ? F.sy(0) : B, ay = x0 <= 0 && x1 >= 0 ? F.sx(0) : L;
     if(spec.axes !== false){
-      var ax = y0 <= 0 && y1 >= 0 ? F.sy(0) : B, ay = x0 <= 0 && x1 >= 0 ? F.sx(0) : L;
       out.push('<g class="calc-plot-axis"><line x1="' + L + '" y1="' + r2(ax) + '" x2="' + R + '" y2="' + r2(ax) + '"/><line x1="' + r2(ay) + '" y1="' + T + '" x2="' + r2(ay) + '" y2="' + B + '"/>' +
         xt.filter(function(v){ return Math.abs(v) > 1e-12 || ay === L; }).map(function(v){ var px = r2(F.sx(v)); return '<line x1="' + px + '" y1="' + r2(ax - 3) + '" x2="' + px + '" y2="' + r2(ax + 3) + '"/>'; }).join('') +
         yt.filter(function(v){ return Math.abs(v) > 1e-12 || ax === B; }).map(function(v){ var py = r2(F.sy(v)); return '<line x1="' + r2(ay - 3) + '" y1="' + py + '" x2="' + r2(ay + 3) + '" y2="' + py + '"/>'; }).join('') + '</g>');
-      var lab = [];
-      xt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ay !== L) return; lab.push('<text x="' + r2(F.sx(v)) + '" y="' + r2(Math.min(F.h - 4, ax + 15)) + '" text-anchor="middle">' + (spec.piX ? piLabel(v) : fmtTick(v)) + '</text>'); });
-      yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ax !== B) return; lab.push('<text x="' + r2(Math.max(10, ay - 6)) + '" y="' + r2(F.sy(v) + 4) + '" text-anchor="end">' + fmtTick(v) + '</text>'); });
-      if(spec.xLabel) lab.push('<text class="calc-plot-axlabel" x="' + (R - 2) + '" y="' + r2(Math.max(T + 10, ax - 6)) + '" text-anchor="end">' + esc(plain(spec.xLabel)) + '</text>');
-      if(spec.yLabel) lab.push('<text class="calc-plot-axlabel" x="' + r2(ay + 6) + '" y="' + (T + 10) + '" text-anchor="start">' + esc(plain(spec.yLabel)) + '</text>');
-      out.push('<g class="calc-plot-ticks">' + lab.join('') + '</g>');
     }
+    // What a label must keep clear of, in screen units: [x1, y1, x2, y2, weight]
+    var segs = [], marks = [];
+    function addRun(pts, w){ for(var k = 1; k < pts.length; k++) segs.push([pts[k - 1][0], pts[k - 1][1], pts[k][0], pts[k][1], w]); }
+    if(spec.axes !== false){ segs.push([L, ax, R, ax, 2]); segs.push([ay, T, ay, B, 2]); }
     (spec.asymptotes || []).forEach(function(a){
-      if(a.x != null) out.push('<line class="calc-plot-asym" x1="' + r2(F.sx(a.x)) + '" y1="' + T + '" x2="' + r2(F.sx(a.x)) + '" y2="' + B + '"/>');
-      else out.push('<line class="calc-plot-asym" x1="' + L + '" y1="' + r2(F.sy(a.y)) + '" x2="' + R + '" y2="' + r2(F.sy(a.y)) + '"/>');
+      if(a.x != null){ out.push('<line class="calc-plot-asym" x1="' + r2(F.sx(a.x)) + '" y1="' + T + '" x2="' + r2(F.sx(a.x)) + '" y2="' + B + '"/>'); segs.push([F.sx(a.x), T, F.sx(a.x), B, 3]); }
+      else { out.push('<line class="calc-plot-asym" x1="' + L + '" y1="' + r2(F.sy(a.y)) + '" x2="' + R + '" y2="' + r2(F.sy(a.y)) + '"/>'); segs.push([L, F.sy(a.y), R, F.sy(a.y), 3]); }
     });
     // Slope field
     if(spec.field){
-      var fd = spec.field, g2 = toFn(fd.dydx, ['x', 'y']), st = fd.step || 1, segs = [];
+      var fd = spec.field, g2 = toFn(fd.dydx, ['x', 'y']), st = fd.step || 1, fsegs = [];
       var kx = (F.sx(x1) - F.sx(x0)) / (x1 - x0), ky = (F.sy(y0) - F.sy(y1)) / (y1 - y0), half = (fd.len || 0.35) * st * kx;
       ticks(x0, x1, 0, st).forEach(function(x){
         ticks(y0, y1, 0, st).forEach(function(y){
@@ -186,21 +184,33 @@
           // The same length on screen for every segment, whatever its slope.
           var vx = 1, vy = m * ky / kx, n = Math.sqrt(vx * vx + vy * vy), cx = F.sx(x), cy = F.sy(y);
           vx = vx / n * half; vy = vy / n * half;
-          segs.push('<line x1="' + r2(cx - vx) + '" y1="' + r2(cy + vy) + '" x2="' + r2(cx + vx) + '" y2="' + r2(cy - vy) + '"/>');
+          fsegs.push('<line x1="' + r2(cx - vx) + '" y1="' + r2(cy + vy) + '" x2="' + r2(cx + vx) + '" y2="' + r2(cy - vy) + '"/>');
+          segs.push([cx - vx, cy + vy, cx + vx, cy - vy, 3]);
         });
       });
-      out.push('<g class="calc-plot-field">' + segs.join('') + '</g>');
+      out.push('<g class="calc-plot-field">' + fsegs.join('') + '</g>');
     }
+    var later = [];   // labels that look for a clear spot once everything is drawn
     (spec.lines || []).forEach(function(l){
       var e = lineEnds(l, F);
       if(!e) return;
-      out.push('<line class="calc-plot-line ' + esc(l.cls || 's2') + (l.dashed ? ' is-dashed' : '') + '" x1="' + r2(F.sx(e[0][0])) + '" y1="' + r2(F.sy(e[0][1])) + '" x2="' + r2(F.sx(e[1][0])) + '" y2="' + r2(F.sy(e[1][1])) + '"/>');
-      if(l.label) out.push('<text class="calc-plot-label" x="' + r2(F.sx(e[1][0]) - 4) + '" y="' + r2(F.sy(e[1][1]) - 6) + '" text-anchor="end">' + esc(plain(l.label)) + '</text>');
+      var p1 = [F.sx(e[0][0]), F.sy(e[0][1])], p2 = [F.sx(e[1][0]), F.sy(e[1][1])];
+      out.push('<line class="calc-plot-line ' + esc(l.cls || 's2') + (l.dashed ? ' is-dashed' : '') + '" x1="' + r2(p1[0]) + '" y1="' + r2(p1[1]) + '" x2="' + r2(p2[0]) + '" y2="' + r2(p2[1]) + '"/>');
+      segs.push([p1[0], p1[1], p2[0], p2[1], 10]);
+      if(l.label){
+        // Near the drawn end, on either side of the line, or pulled back along it.
+        var ux = p1[0] - p2[0], uy = p1[1] - p2[1], ul = Math.sqrt(ux * ux + uy * uy) || 1;
+        ux /= ul; uy /= ul;
+        var at = [];
+        [0, 30, 60, 90].forEach(function(back){ at.push([p2[0] + ux * back, p2[1] + uy * back]); });
+        later.push({ text: plain(l.label), cls: '', at: at, d: [[-4, -6, 'end'], [4, 14, 'start'], [-6, 14, 'end'], [6, -6, 'start'], [0, -8, 'middle'], [0, 16, 'middle']] });
+      }
     });
     var dots = [];
     (spec.curves || []).forEach(function(c, i){
       var f = toFn(c.fn), d = c.domain || F.x, runs = sample(f, Math.max(d[0], x0), Math.min(d[1], x1), F, c.samples);
       out.push('<path class="calc-plot-curve ' + esc(c.cls || 's' + (i % 5 + 1)) + (c.dashed ? ' is-dashed' : '') + '" d="' + pathOf(runs, F) + '"/>');
+      runs.forEach(function(r){ addRun(r.map(function(p){ return [F.sx(p[0]), F.sy(p[1])]; }), 10); });
       (c.ends || []).forEach(function(kind, j){
         if(!kind) return;
         var x = d[j], y = f(x);
@@ -208,19 +218,84 @@
         if(isFinite(y)) dots.push({ at: [x, y], open: kind === 'open', cls: c.cls || 's' + (i % 5 + 1) });
       });
       if(c.label && runs.length){
-        var lr = runs[runs.length - 1], lp = lr[lr.length - 1];
-        out.push('<text class="calc-plot-label ' + esc(c.cls || 's' + (i % 5 + 1)) + '" x="' + r2(Math.min(R - 2, F.sx(lp[0]) + 4)) + '" y="' + r2(Math.max(T + 10, F.sy(lp[1]) - 4)) + '" text-anchor="' + (F.sx(lp[0]) > R - 30 ? 'end' : 'start') + '">' + esc(plain(c.label)) + '</text>');
+        var lr = runs[runs.length - 1], lp = lr[lr.length - 1], px = Math.min(R - 2, F.sx(lp[0]) + 4), py = Math.max(T + 10, F.sy(lp[1]) - 4);
+        var right = F.sx(lp[0]) > R - 30, cand = [];
+        // At the curve's end first, then a little way back along it.
+        [lr.length - 1, Math.floor(lr.length * 0.85), Math.floor(lr.length * 0.7)].forEach(function(k){
+          var q = lr[Math.max(0, k)]; cand.push([Math.min(R - 2, F.sx(q[0]) + (k === lr.length - 1 ? 4 : 0)), Math.max(T + 10, F.sy(q[1]) - (k === lr.length - 1 ? 4 : 0))]);
+        });
+        later.push({ text: plain(c.label), cls: ' ' + esc(c.cls || 's' + (i % 5 + 1)), at: cand,
+          d: [[0, 0, right ? 'end' : 'start'], [-4, -4, 'end'], [4, 12, 'start'], [-6, 12, 'end'], [6, -6, 'start']] });
       }
     });
     dots = dots.concat(spec.points || []);
     dots.forEach(function(p){
       if(p.at[0] < x0 || p.at[0] > x1 || p.at[1] < y0 || p.at[1] > y1) return;
-      out.push('<circle class="calc-plot-pt ' + esc(p.cls || 's1') + (p.open ? ' is-open' : '') + '" cx="' + r2(F.sx(p.at[0])) + '" cy="' + r2(F.sy(p.at[1])) + '" r="4"/>');
-      if(p.label) out.push('<text class="calc-plot-label" x="' + r2(F.sx(p.at[0]) + 7) + '" y="' + r2(F.sy(p.at[1]) - 7) + '">' + esc(plain(p.label)) + '</text>');
+      var cx = F.sx(p.at[0]), cy = F.sy(p.at[1]);
+      out.push('<circle class="calc-plot-pt ' + esc(p.cls || 's1') + (p.open ? ' is-open' : '') + '" cx="' + r2(cx) + '" cy="' + r2(cy) + '" r="4"/>');
+      marks.push([cx, cy]);
+      if(p.label) later.push({ text: plain(p.label), cls: '', at: [[cx, cy]],
+        d: [[7, -7, 'start'], [-7, -7, 'end'], [7, 15, 'start'], [-7, 15, 'end'], [0, -10, 'middle'], [0, 19, 'middle'], [9, 4, 'start'], [-9, 4, 'end'], [10, -14, 'start'], [-10, -14, 'end'], [-26, 0, 'end'], [26, 0, 'start'], [7, -22, 'start'], [-7, -22, 'end'], [7, 28, 'start'], [-7, 28, 'end']] });
     });
-    (spec.labels || []).forEach(function(t){
-      out.push('<text class="calc-plot-label" x="' + r2(F.sx(t.at[0])) + '" y="' + r2(F.sy(t.at[1])) + '" text-anchor="' + (t.anchor || 'middle') + '">' + esc(plain(t.text)) + '</text>');
+
+    /* Labels go last, over everything, each with a white halo, and each in the
+       first spot (of a short list) that no curve, line, dot or other label
+       crosses. A label nowhere clear takes the least crowded spot. */
+    var boxes = [], tickTexts = [], texts = [];
+    function boxOf(x, y, s, anchor, size){
+      var w = s.length * size * 0.62 + 2, l = anchor === 'end' ? x - w : anchor === 'middle' ? x - w / 2 : x;
+      return { l: l, r: l + w, t: y - size * 0.78, b: y + size * 0.22 };
+    }
+    function segIn(s, b){
+      // Liang-Barsky: does the segment enter the box?
+      var t0 = 0, t1 = 1, dx = s[2] - s[0], dy = s[3] - s[1], p = [-dx, dx, -dy, dy], q = [s[0] - b.l, b.r - s[0], s[1] - b.t, b.b - s[1]];
+      for(var k = 0; k < 4; k++){
+        if(p[k] === 0){ if(q[k] < 0) return false; continue; }
+        var t = q[k] / p[k];
+        if(p[k] < 0){ if(t > t1) return false; if(t > t0) t0 = t; } else { if(t < t0) return false; if(t < t1) t1 = t; }
+      }
+      return true;
+    }
+    function cost(b){
+      var c = 0, g = { l: b.l - 1.5, r: b.r + 1.5, t: b.t - 1.5, b: b.b + 1.5 };
+      if(b.l < 1 || b.r > F.w - 1 || b.t < 1 || b.b > F.h - 1) c += 1000;
+      segs.forEach(function(s){ if(segIn(s, g)) c += s[4]; });
+      marks.forEach(function(m){ if(m[0] > b.l - 5 && m[0] < b.r + 5 && m[1] > b.t - 5 && m[1] < b.b + 5) c += 40; });
+      boxes.forEach(function(o){ if(o.l < b.r && o.r > b.l && o.t < b.b && o.b > b.t) c += 200; });
+      return c;
+    }
+    function place(text, cls, spots, size, into){
+      var best = null;
+      spots.some(function(s){
+        var b = boxOf(s[0], s[1], text, s[2], size), c = cost(b);
+        if(!best || c < best.c) best = { c: c, b: b, s: s };
+        return c === 0;
+      });
+      boxes.push(best.b);
+      (into || texts).push('<text' + (cls ? ' class="' + cls + '"' : '') + ' x="' + r2(best.s[0]) + '" y="' + r2(best.s[1]) + '" text-anchor="' + best.s[2] + '">' + esc(text) + '</text>');
+    }
+    if(spec.axes !== false){
+      // Tick numbers: their usual side of the axis, or the other side when a curve runs through.
+      xt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ay !== L) return; var px = F.sx(v), s = spec.piX ? piLabel(v) : fmtTick(v);
+        place(s, '', [[px, Math.min(F.h - 4, ax + 15), 'middle'], [px, ax - 6, 'middle'],
+          [px - 3, Math.min(F.h - 4, ax + 15), 'end'], [px + 3, Math.min(F.h - 4, ax + 15), 'start'], [px - 3, ax - 6, 'end'], [px + 3, ax - 6, 'start']], 11, tickTexts); });
+      yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ax !== B) return; var py = F.sy(v) + 4;
+        place(fmtTick(v), '', [[Math.max(10, ay - 6), py, 'end'], [ay + 6, py, 'start'],
+          [Math.max(10, ay - 6), py - 7, 'end'], [Math.max(10, ay - 6), py + 7, 'end'], [ay + 6, py - 7, 'start'], [ay + 6, py + 7, 'start']], 11, tickTexts); });
+      if(spec.xLabel){ var xl = plain(spec.xLabel);
+        place(xl, 'calc-plot-axlabel', [[R - 2, Math.max(T + 10, ax - 6), 'end'], [R - 2, Math.min(F.h - 4, ax + 27), 'end'], [R - 2, Math.max(T + 10, ax - 20), 'end'], [R - 40, Math.max(T + 10, ax - 6), 'end']], 11, tickTexts); }
+      if(spec.yLabel){ var yl = plain(spec.yLabel);
+        place(yl, 'calc-plot-axlabel', [[ay + 6, T + 10, 'start'], [ay - 6, T + 10, 'end'], [ay + 6, T + 24, 'start']], 11, tickTexts); }
+    }
+    // Authored labels stay where the author put them.
+    (spec.labels || []).forEach(function(t){ place(plain(t.text), 'calc-plot-label', [[F.sx(t.at[0]), F.sy(t.at[1]), t.anchor || 'middle']], 11); });
+    later.forEach(function(o){
+      var spots = [];
+      o.at.forEach(function(a){ o.d.forEach(function(d){ spots.push([a[0] + d[0], a[1] + d[1], d[2]]); }); });
+      place(o.text, 'calc-plot-label' + o.cls, spots, 11);
     });
+    if(tickTexts.length) out.push('<g class="calc-plot-ticks">' + tickTexts.join('') + '</g>');
+    if(texts.length) out.push('<g class="calc-plot-labels">' + texts.join('') + '</g>');
     return '<svg class="calc-plot" viewBox="0 0 ' + F.w + ' ' + F.h + '" width="' + F.w + '" height="' + F.h + '" role="img" aria-label="' + esc(plain(spec.label)) + '">' + out.join('') + '</svg>';
   }
 

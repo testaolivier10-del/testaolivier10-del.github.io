@@ -34,7 +34,7 @@
 <ellipse cx="70" cy="335" rx="8.4" ry="6" fill="#8E8F86" stroke="#1F2A28" stroke-width="0.8"/>
 <ellipse cx="175" cy="318" rx="9.8" ry="7" fill="#8E8F86" stroke="#1F2A28" stroke-width="0.8"/>
 <line x1="60" y1="360" x2="90" y2="400" stroke="#5F6563" stroke-width="1.2"/>
-<line x1="150" y1="350" x2="130" y2="410" stroke="#5F6563" stroke-width="1.2"/>
+<line x1="172" y1="350" x2="156" y2="410" stroke="#5F6563" stroke-width="1.2"/>
 <line x1="200" y1="370" x2="225" y2="405" stroke="#5F6563" stroke-width="1.2"/>
 <path d="M90 70 C92 100 84 130 96 160 M150 70 C148 105 156 135 148 170 M200 70 C202 95 194 120 204 140" fill="none" stroke="#D8C3A0" stroke-width="1.6" stroke-linejoin="round"/>
 <path d="M60 70 L54 50 M60 70 L60 44 M60 70 L67 52" fill="none" stroke="#009E73" stroke-width="2.2" stroke-linejoin="round"/>

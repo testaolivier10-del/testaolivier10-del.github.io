@@ -20,7 +20,7 @@
 <line x1="60" y1="146" x2="60" y2="154" stroke="#1F2A28" stroke-width="1.2"/>
 <text x="60" y="168" font-size="13" text-anchor="middle" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">−2</text>
 <line x1="165" y1="146" x2="165" y2="154" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="165" y="168" font-size="13" text-anchor="middle" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">−1</text>
+<text x="162" y="168" font-size="13" text-anchor="end" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">−1</text>
 <line x1="375" y1="146" x2="375" y2="154" stroke="#1F2A28" stroke-width="1.2"/>
 <text x="375" y="168" font-size="13" text-anchor="middle" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">1</text>
 <line x1="480" y1="146" x2="480" y2="154" stroke="#1F2A28" stroke-width="1.2"/>

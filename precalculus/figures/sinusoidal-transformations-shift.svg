@@ -22,33 +22,19 @@
 <line x1="119.92" y1="300" x2="119.92" y2="30" stroke="#1F2A28" stroke-width="1.4"/>
 <path d="M119.92 30 l-4 8 h8 z" fill="#1F2A28"/>
 <line x1="57.9" y1="214.43" x2="57.9" y2="222.43" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="57.9" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28">−π/4</text>
 <line x1="181.95" y1="214.43" x2="181.95" y2="222.43" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="181.95" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28">π/4</text>
 <line x1="243.97" y1="214.43" x2="243.97" y2="222.43" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="243.97" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28">π/2</text>
 <line x1="306" y1="214.43" x2="306" y2="222.43" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="306" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28">3π/4</text>
 <line x1="368.03" y1="214.43" x2="368.03" y2="222.43" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="368.03" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28">π</text>
 <line x1="430.05" y1="214.43" x2="430.05" y2="222.43" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="430.05" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28">5π/4</text>
 <line x1="492.08" y1="214.43" x2="492.08" y2="222.43" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="492.08" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28">3π/2</text>
 <line x1="554.1" y1="214.43" x2="554.1" y2="222.43" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="554.1" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28">7π/4</text>
 <line x1="616.13" y1="214.43" x2="616.13" y2="222.43" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="616.13" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28">2π</text>
 <line x1="678.15" y1="214.43" x2="678.15" y2="222.43" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="678.15" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28">9π/4</text>
 <line x1="115.92" y1="269.41" x2="123.92" y2="269.41" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="111.92" y="273.91" font-size="13" text-anchor="end" fill="#1F2A28">−1</text>
 <line x1="115.92" y1="167.45" x2="123.92" y2="167.45" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="111.92" y="171.95" font-size="13" text-anchor="end" fill="#1F2A28">1</text>
 <line x1="115.92" y1="116.47" x2="123.92" y2="116.47" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="111.92" y="120.97" font-size="13" text-anchor="end" fill="#1F2A28">2</text>
 <line x1="115.92" y1="65.49" x2="123.92" y2="65.49" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="111.92" y="69.99" font-size="13" text-anchor="end" fill="#1F2A28">3</text>
 <text x="704" y="223.43" font-size="15" font-style="italic" fill="#1F2A28">θ</text>
 <text x="128.92" y="38" font-size="15" font-style="italic" fill="#1F2A28">y</text>
 <line x1="50" y1="167.45" x2="690" y2="167.45" stroke="#D55E00" stroke-width="1.8" stroke-dasharray="8 6"/>
@@ -60,8 +46,22 @@
 <circle cx="181.95" cy="167.45" r="5" fill="#11592F" stroke="#11592F" stroke-width="2"/>
 <circle cx="306" cy="65.49" r="5" fill="#11592F" stroke="#11592F" stroke-width="2"/>
 <circle cx="554.1" cy="269.41" r="5" fill="#11592F" stroke="#11592F" stroke-width="2"/>
-<text x="316" y="69.49" font-size="13" text-anchor="start" fill="#1F2A28">max 3</text>
-<text x="564.1" y="273.41" font-size="13" text-anchor="start" fill="#1F2A28">min −1</text>
+<text x="306" y="53.49" font-size="13" text-anchor="middle" fill="#1F2A28">max 3</text>
+<text x="554.1" y="291.41" font-size="13" text-anchor="middle" fill="#1F2A28">min −1</text>
 <text x="678.15" y="159.45" font-size="13" text-anchor="end" fill="#D55E00">midline y = 1</text>
-<text x="249.97" y="185.45" font-size="13" text-anchor="start" fill="#5A6563"><tspan font-style="italic">y</tspan> = sin <tspan font-style="italic">θ</tspan></text><text x="370" y="345" font-size="16" text-anchor="middle" fill="#11592F" font-weight="bold"><tspan font-style="italic">g</tspan>(<tspan font-style="italic">θ</tspan>) = 2 sin(<tspan font-style="italic">θ</tspan> − π/4) + 1</text>
+<text x="249.97" y="185.45" font-size="13" text-anchor="start" fill="#5A6563"><tspan font-style="italic">y</tspan> = sin <tspan font-style="italic">θ</tspan></text>
+<text x="57.9" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">−π/4</text>
+<text x="181.95" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">π/4</text>
+<text x="243.97" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">π/2</text>
+<text x="306" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">3π/4</text>
+<text x="368.03" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">π</text>
+<text x="430.05" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">5π/4</text>
+<text x="492.08" y="209.43" font-size="13" text-anchor="middle" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">3π/2</text>
+<text x="554.1" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">7π/4</text>
+<text x="612.13" y="209.43" font-size="13" text-anchor="end" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">2π</text>
+<text x="678.15" y="237.43" font-size="13" text-anchor="middle" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">9π/4</text>
+<text x="111.92" y="273.91" font-size="13" text-anchor="end" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">−1</text>
+<text x="111.92" y="171.95" font-size="13" text-anchor="end" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">1</text>
+<text x="111.92" y="120.97" font-size="13" text-anchor="end" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">2</text>
+<text x="111.92" y="69.99" font-size="13" text-anchor="end" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">3</text><text x="370" y="345" font-size="16" text-anchor="middle" fill="#11592F" font-weight="bold"><tspan font-style="italic">g</tspan>(<tspan font-style="italic">θ</tspan>) = 2 sin(<tspan font-style="italic">θ</tspan> − π/4) + 1</text>
 </svg>

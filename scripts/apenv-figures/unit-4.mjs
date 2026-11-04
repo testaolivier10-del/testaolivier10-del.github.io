@@ -95,7 +95,7 @@ function fig(topic, id, w, h, title, alt, body) { FIGS.push({ topic, id, w, h, t
   parts.push(T(250, 30, 'Convergent boundary', { size: 12, weight: 'bold' }));
   parts.push(TL(250, 45, 'the denser ocean plate sinks under the\ncontinent: a trench, earthquakes, volcanoes', { size: 12 }));
   parts.push(L(400, 72, 405, 160, { stroke: GREY, w: 1 }));
-  parts.push(TL(296, 262, 'Subduction', { size: 12, weight: 'bold', fill: INK }));
+  parts.push(TL(318, 221, 'Subduction', { size: 12, weight: 'bold', fill: INK }));
   parts.push(T(500, 364, 'Sinking plate', { size: 11, anchor: 'middle', halo: true }));
   // transform boundary inset (map view)
   const ix = 590, iy = 60, iw = 155, ih = 250;
@@ -133,7 +133,7 @@ function fig(topic, id, w, h, title, alt, body) { FIGS.push({ topic, id, w, h, t
   }
   // rock fragments in C and cracks in R
   for (const [cx, cy, r] of [[70, 290, 9], [100, 325, 10], [185, 285, 8], [210, 330, 10], [70, 335, 6], [175, 318, 7]]) parts.push(E(cx, cy, r * 1.4, r, { fill: '#8E8F86', stroke: INK, w: 0.8 }));
-  for (const [x1, y1, x2, y2] of [[60, 360, 90, 400], [150, 350, 130, 410], [200, 370, 225, 405]]) parts.push(L(x1, y1, x2, y2, { stroke: '#5F6563', w: 1.2 }));
+  for (const [x1, y1, x2, y2] of [[60, 360, 90, 400], [172, 350, 156, 410], [200, 370, 225, 405]]) parts.push(L(x1, y1, x2, y2, { stroke: '#5F6563', w: 1.2 }));
   // roots
   parts.push(P('M90 70 C92 100 84 130 96 160 M150 70 C148 105 156 135 148 170 M200 70 C202 95 194 120 204 140', { stroke: '#D8C3A0', w: 1.6 }));
   // plants on top
@@ -202,7 +202,7 @@ function textureTriangle(samples) {
     const c = samples && MOVED[name] ? MOVED[name] : c0;
     const [x, y] = pt(...c);
     const two = name === 'Silty clay loam' ? ['Silty clay', 'loam'] : name === 'Sandy clay loam' ? ['Sandy clay', 'loam'] : [name];
-    two.forEach((t, i) => parts.push(T(x, y + 4 + (i - (two.length - 1) / 2) * 13, t, { size: 11.5, anchor: 'middle', weight: name === 'Loam' ? 'bold' : 'normal', fill: name === 'Loam' ? OLIVE : INK, halo: !!samples })));
+    two.forEach((t, i) => parts.push(T(x, y + 4 + (i - (two.length - 1) / 2) * 13, t, { size: 11.5, anchor: 'middle', weight: name === 'Loam' ? 'bold' : 'normal', fill: name === 'Loam' ? OLIVE : INK, halo: true })));
   }
   // ticks and numbers
   for (let v = 0; v <= 100; v += 10) {
@@ -251,7 +251,7 @@ export const STD_ATM = [[0, 15], [11, -56.5], [20, -56.5], [32, -44.5], [47, -2.
   }
   // ozone layer band
   parts.push(R(X0 + 2, ay(35), 22, ay(15) - ay(35), { fill: BLUE, op: 0.35 }));
-  parts.push(TL(X0 + 30, ay(25) - 2, 'Ozone layer\n(about 15-35 km)', { size: 11.5, fill: BLUE, weight: 'bold', halo: true }));
+  parts.push(TL(X0 + 6, ay(42), 'Ozone layer\n(about 15-35 km)', { size: 11.5, fill: BLUE, weight: 'bold', halo: true }));
   parts.push(L(X0, Y0, X1, Y0, { w: 1.4 })); parts.push(L(X0, Y0, X0, Y1, { w: 1.4 }));
   parts.push(T((X0 + X1) / 2, Y0 + 40, 'Temperature (°C)', { size: 13, anchor: 'middle', weight: 'bold' }));
   parts.push(T(36, (Y0 + Y1) / 2, 'Altitude (km)', { size: 13, anchor: 'middle', weight: 'bold', rotate: -90 }));
@@ -340,7 +340,7 @@ export const STD_ATM = [[0, 15], [11, -56.5], [20, -56.5], [32, -44.5], [47, -2.
   parts.push(P('M340 290 C350 320 370 340 395 360', { stroke: BLUE, w: 2, arrow: 'blue' }));
   // runoff arrows downslope
   for (const [x1, y1, x2, y2] of [[80, 120, 105, 140], [150, 90, 158, 120], [260, 140, 240, 165], [100, 240, 130, 245], [270, 230, 235, 240]]) parts.push(L(x1, y1, x2, y2, { stroke: GREY, w: 1.4, arrow: 'grey' }));
-  parts.push(T(170, 180, 'Watershed A', { size: 14, weight: 'bold', anchor: 'middle', fill: OLIVE, halo: true }));
+  parts.push(T(171, 140, 'Watershed A', { size: 14, weight: 'bold', anchor: 'middle', fill: OLIVE, halo: true }));
   parts.push(T(370, 220, 'Watershed B', { size: 12, weight: 'bold', anchor: 'middle', fill: OLIVE, halo: true, rotate: -80 }));
   parts.push(TL(230, 56, 'Divide (high ground)', { size: 12, weight: 'bold', fill: OLIVE, halo: true }));
   parts.push(TL(36, 300, 'Tributaries\njoin the main\nriver', { size: 11.5, fill: BLUE, halo: true }));
@@ -442,13 +442,13 @@ export const STD_ATM = [[0, 15], [11, -56.5], [20, -56.5], [32, -44.5], [47, -2.
   // cloud and rain
   parts.push(P('M250 130 a22 22 0 0 1 40 -16 a26 26 0 0 1 48 6 a20 20 0 0 1 10 36 h-92 a18 18 0 0 1 -6 -26 z', { fill: '#E3E6E5', stroke: GREY, w: 1.2 }));
   for (const x of [262, 282, 302, 322]) parts.push(L(x, 164, x - 6, 190, { stroke: BLUE, w: 1.6 }));
-  parts.push(T(250, 205, 'Heavy rain', { size: 12, anchor: 'middle', weight: 'bold', halo: true }));
+  parts.push(T(250, 201, 'Heavy rain', { size: 12, anchor: 'end', weight: 'bold', halo: true }));
   // sinking, warming air
   parts.push(P('M420 70 C480 120 540 200 640 250', { stroke: VERM, w: 3, arrow: 'verm' }));
   parts.push(TL(520, 120, 'Dry air sinks and warms', { size: 12, fill: VERM, weight: 'bold', halo: true }));
   parts.push(T(230, 385, 'Windward side: wet, forested', { size: 12.5, anchor: 'middle', weight: 'bold', fill: GREEN }));
   parts.push(T(620, 385, 'Leeward side: rain shadow, dry', { size: 12.5, anchor: 'middle', weight: 'bold', fill: VERM }));
-  parts.push(T(470, 150, 'Mountain range', { size: 11.5, anchor: 'start', halo: true }));
+  parts.push(T(400, 240, 'Mountain range', { size: 11.5, anchor: 'middle' }));
   fig('geo-and-climate', 'geo-and-climate-rain-shadow', 760, 400, 'The rain shadow effect',
     'Moist air from the ocean blows toward a mountain range. On the windward side the air is pushed up the slope, so it cools; its water vapor condenses into clouds and falls as heavy rain, and the windward slope is green and forested. The air that crosses the peak has lost most of its water. On the leeward side it sinks and warms, so it is dry, and the land there is a rain shadow: a dry region, often a desert, with sparse plants.', parts.join('\n'));
 }

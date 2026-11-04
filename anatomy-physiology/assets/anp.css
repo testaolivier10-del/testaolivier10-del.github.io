@@ -75,6 +75,8 @@
 .anp-fig .lbl{fill:var(--ink);font:800 15px var(--font-ui);}
 .anp-fig .lbl-sm{fill:var(--muted);font:700 12.5px var(--font-ui);}
 .anp-fig text{fill:var(--ink);font-family:var(--font-ui);}
+/* A label that must sit over a thin line: a halo in the figure's own background colour hides the line behind it. */
+.anp-fig .halo{paint-order:stroke;stroke:var(--surface2);stroke-width:4px;stroke-linejoin:round;}
 #anp-defs{position:absolute;width:0;height:0;overflow:hidden;}
 
 /* ============================================================ 2. Page shell */

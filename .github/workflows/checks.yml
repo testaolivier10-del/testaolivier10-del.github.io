@@ -363,6 +363,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0   # the readability check compares against main
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 20
@@ -397,3 +399,13 @@ jobs:
           cat console.log
           grep -E "FAIL|SERIOUS|CRITICAL|uncaught|navigation:|duplicate id|failed request|Error" console.log | head -40 | sed 's/^/::error::/'
           exit 1
+      # Words a student can actually read: no table columns running together,
+      # no figure labels overlapping, cut off or crossed by a line. A full
+      # sweep takes most of an hour, so CI checks the pages and figures this
+      # change touches (docs/legibility-sweep.md has the full-sweep command).
+      - name: changed figures and tables are readable
+        run: |
+          git fetch --quiet origin main || true
+          files=$(git diff --name-only --diff-filter=d origin/main...HEAD -- '*.html' '*.svg' 2>/dev/null | grep -v -E '(^|/)(data|docs)/' || true)
+          [ -z "$files" ] && { echo "no changed pages or figures"; exit 0; }
+          node scripts/check-legibility.mjs $files

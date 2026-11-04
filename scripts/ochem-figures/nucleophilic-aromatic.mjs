@@ -374,7 +374,7 @@ FIGURES.push({
       let g = K.ring(c, [1, 4]);
       g += grp(v[0], -128, d + 4, 'OCH₃', { kind: 'hi' });
       g += grp(v[0], -52, d, 'Cl');
-      const N = at(v[3], 90, 34), Ol = at(N, 145, 38), Or = at(N, 35, 38);
+      const N = at(v[3], 90, 42), Ol = at(N, 145, 38), Or = at(N, 35, 38);
       g += bond(v[3], N, { rFrom: 0, rTo: 12, order: f === 'D' ? 2 : 1, gap: 2.6 });
       g += bond(N, Ol, { rFrom: 12, rTo: 12 });
       g += bond(N, Or, { rFrom: 12, rTo: 12, order: f === 'D' ? 1 : 2, gap: 2.6 });
@@ -384,7 +384,7 @@ FIGURES.push({
       if (f === 'D') g += chg(P(Or.x + 18, Or.y - 12));
       g += nums(c, R, { only: [1, 4] });
       if (f === 'B') {
-        g += anion(v[3], 150, 30);
+        g += anion(v[3], 150, 15);
         g += curve(at(v[3], 150, 11), mid(v[3], N, 0.55), { bow: 9, size: 6 });
         g += curve(mid(N, Or, 0.5), at(Or, -80, 14), { bow: -10, size: 6 });
       }

@@ -15,13 +15,13 @@
 <line x1="300" y1="370" x2="300" y2="32" stroke="#1F2A28" stroke-width="1.4"/>
 <path d="M300 32 l-3.5 7 h7 z" fill="#1F2A28"/>
 <line x1="60" y1="201" x2="60" y2="209" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="60" y="223" font-size="13" text-anchor="middle" fill="#1F2A28">−π</text>
+<text x="57" y="223" font-size="13" text-anchor="end" fill="#1F2A28">−π</text>
 <line x1="180" y1="201" x2="180" y2="209" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="180" y="223" font-size="13" text-anchor="middle" fill="#1F2A28">−π/2</text>
+<text x="177" y="223" font-size="13" text-anchor="end" fill="#1F2A28">−π/2</text>
 <line x1="420" y1="201" x2="420" y2="209" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="420" y="223" font-size="13" text-anchor="middle" fill="#1F2A28">π/2</text>
+<text x="417" y="223" font-size="13" text-anchor="end" fill="#1F2A28">π/2</text>
 <line x1="540" y1="201" x2="540" y2="209" stroke="#1F2A28" stroke-width="1.2"/>
-<text x="540" y="223" font-size="13" text-anchor="middle" fill="#1F2A28">π</text>
+<text x="543" y="223" font-size="13" text-anchor="start" fill="#1F2A28">π</text>
 <line x1="296" y1="308.13" x2="304" y2="308.13" stroke="#1F2A28" stroke-width="1.2"/>
 <text x="292" y="312.63" font-size="13" text-anchor="end" fill="#1F2A28">−1</text>
 <line x1="296" y1="101.88" x2="304" y2="101.88" stroke="#1F2A28" stroke-width="1.2"/>

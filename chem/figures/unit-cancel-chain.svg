@@ -15,10 +15,10 @@
   <text x="460" y="122">=</text>
   <text x="565" y="122" font-weight="bold">12,600 s</text>
   <!-- cancel strokes -->
-  <line x1="88" y1="128" x2="116" y2="104" stroke="#1D44A6" stroke-width="3"/>
-  <line x1="236" y1="148" x2="264" y2="124" stroke="#1D44A6" stroke-width="3"/>
-  <line x1="236" y1="104" x2="282" y2="80" stroke="#C2410C" stroke-width="3"/>
-  <line x1="384" y1="148" x2="428" y2="124" stroke="#C2410C" stroke-width="3"/>
+  <line data-legib-ok="cancel mark" x1="88" y1="128" x2="116" y2="104" stroke="#1D44A6" stroke-width="3"/>
+  <line data-legib-ok="cancel mark" x1="236" y1="148" x2="264" y2="124" stroke="#1D44A6" stroke-width="3"/>
+  <line data-legib-ok="cancel mark" x1="236" y1="104" x2="282" y2="80" stroke="#C2410C" stroke-width="3"/>
+  <line data-legib-ok="cancel mark" x1="384" y1="148" x2="428" y2="124" stroke="#C2410C" stroke-width="3"/>
   <g font-size="16">
     <text x="172" y="200" fill="#1D44A6">h on top cancels h on the bottom</text>
     <text x="410" y="40" fill="#C2410C">min on top cancels min on the bottom</text>
@@ -26,7 +26,7 @@
   </g>
   <path d="M120 186 Q 110 150 104 132" fill="none" stroke="#1D44A6" stroke-width="1.5"/>
   <path d="M220 186 Q 240 170 250 150" fill="none" stroke="#1D44A6" stroke-width="1.5"/>
-  <path d="M340 48 Q 290 60 262 80" fill="none" stroke="#C2410C" stroke-width="1.5"/>
+  <path d="M340 48 Q 300 58 282 74" fill="none" stroke="#C2410C" stroke-width="1.5"/>
   <path d="M440 48 Q 420 100 410 124" fill="none" stroke="#C2410C" stroke-width="1.5"/>
 </g>
 </svg>

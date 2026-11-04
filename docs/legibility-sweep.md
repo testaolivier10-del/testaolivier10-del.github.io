@@ -1,0 +1,37 @@
+# Legibility sweep (2026-11)
+
+Owner request: every table, figure, diagram and graph on the site must be easy to read, with no words crowding,
+overlapping, cut off or crossed by lines. Branch `fix/legibility-sweep`, shipped as a pull request.
+
+## The check
+
+`scripts/check-legibility.mjs` renders each course page (desktop 1280px and phone 390px) and each standalone
+`*/figures/*.svg` in Chrome and flags:
+
+- `table-gap`: neighbouring table cells closer than 10px (screen-reader-only text ignored);
+- `svg-overlap`: two labels overlapping (stacked lines of one label, exact duplicates and halo copies ignored);
+- `svg-clipped`: a label cut off by the figure or a scrolling/hidden-overflow ancestor;
+- `svg-line-through`: a line, curve or arrow drawn through a label. Uses hit testing, so clipped curve parts and
+  lines hidden behind a filled box do not count; a thin grid line behind a haloed label does not count.
+
+Run: `CHROME=/usr/bin/google-chrome node scripts/check-legibility.mjs [files...]` (all pages when no files).
+Playwright's own Chromium download is blocked in the cloud container; use the system Chrome.
+
+## Fixes
+
+- `assets/theme.css`: readable default padding for every table (the A&P word parts table was the report).
+- A&P action potential graph: label moved off the curve and arrows.
+- Shared fixes at the source: calculus plots (`calculus/assets/tools/calc-plot.js`) and figure generators
+  (`scripts/lib/apcalc-fig-ticks.mjs`), precalculus plots (`precalculus/assets/tools/pcalc-plot.js`) and generators
+  (`scripts/apprecalc-figures/`) place tick numbers and labels where no curve crosses them, drawn last with a halo.
+- Figure fixes per course: see the commit log on the branch. Rule for fixes: move, resize, add a halo or reroute
+  a line; never change wording (a label may be split onto two lines). A&P and ochem fixes are layout only.
+
+## Status
+
+- First full sweep 2026-11-03: tables clean, 130 pages/figures flagged (A&P 26, calculus AB+BC 39, precalculus 30,
+  ochem 8, bio/chem/env/physics/psych 18). All fixed, plus 9 env figures and a few found by eye.
+- Final full sweep 2026-11-04: 3,269 files, 5,808 renders, 0 flags.
+- CI runs the check on every changed page or figure (`checks.yml`, accessibility job; `ci-local.sh` with BROWSER=1).
+- Not covered: figures that only appear after clicking inside a tool. A&P figures scale down to small text on phones
+  (unchanged by this pass). Some tick numbers now sit slightly off their usual spot to clear a curve.

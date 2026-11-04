@@ -227,7 +227,7 @@ FIGS['hydroelectric-dam'] = { w: 800, h: 400, title: 'How a hydroelectric dam ma
   T(140, 190, 'floods valley land upstream', { anchor: 'middle', size: 12 }),
   P('M0 300 Q160 285 330 300 L330 330 L0 330 Z', { fill: '#C9B48F', stroke: 'none' }), T(165, 322, 'sediment trapped behind the dam', { anchor: 'middle', size: 12 }),
   P('M330 90 L400 90 L470 330 L330 330 Z', { fill: TINT.gray, stroke: INK, sw: 2 }), T(375, 82, 'Dam', { anchor: 'middle', bold: true, size: 14 }),
-  P('M330 200 L430 280 L480 300', { stroke: BLUE, sw: 8 }), T(395, 216, 'penstock', { size: 11.5 }),
+  P('M330 200 L430 280 L480 300', { stroke: BLUE, sw: 8 }), T(425, 214, 'penstock', { anchor: 'end', size: 11.5 }),
   T(310, 216, 'intake', { anchor: 'end', size: 11.5 }),
   R(480, 280, 80, 50, { fill: TINT.blue, stroke: BLUE }), T(520, 310, 'turbine', { anchor: 'middle', size: 12 }),
   L(520, 280, 520, 230, { sw: 4 }), R(475, 185, 90, 45, { fill: TINT.olive, stroke: OLIVE }), T(520, 212, 'generator', { anchor: 'middle', size: 12 }),

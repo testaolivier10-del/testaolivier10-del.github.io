@@ -23,6 +23,15 @@
 <line x1="40" y1="16" x2="370" y2="16" stroke="#E3E8E6" stroke-width="1"/>
 <line x1="40" y1="213.14" x2="370" y2="213.14" stroke="#7A8583" stroke-width="1.4"/>
 <line x1="139" y1="16" x2="139" y2="246" stroke="#7A8583" stroke-width="1.4"/>
+<text x="134" y="228.14" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0</tspan></text>
+<text x="368" y="207.14" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">x</tspan></text>
+<text x="145" y="28" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5B6664" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">y</tspan></text>
+<path d="M73,48.86 L337,180.29" fill="none" stroke="#11592F" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M238,131 L224.58,131.02 L229.93,120.28 Z" fill="#11592F"/>
+<circle cx="73" cy="48.86" r="4.2" fill="#1F2A28" stroke="#1F2A28" stroke-width="1.8"/>
+<circle cx="337" cy="180.29" r="4.2" fill="#1F2A28" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="81" y="40.86" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1F2A28" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">t</tspan><tspan > = 0  (−2, 5)</tspan></text>
+<text x="327" y="200.29" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">t</tspan><tspan > = 4  (6, 1)</tspan></text>
 <text x="40" y="228.14" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >−3</tspan></text>
 <text x="73" y="228.14" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >−2</tspan></text>
 <text x="106" y="228.14" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >−1</tspan></text>
@@ -37,16 +46,7 @@
 <text x="134" y="184.29" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >1</tspan></text>
 <text x="134" y="151.43" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >2</tspan></text>
 <text x="134" y="118.57" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >3</tspan></text>
-<text x="134" y="85.71" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >4</tspan></text>
-<text x="134" y="52.86" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >5</tspan></text>
+<text x="113" y="85.71" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >4</tspan></text>
+<text x="134" y="61.86" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >5</tspan></text>
 <text x="134" y="20" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >6</tspan></text>
-<text x="134" y="228.14" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan >0</tspan></text>
-<text x="368" y="207.14" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5B6664" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">x</tspan></text>
-<text x="145" y="28" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5B6664" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">y</tspan></text>
-<path d="M73,48.86 L337,180.29" fill="none" stroke="#11592F" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
-<path d="M238,131 L224.58,131.02 L229.93,120.28 Z" fill="#11592F"/>
-<circle cx="73" cy="48.86" r="4.2" fill="#1F2A28" stroke="#1F2A28" stroke-width="1.8"/>
-<circle cx="337" cy="180.29" r="4.2" fill="#1F2A28" stroke="#1F2A28" stroke-width="1.8"/>
-<text x="81" y="40.86" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1F2A28" text-anchor="start" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">t</tspan><tspan > = 0  (−2, 5)</tspan></text>
-<text x="327" y="200.29" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1F2A28" text-anchor="end" paint-order="stroke" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"><tspan font-style="italic">t</tspan><tspan > = 4  (6, 1)</tspan></text>
 </svg>

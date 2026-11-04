@@ -21,8 +21,9 @@
 <rect x="160" y="170" width="30" height="170" fill="#9AA3A8" stroke="#4A5257" stroke-width="2"/>
 <rect x="570" y="170" width="30" height="170" fill="#C8783C" stroke="#7A421A" stroke-width="2"/>
 <!-- salt bridge -->
-<path d="M240,300 L240,135 Q240,110 265,110 L495,110 Q520,110 520,135 L520,300" fill="none" stroke="#7A8A88" stroke-width="30" stroke-linejoin="round"/>
-<path d="M240,300 L240,135 Q240,110 265,110 L495,110 Q520,110 520,135 L520,300" fill="none" stroke="#F1F3E6" stroke-width="24" stroke-linejoin="round"/>
+<path d="M225,300 L225,135 Q225,95 265,95 L495,95 Q535,95 535,135 L535,300 L505,300 L505,135 Q505,125 495,125 L265,125 Q255,125 255,135 L255,300 Z" fill="#F1F3E6"/>
+<path d="M226.5,300 L226.5,135 Q226.5,96.5 265,96.5 L495,96.5 Q533.5,96.5 533.5,135 L533.5,300" fill="none" stroke="#7A8A88" stroke-width="3"/>
+<path d="M253.5,300 L253.5,135 Q253.5,123.5 265,123.5 L495,123.5 Q506.5,123.5 506.5,135 L506.5,300" fill="none" stroke="#7A8A88" stroke-width="3"/>
 <text x="380" y="150" font-size="13" text-anchor="middle">salt bridge, KNO₃(aq)</text>
 <line x1="335" y1="110" x2="272" y2="110" stroke="#1F2A28" stroke-width="2" marker-end="url(#gc-b)"/><text x="340" y="115" font-size="13">NO₃⁻</text>
 <line x1="425" y1="110" x2="488" y2="110" stroke="#1F2A28" stroke-width="2" marker-end="url(#gc-b)"/><text x="402" y="115" font-size="13">K⁺</text>

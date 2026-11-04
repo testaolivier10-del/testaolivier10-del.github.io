@@ -53,9 +53,9 @@
 <line x1="260" y1="260" x2="383.74" y2="383.74" stroke="#E4E7E6" stroke-width="1.2" stroke-linecap="round"/>
 <circle cx="383.74" cy="383.74" r="5" fill="#0072B2"/>
 <text x="403.54" y="408.54" font-size="14" text-anchor="start" fill="#0072B2" font-weight="bold">7π/4</text>
-<text x="395.16" y="182.5" font-size="13" text-anchor="end" fill="#1F2A28">(√3/2, 1/2)</text>
-<text x="369.26" y="148.74" font-size="13" text-anchor="end" fill="#1F2A28">(√2/2, √2/2)</text>
-<text x="335.5" y="122.84" font-size="13" text-anchor="end" fill="#1F2A28">(1/2, √3/2)</text>
+<text x="395.16" y="182.5" font-size="13" text-anchor="end" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">(√3/2, 1/2)</text>
+<text x="369.26" y="148.74" font-size="13" text-anchor="end" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">(√2/2, √2/2)</text>
+<text x="335.5" y="122.84" font-size="13" text-anchor="end" fill="#1F2A28" paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round">(1/2, √3/2)</text>
 <text x="443" y="280" font-size="1" text-anchor="start" fill="#1F2A28"></text>
 <rect x="550" y="94" width="230" height="40" fill="#E3F3E8"/>
 <text x="585" y="120" font-size="16" text-anchor="middle" fill="#1F2A28" font-weight="bold" font-style="italic">θ</text>
