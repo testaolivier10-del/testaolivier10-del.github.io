@@ -82,24 +82,73 @@ function scan({ MIN_GAP, OVERLAP }) {
     }
   }
 
+  /* The box a label is actually visible in: the figure itself (unless it lets
+     content spill) cut down by every ancestor that hides or scrolls overflow. */
+  const clipBox = svg => {
+    let box = { l: -1e9, r: 1e9, t: -1e9, b: 1e9 };
+    for (let el = svg; el && el !== document.documentElement; el = el.parentElement) {
+      const s = getComputedStyle(el);
+      if (s.overflowX === 'visible' && s.overflowY === 'visible') continue;
+      const r = el.getBoundingClientRect();
+      if (s.overflowX !== 'visible') { box.l = Math.max(box.l, r.left); box.r = Math.min(box.r, r.right); }
+      if (s.overflowY !== 'visible') { box.t = Math.max(box.t, r.top); box.b = Math.min(box.b, r.bottom); }
+    }
+    return box;
+  };
+  const isHalo = t => { const s = getComputedStyle(t); return s.stroke !== 'none' && parseFloat(s.strokeWidth) >= 2 && s.fill === s.stroke; };
+
   for (const svg of document.querySelectorAll('svg')) {
     if (svg.parentElement && svg.parentElement.closest('svg')) continue;
     if (!vis(svg)) continue;
-    const box = svg.getBoundingClientRect();
-    const texts = [...svg.querySelectorAll('text')].filter(t => t.textContent.trim() && vis(t))
-      .map(t => ({ t, r: t.getBoundingClientRect() }));
+    const box = clipBox(svg);
+    const all = [...svg.querySelectorAll('text')].filter(t => t.textContent.trim() && vis(t));
+    /* A label "has a halo" when a white outline copy sits behind it (or it
+       paints its own stroke first): anything drawn before it is masked. */
+    const haloOf = t => {
+      const s = getComputedStyle(t);
+      if (/^stroke/.test(s.paintOrder) && parseFloat(s.strokeWidth) >= 2 && s.stroke !== 'none') return t;
+      return all.find(h => h !== t && isHalo(h) && h.textContent === t.textContent &&
+        Math.abs(h.getBoundingClientRect().left - t.getBoundingClientRect().left) < 2 &&
+        Math.abs(h.getBoundingClientRect().top - t.getBoundingClientRect().top) < 2) || null;
+    };
+    const texts = all.filter(t => !isHalo(t)).map(t => ({ t, r: t.getBoundingClientRect(), halo: haloOf(t) }));
     for (const { t, r } of texts) {
-      const out = Math.max(box.left - r.left, r.right - box.right, box.top - r.top, r.bottom - box.bottom);
-      if (out > 2 && getComputedStyle(svg).overflow !== 'visible') found.push({ kind: 'svg-clipped', by: Math.round(out), text: label(t) });
+      const out = Math.max(box.l - r.left, r.right - box.r, box.t - r.top, r.bottom - box.b);
+      if (out > 2) found.push({ kind: 'svg-clipped', by: Math.round(out), text: label(t) });
     }
     for (let i = 0; i < texts.length; i++) for (let j = i + 1; j < texts.length; j++) {
       const A = texts[i], B = texts[j];
       if (A.t.contains(B.t) || B.t.contains(A.t)) continue;
+      if (A.t.textContent === B.t.textContent && Math.abs(A.r.left - B.r.left) < 1 && Math.abs(A.r.top - B.r.top) < 1) continue;
       const w = Math.min(A.r.right, B.r.right) - Math.max(A.r.left, B.r.left);
       const h = Math.min(A.r.bottom, B.r.bottom) - Math.max(A.r.top, B.r.top);
       if (w <= 0 || h <= 0) continue;
+      /* Two lines of one label: font boxes are taller than the line gap, so
+         stacked lines always touch a little. Real collisions share far more. */
+      if (h < 0.4 * Math.min(A.r.height, B.r.height)) continue;
       const small = Math.min(A.r.width * A.r.height, B.r.width * B.r.height);
       if (small > 0 && (w * h) / small > OVERLAP) found.push({ kind: 'svg-overlap', text: `${label(A.t)} / ${label(B.t)}` });
+    }
+    /* Lines and arrows drawn across a label. */
+    const strokes = [...svg.querySelectorAll('line,path,polyline')].filter(g => {
+      const s = getComputedStyle(g); return s.stroke !== 'none' && parseFloat(s.strokeWidth) > 0 && vis(g) && g.getTotalLength;
+    });
+    for (const g of strokes) {
+      let len; try { len = g.getTotalLength(); } catch { continue; }
+      if (!len) continue;
+      const m = g.getScreenCTM(); if (!m) continue;
+      const thin = parseFloat(getComputedStyle(g).strokeWidth) * Math.hypot(m.a, m.b) < 1.8;
+      const n = Math.min(400, Math.max(8, Math.round(len / 2)));
+      const pts = [];
+      for (let k = 0; k <= n; k++) { const p = g.getPointAtLength(len * k / n); pts.push(new DOMPoint(p.x, p.y).matrixTransform(m)); }
+      for (const { t, r, halo } of texts) {
+        /* A halo hides thin grid and guide lines behind a label; it does not
+           make a label sitting on a thick curve or arrow look clean. */
+        if (halo && thin && (g.compareDocumentPosition(halo) & Node.DOCUMENT_POSITION_FOLLOWING)) continue;
+        const pad = Math.min(3, r.height * 0.2);
+        const inside = pts.filter(p => p.x > r.left + pad && p.x < r.right - pad && p.y > r.top + pad && p.y < r.bottom - pad).length;
+        if (inside >= 3) found.push({ kind: 'svg-line-through', text: label(t) });
+      }
     }
   }
   return found;
@@ -151,13 +200,16 @@ async function worker() {
         break;
       }
     }
-    if (++done % 200 === 0) process.stderr.write(`${done}/${jobs.length}\n`);
+    if (++done % 200 === 0) {
+      process.stderr.write(`${done}/${jobs.length}\n`);
+      if (process.env.OUT) fs.writeFileSync(process.env.OUT, JSON.stringify({ done, report }, null, 1));
+    }
   }
 }
 await Promise.all(Array.from({ length: CONC }, worker));
 await browser.close().catch(() => {}); srv.close();
 
-if (process.env.OUT) fs.writeFileSync(process.env.OUT, JSON.stringify(report, null, 1));
+if (process.env.OUT) fs.writeFileSync(process.env.OUT, JSON.stringify({ done, finished: true, report }, null, 1));
 const byKind = {};
 for (const r of report) byKind[r.kind] = (byKind[r.kind] || 0) + 1;
 console.log(`check-legibility: ${files.length} files, ${jobs.length} renders`, byKind);
