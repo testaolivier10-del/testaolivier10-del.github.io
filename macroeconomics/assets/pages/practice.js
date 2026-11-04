@@ -271,7 +271,7 @@
     function paintPick(){
       var stepEl = app.querySelector('.mac-pr-pickstep'), h = '', html = '';
       if(state.mode === 'build'){ h = 'Choose the questions'; html = filtersHtml(); }
-      else if(state.mode === 'weak'){ var w = weakTopics(); h = 'Where you are weakest'; html = '<p class="mac-small">' + (w.length ? 'Lowest mastery right now: ' + w.map(function(x){ return esc(x.title) + ' (' + Core.pct(x.value) + ')'; }).join(', ') + '.' : '') + '</p>'; }
+      else if(state.mode === 'weak'){ var w = weakTopics(); h = 'Where you are weakest'; html = '<p class="mac-small">' + (w.length ? 'Lowest mastery right now: ' + w.map(function(x){ return esc(x.title) + ' (' + Core.pct(x.value) + ')'; }).join(', ') + '.' : '') + '</p>' + '<p class="mac-small">Missed questions wait in <a href="review.html">Review</a>.</p>'; }
       app.querySelector('.mac-pr-pick-h').textContent = h;
       app.querySelector('.mac-pr-pick').innerHTML = html;
       stepEl.hidden = !html;

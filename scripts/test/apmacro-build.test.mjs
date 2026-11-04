@@ -115,11 +115,11 @@ test('the course home has its own headline, accent and cover, not AP® Psycholog
   const { root } = build('unit-3');
   const home = readFileSync(join(root, `${D}/index.html`), 'utf8');
   assert.match(home, /<h1 class="mast" id="r3Title">AP®<span>Macroeconomics<\/span><\/h1>/);
-  assert.match(home, /<p class="deck">AP® Macroeconomics, <span>every graph, every shift\.<\/span><\/p>/);
+  assert.doesNotMatch(home, /<p class="deck">/); // the second tagline is off course homes (owner 2026-11-02)
   assert.doesNotMatch(home, /Psychology|neuron|Curious Observer|Article analysis|Statistics you must know|score-calculator/);
   assert.match(home, /assets\/mac\.css/);
   assert.match(home, /data-cover="apmacro"/);
-  assert.match(home, /assets\/covers\/apmacro\.svg/);
+  assert.match(home, /assets\/covers\/art\/apmacro\.svg/); // the band drawing; the notes card cover is off the home (owner 2026-11-02)
   assert.equal(IDENTITY.accent.ink, '#355A0A');
   const css = readFileSync(`${D}/assets/mac.css`, 'utf8');
   assert.match(css, /body\.mac\{--ctint:#EEF4E0;--cink:#355A0A;\}/);

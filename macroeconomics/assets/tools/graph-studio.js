@@ -552,7 +552,7 @@
         if(s){
           why.innerHTML = ''; why.appendChild(sol);
           s.pills([{ html: right + ' of ' + results.length + ' points', tone: right === results.length ? 'good' : 'warn' }], 'left', 'quiz');
-          s.caption('<b>' + right + ' of ' + results.length + ' rubric points right the first time.</b> The worked solution is under Why.', 'quiz');
+          s.caption('<b>' + right + ' of ' + results.length + ' rubric points right the first time.</b> The worked solution is under Explanation.', 'quiz');
           var again = nx.querySelector('.cd-again'); again.classList.add('ls-btn', 'ls-pri'); again.focus();
         } else sol.querySelector('h3').focus();
       }

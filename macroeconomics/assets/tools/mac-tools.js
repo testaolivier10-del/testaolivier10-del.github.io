@@ -891,7 +891,7 @@
         var sol = area.querySelector(':scope > .bt-solution');
         if(sol){ why.innerHTML = ''; why.appendChild(sol); }
         s.pills([{ html: right + ' of ' + total + ' right', tone: right === total ? 'good' : 'warn' }], 'left', m);
-        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is under Why.', m);
+        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is under Explanation.', m);
         var again = area.querySelector('.cd-again');
         if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
       }
