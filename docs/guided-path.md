@@ -1,0 +1,58 @@
+# Guided study path (status file)
+
+Approved 2026-11-03: Olivier went through the clickable prototype on the real AP® Biology page
+(https://claude.ai/artifact/RUMefAKiLoKZ2qG2VX7fdQ) and said "build it", for every course at once.
+Decisions behind it are in the Project doc `levlprep-guided-path.md` and below.
+
+## What it is
+A personal path through a course, built from three quick questions, that only uses what the course already has
+(notes, lessons, practice, review, exams). It is there to follow, never a lock: every unit stays open, and jumping
+around never undoes anything.
+
+## The three ways to study (first question)
+1. **On my own.** The course order, a solid line. Start from the beginning or tick what you already know.
+2. **Alongside a class.** The student says what the class is on. The path is: covered (done), the missing
+   prerequisites, the class topic, a review, then faded stops marked "if your class follows the usual order".
+3. **Cramming.** A class test (pick topics and a date) or the whole exam (weakest first). Ends on the date, then asks
+   what is next.
+Skipping the questions gives "on my own" from the beginning. Changing mode keeps everything.
+
+## Rules (so no student gets stuck)
+- The class is the boss: the path never claims to know the teacher's next topic.
+- One tap to re-center ("My class is on…", or any topic in the whole course view). Progress belongs to topics, not to
+  places on the path, so re-centering costs nothing.
+- The path asks instead of assuming: after the class topic is done, after a few days away, when the student opens a
+  topic that is not on the path.
+- Covered is not known: a "3 question check" can skip a stop; misses come back through Review as always.
+- No dead ends: a Premium lesson stop shows that the notes and practice finish it for free ("Mark this stop done").
+- No guilt: a missed day changes the pace line only.
+- Wording follows the mode ("your class" only in class mode).
+
+## Files
+- `scripts/build-paths.mjs` writes `assets/path/<course>.json` for all 12 courses (`--check` in CI): units, topics in
+  course order with their pages, free flags, prerequisites and search words. Sources, never copied by hand:
+  - AP® courses: `<dir>/assets/<pfx>-curriculum.js` (order, free) and `docs/<ap>-dependency-map.json` (concepts).
+  - A&P: `anatomy-physiology/assets/anp-curriculum.js`, `docs/anp-dependency-map.json`, free chapters from premium.js.
+  - Ochem: `ochem/assets/curriculum.js` (topic `dependsOn`), free modules from premium.js.
+  - NREMT: `nremt/assets/study-notes.json` chapters (no prerequisite map yet, so no "before this" stops).
+- Prerequisites are derived, not written: topic B is a prerequisite of A when a concept taught in A depends on a
+  concept taught in B, B comes earlier in the course, and B is not already implied by another prerequisite of A
+  (transitive reduction). At most 3 per topic, with the concept that links them as the reason.
+- `scripts/build-path-pages.mjs` writes `<dir>/path.html` for every course from that course's `review.html` shell.
+- `assets/course/path.js` (`window.LevlPath`) and `assets/course/path.css`: the setup, the Path page (this stretch and
+  whole course), the course home card, and the end-of-page card on lessons and notes. Loaded lazily by
+  `assets/site-chrome.js` on course pages, so no page needs a new tag.
+- `assets/site-chrome.js`: the Path tab after Home in every course's tabs and the phone bar.
+- State: `<storagePrefix>path_v1` per course (`{ v:1, mode, anchor, covered:{}, done:{}, cram, seen }`). On this
+  device only, like the exam date (`<course>_exam_date`, which the path reads and writes). Lessons and answers come
+  from each course's own progress, which syncs as before, so what a student finishes shows on every device.
+
+## Done means
+A topic stop is done when the course records its lesson as finished (AP® and A&P `lessons`, ochem
+`ochem_progress[id].completed` or `ochem_textbook_read`, NREMT `nremt_lessons_v1`), or the student marked it done
+(passed the check, "I already know this", or "Mark this stop done" after the notes and practice).
+
+## Open
+- NREMT has no prerequisite map; its class mode re-centers but adds no "before this" stops.
+- Ochem has no per-topic accuracy, so cramming orders its topics by course order.
+- The prototype's Learn tab merge into the whole-course view is left for later (owner to decide).
