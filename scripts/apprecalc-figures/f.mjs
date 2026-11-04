@@ -162,7 +162,7 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
   fig('parametric-functions', 'parametric-functions-trace', 460, 350, 'A parametric curve traced as t increases',
     'The curve x(t) = t squared minus 2t, y(t) = 2t minus 1 for t from -1 to 3, a parabola opening to the right. Points are marked at t = -1 (3, -3), t = 0 (0, -1), t = 1 (-1, 1), t = 2 (0, 3) and t = 3 (3, 5). Arrows show the point moves left and up until t = 1, then right and up.',
     [P.svg, polyline(P, sampleParam(f, -1, 3)), travelArrows(P, f, [-0.5, 0.5, 1.5, 2.5]),
-      ts.map(t => dot(P, f(t))), ts.map(t => label(P, f(t), [...tlabel(t), { t: '  (' + f(t).map(num).join(', ') + ')' }], t === 1 ? -8 : 10, t === 1 ? -8 : t === 0 ? 16 : 4, { size: 12, anchor: t === 1 ? 'end' : 'start' }))]);
+      ts.map(t => dot(P, f(t))), ts.map(t => label(P, f(t), [...tlabel(t), { t: '  (' + f(t).map(num).join(', ') + ')' }], t === 1 || t === 0 ? -8 : 10, t === 1 ? -8 : t === 0 ? 16 : 4, { size: 12, anchor: t === 1 || t === 0 ? 'end' : 'start' }))]);
 }
 {
   const f = t => [t * t - 4, t * t * t - 4 * t];
@@ -181,7 +181,7 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
   const f = t => [t ** 3 - 6 * t * t + 9 * t, 4 * t - t * t];
   const P = panel([40, 16, 380, 250], [-1, 5], [-1, 5], { xStep: 1, yStep: 1 });
   const ts = [0, 1, 2, 3, 4];
-  const off = { 0: [10, 16], 1: [8, -8], 2: [-8, -10], 3: [-10, -8], 4: [8, -8] };
+  const off = { 0: [10, 16], 1: [8, -8], 2: [-8, -10], 3: [-10, -8], 4: [8, 14] };
   fig('parametric-motion', 'parametric-motion-path', 460, 300, 'The path of a particle from t = 0 to t = 4',
     'The path of a particle with x(t) = t cubed minus 6t squared plus 9t and y(t) = 4t minus t squared for t from 0 to 4. It starts at (0, 0) at t = 0, moves right and up to (4, 3) at t = 1, turns and moves left through (2, 4) at t = 2, the highest point, to (0, 3) at t = 3, then turns again and moves right and down to (4, 0) at t = 4, crossing its earlier path near (2, 1).',
     [P.svg, polyline(P, sampleParam(f, 0, 4)), travelArrows(P, f, [0.5, 1.6, 2.5, 3.6]),
@@ -202,10 +202,10 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
       body.push(`<line x1="${r2(P.sx(b[0]))}" y1="${r2(P.sy(a[1]))}" x2="${r2(P.sx(b[0]))}" y2="${r2(P.sy(b[1]))}" stroke="${BLUE}" stroke-width="1.8" stroke-dasharray="5 4"/>`);
       body.push(text((P.sx(a[0]) + P.sx(b[0])) / 2, P.sy(0) + 30, [{ t: 'change in ' }, I('x'), { t: ' = 4' }], { size: 12, anchor: 'middle', color: BLUE }));
       body.push(text(P.sx(b[0]) + 6, (P.sy(0) + P.sy(4)) / 2 + 22, [{ t: 'change in ' }, I('y'), { t: ' = 4' }], { size: 12, color: BLUE }));
-      body.push(text(P.sx(2.4), P.sy(2.3), [{ t: 'slope 1' }], { size: 12, color: VERM, anchor: 'end' }));
+      body.push(text(P.sx(4.8), P.sy(1.1), [{ t: 'slope 1' }], { size: 12, color: VERM, anchor: 'end' }));
     }
     body.push(ts.map(t => dot(P, f(t))));
-    body.push(ts.map(t => label(P, f(t), tlabel(t), t === 0 ? -6 : t === 4 ? -6 : 0, t === 0 ? -8 : t === 4 ? -12 : -10, { size: 12, anchor: t === 0 || t === 4 ? 'end' : 'middle' })));
+    body.push(ts.map(t => label(P, f(t), tlabel(t), t === 0 || t === 1 ? -8 : t === 4 ? -6 : 0, t === 0 ? -8 : t === 1 ? 2 : t === 4 ? 18 : -10, { size: 12, anchor: t === 0 || t === 1 || t === 4 ? 'end' : 'middle' })));
     fig('parametric-rates', id, 480, 300, title, alt, body);
   };
   mk('parametric-rates-secant', true, 'The segment between two points of a parametric curve',
@@ -336,10 +336,12 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
       vec(P, [0, 0], f(a), { color: BLUE, width: 2 }), vec(P, [0, 0], f(b), { color: BLUE, width: 2 })];
     if (disp) body.push(vec(P, f(a), f(b), { color: VERM, width: 2.2 }));
     body.push([0, 1, 2, 3, 4, 5, 6].map(t => dot(P, f(t), { r: 3.4 })));
-    body.push([0, 1, 2, 3, 4, 5, 6].map(t => label(P, f(t), tlabel(t), t >= 3 ? 6 : -6, t === 3 ? -10 : -6, { size: 11, anchor: t >= 3 ? 'start' : 'end' })));
-    body.push(label(P, [f(a)[0] / 2, f(a)[1] / 2], [{ t: 'p', b: true }, { t: '(' + a + ')' }], 8, 4, { size: 13, color: BLUE }));
+    body.push([0, 1, 2, 3, 4, 5, 6].map(t => label(P, f(t), tlabel(t), t >= 3 ? 6 : -6, t === 3 ? -10 : t === 6 ? 14 : -6, { size: 11, anchor: t >= 3 ? 'start' : 'end' })));
+    // with p(3) drawn the wedge right of p(1) is too narrow for its name, so it goes just left of the curve
+    body.push(disp ? label(P, [1.45, 4.4], [{ t: 'p', b: true }, { t: '(' + a + ')' }], 0, 0, { size: 13, color: BLUE, anchor: 'end' })
+      : label(P, [f(a)[0] * 0.75, f(a)[1] * 0.75], [{ t: 'p', b: true }, { t: '(' + a + ')' }], 6, 10, { size: 13, color: BLUE }));
     body.push(label(P, [f(b)[0] * 0.6, f(b)[1] * 0.6], [{ t: 'p', b: true }, { t: '(' + b + ')' }], 8, 12, { size: 13, color: BLUE }));
-    if (disp) body.push(label(P, [(f(a)[0] + f(b)[0]) / 2, (f(a)[1] + f(b)[1]) / 2], 'displacement', 0, -10, { size: 12, color: VERM, anchor: 'middle' }));
+    if (disp) body.push(label(P, [3.1, 9.0], 'displacement', 0, 0, { size: 12, color: VERM, anchor: 'end' }));
     fig('vector-valued-functions', id, 480, 300, title, alt, body);
   };
   mk('vector-valued-functions-displacement', 1, 3, true, 'Position vectors and a displacement vector',

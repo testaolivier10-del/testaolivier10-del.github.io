@@ -352,8 +352,9 @@ const range = (a, b, s = 1) => { const o = []; for (let v = a; v <= b + 1e-9; v 
   b.push(dot(Q.sx(-1), Q.sy(0), { color: C.blue }), dot(Q.sx(3), Q.sy(0), { color: C.blue }), dot(Q.sx(1), Q.sy(-4), { color: C.verm }));
   b.push(text(P.sx(-1), P.sy(f(-1)) - 12, 'peak', { size: 13.5, anchor: 'middle', halo: true }), text(P.sx(3), P.sy(f(3)) + 24, 'valley', { size: 13.5, anchor: 'middle', halo: true }));
   b.push(text(P.sx(1) + 10, P.sy(f(1)) - 8, 'inflection', { size: 13.5, color: C.verm, halo: true }));
-  b.push(text(Q.sx(-1) - 10, Q.sy(0) - 26, `${fName(PRIME)} = 0`, { size: 13.5, anchor: 'end', halo: true }), text(Q.sx(3) + 10, Q.sy(0) - 26, `${fName(PRIME)} = 0`, { size: 13.5, halo: true }));
-  b.push(text(Q.sx(1) + 10, Q.sy(-4) + 4, `lowest point of ${fName(PRIME)}`, { size: 13.5, color: C.verm, halo: true }));
+  // Each label on the side of its point that the curve does not pass through.
+  b.push(text(Q.sx(-1) - 10, Q.sy(0) + 34, `${fName(PRIME)} = 0`, { size: 13.5, anchor: 'end', halo: true }), text(Q.sx(3) - 10, Q.sy(0) - 14, `${fName(PRIME)} = 0`, { size: 13.5, anchor: 'end', halo: true }));
+  b.push(text(Q.sx(1) + 10, Q.sy(-4) + 20, `lowest point of ${fName(PRIME)}`, { size: 13.5, color: C.verm, halo: true }));
   b.push(text(P.sx(4.6), P.sy(4.6), fName(), { size: 18, color: C.crimson, weight: 'bold', anchor: 'end' }));
   b.push(text(Q.sx(4.5), Q.sy(5.4), fName(PRIME), { size: 18, color: C.blue, weight: 'bold', anchor: 'end' }));
   b.push(text(660, 120, `${fName()}(${it('x')}) = ${it('x')}³/3 ${MINUS} ${it('x')}²`, { size: 14, color: C.crimson }), text(700, 140, `${MINUS} 3${it('x')} + 2`, { size: 14, color: C.crimson }));

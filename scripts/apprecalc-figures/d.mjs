@@ -123,8 +123,8 @@ function panel(o) {
   return P;
 }
 
-const txt = (x, y, s, { size = 15, color = INK, anchor = 'start', bold = false, italic = false } = {}) =>
-  `<text x="${r2(x)}" y="${r2(y)}" font-size="${size}" text-anchor="${anchor}" fill="${color}"${bold ? ' font-weight="bold"' : ''}${italic ? ' font-style="italic"' : ''}>${s}</text>`;
+const txt = (x, y, s, { size = 15, color = INK, anchor = 'start', bold = false, italic = false, halo = false } = {}) =>
+  `<text x="${r2(x)}" y="${r2(y)}" font-size="${size}" text-anchor="${anchor}" fill="${color}"${bold ? ' font-weight="bold"' : ''}${italic ? ' font-style="italic"' : ''}${halo ? ' paint-order="stroke" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round"' : ''}>${s}</text>`;
 const it = s => `<tspan font-style="italic">${s}</tspan>`;
 const sup = s => `<tspan baseline-shift="super" font-size="70%">${s}</tspan>`;
 const line = (x1, y1, x2, y2, { color = INK, width = 2, dash = null } = {}) =>
@@ -337,7 +337,7 @@ fig('sine-cosine-values-special', 'sine-cosine-values', 780, 520,
     const q1 = [[PI / 6, '(√3/2, 1/2)'], [PI / 4, '(√2/2, √2/2)'], [PI / 3, '(1/2, √3/2)']];
     for (const [a, lab] of q1) {
       const X = cx + (R - 12) * Math.cos(a), Y = cy - (R - 12) * Math.sin(a);
-      s.push(txt(X - 6, Y + 4, lab, { size: 13, anchor: 'end' }));
+      s.push(txt(X - 6, Y + 4, lab, { size: 13, anchor: 'end', halo: true }));
     }
     s.push(txt(cx + R + 8, cy + 20, '', { size: 1 }));
     // Table

@@ -362,7 +362,7 @@ const figs = {};
   b.push(text(P.sx(X) + 8, P.sy((line(X) + f(X)) / 2) + 18, 'gap = 3/(x + 1)', { size: 14, bold: true, halo: true }));
   b.push(seg(P, -4.7, 10, -3.9, 10, { color: BLUE, width: 2, dash: '8 6' }), text(P.sx(-3.75), P.sy(10) + 5, 'y = x + 2 (the quotient)', { size: 14, color: BLUE, bold: true, halo: true }));
   b.push(text(P.sx(1.5), P.sy(10.6), 'y = (x² + 3x + 5)/(x + 1)', { size: 14, color: CRIMSON, bold: true, halo: true }));
-  b.push(text(P.sx(-1) - 6, P.sy(-9), 'x = −1', { size: 13.5, anchor: 'end', color: MUTED, halo: true }));
+  b.push(text(P.sx(-1) + 6, P.sy(-9), 'x = −1', { size: 13.5, color: MUTED, halo: true }));   // right of the asymptote: the curve is on its left
   b.push(text(70, 26, '(x² + 3x + 5)/(x + 1) = x + 2 + 3/(x + 1): a line you can integrate plus a piece of the form k/(x + 1).', { size: 14.5 }));
   figs[id] = { w: W, h: H, svg: svg(id, W, H, 'Long division splits the integrand into simple pieces',
     'The graph of y = (x squared + 3x + 5)/(x + 1) in two branches on either side of the vertical asymptote x = -1, and the dashed line y = x + 2. The curve hugs the line far from x = -1; at x = 3 a vertical segment marks the gap between them, 3/(x + 1). Long division gives (x squared + 3x + 5)/(x + 1) = x + 2 + 3/(x + 1).', b) };

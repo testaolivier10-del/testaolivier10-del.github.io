@@ -70,20 +70,21 @@ export function clearTicks(svg) {
   while ((m = re.exec(svg))) {
     const [tag, close, name, , self] = m;
     if (name === 'defs' || name === 'clipPath' || name === 'g') {
-      if (close) { const s = stack.pop(); if (s) skip--; continue; }
+      if (close) { const s = stack.pop(); if (s && s.hides) skip--; continue; }
       if (self) continue;
-      const hides = name !== 'g' || !!attr(tag, 'transform');
-      stack.push(hides); if (hides) skip++;
+      const hides = name !== 'g' || !!attr(tag, 'transform'), up = stack[stack.length - 1] || {};
+      stack.push({ hides, stroke: attr(tag, 'stroke') ?? up.stroke, sw: attr(tag, 'stroke-width') ?? up.sw }); if (hides) skip++;
       continue;
     }
     if (close || skip) continue;
+    const inh = stack[stack.length - 1] || {};
     if (name === 'text') {
       const end = svg.indexOf('</text>', re.lastIndex);
       const body = svg.slice(re.lastIndex, end);
       texts.push({ start: m.index, tag, body, tagEnd: re.lastIndex });
       continue;
     }
-    const stroke = attr(tag, 'stroke'), sw = +(attr(tag, 'stroke-width') || 1);
+    const stroke = attr(tag, 'stroke') ?? inh.stroke, sw = +(attr(tag, 'stroke-width') ?? inh.sw ?? 1);
     if (name === 'circle') { dots.push([+attr(tag, 'cx'), +attr(tag, 'cy'), +(attr(tag, 'r') || 0) + 1]); continue; }
     if (!stroke || stroke === 'none' || sw < 1.8) continue;
     const cp = (attr(tag, 'clip-path') || '').match(/url\(#([^)]+)\)/), clip = cp ? clips[cp[1]] || null : null;
@@ -99,11 +100,13 @@ export function clearTicks(svg) {
     return { l, r: l + w, t: y - size * 0.74, b: y + size * 0.18 };
   };
   const all = texts.map(t => {
+    const bare = t.body.match(/^<tspan\s*>([^<]*)<\/tspan>$/);   // one plain tspan reads as plain text
+    if (bare) t.body = bare[1];
     const size = +(attr(t.tag, 'font-size') || 13), plain = t.body.replace(/<[^>]*>/g, '');
     return { ...t, size, plain, x: +attr(t.tag, 'x'), y: +attr(t.tag, 'y'), anchor: attr(t.tag, 'text-anchor') || 'start' };
   }).filter(t => Number.isFinite(t.x) && Number.isFinite(t.y));
   all.forEach(t => { t.box = boxOf(t.x, t.y, t.plain, t.anchor, t.size); });
-  const cost = (b, self) => {
+  const cost = (b, self, strokesOnly) => {
     const g = { l: b.l - 1, r: b.r + 1, t: b.t - 1, b: b.b + 1 };
     let c = 0;
     if (b.l < 0 || b.t < 0 || b.r > W || b.b > H) c += 100;
@@ -112,17 +115,18 @@ export function clearTicks(svg) {
       if (h.l < h.r && h.t < h.b && segIn(s, h)) c += 10;
     }
     for (const d of dots) if (d[0] + d[2] > b.l && d[0] - d[2] < b.r && d[1] + d[2] > b.t && d[1] - d[2] < b.b) c += 10;
-    for (const o of all) if (o !== self && o.box.l < b.r && o.box.r > b.l && o.box.t < b.b && o.box.b > b.t) c += 20;
+    if (!strokesOnly) for (const o of all) if (o !== self && o.box.l < b.r && o.box.r > b.l && o.box.t < b.b && o.box.b > b.t) c += 20;
     return c;
   };
   const edits = [];
   for (const t of all) {
     if (!NUM.test(t.plain.trim()) || t.body.includes('<')) continue;
-    if (cost(t.box, t) === 0) continue;
+    if (cost(t.box, t, true) === 0) continue;   // only a number a stroke runs through moves
     const { x, y, size } = t, cands = [];
     if (t.anchor === 'middle') {
       const up = -Math.round(size * 1.85);
-      cands.push([x - 3, y, 'end'], [x + 3, y, 'start'], [x, y + up, 'middle'], [x - 3, y + up, 'end'], [x + 3, y + up, 'start']);
+      const down = Math.round(size * 0.7);
+      cands.push([x - 3, y, 'end'], [x + 3, y, 'start'], [x, y + up, 'middle'], [x - 3, y + up, 'end'], [x + 3, y + up, 'start'], [x, y + down, 'middle']);
     } else if (t.anchor === 'end') {
       cands.push([x, y - Math.round(size * 0.6), 'end'], [x, y + Math.round(size * 0.6), 'end'], [x + 16, y, 'start'], [x + 16, y - Math.round(size * 0.6), 'start'], [x + 16, y + Math.round(size * 0.6), 'start']);
     } else {
