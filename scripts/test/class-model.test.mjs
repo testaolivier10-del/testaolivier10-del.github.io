@@ -50,21 +50,26 @@ test('practice status: counts answers since it opened, in its topics, and marks 
   const none = M.status(a, M.summarize('apbio', store({}), NOW), NOW);
   assert.equal(none.state, 'not'); assert.equal(none.late, true, 'past due but inside the late window');
   assert.equal(M.status({ ...a, late_until: null }, M.summarize('apbio', store({}), NOW), NOW).state, 'missing');
+  const lateNotAccepted = M.status({ ...a, late_until: null }, M.summarize('apbio', store(q), NOW), NOW);
+  assert.equal(lateNotAccepted.state, 'missing', 'finished after the due date with no late window is missing');
+  const firstDone = M.status({ ...a, id: 'x1' }, M.summarize('apbio', store(q, { levlprep_class_done_v1: JSON.stringify({ x1: NOW - 2 * DAY }) }), NOW), NOW);
+  assert.equal(firstDone.late, false, 'done on time the first time; a redo after the due date is not lateness');
 });
 
 test('review status: the misses from before it opened, redone after', () => {
   const opens = NOW - 2 * DAY, a = { kind: 'review', spec: { topics: [], count: 25 }, opens_at: opens };
-  const q = { 'bio-a-1': rec('a', 'unit-1', 0, 5), 'bio-a-2': rec('a', 'unit-1', 1, 1, 2), 'bio-a-3': rec('a', 'unit-1', 1, 6), 'bio-a-4': rec('a', 'unit-1', 1, 1) };
+  const q = { 'bio-a-1': rec('a', 'unit-1', 0, 5), 'bio-a-2': { ...rec('a', 'unit-1', 1, 1, 2), c: 1 }, 'bio-a-3': rec('a', 'unit-1', 1, 6), 'bio-a-4': rec('a', 'unit-1', 1, 1), 'bio-a-5': rec('a', 'unit-1', 1, 1, 2) };
   const st = M.status(a, M.summarize('apbio', store(q), NOW), NOW);
-  assert.equal(M.status(a, M.summarize('apbio', store({}), NOW), NOW).state, 'done', 'nothing to redo counts as done');
-  assert.equal(st.total, 2, 'one miss still waiting, one redone; a first answer since is not a review'); assert.equal(st.answered, 1); assert.equal(st.state, 'progress');
+  assert.equal(M.status(a, M.summarize('apbio', store({}), NOW), NOW).state, 'not', 'no answers at all is not done');
+  assert.equal(M.status(a, M.summarize('apbio', store({ 'bio-a-9': rec('a', 'unit-1', 1, 9) }), NOW), NOW).state, 'done', 'answers but nothing to redo counts as done');
+  assert.equal(st.total, 2, 'one miss still waiting, one redone; a first answer or an always-right repeat is not a review'); assert.equal(st.answered, 1); assert.equal(st.state, 'progress');
 });
 
 test('exam and free-response status read the course history', () => {
-  const sum = M.summarize('apbio', store({}, { apbio_prefs_v1: JSON.stringify({ examHistory: [{ ts: NOW - DAY, unit: 'unit-1', mcq: { c: 6, n: 10 } }], frqScores: { f1: { got: 4, of: 8, ts: NOW - DAY } } }) }), NOW);
+  const sum = M.summarize('apbio', store({}, { apbio_prefs_v1: JSON.stringify({ examHistory: [{ ts: NOW - DAY, kind: 'unit', unit: 'unit-1', mcq: { c: 6, n: 10 } }, { ts: NOW - DAY, kind: 'mixed', mcq: { c: 3, n: 5 } }], frqScores: { f1: { got: 4, of: 8, ts: NOW - DAY } } }) }), NOW);
   const ex = M.status({ kind: 'exam', spec: { unit: 'unit-1' }, opens_at: NOW - 2 * DAY }, sum, NOW);
   assert.equal(ex.state, 'done'); assert.equal(ex.score, 0.6);
-  assert.equal(M.status({ kind: 'exam', spec: { unit: null }, opens_at: NOW - 2 * DAY }, sum, NOW).state, 'not', 'a unit test is not the full exam');
+  assert.equal(M.status({ kind: 'exam', spec: { unit: null }, opens_at: NOW - 2 * DAY }, sum, NOW).state, 'not', 'a unit test or a mixed quiz is not the full exam');
   assert.equal(M.status({ kind: 'frq', spec: { frq: 'f1' }, opens_at: NOW - 2 * DAY }, sum, NOW).score, 0.5);
   assert.equal(M.status({ kind: 'frq', spec: { frq: 'f1' }, opens_at: NOW }, sum, NOW).state, 'not', 'scored before it was assigned');
 });

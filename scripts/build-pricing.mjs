@@ -414,6 +414,7 @@ ${ORDER.map(courseSection).join('\n')}
       <details class="sp-box"><summary>Do I need an account?</summary><p>Only to buy, so the pass follows you to every device. Everything free works without one.</p></details>
       <details class="sp-box"><summary>Can I get a refund?</summary><p>Yes, in full, within 7 days, from your <a href="account.html">Account</a> page. Once per account.</p></details>
       <details class="sp-box"><summary>What happens when a pass ends?</summary><p>Your progress stays; only the Premium parts lock again. A second pass starts when the first one ends.${DATED.length ? ` A pass with an end date (${esc(listWords(DATED.map((k) => COURSES[k].name)))}) runs through that date <a href="terms.html#fixed-date">whenever it is bought</a>.` : ''}</p></details>
+      <details class="sp-box"><summary>I&rsquo;m a teacher. Is there anything for my class?</summary><p>Yes: <a href="teach/">free teacher classes</a> for every course from AP&reg; Biology to AP&reg; Macroeconomics. Students join with a code and use the free plan; you assign work and see where each student struggles. For Premium for a whole class at a teacher discount, email hello@levlprep.com with your class size.</p></details>
       <details class="sp-box"><summary>I&rsquo;m under 18. Can I buy one?</summary><p>With a parent or guardian&rsquo;s permission; under 16, they should make the purchase.</p></details>
     </div>
     <p class="pp-faq-more">Every detail is in the <a href="terms.html#premium">terms</a>. Something else? Email <b>hello@levlprep.com</b>.</p>
@@ -422,7 +423,7 @@ ${ORDER.map(courseSection).join('\n')}
 <div class="xshell narrow">
   <footer>
 ${MARK ? `    ${TM_HTML}
-` : ''}    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+` : ''}    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="teach/">Teachers</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 

@@ -76,9 +76,34 @@ create table if not exists public.class_assignments (
 create index if not exists class_assignments_class_idx on public.class_assignments (class_id);
 alter table public.class_assignments enable row level security;
 
-revoke all on table public.teacher_profiles, public.classes, public.class_members, public.class_assignments from anon, authenticated;
+-- Code lookups per account, so codes cannot be guessed by trying many (30 an hour; kept a day).
+create table if not exists public.class_code_tries (
+  user_id uuid not null references auth.users (id) on delete cascade,
+  at      timestamptz not null default now()
+);
+create index if not exists class_code_tries_idx on public.class_code_tries (user_id, at);
+alter table public.class_code_tries enable row level security;
 
--- Six characters from an alphabet with no look-alikes (no 0/O, 1/I/L).
+revoke all on table public.teacher_profiles, public.classes, public.class_members, public.class_assignments, public.class_code_tries from anon, authenticated;
+
+-- One more code lookup by this account; false once it has made 30 in the last hour.
+create or replace function public.class_code_try()
+returns boolean
+language plpgsql
+volatile
+security definer
+set search_path = public
+as $$
+begin
+  if auth.uid() is null then return false; end if;
+  delete from public.class_code_tries where at < now() - interval '1 day';
+  if (select count(*) from public.class_code_tries where user_id = auth.uid() and at > now() - interval '1 hour') >= 30 then return false; end if;
+  insert into public.class_code_tries (user_id) values (auth.uid());
+  return true;
+end;
+$$;
+
+-- Eight characters from an alphabet with no look-alikes (no 0/O, 1/I/L), from pgcrypto's random bytes.
 create or replace function public.class_new_code()
 returns text
 language plpgsql
@@ -87,13 +112,15 @@ set search_path = public
 as $$
 declare
   abc text := 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+  b bytea;
   out text;
   i integer;
 begin
   loop
+    b := extensions.gen_random_bytes(8);
     out := '';
-    for i in 1..6 loop
-      out := out || substr(abc, 1 + floor(random() * length(abc))::integer, 1);
+    for i in 0..7 loop
+      out := out || substr(abc, 1 + (get_byte(b, i) % length(abc)), 1);
     end loop;
     exit when not exists (select 1 from public.classes where code = out);
   end loop;
@@ -140,8 +167,8 @@ declare
 begin
   if auth.uid() is null then return null; end if;
   if not exists (select 1 from public.teacher_profiles where user_id = auth.uid()) then return null; end if;
-  -- AP® courses only (their keys start with ap; nremt, ochem and anp keep progress differently).
-  if p_course !~ '^ap[a-z]+$' then return null; end if;
+  -- AP® courses only (nremt, ochem and anp keep progress differently).
+  if p_course !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro)$' then return null; end if;
   if p_name is null or length(btrim(p_name)) < 1 or length(p_name) > 60 then return null; end if;
   if (select count(*) from public.classes where teacher_id = auth.uid() and not archived) >= 30 then return null; end if;
   insert into public.classes (teacher_id, course, name, code, unit_order)
@@ -180,7 +207,7 @@ begin
   select * into c from public.classes where id = p_class and teacher_id = auth.uid() and auth.uid() is not null;
   if not found then return null; end if;
   if p_patch ? 'name' and length(btrim(p_patch->>'name')) between 1 and 60 then c.name := btrim(p_patch->>'name'); end if;
-  if p_patch ? 'unit_order' and jsonb_typeof(p_patch->'unit_order') = 'array' and jsonb_array_length(p_patch->'unit_order') <= 40 then c.unit_order := p_patch->'unit_order'; end if;
+  if p_patch ? 'unit_order' and jsonb_typeof(p_patch->'unit_order') = 'array' and jsonb_array_length(p_patch->'unit_order') <= 40 and octet_length((p_patch->'unit_order')::text) <= 2000 then c.unit_order := p_patch->'unit_order'; end if;
   if p_patch ? 'current_unit' then c.current_unit := left(p_patch->>'current_unit', 60); end if;
   if p_patch ? 'archived' then c.archived := coalesce((p_patch->>'archived')::boolean, c.archived); end if;
   if coalesce((p_patch->>'new_code')::boolean, false) then c.code := public.class_new_code(); end if;
@@ -304,15 +331,21 @@ $$;
 -- What a student sees before joining: the class and its teacher, nothing else.
 create or replace function public.class_preview(p_code text)
 returns jsonb
-language sql
-stable
+language plpgsql
+volatile
 security definer
 set search_path = public
 as $$
-  select jsonb_build_object('name', c.name, 'course', c.course, 'teacher', p.display_name)
+declare
+  r jsonb;
+begin
+  if auth.uid() is null or not public.class_code_try() then return null; end if;
+  select jsonb_build_object('name', c.name, 'course', c.course, 'teacher', p.display_name) into r
     from public.classes c
     join public.teacher_profiles p on p.user_id = c.teacher_id
-   where c.code = upper(btrim(p_code)) and not c.archived and auth.uid() is not null;
+   where c.code = upper(btrim(p_code)) and not c.archived;
+  return r;
+end;
 $$;
 
 create or replace function public.class_join(p_code text, p_name text)
@@ -326,6 +359,8 @@ declare
 begin
   if auth.uid() is null then return null; end if;
   if p_name is null or length(btrim(p_name)) < 1 or length(p_name) > 60 then return null; end if;
+  if not exists (select 1 from public.class_members m join public.classes k on k.id = m.class_id where m.student_id = auth.uid() and k.code = upper(btrim(p_code)))
+     and not public.class_code_try() then return null; end if;
   select * into c from public.classes where code = upper(btrim(p_code)) and not archived;
   if not found then return null; end if;
   if (select count(*) from public.class_members where class_id = c.id) >= 400 then return null; end if;
@@ -368,7 +403,7 @@ as $$
                'late_until', a.late_until + make_interval(days => m.extra_days),
                'required', a.required) order by a.due_at nulls last)
              from public.class_assignments a
-            where a.class_id = c.id and a.opens_at <= now() + interval '1 day'
+            where a.class_id = c.id and a.opens_at <= now()
               and (a.students is null or a.students ? m.student_id::text)), '[]'::jsonb))
            order by m.joined_at), '[]'::jsonb)
     from public.class_members m
@@ -388,7 +423,7 @@ declare
   n integer;
 begin
   if auth.uid() is null or p_summary is null or jsonb_typeof(p_summary) <> 'object' then return 0; end if;
-  if octet_length(p_summary::text) > 400000 then return 0; end if;
+  if octet_length(p_summary::text) > 120000 then return 0; end if;
   update public.class_members m
      set summary = p_summary, summary_at = now()
     from public.classes c
@@ -399,21 +434,22 @@ end;
 $$;
 
 revoke execute on function public.class_new_code() from public, anon, authenticated;
-revoke execute on function public.teach_set_profile(text, text) from public;
-revoke execute on function public.teach_profile() from public;
-revoke execute on function public.teach_create_class(text, text, jsonb) from public;
-revoke execute on function public.teach_my_classes() from public;
-revoke execute on function public.teach_update_class(uuid, jsonb) from public;
-revoke execute on function public.teach_delete_class(uuid) from public;
-revoke execute on function public.teach_class_report(uuid) from public;
-revoke execute on function public.teach_save_assignment(uuid, uuid, jsonb) from public;
-revoke execute on function public.teach_delete_assignment(uuid) from public;
-revoke execute on function public.teach_set_member(uuid, uuid, jsonb) from public;
-revoke execute on function public.class_preview(text) from public;
-revoke execute on function public.class_join(text, text) from public;
-revoke execute on function public.class_leave(uuid) from public;
-revoke execute on function public.class_mine() from public;
-revoke execute on function public.class_push(text, jsonb) from public;
+revoke execute on function public.class_code_try() from public, anon, authenticated;
+revoke execute on function public.teach_set_profile(text, text) from public, anon;
+revoke execute on function public.teach_profile() from public, anon;
+revoke execute on function public.teach_create_class(text, text, jsonb) from public, anon;
+revoke execute on function public.teach_my_classes() from public, anon;
+revoke execute on function public.teach_update_class(uuid, jsonb) from public, anon;
+revoke execute on function public.teach_delete_class(uuid) from public, anon;
+revoke execute on function public.teach_class_report(uuid) from public, anon;
+revoke execute on function public.teach_save_assignment(uuid, uuid, jsonb) from public, anon;
+revoke execute on function public.teach_delete_assignment(uuid) from public, anon;
+revoke execute on function public.teach_set_member(uuid, uuid, jsonb) from public, anon;
+revoke execute on function public.class_preview(text) from public, anon;
+revoke execute on function public.class_join(text, text) from public, anon;
+revoke execute on function public.class_leave(uuid) from public, anon;
+revoke execute on function public.class_mine() from public, anon;
+revoke execute on function public.class_push(text, jsonb) from public, anon;
 grant execute on function public.teach_set_profile(text, text) to authenticated;
 grant execute on function public.teach_profile() to authenticated;
 grant execute on function public.teach_create_class(text, text, jsonb) to authenticated;

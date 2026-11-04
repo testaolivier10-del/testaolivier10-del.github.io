@@ -15,14 +15,15 @@
               flags: { <questionId>: ts },
               exams: [ { ts, kind, label, unit, c, n, fg, fo } ],  newest last
               frq:   { <frqId>: { got, of, ts } },
-              lessons: <count> }
+              lessons: <count>,
+              done:  { <assignmentId>: ms } }    when the student's own browser first saw each assignment done
 
    ASSIGNMENT  { id, kind: practice|review|exam|frq, title, required, opens_at, due_at, late_until,
                  spec: { topics: [..], count, unit, frq } } */
 (function(root){
   'use strict';
   var DAY = 86400000, FULL = 12, HALF_LIFE = 45, FLOOR = 0.5, LEVEL_W = { r: 0.8, p: 1, a: 1.2 };
-  var MAX_ITEMS = 4000;
+  var MAX_ITEMS = 1500;
 
   // The courses a class can be for: the mastery courses on the shared engine.
   var COURSES = {
@@ -56,11 +57,12 @@
     var prefs = readJson(get, course + '_prefs_v1') || {};
     var exams = (prefs.examHistory || []).slice(-15).map(function(x){
       return { ts: x.ts, kind: x.kind || '', label: x.label || '', unit: x.unit || null,
-               c: x.mcq ? x.mcq.c : 0, n: x.mcq ? x.mcq.n : 0, fg: x.frq ? x.frq.got : 0, fo: x.frq ? x.frq.of : 0 };
+               partial: !!x.partial, c: x.mcq ? x.mcq.c : 0, n: x.mcq ? x.mcq.n : 0, fg: x.frq ? x.frq.got : 0, fo: x.frq ? x.frq.of : 0 };
     });
     var frq = {};
     Object.keys(prefs.frqScores || {}).forEach(function(id){ var s = prefs.frqScores[id]; if(s) frq[id] = { got: +s.got || 0, of: +s.of || 0, ts: s.ts || 0 }; });
-    return { v: 1, at: now, items: items, picks: picks, flags: flags, exams: exams, frq: frq, lessons: Object.keys(prog.lessons || {}).length };
+    var done = readJson(get, 'levlprep_class_done_v1') || {};
+    return { v: 1, at: now, items: items, picks: picks, flags: flags, exams: exams, frq: frq, lessons: Object.keys(prog.lessons || {}).length, done: done };
   }
 
   function rows(sum){ var it = (sum && sum.items) || {}; return Object.keys(it).map(function(id){ var a = it[id]; return { id: id, t: a[0], u: a[1], n: a[2], c: a[3], right: a[4], seen: a[5] * 1000, l: a[6] }; }); }
@@ -108,8 +110,8 @@
     var out = { state: 'not', late: false, answered: 0, total: 0, score: null, doneAt: null };
     if(a.kind === 'practice' || a.kind === 'review'){
       var rs = rows(sum).filter(inScope);
-      // Review counts only questions answered before and redone since it opened (n >= 2); practice counts any answer.
-      var after = rs.filter(function(r){ return r.seen >= opens && (a.kind === 'practice' || r.n >= 2); }).sort(function(x, y){ return x.seen - y.seen; });
+      // Review counts only questions missed at some point and redone since it opened; practice counts any answer.
+      var after = rs.filter(function(r){ return r.seen >= opens && (a.kind === 'practice' || (r.n >= 2 && r.c < r.n)); }).sort(function(x, y){ return x.seen - y.seen; });
       if(a.kind === 'practice'){
         out.total = Math.max(1, spec.count || 10);
       } else {
@@ -118,21 +120,28 @@
       }
       out.answered = Math.min(after.length, out.total);
       if(after.length){ var right = after.slice(0, out.total).filter(function(r){ return r.right; }).length; out.score = right / out.answered; }
-      if(!out.total){ out.state = 'done'; out.doneAt = opens; }
+      if(!out.total){ if(rs.length){ out.state = 'done'; out.doneAt = opens; } }  // nothing to redo; no answers at all is not done
       else if(after.length >= out.total){ out.state = 'done'; out.doneAt = after[out.total - 1].seen; }
       else if(after.length) out.state = 'progress';
     } else if(a.kind === 'exam'){
       out.total = 1;
-      var ex = ((sum && sum.exams) || []).filter(function(x){ return x.ts >= opens && (spec.unit ? x.unit === spec.unit : !x.unit); })[0];
+      var ex = ((sum && sum.exams) || []).filter(function(x){ return x.ts >= opens && !x.partial && (spec.unit ? x.unit === spec.unit : x.kind === 'full'); })[0];
       if(ex){ out.state = 'done'; out.answered = 1; out.doneAt = ex.ts; out.score = ex.n ? ex.c / ex.n : null; out.exam = ex; }
     } else if(a.kind === 'frq'){
       out.total = 1;
       var f = sum && sum.frq && spec.frq && sum.frq[spec.frq];
       if(f && f.ts >= opens){ out.state = 'done'; out.answered = 1; out.doneAt = f.ts; out.score = f.of ? f.got / f.of : null; out.frq = f; }
     }
-    if(out.state === 'done') out.late = !!(due && out.doneAt > due);
-    else if(due && now > due && (!lateUntil || now > lateUntil)) out.state = 'missing';
-    else if(due && now > due) out.late = true;
+    // The first time the student's own browser saw it done beats the questions' last-seen times (a redo later is not lateness).
+    var first = sum && sum.done && a.id && sum.done[a.id];
+    if(out.state === 'done' && first && first < out.doneAt) out.doneAt = first;
+    if(out.state === 'done' && due && out.doneAt > due){
+      // Done after the due date: late inside the late window, missing when late work is not accepted or the window closed.
+      if(lateUntil && out.doneAt <= lateUntil) out.late = true;
+      else { out.state = 'missing'; out.lateDone = true; }
+    }
+    else if(out.state !== 'done' && due && now > due && (!lateUntil || now > lateUntil)) out.state = 'missing';
+    else if(out.state !== 'done' && out.state !== 'missing' && due && now > due) out.late = true;
     return out;
   }
 

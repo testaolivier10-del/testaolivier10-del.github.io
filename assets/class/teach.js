@@ -430,6 +430,7 @@
     var who = '<div class="lv-seg" role="group" aria-label="Who">' + seg('who', 'all', B.who === 'all', 'Whole class (' + D.members.length + ')') + seg('who', 'some', B.who === 'some', 'Choose students') + '</div>' +
       (B.who === 'some' ? '<div class="lv-grid3" style="margin-top:12px">' + D.members.map(function(m){ return '<label class="lvt-check"><input type="checkbox" data-student="' + m.id + '"' + (B.students.indexOf(m.id) !== -1 ? ' checked' : '') + '> ' + esc(m.name) + '</label>'; }).join('') + '</div>' : '');
     var lateOpts = [[0, 'Not accepted'], [1, 'Up to 1 day late'], [2, 'Up to 2 days late'], [3, 'Up to 3 days late'], [7, 'Up to a week late']];
+    if(B.late && !lateOpts.some(function(o){ return o[0] === B.late; })) lateOpts.push([B.late, 'Up to ' + plural(B.late, 'day') + ' late']);
     var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> ' + (B.id ? 'Edit' : 'Assign'), m1: B.id ? 'Edit' : 'Assign', m2: 'work', hand: 'one screen, smart defaults', lede: 'Pick what, which topics and when.', small: true }) +
       '<div class="hwrap"><form class="lvt-assign tm-up" id="lvtAssign"><div class="main">' +
       '<section class="d5-card">' + q('1', 'What should', 'they do?') + '<div class="lvt-tiles">' + tile('practice', 'Practice', 'Questions on the topics you pick') + tile('review', 'Review', 'Each student redoes their own misses') + tile('exam', 'Practice exam', 'A unit test or the full AP&reg; exam') + tile('frq', 'Free response', 'AP&reg; style, scored with the rubric') + '</div></section>' +
@@ -465,7 +466,7 @@
     if(!B.title.trim()) return bad('Give it a title.');
     var due = B.due ? new Date(B.due) : null, f = (S.frqs || []).filter(function(x){ return x.id === B.frq; })[0];
     var data = { kind: B.kind, title: B.title.trim(),
-      spec: { topics: B.kind === 'practice' || B.kind === 'review' ? B.topics : [], topicNames: B.topics.map(function(t){ return D.topics[t] ? D.topics[t].title : t; }),
+      spec: { topics: B.kind === 'practice' || B.kind === 'review' ? B.topics : [], topicNames: (B.kind === 'practice' || B.kind === 'review' ? B.topics : []).map(function(t){ return D.topics[t] ? D.topics[t].title : t; }),
               count: B.count, unit: B.kind === 'exam' ? B.unit || null : null, frq: B.kind === 'frq' ? B.frq : null, points: f ? f.points : null },
       opens_at: B.opens ? new Date(B.opens).toISOString() : (B.id ? null : new Date().toISOString()),
       due_at: due ? due.toISOString() : null, late_until: due && B.late ? new Date(due.getTime() + B.late * DAY).toISOString() : null,
@@ -529,7 +530,7 @@
     var s = a.st[m.id]; if(!s) return '<td><span class="lvt-c e">&ndash;</span></td>';
     var late = s.late ? ' late' : '';
     if(s.state === 'missing') return '<td><span class="lvt-c r">Missing</span></td>';
-    if(s.state === 'not') return '<td><span class="lvt-c e">' + (a.required && a.due_at && Date.parse(a.due_at) < Date.now() ? 'Not done' : '&middot;') + '</span></td>';
+    if(s.state === 'not') return '<td><span class="lvt-c e">' + (a.required && a.due_at && Date.parse(a.due_at) + (m.extra_days || 0) * DAY < Date.now() ? 'Not done' : '&middot;') + '</span></td>';
     if(s.state === 'progress') return '<td><span class="lvt-c y' + late + '">' + s.answered + '/' + s.total + '</span></td>';
     if(s.score == null) return '<td><span class="lvt-c g' + late + '">Done</span></td>';
     var k = s.score >= 0.8 ? 'g' : s.score >= 0.6 ? 'y' : 'r';
@@ -540,7 +541,7 @@
   function viewGrades(){
     var c = S.rep.class, as = D.assign.filter(function(a){ return a.open; }).slice().reverse().slice(-14);
     var ms = D.members.slice().sort(function(a, b){ return GB_SORT === 'avg' ? (avgFor(b) || 0) - (avgFor(a) || 0) : a.name.localeCompare(b.name); });
-    var head = '<tr><th class="nm"><button class="tm-gb-sort" data-sort="name" type="button">Student</button></th><th><button class="tm-gb-sort" data-sort="avg" type="button">Average</button><small>required only</small></th>' + as.map(function(a){ return '<th><a href="#a/' + a.id + '" style="color:inherit;text-decoration:none">' + esc(a.title) + '</a><small>' + (a.required ? '' : 'optional &middot; ') + (a.due_at ? day(Date.parse(a.due_at)) : '') + '</small></th>'; }).join('') + '</tr>';
+    var head = '<tr><th class="nm"><button class="tm-gb-sort" data-sort="name" type="button">Student</button></th><th><button class="tm-gb-sort" data-sort="avg" type="button">Average</button><small>required only</small></th>' + as.map(function(a){ return '<th><a href="#a/' + a.id + '" style="color:inherit;text-decoration:none">' + esc(a.title) + '</a><small>' + [a.required ? '' : 'optional', a.due_at ? day(Date.parse(a.due_at)) : ''].filter(Boolean).join(' &middot; ') + '</small></th>'; }).join('') + '</tr>';
     var body = ms.map(function(m){ return '<tr><td class="nm"><a href="#s/' + m.id + '">' + esc(m.name) + '</a></td><td><b class="lvt-score" style="font-size:15px">' + pct(avgFor(m)) + '</b></td>' + as.map(function(a){ return cell(a, m); }).join('') + '</tr>'; }).join('');
     var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> Gradebook', m1: 'Grade', m2: 'book', hand: 'tap a name or an assignment to dig in', lede: 'Missing work counts as zero in the average; optional work never counts.', small: true,
       ctas: '<button class="btn-chan" type="button" data-csv="all">Export CSV</button>' }) +
@@ -549,7 +550,7 @@
         : '<div class="d5-card tm-empty tm-up"><p class="d5-lead">Nothing to grade yet</p><p class="d5-mut">Scores appear once students join and you assign work.</p></div>') + '<div style="height:60px"></div></div>';
     render(frame(html, c.course), 'grades');
   }
-  function csv(rows){ return rows.map(function(r){ return r.map(function(v){ v = v == null ? '' : String(v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(','); }).join('\n'); }
+  function csv(rows){ return rows.map(function(r){ return r.map(function(v){ v = v == null ? '' : String(v); if(/^[=+\-@\t\r]/.test(v)) v = "'" + v; return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(','); }).join('\n'); }
   function download(name, text){ var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type: 'text/csv' })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500); }
   function exportCsv(which){
     var as = which === 'all' ? D.assign.filter(function(a){ return a.open; }).slice().reverse() : D.assign.filter(function(a){ return a.id === which; });

@@ -46,3 +46,5 @@
 /* Headline accents in the course colour, as on the course pages (body.bio etc. set this there). */
 .r3[data-cover]{--accent-text:var(--accent)}
 :root[data-theme="dark"] .r3[data-cover]{--accent-text:var(--bac)}
+.lvt-gb td{vertical-align:middle}
+.lvt-gb .lvt-score{display:inline;text-align:center}

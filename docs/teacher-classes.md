@@ -18,7 +18,9 @@ built with the real course styles (r3 band, dashboard design F, path card).
 
 - Database: `scripts/sql/migrations/2026-11b-classes.sql` (also in `schema.sql`). Tables reached only through
   functions; `teach_*` for teachers, `class_*` for students. Checked against PGlite (21 checks, see git history).
-  **Owner step: run the migration in the Supabase SQL editor.** Until then the pages say classes are not open.
+  Codes are 8 characters from pgcrypto; code lookups are capped at 30 an hour per account (`class_code_tries`);
+  summaries at 120 KB. **Owner step: run the migration in the Supabase SQL editor.** Until then the pages say
+  classes are not open.
 - Model: `assets/class/class-model.js` (summary of a student's course progress, mastery, assignment status, item
   stats). Tests: `scripts/test/class-model.test.mjs`.
 - Student side: `assets/class/class-student.js`, lazy loaded by `assets/site-chrome.js` on AP® course pages for
@@ -34,3 +36,20 @@ built with the real course styles (r3 band, dashboard design F, path card).
 - Reminder emails to students; teachers copy names instead.
 - Class Premium checkout; Google Classroom import; LTI; co-teachers.
 - NREMT, ochem and A&P classes (different progress stores).
+
+## Grading rules (class-model.js `status`)
+
+- Practice: N answers in the assignment's topics since it opened. Review: questions missed at some point and redone
+  since it opened (no answers at all is not done; answers with nothing to redo is done). Exam: a non-partial unit test
+  of that unit, or a full exam. Free response: a score saved since it opened.
+- Done after the due date: late inside the late window, missing when late work is not accepted or the window closed.
+- The student's browser records when it first saw each assignment done (`levlprep_class_done_v1`), so a later redo
+  never makes finished work late. Teacher numbers come from the student's own browser (by design, like the rest of
+  the site's progress).
+
+## Checks done (2026-11-04)
+
+- PGlite: 24 checks on the SQL (ownership, targeted assignments, leaving, codes, guess limit, grants).
+- Browser: every teacher view and the student card rendered with fake class data built from real AP® Bio questions.
+- Independent review: no XSS or ownership holes; its fixes are in (summary size, listener duplication, sign-out
+  clearing via `levlprep_` keys, code guessing, grading edge cases, builder edits, CSV formula guard).

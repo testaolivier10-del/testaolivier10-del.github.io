@@ -51,7 +51,7 @@
         if(!nm){ jm.textContent = 'Add your name so your teacher knows who you are.'; jm.className = 'lv-msg is-bad'; return; }
         A().rpcData('class_join', { p_code: code, p_name: nm }).then(function(r){
           if(!r){ jm.textContent = 'That did not work. Try again in a minute.'; jm.className = 'lv-msg is-bad'; return; }
-          try{ localStorage.removeItem('levl_classes_v1'); }catch(e){}
+          try{ localStorage.removeItem('levlprep_classes_v1'); }catch(e){}
           var dir = (M.COURSES[r.course] || {}).dir;
           p.innerHTML = '<div class="lv-card" style="margin-top:16px"><h2 class="lv-h2">You’re <span>in.</span></h2>' +
             '<p class="lv-mut">Assignments from your teacher show at the top of the course home, and your study path follows your class’s order.</p>' +
@@ -84,7 +84,7 @@
     if(!b) return;
     if(!confirm('Leave this class? Your teacher will stop seeing your work in it.')) return;
     A().rpcData('class_leave', { p_class: b.getAttribute('data-leave') }).then(function(){
-      try{ localStorage.removeItem('levl_classes_v1'); }catch(e){}
+      try{ localStorage.removeItem('levlprep_classes_v1'); }catch(e){}
       loadMine();
     });
   });

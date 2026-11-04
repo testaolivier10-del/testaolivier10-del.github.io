@@ -4,7 +4,7 @@
    signed in (LevlLazy('class/class-student')). For a student in a class of
    this page's course it:
      - keeps the list of their classes (class_mine, cached 20 minutes in
-       localStorage['levl_classes_v1'])
+       localStorage['levlprep_classes_v1'])
      - pushes their summary of this course (LevlClassModel.summarize) after a
        change, at most once a minute, and only when it changed
      - draws "From your teacher" on the course home: each assignment, where
@@ -13,8 +13,9 @@
 (function(){
   'use strict';
   if(window.LevlClassStudent) return;
-  var CACHE = 'levl_classes_v1', LAST = 'levl_class_push_v1', TTL = 20 * 60000, GAP = 60000;
-  var list = null, timer = null, lastPushAt = 0, started = false;
+  // levlprep_ keys: cleared with the rest of a student's data at sign-out and account deletion (assets/account.js).
+  var CACHE = 'levlprep_classes_v1', LAST = 'levlprep_class_push_v1', DONE = 'levlprep_class_done_v1', TTL = 20 * 60000, GAP = 60000;
+  var list = null, timer = null, lastPushAt = 0, started = false, wired = false;
 
   function M(){ return window.LevlClassModel; }
   function A(){ return window.StudyHubAccount; }
@@ -45,6 +46,7 @@
     if(!mine(course).length || !A() || !A().rpc) return;
     var since = Date.now() - lastPushAt;
     if(!force && since < GAP){ clearTimeout(timer); timer = setTimeout(function(){ push(course); }, GAP - since + 50); return; }
+    noteDone(course);
     var sum = M().summarize(course, function(k){ return localStorage.getItem(k); });
     var body = JSON.stringify(sum.items) + JSON.stringify(sum.flags) + JSON.stringify(sum.exams) + JSON.stringify(sum.frq) + sum.lessons;
     var last = read(LAST) || {}, h = hash(body);
@@ -55,6 +57,16 @@
     });
   }
 
+  /* The first time each assignment is done on this device, kept so a later redo never makes finished work look late. */
+  function noteDone(course){
+    var now = Date.now(), get = function(k){ return localStorage.getItem(k); }, sum = M().summarize(course, get, now), d = read(DONE) || {}, changed = false;
+    mine(course).forEach(function(c){ (c.assignments || []).forEach(function(a){
+      if(d[a.id]) return;
+      var st = M().status(a, sum, now);
+      if(st.state === 'done' && st.doneAt){ d[a.id] = st.doneAt; changed = true; }
+    }); });
+    if(changed) write(DONE, d);
+  }
   function practiceHref(a){
     var s = a.spec || {}, t = s.topics || [];
     if(s.unit && !t.length) return 'practice.html?unit=' + encodeURIComponent(s.unit);
@@ -129,8 +141,11 @@
         css();
         if(isHome()) card(course);
         push(course, false);
+        if(wired) return;
+        wired = true;
         document.addEventListener(course + ':progress', function(){ push(course, false); if(isHome()) card(course); });
-        window.addEventListener('pagehide', function(){ if(Date.now() - lastPushAt > 5000) push(course, true); });
+        // Leaving the page: send a change still waiting out the one-minute gap (unchanged summaries are never resent).
+        window.addEventListener('pagehide', function(){ if(timer){ clearTimeout(timer); timer = null; lastPushAt = 0; push(course, false); } });
       });
     });
   }
