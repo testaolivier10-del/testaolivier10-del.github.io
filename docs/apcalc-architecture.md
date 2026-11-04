@@ -130,6 +130,11 @@ line per point. No drawing parts; a graph part gets a plot on the FRQ page. Titl
 
 ### Plot spec (`ApCalcPlot`)
 
+Tick numbers and point, line and axis labels are drawn last (`g.calc-plot-ticks`, `g.calc-plot-labels`, white halo in
+`calc.css`), each in the first nearby spot no curve, line, dot or other label crosses; authored `labels` stay put.
+Standalone figure generators run `clearTicks` from `scripts/lib/apcalc-fig-ticks.mjs` to move tick numbers off thick
+strokes. Both keep `scripts/check-legibility.mjs` clean (docs/legibility-sweep.md).
+
 ```
 { label: '20+ characters, read by screen readers', width, height, x: [a, b], y: [c, d], xStep, yStep,
   piX, xLabel, yLabel, grid, axes,

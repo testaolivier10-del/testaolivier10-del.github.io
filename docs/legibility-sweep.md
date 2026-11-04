@@ -21,6 +21,9 @@ Playwright's own Chromium download is blocked in the cloud container; use the sy
 
 - `assets/theme.css`: readable default padding for every table (the A&P word parts table was the report).
 - A&P action potential graph: label moved off the curve and arrows.
+- Shared fixes at the source: calculus plots (`calculus/assets/tools/calc-plot.js`) and figure generators
+  (`scripts/lib/apcalc-fig-ticks.mjs`), precalculus plots (`precalculus/assets/tools/pcalc-plot.js`) and generators
+  (`scripts/apprecalc-figures/`) place tick numbers and labels where no curve crosses them, drawn last with a halo.
 - Figure fixes per course: see the commit log on the branch. Rule for fixes: move, resize, add a halo or reroute
   a line; never change wording (a label may be split onto two lines). A&P and ochem fixes are layout only.
 
