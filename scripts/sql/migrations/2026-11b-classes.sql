@@ -140,7 +140,8 @@ declare
 begin
   if auth.uid() is null then return null; end if;
   if not exists (select 1 from public.teacher_profiles where user_id = auth.uid()) then return null; end if;
-  if p_course not in ('apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro') then return null; end if;
+  -- AP® courses only (their keys start with ap; nremt, ochem and anp keep progress differently).
+  if p_course !~ '^ap[a-z]+$' then return null; end if;
   if p_name is null or length(btrim(p_name)) < 1 or length(p_name) > 60 then return null; end if;
   if (select count(*) from public.classes where teacher_id = auth.uid() and not archived) >= 30 then return null; end if;
   insert into public.classes (teacher_id, course, name, code, unit_order)
