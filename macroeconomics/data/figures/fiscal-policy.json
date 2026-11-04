@@ -1,0 +1,12 @@
+{
+ "fiscal-policy-close-gap": {
+  "file": "figures/fiscal-policy-close-gap.svg",
+  "ext": "svg",
+  "w": 420,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An AD-AS graph with a vertical LRAS at YF. AD1 crosses SRAS at Y1, below YF, at PL1. Higher government spending or lower taxes shift AD1 right to AD2, which crosses SRAS on LRAS at YF and a higher price level PL2."
+ }
+}

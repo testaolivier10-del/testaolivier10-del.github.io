@@ -1,0 +1,71 @@
+{
+ "topic": "supply",
+ "hook": "When the price of honey doubles, beekeepers find it worth tending extra hives. When a drought hits, the same beekeepers offer fewer jars even at the old price. Sellers respond to the price along one curve, and to their costs and conditions by moving the whole curve.",
+ "prereq": [
+  {
+   "q": "A rise in the price of a good, with nothing else changing, causes",
+   "options": [
+    "a movement along the demand curve",
+    "a shift of the demand curve to the left",
+    "a shift of the demand curve to the right",
+    "no change in quantity demanded"
+   ],
+   "correct": 0,
+   "why": "The good's own price moves buyers along the demand curve.",
+   "review": "demand"
+  },
+  {
+   "q": "An upward-sloping curve has a slope that is",
+   "options": [
+    "positive",
+    "negative",
+    "zero",
+    "undefined"
+   ],
+   "correct": 0,
+   "why": "Rising to the right means a positive slope.",
+   "review": "slopes-curves"
+  }
+ ],
+ "figure": {
+  "figure": "supply-curve-shift",
+  "caption": "A higher price moves sellers along S1 (a change in quantity supplied); higher input costs shift the curve left to S2 (a decrease in supply)."
+ },
+ "chain": [
+  {
+   "cause": "The price of a good rises",
+   "effect": "producing more becomes worthwhile even though extra output costs more"
+  },
+  {
+   "cause": "Sellers respond to the higher price",
+   "effect": "the quantity supplied rises: a movement along the supply curve"
+  },
+  {
+   "cause": "Input costs rise (or a tax is added, or sellers leave the market)",
+   "effect": "sellers offer less at every price"
+  },
+  {
+   "cause": "Sellers offer less at every price",
+   "effect": "supply decreases: the whole curve shifts left"
+  }
+ ],
+ "ideas": [
+  "<b>Law of supply</b>: as a good's price rises, the quantity supplied rises, other things equal.",
+  "A change in the good's own price changes the <b>quantity supplied</b> (a movement along the curve). Anything else changes <b>supply</b> (a shift).",
+  "Supply shifters: input costs, technology, taxes and subsidies on producers, expectations, and the number of sellers. Lower costs and more sellers shift supply right."
+ ],
+ "misconception": {
+  "wrong": "When the price of a good rises, its supply increases.",
+  "right": "A higher price raises the quantity supplied, a movement along the supply curve. Supply, the whole curve, shifts only when something other than the good's own price changes, such as input costs."
+ },
+ "check": [
+  "mac-supply-1",
+  "mac-supply-2",
+  "mac-supply-5",
+  "mac-supply-6",
+  "mac-supply-7",
+  "mac-supply-8",
+  "mac-supply-15"
+ ],
+ "summary": "The law of supply says that as a good's price rises, the quantity supplied rises, other things equal. A change in the good's own price moves sellers along the supply curve; a change in input costs, technology, taxes or subsidies, expectations or the number of sellers shifts the whole curve. Higher costs and taxes shift supply left; lower costs, better technology, subsidies and more sellers shift it right."
+}

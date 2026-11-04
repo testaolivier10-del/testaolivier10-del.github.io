@@ -154,6 +154,16 @@ const PAGES = [
   ['/environmental-science/formula-sheet.html', 'the AP® Environmental Science formulas page'],
   ['/environmental-science/justify.html', 'the AP® Environmental Science "Make it specific" page'],
   ...bioPages('environmental-science', 'AP® Environmental Science'),
+  // AP® Macroeconomics, the same way (live since its launch, docs/apmacro-spec.md decision 13).
+  ['/macroeconomics/', 'the AP® Macroeconomics course home'],
+  ['/macroeconomics/glossary.html', 'the AP® Macroeconomics glossary'],
+  ['/macroeconomics/practice.html', 'the AP® Macroeconomics practice builder'],
+  ['/macroeconomics/exams.html', 'the AP® Macroeconomics exams app'],
+  ['/macroeconomics/frq.html', 'the AP® Macroeconomics free-response list'],
+  ['/macroeconomics/formula-sheet.html', 'the AP® Macroeconomics graphs and formulas page'],
+  ['/macroeconomics/justify.html', 'the AP® Macroeconomics "Make it specific" trainer'],
+  ['/macroeconomics/tools/graph-studio.html', 'the AP® Macroeconomics Graph Studio'],
+  ...bioPages('macroeconomics', 'AP® Macroeconomics'),
 ];
 
 /* The first published AP® Biology topic's lesson and notes page, the first

@@ -1,0 +1,12 @@
+{
+ "balance-of-payments-accounts": {
+  "file": "figures/balance-of-payments-accounts.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two panels for the invented country Arland, in billions of arls. Current account: exports of goods and services plus 400, imports minus 520, net income from abroad plus 30, net transfers minus 10, for a current account balance of minus 100, a deficit. Capital and financial account: foreigners buy Arland assets plus 250, Arlanders buy foreign assets minus 150, for a balance of plus 100, a surplus. The two balances sum to zero."
+ }
+}

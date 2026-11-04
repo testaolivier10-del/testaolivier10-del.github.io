@@ -14,5 +14,6 @@ Disallow: /environmental-science/data/notes/
 Disallow: /psychology/data/notes/
 Disallow: /precalculus/data/notes/
 Disallow: /calculus-bc/data/notes/
+Disallow: /macroeconomics/data/notes/
 
 Sitemap: https://levlprep.com/sitemap.xml

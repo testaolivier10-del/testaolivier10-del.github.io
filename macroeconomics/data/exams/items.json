@@ -1,0 +1,805 @@
+{
+ "about": "Exam-only questions for the two fixed practice exams (docs/apmacro-architecture.md, \"Practice exams\"): five-option single-answer questions, ids mac-exam-<form>-<nn>, each with its own stimulus where it has one (exam-<form>-s<n>), as the exam pairs one graph or table with one question. Every number a key or a distractor shows is recomputed in EXAM_NUMBERS, and every graph a key reads is checked in EXAM_GRAPHS (scripts/lib/apmacro-exams.mjs).",
+ "stimuli": {
+  "exam-1-s1": {
+   "kind": "data",
+   "title": "A labor force survey in Vorland",
+   "invented": true,
+   "table": {
+    "caption": "Vorland, one month (millions of people; invented data for practice)",
+    "cols": [
+     "Group",
+     "Millions"
+    ],
+    "rows": [
+     [
+      "Adult population (16 and older)",
+      "400"
+     ],
+     [
+      "Employed",
+      "228"
+     ],
+     [
+      "Unemployed (no job, looking for work)",
+      "12"
+     ],
+     [
+      "Not in the labor force",
+      "160"
+     ]
+    ]
+   }
+  },
+  "exam-1-s2": {
+   "kind": "graph",
+   "title": "Tavor's economy in the short run",
+   "graph": {
+    "kind": "adas",
+    "start": {
+     "AD": -1
+    },
+    "show": {}
+   }
+  },
+  "exam-1-s3": {
+   "kind": "graph",
+   "title": "Nimbra's market for bank reserves (ample reserves), after a policy change",
+   "graph": {
+    "kind": "reserves",
+    "show": {
+     "RD": 1
+    }
+   }
+  },
+  "exam-1-s4": {
+   "kind": "data",
+   "title": "The balance sheet of Quarin Community Bank",
+   "invented": true,
+   "table": {
+    "caption": "Quarin Community Bank (dollars; invented data for practice)",
+    "cols": [
+     "Assets",
+     "Dollars",
+     "Liabilities",
+     "Dollars"
+    ],
+    "rows": [
+     [
+      "Reserves",
+      "150",
+      "Checkable deposits",
+      "500"
+     ],
+     [
+      "Loans",
+      "350",
+      "",
+      ""
+     ]
+    ]
+   }
+  },
+  "exam-1-s5": {
+   "kind": "graph",
+   "title": "A shift in Zelva's short-run Phillips curve",
+   "graph": {
+    "kind": "phillips",
+    "show": {
+     "SRPC": 1
+    }
+   }
+  },
+  "exam-1-s6": {
+   "kind": "graph",
+   "title": "Brisca's loanable funds market after new government borrowing",
+   "graph": {
+    "kind": "lf",
+    "show": {
+     "DLF": 1
+    }
+   }
+  },
+  "exam-1-s7": {
+   "kind": "data",
+   "title": "Rastova's government budget over three years",
+   "invented": true,
+   "table": {
+    "caption": "Rastova's government, billions of dollars a year (invented data for practice)",
+    "cols": [
+     "Year",
+     "Tax revenue",
+     "Government outlays"
+    ],
+    "rows": [
+     [
+      "1",
+      "900",
+      "1,000"
+     ],
+     [
+      "2",
+      "950",
+      "1,000"
+     ],
+     [
+      "3",
+      "1,020",
+      "1,000"
+     ]
+    ]
+   }
+  },
+  "exam-1-s8": {
+   "kind": "graph",
+   "title": "A change in the market for tals",
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "tal",
+     "other": "sarv"
+    },
+    "show": {
+     "D": -1
+    }
+   }
+  },
+  "exam-2-s1": {
+   "kind": "data",
+   "title": "Ulma's consumer price index",
+   "invented": true,
+   "table": {
+    "caption": "Ulma's consumer price index (invented data for practice)",
+    "cols": [
+     "Year",
+     "CPI"
+    ],
+    "rows": [
+     [
+      "1",
+      "120"
+     ],
+     [
+      "2",
+      "126"
+     ]
+    ]
+   }
+  },
+  "exam-2-s2": {
+   "kind": "graph",
+   "title": "Toren's economy in the short run",
+   "graph": {
+    "kind": "adas",
+    "start": {
+     "AD": 1
+    },
+    "show": {}
+   }
+  },
+  "exam-2-s3": {
+   "kind": "graph",
+   "title": "Glenna's money market (limited reserves), after a policy change",
+   "graph": {
+    "kind": "money",
+    "show": {
+     "MS": -1
+    }
+   }
+  },
+  "exam-2-s4": {
+   "kind": "graph",
+   "title": "Pirel's production possibilities over ten years",
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Consumer goods",
+     "y": "Capital goods"
+    },
+    "show": {
+     "PPC": 1
+    }
+   }
+  },
+  "exam-2-s5": {
+   "kind": "data",
+   "title": "Interest rates in Dovar and Lisk",
+   "invented": true,
+   "table": {
+    "caption": "One-year government bonds and expected inflation (percent; invented data for practice). Dovar's currency is the dov; Lisk's is the lisk.",
+    "cols": [
+     "Country",
+     "Nominal interest rate",
+     "Expected inflation rate"
+    ],
+    "rows": [
+     [
+      "Dovar",
+      "6%",
+      "2%"
+     ],
+     [
+      "Lisk",
+      "8%",
+      "6%"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-exam-1-01",
+   "unit": "unit-2",
+   "topic": "unemployment",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Based on the table, what is Vorland's unemployment rate?",
+   "stimulus": "exam-1-s1",
+   "options": [
+    "3%",
+    "5%",
+    "5.3%",
+    "60%",
+    "40%"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The labor force is the employed plus the unemployed, $228 + 12 = 240$ million, so the unemployment rate is $\\frac{12}{240} \\times 100 = 5\\%$.",
+    "options": [
+     "That divides by the whole adult population, $\\frac{12}{400}$; the rate divides by the labor force, which leaves out the 160 million not in it.",
+     "Right: $\\frac{12}{240} \\times 100 = 5\\%$, with the labor force as the denominator.",
+     "That divides by the employed, $\\frac{12}{228}$; the labor force includes the unemployed too.",
+     "That is the labor force participation rate, $\\frac{240}{400} \\times 100$, not the unemployment rate.",
+     "That is the share of adults not in the labor force, $\\frac{160}{400} \\times 100$; they are neither employed nor unemployed."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-1-02",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Pellara's economy has a recessionary gap of \\$200 billion, and its MPC is 0.75. Ignoring any effect on prices, how must government purchases change to close the gap?",
+   "options": [
+    "A decrease of \\$50 billion",
+    "An increase of \\$200 billion",
+    "An increase of \\$800 billion",
+    "An increase of about \\$66.7 billion",
+    "An increase of \\$50 billion"
+   ],
+   "correct": 4,
+   "why": {
+    "correct": "The spending multiplier is $\\frac{1}{1 - 0.75} = 4$. A recessionary gap needs more spending, and the change is the gap divided by the multiplier: $\\frac{200}{4} = 50$ billion dollars.",
+    "options": [
+     "Cutting purchases shifts AD left and widens a recessionary gap; closing it needs more spending.",
+     "Spending 200 billion would raise output by $200 \\times 4 = 800$ billion through the multiplier; divide the gap by the multiplier.",
+     "That multiplies the gap by the multiplier; the change needed is the gap divided by it.",
+     "That divides by the tax multiplier, $\\frac{0.75}{0.25} = 3$, the answer for a tax cut; government purchases use the spending multiplier, 4.",
+     "Right: purchases rise by $\\frac{200}{4} = 50$ billion dollars, and the multiplier turns that into 200 billion of output."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-1-03",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "type": "single",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The graph shows Tavor's economy. If neither the government nor the central bank acts, what happens in the long run?",
+   "stimulus": "exam-1-s2",
+   "options": [
+    "Spending recovers, AD shifts right, and output returns to full employment at a higher price level",
+    "Nominal wages rise, SRAS shifts left, and output returns to full employment at a higher price level",
+    "Nominal wages fall, SRAS shifts right, and output returns to full employment at a lower price level",
+    "LRAS shifts left to the current level of output, and the price level stays the same",
+    "Output stays below full employment, because prices in the economy are sticky"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Output is below full employment (left of LRAS), so unemployment is above the natural rate. Over time nominal wages and other input prices fall, SRAS shifts right, and the economy returns to full-employment output at a lower price level.",
+    "options": [
+     "Self-adjustment works through wages and SRAS; a recovery in spending would be a separate shift of AD, not the long-run mechanism.",
+     "That is the adjustment from an inflationary gap; here output is below full employment, so wages fall rather than rise.",
+     "Right: with output below LRAS, falling wages and input prices shift SRAS right until it meets AD on LRAS.",
+     "LRAS is set by resources and technology; a gap does not move it.",
+     "Wages and prices are slow to adjust in the short run, but in the long run they do adjust, which closes the gap."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-1-04",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Nimbra's central bank operates with ample reserves. Which action could cause the change shown in the graph, and what is its short-run effect on real GDP?",
+   "stimulus": "exam-1-s3",
+   "options": [
+    "Raising the interest rate on reserve balances; real GDP falls",
+    "Raising the interest rate on reserve balances; real GDP rises",
+    "Selling bonds to cut the supply of reserves; real GDP falls",
+    "Lowering the interest rate on reserve balances; real GDP falls",
+    "Raising the required reserve ratio; real GDP rises"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With ample reserves the central bank moves the policy rate by setting its administered rates: raising interest on reserve balances lifts the flat part of reserve demand, so the policy rate rises. Other interest rates follow, investment and consumption fall, AD shifts left and real GDP falls.",
+    "options": [
+     "Right: a higher administered rate raises the policy rate, so borrowing falls, AD shifts left and real GDP falls.",
+     "A higher policy rate makes borrowing costlier, so investment and AD fall; real GDP falls, not rises.",
+     "Reserve supply did not move in the graph; with ample reserves the rate is moved by the administered rate, not by the quantity of reserves.",
+     "Lowering the administered rate would lower the flat part of reserve demand and the policy rate; the graph shows it rising.",
+     "A reserve requirement is a limited-reserves tool, and a tighter policy lowers real GDP rather than raising it."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-1-05",
+   "unit": "unit-4",
+   "topic": "banking-money-supply",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The required reserve ratio is 0.2, and the bank in the table holds no other deposits. In this limited-reserves banking system, what is the largest possible increase in the money supply if the bank lends out its excess reserves?",
+   "stimulus": "exam-1-s4",
+   "options": [
+    "\\$2,500",
+    "\\$50",
+    "\\$750",
+    "\\$250",
+    "\\$100"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Required reserves are $500 \\times 0.2 = 100$ dollars, so excess reserves are $150 - 100 = 50$ dollars. The money multiplier is $\\frac{1}{0.2} = 5$, so lending them out can raise the money supply by at most $50 \\times 5 = 250$ dollars.",
+    "options": [
+     "That multiplies total deposits; the new money comes from the \\$50 of excess reserves.",
+     "The bank can lend \\$50, but as the loans are deposited and lent again the whole system creates more; multiply by the money multiplier.",
+     "That multiplies total reserves; only the \\$50 of excess reserves can be lent.",
+     "Right: excess reserves of \\$50 times the money multiplier of 5 is \\$250.",
+     "\\$100 is the required reserves the bank has to keep, not the new money it can create."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-1-06",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which event could cause the change shown in the graph?",
+   "stimulus": "exam-1-s5",
+   "options": [
+    "A rise in aggregate demand",
+    "A rise in the inflation rate that workers and firms expect",
+    "A fall in the natural rate of unemployment",
+    "A new technology that cuts firms' costs",
+    "A fall in aggregate demand"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The short-run Phillips curve shifted right: at each unemployment rate, inflation is higher. A rise in expected inflation (or an adverse supply shock) does this; changes in aggregate demand move the economy along the curve.",
+    "options": [
+     "A change in AD moves the economy along the SRPC; it does not shift the curve.",
+     "Right: when expected inflation rises, wages and prices rise faster at each unemployment rate, so the SRPC shifts right.",
+     "A change in the natural rate shifts the LRPC, which did not move in the graph.",
+     "Lower costs are a positive supply shock, which shifts the SRPC left, not right.",
+     "A fall in AD is a movement down along the SRPC, to lower inflation and higher unemployment."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-1-07",
+   "unit": "unit-5",
+   "topic": "money-growth-inflation",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In Halden, the velocity of money and real output stay the same while the money supply doubles. According to the quantity theory of money, what happens in the long run?",
+   "options": [
+    "Nominal GDP stays the same, because real output is unchanged",
+    "Real output doubles",
+    "The price level stays the same, because velocity is unchanged",
+    "The price level rises by half",
+    "The price level doubles"
+   ],
+   "correct": 4,
+   "why": {
+    "correct": "In $M \\times V = P \\times Y$, with $V$ and $Y$ unchanged, doubling $M$ doubles $M \\times V$, so $P \\times Y$ doubles; with $Y$ fixed, the price level $P$ doubles.",
+    "options": [
+     "Nominal GDP is $P \\times Y$, which equals $M \\times V$; it doubles, because the price level doubles.",
+     "In the long run real output is set by resources and technology; the question also holds it unchanged.",
+     "Velocity being unchanged is why the whole rise in money shows up in nominal GDP, and so in the price level.",
+     "With $V$ and $Y$ fixed, $P$ changes in proportion to $M$: doubling money doubles the price level.",
+     "Right: with velocity and real output fixed, the price level moves in proportion to the money supply."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-1-08",
+   "unit": "unit-5",
+   "topic": "crowding-out",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Brisca's government borrows to pay for a budget deficit, as the graph shows. What happens to the real interest rate and to private investment spending?",
+   "stimulus": "exam-1-s6",
+   "options": [
+    "The real interest rate falls, and private investment rises",
+    "The real interest rate rises, and private investment rises",
+    "The real interest rate rises, and private investment falls",
+    "The real interest rate stays the same, and private investment falls",
+    "The real interest rate falls, and private investment falls"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Government borrowing raises the demand for loanable funds, so the real interest rate rises. At the higher rate firms borrow less for new capital, so private investment falls: crowding out.",
+    "options": [
+     "The demand for loanable funds rose, which raises the real interest rate rather than lowering it.",
+     "A higher real interest rate raises the cost of borrowing, so firms invest less, not more.",
+     "Right: the higher real interest rate makes borrowing for new capital costlier, so private investment falls.",
+     "The graph shows the equilibrium real interest rate rising as demand shifts right.",
+     "The real interest rate rises in the graph; investment falls because of that rise."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-1-09",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Rastova's national debt was 2,000 billion dollars at the start of Year 1. Based on the table, what is the debt at the end of Year 3?",
+   "stimulus": "exam-1-s7",
+   "options": [
+    "2,130 billion dollars",
+    "2,150 billion dollars",
+    "2,170 billion dollars",
+    "1,870 billion dollars",
+    "130 billion dollars"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each deficit adds to the debt and each surplus reduces it: deficits of 100 and 50 billion in Years 1 and 2, then a surplus of 20 billion in Year 3, so the debt is $2{,}000 + 100 + 50 - 20 = 2{,}130$ billion dollars.",
+    "options": [
+     "Right: $2{,}000 + 100 + 50 - 20 = 2{,}130$ billion dollars.",
+     "That adds the two deficits but leaves out Year 3, when revenue exceeded outlays and the surplus paid down 20 billion.",
+     "Year 3 is a surplus, not a deficit: revenue of 1,020 is more than outlays of 1,000, so it lowers the debt.",
+     "Deficits add to the debt; subtracting them reverses the sign of the budget balance.",
+     "130 billion dollars is the net amount the government borrowed over the three years; the debt also includes the 2,000 billion owed at the start."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-1-10",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The graph shows a change in the market for Talmia's currency, the tal, which trades for Sarvel's currency, the sarv. Which event could cause the change?",
+   "stimulus": "exam-1-s8",
+   "options": [
+    "Incomes in Sarvel rise",
+    "Talmia residents buy more goods made in Sarvel",
+    "Real interest rates in Talmia rise",
+    "Sarvel residents buy fewer goods made in Talmia",
+    "Talmia's price level falls relative to Sarvel's"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The demand for tals shifted left, so the tal depreciates. Demand for tals comes from people in Sarvel who buy Talmia's goods and assets; if they buy fewer Talmia goods, they want fewer tals at each exchange rate.",
+    "options": [
+     "Higher incomes in Sarvel raise its purchases of Talmia's goods, so the demand for tals rises.",
+     "Talmia residents who buy more from Sarvel supply more tals; that shifts the supply curve, not demand.",
+     "Higher real interest rates in Talmia draw financial capital in, which raises the demand for tals.",
+     "Right: fewer purchases of Talmia's goods by Sarvel residents mean less demand for tals.",
+     "Cheaper Talmia goods raise Sarvel's purchases of them, which raises the demand for tals."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-2-01",
+   "unit": "unit-2",
+   "topic": "price-indices-inflation",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Based on the table, what was Ulma's inflation rate from Year 1 to Year 2?",
+   "stimulus": "exam-2-s1",
+   "options": [
+    "26%",
+    "6%",
+    "5%",
+    "About 4.8%",
+    "126%"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The inflation rate is the percent change in the price index: $\\frac{126 - 120}{120} \\times 100 = 5\\%$.",
+    "options": [
+     "That compares Year 2 with the base year (100), not with Year 1.",
+     "6 is the change in index points; divide it by the old index to get a percent.",
+     "Right: divide the change in the index by the old index, $\\frac{6}{120} \\times 100 = 5\\%$.",
+     "That divides by the new index, $\\frac{6}{126}$; the inflation rate divides by the old one.",
+     "126 is the price index itself, not a rate of change."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-2-02",
+   "unit": "unit-3",
+   "topic": "multipliers",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In Ibera the MPC is 0.8. The government cuts taxes by \\$40 billion. Ignoring any effect on prices, what is the largest possible change in real GDP?",
+   "options": [
+    "An increase of \\$160 billion",
+    "An increase of \\$200 billion",
+    "An increase of \\$40 billion",
+    "A decrease of \\$160 billion",
+    "An increase of \\$32 billion"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The tax multiplier is $\\frac{-0.8}{0.2} = -4$. A tax change of $-40$ billion changes real GDP by $-40 \\times -4 = 160$ billion dollars, an increase.",
+    "options": [
+     "Right: a tax cut of 40 billion times a tax multiplier of size 4 raises real GDP by 160 billion.",
+     "That uses the spending multiplier, 5; part of a tax cut is saved first, so the tax multiplier is one smaller.",
+     "The tax cut sets off rounds of spending, so output changes by more than the cut itself.",
+     "A tax cut raises disposable income and consumption, so real GDP rises; the minus sign of the tax multiplier is for a tax increase.",
+     "\\$32 billion is the first round of spending, $0.8 \\times 40$; later rounds add more."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-2-03",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "The graph shows Toren's economy. Which fiscal policy would move real GDP toward full employment?",
+   "stimulus": "exam-2-s2",
+   "options": [
+    "A rise in government purchases",
+    "A cut in income taxes",
+    "A rise in transfer payments",
+    "A cut in government purchases",
+    "A cut in the interest rate on reserve balances"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Output is above full employment (right of LRAS): an inflationary gap. Contractionary fiscal policy, such as less government purchasing, shifts AD left toward LRAS.",
+    "options": [
+     "More purchases shift AD right, away from full employment, since output is already above it.",
+     "A tax cut raises consumption and shifts AD right, widening the inflationary gap.",
+     "Higher transfers raise disposable income and consumption, so AD shifts right and the gap widens.",
+     "Right: lower government purchases shift AD left, lowering output toward full employment and easing the price level.",
+     "That is a monetary policy action, and lowering the administered rate would push AD right, the wrong way here."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-2-04",
+   "unit": "unit-4",
+   "topic": "monetary-policy",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Glenna's central bank works with limited reserves. Which open market operation could cause the change shown in the graph, and what happens to the prices of bonds already issued?",
+   "stimulus": "exam-2-s3",
+   "options": [
+    "Buying government bonds; bond prices rise",
+    "Selling government bonds; bond prices fall",
+    "Selling government bonds; bond prices rise",
+    "Buying government bonds; bond prices fall",
+    "Lowering the discount rate; bond prices fall"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The money supply shifted left and the nominal interest rate rose. Selling bonds takes reserves out of banks, so the money supply falls. Bond prices and interest rates move in opposite directions, so existing bonds fall in price.",
+    "options": [
+     "Buying bonds adds reserves and raises the money supply, which shifts MS right; the graph shows it shifting left.",
+     "Right: a bond sale lowers reserves and the money supply, the interest rate rises and bond prices fall.",
+     "A higher interest rate makes existing bonds with lower rates less attractive, so their prices fall, not rise.",
+     "Buying bonds would raise the money supply and lower the interest rate, the opposite of the graph.",
+     "A lower discount rate encourages banks to borrow reserves, which raises the money supply rather than lowering it."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-2-05",
+   "unit": "unit-4",
+   "topic": "nominal-real-rates",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A bank in Merrin lends for one year at a fixed nominal rate of 7%, expecting inflation of 2%. Inflation turns out to be 4%. What real interest rate does the bank earn?",
+   "options": [
+    "9%",
+    "5%",
+    "11%",
+    "2%",
+    "3%"
+   ],
+   "correct": 4,
+   "why": {
+    "correct": "The real rate earned is the nominal rate minus the inflation that actually happened: $7\\% - 4\\% = 3\\%$. The bank expected $7\\% - 2\\% = 5\\%$, so the surprise inflation cost it buying power.",
+    "options": [
+     "That adds expected inflation to the nominal rate; the real rate is the nominal rate minus inflation.",
+     "5% is the real rate the bank expected when it made the loan; inflation came in higher.",
+     "That adds inflation to the nominal rate; the real rate subtracts it.",
+     "2% is the surprise in inflation (4% minus 2%), not the real rate the bank earns.",
+     "Right: $7\\% - 4\\% = 3\\%$, using the inflation that actually happened."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-2-06",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Yarrow's natural rate of unemployment is 5%, and inflation has been steady at 2%. Its central bank raises aggregate demand again and again to hold unemployment at 3%. What happens over time?",
+   "options": [
+    "The LRPC shifts left to 3%, and inflation returns to 2%",
+    "Inflation settles at a higher, steady rate, with unemployment held at 3% for good",
+    "Inflation keeps rising, as expected inflation catches up and the SRPC shifts up each time",
+    "Unemployment stays at 3%, and inflation falls back to 2% as prices adjust",
+    "The SRPC shifts down each time, so inflation falls"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Holding unemployment below the natural rate works only while inflation is higher than expected. As people come to expect the higher inflation, the SRPC shifts up, so the central bank needs ever higher inflation to keep unemployment at 3%. In the long run there is no trade-off: the LRPC stays at 5%.",
+    "options": [
+     "The natural rate depends on frictional and structural unemployment, not on demand, so the LRPC stays at 5%.",
+     "A steady higher inflation rate would come to be expected, and then unemployment would return to 5%; holding 3% needs rising inflation.",
+     "Right: each time expectations catch up, the SRPC shifts up, so holding unemployment at 3% takes ever higher inflation.",
+     "With demand pushed up again and again, inflation rises rather than falling back.",
+     "Higher expected inflation shifts the SRPC up, not down."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-2-07",
+   "unit": "unit-5",
+   "topic": "growth-policy",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Over ten years Pirel's production possibilities curve changes as the graph shows. Which policy most likely contributed?",
+   "stimulus": "exam-2-s4",
+   "options": [
+    "Tax credits that raise private investment in new equipment",
+    "A cut in the interest rate on reserve balances during a recession",
+    "A one-time rise in transfer payments",
+    "Limits on the number of hours people may work",
+    "Higher taxes on income from saving and investment"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The PPC shifted outward: the economy can produce more of both goods. A tax credit for investment adds to the capital stock, which raises productive capacity over time (and shifts LRAS right).",
+    "options": [
+     "Right: more physical capital raises what the economy can produce, so the PPC shifts out over the years.",
+     "A lower policy rate in a recession raises AD and moves the economy toward its PPC; it is not mainly a capacity policy.",
+     "Transfers raise spending (AD) for a while; they do not add to resources or technology.",
+     "Fewer hours of labor would shift the PPC inward, not outward.",
+     "Taxing saving and investment more lowers the incentive to build capital, which slows growth."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-2-08",
+   "unit": "unit-5",
+   "topic": "money-growth-inflation",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In Evrin, the money supply is \\$500 billion, the price level is 2 and real GDP is \\$1,000 billion. What is the velocity of money?",
+   "options": [
+    "2,500",
+    "0.25",
+    "2",
+    "4",
+    "1,500"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "From $M \\times V = P \\times Y$, velocity is $V = \\frac{P \\times Y}{M} = \\frac{2 \\times 1{,}000}{500} = 4$: the average dollar is spent on final output 4 times a year.",
+    "options": [
+     "That adds nominal GDP and the money supply; velocity is their ratio.",
+     "That divides the money supply by nominal GDP, $\\frac{500}{2{,}000}$; velocity is nominal GDP divided by money.",
+     "That divides real GDP by money and leaves out the price level; velocity uses nominal GDP, $P \\times Y$.",
+     "Right: nominal GDP is $2 \\times 1{,}000 = 2{,}000$ billion, and $\\frac{2{,}000}{500} = 4$.",
+     "That subtracts the money supply from nominal GDP; velocity divides nominal GDP by money."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-2-09",
+   "unit": "unit-5",
+   "topic": "policy-short-run",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Kalvo's legislature raises government spending while its central bank, which operates with ample reserves, raises the interest rate on reserve balances. What happens to interest rates and to aggregate demand in the short run?",
+   "options": [
+    "Interest rates rise; aggregate demand rises",
+    "Interest rates rise; the effect on aggregate demand is indeterminate",
+    "The effect on interest rates is indeterminate; aggregate demand falls",
+    "Interest rates fall; aggregate demand rises",
+    "Interest rates rise; aggregate demand falls"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Both actions push interest rates up: more government spending raises borrowing and money demand, and a higher administered rate raises the policy rate. But they push AD in opposite directions (spending raises it, higher rates lower investment), so without their sizes the change in AD is indeterminate.",
+    "options": [
+     "The higher administered rate lowers investment and consumption, which pulls AD down; without the sizes, AD may rise or fall.",
+     "Right: both actions raise interest rates, while their pulls on AD go opposite ways.",
+     "Both actions push interest rates the same way, up, so that change is determinate; it is AD that cannot be signed.",
+     "A higher interest rate on reserve balances raises the policy rate, so interest rates do not fall.",
+     "Higher government spending pushes AD up while the higher rate pulls it down, so a fall is not certain."
+    ]
+   }
+  },
+  {
+   "id": "mac-exam-2-10",
+   "unit": "unit-6",
+   "topic": "real-rates-financial-flows",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Based on the table, which way does financial capital tend to flow between Dovar and Lisk, and what happens to the value of the dov?",
+   "stimulus": "exam-2-s5",
+   "options": [
+    "Neither way, because both real rates are positive",
+    "Into Lisk; the dov depreciates",
+    "Into Lisk; the dov appreciates",
+    "Into Dovar; the dov depreciates",
+    "Into Dovar; the dov appreciates"
+   ],
+   "correct": 4,
+   "why": {
+    "correct": "Real interest rates are $6\\% - 2\\% = 4\\%$ in Dovar and $8\\% - 6\\% = 2\\%$ in Lisk. Financial capital flows toward the higher real rate, into Dovar, and investors who buy Dovar's assets demand dovs, so the dov appreciates.",
+    "options": [
+     "Capital flows toward the higher real rate even when both are positive; Dovar's is higher.",
+     "Lisk's nominal rate is higher, but its real rate (2%) is lower; capital follows the real rate.",
+     "Capital flows to the higher real rate, which is Dovar's, and buying Dovar's assets raises the demand for dovs.",
+     "Investors buying Dovar's assets need dovs, so the demand for dovs rises and it appreciates.",
+     "Right: Dovar's real rate of 4% beats Lisk's 2%, so capital flows into Dovar and the demand for dovs rises."
+    ]
+   }
+  }
+ ]
+}

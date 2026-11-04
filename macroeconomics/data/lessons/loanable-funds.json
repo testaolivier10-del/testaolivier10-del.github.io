@@ -1,0 +1,68 @@
+{
+ "topic": "loanable-funds",
+ "hook": "A family puts \\$200 a month into a savings account. A furniture maker borrows to buy a new saw. The two never meet, yet the family's saving is what the furniture maker borrows. Pull all the saving and all the borrowing in an economy together, and you get one market, with its own price: the real interest rate.",
+ "prereq": [
+  {
+   "q": "A loan has a nominal interest rate of 6% and the expected inflation rate is 2%. What is the real interest rate?",
+   "options": [
+    "4%",
+    "8%",
+    "3%",
+    "12%"
+   ],
+   "correct": 0,
+   "why": "Real = nominal - expected inflation rate = 6% - 2% = 4%.",
+   "review": "nominal-real-rates"
+  },
+  {
+   "q": "In a market graph, demand shifts right while supply stays put. What happens to the price and quantity?",
+   "options": [
+    "Both rise",
+    "Both fall",
+    "Price rises and quantity falls",
+    "Price falls and quantity rises"
+   ],
+   "correct": 0,
+   "why": "A rightward shift of demand along upward-sloping supply raises both.",
+   "review": "market-equilibrium"
+  }
+ ],
+ "figure": {
+  "figure": "loanable-funds-government-borrowing",
+  "caption": "More government borrowing shifts the demand for loanable funds right, raising the real interest rate."
+ },
+ "chain": [
+  {
+   "cause": "The government spends more than it collects and borrows the difference",
+   "effect": "the demand for loanable funds shifts right"
+  },
+  {
+   "cause": "The demand for loanable funds shifts right",
+   "effect": "the real interest rate rises"
+  },
+  {
+   "cause": "The real interest rate rises",
+   "effect": "borrowing costs more for firms, so the quantity of private investment falls"
+  }
+ ],
+ "ideas": [
+  "The <b>loanable funds market</b>: <b>real interest rate</b> on the vertical axis, quantity of loanable funds on the horizontal; supply (SLF) slopes up and demand (DLF) slopes down.",
+  "Supply comes from saving: <b>national saving</b> = <b>private saving</b> + <b>public saving</b>, where public saving = tax revenue - government spending.",
+  "Demand comes from borrowers: firms that invest, households and a government that spends more than it collects.",
+  "More government borrowing shifts DLF right, so the real interest rate rises and private investment falls. More private saving shifts SLF right and lowers the real rate."
+ ],
+ "misconception": {
+  "wrong": "The loanable funds graph uses the nominal interest rate, just like the money market.",
+  "right": "Savers and borrowers decide on the return after inflation, so the loanable funds graph uses the real interest rate. The money market uses the nominal rate."
+ },
+ "check": [
+  "mac-loanable-funds-12",
+  "mac-loanable-funds-13",
+  "mac-loanable-funds-15",
+  "mac-loanable-funds-1",
+  "mac-loanable-funds-2",
+  "mac-loanable-funds-3",
+  "mac-loanable-funds-19"
+ ],
+ "summary": "The loanable funds market brings together saving (supply) and borrowing (demand), and its price is the real interest rate. National saving is private saving plus public saving, and public saving is negative when the government spends more than it collects. More government borrowing shifts the demand for loanable funds right, raising the real interest rate and lowering private investment. More private saving shifts supply right, lowering the real interest rate and raising investment."
+}

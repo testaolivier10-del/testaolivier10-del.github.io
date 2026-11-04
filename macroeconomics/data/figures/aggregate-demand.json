@@ -1,0 +1,12 @@
+{
+ "aggregate-demand-curve": {
+  "file": "figures/aggregate-demand-curve.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two graphs with the price level on the vertical axis and real GDP on the horizontal axis. Left: a fall in the price level from PL1 to PL2 moves along one AD curve from Y1 to Y2. Right: AD1 shifts right to AD2."
+ }
+}

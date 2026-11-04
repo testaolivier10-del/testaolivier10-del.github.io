@@ -176,6 +176,16 @@ const CARDS = [
     title: 'Precalculus for May 2027, every function in motion',
     sub: 'Free notes for every topic, functions you can drag and watch, and the four free-response questions drilled part by part.',
   },
+  /* AP® Macroeconomics (folder macroeconomics/), the same rules: no mark, no
+     counts (docs/apmacro-spec.md decision 13). Render with
+     ONLY=macroeconomics/assets/og-image.png. */
+  {
+    out: 'macroeconomics/assets/og-image.png',
+    badge: 'Free notes',
+    brand: 'LevlPrep',
+    title: 'Macroeconomics for May 2027, every graph, every shift',
+    sub: 'Free notes for every topic, every graph shifted and labeled by hand and checked point by point, and causal chains built link by link.',
+  },
 ];
 // ONLY=<out path> renders just that card (adding a course need not re-render the others).
 if (process.env.ONLY) CARDS.splice(0, CARDS.length, ...CARDS.filter((c) => c.out === process.env.ONLY));

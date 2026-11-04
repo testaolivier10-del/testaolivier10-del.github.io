@@ -1,0 +1,12 @@
+{
+ "scarcity-choices": {
+  "file": "figures/scarcity-choices.svg",
+  "ext": "svg",
+  "w": 770,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A diagram: unlimited wants and limited resources (land, labor, capital, entrepreneurship) together create scarcity, which forces every society to choose what to produce, how, and for whom."
+ }
+}

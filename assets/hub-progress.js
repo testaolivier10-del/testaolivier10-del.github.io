@@ -205,6 +205,17 @@
       { min: 20, title: 'Model Builder' },
       { min: 30, title: 'Precalculus Legend' },
     ],
+    // docs/apmacro-spec.md decision 13 (owner to confirm). The
+    // first is also IDENTITY.firstRank in scripts/lib/apmacro-build.mjs.
+    apmacro: [
+      { min: 1,  title: 'Scarcity Spotter' },
+      { min: 3,  title: 'Curve Shifter' },
+      { min: 6,  title: 'GDP Counter' },
+      { min: 10, title: 'Multiplier Maker' },
+      { min: 15, title: 'Reserve Reader' },
+      { min: 20, title: 'Policy Planner' },
+      { min: 30, title: 'Macroeconomics Legend' },
+    ],
   };
 
   // Each course names its ranks differently, so a rank shown on its own says
@@ -223,6 +234,7 @@
     { key: 'appsych', rankLabel: 'Psychology rank' },
     { key: 'apprecalc', rankLabel: 'Precalculus rank' },
     { key: 'apcalcbc', rankLabel: 'Calculus BC rank' },
+    { key: 'apmacro', rankLabel: 'Macroeconomics rank' },
   ];
   // courses:end
   var COURSE_RANK_LABEL = { hub: 'LevlPrep rank' };

@@ -1,0 +1,14 @@
+{
+ "ad": {
+  "def": "The total amount of real output that households, firms, the government and foreigners plan to buy at each price level: C + I + G + (X - M). The AD curve slopes down."
+ },
+ "wealth-effect": {
+  "def": "The real wealth effect: a lower price level raises what savings can buy, so consumption rises. With the interest rate effect and the exchange rate effect, it explains why AD slopes down."
+ },
+ "ad-shifter": {
+  "def": "Anything other than the price level that changes consumption, investment, government spending or net exports, such as wealth, expectations, taxes or foreign incomes. It shifts the whole AD curve."
+ },
+ "price-level": {
+  "def": "The average level of prices of all goods and services in the economy, measured by a price index such as the GDP deflator. It is the vertical axis of the aggregate demand graph."
+ }
+}

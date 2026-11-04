@@ -1,0 +1,557 @@
+{
+ "stimuli": {
+  "foreign-exchange-market-s1": {
+   "kind": "graph",
+   "title": "The market for arls (Arland's currency), traded for bels (Belvia's currency)",
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "arl",
+     "other": "bel"
+    },
+    "show": {}
+   }
+  },
+  "foreign-exchange-market-s2": {
+   "kind": "graph",
+   "title": "The market for arls after a change",
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "arl",
+     "other": "bel"
+    },
+    "show": {
+     "D": 1
+    }
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-foreign-exchange-market-1",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "foreign-exchange-market-s1",
+   "q": "What does the vertical axis of this graph measure?",
+   "options": [
+    "The price of the bel, in arls per bel",
+    "The price of the arl, in bels per arl",
+    "The interest rate on Arland bonds",
+    "The price level in Arland"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Market for arls: price of the arl, in bels per arl.",
+    "options": [
+     "That is the flipped ratio. In the market for arls, the price is of one arl, in bels.",
+     "Right: in the market for a currency, the vertical axis is its price in the other currency per unit of it.",
+     "Interest rates go on the money market and loanable funds graphs, not here.",
+     "The price level goes on the AD-AS graph; this graph prices a currency."
+    ]
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-2",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "foreign-exchange-market-s1",
+   "q": "Who is on the demand side of this market?",
+   "options": [
+    "Arland residents who want to buy Belvian goods",
+    "Belvian firms that sell their goods inside Belvia",
+    "Belvians who want Arland goods, services or assets",
+    "Arland households saving more in Arland banks"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Demand for a currency comes from people abroad who want to buy the country's goods, services and assets.",
+    "options": [
+     "They pay with arls to get bels, so they supply arls.",
+     "A sale inside Belvia is paid in bels and needs no arls.",
+     "Right: to pay for anything from Arland, Belvians need arls, so they demand arls (and supply bels).",
+     "Saving at home in arls involves no trade of arls for bels."
+    ]
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-3",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "foreign-exchange-market-s1",
+   "q": "Who is on the supply side of this market?",
+   "options": [
+    "Arland residents who want Belvian goods, services or assets",
+    "Belvian tourists planning trips to Arland",
+    "Arland exporters paid in bels by Belvian buyers",
+    "Belvian savers buying Arland government bonds"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Supply of a currency comes from its own holders who want to buy foreign goods, services and assets.",
+    "options": [
+     "Right: they sell arls to get the bels they need, so they supply arls.",
+     "Tourists from Belvia buy arls to spend in Arland, so they demand arls.",
+     "They trade the bels they earn for arls, so they add to the demand for arls.",
+     "Buying an Arland asset needs arls, so these savers demand arls."
+    ]
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-4",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "foreign-exchange-market-s1",
+   "q": "Suppose the price of the arl were above its equilibrium on this graph. What would happen, and why?",
+   "options": [
+    "A shortage of arls would push the price of the arl up further",
+    "The demand for arls would shift right until it met the price",
+    "A surplus of arls would push the price of the arl down",
+    "The supply of arls would shift left until it met the price"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Above equilibrium, a surplus of the currency pushes its price down toward equilibrium.",
+    "options": [
+     "Above equilibrium, the quantity supplied is larger than the quantity demanded: a surplus, not a shortage.",
+     "A price away from equilibrium causes a movement along the curves, not a shift.",
+     "Right: at a price above equilibrium, more arls are offered than wanted, and sellers accept fewer bels per arl until the market clears.",
+     "The curves stay put; the price adjusts along them to the crossing."
+    ]
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-5",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "foreign-exchange-market-s2",
+   "q": "What happened to the international value of the arl?",
+   "options": [
+    "It depreciated: each arl buys fewer bels",
+    "It appreciated: each arl buys more bels",
+    "It did not change, because supply did not shift",
+    "It is unclear without the bel market graph"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Demand right: the price of the arl rises, so the arl appreciates.",
+    "options": [
+     "The new crossing is higher on the vertical axis, so each arl now costs (and buys) more bels.",
+     "Right: demand for arls rose, so the price of the arl in bels rose. The arl appreciated.",
+     "A shift in demand alone moves the equilibrium price along the supply curve.",
+     "This graph shows the price of the arl directly on its vertical axis."
+    ]
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-6",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "foreign-exchange-market-s2",
+   "q": "What is the matching change in the market for bels?",
+   "options": [
+    "The supply of bels increases, and the bel depreciates",
+    "The demand for bels increases, and the bel appreciates",
+    "The supply of bels decreases, and the bel appreciates",
+    "Nothing changes, since the shift was in the arl market"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "More demand for arls is more supply of bels: the arl appreciates as the bel depreciates.",
+    "options": [
+     "Right: Belvians who want more arls pay for them with bels, so the supply of bels rises and the price of the bel in arls falls.",
+     "More Belvians selling bels for arls adds to the supply of bels, not the demand.",
+     "Belvians are offering more bels, not fewer, to get the arls they want.",
+     "Every trade of bels for arls shows up in both markets; the bel market shows the mirror change."
+    ]
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-7",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "foreign-exchange-market-s2",
+   "q": "Which event could have caused the shift shown?",
+   "options": [
+    "Arland consumers buy more cheese imported from Belvia",
+    "Belvian tourists stop visiting Arland",
+    "Arland residents buy more Belvian bonds",
+    "Belvian consumers buy more phones made in Arland"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Demand for arls shifts right when Belvians want more Arland goods, services or assets.",
+    "options": [
+     "Arland consumers would supply more arls to get bels, shifting the supply of arls right, not demand.",
+     "Fewer tourists from Belvia need fewer arls, which would shift demand for arls left.",
+     "Arland residents buying Belvian assets supply arls; that shifts supply right.",
+     "Right: Belvians need arls to pay for Arland phones, so demand for arls shifts right."
+    ]
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-8",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "foreign-exchange-market-s2",
+   "q": "What happened to the quantity of arls traded?",
+   "options": [
+    "It fell, because the arl became more expensive",
+    "It stayed the same, since the price did the adjusting",
+    "It rose, along the supply curve",
+    "It is unclear without knowing the bel price"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Demand right: the quantity of arls traded rises.",
+    "options": [
+     "A rise in demand moves the crossing up and to the right along supply, so the quantity rises.",
+     "Both the price and the quantity change when demand shifts along an upward-sloping supply curve.",
+     "Right: demand shifted right along an upward supply curve, so both the price and the quantity of arls rose.",
+     "The horizontal axis shows the quantity of arls directly."
+    ]
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-9",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and the curves of the market for arls, the currency of Arland, traded for bels.",
+   "why": {
+    "correct": "The horizontal axis is the quantity of arls. The vertical axis is the price of the arl in the other currency per arl: bels per arl. Demand slopes down, supply slopes up."
+   },
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "arl",
+     "other": "bel"
+    },
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-10",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Tourists from Belvia start visiting Arland in much larger numbers. In the market for arls, shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "Belvian tourists need arls to spend in Arland, so the demand for arls shifts right. The price of the arl in bels rises (it appreciates) and the quantity of arls traded rises."
+   },
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "arl",
+     "other": "bel"
+    },
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "more Belvian tourists buying arls to spend in Arland",
+     "outcome": {
+      "value of the currency": "up",
+      "quantity of the currency": "up"
+     }
+    },
+    "slips": {
+     "S": "Belvian tourists trade bels for arls, which is demand for arls. The supply of arls comes from Arland residents buying foreign things."
+    }
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-11",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "In the market for arls, mark a point on the supply curve where the price of the arl is higher than at the equilibrium.",
+   "why": {
+    "correct": "Moving up the supply curve, a higher price of the arl comes with a larger quantity of arls offered: Arland goods are dearer for Belvians but Belvian goods are cheaper for Arland residents, who offer more arls."
+   },
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "arl",
+     "other": "bel"
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "S",
+      "x": "up",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-12",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Arland households buy more cheese imported from Belvia. Draw the market for bels, the currency of Belvia: label it, shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "To buy Belvian cheese, Arland households need bels, so in the market for bels the demand shifts right and the bel appreciates. The vertical axis is the price of the bel: arls per bel. (In the market for arls, the same trades are an increase in the supply of arls.)"
+   },
+   "graph": {
+    "kind": "forex",
+    "names": {
+     "currency": "bel",
+     "other": "arl"
+    },
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "Arland households buying more Belvian cheese",
+     "outcome": {
+      "value of the currency": "up",
+      "quantity of the currency": "up"
+     }
+    },
+    "slips": {
+     "S": "Arland households pay arls to get bels, so in the market for bels they demand bels. They supply arls only in the market for arls."
+    }
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-13",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What happens in the foreign exchange market?",
+   "options": [
+    "Central banks set the interest rates banks pay on reserves",
+    "Currencies are bought and sold, which sets exchange rates",
+    "Governments buy and sell goods across borders",
+    "Firms borrow by selling bonds to savers"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The foreign exchange market is where currencies are traded, and its equilibrium price is the exchange rate.",
+    "options": [
+     "Administered rates are set by central banks; the foreign exchange market is where currencies trade.",
+     "Right: buyers and sellers trade one currency for another, and the price they settle on is the exchange rate.",
+     "Trade in goods is recorded in the current account; the foreign exchange market is where the currencies to pay for it are traded.",
+     "That is the loanable funds market."
+    ]
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-14",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why does the demand curve for arls slope down?",
+   "options": [
+    "When the arl is cheaper in bels, Arland goods cost Belvians fewer bels, so they want more arls",
+    "When the arl is cheaper, Arland residents want to sell more arls",
+    "When the arl is cheaper, Arland interest rates rise",
+    "When the arl is cheaper, Belvian goods cost Arland residents fewer arls"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A lower price of the arl makes Arland goods and assets cheaper for Belvians, so they want more arls.",
+    "options": [
+     "Right: a lower price of the arl makes everything priced in arls cheaper for Belvians, so the quantity of arls demanded rises.",
+     "That describes the supply side, and in fact a cheaper arl makes Arland residents offer fewer arls.",
+     "The price of the arl does not set interest rates; interest rates are a separate shifter.",
+     "A cheaper arl makes Belvian goods cost Arland residents more arls, not fewer."
+    ]
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-15",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Arland residents increase their purchases of Belvian goods. What changes in the two currency markets?",
+   "options": [
+    "Demand for arls rises, and supply of bels rises",
+    "Supply of arls falls, and demand for bels falls",
+    "Supply of arls rises, and demand for bels rises",
+    "Supply of arls rises, and the bel market does not change"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Arls offered for bels: supply of arls right, demand for bels right. The arl depreciates and the bel appreciates.",
+    "options": [
+     "Arland residents are buying bels with arls, not the other way round.",
+     "More purchases of Belvian goods mean more arls offered and more bels wanted.",
+     "Right: one set of trades, arls sold for bels, appears as more supply in the arl market and more demand in the bel market.",
+     "Every arl sold for bels is a bel bought, so the bel market shows the mirror change."
+    ]
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-16",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Arland residents buy many more phones made in Belvia. Build the chain from this change to the value of the arl.",
+   "why": {
+    "correct": "To pay in bels, Arland buyers sell arls: the supply of arls shifts right, so the price of the arl falls."
+   },
+   "specific": {
+    "frame": "Arland buyers need bels, so ___ shifts ___, and the arl ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Arland buyers need bels to pay for the phones, so they sell more arls: the supply of arls shifts to the right, and the arl depreciates because more arls are offered at every price while demand is unchanged, which lowers the price of the arl in bels.",
+    "slots": {
+     "curve": {
+      "label": "The curve",
+      "options": [
+       "the supply of arls",
+       "the demand for arls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Demand for arls comes from Belvians who want Arland things. Arland buyers are sellers of arls."
+      }
+     },
+     "direction": {
+      "label": "Which way",
+      "options": [
+       "right",
+       "left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More arls are offered at every price, which is a shift to the right."
+      }
+     },
+     "currency": {
+      "label": "The arl",
+      "options": [
+       "depreciates",
+       "appreciates"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More supply with the same demand lowers the price of the arl, so it depreciates."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-foreign-exchange-market-17",
+   "unit": "unit-6",
+   "topic": "foreign-exchange-market",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these add to the demand for arls in the foreign exchange market? Select all that apply.",
+   "options": [
+    "A Belvian bakery buys wheat from an Arland farm",
+    "A Belvian saver buys bonds issued in Arland",
+    "An Arland tourist pays for a hotel in Belvia",
+    "An Arland firm buys a factory in Belvia",
+    "An Arland importer pays for cars from Belvia"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Demand for arls comes from buyers of Arland goods, services and assets; Arland residents buying Belvian things supply arls.",
+    "options": [
+     "Right: the bakery needs arls to pay the Arland farm.",
+     "Right: buying an Arland asset needs arls.",
+     "The tourist sells arls to get bels: supply of arls.",
+     "The firm sells arls for bels to buy a Belvian asset: supply of arls.",
+     "The importer sells arls for bels: supply of arls."
+    ]
+   }
+  }
+ ]
+}

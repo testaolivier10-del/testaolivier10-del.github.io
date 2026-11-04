@@ -1,0 +1,70 @@
+{
+ "topic": "curves-crossing",
+ "hook": "At a farmers market, the price of strawberries settles each morning at the point where what shoppers want matches what growers brought. When a heat wave cuts the harvest, that meeting point moves. Most exam graphs ask the same thing: where do the curves cross, and where do they cross after one of them moves?",
+ "prereq": [
+  {
+   "q": "Buyers' incomes rise and they want more of a good at every price. On the graph, D",
+   "options": [
+    "shifts right",
+    "shifts left",
+    "stays put while you move along it",
+    "becomes vertical"
+   ],
+   "correct": 0,
+   "why": "A change off the axes shifts the curve; more wanted at every price is a shift right.",
+   "review": "shifts-movements"
+  },
+  {
+   "q": "An upward-sloping curve shows that as price rises, quantity",
+   "options": [
+    "rises",
+    "falls",
+    "stays the same",
+    "first rises then falls"
+   ],
+   "correct": 0,
+   "why": "Upward sloping means both rise together.",
+   "review": "slopes-curves"
+  }
+ ],
+ "figure": {
+  "figure": "curves-crossing-before-after",
+  "caption": "The curves cross at E1. After S shifts left to S2, they cross at E2: a higher price (P2) and a smaller quantity (Q2)."
+ },
+ "chain": [
+  {
+   "cause": "Two curves cross at one point",
+   "effect": "that point gives the one price and quantity both curves agree on (E1)"
+  },
+  {
+   "cause": "One curve shifts",
+   "effect": "the crossing moves along the other curve to a new point (E2)"
+  },
+  {
+   "cause": "You draw dashed lines from E1 and E2 to both axes",
+   "effect": "you can compare the old and new price and quantity"
+  },
+  {
+   "cause": "You state each change with its direction",
+   "effect": "\"the price rises from P1 to P2\" earns the point"
+  }
+ ],
+ "ideas": [
+  "The <b>intersection point</b> is where two curves cross: on a market graph, the price at which the quantity buyers want equals the quantity sellers offer.",
+  "When one curve shifts, the crossing slides along the curve that did not move.",
+  "A <b>before-and-after comparison</b> marks both crossings, E1 and E2, with dashed lines to both axes (P1, P2, Q1, Q2) and says which way each moved."
+ ],
+ "misconception": {
+  "wrong": "When a curve shifts right, the new crossing is always higher.",
+  "right": "It depends on which curve moved. D shifting right slides up the upward curve S (higher price); S shifting right slides down the downward curve D (lower price). Follow the curve that did not move."
+ },
+ "check": [
+  "mac-curves-crossing-1",
+  "mac-curves-crossing-2",
+  "mac-curves-crossing-3",
+  "mac-curves-crossing-7",
+  "mac-curves-crossing-8",
+  "mac-curves-crossing-9"
+ ],
+ "summary": "Where two curves cross, they agree on one price and one quantity. When one curve shifts, the crossing slides along the other curve to a new point. Mark both crossings with dashed lines to both axes, label the old and new values, and state the direction of each change: that before-and-after comparison is what readers score on every graph in the course."
+}

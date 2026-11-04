@@ -1,0 +1,110 @@
+/* Multiplier lab (macroeconomics/assets/tools/multiplier-lab.js). OWNED BY THIS TOOL
+   ONLY (builder T3). Scoped to .ml-*; colors from the course tokens (mac.css):
+   --cink for spending and the totals, the warm accent for taxes, so the two
+   read apart in light and dark. */
+.ml-card{--ml-tax:#B54700;--ml-now:#084F78;}
+:root[data-theme="dark"] .ml-card,:root[data-theme="dark"] .ls-root{--ml-tax:#F29A5C;--ml-now:#8CC8E8;}
+.ml-stage{display:flex;flex-direction:column;flex:1;min-height:0;}
+.ml-fig{display:flex;flex-direction:column;gap:8px;flex:1;min-height:0;}
+.ml-fig[hidden]{display:none;}
+.ml-barbox{flex:1;min-height:180px;position:relative;}
+/* room for the stage's Enlarge button, bottom right */
+.ml-fig > :last-child{margin-bottom:34px;}
+.ml-bars{display:block;position:absolute;inset:0;width:100%;height:100%;font:600 12px var(--font-ui);}
+.ml-q{font-size:22px;fill:var(--cink);}
+.ml-bar{fill:var(--cink);transition:y .35s ease,height .35s ease;}
+.ml-bar.is-t{fill:var(--ml-tax);}
+.ml-bar.is-now{fill:var(--ml-now);}
+.ml-bar.is-sum{fill:var(--cink);}
+.ml-outline{fill:var(--ctint);stroke:var(--cink);stroke-width:1.6;stroke-dasharray:5 4;}
+.ml-zero{stroke:var(--ink);stroke-width:1.4;}
+.ml-dot{fill:var(--white);stroke:var(--ink);stroke-width:2;}
+.ml-ax,.ml-xl{fill:var(--muted);}
+.ml-xl.is-strong,.ml-val.is-strong{fill:var(--ink);font-weight:800;}
+.ml-val{fill:var(--ink);font-weight:700;}
+.ml-axname{fill:var(--ink);font-weight:800;}
+@media (prefers-reduced-motion:reduce){.ml-bar{transition:none;}}
+:root[data-motion="off"] .ml-bar{transition:none;}
+.ml-read{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:0;font:700 14px var(--font-ui);}
+.ml-chip{padding:5px 10px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);white-space:nowrap;}
+.ml-chip.is-total{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+.ml-op{color:var(--muted);font-weight:800;}
+/* Close a gap: the graph beside its meter (stacked on a phone) */
+.ml-gapgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(220px,1fr);gap:14px;align-items:center;flex:1;min-height:0;}
+.ml-graph{min-height:0;display:flex;justify-content:center;}
+.ml-graph svg{width:100%;height:auto;max-height:100%;max-width:440px;}
+.ml-gapgrid .ml-graph svg{max-height:min(100%,62vh);}
+.ml-meter{font:600 14px var(--font-ui);color:var(--ink);}
+.ml-mh{margin:0 0 8px;font-weight:800;}
+.ml-track{position:relative;height:14px;border-radius:999px;background:var(--line);overflow:visible;}
+.ml-fill{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--cink);transition:width .3s ease;}
+.ml-fill.is-over,.ml-fill.is-wrong{background:var(--ml-tax);}
+.ml-fill.is-closed{background:var(--good);}
+.ml-goal{position:absolute;left:50%;top:-5px;bottom:-5px;width:3px;border-radius:2px;background:var(--ink);}
+.ml-goal::after{content:"full employment";position:absolute;top:22px;left:50%;transform:translateX(-50%);font:700 11px var(--font-ui);color:var(--muted);white-space:nowrap;}
+@media (prefers-reduced-motion:reduce){.ml-fill{transition:none;}}
+.ml-nums{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;margin:30px 0 0;}
+.ml-nums div{padding:6px 8px;border-radius:10px;background:var(--ctint);}
+.ml-nums dt{font-size:12px;color:var(--muted);font-weight:700;}
+.ml-nums dd{margin:0;font-weight:800;font-size:15px;}
+/* Money: balance sheet and money market under the loan rounds */
+.ml-fig[data-v="money"] .ml-barbox{flex:1.2;}
+.ml-moneyrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:center;}
+.ml-mm svg{max-height:210px;}
+.ml-t{width:100%;border-collapse:collapse;font:600 13px var(--font-ui);color:var(--ink);}
+.ml-t caption{font-weight:800;text-align:left;margin-bottom:4px;}
+.ml-t th{border-bottom:2px solid var(--ink);padding:4px 6px;text-align:left;}
+.ml-t td{vertical-align:top;padding:6px;display:table-cell;}
+.ml-t td + td{border-left:2px solid var(--ink);}
+.ml-t td span{display:block;color:var(--muted);font-size:12px;}
+.ml-t td b{display:block;margin-bottom:4px;}
+.ml-t b.is-ex{color:var(--cink);}
+/* Controls */
+.ml-seg{display:flex;flex-wrap:wrap;align-items:center;gap:4px;}
+.ml-seg-l{font:700 13px var(--font-ui);color:var(--muted);margin-right:4px;min-width:3.6em;}
+.ml-views .ml-seg-l{display:none;}
+.ml-group{display:flex;flex-direction:column;gap:10px;}
+.ml-group[hidden]{display:none;}
+.ml-ctl{display:flex;flex-direction:column;gap:10px;}
+.ml-rule{font-size:.95em;}
+.ml-forms{margin:.3em 0 1em;padding-left:1.2em;}
+.ml-qfig{display:flex;flex-direction:column;gap:8px;flex:1;min-height:0;width:100%;}
+.ml-qgraph{display:flex;justify-content:center;flex:1;min-height:0;}
+.ml-qgraph svg{width:100%;height:100%;max-width:460px;}
+.ml-qbars{position:relative;flex:1;min-height:200px;margin-bottom:34px;}
+.ml-qfig-money .ml-t{max-width:420px;margin:0 auto;}
+.ml-qcap{text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin:4px 0 0;}
+@media (max-width:640px){
+  .ml-gapgrid{grid-template-columns:1fr;grid-template-rows:auto auto;gap:4px;align-items:start;flex:none;}
+  .ml-gapgrid .ml-graph svg{height:31svh;max-height:none;width:auto;max-width:100%;}
+  .ml-mh{font-size:13px;margin-bottom:6px;}
+  .ml-nums{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:24px;}
+  .ml-nums div{padding:4px 6px;}
+  .ml-nums dt{font-size:10.5px;line-height:1.2;}
+  .ml-nums dd{font-size:13px;}
+  .ml-moneyrow{grid-template-columns:1fr 1fr;gap:6px;}
+  .ml-mm svg{max-height:150px;}
+  .ml-t{font-size:12px;}
+  .ml-read{font-size:12.5px;gap:4px;}
+  .ml-chip{padding:3px 8px;}
+  .ml-barbox{min-height:150px;}
+}
+/* Definite heights for the bar charts that share the stage with a table,
+   so the chart never collapses (phone and desktop). */
+.ml-qbars{flex:none;height:clamp(180px,36vh,420px);}
+.ml-fig[data-v="money"] .ml-barbox{flex:none;height:clamp(170px,34vh,380px);}
+@media (max-width:640px){
+  .ml-qbars{height:30svh;min-height:170px;}
+  .ml-fig[data-v="money"] .ml-barbox{height:24svh;min-height:150px;margin-bottom:0;}
+  .ml-t td span{display:inline;}
+  .ml-t td span::after{content:" ";}
+  .ml-t td b{display:inline;margin:0 0 0 2px;}
+  .ml-t td b::after{content:"";display:block;margin-bottom:3px;}
+  .ml-qfig-money .ml-t{font-size:12px;}
+}
+@media (max-width:640px){
+  .ml-qfig-money{gap:4px;}
+  .ml-qfig-money .ml-qbars{height:20svh;min-height:130px;flex:none;margin-bottom:30px;}
+  .ml-qfig-money .ml-t caption{margin-bottom:0;}
+  .ml-qfig-money .ml-t td{padding:3px 6px;}
+}

@@ -1,0 +1,12 @@
+{
+ "loanable-funds-government-borrowing": {
+  "file": "figures/loanable-funds-government-borrowing.svg",
+  "ext": "svg",
+  "w": 520,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A loanable funds graph. The vertical axis is the real interest rate and the horizontal axis is the quantity of loanable funds. Supply SLF slopes up and demand DLF1 slopes down. More government borrowing shifts demand right to DLF2, so the real interest rate rises from r1 to r2 and the quantity of loanable funds rises from Q1 to Q2."
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "phillips-curve-adas-link": {
+  "file": "figures/phillips-curve-adas-link.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "AD shifting right on an AD-AS graph matches a move up and to the left along the short-run Phillips curve: lower unemployment, higher inflation."
+ },
+ "phillips-curve-supply-shock": {
+  "file": "figures/phillips-curve-supply-shock.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "SRAS shifting left on an AD-AS graph matches the SRPC shifting right: higher inflation and higher unemployment at once."
+ }
+}

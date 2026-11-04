@@ -1,0 +1,14 @@
+{
+ "nominal-gdp": {
+  "def": "GDP measured at the prices of the year the output is produced, so it rises when prices rise even if output does not."
+ },
+ "real-gdp": {
+  "def": "GDP measured at base-year prices, so it changes only when the quantity of goods and services produced changes. Real GDP = nominal GDP divided by the GDP deflator, times 100."
+ },
+ "gdp-deflator": {
+  "def": "A price index for all final goods and services produced in a country: nominal GDP divided by real GDP, times 100. It is 100 in the base year."
+ },
+ "growth-rate": {
+  "def": "The percent change in real GDP from one period to the next: (new minus old) divided by old, times 100."
+ }
+}

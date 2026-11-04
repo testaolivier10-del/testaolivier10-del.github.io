@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" width="680" height="300" role="img" aria-labelledby="automatic-stabilizers-flow-t automatic-stabilizers-flow-d" font-family="Arial, Helvetica, sans-serif">
+<title id="automatic-stabilizers-flow-t">How automatic stabilizers soften a recession</title>
+<desc id="automatic-stabilizers-flow-d">A flow diagram. When incomes and jobs fall in a recession, tax bills under a progressive income tax fall faster than income, and transfers such as unemployment compensation rise. Both keep disposable income from falling as much, so consumption and aggregate demand fall by less. In a boom the same programs work in reverse.</desc>
+<defs><marker id="automatic-stabilizers-flow-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9A4A00"/></marker></defs>
+<rect width="680" height="300" fill="#FFFFFF"/>
+<text x="340" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2A28">In a recession, with no new law</text>
+<rect x="20" y="60" width="180" height="62" rx="10" fill="#F4F7EE" stroke="#1F5C8A" stroke-width="2"/>
+<text x="110" y="84" text-anchor="middle" font-size="13" font-weight="700" fill="#1F2A28">Incomes and jobs fall</text>
+<text x="110" y="101" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2A28">real GDP falls</text>
+<rect x="250" y="50" width="190" height="62" rx="10" fill="#F4F7EE" stroke="#355A0A" stroke-width="2"/>
+<text x="345" y="74" text-anchor="middle" font-size="13" font-weight="700" fill="#1F2A28">Tax bills fall faster</text>
+<text x="345" y="91" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2A28">progressive income tax</text>
+<rect x="250" y="160" width="190" height="62" rx="10" fill="#F4F7EE" stroke="#355A0A" stroke-width="2"/>
+<text x="345" y="184" text-anchor="middle" font-size="13" font-weight="700" fill="#1F2A28">Transfers rise</text>
+<text x="345" y="201" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2A28">unemployment compensation</text>
+<rect x="490" y="105" width="170" height="62" rx="10" fill="#F4F7EE" stroke="#355A0A" stroke-width="2"/>
+<text x="575" y="129" text-anchor="middle" font-size="13" font-weight="700" fill="#1F2A28">Disposable income</text>
+<text x="575" y="146" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2A28">falls by less</text>
+<rect x="490" y="205" width="170" height="62" rx="10" fill="#F4F7EE" stroke="#9A4A00" stroke-width="2"/>
+<text x="575" y="229" text-anchor="middle" font-size="13" font-weight="700" fill="#1F2A28">Consumption and AD</text>
+<text x="575" y="246" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2A28">fall by less</text>
+<path d="M200 85L248 80" stroke="#9A4A00" stroke-width="2.2" marker-end="url(#automatic-stabilizers-flow-ar)"/>
+<path d="M200 100L248 185" stroke="#9A4A00" stroke-width="2.2" marker-end="url(#automatic-stabilizers-flow-ar)"/>
+<path d="M440 82L488 125" stroke="#9A4A00" stroke-width="2.2" marker-end="url(#automatic-stabilizers-flow-ar)"/>
+<path d="M440 190L488 145" stroke="#9A4A00" stroke-width="2.2" marker-end="url(#automatic-stabilizers-flow-ar)"/>
+<path d="M575 167L575 203" stroke="#9A4A00" stroke-width="2.2" marker-end="url(#automatic-stabilizers-flow-ar)"/>
+<text x="20" y="286" font-size="12" fill="#6B7472">In a boom the same programs work in reverse: tax bills rise faster than income and transfers fall.</text>
+</svg>

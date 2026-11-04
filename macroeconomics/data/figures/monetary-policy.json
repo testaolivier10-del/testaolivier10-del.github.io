@@ -1,0 +1,12 @@
+{
+ "monetary-policy-two-frameworks": {
+  "file": "figures/monetary-policy-two-frameworks.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 445,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two graphs. Left, limited reserves: a money market graph with nominal interest rate on the vertical axis and quantity of money on the horizontal axis; buying bonds shifts the vertical money supply right from MS1 to MS2, and the nominal interest rate falls from i1 to i2. Right, ample reserves: a reserve market graph with the policy rate, the federal funds rate, on the vertical axis and the quantity of reserves on the horizontal axis; reserve demand slopes down and then turns flat at the interest on reserve balances; the vertical reserve supply crosses it in the flat part; lowering the administered rates shifts the flat part down from DR1 to DR2, and the federal funds rate falls from FFR1 to FFR2 while the quantity of reserves is unchanged."
+ }
+}

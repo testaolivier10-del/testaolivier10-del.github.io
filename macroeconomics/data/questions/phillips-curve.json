@@ -1,0 +1,614 @@
+{
+ "stimuli": {
+  "phillips-curve-s1": {
+   "kind": "data",
+   "title": "Unemployment and inflation in Velor (invented)",
+   "invented": true,
+   "table": {
+    "caption": "Velor, an invented country with a natural rate of unemployment of 5 percent",
+    "cols": [
+     "Year",
+     "Unemployment rate (%)",
+     "Inflation rate (%)"
+    ],
+    "rows": [
+     [
+      "1",
+      "5.0",
+      "2.0"
+     ],
+     [
+      "2",
+      "4.0",
+      "3.0"
+     ],
+     [
+      "3",
+      "5.0",
+      "4.0"
+     ],
+     [
+      "4",
+      "6.5",
+      "6.0"
+     ]
+    ]
+   }
+  },
+  "phillips-curve-s2": {
+   "kind": "text",
+   "title": "A spending boom in Lumen (invented country)",
+   "text": "<p>Lumen, an invented country, is in long-run equilibrium. Its unemployment rate equals the natural rate of 4 percent, and actual and expected inflation are both 2 percent. Then a boom in stock prices makes households feel richer, and consumption rises sharply. Lumen's government and central bank take no action.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-phillips-curve-1",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and both curves of the Phillips curve graph.",
+   "why": {
+    "correct": "The inflation rate is on the vertical axis and the unemployment rate on the horizontal axis; SRPC slopes down and LRPC is vertical at the natural rate of unemployment."
+   },
+   "graph": {
+    "kind": "phillips",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mac-phillips-curve-2",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The economy starts where SRPC crosses LRPC. Then consumer spending rises, shifting AD right. Place point B to show where the economy moves in the short run.",
+   "why": {
+    "correct": "An AD shift is a movement along the SRPC: higher output means lower unemployment, and the faster rise in prices means higher inflation, so B is up and to the left on the same SRPC."
+   },
+   "graph": {
+    "kind": "phillips",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "B",
+    "key": {
+     "point": {
+      "on": "SRPC",
+      "x": "down",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-phillips-curve-3",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A sharp rise in world oil prices raises production costs for firms across the economy. Shift the right curve to show the effect on the Phillips curves.",
+   "why": {
+    "correct": "A negative supply shock shifts SRAS left on the AD-AS graph, which raises both inflation and unemployment: the SRPC shifts right. The natural rate is unchanged, so LRPC stays put."
+   },
+   "graph": {
+    "kind": "phillips",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "SRPC",
+     "LRPC"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SRPC",
+       "dir": "right"
+      }
+     ],
+     "because": "a negative supply shock (higher oil prices)"
+    },
+    "slips": {
+     "LRPC": "A supply shock does not change the natural rate of unemployment, so LRPC stays where it is. The short-run trade-off gets worse, so SRPC shifts."
+    }
+   }
+  },
+  {
+   "id": "mac-phillips-curve-4",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "After years of rising prices, workers and firms come to expect a higher inflation rate. Shift the right curve and mark the new long-run equilibrium where the curves cross.",
+   "why": {
+    "correct": "Higher expected inflation shifts the SRPC right (up). Where SRPC2 meets LRPC, unemployment is at the natural rate and inflation equals the new, higher expected rate."
+   },
+   "graph": {
+    "kind": "phillips",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "SRPC",
+     "LRPC"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SRPC",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in expected inflation",
+     "outcome": {
+      "inflation rate": "up",
+      "unemployment rate": "same"
+     }
+    },
+    "slips": {
+     "LRPC": "Expected inflation changes the short-run trade-off; the natural rate of unemployment, and so LRPC, does not depend on it."
+    }
+   }
+  },
+  {
+   "id": "mac-phillips-curve-5",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Between which two years did Velor most likely move along a single short-run Phillips curve after a rise in AD?",
+   "options": [
+    "Year 1 to Year 2",
+    "Year 2 to Year 3",
+    "Year 3 to Year 4",
+    "Year 1 to Year 3"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Along a given SRPC, unemployment and inflation move in opposite directions. Only Year 1 to Year 2 fits.",
+    "options": [
+     "Right: unemployment fell and inflation rose, the inverse short-run trade-off a rise in AD produces.",
+     "Both unemployment and inflation rose; a movement along one SRPC changes them in opposite directions.",
+     "Both rose again, which points to a shift of the SRPC, not a movement along it.",
+     "Unemployment is the same in both years while inflation is higher, so the economy is on a different SRPC."
+    ]
+   },
+   "stimulus": "phillips-curve-s1"
+  },
+  {
+   "id": "mac-phillips-curve-6",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In Year 3, unemployment is back at the natural rate, but inflation is 4 percent instead of the 2 percent of Year 1. What best explains this?",
+   "options": [
+    "The natural rate of unemployment fell, so LRPC shifted left and inflation rose along it",
+    "AD fell, so the economy moved down along the SRPC toward higher inflation",
+    "Expected inflation rose, so the SRPC shifted right and the economy returned to LRPC at a higher inflation rate",
+    "A positive supply shock shifted the SRPC left, raising inflation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In the long run the economy is on LRPC at the natural rate, and inflation equals expected inflation. A higher inflation rate at the natural rate means expected inflation rose.",
+    "options": [
+     "Unemployment is still 5 percent, the stated natural rate, so LRPC did not move.",
+     "A fall in AD moves the economy down the SRPC to lower inflation and higher unemployment.",
+     "Right: once people expect higher inflation, the SRPC crosses LRPC at that higher rate, so unemployment returns to 5 percent with inflation at 4 percent.",
+     "A leftward SRPC shift lowers inflation at each unemployment rate."
+    ]
+   },
+   "stimulus": "phillips-curve-s1"
+  },
+  {
+   "id": "mac-phillips-curve-7",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "From Year 3 to Year 4, both unemployment and inflation rose. Which event fits that change?",
+   "options": [
+    "A rise in government spending on roads that shifted AD right",
+    "A sharp rise in energy prices that shifted SRAS left",
+    "A fall in consumer confidence that shifted AD left",
+    "A fall in the natural rate of unemployment"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "When inflation and unemployment rise together, the SRPC has shifted right; a negative supply shock is the usual cause.",
+    "options": [
+     "More AD lowers unemployment while it raises inflation.",
+     "Right: a negative supply shock raises the price level and lowers output, so inflation and unemployment rise together.",
+     "Less AD lowers inflation while it raises unemployment.",
+     "A lower natural rate would let unemployment fall, not rise, in the long run."
+    ]
+   },
+   "stimulus": "phillips-curve-s1"
+  },
+  {
+   "id": "mac-phillips-curve-8",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Using the table, what is Velor's cyclical unemployment rate in Year 4?",
+   "why": {
+    "correct": "Actual = natural + cyclical, so cyclical $= 6.5 - 5.0 = 1.5$ percent. Positive cyclical unemployment means the economy is to the right of LRPC."
+   },
+   "numeric": {
+    "from": {
+     "fn": "cyclicalRate",
+     "args": [
+      6.5,
+      5
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 6.5,
+      "why": "That is the actual unemployment rate. Cyclical unemployment is the part above the natural rate: 6.5 - 5.0."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        6.5,
+        5
+       ]
+      },
+      "why": "You added the natural rate. The actual rate is natural plus cyclical, so subtract: 6.5 - 5.0."
+     }
+    ]
+   },
+   "stimulus": "phillips-curve-s1"
+  },
+  {
+   "id": "mac-phillips-curve-9",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "What happens to Lumen's unemployment and inflation rates in the short run?",
+   "options": [
+    "Unemployment rises above 4 percent, and inflation rises above 2 percent",
+    "Unemployment falls below 4 percent, and inflation falls below 2 percent",
+    "Unemployment stays at 4 percent, and inflation rises above 2 percent",
+    "Unemployment falls below 4 percent, and inflation rises above 2 percent"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A rise in AD moves the economy up and to the left along the SRPC.",
+    "options": [
+     "Both rising together is a supply shock, a shift of the SRPC. Here AD rose.",
+     "More spending raises prices faster, not slower.",
+     "That describes the long run. In the short run, higher AD raises output and lowers unemployment.",
+     "Right: higher consumption shifts AD right, so output rises (unemployment falls) and prices rise faster (inflation rises): a movement up along the SRPC."
+    ]
+   },
+   "stimulus": "phillips-curve-s2"
+  },
+  {
+   "id": "mac-phillips-curve-10",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Households and firms in Lumen come to expect the higher inflation rate. Where does the economy end up in the long run?",
+   "options": [
+    "Below 4 percent unemployment, with inflation back at 2 percent",
+    "At 4 percent unemployment, with inflation above 2 percent, on a new SRPC",
+    "At 4 percent unemployment, with inflation back down at the old 2 percent",
+    "Above 4 percent unemployment, with inflation below 2 percent"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In the long run unemployment returns to the natural rate whatever the inflation rate, which is why LRPC is vertical. Higher expected inflation leaves the economy on LRPC at a higher inflation rate.",
+    "options": [
+     "Unemployment cannot stay below the natural rate in the long run; LRPC is vertical at 4 percent.",
+     "Right: as expected inflation rises, the SRPC shifts right, and the economy returns to LRPC at the natural rate with the higher inflation.",
+     "Inflation returns to 2 percent only if expectations stay at 2 percent. Here people now expect higher inflation.",
+     "That is where a fall in AD would push the economy in the short run."
+    ]
+   },
+   "stimulus": "phillips-curve-s2"
+  },
+  {
+   "id": "mac-phillips-curve-11",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which change on Lumen's AD-AS graph matches its long-run adjustment?",
+   "options": [
+    "Nominal wages rise with expected inflation, so SRAS shifts left until output is back at full employment",
+    "Nominal wages fall, so SRAS shifts right and output rises further above full employment",
+    "LRAS shifts right to meet the higher level of output",
+    "AD keeps shifting right until the price level stops rising"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The two graphs tell one story: the SRAS shift left on the AD-AS graph is the SRPC shift right on the Phillips curve graph.",
+    "options": [
+     "Right: higher expected inflation raises nominal wages and input prices; SRAS shifts left, output returns to full employment and the SRPC shifts right.",
+     "With unemployment below the natural rate, wages rise, not fall.",
+     "Full-employment output depends on resources and technology; a spending boom does not move it.",
+     "More AD would push output further from full employment; the long-run adjustment comes from SRAS."
+    ]
+   },
+   "stimulus": "phillips-curve-s2"
+  },
+  {
+   "id": "mac-phillips-curve-12",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Build the chain for Lumen, from the spending boom to the long run.",
+   "why": {
+    "correct": "AD rises, the economy moves along the SRPC to lower unemployment and higher inflation, then rising expected inflation shifts the SRPC right and unemployment returns to the natural rate."
+   },
+   "specific": {
+    "frame": "Consumption rises, so AD shifts ___. Unemployment ___ and inflation rises: a movement ___ the SRPC. As expected inflation rises, the SRPC shifts ___, and unemployment returns to ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Consumption rises, so AD shifts right. Unemployment falls and inflation rises, which is a movement along the SRPC. Because expected inflation then rises, the SRPC shifts right, and unemployment returns to the natural rate of 4 percent.",
+    "slots": {
+     "direction": {
+      "label": "Which way AD shifts",
+      "options": [
+       "right",
+       "left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More consumption is more spending at each price level: a shift right."
+      }
+     },
+     "unemployment": {
+      "label": "Unemployment in the short run",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher output needs more workers, so unemployment falls."
+      }
+     },
+     "link": {
+      "label": "Movement or shift",
+      "options": [
+       "along",
+       "of"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An AD change moves the economy along the SRPC; it does not shift it."
+      }
+     },
+     "curve": {
+      "label": "Which way the SRPC shifts",
+      "options": [
+       "right",
+       "left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher expected inflation raises inflation at each unemployment rate: a shift right (up)."
+      }
+     },
+     "trend": {
+      "label": "The long-run unemployment rate",
+      "options": [
+       "the natural rate of 4 percent",
+       "a rate below 4 percent"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "LRPC is vertical at the natural rate; unemployment cannot stay below it in the long run."
+      }
+     }
+    }
+   },
+   "stimulus": "phillips-curve-s2"
+  },
+  {
+   "id": "mac-phillips-curve-13",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Better job-search websites help unemployed workers find matching jobs faster, so the natural rate of unemployment falls. Shift the right curve.",
+   "why": {
+    "correct": "A lower natural rate moves the vertical LRPC to the left (and LRAS to the right on the AD-AS graph)."
+   },
+   "graph": {
+    "kind": "phillips",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "LRPC"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "LRPC",
+       "dir": "left"
+      }
+     ],
+     "because": "a fall in the natural rate of unemployment"
+    }
+   }
+  },
+  {
+   "id": "mac-phillips-curve-14",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The economy starts where SRPC crosses LRPC. Then business investment falls sharply, shifting AD left. Place point B to show the short-run result.",
+   "why": {
+    "correct": "A fall in AD is a movement down and to the right along the SRPC: lower inflation and higher unemployment."
+   },
+   "graph": {
+    "kind": "phillips",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "B",
+    "key": {
+     "point": {
+      "on": "SRPC",
+      "x": "up",
+      "y": "down"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-phillips-curve-15",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does the vertical long-run Phillips curve show?",
+   "options": [
+    "In the long run, higher inflation keeps unemployment permanently lower",
+    "In the long run, the inflation rate is fixed whatever the unemployment rate",
+    "In the long run, unemployment is at the natural rate at any inflation rate",
+    "In the long run, unemployment falls to zero when inflation is high enough"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "LRPC is the Phillips curve version of LRAS: both are vertical at full employment, where unemployment equals the natural rate.",
+    "options": [
+     "That is the short-run trade-off. It disappears once expected inflation catches up.",
+     "A fixed inflation rate would be a horizontal line. LRPC fixes unemployment, not inflation.",
+     "Right: once expectations adjust there is no lasting trade-off, so LRPC is vertical at the natural rate.",
+     "Frictional and structural unemployment remain at any inflation rate; that is the natural rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-phillips-curve-16",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Select every event that shifts the short-run Phillips curve to the right.",
+   "options": [
+    "A rise in expected inflation",
+    "A rise in the price of oil used across the economy",
+    "A rise in government spending",
+    "A fall in consumer spending"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Supply shocks and changes in expected inflation shift the SRPC; changes in AD move the economy along it.",
+    "options": [
+     "Right: higher expected inflation raises inflation at each unemployment rate.",
+     "Right: a negative supply shock shifts SRAS left and the SRPC right.",
+     "That shifts AD right: a movement along the SRPC, not a shift.",
+     "That shifts AD left: a movement down the SRPC."
+    ]
+   }
+  },
+  {
+   "id": "mac-phillips-curve-17",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "A new technology sharply lowers energy costs for firms (a positive supply shock). What happens on the Phillips curve graph in the short run?",
+   "options": [
+    "The SRPC shifts right: inflation and unemployment both rise",
+    "The economy moves up along the SRPC: inflation rises and unemployment falls",
+    "LRPC shifts right: the natural rate of unemployment rises",
+    "The SRPC shifts left: inflation and unemployment both fall"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A positive supply shock is the mirror image of a negative one: SRAS right, SRPC left.",
+    "options": [
+     "That is a negative supply shock, such as a rise in oil prices.",
+     "A movement along the SRPC comes from a change in AD.",
+     "Cheaper energy does not raise the natural rate; the short-run curve moves.",
+     "Right: SRAS shifts right, so the price level rises more slowly and output rises; inflation and unemployment fall together."
+    ]
+   }
+  },
+  {
+   "id": "mac-phillips-curve-18",
+   "unit": "unit-5",
+   "topic": "phillips-curve",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Which feature of the AD-AS model matches the long-run Phillips curve?",
+   "options": [
+    "SRAS, which slopes up",
+    "LRAS, vertical at full-employment output",
+    "AD, which slopes down",
+    "The point where AD crosses SRAS in the short run"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "LRAS and LRPC both mark full employment: real GDP at potential, unemployment at the natural rate.",
+    "options": [
+     "SRAS shifts match SRPC shifts in the opposite direction; it is not the long-run curve.",
+     "Right: full-employment output on LRAS is the output at which unemployment equals the natural rate, where LRPC stands.",
+     "AD shifts are movements along the SRPC.",
+     "That is the short-run equilibrium, which can sit off LRPC."
+    ]
+   }
+  }
+ ]
+}

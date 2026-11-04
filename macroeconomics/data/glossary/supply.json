@@ -1,0 +1,11 @@
+{
+ "law-of-supply": {
+  "def": "As the price of a good rises, the quantity sellers offer rises, other things equal; the supply curve slopes upward."
+ },
+ "quantity-supplied": {
+  "def": "The amount of a good sellers offer at one particular price. A change in the good's own price changes the quantity supplied, a movement along the supply curve."
+ },
+ "supply-shifter": {
+  "def": "Anything other than the good's own price that changes supply and shifts the curve: input costs, technology, taxes and subsidies on producers, expectations and the number of sellers."
+ }
+}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 520" width="700" height="520" role="img" aria-labelledby="slopes-curves-shapes-t slopes-curves-shapes-d" font-family="Arial, Helvetica, sans-serif">
+<title id="slopes-curves-shapes-t">Four curve shapes and what their slopes say</title>
+<desc id="slopes-curves-shapes-d">Four small graphs. Upward sloping: a positive slope, both variables rise together. Downward sloping: a negative slope, one rises as the other falls. A vertical line: the horizontal value stays the same whatever the vertical value. A horizontal line: the vertical value stays the same whatever the horizontal value.</desc>
+<defs><marker id="slopes-curves-shapes-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="slopes-curves-shapes-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="slopes-curves-shapes-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="slopes-curves-shapes-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker></defs><rect width="700" height="520" fill="#FFFFFF"/>
+<text x="180" y="40" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Upward sloping</text>
+<line x1="70" y1="54" x2="70" y2="190" stroke="#1F2A28" stroke-width="2"/>
+<line x1="70" y1="190" x2="296" y2="190" stroke="#1F2A28" stroke-width="2"/>
+<text x="290" y="228" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">x</text>
+<text x="36" y="60" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 36 60)">y</text>
+<line x1="92" y1="177" x2="268" y2="73" stroke="#355A0A" stroke-width="3"/>
+<text x="180" y="248" font-size="12" fill="#6B7370" text-anchor="middle">positive slope: both rise together</text>
+<text x="510" y="40" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Downward sloping</text>
+<line x1="400" y1="54" x2="400" y2="190" stroke="#1F2A28" stroke-width="2"/>
+<line x1="400" y1="190" x2="626" y2="190" stroke="#1F2A28" stroke-width="2"/>
+<text x="620" y="228" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">x</text>
+<text x="366" y="60" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 366 60)">y</text>
+<line x1="422" y1="73" x2="598" y2="177" stroke="#084F78" stroke-width="3"/>
+<text x="510" y="248" font-size="12" fill="#6B7370" text-anchor="middle">negative slope: one rises as the other falls</text>
+<text x="180" y="285" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Vertical line</text>
+<line x1="70" y1="299" x2="70" y2="435" stroke="#1F2A28" stroke-width="2"/>
+<line x1="70" y1="435" x2="296" y2="435" stroke="#1F2A28" stroke-width="2"/>
+<text x="290" y="473" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">x</text>
+<text x="36" y="305" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 36 305)">y</text>
+<line x1="180" y1="428.5" x2="180" y2="311.5" stroke="#D55E00" stroke-width="3"/>
+<text x="180" y="493" font-size="12" fill="#6B7370" text-anchor="middle">the horizontal value stays fixed</text>
+<text x="510" y="285" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Horizontal line</text>
+<line x1="400" y1="299" x2="400" y2="435" stroke="#1F2A28" stroke-width="2"/>
+<line x1="400" y1="435" x2="626" y2="435" stroke="#1F2A28" stroke-width="2"/>
+<text x="620" y="473" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">x</text>
+<text x="366" y="305" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 366 305)">y</text>
+<line x1="411" y1="370" x2="609" y2="370" stroke="#D55E00" stroke-width="3"/>
+<text x="510" y="493" font-size="12" fill="#6B7370" text-anchor="middle">the vertical value stays fixed</text>
+</svg>

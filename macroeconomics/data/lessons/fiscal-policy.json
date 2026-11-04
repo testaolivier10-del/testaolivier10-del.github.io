@@ -1,0 +1,84 @@
+{
+ "topic": "fiscal-policy",
+ "hook": "When a recession hits, lawmakers argue about road projects, tax rebates and checks to households. When prices are climbing too fast, they talk about cutting programs or raising taxes. Behind every one of those debates is the same model: government purchases and taxes change aggregate demand, and the multiplier decides how much.",
+ "prereq": [
+  {
+   "q": "With an MPC of 0.8, what is the spending multiplier?",
+   "options": [
+    "5",
+    "0.8",
+    "4",
+    "1.25"
+   ],
+   "correct": 0,
+   "why": "Spending multiplier = 1 / MPS = 1 / 0.2 = 5.",
+   "review": "multipliers"
+  },
+  {
+   "q": "Where is short-run output in a recessionary gap?",
+   "options": [
+    "Left of LRAS",
+    "Right of LRAS",
+    "On LRAS",
+    "Above the price level"
+   ],
+   "correct": 0,
+   "why": "A recessionary gap is output below full employment: AD meets SRAS left of LRAS.",
+   "review": "adas-equilibrium"
+  },
+  {
+   "q": "Left alone, how does an economy in a recessionary gap return to full employment?",
+   "options": [
+    "Nominal wages fall and SRAS shifts right",
+    "AD shifts right on its own",
+    "LRAS shifts left",
+    "Nominal wages rise and SRAS shifts left"
+   ],
+   "correct": 0,
+   "why": "High unemployment lowers wages and input prices, shifting SRAS right.",
+   "review": "long-run-self-adjustment"
+  }
+ ],
+ "figure": {
+  "figure": "fiscal-policy-close-gap",
+  "caption": "Higher government spending or lower taxes shift AD1 right to AD2, closing the recessionary gap at YF and a higher price level PL2."
+ },
+ "chain": [
+  {
+   "cause": "Recessionary gap: the government raises purchases or cuts taxes",
+   "effect": "spending rises (directly, or through disposable income and consumption)"
+  },
+  {
+   "cause": "Spending rises, with the multiplier",
+   "effect": "AD shifts right by a multiple of the change"
+  },
+  {
+   "cause": "AD shifts right along SRAS",
+   "effect": "real GDP and the price level rise; unemployment falls"
+  },
+  {
+   "cause": "Inflationary gap: the government cuts purchases or raises taxes",
+   "effect": "AD shifts left: the price level and real GDP fall toward full employment"
+  }
+ ],
+ "ideas": [
+  "<b>Fiscal policy</b> is the government's use of purchases (G), taxes and <b>transfer payments</b> to change aggregate demand. Discretionary means a deliberate decision.",
+  "<b>Expansionary</b> (recessionary gap): raise G, cut taxes or raise transfers, so AD shifts right. <b>Contractionary</b> (inflationary gap): the reverse.",
+  "A change in G has a bigger effect than the same change in taxes or transfers: spending multiplier 1 / MPS against MPC / MPS.",
+  "Size the policy with the gap: direction first, then divide the gap by the right multiplier.",
+  "Lags in recognizing, deciding and carrying out policy can make it arrive at the wrong time."
+ ],
+ "misconception": {
+  "wrong": "Transfer payments such as pensions are government purchases, so they use the spending multiplier.",
+  "right": "Transfers buy no goods or services. They raise disposable income, and households save part, so they work like a tax cut, with a multiplier of MPC / MPS."
+ },
+ "check": [
+  "mac-fiscal-policy-5",
+  "mac-fiscal-policy-6",
+  "mac-fiscal-policy-7",
+  "mac-fiscal-policy-8",
+  "mac-fiscal-policy-9",
+  "mac-fiscal-policy-12"
+ ],
+ "summary": "Fiscal policy uses government purchases, taxes and transfers to shift aggregate demand. In a recessionary gap, expansionary policy (more G, lower taxes, more transfers) shifts AD right, raising output and the price level; in an inflationary gap, contractionary policy shifts AD left. Size it with the gap: direction first, then divide the gap by the spending or tax multiplier."
+}

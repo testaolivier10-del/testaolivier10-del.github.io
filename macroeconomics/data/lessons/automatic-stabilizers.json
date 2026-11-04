@@ -1,0 +1,83 @@
+{
+ "topic": "automatic-stabilizers",
+ "hook": "When a factory closes, its workers lose their paychecks, but not all of their income. Unemployment benefits start, and because they now earn less, they pay much less income tax. No one in government had to vote for any of that. The rules were already written, and they kick in by themselves, quietly keeping a recession from getting as deep as it would have.",
+ "prereq": [
+  {
+   "q": "Which of the following is a transfer payment?",
+   "options": [
+    "A pension paid by the government",
+    "A government purchase of trucks",
+    "A teacher's salary",
+    "A sales tax"
+   ],
+   "correct": 0,
+   "why": "A transfer is money paid to households with no good or service in return.",
+   "review": "fiscal-policy"
+  },
+  {
+   "q": "What does a tax cut do to disposable income and consumption?",
+   "options": [
+    "Raises both",
+    "Lowers both",
+    "Raises disposable income only",
+    "Changes neither"
+   ],
+   "correct": 0,
+   "why": "Lower taxes raise disposable income, and households spend the MPC share of it.",
+   "review": "multipliers"
+  },
+  {
+   "q": "In the business cycle, what is a contraction?",
+   "options": [
+    "A period when real GDP falls",
+    "A period when real GDP rises",
+    "The highest point of the cycle",
+    "A rise in the price level"
+   ],
+   "correct": 0,
+   "why": "A contraction is the phase of falling real GDP, from a peak to a trough.",
+   "review": "business-cycles"
+  }
+ ],
+ "figure": {
+  "figure": "automatic-stabilizers-flow",
+  "caption": "In a recession, tax bills fall faster than income and transfers rise, so disposable income, consumption and AD fall by less."
+ },
+ "chain": [
+  {
+   "cause": "A recession lowers incomes and jobs",
+   "effect": "progressive tax bills fall faster than income and unemployment compensation rises"
+  },
+  {
+   "cause": "Taxes fall and transfers rise",
+   "effect": "disposable income falls by less than income"
+  },
+  {
+   "cause": "Disposable income falls by less",
+   "effect": "consumption and AD fall by less"
+  },
+  {
+   "cause": "AD falls by less",
+   "effect": "the recession is milder, though a gap can remain"
+  }
+ ],
+ "ideas": [
+  "<b>Automatic stabilizers</b> are taxes and transfers that change with the business cycle with no new law: the <b>progressive tax</b> on income and <b>unemployment compensation</b> are the main ones.",
+  "In a recession they keep disposable income, consumption and AD from falling as much; in a boom they slow the rise.",
+  "They act at once, with no wait for a decision, unlike discretionary fiscal policy.",
+  "They soften the cycle; they do not close a gap, and they are not the long-run self-adjustment mechanism (that is wages and SRAS)."
+ ],
+ "misconception": {
+  "wrong": "Automatic stabilizers are what return the economy to full employment in the long run.",
+  "right": "They only make the fall in AD smaller. The long-run return to full employment comes from nominal wages and input prices adjusting, which shifts SRAS."
+ },
+ "check": [
+  "mac-automatic-stabilizers-5",
+  "mac-automatic-stabilizers-6",
+  "mac-automatic-stabilizers-7",
+  "mac-automatic-stabilizers-8",
+  "mac-automatic-stabilizers-9",
+  "mac-automatic-stabilizers-12"
+ ],
+ "summary": "Automatic stabilizers are tax and transfer rules that respond to the business cycle by themselves. In a recession, progressive income taxes fall faster than income and unemployment compensation rises, so disposable income, consumption and AD fall by less; in a boom they slow AD's rise. They soften fluctuations quickly, but they do not close a gap and are not the self-adjustment mechanism."
+}

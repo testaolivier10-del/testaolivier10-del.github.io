@@ -24,8 +24,9 @@ export const COURSES = {
   apenv: { label: 'AP&reg; Environmental Science', name: 'AP&reg; Environmental Science' },
   appsych: { label: 'AP&reg; Psychology', name: 'AP&reg; Psychology' },
   apprecalc: { label: 'AP&reg; Precalculus', name: 'AP&reg; Precalculus' },
+  apmacro: { label: 'AP&reg; Macroeconomics', name: 'AP&reg; Macroeconomics' },
 };
-const AP = new Set(['apbio', 'apchem', 'apphys', 'apcalc', 'apcalcbc', 'apstat', 'apenv', 'appsych', 'apprecalc']);
+const AP = new Set(['apbio', 'apchem', 'apphys', 'apcalc', 'apcalcbc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apmacro']);
 
 /* The words of each band. Lede null keeps the page's own lede. */
 export function bandWords(key, slug) {

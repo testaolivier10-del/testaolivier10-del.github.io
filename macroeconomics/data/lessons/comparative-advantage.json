@@ -1,0 +1,72 @@
+{
+ "topic": "comparative-advantage",
+ "hook": "A surgeon types faster than anyone in her office, yet she pays an assistant to type her notes. She is not being lazy: every hour she types is an hour of surgery she does not do. Countries trade for the same reason, even when one of them is better at making everything.",
+ "prereq": [
+  {
+   "q": "A worker can make 24 shirts or 8 hats in a day. Making one hat costs",
+   "options": [
+    "3 shirts",
+    "8 shirts",
+    "one third of a shirt",
+    "24 shirts"
+   ],
+   "correct": 0,
+   "why": "Opportunity cost per unit is what is given up divided by what is gained: 24 / 8.",
+   "review": "opportunity-cost-ppc"
+  },
+  {
+   "q": "A straight-line PPC shows",
+   "options": [
+    "constant opportunity cost",
+    "increasing opportunity cost",
+    "idle resources",
+    "growth"
+   ],
+   "correct": 0,
+   "why": "A straight line has the same slope, so each unit costs the same.",
+   "review": "opportunity-cost-ppc"
+  }
+ ],
+ "figure": {
+  "figure": "comparative-advantage-two-ppcs",
+  "caption": "One worker's production possibilities in Dornia and Belmar: cloth costs Dornia less wheat, and wheat costs Belmar less cloth. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "Two countries have different opportunity costs for the same goods",
+   "effect": "each has the comparative advantage in the good it makes at the lower cost"
+  },
+  {
+   "cause": "Each country specializes in its comparative advantage",
+   "effect": "their combined output of both goods rises"
+  },
+  {
+   "cause": "They trade at terms between their two opportunity costs",
+   "effect": "each gets the other good for less than it costs to make at home"
+  },
+  {
+   "cause": "Both gain from trade",
+   "effect": "each can consume a combination outside its own PPC"
+  }
+ ],
+ "ideas": [
+  "<b>Absolute advantage</b>: more output from the same resources (or fewer resources per unit). <b>Comparative advantage</b>: the lower opportunity cost.",
+  "Output data (units per worker): the cost of one good is the other good's output divided by its own. Input data (hours per unit): divide its own hours by the other good's hours.",
+  "A country can have the absolute advantage in both goods, but the comparative advantage in only one.",
+  "<b>Terms of trade</b> help both sides only when they lie between the two opportunity costs."
+ ],
+ "misconception": {
+  "wrong": "A country that is better at making everything has nothing to gain from trade.",
+  "right": "Gains from trade come from comparative advantage, not absolute advantage. Even the more productive country gains by making the good with its lower opportunity cost and buying the other at a price below its own cost."
+ },
+ "check": [
+  "mac-comparative-advantage-1",
+  "mac-comparative-advantage-2",
+  "mac-comparative-advantage-3",
+  "mac-comparative-advantage-4",
+  "mac-comparative-advantage-5",
+  "mac-comparative-advantage-10",
+  "mac-comparative-advantage-11"
+ ],
+ "summary": "Absolute advantage is producing more with the same resources; comparative advantage is producing at a lower opportunity cost. Find each country's opportunity cost of each good from output or input data, give each good to the country with the lower cost, and trade at terms between the two costs. Then both countries gain, and each can consume outside its own PPC, even if one has the absolute advantage in both goods."
+}

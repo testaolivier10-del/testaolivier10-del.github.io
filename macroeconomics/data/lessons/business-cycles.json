@@ -1,0 +1,72 @@
+{
+ "topic": "business-cycles",
+ "hook": "Every few years the news fills with layoffs, store closings and worried shoppers; a few years later it is help-wanted signs and rising prices. These swings are the business cycle. Behind them is a steadier line, the economy's potential output, and the distance between the two, the output gap, tells you whether to expect rising unemployment or rising inflation.",
+ "prereq": [
+  {
+   "q": "What is cyclical unemployment?",
+   "options": [
+    "Unemployment caused by a fall in total spending and output",
+    "Unemployment from searching between jobs",
+    "Unemployment from a skills mismatch",
+    "People who have stopped looking for work"
+   ],
+   "correct": 0,
+   "why": "Cyclical unemployment comes from downturns; it equals the actual rate minus the natural rate.",
+   "review": "unemployment"
+  },
+  {
+   "q": "Why does real GDP, not nominal GDP, show changes in output?",
+   "options": [
+    "It holds prices at base-year levels",
+    "It is measured in current prices",
+    "It includes transfer payments",
+    "It is always larger"
+   ],
+   "correct": 0,
+   "why": "Real GDP values output at base-year prices, so it changes only with quantities produced.",
+   "review": "real-nominal-gdp"
+  }
+ ],
+ "figure": {
+  "figure": "business-cycles-phases",
+  "caption": "Real GDP rises in expansions and falls in contractions around potential output, which grows over time; the distance between them is the output gap."
+ },
+ "chain": [
+  {
+   "cause": "Total spending in the economy falls",
+   "effect": "firms sell less, cut production and real GDP falls: a contraction"
+  },
+  {
+   "cause": "Real GDP falls below potential output",
+   "effect": "there is a negative (recessionary) output gap"
+  },
+  {
+   "cause": "Firms need fewer workers",
+   "effect": "cyclical unemployment rises and the unemployment rate goes above the natural rate"
+  },
+  {
+   "cause": "Later, real GDP rises above potential in a boom",
+   "effect": "unemployment falls below the natural rate and inflation tends to rise"
+  }
+ ],
+ "ideas": [
+  "The <b>business cycle</b> has two phases, <b>expansion</b> (real GDP rising) and <b>contraction</b> (real GDP falling). The <b>peak</b> and <b>trough</b> are the turning points.",
+  "<b>Potential output</b> is real GDP at full employment (the natural rate of unemployment). It grows over time.",
+  "<b>Output gap</b> = real GDP - potential output. Negative (<b>recessionary</b>): cyclical unemployment. Positive (<b>inflationary</b>): unemployment below the natural rate and rising inflation.",
+  "A recession is a severe, lasting contraction. On a PPC, a recession is a point inside the curve; potential output is a point on it."
+ ],
+ "misconception": {
+  "wrong": "Peak and trough are phases of the business cycle, and potential output is the most an economy can ever produce.",
+  "right": "The phases are expansion and contraction; peak and trough are the turning points. Potential output is the sustainable full-employment level, and real GDP can rise above it for a while in a boom."
+ },
+ "check": [
+  "mac-business-cycles-1",
+  "mac-business-cycles-3",
+  "mac-business-cycles-7",
+  "mac-business-cycles-9",
+  "mac-business-cycles-15",
+  "mac-business-cycles-18",
+  "mac-business-cycles-20"
+ ],
+ "summary": "Real GDP rises in expansions and falls in contractions around potential output, the full-employment level that grows over time. The output gap is real GDP minus potential: a negative (recessionary) gap brings cyclical unemployment, and a positive (inflationary) gap brings unemployment below the natural rate and rising inflation. Peak and trough are the turning points between the phases."
+}

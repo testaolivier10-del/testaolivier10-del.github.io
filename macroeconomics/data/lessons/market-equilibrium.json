@@ -1,0 +1,84 @@
+{
+ "topic": "market-equilibrium",
+ "hook": "Concert tickets that sell out in seconds, then reappear online at three times the price. A store whose winter coats are still on the rack in March, marked half off. Both are markets out of balance, and both prices are moving toward the one level where buyers want exactly what sellers offer.",
+ "prereq": [
+  {
+   "q": "Better technology lowers the cost of making a good. Supply",
+   "options": [
+    "shifts right",
+    "shifts left",
+    "stays put while quantity supplied rises",
+    "becomes vertical"
+   ],
+   "correct": 0,
+   "why": "Lower costs mean more is offered at every price.",
+   "review": "supply"
+  },
+  {
+   "q": "When one curve shifts, the crossing point",
+   "options": [
+    "slides along the curve that did not move",
+    "stays where it was",
+    "moves to the origin",
+    "moves along the curve that shifted"
+   ],
+   "correct": 0,
+   "why": "The new crossing lies on the curve that stayed put.",
+   "review": "curves-crossing"
+  },
+  {
+   "q": "A rise in buyers' incomes for a normal good",
+   "options": [
+    "shifts demand right",
+    "shifts demand left",
+    "shifts supply right",
+    "moves buyers along the demand curve"
+   ],
+   "correct": 0,
+   "why": "Income is a demand shifter; for a normal good, more income means more demand.",
+   "review": "demand"
+  }
+ ],
+ "figure": {
+  "figure": "market-equilibrium-shortage",
+  "caption": "At \\$3 the quantities match (equilibrium). At \\$2 quantity demanded exceeds quantity supplied by 30 cups, a shortage that pushes the price up. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "The price is below equilibrium",
+   "effect": "quantity demanded is greater than quantity supplied: a shortage"
+  },
+  {
+   "cause": "Buyers compete for the scarce units",
+   "effect": "the price rises"
+  },
+  {
+   "cause": "The price rises",
+   "effect": "the quantity demanded falls and the quantity supplied rises"
+  },
+  {
+   "cause": "The two quantities become equal",
+   "effect": "the market reaches equilibrium, and the price stops changing"
+  }
+ ],
+ "ideas": [
+  "<b>Equilibrium</b>: the price at which quantity demanded equals quantity supplied, where the curves cross.",
+  "Below equilibrium: a <b>shortage</b> (Qd minus Qs) pushes the price up. Above it: a <b>surplus</b> (Qs minus Qd) pushes the price down.",
+  "One shift: demand moves price and quantity the same way; supply moves them in opposite ways.",
+  "Two shifts: one of price or quantity is <b>indeterminate</b> unless you know which shift is larger."
+ ],
+ "misconception": {
+  "wrong": "When demand rises and supply falls at the same time, both the price and the quantity rise.",
+  "right": "Both shifts push the price up, so it rises. But the demand shift raises quantity and the supply shift lowers it, so the change in quantity is indeterminate without the sizes of the shifts."
+ },
+ "check": [
+  "mac-market-equilibrium-1",
+  "mac-market-equilibrium-2",
+  "mac-market-equilibrium-6",
+  "mac-market-equilibrium-7",
+  "mac-market-equilibrium-8",
+  "mac-market-equilibrium-9",
+  "mac-market-equilibrium-17"
+ ],
+ "summary": "A market is in equilibrium where quantity demanded equals quantity supplied. Below that price a shortage pushes the price up, and above it a surplus pushes the price down, until the market clears. When one curve shifts, the equilibrium moves along the other: a demand shift moves price and quantity the same way, a supply shift moves them in opposite ways. When both curves shift, one of the two changes is indeterminate without the sizes of the shifts."
+}

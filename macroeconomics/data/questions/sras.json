@@ -1,0 +1,583 @@
+{
+ "stimuli": {
+  "sras-s1": {
+   "kind": "data",
+   "title": "Costs and productivity in Country V",
+   "invented": true,
+   "table": {
+    "caption": "Country V, year by year: average nominal wage, price of oil and output per worker (invented data for practice)",
+    "cols": [
+     "Year",
+     "Average nominal wage (dollars per hour)",
+     "Oil (dollars per barrel)",
+     "Output per worker (units per hour)"
+    ],
+    "rows": [
+     [
+      "1",
+      "20",
+      "60",
+      "10"
+     ],
+     [
+      "2",
+      "20",
+      "90",
+      "10"
+     ],
+     [
+      "3",
+      "20",
+      "60",
+      "11"
+     ],
+     [
+      "4",
+      "22",
+      "60",
+      "10"
+     ]
+    ]
+   }
+  },
+  "sras-s2": {
+   "kind": "graph",
+   "title": "A shift in Country W's short-run aggregate supply",
+   "graph": {
+    "kind": "adas",
+    "show": {
+     "SRAS": -1
+    }
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-sras-1",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "sras-s1",
+   "q": "Based on the table, in which year did a higher price of a raw material, with the nominal wage and output per worker the same as in Year 1, shift Country V's SRAS curve to the left?",
+   "options": [
+    "Year 2",
+    "Year 3",
+    "Year 4",
+    "No year, because the price level is not in the table"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Oil is the raw material in the table. Its higher price in Year 2 raises firms' costs at every price level, so they supply less real output: SRAS shifts left.",
+    "options": [
+     "Right: oil rose from 60 to 90 dollars a barrel with wages and output per worker unchanged, so costs per unit rose.",
+     "In Year 3 output per worker rose with costs unchanged, which shifts SRAS right.",
+     "Year 4's higher nominal wage also shifts SRAS left, but a wage is the price of labor, not of a raw material such as oil.",
+     "SRAS shifts with input prices and productivity at a given price level. The table shows exactly those."
+    ]
+   }
+  },
+  {
+   "id": "mac-sras-2",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "sras-s1",
+   "q": "Based on the table, what happened to SRAS in Year 3 compared with Year 1?",
+   "options": [
+    "It shifted left, because firms needed fewer workers",
+    "It shifted right, as output per worker rose",
+    "It did not change, because wages and oil prices were the same",
+    "The economy moved up along SRAS to a higher price level"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Output per worker rose from 10 to 11 with wages and oil unchanged: cost per unit fell, so SRAS shifted right.",
+    "options": [
+     "Producing more per worker lowers cost per unit; that raises supply, it does not lower it.",
+     "Right: higher productivity lowers the cost of each unit, so firms supply more at every price level.",
+     "Input prices did not change, but productivity rose, and productivity also shifts SRAS.",
+     "Nothing in the table is the price level; a rise in productivity shifts the curve."
+    ]
+   }
+  },
+  {
+   "id": "mac-sras-3",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "sras-s1",
+   "q": "Using the table, calculate the percent change in Country V's average nominal wage from Year 1 to Year 4.",
+   "why": {
+    "correct": "$\\frac{22 - 20}{20} \\times 100 = 10\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "growth",
+     "args": [
+      20,
+      22
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "2 is the change in dollars. The percent change divides it by the starting wage: $\\frac{2}{20} \\times 100$."
+     },
+     {
+      "from": {
+       "fn": "growth",
+       "args": [
+        22,
+        20
+       ]
+      },
+      "why": "You started from Year 4. Percent change is measured from the starting value, Year 1."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-sras-4",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "sras-s1",
+   "q": "In Year 4 the nominal wage rose while output per worker was the same as in Year 1. What does this do to SRAS, and why?",
+   "options": [
+    "It shifts right, because workers with higher pay spend more",
+    "It does not shift, because wages are not an input price",
+    "It shifts left, because the labor cost of each unit of output rose",
+    "It moves along SRAS to more output"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Higher nominal wages with no gain in productivity raise firms' costs at every price level, so SRAS shifts left.",
+    "options": [
+     "Workers' spending is part of AD. For firms, wages are a cost, so SRAS shifts left.",
+     "Nominal wages are the price of labor, a key input. They shift SRAS.",
+     "Right: wages are the largest input cost; higher wages with the same productivity raise cost per unit.",
+     "A change in an input price shifts SRAS; only a change in the price level moves along it."
+    ]
+   }
+  },
+  {
+   "id": "mac-sras-5",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "sras-s2",
+   "q": "Which event could have caused the shift shown in the graph, from SRAS1 to SRAS2?",
+   "options": [
+    "A new technology that lets workers produce more each hour",
+    "A fall in household wealth that cuts consumption",
+    "A government subsidy paid to firms for each unit they produce",
+    "A sharp rise in the price of energy used by most firms"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "SRAS2 lies to the left of SRAS1: at each price level firms supply less, as when an input such as energy gets dearer.",
+    "options": [
+     "Higher productivity lowers costs and shifts SRAS right, not left.",
+     "A fall in consumption shifts AD left; it does not move SRAS.",
+     "A subsidy lowers firms' costs and shifts SRAS right.",
+     "Right: higher energy prices raise production costs at every price level, so SRAS shifts left."
+    ]
+   }
+  },
+  {
+   "id": "mac-sras-6",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "sras-s2",
+   "q": "According to the graph, what does the shift mean at a price level that stays the same?",
+   "options": [
+    "Firms supply less real output at that price level than before",
+    "Firms supply more real output at that price level than before",
+    "Households plan to buy less real output at that price level",
+    "Firms charge a lower price level for the same output"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "SRAS2 is to the left of SRAS1, so at any given price level firms now supply less real GDP.",
+    "options": [
+     "Right: a leftward shift means less output supplied at each price level.",
+     "That would be a shift to the right. SRAS2 is to the left of SRAS1.",
+     "Planned buying is AD, which did not shift in the graph.",
+     "A leftward SRAS shift means each output level now needs a higher price level, not a lower one."
+    ]
+   }
+  },
+  {
+   "id": "mac-sras-7",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "stimulus": "sras-s2",
+   "q": "Which of the following could each cause the shift in the graph? Select all that apply.",
+   "options": [
+    "Nominal wages rise across the economy with no gain in productivity",
+    "A new tax on each unit firms produce",
+    "Firms buy faster machines that raise output per worker",
+    "The price level rises"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Anything that raises firms' costs per unit at a given price level, such as wages or a tax per unit, shifts SRAS left.",
+    "options": [
+     "Right: higher labor costs per unit shift SRAS left.",
+     "Right: a tax per unit adds to firms' costs and shifts SRAS left.",
+     "Higher productivity lowers costs; SRAS shifts right.",
+     "A change in the price level moves along SRAS; it does not shift it."
+    ]
+   }
+  },
+  {
+   "id": "mac-sras-8",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why does the short-run aggregate supply curve slope upward?",
+   "options": [
+    "A higher price level makes households richer, so they buy more",
+    "Sticky wages make extra output more profitable when the price level rises",
+    "Workers demand higher wages whenever output rises",
+    "A higher price level brings more workers into the country, so output rises"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In the short run, wages set by contract and some sticky prices do not adjust at once, so a higher price level makes more output profitable.",
+    "options": [
+     "That is about spending (AD), and a higher price level lowers real wealth rather than raising it.",
+     "Right: output prices rise while many costs stay fixed for a while, so firms produce more.",
+     "If wages rose as fast as prices, profits would not rise and firms would not expand. It is wage stickiness that gives the slope.",
+     "The slope comes from fixed costs and contracts in the short run, not from migration."
+    ]
+   }
+  },
+  {
+   "id": "mac-sras-9",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "The price level rises by 5 percent, but workers' wage contracts will not be renegotiated for a year. What happens in the short run?",
+   "options": [
+    "Firms produce less, because the price level is higher",
+    "SRAS shifts right, because firms' profits rose",
+    "Firms produce more, since prices rose but wage costs did not",
+    "Nothing changes until the wage contracts are renegotiated next year"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Sticky nominal wages mean a higher price level raises profit per unit, so firms move up along SRAS to more output.",
+    "options": [
+     "A higher price level with sticky wages makes extra output more profitable, so output rises.",
+     "The price level is on the axis; its change moves along SRAS rather than shifting it.",
+     "Right: that is a movement up along SRAS.",
+     "Firms respond at once to higher selling prices; only wages wait for the contracts."
+    ]
+   }
+  },
+  {
+   "id": "mac-sras-10",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Expected inflation rises across the economy: workers expect prices to rise faster next year, and they bargain for higher nominal wages now. What happens to SRAS?",
+   "options": [
+    "It shifts right, because firms expect to sell at higher prices",
+    "It does not move, because nothing has happened to prices yet",
+    "The economy moves along SRAS to a higher price level",
+    "It shifts left, because firms' wage costs rise at every price level"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When expected inflation rises, workers ask for higher nominal wages; that raises costs and shifts SRAS left.",
+    "options": [
+     "Expecting higher prices raises wage demands, which raises costs; that shifts SRAS left.",
+     "Wages are bargained on what workers expect, so costs rise now.",
+     "A change in wages is a change in costs, which shifts the curve.",
+     "Right: what workers expect about prices feeds into wages, and higher wages shift SRAS left."
+    ]
+   }
+  },
+  {
+   "id": "mac-sras-11",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A drought ruins harvests and raises the cost of food used by restaurants, food processors and other firms. Shift the right curve to show the effect.",
+   "why": {
+    "correct": "Higher input costs shift SRAS to the left; AD does not move."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SRAS",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in the cost of an input"
+    },
+    "slips": {
+     "AD": "A drought raises what it costs firms to produce. That shifts SRAS, not spending (AD)."
+    }
+   }
+  },
+  {
+   "id": "mac-sras-12",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The government pays firms a subsidy for each unit of output they produce. Shift the right curve to show the effect.",
+   "why": {
+    "correct": "A subsidy per unit lowers firms' costs, so SRAS shifts to the right."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SRAS",
+       "dir": "right"
+      }
+     ],
+     "because": "a subsidy that lowers firms' costs"
+    },
+    "slips": {
+     "AD": "The subsidy goes to firms for producing, so it lowers costs and shifts SRAS, not AD."
+    }
+   }
+  },
+  {
+   "id": "mac-sras-13",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Nothing shifts, but the price level rises. Mark a point X on the SRAS curve showing the new price level and real output supplied.",
+   "why": {
+    "correct": "A higher price level is a movement up along SRAS: a higher price level and more real output."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "SRAS",
+      "x": "up",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-sras-14",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Which change moves an economy along its SRAS curve instead of shifting it?",
+   "options": [
+    "A rise in the price level",
+    "A rise in nominal wages",
+    "A rise in productivity",
+    "A fall in the price of oil"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only the variable on an axis moves the economy along the curve. Input prices, productivity and taxes on firms shift it.",
+    "options": [
+     "Right: the price level is on the vertical axis, so its change is a movement along SRAS.",
+     "Wages are an input price; a change in them shifts SRAS.",
+     "Productivity changes cost per unit and shifts SRAS.",
+     "Oil is an input; a change in its price shifts SRAS."
+    ]
+   }
+  },
+  {
+   "id": "mac-sras-15",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain how a fall in oil prices affects short-run aggregate supply.",
+   "why": {
+    "correct": "Cheaper oil lowers production costs, so firms supply more at every price level: SRAS shifts right."
+   },
+   "specific": {
+    "frame": "Oil prices fall, so firms' production costs ___. At every price level firms supply ___ real output, so ___ shifts to the ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Oil prices fall, so firms' production costs decrease. Because each unit is cheaper to make, firms supply more real output at every price level, so SRAS shifts to the right.",
+    "slots": {
+     "change": {
+      "label": "Costs",
+      "options": [
+       "fall",
+       "rise"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Oil is an input, so cheaper oil lowers costs."
+      }
+     },
+     "output": {
+      "label": "Output supplied",
+      "options": [
+       "more",
+       "less"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lower costs make more output profitable at each price level."
+      }
+     },
+     "curve": {
+      "label": "The curve",
+      "options": [
+       "SRAS",
+       "AD"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Costs of production change supply, not planned spending."
+      }
+     },
+     "direction": {
+      "label": "Which way",
+      "options": [
+       "right",
+       "left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More output supplied at each price level is a shift right."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-sras-16",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A country's government adds many new safety rules that raise firms' costs of producing each unit. What happens to SRAS?",
+   "options": [
+    "It shifts right",
+    "It shifts left",
+    "It does not change, because rules are not prices",
+    "It becomes vertical"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Government rules and taxes that raise firms' costs shift SRAS left; subsidies shift it right.",
+    "options": [
+     "Higher costs mean less supply at each price level, not more.",
+     "Right: rules that raise costs per unit lower the output firms supply at each price level.",
+     "Rules that raise costs work like a higher input price: they shift SRAS.",
+     "The slope comes from sticky wages and prices in the short run; a cost increase shifts the curve."
+    ]
+   }
+  },
+  {
+   "id": "mac-sras-17",
+   "unit": "unit-3",
+   "topic": "sras",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of the following would shift SRAS to the right? Select all that apply.",
+   "options": [
+    "A fall in the price of oil used by most firms",
+    "A rise in consumer spending",
+    "A rise in the price level",
+    "A rise in nominal wages across the economy"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "SRAS shifts right when production costs per unit fall at a given price level, as with cheaper oil.",
+    "options": [
+     "Right: cheaper inputs lower costs at every price level.",
+     "Spending shifts AD, not SRAS.",
+     "The price level is on the axis: its change moves along SRAS.",
+     "Higher wages raise costs and shift SRAS left."
+    ]
+   }
+  }
+ ]
+}

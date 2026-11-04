@@ -18,7 +18,7 @@ until the accuracy eval passes and the owner flips the switches below.
 - Signed-in Premium only (checked on the server), 10 grades per student per day, the existing per-IP rate limiter,
   results cached by (question, answer, grader version) so a regrade is free.
 - UI: "Grade my answer" beside the self-score, labelled an estimate, rubric and self-score always there, the
-  student can disagree; phone friendly; one shared component for all six courses.
+  student can disagree; phone friendly; one shared component for all the courses in `FRQ_COURSES`.
 - Anonymous daily count of which grader answered (Claude, backup, none) in Supabase, for credit use and fallback
   rate in the weekly analytics.
 
@@ -30,7 +30,7 @@ until the accuracy eval passes and the owner flips the switches below.
 | HTML to text for the prompt (MathML to TeX, figures to alt text, tables to rows) | `worker/src/frq-text.js` |
 | Scored examples, one question per course, full / partial / none | `worker/src/frq-calibration.js` |
 | Workers AI chain shared with the assistant | `worker/src/ai.js` |
-| Page component, shared by all six courses | `assets/course/frq-grader.js` |
+| Page component, shared by every course in `FRQ_COURSES` | `assets/course/frq-grader.js` |
 | Mount point in each course | `<course>/assets/pages/frq.js` (`grader()` + `.<px>-fq-ai`) |
 | Cap and counts | `scripts/sql/migrations/2026-10l-frq-grader.sql` (also in `schema.sql`), report in `scripts/sql/reports.sql` |
 | Tests | `scripts/test/worker-frq-grade.test.mjs`, `frq-grader-ui.test.mjs`, `frq-eval.test.mjs`, `sql-migration.test.mjs` |
@@ -102,6 +102,12 @@ Optional Worker variables: `FRQ_GRADER_THINKING` (`disabled`, `adaptive`, `betwe
 weak and 5 injection answers. **All are authored answers with known per-point scores, marked `source:
 'authored'`.** The repo has no official College Board scored samples (the courses' trademark rules forbid
 reproducing released exam material), so none are used. No case uses a calibration question (tested).
+
+AP® Macroeconomics joined at its launch (2026-11-03, `docs/apmacro-spec.md` decision 13): `apmacro` in `FRQ_COURSES`,
+its conventions and a calibration example (`frq-real-nominal-short`), and four eval cases (37-40: strong, partial,
+weak, injection; 20 rubric points) on its text-only FRQs. Graph parts are graded only on the words typed for them
+(instruction 9). The eval has not been rerun with these cases; the grader stays off. AP® Psychology, Precalculus
+and Calculus BC are not in `FRQ_COURSES`.
 
 ```
 node scripts/frq-eval/run.mjs --dry-run                                   # sizes and a cost ceiling, no call

@@ -1,0 +1,514 @@
+/* AP® Macroeconomics course styles, on top of assets/theme.css. Forked from the AP® Physics 1
+   stylesheet by way of AP® Calculus AB's (docs/apmacro-spec.md decision 1): the same visual language
+   tokens (Okabe–Ito based, colorblind-safe, light and dark), page shell,
+   stepped lesson, textbook frame and question styles, renamed mac-*, plus
+   what this course adds: stimulus panels and sets, numeric answers, charts,
+   unit pages, the printable unit sheet and the course home.
+
+   The course color (docs/apmacro-spec.md decision 13, owner to
+   confirm): yellow-green, hue 85°, the widest gap on the wheel
+   (between Environmental Science's olive, 63°, and Biology's green, 109°),
+   on every page (body.mac), the same values as body[data-course="apmacro"]
+   in assets/theme.css and IDENTITY.accent in scripts/lib/apmacro-build.mjs.
+   Light: --cink #355A0A on --ctint #EEF4E0 (8.0:1 on white); dark: --cink
+   #CDE6A0 on rgba(160,200,90,0.10). Then the math layer: formulas (MathML
+   from mac-math.js), data figures (mac-plot.js), the economics graphs
+   (mac-graph.js, section "Graphs" at the end) and numbers. */
+body.mac{--ctint:#EEF4E0;--cink:#355A0A;}
+:root[data-theme="dark"] body.mac{--ctint:rgba(160,200,90,0.10);--cink:#CDE6A0;}
+
+/* ============================================================ 0. Math */
+/* Formulas: MathML, in a math font where the device has one. Display
+   formulas scroll sideways on a phone rather than overflow the page. */
+math.mac-m{font-family:"STIX Two Math","Cambria Math","Latin Modern Math","STIXGeneral",math,serif;font-size:1.08em;}
+math.mac-m[display="block"]{display:block math;margin:.6em 0;overflow-x:auto;overflow-y:hidden;max-width:100%;padding:2px 0;}
+math.mac-m mtext{font-family:var(--font-body,inherit);}
+.mac-q-calc{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12px var(--font-ui);letter-spacing:.02em;vertical-align:2px;}
+/* Plots (mac-plot.js): Okabe-Ito based series, lighter in dark mode;
+   open points are hollow. Color is never the only cue: curves carry labels. */
+.mac-plot-wrap{overflow-x:auto;max-width:100%;}
+.mac-plot{display:block;max-width:100%;height:auto;margin:0 auto;font:600 11px var(--font-ui);}
+.mac-plot text{fill:var(--ink-2,var(--ink));}
+.mac-plot .mac-plot-axlabel,.mac-plot .mac-plot-label{font-weight:800;fill:var(--ink);}
+.mac-plot-grid line{stroke:var(--line);stroke-width:1;}
+.mac-plot-axis line{stroke:var(--ink);stroke-width:1.3;}
+.mac-plot-curve{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round;}
+.mac-plot-curve.is-dashed,.mac-plot-line.is-dashed{stroke-dasharray:6 5;}
+.mac-plot-line{stroke-width:1.8;}
+.mac-plot-asym{stroke:var(--ink-3,#777);stroke-width:1.3;stroke-dasharray:4 4;}
+.mac-plot-field line{stroke:var(--ink-2,#555);stroke-width:1.3;stroke-linecap:round;}
+.mac-plot-shade{fill:var(--cink);fill-opacity:.16;}
+.mac-plot-pt{stroke-width:2;}
+.mac-plot-pt.is-open{fill:var(--white,#fff);}
+/* Data figures: bars, pyramid halves, the legend's swatches. */
+.mac-plot-bar{fill:currentColor;fill-opacity:.22;stroke-width:1.4;}
+.mac-plot-bar.is-box{fill-opacity:.12;}
+.mac-plot-bar.is-shaded{fill-opacity:.6;}
+.mac-plot-legend text{font:700 11px var(--font-ui);fill:var(--ink);}
+.mac-plot .mac-plot-legend .mac-plot-bar{fill-opacity:.5;}
+.mac-plot text.mac-plot-pylabel{font-weight:800;paint-order:stroke;stroke:var(--white,#fff);stroke-width:3px;}
+.mac-plot .s1{stroke:#084F78;color:#084F78;} .mac-plot .s2{stroke:#C24E00;color:#C24E00;} .mac-plot .s3{stroke:#009E73;color:#009E73;}
+.mac-plot .s4{stroke:#A8508A;color:#A8508A;} .mac-plot .s5{stroke:#7A4F9E;color:#7A4F9E;}
+.mac-plot .mac-plot-pt.s1:not(.is-open){fill:#084F78;} .mac-plot .mac-plot-pt.s2:not(.is-open){fill:#C24E00;} .mac-plot .mac-plot-pt.s3:not(.is-open){fill:#009E73;}
+.mac-plot .mac-plot-pt.s4:not(.is-open){fill:#A8508A;} .mac-plot .mac-plot-pt.s5:not(.is-open){fill:#7A4F9E;}
+.mac-plot text.s1{fill:#084F78;stroke:none;} .mac-plot text.s2{fill:#A84400;stroke:none;} .mac-plot text.s3{fill:#00805C;stroke:none;}
+:root[data-theme="dark"] .mac-plot .s1{stroke:#8CC8E8;color:#8CC8E8;} :root[data-theme="dark"] .mac-plot .s2{stroke:#F29A5C;color:#F29A5C;}
+:root[data-theme="dark"] .mac-plot .s3{stroke:#52CFA6;color:#52CFA6;} :root[data-theme="dark"] .mac-plot .s4{stroke:#E0A3CB;color:#E0A3CB;}
+:root[data-theme="dark"] .mac-plot .s5{stroke:#C3A3E0;color:#C3A3E0;}
+:root[data-theme="dark"] .mac-plot .mac-plot-pt.s1:not(.is-open){fill:#8CC8E8;} :root[data-theme="dark"] .mac-plot .mac-plot-pt.s2:not(.is-open){fill:#F29A5C;}
+:root[data-theme="dark"] .mac-plot text.s1{fill:#8CC8E8;} :root[data-theme="dark"] .mac-plot text.s2{fill:#F29A5C;} :root[data-theme="dark"] .mac-plot text.s3{fill:#52CFA6;}
+/* Series strokes are for paths, lines and points: a label in a series colour keeps a plain glyph. */
+.mac-plot text.s4,.mac-plot text.s5,:root[data-theme="dark"] .mac-plot text.s1,:root[data-theme="dark"] .mac-plot text.s2,:root[data-theme="dark"] .mac-plot text.s3,:root[data-theme="dark"] .mac-plot text.s4,:root[data-theme="dark"] .mac-plot text.s5{stroke:none;}
+
+
+/* ============================================================ 1. Visual language */
+:root{
+  --mac-o2:#D55E00;        /* oxygenated blood: vermillion */
+  --mac-o2-fill:#F6D2BD;
+  --mac-deo2:#0072B2;      /* deoxygenated blood: blue */
+  --mac-deo2-fill:#C3DDF0;
+  --mac-symp:#CC79A7;      /* sympathetic: reddish purple */
+  --mac-symp-fill:#F1DAE7;
+  --mac-para:#009E73;      /* parasympathetic: bluish green */
+  --mac-para-fill:#C4E8DC;
+  --mac-aff:#E69F00;       /* afferent (toward the control center): orange */
+  --mac-aff-fill:#F8E3B8;
+  --mac-eff:#56B4E9;       /* efferent (away from it): sky blue */
+  --mac-eff-fill:#D2EAF8;
+  --mac-hi:#8E3B2E;        /* the high side of a gradient */
+  --mac-hi-fill:#EFD5CF;
+  --mac-lo:#5B6B8C;        /* the low side */
+  --mac-lo-fill:#E1E6F0;
+  --mac-memb:#6B5E3C;      /* membranes */
+  --mac-shape:#5D6B69;     /* neutral structure */
+  --mac-shape-fill:#EEF2F1;
+  --mac-causes:#1F2A28;    /* "causes" arrows */
+  --mac-flows:#1F2A28;     /* "flows to" arrows */
+  --mac-mask:#FFF7E6;
+}
+:root[data-theme="dark"]{
+  --mac-o2:#FF9A5C;  --mac-o2-fill:rgba(213,94,0,0.28);
+  --mac-deo2:#6CB8EC; --mac-deo2-fill:rgba(0,114,178,0.30);
+  --mac-symp:#E7A5CA; --mac-symp-fill:rgba(204,121,167,0.26);
+  --mac-para:#4FD1AA; --mac-para-fill:rgba(0,158,115,0.26);
+  --mac-aff:#F3C04F;  --mac-aff-fill:rgba(230,159,0,0.26);
+  --mac-eff:#8FD0F5;  --mac-eff-fill:rgba(86,180,233,0.24);
+  --mac-hi:#F0A08F;   --mac-hi-fill:rgba(142,59,46,0.34);
+  --mac-lo:#AEBBD6;   --mac-lo-fill:rgba(91,107,140,0.30);
+  --mac-memb:#D8C58F;
+  --mac-shape:#B7C4C1; --mac-shape-fill:rgba(183,196,193,0.10);
+  --mac-causes:#E6EEEC; --mac-flows:#E6EEEC;
+  --mac-mask:#2B3432;
+}
+
+/* SVG vocabulary. Fill classes color a shape; add .line for a stroke only. */
+.mac-fig svg, svg.mac-svg{max-width:100%;height:auto;overflow:visible;}
+/* Inline stimulus drawings (particle views) carry a fixed width; they shrink to the column on a phone. */
+.mac-stim-html svg{max-width:100%;height:auto;}
+.mac-fig .shape{fill:var(--mac-shape-fill);stroke:var(--mac-shape);stroke-width:2;}
+.mac-fig .o2{fill:var(--mac-o2-fill);stroke:var(--mac-o2);stroke-width:2;}
+.mac-fig .deo2{fill:var(--mac-deo2-fill);stroke:var(--mac-deo2);stroke-width:2;}
+.mac-fig .symp{fill:var(--mac-symp-fill);stroke:var(--mac-symp);stroke-width:2;}
+.mac-fig .para{fill:var(--mac-para-fill);stroke:var(--mac-para);stroke-width:2;}
+.mac-fig .aff{fill:var(--mac-aff-fill);stroke:var(--mac-aff);stroke-width:2;}
+.mac-fig .eff{fill:var(--mac-eff-fill);stroke:var(--mac-eff);stroke-width:2;}
+.mac-fig .hi{fill:var(--mac-hi-fill);stroke:var(--mac-hi);stroke-width:2;}
+.mac-fig .lo{fill:var(--mac-lo-fill);stroke:var(--mac-lo);stroke-width:2;}
+.mac-fig .memb{fill:none;stroke:var(--mac-memb);stroke-width:3;}
+.mac-fig .accent{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
+.mac-fig .line{fill:none !important;}
+.mac-fig .o2.line{stroke:var(--mac-o2);} .mac-fig .deo2.line{stroke:var(--mac-deo2);}
+/* The two arrow kinds (spec section 6). "causes": solid, filled head.
+   "flows": dashed, open head. The heads are markers defined once per page by
+   mac-core.js, so an author only writes class="causes" or class="flows". */
+.mac-fig .causes{fill:none;stroke:var(--mac-causes);stroke-width:2.5;marker-end:url(#mac-head-causes);}
+.mac-fig .flows{fill:none;stroke:var(--mac-flows);stroke-width:2.2;stroke-dasharray:7 5;marker-end:url(#mac-head-flows);}
+.mac-fig .o2.flows{stroke:var(--mac-o2);} .mac-fig .deo2.flows{stroke:var(--mac-deo2);}
+.mac-fig .lbl{fill:var(--ink);font:800 15px var(--font-ui);}
+.mac-fig .lbl-sm{fill:var(--muted);font:700 12.5px var(--font-ui);}
+.mac-fig text{fill:var(--ink);font-family:var(--font-ui);}
+#mac-defs{position:absolute;width:0;height:0;overflow:hidden;}
+
+/* ============================================================ 2. Page shell */
+.mac-crumb{font:800 12.5px var(--font-ui);color:var(--muted);margin:18px 0 0;}
+.mac-crumb a{color:var(--muted);text-decoration:none;}
+.mac-crumb a:hover{color:var(--ink);text-decoration:underline;}
+.mac-hero{padding-top:22px;}
+.mac-hero h1{max-width:24ch;}
+.mac-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;}
+.mac-tag{display:inline-block;padding:4px 11px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12.5px var(--font-ui);text-decoration:none;}
+a.mac-tag:hover{text-decoration:underline;}
+.mac-part{margin:0 0 30px;max-width:760px;}
+.mac-part h2{display:flex;align-items:baseline;gap:10px;font-size:21px;margin:0 0 12px;}
+.mac-part p,.mac-prose p,.mac-prose li{font-weight:600;line-height:1.7;}
+.mac-hint{color:var(--muted);font-size:14px;}
+.mac-small{color:var(--muted);font:700 13px var(--font-ui);}
+.mac-unbuilt{color:var(--muted);}
+.mac-links{margin:0;padding-left:20px;}
+.mac-links li{margin:4px 0;}
+.mac-plain{margin:6px 0 14px;padding-left:20px;}
+.mac-hook{background:var(--ctint);border-radius:var(--radius, 18px);padding:18px 22px;}
+
+/* The causal chain: numbered cause -> effect steps. */
+.mac-chain{list-style:none;counter-reset:step;margin:0;padding:0;}
+.mac-chain li{counter-increment:step;display:grid;grid-template-columns:32px 1fr;column-gap:12px;row-gap:4px;padding:12px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
+.mac-chain li::before{content:counter(step);grid-row:1 / span 3;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cink);color:var(--paper);font:900 13px var(--font-ui);}
+.mac-chain .mac-arrow{color:var(--cink);font-weight:900;}
+.mac-chain .mac-cause{font-weight:700;}
+.mac-ideas{margin:0;padding-left:20px;}.mac-ideas li{margin:0 0 10px;}
+.mac-core-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.mac-core{display:inline-block;padding:6px 13px;border-radius:12px;background:var(--white);box-shadow:var(--lift-sm);font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.mac-misconception{border-left:4px solid var(--warn, #C98A1A);padding-left:16px;}
+.mac-wrong b{color:var(--bad-text, #B3261E);}
+.mac-right b{color:var(--good-text, #1B7B5B);}
+
+/* Figures and the lesson figure panel. */
+.mac-figure{margin:18px 0 24px;}
+.mac-figure figcaption{font:600 13.5px/1.5 var(--font-ui);color:var(--muted);margin-top:8px;}
+.mac-credit{display:block;font-size:12px;margin-top:3px;}
+.mac-figimg{position:relative;display:inline-block;max-width:100%;}
+.mac-figimg img{display:block;max-width:100%;height:auto;border-radius:10px;background:#fff;}
+/* Dark mode: the diagrams are SVG files drawn on white in the course palette
+   (the Okabe-Ito hues above), shown as <img>, so page tokens cannot reach
+   inside them. Inverting lightness and turning the hue back round keeps every
+   hue in place while light fills go dark and dark strokes and labels go light,
+   the same swap the A&P figures make with their dark tokens; the white ground
+   lands near the dark card surface. Follows the site's theme toggle. */
+:root[data-theme="dark"] .mac-figimg img{filter:invert(.88) hue-rotate(180deg) saturate(1.25) brightness(1.05);}
+@media print{:root[data-theme="dark"] .mac-figimg img{filter:none;}}
+.mac-mask{position:absolute;border:0;padding:0;margin:0;background:transparent;cursor:default;color:transparent;border-radius:4px;}
+.mac-mask span{position:absolute;left:-9999px;}
+.mac-labels-hidden .mac-mask{background:var(--mac-mask);outline:2px solid var(--cink);cursor:pointer;}
+.mac-labels-hidden .mac-mask:focus-visible{outline:3px solid var(--accent);}
+.mac-labels-hidden .mac-mask.revealed{background:transparent;outline:2px dashed var(--good, #1B7B5B);}
+.mac-toggle-labels{margin-top:4px;}
+
+/* Prose (notes pages). */
+.mac-prose{max-width:760px;}
+.mac-prose h2{font-size:23px;margin:34px 0 10px;}
+.mac-prose h3{font-size:18px;margin:24px 0 8px;}
+.mac-prose table.compare{width:100%;border-collapse:collapse;margin:18px 0;font:600 14.5px/1.5 var(--font-ui);display:block;overflow-x:auto;}
+.mac-prose table.compare th,.mac-prose table.compare td{padding:9px 11px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+.mac-prose table.compare thead th{background:var(--ctint);color:var(--cink);}
+.mac-prose table.compare tbody th{font-weight:800;}
+.mac-prose .worked{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 18px;margin:18px 0;}
+.mac-prose .worked::before{content:'Worked example';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:6px;}
+.going-further,.mac-preview,.for-your-exam{border-radius:14px;padding:12px 16px;margin:18px 0;}
+.going-further{background:var(--paper-2, rgba(0,0,0,0.035));}
+.going-further::before{content:'Going further';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.mac-preview{border:2px dashed var(--cink);}
+.mac-preview::before{content:'Preview';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:4px;}
+.for-your-exam{background:var(--ctint);}
+.mac-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;}
+.mac-foot{padding:26px 0 40px;}
+.mac-gate{margin:0 0 18px;}.mac-gate .premium-card{margin:0;}.mac-gate-notes{margin:8px 0 0;font:700 14px/1.5 var(--font-ui);}
+.mac-accuracy-note{color:var(--muted);font:600 13px/1.5 var(--font-ui);max-width:760px;}
+.mac-beta{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 10.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;}
+.mac-q-credit{margin:4px 0 0;color:var(--muted);}
+
+/* ============================================================ Lesson layout (redesign)
+   A rail with the lesson's parts, a coral title card joined to a white card
+   and chip rows under it. Without JS every part shows in one scroll and the
+   rail links jump to them; mac-lesson.js adds .mac-stepped (one part a step). */
+.mac-ls{display:grid;grid-template-columns:250px minmax(0,1fr);gap:0 clamp(24px,4vw,54px);align-items:start;}
+.mac-ls-rail{position:sticky;top:calc(var(--site-header-h,112px) + 18px);display:flex;flex-direction:column;gap:14px;padding:22px 0 26px;max-height:calc(100vh - var(--site-header-h,112px) - 36px);overflow-y:auto;}
+.mac-ls-main{min-width:0;}
+.mac-ls-k{font:900 12px/1.5 var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;}
+.mac-ls-links{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0;}
+.mac-ls-links a{display:inline-flex;align-items:center;gap:6px;font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.mac-ls-links a:hover,.mac-ls-chips a:hover{color:var(--cink);}
+.mac-ls-prog{display:flex;align-items:center;gap:12px;}
+.mac-ls-prog[hidden]{display:none;}
+.mac-ls-track{flex:1;height:8px;border-radius:999px;background:var(--track);overflow:hidden;}
+.mac-ls-fill{width:0;height:100%;background:var(--cink);border-radius:999px;transition:width .25s ease;}
+.mac-ls-count{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+.mac-ls-steps{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:2px;}
+.mac-ls-steps a{display:flex;align-items:flex-start;gap:10px;padding:7px 8px;border-radius:9px;font:800 12.5px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
+.mac-ls-steps a:hover{background:var(--hover-tint);}
+.mac-ls-steps .n{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);font:900 11px var(--font-mono);margin-top:-2px;}
+.mac-ls-steps .done a{color:var(--ink);}
+.mac-ls-steps .current .n{background:var(--cink);color:var(--paper);}
+.mac-ls-steps .done:not(.current) .n{background:var(--good-text);color:var(--white);font-size:0;}
+.mac-ls-steps .done:not(.current) .n::after{content:"\2713";font:900 12px var(--font-ui);}
+.mac-ls-hint{font:700 13px var(--font-ui);color:var(--muted);margin-left:auto;text-align:right;}
+.mac-ls-hint:empty{display:none;}
+.mac-ls-hint + .mac-ls-go{margin-left:0;}
+.mac-ls-go:disabled{opacity:.5;cursor:not-allowed;filter:none;}
+.mac-free-first{margin:16px 0;padding:18px 20px;border-radius:var(--radius-lg);background:var(--white);border:var(--bw,2px) solid var(--line);}
+.mac-free-first p{margin:0 0 12px;font-weight:700;color:var(--muted);}
+.mac-ls-steps .current a{background:var(--ctint);color:var(--cink);}
+.mac-ls-hero{margin-top:16px;padding:clamp(24px,4vw,44px) clamp(24px,4vw,44px) 26px;background:var(--ctint);border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+.mac-ls-hero .eyebrow{color:var(--cink);}
+.mac-ls-hero .mac-tag{background:var(--white);}
+.mac-ls-hero h1{margin:0 0 6px;max-width:20ch;}
+.mac-ls-hero .lede{margin:0 0 14px;max-width:52ch;color:var(--muted);font-weight:700;}
+.mac-ls-card{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:var(--radius-lg);margin-top:-2px;padding:clamp(20px,4vw,32px);box-shadow:var(--lift-lg);}
+.mac-ls [id]{scroll-margin-top:calc(var(--site-header-h,112px) + 12px);}
+.mac-stepped .mac-ls-card{min-height:360px;display:flex;flex-direction:column;}
+.mac-ls-card .mac-part{max-width:72ch;}
+.mac-ls-card #figure{max-width:none;}
+.mac-stepped .mac-step{display:none;flex:1;margin:0;}
+.mac-stepped .mac-step.is-on{display:block;}
+.mac-step .mac-step-k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);margin:0 0 6px;}
+.mac-step h2{font:900 clamp(19px,3vw,24px) var(--font-ui);margin:0 0 14px;}
+.mac-step h2:focus{outline:none;}
+.mac-step-body > :first-child{margin-top:0;}
+.mac-step-body > :last-child{margin-bottom:0;}
+.mac-ls-actions{display:flex;align-items:center;gap:12px;margin-top:26px;}
+.mac-ls-actions[hidden],.mac-ls-actions [hidden]{display:none;}
+.mac-ls-back{font:800 14.5px var(--font-ui);color:var(--muted);background:none;border:0;padding:10px 6px;cursor:pointer;}
+.mac-ls-back:hover{color:var(--ink);}
+.mac-ls-go{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font:900 15px var(--font-ui);color:var(--paper);background:var(--cink);padding:13px 24px;border-radius:var(--radius);border:0;cursor:pointer;text-decoration:none;box-shadow:var(--lift-sm);}
+.mac-ls-go:hover{filter:brightness(1.07);color:var(--paper);}
+.mac-ls-related{margin:22px 0 30px;display:flex;flex-direction:column;gap:10px;}
+.mac-ls-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;}
+.mac-ls-label{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:74px;}
+.mac-ls-chips{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0;}
+.mac-ls-chips a,.mac-ls-chips .mac-unbuilt,.mac-ls-chips summary{display:inline-block;color:var(--ink);background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:var(--radius-sm);padding:6px 11px;font:700 12.5px var(--font-ui);text-decoration:none;}
+.mac-ls-chips details{display:contents;}
+.mac-ls-chips summary{cursor:pointer;color:var(--cink);list-style:none;}
+@media (prefers-reduced-motion:no-preference){.mac-stepped .mac-step.is-on{animation:mac-step-in .25s ease both;}}
+@keyframes mac-step-in{from{opacity:0;transform:translateY(6px);}}
+@media (max-width:900px){
+  .mac-ls{display:block;}
+  .mac-ls-rail{position:static;max-height:none;overflow:visible;padding:14px 0 0;gap:10px;}
+  .mac-ls-links{flex-direction:row;flex-wrap:wrap;gap:6px 18px;}
+  .mac-ls-steps{flex-direction:row;flex-wrap:wrap;gap:6px;}
+  .mac-ls-steps a{padding:5px 9px 5px 5px;background:var(--white);box-shadow:var(--lift-sm);}
+  .mac-stepped .mac-ls-steps .t{display:none;}
+  .mac-stepped .mac-ls-steps .current .t{display:inline;}
+}
+@media (max-width:560px){.mac-ls-label{min-width:0;flex-basis:100%;}}
+/* No JavaScript: the lesson reads as one scroll, every part shown, no step
+   controls (the stepped classes are in the markup for the first paint). */
+@media (scripting: none){.mac-stepped .mac-step{display:block;margin:0 0 28px;}.mac-ls-prog,.mac-ls-actions{display:none;}.mac-stepped .mac-ls-steps .t{display:inline;}}
+@media print{.mac-ls{display:block;}.mac-ls-rail,.mac-ls-actions{display:none !important;}.mac-stepped .mac-step{display:block;}}
+
+/* Glossary terms in running text: underlined, with a definition on hover,
+   focus or tap (mac-glossary.js). */
+.gl{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:help;color:inherit;}
+a.gl{cursor:pointer;}
+
+/* Questions. */
+.mac-qs{display:grid;gap:14px;}
+.mac-q{background:var(--white);box-shadow:var(--lift-sm);border-radius:16px;padding:16px 18px;}
+.mac-q-stem{margin:0 0 10px;font-weight:700;}
+.mac-q-n{color:var(--cink);font-weight:900;}
+.mac-opts{margin:0;padding-left:20px;}
+.mac-opt-btns{display:grid;gap:8px;}
+.mac-opt{display:block;width:100%;text-align:left;padding:11px 14px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 15px/1.45 var(--font-ui);cursor:pointer;}
+.mac-opt:hover:not(:disabled):not([aria-disabled="true"]){border-color:var(--cink);}
+.mac-opt[aria-disabled="true"]{cursor:default;}
+.mac-opt[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
+.mac-opt.is-right{border-color:var(--good, #1B7B5B);background:var(--good-tint, rgba(27,123,91,0.1));}
+.mac-opt.is-wrong{border-color:var(--bad, #B3261E);background:var(--bad-tint, rgba(179,38,30,0.08));}
+.mac-opt .mac-opt-why{display:block;font-weight:600;font-size:13.5px;color:var(--muted);margin-top:4px;}
+.mac-q-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;}
+.mac-q-feedback{margin-top:12px;font-weight:600;line-height:1.6;}
+.mac-q-feedback .mac-verdict{font-weight:900;}
+.mac-q-feedback .ok{color:var(--good-text, #1B7B5B);} .mac-q-feedback .no{color:var(--bad-text, #B3261E);}
+.mac-order{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.mac-order li{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);}
+.mac-order li.pos-ok{border-color:var(--good, #1B7B5B);} .mac-order li.pos-no{border-color:var(--bad, #B3261E);}
+.mac-order .mac-order-text{flex:1;font-weight:700;}
+.mac-order button{min-width:34px;min-height:34px;border-radius:9px;border:0;background:var(--ctint);color:var(--cink);font:900 15px var(--font-ui);cursor:pointer;}
+.mac-predict{width:100%;border-collapse:collapse;}
+.mac-predict th,.mac-predict td{padding:8px 6px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;}
+.mac-predict .mac-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.mac-predict .mac-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+.mac-predict .mac-dir button[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+.mac-predict tr.var-ok th{color:var(--good-text, #1B7B5B);} .mac-predict tr.var-no th{color:var(--bad-text, #B3261E);}
+.mac-predict .mac-var-why{font-weight:600;font-size:13.5px;color:var(--muted);}
+.mac-q-key summary{cursor:pointer;font-weight:800;color:var(--cink);margin-top:8px;}
+.js .mac-q-key{display:none;}
+
+/* Mastery text, study cards and filters. */
+.mac-mastery{font:900 12.5px var(--font-ui);color:var(--cink);}
+.mac-cards{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
+.mac-cards li a{display:flex;flex-direction:column;gap:4px;height:100%;padding:15px 17px;border-radius:16px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);}
+.mac-cards li a span{color:var(--muted);font:600 13.5px/1.45 var(--font-ui);}
+.mac-filter{display:inline-flex;align-items:center;gap:8px;font:800 13.5px var(--font-ui);margin-top:6px;}
+.mac-filter input,.mac-filter select{padding:8px 11px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 14px var(--font-ui);}
+
+
+/* ============ Unit, notes and Learn pages
+   The textbook layout is shared by every course: assets/course/book.css
+   (.bk-*), loaded by those pages after base.css. Only Chem specifics stay. */
+
+@media (max-width:560px){
+  .mac-part h2{font-size:19px;}
+}
+@media print{
+  .mac-toggle-labels,.mac-q-actions,#site-header,.course-nav{display:none !important;}
+  .js .mac-q-key{display:block;}
+}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;}
+.mac-cover{position:absolute;background:#fff;border-radius:3px;pointer-events:none;}
+.mac-fix{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.mac-pin{position:absolute;background:#fff;border:3px solid var(--accent,#A33B26);border-radius:4px;box-shadow:0 0 0 3px rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font:800 14px var(--font-ui,system-ui);color:var(--accent,#A33B26);pointer-events:none;}
+.mac-report-page{margin:18px 0 0;color:var(--muted);font:600 13px/1.5 var(--font-ui);}
+
+/* Learn: the book column keeps the footer below the fold while the chosen
+   chapter's topics load in order (mac-book.js), so nothing on screen moves. */
+#mac-book{min-height:100vh;}
+
+/* ============================================================ AP Macroeconomics additions */
+/* 44 px touch targets on every control a student answers with. */
+.mac-opt,.mac-ls-go,.mac-ls-back,.bk-btn,.mac-check,.mac-dir button,.mac-order button,.mac-num input{min-height:44px;}
+.mac-order button{min-width:44px;}
+.mac-foot .report-btn,.mac-report-page .report-btn{min-height:44px;}
+.mac-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;margin:8px 0 0;}
+.mac-review-note{font:700 13.5px/1.5 var(--font-ui);color:var(--muted);margin:14px 0 0;}
+.mac-soon{padding:18px 20px;border-radius:var(--radius-lg,18px);background:var(--white);border:var(--bw,2px) solid var(--line);font-weight:700;}
+.mac-hero{padding-top:22px;}
+
+/* Answer marks: a word as well as a colour (A&P decision 81). */
+.mac-mark{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font:900 11.5px var(--font-ui);vertical-align:middle;}
+.mac-mark.ok{background:var(--good-text,#1B7B5B);color:var(--white,#fff);}
+.mac-mark.no{background:var(--bad-text,#B3261E);color:var(--white,#fff);}
+.mac-mark.miss{background:var(--amber-text,#8A5A00);color:var(--white,#fff);}
+.mac-mark.ok::before{content:"\2713  ";}.mac-mark.no::before{content:"\2715  ";}
+.mac-dir button[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
+.mac-predict .mac-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.mac-predict .mac-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+
+/* Stimulus sets: one panel, then its 4-5 questions, held together. */
+.mac-set{border:var(--bw,2px) solid var(--line);border-radius:18px;padding:14px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;background:var(--paper);}
+.mac-set>*,.mac-qs>*{min-width:0;}
+.mac-qs{grid-template-columns:minmax(0,1fr);}
+.mac-stim{background:var(--white);border-radius:14px;padding:16px 18px;box-shadow:var(--lift-sm);}
+.mac-stim-k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--cink);margin:0 0 4px;}
+.mac-stim h3{font:900 17px var(--font-ui);margin:0 0 8px;}
+.mac-stim-text p{font-weight:600;line-height:1.6;margin:0 0 10px;}
+table.mac-data{width:100%;border-collapse:collapse;font:600 14px/1.45 var(--font-ui);}
+table.mac-data caption{text-align:left;font:800 13px var(--font-ui);color:var(--muted);padding:0 0 6px;}
+table.mac-data th,table.mac-data td{padding:8px 10px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+table.mac-data thead th{background:var(--ctint);color:var(--cink);}
+table.mac-data td{font-variant-numeric:tabular-nums;}
+
+/* Charts drawn by the generator (scripts/lib/apmacro-build.mjs chartSvg).
+   Series differ by colour AND marker shape, in light and dark. */
+:root{--mac-s1:#0072B2;--mac-s2:#D55E00;--mac-s3:#009E73;--mac-s4:#CC79A7;--mac-s5:#5E5E5E;}
+:root[data-theme="dark"]{--mac-s1:#6CB8EC;--mac-s2:#FF9A5C;--mac-s3:#4FD1AA;--mac-s4:#E7A5CA;--mac-s5:#C9C9C9;}
+.mac-chart{margin:4px 0;}
+.mac-svg{width:100%;max-width:560px;height:auto;display:block;}
+.mac-svg .axis{stroke:var(--ink);stroke-width:1.5;}
+.mac-svg .grid{stroke:var(--line, rgba(0,0,0,0.1));stroke-width:1;}
+.mac-svg .tick{fill:var(--muted);font:700 12px var(--font-ui);}
+.mac-svg .lbl{fill:var(--ink);font:800 13px var(--font-ui);}
+.mac-svg .series{fill:none;stroke-width:2.5;}
+.mac-svg .err{stroke:var(--ink);stroke-width:1.5;fill:none;}
+.mac-svg .s1{stroke:var(--mac-s1);} .mac-svg .s2{stroke:var(--mac-s2);} .mac-svg .s3{stroke:var(--mac-s3);} .mac-svg .s4{stroke:var(--mac-s4);} .mac-svg .s5{stroke:var(--mac-s5);} .mac-svg .series.s5{stroke-dasharray:7 4;}
+.mac-svg .pt.s1,.mac-svg .bar.s1{fill:var(--mac-s1);} .mac-svg .pt.s2,.mac-svg .bar.s2{fill:var(--mac-s2);} .mac-svg .pt.s3,.mac-svg .bar.s3{fill:var(--mac-s3);} .mac-svg .pt.s4,.mac-svg .bar.s4{fill:var(--mac-s4);} .mac-svg .pt.s5,.mac-svg .bar.s5{fill:var(--mac-s5);}
+.mac-legend{display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 0;font:800 13px var(--font-ui);}
+.mac-legend i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+.mac-legend .s1 i{background:var(--mac-s1);} .mac-legend .s2 i{background:var(--mac-s2);} .mac-legend .s3 i{background:var(--mac-s3);} .mac-legend .s4 i{background:var(--mac-s4);} .mac-legend .s5 i{background:var(--mac-s5);}
+.mac-chart-data summary{cursor:pointer;font:800 13px var(--font-ui);color:var(--cink);margin-top:6px;min-height:32px;}
+
+/* Numeric answers. */
+.mac-num{display:flex;flex-direction:column;gap:6px;}
+.mac-num label{font:800 14px var(--font-ui);}
+.mac-num-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.mac-num input{width:12ch;padding:8px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:800 17px var(--font-mono, monospace);}
+.mac-num input:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.mac-num-unit{font:800 15px var(--font-ui);color:var(--muted);}
+.mac-num-ulabel{font:800 14px var(--font-ui);margin-left:6px;}
+.mac-num input.mac-num-u{width:10ch;}
+.mac-then{margin-top:12px;}
+/* Value, units and significant figures, each with its own mark. */
+.mac-num-parts{list-style:none;margin:8px 0 4px;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px;font:700 14px var(--font-ui);}
+.mac-num-parts li{display:flex;align-items:center;gap:6px;}
+.mac-num-notes{margin:6px 0;padding-left:20px;font-size:14.5px;line-height:1.5;}
+.mac-num-notes li{margin:2px 0;}
+/* "Make it specific" builders, slot by slot (specific items in mac-questions.js and the
+   "Make it specific" builder in pages/justify.js): one labelled select per
+   slot, stacked, full width so long wordings stay readable at phone width. */
+.mac-cl{display:flex;flex-direction:column;gap:12px;margin:6px 0;}
+.mac-cl-slot{display:flex;flex-direction:column;align-items:flex-start;gap:4px;font:800 14px var(--font-ui);}
+.mac-cl-slot select{width:100%;max-width:100%;min-height:44px;padding:8px 10px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:600 15px var(--font-ui);}
+.mac-cl-slot select:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.mac-cl-slot .mac-mark{margin-left:0;}
+.mac-cl-write{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+.mac-cl-write label{font:800 14px var(--font-ui);}
+.mac-cl-write textarea{width:100%;box-sizing:border-box;padding:8px 10px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:500 15px var(--font-ui);}
+
+
+
+/* Glossary page: its styles are inlined in macroeconomics/glossary.html (build-apmacro.mjs, GLOSSARY_CSS). */
+
+/* The printable unit sheet: one page on screen, compact on paper. */
+.mac-sheet-head h1{margin:6px 0 10px;}
+.mac-sheet-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin:10px 0 24px;}
+.mac-sheet-topic{background:var(--white);border-radius:14px;padding:14px 16px;box-shadow:var(--lift-sm);font:600 13.5px/1.5 var(--font-ui);}
+.mac-sheet-topic h2{font:900 16px var(--font-ui);margin:0 0 6px;}
+.mac-sheet-topic h2 span{color:var(--cink);}
+.mac-sheet-topic ul{margin:6px 0;padding-left:18px;}
+.mac-sheet-chain{color:var(--muted);}
+.mac-sheet-terms{margin:6px 0 0;display:grid;gap:4px;}
+.mac-sheet-terms dt{display:inline;font-weight:900;}
+.mac-sheet-terms dt::after{content:": ";}
+.mac-sheet-terms dd{display:inline;margin:0;}
+@media print{
+  body.mac{background:#fff;color:#000;}
+  .mac-foot .privacy-link,.mac-crumb,.mac-nav-ref .btn-press,.report-btn{display:none !important;}
+  .mac-sheet-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .mac-sheet-topic{box-shadow:none;border:1px solid #999;padding:8px 10px;font-size:10.5pt;break-inside:avoid;}
+  .mac-sheet-head h1{font-size:16pt;}
+  .mac-set{border-color:#999;}
+}
+@media (max-width:560px){.mac-sheet-grid{grid-template-columns:minmax(0,1fr);}.mac-set{padding:10px;}}
+
+/* Share bar: Share to Google Classroom, Copy link, Print (lessons, notes,
+   unit sheets, FRQs; scripts/build-apmacro.mjs shareBar). Fixed height, so
+   nothing shifts when the copy label changes. */
+.mac-share{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px;}
+.mac-share-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--white);color:var(--cink);font:800 13.5px var(--font-ui);text-decoration:none;cursor:pointer;white-space:nowrap;min-width:7.5em;justify-content:center;}
+.mac-share-btn:hover{border-color:var(--cink);color:var(--cink);}
+.mac-share-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+@media print{.mac-share{display:none !important;}}
+
+/* ============================================================ Graphs */
+/* mac-graph.js (ApMacroGraph): a graph item or an FRQ graph part. The SVG is
+   the picture (role="img", its state in words); the handles under it are the
+   controls (buttons: arrows move, Home resets), so it works with a keyboard
+   and a screen reader. Readable at 360 px: the SVG scales to the column and
+   every handle is a 44-px target. Light and dark from the theme tokens. */
+.mac-graph{margin:.6em 0;}
+.mac-gr-stage{max-width:420px;margin:0 auto;touch-action:none;}
+.mac-graph-svg{display:block;width:100%;height:auto;font:700 12px var(--font-ui);user-select:none;-webkit-user-select:none;}
+.mac-gr-hit{fill:transparent;}
+.mac-gr-axis{fill:none;stroke:var(--ink);stroke-width:1.6;}
+.mac-gr-alabel{fill:var(--ink);font-weight:800;}
+.mac-gr-curve{fill:none;stroke:var(--cink);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;}
+.mac-gr-curve.is-old{stroke:var(--muted,#777);stroke-width:2;stroke-dasharray:2 5;}
+.mac-gr-curve.is-key{stroke:var(--good-text,#1F6E3E);stroke-width:2.2;stroke-dasharray:8 5;}
+.mac-gr-curve.is-focus{stroke-width:4.2;}
+.mac-gr-grab{fill:none;stroke:transparent;stroke-width:24;cursor:grab;}
+.mac-gr-c:active .mac-gr-grab{cursor:grabbing;}
+.mac-gr-clabel{fill:var(--cink);font-weight:800;font-size:13px;}
+.mac-gr-clabel.is-old{fill:var(--muted,#777);}
+.mac-gr-clabel.is-key{fill:var(--good-text,#1F6E3E);}
+.mac-gr-sub{font-size:9px;}
+.mac-gr-guide{fill:none;stroke:var(--cink);stroke-width:1.1;stroke-dasharray:3 4;}
+.mac-gr-guide.is-old{stroke:var(--muted,#777);}
+.mac-gr-eq{fill:var(--cink);stroke:var(--surface,#fff);stroke-width:2;cursor:grab;}
+.mac-gr-eq.is-old{fill:var(--muted,#777);cursor:default;}
+.mac-gr-eq.is-point{fill:var(--accent,#C24E00);}
+.mac-gr-plabel{fill:var(--ink);font-weight:800;}
+.mac-gr-plabel.is-old{fill:var(--muted,#777);font-weight:700;}
+.mac-gr-arrow{fill:none;stroke:var(--cink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.mac-gr-mark{fill:var(--cink);font-weight:800;font-size:11px;}
+.mac-gr-mark.is-old{fill:var(--muted,#777);font-weight:700;}
+.mac-gr-controls{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:.5em 0;}
+.mac-gr-handle{min-height:44px;padding:6px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--white,#fff);color:var(--ink);font:700 13px var(--font-ui);}
+.mac-gr-handle span{font-weight:600;color:var(--muted);}
+.mac-gr-handle:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.mac-gr-handle[aria-disabled="true"]{opacity:.7;}
+.mac-gr-labels{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:.5em 0;}
+.mac-gr-labels label{display:flex;flex-direction:column;gap:2px;font:700 12.5px var(--font-ui);}
+.mac-gr-labels select{min-height:44px;max-width:100%;}
+.mac-gr-help{text-align:center;}
+@media print{.mac-gr-controls,.mac-gr-help,.mac-gr-labels{display:none;}}
+.mac-gr-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+.mac-gr-card{margin:0;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--surface,#fff);}
+.mac-gr-card figcaption{font-size:.92em;margin-top:6px;}

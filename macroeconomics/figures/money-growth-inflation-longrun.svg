@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 465" width="620" height="465" role="img" aria-labelledby="money-growth-inflation-longrun-t money-growth-inflation-longrun-d" font-family="Arial, Helvetica, sans-serif">
+<title id="money-growth-inflation-longrun-t">The long-run effect of more money on AD-AS</title>
+<desc id="money-growth-inflation-longrun-d">An AD-AS graph with a vertical LRAS at full-employment output YF. A rise in the money supply shifts AD right from AD1 to AD2, moving the economy from A to B with more output and a higher price level. Nominal wages then rise and SRAS shifts left from SRAS1 to SRAS2, so the economy ends at C on LRAS: real GDP back at YF and a higher price level PL3.</desc>
+<defs><marker id="money-growth-inflation-longrun-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="money-growth-inflation-longrun-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#355A0A"/></marker><marker id="money-growth-inflation-longrun-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="money-growth-inflation-longrun-arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker></defs>
+<rect width="620" height="465" fill="#FFFFFF"/>
+<text x="310" y="30" font-size="18" font-weight="bold" fill="#1F2A28" text-anchor="middle">More money in the long run: a higher price level, the same real GDP</text><path d="M110 90V360H490" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<text x="490" y="396" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">Real GDP</text>
+<text transform="translate(96 90) rotate(-90)" font-size="13" fill="#1F2A28" text-anchor="end">Price level</text>
+<line x1="300" y1="351.9" x2="300" y2="100.8" stroke="#1F2A28" stroke-width="2.6"/>
+<text x="303.8" y="98.1" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="start">LRAS</text>
+<line x1="148" y1="117" x2="452" y2="333" stroke="#6B7672" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="455.8" y="324.9" font-size="13" font-weight="bold" fill="#6B7672" text-anchor="start">AD<tspan font-size="10" dy="4">1</tspan></text>
+<line x1="201.2" y1="117" x2="490" y2="322.2" stroke="#0072B2" stroke-width="2.6"/>
+<text x="488.1" y="287.1" font-size="13" font-weight="bold" fill="#0072B2" text-anchor="start">AD<tspan font-size="10" dy="4">2</tspan></text>
+<line x1="148" y1="333" x2="452" y2="117" stroke="#6B7672" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="455.8" y="114.3" font-size="13" font-weight="bold" fill="#6B7672" text-anchor="start">SRAS<tspan font-size="10" dy="4">1</tspan></text>
+<line x1="110" y1="322.2" x2="398.8" y2="117" stroke="#D55E00" stroke-width="2.6"/>
+<text x="391.2" y="103.5" font-size="13" font-weight="bold" fill="#D55E00" text-anchor="start">SRAS<tspan font-size="10" dy="4">2</tspan></text>
+<line x1="322.8" y1="279" x2="376" y2="279" stroke="#0072B2" stroke-width="2.2" marker-end="url(#money-growth-inflation-longrun-arB)"/>
+<line x1="368.4" y1="146.7" x2="322.8" y2="146.7" stroke="#D55E00" stroke-width="2.2" marker-end="url(#money-growth-inflation-longrun-arV)"/>
+<path d="M110 225H300V360" fill="none" stroke="#6B7672" stroke-width="1.4" stroke-dasharray="4 4"/>
+<circle cx="300" cy="225" r="5" fill="#1F2A28"/>
+<text x="300" y="376" font-size="12" fill="#1F2A28" text-anchor="middle">Y<tspan font-size="10" dy="4">F</tspan></text>
+<text x="106" y="229" font-size="12" fill="#1F2A28" text-anchor="end">PL<tspan font-size="10" dy="4">1</tspan></text>
+<text x="313" y="245" font-size="13" font-weight="bold" fill="#1F2A28">A</text>
+<circle cx="326.6" cy="206.1" r="5" fill="#0072B2"/><text x="334.6" y="198.1" font-size="13" font-weight="bold" fill="#0072B2">B</text>
+<path d="M110 187.2H300V360" fill="none" stroke="#6B7672" stroke-width="1.4" stroke-dasharray="4 4"/>
+<circle cx="300" cy="187.2" r="5" fill="#355A0A"/>
+<text x="106" y="191.2" font-size="12" fill="#1F2A28" text-anchor="end">PL<tspan font-size="10" dy="4">3</tspan></text>
+<text x="278" y="179.2" font-size="13" font-weight="bold" fill="#355A0A">C</text><text x="310" y="432" font-size="13" font-weight="normal" fill="#6B7672" text-anchor="middle">A to B: more money raises AD (short run). B to C: nominal wages catch up and SRAS shifts left.</text><text x="310" y="448.9" font-size="13" font-weight="normal" fill="#6B7672" text-anchor="middle">In the long run (C), real GDP is back at full employment; only the price level is higher.</text>
+</svg>

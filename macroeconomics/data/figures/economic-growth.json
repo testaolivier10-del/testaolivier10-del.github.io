@@ -1,0 +1,12 @@
+{
+ "economic-growth-ppc-lras": {
+  "file": "figures/economic-growth-ppc-lras.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Economic growth shown as the PPC shifting outward and LRAS shifting right to a higher full-employment output."
+ }
+}

@@ -1,0 +1,618 @@
+{
+ "stimuli": {
+  "long-run-self-adjustment-s1": {
+   "kind": "data",
+   "title": "Country G after a fall in spending, with no policy response",
+   "invented": true,
+   "table": {
+    "caption": "Country G, four years after a fall in aggregate demand, with no policy response; full-employment real GDP is 1,000 billion dollars and the natural rate of unemployment is 5% (invented data for practice)",
+    "cols": [
+     "Year",
+     "Real GDP (billions of dollars)",
+     "Unemployment rate (%)",
+     "Nominal wage index",
+     "Price level (index)"
+    ],
+    "rows": [
+     [
+      "1",
+      "900",
+      "8",
+      "100",
+      "100"
+     ],
+     [
+      "2",
+      "940",
+      "7",
+      "98",
+      "98"
+     ],
+     [
+      "3",
+      "970",
+      "6",
+      "96",
+      "97"
+     ],
+     [
+      "4",
+      "1,000",
+      "5",
+      "95",
+      "96"
+     ]
+    ]
+   }
+  },
+  "long-run-self-adjustment-s2": {
+   "kind": "graph",
+   "title": "Country H's AD-AS graph today",
+   "graph": {
+    "kind": "adas",
+    "start": {
+     "AD": 1
+    },
+    "show": {}
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-long-run-self-adjustment-1",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "long-run-self-adjustment-s1",
+   "q": "Based on the table, what brings Country G's real GDP back to 1,000 billion dollars?",
+   "options": [
+    "Falling nominal wages lower costs, so SRAS shifts right",
+    "Rising spending shifts AD back to the right",
+    "A rise in the price level makes production more profitable",
+    "LRAS shifts right as the economy grows"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "High unemployment pushes nominal wages down (100 to 95). Lower costs shift SRAS right, so output rises back to 1,000 while the price level falls.",
+    "options": [
+     "Right: with unemployment above the natural rate, wages fall, costs fall and SRAS shifts right until output reaches full employment.",
+     "Nothing in the table shows spending recovering. The wage index falls, which works through SRAS.",
+     "The price level falls in the table, from 100 to 96.",
+     "Full-employment output stays at 1,000 throughout, so LRAS did not move."
+    ]
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-2",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "long-run-self-adjustment-s1",
+   "q": "Using the table, calculate the percent change in Country G's nominal wage index from Year 1 to Year 4.",
+   "why": {
+    "correct": "$\\frac{95 - 100}{100} \\times 100 = -5\\%$: nominal wages fell by 5 percent."
+   },
+   "numeric": {
+    "from": {
+     "fn": "growth",
+     "args": [
+      100,
+      95
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "Wages fell, so the percent change is negative: $-5\\%$."
+     },
+     {
+      "value": 95,
+      "why": "95 is the index in Year 4. The percent change compares it with Year 1: $\\frac{95 - 100}{100} \\times 100$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-3",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "long-run-self-adjustment-s1",
+   "q": "Based on the table, why did Country G's nominal wages fall from Year 1 to Year 4?",
+   "options": [
+    "The price level was rising, so workers needed lower wages",
+    "Unemployment was above the natural rate",
+    "Real GDP was above full-employment output",
+    "Firms were short of workers and cut wages to hire more"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In a recessionary gap, unemployment is above the natural rate. Over time, contracts are renegotiated at lower nominal wages.",
+    "options": [
+     "The price level fell. Wages fell because of high unemployment.",
+     "Right: a surplus of workers puts downward pressure on nominal wages.",
+     "Real GDP was below 1,000 until Year 4, a recessionary gap.",
+     "Shortages of workers push wages up. There were too many job seekers here."
+    ]
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-4",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "long-run-self-adjustment-s1",
+   "q": "Based on the table, in which year is Country G back in long-run equilibrium?",
+   "options": [
+    "Year 1",
+    "Year 2",
+    "Year 4",
+    "Year 3"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Long-run equilibrium returns when output equals full-employment output and unemployment equals the natural rate: Year 4.",
+    "options": [
+     "Year 1 has the largest gap: 900 against 1,000.",
+     "Output (940) is still below full employment.",
+     "Right: real GDP equals full-employment output (1,000) and unemployment equals the natural rate (5%).",
+     "Output (970) is still below 1,000 and unemployment (6%) above the natural rate."
+    ]
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-5",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "long-run-self-adjustment-s2",
+   "q": "If no policy is used, what happens to nominal wages in Country H over time, and why?",
+   "options": [
+    "They fall, because output is above full employment",
+    "They stay the same, because wages are sticky",
+    "They rise, because AD keeps shifting right",
+    "They rise, as labor is scarce"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Country H is in an inflationary gap: unemployment is below the natural rate, so nominal wages rise over time.",
+    "options": [
+     "Output above full employment means scarce labor, which pushes wages up, not down.",
+     "Wages are sticky only in the short run; given time, contracts are renegotiated.",
+     "The graph shows no further shift in AD. Wages rise because labor is scarce.",
+     "Right: output is above full employment, labor is scarce, and wages are bid up as contracts are renewed."
+    ]
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-6",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "long-run-self-adjustment-s2",
+   "q": "In Country H, which curve shifts as the economy adjusts on its own, and in which direction?",
+   "options": [
+    "SRAS shifts left",
+    "SRAS shifts right",
+    "AD shifts left",
+    "LRAS shifts right"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rising nominal wages and input prices shift SRAS left: the self-adjustment always runs through SRAS.",
+    "options": [
+     "Right: higher nominal wages raise costs, so SRAS shifts left until it meets AD on LRAS.",
+     "Rising wages raise costs, which shift SRAS left, not right.",
+     "The adjustment works through wages and costs, which are SRAS, not through spending.",
+     "LRAS moves with resources and technology, which have not changed."
+    ]
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-7",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "long-run-self-adjustment-s2",
+   "q": "Once Country H has fully adjusted, how do its price level and real GDP compare with today?",
+   "options": [
+    "The price level is lower and real GDP is lower",
+    "The price level is higher and real GDP is lower",
+    "The price level is higher and real GDP is higher",
+    "Both are the same as today, since the gap closes itself"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "From an inflationary gap, SRAS shifts left: the price level rises further and real GDP falls back to YF.",
+    "options": [
+     "A leftward SRAS shift raises the price level.",
+     "Right: SRAS shifts left along AD until output equals full-employment output.",
+     "Real GDP falls back to full-employment output from above it.",
+     "Closing the gap moves the economy: output falls to YF and the price level rises."
+    ]
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-8",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "This economy is in a recessionary gap and no policy is used. Show the long-run adjustment: shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "Unemployment above the natural rate lowers nominal wages and input prices, so SRAS shifts right: the price level falls and real GDP rises to full employment."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "start": {
+     "AD": -1
+    },
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SRAS",
+       "dir": "right"
+      }
+     ],
+     "because": "a fall in nominal wages and input prices",
+     "outcome": {
+      "price level": "down",
+      "output": "up"
+     }
+    },
+    "slips": {
+     "AD": "Left alone, the economy does not change its spending. It adjusts through nominal wages and input prices, which shift SRAS."
+    }
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-9",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "This economy is in an inflationary gap and no policy is used. Show the long-run adjustment: shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "Unemployment below the natural rate raises nominal wages and input prices, so SRAS shifts left: the price level rises and real GDP falls to full employment."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "start": {
+     "AD": 1
+    },
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SRAS",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in nominal wages and input prices",
+     "outcome": {
+      "price level": "up",
+      "output": "down"
+     }
+    },
+    "slips": {
+     "AD": "Left alone, the economy does not change its spending. It adjusts through nominal wages and input prices, which shift SRAS."
+    }
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-10",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The economy starts in long-run equilibrium. Exports boom and stay high. Show both the short-run shift and the long-run adjustment, and mark the final equilibrium.",
+   "why": {
+    "correct": "AD shifts right (short run), then rising wages shift SRAS left (long run). Output returns to full employment at a higher price level."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "right"
+      },
+      {
+       "curve": "SRAS",
+       "dir": "left"
+      }
+     ],
+     "because": "an export boom, then rising wages",
+     "outcome": {
+      "price level": "up",
+      "output": "same"
+     },
+     "hold": [
+      "output"
+     ]
+    }
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-11",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the links of self-adjustment from a recessionary gap in order.",
+   "options": [
+    "Real GDP is below full-employment output",
+    "Unemployment is above the natural rate",
+    "Nominal wages and input prices fall as contracts are renewed",
+    "SRAS shifts right",
+    "Real GDP rises to full-employment output and the price level falls"
+   ],
+   "why": {
+    "correct": "The gap causes high unemployment, which lowers wages and costs, which shifts SRAS right until output reaches YF."
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-12",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain how an economy in an inflationary gap returns to full employment with no policy.",
+   "why": {
+    "correct": "Labor is scarce, so nominal wages rise; SRAS shifts left until output is back at full employment, at a higher price level."
+   },
+   "specific": {
+    "frame": "Unemployment is ___ the natural rate, so nominal wages ___. ___ shifts to the ___ until real GDP equals full-employment output, and the price level ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Unemployment is below the natural rate, so nominal wages rise because firms compete for scarce workers. Higher costs shift SRAS to the left until real GDP equals full-employment output, and the price level rises.",
+    "slots": {
+     "unemployment": {
+      "label": "Unemployment",
+      "options": [
+       "below",
+       "above"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Output above full employment means more jobs, so unemployment is below the natural rate."
+      }
+     },
+     "change": {
+      "label": "Nominal wages",
+      "options": [
+       "rise",
+       "fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Scarce labor pushes wages up."
+      }
+     },
+     "curve": {
+      "label": "The curve",
+      "options": [
+       "SRAS",
+       "AD"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Self-adjustment works through wages and costs, which shift SRAS; spending does not change."
+      }
+     },
+     "direction": {
+      "label": "Which way",
+      "options": [
+       "left",
+       "right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher costs mean less output supplied at each price level."
+      }
+     },
+     "price": {
+      "label": "Price level",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "SRAS moving left along AD raises the price level."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-13",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A student writes: \"In a recessionary gap, the economy returns to full employment because aggregate demand recovers.\" What is wrong with this as an explanation of long-run self-adjustment?",
+   "options": [
+    "Self-adjustment works through rising nominal wages shifting SRAS left",
+    "Nothing is wrong: AD shifts right as people regain confidence",
+    "It names AD; the mechanism is falling wages shifting SRAS right",
+    "Self-adjustment works through LRAS shifting left to meet AD"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The mechanism readers look for: unemployment above the natural rate lowers nominal wages and input prices, so SRAS shifts right.",
+    "options": [
+     "Rising wages describe an inflationary gap. In a recessionary gap wages fall.",
+     "If spending recovers that is a new demand shock, not self-adjustment, which runs through wages and SRAS.",
+     "Right: with no policy, spending is unchanged; lower wages and input prices shift SRAS.",
+     "LRAS depends on resources and technology, which did not change."
+    ]
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-14",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the long run, what is the effect of a lasting rise in aggregate demand, starting from full employment?",
+   "options": [
+    "A higher price level and higher real GDP",
+    "The same price level with higher real GDP",
+    "A lower price level with real GDP back at full employment",
+    "A higher price level with real GDP back at full-employment output"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In the long run, AD changes affect the price level but not real GDP: output returns to LRAS.",
+    "options": [
+     "That is the short run. In the long run wages rise and output returns to YF.",
+     "In the long run output is set by LRAS; more spending only raises prices.",
+     "The long-run adjustment from an inflationary gap raises the price level further.",
+     "Right: wages catch up and SRAS shifts left, so only the price level stays higher."
+    ]
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-15",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A drought shifts SRAS left and the economy falls into a recessionary gap. If the drought ends and no policy is used, how does the economy return to full employment?",
+   "options": [
+    "Lower wages and input prices shift SRAS back right",
+    "Rising prices raise profits, so firms hire more until output is back",
+    "AD shifts left to meet LRAS",
+    "LRAS shifts left to meet the new equilibrium"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With output below full employment, wages and input prices fall and SRAS shifts right until output is back at YF.",
+    "options": [
+     "Right: the same SRAS mechanism closes a gap however it began.",
+     "In a recessionary gap the price level falls as SRAS shifts right.",
+     "A leftward AD shift would lower output further.",
+     "LRAS moves only with resources and technology. A temporary drought does not lower capacity for good."
+    ]
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-16",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why can self-adjustment out of a recessionary gap take a long time?",
+   "options": [
+    "LRAS has to shift right first",
+    "Nominal wages are slow to fall",
+    "AD has to shift left before SRAS can move",
+    "The price level has to rise before wages can fall"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Wage contracts last months or years and employers avoid cutting pay, so nominal wages adjust slowly downward.",
+    "options": [
+     "LRAS does not need to move; SRAS shifts to meet it.",
+     "Right: wages are especially sticky downward, so SRAS can take years to shift right.",
+     "AD does not need to move at all for self-adjustment.",
+     "The price level falls during self-adjustment from a recessionary gap."
+    ]
+   }
+  },
+  {
+   "id": "mac-long-run-self-adjustment-17",
+   "unit": "unit-3",
+   "topic": "long-run-self-adjustment",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.A",
+   "q": "An economy is in a recessionary gap and no policy is used. Which of the following is part of how it returns to full employment? Select all that apply.",
+   "options": [
+    "Nominal wages and input prices fall, shifting SRAS right",
+    "Spending recovers and AD shifts right",
+    "LRAS shifts left to meet the current output",
+    "The price level rises, making production more profitable"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Self-adjustment from a recessionary gap: unemployment above the natural rate lowers nominal wages and input prices, and SRAS shifts right.",
+    "options": [
+     "Right: this is the self-adjustment mechanism.",
+     "With no policy, spending is unchanged; the adjustment runs through SRAS.",
+     "LRAS depends on resources and technology, which did not change.",
+     "As SRAS shifts right, the price level falls."
+    ]
+   }
+  }
+ ]
+}

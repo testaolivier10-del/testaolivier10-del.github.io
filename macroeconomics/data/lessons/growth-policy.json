@@ -1,0 +1,71 @@
+{
+ "topic": "growth-policy",
+ "hook": "A government offers firms a tax credit for buying new equipment, pays for apprenticeships in skilled trades and funds research on cheaper batteries. None of these is meant to end next quarter's recession. They are bets on the future: on more machines, more skills and better ideas, and so on what the economy can produce ten years from now.",
+ "prereq": [
+  {
+   "q": "Which change raises an economy's potential output?",
+   "options": [
+    "More human capital from education and training",
+    "A rise in consumer confidence",
+    "A rise in the price level",
+    "A fall in the policy rate"
+   ],
+   "correct": 0,
+   "why": "Skills raise productivity and so potential output; the others change spending or prices.",
+   "review": "economic-growth"
+  },
+  {
+   "q": "Government borrowing at full employment raises the real interest rate. What happens to private investment?",
+   "options": [
+    "It falls: crowding out",
+    "It rises: crowding in",
+    "It is unchanged",
+    "It becomes government spending"
+   ],
+   "correct": 0,
+   "why": "A higher real rate makes investment costlier, so private investment falls.",
+   "review": "crowding-out"
+  }
+ ],
+ "figure": {
+  "figure": "growth-policy-channels",
+  "caption": "Four channels from policy to higher productivity and potential output."
+ },
+ "chain": [
+  {
+   "cause": "The government funds job training",
+   "effect": "workers gain skills: human capital rises"
+  },
+  {
+   "cause": "Human capital rises",
+   "effect": "productivity rises"
+  },
+  {
+   "cause": "Productivity rises",
+   "effect": "potential output rises, so LRAS shifts right and the PPC shifts out"
+  },
+  {
+   "cause": "Potential output keeps rising",
+   "effect": "real GDP per capita grows over time"
+  }
+ ],
+ "ideas": [
+  "Growth policy aims at the sources of growth: <b>physical capital</b> (investment incentives, smaller deficits that lower real interest rates), <b>human capital</b> (education, training, health), <b>technology</b> (research funding, patents) and <b>infrastructure</b> (roads, ports, power, networks).",
+  "<b>Supply-side fiscal policy</b> uses taxes and spending to raise incentives to work, save and invest. It aims at LRAS; how large the effect is remains debated among economists.",
+  "Many policies work on both sides: spending on schools or roads raises AD now and, once finished, can shift LRAS right later.",
+  "Spending that adds no capital, skills or technology, such as a cash transfer, shifts AD only. Deficit-financed programs can be partly offset by crowding out."
+ ],
+ "misconception": {
+  "wrong": "Any rise in government spending raises long-run growth.",
+  "right": "Any spending raises AD in the short run. Only spending, or incentives, that add to physical capital, human capital, technology or infrastructure can shift LRAS right, and borrowing to pay for it can crowd out private investment."
+ },
+ "check": [
+  "mac-growth-policy-1",
+  "mac-growth-policy-2",
+  "mac-growth-policy-3",
+  "mac-growth-policy-10",
+  "mac-growth-policy-11",
+  "mac-growth-policy-14"
+ ],
+ "summary": "Public policy can raise long-run growth by adding to physical capital, human capital, technology and infrastructure, or by strengthening incentives to work, save and invest (supply-side fiscal policy). Such policies aim at LRAS, though many also raise AD in the short run. Policies that only raise spending shift AD, and deficit-financed programs can lose part of their effect to crowding out."
+}

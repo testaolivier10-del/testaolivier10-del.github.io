@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v105';
+const CACHE_NAME = 'levlprep-v107';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -347,6 +347,27 @@ COURSE_URLS['psychology'] = [
   'psychology/assets/psy-questions.js',
   'psychology/assets/psy-nav.js',
   'psychology/assets/glossary.json',
+];
+COURSE_URLS['macroeconomics'] = [
+  // The AP® Macroeconomics shell (key apmacro, folder macroeconomics), as
+  // Psychology with the macro calculations and the graph model in place of
+  // the statistics library.
+  'macroeconomics/index.html',
+  'macroeconomics/learn.html',
+  'macroeconomics/search.html',
+  'macroeconomics/tools.html',
+  'macroeconomics/dashboard.html',
+  'macroeconomics/manifest.json',
+  'macroeconomics/assets/mac.css',
+  'macroeconomics/assets/mac-curriculum.js',
+  'macroeconomics/assets/mac-core.js',
+  'macroeconomics/assets/mac-math.js',
+  'macroeconomics/assets/mac-calc.js',
+  'macroeconomics/assets/mac-graph.js',
+  'macroeconomics/assets/mac-grade.js',
+  'macroeconomics/assets/mac-questions.js',
+  'macroeconomics/assets/mac-nav.js',
+  'macroeconomics/assets/glossary.json',
 ];
 COURSE_URLS['precalculus'] = [
   // The AP® Precalculus shell (key apprecalc, folder precalculus), as Calculus AB:

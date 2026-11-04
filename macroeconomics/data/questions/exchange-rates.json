@@ -1,0 +1,569 @@
+{
+ "stimuli": {
+  "exchange-rates-s1": {
+   "kind": "data",
+   "title": "The price of the arl in bels",
+   "invented": true,
+   "table": {
+    "caption": "Bels per arl at the start of each year (invented data for practice; the arl is the currency of Arland, the bel the currency of Belvia)",
+    "cols": [
+     "Year",
+     "Bels per arl"
+    ],
+    "rows": [
+     [
+      "1",
+      "2.0"
+     ],
+     [
+      "2",
+      "2.5"
+     ],
+     [
+      "3",
+      "1.6"
+     ]
+    ]
+   }
+  },
+  "exchange-rates-s2": {
+   "kind": "text",
+   "title": "A bicycle shop in Arland",
+   "text": "<p>A bicycle shop in Arland imports bicycles from Belvia. Each bicycle costs 800 bels, and that price has not changed. Last year, 1 arl traded for 4 bels. This year, 1 arl trades for 5 bels. (Arland, Belvia and their currencies, the arl and the bel, are invented.)</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-exchange-rates-1",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "exchange-rates-s1",
+   "q": "Use the table. In Year 2, what is the price of one bel in arls (arls per bel)?",
+   "why": {
+    "correct": "The table gives bels per arl. Flip it: $\\frac{1}{2.5} = 0.4$ arls per bel. One arl buys 2.5 bels, so one bel buys 0.4 of an arl."
+   },
+   "numeric": {
+    "from": {
+     "fn": "inverseRate",
+     "args": [
+      2.5
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "That is the price of the arl in bels, as the table gives it. The price of the bel in arls is the reciprocal: 1 / 2.5 = 0.4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-2",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "exchange-rates-s1",
+   "q": "Use the table. What happened from Year 1 to Year 2?",
+   "options": [
+    "The arl appreciated and the bel depreciated",
+    "The arl depreciated and the bel appreciated",
+    "Both currencies appreciated",
+    "Neither changed in value, since prices did not change"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "More bels per arl: the arl appreciated and the bel depreciated.",
+    "options": [
+     "Right: one arl bought 2.0 bels and then 2.5 bels, so the arl buys more bels (it appreciated) and each bel buys less of an arl (it depreciated).",
+     "The quote is bels per arl, so a higher number means each arl buys more bels: the arl gained value.",
+     "When one currency buys more of the other, the other buys less of the first: one appreciates as the other depreciates.",
+     "The exchange rate itself changed, from 2.0 to 2.5 bels per arl; that is a change in the value of each currency against the other."
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-3",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "exchange-rates-s1",
+   "q": "Use the table. In Year 3, a hotel in Belvia charges 300 bels a night. What does one night cost an Arland traveler, in arls?",
+   "why": {
+    "correct": "Turn the rate into arls per bel, $\\frac{1}{1.6} = 0.625$, then multiply: $300 \\times 0.625 = 187.5$ arls. Check the units: bels times arls per bel gives arls."
+   },
+   "numeric": {
+    "from": {
+     "fn": "convert",
+     "args": [
+      300,
+      {
+       "fn": "inverseRate",
+       "args": [
+        1.6
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        300,
+        1.6
+       ]
+      },
+      "why": "You multiplied the bel price by bels per arl, which gives bels squared per arl. Divide by 1.6 (or multiply by 0.625 arls per bel) to get arls."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-4",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "exchange-rates-s1",
+   "q": "Use the table. A Belvian good keeps the same price in bels from Year 2 to Year 3. What happens to its price for a buyer in Arland, in arls?",
+   "options": [
+    "It falls, because the arl appreciated",
+    "It rises, because each arl buys fewer bels",
+    "It stays the same, because the bel price did not change",
+    "It falls, because each bel buys less of an arl"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The arl depreciated against the bel, so a bel-priced good costs more arls.",
+    "options": [
+     "The arl went from 2.5 to 1.6 bels: each arl buys fewer bels, so the arl depreciated, not appreciated.",
+     "Right: the arl depreciated (2.5 to 1.6 bels per arl), so an Arland buyer needs more arls for the same bel price.",
+     "The bel price is fixed, but the arl price is the bel price times arls per bel, and that rate changed.",
+     "From Year 2 to Year 3 each bel buys more of an arl (1 / 1.6 is larger than 1 / 2.5), so the bel appreciated and the good costs more arls."
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-5",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "exchange-rates-s2",
+   "q": "What did one bicycle cost the shop last year, in arls?",
+   "why": {
+    "correct": "At 4 bels per arl, one bel costs $\\frac{1}{4} = 0.25$ arl, so $800 \\times 0.25 = 200$ arls. Equivalently, $\\frac{800}{4} = 200$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "convert",
+     "args": [
+      800,
+      {
+       "fn": "inverseRate",
+       "args": [
+        4
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        800,
+        4
+       ]
+      },
+      "why": "You multiplied by bels per arl. To turn bels into arls, divide by the number of bels one arl buys: 800 / 4 = 200."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-6",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "exchange-rates-s2",
+   "q": "What does one bicycle cost the shop this year, in arls?",
+   "why": {
+    "correct": "At 5 bels per arl, $\\frac{800}{5} = 160$ arls: 40 arls less than last year, because each arl now buys more bels."
+   },
+   "numeric": {
+    "from": {
+     "fn": "convert",
+     "args": [
+      800,
+      {
+       "fn": "inverseRate",
+       "args": [
+        5
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        800,
+        5
+       ]
+      },
+      "why": "You multiplied by bels per arl. Divide the bel price by 5 bels per arl: 800 / 5 = 160."
+     },
+     {
+      "from": {
+       "fn": "convert",
+       "args": [
+        800,
+        {
+         "fn": "inverseRate",
+         "args": [
+          4
+         ]
+        }
+       ]
+      },
+      "why": "That is last year's cost at 4 bels per arl. This year one arl buys 5 bels."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-7",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "exchange-rates-s2",
+   "q": "Which describes the change in the exchange rate from last year to this year?",
+   "options": [
+    "The arl depreciated against the bel",
+    "The bel appreciated against the arl",
+    "The arl appreciated against the bel",
+    "Neither, because the bicycle price in bels did not change"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "From 4 to 5 bels per arl: the arl appreciated, the bel depreciated.",
+    "options": [
+     "One arl now buys 5 bels instead of 4, which is more, so the arl gained value against the bel.",
+     "Each bel now buys one fifth of an arl instead of one fourth, which is less, so the bel lost value.",
+     "Right: each arl buys more bels (5 instead of 4), so the arl appreciated and the bel depreciated.",
+     "The price of the good did not change, but the price of one currency in the other did."
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-8",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "exchange-rates-s2",
+   "q": "Which person is made worse off by this change in the exchange rate, other things equal?",
+   "options": [
+    "A Belvian store buying goods priced in arls",
+    "The Arland bicycle shop",
+    "An Arland family vacationing in Belvia",
+    "A Belvian who keeps savings in arls"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An appreciating arl makes arl-priced goods dearer for people paying in bels.",
+    "options": [
+     "Right: each arl now costs 5 bels instead of 4, so goods priced in arls cost the Belvian store more bels.",
+     "Its bicycles now cost 160 arls instead of 200, so the change helps it.",
+     "Each of their arls buys more bels, so hotels and meals priced in bels cost them fewer arls.",
+     "Each arl saved is now worth 5 bels instead of 4, so the saver gains when the savings are counted in bels."
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-9",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is an exchange rate?",
+   "options": [
+    "The interest rate a central bank pays on reserves",
+    "The price of one currency in units of another",
+    "A country's exports divided by its imports",
+    "The gap between two countries' inflation rates"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An exchange rate is the price of one currency expressed in units of another currency.",
+    "options": [
+     "That is an administered interest rate of a central bank, not the price of a currency.",
+     "Right: for example, the number of dollars one euro costs, or the number of euros one dollar costs.",
+     "That ratio compares trade flows; an exchange rate is a price of money in terms of other money.",
+     "Inflation differences can move exchange rates, but an exchange rate is the price of one currency in another."
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-10",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A rate quoted as arls per bel rises from 0.40 to 0.50. What happened?",
+   "options": [
+    "The arl appreciated against the bel",
+    "The bel depreciated against the arl",
+    "Nothing can be said without a quote in bels per arl",
+    "The bel appreciated against the arl"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Arls per bel is the price of the bel; a higher price means the bel appreciated.",
+    "options": [
+     "It now takes more arls to buy one bel, so each arl is worth less: the arl depreciated.",
+     "One bel now buys 0.50 arl instead of 0.40, which is more, so the bel gained value.",
+     "One quote is enough: the other is its reciprocal, so a rise in arls per bel is a fall in bels per arl.",
+     "Right: the quote is the price of a bel in arls, and that price rose, so the bel appreciated (and the arl depreciated)."
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-11",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A concert ticket in Arland costs 60 arls. The exchange rate is 1.5 bels per arl. What does the ticket cost a visitor from Belvia, in bels?",
+   "why": {
+    "correct": "Multiply the arl price by bels per arl: $60 \\times 1.5 = 90$ bels. Units check: arls times bels per arl gives bels."
+   },
+   "numeric": {
+    "from": {
+     "fn": "convert",
+     "args": [
+      60,
+      1.5
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        60,
+        1.5
+       ]
+      },
+      "why": "You divided. Each arl costs 1.5 bels, so 60 arls cost 60 times 1.5 = 90 bels."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-12",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "The arl appreciates against the bel. Which statements follow? Select all that apply.",
+   "options": [
+    "The number of bels per arl rises",
+    "The bel appreciates against the arl",
+    "The number of arls per bel rises",
+    "A Belvian good with an unchanged bel price costs fewer arls",
+    "An Arland good with an unchanged arl price costs fewer bels"
+   ],
+   "correct": [
+    0,
+    3
+   ],
+   "why": {
+    "correct": "An arl appreciation raises bels per arl and is the same thing as a bel depreciation; Belvian goods get cheaper in arls and Arland goods dearer in bels.",
+    "options": [
+     "Right: appreciation means each arl buys more bels.",
+     "When one currency appreciates the other depreciates: each bel now buys less of an arl.",
+     "Arls per bel is the reciprocal of bels per arl, so it falls when the arl appreciates.",
+     "Right: each arl buys more bels, so the same bel price takes fewer arls.",
+     "Each arl now costs more bels, so an arl-priced good costs Belvian buyers more bels."
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-13",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "An Arland student pays tuition in Belvia that is fixed in bels. Which change makes the semester cheaper for the student, in arls?",
+   "options": [
+    "The rate moves from 4 bels per arl to 3 bels per arl",
+    "The rate moves from 3 bels per arl to 4 bels per arl",
+    "The rate moves from 0.25 arl per bel to 0.30 arl per bel",
+    "The tuition rises in bels while the rate stays the same"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The student gains when the arl appreciates: more bels per arl.",
+    "options": [
+     "Each arl buys fewer bels, so the same bel tuition costs more arls.",
+     "Right: each arl now buys more bels, so the bel tuition takes fewer arls. The arl appreciated.",
+     "Each bel now costs more arls, so the tuition costs more arls. The bel appreciated.",
+     "A higher bel price at the same rate costs more arls."
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-14",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.C",
+   "q": "Put the steps in order to turn a price in bels into a price in arls.",
+   "options": [
+    "Read the units of the quoted rate (bels per arl or arls per bel)",
+    "If the rate is in bels per arl, flip it to get arls per bel",
+    "Multiply the price in bels by arls per bel",
+    "Check that the units leave arls: bels times arls per bel gives arls"
+   ],
+   "why": {
+    "correct": "The slip is using the rate upside down; reading the units first and checking them last catches it."
+   }
+  },
+  {
+   "id": "mac-exchange-rates-15",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "The rate moves from 2 bels per arl to 2.5 bels per arl. Student A says: \"Bels per arl rose, so the arl got stronger.\" Student B says: \"Arls per bel fell, so the bel got weaker.\" Who is right?",
+   "options": [
+    "Student A, but Student B has the direction backward",
+    "Student B, but Student A has the direction backward",
+    "Both: they describe one change from its two sides",
+    "Neither: a higher rate means a weaker currency"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Appreciation of one currency is depreciation of the other.",
+    "options": [
+     "Student B is also right: arls per bel fell from 0.5 to 0.4, so the bel buys less of an arl.",
+     "Student A is also right: each arl buys more bels, so the arl appreciated.",
+     "Right: an arl appreciation and a bel depreciation are the same change. Bels per arl rose from 2 to 2.5; arls per bel fell from 0.5 to 0.4.",
+     "In a bels-per-arl quote, a higher number means each arl buys more, so the arl is stronger."
+    ]
+   }
+  },
+  {
+   "id": "mac-exchange-rates-16",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "The exchange rate moves from 2 bels per arl to 3 bels per arl. Build an answer that identifies which currency appreciated and explains how you know.",
+   "why": {
+    "correct": "Appreciation is about what one unit buys: each arl now buys 3 bels instead of 2."
+   },
+   "specific": {
+    "frame": "___ appreciated, because ___.",
+    "write": {
+     "mechanism": true,
+     "directional": true
+    },
+    "model": "The arl appreciated, because each arl now buys 3 bels instead of 2, which is more bels per arl; the bel depreciated, because each bel now buys one third of an arl instead of one half.",
+    "slots": {
+     "currency": {
+      "label": "Which currency",
+      "options": [
+       "The arl",
+       "The bel"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Each bel now buys one third of an arl instead of one half, less than before, so the bel depreciated."
+      }
+     },
+     "because": {
+      "label": "How you know",
+      "options": [
+       "each arl now buys more bels than before",
+       "each arl now buys fewer bels than before",
+       "the number in the quote got bigger, and a bigger number is a stronger currency"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "From 2 to 3 bels per arl, each arl buys more bels, not fewer.",
+       "2": "A bigger number shows appreciation only for the currency the quote is \"per\"; flip the quote and the number gets smaller. Give the reason: what one unit buys."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-exchange-rates-17",
+   "unit": "unit-6",
+   "topic": "exchange-rates",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.C",
+   "q": "The rate is 2.5 bels per arl. A traveler from Belvia trades 1,000 bels for arls. How many arls does the traveler get?",
+   "options": [
+    "2,500 arls",
+    "250 arls",
+    "1,000 arls",
+    "400 arls"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "1,000 bels / 2.5 bels per arl = 400 arls.",
+    "options": [
+     "That multiplies by bels per arl. Bels divided by bels per arl gives arls: 1,000 / 2.5 = 400.",
+     "That divides by 4, not 2.5. 1,000 / 2.5 = 400 arls.",
+     "That treats the two currencies as worth the same; the rate says one arl costs 2.5 bels.",
+     "Right: each arl costs 2.5 bels, so 1,000 bels buy 1,000 / 2.5 = 400 arls."
+    ]
+   }
+  }
+ ]
+}

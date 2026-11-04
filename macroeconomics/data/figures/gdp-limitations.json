@@ -1,0 +1,12 @@
+{
+ "gdp-limitations-counted": {
+  "file": "figures/gdp-limitations-counted.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two columns. Counted in GDP: new consumer goods and services, new capital and homes and added inventory, government purchases, and exports minus imports. Left out: intermediate goods, used goods and financial assets, transfer payments, unpaid home production and volunteering, underground activity, and leisure, pollution and how income is shared."
+ }
+}

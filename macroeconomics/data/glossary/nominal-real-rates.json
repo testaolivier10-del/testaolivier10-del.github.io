@@ -1,0 +1,8 @@
+{
+ "nominal-rate": {
+  "def": "The interest rate stated on a loan or bond, in dollars, before any adjustment for inflation."
+ },
+ "real-rate": {
+  "def": "The interest rate adjusted for inflation: the nominal interest rate minus the expected inflation rate. It measures the gain in buying power a lender earns and the true cost of borrowing."
+ }
+}

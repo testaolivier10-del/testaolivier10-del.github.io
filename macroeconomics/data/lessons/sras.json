@@ -1,0 +1,72 @@
+{
+ "topic": "sras",
+ "hook": "When gas prices jumped, a bakery owner faced a choice: raise the price of bread, bake less, or both. Her workers' wages were set in a contract for the year, and her flour supplier had promised a price. Across the economy, thousands of owners make choices like hers, and they explain why total output responds to prices in the short run and why a jump in costs can cut output everywhere at once.",
+ "prereq": [
+  {
+   "q": "What happens to the supply curve for bread when the price of flour rises?",
+   "options": [
+    "It shifts left",
+    "It shifts right",
+    "There is a movement up along it",
+    "Nothing"
+   ],
+   "correct": 0,
+   "why": "An input price rise lowers supply at every price: the supply curve shifts left.",
+   "review": "supply"
+  },
+  {
+   "q": "What is a real wage?",
+   "options": [
+    "The nominal wage adjusted for the price level",
+    "The wage written in the contract",
+    "The wage after taxes",
+    "The minimum wage"
+   ],
+   "correct": 0,
+   "why": "A real wage is the nominal wage divided by a price index: what the wage can buy.",
+   "review": "price-indices-inflation"
+  }
+ ],
+ "figure": {
+  "figure": "sras-curve",
+  "caption": "Left: a higher price level moves the economy up along SRAS. Right: higher input costs shift SRAS left."
+ },
+ "chain": [
+  {
+   "cause": "The price level rises while nominal wages are fixed by contract",
+   "effect": "profit on each extra unit rises"
+  },
+  {
+   "cause": "Profit per unit rises",
+   "effect": "firms produce more real output: a movement up along SRAS"
+  },
+  {
+   "cause": "Input prices (wages, oil) rise at a given price level",
+   "effect": "costs per unit rise"
+  },
+  {
+   "cause": "Costs per unit rise",
+   "effect": "firms supply less at every price level: SRAS shifts left"
+  }
+ ],
+ "ideas": [
+  "<b>Short-run aggregate supply (SRAS)</b> is the total real output firms supply at each price level in the <b>short run</b>, while nominal wages and some prices are fixed.",
+  "SRAS slopes up because of <b>sticky wages and prices</b>: when the price level rises, many costs do not, so more output is profitable.",
+  "A change in the price level moves <b>along</b> SRAS. A change in costs at a given price level <b>shifts</b> it.",
+  "SRAS shifts left when input prices rise (nominal wages, energy, raw materials), productivity falls, business taxes or costly rules rise, or expected inflation rises (workers come to expect faster price growth and raise wage demands). The reverse shifts it right.",
+  "A sudden, economy-wide change in input costs is a <b>supply shock</b>."
+ ],
+ "misconception": {
+  "wrong": "When workers get higher wages they spend more, so a rise in nominal wages shifts SRAS to the right.",
+  "right": "For firms, wages are a cost. Higher nominal wages with the same productivity raise the cost of each unit, so SRAS shifts left."
+ },
+ "check": [
+  "mac-sras-8",
+  "mac-sras-9",
+  "mac-sras-14",
+  "mac-sras-4",
+  "mac-sras-2",
+  "mac-sras-17"
+ ],
+ "summary": "SRAS shows the real output firms supply at each price level while wages and some prices are sticky, so it slopes up. A change in the price level moves along SRAS. Changes in input prices, productivity, taxes and rules on firms, or the wages workers bargain for, shift it: higher costs shift SRAS left, lower costs shift it right."
+}

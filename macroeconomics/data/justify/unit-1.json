@@ -1,0 +1,509 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 1 (docs/apmacro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmacro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-1",
+   "id": "u1-scarcity-tradeoff",
+   "topic": "scarcity",
+   "practice": "1.B",
+   "skill": "identify",
+   "title": "Scarcity behind a town's choice",
+   "prompt": "Merrow's town council can afford a new library or a new park this year, but not both. <b>Explain</b> why the council faces a trade-off, and <b>identify</b> its opportunity cost if it builds the library.",
+   "checklist": [
+    "Names scarcity: the town's resources (its budget, land and workers) are limited",
+    "Says choosing one use means giving up the other",
+    "Names the park as the opportunity cost of the library"
+   ],
+   "earns": {
+    "answer": "The town's resources are scarce: it has a limited budget, land and workers, so it cannot have every project it wants. Using them on the library means giving them up for the park, so it faces a trade-off, and the opportunity cost of building the library is the park it does not build.",
+    "why": "It names scarcity as the cause, the trade-off as the result, and the park as the specific opportunity cost."
+   },
+   "misses": {
+    "answer": "The council has to choose because it cannot decide what people want.",
+    "why": "The choice comes from limited resources, not from people's wants being unclear, and no opportunity cost is named."
+   },
+   "specific": {
+    "slots": {
+     "cause": {
+      "label": "Why it must choose",
+      "options": [
+       "its resources are limited",
+       "people want too few things"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Wants are not the limit; resources are."
+      }
+     },
+     "cost": {
+      "label": "Opportunity cost of the library",
+      "options": [
+       "the park",
+       "the budget spent on the library",
+       "nothing, if the library is popular"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The budget is the resource used; the cost is the next best thing given up.",
+       "2": "Every choice gives something up, however popular it is."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-ppc-opportunity-cost",
+   "topic": "opportunity-cost-ppc",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Opportunity cost from a PPC table",
+   "context": "<p>Production possibilities for Tellis, an invented country:</p><table class=\"mac-data\"><tr><th scope=\"row\">Point</th><td>A</td><td>B</td><td>C</td><td>D</td></tr><tr><th scope=\"row\">Tractors</th><td>0</td><td>10</td><td>20</td><td>30</td></tr><tr><th scope=\"row\">Wheat (tons)</th><td>90</td><td>80</td><td>60</td><td>30</td></tr></table>",
+   "prompt": "<b>Calculate</b> the opportunity cost of each extra tractor when the economy moves from point B to point C, and <b>show</b> your work.",
+   "checklist": [
+    "Finds the wheat given up: 80 - 60 = 20 tons",
+    "Finds the tractors gained: 20 - 10 = 10",
+    "Divides: 20 / 10 = 2 tons of wheat per tractor"
+   ],
+   "earns": {
+    "answer": "From B to C the economy gives up 80 - 60 = 20 tons of wheat to make 20 - 10 = 10 more tractors. The opportunity cost of each extra tractor is 20 / 10 = 2 tons of wheat.",
+    "why": "It shows what is given up and what is gained, then divides, with the units."
+   },
+   "misses": {
+    "answer": "The opportunity cost is 60 tons of wheat.",
+    "why": "60 is the wheat still produced at C, not the wheat given up, and nothing is per tractor."
+   },
+   "specific": {
+    "slots": {
+     "given": {
+      "label": "Wheat given up",
+      "options": [
+       "20 tons",
+       "60 tons",
+       "80 tons"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "60 tons is what is still made at C; subtract it from 80.",
+       "2": "80 tons is the amount at B; the cost is the drop."
+      }
+     },
+     "per": {
+      "label": "Cost of each tractor",
+      "options": [
+       "2 tons of wheat",
+       "0.5 tons of wheat",
+       "20 tons of wheat"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That divides tractors by wheat; divide the wheat given up by the tractors gained.",
+       "2": "20 tons buys all 10 tractors; divide by 10 for one."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-ppc-bowed",
+   "topic": "opportunity-cost-ppc",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "Why the PPC bows outward",
+   "prompt": "<b>Explain</b> why the opportunity cost of tractors rises as Tellis makes more of them (use the table above if you need numbers).",
+   "checklist": [
+    "States the opportunity cost rises: 1, then 2, then 3 tons of wheat per tractor",
+    "Explains that resources are not equally good at making both goods",
+    "Links the rising cost to the bowed-out shape of the PPC"
+   ],
+   "earns": {
+    "answer": "Each block of 10 tractors costs more wheat: 10 tons, then 20, then 30, so 1, 2, then 3 tons per tractor. Resources are not equally suited to both goods, so the first tractors use the workers and land least useful for wheat, and later ones pull in resources that are very good at farming. That rising opportunity cost is why the PPC bows outward.",
+    "why": "It shows the cost rising with numbers and explains why: resources are specialized."
+   },
+   "misses": {
+    "answer": "Tractors get more expensive because people want more of them.",
+    "why": "Demand plays no part in a PPC; the cause is that resources are not equally good at both goods."
+   },
+   "specific": {
+    "slots": {
+     "trend": {
+      "label": "As tractors rise, their opportunity cost",
+      "options": [
+       "rises",
+       "falls",
+       "stays the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Each block of tractors gives up more wheat than the last, so the cost rises.",
+       "2": "A constant cost would give a straight-line PPC."
+      }
+     },
+     "why": {
+      "label": "Because",
+      "options": [
+       "resources are not equally suited to both goods",
+       "tractors need more workers than wheat"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "What matters is how well resources switch between goods, not how many workers a good needs."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-ppc-inside",
+   "topic": "opportunity-cost-ppc",
+   "practice": "2.A",
+   "skill": "graph",
+   "title": "A point inside the PPC",
+   "prompt": "During a slump, many of Tellis's workers and machines sit idle. <b>Explain</b> where its output is shown on a correctly labeled PPC, and <b>describe</b> how it could produce more of both goods.",
+   "checklist": [
+    "Places output at a point inside the PPC",
+    "Says resources sit idle, so production is not efficient",
+    "Says putting idle resources to work moves the point toward the curve, more of both goods"
+   ],
+   "earns": {
+    "answer": "With workers and machines idle, Tellis produces at a point inside its PPC (tractors on one axis, wheat on the other). It is not using all its resources, so it is not productively efficient. Putting the idle resources back to work moves the point out toward the curve, so it can make more tractors and more wheat with no trade-off.",
+    "why": "It places the point correctly, says why, and explains how more of both is possible."
+   },
+   "misses": {
+    "answer": "The PPC shifts inward because workers lose their jobs.",
+    "why": "Idle resources still exist, so the curve does not move; output sits at a point inside it."
+   },
+   "specific": {
+    "slots": {
+     "where": {
+      "label": "Output is",
+      "options": [
+       "inside the PPC",
+       "on the PPC",
+       "outside the PPC"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "On the curve means every resource is used; here many are idle.",
+       "2": "Outside the curve is unattainable with today's resources."
+      }
+     },
+     "curve": {
+      "label": "The PPC itself",
+      "options": [
+       "stays where it is",
+       "shifts inward"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The resources still exist; idling them moves the point, not the curve."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-comparative-advantage",
+   "topic": "comparative-advantage",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Finding comparative advantage",
+   "context": "<p>Output per worker per week in two invented countries:</p><table class=\"mac-data\"><tr><th scope=\"row\">Country</th><td>Cloth (bolts)</td><td>Wheat (tons)</td></tr><tr><th scope=\"row\">Dellow</th><td>6</td><td>3</td></tr><tr><th scope=\"row\">Varro</th><td>4</td><td>4</td></tr></table>",
+   "prompt": "<b>Determine</b> which country has the comparative advantage in wheat, and <b>show</b> the opportunity costs that support your answer.",
+   "checklist": [
+    "Finds Dellow's opportunity cost of 1 ton of wheat: 6 / 3 = 2 bolts of cloth",
+    "Finds Varro's opportunity cost of 1 ton of wheat: 4 / 4 = 1 bolt of cloth",
+    "Gives Varro the comparative advantage in wheat because its opportunity cost is lower"
+   ],
+   "earns": {
+    "answer": "In Dellow a worker gives up 6 / 3 = 2 bolts of cloth for each ton of wheat; in Varro, 4 / 4 = 1 bolt. Varro gives up less cloth for each ton of wheat, so Varro has the comparative advantage in wheat (and Dellow in cloth).",
+    "why": "It computes both opportunity costs and picks the lower one, which is what comparative advantage means."
+   },
+   "misses": {
+    "answer": "Dellow has the comparative advantage in wheat, because its workers make more cloth.",
+    "why": "Making more cloth is an absolute advantage in cloth; comparative advantage in wheat goes to the lower opportunity cost of wheat."
+   },
+   "specific": {
+    "slots": {
+     "dellow": {
+      "label": "Dellow's cost of a ton of wheat",
+      "options": [
+       "2 bolts of cloth",
+       "0.5 bolts of cloth",
+       "3 bolts of cloth"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is cloth's cost in wheat; divide cloth by wheat for wheat's cost.",
+       "2": "3 is Dellow's wheat output, not a cost."
+      }
+     },
+     "who": {
+      "label": "Comparative advantage in wheat",
+      "options": [
+       "Varro",
+       "Dellow"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Dellow gives up 2 bolts per ton, more than Varro's 1."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-terms-of-trade",
+   "topic": "comparative-advantage",
+   "practice": "2.A",
+   "skill": "identify",
+   "title": "Terms of trade that help both",
+   "prompt": "Dellow and Varro (above) agree to trade 1 ton of wheat for 1.5 bolts of cloth. <b>Explain</b> why both countries gain from these terms of trade.",
+   "checklist": [
+    "States Varro gets 1.5 bolts per ton, more than its own cost of 1 bolt",
+    "States Dellow pays 1.5 bolts per ton, less than its own cost of 2 bolts",
+    "Concludes the terms lie between the two opportunity costs, so both gain"
+   ],
+   "earns": {
+    "answer": "Varro gives up 1 bolt of cloth to make a ton of wheat but gets 1.5 bolts for it in trade, so it gains. Dellow would give up 2 bolts to make a ton of wheat itself but gets one for 1.5 bolts, so it gains too. The terms of trade lie between the two opportunity costs, which is why both are better off.",
+    "why": "It compares the terms with each country's own opportunity cost, so the gain for each side is shown."
+   },
+   "misses": {
+    "answer": "Both countries gain because trade between countries is good for everyone.",
+    "why": "There is no comparison with either country's opportunity cost, so nothing shows that these terms help both."
+   },
+   "specific": {
+    "slots": {
+     "varro": {
+      "label": "Varro gets per ton of wheat",
+      "options": [
+       "more cloth than it gives up at home",
+       "less cloth than it gives up at home"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "1.5 bolts is more than Varro's own cost of 1 bolt."
+      }
+     },
+     "range": {
+      "label": "Terms that help both lie",
+      "options": [
+       "between 1 and 2 bolts per ton",
+       "below 1 bolt per ton",
+       "above 2 bolts per ton"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Below 1 bolt, Varro would do better making cloth itself.",
+       "2": "Above 2 bolts, Dellow would do better making wheat itself."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-demand-movement",
+   "topic": "demand",
+   "practice": "1.D",
+   "skill": "graph",
+   "title": "A price change is a movement along demand",
+   "prompt": "The price of movie tickets rises. <b>Explain</b> what happens on a correctly labeled graph of the market for movie tickets, using the right terms.",
+   "checklist": [
+    "Says the change is a movement along the demand curve, not a shift",
+    "Says the quantity demanded falls (not demand)",
+    "Explains why: the good's own price is on the vertical axis"
+   ],
+   "earns": {
+    "answer": "The ticket price is on the vertical axis, so a rise in it is a movement up along the demand curve, not a shift. The quantity demanded falls, while demand (the whole curve) stays the same.",
+    "why": "It uses \"quantity demanded\" and \"movement along\" correctly and gives the reason."
+   },
+   "misses": {
+    "answer": "Demand for movie tickets decreases, so the demand curve shifts left.",
+    "why": "A change in the good's own price never shifts its demand curve; it changes the quantity demanded along the curve."
+   },
+   "specific": {
+    "slots": {
+     "what": {
+      "label": "On the graph",
+      "options": [
+       "a movement along the demand curve",
+       "the demand curve shifts left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The good's own price is on an axis, so its change moves along the curve."
+      }
+     },
+     "word": {
+      "label": "What falls",
+      "options": [
+       "the quantity demanded",
+       "demand"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "\"Demand\" is the whole curve, which does not move here."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-supply-input",
+   "topic": "supply",
+   "practice": "3.A",
+   "skill": "graph",
+   "title": "An input price shifts supply",
+   "prompt": "The price of flour rises. <b>Explain</b> the effect on the market for bread, and <b>identify</b> what happens to the equilibrium price and quantity.",
+   "checklist": [
+    "Says flour is an input, so the supply of bread shifts left",
+    "Says the demand for bread does not shift",
+    "States the equilibrium price rises and the equilibrium quantity falls"
+   ],
+   "earns": {
+    "answer": "Flour is an input to bread, so a higher flour price raises bakers' costs at every price and shifts the supply of bread left. Demand does not change. At the new equilibrium the price of bread is higher and the quantity bought and sold is lower.",
+    "why": "It names the curve that moves, why, which way, and both equilibrium changes."
+   },
+   "misses": {
+    "answer": "The price of bread rises, so people buy less bread.",
+    "why": "It skips the cause and the curve: nothing says supply shifts left because flour is an input."
+   },
+   "specific": {
+    "slots": {
+     "curve": {
+      "label": "The curve that shifts",
+      "options": [
+       "supply, to the left",
+       "demand, to the left",
+       "supply, to the right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Buyers' wants did not change; bakers' costs did.",
+       "2": "Higher costs mean less is supplied at each price."
+      }
+     },
+     "price": {
+      "label": "Equilibrium price",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less supply at each price leaves a shortage at the old price, so the price rises."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-shortage",
+   "topic": "market-equilibrium",
+   "practice": "2.A",
+   "skill": "identify",
+   "title": "A price below equilibrium",
+   "prompt": "In a market for concert tickets, the price is set below the equilibrium price. <b>Explain</b> what the market shows at this price and what would bring it back to equilibrium.",
+   "checklist": [
+    "Says the quantity demanded is greater than the quantity supplied",
+    "Names the gap between them a shortage",
+    "Explains that the price would rise, lowering quantity demanded and raising quantity supplied until they are equal"
+   ],
+   "earns": {
+    "answer": "Below the equilibrium price, the quantity demanded is greater than the quantity supplied, so there is a shortage. Buyers compete for the few tickets, which pushes the price up; as it rises the quantity demanded falls and the quantity supplied rises until they are equal at equilibrium.",
+    "why": "It names the shortage with its cause and gives the path back to equilibrium on both sides of the market."
+   },
+   "misses": {
+    "answer": "There is a surplus, because the price is too low for sellers.",
+    "why": "A low price leaves buyers wanting more than sellers offer, which is a shortage, not a surplus."
+   },
+   "specific": {
+    "slots": {
+     "gap": {
+      "label": "At this price",
+      "options": [
+       "a shortage",
+       "a surplus"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A surplus happens above equilibrium, when sellers offer more than buyers want."
+      }
+     },
+     "fix": {
+      "label": "Back to equilibrium",
+      "options": [
+       "the price rises",
+       "the price falls",
+       "the demand curve shifts left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A lower price would make the shortage bigger.",
+       "2": "The curves do not move; the price moves along them."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-indeterminate",
+   "topic": "market-equilibrium",
+   "practice": "2.B",
+   "skill": "graph",
+   "title": "Both curves shift at once",
+   "prompt": "A new study praises oat milk, and at the same time new factories cut the cost of making it. <b>Explain</b> the effect on the equilibrium price and quantity of oat milk.",
+   "checklist": [
+    "Says demand shifts right and supply shifts right",
+    "States the equilibrium quantity rises",
+    "States the change in price is indeterminate without the sizes of the shifts"
+   ],
+   "earns": {
+    "answer": "The study shifts demand right, and lower costs shift supply right. Both shifts raise the equilibrium quantity. Demand pushes the price up while supply pushes it down, so the change in price is indeterminate unless we know which shift is larger.",
+    "why": "It names both shifts, gives the one determinate result, and says why the other cannot be signed."
+   },
+   "misses": {
+    "answer": "The price and quantity of oat milk both rise.",
+    "why": "The rise in supply pulls the price down, so a rise in price is not certain; the answer leaves out supply."
+   },
+   "specific": {
+    "slots": {
+     "q": {
+      "label": "Equilibrium quantity",
+      "options": [
+       "rises",
+       "falls",
+       "is indeterminate"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Both shifts push the quantity up.",
+       "2": "Both shifts move quantity the same way, so it can be signed."
+      }
+     },
+     "p": {
+      "label": "Equilibrium price",
+      "options": [
+       "is indeterminate",
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Supply's rise pulls the price down, so a rise is not certain.",
+       "2": "Demand's rise pulls the price up, so a fall is not certain."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

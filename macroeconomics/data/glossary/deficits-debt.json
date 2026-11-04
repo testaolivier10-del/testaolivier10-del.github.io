@@ -1,0 +1,8 @@
+{
+ "budget-deficit": {
+  "def": "The amount by which a government's outlays (spending, transfer payments and interest) exceed its tax revenue in one year. Revenue above outlays is a budget surplus; revenue equal to outlays is a balanced budget."
+ },
+ "national-debt": {
+  "def": "The total amount a government owes at a point in time: the sum of its past deficits minus its past surpluses, owed to holders of its bonds."
+ }
+}

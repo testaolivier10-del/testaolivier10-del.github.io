@@ -1,0 +1,12 @@
+{
+ "nominal-real-rates-split": {
+  "file": "figures/nominal-real-rates-split.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 250,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A bar for a 7 percent nominal interest rate split into two parts: a 4 percent real interest rate, the gain in buying power, and a 3 percent expected inflation rate. The real rate equals the nominal rate minus the expected inflation rate."
+ }
+}

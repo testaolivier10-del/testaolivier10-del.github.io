@@ -1,0 +1,533 @@
+{
+ "stimuli": {
+  "money-functions-s1": {
+   "kind": "data",
+   "title": "What the people of Tolvia hold",
+   "invented": true,
+   "table": {
+    "caption": "Assets held by the public in the invented country of Tolvia, in billions of dollars (invented data for practice).",
+    "cols": [
+     "Asset",
+     "Billions of dollars"
+    ],
+    "rows": [
+     [
+      "Currency held by the public",
+      "300"
+     ],
+     [
+      "Checkable deposits",
+      "500"
+     ],
+     [
+      "Small time deposits (certificates of deposit)",
+      "200"
+     ],
+     [
+      "Retail money market funds",
+      "150"
+     ],
+     [
+      "Shares of stock",
+      "2,000"
+     ],
+     [
+      "Unused credit card limits",
+      "400"
+     ]
+    ]
+   }
+  },
+  "money-functions-s2": {
+   "kind": "text",
+   "title": "Shells as money on an invented island",
+   "text": "<p>On the invented island of Corvo, people use a rare kind of shell as money. Fishers sell their catch for shells and use the shells to buy bread. Market stalls post every price in shells, such as \"one basket of fish: 4 shells.\" Families keep jars of shells to pay for things during the stormy season, when fishing stops.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-money-functions-1",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "money-functions-s1",
+   "q": "Using the table, what is M1 in Tolvia, in billions of dollars?",
+   "why": {
+    "correct": "M1 is the most spendable money: currency held by the public plus checkable deposits, $ 300 + 500 = 800$ billion."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      300,
+      500
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        300,
+        500,
+        200,
+        150
+       ]
+      },
+      "why": "That is M2. Time deposits and money market funds are near-money, counted in M2 but not M1."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        300,
+        500,
+        400
+       ]
+      },
+      "why": "A credit card limit is a promise to lend, not money you hold, so it is not counted."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-2",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "money-functions-s1",
+   "q": "Using the table, what is M2 in Tolvia, in billions of dollars?",
+   "why": {
+    "correct": "M2 is M1 plus small time deposits and retail money market funds: $ 800 + 200 + 150 = 1150$ billion."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      300,
+      500,
+      200,
+      150
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        200,
+        150
+       ]
+      },
+      "why": "M2 includes M1. Add currency and checkable deposits to the time deposits and money market funds."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        300,
+        500,
+        200,
+        150,
+        2000
+       ]
+      },
+      "why": "Stock is a financial asset but not money; it has to be sold for money first."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        300,
+        500,
+        200,
+        150,
+        400
+       ]
+      },
+      "why": "Unused credit is not money anyone holds. Leave the credit card limits out."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-3",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "money-functions-s1",
+   "q": "Which asset in the table is counted in M2 but not in M1?",
+   "options": [
+    "Currency held by the public",
+    "Checkable deposits",
+    "Small time deposits",
+    "Shares of stock"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "M2 = M1 plus less liquid deposits: small time deposits and retail money market funds.",
+    "options": [
+     "Currency is the core of M1, and M2 includes all of M1.",
+     "Checkable deposits can be spent by card or check, so they are in M1 (and so in M2).",
+     "Right: certificates of deposit lock money up for a term, so they are near-money in M2 only.",
+     "Stock is counted in neither; it is a financial asset, not money."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-4",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "money-functions-s1",
+   "q": "Why are the shares of stock left out of both M1 and M2?",
+   "options": [
+    "Their total is too large to count",
+    "They have to be sold for money before they can be spent",
+    "Their prices are set by the government",
+    "They earn no return for their owners"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Money measures count assets that are spendable or close to it. Stocks and bonds are less liquid financial assets.",
+    "options": [
+     "Size does not decide what money is; how it is used does.",
+     "Right: stores do not take shares, so stock is not a medium of exchange.",
+     "Stock prices are set in markets; the point is that shares are not spent directly.",
+     "Stocks can earn dividends and price gains; they are left out because they are not spendable money."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-5",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "money-functions-s2",
+   "q": "Stalls post prices such as \"one basket of fish: 4 shells.\" Which function of money does this show?",
+   "options": [
+    "Medium of exchange",
+    "Store of value",
+    "Unit of account",
+    "Liquidity"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A unit of account lets everyone state and compare prices in one measure.",
+    "options": [
+     "That function is about trading the shells for goods. Posting prices is about measuring value.",
+     "That function is about holding value over time, as the jars do.",
+     "Right: shells are the common yardstick for comparing the value of goods.",
+     "Liquidity is a property of assets, not one of the three functions of money."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-6",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "money-functions-s2",
+   "q": "Fishers sell fish for shells and then use the shells to buy bread. Which function of money does this show?",
+   "options": [
+    "Medium of exchange",
+    "Unit of account",
+    "Store of value",
+    "Double coincidence of wants"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A medium of exchange is accepted in payment, which removes the need for a double coincidence of wants.",
+    "options": [
+     "Right: shells are accepted in trade, so the fisher need not find a baker who wants fish.",
+     "Pricing goods in shells is the unit of account; here the shells change hands in trade.",
+     "Holding shells for later is the store of value; here they are spent right away.",
+     "That is the problem of barter that money solves, not a function of money."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-7",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "money-functions-s2",
+   "q": "Families keep jars of shells for the stormy season. Which function of money does this show?",
+   "options": [
+    "Unit of account",
+    "Store of value",
+    "Medium of exchange",
+    "Fiat money"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A store of value carries buying power into the future.",
+    "options": [
+     "The unit of account is how prices are stated, not how wealth is kept.",
+     "Right: the shells hold buying power from now until the stormy season.",
+     "The shells will be spent later; keeping them until then is the store of value.",
+     "Fiat money is a kind of money, not one of its functions."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-8",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "money-functions-s2",
+   "q": "A new beach is found where the same shells can be gathered by the thousands. Which function of the shells is most directly harmed?",
+   "options": [
+    "Store of value, because each shell will buy less over time",
+    "Unit of account, because prices can no longer be written down",
+    "Medium of exchange, because people stop wanting to trade",
+    "Liquidity, because shells become harder to spend"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When money becomes plentiful, its value falls (prices rise), which weakens its use as a store of value.",
+    "options": [
+     "Right: a flood of new shells raises shell prices, so saved shells lose buying power.",
+     "Prices can still be stated in shells; they will just be higher.",
+     "Trade goes on; the harm is that shells held for later buy less.",
+     "Shells are as easy to spend as before; what changes is what each one buys."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-9",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which list names the three functions of money?",
+   "options": [
+    "Medium of exchange, unit of account, store of value",
+    "Medium of exchange, source of interest, store of value",
+    "Unit of account, store of value, source of credit",
+    "Store of value, measure of output, medium of exchange"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Money serves as a medium of exchange, a unit of account and a store of value.",
+    "options": [
+     "Right: money is used to pay, to measure value and to save.",
+     "Paying interest is not a function of money; currency pays none.",
+     "Credit is borrowing, not a function of money itself.",
+     "Output is measured with GDP. The third function is unit of account."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-10",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In a barter economy, a plumber who wants shoes has to find a shoemaker who wants plumbing. What problem of barter does money solve here?",
+   "options": [
+    "The need for a double coincidence of wants",
+    "The problem of inflation",
+    "The need to produce more goods",
+    "The problem of scarcity"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "As a medium of exchange, money removes the need for each trade to match two people's wants exactly.",
+    "options": [
+     "Right: with money, the plumber sells plumbing to anyone and buys shoes from anyone.",
+     "Barter has no money prices to inflate; the problem is matching wants.",
+     "Money does not create goods; it makes trading them easier.",
+     "Money does not end scarcity; resources are still limited."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-11",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Prices in a country rise 40% in one year. Which function of its money is hurt the most?",
+   "options": [
+    "Store of value",
+    "Unit of account, because prices are no longer in dollars",
+    "Medium of exchange, because stores refuse payment",
+    "Liquidity, because money takes longer to spend"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "High inflation erodes the buying power of money held over time, weakening it as a store of value.",
+    "options": [
+     "Right: money held for a year buys far less, so people stop holding it as savings.",
+     "Prices are still stated in the currency; they rise often.",
+     "People still pay with it, often faster than before, to spend it before it loses value.",
+     "Money can still be spent at once; it is its value over time that suffers."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-12",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Why is a credit card not counted as money?",
+   "options": [
+    "It is not accepted in enough stores and online shops",
+    "Paying with it is a loan, repaid later with money",
+    "It earns interest for the cardholder",
+    "Its value changes with stock prices"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A credit card is a way to borrow. The checkable deposit or currency used to pay the bill is the money.",
+    "options": [
+     "Credit cards are widely accepted; the issue is what paying with one is.",
+     "Right: the card creates a debt to the card issuer; the money is what pays off the bill.",
+     "Credit cards charge the holder interest; they do not pay it.",
+     "A card's use does not depend on stock prices; it is a way to borrow."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-13",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Lee deposits \\$200 of cash into his checking account. What happens to M1 right away?",
+   "options": [
+    "It rises by \\$200",
+    "It falls by \\$200",
+    "It stays the same",
+    "It rises by \\$400"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Moving money between two parts of M1 leaves M1 unchanged. (What the bank then lends is the next topic.)",
+    "options": [
+     "The new deposit adds \\$200, but \\$200 of currency left the public's hands, so M1 does not change.",
+     "The currency is gone, but the checkable deposit replaces it, so M1 is unchanged.",
+     "Right: currency (in M1) becomes a checkable deposit (also in M1).",
+     "Nothing is counted twice: one part of M1 swaps for another."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-14",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Ana moves \\$1,000 from her checking account into a one-year certificate of deposit. What happens to M1 and M2?",
+   "options": [
+    "M1 rises and M2 is unchanged",
+    "Both fall by \\$1,000",
+    "M1 falls and M2 is unchanged",
+    "Both are unchanged"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Checkable deposits are in M1; small time deposits are in M2 but not M1.",
+    "options": [
+     "Checkable deposits fell, so M1 falls, not rises.",
+     "The \\$1,000 stays in M2 as a small time deposit, so M2 does not fall.",
+     "Right: the money leaves M1 but stays inside M2.",
+     "Checkable deposits are in M1 and time deposits are not, so M1 falls."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-15",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What gives fiat money, such as a modern dollar bill, its value?",
+   "options": [
+    "The gold the government keeps for each bill",
+    "The paper and ink it is printed with",
+    "Its use as a good in production",
+    "Government decree and people's willingness to accept it"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Fiat money has value because the government declares it money and people accept it in trade.",
+    "options": [
+     "Modern currencies are not backed by gold.",
+     "The materials are worth a few cents, far less than the bill.",
+     "That describes commodity money, such as salt or gold, which is valued as a good.",
+     "Right: it is legal tender and people trust others to take it."
+    ]
+   }
+  },
+  {
+   "id": "mac-money-functions-16",
+   "unit": "unit-4",
+   "topic": "money-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are counted in M1? Select all that apply.",
+   "options": [
+    "Coins and paper currency held by the public",
+    "A \\$5,000 certificate of deposit",
+    "A checking account balance",
+    "A \\$3,000 limit on a credit card"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "M1 counts the most spendable money: currency held by the public, checkable deposits and other deposits that can be withdrawn at once.",
+    "options": [
+     "Right: currency outside banks is the most liquid money.",
+     "A small time deposit is counted in M2, not M1.",
+     "Right: checkable deposits can be spent at once by card or check.",
+     "A credit limit is a line of credit, not money."
+    ]
+   }
+  }
+ ]
+}

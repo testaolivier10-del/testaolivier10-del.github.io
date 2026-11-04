@@ -1,0 +1,12 @@
+{
+ "unemployment-labor-force": {
+  "file": "figures/unemployment-labor-force.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A tree diagram. The adult population splits into the labor force and those not in the labor force (retirees, full-time students, people caring for family, discouraged workers). The labor force splits into employed and unemployed. Below: the unemployment rate is unemployed divided by the labor force times 100, and the participation rate is the labor force divided by the adult population times 100."
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "topic": "real-nominal-gdp",
+ "hook": "A headline says GDP hit a record, up 6% in a year. Are people producing 6% more? Not if prices rose 7%: then the economy actually produced less. Nominal GDP mixes how much is made with what it sells for. Taking out the price changes gives real GDP, the number that tells you whether output really grew.",
+ "prereq": [
+  {
+   "q": "A price index is 125. What does that mean?",
+   "options": [
+    "Prices are 25% above the base year",
+    "Prices rose 125%",
+    "The basket costs 125 dollars",
+    "Inflation this year is 125%"
+   ],
+   "correct": 0,
+   "why": "The base year is 100, so 125 is 25% higher.",
+   "review": "price-indices-inflation"
+  },
+  {
+   "q": "A nominal wage of $\\$30$ with a CPI of 120 is a real wage of",
+   "options": [
+    "\\$25",
+    "\\$36",
+    "\\$0.25",
+    "\\$30"
+   ],
+   "correct": 0,
+   "why": "$\\frac{30}{120} \\times 100 = 25$: divide by the index and multiply by 100.",
+   "review": "price-indices-inflation"
+  },
+  {
+   "q": "GDP per capita is",
+   "options": [
+    "GDP divided by population",
+    "GDP times population",
+    "GDP minus imports",
+    "GDP divided by the labor force"
+   ],
+   "correct": 0,
+   "why": "Output per person: GDP divided by population.",
+   "review": "gdp-limitations"
+  }
+ ],
+ "figure": {
+  "figure": "real-nominal-gdp-lines",
+  "caption": "Nominal GDP is below real GDP before the base year and above it after, because prices were lower then and higher later; the two are equal in the base year."
+ },
+ "chain": [
+  {
+   "cause": "Nominal GDP values each year's output at that year's prices",
+   "effect": "it can rise because prices rose, because output rose, or both"
+  },
+  {
+   "cause": "Real GDP values each year's output at base-year prices",
+   "effect": "it changes only when quantities produced change"
+  },
+  {
+   "cause": "Divide nominal GDP by real GDP and multiply by 100",
+   "effect": "the GDP deflator, a price index for everything produced"
+  },
+  {
+   "cause": "Divide nominal GDP by the deflator and multiply by 100",
+   "effect": "real GDP, whose percent change is the growth rate of output"
+  }
+ ],
+ "ideas": [
+  "<b>Nominal GDP</b> uses current prices; <b>real GDP</b> uses base-year prices, so it measures output.",
+  "<b>GDP deflator</b> $= \\frac{\\text{nominal GDP}}{\\text{real GDP}} \\times 100$; <b>real GDP</b> $= \\frac{\\text{nominal GDP}}{\\text{deflator}} \\times 100$. Divide by the deflator, never multiply.",
+  "The deflator is an index (base year 100), not a percent or dollars. Below 100 means prices were lower than in the base year.",
+  "<b>Growth rate of real GDP</b> $= \\frac{\\text{new} - \\text{old}}{\\text{old}} \\times 100$, using real values. Real GDP per capita measures living standards."
+ ],
+ "misconception": {
+  "wrong": "To get real GDP, multiply nominal GDP by the deflator, and a rise in nominal GDP means output grew.",
+  "right": "Divide nominal GDP by the deflator and multiply by 100. Nominal GDP can rise from higher prices alone, so only real GDP shows whether output grew."
+ },
+ "check": [
+  "mac-real-nominal-gdp-1",
+  "mac-real-nominal-gdp-2",
+  "mac-real-nominal-gdp-3",
+  "mac-real-nominal-gdp-5",
+  "mac-real-nominal-gdp-9",
+  "mac-real-nominal-gdp-13",
+  "mac-real-nominal-gdp-15"
+ ],
+ "summary": "Nominal GDP values output at current prices; real GDP values it at base-year prices, so only real GDP changes with production. The GDP deflator is nominal GDP divided by real GDP times 100, and real GDP is nominal GDP divided by the deflator times 100. The growth rate of real GDP is its percent change, and real GDP per capita measures living standards."
+}

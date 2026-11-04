@@ -1,0 +1,20 @@
+{
+ "disposable-income": {
+  "def": "Household income after taxes are paid and transfers received: what households can spend or save."
+ },
+ "mpc": {
+  "def": "Marginal propensity to consume: the share of an extra dollar of disposable income that households spend, the change in consumption divided by the change in disposable income."
+ },
+ "mps": {
+  "def": "Marginal propensity to save: the share of an extra dollar of disposable income that households save. MPS = 1 - MPC."
+ },
+ "spending-multiplier": {
+  "def": "How many dollars real GDP changes for each dollar of new spending, 1 / MPS, because each round of spending is partly re-spent (the multiplier effect)."
+ },
+ "tax-multiplier": {
+  "def": "How many dollars real GDP changes for each dollar of tax change, -MPC / MPS. It is negative and one smaller in size than the spending multiplier."
+ },
+ "balanced-budget-multiplier": {
+  "def": "The effect on real GDP of raising government spending and taxes by the same amount. The spending and tax multipliers add to 1, so output rises by the amount of the spending."
+ }
+}

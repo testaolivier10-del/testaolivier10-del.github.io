@@ -156,6 +156,30 @@ export const CALIBRATION = {
                      { quote: '', reason: '75 m³ is not 1,080,000 m³.', earned: false }] } },
     ],
   },
+  apmacro: {
+    id: 'frq-real-nominal-short',
+    question: 'Country Z reports nominal GDP of 500 billion dollars in Year 1 (the base year, deflator 100) and 600 billion dollars in Year 2, when its GDP deflator is 125.',
+    parts: [
+      { label: 'A', prompt: 'Calculate Country Z\'s real GDP in Year 2. Show your work.',
+        rubric: ['480 billion dollars, with work shown: 600 / 125 x 100. Also accept: (600 / 125) x 100 = 480; 600 / 1.25 = 480'] },
+      { label: 'B', prompt: 'Did Country Z\'s output of goods and services increase, decrease or stay the same from Year 1 to Year 2? Explain using your answer to part A.',
+        rubric: ['Decreased, because real GDP fell from 500 (Year 1, the base year, where real equals nominal) to 480, even though nominal GDP rose. Also accept: decreased, with a real GDP consistent with the answer to part A that is below 500'] },
+    ],
+    answers: [
+      { kind: 'full credit',
+        text: { A: 'Real GDP = 600 / 125 x 100 = 480 billion dollars.', B: 'Output decreased. In the base year real GDP is 500, and in Year 2 it is 480, so less was produced; nominal GDP rose only because prices rose.' },
+        grade: { A: [{ quote: '600 / 125 x 100 = 480 billion dollars', reason: 'Correct value with the work shown.', earned: true }],
+                 B: [{ quote: 'In the base year real GDP is 500, and in Year 2 it is 480', reason: 'Decrease, explained by real GDP falling from 500 to 480.', earned: true }] } },
+      { kind: 'partial',
+        text: { A: '600 / 1.25 = 480', B: 'It increased, because nominal GDP went from 500 to 600.' },
+        grade: { A: [{ quote: '600 / 1.25 = 480', reason: 'Correct value with the work shown, a form the rubric accepts.', earned: true }],
+                 B: [{ quote: '', reason: 'Uses nominal GDP; real output fell, so "increased" is wrong.', earned: false }] } },
+      { kind: 'no credit',
+        text: { A: '600 x 1.25 = 750', B: 'It stayed the same.' },
+        grade: { A: [{ quote: '', reason: 'Multiplies by the deflator instead of dividing: 750 is not 480.', earned: false }],
+                 B: [{ quote: '', reason: 'Real GDP fell from 500 to 480, so output decreased.', earned: false }] } },
+    ],
+  },
 };
 
 export function calibrationText(course) {

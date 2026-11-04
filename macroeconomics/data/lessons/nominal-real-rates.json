@@ -1,0 +1,68 @@
+{
+ "topic": "nominal-real-rates",
+ "hook": "A bank account pays 4% a year, and you feel richer when the balance grows. But if prices rose 5% that year, your money buys less than it did a year ago. The 4% is real money in dollars, yet you lost buying power. Economists keep two interest rates for exactly this reason: one in dollars and one in what those dollars can buy.",
+ "prereq": [
+  {
+   "q": "A price index rises from 200 to 210 over a year. What is the inflation rate?",
+   "options": [
+    "5%",
+    "10%",
+    "2.1%",
+    "105%"
+   ],
+   "correct": 0,
+   "why": "Inflation is the percent change in the index: (210 - 200) / 200 x 100 = 5%.",
+   "review": "price-indices-inflation"
+  },
+  {
+   "q": "What is an interest rate?",
+   "options": [
+    "The yearly cost of borrowing, as a percent of the amount borrowed",
+    "The total a borrower repays",
+    "The price of a share of stock",
+    "The fee to open a bank account"
+   ],
+   "correct": 0,
+   "why": "The interest rate is the price of borrowing money for a year, as a percent.",
+   "review": "financial-assets"
+  }
+ ],
+ "figure": {
+  "figure": "nominal-real-rates-split",
+  "caption": "The nominal interest rate is the real interest rate plus the expected inflation rate."
+ },
+ "chain": [
+  {
+   "cause": "Lenders expect inflation",
+   "effect": "they add the expected inflation rate to the real return they want, so nominal rates rise"
+  },
+  {
+   "cause": "Inflation turns out higher than expected on a fixed-rate loan",
+   "effect": "the real interest rate actually earned is lower than agreed"
+  },
+  {
+   "cause": "The real rate earned is lower than agreed",
+   "effect": "the borrower gains and the lender loses buying power"
+  }
+ ],
+ "ideas": [
+  "The <b>nominal interest rate</b> is the rate stated on a loan, in dollars. The <b>real interest rate</b> is the gain in buying power.",
+  "Real interest rate = nominal interest rate - expected inflation rate. With a 7% nominal rate and a 3% expected inflation rate, the real rate is 4%.",
+  "Lenders build the expected inflation rate into nominal rates, so when lenders expect more inflation, nominal rates rise.",
+  "If inflation is higher than expected, fixed-rate borrowers gain and lenders lose; if lower than expected, the reverse."
+ ],
+ "misconception": {
+  "wrong": "A higher nominal interest rate always means lenders earn more.",
+  "right": "What lenders earn in buying power is the real rate. A 10% loan with 12% inflation earns -2% real, worse than a 4% loan with 1% inflation (3% real)."
+ },
+ "check": [
+  "mac-nominal-real-rates-9",
+  "mac-nominal-real-rates-10",
+  "mac-nominal-real-rates-11",
+  "mac-nominal-real-rates-13",
+  "mac-nominal-real-rates-5",
+  "mac-nominal-real-rates-6",
+  "mac-nominal-real-rates-7"
+ ],
+ "summary": "The nominal interest rate is the rate stated in dollars; the real interest rate is the gain in buying power, the nominal rate minus the expected inflation rate. Lenders add the expected inflation rate to the real return they want, so nominal rates rise when lenders expect more inflation. When inflation turns out higher than expected, fixed-rate borrowers gain and lenders lose, because the real rate actually paid falls."
+}

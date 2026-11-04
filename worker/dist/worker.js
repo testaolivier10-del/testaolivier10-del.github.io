@@ -1005,6 +1005,9 @@ const PASSES = {
   // AP® Precalculus mirrors AP® Calculus AB (docs/apprecalc-spec.md decision 3).
   // Not sold until "pcalc-2027" is in the POLAR_PRODUCTS setting (owner checklist).
   'pcalc-2027':     { course: 'apprecalc', until: '2027-06-30T23:59:59-10:00' },
+  // AP® Macroeconomics mirrors AP® Psychology (docs/apmacro-spec.md decision 3).
+  // Not sold until "macro-2027" is in the POLAR_PRODUCTS setting (owner checklist).
+  'macro-2027':     { course: 'apmacro', until: '2027-06-30T23:59:59-10:00' },
 };
 
 const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty.call(PASSES, id);
@@ -1024,7 +1027,7 @@ function passTerms(pass) {
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
-const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus' };
+const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics' };
 const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
@@ -1686,7 +1689,7 @@ async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apcalcbc: 'AP® Calculus BC', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology', apprecalc: 'AP® Precalculus' };
+const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apcalcbc: 'AP® Calculus BC', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology', apprecalc: 'AP® Precalculus', apmacro: 'AP® Macroeconomics' };
 
 const ENDING_NOTICE_DAYS = 3;
 
@@ -2180,6 +2183,30 @@ const CALIBRATION = {
                      { quote: '', reason: '75 m³ is not 1,080,000 m³.', earned: false }] } },
     ],
   },
+  apmacro: {
+    id: 'frq-real-nominal-short',
+    question: 'Country Z reports nominal GDP of 500 billion dollars in Year 1 (the base year, deflator 100) and 600 billion dollars in Year 2, when its GDP deflator is 125.',
+    parts: [
+      { label: 'A', prompt: 'Calculate Country Z\'s real GDP in Year 2. Show your work.',
+        rubric: ['480 billion dollars, with work shown: 600 / 125 x 100. Also accept: (600 / 125) x 100 = 480; 600 / 1.25 = 480'] },
+      { label: 'B', prompt: 'Did Country Z\'s output of goods and services increase, decrease or stay the same from Year 1 to Year 2? Explain using your answer to part A.',
+        rubric: ['Decreased, because real GDP fell from 500 (Year 1, the base year, where real equals nominal) to 480, even though nominal GDP rose. Also accept: decreased, with a real GDP consistent with the answer to part A that is below 500'] },
+    ],
+    answers: [
+      { kind: 'full credit',
+        text: { A: 'Real GDP = 600 / 125 x 100 = 480 billion dollars.', B: 'Output decreased. In the base year real GDP is 500, and in Year 2 it is 480, so less was produced; nominal GDP rose only because prices rose.' },
+        grade: { A: [{ quote: '600 / 125 x 100 = 480 billion dollars', reason: 'Correct value with the work shown.', earned: true }],
+                 B: [{ quote: 'In the base year real GDP is 500, and in Year 2 it is 480', reason: 'Decrease, explained by real GDP falling from 500 to 480.', earned: true }] } },
+      { kind: 'partial',
+        text: { A: '600 / 1.25 = 480', B: 'It increased, because nominal GDP went from 500 to 600.' },
+        grade: { A: [{ quote: '600 / 1.25 = 480', reason: 'Correct value with the work shown, a form the rubric accepts.', earned: true }],
+                 B: [{ quote: '', reason: 'Uses nominal GDP; real output fell, so "increased" is wrong.', earned: false }] } },
+      { kind: 'no credit',
+        text: { A: '600 x 1.25 = 750', B: 'It stayed the same.' },
+        grade: { A: [{ quote: '', reason: 'Multiplies by the deflator instead of dividing: 750 is not 480.', earned: false }],
+                 B: [{ quote: '', reason: 'Real GDP fell from 500 to 480, so output decreased.', earned: false }] } },
+    ],
+  },
 };
 
 function calibrationText(course) {
@@ -2202,7 +2229,7 @@ function calibrationText(course) {
    frq-grade.js
    =========================================================================== */
 
-/* The AI free-response grader for the six AP® courses (docs/frq-grader.md).
+/* The AI free-response grader for the seven AP® courses (docs/frq-grader.md).
 
    POST /frq/grade  { course: 'apbio', id: 'frq-agar-shape', answers: { a: '...', b: '...' } }
    with the student's Supabase session, from the site's own Origin.
@@ -2244,7 +2271,7 @@ function calibrationText(course) {
 
 
 
-const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv'];
+const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro'];
 const DAILY_CAP = 10;
 const DEFAULT_MODEL = 'claude-haiku-5-5';
 // Bump when the instructions, the schema or the checks change in a way that
@@ -2317,6 +2344,12 @@ const COURSE_CONVENTIONS = {
 - Answers must be specific: a cause-and-effect chain names each link and a direction (increase or decrease); "affects" with no direction is not enough. A hypothesis is a statement with a direction, not a question.
 - A proposed solution or policy must be the kind the rubric asks for (for example a law or rule, not a technology) and say how it works.
 - Keep commonly confused ideas apart: the greenhouse effect versus ozone depletion, bioaccumulation versus biomagnification.`,
+  apmacro: `COURSE CONVENTIONS: AP® Macroeconomics.
+- A calculation point needs the correct value and, when the rubric says "with work shown", the work (the numbers and the operation). A correct number with no work earns nothing on such a point.
+- Directions matter: increase or decrease, left or right, appreciate or depreciate. A change with no direction, or the wrong one, does not earn the point. Closing a gap divides the gap by the multiplier; multiplying instead is wrong.
+- An "explain" point needs the cause and every link of the causal chain the rubric names (for example: lower interest rate, more investment, aggregate demand increases, real output rises); skipping a link the rubric requires does not earn it.
+- Keep commonly confused ideas apart: real versus nominal, cyclical versus natural unemployment, the reserve market (ample reserves, the Fed's administered rates) versus the money market, a shift of a curve versus a movement along it, and the currency on each axis of a foreign exchange graph.
+- Graph parts cannot be seen; grade only what the student wrote for them, as instruction 9 says.`,
 };
 
 function systemBlocks(course) {
@@ -3028,6 +3061,17 @@ const COURSE_RULES = {
     '- Say "the rate of change is increasing" or "decreasing", not the calculus phrase "increasing at a decreasing rate". The average rate of change on an interval is the slope of its secant line. Do not use derivatives.',
     '- Calculator answers are correct to three decimal places, with no rounding partway. Without a calculator, give exact values and combine to one logarithm or one trigonometric term when asked; give every solution in the interval.',
     '- Unit 4 (parametric functions, vectors and matrices) is not on the exam; say so if asked. Do not state a value that is not in the passages; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
+  ].join('\n'),
+  apmacro: [
+    '',
+    'This student is a high-school student preparing for the AP® Macroeconomics exam (May 2027 format: 60 multiple-choice questions, then one long and two short free-response questions with graphs drawn by hand; a four-function calculator). Additional guidance:',
+    '- Explain at a high-school level, from the basics up, and connect every idea to its graph: name the graph, its axes, the curve that shifts and which way, and the new equilibrium compared with the old.',
+    '- Give causal chains with every link: the action, the market it hits, the interest rate, spending, aggregate demand, then real output, the price level and unemployment. Never skip a step.',
+    '- Monetary policy: teach the ample-reserves framework (the Federal Reserve sets its policy rate with administered rates such as interest on reserves) and say when an answer uses the limited-reserves framework (open market operations, the money multiplier).',
+    '- To close a gap, decide the direction first, then divide the gap by the right multiplier. Long-run self-adjustment works through nominal wages and short-run aggregate supply, not aggregate demand.',
+    '- The price of a currency is in units of the other currency per unit of it. Keep policy examples politically neutral. Do not state a value that is not in the passages; say it is not in their material instead.',
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
   ].join('\n'),

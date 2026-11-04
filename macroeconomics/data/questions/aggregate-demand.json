@@ -1,0 +1,587 @@
+{
+ "stimuli": {
+  "aggregate-demand-s1": {
+   "kind": "data",
+   "title": "Planned spending in Country X at today's price level",
+   "invented": true,
+   "table": {
+    "caption": "Planned spending in Country X, billions of dollars, at an unchanged price level (invented data for practice)",
+    "cols": [
+     "Component",
+     "Last year",
+     "This year"
+    ],
+    "rows": [
+     [
+      "Consumption (C)",
+      "700",
+      "700"
+     ],
+     [
+      "Investment (I)",
+      "200",
+      "150"
+     ],
+     [
+      "Government spending (G)",
+      "250",
+      "250"
+     ],
+     [
+      "Exports (X)",
+      "120",
+      "140"
+     ],
+     [
+      "Imports (M)",
+      "100",
+      "100"
+     ]
+    ]
+   }
+  },
+  "aggregate-demand-s2": {
+   "kind": "text",
+   "title": "Three news stories from Quillon",
+   "text": "<p>Quillon is an invented country. In one month its newspapers report three stories:</p><ol><li>Home and stock prices in Quillon jump, so households feel richer.</li><li>A deep recession hits Quillon's main trading partner, so foreign incomes fall.</li><li>Quillon's firms expect sales to boom next year and plan new factories.</li></ol><p>Assume nothing else changes, including the price level, unless a question says so.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-aggregate-demand-1",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "aggregate-demand-s1",
+   "q": "Using the table, calculate total planned spending in Country X this year, in billions of dollars, as $C + I + G + (X - M)$.",
+   "why": {
+    "correct": "This year: $700 + 150 + 250 + (140 - 100) = 1{,}140$ billion dollars. Net exports enter as exports minus imports."
+   },
+   "numeric": {
+    "from": {
+     "fn": "gdp",
+     "args": [
+      700,
+      150,
+      250,
+      140,
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        700,
+        150,
+        250,
+        140,
+        100
+       ]
+      },
+      "why": "You added imports. Imports are spending on goods made abroad, so they are subtracted: use $X - M$."
+     },
+     {
+      "from": {
+       "fn": "gdp",
+       "args": [
+        700,
+        200,
+        250,
+        120,
+        100
+       ]
+      },
+      "why": "That is last year's total. The question asks about this year, with investment at 150 and exports at 140."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-2",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "aggregate-demand-s1",
+   "q": "Based on the table, what is the overall effect of the two changes on Country X's aggregate demand curve?",
+   "options": [
+    "It shifts left, because investment fell by more than net exports rose",
+    "It shifts right, because exports rose while imports stayed the same",
+    "It does not shift, because consumption and government spending did not change",
+    "It moves along the curve to a lower price level and less output"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Total planned spending fell from 1,170 to 1,140 billion dollars at the same price level, so AD shifted left.",
+    "options": [
+     "Right: investment fell by 50 and net exports rose by 20, so spending at the same price level fell by 30, a shift left.",
+     "Exports did rise by 20, but investment fell by 50 at the same time. Add both changes before deciding.",
+     "AD shifts when any component changes at a given price level, not only C or G. Investment and exports changed here.",
+     "The price level is unchanged in the table, so this is not a movement along AD. Spending changed for other reasons, which is a shift."
+    ]
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-3",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "aggregate-demand-s1",
+   "q": "Which event could explain the change in investment in the table?",
+   "options": [
+    "Households bought fewer new cars and appliances",
+    "Firms grew pessimistic about future sales and cut plans for new equipment",
+    "Foreign buyers bought more of Country X's goods",
+    "The government built fewer roads and bridges"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Investment (I) is business spending on capital such as equipment and buildings; it falls when firms expect weaker sales.",
+    "options": [
+     "Household purchases of cars and appliances are consumption, which stayed at 700 in the table.",
+     "Right: investment is spending on capital goods, and expected sales drive it. Gloomier expectations cut it.",
+     "That raises exports, which did rise in the table, but it is not a change in investment.",
+     "Public roads are government spending, which stayed at 250."
+    ]
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-4",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "aggregate-demand-s1",
+   "q": "Using the table, calculate Country X's net exports this year, in billions of dollars.",
+   "why": {
+    "correct": "Net exports $= X - M = 140 - 100 = 40$ billion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "netExports",
+     "args": [
+      140,
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        140,
+        100
+       ]
+      },
+      "why": "You added imports to exports. Net exports are exports minus imports."
+     },
+     {
+      "from": {
+       "fn": "netExports",
+       "args": [
+        100,
+        140
+       ]
+      },
+      "why": "You subtracted the wrong way round. Net exports are exports minus imports, $X - M$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-5",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "aggregate-demand-s2",
+   "q": "How does story 1 (rising home and stock prices) affect Quillon's aggregate demand?",
+   "options": [
+    "AD shifts left, because households save their gains instead of spending them",
+    "There is a movement down along AD, because the price level falls",
+    "AD shifts right, because richer households increase consumption at every price level",
+    "AD does not change, because stocks are assets and not goods"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Higher household wealth raises consumption at every price level: AD shifts right.",
+    "options": [
+     "Households feel richer and usually spend more out of their current income, not less.",
+     "Home and stock prices are not the price level of goods and services. A change in wealth shifts AD.",
+     "Right: higher wealth raises consumption at every price level, so the whole AD curve moves right.",
+     "Buying stocks is not counted in GDP, but feeling richer changes how much households spend on goods and services."
+    ]
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-6",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "aggregate-demand-s2",
+   "q": "How does story 2 (a recession abroad) affect Quillon's aggregate demand?",
+   "options": [
+    "AD shifts right, because Quillon's imports become cheaper",
+    "AD shifts right, because foreign workers move to Quillon",
+    "AD is unaffected, because the recession happens in another country",
+    "AD shifts left, because foreigners buy fewer of Quillon's exports"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Exports depend on foreign incomes. When they fall, Quillon's net exports fall and AD shifts left.",
+    "options": [
+     "A recession abroad lowers foreign incomes; the main effect is fewer exports for Quillon, not cheaper imports.",
+     "The story is about foreign spending on Quillon's goods. Nothing in it says workers move.",
+     "Exports are part of Quillon's AD, so a fall in foreign buying reaches Quillon directly.",
+     "Right: lower foreign incomes cut foreign spending on Quillon's goods, so net exports and AD fall."
+    ]
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-7",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "aggregate-demand-s2",
+   "q": "Which component of Quillon's aggregate demand changes first because of story 3?",
+   "options": [
+    "Investment",
+    "Consumption",
+    "Government spending",
+    "Net exports"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Optimistic firms buy more capital goods (factories and equipment), so investment rises and AD shifts right.",
+    "options": [
+     "Right: new factories are capital goods bought by firms, which is investment spending.",
+     "Consumption is household spending on goods and services. Factories are bought by firms.",
+     "The factories are planned by private firms, not by the government.",
+     "Nothing in story 3 is about trade with other countries."
+    ]
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-8",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "analyze",
+   "diff": 3,
+   "type": "multi",
+   "practice": "2.B",
+   "stimulus": "aggregate-demand-s2",
+   "q": "Considering all three stories together, which statements about Quillon's AD are correct? Select all that apply.",
+   "options": [
+    "Stories 1 and 3 each shift AD to the right",
+    "Story 2 shifts AD to the left",
+    "The overall direction of the AD shift depends on how large each change is",
+    "No story shifts AD, because the price level is unchanged",
+    "Story 2 moves Quillon along its AD curve",
+    "Story 3 raises AD later, once the factories are finished"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Stories 1 and 3 push AD right, story 2 pushes it left; with no sizes given, the net direction cannot be told.",
+    "options": [
+     "Right: higher wealth raises C and optimism raises I, both at every price level.",
+     "Right: fewer exports lower net exports at every price level.",
+     "Right: two forces push right and one pushes left, so the net shift depends on their sizes.",
+     "An unchanged price level is exactly why these are shifts: spending changed for reasons other than the price level.",
+     "A movement along AD needs a change in the price level. Story 2 changes foreign incomes.",
+     "Spending on building the factories is investment the moment it happens; it raises AD right away."
+    ]
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-9",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which pair of labels belongs on the axes of an aggregate demand graph?",
+   "options": [
+    "Price on the vertical axis and quantity on the horizontal axis",
+    "Price level on the vertical axis and real GDP on the horizontal axis",
+    "Inflation rate on the vertical axis and unemployment rate on the horizontal axis",
+    "Nominal GDP on the vertical axis and real GDP on the horizontal axis"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The aggregate demand graph has the price level (PL) on the vertical axis and real GDP (Y) on the horizontal axis.",
+    "options": [
+     "Those are the labels for one market, such as the market for coffee. AD is the whole economy.",
+     "Right: AD shows total planned spending on real output at each price level.",
+     "Those axes belong to a different graph. AD plots the price level against real GDP.",
+     "The vertical axis is a price index for the whole economy, the price level, not nominal GDP."
+    ]
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-10",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "The price level falls while household wealth in dollars stays the same. Through the real wealth effect, what happens?",
+   "options": [
+    "Households feel poorer, so consumption falls and AD shifts left",
+    "Consumption rises, so the AD curve shifts to the right",
+    "The same savings buy more, so consumption rises and real GDP demanded rises along AD",
+    "Nothing happens, because wealth measured in dollars did not change"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The real wealth effect: a lower price level raises the purchasing power of wealth, so real spending rises, a movement down along AD.",
+    "options": [
+     "A lower price level makes the same dollars worth more, so households feel richer, not poorer.",
+     "The change starts with the price level, so it is a movement along AD, not a shift of the curve.",
+     "Right: a lower price level raises the real value of savings, so households buy more; that is a movement down along AD.",
+     "What matters is what the dollars can buy. With lower prices, the same dollars buy more."
+    ]
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-11",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the links of the interest rate effect in order, starting from a fall in the price level.",
+   "options": [
+    "The price level falls",
+    "People need less money for the same purchases, so they borrow less and lend more",
+    "Interest rates fall",
+    "Firms and households spend more on investment and big items",
+    "Real GDP demanded rises, a movement down along AD"
+   ],
+   "why": {
+    "correct": "With lower prices, less money is needed for the same purchases; more lending and less borrowing lower interest rates, and interest-sensitive spending rises."
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-12",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Why does the aggregate demand curve slope down for a different reason than the demand curve for one good?",
+   "options": [
+    "When the price of one good falls, buyers switch to it from other goods, and the same holds for the whole economy",
+    "A lower price level raises nominal incomes, so people buy more of everything",
+    "Aggregate demand counts government spending, which rises when prices fall",
+    "A lower price level changes real wealth, interest rates and the price of a country's goods against foreign goods"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "One good's demand slopes down partly because buyers switch goods. For the whole economy three effects do the work: the real wealth effect, the interest rate effect and the exchange rate effect.",
+    "options": [
+     "Switching between goods explains one market's demand. When the whole price level falls there is no other domestic good to switch from.",
+     "A lower price level does not raise nominal incomes; it raises what a given income or savings can buy.",
+     "Government spending is set by policy, not by the price level, and it is not why AD slopes down.",
+     "Right: AD slopes down because of the real wealth effect, the interest rate effect and the exchange rate effect, which act on the whole economy."
+    ]
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-13",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "The price level in Country Z falls while prices abroad stay the same. Through the exchange rate effect, what happens to Country Z's spending?",
+   "options": [
+    "Its goods become cheaper relative to foreign goods, so net exports rise along AD",
+    "Its goods become dearer relative to foreign goods, so net exports fall",
+    "Imports rise because foreign goods are now cheaper for Country Z",
+    "AD shifts right because exports are a component of AD"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A lower domestic price level makes domestic goods relatively cheaper: exports rise, imports fall, and real GDP demanded rises along AD.",
+    "options": [
+     "Right: exports rise and imports fall, so net exports and real GDP demanded rise, a movement down along AD.",
+     "A lower domestic price level makes domestic goods cheaper, not dearer, compared with foreign goods.",
+     "Foreign prices did not change while Country Z's fell, so foreign goods are relatively dearer and imports fall.",
+     "Exports rise here because Country Z's price level fell, so it is a movement along AD, not a shift."
+    ]
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-14",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Firms become much more optimistic about future sales and raise their spending on new equipment. Shift the aggregate demand curve to show the effect.",
+   "why": {
+    "correct": "More investment at every price level shifts AD to the right."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "AD"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in investment spending"
+    },
+    "slips": {
+     "AD": "More investment spending raises planned spending at every price level, so AD shifts right."
+    }
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-15",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Nothing shifts, but the price level falls. Mark a point X on the aggregate demand curve showing the new price level and real GDP demanded.",
+   "why": {
+    "correct": "A fall in the price level is a movement down along AD: a lower price level and more real GDP demanded."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "AD",
+      "x": "up",
+      "y": "down"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-16",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: build the chain from a rise in household wealth to aggregate demand.",
+   "why": {
+    "correct": "Higher wealth raises consumption at every price level, so AD shifts right."
+   },
+   "specific": {
+    "frame": "Household wealth rises, so consumption ___ at every price level; ___ shifts to the ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "When household wealth rises, consumption increases at every price level because households feel richer, so the aggregate demand curve shifts to the right.",
+    "slots": {
+     "spending": {
+      "label": "Consumption",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Richer households spend more, not less."
+      }
+     },
+     "curve": {
+      "label": "The curve",
+      "options": [
+       "aggregate demand",
+       "the demand for one good"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Consumption across the whole economy is part of aggregate demand."
+      }
+     },
+     "direction": {
+      "label": "Which way",
+      "options": [
+       "right",
+       "left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More spending at every price level is a shift right."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-aggregate-demand-17",
+   "unit": "unit-3",
+   "topic": "aggregate-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "The government cuts income taxes, and households keep more of each paycheck. What happens to aggregate demand?",
+   "options": [
+    "It shifts left, because the government collects less money to spend",
+    "It shifts right, because take-home pay and consumption rise",
+    "It moves along the curve, because taxes are a kind of price",
+    "It shifts right, because the government buys more goods"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A tax cut raises households' take-home pay, so consumption and AD rise at every price level.",
+    "options": [
+     "A tax cut changes taxes, not the government's spending plans; G is unchanged here.",
+     "Right: lower taxes leave households more to spend, so consumption rises at every price level.",
+     "Taxes are not the price level. A tax change shifts AD through consumption.",
+     "The government did not raise its purchases here; the effect works through households' spending."
+    ]
+   }
+  }
+ ]
+}

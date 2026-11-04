@@ -1,0 +1,374 @@
+{
+ "stimuli": {
+  "slopes-curves-s1": {
+   "kind": "data",
+   "title": "Four points on a straight line",
+   "invented": true,
+   "table": {
+    "caption": "Price of a sandwich and the number buyers want each day (invented data for practice)",
+    "cols": [
+     "Quantity (sandwiches)",
+     "Price (\\$)"
+    ],
+    "rows": [
+     [
+      "10",
+      "9"
+     ],
+     [
+      "20",
+      "7"
+     ],
+     [
+      "30",
+      "5"
+     ],
+     [
+      "40",
+      "3"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-slopes-curves-1",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A straight line passes through the points (2, 8) and (6, 4). What is its slope?",
+   "why": {
+    "correct": "Slope is rise over run: $\\frac{4 - 8}{6 - 2} = \\frac{-4}{4} = -1$. The line falls one unit for each unit it moves right."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        4,
+        8
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        6,
+        2
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "You dropped the sign. The vertical value falls from 8 to 4 while the horizontal value rises, so the slope is negative."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-2",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "As the price of a scooter rises from \\$4 to \\$10 (hundreds of dollars), the number sellers offer rises from 20 to 50. Price is on the vertical axis. What is the slope of the line between these points?",
+   "why": {
+    "correct": "Rise over run: the rise is $10 - 4 = 6$ and the run is $50 - 20 = 30$, so the slope is $\\frac{6}{30} = 0.2$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        10,
+        4
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        50,
+        20
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "You divided the run by the rise. Slope is the change in the vertical value over the change in the horizontal value: 6 / 30."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-3",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A line on a graph rises from left to right. What is true of its slope?",
+   "options": [
+    "It is negative",
+    "It is positive",
+    "It is zero",
+    "It is undefined"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Rising to the right means the vertical value grows as the horizontal value grows: a positive slope.",
+    "options": [
+     "A negative slope falls from left to right.",
+     "Right: both values rise together.",
+     "A zero slope is a flat line.",
+     "Rise over run gives a number for any straight line that is not vertical."
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-4",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "On a graph with price on the vertical axis and quantity on the horizontal axis, a curve is a vertical line at a quantity of 50. What does it show?",
+   "options": [
+    "The quantity is 50 at every price",
+    "The price is 50 at every quantity",
+    "Quantity rises as price rises",
+    "Quantity falls as price rises"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A vertical line keeps the horizontal value fixed, so the quantity stays at 50 whatever the price.",
+    "options": [
+     "Right: the horizontal value never changes along a vertical line.",
+     "That would be a horizontal line at a price of 50.",
+     "That would be an upward-sloping curve.",
+     "That would be a downward-sloping curve."
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-5",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is the slope of a horizontal line?",
+   "options": [
+    "One, because it runs straight across the whole graph",
+    "Negative, because it runs to the right",
+    "It changes from point to point",
+    "Zero, because the vertical value does not change"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Along a horizontal line the rise is 0 for any run, so the slope is 0.",
+    "options": [
+     "A slope of 1 rises one unit for each unit across.",
+     "Running to the right does not make a slope negative; falling does.",
+     "A straight line has the same slope at every point.",
+     "Right: no rise means a slope of zero."
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-6",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A straight line and a curve that bows outward both run from the vertical axis down to the horizontal axis. How do their slopes differ?",
+   "options": [
+    "Both have the same slope at every point",
+    "The line gets steeper as it moves right; the bowed curve does not",
+    "The line's slope is the same at every point; the bowed curve gets steeper as it moves right",
+    "The bowed curve has a positive slope and the line a negative slope"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A straight line has one slope everywhere. A curve bowed outward starts flat and grows steeper as it falls toward the horizontal axis.",
+    "options": [
+     "Only a straight line keeps one slope; the bowed curve changes.",
+     "This reverses them.",
+     "Right: constant for the line, steeper and steeper for the bowed curve.",
+     "Both fall from left to right, so both slopes are negative."
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-7",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "slopes-curves-s1",
+   "q": "Using the table, what is the slope of the line, with price on the vertical axis?",
+   "why": {
+    "correct": "Between the first two rows the rise is $7 - 9 = -2$ and the run is $20 - 10 = 10$, so the slope is $\\frac{-2}{10} = -0.2$. Any two rows give the same answer on a straight line."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        7,
+        9
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        20,
+        10
+       ]
+      }
+     ]
+    },
+    "places": 1,
+    "mistakes": [
+     {
+      "value": 0.2,
+      "why": "You dropped the sign. Price falls as quantity rises, so the slope is negative."
+     },
+     {
+      "value": -5,
+      "why": "You divided the run by the rise. Slope is the change in price (vertical) over the change in quantity (horizontal)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-8",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "slopes-curves-s1",
+   "q": "How would you describe the curve drawn from the table?",
+   "options": [
+    "Upward sloping: a positive slope from point to point",
+    "Downward sloping: a negative slope",
+    "A vertical line",
+    "A horizontal line"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Price falls by \\$2 each time quantity rises by 10, so the line falls from left to right.",
+    "options": [
+     "An upward-sloping line would show price rising with quantity.",
+     "Right: price falls as quantity rises.",
+     "A vertical line would keep the quantity fixed.",
+     "A horizontal line would keep the price fixed."
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-9",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "slopes-curves-s1",
+   "q": "If the line from the table keeps the same slope, what price goes with a quantity of 50 sandwiches?",
+   "options": [
+    "\\$1",
+    "\\$2",
+    "\\$3",
+    "\\$0"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each 10 more sandwiches come with a price \\$2 lower, so 50 sandwiches go with \\$3 - \\$2 = \\$1.",
+    "options": [
+     "Right: one more step of -\\$2 from \\$3.",
+     "That lowers the price by only \\$1; each step of 10 is \\$2.",
+     "That is the price at 40 sandwiches.",
+     "That lowers the price by \\$3 in one step."
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-10",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Place point X on the upward-sloping curve at a higher price than the marked starting point.",
+   "why": {
+    "correct": "Along an upward-sloping curve, a higher price goes with a larger quantity: X sits up and to the right on S."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "S",
+      "x": "up",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-slopes-curves-11",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Place point X on the downward-sloping curve at a larger quantity than the marked starting point.",
+   "why": {
+    "correct": "Along a downward-sloping curve, a larger quantity goes with a lower price: X sits down and to the right on D."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "D",
+      "x": "up",
+      "y": "down"
+     }
+    }
+   }
+  }
+ ]
+}

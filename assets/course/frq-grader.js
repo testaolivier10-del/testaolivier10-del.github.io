@@ -1,5 +1,5 @@
 /* "Grade my answer": the AI free-response grader's page half, shared by the
-   six AP® courses (docs/frq-grader.md). Each course's pages/frq.js loads it
+   seven AP® courses (docs/frq-grader.md). Each course's pages/frq.js loads it
    on one question's page and calls
 
      LevlFrqGrader.mount(box, {

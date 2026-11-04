@@ -1,0 +1,351 @@
+{
+ "stimuli": {
+  "curves-crossing-s1": {
+   "kind": "graph",
+   "title": "A market after one curve moved",
+   "graph": {
+    "kind": "sd",
+    "show": {
+     "D": -1
+    }
+   }
+  },
+  "curves-crossing-s2": {
+   "kind": "data",
+   "title": "Buyers and sellers of phone cases",
+   "invented": true,
+   "table": {
+    "caption": "Phone cases buyers want and sellers offer each week at four prices (invented data for practice)",
+    "cols": [
+     "Price (\\$)",
+     "Cases buyers want",
+     "Cases sellers offer"
+    ],
+    "rows": [
+     [
+      "10",
+      "80",
+      "20"
+     ],
+     [
+      "15",
+      "60",
+      "40"
+     ],
+     [
+      "20",
+      "50",
+      "50"
+     ],
+     [
+      "25",
+      "40",
+      "60"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mac-curves-crossing-1",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Buyers want more umbrellas at every price after a rainy forecast. Shift the right curve and mark the new point where the curves cross.",
+   "why": {
+    "correct": "D shifts right along the upward curve S, so the new crossing E2 is higher and to the right: a higher price and a larger quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "a rainy forecast that makes buyers want more umbrellas",
+     "outcome": {
+      "price": "up",
+      "quantity": "up"
+     }
+    },
+    "slips": {
+     "S": "The forecast changes what buyers want, so it moves D; sellers' costs have not changed."
+    }
+   }
+  },
+  {
+   "id": "mac-curves-crossing-2",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A new machine lets bakers make bread more cheaply, so at every price they offer more loaves. Shift the right curve and mark the new crossing.",
+   "why": {
+    "correct": "S shifts right down along D, so E2 is lower and to the right: a lower price and a larger quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "a machine that lowers bakers' costs",
+     "outcome": {
+      "price": "down",
+      "quantity": "up"
+     }
+    },
+    "slips": {
+     "D": "The machine changes what bakers can offer, so it moves S, not the buyers' curve D."
+    }
+   }
+  },
+  {
+   "id": "mac-curves-crossing-3",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "On a market graph, what does the point where the two curves cross show?",
+   "options": [
+    "The highest price buyers will pay for the good",
+    "The price at which the quantity buyers want equals the quantity offered",
+    "The lowest price sellers will accept for the good",
+    "The price at which buyers and sellers trade nothing"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "At the crossing both curves give the same quantity at the same price, so buyers and sellers agree.",
+    "options": [
+     "Buyers would pay more for the first few units; the crossing is where the curves meet.",
+     "Right: the two quantities match there.",
+     "Sellers would accept less for the first few units; the crossing is where the curves meet.",
+     "The crossing is where trade happens, not where it stops."
+    ]
+   }
+  },
+  {
+   "id": "mac-curves-crossing-4",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "curves-crossing-s1",
+   "q": "Which curve moved in the graph?",
+   "options": [
+    "D shifted left",
+    "D shifted right",
+    "S shifted left",
+    "S shifted right"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The faded D1 sits to the right of the new curve, so D shifted left, and S did not move.",
+    "options": [
+     "Right: the new D lies to the left of D1.",
+     "The new D is to the left of D1, not the right.",
+     "S has one position in the graph; it did not move.",
+     "S has one position in the graph; it did not move."
+    ]
+   }
+  },
+  {
+   "id": "mac-curves-crossing-5",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "curves-crossing-s1",
+   "q": "Compared with the first crossing, where is the new crossing in the graph?",
+   "options": [
+    "At a higher price and a larger quantity",
+    "At a lower price and a larger quantity",
+    "At the same price and a smaller quantity",
+    "At a lower price and a smaller quantity"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "D moved left down along the upward curve S, so the crossing moved down and to the left.",
+    "options": [
+     "That would follow a shift of D to the right.",
+     "That would follow a shift of S to the right.",
+     "The price changes too, because S slopes upward.",
+     "Right: down and to the left along S."
+    ]
+   }
+  },
+  {
+   "id": "mac-curves-crossing-6",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "curves-crossing-s1",
+   "q": "Which event could have caused the change in the graph?",
+   "options": [
+    "Sellers' costs for materials fall",
+    "More sellers enter the market",
+    "Buyers learn that a cheaper rival product works just as well",
+    "Buyers come to expect the price of the product to rise next month"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A cheaper alternative means fewer units wanted at every price: D shifts left.",
+    "options": [
+     "Lower costs would move S, not D.",
+     "More sellers would move S, not D.",
+     "Right: buyers want fewer units at every price.",
+     "Expecting a higher price next month makes buyers want more now, shifting D right."
+    ]
+   }
+  },
+  {
+   "id": "mac-curves-crossing-7",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "curves-crossing-s2",
+   "q": "At which price in the table do the two curves cross?",
+   "options": [
+    "\\$15",
+    "\\$20",
+    "\\$25",
+    "\\$10"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "At \\$20 buyers want 50 cases and sellers offer 50, the only row where the two quantities match.",
+    "options": [
+     "At \\$15 buyers want 60 but sellers offer only 40.",
+     "Right: 50 wanted and 50 offered.",
+     "At \\$25 sellers offer 60 but buyers want only 40.",
+     "At \\$10 buyers want 80 but sellers offer only 20."
+    ]
+   }
+  },
+  {
+   "id": "mac-curves-crossing-8",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "stimulus": "curves-crossing-s2",
+   "q": "Using the table, at a price of \\$10, how many more cases do buyers want than sellers offer each week?",
+   "why": {
+    "correct": "At \\$10 buyers want 80 and sellers offer 20: $80 - 20 = 60$ more cases wanted than offered."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      80,
+      20
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 100,
+      "why": "You added the two quantities. The gap between them is the larger minus the smaller: 80 - 20."
+     },
+     {
+      "value": 80,
+      "why": "That is the number buyers want. The question asks how many more they want than sellers offer: 80 - 20."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-curves-crossing-9",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "curves-crossing-s2",
+   "q": "Sellers find a cheaper supplier, and at each price they now offer 20 more cases than in the table. At what price do the curves cross now?",
+   "options": [
+    "\\$15",
+    "\\$20",
+    "\\$25",
+    "\\$10"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With 20 more offered, sellers offer 60 at \\$15, which matches the 60 buyers want there.",
+    "options": [
+     "Right: 60 wanted and 60 offered at \\$15.",
+     "At \\$20 sellers would now offer 70 but buyers want 50.",
+     "At \\$25 sellers would now offer 80 but buyers want 40.",
+     "At \\$10 sellers would now offer 40 but buyers want 80."
+    ]
+   }
+  },
+  {
+   "id": "mac-curves-crossing-10",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "To compare two crossings on an exam graph, what should you show?",
+   "options": [
+    "The new crossing by itself, since the old one no longer matters",
+    "The two curves alone, since the crossings are obvious from them",
+    "The new curve drawn over the old one, with no labels needed",
+    "Both crossings, labeled, with dashed lines to the old and new price and quantity"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Readers look for the old and the new equilibrium on each axis (P1 and P2, Q1 and Q2) so they can see the direction of each change.",
+    "options": [
+     "Without the old crossing there is nothing to compare against.",
+     "Readers score marked and labeled points, not what seems obvious.",
+     "Unlabeled curves lose the labeling point.",
+     "Right: both points, both axes, labeled."
+    ]
+   }
+  }
+ ]
+}

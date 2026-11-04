@@ -1,0 +1,11 @@
+{
+ "unexpected-inflation": {
+  "def": "Inflation different from what people anticipated when they signed loans, wage contracts or pensions. Unanticipated inflation redistributes purchasing power; anticipated inflation is built into those agreements."
+ },
+ "fixed-income": {
+  "def": "An income set in dollars that does not rise with prices, such as a pension that pays the same amount each month. Unanticipated inflation hurts people on fixed incomes and lenders and helps fixed-rate borrowers."
+ },
+ "menu-costs": {
+  "def": "The costs to firms of changing prices often, such as reprinting menus and updating price tags. Shoe-leather costs are the time and effort people spend holding less cash when inflation erodes its value."
+ }
+}

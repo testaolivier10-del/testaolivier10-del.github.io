@@ -1,0 +1,72 @@
+{
+ "topic": "shifts-movements",
+ "hook": "A pizza place cuts its price on Tuesdays and sells more slices. Across town, a new college dorm opens and another pizza place sells more slices at the same old price. Both sell more, but one moved along its curve and the other saw the whole curve move. Telling the two apart is the most tested graph skill in the course.",
+ "prereq": [
+  {
+   "q": "A curve falls from left to right. Its slope is",
+   "options": [
+    "negative",
+    "positive",
+    "zero",
+    "impossible to say"
+   ],
+   "correct": 0,
+   "why": "Falling to the right means a negative slope.",
+   "review": "slopes-curves"
+  },
+  {
+   "q": "On a market graph, which variable is on the vertical axis?",
+   "options": [
+    "Price",
+    "Quantity",
+    "Income",
+    "Time"
+   ],
+   "correct": 0,
+   "why": "A market graph has Price up the side and Quantity across the bottom.",
+   "review": "axes-points"
+  }
+ ],
+ "figure": {
+  "figure": "shifts-movements-two-ways",
+  "caption": "Left: a lower price moves along the same curve. Right: a change in something other than price shifts the whole curve."
+ },
+ "chain": [
+  {
+   "cause": "A curve is drawn holding every other influence fixed (ceteris paribus)",
+   "effect": "it shows only how the two graphed variables relate"
+  },
+  {
+   "cause": "A variable on one of the axes changes",
+   "effect": "you move along the curve to a new point"
+  },
+  {
+   "cause": "Something off the axes changes",
+   "effect": "the whole curve shifts, right or left"
+  },
+  {
+   "cause": "You draw the shift with an arrow and a new label",
+   "effect": "a reader can score the curve and the direction"
+  }
+ ],
+ "ideas": [
+  "<b>Movement along a curve</b>: caused by a change in a variable on one of its axes (on a market graph, the price).",
+  "<b>Shift of a curve</b>: caused by a change in anything else. Right means a larger quantity at every price; left means a smaller one.",
+  "<b>Ceteris paribus</b> (\"other things equal\") is the rule behind every curve: one of those other things changing is what shifts it.",
+  "Label a shifted curve with a new subscript (D1 to D2) and draw an arrow showing the direction."
+ ],
+ "misconception": {
+  "wrong": "A lower price shifts the curve D to the right, because buyers buy more.",
+  "right": "A lower price moves buyers down along the same curve D. Only a change in something other than the good's own price, such as incomes or the number of buyers, shifts D."
+ },
+ "check": [
+  "mac-shifts-movements-1",
+  "mac-shifts-movements-3",
+  "mac-shifts-movements-4",
+  "mac-shifts-movements-7",
+  "mac-shifts-movements-9",
+  "mac-shifts-movements-10",
+  "mac-shifts-movements-11"
+ ],
+ "summary": "Every curve is drawn holding other things equal. A change in a variable on one of the axes moves you along the curve to a new point; a change in anything else shifts the whole curve right or left. On the exam, name the cause, decide shift or movement, draw the new curve with a new subscript and an arrow, and label everything."
+}

@@ -1,0 +1,12 @@
+{
+ "growth-policy-channels": {
+  "file": "figures/growth-policy-channels.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four policy channels, physical capital, human capital, technology and infrastructure, all leading to higher productivity, LRAS shifting right and the PPC shifting out."
+ }
+}

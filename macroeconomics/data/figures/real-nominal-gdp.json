@@ -1,0 +1,12 @@
+{
+ "real-nominal-gdp-lines": {
+  "file": "figures/real-nominal-gdp-lines.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Line chart of invented data, Years 1 to 5, base Year 3. Real GDP rises from 900 to 1,100 billion dollars. Nominal GDP rises from 810 to 1,210. The lines cross in Year 3: before it nominal GDP is below real GDP because prices were lower than in the base year, and after it nominal GDP is above real GDP."
+ }
+}

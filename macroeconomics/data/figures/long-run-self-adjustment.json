@@ -1,0 +1,12 @@
+{
+ "long-run-self-adjustment-recession": {
+  "file": "figures/long-run-self-adjustment-recession.svg",
+  "ext": "svg",
+  "w": 420,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An AD-AS graph with a vertical LRAS at YF. AD crosses SRAS1 at Y1, below YF, at price level PL1. As nominal wages fall, SRAS1 shifts right to SRAS2, which crosses AD on LRAS at YF and a lower price level PL2."
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "demand-pull": {
+  "def": "Placeholder: inflation caused by a rise in aggregate demand."
+ },
+ "cost-push": {
+  "def": "Placeholder: inflation caused by a fall in short-run aggregate supply, as when input costs rise."
+ },
+ "ad-shock": {
+  "def": "Placeholder: an unexpected change in aggregate demand."
+ }
+}

@@ -1,0 +1,898 @@
+{
+ "stimuli": {
+  "balance-of-payments-s1": {
+   "kind": "data",
+   "title": "Arland's international transactions in one year",
+   "invented": true,
+   "table": {
+    "caption": "Arland's transactions with the rest of the world, billions of arls (invented data for practice)",
+    "cols": [
+     "Transaction",
+     "Amount"
+    ],
+    "rows": [
+     [
+      "Exports of goods",
+      "300"
+     ],
+     [
+      "Imports of goods",
+      "380"
+     ],
+     [
+      "Exports of services",
+      "120"
+     ],
+     [
+      "Imports of services",
+      "90"
+     ],
+     [
+      "Income received from abroad (interest, dividends, wages)",
+      "45"
+     ],
+     [
+      "Income paid to foreigners",
+      "30"
+     ],
+     [
+      "Net transfers sent abroad (gifts, aid, money sent home)",
+      "25"
+     ],
+     [
+      "Arland residents' purchases of foreign assets",
+      "90"
+     ]
+    ]
+   }
+  },
+  "balance-of-payments-s2": {
+   "kind": "text",
+   "title": "Five transactions for Belvia",
+   "text": "<p>Belvia is an invented country. During one year these transactions happen between its residents and the rest of the world:</p><ol><li>A Belvian winery ships wine to a store abroad and is paid for it.</li><li>A Belvian family sends part of its wages to relatives who live abroad.</li><li>A pension fund abroad buys Belvian government bonds.</li><li>Belvian tourists pay for hotels during a vacation abroad.</li><li>A Belvian carmaker buys a factory in another country.</li></ol>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-balance-of-payments-1",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "balance-of-payments-s1",
+   "q": "Use the table. What is Arland's balance of trade in goods and services, in billions of arls? Write a deficit as a negative number.",
+   "why": {
+    "correct": "Exports minus imports, goods and services together: $(300 + 120) - (380 + 90) = 420 - 470 = -50$. Arland bought 50 billion arls more from abroad than it sold, a trade deficit."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        300,
+        120
+       ]
+      },
+      {
+       "fn": "add",
+       "args": [
+        380,
+        90
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 50,
+      "why": "The size is right but the sign is not: imports (470) are larger than exports (420), so the balance is a deficit, written -50."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        300,
+        380
+       ]
+      },
+      "why": "That is the balance on goods alone. The balance of trade in goods and services adds services: 120 exported and 90 imported."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-2",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "balance-of-payments-s1",
+   "q": "Use the table. What is Arland's current account balance, in billions of arls? Write a deficit as a negative number.",
+   "why": {
+    "correct": "The current account adds the balance of trade, net income and net transfers: $-50 + (45 - 30) - 25 = -60$. Purchases of foreign assets are not in it; they belong to the capital and financial account."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          300,
+          120
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          380,
+          90
+         ]
+        }
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        45,
+        30
+       ]
+      },
+      {
+       "fn": "neg",
+       "args": [
+        25
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          300,
+          120
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          380,
+          90
+         ]
+        }
+       ]
+      },
+      "why": "That is only the balance of trade. The current account also counts net income from abroad (+15) and net transfers (-25)."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "sub",
+           "args": [
+            {
+             "fn": "add",
+             "args": [
+              300,
+              120
+             ]
+            },
+            {
+             "fn": "add",
+             "args": [
+              380,
+              90
+             ]
+            }
+           ]
+          },
+          {
+           "fn": "sub",
+           "args": [
+            45,
+            30
+           ]
+          },
+          {
+           "fn": "neg",
+           "args": [
+            25
+           ]
+          }
+         ]
+        },
+        {
+         "fn": "neg",
+         "args": [
+          90
+         ]
+        }
+       ]
+      },
+      "why": "You subtracted Arland's purchases of foreign assets. Buying assets is recorded in the capital and financial account, not the current account."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          {
+           "fn": "add",
+           "args": [
+            300,
+            120
+           ]
+          },
+          {
+           "fn": "add",
+           "args": [
+            380,
+            90
+           ]
+          }
+         ]
+        },
+        45,
+        {
+         "fn": "neg",
+         "args": [
+          25
+         ]
+        }
+       ]
+      },
+      "why": "You counted the income Arland received but not the 30 it paid to foreigners. Net income is 45 - 30 = 15."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-3",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "stimulus": "balance-of-payments-s1",
+   "q": "Use the table. What is Arland's capital and financial account balance, in billions of arls? Write a deficit as a negative number.",
+   "why": {
+    "correct": "The two accounts sum to zero: current account + capital and financial account = 0, so the capital and financial account is $-(-60) = +60$, a surplus. Arland paid for its extra purchases by selling 60 billion arls more of assets to foreigners than it bought from them."
+   },
+   "numeric": {
+    "from": {
+     "fn": "neg",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          {
+           "fn": "add",
+           "args": [
+            300,
+            120
+           ]
+          },
+          {
+           "fn": "add",
+           "args": [
+            380,
+            90
+           ]
+          }
+         ]
+        },
+        {
+         "fn": "sub",
+         "args": [
+          45,
+          30
+         ]
+        },
+        {
+         "fn": "neg",
+         "args": [
+          25
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          {
+           "fn": "add",
+           "args": [
+            300,
+            120
+           ]
+          },
+          {
+           "fn": "add",
+           "args": [
+            380,
+            90
+           ]
+          }
+         ]
+        },
+        {
+         "fn": "sub",
+         "args": [
+          45,
+          30
+         ]
+        },
+        {
+         "fn": "neg",
+         "args": [
+          25
+         ]
+        }
+       ]
+      },
+      "why": "The two balances are opposite in sign, not equal: a current account deficit of 60 is matched by a capital and financial account surplus of +60."
+     },
+     {
+      "value": -90,
+      "why": "That is only the outflow for foreign assets Arland bought. The balance also counts the Arland assets foreigners bought, and it must equal minus the current account balance: +60."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-4",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "2.C",
+   "stimulus": "balance-of-payments-s1",
+   "q": "Use the table and your capital and financial account balance. What value of Arland assets did foreign residents buy that year, in billions of arls?",
+   "why": {
+    "correct": "The capital and financial account balance is foreign purchases of Arland assets minus Arland purchases of foreign assets: $60 = F - 90$, so $F = 60 + 90 = 150$ billion arls."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "neg",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "sub",
+           "args": [
+            {
+             "fn": "add",
+             "args": [
+              300,
+              120
+             ]
+            },
+            {
+             "fn": "add",
+             "args": [
+              380,
+              90
+             ]
+            }
+           ]
+          },
+          {
+           "fn": "sub",
+           "args": [
+            45,
+            30
+           ]
+          },
+          {
+           "fn": "neg",
+           "args": [
+            25
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      90
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        {
+         "fn": "neg",
+         "args": [
+          {
+           "fn": "add",
+           "args": [
+            {
+             "fn": "sub",
+             "args": [
+              {
+               "fn": "add",
+               "args": [
+                300,
+                120
+               ]
+              },
+              {
+               "fn": "add",
+               "args": [
+                380,
+                90
+               ]
+              }
+             ]
+            },
+            {
+             "fn": "sub",
+             "args": [
+              45,
+              30
+             ]
+            },
+            {
+             "fn": "neg",
+             "args": [
+              25
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        90
+       ]
+      },
+      "why": "You subtracted Arland's purchases instead of adding them back. The balance is F - 90 = 60, so F = 150."
+     },
+     {
+      "from": {
+       "fn": "neg",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          {
+           "fn": "sub",
+           "args": [
+            {
+             "fn": "add",
+             "args": [
+              300,
+              120
+             ]
+            },
+            {
+             "fn": "add",
+             "args": [
+              380,
+              90
+             ]
+            }
+           ]
+          },
+          {
+           "fn": "sub",
+           "args": [
+            45,
+            30
+           ]
+          },
+          {
+           "fn": "neg",
+           "args": [
+            25
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      "why": "That is the net balance. Foreign purchases are larger, because Arland residents also bought 90 billion arls of foreign assets: 60 + 90 = 150."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-5",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "balance-of-payments-s2",
+   "q": "How is transaction 3, the pension fund buying Belvian government bonds, recorded in Belvia's balance of payments?",
+   "options": [
+    "As a credit (+) in the capital and financial account",
+    "As a credit (+) in the current account, like an export",
+    "As a debit (-) in the capital and financial account",
+    "It is left out, since a bond is not a good or a service"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A foreign purchase of a Belvian asset brings money in: a credit in the capital and financial account.",
+    "options": [
+     "Right: a foreigner is buying a Belvian asset, so money flows into Belvia and the purchase is a credit in the capital and financial account.",
+     "A bond is a financial asset, not a good or service. Asset purchases go in the capital and financial account.",
+     "Money comes into Belvia when a foreigner pays for a Belvian bond, so it is a credit, not a debit.",
+     "The balance of payments records every transaction with the rest of the world, asset sales included."
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-6",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "stimulus": "balance-of-payments-s2",
+   "q": "Which transactions are recorded in Belvia's capital and financial account? Select all that apply.",
+   "options": [
+    "1, the wine sold abroad",
+    "2, the wages sent to relatives abroad",
+    "3, the bonds bought by the pension fund",
+    "4, the hotel stays abroad",
+    "5, the factory bought abroad"
+   ],
+   "correct": [
+    2,
+    4
+   ],
+   "why": {
+    "correct": "The capital and financial account records purchases and sales of assets: the bonds and the factory. The wine and the hotels are trade in goods and services, and the wages sent home are a transfer, all in the current account.",
+    "options": [
+     "An export of a good is a credit in the current account, not an asset trade.",
+     "Money sent home is a transfer, recorded in the current account.",
+     "Right: a foreign purchase of a Belvian financial asset, a credit in the capital and financial account.",
+     "Tourists buying hotel stays abroad are imports of services, a debit in the current account.",
+     "Right: a Belvian resident buying a real asset abroad, a debit in the capital and financial account."
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-7",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "balance-of-payments-s2",
+   "q": "How is transaction 5, the carmaker buying a factory abroad, recorded?",
+   "options": [
+    "As an import of goods, a debit in the current account",
+    "As a debit (-) in the capital and financial account",
+    "As a credit (+) in the capital and financial account",
+    "As income received from abroad in the current account"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A resident buying a foreign asset sends money out: a debit in the capital and financial account.",
+    "options": [
+     "A factory is an asset that will produce for years, not a good bought for use now; its purchase is a capital and financial account entry.",
+     "Right: a Belvian resident buys a foreign asset, so money flows out of Belvia, a debit in the capital and financial account.",
+     "Money leaves Belvia to pay for the factory, so this is a debit, not a credit.",
+     "The factory may earn income later, and that income would go in the current account, but buying it is an asset purchase."
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-8",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "balance-of-payments-s2",
+   "q": "Suppose transactions 2 and 4 grow larger while nothing else in Belvia's current account changes. What must happen to Belvia's capital and financial account balance?",
+   "options": [
+    "It rises by the same amount the current account falls",
+    "It falls by the same amount as the current account",
+    "It stays the same, since transfers and travel are not trade in assets",
+    "Belvia's government budget deficit rises by the same amount"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Larger debits in the current account lower its balance; since the two accounts sum to zero, the capital and financial account balance rises by the same amount.",
+    "options": [
+     "Right: Belvia pays for the extra transfers and imports by selling more assets to foreigners or borrowing more from them, so the capital and financial account balance rises by the same amount.",
+     "The two balances sum to zero, so when one falls the other rises; they cannot fall together.",
+     "They are not asset trades, but they change the current account, and the capital and financial account must move by the opposite amount to keep the sum at zero.",
+     "The budget balance is the government's revenue minus its outlays; it is not part of the balance of payments."
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-9",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does a country's balance of payments record?",
+   "options": [
+    "The government's tax revenue minus its spending in a year",
+    "The market value of the final goods and services produced in a year",
+    "Every transaction between the country's residents and the rest of the world",
+    "The total amount the country owes to foreign lenders"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The balance of payments is the record of all transactions between a country's residents and the rest of the world during a period.",
+    "options": [
+     "That is the budget balance, a measure of government finances, not of transactions with other countries.",
+     "That is GDP. The balance of payments records transactions with the rest of the world.",
+     "Right: trade in goods and services, income, transfers and purchases of assets, over a period such as a year.",
+     "That is a stock of debt built up over many years. The balance of payments records the flows during one period."
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-10",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Belvia has a current account surplus of 35 billion bels this year. What is its capital and financial account balance?",
+   "options": [
+    "A surplus of 35 billion bels",
+    "A deficit of 35 billion bels",
+    "Zero, because asset trades are not counted",
+    "It depends on the government budget balance"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Current account + capital and financial account = 0, so +35 is matched by -35.",
+    "options": [
+     "The two balances sum to zero, so they have opposite signs: a current account surplus means a capital and financial account deficit.",
+     "Right: 35 + (-35) = 0. Belvia earns more from the rest of the world than it spends there and uses the extra to buy foreign assets (or lend abroad).",
+     "The capital and financial account records asset purchases and is not zero here; the two accounts together sum to zero.",
+     "The budget balance is not part of the balance of payments; the current account balance alone gives the answer."
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-11",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A headline reads \"Arland's government deficit hits a record.\" A classmate says this means Arland imported more than it exported. Which response is best?",
+   "options": [
+    "Correct: a government deficit and a trade deficit are the same number",
+    "Correct, because a government deficit is recorded in the current account",
+    "Not necessarily: a budget deficit is outlays above tax revenue, not imports above exports",
+    "Not necessarily, because a deficit is recorded in the capital and financial account"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A budget deficit (government outlays exceed revenue) is not a trade deficit (imports exceed exports).",
+    "options": [
+     "They are different measures: one compares government outlays with revenue, the other compares exports with imports.",
+     "Government budgets are not entries in the current account; only the government's own transactions with foreigners, such as aid, appear there.",
+     "Right: a budget deficit is about the government's finances. A trade or current account deficit is about transactions with the rest of the world. One does not tell you the other.",
+     "The headline is about the government budget, which is not part of the balance of payments at all."
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-12",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Firms in Arland pay interest to foreign holders of their bonds. How is the interest payment recorded in Arland's balance of payments?",
+   "options": [
+    "As a debit in the current account (income paid abroad)",
+    "As a debit in the capital and financial account",
+    "As a credit in the current account (income received)",
+    "It is not recorded, because no good changes hands"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Income paid to foreigners (interest, dividends) is a current account debit.",
+    "options": [
+     "Right: interest and dividends paid to foreigners are income payments, recorded in the current account as a debit.",
+     "The bonds were an asset trade when they were sold, but interest on them is income, which goes in the current account.",
+     "The money leaves Arland, so it is a debit, not a credit.",
+     "Income flows are part of the current account even though no good or service is traded."
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-13",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A company based abroad builds a new factory in Arland. How does this enter Arland's balance of payments?",
+   "options": [
+    "As an export of goods, a credit in the current account",
+    "As a debit in the current account, because the factory is foreign-owned",
+    "As a debit in the capital and financial account",
+    "As a credit in the capital and financial account"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Foreign purchases of assets in Arland, real or financial, are credits in the capital and financial account.",
+    "options": [
+     "No good is sold to a foreign buyer; a foreign firm is acquiring a real asset in Arland, a capital and financial account entry.",
+     "Ownership of an asset is recorded in the capital and financial account, and money flows in, so it is not a debit.",
+     "Money flows into Arland to pay for the factory, so this is a credit, not a debit.",
+     "Right: a foreigner acquires an asset in Arland and pays for it, so money flows in: a credit in the capital and financial account."
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-14",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Arland's exports fall, while its imports, income and transfers stay the same. With nothing else changing, which is most likely?",
+   "options": [
+    "Its current account balance falls and its capital and financial account balance rises by the same amount",
+    "Both balances fall by the same amount",
+    "Its current account balance stays the same, because imports did not change",
+    "Its government's budget balance falls by the amount exports fell"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The current account balance falls; the capital and financial account balance rises by the same amount.",
+    "options": [
+     "Right: lower exports lower the current account balance; to pay for the same imports Arland must sell more assets abroad or borrow more, so the capital and financial account balance rises by the same amount.",
+     "The two balances sum to zero, so they move in opposite directions.",
+     "Exports are part of the current account, so a fall in exports lowers the balance.",
+     "Exports are sales by Arland residents to foreigners; they are not government revenue or outlays."
+    ]
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-15",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.C",
+   "q": "Put the steps in order to find a country's capital and financial account balance from a table of its transactions.",
+   "options": [
+    "Subtract imports of goods and services from exports of goods and services to get the balance of trade",
+    "Add net income from abroad and net transfers to get the current account balance",
+    "Use current account + capital and financial account = 0 to get the capital and financial account balance",
+    "State whether each balance is a surplus (positive) or a deficit (negative)"
+   ],
+   "why": {
+    "correct": "Trade first, then the rest of the current account, then the zero sum, then name surplus or deficit: the order a free-response \"calculate\" part rewards, with the work shown."
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-16",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Arland has a current account deficit of 80 billion arls. Build an answer that identifies its capital and financial account balance and explains why.",
+   "why": {
+    "correct": "The two accounts sum to zero, and the reason is how the extra purchases are paid for: Arland sells assets to foreigners or borrows from them."
+   },
+   "specific": {
+    "frame": "Arland's capital and financial account has ___, because ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "Arland's capital and financial account has a surplus of 80 billion arls, because the two accounts sum to zero: Arland pays for buying more from the rest of the world than it sells by selling 80 billion arls more of assets to foreigners (or borrowing from them) than it buys.",
+    "slots": {
+     "claim": {
+      "label": "The balance",
+      "options": [
+       "a surplus of 80 billion arls",
+       "a deficit of 80 billion arls",
+       "a balance of zero"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The two balances sum to zero, so they have opposite signs: a deficit of 80 is matched by a surplus of 80.",
+       "2": "Only the sum of the two accounts is zero; each one alone can be in surplus or deficit."
+      }
+     },
+     "because": {
+      "label": "Why",
+      "options": [
+       "Arland pays for its extra purchases by selling assets to foreigners or borrowing from them",
+       "the government spends more than it collects in taxes",
+       "exports always equal imports in the long run"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That describes a budget deficit, which is not part of the balance of payments.",
+       "2": "Exports and imports need not be equal; the gap is what the asset sales pay for."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-balance-of-payments-17",
+   "unit": "unit-6",
+   "topic": "balance-of-payments",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which transaction belongs in a country's current account?",
+   "options": [
+    "A resident buys shares in a foreign company",
+    "A foreign bank lends money to a local firm",
+    "A worker sends money home to family abroad",
+    "A foreigner buys a plot of land in the country"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Transfers such as money sent home are current account entries; asset purchases and loans are not.",
+    "options": [
+     "Buying shares is a purchase of a financial asset, recorded in the capital and financial account.",
+     "A loan is a financial transaction, recorded in the capital and financial account.",
+     "Right: money sent home is a transfer, part of the current account.",
+     "Land is an asset, so its sale to a foreigner is recorded in the capital and financial account."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,716 @@
+{
+ "stimuli": {
+  "fiscal-policy-s1": {
+   "kind": "data",
+   "title": "Six proposals for Country J",
+   "invented": true,
+   "table": {
+    "caption": "Country J has a recessionary gap of 100 billion dollars and an MPC of 0.8. Six proposals, each used alone; the price level is assumed unchanged (invented data for practice)",
+    "cols": [
+     "Proposal",
+     "Action"
+    ],
+    "rows": [
+     [
+      "A",
+      "Raise government purchases by 20 billion dollars"
+     ],
+     [
+      "B",
+      "Cut taxes by 20 billion dollars"
+     ],
+     [
+      "C",
+      "Cut taxes by 25 billion dollars"
+     ],
+     [
+      "D",
+      "Raise transfer payments by 25 billion dollars"
+     ],
+     [
+      "E",
+      "Raise government purchases by 100 billion dollars"
+     ],
+     [
+      "F",
+      "Raise government purchases by 20 billion dollars and raise taxes by 20 billion dollars"
+     ]
+    ]
+   }
+  },
+  "fiscal-policy-s2": {
+   "kind": "text",
+   "title": "Velora's overheated economy",
+   "text": "<p>Velora is an invented country. Its real GDP is 60 billion dollars above full-employment output, unemployment is below the natural rate, and prices are rising fast. Velora's MPC is 0.75. Its government wants to close the gap now rather than wait for the economy to adjust on its own.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mac-fiscal-policy-1",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "fiscal-policy-s1",
+   "q": "Using the table, by how much would Proposal B raise Country J's real GDP, in billions of dollars?",
+   "why": {
+    "correct": "Tax multiplier $= -\\frac{0.8}{0.2} = -4$. A tax cut of 20 is a change of $-20$: $-20 \\times -4 = 80$ billion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "totalChange",
+     "args": [
+      -20,
+      {
+       "fn": "taxMultiplier",
+       "args": [
+        0.8
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "totalChange",
+       "args": [
+        20,
+        {
+         "fn": "spendingMultiplier",
+         "args": [
+          0.8
+         ]
+        }
+       ]
+      },
+      "why": "You used the spending multiplier (5). Households save part of a tax cut, so use the tax multiplier, $-\\frac{\\text{MPC}}{\\text{MPS}} = -4$."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        20,
+        0.8
+       ]
+      },
+      "why": "That is only the first round of new consumption ($0.8 \\times 20$). Multiply the tax cut by the tax multiplier to include every round."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-2",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "multi",
+   "practice": "3.C",
+   "stimulus": "fiscal-policy-s1",
+   "q": "Based on the table, which proposals would each close Country J's gap of 100 billion dollars? Select all that apply.",
+   "options": [
+    "Proposal A",
+    "Proposal B",
+    "Proposal C",
+    "Proposal D",
+    "Proposal E",
+    "Proposal F"
+   ],
+   "correct": [
+    0,
+    2,
+    3
+   ],
+   "why": {
+    "correct": "Spending multiplier 5, tax (and transfer) multiplier 4 in size. Proposal A closes it with 20; Proposal C and Proposal D need 25 because part of a tax cut or transfer is saved; Proposal E overshoots and Proposal F adds just 20.",
+    "options": [
+     "Right: $20 \\times 5 = 100$.",
+     "Only $20 \\times 4 = 80$: a tax cut is partly saved, so it falls short.",
+     "Right: $25 \\times 4 = 100$.",
+     "Right: transfers raise disposable income like a tax cut, so $25 \\times 4 = 100$.",
+     "$100 \\times 5 = 500$: this multiplies instead of dividing and overshoots into an inflationary gap.",
+     "The tax rise takes back 80 of the 100, so output rises by only 20."
+    ]
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-3",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "fiscal-policy-s1",
+   "q": "Why does Proposal D, a rise in transfer payments, have the same effect as Proposal C, a tax cut of the same size?",
+   "options": [
+    "Both raise disposable income by 25, and households spend the MPC share of it",
+    "Transfer payments are government purchases, so they use the spending multiplier",
+    "Both are paid directly to firms, which spend the whole amount",
+    "Transfer payments are taxes on households that the government later returns"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Transfers raise disposable income; households spend MPC of it, so the effect is MPC / MPS times the transfer, the same size as the tax multiplier.",
+    "options": [
+     "Right: a transfer is income the government gives, so it works like a negative tax.",
+     "Transfers buy no goods or services, so they are not part of G.",
+     "Transfers go to households (for example, pensions or aid), and households save part of them.",
+     "Transfers are payments to households, not taxes."
+    ]
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-4",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "fiscal-policy-s1",
+   "q": "Using the table, Country J decides to close the gap with a tax cut alone. How large must the tax cut be, in billions of dollars?",
+   "why": {
+    "correct": "Tax multiplier $-4$. Direction: a recessionary gap needs a tax cut. Divide: $\\frac{100}{4} = 25$ billion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "abs",
+     "args": [
+      {
+       "fn": "gapChange",
+       "args": [
+        100,
+        {
+         "fn": "taxMultiplier",
+         "args": [
+          0.8
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "gapChange",
+       "args": [
+        100,
+        {
+         "fn": "spendingMultiplier",
+         "args": [
+          0.8
+         ]
+        }
+       ]
+      },
+      "why": "You used the spending multiplier (5). A tax cut is partly saved, so divide by the tax multiplier's size, 4."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        100,
+        4
+       ]
+      },
+      "why": "You multiplied the gap by the multiplier. Divide the gap by it."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-5",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "fiscal-policy-s2",
+   "q": "Which fiscal policy fits Velora's situation?",
+   "options": [
+    "Expansionary: raise government spending or cut taxes on households",
+    "Contractionary: cut government spending or raise taxes",
+    "Raise government spending and cut taxes together",
+    "Raise transfer payments to households"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An inflationary gap calls for contractionary fiscal policy: less government spending or higher taxes, to shift AD left.",
+    "options": [
+     "That would shift AD right and widen an inflationary gap.",
+     "Right: output is above full employment, so the government lowers spending to shift AD left.",
+     "Both raise AD, which is the wrong direction for an inflationary gap.",
+     "More transfers raise disposable income and spending, shifting AD right."
+    ]
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-6",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "fiscal-policy-s2",
+   "q": "If Velora closes the gap by cutting government purchases alone, by how much must it cut them, in billions of dollars?",
+   "why": {
+    "correct": "Spending multiplier $= \\frac{1}{0.25} = 4$. Direction: cut spending. Divide: $\\frac{60}{4} = 15$ billion dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "gapChange",
+     "args": [
+      60,
+      {
+       "fn": "spendingMultiplier",
+       "args": [
+        0.75
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        60,
+        4
+       ]
+      },
+      "why": "You multiplied the gap by the multiplier. Divide the gap by it: $\\frac{60}{4}$."
+     },
+     {
+      "from": {
+       "fn": "abs",
+       "args": [
+        {
+         "fn": "gapChange",
+         "args": [
+          60,
+          {
+           "fn": "taxMultiplier",
+           "args": [
+            0.75
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      "why": "That is the tax rise (using the tax multiplier, 3). A cut in purchases uses the spending multiplier, 4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-7",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "fiscal-policy-s2",
+   "q": "If Velora instead closes the gap by raising taxes alone, by how much must it raise them, in billions of dollars?",
+   "why": {
+    "correct": "Tax multiplier $= -\\frac{0.75}{0.25} = -3$. Divide the gap by its size: $\\frac{60}{3} = 20$ billion dollars of higher taxes."
+   },
+   "numeric": {
+    "from": {
+     "fn": "abs",
+     "args": [
+      {
+       "fn": "gapChange",
+       "args": [
+        60,
+        {
+         "fn": "taxMultiplier",
+         "args": [
+          0.75
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "gapChange",
+       "args": [
+        60,
+        {
+         "fn": "spendingMultiplier",
+         "args": [
+          0.75
+         ]
+        }
+       ]
+      },
+      "why": "You used the spending multiplier. Taxes work through consumption, so use the tax multiplier, $-3$."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        60,
+        3
+       ]
+      },
+      "why": "You multiplied the gap by the multiplier. Divide it."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-8",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "fiscal-policy-s2",
+   "q": "If Velora's contractionary policy works, what happens in the short run to the price level and unemployment?",
+   "options": [
+    "The price level rises and unemployment falls further",
+    "The price level falls and unemployment falls",
+    "The price level falls and unemployment rises",
+    "Neither changes until wages adjust"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "AD shifts left along SRAS: real GDP falls to YF, the price level falls, and unemployment rises back to the natural rate.",
+    "options": [
+     "Those follow a rise in AD, not a fall.",
+     "Less output needs fewer workers, so unemployment rises.",
+     "Right: AD shifts left, so output, the price level and employment fall toward full-employment levels.",
+     "AD shifts at once along SRAS, so the price level and output change in the short run."
+    ]
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-9",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The economy is in a recessionary gap. The government cuts income taxes. Shift the right curve and mark the new short-run equilibrium.",
+   "why": {
+    "correct": "A tax cut raises disposable income and consumption, so AD shifts right: the price level and real GDP rise."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "start": {
+     "AD": -1
+    },
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "right"
+      }
+     ],
+     "because": "a cut in income taxes",
+     "outcome": {
+      "price level": "up",
+      "output": "up"
+     }
+    },
+    "slips": {
+     "SRAS": "An income tax cut raises households' disposable income and spending, so it shifts AD, not SRAS."
+    }
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-10",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The economy is in an inflationary gap. The government cuts its purchases of goods and services. Shift the right curve and mark the new short-run equilibrium.",
+   "why": {
+    "correct": "Less government spending shifts AD left: the price level and real GDP fall toward full employment."
+   },
+   "graph": {
+    "kind": "adas",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "start": {
+     "AD": 1
+    },
+    "movable": [
+     "AD",
+     "SRAS"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "AD",
+       "dir": "left"
+      }
+     ],
+     "because": "a cut in government purchases",
+     "outcome": {
+      "price level": "down",
+      "output": "down"
+     }
+    },
+    "slips": {
+     "SRAS": "Government purchases are part of aggregate demand, so a cut shifts AD, not SRAS."
+    }
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-11",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the chain for a tax cut in a recessionary gap in order.",
+   "options": [
+    "The government cuts income taxes",
+    "Disposable income rises",
+    "Consumption rises",
+    "AD shifts right, by a multiple of the first rise in spending",
+    "Real GDP and the price level rise, and unemployment falls"
+   ],
+   "why": {
+    "correct": "Taxes work through disposable income and consumption, then AD (with the multiplier), then output, prices and jobs."
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-12",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain how a rise in government purchases affects an economy in a recessionary gap.",
+   "why": {
+    "correct": "G is part of AD, so AD shifts right (by more, through the multiplier), raising real GDP and the price level and lowering unemployment."
+   },
+   "specific": {
+    "frame": "Government purchases rise, so ___ shifts to the ___, by a ___ of the new spending. Real GDP ___ and unemployment ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Government purchases rise, so AD shifts to the right, by a multiple of the new spending because each round of income is partly re-spent. Real GDP increases and unemployment falls.",
+    "slots": {
+     "curve": {
+      "label": "The curve",
+      "options": [
+       "AD",
+       "SRAS"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Government purchases are spending, part of aggregate demand."
+      }
+     },
+     "direction": {
+      "label": "Which way",
+      "options": [
+       "right",
+       "left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More spending at every price level is a shift right."
+      }
+     },
+     "multiplier": {
+      "label": "How far",
+      "options": [
+       "multiple",
+       "fraction"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The new spending is re-spent in rounds, so the shift is larger than the purchase."
+      }
+     },
+     "output": {
+      "label": "Real GDP",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "AD moving right along SRAS raises output."
+      }
+     },
+     "unemployment": {
+      "label": "Unemployment",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More output needs more workers."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-13",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which of the following is discretionary fiscal policy?",
+   "options": [
+    "Banks lower the interest rates they charge on loans",
+    "Firms invest more because they expect higher sales",
+    "Nominal wages fall during a recession",
+    "The government votes to spend more on highways"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Discretionary fiscal policy is a deliberate change in government purchases, taxes or transfer payments.",
+    "options": [
+     "That is a private decision by banks, not fiscal policy, which uses government spending, taxes and transfers.",
+     "That is private spending, not government policy.",
+     "That is part of the economy's own adjustment, not a government decision.",
+     "Right: a deliberate change in government spending to affect the economy."
+    ]
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-14",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "It takes a year to notice a recession, pass a spending bill and start the projects. Why can this delay make fiscal policy less effective?",
+   "options": [
+    "The economy may already be recovering when the spending arrives",
+    "A delay lowers the MPC, so the multiplier shrinks by the time money is spent",
+    "Spending that arrives late shifts SRAS instead of AD",
+    "Delayed spending is not counted in GDP"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fiscal policy has lags (recognizing the problem, deciding, carrying it out). If the economy recovers in the meantime, the stimulus can overshoot into an inflationary gap.",
+    "options": [
+     "Right: these lags mean policy can hit at the wrong point in the cycle.",
+     "The MPC does not depend on how long a bill takes to pass.",
+     "Government purchases shift AD whenever they arrive.",
+     "Government purchases count in GDP in the year they happen."
+    ]
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-15",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "The government raises spending to close a recessionary gap. Compared with waiting for the economy to adjust on its own, what is different about the price level when output reaches full employment?",
+   "options": [
+    "It is lower, because the government buys goods at lower prices",
+    "It is higher, because AD shifted right instead of SRAS",
+    "It is the same, because both end at full employment",
+    "It is lower, because spending shifts SRAS right"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Closing a recessionary gap with AD (fiscal policy) ends at a higher price level; closing it through falling wages (SRAS right) ends at a lower one.",
+    "options": [
+     "Government purchases add to spending, which raises the price level.",
+     "Right: fiscal policy moves the economy up along SRAS; self-adjustment moves it down along AD.",
+     "Both reach YF, but by different curves, so the price levels differ.",
+     "Government spending is part of AD; it does not lower firms' costs."
+    ]
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-16",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which of the following is a transfer payment?",
+   "options": [
+    "A government contract to build a bridge",
+    "Salaries the government pays to public school teachers",
+    "A monthly pension paid by the government to retirees",
+    "A tax on gasoline"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Transfer payments (pensions, aid to families, unemployment benefits) move income to households without buying output, so they are not part of G.",
+    "options": [
+     "That is a purchase of goods and services, part of G.",
+     "Salaries buy teachers' services, so they are government purchases.",
+     "Right: money paid to households with no good or service bought in return.",
+     "A tax takes money from households; a transfer gives it to them."
+    ]
+   }
+  },
+  {
+   "id": "mac-fiscal-policy-17",
+   "unit": "unit-3",
+   "topic": "fiscal-policy",
+   "level": "apply",
+   "diff": 1,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of the following is contractionary fiscal policy? Select all that apply.",
+   "options": [
+    "A cut in government purchases",
+    "A cut in income taxes",
+    "A rise in transfer payments",
+    "A rise in government purchases"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Contractionary fiscal policy lowers AD: cut purchases, raise taxes or cut transfers.",
+    "options": [
+     "Right: less G shifts AD left.",
+     "A tax cut raises disposable income and AD: expansionary.",
+     "More transfers raise disposable income and AD: expansionary.",
+     "More G shifts AD right: expansionary."
+    ]
+   }
+  }
+ ]
+}

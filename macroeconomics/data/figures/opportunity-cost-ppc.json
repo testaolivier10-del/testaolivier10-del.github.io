@@ -1,0 +1,22 @@
+{
+ "opportunity-cost-ppc-points": {
+  "file": "figures/opportunity-cost-ppc-points.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A bowed-out production possibilities curve for pizzas and robots, with efficient points F and G on it, point U inside (idle resources), point Z outside (unattainable), and a dashed outward-shifted curve showing growth."
+ },
+ "opportunity-cost-ppc-shapes": {
+  "file": "figures/opportunity-cost-ppc-shapes.svg",
+  "ext": "svg",
+  "w": 740,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two production possibilities curves for bread and cake: a straight line showing constant opportunity cost, and a bowed-out curve showing increasing opportunity cost."
+ }
+}

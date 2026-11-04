@@ -1,0 +1,12 @@
+{
+ "money-market-md-shift": {
+  "file": "figures/money-market-md-shift.svg",
+  "ext": "svg",
+  "w": 520,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A money market graph. The vertical axis is the nominal interest rate and the horizontal axis is the quantity of money. The money supply curve MS is vertical. Money demand shifts right from MD1 to MD2, so the equilibrium nominal interest rate rises from i1 to i2 while the quantity of money stays the same."
+ }
+}

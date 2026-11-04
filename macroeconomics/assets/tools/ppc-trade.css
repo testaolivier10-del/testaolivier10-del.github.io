@@ -1,0 +1,55 @@
+/* PPC and trade trainer (macroeconomics/assets/tools/ppc-trade.js). OWNED BY THIS TOOL
+   ONLY (builder T3). Scoped to .pt-*; the two countries use the plot series
+   colors s1 and s2 (mac.css), the course accent marks the PPC. */
+.pt-stage{display:flex;flex-direction:column;flex:1;min-height:0;}
+.pt-fig{display:flex;flex-direction:column;gap:8px;flex:1;min-height:0;padding-bottom:34px;}
+.pt-fig[hidden]{display:none;}
+.pt-graph{flex:1;min-height:0;display:flex;justify-content:center;}
+.pt-graph svg{width:100%;height:100%;max-width:520px;cursor:crosshair;touch-action:manipulation;}
+.pt-read{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;}
+.pt-chip{padding:5px 11px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:700 13.5px var(--font-ui);}
+.pt-chip.is-on{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+.pt-chip.is-inside{border-color:#B54700;color:#9A3C00;background:rgba(194,78,0,.08);}
+.pt-chip.is-outside{border-color:var(--muted);color:var(--muted);border-style:dashed;}
+.pt-chip.is-cost{border-color:var(--ink);}
+:root[data-theme="dark"] .pt-chip.is-inside{color:#F29A5C;border-color:#F29A5C;}
+.pt-plot{position:relative;flex:1;min-height:200px;display:flex;justify-content:center;}
+.pt-plot .mac-plot{width:100%;height:auto;max-height:100%;}
+.pt-tbl{width:100%;border-collapse:collapse;font:600 13.5px var(--font-ui);color:var(--ink);}
+.pt-tbl th,.pt-tbl td{padding:5px 8px;border-bottom:1px solid var(--line);text-align:left;}
+.pt-tbl thead th{font-size:12px;color:var(--muted);border-bottom:2px solid var(--ink);}
+.pt-tbl .r{text-align:right;font-variant-numeric:tabular-nums;}
+.pt-sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:0;}
+.pt-sw.s1{background:#084F78;} .pt-sw.s2{background:#C24E00;}
+:root[data-theme="dark"] .pt-sw.s1{background:#8CC8E8;} :root[data-theme="dark"] .pt-sw.s2{background:#F29A5C;}
+.pt-ca{display:inline-block;padding:0 7px;border-radius:999px;background:var(--ctint);color:var(--cink);font-size:11.5px;font-weight:800;}
+.pt-ctl,.pt-group{display:flex;flex-direction:column;gap:10px;}
+.pt-group[hidden]{display:none;}
+.pt-seg{display:flex;flex-wrap:wrap;align-items:center;gap:4px;}
+.pt-seg-l{font:700 13px var(--font-ui);color:var(--muted);margin-right:4px;}
+.pt-views .pt-seg-l,.pt-sc .pt-seg-l{display:none;}
+.pt-lbl{margin:0 0 6px;font:700 13px var(--font-ui);color:var(--muted);}
+.pt-events{display:flex;flex-wrap:wrap;gap:6px;}
+.pt-ev{min-height:44px;}
+/* Drill figures */
+.pt-qfig{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0;align-items:center;}
+.pt-qgraph{flex:1;min-height:0;display:flex;justify-content:center;width:100%;}
+.pt-qgraph svg{width:100%;height:100%;max-width:460px;}
+.pt-qplot{position:relative;flex:1;min-height:170px;width:100%;display:flex;justify-content:center;margin-bottom:30px;}
+.pt-qplot .mac-plot{width:100%;height:auto;max-height:100%;}
+.ppc-tbl{border-collapse:collapse;font:600 15px var(--font-ui);color:var(--ink);}
+.ppc-tbl caption{font-weight:800;text-align:left;padding-bottom:6px;color:var(--muted);font-size:13px;}
+.ppc-tbl th,.ppc-tbl td{padding:6px 12px;border-bottom:1px solid var(--line);text-align:left;}
+.ppc-tbl thead th{border-bottom:2px solid var(--ink);font-size:13px;}
+.ppc-tbl .r{text-align:right;font-variant-numeric:tabular-nums;}
+@media (max-width:640px){
+  .pt-chip{font-size:12px;padding:3px 8px;}
+  .pt-tbl{font-size:12px;}
+  .pt-tbl th,.pt-tbl td{padding:3px 5px;}
+  .ppc-tbl{font-size:13px;}
+  .ppc-tbl th,.ppc-tbl td{padding:4px 7px;}
+  .pt-plot{min-height:170px;}
+}
+/* A phone stage holds the table; the plot of the same numbers waits for a wider screen. */
+.ls-root.ls-phone .pt-qfig-output .pt-qplot,.ls-root.ls-phone .pt-qfig-terms .pt-qplot{display:none;}
+@media (min-width:1000px){.ppc-tbl{font-size:17px;}}

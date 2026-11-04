@@ -1,0 +1,72 @@
+{
+ "topic": "fx-net-exports",
+ "hook": "A farm-equipment maker in Iowa can have a great year at home and still lose sales abroad, without changing a single price. If the dollar gains value, each of its tractors costs a buyer in Brazil or Germany more of their own money. Multiply that by every exporter and importer, and a stronger currency moves a whole economy.",
+ "prereq": [
+  {
+   "q": "Which is a component of aggregate demand?",
+   "options": [
+    "Net exports, X - M",
+    "The money supply",
+    "The price level",
+    "The labor force"
+   ],
+   "correct": 0,
+   "why": "AD is C + I + G + (X - M), so net exports are one of its four parts.",
+   "review": "aggregate-demand"
+  },
+  {
+   "q": "The dollar appreciates against the euro. What happens to the dollar price of a jacket priced at 45 euros?",
+   "options": [
+    "It falls",
+    "It rises",
+    "It stays the same",
+    "It doubles"
+   ],
+   "correct": 0,
+   "why": "Each dollar buys more euros, so the same 45 euros take fewer dollars.",
+   "review": "exchange-rates"
+  }
+ ],
+ "figure": {
+  "figure": "fx-net-exports-chain",
+  "caption": "When the dollar appreciates, US goods cost more abroad and foreign goods cost less in the US, so exports fall, imports rise, net exports fall and AD shifts left."
+ },
+ "chain": [
+  {
+   "cause": "The dollar appreciates",
+   "effect": "US goods cost foreign buyers more of their currency, and foreign goods cost Americans fewer dollars"
+  },
+  {
+   "cause": "US goods are dearer abroad and foreign goods cheaper at home",
+   "effect": "US exports fall and US imports rise"
+  },
+  {
+   "cause": "Exports fall and imports rise",
+   "effect": "net exports (X - M) fall"
+  },
+  {
+   "cause": "Net exports, a component of AD, fall",
+   "effect": "AD shifts left, so real GDP and the price level fall and unemployment rises in the short run"
+  }
+ ],
+ "ideas": [
+  "Appreciation makes a country's exports dearer abroad and its imports cheaper at home, so <b>net exports fall</b> and AD shifts left, other things equal.",
+  "Depreciation does the opposite: exports get cheaper abroad, imports dearer at home, net exports rise and AD shifts right.",
+  "In a two-country story, one country's exports are the other's imports: when Arland's net exports fall, Belvia's rise.",
+  "Net exports are in the current account, so a fall in net exports lowers the current account balance and raises the capital and financial account balance by the same amount.",
+  "Higher domestic income raises imports, so net exports fall; income is not the same as competitiveness."
+ ],
+ "misconception": {
+  "wrong": "A stronger currency helps a country's exporters, because what they earn is worth more.",
+  "right": "A stronger currency makes their goods cost more for foreign buyers, so they sell less abroad. Exports fall, imports rise and net exports fall."
+ },
+ "check": [
+  "mac-fx-net-exports-1",
+  "mac-fx-net-exports-2",
+  "mac-fx-net-exports-3",
+  "mac-fx-net-exports-9",
+  "mac-fx-net-exports-14",
+  "mac-fx-net-exports-16"
+ ],
+ "summary": "When a currency appreciates, everything the country sells costs foreign buyers more and everything it buys from abroad costs its residents less. Exports fall, imports rise and net exports fall, so aggregate demand shifts left and output and the price level fall in the short run. A depreciation works the other way round. Always state the link through net exports and AD, and remember that the trading partner sees the mirror change."
+}

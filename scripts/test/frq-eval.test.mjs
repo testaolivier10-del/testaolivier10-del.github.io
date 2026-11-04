@@ -8,7 +8,7 @@ import { loadQuestion, compare, summarize, passes, LAUNCH } from './../frq-eval/
 import { CALIBRATION } from '../../worker/src/frq-calibration.js';
 import { FRQ_COURSES, cleanAnswers } from '../../worker/src/frq-grade.js';
 
-test('at least 30 cases over all six courses, with weak, partial and injection answers', () => {
+test('at least 30 cases over all seven courses, with weak, partial and injection answers', () => {
   assert.ok(CASES.length >= 30, `${CASES.length} cases`);
   for (const c of FRQ_COURSES) assert.ok(CASES.filter((x) => x.course === c).length >= 4, `${c} has at least 4`);
   for (const k of ['strong', 'partial', 'weak', 'injection']) assert.ok(CASES.some((x) => x.kind === k), k);

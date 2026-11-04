@@ -1,0 +1,12 @@
+{
+ "real-rates-financial-flows-links": {
+  "file": "figures/real-rates-financial-flows-links.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two linked graphs. Left: the US loanable funds market, with Quantity of loanable funds and Real interest rate on the axes; demand for loanable funds shifts right from DLF1 to DLF2 along supply SLF, and the real interest rate rises from r1 to r2. An arrow says the real rate rises above Europe's and financial capital flows into the US. Right: the market for dollars, with Quantity of dollars and Price of the dollar (euros per dollar); demand shifts right from D1 to D2 and the exchange rate rises from XR1 to XR2. Below, the chain: government borrowing rises, the real interest rate rises, capital flows in as foreigners buy US assets, demand for dollars rises, the dollar appreciates, net exports fall. The inflow is a larger capital and financial account surplus, matched by a smaller current account balance."
+ }
+}

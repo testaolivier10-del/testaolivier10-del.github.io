@@ -1,0 +1,12 @@
+{
+ "inflation-costs-winners": {
+  "file": "figures/inflation-costs-winners.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Table. When inflation is higher than expected, a borrower with a fixed-rate loan gains, while a lender or saver at a fixed rate and a person on a fixed income lose. When inflation is lower than expected, each result reverses. A worker whose pay rises with the CPI comes out about even either way."
+ }
+}

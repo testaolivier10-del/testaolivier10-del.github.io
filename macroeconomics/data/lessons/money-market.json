@@ -1,0 +1,80 @@
+{
+ "topic": "money-market",
+ "hook": "You could keep your savings as cash in your wallet or in a bond that pays 5% a year. Cash lets you buy lunch on the spot; the bond pays you to wait. When rates jump to 8%, you would rather hold less cash. That trade-off, the convenience of money against the interest it gives up, is the demand for money, and it sets the interest rate.",
+ "prereq": [
+  {
+   "q": "Market interest rates rise. What happens to the prices of existing bonds?",
+   "options": [
+    "They fall",
+    "They rise",
+    "They stay the same",
+    "They double"
+   ],
+   "correct": 0,
+   "why": "Bond prices move opposite to interest rates.",
+   "review": "financial-assets"
+  },
+  {
+   "q": "Which interest rate is the rate stated in dollars, before adjusting for inflation?",
+   "options": [
+    "The nominal interest rate",
+    "The real interest rate",
+    "The inflation rate",
+    "The growth rate"
+   ],
+   "correct": 0,
+   "why": "The nominal rate is the stated rate; the real rate subtracts the expected inflation rate.",
+   "review": "nominal-real-rates"
+  },
+  {
+   "q": "Who controls the size of the money supply most directly?",
+   "options": [
+    "The central bank, with the banking system",
+    "Each household",
+    "The stock market",
+    "Exporters"
+   ],
+   "correct": 0,
+   "why": "The central bank and bank lending determine the money supply.",
+   "review": "banking-money-supply"
+  }
+ ],
+ "figure": {
+  "figure": "money-market-md-shift",
+  "caption": "A rise in money demand, along a vertical money supply, raises the nominal interest rate."
+ },
+ "chain": [
+  {
+   "cause": "The price level or real GDP rises",
+   "effect": "people need more money for transactions, so money demand shifts right"
+  },
+  {
+   "cause": "Money demand shifts right while the money supply is fixed",
+   "effect": "people sell bonds to get money, so bond prices fall"
+  },
+  {
+   "cause": "Bond prices fall",
+   "effect": "the nominal interest rate rises until people want to hold the money that exists"
+  }
+ ],
+ "ideas": [
+  "The <b>money market</b> graph: <b>nominal interest rate</b> on the vertical axis, quantity of money on the horizontal; <b>money demand</b> (MD) slopes down and the <b>money supply</b> (MS) is vertical.",
+  "MD slopes down because the nominal interest rate is the opportunity cost of holding money (asset demand).",
+  "MD shifts right when the price level or real GDP rises (transaction demand); MS shifts when the central bank changes the money supply.",
+  "Rate above equilibrium: people buy bonds, bond prices rise, the rate falls. Below: they sell bonds and the rate rises."
+ ],
+ "misconception": {
+  "wrong": "A change in the interest rate shifts money demand.",
+  "right": "The nominal interest rate is on the axis, so a change in it moves along MD. Money demand shifts with the price level, real GDP and payment technology."
+ },
+ "check": [
+  "mac-money-market-9",
+  "mac-money-market-10",
+  "mac-money-market-12",
+  "mac-money-market-1",
+  "mac-money-market-2",
+  "mac-money-market-3",
+  "mac-money-market-17"
+ ],
+ "summary": "The money market sets the nominal interest rate. Money demand slopes down because the nominal interest rate is the opportunity cost of holding money, and it shifts right when the price level or real GDP rises. The money supply is vertical, set by the central bank. A rise in money demand, or a fall in money supply, raises the nominal interest rate and lowers bond prices; a rise in money supply lowers the rate and raises bond prices."
+}
