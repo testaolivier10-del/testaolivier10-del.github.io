@@ -17,9 +17,11 @@
   var app = document.getElementById('lvtApp');
   var S = { user: null, profile: undefined, classes: null, rep: null, cur: null, frqs: null, banks: {}, bankWait: {} };
   var params = new URLSearchParams(location.search), CLASS_ID = params.get('c');
+  // ?demo=1: a sample class with made-up students (assets/class/teach-demo.js), no sign-in, nothing saved.
+  var DEMO = params.get('demo') === '1'; if(DEMO) CLASS_ID = 'demo';
 
   function A(){ return window.StudyHubAccount; }
-  function call(name, args){ return A().rpcData(name, args || {}); }
+  function call(name, args){ return DEMO ? window.LevlTeachDemo.call(name, args || {}) : A().rpcData(name, args || {}); }
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
   function rich(s){ return window.LevlInline && window.LevlInline.html ? window.LevlInline.html(s || '') : esc(s); }
   function pct(v){ return v == null ? '·' : Math.round(v * 100) + '%'; }
@@ -49,7 +51,15 @@
       tabs.map(function(t){ var on = t[0] === active; return '<a href="#' + t[0] + '" class="course-nav__link' + (on ? ' active' : '') + '"' + (on ? ' aria-current="page"' : '') + '>' + t[1] + '</a>'; }).join('') +
       '<a href="#assign" class="course-nav__link tm-navcta">+ Assign</a></nav></div>';
   }
-  function render(html, active){ setNav(active); app.innerHTML = html; window.scrollTo(0, 0); }
+  // Jump to the top only on a new view; redrawing the same view (a toggle in the builder, a unit moved in
+  // settings) keeps the place on the page.
+  var lastView = null;
+  var DEMO_NOTE = '<div class="lvt-demo" role="note"><div class="hwrap"><p><b>Sample class.</b> Made-up students in the middle of a term. Try anything: changes are not saved.</p><a class="btn-chan" href="/teach/">Make your own class</a></div></div>';
+  function render(html, active){
+    var view = location.pathname + location.search + location.hash, same = view === lastView, y = window.scrollY;
+    setNav(active); app.innerHTML = (DEMO ? DEMO_NOTE : '') + html; lastView = view;
+    window.scrollTo(0, same ? y : 0);
+  }
 
   /* ------------------------------------------------------------- data */
   function loadScript(src){ return new Promise(function(res, rej){ var s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
@@ -129,12 +139,12 @@
   function viewSignedOut(){
     render(frame(band({ issue: 'LevlPrep <i></i> For teachers', m1: 'Free classes', m2: 'for AP® teachers', hand: 'assign it, see who struggles, fix it',
       lede: 'Make a class, share a code, and assign practice, review, exams and free response from any of LevlPrep’s ten AP® courses. You see every student’s mastery and the exact questions the class misses.',
-      ctas: '<button class="btn-chan" id="lvtSignIn" type="button">Sign in to start</button><a class="btn-ghost" href="/join.html">I’m a student</a>' }) +
+      ctas: '<button class="btn-chan" id="lvtSignIn" type="button">Sign in to start</button><a class="btn-ghost" href="/teach/?demo=1">See a sample class</a>' }) +
       '<div class="hwrap"><div class="lv-grid3 tm-up">' +
       '<div class="d5-card"><p class="d5-lead">Your order, their path</p><p class="d5-mut">Set the units in the order you teach them. Every student’s study path follows it.</p></div>' +
       '<div class="d5-card"><p class="d5-lead">See the misconception</p><p class="d5-mut">Each question the class misses, with the wrong answer most of them picked.</p></div>' +
       '<div class="d5-card"><p class="d5-lead">Fix it in one tap</p><p class="d5-mut">Turn any weak topic into an assignment from the class page.</p></div></div>' +
-      '<p class="d5-mut" style="margin:28px 0 60px">Free for teachers. Students use the free plan, so nobody has to pay. Students must be 13 or older. <a href="/privacy.html#classes">What teachers see</a></p></div>'));
+      '<p class="d5-mut" style="margin:28px 0 60px">Free for teachers. Students use the free plan, so nobody has to pay. Students must be 13 or older. <a href="/privacy.html#classes">What teachers see</a>. Student? <a href="/join.html">Join a class</a>.</p></div>'));
     document.getElementById('lvtSignIn').addEventListener('click', function(){ A().openAuthModal(); });
   }
   function viewProfile(){
@@ -669,6 +679,7 @@
   }
   function boot(){
     if(!M || !A() || !A().onAuthChange){ app.innerHTML = '<p class="lv-msg is-bad" style="padding:40px 0">This page could not load. Refresh to try again.</p>'; return; }
+    if(DEMO){ S.user = { id: 'demo' }; loadScript('/assets/class/teach-demo.js').then(start, function(){ fail('the sample class could not load'); }); return; }
     var last = null;
     A().onAuthChange(function(u){
       // Signed in but the session is still being restored: wait for it rather than flash the signed-out page.

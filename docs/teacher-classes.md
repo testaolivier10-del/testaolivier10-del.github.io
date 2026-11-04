@@ -19,14 +19,15 @@ built with the real course styles (r3 band, dashboard design F, path card).
 - Database: `scripts/sql/migrations/2026-11b-classes.sql` (also in `schema.sql`). Tables reached only through
   functions; `teach_*` for teachers, `class_*` for students. Checked against PGlite (21 checks, see git history).
   Codes are 8 characters from pgcrypto; code lookups are capped at 30 an hour per account (`class_code_tries`);
-  summaries at 120 KB. **Owner step: run the migration in the Supabase SQL editor.** Until then the pages say
-  classes are not open.
+  summaries at 120 KB. Migration applied to the live database 2026-11-04.
 - Model: `assets/class/class-model.js` (summary of a student's course progress, mastery, assignment status, item
   stats). Tests: `scripts/test/class-model.test.mjs`.
 - Student side: `assets/class/class-student.js`, lazy loaded by `assets/site-chrome.js` on AP® course pages for
   signed-in visitors; pushes the summary (at most once a minute, only on change) and draws "From your teacher" on
   the course home. Join page: `join.html` + `assets/class/join.js`. Answer picks: one line in each
   `*-questions.js` writes `<course>_picks_v1` (this device; read into the summary).
+- Sample class: `/teach/?demo=1` ("See a sample class" on the teacher landing). `assets/class/teach-demo.js` builds 18
+  made-up students mid-term from real AP® Bio question ids, in the browser; edits stay in memory. No sign-in.
 - Teacher app: `teach/index.html` + `assets/class/teach.js` + `assets/class/teach.css` (hash routes: home, work,
   a/<id>, assign, students, s/<id>, grades, settings, topic/<id>).
 
@@ -35,7 +36,7 @@ built with the real course styles (r3 band, dashboard design F, path card).
 - Time limits, answer reveal timing and shuffle per assignment (need changes in each course's practice engine).
 - Reminder emails to students; teachers copy names instead.
 - Class Premium checkout; Google Classroom import; LTI; co-teachers.
-- NREMT, ochem and A&P classes (different progress stores).
+- NREMT, ochem and A&P classes (different progress stores). Owner asked 2026-11-04 for all courses; plan sent, waiting on OK.
 
 ## Grading rules (class-model.js `status`)
 
