@@ -182,7 +182,10 @@ const SHELL_BUDGETS = [
   /* 341 -> 342 for registering AP® Macroeconomics (docs/apmacro-spec.md, Phase 0): the thirteenth course in
      every generated course list, its premium.js entry, ranks, tutor starters and loader, search source, exam
      date, the theme tint and the shared selector twins (measured 340.9 KB with it; 342 keeps the usual margin). */
-  ['site', 342],
+  /* 342 -> 342.5 for the guided study path (docs/guided-path.md, owner 2026-11-03): the Path tab, its icon and
+     the loader in site-chrome.js (+0.2 KB, comments cut). path.js, path.css and the path data load later and
+     only on course pages, so they are not in this number. */
+  ['site', 342.5],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on

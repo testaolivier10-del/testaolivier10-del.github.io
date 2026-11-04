@@ -354,6 +354,7 @@
   var TAB_ICONS = {
     'Home':      '<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1z"/>',
     'Practice':  '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+    'Path':      '<path d="M5 19h8a3 3 0 000-6h-2a3 3 0 010-6h8"/>',
     'Learn':     '<path d="M4 5h6a3 3 0 013 3v12a2 2 0 00-2-2H4zM20 5h-6a3 3 0 00-3 3v12a2 2 0 012-2h7z"/>',
     'Notes':     '<path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h6"/>',
     // A stopwatch for timed exams; an "Aa" page for the glossary.
@@ -531,10 +532,21 @@
     wireSearchKey(courseKey);
   }
 
+  // The Path tab after Home in every course (docs/guided-path.md).
+  function withPathTab(items){
+    var home = items && items[0];
+    if(!home || home.label !== 'Home' || items.some(function(it){ return it.label === 'Path'; })) return items;
+    var on = /\/path\.html$/.test(location.pathname);
+    var out = items.map(function(it){ return on ? { href: it.href, label: it.label } : it; });
+    out.splice(1, 0, { href: home.href.replace(/(index\.html)?$/, 'path.html'), label: 'Path', active: on });
+    return out;
+  }
+
   function render(cfg){
     var mount = document.getElementById('site-header');
     if(!mount) return;
     var courseKey = courseKeyOf(cfg.subject);
+    if(COURSE_SHORT[courseKey]) cfg.items = withPathTab(cfg.items);
     // The course tint (see --ctint in theme.css) keys off this.
     document.body.setAttribute('data-course', courseKey);
 
@@ -578,6 +590,21 @@
     mountReminders();
     mountMotion();
     mountSheetView();
+    mountPath(courseKey);
+  }
+
+  // assets/course/path.js: on the Path page and home, and on lessons and notes once there is a path.
+  function mountPath(k){
+    var p = location.pathname, want = /\/path\.html$/.test(p) || !!document.querySelector('main.r3-home');
+    try{ want = want || (/\/(lessons|notes)\//.test(p) && !!localStorage.getItem(k + '_path_v1')); }catch(e){}
+    if(window.__levlPath || !COURSE_SHORT[k] || !want) return;
+    window.__levlPath = true;
+    var css = document.createElement('link');
+    css.rel = 'stylesheet'; css.href = '/assets/course/path.css';
+    document.head.appendChild(css);
+    var el = document.createElement('script');
+    el.src = '/assets/course/path.js'; el.defer = true;
+    document.head.appendChild(el);
   }
 
   /* AP® unit sheets open on click (owner 2026-11-03): assets/course/sheet-view.js and .css, on those pages only. */
