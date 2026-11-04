@@ -19,13 +19,13 @@ const CHECK = process.argv.includes('--check');
 
 /* The scripts a course page needs for its chrome and progress; anything else
    on review.html belongs to the review queue. */
-const KEEP = /(^|\/)(errors|account|premium|premium-gates|ochem-premium|hub-progress|chime|site-chrome|[a-z]+-curriculum|curriculum|[a-z]+-core|[a-z]+-nav|nav|ochem-xp)\.js$/;
+const KEEP = /(^|\/)(errors|account|report-question|premium|premium-gates|ochem-premium|hub-progress|chime|site-chrome|[a-z]+-curriculum|curriculum|[a-z]+-core|[a-z]+-nav|nav|ochem-xp)\.js$/;
 
 function build(c) {
   const src = readFileSync(join(ROOT, c.dir, 'review.html'), 'utf8');
   const name = (src.match(/<title>[^—]*— ([^|]*?) \| LevlPrep<\/title>/) || [])[1] || c.name;
   const title = `Your study path — ${name} | LevlPrep`;
-  const desc = `Your own path through ${name.replace(/&amp;/g, '&')}: start where you are, add only what you are missing, and follow it at your own pace.`.replace(/&/g, '&amp;');
+  const desc = `Your own path through ${name.replace(/&amp;/g, '&').replace(/^AP® /, '')}: start where you are, add only what you are missing, and follow it at your own pace.`.replace(/&/g, '&amp;');
   let html = src
     .replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
     .replace(/(<meta property="og:title" content=")[^"]*"/, `$1${title}"`)
@@ -45,7 +45,7 @@ function build(c) {
   html = html.replace(/(<body[^>]*?)\sdata-(app|runner)="review"/, '$1 data-app="path"');
   const main = `<main id="main" class="r3 lp-view" data-cover="${c.key}" tabindex="-1">
 <div class="hwrap"><div id="levlPath"><p class="lp-load">Loading your path…</p></div>
-<noscript><p>Your study path needs JavaScript. Every unit is still open from <a href="learn.html">Learn</a>.</p></noscript></div>
+<noscript><p>Your study path needs JavaScript. Every unit is still open from the <a href="index.html">course home</a>.</p></noscript></div>
 </main>`;
   if (!/<main[\s\S]*?<\/main>/.test(html)) throw new Error(`${c.dir}/review.html has no <main>`);
   html = html.replace(/<main[\s\S]*?<\/main>/, main);

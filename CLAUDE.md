@@ -132,6 +132,13 @@ the codes and claims in `scripts/sql/migrations/2026-10m-referrals.sql`, `assets
 `docs/dashboard.md` is the status file: the five-question dashboard every course uses (design F, owner 2026-10-26),
 its files, the daily accuracy log `hub_daily_v1` and what was left out.
 
+## Guided study path
+
+`docs/guided-path.md` is the status file: the three ways to study, the rules that keep a student from getting stuck,
+`assets/path/<course>.json` (`scripts/build-paths.mjs`, from each curriculum and dependency map), each course's
+`path.html` (`scripts/build-path-pages.mjs`, from its review.html), `assets/course/path.js` and `.css`, and the Path
+tab in `assets/site-chrome.js`. Rebuild both scripts after changing a course's topics, map or review page.
+
 ## Analytics
 
 `docs/analytics-plan.md` is the status file: the Umami proxy and bot filter, first-touch source, question tallies

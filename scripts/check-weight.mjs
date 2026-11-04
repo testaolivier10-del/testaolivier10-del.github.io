@@ -179,7 +179,10 @@ const SHELL_BUDGETS = [
   /* 340 -> 341 for registering AP® Precalculus (docs/apprecalc-spec.md, Phase 0): the eleventh course in
      every generated course list, its premium.js entry, ranks, tutor starters and loader, search source, exam
      date, the theme tint and the shared selector twins (+1.1 KB in those files; the shell measured 339.7 KB, its largest page load). */
-  ['site', 341],
+  /* 341 -> 341.5 for the guided study path (docs/guided-path.md, owner 2026-11-03): the Path tab, its icon and
+     the loader in site-chrome.js (+0.2 KB, comments cut). path.js, path.css and the path data load later and
+     only on course pages, so they are not in this number. Measured 341.1 KB. */
+  ['site', 341.5],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on

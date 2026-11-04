@@ -50,6 +50,13 @@ jobs:
         run: |
           node scripts/build-courses.mjs --check
           node scripts/check-courses.mjs --check
+      # The guided study path (docs/guided-path.md): its per-course data comes
+      # from each curriculum and dependency map, and each course's path.html
+      # from its review.html, so a changed course must rebuild both.
+      - name: study path data and pages match the courses
+        run: |
+          node scripts/build-paths.mjs --check
+          node scripts/build-path-pages.mjs --check
       # Prices, the free/Premium wording, bank counts in the purchase dialog,
       # the manifests and premium.html come from assets/premium.js and the data.
       - name: prices, counts and free/Premium copy match premium.js and the data

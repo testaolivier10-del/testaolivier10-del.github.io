@@ -52,6 +52,13 @@ A topic stop is done when the course records its lesson as finished (AP® and A&
 `ochem_progress[id].completed` or `ochem_textbook_read`, NREMT `nremt_lessons_v1`), or the student marked it done
 (passed the check, "I already know this", or "Mark this stop done" after the notes and practice).
 
+## Checks
+- CI: `build-paths.mjs --check` and `build-path-pages.mjs --check` (checks.yml and scripts/ci-local.sh).
+- The shared `/assets` budget went 341 -> 341.5 for the tab and loader in site-chrome.js (scripts/check-weight.mjs).
+- Clicked through on every course (2026-11-03): Path page, setup in each mode, whole course view, home card, a
+  notes page's end card, mark done, cramming with searched topics, the check-in after 5 days away, phone width
+  (390px, no sideways scroll) and dark mode.
+
 ## Open
 - NREMT has no prerequisite map; its class mode re-centers but adds no "before this" stops.
 - Ochem has no per-topic accuracy, so cramming orders its topics by course order.
