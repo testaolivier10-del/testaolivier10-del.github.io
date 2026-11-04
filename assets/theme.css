@@ -2029,3 +2029,14 @@ footer a:hover{color:var(--ink);}
 
 /* MathML: Chromium trims the spaces at the ends of an <mtext> ("68% within1SD"), so keep them. */
 mtext{white-space:pre;}
+
+/* Readable tables by default. A table with no class of its own used to get
+   browser default padding (1px), so neighbouring columns ran together ("pulmon,
+   pneum lung"). :where() keeps this at zero specificity: any table a course
+   styles itself still wins. Checked by scripts/check-legibility.mjs. */
+:where(table:not([class])){border-collapse:collapse;margin:14px 0;}
+:where(table:not([class])) :where(th,td){padding:9px 16px 9px 0;text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--line, rgba(0,0,0,.1));}
+:where(table:not([class])) :where(th,td):last-child{padding-right:0;}
+:where(table:not([class])) :where(thead th){font-weight:700;}
+@media (max-width:600px){:where(table:not([class])) :where(th,td){padding-right:12px;}}
