@@ -408,8 +408,9 @@ const SHELL_BUDGETS = [
      Calculus' 68 is the reference; measured 80.9 KB on the exams page before
      any unit is published. 82 -> 83 for the launch (docs/apstat-spec.md
      decision 15): the flag hook and Flagged mode (as calculus' 68 -> 68.5),
-     the setup value step and the tiny p-value wording; measured 82.6 KB. */
-  ['statistics', 83],
+     the setup value step and the tiny p-value wording; measured 82.6 KB.
+     83 -> 83.2: the answer-pick line for teacher classes (docs/teacher-classes.md), one line in every AP® renderer. */
+  ['statistics', 83.2],
   /* AP® Environmental Science (environmental-science/, a fork of the AP®
      Statistics runtime, docs/apenv-spec.md decision 1): the calculation
      recipes (env-calc.js) in place of the distributions library, and the
@@ -766,7 +767,8 @@ const BUDGETS = [
   // tells the truth at greater length, which is the one thing this page is for.
   // 15 -> 16: the "For schools" section (docs/apbio-spec.md decision 20).
   /* 16 -> 16.6: the privacy page now describes the analytics added 2026-10-20. */
-  ['privacy.html', 16.6],
+  /* 16.6 -> 17.3: the "Teacher classes" section, what a teacher sees and how it is deleted (docs/teacher-classes.md). */
+  ['privacy.html', 17.3],
 ];
 
 /* Files fetched at RUNTIME by JavaScript, which the reference walk above
