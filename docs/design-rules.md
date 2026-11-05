@@ -58,6 +58,9 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
 - No em dashes or hyphens used as punctuation in any copy.
 
 ## Layout and navigation
+- Agreed (2026-11-05): every course gets the same structure (the 5 sections, header, phone bar and page patterns);
+  what sits inside each section follows what that course has (NREMT tools, ochem mechanisms, A&P 3D anatomy; no empty
+  tabs for features a course lacks).
 - Agreed (step 2): on computers the 5 sections sit inside the header row, next to the logo and course name (one
   row, no separate tab bar); below about 1,100 px wide it may fall back to two rows.
 - Agreed (step 3): header right side inside a course is search, streak and the account picture only. Answer
@@ -241,3 +244,8 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   (A1). Options page: https://claude.ai/artifact/Me73k3eNG2PVRpkU9LBARi. All 15 steps done; next: build it in the real code.
 - 2026-11-05: removed the Reopened step 6 and 6b lines; each was settled again in a later step (cards and rows: 6;
   topics and units: 8; logged out header: 13; Share: 8 and 9). Every rule above is now Agreed.
+- 2026-11-05: owner saw the full AP® Biology prototype built from steps 1 to 15 (https://claude.ai/artifact/Pasp2WVgJzT7oKNqkDHnym)
+  and did not like it: plainer, less personality, features missing, liked things changed. Claude's read: nearly every
+  step picked the calmer option and together they drained the site's personality. New approach (owner): start from
+  AP® Biology as it is today (snapshot https://claude.ai/artifact/7ouZQjPGN5orw2wajUXRNX), change only what the owner
+  marks, get one course right, then apply it to all. The step decisions above are a reference, not a plan to build.
