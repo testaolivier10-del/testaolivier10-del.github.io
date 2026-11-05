@@ -980,7 +980,7 @@
    "hook": "She braked for both speed cameras, and the mean value theorem still says she was speeding.",
    "search_phrase": "mean value theorem",
    "yt_no_hashtags": true,
-   "buffer": "manual",
+   "buffer": "6aed0c9186fe9b83795abd27",
    "yt_buffer": "manual",
    "youtube_id": null,
    "shorts_thumb": false,
@@ -1002,7 +1002,9 @@
    "review_blob": "ee5cd5b66e244341a83f15bba25fa52d057696be",
    "approved_on": "2026-11-01",
    "approved_blob": "ee5cd5b66e244341a83f15bba25fa52d057696be",
-   "handoff_sent": "2026-11-05"
+   "handoff_sent": "2026-11-05",
+   "posted_tt": true,
+   "poll_skipped": "posted via Buffer shareNow without the poll sticker at Olivier request 2026-11-05"
   },
   {
    "id": "w1104-01-zombie-ant",
