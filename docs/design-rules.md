@@ -17,7 +17,7 @@ https://claude.ai/artifact/GbY4t4nHczLZ8JdYkerpZx). Check every options page aga
 One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
 honest take and a pick; the owner chooses and the choice is recorded here before the next step.
 1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners (done) · 5 Type and color (done) ·
-6 Cards, lists and tags (done) · 7 Course home (done) · 8 Learn · 9 Practice · 10 Question screen · 11 Exams · 12 Progress ·
+6 Cards, lists and tags (done) · 7 Course home (done) · 8 Learn (done) · 9 Practice · 10 Question screen · 11 Exams · 12 Progress ·
 13 Menus and site wide extras · 14 Homepage · 15 Teacher side. (Reordered 2026-11-05 so each section of the course
 gets its own step, built from `docs/site-feature-inventory.md`.)
 
@@ -97,6 +97,17 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   (Read, Skill, Practice set, Review, Unit test), with the Up next card (Start, Already know it?, Mark done) on top.
 - Agreed (step 7): every course home ends with Free vs Premium and the common questions, for everyone.
 - Agreed (step 7): videos and the tools showcase move to Learn; exam facts move to Exams.
+- Agreed (step 8): Learn has four parts, Units, Glossary, Tools and Videos, as small pill tabs. On computers Learn is
+  a contents sidebar (search the notes, units with progress, the open unit's topics, "On this page", Unit sheet) with
+  the notes beside it, like today. On phones Learn opens the list: units open in place, 2 skills tracks after the 8
+  units, and Unit sheet and Read the whole unit under the open unit's topics. Practice this unit and Unit test live
+  in Practice and Exams only.
+- Agreed (step 8): a topic page has the title row (meta line "12 min read · Practiced", Share icon, Practice 5),
+  then a Read / Interactive lesson switch (a Premium lesson shows its lock there), then the quick answer, then the
+  video as a slim row (thumbnail, title, length; the player opens when tapped), then the notes.
+- Agreed (step 8): the Tools page keeps cards with each tool's drawing; the one exception to the list rows rule.
+- Agreed (step 8): kept as today, restyled: glossary (search, unit filter, A to Z, pop ups in notes), notes content
+  (figures, worked examples, common mistakes, Report a problem), inside a tool, formula sheets with Tools.
 - Agreed: every design question is shown as pictures of each option before the owner chooses, never as words only.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
@@ -154,3 +165,5 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
 - 2026-11-05: step 7 decided: Make your path first for visitors (N2; Claude preferred a real question first, owner
   chose N2, which closes the open "try one question" item), next step plus path strip for returning students (R1),
   winding path (P2), price and questions for everyone (M2). Options page: https://claude.ai/artifact/6aGe9UHwgCvfACd6fverBf
+- 2026-11-05: step 8 decided: contents sidebar on computers (A), Read / Interactive switch (A), slim video row (V1),
+  tool cards with drawings (T1). Options page: https://claude.ai/artifact/QgTA1iVbiqyYAj74uiQ7ps
