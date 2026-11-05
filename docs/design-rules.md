@@ -17,7 +17,7 @@ https://claude.ai/artifact/GbY4t4nHczLZ8JdYkerpZx). Check every options page aga
 One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
 honest take and a pick; the owner chooses and the choice is recorded here before the next step.
 1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners (done) · 5 Type and color (done) ·
-6 Cards, lists and tags (done) · 7 Course home (done) · 8 Learn (done) · 9 Practice (done) · 10 Question screen (done) · 11 Exams · 12 Progress ·
+6 Cards, lists and tags (done) · 7 Course home (done) · 8 Learn (done) · 9 Practice (done) · 10 Question screen (done) · 11 Exams (done) · 12 Progress ·
 13 Menus and site wide extras · 14 Homepage · 15 Teacher side. (Reordered 2026-11-05 so each section of the course
 gets its own step, built from `docs/site-feature-inventory.md`.)
 
@@ -131,6 +131,19 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   the site (e.g. Review the 3 you missed) and small links Practice again and Share result.
 - Agreed (step 10): kept: Flag on every question, answer sounds, screen reader announcements, number boxes for
   numeric questions, other course suggestions on the end screen.
+- Agreed (step 11): the Exams page has the exam facts in one line on top (Section I, Section II, exam day), then one
+  card with three choices (Practice exam, Unit test, Mixed timed set, each with one short line), Timing (standard,
+  1.5 times, double, untimed) and one Start; then rows for the Cram plan and, where a course has one, the score
+  calculator.
+- Agreed (step 11): during an exam: a top strip with the section, the timer (with Hide), a question map button
+  ("14 of 60", opens a grid showing answered and flagged) and Flag; Back and Next at the bottom; the flagged list
+  before you submit.
+- Agreed (step 11): exam results show the estimated 1 to 5 score (labelled not calibrated), Section I, Section II and
+  composite, one Next card for the unit that cost the most, unit bars, then every question (Missed first; All and
+  Flagged one tap away) with your answer and the right one, opening the explanation view; Section II rows show
+  rubric points (owner's idea).
+- Agreed (step 11): the cram plan is its own page under Exams (3 or 2 weeks back from the exam date, a tick per day,
+  Print in Share), linked from Progress under "Will I be ready".
 - Agreed: every design question is shown as pictures of each option before the owner chooses, never as words only.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
@@ -194,3 +207,5 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   idea), FRQs grouped by type (R2). Options page: https://claude.ai/artifact/U5tCoafGswGA39WbUdgc2B
 - 2026-11-05: step 10 decided: full width choices with Check pinned (A), data beside or pinned (S1), colors plus
   the why (E1), one next step (N1). Options page: https://claude.ai/artifact/FV7vdYFpvAvhX9z3DFkxyR
+- 2026-11-05: step 11 decided: three choices and one Start (A), timer and map like the real exam (X1), results with
+  every question underneath (R4, owner's idea), cram plan under Exams (C1). Options page: https://claude.ai/artifact/E6hXHtfr6sW22XXik1dFoa
