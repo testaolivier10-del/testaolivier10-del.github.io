@@ -14,7 +14,7 @@ Earlier look and covers: `docs/site-redesign.md`.
 ## Build order
 One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
 honest take and a pick; the owner chooses and the choice is recorded here before the next step.
-1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners (done) · 5 Type and color · 6 Cards and lists ·
+1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners (done) · 5 Type and color (done) · 6 Cards and lists ·
 7 Course home · 8 Question screen · 9 Notes page · 10 Progress · 11 Homepage · 12 Teacher side.
 
 ## How we work
@@ -35,8 +35,16 @@ honest take and a pick; the owner chooses and the choice is recorded here before
   row with a breadcrumb and at most one small action; no banner, no drawing, no handwritten line.
 - Agreed (step 4): during a practice or exam session there is no banner and no header: only End, a progress bar and
   the question count.
-- Proposed: no handwritten (Kalam) font inside study content (notes, questions, explanations).
-- Proposed: notes read at about 65 characters per line and 17 to 19 px.
+- Agreed (step 5): headlines stay Inter Display 900. Two colors (the green word) only in page titles; section
+  headings are one color.
+- Agreed (step 5): notes text is Nunito at weight 500, 18 px on computers and 17 px on phones, about 65 letters per
+  line (max width about 36em), line height about 1.65. fonts.css must declare Nunito from 400, not 600, or weight
+  500 silently shows as 600 (that is what happens today).
+- Agreed (step 5): the handwritten Kalam font appears only on the homepage and in course banners (one line each);
+  never in notes, questions, explanations, Progress or other pages.
+- Agreed (step 5): no code style font (IBM Plex Mono). Numbers, scores and labels use Nunito with even width digits
+  (`font-variant-numeric: tabular-nums`); its font files can be dropped.
+- Agreed (step 5): course banners keep their dark course color in dark mode; only text and accents lighten.
 
 ## Words
 - Agreed: show less at once. Do not explain things people already understand (a button that emails students needs
@@ -62,7 +70,8 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 - Agreed (step 1): every course has 5 sections: Home, Learn, Practice, Exams, Progress. Path lives in Home;
   Review and Flashcards in Practice; Glossary and Tools in Learn. The progress page is called "Progress" (not
   Dashboard or Stats); the reading section is called "Learn" (notes, lessons and videos).
-- Proposed: one primary (gold) button per screen.
+- Agreed (step 5): the main button is gold, and there is one per screen (the "do this next" action); other
+  buttons are outlined.
 - Proposed: teacher class view with 4 tabs (Class, Assignments, Students, Settings) plus "+ Assign".
 
 ## Checklist before showing a page
@@ -92,3 +101,6 @@ honest take and a pick; the owner chooses and the choice is recorded here before
   Options page: https://claude.ai/artifact/GACSjGjVKyMCn3yePoQgsC
 - 2026-11-04: step 4 decided: half height course home banner, one line title row inside courses, nothing but
   progress during sessions. Options page: https://claude.ai/artifact/Ndt5wNS924QjuA6nGktTDN
+- 2026-11-04: step 5 decided: Inter Display with two colors on titles only (A), notes 18 px medium at 65 letters (N2),
+  gold main button (G), handwriting only on banners (H1), numbers in Nunito (M2). Found that notes ask for weight 500
+  but show 600 because fonts.css starts Nunito at 600. Options page: https://claude.ai/artifact/2mnjPAc9PUwaW6kws7JiZi
