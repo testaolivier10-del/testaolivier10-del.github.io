@@ -125,7 +125,10 @@ def glow(c, x, y, r, col=AMBER, a=1.0):
         c.drawCircle(x, y, r, P(col, 110 * a, MaskFilter=blur(r * 0.4), BlendMode=skia.BlendMode.kScreen))
 
 
-def calm_bg(c, t, tint=COURSE):
+BOARD_TINT = (90, 96, 170)   # one board look for every long video (Olivier, 2026-11-05): never the course colour
+
+
+def calm_bg(c, t, tint=BOARD_TINT):
     """the calm teaching background: navy to indigo with slow drifting soft shapes and motes (scene life)"""
     sh = skia.GradientShader.MakeRadial(skia.Point(W * 0.5, H * 0.45), W * 0.75, [C((46, 40, 92)), C(NAVY)], [0, 1])
     c.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Shader=sh))
