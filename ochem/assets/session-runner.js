@@ -537,8 +537,9 @@
       document.getElementById('afterAnswer').innerHTML = feedbackHtml(q, entry.d, entry.check, idx !== null);
       wireChrome(q.id);
       if(idx === null){
-        var btn = cardEl.querySelector('#nextBtn');
-        if(btn) btn.addEventListener('click', advance);
+        // Back on the live card: "Try a similar one" only while that question is still queued.
+        if(!S.pendingCheck){ var sb = cardEl.querySelector('#similarBtn'); if(sb) sb.remove(); }
+        wireNext();
       } else if(els.progLabel){
         els.progLabel.textContent = 'Looking back — nothing is being re-scored';
       }
@@ -610,8 +611,7 @@
           if(!box || !q.why || S.history[S.history.length - 1] !== entry || S.current !== q) return;
           d.why = q.why;
           box.innerHTML = feedbackHtml(q, d, check, false);
-          var nb = cardEl.querySelector('#nextBtn');
-          if(nb) nb.addEventListener('click', advance);
+          wireNext();
         });
       }
       /* The panel above is written into a card the runner replaces between
@@ -621,8 +621,14 @@
       if(window.LevlAnnounce){
         window.LevlAnnounce.answer(d.correct, d.correct ? d.why : (d.diagnosis || d.why));
       }
+      wireNext();
+    }
+    // "Next question" moves on and drops the queued similar question; "Try a similar one" takes it.
+    function wireNext(){
       var btn = cardEl.querySelector('#nextBtn');
-      if(btn) btn.addEventListener('click', advance);
+      if(btn) btn.addEventListener('click', function(){ S.pendingCheck = null; advance(); });
+      var sim = cardEl.querySelector('#similarBtn');
+      if(sim) sim.addEventListener('click', advance);
     }
 
     function feedbackHtml(q, d, check, replay){
@@ -684,9 +690,11 @@
         return html;
       }
 
-      var label = check ? 'Try a similar one'
-                : (config.nextLabel ? config.nextLabel(S) : 'Next question');
-      html += '<div class="actions cx-next-row"><button class="btn-press cx-next" id="nextBtn">' + esc(label) + '</button></div>';
+      /* After a miss, "Next question" is the main button and the similar one is optional (consistency audit
+         2026-11, B6): it used to be the only way on. */
+      var label = config.nextLabel ? config.nextLabel(S) : 'Next question';
+      html += '<div class="actions cx-next-row"><button class="btn-press cx-next" id="nextBtn">' + esc(label) + '</button>' +
+        (check ? '<button type="button" class="btn-outline" id="similarBtn">Try a similar one</button>' : '') + '</div>';
       // Under the explanation, which is where the disagreement happens.
       if(window.LevlReport) html += '<div class="q-report">' + window.LevlReport.button('ochem', questionRef(q)) + '</div>';
       return html;

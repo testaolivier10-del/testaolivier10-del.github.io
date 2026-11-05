@@ -149,6 +149,7 @@
   function lessonComplete(topicId){
     var d = load(), first = !d.lessons[topicId];
     if(first){ d.lessons[topicId] = now(); save(d); hub('award', XP.lesson); }
+    if(first && window.LevlLazy) window.LevlLazy('milestones', function(M){ M.check(CK, topicId); });
     event(CK + '-lesson-complete', { topic: topicId });
     return first;
   }

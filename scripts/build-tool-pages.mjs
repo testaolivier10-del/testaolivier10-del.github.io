@@ -287,10 +287,8 @@ const hubHtml = '\n' + toolsHubMain({
   lede: 'Push electrons, turn a molecule over, plan a route or make a prediction. For the same chemistry with a right answer, see <a href="practice.html">Practice</a>.',
   cta: { href: `tools/${tools[0].slug}.html`, label: `Open the ${esc(tools[0].name.toLowerCase())}` }, cta2: { href: 'search.html', label: 'Search everything' },
   before: '<noscript><div class="site-nav-fallback"><p>Each tool computes its answer in your browser and needs JavaScript to run; the list below still links to every one.</p></div></noscript>',
-  groups: [
-    { big: true, h: 'Free <span>to use</span>', p: 'Open any of these now.', label: 'Free tools', cards: freeTools.map(card) },
-    ...(paidTools.length ? [{ big: true, h: 'With <span>Premium</span>', p: 'Part of the Organic Chemistry pass.', label: 'Premium tools', cards: paidTools.map(card) }] : []),
-  ],
+  // Free, then With Premium, as on every course's hub (toolsHubMain's pass; consistency audit 2026-11, C5).
+  pass: 'Organic Chemistry', groups: [{ h: 'Tools', cards: [...freeTools, ...paidTools].map(card) }],
   note: 'Or <a href="search.html">search the whole course at once</a>: the textbook, every lesson and mechanism, these tools, and every practice question.',
 }) + '\n';
 {

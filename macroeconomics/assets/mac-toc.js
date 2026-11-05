@@ -8,10 +8,18 @@
     if(m.value >= 0.85) return ['mastered', 'Mastered'];
     return [m.value >= 0.3 ? 'learning' : 'started', (m.value >= 0.6 ? 'Strong' : m.value >= 0.3 ? 'Developing' : 'Learning') + ' · ' + p + '%'];
   }
+  /* What the guided path marked done (assets/course/path.js, <course>_path_v1) ticks here too, so a topic
+     shows done the same in every view (consistency audit 2026-11, A5). */
+  function withPath(done){
+    var out = {}, k;
+    for(k in done) out[k] = done[k];
+    try{ var s = JSON.parse(localStorage.getItem('apmacro' + '_path_v1') || 'null'); if(s) [s.covered || {}, s.done || {}].forEach(function(m){ for(k in m) if(m[k] && !out[k]) out[k] = 1; }); }catch(e){}
+    return out;
+  }
   function paint(){
     var C = window.ApMacroCore, CU = window.ApMacroCurriculum;
     if(!C || !CU) return;
-    var done = C.lessonsDone() || {};
+    var done = withPath(C.lessonsDone() || {});
     var built = CU.topics.filter(function(t){ return t.built; });
     document.querySelectorAll('[data-toc-t]').forEach(function(el){
       el.classList.toggle('read', !!done[el.getAttribute('data-toc-t')]);
@@ -56,6 +64,7 @@
     paint();
     window.ApMacroToc = { paint: paint };
     document.addEventListener('apmacro:progress', paint);
+    document.addEventListener('levl:pathchange', paint);
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

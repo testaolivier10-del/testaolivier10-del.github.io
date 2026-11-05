@@ -41,7 +41,7 @@ test('a published unit builds every page kind, math rendered and graphs plotted,
   beta({ ROOT: root, fail: m => fails.push(m), htmlFiles: html });
   assert.deepEqual(fails, []);
   const lesson = readFileSync(join(root, `precalculus/lessons/${T}.html`), 'utf8');
-  assert.match(lesson, /<title>Rates of Change in Polar Functions — AP® Precalculus( Lesson)?( \| LevlPrep)?<\/title>/);
+  assert.match(lesson, /<title>[^<]+ — AP® Precalculus( Lesson)? \| LevlPrep<\/title>/);
   assert.doesNotMatch(lesson, /"isAccessibleForFree": true/, 'Unit 3 lessons are Premium');
   assert.doesNotMatch(lesson, /noindex/);
   assert.doesNotMatch(lesson, /pcalc-beyond/, 'Unit 3 is on the exam');

@@ -38,7 +38,7 @@ test('a published unit builds every page kind, math rendered and graphs plotted,
   beta({ ROOT: root, fail: m => fails.push(m), htmlFiles: html });
   assert.deepEqual(fails, []);
   const lesson = readFileSync(join(root, `calculus/lessons/${T}.html`), 'utf8');
-  assert.match(lesson, /<title>Antiderivatives and Indefinite Integrals — AP® Calculus AB( Lesson)?( \| LevlPrep)?<\/title>/);
+  assert.match(lesson, /<title>[^<]+ — AP® Calculus AB( Lesson)? \| LevlPrep<\/title>/);
   assert.doesNotMatch(lesson, /"isAccessibleForFree": true/, 'Unit 6 lessons are Premium');
   assert.doesNotMatch(lesson, /noindex/);
   // Math is MathML at build time, with its TeX kept; no raw $ is left.

@@ -7,14 +7,13 @@
 
    courseTitle(topic, labels) tries each course label in turn, longest first
    ("Organic Chemistry Notes", then "Organic Chem Notes"...), and keeps the
-   first that fits. A long topic name matters more to a searcher than the
-   brand, so next the shortest label is tried without " | LevlPrep"; only if
-   that still does not fit is the topic cut at a word and ended with "…". The
-   label always stays, so a lesson and its notes page never share a title.
+   first that fits. When none fits, the topic is cut at a word and ended
+   with "…" next to the first label (the shortest when that would leave
+   under 20 characters of topic); the brand always stays (consistency audit
+   2026-11, D13). The label always stays, so a lesson and its notes page
+   never share a title.
 
-   { keepFirstLabel: true } is for a course whose short label searchers don't
-   type ("A&P"): the full first label is tried without the brand before any
-   shorter label is tried. */
+   { keepFirstLabel: true } lowers that floor to 16 characters. */
 export const BRAND = 'LevlPrep';
 export const TITLE_MAX = 60;
 
@@ -31,30 +30,61 @@ export function courseTitle(topic, labels, { keepFirstLabel = false } = {}) {
   for (const label of list) {
     const t = `${topic} — ${label} | ${BRAND}`;
     if (titleLength(t) <= TITLE_MAX) return t;
-    if (keepFirstLabel && label === list[0] && titleLength(`${topic} — ${label}`) <= TITLE_MAX) return `${topic} — ${label}`;
   }
-  const label = list[list.length - 1];
-  const bare = `${topic} — ${label}`;
-  if (titleLength(bare) <= TITLE_MAX) return bare;
-  const room = TITLE_MAX - titleLength(` — ${label}`) - 1;
-  const cut = decode(topic).slice(0, room).replace(/\s+\S*$/, '').replace(/[\s,;:–—-]+$/, '');
-  // Cutting at a word can free enough room for the brand again; then it goes
-  // back on, as site rule title-pattern expects (AP® Physics 1 launch).
-  const short = `${cut}… — ${label}`;
-  return titleLength(`${short} | ${BRAND}`) <= TITLE_MAX ? `${short} | ${BRAND}` : short;
+  /* Nothing fits whole: the brand always stays (consistency audit 2026-11, D13), so the topic is shortened. It keeps
+     its first words, ended with "…" ("Calculus Formulas and Theorems…"); when that would match a neighbour's title it
+     keeps its first and last words with "…" between. A lesson and its notes page still differ by their label. */
+  const shortenings = (label) => {
+    const room = TITLE_MAX - titleLength(` — ${label} | ${BRAND}`);
+    const words = decode(topic).split(/\s+/);
+    const clean = (w) => w.replace(/[\s,;:–—(-]+$/, '');
+    // k first words and m last words. A cut that reads from the start and keeps at least 20 characters comes first
+    // ("95% confidence intervals and…", not "95%… intervals and error bars"): a title cut in the middle reads badly
+    // in a tab or a search result. Then the rest by length; the middle cuts stay as fallbacks so neighbours never
+    // share a title.
+    const out = [];
+    for (let k = words.length - 1; k >= 0; k--) {
+      for (let m = words.length - k; m >= 0; m--) {
+        if (!k && !m) continue;
+        const head = clean(words.slice(0, k).join(' '));
+        const tail = m ? words.slice(words.length - m).join(' ').replace(/^[,;:]\s*/, '') : '';
+        const t = !m ? `${head}…` : k ? `${head}… ${tail}` : `…${tail}`;
+        if (t.length <= room) out.push({ t, tail: m > 0 });
+      }
+    }
+    const good = (x) => !x.tail && x.t.length >= 20;
+    return out.sort((x, y) => (good(y) - good(x)) || (y.t.length - x.t.length) || (x.tail - y.tail)).map((x) => x.t);
+  };
+  /* The first label while it leaves a readable topic, else the next. Within one build, two pages never get the same
+     shortened title: the next candidate is taken (check-site section 33). */
+  const floor = keepFirstLabel ? 16 : 20;
+  for (const [i, label] of list.entries()) {
+    const c = shortenings(label);
+    if (!c.length || (c[0].length < floor && i < list.length - 1)) continue;
+    // The same topic and label always get the same pick (a builder may ask twice for one page).
+    const own = `${topic}\u0000${label}`;
+    const pick = PICKED.get(own) || c.find((t) => !ISSUED.has(`${t} — ${label}`)) || c[0];
+    PICKED.set(own, pick);
+    ISSUED.add(`${pick} — ${label}`);
+    return `${pick} — ${label} | ${BRAND}`;
+  }
+  // A single long word that cannot be cut: the label drops its "AP® " before the topic is cut mid-word.
+  const plain = list[list.length - 1].replace(/^AP® /, '');
+  const whole = `${topic} — ${plain} | ${BRAND}`;
+  if (titleLength(whole) <= TITLE_MAX) return whole;
+  return `${decode(topic).slice(0, TITLE_MAX - titleLength(` — ${plain} | ${BRAND}`) - 1)}… — ${plain} | ${BRAND}`;
 }
+const ISSUED = new Set();
+const PICKED = new Map();
 
 /* A site-level page (hub, legal, search): "{Page} | LevlPrep". */
 export function siteTitle(page) {
   return `${page} | ${BRAND}`;
 }
 
-/* The shape site rule title-pattern enforces: "… | LevlPrep", or "… — Label"
-   when the brand would not fit. */
+/* The shape site rule title-pattern enforces: every title ends " | LevlPrep" (consistency audit 2026-11, D13). */
 export function titleProblem(title) {
   if (/^[^|]+ \| LevlPrep$/.test(title)) return null;
   if (/\|/.test(title)) return 'uses "|" other than before "LevlPrep"';
-  if (!/ — /.test(title)) return 'does not end with " | LevlPrep"';
-  if (titleLength(`${title} | ${BRAND}`) <= TITLE_MAX) return '" | LevlPrep" would fit but is missing';
-  return null;
+  return 'does not end with " | LevlPrep"';
 }

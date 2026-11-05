@@ -988,14 +988,16 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ls-root.ls-phone .lb-mark b,.ls-root.ls-phone .lb-k b{font-size:13.5px;}
 .ls-root.ls-phone .lb-scale-l,.ls-root.ls-phone .lb-scale-m,.ls-root.ls-phone .lb-scale-r{font-size:12.5px;}
 .ls-root.ls-phone .lb-scale{height:50px;}
+/* The flask's particle lens on a phone: atom symbols are raised to 12 px, wider than the small H spheres they
+   sit on, so the H letters ran into the central atom's (O⁺ in H₃O⁺) and the lens shine. The small white
+   sphere marks H by size as well as color, and the legend beside it names every species. */
+.ls-root.ls-phone .lb-is-flask .lb-parts .pt-atom.ph text{display:none;}
 /* The gauge is the last row of the stage: its right end stays clear of the Enlarge button. */
 .ls-root.ls-phone .ls-stage .lb-side .lb-qk{margin-right:56px;}
 @media (orientation:portrait){ .ls-root.ls-phone .chem-ls-stage .bf-key{padding-right:52px;flex-wrap:wrap;} }
 .ls-root.ls-phone .ic-svg .tick{font-size:12.5px;fill:var(--ink);}
 .ls-root.ls-phone .ic-svg .lbl{font:800 13.5px var(--font-ui);fill:var(--ink);}
 .ls-root.ls-phone .ic-svg .ic-arrow{font-size:13px;}
-/* Atom symbols inside the spheres: a little larger on a phone (they stay inside every sphere). */
-.ls-root.ls-phone .pt-atom text,.ls-root.ls-phone .lb-disc text{transform-box:fill-box;transform-origin:50% 50%;scale:1.18;}
 /* ICE explore on a phone: the bars read at their CSS size, so the mixture gets more of the height. */
 .ls-root.ls-phone .chem-ls-stage .ic-live .ic-beaker{flex:1.7 1 0;}
 /* Buffer capacity drill on a phone held upright: the two beakers one above the other, each twice the size. */

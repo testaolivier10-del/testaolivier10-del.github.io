@@ -81,9 +81,9 @@
       // the full names, never in a URL; the key travels as its folder,
       // "calculus". Was 'hidden' until published (docs/apcalc-spec.md
       // decision 6); 'beta' since the launch (decision 12).
-      key: 'apcalc', short: 'Calculus', name: 'AP® Calculus AB', productName: 'AP® Calculus AB',
-      path: '/calculus/', dir: 'calculus', storagePrefix: 'apcalc_', rankLabel: 'Calculus rank',
-      searchLabel: 'Calculus', aliases: ['calculus', 'calc', 'calculus-ab'], paid: true, status: 'live', order: 7,
+      key: 'apcalc', short: 'Calculus AB', name: 'AP® Calculus AB', productName: 'AP® Calculus AB',
+      path: '/calculus/', dir: 'calculus', storagePrefix: 'apcalc_', rankLabel: 'Calculus AB rank',
+      searchLabel: 'Calculus AB', aliases: ['calculus', 'calc', 'calculus-ab'], paid: true, status: 'live', order: 7,
     },
     {
       // As AP® Calculus AB (docs/apcalcbc-spec.md decision 2): the mark only in

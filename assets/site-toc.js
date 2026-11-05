@@ -1,8 +1,9 @@
 /* The "On this page" rail beside the long text pages (privacy, terms,
    sources, what's new), built from the page's own headings so it cannot
    drift from them: each <nav class="sp-toc"> lists the h2s of the .sp-prose
-   next to it. With data-months (what's new) it lists months instead, and
-   puts a month heading before each month's first entry. The rail is hidden
+   next to it. With data-months (what's new) it lists months instead, puts a
+   month heading before each month's first entry and folds every month but
+   the newest. The rail is hidden
    on small screens by assets/site-pages.css. */
 (function(){
   function slug(s){
@@ -14,23 +15,46 @@
     var items = [];
     var heads = [].filter.call(doc.children, function(el){ return el.tagName === 'H2'; });
     if(nav.hasAttribute('data-months')){
-      var seen = {};
-      heads.forEach(function(h){
-        var d = h.querySelector('.date');
+      /* Older months fold away (consistency audit 2026-11, D9: the page was about 55,000 px tall on a phone): the
+         newest month stays open, every earlier one becomes a <details> whose summary is its month heading. A link
+         to a month, or to anything inside one, opens it. */
+      var seen = {}, box = null, first = true;
+      [].slice.call(doc.children).forEach(function(el){
+        var d = el.tagName === 'H2' && el.querySelector('.date');
         var m = d && /([A-Za-z]+) (\d{4})\s*$/.exec(d.textContent);
-        if(!m) return;
-        var id = 'm-' + m[2] + '-' + m[1].toLowerCase();
-        if(seen[id]) return;
-        seen[id] = 1;
-        var p = document.createElement('p');
-        p.className = 'sp-mon';
-        p.id = id;
-        p.appendChild(document.createTextNode(m[1] + ' '));
-        var y = document.createElement('span');
-        y.textContent = m[2];
-        p.appendChild(y);
-        h.parentNode.insertBefore(p, h);
-        items.push([id, m[1] + ' ' + m[2]]);
+        if(m){
+          var id = 'm-' + m[2] + '-' + m[1].toLowerCase();
+          if(!seen[id]){
+            seen[id] = 1;
+            var p = document.createElement(first ? 'p' : 'summary');
+            p.className = 'sp-mon';
+            p.appendChild(document.createTextNode(m[1] + ' '));
+            var y = document.createElement('span');
+            y.textContent = m[2];
+            p.appendChild(y);
+            if(first){ p.id = id; el.parentNode.insertBefore(p, el); box = null; first = false; }
+            else {
+              box = document.createElement('details');
+              box.className = 'sp-mon-box';
+              box.id = id;
+              box.appendChild(p);
+              el.parentNode.insertBefore(box, el);
+            }
+            items.push([id, m[1] + ' ' + m[2]]);
+          }
+        }
+        if(box && el !== box && (m || el.tagName !== 'P' || el.nextElementSibling)) box.appendChild(el);
+      });
+      function openTo(hash){
+        var t = hash && document.getElementById(hash.slice(1));
+        var b = t && (t.closest ? t.closest('details.sp-mon-box') : null);
+        if(b && !b.open){ b.open = true; t.scrollIntoView(); }
+      }
+      openTo(location.hash);
+      window.addEventListener('hashchange', function(){ openTo(location.hash); });
+      nav.addEventListener('click', function(e){
+        var a = e.target.closest && e.target.closest('a[href^="#"]');
+        if(a){ var b = document.getElementById(a.getAttribute('href').slice(1)); if(b && b.tagName === 'DETAILS') b.open = true; }
       });
     } else {
       heads.forEach(function(h){

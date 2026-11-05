@@ -46,10 +46,103 @@
       '<div><h2>' + o.h + '</h2>' + (o.p ? '<p>' + o.p + '</p>' : '') + (o.extra || '') + actions(o.actions) + '</div></div>';
   }
   function free(html){ return html ? '<p class="cx-free">' + html + '</p>' : ''; }
+  /* The free allowance line, the same words in every course, on Practice and
+     Review (consistency audit 2026-11, B11). The words live in
+     LevlPremium.allowanceLine (assets/premium.js); note is the course's own
+     always-free part ("Units 1 and 2 are unlimited."). '' for members. */
+  function allowance(course, note){
+    var P = window.LevlPremium;
+    return P && P.allowanceLine ? P.allowanceLine(course, note) : '';
+  }
   function streak(){
     try{ var s = window.HubProgress && window.HubProgress.streak(); return s ? s.current : 0; }catch(e){ return 0; }
   }
-  window.LevlStudy = { rail: rail, stat: stat, empty: empty, actions: actions, free: free, streak: streak, esc: esc, plural: plural };
+
+  /* The end of a session, one layout in every course (consistency audit
+     2026-11, B7): the score, the course's extras (XP, a domain list), what to
+     study next, Retry misses, one next step, then the details and, only once
+     today's free questions are used, the Premium card.
+       o.right, o.total     the score ("11/15")
+       o.line, o.sub        the bold line beside it and the small one under it (HTML)
+       o.extras             HTML under the score (XP, a breakdown)
+       o.next               HTML under "What to study next" ('' leaves the heading out)
+       o.retry              { label, act } for Retry misses, or null
+       o.step               { label, act|href, why } the one next step, or
+       o.stepHtml           a ready next step (LevlNextStep's placeholder)
+       o.also               up to two quiet { label, act|href }
+       o.more               HTML after the actions (tables, notes)
+       o.course             the LevlPremium course key, for the Premium card at the limit
+     Buttons carry data-act; the page wires them (LevlStudy.wire). */
+  function ctl(cls, a){
+    return a.href ? '<a class="' + cls + '" href="' + esc(a.href) + '">' + a.label + '</a>'
+      : '<button type="button" class="' + cls + '" data-act="' + esc(a.act) + '">' + a.label + '</button>';
+  }
+  function atLimit(course){
+    var P = window.LevlPremium;
+    if(!course || !P || !P.quota) return false;
+    try{ var q = P.quota(course); return isFinite(q.limit) && q.left <= 0; }catch(e){ return false; }
+  }
+  function premiumAtLimit(course, source){
+    var P = window.LevlPremium;
+    return atLimit(course) && P && P.card ? P.card(course, source || 'summary') : '';
+  }
+  function end(o){
+    var also = (o.also || []).filter(Boolean).slice(0, 2);
+    var step = o.stepHtml || (o.step ? '<div class="cx-endp-step"><p class="cx-endp-k">Next step</p>' + ctl('btn-press', o.step) +
+      (o.step.why ? '<p class="cx-endp-why">' + o.step.why + '</p>' : '') +
+      (also.length ? '<p class="cx-endp-also">' + also.map(function(a){ return ctl('link-quiet', a); }).join('') + '</p>' : '') + '</div>' : '');
+    return '<section class="cx-endp" aria-label="Session results">' +
+      '<div class="cx-endp-score" tabindex="-1"><span class="cx-score-big">' + (o.right || 0) + '<small>/' + (o.total || 0) + '</small></span>' +
+        '<span><b>' + (o.line || '') + '</b>' + (o.sub ? '<span class="cx-small">' + o.sub + '</span>' : '') + '</span></div>' +
+      (o.extras || '') +
+      (o.next ? '<h2 class="cx-endp-h">What to study next</h2>' + o.next : '') +
+      (o.retry ? '<div class="cx-endp-retry">' + ctl('btn-outline', o.retry) + '</div>' : '') +
+      step + (o.stepHtml && also.length ? '<p class="cx-endp-also">' + also.map(function(a){ return ctl('link-quiet', a); }).join('') + '</p>' : '') +
+      (o.more || '') + premiumAtLimit(o.course) +
+    '</section>';
+  }
+  /* Wires an end panel's data-act buttons to handlers, then puts the focus on the score. */
+  function wire(root, handlers){
+    if(!root) return;
+    [].forEach.call(root.querySelectorAll('.cx-endp [data-act]'), function(b){
+      var fn = handlers[b.getAttribute('data-act')];
+      if(fn) b.addEventListener('click', fn);
+    });
+    var h = root.querySelector('.cx-endp-score');
+    if(h){ try{ h.focus({ preventScroll: true }); }catch(e){ h.focus(); } }
+  }
+
+  /* One keyboard set on every question card (consistency audit 2026-11, B8).
+     Arrow keys, Home and End move between the answers of a .cx-opts group
+     wherever the engine does not already do it; Space and Enter choose (the
+     answers are buttons). keys() is the legend; study pages get it, folded,
+     under a session (mountKeys below). NREMT adds its sorting keys. */
+  var KEYS = [
+    ['<kbd aria-label="Up arrow">&uarr;</kbd><kbd aria-label="Down arrow">&darr;</kbd>', 'move between answers'],
+    ['<kbd>Home</kbd><kbd>End</kbd>', 'first or last answer'],
+    ['<kbd>Space</kbd><kbd>Enter</kbd>', 'choose, or press the button in focus']
+  ];
+  function keys(extra){
+    return '<dl class="cx-keys-list">' + KEYS.concat(extra || []).map(function(k){ return '<dt>' + k[0] + '</dt><dd>' + k[1] + '</dd>'; }).join('') + '</dl>';
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+    var k = e.key;
+    if(!/^(ArrowUp|ArrowDown|ArrowLeft|ArrowRight|Home|End)$/.test(k)) return;
+    var t = e.target, g = t && t.closest ? t.closest('.cx-opts') : null;
+    if(!g || !t.matches('.cx-opt, .cx-opt *')) return;
+    var cur = t.closest('.cx-opt');
+    var L = [].filter.call(g.querySelectorAll('.cx-opt'), function(b){ return !b.disabled && b.getClientRects().length; });
+    var i = L.indexOf(cur), n = L.length;
+    if(i < 0 || !n) return;
+    var j = /Down|Right/.test(k) ? (i + 1) % n : /Up|Left/.test(k) ? (i + n - 1) % n : k === 'Home' ? 0 : n - 1;
+    e.preventDefault();
+    if(!L[j].hasAttribute('tabindex') && !/^(BUTTON|A|INPUT)$/.test(L[j].tagName)) L[j].tabIndex = -1;
+    L[j].focus();
+  });
+
+  window.LevlStudy = { rail: rail, stat: stat, empty: empty, actions: actions, free: free, allowance: allowance, streak: streak, esc: esc, plural: plural,
+    end: end, wire: wire, keys: keys, atLimit: atLimit, premiumAtLimit: premiumAtLimit };
 
   /* Site redesign round 3 (docs/site-redesign.md, boards R10-Practice-*,
      R10-Review, R10-Flashcards*): every study page opens with the short cover
@@ -58,9 +151,11 @@
      the course drawing. The band is its own element, so the engines can keep
      hiding their .page-head during a session (they all do: hero.hidden); the
      band stays and says where you are instead:
-       setup    "Practice, one at a time."      action: the page's own Start
-       session  "Question 3, with the why."     action: the engine's Save and exit
-       results  "11 right. 4 to fix."           actions: review the misses, Back to Start
+       setup    "Practice, one at a time."
+       session  "Question 3, with the why."
+       results  "11 right. 4 to fix."
+     It used to repeat the page's Start, its exit and its results buttons, so each showed twice (consistency
+     audit 2026-11, B13); now it only says where you are, and LevlStudy.band() can still give it a cta.
      Engines can also set it directly: LevlStudy.band({ h1a, h1b, hand, kicker,
      cta: [{ label, el|href, ghost }] }), and LevlStudy.band(null) to go back
      to watching the page. The lede moves to the top of the first panel, where
@@ -76,15 +171,6 @@
   var B = null, forced = null;
   function vis(el){ return !!(el && el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden'); }
   function txt(el){ return el ? (el.textContent || '').replace(/\s+/g, ' ').trim() : ''; }
-  function findAction(re, scope){
-    var list = (scope || document.getElementById('main') || document).querySelectorAll('button, a.btn-press, a.btn-outline');
-    for (var i = 0; i < list.length; i++) {
-      var el = list[i];
-      if (B && B.band.contains(el)) continue;
-      if (!el.disabled && !el.hidden && vis(el) && re.test(txt(el))) return el;
-    }
-    return null;
-  }
   function paint(s){
     if (!B) return;
     var key = [s.kicker, s.h1a, s.h1b, s.hand, (s.cta || []).map(function(c){ return c.label + (c.href || ''); }).join('|')].join('~');
@@ -113,21 +199,19 @@
     var intro = document.getElementById('introScreen');
     var setup = intro ? vis(intro) : !(head && (head.hidden || head.closest('[hidden]')));
     var resEl = document.getElementById('resultsScreen');
-    var results = (resEl && vis(resEl)) || !!(main && main.querySelector('[data-view="results"]'));
+    var endp = main && main.querySelector('.cx-endp');
+    var results = (resEl && vis(resEl)) || !!(main && main.querySelector('[data-view="results"]')) || vis(endp);
+    /* The band never copies a control from the page (consistency audit 2026-11, B9, B13): the page's own Start,
+       exit and end-panel buttons are the only ones, so none shows twice. The band says where you are. */
     if (results) {
-      var sc = main.querySelector('#scoreBig, .bio-pr-score-big, [class*="score-big"], [class*="score"] .big');
+      var sc = main.querySelector('#scoreBig, .cx-score-big, .bio-pr-score-big, [class*="score-big"], [class*="score"] .big');
       var m = txt(sc).match(/(\d+)\s*\/\s*(\d+)/);
-      var back = findAction(/back to start|practice again|new set|start over/i);
-      var cta = [];
       if (m) {
         var right = +m[1], wrong = +m[2] - right;
-        if (wrong > 0 && B.page !== 'exams') cta.push({ label: 'Review your misses', href: 'review.html' });
-        if (back) cta.push({ label: txt(back).replace(/^[←\s]+/, ''), el: back, ghost: cta.length > 0 });
         return { kicker: B.base.kicker, h1a: right + ' right.', h1b: wrong > 0 ? wrong + ' to fix.' : 'Nothing to fix.',
-          hand: wrong > 0 && B.page !== 'exams' ? 'the ' + (wrong === 1 ? 'one miss is' : plain(wrong) + ' are') + ' in your review queue already' : 'every answer is explained below', cta: cta };
+          hand: wrong > 0 && B.page !== 'exams' ? 'the ' + (wrong === 1 ? 'one miss is' : plain(wrong) + ' are') + ' in your review queue already' : 'every answer is explained below', cta: [] };
       }
-      if (back) cta.push({ label: txt(back).replace(/^[←\s]+/, ''), el: back });
-      return { kicker: B.base.kicker, h1a: 'Your results,', h1b: 'with the why.', hand: B.base.hand, cta: cta };
+      return { kicker: B.base.kicker, h1a: 'Your results,', h1b: 'with the why.', hand: B.base.hand, cta: [] };
     }
     if (!setup) {
       var fc = document.getElementById('flashcardScreen');
@@ -135,22 +219,32 @@
       var mm = counter.match(/(?:Question|Card)\s+(\d+)\s+of\s+(\d+)/i) || txt(main).match(/(?:Question|Card)\s+(\d+)\s+of\s+(\d+)/i);
       var card = (fc && vis(fc)) || B.page === 'flashcards';
       var timed = vis(document.getElementById('timerBar'));
-      var exit = findAction(/save and exit|exit exam|exit flashcards|end session|exit/i);
       var banner = txt(document.getElementById('practiceBanner'));
       return {
         kicker: banner ? banner.replace(/\.$/, '').replace(/,\s*/g, ' · ') : B.base.kicker,
         h1a: mm ? (card ? 'Card ' : 'Question ') + mm[1] + ',' : (card ? 'Studying,' : 'In session,'),
         h1b: card ? 'grade it honestly.' : timed ? 'on the clock.' : 'with the why.',
         hand: card ? 'it comes back just before you forget' : timed ? 'the score and every answer come at the end' : 'misses go to your review queue',
-        cta: exit ? [{ label: txt(exit).replace(/^[←\s]+/, ''), el: exit, ghost: true }] : []
+        cta: []
       };
     }
-    var start = findAction(/^(start|study|begin|resume)/i, document.querySelector('.cx-start') || undefined) || findAction(/^(start|study|begin)/i);
-    return { kicker: B.base.kicker, h1a: B.base.h1a, h1b: B.base.h1b, hand: B.base.hand,
-      cta: start ? [{ label: txt(start), el: start }] : [] };
+    return { kicker: B.base.kicker, h1a: B.base.h1a, h1b: B.base.h1b, hand: B.base.hand, cta: [] };
+  }
+  /* The keyboard legend under a running session, folded (B8). NREMT's runner
+     draws the same list in its own side card (#quizScreen .r3-kbd). */
+  function mountKeys(){
+    var main = document.getElementById('main');
+    if (!main || main.querySelector('#quizScreen')) return;
+    [].forEach.call(main.querySelectorAll('.cx-session'), function(s){
+      if (s.querySelector(':scope > .cx-keys')) return;
+      var d = document.createElement('details');
+      d.className = 'cx-keys';
+      d.innerHTML = '<summary>Keyboard</summary>' + keys();
+      s.appendChild(d);
+    });
   }
   var pending = 0, placeLede = function(){};
-  function refresh(){ if (pending) return; pending = requestAnimationFrame(function(){ pending = 0; placeLede(); paint(state()); }); }
+  function refresh(){ if (pending) return; pending = requestAnimationFrame(function(){ pending = 0; placeLede(); mountKeys(); paint(state()); }); }
   function band(){
     var head = document.querySelector('.page-head');
     var main = document.getElementById('main');
@@ -219,6 +313,7 @@
       var el = B.ctaEls[+b.getAttribute('data-band-cta')];
       if (el) { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); el.click(); }
     });
+    mountKeys();
     paint(state());
     new MutationObserver(refresh).observe(main, { subtree: true, childList: true, attributes: true, attributeFilter: ['hidden', 'style', 'data-view', 'disabled'], characterData: true });
   }

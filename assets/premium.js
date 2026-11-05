@@ -800,6 +800,19 @@
     };
   }
 
+  /* The free allowance line under Start on Practice and Review, one string in
+     every course (consistency audit 2026-11, B11). note: the course's always-free
+     part, e.g. "Units 1 and 2 are unlimited." '' for members and courses without
+     an allowance. At zero it says plainly when the questions come back. */
+  function allowanceLine(course, note) {
+    var q = quota(course);
+    if (!isFinite(q.limit)) return '';
+    var tail = (note ? ' ' + note : '') + ' ' + badge(course);
+    return '<p class="cx-free premium-quota" role="status">' + (q.left > 0
+      ? 'Free: <b>' + q.left + ' of ' + q.limit + '</b> questions left today, shared by Practice and Review.'
+      : 'Today’s <b>' + q.limit + ' free questions</b> are used. They come back at midnight.') + tail + '</p>';
+  }
+
   /* Today's score per course, so the daily-limit card can show the student
      what they did before asking them to pay (trust plan, 2026-10-08). Every
      course's answer check calls noteAnswer; it is kept in this browser only
@@ -999,8 +1012,10 @@
     return foundingLive() ? 'Founding price · $' + money(p.price) + ' from ' + dayAfter(FOUNDING.until) : '';
   }
   function buyLabel(p) { return 'Unlock for $' + money(nowPrice(p)); }
+  /* One wording on every course's button (consistency audit 2026-11, C1): "Unlock for" names the one price;
+     with two passes the dialog that opens picks one, so it says "from". */
   function ctaLabel(c) {
-    return c.passes.length === 1 ? buyLabel(c.passes[0]) : 'See Premium, from $' + money(nowPrice(lowestPass(c)));
+    return c.passes.length === 1 ? buyLabel(c.passes[0]) : 'Unlock from $' + money(nowPrice(lowestPass(c)));
   }
 
   function gate(course, feature, source) {
@@ -1697,6 +1712,7 @@
     card: card,
     open: open,
     quota: quota,
+    allowanceLine: allowanceLine,
     noteAnswer: noteAnswer,
     perDay: perDay,
     tableHtml: tableHtml,

@@ -57,9 +57,14 @@
     var bend = o.compact ? 30 : 50;
     function branch(xa, ya, xb, yb, p, label, cells, cls, tap){
       var mx = (xa + xb) / 2, my = (ya + yb) / 2, s = st(cells), up = yb < ya;
+      // The label sits off the branch's middle, square to it on its outer side
+      // (straight above or below, the steep middle of the S ran through it), far
+      // enough to clear the thickest branch and its tap band.
+      var tx = xb - xa - bend, ty = yb - ya, tl = Math.hypot(tx, ty) || 1, nx = (up ? ty : -ty) / tl, ny = (up ? -tx : tx) / tl;
+      var hw = String(label).length * 4.4 + 2, D = hw * Math.abs(nx) + 8 * Math.abs(ny) + 14, lx = mx + nx * D, ly = my + ny * D + 5;
       return '<g class="pt-br pt-' + cls + ' is-' + s + '" data-q="' + tap + '"><path class="pt-brl" d="M' + xa + ' ' + ya + ' C ' + (xa + bend) + ' ' + ya + ', ' + (xb - bend) + ' ' + yb + ', ' + xb + ' ' + yb + '" stroke-width="' + w(p) + '"/>' +
         '<path class="pt-hitl" d="M' + xa + ' ' + ya + ' C ' + (xa + bend) + ' ' + ya + ', ' + (xb - bend) + ' ' + yb + ', ' + xb + ' ' + yb + '"/>' +
-        '<text class="pt-brt" x="' + mx + '" y="' + (my + (up ? -10 : 20)) + '" text-anchor="middle">' + esc(label) + '</text></g>';
+        '<text class="pt-brt" x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" text-anchor="middle">' + esc(label) + '</text></g>';
     }
     var g = [];
     g.push(branch(x0, y0, x1, ys.A, J.A, nice(J.A), ['AB', 'AnB'], 'a', 'A'));

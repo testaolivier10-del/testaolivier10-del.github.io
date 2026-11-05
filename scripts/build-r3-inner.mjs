@@ -15,7 +15,7 @@ import { homeData } from './lib/r3-home.mjs';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK = process.argv.includes('--check');
 
-const NR = [{ name: 'LevlPrep', href: '../index.html' }, { name: 'NREMT-EMT Prep', href: 'index.html' }];
+const NR = [{ name: 'LevlPrep', href: '../index.html' }, { name: 'NREMT-EMT', href: 'index.html' }];
 const OC = [{ name: 'LevlPrep', href: '../index.html' }, { name: 'Organic Chemistry', href: 'index.html' }];
 
 const PAGES = [

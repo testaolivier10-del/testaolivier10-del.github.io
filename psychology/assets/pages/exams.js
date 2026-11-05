@@ -298,7 +298,10 @@
       due: { n: due, href: BASE + 'review.html', pill: Core.badge ? Core.badge() : '' },
       links: [
         { href: BASE + 'practice.html', title: 'Practice', sub: 'Untimed, with feedback after every answer.' },
-        { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' }
+        { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' },
+        // The exam-day references, as cards on Exams (consistency audit 2026-11, D16).
+        { href: BASE + 'formula-sheet.html', title: 'Statistics to know', sub: 'What to compute by hand or read from a study.' },
+        { href: BASE + 'justify.html', title: 'Make it specific', sub: 'Written answers specific enough to score.' }
       ]
     });
   }

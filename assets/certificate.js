@@ -49,6 +49,12 @@
     else renderElsewhere(m);
   }, function(){ renderElsewhere(null); });
 
+  /* The site pages' opening (assets/site-pages.css): pill, two-tone headline, lede. */
+  function hero(a, b, lede){
+    return '<div class="sp-hero sp-hero--text"><div><span class="sp-pill">Certificate of completion</span>' +
+      '<h1>' + a + ' <span>' + b + '</span></h1><p class="lede">' + lede + '</p></div></div>';
+  }
+
   /* ---- not earned in this browser -------------------------------------- */
 
   function courseCard(key){
@@ -61,21 +67,17 @@
     var c = M.COURSES[course];
     var what = m ? M.heading(m, course) : c.name;
     document.title = 'A LevlPrep milestone | LevlPrep';
-    app.innerHTML =
-      '<div class="hero"><div class="eyebrow">Certificate of completion</div>' +
-        '<h1>A LevlPrep milestone</h1><p class="lede">' + esc(what) + '</p></div>' +
+    app.innerHTML = hero('A LevlPrep', 'milestone.', esc(what)) + '<div class="cert-wrap">' +
       courseCard(course) +
       '<div class="cert-elsewhere"><h2>Earned this yourself?</h2>' +
         '<p>A certificate is drawn only from the study progress saved in the browser it was earned in, so it is not showing here. ' +
         'Open this link in that browser. If you studied signed in, signing in here brings your progress with you.</p>' +
-        '<p><a href="' + c.dash + '">See your milestones in ' + esc(c.name) + '</a></p></div>';
+        '<p><a href="' + c.dash + '">See your milestones in ' + esc(c.name) + '</a></p></div></div>';
   }
 
   function renderUnknown(){
-    app.innerHTML =
-      '<div class="hero"><div class="eyebrow">Certificate of completion</div>' +
-        '<h1>That certificate link is incomplete</h1><p class="lede">It does not say which course it is for. Here is what LevlPrep has.</p></div>' +
-      Object.keys(M.COURSES).map(courseCard).join('');
+    app.innerHTML = hero('That link is', 'incomplete.', 'It does not say which course it is for. Every LevlPrep course issues certificates: finish every lesson in a unit or chapter, or, for NREMT, score 80% on a full practice exam.') +
+      '<div class="cert-grid">' + Object.keys(M.COURSES).map(courseCard).join('') + '</div>';
   }
 
   /* ---- earned ----------------------------------------------------------- */
@@ -87,7 +89,7 @@
     var statement = M.statement(m, course);
     document.title = 'Certificate: ' + M.heading(m, course) + ' | LevlPrep';
 
-    app.innerHTML =
+    app.innerHTML = hero('Certificate of', 'completion.', esc(M.heading(m, course))) + '<div class="cert-wrap">' +
       '<div class="cert-tools">' +
         '<p class="cert-eyebrow">Your certificate</p>' +
         '<label class="cert-label" for="certName">Name on the certificate</label>' +
@@ -109,7 +111,7 @@
           '<p class="cert__date">Earned <time datetime="' + iso + '">' + esc(date) + '</time></p>' +
           '<p class="cert__foot">' + esc(FOOT) + '</p>' +
         '</div>' +
-      '</article>';
+      '</article></div>';
 
     var input = document.getElementById('certName');
     var out = document.getElementById('certNameOut');

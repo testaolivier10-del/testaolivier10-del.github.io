@@ -325,7 +325,7 @@ ${tail({ depth, section: 'learn', extra: ['mac-questions.js', 'mac-lesson.js'], 
     const desc = C.descriptions.notes?.[id] || clampDesc(firstP, `${t.title} explained from scratch: free macroeconomics study notes with figures and worked examples.`);
     const url = `${SITE}${BASE}notes/${id}.html`;
     const pv = prevBuilt(id), nx = nextBuilt(id);
-    const link = (x, dir) => x ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${x.id}.html"><span>${dir === 'next' ? 'Next &rarr;' : '&larr; Previous'}</span><b>${esc(x.title)}</b></a>` : '';
+    const link = (x, dir) => x ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${x.id}.html"><span>${dir === 'next' ? 'Next topic &rarr;' : '&larr; Previous topic'}</span><b>${esc(x.title)}</b></a>` : '';
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'LearningResource', '@id': `${url}#reading`, name: t.title, url, description: desc, learningResourceType: 'Reading', educationalLevel: 'High school', inLanguage: 'en', isAccessibleForFree: true, keywords: t.searchPhrase, isPartOf: { '@id': COURSE_ID }, provider: { '@id': `${SITE}/#org` } },
       crumbs(orgCrumbs([{ name: ch.title, url: `${SITE}${BASE}units/${ch.id}.html` }, { name: `${t.title}: notes`, url }])),
@@ -352,7 +352,7 @@ ${html}
   </main>
 </div>
 ${footer(depth, `notes:${id}`)}
-${tail({ depth, section: 'learn', extra: ['mac-toc.js'] })}
+${tail({ depth, section: 'learn', extra: ['mac-toc.js'], site: ['course/read-toggle.js'] })}
 </body>
 </html>
 `;
@@ -527,7 +527,7 @@ ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', 
   /* ------------------------------------------------------------- learn */
   function learnPage() {
     const depth = '';
-    const title = courseTitle('All units and skills', [LABEL]);
+    const title = courseTitle('Textbook', [LABEL]);
     const desc = clampDesc(`Every unit of the macroeconomics course in framework order, ${units.length} units and ${topics.length} topics, plus a graph skills chapter for axes, curves, shifts and movements along a curve.`);
     const url = `${SITE}${BASE}learn.html`;
     const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -556,7 +556,7 @@ ${bodyOpen()}
   </main>
 </div>
 ${footer(depth, 'learn')}
-${tail({ depth, section: 'learn', extra: ['mac-toc.js', 'mac-book.js'], site: ['course/read-toggle.js'] })}
+${tail({ depth, section: 'learn', extra: ['mac-toc.js', 'mac-book.js'], premium: true, site: ['course/read-toggle.js'] })}
 </body>
 </html>
 `;

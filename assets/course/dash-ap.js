@@ -14,7 +14,7 @@
           second: { label, title, hint, items: [{ id, name, href }], mastery(id), href(id) },
           exams: [{ t, pct }] (optional), examWord, frq: { types, scores } (optional), cram: bool,
           analyticsDrawers(ctx) -> drawers shown when A.allowed('analytics'), gate (html when locked),
-          milestones: bool, cross: bool, examTarget: { done, unit } words for the exam-date card } */
+          milestones: bool (default true: every course has milestones, audit 2026-11 D4), cross: bool, examTarget: { done, unit } words for the exam-date card } */
 (function(){
   'use strict';
   function build(cfg){
@@ -155,7 +155,7 @@
       ].filter(Boolean),
       next: nearest ? { text: 'Next to reach Strong: ' + esc(nearest.short) + '.', sub: 'It is at ' + pct(nearest.m) + '% mastery; Strong starts at 60%.', href: BASE + 'practice.html?' + cfg.group + '=' + encodeURIComponent(nearest.id), cta: 'Practice it' }
         : isNew ? { text: 'Your first ' + cfg.group + ' at Strong is the first thing to earn here.', sub: '' } : null,
-      more: [{ label: 'Level and XP', html: '<div id="d5Level"></div>' }].concat(cfg.milestones ? [{ label: 'Milestones and certificates', html: '<div id="levlMilestones"></div>' }] : [])
+      more: [{ label: 'Level and XP', html: '<div id="d5Level"></div>' }].concat(cfg.milestones !== false ? [{ label: 'Milestones and certificates', html: '<div id="levlMilestones"></div>' }] : [])
     };
 
     var status = isNew ? 'start anywhere, this page fills in as you answer' : coverage + '% of ' + ofWhat + ' at Strong' + (rising ? ', and climbing' : '');
@@ -184,7 +184,7 @@
     }).join('') }));
     if(lvl) set('d5Level', H.level(lvl, { xpLine: myXp.toLocaleString() + ' XP earned in ' + cfg.name + ' &middot; ' + lvl.total.toLocaleString() + ' site-wide', sub: st ? [H.streakLine(st)] : [] }));
     if(analytics && !isNew && cfg.fillAnalytics) cfg.fillAnalytics({ set: set, pill: pill, tier: tier });
-    if(cfg.milestones && window.LevlLazy) window.LevlLazy('milestones', function(M){ M.renderList(document.getElementById('levlMilestones'), key); });
+    if(cfg.milestones !== false && window.LevlLazy) window.LevlLazy('milestones', function(M){ M.renderList(document.getElementById('levlMilestones'), key); });
     if(ED) ED.mount(document.getElementById('d5ExamCard'), {
       subject: key, links: { review: BASE + 'review.html', exams: BASE + 'exams.html' },
       target: function(days){

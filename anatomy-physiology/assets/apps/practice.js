@@ -295,7 +295,7 @@
   function allowanceHtml(){
     var a = Core && Core.quota ? Core.quota() : null;
     if(!a || a.limit === Infinity) return '';
-    return LevlStudy.free('Free: <b>' + a.left + ' of ' + a.limit + '</b> questions left today, shared with review. Foundations questions are unlimited.' + pill());
+    return LevlStudy.allowance('anp', 'Foundations questions are unlimited.');
   }
   /* Today's allowance is used up: what is left to do, instead of the question. */
   function limitHtml(){
@@ -442,22 +442,20 @@
     var pctRight = Math.round(right / res.length * 100);
     var mode = session.mode, count = state.count;
     view('summary');
-    app.innerHTML = '<div class="anp-pr-summary">' +
-      '<div class="anp-pr-score"><span class="anp-pr-score-big">' + right + '<small>/' + res.length + '</small></span>' +
-        '<span><b>' + pctRight + '% right on the first try</b><span class="anp-small">' + esc(session.label) + '</span></span></div>' +
-      '<h2>What to study next</h2>' + nextHtml + coreHtml +
-      '<h2>By topic</h2><table class="anp-pr-table"><thead><tr><th scope="col">Topic</th><th scope="col">Right</th><th scope="col">Mastery now</th></tr></thead><tbody>' +
+    /* The shared end panel (LevlStudy.end, consistency audit 2026-11, B7): score, what to study next, Retry
+       misses, one next step (assets/next-step.js), then the table. */
+    app.innerHTML = '<div class="anp-pr-summary">' + LevlStudy.end({
+      right: right, total: res.length, course: 'anp', line: pctRight + '% right on the first try', sub: esc(session.label),
+      next: nextHtml + coreHtml,
+      retry: stillWrong.length ? { act: 'retry', label: 'Retry the ' + plural(stillWrong.length, 'miss', 'misses') } : null,
+      stepHtml: window.LevlNextStep ? LevlNextStep('anp', { topics: topicOrder, also: [
+        { label: 'Another set like this', act: function(){ if(mode === 'retry' || !poolFor(mode).length) renderSetup(); else start(mode, count); } }] }) : '',
+      more: '<h2>By topic</h2><div class="table-wrap" tabindex="0" role="region" aria-label="Results by topic"><table class="anp-pr-table"><thead><tr><th scope="col">Topic</th><th scope="col">Right</th><th scope="col">Mastery now</th></tr></thead><tbody>' +
         topicOrder.map(function(t){ var b = byTopic[t], m = Core ? Core.topicMastery(t) : { value: 0 };
           return '<tr><th scope="row"><a href="' + lessonHref(t) + '">' + esc(TOPIC[t].title) + '</a></th><td>' + b.c + '/' + b.n + '</td><td>' + (Core ? Core.pct(m.value) : '') + '</td></tr>'; }).join('') +
-      '</tbody></table>' +
-      // One next step (assets/next-step.js); retrying this set's misses is the quiet alternative.
-      (window.LevlNextStep ? LevlNextStep('anp', { topics: topicOrder, also: [stillWrong.length
-        ? { label: 'Retry the ' + plural(stillWrong.length, 'miss', 'misses'), act: function(){ start('retry', 0, stillWrong); } }
-        : { label: 'Another set like this', act: function(){ if(mode === 'retry' || !poolFor(mode).length) renderSetup(); else start(mode, count); } }] }) : '') +
-      // The Premium card under a finished set (assets/premium.js); '' for members.
-      (window.LevlPremium && res.length >= 5 ? window.LevlPremium.card('anp', 'summary') : '') +
-      '</div>';
-    var h = app.querySelector('.anp-pr-score'); h.setAttribute('tabindex', '-1'); h.focus();
+        '</tbody></table></div>'
+    }) + '</div>';
+    LevlStudy.wire(app, { retry: function(){ start('retry', 0, stillWrong); } });
   }
 
   /* The first built topic, in course order, with nothing recorded on it. */
@@ -485,7 +483,7 @@
       else if(p.get('chapter') && state.chapter === p.get('chapter')) state.mode = 'chapter';
       else if(p.get('core') && state.core === p.get('core')) state.mode = 'core';
       else if(MODE[p.get('mode')]) state.mode = p.get('mode');
-      if(state.mode === 'flagged' && !modeUnavailable('flagged')) start('flagged', 0); else renderSetup();
+      if((state.mode === 'flagged' || state.mode === 'missed') && !modeUnavailable(state.mode)) start(state.mode, 0); else renderSetup();
       if(p.toString()){ var s = app.querySelector('.anp-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){
       app.innerHTML = '<p>The question bank did not load. Check your connection and reload; once a page has loaded online it also works offline.</p>';

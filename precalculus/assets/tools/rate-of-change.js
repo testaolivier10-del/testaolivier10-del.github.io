@@ -122,12 +122,17 @@
         var c = COLS[i], x1 = V.sx(s.a), y1 = V.sy(s.fa), x2 = V.sx(s.b), y2 = V.sy(s.fb);
         o.push('<line class="rc-sec ' + c + '" x1="' + r1(x1) + '" y1="' + r1(y1) + '" x2="' + r1(x2) + '" y2="' + r1(y2) + '"/>');
       });
-      // slope labels, alternating above and below, clamped inside
+      // slope labels on the side of each secant away from the curve, pushed out
+      // square to the line far enough that a steep secant clears the label's
+      // width (straight up or down it ran through it); alternately a step further, clamped inside
       S.forEach(function(s, i){
-        var mx = (V.sx(s.a) + V.sx(s.b)) / 2, my = (V.sy(s.fa) + V.sy(s.fb)) / 2, conc = F.conc((s.a + s.b) / 2);
-        var off = (conc >= 0 ? -1 : 1) * (i % 2 ? 26 : 16);
-        var ly = clamp(my + off, V.T + 14, V.h - V.B - 6);
-        o.push('<text class="rc-slab ' + COLS[i] + '" x="' + r1(mx) + '" y="' + r1(ly) + '" text-anchor="middle">' + sgnNum(s.m) + '</text>');
+        var x1 = V.sx(s.a), y1 = V.sy(s.fa), x2 = V.sx(s.b), y2 = V.sy(s.fb), conc = F.conc((s.a + s.b) / 2);
+        var len = Math.hypot(x2 - x1, y2 - y1) || 1, nx = (y2 - y1) / len, ny = -(x2 - x1) / len, sg = conc >= 0 ? 1 : -1;
+        var t = sgnNum(s.m), hw = String(t).length * 4.6 + 4, hh = 9;
+        var D = hw * Math.abs(nx) + hh * Math.abs(ny) + (i % 2 ? 14 : 5);
+        var cx = clamp((x1 + x2) / 2 + sg * nx * D, V.L + hw, V.w - V.R - hw), cy = (y1 + y2) / 2 + sg * ny * D;
+        var ly = clamp(cy + 4.5, V.T + 14, V.h - V.B - 6);
+        o.push('<text class="rc-slab ' + COLS[i] + '" x="' + r1(cx) + '" y="' + r1(ly) + '" text-anchor="middle">' + t + '</text>');
       });
       S.forEach(function(s, i){ o.push('<circle class="rc-pt ' + COLS[i] + '" cx="' + r1(V.sx(s.a)) + '" cy="' + r1(V.sy(s.fa)) + '" r="4.5"/>'); });
       var lst = S[S.length - 1]; o.push('<circle class="rc-pt ' + COLS[S.length - 1] + '" cx="' + r1(V.sx(lst.b)) + '" cy="' + r1(V.sy(lst.fb)) + '" r="4.5"/>');

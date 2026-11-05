@@ -47,8 +47,13 @@
       var ta = Math.max(0, tt - half), tb = Math.min(tmax, tt + half);
       p.push('<line class="rt-tan" x1="' + sx(ta).toFixed(1) + '" y1="' + sy(yy + sl * (ta - tt)).toFixed(1) + '" x2="' + sx(tb).toFixed(1) + '" y2="' + sy(yy + sl * (tb - tt)).toFixed(1) + '"/>');
       p.push('<line class="rt-tanv" x1="' + sx(tt).toFixed(1) + '" x2="' + sx(tt).toFixed(1) + '" y1="' + (TP + ph) + '" y2="' + sy(yy).toFixed(1) + '"/>');
-      var lx = sx(tt) + (tt > tmax * 0.6 ? -10 : 10), anchor = tt > tmax * 0.6 ? 'end' : 'start';
-      p.push('<text class="rt-tanl" x="' + lx.toFixed(1) + '" y="' + (sy(yy) - 16).toFixed(1) + '" text-anchor="' + anchor + '">' + esc(o.tan.label) + '</text>');
+      // The label goes on the side of the point the curve bends away from (below
+      // where the curve climbs over it, above where it falls away), so neither the
+      // curve nor the tangent runs through it; with no room below, the empty top corner.
+      var toRight = tt <= tmax * 0.6, below = toRight === (sl > 0);
+      var lx = sx(tt) + (toRight ? 10 : -10), anchor = toRight ? 'start' : 'end', ly = below ? sy(yy) + 24 : sy(yy) - 16;
+      if(below && ly > TP + ph - 6){ ly = TP + 14; lx = sl > 0 ? L + 8 : W - R - 8; anchor = sl > 0 ? 'start' : 'end'; }
+      p.push('<text class="rt-tanl" x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" text-anchor="' + anchor + '">' + esc(o.tan.label) + '</text>');
       p.push('<circle class="sk-grip rt-tang" data-k="tan" tabindex="0" role="slider" aria-label="Tangent point (time)" aria-valuemin="0" aria-valuemax="' + tmax + '" aria-valuenow="' + M.round(tt, 2) + '" aria-valuetext="' + esc(o.tan.label) + '" cx="' + sx(tt).toFixed(1) + '" cy="' + sy(yy).toFixed(1) + '" r="10"/>');
     }
     (o.tris || []).forEach(function(tr){

@@ -67,7 +67,7 @@
   }
   function allowance(){
     var a = Core.quota ? Core.quota() : null;
-    return a && a.limit !== Infinity ? LevlStudy.free('Free: <b>' + a.left + ' of ' + a.limit + '</b> questions left today, shared with practice. Unit 1 is unlimited.' + (Core.badge ? Core.badge() : '')) : '';
+    return a && a.limit !== Infinity ? LevlStudy.allowance('apmacro', 'Unit 1 is unlimited.') : '';
   }
 
   function renderHome(){
@@ -78,7 +78,7 @@
       main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: up.next ? 'You are all caught up' : 'Nothing to review yet',
         p: up.next ? 'The next item comes back <b>' + esc(when(up.next)) + '</b>.' + (up.week > 1 ? ' ' + plural(up.week, 'item') + ' come back within the week.' : '')
           : 'The queue fills from questions you answer anywhere in the course. Answer a few, and they come back here when they are due.',
-        actions: [{ href: BASE + 'practice.html', label: 'Practice', primary: true }, { href: BASE + 'learn.html', label: 'Next lesson' }] }) + '</section>';
+        actions: [{ href: BASE + 'practice.html', label: 'Practice', primary: true }, { href: BASE + 'learn.html', label: 'Next lesson' }] }) + allowance() + '</section>';
     } else {
       var acts = [];
       if(qs.length) acts.push({ act: 'n', attrs: ' data-n="' + Math.min(SESSION_CAP, qs.length) + '"', label: qs.length > SESSION_CAP ? 'Review the ' + SESSION_CAP + ' oldest' : 'Start review', primary: true });
@@ -184,18 +184,23 @@
     var mt = {}; session.missed.forEach(function(q){ mt[q.topic] = (mt[q.topic] || 0) + 1; });
     var tops = Object.keys(mt).filter(function(t){ return TOPIC[t] && TOPIC[t].built; }).sort(function(a, b){ return mt[b] - mt[a]; });
     view('done');
-    app.innerHTML = '<div class="mac-pr-summary"><div class="mac-pr-score"><span class="mac-pr-score-big">' + session.right + '<small>/' + session.answered + '</small></span>' +
-      '<span><b>' + (left ? plural(left, 'question') + ' still due' : leftTools ? 'Questions cleared' : 'Queue cleared') + '</b><span class="mac-small">' +
-      (leftTools ? plural(leftTools, 'tool item') + ' still ' + (leftTools === 1 ? 'waits' : 'wait') + ' in the tools. ' : '') +
-      (session.answered - session.right ? plural(session.answered - session.right, 'miss', 'misses') + ' come back in ten minutes. ' : '') +
-      (up.next && !due.length ? 'Next item due ' + esc(when(up.next)) + '.' : '') + '</span></span></div>' +
-      (tops.length ? '<h2>Worth a reread</h2><ul class="mac-pr-next-list">' + tops.slice(0, 3).map(function(t){
+    /* The shared end panel (LevlStudy.end, consistency audit 2026-11, B7). */
+    var missN = session.answered - session.right;
+    app.innerHTML = '<div class="mac-pr-summary">' + LevlStudy.end({
+      right: session.right, total: session.answered, course: 'apmacro',
+      line: left ? plural(left, 'question') + ' still due' : leftTools ? 'Questions cleared' : 'Queue cleared',
+      sub: (leftTools ? plural(leftTools, 'tool item') + ' still ' + (leftTools === 1 ? 'waits' : 'wait') + ' in the tools. ' : '') +
+        (missN ? plural(missN, 'miss', 'misses') + ' come back in ten minutes. ' : '') +
+        (up.next && !due.length ? 'Next item due ' + esc(when(up.next)) + '.' : ''),
+      next: tops.length ? '<ul class="mac-pr-next-list">' + tops.slice(0, 3).map(function(t){
         return '<li><div><b>' + esc(TOPIC[t].title) + '</b><span class="mac-small">' + plural(mt[t], 'miss', 'misses') + ' in this review</span></div><a class="btn-outline" href="' + BASE + 'lessons/' + t + '.html">Lesson</a><a class="btn-outline" href="' + BASE + 'notes/' + t + '.html">Notes</a></li>';
-      }).join('') + '</ul>' : '') +
-      '<div class="mac-pr-actions">' + (left ? '<button type="button" class="btn-press" data-act="more">Keep going</button>' : '') +
-      '<button type="button" class="btn-outline" data-act="home">Back to the queue</button><a class="btn-outline" href="' + BASE + 'practice.html">Practice something new</a></div></div>';
-    app.querySelectorAll('[data-act]').forEach(function(b){ b.addEventListener('click', function(){ if(b.getAttribute('data-act') === 'more') start(SESSION_CAP); else renderHome(); }); });
-    var h = app.querySelector('.mac-pr-score'); h.setAttribute('tabindex', '-1'); h.focus();
+      }).join('') + '</ul>' : '',
+      retry: missN ? { href: BASE + 'practice.html?mode=missed', label: missN === 1 ? 'Retry the miss' : 'Retry the ' + missN + ' misses' } : null,
+      step: left ? { act: 'more', label: 'Keep going: ' + plural(left, 'question') + ' due', why: 'Still due today, while this session is fresh.' }
+        : { href: BASE + 'practice.html', label: 'Practice something new', why: 'Nothing else is due right now.' },
+      also: [{ act: 'home', label: 'Back to the queue' }]
+    }) + '</div>';
+    LevlStudy.wire(app, { more: function(){ start(SESSION_CAP); }, home: renderHome });
   }
 
   function boot(){

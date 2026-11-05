@@ -185,7 +185,9 @@ const SHELL_BUDGETS = [
   /* 342 -> 342.5 for the guided study path (docs/guided-path.md, owner 2026-11-03): the Path tab, its icon and
      the loader in site-chrome.js (+0.2 KB, comments cut). path.js, path.css and the path data load later and
      only on course pages, so they are not in this number. */
-  ['site', 342.5],
+  /* 342.5 -> 342.8 (consistency audit 2026-11): the four fix batches combined (shared footer links, path load on
+     the textbook, Sign in wording, the allowance string). Measured 342.6 KB. */
+  ['site', 342.8],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -209,7 +211,11 @@ const SHELL_BUDGETS = [
   // round 3 pages that use it. Measured 34.5 KB with all five steps combined.
   /* 35 -> 36 for the fixes after round 3 went live: tap-to-open questions, phone card stacking, the textbook
      Contents panel and the progress page column fit. Measured 35.2 KB. */
-  ['assets/course', 36],
+  /* 36 -> 39.6 for the consistency pass (docs/consistency-audit-2026-11.md): C1-C7 (the Tool Studio's lock screen
+     around a course's Premium card, Start over in every tool's menu, hint bubbles that keep off every control, the
+     12 px phone floor, the strip kept free under Enlarge) plus B7/B8 (the shared end-of-session panel LevlStudy.end
+     and keyboard legend in study.js and study.css, which replace three course-specific layouts). */
+  ['assets/course', 39.6],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -381,9 +387,11 @@ const SHELL_BUDGETS = [
   ['chem', 52],
   /* AP® Physics 1 (physics/, a fork of the AP® Chemistry runtime). Before
      any unit is published; Chemistry's 52 is the reference. */
+  /* 52 -> 52.2 (consistency audit 2026-11): the shared end panel call and the exam-day reference cards. Measured
+     52.0 KB. */
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
-  ['physics', 52.3],
+  ['physics', 52.5],
   /* AP® Calculus AB (calculus/, a fork of the AP® Physics 1 runtime), plus
      the math layer every question page loads: the expression parser
      (calc-expr.js) and the TeX-to-MathML renderer (calc-math.js), 13.8 KB
@@ -401,9 +409,11 @@ const SHELL_BUDGETS = [
      itself is BC's own file (calculus-bc/assets/cbc-interval.js). Measured 69.4 KB.
      69.5 -> 69.7 (BC integration pass, 2026-10-31): the small-value guard in calc-questions.js
      (below 0.005 a decimal must be right to three significant digits, BC only); measured 69.5 KB. */
+  /* 69.7 -> 70.3 (consistency audit 2026-11): the end panel call, Retry and review links in Review, the exam-day
+     reference cards (D16) in exams.js, and calc-core.js calling the milestones check after a lesson (D4). */
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
-  ['calculus', 70.1],
+  ['calculus', 70.6],
   /* AP® Statistics (statistics/, a fork of the AP® Calculus AB runtime),
      plus what every statistics question page needs (docs/apstat-spec.md
      section 7): the distributions library (stat-dist.js, 6.4 KB gzipped:
@@ -416,9 +426,10 @@ const SHELL_BUDGETS = [
      decision 15): the flag hook and Flagged mode (as calculus' 68 -> 68.5),
      the setup value step and the tiny p-value wording; measured 82.6 KB.
      83 -> 83.2: the answer-pick line for teacher classes (docs/teacher-classes.md), one line in every AP® renderer. */
+  /* 83.2 -> 83.5 (consistency audit 2026-11): the same end panel and reference cards. Measured 83.2 KB. */
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
-  ['statistics', 83.5],
+  ['statistics', 83.8],
   /* AP® Environmental Science (environmental-science/, a fork of the AP®
      Statistics runtime, docs/apenv-spec.md decision 1): the calculation
      recipes (env-calc.js) in place of the distributions library, and the
@@ -432,7 +443,8 @@ const SHELL_BUDGETS = [
      carries all nine published units; measured 85.0 KB. */
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
-  ['environmental-science', 85.8],
+  /* 85.8 -> 86 (consistency audit 2026-11 with teacher classes v2): end panel, reference cards and the ?la= hooks. */
+  ['environmental-science', 86],
   /* AP® Psychology (psychology/, a fork of the AP® Environmental Science
      runtime, docs/appsych-spec.md decision 1): ApPsychStats (psy-stats.js,
      descriptive statistics and the normal curve) in place of the calculation
@@ -563,9 +575,11 @@ const BUDGETS = [
   /* 49.9 -> 55.2 (tools upgrade, 2026-10-27): the exam's drag-and-drop and options-table items, dragging build
      lists and the Adaptive exam (engine routing, results, setup) in practice-engine.js and practice.css. The item
      interactions themselves are in nremt/assets/tei-items.js (course bucket). Measured 54.8 KB. */
+  /* 55.2 -> 57 (consistency audit 2026-11, B1/B5/B7): answers recorded as each is checked (recordLive), the
+     end order with what to study next by domain, and Review at the daily limit. Measured 56.6 KB. */
   /* 55.2 -> 55.6 (teacher classes, other courses, 2026-11-04): the answer pick and progress event in
      updateMastery (docs/teacher-classes.md). Measured 55.4 KB. */
-  ['nremt/practice.html', 55.6],
+  ['nremt/practice.html', 57.4],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
@@ -726,7 +740,7 @@ const BUDGETS = [
   ['calculus/tools.html', 5],
   ['calculus-bc/index.html', 8.5], // round 3 course home, see nremt/index.html
   ['calculus-bc/practice.html', 3],
-  ['calculus-bc/exams.html', 3],
+  ['calculus-bc/exams.html', 3.1], // 3 -> 3.1: the shared footer row adds Teachers and What's new (audit 2026-11, D3)
   ['calculus-bc/frq.html', 3],
   ['calculus-bc/glossary.html', 30],
   ['calculus-bc/tools.html', 5],

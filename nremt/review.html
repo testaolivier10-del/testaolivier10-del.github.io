@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spaced Review Queue — NREMT-EMT | LevlPrep</title>
+<title>Spaced review — NREMT-EMT | LevlPrep</title>
 <meta name="description" content="Your NREMT-EMT spaced review queue: questions you have answered come back as they fade, weakest and longest-unseen first.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://levlprep.com/nremt/review.html">
@@ -19,7 +19,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:title" content="Spaced Review Queue — NREMT-EMT | LevlPrep">
+<meta property="og:title" content="Spaced review — NREMT-EMT | LevlPrep">
 <meta property="og:description" content="Your NREMT-EMT spaced review queue: questions you have answered come back as they fade, weakest and longest-unseen first.">
 <meta property="og:url" content="https://levlprep.com/nremt/review.html">
 <meta property="og:type" content="website">
@@ -77,7 +77,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "NREMT-EMT Prep",
+          "name": "NREMT-EMT",
           "item": "https://levlprep.com/nremt/"
         },
         {
@@ -96,7 +96,7 @@
 <header id="site-header"></header>
 <div class="course-nav"></div>
 <!-- crumb:start -->
-<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Review</span></nav></div>
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Review</span></nav></div>
 <!-- crumb:end -->
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <main class="wrap cx-study" id="main">
@@ -129,7 +129,8 @@
             <div class="cx-empty-num"><span data-due="all">0</span><small>due now</small></div>
             <div>
               <h2><span data-due="all">0</span> due for review</h2>
-              <p>This session takes the <span data-due="session">0</span> most pressing, untimed, with the answer and explanation after each one.</p>
+              <p class="nr-due-session">This session takes the <span data-due="session">0</span> most pressing, untimed, with the answer and explanation after each one.</p>
+              <p class="nr-due-wait" hidden>They stay in your queue. Review starts again tomorrow, when today&rsquo;s free questions come back.</p>
               <div class="cx-actions"><button class="btn-press sm" id="spacedReviewBtn">Start review</button></div>
             </div>
           </div>
@@ -138,7 +139,7 @@
             <div>
               <h2>Nothing to review yet</h2>
               <p>The queue fills from questions you answer anywhere in the course. Answer a few, and they come back here when they are due.</p>
-              <div class="cx-actions"><a class="btn-press sm" href="practice.html">Practice</a><a class="btn-outline" href="study-notes.html">Next lesson</a><a class="btn-outline" href="flashcards.html">Flashcards</a></div>
+              <div class="cx-actions"><a class="btn-press sm" href="practice.html">Practice</a><a class="btn-outline" href="study-notes.html">Next lesson</a></div>
             </div>
           </div>
           <div class="cx-empty" data-due-state="empty-done" hidden>
@@ -146,7 +147,7 @@
             <div>
               <h2>You are all caught up</h2>
               <p>Everything you have answered is holding steady. Each question drifts back into this queue a few days after you last got it right.</p>
-              <div class="cx-actions"><a class="btn-press sm" href="practice.html">Practice</a><a class="btn-outline" href="study-notes.html">Next lesson</a><a class="btn-outline" href="flashcards.html">Flashcards</a></div>
+              <div class="cx-actions"><a class="btn-press sm" href="practice.html">Practice</a><a class="btn-outline" href="study-notes.html">Next lesson</a></div>
             </div>
           </div>
           <div id="premiumNotice" class="premium-slot premium-slot--reserved"></div>
@@ -187,7 +188,7 @@
       <summary>About these questions &amp; how this differs from the real exam</summary>
       <p>Original, unofficial practice questions, each tagged to one of the five domains of the National Registry&rsquo;s EMT exam outline (April 2025); not affiliated with the National Registry. The real exam is computer-adaptive (70–120 questions); this fixed 100-question format trains pacing, not the algorithm. Scores and history stay in your browser.</p>
     </details>
-    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../teach/">Teachers</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
 </div>
 

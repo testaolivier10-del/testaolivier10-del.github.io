@@ -267,7 +267,7 @@
     }
 
     function listScene(W, H){
-      var phone = W < 560, g = [], L = phone ? 40 : 56, R = W - (phone ? 36 : 26);
+      var phone = W < 560, g = [], L = phone ? 46 : 56, R = W - (phone ? 36 : 26); // 46: room for "100%" at 12 px (audit 2026-11, C3)
       var cardH = phase === 'ready' || phase === 'done' ? 0 : Math.min(150, H * 0.3), T0 = (phone ? 54 : 60) + (cardH ? cardH + 18 : 0);
       var you = phase === 'done' && result ? 58 : 0, B = H - (phone ? 52 + ENL : 58) - you;
       var x = function(i){ return L + (i + 0.5) / N * (R - L); }, y = function(v){ return B - v / 100 * (B - T0); };
@@ -316,7 +316,7 @@
     }
 
     function forgetScene(W, H){
-      var phone = W < 560, g = [], L = phone ? 44 : 60, R = W - (phone ? 16 : 30), T0 = phone ? 60 : 66, B = H - (phone ? 64 + ENL : 70), D = 30;
+      var phone = W < 560, g = [], L = phone ? 48 : 60, R = W - (phone ? 16 : 30), T0 = phone ? 60 : 66, B = H - (phone ? 64 + ENL : 70), D = 30;
       var x = function(d){ return L + d / D * (R - L); }, y = function(v){ return B - v / 100 * (B - T0); };
       hit = { L: L, R: R, T: T0, inv: function(px){ return (px - L) / (R - L) * D; } };
       [0, 20, 40, 60, 80, 100].forEach(function(v){ g.push('<line class="ml-grid" x1="' + L + '" x2="' + R + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/>' + txt(L - 8, y(v) + 4, v + '%', 'ml-tv', 'end')); });

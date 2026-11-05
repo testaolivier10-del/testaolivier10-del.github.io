@@ -74,6 +74,16 @@
     }catch(e){ return false; }
   }
   function isRead(id){ return !!readRead()[id]; }
+  /* Done, the same in every view (consistency audit 2026-11, A5): read here, the interactive lesson finished
+     (ochem_progress[id].completed), or marked done on the guided path (ochem_path_v1). */
+  function doneMap(){
+    var out = {}, k, r = readRead();
+    for(k in r) if(r[k]) out[k] = r[k];
+    try{ var op = JSON.parse(localStorage.getItem('ochem_progress') || '{}') || {}; for(k in op) if(op[k] && op[k].completed && !out[k]) out[k] = 1; }catch(e){}
+    try{ var ps = JSON.parse(localStorage.getItem('ochem_path_v1') || 'null'); if(ps) [ps.covered || {}, ps.done || {}].forEach(function(m){ for(k in m) if(m[k] && !out[k]) out[k] = 1; }); }catch(e){}
+    return out;
+  }
+  function isDone(id){ return !!doneMap()[id]; }
   function setRead(id, on){
     var r = readRead();
     var was = !!r[id];
@@ -162,7 +172,7 @@
      results panel lists a dozen passages. */
   function renderContents(activeIndex, filter, matched){
     var q = (filter || '').trim().toLowerCase();
-    var read = readRead();
+    var read = doneMap();
 
     var html = C.MODULES.map(function(mod, i){
       var topics = mod.topics.filter(function(t){
@@ -215,7 +225,7 @@
   }
 
   function renderOverallProgress(){
-    var read = readRead();
+    var read = doneMap();
     var done = ALL_TOPICS.filter(function(e){ return read[e.topic.id]; }).length;
     var pct = Math.round((done / ALL_TOPICS.length) * 100);
     progressEl.innerHTML =
@@ -379,12 +389,12 @@
     if(!mod) return;
     rememberModule(mod.id);
     var mastery = modulePct(mod);
-    var read = readRead();
+    var read = doneMap();
     var doneCount = mod.topics.filter(function(t){ return read[t.id]; }).length;
 
     var sections = mod.topics.map(function(t){
       var pct = topicPct(t.id);
-      var done = !!read[t.id];
+      var done = !!read[t.id], byOther = done && !isRead(t.id);
       // One section at a time (site audit 2026-10, performance: chapter 1 was
       // 134,000 px tall on a phone). Every section's shell is here so the
       // jump menu and search can name it; showSection() reveals one and
@@ -398,8 +408,8 @@
               : pct === null
               ? '<span class="tb-mastery none" title="Mastery comes from answering questions, not from reading">Not practiced</span>'
               : '<span class="tb-mastery" title="Concept mastery for this topic">' + pct + '% mastery</span>') +
-            '<button type="button" class="tb-readtoggle' + (done ? ' done' : '') + '" data-topic="' + t.id + '" aria-pressed="' + done + '">' +
-              '<span class="tb-tick" aria-hidden="true"></span><span class="tb-readlabel">' + (done ? 'Read' : 'Mark read') + '</span>' +
+            '<button type="button" class="tb-readtoggle' + (done ? ' done' : '') + '" data-topic="' + t.id + '" aria-pressed="' + done + '"' + (byOther ? ' title="Finished in the interactive lesson or on your path"' : '') + '>' +
+              '<span class="tb-tick" aria-hidden="true"></span><span class="tb-readlabel">' + (done ? 'Done' : 'Mark done') + '</span>' +
             '</button>' +
           '</div>' +
         '</div>' +
@@ -438,7 +448,7 @@
      first one not yet read, so coming back resumes where you left off. */
   function defaultTopic(index){
     var mod = C.MODULES[index];
-    var read = readRead();
+    var read = doneMap();
     for(var i = 0; i < mod.topics.length; i++) if(!read[mod.topics[i].id]) return mod.topics[i].id;
     return mod.topics[0].id;
   }
@@ -486,10 +496,10 @@
     var pager = chapterEl.querySelector('.tb-section-pager');
     if(pager){
       pager.innerHTML =
-        (prevT ? link('prev', '#' + prevT.id, '&larr; Previous section', prevT.title)
-          : prevM ? link('prev', '#m-' + prevM.id, '&larr; Previous chapter', prevM.title) : '<span></span>') +
-        (nextT ? link('next', '#' + nextT.id, 'Next section &rarr;', nextT.title)
-          : nextM ? link('next', '#m-' + nextM.id, 'Next chapter &rarr;', nextM.title) : '<span></span>');
+        (prevT ? link('prev', '#' + prevT.id, '&larr; Previous topic', prevT.title)
+          : prevM ? link('prev', '#' + prevM.topics[prevM.topics.length - 1].id, '&larr; Previous topic', prevM.topics[prevM.topics.length - 1].title) : '<span></span>') +
+        (nextT ? link('next', '#' + nextT.id, 'Next topic &rarr;', nextT.title)
+          : nextM ? link('next', '#' + nextM.topics[0].id, 'Next topic &rarr;', nextM.topics[0].title) : '<span></span>');
     }
     var jump = document.getElementById('tbJump');
     if(jump){
@@ -548,13 +558,18 @@
       btn.classList.toggle('done', on);
       btn.setAttribute('aria-pressed', String(on));
       var label = btn.querySelector('.tb-readlabel');
-      if(label) label.textContent = on ? 'Read' : 'Mark read';
+      var shown = on || isDone(id);
+      btn.classList.toggle('done', shown);
+      btn.setAttribute('aria-pressed', String(shown));
+      if(label) label.textContent = shown ? 'Done' : 'Mark done';
     }
     var tocLink = contentsEl.querySelector('.tb-toc-topic[data-topic="' + id + '"]');
-    if(tocLink) tocLink.classList.toggle('read', on);
+    if(tocLink) tocLink.classList.toggle('read', on || isDone(id));
     refreshCounts();
     renderOverallProgress();
     if(window.HubProgress) window.HubProgress.renderChips();
+    // The path's card at the end of the section (assets/course/path.js) follows.
+    try{ document.dispatchEvent(new CustomEvent('levl:bookread', { detail: { id: id, on: on } })); }catch(e){}
   }
 
   /* The chapter's one-line summary. When the chapter contains a section with
@@ -564,14 +579,14 @@
   function chapterMetaText(mod, doneCount, mastery){
     var untracked = C.masteryCoverage(mod).untracked;
     return mod.topics.length + ' section' + (mod.topics.length === 1 ? '' : 's') +
-      ' \u00b7 ' + doneCount + ' read' +
+      ' \u00b7 ' + doneCount + ' done' +
       ' \u00b7 ' + (mastery === null ? 'not practiced yet' : mastery + '% mastery') +
       (untracked ? ' \u00b7 ' + untracked + ' section' + (untracked === 1 ? '' : 's') +
         ' not tracked yet (notes only)' : '');
   }
 
   function refreshCounts(){
-    var read = readRead();
+    var read = doneMap();
     var mod = C.MODULES[currentIndex];
     var meta = document.getElementById('tbChapterMeta');
     if(mod && meta){
@@ -823,6 +838,18 @@
   }
 
   window.addEventListener('hashchange', route);
+  // Marked done on the path's card at a section's end: every tick on the page follows.
+  document.addEventListener('levl:pathchange', function(){
+    var d = doneMap();
+    mainEl.querySelectorAll('.tb-readtoggle').forEach(function(btn){
+      var on = !!d[btn.getAttribute('data-topic')], label = btn.querySelector('.tb-readlabel');
+      btn.classList.toggle('done', on); btn.setAttribute('aria-pressed', String(on));
+      if(label) label.textContent = on ? 'Done' : 'Mark done';
+    });
+    contentsEl.querySelectorAll('.tb-toc-topic[data-topic]').forEach(function(a){ a.classList.toggle('read', !!d[a.getAttribute('data-topic')]); });
+    refreshCounts();
+    renderOverallProgress();
+  });
   if(filterEl){
     filterEl.addEventListener('input', function(){
       var q = filterEl.value.trim();

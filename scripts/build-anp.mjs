@@ -24,7 +24,7 @@ import { courseTitle } from './lib/page-title.mjs';
 import { glossaryJson as sharedGlossaryJson, glossaryMain, glossaryScript } from './lib/glossary.mjs';
 import { APP_STATE_PAGES, NOINDEX } from './lib/app-pages.mjs';
 /* Course labels for page titles, longest first (scripts/lib/page-title.mjs). */
-const AP_LABELS = ['Anatomy & Physiology', 'A&P'];
+const AP_LABELS = ['Anatomy & Physiology'];
 /* Searchers type "anatomy and physiology", not "A&P": keep the full name, dropping the brand first. */
 const FULL = { keepFirstLabel: true };
 import {
@@ -374,7 +374,7 @@ function notesPage(id) {
     ],
   };
   const link = (x, dir) => x && C.built.has(x.id)
-    ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${x.id}.html"><span>${dir === 'next' ? `Topic ${topicNumber(x.id)} &rarr;` : `&larr; Topic ${topicNumber(x.id)}`}</span><b>${esc(x.title)}</b></a>` : '';
+    ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${x.id}.html"><span>${dir === 'next' ? 'Next topic &rarr;' : '&larr; Previous topic'}</span><b>${esc(x.title)}</b></a>` : '';
   const body = `
 <body data-topic="${id}">
 <header id="site-header"></header>
@@ -400,7 +400,7 @@ ${html}
   </main>
 </div>
 ${footer(depth)}
-${tail({ depth, section: 'learn', extra: ['anp-toc.js'], site: ['report-question.js', 'course/book.js'] })}
+${tail({ depth, section: 'learn', extra: ['anp-toc.js'], site: ['report-question.js', 'course/book.js', 'course/read-toggle.js'] })}
 </body>
 </html>
 `;
@@ -480,7 +480,7 @@ function corePage(coreId) {
   const tagged = map.topics.filter(t => t.coreConcepts.includes(coreId));
   const byCh = new Map();
   for (const t of tagged) { if (!byCh.has(t.chapter)) byCh.set(t.chapter, []); byCh.get(t.chapter).push(t); }
-  const title = courseTitle(cc.name, ['Anatomy & Physiology Core Concept', 'A&P Core Concept'], FULL);
+  const title = courseTitle(cc.name, ['Anatomy & Physiology'], FULL);
   const desc = clampDesc(`${cc.summary} See where it appears in every body system.`);
   const url = `${SITE}${BASE}concepts/${coreId}.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -591,7 +591,7 @@ ${tail({ depth, section: 'credits' })}
 function glossaryPage() {
   const depth = '';
   const terms = glossaryTerms();
-  const title = courseTitle('Glossary: terms and word roots', AP_LABELS, FULL);
+  const title = courseTitle('Glossary', AP_LABELS, FULL);
   const desc = clampDesc(`${terms.length.toLocaleString('en-US')} anatomy and physiology terms with plain definitions, word roots and pronunciation, each linked to the page that teaches it.`);
   const url = `${SITE}${BASE}glossary.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -632,7 +632,7 @@ ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', 
    table of contents linking to every notes page. */
 function learnPage() {
   const depth = '';
-  const title = courseTitle('All chapters and topics', AP_LABELS, FULL);
+  const title = courseTitle('Textbook', AP_LABELS, FULL);
   const desc = clampDesc(`Every chapter of the course in order: ${map.chapters.length} chapters and ${map.topics.length} topics, from orientation to the body through development and inheritance.`);
   const url = `${SITE}${BASE}learn.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -662,7 +662,7 @@ function learnPage() {
   </main>
 </div>
 ${footer(depth)}
-${tail({ depth, section: 'learn', extra: ['anp-toc.js', 'anp-book.js'], site: ['course/read-toggle.js'] })}
+${tail({ depth, section: 'learn', extra: ['anp-toc.js', 'anp-book.js'], premium: true, site: ['course/read-toggle.js'] })}
 </body>
 </html>
 `;
@@ -990,7 +990,8 @@ function toolsHubR3() {
     lede: `${numWord(tools.length)} tools. Name structures on real figures and a 3D body, then work the physiology. Every tool explains its answers, and what you miss goes into your <a href="review.html">review queue</a>.`,
     cta: { href: 'tools/lab-practical.html', label: 'Start the lab practical' }, cta2: { href: 'search.html', label: 'Search everything' },
     before: '<div class="anp-hub-filter" hidden></div>',
-    groups: [{ big: true, h: `${numWord(tools.length)} ways <span>to practice</span>`, p: 'Real figures, anatomy in 3D, physiology, numbers and words.', label: 'Tools',
+    // Free, then With Premium, as on every course's hub (toolsHubMain's pass; consistency audit 2026-11, C5).
+    pass: esc(COURSE_NAME), groups: [{ h: 'Tools',
       cards: [lab, ...others].map(t => {
         const c = hubToolCounts(t.slug);
         const [pl, sg] = HUB_ITEMS[t.slug];

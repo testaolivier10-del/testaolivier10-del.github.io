@@ -87,8 +87,8 @@
   // Two side-by-side panels: chips on top, captions at the foot.
   function panels(rel, k, f, foot0, foot1){
     return '<line x1="240" x2="240" y1="16" y2="262" class="sd-div"/>' + chip(120, 18, 'Before') + chip(360, 18, 'After', true) +
-      txt(120, 262, foot0 || 'the original', 'sd-cap', 'middle') + txt(360, 262, changes(rel, k), 'sd-cap', 'middle') +
-      txt(360, 277, (foot1 ? foot1 + ' · ' : '') + yres(rel, f), 'sd-cap2', 'middle');
+      txt(120, 258, foot0 || 'the original', 'sd-cap', 'middle') + txt(360, 258, changes(rel, k), 'sd-cap', 'middle') +
+      txt(360, 274, (foot1 ? foot1 + ' · ' : '') + yres(rel, f), 'sd-cap2', 'middle');
   }
   // Two rows (before on top) for scenes that run left to right.
   function rows(rel, k, f){

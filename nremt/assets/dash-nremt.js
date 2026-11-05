@@ -81,7 +81,9 @@
       if(eff < 5) dueCount++;
     });
     var totalTracked = Object.keys(mastery).length, missedCount = Array.isArray(missed) ? missed.length : 0;
-    var isNew = !allTotal && !history.length;
+    // Answers are recorded as each is checked (practice-engine.js recordLive), and any tracked question or missed one
+    // counts as a start, so the page fills in mid-session (consistency audit 2026-11, B1).
+    var isNew = !allTotal && !history.length && !totalTracked && !missedCount;
 
     // Pace on full exams: seconds a question, from the time each finished exam took.
     var paced = history.filter(function(x){ return x.timeMs > 0; });
@@ -152,7 +154,7 @@
       }
       if(costly) acts.push({ title: 'Drill <span>' + esc(costly.d) + '</span>.', body: 'It has cost you ' + costly.miss + ' of ' + costly.total + ' questions so far, more than any other area.' + (NOTES[costly.d] ? ' Read <a href="' + notesHref(NOTES[costly.d]) + '">' + esc(NOTES[costly.d][1]) + '</a> first if it has been a while.' : ''),
         href: 'practice.html?system=' + encodeURIComponent(costly.d), cta: 'Drill it', then: 'Then drill ' + esc(costly.d) + ', your most expensive area', key: 'drill' });
-      if(missedCount) acts.push({ title: 'Redo the <span>' + plural(missedCount, 'question') + '</span> your exams got wrong.', body: 'Your missed list from full exams, each with its explanation.', href: 'review.html?start=review', cta: 'Redo them', then: 'Then redo the ' + plural(missedCount, 'question') + ' your exams got wrong', key: 'missed' });
+      if(missedCount) acts.push({ title: 'Redo the <span>' + plural(missedCount, 'question') + '</span> you got wrong.', body: 'Your missed list from practice and exams, each with its explanation.', href: 'review.html?start=review', cta: 'Redo them', then: 'Then redo the ' + plural(missedCount, 'question') + ' you got wrong', key: 'missed' });
       var lastExam = history.length ? history[history.length - 1].date : 0;
       if(G.canUse('exam') && allTotal >= 40 && (!lastExam || Date.now() - lastExam > 7 * 86400000)) acts.push({ title: history.length ? 'Take a full <span>timed exam</span>.' : 'Take your first <span>full timed exam</span>.',
         body: history.length ? 'Your last was ' + plural(Math.round((Date.now() - lastExam) / 86400000), 'day') + ' ago. Each one makes the readiness reading steadier.' : 'It is scored by exam domain, and your readiness reading starts from it.', href: 'exams.html', cta: 'Start the exam', then: history.length ? 'Then take a full timed exam' : 'Then take your first full timed exam', key: 'exam' });

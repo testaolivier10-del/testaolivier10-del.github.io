@@ -65,11 +65,13 @@
       var c1 = G.xy(100 - k, k, 0), c2 = G.xy(0, k, 100 - k); // silt = k
       out.push('<path class="st-grid" d="M' + a1[0].toFixed(1) + ' ' + a1[1].toFixed(1) + 'L' + a2[0].toFixed(1) + ' ' + a2[1].toFixed(1) + 'M' + b1[0].toFixed(1) + ' ' + b1[1].toFixed(1) + 'L' + b2[0].toFixed(1) + ' ' + b2[1].toFixed(1) + 'M' + c1[0].toFixed(1) + ' ' + c1[1].toFixed(1) + 'L' + c2[0].toFixed(1) + ' ' + c2[1].toFixed(1) + '"/>');
       // tick numbers: clay on the left side, silt on the right side, sand on the base
+      // A tick under one of the point's readout pills gives way to the pill (consistency audit 2026-11, C3).
+      var rp = o.pt && o.readouts !== false ? o.pt : null, near = phone ? 13 : 8;
       if(!phone || k % 20 === 0){
         var cl = G.xy(100 - k, 0, k), si = G.xy(0, 100 - k + 0, k - 0), sa = G.xy(k, 100 - k, 0);
         var siP = G.xy(0, k, 100 - k);
-        out.push('<text class="st-tick clay" x="' + (cl[0] - 8).toFixed(1) + '" y="' + (cl[1] + 4).toFixed(1) + '" text-anchor="end">' + k + '</text>');
-        out.push('<text class="st-tick silt" x="' + (siP[0] + 8).toFixed(1) + '" y="' + (siP[1] + 4).toFixed(1) + '">' + k + '</text>');
+        if(!rp || Math.abs(rp[2] - k) >= near) out.push('<text class="st-tick clay" x="' + (cl[0] - 8).toFixed(1) + '" y="' + (cl[1] + 4).toFixed(1) + '" text-anchor="end">' + k + '</text>');
+        if(!rp || Math.abs(rp[1] - k) >= near) out.push('<text class="st-tick silt" x="' + (siP[0] + 8).toFixed(1) + '" y="' + (siP[1] + 4).toFixed(1) + '">' + k + '</text>');
         out.push('<text class="st-tick sand" x="' + sa[0].toFixed(1) + '" y="' + (sa[1] + 17).toFixed(1) + '" text-anchor="middle">' + k + '</text>');
       }
     }
@@ -84,9 +86,11 @@
     var mid = function(p, q, t){ return [p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t]; };
     var pt0 = o.pt || [50, 25, 25];
     var tc = pt0[2] > 50 ? 0.22 : 0.74, ts = pt0[1] < 50 ? 0.24 : 0.74, tb = pt0[0] > 50 ? 0.74 : 0.26;
+    // A phone: the titles stand further off the edge (past its ticks) and away from the corners.
+    if(phone){ tc = pt0[2] > 50 ? 0.3 : 0.7; ts = pt0[1] < 50 ? 0.3 : 0.7; }
     var cm = mid(A, Cc, tc), sm = mid(B, Cc, ts), bm = mid(A, B, tb);
-    out.push('<text class="st-axis clay" transform="translate(' + (cm[0] - (phone ? 22 : 34)).toFixed(1) + ' ' + (cm[1] - 6).toFixed(1) + ') rotate(-60)" text-anchor="middle">Clay % →</text>');
-    out.push('<text class="st-axis silt" transform="translate(' + (sm[0] + (phone ? 22 : 34)).toFixed(1) + ' ' + (sm[1] - 6).toFixed(1) + ') rotate(60)" text-anchor="middle">← Silt %</text>');
+    out.push('<text class="st-axis clay" transform="translate(' + (cm[0] - (phone ? 46 : 34)).toFixed(1) + ' ' + (cm[1] - 6).toFixed(1) + ') rotate(-60)" text-anchor="middle">Clay % →</text>');
+    out.push('<text class="st-axis silt" transform="translate(' + (sm[0] + (phone ? 46 : 34)).toFixed(1) + ' ' + (sm[1] - 6).toFixed(1) + ') rotate(60)" text-anchor="middle">← Silt %</text>');
     out.push('<text class="st-axis sand" x="' + bm[0].toFixed(1) + '" y="' + (bm[1] + (phone ? 38 : 42)).toFixed(1) + '" text-anchor="middle">← Sand %</text>');
     // class names
     if(!o.hideClasses) Object.keys(LAB).forEach(function(id){
@@ -94,7 +98,9 @@
       if(phone && (id === 'sand' || id === 'loamy-sand')) lines = [id === 'sand' ? 'S' : 'LS'];
       // The point covers a name: move it off (Loam sideways, since Clay loam
       // sits right above it).
-      if(o.pt){ var P0 = G.xy(o.pt[0], o.pt[1], o.pt[2]); if(Math.abs(P0[0] - p[0]) < 30 && Math.abs(P0[1] - p[1]) < 16) p = id === 'loam' ? [p[0] + (P0[0] > p[0] ? -26 : 26), p[1]] : [p[0], p[1] + (P0[1] > p[1] ? -18 : 20)]; }
+      // How near counts from the name's own width and the point's halo, so a phone's larger type is cleared too.
+      if(o.pt){ var P0 = G.xy(o.pt[0], o.pt[1], o.pt[2]), nw = Math.max.apply(null, lines.map(function(l){ return l.length; })) * (phone ? 12 : lf) * 0.6;
+        if(Math.abs(P0[0] - p[0]) < nw / 2 + 16 && Math.abs(P0[1] - p[1]) < 18 + (lines.length - 1) * lf * 0.55) p = id === 'loam' ? [p[0] + (P0[0] > p[0] ? -1 : 1) * (nw / 2 + 20), p[1]] : [p[0], p[1] + (P0[1] > p[1] ? -1 : 1) * (20 + (lines.length - 1) * lf * 0.55)]; }
       out.push('<text class="st-name' + (o.cls === id ? ' is-on' : '') + '" x="' + p[0].toFixed(1) + '" y="' + (p[1] - (lines.length - 1) * lf * 0.55).toFixed(1) + '" text-anchor="middle">' + lines.map(function(l, i){ return '<tspan x="' + p[0].toFixed(1) + '" dy="' + (i ? lf * 1.1 : 0) + '">' + esc(l) + '</tspan>'; }).join('') + '</text>');
     });
     // the point and its three reading lines

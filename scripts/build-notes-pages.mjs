@@ -38,6 +38,7 @@
      node scripts/build-notes-pages.mjs            rewrite
      node scripts/build-notes-pages.mjs --check    fail if any page is stale (CI)
 */
+import { footerLinks } from './lib/footer-links.mjs';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -182,7 +183,7 @@ function sectionHeads(prose) {
 
 function page({ topic, module: mod, modIndex, modules, numbers, prose, prev, next, index, total }) {
   // "{Topic} — {Course} | LevlPrep" (scripts/lib/page-title.mjs).
-  const title = courseTitle(decodeEntities(topic.title), ['Organic Chemistry', 'Organic Chem', 'OChem'].map((c) => `${c} Notes`));
+  const title = courseTitle(decodeEntities(topic.title), ['Organic Chemistry Notes']);
   const desc = DESCRIPTIONS[topic.id] || describe(prose, `${topic.title} explained step by step: free organic chemistry notes from the ${mod.title} chapter.`);
   const url = `${ORIGIN}/ochem/notes/${topic.id}.html`;
   const chN = modIndex + 1; // the rail badge is a number, not prose
@@ -197,7 +198,7 @@ function page({ topic, module: mod, modIndex, modules, numbers, prose, prev, nex
     : '';
   const soon = hasLesson(topic) ? '' : `\n      <p class="bk-soon">${esc(NOTES_ONLY_LABEL)}</p>`;
   const link = (t, dir) => t
-    ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${t.id}.html"><span>${dir === 'next' ? `Section ${index + 1} &rarr;` : `&larr; Section ${index - 1}`}</span><b>${esc(t.title)}</b></a>`
+    ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${t.id}.html"><span>${dir === 'next' ? 'Next topic &rarr;' : '&larr; Previous topic'}</span><b>${esc(t.title)}</b></a>`
     : '';
   /* The contents rail, as on A&P and Bio notes pages (assets/course/book.css):
      the neighbouring chapters, this chapter with its sections, the current
@@ -340,7 +341,7 @@ ${END}
 </div>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    ${footerLinks('../../')}
   </footer>
 </div>
 <script src="../assets/curriculum.js" defer></script>
@@ -350,6 +351,7 @@ ${END}
 </script>
 <script src="../assets/ochem-nav.js" defer></script>
 <script src="../../assets/course/book.js" defer></script>
+<script src="../../assets/course/read-toggle.js" defer></script>
 </body>
 </html>
 `;

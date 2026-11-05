@@ -27,7 +27,7 @@
       '<h1 class="deck" id="r3ResTitle" tabindex="-1"><span class="r3-res-score"></span> <span class="r3-res-tail">Here is where.</span></h1>' +
       '<p class="hand">every question, with its explanation</p>' +
       '<p class="lede">Scored by domain in the order the exam outline lists them, with the topic areas each domain&rsquo;s questions came from.</p>' +
-      '<div class="hero-ctas"><button type="button" class="btn-chan" data-r3-click="#reviewMissesBtn">Review your misses</button><button type="button" class="btn-ghost" data-r3-click="#retryBtnTop">Back to Start</button><button type="button" class="btn-ghost" data-r3-click="#printResultBtn">Print or save as PDF</button></div>' +
+      '<div class="hero-ctas"><button type="button" class="btn-ghost" data-r3-click="#retryBtnTop">Back to Start</button><button type="button" class="btn-ghost" data-r3-click="#printResultBtn">Print or save as PDF</button></div>' +
       '</div><div class="art" aria-hidden="true"><img src="../assets/covers/art/nremt.svg" alt="" width="640" height="400" decoding="async"></div></div>';
     res.parentNode.insertBefore(band, res);
 
@@ -66,10 +66,6 @@
       band.querySelector('.lede').innerHTML = cat
         ? 'Each domain above, near or below LevlPrep&rsquo;s passing line, with what to study next. A simulation of the adaptive format, not the Registry&rsquo;s algorithm.'
         : 'Scored by domain in the order the exam outline lists them, with the topic areas each domain&rsquo;s questions came from.';
-      var rev = document.getElementById('reviewMissesBtn');
-      var first = band.querySelector('[data-r3-click="#reviewMissesBtn"]');
-      first.hidden = !rev;
-      if(rev) first.textContent = rev.textContent;
     }
     new MutationObserver(sync).observe(res, { attributes: true, attributeFilter: ['style', 'data-mode'], subtree: false });
     new MutationObserver(sync).observe(document.getElementById('scoreBig') || res, { childList: true, characterData: true, subtree: true });

@@ -147,7 +147,8 @@
       o.push('<line class="uc-axis" x1="' + g0 + '" y1="' + gy + '" x2="' + (g1 + 8) + '" y2="' + gy + '"/>');
       o.push('<line class="uc-axis" x1="' + g0 + '" y1="' + r1(gy - R - 14) + '" x2="' + g0 + '" y2="' + r1(gy + R + 14) + '"/>');
       ['0', 'π/2', 'π', '3π/2', '2π'].forEach(function(s, k){ o.push(txt(sx(k * PI / 2), gy + R + 14 + L.tk + 4, s, 'uc-tk')); });
-      o.push(txt(g1 + 4, gy - 8, 'θ', 'uc-axl', 'end'));
+      // θ sits under the axis's right end: above it, the "sin θ" curve name ends there too
+      o.push(txt(g1 + 4, gy + 6 + L.fs, 'θ', 'uc-axl', 'end'));
       o.push('</g>');
       gS.innerHTML = o.join('');
     }
@@ -180,7 +181,11 @@
         o.push('<line class="uc-cos" x1="' + cx + '" y1="' + cy + '" x2="' + r1(Px) + '" y2="' + cy + '"/>');
         o.push('<line class="uc-sin" x1="' + r1(Px) + '" y1="' + cy + '" x2="' + r1(Px) + '" y2="' + r1(Py) + '"/>');
         if(Math.abs(a.cos) > 0.18) o.push(txt((cx + Px) / 2, cy + (a.sin >= 0 ? L.fs + 2 : -8), 'cos θ', 'uc-lab uc-c-cos'));
-        if(Math.abs(a.sin) > 0.18) o.push(txt(Px + (a.cos >= 0 ? 26 : -26), (cy + Py) / 2 + L.fs * 0.35, 'sin θ', 'uc-lab uc-c-sin', a.cos >= 0 ? 'start' : 'end'));
+        // Outside the leg; where that would run into the x label and the graph beside the circle (a phone's small
+        // circle), the red leg goes unlabeled: the readout under the circle names it in the same red
+        // (consistency audit 2026-11, C3).
+        var sinOut = !(a.cos >= 0 && Px + 26 + L.fs * 3 > cx + R + (L.wide ? 34 : 26) - 14);
+        if(Math.abs(a.sin) > 0.18 && sinOut) o.push(txt(Px + (a.cos >= 0 ? 26 : -26), (cy + Py) / 2 + L.fs * 0.35, 'sin θ', 'uc-lab uc-c-sin', a.cos >= 0 ? 'start' : 'end'));
       } else {
         // tan θ: the line through O and P meets x = 1 at height tan θ
         var x1 = cx + R, top = 1.5;

@@ -36,9 +36,8 @@ function put(rel, start, end, body, anchor) {
 
 /* ---- the tool pages ---- */
 const BAND = ['<!-- r3-toolband:start -->', '<!-- r3-toolband:end -->'];
-// The full-screen tools (Tool Studio mount); mnemonics is a slim reference page that scrolls and
-// keep the band.
-const FULL = new Set(['body-map', 'flowcharts', 'formulary', 'reference-cards', 'scenario-sim', 'skillsheets', 'sound-trainer']);
+// The full-screen tools (Tool Studio mount); mnemonics joined them (consistency audit 2026-11, C6).
+const FULL = new Set(['body-map', 'flowcharts', 'formulary', 'mnemonics', 'reference-cards', 'scenario-sim', 'skillsheets', 'sound-trainer']);
 const strip = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 for (const t of toolCovers('nremt')) {
   const rel = `nremt/${t.slug}.html`;
@@ -50,7 +49,7 @@ for (const t of toolCovers('nremt')) {
   if (!lede) { broken.push(`${rel}: no <p class="lede"> to take the hand line from`); continue; }
   put(rel, BAND[0], BAND[1], toolBand({
     ref: !FULL.has(t.slug), key: 'nremt', up: '../', slug: t.slug, hand: lede[1].trim(), lede: desc ? desc[1] : '', backHref: 'tools.html',
-    crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: 'NREMT-EMT Prep', href: 'index.html' }, { name: 'Tools', href: 'tools.html' }, { name: strip(t.title) }],
+    crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: 'NREMT-EMT', href: 'index.html' }, { name: 'Tools', href: 'tools.html' }, { name: strip(t.title) }],
   }), '<!-- crumb:end -->');
 }
 
@@ -77,14 +76,16 @@ const CREDIT = 'Figure from BodyParts3D &copy; 2008 <a href="https://lifescience
 const card = (slug, name, desc, foot, premium) => ({ slug, href: `${slug}.html`, name, desc, foot, free: !premium, attrs: premium ? ' data-premium="1"' : '' });
 const hub = toolsHubMain({
   key: 'nremt', up: '../', mountClass: 'cx-tools',
-  crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: 'NREMT-EMT Prep', href: 'index.html' }, { name: 'Tools' }],
+  crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: 'NREMT-EMT', href: 'index.html' }, { name: 'Tools' }],
   h1: 'What a question bank <span>can&rsquo;t test.</span>', hand: 'anatomy, sounds, calls and the skill stations',
   lede: 'Practice the parts a question bank can&rsquo;t test: anatomy, sounds, protocol flow, call simulations and the skill sheets.',
   cta: { href: 'body-map.html', label: 'Open the body map' }, cta2: { href: 'search.html', label: 'Search everything' },
   /* No featured tool (owner 2026-11-02: no one tool gets its own section); the body map is the first card. */
   featured: null,
+  // Free, then With Premium, as on every course's hub (toolsHubMain's pass; consistency audit 2026-11, C5).
+  pass: 'NREMT-EMT',
   groups: [
-    { big: true, h: 'Seven <span>tools</span>', p: 'Anatomy, sounds, calls, drugs and the skill stations.', label: 'Tools', cards: [
+    { h: 'Tools', cards: [
       card('body-map', 'Body Map', 'A real 3D model: turn the body, tap a region, get the structures and findings.', 'Anatomy'),
       card('sound-trainer', 'Sound Trainer', 'Wheezes, crackles, stridor and heart sounds, by ear.', 'Lung and heart sounds'),
       card('scenario-sim', 'Scenarios', `${cap(word(N.calls))} branching calls, dispatch to handover.`, `${N.calls} calls`, true),
@@ -92,9 +93,7 @@ const hub = toolsHubMain({
       card('reference-cards', 'Reference Cards', 'Pediatric vitals by age, GCS, APGAR, the assessment triangle.', 'Quick reference'),
       card('flowcharts', 'Flow Diagrams', `${cap(word(N.flows))} sequences: assessment, CPR, anaphylaxis, choking, triage.`, `${N.flows} sequences`),
       card('skillsheets', 'Skill Sheets', `The ${word(N.stations)} psychomotor stations, run out loud against the clock.`, `${N.stations} stations`),
-    ] },
-    { kick: 'Also in Learn', h: 'Also in Learn', label: 'Also in Learn', cards: [
-      card('mnemonics', 'Mnemonics', 'The core EMT mnemonics, letter by letter.', 'Letter by letter'),
+      card('mnemonics', 'Mnemonics', 'The core EMT mnemonics, letter by letter, then fill the letters yourself.', 'Letter by letter'),
     ] },
   ],
   note: `Flow diagrams and the station list are general structure, not scored sheets. Verify against your program&rsquo;s documents. Body Map ${CREDIT.replace(/^Figure/, 'figure')}`,

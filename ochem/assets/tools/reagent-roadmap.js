@@ -393,8 +393,30 @@
     var head = hs ? '<path class="rr-edge__head" d="M ' + p2.x.toFixed(1) + ' ' + p2.y.toFixed(1) +
       ' L ' + (p2.x - tx*hs - ty*hw).toFixed(1) + ' ' + (p2.y - ty*hs + tx*hw).toFixed(1) +
       ' L ' + (p2.x - tx*hs + ty*hw).toFixed(1) + ' ' + (p2.y - ty*hs - tx*hw).toFixed(1) + ' Z"/>' : '';
-    // The step number rides the middle of the curve.
-    var qx = 0.25 * p1.x + 0.5 * mx + 0.25 * p2.x, qy = 0.25 * p1.y + 0.5 * my + 0.25 * p2.y;
+    // The step number rides the curve: its middle, or the point of it (or just beside it) that covers the
+    // least of any group's name (it sat on "2° halide"; consistency audit 2026-11, C3).
+    function onCurve(t){ var u = 1 - t; return { x: u * u * p1.x + 2 * u * t * mx + t * t * p2.x, y: u * u * p1.y + 2 * u * t * my + t * t * p2.y }; }
+    function covers(c){
+      var sum = 0;
+      D.NODES.forEach(function(nd){ var o = pos(L, nd.id); if(!o) return;
+        var ox = Math.min(c.x + 10, o.x + L.nw / 2 - 6) - Math.max(c.x - 10, o.x - L.nw / 2 + 6), oy = Math.min(c.y + 10, o.y + 16) - Math.max(c.y - 10, o.y - 14);
+        if(ox > 0 && oy > 0) sum += ox * oy; });
+      BADGES.forEach(function(o){ var dd = Math.sqrt((o.x - c.x) * (o.x - c.x) + (o.y - c.y) * (o.y - c.y)); if(dd < 24) sum += (24 - dd) * 20; });
+      return sum;
+    }
+    var q = onCurve(0.5);
+    if(n !== undefined && covers(q) > 0){
+      var bestQ = null;
+      for(var tt = 0.1; tt <= 0.901; tt += 0.05) [0, 8, -8, 14, -14, 20, -20].forEach(function(off){
+        var c = onCurve(tt), d = onCurve(tt + 0.01), ex = d.x - c.x, ey = d.y - c.y, el = Math.sqrt(ex * ex + ey * ey) || 1;
+        c = { x: c.x - ey / el * off, y: c.y + ex / el * off };
+        var sc = covers(c) * 10 + Math.abs(tt - 0.5) * 40 + Math.abs(off);
+        if(!bestQ || sc < bestQ.sc) bestQ = { sc: sc, q: c };
+      });
+      q = bestQ.q;
+    }
+    if(n !== undefined) BADGES.push(q);
+    var qx = q.x, qy = q.y;
     var badge = n !== undefined ? '<g class="rr-edge__n"><circle cx="' + qx.toFixed(1) + '" cy="' + qy.toFixed(1) + '" r="10"/>' +
       '<text x="' + qx.toFixed(1) + '" y="' + (qy + 4).toFixed(1) + '" text-anchor="middle">' + n + '</text></g>' : '';
     return '<g class="rr-edge ' + cls + '"><path class="rr-edge__line" d="' + d + '"/>' + head + badge + '</g>';
@@ -406,7 +428,7 @@
        opts.edges  [{from, to, cls, n}]   arrows drawn bold over the faint web
        opts.fit    [ids]                  zoom to these (Whole map undoes it)
        opts.still  true                   nodes are a picture, not controls */
-  var wholeMap = false;
+  var wholeMap = false, BADGES = [];
   function mapHtml(marks, pressed, opts){
     opts = opts || {};
     var L = lay();
@@ -421,7 +443,11 @@
     var bold = opts.edges || [], boldKey = {};
     bold.forEach(function(e){ boldKey[e.from + '>' + e.to] = 1; });
     var web = pairs().filter(function(p){ return !boldKey[p.from + '>' + p.to]; }).map(function(p){ return arrow(L, p.from, p.to, 'is-faint'); }).join('');
+    BADGES = [];
     var strong = bold.map(function(e){ return arrow(L, e.from, e.to, e.cls || 'is-route', e.n); }).join('');
+    // A node's A / B / step badge: its top right corner; on the tall (phone) map its lower right, since the top
+    // right of a first-row node is where the lane's title runs (consistency audit 2026-11, C3).
+    var nbY = L === LAYOUT.tall ? L.nh - 2 : 2;
     var nodes = D.NODES.map(function(n){
       var c = pos(L, n.id); if(!c) return '';
       var m = marks && marks[n.id];
@@ -434,8 +460,8 @@
         '<rect class="rr-node__box" x="' + x + '" y="' + y + '" width="' + L.nw + '" height="' + L.nh + '" rx="10"/>' +
         '<text class="rr-node__name" x="' + c.x + '" y="' + (c.y - 2) + '" text-anchor="middle">' + esc(GN[n.id] || n.name) + '</text>' +
         '<text class="rr-node__f" x="' + c.x + '" y="' + (c.y + 13) + '" text-anchor="middle">' + esc(GF[n.id] || n.short) + '</text>' +
-        (m && m.badge !== undefined ? '<g class="rr-node__nb" aria-hidden="true"><circle cx="' + (x + L.nw - 2) + '" cy="' + (y + 2) + '" r="10"/>' +
-          '<text x="' + (x + L.nw - 2) + '" y="' + (y + 6) + '" text-anchor="middle">' + m.badge + '</text></g>' : '') +
+        (m && m.badge !== undefined ? '<g class="rr-node__nb" aria-hidden="true"><circle cx="' + (x + L.nw - 2) + '" cy="' + (y + nbY) + '" r="10"/>' +
+          '<text x="' + (x + L.nw - 2) + '" y="' + (y + nbY + 4) + '" text-anchor="middle">' + m.badge + '</text></g>' : '') +
       '</g>';
     }).join('');
     // The view: the whole ladder, or the route and a margin round it.
@@ -451,7 +477,10 @@
       x0 = Math.max(0, x0); y0 = Math.max(0, y0); x1 = Math.min(L.w, x1); y1 = Math.min(L.h, y1);
       vb = x0.toFixed(0) + ' ' + y0.toFixed(0) + ' ' + (x1 - x0).toFixed(0) + ' ' + (y1 - y0).toFixed(0);
     }
-    return '<div class="rr-map rr-graph' + (L === LAYOUT.tall ? ' is-tall' : ' is-wide') + '">' +
+    // Zoomed to a route, each lane's title moves in to the view's left edge, so it is never cut off.
+    var vx = +vb.split(' ')[0];
+    if(vx > 0) lanes = lanes.replace(/(<text class="rr-lane__k" x=")(\d+(?:\.\d+)?)"/g, function(_, h, x0){ return h + (vx + +x0) + '"'; });
+    return '<div class="rr-map rr-graph' + (L === LAYOUT.tall ? ' is-tall' : ' is-wide') + (vb === '0 0 ' + L.w + ' ' + L.h ? ' is-whole' : '') + '">' +
       (fitIds.length ? '<button type="button" class="rr-zoom" data-zoom="1" aria-pressed="' + wholeMap + '">' + (wholeMap ? 'Fit the route' : 'Whole map') + '</button>' : '') +
       '<svg viewBox="' + vb + '" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Map of the functional groups, with an arrow for each reaction">' +
         // The route is drawn over the nodes (with a halo) so no box can hide it.

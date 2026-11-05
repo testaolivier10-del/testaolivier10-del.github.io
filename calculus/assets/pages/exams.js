@@ -266,7 +266,7 @@
       return '<li class="' + (p.have ? 'is-on' : 'is-off') + '"><span>Part ' + p.key + ', ' + (p.calc ? 'calculator' : 'no calculator') + ' <span class="calc-small">(' + p.need + ' &times; ' + FRQ_POINTS + ' points)</span></span><b>' + (p.have >= p.need ? 'ready' : p.have + ' of ' + p.need + ' written') + '</b></li>';
     }).join('');
     return formPick + '<div class="cx-note calc-ex-note">' +
-      (plan.full ? '<p><b>The full hybrid format.</b> Each part is drawn from every unit by the midpoint of its exam weight, with stimulus sets kept whole.</p>' + fmt
+      (plan.full ? '<p><b>The real format, in full.</b> Each part is drawn from every unit by the midpoint of its exam weight, with stimulus sets kept whole.</p>' + fmt
         : '<p><b>Not enough questions for a full practice exam yet.</b> A full exam needs 29 no-calculator and 13 calculator multiple-choice questions spread over ' + (plan.units.length === 1 ? 'the course\'s one unit' : 'all ' + plan.units.length + ' units') + ' by exam weight, and 6 free-response questions (2 with a calculator, 4 without). ' +
           'Today the bank can give a <b>shorter exam</b>: ' + plural(plan.mcqN, 'multiple-choice question') + (plan.frqN ? ' and ' + plural(plan.frqN, 'free-response question') : ' and no free-response section') + ', each unit keeping the share it would have in a full exam. Units with no questions yet are left out, not filled in from other units.</p>') +
       '<h2 class="calc-ex-h3">Section I, by unit (Part A &middot; Part B)</h2><ul class="calc-ex-areas">' + unitRows + '</ul>' +
@@ -299,8 +299,12 @@
       due: { n: due, href: BASE + 'review.html', pill: Core.badge ? Core.badge() : '' },
       links: [
         { href: BASE + 'practice.html', title: 'Practice', sub: 'Untimed, with feedback after every answer.' },
-        { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' }
-      ]
+        { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' },
+        // The exam-day references, as cards on Exams (consistency audit 2026-11, D16); BC has no score calculator.
+        { href: BASE + 'formula-sheet.html', title: 'Formulas and theorems', sub: 'No sheet on the exam: what to know by heart.' }
+      ].concat(CC.score === false ? [] : [{ href: BASE + 'score-calculator.html', title: 'Score calculator', sub: 'Your likely exam score from a practice run.' }]).concat([
+        { href: BASE + 'justify.html', title: 'Justification trainer', sub: 'Name the theorem, check its conditions, conclude.' }
+      ])
     });
   }
 
@@ -313,7 +317,7 @@
       '<form class="cx-card cx-builder calc-pr-setup calc-ex-setup" novalidate aria-label="Set up an exam">' +
       '<div class="cx-builder-head"><h2>Set up <span>an exam</span></h2><p>Pick the kind, then the timing.</p></div>' + freeExamHtml(fe) +
       '<fieldset class="cx-step"><legend>' + n1 + '1</span>Choose an exam</legend><div class="cx-choices">' +
-        '<label class="cx-choice"><input type="radio" name="kind" value="full"' + (cfg.kind === 'full' ? ' checked' : '') + '><span><b>Practice exam</b><span>The hybrid format: multiple choice, then free response, scored with rubrics.</span></span></label>' +
+        '<label class="cx-choice"><input type="radio" name="kind" value="full"' + (cfg.kind === 'full' ? ' checked' : '') + '><span><b>Practice exam</b><span>The real format: multiple choice, then free response, scored with rubrics.</span></span></label>' +
         '<label class="cx-choice"><input type="radio" name="kind" value="unit"' + (cfg.kind === 'unit' ? ' checked' : '') + (builtUnits().length ? '' : ' disabled') + '><span><b>Unit test</b><span>One unit, weighted by topic.</span></span></label>' +
         '<label class="cx-choice"><input type="radio" name="kind" value="mixed"' + (cfg.kind === 'mixed' ? ' checked' : '') + (builtUnits().length ? '' : ' disabled') + '><span><b>Mixed timed set</b><span>10, 20 or 30 questions from every unit at exam pace (part of the cram kit).</span></span></label>' +
       '</div></fieldset><div class="cx-step"><h2 class="cx-step-h">' + n1 + '2</span>Settings</h2><div class="calc-ex-panel">' + panelHtml() + '</div></div>' +

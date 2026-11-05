@@ -14,6 +14,9 @@
   // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var CU = window.ApCalcCurriculum;
+  /* A lesson this reader cannot open yet carries data-lesson-premium: read-toggle.js tags it and never sends a
+     reader there on its own (consistency audit 2026-11, A2). */
+  function premAttr(chId, id){ var K = window.ApCalcCore; try{ return K && K.locked && K.locked(chId, id) ? ' data-lesson-premium="1"' : ''; }catch(e){ return ''; } }
   var book = document.getElementById('calc-book');
   var rail = document.getElementById('calc-rail');
   if(!CU || !book || !rail) return;
@@ -118,7 +121,7 @@
           // Hidden until its prose and every earlier topic's has arrived, so
           // a topic landing never pushes the ones below it down the screen
           // (audit 2026-10, layout shift: CLS 0.57 on a phone).
-          return '<section class="bk-sec" id="' + t.id + '" data-lesson="lessons/' + t.id + '.html" aria-labelledby="h-' + t.id + '" hidden>' +
+          return '<section class="bk-sec" id="' + t.id + '" data-lesson="lessons/' + t.id + '.html"' + premAttr(chId, t.id) + ' aria-labelledby="h-' + t.id + '" hidden>' +
             '<div class="bk-sec-head"><h2 id="h-' + t.id + '"><span class="bk-toc-n">' + esc(t.ced || String(t.n)) + '</span>' + esc(t.title) + '</h2>' +
             '<div class="bk-sec-acts"><span class="bk-chip" data-chip-topic="' + t.id + '">Not practiced</span>' +
             '</div></div>' +

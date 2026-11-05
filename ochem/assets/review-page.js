@@ -168,37 +168,35 @@
     // and Review report it identically.
     var xpHtml = window.OchemXP ? window.OchemXP.summaryHtml() : '';
 
-    var html = xpHtml + '<div class="rec-card">' +
-      '<div class="k">' + (cleared ? 'Queue cleared' : 'Session ended') + '</div>' +
-      '<h2>' + esc(cleared
-        ? (S.correct === S.asked ? 'Cleared, and you got everything right.' : 'That\'s today\'s queue done.')
-        : 'Stopped early — the rest is still queued.') + '</h2>' +
-      '<p>' + esc(S.correct + ' of ' + S.asked + ' correct across ' + plural(touched.length, 'concept') + '. ') +
-      esc(missed.length
-        ? plural(missed.length, 'concept') + ' reset and will come back soon; the rest moved further out.'
-        : 'Every interval moved further out.') + '</p>';
-
     var lines = [];
+    lines.push(missed.length
+      ? plural(missed.length, 'concept') + ' reset and will come back soon; the rest moved further out.'
+      : 'Every interval moved further out.');
     if(S.meta.deferred) lines.push(plural(S.meta.deferred, 'concept') + ' held back by today\'s cap — they lead tomorrow\'s queue.');
     if(stillDue.today.length) lines.push(plural(stillDue.today.length, 'concept') + ' still due if you want to keep going.');
     if(!stillDue.today.length && !S.meta.deferred && next){
       lines.push('Next batch: ' + (next.dueIn <= 1 ? 'tomorrow' : 'in ' + plural(next.dueIn, 'day')) + '.');
     }
-    if(lines.length) html += '<p>' + esc(lines.join(' ')) + '</p>';
+    var missQ = S.history.filter(function(h){ return !h.isCheck && !h.d.correct; }).length;
 
-    // One next step (assets/next-step.js): what is still due here comes first.
-    html += (window.LevlNextStep ? LevlNextStep('ochem', { concepts: Object.keys(S.conceptsTouched),
-      due: { n: stillDue.today.length, noun: 'concept', act: startSession }, also: [{ label: 'Back to the queue', act: render }] }) : '') + '</div>';
-
-    if(touched.length){
-      html += '<div style="font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Where those concepts stand</div>' +
-        '<div class="module-card">' + conceptRows(
+    // The shared end panel (LevlStudy.end, consistency audit 2026-11, B7), XP inside it.
+    var html = LevlStudy.end({
+      right: S.correct, total: S.asked, course: 'ochem',
+      line: esc(cleared ? (S.correct === S.asked ? 'Queue cleared, everything right.' : 'Today\'s queue is done.') : 'Stopped early. The rest is still queued.'),
+      sub: esc(lines.join(' ')),
+      extras: xpHtml,
+      next: touched.length ? '<div class="module-card">' + conceptRows(
           touched.sort(function(a, b){ return a.strength - b.strength; }),
-          function(p){ return p.isDue ? 'back in this queue' : upcomingLabel(p); }) + '</div>';
-    }
+          function(p){ return p.isDue ? 'back in this queue' : upcomingLabel(p); }) + '</div>' : '',
+      retry: missQ ? { href: 'practice.html?mode=mistakes', label: missQ === 1 ? 'Retry the miss' : 'Retry the ' + missQ + ' misses' } : null,
+      // One next step (assets/next-step.js): what is still due here comes first.
+      stepHtml: window.LevlNextStep ? LevlNextStep('ochem', { concepts: Object.keys(S.conceptsTouched),
+        due: { n: stillDue.today.length, noun: 'concept', act: startSession }, also: [{ label: 'Back to the queue', act: render }] }) : ''
+    });
 
     doneEl.innerHTML = html;
     show('done');
+    LevlStudy.wire(doneEl, {});
   }
 
   /* ---- the queue view -------------------------------------------------- */
@@ -228,13 +226,16 @@
     var scheduled = M.allProfiles()
       .filter(function(p){ return p.attempts > 0 && !p.isDue && p.due && leechIds.indexOf(p.id) === -1; })
       .sort(function(a, b){ return a.due - b.due; });
-    var everPracticed = M.allProfiles().some(function(p){ return p.attempts > 0; });
+    // A missed or flagged question is practice too, so the headline never says "nothing yet" over a list of
+    // them below (consistency audit 2026-11, B2).
+    var everPracticed = M.allProfiles().some(function(p){ return p.attempts > 0; }) ||
+      M.mistakes({ limit: 1 }).length > 0 || (window.OchemFlags ? window.OchemFlags.count() > 0 : false);
 
-    var acts3 = [{ href: 'practice.html', label: 'Practice', primary: true }, { href: 'learn.html', label: 'Next lesson' }, { href: 'flashcards.html', label: 'Flashcards' }];
+    var acts3 = [{ href: 'practice.html', label: 'Practice', primary: true }, { href: 'learn.html', label: 'Next lesson' }];
     var main = '';
     if(!everPracticed){
       main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: 'Nothing to review yet',
-        p: 'The queue fills from questions you answer anywhere in the course. Answer a few, and they come back here when they are due.', actions: acts3 }) + '</section>';
+        p: 'The queue fills from questions you answer anywhere in the course. Answer a few, and they come back here when they are due.', actions: acts3 }) + (window.OchemPremium ? window.OchemPremium.quotaNote() : '') + '</section>';
     } else if(q.today.length){
       main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: q.today.length, unit: 'due today',
         h: plural(q.today.length, 'concept') + ' to clear',
@@ -255,10 +256,10 @@
           : '') + '</div></section>';
     } else if(q.capReached){
       main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'left today', h: 'You have cleared today\'s ' + M.DAILY_REVIEW_CAP,
-        p: esc(plural(q.dueTotal, 'concept') + ' are still due, held back on purpose. Spacing over days is the point.'), actions: acts3 }) + '</section>';
+        p: esc(plural(q.dueTotal, 'concept') + ' are still due, held back on purpose. Spacing over days is the point.'), actions: acts3 }) + (window.OchemPremium ? window.OchemPremium.quotaNote() : '') + '</section>';
     } else {
       main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: 'You are all caught up',
-        p: 'Nothing is due today. Adaptive practice fills the gaps meanwhile.', actions: acts3 }) + '</section>';
+        p: 'Nothing is due today. Adaptive practice fills the gaps meanwhile.', actions: acts3 }) + (window.OchemPremium ? window.OchemPremium.quotaNote() : '') + '</section>';
     }
     var html = main;
 

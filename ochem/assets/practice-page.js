@@ -398,18 +398,12 @@
     // and Review report it identically.
     var xpHtml = window.OchemXP ? window.OchemXP.summaryHtml() : '';
 
-    var html = xpHtml + '<div class="overall-card" style="margin-bottom:6px;">' +
-        '<div><div class="k">Session score</div><div class="big">' + score + '%</div></div>' +
-        '<div style="max-width:320px;font-size:13.5px;font-weight:700;opacity:.85;line-height:1.55;">' +
-          esc(S.correct + ' of ' + asked + ' correct, across ' + plural(touched.length, 'concept') + '.') +
-        '</div>' +
-      '</div>';
+    // This session's misses not fixed since, for Retry misses (the shared end panel, audit 2026-11, B7).
+    var open = {}; M.mistakes({ limit: 999 }).forEach(function(m){ open[m.qid] = 1; });
+    var missIds = [];
+    S.history.forEach(function(h){ if(!h.isCheck && !h.d.correct && open[h.q.id] && missIds.indexOf(h.q.id) < 0) missIds.push(h.q.id); });
 
-    if(touched.length){
-      html += '<div class="summary-section"><h3>Where those concepts stand now</h3>' +
-        '<div class="module-card">' + conceptRowsHtml(touched, { drill: true }) + '</div></div>';
-    }
-
+    var html = '';
     if(comingBack.length){
       var soonest = comingBack[0];
       html += '<div class="summary-section"><h3>Scheduled to come back</h3><div class="next-up">' +
@@ -436,19 +430,34 @@
 
     var recs = E.recommendations();
     var lead = recs.filter(function(r){ return r.plan; })[0];
-    if(lead){
-      html += '<div class="summary-section"><h3>What the engine suggests next</h3>' +
-        '<div class="next-up"><b>' + esc(lead.headline) + '.</b> ' + esc(lead.detail) + '</div></div>';
+    /* Ended a diagnostic early: the engine still wants one, so it says to finish this one rather than
+       suggesting "a short diagnostic" as if none had started (consistency audit 2026-11, B3). */
+    if(lead && lead.key === 'diagnostic' && asked && currentPlan && currentPlan.mode === 'adaptive'){
+      lead = { key: lead.key, plan: lead.plan, cta: 'Finish the diagnostic', headline: 'Finish the diagnostic',
+        detail: 'A few more mixed questions and the engine can find your level; after that, practice gets targeted.' };
     }
+    var nextHtml = '';
+    if(touched.length) nextHtml += '<div class="module-card">' + conceptRowsHtml(touched, { drill: true }) + '</div>';
+    if(lead) nextHtml += '<div class="next-up"><b>' + esc(lead.headline) + '.</b> ' + esc(lead.detail) + '</div>';
 
-    // One next step (assets/next-step.js); the engine's own pick stays as a quiet alternative.
-    html += window.LevlNextStep ? LevlNextStep('ochem', { concepts: Object.keys(S.conceptsTouched),
-      also: [lead ? { label: lead.cta, act: function(){ startSession(lead.plan); } } : { label: 'Practice again', act: renderHome }] }) : '';
-
-    // The Premium waitlist; see assets/premium.js. Asks, locks nothing.
-    if(window.LevlPremium && asked >= 8) html += window.LevlPremium.card('ochem', 'summary');
-
-    summaryEl.innerHTML = html;
+    summaryEl.innerHTML = LevlStudy.end({
+      right: S.correct, total: asked, course: 'ochem',
+      line: score + '% right',
+      sub: touched.length ? esc('Across ' + plural(touched.length, 'concept') + '.') : '',
+      extras: xpHtml, next: nextHtml,
+      retry: missIds.length ? { act: 'retry', label: missIds.length === 1 ? 'Retry the miss' : 'Retry the ' + missIds.length + ' misses' } : null,
+      // One next step (assets/next-step.js); the engine's own pick stays as a quiet alternative.
+      stepHtml: window.LevlNextStep ? LevlNextStep('ochem', { concepts: Object.keys(S.conceptsTouched),
+        also: [lead ? { label: lead.cta, act: function(){ startSession(lead.plan); } } : { label: 'Practice again', act: renderHome }] }) : '',
+      more: html
+    });
+    LevlStudy.wire(summaryEl, {
+      retry: function(){
+        var plan = E.makePlan('flagged', { qids: missIds.slice(), count: missIds.length });
+        plan.label = 'Retrying your misses';
+        startSession(plan);
+      }
+    });
     show('summary');
 
     summaryEl.querySelectorAll('[data-concept]').forEach(function(btn){

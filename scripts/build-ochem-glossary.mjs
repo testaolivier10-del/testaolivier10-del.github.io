@@ -30,6 +30,7 @@
      node scripts/build-ochem-glossary.mjs            rewrite
      node scripts/build-ochem-glossary.mjs --check    fail if stale or invalid (CI)
 */
+import { footerLinks } from './lib/footer-links.mjs';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { r3Reading } from './lib/r3-reading.mjs';
 import { join, dirname } from 'node:path';
@@ -196,7 +197,7 @@ ${JSON.stringify(ld).replace(/<\//g, '<\\/')}
 ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', root: '' })}
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    ${footerLinks('../')}
   </footer>
 </div>
 </body>

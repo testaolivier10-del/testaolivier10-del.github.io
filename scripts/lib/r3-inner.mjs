@@ -12,7 +12,7 @@
    <!-- r3-band:start --> and <!-- r3-band:end -->, written by scripts/build-r3-inner.mjs. */
 
 export const COURSES = {
-  nremt: { label: 'NREMT-EMT', name: 'NREMT-EMT Prep' },
+  nremt: { label: 'NREMT-EMT', name: 'NREMT-EMT' },
   ochem: { label: 'Organic Chemistry', name: 'Organic Chemistry' },
   anp: { label: 'Anatomy &amp; Physiology', name: 'Anatomy &amp; Physiology' },
   apbio: { label: 'AP&reg; Biology', name: 'AP&reg; Biology' },
@@ -34,7 +34,9 @@ export function bandWords(key, slug) {
   if (slug === 'exams') return {
     kicker: 'Exams', title: 'Exams', tone: 'the full run.',
     hand: ap ? 'the real format, on the real clock' : 'on the clock, like test day',
-    cta: { label: key === 'nremt' ? 'Start timed exam' : ap ? 'Start the practice exam' : 'Set up an exam', start: true },
+    /* No band button: it repeated the builder's own Start just below ("Set up an exam" twice, "Start the
+       practice exam" twice; consistency audit 2026-11, B13). */
+    cta: null,
   };
   if (slug === 'dashboard') return {
     kicker: 'Dashboard', title: 'Where you', tone: 'stand today.',

@@ -191,3 +191,10 @@ Course homes keep In this course on the left; the right is now Ways to study (`.
 written by `scripts/lib/r3-home.mjs`): Practice, Review and Exams, each to the course's own page. The path card stays
 first, across the top. NREMT's "See a sample question" button is now "All chapters". The sample question in
 `scripts/lib/course-homes.json` still feeds the FAQ's "What kinds of questions are there?".
+
+### Consistency pass, sitewide (2026-11-04, audit section D)
+One footer link row everywhere (`scripts/lib/footer-links.mjs`, site rule `footer-links`); titles always end
+"| LevlPrep" (`courseTitle` shortens the topic instead); one title per page type and one name per course; the
+certificate page in the site-pages look, with certificates for all 13 courses (AP® units from `assets/path/`);
+the homepage says Free and Premium once, in one line; the changelog folds older months. Details per finding:
+`docs/consistency-audit-2026-11.md` section D.

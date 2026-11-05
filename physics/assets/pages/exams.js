@@ -282,7 +282,11 @@
       due: { n: due, href: BASE + 'review.html', pill: Core.badge ? Core.badge() : '' },
       links: [
         { href: BASE + 'practice.html', title: 'Practice', sub: 'Untimed, with feedback after every answer.' },
-        { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' }
+        { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' },
+        // The exam-day references, as cards on Exams (consistency audit 2026-11, D16).
+        { href: BASE + 'equations-sheet.html', title: 'Equations and constants sheet', sub: 'What is on the exam sheet, explained.' },
+        { href: BASE + 'score-calculator.html', title: 'Score calculator', sub: 'Your likely exam score from a practice run.' },
+        { href: BASE + 'justify.html', title: 'Justification trainer', sub: 'Explain and justify, checked against a rubric.' }
       ]
     });
   }
