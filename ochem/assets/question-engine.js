@@ -63,13 +63,8 @@
     // One line for a free user about what is left today; '' for members.
     G0.quotaNote = function(){
       if(!G0.locked()) return '';
-      var q = quota();
-      // The shared free-tier line under a start button (docs/course-shell.md).
-      return '<p class="cx-free ochem-quota" role="status">' +
-        (q.left > 0
-          ? 'Free: ' + q.left + ' of ' + q.limit + ' free questions left today, shared by practice and review. The first four chapters are unlimited.'
-          : 'You have used today\u2019s ' + q.limit + ' free questions from chapters past the first four. The first four chapters stay unlimited, and the allowance resets at midnight.') +
-        ' ' + LP().badge('ochem') + '</p>';
+      // The shared free-tier line, the same words in every course (LevlPremium.allowanceLine, audit 2026-11, B11).
+      return LP() && LP().allowanceLine ? LP().allowanceLine('ochem', 'The first four chapters are unlimited.') : '';
     };
     G0.freeExam = function(){
       return LP() && LP().freeExam ? LP().freeExam('ochem') : { unlimited: true, used: false, available: true, use: function(){ return true; } };

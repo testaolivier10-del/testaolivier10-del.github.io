@@ -100,14 +100,14 @@
     var tools = items.filter(function(x){ return x.kind === 'tool'; });
     var up = upcoming();
     var a = Core.quota ? Core.quota() : null;
-    var free = a && a.limit !== Infinity ? LevlStudy.free('Free: <b>' + a.left + ' of ' + a.limit + '</b> questions left today, shared with practice. Foundations questions are unlimited.' + (Core.badge ? Core.badge() : '')) : '';
+    var free = a && a.limit !== Infinity ? LevlStudy.allowance('anp', 'Foundations questions are unlimited.') : '';
     var main;
     if(!items.length){
       main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: up.next ? 'You are all caught up' : 'Nothing to review yet',
         p: up.next
           ? 'The next item comes back <b>' + esc(when(up.next)) + '</b>.' + (up.week > 1 ? ' ' + plural(up.week, 'item') + ' come back within the week.' : '')
           : 'The queue fills from questions you answer anywhere in the course. Answer a few, and they come back here when they are due.',
-        actions: [{ href: BASE + 'practice.html', label: 'Practice', primary: true }, { href: BASE + 'learn.html', label: 'Next lesson' }, { href: BASE + 'flashcards.html', label: 'Flashcards' }] }) + '</section>';
+        actions: [{ href: BASE + 'practice.html', label: 'Practice', primary: true }, { href: BASE + 'learn.html', label: 'Next lesson' }] }) + LevlStudy.allowance('anp', 'Foundations questions are unlimited.') + '</section>';
     } else {
       var acts = [];
       if(qs.length) acts.push({ act: 'n', attrs: ' data-n="' + Math.min(SESSION_CAP, qs.length) + '"', label: qs.length > SESSION_CAP ? 'Review the ' + SESSION_CAP + ' oldest' : 'Start review', primary: true });
@@ -233,20 +233,24 @@
     var missTopics = {};
     session.missed.forEach(function(q){ missTopics[q.topic] = (missTopics[q.topic] || 0) + 1; });
     var mt = Object.keys(missTopics).filter(function(t){ return TOPIC[t] && TOPIC[t].built; }).sort(function(a, b){ return missTopics[b] - missTopics[a]; });
-    app.innerHTML = '<div class="anp-pr-summary">' +
-      '<div class="anp-pr-score"><span class="anp-pr-score-big">' + session.right + '<small>/' + session.answered + '</small></span>' +
-      '<span><b>' + (left ? plural(left, 'question') + ' still due' : leftTools ? 'Questions cleared' : 'Queue cleared') + '</b><span class="anp-small">' +
-      (leftTools ? plural(leftTools, 'tool item') + ' still ' + (leftTools === 1 ? 'waits' : 'wait') + ' in ' + (leftTools === 1 ? 'its tool' : 'the tools') + '. ' : '') +
-      (session.answered - session.right ? plural(session.answered - session.right, 'miss', 'misses') + ' come back in ten minutes. ' : '') +
-      (up.next && !due.length ? 'Next item due ' + esc(when(up.next)) + '.' : '') + '</span></span></div>' +
-      (mt.length ? '<h2>Worth a reread</h2><ul class="anp-pr-next-list">' + mt.slice(0, 3).map(function(t){
+    // The shared end panel (LevlStudy.end, consistency audit 2026-11, B7).
+    var missN = session.answered - session.right;
+    app.innerHTML = '<div class="anp-pr-summary">' + LevlStudy.end({
+      right: session.right, total: session.answered, course: 'anp',
+      line: left ? plural(left, 'question') + ' still due' : leftTools ? 'Questions cleared' : 'Queue cleared',
+      sub: (leftTools ? plural(leftTools, 'tool item') + ' still ' + (leftTools === 1 ? 'waits' : 'wait') + ' in ' + (leftTools === 1 ? 'its tool' : 'the tools') + '. ' : '') +
+        (missN ? plural(missN, 'miss', 'misses') + ' come back in ten minutes. ' : '') +
+        (up.next && !due.length ? 'Next item due ' + esc(when(up.next)) + '.' : ''),
+      next: mt.length ? '<ul class="anp-pr-next-list">' + mt.slice(0, 3).map(function(t){
         return '<li><div><b>' + esc(TOPIC[t].title) + '</b><span class="anp-small">' + plural(missTopics[t], 'miss', 'misses') + ' in this review</span></div>' +
           '<a class="btn-outline" href="' + BASE + 'lessons/' + t + '.html">Lesson</a><a class="btn-outline" href="' + BASE + 'notes/' + t + '.html">Notes</a></li>';
-      }).join('') + '</ul>' : '') +
+      }).join('') + '</ul>' : '',
+      retry: missN ? { href: BASE + 'practice.html?mode=missed', label: missN === 1 ? 'Retry the miss' : 'Retry the ' + missN + ' misses' } : null,
       // One next step (assets/next-step.js): what is still due here comes first.
-      (window.LevlNextStep ? LevlNextStep('anp', { due: { n: left, noun: 'question', act: function(){ start(SESSION_CAP); } },
-        also: [{ label: 'Back to the queue', act: renderHome }] }) : '') + '</div>';
-    var h = app.querySelector('.anp-pr-score'); h.setAttribute('tabindex', '-1'); h.focus();
+      stepHtml: window.LevlNextStep ? LevlNextStep('anp', { due: { n: left, noun: 'question', act: function(){ start(SESSION_CAP); } },
+        also: [{ label: 'Back to the queue', act: renderHome }] }) : ''
+    }) + '</div>';
+    LevlStudy.wire(app, {});
   }
 
   function boot(){

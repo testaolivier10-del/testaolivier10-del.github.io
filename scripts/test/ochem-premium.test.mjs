@@ -60,7 +60,7 @@ test('after launch, without a pass, only the free part is open', () => {
   assert.equal(G.topicLocked('pka'), false);
   assert.equal(G.topicLocked('sn2'), true);
   assert.equal(G.quota().limit, 15);
-  assert.match(G.quotaNote(), /15 of 15 free questions left today/);
+  assert.match(G.quotaNote(), /15 of 15<\/b> questions left today, shared by Practice and Review/);
   let ran = false;
   G.whenOpen(() => { ran = true; });
   assert.equal(ran, false, 'a locked lesson must not start, or it writes progress');
@@ -98,7 +98,7 @@ test('the whole bank stays in the pool; the allowance decides what is served', (
   for (let i = 0; i < 15; i++) assert.equal(G.takeQuestion(sn2), true, `question ${i + 1} of 15`);
   assert.equal(G.takeQuestion(sn2), false, 'the 16th is refused');
   assert.equal(G.limitReached(), true);
-  assert.match(G.quotaNote(), /used today.s 15 free questions/);
+  assert.match(G.quotaNote(), /15 free questions<\/b> are used. They come back at midnight/);
   assert.match(G.limitGate('practice'), /data-premium-feature="daily-limit"/);
 
   E.resetLimited();

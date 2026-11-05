@@ -21,7 +21,11 @@
   var profiles = M.allProfiles(), byId = {};
   profiles.forEach(function(p){ byId[p.id] = p; });
   var touched = profiles.filter(function(p){ return p.attempts > 0; });
-  var isNew = !touched.length;
+  // A missed or flagged question counts as a start too: the page must not say "nothing here yet" over a
+  // missed list (consistency audit 2026-11, B2).
+  var missedN = M.mistakes ? M.mistakes({ limit: 999 }).length : 0;
+  var flaggedN = window.OchemFlags ? window.OchemFlags.count() : (function(){ try{ return Object.keys(JSON.parse(localStorage.getItem('ochem_flagged_v1') || '{}') || {}).length; }catch(e){ return 0; } })();
+  var isNew = !touched.length && !missedN && !flaggedN;
   var counts = M.counts(), total = profiles.length || 1;
   var coverage = Math.round(((counts.solid || 0) + (counts.mastered || 0)) / total * 100);
   var dueNow = M.due(200);
@@ -75,6 +79,8 @@
       var weakest = M.weakest(1, 2)[0];
       if(weakest) acts.push({ title: 'Drill <span>' + esc(weakest.concept.title) + '</span>.', body: 'Your weakest concept, at ' + pct(weakest.strength) + '%.', href: 'practice.html?concept=' + weakest.id, cta: 'Drill it', then: 'Then drill ' + esc(weakest.concept.title) + ', your weakest concept' });
     }
+    if(missedN) acts.push({ title: 'Redo the <span>' + plural(missedN, 'question') + '</span> you missed.', body: 'They stay in rotation until you answer each one right.', href: 'practice.html?mode=mistakes', cta: 'Redo them', then: 'Then redo the ' + plural(missedN, 'question') + ' you missed' });
+    if(flaggedN) acts.push({ title: 'Go back to the <span>' + plural(flaggedN, 'question') + '</span> you flagged.', body: 'Flags stay until you clear them yourself.', href: 'practice.html?mode=flagged', cta: 'Review them', then: 'Then the ' + plural(flaggedN, 'question') + ' you flagged' });
     if(nextNew) acts.push({ title: 'Start <span>' + esc(nextNew.title) + '</span>.', body: 'The next lesson in course order that you have not started.', href: nextNew.href, cta: 'Start the lesson', then: 'Then start the next lesson: ' + esc(nextNew.title) });
     if(!acts.length) acts.push({ title: 'Keep it fresh: <span>a mixed set.</span>', body: 'Nothing is due. A mixed set keeps every concept you have learned in reach.', href: 'practice.html?mode=mixed', cta: 'Practice', then: 'Then a mixed set' });
     now = { title: acts[0].title, body: acts[0].body, href: acts[0].href, cta: acts[0].cta, today: today,

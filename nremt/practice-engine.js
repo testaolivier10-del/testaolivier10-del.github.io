@@ -27,7 +27,7 @@ const RUNNER_SCREENS = `
       </div>
       <div class="q-head-row">
         <div class="q-domain" id="qDomain"></div>
-        <button type="button" class="flag-btn" id="flagBtn"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>Flag for review</button>
+        <button type="button" class="flag-btn" id="flagBtn"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>Flag</button>
       </div>
       <div class="q-prompt" id="qPrompt" role="heading" aria-level="2" tabindex="-1"></div>
       <div class="options cx-opts" id="qOptions"></div>
@@ -112,7 +112,7 @@ const RUNNER_SCREENS = `
         <button data-filter="unanswered">Unanswered only</button>
       </div>
       <div id="reviewList"></div>
-      <button class="retry-btn" id="retryBtn">Back to Start</button>
+      <!-- One "Back to Start", at the top of the results (consistency audit 2026-11, B13). -->
     </div>
   </div>
 `;
@@ -138,6 +138,9 @@ if(RUNNER_LEAVING) return;
   const intro = document.getElementById('introScreen');
   if(!intro || document.getElementById('quizScreen')) return;
   intro.insertAdjacentHTML('afterend', RUNNER_SCREENS);
+  // The shared keyboard list (LevlStudy.keys, consistency audit 2026-11, B8) plus NREMT's sorting keys.
+  const kbd = document.querySelector('#quizScreen .r3-kbd dl');
+  if(kbd && window.LevlStudy && LevlStudy.keys) kbd.outerHTML = LevlStudy.keys([['<kbd>1</kbd><kbd>2</kbd><kbd>3</kbd>', 'sort the item into that group']]);
 })();
 // Everything below runs inside one async IIFE so the question bank can be
 // awaited before any of it executes — every function here assumes QUESTIONS is
@@ -342,6 +345,7 @@ let activeIndices = []; // maps position-in-quiz -> index into QUESTIONS
 let current = 0;
 let answers = [];
 let checked = []; // untimed practice: which positions have had their answer checked
+let recorded = []; // positions whose answer recordLive has already counted
 let startTime = null;
 let timerInterval = null;
 const TIME_LIMIT_MS = 2 * 60 * 60 * 1000;
@@ -540,7 +544,7 @@ const HISTORY_KEY = 'nremt_exam100_history';
 const EXAM_STATE_KEY = 'nremt_inprogress_exam';
 function saveExamState(){
   const state = {
-    mode, selectedDomain, activeIndices, current, answers, checked, startTime,
+    mode, selectedDomain, activeIndices, current, answers, checked, recorded, startTime,
     withTimer: $id('timerBar').style.display === 'block',
   };
   if(served.size) state.served = Array.from(served);
@@ -673,7 +677,7 @@ function renderReadiness(targetId, opts){
   // Premium: the score and the domain picture behind it. The history it is
   // computed from is kept, and the card comes back with a pass.
   if(!G.canUse('readiness')){
-    el.innerHTML = opts.compact ? '' : G.gate('readiness', 'readiness');
+    el.innerHTML = opts.compact || opts.noGate ? '' : G.gate('readiness', 'readiness');
     return;
   }
   const r = computeReadiness();
@@ -1281,7 +1285,9 @@ function refreshIntroState(){
   });
   $id('reviewRow').hidden = !anyQueue;
   renderProgressChart();
-  renderReadiness('readinessCard');
+  // Without a pass the readiness card was a full Premium card on every visit to Practice; it now waits on
+  // the dashboard, and Practice shows Premium only at the daily limit, like the AP courses (audit 2026-11, B15).
+  renderReadiness('readinessCard', { noGate: RUNNER_PAGE === 'practice' });
   renderWeakDomainsPanel();
   renderStreakWidget();
   renderResumeCard();
@@ -1314,11 +1320,11 @@ function renderPremium(){
       const left = G.quotaLeft();
       // The same free-tier line, in the same place, as the other courses'
       // study pages (docs/course-shell.md: .cx-free under the start button).
-      const q = window.LevlPremium && window.LevlPremium.quota ? window.LevlPremium.quota('nremt') : null;
-      const limit = q && isFinite(q.limit) ? q.limit : 15;
-      html = left > 0
-        ? `<p class="cx-free premium-quota">Free: <b>${left} of ${limit}</b> questions left today, shared with ${RUNNER_PAGE === 'review' ? 'practice' : 'review'}. ${G.badge()}</p>`
-        : G.gate('daily-limit', RUNNER_PAGE);
+      // One string in every course (LevlPremium.allowanceLine, consistency audit 2026-11, B11). At the limit
+      // the line says when the questions come back and the gentle daily-limit card stands under it (B5, B15).
+      const P = window.LevlPremium;
+      html = (P && P.allowanceLine ? P.allowanceLine('nremt', 'The study notes stay open.') : '') +
+        (left > 0 ? '' : G.gate('daily-limit', RUNNER_PAGE));
     }
     notice.innerHTML = html;
   }
@@ -1340,8 +1346,18 @@ function renderPremium(){
   // Missed and spaced review are free and draw on the same allowance; once it
   // is spent the daily-limit card above stands in for the spaced start. The
   // queues and their counts are always kept and shown.
+  // At the limit nothing on Review offers a start that cannot start (consistency audit 2026-11, B5): the
+  // queue says plainly that it is still there and resumes tomorrow, and the flagged card keeps its count
+  // without a dead "Review them".
   const spaced = document.getElementById('spacedReviewBtn');
-  if(spaced && RUNNER_PAGE === 'review') spaced.hidden = !G.canUse('review');
+  const out = RUNNER_PAGE === 'review' && !G.canUse('review');
+  if(spaced && RUNNER_PAGE === 'review') spaced.hidden = out;
+  const flagBtn = document.getElementById('flaggedReviewBtn');
+  if(flagBtn && RUNNER_PAGE === 'review' && out) flagBtn.hidden = true;
+  const sessLine = document.querySelector('[data-due-state="ready"] .nr-due-session');
+  const waitLine = document.querySelector('[data-due-state="ready"] .nr-due-wait');
+  if(sessLine) sessLine.hidden = out;
+  if(waitLine) waitLine.hidden = !out;
 
   capLengthPickers();
 }
@@ -1835,16 +1851,19 @@ function updateAdaptiveDifficulty(q, correct){
   adaptiveState.targetDifficulty = Math.max(0, Math.min(3, adaptiveState.targetDifficulty + delta));
 }
 
-function recordAdaptiveAnswer(qIdx, correct){
+function recordAdaptiveAnswer(qIdx, correct, live){
   const q = QUESTIONS[qIdx];
-  // Today's score, which the daily-limit card shows (assets/premium.js).
-  if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer('nremt', correct, q.id, q.system);
-  updateMastery(qIdx, correct);
+  // Today's score (the daily-limit card), mastery and the day's count; already done by recordLive when the
+  // answer was checked (live), so only once.
+  if(!live){
+    if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer('nremt', correct, q.id, q.system);
+    updateMastery(qIdx, correct);
+  }
   if(!adaptiveState.sessionDomainStats[q.system]) adaptiveState.sessionDomainStats[q.system] = {correct:0, total:0};
   adaptiveState.sessionDomainStats[q.system].total++;
   if(correct) adaptiveState.sessionDomainStats[q.system].correct++;
   updateAdaptiveDifficulty(q, correct);
-  recordStudyActivity(1);
+  if(!live) recordStudyActivity(1);
 }
 
 $id('adaptiveStartBtn').addEventListener('click', () => {
@@ -1928,6 +1947,7 @@ function beginQuiz(withTimer, resumeState){
     current = resumeState.current;
     answers = resumeState.answers;
     checked = Array.isArray(resumeState.checked) ? resumeState.checked : [];
+    recorded = Array.isArray(resumeState.recorded) ? resumeState.recorded : [];
     startTime = resumeState.startTime;
     if(resumeState.adaptiveState){
       adaptiveState = {
@@ -1945,6 +1965,7 @@ function beginQuiz(withTimer, resumeState){
     const totalLen0 = sessionLength();
     answers = new Array(totalLen0).fill(null);
     checked = new Array(totalLen0).fill(false);
+    recorded = [];
     startTime = Date.now();
   }
   const totalLen = sessionLength();
@@ -2001,7 +2022,10 @@ function beginQuiz(withTimer, resumeState){
   }
   // Practice says "End session" once, where the exam says "Submit exam";
   // the second, top-of-screen submit is only for the long timed exam.
-  $id('exitBtn').innerHTML = withTimer ? '&larr; Exit exam' : '&larr; Save and exit';
+  // One exit per session (consistency audit 2026-11, B9): untimed practice ends with "End session", as in
+  // every course; the attempt is still saved on every answer, so leaving the page keeps the resume card.
+  $id('exitBtn').innerHTML = '&larr; Exit exam';
+  $id('exitBtn').hidden = !withTimer && mode !== 'cat';
   $id('submitBtn').textContent = mode === 'cat' ? 'End exam' : withTimer ? 'Submit exam' : 'End session';
   $id('submitBtnTop').textContent = mode === 'cat' ? 'End exam' : withTimer ? 'Submit exam' : 'End session';
   $id('submitBtnTop').hidden = !withTimer;
@@ -2073,8 +2097,9 @@ function renderQuestion(){
 
   const isFlagged = loadFlagged().includes(activeIndices[current]);
   const flagBtn = $id('flagBtn');
-  flagBtn.innerHTML = flagIcon + (isFlagged ? 'Flagged' : 'Flag for review');
+  flagBtn.innerHTML = flagIcon + (isFlagged ? 'Flagged' : 'Flag');
   flagBtn.classList.toggle('active', isFlagged);
+  flagBtn.setAttribute('aria-pressed', isFlagged ? 'true' : 'false');
 
   const optsEl = $id('qOptions');
   // Which option had the keyboard before this re-render, so it keeps it.
@@ -2309,11 +2334,9 @@ $id('nextBtn').addEventListener('click', () => {
     renderQuestion();
     renderJumpRow();
     const right = isAnswerCorrect(qNow, answers[current]);
-    // Per-question tallies (assets/analytics.js answer()). Adaptive answers
-    // are counted by recordAdaptiveAnswer, through noteAnswer.
-    if(mode !== 'adaptive' && window.LevlAnalytics && window.LevlAnalytics.answer){
-      window.LevlAnalytics.answer('nremt', qNow.id, right, qNow.system);
-    }
+    // Counted the moment it is checked, so the dashboard and Review see it at
+    // once (consistency audit 2026-11, B1); showResults skips what was counted here.
+    recordLive(current, qNow, right);
     // The per-correct XP is paid as the answer is checked, so the gain shows
     // on the answer that earned it (polish 2026-10-17, B11); showResults pays
     // the rest and skips what was paid here.
@@ -2348,7 +2371,7 @@ $id('nextBtn').addEventListener('click', () => {
 
   if(mode === 'adaptive' && atFrontier){
     const qIdx = activeIndices[current];
-    recordAdaptiveAnswer(qIdx, isAnswerCorrect(QUESTIONS[qIdx], answers[current]));
+    recordAdaptiveAnswer(qIdx, isAnswerCorrect(QUESTIONS[qIdx], answers[current]), !!recorded[current]);
   }
 
   if(current < totalLen - 1){
@@ -2386,6 +2409,33 @@ $id('submitBtnTop').addEventListener('click', confirmSubmitNow);
 
 let allReviewData = [];
 let lastSessionMisses = [];
+
+/* One checked practice answer, recorded where every other page reads it:
+   mastery (Review's queue), the missed list, the cross-mode accuracy by topic
+   area and exam domain, today's count and the daily accuracy log. Before
+   2026-11 all of it waited for the end of the session, so the dashboard said
+   "Nothing here yet" mid-drill (consistency audit B1). recorded[i] marks the
+   position, so showResults does not count it twice. Adaptive sessions already
+   record mastery, today's count and the daily log in recordAdaptiveAnswer. */
+function recordLive(i, q, right){
+  if(recorded[i]) return;
+  recorded[i] = true;
+  // noteAnswer also sends the per-question tally (assets/analytics.js answer()).
+  if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer('nremt', right, q.id, q.system);
+  else if(window.LevlAnalytics && window.LevlAnalytics.answer) window.LevlAnalytics.answer('nremt', q.id, right, q.system);
+  updateMastery(activeIndices[i], right);
+  recordStudyActivity(1);
+  const topic = q.topic || 'General';
+  const ds = {}; ds[q.system] = { correct: right ? 1 : 0, total: 1, topics: {} };
+  ds[q.system].topics[topic] = { correct: right ? 1 : 0, total: 1 };
+  recordDomainStatsAll(ds);
+  const es = {}; es[q.domain] = { correct: right ? 1 : 0, total: 1 };
+  recordExamDomainStats(es);
+  const missed = new Set(loadMissed());
+  if(right) missed.delete(activeIndices[i]); else missed.add(activeIndices[i]);
+  saveMissed(Array.from(missed));
+  saveExamState();
+}
 
 // XP for a completed quiz session (any mode): a flat completion bonus, 10 XP per
 // correct answer, plus a one-time bonus the first time a domain crosses an
@@ -2454,11 +2504,24 @@ function showResults(){
   // kept by. examStats is by 2025 exam domain, for the breakdown on screen.
   const domainStats = {};
   const examStats = {};
+  // What recordLive has not already counted (an answer checked in practice was recorded then).
+  const domainNew = {};
+  const examNew = {};
+  let liveCount = 0;
   let missedSet = new Set(loadMissed());
   const sessionMisses = [];
 
   activeIndices.forEach((qIdx,i) => {
     const q = QUESTIONS[qIdx];
+    if(!recorded[i]){
+      const r = isAnswerCorrect(q, answers[i]) ? 1 : 0, t = q.topic || 'General';
+      const dn = domainNew[q.system] || (domainNew[q.system] = {correct:0,total:0,topics:{}});
+      dn.total++; dn.correct += r;
+      const tn = dn.topics[t] || (dn.topics[t] = {correct:0,total:0});
+      tn.total++; tn.correct += r;
+      const en = examNew[q.domain] || (examNew[q.domain] = {correct:0,total:0});
+      en.total++; en.correct += r;
+    } else liveCount++;
     if(!domainStats[q.system]) domainStats[q.system] = {correct:0,total:0,topics:{}};
     const ds = domainStats[q.system];
     if(!examStats[q.domain]) examStats[q.domain] = {correct:0,total:0,topics:{}};
@@ -2484,12 +2547,12 @@ function showResults(){
     }
     // Weak-spot sessions already update mastery live, per-question, as they go —
     // every other mode records it here in bulk instead.
-    if(mode !== 'adaptive') updateMastery(qIdx, correct);
+    if(mode !== 'adaptive' && !recorded[i]) updateMastery(qIdx, correct);
   });
   saveMissed(Array.from(missedSet));
-  recordDomainStatsAll(domainStats);
-  recordExamDomainStats(examStats);
-  if(mode !== 'adaptive') recordStudyActivity(activeIndices.length);
+  recordDomainStatsAll(domainNew);
+  recordExamDomainStats(examNew);
+  if(mode !== 'adaptive') recordStudyActivity(activeIndices.length - liveCount);
   const paidLive = practiceChecks() ? activeIndices.reduce((n, qIdx, i) => n + (checked[i] && isAnswerCorrect(QUESTIONS[qIdx], answers[i]) ? 1 : 0), 0) : 0;
   const xpGained = awardQuizXp(domainStats, score, paidLive);
 
@@ -2561,13 +2624,13 @@ function showResults(){
     if(mode === 'full') window.LevlLazy('milestones', M => M.check('nremt'));
   }
 
-  // The Premium waitlist, after a session long enough to have shown what the
-  // bank does. See assets/premium.js: this asks, it does not lock anything.
-  $id('premiumSlot').innerHTML =
-    (window.LevlPremium && activeIndices.length >= 10) ? window.LevlPremium.card('nremt', 'results') : '';
+  // The Premium card only once today's free questions are used, the gentle way the AP courses
+  // do it (consistency audit 2026-11, B15). The allowance line on Practice and Review says the rest.
+  $id('premiumSlot').innerHTML = window.LevlStudy && LevlStudy.premiumAtLimit ? LevlStudy.premiumAtLimit('nremt', 'results') : '';
 
   // One next step (assets/next-step.js). Right after a review the due queue is what was just done.
-  $id('nextSlot').innerHTML = window.LevlNextStep ? LevlNextStep('nremt', { skip: mode === 'spaced' || mode === 'review' ? ['review'] : [],
+  // With today's free questions used, the due queue cannot start until tomorrow, so it is not offered (B5).
+  $id('nextSlot').innerHTML = window.LevlNextStep ? LevlNextStep('nremt', { skip: mode === 'spaced' || mode === 'review' || !G.canUse('review') ? ['review'] : [],
     tags: Object.values(domainStats).flatMap(s => Object.keys(s.topics).filter(t => s.topics[t].total >= 5)).map(t => 'nremt:' + t) }) : '';
 
   $id('scoreBig').textContent = `${score}/${activeIndices.length}`;
@@ -2594,10 +2657,21 @@ function showResults(){
   lastSessionMisses = sessionMisses.slice();
   const nextStepEl = $id('nextStep');
   const xpLine = xpGained ? `<p class="next-xp">+${xpGained} XP</p>` : '';
-  nextStepEl.innerHTML = sessionMisses.length
-    ? `${xpLine}<button type="button" class="primary next-step-btn" id="reviewMissesBtn">Review your misses (${sessionMisses.length})</button>
+  /* The shared end-of-session order (consistency audit 2026-11, B7; LevlStudy.end on the other courses): the
+     score and the domain list above, then XP, what to study next, Retry misses, the one next step (#nextSlot)
+     and, only once today's free questions are used, the Premium card (#premiumSlot, B15). */
+  const weakDomains = Object.entries(examStats).filter(([, s]) => s.correct < s.total)
+    .sort((a, b) => a[1].correct / a[1].total - b[1].correct / b[1].total).slice(0, 3);
+  const studyNext = weakDomains.length
+    ? `<h2 class="cx-endp-h">What to study next</h2><ul class="cx-list nr-next-list">${weakDomains.map(([d, s]) => {
+        const n = CAT_NOTES[d];
+        return `<li><div><b>${d}</b><span>${s.total - s.correct} of ${s.total} missed</span></div>${n ? `<a class="btn-outline" href="${n[0]}">Notes</a>` : ''}</li>`;
+      }).join('')}</ul>`
+    : `<h2 class="cx-endp-h">What to study next</h2><p class="next-note">No misses this time. Try a <a href="practice.html">weak-spot session</a> or a domain you have not drilled yet.</p>`;
+  nextStepEl.innerHTML = xpLine + studyNext + (sessionMisses.length
+    ? `<button type="button" class="btn-outline next-step-btn" id="reviewMissesBtn">Retry the ${sessionMisses.length === 1 ? 'miss' : sessionMisses.length + ' misses'}</button>
        <p class="next-note">Goes back over the ${sessionMisses.length === 1 ? 'question' : 'questions'} you got wrong, with the explanation after each answer.</p>`
-    : `${xpLine}<p class="next-note">No misses this time. Try a <a href="practice.html">weak-spot session</a> or a domain you have not drilled yet.</p>`;
+    : '');
 
   const clearedNote = $id('clearedNote');
   if(mode === 'review' && missedSet.size === 0){

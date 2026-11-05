@@ -39,12 +39,12 @@
       out.push({ page: 'Lessons', file: BASE + 'lessons/' + t.id + '.html', heading: t.title, meta: (t.ced ? 'Topic ' + t.ced + ' · ' : '') + unitName(t.unit), text: t.title + '. Lesson in ' + unitName(t.unit) + '.', weight: 3 });
     });
     (window.ApMacroToolList || []).forEach(function(t){ if(t && t.slug && t.live) out.push({ page: 'Tools', file: BASE + 'tools/' + t.slug + '.html', heading: t.name, meta: 'Interactive tool', text: t.name + '. ' + (t.blurb || ''), weight: 3 }); });
-    [['practice', 'Practice', 'Questions by unit, topic, science practice, type and difficulty; stimulus sets; missed questions.'],
+    [['practice', 'Practice', 'Questions by unit, topic, skill category, type and difficulty; stimulus sets; missed questions.'],
      ['review', 'Review', 'Your spaced review queue of missed questions.'],
      ['exams', 'Exams', 'Unit tests and full practice exams in the May 2027 format, with rubrics.'],
      ['frq', 'Free-response practice', 'Long and short free-response questions with rubrics, graphs you draw on the page, sample answers and printable sheets.'],
      ['flashcards', 'Flashcards', 'Spaced-repetition cards from the glossary and lesson summaries.'],
-     ['dashboard', 'Dashboard', 'Your mastery by unit, topic and science practice.'],
+     ['dashboard', 'Dashboard', 'Your mastery by unit, topic and skill category.'],
      ['glossary', 'Glossary', 'Every defined term.'],
      ['teachers', 'For teachers', 'Share links, Google Classroom, printing, framework alignment.'],
      ['learn', 'Learn', 'Every unit and topic in course order.']].forEach(function(p){
