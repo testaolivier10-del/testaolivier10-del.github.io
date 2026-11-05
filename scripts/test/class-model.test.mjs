@@ -89,3 +89,51 @@ test('every class course points at a curriculum file and a question folder that 
     assert.ok(readFileSync(c.dir + '/assets/frq/index.json', 'utf8').length > 2, k + ' FRQ index');
   }
 });
+
+test('mastery status: every topic at the target with at least min answers since it opened (v2)', () => {
+  const opens = NOW - 5 * DAY;
+  const a = { kind: 'mastery', spec: { topics: ['a', 'b'], target: 0.8, min: 10 }, opens_at: opens, due_at: NOW + DAY };
+  const q = {};
+  for (let i = 0; i < 12; i++) q['bio-a-' + i] = rec('a', 'unit-1', 1, 0);
+  const half = M.status(a, M.summarize('apbio', store(q), NOW), NOW, CUR);
+  assert.equal(half.state, 'progress'); assert.equal(half.met, 1); assert.equal(half.total, 2);
+  assert.equal(Math.round(half.mastery * 100), 50);
+  for (let i = 0; i < 12; i++) q['bio-b-' + i] = rec('b', 'unit-1', 1, 0.5);
+  const done = M.status(a, M.summarize('apbio', store(q), NOW), NOW, CUR);
+  assert.equal(done.state, 'done'); assert.equal(done.late, false); assert.ok(done.since >= 10);
+  // Mastery built before it opened counts, but the minimum answers must come after.
+  const old = {};
+  for (let i = 0; i < 12; i++) { old['bio-a-' + i] = rec('a', 'unit-1', 1, 6); old['bio-b-' + i] = rec('b', 'unit-1', 1, 6); }
+  const before = M.status(a, M.summarize('apbio', store(old), NOW), NOW, CUR);
+  assert.equal(before.met, 2); assert.equal(before.state, 'not', 'no answers since it opened');
+  assert.equal(M.status(a, M.summarize('apbio', store({}), NOW), NOW + 2 * DAY, CUR).state, 'missing');
+});
+
+test('mastery: done when the target was first reached, and the same answer without the curriculum (spec.qn)', () => {
+  const opens = NOW - 10 * DAY;
+  const q = {};
+  for (let i = 0; i < 12; i++) q['bio-a-' + i] = { ...rec('a', 'unit-1', 1, 0), seen: NOW - 5 * DAY + i * 60000 };
+  for (let i = 0; i < 4; i++) q['bio-a-late' + i] = rec('a', 'unit-1', 1, 0.1);
+  const sum = M.summarize('apbio', store(q), NOW);
+  const a = { kind: 'mastery', spec: { topics: ['a'], target: 0.8, min: 10, qn: { a: 12 } }, opens_at: opens, due_at: NOW - 2 * DAY, late_until: null };
+  const withCur = M.status(a, sum, NOW, CUR), noCur = M.status(a, sum, NOW);
+  assert.equal(withCur.state, 'done', 'reached before the due date, so not missing because of later answers');
+  const tenth = Math.round((NOW - 5 * DAY + 9 * 60000) / 1000) * 1000;
+  assert.ok(withCur.doneAt <= NOW - 5 * DAY + 11 * 60000 && withCur.doneAt >= tenth, 'doneAt is when the target was reached');
+  assert.deepEqual({ ...noCur }, { ...withCur }, 'spec.qn gives the same answer as the curriculum');
+});
+
+test('timed work: the attempt record decides, with time used and tab leaves (v2)', () => {
+  const opens = NOW - 2 * DAY;
+  const a = { id: 'x1', kind: 'practice', spec: { topics: ['a'], count: 3, controls: { timeLimit: 20 } }, opens_at: opens, due_at: NOW + DAY };
+  const att = { x1: { start: NOW - DAY, end: NOW - DAY + 15 * 60000, n: 3, c: 2, tabs: 4, answers: { 'bio-a-1': 0 } } };
+  const sum = M.summarize('apbio', store({}, { levlprep_class_att_v1: JSON.stringify(att) }), NOW);
+  assert.equal(sum.att.x1.tabs, 4);
+  const st = M.status(a, sum, NOW);
+  assert.equal(st.state, 'done'); assert.equal(st.tabs, 4); assert.equal(st.used, 15 * 60000); assert.equal(Math.round(st.score * 3), 2);
+  const going = M.status(a, M.summarize('apbio', store({}, { levlprep_class_att_v1: JSON.stringify({ x1: { start: NOW - 60000, n: 1, c: 1, tabs: 0 } }) }), NOW), NOW);
+  assert.equal(going.state, 'progress'); assert.equal(going.answered, 1);
+  // Without a time limit the attempt record is ignored and the answers decide.
+  const plain = { ...a, spec: { topics: ['a'], count: 3 } };
+  assert.equal(M.status(plain, sum, NOW).state, 'not');
+});
