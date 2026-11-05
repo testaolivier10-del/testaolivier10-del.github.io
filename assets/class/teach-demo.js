@@ -95,7 +95,10 @@
           opens_at: iso(now - 5 * DAY), due_at: iso(now + 5 * DAY), late_until: iso(now + 7 * DAY), required: true, students: null },
         { id: 'a6', kind: 'practice', title: 'Unit 3 timed quiz', spec: { topics: u3.slice(0, 4), topicNames: u3.slice(0, 4).map(function(t){ return ids[t].title; }), count: 10,
           controls: { timeLimit: 20, shuffle: true, release: 'after_due', questions: ['q-demo-1'] } },
-          opens_at: iso(now - 2 * DAY), due_at: iso(now - 0.5 * DAY), late_until: iso(now + 1 * DAY), required: true, students: null }
+          opens_at: iso(now - 2 * DAY), due_at: iso(now - 0.5 * DAY), late_until: iso(now + 1 * DAY), required: true, students: null },
+        // A free response, so the sample shows its scores and the scoring card (assets/class/teach-integrations.js).
+        { id: 'a7', kind: 'frq', title: 'Free response: heat and beet membranes', spec: { frq: 'frq-beet-membrane-heat', points: 9 },
+          opens_at: iso(now - 4 * DAY), due_at: iso(now + 2 * DAY), late_until: null, required: true, students: null }
       ];
       myQs = [
         { id: 'q-demo-1', course: 'apbio', topic: u3[0], unit: 'unit-3', type: 'single', q: 'An enzyme is heated to 80 °C and then cooled. Its activity stays low. What best explains this?',
@@ -132,8 +135,10 @@
           if(name === 'Sam T.') att.a6.end = st0 + 27 * 60000;
           if(i === 12) { att.a6.start = now - 0.2 * DAY; att.a6.end = att.a6.start + 14 * 60000; }
         }
+        // The free response (a7): most of the class has scored theirs against the rubric.
+        var frqScores = i < 12 && name !== 'Jordan P.' ? { 'frq-beet-membrane-heat': { got: Math.max(2, Math.min(9, Math.round(9 * skill - (i % 3)))), of: 9, ts: now - (0.5 + (i % 3)) * DAY } } : {};
         var store = { apbio_progress_v1: JSON.stringify({ v: 1, q: q, lessons: lessons }), apbio_picks_v1: JSON.stringify(picks),
-                      apbio_flagged_v1: JSON.stringify(flags), apbio_prefs_v1: JSON.stringify({ examHistory: hist }), levlprep_class_att_v1: JSON.stringify(att) };
+                      apbio_flagged_v1: JSON.stringify(flags), apbio_prefs_v1: JSON.stringify({ examHistory: hist, frqScores: frqScores }), levlprep_class_att_v1: JSON.stringify(att) };
         return { id: 'u' + i, name: name, joined_at: iso(now - 60 * DAY), extra_days: name === 'Sam T.' ? 1 : 0, extra_time: name === 'Sam T.' ? 1.5 : 1,
                  summary: M.summarize('apbio', function(k){ return store[k] == null ? null : store[k]; }, now), summary_at: iso(now - idle * DAY) };
       });

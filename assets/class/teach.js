@@ -108,8 +108,9 @@
   }
   function hook(where, boxId, extra){
     var box = document.getElementById(boxId); if(!box || !INT || typeof INT[where] !== 'function') return;
+    // rep: the report this page already holds (members with summaries), so the integrations need no second fetch.
     var ctx = Object.assign({ where: where, demo: DEMO, classId: CLASS_ID, cls: S.rep.class, role: S.rep.class.role || 'owner', box: box, call: call,
-      members: D.members.map(function(m){ return { id: m.id, name: m.name }; }) }, extra || {});
+      members: D.members.map(function(m){ return { id: m.id, name: m.name }; }), rep: S.rep }, extra || {});
     try{ var h = INT[where](ctx); box.innerHTML = typeof h === 'string' ? h : ''; if(typeof INT.wire === 'function') INT.wire(ctx); }
     catch(e){ box.innerHTML = ''; if(window.console) console.warn('teach-integrations', e); }
   }
@@ -524,7 +525,10 @@
      and the teacher's own questions mixed in. */
   function controlsHtml(){
     if(B.kind === 'frq') return '';
-    var times = [[0, 'No time limit'], [10, '10 minutes'], [15, '15 minutes'], [20, '20 minutes'], [30, '30 minutes'], [45, '45 minutes'], [60, '1 hour'], [90, '90 minutes'], [180, '3 hours']];
+    // Only the ten AP® courses run assignments with controls (assets/class/class-run.js, ?la=); elsewhere, say so.
+    if(!M.isAp(S.rep.class.course)) return '<section class="d5-card">' + q('3', 'Exam', 'controls') +
+      '<p class="d5-mut" style="margin:-6px 0 0">Time limits, shuffled questions, held answers and your own questions work on the AP® courses for now. In ' + esc(course().name || 'this course') + ', students do this assignment on the course’s usual pages, and you see their results here as usual.</p></section>';
+    var times =[[0, 'No time limit'], [10, '10 minutes'], [15, '15 minutes'], [20, '20 minutes'], [30, '30 minutes'], [45, '45 minutes'], [60, '1 hour'], [90, '90 minutes'], [180, '3 hours']];
     if(B.timeLimit && !times.some(function(o){ return o[0] === B.timeLimit; })) times.push([B.timeLimit, B.timeLimit + ' minutes']);
     var mineIn = (S.qs || []).filter(function(x){ return !B.topics.length || B.kind === 'exam' || B.topics.indexOf(x.topic) !== -1 || B.questions.indexOf(x.id) !== -1; });
     var xt = D.members.filter(function(m){ return m.extra_time > 1; }).length;

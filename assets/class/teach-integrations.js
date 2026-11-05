@@ -100,6 +100,11 @@
   function gradesCard(ctx){
     var a = ctx.assignment;
     if(!a.required || !isOwner(ctx)) return '';
+    if(ctx.demo) return '<section class="d5-card lvi" id="lviGrades"><p class="lv-kick">Gradebook</p><h3 class="lv-h3">Send these grades to your other gradebook</h3>' +
+      '<p class="d5-mut">Scores as this page shows them, out of 100: the share right for practice and review, the exam score, your score for a free response. Students who have not finished are left out unless you tick the box.</p>' +
+      '<label class="lvt-check"><input type="checkbox" disabled> Send 0 for missing work</label>' +
+      '<div class="lv-btns"><button type="button" class="lv-btn is-sm is-ghost" disabled>Post to Google Classroom</button><button type="button" class="lv-btn is-sm" disabled>Send grades to Classroom</button><button type="button" class="lv-btn is-sm" disabled>Send grades to Canvas or Schoology</button></div>' +
+      '<p class="d5-mut lvi-fine"><b>Sample class: nothing is sent.</b> The buttons appear once Google Classroom or your LMS is set up for the class.</p></section>';
     return '<section class="d5-card lvi" id="lviGrades" hidden><p class="lv-kick">Gradebook</p><h3 class="lv-h3">Send these grades to your other gradebook</h3>' +
       '<p class="d5-mut">Scores as this page shows them, out of 100: the share right for practice and review, the exam score, your score for a free response. Students who have not finished are left out unless you tick the box.</p>' +
       '<label class="lvt-check"><input type="checkbox" id="lviZero"> Send 0 for missing work</label>' +
@@ -169,6 +174,24 @@
       '<div class="lv-btns">' + (aiOn ? '<button type="button" class="lv-btn is-sm is-ghost" data-lvi-act="frq-ai">AI first pass</button>' : '') +
       '<button type="button" class="lv-btn is-sm" data-lvi-act="frq-save">Save score and comment</button></div><p class="lv-msg" role="status" aria-live="polite"></p></details>';
   }
+  /* Sample class: two made-up answers on the real rubric, one scored, every button off. */
+  function demoFrq(ctx){
+    var list = $('lviFrqList'); if(!list) return;
+    loadRubric(ctx).then(function(rub){
+      if(!rub || !rub.parts || ctx !== CUR) return;
+      var ms = ctx.rep.members.slice(0, 2), work = ms.map(function(m, i){
+        var answers = {}, points = {}, got = 0, of = 0;
+        rub.parts.forEach(function(p){
+          answers[p.label] = 'Sample answer for part ' + p.label + '. In your class, this is what the student wrote on the question page and chose to send you.';
+          points[p.label] = p.rubric.map(function(r, k){ of++; var on = i === 0 && k === 0; if(on) got++; return on; });
+        });
+        return { student: m.id, answers: answers, score: i === 0 ? { points: points, got: got, of: of, comment: 'Good start on the claim. Add the data from the table to support it.' } : null };
+      });
+      list.innerHTML = '<p class="d5-mut"><b>Sample class: nothing is saved.</b> Each answer a student sends appears here with the rubric. Tick the points, add a comment, save: the student sees both on their classes page.</p>' +
+        work.map(function(w){ return scoreForm(ctx, rub, w, false); }).join('');
+      list.querySelectorAll('button, input, textarea').forEach(function(el){ el.disabled = true; });
+    });
+  }
   function wireFrq(ctx, f){
     var list = $('lviFrqList'); if(!list || ctx.demo) return;
     Promise.all([loadRubric(ctx), A().rpcData('teach_frq_work', { p_assignment: ctx.assignment.id })]).then(function(r){
@@ -203,7 +226,12 @@
         '<div id="lviFamOut"></div>' : '<p class="d5-mut">Reports appear once students join.</p>') +
       '<p class="lv-msg" id="lviFamMsg" role="status" aria-live="polite"></p></section>';
   }
-  function googleCard(){
+  function googleCard(ctx){
+    // Sample class: the card as a linked class shows it, every button off.
+    if(ctx && ctx.demo) return '<section class="d5-card lvi" id="lviGoogle"><p class="lv-kick">Google Classroom</p><h3 class="lv-h3">Bring your Classroom roster, post assignments, send grades</h3>' +
+      '<div id="lviGoogleBody"><p class="d5-mut">Connected as <b>ms.rivera@sample.school</b>. Linked to <b>AP Biology · Period 3</b>.</p>' +
+      '<div class="lv-btns"><button type="button" class="lv-btn is-sm" disabled>Check the roster</button><button type="button" class="lv-btn is-sm is-ghost" disabled>Disconnect</button></div>' +
+      '<p class="d5-mut lvi-fine"><b>Sample class: nothing is connected.</b> In your own class you connect with the Google account you use for Classroom.</p></div></section>';
     return '<section class="d5-card lvi" id="lviGoogle" hidden><p class="lv-kick">Google Classroom</p><h3 class="lv-h3">Bring your Classroom roster, post assignments, send grades</h3><div id="lviGoogleBody"><p class="d5-mut">Loading…</p></div>' +
       '<p class="lv-msg" id="lviGoogleMsg" role="status" aria-live="polite"></p></section>';
   }
@@ -220,7 +248,7 @@
     css();
     var n = norm(ctx);
     if(!n.rep) return '';
-    return '<div class="lvi-wrap">' + familiesCard(n) + (isOwner(n) ? googleCard() + lmsCard() : '') + moreCard() + '</div>';
+    return '<div class="lvi-wrap">' + familiesCard(n) + (isOwner(n) ? googleCard(n) + lmsCard() : '') + moreCard() + '</div>';
   }
 
   function googleBody(ctx, g){
@@ -392,7 +420,7 @@
     wireRest(n);
   }
   function wireRest(ctx){
-    if(ctx.demo) return;
+    if(ctx.demo){ if(ctx.assignment && ctx.assignment.kind === 'frq') demoFrq(ctx); return; }
     features().then(function(f){
       if(ctx !== CUR) return;
       if(!f.reminders && $('lviRemind')){
