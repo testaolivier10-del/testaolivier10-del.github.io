@@ -432,7 +432,8 @@
       var full = r[0];
       if(full.length !== stubsList.length) throw new Error('missing questions');
       if(cfg.kind !== 'mixed' && Core.freeExam && !Core.freeExam().use()){ renderSetup(); return; }
-      startExam(full, r[1], label, meta, timing().k);
+      if(CLS) full = CLS.mix(full);
+      startExam(full, r[1], label, meta, CLS ? CLS.k(qsSec(full)) : timing().k);
     }).catch(function(){
       if(btn){ btn.disabled = false; btn.textContent = 'Start'; }
       var msg = app.querySelector('.pcalc-pr-avail'); if(msg) msg.textContent = 'The exam questions did not load. Check your connection and try again.';
@@ -495,7 +496,7 @@
     var more = pi < run.mcqParts.length - 1 || frqs.length;
     var endWord = P.key ? 'End Part ' + P.key : frqs.length ? 'End Section I' : 'Finish exam';
     app.innerHTML = '<div class="pcalc-ex-run">' +
-      '<div class="pcalc-ex-top"><div class="pcalc-ex-title"><span class="pcalc-pr-label">' + esc(label) + (P.key ? ' &middot; ' + partName(1, P) : frqs.length ? ' &middot; Section I' : '') + '</span><span class="pcalc-small pcalc-ex-status" aria-live="polite"></span></div>' + clockHtml(limit, true) + '</div>' +
+      '<div class="pcalc-ex-top"><div class="pcalc-ex-title"><span class="pcalc-pr-label">' + esc(label) + (P.key ? ' &middot; ' + partName(1, P) : frqs.length ? ' &middot; Section I' : '') + '</span><span class="pcalc-small pcalc-ex-status" aria-live="polite"></span></div>' + clockHtml(limit, !CLS) + '</div>' +
       (P.key ? pcalcNotice(P.calc) : '') +
       '<p class="pcalc-ex-sr" aria-live="assertive"></p>' +
       '<details class="pcalc-ex-navwrap"' + (window.matchMedia && window.matchMedia('(min-width: 700px)').matches ? ' open' : '') + '><summary>All questions <span class="pcalc-ex-navcount"></span></summary>' +
@@ -573,6 +574,7 @@
   }
   function lockedIn(q, box, res){
     run.res[q.id] = { correct: res.correct, score: res.score, pick: capture(q, box, res) };
+    if(CLS) CLS.answer(q, res);
     box.querySelectorAll('.pcalc-q-body button').forEach(function(b){ b.disabled = true; });
     var fb = box.querySelector('.pcalc-q-feedback'); if(fb) fb.innerHTML = '<p class="pcalc-small">Answer locked in.</p>';
     status();
@@ -720,7 +722,7 @@
     var rows = run.rows;
     // Recorded now, at the end (A&P decision 42); unanswered counts as a miss.
     // Exam-only questions (fixed exams) count in the score, not in practice or review.
-    rows.forEach(function(x){ if(!x.q.own) Core.record(x.q.id, !!x.r.correct, { topic: x.q.topic, unit: x.q.unit, practice: x.q.practice, level: x.q.level, diff: x.q.diff, src: 'q' }); });
+    rows.forEach(function(x){ if(!x.q.own && !(CLS && CLS.keep(x))) Core.record(x.q.id, !!x.r.correct, { topic: x.q.topic, unit: x.q.unit, practice: x.q.practice, level: x.q.level, diff: x.q.diff, src: 'q' }); });
     var right = rows.filter(function(x){ return x.r.correct; }).length, total = rows.length;
     if(window.StudyHubAccount && window.StudyHubAccount.promptToSave && total >= 10){
       setTimeout(function(){ window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + right + '/' + total, { kind: 'exam', score: right, total: total, missed: rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length }); }, 2600);
@@ -752,6 +754,7 @@
     }).join('') + '</ul></section>';
   }
   function results(rows, right, fg, fo, composite, b){
+    if(CLS && CLS.done(rows)) return;
     var total = rows.length, k = run.meta.kind, missedN = total - right;
     var byUnit = tally(rows, function(q){ return q.unit; });
     var byTopic = tally(rows, function(q){ return q.topic; }).sort(function(a, c){ return a.c / a.n - c.c / c.n; });
@@ -830,6 +833,14 @@
       '<p class="pcalc-ex-links"><a href="' + BASE + 'lessons/' + q.topic + '.html">Lesson</a> <span aria-hidden="true">&middot;</span> <a href="' + BASE + 'notes/' + q.topic + '.html">Notes</a>' + (window.LevlReport ? ' ' + window.LevlReport.button('apprecalc', q.id) : '') + '</p></li>';
   }
 
+  /* ?la=: a teacher's assignment, run by assets/class/class-run.js (docs/teacher-classes.md). Without la= none of this runs. */
+  var LA = /[?&]la=/.test(location.search), CLS = null;
+  function classBoot(){
+    var s = document.createElement('script'); s.src = '/assets/class/class-run.js'; s.onerror = renderSetup;
+    s.onload = function(){ window.LevlClassRun.exam({ app: app, cur: CUR, core: Core, base: BASE, view: view, cfg: cfg, units: builtUnits, begin: begin, set: function(c){ CLS = c; }, fallback: renderSetup }); };
+    document.head.appendChild(s);
+  }
+
   /* ------------------------------------------------------ boot */
 
   function boot(){
@@ -854,7 +865,7 @@
       if(MIXED.indexOf(+p.get('n')) > -1) cfg.n = +p.get('n');
       if(formById('form-' + p.get('form'))){ cfg.form = 'form-' + p.get('form'); cfg.kind = 'full'; }
       else if(cfg.kind === 'full' && FORMS.length && !p.get('form')) cfg.form = FORMS[0].id;
-      renderSetup();
+      if(LA) classBoot(); else renderSetup();
       if(p.toString()){ var s = app.querySelector('.pcalc-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){ app.innerHTML = '<p>The question bank did not load. Check your connection and reload.</p>'; });
   }
