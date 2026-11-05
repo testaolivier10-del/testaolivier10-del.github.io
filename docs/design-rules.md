@@ -14,7 +14,7 @@ Earlier look and covers: `docs/site-redesign.md`.
 ## Build order
 One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
 honest take and a pick; the owner chooses and the choice is recorded here before the next step.
-1 Course sections (done) · 2 Navigation (done) · 3 Header · 4 Titles and banners · 5 Type and color · 6 Cards and lists ·
+1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners · 5 Type and color · 6 Cards and lists ·
 7 Course home · 8 Question screen · 9 Notes page · 10 Progress · 11 Homepage · 12 Teacher side.
 
 ## How we work
@@ -45,6 +45,14 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 ## Layout and navigation
 - Agreed (step 2): on computers the 5 sections sit inside the header row, next to the logo and course name (one
   row, no separate tab bar); below about 1,100 px wide it may fall back to two rows.
+- Agreed (step 3): header right side inside a course is search, streak and the account picture only. Answer
+  sounds, dark mode and For teachers live in the account menu; For teachers stays visible in the header on the
+  homepage and pages outside a course.
+- Agreed (step 3): the course name next to the logo ("AP® Biology ▾") opens a course switcher: your courses with
+  progress, then "All 13 courses".
+- Agreed (step 3): the level is not in the header. It shows as a "+10 XP" pop up right after a correct answer and as
+  a full level bar on Progress.
+- Agreed (step 3): phone header is the logo mark, the course name with the switcher, search and the account picture.
 - Agreed (step 2): on phones the 5 sections sit in a bottom bar with icons and labels, all always visible.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
@@ -77,3 +85,5 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 - 2026-11-04: step 2 phone decided: bottom bar (P1). Owner could not see the tabs in computer option B because the
   options page hid them below 860 px wide; fixed by drawing computer examples at fixed width, and added to the checklist.
 - 2026-11-04: step 2 computer decided: one row (B). Options page: https://claude.ai/artifact/Jus9RRrdCwQbgpsK7RcczB
+- 2026-11-04: step 3 decided: H2 essentials, course switcher, level as pop up plus Progress (L2), phone PH1.
+  Options page: https://claude.ai/artifact/GACSjGjVKyMCn3yePoQgsC
