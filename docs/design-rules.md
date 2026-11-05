@@ -14,7 +14,7 @@ Earlier look and covers: `docs/site-redesign.md`.
 ## Build order
 One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
 honest take and a pick; the owner chooses and the choice is recorded here before the next step.
-1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners · 5 Type and color · 6 Cards and lists ·
+1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners (done) · 5 Type and color · 6 Cards and lists ·
 7 Course home · 8 Question screen · 9 Notes page · 10 Progress · 11 Homepage · 12 Teacher side.
 
 ## How we work
@@ -29,9 +29,12 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 ## Look
 - Agreed: keep the site's own style: Inter Display two tone headlines, Nunito body, gold primary buttons, navy
   buttons, white rounded cards on the faint grid paper, course colours from `[data-cover]`.
-- Proposed: the big cover banner (drawing plus handwritten line) only on the homepage and course homes, about half
-  its current height on phones. Every other page gets a one line title row with a breadcrumb. No banner at all
-  during a practice or exam session.
+- Agreed (step 4): the course home keeps the banner (course color, drawing, handwritten line) at about half today's
+  height, so the next step shows on the first screen, phone included.
+- Agreed (step 4): every other page inside a course (Learn, Practice, Exams, Progress) gets a one line white title
+  row with a breadcrumb and at most one small action; no banner, no drawing, no handwritten line.
+- Agreed (step 4): during a practice or exam session there is no banner and no header: only End, a progress bar and
+  the question count.
 - Proposed: no handwritten (Kalam) font inside study content (notes, questions, explanations).
 - Proposed: notes read at about 65 characters per line and 17 to 19 px.
 
@@ -87,3 +90,5 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 - 2026-11-04: step 2 computer decided: one row (B). Options page: https://claude.ai/artifact/Jus9RRrdCwQbgpsK7RcczB
 - 2026-11-04: step 3 decided: H2 essentials, course switcher, level as pop up plus Progress (L2), phone PH1.
   Options page: https://claude.ai/artifact/GACSjGjVKyMCn3yePoQgsC
+- 2026-11-04: step 4 decided: half height course home banner, one line title row inside courses, nothing but
+  progress during sessions. Options page: https://claude.ai/artifact/Ndt5wNS924QjuA6nGktTDN
