@@ -24,6 +24,7 @@ import numpy as np, skia
 import kit
 from kit import P, SP, blur, smooth, lerp, mix, smooth_closed, flat, lgrad, ease_io, Wt, Y, R, TL, W, H, OR
 import person as PP, airman2 as A2
+import crew as CR
 
 WD = kit.Words('/home/claude/w1104/out/w1104-02-sodium-lake/words.json')
 at = WD.at
@@ -70,6 +71,10 @@ WORKER2 = PP.Person(0.19, palette={A2.OL: (52, 60, 74), A2.OL_SH: (38, 44, 56), 
                     A2.SKIN: (200, 150, 116), A2.SKIN_SH: (176, 130, 100), (150, 120, 80): (52, 60, 74)})
 
 
+WORKER3 = PP.Person(0.19, palette={A2.OL: (88, 80, 64), A2.OL_SH: (66, 60, 48), A2.OL_HI: (110, 100, 82), A2.CUFF: (88, 80, 64),
+                    A2.SKIN: (214, 160, 124), A2.SKIN_SH: (190, 138, 106), (150, 120, 80): (88, 80, 64)})
+WORKER3_BACK = PP.Person(0.172, palette={A2.OL: (82, 76, 62), A2.OL_SH: (62, 58, 48), A2.OL_HI: (102, 94, 78), A2.CUFF: (82, 76, 62),
+                         A2.SKIN: (206, 156, 122), A2.SKIN_SH: (184, 136, 104), (150, 120, 80): (82, 76, 62)})
 WORKER_B = PP.Person(0.34, palette={A2.OL: (52, 60, 74), A2.OL_SH: (38, 44, 56), A2.OL_HI: (74, 84, 100), A2.CUFF: (52, 60, 74),
                      A2.SKIN: (200, 150, 116), A2.SKIN_SH: (176, 130, 100), (150, 120, 80): (52, 60, 74)})
 
@@ -153,15 +158,15 @@ def coulee(c, t, light=0.0):
 
 def near_cliff(c, t, light=0.0):
     """the near cliff the drums go over (left), basalt with snow on top"""
-    top = [(-300, 760), (120, 750), (360, 770), (430, 800)]
-    face = [(430, 800), (460, 920), (500, 1040), (530, 1100), (-300, 1160)]
+    top = [(-300, 760), (120, 760), (380, 760), (432, 768), (440, 800)]
+    face = [(440, 800), (466, 920), (500, 1040), (530, 1100), (-300, 1160)]
     p = kit.poly(top + face)
     flat(c, p, BAS, BAS_SH, sh_off=(14, 0), rim=BAS_HI, rim_d=(-3, 2), rim_a=220)
     for k in range(12):
         x = 20 + k * 36
         c.drawLine(x, 800, x + 24, 1120, SP(BAS_SH, 4, 160))
-    c.drawPath(kit.poly([(-300, 740), (120, 732), (360, 752), (440, 790), (430, 800), (360, 770), (120, 750), (-300, 760)]), P(SNOW))
-    c.drawPath(kit.poly([(-300, 760), (360, 770), (430, 800), (-300, 790)]), P(SNOW_SH))
+    c.drawPath(kit.poly([(-300, 744), (120, 744), (380, 746), (436, 756), (432, 768), (380, 760), (120, 760), (-300, 760)]), P(SNOW))
+    c.drawPath(kit.poly([(-300, 760), (380, 760), (432, 768), (440, 800), (-300, 790)]), P(SNOW_SH))
     if light > 0: c.drawPath(p, P((255, 150, 60), 60 * light, BlendMode=skia.BlendMode.kScreen))
 
 
@@ -194,6 +199,14 @@ def drum_fall(t, t0, x0, y0, x1, y1):
 DRUMS = [(T_ROLL - 0.2, 600, 1090, 1), (T_ROLL + 0.6, 700, 1130, 2), (T_ROLL + 1.3, 820, 1080, 3), (T_ROLL + 2.0, 930, 1140, 4)]
 
 
+# the drum schedule in shot C: drums 0 and 1 were pushed before the shot and already lie on the ice; worker A walks
+# drum 2 to the edge, worker B walks drum 3 behind him
+# (worker B walks his drum in a lane just behind worker A's, so both are seen at once)
+SCHED_T = [T_C - 4.0, T_C - 3.2, T_ROLL - 0.4, T_ROLL + 0.7]
+LANE = [(760, CR.DS), (760, CR.DS), (760, CR.DS), (750, CR.DS * 0.92)]
+SCHED = [lambda t, i=i: CR.drum_state(t, SCHED_T[i], (260, 260, 280, 190)[i], DRUMS[i][1], DRUMS[i][2], ground=LANE[i][0], ds=LANE[i][1]) for i in range(4)]
+
+
 # ------------------------------------------------------------------ shots
 def shot_a(c, t):
     u = t / T_B
@@ -203,9 +216,9 @@ def shot_a(c, t):
     near_cliff(c, t, 0.3 * burst)
     fireball(c, 740, 1090, t + 0.35, 1.6, seed=1)
     fireball(c, 900, 1090, t - 1.6, 1.1, seed=2)
-    x, y, a, landed = drum_fall(t, T_SOD - 0.9, 360, 732, 640, 1120)
-    drum(c, x, y, a, 0.9)
-    man(c, WORKER, 330, 762, face=1, uarm_n=40, elbow_n=30)
+    st = CR.drum_state(t, T_SOD - 0.9 - (CR.EDGE - 270) / CR.SPEED, 270, 640, 1110)
+    CR.pusher(c, WORKER, t, st)
+    drum(c, st['cx'], st['cy'], st['ang'], CR.DS)
     c.restore()
     glow_wash(c, 0.35 * burst * (0.8 + 0.2 * math.sin(t * 9)))
 
@@ -249,7 +262,7 @@ def shot_b(c, t):
     for k in range(5):
         g = (t * 0.6 + k * 0.2) % 1
         c.drawCircle(266 + 16 * math.sin(g * 6 + k), 1066 - 120 * g, 10 + 18 * g, P((236, 236, 236), 120 * (1 - g) * lk, MaskFilter=blur(6)))
-    man(c, WORKER_B, 560, 1150, face=-1, uarm_n=40, elbow_n=70, lean=4, br=0.5 + 0.5 * math.sin(t * 2))
+    man(c, WORKER_B, 560, 1150, face=-1, uarm_n=6, elbow_n=18, uarm_f=4, elbow_f=16, lean=3, neck=-8, br=0.5 + 0.5 * math.sin(t * 2))
     c.restore()
 
 
@@ -259,11 +272,14 @@ def shot_c(c, t):
     c.save()
     sh = max(0.0, 1 - (t - T_EXP) / 0.6) if t > T_EXP else 0.0      # camera shake on the blast
     c.translate(14 * sh * math.sin(t * 90), 10 * sh * math.cos(t * 77))
-    kit.push(c, ease_io(u), 540, 960, 1.3, 1.45, 500, 830, 640, 900)
+    kit.push(c, ease_io(u), 540, 960, 1.32, 1.4, 430, 830, 520, 880)
     lit = smooth((t - T_EXP + 0.2) / 0.3)
     coulee(c, t, light=0.7 * lit)
+    sts = []
     for i, (t0, x1, y1, sd) in enumerate(DRUMS):
-        x, y, a, landed = drum_fall(t, t0, 330 - i * 10, 732, x1, y1)
+        st = SCHED[i](t)
+        sts.append(st)
+        x, y, a, landed = st['cx'], st['cy'], st['ang'], st['ph'] == 'landed'
         hole = smooth((t - T_SHOT - 0.1 * i) / 0.4)
         if landed:
             ice = smooth((t - T_SHOT - 0.3 - 0.1 * i) / 0.8)
@@ -271,25 +287,30 @@ def shot_c(c, t):
             for k in range(6):
                 ang = k * 1.05 + sd
                 c.drawLine(x, y + 40, x + math.cos(ang) * 110 * ice, y + 40 + math.sin(ang) * 40 * ice, SP(WATER, 3, 200 * ice))
-        if not (t > T_EXP + 0.3 * i + 0.2):
-            drum(c, x, y, a, 0.9, holes=hole, seed=sd)
+        if not (t > T_EXP + 0.3 * i + 0.2) and st['ph'] in ('landed', 'fall', 'tip'):
+            drum(c, x, y, a, st['ds'], holes=hole, seed=sd)
         fireball(c, x1 + 10, y1 + 30, t - (T_EXP - 0.05 + 0.35 * i), 1.5 + 0.15 * i, seed=10 + i)
     fireball(c, 760, 1110, t - (T_EXP - 0.1), 2.6, seed=31)
     near_cliff(c, t, 0.4 * lit)
-    # the workers at the edge pushing the drums, then the gunfire from the cliff top
-    push_ = 0.5 + 0.5 * math.sin((t - T_ROLL) * 4)
-    man(c, WORKER, 250, 764, face=1, lean=12 + 8 * push_ * (t < T_SHOT), uarm_n=60, elbow_n=20, thigh_n=20, knee_n=-30, thigh_f=-15)
-    man(c, WORKER2, 120, 760, face=1, lean=8, uarm_n=50, elbow_n=30)
+    # the crew: the rifleman at the back, then each pusher with his hands on his drum (drawn behind the drum)
+    aim = smooth((t - T_SHOT + 0.6) / 0.4)
+    muzzle = CR.rifleman(c, WORKER3_BACK, 330, t, aim=aim, ground=736)
+    for i, who, rx in ((3, WORKER2, 230), (2, WORKER, 160)):       # back lane first
+        st = sts[i]
+        CR.pusher(c, who, t, st, retreat_x=rx)
+        if st['ph'] in ('wait', 'push'):
+            drum(c, st['cx'], st['cy'], st['ang'], st['ds'], seed=DRUMS[i][3])
+    mx, my = muzzle
     if T_SHOT - 0.1 < t < T_EXP:
         for k in range(8):
             ft = T_SHOT + k * 0.16
             if ft <= t < ft + 0.08:
-                c.drawCircle(200, 700, 26, P((255, 230, 150), 250))
-                c.drawCircle(200, 700, 40, P((255, 200, 100), 90, MaskFilter=blur(12)))
+                c.drawCircle(mx, my, 10, P((255, 236, 170), 250))
+                c.drawCircle(mx, my, 24, P((255, 200, 100), 90, MaskFilter=blur(10)))
             if ft <= t < ft + 0.14:
                 tx = DRUMS[k % 4][1]; ty = DRUMS[k % 4][2]
                 kk = (t - ft) / 0.14
-                c.drawLine(lerp(200, tx, kk * 0.8), lerp(700, ty, kk * 0.8), lerp(200, tx, kk), lerp(700, ty, kk), SP((255, 236, 170), 5, 230))
+                c.drawLine(lerp(mx, tx, kk * 0.8), lerp(my, ty, kk * 0.8), lerp(mx, tx, kk), lerp(my, ty, kk), SP((255, 236, 170), 5, 230))
             if ft + 0.14 <= t < ft + 0.6:
                 tx = DRUMS[k % 4][1]; ty = DRUMS[k % 4][2]; g = (t - ft - 0.14) / 0.46
                 c.drawCircle(tx + 10, ty - 10 - 40 * g, 16 + 30 * g, P((240, 240, 236), 200 * (1 - g), MaskFilter=blur(6)))
@@ -383,16 +404,17 @@ def shot_d(c, t):
     c.drawCircle(540, 900, r, SP((255, 210, 120), 6, 230))
 
 
-def burning_lake(c, t, dark=0.0, z=1.45):
-    c.save(); c.translate(540, 960); c.scale(z, z); c.translate(-640, -900)
+def burning_lake(c, t, dark=0.0, z=1.4):
+    c.save(); c.translate(540, 960); c.scale(z, z); c.translate(-520, -880)
     coulee(c, t, light=0.7)
     for i, (t0, x1, y1, sd) in enumerate(DRUMS):
         a0 = T_D - (T_EXP - 0.05 + 0.35 * i)
         fireball(c, x1 + 10, y1 + 30, min(a0 + (t - T_D) * 0.25, 2.2 + 0.2 * i), 1.5 + 0.15 * i, seed=10 + i)
     fireball(c, 760, 1110, min((T_D - (T_EXP - 0.1)) + (t - T_D) * 0.25, 2.4), 2.6, seed=31)
     near_cliff(c, t, 0.4)
-    man(c, WORKER, 250, 764, face=1, lean=12, uarm_n=60, elbow_n=20, thigh_n=20, knee_n=-30, thigh_f=-15)
-    man(c, WORKER2, 120, 760, face=1, lean=8, uarm_n=50, elbow_n=30)
+    CR.rifleman(c, WORKER3_BACK, 330, t, aim=1.0 - smooth((t - T_D) / 1.0), ground=736)
+    for i, who, rx in ((3, WORKER2, 230), (2, WORKER, 160)):
+        CR.pusher(c, who, t, SCHED[i](t), retreat_x=rx)
     c.restore()
     glow_wash(c, 0.4 * (0.75 + 0.25 * math.sin(t * 11)))
     if dark > 0: c.drawRect(skia.Rect(0, 0, W, H), P((10, 14, 24), 110 * dark))
@@ -420,7 +442,7 @@ def jar(c, x, y, a):
 
 def shot_e(c, t):
     u = (t - T_E) / (DUR - T_E)
-    burning_lake(c, t, z=1.45 + 0.08 * ease_io(u), dark=0.55 * smooth((t - T_THAT + 0.45) / 0.45))
+    burning_lake(c, t, z=1.4 + 0.08 * ease_io(u), dark=0.55 * smooth((t - T_THAT + 0.45) / 0.45))
     ja = smooth((t - T_THAT + 0.45) / 0.45)
     if ja > 0:
         c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(200, 640, 880, 1340), 40, 40), P((14, 20, 34), 235 * ja))
