@@ -8,7 +8,7 @@
   function A(){ return window.StudyHubAccount; }
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
   function msg(t, bad){ var m = $('jMsg'); m.textContent = t || ''; m.className = 'lv-msg' + (bad ? ' is-bad' : ''); }
-  function clean(v){ return String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6); }
+  function clean(v){ return String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8); }
   var user = null, pendingCode = null;
 
   function signInFirst(code){
@@ -18,7 +18,7 @@
   }
 
   function find(code){
-    if(code.length !== 6){ msg('A class code has 6 letters and numbers.', true); return; }
+    if(code.length !== 8){ msg('A class code has 8 letters and numbers.', true); return; }
     if(!user){ signInFirst(code); return; }
     msg('Looking for the class...');
     A().rpcData('class_preview', { p_code: code }).then(function(c){
