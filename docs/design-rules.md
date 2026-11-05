@@ -17,7 +17,7 @@ https://claude.ai/artifact/GbY4t4nHczLZ8JdYkerpZx). Check every options page aga
 One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
 honest take and a pick; the owner chooses and the choice is recorded here before the next step.
 1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners (done) · 5 Type and color (done) ·
-6 Cards, lists and tags (done) · 7 Course home (done) · 8 Learn (done) · 9 Practice · 10 Question screen · 11 Exams · 12 Progress ·
+6 Cards, lists and tags (done) · 7 Course home (done) · 8 Learn (done) · 9 Practice (done) · 10 Question screen · 11 Exams · 12 Progress ·
 13 Menus and site wide extras · 14 Homepage · 15 Teacher side. (Reordered 2026-11-05 so each section of the course
 gets its own step, built from `docs/site-feature-inventory.md`.)
 
@@ -108,6 +108,17 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
 - Agreed (step 8): the Tools page keeps cards with each tool's drawing; the one exception to the list rows rule.
 - Agreed (step 8): kept as today, restyled: glossary (search, unit filter, A to Z, pop ups in notes), notes content
   (figures, worked examples, common mistakes, Report a problem), inside a tool, formula sheets with Tools.
+- Agreed (step 9): Practice has five pill tabs like Learn: Questions, Review, Flashcards, Free response,
+  Justification. Share (Copy link, Classroom, Print as a worksheet, Print with answer key) is the title row action.
+- Agreed (step 9): Questions keeps today's form with everything showing: Choose how (Build a set, My weakest topics,
+  Questions I missed), Choose the questions (Unit, Topic, Science practice, Question type, Difficulty), 5, 10, 20 or
+  All, then Start practice and the "11 of 15 free questions left today" line.
+- Agreed (step 9): Review shows the due count with one Review button, then rows for Flagged questions and Retry my
+  misses.
+- Agreed (step 9): Flashcards is the Deck menu (each deck shows its progress, e.g. "Unit 1 · 0 of 249"), the three
+  card types and Study 20 cards; no unit tiles (owner: they repeat the menu).
+- Agreed (step 9): Free response is grouped under the six AP® types with their points, filtered by type and unit;
+  Units 1 and 2 are free, later questions carry the quiet Premium tag.
 - Agreed: every design question is shown as pictures of each option before the owner chooses, never as words only.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
@@ -167,3 +178,5 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   winding path (P2), price and questions for everyone (M2). Options page: https://claude.ai/artifact/6aGe9UHwgCvfACd6fverBf
 - 2026-11-05: step 8 decided: contents sidebar on computers (A), Read / Interactive switch (A), slim video row (V1),
   tool cards with drawings (T1). Options page: https://claude.ai/artifact/QgTA1iVbiqyYAj74uiQ7ps
+- 2026-11-05: step 9 decided: pill tabs (A), today's settings form (S2), flashcards without unit tiles (F3, owner's
+  idea), FRQs grouped by type (R2). Options page: https://claude.ai/artifact/U5tCoafGswGA39WbUdgc2B
