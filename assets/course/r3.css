@@ -549,3 +549,8 @@
   .deal-t .hd .p small.amt{font-size:22px}
   .deal-t .ft .btn-gold,.deal-t .ft .btn-ghost{white-space:normal;text-align:center;padding:10px 12px;font-size:14px}
 }
+/* Pick up where you left off, inside the path card (design preview 2026-11-05) */
+.lp-resume{display:flex;align-items:baseline;gap:10px;margin:0 22px 12px;padding:10px 14px;border-radius:12px;background:var(--ctint);color:var(--cink);text-decoration:none;font:800 14.5px var(--font-ui)}
+.lp-resume small{font:800 12px var(--font-ui);text-transform:uppercase;letter-spacing:.06em;opacity:.8}
+/* AP® unit exam weight on the Learn page (design preview 2026-11-05) */
+.tb-weight{display:inline-block;margin-left:6px;padding:2px 10px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12.5px var(--font-ui)}

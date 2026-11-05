@@ -648,6 +648,7 @@
     mountMotion();
     mountSheetView();
     mountPath(courseKey);
+    if(typeof mountApWeights === 'function') mountApWeights();
   }
 
   // assets/course/path.js: on the Path page and home, and on lessons, notes and the textbook once there is a path.
@@ -1173,8 +1174,18 @@
     sc.src = '/assets/course/home-v2.js';
     document.head.appendChild(sc);
   }
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountHomeV2);
-  else mountHomeV2();
+  // AP® unit exam weights on the Learn page (assets/course/ap-weights.js).
+  function mountApWeights(){
+    var k = document.body.getAttribute('data-course') || '';
+    if(!/^ap/.test(k) || !/\/learn\.html$/.test(location.pathname) || document.getElementById('levlApWeights')) return;
+    var sc = document.createElement('script');
+    sc.id = 'levlApWeights';
+    sc.src = '/assets/course/ap-weights.js';
+    document.head.appendChild(sc);
+  }
+  function mountPreviewExtras(){ mountHomeV2(); mountApWeights(); }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountPreviewExtras);
+  else mountPreviewExtras();
 
   // The preview copy gets a Visitor / Student switch (assets/preview-demo.js).
   if(IS_PREVIEW){
