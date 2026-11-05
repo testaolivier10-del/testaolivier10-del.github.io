@@ -56,6 +56,10 @@
     var on = has(course, id);
     [].forEach.call(document.querySelectorAll(sel(course, id)), function(b){
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      // "Flag" / "Flagged" on screen in every course (consistency audit 2026-11, B9); the
+      // accessible name stays "Flag" (aria-label) and aria-pressed carries the state.
+      var t = b.querySelector('span');
+      if(t) t.textContent = on ? 'Flagged' : 'Flag';
       b.title = on ? 'Flagged. Press again to remove the flag.' : 'Flag this question to come back to it.';
     });
   }
@@ -69,6 +73,7 @@
     b.className = 'cx-flag';
     b.setAttribute('data-flag-course', course);
     b.setAttribute('data-flag-id', id);
+    b.setAttribute('aria-label', 'Flag');
     if(mode === 'session') b.setAttribute('data-flag-session', '1');
     b.innerHTML = ICON + '<span>Flag</span>';
     wrap.insertBefore(b, wrap.firstChild);

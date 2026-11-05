@@ -209,7 +209,9 @@ const SHELL_BUDGETS = [
   // round 3 pages that use it. Measured 34.5 KB with all five steps combined.
   /* 35 -> 36 for the fixes after round 3 went live: tap-to-open questions, phone card stacking, the textbook
      Contents panel and the progress page column fit. Measured 35.2 KB. */
-  ['assets/course', 36],
+  /* 36 -> 36.4 (consistency audit 2026-11, B7/B8): the shared end-of-session panel (LevlStudy.end) and keyboard
+     legend in study.js and study.css, which replace three course-specific layouts. Measured 36.1 KB. */
+  ['assets/course', 36.4],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -397,7 +399,9 @@ const SHELL_BUDGETS = [
      itself is BC's own file (calculus-bc/assets/cbc-interval.js). Measured 69.4 KB.
      69.5 -> 69.7 (BC integration pass, 2026-10-31): the small-value guard in calc-questions.js
      (below 0.005 a decimal must be right to three significant digits, BC only); measured 69.5 KB. */
-  ['calculus', 69.7],
+  /* 69.7 -> 70.2 (consistency audit 2026-11): the end panel call, Retry and review links in Review, and the
+     exam-day reference cards (D16) in exams.js. Measured 69.9 KB. */
+  ['calculus', 70.2],
   /* AP® Statistics (statistics/, a fork of the AP® Calculus AB runtime),
      plus what every statistics question page needs (docs/apstat-spec.md
      section 7): the distributions library (stat-dist.js, 6.4 KB gzipped:
@@ -410,7 +414,8 @@ const SHELL_BUDGETS = [
      decision 15): the flag hook and Flagged mode (as calculus' 68 -> 68.5),
      the setup value step and the tiny p-value wording; measured 82.6 KB.
      83 -> 83.2: the answer-pick line for teacher classes (docs/teacher-classes.md), one line in every AP® renderer. */
-  ['statistics', 83.2],
+  /* 83.2 -> 83.5 (consistency audit 2026-11): the same end panel and reference cards. Measured 83.2 KB. */
+  ['statistics', 83.5],
   /* AP® Environmental Science (environmental-science/, a fork of the AP®
      Statistics runtime, docs/apenv-spec.md decision 1): the calculation
      recipes (env-calc.js) in place of the distributions library, and the
@@ -551,7 +556,9 @@ const BUDGETS = [
   /* 49.9 -> 55.2 (tools upgrade, 2026-10-27): the exam's drag-and-drop and options-table items, dragging build
      lists and the Adaptive exam (engine routing, results, setup) in practice-engine.js and practice.css. The item
      interactions themselves are in nremt/assets/tei-items.js (course bucket). Measured 54.8 KB. */
-  ['nremt/practice.html', 55.2],
+  /* 55.2 -> 57 (consistency audit 2026-11, B1/B5/B7): answers recorded as each is checked (recordLive), the
+     end order with what to study next by domain, and Review at the daily limit. Measured 56.6 KB. */
+  ['nremt/practice.html', 57],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read

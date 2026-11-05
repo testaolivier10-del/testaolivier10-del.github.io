@@ -125,10 +125,11 @@ main.cx-study.r3-under #resultsScreen #clearedNote{order:2;}
 main.cx-study.r3-under #resultsScreen #nextSlot{order:3;}
 main.cx-study.r3-under #resultsScreen .results-top-row{order:4;}
 main.cx-study.r3-under #resultsScreen #premiumSlot{order:5;}
-main.cx-study.r3-under #resultsScreen #nextStep:not(:empty){background:var(--navy);border-color:transparent;color:#fff;}
-main.cx-study.r3-under #resultsScreen #nextStep:not(:empty) *{color:inherit;}
-main.cx-study.r3-under #resultsScreen #nextStep .btn-press,main.cx-study.r3-under #resultsScreen #nextStep button,main.cx-study.r3-under #resultsScreen #nextStep a.primary{background:#FFD23F !important;color:#0B1A33 !important;box-shadow:none;}
-main.cx-study.r3-under #resultsScreen #nextStep p,main.cx-study.r3-under #resultsScreen #nextStep small{color:rgba(255,255,255,.78);}
+/* The shared end order (consistency audit 2026-11, B7): XP, what to study next, Retry misses, then the next step. */
+main.cx-study.r3-under #resultsScreen #nextStep .cx-endp-h{margin-top:0;font-size:17px;}
+main.cx-study.r3-under #resultsScreen #nextStep .nr-next-list{margin:0 0 12px;}
+main.cx-study.r3-under #resultsScreen #nextStep .nr-next-list li{padding:10px 12px;}
+main.cx-study.r3-under #resultsScreen #nextStep .next-step-btn{width:100%;padding:12px;border-radius:12px;font:900 14px var(--font-ui);background:var(--white);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}
 main.cx-study.r3-under #resultsScreen #nextSlot .levl-next{background:none;color:var(--ink);padding:0;margin:0;box-shadow:none;border:0;}
 main.cx-study.r3-under #resultsScreen #nextSlot .levl-next__k{font:900 17px var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink);margin:0 0 6px;}
 main.cx-study.r3-under #resultsScreen #nextSlot .levl-next__why{color:var(--muted);}

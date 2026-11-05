@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function draw(){
     M.ap({ key: 'appsych', cls: 'psy', name: 'AP&reg; Psychology', A: A, CU: CU, base: window.ApPsychBase || '', root: app, tools: window.ApPsychToolList || [],
       band: false, practiceWord: 'science practice', practiceLabel: 'Science practices', frqTypes: FRQ_TYPES,
-      skillHint: 'Each science practice splits into skills (6.B: apply a method, showing the steps, and so on). Every question is tagged with the one it exercises.' });
+      skillHint: 'Each science practice splits into skills (1.A, 1.B and so on). Every question is tagged with the one it exercises.' });
   }
   draw();
   window.addEventListener('storage', function(e){ if(!e.key || /^appsych_|^hub/.test(e.key)) draw(); });

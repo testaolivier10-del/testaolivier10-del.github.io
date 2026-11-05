@@ -47,29 +47,43 @@ A8. `psychology/learn.html` section `thinking`: one `math.psy-m` block overflows
 
 B1. NREMT dashboard "Nothing here yet" until a session finishes (`nremt/assets/dash-nremt.js:84` isNew). Count
     mastery, missed list and today's count.
+    Status: fixed. practice-engine.js `recordLive` records each checked answer (mastery, missed list, topic and domain accuracy, today's count) at once; `showResults` counts only the rest. The dashboard counts tracked and missed questions as a start.
 B2. Ochem dashboard (`ochem/assets/dash-ochem.js:24`) and ochem Review headline say nothing yet while listing a missed
     question. Count missed and flagged lists in both.
+    Status: fixed. A missed or flagged question counts as a start on the ochem dashboard (which now leads with redoing them) and on Review.
 B3. Ochem end screen after ending early: "0 of 1 correct, across 0 concepts" then suggests the diagnostic just done.
+    Status: fixed. The end panel no longer says "across 0 concepts", and an ended-early diagnostic says "Finish the diagnostic".
 B4. Path never moves after practice (by design: path tracks lessons). Say so on the Path page in one short line.
 B5. NREMT Review at the free limit: "Review them" (flagged) does nothing visible, "Start review" disappears while it
     still says "15 due", practice end still offers "Review 15 due questions". Say plainly it resumes tomorrow (or let
     flagged review through), and drop dead buttons.
+    Status: fixed. At the limit Review says the queue is kept and starts again tomorrow; "Start review" and the flagged "Review them" are hidden, and the practice end no longer offers the due queue.
 B6. Ochem: after a miss the only way on is "Try a similar one" (`ochem/assets/session-runner.js:687`). Make "Next
     question" the main button and the similar one optional.
+    Status: fixed. `session-runner.js`: "Next question" is the main button after a miss; "Try a similar one" sits beside it as an outline button.
 B7. Three end-of-session layouts (NREMT, AP/A&P, ochem). Give every course the same end panel: score, what to study
     next, Retry misses, one next-step button (keep each course's extras like XP and domain list inside it).
+    Status: fixed. `LevlStudy.end` / `LevlStudy.wire` (assets/course/study.js, styles in study.css section 9): score, extras (ochem XP), what to study next, Retry misses, one next step, then tables. Used by every AP course and A&P (Practice and Review) and ochem (Practice and Review); NREMT's results keep their grid but follow the same order (XP, what to study next by domain, Retry the misses, next step).
 B8. Keyboard help only on NREMT. One shared shortcut set and legend.
+    Status: fixed. `LevlStudy.keys()`: one legend, folded under every session (NREMT's side card uses the same list plus its sort keys), and arrow, Home and End keys on every `.cx-opts` group.
 B9. Flag wording: "Flag for review"/"Flagged" (NREMT), "Flag"/"Flagged" (ochem), bio label stays "Flag" when pressed.
     Use Flag/Flagged everywhere. One exit button per session ("Save and exit" / "End session" shown twice).
+    Status: fixed. Flag/Flagged everywhere (flags.js writes the word, NREMT dropped "for review", aria-pressed on NREMT too). One exit: untimed NREMT practice shows only "End session" ("Save and exit" is gone; the attempt still autosaves), and the study band no longer copies the exit.
 B10. Wrong subject words: macro and psych result tables "By science practice"
     (`macroeconomics/assets/pages/practice.js:486`, `psychology/assets/pages/practice.js:486`), macro dashboard empty
     state "science practice", calc exams "The hybrid format" vs heading "the real format"
     (`calculus/assets/pages/exams.js:316`). Use the course's practiceWord.
+    Status: fixed. Macroeconomics says "skill category" (its CED's term) in practice, results, search and the dashboard; psychology keeps "science practice" (its CED's term, per docs/appsych-spec.md) with a skill hint that fits it; calculus exams say "the real format".
 B11. Free allowance line worded differently; one string, shown on Practice and Review.
+    Status: fixed. `LevlPremium.allowanceLine(course, note)` is the one string ("Free: N of 15 questions left today, shared by Practice and Review." plus the course's free part, or at zero "They come back at midnight."), shown on Practice and on Review in every state, in every course.
 B12. Review empty state lists Flashcards twice (ochem, A&P, NREMT).
+    Status: fixed. Flashcards is in the rail only, not repeated in the empty-state actions (NREMT, ochem, A&P).
 B13. Two "Start practice" buttons on every practice page; two "Set up an exam" on ochem and A&P exams.
+    Status: fixed. The study band no longer copies the page's Start, exit or results buttons, the exams band lost its Start/"Set up an exam" button (r3-inner.mjs and the hand-written exams pages), NREMT results keep one "Back to Start" and one Retry.
 B14. `/<course>/unit-tests/` has no index page; add one or never link the folder.
+    Status: fixed (never linked). No page links a bare `unit-tests/` folder; `scripts/site-rules/unit-tests-folder.mjs` fails the check if one ever does without an index page.
 B15. NREMT shows a full Premium card on the practice end screen and in Review; show it only at the limit, like AP.
+    Status: fixed. NREMT's Premium card shows on the results only once today's free questions are used (`LevlStudy.premiumAtLimit`), and Practice no longer shows the readiness gate (Exams and the dashboard keep it). The AP and A&P end panels follow the same rule.
 
 ## C. Tools
 
@@ -116,4 +130,5 @@ D14. Names for the same thing: tools page titles ("Simulators and skills tools",
 D15. Header short names uneven; Calc AB and BC both "Calculus" (set BC "Calculus BC").
 D16. Formula sheet, score calculator and justify pages reachable only from inside scripts; list them as cards on each AP
     course's Exams page where they exist.
+    Status: fixed. Each AP Exams page's rail lists its formula or equations sheet, score calculator (chem, physics, calc AB) and justify trainer as cards.
 D17. NREMT tools page "8 tools" vs "Seven tools" (same as C5).

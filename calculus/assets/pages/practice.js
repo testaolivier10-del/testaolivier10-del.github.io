@@ -20,7 +20,7 @@
    link (spec section 1, "Teachers"), and it prints as a worksheet.
 
    Free tier: ApCalcCore.serve per question shown (free units always; others
-   draw on the daily allowance). The summary ends with the Premium card.
+   draw on the daily allowance). The summary is the shared end panel (LevlStudy.end); the Premium card shows there once today's free questions are used.
 
    SKILLS HOOK: a branch that adds skills items (tools data) can mix them in
    by defining window.ApCalcSkills.practiceItems(filters) -> Promise of full
@@ -239,7 +239,7 @@
   function allowanceHtml(){
     var a = Core && Core.quota ? Core.quota() : null;
     if(!a || a.limit === Infinity) return '';
-    return LevlStudy.free('Free: <b>' + a.left + ' of ' + a.limit + '</b> questions left today, shared with review. Units 1 and 2 are unlimited.' + pill());
+    return LevlStudy.allowance(CK, 'Units 1 and 2 are unlimited.');
   }
   function sumText(){
     var pool = poolFor(state.mode), n = itemCount(pool);
@@ -479,37 +479,33 @@
     var weak = byTopic.filter(function(x){ return x.c < x.n; }).sort(function(a, b){ return a.c / a.n - b.c / b.n; });
     var pctRight = Math.round(right / res.length * 100);
     view('summary');
-    app.innerHTML = '<div class="calc-pr-summary">' +
-      '<div class="calc-pr-score"><span class="calc-pr-score-big">' + right + '<small>/' + res.length + '</small></span>' +
-        '<span><b>' + pctRight + '% right on the first try</b><span class="calc-small">' + esc(session.label) + '</span></span></div>' +
-      '<h2>What to study next</h2>' + (weak.length ? '<ul class="calc-pr-next-list">' + weak.slice(0, 4).map(function(x){
+    /* The shared end panel (LevlStudy.end, consistency audit 2026-11, B7): the score, what to study next, Retry
+       misses, one next step (the review queue when something is due), then the tables. */
+    var mode = session.mode, due = Core.reviewCount();
+    var again = { act: 'again', label: 'Another set like this' }, change = { act: 'setup', label: 'Change the set' };
+    app.innerHTML = '<div class="calc-pr-summary">' + LevlStudy.end({
+      right: right, total: res.length, line: pctRight + '% right on the first try', sub: esc(session.label), course: CK,
+      next: (weak.length ? '<ul class="calc-pr-next-list">' + weak.slice(0, 4).map(function(x){
           return '<li><div><b>' + esc(TOPIC[x.key] ? TOPIC[x.key].title : x.key) + '</b><span class="calc-small">' + (x.n - x.c) + ' of ' + x.n + ' missed</span></div>' +
             '<a class="btn-outline" href="' + lessonHref(x.key) + '">Lesson</a><a class="btn-outline" href="' + notesHref(x.key) + '">Notes</a></li>';
-        }).join('') + '</ul>' : '<p>Everything right. Try a timed <a href="' + BASE + 'exams.html">unit test</a> to test it under time.</p>') +
+        }).join('') + '</ul>' : '<p>Everything right. Try a timed <a href="' + BASE + 'exams.html">unit test</a> to test it under time.</p>'),
+      retry: stillWrong.length ? { act: 'retry', label: 'Retry the ' + plural(stillWrong.length, 'miss', 'misses') } : null,
+      step: due ? { href: BASE + 'review.html', label: 'Review ' + plural(due, 'due question'), why: 'Due questions come first: a review late is a relearn.' }
+        : { act: 'again', label: again.label, why: 'Nothing is due, so the next set keeps the same filters.' },
+      also: due ? [again, change] : [change],
+      more:
       '<h2>By topic</h2><div class="table-wrap" tabindex="0" role="region" aria-label="Results by topic"><table class="calc-pr-table"><thead><tr><th scope="col">Topic</th><th scope="col">Right</th><th scope="col">Mastery now</th></tr></thead><tbody>' +
         byTopic.map(function(x){ var m = Core.topicMastery(x.key); return '<tr><th scope="row"><a href="' + lessonHref(x.key) + '">' + esc(TOPIC[x.key] ? TOPIC[x.key].title : x.key) + '</a></th><td>' + x.c + '/' + x.n + '</td><td>' + Core.pct(m.value) + '</td></tr>'; }).join('') +
       '</tbody></table></div>' +
       '<h2>By mathematical practice</h2><div class="table-wrap" tabindex="0" role="region" aria-label="Results by mathematical practice"><table class="calc-pr-table"><thead><tr><th scope="col">Practice</th><th scope="col">Right</th></tr></thead><tbody>' +
         byPractice.map(function(x){ var p = PRACTICE[x.key]; return '<tr><th scope="row">' + esc(x.key + (p ? '. ' + p.name : '')) + '</th><td>' + x.c + '/' + x.n + '</td></tr>'; }).join('') +
-      '</tbody></table></div>' +
-      '<div class="calc-pr-actions">' +
-        (stillWrong.length ? '<button type="button" class="btn-press" data-act="retry">Retry the ' + plural(stillWrong.length, 'miss', 'misses') + '</button>' : '') +
-        '<button type="button" class="btn-press' + (stillWrong.length ? ' alt' : '') + '" data-act="again">Another set like this</button>' +
-        '<button type="button" class="btn-outline" data-act="setup">Change the set</button>' +
-        (Core.reviewCount() ? '<a class="btn-outline" href="' + BASE + 'review.html">Review queue (' + Core.reviewCount() + ' due)</a>' : '') +
-      '</div>' +
-      (window.LevlPremium && window.LevlPremium.card && res.length >= 5 ? window.LevlPremium.card(CK, 'summary') : '') +
-      '</div>';
-    var mode = session.mode;
-    app.querySelectorAll('[data-act]').forEach(function(b){
-      b.addEventListener('click', function(){
-        var a = b.getAttribute('data-act');
-        if(a === 'retry') start('retry', 0, stillWrong);
-        else if(a === 'again'){ if(mode === 'retry' || !poolFor(mode).length) renderSetup(); else start(mode, state.count); }
-        else renderSetup();
-      });
+      '</tbody></table></div>'
+    }) + '</div>';
+    LevlStudy.wire(app, {
+      retry: function(){ start('retry', 0, stillWrong); },
+      again: function(){ if(mode === 'retry' || !poolFor(mode).length) renderSetup(); else start(mode, state.count); },
+      setup: renderSetup
     });
-    var h = app.querySelector('.calc-pr-score'); h.setAttribute('tabindex', '-1'); h.focus();
   }
 
   /* ------------------------------------------------------------ boot */
@@ -531,7 +527,7 @@
       if(KINDS.some(function(k){ return k.id === p.get('type'); })) state.kind = p.get('type');
       if(/^[123]$/.test(p.get('diff') || '')) state.diff = p.get('diff');
       if(MODE[p.get('mode')]) state.mode = p.get('mode');
-      if(state.mode === 'flagged' && !modeUnavailable('flagged')) start('flagged', 0); else renderSetup();
+      if((state.mode === 'flagged' || state.mode === 'missed') && !modeUnavailable(state.mode)) start(state.mode, 0); else renderSetup();
       if(p.toString()){ var s = app.querySelector('.calc-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){
       app.innerHTML = '<p>The question bank did not load. Check your connection and reload; once a page has loaded online it also works offline.</p>';
