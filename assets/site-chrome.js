@@ -364,6 +364,7 @@
     'Flashcards':'<rect x="3" y="6" width="14" height="11" rx="2"/><path d="M7 3h12a2 2 0 012 2v9"/>',
     'Tools':     '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
     'Dashboard': '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    'Progress':  '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
     'More':      '<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',
   };
   var GENERIC_ICON = '<path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/>';
@@ -372,8 +373,9 @@
       (TAB_ICONS[label] || GENERIC_ICON) + '</svg>';
   }
 
-  /* The phone-width tab bar: the first four tabs, then "More" for the rest.
-     A page with four tabs or fewer gets them all and no More. */
+  /* The phone-width tab bar: every tab when there are six or fewer (every
+     course has six, design rules 2026-11-05); past six, the first four and
+     "More" for the rest. */
   function renderBottomNav(cfg, mount){
     var items = cfg.items || [];
     if(!items.length) return;
@@ -384,8 +386,8 @@
     var oldScrim = document.getElementById('levlBottomScrim');
     if(oldScrim) oldScrim.remove();
 
-    var shown = items.length > 5 ? items.slice(0, 4) : items;
-    var rest = items.length > 5 ? items.slice(4) : [];
+    var shown = items.length > 6 ? items.slice(0, 4) : items;
+    var rest = items.length > 6 ? items.slice(4) : [];
     var restActive = rest.some(function(it){ return it.active; });
 
     var nav = document.createElement('nav');
@@ -543,11 +545,64 @@
     return out;
   }
 
+  /* Six sections in every course (owner, 2026-11-05, docs/design-rules.md):
+     Home, Path, Learn, Practice, Exams, Progress. The course nav files still
+     list the old nine tabs; the extra pages fold into the section they belong
+     to and show as options at the top of that section's pages instead:
+     Review and Flashcards inside Practice, Glossary and Tools inside Learn. */
+  var SECTIONS = [
+    { label: 'Home', from: ['Home'] },
+    { label: 'Path', from: ['Path'] },
+    { label: 'Learn', from: ['Learn', 'Glossary', 'Tools'], sub: ['Units', 'Glossary', 'Tools'] },
+    { label: 'Practice', from: ['Practice', 'Review', 'Flashcards'], sub: ['Questions', 'Review', 'Flashcards'] },
+    { label: 'Exams', from: ['Exams'] },
+    { label: 'Progress', from: ['Dashboard', 'Progress'] }
+  ];
+  function sixSections(items){
+    var by = {};
+    (items || []).forEach(function(it){ by[it.label] = it; });
+    if(!by.Home || !by.Dashboard && !by.Progress) return { items: items, sub: null };
+    var out = [], sub = null;
+    SECTIONS.forEach(function(sec){
+      var have = sec.from.map(function(l){ return by[l]; });
+      var first = have.filter(Boolean)[0];
+      if(!first) return;
+      var on = have.some(function(it){ return it && it.active; });
+      out.push({ href: first.href, label: sec.label, active: on });
+      if(on && sec.sub){
+        var opts = [];
+        have.forEach(function(it, i){ if(it) opts.push({ href: it.href, label: sec.sub[i], active: !!it.active }); });
+        if(opts.length > 1) sub = { section: sec.label, items: opts };
+      }
+    });
+    return { items: out, sub: sub };
+  }
+  // The options inside Learn or Practice: a slim row of pills right under the header, above the banner.
+  function renderSubnav(sub, course, after){
+    var old = document.getElementById('levlSubnav');
+    if(old) old.remove();
+    if(!sub || !after || !after.parentNode) return;
+    var el = document.createElement('nav');
+    el.id = 'levlSubnav';
+    el.className = 'course-subnav';
+    el.setAttribute('aria-label', (course ? course + ' ' : '') + sub.section);
+    el.innerHTML = '<div class="course-subnav__inner">' + sub.items.map(function(it){
+      return '<a href="' + it.href + '" class="course-subnav__link' + (it.active ? ' active' : '') + '"' +
+        (it.active ? ' aria-current="page"' : '') + '>' + escapeHtml(it.label) + '</a>';
+    }).join('') + '</div>';
+    after.parentNode.insertBefore(el, after.nextSibling);
+  }
+
   function render(cfg){
     var mount = document.getElementById('site-header');
     if(!mount) return;
     var courseKey = courseKeyOf(cfg.subject);
-    if(COURSE_SHORT[courseKey]) cfg.items = withPathTab(cfg.items);
+    var sub = null;
+    if(COURSE_SHORT[courseKey]){
+      cfg.items = withPathTab(cfg.items);
+      var six = sixSections(cfg.items);
+      cfg.items = six.items; sub = six.sub;
+    }
     // The course tint (see --ctint in theme.css) keys off this.
     document.body.setAttribute('data-course', courseKey);
 
@@ -578,6 +633,7 @@
 
     wireOverflowFade(nav.querySelector('.course-nav__inner'));
     renderBottomNav(cfg, mount);
+    renderSubnav(sub, cfg.course, nav);
     wireControls(courseKey);
 
     syncHeights();

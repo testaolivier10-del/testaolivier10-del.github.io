@@ -886,8 +886,25 @@ strong,b{font-weight:900;}
 .course-nav__link:hover{color:var(--ink);background:var(--hover-tint);}
 .course-nav__link.active{color:var(--cink);background:var(--ctint);}
 
-/* Phone: a bottom tab bar instead of the scrolling row. The first four tabs
-   sit in it; the rest fold into "More", which opens a sheet. */
+/* The options inside Learn (Units, Glossary, Tools) and Practice (Questions,
+   Review, Flashcards): a slim pill row at the top of the page, on every width. */
+.course-subnav{background:var(--header-bg);border-bottom:1px solid var(--line);}
+.course-subnav__inner{
+  max-width:1180px;margin:0 auto;padding:8px clamp(12px,3vw,42px);
+  display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;
+}
+.course-subnav__inner::-webkit-scrollbar{display:none;}
+.course-subnav__link{
+  display:inline-block;padding:6px 14px;border-radius:var(--radius-pill);
+  font:800 13.5px var(--font-ui);color:var(--muted);text-decoration:none;white-space:nowrap;
+  box-shadow:inset 0 0 0 1.5px var(--line);
+}
+.course-subnav__link:hover{color:var(--ink);background:var(--hover-tint);}
+.course-subnav__link.active{color:var(--cink);background:var(--ctint);box-shadow:none;}
+
+/* Phone: a bottom tab bar instead of the scrolling row. Every course's six
+   sections fit in it; past six, the first four sit in it and the rest fold
+   into "More", which opens a sheet. */
 .bottom-nav,.bottom-sheet,.bottom-scrim{display:none;}
 @media (max-width:640px){
   .bottom-sheet,.bottom-scrim{display:block;}
@@ -902,7 +919,7 @@ strong,b{font-weight:900;}
     font:900 10.5px var(--font-ui);color:var(--muted);text-decoration:none;
     background:none;border:0;padding:0;cursor:pointer;min-width:0;
   }
-  .bottom-nav__item .i{display:flex;padding:4px 14px;border-radius:12px;transition:background-color .15s ease;}
+  .bottom-nav__item .i{display:flex;padding:4px 12px;border-radius:12px;transition:background-color .15s ease;}
   .bottom-nav__item .i svg{width:22px;height:22px;}
   .bottom-nav__item.active{color:var(--cink);} .bottom-nav__item.active .i{background:var(--ctint);}
   .bottom-nav__item span.t{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
