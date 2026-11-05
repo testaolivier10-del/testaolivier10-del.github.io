@@ -10,7 +10,7 @@
  * route cannot create the cron trigger from wrangler.toml, so you have to add
  * it by hand under Settings -> Triggers.
  *
- * Built: config.js, store.js, umami.js, push.js, email.js, reminders.js, premium.js, ai.js, frq-text.js, frq-calibration.js, frq-grade.js, index.js
+ * Built: config.js, store.js, umami.js, push.js, email.js, reminders.js, premium.js, ai.js, frq-text.js, frq-calibration.js, frq-grade.js, class-common.js, class-mail.js, class-frq.js, class-google.js, class-lti.js, classes.js, index.js
  */
 
 /* ===========================================================================
@@ -2853,6 +2853,1657 @@ async function gradeRoute(request, env, { now = Date.now(), later, fetcher } = {
 }
 
 /* ===========================================================================
+   class-common.js
+   =========================================================================== */
+
+/* What the teacher-class integrations share (docs/teacher-classes.md, stream C): who is calling, whether
+   they own the class, signed tokens, encryption for stored OAuth tokens, plain-text email through Resend,
+   and the few small HTML pages the Worker serves itself.
+
+   Secrets (wrangler secret put NAME):
+     CLASS_SECRET     32+ random characters. Signs OAuth state, LTI state and tickets, the "stop teacher
+                      reminders" link, and (through HKDF, separate keys per use) encrypts the Google refresh
+                      token before it is stored. Rotating it signs everyone out of Google Classroom.
+     RESEND_API_KEY   already used by the study reminders (src/email.js); REMINDER_FROM is the sender.
+
+   Every name here starts with cls: scripts/build-worker.mjs flattens all modules into one scope. */
+
+
+
+const CLS_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const clsUuid = (v) => typeof v === 'string' && CLS_UUID.test(v);
+const clsEnc = new TextEncoder();
+
+/* A feature flag: "on", "owner" (the owner's account only, to try it) or "off" (unset). */
+function clsFlag(env, name) {
+  const v = String((env && env[name]) || '').trim().toLowerCase();
+  return v === 'on' || v === 'owner' ? v : 'off';
+}
+
+async function clsBody(request) {
+  try {
+    const b = await request.json();
+    return b && typeof b === 'object' && !Array.isArray(b) ? b : null;
+  } catch { return null; }
+}
+
+/* The signed-in user behind the request, or null. */
+async function clsUser(env, request) {
+  const token = bearerToken(request);
+  if (!token) return null;
+  return sessionUser(env, token);
+}
+
+function clsReady(env) {
+  return !!(env && env.SUPABASE_URL && env.SUPABASE_SERVICE_KEY && env.CLASS_SECRET && String(env.CLASS_SECRET).length >= 32);
+}
+
+async function clsRows(env, path) {
+  const res = await sb(env, path);
+  if (!res.ok) throw new Error(`db ${res.status}`);
+  const rows = await res.json();
+  return Array.isArray(rows) ? rows : [];
+}
+
+/* The class if `uid` teaches it, else null. */
+async function clsOwnClass(env, uid, classId) {
+  if (!clsUuid(classId) || !clsUuid(uid)) return null;
+  const rows = await clsRows(env, `classes?select=id,name,course,code,archived,teacher_id&id=eq.${classId}&teacher_id=eq.${uid}&limit=1`);
+  return rows[0] || null;
+}
+
+/* { cls, role } when `uid` teaches the class as its owner or a co-teacher (class_coteachers), else null.
+   Co-teachers may remind, share reports and score; Google, LTI and grade passback use clsOwnClass. */
+async function clsTeachClass(env, uid, classId) {
+  if (!clsUuid(classId) || !clsUuid(uid)) return null;
+  const cls = await clsClass(env, classId);
+  if (!cls) return null;
+  if (cls.teacher_id === uid) return { cls, role: 'owner' };
+  const res = await sb(env, `class_coteachers?select=user_id&class_id=eq.${classId}&user_id=eq.${uid}&limit=1`);
+  if (!res.ok) return null;
+  return (await res.json()).length ? { cls, role: 'co' } : null;
+}
+
+async function clsClass(env, classId) {
+  if (!clsUuid(classId)) return null;
+  const rows = await clsRows(env, `classes?select=id,name,course,code,archived,teacher_id&id=eq.${classId}&limit=1`);
+  return rows[0] || null;
+}
+
+async function clsAssignment(env, classId, id) {
+  if (!clsUuid(classId) || !clsUuid(id)) return null;
+  const rows = await clsRows(env, `class_assignments?select=id,class_id,kind,title,spec,opens_at,due_at,late_until,required,students&id=eq.${id}&class_id=eq.${classId}&limit=1`);
+  return rows[0] || null;
+}
+
+async function clsMembers(env, classId) {
+  return clsRows(env, `class_members?select=student_id,name&class_id=eq.${classId}`);
+}
+
+async function clsIsMember(env, classId, uid) {
+  if (!clsUuid(classId) || !clsUuid(uid)) return false;
+  const rows = await clsRows(env, `class_members?select=student_id&class_id=eq.${classId}&student_id=eq.${uid}&limit=1`);
+  return rows.length > 0;
+}
+
+async function clsTeacherName(env, uid) {
+  try {
+    const rows = await clsRows(env, `teacher_profiles?select=display_name&user_id=eq.${uid}&limit=1`);
+    return (rows[0] && rows[0].display_name) || 'Your teacher';
+  } catch { return 'Your teacher'; }
+}
+
+async function clsRpc(env, name, args) {
+  const res = await sb(env, `rpc/${name}`, { method: 'POST', body: JSON.stringify(args || {}) });
+  if (!res.ok) throw new Error(`rpc ${name} ${res.status}`);
+  const t = await res.text();
+  return t ? JSON.parse(t) : null;
+}
+
+/* Insert or update rows (PostgREST upsert on the primary key). */
+async function clsUpsert(env, table, rows, onConflict) {
+  const q = onConflict ? `?on_conflict=${onConflict}` : '';
+  const res = await sb(env, `${table}${q}`, {
+    method: 'POST',
+    headers: { Prefer: 'resolution=merge-duplicates,return=minimal' },
+    body: JSON.stringify(rows),
+  });
+  if (!res.ok) throw new Error(`upsert ${table} ${res.status}`);
+}
+
+/* ------------------------------------------------------------ text */
+
+/* Bare domains ("evil.example", "bit.ly/x"), which mail apps turn into links. */
+const CLS_DOMAIN = /\b(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+(?:com|net|org|io|co|ly|me|info|biz|xyz|app|dev|site|online|link|gg|tk|ru|cn|us|uk|edu|gov|ai|to|cc|tv|page|club|shop|top|live|click|example)\b(?:\/\S*)?/gi;
+
+/* Plain text for an email, newlines kept: no other control characters, no links or bare domains. */
+function clsText(s, max = 1000) {
+  return String(s == null ? '' : s)
+    .replace(/[\u0000-\u0009\u000b-\u001f\u007f]+/g, ' ')
+    .replace(/\b(?:https?:\/\/|www\.)\S+/gi, '')
+    .replace(CLS_DOMAIN, '')
+    .replace(/[ \t]+/g, ' ').trim().slice(0, max);
+}
+
+/* One line of plain text for an email: no control characters, no links or bare domains (a teacher's note must
+   not turn our sender into a link shortener), at most `max` characters. */
+function clsLine(s, max = 120) {
+  return clsText(String(s == null ? '' : s).replace(/[\r\n]+/g, ' '), 100000).replace(/\s+/g, ' ').trim().slice(0, max);
+}
+
+const clsEmailOk = (e) => typeof e === 'string' && e.length <= 120 && /^[^\s@<>"',;]+@[^\s@<>"',;]+\.[a-z]{2,}$/i.test(e);
+
+function clsEsc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+/* ------------------------------------------------------------ base64url and keys */
+
+function clsB64u(bytes) {
+  const b = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
+  let s = '';
+  for (let i = 0; i < b.length; i += 0x8000) s += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000));
+  return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+function clsUnB64u(s) {
+  const t = String(s || '').replace(/-/g, '+').replace(/_/g, '/');
+  const bin = atob(t + '==='.slice((t.length + 3) % 4));
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+
+const clsB64uJson = (o) => clsB64u(clsEnc.encode(JSON.stringify(o)));
+const clsUnB64uJson = (s) => JSON.parse(new TextDecoder().decode(clsUnB64u(s)));
+
+const clsKeyCache = new Map();
+async function clsKey(env, label, algo, usages) {
+  const id = `${label}:${env.CLASS_SECRET}`;
+  if (clsKeyCache.has(id)) return clsKeyCache.get(id);
+  const base = await crypto.subtle.importKey('raw', clsEnc.encode(String(env.CLASS_SECRET)), 'HKDF', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey(
+    { name: 'HKDF', hash: 'SHA-256', salt: clsEnc.encode('levlprep-classes-v1'), info: clsEnc.encode(label) },
+    base, algo, false, usages);
+  if (clsKeyCache.size > 20) clsKeyCache.clear();
+  clsKeyCache.set(id, key);
+  return key;
+}
+const clsHmacKey = (env) => clsKey(env, 'sign', { name: 'HMAC', hash: 'SHA-256', length: 256 }, ['sign', 'verify']);
+const clsAesKey = (env) => clsKey(env, 'token-encryption', { name: 'AES-GCM', length: 256 }, ['encrypt', 'decrypt']);
+
+/* A signed, optionally expiring token: base64url(JSON) + "." + base64url(HMAC). `kind` is signed in, so a
+   token made for one purpose (an OAuth state) is refused for another (a stop link). ttlSeconds null = no
+   expiry. */
+async function clsSign(env, kind, data, ttlSeconds, now = Date.now()) {
+  const body = clsB64uJson({ k: kind, d: data, e: ttlSeconds == null ? 0 : Math.floor(now / 1000) + ttlSeconds });
+  const sig = await crypto.subtle.sign('HMAC', await clsHmacKey(env), clsEnc.encode(body));
+  return `${body}.${clsB64u(sig)}`;
+}
+
+async function clsVerify(env, kind, token, now = Date.now()) {
+  if (typeof token !== 'string' || token.length > 8000) return null;
+  const dot = token.lastIndexOf('.');
+  if (dot < 1) return null;
+  const body = token.slice(0, dot);
+  let ok = false;
+  try {
+    ok = await crypto.subtle.verify('HMAC', await clsHmacKey(env), clsUnB64u(token.slice(dot + 1)), clsEnc.encode(body));
+  } catch { return null; }
+  if (!ok) return null;
+  let o;
+  try { o = clsUnB64uJson(body); } catch { return null; }
+  if (!o || o.k !== kind) return null;
+  if (o.e && o.e < Math.floor(now / 1000)) return null;
+  return o.d;
+}
+
+async function clsEncrypt(env, text) {
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, await clsAesKey(env), clsEnc.encode(text));
+  return `v1.${clsB64u(iv)}.${clsB64u(ct)}`;
+}
+
+async function clsDecrypt(env, blob) {
+  const p = String(blob || '').split('.');
+  if (p.length !== 3 || p[0] !== 'v1') return null;
+  try {
+    const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: clsUnB64u(p[1]) }, await clsAesKey(env), clsUnB64u(p[2]));
+    return new TextDecoder().decode(pt);
+  } catch { return null; }
+}
+
+function clsRandom(n = 32) {
+  return clsB64u(crypto.getRandomValues(new Uint8Array(n)));
+}
+
+const clsHash = (s) => sha256Hex(String(s));
+
+/* ------------------------------------------------------------ email */
+
+function clsMailReady(env) {
+  return !!(env && env.RESEND_API_KEY);
+}
+
+/* One plain-text email. Returns { ok, outcome } with resendOutcome()'s words (ok, gone, config, transient). */
+async function clsMail(env, { to, subject, text, replyTo, headers }) {
+  const body = {
+    from: env.REMINDER_FROM || 'LevlPrep <reminders@levlprep.com>',
+    to: [to],
+    subject: clsLine(subject, 150),
+    text,
+  };
+  if (replyTo) body.reply_to = replyTo;
+  if (headers) body.headers = headers;
+  try {
+    const res = await timedFetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const outcome = await resendOutcome(res);
+    return { ok: outcome === 'ok', outcome };
+  } catch {
+    return { ok: false, outcome: 'transient' };
+  }
+}
+
+/* ------------------------------------------------------------ the Worker's own pages */
+
+/* A small page served by the Worker (the stop link, an LTI error, the deep-linking hand-back). No third-party
+   anything; `formAction` names where its one form may post; `script` is inline code allowed by its hash. */
+async function clsPage(title, inner, { status = 200, formAction = "'self'", script = '' } = {}) {
+  let scriptSrc = "'none'";
+  if (script) {
+    const d = await crypto.subtle.digest('SHA-256', clsEnc.encode(script));
+    scriptSrc = `'sha256-${btoa(String.fromCharCode(...new Uint8Array(d)))}'`;
+  }
+  const html = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
+    `<meta name="robots" content="noindex"><title>${clsEsc(title)} | LevlPrep</title>` +
+    '<style>body{margin:0;background:#F3F6F4;font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#17241F}' +
+    'main{max-width:460px;margin:40px auto;background:#fff;border-radius:16px;padding:28px}h1{font-size:21px;margin:0 0 10px}p{color:#526C66}' +
+    'button,.b{display:inline-block;background:#127264;color:#fff;border:0;border-radius:12px;padding:12px 22px;font-weight:700;font-size:15px;text-decoration:none;cursor:pointer}</style>' +
+    `</head><body><main><p style="font-size:13px;font-weight:700;color:#127264;letter-spacing:.04em;text-transform:uppercase;margin:0 0 12px">LevlPrep</p>${inner}</main>` +
+    (script ? `<script>${script}</script>` : '') + '</body></html>';
+  return new Response(html, {
+    status,
+    headers: {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store',
+      'Referrer-Policy': 'no-referrer',
+      'Content-Security-Policy': `default-src 'none'; style-src 'unsafe-inline'; script-src ${scriptSrc}; form-action ${formAction}; base-uri 'none'`,
+    },
+  });
+}
+
+function clsRedirect(url, status = 302) {
+  return new Response(null, { status, headers: { Location: url, 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer' } });
+}
+
+/* ===========================================================================
+   class-mail.js
+   =========================================================================== */
+
+/* Teacher classes, stream C (docs/teacher-classes.md): reminder emails, family progress report links and
+   Class Premium quote requests.
+
+   Reminders. Only when a teacher presses Send, only to students in that teacher's class who joined it, never
+   on a schedule and never to anyone else (parents are never emailed and their addresses are never stored).
+   Co-teachers of the class may send them too. The teacher never sees a student's address: the Worker looks it
+   up (class_member_emails) and sends.
+   Limits (class_mail_take, atomic in SQL): one teacher reminder per student per 20 hours from any teacher,
+   200 a day per teacher, nothing to a student who pressed "stop teacher reminders" in an earlier one; and
+   at most 60 students a request. Plain, friendly text, no tracking, no links but the course and the stop link.
+
+   Report links. A teacher (for a student in their class) or the student (for themselves) makes a link that
+   shows that student's progress in that class, read only, for 1 to 30 days. Only a SHA-256 of the token is
+   stored; leaving the class or removing the student kills every link at once (cascade).
+
+   Quotes. A form for Class Premium by quote or purchase order: stored, emailed to the owner (CLASS_SALES_TO,
+   default hello@levlprep.com) with Reply-To the signed-in account, and a short receipt to that account's address
+   only (never to a typed address). Typed text loses links and bare domains. Polar, which
+   sells Premium, invoices only orders that are already paid (a PDF for every paid order); it has no unpaid
+   invoice or net-30 terms, so a purchase order is handled by the owner by email. */
+
+
+
+
+const CLASS_REMIND_MAX = 60;
+const CLASS_NOTE_MAX = 300;
+const CLASS_REPORT_DAYS = { min: 1, max: 30, default: 14 };
+const CLASS_QUOTES_PER_DAY = 3;
+
+function clsDue(iso, tz) {
+  const t = Date.parse(iso || '');
+  if (!Number.isFinite(t)) return '';
+  let zone = 'UTC';
+  try { if (tz) { new Intl.DateTimeFormat('en-US', { timeZone: tz }); zone = tz; } } catch { zone = 'UTC'; }
+  return new Intl.DateTimeFormat('en-US', { timeZone: zone, weekday: 'long', month: 'long', day: 'numeric' }).format(new Date(t));
+}
+
+const clsFirst = (name) => clsLine(name, 60).split(' ')[0] || 'there';
+
+function clsStopUrl(env, token) {
+  return `${apiUrl(env)}/class/email/stop?s=${encodeURIComponent(token)}`;
+}
+
+/* The reminder, as the student reads it. Exported for the tests. */
+function reminderEmail({ student, teacher, className, course, assignment, note, tz, link, stop, now = Date.now() }) {
+  const courseName = COURSE_NAMES[course] || 'your course';
+  const lines = [`Hi ${clsFirst(student)},`, ''];
+  if (assignment) {
+    const due = assignment.due_at ? clsDue(assignment.due_at, tz) : '';
+    const past = assignment.due_at && Date.parse(assignment.due_at) < now;
+    lines.push(`${teacher} sent you a reminder about "${clsLine(assignment.title, 100)}" in ${clsLine(className, 60)} (${courseName}).` +
+      (due ? (past ? ` It was due ${due}, and it still counts if you finish it.` : ` It is due ${due}.`) : ''));
+  } else {
+    lines.push(`${teacher} sent you a reminder about your work in ${clsLine(className, 60)} (${courseName}).`);
+  }
+  if (note) lines.push('', `${teacher} added: "${note}"`);
+  lines.push('', `Open your course: ${link}`, '',
+    `You are getting this because you joined ${teacher}'s class on LevlPrep. Your teacher chose to send it; LevlPrep never sends these on its own, and your teacher does not see your email address.`,
+    '', `Stop reminders from teachers: ${stop}`);
+  const subject = assignment ? `Reminder from ${teacher}: ${clsLine(assignment.title, 80)}` : `A reminder from ${teacher}`;
+  return { subject, text: lines.join('\n') };
+}
+
+/* POST /class/remind { class, assignment?, students: [ids], note?, tz? } */
+async function classRemind(request, env, now = Date.now()) {
+  if (!clsReady(env) || !clsMailReady(env)) return { status: 503, body: { error: 'Reminder emails are not set up yet.' } };
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in again.' } };
+  const p = await clsBody(request);
+  if (!p) return { status: 400, body: { error: 'Invalid JSON' } };
+  const ids = Array.isArray(p.students) ? [...new Set(p.students.filter(clsUuid))] : [];
+  if (!ids.length) return { status: 400, body: { error: 'Pick at least one student.' } };
+  if (ids.length > CLASS_REMIND_MAX) return { status: 400, body: { error: `At most ${CLASS_REMIND_MAX} students at a time.` } };
+  const tc = await clsTeachClass(env, user.id, p.class);
+  const cls = tc && tc.cls;
+  if (!cls || cls.archived) return { status: 404, body: { error: 'Class not found.' } };
+  let assignment = null;
+  if (p.assignment) {
+    assignment = await clsAssignment(env, cls.id, p.assignment);
+    if (!assignment) return { status: 404, body: { error: 'Assignment not found.' } };
+  }
+  const note = clsLine(p.note, CLASS_NOTE_MAX);
+  const teacher = clsLine(await clsTeacherName(env, user.id), 60);
+  const people = await clsRpc(env, 'class_member_emails', { p_class: cls.id });
+  const byId = new Map((people || []).map((m) => [m.id, m]));
+  const link = `${siteUrl(env)}/${urlCourse(cls.course)}/?ref=class-remind`;
+  let sent = 0;
+  const skipped = [];
+  for (const id of ids) {
+    const m = byId.get(id);
+    if (!m) { skipped.push({ id, why: 'not-in-class' }); continue; }
+    if (assignment && Array.isArray(assignment.students) && !assignment.students.includes(id)) { skipped.push({ id, why: 'not-assigned' }); continue; }
+    if (!m.email) { skipped.push({ id, why: 'no-email' }); continue; }
+    if (m.optout) { skipped.push({ id, why: 'stopped' }); continue; }
+    const take = await clsRpc(env, 'class_mail_take', { p_teacher: user.id, p_class: cls.id, p_student: id, p_kind: 'remind', p_recipient: null });
+    if (take !== true) { skipped.push({ id, why: 'limit' }); continue; }
+    const stop = clsStopUrl(env, await clsSign(env, 'stop', { u: id }, null));
+    const mail = reminderEmail({ student: m.name, teacher, className: cls.name, course: cls.course, assignment, note, tz: p.tz, link, stop, now });
+    const r = await clsMail(env, {
+      to: m.email, subject: mail.subject, text: mail.text,
+      headers: { 'List-Unsubscribe': `<${stop}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' },
+    });
+    if (r.outcome === 'config') return { status: 503, body: { error: 'Reminder emails are not set up yet.', sent, skipped } };
+    if (r.ok) sent++; else skipped.push({ id, why: 'send-failed' });
+  }
+  return { status: 200, body: { sent, skipped } };
+}
+
+/* GET /class/email/stop?s=  a confirmation (mail scanners follow links; only the POST acts);
+   POST                      stops teacher reminders for that student (also the one-click header). */
+async function classEmailStop(request, env) {
+  const url = new URL(request.url);
+  const token = url.searchParams.get('s') || '';
+  const d = clsReady(env) ? await clsVerify(env, 'stop', token) : null;
+  if (!d || !(clsUuid(d.u) || /^[0-9a-f]{64}$/.test(d.h || ''))) {
+    return clsPage('Link not valid', '<h1>This link does not work</h1><p>It may have been cut short. Copy the whole link from the email, or reply to your teacher.</p>', { status: 400 });
+  }
+  if (request.method === 'POST') {
+    try {
+      if (d.u) await clsRpc(env, 'class_email_stop', { p_student: d.u });
+      else await clsRpc(env, 'class_email_stop_addr', { p_hash: d.h });
+    } catch {
+      return clsPage('Try again', '<h1>That did not work</h1><p>Please try again in a minute.</p>', { status: 503 });
+    }
+    return clsPage('Stopped', d.u
+      ? '<h1>Teacher reminders are off</h1><p>No teacher can send you reminder emails through LevlPrep now. Your classes and your work are not changed.</p>'
+      : '<h1>No more invites</h1><p>LevlPrep will not send class invites or teacher reminders to this address again.</p>');
+  }
+  const action = clsEsc(`${apiUrl(env)}/class/email/stop?s=${encodeURIComponent(token)}`);
+  return clsPage('Stop teacher reminders', '<h1>Stop reminder emails from teachers?</h1><p>Your classes stay as they are; only the emails stop.</p>' +
+    `<form method="post" action="${action}"><button type="submit">Stop teacher reminders</button></form>`,
+  { formAction: clsEsc(apiUrl(env)) });
+}
+
+/* ------------------------------------------------------------ family progress reports */
+
+/* Who may make or revoke a link for (class, student): the class's teacher, or the student. */
+async function clsReportAllowed(env, uid, classId, studentId) {
+  if (!clsUuid(classId) || !clsUuid(studentId)) return false;
+  if (uid === studentId) return clsIsMember(env, classId, uid);
+  const tc = await clsTeachClass(env, uid, classId);
+  return !!tc && clsIsMember(env, classId, studentId);
+}
+
+/* POST /class/report-link { class, student, days? } -> { url, expires_at } */
+async function classReportLink(request, env, now = Date.now()) {
+  if (!clsReady(env)) return { status: 503, body: { error: 'Share links are not set up yet. Use Print instead.' } };
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in again.' } };
+  const p = await clsBody(request);
+  if (!p) return { status: 400, body: { error: 'Invalid JSON' } };
+  if (!(await clsReportAllowed(env, user.id, p.class, p.student))) return { status: 404, body: { error: 'Student not found in this class.' } };
+  const days = Math.max(CLASS_REPORT_DAYS.min, Math.min(CLASS_REPORT_DAYS.max, Math.round(Number(p.days) || CLASS_REPORT_DAYS.default)));
+  const token = clsRandom(24);
+  const expires = new Date(now + days * 86400000).toISOString();
+  await sb(env, `class_report_links?class_id=eq.${p.class}&student_id=eq.${p.student}&expires_at=lt.${encodeURIComponent(new Date(now).toISOString())}`, { method: 'DELETE' });
+  const res = await sb(env, 'class_report_links', {
+    method: 'POST', headers: { Prefer: 'return=minimal' },
+    body: JSON.stringify({ token_hash: await clsHash(token), class_id: p.class, student_id: p.student, created_by: user.id, expires_at: expires }),
+  });
+  if (!res.ok) return { status: 503, body: { error: 'Could not make the link. Try again.' } };
+  // In the fragment, so the token is never sent to the static host or written in its logs.
+  return { status: 200, body: { url: `${siteUrl(env)}/teach/report.html#t=${token}`, expires_at: expires, days } };
+}
+
+/* POST /class/report-link/revoke { class, student }: every link for that student in that class. */
+async function classReportRevoke(request, env) {
+  if (!clsReady(env)) return { status: 503, body: { error: 'Not set up yet.' } };
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in again.' } };
+  const p = await clsBody(request);
+  if (!p || !(await clsReportAllowed(env, user.id, p.class, p.student))) return { status: 404, body: { error: 'Student not found in this class.' } };
+  const res = await sb(env, `class_report_links?class_id=eq.${p.class}&student_id=eq.${p.student}`, { method: 'DELETE' });
+  return res.ok ? { status: 200, body: { ok: true } } : { status: 503, body: { error: 'Try again.' } };
+}
+
+/* POST /class/report { t } -> the report's data, for whoever holds the link. No sign-in. */
+async function classReportGet(request, env) {
+  if (!clsReady(env)) return { status: 503, body: { error: 'Not set up yet.' } };
+  const p = await clsBody(request);
+  const t = p && typeof p.t === 'string' ? p.t : '';
+  if (!/^[A-Za-z0-9_-]{20,64}$/.test(t)) return { status: 404, body: { error: 'This link is not valid.' } };
+  const data = await clsRpc(env, 'class_report_get', { p_hash: await clsHash(t) });
+  if (!data) return { status: 404, body: { error: 'This link has expired or was turned off. Ask for a new one.' } };
+  return { status: 200, body: data };
+}
+
+/* ------------------------------------------------------------ Class Premium quotes */
+
+const QUOTE_FIELDS = { name: 80, role: 60, school: 120, district: 120, email: 120, phone: 40, students: 10, classes: 10,
+  courses: 200, start: 40, po_number: 60, billing: 400, tax_exempt: 10, notes: 1000 };
+
+function quoteFields(p) {
+  const out = {};
+  for (const [k, max] of Object.entries(QUOTE_FIELDS)) {
+    const v = p && p[k];
+    if (v == null || v === '') continue;
+    if (k === 'email') { if (clsEmailOk(String(v).trim())) out.email = String(v).trim(); continue; }
+    out[k] = k === 'billing' || k === 'notes' ? clsText(v, max) : clsLine(v, max);
+  }
+  out.kind = p && p.kind === 'po' ? 'po' : 'quote';
+  return out;
+}
+
+/* POST /class/quote { kind: quote|po, name, school, students, ... } */
+async function classQuote(request, env) {
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY || !clsMailReady(env)) {
+    return { status: 503, body: { error: 'The form is not set up yet. Email hello@levlprep.com instead.' } };
+  }
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in first, so we can reply to you.' } };
+  const p = await clsBody(request);
+  if (!p) return { status: 400, body: { error: 'Invalid JSON' } };
+  const f = quoteFields(p);
+  if (!f.name || !f.school || !(Number(f.students) > 0)) return { status: 400, body: { error: 'Add your name, your school and how many students.' } };
+  const since = encodeURIComponent(new Date(Date.now() - 86400000).toISOString());
+  const recent = await sb(env, `class_quote_requests?select=id&user_id=eq.${user.id}&created_at=gt.${since}`);
+  if (recent.ok && (await recent.json()).length >= CLASS_QUOTES_PER_DAY) {
+    return { status: 429, body: { error: 'We already have your request. We answer within two school days.' } };
+  }
+  // Replies and the receipt go to the signed-in account only; a typed address is shown to the owner, never emailed.
+  const reply = user.email || null;
+  const saved = await sb(env, 'class_quote_requests', { method: 'POST', headers: { Prefer: 'return=minimal' }, body: JSON.stringify({ user_id: user.id, data: { ...f, account: user.email } }) });
+  if (!saved.ok) return { status: 503, body: { error: 'Could not send it. Email hello@levlprep.com instead.' } };
+  const label = f.kind === 'po' ? 'Purchase order' : 'Quote';
+  const text = [`${label} request for Class Premium`, '',
+    ...Object.entries(f).filter(([k]) => k !== 'kind').map(([k, v]) => `${k}: ${v}`),
+    '', `Account (reply goes here): ${user.email}`, '',
+    'Polar invoices paid orders only; a purchase order needs an invoice from you directly (see docs/teacher-classes.md).'].join('\n');
+  const owner = await clsMail(env, { to: env.CLASS_SALES_TO || 'hello@levlprep.com', subject: `${label} request: ${f.school} (${f.students} students)`, text, replyTo: reply || undefined });
+  if (!owner.ok) return { status: 503, body: { error: 'Saved, but the email did not go out. We will still see it; you can also email hello@levlprep.com.' } };
+  if (reply) {
+    await clsMail(env, {
+      to: reply, subject: 'We got your Class Premium request',
+      text: [`Hi ${clsFirst(f.name)},`, '', `Thanks for asking about Class Premium for ${f.school}. We reply within two school days with a quote` +
+        (f.kind === 'po' ? ' and the details your purchasing office needs for the purchase order.' : '.'),
+      '', 'Nothing has been charged and nothing changes for your class until you decide.', '', 'LevlPrep', 'hello@levlprep.com'].join('\n'),
+    });
+  }
+  return { status: 200, body: { ok: true } };
+}
+
+/* ===========================================================================
+   class-frq.js
+   =========================================================================== */
+
+/* Teacher scoring of free responses, the AI first pass (docs/teacher-classes.md, stream C).
+
+   The teacher scores a student's sent answer against the rubric in the browser and saves it with
+   teach_frq_score (SQL); this route only suggests a first pass, which the teacher can change point by point
+   before saving. Nothing here is saved and nothing reaches the student until the teacher saves.
+
+   Gated exactly like the student grader (docs/frq-grader.md): FRQ_GRADER "on" (or "owner" for the owner's
+   own account), and only with a model that passed the launch rule in that file's Results table
+   (CLASS_FRQ_PASSED_MODELS). Claude only: the Workers AI backup was never put through the eval, so it does
+   not score anyone's work for a teacher. A teacher has CLASS_FRQ_DAILY first passes a day (the same
+   frq_grade_daily counter as students, under the teacher's own account). */
+
+
+
+
+/* Models whose full eval pass met the launch rule (docs/frq-grader.md, "Results"). Add one only with its row. */
+const CLASS_FRQ_PASSED_MODELS = ['claude-haiku-5-5'];
+const CLASS_FRQ_DAILY = 60;
+
+function classFrqAiOpen(env, isOwner) {
+  const mode = graderMode(env);
+  if (mode === 'off' || (mode === 'owner' && !isOwner)) return { ok: false, why: 'off' };
+  if (!CLASS_FRQ_PASSED_MODELS.includes(claudeModel(env))) return { ok: false, why: 'model' };
+  if (!env.ANTHROPIC_API_KEY) return { ok: false, why: 'key' };
+  return { ok: true };
+}
+
+/* POST /class/frq/ai { class, assignment, student } -> { parts: [{ label, points: [{ earned, quote, reason }] }], summary } */
+async function classFrqAi(request, env, { fetcher } = {}) {
+  if (graderMode(env) === 'off') return { status: 404, body: { error: 'The AI first pass is not turned on. Score it with the rubric.' } };
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in again.' } };
+  const open = classFrqAiOpen(env, await isOwnerEmail(user.email));
+  if (!open.ok) return { status: 404, body: { error: 'The AI first pass is not turned on. Score it with the rubric.' } };
+  const p = await clsBody(request);
+  if (!p || !clsUuid(p.assignment) || !clsUuid(p.student)) return { status: 400, body: { error: 'Invalid request' } };
+  const tc = await clsTeachClass(env, user.id, p.class);
+  const cls = tc && tc.cls;
+  if (!cls) return { status: 404, body: { error: 'Class not found.' } };
+  if (!FRQ_COURSES.includes(cls.course)) return { status: 404, body: { error: 'The AI first pass is not available for this course yet.' } };
+  const ar = await sb(env, `class_assignments?select=id,kind,spec&id=eq.${p.assignment}&class_id=eq.${cls.id}&limit=1`);
+  const a = ar.ok ? (await ar.json())[0] : null;
+  const id = a && a.spec && a.spec.frq;
+  if (!a || a.kind !== 'frq' || !validQuestionId(id)) return { status: 404, body: { error: 'Assignment not found.' } };
+  const wr = await sb(env, `class_frq_work?select=answers&assignment_id=eq.${a.id}&student_id=eq.${p.student}&limit=1`);
+  const work = wr.ok ? (await wr.json())[0] : null;
+  if (!work) return { status: 404, body: { error: 'This student has not sent an answer yet.' } };
+
+  const f = await loadQuestion(env, cls.course, id);
+  if (!f) return { status: 404, body: { error: 'That question could not be loaded.' } };
+  const answers = cleanAnswers(f, work.answers);
+  if (!answers) return { status: 400, body: { error: 'The answer is empty or too long for the AI first pass.' } };
+
+  const key = await cacheKey(env, cls.course, f, answers);
+  const cached = await cacheGet(env, key);
+  if (cached && cached.parts && cached.grader === 'claude') {
+    await countGrade(env, cls.course, 'cached', null);
+    return { status: 200, body: { parts: cached.parts, summary: cached.summary || '', model: cached.model, cached: true } };
+  }
+  let left;
+  try {
+    const res = await sb(env, 'rpc/frq_grade_take', { method: 'POST', body: JSON.stringify({ p_user: user.id, p_limit: CLASS_FRQ_DAILY }) });
+    left = res.ok ? Number(await res.json()) : null;
+  } catch { left = null; }
+  if (left === null || !Number.isInteger(left)) return { status: 503, body: { error: 'Could not check today’s first passes. Try again.' } };
+  if (left < 0) return { status: 429, body: { error: `You have used today’s ${CLASS_FRQ_DAILY} AI first passes. Score the rest with the rubric.` } };
+
+  const claude = await gradeWithClaude(env, f, answers, cls.course, fetcher);
+  await countGrade(env, cls.course, claude.ok ? 'claude' : 'none', claude.usage);
+  if (!claude.ok) {
+    await giveBack(env, user.id);
+    return { status: 503, body: { error: 'The AI first pass is busy. Score it with the rubric; today’s count was not used.' } };
+  }
+  const parts = claude.grade.parts.map((x) => ({ label: x.label, points: x.points.map(({ earned, quote, reason }) => ({ earned, quote, reason })) }));
+  const body = { version: GRADER_VERSION, course: cls.course, id, grader: 'claude', model: claude.model, parts, summary: claude.grade.summary || '' };
+  await cachePut(env, key, body, 30 * 86400);
+  return { status: 200, body: { parts, summary: body.summary, model: claude.model, left, cached: false } };
+}
+
+/* ===========================================================================
+   class-google.js
+   =========================================================================== */
+
+/* Google Classroom for teacher classes (docs/teacher-classes.md, stream C). Behind CLASS_GOOGLE ("on", or
+   "owner" for the owner's account while the Google app is unverified); needs GOOGLE_CLIENT_ID,
+   GOOGLE_CLIENT_SECRET and CLASS_SECRET.
+
+   OAuth: the teacher's page asks POST /class/google/start for Google's consent URL (state signed, 10
+   minutes), Google sends the teacher back to GET /class/google/callback, which hands the refresh token, ENCRYPTED
+   (AES-GCM, key derived from CLASS_SECRET) inside a signed 10-minute token, back to the class's Settings; the
+   teacher's signed-in page claims it with POST /class/google/finish, which stores it in class_oauth only for the
+   account that started the flow.
+   Access tokens live only in memory. Disconnect revokes the token at Google and deletes the row.
+
+   What it does, all on the teacher's press:
+     courses   the teacher's active Classroom classes, to link one to this LevlPrep class
+     roster    the Classroom students matched to class members by email (the match is stored as Google user
+               ids for grade passback; addresses are not stored), and those who have not joined
+     invite    an email with the join link to Classroom students who have not joined (200 a day per teacher)
+     post      the assignment as Classroom coursework with a link to the course
+     grades    the scores the teacher's page shows, as Classroom grades, for required assignments only;
+               the teacher returns them to students in Classroom
+   Scopes are the narrowest that do this; nothing is read from Classroom that the steps above do not need. */
+
+
+
+
+
+
+const GC_SCOPES = [
+  'openid', 'email',
+  'https://www.googleapis.com/auth/classroom.courses.readonly',
+  'https://www.googleapis.com/auth/classroom.rosters.readonly',
+  'https://www.googleapis.com/auth/classroom.profile.emails',
+  'https://www.googleapis.com/auth/classroom.coursework.students',
+];
+const GC_API = 'https://classroom.googleapis.com/v1';
+const GC_TOKEN = 'https://oauth2.googleapis.com/token';
+const GC_MAX_PAGES = 10;
+
+const gcRedirectUri = (env) => `${apiUrl(env)}/class/google/callback`;
+
+function gcConfigured(env) {
+  return clsReady(env) && !!env.GOOGLE_CLIENT_ID && !!env.GOOGLE_CLIENT_SECRET;
+}
+
+async function gcAllowed(env, user) {
+  const mode = clsFlag(env, 'CLASS_GOOGLE');
+  if (mode === 'off' || !gcConfigured(env)) return false;
+  return mode === 'on' || (await isOwnerEmail(user.email));
+}
+
+/* The teacher, when Google Classroom is on for them; otherwise { error } as a route answer. */
+async function gcTeacher(env, request) {
+  if (clsFlag(env, 'CLASS_GOOGLE') === 'off' || !gcConfigured(env)) return { error: { status: 404, body: { error: 'Google Classroom is not turned on yet.' } } };
+  const user = await clsUser(env, request);
+  if (!user) return { error: { status: 401, body: { error: 'Sign in again.' } } };
+  if (!(await gcAllowed(env, user))) return { error: { status: 404, body: { error: 'Google Classroom is not turned on yet.' } } };
+  return { user };
+}
+
+/* ------------------------------------------------------------ tokens */
+
+const gcAccessCache = new Map();
+
+async function gcTokenRow(env, uid) {
+  const res = await sb(env, `class_oauth?select=refresh_enc,account_email&teacher_id=eq.${uid}&provider=eq.google&limit=1`);
+  if (!res.ok) throw new Error(`db ${res.status}`);
+  return (await res.json())[0] || null;
+}
+
+/* An access token for the teacher, or null when they are not connected (or Google refused the refresh). */
+async function gcAccess(env, uid, now = Date.now()) {
+  const hit = gcAccessCache.get(uid);
+  if (hit && hit.until > now) return hit.token;
+  const row = await gcTokenRow(env, uid);
+  if (!row) return null;
+  const refresh = await clsDecrypt(env, row.refresh_enc);
+  if (!refresh) return null;
+  const res = await timedFetch(GC_TOKEN, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ client_id: env.GOOGLE_CLIENT_ID, client_secret: env.GOOGLE_CLIENT_SECRET, refresh_token: refresh, grant_type: 'refresh_token' }),
+  });
+  if (!res.ok) {
+    // invalid_grant: the teacher removed access at Google. Forget the token so the page shows "Connect" again.
+    if (res.status === 400 || res.status === 401) await sb(env, `class_oauth?teacher_id=eq.${uid}&provider=eq.google`, { method: 'DELETE' });
+    return null;
+  }
+  const t = await res.json();
+  if (!t.access_token) return null;
+  if (gcAccessCache.size > 200) gcAccessCache.clear();
+  gcAccessCache.set(uid, { token: t.access_token, until: now + Math.max(60, (Number(t.expires_in) || 3600) - 300) * 1000 });
+  return t.access_token;
+}
+
+async function gcGet(token, path) {
+  const res = await timedFetch(`${GC_API}${path}`, { headers: { Authorization: `Bearer ${token}` } });
+  if (!res.ok) { const e = new Error(`google ${res.status}`); e.status = res.status; throw e; }
+  return res.json();
+}
+
+async function gcAll(token, path, key) {
+  const out = [];
+  let page = '';
+  for (let i = 0; i < GC_MAX_PAGES; i++) {
+    const sep = path.includes('?') ? '&' : '?';
+    const r = await gcGet(token, `${path}${sep}pageSize=100${page ? `&pageToken=${encodeURIComponent(page)}` : ''}`);
+    out.push(...(r[key] || []));
+    if (!r.nextPageToken) break;
+    page = r.nextPageToken;
+  }
+  return out;
+}
+
+const gcNeedsConnect = { status: 409, body: { error: 'Connect Google Classroom first.', connect: true } };
+const gcFailed = (e) => (e && (e.status === 401 || e.status === 403)
+  ? { status: 409, body: { error: 'Google refused. Connect Google Classroom again and allow every box.', connect: true } }
+  : { status: 502, body: { error: 'Google Classroom did not answer. Try again.' } });
+
+async function gcLinkedCourse(env, classId) {
+  const res = await sb(env, `class_ext_links?select=external_id,title&class_id=eq.${classId}&provider=eq.google&limit=1`);
+  return res.ok ? (await res.json())[0] || null : null;
+}
+
+/* ------------------------------------------------------------ OAuth */
+
+/* POST /class/google/start { class } -> { url } */
+async function gcStart(request, env) {
+  const t = await gcTeacher(env, request);
+  if (t.error) return t.error;
+  const p = await clsBody(request);
+  const cls = p && await clsOwnClass(env, t.user.id, p.class);
+  if (!cls) return { status: 404, body: { error: 'Class not found.' } };
+  const state = await clsSign(env, 'gstate', { u: t.user.id, c: cls.id }, 600);
+  const q = new URLSearchParams({
+    client_id: env.GOOGLE_CLIENT_ID, redirect_uri: gcRedirectUri(env), response_type: 'code', scope: GC_SCOPES.join(' '),
+    access_type: 'offline', prompt: 'consent', include_granted_scopes: 'false', state,
+  });
+  if (t.user.email) q.set('login_hint', t.user.email);
+  return { status: 200, body: { url: `https://accounts.google.com/o/oauth2/v2/auth?${q}` } };
+}
+
+function gcEmailFromIdToken(idToken) {
+  try {
+    const part = String(idToken || '').split('.')[1];
+    const json = JSON.parse(atob(part.replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((part.length + 3) % 4)));
+    return typeof json.email === 'string' ? json.email : null;
+  } catch { return null; }
+}
+
+/* GET /class/google/callback?code&state (Google sends the teacher's browser here). */
+async function gcCallback(request, env) {
+  const url = new URL(request.url);
+  const back = (classId, status) => clsRedirect(`${siteUrl(env)}/teach/?c=${encodeURIComponent(classId || '')}&google=${status}#settings`);
+  if (!gcConfigured(env)) return clsPage('Not set up', '<h1>Google Classroom is not set up yet</h1>', { status: 404 });
+  const st = await clsVerify(env, 'gstate', url.searchParams.get('state') || '');
+  if (!st || !clsUuid(st.u) || !clsUuid(st.c)) return clsPage('Try again', '<h1>That sign-in took too long</h1><p>Go back to your class and press Connect Google Classroom again.</p>', { status: 400 });
+  if (url.searchParams.get('error') || !url.searchParams.get('code')) return back(st.c, 'canceled');
+  const res = await timedFetch(GC_TOKEN, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      code: url.searchParams.get('code'), client_id: env.GOOGLE_CLIENT_ID, client_secret: env.GOOGLE_CLIENT_SECRET,
+      redirect_uri: gcRedirectUri(env), grant_type: 'authorization_code',
+    }),
+  });
+  if (!res.ok) return back(st.c, 'failed');
+  const tok = await res.json();
+  const granted = String(tok.scope || '').split(/\s+/);
+  const missing = GC_SCOPES.filter((s) => s.startsWith('https://') && !granted.includes(s));
+  if (!tok.refresh_token || missing.length) return back(st.c, missing.length ? 'scopes' : 'failed');
+  /* Not stored yet: the teacher's own signed-in page must claim it (POST /class/google/finish), so a consent link
+     someone else started cannot attach a victim's Google account to the attacker's LevlPrep account. */
+  const pend = await clsSign(env, 'gpend', {
+    u: st.u, c: st.c, r: await clsEncrypt(env, tok.refresh_token), e: gcEmailFromIdToken(tok.id_token), s: granted.join(' '),
+  }, 600);
+  return clsRedirect(`${siteUrl(env)}/teach/?c=${encodeURIComponent(st.c)}&google=finish&gp=${encodeURIComponent(pend)}#settings`);
+}
+
+/* POST /class/google/finish { gp } -> { ok } : stores the token for the signed-in teacher who started it. */
+async function gcFinish(request, env) {
+  const t = await gcTeacher(env, request);
+  if (t.error) return t.error;
+  const p = await clsBody(request);
+  const d = p && await clsVerify(env, 'gpend', p.gp);
+  if (!d) return { status: 400, body: { error: 'That Google sign-in took too long. Press Connect again.' } };
+  if (d.u !== t.user.id) return { status: 403, body: { error: 'This Google sign-in was started from another LevlPrep account. Press Connect again.' } };
+  if (!(await clsDecrypt(env, d.r))) return { status: 400, body: { error: 'Press Connect again.' } };
+  await clsUpsert(env, 'class_oauth', [{
+    teacher_id: t.user.id, provider: 'google', refresh_enc: d.r, account_email: d.e || null, scopes: d.s || '', created_at: new Date().toISOString(),
+  }], 'teacher_id,provider');
+  gcAccessCache.delete(t.user.id);
+  return { status: 200, body: { ok: true, class: d.c } };
+}
+
+/* POST /class/google/status { class } -> { on, connected, email, linked } (on: false when the flag is off). */
+async function gcStatus(request, env) {
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in again.' } };
+  if (!(await gcAllowed(env, user))) return { status: 200, body: { on: false } };
+  const p = await clsBody(request);
+  const cls = p && await clsOwnClass(env, user.id, p.class);
+  if (!cls) return { status: 404, body: { error: 'Class not found.' } };
+  const row = await gcTokenRow(env, user.id);
+  return { status: 200, body: { on: true, connected: !!row, email: row ? row.account_email : null, linked: await gcLinkedCourse(env, cls.id) } };
+}
+
+/* POST /class/google/disconnect */
+async function gcDisconnect(request, env) {
+  const t = await gcTeacher(env, request);
+  if (t.error) return t.error;
+  const row = await gcTokenRow(env, t.user.id);
+  if (row) {
+    const refresh = await clsDecrypt(env, row.refresh_enc);
+    if (refresh) { try { await timedFetch(`https://oauth2.googleapis.com/revoke?token=${encodeURIComponent(refresh)}`, { method: 'POST' }); } catch { /* deleted below either way */ } }
+    await sb(env, `class_oauth?teacher_id=eq.${t.user.id}&provider=eq.google`, { method: 'DELETE' });
+  }
+  gcAccessCache.delete(t.user.id);
+  return { status: 200, body: { ok: true } };
+}
+
+/* ------------------------------------------------------------ courses and roster */
+
+/* POST /class/google/courses -> { courses: [{ id, name, section }] } */
+async function gcCourses(request, env) {
+  const t = await gcTeacher(env, request);
+  if (t.error) return t.error;
+  const token = await gcAccess(env, t.user.id);
+  if (!token) return gcNeedsConnect;
+  try {
+    const list = await gcAll(token, '/courses?teacherId=me&courseStates=ACTIVE', 'courses');
+    return { status: 200, body: { courses: list.map((c) => ({ id: c.id, name: clsLine(c.name, 100), section: clsLine(c.section, 60) })) } };
+  } catch (e) { return gcFailed(e); }
+}
+
+/* POST /class/google/link { class, course } (course null to unlink) */
+async function gcLink(request, env) {
+  const t = await gcTeacher(env, request);
+  if (t.error) return t.error;
+  const p = await clsBody(request);
+  const cls = p && await clsOwnClass(env, t.user.id, p.class);
+  if (!cls) return { status: 404, body: { error: 'Class not found.' } };
+  await sb(env, `class_ext_links?class_id=eq.${cls.id}&provider=eq.google`, { method: 'DELETE' });
+  if (!p.course) return { status: 200, body: { linked: null } };
+  if (!/^[0-9]{1,30}$/.test(String(p.course))) return { status: 400, body: { error: 'Pick a Classroom class.' } };
+  const token = await gcAccess(env, t.user.id);
+  if (!token) return gcNeedsConnect;
+  let course;
+  try { course = await gcGet(token, `/courses/${p.course}`); } catch (e) { return gcFailed(e); }
+  await clsUpsert(env, 'class_ext_links', [{ class_id: cls.id, provider: 'google', external_id: String(course.id), title: clsLine(course.name, 100) }], 'class_id,provider,external_id');
+  return { status: 200, body: { linked: { external_id: String(course.id), title: clsLine(course.name, 100) } } };
+}
+
+async function gcRosterFor(env, uid, cls) {
+  const link = await gcLinkedCourse(env, cls.id);
+  if (!link) return { error: { status: 409, body: { error: 'Link a Classroom class first.' } } };
+  const token = await gcAccess(env, uid);
+  if (!token) return { error: gcNeedsConnect };
+  let students;
+  try { students = await gcAll(token, `/courses/${link.external_id}/students`, 'students'); } catch (e) { return { error: gcFailed(e) }; }
+  return { link, token, students };
+}
+
+/* POST /class/google/roster { class } -> { matched, missing, notInClassroom } */
+async function gcRoster(request, env) {
+  const t = await gcTeacher(env, request);
+  if (t.error) return t.error;
+  const p = await clsBody(request);
+  const cls = p && await clsOwnClass(env, t.user.id, p.class);
+  if (!cls) return { status: 404, body: { error: 'Class not found.' } };
+  const r = await gcRosterFor(env, t.user.id, cls);
+  if (r.error) return r.error;
+  const people = await clsRpc(env, 'class_member_emails', { p_class: cls.id }) || [];
+  const byEmail = new Map(people.filter((m) => m.email).map((m) => [String(m.email).toLowerCase(), m]));
+  const matched = [], missing = [], seen = new Set();
+  const links = [];
+  for (const s of r.students) {
+    const email = String((s.profile && s.profile.emailAddress) || '').toLowerCase();
+    const gname = clsLine(s.profile && s.profile.name && s.profile.name.fullName, 80);
+    const m = email && byEmail.get(email);
+    if (m) {
+      seen.add(m.id);
+      matched.push({ student: m.id, name: m.name, classroom: gname });
+      links.push({ class_id: cls.id, student_id: m.id, provider: 'google', external_user: String(s.userId) });
+    } else {
+      // Names as Classroom shows them; the address never goes back to the page.
+      missing.push({ user: String(s.userId), name: gname || 'A Classroom student', email: !!email });
+    }
+  }
+  if (links.length) await clsUpsert(env, 'class_ext_members', links, 'class_id,student_id,provider');
+  const notInClassroom = people.filter((m) => !seen.has(m.id)).map((m) => ({ student: m.id, name: m.name }));
+  return { status: 200, body: { course: r.link, matched, missing, notInClassroom, counts: { classroom: r.students.length, matched: matched.length, missing: missing.length } } };
+}
+
+/* POST /class/google/invite { class, users: [Classroom user ids] } -> { sent, skipped } */
+async function gcInvite(request, env) {
+  const t = await gcTeacher(env, request);
+  if (t.error) return t.error;
+  if (!clsMailReady(env)) return { status: 503, body: { error: 'Invite emails are not set up yet. Post the join link in Classroom instead.' } };
+  const p = await clsBody(request);
+  const cls = p && await clsOwnClass(env, t.user.id, p.class);
+  if (!cls) return { status: 404, body: { error: 'Class not found.' } };
+  const want = new Set((Array.isArray(p.users) ? p.users : []).map(String).filter((u) => /^[0-9A-Za-z_-]{1,40}$/.test(u)));
+  if (!want.size || want.size > 200) return { status: 400, body: { error: 'Pick the students to invite.' } };
+  const r = await gcRosterFor(env, t.user.id, cls);
+  if (r.error) return r.error;
+  const people = await clsRpc(env, 'class_member_emails', { p_class: cls.id }) || [];
+  const members = new Set(people.map((m) => String(m.email || '').toLowerCase()));
+  const teacher = clsLine(await clsTeacherName(env, t.user.id), 60);
+  const join = `${siteUrl(env)}/join.html?c=${encodeURIComponent(cls.code)}`;
+  let sent = 0;
+  const skipped = [];
+  for (const s of r.students) {
+    const uid = String(s.userId);
+    if (!want.has(uid)) continue;
+    const email = String((s.profile && s.profile.emailAddress) || '');
+    if (!email) { skipped.push({ user: uid, why: 'no-email' }); continue; }
+    if (members.has(email.toLowerCase())) { skipped.push({ user: uid, why: 'already-joined' }); continue; }
+    const h = await clsHash(email.trim().toLowerCase());
+    const take = await clsRpc(env, 'class_mail_take', { p_teacher: t.user.id, p_class: cls.id, p_student: null, p_kind: 'invite', p_recipient: h });
+    if (take !== true) { skipped.push({ user: uid, why: 'limit' }); continue; }
+    const stop = clsStopUrl(env, await clsSign(env, 'stop', { h }, null));
+    const first = clsLine(s.profile && s.profile.name && s.profile.name.givenName, 40) || 'there';
+    const mail = await clsMail(env, {
+      to: email,
+      subject: `${teacher} invited you to ${clsLine(cls.name, 60)} on LevlPrep`,
+      text: [`Hi ${first},`, '',
+        `${teacher} uses LevlPrep for ${clsLine(cls.name, 60)} (${COURSE_NAMES[cls.course] || 'your course'}) and invited you from Google Classroom.`, '',
+        `To join, open ${join} and sign in with this school account, or enter the class code ${cls.code}.`, '',
+        'Joining is your choice and is for students 13 and older. The join page shows exactly what your teacher will see before you join.', '',
+        'You got this one email because you are in your teacher\'s Google Classroom class. LevlPrep keeps only a one-way fingerprint of your address, so it does not invite you twice in a week.', '',
+        `No more invites to this address: ${stop}`].join('\n'),
+      headers: { 'List-Unsubscribe': `<${stop}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' },
+    });
+    if (mail.outcome === 'config') return { status: 503, body: { error: 'Invite emails are not set up yet.', sent, skipped } };
+    if (mail.ok) sent++; else skipped.push({ user: uid, why: 'send-failed' });
+  }
+  return { status: 200, body: { sent, skipped } };
+}
+
+/* ------------------------------------------------------------ coursework and grades */
+
+function gcAssignmentUrl(env, course, assignmentId) {
+  return `${siteUrl(env)}/${urlCourse(course)}/?la=${encodeURIComponent(assignmentId)}&ref=classroom`;
+}
+
+function gcCourseWork(env, cls, a) {
+  const work = {
+    title: clsLine(a.title, 120),
+    description: `${COURSE_NAMES[cls.course] || 'LevlPrep'} on LevlPrep. Open the link, sign in with your school account, and your work reaches your teacher.`,
+    materials: [{ link: { url: gcAssignmentUrl(env, cls.course, a.id), title: clsLine(a.title, 120) } }],
+    workType: 'ASSIGNMENT',
+    state: 'PUBLISHED',
+  };
+  if (a.required) work.maxPoints = 100;
+  const due = Date.parse(a.due_at || '');
+  if (Number.isFinite(due)) {
+    const d = new Date(due);
+    work.dueDate = { year: d.getUTCFullYear(), month: d.getUTCMonth() + 1, day: d.getUTCDate() };
+    work.dueTime = { hours: d.getUTCHours(), minutes: d.getUTCMinutes() };
+  }
+  return work;
+}
+
+/* POST /class/google/post { class, assignment } -> { posted, link } */
+async function gcPost(request, env) {
+  const t = await gcTeacher(env, request);
+  if (t.error) return t.error;
+  const p = await clsBody(request);
+  const cls = p && await clsOwnClass(env, t.user.id, p.class);
+  if (!cls) return { status: 404, body: { error: 'Class not found.' } };
+  const a = await clsAssignment(env, cls.id, p.assignment);
+  if (!a) return { status: 404, body: { error: 'Assignment not found.' } };
+  const link = await gcLinkedCourse(env, cls.id);
+  if (!link) return { status: 409, body: { error: 'Link a Classroom class first (Settings).' } };
+  const prev = await sb(env, `class_ext_assignments?select=external_id&assignment_id=eq.${a.id}&provider=eq.google&limit=1`);
+  const had = prev.ok ? (await prev.json())[0] : null;
+  if (had) return { status: 200, body: { posted: false, already: true } };
+  const token = await gcAccess(env, t.user.id);
+  if (!token) return gcNeedsConnect;
+  const res = await timedFetch(`${GC_API}/courses/${link.external_id}/courseWork`, {
+    method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(gcCourseWork(env, cls, a)),
+  });
+  if (!res.ok) return gcFailed({ status: res.status });
+  const w = await res.json();
+  await clsUpsert(env, 'class_ext_assignments', [{ assignment_id: a.id, provider: 'google', external_id: String(w.id), course_id: link.external_id }], 'assignment_id,provider,external_id');
+  return { status: 200, body: { posted: true, link: w.alternateLink || null } };
+}
+
+/* The grades a teacher sends: [{ student, score: 0..1 }], members of the class only. Shared with LTI. */
+function cleanGrades(raw, memberIds) {
+  const ok = new Set(memberIds);
+  const out = new Map();
+  for (const g of Array.isArray(raw) ? raw.slice(0, 300) : []) {
+    const s = Number(g && g.score);
+    if (!g || !ok.has(g.student) || !Number.isFinite(s) || s < 0 || s > 1) continue;
+    out.set(g.student, Math.round(s * 1000) / 10);
+  }
+  return out;
+}
+
+/* POST /class/google/grades { class, assignment, grades: [{ student, score }] } -> { sent, skipped } */
+async function gcGrades(request, env) {
+  const t = await gcTeacher(env, request);
+  if (t.error) return t.error;
+  const p = await clsBody(request);
+  const cls = p && await clsOwnClass(env, t.user.id, p.class);
+  if (!cls) return { status: 404, body: { error: 'Class not found.' } };
+  const a = await clsAssignment(env, cls.id, p.assignment);
+  if (!a) return { status: 404, body: { error: 'Assignment not found.' } };
+  if (!a.required) return { status: 400, body: { error: 'Grades go back only for required assignments.' } };
+  const er = await sb(env, `class_ext_assignments?select=external_id,course_id&assignment_id=eq.${a.id}&provider=eq.google&limit=1`);
+  const ext = er.ok ? (await er.json())[0] : null;
+  if (!ext) return { status: 409, body: { error: 'Post this assignment to Classroom first.' } };
+  const grades = cleanGrades(p.grades, (await clsMembers(env, cls.id)).map((m) => m.student_id));
+  if (!grades.size) return { status: 400, body: { error: 'No grades to send.' } };
+  const mr = await sb(env, `class_ext_members?select=student_id,external_user&class_id=eq.${cls.id}&provider=eq.google`);
+  const gid = new Map((mr.ok ? await mr.json() : []).map((m) => [m.student_id, m.external_user]));
+  const token = await gcAccess(env, t.user.id);
+  if (!token) return gcNeedsConnect;
+  let subs;
+  try { subs = await gcAll(token, `/courses/${ext.course_id}/courseWork/${ext.external_id}/studentSubmissions`, 'studentSubmissions'); } catch (e) { return gcFailed(e); }
+  const subByUser = new Map(subs.map((s) => [String(s.userId), s.id]));
+  let sent = 0;
+  const skipped = [];
+  for (const [student, grade] of grades) {
+    const g = gid.get(student);
+    const sub = g && subByUser.get(g);
+    if (!sub) { skipped.push({ student, why: g ? 'no-submission' : 'not-matched' }); continue; }
+    const res = await timedFetch(`${GC_API}/courses/${ext.course_id}/courseWork/${ext.external_id}/studentSubmissions/${sub}?updateMask=assignedGrade,draftGrade`, {
+      method: 'PATCH', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ assignedGrade: grade, draftGrade: grade }),
+    });
+    if (res.ok) sent++; else skipped.push({ student, why: `google-${res.status}` });
+  }
+  return { status: 200, body: { sent, skipped } };
+}
+
+/* ===========================================================================
+   class-lti.js
+   =========================================================================== */
+
+/* LTI 1.3 for teacher classes: Canvas, Schoology and any LTI Advantage platform (docs/teacher-classes.md,
+   stream C; school admins: teach/lms.html). Behind CLASS_LTI ("on", or "owner"); needs LTI_PRIVATE_KEY (an RSA
+   private JWK with a kid, made by scripts/lti-keygen.mjs) and CLASS_SECRET.
+
+   Endpoints the LMS calls (no Origin, no session):
+     GET  /lti/config.json   Canvas's JSON configuration (paste the URL into a developer key)
+     GET  /lti/jwks          the tool's public key
+     GET|POST /lti/login     OIDC third-party login: state (signed, 10 minutes, carries the nonce) -> platform
+     POST /lti/launch        the id_token: RS256 against the platform's JWKS, iss, aud/azp, exp, nonce (signed
+                             in the state and used once, lti_nonces), deployment. Then a signed 30-minute
+                             ticket in the URL fragment of teach/lti.html, where the person signs in to LevlPrep.
+     GET  /lti/return        posts the signed deep-linking response back to the LMS
+   Endpoints the site calls (Origin + session):
+     POST /lti/platforms           register a platform (issuer, client id, deployment, endpoints)
+     POST /lti/platforms/mine      the ones this account registered
+     POST /lti/deeplink            a teacher picked a class and assignment: build LtiDeepLinkingResponse
+     POST /lti/bind                a signed-in student (or teacher) arrives from a launch
+     POST /lti/grades              AGS scores for a required assignment, from the teacher's page
+
+   Trust. A registration starts PENDING and does nothing until the site's owner activates it from the link the
+   Worker emails him (GET /lti/activate asks, POST acts); the email flags any address that is not where that LMS
+   publishes it. Login, launch and grades use active platforms only. A launch binds a student or a line item only
+   when its platform and LMS course match the class's own LMS link (class_ext_links, written when the class's
+   owner deep-linked from that course), and scores and the client assertion go only to the registered token
+   URL's host, never to a line item on another host.
+
+   The state travels in the login redirect rather than a cookie, because LMSs launch tools in iframes where
+   third-party cookies are blocked; the nonce inside it is checked against the id_token and can be used once. */
+
+
+
+
+
+
+const LTI_CLAIM = 'https://purl.imsglobal.org/spec/lti/claim/';
+const LTI_DL = 'https://purl.imsglobal.org/spec/lti-dl/claim/';
+const LTI_AGS = 'https://purl.imsglobal.org/spec/lti-ags/claim/endpoint';
+const LTI_SCORE_SCOPE = 'https://purl.imsglobal.org/spec/lti-ags/scope/score';
+const LTI_RS = { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' };
+const ltiEnc = new TextEncoder();
+
+function ltiConfigured(env) {
+  return clsReady(env) && !!env.LTI_PRIVATE_KEY;
+}
+const ltiOn = (env) => clsFlag(env, 'CLASS_LTI') !== 'off' && ltiConfigured(env);
+
+async function ltiAllowed(env, user) {
+  const mode = clsFlag(env, 'CLASS_LTI');
+  if (mode === 'off' || !ltiConfigured(env)) return false;
+  return mode === 'on' || (await isOwnerEmail(user.email));
+}
+
+const ltiOff = { status: 404, body: { error: 'Canvas and Schoology links are not turned on yet.' } };
+
+/* ------------------------------------------------------------ keys and JWTs */
+
+function ltiPrivateJwk(env) {
+  try {
+    const k = JSON.parse(env.LTI_PRIVATE_KEY);
+    return k && k.kty === 'RSA' && k.d && k.kid ? k : null;
+  } catch { return null; }
+}
+
+function ltiPublicJwk(env) {
+  const k = ltiPrivateJwk(env);
+  return k ? { kty: 'RSA', n: k.n, e: k.e, kid: k.kid, alg: 'RS256', use: 'sig' } : null;
+}
+
+async function ltiSignJwt(env, payload) {
+  const jwk = ltiPrivateJwk(env);
+  if (!jwk) throw new Error('no LTI key');
+  const { kid, alg: _a, key_ops: _o, use: _u, ...raw } = jwk;
+  const key = await crypto.subtle.importKey('jwk', { ...raw, alg: 'RS256', ext: true }, LTI_RS, false, ['sign']);
+  const head = clsB64uJson({ alg: 'RS256', typ: 'JWT', kid });
+  const body = clsB64uJson(payload);
+  const sig = await crypto.subtle.sign(LTI_RS, key, ltiEnc.encode(`${head}.${body}`));
+  return `${head}.${body}.${clsB64u(sig)}`;
+}
+
+const ltiJwksCache = new Map();
+async function ltiJwks(url, now, fresh) {
+  const hit = ltiJwksCache.get(url);
+  if (!fresh && hit && hit.until > now) return hit.keys;
+  const res = await timedFetch(url, { headers: { Accept: 'application/json' } });
+  if (!res.ok) throw new Error(`jwks ${res.status}`);
+  const keys = ((await res.json()) || {}).keys || [];
+  if (ltiJwksCache.size > 50) ltiJwksCache.clear();
+  ltiJwksCache.set(url, { keys, until: now + 10 * 60 * 1000 });
+  return keys;
+}
+
+/* The verified payload of an RS256 JWT signed by a key from `jwksUrl`, or null. A kid the cache does not
+   know triggers one fresh fetch (platforms rotate keys). */
+async function ltiVerifyJwt(token, jwksUrl, now = Date.now()) {
+  const parts = String(token || '').split('.');
+  if (parts.length !== 3) return null;
+  let head, payload;
+  try { head = clsUnB64uJson(parts[0]); payload = clsUnB64uJson(parts[1]); } catch { return null; }
+  if (!head || head.alg !== 'RS256' || !payload) return null;
+  let keys = await ltiJwks(jwksUrl, now, false);
+  let jwk = keys.find((k) => k.kid === head.kid) || (!head.kid && keys.length === 1 ? keys[0] : null);
+  if (!jwk) { keys = await ltiJwks(jwksUrl, now, true); jwk = keys.find((k) => k.kid === head.kid); }
+  if (!jwk || jwk.kty !== 'RSA') return null;
+  try {
+    const key = await crypto.subtle.importKey('jwk', { kty: 'RSA', n: jwk.n, e: jwk.e, alg: 'RS256', ext: true }, LTI_RS, false, ['verify']);
+    const ok = await crypto.subtle.verify(LTI_RS, key, clsUnB64u(parts[2]), ltiEnc.encode(`${parts[0]}.${parts[1]}`));
+    return ok ? payload : null;
+  } catch { return null; }
+}
+
+/* ------------------------------------------------------------ platforms */
+
+const ltiHttps = (u) => { try { const x = new URL(String(u)); return x.protocol === 'https:' && !x.username && !x.password ? x.href : null; } catch { return null; } };
+
+function ltiCleanPlatform(p) {
+  const issuer = ltiHttps(p && p.issuer);
+  const client_id = clsLine(p && p.client_id, 120);
+  const auth_url = ltiHttps(p && p.auth_url), token_url = ltiHttps(p && p.token_url), jwks_url = ltiHttps(p && p.jwks_url);
+  const dep = clsLine(p && p.deployment_id, 200);
+  if (!issuer || !client_id || !auth_url || !token_url || !jwks_url) return null;
+  return { issuer: issuer.replace(/\/$/, ''), client_id, auth_url, token_url, jwks_url, deployment: dep || null, label: clsLine(p && p.label, 80) || null };
+}
+
+/* Where each known LMS publishes its endpoints. An address elsewhere is flagged to the owner before activation. */
+const LTI_KNOWN = [
+  { name: 'Canvas', issuers: ['https://canvas.instructure.com', 'https://canvas.test.instructure.com', 'https://canvas.beta.instructure.com'],
+    auth: ['sso.canvaslms.com', 'sso.test.canvaslms.com', 'sso.beta.canvaslms.com'], jwks: ['sso.canvaslms.com', 'sso.test.canvaslms.com', 'sso.beta.canvaslms.com'], token: /\.instructure\.com$/ },
+  { name: 'Schoology', issuers: ['https://schoology.schoology.com'], auth: ['lti-service.svc.schoology.com'], jwks: ['lti-service.svc.schoology.com'], token: /^lti-service\.svc\.schoology\.com$/ },
+];
+
+/* What looks wrong about a registration, for the owner's activation email. Empty when it matches a known LMS. */
+function ltiConcerns(p) {
+  const host = (u) => { try { return new URL(u).host; } catch { return ''; } };
+  const k = LTI_KNOWN.find((x) => x.issuers.includes(p.issuer));
+  if (!k) return [`Issuer ${p.issuer} is not a known LMS (Canvas, Schoology). Check it with the school before activating.`];
+  const out = [];
+  if (!k.auth.includes(host(p.auth_url))) out.push(`Auth URL host ${host(p.auth_url)} is not ${k.name}'s.`);
+  if (!k.jwks.includes(host(p.jwks_url))) out.push(`JWKS URL host ${host(p.jwks_url)} is not ${k.name}'s.`);
+  if (!k.token.test(host(p.token_url))) out.push(`Token URL host ${host(p.token_url)} is not a ${k.name} host (a school's own Canvas domain can be fine; check it).`);
+  return out;
+}
+
+const ltiHost = (u) => { try { return new URL(u).host; } catch { return null; } };
+const ltiSameHost = (a, b) => !!ltiHost(a) && ltiHost(a) === ltiHost(b);
+
+async function ltiPlatform(env, { id, issuer, clientId, any = false }) {
+  let q;
+  if (id) { if (!clsUuid(id)) return null; q = `id=eq.${id}`; }
+  else q = `issuer=eq.${encodeURIComponent(issuer)}` + (clientId ? `&client_id=eq.${encodeURIComponent(clientId)}` : '');
+  if (!any) q += '&status=eq.active';
+  const res = await sb(env, `lti_platforms?select=id,issuer,client_id,deployment_ids,auth_url,token_url,jwks_url,label,status,registered_by&${q}&limit=2`);
+  if (!res.ok) return null;
+  const rows = await res.json();
+  return rows.length === 1 ? rows[0] : null;
+}
+
+/* POST /lti/platforms { issuer, client_id, deployment_id, auth_url, token_url, jwks_url, label } */
+async function ltiRegister(request, env) {
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in first.' } };
+  if (!(await ltiAllowed(env, user))) return ltiOff;
+  const p = ltiCleanPlatform(await clsBody(request));
+  if (!p) return { status: 400, body: { error: 'Fill in the issuer, client id and the three https addresses.' } };
+  const res = await sb(env, `lti_platforms?select=id,registered_by,deployment_ids,auth_url,token_url,jwks_url,status&issuer=eq.${encodeURIComponent(p.issuer)}&client_id=eq.${encodeURIComponent(p.client_id)}&limit=1`);
+  const have = res.ok ? (await res.json())[0] : null;
+  if (have && have.registered_by !== user.id) {
+    return { status: 409, body: { error: 'This developer key is already registered. Ask the person who registered it, or email hello@levlprep.com.' } };
+  }
+  const deps = new Set(have ? have.deployment_ids || [] : []);
+  if (p.deployment) deps.add(p.deployment);
+  // Changing an address (or a new registration) needs the owner again; adding a deployment to an active one does not.
+  const same = have && have.status === 'active' && have.auth_url === p.auth_url && have.token_url === p.token_url && have.jwks_url === p.jwks_url;
+  const status = same ? 'active' : 'pending';
+  const row = { issuer: p.issuer, client_id: p.client_id, deployment_ids: [...deps], auth_url: p.auth_url, token_url: p.token_url, jwks_url: p.jwks_url, label: p.label, registered_by: user.id, status };
+  if (have) row.id = have.id;
+  await clsUpsert(env, 'lti_platforms', [row], 'issuer,client_id');
+  if (status === 'pending') {
+    const saved = await ltiPlatform(env, { issuer: p.issuer, clientId: p.client_id, any: true });
+    if (saved && clsMailReady(env)) {
+      const t = await clsSign(env, 'lti-act', { id: saved.id, v: await ltiFingerprint(saved) }, 14 * 86400);
+      const concerns = ltiConcerns(p);
+      await clsMail(env, {
+        to: env.CLASS_SALES_TO || 'hello@levlprep.com',
+        subject: `LMS registration to review: ${p.label || p.issuer}`,
+        text: [`${user.email || 'A signed-in account'} registered an LMS for LevlPrep. Nothing works for it until you activate it.`, '',
+          `Label: ${p.label || ''}`, `Issuer: ${p.issuer}`, `Client ID: ${p.client_id}`, `Deployments: ${[...deps].join(', ')}`,
+          `Auth URL: ${p.auth_url}`, `Token URL: ${p.token_url}`, `JWKS URL: ${p.jwks_url}`, '',
+          concerns.length ? `Check first:\n- ${concerns.join('\n- ')}` : 'All addresses are where this LMS publishes them.', '',
+          `Review and activate (link works 14 days): ${apiUrl(env)}/lti/activate?t=${encodeURIComponent(t)}`].join('\n'),
+      });
+    }
+  }
+  return { status: 200, body: { ok: true, status } };
+}
+
+async function ltiFingerprint(p) {
+  return (await sha256Hex([p.id, p.issuer, p.client_id, p.auth_url, p.token_url, p.jwks_url].join('\n'))).slice(0, 32);
+}
+
+/* GET /lti/activate?t=  shows the registration to the owner (from the emailed link); POST activates it, if it is
+   unchanged since the email. */
+async function ltiActivate(request, env) {
+  if (!ltiConfigured(env)) return ltiError('Not set up', 'LTI is not set up on this Worker.', 404);
+  const token = new URL(request.url).searchParams.get('t') || '';
+  const d = await clsVerify(env, 'lti-act', token);
+  const p = d && await ltiPlatform(env, { id: d.id, any: true });
+  if (!p || (await ltiFingerprint(p)) !== d.v) return ltiError('Link not valid', 'The link expired, or the registration changed since the email (a new email was sent then).');
+  if (request.method === 'POST') {
+    const res = await sb(env, `lti_platforms?id=eq.${p.id}`, { method: 'PATCH', headers: { Prefer: 'return=minimal' }, body: JSON.stringify({ status: 'active' }) });
+    return res.ok ? clsPage('Activated', `<h1>${clsEsc(p.label || p.issuer)} is active</h1><p>Teachers on it can now add LevlPrep work from the LMS.</p>`)
+      : ltiError('Try again', 'The database did not answer.', 503);
+  }
+  const concerns = ltiConcerns(p);
+  const action = clsEsc(`${apiUrl(env)}/lti/activate?t=${encodeURIComponent(token)}`);
+  return clsPage('Activate LMS', `<h1>Activate ${clsEsc(p.label || p.issuer)}?</h1><p>Issuer ${clsEsc(p.issuer)}<br>Client ID ${clsEsc(p.client_id)}<br>Auth ${clsEsc(p.auth_url)}<br>Token ${clsEsc(p.token_url)}<br>JWKS ${clsEsc(p.jwks_url)}</p>` +
+    (concerns.length ? `<p><b>Check first:</b> ${concerns.map(clsEsc).join(' ')}</p>` : '<p>All addresses are where this LMS publishes them.</p>') +
+    `<p>Status now: ${clsEsc(p.status)}.</p><form method="post" action="${action}"><button type="submit">Activate</button></form>`, { formAction: clsEsc(apiUrl(env)) });
+}
+
+/* POST /lti/platforms/mine */
+async function ltiMine(request, env) {
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in first.' } };
+  if (!(await ltiAllowed(env, user))) return { status: 200, body: { on: false, platforms: [] } };
+  const res = await sb(env, `lti_platforms?select=id,issuer,client_id,deployment_ids,label,status,created_at&registered_by=eq.${user.id}`);
+  return { status: 200, body: { on: true, platforms: res.ok ? await res.json() : [], tool: ltiToolUrls(env) } };
+}
+
+function ltiToolUrls(env) {
+  const api = apiUrl(env);
+  return { login: `${api}/lti/login`, launch: `${api}/lti/launch`, jwks: `${api}/lti/jwks`, config: `${api}/lti/config.json`, redirect: `${api}/lti/launch` };
+}
+
+/* ------------------------------------------------------------ the LMS's side */
+
+function ltiCanvasConfig(env) {
+  const u = ltiToolUrls(env);
+  return {
+    title: 'LevlPrep',
+    description: 'LevlPrep AP® course assignments with grades sent back to the gradebook.',
+    oidc_initiation_url: u.login,
+    target_link_uri: u.launch,
+    public_jwk_url: u.jwks,
+    scopes: [LTI_SCORE_SCOPE, 'https://purl.imsglobal.org/spec/lti-ags/scope/lineitem.readonly'],
+    extensions: [{
+      platform: 'canvas.instructure.com',
+      privacy_level: 'name_only',
+      domain: new URL(apiUrl(env)).host,
+      settings: {
+        placements: [
+          { placement: 'assignment_selection', message_type: 'LtiDeepLinkingRequest', target_link_uri: u.launch, text: 'LevlPrep' },
+          { placement: 'link_selection', message_type: 'LtiDeepLinkingRequest', target_link_uri: u.launch, text: 'LevlPrep' },
+        ],
+      },
+    }],
+    custom_fields: {},
+  };
+}
+
+function ltiParams(request, form) {
+  const q = new URL(request.url).searchParams;
+  const get = (k) => (form && form.get(k)) || q.get(k) || '';
+  return get;
+}
+
+async function ltiError(title, msg, status = 400) {
+  return clsPage(title, `<h1>${clsEsc(title)}</h1><p>${clsEsc(msg)}</p><p>If this keeps happening, show this page to your school’s LMS admin or email hello@levlprep.com.</p>`, { status });
+}
+
+/* GET|POST /lti/login */
+async function ltiLogin(request, env) {
+  if (!ltiOn(env)) return ltiError('Not turned on', 'LevlPrep links for this LMS are not turned on yet.', 404);
+  const form = request.method === 'POST' ? await request.formData().catch(() => null) : null;
+  const get = ltiParams(request, form);
+  const iss = String(get('iss')).replace(/\/$/, '');
+  const platform = await ltiPlatform(env, { issuer: iss, clientId: get('client_id') });
+  if (!platform) return ltiError('Not registered', 'This LMS is not registered with LevlPrep yet, or its registration is waiting for LevlPrep to check it. Your admin can add it on levlprep.com/teach/lms.html.', 404);
+  const target = get('target_link_uri');
+  if (target && !target.startsWith(`${apiUrl(env)}/lti/`)) return ltiError('Wrong address', 'The launch address is not LevlPrep’s.');
+  const nonce = clsRandom(18);
+  const state = await clsSign(env, 'lti-state', { p: platform.id, n: nonce }, 600);
+  const q = new URLSearchParams({
+    scope: 'openid', response_type: 'id_token', response_mode: 'form_post', prompt: 'none',
+    client_id: platform.client_id, redirect_uri: `${apiUrl(env)}/lti/launch`, login_hint: get('login_hint'), state, nonce,
+  });
+  if (get('lti_message_hint')) q.set('lti_message_hint', get('lti_message_hint'));
+  return clsRedirect(`${platform.auth_url}${platform.auth_url.includes('?') ? '&' : '?'}${q}`);
+}
+
+/* The checks on a verified id_token. Returns null when it passes, else the reason. */
+function ltiClaimProblem(c, platform, nonce, now = Date.now()) {
+  const s = Math.floor(now / 1000);
+  if (String(c.iss || '').replace(/\/$/, '') !== platform.issuer) return 'issuer';
+  const aud = Array.isArray(c.aud) ? c.aud : [c.aud];
+  if (!aud.includes(platform.client_id)) return 'audience';
+  if (aud.length > 1 && c.azp !== platform.client_id) return 'azp';
+  if (!(Number(c.exp) > s - 60)) return 'expired';
+  if (Number(c.iat) > s + 300) return 'iat';
+  if (!nonce || c.nonce !== nonce) return 'nonce';
+  if (c[`${LTI_CLAIM}version`] !== '1.3.0') return 'version';
+  const dep = c[`${LTI_CLAIM}deployment_id`];
+  if (!dep) return 'deployment';
+  if ((platform.deployment_ids || []).length && !platform.deployment_ids.includes(dep)) return 'deployment';
+  if (!c.sub) return 'sub';
+  return null;
+}
+
+const ltiInstructor = (c) => (c[`${LTI_CLAIM}roles`] || []).some((r) => /#(Instructor|Administrator|ContentDeveloper|TeachingAssistant)$|membership\/Instructor/.test(String(r)));
+
+/* POST /lti/launch (form_post from the platform) */
+async function ltiLaunch(request, env, now = Date.now()) {
+  if (!ltiOn(env)) return ltiError('Not turned on', 'LevlPrep links for this LMS are not turned on yet.', 404);
+  const form = await request.formData().catch(() => null);
+  if (!form) return ltiError('Launch failed', 'The LMS sent nothing LevlPrep could read.');
+  if (form.get('error')) return ltiError('Launch failed', `The LMS said: ${clsLine(form.get('error_description') || form.get('error'), 200)}`);
+  const st = await clsVerify(env, 'lti-state', String(form.get('state') || ''), now);
+  if (!st) return ltiError('Launch expired', 'Open the assignment again from your LMS.');
+  const platform = await ltiPlatform(env, { id: st.p });
+  if (!platform) return ltiError('Not registered', 'This LMS is no longer registered with LevlPrep.', 404);
+  let c;
+  try { c = await ltiVerifyJwt(String(form.get('id_token') || ''), platform.jwks_url, now); } catch { c = null; }
+  if (!c) return ltiError('Launch failed', 'LevlPrep could not check the LMS’s signature.');
+  const why = ltiClaimProblem(c, platform, st.n, now);
+  if (why) return ltiError('Launch failed', `The launch did not pass LevlPrep’s checks (${why}).`);
+  const used = await sb(env, 'lti_nonces', { method: 'POST', headers: { Prefer: 'return=minimal' }, body: JSON.stringify({ nonce: `${platform.id}:${c.nonce}`, expires_at: new Date(now + 86400000).toISOString() }) });
+  if (!used.ok) return ltiError('Launch already used', 'Open the assignment again from your LMS.');
+  await sb(env, `lti_nonces?expires_at=lt.${encodeURIComponent(new Date(now).toISOString())}`, { method: 'DELETE' });
+
+  const type = c[`${LTI_CLAIM}message_type`];
+  const ctx = c[`${LTI_CLAIM}context`] || {};
+  const base = { p: platform.id, sub: String(c.sub), dep: c[`${LTI_CLAIM}deployment_id`], ctx: clsLine(ctx.id, 200), ctxTitle: clsLine(ctx.title, 100), instr: ltiInstructor(c) };
+  if (type === 'LtiDeepLinkingRequest') {
+    if (!base.instr) return ltiError('Teachers only', 'Only a teacher can add LevlPrep work to a course.', 403);
+    const dl = c[`${LTI_DL}deep_linking_settings`] || {};
+    const ret = ltiHttps(dl.deep_link_return_url);
+    if (!ret) return ltiError('Launch failed', 'The LMS did not say where to send the assignment back.');
+    const ticket = await clsSign(env, 'lti-dl', { ...base, ret, data: dl.data == null ? null : String(dl.data).slice(0, 2000) }, 1800, now);
+    return clsRedirect(`${siteUrl(env)}/teach/lti.html#dl=${ticket}`, 303);
+  }
+  if (type === 'LtiResourceLinkRequest') {
+    const custom = c[`${LTI_CLAIM}custom`] || {};
+    const ags = c[LTI_AGS] || {};
+    const ticket = await clsSign(env, 'lti-go', {
+      ...base, la: clsUuid(custom.la) ? custom.la : null, cls: clsUuid(custom.class) ? custom.class : null,
+      li: ltiHttps(ags.lineitem), name: clsLine(c.given_name || c.name, 60),
+    }, 1800, now);
+    return clsRedirect(`${siteUrl(env)}/teach/lti.html#go=${ticket}`, 303);
+  }
+  return ltiError('Not supported', 'LevlPrep does not handle this kind of LMS launch.');
+}
+
+/* ------------------------------------------------------------ the site's side */
+
+/* POST /lti/deeplink { ticket, class, assignment } -> { go } */
+async function ltiDeepLink(request, env, now = Date.now()) {
+  if (!ltiOn(env)) return ltiOff;
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in first.' } };
+  const p = await clsBody(request);
+  const t = p && await clsVerify(env, 'lti-dl', p.ticket, now);
+  if (!t) return { status: 400, body: { error: 'This page has expired. Start again from your LMS.' } };
+  const cls = await clsOwnClass(env, user.id, p.class);
+  if (!cls) return { status: 404, body: { error: 'Class not found.' } };
+  const a = await clsAssignment(env, cls.id, p.assignment);
+  if (!a) return { status: 404, body: { error: 'Assignment not found.' } };
+  const platform = await ltiPlatform(env, { id: t.p });
+  if (!platform) return { status: 404, body: { error: 'This LMS is no longer registered.' } };
+  if (!t.ctx) return { status: 400, body: { error: 'Add LevlPrep from inside an LMS course.' } };
+  const item = { type: 'ltiResourceLink', title: clsLine(a.title, 120), url: `${apiUrl(env)}/lti/launch`, custom: { la: a.id, class: cls.id } };
+  if (a.required) item.lineItem = { scoreMaximum: 100, label: clsLine(a.title, 120), resourceId: a.id, tag: 'levlprep' };
+  const s = Math.floor(now / 1000);
+  const payload = {
+    iss: platform.client_id, aud: platform.issuer, iat: s, exp: s + 600, nonce: clsRandom(16),
+    [`${LTI_CLAIM}deployment_id`]: t.dep, [`${LTI_CLAIM}message_type`]: 'LtiDeepLinkingResponse', [`${LTI_CLAIM}version`]: '1.3.0',
+    [`${LTI_DL}content_items`]: [item],
+  };
+  if (t.data != null) payload[`${LTI_DL}data`] = t.data;
+  const jwt = await ltiSignJwt(env, payload);
+  await clsUpsert(env, 'class_ext_links', [{ class_id: cls.id, provider: 'lti', platform_id: platform.id, external_id: t.ctx, title: t.ctxTitle || null }], 'class_id,provider,external_id');
+  const r = await clsSign(env, 'lti-ret', { u: t.ret, j: jwt }, 300, now);
+  return { status: 200, body: { go: `${apiUrl(env)}/lti/return?r=${encodeURIComponent(r)}` } };
+}
+
+/* GET /lti/return?r=  posts the signed response to the LMS (a form the browser submits). */
+async function ltiReturn(request, env) {
+  const d = ltiOn(env) ? await clsVerify(env, 'lti-ret', new URL(request.url).searchParams.get('r') || '') : null;
+  const u = d && ltiHttps(d.u);
+  if (!u || typeof d.j !== 'string') return ltiError('Expired', 'Start again from your LMS.');
+  const script = 'document.getElementById("f").submit();';
+  return clsPage('Sending to your LMS', `<h1>Sending the assignment to your LMS…</h1><form id="f" method="post" action="${clsEsc(u)}"><input type="hidden" name="JWT" value="${clsEsc(d.j)}"><button type="submit">Continue</button></form>`,
+    { formAction: clsEsc(new URL(u).origin), script });
+}
+
+/* POST /lti/bind { ticket } -> { url } or { join: code } or { teacher: url } */
+async function ltiBind(request, env, now = Date.now()) {
+  if (!ltiOn(env)) return ltiOff;
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in first.' } };
+  const p = await clsBody(request);
+  const t = p && await clsVerify(env, 'lti-go', p.ticket, now);
+  if (!t) return { status: 400, body: { error: 'This page has expired. Open the assignment again from your LMS.' } };
+  if (!t.cls || !t.la) return { status: 404, body: { error: 'This LMS link does not point at a LevlPrep assignment. Ask your teacher to add it again.' } };
+  const cls = await clsClass(env, t.cls);
+  const a = cls && await clsAssignment(env, cls.id, t.la);
+  if (!cls || !a || cls.archived) return { status: 404, body: { error: 'This assignment was removed by your teacher.' } };
+  if (cls.teacher_id === user.id) return { status: 200, body: { teacher: `${siteUrl(env)}/teach/?c=${cls.id}#a/${a.id}` } };
+  if (t.instr) return { status: 403, body: { error: 'This class belongs to another LevlPrep teacher. Sign in with the account that made it.' } };
+  // The launch's LMS course must be the one this class's owner linked (deep linking writes class_ext_links).
+  const lk = await sb(env, `class_ext_links?select=external_id&class_id=eq.${cls.id}&provider=eq.lti&platform_id=eq.${t.p}&external_id=eq.${encodeURIComponent(t.ctx || '')}&limit=1`);
+  if (!t.ctx || !lk.ok || !(await lk.json()).length) return { status: 403, body: { error: 'This LMS course is not linked to this LevlPrep class. Ask your teacher to add the assignment again from the LMS.' } };
+  const platform = await ltiPlatform(env, { id: t.p });
+  if (!platform) return { status: 404, body: { error: 'This LMS is no longer registered.' } };
+  if (!(await clsIsMember(env, cls.id, user.id))) return { status: 200, body: { join: cls.code } };
+  await clsUpsert(env, 'class_ext_members', [{ class_id: cls.id, student_id: user.id, provider: 'lti', platform_id: t.p, external_user: t.sub }], 'class_id,student_id,provider');
+  if (t.li && a.required && ltiSameHost(t.li, platform.token_url)) await clsUpsert(env, 'class_ext_assignments', [{ assignment_id: a.id, provider: 'lti', platform_id: t.p, external_id: t.li }], 'assignment_id,provider,external_id');
+  return { status: 200, body: { url: `${siteUrl(env)}/${urlCourse(cls.course)}/?la=${encodeURIComponent(a.id)}&ref=lti` } };
+}
+
+async function ltiServiceToken(env, platform, now) {
+  const s = Math.floor(now / 1000);
+  const assertion = await ltiSignJwt(env, { iss: platform.client_id, sub: platform.client_id, aud: platform.token_url, iat: s, exp: s + 300, jti: clsRandom(16) });
+  const res = await timedFetch(platform.token_url, {
+    method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      grant_type: 'client_credentials', client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
+      client_assertion: assertion, scope: LTI_SCORE_SCOPE,
+    }),
+  });
+  if (!res.ok) return null;
+  return (await res.json()).access_token || null;
+}
+
+function ltiScoresUrl(lineitem) {
+  const u = new URL(lineitem);
+  u.pathname = u.pathname.replace(/\/$/, '') + '/scores';
+  return u.href;
+}
+
+/* POST /lti/grades { class, assignment, grades: [{ student, score }] } -> { sent, skipped } */
+async function ltiGrades(request, env, now = Date.now()) {
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in again.' } };
+  if (!(await ltiAllowed(env, user))) return ltiOff;
+  const p = await clsBody(request);
+  const cls = p && await clsOwnClass(env, user.id, p.class);
+  if (!cls) return { status: 404, body: { error: 'Class not found.' } };
+  const a = await clsAssignment(env, cls.id, p.assignment);
+  if (!a) return { status: 404, body: { error: 'Assignment not found.' } };
+  if (!a.required) return { status: 400, body: { error: 'Grades go back only for required assignments.' } };
+  const er = await sb(env, `class_ext_assignments?select=external_id,platform_id&assignment_id=eq.${a.id}&provider=eq.lti`);
+  const linked = await sb(env, `class_ext_links?select=platform_id&class_id=eq.${cls.id}&provider=eq.lti`);
+  const ok = new Set((linked.ok ? await linked.json() : []).map((l) => l.platform_id));
+  const items = (er.ok ? await er.json() : []).filter((i) => ok.has(i.platform_id));
+  if (!items.length) return { status: 409, body: { error: 'No student has opened this assignment from your LMS yet, so there is no gradebook column to send to.' } };
+  const grades = cleanGrades(p.grades, (await clsMembers(env, cls.id)).map((m) => m.student_id));
+  if (!grades.size) return { status: 400, body: { error: 'No grades to send.' } };
+  const mr = await sb(env, `class_ext_members?select=student_id,external_user,platform_id&class_id=eq.${cls.id}&provider=eq.lti`);
+  const subs = new Map((mr.ok ? await mr.json() : []).map((m) => [m.student_id, m]));
+  let sent = 0;
+  const skipped = [];
+  const tokens = new Map();
+  for (const [student, grade] of grades) {
+    const m = subs.get(student);
+    const item = m && items.find((i) => i.platform_id === m.platform_id);
+    if (!item) { skipped.push({ student, why: 'not-launched' }); continue; }
+    if (!tokens.has(item.platform_id)) {
+      const platform = await ltiPlatform(env, { id: item.platform_id });
+      tokens.set(item.platform_id, platform ? { platform, tok: await ltiServiceToken(env, platform, now) } : null);
+    }
+    const pt = tokens.get(item.platform_id);
+    if (!pt || !ltiSameHost(item.external_id, pt.platform.token_url)) { skipped.push({ student, why: 'lms-not-trusted' }); continue; }
+    const tok = pt.tok;
+    if (!tok) { skipped.push({ student, why: 'lms-refused' }); continue; }
+    const res = await timedFetch(ltiScoresUrl(item.external_id), {
+      method: 'POST', headers: { Authorization: `Bearer ${tok}`, 'Content-Type': 'application/vnd.ims.lis.v1.score+json' },
+      body: JSON.stringify({ userId: m.external_user, scoreGiven: grade, scoreMaximum: 100, activityProgress: 'Completed', gradingProgress: 'FullyGraded', timestamp: new Date(now).toISOString() }),
+    });
+    if (res.ok) sent++; else skipped.push({ student, why: `lms-${res.status}` });
+  }
+  return { status: 200, body: { sent, skipped } };
+}
+
+/* ===========================================================================
+   classes.js
+   =========================================================================== */
+
+/* The teacher-class integration routes in one table (docs/teacher-classes.md, stream C), wired in index.js.
+
+   classPublicRoute: called before the Origin check, for what an LMS, Google or a mail client calls (each
+   checks its own signature or state). classApiRoute: called after the Origin check and the per-IP throttle,
+   for what the site calls with a session. Both return null for a path that is not theirs. */
+
+
+
+
+
+
+
+/* The hourly housekeeping (index.js cron): the 30-day mail log, expired report links, used launch nonces. */
+async function classPurge(env) {
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) return { skipped: true };
+  const res = await sb(env, 'rpc/class_purge', { method: 'POST', body: '{}' });
+  return { ok: res.ok };
+}
+
+/* POST /class/features -> what this teacher's page may offer, so it shows only buttons that work. */
+async function classFeatures(request, env) {
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in again.' } };
+  const ready = clsReady(env);
+  return {
+    status: 200,
+    body: {
+      reminders: ready && clsMailReady(env),
+      reports: ready,
+      quote: clsMailReady(env),
+      google: await gcAllowed(env, user),
+      lti: await ltiAllowed(env, user),
+      frqAi: classFrqAiOpen(env, await isOwnerEmail(user.email)).ok,
+    },
+  };
+}
+
+const CLASS_API = {
+  '/class/features': classFeatures,
+  '/class/remind': classRemind,
+  '/class/report-link': classReportLink,
+  '/class/report-link/revoke': classReportRevoke,
+  '/class/report': classReportGet,
+  '/class/quote': classQuote,
+  '/class/frq/ai': classFrqAi,
+  '/class/google/start': gcStart,
+  '/class/google/finish': gcFinish,
+  '/class/google/status': gcStatus,
+  '/class/google/disconnect': gcDisconnect,
+  '/class/google/courses': gcCourses,
+  '/class/google/link': gcLink,
+  '/class/google/roster': gcRoster,
+  '/class/google/invite': gcInvite,
+  '/class/google/post': gcPost,
+  '/class/google/grades': gcGrades,
+  '/lti/platforms': ltiRegister,
+  '/lti/platforms/mine': ltiMine,
+  '/lti/deeplink': ltiDeepLink,
+  '/lti/bind': ltiBind,
+  '/lti/grades': ltiGrades,
+};
+
+const CLASS_PUBLIC_PATHS = ['/class/email/stop', '/class/google/callback', '/lti/activate', '/lti/login', '/lti/launch', '/lti/return', '/lti/jwks', '/lti/config.json'];
+
+/* -> { status, body } | null */
+async function classApiRoute(request, env, path) {
+  const fn = Object.prototype.hasOwnProperty.call(CLASS_API, path) ? CLASS_API[path] : null;
+  if (!fn) return null;
+  try {
+    return await fn(request, env);
+  } catch (e) {
+    console.log('class route failed', path, String(e).slice(0, 200));
+    return { status: 503, body: { error: 'Something went wrong. Try again in a minute.' } };
+  }
+}
+
+const clsJsonPublic = (body, status = 200) => new Response(JSON.stringify(body), {
+  status, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Cache-Control': 'public, max-age=300' },
+});
+
+/* -> Response | null */
+async function classPublicRoute(request, env, path) {
+  if (!CLASS_PUBLIC_PATHS.includes(path)) return null;
+  const m = request.method;
+  try {
+    if (path === '/class/email/stop' && (m === 'GET' || m === 'POST')) return await classEmailStop(request, env);
+    if (path === '/class/google/callback' && m === 'GET') return await gcCallback(request, env);
+    if (path === '/lti/activate' && (m === 'GET' || m === 'POST')) return await ltiActivate(request, env);
+    if (path === '/lti/login' && (m === 'GET' || m === 'POST')) return await ltiLogin(request, env);
+    if (path === '/lti/launch' && m === 'POST') return await ltiLaunch(request, env);
+    if (path === '/lti/return' && m === 'GET') return await ltiReturn(request, env);
+    if (path === '/lti/jwks' && m === 'GET') {
+      const k = ltiPublicJwk(env);
+      return clsJsonPublic({ keys: k ? [k] : [] });
+    }
+    if (path === '/lti/config.json' && m === 'GET') return clsJsonPublic(ltiCanvasConfig(env));
+  } catch (e) {
+    console.log('class public route failed', path, String(e).slice(0, 200));
+    return new Response('Something went wrong. Try again in a minute.', { status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+  }
+  return new Response('Method not allowed', { status: 405, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+}
+
+/* ===========================================================================
    index.js
    =========================================================================== */
 
@@ -2871,6 +4522,7 @@ async function gradeRoute(request, env, { now = Date.now(), later, fetcher } = {
  *
  * Deploy: see ../README.md
  */
+
 
 
 
@@ -3118,6 +4770,7 @@ export default {
     ];
     if (new Date(event?.scheduledTime || Date.now()).getUTCMinutes() < 15) {
       tasks.push(reconcilePolar(env).then((r) => console.log('premium reconcile', JSON.stringify(r))));
+      tasks.push(classPurge(env).then((r) => console.log('class purge', JSON.stringify(r))));
     }
     ctx.waitUntil(Promise.allSettled(tasks).then((results) => {
       results.forEach((r) => { if (r.status === 'rejected') console.log('reminder run failed', String(r.reason)); });
@@ -3170,6 +4823,15 @@ export default {
       return reply(r.body, r.status);
     }
 
+    /* Teacher-class integrations called by an LMS, by Google or from an email (src/classes.js): no Origin
+       and no session; each checks its own signed state, ticket or token. Throttled per IP. */
+    if (CLASS_PUBLIC_PATHS.includes(path)) {
+      if (await throttled(env, request, 'class-pub')) {
+        return new Response('Too many requests. Try again in a minute.', { status: 429, headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Retry-After': '60' } });
+      }
+      return classPublicRoute(request, env, path);
+    }
+
     /* Analytics, forwarded to Umami (src/umami.js says why and what is
        dropped). Before the throttle below on purpose: that one is shared with
        the assistant, and a student's page views must not spend its allowance.
@@ -3217,6 +4879,15 @@ export default {
       const later = ctx && typeof ctx.waitUntil === 'function' ? (p) => ctx.waitUntil(p) : undefined;
       const r = await gradeRoute(request, env, { later });
       return reply(r.body, r.status);
+    }
+
+    /* Teacher-class integrations from the site (src/classes.js): reminders, family report links, quotes,
+       the teacher's AI first pass on free responses, Google Classroom and LTI. Each checks the session
+       and that the teacher owns the class. */
+    if (path.startsWith('/class/') || path.startsWith('/lti/')) {
+      const r = await classApiRoute(request, env, path);
+      if (r) return reply(r.body, r.status);
+      return reply({ error: 'Not found' }, 404);
     }
 
     // Pass-or-extend (NREMT); its rules are in premiumGuarantee().

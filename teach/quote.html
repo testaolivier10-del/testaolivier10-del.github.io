@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Premium Quote | LevlPrep</title>
+<meta name="description" content="Ask for a Class Premium quote or pay with a purchase order: unlock every LevlPrep lesson, question and exam for your class.">
+<link rel="canonical" href="https://levlprep.com/teach/quote.html">
+<meta property="og:title" content="Class Premium Quote | LevlPrep">
+<meta property="og:description" content="Ask for a Class Premium quote or pay with a purchase order: unlock every LevlPrep lesson, question and exam for your class.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/teach/quote.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../assets/site-pages.css">
+<link rel="stylesheet" href="../assets/class/class.css">
+<link rel="stylesheet" href="../assets/class/class-pages.css">
+
+</head>
+<body class="sp-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="site-header" data-site-header>
+  <div class="site-header__inner">
+    <span class="site-header__brand-row"><a class="site-header__brand" href="/" aria-label="LevlPrep home"><span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span></a></span>
+  </div>
+</header>
+
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
+  <section class="sp-hero sp-hero--solo">
+    <div>
+      <span class="sp-pill">Class Premium</span>
+      <h1>Everything, for <span>the whole class.</span></h1>
+      <p class="hand">a quote or a purchase order, by email</p>
+    </div>
+  </section>
+  <div class="lv-narrow">
+    <section class="lv-card lvp-note">
+      <h2 class="lv-h3">How paying works</h2>
+      <p class="lv-mut">Classes are free. Class Premium unlocks every lesson, question and exam for every student in your classes, at a discount for teachers. Send this form and we reply within two school days with a quote for your number of students.</p>
+      <p class="lv-mut">Card payments go through Polar, which sells LevlPrep Premium and sends the receipt and invoice for a paid order. Polar does not issue unpaid invoices or net-30 terms, so for a purchase order we reply by email with what your purchasing office needs and how your school can pay. Nothing is charged by sending this form.</p>
+    </section>
+    <form class="lv-card" id="qtForm" style="margin-top:16px">
+      <fieldset class="lvp-seg"><legend class="lv-h3">What do you need?</legend>
+        <label class="lvt-check"><input type="radio" name="kind" value="quote" checked> A quote</label>
+        <label class="lvt-check"><input type="radio" name="kind" value="po"> To pay with a purchase order</label>
+      </fieldset>
+      <div class="lv-grid2">
+        <label class="lv-field"><span>Your name</span><input class="lv-in" id="qt_name" maxlength="80" required autocomplete="name"></label>
+        <label class="lv-field"><span>Your role</span><input class="lv-in" id="qt_role" maxlength="60" placeholder="AP Biology teacher"></label>
+        <label class="lv-field"><span>School</span><input class="lv-in" id="qt_school" maxlength="120" required autocomplete="organization"></label>
+        <label class="lv-field"><span>District (if any)</span><input class="lv-in" id="qt_district" maxlength="120"></label>
+        <label class="lv-field"><span>Reply to (email)</span><input class="lv-in" id="qt_email" type="email" maxlength="120" autocomplete="email" placeholder="Your account email if empty"></label>
+        <label class="lv-field"><span>Phone (optional)</span><input class="lv-in" id="qt_phone" maxlength="40" autocomplete="tel"></label>
+        <label class="lv-field"><span>Number of students</span><input class="lv-in" id="qt_students" type="number" min="1" max="99999" required></label>
+        <label class="lv-field"><span>Number of classes</span><input class="lv-in" id="qt_classes" type="number" min="1" max="999"></label>
+        <label class="lv-field"><span>Courses</span><input class="lv-in" id="qt_courses" maxlength="200" placeholder="AP Biology, AP Chemistry"></label>
+        <label class="lv-field"><span>When should it start?</span><input class="lv-in" id="qt_start" maxlength="40" placeholder="January 2027"></label>
+      </div>
+      <div class="qt-po" hidden>
+        <div class="lv-grid2">
+          <label class="lv-field"><span>Purchase order number (if you have it)</span><input class="lv-in" id="qt_po_number" maxlength="60"></label>
+          <label class="lvt-check" style="align-self:end"><input type="checkbox" id="qt_tax_exempt"> Our school is tax exempt</label>
+        </div>
+        <label class="lv-field"><span>Billing address and the office to send it to</span><textarea class="lv-in" id="qt_billing" rows="3" maxlength="400"></textarea></label>
+      </div>
+      <label class="lv-field"><span>Anything else (optional)</span><textarea class="lv-in" id="qt_notes" rows="3" maxlength="1000"></textarea></label>
+      <button class="lv-btn is-accent" type="submit">Send</button>
+      <p class="lv-msg" id="qtMsg" role="status" aria-live="polite"></p>
+      <p class="lv-mut" style="margin-top:12px">You need to be signed in, so the reply reaches you. We keep what you send here to answer it, and use it for nothing else. Rather email? <a href="mailto:hello@levlprep.com">hello@levlprep.com</a></p>
+    </form>
+  </div>
+</div>
+<div class="xshell">
+  <div class="xsection">
+    <footer style="margin-top:0">
+      <p class="privacy-link"><a href="../privacy.html#schools">Privacy</a> &middot; <a href="../teach/privacy-agreement.html">For districts</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../teach/">Teachers</a> &middot; <a href="../join.html">Join a class</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/errors.js" defer></script>
+<script src="../assets/account.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<script src="../assets/class/quote.js" defer></script>
+</body>
+</html>
