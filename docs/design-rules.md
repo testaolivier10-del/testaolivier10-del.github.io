@@ -10,6 +10,8 @@ Status words: **Agreed** (owner confirmed), **Proposed** (from research, waiting
 Background: the research report `docs/design-research-2026-11.md` (what the best study sites do, with sources)
 and its 14 ranked decisions. Mockup of those decisions: https://claude.ai/artifact/T5YGJSHPjrnsW9EcECLZ54.
 Earlier look and covers: `docs/site-redesign.md`.
+Every feature the site has today and its new home: `docs/site-feature-inventory.md` (map page:
+https://claude.ai/artifact/GbY4t4nHczLZ8JdYkerpZx). Check every options page against it.
 
 ## Build order
 One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
@@ -115,3 +117,5 @@ honest take and a pick; the owner chooses and the choice is recorded here before
   Owner caught that the Practice options hid the practice settings (number of questions and so on); added option P4
   with the settings under the Start button. Lesson: every option must show where each existing feature went.
   Options page: https://claude.ai/artifact/24Au8jxsZmN9NnrUiCo3y3
+- 2026-11-05: owner asked whether features were being forgotten or removed: forgotten (mockups were drawn from memory).
+  Made the feature inventory from the live site; steps 2, 4 and 5 stand, steps 1, 3 and 6 get small additions (flags F1 to F8).
