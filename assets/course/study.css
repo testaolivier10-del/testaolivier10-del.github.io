@@ -437,3 +437,41 @@
 .cx-keys-list dd{margin:0;}
 .cx-keys-list kbd{display:inline-block;min-width:26px;text-align:center;font:800 12px var(--font-ui);color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:2px 6px;}
 @media (pointer:coarse){ .cx-keys{display:none;} }
+
+/* Simpler set builder (owner, live session 2026-11-05; design preview). Every option stays; the builder is
+   just shorter: no repeated intro line, no dividers, the modes as one row of chips (the line under each mode
+   shows only for the one picked), the filters in one tight grid, the count beside its question, a slimmer
+   Start bar and the share buttons as one quiet row. */
+.cx-study .cx-builder .cx-lede{display:none}
+.cx-study .cx-builder .cx-step{margin:0;padding:0 0 18px;border:0}
+.cx-study .cx-builder .cx-step-h,.cx-study .cx-builder .cx-step > legend{font-size:17px;gap:8px;margin:0 0 10px}
+.cx-study .cx-builder .cx-step-n{width:22px;height:22px;font-size:12px}
+.cx-study .cx-builder .cx-step .cx-choices{display:flex;flex-wrap:wrap;gap:8px}
+.cx-study .cx-builder .cx-choice{flex:0 0 auto;min-height:0;padding:8px 15px;border-radius:999px;gap:0}
+.cx-study .cx-builder .cx-choice input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.cx-study .cx-builder .cx-choice b{font:800 14.5px/1.3 var(--font-ui)}
+.cx-study .cx-builder .cx-choice > span > span{display:none}
+.cx-study .cx-builder .cx-choice:has(input:disabled){opacity:.55}
+.cx-study .cx-builder .cx-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.cx-study .cx-builder .cx-field > span{font-size:11.5px;margin-bottom:3px}
+.cx-study .cx-builder .cx-field select,.cx-study .cx-builder .cx-field input{min-height:40px;padding-top:6px;padding-bottom:6px;font-size:14px}
+.cx-study .cx-builder fieldset.cx-step{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.cx-study .cx-builder fieldset.cx-step > legend{float:left;width:auto;margin:0}
+.cx-study .cx-builder fieldset.cx-step:has(.cx-choices) > legend{float:none;width:100%;margin-bottom:10px}
+.cx-study .cx-builder .cx-pills{gap:6px}
+.cx-study .cx-builder .cx-pills .cx-pill{min-width:46px}
+.cx-study .cx-builder .cx-pill > span{padding:6px 12px;font-size:14px}
+.cx-study .cx-builder .cx-start{margin-top:2px;padding:10px 14px;gap:12px}
+.cx-study .cx-builder .cx-start .btn-press{min-height:44px;padding:10px 22px;font-size:15px}
+.cx-study .cx-builder .cx-sum{font-size:14px}
+.cx-study .cx-builder .cx-sum small{font-size:12.5px}
+.cx-study .cx-builder .cx-free{margin-top:8px;font-size:13px}
+.cx-study .cx-builder .cx-avail,.cx-study .cx-builder .cx-small{font-size:13px}
+.cx-study .cx-builder [class*="-share"] a,.cx-study .cx-builder [class*="-share"] button{padding:5px 11px;font-size:12.5px;min-height:0}
+.cx-study .cx-card.cx-builder{padding-top:18px;padding-bottom:16px}
+@media (max-width:640px){.cx-study .cx-builder .cx-fields{grid-template-columns:1fr 1fr}.cx-study .cx-builder .cx-step .cx-choices{display:flex}.cx-study .cx-builder .cx-choice{padding:7px 12px;min-height:0}}
+.cx-study .cx-builder .cx-step{margin:0 0 4px!important;padding:0 0 14px!important;border-bottom:0!important}
+.cx-study .cx-builder .cx-choice{padding:8px 15px!important;min-height:0!important;border-radius:999px!important}
+.cx-study .cx-builder .cx-start{padding:10px 14px!important}
+.cx-study .cx-builder .cx-pill > span{padding:6px 12px!important;min-height:0!important}
+.cx-study .cx-builder .cx-sum b,.cx-study .cx-builder .cx-sum > span{font-size:14.5px!important}
