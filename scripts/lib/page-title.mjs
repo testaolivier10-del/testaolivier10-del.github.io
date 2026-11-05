@@ -32,13 +32,16 @@ export function courseTitle(topic, labels, { keepFirstLabel = false } = {}) {
     if (titleLength(t) <= TITLE_MAX) return t;
   }
   /* Nothing fits whole: the brand always stays (consistency audit 2026-11, D13), so the topic is shortened. It keeps
-     its first words and its last ones with "…" between ("Impacts of… Overfishing"), since the end of a topic name is
-     usually what tells it from its neighbours; a lesson and its notes page still differ by their label. */
+     its first words, ended with "…" ("Calculus Formulas and Theorems…"); when that would match a neighbour's title it
+     keeps its first and last words with "…" between. A lesson and its notes page still differ by their label. */
   const shortenings = (label) => {
     const room = TITLE_MAX - titleLength(` — ${label} | ${BRAND}`);
     const words = decode(topic).split(/\s+/);
     const clean = (w) => w.replace(/[\s,;:–—(-]+$/, '');
-    // k first words and m last words. Ones that keep the last word come first, then by length.
+    // k first words and m last words. A cut that reads from the start and keeps at least 20 characters comes first
+    // ("95% confidence intervals and…", not "95%… intervals and error bars"): a title cut in the middle reads badly
+    // in a tab or a search result. Then the rest by length; the middle cuts stay as fallbacks so neighbours never
+    // share a title.
     const out = [];
     for (let k = words.length - 1; k >= 0; k--) {
       for (let m = words.length - k; m >= 0; m--) {
@@ -49,7 +52,8 @@ export function courseTitle(topic, labels, { keepFirstLabel = false } = {}) {
         if (t.length <= room) out.push({ t, tail: m > 0 });
       }
     }
-    return out.sort((x, y) => (y.tail - x.tail) || (y.t.length - x.t.length)).map((x) => x.t);
+    const good = (x) => !x.tail && x.t.length >= 20;
+    return out.sort((x, y) => (good(y) - good(x)) || (y.t.length - x.t.length) || (x.tail - y.tail)).map((x) => x.t);
   };
   /* The first label while it leaves a readable topic, else the next. Within one build, two pages never get the same
      shortened title: the next candidate is taken (check-site section 33). */
@@ -57,7 +61,10 @@ export function courseTitle(topic, labels, { keepFirstLabel = false } = {}) {
   for (const [i, label] of list.entries()) {
     const c = shortenings(label);
     if (!c.length || (c[0].length < floor && i < list.length - 1)) continue;
-    const pick = c.find((t) => !ISSUED.has(`${t} — ${label}`)) || c[0];
+    // The same topic and label always get the same pick (a builder may ask twice for one page).
+    const own = `${topic}\u0000${label}`;
+    const pick = PICKED.get(own) || c.find((t) => !ISSUED.has(`${t} — ${label}`)) || c[0];
+    PICKED.set(own, pick);
     ISSUED.add(`${pick} — ${label}`);
     return `${pick} — ${label} | ${BRAND}`;
   }
@@ -68,6 +75,7 @@ export function courseTitle(topic, labels, { keepFirstLabel = false } = {}) {
   return `${decode(topic).slice(0, TITLE_MAX - titleLength(` — ${plain} | ${BRAND}`) - 1)}… — ${plain} | ${BRAND}`;
 }
 const ISSUED = new Set();
+const PICKED = new Map();
 
 /* A site-level page (hub, legal, search): "{Page} | LevlPrep". */
 export function siteTitle(page) {
