@@ -73,6 +73,13 @@ honest take and a pick; the owner chooses and the choice is recorded here before
   Tools sit as links under the list.
 - Agreed (step 6): a topic row is number, name and one status circle (done, started, new), plus a small "Premium
   lesson" tag where it applies. The whole row opens the topic; no buttons, times or bars on rows.
+- Agreed (step 6b, F1): a topic row opens the topic's free notes; an "Interactive lesson" button (Premium tag where
+  it applies) is the first thing on the notes page.
+- Agreed (step 6b, F3): logged out, the header has Log in plus a menu button with the same menu as logged in (Log in,
+  Make a free account, answer sounds, dark mode, For teachers). On phones Log in lives inside that menu.
+- Agreed (step 6b, F5): Copy link, Google Classroom, Print and Print with answer key sit behind one "Share" button,
+  which counts as the page's one small action.
+- Agreed: every design question is shown as pictures of each option before the owner chooses, never as words only.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
 - Agreed (step 1): every course has 5 sections: Home, Learn, Practice, Exams, Progress. Path lives in Home;
@@ -119,3 +126,6 @@ honest take and a pick; the owner chooses and the choice is recorded here before
   Options page: https://claude.ai/artifact/24Au8jxsZmN9NnrUiCo3y3
 - 2026-11-05: owner asked whether features were being forgotten or removed: forgotten (mockups were drawn from memory).
   Made the feature inventory from the live site; steps 2, 4 and 5 stand, steps 1, 3 and 6 get small additions (flags F1 to F8).
+- 2026-11-05: step 6b (missing features): F1 notes first with a lesson button (A), F3 menu button when logged out (A),
+  F5 one Share button (A). Owner asked why unit actions are in Learn at all; agreed Practice this unit and Unit test
+  repeat Practice and Exams, options redrawn. Options page: https://claude.ai/artifact/LK6KsKzERvjrtjZQ9ozfju
