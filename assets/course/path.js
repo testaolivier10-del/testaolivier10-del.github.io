@@ -344,12 +344,9 @@
     var slot = $('#lpSlot');
     if(!slot){ slot = document.createElement('div'); slot.id = 'lpSlot'; slot.className = 'lp-slot'; lead.parentNode.insertBefore(slot, lead); }
     var pathHref = abs('path.html');
-    if(!S.mode){
-      slot.innerHTML = '<div class="lp-card lp-hnew"><div class="tx"><span class="lp-pill">Your path</span><h2 class="lp-h2">Create your <span>personalized path</span></h2><p class="lp-p">Three quick questions, then a path through all of ' + esc(D.name) + ', in course order.</p>' +
-        '<ol class="lp-qs"><li>How you’re studying</li><li>What you already know</li><li>When your exam is</li></ol>' +
-        '<div class="lp-row"><button type="button" class="lp-btn gold" data-act="setup">Create my path</button><a class="lp-btn ghost" href="' + esc(pathHref) + '">Open full path</a></div></div></div>';
-      return;
-    }
+    /* No path yet: preview the course-order path anyway, so the path is the main thing on the course home
+       (owner, 2026-11-05). Continue opens the first stop; the three questions stay on the full path page. */
+    var made = !!S.mode; if(!made) S.mode = 'self';
     var st = stops(), ni = -1; st.forEach(function(s, i){ if(ni < 0 && s.state === 'now') ni = i; });
     if(ni < 0) ni = st.length - 1;
     var n = st[ni], from = Math.max(0, ni - 2), mini = st.slice(from, from + 6), url = stopUrl(n);
@@ -359,6 +356,7 @@
       '<div class="lp-row">' + (url ? '<a class="lp-btn gold" href="' + esc(url) + '">Continue</a>' : '') + '<a class="lp-btn ghost" href="' + esc(pathHref) + '">Open full path</a></div></div>' +
       miniHTML(mini, ni - from) +
       '<div class="ft"><p class="lp-hand">jump anywhere, everything you finish stays done</p>' + (u ? '<span>' + dU + ' of ' + inU.length + ' in ' + esc(u.label) + '</span>' : '') + '</div></div>';
+    if(!made){ S.mode = null; var c = $('.lp-btn.gold', slot); if(c) c.textContent = 'Start'; }
     [$('#heroPrimaryCta'), $('.sticky-cta a')].forEach(function(a){ if(a && url){ a.textContent = 'Continue your path'; a.setAttribute('href', url); a.classList.remove('cta-pending'); } });
   }
 

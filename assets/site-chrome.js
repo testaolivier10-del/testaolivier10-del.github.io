@@ -1165,6 +1165,17 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', classBoot);
   else classBoot();
 
+  // The course home's design preview layout (assets/course/home-v2.js).
+  function mountHomeV2(){
+    if(!document.querySelector('main.r3-home') || document.getElementById('levlHomeV2')) return;
+    var sc = document.createElement('script');
+    sc.id = 'levlHomeV2';
+    sc.src = '/assets/course/home-v2.js';
+    document.head.appendChild(sc);
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountHomeV2);
+  else mountHomeV2();
+
   // The preview copy gets a Visitor / Student switch (assets/preview-demo.js).
   if(IS_PREVIEW){
     var pv = document.createElement('script');
