@@ -45,6 +45,8 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 - Agreed (step 5): no code style font (IBM Plex Mono). Numbers, scores and labels use Nunito with even width digits
   (`font-variant-numeric: tabular-nums`); its font files can be dropped.
 - Agreed (step 5): course banners keep their dark course color in dark mode; only text and accents lighten.
+- Agreed (step 6): cards keep today's look: white, 1 px border, soft shadow, 20 px corners (owner's taste over
+  Claude's border only pick). No cards inside cards.
 
 ## Words
 - Agreed: show less at once. Do not explain things people already understand (a button that emails students needs
@@ -65,6 +67,10 @@ honest take and a pick; the owner chooses and the choice is recorded here before
   a full level bar on Progress.
 - Agreed (step 3): phone header is the logo mark, the course name with the switcher, search and the account picture.
 - Agreed (step 2): on phones the 5 sections sit in a bottom bar with icons and labels, all always visible.
+- Agreed (step 6): Learn lists the 8 units as rows that open in place; the current unit starts open. Glossary and
+  Tools sit as links under the list.
+- Agreed (step 6): a topic row is number, name and one status circle (done, started, new), plus a small "Premium
+  lesson" tag where it applies. The whole row opens the topic; no buttons, times or bars on rows.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
 - Agreed (step 1): every course has 5 sections: Home, Learn, Practice, Exams, Progress. Path lives in Home;
@@ -83,6 +89,7 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 4. Real length text and numbers that agree with each other on the page.
 5. One primary button; no sentence that only explains the obvious; no numbered headings.
 6. Compare against the rules above and list any rule the page breaks, with the reason.
+7. Every feature the page has today is still reachable in every option; say where it went.
 
 ## Log
 - 2026-11-04: owner feedback on the teacher side: too much on screen, too many explaining words, layout should be
@@ -104,3 +111,7 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 - 2026-11-04: step 5 decided: Inter Display with two colors on titles only (A), notes 18 px medium at 65 letters (N2),
   gold main button (G), handwriting only on banners (H1), numbers in Nunito (M2). Found that notes ask for weight 500
   but show 600 because fonts.css starts Nunito at 600. Options page: https://claude.ai/artifact/2mnjPAc9PUwaW6kws7JiZi
+- 2026-11-05: step 6 decided: units open in place (L1), compact topic rows (R1), cards as today (C1, owner's taste).
+  Owner caught that the Practice options hid the practice settings (number of questions and so on); added option P4
+  with the settings under the Start button. Lesson: every option must show where each existing feature went.
+  Options page: https://claude.ai/artifact/24Au8jxsZmN9NnrUiCo3y3
