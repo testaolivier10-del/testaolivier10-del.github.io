@@ -401,7 +401,8 @@
       if(full.length !== stubsList.length) throw new Error('missing questions');
       if(cfg.kind !== 'mixed' && Core.freeExam && !Core.freeExam().use()){ renderSetup(); return; }
       var t = timing();
-      startSectionOne(full, r[1], label, meta, t.k);
+      if(CLS) full = CLS.mix(full);
+      startSectionOne(full, r[1], label, meta, CLS ? CLS.k(full.length * MCQ_SEC) : t.k);
     }).catch(function(){
       if(btn){ btn.disabled = false; btn.textContent = 'Start'; }
       var msg = app.querySelector('.phys-pr-avail'); if(msg) msg.textContent = 'The exam questions did not load. Check your connection and try again.';
@@ -445,7 +446,7 @@
     view('run');
     var limit = k ? Math.round(qs.length * MCQ_SEC * k * 1000) : 0;
     app.innerHTML = '<div class="phys-ex-run">' +
-      '<div class="phys-ex-top"><div class="phys-ex-title"><span class="phys-pr-label">' + esc(label) + (frqs.length ? ' &middot; Section I' : '') + '</span><span class="phys-small phys-ex-status" aria-live="polite"></span></div>' + clockHtml(limit, true) + '</div>' +
+      '<div class="phys-ex-top"><div class="phys-ex-title"><span class="phys-pr-label">' + esc(label) + (frqs.length ? ' &middot; Section I' : '') + '</span><span class="phys-small phys-ex-status" aria-live="polite"></span></div>' + clockHtml(limit, !CLS) + '</div>' +
       '<p class="phys-ex-sr" aria-live="assertive"></p>' +
       '<details class="phys-ex-navwrap"' + (window.matchMedia && window.matchMedia('(min-width: 700px)').matches ? ' open' : '') + '><summary>All questions <span class="phys-ex-navcount"></span></summary>' +
       '<nav class="phys-ex-nav" aria-label="Questions">' + qs.map(function(q, i){ return '<button type="button" data-go="' + i + '" aria-label="Question ' + (i + 1) + ', not answered">' + (i + 1) + '</button>'; }).join('') + '</nav></details>' +
@@ -521,6 +522,7 @@
   }
   function lockedIn(q, box, res){
     run.res[q.id] = { correct: res.correct, score: res.score, pick: capture(q, box, res) };
+    if(CLS) CLS.answer(q, res);
     box.querySelectorAll('.phys-q-body button').forEach(function(b){ b.disabled = true; });
     var fb = box.querySelector('.phys-q-feedback'); if(fb) fb.innerHTML = '<p class="phys-small">Answer locked in.</p>';
     status();
@@ -669,6 +671,7 @@
     }).join('') + '</ul></section>';
   }
   function results(rows, right, fg, fo, composite, b){
+    if(CLS && CLS.done(rows)) return;
     var total = rows.length, k = run.meta.kind, missedN = total - right;
     var byUnit = tally(rows, function(q){ return q.unit; });
     var byTopic = tally(rows, function(q){ return q.topic; }).sort(function(a, c){ return a.c / a.n - c.c / c.n; });
@@ -748,6 +751,14 @@
       '<p class="phys-ex-links"><a href="' + BASE + 'lessons/' + q.topic + '.html">Lesson</a> <span aria-hidden="true">&middot;</span> <a href="' + BASE + 'notes/' + q.topic + '.html">Notes</a>' + (window.LevlReport ? ' ' + window.LevlReport.button('apphys', q.id) : '') + '</p></li>';
   }
 
+  /* ?la=: a teacher's assignment, run by assets/class/class-run.js (docs/teacher-classes.md). Without la= none of this runs. */
+  var LA = /[?&]la=/.test(location.search), CLS = null;
+  function classBoot(){
+    var s = document.createElement('script'); s.src = '/assets/class/class-run.js'; s.onerror = renderSetup;
+    s.onload = function(){ window.LevlClassRun.exam({ app: app, cur: CUR, core: Core, base: BASE, view: view, cfg: cfg, units: builtUnits, begin: begin, set: function(c){ CLS = c; }, fallback: renderSetup }); };
+    document.head.appendChild(s);
+  }
+
   /* ------------------------------------------------------ boot */
 
   function boot(){
@@ -772,7 +783,7 @@
       if(MIXED.indexOf(+p.get('n')) > -1) cfg.n = +p.get('n');
       if(formById('form-' + p.get('form'))){ cfg.form = 'form-' + p.get('form'); cfg.kind = 'full'; }
       else if(cfg.kind === 'full' && FORMS.length && !p.get('form')) cfg.form = FORMS[0].id;
-      renderSetup();
+      if(LA) classBoot(); else renderSetup();
       if(p.toString()){ var s = app.querySelector('.phys-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){ app.innerHTML = '<p>The question bank did not load. Check your connection and reload.</p>'; });
   }
