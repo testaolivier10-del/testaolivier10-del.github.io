@@ -17,7 +17,7 @@ https://claude.ai/artifact/GbY4t4nHczLZ8JdYkerpZx). Check every options page aga
 One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
 honest take and a pick; the owner chooses and the choice is recorded here before the next step.
 1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners (done) · 5 Type and color (done) ·
-6 Cards, lists and tags · 7 Course home · 8 Learn · 9 Practice · 10 Question screen · 11 Exams · 12 Progress ·
+6 Cards, lists and tags (done) · 7 Course home · 8 Learn · 9 Practice · 10 Question screen · 11 Exams · 12 Progress ·
 13 Menus and site wide extras · 14 Homepage · 15 Teacher side. (Reordered 2026-11-05 so each section of the course
 gets its own step, built from `docs/site-feature-inventory.md`.)
 
@@ -81,6 +81,14 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   Make a free account, answer sounds, dark mode, For teachers). On phones Log in lives inside that menu.
 - Reopened (step 6 restart; was agreed in 6b, F5): Copy link, Google Classroom, Print and Print with answer key sit behind one "Share" button,
   which counts as the page's one small action.
+- Agreed (step 6): cards keep today's look: white, 1 px border, soft shadow, 20 px corners (owner's taste, chosen twice).
+- Agreed (step 6): one row style for every list (topics, tools, FRQs, decks, sets): the name, plus one short muted
+  second line only when it helps choose (read time, what a tool does, the FRQ's unit). The whole row is one tap target.
+- Agreed (step 6): status is one circle (filled done, half started, empty new). Only fully locked items get a quiet
+  outlined "Premium" tag with a lock; free items get no tag; gold is never used for tags. Topic rows get no tag,
+  because every topic's notes are free.
+- Agreed (step 6): an empty section shows one line saying what is true and one button for what to do next
+  ("Nothing to review yet" + Start practice); no pictures or explaining sentences, and sections never hide.
 - Agreed: every design question is shown as pictures of each option before the owner chooses, never as words only.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
@@ -133,3 +141,5 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   repeat Practice and Exams, options redrawn. Options page: https://claude.ai/artifact/LK6KsKzERvjrtjZQ9ozfju
 - 2026-11-05: owner restarted the build right after step 5. Step 6 and 6b decisions reopened (kept above, marked
   Reopened); steps 1 to 5 stand. Build order split so Learn, Practice and Exams each get their own step.
+- 2026-11-05: step 6 (restart) decided: cards as today (C1), name plus short second line (R2), circle and quiet
+  Premium tag (T1), one line empty states (E1). Options page: https://claude.ai/artifact/DFVNtT8hfT7ABujkFRc5oF
