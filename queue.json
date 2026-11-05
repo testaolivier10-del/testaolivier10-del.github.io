@@ -1075,9 +1075,9 @@
   },
   {
    "id": "w1104-02-sodium-lake",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-04",
-   "approved_on": null,
+   "approved_on": "2026-11-05",
    "date": null,
    "tiktok_caption": "Sodium and water: in 1947 crews dumped drums of leftover sodium onto frozen Lake Lenore, and the lake exploded.\nWould you have watched from the cliff or from the newsreel?\nIn AP Chemistry, sodium's one outer electron and low ionization energy are why it reacts so violently with water.\nlevlprep.com\n#apchem #chemistry #history #science",
    "yt_title": "Sodium and Water: The Day They Blew Up a Frozen Lake",
@@ -1098,7 +1098,8 @@
    "pin_comment_id": null,
    "pin_yt": false,
    "pin_tt": false,
-   "review_blob": "b665415dedc2ba162a8c2766de59072a96f26b2b"
+   "review_blob": "b665415dedc2ba162a8c2766de59072a96f26b2b",
+   "approved_blob": "b665415dedc2ba162a8c2766de59072a96f26b2b"
   }
  ]
 }
