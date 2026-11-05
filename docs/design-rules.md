@@ -14,7 +14,7 @@ Earlier look and covers: `docs/site-redesign.md`.
 ## Build order
 One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
 honest take and a pick; the owner chooses and the choice is recorded here before the next step.
-1 Course sections (done) · 2 Navigation · 3 Header · 4 Titles and banners · 5 Type and color · 6 Cards and lists ·
+1 Course sections (done) · 2 Navigation (done) · 3 Header · 4 Titles and banners · 5 Type and color · 6 Cards and lists ·
 7 Course home · 8 Question screen · 9 Notes page · 10 Progress · 11 Homepage · 12 Teacher side.
 
 ## How we work
@@ -43,6 +43,8 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 - No em dashes or hyphens used as punctuation in any copy.
 
 ## Layout and navigation
+- Agreed (step 2): on computers the 5 sections sit inside the header row, next to the logo and course name (one
+  row, no separate tab bar); below about 1,100 px wide it may fall back to two rows.
 - Agreed (step 2): on phones the 5 sections sit in a bottom bar with icons and labels, all always visible.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
@@ -74,3 +76,4 @@ honest take and a pick; the owner chooses and the choice is recorded here before
   https://claude.ai/artifact/S888mTSAEAMQDzQ3pLFjN3
 - 2026-11-04: step 2 phone decided: bottom bar (P1). Owner could not see the tabs in computer option B because the
   options page hid them below 860 px wide; fixed by drawing computer examples at fixed width, and added to the checklist.
+- 2026-11-04: step 2 computer decided: one row (B). Options page: https://claude.ai/artifact/Jus9RRrdCwQbgpsK7RcczB
