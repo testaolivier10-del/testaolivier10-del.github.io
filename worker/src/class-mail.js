@@ -3,7 +3,8 @@
 
    Reminders. Only when a teacher presses Send, only to students in that teacher's class who joined it, never
    on a schedule and never to anyone else (parents are never emailed and their addresses are never stored).
-   The teacher never sees a student's address: the Worker looks it up (class_member_emails) and sends.
+   Co-teachers of the class may send them too. The teacher never sees a student's address: the Worker looks it
+   up (class_member_emails) and sends.
    Limits (class_mail_take, atomic in SQL): one teacher reminder per student per 20 hours from any teacher,
    200 a day per teacher, nothing to a student who pressed "stop teacher reminders" in an earlier one; and
    at most 60 students a request. Plain, friendly text, no tracking, no links but the course and the stop link.
@@ -13,14 +14,15 @@
    stored; leaving the class or removing the student kills every link at once (cascade).
 
    Quotes. A form for Class Premium by quote or purchase order: stored, emailed to the owner (CLASS_SALES_TO,
-   default hello@levlprep.com) with Reply-To the teacher, and a short receipt to the teacher. Polar, which
+   default hello@levlprep.com) with Reply-To the signed-in account, and a short receipt to that account's address
+   only (never to a typed address). Typed text loses links and bare domains. Polar, which
    sells Premium, invoices only orders that are already paid (a PDF for every paid order); it has no unpaid
    invoice or net-30 terms, so a purchase order is handled by the owner by email. */
 import { sb } from './store.js';
 import { siteUrl, apiUrl } from './config.js';
 import { COURSE_NAMES, urlCourse } from './premium.js';
 import {
-  clsUuid, clsBody, clsUser, clsReady, clsOwnClass, clsAssignment, clsIsMember, clsTeacherName, clsRpc,
+  clsUuid, clsBody, clsUser, clsReady, clsTeachClass, clsAssignment, clsText, clsEmailOk, clsIsMember, clsTeacherName, clsRpc,
   clsLine, clsEsc, clsSign, clsVerify, clsRandom, clsHash, clsMail, clsMailReady, clsPage,
 } from './class-common.js';
 
@@ -73,7 +75,8 @@ export async function classRemind(request, env, now = Date.now()) {
   const ids = Array.isArray(p.students) ? [...new Set(p.students.filter(clsUuid))] : [];
   if (!ids.length) return { status: 400, body: { error: 'Pick at least one student.' } };
   if (ids.length > CLASS_REMIND_MAX) return { status: 400, body: { error: `At most ${CLASS_REMIND_MAX} students at a time.` } };
-  const cls = await clsOwnClass(env, user.id, p.class);
+  const tc = await clsTeachClass(env, user.id, p.class);
+  const cls = tc && tc.cls;
   if (!cls || cls.archived) return { status: 404, body: { error: 'Class not found.' } };
   let assignment = null;
   if (p.assignment) {
@@ -93,7 +96,7 @@ export async function classRemind(request, env, now = Date.now()) {
     if (assignment && Array.isArray(assignment.students) && !assignment.students.includes(id)) { skipped.push({ id, why: 'not-assigned' }); continue; }
     if (!m.email) { skipped.push({ id, why: 'no-email' }); continue; }
     if (m.optout) { skipped.push({ id, why: 'stopped' }); continue; }
-    const take = await clsRpc(env, 'class_mail_take', { p_teacher: user.id, p_class: cls.id, p_student: id, p_kind: 'remind' });
+    const take = await clsRpc(env, 'class_mail_take', { p_teacher: user.id, p_class: cls.id, p_student: id, p_kind: 'remind', p_recipient: null });
     if (take !== true) { skipped.push({ id, why: 'limit' }); continue; }
     const stop = clsStopUrl(env, await clsSign(env, 'stop', { u: id }, null));
     const mail = reminderEmail({ student: m.name, teacher, className: cls.name, course: cls.course, assignment, note, tz: p.tz, link, stop, now });
@@ -113,14 +116,19 @@ export async function classEmailStop(request, env) {
   const url = new URL(request.url);
   const token = url.searchParams.get('s') || '';
   const d = clsReady(env) ? await clsVerify(env, 'stop', token) : null;
-  if (!d || !clsUuid(d.u)) {
+  if (!d || !(clsUuid(d.u) || /^[0-9a-f]{64}$/.test(d.h || ''))) {
     return clsPage('Link not valid', '<h1>This link does not work</h1><p>It may have been cut short. Copy the whole link from the email, or reply to your teacher.</p>', { status: 400 });
   }
   if (request.method === 'POST') {
-    try { await clsRpc(env, 'class_email_stop', { p_student: d.u }); } catch {
+    try {
+      if (d.u) await clsRpc(env, 'class_email_stop', { p_student: d.u });
+      else await clsRpc(env, 'class_email_stop_addr', { p_hash: d.h });
+    } catch {
       return clsPage('Try again', '<h1>That did not work</h1><p>Please try again in a minute.</p>', { status: 503 });
     }
-    return clsPage('Stopped', '<h1>Teacher reminders are off</h1><p>No teacher can send you reminder emails through LevlPrep now. Your classes and your work are not changed.</p>');
+    return clsPage('Stopped', d.u
+      ? '<h1>Teacher reminders are off</h1><p>No teacher can send you reminder emails through LevlPrep now. Your classes and your work are not changed.</p>'
+      : '<h1>No more invites</h1><p>LevlPrep will not send class invites or teacher reminders to this address again.</p>');
   }
   const action = clsEsc(`${apiUrl(env)}/class/email/stop?s=${encodeURIComponent(token)}`);
   return clsPage('Stop teacher reminders', '<h1>Stop reminder emails from teachers?</h1><p>Your classes stay as they are; only the emails stop.</p>' +
@@ -134,8 +142,8 @@ export async function classEmailStop(request, env) {
 async function clsReportAllowed(env, uid, classId, studentId) {
   if (!clsUuid(classId) || !clsUuid(studentId)) return false;
   if (uid === studentId) return clsIsMember(env, classId, uid);
-  const cls = await clsOwnClass(env, uid, classId);
-  return !!cls && clsIsMember(env, classId, studentId);
+  const tc = await clsTeachClass(env, uid, classId);
+  return !!tc && clsIsMember(env, classId, studentId);
 }
 
 /* POST /class/report-link { class, student, days? } -> { url, expires_at } */
@@ -191,9 +199,8 @@ export function quoteFields(p) {
   for (const [k, max] of Object.entries(QUOTE_FIELDS)) {
     const v = p && p[k];
     if (v == null || v === '') continue;
-    out[k] = k === 'billing' || k === 'notes'
-      ? String(v).replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g, '').slice(0, max)
-      : clsLine(v, max);
+    if (k === 'email') { if (clsEmailOk(String(v).trim())) out.email = String(v).trim(); continue; }
+    out[k] = k === 'billing' || k === 'notes' ? clsText(v, max) : clsLine(v, max);
   }
   out.kind = p && p.kind === 'po' ? 'po' : 'quote';
   return out;
@@ -215,15 +222,16 @@ export async function classQuote(request, env) {
   if (recent.ok && (await recent.json()).length >= CLASS_QUOTES_PER_DAY) {
     return { status: 429, body: { error: 'We already have your request. We answer within two school days.' } };
   }
-  const reply = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email || '') ? f.email : user.email;
+  // Replies and the receipt go to the signed-in account only; a typed address is shown to the owner, never emailed.
+  const reply = user.email || null;
   const saved = await sb(env, 'class_quote_requests', { method: 'POST', headers: { Prefer: 'return=minimal' }, body: JSON.stringify({ user_id: user.id, data: { ...f, account: user.email } }) });
   if (!saved.ok) return { status: 503, body: { error: 'Could not send it. Email hello@levlprep.com instead.' } };
   const label = f.kind === 'po' ? 'Purchase order' : 'Quote';
   const text = [`${label} request for Class Premium`, '',
     ...Object.entries(f).filter(([k]) => k !== 'kind').map(([k, v]) => `${k}: ${v}`),
-    '', `Account: ${user.email}`, `Reply to: ${reply}`, '',
+    '', `Account (reply goes here): ${user.email}`, '',
     'Polar invoices paid orders only; a purchase order needs an invoice from you directly (see docs/teacher-classes.md).'].join('\n');
-  const owner = await clsMail(env, { to: env.CLASS_SALES_TO || 'hello@levlprep.com', subject: `${label} request: ${f.school} (${f.students} students)`, text, replyTo: reply });
+  const owner = await clsMail(env, { to: env.CLASS_SALES_TO || 'hello@levlprep.com', subject: `${label} request: ${f.school} (${f.students} students)`, text, replyTo: reply || undefined });
   if (!owner.ok) return { status: 503, body: { error: 'Saved, but the email did not go out. We will still see it; you can also email hello@levlprep.com.' } };
   if (reply) {
     await clsMail(env, {

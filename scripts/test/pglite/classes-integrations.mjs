@@ -4,9 +4,10 @@
    Not part of `node --test` (PGlite is not a dependency of the site). To run it:
      cd "$(mktemp -d)" && npm init -y >/dev/null && npm i @electric-sql/pglite@0.3.7
      cp <repo>/scripts/test/pglite/classes-integrations.mjs . && node classes-integrations.mjs <repo>
-   Last run 2026-11-04: 57 passed, 0 failed. */
+   Last run 2026-11-04: 70 passed, 0 failed. */
 import { PGlite } from '@electric-sql/pglite';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 const REPO = process.argv[2];
 const db = new PGlite();
 let pass = 0, failN = 0;
@@ -53,7 +54,7 @@ for (const t of ['class_mail_log', 'class_oauth', 'lti_platforms', 'class_frq_wo
   ok(denied2, `${t} readable by anon`);
   const r = await as(null, 'service_role', `select count(*) from public.${t}`); ok(r.rows.length === 1, `${t} service role`);
 }
-for (const f of [`public.class_mail_take('${T}','${clsId}','${S1}','remind')`, `public.class_member_emails('${clsId}')`, `public.class_report_get('x')`, `public.class_email_stop('${S1}')`]) {
+for (const f of [`public.class_mail_take('${T}','${clsId}','${S1}','remind', null)`, `public.class_member_emails('${clsId}')`, `public.class_report_get('x')`, `public.class_email_stop('${S1}')`, `public.class_email_stop_addr('x')`, `public.class_purge()`]) {
   let denied = false; try { await as(T, 'authenticated', `select ${f}`); } catch { denied = true; }
   ok(denied, `${f} callable by authenticated`);
 }
@@ -85,8 +86,16 @@ mine = await one(S1, `select public.class_frq_mine()`);
 ok(mine[0].score === null, 'resubmit clears score');
 await as(T, 'authenticated', `select public.teach_frq_score($1,$2,$3::jsonb)`, [aid, S1, sc]);
 
+// co-teachers score too; a stranger still cannot
+await db.query(`insert into public.class_coteachers (class_id, user_id) values ($1,$2)`, [clsId, X]);
+ok((await one(X, `select public.teach_frq_work($1)`, [aid])).length === 1, 'co-teacher sees work');
+ok(await one(X, `select public.teach_frq_score($1,$2,$3::jsonb)`, [aid, S1, sc]) === true, 'co-teacher scores');
+await db.query(`delete from public.class_coteachers`);
+ok((await one(X, `select public.teach_frq_work($1)`, [aid])).length === 0, 'removed co-teacher sees none');
+
 // mail take
-const take = (s, k = 'remind', t = T) => one(null, `select public.class_mail_take($1,$2,$3,$4)`, [t, clsId, s, k], 'service_role');
+const take = (s, k = 'remind', t = T, h = null) => one(null, `select public.class_mail_take($1,$2,$3,$4,$5)`, [t, clsId, s, k, h], 'service_role');
+const H = (e) => createHash('sha256').update(e.trim().toLowerCase()).digest('hex');
 ok(await take(S1) === true, 'first remind');
 ok(await take(S1) === false, 'second within 20h');
 ok(await take(S2) === true, 'other student');
@@ -98,8 +107,22 @@ ok(await one(null, `select public.class_email_stop($1)`, ['55555555-5555-5555-55
 await db.query(`update public.class_mail_log set sent_at = now() - interval '2 days'`);
 ok(await take(S2) === false, 'opted out');
 for (let i = 0; i < 200; i++) await db.query(`insert into public.class_mail_log (kind, teacher_id, class_id) values ('invite',$1,$2)`, [T, clsId]);
-ok(await take(null, 'invite') === false, 'teacher daily cap');
+ok(await take(null, 'invite', T, H('new@x.org')) === false, 'teacher daily cap');
 ok(await take(S1) === true, 'cap is per kind');
+await db.query(`delete from public.class_mail_log where kind = 'invite'`);
+ok(await take(null, 'invite') === false, 'an invite needs a recipient hash');
+ok(await take(null, 'invite', T, H('new@x.org')) === true, 'first invite');
+ok(await take(null, 'invite', X, H(' NEW@x.org ')) === false, 'once per 7 days per address, from any teacher');
+await db.query(`update public.class_mail_log set sent_at = now() - interval '8 days' where kind = 'invite'`);
+ok(await one(null, `select public.class_email_stop_addr($1)`, [H('new@x.org')], 'service_role') === true, 'stop by address');
+ok(await take(null, 'invite', T, H('new@x.org')) === false, 'stopped address is not invited again');
+ok(await one(null, `select public.class_email_stop_addr('nothex')`, [], 'service_role') === false, 'stop needs a hash');
+await one(null, `select public.class_email_stop_addr($1)`, [H('s1@x.org')], 'service_role');
+ok((await one(null, `select public.class_member_emails($1)`, [clsId], 'service_role')).find((m) => m.id === S1).optout === true, 'an address stop also covers reminders');
+await db.query(`delete from public.class_email_optout_addr`);
+await db.query(`insert into public.class_mail_log (kind, teacher_id, class_id, student_id, sent_at) values ('remind',$1,$2,$3, now() - interval '31 days')`, [T, clsId, S1]);
+await one(null, `select public.class_purge()`, [], 'service_role');
+ok(Number((await db.query(`select count(*) n from public.class_mail_log where sent_at < now() - interval '30 days'`)).rows[0].n) === 0, 'purge drops the 30-day log');
 const em = await one(null, `select public.class_member_emails($1)`, [clsId], 'service_role');
 ok(em.length === 2 && em.find((m) => m.id === S2).optout === true && em.find((m) => m.id === S1).email === 's1@x.org', 'member emails');
 

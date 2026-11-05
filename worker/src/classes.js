@@ -7,8 +7,16 @@ import { classRemind, classEmailStop, classReportLink, classReportRevoke, classR
 import { classFrqAi, classFrqAiOpen } from './class-frq.js';
 import { clsUser, clsReady, clsMailReady } from './class-common.js';
 import { isOwnerEmail } from './umami.js';
+import { sb } from './store.js';
 import { gcAllowed, gcStart, gcCallback, gcFinish, gcStatus, gcDisconnect, gcCourses, gcLink, gcRoster, gcInvite, gcPost, gcGrades } from './class-google.js';
-import { ltiAllowed, ltiLogin, ltiLaunch, ltiReturn, ltiRegister, ltiMine, ltiDeepLink, ltiBind, ltiGrades, ltiPublicJwk, ltiCanvasConfig } from './class-lti.js';
+import { ltiActivate, ltiAllowed, ltiLogin, ltiLaunch, ltiReturn, ltiRegister, ltiMine, ltiDeepLink, ltiBind, ltiGrades, ltiPublicJwk, ltiCanvasConfig } from './class-lti.js';
+
+/* The hourly housekeeping (index.js cron): the 30-day mail log, expired report links, used launch nonces. */
+export async function classPurge(env) {
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) return { skipped: true };
+  const res = await sb(env, 'rpc/class_purge', { method: 'POST', body: '{}' });
+  return { ok: res.ok };
+}
 
 /* POST /class/features -> what this teacher's page may offer, so it shows only buttons that work. */
 export async function classFeatures(request, env) {
@@ -53,7 +61,7 @@ const CLASS_API = {
   '/lti/grades': ltiGrades,
 };
 
-export const CLASS_PUBLIC_PATHS = ['/class/email/stop', '/class/google/callback', '/lti/login', '/lti/launch', '/lti/return', '/lti/jwks', '/lti/config.json'];
+export const CLASS_PUBLIC_PATHS = ['/class/email/stop', '/class/google/callback', '/lti/activate', '/lti/login', '/lti/launch', '/lti/return', '/lti/jwks', '/lti/config.json'];
 
 /* -> { status, body } | null */
 export async function classApiRoute(request, env, path) {
@@ -78,6 +86,7 @@ export async function classPublicRoute(request, env, path) {
   try {
     if (path === '/class/email/stop' && (m === 'GET' || m === 'POST')) return await classEmailStop(request, env);
     if (path === '/class/google/callback' && m === 'GET') return await gcCallback(request, env);
+    if (path === '/lti/activate' && (m === 'GET' || m === 'POST')) return await ltiActivate(request, env);
     if (path === '/lti/login' && (m === 'GET' || m === 'POST')) return await ltiLogin(request, env);
     if (path === '/lti/launch' && m === 'POST') return await ltiLaunch(request, env);
     if (path === '/lti/return' && m === 'GET') return await ltiReturn(request, env);

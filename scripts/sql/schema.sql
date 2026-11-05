@@ -2197,6 +2197,15 @@ grant execute on function public.class_push(text, jsonb) to authenticated;
 -- 10. Teacher class integrations (docs/teacher-classes.md stream C, migrations/2026-11d-classes-integrations.sql)
 -- ---------------------------------------------------------------------------
 
+create table if not exists public.class_coteachers (
+  class_id uuid not null references public.classes (id) on delete cascade,
+  user_id  uuid not null references auth.users (id) on delete cascade,
+  added_at timestamptz not null default now(),
+  primary key (class_id, user_id)
+);
+create index if not exists class_coteachers_user_idx on public.class_coteachers (user_id);
+alter table public.class_coteachers enable row level security;
+
 -- ---------------------------------------------------------------- reminder emails (Worker only)
 
 create table if not exists public.class_mail_log (
@@ -2205,10 +2214,12 @@ create table if not exists public.class_mail_log (
   teacher_id uuid not null references auth.users (id) on delete cascade,
   class_id   uuid not null references public.classes (id) on delete cascade,
   student_id uuid references auth.users (id) on delete cascade,
+  recipient  text,
   sent_at    timestamptz not null default now()
 );
 create index if not exists class_mail_log_teacher_idx on public.class_mail_log (teacher_id, kind, sent_at);
 create index if not exists class_mail_log_student_idx on public.class_mail_log (student_id, kind, sent_at);
+create index if not exists class_mail_log_recipient_idx on public.class_mail_log (recipient, kind, sent_at);
 alter table public.class_mail_log enable row level security;
 
 create table if not exists public.class_email_optout (
@@ -2216,6 +2227,13 @@ create table if not exists public.class_email_optout (
   at         timestamptz not null default now()
 );
 alter table public.class_email_optout enable row level security;
+
+-- "Stop" pressed in an invite (someone who may have no account): a SHA-256 of the lower-cased address only.
+create table if not exists public.class_email_optout_addr (
+  email_hash text primary key,
+  at         timestamptz not null default now()
+);
+alter table public.class_email_optout_addr enable row level security;
 
 -- ---------------------------------------------------------------- family progress reports (Worker only)
 
@@ -2256,6 +2274,7 @@ create table if not exists public.lti_platforms (
   token_url      text not null,
   jwks_url       text not null,
   label          text,
+  status         text not null default 'pending' check (status in ('pending', 'active')),
   registered_by  uuid not null references auth.users (id) on delete cascade,
   created_at     timestamptz not null default now(),
   unique (issuer, client_id)
@@ -2310,7 +2329,7 @@ alter table public.class_ext_members enable row level security;
 
 create table if not exists public.class_quote_requests (
   id         uuid primary key default gen_random_uuid(),
-  user_id    uuid references auth.users (id) on delete set null,
+  user_id    uuid references auth.users (id) on delete cascade,
   data       jsonb not null,
   created_at timestamptz not null default now()
 );
@@ -2333,19 +2352,23 @@ create table if not exists public.class_frq_work (
 );
 alter table public.class_frq_work enable row level security;
 
-revoke all on table public.class_mail_log, public.class_email_optout, public.class_report_links, public.class_oauth,
+revoke all on table public.class_coteachers from anon, authenticated;
+grant select, insert, update, delete on table public.class_coteachers to service_role;
+revoke all on table public.class_mail_log, public.class_email_optout, public.class_email_optout_addr, public.class_report_links, public.class_oauth,
   public.lti_platforms, public.lti_nonces, public.class_ext_links, public.class_ext_assignments,
   public.class_ext_members, public.class_quote_requests, public.class_frq_work from anon, authenticated;
-grant select, insert, update, delete on table public.class_mail_log, public.class_email_optout, public.class_report_links,
+grant select, insert, update, delete on table public.class_mail_log, public.class_email_optout, public.class_email_optout_addr, public.class_report_links,
   public.class_oauth, public.lti_platforms, public.lti_nonces, public.class_ext_links, public.class_ext_assignments,
   public.class_ext_members, public.class_quote_requests, public.class_frq_work to service_role;
 grant usage, select on sequence public.class_mail_log_id_seq to service_role;
 
 -- ---------------------------------------------------------------- Worker-only functions
 
--- One more email of this kind from this teacher to this student, or false: the student turned teacher
--- reminders off, already got one in the last 20 hours (from any teacher), or the teacher sent 200 today.
-create or replace function public.class_mail_take(p_teacher uuid, p_class uuid, p_student uuid, p_kind text)
+-- One more email of this kind from this teacher, or false. A reminder (p_student): not to a student who turned
+-- teacher reminders off or got one in the last 20 hours from any teacher. An invite (p_recipient, the SHA-256 of
+-- the lower-cased address): not to an address that pressed stop, or was invited in the last 7 days by anyone.
+-- Either kind: at most 200 a day per teacher.
+create or replace function public.class_mail_take(p_teacher uuid, p_class uuid, p_student uuid, p_kind text, p_recipient text default null)
 returns boolean
 language plpgsql
 volatile
@@ -2354,14 +2377,30 @@ set search_path = public
 as $$
 begin
   if p_kind not in ('remind', 'invite') then return false; end if;
+  if p_kind = 'remind' and p_student is null then return false; end if;
+  if p_kind = 'invite' and (p_recipient is null or p_recipient !~ '^[0-9a-f]{64}$') then return false; end if;
   perform pg_advisory_xact_lock(hashtext('class_mail:' || p_teacher::text));
-  delete from public.class_mail_log where sent_at < now() - interval '30 days';
   if p_student is not null and exists (select 1 from public.class_email_optout where student_id = p_student) then return false; end if;
+  if p_recipient is not null and exists (select 1 from public.class_email_optout_addr where email_hash = p_recipient) then return false; end if;
   if (select count(*) from public.class_mail_log where teacher_id = p_teacher and kind = p_kind and sent_at > now() - interval '1 day') >= 200 then return false; end if;
   if p_student is not null and exists (select 1 from public.class_mail_log where student_id = p_student and kind = p_kind and sent_at > now() - interval '20 hours') then return false; end if;
-  insert into public.class_mail_log (kind, teacher_id, class_id, student_id) values (p_kind, p_teacher, p_class, p_student);
+  if p_recipient is not null and exists (select 1 from public.class_mail_log where recipient = p_recipient and kind = p_kind and sent_at > now() - interval '7 days') then return false; end if;
+  insert into public.class_mail_log (kind, teacher_id, class_id, student_id, recipient) values (p_kind, p_teacher, p_class, p_student, p_recipient);
   return true;
 end;
+$$;
+
+-- The housekeeping the Worker's cron runs hourly: the 30-day mail log, expired report links, used launch nonces.
+create or replace function public.class_purge()
+returns void
+language sql
+volatile
+security definer
+set search_path = public
+as $$
+  delete from public.class_mail_log where sent_at < now() - interval '30 days';
+  delete from public.class_report_links where expires_at < now();
+  delete from public.lti_nonces where expires_at < now();
 $$;
 
 -- The class's members with their account email, for the Worker to send to. Never returned to a browser:
@@ -2374,7 +2413,9 @@ security definer
 set search_path = public
 as $$
   select coalesce(jsonb_agg(jsonb_build_object('id', m.student_id, 'name', m.name, 'email', u.email,
-                                               'optout', exists (select 1 from public.class_email_optout o where o.student_id = m.student_id))
+                                               'optout', exists (select 1 from public.class_email_optout o where o.student_id = m.student_id)
+                                                         or exists (select 1 from public.class_email_optout_addr a
+                                                                     where a.email_hash = encode(sha256(convert_to(lower(btrim(u.email)), 'UTF8')), 'hex')))
                             order by m.name), '[]'::jsonb)
     from public.class_members m
     join auth.users u on u.id = m.student_id
@@ -2430,6 +2471,21 @@ begin
 end;
 $$;
 
+-- "Stop" from an invite: by address hash, since the person may have no account.
+create or replace function public.class_email_stop_addr(p_hash text)
+returns boolean
+language plpgsql
+volatile
+security definer
+set search_path = public
+as $$
+begin
+  if p_hash is null or p_hash !~ '^[0-9a-f]{64}$' then return false; end if;
+  insert into public.class_email_optout_addr (email_hash) values (p_hash) on conflict (email_hash) do nothing;
+  return true;
+end;
+$$;
+
 -- ---------------------------------------------------------------- free responses (browser)
 
 -- A student sends their answer to a free-response assignment of theirs. Resending replaces it and clears any
@@ -2476,7 +2532,7 @@ as $$
    where w.student_id = auth.uid() and auth.uid() is not null;
 $$;
 
--- Every answer sent for one of the teacher's assignments.
+-- Every answer sent for an assignment in a class the caller teaches (owner or co-teacher).
 create or replace function public.teach_frq_work(p_assignment uuid)
 returns jsonb
 language sql
@@ -2490,10 +2546,11 @@ as $$
     from public.class_frq_work w
     join public.class_assignments a on a.id = w.assignment_id
     join public.classes c on c.id = a.class_id
-   where w.assignment_id = p_assignment and c.teacher_id = auth.uid() and auth.uid() is not null;
+   where w.assignment_id = p_assignment and auth.uid() is not null
+     and (c.teacher_id = auth.uid() or exists (select 1 from public.class_coteachers t where t.class_id = c.id and t.user_id = auth.uid()));
 $$;
 
--- The teacher's points and comment on one answer. p_score = { points: { label: [bool...] }, got, of, comment }.
+-- The teacher's (owner's or co-teacher's) points and comment on one answer. p_score = { points: { label: [bool...] }, got, of, comment }.
 create or replace function public.teach_frq_score(p_assignment uuid, p_student uuid, p_score jsonb)
 returns boolean
 language plpgsql
@@ -2514,12 +2571,14 @@ begin
     from public.class_assignments a
     join public.classes c on c.id = a.class_id
    where w.assignment_id = p_assignment and w.student_id = p_student and a.id = w.assignment_id
-     and c.teacher_id = auth.uid();
+     and (c.teacher_id = auth.uid() or exists (select 1 from public.class_coteachers t where t.class_id = c.id and t.user_id = auth.uid()));
   return found;
 end;
 $$;
 
-revoke execute on function public.class_mail_take(uuid, uuid, uuid, text) from public, anon, authenticated;
+revoke execute on function public.class_mail_take(uuid, uuid, uuid, text, text) from public, anon, authenticated;
+revoke execute on function public.class_purge() from public, anon, authenticated;
+revoke execute on function public.class_email_stop_addr(text) from public, anon, authenticated;
 revoke execute on function public.class_member_emails(uuid) from public, anon, authenticated;
 revoke execute on function public.class_report_get(text) from public, anon, authenticated;
 revoke execute on function public.class_email_stop(uuid) from public, anon, authenticated;
@@ -2527,7 +2586,9 @@ revoke execute on function public.class_frq_submit(uuid, jsonb) from public, ano
 revoke execute on function public.class_frq_mine() from public, anon;
 revoke execute on function public.teach_frq_work(uuid) from public, anon;
 revoke execute on function public.teach_frq_score(uuid, uuid, jsonb) from public, anon;
-grant execute on function public.class_mail_take(uuid, uuid, uuid, text) to service_role;
+grant execute on function public.class_mail_take(uuid, uuid, uuid, text, text) to service_role;
+grant execute on function public.class_purge() to service_role;
+grant execute on function public.class_email_stop_addr(text) to service_role;
 grant execute on function public.class_member_emails(uuid) to service_role;
 grant execute on function public.class_report_get(text) to service_role;
 grant execute on function public.class_email_stop(uuid) to service_role;

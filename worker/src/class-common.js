@@ -55,6 +55,18 @@ export async function clsOwnClass(env, uid, classId) {
   return rows[0] || null;
 }
 
+/* { cls, role } when `uid` teaches the class as its owner or a co-teacher (class_coteachers), else null.
+   Co-teachers may remind, share reports and score; Google, LTI and grade passback use clsOwnClass. */
+export async function clsTeachClass(env, uid, classId) {
+  if (!clsUuid(classId) || !clsUuid(uid)) return null;
+  const cls = await clsClass(env, classId);
+  if (!cls) return null;
+  if (cls.teacher_id === uid) return { cls, role: 'owner' };
+  const res = await sb(env, `class_coteachers?select=user_id&class_id=eq.${classId}&user_id=eq.${uid}&limit=1`);
+  if (!res.ok) return null;
+  return (await res.json()).length ? { cls, role: 'co' } : null;
+}
+
 export async function clsClass(env, classId) {
   if (!clsUuid(classId)) return null;
   const rows = await clsRows(env, `classes?select=id,name,course,code,archived,teacher_id&id=eq.${classId}&limit=1`);
@@ -104,14 +116,25 @@ export async function clsUpsert(env, table, rows, onConflict) {
 
 /* ------------------------------------------------------------ text */
 
-/* One line of plain text for an email: no control characters, no links (a teacher's note must not turn
-   our sender into a link shortener), at most `max` characters. */
-export function clsLine(s, max = 120) {
+/* Bare domains ("evil.example", "bit.ly/x"), which mail apps turn into links. */
+const CLS_DOMAIN = /\b(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+(?:com|net|org|io|co|ly|me|info|biz|xyz|app|dev|site|online|link|gg|tk|ru|cn|us|uk|edu|gov|ai|to|cc|tv|page|club|shop|top|live|click|example)\b(?:\/\S*)?/gi;
+
+/* Plain text for an email, newlines kept: no other control characters, no links or bare domains. */
+export function clsText(s, max = 1000) {
   return String(s == null ? '' : s)
-    .replace(/[\u0000-\u001f\u007f]+/g, ' ')
+    .replace(/[\u0000-\u0009\u000b-\u001f\u007f]+/g, ' ')
     .replace(/\b(?:https?:\/\/|www\.)\S+/gi, '')
-    .replace(/\s+/g, ' ').trim().slice(0, max);
+    .replace(CLS_DOMAIN, '')
+    .replace(/[ \t]+/g, ' ').trim().slice(0, max);
 }
+
+/* One line of plain text for an email: no control characters, no links or bare domains (a teacher's note must
+   not turn our sender into a link shortener), at most `max` characters. */
+export function clsLine(s, max = 120) {
+  return clsText(String(s == null ? '' : s).replace(/[\r\n]+/g, ' '), 100000).replace(/\s+/g, ' ').trim().slice(0, max);
+}
+
+export const clsEmailOk = (e) => typeof e === 'string' && e.length <= 120 && /^[^\s@<>"',;]+@[^\s@<>"',;]+\.[a-z]{2,}$/i.test(e);
 
 export function clsEsc(s) {
   return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));

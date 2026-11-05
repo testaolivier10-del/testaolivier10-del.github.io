@@ -24,8 +24,9 @@ import { COURSE_NAMES, urlCourse } from './premium.js';
 import { isOwnerEmail } from './umami.js';
 import {
   clsUuid, clsBody, clsUser, clsReady, clsFlag, clsOwnClass, clsAssignment, clsMembers, clsTeacherName, clsRpc, clsUpsert,
-  clsLine, clsSign, clsVerify, clsEncrypt, clsDecrypt, clsMail, clsMailReady, clsPage, clsRedirect,
+  clsLine, clsSign, clsVerify, clsEncrypt, clsDecrypt, clsMail, clsMailReady, clsPage, clsRedirect, clsHash,
 } from './class-common.js';
+import { clsStopUrl } from './class-mail.js';
 
 export const GC_SCOPES = [
   'openid', 'email',
@@ -284,12 +285,13 @@ export async function gcRoster(request, env) {
       matched.push({ student: m.id, name: m.name, classroom: gname });
       links.push({ class_id: cls.id, student_id: m.id, provider: 'google', external_user: String(s.userId) });
     } else {
-      missing.push({ user: String(s.userId), name: gname, email: email || null });
+      // Names as Classroom shows them; the address never goes back to the page.
+      missing.push({ user: String(s.userId), name: gname || 'A Classroom student', email: !!email });
     }
   }
   if (links.length) await clsUpsert(env, 'class_ext_members', links, 'class_id,student_id,provider');
   const notInClassroom = people.filter((m) => !seen.has(m.id)).map((m) => ({ student: m.id, name: m.name }));
-  return { status: 200, body: { course: r.link, matched, missing, notInClassroom } };
+  return { status: 200, body: { course: r.link, matched, missing, notInClassroom, counts: { classroom: r.students.length, matched: matched.length, missing: missing.length } } };
 }
 
 /* POST /class/google/invite { class, users: [Classroom user ids] } -> { sent, skipped } */
@@ -316,8 +318,10 @@ export async function gcInvite(request, env) {
     const email = String((s.profile && s.profile.emailAddress) || '');
     if (!email) { skipped.push({ user: uid, why: 'no-email' }); continue; }
     if (members.has(email.toLowerCase())) { skipped.push({ user: uid, why: 'already-joined' }); continue; }
-    const take = await clsRpc(env, 'class_mail_take', { p_teacher: t.user.id, p_class: cls.id, p_student: null, p_kind: 'invite' });
+    const h = await clsHash(email.trim().toLowerCase());
+    const take = await clsRpc(env, 'class_mail_take', { p_teacher: t.user.id, p_class: cls.id, p_student: null, p_kind: 'invite', p_recipient: h });
     if (take !== true) { skipped.push({ user: uid, why: 'limit' }); continue; }
+    const stop = clsStopUrl(env, await clsSign(env, 'stop', { h }, null));
     const first = clsLine(s.profile && s.profile.name && s.profile.name.givenName, 40) || 'there';
     const mail = await clsMail(env, {
       to: email,
@@ -326,7 +330,9 @@ export async function gcInvite(request, env) {
         `${teacher} uses LevlPrep for ${clsLine(cls.name, 60)} (${COURSE_NAMES[cls.course] || 'your course'}) and invited you from Google Classroom.`, '',
         `To join, open ${join} and sign in with this school account, or enter the class code ${cls.code}.`, '',
         'Joining is your choice and is for students 13 and older. The join page shows exactly what your teacher will see before you join.', '',
-        'You got this one email because you are in your teacher\'s Google Classroom class. LevlPrep does not keep your address unless you sign in.'].join('\n'),
+        'You got this one email because you are in your teacher\'s Google Classroom class. LevlPrep keeps only a one-way fingerprint of your address, so it does not invite you twice in a week.', '',
+        `No more invites to this address: ${stop}`].join('\n'),
+      headers: { 'List-Unsubscribe': `<${stop}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' },
     });
     if (mail.outcome === 'config') return { status: 503, body: { error: 'Invite emails are not set up yet.', sent, skipped } };
     if (mail.ok) sent++; else skipped.push({ user: uid, why: 'send-failed' });

@@ -19,7 +19,7 @@ import { runEmailReminders, unsubscribe } from './email.js';
 import { umamiProxy } from './umami.js';
 import { MODELS, extractText } from './ai.js';
 import { gradeRoute } from './frq-grade.js';
-import { classApiRoute, classPublicRoute, CLASS_PUBLIC_PATHS } from './classes.js';
+import { classApiRoute, classPublicRoute, classPurge, CLASS_PUBLIC_PATHS } from './classes.js';
 import { premiumCheckout, premiumWebhook, premiumRefund, premiumGuarantee, runPassEnding, reconcilePolar, bearerToken, sessionUser } from './premium.js';
 
 // Only these origins may call the Worker. Without this, anyone could point
@@ -262,6 +262,7 @@ export default {
     ];
     if (new Date(event?.scheduledTime || Date.now()).getUTCMinutes() < 15) {
       tasks.push(reconcilePolar(env).then((r) => console.log('premium reconcile', JSON.stringify(r))));
+      tasks.push(classPurge(env).then((r) => console.log('class purge', JSON.stringify(r))));
     }
     ctx.waitUntil(Promise.allSettled(tasks).then((results) => {
       results.forEach((r) => { if (r.status === 'rejected') console.log('reminder run failed', String(r.reason)); });

@@ -15,7 +15,7 @@ import {
   graderMode, claudeModel, gradeWithClaude, loadQuestion, cleanAnswers, cacheKey, cacheGet, cachePut, giveBack, countGrade,
   validQuestionId, FRQ_COURSES, GRADER_VERSION,
 } from './frq-grade.js';
-import { clsUuid, clsBody, clsUser, clsOwnClass } from './class-common.js';
+import { clsUuid, clsBody, clsUser, clsTeachClass } from './class-common.js';
 
 /* Models whose full eval pass met the launch rule (docs/frq-grader.md, "Results"). Add one only with its row. */
 export const CLASS_FRQ_PASSED_MODELS = ['claude-haiku-5-5'];
@@ -38,7 +38,8 @@ export async function classFrqAi(request, env, { fetcher } = {}) {
   if (!open.ok) return { status: 404, body: { error: 'The AI first pass is not turned on. Score it with the rubric.' } };
   const p = await clsBody(request);
   if (!p || !clsUuid(p.assignment) || !clsUuid(p.student)) return { status: 400, body: { error: 'Invalid request' } };
-  const cls = await clsOwnClass(env, user.id, p.class);
+  const tc = await clsTeachClass(env, user.id, p.class);
+  const cls = tc && tc.cls;
   if (!cls) return { status: 404, body: { error: 'Class not found.' } };
   if (!FRQ_COURSES.includes(cls.course)) return { status: 404, body: { error: 'The AI first pass is not available for this course yet.' } };
   const ar = await sb(env, `class_assignments?select=id,kind,spec&id=eq.${p.assignment}&class_id=eq.${cls.id}&limit=1`);

@@ -11,7 +11,7 @@ import worker from '../../worker/src/index.js';
 import { clsSign, clsVerify, clsEncrypt, clsDecrypt, clsLine } from '../../worker/src/class-common.js';
 import { reminderEmail, quoteFields } from '../../worker/src/class-mail.js';
 import { gcCourseWork, cleanGrades } from '../../worker/src/class-google.js';
-import { ltiVerifyJwt, ltiClaimProblem, ltiScoresUrl, ltiCanvasConfig } from '../../worker/src/class-lti.js';
+import { ltiVerifyJwt, ltiClaimProblem, ltiScoresUrl, ltiCanvasConfig, ltiConcerns } from '../../worker/src/class-lti.js';
 import { CLASS_FRQ_PASSED_MODELS } from '../../worker/src/class-frq.js';
 
 const realFetch = globalThis.fetch;
@@ -28,7 +28,8 @@ const C = '66666666-6666-4666-8666-666666666666';
 const A1 = '77777777-7777-4777-8777-777777777777';  // required practice
 const AF = '88888888-8888-4888-8888-888888888888';  // frq
 const AO = '99999999-9999-4999-8999-999999999999';  // optional
-const USERS = { tok_t: { id: T, email: 'teacher@school.org' }, tok_s1: { id: S1, email: 's1@school.org' }, tok_x: { id: X, email: 'x@school.org' } };
+const CO = 'cccccccc-cccc-4ccc-8ccc-cccccccccccc';   // co-teacher of C
+const USERS = { tok_t: { id: T, email: 'teacher@school.org' }, tok_s1: { id: S1, email: 's1@school.org' }, tok_x: { id: X, email: 'x@school.org' }, tok_co: { id: CO, email: 'co@school.org' } };
 
 /* ------------------------------------------------------------ a tiny PostgREST */
 
@@ -66,7 +67,8 @@ function world(opts = {}) {
       { id: AF, class_id: C, kind: 'frq', title: 'Agar FRQ', spec: { frq: 'frq-agar-shape' }, due_at: null, required: true, students: null },
       { id: AO, class_id: C, kind: 'practice', title: 'Optional', spec: {}, due_at: null, required: false, students: null },
     ],
-    teacher_profiles: [{ user_id: T, display_name: 'Ms. Rivera' }],
+    teacher_profiles: [{ user_id: T, display_name: 'Ms. Rivera' }, { user_id: CO, display_name: 'Mr. Okafor' }],
+    class_coteachers: [{ class_id: C, user_id: CO }],
     class_oauth: [], class_ext_links: [], class_ext_assignments: [], class_ext_members: [], lti_platforms: [], lti_nonces: [],
     class_report_links: [], class_quote_requests: [], class_frq_work: [{ assignment_id: AF, student_id: S1, answers: opts.frqAnswers || { a: 'Shape has no effect on the percentage of the block that turns clear.' } }],
   };
@@ -92,6 +94,8 @@ function world(opts = {}) {
         st.mailTaken.push(a); return json(true);
       }
       if (name === 'class_email_stop') { st.optout.add(a.p_student); return json(true); }
+      if (name === 'class_email_stop_addr') { st.optout.add(a.p_hash); return json(true); }
+      if (name === 'class_purge') return new Response(null, { status: 204 });
       if (name === 'class_report_get') {
         const l = db.class_report_links.find((r) => r.token_hash === a.p_hash && Date.parse(r.expires_at) > Date.now());
         return json(l ? { student: 'Sam Lee', class: { name: 'Bio P3', course: 'apbio' }, assignments: [], summary: null } : null);
@@ -110,6 +114,7 @@ function world(opts = {}) {
         const lim = Number(new URLSearchParams(u.search).get('limit')) || 1e9;
         return json(rows.filter((r) => match(r, fs)).slice(0, lim));
       }
+      if (method === 'PATCH') { const patch = JSON.parse(body); rows.filter((r) => match(r, fs)).forEach((r) => Object.assign(r, patch)); return new Response(null, { status: 204 }); }
       if (method === 'DELETE') { db[table] = rows.filter((r) => !match(r, fs)); return new Response(null, { status: 204 }); }
       if (method === 'POST') {
         const merge = /merge-duplicates/.test((init.headers && init.headers.Prefer) || '');
@@ -248,6 +253,16 @@ test('report links: teacher or the student, stored as a hash, read with the toke
 
 /* ------------------------------------------------------------ quotes */
 
+test('quote requests: the receipt goes to the signed-in account only, never to a typed address', async () => {
+  const w = world();
+  const r = await call(w, '/class/quote', { name: 'Dana', school: 'Lincoln evil.example', students: 5, email: 'victim@elsewhere.org', notes: 'see https://x.example and spam.com' });
+  assert.equal(r.status, 200);
+  assert.ok(w.st.mails.every((m) => !m.to.includes('victim@elsewhere.org')), 'nobody typed in is emailed');
+  assert.deepEqual(w.st.mails.map((m) => m.to[0]), ['hello@levlprep.com', 'teacher@school.org']);
+  assert.equal(w.st.mails[0].reply_to, 'teacher@school.org');
+  assert.doesNotMatch(w.st.mails[0].text + w.st.mails[0].subject, /evil\.example|x\.example|spam\.com/);
+});
+
 test('quote requests: signed in, stored, owner emailed with reply-to, a receipt, limited per day', async () => {
   const w = world();
   assert.equal((await call(w, '/class/quote', { name: 'A', school: 'B', students: 30 }, null)).status, 401);
@@ -266,7 +281,9 @@ test('quote requests: signed in, stored, owner emailed with reply-to, a receipt,
   await call(w, '/class/quote', { name: 'A', school: 'B', students: 3 });
   await call(w, '/class/quote', { name: 'A', school: 'B', students: 3 });
   assert.equal((await call(w, '/class/quote', { name: 'A', school: 'B', students: 3 })).status, 429);
-  assert.equal(quoteFields({ notes: 'a\u0000b' }).notes, 'ab');
+  assert.equal(quoteFields({ notes: 'a\u0000b' }).notes, 'a b');
+  assert.equal(quoteFields({ notes: 'Call me\nor see evil.example/pay or bit.ly/x' }).notes, 'Call me\nor see or');
+  assert.equal(quoteFields({ email: 'not an email' }).email, undefined);
 });
 
 /* ------------------------------------------------------------ teacher FRQ first pass */
@@ -393,7 +410,9 @@ test('Google: link a course, match the roster by email, invite those not in the 
   const r = await call(w, '/class/google/roster', { class: C });
   assert.equal(r.status, 200);
   assert.deepEqual(r.body.matched, [{ student: S1, name: 'Sam Lee', classroom: 'Sam Lee' }]);
-  assert.deepEqual(r.body.missing, [{ user: 'g9', name: 'Nia New', email: 'new@school.org' }]);
+  assert.deepEqual(r.body.missing, [{ user: 'g9', name: 'Nia New', email: true }]);
+  assert.doesNotMatch(JSON.stringify(r.body), /@/, 'no Classroom address goes back to the page');
+  assert.deepEqual(r.body.counts, { classroom: 2, matched: 1, missing: 1 });
   assert.deepEqual(r.body.notInClassroom, [{ student: S2, name: 'Ana Ruiz' }]);
   assert.deepEqual(w.db.class_ext_members.map((m) => [m.student_id, m.external_user]), [[S1, 'g1']]);
   const inv = await call(w, '/class/google/invite', { class: C, users: ['g9', 'g1'] });
@@ -403,6 +422,25 @@ test('Google: link a course, match the roster by email, invite those not in the 
   assert.match(w.st.mails[0].text, /join\.html\?c=K7QM4D/);
   assert.match(w.st.mails[0].text, /13 and older/);
   assert.equal(w.st.mailTaken[0].p_kind, 'invite');
+  assert.match(w.st.mailTaken[0].p_recipient, /^[0-9a-f]{64}$/, 'limited per address (hash), once a week in SQL');
+  assert.match(w.st.mails[0].text, /No more invites to this address: https:\/\/api\.levlprep\.com\/class\/email\/stop\?s=/);
+  const stop = w.st.mails[0].headers['List-Unsubscribe'].slice(1, -1);
+  const res = await worker.fetch(new Request(stop, { method: 'POST' }), w.env, {});
+  assert.equal(res.status, 200);
+  assert.ok(w.st.optout.has(w.st.mailTaken[0].p_recipient), 'stop by address');
+});
+
+test('co-teachers: reminders, report links and scoring yes; Google and LMS grade passback no', async () => {
+  const w = world({ env: { ...G_ON, CLASS_LTI: 'on', LTI_PRIVATE_KEY: JSON.stringify({ kty: 'RSA', d: 'x', kid: 'k', n: 'a', e: 'AQAB' }) } });
+  const r = await call(w, '/class/remind', { class: C, students: [S1] }, 'tok_co');
+  assert.equal(r.status, 200);
+  assert.equal(r.body.sent, 1);
+  assert.equal(w.st.mailTaken[0].p_teacher, CO);
+  assert.equal((await call(w, '/class/report-link', { class: C, student: S1 }, 'tok_co')).status, 200);
+  assert.equal((await call(w, '/class/google/start', { class: C }, 'tok_co')).status, 404);
+  assert.equal((await call(w, '/class/google/grades', { class: C, assignment: A1, grades: [] }, 'tok_co')).status, 404);
+  assert.equal((await call(w, '/lti/grades', { class: C, assignment: A1, grades: [] }, 'tok_co')).status, 404);
+  assert.equal((await call(w, '/class/remind', { class: C, students: [S1] }, 'tok_x')).status, 404, 'a stranger still cannot');
 });
 
 test('Google: post coursework with the assignment link; grades for required work only, as Classroom points', async () => {
@@ -462,11 +500,21 @@ function lmsFake() {
     return null;
   };
 }
-async function ltiWorld() {
+async function ltiWorld(opts = {}) {
   const w = world({ env: L_ON, fetch: lmsFake() });
   const reg = await call(w, '/lti/platforms', { issuer: ISS, client_id: '10000000000123', deployment_id: '7:abc', auth_url: 'https://sso.canvaslms.com/api/lti/authorize_redirect', token_url: 'https://school.instructure.com/login/oauth2/token', jwks_url: LMS_JWKS, label: 'Lincoln Canvas' });
   assert.equal(reg.status, 200, JSON.stringify(reg.body));
   assert.equal(w.db.lti_platforms.length, 1, 'registered');
+  assert.equal(w.db.lti_platforms[0].status, 'pending');
+  const mail = w.st.mails.find((m) => /LMS registration to review/.test(m.subject));
+  const link = mail.text.match(/(https:\/\/api\.levlprep\.com\/lti\/activate\?t=\S+)/)[1];
+  if (opts.activate !== false) {
+    assert.equal((await worker.fetch(new Request(link), w.env, {})).status, 200);
+    assert.equal(w.db.lti_platforms[0].status, 'pending', 'GET only shows it');
+    assert.equal((await worker.fetch(new Request(link, { method: 'POST' }), w.env, {})).status, 200);
+    assert.equal(w.db.lti_platforms[0].status, 'active');
+  }
+  w.activationMail = mail;
   return w;
 }
 function claims(nonce, extra = {}) {
@@ -569,6 +617,8 @@ test('LTI: a student binds after signing in (or is sent to join), then AGS score
   const ags = { 'https://purl.imsglobal.org/spec/lti/claim/message_type': 'LtiResourceLinkRequest', 'https://purl.imsglobal.org/spec/lti/claim/custom': { la: A1, class: C }, 'https://purl.imsglobal.org/spec/lti-ags/claim/endpoint': { lineitem: 'https://school.instructure.com/api/lti/courses/1/line_items/5' } };
   const { res } = await launch(w, ags);
   const ticket = decodeURIComponent(res.headers.get('Location').split('#go=')[1]);
+  assert.equal((await call(w, '/lti/bind', { ticket }, 'tok_s1')).status, 403, 'no LMS course linked to this class yet');
+  w.db.class_ext_links.push({ class_id: C, provider: 'lti', platform_id: w.db.lti_platforms[0].id, external_id: 'ctx-1' });
   USERS.tok_new = { id: S3, email: 'new@school.org' };
   assert.deepEqual((await call(w, '/lti/bind', { ticket }, 'tok_new')).body, { join: 'K7QM4D' }, 'not a member yet: the join code');
   const b = await call(w, '/lti/bind', { ticket }, 'tok_s1');
@@ -589,6 +639,51 @@ test('LTI: a student binds after signing in (or is sent to join), then AGS score
   assert.deepEqual({ ...score.score, timestamp: 0 }, { userId: 'canvas-user-42', scoreGiven: 90, scoreMaximum: 100, activityProgress: 'Completed', gradingProgress: 'FullyGraded', timestamp: 0 });
   assert.equal(ltiScoresUrl('https://x.test/api/lti/courses/1/line_items/5?type=a'), 'https://x.test/api/lti/courses/1/line_items/5/scores?type=a');
   delete USERS.tok_new;
+});
+
+test('LTI trust: a pending platform does nothing; another LMS course or a foreign line item host gets nothing', async () => {
+  const pending = await ltiWorld({ activate: false });
+  const login = await worker.fetch(new Request(`${API}/lti/login?iss=${encodeURIComponent(ISS)}&client_id=10000000000123&login_hint=h`), pending.env, {});
+  assert.equal(login.status, 404, 'not active until the owner activates it');
+  assert.match(pending.activationMail.text, /All addresses are where this LMS publishes them/);
+  assert.deepEqual(ltiConcerns({ issuer: 'https://lms.evil.example', auth_url: 'https://a.example', token_url: 'https://b.example', jwks_url: 'https://c.example' }).length, 1);
+  assert.match(ltiConcerns({ issuer: ISS, auth_url: 'https://evil.example/a', token_url: 'https://school.instructure.com/t', jwks_url: LMS_JWKS }).join(' '), /Auth URL host evil\.example/);
+  const forgedAct = await worker.fetch(new Request(`${API}/lti/activate?t=${encodeURIComponent(await clsSign({ CLASS_SECRET: 'q'.repeat(40) }, 'lti-act', { id: pending.db.lti_platforms[0].id, v: 'x' }, 600))}`, { method: 'POST' }), pending.env, {});
+  assert.equal(forgedAct.status, 400);
+  assert.equal(pending.db.lti_platforms[0].status, 'pending');
+
+  const w = await ltiWorld();
+  const pid = w.db.lti_platforms[0].id;
+  w.db.class_ext_links.push({ class_id: C, provider: 'lti', platform_id: pid, external_id: 'ctx-1' });
+  const other = await launch(w, {
+    'https://purl.imsglobal.org/spec/lti/claim/message_type': 'LtiResourceLinkRequest',
+    'https://purl.imsglobal.org/spec/lti/claim/context': { id: 'ctx-attacker', title: 'Not this class' },
+    'https://purl.imsglobal.org/spec/lti/claim/custom': { la: A1, class: C },
+    'https://purl.imsglobal.org/spec/lti-ags/claim/endpoint': { lineitem: 'https://school.instructure.com/api/lti/courses/9/line_items/1' },
+  });
+  const t1 = decodeURIComponent(other.res.headers.get('Location').split('#go=')[1]);
+  assert.equal((await call(w, '/lti/bind', { ticket: t1 }, 'tok_s1')).status, 403, 'a launch from another LMS course cannot bind');
+  assert.equal(w.db.class_ext_members.length, 0);
+  const foreign = await launch(w, {
+    'https://purl.imsglobal.org/spec/lti/claim/message_type': 'LtiResourceLinkRequest',
+    'https://purl.imsglobal.org/spec/lti/claim/custom': { la: A1, class: C },
+    'https://purl.imsglobal.org/spec/lti-ags/claim/endpoint': { lineitem: 'https://collector.evil.example/line_items/5' },
+  });
+  const t2 = decodeURIComponent(foreign.res.headers.get('Location').split('#go=')[1]);
+  assert.equal((await call(w, '/lti/bind', { ticket: t2 }, 'tok_s1')).status, 200);
+  assert.equal(w.db.class_ext_assignments.length, 0, 'a line item off the platform host is not kept');
+  w.db.class_ext_assignments.push({ assignment_id: A1, provider: 'lti', platform_id: pid, external_id: 'https://collector.evil.example/line_items/5' });
+  const g = await call(w, '/lti/grades', { class: C, assignment: A1, grades: [{ student: S1, score: 1 }] });
+  assert.deepEqual(g.body.skipped, [{ student: S1, why: 'lms-not-trusted' }]);
+  assert.ok(!w.st.lms.some((x) => x.score), 'no score was sent anywhere');
+});
+
+test('the hourly cron runs the class housekeeping', async () => {
+  const w = world();
+  const waits = [];
+  await worker.scheduled({ scheduledTime: Date.parse('2026-11-04T10:05:00Z') }, w.env, { waitUntil: (p) => waits.push(p) });
+  await Promise.all(waits);
+  assert.ok(w.st.rpc.some((r) => r.name === 'class_purge'));
 });
 
 test('the flattened Worker bundle is in step and parses', () => {

@@ -26,7 +26,7 @@ const PRE_BC = PRE_MAC.replaceAll(", 'apprecalc', 'apcalcbc')", ", 'apprecalc')"
 
 const WORKER_ONLY = ['unsubscribe_email_reminder', 'premium_add_pass', 'premium_refund_order', 'premium_rechain', 'count_premium_paid',
   'frq_grade_take', 'frq_grade_give_back', 'count_frq_grade', 'referral_email_key', 'referral_welcome', 'referral_reward',
-  'class_mail_take', 'class_member_emails', 'class_report_get', 'class_email_stop'];
+  'class_mail_take', 'class_member_emails', 'class_report_get', 'class_email_stop', 'class_email_stop_addr', 'class_purge'];
 
 function browserRpcs() {
   const names = new Set();
@@ -387,7 +387,7 @@ test('2026-10m-referrals.sql: rewards go through premium_add_pass, internal help
 });
 
 /* Stream C of teacher classes v2 (docs/teacher-classes.md). Behaviour checked against PGlite with
-   scripts/test/pglite/classes-integrations.mjs (57 checks: grants, FRQ ownership, mail limits, report links,
+   scripts/test/pglite/classes-integrations.mjs (70 checks: grants, FRQ ownership incl. co-teachers, mail and invite limits, report links,
    cascades on leaving, deleting a class and deleting an account). */
 test('2026-11d-classes-integrations.sql: Worker-only tables and functions stay with the service role, RLS on, no course list', () => {
   const mig = readFileSync('scripts/sql/migrations/2026-11d-classes-integrations.sql', 'utf8');
@@ -402,7 +402,7 @@ test('2026-11d-classes-integrations.sql: Worker-only tables and functions stay w
   }
   assert.doesNotMatch(mig, /grant [^;]* on table [^;]* to [^;]*(anon|authenticated)/, 'no table is granted to a browser role');
   const fns = blocks(mig);
-  for (const f of ['class_mail_take', 'class_member_emails', 'class_report_get', 'class_email_stop']) {
+  for (const f of ['class_mail_take', 'class_member_emails', 'class_report_get', 'class_email_stop', 'class_email_stop_addr', 'class_purge']) {
     assert.ok(fns.has(f), `${f} is defined`);
     assert.match(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to service_role;`));
     assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`), `${f} stays Worker only`);
@@ -418,4 +418,12 @@ test('2026-11d-classes-integrations.sql: Worker-only tables and functions stay w
   assert.doesNotMatch(mig, /course\s+(?:not\s+)?in\s*\(/, 'no course list after the last course migration');
   // A family report never carries the answers picked or the flags.
   assert.doesNotMatch(fns.get('class_report_get'), /'picks'|'flags'/);
+  // LMS platforms start pending (the owner activates them); invites are limited per address and honour stops.
+  assert.match(mig, /status\s+text not null default 'pending' check \(status in \('pending', 'active'\)\)/);
+  assert.match(fns.get('class_mail_take'), /interval '7 days'/);
+  assert.match(fns.get('class_mail_take'), /class_email_optout_addr/);
+  // Co-teachers may score free responses, through the same table A1 defines.
+  assert.match(fns.get('teach_frq_score'), /class_coteachers/);
+  // Deleting the account deletes its quote requests.
+  assert.match(mig, /class_quote_requests \([\s\S]*?user_id\s+uuid references auth\.users \(id\) on delete cascade/);
 });

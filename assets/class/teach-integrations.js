@@ -5,10 +5,12 @@
      settings(ctx)    -> HTML for the class's Settings view
      assignment(ctx)  -> HTML for one assignment's page
      wire(ctx)        after teach.js has put that HTML in the page: listeners and the parts that load
-   ctx = { rep: teach_class_report's answer, assignment: one of rep.assignments (assignment pages),
-           demo: true on the sample class (nothing is sent) }. Everything else is worked out here, so the
-   only thing teach.js must pass is what it already has. Calls go to the Worker with the teacher's session;
-   the Worker checks the teacher owns the class every time. */
+   ctx, as teach.js (stream A1) builds it: { where: 'settings'|'assignment', demo, classId, cls, role: 'owner'|'co',
+   box, call (teach.js's RPC caller, sample-class aware), members: [{ id, name }], assignment }. An older shape with
+   rep (teach_class_report's answer) works too. What needs the students' summaries (who is missing, grades) loads
+   teach_class_report through ctx.call and draws into ctx.box. Co-teachers get reminders, family reports and
+   free-response scoring; Google Classroom, the LMS and grade passback are for the class's owner only (the Worker
+   checks the same). Calls go to the Worker with the teacher's session; it checks the class every time. */
 (function(){
   'use strict';
   var API = 'https://api.levlprep.com'; // site-config:API_URL
@@ -41,6 +43,33 @@
   function msg(el, text, bad){ if(!el) return; el.textContent = text || ''; el.className = 'lv-msg' + (bad ? ' is-bad' : ''); }
   function errText(e){ return (e && e.error) || 'That did not work. Try again.'; }
 
+  /* One shape for both callers. n.rep is the full report when known (members with summaries), else a stand-in
+     built from cls and members, enough for the settings cards. */
+  var REPS = {};
+  function norm(ctx){
+    ctx = ctx || {};
+    if(ctx.__n) return ctx;
+    var cls = (ctx.rep && ctx.rep.class) || ctx.cls || null;
+    var id = (cls && cls.id) || ctx.classId || null;
+    var full = ctx.rep || (id && REPS[id]) || null;
+    var rep = full || (cls ? { class: cls, members: ctx.members || [], assignments: ctx.assignment ? [ctx.assignment] : [] } : null);
+    if(rep && !rep.class.id && id){ rep.class = Object.assign({ id: id }, rep.class); }
+    return { __n: true, rep: rep, full: !!full, classId: id, demo: !!ctx.demo, role: ctx.role || (cls && cls.role) || 'owner',
+             assignment: ctx.assignment || null, call: ctx.call || null, box: ctx.box || null, where: ctx.where || (ctx.assignment ? 'assignment' : 'settings') };
+  }
+  function loadRep(n){
+    if(n.full) return Promise.resolve(n.rep);
+    var get = n.call ? n.call('teach_class_report', { p_class: n.classId }) : A().rpcData('teach_class_report', { p_class: n.classId });
+    return Promise.resolve(get).then(function(r){
+      if(!r || !r.class) throw {};
+      if(!r.class.id) r.class.id = n.classId;
+      REPS[n.classId] = r; n.rep = r; n.full = true;
+      if(n.assignment) n.assignment = r.assignments.filter(function(a){ return a.id === n.assignment.id; })[0] || n.assignment;
+      return r;
+    });
+  }
+  var isOwner = function(n){ return n.role !== 'co'; };
+
   function course(rep){ return (M().COURSES[rep.class.course] || {}); }
   function targets(rep, a){ return rep.members.filter(function(m){ return !a.students || a.students.indexOf(m.id) !== -1; }); }
   function stat(a, m){
@@ -70,7 +99,7 @@
 
   function gradesCard(ctx){
     var a = ctx.assignment;
-    if(!a.required) return '';
+    if(!a.required || !isOwner(ctx)) return '';
     return '<section class="d5-card lvi" id="lviGrades" hidden><p class="lv-kick">Gradebook</p><h3 class="lv-h3">Send these grades to your other gradebook</h3>' +
       '<p class="d5-mut">Scores as this page shows them, out of 100: the share right for practice and review, the exam score, your score for a free response. Students who have not finished are left out unless you tick the box.</p>' +
       '<label class="lvt-check"><input type="checkbox" id="lviZero"> Send 0 for missing work</label>' +
@@ -85,8 +114,10 @@
 
   function assignment(ctx){
     css();
-    if(!ctx || !ctx.rep || !ctx.assignment) return '';
-    return '<div class="lvi-wrap">' + remindCard(ctx) + frqCard(ctx) + gradesCard(ctx) + '</div>';
+    var n = norm(ctx);
+    if(!n.rep || !n.assignment) return '';
+    if(!n.full) return '<div class="lvi-wrap" data-lvi-pending="assignment"><p class="d5-mut">Loading reminders and scoring…</p></div>';
+    return '<div class="lvi-wrap">' + remindCard(n) + frqCard(n) + gradesCard(n) + '</div>';
   }
 
   function gradeList(ctx, zero, frqScores){
@@ -106,7 +137,7 @@
     var btns = '';
     var g = gstat[ctx.rep.class.id];
     if(f.google && g && g.connected && g.linked) btns += '<button type="button" class="lv-btn is-sm is-ghost" data-lvi-act="gc-post">Post to Google Classroom</button><button type="button" class="lv-btn is-sm" data-lvi-act="gc-grades">Send grades to Classroom</button>';
-    if(f.lti) btns += '<button type="button" class="lv-btn is-sm" data-lvi-act="lti-grades">Send grades to Canvas or Schoology</button>';
+    if(f.lti && isOwner(ctx)) btns += '<button type="button" class="lv-btn is-sm" data-lvi-act="lti-grades">Send grades to Canvas or Schoology</button>';
     if(!btns) return;
     $('lviGradeBtns').innerHTML = btns;
     box.hidden = false;
@@ -187,8 +218,9 @@
   }
   function settings(ctx){
     css();
-    if(!ctx || !ctx.rep) return '';
-    return '<div class="lvi-wrap">' + familiesCard(ctx) + googleCard() + lmsCard() + moreCard() + '</div>';
+    var n = norm(ctx);
+    if(!n.rep) return '';
+    return '<div class="lvi-wrap">' + familiesCard(n) + (isOwner(n) ? googleCard() + lmsCard() : '') + moreCard() + '</div>';
   }
 
   function googleBody(ctx, g){
@@ -289,7 +321,7 @@
         msg($('lviGoogleMsg'), '');
         $('lviGcRoster').innerHTML = '<p class="d5-mut"><b>' + plural(r.matched.length, 'student') + '</b> in both. ' +
           (r.notInClassroom.length ? 'In this class but not found in Classroom by email: ' + r.notInClassroom.map(function(x){ return esc(x.name); }).join(', ') + '. ' : '') + '</p>' +
-          (r.missing.length ? '<p class="lv-h3">In Classroom, not joined yet</p><div class="lvi-list">' + r.missing.map(function(x){ return '<label class="lvt-check lvi-pick"><input type="checkbox" checked data-lvi-inv value="' + esc(x.user) + '"> ' + esc(x.name) + (x.email ? ' <span class="d5-mut">' + esc(x.email) + '</span>' : '') + '</label>'; }).join('') + '</div>' +
+          (r.missing.length ? '<p class="lv-h3">In Classroom, not joined yet</p><div class="lvi-list">' + r.missing.map(function(x){ return '<label class="lvt-check lvi-pick"><input type="checkbox" checked data-lvi-inv value="' + esc(x.user) + '"> ' + esc(x.name) + (x.email ? '' : ' <span class="d5-mut">(no email in Classroom)</span>') + '</label>'; }).join('') + '</div>' +
             '<div class="lv-btns"><button type="button" class="lv-btn is-sm" data-lvi-act="gc-invite">Email them the join link</button></div><p class="d5-mut lvi-fine">One email each with the class code; joining stays their choice. Or post the join link in Classroom yourself.</p>' : '<p class="d5-mut">Everyone in Classroom has joined.</p>');
       }, function(e){ msg($('lviGoogleMsg'), errText(e), true); }).then(function(){ busy(false); });
     }
@@ -338,7 +370,8 @@
   }
 
   function wire(ctx){
-    CUR = ctx || null;
+    var n = norm(ctx);
+    CUR = n;
     if(!wired){
       wired = true;
       document.addEventListener('click', function(e){
@@ -346,7 +379,20 @@
         if(b && !b.disabled) act(b.getAttribute('data-lvi-act'), b);
       });
     }
-    if(!ctx || !ctx.rep || ctx.demo) return;
+    if(!n.rep) return;
+    if(n.where === 'assignment' && n.assignment && !n.full){
+      loadRep(n).then(function(){
+        if(n !== CUR) return;
+        var box = n.box || document.querySelector('[data-lvi-pending]');
+        if(box) box.innerHTML = assignment(n);
+        wireRest(n);
+      }, function(){ var box = n.box || document.querySelector('[data-lvi-pending]'); if(box) box.innerHTML = ''; });
+      return;
+    }
+    wireRest(n);
+  }
+  function wireRest(ctx){
+    if(ctx.demo) return;
     features().then(function(f){
       if(ctx !== CUR) return;
       if(!f.reminders && $('lviRemind')){
@@ -355,9 +401,9 @@
       }
       if(!f.reports){ var l = document.querySelector('[data-lvi-act="fam-link"]'); if(l) l.disabled = true; }
       if(ctx.assignment){ wireFrq(ctx, f); wireGrades(ctx, f); }
-      if(f.google && ($('lviGoogle') || $('lviGrades'))) wireGoogle(ctx);
+      if(f.google && isOwner(ctx) && ($('lviGoogle') || $('lviGrades'))) wireGoogle(ctx);
     });
   }
 
-  window.LevlTeachIntegrations = { settings: settings, assignment: assignment, wire: wire, gradeList: gradeList };
+  window.LevlTeachIntegrations = { settings: settings, assignment: assignment, wire: wire, gradeList: function(c, z, f){ return gradeList(norm(c), z, f); } };
 })();

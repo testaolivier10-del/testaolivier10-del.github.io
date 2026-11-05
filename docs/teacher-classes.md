@@ -101,11 +101,29 @@ Built, tested, not deployed (Worker not deployed, `2026-11d` not applied). Every
 | C6 Privacy for districts + DPA | Built. Data table, FERPA (school official only under a signed agreement), COPPA (13+, no school consent relied on), retention, deletion, security (no certification claimed), subprocessors; fillable DPA following the SDPC NDPA structure, marked unsigned, owner signs. `privacy.html` mentions the new tools. | `teach/privacy-agreement.html` |
 | C7 Teacher FRQ scoring | Built. Student sends the draft from "Your classes" (join.html); teacher ticks rubric points, comments, saves; student sees score and comment. AI first pass: Claude only, only with `FRQ_GRADER` on (or owner) and a model in the launch rule's Results table (`CLASS_FRQ_PASSED_MODELS`), 60 a day per teacher, a suggestion the teacher must save. | `class_frq_*`, `teach_frq_*`, `worker/src/class-frq.js`, `assets/class/class-frq.js` |
 
-Tests: `scripts/test/worker-classes.test.mjs` (17), `sql-migration.test.mjs` (2026-11d grants, RLS, Worker-only), PGlite
-`scripts/test/pglite/classes-integrations.mjs` (57 checks), browser render of every new page at 390 px and the cards on the sample class.
+Tests: `scripts/test/worker-classes.test.mjs` (21), `sql-migration.test.mjs` (2026-11d grants, RLS, Worker-only), PGlite
+`scripts/test/pglite/classes-integrations.mjs` (70 checks), browser render of every new page at 390 px and the cards on the sample class.
+
+Independent review fixes (2026-11-04):
+- LTI registrations start `pending`; the Worker emails the owner (`CLASS_SALES_TO`, default hello@) a 14-day link to
+  `/lti/activate` (GET shows the addresses and flags any not where Canvas or Schoology publish them, POST activates,
+  refused if the row changed since). Login, launch and grades use active platforms only. A launch binds only when its
+  platform and LMS course match the class's `class_ext_links` row (written by the owner's deep link); line items and
+  scores go only to the registered token URL's host.
+- Quote receipts go to the signed-in account only; typed text loses links and bare domains (`clsText`, `clsLine`).
+- Classroom invites: once a week per address (SHA-256 in `class_mail_log.recipient`), a stop link that blocks that
+  address (`class_email_optout_addr`, which also blocks teacher reminders to it); the roster answer carries names and
+  counts, never Classroom addresses.
+- The mail log, expired report links and used launch nonces are cleared hourly by the cron (`class_purge`); quote
+  requests are deleted with the account. The district page and `privacy.html` say so.
+- Co-teachers (`class_coteachers`, A1's table; also created by 2026-11d so either order works) may send reminders,
+  make report links and score free responses (Worker `clsTeachClass`, SQL `teach_frq_*`). Google, LTI and grade
+  passback stay with the owner.
 
 Contract notes for A1 / A2 (no edits to their files):
-- `teach.js` passes `ctx = { rep, assignment, demo }` to `LevlTeachIntegrations.settings / assignment / wire`; nothing else is needed.
+- `teach.js` passes A1's `ctx = { where, demo, classId, cls, role, box, call, members, assignment }`; teach-integrations
+  loads `teach_class_report` through `ctx.call` for what needs summaries and draws into `ctx.box`. The older
+  `{ rep, assignment, demo }` shape works too. `role: 'co'` hides the Google, LMS and grade passback cards.
   `LevlTeachIntegrations.gradeList(ctx, zeroMissing, frqScores)` is the score list the grade buttons send.
 - A teacher's FRQ score (`teach_frq_work` → `score.got / score.of`) could replace the self-score in `status` for `frq` (A1's call).
 - Classroom and LMS links open `/<course dir>/?la=<id>` (the course home with the card); A2 may scroll to or open that assignment.
@@ -118,7 +136,8 @@ Owner steps for stream C:
    (classroom.courses.readonly, rosters.readonly, profile.emails, coursework.students, openid, email), a Web client with redirect URI
    `https://api.levlprep.com/class/google/callback`; secrets `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`; `CLASS_GOOGLE = "owner"` to try,
    then app verification by Google (sensitive scopes) before `"on"`.
-4. LTI: `node scripts/lti-keygen.mjs` → secret `LTI_PRIVATE_KEY`; `CLASS_LTI = "owner"`; try it on a Canvas instance where you
+4. LTI: `node scripts/lti-keygen.mjs` → secret `LTI_PRIVATE_KEY`; `CLASS_LTI = "owner"`; activate each school's
+   registration from the emailed `/lti/activate` link after checking it with the school; try it on a Canvas instance where you
    can add a developer key (a school's test instance or an Instructure sandbox), then `"on"`.
 5. AI first pass on teacher scoring: nothing extra; it follows `FRQ_GRADER` and the eval results.
 6. Read and approve the DPA draft and the district page before sending them to a school; sign each DPA; list on the SDPC registry.
