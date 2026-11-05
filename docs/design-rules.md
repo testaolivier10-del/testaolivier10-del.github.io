@@ -149,6 +149,16 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   instead of the banner, plain headings with no numbers or handwriting, no handwritten notes in the chart.
 - Agreed (step 12): "Am I getting better?" stays one line of weekly accuracy with each exam on it; "Where am I
   losing points?" stays units ranked by exam weight not yet Strong, with Science practices as the second view.
+- Agreed (step 13): one account menu, in groups: name, Account, Premium; Invite friends, Join a class; Answer sounds,
+  Dark mode, Study reminders; For teachers, Log out. Logged out, the header shows Log in plus a menu button with
+  Log in, Make a free account, Answer sounds, Dark mode, Join a class, For teachers (on phones Log in is only in
+  the menu). This settles the reopened F3.
+- Agreed (step 13): the study assistant stays a corner button on every page, above the bottom bar on phones, hidden
+  during timed exams. This settles the reopened F6.
+- Agreed (step 13): search opens over the current page with results as you type, grouped (Notes, Tools, Glossary,
+  Free response), and an "All courses" switch.
+- Agreed (step 13): tapping something locked opens a small sheet: what is locked, what one pass gives, the price,
+  Unlock, Compare Free and Premium, Keep reading the free notes. No full page paywall, no lock cards on the page.
 - Agreed: every design question is shown as pictures of each option before the owner chooses, never as words only.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
@@ -216,3 +226,5 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   every question underneath (R4, owner's idea), cram plan under Exams (C1). Options page: https://claude.ai/artifact/E6hXHtfr6sW22XXik1dFoa
 - 2026-11-05: step 12 decided: five questions under the new rules (A), weekly line (L1), units ranked by cost (W1).
   Options page: https://claude.ai/artifact/RFvGeTfv8dKTJPyE6BYLM4
+- 2026-11-05: step 13 decided: one grouped account menu (A), corner assistant (A), search over the page (S1), small
+  Premium sheet (P1). Options page: https://claude.ai/artifact/MmLpYCz1vgsZDSiWZJMbr9
