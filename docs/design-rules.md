@@ -11,6 +11,12 @@ Background: the research report `docs/design-research-2026-11.md` (what the best
 and its 14 ranked decisions. Mockup of those decisions: https://claude.ai/artifact/T5YGJSHPjrnsW9EcECLZ54.
 Earlier look and covers: `docs/site-redesign.md`.
 
+## Build order
+One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
+honest take and a pick; the owner chooses and the choice is recorded here before the next step.
+1 Course sections (done) · 2 Navigation · 3 Header · 4 Titles and banners · 5 Type and color · 6 Cards and lists ·
+7 Course home · 8 Question screen · 9 Notes page · 10 Progress · 11 Homepage · 12 Teacher side.
+
 ## How we work
 - Agreed: Claude does not just do what the owner says. Each idea gets weighed honestly: say if it is good, what it
   costs, and what the evidence says; say when something is only taste. The owner decides.
@@ -39,7 +45,9 @@ Earlier look and covers: `docs/site-redesign.md`.
 ## Layout and navigation
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
-- Proposed: 5 course tabs (Home, Learn, Practice, Exams, Progress), the same 5 on the phone bottom bar, no "More".
+- Agreed (step 1): every course has 5 sections: Home, Learn, Practice, Exams, Progress. Path lives in Home;
+  Review and Flashcards in Practice; Glossary and Tools in Learn. The progress page is called "Progress" (not
+  Dashboard or Stats); the reading section is called "Learn" (notes, lessons and videos).
 - Proposed: one primary (gold) button per screen.
 - Proposed: teacher class view with 4 tabs (Class, Assignments, Students, Settings) plus "+ Assign".
 
@@ -59,3 +67,5 @@ Earlier look and covers: `docs/site-redesign.md`.
 - 2026-11-04: research report and 8 page mockup made; its decisions are Proposed until the owner's comments.
 - 2026-11-04: Claude noted it should have pushed back on removing the "try one question" block (research favours a
   real question within one or two taps of arriving). Open for the owner's decision.
+- 2026-11-04: step 1 decided: 5 sections (option B), names "Progress" and "Learn". Options page:
+  https://claude.ai/artifact/S888mTSAEAMQDzQ3pLFjN3
