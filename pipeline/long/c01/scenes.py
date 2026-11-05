@@ -170,6 +170,23 @@ def theo_stool(t, face=1, neck=8, mouth=0.0, look=0.0, x=760, arm=0.0):
 
 
 # ================================================================ intro
+def watch_drop(t):
+    """how far Theo's head follows the falling water, 0 (on the spout) to 1 (down at the sink), with natural motion
+    (Olivier 2026-11-05: the head must not snap back up). A critically damped spring chases a target: the falling
+    drop's height while it falls, the spout again once it lands. Down follows the drop with a short lag, back up is
+    slower, so the velocity never jumps. Stateless per frame: integrated over the last 4 s."""
+    w_dn, w_up, dt = 11.0, 4.5, 1 / 240
+    x = v = 0.0
+    tt = max(0.0, t - 4.0)
+    while tt < t:
+        u, _ = WD.drop_phase(tt)
+        tgt = ((u - 0.72) / 0.28) ** 2 if u > 0.72 else 0.0
+        w = w_dn if tgt > x else w_up
+        v += (w * w * (tgt - x) - 2 * w * v) * dt
+        x += v * dt; tt += dt
+    return max(0.0, min(1.0, x))
+
+
 def hook(c, t):
     k = 'hook'
     t0, c2, c3, c4 = cue(k), cue(k, 2), cue(k, 3), cue(k, 4)
@@ -180,12 +197,11 @@ def hook(c, t):
     fx = 888 + (1230 - 888) * u; fy = 600 + (560 - 600) * u
     z *= 1 + 0.16 * sm((t - c3) / 9)
     fx += 60 * sm((t - c3) / 10)
-    turn = ua(t, q - 0.4, 0.35)
+    turn = ua(t, q - 0.9, 0.9)   # an unhurried lift of the head into his line
 
     def cast_(c):
         WD.stool(c, 760)
-        dp, _ = WD.drop_phase(t)
-        nk = 8 + 6 * (sm((dp - 0.72) / 0.28) if dp > 0.72 else 0)
+        nk = 7 + 12 * watch_drop(t)
         T_, tp = theo_stool(t, neck=nk * (1 - turn) + 14 * turn, look=0.8 * turn)
         tp.mouth = talking(t, k, q) * 0.8
         T_.draw(c, tp)

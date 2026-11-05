@@ -13,6 +13,7 @@ Started from the b02 build (A&P 02 pilot format) at the premium standard. Work d
 ## Rebuild of 2026-11-05 (Olivier's notes on the first cut)
 - cast.py: each person's head is built from their own Figma AI head turnaround (ref/heads_theo.png, ref/heads_maya.png): skin and hair outlines measured into ref/head_contours.json, features placed at measured points. Theo has a child's head (big cranium, small lower face, big low eye), no longer the airman's head.
 - scenes.py: restaged so nobody turns or mirrors on screen (Theo on the stool left of the sink facing right, Maya at the right chair facing left); planted walk at the end.
-- render.py: teaching boards stay still (no slow push). kit.py: one board background for every long video (BOARD_TINT).
+- render.py: teaching boards stay still (no slow push). kit.py: one board background for every long video, the clean navy grid Olivier picked (option C).
 - thumbs2.py: new thumbnails with Theo and the drop as big stickers (a2 is the pick).
 - render_chunks.sh: resumable chunked render (run one per worker: bash render_chunks.sh 0 and 1).
+- scenes.py watch_drop(): Theo's head follows each falling drop with a damped spring and eases back up (no snap); slower lift into his line.

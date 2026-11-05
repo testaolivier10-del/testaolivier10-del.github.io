@@ -125,21 +125,25 @@ def glow(c, x, y, r, col=AMBER, a=1.0):
         c.drawCircle(x, y, r, P(col, 110 * a, MaskFilter=blur(r * 0.4), BlendMode=skia.BlendMode.kScreen))
 
 
-BOARD_TINT = (90, 96, 170)   # one board look for every long video (Olivier, 2026-11-05): never the course colour
+BOARD_TINT = (90, 96, 170)   # kept only so old callers that pass tint= still work; the board ignores it
 
 
-def calm_bg(c, t, tint=BOARD_TINT):
-    """the calm teaching background: navy to indigo with slow drifting soft shapes and motes (scene life)"""
-    sh = skia.GradientShader.MakeRadial(skia.Point(W * 0.5, H * 0.45), W * 0.75, [C((46, 40, 92)), C(NAVY)], [0, 1])
+def calm_bg(c, t, tint=None):
+    """THE board background for every long video: option C, the clean navy grid (Olivier picked it 2026-11-05 out of
+    four options; it matches the thumbnails). Radial navy (34, 44, 96) at the centre to (16, 22, 56) at the edges, a
+    faint blue grid every 60 px, a few slow faint motes. Never tinted per course, never changed per video."""
+    sh = skia.GradientShader.MakeRadial(skia.Point(W * 0.5, H * 0.45), W * 0.75, [C((34, 44, 96)), C((16, 22, 56))], [0, 1])
     c.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Shader=sh))
-    for k, (x0, y0, r, sp) in enumerate(((300, 260, 260, 7), (1600, 820, 320, 5), (1500, 200, 180, 9), (420, 900, 220, 6))):
-        x = x0 + 110 * math.sin(t * 0.06 * sp + k); y = y0 + 70 * math.cos(t * 0.05 * sp + k * 2)
-        c.drawCircle(x, y, r, P(tint if k % 2 == 0 else (90, 96, 170), 26, MaskFilter=blur(60)))
+    gp = P((120, 140, 220), 22); gp.setStrokeWidth(1.5)
+    for x in range(0, W, 60):
+        c.drawLine(x, 0, x, H, gp)
+    for y in range(0, H, 60):
+        c.drawLine(0, y, W, y, gp)
     rs = np.random.default_rng(5)
-    for k in range(26):
+    for k in range(12):
         x = (rs.uniform(0, W) + t * rs.uniform(4, 10)) % W
         y = rs.uniform(0, H) + 8 * math.sin(t * 0.5 + k)
-        c.drawCircle(x, y, rs.uniform(1.2, 2.8), P((170, 176, 230), 60 + 40 * math.sin(t + k)))
+        c.drawCircle(x, y, rs.uniform(1.2, 2.6), P((170, 180, 240), 40 + 30 * math.sin(t + k)))
 
 
 def vignette(c):
