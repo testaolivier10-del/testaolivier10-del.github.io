@@ -257,3 +257,9 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   six-sections (ignored build step) at https://levlprep-preview-git-six-sections-olivier25.vercel.app, behind
   Vercel login, noindex, no service worker. Preview only: a Visitor / Student switch (assets/preview-demo.js, runs only
   on *.vercel.app). Push to six-sections to update it; levlprep.com (GitHub Pages, main) is untouched.
+- 2026-11-05: course home (preview): banner keeps the title and handwritten line only (no buttons, no lede); new
+  students see "Create your personalized path" (3 questions, Create my path, Open full path); once a path exists the
+  path card is the main thing (Up next, the winding path, Continue, Open full path); "In this course" and "Ways to
+  study" become one row (Learn, Practice, Review, Exams); Free and Premium is one comparison table from
+  premium.js rows with the Premium column standing out. Unit exam weights matter only in AP® courses: shown on Learn
+  next to each unit. The exam format already sits on Exams. Still to decide: Videos and Tools off the home.
