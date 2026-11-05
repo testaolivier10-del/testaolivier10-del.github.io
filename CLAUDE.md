@@ -133,6 +133,13 @@ locally (`BROWSER=1` adds the browser checks). New check-site rules go in `scrip
 `docs/invites.md` is the status file: owner decisions (3-day gift, 7-day reward after 20 answers, 8 a year),
 the codes and claims in `scripts/sql/migrations/2026-10m-referrals.sql`, `assets/invite.js` and the `r=` on shared links.
 
+## Design rules (read before any design or page work)
+
+`docs/design-rules.md` is the living rulebook: every design comment the owner and Claude agree on becomes a rule
+there in the same commit, rules that fail get changed with a log line, and every page is checked against its
+checklist before it is shown. Push back honestly on ideas instead of just doing them. Research behind it:
+`docs/design-research-2026-11.md`.
+
 ## Site redesign (light channel look)
 
 `docs/site-redesign.md` is the status file: the approved design canvas, the visual system (course covers in
