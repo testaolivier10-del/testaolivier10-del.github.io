@@ -253,3 +253,7 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   working"). Hub: no XP bar or level, courses in 4 groups, path card (or Pick up where you left off) on the right of a
   slim top, slim Free and Premium cards. Course banners slimmer on every course. Sections changed from 5 to 6 (Path
   gets its own tab; Review becomes an option in Practice). Running notes: scratchpad livehub/notes.md (temporary).
+- 2026-11-05: design preview set up (owner OK): Vercel project levlprep-preview (team olivier25) builds only branch
+  six-sections (ignored build step) at https://levlprep-preview-git-six-sections-olivier25.vercel.app, behind
+  Vercel login, noindex, no service worker. Preview only: a Visitor / Student switch (assets/preview-demo.js, runs only
+  on *.vercel.app). Push to six-sections to update it; levlprep.com (GitHub Pages, main) is untouched.
