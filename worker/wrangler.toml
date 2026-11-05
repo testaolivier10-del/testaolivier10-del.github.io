@@ -51,6 +51,9 @@ VAPID_SUBJECT = "mailto:hello@levlprep.com"
 # The AI FRQ grader: "owner" = the owner's account only, while he tries it
 # (docs/frq-grader.md). "on" at launch, "off" to stop.
 FRQ_GRADER = "owner"
+# Teacher classes: Google Classroom for the owner's account only until Google verifies the app
+# (docs/teacher-classes.md). Needs GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET and CLASS_SECRET.
+CLASS_GOOGLE = "owner"
 
 # Premium passes (src/premium.js; setup in README.md, "Premium"). Left
 # commented so nothing changes until Polar is set up: with no product ids,
