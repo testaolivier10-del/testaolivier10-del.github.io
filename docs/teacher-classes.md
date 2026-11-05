@@ -29,13 +29,14 @@ built with the real course styles (r3 band, dashboard design F, path card).
 - Sample class: `/teach/?demo=1` ("See a sample class" on the teacher landing). `assets/class/teach-demo.js` builds 18
   made-up students mid-term from real AP® Bio question ids, in the browser; edits stay in memory. No sign-in.
 - Teacher app: `teach/index.html` + `assets/class/teach.js` + `assets/class/teach.css` (hash routes: home, work,
-  a/<id>, assign, students, s/<id>, grades, settings, topic/<id>).
+  a/<id>, assign, students, s/<id>, grades, settings, topic/<id>; v2 adds skills, live, bank, print/<id>, and
+  `?dept=1`). Student live page: `live.html` + `assets/class/live.js`.
 
 ## Not in v1 (said honestly in the UI or left out)
 
-- Time limits, answer reveal timing and shuffle per assignment (need changes in each course's practice engine).
+- Time limits, answer reveal timing and shuffle per assignment (v2: set in the builder; enforced by stream A2).
 - Reminder emails to students; teachers copy names instead.
-- Class Premium checkout; Google Classroom import; LTI; co-teachers.
+- Class Premium checkout; Google Classroom import; LTI (v2 stream C). Co-teachers: done in v2 (A1).
 - NREMT, ochem and A&P classes (different progress stores). Owner asked 2026-11-04 for all courses; plan sent, waiting on OK.
 
 ## Grading rules (class-model.js `status`)
@@ -87,7 +88,57 @@ owner merges. Tick items here as they ship.
   renders whatever `window.LevlTeachIntegrations.settings(ctx)` / `.assignment(ctx)` returns (HTML string) and calls
   `.wire(ctx)` after render.
 
+### Stream A1 status (teacher app + SQL), 2026-11-04
+
+Shipped on branch `teach-v2-a1` (all in the sample class, `/teach/?demo=1`):
+
+- [x] Assign to several classes at once: "Also assign to" in the builder (same course, whole class only; one
+  `teach_save_assignment` per class).
+- [x] Copy a class: Settings, `teach_copy_class` (same course and order, assignments shifted by N days, no students,
+  new code).
+- [x] Announcements: Class page section 4; `teach_post_announcement` / `teach_delete_announcement`. Students get the
+  5 newest in `class_mine().announcements` (A2: draw them in "From your teacher").
+- [x] Mastery assignments: builder tile, `spec = { topics, target, min }`; `status(a, sum, now, cur)` rule in
+  class-model.js (every topic at `target`, at least `min` answers in them since it opened) + tests.
+- [x] Exam controls in the builder, written to `spec.controls` per the contract; extra time per student on the
+  student page (1, 1.25, 1.5, 2, 3).
+- [x] Teacher question bank: `#bank`, table `class_questions`, `teach_questions` / `teach_save_question` /
+  `teach_delete_question`; picked in the builder into `spec.controls.questions`; students read them with
+  `class_questions_for(p_assignment)` (member, opened, meant for them, written by a teacher of that class).
+- [x] Printable worksheet or test with answer key: `#print/<id>` (versions A/B, key on its own page, print CSS).
+  Single-choice items only; graph stimuli are left out (they need the course page's styles).
+- [x] AP skill report and predicted score band: `#skills`. Skills from each bank item's `practice` tag. Band method:
+  each unit's mastery weighted by the midpoint of the unit's exam `weight` range, over the units reached (all units
+  if no current unit); under 20% is 1 to 2, under 40% 2 to 3, under 60% 3 to 4, under 80% 4 to 5, else 5; fewer
+  than 30 answers in those units gives no band. Labelled "Estimate" and "Not a College Board score" everywhere.
+- [x] Integrity column: assignment page "Timed work and integrity" (time used against limit times extra time, tab
+  leaves from `summary.att`), and a tab-leave mark in the gradebook. `summarize` now copies `levlprep_class_att_v1`
+  into `summary.att` (40 newest, 60 answers each); `status` prefers it when `spec.controls.timeLimit` is set.
+- [x] Live mode: `#live` (projector view, polls `teach_live_state` every 2 s), student page `live.html` +
+  `assets/class/live.js` (polls `class_live_state`, answers with `class_live_answer`, changeable until the reveal).
+  `class_mine()` also carries `live: true` while a session is open (A2 may link to /live from the card).
+- [x] Co-teachers: owner makes a code in Settings (`teach_coteach_code`), the other teacher enters it on Your classes
+  (`teach_coteach_join`). Same rights minus deleting the class or assignments, removing students, archiving,
+  sharing with the department and managing co-teachers (`class_role` in SQL, `isOwner()` in the UI).
+- [x] Department view: `/teach/?dept=1`; create or join with a code (`teach_dept_*`), one department per teacher.
+  The owner shares a class in Settings; its own page writes `dept_stats` (counts and averages, no names) at most
+  hourly. Leaving a department unshares the teacher's classes.
+- [x] Integrations hook: teach.js loads `assets/class/teach-integrations.js` if present and renders
+  `.settings(ctx)` / `.assignment(ctx)` into Settings and the assignment page, then `.wire(ctx)`. ctx:
+  `{ where, demo, classId, cls, role, box, call, members: [{id, name}], assignment }`. Until C ships the file the
+  page logs one 404 for it and carries on.
+- [x] Fixed on the way: the join page only took 6-character codes while the database makes 8 (joining could never
+  work); `join.js` / `join.html` now take 8.
+
+Database: `scripts/sql/migrations/2026-11c-classes-v2.sql` (appended to `schema.sql`), NOT APPLIED. Tested with
+PGlite in `scripts/test/classes-v2-sql.test.mjs` (set `PGLITE` to the package folder; it skips without it).
+
+Left for later: printing non single-choice items and graph stimuli; reminders and integrations (stream C);
+the course engines enforcing controls and recording attempts (stream A2).
+
 ### Needs the owner (code ships behind flags until done)
+
+- Apply `2026-11c-classes-v2.sql` in the Supabase SQL editor after reviewing the PR (after 2026-11b).
 
 - Google Classroom: a Google Cloud project, OAuth consent screen with Classroom scopes, app verification.
 - Canvas / Schoology: LTI 1.3 developer keys are made per school; a setup page explains the steps.

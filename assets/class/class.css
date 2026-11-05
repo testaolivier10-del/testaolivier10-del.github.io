@@ -227,3 +227,16 @@
 .lvc.is-top{position:relative;z-index:3;margin:-110px 0 24px}
 .lvc.is-top + .lp-slot{margin-top:0}
 @media (max-width:1100px){.lvc.is-top{margin-top:-90px}}
+/* live.html: the student's side of live mode */
+.lv-live-wait{text-align:center;padding:34px 22px}
+.lv-live-q{font:800 clamp(19px,4.6vw,24px)/1.35 var(--font-ui);margin:8px 0 16px;color:var(--ink)}
+.lv-live-os{display:grid;gap:10px;margin-bottom:12px}
+.lv-live-o{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:12px;align-items:center;text-align:left;width:100%;min-height:54px;padding:10px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:700 16px/1.35 var(--font-ui);cursor:pointer}
+.lv-live-o .l{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:var(--surface2);font-weight:900}
+.lv-live-o .v{font:900 15px var(--display)}
+.lv-live-o.is-on{border-color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent)}
+.lv-live-o.is-on .l{background:var(--accent);color:#fff}
+.lv-live-o.is-ok{border-color:#2D6A1F;background:#E4F1DD;color:#173A10}
+.lv-live-o.is-ok .l{background:#2D6A1F;color:#fff}
+.lv-live-o.is-bad{border-color:#B4412F;background:#FCE8E3;color:#5C1E14}
+.lv-live-o:disabled{cursor:default}
