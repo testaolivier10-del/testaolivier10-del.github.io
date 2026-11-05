@@ -48,6 +48,9 @@
     var n = parts.length, cur = 0, saved = read(STEP_KEY), seen = Math.min(saved.seen | 0, n - 1);
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    /* The last step ends on "Next lesson →", as every course's lesson does (consistency audit 2026-11, A7). */
+    var nxa = shell.querySelector('.nl-next'), nextLesson = null;
+    if(nxa){ nextLesson = document.createElement('a'); nextLesson.className = 'btn-press nl-nextlesson'; nextLesson.href = nxa.getAttribute('href'); nextLesson.innerHTML = 'Next lesson &rarr;'; nextLesson.hidden = true; go.parentNode.insertBefore(nextLesson, go.nextSibling); }
     function gate(){
       var open = parts[cur].querySelectorAll('.nl-q:not(.is-answered)').length;
       go.disabled = open > 0;
@@ -63,6 +66,7 @@
       prog.querySelector('.nl-fill').style.width = (cur / (n - 1) * 100) + '%';
       prog.querySelector('.nl-count').textContent = 'Step ' + (cur + 1) + ' / ' + n;
       back.hidden = cur === 0; go.hidden = cur === n - 1;
+      if(nextLesson) nextLesson.hidden = cur !== n - 1;
       gate();
       write(STEP_KEY, { step: cur, seen: seen });
       if(user){

@@ -593,10 +593,10 @@
     mountPath(courseKey);
   }
 
-  // assets/course/path.js: on the Path page and home, and on lessons and notes once there is a path.
+  // assets/course/path.js: on the Path page and home, and on lessons, notes and the textbook once there is a path.
   function mountPath(k){
     var p = location.pathname, want = /\/path\.html$/.test(p) || !!document.querySelector('main.r3-home');
-    try{ want = want || (/\/(lessons|notes)\//.test(p) && !!localStorage.getItem(k + '_path_v1')); }catch(e){}
+    try{ want = want || ((/\/(lessons|notes)\//.test(p) || /\/(learn|study-notes)\.html$/.test(p)) && !!localStorage.getItem(k + '_path_v1')); }catch(e){}
     if(window.__levlPath || !COURSE_SHORT[k] || !want) return;
     window.__levlPath = true;
     var css = document.createElement('link');

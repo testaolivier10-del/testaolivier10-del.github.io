@@ -399,8 +399,8 @@ ${sections}
     <div class="book-end">${termsHtml}${reviewHtml}${toolsHtml(ch)}
     </div>
     <nav class="tb-chapter-nav" aria-label="Chapter navigation">
-      ${prev ? `<a class="tb-chapter-link prev" href="${SLUGS[i - 1]}.html"><span>&larr; Chapter ${prev.num}</span><b>${esc(prev.title)}</b></a>` : '<span></span>'}
-      ${next ? `<a class="tb-chapter-link next" href="${SLUGS[i + 1]}.html"><span>Chapter ${next.num} &rarr;</span><b>${esc(next.title)}</b></a>` : `<a class="tb-chapter-link next" href="../study-notes.html"><span>All chapters &rarr;</span><b>NREMT-EMT study notes</b></a>`}
+      ${prev ? `<a class="tb-chapter-link prev" href="${SLUGS[i - 1]}.html"><span>&larr; Previous topic</span><b>${esc(prev.title)}</b></a>` : '<span></span>'}
+      ${next ? `<a class="tb-chapter-link next" href="${SLUGS[i + 1]}.html"><span>Next topic &rarr;</span><b>${esc(next.title)}</b></a>` : `<a class="tb-chapter-link next" href="../study-notes.html"><span>All chapters &rarr;</span><b>NREMT-EMT study notes</b></a>`}
     </nav>
     </div>
   </main>

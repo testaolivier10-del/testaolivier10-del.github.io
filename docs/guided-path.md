@@ -59,8 +59,20 @@ The class code in path.js (anchor, prerequisites, picker, check-in) is kept, unu
   (transitive reduction). At most 3 per topic, with the concept that links them as the reason.
 - `scripts/build-path-pages.mjs` writes `<dir>/path.html` for every course from that course's `review.html` shell.
 - `assets/course/path.js` (`window.LevlPath`) and `assets/course/path.css`: the setup, the Path page (this stretch and
-  whole course), the course home card, and the end-of-page card on lessons and notes. Loaded lazily by
-  `assets/site-chrome.js` on course pages, so no page needs a new tag.
+  whole course), the course home card, the end-of-page card on lessons and notes, and a small card at the end of each
+  topic in the textbook (`renderBook`, `.lp-secend`: Mark done while it is to do, Done and Continue once done; NREMT
+  after a chapter's last section). Loaded lazily by `assets/site-chrome.js` (`mountPath`) on the Path page and course
+  home, and on lessons, notes, `learn.html` and NREMT `study-notes.html` once a path exists, so no page needs a new tag.
+- Read vs Interactive (consistency audit 2026-11, section A): `assets/course/read-toggle.js` puts the switch on the
+  textbook, every notes page and every lesson, and the "← Previous topic" / "Next topic →" strip (`.rt-end`) at the
+  end of each textbook topic; the path card goes in that strip. A student who chose Read
+  (`levl_book_mode_<dir>.mode === 'read'`) is sent by the path to `learn.html#<topic>` (NREMT
+  `study-notes.html#chapter-N`). A locked lesson is never remembered or opened on its own: the book scripts mark it
+  `data-lesson-premium` from the course's own lock rule, and the textbook pages load premium.js for that.
+- Shared labels: "Mark done" / "Done" (path cards, ochem's textbook toggle), "← Previous topic" / "Next topic →"
+  (notes pages and textbook), "Next lesson →" (end of a lesson; ochem and NREMT lessons gained it).
+- Mark done on the path fires `levl:pathchange`; the textbook rails (`*-toc.js`, ochem `textbook.js`) tick a topic
+  done when the course or the path has it done, so done looks the same in every view.
 - `assets/site-chrome.js`: the Path tab after Home in every course's tabs and the phone bar.
 - State: `<storagePrefix>path_v1` per course (`{ v:1, mode, anchor, covered:{}, done:{}, cram, seen }`). On this
   device only, like the exam date (`<course>_exam_date`, which the path reads and writes). Lessons and answers come
@@ -73,8 +85,10 @@ skills unit as the stretch (owner report: AP® Bio started on every stats skill 
 
 ## Done means
 A topic stop is done when the course records its lesson as finished (AP® and A&P `lessons`, ochem
-`ochem_progress[id].completed` or `ochem_textbook_read`, NREMT `nremt_lessons_v1`), or the student marked it done
-(passed the check, "I already know this", or "Mark this stop done" after the notes and practice).
+`ochem_progress[id].completed` or `ochem_textbook_read`, NREMT `nremt_lessons_v1`: any lesson of that chapter;
+`courseDone()` covers NREMT since 2026-11-04), or the student marked it done (passed the check, "I already know
+this", or "Mark done" on a path card, in a lesson, notes page or the textbook). Practice answers do not move the path
+(the Path page says so in its note line). The textbook rails show the same done set.
 
 ## Checks
 - CI: `build-paths.mjs --check` and `build-path-pages.mjs --check` (checks.yml and scripts/ci-local.sh).

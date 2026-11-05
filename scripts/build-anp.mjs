@@ -374,7 +374,7 @@ function notesPage(id) {
     ],
   };
   const link = (x, dir) => x && C.built.has(x.id)
-    ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${x.id}.html"><span>${dir === 'next' ? `Topic ${topicNumber(x.id)} &rarr;` : `&larr; Topic ${topicNumber(x.id)}`}</span><b>${esc(x.title)}</b></a>` : '';
+    ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${x.id}.html"><span>${dir === 'next' ? 'Next topic &rarr;' : '&larr; Previous topic'}</span><b>${esc(x.title)}</b></a>` : '';
   const body = `
 <body data-topic="${id}">
 <header id="site-header"></header>
@@ -400,7 +400,7 @@ ${html}
   </main>
 </div>
 ${footer(depth)}
-${tail({ depth, section: 'learn', extra: ['anp-toc.js'], site: ['report-question.js', 'course/book.js'] })}
+${tail({ depth, section: 'learn', extra: ['anp-toc.js'], site: ['report-question.js', 'course/book.js', 'course/read-toggle.js'] })}
 </body>
 </html>
 `;
@@ -662,7 +662,7 @@ function learnPage() {
   </main>
 </div>
 ${footer(depth)}
-${tail({ depth, section: 'learn', extra: ['anp-toc.js', 'anp-book.js'], site: ['course/read-toggle.js'] })}
+${tail({ depth, section: 'learn', extra: ['anp-toc.js', 'anp-book.js'], premium: true, site: ['course/read-toggle.js'] })}
 </body>
 </html>
 `;

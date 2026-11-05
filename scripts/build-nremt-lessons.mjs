@@ -160,7 +160,7 @@ ${JSON.stringify(ld).replace(/<\//g, '<\\/')}
 <body data-topic="${L.section}">
   <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="nl r3" data-cover="nremt" data-lesson="${L.id}" data-chapter="${chapterKey(L.chapter)}" data-notes="../study-notes.html#${L.section}">
+<div class="nl r3" data-cover="nremt" data-lesson="${L.id}" data-chapter="${chapterKey(L.chapter)}" data-notes="${notesHref}">
   <aside class="nl-rail" aria-label="Lesson parts">
     <p class="nl-k">Chapter ${ch.num} &middot; ${esc(ch.title)}</p>
     <div class="nl-prog" hidden><div class="nl-track"><div class="nl-fill"></div></div><span class="nl-count">Step 1 / ${parts.length}</span></div>

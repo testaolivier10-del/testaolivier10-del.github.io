@@ -318,7 +318,7 @@ ${tail({ depth, section: 'learn', extra: ['chem-questions.js', 'chem-lesson.js']
     const desc = C.descriptions.notes?.[id] || clampDesc(firstP, `${t.title} explained from scratch: free chemistry study notes with figures and worked examples.`);
     const url = `${SITE}${BASE}notes/${id}.html`;
     const pv = prevBuilt(id), nx = nextBuilt(id);
-    const link = (x, dir) => x ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${x.id}.html"><span>${dir === 'next' ? 'Next &rarr;' : '&larr; Previous'}</span><b>${esc(x.title)}</b></a>` : '';
+    const link = (x, dir) => x ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${x.id}.html"><span>${dir === 'next' ? 'Next topic &rarr;' : '&larr; Previous topic'}</span><b>${esc(x.title)}</b></a>` : '';
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'LearningResource', '@id': `${url}#reading`, name: t.title, url, description: desc, learningResourceType: 'Reading', educationalLevel: 'High school', inLanguage: 'en', isAccessibleForFree: true, keywords: t.searchPhrase, isPartOf: { '@id': COURSE_ID }, provider: { '@id': `${SITE}/#org` } },
       crumbs(orgCrumbs([{ name: ch.title, url: `${SITE}${BASE}units/${ch.id}.html` }, { name: `${t.title}: notes`, url }])),
@@ -345,7 +345,7 @@ ${html}
   </main>
 </div>
 ${footer(depth, `notes:${id}`)}
-${tail({ depth, section: 'learn', extra: ['chem-toc.js'] })}
+${tail({ depth, section: 'learn', extra: ['chem-toc.js'], site: ['course/read-toggle.js'] })}
 </body>
 </html>
 `;
@@ -549,7 +549,7 @@ ${bodyOpen()}
   </main>
 </div>
 ${footer(depth, 'learn')}
-${tail({ depth, section: 'learn', extra: ['chem-toc.js', 'chem-book.js'], site: ['course/read-toggle.js'] })}
+${tail({ depth, section: 'learn', extra: ['chem-toc.js', 'chem-book.js'], premium: true, site: ['course/read-toggle.js'] })}
 </body>
 </html>
 `;

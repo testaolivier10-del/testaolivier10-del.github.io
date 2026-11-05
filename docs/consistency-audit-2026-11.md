@@ -18,30 +18,38 @@ A1. Textbook (`<course>/learn.html`, NREMT `nremt/study-notes.html`) has no "Mar
     `/(lessons|notes)/` URLs; `pageTopic()`/`renderEnd()` in `assets/course/path.js` assume one topic per page while the
     textbook is many `section.bk-sec[id]`. Fix: load path.js on the textbook and give each section its own end card
     (Mark done, Next topic), keyed by section id.
+    Status: fixed (path.js renderBook + read-toggle.js .rt-end; mountPath loads path.js on learn/study-notes).
 A2. Free users bounced into Premium locks: `read-toggle.js` saves "Interactive" on every lesson load, including locked
     ones, so `learn.html#<premium topic>` and plain `learn.html` redirect to a locked lesson (seen bio
     `enzyme-structure`). Fix: don't save the choice on a locked lesson; never auto-redirect to a
     `data-lesson-premium` lesson for a user without the pass.
+    Status: fixed (a locked lesson is never remembered; the book never opens a data-lesson-premium lesson on its own).
 A3. NREMT loop: a locked lesson's "Read it free in the textbook" goes to `study-notes.html`, which redirects back to
     the locked lesson. Fix with A2 and point the link at the notes chapter.
+    Status: fixed (the link goes to the notes chapter; study-notes no longer redirects to a locked lesson).
 A4. Read switch from a lesson lands one topic off (chem, A&P, calc AB, calc BC, stats, env, psych, precalc, macro):
     the page scrolls right but the sticky switch's caption and Interactive link name the previous section; caption
     empty on phones. Cause: `pick()` measures from a height:0 sticky bar. Fix: paint the hash's section directly on
     load/hashchange and base the line on scroll-margin-top.
+    Status: fixed (the switch names the topic the address opened and reads from the scroll-margin line; the phone caption stays hidden by design, the aria-label names the topic).
 A5. Done in one view doesn't show in the other:
     - NREMT: `courseDone()` returns false, so a finished lesson (`nremt_lessons_v1`) never moves the path (contradicts
       docs/guided-path.md "Done means"). Fix: use `lessonDone(t)`.
     - AP and A&P: path "Mark this stop done" never ticks the textbook rail (`*-toc.js` only reads lesson completions).
     - Ochem: finishing the lesson leaves the textbook section at "Mark read".
+    Status: fixed (NREMT courseDone; *-toc.js and ochem textbook.js read path done; a finished ochem lesson shows Done).
 A6. Path never sends a Read student to the textbook (`startUrl()` opens lesson or notes), and notes pages have no
     Read/Interactive switch (0 of N in 12 courses). Fix: when `levl_book_mode_<dir>` is `read`, route topic stops to
     `learn.html#id`; give notes pages the switch.
+    Status: fixed (startUrl honors Read; notes pages in all 12 courses load the switch).
 A7. Done/next wording differs: "Lesson complete.", "Mark this stop done", "Mark done", "Mark read"/"Read"; next nav
     "Next →", "Section N →", "Topic N →", "Chapter N →"; textbook only chapter-level; ochem lessons no next lesson,
     NREMT lessons Previous only. Fix: one shared label set; topic-level Previous/Next at the end of each textbook
     section; ochem and NREMT lessons get Next lesson.
+    Status: fixed (Mark done / Done, ← Previous topic / Next topic →, Next lesson → on ochem and NREMT lessons; chapter-level navs keep Unit N / Chapter N).
 A8. `psychology/learn.html` section `thinking`: one `math.psy-m` block overflows (1638px desktop, 1268px phone).
     Fix: overflow-x:auto on math blocks (sitewide) or rewrite the formula.
+    Status: fixed (cause: unescaped $ prices in psychology/data/notes/thinking.html rendered as math; escaped; book.css also lets display math scroll).
 
 ## B. Practice, Review, Exams, dashboards
 
@@ -51,6 +59,7 @@ B2. Ochem dashboard (`ochem/assets/dash-ochem.js:24`) and ochem Review headline 
     question. Count missed and flagged lists in both.
 B3. Ochem end screen after ending early: "0 of 1 correct, across 0 concepts" then suggests the diagnostic just done.
 B4. Path never moves after practice (by design: path tracks lessons). Say so on the Path page in one short line.
+    Status: fixed (one line in the Path page note).
 B5. NREMT Review at the free limit: "Review them" (flagged) does nothing visible, "Start review" disappears while it
     still says "15 due", practice end still offers "Review 15 due questions". Say plainly it resumes tomorrow (or let
     flagged review through), and drop dead buttons.

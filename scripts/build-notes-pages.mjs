@@ -197,7 +197,7 @@ function page({ topic, module: mod, modIndex, modules, numbers, prose, prev, nex
     : '';
   const soon = hasLesson(topic) ? '' : `\n      <p class="bk-soon">${esc(NOTES_ONLY_LABEL)}</p>`;
   const link = (t, dir) => t
-    ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${t.id}.html"><span>${dir === 'next' ? `Section ${index + 1} &rarr;` : `&larr; Section ${index - 1}`}</span><b>${esc(t.title)}</b></a>`
+    ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${t.id}.html"><span>${dir === 'next' ? 'Next topic &rarr;' : '&larr; Previous topic'}</span><b>${esc(t.title)}</b></a>`
     : '';
   /* The contents rail, as on A&P and Bio notes pages (assets/course/book.css):
      the neighbouring chapters, this chapter with its sections, the current
@@ -350,6 +350,7 @@ ${END}
 </script>
 <script src="../assets/ochem-nav.js" defer></script>
 <script src="../../assets/course/book.js" defer></script>
+<script src="../../assets/course/read-toggle.js" defer></script>
 </body>
 </html>
 `;

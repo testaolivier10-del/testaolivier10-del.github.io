@@ -316,3 +316,17 @@ body:not([data-course]) .bk :is(.bk-head,.tb-chapter-head)::after{display:none;}
   .bk :is(.bk-head,.tb-chapter-head)::after{display:none;}
   .bk-notes .bk-prose,.bk-book .bk-sec,.bk-chap-head,.bk-chapter .bk-list{border:0;box-shadow:none;padding:0;background:none;}
 }
+
+/* The end of each topic in the textbook (assets/course/read-toggle.js .rt-end): the path's small card
+   (assets/course/path.js .lp-secend) and "← Previous topic" / "Next topic →". One quiet strip, not a wall. */
+.rt-end{margin:22px 0 0;padding-top:16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:12px;}
+.rt-end:empty{display:none;}
+.rt-nav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.rt-nav a{display:flex;flex-direction:column;gap:2px;min-width:0;max-width:48%;padding:6px 2px;text-decoration:none;color:var(--ink);}
+.rt-nav a span{font:800 13px var(--font-ui);color:var(--accent,var(--cink,#0B1A33));}
+.rt-nav a b{font:700 14px/1.3 var(--font-ui);color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.rt-nav a:hover b{color:var(--ink);}
+.rt-nav .rt-next{margin-left:auto;text-align:right;align-items:flex-end;}
+@media print{.rt-end{display:none;}}
+/* Long formulas scroll inside the column instead of widening the page (audit 2026-11, A8). */
+.bk-prose math[display="block"],.bk-prose .katex-display{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;}

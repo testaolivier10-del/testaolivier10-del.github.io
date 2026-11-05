@@ -1,7 +1,7 @@
 /* The guided study path (docs/guided-path.md), for every course.
 
    Loaded by assets/site-chrome.js (mountPath) on a course's home, its Path
-   page and its lesson and notes pages, with assets/course/path.css. Reads
+   page, its lesson and notes pages and its textbook, with assets/course/path.css. Reads
    assets/path/<course>.json (scripts/build-paths.mjs) and the course's own
    progress; keeps its own answers in <course>_path_v1 on this device:
 
@@ -68,12 +68,10 @@
   function courseDone(id){
     if(D.kind === 'ap' || D.kind === 'anp') return !!PROG.lessons[id];
     if(D.kind === 'ochem') return !!((PROG.op[id] && PROG.op[id].completed) || PROG.read[id]);
-    return false;
+    // NREMT: a chapter is done once one of its interactive lessons is finished (nremt_lessons_v1).
+    var t = BY[id]; return !!(t && (t.lessons || []).some(function(l){ return PROG.nl[l]; }));
   }
-  function lessonDone(t){
-    if(D.kind === 'nremt') return (t.lessons || []).some(function(id){ return PROG.nl[id]; });
-    return courseDone(t.id);
-  }
+  function lessonDone(t){ return courseDone(t.id); }
   var ACC = null;
   function acc(id){
     if(D.kind !== 'ap' && D.kind !== 'anp') return null;
@@ -85,7 +83,11 @@
 
   /* ---------- pages for a topic ---------- */
   function practiceUrl(t){ if(!D.practice) return ''; return abs(D.practice) + (D.kind === 'nremt' ? '' : '?topic=' + encodeURIComponent(t.id)); }
-  function startUrl(t){ if(t.l && (t.f || hasPass())) return abs(t.l); return abs(t.o) || abs(t.l) || practiceUrl(t); }
+  /* The Read | Interactive choice (assets/course/read-toggle.js, levl_book_mode_<dir>): a student who chose Read
+     goes to the topic in the textbook, everyone else to the lesson when it is open to them, else the notes. */
+  function readMode(){ var m = parse('levl_book_mode_' + D.dir); return !!(m && m.mode === 'read'); }
+  function bookUrl(t){ return D.kind === 'nremt' ? abs('study-notes.html') + '#chapter-' + t.n : abs('learn.html') + '#' + encodeURIComponent(t.id); }
+  function startUrl(t){ if(readMode() && (t.o || t.l)) return bookUrl(t); if(t.l && (t.f || hasPass())) return abs(t.l); return abs(t.o) || abs(t.l) || practiceUrl(t); }
   function unitLabel(u){ return u.label + (u.title ? ' · ' + u.title : ''); }
   function tName(t){ return (t.n ? t.n + ' ' : '') + t.t; }
 
@@ -311,7 +313,7 @@
       (made ? '' : '<div class="lp-card lp-make"><h3>Create your <span>personalized path</span></h3><p>Three quick questions and it starts in the right place.</p><button type="button" class="lp-btn gold" data-act="setup">Create my path</button></div>') +
       '<div class="lp-card lp-selc" id="lpSel" aria-live="polite"></div><div class="lp-card lp-map" id="lpMap"></div></aside>' +
       '<div class="lp-trw"><div id="lpTrack"></div><p class="lp-hand lp-tnote">jump anywhere, everything you finish stays done</p></div></div>' +
-      '<p class="lp-note">Your path’s answers are saved on this device. What you finish counts everywhere you are logged in.</p>';
+      '<p class="lp-note">Finishing a lesson or marking a stop done moves the path; practice answers do not. Your path’s answers are saved on this device; what you finish counts everywhere you are logged in.</p>';
     DRAWN = drawTrack($('#lpTrack'));
     $('#lpSel').innerHTML = selHTML(selStop());
     $('#lpMap').innerHTML = mapHTML(DRAWN.gs);
@@ -382,7 +384,7 @@
     var n = nowStop(), inner;
     if(here >= 0 && (st[here].state === 'now' || st[here].state === 'todo') && !isF(t.id)){
       inner = '<div class="tx"><p class="lp-k">On your path · this stop</p><h3>' + esc(tName(t)) + '</h3><p>' + (lessonDone(t) || !t.l ? 'Done with the notes and some practice? Mark it and the path moves on.' : 'Finishing the interactive lesson moves the path on by itself. Using the notes and practice instead? Mark it done when you are ready.') + '</p></div>' + stepList(t, false) +
-        '<div class="act"><button type="button" class="lp-btn gold" data-act="markdone" data-id="' + esc(t.id) + '">Mark this stop done</button><a class="lp-link" href="' + esc(abs('path.html')) + '">Back to your path</a></div>';
+        '<div class="act"><button type="button" class="lp-btn gold" data-act="markdone" data-id="' + esc(t.id) + '">Mark done</button><a class="lp-link" href="' + esc(abs('path.html')) + '">Back to your path</a></div>';
     } else if(isF(t.id) && (here >= 0 || S.mode !== 'class' || t.id === S.anchor)){
       if(S.mode === 'class' && t.id === S.anchor && S.ack.anchor !== t.id){
         inner = '<div class="tx"><p class="lp-k">Your class topic is done</p><h3>What is your class on now?</h3><p>The path does not guess what your teacher does next. Tell it, and it lines up what you need.</p></div><span></span><div class="act"><button type="button" class="lp-btn gold" data-act="picker">Something new</button><button type="button" class="lp-link" data-act="still">Still on ' + esc(lower(t.t)) + '</button></div>';
@@ -397,6 +399,47 @@
       inner = '<div class="tx"><p class="lp-k">Your path</p><h3>Up next: ' + esc(n ? (n.kind === 'topic' ? BY[n.id].t : n.title) : 'nothing left') + '</h3></div><span></span><div class="act">' + (n && stopUrl(n) ? '<a class="lp-btn gold" href="' + esc(stopUrl(n)) + '">Continue your path</a>' : '') + '<a class="lp-link" href="' + esc(abs('path.html')) + '">Open your path</a></div>';
     }
     box.innerHTML = '<div class="lp-det">' + inner + '</div>';
+  }
+
+  /* ---------- the end of each section of the textbook ----------
+     The textbook (learn.html, NREMT study-notes.html) is many topics on one page, each a section.bk-sec[id]. Each
+     topic gets the same card as a lesson or notes page, small: Mark done while it is a stop to do, Done and what is
+     next once it is done. NREMT's topics are chapters, so the card goes after the chapter's last section. It sits
+     in the section's .rt-end strip (read-toggle.js: Previous topic / Next topic) when there is one. */
+  function bookTopic(id){ if(BY[id]) return BY[id]; if(D.kind === 'nremt'){ var m = /^ch(\d+)-/.exec(id); if(m && BY['ch' + m[1]]) return BY['ch' + m[1]]; } return null; }
+  function secCard(t){
+    var st = stops(), here = -1, n = nowStop(); st.forEach(function(s, i){ if(s.kind === 'topic' && s.id === t.id) here = i; });
+    if(isF(t.id)){
+      var nx = n && n.kind === 'topic' && n.id === t.id ? null : n;
+      return '<div class="tx"><p class="lp-k">' + sm(ICON.check, 14) + ' Done</p>' + (nx ? '<p>Up next on your path: <b>' + esc(nx.kind === 'topic' ? tName(BY[nx.id]) : nx.title) + '</b></p>' : '') + '</div>' +
+        '<div class="act">' + (nx && stopUrl(nx) ? '<a class="lp-btn sm gold" href="' + esc(stopUrl(nx)) + '">Continue</a>' : '') + '</div>';
+    }
+    if(S.mode === 'cram' && here < 0) return '';
+    return '<div class="tx"><p class="lp-k">' + (here >= 0 && st[here].state === 'now' ? 'On your path · up next' : 'On your path') + '</p><p>' + (t.l && !lessonDone(t) ? 'Read it here, or finish the interactive lesson. ' : '') + 'Mark it done when you are ready.</p></div>' +
+      '<div class="act"><button type="button" class="lp-btn sm gold" data-act="markdone" data-id="' + esc(t.id) + '">Mark done</button><a class="lp-link" href="' + esc(abs('path.html')) + '">Your path</a></div>';
+  }
+  function renderBook(){
+    if(!BOOK || !S.mode) return;
+    // The cards go in above the section being read too: it stays where it is on the screen.
+    var anc = $$('main.tb-main section.bk-sec[id]').filter(function(x){ return !x.hidden && x.getBoundingClientRect().bottom > 90; })[0], ay = anc && anc.getBoundingClientRect().top;
+    bookCards();
+    if(anc){ var d = anc.getBoundingClientRect().top - ay; if(Math.abs(d) > 1) window.scrollBy(0, d); }
+  }
+  function bookCards(){
+    var secs = $$('main.tb-main section.bk-sec[id]'), last = {};
+    secs.forEach(function(sec){ var t = bookTopic(sec.id); if(t) last[t.id] = sec; });
+    secs.forEach(function(sec){
+      var t = bookTopic(sec.id), box = $(':scope > .lp-secend, :scope > .rt-end > .lp-secend', sec);
+      if(!t || last[t.id] !== sec){ if(box) box.remove(); return; }
+      var html = secCard(t), key = t.id + '|' + html.length + '|' + html.slice(0, 80) + html.slice(-120);
+      if(!html){ if(box) box.remove(); return; }
+      if(!box){
+        box = document.createElement('div'); box.className = 'lp-secend'; box.setAttribute('role', 'group'); box.setAttribute('aria-label', 'Your path: ' + tName(t));
+        var strip = $(':scope > .rt-end', sec), mark = $(':scope > .tb-section-end', sec);
+        if(strip) strip.insertBefore(box, strip.firstChild); else if(mark) sec.insertBefore(box, mark); else sec.appendChild(box);
+      }
+      if(box.getAttribute('data-k') !== key){ box.setAttribute('data-k', key); box.innerHTML = html; }
+    });
   }
 
   /* ---------- dialogs ---------- */
@@ -548,7 +591,7 @@
     var a = e.target.closest('[data-act]'), sp = e.target.closest('#lpTrack [data-stop]'), go = e.target.closest('#lpMap [data-go]');
     if(sp){ select(sp.getAttribute('data-stop'), false); return; }
     if(go){ select(go.getAttribute('data-go'), true); return; }
-    if(!a || !(a.closest('.lp-ov') || a.closest('#levlPath') || a.closest('#lpSlot') || a.closest('#lpEnd'))) return;
+    if(!a || !(a.closest('.lp-ov') || a.closest('#levlPath') || a.closest('#lpSlot') || a.closest('#lpEnd') || a.closest('.lp-secend'))) return;
     var act = a.getAttribute('data-act'), id = a.getAttribute('data-id');
     if(act === 'setup') openSetup();
     else if(act === 'skip'){ closeM(); if(!S.mode){ S.mode = 'self'; S.seen = Date.now(); save(); track('path_made', { mode: 'skip' }); } if(!$('#levlPath')) location.href = abs('path.html'); else renderAll(); }
@@ -558,10 +601,10 @@
     else if(act === 'picker') openPicker();
     else if(act === 'anchor'){ closeM(); setAnchor(id); }
     else if(act === 'togglecov'){ if(S.covered[id]) delete S.covered[id]; else S.covered[id] = 1; save(); closeM(); SEL = null; renderAll(); }
-    else if(act === 'toggledone'){ if(S.done[id]) delete S.done[id]; else S.done[id] = 1; save(); closeM(); SEL = null; renderAll(); }
+    else if(act === 'toggledone'){ if(S.done[id]) delete S.done[id]; else S.done[id] = 1; save(); closeM(); SEL = null; renderAll(); changed(); }
     else if(act === 'togglecram'){ var i = S.cram.topics.indexOf(id); if(i >= 0) S.cram.topics.splice(i, 1); else S.cram.topics.push(id); save(); closeM(); SEL = null; toast(i >= 0 ? 'Taken off your test.' : 'Added to your test.'); renderAll(); }
-    else if(act === 'markdone'){ S.done[id] = 1; save(); closeM(); SEL = null; track('path_stop_done', {}); toast('Stop done. On to the next one.'); renderAll(); }
-    else if(act === 'undone'){ delete S.done[id]; delete S.covered[id]; save(); SEL = null; renderAll(); }
+    else if(act === 'markdone'){ S.done[id] = 1; save(); closeM(); SEL = null; track('path_stop_done', {}); toast('Done. On to the next one.'); renderAll(); changed(); }
+    else if(act === 'undone'){ delete S.done[id]; delete S.covered[id]; save(); SEL = null; renderAll(); changed(); }
     else if(act === 'check') openCheck(id);
     else if(act === 'still'){ S.ack.anchor = S.anchor; save(); toast('Okay. Review and gaps while your class finishes it.'); renderAll(); }
     else if(act === 'offno'){ S.ack['off:' + id] = 1; save(); renderAll(); }
@@ -570,12 +613,16 @@
     else if(act === 'ackexam'){ S.ack.exam = 1; save(); renderPath(); }
   }
 
-  function renderAll(){ readProgress(); ACC = null; renderPath(); renderHome(); renderEnd(); }
-  var PAGE_T = null;
+  // The textbook rails (*-toc.js, ochem textbook.js) tick what the path marks done too.
+  function changed(){ try{ document.dispatchEvent(new CustomEvent('levl:pathchange', { detail: { course: KEY } })); }catch(e){} }
+  function renderAll(){ readProgress(); ACC = null; renderPath(); renderHome(); renderEnd(); renderBook(); }
+  var PAGE_T = null, BOOK = false;
   function start(data){
     D = data; U = D.units; T = D.topics.map(function(t, i){ t.i = i; BY[t.id] = t; return t; });
     S = load(); readProgress();
-    PAGE_T = $('#levlPath') || $('main.r3-home') ? null : pageTopic();
+    BOOK = !$('#levlPath') && !$('main.r3-home') && /\/(learn|study-notes)\.html$/.test(location.pathname) && !!$('main.tb-main');
+    PAGE_T = $('#levlPath') || $('main.r3-home') || BOOK ? null : pageTopic();
+    if(BOOK){ var bq = false, bm = $('main.tb-main'); new MutationObserver(function(){ if(bq) return; bq = true; setTimeout(function(){ bq = false; renderBook(); }, 120); }).observe(bm, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden'] }); }
     document.addEventListener('click', onClick);
     if($('#levlPath') || $('main.r3-home')) maybeCheckin();
     renderAll();
@@ -584,6 +631,8 @@
     document.addEventListener(KEY + ':progress', function(){ renderAll(); });
     window.addEventListener(KEY + ':progress', function(){ renderAll(); });
     if(PAGE_T){ var was = isF(PAGE_T.id); setInterval(function(){ readProgress(); var nowDone = isF(PAGE_T.id); if(nowDone !== was){ was = nowDone; renderEnd(); } }, 4000); }
+    // The ochem textbook marks a section read on the page itself (no storage event in the same tab).
+    if(BOOK) document.addEventListener('levl:bookread', function(){ readProgress(); renderBook(); });
     var rt, lw = window.innerWidth; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ if(window.innerWidth !== lw && $('#lpTrack')){ lw = window.innerWidth; renderPath(); } }, 150); });
   }
   window.LevlPath = { course: KEY, open: function(){ if(D) openSetup(); } };
