@@ -17,7 +17,7 @@ https://claude.ai/artifact/GbY4t4nHczLZ8JdYkerpZx). Check every options page aga
 One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
 honest take and a pick; the owner chooses and the choice is recorded here before the next step.
 1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners (done) · 5 Type and color (done) ·
-6 Cards, lists and tags (done) · 7 Course home · 8 Learn · 9 Practice · 10 Question screen · 11 Exams · 12 Progress ·
+6 Cards, lists and tags (done) · 7 Course home (done) · 8 Learn · 9 Practice · 10 Question screen · 11 Exams · 12 Progress ·
 13 Menus and site wide extras · 14 Homepage · 15 Teacher side. (Reordered 2026-11-05 so each section of the course
 gets its own step, built from `docs/site-feature-inventory.md`.)
 
@@ -89,6 +89,14 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   because every topic's notes are free.
 - Agreed (step 6): an empty section shows one line saying what is true and one button for what to do next
   ("Nothing to review yet" + Start practice); no pictures or explaining sentences, and sections never hide.
+- Agreed (step 7): a new visitor's course home is the half banner, then "Make your path" (3 quick questions: how
+  you study, what you know, exam date) as the main action, then the 8 units and 2 skills tracks with exam weight.
+- Agreed (step 7): a returning student's course home is the half banner, then Next on your path (Continue), a strip
+  of the nearby path steps with "See full path", then Review due and today's goal with the streak.
+- Agreed (step 7): the full path (today's Path tab, now opened from Home) keeps today's winding path of circles
+  (Read, Skill, Practice set, Review, Unit test), with the Up next card (Start, Already know it?, Mark done) on top.
+- Agreed (step 7): every course home ends with Free vs Premium and the common questions, for everyone.
+- Agreed (step 7): videos and the tools showcase move to Learn; exam facts move to Exams.
 - Agreed: every design question is shown as pictures of each option before the owner chooses, never as words only.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
@@ -143,3 +151,6 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   Reopened); steps 1 to 5 stand. Build order split so Learn, Practice and Exams each get their own step.
 - 2026-11-05: step 6 (restart) decided: cards as today (C1), name plus short second line (R2), circle and quiet
   Premium tag (T1), one line empty states (E1). Options page: https://claude.ai/artifact/DFVNtT8hfT7ABujkFRc5oF
+- 2026-11-05: step 7 decided: Make your path first for visitors (N2; Claude preferred a real question first, owner
+  chose N2, which closes the open "try one question" item), next step plus path strip for returning students (R1),
+  winding path (P2), price and questions for everyone (M2). Options page: https://claude.ai/artifact/6aGe9UHwgCvfACd6fverBf
