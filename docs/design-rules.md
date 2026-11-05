@@ -58,10 +58,10 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
 - No em dashes or hyphens used as punctuation in any copy.
 
 ## Layout and navigation
-- Agreed (2026-11-05): every course gets the same structure (the 5 sections, header, phone bar and page patterns);
+- Agreed (2026-11-05): every course gets the same structure (the 6 sections, header, phone bar and page patterns);
   what sits inside each section follows what that course has (NREMT tools, ochem mechanisms, A&P 3D anatomy; no empty
   tabs for features a course lacks).
-- Agreed (step 2): on computers the 5 sections sit inside the header row, next to the logo and course name (one
+- Agreed (step 2): on computers the 6 sections sit inside the header row, next to the logo and course name (one
   row, no separate tab bar); below about 1,100 px wide it may fall back to two rows.
 - Agreed (step 3): header right side inside a course is search, streak and the account picture only. Answer
   sounds, dark mode and For teachers live in the account menu; For teachers stays visible in the header on the
@@ -71,7 +71,7 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
 - Agreed (step 3): the level is not in the header. It shows as a "+10 XP" pop up right after a correct answer and as
   a full level bar on Progress.
 - Agreed (step 3): phone header is the logo mark, the course name with the switcher, search and the account picture.
-- Agreed (step 2): on phones the 5 sections sit in a bottom bar with icons and labels, all always visible.
+- Agreed (step 2): on phones the 6 sections sit in a bottom bar with icons and labels, all always visible.
 - Agreed (step 6): cards keep today's look: white, 1 px border, soft shadow, 20 px corners (owner's taste, chosen twice).
 - Agreed (step 6): one row style for every list (topics, tools, FRQs, decks, sets): the name, plus one short muted
   second line only when it helps choose (read time, what a tool does, the FRQ's unit). The whole row is one tap target.
@@ -161,8 +161,8 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
 - Agreed: every design question is shown as pictures of each option before the owner chooses, never as words only.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
-- Agreed (step 1): every course has 5 sections: Home, Learn, Practice, Exams, Progress. Path lives in Home;
-  Review and Flashcards in Practice; Glossary and Tools in Learn. The progress page is called "Progress" (not
+- Agreed (step 1, changed 2026-11-05 by the owner): every course has 6 sections: Home, Path, Learn, Practice, Exams,
+  Progress. Review and Flashcards are options inside Practice; Glossary and Tools sit inside Learn. The progress page is called "Progress" (not
   Dashboard or Stats); the reading section is called "Learn" (notes, lessons and videos).
 - Agreed (step 5): the main button is gold, and there is one per screen (the "do this next" action); other
   buttons are outlined.
@@ -249,3 +249,7 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   step picked the calmer option and together they drained the site's personality. New approach (owner): start from
   AP® Biology as it is today (snapshot https://claude.ai/artifact/7ouZQjPGN5orw2wajUXRNX), change only what the owner
   marks, get one course right, then apply it to all. The step decisions above are a reference, not a plan to build.
+- 2026-11-05: live session in the owner's browser pane replaces commenting on snapshots (owner: "this flow isn't
+  working"). Hub: no XP bar or level, courses in 4 groups, path card (or Pick up where you left off) on the right of a
+  slim top, slim Free and Premium cards. Course banners slimmer on every course. Sections changed from 5 to 6 (Path
+  gets its own tab; Review becomes an option in Practice). Running notes: scratchpad livehub/notes.md (temporary).
