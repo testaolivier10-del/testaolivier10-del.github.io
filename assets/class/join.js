@@ -18,7 +18,7 @@
   }
 
   function find(code){
-    if(code.length !== 6){ msg('A class code has 6 letters and numbers.', true); return; }
+    if(code.length !== 8){ msg('A class code has 8 letters and numbers.', true); return; }
     if(!user){ signInFirst(code); return; }
     msg('Looking for the class...');
     A().rpcData('class_preview', { p_code: code }).then(function(c){
