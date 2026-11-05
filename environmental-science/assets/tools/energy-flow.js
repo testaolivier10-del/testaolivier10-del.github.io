@@ -161,7 +161,10 @@
      flows (static up and heat arrows), interactive } */
   function geom(P, o){
     var W = o.W, H = o.H, n = P.levels.length, phone = W < 600;
-    var colW = phone ? 120 : 214, top = phone ? 30 : 38, bot = o.budget ? (phone ? 80 : 62) : 14;
+    // The name column is as wide as the longest name needs on a phone ("Grasshoppers", "Caterpillars" ran into
+    // the bars and the "90%" beside them; consistency audit 2026-11, C3).
+    var longest = Math.max.apply(null, P.levels.map(function(l){ return cap(l.plural.replace(/ plants| cells| trees/, '')).length; }));
+    var colW = phone ? Math.min(176, Math.max(120, Math.ceil(8 + 38 + 6 + longest * 8.6 + 8))) : 214, top = phone ? 30 : 38, bot = o.budget ? (phone ? 80 : 62) : 14;
     var band = (H - top - bot) / n, barH = Math.min(band * 0.56, phone ? 46 : 60);
     var x0 = colW + 8, x1 = W - 8, cx = (x0 + x1) / 2, wMax = x1 - x0, wMin = phone ? 26 : 34;
     var vals = P.levels.map(function(l){ return l[o.key]; });
@@ -202,8 +205,8 @@
       var r = phone ? 19 : 26, dx = 8 + r, dy = g.yc;
       out.push('<circle class="ef-disc ' + LV[k] + '" cx="' + dx + '" cy="' + dy.toFixed(1) + '" r="' + r + '"/>' + art(l.id, dx, dy, r * 1.75));
       var tx = dx + r + 6;
-      out.push('<text class="ef-org" x="' + tx + '" y="' + (dy - 2).toFixed(1) + '">' + esc(cap(l.plural.replace(/ plants| cells| trees/, ''))) + '</text>');
-      out.push('<text class="ef-lv" x="' + tx + '" y="' + (dy + (phone ? 12 : 15)).toFixed(1) + '">' + esc(phone ? ['Producers', 'Primary', 'Secondary', 'Tertiary', 'Quaternary'][k] : l.levelShort) + '</text>');
+      out.push('<text class="ef-org" x="' + tx + '" y="' + (dy - (phone ? 4 : 2)).toFixed(1) + '">' + esc(cap(l.plural.replace(/ plants| cells| trees/, ''))) + '</text>');
+      out.push('<text class="ef-lv" x="' + tx + '" y="' + (dy + (phone ? 13 : 15)).toFixed(1) + '">' + esc(phone ? ['Producers', 'Primary', 'Secondary', 'Tertiary', 'Quaternary'][k] : l.levelShort) + '</text>');
       // the bar; to scale, the energy that did not make it up from the level
       // below is a faint ghost around it, labeled as heat lost (tool-audit:
       // a log-scale pyramid hid the 90% loss)
@@ -228,8 +231,8 @@
     if(o.budget){
       var b = G[0], bh = phone ? 16 : 18, y = b.y + b.h + (phone ? 12 : 14), x0 = b.colW + 8, x1 = o.W - 8, w = x1 - x0, fr = P.r / P.gpp, ty = y + bh + (phone ? 14 : 15);
       out.push('<g class="ef-budget">' + art('sun', 8 + (phone ? 19 : 26), y + bh / 2 + 4, phone ? 34 : 42) +
-        '<text class="ef-bud-t" x="' + (8 + (phone ? 19 : 26) * 2 + 6) + '" y="' + (y + bh / 2 + 1).toFixed(1) + '">Sunlight</text>' +
-        '<text class="ef-bud-s" x="' + (8 + (phone ? 19 : 26) * 2 + 6) + '" y="' + (y + bh / 2 + (phone ? 14 : 16)).toFixed(1) + '">GPP ' + num(P.gpp) + '</text>' +
+        '<text class="ef-bud-t" x="' + (8 + (phone ? 19 : 26) * 2 + 6) + '" y="' + (y + bh / 2 + (phone ? -1 : 1)).toFixed(1) + '">Sunlight</text>' +
+        '<text class="ef-bud-s" x="' + (8 + (phone ? 19 : 26) * 2 + 6) + '" y="' + (y + bh / 2 + (phone ? 15 : 16)).toFixed(1) + '">GPP ' + num(P.gpp) + '</text>' +
         '<rect class="ef-bud-r" x="' + x0 + '" y="' + y.toFixed(1) + '" width="' + (w * fr).toFixed(1) + '" height="' + bh + '" rx="4"/>' +
         '<rect class="ef-bud-n" x="' + (x0 + w * fr).toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + (w * (1 - fr)).toFixed(1) + '" height="' + bh + '" rx="4"/>' +
         '<text class="ef-bud-l heat" x="' + (x0 + 2) + '" y="' + ty.toFixed(1) + '">Respiration ' + num(P.r) + '</text>' +

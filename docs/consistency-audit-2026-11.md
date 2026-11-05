@@ -85,19 +85,41 @@ B15. NREMT shows a full Premium card on the practice end screen and in Review; s
 C1. A locked Premium tool renders as a full course page (~80 tools) instead of the tool screen with a lock card;
     price wording differs ("Unlock for $17.50" vs "See Premium, from $20.30"); A&P anatomy-3d has no back link; ochem
     tutor button floats over it. Model: NREMT `scenario-sim.html` (tool bar, then lock card).
+    Status: fixed. `LevlStudio` builds the tool screen around the course core's card (`s.lock`, adopted from
+    `[data-studio] .premium-lock`) on every AP® course and A&P; ochem's gate goes into the same panel. Back, ?, ⋯ (no
+    Start over or Copy link while locked), the card and the free-notes link; tutor button hidden. One wording:
+    "Unlock for $X" (one pass) or "Unlock from $X" (two passes; was "See Premium, from"). Rules and prices unchanged.
 C2. 97 of 128 tools have no Start over. Add "Start over" to the ⋯ menu of `assets/course/tool-studio.js` that every
     tool can wire up (default: reload the tool state).
+    Status: fixed. Every full tool's ⋯ menu starts with Start over: the tool's own reset (`menu.startOver` or
+    `s.startOver(fn)`), else its visible Start over button, else a reload without the link's setup (keeps ?chapter=).
 C3. Overlapping or clipped labels: env energy-flow (90% on Grasshoppers; Caterpillars/Warblers), env earth-climate
     (windward/leeward; 0 and 90°S), psych development (Maya age 13 months on Relationships), psych memory-lab (x ticks
     on axis title), env soil-texture (readout pills on ticks, dot on Loam), ochem reagent-roadmap (step badge on 2°
     halide), ochem conformations (360° clipped), precalc unit-circle (point P labels), physics motion-graphs (Enlarge
     over t (s)).
+    Status: fixed. energy-flow: name column sized to the longest name, name and level lines apart. earth-climate:
+    short windward/leeward headings on phones, 90°S/90°N hang inward. development: the drill's name and age at the
+    row's right end. memory-lab: room for 100%. soil-texture: a tick under a readout pill gives way, axis titles stand
+    off the edge, the dot clears Loam at phone type. reagent-roadmap: A/B badges at a node's lower right on the tall
+    map, step numbers placed off group names and each other, lane titles follow a zoomed view, the whole map
+    width-fits and scrolls on phones. unit-circle: a crowded red leg goes unlabeled (the readout names it in red).
+    Shared (Tool Studio): once a label meets Enlarge, the stage keeps that strip free (conformations, motion-graphs).
 C4. Picture text under 10px at 390px (rule: 12px, docs/tools-phone-pass.md): chem titration-curve-reader (35),
     ice-table-drills (24), buffer-drills (20), particle-diagrams (11), ochem resonance (8).
+    Status: fixed. Tool Studio raises phone stage text to 12 px (was 11; up to 2.2x) and re-measures figures drawn
+    before layout; resonance shows two forms to a row. Kept: particle-diagrams' letters in the smallest atoms (H, Cl,
+    about 9 px) and resonance thumbnails' charge sign, which a larger glyph would push out of its atom.
 C5. Tools index pages grouped differently (AP by kind, ochem by access, A&P one group with progress, NREMT "8 TOOLS"
     vs "Seven tools", `scripts/build-r3-tools.mjs` ~87). One grouping, counts that match.
+    Status: fixed. Every hub: "Free · N" then "With Premium · N" (`toolsHubMain` `pass`), adding up to the band's
+    "N tools"; no Free tag under the Free heading. NREMT: 8 tools, Mnemonics among them.
 C6. NREMT Mnemonics is listed as a tool but doesn't use the tool screen.
+    Status: fixed. One mnemonic on the stage, the list and Back/Next in the dock, the self-check unchanged; #m-...
+    links open that card; full-screen band rule in build-r3-tools.
 C7. First-visit hint bubbles cover controls at 390px (titration-curve-reader Run, ice-table-drills, age-structure).
+    Status: fixed. The bubble also avoids every visible button, link and field (below, above, a little further off or
+    sideways); one inside a big target picks its top, middle or foot.
 
 ## D. Sitewide
 

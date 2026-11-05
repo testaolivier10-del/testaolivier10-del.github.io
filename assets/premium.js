@@ -999,8 +999,10 @@
     return foundingLive() ? 'Founding price · $' + money(p.price) + ' from ' + dayAfter(FOUNDING.until) : '';
   }
   function buyLabel(p) { return 'Unlock for $' + money(nowPrice(p)); }
+  /* One wording on every course's button (consistency audit 2026-11, C1): "Unlock for" names the one price;
+     with two passes the dialog that opens picks one, so it says "from". */
   function ctaLabel(c) {
-    return c.passes.length === 1 ? buyLabel(c.passes[0]) : 'See Premium, from $' + money(nowPrice(lowestPass(c)));
+    return c.passes.length === 1 ? buyLabel(c.passes[0]) : 'Unlock from $' + money(nowPrice(lowestPass(c)));
   }
 
   function gate(course, feature, source) {

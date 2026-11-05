@@ -990,7 +990,8 @@ function toolsHubR3() {
     lede: `${numWord(tools.length)} tools. Name structures on real figures and a 3D body, then work the physiology. Every tool explains its answers, and what you miss goes into your <a href="review.html">review queue</a>.`,
     cta: { href: 'tools/lab-practical.html', label: 'Start the lab practical' }, cta2: { href: 'search.html', label: 'Search everything' },
     before: '<div class="anp-hub-filter" hidden></div>',
-    groups: [{ big: true, h: `${numWord(tools.length)} ways <span>to practice</span>`, p: 'Real figures, anatomy in 3D, physiology, numbers and words.', label: 'Tools',
+    // Free, then With Premium, as on every course's hub (toolsHubMain's pass; consistency audit 2026-11, C5).
+    pass: esc(COURSE_NAME), groups: [{ h: 'Tools',
       cards: [lab, ...others].map(t => {
         const c = hubToolCounts(t.slug);
         const [pl, sg] = HUB_ITEMS[t.slug];

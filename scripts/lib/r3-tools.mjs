@@ -76,8 +76,23 @@ export function toolCard(t) {
      key, up ('../'), course (html name for crumbs), crumbs, kicker, h1 (html), hand, lede, cta, cta2,
      featured: { slug, href, name, kick, hand, desc, cta, credit (html) } | null,
      featHtml (html, replaces featured), before (html, first inside #app), status (cards get a .cx-tool-status),
-     groups: [{ h (html), p, kick, big, cards: [toolCard input] }], note (html), mountClass, mountAttrs, after (html) } */
+     groups: [{ h (html), p, kick, big, cards: [toolCard input] }], note (html), mountClass, mountAttrs, after (html),
+     pass (html course name): regroup the cards as Free / With Premium (byAccess; every hub does) } */
+/* One grouping on every course's tools hub (consistency audit 2026-11, C5): the tools a free student can open now,
+   then the ones that come with Premium, each headed by its count, so the counts always add up to the band's
+   "N tools". The cards keep the order the builder gave. A free card needs no "Free" tag under the "Free" heading. */
+function byAccess(groups, pass) {
+  const cards = groups.flatMap((g) => g.cards);
+  const free = cards.filter((c) => c.free).map((c) => ({ ...c, free: false }));
+  const paid = cards.filter((c) => !c.free);
+  return [
+    { h: 'Free', kick: `Free &middot; ${free.length}`, p: 'Open any of these now.', label: 'Free tools', cards: free },
+    { h: 'With Premium', kick: `With Premium &middot; ${paid.length}`, p: `Part of the ${pass} pass.`, label: 'Premium tools', cards: paid },
+  ].filter((g) => g.cards.length);
+}
+
 export function toolsHubMain(o) {
+  if (o.pass) o = { ...o, groups: byAccess(o.groups, o.pass) };
   const up = o.up ?? '../';
   const total = o.groups.reduce((n, g) => n + g.cards.length, 0) + (o.featured || o.featHtml ? 1 : 0);
   const band = bandShort({
@@ -123,7 +138,7 @@ export function apToolsHubMain(o) {
   const first = o.groups.find((g) => g.tools.length);
   const firstKind = first ? first.h.toLowerCase().replace(/s$/, '') : 'tool';
   return toolsHubMain({
-    key: o.key, up: o.up, status: true, mountClass: o.mountClass,
+    key: o.key, up: o.up, status: true, mountClass: o.mountClass, pass: o.courseName,
     crumbs: [{ name: 'LevlPrep', href: `${o.up}index.html` }, { name: o.courseName, href: 'index.html' }, { name: 'Tools' }],
     h1: 'Change a variable. <span>Watch what happens.</span>', hand: 'every tool ends in questions', lede: esc(o.lede),
     cta: first ? { href: `tools/${first.tools[0].slug}.html`, label: `Open the first ${firstKind}` } : null,

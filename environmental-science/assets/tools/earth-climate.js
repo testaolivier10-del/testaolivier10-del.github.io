@@ -179,7 +179,8 @@
     function Y(v){ return B - v / 560 * (B - Tp); }
     out.push(txt(x0 + 4, y0 + 12, 'Daily sunlight by latitude (W/m², top of the atmosphere)', 'ec-t ec-s ec-b'));
     [0, 100, 200, 300, 400, 500].forEach(function(v){ out.push(line(L, Y(v), Rt, Y(v), 'ec-grid')); out.push(txt(L - 5, Y(v) + 4, String(v), 'ec-t ec-tk', 'end')); });
-    [-90, -60, -30, 0, 30, 60, 90].forEach(function(l){ out.push(txt(X(l), B + 15, l === 0 ? '0°' : Math.abs(l) + '°' + (l > 0 ? 'N' : 'S'), 'ec-t ec-tk', 'middle')); });
+    // The end labels hang inward, so 90°S never sits on the y axis's 0 (consistency audit 2026-11, C3).
+    [-90, -60, -30, 0, 30, 60, 90].forEach(function(l){ out.push(txt(X(l) + (l === -90 ? -2 : l === 90 ? 2 : 0), B + 17, l === 0 ? '0°' : Math.abs(l) + '°' + (l > 0 ? 'N' : 'S'), 'ec-t ec-tk', l === -90 ? 'start' : l === 90 ? 'end' : 'middle')); });
     function curve(d, cls){ var p = []; for(var l = -90; l <= 90; l += 2) p.push(n2(X(l)) + ',' + n2(Y(E.insolation(l, d)))); return '<polyline class="' + cls + '" points="' + p.join(' ') + '"/>'; }
     out.push(curve(trop(), 'ec-ins-ref')); out.push(curve(-trop(), 'ec-ins-ref'));
     out.push(curve(decl, 'ec-ins'));
@@ -313,8 +314,9 @@
       var pu = 0.05 + at * 0.9;
       out.push('<circle class="ec-parcel" cx="' + n2(X(pu)) + '" cy="' + n2(Y(pz(pu))) + '" r="8"/>');
     }
-    out.push(txt(X(0.01), Tp + 16, 'Ocean side (windward)', 'ec-t ec-s ec-b ec-c-wet ec-halo'));
-    out.push(txt(X(0.99), Tp + 16, 'Rain shadow (leeward)', 'ec-t ec-s ec-b ec-c-dry ec-halo', 'end'));
+    // A phone has room for both headings only in their short form (they ran into each other; audit 2026-11, C3).
+    out.push(txt(X(0.01), Tp + 16, phone ? 'Windward' : 'Ocean side (windward)', 'ec-t ec-s ec-b ec-c-wet ec-halo'));
+    out.push(txt(X(0.99), Tp + 16, phone ? 'Leeward: rain shadow' : 'Rain shadow (leeward)', 'ec-t ec-s ec-b ec-c-dry ec-halo', 'end'));
     return out.join('');
   }
   /* temperature of the parcel at fraction at (0 to 1) along its path */
@@ -572,7 +574,7 @@
       T.explain($('.ec-say'), '<b>' + esc(head) + '</b>', why);
       $('.ec-nums').innerHTML = nums;
       var dc = $('.ec-detchart');
-      if(dc){ var d2 = E.declination(st.day); dc.innerHTML = svgWrap(520, 230, 'Daily sunlight by latitude on ' + dateText(st.day) + ', with the two solstices dashed', insChart(0, 0, 520, 230, d2, st.lat)); }
+      if(dc){ var d2 = E.declination(st.day), dw = (window.innerWidth || 1280) <= 640 ? 380 : 520; dc.innerHTML = svgWrap(dw, 230, 'Daily sunlight by latitude on ' + dateText(st.day) + ', with the two solstices dashed', insChart(0, 0, dw, 230, d2, st.lat)); }
       if(LS){ LS.caption('<b>' + esc(head) + '</b>', 'explore'); LS.pills(pills, 'left', 'explore'); LS.pills(right, 'right', 'explore'); }
       sync();
     }
