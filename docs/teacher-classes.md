@@ -181,6 +181,13 @@ the owner.
 
 ## Owner steps, in order
 
+Done 2026-11-04: steps 1 and 2 (PR #142 merged, Worker deployed, 11c/11d/11e applied and checked: 53 functions,
+24 tables, all RLS on, nothing granted to the browser on tables); step 3 Google part (project `levlprep-classroom`
+under testaolivier10@gmail.com, Classroom API on, consent screen in Testing with the six scopes and the owner as test
+user, Web client "LevlPrep Classroom", secrets `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `CLASS_SECRET` set,
+`CLASS_GOOGLE = "owner"` in wrangler.toml). Left: try Connect Google Classroom, Search Console + Google verification,
+LTI (step 4), DPA/SDPC (step 5).
+
 1. Review and merge the PR "Teacher classes v2" into main. Merging also deploys the Worker (step 6); with no new
    secrets or flags set, every new Worker feature stays off, so this is safe. Do step 2 the same day: until then
    v2 teacher pages call functions that do not exist yet (they show errors, nothing breaks for students).
