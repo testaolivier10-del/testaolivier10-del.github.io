@@ -245,13 +245,13 @@
     "chem/notes/math-exponents.html",
     "chem/notes/math-scientific-notation.html"
    ],
-   "title": "",
-   "video": "",
-   "thumb": "",
-   "captions": "",
+   "title": "Units, Exponents and Scientific Notation for AP Chem",
+   "video": "long/yt-apchem-01-units-sci-notation.mp4",
+   "thumb": "long/yt-apchem-01-thumb.png",
+   "captions": "long/yt-apchem-01-captions.srt",
    "playlist": "AP Chemistry | LevlPrep",
    "date": "",
-   "status": "building",
+   "status": "pending",
    "approved_on": "",
    "youtube_id": "",
    "thumbnail_set": false,
@@ -260,7 +260,12 @@
    "pr_url": "",
    "comment_id": "",
    "comment_pinned": false,
-   "added_on": "2026-11-04"
+   "added_on": "2026-11-04",
+   "description_file": "long/yt-apchem-01-youtube.md",
+   "thumb_b": "long/yt-apchem-01-thumb-b.png",
+   "thumb_c": "long/yt-apchem-01-thumb-c.png",
+   "ab_test": false,
+   "endscreen_set": false
   }
  ]
 }
