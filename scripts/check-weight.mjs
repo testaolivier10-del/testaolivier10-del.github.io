@@ -401,9 +401,9 @@ const SHELL_BUDGETS = [
      itself is BC's own file (calculus-bc/assets/cbc-interval.js). Measured 69.4 KB.
      69.5 -> 69.7 (BC integration pass, 2026-10-31): the small-value guard in calc-questions.js
      (below 0.005 a decimal must be right to three significant digits, BC only); measured 69.5 KB. */
-  /* 69.7 -> 70.2 (consistency audit 2026-11): the end panel call, Retry and review links in Review, and the
-     exam-day reference cards (D16) in exams.js. Measured 69.9 KB. */
-  ['calculus', 70.2],
+  /* 69.7 -> 70.3 (consistency audit 2026-11): the end panel call, Retry and review links in Review, the exam-day
+     reference cards (D16) in exams.js, and calc-core.js calling the milestones check after a lesson (D4). */
+  ['calculus', 70.3],
   /* AP® Statistics (statistics/, a fork of the AP® Calculus AB runtime),
      plus what every statistics question page needs (docs/apstat-spec.md
      section 7): the distributions library (stat-dist.js, 6.4 KB gzipped:
@@ -721,7 +721,7 @@ const BUDGETS = [
   ['calculus/tools.html', 5],
   ['calculus-bc/index.html', 8.5], // round 3 course home, see nremt/index.html
   ['calculus-bc/practice.html', 3],
-  ['calculus-bc/exams.html', 3],
+  ['calculus-bc/exams.html', 3.1], // 3 -> 3.1: the shared footer row adds Teachers and What's new (audit 2026-11, D3)
   ['calculus-bc/frq.html', 3],
   ['calculus-bc/glossary.html', 30],
   ['calculus-bc/tools.html', 5],

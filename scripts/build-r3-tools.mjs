@@ -49,7 +49,7 @@ for (const t of toolCovers('nremt')) {
   if (!lede) { broken.push(`${rel}: no <p class="lede"> to take the hand line from`); continue; }
   put(rel, BAND[0], BAND[1], toolBand({
     ref: !FULL.has(t.slug), key: 'nremt', up: '../', slug: t.slug, hand: lede[1].trim(), lede: desc ? desc[1] : '', backHref: 'tools.html',
-    crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: 'NREMT-EMT Prep', href: 'index.html' }, { name: 'Tools', href: 'tools.html' }, { name: strip(t.title) }],
+    crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: 'NREMT-EMT', href: 'index.html' }, { name: 'Tools', href: 'tools.html' }, { name: strip(t.title) }],
   }), '<!-- crumb:end -->');
 }
 
@@ -76,7 +76,7 @@ const CREDIT = 'Figure from BodyParts3D &copy; 2008 <a href="https://lifescience
 const card = (slug, name, desc, foot, premium) => ({ slug, href: `${slug}.html`, name, desc, foot, free: !premium, attrs: premium ? ' data-premium="1"' : '' });
 const hub = toolsHubMain({
   key: 'nremt', up: '../', mountClass: 'cx-tools',
-  crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: 'NREMT-EMT Prep', href: 'index.html' }, { name: 'Tools' }],
+  crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: 'NREMT-EMT', href: 'index.html' }, { name: 'Tools' }],
   h1: 'What a question bank <span>can&rsquo;t test.</span>', hand: 'anatomy, sounds, calls and the skill stations',
   lede: 'Practice the parts a question bank can&rsquo;t test: anatomy, sounds, protocol flow, call simulations and the skill sheets.',
   cta: { href: 'body-map.html', label: 'Open the body map' }, cta2: { href: 'search.html', label: 'Search everything' },

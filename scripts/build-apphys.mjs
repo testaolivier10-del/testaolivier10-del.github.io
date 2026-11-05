@@ -512,7 +512,7 @@ ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', 
   /* ------------------------------------------------------------- learn */
   function learnPage() {
     const depth = '';
-    const title = courseTitle('All units and skills', [LABEL]);
+    const title = courseTitle('Textbook', [LABEL]);
     const desc = clampDesc(`Every unit of the physics course in framework order, ${units.length} units and ${topics.length} topics, plus a math chapter for units, symbols, proportional reasoning, graphs and vector components.`);
     const url = `${SITE}${BASE}learn.html`;
     const jsonld = { '@context': 'https://schema.org', '@graph': [

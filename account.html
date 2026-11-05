@@ -41,7 +41,7 @@
   .ac-h span{color:var(--accent);}
   .sp-panel .ac-h{color:var(--panel-ink);}
   .sp-panel .ac-h span{color:var(--gold);}
-  .ac-out{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:24px;align-items:stretch;}
+  .ac-out{display:grid;grid-template-columns:minmax(0,520px);gap:24px;}
   .ac-signin{padding:30px;display:grid;gap:14px;align-content:start;}
   .ac-signin .ac-h{font-size:32px;margin:0;}
   .ac-signin p{margin:0;}
@@ -109,22 +109,13 @@
 
   <div class="acct">
 
+    <!-- Signed out: one box, one line, one button (consistency audit 2026-11, D7: the panel beside it repeated the
+         Premium copy). -->
     <div id="acctOut" class="ac-out">
       <section class="sp-box ac-signin" aria-labelledby="acSignTitle">
         <h2 class="sp-d ac-h" id="acSignTitle">Sign <span>in</span></h2>
-        <p>Sign in to see your passes. Premium is attached to your account, so it follows you to every device. Everything free works without one.</p>
-        <button type="button" class="btn-chan ac-wide" id="acctSignIn">Log in</button>
-        <p class="ac-small"><a href="premium.html">What&rsquo;s free, what Premium adds, and the prices</a></p>
-      </section>
-      <section class="sp-panel ac-why" aria-labelledby="acWhyTitle">
-        <h2 class="sp-d ac-h" id="acWhyTitle">What your <span>account holds</span></h2>
-        <ul class="sp-chk">
-          <li>Your Premium passes, on every device you sign in on</li>
-          <li>Your progress, synced between devices</li>
-          <li>Your purchases, with a refund button for 7 days after each</li>
-          <li>The NREMT Pass-or-extend claim, when it applies</li>
-        </ul>
-        <p>Passes never renew and never charge you again.</p>
+        <p>Sign in to see your Premium passes, purchases and refunds, and to sync your progress across devices. Everything free works without an account.</p>
+        <button type="button" class="btn-chan ac-wide" id="acctSignIn">Sign in</button>
       </section>
     </div>
 

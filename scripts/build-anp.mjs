@@ -24,7 +24,7 @@ import { courseTitle } from './lib/page-title.mjs';
 import { glossaryJson as sharedGlossaryJson, glossaryMain, glossaryScript } from './lib/glossary.mjs';
 import { APP_STATE_PAGES, NOINDEX } from './lib/app-pages.mjs';
 /* Course labels for page titles, longest first (scripts/lib/page-title.mjs). */
-const AP_LABELS = ['Anatomy & Physiology', 'A&P'];
+const AP_LABELS = ['Anatomy & Physiology'];
 /* Searchers type "anatomy and physiology", not "A&P": keep the full name, dropping the brand first. */
 const FULL = { keepFirstLabel: true };
 import {
@@ -480,7 +480,7 @@ function corePage(coreId) {
   const tagged = map.topics.filter(t => t.coreConcepts.includes(coreId));
   const byCh = new Map();
   for (const t of tagged) { if (!byCh.has(t.chapter)) byCh.set(t.chapter, []); byCh.get(t.chapter).push(t); }
-  const title = courseTitle(cc.name, ['Anatomy & Physiology Core Concept', 'A&P Core Concept'], FULL);
+  const title = courseTitle(cc.name, ['Anatomy & Physiology'], FULL);
   const desc = clampDesc(`${cc.summary} See where it appears in every body system.`);
   const url = `${SITE}${BASE}concepts/${coreId}.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -591,7 +591,7 @@ ${tail({ depth, section: 'credits' })}
 function glossaryPage() {
   const depth = '';
   const terms = glossaryTerms();
-  const title = courseTitle('Glossary: terms and word roots', AP_LABELS, FULL);
+  const title = courseTitle('Glossary', AP_LABELS, FULL);
   const desc = clampDesc(`${terms.length.toLocaleString('en-US')} anatomy and physiology terms with plain definitions, word roots and pronunciation, each linked to the page that teaches it.`);
   const url = `${SITE}${BASE}glossary.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -632,7 +632,7 @@ ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', 
    table of contents linking to every notes page. */
 function learnPage() {
   const depth = '';
-  const title = courseTitle('All chapters and topics', AP_LABELS, FULL);
+  const title = courseTitle('Textbook', AP_LABELS, FULL);
   const desc = clampDesc(`Every chapter of the course in order: ${map.chapters.length} chapters and ${map.topics.length} topics, from orientation to the body through development and inheritance.`);
   const url = `${SITE}${BASE}learn.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [

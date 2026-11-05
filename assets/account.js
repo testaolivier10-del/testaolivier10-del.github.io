@@ -728,7 +728,7 @@
       mount.innerHTML = '<button type="button" class="account-btn" id="accountBtn" aria-haspopup="menu" ' +
         'aria-expanded="false" title="' + escapeHtml(currentUser.email || '') + '">' + escapeHtml(label) + '</button>';
     } else {
-      mount.innerHTML = '<button type="button" class="account-btn" id="accountBtn">Log in</button>';
+      mount.innerHTML = '<button type="button" class="account-btn" id="accountBtn">Sign in</button>';
     }
     var btn = document.getElementById('accountBtn');
     if(btn) btn.addEventListener('click', function(){

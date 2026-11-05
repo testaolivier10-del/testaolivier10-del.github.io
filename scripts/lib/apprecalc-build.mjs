@@ -18,6 +18,7 @@
    otherwise there is no map and nothing is built. Its interface is deliberately small so the swap is one
    import: { chapters, topics, concepts, practices, parts, order(), topicById(id),
    chapterById(id) }, where topics is already in course order. */
+import { footerLinks } from './footer-links.mjs';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -373,7 +374,7 @@ export function footer(depth, pageId) {
   return `<footer class="pcalc-foot xshell">
   <p class="pcalc-accuracy-note">${BETA_PILL} ${esc(BETA_NOTE)} It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref">${reportButton(pageId)}</span></p>
   <p class="pcalc-disclaimer">${esc(DISCLAIMER)}</p>
-  <p class="privacy-link"><a href="${depth}../privacy.html">Privacy</a> &middot; <a href="${depth}../terms.html">Terms</a> &middot; <a href="${depth}../about.html">About</a> &middot; <a href="${depth}../sources.html">Sources</a> &middot; <a href="${depth}../premium.html">Premium</a> &middot; <a href="${depth}../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  ${footerLinks(depth + '../')}
 </footer>`;
 }
 

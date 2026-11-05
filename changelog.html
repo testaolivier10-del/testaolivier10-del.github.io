@@ -37,6 +37,13 @@
   .log .tag.ochem{background:var(--ctint,var(--tint-accent));color:var(--cink,var(--accent));}
   .log .tag.anp{background:#FBE9E4;color:#A33B26;}
   :root[data-theme="dark"] .log .tag.anp{background:rgba(236,132,108,0.18);color:#F2B9A9;}
+  /* Older months, folded by assets/site-toc.js. */
+  .log .sp-mon-box{border-top:1px solid var(--line);margin:28px 0 0;}
+  .log .sp-mon-box > summary.sp-mon{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:.3em;margin-top:18px;}
+  .log .sp-mon-box > summary.sp-mon::-webkit-details-marker{display:none;}
+  .log .sp-mon-box > summary.sp-mon::after{content:var(--disclose);margin-left:auto;font:800 22px var(--font-ui);letter-spacing:0;color:var(--accent-text);transition:transform .15s;}
+  .log .sp-mon-box[open] > summary.sp-mon::after{transform:rotate(90deg);}
+  .log .sp-mon-box > h2:first-of-type{margin-top:12px;}
 </style>
 </head>
 <body class="sp-page">

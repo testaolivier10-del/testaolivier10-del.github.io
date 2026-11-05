@@ -14,6 +14,7 @@
 
      node scripts/build-nremt-lessons.mjs           write
      node scripts/build-nremt-lessons.mjs --check   exit 1 if anything is stale (CI) */
+import { footerLinks } from './lib/footer-links.mjs';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -91,7 +92,7 @@ function lessonPage(L, i) {
   const notesHref = `../notes/${chapterSlug(ch)}.html#${L.section}`;
   const url = `${ORIGIN}/nremt/lessons/${L.id}.html`;
   // "{Topic} — {Course} | LevlPrep" (scripts/lib/page-title.mjs), at most 60 characters.
-  const title = courseTitle(L.title, ['NREMT-EMT Lesson', 'NREMT Lesson', 'EMT Lesson']);
+  const title = courseTitle(L.title, ['NREMT-EMT Lesson']);
   // The summary's first sentence when it fits a search result; otherwise a plain description of the lesson.
   const first = (text(L.summary).match(/^.*?[.!?](?=\s|$)/) || [''])[0];
   const desc = first && first.length <= 158 ? first : `${L.title}: an NREMT-EMT interactive lesson, step by step, with a common mistake and practice questions.`;
@@ -111,7 +112,7 @@ function lessonPage(L, i) {
       { '@type': 'LearningResource', '@id': `${url}#lesson`, name: L.title, url, description: desc, learningResourceType: 'Lesson', educationalLevel: 'Professional certification', inLanguage: 'en', ...(isFree(L) ? { isAccessibleForFree: true } : lockedLd('.nl-card')), isPartOf: { '@id': `${ORIGIN}/nremt/#course` }, provider: { '@id': `${ORIGIN}/#org` } },
       { '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'LevlPrep', item: `${ORIGIN}/` },
-        { '@type': 'ListItem', position: 2, name: 'NREMT-EMT Prep', item: `${ORIGIN}/nremt/` },
+        { '@type': 'ListItem', position: 2, name: 'NREMT-EMT', item: `${ORIGIN}/nremt/` },
         { '@type': 'ListItem', position: 3, name: ch.title, item: `${ORIGIN}/nremt/notes/${chapterSlug(ch)}.html` },
         { '@type': 'ListItem', position: 4, name: L.title, item: url },
       ] },
@@ -185,7 +186,7 @@ ${parts.map((p, k) => `      <section class="nl-part${k === 0 ? ' is-on' : ''}" 
 </div>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    ${footerLinks('../../')}
   </footer>
 </div>
 <script>

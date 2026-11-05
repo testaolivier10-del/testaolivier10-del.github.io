@@ -4,6 +4,7 @@
    anatomy-physiology/data/ and docs/anp-dependency-map.json, so every page has
    the same head, the same 11-part lesson order (docs/anp-spec.md section 4) and
    the same glossary markup. docs/anp-phase1-architecture.md describes the data. */
+import { footerLinks } from './footer-links.mjs';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -189,8 +190,8 @@ export const BETA_NOTE = 'This course has not yet been reviewed by a licensed A&
 
 export function footer(depth) {
   return `<footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">${BETA_PILL} ${BETA_NOTE} It follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
-  <p class="privacy-link"><a href="${depth}../privacy.html">Privacy</a> &middot; <a href="${depth}../terms.html">Terms</a> &middot; <a href="${depth}../about.html">About</a> &middot; <a href="${depth}../sources.html">Sources</a> &middot; <a href="${depth}credits.html">Figure credits</a> &middot; <a href="${depth}../premium.html">Premium</a> &middot; <a href="${depth}../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  <p class="anp-accuracy-note">${BETA_PILL} ${BETA_NOTE} It follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one. <a href="${depth}credits.html">Figure credits</a>.</p>
+  ${footerLinks(depth + '../')}
 </footer>`;
 }
 

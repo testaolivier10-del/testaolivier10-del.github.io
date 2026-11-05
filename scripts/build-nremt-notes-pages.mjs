@@ -45,6 +45,7 @@
      node scripts/build-nremt-notes-pages.mjs            rewrite
      node scripts/build-nremt-notes-pages.mjs --check    fail if any page is stale (CI)
 */
+import { footerLinks } from './lib/footer-links.mjs';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -323,7 +324,7 @@ function page(ch, i) {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'LevlPrep', item: `${ORIGIN}/` },
-          { '@type': 'ListItem', position: 2, name: 'NREMT-EMT Prep', item: `${ORIGIN}/nremt/` },
+          { '@type': 'ListItem', position: 2, name: 'NREMT-EMT', item: `${ORIGIN}/nremt/` },
           { '@type': 'ListItem', position: 3, name: 'NREMT-EMT study notes', item: `${ORIGIN}/nremt/study-notes.html` },
           { '@type': 'ListItem', position: 4, name: ch.title, item: url },
         ],
@@ -408,7 +409,7 @@ ${sections}
 <div class="xshell">
   <footer>
     ${DISCLAIMER}
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    ${footerLinks('../../')}
   </footer>
 </div>
 <script>

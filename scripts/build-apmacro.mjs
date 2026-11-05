@@ -527,7 +527,7 @@ ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', 
   /* ------------------------------------------------------------- learn */
   function learnPage() {
     const depth = '';
-    const title = courseTitle('All units and skills', [LABEL]);
+    const title = courseTitle('Textbook', [LABEL]);
     const desc = clampDesc(`Every unit of the macroeconomics course in framework order, ${units.length} units and ${topics.length} topics, plus a graph skills chapter for axes, curves, shifts and movements along a curve.`);
     const url = `${SITE}${BASE}learn.html`;
     const jsonld = { '@context': 'https://schema.org', '@graph': [
