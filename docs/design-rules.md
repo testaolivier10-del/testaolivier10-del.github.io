@@ -17,7 +17,7 @@ https://claude.ai/artifact/GbY4t4nHczLZ8JdYkerpZx). Check every options page aga
 One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
 honest take and a pick; the owner chooses and the choice is recorded here before the next step.
 1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners (done) · 5 Type and color (done) ·
-6 Cards, lists and tags (done) · 7 Course home (done) · 8 Learn (done) · 9 Practice (done) · 10 Question screen · 11 Exams · 12 Progress ·
+6 Cards, lists and tags (done) · 7 Course home (done) · 8 Learn (done) · 9 Practice (done) · 10 Question screen (done) · 11 Exams · 12 Progress ·
 13 Menus and site wide extras · 14 Homepage · 15 Teacher side. (Reordered 2026-11-05 so each section of the course
 gets its own step, built from `docs/site-feature-inventory.md`.)
 
@@ -119,6 +119,18 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   card types and Study 20 cards; no unit tiles (owner: they repeat the menu).
 - Agreed (step 9): Free response is grouped under the six AP® types with their points, filtered by type and unit;
   Units 1 and 2 are free, later questions carry the quiet Premium tag.
+- Agreed (step 10): one question per screen, full width answer rows (letter, then the full choice), Check pinned at
+  the bottom of the screen (on computers centred under the question, max 720 px wide). Top strip: End, progress bar,
+  "4 of 10", Flag.
+- Agreed (step 10): stimulus sets: on computers the data sits beside the questions and stays in view; on phones a
+  pinned "Show data" bar opens the data over the question.
+- Agreed (step 10): after Check the right choice turns green with a tick, a wrong pick red with a cross, the rest
+  fade; one explanation card underneath ("Not quite. The answer is A." plus the why), with "Why not the others?"
+  folded and Report a problem; Next question replaces Check. A right answer gets the +10 XP pop up.
+- Agreed (step 10): the end of a session shows the score, XP and how many to review, then one Next card chosen by
+  the site (e.g. Review the 3 you missed) and small links Practice again and Share result.
+- Agreed (step 10): kept: Flag on every question, answer sounds, screen reader announcements, number boxes for
+  numeric questions, other course suggestions on the end screen.
 - Agreed: every design question is shown as pictures of each option before the owner chooses, never as words only.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
@@ -180,3 +192,5 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   tool cards with drawings (T1). Options page: https://claude.ai/artifact/QgTA1iVbiqyYAj74uiQ7ps
 - 2026-11-05: step 9 decided: pill tabs (A), today's settings form (S2), flashcards without unit tiles (F3, owner's
   idea), FRQs grouped by type (R2). Options page: https://claude.ai/artifact/U5tCoafGswGA39WbUdgc2B
+- 2026-11-05: step 10 decided: full width choices with Check pinned (A), data beside or pinned (S1), colors plus
+  the why (E1), one next step (N1). Options page: https://claude.ai/artifact/FV7vdYFpvAvhX9z3DFkxyR
