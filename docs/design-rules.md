@@ -43,6 +43,7 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 - No em dashes or hyphens used as punctuation in any copy.
 
 ## Layout and navigation
+- Agreed (step 2): on phones the 5 sections sit in a bottom bar with icons and labels, all always visible.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
 - Agreed (step 1): every course has 5 sections: Home, Learn, Practice, Exams, Progress. Path lives in Home;
@@ -52,7 +53,9 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 - Proposed: teacher class view with 4 tabs (Class, Assignments, Students, Settings) plus "+ Assign".
 
 ## Checklist before showing a page
-1. 390 px and 1280 px: nothing scrolls sideways, nothing hidden under sticky bars, main action on the first screen.
+1. 390 px, about 700 px (the claude.ai side panel) and 1280 px: nothing scrolls sideways, nothing hidden under
+   sticky bars, main action on the first screen. Option pages draw computer examples at a fixed 1100 px and scale
+   them down, so a narrow window never hides parts of an option.
 2. Dark mode readable; text contrast at least 4.5:1; buttons and tap targets at least 44 px.
 3. Every button and link goes somewhere or is clearly a mockup; no invisible or unstyled buttons.
 4. Real length text and numbers that agree with each other on the page.
@@ -69,3 +72,5 @@ honest take and a pick; the owner chooses and the choice is recorded here before
   real question within one or two taps of arriving). Open for the owner's decision.
 - 2026-11-04: step 1 decided: 5 sections (option B), names "Progress" and "Learn". Options page:
   https://claude.ai/artifact/S888mTSAEAMQDzQ3pLFjN3
+- 2026-11-04: step 2 phone decided: bottom bar (P1). Owner could not see the tabs in computer option B because the
+  options page hid them below 860 px wide; fixed by drawing computer examples at fixed width, and added to the checklist.
