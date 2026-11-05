@@ -98,6 +98,42 @@ test('teacher questions: escaped, own, filtered', () => {
   assert.equal(held.length, 1); assert.equal(held[0].ungraded, true); assert.equal(held[0].correct, -1); assert.equal(held[0].why, null);
 });
 
+test('class_submit: A1 shape { recorded, at, answers }', () => {
+  assert.deepEqual(plain(R.submitted({ recorded: true, at: 'x', answers: [{ id: 11, correct: 2, why: 'w' }] })), { 11: { id: 11, correct: 2, why: 'w' } });
+  assert.deepEqual(plain(R.submitted({ recorded: true, at: 'x' })), {}, 'held: recorded, no answers yet');
+  const rec = { n: 1, c: 0, answers: { 11: 2 } };
+  R.gradeTeacher(rec, R.submitted({ recorded: true, answers: [{ id: 11, correct: 2 }] }), ['11']);
+  assert.equal(rec.c, 1);
+});
+
+test('teacher question topic and unit: only the course\'s own ids', () => {
+  const cur = { units: [{ id: 'unit-1' }, { id: 'unit-2' }], topics: [{ id: 't1', unit: 'unit-1' }, { id: 't2', unit: 'unit-2' }] };
+  const row = (topic, unit) => ({ id: 1, q: 'Q', options: ['a', 'b'], correct: 0, topic, unit });
+  const one = (topic, unit, fb) => plain(R.teacherItems([row(topic, unit)], 'apbio', true, cur, fb)[0]);
+  assert.equal(one('t2', 'unit-2', 't1').topic, 't2');
+  assert.equal(one('t2', 'unit-2', 't1').unit, 'unit-2');
+  const bad = one('"><img src=x onerror=alert(1)>', 'javascript:alert(1)', 't1');
+  assert.equal(bad.topic, 't1', 'an unknown topic falls back to the assignment\'s');
+  assert.equal(bad.unit, 'unit-1', 'its unit follows the topic');
+  assert.equal(one('t2', 'unit-1', null).unit, 'unit-2', 'a unit that does not hold the topic is replaced');
+  assert.equal(one('toString', 'constructor', null).topic, '', 'prototype names are not ids');
+  assert.equal(one('nope', 'nope', 'also-nope').unit, '');
+});
+
+test('an exam without a class limit resumes its clock after a reload', () => {
+  const c = R.controls({ spec: {} }, { extra_time: 1.5 });
+  assert.equal(R.examBudget(c, 1800), 2700000);
+  assert.equal(R.examK(c, null, NOW, 1800), 1.5, 'fresh: standard pace times extra time');
+  const running = { start: NOW - 900000, limit: 2700000 };
+  assert.equal(R.examK(c, running, NOW, 1800), 1, '15 of 45 minutes gone: 30 left');
+  assert.equal(R.timeGone(c, running, NOW), false);
+  assert.equal(R.timeGone(c, running, NOW + 1800001), true);
+  assert.equal(R.timeGone(c, { ...running, end: NOW }, NOW + 9e9), false, 'handed in: not running');
+  const lim = R.controls({ spec: { controls: { timeLimit: 10 } } }, {});
+  assert.equal(R.timeGone(lim, { start: NOW - 11 * MIN }, NOW), true, 'the class limit, practice');
+  assert.equal(R.timeGone(c, { start: NOW - 1e9 }, NOW), false, 'no stored budget, no limit: unknown');
+});
+
 test('class_submit answers grade the teacher questions once', () => {
   assert.deepEqual(plain(R.submitted([{ id: 11, correct: 2, why: 'w' }, null])), { 11: { id: 11, correct: 2, why: 'w' } });
   assert.deepEqual(plain(R.submitted({ 11: { correct: 1 } })), { 11: { correct: 1 } });
