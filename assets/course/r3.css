@@ -484,3 +484,20 @@
 .r3 .media .vstrip{margin:0}
 .r3 .media .dept{margin:0}
 .r3 .media .dept a{border-top:0;padding-top:0}
+
+/* Slimmer course banners on every course (owner, live session 2026-11-05;
+   docs/design-rules.md): one-line title, smaller drawing, less height. The
+   course home keeps room under the banner for the path card that overlaps it. */
+.r3 .band .hwrap{grid-template-columns:1.5fr 1fr!important;gap:28px!important;padding-top:24px!important}
+.r3-home .band .hwrap{padding-bottom:116px!important}
+.r3 .band .issue{margin-bottom:10px!important}
+.r3 .band .mast{font-size:clamp(42px,5vw,68px)!important;line-height:1!important}
+.r3 .band .mast span{display:inline!important;margin-left:.2em}
+.r3 .band h1:not(.mast){font-size:clamp(32px,3.6vw,48px)!important;line-height:1.05!important}
+.r3 .band .hand{margin:6px 0 4px!important}
+.r3 .band .lede{margin:0 0 14px!important}
+.r3-home .band .lede{display:none!important}
+.r3-home .band .hand{margin-bottom:16px!important}
+.r3 .band .art{max-width:260px!important;justify-self:end}
+.r3 .band .art img{max-height:170px;width:auto}
+@media (max-width:640px){.r3 .band .art{display:none!important}.r3 .band .hwrap{grid-template-columns:1fr!important}}

@@ -2073,3 +2073,7 @@ mtext{white-space:pre;}
 :where(table:not([class])){border-collapse:collapse;margin:14px 0;}
 :where(table:not([class])) :where(th,td){text-align:left;vertical-align:top;border-bottom:1px solid var(--line, rgba(0,0,0,.1));}
 :where(table:not([class])) :where(thead th){font-weight:700;}
+
+/* The level is not in the header (design rules, step 3): it shows as the
+   +XP pop up after a right answer and as the level bar on Progress. */
+.level-badge{display:none!important;}

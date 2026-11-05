@@ -1,0 +1,9 @@
+{
+  "$comment": "Design preview copy only (owner, 2026-11-05). levlprep.com is GitHub Pages and ignores this file.",
+  "installCommand": "",
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "headers": [
+    { "source": "/(.*)", "headers": [ { "key": "X-Robots-Tag", "value": "noindex, nofollow" }, { "key": "Cache-Control", "value": "no-cache" } ] }
+  ]
+}

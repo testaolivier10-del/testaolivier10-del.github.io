@@ -190,6 +190,40 @@
     .sticky-cta .btn-chan{flex:1;text-align:center;}
   }
   @media (max-width:640px){.fact-row{display:none;}}
+
+  /* Hub redesign (owner, live session 2026-11-05; docs/design-rules.md) */
+  .home-hero{padding:28px 0 12px;}
+  .home-hero h1{margin:10px 0 12px;}
+  .pp-card{max-width:460px;justify-self:end;width:100%;padding:20px 22px;}
+  .pp-card .pp-t{font-size:18px;}
+  .hub-groups{display:grid;gap:30px;margin-bottom:56px;}
+  .hub-group h3{display:flex;align-items:baseline;gap:10px;margin:0 0 12px;font:900 21px var(--font-display,var(--font-ui));letter-spacing:-.02em;color:var(--ink);}
+  .hub-group h3 small{font:800 13px var(--font-ui);color:var(--muted);letter-spacing:0;}
+  .hub-group .subject-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:0;}
+  .hub-group .ccard .cdesc,.hub-group .ccard .tag{display:none;}
+  .home-deal--cards{display:grid;grid-template-columns:1fr 1.3fr;gap:18px;margin:0 0 40px;}
+  .dplan{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:20px 22px;display:flex;flex-direction:column;}
+  .dplan__top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 12px;}
+  .dplan__top .pill{color:var(--accent-text);}
+  .dplan h3{margin:0;font:900 22px var(--font-ui);letter-spacing:-.02em;color:var(--ink);}
+  .dplan__amt{margin-left:auto;font:900 24px var(--font-ui);letter-spacing:-.03em;color:#FFD23F;}
+  .dplan ul{margin:0 0 16px;padding:0;list-style:none;display:grid;gap:6px;color:var(--muted);}
+  .dplan ul.two{grid-template-columns:1fr 1fr;column-gap:16px;}
+  .dplan li{padding-left:24px;position:relative;}
+  .dplan li::before{content:"";position:absolute;left:2px;top:7px;width:11px;height:6px;border-left:2.5px solid var(--accent);border-bottom:2.5px solid var(--accent);transform:rotate(-45deg);}
+  .dplan--pro{background:#0B1A33;border-color:#0B1A33;color:#fff;box-shadow:0 18px 40px rgba(11,26,51,.22);background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px;}
+  .dplan--pro .pill{color:#FFD23F;}
+  .dplan--pro h3{color:#fff;}
+  .dplan--pro ul{color:#fff;font-weight:700;}
+  .dplan--pro li::before{border-color:#2EE6D6;}
+  .dplan__row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:auto;}
+  .dbtn{display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:12px;font:800 15px var(--font-ui);text-decoration:none;}
+  .dplan > .dbtn{margin-top:auto;align-self:flex-start;}
+  .dbtn--ghost{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}
+  .dbtn--gold{background:#FFD23F;color:#0B1A33;}
+  .dplan__sure{font-size:13.5px;color:#B9C8E2;}
+  @media (max-width:760px){.home-deal--cards{grid-template-columns:1fr;}.dplan--pro{order:-1;}}
+  @media (max-width:640px){.hub-group .subject-grid{grid-template-columns:1fr;gap:10px;}}
 </style>
 
 <!-- levlprep-structured-data -->
@@ -220,11 +254,6 @@
     <div class="eyebrow">13 courses &middot; 19,971 questions &middot; free to start</div>
 <!-- hero-facts:end -->
     <h1>Hard subjects,<span>made clear.</span></h1>
-    <p class="hand">practice that explains every answer</p>
-    <p class="lede">NREMT, Organic Chemistry, A&amp;P and ten AP® Exams, taught in order.</p>
-    <div class="hero-ctas">
-      <a class="btn-chan" href="#subjects">Choose your course</a>
-    </div>
     <p class="founder"><span class="av" aria-hidden="true">OT</span><span>By Olivier Testa, an EMT who passed the NREMT with it. <a href="about.html">Why I built it</a></span></p>
     </div>
     <div class="pp-card">
@@ -241,7 +270,6 @@
     </div>
   </section>
 
-  <div id="hubProgress" hidden></div>
 
   <section id="subjects" aria-labelledby="subjects-h">
     <div class="home-sh"><h2 id="subjects-h">Pick your <span>course</span></h2><p>Start any of them right now, and sign in only when you want your progress saved.</p></div>
@@ -335,10 +363,19 @@
   </section>
 
 <!-- pricing:start -->
-  <section class="home-deal" aria-label="Free and Premium">
-    <p class="home-deal__line"><span class="pill">Free and Premium</span> Notes are free forever in every course. Premium is a one-time pass per course, from $25<span data-founding-until="2027-01-31"> ($17.50 founding price until 31 January 2027)</span>, with no subscription. <a href="premium.html">What Premium adds, and every price</a></p>
+  <section class="home-deal home-deal--cards" aria-label="Free and Premium">
+    <div class="dplan">
+      <div class="dplan__top"><span class="pill">Free</span><h3>Everything to start</h3></div>
+      <ul><li>All notes and flashcards</li><li>The first lessons</li><li>15 questions a day</li></ul>
+      <a class="dbtn dbtn--ghost" href="#subjects">Choose a course</a>
+    </div>
+    <div class="dplan dplan--pro">
+      <div class="dplan__top"><span class="pill">Premium</span><h3>The whole course</h3><b class="dplan__amt">from <span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></b></div>
+      <ul class="two"><li>Every lesson</li><li>Unlimited practice</li><li>Unlimited exams</li><li>Every tool and dashboard</li></ul>
+      <div class="dplan__row"><a class="dbtn dbtn--gold" href="premium.html">Compare every course</a><span class="dplan__sure"><span data-founding-until="2027-01-31">Founding price until Jan 31 &middot; </span>one payment &middot; never renews</span></div>
+    </div>
   </section>
-<script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});})();</script>
+<script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});[].forEach.call(document.querySelectorAll('[data-founding-after]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-after')+'T23:59:59Z'))e.hidden=false;});})();</script>
 <!-- pricing:end -->
 
   <section class="home-teach" aria-labelledby="home-teach-h">
@@ -372,7 +409,7 @@
 
 
   <div class="sticky-cta is-off" id="stickyCta"><a class="btn-chan" href="#subjects">Choose your course</a></div>
-  <script>(function(){var bar=document.getElementById('stickyCta'),hero=document.querySelector('.home-hero .hero-ctas'),list=document.getElementById('subjects');if(!bar||!hero||!('IntersectionObserver' in window)){if(bar)bar.classList.remove('is-off');return;}var seen={};function upd(){bar.classList.toggle('is-off',!!(seen.h||seen.l||!seen.past));}new IntersectionObserver(function(es){es.forEach(function(e){if(e.target===hero){seen.h=e.isIntersecting;seen.past=!e.isIntersecting&&e.boundingClientRect.top<0;}else seen.l=e.isIntersecting;});upd();}).observe(hero);new IntersectionObserver(function(es){es.forEach(function(e){seen.l=e.isIntersecting;});upd();},{rootMargin:'0px 0px -40% 0px'}).observe(list);})();</script>
+  <script>(function(){var bar=document.getElementById('stickyCta'),hero=document.querySelector('.home-hero .hero-ctas'),list=document.getElementById('subjects');if(!bar||!hero||!('IntersectionObserver' in window)){return;}var seen={};function upd(){bar.classList.toggle('is-off',!!(seen.h||seen.l||!seen.past));}new IntersectionObserver(function(es){es.forEach(function(e){if(e.target===hero){seen.h=e.isIntersecting;seen.past=!e.isIntersecting&&e.boundingClientRect.top<0;}else seen.l=e.isIntersecting;});upd();}).observe(hero);new IntersectionObserver(function(es){es.forEach(function(e){seen.l=e.isIntersecting;});upd();},{rootMargin:'0px 0px -40% 0px'}).observe(list);})();</script>
 </div>
 <div class="hwrap">
   <footer class="home-foot">
@@ -440,5 +477,6 @@ document.addEventListener('DOMContentLoaded', function(){
   })();
 });
 </script>
+<script src="assets/hub-groups.js"></script>
 </body>
 </html>

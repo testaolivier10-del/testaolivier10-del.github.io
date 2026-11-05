@@ -870,8 +870,15 @@
 
   /* Offline support: one root-scoped worker for the whole site, so its scope
      covers the shared /assets/ modules every course depends on. */
+  // A design preview copy of the site (owner, 2026-11-05) runs on vercel.app.
+  var IS_PREVIEW = /\.vercel\.app$/.test(location.hostname);
   function registerServiceWorker(){
     if(!('serviceWorker' in navigator)) return;
+    // No offline cache on the preview copy, so every new version shows on reload.
+    if(IS_PREVIEW){
+      navigator.serviceWorker.getRegistrations().then(function(rs){ rs.forEach(function(r){ r.unregister(); }); }).catch(function(){});
+      return;
+    }
     window.addEventListener('load', function(){
       navigator.serviceWorker.register('/sw.js').catch(function(){ /* best-effort */ });
     });
@@ -1157,6 +1164,14 @@
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', classBoot);
   else classBoot();
+
+  // The preview copy gets a Visitor / Student switch (assets/preview-demo.js).
+  if(IS_PREVIEW){
+    var pv = document.createElement('script');
+    pv.src = '/assets/preview-demo.js';
+    pv.defer = true;
+    document.head.appendChild(pv);
+  }
 
   window.LevlChrome = {
     render: render,

@@ -1,0 +1,6 @@
+# Design preview copy: only the site itself is uploaded.
+docs/
+scripts/
+worker/
+node_modules/
+.github/
