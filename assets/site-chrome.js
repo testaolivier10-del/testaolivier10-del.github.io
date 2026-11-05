@@ -478,6 +478,7 @@
           link('level-badge', 'levelBadge', 'Your level', 'L1', true) +
           '<button type="button" class="theme-toggle chrome-more" id="chromeMenuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="chromeMenu" aria-label="Account and settings" title="Account and settings">' + MENU_ICON + '</button>' +
           '<div class="chrome-menu" id="chromeMenu">' +
+            (/^\/teach\//.test(location.pathname) ? '' : '<a class="nav-teach" href="/teach/">For teachers</a>') +
             '<span id="accountSlot"></span>' +
             (window.LevlSound ? '<button type="button" class="theme-toggle sound-toggle" id="soundToggle"></button>' : '') +
             '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Dark mode" title="Dark mode">' + THEME_ICONS + '<span class="chrome-menu__lbl">Dark mode</span></button>' +
