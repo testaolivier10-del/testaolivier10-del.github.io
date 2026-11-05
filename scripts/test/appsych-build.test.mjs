@@ -41,7 +41,7 @@ test('a published unit builds every page kind, math rendered and plots drawn, an
   beta({ ROOT: root, fail: m => fails.push(m), htmlFiles: html });
   assert.deepEqual(fails, []);
   const lesson = readFileSync(join(root, `${D}/lessons/${T}.html`), 'utf8');
-  assert.match(lesson, /<title>Operant Conditioning.* — AP® Psychology( Lesson)?( \| LevlPrep)?<\/title>/);
+  assert.match(lesson, /<title>[^<]+ — AP® Psychology( Lesson)? \| LevlPrep<\/title>/);
   assert.doesNotMatch(lesson, /"isAccessibleForFree": true/, 'Unit 3 lessons are Premium');
   assert.doesNotMatch(lesson, /noindex/);
   assert.match(lesson, /<body class="psy"/);

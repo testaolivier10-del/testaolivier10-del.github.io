@@ -228,7 +228,7 @@
     { key: 'apbio', rankLabel: 'Biology rank' },
     { key: 'apchem', rankLabel: 'Chemistry rank' },
     { key: 'apphys', rankLabel: 'Physics rank' },
-    { key: 'apcalc', rankLabel: 'Calculus rank' },
+    { key: 'apcalc', rankLabel: 'Calculus AB rank' },
     { key: 'apstat', rankLabel: 'Statistics rank' },
     { key: 'apenv', rankLabel: 'Environmental Science rank' },
     { key: 'appsych', rankLabel: 'Psychology rank' },

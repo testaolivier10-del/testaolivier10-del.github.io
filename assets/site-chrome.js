@@ -131,7 +131,7 @@
     { key: 'apbio', short: 'Biology', dir: 'bio' },
     { key: 'apchem', short: 'Chemistry', dir: 'chem' },
     { key: 'apphys', short: 'Physics', dir: 'physics' },
-    { key: 'apcalc', short: 'Calculus', dir: 'calculus' },
+    { key: 'apcalc', short: 'Calculus AB', dir: 'calculus' },
     { key: 'apstat', short: 'Statistics', dir: 'statistics' },
     { key: 'apenv', short: 'Env Science', dir: 'environmental-science' },
     { key: 'appsych', short: 'Psychology', dir: 'psychology' },

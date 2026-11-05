@@ -68,7 +68,7 @@ export function r3HomeMain(key, ctx) {
   const beta = ''; // the Beta label is gone (Olivier, 2026-10-26)
   const band = `<section class="band" aria-labelledby="r3Title"><div class="hwrap"><div>
 <p class="issue">${d.pill}${beta} <i></i> ${d.note}</p>
-<h1 class="mast${/^\S{13,}$/.test(d.t2) ? ' mast-long' : ''}" id="r3Title">${d.t1}<span>${d.t2}</span></h1>
+<h1 class="mast${[d.t1, d.t2].some((w) => /\S{13,}/.test(String(w || '').replace(/<[^>]*>|&[a-z]+;/g, ''))) ? ' mast-long' : ''}" id="r3Title">${d.t1}<span>${d.t2}</span></h1>
 <p class="hand">${d.hand}</p>
 <p class="lede">${String(ctx.lede || d.lede).split(/(?<=[.!?])\s+(?=[A-Z])/)[0]}</p>
 <div class="hero-ctas"><a class="btn-chan" id="heroPrimaryCta" href="${ctx.primaryHref}">${d.btn1}</a>${ctx.primaryScript || ''}<a class="btn-ghost" href="${L.btn2 || '#try'}">${d.btn2}</a></div>

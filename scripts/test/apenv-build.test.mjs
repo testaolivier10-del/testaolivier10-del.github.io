@@ -41,7 +41,7 @@ test('a published unit builds every page kind, math rendered and plots drawn, an
   beta({ ROOT: root, fail: m => fails.push(m), htmlFiles: html });
   assert.deepEqual(fails, []);
   const lesson = readFileSync(join(root, `${D}/lessons/${T}.html`), 'utf8');
-  assert.match(lesson, /<title>Human Population Dynamics.* — AP® Environmental Science( Lesson)?( \| LevlPrep)?<\/title>/);
+  assert.match(lesson, /<title>[^<]+ — AP® Environmental Science( Lesson)? \| LevlPrep<\/title>/);
   assert.doesNotMatch(lesson, /"isAccessibleForFree": true/, 'Unit 3 lessons are Premium');
   assert.doesNotMatch(lesson, /noindex/);
   assert.match(lesson, /<body class="env"/);
@@ -103,7 +103,7 @@ test('the real published list holds every chapter since the launch', () => {
 test('the course home has its own headline, olive and its own icon, not Statistics\'', () => {
   const { root } = build('unit-3');
   const home = readFileSync(join(root, `${D}/index.html`), 'utf8');
-  assert.match(home, /<h1 class="mast" id="r3Title">AP® Environmental<span>Science<\/span><\/h1>/);
+  assert.match(home, /<h1 class="mast mast-long" id="r3Title">AP® Environmental<span>Science<\/span><\/h1>/);
   assert.doesNotMatch(home, /<p class="deck">/); // the second tagline is off course homes (owner 2026-11-02)
   assert.doesNotMatch(home, /Statistics|Chemistry|Calculus|Physics|Data Collector|bell curve|score-calculator/);
   assert.match(home, /assets\/env\.css/);

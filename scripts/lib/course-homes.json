@@ -1809,7 +1809,7 @@
    "title": "More surface for little volume.",
    "why": "A huge animal has a low surface area ÷ volume and loses heat slowly. Large, thin ears with many blood vessels add a lot of exchange surface, and flapping moves air over it, so heat leaves the blood faster."
   },
-  "note": "2026 exam",
+  "note": "May 2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
  "apchem": {
@@ -2242,7 +2242,7 @@
    "title": "6.022 × 10²³ particles.",
    "why": "One mole is Avogadro’s number, 6.022 × 10²³, of whatever particles you name. A mole is a count, not a mass or a volume."
   },
-  "note": "2026 exam",
+  "note": "May 2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
  "apphys": {
@@ -2686,7 +2686,7 @@
    "title": "Twice as large.",
    "why": "a = Δv/Δt: 6.0/3.0 = 2.0 m/s² and 6.0/1.5 = 4.0 m/s². Halving Δt for the same Δv doubles the acceleration."
   },
-  "note": "2026 exam",
+  "note": "May 2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
  "apcalc": {
@@ -3125,7 +3125,7 @@
    "title": "Limit 6, value 8.",
    "why": "The limit is where the values head (6); the value at 3 is what k actually gives there (8)."
   },
-  "note": "2026 exam",
+  "note": "May 2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
  "apcalcbc": {
@@ -3558,7 +3558,7 @@
   "t1": "AP®",
   "t2": "Calculus BC",
   "coverhand": "every AB topic, then series",
-  "note": "2027 exam",
+  "note": "May 2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice.",
   "try": {
    "ok": 0,
@@ -3972,7 +3972,7 @@
    "title": "Who chose to respond.",
    "why": "A voluntary response sample is biased toward people with strong views. A huge sample does not fix it."
   },
-  "note": "2026 to 2027 framework",
+  "note": "May 2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
  "apenv": {
@@ -4423,7 +4423,7 @@
    "title": "Old carbon, released fast.",
    "why": "Fossil fuels are ancient carbon that the slow part of the cycle buried. Combustion releases it far faster than photosynthesis, the ocean and sedimentation can take it back up."
   },
-  "note": "2026 exam",
+  "note": "May 2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
  "appsych": {
@@ -4832,7 +4832,7 @@
    "title": "The outcome is what you measure.",
    "why": "The dependent variable is what the researcher measures to see the effect: here, reaction time. Caffeine or the look-alike pill is the independent variable, the one the researcher changes."
   },
-  "note": "2027 exam",
+  "note": "May 2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
  "apprecalc": {
@@ -5235,7 +5235,7 @@
    "title": "Rise over run: 4.",
    "why": "f(3) − f(1) = 9 − 1 = 8, over 3 − 1 = 2: the slope of the secant line is 4."
   },
-  "note": "2027 exam",
+  "note": "May 2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
  "apmacro": {
@@ -5602,7 +5602,7 @@
    "title": "A cost shock shifts supply, not demand.",
    "why": "Higher input costs shift short-run aggregate supply to the left, so the price level rises while real output falls: stagflation. A change in spending would shift aggregate demand instead."
   },
-  "note": "2027 exam",
+  "note": "May 2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
  "_founder": "Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep."

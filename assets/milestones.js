@@ -15,7 +15,10 @@
      anp     A chapter is complete when every BUILT topic in it is in
              anp_progress_v1.lessons (the lesson's check questions answered to
              the end). Each record is a timestamp, so the date earned is real.
-     both    The course is complete when every chapter is.
+     AP®     The ten AP® courses: a unit is complete when every topic in it
+             with a lesson is in <key>_progress_v1.lessons (timestamps), with
+             units and lessons read from assets/path/<key>.json.
+     all     The course is complete when every chapter (unit) is.
      nremt   No chapters to finish. The milestone is a full-length timed
              practice exam (100 questions, two hours) scored at 80% or higher.
              80 because it is the site's own top band — "On track" in the
@@ -72,6 +75,25 @@
       blurb: 'An anatomy and physiology course, free to start: lessons that build in order from cells to systems, mechanism-first physiology, a virtual lab practical and system exams.'
     }
   };
+  /* The ten AP® courses (consistency audit 2026-11, D4): units and their lessons come from the course's path file
+     (assets/path/<key>.json, scripts/build-paths.mjs), finished lessons from <key>_progress_v1.lessons, each a
+     timestamp, the same record A&P keeps. A unit is a chapter here; the course is complete when every unit is. */
+  var AP = [
+    ['apbio', 'AP® Biology', 'bio', 'Biology exam prep in framework order: lessons from scratch, free notes and data-heavy practice that matches the real exam.'],
+    ['apchem', 'AP® Chemistry', 'chem', 'Chemistry exam prep in framework order: lessons from scratch, free notes, and practice that checks units, sig figs and reasoning.'],
+    ['apphys', 'AP® Physics 1', 'physics', 'Physics 1 exam prep in framework order: lessons from scratch, free notes, trainers, and practice that checks diagrams and reasoning.'],
+    ['apcalc', 'AP® Calculus AB', 'calculus', 'Calculus AB exam prep in framework order: lessons from scratch, free notes, trainers and typed answers graded by value.'],
+    ['apcalcbc', 'AP® Calculus BC', 'calculus-bc', 'Calculus BC exam prep: every AB topic plus parametric, polar and series, free notes, trainers and typed answers graded by value.'],
+    ['apstat', 'AP® Statistics', 'statistics', 'Statistics exam prep in framework order: lessons from scratch, free notes, simulators, and conclusions checked in context.'],
+    ['apenv', 'AP® Environmental Science', 'environmental-science', 'Environmental science exam prep in framework order: lessons from scratch, free notes, simulators, and calculations graded with units.'],
+    ['appsych', 'AP® Psychology', 'psychology', 'Psychology exam prep: lessons from scratch, free notes, simulators, and both free-response questions drilled part by part.'],
+    ['apprecalc', 'AP® Precalculus', 'precalculus', 'Precalculus exam prep: lessons from scratch, free notes, a function lab, typed answers graded by value, and every free-response type.'],
+    ['apmacro', 'AP® Macroeconomics', 'macroeconomics', 'Macroeconomics exam prep: lessons from scratch, free notes, simulators, and both free-response questions drilled part by part.']
+  ];
+  AP.forEach(function(a){
+    COURSES[a[0]] = { name: a[1], home: '/' + a[2] + '/', dash: '/' + a[2] + '/dashboard.html', path: '/assets/path/' + a[0] + '.json', ap: true, blurb: a[3] };
+  });
+  var PATHS = {};
 
   function esc(s){
     return String(s == null ? '' : s).replace(/[&<>"']/g, function(ch){
@@ -163,6 +185,12 @@
     if(course === 'nremt'){
       return nremtExam(readJSON('nremt_exam100_history', []), readJSON('nremt_exam100_best', null));
     }
+    if(COURSES[course] && COURSES[course].ap){
+      var P = PATHS[course];
+      if(!P) return null;
+      var pd = readJSON(P.progress || course + '_progress_v1', {});
+      return evaluate(apUnits(P), (pd && pd.lessons) || {});
+    }
     return null;
   }
 
@@ -171,7 +199,7 @@
   function ensure(course){
     var c = COURSES[course];
     if(!c) return Promise.reject(new Error('unknown course'));
-    return Promise.all([styles(), map(c)]);
+    return Promise.all([styles(), map(c, course)]);
   }
   /* assets/milestones.css, once. Resolves either way: unstyled is better than
      a milestone never shown. */
@@ -187,7 +215,21 @@
       document.head.appendChild(l);
     }));
   }
-  function map(c){
+  /* An AP® path file's units, each with the topics that have a lesson. The two skills groups share the label
+     "Skills", so a skills unit is named by its own title. */
+  function apUnits(P){
+    return (P.units || []).map(function(u, i){
+      return { id: u.id, title: /^Unit /.test(u.label || '') ? u.label + ': ' + u.title : u.title,
+        lessons: (P.topics || []).filter(function(t){ return t.u === i && t.l; }).map(function(t){ return t.id; }) };
+    }).filter(function(c){ return c.lessons.length; });
+  }
+  function map(c, course){
+    if(c.path){
+      if(PATHS[course]) return Promise.resolve();
+      if(!window.fetch) return Promise.reject(new Error('no fetch'));
+      return fetch(c.path).then(function(r){ if(!r.ok) throw new Error(c.path + ' ' + r.status); return r.json(); })
+        .then(function(j){ PATHS[course] = j; });
+    }
     if(!c.global || window[c.global]) return Promise.resolve();
     return new Promise(function(resolve, reject){
       var el = document.createElement('script');
@@ -255,22 +297,22 @@
   function heading(m, course){
     var c = COURSES[course] || {};
     if(m.kind === 'course') return 'Course complete: ' + c.name;
-    if(m.kind === 'chapter') return 'Chapter complete: ' + m.title;
+    if(m.kind === 'chapter') return (c.ap ? 'Unit complete: ' : 'Chapter complete: ') + m.title;
     return 'Full-length practice exam, 80% or higher';
   }
 
   // The line on the certificate after the student's name.
   function statement(m, course){
     var c = COURSES[course] || {};
-    if(m.kind === 'course') return 'completed every lesson in every chapter of ' + c.name;
-    if(m.kind === 'chapter') return 'completed every lesson in the chapter “' + m.title + '” of ' + c.name;
+    if(m.kind === 'course') return 'completed every lesson in every ' + (c.ap ? 'unit' : 'chapter') + ' of ' + c.name;
+    if(m.kind === 'chapter') return 'completed every lesson in the ' + (c.ap ? 'unit' : 'chapter') + ' “' + m.title + '” of ' + c.name;
     return 'scored 80% or higher on a full-length, timed 100-question NREMT-EMT practice exam';
   }
 
   function shareText(m, course){
     var c = COURSES[course] || {};
-    if(m.kind === 'course') return 'I finished every chapter of ' + c.name + ' on LevlPrep.';
-    if(m.kind === 'chapter') return 'I finished the “' + m.title + '” chapter of ' + c.name + ' on LevlPrep.';
+    if(m.kind === 'course') return 'I finished every ' + (c.ap ? 'unit' : 'chapter') + ' of ' + c.name + ' on LevlPrep.';
+    if(m.kind === 'chapter') return 'I finished the “' + m.title + '” ' + (c.ap ? 'unit' : 'chapter') + ' of ' + c.name + ' on LevlPrep.';
     return 'I scored 80% or higher on a full-length NREMT-EMT practice exam on LevlPrep.';
   }
 
@@ -294,7 +336,7 @@
     d.setAttribute('aria-labelledby', 'levlCeleH');
     var line = m.kind === 'exam'
       ? 'You scored 80% or higher on a timed, 100-question practice exam. A practice score, not a prediction, but a real one.'
-      : m.kind === 'course' ? 'You finished every lesson in every chapter.' : 'You finished every lesson in this chapter.';
+      : m.kind === 'course' ? 'You finished every lesson in the course.' : 'You finished every lesson in this ' + ((COURSES[course] || {}).ap ? 'unit' : 'chapter') + '.';
     d.innerHTML =
       '<p class="levl-cele__eyebrow">Milestone</p>' +
       '<h2 id="levlCeleH">' + esc(heading(m, course)) + '</h2>' +
@@ -343,7 +385,7 @@
       : m.kind === 'exam'
         ? (m.best != null ? 'Best full exam so far: ' + m.best + '%' : 'Score 80% or more on a full timed exam')
         : m.kind === 'course'
-          ? m.done + ' of ' + m.total + ' chapters complete'
+          ? m.done + ' of ' + m.total + ((COURSES[course] || {}).ap ? ' units' : ' chapters') + ' complete'
           : m.done + ' of ' + m.total + ' lessons done';
     var name = m.kind === 'course' ? 'Course complete' : m.kind === 'chapter' ? m.title : heading(m, course);
     return '<li class="levl-ms__item' + (m.earned ? ' is-earned' : '') + '">' +
@@ -408,6 +450,8 @@
     check: check,
     celebrate: celebrate,
     renderList: renderList,
+    // An AP® course's path file, given directly (a page that already has it, and the tests).
+    setPath: function(course, json){ PATHS[course] = json; },
     certUrl: certUrl,
     heading: heading,
     statement: statement,

@@ -179,9 +179,20 @@ export function apPageR3(slug, page, ctx) {
   if (slug === 'cram') return r3PageMain(page, { key: k, up: '../', beta: true, pageClass: 'r3-cram', kicker: `${C} &middot; Cram kit`,
     h1: 'Counted back from <span>your exam date.</span>', hand: 'study days, practice exams and rest days',
     cta: { href: '#app', label: 'Set your exam date' }, cta2: { href: 'learn.html', label: 'Read the free notes for every topic' } });
-  if (slug === 'teachers') return r3PageMain(page, { key: k, up: '../', beta: true, pageClass: 'r3-teachers', kicker: `${C} &middot; For teachers`,
-    h1: 'Assign it <span>with a link.</span>', hand: 'no login for students',
-    cta: { href: 'mailto:hello@levlprep.com', label: 'Email hello@levlprep.com' }, cta2: { href: '#h-align', label: 'Jump to the alignment' } });
+  if (slug === 'teachers') {
+    /* Free classes with a join code live at /teach/ (docs/teacher-classes.md); every course's teachers page leads there
+       first, then the plain-link way (consistency audit D2). */
+    const classes = `<section class="xsection" aria-labelledby="h-classes">
+    <h2 id="h-classes">Free classes with a class code</h2>
+    <p>Make a free class on <a href="/teach/">LevlPrep for teachers</a>, share its class code, and students join at <a href="/join.html">levlprep.com/join</a>. You assign practice, review, exams and free response, and see each student's mastery and the questions the class misses. <a href="/teach/?demo=1">See a sample class</a>.</p>
+  </section>
+
+  `;
+    const withClasses = page.replace('<section class="xsection" aria-labelledby="h-assign">', classes + '<section class="xsection" aria-labelledby="h-assign">');
+    return r3PageMain(withClasses, { key: k, up: '../', beta: true, pageClass: 'r3-teachers', kicker: `${C} &middot; For teachers`,
+      h1: 'Assign it <span>with a link.</span>', hand: 'or make a free class with a code',
+      cta: { href: '/teach/', label: 'Make a free class' }, cta2: { href: '#h-assign', label: 'Or assign with links' } });
+  }
   return page;
 }
 export function apFrqItemR3(page, ctx) {

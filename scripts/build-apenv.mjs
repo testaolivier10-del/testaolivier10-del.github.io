@@ -525,7 +525,7 @@ ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', 
   /* ------------------------------------------------------------- learn */
   function learnPage() {
     const depth = '';
-    const title = courseTitle('All units and skills', [LABEL]);
+    const title = courseTitle('Textbook', [LABEL]);
     const desc = clampDesc(`Every unit of the environmental science course in framework order, ${units.length} units and ${topics.length} topics, plus a math chapter for percents, scientific notation, unit conversions, rates and doubling time.`);
     const url = `${SITE}${BASE}learn.html`;
     const jsonld = { '@context': 'https://schema.org', '@graph': [

@@ -36,7 +36,7 @@ test('a published unit builds every page kind, and the course rules pass', () =>
   beta({ ROOT: root, fail: m => fails.push(m), htmlFiles: html });
   assert.deepEqual(fails, []);
   const lesson = readFileSync(join(root, `physics/lessons/${T}.html`), 'utf8');
-  assert.match(lesson, /<title>Displacement, Velocity and Acceleration — AP® Physics 1( Lesson)?( \| LevlPrep)?<\/title>/);
+  assert.match(lesson, /<title>[^<]+ — AP® Physics 1( Lesson)? \| LevlPrep<\/title>/);
   assert.match(lesson, /"isAccessibleForFree": true/, 'Unit 1 lessons are free');
   assert.doesNotMatch(lesson, /noindex/);
   assert.match(lesson, /class="phys-stim"[\s\S]*Diagram/, 'a scene-diagram stimulus is labeled');

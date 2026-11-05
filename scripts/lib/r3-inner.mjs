@@ -12,7 +12,7 @@
    <!-- r3-band:start --> and <!-- r3-band:end -->, written by scripts/build-r3-inner.mjs. */
 
 export const COURSES = {
-  nremt: { label: 'NREMT-EMT', name: 'NREMT-EMT Prep' },
+  nremt: { label: 'NREMT-EMT', name: 'NREMT-EMT' },
   ochem: { label: 'Organic Chemistry', name: 'Organic Chemistry' },
   anp: { label: 'Anatomy &amp; Physiology', name: 'Anatomy &amp; Physiology' },
   apbio: { label: 'AP&reg; Biology', name: 'AP&reg; Biology' },

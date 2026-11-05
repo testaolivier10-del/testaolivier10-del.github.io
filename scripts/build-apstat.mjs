@@ -524,7 +524,7 @@ ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', 
   /* ------------------------------------------------------------- learn */
   function learnPage() {
     const depth = '';
-    const title = courseTitle('All units and skills', [LABEL]);
+    const title = courseTitle('Textbook', [LABEL]);
     const desc = clampDesc(`Every unit of the statistics course in framework order, ${units.length} units and ${topics.length} topics, plus a math chapter for percents, formulas, inequalities in words, combinations and lines.`);
     const url = `${SITE}${BASE}learn.html`;
     const jsonld = { '@context': 'https://schema.org', '@graph': [

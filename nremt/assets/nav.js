@@ -103,7 +103,7 @@
     if(!window.LevlChrome) return;
     window.LevlChrome.render({
       subject: 'nremt',
-      course: 'NREMT-EMT Prep',
+      course: 'NREMT-EMT',
       courseHref: BASE + 'index.html',
       progressHref: BASE + 'dashboard.html',
       items: NAV_ITEMS.map(function(item){

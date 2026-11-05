@@ -27,6 +27,7 @@
      node scripts/build-nremt-glossary.mjs            rewrite
      node scripts/build-nremt-glossary.mjs --check    fail if stale or invalid (CI)
 */
+import { footerLinks } from './lib/footer-links.mjs';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { r3Reading } from './lib/r3-reading.mjs';
 import { join, dirname } from 'node:path';
@@ -147,7 +148,7 @@ ${JSON.stringify(ld).replace(/<\//g, '<\\/')}
 <div class="xshell">
   <footer>
     <p>General terminology. Defer to your course for anything protocol-specific.</p>
-    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    ${footerLinks('../')}
   </footer>
 </div>
 <script src="assets/nav.js" defer></script>

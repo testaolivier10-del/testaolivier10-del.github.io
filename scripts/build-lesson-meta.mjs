@@ -96,7 +96,7 @@ function loadModules() {
    2026-10). The kind stays in the label so a lesson and its notes page never
    share a title; the course name shortens before the topic does. */
 function titleFor(topic) {
-  return courseTitle(decode(topic.title), ['Organic Chemistry', 'Organic Chem', 'OChem'].map((c) => `${c} Lesson`));
+  return courseTitle(decode(topic.title), ['Organic Chemistry Lesson']);
 }
 
 const modules = loadModules();

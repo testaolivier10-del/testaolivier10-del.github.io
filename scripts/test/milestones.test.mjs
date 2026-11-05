@@ -112,6 +112,24 @@ test('A&P: built topics only, read from anp_progress_v1, first sighting recorded
   assert.equal(M.find('anp', 'ch-cells').earned, false);
 });
 
+test('AP®: a unit is complete when every topic with a lesson is finished; units come from the path file', () => {
+  const { b, M } = load();
+  assert.ok(M.COURSES.apbio && M.COURSES.apmacro && M.COURSES.apcalcbc, 'all ten AP courses issue certificates');
+  assert.equal(Object.keys(M.COURSES).length, 13);
+  M.setPath('apstat', { progress: 'apstat_progress_v1', units: [{ id: 'unit-1', label: 'Unit 1', title: 'Data' }, { id: 'skills', label: 'Skills', title: 'Math you need' }],
+    topics: [{ id: 'a', u: 0, l: 'lessons/a.html' }, { id: 'b', u: 0, l: 'lessons/b.html' }, { id: 'c', u: 0 }, { id: 'd', u: 1, l: 'lessons/d.html' }] });
+  b.localStorage.setItem('apstat_progress_v1', JSON.stringify({ v: 1, q: {}, lessons: { a: 100, b: 300 } }));
+  const all = M.list('apstat');
+  const u1 = all.find(m => m.id === 'ch-unit-1');
+  assert.equal(u1.earned, true);
+  assert.equal(u1.title, 'Unit 1: Data');
+  assert.equal(u1.date, 300);
+  assert.equal(all.find(m => m.id === 'ch-skills').title, 'Math you need');
+  assert.equal(all[0].earned, false);
+  assert.match(M.statement(u1, 'apstat'), /every lesson in the unit “Unit 1: Data” of AP® Statistics/);
+  assert.equal(M.heading(u1, 'apstat'), 'Unit complete: Unit 1: Data');
+});
+
 test('ochem: a finished run counts and survives a redo; a notes-only topic holds its chapter open', () => {
   const { b, M } = load();
   b.window.OchemCurriculum = {

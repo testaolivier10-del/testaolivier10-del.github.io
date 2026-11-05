@@ -31,7 +31,10 @@ function build(c) {
     .replace(/(<meta property="og:title" content=")[^"]*"/, `$1${title}"`)
     .replace(/(<meta name="description" content=")[^"]*"/, `$1${desc}"`)
     .replace(/(<meta property="og:description" content=")[^"]*"/, `$1${desc}"`)
-    .replace(/review\.html"/g, 'path.html"');
+    .replace(/review\.html"/g, 'path.html"')
+    // The breadcrumb (JSON-LD and the visible NREMT/ochem trail) ends at this page, not Review (audit 2026-11, D12).
+    .replace(/("name": ")Review(",\s*"item": "[^"]*\/path\.html")/, '$1Your study path$2')
+    .replace(/<span aria-current="page">Review<\/span>/, '<span aria-current="page">Your study path</span>');
   if (!/name="robots"/.test(html)) html = html.replace('</title>', `</title>\n${NOINDEX}`);
   // Page scripts: keep the chrome and progress ones, drop the review queue's.
   html = html.replace(/<script\b([^>]*)\bsrc="([^"]+)"([^>]*)><\/script>\n?/g, (m, a, s) => (KEEP.test(s) ? m : ''));

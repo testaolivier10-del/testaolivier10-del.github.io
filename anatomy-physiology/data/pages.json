@@ -26,7 +26,7 @@
       "premium": "exams",
       "section": "exams",
       "h1": "Exams",
-      "title": "Exams and TEAS practice",
+      "title": "Exams",
       "desc": "Timed anatomy and physiology exams: unit quizzes, system exams, A&P I and II cumulative finals and TEAS A&P practice, each ending with a full review.",
       "script": "apps/exams.js",
       "css": "apps/apps.css"
@@ -63,7 +63,7 @@
       "slug": "tools",
       "section": "tools",
       "h1": "Tools",
-      "title": "Study tools",
+      "title": "Tools",
       "desc": "Interactive anatomy and physiology tools: lab practical, predict the change, feedback loop builder, pathway tracer, graph reader, calculators and word roots.",
       "script": "apps/tools-hub.js",
       "css": "apps/tools-hub.css"

@@ -43,7 +43,7 @@ test('a published unit builds every page kind, math rendered and graphs drawn, a
   beta({ ROOT: root, fail: m => fails.push(m), htmlFiles: html });
   assert.deepEqual(fails, []);
   const lesson = readFileSync(join(root, `${D}/lessons/${T}.html`), 'utf8');
-  assert.match(lesson, /<title>Changes in the AD-AS Model.* — AP® Macroeconomics( Lesson)?( \| LevlPrep)?<\/title>/);
+  assert.match(lesson, /<title>[^<]+ — AP® Macroeconomics( Lesson)? \| LevlPrep<\/title>/);
   assert.doesNotMatch(lesson, /"isAccessibleForFree": true/, 'Unit 3 lessons are Premium');
   assert.doesNotMatch(lesson, /noindex/);
   assert.match(lesson, /<body class="mac"/);

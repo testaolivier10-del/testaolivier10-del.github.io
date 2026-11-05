@@ -51,6 +51,7 @@
   14. AP® Calculus BC's the same way (<!-- hub-cbc:start/end -->,
       <!-- nf-cbc:start/end -->, calculus-bc/manifest.json), hidden until its
       launch (docs/apcalcbc-spec.md). */
+import { footerLinks } from './lib/footer-links.mjs';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, ORIGIN, FREE_SENTENCE, premiumData, counts, fmt, money, foundingPrice, longDate, courseOffers, guaranteeText, compareTable, SURE, dayAfterUS } from './lib/premium-data.mjs';
@@ -423,7 +424,7 @@ ${ORDER.map(courseSection).join('\n')}
 <div class="xshell narrow">
   <footer>
 ${MARK ? `    ${TM_HTML}
-` : ''}    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="teach/">Teachers</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+` : ''}    ${footerLinks('')}
   </footer>
 </div>
 
@@ -494,38 +495,16 @@ put('premium.html', premiumPage());
 
 /* ---- 2. the hub ------------------------------------------------------------ */
 
-/* Two plan cards side by side (polish 2026-10-17, A6: one thin centred
-   paragraph left a wide card empty). Both lists are the clauses of
-   FREE_SENTENCE, so the cards cannot drift from what every other page says. */
 function hubPricing() {
   const low = Math.min(...ORDER.map((k) => lowest(COURSES[k]).price));
-  const cap = (t) => t[0].toUpperCase() + t.slice(1);
-  const [notes, lessons, adds] = FREE_SENTENCE.replace(/\.$/, '').split('; ');
-  if (!adds || !/^Premium adds /.test(adds)) throw new Error('build-pricing: FREE_SENTENCE no longer reads "…; …; Premium adds …"');
-  const premium = adds.replace(/^Premium adds /, '').split(/, | and /);
-  const li = (t) => `<li>${esc(cap(t))}</li>`;
-  /* Free and Premium side by side (site redesign 2026-10): what is free first,
-     then the price with the risk-reversal line right under its button, where a
-     guarantee line has been measured to help most. */
+  /* Free and Premium in one line (consistency audit 2026-11, D9: the homepage told the free/Premium story twice
+     and premium.html, About and Account told it again). The full story lives on premium.html; this is the one
+     short mention the homepage keeps, with the founding price while it lasts. */
   const amount = founding
-    ? `From ${money(low)}<span data-founding-until="${founding.until}"> (${money(foundingPrice(low))} founding price until ${longDate(founding.until)})</span>`
-    : `From ${money(low)}`;
+    ? `from ${money(low)}<span data-founding-until="${founding.until}"> (${money(foundingPrice(low))} founding price until ${longDate(founding.until)})</span>`
+    : `from ${money(low)}`;
   return `  <section class="home-deal" aria-label="Free and Premium">
-    <div class="plan">
-      <span class="pill">Free</span>
-      <h3>Start now, keep it free</h3>
-      <p class="plan__note">Start in any course, with no card.</p>
-      <ul>${li(notes)}${li(lessons)}<li>Your level, streak and weak topics</li><li>No ads</li></ul>
-      <a class="btn-ghost" href="#subjects">Choose a course</a>
-    </div>
-    <div class="plan plan--premium">
-      <span class="pill">Premium</span>
-      <p class="plan__amt">${amount}</p>
-      <p class="plan__note">One-time pass per course. No subscription.</p>
-      <ul>${premium.map(li).join('')}</ul>
-      <a class="btn-gold" href="premium.html">See prices for your course</a>
-      <p class="plan__sure">Never renews. Full refund within 7 days.</p>
-    </div>
+    <p class="home-deal__line"><span class="pill">Free and Premium</span> Notes are free forever in every course. Premium is a one-time pass per course, ${amount}, with no subscription. <a href="premium.html">What Premium adds, and every price</a></p>
   </section>
 <script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});})();</script>`;
 }
@@ -569,7 +548,8 @@ function hubFaq() {
   const shown = FAQ.map(([q, a], i) => [esc(q), `${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}`]);
   // Two columns, each its own list so opening one answer never leaves a gap beside it:
   // price and terms on the left, how it is made on the right.
-  const left = [shown[0], shown[1], shown[2]], right = HOME_ABOUT_QA;
+  /* "Is LevlPrep free?" and "How much does Premium cost?" are answered once, on premium.html (audit 2026-11, D9). */
+  const left = [shown[2], HOME_ABOUT_QA[0]], right = HOME_ABOUT_QA.slice(1);
   return `  <section class="home-faq" aria-labelledby="home-faq-h">
     <h2 id="home-faq-h">Questions</h2>
     <div class="hub-faq">
@@ -602,7 +582,8 @@ function hubLd() {
       { '@type': 'WebSite', '@id': `${ORIGIN}/#website`, name: 'LevlPrep', url: `${ORIGIN}/`, publisher: { '@id': `${ORIGIN}/#org` }, inLanguage: 'en' },
       {
         '@type': 'FAQPage', '@id': `${ORIGIN}/#faq`,
-        mainEntity: FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+        // The questions the page shows, as it shows them (links dropped).
+        mainEntity: [FAQ[2], ...HOME_ABOUT_QA].map(([q, a]) => ({ '@type': 'Question', name: q.replace(/&rsquo;/g, '’'), acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '').replace(/&rsquo;/g, '’') } })),
       },
       {
         '@type': 'ItemList', name: 'Courses and exam prep on LevlPrep',
@@ -743,7 +724,7 @@ function hubPcalcCard() {
 /* Manifests never carry the AP® mark (docs/apbio-spec.md, "Trademark": no
    "AP" in meta tags or ad copy, and an install name is both): AP® Biology's
    app is "Biology". */
-const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus', apstat: 'Statistics', apenv: 'Environmental Science', apcalcbc: 'Calculus BC', appsych: 'Psychology', apprecalc: 'Precalculus', apmacro: 'Macroeconomics' };
+const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus AB', apstat: 'Statistics', apenv: 'Environmental Science', apcalcbc: 'Calculus BC', appsych: 'Psychology', apprecalc: 'Precalculus', apmacro: 'Macroeconomics' };
 const MANIFESTS = {
   'manifest.json': {
     name: 'LevlPrep — NREMT-EMT, Organic Chemistry and A&P study tools',

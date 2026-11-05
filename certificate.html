@@ -14,7 +14,7 @@
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://levlprep.com/certificate.html">
 <meta property="og:title" content="Certificate of completion | LevlPrep">
-<meta property="og:description" content="Someone finished something on LevlPrep: courses in NREMT-EMT prep, organic chemistry, and anatomy and physiology, free to start.">
+<meta property="og:description" content="Someone finished a course milestone on LevlPrep: thirteen courses, from NREMT-EMT prep and organic chemistry to ten AP exam subjects, free to start.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://levlprep.com/certificate.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -24,11 +24,13 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/site-pages.css">
 <link rel="stylesheet" href="assets/milestones.css">
 <style>
   /* The certificate itself. Themed on screen like everything else; printed
      and saved as an image, it is always paper. */
-  .cert-tools{background:var(--white);border-radius:var(--radius);box-shadow:var(--lift-sm);padding:18px 20px;margin:6px 0 22px;}
+  .cert-wrap{max-width:900px;margin:0 auto 40px;}
+  .cert-tools{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin:0 0 22px;}
   .cert-eyebrow{font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin:0 0 10px;}
   .cert-label{display:block;font:800 14px var(--font-ui);color:var(--ink);margin-bottom:6px;}
   .cert-input{width:100%;max-width:420px;font:600 16px var(--font-ui);padding:10px 12px;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--paper);color:var(--ink);box-sizing:border-box;}
@@ -48,8 +50,11 @@
   .cert__what{font-size:clamp(16px,2.4vw,20px);font-weight:700;margin:0 auto 14px;max-width:48ch;line-height:1.45;}
   .cert__date{font:800 15px var(--font-ui);color:var(--accent-text);margin:0 0 26px;}
   .cert__foot{font:700 12px var(--font-ui);color:var(--muted);max-width:70ch;margin:0 auto;line-height:1.5;}
-  .cert-course,.cert-elsewhere{background:var(--white);border-radius:var(--radius);box-shadow:var(--lift-sm);padding:20px 22px;margin:0 0 16px;}
-  .cert-course h2,.cert-elsewhere h2{font-size:19px;font-weight:900;margin:0 0 6px;}
+  .cert-course,.cert-elsewhere{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin:0 0 16px;}
+  .cert-course h2,.cert-elsewhere h2{font:900 21px var(--display);letter-spacing:-.02em;margin:0 0 6px;}
+  .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:0 0 30px;}
+  .cert-grid .cert-course{margin:0;display:flex;flex-direction:column;align-items:flex-start;}
+  .cert-grid .cert-course p{flex:1;}
   .cert-course p,.cert-elsewhere p{font-weight:600;color:var(--muted);line-height:1.6;max-width:66ch;margin:0 0 12px;}
   .cert-elsewhere p:last-child{margin-bottom:0;}
 
@@ -61,37 +66,34 @@
     #site-header,.skip-link,.cert-tools,footer,.levl-toast,#levlAnnouncer{display:none !important;}
     .xshell{padding:0 !important;max-width:none !important;}
     .cert{box-shadow:none;padding:0;margin:0;break-inside:avoid;}
+    .cert-wrap{max-width:none;margin:0;}
+    .sp-hero,body.sp-page{background:#fff !important;background-image:none !important;}
+    .sp-hero{display:none !important;}
     /* Fills the page: 180mm fits inside both US Letter and A4 landscape. */
     .cert__frame{-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:44px 56px;min-height:180mm;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;}
     .cert__name.is-empty{color:transparent;}
   }
 </style>
 </head>
-<body>
-<!-- Like account.html, this page draws its own header instead of calling
-     LevlChrome.render (there is no course to put in it), so it carries its
-     own skip link too. -->
+<body class="sp-page">
+<!-- Like privacy.html, this page has no course: site-chrome.js draws the site header (data-site-header), and the
+     page carries its own skip link. -->
 <a class="skip-link" href="#main">Skip to content</a>
 <header id="site-header" data-site-header>
   <div class="site-header__inner">
-    <a class="site-header__brand" href="/">
-      <span class="brand-mark" aria-hidden="true">+</span> LevlPrep
-    </a>
-    <div class="nav-right">
-      <span id="accountSlot"></span>
-      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="ti-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg><svg class="ti-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
-    </div>
+    <span class="site-header__brand-row"><a class="site-header__brand" href="/" aria-label="LevlPrep home"><span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span></a></span>
   </div>
 </header>
 
-<div class="xshell narrow" id="main" role="main" data-skip-target tabindex="-1">
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
   <div id="certApp">
-    <noscript><div class="hero"><div class="eyebrow">Certificate of completion</div><h1>A LevlPrep milestone</h1><p class="lede">A certificate is drawn in your browser from the progress saved there, so it needs JavaScript. The courses are <a href="nremt/">NREMT-EMT prep</a>, <a href="ochem/">Organic Chemistry</a> and <a href="anatomy-physiology/">Anatomy &amp; Physiology</a>.</p></div></noscript>
+    <noscript><div class="sp-hero sp-hero--text"><div><span class="sp-pill">Certificate of completion</span><h1>A LevlPrep <span>milestone.</span></h1><p class="lede">A certificate is drawn in your browser from the progress saved there, so it needs JavaScript. Every course issues them: finish every lesson in a unit or chapter, or (NREMT) score 80% on a full practice exam. <a href="/#subjects">See the courses</a>.</p></div></div></noscript>
   </div>
 </div>
-<div class="xshell narrow">
+<div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a></p>
+    <p>AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="teach/">Teachers</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 
@@ -106,17 +108,5 @@
 <script src="assets/share.js" defer></script>
 <script src="assets/milestones.js" defer></script>
 <script src="assets/certificate.js" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  var t = document.getElementById('themeToggle');
-  if(!t) return;
-  t.addEventListener('click', function(){
-    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    try{ localStorage.setItem('nremt_theme', dark ? 'light' : 'dark'); }catch(e){}
-    if(dark) document.documentElement.removeAttribute('data-theme');
-    else document.documentElement.setAttribute('data-theme','dark');
-  });
-});
-</script>
 </body>
 </html>

@@ -30,7 +30,7 @@
     { key: 'apbio', searchLabel: 'Biology', name: 'AP® Biology', dir: 'bio', aliases: ['bio', 'biology'], status: 'live' },
     { key: 'apchem', searchLabel: 'Chemistry', name: 'AP® Chemistry', dir: 'chem', aliases: ['chem', 'chemistry'], status: 'live' },
     { key: 'apphys', searchLabel: 'Physics', name: 'AP® Physics 1', dir: 'physics', aliases: ['physics', 'phys', 'physics-1'], status: 'live' },
-    { key: 'apcalc', searchLabel: 'Calculus', name: 'AP® Calculus AB', dir: 'calculus', aliases: ['calculus', 'calc', 'calculus-ab'], status: 'live' },
+    { key: 'apcalc', searchLabel: 'Calculus AB', name: 'AP® Calculus AB', dir: 'calculus', aliases: ['calculus', 'calc', 'calculus-ab'], status: 'live' },
     { key: 'apstat', searchLabel: 'Statistics', name: 'AP® Statistics', dir: 'statistics', aliases: ['statistics', 'stats', 'stat'], status: 'live' },
     { key: 'apenv', searchLabel: 'Environmental Science', name: 'AP® Environmental Science', dir: 'environmental-science', aliases: ['environmental-science', 'environmental', 'envsci', 'apes'], status: 'live' },
     { key: 'appsych', searchLabel: 'Psychology', name: 'AP® Psychology', dir: 'psychology', aliases: ['psychology', 'psych', 'psy'], status: 'live' },

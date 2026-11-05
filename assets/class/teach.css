@@ -35,7 +35,9 @@
 :root[data-theme="dark"]{--hand:#F2C14E}
 .d5 a.lvt-arow,.d5 a.lvt-srow{color:var(--ink)}
 .d5 a.lvt-arow b{color:var(--ink)}
-.r3 .band.tm-band-home .hwrap{padding-bottom:64px}
+.r3 .band.tm-band-home .hwrap{padding-bottom:120px}
+/* The demo button is the only way to see a class without signing in, so it stays on phones (r3.css hides hero ghosts there). */
+.r3 .band.tm-band-home .hero-ctas .btn-ghost{display:inline-block}
 .tm-cnav{display:flex}
 .tm-overlay{position:fixed;inset:0;z-index:100;background:rgba(11,26,51,.92);display:grid;place-items:center;text-align:center;color:#fff;padding:24px}
 .tm-overlay .v{font:600 clamp(64px,14vw,180px) var(--font-mono);letter-spacing:.12em;margin:0}
