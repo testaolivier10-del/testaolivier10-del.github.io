@@ -1,0 +1,46 @@
+/* The class pages outside the teacher app: family report, LMS setup, quote, privacy for districts, LMS landing
+   (teach/report.html, lms.html, quote.html, privacy-agreement.html, lti.html). On top of site-pages.css and class.css. */
+.lvp-wide{max-width:860px}
+.lvp-prose h2{margin:34px 0 10px}
+.lvp-prose p,.lvp-prose li{font-size:15.5px;line-height:1.65;color:var(--muted);font-weight:600;max-width:70ch}
+.lvp-prose b,.lvp-prose strong{color:var(--ink)}
+.lvp-prose ul,.lvp-prose ol{padding-left:22px}
+.lvp-prose li{margin-bottom:7px}
+.lvp-prose code{word-break:break-all}
+.lvp-note{margin-bottom:18px}
+.lvp-warn{border-left:4px solid #B4412F;margin-bottom:16px}
+.lvp-seg{border:0;padding:0;margin:8px 0 14px;display:grid;gap:6px}
+.lvp-span{grid-column:1/-1}
+.lvp-dpa h3{margin:22px 0 6px}
+.lvp-sig{border:1px dashed var(--line);border-radius:12px;padding:12px 14px}
+.lvp-unsigned{background:var(--surface2)}
+.rp-tablewrap{overflow-x:auto;margin:10px 0}
+.rp-table{border-collapse:collapse;width:100%;font-size:14.5px}
+.rp-table th,.rp-table td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--line)}
+.rp-table th{font-weight:800;color:var(--ink)}
+.rp-table code{font-size:13px;word-break:break-all}
+.lvp-data td:first-child{min-width:150px}
+/* the family report */
+.rp-doc{background:var(--surface,#fff);border:1px solid var(--line);border-radius:16px;padding:24px;margin:24px 0}
+.rp-head .lv-h1{margin:6px 0 4px}
+.rp-mut{color:var(--muted);font-size:14px}
+.rp-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.rp-tiles div{border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.rp-tiles b{display:block;font-size:24px;color:var(--ink)}
+.rp-tiles span{color:var(--muted);font-size:13px}
+.rp-units{list-style:none;padding:0;margin:8px 0;display:grid;gap:8px}
+.rp-units li{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) 48px;gap:10px;align-items:center}
+.rp-bar{height:10px;border-radius:99px;background:var(--surface2);overflow:hidden}
+.rp-bar i{display:block;height:100%;background:var(--accent)}
+.rp-st{font-weight:800}
+.rp-done{color:var(--accent-text,var(--accent))}
+.rp-missing{color:#B4412F}
+.rp-comment{margin:6px 0 0;font-style:italic;color:var(--muted)}
+.rp-foot{margin-top:18px}
+@media print{
+  #site-header,footer,.skip-link,.rp-noprint,.lvp-noprint,.xshell>footer{display:none !important}
+  body{background:#fff}
+  .rp-doc{border:0;padding:0;margin:0}
+  .rp-bar i{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .lvp-dpa .lv-in{border:0;border-bottom:1px solid #999;border-radius:0}
+}
