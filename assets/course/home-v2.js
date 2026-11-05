@@ -61,10 +61,8 @@
     var until = P.FOUNDING && P.FOUNDING.until;
     var note = (until ? '<span data-founding-until="' + until + '">Founding price, then $' + low.price + ' · </span>' : '') + term;
     d.classList.add('deal-v2');
-    /* Condensed (owner, 2026-11-05): only the rows where Premium adds something, at most five, with the price and
-       the button in the column heads. Everything else is one click away on the pricing page. */
-    var diff = c.rows.filter(function(r){ return r[1] !== r[2]; }).slice(0, 5);
-    var same = c.rows.filter(function(r){ return r[1] === 'yes' && r[2] === 'yes'; }).map(function(r){ return r[0]; });
+    /* Compact (owner, 2026-11-05): every row stays, just smaller, with the price and the button in the column heads. */
+    var diff = c.rows, same = [];
     d.innerHTML = '<h2 class="deal-h">Free or <span>Premium</span></h2>' +
       '<div class="deal-t" role="table" aria-label="Free and Premium in ' + esc(c.name) + '">' +
         '<div class="r hd" role="row"><span class="w" role="columnheader"></span>' +
