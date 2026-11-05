@@ -26,7 +26,8 @@ const PRE_BC = PRE_MAC.replaceAll(", 'apprecalc', 'apcalcbc')", ", 'apprecalc')"
 
 const WORKER_ONLY = ['unsubscribe_email_reminder', 'premium_add_pass', 'premium_refund_order', 'premium_rechain', 'count_premium_paid',
   'frq_grade_take', 'frq_grade_give_back', 'count_frq_grade', 'referral_email_key', 'referral_welcome', 'referral_reward',
-  'class_mail_take', 'class_member_emails', 'class_report_get', 'class_email_stop', 'class_email_stop_addr', 'class_purge'];
+  'class_mail_take', 'class_member_emails', 'class_report_get', 'class_email_stop', 'class_email_stop_addr', 'class_purge',
+  'class_google_matches', 'class_announce_take'];
 
 function browserRpcs() {
   const names = new Set();
@@ -444,4 +445,29 @@ test('2026-11e-classes-courses.sql lets classes and teacher questions be for nre
   for (const [name, body] of [...fns, ...schema]) assert.doesNotMatch(body, /apmacro\)\$'/, `${name}: no class course check stops at apmacro`);
   assert.match(fns.get('teach_save_question'), /p_data->>'topic' !~ '\^\[a-z0-9\]/, 'keeps 11c\'s id-only topic and unit check');
   assert.match(mig, /NOT APPLIED/);
+});
+
+test('2026-11f-classes-google-ids.sql: Classroom matches by Google sign-in id, Worker only, no emails, matches schema.sql', () => {
+  const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
+  assert.ok(files.indexOf('2026-11f-classes-google-ids.sql') > files.indexOf('2026-11d-classes-integrations.sql'), 'runs after 2026-11d');
+  const mig = readFileSync('scripts/sql/migrations/2026-11f-classes-google-ids.sql', 'utf8'), fns = blocks(mig), schema = blocks(SCHEMA);
+  assert.match(mig, /NOT APPLIED/);
+  for (const f of ['class_google_matches', 'class_announce_take']) {
+    assert.ok(fns.has(f), `${f} is defined`);
+    assert.equal(fns.get(f).trim(), schema.get(f).trim(), `${f} matches schema.sql`);
+    assert.match(fns.get(f), /security definer/);
+    assert.match(mig, new RegExp(`revoke execute on function public\\.${f}\\([^)]*\\) from public, anon, authenticated;`));
+    assert.match(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to service_role;`));
+    assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`), `${f} stays Worker only`);
+  }
+  const m = fns.get('class_google_matches');
+  assert.match(m, /auth\.identities/);
+  assert.match(m, /i\.provider = 'google'/);
+  assert.match(m, /i\.provider_id = any \(p_users\)/);
+  assert.match(m, /identity_data->>'sub'/);
+  assert.doesNotMatch(m, /email/, 'never returns an address');
+  assert.match(fns.get('class_announce_take'), /interval '10 minutes'/);
+  assert.ok(mig.includes('alter table public.class_ext_links add column if not exists announced_at timestamptz;'));
+  assert.ok(SCHEMA.includes('alter table public.class_ext_links add column if not exists announced_at timestamptz;'));
+  assert.doesNotMatch(mig, /course\s+(?:not\s+)?in\s*\(/, 'no course list after the last course migration');
 });

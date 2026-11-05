@@ -8,7 +8,7 @@ import { classFrqAi, classFrqAiOpen } from './class-frq.js';
 import { clsUser, clsReady, clsMailReady } from './class-common.js';
 import { isOwnerEmail } from './umami.js';
 import { sb } from './store.js';
-import { gcAllowed, gcStart, gcCallback, gcFinish, gcStatus, gcDisconnect, gcCourses, gcLink, gcRoster, gcInvite, gcPost, gcGrades } from './class-google.js';
+import { gcAllowed, gcStart, gcCallback, gcFinish, gcStatus, gcDisconnect, gcCourses, gcLink, gcRoster, gcAnnounce, gcPost, gcGrades } from './class-google.js';
 import { ltiActivate, ltiAllowed, ltiLogin, ltiLaunch, ltiReturn, ltiRegister, ltiMine, ltiDeepLink, ltiBind, ltiGrades, ltiPublicJwk, ltiCanvasConfig } from './class-lti.js';
 
 /* The hourly housekeeping (index.js cron): the 30-day mail log, expired report links, used launch nonces. */
@@ -51,7 +51,7 @@ const CLASS_API = {
   '/class/google/courses': gcCourses,
   '/class/google/link': gcLink,
   '/class/google/roster': gcRoster,
-  '/class/google/invite': gcInvite,
+  '/class/google/announce': gcAnnounce,
   '/class/google/post': gcPost,
   '/class/google/grades': gcGrades,
   '/lti/platforms': ltiRegister,

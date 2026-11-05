@@ -31,8 +31,9 @@ path card).
 - Database: `scripts/sql/migrations/2026-11b-classes.sql` (v1), `2026-11c-classes-v2.sql` (A1: co-teachers,
   announcements, mastery, teacher questions, submissions, live mode, departments, copy class),
   `2026-11d-classes-integrations.sql` (C: mail log, report links, Google and LTI links, quotes, FRQ scoring, purge),
-  `2026-11e-classes-courses.sql` (B: course check accepts `nremt|ochem|anp`). `schema.sql` carries all four, in that
-  order, word for word apart from comments. Tables are reached only through functions; `teach_*` for teachers,
+  `2026-11e-classes-courses.sql` (B: course check accepts `nremt|ochem|anp`), `2026-11f-classes-google-ids.sql`
+  (Google Classroom without Classroom emails: `class_google_matches`, `class_announce_take`,
+  `class_ext_links.announced_at`). `schema.sql` carries all five, in that order, word for word apart from comments. Tables are reached only through functions; `teach_*` for teachers,
   `class_*` for students. Codes are 8 characters from pgcrypto; code lookups capped at 30 an hour per account;
   summaries at 120 KB.
 - Model: `assets/class/class-model.js`: `COURSES` (flags `ap`, `frq`, `unitExams`, `unitWord`, `need`, `bank`), one
@@ -142,7 +143,7 @@ Integrations (C), all behind the Worker and flags:
 | --- | --- | --- |
 | Reminder emails | Teacher ticks missing / not started students and presses Send; Worker checks ownership, looks up addresses (teacher never sees them), plain text through Resend. 1 per student per 20 h, 200 a day per teacher, 60 per request; one-click stop link. | `worker/src/class-mail.js`, `class_mail_take` |
 | Family progress report | Printable page (`?c=&s=`) and an expiring share link (1 to 30 days, SHA-256 stored, dies with the membership). No parent emails. | `teach/report.html`, `class_report_get` |
-| Google Classroom | `CLASS_GOOGLE`. OAuth (refresh token AES-GCM under `CLASS_SECRET`), link a course, roster match by email (stores Classroom ids, not emails), invite by email (once a week per address, stop link), post coursework, grade passback on Send. | `worker/src/class-google.js` |
+| Google Classroom | `CLASS_GOOGLE` (`"on"` in `wrangler.toml`). Non-sensitive scopes only, no app verification: `openid`, `email`, `classroom.courses.readonly`, `classroom.rosters.readonly`, `classroom.coursework.students`, `classroom.announcements` (no `classroom.profile.emails`, so Classroom gives no addresses). OAuth (refresh token AES-GCM under `CLASS_SECRET`), link a course, roster match by Google account id: a member matches when their Supabase `auth.identities` row (provider `google`) has `provider_id` (or `identity_data->>'sub'`) equal to the Classroom `userId` (`class_google_matches`, service role only; nothing about identities or emails reaches the browser). Matches are stored in `class_ext_members`; unmatched roster students are listed by name with a note that they join with the class code (no matching by name). "Post the join link in Classroom" creates a Classroom announcement (class name, `join.html?c=<code>`, one line of instructions), owner only, once per 10 minutes per class (`class_announce_take`), with a "Copy join link" fallback. No invite emails (the `invite` mail kind and its stop rows are left in the tables, no longer written). Post coursework; grade passback on Send, matched students only. | `worker/src/class-google.js` |
 | Canvas / Schoology (LTI 1.3) | `CLASS_LTI`. OIDC login and launch (RS256, single-use nonce), deep linking, AGS score passback, Canvas JSON config, JWKS. Registrations start `pending`; the owner activates each from an emailed 14-day `/lti/activate` link. Not yet tried against a real Canvas or Schoology. | `worker/src/class-lti.js`, `teach/lms.html`, `teach/lti.html` |
 | Quote / purchase order | Signed-in form, emailed to `CLASS_SALES_TO` (default hello@), receipt to the account. Polar only invoices paid orders, so POs are answered by email. | `teach/quote.html` |
 | Privacy for districts + DPA | Data table, FERPA, COPPA (13+), retention, deletion, subprocessors; fillable DPA in the SDPC NDPA structure, marked unsigned. | `teach/privacy-agreement.html` |
@@ -168,6 +169,12 @@ the owner.
   cards drawn on every assignment page. Student card on AP® Bio and Chem homes: `la=` links; on NREMT, ochem and
   A&P homes: plain links equal to `LevlClassModel.href`.
 - Earlier per-stream reviews (no XSS or ownership holes; fixes in) are in the git history of the four branches.
+- Classroom without emails (branch `classroom-no-emails`, 2026-11-04): `worker-classes` covers the exact scope list,
+  matching by Google id (`provider_id` and `sub`; a same-named student is not matched), no email lookup, the
+  announcement text and its 10-minute limit (given back when Google refuses), owner only; `sql-migration` checks 11f
+  against `schema.sql` and its service-role grants. PGlite: `classes-integrations.mjs` 82 pass (11f grants, matches,
+  announce limit); 11b -> 11f applies twice cleanly and `schema.sql` alone gives the same two functions and
+  `class_ext_links` columns.
 
 ## Gaps (said in the UI or left out)
 
@@ -178,6 +185,9 @@ the owner.
 - NREMT practice links drill a whole area; ochem has per-question history only from this change on; NREMT and ochem
   picks, `ochem_items_v1` and the NREMT map are per device; no skills report or score band outside AP®.
 - Class Premium checkout. LTI not yet tried on a real Canvas or Schoology.
+- Google Classroom matches only students who signed in to LevlPrep with Google (the account in the roster); a
+  student who signed in with an emailed code shows as not matched and gets no Classroom grade. Not yet tried against
+  a real Classroom course.
 
 ## Owner steps, in order
 
@@ -185,18 +195,19 @@ the owner.
    secrets or flags set, every new Worker feature stays off, so this is safe. Do step 2 the same day: until then
    v2 teacher pages call functions that do not exist yet (they show errors, nothing breaks for students).
 2. Supabase SQL editor, in this order: `scripts/sql/migrations/2026-11c-classes-v2.sql`, then
-   `2026-11d-classes-integrations.sql`, then `2026-11e-classes-courses.sql` (2026-11b is already applied). Each is
+   `2026-11d-classes-integrations.sql`, then `2026-11e-classes-courses.sql`, then `2026-11f-classes-google-ids.sql`
+   (2026-11b is already applied). Each is
    idempotent; rerunning is safe.
 3. Worker secrets and flags (Cloudflare dashboard, Worker, Settings, Variables; or `wrangler secret put`):
    - `CLASS_SECRET` = `openssl rand -base64 48`. Reminders, report links and stop links need it plus the existing
      `RESEND_API_KEY` / `REMINDER_FROM`.
-   - Google Classroom: signed in as testaolivier10@gmail.com, create Google Cloud project `levlprep-classroom`;
-     enable the Google Classroom API; OAuth consent screen (External) with the scopes in `GC_SCOPES`
-     (classroom.courses.readonly, classroom.rosters.readonly, classroom.profile.emails,
-     classroom.coursework.students, openid, email); a Web OAuth client with redirect URI
-     `https://api.levlprep.com/class/google/callback`. Secrets `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`; variable
-     `CLASS_GOOGLE = "owner"` to try it on your own account, then submit the app for Google verification
-     (sensitive scopes) and set `"on"` once approved.
+   - Google Classroom: signed in as testaolivier10@gmail.com, Google Cloud project `levlprep-classroom`; Google
+     Classroom API enabled; OAuth consent screen (External) with exactly the scopes in `GC_SCOPES`: openid, email,
+     classroom.courses.readonly, classroom.rosters.readonly, classroom.coursework.students,
+     classroom.announcements (all non-sensitive, so no Google verification; done 2026-11-04). A Web OAuth client
+     with redirect URI `https://api.levlprep.com/class/google/callback`. Secrets `GOOGLE_CLIENT_ID`,
+     `GOOGLE_CLIENT_SECRET`. `CLASS_GOOGLE = "on"` is in `wrangler.toml`; it stays off until the secrets and
+     `CLASS_SECRET` are set. Run `2026-11f-classes-google-ids.sql` (step 2) before teachers check a roster.
    - Optional: `CLASS_SALES_TO` if quotes should go somewhere other than hello@levlprep.com.
    - The AI first pass on FRQ scoring needs nothing extra: it follows `FRQ_GRADER` and the eval results.
 4. LTI (Canvas / Schoology): `node scripts/lti-keygen.mjs` -> secret `LTI_PRIVATE_KEY`; `CLASS_LTI = "owner"`;
