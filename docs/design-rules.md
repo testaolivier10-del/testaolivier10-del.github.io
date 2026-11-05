@@ -159,6 +159,14 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   Free response), and an "All courses" switch.
 - Agreed (step 13): tapping something locked opens a small sheet: what is locked, what one pass gives, the price,
   Unlock, Compare Free and Premium, Keep reading the free notes. No full page paywall, no lock cards on the page.
+- Agreed (step 14): the homepage top is slim: "Hard subjects, made clear.", one line (13 courses, free to start,
+  practice that explains every answer) and "By Olivier Testa, EMT"; no path preview card or handwritten line, so the
+  courses start on the first screen.
+- Agreed (step 14): the 13 courses sit in five groups with smaller cover cards: EMT and health (NREMT, A&P), college
+  chemistry (Organic Chemistry), AP® sciences, AP® math, AP® social sciences.
+- Agreed (step 14): logged in students see a Continue card (last course, next step) above the catalog.
+- Agreed (step 14): kept below the courses: Free and Premium, Teach a class, Questions, footer, the card for TikTok
+  and Instagram visitors.
 - Agreed: every design question is shown as pictures of each option before the owner chooses, never as words only.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
   "More options" in forms) rather than stacking every section.
@@ -228,3 +236,5 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   Options page: https://claude.ai/artifact/RFvGeTfv8dKTJPyE6BYLM4
 - 2026-11-05: step 13 decided: one grouped account menu (A), corner assistant (A), search over the page (S1), small
   Premium sheet (P1). Options page: https://claude.ai/artifact/MmLpYCz1vgsZDSiWZJMbr9
+- 2026-11-05: step 14 decided: slim top (T1), grouped smaller cards (G1), Continue card (B1).
+  Options page: https://claude.ai/artifact/8Zf1w4n7SoDg3eqyZbiLEC
