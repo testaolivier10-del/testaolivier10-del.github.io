@@ -175,7 +175,18 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   Dashboard or Stats); the reading section is called "Learn" (notes, lessons and videos).
 - Agreed (step 5): the main button is gold, and there is one per screen (the "do this next" action); other
   buttons are outlined.
-- Proposed: teacher class view with 4 tabs (Class, Assignments, Students, Settings) plus "+ Assign".
+- Agreed (step 15): the teacher side has four tabs like Google Classroom: Class, Assignments, Students, Grades, with
+  Settings as a gear and "+ Assign" always in the header; the course name spot shows "Period 3 · AP® Biology ▾"
+  (class switcher). Skills and score bands live in Class; Live in class and Your questions in Assignments; each
+  student's page and the parent report in Students; gradebook, Export CSV and grade passback in Grades; join code,
+  class, copy, co-teachers, department, Google Classroom, LMS and LTI, Class Premium, quotes and privacy paperwork,
+  archive and delete in Settings.
+- Agreed (step 15): the class home keeps today's order under the agreed rules: half banner with the class name and
+  join code (Show on screen), then Needs you today (one action per row), The work (status bar and class average per
+  assignment, All assignments), Students to check on, then links to Mastery and AP® skills and Post an announcement.
+- Agreed (step 15): assigning work is one page: what (five kinds), which topics (with "Use the 3 weakest topics"),
+  when and who (due, required or optional, whole class or chosen students); time limit, shuffle, answer release,
+  late window and teacher questions under More options; one Assign button. Every "Needs you" action opens it filled in.
 
 ## Checklist before showing a page
 1. 390 px, about 700 px (the claude.ai side panel) and 1280 px: nothing scrolls sideways, nothing hidden under
@@ -238,3 +249,5 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   Premium sheet (P1). Options page: https://claude.ai/artifact/MmLpYCz1vgsZDSiWZJMbr9
 - 2026-11-05: step 14 decided: slim top (T1), grouped smaller cards (G1), Continue card (B1).
   Options page: https://claude.ai/artifact/8Zf1w4n7SoDg3eqyZbiLEC
+- 2026-11-05: step 15 decided: Classroom style tabs (T1), today's class home under the rules (H1), one page assign
+  (A1). Options page: https://claude.ai/artifact/Me73k3eNG2PVRpkU9LBARi. All 15 steps done; next: build it in the real code.
