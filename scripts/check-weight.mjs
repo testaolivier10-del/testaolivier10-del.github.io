@@ -185,7 +185,9 @@ const SHELL_BUDGETS = [
   /* 342 -> 342.5 for the guided study path (docs/guided-path.md, owner 2026-11-03): the Path tab, its icon and
      the loader in site-chrome.js (+0.2 KB, comments cut). path.js, path.css and the path data load later and
      only on course pages, so they are not in this number. */
-  ['site', 342.5],
+  /* 342.5 -> 342.8 (consistency audit 2026-11): the four fix batches combined (shared footer links, path load on
+     the textbook, Sign in wording, the allowance string). Measured 342.6 KB. */
+  ['site', 342.8],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -383,7 +385,9 @@ const SHELL_BUDGETS = [
   ['chem', 52],
   /* AP® Physics 1 (physics/, a fork of the AP® Chemistry runtime). Before
      any unit is published; Chemistry's 52 is the reference. */
-  ['physics', 52],
+  /* 52 -> 52.2 (consistency audit 2026-11): the shared end panel call and the exam-day reference cards. Measured
+     52.0 KB. */
+  ['physics', 52.2],
   /* AP® Calculus AB (calculus/, a fork of the AP® Physics 1 runtime), plus
      the math layer every question page loads: the expression parser
      (calc-expr.js) and the TeX-to-MathML renderer (calc-math.js), 13.8 KB
