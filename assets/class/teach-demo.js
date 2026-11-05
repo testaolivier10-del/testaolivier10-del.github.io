@@ -31,7 +31,7 @@
           opens_at: iso(now - 10 * DAY), due_at: iso(now - 4 * DAY), late_until: null, required: true, students: null },
         { id: 'a4', kind: 'practice', title: 'Unit 2 catch-up: membranes', spec: { topics: frq, topicNames: frq.map(function(t){ return ids[t].title; }), count: 10 },
           opens_at: iso(now - 2 * DAY), due_at: iso(now + 4 * DAY), late_until: null, required: true, students: ['u9', 'u10', 'u11'] },
-        { id: 'a5', kind: 'mastery', title: 'Master signal transduction', spec: { topics: u4, topicNames: u4.map(function(t){ return ids[t].title; }), target: 0.6, min: 10 },
+        { id: 'a5', kind: 'mastery', title: 'Master signal transduction', spec: { topics: u4, topicNames: u4.map(function(t){ return ids[t].title; }), target: 0.6, min: 10, qn: u4.reduce(function(o, t){ o[t] = ids[t].qn; return o; }, {}) },
           opens_at: iso(now - 5 * DAY), due_at: iso(now + 5 * DAY), late_until: iso(now + 7 * DAY), required: true, students: null },
         { id: 'a6', kind: 'practice', title: 'Unit 3 timed quiz', spec: { topics: u3.slice(0, 4), topicNames: u3.slice(0, 4).map(function(t){ return ids[t].title; }), count: 10,
           controls: { timeLimit: 20, shuffle: true, release: 'after_due', questions: ['q-demo-1'] } },
@@ -146,7 +146,7 @@
         case 'teach_coteach_code': rep.class.coteach_code = 'CO' + (100000 + nextId++); return rep.class.coteach_code;
         case 'teach_coteach_remove': rep.coteachers = rep.coteachers.filter(function(t){ return t.id !== a.p_user; }); return true;
         case 'teach_coteach_join': return null;
-        case 'teach_questions': return copy(myQs);
+        case 'teach_questions': case 'teach_class_questions': return copy(myQs);
         case 'teach_save_question':
           var qd = Object.assign({ type: 'single' }, a.p_data || {}), qid = a.p_id || ('q-demo-' + (nextId++)), qo = myQs.filter(function(x){ return x.id === qid; })[0];
           qd.id = qid; if(qo) myQs[myQs.indexOf(qo)] = qd; else myQs.push(qd); return qid;

@@ -71,6 +71,16 @@ create table if not exists public.class_questions (
 create index if not exists class_questions_teacher_idx on public.class_questions (teacher_id, course);
 alter table public.class_questions enable row level security;
 
+-- A student's picks on an assignment's teacher questions, recorded once (class_submit).
+create table if not exists public.class_submissions (
+  assignment_id uuid not null references public.class_assignments (id) on delete cascade,
+  student_id    uuid not null references auth.users (id) on delete cascade,
+  picks         jsonb not null,
+  at            timestamptz not null default now(),
+  primary key (assignment_id, student_id)
+);
+alter table public.class_submissions enable row level security;
+
 create table if not exists public.teach_departments (
   code       text primary key,
   name       text not null,
@@ -99,7 +109,42 @@ create table if not exists public.class_live_answers (
 );
 alter table public.class_live_answers enable row level security;
 
-revoke all on table public.class_coteachers, public.class_announcements, public.class_questions, public.teach_departments, public.class_live, public.class_live_answers from anon, authenticated;
+revoke all on table public.class_coteachers, public.class_announcements, public.class_questions, public.class_submissions, public.teach_departments, public.class_live, public.class_live_answers from anon, authenticated;
+
+-- dept_stats as the department may see it: whitelisted numbers and unit keys only, so no name can get in.
+create or replace function public.class_clean_stats(s jsonb)
+returns jsonb
+language sql
+immutable
+security definer
+set search_path = public
+as $$
+  select jsonb_strip_nulls(jsonb_build_object(
+    'n', case when jsonb_typeof(s->'n') = 'number' then s->'n' end,
+    'active7', case when jsonb_typeof(s->'active7') = 'number' then s->'active7' end,
+    'assigned', case when jsonb_typeof(s->'assigned') = 'number' then s->'assigned' end,
+    'onTime', case when jsonb_typeof(s->'onTime') = 'number' then s->'onTime' end,
+    'overall', case when jsonb_typeof(s->'overall') = 'number' then s->'overall' end,
+    'current', case when s->>'current' ~ '^[a-z0-9-]{1,40}$' then s->'current' end,
+    'order', (select jsonb_agg(e) from (select e from jsonb_array_elements(case when jsonb_typeof(s->'order') = 'array' then s->'order' else '[]'::jsonb end) e
+               where e #>> '{}' ~ '^[a-z0-9-]{1,40}$' and jsonb_typeof(e) = 'string' limit 40) x),
+    'units', (select jsonb_object_agg(k, v) from (select k, v from jsonb_each(case when jsonb_typeof(s->'units') = 'object' then s->'units' else '{}'::jsonb end) t(k, v)
+               where k ~ '^[a-z0-9-]{1,40}$' and jsonb_typeof(v) = 'number' limit 40) y)));
+$$;
+
+-- An assignment's student list: null (everyone) or at most 200 uuids. False when it is anything else.
+create or replace function public.class_students_ok(p jsonb)
+returns boolean
+language sql
+immutable
+security definer
+set search_path = public
+as $$
+  select p is null or jsonb_typeof(p) = 'null'
+      or (jsonb_typeof(p) = 'array' and jsonb_array_length(p) <= 200
+          and not exists (select 1 from jsonb_array_elements(p) e
+                           where jsonb_typeof(e) <> 'string' or e #>> '{}' !~ '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'));
+$$;
 
 -- 'owner', 'co' (a co-teacher) or null: what the signed-in account may do in a class.
 create or replace function public.class_role(p_class uuid)
@@ -154,7 +199,7 @@ begin
   if r = 'owner' and p_patch ? 'archived' then c.archived := coalesce((p_patch->>'archived')::boolean, c.archived); end if;
   if r = 'owner' and p_patch ? 'dept_shared' then c.dept_shared := coalesce((p_patch->>'dept_shared')::boolean, c.dept_shared); end if;
   if p_patch ? 'dept_stats' and jsonb_typeof(p_patch->'dept_stats') = 'object' and octet_length((p_patch->'dept_stats')::text) <= 4000 then
-    c.dept_stats := p_patch->'dept_stats'; c.dept_stats_at := now();
+    c.dept_stats := public.class_clean_stats(p_patch->'dept_stats'); c.dept_stats_at := now();
   end if;
   if coalesce((p_patch->>'new_code')::boolean, false) then c.code := public.class_new_code(); end if;
   update public.classes set name = c.name, unit_order = c.unit_order, current_unit = c.current_unit,
@@ -214,6 +259,7 @@ begin
   if coalesce(p_data->>'kind', '') not in ('practice', 'review', 'mastery', 'exam', 'frq') then return null; end if;
   if length(coalesce(p_data->>'title', '')) not between 1 and 120 then return null; end if;
   if octet_length(coalesce(p_data->'spec', '{}'::jsonb)::text) > 20000 then return null; end if;
+  if not public.class_students_ok(p_data->'students') then return null; end if;
   if p_id is null then
     if (select count(*) from public.class_assignments where class_id = p_class) >= 500 then return null; end if;
     insert into public.class_assignments (class_id, kind, title, spec, opens_at, due_at, late_until, required, students)
@@ -303,6 +349,9 @@ declare
   src public.classes;
   c public.classes;
   d interval := make_interval(days => greatest(-400, least(400, coalesce(p_shift_days, 0))));
+  q public.class_questions;
+  qmap jsonb := '{}'::jsonb;
+  v_id uuid;
 begin
   if auth.uid() is null or public.class_role(p_class) is null then return null; end if;
   if not exists (select 1 from public.teacher_profiles where user_id = auth.uid()) then return null; end if;
@@ -312,8 +361,24 @@ begin
   insert into public.classes (teacher_id, course, name, code, unit_order)
   values (auth.uid(), src.course, btrim(p_name), public.class_new_code(), src.unit_order)
   returning * into c;
+  -- Questions another teacher of the source class wrote become the copier's own, so the copy keeps working.
+  for q in select distinct on (cq.id) cq.*
+             from public.class_assignments a
+             cross join lateral jsonb_array_elements_text(case when jsonb_typeof(a.spec->'controls'->'questions') = 'array' then a.spec->'controls'->'questions' else '[]'::jsonb end) qid
+             join public.class_questions cq on cq.id::text = qid
+            where a.class_id = p_class and cq.teacher_id <> auth.uid() and cq.course = src.course
+              and (cq.teacher_id = src.teacher_id or exists (select 1 from public.class_coteachers t where t.class_id = p_class and t.user_id = cq.teacher_id))
+  loop
+    insert into public.class_questions (teacher_id, course, topic, unit, type, q, options, correct, why)
+    values (auth.uid(), q.course, q.topic, q.unit, q.type, q.q, q.options, q.correct, q.why) returning id into v_id;
+    qmap := qmap || jsonb_build_object(q.id::text, v_id::text);
+  end loop;
   insert into public.class_assignments (class_id, kind, title, spec, opens_at, due_at, late_until, required, students)
-  select c.id, a.kind, a.title, a.spec, a.opens_at + d, a.due_at + d, a.late_until + d, a.required, null
+  select c.id, a.kind, a.title,
+         case when jsonb_typeof(a.spec->'controls'->'questions') = 'array'
+              then jsonb_set(a.spec, '{controls,questions}', (select coalesce(jsonb_agg(coalesce(qmap->>e, e)), '[]'::jsonb) from jsonb_array_elements_text(a.spec->'controls'->'questions') e))
+              else a.spec end,
+         a.opens_at + d, a.due_at + d, a.late_until + d, a.required, null
     from public.class_assignments a where a.class_id = p_class;
   return jsonb_build_object('id', c.id, 'code', c.code);
 end;
@@ -475,9 +540,25 @@ begin
 end;
 $$;
 
+-- Whether a student may see the answers (correct, why) to an assignment's teacher questions now:
+-- release 'now' (or none), the student's own due date has passed, or release 'after_submit' (or
+-- 'after_due' with no due date) once they have submitted with class_submit.
+create or replace function public.class_answers_open(a public.class_assignments, p_extra_days integer, p_submitted boolean)
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select coalesce(a.spec->'controls'->>'release', 'now') not in ('after_submit', 'after_due')
+      or (a.due_at is not null and now() > a.due_at + make_interval(days => coalesce(p_extra_days, 0)))
+      or (p_submitted and (a.spec->'controls'->>'release' = 'after_submit' or a.due_at is null));
+$$;
+
 -- A student's teacher questions for one assignment: only an assignment of a
 -- class they are in, that has opened and is meant for them, and only questions
--- written by a teacher of that class.
+-- written by a teacher of that class. correct and why are left out until
+-- class_answers_open says so.
 create or replace function public.class_questions_for(p_assignment uuid)
 returns jsonb
 language sql
@@ -485,8 +566,9 @@ stable
 security definer
 set search_path = public
 as $$
-  select coalesce(jsonb_agg(jsonb_build_object('id', q.id, 'course', q.course, 'topic', q.topic, 'unit', q.unit, 'type', q.type,
-           'q', q.q, 'options', q.options, 'correct', q.correct, 'why', q.why)), '[]'::jsonb)
+  select coalesce(jsonb_agg(case when public.class_answers_open(a, m.extra_days, exists (select 1 from public.class_submissions s where s.assignment_id = a.id and s.student_id = m.student_id))
+           then jsonb_build_object('id', q.id, 'course', q.course, 'topic', q.topic, 'unit', q.unit, 'type', q.type, 'q', q.q, 'options', q.options, 'correct', q.correct, 'why', q.why)
+           else jsonb_build_object('id', q.id, 'course', q.course, 'topic', q.topic, 'unit', q.unit, 'type', q.type, 'q', q.q, 'options', q.options) end), '[]'::jsonb)
     from public.class_assignments a
     join public.classes c on c.id = a.class_id and not c.archived
     join public.class_members m on m.class_id = c.id and m.student_id = auth.uid()
@@ -496,6 +578,59 @@ as $$
      and (q.teacher_id = c.teacher_id or exists (select 1 from public.class_coteachers t where t.class_id = c.id and t.user_id = q.teacher_id))
    where a.id = p_assignment and auth.uid() is not null and a.opens_at <= now()
      and (a.students is null or a.students ? m.student_id::text);
+$$;
+
+-- The student hands in their picks on the assignment's teacher questions, once (a second call changes
+-- nothing). p_picks: { <question id>: <option index> }, only ids the assignment lists. Returns
+-- { recorded: true, at, answers: [{ id, correct, why }] } when the answers may show (see
+-- class_answers_open), else { recorded: true, at }; null when the assignment is not theirs.
+create or replace function public.class_submit(p_assignment uuid, p_picks jsonb)
+returns jsonb
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  a public.class_assignments;
+  m public.class_members;
+  ids jsonb;
+  v_at timestamptz;
+begin
+  if auth.uid() is null or p_picks is null or jsonb_typeof(p_picks) <> 'object' or octet_length(p_picks::text) > 8000 then return null; end if;
+  select * into a from public.class_assignments where id = p_assignment and opens_at <= now();
+  if not found then return null; end if;
+  select * into m from public.class_members where class_id = a.class_id and student_id = auth.uid();
+  if not found or not (a.students is null or a.students ? auth.uid()::text) then return null; end if;
+  if exists (select 1 from public.classes where id = a.class_id and archived) then return null; end if;
+  ids := case when jsonb_typeof(a.spec->'controls'->'questions') = 'array' then a.spec->'controls'->'questions' else '[]'::jsonb end;
+  if exists (select 1 from jsonb_each(p_picks) e where not ids ? e.key or jsonb_typeof(e.value) <> 'number') then return null; end if;
+  insert into public.class_submissions (assignment_id, student_id, picks) values (a.id, auth.uid(), p_picks)
+  on conflict (assignment_id, student_id) do nothing;
+  select s.at into v_at from public.class_submissions s where s.assignment_id = a.id and s.student_id = auth.uid();
+  if not public.class_answers_open(a, m.extra_days, true) then return jsonb_build_object('recorded', true, 'at', v_at); end if;
+  return jsonb_build_object('recorded', true, 'at', v_at, 'answers', coalesce((select jsonb_agg(jsonb_build_object('id', q.id, 'correct', q.correct, 'why', q.why))
+    from public.class_questions q join public.classes c on c.id = a.class_id
+   where ids ? q.id::text and q.course = c.course
+     and (q.teacher_id = c.teacher_id or exists (select 1 from public.class_coteachers t where t.class_id = c.id and t.user_id = q.teacher_id))), '[]'::jsonb));
+end;
+$$;
+
+-- For the teacher's own pages (print, live): every question this class's assignments use, whoever of its
+-- teachers wrote it.
+create or replace function public.teach_class_questions(p_class uuid)
+returns jsonb
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select coalesce(jsonb_agg(distinct jsonb_build_object('id', q.id, 'course', q.course, 'topic', q.topic, 'unit', q.unit, 'type', q.type,
+           'q', q.q, 'options', q.options, 'correct', q.correct, 'why', q.why)), '[]'::jsonb)
+    from public.classes c
+    join public.class_assignments a on a.class_id = c.id and jsonb_typeof(a.spec->'controls'->'questions') = 'array'
+    join public.class_questions q on (a.spec->'controls'->'questions') ? q.id::text and q.course = c.course
+     and (q.teacher_id = c.teacher_id or exists (select 1 from public.class_coteachers t where t.class_id = c.id and t.user_id = q.teacher_id))
+   where c.id = p_class and public.class_role(p_class) is not null;
 $$;
 
 /* ------------------------------------------------------------- live mode */
@@ -645,6 +780,10 @@ begin
   if auth.uid() is null or not exists (select 1 from public.teacher_profiles where user_id = auth.uid()) then return false; end if;
   if not public.class_code_try() then return false; end if;
   if not exists (select 1 from public.teach_departments where code = upper(btrim(p_code))) then return false; end if;
+  -- Switching departments stops sharing: the new department sees a class only once it is shared again.
+  if (select dept_code from public.teacher_profiles where user_id = auth.uid()) is distinct from upper(btrim(p_code)) then
+    update public.classes set dept_shared = false where teacher_id = auth.uid();
+  end if;
   update public.teacher_profiles set dept_code = upper(btrim(p_code)) where user_id = auth.uid();
   return true;
 end;
@@ -687,6 +826,13 @@ as $$
 $$;
 
 revoke execute on function public.class_role(uuid) from public, anon, authenticated;
+revoke execute on function public.class_clean_stats(jsonb) from public, anon, authenticated;
+revoke execute on function public.class_students_ok(jsonb) from public, anon, authenticated;
+revoke execute on function public.class_answers_open(public.class_assignments, integer, boolean) from public, anon, authenticated;
+revoke execute on function public.class_submit(uuid, jsonb) from public, anon;
+revoke execute on function public.teach_class_questions(uuid) from public, anon;
+grant execute on function public.class_submit(uuid, jsonb) to authenticated;
+grant execute on function public.teach_class_questions(uuid) to authenticated;
 revoke execute on function public.teach_copy_class(uuid, text, integer) from public, anon;
 revoke execute on function public.teach_post_announcement(uuid, text) from public, anon;
 revoke execute on function public.teach_delete_announcement(uuid) from public, anon;

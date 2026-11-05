@@ -109,6 +109,20 @@ test('mastery status: every topic at the target with at least min answers since 
   assert.equal(M.status(a, M.summarize('apbio', store({}), NOW), NOW + 2 * DAY, CUR).state, 'missing');
 });
 
+test('mastery: done when the target was first reached, and the same answer without the curriculum (spec.qn)', () => {
+  const opens = NOW - 10 * DAY;
+  const q = {};
+  for (let i = 0; i < 12; i++) q['bio-a-' + i] = { ...rec('a', 'unit-1', 1, 0), seen: NOW - 5 * DAY + i * 60000 };
+  for (let i = 0; i < 4; i++) q['bio-a-late' + i] = rec('a', 'unit-1', 1, 0.1);
+  const sum = M.summarize('apbio', store(q), NOW);
+  const a = { kind: 'mastery', spec: { topics: ['a'], target: 0.8, min: 10, qn: { a: 12 } }, opens_at: opens, due_at: NOW - 2 * DAY, late_until: null };
+  const withCur = M.status(a, sum, NOW, CUR), noCur = M.status(a, sum, NOW);
+  assert.equal(withCur.state, 'done', 'reached before the due date, so not missing because of later answers');
+  const tenth = Math.round((NOW - 5 * DAY + 9 * 60000) / 1000) * 1000;
+  assert.ok(withCur.doneAt <= NOW - 5 * DAY + 11 * 60000 && withCur.doneAt >= tenth, 'doneAt is when the target was reached');
+  assert.deepEqual({ ...noCur }, { ...withCur }, 'spec.qn gives the same answer as the curriculum');
+});
+
 test('timed work: the attempt record decides, with time used and tab leaves (v2)', () => {
   const opens = NOW - 2 * DAY;
   const a = { id: 'x1', kind: 'practice', spec: { topics: ['a'], count: 3, controls: { timeLimit: 20 } }, opens_at: opens, due_at: NOW + DAY };

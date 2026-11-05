@@ -620,7 +620,8 @@
       due_at: due ? due.toISOString() : null, late_until: due && B.late ? new Date(due.getTime() + B.late * DAY).toISOString() : null,
       required: B.required, students: B.who === 'some' ? B.students : null };
     if(!data.opens_at) delete data.opens_at;
-    if(B.kind === 'mastery'){ data.spec.target = B.target; data.spec.min = B.min; }
+    // qn: questions per topic for full mastery, so the student's browser grades it the same without the curriculum.
+    if(B.kind === 'mastery'){ data.spec.target = B.target; data.spec.min = B.min; data.spec.qn = {}; B.topics.forEach(function(t){ if(D.topics[t] && D.topics[t].qn) data.spec.qn[t] = D.topics[t].qn; }); }
     if(B.kind !== 'frq' && (B.timeLimit || B.shuffle || B.release !== 'now' || B.questions.length))
       data.spec.controls = { timeLimit: B.timeLimit || null, shuffle: B.shuffle, release: B.release, questions: B.questions.slice() };
     var also = B.who === 'some' || B.id ? [] : B.also.slice();
@@ -980,7 +981,10 @@
       '<div id="lvtSheet" class="tm-sheet"><p class="d5-mut">Loading the questions…</p></div><div style="height:60px"></div></div>';
     render(frame(html, c.course), 'work');
     var mineIds = ctl(a).questions || [];
-    Promise.all([myQuestions(), Promise.all(units.map(function(u){ return Promise.all([bankFor(u), whyFor(u), fetchStimuli(u)]); }))]).then(function(rs){
+    // Questions any teacher of the class wrote for it (teach_class_questions), plus the teacher's own bank.
+    var classQs = call('teach_class_questions', { p_class: CLASS_ID }).then(function(r){ return Array.isArray(r) ? r : []; }, function(){ return []; });
+    Promise.all([Promise.all([myQuestions(), classQs]).then(function(x){ var seen = {}; return x[0].concat(x[1]).filter(function(q){ if(seen[q.id]) return false; seen[q.id] = 1; return true; }); }),
+                 Promise.all(units.map(function(u){ return Promise.all([bankFor(u), whyFor(u), fetchStimuli(u)]); }))]).then(function(rs){
       if(location.hash !== '#print/' + id) return;
       var mine = rs[0].filter(function(x){ return mineIds.indexOf(x.id) !== -1; }).map(function(x){ return { id: x.id, q: x.q, options: x.options, correct: x.correct, why: x.why, mine: true }; });
       var pool = [], stim = {};

@@ -143,14 +143,26 @@
       if(ex){ out.state = 'done'; out.answered = 1; out.doneAt = ex.ts; out.score = ex.n ? ex.c / ex.n : null; out.exam = ex; }
     } else if(a.kind === 'mastery'){
       // Done when every listed topic is at the target mastery, with at least min answers in them since it opened.
-      var mt = topics || [], target = spec.target || 0.8, min = spec.min == null ? 10 : spec.min;
-      var tm = topicMastery(sum, cur, now), since = rows(sum).filter(function(r){ return inScope(r) && r.seen >= opens; });
-      var vals = mt.map(function(t){ return (tm[t] && tm[t].value) || 0; });
+      // Questions per topic come from spec.qn (saved by the teacher's builder), so the student's browser,
+      // which has no curriculum loaded, gets the same answer; cur fills in older assignments without it.
+      var mt = topics || [], target = spec.target || 0.8, min = spec.min == null ? 10 : spec.min, qn = {};
+      ((cur && cur.topics) || []).forEach(function(t){ qn[t.id] = t.qn; });
+      Object.keys(spec.qn || {}).forEach(function(t){ qn[t] = spec.qn[t]; });
+      var mine = rows(sum).filter(inScope).sort(function(x, y){ return x.seen - y.seen; });
+      var valsAt = function(t){ return mt.map(function(id){
+        var v = 0; mine.forEach(function(r){ if(r.t === id && r.seen <= t) v += credit(r, t); });
+        return Math.min(1, v / (Math.min(FULL, qn[id] || FULL))); }); };
+      var since = mine.filter(function(r){ return r.seen >= opens; });
+      var vals = valsAt(now);
       out.total = mt.length; out.met = out.answered = vals.filter(function(v){ return v >= target; }).length;
       out.mastery = vals.length ? vals.reduce(function(x, y){ return x + y; }, 0) / vals.length : 0;
       out.score = out.mastery; out.since = since.length; out.min = min; out.target = target;
       if(mt.length && out.met === mt.length && since.length >= min){
-        out.state = 'done'; out.doneAt = since.reduce(function(x, r){ return Math.max(x, r.seen); }, 0) || opens;
+        // Done at the first answer after which every topic was at the target with the minimum answered.
+        out.state = 'done'; out.doneAt = since[since.length - 1].seen;
+        for(var i = min - 1; i < since.length; i++){
+          if(valsAt(since[i].seen).every(function(v){ return v >= target; })){ out.doneAt = since[i].seen; break; }
+        }
       } else if(since.length) out.state = 'progress';
     } else if(a.kind === 'frq'){
       out.total = 1;

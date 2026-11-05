@@ -127,6 +127,51 @@ test('behaviour in Postgres (PGlite)', async (t) => {
   const xq = await as(X, `select public.teach_save_question(null, $1) r`, [JSON.stringify(qd)]);
   const qa4 = await as(T, `select public.teach_save_assignment($1, null, $2) r`, [cls.id, JSON.stringify({ kind: 'practice', title: 'Foreign', spec: { controls: { questions: [xq] } } })]);
   assert.equal((await as(S, `select public.class_questions_for($1) r`, [qa4])).length, 0, 'never another teacher’s question');
+  assert.equal(qs[0].correct, 0, 'release now (the default): answers come with the questions');
+
+  // Held answers and class_submit
+  const held = (release, due) => as(T, `select public.teach_save_assignment($1, null, $2) r`, [cls.id, JSON.stringify({ kind: 'practice', title: 'Held ' + release, due_at: due, spec: { controls: { release, questions: [qid] } } })]);
+  const future = '2099-01-01T00:00:00Z', past = '2020-01-01T00:00:00Z';
+  const hd = await held('after_due', future);
+  let hq = await as(S, `select public.class_questions_for($1) r`, [hd]);
+  assert.equal(hq.length, 1); assert.equal(hq[0].correct, undefined, 'after_due: no answer before the due date'); assert.equal(hq[0].why, undefined);
+  assert.equal(await as(S, `select public.class_submit($1, $2) r`, [hd, JSON.stringify({ 'not-listed': 1 })]), null, 'only the assignment’s questions');
+  assert.equal(await as(S, `select public.class_submit($1, $2) r`, [hd, JSON.stringify({ [qid]: 'x' })]), null, 'picks are numbers');
+  let sub = await as(S, `select public.class_submit($1, $2) r`, [hd, JSON.stringify({ [qid]: 1 })]);
+  assert.equal(sub.recorded, true); assert.equal(sub.answers, undefined, 'after_due before the due date: recorded only');
+  assert.equal((await as(S, `select public.class_questions_for($1) r`, [hd]))[0].correct, undefined, 'still held after submitting');
+  assert.equal(await as(X, `select public.class_submit($1, $2) r`, [hd, JSON.stringify({ [qid]: 0 })]), null, 'not for someone outside the class');
+  assert.equal(await as(S, `select public.class_submit($1, $2) r`, [qa2, JSON.stringify({ [qid]: 0 })]), null, 'not for an assignment meant for someone else');
+  const hs = await held('after_submit', future);
+  assert.equal((await as(S, `select public.class_questions_for($1) r`, [hs]))[0].correct, undefined, 'after_submit: held before submitting');
+  sub = await as(S, `select public.class_submit($1, $2) r`, [hs, JSON.stringify({ [qid]: 2 })]);
+  assert.equal(sub.answers[0].correct, 0); assert.equal(sub.answers[0].why, qd.why);
+  assert.equal((await as(S, `select public.class_questions_for($1) r`, [hs]))[0].correct, 0, 'after_submit: open once submitted');
+  await as(S, `select public.class_submit($1, $2) r`, [hs, JSON.stringify({ [qid]: 0 })]);
+  assert.equal((await db.query(`select picks from public.class_submissions where assignment_id = $1`, [hs])).rows[0].picks[qid], 2, 'recorded once: a second call changes nothing');
+  const hp = await held('after_due', past);
+  assert.equal((await as(S, `select public.class_questions_for($1) r`, [hp]))[0].correct, 0, 'after_due: open once the due date passed');
+  await as(T, `select public.teach_set_member($1, $2, '{"extra_days":3}') r`, [cls.id, S]);
+  const hx = await held('after_due', new Date(Date.now() - 86400000).toISOString());
+  assert.equal((await as(S, `select public.class_questions_for($1) r`, [hx]))[0].correct, undefined, 'extra days move the release too');
+  assert.equal((await as(S2, `select public.class_questions_for($1) r`, [hx]))[0].correct, 0, 'a student without extra days sees it');
+  await as(T, `select public.teach_set_member($1, $2, '{"extra_days":0}') r`, [cls.id, S]);
+
+  // Student lists are capped and must be ids
+  const many = Array.from({ length: 201 }, () => S);
+  assert.equal(await as(T, `select public.teach_save_assignment($1, null, $2) r`, [cls.id, JSON.stringify({ kind: 'practice', title: 'big', students: many })]), null, 'at most 200 students');
+  assert.equal(await as(T, `select public.teach_save_assignment($1, null, $2) r`, [cls.id, JSON.stringify({ kind: 'practice', title: 'bad', students: ['Priya K.'] })]), null, 'ids only');
+
+  // The co-teacher reads the owner's questions this class uses; copying gives the copier their own copy
+  assert.equal((await as(C, `select public.teach_class_questions($1) r`, [cls.id])).length, 1, 'class questions for a co-teacher');
+  assert.deepEqual(await as(X, `select public.teach_class_questions($1) r`, [cls.id]), [], 'a stranger gets none');
+  const cc2 = await as(C, `select public.teach_copy_class($1, 'Chen P2', 0) r`, [cls.id]);
+  const mineC = await as(C, `select public.teach_questions('apbio') r`);
+  assert.equal(mineC.length, 1, 'the owner’s question copied to the co-teacher'); assert.notEqual(mineC[0].id, qid);
+  const repCopy = await as(C, `select public.teach_class_report($1) r`, [cc2.id]);
+  const withQ = repCopy.assignments.find((a) => a.title === 'With mine');
+  assert.deepEqual(withQ.spec.controls.questions, [mineC[0].id], 'the copy points at the copied question');
+  assert.equal(repCopy.assignments.find((a) => a.title === 'Foreign').spec.controls.questions[0], xq, 'a stranger’s question is not copied');
 
   // Copy a class
   const due = '2026-09-10T12:00:00Z';
@@ -134,7 +179,7 @@ test('behaviour in Postgres (PGlite)', async (t) => {
   const cp = await as(T, `select public.teach_copy_class($1, 'Period 5', 365) r`, [cls.id]);
   const rep2 = await as(T, `select public.teach_class_report($1) r`, [cp.id]);
   assert.equal(rep2.members.length, 0, 'no students copied');
-  assert.equal(rep2.assignments.length, after.assignments.length + 5, 'every assignment copied');
+  assert.equal(rep2.assignments.length, (await as(T, `select public.teach_class_report($1) r`, [cls.id])).assignments.length, 'every assignment copied');
   const dated = rep2.assignments.find((a) => a.title === 'Dated');
   assert.ok(dated.due_at.startsWith('2027-09-10'), 'dates shifted by a year: ' + dated.due_at);
   assert.equal(dated.students, null, 'student lists dropped');
@@ -172,13 +217,21 @@ test('behaviour in Postgres (PGlite)', async (t) => {
   assert.match(code, /^[A-Z2-9]{8}$/);
   assert.equal(await as(S, `select public.teach_dept_create('Nope') r`), null, 'students cannot make one');
   assert.equal(await as(C, `select public.teach_dept_join($1) r`, [code]), true);
-  await as(T, `select public.teach_update_class($1, '{"dept_shared":true,"dept_stats":{"n":2,"units":{"unit-1":0.5}}}') r`, [cls.id]);
+  await as(T, `select public.teach_update_class($1, '{"dept_shared":true,"dept_stats":{"n":2,"units":{"unit-1":0.5,"Priya K.":1},"names":["Priya K."],"current":"Priya","order":["unit-1","Dev L."]}}') r`, [cls.id]);
   await as(C, `select public.teach_update_class($1, '{"dept_shared":false}') r`, [cls.id]);
   let dv = await as(C, `select public.teach_dept_view() r`);
   assert.equal(dv.name, 'Science'); assert.equal(dv.teachers.length, 2);
   assert.equal(dv.classes.length, 1, 'shared class listed (a co-teacher cannot unshare it)'); assert.equal(dv.classes[0].stats.n, 2);
   assert.equal(JSON.stringify(dv).includes('Priya'), false, 'no student names in the department view');
-  assert.equal(await as(X, `select public.teach_dept_view() r`), null, 'outside the department: nothing');
+  assert.deepEqual(dv.classes[0].stats, { n: 2, units: { 'unit-1': 0.5 }, order: ['unit-1'] }, 'only whitelisted numbers and unit keys are kept');
+  const code2 = await as(X, `select public.teach_dept_create('Math') r`);
+  await as(T, `select public.teach_dept_join($1) r`, [code]);
+  assert.equal((await as(C, `select public.teach_dept_view() r`)).classes.length, 1, 'rejoining the same department keeps sharing');
+  await as(T, `select public.teach_dept_join($1) r`, [code2]);
+  assert.equal((await as(T, `select public.teach_dept_view() r`)).classes.length, 0, 'switching departments stops sharing');
+  assert.equal((await as(C, `select public.teach_dept_view() r`)).classes.length, 0);
+  await as(T, `select public.teach_dept_join($1) r`, [code]);
+  assert.equal((await as(X, `select public.teach_dept_view() r`)).classes.length, 0, 'another department sees none of these classes');
   await as(T, `select public.teach_dept_leave() r`);
   dv = await as(C, `select public.teach_dept_view() r`);
   assert.equal(dv.classes.length, 0, 'leaving stops sharing');

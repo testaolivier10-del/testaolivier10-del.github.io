@@ -82,6 +82,18 @@ owner merges. Tick items here as they ship.
   `summary.att`, and `status` prefers it for timed assignments.
 - Teacher questions: table `class_questions` (teacher-owned, `{ id, course, topic, unit, type:'single', q, options,
   correct, why }`), read by students through `class_questions_for(p_assignment)` only for assignments they have.
+- Answer release for teacher questions (A1, after review): `class_questions_for(p_assignment)` returns `correct`
+  and `why` only when the answers may show: `controls.release` is `'now'` or missing, the student's own due date
+  (with their extra days) has passed, or they have submitted and release is `'after_submit'` (or `'after_due'`
+  with no due date). Otherwise each question is `{ id, course, topic, unit, type, q, options }`.
+  The engine hands in the picks with `class_submit(p_assignment, p_picks)`, `p_picks = { <teacher question id>:
+  <option index> }` (only ids in `controls.questions`, at most 8 KB). It is recorded once (table
+  `class_submissions`, one row per student and assignment; later calls change nothing) and returns
+  `{ recorded: true, at, answers: [{ id, correct, why }] }` when the answers may show, else `{ recorded: true, at }`
+  (`'after_due'` before the due date); `null` when the assignment is not the student's. Bank questions are graded on
+  the device as before.
+- Mastery: the builder saves `spec.qn = { <topic>: questions for full mastery }`, so `status(a, sum, now)` without
+  a curriculum (class-student.js) gives the same answer as the teacher's page.
 - Live mode: tables `class_live` (one open session per class, current question) and `class_live_answers`; teacher
   polls `teach_live_state` every 2 s, students poll `class_live_state`; no Realtime dependency.
 - Integrations UI: `teach.js` loads `assets/class/teach-integrations.js` and, on Settings and on an assignment page,
@@ -122,7 +134,11 @@ Shipped on branch `teach-v2-a1` (all in the sample class, `/teach/?demo=1`):
   sharing with the department and managing co-teachers (`class_role` in SQL, `isOwner()` in the UI).
 - [x] Department view: `/teach/?dept=1`; create or join with a code (`teach_dept_*`), one department per teacher.
   The owner shares a class in Settings; its own page writes `dept_stats` (counts and averages, no names) at most
-  hourly. Leaving a department unshares the teacher's classes.
+  hourly; the server keeps only whitelisted numbers and unit keys (`class_clean_stats`). Leaving or switching
+  departments unshares the teacher's classes.
+- Review fixes: assignment student lists are capped at 200 ids (`class_students_ok`); copying a class copies the
+  teacher questions its assignments use (written by its other teachers) into the copier's bank; the print view
+  includes co-teachers' questions (`teach_class_questions`); mastery `doneAt` is when the target was first reached.
 - [x] Integrations hook: teach.js loads `assets/class/teach-integrations.js` if present and renders
   `.settings(ctx)` / `.assignment(ctx)` into Settings and the assignment page, then `.wire(ctx)`. ctx:
   `{ where, demo, classId, cls, role, box, call, members: [{id, name}], assignment }`. Until C ships the file the
