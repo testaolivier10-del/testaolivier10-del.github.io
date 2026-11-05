@@ -2241,6 +2241,10 @@ create table if not exists public.class_questions (
 );
 create index if not exists class_questions_teacher_idx on public.class_questions (teacher_id, course);
 alter table public.class_questions enable row level security;
+-- topic and unit end up in links on the course pages: ids only.
+alter table public.class_questions drop constraint if exists class_questions_slug_check;
+alter table public.class_questions add constraint class_questions_slug_check
+  check ((topic is null or topic ~ '^[a-z0-9][a-z0-9-]{0,79}$') and (unit is null or unit ~ '^[a-z0-9][a-z0-9-]{0,79}$'));
 
 -- A student's picks on an assignment's teacher questions, recorded once (class_submit).
 create table if not exists public.class_submissions (
@@ -2681,7 +2685,9 @@ begin
   if n not between 2 and 6 or octet_length((p_data->'options')::text) > 4000 then return null; end if;
   if exists (select 1 from jsonb_array_elements(p_data->'options') o where jsonb_typeof(o) <> 'string' or length(o #>> '{}') not between 1 and 500) then return null; end if;
   if jsonb_typeof(p_data->'correct') <> 'number' or (p_data->>'correct') !~ '^[0-5]$' or (p_data->>'correct')::integer >= n then return null; end if;
-  if length(coalesce(p_data->>'why', '')) > 2000 or length(coalesce(p_data->>'topic', '')) > 80 or length(coalesce(p_data->>'unit', '')) > 40 then return null; end if;
+  if length(coalesce(p_data->>'why', '')) > 2000 then return null; end if;
+  if coalesce(p_data->>'topic', '') <> '' and p_data->>'topic' !~ '^[a-z0-9][a-z0-9-]{0,79}$' then return null; end if;
+  if coalesce(p_data->>'unit', '') <> '' and p_data->>'unit' !~ '^[a-z0-9][a-z0-9-]{0,79}$' then return null; end if;
   if p_id is null then
     if (select count(*) from public.class_questions where teacher_id = auth.uid()) >= 1000 then return null; end if;
     insert into public.class_questions (teacher_id, course, topic, unit, q, options, correct, why)

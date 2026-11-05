@@ -108,8 +108,10 @@ test('behaviour in Postgres (PGlite)', async (t) => {
   const qd = { course: 'apbio', topic: 'water', unit: 'unit-1', q: 'Why does ice float?', options: ['Less dense', 'More dense', 'Same density'], correct: 0, why: 'Hydrogen bonds hold it open.' };
   const qid = await as(T, `select public.teach_save_question(null, $1) r`, [JSON.stringify(qd)]);
   assert.ok(qid);
-  for (const bad of [{ ...qd, correct: 3 }, { ...qd, correct: 1.5 }, { ...qd, options: ['only one'] }, { ...qd, course: 'nremt' }, { ...qd, q: '' }, { ...qd, options: ['a', 2] }])
+  for (const bad of [{ ...qd, correct: 3 }, { ...qd, correct: 1.5 }, { ...qd, options: ['only one'] }, { ...qd, course: 'nremt' }, { ...qd, q: '' }, { ...qd, options: ['a', 2] },
+    { ...qd, topic: '"><script>' }, { ...qd, topic: 'Water' }, { ...qd, unit: 'javascript:x' }, { ...qd, topic: '-x' }, { ...qd, topic: 'a'.repeat(81) }])
     assert.equal(await as(T, `select public.teach_save_question(null, $1) r`, [JSON.stringify(bad)]), null, 'refused: ' + JSON.stringify(bad).slice(0, 60));
+  await assert.rejects(db.query(`insert into public.class_questions (teacher_id, course, topic, q, options, correct) values ($1, 'apbio', 'a b', 'x', '["a","b"]', 0)`, [T]), /class_questions_slug_check/, 'the table refuses a topic that is not an id');
   assert.equal(await as(S, `select public.teach_save_question(null, $1) r`, [JSON.stringify(qd)]), null, 'students cannot write questions');
   assert.equal((await as(T, `select public.teach_questions('apbio') r`)).length, 1);
   assert.equal((await as(C, `select public.teach_questions('apbio') r`)).length, 0, 'banks are per teacher');
