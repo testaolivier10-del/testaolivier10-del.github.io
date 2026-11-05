@@ -61,16 +61,18 @@
     var until = P.FOUNDING && P.FOUNDING.until;
     var note = (until ? '<span data-founding-until="' + until + '">Founding price, then $' + low.price + ' · </span>' : '') + term;
     d.classList.add('deal-v2');
+    /* Condensed (owner, 2026-11-05): only the rows where Premium adds something, at most five, with the price and
+       the button in the column heads. Everything else is one click away on the pricing page. */
+    var diff = c.rows.filter(function(r){ return r[1] !== r[2]; }).slice(0, 5);
+    var same = c.rows.filter(function(r){ return r[1] === 'yes' && r[2] === 'yes'; }).map(function(r){ return r[0]; });
     d.innerHTML = '<h2 class="deal-h">Free or <span>Premium</span></h2>' +
       '<div class="deal-t" role="table" aria-label="Free and Premium in ' + esc(c.name) + '">' +
-        '<div class="r hd" role="row"><span role="columnheader"></span>' +
-          '<span class="f" role="columnheader"><b>Free</b><small>$0</small></span>' +
-          '<span class="p" role="columnheader"><b>Premium</b><small class="amt">' + (amt ? amt.innerHTML : '') + '</small><em>' + note + '</em></span></div>' +
-        c.rows.map(function(r){ return '<div class="r" role="row"><span class="w" role="rowheader">' + esc(r[0]) + '</span><span class="f" role="cell">' + cell(r[1]) + '</span><span class="p" role="cell">' + cell(r[2]) + '</span></div>'; }).join('') +
-        '<div class="r ft" role="row"><span role="cell"></span>' +
-          '<span class="f" role="cell">' + (free ? '<a class="btn-ghost" href="' + free.getAttribute('href') + '">Start free</a>' : '') + '</span>' +
-          '<span class="p" role="cell">' + (buy ? buy.outerHTML : '') + (alt ? alt.outerHTML : '') + '<small class="sure">7 day refund · never renews</small></span></div>' +
-      '</div>' + (cmp ? '<p class="deal-more"><a href="' + cmp.getAttribute('href') + '">See every detail</a></p>' : '');
+        '<div class="r hd" role="row"><span class="w" role="columnheader"></span>' +
+          '<span class="f" role="columnheader"><b>Free</b><small>$0</small>' + (free ? '<a class="btn-ghost" href="' + free.getAttribute('href') + '">Start free</a>' : '') + '</span>' +
+          '<span class="p" role="columnheader"><b>Premium</b><small class="amt">' + (amt ? amt.innerHTML : '') + '</small>' + (buy ? buy.outerHTML : '') + '<em>' + note + ' · never renews</em></span></div>' +
+        diff.map(function(r){ return '<div class="r" role="row"><span class="w" role="rowheader">' + esc(r[0]) + '</span><span class="f" role="cell">' + cell(r[1]) + '</span><span class="p" role="cell">' + cell(r[2]) + '</span></div>'; }).join('') +
+      '</div><p class="deal-more">' + (same.length ? '<span>Free in both: ' + esc(same.join(' · ')) + '.</span>' : '<span></span>') +
+      '<span class="lk">' + (alt ? alt.outerHTML : '') + (cmp ? '<a href="' + cmp.getAttribute('href') + '">See every detail</a>' : '') + '</span></p>';
     founding(d);
   }
   if(window.LevlPremium) deal();

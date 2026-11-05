@@ -554,3 +554,29 @@
 .lp-resume small{font:800 12px var(--font-ui);text-transform:uppercase;letter-spacing:.06em;opacity:.8}
 /* AP® unit exam weight on the Learn page (design preview 2026-11-05) */
 .tb-weight{display:inline-block;margin-left:6px;padding:2px 10px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12.5px var(--font-ui)}
+/* Free or Premium, condensed (owner, 2026-11-05) */
+.deal-t .r>span{padding:8px 14px}
+.deal-t .hd>span{padding-top:14px;padding-bottom:12px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.deal-t .hd>.w{align-items:flex-start;justify-content:flex-end}
+.deal-t .hd .both{font:600 12.5px/1.4 var(--font-ui);color:var(--muted);text-transform:none}
+.deal-t .hd .p small.amt{font-size:26px;margin:0}
+.deal-t .hd .btn-gold,.deal-t .hd .btn-ghost{margin-top:6px;padding:9px 16px;font-size:14px;white-space:nowrap}
+.deal-t .hd em{margin-top:2px}
+.deal-more .plan__alt{color:var(--muted);font-weight:700}
+@media (max-width:640px){.deal-t .hd .both{display:none}.deal-t .hd .btn-gold,.deal-t .hd .btn-ghost{white-space:normal;padding:8px 10px;font-size:13px}}
+.deal-t .r{align-items:stretch}
+.deal-t .r>span{display:flex;align-items:center;justify-content:center;text-align:center}
+.deal-t .r>.w{justify-content:flex-start;text-align:left}
+.deal-t .hd>span{flex-direction:column}
+.deal-more{display:flex;justify-content:space-between;align-items:baseline;gap:6px 18px;flex-wrap:wrap;text-align:left;font:600 13.5px/1.45 var(--font-ui);color:var(--muted)}
+.deal-more .lk{display:flex;gap:14px;font-weight:800}
+@media (max-width:640px){
+  .deal-t .r{grid-template-columns:1fr 1fr;grid-template-areas:"w w" "f p"}
+  .deal-t .r>.w{grid-area:w;padding:9px 12px 2px;font-size:13px;color:var(--muted);background:var(--white)}
+  .deal-t .r>.f{grid-area:f}.deal-t .r>.p{grid-area:p}
+  .deal-t .r+.r>.f,.deal-t .r+.r>.p{border-top:0}
+  .deal-t .hd>.w{display:none}
+  .deal-t .hd{grid-template-areas:"f p"}
+  .deal-t .hd em{font-size:11.5px}
+  .deal-t .hd .btn-gold,.deal-t .hd .btn-ghost{white-space:nowrap;padding:9px 12px}
+}
