@@ -1,0 +1,9 @@
+{"positive_global_styles":["cinematic film score","night city","orchestral strings","felt piano","restrained","high quality mix"],
+ "negative_global_styles":["vocals","lyrics","drums kit","EDM","comedy","choir","trailer brass"],
+ "sections":[
+  {"section_name":"rooftop","positive_local_styles":["tense anticipation","pulsing low string ostinato","D minor","quiet"],"negative_local_styles":[],"duration_ms":8200,"lines":[]},
+  {"section_name":"question","positive_local_styles":["suspended","curious","high held strings","sparse piano"],"negative_local_styles":["drums"],"duration_ms":6500,"lines":[]},
+  {"section_name":"concrete","positive_local_styles":["dark","one heavy low hit","ominous low strings"],"negative_local_styles":[],"duration_ms":4300,"lines":[]},
+  {"section_name":"the airbag","positive_local_styles":["relief","turn to D major","warm strings lift","gentle"],"negative_local_styles":[],"duration_ms":8600,"lines":[]},
+  {"section_name":"impulse","positive_local_styles":["steady","thoughtful piano melody","light strings"],"negative_local_styles":[],"duration_ms":6900,"lines":[]},
+  {"section_name":"reset","positive_local_styles":["warm resolution","settling","final sustained chord"],"negative_local_styles":[],"duration_ms":5000,"lines":[]}]}

@@ -1,0 +1,8 @@
+{"positive_global_styles":["cinematic nature documentary score","eerie wonder","felt piano","soft strings","delicate plucked strings","restrained","high quality mix"],
+ "negative_global_styles":["vocals","lyrics","drums kit","EDM","comedy","choir","trailer brass"],
+ "sections":[
+  {"section_name":"the trail","positive_local_styles":["mysterious","sparse plucked strings","low warm pad","A minor","quiet"],"negative_local_styles":[],"duration_ms":8800,"lines":[]},
+  {"section_name":"the climb","positive_local_styles":["slow rising ostinato","building tension","soft strings"],"negative_local_styles":[],"duration_ms":5700,"lines":[]},
+  {"section_name":"noon","positive_local_styles":["near silence","high sustained string note","held breath","one low soft piano note at the end"],"negative_local_styles":["drums"],"duration_ms":7100,"lines":[]},
+  {"section_name":"the stalk","positive_local_styles":["dark wonder","slow swell","low strings","eerie harmonics"],"negative_local_styles":[],"duration_ms":7500,"lines":[]},
+  {"section_name":"the end","positive_local_styles":["settling","felt piano motif returns","soft unresolved ending","fade"],"negative_local_styles":[],"duration_ms":7400,"lines":[]}]}

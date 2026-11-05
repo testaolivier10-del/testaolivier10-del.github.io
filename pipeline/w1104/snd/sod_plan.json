@@ -1,0 +1,9 @@
+{"positive_global_styles":["cinematic documentary score","1940s gravity","orchestral strings","felt piano","restrained","high quality mix"],
+ "negative_global_styles":["vocals","lyrics","drums kit","EDM","comedy","choir","trailer brass"],
+ "sections":[
+  {"section_name":"hook","positive_local_styles":["ominous","low sustained strings","C minor","distant timpani roll"],"negative_local_styles":[],"duration_ms":5800,"lines":[]},
+  {"section_name":"leftovers","positive_local_styles":["steady pulsing low strings","methodical","quiet"],"negative_local_styles":[],"duration_ms":6800,"lines":[]},
+  {"section_name":"the dump","positive_local_styles":["building tension","string tremolo rising","suspense"],"negative_local_styles":[],"duration_ms":5800,"lines":[]},
+  {"section_name":"explosion","positive_local_styles":["one big low orchestral hit at the start","then sustained dark chord ringing out"],"negative_local_styles":[],"duration_ms":3200,"lines":[]},
+  {"section_name":"why","positive_local_styles":["curious","light pizzicato","piano ostinato","wonder","quiet"],"negative_local_styles":["drums"],"duration_ms":11200,"lines":[]},
+  {"section_name":"end","positive_local_styles":["warm resolution","soft strings","settling","final sustained chord"],"negative_local_styles":[],"duration_ms":7200,"lines":[]}]}
