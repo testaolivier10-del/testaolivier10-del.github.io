@@ -19,6 +19,7 @@ import { runEmailReminders, unsubscribe } from './email.js';
 import { umamiProxy } from './umami.js';
 import { MODELS, extractText } from './ai.js';
 import { gradeRoute } from './frq-grade.js';
+import { classApiRoute, classPublicRoute, CLASS_PUBLIC_PATHS } from './classes.js';
 import { premiumCheckout, premiumWebhook, premiumRefund, premiumGuarantee, runPassEnding, reconcilePolar, bearerToken, sessionUser } from './premium.js';
 
 // Only these origins may call the Worker. Without this, anyone could point
@@ -313,6 +314,15 @@ export default {
       return reply(r.body, r.status);
     }
 
+    /* Teacher-class integrations called by an LMS, by Google or from an email (src/classes.js): no Origin
+       and no session; each checks its own signed state, ticket or token. Throttled per IP. */
+    if (CLASS_PUBLIC_PATHS.includes(path)) {
+      if (await throttled(env, request, 'class-pub')) {
+        return new Response('Too many requests. Try again in a minute.', { status: 429, headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Retry-After': '60' } });
+      }
+      return classPublicRoute(request, env, path);
+    }
+
     /* Analytics, forwarded to Umami (src/umami.js says why and what is
        dropped). Before the throttle below on purpose: that one is shared with
        the assistant, and a student's page views must not spend its allowance.
@@ -360,6 +370,15 @@ export default {
       const later = ctx && typeof ctx.waitUntil === 'function' ? (p) => ctx.waitUntil(p) : undefined;
       const r = await gradeRoute(request, env, { later });
       return reply(r.body, r.status);
+    }
+
+    /* Teacher-class integrations from the site (src/classes.js): reminders, family report links, quotes,
+       the teacher's AI first pass on free responses, Google Classroom and LTI. Each checks the session
+       and that the teacher owns the class. */
+    if (path.startsWith('/class/') || path.startsWith('/lti/')) {
+      const r = await classApiRoute(request, env, path);
+      if (r) return reply(r.body, r.status);
+      return reply({ error: 'Not found' }, 404);
     }
 
     // Pass-or-extend (NREMT); its rules are in premiumGuarantee().

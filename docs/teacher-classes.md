@@ -87,6 +87,44 @@ owner merges. Tick items here as they ship.
   renders whatever `window.LevlTeachIntegrations.settings(ctx)` / `.assignment(ctx)` returns (HTML string) and calls
   `.wire(ctx)` after render.
 
+### Stream C (integrations): status, 2026-11-04
+
+Built, tested, not deployed (Worker not deployed, `2026-11d` not applied). Everything is off until the owner steps below.
+
+| Item | Status | Where |
+| --- | --- | --- |
+| C1 Reminder emails | Built. Teacher ticks missing / not started students on an assignment page and presses Send; Worker checks ownership, looks up addresses (teacher never sees them), sends plain text through Resend. Limits in SQL: 1 per student per 20 h (any teacher), 200 a day per teacher, 60 per request; one-click "stop teacher reminders" (GET asks, POST acts). No automatic sends. | `worker/src/class-mail.js`, `class_mail_take` |
+| C2 Family progress report | Built. Printable page for the teacher (`?c=&s=`) and an expiring share link (1-30 days, made by the teacher or the student, only a SHA-256 stored, dies when the membership ends). No parent emails anywhere. | `teach/report.html`, `assets/class/report.js`, `class_report_get` |
+| C3 Google Classroom | Built behind `CLASS_GOOGLE`. OAuth (refresh token AES-GCM encrypted under `CLASS_SECRET`, stored only when the signed-in teacher who started it claims it), link a course, roster match by email (stores Classroom user ids, not emails), invite non-members by email with the join link, post an assignment as coursework with the course link, grade passback for required assignments (teacher presses Send; teacher returns grades in Classroom). | `worker/src/class-google.js` |
+| C4 Canvas / Schoology (LTI 1.3) | Built behind `CLASS_LTI`. OIDC login and launch (RS256 against the platform JWKS, nonce signed in the state and single-use), deep linking to a class assignment (line item for required ones), AGS score passback from the assignment page, Canvas JSON config, JWKS. Setup guide with the registration form for admins. Not yet tried against a real Canvas or Schoology. | `worker/src/class-lti.js`, `teach/lms.html`, `teach/lti.html` |
+| C5 Quote / purchase order | Built. Signed-in form, stored, emailed to `CLASS_SALES_TO` (default hello@) with Reply-To, receipt to the teacher. Polar invoices only paid orders (a PDF per paid order); no unpaid invoice or net-30, so purchase orders are answered by email. | `teach/quote.html`, `classQuote` |
+| C6 Privacy for districts + DPA | Built. Data table, FERPA (school official only under a signed agreement), COPPA (13+, no school consent relied on), retention, deletion, security (no certification claimed), subprocessors; fillable DPA following the SDPC NDPA structure, marked unsigned, owner signs. `privacy.html` mentions the new tools. | `teach/privacy-agreement.html` |
+| C7 Teacher FRQ scoring | Built. Student sends the draft from "Your classes" (join.html); teacher ticks rubric points, comments, saves; student sees score and comment. AI first pass: Claude only, only with `FRQ_GRADER` on (or owner) and a model in the launch rule's Results table (`CLASS_FRQ_PASSED_MODELS`), 60 a day per teacher, a suggestion the teacher must save. | `class_frq_*`, `teach_frq_*`, `worker/src/class-frq.js`, `assets/class/class-frq.js` |
+
+Tests: `scripts/test/worker-classes.test.mjs` (17), `sql-migration.test.mjs` (2026-11d grants, RLS, Worker-only), PGlite
+`scripts/test/pglite/classes-integrations.mjs` (57 checks), browser render of every new page at 390 px and the cards on the sample class.
+
+Contract notes for A1 / A2 (no edits to their files):
+- `teach.js` passes `ctx = { rep, assignment, demo }` to `LevlTeachIntegrations.settings / assignment / wire`; nothing else is needed.
+  `LevlTeachIntegrations.gradeList(ctx, zeroMissing, frqScores)` is the score list the grade buttons send.
+- A teacher's FRQ score (`teach_frq_work` → `score.got / score.of`) could replace the self-score in `status` for `frq` (A1's call).
+- Classroom and LMS links open `/<course dir>/?la=<id>` (the course home with the card); A2 may scroll to or open that assignment.
+- `window.LevlClassFrq.submit(assignmentId, course, frqId)` is ready for a "Send to my teacher" button on FRQ pages (A2).
+
+Owner steps for stream C:
+1. Supabase SQL editor: run `scripts/sql/migrations/2026-11d-classes-integrations.sql` (after 2026-11b; independent of 2026-11c).
+2. Worker secret `CLASS_SECRET` (`openssl rand -base64 48`). Reminders, report links and stop links need it plus the existing `RESEND_API_KEY` / `REMINDER_FROM`; merge to main deploys.
+3. Google Classroom: Google Cloud project, enable the Classroom API, OAuth consent screen with the scopes in `GC_SCOPES`
+   (classroom.courses.readonly, rosters.readonly, profile.emails, coursework.students, openid, email), a Web client with redirect URI
+   `https://api.levlprep.com/class/google/callback`; secrets `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`; `CLASS_GOOGLE = "owner"` to try,
+   then app verification by Google (sensitive scopes) before `"on"`.
+4. LTI: `node scripts/lti-keygen.mjs` → secret `LTI_PRIVATE_KEY`; `CLASS_LTI = "owner"`; try it on a Canvas instance where you
+   can add a developer key (a school's test instance or an Instructure sandbox), then `"on"`.
+5. AI first pass on teacher scoring: nothing extra; it follows `FRQ_GRADER` and the eval results.
+6. Read and approve the DPA draft and the district page before sending them to a school; sign each DPA; list on the SDPC registry.
+   When the first integration goes live, bump "Last updated" on `privacy.html` and `terms.html` together (check-site wants them equal).
+7. Optional: set `CLASS_SALES_TO` if quotes should go elsewhere; decide Class Premium pricing for quotes.
+
 ### Needs the owner (code ships behind flags until done)
 
 - Google Classroom: a Google Cloud project, OAuth consent screen with Classroom scopes, app verification.

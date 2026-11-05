@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canvas and Schoology Setup | LevlPrep</title>
+<meta name="description" content="Add LevlPrep to Canvas or Schoology with LTI 1.3: deep linking to class assignments and grades sent back to the gradebook.">
+<link rel="canonical" href="https://levlprep.com/teach/lms.html">
+<meta property="og:title" content="Canvas and Schoology Setup | LevlPrep">
+<meta property="og:description" content="Add LevlPrep to Canvas or Schoology with LTI 1.3: deep linking to class assignments and grades sent back to the gradebook.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/teach/lms.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../assets/site-pages.css">
+<link rel="stylesheet" href="../assets/class/class.css">
+<link rel="stylesheet" href="../assets/class/class-pages.css">
+
+</head>
+<body class="sp-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="site-header" data-site-header>
+  <div class="site-header__inner">
+    <span class="site-header__brand-row"><a class="site-header__brand" href="/" aria-label="LevlPrep home"><span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span></a></span>
+  </div>
+</header>
+
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
+  <section class="sp-hero sp-hero--solo">
+    <div>
+      <span class="sp-pill">For school admins</span>
+      <h1>Canvas and Schoology, <span>one-time setup.</span></h1>
+      <p class="hand">LTI 1.3, deep linking and grade passback</p>
+    </div>
+  </section>
+  <div class="lv-narrow lvp-wide lvp-prose">
+    <section class="lv-card lvp-note">
+      <p class="lv-mut"><b>Status:</b> LevlPrep for Canvas and Schoology is switched on school by school while it is new. If saving the form below says it is not turned on yet, email <a href="mailto:hello@levlprep.com">hello@levlprep.com</a> with your school&rsquo;s name and we switch it on.</p>
+    </section>
+
+    <h2 class="lv-h2">What teachers <span>get</span></h2>
+    <ul>
+      <li>In an LMS assignment, a teacher picks <b>LevlPrep</b>, signs in to LevlPrep and chooses one of their class&rsquo;s assignments (LTI Deep Linking).</li>
+      <li>Students open it from the LMS, sign in to LevlPrep once, and land on the course with that assignment. A student who is not in the teacher&rsquo;s LevlPrep class yet is sent to join it first.</li>
+      <li>Required assignments get a gradebook column. The teacher sends scores from the assignment&rsquo;s page in LevlPrep (LTI Assignment and Grade Services); nothing is sent automatically.</li>
+    </ul>
+
+    <h2 class="lv-h2">The tool&rsquo;s <span>details</span></h2>
+    <div class="table-wrap rp-tablewrap" tabindex="0"><table class="rp-table">
+      <tbody>
+        <tr><th scope="row">LTI version</th><td>1.3 (LTI Advantage: Deep Linking 2.0, Assignment and Grade Services 2.0)</td></tr>
+        <tr><th scope="row">OIDC login (initiation) URL</th><td><code>https://api.levlprep.com/lti/login</code></td></tr>
+        <tr><th scope="row">Redirect / target link URI</th><td><code>https://api.levlprep.com/lti/launch</code></td></tr>
+        <tr><th scope="row">Public keyset (JWKS) URL</th><td><code>https://api.levlprep.com/lti/jwks</code></td></tr>
+        <tr><th scope="row">Canvas JSON configuration URL</th><td><code>https://api.levlprep.com/lti/config.json</code></td></tr>
+        <tr><th scope="row">Placements</th><td>Assignment selection and link selection (Deep Linking request)</td></tr>
+        <tr><th scope="row">Scopes</th><td>Score (<code>lti-ags/scope/score</code>) and line item read only</td></tr>
+        <tr><th scope="row">Privacy level</th><td>Name only: LevlPrep needs the LMS user id and a first name, never an email address</td></tr>
+      </tbody>
+    </table></div>
+    <p class="lv-mut">LMSs often show tools inside a frame, where browsers may not remember a sign-in. If students keep being asked to sign in, set the tool to open in a new tab; the LevlPrep page also offers a new-tab link.</p>
+
+    <h2 class="lv-h2">Canvas, step by <span>step</span></h2>
+    <ol>
+      <li><b>Admin &rarr; Developer Keys &rarr; + Developer Key &rarr; + LTI Key.</b> Set <i>Method</i> to <i>Enter URL</i> and paste <code>https://api.levlprep.com/lti/config.json</code>. In <i>Redirect URIs</i> put <code>https://api.levlprep.com/lti/launch</code>. Save.</li>
+      <li>Turn the key <b>On</b> and copy its <b>Client ID</b> (the number in the Details column).</li>
+      <li><b>Admin &rarr; Settings &rarr; Apps &rarr; View App Configurations &rarr; + App</b>, choose <i>By Client ID</i>, paste the Client ID, install. Open the installed app&rsquo;s settings and copy its <b>Deployment ID</b>.</li>
+      <li>Fill in the form below with <i>Canvas</i>, your Client ID, Deployment ID and your school&rsquo;s Canvas address in the token URL. Test and beta Canvas use the issuer <code>https://canvas.test.instructure.com</code> or <code>https://canvas.beta.instructure.com</code>.</li>
+    </ol>
+
+    <h2 class="lv-h2">Schoology, step by <span>step</span></h2>
+    <ol>
+      <li>Get permission to build apps: in an enterprise Schoology, a System Administrator grants <i>Schoology Apps: Develop apps</i>; otherwise request developer access from Schoology.</li>
+      <li>At <b>app.schoology.com/apps/publisher</b>, press <b>Add App</b> and make an <b>LTI 1.3</b> app with the login and redirect URLs and keyset URL in the table above; turn on Deep Linking and Assignment and Grade Services.</li>
+      <li>On the app&rsquo;s profile, <i>Options &rarr; API Info</i> shows the <b>Client ID</b>. Install the app for your school; <i>Configure</i> next to it in the district app list shows the <b>Deployment ID</b>.</li>
+      <li>Fill in the form below with <i>Schoology</i> and those two values.</li>
+    </ol>
+    <p class="lv-mut">Schoology&rsquo;s menus change more often than Canvas&rsquo;s; if a field is named differently, the values in the table above are what matter.</p>
+
+    <h2 class="lv-h2">Register your <span>LMS</span></h2>
+    <form class="lv-card" id="lmForm">
+      <p class="lv-mut">Fill in from: <button type="button" class="lv-btn is-sm is-ghost" data-preset="canvas">Canvas</button> <button type="button" class="lv-btn is-sm is-ghost" data-preset="schoology">Schoology</button></p>
+      <div class="lv-grid2">
+        <label class="lv-field"><span>Name for your records</span><input class="lv-in" id="lm_label" maxlength="80" placeholder="Lincoln High Canvas"></label>
+        <label class="lv-field"><span>Issuer</span><input class="lv-in" id="lm_issuer" required placeholder="https://canvas.instructure.com"></label>
+        <label class="lv-field"><span>Client ID</span><input class="lv-in" id="lm_client_id" required maxlength="120"></label>
+        <label class="lv-field"><span>Deployment ID</span><input class="lv-in" id="lm_deployment_id" maxlength="200"></label>
+        <label class="lv-field"><span>Authorization (OIDC auth) URL</span><input class="lv-in" id="lm_auth_url" required type="url"></label>
+        <label class="lv-field"><span>Access token URL</span><input class="lv-in" id="lm_token_url" required type="url"></label>
+        <label class="lv-field"><span>Platform keyset (JWKS) URL</span><input class="lv-in" id="lm_jwks_url" required type="url"></label>
+      </div>
+      <button class="lv-btn is-accent" type="submit">Save</button>
+      <p class="lv-msg" id="lmMsg" role="status" aria-live="polite"></p>
+      <p class="lv-mut" style="margin-top:12px">Saving needs a LevlPrep sign-in; the registration is tied to that account, and only it can change the addresses later. Another deployment of the same key can be added the same way.</p>
+    </form>
+
+    <h2 class="lv-h2">What the LMS and LevlPrep <span>share</span></h2>
+    <ul>
+      <li>The LMS sends, at each launch: its user id for the person, their role, the course&rsquo;s id and title and, for graded links, the gradebook column&rsquo;s address. LevlPrep keeps the user id and the column address for a student who signs in, so grades can go back; the rest is used for that launch only.</li>
+      <li>LevlPrep sends the LMS: the assignment link a teacher picked, and the scores a teacher chooses to send.</li>
+      <li>Leaving the LevlPrep class, or deleting the LevlPrep account, deletes the stored LMS id. More on <a href="privacy-agreement.html">student data privacy</a>.</li>
+    </ul>
+  </div>
+</div>
+<div class="xshell">
+  <div class="xsection">
+    <footer style="margin-top:0">
+      <p class="privacy-link"><a href="../privacy.html#schools">Privacy</a> &middot; <a href="../teach/privacy-agreement.html">For districts</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../teach/">Teachers</a> &middot; <a href="../join.html">Join a class</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/errors.js" defer></script>
+<script src="../assets/account.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<script src="../assets/class/lms.js" defer></script>
+</body>
+</html>

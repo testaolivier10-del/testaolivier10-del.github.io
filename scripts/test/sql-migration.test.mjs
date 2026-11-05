@@ -25,7 +25,8 @@ const PRE_MAC = SCHEMA.replaceAll(", 'apcalcbc', 'apmacro')", ", 'apcalcbc')");
 const PRE_BC = PRE_MAC.replaceAll(", 'apprecalc', 'apcalcbc')", ", 'apprecalc')");
 
 const WORKER_ONLY = ['unsubscribe_email_reminder', 'premium_add_pass', 'premium_refund_order', 'premium_rechain', 'count_premium_paid',
-  'frq_grade_take', 'frq_grade_give_back', 'count_frq_grade', 'referral_email_key', 'referral_welcome', 'referral_reward'];
+  'frq_grade_take', 'frq_grade_give_back', 'count_frq_grade', 'referral_email_key', 'referral_welcome', 'referral_reward',
+  'class_mail_take', 'class_member_emails', 'class_report_get', 'class_email_stop'];
 
 function browserRpcs() {
   const names = new Set();
@@ -383,4 +384,38 @@ test('2026-10m-referrals.sql: rewards go through premium_add_pass, internal help
   for (const f of ['referral_welcome', 'referral_reward', 'referral_email_key'])
     assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`));
   assert.doesNotMatch(mig, /course\s+(?:not\s+)?in\s*\(/, 'no course list: premium_add_pass refuses unknown courses');
+});
+
+/* Stream C of teacher classes v2 (docs/teacher-classes.md). Behaviour checked against PGlite with
+   scripts/test/pglite/classes-integrations.mjs (57 checks: grants, FRQ ownership, mail limits, report links,
+   cascades on leaving, deleting a class and deleting an account). */
+test('2026-11d-classes-integrations.sql: Worker-only tables and functions stay with the service role, RLS on, no course list', () => {
+  const mig = readFileSync('scripts/sql/migrations/2026-11d-classes-integrations.sql', 'utf8');
+  assert.match(mig, /NOT APPLIED/);
+  const tables = [...mig.matchAll(/create table if not exists public\.(\w+) \(/g)].map((m) => m[1]);
+  assert.ok(tables.length >= 11, 'all the integration tables are defined');
+  for (const t of tables) {
+    assert.ok(mig.includes(`alter table public.${t} enable row level security;`), `${t} has RLS`);
+    assert.ok(SCHEMA.includes(`create table if not exists public.${t} (`), `${t} is in schema.sql`);
+    assert.match(mig, new RegExp(`revoke all on table [^;]*public\\.${t}\\b[^;]* from anon, authenticated;`), `${t} is revoked from browsers`);
+    assert.match(mig, new RegExp(`grant select, insert, update, delete on table [^;]*public\\.${t}\\b[^;]* to service_role;`), `${t} is granted to the service role`);
+  }
+  assert.doesNotMatch(mig, /grant [^;]* on table [^;]* to [^;]*(anon|authenticated)/, 'no table is granted to a browser role');
+  const fns = blocks(mig);
+  for (const f of ['class_mail_take', 'class_member_emails', 'class_report_get', 'class_email_stop']) {
+    assert.ok(fns.has(f), `${f} is defined`);
+    assert.match(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to service_role;`));
+    assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`), `${f} stays Worker only`);
+  }
+  for (const f of ['class_frq_submit', 'class_frq_mine', 'teach_frq_work', 'teach_frq_score']) {
+    assert.match(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to authenticated;`), `${f} is a browser RPC`);
+    assert.match(fns.get(f), /auth\.uid\(\)/, `${f} acts only for the caller`);
+  }
+  // Teachers only reach their own classes; the token column is ciphertext from the Worker.
+  assert.match(fns.get('teach_frq_work'), /c\.teacher_id = auth\.uid\(\)/);
+  assert.match(fns.get('teach_frq_score'), /c\.teacher_id = auth\.uid\(\)/);
+  assert.match(mig, /refresh_enc\s+text not null/);
+  assert.doesNotMatch(mig, /course\s+(?:not\s+)?in\s*\(/, 'no course list after the last course migration');
+  // A family report never carries the answers picked or the flags.
+  assert.doesNotMatch(fns.get('class_report_get'), /'picks'|'flags'/);
 });
