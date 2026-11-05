@@ -77,7 +77,16 @@
                                      (inside: true puts it inside a big target)
                                     per device; gone on first interaction
      s.suspend(on)                  hide the studio and give the page its
-                                    chrome back (a Premium gate, an error)
+                                    chrome back (an error)
+     s.lock(html | el | false)      a Premium tool for someone without the pass: the bar
+                                    stays, the lock card takes the stage and dock's place
+                                    (false gives the tool back). A course core that puts
+                                    its .premium-lock card in a [data-studio] mount gets
+                                    this by itself (adopt, at the end of this file).
+     s.startOver(fn)                what the menu's Start over does (opts.menu.startOver
+                                    too; false hides it). Default: the tool's own visible
+                                    "Start over" button, else a reload without the setup
+                                    saved in the link.
      s.root, s.stage, s.dock, s.why, s.details, s.about   the regions
    LevlStudio.stepper(container, opts) -> { go(i, focus?), refresh(), review(on) }
      One step at a time over existing graded inputs. opts:
@@ -113,7 +122,7 @@
      down to its sticky action row on load; nothing is left under the row.
    - A clamped caption gets a "More" button. Coach bubbles sit below their
      target (above it only when there is no room), never over it.
-   - On-stage text under 11 px is raised to 11 px (svg text by at most 2x;
+   - On-stage text under 12 px is raised to 12 px (svg text by at most 2.2x;
      data-ls-text="keep" on an svg or text opts out). Sideways scrollers in
      the stage and dock get an edge fade while more is hidden that way. The
      dock clips sideways overflow, so no row can make the page scroll sideways.
@@ -162,6 +171,7 @@
     expand: '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',
     plus: '<path d="M12 5v14M5 12h14"/>',
     minus: '<path d="M5 12h14"/>',
+    restart: '<path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/>',
     rotate: '<rect x="3" y="8" width="13" height="12" rx="2"/><path d="M14 3a7 7 0 0 1 7 7M18.5 7.5L21 10l2.5-2.5"/>'
   };
   function mq(q){ try{ return matchMedia(q); }catch(e){ return null; } }
@@ -174,7 +184,7 @@
   function mount(opts){
     opts = opts || {};
     if(current) return current;
-    var s = {}, mode = null, lastFocus = null, sheetOpen = false, tab = 'why';
+    var s = {}, mode = null, lastFocus = null, sheetOpen = false, tab = 'why', locked = false;
     var menuO = opts.menu || {}, slim = !!opts.slim;
     var ids = { title: nid('t'), why: nid('why'), det: nid('det'), sheetH: nid('sh'), menu: nid('m'), cap: nid('cap') };
 
@@ -825,7 +835,7 @@
 
     /* Sideways scrollers in the stage and dock: an edge fade while more is
        hidden that way. Rows of chips that stick out without scrolling wrap.
-       Phone text under 11 px on the stage is raised (see the header). */
+       Phone text under 12 px on the stage is raised (see the header). */
     function edge(el){
       var max = el.scrollWidth - el.clientWidth;
       el.classList.toggle('ls-xs', el.scrollLeft > 2);
@@ -854,6 +864,8 @@
     // Text is raised as it appears (in the observer, before it is painted),
     // so a tool that redraws every frame does not flicker.
     var FS0 = 'data-ls-fs0';
+    // 12 px: the phone rule for words on a picture (docs/tools-phone-pass.md; consistency audit 2026-11, C4).
+    var MINPX = 12;
     function unbump(){ Array.prototype.forEach.call(stageBody.querySelectorAll('[' + FS0 + ']'), function(el){ el.style.fontSize = el.getAttribute(FS0); el.removeAttribute(FS0); }); }
     function bumpOn(){ return !!(phoneQ && phoneQ.matches) && !big; }
     function raise(el, px){ if(!el.hasAttribute(FS0)) el.setAttribute(FS0, el.style.fontSize || ''); el.style.fontSize = (Math.round(px * 100) / 100) + 'px'; }
@@ -862,11 +874,13 @@
       var texts = box.matches('text, tspan, textPath') ? [box] : box.querySelectorAll('text, tspan, textPath');
       Array.prototype.forEach.call(texts, function(t){
         if(t.hasAttribute(FS0) || t.closest('[data-ls-text=keep]') || !t.textContent.trim()) return;
-        var m = t.getScreenCTM && t.getScreenCTM(); if(!m) return;
+        var m = t.getScreenCTM && t.getScreenCTM(); if(!m){ unlaid = true; return; }
         var fs = parseFloat(getComputedStyle(t).fontSize), k = Math.hypot(m.a, m.b), eff = fs * k;
-        if(!(eff > 0) || eff >= 10.95) return;
+        // Not laid out yet (a figure drawn while its box had no size): measured again shortly.
+        if(!(eff > 0)){ unlaid = true; return; }
+        if(eff >= MINPX - 0.05) return;
         if(t.tagName !== 'text' && t.parentNode && parseFloat(getComputedStyle(t.parentNode).fontSize) === fs) return;
-        raise(t, fs * Math.min(2, 11 / eff));
+        raise(t, fs * Math.min(2.2, MINPX / eff));
       });
       if(box instanceof SVGElement) return;
       var els = [box].concat(Array.prototype.slice.call(box.querySelectorAll('*')));
@@ -874,10 +888,11 @@
         if(el instanceof SVGElement || el.hasAttribute(FS0) || /^(SUB|SUP|CANVAS|INPUT|SELECT|TEXTAREA|OPTION)$/.test(el.tagName) || el.closest('[data-ls-text=keep]')) return;
         if(!Array.prototype.some.call(el.childNodes, function(n){ return n.nodeType === 3 && n.textContent.trim(); }) || !el.getClientRects().length) return;
         var fs = parseFloat(getComputedStyle(el).fontSize);
-        if(fs > 0 && fs < 10.95) raise(el, 11);
+        if(fs > 0 && fs < MINPX - 0.05) raise(el, MINPX);
       });
     }
-    function bump(){ unbump(); bumpIn(stageBody); }
+    var unlaid = false, relaid = 0;
+    function bump(){ unbump(); unlaid = false; bumpIn(stageBody); if(unlaid && relaid++ < 6) queueTidy(true); }
     if(window.MutationObserver) new MutationObserver(function(recs){
       if(!bumpOn()) return;
       var seen = [];
@@ -885,12 +900,28 @@
         var list = r.type === 'characterData' ? [r.target.parentNode] : Array.prototype.slice.call(r.addedNodes);
         list.forEach(function(n){ if(n && n.nodeType === 3) n = n.parentNode; if(n && n.nodeType === 1 && seen.indexOf(n) < 0){ seen.push(n); } });
       });
+      unlaid = false;
       seen.forEach(function(n){ if(n.isConnected && !seen.some(function(o){ return o !== n && o.contains(n); })) bumpIn(n.matches('tspan') ? n.closest('text') || n : n); });
+      if(unlaid){ relaid = 0; queueTidy(true); }
     }).observe(stageBody, { childList: true, subtree: true, characterData: true });
     // tidy: edge fades, wrapping rows, the action row's height (after any
     // change, at most every 400 ms); a resize or Enlarge also re-raises text.
     var tidyT = 0, tidyAt = 0, tidyAll = false;
-    function tidy(){ tidyT = 0; tidyAt = Date.now(); if(tidyAll){ tidyAll = false; bump(); } sweep(); paintActH(); }
+    /* Nothing on the picture under Enlarge (consistency audit 2026-11, C3: "360°", "t (s)", "Ties" sat under it):
+       when a label meets the button, the stage keeps a strip free for it at its foot, from then on (so a redraw
+       cannot make it flip back and forth). */
+    function enlClear(){
+      if(enlBtn.hidden || big || stageBody.classList.contains('ls-enl-pad')) return;
+      var e = enlBtn.getBoundingClientRect();
+      if(!e.width) return;
+      var hit = Array.prototype.some.call(stageBody.querySelectorAll('svg text, svg tspan, .ls-pill, p, span, b, label, output'), function(t){
+        if(!t.textContent || !t.textContent.trim() || t.closest('[hidden]')) return false;
+        var r = t.getBoundingClientRect();
+        return r.width > 0 && Math.min(r.right, e.right) - Math.max(r.left, e.left) > 2 && Math.min(r.bottom, e.bottom) - Math.max(r.top, e.top) > 2;
+      });
+      if(hit){ stageBody.classList.add('ls-enl-pad'); remeasure(); }
+    }
+    function tidy(){ tidyT = 0; tidyAt = Date.now(); if(tidyAll){ tidyAll = false; bump(); } sweep(); paintActH(); enlClear(); }
     function queueTidy(all){
       if(all) tidyAll = true;
       if(tidyT) return;
@@ -939,7 +970,10 @@
     function item(key, ic, label, extra){ return '<button type="button" class="ls-mi" data-ls-act="' + key + '"' + (extra || '') + '>' + icon(ic) + '<span>' + label + '</span></button>'; }
     function buildMenu(){
       var h = '';
-      if(menuO.copyLink){ h += item('copy', 'link', 'Copy link to this setup'); acts.copy = copyLink; }
+      // Start over (consistency audit 2026-11, C2): every full tool has it, first in the menu. A locked tool has
+      // nothing to start over.
+      if(!slim && menuO.startOver !== false && !locked){ h += item('restart', 'restart', 'Start over'); acts.restart = startOver; }
+      if(menuO.copyLink && !locked){ h += item('copy', 'link', 'Copy link to this setup'); acts.copy = copyLink; }
       if(!slim){ h += item('about', 'info', 'About this tool'); acts.about = function(){ s.open('about'); }; }
       if(menuO.report){
         var r = menuO.report;
@@ -968,6 +1002,22 @@
       window.__levlTutorOpenOnLoad = true;
       var sc = document.createElement('script'); sc.src = '/assets/tutor.js'; document.head.appendChild(sc);
     };
+    /* Start over: the tool's own reset (menu.startOver: fn, or s.startOver(fn)); else a visible "Start over"
+       button the tool already has; else the tool reloaded without the setup saved in its link (?chapter= is
+       where you came from, not tool state, so it stays). */
+    function startOver(){
+      if(typeof menuO.startOver === 'function'){ menuO.startOver(); say('Started over.'); return; }
+      var own = Array.prototype.filter.call(root.querySelectorAll('button'), function(b){
+        return /^\s*start over\s*$/i.test(b.textContent) && !b.disabled && b.getClientRects().length && !menu.contains(b);
+      })[0];
+      if(own){ own.click(); say('Started over.'); return; }
+      var keep = '';
+      try{ var c = new URLSearchParams(location.search).get('chapter'); if(c) keep = '?chapter=' + encodeURIComponent(c); }catch(e){}
+      var to = location.pathname + keep;
+      if(to === location.pathname + location.search && !location.hash) location.reload();
+      else location.replace(to);
+    }
+    s.startOver = function(fn){ menuO.startOver = fn; buildMenu(); return s; };
     function copyLink(){
       var url = typeof menuO.copyLink === 'function' ? menuO.copyLink() : window.location.href;
       function fallback(){ try{ window.prompt('Copy this link', url); }catch(e){} }
@@ -1017,8 +1067,37 @@
       return s;
     };
 
+    /* ---------------- lock (a Premium tool for someone without the pass)
+       The tool screen stays: the bar (back, ?, the menu) and, in place of the
+       stage and dock, the lock card (consistency audit 2026-11, C1; model:
+       NREMT scenario-sim). s.lock(html | element) shows it, s.lock(false)
+       gives the tool back (a pass confirmed after load). */
+    var lockP = null;
+    s.lock = function(card){
+      var on = card !== false && card != null && card !== '';
+      if(on){
+        if(!lockP){
+          lockP = document.createElement('section');
+          lockP.className = 'ls-lockp';
+          lockP.setAttribute('aria-label', (opts.title || 'Tool') + ': Premium');
+          q('.ls-main').insertBefore(lockP, q('.ls-main').firstChild);
+        }
+        if(typeof card === 'string') lockP.innerHTML = card;
+        else { lockP.innerHTML = ''; list(card).forEach(function(el){ lockP.appendChild(el); }); }
+        // "?" still answers: what this tool does (the page's own description) when the tool has not explained itself.
+        if(!whyP.children.length){
+          var d = document.querySelector('meta[name="description"]');
+          if(d && d.content) whyP.innerHTML = '<p class="ls-lockwhy">' + esc(d.content) + '</p>';
+        }
+        if(big) s.enlarge(false);
+      } else if(lockP){ lockP.remove(); lockP = null; }
+      if(locked !== on){ locked = on; root.classList.toggle('is-locked', on); buildMenu(); }
+      return s;
+    };
+    s.locked = function(){ return locked; };
+
     /* ---------------- hint */
-    s.hint = function(o){ return hint(s, o, opts.slug); };
+    s.hint = function(o){ return locked ? null : hint(s, o, opts.slug); };
 
     /* The site footer (legal links, the course's notes) goes to the end of
        About, so the page is exactly one screen and nothing is lost. */
@@ -1122,15 +1201,43 @@
         if(b.height && b.bottom >= vh - 4 && b.top < foot) foot = b.top - 4;
       });
       var keep = [box('.ls-bar'), box('.ls-cap')], best = null;
-      [r.bottom + 12, r.top - th - 12].forEach(function(top, i){
-        var t0 = Math.max(8, Math.min(top, vh - 8 - th));
-        var c = { left: left, right: left + tw, top: t0, bottom: t0 + th };
-        var cost = over(c, r) * 50 + over(c, keep[0]) * 4 + over(c, keep[1]) * 2 + (t0 + th > foot ? 1e5 + (t0 + th - foot) * 100 : 0) + Math.abs(t0 - top) * 10 + (i ? 1 : 0);
-        if(!best || cost < best.cost) best = { cost: cost, top: t0, below: i === 0 };
+      /* Never over another control either (consistency audit 2026-11, C7: the bubble sat on Run, on a slider's
+         +, on a link): every visible button, link and field near the target counts, so the bubble takes the side,
+         or the horizontal place, that leaves them all clear. */
+      var ctl = [];
+      Array.prototype.forEach.call(s.root.querySelectorAll('button, a[href], input:not([type=hidden]), select, textarea, [role=slider], [tabindex="0"]'), function(el){
+        // (A big target the tip sits inside: its own buttons count too.)
+        if(el === target || (!o.inside && target.contains(el)) || el.contains(target) || el.closest('.ls-bar, .ls-menu, .ls-sheet, [hidden]')) return;
+        var b = el.getBoundingClientRect();
+        if(b.width && b.height && b.bottom > 0 && b.top < vh) ctl.push(b);
       });
+      function overCtl(c){ var n = 0; for(var k = 0; k < ctl.length; k++) n += over(c, ctl[k]); return n; }
+      var lefts = [left, Math.max(lo, Math.min(hi - tw, r.left)), Math.max(lo, Math.min(hi - tw, r.right - tw)), Math.max(8, lo), Math.max(8, hi - tw)];
+      // Right below or above it first; when both sit on other controls, a little further off (the arrow goes).
+      var tops = [[r.bottom + 12, 0], [r.top - th - 12, 1]];
+      for(var d = 8; d <= 240; d += 8){ tops.push([r.bottom + 12 + d, 0]); tops.push([r.top - th - 12 - d, 1]); }
+      tops.forEach(function(tp){
+        var top = tp[0], i = tp[1];
+        var t0 = Math.max(8, Math.min(top, vh - 8 - th));
+        var near = i ? r.top - 12 - (t0 + th) : t0 - r.bottom - 12;
+        lefts.forEach(function(l0, j){
+          var c = { left: l0, right: l0 + tw, top: t0, bottom: t0 + th };
+          var cost = over(c, r) * 50 + overCtl(c) * 20 + over(c, keep[0]) * 4 + over(c, keep[1]) * 2 + (t0 + th > foot ? 1e5 + (t0 + th - foot) * 100 : 0) + Math.abs(t0 - top) * 10 + Math.max(0, near) * 8 + (i ? 1 : 0) + j * 2;
+          if(!best || cost < best.cost) best = { cost: cost, top: t0, below: i === 0, left: l0 };
+        });
+      });
+      left = best.left;
       // A large text box: sit inside it, top left, so the tip never covers the
       // question written just above it (justification trainers).
-      if(o.inside && r.height > th + 40){ left = Math.max(8, r.left + 14); best = { top: Math.max(8, r.top + 14), below: true, inside: true }; }
+      if(o.inside && r.height > th + 40){
+        // Inside, at its top or its foot, whichever leaves the target's own buttons (a view switch on it) clear.
+        left = Math.max(8, r.left + 14);
+        best = null;
+        [Math.max(8, r.top + 14), Math.min(vh - 8 - th, r.bottom - th - 14), Math.max(8, r.top + (r.height - th) / 2)].forEach(function(t0, i){
+          var cst = overCtl({ left: left, right: left + tw, top: t0, bottom: t0 + th }) + i;
+          if(!best || cst < best.cost) best = { cost: cst, top: t0, below: true, inside: true };
+        });
+      }
       // Wider than the room left: pull it back so its right edge stays inside.
       if(left + tw > vw - 8) left = Math.max(8, vw - 8 - tw);
       tip.style.left = (left + sx) + 'px';
@@ -1251,6 +1358,38 @@
     // go() moves focus only if it is already in the stepper (not on load), unless told.
     return { go: function(i, focus){ at = i; paint(focus != null ? !!focus : container.contains(document.activeElement)); }, refresh: refresh, review: function(on){ o.done = null; reviewing = !!on; paint(false); }, head: head, nav: nav };
   }
+
+  /* ---------------- a gated tool page (consistency audit 2026-11, C1)
+     A course's core replaces a locked tool's mount with its Premium card
+     before the tool can mount the studio (the AP® cores and A&P: the card
+     inside the [data-studio] mount). Then the studio is built here around the
+     card, so a locked tool opens as the tool screen too: the bar (back to the
+     tools, ?, the menu) and the card, never the course page. */
+  function adopt(){
+    if(current) return;
+    var card = document.querySelector('[data-studio] .premium-lock');
+    if(!card) return;
+    var mountEl = card.closest('[data-studio]'), gate = card.parentNode !== mountEl ? card.parentNode : card;
+    var main = mountEl.closest('main') || document.body;
+    var h1 = main.querySelector('h1'), crumbs = main.querySelectorAll('nav[aria-label="Breadcrumb"] a');
+    var tools = Array.prototype.filter.call(crumbs, function(a){ return /tools\.html$/.test(a.getAttribute('href') || ''); })[0];
+    var home = crumbs.length > 1 ? crumbs[1] : null;
+    var rep = document.querySelector('[data-report-course][data-report-question]');
+    var s = mount({
+      title: h1 ? h1.textContent.trim() : document.title, course: home ? home.textContent.trim() : '',
+      back: tools ? tools.getAttribute('href') : '../tools.html', home: home ? home.getAttribute('href') : '../',
+      slug: mountEl.getAttribute('data-slug') || '', host: mountEl,
+      menu: rep ? { report: { course: rep.getAttribute('data-report-course'), id: rep.getAttribute('data-report-question') } } : {}
+    });
+    if(main.tagName === 'MAIN') main.classList.add('ls-host');
+    s.lock(gate);
+    mountEl.hidden = true;
+  }
+  // After every DOMContentLoaded handler (the cores mount their card in one).
+  function later(){ setTimeout(adopt, 0); }
+  // Deferred scripts run before DOMContentLoaded (readyState 'interactive'); load is the fallback.
+  if(document.readyState !== 'complete'){ document.addEventListener('DOMContentLoaded', later); window.addEventListener('load', adopt); }
+  else later();
 
   window.LevlStudio = { mount: mount, stepper: stepper, on: function(){ return !!current; }, get: function(){ return current; }, icon: icon };
 })();

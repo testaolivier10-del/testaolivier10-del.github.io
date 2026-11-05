@@ -621,7 +621,9 @@
       var lane = g.lane, open = lane === 'think' ? st.stage : lane === 'self' ? st.stage : lane === 'grow' ? st.period : st.style;
       var tx = phone ? 8 : sw + 20, ty = phone ? sh + 20 : 30;
       var t = timeline(tx, ty, W - tx - 4, phone ? H - ty - 6 : H - 60, g.age, { only: lane, hide: open ? [] : [lane] });
-      out += t.svg + '<text class="dv-now-h" x="' + (tx + (phone ? 0 : 124)) + '" y="' + (ty - (phone ? 2 : 10)) + '">' + esc(g.name) + ', age ' + esc(ageWords(g.age)) + '</text>';
+      // On a phone the name and age go at the right end of the row, clear of the lane's own label at its left
+      // ("Maya, age 13 months" sat on "Relationships"; consistency audit 2026-11, C3).
+      out += t.svg + '<text class="dv-now-h" x="' + (phone ? W - 4 : tx + 124) + '" y="' + (ty - (phone ? 2 : 10)) + '"' + (phone ? ' text-anchor="end"' : '') + '>' + esc(g.name) + ', age ' + esc(ageWords(g.age)) + '</text>';
       label = g.name + ', age ' + ageWords(g.age) + ', on the ' + D.LANES.filter(function(l){ return l.id === lane; })[0].name.toLowerCase() + ' lane of the lifespan timeline' + (open ? '.' : '; the stages are revealed after you answer.');
     } else if(g.kind === 'parent'){
       out = parentScene(g.warm, g.demand, W, H, { blank: !st.style }).svg;

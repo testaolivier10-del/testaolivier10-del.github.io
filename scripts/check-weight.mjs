@@ -209,7 +209,11 @@ const SHELL_BUDGETS = [
   // round 3 pages that use it. Measured 34.5 KB with all five steps combined.
   /* 35 -> 36 for the fixes after round 3 went live: tap-to-open questions, phone card stacking, the textbook
      Contents panel and the progress page column fit. Measured 35.2 KB. */
-  ['assets/course', 36],
+  /* 36 -> 38.5 for the tools consistency pass (docs/consistency-audit-2026-11.md, C1-C7): the Tool Studio's lock
+     screen around a course's Premium card, Start over in every tool's menu, hint bubbles that keep off every
+     control, the 12 px phone floor and the strip kept free under Enlarge. Only tool pages load tool-studio.*.
+     Measured 38.0 KB. */
+  ['assets/course', 38.5],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —

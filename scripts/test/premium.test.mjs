@@ -111,7 +111,7 @@ test('after launch a free user meets the gates', () => {
   assert.equal(premium.has('nremt'), false);
   const g = premium.gate('nremt', 'exam', 'results');
   assert.ok(g.includes('premium-lock') && g.includes('data-premium-open="nremt"'));
-  assert.equal(premium.card('ochem', 'summary').includes('See Premium'), true);
+  assert.equal(premium.card('ochem', 'summary').includes('Unlock from $'), true);
 });
 
 test('a course not yet on sale stays open after the site launches', () => {
@@ -282,5 +282,5 @@ test('every course has a Free vs Premium table, and its buttons show the price',
   }
   // One pass: the locked card's button names the price. Two: "from".
   assert.ok(/Unlock for \$\d/.test(premium.gate('apbio', 'exam', 'results')));
-  assert.ok(/See Premium, from \$\d/.test(premium.gate('ochem', 'exam', 'results')));
+  assert.ok(/Unlock from \$\d/.test(premium.gate('ochem', 'exam', 'results')));
 });

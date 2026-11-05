@@ -129,15 +129,20 @@
   };
 
   if(G && !G.toolFree(slug) && studio){
-    // The gate replaces the whole studio and gives the page its chrome back.
+    // The gate takes the tool's place inside the studio, under its bar (back, ?, the menu), like every course's
+    // locked tool (consistency audit 2026-11, C1). The page around it stays hidden, as for an open tool.
+    var gateBox = document.createElement('div');
     G.lock({
       feature: 'tool', source: 'tool-' + slug,
-      hide: [studio.root].concat([].slice.call(mount.parentNode.children).filter(function(el){ return el !== mount && el !== studio.root; })),
-      after: mount,
+      hide: [].slice.call(mount.parentNode.children).filter(function(el){ return el !== studio.root && el !== gateBox; }),
+      after: gateBox,
       notes: '../learn.html', notesText: 'Read the free textbook',
-      locked: function(){ var on = G.locked(); studio.suspend(on); return on; },
-      badgeIn: mount.querySelector('h1'),
-      badge: G.badge()
+      locked: function(){
+        var on = G.locked();
+        // gateBox goes into the studio's lock panel first, so lock() puts its card right after it, in the panel.
+        if(on) studio.lock(gateBox); else studio.lock(false);
+        return on;
+      }
     });
   } else if(G && !G.toolFree(slug)){
     var top = mount;

@@ -34,7 +34,9 @@
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <!-- tool-studio:start -->
+<link rel="stylesheet" href="../assets/course/tool-studio.css">
 <link rel="stylesheet" href="assets/nremt-studio.css">
+<script src="../assets/course/tool-studio.js" defer></script>
 <script src="assets/nremt-studio.js" defer></script>
 <!-- tool-studio:end -->
 <style>
@@ -100,6 +102,18 @@
     .page-head .lede{font-size:14px;}
   }
   .mn-cue{margin:18px 0 0;font:800 15px var(--font-ui);color:var(--ink);}
+  /* The tool screen (C6): one card on the stage, the list and Back / Next in the dock. */
+  .mn-stage{flex:1;min-height:0;overflow:auto;padding:12px 8px;}
+  .mn-stage .mnemonics-grid{display:block;max-width:560px;margin:0 auto;}
+  .mn-stage .card[hidden]{display:none;}
+  .ls-root .mn-cue{margin:0;}
+  .mn-dock{display:flex;flex-direction:column;gap:10px;}
+  .mn-pick-l{font:800 var(--ls-s,13px) var(--font-ui);color:var(--muted);}
+  .mn-pick{width:100%;min-height:48px;padding:0 14px;border:0;border-radius:14px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);
+    color:var(--ink);font:700 16px var(--font-ui);}
+  .mn-nav{display:flex;align-items:center;gap:10px;}
+  .mn-nav .ls-btn{flex:1;}
+  .mn-at{flex:none;font:800 13px var(--font-ui);color:var(--muted);font-variant-numeric:tabular-nums;}
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
@@ -157,18 +171,7 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Key EMT mnemonics</span></nav></div>
 <!-- crumb:end -->
 <!-- r3-toolband:start -->
-<link rel="stylesheet" href="../assets/course/r3.css">
-<link rel="stylesheet" href="../assets/course/r3-tools.css">
-<div class="r3 r3-toolband" data-cover="nremt">
-<section class="band short" aria-labelledby="r3ToolTitle"><div class="hwrap"><div>
-<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <a href="tools.html">Tools</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Mnemonics</span></nav>
-<p class="issue">NREMT-EMT &middot; Tools <i></i> Tool 4 of 8</p>
-<h1 class="deck" id="r3ToolTitle">Mnemonics</h1>
-<p class="hand">The core EMT mnemonics, letter by letter.</p>
-<p class="lede">The core EMT mnemonics on one page: SAMPLE, OPQRST, AVPU, DCAP-BTLS, BE-FAST, AEIOU-TIPS, APGAR and SLUDGEM, plus GCS and the rule of nines.</p>
-<div class="hero-ctas"><a class="btn-ghost" href="tools.html">&larr; All tools</a></div>
-</div><div class="art tool" aria-hidden="true"><img src="../assets/covers/tools/nremt/mnemonics.svg" alt="" width="640" height="320" decoding="async" fetchpriority="high"></div></div></section>
-</div>
+
 <!-- r3-toolband:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="xshell">
@@ -417,22 +420,63 @@
   </div>
   </div>
 
-  <div class="xsection">
-    <footer style="margin-top:0">
-      <p>Widely taught EMT frameworks. Cross-check specifics against your course.</p>
-      <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
-    </footer>
-  </div>
+  <footer style="margin-top:0">
+    <p>Widely taught EMT frameworks. Cross-check specifics against your course.</p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
 
 </div>
 <script src="assets/nav.js" defer></script>
 <script src="assets/mnemonic-check.js" defer></script>
 <script>
-/* Reference page (docs/tools-calm.md): the slim top bar and calm type over
-   the page's own content (assets/nremt-studio.js NremtStudio.slim); the
-   self-check on the cards stays where it is, as the page's one tool. */
+/* The tool screen (consistency audit 2026-11, C6; docs/tools-calm.md): one mnemonic on the stage at a time, picked
+   in the dock (the list, Back and Next). Each card keeps its own self-check (assets/mnemonic-check.js: Fill the
+   letters, the meter, the call link), moved into the stage, never copied. A #m-... link opens that card. Without
+   the studio (?studio=0, or no tool-studio.js) the page stays the full list it always was. */
 document.addEventListener('DOMContentLoaded', function(){
-  if(window.NremtStudio) window.NremtStudio.slim({ title: 'Mnemonics', back: 'study-notes.html', backLabel: 'Back to Learn' });
+  var grid = document.querySelector('.mnemonics-grid');
+  var cards = grid ? [].slice.call(grid.querySelectorAll(':scope > .card')) : [];
+  var cue = document.querySelector('.mn-cue');
+  var s = cards.length && window.NremtStudio ? window.NremtStudio.mount({ title: 'Mnemonics', slug: 'mnemonics', enlarge: false }) : null;
+  if(!s) return;
+  function name(c){ var h = c.querySelector('h2'); return h ? h.textContent.replace(/\s+/g, ' ').trim() : c.id; }
+  var stage = document.createElement('div');
+  stage.className = 'mn-stage';
+  stage.appendChild(grid);
+  s.add('stage', stage);
+  window.NremtStudio.scrollable(stage, 'Mnemonic');
+  var dock = document.createElement('div');
+  dock.className = 'mn-dock';
+  dock.innerHTML = '<label class="mn-pick-l" for="mnPick">Mnemonic</label><select id="mnPick" class="mn-pick">' +
+    cards.map(function(c, i){ return '<option value="' + i + '">' + name(c).replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</option>'; }).join('') + '</select>' +
+    '<div class="mn-nav ls-act"><button type="button" class="ls-btn mn-prev">Back</button><span class="mn-at" aria-hidden="true"></span><button type="button" class="ls-btn mn-next">Next</button></div>';
+  s.add('dock', dock);
+  if(cue) s.add('why', cue);
+  var pick = dock.querySelector('#mnPick'), prev = dock.querySelector('.mn-prev'), next = dock.querySelector('.mn-next'), at = dock.querySelector('.mn-at');
+  var cur = -1;
+  function go(i, push){
+    i = Math.max(0, Math.min(cards.length - 1, i));
+    cur = i;
+    cards.forEach(function(c, k){ c.hidden = k !== i; });
+    pick.value = String(i);
+    prev.disabled = i === 0; next.disabled = i === cards.length - 1;
+    at.textContent = (i + 1) + ' of ' + cards.length;
+    var used = cards[i].querySelector('.used-for');
+    var u = used ? used.textContent.trim().replace(/&/g, '&amp;').replace(/</g, '&lt;') : '';
+    if(u && !/[.!?]$/.test(u)) u += '.';
+    s.caption('<b>' + name(cards[i]).replace(/&/g, '&amp;').replace(/</g, '&lt;') + '.</b> ' + u +
+      (cards[i].querySelector('.mn-test') ? ' Read it, then press Fill the letters.' : ''));
+    stage.scrollTop = 0;
+    if(push && history.replaceState) history.replaceState(null, '', '#' + cards[i].id);
+  }
+  function fromHash(){ var id = (location.hash || '').slice(1), k = cards.map(function(c){ return c.id; }).indexOf(id); return k; }
+  pick.addEventListener('change', function(){ go(+pick.value, true); });
+  prev.addEventListener('click', function(){ go(cur - 1, true); });
+  next.addEventListener('click', function(){ go(cur + 1, true); });
+  window.addEventListener('hashchange', function(){ var k = fromHash(); if(k >= 0 && k !== cur) go(k, false); });
+  var k0 = fromHash();
+  go(k0 >= 0 ? k0 : 0, false);
+  s.hint({ target: '.mn-stage .card:not([hidden]) .mn-test', text: 'Fill the letters to test yourself' });
 });
 </script>
 </body>
