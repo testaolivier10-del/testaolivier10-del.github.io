@@ -143,7 +143,7 @@ def breath(t, k=0.0):
     return 0.6 * math.sin(t * 1.4 + k)
 
 
-def maya_seated(t, write=0.0, face=1, neck=6, mouth=0.0, look=0.0, x=1440):
+def maya_seated(t, write=0.0, face=-1, neck=6, mouth=0.0, look=0.0, x=1700):
     M_ = CA.maya()
     ps = CA.Pose(x=x, ground=1006, face=face, thigh_n=88, knee_n=-88, thigh_f=84, knee_f=-84, lean=4 + breath(t), neck=neck,
                  uarm_n=30, elbow_n=70, hand_n='grip', uarm_f=24, elbow_f=74, hand_f='flat', mouth=mouth, look=look,
@@ -162,7 +162,7 @@ def pencil(c, person, ps):
     c.drawCircle(*tip, 2.5, P((60, 50, 40)))
 
 
-def theo_stool(t, face=-1, neck=8, mouth=0.0, look=0.0, x=1180, arm=0.0):
+def theo_stool(t, face=1, neck=8, mouth=0.0, look=0.0, x=760, arm=0.0):
     T_ = CA.theo()
     ps = CA.Pose(x=x, ground=912, face=face, lean=2 + breath(t, 1), neck=neck, uarm_n=8 + 30 * arm, elbow_n=26 + 40 * arm,
                  uarm_f=-6, elbow_f=20, mouth=mouth, look=look, blink=(t % 3.7) < 0.12, hand_n='relaxed', hand_f='relaxed')
@@ -177,18 +177,18 @@ def hook(c, t):
     # one continuous move: close on the drop, pull out to the room as Maya and Theo are named, then a slow push
     u = sm((t - (c2 + 0.2)) / 3.6)
     z = 2.5 + (1.0 - 2.5) * u
-    fx = 888 + (1180 - 888) * u; fy = 600 + (560 - 600) * u
+    fx = 888 + (1230 - 888) * u; fy = 600 + (560 - 600) * u
     z *= 1 + 0.16 * sm((t - c3) / 9)
     fx += 60 * sm((t - c3) / 10)
     turn = ua(t, q - 0.4, 0.35)
 
     def cast_(c):
-        WD.stool(c, 1180)
+        WD.stool(c, 760)
         dp, _ = WD.drop_phase(t)
         nk = 8 + 6 * (sm((dp - 0.72) / 0.28) if dp > 0.72 else 0)
-        T_, tp = theo_stool(t, neck=nk if turn < 0.5 else 2, mouth=talking(k, k, q) if False else 0)
-        tp.mouth = talking(t, k, q) if turn >= 1 else 0
-        draw_turn(c, T_, tp, turn)
+        T_, tp = theo_stool(t, neck=nk * (1 - turn) + 14 * turn, look=0.8 * turn)
+        tp.mouth = talking(t, k, q) * 0.8
+        T_.draw(c, tp)
         M_, mp = maya_seated(t, write=1.0 - ua(t, q - 0.2, 0.3), neck=6 + 8 * ua(t, q, 0.5), look=ua(t, q, 0.4))
         M_.draw(c, mp)
         pencil(c, M_, mp)
@@ -528,9 +528,9 @@ def u8(c, t):
     z = 1.55 + 0.1 * sm((t - t0) / 16); fx, fy = 960, 640
 
     def cast_(c):
-        T_, tp = theo_stool(t, x=1300, face=-1, neck=10, look=0.5)
+        WD.stool(c, 760)
+        T_, tp = theo_stool(t, neck=10, look=0.5)
         T_.draw(c, tp)
-        WD.stool(c, 1300)
 
     def front(c):
         M_, mp = maya_at_sink(t, (cup_xy[0] + 30, cup_xy[1] - 24))
@@ -566,12 +566,12 @@ def u9(c, t):
     t0, c1, c2, c3, c4, c5 = cue(k), cue(k, 1), cue(k, 2), cue(k, 3), cue(k, 4), cue(k, 5)
 
     def cast_(c):
-        WD.stool(c, 1180)
+        WD.stool(c, 760)
         T_, tp = theo_stool(t, neck=4, look=0.3)
         T_.draw(c, tp)
         M_, mp = maya_seated(t, write=1.0, neck=10)
         M_.draw(c, mp); pencil(c, M_, mp)
-    kitchen_shot(c, t, 1.08, 1100, 620, cast_)
+    kitchen_shot(c, t, 1.08, 1230, 620, cast_)
     WD.finish(c, t)
     M.boxed(c, 50, 120, 1870, 470, ua(t, t0, 0.4))
     s1 = c3 + 0.6
@@ -771,11 +771,11 @@ def e6(c, t):
     t0, c1, c2, c3, c4, c5 = cue(k), cue(k, 1), cue(k, 2), cue(k, 3), cue(k, 4), cue(k, 5)
 
     def cast_(c):
-        M_, mp = maya_seated(t, write=0.0, neck=2 + 4 * math.sin(t * 0.7), look=0.0, x=1440, face=1)
+        M_, mp = maya_seated(t, write=0.0, neck=2 + 4 * math.sin(t * 0.7), look=0.0)
         mp.uarm_n = 40; mp.elbow_n = 40; mp.hand_n = 'point'
         M_.draw(c, mp)
         T_ = CA.theo()
-        tp = CA.Pose(x=1700, ground=968, face=-1, thigh_n=88, knee_n=-88, thigh_f=84, knee_f=-84, lean=8 + breath(t, 2), neck=10,
+        tp = CA.Pose(x=1440, ground=968, face=1, thigh_n=88, knee_n=-88, thigh_f=84, knee_f=-84, lean=8 + breath(t, 2), neck=10,
                      uarm_n=36 + 5 * math.sin(t * 8) * ua(t, c2, 0.3) * (1 - ua(t, c3, 0.3)), elbow_n=64, hand_n='grip', uarm_f=24, elbow_f=74,
                      hand_f='flat', blink=(t % 3.3) < 0.12, mouth=0.5 * ua(t, c3 + 3, 0.3) * (1 - ua(t, c3 + 5, 0.3)))
         T_.draw(c, tp)
@@ -1027,12 +1027,12 @@ def s8(c, t):
     t0, c1, c2, c3, c4 = cue(k), cue(k, 1), cue(k, 2), cue(k, 3), cue(k, 4)
 
     def cast_(c):
-        WD.stool(c, 1180)
+        WD.stool(c, 760)
         T_, tp = theo_stool(t, neck=6, look=0.6, face=1)
         T_.draw(c, tp)
         M_, mp = maya_seated(t, write=1.0, neck=12)
         M_.draw(c, mp); pencil(c, M_, mp)
-    kitchen_shot(c, t, 1.2 + 0.05 * sm((t - t0) / 20), 1300, 560, cast_)
+    kitchen_shot(c, t, 1.2 + 0.05 * sm((t - t0) / 20), 1230, 560, cast_)
     WD.finish(c, t)
     a = ua(t, t0 + 1.0, 0.4)
     M.boxed(c, 60, 50, 1860, 360 if t > c2 - 0.3 else 210, a)
@@ -1055,16 +1055,16 @@ def s9(c, t):
     glowu = ua(t, wt(k, 'that\'s') - 0.3, 1.0)
 
     def cast_(c):
-        WD.stool(c, 1180)
+        WD.stool(c, 760)
         amaze = ua(t, wt(k, 'that\'s') + 0.5, 0.4)
         T_, tp = theo_stool(t, neck=6 - 6 * amaze, look=0.6, face=1, mouth=0.6 * amaze)
         T_.draw(c, tp)
         M_, mp = maya_seated(t, write=1.0 - amaze, neck=12)
         M_.draw(c, mp); pencil(c, M_, mp)
-    kitchen_shot(c, t, 1.25 + 0.15 * sm((t - wt(k, 'that\'s')) / 6), 1250 - 200 * sm((t - wt(k, 'that\'s')) / 6), 640, cast_)
+    kitchen_shot(c, t, 1.25 + 0.15 * sm((t - wt(k, 'that\'s')) / 6), 1230 - 230 * sm((t - wt(k, 'that\'s')) / 6), 640, cast_)
     # the drop on the spout glows as the number lands
     if glowu > 0:
-        c.save(); WD.camera(c, 1.25 + 0.15 * sm((t - wt(k, 'that\'s')) / 6), 1250 - 200 * sm((t - wt(k, 'that\'s')) / 6), 640)
+        c.save(); WD.camera(c, 1.25 + 0.15 * sm((t - wt(k, 'that\'s')) / 6), 1230 - 230 * sm((t - wt(k, 'that\'s')) / 6), 640)
         glow(c, WD.SPOUT[0], WD.SPOUT[1] + 12, 60, (160, 210, 255), glowu)
         c.restore()
     WD.finish(c, t)
@@ -1145,35 +1145,35 @@ def end(c, t):
     walk0 = t0 + 1.2
     tw = max(0.0, t - walk0)
     hop = ua(t, t0 + 0.5, 0.5)
-    tx = 1180 - 210 * tw if t > walk0 else 1180
+    tx = 760 + 185 * tw if t > walk0 else 760
     off = (t > walk0 + 6)
     turn = ua(t, c2 - 0.6, 0.4)
     handle = ua(t, c2 + 0.6, 1.2)
 
     def cast_(c):
-        WD.stool(c, 1180)
+        WD.stool(c, 760)
         if not off:
             T_ = CA.theo()
             if t <= walk0:
-                tp = CA.Pose(x=1180 + 40 * hop, ground=912 + 98 * hop, face=-1, lean=4, neck=10 - 20 * hop * 0, uarm_n=0, elbow_n=20,
+                tp = CA.Pose(x=760 + 40 * hop, ground=912 + 98 * hop, face=1, lean=4, neck=10 - 20 * hop * 0, uarm_n=0, elbow_n=20,
                              blink=(t % 3.1) < 0.12, mouth=talking(t, k, t0, c1 + 1.5) * 0.6)
             else:
                 ph = tw * 5.2
                 sw = math.sin(ph)
-                tp = CA.Pose(x=tx, ground=1010, face=-1, lean=4, neck=4, thigh_n=24 * sw, knee_n=-30 * max(0, -math.cos(ph)) - 4,
-                             thigh_f=-24 * sw, knee_f=-30 * max(0, math.cos(ph)) - 4, uarm_n=-18 * sw, elbow_n=24, uarm_f=18 * sw, elbow_f=24)
+                # the swing leg (thigh moving forward) bends its knee; the stance leg stays straight and moves back
+                tp = CA.Pose(x=tx, ground=1010, face=1, lean=4, neck=4, thigh_n=24 * sw, knee_n=-34 * max(0, math.cos(ph)) - 3,
+                             thigh_f=-24 * sw, knee_f=-34 * max(0, -math.cos(ph)) - 3, uarm_n=-18 * sw, elbow_n=24, uarm_f=18 * sw, elbow_f=24)
             T_.draw(c, tp)
         M_ = CA.maya()
         mp = CA.Pose(x=1150, ground=1010, face=-1, lean=6 + breath(t), neck=4, uarm_f=10, elbow_f=30, hand_n='grip',
                      blink=(t % 4.0) < 0.12)
-        if t > c2 - 0.8:
+        reach = ua(t, c2 - 0.9, 0.7)
+        if reach > 0:
             ang = math.radians(-80 * handle)
             tgt = (1004 + 22 * math.sin(ang) + 10, 636 - 22 * math.cos(ang) + 30)
-            ik_pose(M_, mp, tgt)
-            M_.draw(c, mp)
-        else:
-            mp.x = 1500; mp.face = -1
-            draw_turn(c, M_, mp, 0)
+            rest = M_.canvas_pt(mp, M_.joints(mp)['hand_n'][0])
+            ik_pose(M_, mp, (rest[0] + (tgt[0] - rest[0]) * reach, rest[1] + (tgt[1] - rest[1]) * reach))
+        M_.draw(c, mp)
     z = 1.0 + 0.8 * sm((t - (c2 - 0.6)) / 2.5)
     fx = 1100 - 110 * sm((t - (c2 - 0.6)) / 2.5); fy = 600
     drip_on = t < c3 - 0.1

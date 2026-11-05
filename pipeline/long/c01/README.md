@@ -6,7 +6,13 @@ Started from the b02 build (A&P 02 pilot format) at the premium standard. Work d
 - mk.py: handwritten math (powers of ten, quantities with coloured units, conversion factors with timed strikes).
 - scenes.py: one draw function per beat; teaching boards get a slow push (render.py) and an amber band on the line being explained.
 - render_chunks.sh: renders 1500 frame chunks with two workers (safe to rerun; the container can restart mid render).
-- music.py / music2.py: ElevenLabs music_v1 (intro composition, a looped teaching bed, a story cue, the ending) on a credit budget.
-- sound.py: restrained mix (music about 21 dB under the voice, room tone 26 dB under, 5 effects). Final loudness via a limiter pass.
+- sound.py: NO music (Olivier 2026-11-05: no music in long videos). Voice, the kitchen's room tone 26 dB under, a few effects 10 dB under. Final loudness via a limiter pass.
 - flatcheck.py: the flatness check (also committed as pipeline/flatcheck.py with flatcheck_ref.json from take D).
 - Final encode is two pass at about 0.9 Mbps total so the file stays under GitHub's 100 MB limit (the 12 Mbps master was 570 MB).
+
+## Rebuild of 2026-11-05 (Olivier's notes on the first cut)
+- cast.py: each person's head is built from their own Figma AI head turnaround (ref/heads_theo.png, ref/heads_maya.png): skin and hair outlines measured into ref/head_contours.json, features placed at measured points. Theo has a child's head (big cranium, small lower face, big low eye), no longer the airman's head.
+- scenes.py: restaged so nobody turns or mirrors on screen (Theo on the stool left of the sink facing right, Maya at the right chair facing left); planted walk at the end.
+- render.py: teaching boards stay still (no slow push). kit.py: one board background for every long video (BOARD_TINT).
+- thumbs2.py: new thumbnails with Theo and the drop as big stickers (a2 is the pick).
+- render_chunks.sh: resumable chunked render (run one per worker: bash render_chunks.sh 0 and 1).

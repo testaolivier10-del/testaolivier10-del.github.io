@@ -38,11 +38,7 @@ def draw_event(c, e, t):
         K.card(c, t, s['title'], s['n'], (t - s['t0']) / (s['t1'] - s['t0']))
     else:
         f = SC.SCENES.get(s['key'])
-        b = SC.Bt.get(s['key'])
-        if b is not None and not b.get('story') and s['key'] not in ('promise',):
-            # teaching boards: one slow continuous push across the beat (premium standard camera work)
-            z = 1 + 0.045 * K.sm((t - b['t0']) / max(4.0, b['t1'] - b['t0'] + 1.0))
-            c.translate(W / 2, H / 2); c.scale(z, z); c.translate(-W / 2, -H / 2)
+        # teaching boards stay still (Olivier, 2026-11-05: no slow zoom on boards)
         if f is None:
             K.calm_bg(c, t)
         else:

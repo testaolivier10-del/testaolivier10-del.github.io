@@ -176,5 +176,147 @@ def maya():
 def theo():
     global THEO
     if THEO is None:
-        THEO = Kid('theo', 0.25)
+        THEO = Kid('theo', 0.245)
     return THEO
+
+
+# ====================================================================== new heads (2026-11-05)
+# Measured off each person's own Gemini head turnaround (ref/heads_maya.png, ref/heads_theo.png, the right facing profile):
+# the skin and hair silhouettes are sampled into designed outlines (ref/head_contours.json, simplified), the features are
+# placed at measured points. Head units = sheet pixels shifted so the throat (under the chin) sits at the airman head's
+# neck pivot (182, 238), so the neck and the skinned body join exactly as before.
+import json as _json, os as _os
+_HC = _json.load(open(_os.path.join(_os.path.dirname(__file__), 'ref', 'head_contours.json')))
+_THROAT = {'theo': (172, 276), 'maya': (230, 262)}
+_CUT = {'theo': 286, 'maya': 270}
+_NAPE = {'theo': [(117, 262), (150, 240)], 'maya': [(167, 225), (200, 215)]}
+
+
+def _hu(kind, p):
+    tx, ty = _THROAT[kind]
+    return (p[0] - tx + 182, p[1] - ty + 238)
+
+
+def _sm_path(pts):
+    """a smooth closed outline through measured points (quadratic midpoints)"""
+    p = skia.Path(); n = len(pts)
+    m = [((pts[i][0] + pts[(i + 1) % n][0]) / 2, (pts[i][1] + pts[(i + 1) % n][1]) / 2) for i in range(n)]
+    p.moveTo(*m[-1])
+    for i in range(n):
+        p.quadTo(*pts[i], *m[i])
+    p.close(); return p
+
+
+def _shapes(self, J):
+    """the head's outlines in canvas space for this pose"""
+    h = self._hf(J); k = self.kind
+    H = lambda q: h(*_hp(_hu(k, q)))
+    cut = _CUT[k]
+    skin_pts = [q for q in _HC[k]['skin'][0]]
+    skin = _sm_path([H(q) for q in skin_pts])
+    # keep only the head part of the skin silhouette (the skinned neck carries on below the jaw)
+    box = skia.Path(); a, b2, c2, d2 = H((-200, -200)), H((600, -200)), H((600, cut)), H((-200, cut))
+    box.moveTo(*a); box.lineTo(*b2); box.lineTo(*c2); box.lineTo(*d2); box.close()
+    skin = inter(skin, box)
+    hairs = [c for c in _HC[k]['hair'] if len(c) > 20]
+    hair = [_sm_path([H(q) for q in c]) for c in hairs]
+    return H, skin, hair
+
+
+def _head2(self, c, J, ps, l):
+    H, skin, hair = self._shapes(J)
+    pc = self.pc
+    k = self.kind
+    hf = self._hf(J)
+    R = lambda r: r * self.headk
+    if k == 'maya':
+        pony, front = (hair[0], hair[1]) if len(hair) > 1 else (None, hair[0])
+        if pony is not None:
+            c.drawPath(pony, P(pc(HAIR))); self._shade(c, pony, pc(HAIR_SH), l, 10)
+    c.drawPath(skin, P(pc(SKIN))); self._shade(c, skin, pc(SKIN_SH), l, 12)
+    if k == 'maya':
+        c.drawPath(front, P(pc(HAIR))); self._shade(c, front, pc(HAIR_SH), l, 8)
+        tie = skia.Path(); tie.addOval(skia.Rect(-14, -18, 14, 18))
+        m = skia.Matrix(); m.setRotate(-35); m.postTranslate(*H((118, 64)))
+        c.save(); c.concat(m); c.drawOval(skia.Rect(-15 * R(1), -19 * R(1), 15 * R(1), 19 * R(1)), P((236, 112, 92))); c.restore()
+    else:
+        for hp_ in hair:
+            c.drawPath(hp_, P(pc(HAIR))); self._shade(c, hp_, pc(HAIR_SH), l, 8)
+    # ear
+    ec = {'theo': (105, 205), 'maya': (180, 170)}[k]
+    ex, ey = H(ec)
+    c.drawCircle(ex, ey, 1, P(pc(SKIN)))
+    c.save(); c.translate(ex, ey); sc = R(1)
+    c.drawOval(skia.Rect(-18 * sc, -24 * sc, 18 * sc, 24 * sc), P(pc(SKIN)))
+    c.drawOval(skia.Rect(-8 * sc, -14 * sc, 8 * sc, 12 * sc), P(mix(pc(SKIN), pc(SKIN_SH), 0.85)))
+    c.restore()
+    # blush
+    bc = {'theo': ((202, 216), 20, 11, 0.55), 'maya': ((262, 196), 16, 9, 0.28)}[k]
+    bx, by = H(bc[0])
+    c.drawOval(skia.Rect(bx - bc[1] * R(1), by - bc[2] * R(1), bx + bc[1] * R(1), by + bc[2] * R(1)), P((214, 112, 96), 255 * bc[3]))
+    # eye: white, a big dark iris, a highlight; blink closes it to a line
+    if k == 'theo':
+        eyc, ew, eh, irc, ir = (213, 186), 14, 17.5, (220, 187), 11
+        brow = [(197, 162), (210, 154), (227, 150), (228, 155), (211, 159), (198, 166)]
+        mouth = ((232, 232), (241, 237), (251, 234))
+    else:
+        eyc, ew, eh, irc, ir = (265, 167), 15, 8, (268, 167), 7.5
+        brow = [(238, 143), (258, 134), (287, 135), (287, 141), (260, 140), (240, 149)]
+        mouth = ((271, 213), (284, 216), (296, 212))
+    ex, ey = H(eyc)
+    look = 2.5 * ps.look
+    if ps.blink:
+        c.drawLine(ex - ew * R(1), ey, ex + ew * R(1), ey, SP((52, 30, 22), 3))
+    else:
+        c.drawOval(skia.Rect(ex - ew * R(1), ey - eh * R(1), ex + ew * R(1), ey + eh * R(1)), P((252, 248, 240)))
+        ix, iy = H(irc)
+        c.save(); c.clipPath(_oval(ex, ey, ew * R(1), eh * R(1)), skia.ClipOp.kIntersect, True)
+        c.drawCircle(ix + look, iy, ir * R(1), P((58, 32, 22)))
+        c.drawCircle(ix + look + 2.5 * R(1), iy - 3 * R(1), 2.6 * R(1), P((255, 255, 255)))
+        c.restore()
+        if k == 'maya':
+            lp = skia.Path(); lp.moveTo(*H((247, 161))); lp.quadTo(*H((262, 154)), *H((283, 158)))
+            c.drawPath(lp, SP((40, 22, 16), 3.2 * R(1)))
+            c.drawLine(*H((281, 158)), *H((288, 153)), SP((40, 22, 16), 2.4 * R(1)))
+    c.drawPath(_sm_path([H(q) for q in brow]), P((52, 30, 22)))
+    # mouth: a soft line, or open when talking
+    if ps.mouth > 0.05:
+        mo = _sm_path([H(mouth[0]), H((mouth[1][0], mouth[1][1] + 10 * ps.mouth)), H(mouth[2]), H((mouth[1][0], mouth[1][1] - 2))])
+        c.drawPath(mo, P((110, 44, 44)))
+    else:
+        mp = skia.Path(); mp.moveTo(*H(mouth[0])); mp.quadTo(*H((mouth[1][0], mouth[1][1] + 2 * ps.smile)), *H(mouth[2]))
+        c.drawPath(mp, SP((120, 60, 50), 3 * R(1)))
+    if k == 'maya':
+        lip = _sm_path([H((276, 207)), H((294, 207)), H((296, 213)), H((292, 221)), H((280, 220))])
+        c.drawPath(lip, P(mix(pc(SKIN), (150, 70, 60), 0.35)))
+
+
+def _oval(x, y, rx, ry):
+    p = skia.Path(); p.addOval(skia.Rect(x - rx, y - ry, x + rx, y + ry)); return p
+
+
+def _head_sil2(self, hd, HS):
+    J = self._J_last
+    H, skin, hair = self._shapes(J)
+    return [skin] + hair
+
+
+def _neck2(self, J):
+    h = self._hf(J); T = J['torso_f']; k = self.kind
+    H = lambda q: h(*_hp(_hu(k, q)))
+    return curve([H(_NAPE[k][0]), H(_NAPE[k][1]), H(_THROAT[k]), T(60, 350), T(0, 320), T(-46, 350)])
+
+
+_orig_draw = Kid.draw
+
+
+def _draw2(self, c, ps, *a, **kw):
+    self._J_last = self.joints(ps)
+    return _orig_draw(self, c, ps, *a, **kw)
+
+
+Kid._shapes = _shapes
+Kid._head = _head2
+Kid.head_sil = _head_sil2
+Kid._neck_path = _neck2
+Kid.draw = _draw2
