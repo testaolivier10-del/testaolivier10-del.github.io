@@ -18,6 +18,8 @@
   var BASE = window.ApPsychBase || '';
   var app = document.getElementById('app');
   if(!app) return;
+  // A class assignment (?la=) runs on the practice page (assets/class/class-run.js).
+  if(/[?&]la=/.test(location.search)){ location.replace('practice.html' + location.search); return; }
   var hero = document.querySelector('.page-head, .psy-hero');
   var CUR = window.ApPsychCurriculum || { topics: [], units: [] };
   var Core = window.ApPsychCore, Q = window.ApPsychQuestions;
