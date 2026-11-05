@@ -33,7 +33,9 @@
    class-student.js push sends it (the push is forced at hand-in). */
 (function(root){
   'use strict';
-  var CACHE = 'levlprep_classes_v1', ATT = 'levlprep_class_att_v1', MAX_ANS = 300;
+  var CACHE = 'levlprep_classes_v1', ATT = 'levlprep_class_att_v1', HOLD = 'levlprep_class_hold_v1', MAX_ANS = 300;
+  // Course id -> the class prefix its pages use (the exam engine finds its Start button and message by it).
+  var PREFIX = { apbio: 'bio', apchem: 'chem', apphys: 'phys', apcalc: 'calc', apcalcbc: 'calc', apstat: 'stat', apenv: 'env', appsych: 'psy', apprecalc: 'pcalc', apmacro: 'mac' };
   var RELEASES = { now: 1, after_submit: 1, after_due: 1 };
 
   function ts(v){ return v ? (typeof v === 'number' ? v : Date.parse(v)) : null; }
@@ -75,11 +77,21 @@
     if(!att || !att.start) return ctl.limitMs;
     return Math.max(0, att.start + ctl.limitMs - now);
   }
-  /* An exam's pace multiplier: the limit (or what is left of it) over the exam's standard seconds. */
+  /* An exam's time budget, ms: the class limit, or the exam's standard time times extra time. */
+  function examBudget(ctl, stdSec){ return ctl.limitMs || Math.round((stdSec > 0 ? stdSec : 0) * 1000 * ctl.extra); }
+  /* An exam's pace multiplier: what is left of the budget over the exam's standard seconds. A running attempt
+     (a reload) keeps its clock: the budget it started with (att.limit), from att.start. */
   function examK(ctl, att, now, stdSec){
-    if(!ctl.limitMs || !(stdSec > 0)) return ctl.extra;
-    var left = remaining(ctl, att, now);
+    if(!(stdSec > 0)) return ctl.extra;
+    var budget = att && att.start && !att.end && att.limit ? att.limit : examBudget(ctl, stdSec);
+    var left = att && att.start && !att.end ? Math.max(0, att.start + budget - now) : budget;
     return Math.max(0.01, left / 1000 / stdSec);
+  }
+  /* The clock of a running attempt is gone (the class limit, or an exam's stored budget). */
+  function timeGone(ctl, att, now){
+    if(!att || !att.start || att.end) return false;
+    var lim = ctl.limitMs || att.limit;
+    return !!lim && att.start + lim <= now;
   }
 
   /* Attempt records (store: the parsed levlprep_class_att_v1 object; each returns it). */
@@ -103,20 +115,32 @@
      class_questions_for leaves out correct and why until the release allows them: such an item is ungraded
      (correct -1, never matched); class_submit grades it at hand-in (gradeTeacher). */
   function hasKey(t){ return t.correct != null && t.correct !== '' && +t.correct >= 0 && +t.correct < t.options.length; }
-  function teacherItems(rows, course, fixed){
+  /* topic and unit only when they are this course's own ids (they go into links on the page); else the
+     fallback topic (the assignment's first) and its unit. cur: the course curriculum { topics, units }. */
+  function place(t, cur, fallback){
+    var T = {}, U = {};
+    ((cur && cur.topics) || []).forEach(function(x){ T[x.id] = x; });
+    ((cur && cur.units) || []).forEach(function(x){ U[x.id] = x; });
+    var topic = typeof t.topic === 'string' && Object.prototype.hasOwnProperty.call(T, t.topic) ? t.topic : (fallback && T[fallback] ? fallback : '');
+    var unit = typeof t.unit === 'string' && Object.prototype.hasOwnProperty.call(U, t.unit) && (!topic || T[topic].unit === t.unit) ? t.unit : (topic ? T[topic].unit || '' : '');
+    return { topic: topic, unit: unit };
+  }
+  function teacherItems(rows, course, fixed, cur, fallback){
     return (Array.isArray(rows) ? rows : []).filter(function(t){
       return t && t.id != null && (!t.course || t.course === course) && Array.isArray(t.options) && t.options.length >= 2 && t.options.length <= 8 &&
         (t.correct == null || t.correct === '' || hasKey(t)) && t.q;
     }).map(function(t){
-      var key = hasKey(t);
-      return { id: String(t.id), type: 'single', topic: t.topic || '', unit: t.unit || '', q: esc(t.q), options: t.options.map(esc),
+      var key = hasKey(t), at = place(t, cur, fallback);
+      return { id: String(t.id), type: 'single', topic: at.topic, unit: at.unit, q: esc(t.q), options: t.options.map(esc),
                correct: key ? +t.correct : -1, ungraded: !key, why: key ? { correct: t.why ? esc(t.why) : 'Your teacher wrote this question.' } : null,
                fixed: !!fixed, level: 'apply', diff: 2, own: true, teacher: true };
     });
   }
-  /* class_submit's answer ([{ id, correct, why }] or { <id>: { correct, why } } or null) -> { <id>: { correct, why } }. */
+  /* class_submit's answer -> { <id>: { correct, why } }. A1's shape is { recorded, at, answers: [{ id, correct, why }] }
+     (answers only once the release allows); a bare list or a map keyed by id also work. */
   function submitted(res){
     var out = {};
+    if(res && !Array.isArray(res) && typeof res === 'object' && 'recorded' in res) res = Array.isArray(res.answers) ? res.answers : [];
     if(Array.isArray(res)) res.forEach(function(r){ if(r && r.id != null) out[String(r.id)] = r; });
     else if(res && typeof res === 'object') Object.keys(res).forEach(function(k){ if(res[k] && typeof res[k] === 'object') out[k] = res[k]; });
     return out;
@@ -171,7 +195,7 @@
     return { topics: topics, target: target, min: min, n: n, met: topics.length > 0 && topics.every(function(t){ return t.ok; }) && n >= min };
   }
 
-  var pure = { find: find, controls: controls, held: held, released: released, timed: timed, remaining: remaining, examK: examK,
+  var pure = { find: find, controls: controls, held: held, released: released, timed: timed, remaining: remaining, examK: examK, examBudget: examBudget, timeGone: timeGone, place: place,
                attStart: attStart, attAnswer: attAnswer, attTab: attTab, attEnd: attEnd, teacherItems: teacherItems,
                mixSteps: mixSteps, mixFlat: mixFlat, answeredSince: answeredSince, masteryState: masteryState,
                submitted: submitted, gradeTeacher: gradeTeacher };
@@ -234,10 +258,10 @@
   /* One run: the context the engine hooks call (CLS in practice.js and exams.js). */
   function Run(ad, hit, rows){
     var a = hit.a, cls = hit.cls, spec = a.spec || {}, ctl = controls(a, cls), self = this;
-    var opens = ts(a.opens_at) || 0, strip = null, tick = null, on = false, tabsOn = false;
+    var opens = ts(a.opens_at) || 0, strip = null, tick = null, on = false, tabsOn = false, listening = false;
     this.a = a; this.cls = cls; this.ctl = ctl; this.title = a.title || 'Assignment';
     this.kind = a.kind; this.held = held(a.kind, ctl);
-    this.items = teacherItems(rows, ad.course, !ctl.shuffle);
+    this.items = teacherItems(rows, ad.course, !ctl.shuffle, ad.cur, (spec.topics || [])[0]);
 
     function topicName(t){ var x = (ad.cur.topics || []).filter(function(y){ return y.id === t; })[0]; return x ? x.title : t; }
     function unitName(u){ var x = (ad.cur.units || []).filter(function(y){ return y.id === u; })[0]; return x ? (x.n ? 'Unit ' + x.n + ': ' : '') + x.title : u; }
@@ -247,7 +271,35 @@
       return masteryState(spec, function(t){ var m = C.topicMastery && C.topicMastery(t); return m ? m.value : 0; }, answeredSince(C.load ? C.load() : {}, spec.topics, opens));
     }
     this.mastery = mastery;
-    function onHide(){ if(tabsOn && document.visibilityState === 'hidden'){ change(function(s){ attTab(s, a.id); }); paint(); } }
+    // Leaving the page itself (a reload, a link) is not a tab leave.
+    var leaving = false;
+    window.addEventListener('beforeunload', function(){ leaving = true; });
+    function onHide(){ if(tabsOn && !leaving && document.visibilityState === 'hidden'){ change(function(s){ attTab(s, a.id); }); paint(); } }
+    function listen(){ tabsOn = timed(a.kind, ctl); if(!listening){ listening = true; document.addEventListener('visibilitychange', onHide); } }
+    function unlisten(){ tabsOn = false; listening = false; document.removeEventListener('visibilitychange', onHide); }
+    // A timed attempt already running (a reload): its tab leaves count from page load, not from Start.
+    (function(){ var r = att(a.id); if(timed(a.kind, ctl) && r && r.start && !r.end && !timeGone(ctl, r, Date.now())) listen(); })();
+
+    /* Answers held until release stay out of the course's progress (where the review queue and missed mode
+       would show right and wrong): kept in levlprep_class_hold_v1, recorded into it at release. */
+    function keep(q, correct, pick){
+      var h = read(HOLD) || {}, m = h[a.id] || (h[a.id] = {});
+      if(!Object.prototype.hasOwnProperty.call(m, q.id)) m[q.id] = [correct ? 1 : 0, q.topic, q.unit, q.practice || '', q.level || '', q.diff || 1, pick === undefined ? null : pick];
+      write(HOLD, h);
+    }
+    function flush(){
+      var h = read(HOLD) || {}, m = h[a.id], C = ad.core;
+      if(!m) return;
+      delete h[a.id]; write(HOLD, h);
+      var pk = ad.course + '_picks_v1', picks = read(pk) || {};
+      Object.keys(m).forEach(function(id){
+        var x = m[id];
+        if(C.record) C.record(id, !!x[0], { topic: x[1], unit: x[2], practice: x[3], level: x[4], diff: x[5], src: 'q' });
+        if(typeof x[6] === 'number') picks[id] = x[6];
+      });
+      write(pk, picks);
+    }
+    this.flush = flush;
 
     function paint(){
       if(!strip) return;
@@ -282,8 +334,7 @@
     this.begin = function(){
       on = true;
       change(function(s){ attStart(s, a.id, Date.now()); });
-      tabsOn = timed(a.kind, ctl);
-      document.addEventListener('visibilitychange', onHide);
+      listen();
       if(ctl.limitMs && ad.page === 'practice'){
         var warned = {};
         clearInterval(tick);
@@ -305,7 +356,7 @@
       var own = step && step.items && step.items[0] && step.items[0].own, o = {};
       if(own) o.record = false;
       if(self.held){
-        o.exam = true;
+        o.exam = true; o.record = false;
         // Labels after the engine has drawn the step (hydrate is synchronous).
         setTimeout(function(){ if(stage) [].forEach.call(stage.querySelectorAll('button[class*="-check"]'), function(b){ b.textContent = 'Save answer'; }); }, 0);
       }
@@ -314,6 +365,7 @@
     this.answer = function(q, res){
       if(!on) return;
       change(function(s){ attAnswer(s, a.id, q.id, res.pick, !!res.correct); });
+      if(self.held && ad.page === 'practice' && !q.own) keep(q, res.correct, res.pick);
       if(self.held && ad.page === 'practice'){
         var box = ad.app.querySelector('[data-qid="' + (root.CSS && CSS.escape ? CSS.escape(q.id) : q.id) + '"] .cx-fb');
         if(box) box.innerHTML = '<p class="lvr-saved">Answer saved. ' + (ctl.release === 'after_due' && ts(a.due_at) ? 'Answers come out after the due date.' : 'Answers come out when you hand in.') + '</p>';
@@ -331,8 +383,17 @@
       }
     };
     /* Exams. */
+    this.started = function(){ return on; };
     this.mix = function(list){ return mixFlat(list, self.items, ctl.shuffle); };
-    this.k = function(stdSec){ return examK(ctl, att(a.id), Date.now(), stdSec); };
+    /* The exam's questions have loaded and it starts now: the attempt starts here (never before a load), with
+       its time budget kept so a reload resumes the same clock. */
+    this.k = function(stdSec){
+      if(!on) self.begin();
+      change(function(s){ var r = s[a.id]; if(r && !r.limit) r.limit = examBudget(ctl, stdSec); });
+      return examK(ctl, att(a.id), Date.now(), stdSec);
+    };
+    /* exams.js finish: a held answer stays out of progress (true) until release. */
+    this.keep = function(x){ if(!self.held) return false; keep(x.q, x.r && x.r.correct, x.r ? x.r.pick : null); return true; };
 
     /* The picks on the teacher's questions go to class_submit (once per question, A1), which answers with the
        key when the release allows; the attempt's right count then takes them in. Quiet when it is missing. */
@@ -353,8 +414,8 @@
     /* Handed in: record, push, and say whether the engine may show its summary (false) or this held it (true). */
     this.done = function(list){
       if(!on) return false;
-      on = false; tabsOn = false; clearInterval(tick);
-      document.removeEventListener('visibilitychange', onHide);
+      on = false; clearInterval(tick);
+      unlisten();
       var score = null;
       if(ad.page === 'exam'){ score = { n: list.length, c: list.filter(function(x){ return x.r && x.r.correct; }).length }; }
       var r = change(function(s){ attEnd(s, a.id, Date.now(), score); })[a.id];
@@ -363,7 +424,7 @@
       submit(r);
       // The teacher's questions not yet graded here leave the page's own summary (class_submit grades them).
       for(var i = list.length - 1; i >= 0; i--) if(list[i].q && list[i].q.ungraded) list.splice(i, 1);
-      if(released(a, ctl, r, Date.now())) return false;
+      if(released(a, ctl, r, Date.now())){ flush(); return false; }
       ad.view('summary');
       ad.app.innerHTML = '<div class="lvr-card"><h2 tabindex="-1">Handed in</h2><p>' + plural(r.n, 'question') + ' answered for <b>' + esc(self.title) + '</b>. ' +
         (ctl.release === 'after_due' && ts(a.due_at) ? 'Your teacher shows the answers and your score after the due date, ' + esc(day(ts(a.due_at))) + '. Open this assignment again then to see them.' : 'Your teacher shows the answers later.') + '</p>' +
@@ -433,21 +494,32 @@
   /* The start card: what the set is, then Start (or where it stands when it is handed in). */
   function intro(run, ad, go){
     var a = run.a, r = att(a.id), now = Date.now(), ended = r && r.end, final = ended && timed(a.kind, run.ctl);
-    var timeGone = run.ctl.limitMs && r && r.start && !r.end && remaining(run.ctl, r, now) <= 0;
-    if(timeGone){ change(function(s){ attEnd(s, a.id, r.start + run.ctl.limitMs, null); }); r = att(a.id); final = true; pushNow(ad.course); }
+    var gone = timeGone(run.ctl, r, now);
+    if(gone){ change(function(s){ attEnd(s, a.id, r.start + (run.ctl.limitMs || r.limit), null); }); r = att(a.id); final = true; pushNow(ad.course); }
     var rel = r && r.end && released(a, run.ctl, r, now) && Object.keys(r.answers || {}).length;
+    if(r && r.end && released(a, run.ctl, r, now)){
+      run.flush();
+      // Released: the teacher's keys came with the questions; grade their picks into the attempt once.
+      var keys = {}; run.items.forEach(function(q){ if(!q.ungraded) keys[q.id] = { correct: q.correct }; });
+      var before = r.c;
+      change(function(s){ gradeTeacher(s[a.id], keys, run.items.map(function(q){ return q.id; })); });
+      r = att(a.id); if(r.c !== before) pushNow(ad.course);
+    }
+    var noExam = a.kind === 'exam' && !final && !(r && r.start && !r.end) && ad.core.freeExam && ad.core.freeExam().available === false;
+    var P = PREFIX[ad.course] || 'x';
     var startWord = r && r.start && !r.end ? 'Keep going' : ended ? 'Practice it again' : 'Start';
     ad.view('setup');
     ad.app.innerHTML = '<div class="lvr-card" data-cover="' + esc(ad.course) + '"><p class="lvr-k">From ' + esc(run.cls.teacher || 'your teacher') + ' · ' + esc(run.cls.name || '') + '</p>' +
       '<h2 tabindex="-1">' + esc(run.title) + '</h2>' +
-      (final ? '<p class="lvr-st">' + (timeGone ? 'The time ran out' : 'Handed in ' + esc(day(r.end))) + '. ' + plural(r.n || 0, 'question') + ' answered.' +
+      (noExam ? '<p class="lvr-st">You have used the one free practice exam in this course, so this exam cannot start. Exams are part of Premium: ask your teacher about Class Premium.</p>' : '') +
+      (final ? '<p class="lvr-st">' + (gone ? 'The time ran out' : 'Handed in ' + esc(day(r.end))) + '. ' + plural(r.n || 0, 'question') + ' answered.' +
         (rel ? '' : run.ctl.release === 'after_due' && ts(a.due_at) ? ' Answers come out after the due date.' : '') + '</p>'
         : ended ? '<p class="lvr-st">Handed in ' + esc(day(r.end)) + '. You can practice it again; it adds to the same assignment.</p>' : '') +
       '<ul class="lvr-list">' + describe(run, ad).map(function(x){ return '<li>' + x + '.</li>'; }).join('') + '</ul>' +
-      '<p class="lvr-acts">' + (final ? '' : '<button type="button" class="btn-press" data-lvr="start">' + startWord + '</button>') +
+      '<p class="lvr-acts">' + (final || noExam ? '' : '<button type="button" class="btn-press ' + P + '-pr-start" data-lvr="start">' + startWord + '</button>') +
       (rel ? '<button type="button" class="' + (final ? 'btn-press' : 'btn-outline') + '" data-lvr="answers">See your answers</button>' : '') +
       '<button type="button" class="btn-outline" data-lvr="own">Practice on your own instead</button></p>' +
-      '<p class="lvr-note">Your teacher sees your work in this course only.</p></div>';
+      '<p class="lvr-note ' + P + '-pr-avail" role="status"></p><p class="lvr-note">Your teacher sees your work in this course only.</p></div>';
     var st = ad.app.querySelector('[data-lvr="start"]');
     if(st) st.addEventListener('click', function(){ st.disabled = true; st.textContent = 'Loading questions…'; go(st); });
     var an = ad.app.querySelector('[data-lvr="answers"]');
@@ -531,7 +603,19 @@
     wire(ad, 'exam');
     return safe(ad, prepare(ad).then(function(run){
       if(!run) return null;
-      intro(run, ad, function(){ run.begin(); ad.start(run); });
+      intro(run, ad, function(btn){
+        // Resuming a started exam (a reload) uses the same free exam it started with, not a second one.
+        var r = att(run.a.id);
+        if(r && r.start && !r.end){ var fe = read('levlprep_free_exam_v1'); if(fe && fe[ad.course]){ delete fe[ad.course]; write('levlprep_free_exam_v1', fe); } }
+        ad.start(run);
+        // The engine re-enables the button with a message when the questions fail to load; a start that never
+        // comes (nothing to draw) gets the same.
+        setTimeout(function(){
+          if(run.started() || !btn.disabled || !btn.isConnected) return;
+          btn.disabled = false; btn.textContent = 'Start';
+          var m = ad.app.querySelector('.lvr-card [role="status"]'); if(m) m.textContent = 'The exam did not start. Check your connection and try again.';
+        }, 20000);
+      });
       return run;
     }));
   }

@@ -164,19 +164,27 @@ the course engines enforcing controls and recording attempts (stream A2).
 - Time: practice gets a class clock (timeLimit × extra_time) that runs from the first Start, survives reloads,
   and hands in at zero; a timed hand-in is final. Exams: the exam's own clock, its pace scaled so Section I takes
   the limit (Section II keeps the same pace); no limit means the standard pace × extra_time. No pause in a class
-  exam. A reload of an exam with a limit keeps the time left but draws new questions.
+  exam. The attempt starts only once the questions load (`att.limit` keeps the budget), so a reload resumes the same
+  clock with new questions and the same free exam. Tab leaves count from page load while an attempt runs (leaving
+  the page itself is not counted). A failed load re-enables Start with a message; a free-plan student who has used
+  the course's free exam gets a message on the start card and no attempt.
 - Release: held runs grade silently (the engines' `exam` mode; "Answer saved"). `after_submit`: the normal summary
   or exam results after hand-in. `after_due`: a "Handed in" card until the due date; then the start card offers
-  "See your answers" (each question, the pick, the key, the why). Mastery always gives feedback. Bank items are
-  still recorded as they are answered (so a held set's misses reach the student's review queue at once).
+  "See your answers" (each question, the pick, the key, the why). Mastery always gives feedback. While answers are
+  held nothing goes into `<course>_progress_v1` (so review and missed mode show nothing early): held answers wait in
+  `levlprep_class_hold_v1` and are recorded at release (hand-in for `after_submit`, the first open after the due date
+  for `after_due`).
 - Shuffle: question order (stimulus sets whole) and the teacher's options; bank options are shuffled on every page
   already, except items whose order matters.
 - Teacher questions: `class_questions_for` via `StudyHubAccount.rpcData`, quiet when missing. Text escaped; shown as
   single-choice items marked `own`, so they never enter `<course>_progress_v1`, review, mastery or the free-tier
-  allowance. A row without `correct` (held release) runs ungraded; at hand-in the picks go to
-  `class_submit(p_assignment, p_picks)` (quiet when missing), its `[{ id, correct, why }]` (or `{ id: {...} }`) adds
-  the right ones to the attempt's `c` once each (`graded` map in the attempt), and ungraded items stay out of the
-  page's own score and review. Picks live in `levlprep_class_att_v1[aid].answers` (pick = option index).
+  allowance. Their topic and unit are used only when they are ids in the course's curriculum (else the assignment's
+  first topic), because pages put them in links. A row without `correct` (held release) runs ungraded; at hand-in
+  the picks go to `class_submit(p_assignment, p_picks)` (quiet when missing). Its `{ recorded, at, answers: [{ id,
+  correct, why }] }` (a bare list or an id map also read) adds the right ones to the attempt's `c` once each (`graded`
+  map in the attempt); after the due date the keys `class_questions_for` then returns grade them on the next open.
+  Ungraded items stay out of the page's own score and review. Picks live in `levlprep_class_att_v1[aid].answers`
+  (pick = option index).
 - Attempt record as in the contract: `start` (first Start), `end` (last hand-in), `n`/`c` (practice: distinct
   questions answered and right first try, across runs; exam: questions in the exam and score), `tabs`
   (`visibilitychange` to hidden while timed work runs: any assignment with a limit, every exam), `answers` (first pick,
@@ -190,8 +198,7 @@ the course engines enforcing controls and recording attempts (stream A2).
   auto hand-in, held answers, tab count, teacher question escaped and shuffled and kept out of progress, mastery
   strip, exam clock without pause, exam record and results; pages without `la=` unchanged and never fetch
   class-run.js). `check-weight.mjs`: five course shells raised 0.3-0.4 KB for the hooks (commented there).
-- Left: FRQ assignments take no controls; an exam that fails to load stays on the start card (reload works);
-  teacher questions are single choice only, and in a full exam with calculator parts they sit in the no-calculator
+- Left: FRQ assignments take no controls; teacher questions are single choice only, and in a full exam with calculator parts they sit in the no-calculator
   part.
 
 ### Stream C (integrations): status, 2026-11-04
