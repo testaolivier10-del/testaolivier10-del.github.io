@@ -129,23 +129,21 @@ BOARD_TINT = (90, 96, 170)   # kept only so old callers that pass tint= still wo
 
 
 def calm_bg(c, t, tint=None):
-    """THE board background for every long video (Olivier 2026-11-05: "just look at what the original videos did"):
-    the original long engine's board (pipeline/engine_long.py .bg, #o1, #o2, #grid), ported exactly. Navy vertical
-    gradient #0a1a36 to #081428 to #050c1a, a #123a6e radial glow at the centre, a blurred teal orb top left and a blue
-    orb bottom right at 22 percent, and a faint white grid every 96 px. Static; never tinted per course."""
-    lg = skia.GradientShader.MakeLinear([skia.Point(0, -200), skia.Point(0, H + 200)],
-                                        [C((10, 26, 54)), C((8, 20, 40)), C((5, 12, 26))], [0, 0.6, 1])
-    c.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Shader=lg))
-    m = skia.Matrix(); m.setScale(1.0, 900 / 1300); m.postTranslate(0, 466 * (1 - 900 / 1300))
-    rg = skia.GradientShader.MakeRadial(skia.Point(960, 466), 1300, [C((18, 58, 110)), C((8, 20, 40), 0)], [0, 0.7], skia.TileMode.kClamp, 0, m)
-    c.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Shader=rg))
-    c.drawCircle(150, 250, 450, P((46, 230, 214), 255 * 0.22, MaskFilter=blur(140)))
-    c.drawCircle(1780, 960, 500, P((58, 91, 255), 255 * 0.22, MaskFilter=blur(140)))
-    gp = SP((255, 255, 255), 2, 255 * 0.03)
-    for x in range(-120 + 96 * 2, W + 1, 96):
-        c.drawLine(x + 1, 0, x + 1, H, gp)
-    for y in range(-120 + 96 * 2, H + 1, 96):
-        c.drawLine(0, y + 1, W, y + 1, gp)
+    """THE board background for every long video: option C, the clean navy grid (Olivier picked it 2026-11-05 out of
+    four options; it matches the thumbnails). Radial navy (34, 44, 96) at the centre to (16, 22, 56) at the edges, a
+    faint blue grid every 60 px, a few slow faint motes. Never tinted per course, never changed per video."""
+    sh = skia.GradientShader.MakeRadial(skia.Point(W * 0.5, H * 0.45), W * 0.75, [C((34, 44, 96)), C((16, 22, 56))], [0, 1])
+    c.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Shader=sh))
+    gp = P((120, 140, 220), 22); gp.setStrokeWidth(1.5)
+    for x in range(0, W, 60):
+        c.drawLine(x, 0, x, H, gp)
+    for y in range(0, H, 60):
+        c.drawLine(0, y, W, y, gp)
+    rs = np.random.default_rng(5)
+    for k in range(12):
+        x = (rs.uniform(0, W) + t * rs.uniform(4, 10)) % W
+        y = rs.uniform(0, H) + 8 * math.sin(t * 0.5 + k)
+        c.drawCircle(x, y, rs.uniform(1.2, 2.6), P((170, 180, 240), 40 + 30 * math.sin(t + k)))
 
 
 def vignette(c):
