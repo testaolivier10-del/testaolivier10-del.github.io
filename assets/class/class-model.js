@@ -16,10 +16,13 @@
               exams: [ { ts, kind, label, unit, c, n, fg, fo } ],  newest last
               frq:   { <frqId>: { got, of, ts } },
               lessons: <count>,
-              done:  { <assignmentId>: ms } }    when the student's own browser first saw each assignment done
+              done:  { <assignmentId>: ms },     when the student's own browser first saw each assignment done
+              att:   { <assignmentId>: { start, end, n, c, tabs, answers } } }   timed or controlled attempts, written by
+                                                 the course engines (levlprep_class_att_v1, v2 contract)
 
-   ASSIGNMENT  { id, kind: practice|review|exam|frq, title, required, opens_at, due_at, late_until,
-                 spec: { topics: [..], count, unit, frq } } */
+   ASSIGNMENT  { id, kind: practice|review|mastery|exam|frq, title, required, opens_at, due_at, late_until,
+                 spec: { topics: [..], count, unit, frq, target, min,
+                         controls: { timeLimit, shuffle, release, questions } } } */
 (function(root){
   'use strict';
   var DAY = 86400000, FULL = 12, HALF_LIFE = 45, FLOOR = 0.5, LEVEL_W = { r: 0.8, p: 1, a: 1.2 };
@@ -62,7 +65,15 @@
     var frq = {};
     Object.keys(prefs.frqScores || {}).forEach(function(id){ var s = prefs.frqScores[id]; if(s) frq[id] = { got: +s.got || 0, of: +s.of || 0, ts: s.ts || 0 }; });
     var done = readJson(get, 'levlprep_class_done_v1') || {};
-    return { v: 1, at: now, items: items, picks: picks, flags: flags, exams: exams, frq: frq, lessons: Object.keys(prog.lessons || {}).length, done: done };
+    // Attempts the engines record for timed or controlled assignments: the 40 newest, at most 60 answers each.
+    var attAll = readJson(get, 'levlprep_class_att_v1') || {}, att = {};
+    Object.keys(attAll).filter(function(k){ return attAll[k] && typeof attAll[k] === 'object'; })
+      .sort(function(x, y){ return (attAll[y].start || 0) - (attAll[x].start || 0); }).slice(0, 40).forEach(function(k){
+        var x = attAll[k], ans = {};
+        Object.keys(x.answers || {}).slice(0, 60).forEach(function(q){ ans[q] = x.answers[q]; });
+        att[k] = { start: +x.start || 0, end: +x.end || 0, n: x.n | 0, c: x.c | 0, tabs: x.tabs | 0, answers: ans };
+      });
+    return { v: 1, at: now, items: items, picks: picks, flags: flags, exams: exams, frq: frq, lessons: Object.keys(prog.lessons || {}).length, done: done, att: att };
   }
 
   function rows(sum){ var it = (sum && sum.items) || {}; return Object.keys(it).map(function(id){ var a = it[id]; return { id: id, t: a[0], u: a[1], n: a[2], c: a[3], right: a[4], seen: a[5] * 1000, l: a[6] }; }); }
@@ -100,9 +111,12 @@
 
   function ts(v){ return v ? (typeof v === 'number' ? v : Date.parse(v)) : null; }
 
-  /* Where one student stands on one assignment.
-     -> { state: done|progress|not|missing, late: bool, answered, total, score: 0..1|null, doneAt } */
-  function status(a, sum, now){
+  /* Where one student stands on one assignment. cur (the course curriculum) is optional: mastery
+     assignments use its question counts per topic, and fall back to the full-mastery default without it.
+     -> { state: done|progress|not|missing, late: bool, answered, total, score: 0..1|null, doneAt }
+        mastery also: { mastery: 0..1 mean over its topics, since: answers since it opened, min, target, met }
+        timed (spec.controls.timeLimit, with an attempt in summary.att): { att, used: ms, tabs } */
+  function status(a, sum, now, cur){
     now = now || Date.now();
     var spec = a.spec || {}, opens = ts(a.opens_at) || 0, due = ts(a.due_at), lateUntil = ts(a.late_until);
     var topics = spec.topics && spec.topics.length ? spec.topics : null;
@@ -127,10 +141,40 @@
       out.total = 1;
       var ex = ((sum && sum.exams) || []).filter(function(x){ return x.ts >= opens && !x.partial && (spec.unit ? x.unit === spec.unit : x.kind === 'full'); })[0];
       if(ex){ out.state = 'done'; out.answered = 1; out.doneAt = ex.ts; out.score = ex.n ? ex.c / ex.n : null; out.exam = ex; }
+    } else if(a.kind === 'mastery'){
+      // Done when every listed topic is at the target mastery, with at least min answers in them since it opened.
+      // Questions per topic come from spec.qn (saved by the teacher's builder), so the student's browser,
+      // which has no curriculum loaded, gets the same answer; cur fills in older assignments without it.
+      var mt = topics || [], target = spec.target || 0.8, min = spec.min == null ? 10 : spec.min, qn = {};
+      ((cur && cur.topics) || []).forEach(function(t){ qn[t.id] = t.qn; });
+      Object.keys(spec.qn || {}).forEach(function(t){ qn[t] = spec.qn[t]; });
+      var mine = rows(sum).filter(inScope).sort(function(x, y){ return x.seen - y.seen; });
+      var valsAt = function(t){ return mt.map(function(id){
+        var v = 0; mine.forEach(function(r){ if(r.t === id && r.seen <= t) v += credit(r, t); });
+        return Math.min(1, v / (Math.min(FULL, qn[id] || FULL))); }); };
+      var since = mine.filter(function(r){ return r.seen >= opens; });
+      var vals = valsAt(now);
+      out.total = mt.length; out.met = out.answered = vals.filter(function(v){ return v >= target; }).length;
+      out.mastery = vals.length ? vals.reduce(function(x, y){ return x + y; }, 0) / vals.length : 0;
+      out.score = out.mastery; out.since = since.length; out.min = min; out.target = target;
+      if(mt.length && out.met === mt.length && since.length >= min){
+        // Done at the first answer after which every topic was at the target with the minimum answered.
+        out.state = 'done'; out.doneAt = since[since.length - 1].seen;
+        for(var i = min - 1; i < since.length; i++){
+          if(valsAt(since[i].seen).every(function(v){ return v >= target; })){ out.doneAt = since[i].seen; break; }
+        }
+      } else if(since.length) out.state = 'progress';
     } else if(a.kind === 'frq'){
       out.total = 1;
       var f = sum && sum.frq && spec.frq && sum.frq[spec.frq];
       if(f && f.ts >= opens){ out.state = 'done'; out.answered = 1; out.doneAt = f.ts; out.score = f.of ? f.got / f.of : null; out.frq = f; }
+    }
+    // Timed work: the engine's own record of the attempt beats the answers' times (the clock and tab leaves live there).
+    var ctl = spec.controls || {}, at = ctl.timeLimit && sum && sum.att && a.id ? sum.att[a.id] : null;
+    if(at && at.start){
+      out.att = at; out.tabs = at.tabs || 0; out.used = at.end ? at.end - at.start : now - at.start;
+      if(at.end){ out.state = 'done'; out.doneAt = at.end; out.answered = at.n; out.total = Math.max(out.total, at.n); out.score = at.n ? at.c / at.n : null; }
+      else if(out.state !== 'done'){ out.state = 'progress'; out.answered = at.n; out.total = Math.max(out.total, at.n, 1); }
     }
     // The first time the student's own browser saw it done beats the questions' last-seen times (a redo later is not lateness).
     var first = sum && sum.done && a.id && sum.done[a.id];
