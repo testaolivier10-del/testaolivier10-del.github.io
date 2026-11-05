@@ -3,7 +3,7 @@
    and the class's most missed questions with the answers picked. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import vm from 'node:vm';
 
 const ctx = { window: {} };
@@ -86,8 +86,13 @@ test('every class course points at a curriculum file and a question folder that 
   for (const k of M.ORDER) {
     const c = M.COURSES[k];
     assert.match(readFileSync(c.cur, 'utf8'), new RegExp('window\\.' + c.g + '\\s*='), k);
-    assert.ok(readFileSync(c.dir + '/assets/frq/index.json', 'utf8').length > 2, k + ' FRQ index');
+    if (c.frq !== false) assert.ok(readFileSync(c.dir + '/assets/frq/index.json', 'utf8').length > 2, k + ' FRQ index');
+    if (c.bank) assert.ok(existsSync(c.bank), k + ' bank file');
+    assert.ok(existsSync(c.dir + '/index.html') && existsSync(c.dir + '/practice.html') && existsSync(c.dir + '/review.html') && existsSync(c.dir + '/exams.html'), k + ' pages');
+    // No AP® on a course that is not AP.
+    if (c.ap === false) assert.doesNotMatch(c.name, /AP/, k);
   }
+  assert.deepEqual([...M.ORDER.slice(-3)], ['nremt', 'ochem', 'anp']);
 });
 
 test('mastery status: every topic at the target with at least min answers since it opened (v2)', () => {
@@ -136,4 +141,149 @@ test('timed work: the attempt record decides, with time used and tab leaves (v2)
   // Without a time limit the attempt record is ignored and the answers decide.
   const plain = { ...a, spec: { topics: ['a'], count: 3 } };
   assert.equal(M.status(plain, sum, NOW).state, 'not');
+});
+
+/* ---- NREMT, organic chemistry and A&P (stream B): each course's own records, read into the same summary. ---- */
+const stub = () => ({ window: {}, localStorage: { getItem: () => null, setItem() {} }, document: { addEventListener() {}, dispatchEvent() {} }, CustomEvent: function () {} });
+function load(file, g) { const c = stub(); vm.runInNewContext(readFileSync(file, 'utf8'), c); return c.window[g]; }
+const RAW = { anp: load('anatomy-physiology/assets/anp-curriculum.js', 'AnpCurriculum'), ochem: load('ochem/assets/curriculum.js', 'OchemCurriculum'),
+              nremt: load('assets/class/nremt-map.js', 'LevlClassNremt') };
+vm.runInNewContext(readFileSync('assets/class/nremt-map.js', 'utf8'), ctx);   // the student's page loads it first (COURSES.nremt.need)
+const getter = (s) => (k) => (k in s ? s[k] : null);
+const plain = (x) => JSON.parse(JSON.stringify(x));
+
+test('curriculum adapters: units and topics with ids and titles for NREMT, ochem and A&P', () => {
+  for (const k of ['nremt', 'ochem', 'anp']) {
+    const cur = M.curriculum(k, RAW[k]), units = new Set(cur.units.map((u) => u.id)), ids = new Set();
+    assert.ok(cur.units.length >= 6 && cur.topics.length >= 20, k + ' has units and topics');
+    for (const u of cur.units) { assert.ok(u.id && u.title, k + ' unit'); assert.equal(u.part, undefined, k + ' no skills tracks'); }
+    for (const t of cur.topics) { assert.ok(t.id && t.title && units.has(t.unit), k + ' topic ' + t.id); assert.ok(!ids.has(t.id), k + ' unique ' + t.id); ids.add(t.id); }
+  }
+  const anp = M.curriculum('anp', RAW.anp);
+  assert.equal(anp.units[0].n, 1); assert.equal(anp.topics[0].unit, RAW.anp.topics[0].chapter); assert.equal(anp.topics[0].qn, RAW.anp.topics[0].qn);
+  assert.equal(M.curriculum('ochem', RAW.ochem).units.length, RAW.ochem.MODULES.length);
+  assert.equal(M.curriculum('nremt', RAW.nremt).units.length, 6, 'the six topic areas');
+});
+
+test('the NREMT map is up to date with the bank and decodes to each question’s topic area', async () => {
+  const { buildNremtMap, render } = await import('../build-class-maps.mjs');
+  const bank = JSON.parse(readFileSync('nremt/assets/questions.json', 'utf8'));
+  assert.equal(readFileSync('assets/class/nremt-map.js', 'utf8'), render(buildNremtMap(bank)), 'run node scripts/build-class-maps.mjs');
+  const q = bank.find((x) => x.system === 'Trauma' && x.topic === 'Bleeding & Shock');
+  const sum = M.summarize('nremt', getter({ nremt_mastery: JSON.stringify({ [q.id]: { level: 1, timesCorrect: 1, timesWrong: 0, lastSeen: NOW } }) }), NOW);
+  assert.deepEqual(plain(sum.items[q.id]).slice(0, 2), ['bleeding-shock', 'trauma']);
+});
+
+// Real ids: the first NREMT questions in two topics.
+const NB = JSON.parse(readFileSync('nremt/assets/questions-core.json', 'utf8'));
+const nid = (topic, i = 0) => NB.filter((x) => x.topic === topic && !x.type)[i].id;
+test('NREMT reader: nremt_mastery, picks, flags, both exam histories and lessons', () => {
+  const c1 = nid('Cardiac'), c2 = nid('Cardiac', 1), p1 = nid('Pharmacology');
+  const s = { nremt_mastery: JSON.stringify({
+                [c1]: { level: 2, timesCorrect: 2, timesWrong: 0, lastSeen: NOW - DAY },
+                [c2]: { level: 0, timesCorrect: 1, timesWrong: 2, lastSeen: NOW - 2 * DAY },
+                [p1]: { level: 1, timesCorrect: 1, timesWrong: 1, lastSeen: NOW - 3 * DAY },
+                99999: { level: 0, timesCorrect: 0, timesWrong: 0, lastSeen: 0 } }),
+              nremt_picks_v1: JSON.stringify({ [c2]: 3, 4242: 1 }), nremt_exam100_flagged: JSON.stringify([c2]),
+              nremt_exam100_history: JSON.stringify([{ score: 71, total: 100, timeMs: 1, date: NOW - 5 * DAY, domainStats: {} }]),
+              nremt_cat_history: JSON.stringify([{ date: NOW - 6 * DAY, n: 80, right: 50, pass: true }]),
+              nremt_lessons_v1: JSON.stringify({ airway: NOW, shock: NOW }) };
+  const sum = M.summarize('nremt', getter(s), NOW);
+  assert.deepEqual(Object.keys(sum.items).sort(), [c1, c2, p1].map(String).sort(), 'answered only');
+  assert.deepEqual(plain(sum.items[c2]), ['cardiac', 'cardiac-medical', 3, 1, 0, Math.round((NOW - 2 * DAY) / 1000), sum.items[c2][6]], 'missed last: level 0');
+  assert.equal(sum.items[p1][4], 1, 'right last: level above 0');
+  assert.deepEqual(plain(sum.picks), { [c2]: 3 }); assert.deepEqual(Object.keys(sum.flags), [String(c2)]);
+  assert.deepEqual(plain(sum.exams.map((x) => [x.label, x.kind, x.c, x.n])), [['Adaptive exam', 'full', 50, 80], ['Timed exam', 'full', 71, 100]], 'oldest first');
+  assert.equal(sum.lessons, 2);
+  const cur = M.curriculum('nremt', RAW.nremt);
+  const tm = M.topicMastery(sum, cur, NOW);
+  assert.ok(tm.cardiac.value > 0 && tm.cardiac.wrong === 1);
+  assert.equal(M.status({ kind: 'exam', spec: { unit: null }, opens_at: NOW - 7 * DAY }, sum, NOW).state, 'done', 'a full exam assignment');
+  assert.equal(M.status({ kind: 'practice', spec: { topics: ['cardiac'], count: 2 }, opens_at: NOW - 3 * DAY }, sum, NOW).state, 'done');
+  assert.equal(M.status({ kind: 'review', spec: { topics: ['cardiac'] }, opens_at: NOW - 10 * DAY }, sum, NOW).answered, 1, 'missed and redone');
+});
+
+test('ochem reader: ochem_items_v1, older misses from the mastery store, chapter tests as unit tests', () => {
+  const cur = M.curriculum('ochem', RAW.ochem), sn = cur.topics.find((t) => t.id === 'sn2'), ch = sn.unit;
+  const s = { ochem_items_v1: JSON.stringify({ v: 1, q: { 'lb:sn2:0': { t: 'sn2', n: 2, c: 1, right: 1, seen: NOW - DAY, l: 'p' }, 'sn2-click-nuc': { t: 'sn2', n: 1, c: 0, right: 0, seen: NOW - 2 * DAY, l: 'r' } } }),
+              ochem_mastery_v1: JSON.stringify({ v: 1, concepts: {}, sessions: [], mistakes: [
+                { qid: 'lb:sn2:4', topicId: 'sn2', tier: 3, ts: NOW - 9 * DAY, fixed: false },
+                { qid: 'lb:sn2:5', topicId: 'sn2', tier: 1, ts: NOW - 9 * DAY, fixed: true, fixedTs: NOW - 4 * DAY },
+                { qid: 'lb:sn2:0', topicId: 'sn2', tier: 2, ts: NOW - 30 * DAY, fixed: true } ] }),
+              ochem_picks_v1: JSON.stringify({ 'lb:sn2:0': 2 }), ochem_flagged_v1: JSON.stringify({ 'lb:sn2:4': NOW }),
+              ochem_exam_history_v1: JSON.stringify([{ ts: NOW - 2 * DAY, kind: 'chapter', label: 'Chapter test', right: 15, total: 20, answered: 20, chapters: [[ch, 15, 20]] },
+                                                     { ts: NOW - 3 * DAY, kind: 'final', label: 'Cumulative final', right: 30, total: 50, answered: 50, chapters: [] }]),
+              ochem_progress: JSON.stringify({ sn2: { completed: true, bestScore: 80 }, e2: { completed: false } }) };
+  const sum = M.summarize('ochem', getter(s), NOW, { cur });
+  assert.deepEqual(plain(sum.items['lb:sn2:0']).slice(0, 5), ['sn2', ch, 2, 1, 1], 'the item store wins over an old mistake');
+  assert.deepEqual(plain(sum.items['lb:sn2:4']).slice(0, 5), ['sn2', ch, 1, 0, 0]); assert.equal(sum.items['lb:sn2:4'][6], 'a', 'tier 3 is applying');
+  assert.deepEqual(plain(sum.items['lb:sn2:5']).slice(2, 5), [2, 1, 1], 'a fixed miss: missed, then right');
+  assert.equal(sum.picks['lb:sn2:0'], 2); assert.ok(sum.flags['lb:sn2:4']); assert.equal(sum.lessons, 1);
+  assert.deepEqual(plain(sum.exams.map((x) => [x.kind, x.unit])), [['full', null], ['chapter', ch]]);
+  assert.equal(M.status({ kind: 'exam', spec: { unit: ch }, opens_at: NOW - 5 * DAY }, sum, NOW).score, 0.75);
+  assert.equal(M.status({ kind: 'exam', spec: { unit: null }, opens_at: NOW - 5 * DAY }, sum, NOW).state, 'done');
+  // Without opts.cur the page's own curriculum (window.OchemCurriculum) gives the unit, as on the student's page.
+  ctx.window.OchemCurriculum = RAW.ochem;
+  assert.equal(M.summarize('ochem', getter(s), NOW).items['lb:sn2:4'][1], ch);
+});
+
+test('A&P reader: anp_progress_v1 without units, picks, flags, and the exam history exams.js writes', () => {
+  const cur = M.curriculum('anp', RAW.anp), t0 = cur.topics.find((t) => t.unit === 'blood');
+  const rec = (right, d, n = 1) => ({ t: t0.id, k: [], l: 'r', d: 1, n, c: right ? n : 0, right: right ? 1 : 0, seen: NOW - d * DAY, due: 0, ivl: 0, ease: 2.3, lapses: 0, src: 'q' });
+  const s = { anp_progress_v1: JSON.stringify({ v: 1, q: { 'anp-blood-composition-1': rec(1, 1), 'anp-blood-composition-2': rec(0, 2) }, lessons: { [t0.id]: NOW }, tools: {}, updated: NOW }),
+              anp_picks_v1: JSON.stringify({ 'anp-blood-composition-2': 0 }), anp_flagged_v1: JSON.stringify({ 'anp-blood-composition-2': NOW }),
+              anp_prefs_v1: JSON.stringify({ examTiming: 'std', examHistory: [
+                { ts: NOW - DAY, kind: 'unit', label: 'Unit quiz: Blood', unit: 'blood', partial: true, mcq: { c: 9, n: 15 } },
+                { ts: NOW - DAY / 2, kind: 'system', label: 'System exam: Blood', unit: 'blood', partial: false, mcq: { c: 30, n: 40 } },
+                { ts: NOW - DAY / 3, kind: 'full', label: 'A&P II cumulative final', unit: null, partial: false, mcq: { c: 40, n: 50 } }] }) };
+  const sum = M.summarize('anp', getter(s), NOW, { cur });
+  assert.deepEqual(plain(sum.items['anp-blood-composition-2']).slice(0, 5), [t0.id, 'blood', 1, 0, 0]);
+  assert.equal(sum.items['anp-blood-composition-1'][6], 'r'); assert.equal(sum.picks['anp-blood-composition-2'], 0); assert.equal(sum.lessons, 1);
+  assert.equal(M.status({ kind: 'exam', spec: { unit: 'blood' }, opens_at: NOW - 2 * DAY }, sum, NOW).score, 0.75, 'the system exam, not the partial quiz');
+  assert.equal(M.status({ kind: 'exam', spec: {}, opens_at: NOW - 2 * DAY }, sum, NOW).score, 0.8, 'the cumulative final is the full exam');
+  assert.equal(M.overall(M.topicMastery(sum, cur, NOW), cur) > 0, true);
+});
+
+test('links: each course’s real practice, review and exam pages with the parameters they read', () => {
+  const pr = (topics, extra = {}) => ({ kind: 'practice', spec: { topics, count: 10, ...extra } });
+  assert.equal(M.href('apbio', pr(['t1'])), 'practice.html?topic=t1');
+  assert.equal(M.href('apbio', { kind: 'exam', spec: { unit: 'unit-3' } }), 'exams.html?unit=unit-3');
+  assert.equal(M.href('anp', pr(['blood-composition'])), 'practice.html?topic=blood-composition');
+  assert.equal(M.href('anp', { kind: 'exam', spec: { unit: 'blood' } }), 'exams.html?mode=system&chapter=blood');
+  assert.equal(M.href('anp', { kind: 'exam', spec: {} }), 'exams.html?mode=final');
+  assert.equal(M.href('ochem', pr(['sn2'])), 'practice.html?topic=sn2&count=10');
+  assert.equal(M.href('ochem', { kind: 'review', spec: {} }), 'practice.html?mode=mistakes');
+  assert.equal(M.href('ochem', { kind: 'exam', spec: { unit: 'substitution-elimination' } }), 'exams.html?kind=chapter&chapter=substitution-elimination');
+  assert.equal(M.href('ochem', { kind: 'exam', spec: {} }), 'exams.html?kind=final');
+  assert.equal(M.href('nremt', pr(['pharmacology'])), 'practice.html?system=' + encodeURIComponent('Cardiac & Medical'), 'the topic area drill');
+  assert.equal(M.href('nremt', { kind: 'review', spec: {} }), 'review.html?start=review');
+  assert.equal(M.href('nremt', { kind: 'exam', spec: {} }), 'exams.html');
+  // The pages really read those parameters.
+  assert.match(readFileSync('anatomy-physiology/assets/apps/practice.js', 'utf8'), /p\.get\('topic'\)/);
+  assert.match(readFileSync('anatomy-physiology/assets/apps/exams.js', 'utf8'), /p\.get\('chapter'\)[\s\S]*p\.get\('mode'\)/);
+  assert.match(readFileSync('ochem/assets/practice-page.js', 'utf8'), /params\.topic[\s\S]*'mistakes'/);
+  assert.match(readFileSync('ochem/assets/exams-page.js', 'utf8'), /p\.get\('kind'\)[\s\S]*p\.get\('chapter'\)/);
+  assert.match(readFileSync('nremt/practice-engine.js', 'utf8'), /params\.get\('system'\)[\s\S]*review: loadMissed/);
+  for (const u of RAW.nremt.units) assert.ok(readFileSync('nremt/practice.html', 'utf8').includes('value="system:' + u.system.replace(/&/g, '&amp;') + '"'), u.system);
+});
+
+test('the teacher page reads each new course’s bank with the ids its records use', () => {
+  const nb = M.bankItems('nremt', NB), n0 = nb.find((x) => x.id === String(nid('Cardiac')));
+  assert.equal(n0.type, 'single'); assert.equal(n0.topic, 'cardiac'); assert.equal(M.bankUrl('nremt', 'trauma'), '/nremt/assets/questions-core.json');
+  const ob = M.bankItems('ochem', JSON.parse(readFileSync('ochem/assets/practice-bank-core.json', 'utf8')));
+  assert.ok(ob.find((x) => x.id === 'lb:sn2:0' && x.type === 'single' && x.options.length > 1), 'ids as question-engine.js makes them');
+  assert.match(readFileSync('ochem/assets/question-engine.js', 'utf8'), /id: 'lb:' \+ topicId \+ ':' \+ index/);
+  const ab = M.bankItems('anp', JSON.parse(readFileSync('anatomy-physiology/assets/bank/blood.json', 'utf8')));
+  assert.ok(ab.length > 10 && ab[0].id.startsWith('anp-blood')); assert.equal(M.bankUrl('anp', 'blood'), '/anatomy-physiology/assets/bank/blood.json');
+  assert.equal(M.whyUrl('nremt', 'x'), null); assert.equal(M.whyUrl('anp', 'blood'), '/anatomy-physiology/assets/bank/blood-why.json');
+});
+
+test('answer-pick hooks: one line where each course records an answer', () => {
+  assert.match(readFileSync('anatomy-physiology/assets/anp-questions.js', 'utf8'), /'anp' \+ '_picks_v1'/);
+  assert.match(readFileSync('anatomy-physiology/assets/apps/exams.js', 'utf8'), /anp_picks_v1[\s\S]*setPref\('examHistory'/);
+  const nr = readFileSync('nremt/practice-engine.js', 'utf8');
+  assert.match(nr, /function updateMastery\(qIdx, correct, ans\)[\s\S]*nremt_picks_v1[\s\S]*nremt:progress/);
+  assert.match(nr, /updateMastery\(qIdx, correct, answers\[i\]\)/); assert.match(nr, /updateMastery\(qIdx, correct, answers\[current\]\)/);
+  assert.match(readFileSync('ochem/assets/diagnostic-engine.js', 'utf8'), /ochem_items_v1[\s\S]*ochem_picks_v1[\s\S]*noteItem\(q, d\.correct, response, tier\)/);
+  assert.match(readFileSync('assets/site-chrome.js', 'utf8'), /\|nremt\|ochem\|anatomy-physiology\)/);
 });

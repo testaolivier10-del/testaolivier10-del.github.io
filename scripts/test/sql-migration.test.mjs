@@ -427,3 +427,21 @@ test('2026-11d-classes-integrations.sql: Worker-only tables and functions stay w
   // Deleting the account deletes its quote requests.
   assert.match(mig, /class_quote_requests \([\s\S]*?user_id\s+uuid references auth\.users \(id\) on delete cascade/);
 });
+
+test('2026-11e-classes-courses.sql lets classes and teacher questions be for nremt, ochem and anp too, matches schema.sql', () => {
+  const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
+  assert.ok(files.indexOf('2026-11e-classes-courses.sql') > files.indexOf('2026-11c-classes-v2.sql'), 'runs after 2026-11c');
+  const mig = readFileSync('scripts/sql/migrations/2026-11e-classes-courses.sql', 'utf8'), fns = blocks(mig), schema = blocks(SCHEMA);
+  const RE = "'^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|nremt|ochem|anp)$'";
+  for (const f of ['teach_create_class', 'teach_save_question']) {
+    assert.ok(fns.has(f), `${f} is redefined`);
+    assert.ok(fns.get(f).includes(RE), `${f} accepts the three courses`);
+    assert.equal(fns.get(f).trim(), schema.get(f).trim(), `${f} matches schema.sql`);
+    assert.match(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to authenticated;`));
+  }
+  // schema.sql keeps 11b's and 11c's definitions in their sections and appends 11e's (section 12);
+  // the newest definition of each function is the one that counts, as in the live database.
+  for (const [name, body] of [...fns, ...schema]) assert.doesNotMatch(body, /apmacro\)\$'/, `${name}: no class course check stops at apmacro`);
+  assert.match(fns.get('teach_save_question'), /p_data->>'topic' !~ '\^\[a-z0-9\]/, 'keeps 11c\'s id-only topic and unit check');
+  assert.match(mig, /NOT APPLIED/);
+});

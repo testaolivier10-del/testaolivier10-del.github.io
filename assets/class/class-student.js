@@ -67,20 +67,17 @@
     }); });
     if(changed) write(DONE, d);
   }
-  function practiceHref(a){
-    var s = a.spec || {}, t = s.topics || [];
-    if(s.unit && !t.length) return 'practice.html?unit=' + encodeURIComponent(s.unit);
-    if(t.length) return 'practice.html?topic=' + encodeURIComponent(t[0]);
-    return 'practice.html';
-  }
-  /* Practice, review, mastery and exam links carry la=<assignment id>: the page then runs the assignment with its
-     controls (assets/class/class-run.js). Review and mastery run on the practice page. */
+  /* Each course's pages take their own parameters (LevlClassModel.href, docs/teacher-classes.md "Links").
+     On the ten AP® courses practice, review, mastery and exam links also carry la=<assignment id>: the page then
+     runs the assignment with its controls (assets/class/class-run.js); review and mastery run on the practice page.
+     NREMT, ochem and A&P pages have no class runner yet, so their links stay plain. */
+  var pageC = null;
   function href(a){
-    var s = a.spec || {}, la = 'la=' + encodeURIComponent(a.id);
+    var c = pageC || pageCourse();
+    if(!M().isAp(c) || a.kind === 'frq') return M().href(c, a);
+    var la = 'la=' + encodeURIComponent(a.id);
     if(a.kind === 'review' || a.kind === 'mastery') return 'practice.html?' + la;
-    if(a.kind === 'exam') return 'exams.html' + (s.unit ? '?unit=' + encodeURIComponent(s.unit) : '?mode=full') + '&' + la;
-    if(a.kind === 'frq') return s.frq ? 'frq/' + encodeURIComponent(s.frq) + '.html' : 'frq.html';
-    var p = practiceHref(a);
+    var p = M().href(c, a);
     return p + (p.indexOf('?') > -1 ? '&' : '?') + la;
   }
   function dueWords(due, now){
@@ -111,7 +108,7 @@
           (topics.length ? ' · ' + esc(topics.slice(0, 3).join(', ')) + (topics.length > 3 ? ' and ' + (topics.length - 3) + ' more' : '') : '');
         var btn = st.state === 'done' ? '<a class="lvc-btn is-ghost" href="' + esc(href(a)) + '">Open again</a>' : '<a class="lvc-btn" href="' + esc(href(a)) + '">' + (st.answered ? 'Keep going' : 'Start') + '</a>';
         var chips = a.kind === 'practice' && a.spec && a.spec.topics && a.spec.topics.length > 1
-          ? '<p class="lvc-chips">' + a.spec.topics.map(function(t, i){ return '<a href="practice.html?topic=' + encodeURIComponent(t) + '">' + esc((a.spec.topicNames || [])[i] || t) + '</a>'; }).join('') + '</p>' : '';
+          ? '<p class="lvc-chips">' + a.spec.topics.map(function(t, i){ return '<a href="' + esc(M().topicHref(course, t)) + '">' + esc((a.spec.topicNames || [])[i] || t) + '</a>'; }).join('') + '</p>' : '';
         return '<li class="lvc-row">' + tag + '<p class="lvc-t">' + esc(a.title) + '</p><p class="lvc-m">' + meta + '</p>' +
           ((a.kind === 'practice' || a.kind === 'review') && st.state !== 'done' ? '<div class="lvc-bar"><i style="width:' + pct + '%"></i></div>' : '') + chips + btn + '</li>';
       }).join('');
@@ -150,6 +147,13 @@
     if(started) return; started = true;
     var course = pageCourse();
     if(!course || !A() || !A().onAuthChange) return;
+    pageC = course;
+    // A course whose records need a lookup first (NREMT's topic map) loads it before anything is summarized.
+    var need = M().COURSES[course].need;
+    if(need && !window[M().COURSES[course].g]){
+      var s = document.createElement('script'); s.src = '/' + need; s.onload = function(){ started = false; start(); };
+      document.head.appendChild(s); return;
+    }
     A().onAuthChange(function(u){
       if(!u) return;
       refresh(false).then(function(){

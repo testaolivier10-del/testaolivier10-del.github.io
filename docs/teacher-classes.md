@@ -1,6 +1,6 @@
 # Teacher classes (status file)
 
-Free classes for AP® teachers: a teacher makes a class for one course, students join with a code, the teacher
+Free classes for teachers (AP®, EMT, organic chemistry, A&P): a teacher makes a class for one course, students join with a code, the teacher
 assigns work and sees where every student struggles. Research report and owner decisions live in the Claude doc
 "LevlPrep Teacher Interface: Research Report"; approved look: the "LevlPrep Teacher Mockups" artifact (2026-11-04),
 built with the real course styles (r3 band, dashboard design F, path card).
@@ -22,7 +22,7 @@ built with the real course styles (r3 band, dashboard design F, path card).
   summaries at 120 KB. Migration applied to the live database 2026-11-04.
 - Model: `assets/class/class-model.js` (summary of a student's course progress, mastery, assignment status, item
   stats). Tests: `scripts/test/class-model.test.mjs`.
-- Student side: `assets/class/class-student.js`, lazy loaded by `assets/site-chrome.js` on AP® course pages for
+- Student side: `assets/class/class-student.js`, lazy loaded by `assets/site-chrome.js` on every class course page for
   signed-in visitors; pushes the summary (at most once a minute, only on change) and draws "From your teacher" on
   the course home. Join page: `join.html` + `assets/class/join.js`. Answer picks: one line in each
   `*-questions.js` writes `<course>_picks_v1` (this device; read into the summary).
@@ -37,7 +37,6 @@ built with the real course styles (r3 band, dashboard design F, path card).
 - Time limits, answer reveal timing and shuffle per assignment (v2: set in the builder; enforced by stream A2).
 - Reminder emails to students; teachers copy names instead.
 - Class Premium checkout; Google Classroom import; LTI (v2 stream C). Co-teachers: done in v2 (A1).
-- NREMT, ochem and A&P classes (different progress stores). Owner asked 2026-11-04 for all courses; plan sent, waiting on OK.
 
 ## Grading rules (class-model.js `status`)
 
@@ -65,7 +64,7 @@ owner merges. Tick items here as they ship.
 | --- | --- | --- |
 | A1 teacher app + SQL | `assets/class/teach.js`, `teach.css`, `class-model.js` (status rules only), new migration `2026-11c-classes-v2.sql` | assign to several classes at once; copy a class (to another period or next year, assignments shifted); class announcements; mastery assignments; exam controls in the builder (time limit, shuffle, answer release, per-student extra time); teacher-written questions (bank per teacher, added to practice/exam assignments); printable worksheet/test with answer key; AP skill report (CED science practices / skills where the bank tags them) and a predicted AP score band; integrity column (tab leaves during timed work); live mode (projector view: question by question, answers arrive as students submit); co-teachers (invite by code, same rights minus delete); department view (a teacher sees classes shared with their department code) |
 | A2 course engines | each course's `pages/practice.js` and `pages/exams.js` (or equivalent), `assets/class/class-student.js` | read the assignment from `?la=<assignment id>`; enforce time limit times the member's `extra_time`; shuffle questions and options; hold answers and explanations until release; mastery runs until the target; teacher questions mixed in; record attempts and tab leaves |
-| B other courses | `class-model.js` readers, `COURSES`, site-chrome boot list, SQL course check | NREMT, organic chemistry, A&P classes (after A1 merges) |
+| B other courses | `class-model.js` readers, `COURSES`, site-chrome boot list, SQL course check | NREMT, organic chemistry, A&P classes (shipped on `teach-v2-b`, see below) |
 | C integrations | `worker/`, new `assets/class/teach-integrations.js`, new pages | reminder emails to students (Resend, through the Worker, teacher clicks send; never automatic to minors' parents); parent/guardian progress report (a printable or share link the student or teacher hands over: no parent emails stored); Google Classroom (OAuth, roster import, post assignment links, grade passback); Canvas and Schoology (LTI 1.3 launch, deep linking, grade passback); purchase order / invoice request for Class Premium; student data privacy page and a fillable DPA (SDPC style) for districts; teacher FRQ scoring with comments, AI first pass only when the FRQ grader launch rule in `docs/frq-grader.md` is met |
 
 ### Contract between the streams
@@ -252,9 +251,58 @@ Owner steps for stream C:
    When the first integration goes live, bump "Last updated" on `privacy.html` and `terms.html` together (check-site wants them equal).
 7. Optional: set `CLASS_SALES_TO` if quotes should go elsewhere; decide Class Premium pricing for quotes.
 
+### Stream B status (other courses), 2026-11-04
+
+Shipped on branch `teach-v2-b` (built on `teach-v2-a1`, PR #137). Teachers can make classes for EMT (NREMT), Organic
+Chemistry and Anatomy & Physiology; every teacher view works for them. Sample: `/teach/?demo=1&course=nremt`.
+
+- [x] `COURSES` gains `nremt`, `ochem`, `anp` with flags (`ap: false`: no Skills tab, score band or AP® wording;
+  `frq: false`: no free-response tile; `unitExams: false` for NREMT; `unitWord` Chapter/Area; `need`; `bank`).
+- [x] One reader per progress shape (`READ` in class-model.js), all giving the same summary:
+  - A&P: `anp_progress_v1` (AP® record without the unit; the unit comes from the curriculum's topic -> chapter),
+    `anp_flagged_v1`, `anp_picks_v1`, and `anp_prefs_v1.examHistory`, which A&P's exams page did not keep before:
+    `assets/apps/exams.js` now writes it in the AP® shape (unit quiz on some topics is `partial`; final is `full`).
+  - NREMT: `nremt_mastery` `{ level, timesCorrect, timesWrong, lastSeen }` per id (latest right = level > 0),
+    `nremt_exam100_flagged` (list of ids), `nremt_exam100_history` and `nremt_cat_history` (both count as the full
+    exam), `nremt_lessons_v1`, `nremt_picks_v1`. Records carry no topic, so `assets/class/nremt-map.js`
+    (`scripts/build-class-maps.mjs`; `--check`; rerun after a bank change, the test fails otherwise) maps each id to
+    its topic and difficulty: units are the six topic areas, topics the bank's 21 `topic` labels.
+  - Ochem: the mastery engine stores concepts, not questions, so `diagnostic-engine.js applyResult` now also writes
+    `ochem_items_v1` (per question, AP® shape, 1500 newest) and `ochem_picks_v1`. Older answers: unfixed and fixed
+    misses from `ochem_mastery_v1.mistakes`. Exams: `ochem_exam_history_v1` (chapter test = that chapter's unit test,
+    cumulative final = full). Lessons: `ochem_progress` entries with `completed`.
+- [x] Curriculum adapter `curriculum(course, raw)`: A&P chapters, ochem `MODULES`, the NREMT map, as `{ units, topics }`.
+  Teacher bank lookups through `bankUrl` / `bankItems` / `whyUrl` (A&P per chapter like AP®; NREMT
+  `questions-core.json`, ochem `practice-bank-core.json` with ids `lb:<topic>:<index>`, one fetch each; no
+  explanations for those two in live mode and print).
+- [x] Answer-pick hooks: `anp-questions.js` (one line, as AP®), A&P exams page, NREMT `updateMastery` (bank index via
+  `nremt_option_order`; also fires `nremt:progress` so the card and push update), ochem `applyResult` (fires `ochem:progress`).
+- [x] Picker, landing copy ("AP® Biology through AP® Macroeconomics ..., EMT (NREMT), organic chemistry, and anatomy
+  and physiology"), `teach/index.html` description, Premium FAQ line, site-chrome `CLASS_DIRS`.
+- [x] Migration `scripts/sql/migrations/2026-11e-classes-courses.sql` (+ `schema.sql`): course check in
+  `teach_create_class` and `teach_save_question` accepts `nremt|ochem|anp`. NOT APPLIED.
+- Checks: `scripts/test/class-model.test.mjs` (readers from real-shaped fixtures, adapters on the real curricula,
+  links against the pages' own parameter code, banks, hooks), `sql-migration.test.mjs`, check-site, check-weight
+  (A&P shell 56 -> 56.4, nremt practice 55.2 -> 55.6), Playwright: every teacher view of the NREMT sample, the AP®
+  Bio sample unchanged, the student card and `class_push` summary on the NREMT, ochem and A&P homes.
+
+Links (`LevlClassModel.href`, relative to the course home):
+
+| Course | Practice | Review | Exam |
+| --- | --- | --- | --- |
+| A&P | `practice.html?topic=` (first topic; chips for the rest) | `review.html` | `exams.html?mode=system&chapter=` / `?mode=final` |
+| Ochem | `practice.html?topic=&count=` | `practice.html?mode=mistakes` (closest: Review is the concept queue) | `exams.html?kind=chapter&chapter=` / `?kind=final` |
+| NREMT | `practice.html?system=<area>`: no sub-topic filter, so the closest is the area drill; the builder says so | `review.html?start=review` (missed queue) | `exams.html` (full only; no unit exams) |
+
+Gaps: ochem has per-question history only from this change on (plus its logged misses); NREMT and ochem picks,
+`ochem_items_v1` and the NREMT map are this device's (not synced, like AP® picks); ochem interactive questions and
+NREMT multi/table items show as "Question <id>" text-less in the most missed list when they are not in the core file
+(NREMT TEI items are in it; ochem interactive are not); no skills report or score band outside AP®.
+
 ### Needs the owner (code ships behind flags until done)
 
 - Apply `2026-11c-classes-v2.sql` in the Supabase SQL editor after reviewing the PR (after 2026-11b).
+- Apply `2026-11e-classes-courses.sql` after 2026-11c (stream B: classes for NREMT, ochem and A&P).
 
 - Google Classroom: a Google Cloud project, OAuth consent screen with Classroom scopes, app verification.
 - Canvas / Schoology: LTI 1.3 developer keys are made per school; a setup page explains the steps.

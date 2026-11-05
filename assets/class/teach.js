@@ -8,7 +8,7 @@
      #students        everyone                  #s/<id>       one student
      #grades          the gradebook             #settings     order, code, name
      #topic/<id>      where the class struggles on one topic
-     #skills          AP® skill report and the predicted AP® score band (an estimate)
+     #skills          AP® skill report and the predicted AP® score band (an estimate; AP® courses only)
      #live            live mode: one question at a time on the projector, answers arrive as students submit
      #bank            the teacher's own questions        #print/<id>   a printable worksheet or test with its key
    /teach/?dept=1     the department: classes the teachers in it share (numbers only, no student names)
@@ -61,7 +61,8 @@
   function setNav(active){
     var bar = document.getElementById('lvtBar');
     if(!S.rep){ bar.innerHTML = ''; return; }
-    var tabs = [['home', 'Class'], ['work', 'Assignments'], ['students', 'Students'], ['grades', 'Gradebook'], ['skills', 'Skills'], ['live', 'Live'], ['settings', 'Settings']];
+    var tabs = [['home', 'Class'], ['work', 'Assignments'], ['students', 'Students'], ['grades', 'Gradebook'], ['skills', 'Skills'], ['live', 'Live'], ['settings', 'Settings']]
+      .filter(function(t){ return t[0] !== 'skills' || M.isAp(S.rep.class.course); });
     bar.innerHTML = '<div class="course-nav"><nav class="course-nav__inner" aria-label="' + esc(S.rep.class.name) + ' sections">' +
       tabs.map(function(t){ var on = t[0] === active; return '<a href="#' + t[0] + '" class="course-nav__link' + (on ? ' active' : '') + '"' + (on ? ' aria-current="page"' : '') + '>' + t[1] + '</a>'; }).join('') +
       '<a href="#assign" class="course-nav__link tm-navcta">+ Assign</a></nav></div>';
@@ -79,21 +80,24 @@
   /* ------------------------------------------------------------- data */
   function loadScript(src){ return new Promise(function(res, rej){ var s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
   function course(){ return M.COURSES[S.rep.class.course]; }
+  /* The course's curriculum as units and topics (LevlClassModel.curriculum adapts NREMT, ochem and A&P). */
   function curriculum(){
-    var C = course();
-    if(window[C.g]) return Promise.resolve(window[C.g]);
-    return loadScript('/' + C.cur).then(function(){ return window[C.g]; });
+    var C = course(), key = S.rep.class.course, adapt = function(){ return M.curriculum(key, window[C.g]); };
+    if(window[C.g]) return Promise.resolve(adapt());
+    return loadScript('/' + C.cur).then(adapt);
   }
   function frqIndex(){
     if(S.frqs) return Promise.resolve(S.frqs);
+    if(course().frq === false){ S.frqs = []; return Promise.resolve(S.frqs); }
     return fetch('/' + course().dir + '/assets/frq/index.json').then(function(r){ return r.ok ? r.json() : []; }, function(){ return []; }).then(function(x){ S.frqs = Array.isArray(x) ? x : []; return S.frqs; });
   }
+  // A unit's questions by id. NREMT and ochem keep one file for the whole course (LevlClassModel.bankUrl), fetched once.
   function bankFor(unit){
-    var k = course().dir + '/' + unit;
+    var key = S.rep.class.course, url = M.bankUrl(key, unit), k = course().dir + '/' + unit;
     if(S.banks[k]) return Promise.resolve(S.banks[k]);
-    if(!S.bankWait[k]) S.bankWait[k] = fetch('/' + course().dir + '/assets/bank/' + unit + '.json').then(function(r){ return r.ok ? r.json() : { items: [] }; }, function(){ return { items: [] }; })
-      .then(function(b){ var by = {}; (b.items || []).forEach(function(it){ by[it.id] = it; }); S.banks[k] = by; S.stims[k] = b.stimuli || {}; return by; });
-    return S.bankWait[k];
+    if(!S.bankWait[url]) S.bankWait[url] = fetch(url).then(function(r){ return r.ok ? r.json() : { items: [] }; }, function(){ return { items: [] }; })
+      .then(function(b){ var by = {}; M.bankItems(key, b).forEach(function(it){ by[it.id] = it; }); return { by: by, stimuli: (b && !Array.isArray(b) && b.stimuli) || {} }; });
+    return S.bankWait[url].then(function(x){ S.banks[k] = x.by; S.stims[k] = x.stimuli; return x.by; });
   }
   /* Stream C's integrations (assets/class/teach-integrations.js) when that file exists: settings(ctx) and
      assignment(ctx) return HTML for the page, wire(ctx) runs after it is drawn. Nothing breaks without it. */
@@ -168,16 +172,16 @@
     });
     D.unitAvg = {}; order.forEach(function(u){ var ms = D.members.filter(function(m){ return m.summary; }); D.unitAvg[u] = ms.length ? ms.reduce(function(x, m){ return x + m.um[u]; }, 0) / ms.length : 0; });
   }
-  function unitName(id){ var u = D.unitsById[id]; return u ? (u.n ? 'Unit ' + u.n : u.title) : id; }
+  function unitName(id){ var u = D.unitsById[id]; return u ? (u.n ? (course().unitWord || 'Unit') + ' ' + u.n : u.title) : id; }
   function unitTitle(id){ var u = D.unitsById[id]; return u ? u.title : id; }
   function unitLabel(id){ var u = D.unitsById[id]; return u && u.n ? unitName(id) + ' \u00b7 ' + u.title : unitTitle(id); }
   function topicName(id){ var t = D.topics[id]; return t ? (t.ced ? t.ced + ' ' : '') + t.title : id; }
 
   /* ------------------------------------------------------------- views: landing */
   function viewSignedOut(){
-    render(frame(band({ issue: 'LevlPrep <i></i> For teachers', m1: 'Free classes', m2: 'for AP® teachers', hand: 'assign it, see who struggles, fix it',
-      lede: 'Make a class, share a code, and assign practice, review, exams and free response from any of LevlPrep’s ten AP® courses. You see every student’s mastery and the exact questions the class misses.',
-      ctas: '<button class="btn-chan" id="lvtSignIn" type="button">Sign in to start</button><a class="btn-ghost" href="/teach/?demo=1">See a sample class</a>' }) +
+    render(frame(band({ issue: 'LevlPrep <i></i> For teachers', m1: 'Free classes', m2: 'for teachers', hand: 'assign it, see who struggles, fix it',
+      lede: 'Make a class, share a code, and assign practice, review and exams from any LevlPrep course: AP® Biology through AP® Macroeconomics (with free response), EMT (NREMT), organic chemistry, and anatomy and physiology. You see every student’s mastery and the exact questions the class misses.',
+      ctas: '<button class="btn-chan" id="lvtSignIn" type="button">Sign in to start</button><a class="btn-ghost" href="/teach/?demo=1">See a sample AP® class</a><a class="btn-ghost" href="/teach/?demo=1&amp;course=nremt">See a sample EMT class</a>' }) +
       '<div class="hwrap"><div class="lv-grid3 tm-up">' +
       '<div class="d5-card"><p class="d5-lead">Your order, their path</p><p class="d5-mut">Set the units in the order you teach them. Every student’s study path follows it.</p></div>' +
       '<div class="d5-card"><p class="d5-lead">See the misconception</p><p class="d5-mut">Each question the class misses, with the wrong answer most of them picked.</p></div>' +
@@ -559,11 +563,13 @@
       var amount = B.kind === 'mastery' ? '<div class="lv-grid2" style="margin-top:16px"><label class="lv-field"><span>Mastery to reach on each topic</span><select class="lv-in" id="lvtTarget">' + [0.6, 0.7, 0.8, 0.9].map(function(v){ return '<option value="' + v + '"' + (B.target === v ? ' selected' : '') + '>' + pct(v) + '</option>'; }).join('') + '</select></label>' +
           '<label class="lv-field"><span>At least this many answers</span><input class="lv-in" type="number" min="1" max="200" id="lvtMin" value="' + B.min + '"></label></div><p class="d5-mut" style="margin:0">Mastery is the course’s own number: recent right answers on each topic, harder questions counting more. A student who already masters a topic still answers the minimum.</p>'
         : '<label class="lv-field" style="margin-top:16px;max-width:280px"><span>' + (B.kind === 'practice' ? 'Questions to answer' : 'Most questions to redo') + '</span><input class="lv-in" type="number" min="1" max="100" id="lvtCount" value="' + B.count + '"></label>';
-      what = '<section class="d5-card">' + q('2', 'On which', 'topics?') + (chips ? '<p class="lvc-chips" style="margin:0 0 14px">' + chips + '</p>' : B.kind === 'review' ? '<p class="d5-mut" style="margin:0 0 14px">No topics picked: each student reviews every miss in the course.</p>' : '') + units +
+      // NREMT's practice page drills a whole topic area, so a one-topic assignment can take more than one drill.
+      var areaNote = course().topicFilter === false ? '<p class="d5-mut" style="margin:0 0 14px">EMT practice drills a whole topic area, so students reach a topic’s questions inside its area’s drill. For practice, the whole area works best.</p>' : '';
+      what = '<section class="d5-card">' + q('2', 'On which', 'topics?') + areaNote + (chips ? '<p class="lvc-chips" style="margin:0 0 14px">' + chips + '</p>' : B.kind === 'review' ? '<p class="d5-mut" style="margin:0 0 14px">No topics picked: each student reviews every miss in the course.</p>' : '') + units +
         (wt.length ? '<div class="tm-hint"><p><b>Your class is weakest on ' + esc(topicName(wt[0])) + '.</b> From every answer so far in the units you’ve taught.</p><button class="lp-btn sm" type="button" data-weak="1">Use the ' + plural(wt.length, 'weakest topic') + '</button></div>' : '') +
         amount + '</section>';
     } else if(B.kind === 'exam'){
-      what = '<section class="d5-card">' + q('2', 'Which', 'exam?') + '<label class="lv-field"><span>Exam</span><select class="lv-in" id="lvtUnit"><option value="">Full practice exam</option>' + D.order.map(function(u){ return '<option value="' + esc(u) + '"' + (B.unit === u ? ' selected' : '') + '>' + esc(unitName(u) + ' test: ' + unitTitle(u)) + '</option>'; }).join('') + '</select></label><p class="d5-mut">Students take it on the course’s Exams page, timed as usual.</p></section>';
+      what = '<section class="d5-card">' + q('2', 'Which', 'exam?') + '<label class="lv-field"><span>Exam</span><select class="lv-in" id="lvtUnit"><option value="">Full practice exam</option>' + (course().unitExams === false ? [] : D.order).map(function(u){ return '<option value="' + esc(u) + '"' + (B.unit === u ? ' selected' : '') + '>' + esc(unitName(u) + ' test: ' + unitTitle(u)) + '</option>'; }).join('') + '</select></label><p class="d5-mut">Students take it on the course’s Exams page, timed as usual.</p></section>';
     } else {
       var fs = (S.frqs || []).slice().sort(function(a, b){ return String(a.title).localeCompare(b.title); });
       what = '<section class="d5-card">' + q('2', 'Which', 'free response?') + '<label class="lv-field"><span>Question</span><select class="lv-in" id="lvtFrq"><option value="">Pick one</option>' + fs.map(function(f){ return '<option value="' + esc(f.id) + '"' + (B.frq === f.id ? ' selected' : '') + '>' + esc(f.title) + (f.points ? ' (' + f.points + ' points)' : '') + '</option>'; }).join('') + '</select></label><p class="d5-mut">Students score it against the rubric; Premium students can use the AI grader.</p></section>';
@@ -575,7 +581,8 @@
     if(B.late && !lateOpts.some(function(o){ return o[0] === B.late; })) lateOpts.push([B.late, 'Up to ' + plural(B.late, 'day') + ' late']);
     var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> ' + (B.id ? 'Edit' : 'Assign'), m1: B.id ? 'Edit' : 'Assign', m2: 'work', hand: 'one screen, smart defaults', lede: 'Pick what, which topics and when.', small: true }) +
       '<div class="hwrap"><form class="lvt-assign tm-up" id="lvtAssign"><div class="main">' +
-      '<section class="d5-card">' + q('1', 'What should', 'they do?') + '<div class="lvt-tiles">' + tile('practice', 'Practice', 'Questions on the topics you pick') + tile('mastery', 'Mastery', 'Keeps going until they master each topic') + tile('review', 'Review', 'Each student redoes their own misses') + tile('exam', 'Practice exam', 'A unit test or the full AP&reg; exam') + tile('frq', 'Free response', 'AP&reg; style, scored with the rubric') + '</div></section>' +
+      '<section class="d5-card">' + q('1', 'What should', 'they do?') + '<div class="lvt-tiles">' + tile('practice', 'Practice', 'Questions on the topics you pick') + tile('mastery', 'Mastery', 'Keeps going until they master each topic') + tile('review', 'Review', 'Each student redoes their own misses') + tile('exam', 'Practice exam', M.isAp(c.course) ? 'A unit test or the full AP&reg; exam' : course().unitExams === false ? 'A full timed practice exam' : 'A ' + esc((course().unitWord || 'unit').toLowerCase()) + ' test or the cumulative final') +
+        (course().frq === false ? '' : tile('frq', 'Free response', 'AP&reg; style, scored with the rubric')) + '</div></section>' +
       what + controlsHtml() +
       '<section class="d5-card">' + q(B.kind === 'frq' ? '3' : '4', 'When, and', 'does it count?') + '<div class="lv-grid2"><label class="lv-field"><span>Opens (blank is now)</span><input class="lv-in" type="datetime-local" id="lvtOpens" value="' + esc(B.opens) + '"></label><label class="lv-field"><span>Due</span><input class="lv-in" type="datetime-local" id="lvtDue" value="' + esc(B.due) + '"></label></div>' +
       '<div class="lv-grid2"><div><div class="lv-seg" role="group" aria-label="Required or optional">' + seg('req', '1', B.required, 'Required') + seg('req', '0', !B.required, 'Optional') + '</div><p class="d5-mut" style="margin-top:8px">' + (B.required ? 'Counts in the gradebook. Late and missing work is flagged.' : 'Never late and never in the average; you still see who did it.') + '</p></div>' +
@@ -657,14 +664,14 @@
     var mine = D.assign.filter(function(a){ return a.st[m.id] && a.open; });
     var req = mine.filter(function(a){ return a.required; });
     var done = req.filter(function(a){ return a.st[m.id].state === 'done'; }).length, late = mine.filter(function(a){ return a.st[m.id].late; }).length, miss = req.filter(function(a){ return a.st[m.id].state === 'missing'; }).length;
+    var band5 = M.isAp(c.course) ? scoreBand(m) : null;
     var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> Student', m1: esc(m.name), m2: '', hand: 'in ' + esc(c.name) + ' since ' + day(m.joined) + ' &middot; ' + ago(m.last),
       lede: 'You see their ' + esc(course().name) + ' work only. Their other courses stay private.', ctas: '<a class="btn-chan" href="#assign/student/' + m.id + '">Assign to ' + esc(m.name.split(' ')[0]) + '</a>', small: true });
     html += '<div class="hwrap"><div class="lvt-stats tm-up tm-5"><div class="lvt-stat"><b>' + pct(m.overall) + '</b><span>overall mastery</span></div><div class="lvt-stat"><b>' + done + ' of ' + req.length + '</b><span>required done</span></div>' +
       '<div class="lvt-stat"><b>' + late + '</b><span>late &middot; ' + miss + ' missing</span></div><div class="lvt-stat"><b>' + m.week + '</b><span>questions this week</span></div>' +
-      '<a class="lvt-stat" href="#skills" style="text-decoration:none;color:inherit"><b>' + (band5 ? band5.label : '·') + '</b><span>AP® score band, an estimate</span></a></div>';
+      (M.isAp(c.course) ? '<a class="lvt-stat" href="#skills" style="text-decoration:none;color:inherit"><b>' + (band5 ? band5.label : '·') + '</b><span>AP® score band, an estimate</span></a>' : '<div class="lvt-stat"><b>' + plural(m.summary ? m.summary.lessons || 0 : 0, 'lesson') + '</b><span>finished</span></div>') + '</div>';
     var bars = unitRows(function(u, cls){ var v = m.um[u], av = D.unitAvg[u], col = v >= 0.6 ? 'var(--accent)' : v >= 0.4 ? 'var(--amber)' : '#D9694F';
       return '<div class="lvt-urow' + cls + '"><div><b>' + esc(unitName(u)) + '</b><small>' + esc(unitTitle(u)) + '</small></div><div class="bar" style="position:relative;overflow:visible"><i style="width:' + Math.round(v * 100) + '%;background:' + col + '"></i><em class="tm-mark" style="left:' + Math.round(av * 100) + '%"></em></div><div class="v">' + pct(v) + '<small style="display:block;font:700 11.5px var(--font-ui);color:var(--muted)">class ' + pct(av) + '</small></div></div>'; });
-    var band5 = scoreBand(m);
     var al = mine.slice(0, 8).map(function(a){ var s = a.st[m.id];
       var tag = s.state === 'done' ? '<span class="lv-tag ' + (s.late ? 'is-late">Late' : 'is-done">Done') + '</span>' : s.state === 'missing' ? '<span class="lv-tag is-late">Missing</span>' : s.state === 'progress' ? '<span class="lv-tag is-prog">In progress</span>' : '<span class="lv-tag">Not started</span>';
       return '<div class="lvc-row" style="grid-template-columns:minmax(0,1fr) auto auto"><div><p class="lvc-t">' + esc(a.title) + '</p><p class="lvc-m">' + (a.due_at ? 'due ' + day(Date.parse(a.due_at) + (m.extra_days || 0) * DAY) : KIND[a.kind]) + (s.state === 'progress' ? ' &middot; ' + s.answered + ' of ' + s.total : '') + '</p></div>' + tag + '<span class="lvt-score" style="font-size:17px;min-width:48px">' + (s.score == null ? '' : pct(s.score)) + '</span></div>'; }).join('');
@@ -844,9 +851,10 @@
      teach_live_state every 2 s while this view is open (no Realtime); students poll class_live_state. */
   var L = { timer: null, queue: [], pos: 0, state: null, source: '' };
   function whyFor(unit){
-    var k = course().dir + '/' + unit + '-why';
+    var k = course().dir + '/' + unit + '-why', url = M.whyUrl(S.rep.class.course, unit);
     if(S.banks[k]) return Promise.resolve(S.banks[k]);
-    return fetch('/' + course().dir + '/assets/bank/' + unit + '-why.json').then(function(r){ return r.ok ? r.json() : {}; }, function(){ return {}; }).then(function(x){ S.banks[k] = x || {}; return S.banks[k]; });
+    if(!url){ S.banks[k] = {}; return Promise.resolve(S.banks[k]); }
+    return fetch(url).then(function(r){ return r.ok ? r.json() : {}; }, function(){ return {}; }).then(function(x){ S.banks[k] = x || {}; return S.banks[k]; });
   }
   function liveStop(){ if(L.timer){ clearInterval(L.timer); L.timer = null; } }
   function viewLive(){
@@ -1156,7 +1164,7 @@
     else if(head === 'grades') viewGrades();
     else if(head === 'settings') viewSettings();
     else if(head === 'topic') viewTopic(rest);
-    else if(head === 'skills') viewSkills();
+    else if(head === 'skills'){ if(M.isAp(S.rep.class.course)) viewSkills(); else { location.replace('#home'); } }
     else if(head === 'live') viewLive();
     else if(head === 'bank') viewBank();
     else if(head === 'print') viewPrint(rest);
