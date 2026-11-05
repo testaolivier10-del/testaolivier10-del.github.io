@@ -890,7 +890,6 @@ function updateMastery(qIdx, correct, ans){
   rec.lastSeen = Date.now();
   m[qId] = rec;
   localStorage.setItem(MASTERY_KEY, JSON.stringify(m));
-  try{ document.dispatchEvent(new CustomEvent('nremt:progress')); }catch(e){}
 }
 // A "mastered" item that hasn't been seen in a while gradually becomes due again —
 // a lightweight stand-in for spaced-repetition scheduling, without literal calendar
@@ -2644,6 +2643,9 @@ function showResults(){
   } else {
     $id('readinessUpdate').innerHTML = '';
   }
+
+  // Teacher classes (docs/teacher-classes.md): once per finished session, after mastery and the exam history are saved.
+  try{ document.dispatchEvent(new CustomEvent('nremt:progress')); }catch(e){}
 
   allReviewData = activeIndices.map((qIdx,i) => {
     const q = QUESTIONS[qIdx];

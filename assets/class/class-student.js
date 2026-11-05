@@ -71,7 +71,7 @@
      On the ten AP® courses practice, review, mastery and exam links also carry la=<assignment id>: the page then
      runs the assignment with its controls (assets/class/class-run.js); review and mastery run on the practice page.
      NREMT, ochem and A&P pages have no class runner yet, so their links stay plain. */
-  var pageC = null;
+  var pageC = null, needTried = false;
   function href(a){
     var c = pageC || pageCourse();
     if(!M().isAp(c) || a.kind === 'frq') return M().href(c, a);
@@ -149,9 +149,12 @@
     if(!course || !A() || !A().onAuthChange) return;
     pageC = course;
     // A course whose records need a lookup first (NREMT's topic map) loads it before anything is summarized.
+    // If it fails to load, carry on without it (the summary then has no topics for that course).
     var need = M().COURSES[course].need;
-    if(need && !window[M().COURSES[course].g]){
-      var s = document.createElement('script'); s.src = '/' + need; s.onload = function(){ started = false; start(); };
+    if(need && !needTried && !window[M().COURSES[course].g]){
+      needTried = true;
+      var s = document.createElement('script'); s.src = '/' + need;
+      s.onload = s.onerror = function(){ started = false; start(); };
       document.head.appendChild(s); return;
     }
     A().onAuthChange(function(u){

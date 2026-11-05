@@ -4,7 +4,7 @@
    so the class model needs the bank's topic and difficulty for each id without loading the 2.4 MB bank. This
    writes assets/class/nremt-map.js: window.LevlClassNremt = { units, topics, q }.
      units   the six topic areas (the bank's `system`, the practice page's ?system= drill), in the page's order
-     topics  the bank's `topic` labels, each filed under the area most of its questions are in
+     topics  the bank's `topic` labels per area (a label in two areas is two topics; the smaller gets '<label>-<area>')
      q       two characters per question id (id 0 first): topic letter (a = topics[0]) and difficulty
              (0 easy, 1 medium, 2 hard, 3 expert); '..' for an id no longer in the bank
 
@@ -18,24 +18,23 @@ const DIFF = { easy: 0, medium: 1, hard: 2, expert: 3 };
 const slug = (s) => s.toLowerCase().replace(/&/g, ' ').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 export function buildNremtMap(bank) {
-  const by = new Map();
-  for (const q of bank) {
-    const t = q.topic || 'General';
-    if (!by.has(t)) by.set(t, { n: 0, sys: {} });
-    const o = by.get(t); o.n++; o.sys[q.system] = (o.sys[q.system] || 0) + 1;
-  }
+  // One topic per (topic label, area) pair, so every question sits in its own area's drill (?system=). The pair in
+  // the area most of a label's questions are in keeps the plain id; the few in another area get '<label>-<area>'.
+  const by = new Map(), key = (q) => (q.topic || 'General') + '\u0000' + q.system;
+  for (const q of bank) by.set(key(q), (by.get(key(q)) || 0) + 1);
+  const main = {};
+  for (const [k, n] of by) { const [t, sys] = k.split('\u0000'); if (!main[t] || n > by.get(t + '\u0000' + main[t]) || (n === by.get(t + '\u0000' + main[t]) && SYSTEMS.indexOf(sys) < SYSTEMS.indexOf(main[t]))) main[t] = sys; }
   const units = SYSTEMS.map((s) => ({ id: slug(s), title: s, system: s }));
-  // Topics in area order, then by size; each in the area most of its questions are in.
-  const topics = [...by.entries()].map(([title, o]) => {
-    const sys = Object.keys(o.sys).sort((a, b) => o.sys[b] - o.sys[a] || SYSTEMS.indexOf(a) - SYSTEMS.indexOf(b))[0];
-    return { id: slug(title), unit: slug(sys), title, qn: o.n };
+  const topics = [...by.entries()].map(([k, n]) => {
+    const [title, sys] = k.split('\u0000');
+    return { key: k, id: main[title] === sys ? slug(title) : slug(title) + '-' + slug(sys), unit: slug(sys), title, qn: n };
   }).sort((a, b) => units.findIndex((u) => u.id === a.unit) - units.findIndex((u) => u.id === b.unit) || b.qn - a.qn);
   if (topics.length > 26) throw new Error('more than 26 NREMT topics: widen the encoding');
-  const idx = new Map(topics.map((t, i) => [t.title, i]));
+  const idx = new Map(topics.map((t, i) => [t.key, i]));
   const max = Math.max(...bank.map((q) => q.id));
   const cells = new Array(max + 1).fill('..');
-  for (const q of bank) cells[q.id] = String.fromCharCode(97 + idx.get(q.topic || 'General')) + (DIFF[q.diff] ?? 1);
-  return { units, topics, q: cells.join('') };
+  for (const q of bank) cells[q.id] = String.fromCharCode(97 + idx.get(key(q))) + (DIFF[q.diff] ?? 1);
+  return { units, topics: topics.map(({ key: _, ...t }) => t), q: cells.join('') };
 }
 
 export function render(map) {

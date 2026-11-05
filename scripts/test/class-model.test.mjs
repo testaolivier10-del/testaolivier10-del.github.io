@@ -282,7 +282,7 @@ test('answer-pick hooks: one line where each course records an answer', () => {
   assert.match(readFileSync('anatomy-physiology/assets/anp-questions.js', 'utf8'), /'anp' \+ '_picks_v1'/);
   assert.match(readFileSync('anatomy-physiology/assets/apps/exams.js', 'utf8'), /anp_picks_v1[\s\S]*setPref\('examHistory'/);
   const nr = readFileSync('nremt/practice-engine.js', 'utf8');
-  assert.match(nr, /function updateMastery\(qIdx, correct, ans\)[\s\S]*nremt_picks_v1[\s\S]*nremt:progress/);
+  assert.match(nr, /function updateMastery\(qIdx, correct, ans\)[\s\S]*nremt_picks_v1[\s\S]*saveHistoryEntry\(\{[\s\S]*saveCatHistory\(score[\s\S]*nremt:progress/);
   assert.match(nr, /updateMastery\(qIdx, correct, answers\[i\]\)/); assert.match(nr, /updateMastery\(qIdx, correct, answers\[current\]\)/);
   assert.match(readFileSync('ochem/assets/diagnostic-engine.js', 'utf8'), /ochem_items_v1[\s\S]*ochem_picks_v1[\s\S]*noteItem\(q, d\.correct, response, tier\)/);
   assert.match(readFileSync('assets/site-chrome.js', 'utf8'), /\|nremt\|ochem\|anatomy-physiology\)/);
