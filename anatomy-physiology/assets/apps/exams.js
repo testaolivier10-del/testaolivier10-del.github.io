@@ -412,7 +412,7 @@
       var ch = CHAPTER[cfg.chapter];
       var allTopics = builtTopics(cfg.chapter).length === cfg.unitTopics.length;
       label = 'Unit quiz: ' + (allTopics || cfg.unitTopics.length > 1 ? ch.title : TOPIC[cfg.unitTopics[0]].title);
-      meta.chapter = cfg.chapter;
+      meta.chapter = cfg.chapter; meta.partial = !allTopics;
     } else if(k === 'system'){
       var pool = poolFor();
       qs = levelMix(pool, cfg.sysLen ? Math.min(cfg.sysLen, pool.length) : pool.length);
@@ -627,6 +627,17 @@
       return { q: q, r: r };
     });
     var right = rows.filter(function(x){ return x.r.correct; }).length, total = rows.length;
+    // Teacher classes (docs/teacher-classes.md): the answers picked and the finished exam, in the AP® courses' shape
+    // (anp_picks_v1, anp_prefs_v1.examHistory) so a class sees exam assignments done. A chapter's unit quiz on only
+    // some of its topics is partial.
+    try{
+      var pk = 'anp_picks_v1', po = JSON.parse(localStorage.getItem(pk) || '{}');
+      rows.forEach(function(x){ if(typeof x.r.pick === 'number') po[x.q.id] = x.r.pick; });
+      localStorage.setItem(pk, JSON.stringify(po));
+      var eh = (prefs().examHistory || []).concat([{ ts: Date.now(), kind: run.meta.kind === 'final' ? 'full' : run.meta.kind, label: run.label || '', unit: run.meta.chapter || null,
+        partial: !!run.meta.partial, mcq: { c: right, n: total } }]);
+      setPref('examHistory', eh.slice(-30));
+    }catch(e){}
     if(window.StudyHubAccount && window.StudyHubAccount.promptToSave && total >= 10){
       setTimeout(function(){ window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + right + '/' + total, { kind: 'exam', score: right, total: total, missed: total - right }); }, 2600);
     }

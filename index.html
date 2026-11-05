@@ -117,6 +117,11 @@
   .home-deal__line{margin:0;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:18px 22px;color:var(--muted);font-weight:600;line-height:1.6;}
   .home-deal__line .pill{margin-right:8px;color:var(--accent-text);}
   .home-deal__line a{color:var(--accent-text);font-weight:800;}
+  .home-teach{display:flex;align-items:center;justify-content:space-between;gap:20px 32px;flex-wrap:wrap;margin:0 0 64px;padding:26px 28px;border-radius:var(--radius,18px);background:var(--white);box-shadow:var(--shadow-card,0 1px 3px rgba(0,0,0,.08));}
+  .home-teach h2{margin:0 0 6px;font:900 24px var(--font-ui);}
+  .home-teach h2 span{color:var(--chan);}
+  .home-teach p{margin:0;max-width:620px;color:var(--ink-soft,var(--ink));}
+  .home-teach__ctas{display:flex;gap:10px;flex-wrap:wrap;}
   .plan{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:26px;}
   .plan h3{font:900 24px var(--font-ui);letter-spacing:-.02em;margin:10px 0 4px;}
   .plan__note{color:var(--muted);margin:0 0 12px;}
@@ -335,6 +340,14 @@
   </section>
 <script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});})();</script>
 <!-- pricing:end -->
+
+  <section class="home-teach" aria-labelledby="home-teach-h">
+    <div>
+      <h2 id="home-teach-h">Teach a class? <span>It's free.</span></h2>
+      <p>Make a class, share a code, assign practice and exams, and see the exact questions your students miss. Works for AP, EMT, organic chemistry and A&amp;P. Connects to Google Classroom.</p>
+    </div>
+    <div class="home-teach__ctas"><a class="btn-chan" href="/teach/?demo=1">See a sample class</a><a class="btn-ghost" href="/teach/">Make your class</a></div>
+  </section>
 
 <!-- faq:start -->
   <section class="home-faq" aria-labelledby="home-faq-h">

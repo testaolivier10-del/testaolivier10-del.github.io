@@ -18,6 +18,8 @@
   var BASE = window.ApBioBase || '';
   var app = document.getElementById('app');
   if(!app) return;
+  // A class assignment (?la=) runs on the practice page (assets/class/class-run.js).
+  if(/[?&]la=/.test(location.search)){ location.replace('practice.html' + location.search); return; }
   var hero = document.querySelector('.page-head, .bio-hero');
   var CUR = window.ApBioCurriculum || { topics: [], units: [] };
   var Core = window.ApBioCore, Q = window.ApBioQuestions;

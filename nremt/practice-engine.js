@@ -289,6 +289,7 @@ if(!QUESTIONS.length){
 // still. QID.readOrders() accepts the old array and returns the map, so the
 // conversion happens on the next page load with no migration step.
 const OPTION_ORDER_KEY = 'nremt_option_order';
+let OPTION_ORDERS = {};   // id -> shown position -> bank index; updateMastery saves picks in bank order
 (function shuffleQuestionOptions(){
   // A question with no saved order is one added to the bank since this browser
   // last loaded the page. It gets shuffled; every question that already had an
@@ -335,6 +336,7 @@ const OPTION_ORDER_KEY = 'nremt_option_order';
   if(changed){
     try{ localStorage.setItem(OPTION_ORDER_KEY, JSON.stringify(orders)); }catch(e){}
   }
+  OPTION_ORDERS = orders;
 })();
 
 const flagIcon = '<svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>';
@@ -875,10 +877,12 @@ function loadMastery(){
   const raw = localStorage.getItem(MASTERY_KEY);
   return raw ? QID.pruneById(JSON.parse(raw)) : {};
 }
-function updateMastery(qIdx, correct){
+function updateMastery(qIdx, correct, ans){
   const m = loadMastery();
   const qId = QID.idOf(qIdx);
   if(qId === undefined) return;
+  // Teacher classes (docs/teacher-classes.md): the option picked, as its index in the bank (options are shown shuffled).
+  if(typeof ans === 'number' && !QUESTIONS[qIdx].type) try{ const o = OPTION_ORDERS[qId], pk = 'nremt_picks_v1', po = JSON.parse(localStorage.getItem(pk) || '{}'); po[qId] = Array.isArray(o) ? o[ans] : ans; localStorage.setItem(pk, JSON.stringify(po)); }catch(e){}
   const rec = m[qId] || {level:0, timesCorrect:0, timesWrong:0, lastSeen:0};
   if(correct){
     rec.level = Math.min(5, rec.level + 1);
@@ -1857,7 +1861,7 @@ function recordAdaptiveAnswer(qIdx, correct, live){
   // answer was checked (live), so only once.
   if(!live){
     if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer('nremt', correct, q.id, q.system);
-    updateMastery(qIdx, correct);
+    updateMastery(qIdx, correct, answers[current]);
   }
   if(!adaptiveState.sessionDomainStats[q.system]) adaptiveState.sessionDomainStats[q.system] = {correct:0, total:0};
   adaptiveState.sessionDomainStats[q.system].total++;
@@ -2423,7 +2427,7 @@ function recordLive(i, q, right){
   // noteAnswer also sends the per-question tally (assets/analytics.js answer()).
   if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer('nremt', right, q.id, q.system);
   else if(window.LevlAnalytics && window.LevlAnalytics.answer) window.LevlAnalytics.answer('nremt', q.id, right, q.system);
-  updateMastery(activeIndices[i], right);
+  updateMastery(activeIndices[i], right, answers[i]);
   recordStudyActivity(1);
   const topic = q.topic || 'General';
   const ds = {}; ds[q.system] = { correct: right ? 1 : 0, total: 1, topics: {} };
@@ -2547,7 +2551,7 @@ function showResults(){
     }
     // Weak-spot sessions already update mastery live, per-question, as they go —
     // every other mode records it here in bulk instead.
-    if(mode !== 'adaptive' && !recorded[i]) updateMastery(qIdx, correct);
+    if(mode !== 'adaptive' && !recorded[i]) updateMastery(qIdx, correct, answers[i]);
   });
   saveMissed(Array.from(missedSet));
   recordDomainStatsAll(domainNew);
@@ -2713,6 +2717,9 @@ function showResults(){
   } else {
     $id('readinessUpdate').innerHTML = '';
   }
+
+  // Teacher classes (docs/teacher-classes.md): once per finished session, after mastery and the exam history are saved.
+  try{ document.dispatchEvent(new CustomEvent('nremt:progress')); }catch(e){}
 
   allReviewData = activeIndices.map((qIdx,i) => {
     const q = QUESTIONS[qIdx];

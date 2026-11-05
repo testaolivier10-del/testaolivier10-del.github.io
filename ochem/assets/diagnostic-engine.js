@@ -269,6 +269,22 @@
      electrophile recognition even though the question was filed under SN2.
      Secondary concepts listed on the question get partial weight so a
      three-concept question doesn't triple-count one answer. */
+  /* Teacher classes (docs/teacher-classes.md): the mastery engine keeps concepts, not questions, so a class reads
+     each question's record here, in the AP® courses' shape: ochem_items_v1 { v, q: { <id>: { t, n, c, right, seen, l } } }
+     (the 1500 most recent), and the option picked in ochem_picks_v1 (the author's index). Every answer, recall included. */
+  function noteItem(q, correct, response, tier){
+    try{
+      var k = 'ochem_items_v1', d = JSON.parse(localStorage.getItem(k) || 'null') || { v: 1, q: {} }, r = d.q[q.id] || { t: q.topic, n: 0, c: 0, right: 0, seen: 0, l: 'p' };
+      r.t = q.topic; r.n++; if(correct) r.c++; r.right = correct ? 1 : 0; r.seen = Date.now(); r.l = tier <= 1 ? 'r' : tier >= 3 ? 'a' : 'p';
+      d.q[q.id] = r;
+      var ids = Object.keys(d.q);
+      if(ids.length > 1500) ids.sort(function(a, b){ return d.q[a].seen - d.q[b].seen; }).slice(0, ids.length - 1500).forEach(function(id){ delete d.q[id]; });
+      localStorage.setItem(k, JSON.stringify(d));
+      if(response && typeof response.choice === 'number'){ var pk = 'ochem_picks_v1', po = JSON.parse(localStorage.getItem(pk) || '{}'); po[q.id] = response.choice; localStorage.setItem(pk, JSON.stringify(po)); }
+      document.dispatchEvent(new CustomEvent('ochem:progress'));
+    }catch(e){}
+  }
+
   function applyResult(q, response){
     var d = diagnose(q, response);
     var M = window.OchemMastery;
@@ -276,6 +292,7 @@
     var secondary = (q.concepts || []).slice(1);
     var tier = q.tier || 2;
     var moved = [];
+    noteItem(q, d.correct, response, tier);
 
     function push(conceptId, share){
       if(!conceptId) return;

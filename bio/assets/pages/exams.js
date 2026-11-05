@@ -335,7 +335,8 @@
       if(full.length !== stubsList.length) throw new Error('missing questions');
       if(cfg.kind !== 'mixed' && Core.freeExam && !Core.freeExam().use()){ renderSetup(); return; }
       var t = timing();
-      startSectionOne(full, r[1], label, meta, t.k);
+      if(CLS) full = CLS.mix(full);
+      startSectionOne(full, r[1], label, meta, CLS ? CLS.k(full.length * MCQ_SEC) : t.k);
     }).catch(function(){
       if(btn){ btn.disabled = false; btn.textContent = 'Start'; }
       var msg = app.querySelector('.bio-pr-avail'); if(msg) msg.textContent = 'The exam questions did not load. Check your connection and try again.';
@@ -379,7 +380,7 @@
     view('run');
     var limit = k ? Math.round(qs.length * MCQ_SEC * k * 1000) : 0;
     app.innerHTML = '<div class="bio-ex-run">' +
-      '<div class="bio-ex-top"><div class="bio-ex-title"><span class="bio-pr-label">' + esc(label) + (frqs.length ? ' &middot; Section I' : '') + '</span><span class="bio-small bio-ex-status" aria-live="polite"></span></div>' + clockHtml(limit, true) + '</div>' +
+      '<div class="bio-ex-top"><div class="bio-ex-title"><span class="bio-pr-label">' + esc(label) + (frqs.length ? ' &middot; Section I' : '') + '</span><span class="bio-small bio-ex-status" aria-live="polite"></span></div>' + clockHtml(limit, !CLS) + '</div>' +
       '<p class="bio-ex-sr" aria-live="assertive"></p>' +
       '<details class="bio-ex-navwrap"' + (window.matchMedia && window.matchMedia('(min-width: 700px)').matches ? ' open' : '') + '><summary>All questions <span class="bio-ex-navcount"></span></summary>' +
       '<nav class="bio-ex-nav" aria-label="Questions">' + qs.map(function(q, i){ return '<button type="button" data-go="' + i + '" aria-label="Question ' + (i + 1) + ', not answered">' + (i + 1) + '</button>'; }).join('') + '</nav></details>' +
@@ -455,6 +456,7 @@
   }
   function lockedIn(q, box, res){
     run.res[q.id] = { correct: res.correct, score: res.score, pick: capture(q, box, res) };
+    if(CLS) CLS.answer(q, res);
     box.querySelectorAll('.bio-q-body button').forEach(function(b){ b.disabled = true; });
     var fb = box.querySelector('.bio-q-feedback'); if(fb) fb.innerHTML = '<p class="bio-small">Answer locked in.</p>';
     status();
@@ -568,7 +570,7 @@
     window.removeEventListener('beforeunload', guard);
     var rows = run.rows || run.qs.map(function(q){ return { q: q, r: run.res[q.id] || { correct: false, score: 0, pick: null, skipped: true } }; });
     // Recorded now, at the end (A&P decision 42); unanswered counts as a miss.
-    rows.forEach(function(x){ Core.record(x.q.id, !!x.r.correct, { topic: x.q.topic, unit: x.q.unit, practice: x.q.practice, level: x.q.level, diff: x.q.diff, src: 'q' }); });
+    rows.forEach(function(x){ if(!x.q.own && !(CLS && CLS.keep(x))) Core.record(x.q.id, !!x.r.correct, { topic: x.q.topic, unit: x.q.unit, practice: x.q.practice, level: x.q.level, diff: x.q.diff, src: 'q' }); });
     var right = rows.filter(function(x){ return x.r.correct; }).length, total = rows.length;
     if(window.StudyHubAccount && window.StudyHubAccount.promptToSave && total >= 10){
       setTimeout(function(){ window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + right + '/' + total, { kind: 'exam', score: right, total: total, missed: total - right }); }, 2600);
@@ -601,6 +603,7 @@
     }).join('') + '</ul></section>';
   }
   function results(rows, right, fg, fo, composite, b){
+    if(CLS && CLS.done(rows)) return;
     var total = rows.length, k = run.meta.kind, missedN = total - right;
     var byUnit = tally(rows, function(q){ return q.unit; });
     var byTopic = tally(rows, function(q){ return q.topic; }).sort(function(a, c){ return a.c / a.n - c.c / c.n; });
@@ -680,6 +683,14 @@
       '<p class="bio-ex-links"><a href="' + BASE + 'lessons/' + q.topic + '.html">Lesson</a> <span aria-hidden="true">&middot;</span> <a href="' + BASE + 'notes/' + q.topic + '.html">Notes</a>' + (window.LevlReport ? ' ' + window.LevlReport.button('apbio', q.id) : '') + '</p></li>';
   }
 
+  /* ?la=: a teacher's assignment, run by assets/class/class-run.js (docs/teacher-classes.md). Without la= none of this runs. */
+  var LA = /[?&]la=/.test(location.search), CLS = null;
+  function classBoot(){
+    var s = document.createElement('script'); s.src = '/assets/class/class-run.js'; s.onerror = renderSetup;
+    s.onload = function(){ window.LevlClassRun.exam({ app: app, cur: CUR, core: Core, base: BASE, view: view, cfg: cfg, units: builtUnits, begin: begin, set: function(c){ CLS = c; }, fallback: renderSetup }); };
+    document.head.appendChild(s);
+  }
+
   /* ------------------------------------------------------ boot */
 
   function boot(){
@@ -697,7 +708,7 @@
       if(builtUnits().some(function(u){ return u.id === p.get('unit'); })){ cfg.unit = p.get('unit'); cfg.kind = 'unit'; }
       if(p.get('mode') === 'unit' || p.get('mode') === 'full' || p.get('mode') === 'mixed') cfg.kind = p.get('mode');
       if(MIXED.indexOf(+p.get('n')) > -1) cfg.n = +p.get('n');
-      renderSetup();
+      if(LA) classBoot(); else renderSetup();
       if(p.toString()){ var s = app.querySelector('.bio-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){ app.innerHTML = '<p>The question bank did not load. Check your connection and reload.</p>'; });
   }

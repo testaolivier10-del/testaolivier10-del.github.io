@@ -18,6 +18,8 @@
   var BASE = window.ApEnvBase || '';
   var app = document.getElementById('app');
   if(!app) return;
+  // A class assignment (?la=) runs on the practice page (assets/class/class-run.js).
+  if(/[?&]la=/.test(location.search)){ location.replace('practice.html' + location.search); return; }
   var hero = document.querySelector('.page-head, .env-hero');
   var CUR = window.ApEnvCurriculum || { topics: [], units: [] };
   var Core = window.ApEnvCore, Q = window.ApEnvQuestions;

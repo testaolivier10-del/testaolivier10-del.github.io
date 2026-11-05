@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Data Privacy for Schools | LevlPrep</title>
+<meta name="description" content="What LevlPrep classes collect about students, FERPA and COPPA, retention, deletion, subprocessors, and a data privacy agreement draft for districts.">
+<link rel="canonical" href="https://levlprep.com/teach/privacy-agreement.html">
+<meta property="og:title" content="Student Data Privacy for Schools | LevlPrep">
+<meta property="og:description" content="What LevlPrep classes collect about students, FERPA and COPPA, retention, deletion, subprocessors, and a data privacy agreement draft for districts.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/teach/privacy-agreement.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../assets/site-pages.css">
+<link rel="stylesheet" href="../assets/class/class.css">
+<link rel="stylesheet" href="../assets/class/class-pages.css">
+
+</head>
+<body class="sp-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="site-header" data-site-header>
+  <div class="site-header__inner">
+    <span class="site-header__brand-row"><a class="site-header__brand" href="/" aria-label="LevlPrep home"><span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span></a></span>
+  </div>
+</header>
+
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
+  <section class="sp-hero sp-hero--solo">
+    <div>
+      <span class="sp-pill">For districts</span>
+      <h1>Student data privacy, <span>in plain words.</span></h1>
+      <p class="hand">what classes collect, who sees it, and the paperwork</p>
+    </div>
+  </section>
+  <div class="lv-narrow lvp-wide lvp-prose">
+    <nav class="lv-card lvp-note" aria-label="On this page">
+      <p class="lv-mut"><b>On this page:</b> <a href="#glance">At a glance</a> &middot; <a href="#collected">What is collected</a> &middot; <a href="#ferpa">FERPA</a> &middot; <a href="#coppa">COPPA and age</a> &middot; <a href="#retention">Retention and deletion</a> &middot; <a href="#security">Security</a> &middot; <a href="#subprocessors">Subprocessors</a> &middot; <a href="#dpa">Data privacy agreement</a></p>
+    </nav>
+
+    <h2 class="lv-h2" id="glance">At a <span>glance</span></h2>
+    <ul>
+      <li>A class&rsquo;s owner can add <b>co-teachers</b>, who see the same class and can send reminders, share reports and score free responses. Connecting Google Classroom or an LMS and sending grades to them stay with the owner.</li>
+      <li>Every course page works <b>without an account</b>. A class needs a student account only so the student&rsquo;s work can reach the teacher.</li>
+      <li>Classes are for students <b>13 and older</b>. We ask at the join page and do not store the answer.</li>
+      <li>The teacher sees one course&rsquo;s progress and the name the student typed. Never the student&rsquo;s email, other courses, notes, study assistant questions, streak or study time.</li>
+      <li><b>No ads, no selling, no profiling.</b> Student data is used only to run the class for the teacher and the student.</li>
+      <li><b>No parent contact details are collected.</b> Families get a printout or an expiring link the teacher or student hands over.</li>
+      <li><b>Deletion on request</b> within 30 days, and students can delete their own account at once.</li>
+      <li>We are willing to sign the <b>Student Data Privacy Consortium&rsquo;s National Data Privacy Agreement</b> (NDPA) or your state&rsquo;s version. A draft with our exhibits filled in is <a href="#dpa">below</a>.</li>
+    </ul>
+    <p class="lv-mut">This page explains the teacher classes for districts. The <a href="../privacy.html">privacy policy</a> covers the whole site and is the one that governs; this page adds nothing to it and takes nothing away.</p>
+
+    <h2 class="lv-h2" id="collected">What is <span>collected</span></h2>
+    <div class="table-wrap rp-tablewrap" tabindex="0"><table class="rp-table lvp-data">
+      <thead><tr><th>Data</th><th>When</th><th>Why</th><th>Who can see it</th><th>Kept until</th></tr></thead>
+      <tbody><tr><td><b>Account email</b></td><td>When the student makes an account (Google sign-in or an emailed code)</td><td>Signing in; a reminder email only when the teacher presses Send</td><td>Not the teacher. Supabase stores it; Resend delivers the email</td><td>Until the account is deleted</td></tr><tr><td><b>Name in the class</b></td><td>Typed by the student when joining</td><td>So the teacher knows who is who</td><td>The teacher and any co-teacher</td><td>Until the student leaves, is removed, or the class or account is deleted</td></tr><tr><td><b>Progress summary in the class&rsquo;s course</b></td><td>Sent by the student&rsquo;s browser while they are in the class, at most once a minute</td><td>Scores, mastery by topic and unit, assignments done and when, questions missed or flagged, the answer picked on a multiple-choice question, when they last studied</td><td>The teacher (and a family report link, if one is made)</td><td>The latest copy only, until the membership ends</td></tr><tr><td><b>Free-response answers sent to the teacher</b></td><td>Only when the student presses Send</td><td>Teacher scoring against the rubric, with a comment back to the student</td><td>The teacher; the student sees the score and comment</td><td>Until the membership, the assignment or the class ends</td></tr><tr><td><b>Family report links</b></td><td>When a teacher or the student makes one</td><td>A read-only report for a parent or guardian</td><td>Anyone holding the link, until it expires (1 to 30 days)</td><td>Only a one-way hash of the link is kept; deleted when the membership ends</td></tr><tr><td><b>Reminder log</b></td><td>When a teacher (or co-teacher) sends a reminder</td><td>The limits: one reminder a day per student, 200 a day per teacher</td><td>LevlPrep&rsquo;s operator only, never teachers or students</td><td>30 days, cleared hourly</td></tr><tr><td><b>&ldquo;Stop&rdquo; choices</b></td><td>When someone presses the stop link in a reminder</td><td>Not sending them more</td><td>LevlPrep&rsquo;s operator only, never teachers or students</td><td>Until the account is deleted</td></tr><tr><td><b>Join link posted in Classroom</b> (only when the teacher presses &ldquo;Post the join link in Classroom&rdquo;)</td><td>When the teacher presses the button, at most once every 10 minutes per class</td><td>One Classroom announcement in the teacher&rsquo;s linked class: the class name, the join link and the class code. No email is sent; LevlPrep keeps only the time of the last one</td><td>The students and teachers in that Classroom class</td><td>In Classroom until the teacher deletes it there; the time is replaced by the next one</td></tr><tr><td><b>Class Premium quote requests</b></td><td>When a teacher sends the quote form</td><td>Answering the request: name, school, numbers typed in, and the account&rsquo;s email for the reply</td><td>LevlPrep&rsquo;s operator only, never teachers or students</td><td>Until the request is handled, or at once when the account is deleted</td></tr><tr><td><b>Google Classroom link</b> (only if the teacher connects it)</td><td>When the teacher connects and checks the roster</td><td>The teacher&rsquo;s Google token (encrypted), their Google email, the Classroom class id, each matched student&rsquo;s Classroom user id, posted coursework ids. A student is matched only when they signed in to LevlPrep with Google and that Google account is the one in the roster. LevlPrep does not read students&rsquo; email addresses from Classroom; roster names are shown to the teacher and not stored</td><td>LevlPrep&rsquo;s operator only, never teachers or students</td><td>Until the teacher disconnects, the membership ends or the class or account is deleted</td></tr><tr><td><b>LMS link</b> (only if the school adds LevlPrep to Canvas or Schoology)</td><td>When a student opens LevlPrep work from the LMS and signs in</td><td>The LMS user id and the gradebook column address, so scores can go back; launch ids for one day, so a launch cannot be replayed</td><td>LevlPrep&rsquo;s operator only, never teachers or students</td><td>Until the membership ends or the class or account is deleted</td></tr></tbody>
+    </table></div>
+    <p class="lv-mut">Outside classes, the site-wide items in the <a href="../privacy.html">privacy policy</a> apply to every visitor: cookieless analytics (which signed-in students carry as a one-way account tag, and which Do Not Track turns off), anonymous answer totals, error reports and, for a signed-in student, a synced copy of their progress.</p>
+
+    <h2 class="lv-h2" id="ferpa"><span>FERPA</span></h2>
+    <p>When a school or district signs a data privacy agreement with us, we act under its direct control as a <b>school official with a legitimate educational interest</b>: we use education records only to provide the classes, do not re-disclose them except to the subprocessors listed below for that purpose, and delete them as the agreement says. Parents and eligible students who want to see or correct a record go through the school, and we help the school answer within the time the agreement sets.</p>
+    <p>A teacher can also use the free classes without a district agreement. Then it is the teacher&rsquo;s and school&rsquo;s decision whether that fits local policy; we handle the data the same way either way.</p>
+
+    <h2 class="lv-h2" id="coppa"><span>COPPA</span> and age</h2>
+    <p>LevlPrep is not directed at children under 13, accounts need users to be 13 or older, and classes ask students to confirm it before joining. We do not rely on a school&rsquo;s consent on behalf of parents under COPPA, because classes are not for children under 13. If we learn an account belongs to a child under 13, we delete it; a parent or school can tell us at <a href="mailto:hello@levlprep.com">hello@levlprep.com</a>.</p>
+
+    <h2 class="lv-h2" id="retention">Retention and <span>deletion</span></h2>
+    <ul>
+      <li>A student leaving a class, or a teacher removing them, deletes that membership&rsquo;s summary, sent answers, scores, report links and Classroom or LMS ids at once.</li>
+      <li>Deleting a class deletes its assignments, memberships and everything attached to them. Deleting an account deletes all of these with it, and any Class Premium quote request it sent.</li>
+      <li>The reminder log is cleared of anything older than 30 days every hour; expired report links and LMS launch ids go at the same time.</li>
+      <li>A school, teacher or parent can email <a href="mailto:hello@levlprep.com">hello@levlprep.com</a> to have what we hold for a student&rsquo;s address deleted; we do it and confirm in writing within 30 days.</li>
+      <li>At the end of a district agreement, we delete or hand back the district&rsquo;s student data as its <i>Directive for disposition</i> (Exhibit D) says.</li>
+      <li>Payment records that Polar keeps as the seller, and the one-way hashes the <a href="../privacy.html#retention">privacy policy</a> lists, are not class data and follow that policy.</li>
+    </ul>
+
+    <h2 class="lv-h2" id="security"><span>Security</span></h2>
+    <ul>
+      <li>Every database table has row-level security on; the browser reaches class data only through functions that check the signed-in person teaches the class or that the data is their own.</li>
+      <li>The keys that can read past those checks stay on our server (a Cloudflare Worker), never in a browser. Google tokens are encrypted before they are stored; report links are stored as one-way hashes.</li>
+      <li>All traffic is over HTTPS. We do not hold a security certification such as SOC 2; if your district needs a questionnaire answered, send it.</li>
+      <li>If student data is ever exposed, we tell the district in writing, with what happened and what we are doing, within the time the signed agreement sets.</li>
+    </ul>
+
+    <h2 class="lv-h2" id="subprocessors"><span>Subprocessors</span></h2>
+    <div class="table-wrap rp-tablewrap" tabindex="0"><table class="rp-table">
+      <thead><tr><th>Service</th><th>What it does</th><th>Student data it handles</th></tr></thead>
+      <tbody><tr><td><b>Supabase</b></td><td>Accounts and the database</td><td>Everything in the table above, stored</td></tr><tr><td><b>Cloudflare</b></td><td>Our server (a Worker) and the study assistant&rsquo;s AI model (Workers AI)</td><td>Passes requests through; the assistant gets the question asked, not class data</td></tr><tr><td><b>Resend</b></td><td>Email delivery</td><td>The address and the text of a sign-in email or a reminder the teacher sent</td></tr><tr><td><b>Umami Cloud</b></td><td>Cookieless analytics</td><td>Page views and milestones, with a one-way account tag for signed-in students</td></tr><tr><td><b>Polar</b></td><td>Sells Premium (merchant of record)</td><td>Only if someone buys a pass: what they type at checkout</td></tr><tr><td><b>GitHub Pages</b></td><td>Hosts the site</td><td>Sees requests for pages, like any web host</td></tr><tr><td><b>Google</b></td><td>Google Classroom, only if the teacher connects it; Google sign-in, only if the student chooses it</td><td>Roster (names and Google account ids, no email addresses), coursework, the join-link announcement the teacher posts and the grades the teacher sends; sign-in</td></tr><tr><td><b>Your LMS</b></td><td>Canvas or Schoology, only if the school adds LevlPrep</td><td>Launch ids and the scores the teacher sends</td></tr><tr><td><b>Anthropic</b></td><td>The AI free-response grader, only when it is switched on (off for students today)</td><td>The free-response answer being graded</td></tr></tbody>
+    </table></div>
+    <p class="lv-mut">We tell districts with a signed agreement before adding a subprocessor that handles student data.</p>
+
+    <h2 class="lv-h2" id="dpa">Data privacy <span>agreement</span></h2>
+    <section class="lv-card lvp-warn" role="note">
+      <p><b>This is a draft to fill in, not a signed agreement.</b> It follows the structure of the Student Data Privacy Consortium&rsquo;s National Data Privacy Agreement (NDPA) and fills in LevlPrep&rsquo;s exhibits from what the site actually does. The agreement that binds anyone is the SDPC&rsquo;s official text (or your state&rsquo;s version) with these exhibits, signed by both sides. <b>LevlPrep&rsquo;s signature is added by its owner after review; nothing here is signed by LevlPrep.</b> This is not legal advice. The official templates and the registry of signed agreements are at <a href="https://sdpc.a4l.org" rel="noopener">sdpc.a4l.org</a>.</p>
+    </section>
+    <form class="lv-card lvp-dpa" id="dpaForm">
+      <h3 class="lv-h3">Parties</h3>
+      <div class="lv-grid2">
+        <label class="lv-field"><span>Local education agency (LEA): district or school name</span><input class="lv-in" id="dpa_lea" type="text" placeholder=""></label>
+        <label class="lv-field"><span>State</span><input class="lv-in" id="dpa_state" type="text" placeholder=""></label>
+        <label class="lv-field lvp-span"><span>LEA address</span><input class="lv-in" id="dpa_lea_addr" type="text" placeholder=""></label>
+        <label class="lv-field"><span>LEA designated representative: name and title</span><input class="lv-in" id="dpa_lea_contact" type="text" placeholder=""></label>
+        <label class="lv-field"><span>Their email and phone</span><input class="lv-in" id="dpa_lea_email" type="text" placeholder=""></label>
+      </div>
+      <p><b>Provider:</b> LevlPrep (levlprep.com), operated by Olivier Testa, Minnesota, United States. Designated representative: Olivier Testa, <a href="mailto:hello@levlprep.com">hello@levlprep.com</a>.</p>
+
+      <h3 class="lv-h3">Article I: Purpose and scope</h3>
+      <p>The Provider makes its teacher classes available to the LEA&rsquo;s teachers and students so teachers can assign work in LevlPrep&rsquo;s courses (AP&reg; Biology, AP&reg; Chemistry and the others) and see their students&rsquo; progress. The Provider uses Student Data only to provide those services, described in Exhibit A, and for no other purpose.</p>
+      <h3 class="lv-h3">Article II: Data ownership and authorized access</h3>
+      <p>Student Data remains the property and under the control of the LEA. The Provider gives the LEA, on request, the Student Data it holds for a student, and helps the LEA answer a parent&rsquo;s or eligible student&rsquo;s request to review or correct it. The Provider does not disclose Student Data to third parties except the subprocessors listed on this page, for the services, under written terms at least as protective.</p>
+      <h3 class="lv-h3">Article III: Duties of the LEA</h3>
+      <p>The LEA provides Student Data in line with FERPA and its state&rsquo;s laws, names its designated representative, and reports any unauthorized access it learns of.</p>
+      <h3 class="lv-h3">Article IV: Duties of the Provider</h3>
+      <ul>
+        <li>Uses Student Data only for the services: no targeted advertising, no selling, no profiles beyond what the services need.</li>
+        <li>Keeps employees and subprocessors with access to Student Data bound to confidentiality.</li>
+        <li>Uses de-identified data only to improve the services (for example, anonymous totals of which questions are hard) and does not re-identify it.</li>
+      </ul>
+      <h3 class="lv-h3">Article V: Data provisions</h3>
+      <div class="lv-grid2">
+        <label class="lv-field"><span>Breach notice to the LEA within (as your state requires)</span><input class="lv-in" id="dpa_breach" type="text" placeholder="e.g. 72 hours"></label>
+        <label class="lv-field"><span>Term of this agreement</span><input class="lv-in" id="dpa_term" type="text" placeholder="e.g. July 1, 2027 to June 30, 2030"></label>
+      </div>
+      <p>Security as described under <a href="#security">Security</a> on this page. On request, or at the end of the term, the Provider deletes or returns Student Data as Exhibit D says.</p>
+      <h3 class="lv-h3">Article VI: General offer of privacy terms (optional)</h3>
+      <label class="lvt-check"><input type="checkbox" id="dpa_general"> The Provider offers these same terms to any other LEA in the state that signs Exhibit E.</label>
+      <h3 class="lv-h3">Article VII: Miscellaneous</h3>
+      <p>Precedence, governing law, amendments and notices follow the official NDPA text. Governing law: the LEA&rsquo;s state.</p>
+
+      <h3 class="lv-h3">Exhibit A: Description of services</h3>
+      <p>Free teacher classes for LevlPrep&rsquo;s courses such as AP&reg; Biology: a teacher makes a class for one course, students 13 and older join with a code, the teacher assigns practice, review, exams and free response and sees each student&rsquo;s progress in that course. Optional, only when the teacher or school turns them on: reminder emails sent by the teacher, family progress reports, teacher scoring of free responses with comments, Google Classroom (roster, coursework, a join-link announcement, grades), and Canvas or Schoology through LTI 1.3. Class Premium, if bought, unlocks more of the same content.</p>
+      <h3 class="lv-h3">Exhibit B: Schedule of data</h3>
+      <div class="table-wrap rp-tablewrap" tabindex="0"><table class="rp-table">
+        <thead><tr><th>Category</th><th>What LevlPrep collects</th><th>Used</th></tr></thead>
+        <tbody><tr><td>Application technology metadata</td><td>IP address (used for a moment to rate-limit; not stored by us); browser and device type in cookieless analytics</td><td>Yes</td></tr><tr><td>Application use statistics</td><td>Pages viewed and study milestones in cookieless analytics, under a one-way account tag for signed-in students (off with Do Not Track)</td><td>Yes</td></tr><tr><td>Assessment</td><td>Scores on practice, exams and free responses in the class&rsquo;s course</td><td>Yes</td></tr><tr><td>Attendance, conduct, discipline, health, special education, schedule, transcript</td><td>None</td><td>No</td></tr><tr><td>Demographics (date of birth, gender, ethnicity, language)</td><td>None. Students confirm they are 13 or older; the answer is not stored</td><td>No</td></tr><tr><td>Enrollment</td><td>Membership of a LevlPrep class; the Classroom or LMS user id if the teacher or school links one</td><td>Yes</td></tr><tr><td>Parent or guardian contact information</td><td>None</td><td>No</td></tr><tr><td>Parent or guardian name</td><td>None</td><td>No</td></tr><tr><td>Student contact information</td><td>Account email, used to sign in and for teacher reminders; never shown to the teacher. No email addresses are read from Google Classroom</td><td>Yes</td></tr><tr><td>Student identifiers</td><td>LevlPrep account id; Classroom user id (the student&rsquo;s Google account id, matched to their Google sign-in) or LMS user id when linked</td><td>Yes</td></tr><tr><td>Student name</td><td>The name the student types when joining a class</td><td>Yes</td></tr><tr><td>Student in-app performance</td><td>Progress summary in the class&rsquo;s course (see the table above)</td><td>Yes</td></tr><tr><td>Student work</td><td>Free-response answers the student chooses to send to the teacher</td><td>Yes</td></tr><tr><td>Teacher data</td><td>Display name, optional school, classes, assignments, scores and comments given</td><td>Yes</td></tr></tbody>
+      </table></div>
+      <h3 class="lv-h3">Exhibit C: Definitions</h3>
+      <p>As in the official NDPA text.</p>
+      <h3 class="lv-h3">Exhibit D: Directive for disposition</h3>
+      <fieldset class="lvp-seg"><legend class="lv-mut">At the end of the term or on request, the Provider shall:</legend>
+        <label class="lvt-check"><input type="radio" name="dpa_disp" value="delete" checked> Delete all Student Data of the LEA&rsquo;s students</label>
+        <label class="lvt-check"><input type="radio" name="dpa_disp" value="return"> Return it to the LEA (as a JSON export), then delete it</label>
+        <label class="lvt-check"><input type="radio" name="dpa_disp" value="partial"> Delete the categories listed here:</label>
+      </fieldset>
+      <label class="lv-field lvp-span"><span>Categories, or a date by which to dispose</span><textarea class="lv-in" id="dpa_disp_detail" rows="3"></textarea></label>
+      <h3 class="lv-h3">Exhibit E: General offer (only if Article VI is ticked)</h3>
+      <p class="lv-mut">Another LEA signs here to accept the same terms.</p>
+      <h3 class="lv-h3">Exhibit F: Data security requirements</h3>
+      <p>The Provider does not hold a named security framework certification. It follows the practices under <a href="#security">Security</a> and answers the LEA&rsquo;s security questionnaire on request.</p>
+      <h3 class="lv-h3">Exhibit G: State supplement</h3>
+      <label class="lv-field lvp-span"><span>Terms your state&rsquo;s NDPA version adds (paste them or name the exhibit)</span><textarea class="lv-in" id="dpa_state_terms" rows="3"></textarea></label>
+
+      <h3 class="lv-h3">Signatures</h3>
+      <div class="lv-grid2">
+        <div class="lvp-sig"><p><b>For the LEA</b></p><p>Signature: ______________________</p><label class="lv-field"><span>Printed name and title</span><input class="lv-in" id="dpa_lea_sign_name" type="text" placeholder=""></label><label class="lv-field"><span>Date</span><input class="lv-in" id="dpa_lea_sign_date" type="date" placeholder=""></label></div>
+        <div class="lvp-sig lvp-unsigned"><p><b>For LevlPrep</b></p><p><b>Not signed.</b> Olivier Testa, owner, signs after reviewing the completed agreement. Send it to <a href="mailto:hello@levlprep.com">hello@levlprep.com</a>.</p><p>Signature: ______________________</p><p>Date: ______________</p></div>
+      </div>
+      <div class="lv-btns lvp-noprint" style="margin-top:16px"><button type="button" class="lv-btn is-accent" id="dpaPrint">Print or save as PDF</button></div>
+      <p class="lv-mut lvp-noprint">What you type stays in this browser; nothing is sent. Print it or save it as a PDF and email it to us.</p>
+    </form>
+    <p class="lv-mut" style="margin-top:20px">AP&reg; is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  </div>
+</div>
+<div class="xshell">
+  <div class="xsection">
+    <footer style="margin-top:0">
+      <p class="privacy-link"><a href="../privacy.html#schools">Privacy</a> &middot; <a href="../teach/privacy-agreement.html">For districts</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../teach/">Teachers</a> &middot; <a href="../join.html">Join a class</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/errors.js" defer></script>
+<script src="../assets/class/dpa.js" defer></script>
+</body>
+</html>

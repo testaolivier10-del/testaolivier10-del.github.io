@@ -1,0 +1,17 @@
+/* The integration cards in the teacher app (assets/class/teach-integrations.js). Built on teach.css and class.css. */
+.lvi-wrap{display:grid;gap:16px;margin:18px 0}
+.lvi .lv-h3{margin:4px 0 8px}
+.lvi .lv-btns{margin-top:12px;flex-wrap:wrap}
+.lvi-list{display:grid;gap:6px;margin:10px 0;max-height:320px;overflow:auto}
+.lvi-pick{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.lvi-row{display:flex;gap:12px;flex-wrap:wrap}
+.lvi-row .lv-field{flex:1 1 200px}
+.lvi-fine{font-size:13px;margin-top:10px}
+.lvi-sub{border-top:1px solid var(--line);padding:12px 0}
+.lvi-sub summary{cursor:pointer;display:flex;gap:10px;align-items:center}
+.lvi-part{margin:12px 0}
+.lvi-plabel{font-weight:700;margin:0 0 6px}
+.lvi-ans{white-space:pre-wrap;background:var(--tint-accent, rgba(18,114,100,.06));border-radius:10px;padding:10px 12px;margin:0 0 8px}
+.lvi-pt{align-items:flex-start}
+.lvi-ai{font-size:13px;color:var(--muted);margin:0 0 6px 28px}
+.lvi-ai:empty{display:none}

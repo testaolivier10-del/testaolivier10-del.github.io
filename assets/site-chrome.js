@@ -478,6 +478,7 @@
           link('level-badge', 'levelBadge', 'Your level', 'L1', true) +
           '<button type="button" class="theme-toggle chrome-more" id="chromeMenuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="chromeMenu" aria-label="Account and settings" title="Account and settings">' + MENU_ICON + '</button>' +
           '<div class="chrome-menu" id="chromeMenu">' +
+            (/^\/teach\//.test(location.pathname) ? '' : '<a class="nav-teach" href="/teach/">For teachers</a>') +
             '<span id="accountSlot"></span>' +
             (window.LevlSound ? '<button type="button" class="theme-toggle sound-toggle" id="soundToggle"></button>' : '') +
             '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Dark mode" title="Dark mode">' + THEME_ICONS + '<span class="chrome-menu__lbl">Dark mode</span></button>' +
@@ -1088,10 +1089,10 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoSite);
   else autoSite();
 
-  /* Teacher classes (docs/teacher-classes.md): on an AP® course page, for someone
+  /* Teacher classes (docs/teacher-classes.md): on a course page (AP®, NREMT, ochem, A&P), for someone
      signed in, fetch the student's side of classes. It does nothing for a
      student in no class of this course beyond one cached read. */
-  var CLASS_DIRS = /^\/(bio|chem|physics|calculus|calculus-bc|statistics|environmental-science|psychology|precalculus|macroeconomics)\//;
+  var CLASS_DIRS = /^\/(bio|chem|physics|calculus|calculus-bc|statistics|environmental-science|psychology|precalculus|macroeconomics|nremt|ochem|anatomy-physiology)\//;
   function classBoot(){
     if(!CLASS_DIRS.test(location.pathname)) return;
     var signedIn = false;

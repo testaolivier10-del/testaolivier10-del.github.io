@@ -91,6 +91,7 @@
       wrap.classList.add('is-answered');
       var result = { correct: correct, score: score, q: q, pick: pick };
       if(opts.record !== false && window.AnpCore) window.AnpCore.record(q.id, correct, { topic: q.topic, core: q.core, level: q.level, diff: q.diff, src: 'q' });
+      if(opts.record !== false && typeof pick === 'number') try{ var pk = 'anp' + '_picks_v1', po = JSON.parse(localStorage.getItem(pk) || '{}'); po[q.id] = pick; localStorage.setItem(pk, JSON.stringify(po)); }catch(e){}
       if(!opts.exam){
         var verdict = correct ? 'Correct.' : score > 0 && part ? part : score > 0 ? 'Partly right.' : 'Not quite.';
         // On the study pages, the shared feedback box (assets/course/study.css):

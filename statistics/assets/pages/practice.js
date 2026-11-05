@@ -396,7 +396,7 @@
   }
 
   function begin(mode, steps){
-    session = { mode: mode, label: mode === 'retry' ? 'Retrying your misses' : setLabel(), steps: steps, i: 0, results: [], firstTry: {}, tries: {}, retry: mode === 'missed' || mode === 'retry', finished: false };
+    session = { mode: mode, label: CLS ? CLS.title : mode === 'retry' ? 'Retrying your misses' : setLabel(), steps: steps, i: 0, results: [], firstTry: {}, tries: {}, retry: mode === 'missed' || mode === 'retry', finished: false };
     session.total = itemCount(steps);
     view('session');
     app.innerHTML = '<div class="cx-session stat-pr-session">' +
@@ -421,7 +421,7 @@
     stage.innerHTML = ''; after.hidden = true; after.innerHTML = '';
     progress();
     // The whole set is served or none of it (free tier, ApStatCore.serve).
-    var ok = step.items.every(function(q){ return Core.serve(q); });
+    var ok = step.items.every(function(q){ return q.own || Core.serve(q); });
     if(!ok){
       stage.innerHTML = Core.gate('daily-limit', 'practice-limit', step.items[0].topic) +
         '<div class="stat-pr-actions">' + (session.results.length ? '<button type="button" class="btn-press" data-act="results">See your results</button>' : '') +
@@ -431,7 +431,7 @@
       return;
     }
     var left = step.items.length, n0 = done();
-    Q.hydrate(stage, step.items, { onAnswer: function(res){ answered(res.q, res); if(--left === 0) stepDone(step); } });
+    Q.hydrate(stage, step.items, Object.assign({ onAnswer: function(res){ answered(res.q, res); if(--left === 0) stepDone(step); } }, CLS ? CLS.opts(step, stage) : null));
     // Number the questions across the session.
     stage.querySelectorAll('.stat-q-n').forEach(function(el, k){ el.textContent = (n0 + k + 1) + '.'; });
     var first = stage.querySelector('.stat-stim h3') || stage.querySelector('.stat-q-stem');
@@ -440,6 +440,7 @@
   }
 
   function answered(q, res){
+    if(CLS) CLS.answer(q, res);
     session.tries[q.id] = (session.tries[q.id] || 0) + 1;
     if(!(q.id in session.firstTry)){ session.firstTry[q.id] = res.correct; session.results.push({ q: q, correct: res.correct, score: res.score }); }
     progress();
@@ -450,6 +451,7 @@
     if(again) session.steps.push(step);
     var t = TOPIC[step.items[0].topic];
     var after = app.querySelector('.stat-pr-after');
+    if(CLS) CLS.step(session);
     var last = session.i + 1 >= session.steps.length;
     after.innerHTML = '<p class="cx-from stat-pr-from">' + (t ? 'From <a href="' + lessonHref(t.id) + '">' + esc(t.title) + '</a> <span aria-hidden="true">&middot;</span> <a href="' + notesHref(t.id) + '">notes</a>' : '') +
       (again ? ' <span class="stat-pr-again">This comes back later in the session.</span>' : '') + '</p>' +
@@ -470,6 +472,7 @@
   function finish(){
     if(!session || session.finished) return;
     session.finished = true;
+    if(CLS && CLS.done(session.results)) return;
     var res = session.results, right = res.filter(function(r){ return r.correct; }).length;
     if(res.length && Core) Core.event('apstat-session-finish', { mode: session.mode === 'retry' ? 'missed' : session.mode, answered: res.length, correct: right });
     if(!res.length){ renderSetup(); return; }
@@ -514,6 +517,14 @@
     });
   }
 
+  /* ?la=: a teacher's assignment, run by assets/class/class-run.js (docs/teacher-classes.md). Without la= none of this runs. */
+  var LA = /[?&]la=/.test(location.search), CLS = null;
+  function classBoot(){
+    var s = document.createElement('script'); s.src = '/assets/class/class-run.js'; s.onerror = renderSetup;
+    s.onload = function(){ window.LevlClassRun.practice({ app: app, cur: CUR, core: Core, base: BASE, view: view, blocks: blocks, pick: pickOrder, take: take, begin: begin, finish: finish, set: function(c){ CLS = c; }, fallback: renderSetup }); };
+    document.head.appendChild(s);
+  }
+
   /* ------------------------------------------------------------ boot */
 
   function boot(){
@@ -533,7 +544,7 @@
       if(KINDS.some(function(k){ return k.id === p.get('type'); })) state.kind = p.get('type');
       if(/^[123]$/.test(p.get('diff') || '')) state.diff = p.get('diff');
       if(MODE[p.get('mode')]) state.mode = p.get('mode');
-      if((state.mode === 'flagged' || state.mode === 'missed') && !modeUnavailable(state.mode)) start(state.mode, 0); else renderSetup();
+      if(LA) classBoot(); else if((state.mode === 'flagged' || state.mode === 'missed') && !modeUnavailable(state.mode)) start(state.mode, 0); else renderSetup();
       if(p.toString()){ var s = app.querySelector('.stat-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){
       app.innerHTML = '<p>The question bank did not load. Check your connection and reload; once a page has loaded online it also works offline.</p>';
