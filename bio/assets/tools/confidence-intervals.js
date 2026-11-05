@@ -51,7 +51,8 @@
         p.push('<circle class="sk-grip ci-grip" data-k="m' + i + '" tabindex="0" role="slider" aria-label="' + esc(x.name + ' mean') + '" aria-valuenow="' + F(x.mean, 1) + '" aria-valuetext="' + esc(x.name + ' mean ' + F(x.mean, 1)) + '" cx="' + c.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="9"/>');
         p.push('<rect class="ci-whisk" data-k="s' + i + '" tabindex="0" role="slider" aria-label="' + esc(x.name + ' SD (drag the whisker)') + '" aria-valuenow="' + F(x.sd, 1) + '" aria-valuetext="' + esc(x.name + ' SD ' + F(x.sd, 1)) + '" x="' + (c - 13).toFixed(1) + '" y="' + (sy(e.hi) - 7).toFixed(1) + '" width="26" height="14" rx="5"/>');
       }
-      var vx = c + (o.drag ? 17 : 13);
+      // The interval values sit just right of the bar, clear of its outline.
+      var vx = c + bw / 2 + 5;
       if(o.marks) p.push('<text class="ci-v" x="' + vx.toFixed(1) + '" y="' + (sy(e.hi) + 4).toFixed(1) + '">' + F(e.hi, o.d) + '</text><text class="ci-v" x="' + vx.toFixed(1) + '" y="' + (sy(e.lo) + 4).toFixed(1) + '">' + F(e.lo, o.d) + '</text>');
       var m = (o.mine || [])[i];
       if(m && (isFinite(m.lo) || isFinite(m.hi))){

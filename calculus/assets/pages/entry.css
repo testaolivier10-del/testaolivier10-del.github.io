@@ -60,7 +60,8 @@
 @media (max-width:560px){
   .calc-eq thead{display:none;}
   .calc-eq tr{display:block;padding:8px 0;border-bottom:1px solid var(--line);}
-  .calc-eq th,.calc-eq td{display:block;border:0;padding:3px 0;}
+  /* Stacked cells keep a clear line between them: a fraction on a cell's last line hangs below it. */
+  .calc-eq th,.calc-eq td{display:block;border:0;padding:5px 0;}
   .calc-eq tbody th{min-width:0;}
 }
 .calc-eq-tools{display:block;margin-top:6px;font-weight:700;}

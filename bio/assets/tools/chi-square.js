@@ -103,7 +103,12 @@
       var cX = sx(crit), right = cX > W - 120;
       p.push('<line class="sk-crit' + (v.crit == null ? ' mine' : '') + '" x1="' + cX.toFixed(1) + '" x2="' + cX.toFixed(1) + '" y1="' + (MY - 4) + '" y2="' + base + '"/>');
       p.push('<text class="sk-critl" x="' + (cX + (right ? -5 : 5)).toFixed(1) + '" y="' + (CT + 22) + '" text-anchor="' + (right ? 'end' : 'start') + '">' + (v.crit == null ? 'your ' : '') + 'critical ' + F(crit, 2) + '</text>');
-      if(df) p.push('<text class="sk-ph sk-dim" x="' + (cX + (right ? -5 : 5)).toFixed(1) + '" y="' + (base - 6) + '" text-anchor="' + (right ? 'end' : 'start') + '">5% tail</text>');
+      // "5% tail" sits just above the curve at the label's left end, where the
+      // falling curve is highest over the label's width, so the curve never runs through it.
+      if(df){
+        var tx0 = right ? cX - 60 : cX + 5, tyc = cy(M.chiPdf(Math.max(1e-6, (tx0 - L) / pw * xmax), df));
+        p.push('<text class="sk-ph sk-dim" x="' + (cX + (right ? -5 : 5)).toFixed(1) + '" y="' + Math.min(base - 6, tyc - 6).toFixed(1) + '" text-anchor="' + (right ? 'end' : 'start') + '">5% tail</text>');
+      }
     }
     // A phone draws larger tick labels, so the χ² marker labels sit a little lower.
     var narrow = !!document.querySelector('.ls-root.ls-phone');

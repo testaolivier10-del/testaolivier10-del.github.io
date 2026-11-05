@@ -242,9 +242,9 @@
       var cw0 = clamp(ppm * 0.95, 44, 86), ch0 = cw0 * 0.42, wr0 = Math.max(6, cw0 * 0.12);
       // Room above the cart for the v and a arrows and their labels.
       var railY = Math.max(h - 40, Math.round(ch0 + wr0 * 2 + 50));
-      // A phone gives the axis name its own row under the ruler's numbers.
-      var axisRow = onPhone();
-      h = railY + (axisRow ? 54 : 40);
+      // The axis name gets its own row under the ruler's numbers (sharing their
+      // row, the right-anchored name runs into the last number).
+      h = railY + 54;
       geo = { w: w, h: h, L: L, R: R, ppm: ppm, railY: railY, cw: cw0, ch: ch0, wr: wr0 };
       var X = function(x){ return L + (x - TR.min) * ppm; };
       var p = [];
@@ -258,7 +258,7 @@
         p.push('<line class="mg-tick' + (major ? ' major' : '') + '" x1="' + X1.toFixed(1) + '" x2="' + X1.toFixed(1) + '" y1="' + (railY + 8) + '" y2="' + (railY + (major ? 16 : 12)) + '"/>');
         if(major && (ppm > 34 || x % 2 === 0)) p.push('<text class="mg-tl' + (x === 0 ? ' zero' : '') + '" x="' + X1.toFixed(1) + '" y="' + (railY + 29) + '" text-anchor="middle">' + M.minus(String(x)) + '</text>');
       }
-      p.push('<text class="mg-axis-l" x="' + (R) + '" y="' + (h - (axisRow ? 4 : 2)) + '" text-anchor="end">' + (w < 480 ? 'x (m) →' : 'x (m), + to the right →') + '</text>');
+      p.push('<text class="mg-axis-l" x="' + (R) + '" y="' + (h - 4) + '" text-anchor="end">' + (w < 480 ? 'x (m) →' : 'x (m), + to the right →') + '</text>');
       // The motion detector on its stand.
       var dx = X(TR.min) - 30, dy = railY - 46;
       p.push('<g class="mg-det" aria-hidden="true"><rect class="mg-stand" x="' + (dx + 9) + '" y="' + (dy + 26) + '" width="6" height="' + (railY - dy - 20) + '"/>' +
@@ -384,8 +384,9 @@
         ['x', 'v', 'a'].forEach(function(k){ p.push('<polyline class="series mg-ghost ' + gcls[k] + '" points="' + ghost.m.t.map(function(t, i){ return gx(t).toFixed(1) + ',' + gy(k, ghost.m[k][i]).toFixed(1); }).join(' ') + '"/>'); });
         // Panels too short for notes (a phone on its side) skip them; on a phone a note near the panel's name goes under the line.
         if(ghost.notes && gl.ph >= 44) ghost.notes.forEach(function(n){ var under = gl.phone && gx(n[0]) - gl.L < 90 && n[3] < 0; p.push('<text class="mg-ghost-n" x="' + gx(n[0]).toFixed(1) + '" y="' + (gy(n[1], n[2]) + (under ? 18 : n[3])).toFixed(1) + '" text-anchor="middle">' + n[4] + '</text>'); });
-        var hx = gl.L + gl.pw - 8, hy = gl.top.x + 16;
-        p.push('<g class="mg-ghost-hint"><text x="' + hx + '" y="' + hy + '" text-anchor="end">' + ghost.title + '</text>' + (ghost.sub && gl.pw > 300 && gl.ph >= 44 ? '<text class="sub" x="' + hx + '" y="' + (hy + 16) + '" text-anchor="end">' + ghost.sub + '</text>' : '') + '</g>');
+        // The hint sits in the bottom-right of the x panel, which the example x curve never reaches.
+        var hasSub = ghost.sub && gl.pw > 300 && gl.ph >= 44, hx = gl.L + gl.pw - 8, hy = gl.top.x + gl.ph - (hasSub ? 24 : 8);
+        p.push('<g class="mg-ghost-hint"><text x="' + hx + '" y="' + hy.toFixed(1) + '" text-anchor="end">' + ghost.title + '</text>' + (hasSub ? '<text class="sub" x="' + hx + '" y="' + (hy + 16).toFixed(1) + '" text-anchor="end">' + ghost.sub + '</text>' : '') + '</g>');
       }
       // Target (Match).
       if(tg) p.push('<polyline class="mg-target-l" points="' + tg.pts.map(function(q){ return gx(q[0]).toFixed(1) + ',' + gy(tg.kind, q[1]).toFixed(1); }).join(' ') + '"/>');

@@ -352,7 +352,11 @@
     if(c.shape === 'vertical') return [px(c.at) + 5, py(9.6) + 6 + (Math.round(c.at) % 2 ? 0 : 15), 'start'];
     if(c.shape === 'down'){ var x2 = LX, y2 = 5 - (x2 - c.at); if(y2 < 0.5){ y2 = 0.5; x2 = c.at + 4.5; } return [px(x2) + 6, py(y2) + 3, 'start']; }
     if(c.shape === 'up'){ var x1 = LX, y1 = 5 + (x1 - c.at); if(y1 > 9.6){ y1 = 9.6; x1 = c.at + 4.6; } return [px(x1) - 7, py(y1) - 3, 'end']; }
-    if(c.shape === 'ppc'){ var r = (c.at + 0.45) / Math.SQRT2; return [px(r) + 2, py(r) - 2, 'start']; }
+    // inside === 'in': the old, inner curve of an outward shift is labeled just
+    // inside it (outside, its own curve ran through the label's first letter).
+    if(c.shape === 'ppc'){
+      if(inside === 'in'){ var ri = (c.at - 0.45) / Math.SQRT2; return [px(ri) - 2, py(ri) + 12, 'end']; }
+      var r = (c.at + 0.45) / Math.SQRT2; return [px(r) + 2, py(r) - 2, 'start']; }
     // A straight PPC: outside the line at its middle; the old line of a shift
     // (inside) is labeled inside it, further along, so PPC1 and PPC2 never touch.
     if(c.shape === 'ppcline'){ var X = c.at * c.kx, Y = c.at * c.ky, n = Math.hypot(X, Y);
@@ -481,7 +485,7 @@
     var oldPos = now.map(function(c, i){
       var b = base[i], lab = askLabels && !labels[c.id] ? null : (labels[c.id] || c.id);
       if(!c.steps || !lab) return null;
-      return place(lab, n0, whole(c, i) ? pairLabels(c, b)[1] : Math.abs(c.at - b.at) < 1 - 1e-9 ? labelAway(b) : labelAt(b, b.shape === 'ppcline' && c.steps > 0), -1);
+      return place(lab, n0, whole(c, i) ? pairLabels(c, b)[1] : Math.abs(c.at - b.at) < 1 - 1e-9 ? labelAway(b) : labelAt(b, b.shape === 'ppcline' ? c.steps > 0 : b.shape === 'ppc' && c.at > b.at ? 'in' : false), -1);
     });
     if(state.key){
       var ko = keyOffsets(spec);

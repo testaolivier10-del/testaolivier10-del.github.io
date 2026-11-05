@@ -147,7 +147,8 @@
       o.push('<line class="uc-axis" x1="' + g0 + '" y1="' + gy + '" x2="' + (g1 + 8) + '" y2="' + gy + '"/>');
       o.push('<line class="uc-axis" x1="' + g0 + '" y1="' + r1(gy - R - 14) + '" x2="' + g0 + '" y2="' + r1(gy + R + 14) + '"/>');
       ['0', 'π/2', 'π', '3π/2', '2π'].forEach(function(s, k){ o.push(txt(sx(k * PI / 2), gy + R + 14 + L.tk + 4, s, 'uc-tk')); });
-      o.push(txt(g1 + 4, gy - 8, 'θ', 'uc-axl', 'end'));
+      // θ sits under the axis's right end: above it, the "sin θ" curve name ends there too
+      o.push(txt(g1 + 4, gy + 6 + L.fs, 'θ', 'uc-axl', 'end'));
       o.push('</g>');
       gS.innerHTML = o.join('');
     }
