@@ -1894,8 +1894,8 @@ declare
 begin
   if auth.uid() is null then return null; end if;
   if not exists (select 1 from public.teacher_profiles where user_id = auth.uid()) then return null; end if;
-  -- AP® courses only (nremt, ochem and anp keep progress differently).
-  if p_course !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro)$' then return null; end if;
+  -- The ten AP® courses, EMT (nremt), organic chemistry (ochem) and A&P (anp).
+  if p_course !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|nremt|ochem|anp)$' then return null; end if;
   if p_name is null or length(btrim(p_name)) < 1 or length(p_name) > 60 then return null; end if;
   if (select count(*) from public.classes where teacher_id = auth.uid() and not archived) >= 30 then return null; end if;
   insert into public.classes (teacher_id, course, name, code, unit_order)
@@ -2674,7 +2674,7 @@ declare
 begin
   if auth.uid() is null then return null; end if;
   if not exists (select 1 from public.teacher_profiles where user_id = auth.uid()) then return null; end if;
-  if coalesce(p_data->>'course', '') !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro)$' then return null; end if;
+  if coalesce(p_data->>'course', '') !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|nremt|ochem|anp)$' then return null; end if;
   if length(coalesce(p_data->>'q', '')) not between 1 and 2000 then return null; end if;
   if jsonb_typeof(p_data->'options') <> 'array' then return null; end if;
   n := jsonb_array_length(p_data->'options');

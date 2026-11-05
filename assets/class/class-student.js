@@ -67,26 +67,16 @@
     }); });
     if(changed) write(DONE, d);
   }
-  function practiceHref(a){
-    var s = a.spec || {}, t = s.topics || [];
-    if(s.unit && !t.length) return 'practice.html?unit=' + encodeURIComponent(s.unit);
-    if(t.length) return 'practice.html?topic=' + encodeURIComponent(t[0]);
-    return 'practice.html';
-  }
-  function href(a){
-    var s = a.spec || {};
-    if(a.kind === 'review') return 'review.html';
-    if(a.kind === 'exam') return 'exams.html' + (s.unit ? '?unit=' + encodeURIComponent(s.unit) : '?mode=full');
-    if(a.kind === 'frq') return s.frq ? 'frq/' + encodeURIComponent(s.frq) + '.html' : 'frq.html';
-    return practiceHref(a);
-  }
+  // Each course's pages take their own parameters (LevlClassModel.href, docs/teacher-classes.md "Links").
+  var pageC = null;
+  function href(a){ return M().href(pageC || pageCourse(), a); }
   function dueWords(due, now){
     if(!due) return 'No due date';
     var d = new Date(due), days = Math.round((new Date(d.toDateString()) - new Date(new Date(now).toDateString())) / 86400000);
     var when = days === 0 ? 'today' : days === 1 ? 'tomorrow' : days > 1 && days < 7 ? d.toLocaleDateString(undefined, { weekday: 'long' }) : d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
     return 'Due ' + when;
   }
-  var KIND = { practice: 'Practice', review: 'Review', exam: 'Practice exam', frq: 'Free response' };
+  var KIND = { practice: 'Practice', review: 'Review', mastery: 'Mastery', exam: 'Practice exam', frq: 'Free response' };
 
   function card(course){
     var host = document.querySelector('main.r3-home');
@@ -108,7 +98,7 @@
           (topics.length ? ' · ' + esc(topics.slice(0, 3).join(', ')) + (topics.length > 3 ? ' and ' + (topics.length - 3) + ' more' : '') : '');
         var btn = st.state === 'done' ? '<a class="lvc-btn is-ghost" href="' + esc(href(a)) + '">Open again</a>' : '<a class="lvc-btn" href="' + esc(href(a)) + '">' + (st.answered ? 'Keep going' : 'Start') + '</a>';
         var chips = a.kind === 'practice' && a.spec && a.spec.topics && a.spec.topics.length > 1
-          ? '<p class="lvc-chips">' + a.spec.topics.map(function(t, i){ return '<a href="practice.html?topic=' + encodeURIComponent(t) + '">' + esc((a.spec.topicNames || [])[i] || t) + '</a>'; }).join('') + '</p>' : '';
+          ? '<p class="lvc-chips">' + a.spec.topics.map(function(t, i){ return '<a href="' + esc(M().topicHref(course, t)) + '">' + esc((a.spec.topicNames || [])[i] || t) + '</a>'; }).join('') + '</p>' : '';
         return '<li class="lvc-row">' + tag + '<p class="lvc-t">' + esc(a.title) + '</p><p class="lvc-m">' + meta + '</p>' +
           ((a.kind === 'practice' || a.kind === 'review') && st.state !== 'done' ? '<div class="lvc-bar"><i style="width:' + pct + '%"></i></div>' : '') + chips + btn + '</li>';
       }).join('');
@@ -134,6 +124,13 @@
     if(started) return; started = true;
     var course = pageCourse();
     if(!course || !A() || !A().onAuthChange) return;
+    pageC = course;
+    // A course whose records need a lookup first (NREMT's topic map) loads it before anything is summarized.
+    var need = M().COURSES[course].need;
+    if(need && !window[M().COURSES[course].g]){
+      var s = document.createElement('script'); s.src = '/' + need; s.onload = function(){ started = false; start(); };
+      document.head.appendChild(s); return;
+    }
     A().onAuthChange(function(u){
       if(!u) return;
       refresh(false).then(function(){

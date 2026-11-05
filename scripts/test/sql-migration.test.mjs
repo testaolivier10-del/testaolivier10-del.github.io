@@ -384,3 +384,18 @@ test('2026-10m-referrals.sql: rewards go through premium_add_pass, internal help
     assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`));
   assert.doesNotMatch(mig, /course\s+(?:not\s+)?in\s*\(/, 'no course list: premium_add_pass refuses unknown courses');
 });
+
+test('2026-11e-classes-courses.sql lets classes and teacher questions be for nremt, ochem and anp too, matches schema.sql', () => {
+  const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
+  assert.ok(files.indexOf('2026-11e-classes-courses.sql') > files.indexOf('2026-11c-classes-v2.sql'), 'runs after 2026-11c');
+  const mig = readFileSync('scripts/sql/migrations/2026-11e-classes-courses.sql', 'utf8'), fns = blocks(mig), schema = blocks(SCHEMA);
+  const RE = "'^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|nremt|ochem|anp)$'";
+  for (const f of ['teach_create_class', 'teach_save_question']) {
+    assert.ok(fns.has(f), `${f} is redefined`);
+    assert.ok(fns.get(f).includes(RE), `${f} accepts the three courses`);
+    assert.equal(fns.get(f).trim(), schema.get(f).trim(), `${f} matches schema.sql`);
+    assert.match(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to authenticated;`));
+  }
+  assert.doesNotMatch(mig + SCHEMA, /apmacro\)\$'/, 'no class course check stops at apmacro');
+  assert.match(mig, /NOT APPLIED/);
+});

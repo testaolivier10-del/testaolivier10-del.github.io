@@ -363,7 +363,9 @@ const SHELL_BUDGETS = [
   /* 54 -> 56 (tool audit fixes 2026-10-27): the pathway tracer draws every pathway as a map with a small
      icon per kind of step (30 icons) and its drills place steps on it; measured 54.8 KB on the heaviest page.
      The 3D anatomy tool (same day) measured 54.1 KB, inside this. */
-  ['anatomy-physiology', 56],
+  /* 56 -> 56.4 (teacher classes, other courses, 2026-11-04): the answer-pick line in anp-questions.js and the exam
+     history and picks exams.js writes for a class (docs/teacher-classes.md). Measured 56.1 KB. */
+  ['anatomy-physiology', 56.4],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
@@ -551,7 +553,9 @@ const BUDGETS = [
   /* 49.9 -> 55.2 (tools upgrade, 2026-10-27): the exam's drag-and-drop and options-table items, dragging build
      lists and the Adaptive exam (engine routing, results, setup) in practice-engine.js and practice.css. The item
      interactions themselves are in nremt/assets/tei-items.js (course bucket). Measured 54.8 KB. */
-  ['nremt/practice.html', 55.2],
+  /* 55.2 -> 55.6 (teacher classes, other courses, 2026-11-04): the answer pick and progress event in
+     updateMastery (docs/teacher-classes.md). Measured 55.4 KB. */
+  ['nremt/practice.html', 55.6],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read

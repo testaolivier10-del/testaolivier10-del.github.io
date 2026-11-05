@@ -1,6 +1,7 @@
 /* Sample class for /teach/?demo=1: made-up students in the middle of an AP® Biology term, built in the
    browser from real question ids so every teacher view shows what a full class looks like. Nothing is
-   sent anywhere; edits live in memory until the page reloads. Loaded only by teach.js in demo mode. */
+   sent anywhere; edits live in memory until the page reloads. Loaded only by teach.js in demo mode.
+   /teach/?demo=1&course=nremt is a second sample: an EMT (NREMT) class, built from NREMT's own records. */
 (function(){
   'use strict';
   var M = window.LevlClassModel, DAY = 86400000, now = Date.now();
@@ -8,11 +9,70 @@
   var NAMES = ['Dev L.', 'Nora C.', 'Theo B.', 'Rosa G.', 'Marcus O.', 'Sam T.', 'Priya K.', 'Kai S.', 'Ava M.', 'Jordan P.', 'Leo W.', 'Eli H.', 'Mia R.', 'Omar F.', 'Grace Y.', 'Lucas D.', 'Zoe N.', 'Ben A.'];
   var HARD = { 'signal-transduction-pathways': 1, 'photosynthesis': 1, 'feedback': 1, 'cellular-respiration': 1 };
   var UNITS = ['unit-1', 'unit-2', 'unit-3', 'unit-4'];
-  var rep = null, building = null, nextId = 10, live = null, dept = true, myQs = [];
+  var COURSE = new URLSearchParams(location.search).get('course') === 'nremt' ? 'nremt' : 'apbio';
+  var rep = null, building = null, nextId = 10, live = null, dept = COURSE === 'apbio', myQs = [];
   function iso(t){ return new Date(t).toISOString(); }
 
   function load(src){ return new Promise(function(res, rej){ var s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
+  /* ?demo=1&course=nremt: an EMT class four weeks into a twelve-week course, built the same way from the real NREMT
+     bank. Its students' records are written in NREMT's own shapes (nremt_mastery, nremt_exam100_history,
+     nremt_exam100_flagged, nremt_picks_v1) and read through LevlClassModel's NREMT reader, as a real class would be. */
+  function buildNremt(){
+    var map = window.LevlClassNremt ? Promise.resolve() : load('/assets/class/nremt-map.js');
+    return map.then(function(){
+      return fetch('/nremt/assets/questions-core.json').then(function(r){ return r.ok ? r.json() : []; }, function(){ return []; });
+    }).then(function(bank){
+      var NM = window.LevlClassNremt, cur = M.curriculum('nremt', NM), ids = {};
+      cur.topics.forEach(function(t){ ids[t.id] = t; });
+      var info = function(id){ var ch = NM.q.substr(id * 2, 2); return ch === '..' ? null : NM.topics[ch.charCodeAt(0) - 97]; };
+      var DONE = ['assessment', 'airway-respiratory'], NOW_U = 'cardiac-medical', HARDN = { cardiac: 1, pharmacology: 1, 'airway-management': 1 };
+      var names = function(ts){ return ts.map(function(t){ return ids[t].title; }); };
+      var cardiac = ['cardiac', 'pharmacology'], air = ['respiratory-emergencies'], assess = cur.topics.filter(function(t){ return t.unit === 'assessment'; }).map(function(t){ return t.id; });
+      var A = [
+        { id: 'a1', kind: 'practice', title: 'Cardiac emergencies and medications', spec: { topics: cardiac, topicNames: names(cardiac), count: 20 },
+          opens_at: iso(now - 3 * DAY), due_at: iso(now + 1.2 * DAY), late_until: iso(now + 3 * DAY), required: true, students: null },
+        { id: 'a2', kind: 'review', title: 'Redo your missed assessment questions', spec: { topics: assess, topicNames: names(assess), count: 15 },
+          opens_at: iso(now - 6 * DAY), due_at: null, late_until: null, required: false, students: null },
+        { id: 'a3', kind: 'exam', title: 'Full practice exam: midterm', spec: { unit: null },
+          opens_at: iso(now - 9 * DAY), due_at: iso(now - 2 * DAY), late_until: null, required: true, students: null },
+        { id: 'a4', kind: 'mastery', title: 'Master respiratory emergencies', spec: { topics: air, topicNames: names(air), target: 0.6, min: 10, qn: { 'respiratory-emergencies': ids['respiratory-emergencies'].qn } },
+          opens_at: iso(now - 5 * DAY), due_at: iso(now + 4 * DAY), late_until: null, required: true, students: null }
+      ];
+      myQs = [
+        { id: 'q-demo-1', course: 'nremt', topic: 'cardiac', unit: 'cardiac-medical', type: 'single', q: 'Our protocol: aspirin for suspected cardiac chest pain unless the patient has which of these?',
+          options: ['A known aspirin allergy', 'A history of high blood pressure', 'Pain for more than ten minutes', 'An age over 65'], correct: 0, why: 'A true allergy is the contraindication our medical director lists; the others are not.' }
+      ];
+      var members = NAMES.map(function(name, i){
+        var skill = 0.9 - i * 0.03, idle = name === 'Jordan P.' ? 9 : i % 4;
+        var m = {}, picks = {}, flagged = [], hist = [];
+        bank.forEach(function(it){
+          var t = info(it.id); if(!t) return;
+          var area = t.unit, inNow = area === NOW_U;
+          if(DONE.indexOf(area) === -1 && !inNow) return;
+          if(rnd() > (inNow ? (cardiac.indexOf(t.id) !== -1 ? 0.3 : 0.12) : 0.3)) return;
+          if(name === 'Jordan P.' && inNow) return;
+          var right = rnd() < skill - (HARDN[t.id] ? 0.22 : 0), seen = inNow ? now - (idle + rnd() * 2.5) * DAY : now - (6 + rnd() * 20) * DAY;
+          var redo = !right && area === 'assessment' && rnd() < skill - 0.2;
+          m[it.id] = { level: right || redo ? 1 + Math.floor(rnd() * 3) : 0, timesCorrect: redo ? 1 : (right ? 1 : 0), timesWrong: redo || !right ? 1 : 0, lastSeen: redo ? now - rnd() * 4 * DAY : seen };
+          if(!it.type && it.options) picks[it.id] = right ? it.correct : (rnd() < 0.65 ? (it.correct + 1) % it.options.length : (it.correct + 2) % it.options.length);
+          if(!right && HARDN[t.id] && rnd() < 0.06) flagged.push(it.id);
+        });
+        if(i !== 15 && i !== 16) hist.push({ score: Math.round(100 * Math.min(0.95, skill - 0.05)), total: 100, timeMs: 5400000, date: now - (i === 6 ? 1.5 : 4) * DAY });
+        var store = { nremt_mastery: JSON.stringify(m), nremt_picks_v1: JSON.stringify(picks), nremt_exam100_flagged: JSON.stringify(flagged),
+                      nremt_exam100_history: JSON.stringify(hist), nremt_lessons_v1: JSON.stringify(i < 10 ? { 'primary-assessment': now - 20 * DAY, 'airway': now - 12 * DAY } : {}) };
+        return { id: 'u' + i, name: name, joined_at: iso(now - 30 * DAY), extra_days: name === 'Sam T.' ? 1 : 0, extra_time: name === 'Sam T.' ? 1.5 : 1,
+                 summary: M.summarize('nremt', function(k){ return store[k] == null ? null : store[k]; }, now), summary_at: iso(now - idle * DAY) };
+      });
+      rep = { class: { id: 'demo', course: 'nremt', name: 'EMT-B, spring cohort (sample)', code: 'SAMPLE02', unit_order: cur.units.map(function(u){ return u.id; }),
+                       current_unit: NOW_U, archived: false, created_at: iso(now - 32 * DAY), role: 'owner', owner_name: 'Ms. Rivera', coteach_code: 'CO7KQ4MD', dept_shared: false },
+              coteachers: [],
+              announcements: [{ id: 'n1', body: 'Skills night is Thursday: bring your BVM checklist. Finish the cardiac practice first.', created_at: iso(now - 0.4 * DAY), author: 'Ms. Rivera', mine: true }],
+              members: members, assignments: A };
+      return rep;
+    });
+  }
   function build(){
+    if(COURSE === 'nremt') return buildNremt();
     var cur = window.ApBioCurriculum ? Promise.resolve() : load('/bio/assets/bio-curriculum.js');
     return cur.then(function(){
       return Promise.all(UNITS.map(function(u){ return fetch('/bio/assets/bank/' + u + '.json').then(function(r){ return r.ok ? r.json() : { items: [] }; }, function(){ return { items: [] }; }); }));
@@ -117,7 +177,10 @@
     return ready().then(function(){
       switch(name){
         case 'teach_profile': return { name: 'Ms. Rivera', school: 'Sample High School' };
-        case 'teach_my_classes': return [{ id: 'demo', course: 'apbio', name: rep.class.name, code: rep.class.code, members: rep.members.length, archived: false, role: 'owner' },
+        case 'teach_my_classes':
+          if(COURSE === 'nremt') return [{ id: 'demo', course: 'nremt', name: rep.class.name, code: rep.class.code, members: rep.members.length, archived: false, role: 'owner' },
+                                         { id: 'demo5', course: 'nremt', name: 'EMT-B, evening cohort (sample)', code: 'SAMPLE06', members: 16, archived: false, role: 'owner' }];
+          return [{ id: 'demo', course: 'apbio', name: rep.class.name, code: rep.class.code, members: rep.members.length, archived: false, role: 'owner' },
                                          { id: 'demo5', course: 'apbio', name: 'Period 5 (sample)', code: 'SAMPLE05', members: 24, archived: false, role: 'owner' },
                                          { id: 'demo7', course: 'apchem', name: 'AP Chem (sample, co-teaching)', code: 'SAMPLE07', members: 27, archived: false, role: 'co', teacher: 'Mr. Torres' }];
         case 'teach_class_report': return copy(rep);

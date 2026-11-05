@@ -1088,10 +1088,10 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoSite);
   else autoSite();
 
-  /* Teacher classes (docs/teacher-classes.md): on an AP® course page, for someone
+  /* Teacher classes (docs/teacher-classes.md): on a course page (AP®, NREMT, ochem, A&P), for someone
      signed in, fetch the student's side of classes. It does nothing for a
      student in no class of this course beyond one cached read. */
-  var CLASS_DIRS = /^\/(bio|chem|physics|calculus|calculus-bc|statistics|environmental-science|psychology|precalculus|macroeconomics)\//;
+  var CLASS_DIRS = /^\/(bio|chem|physics|calculus|calculus-bc|statistics|environmental-science|psychology|precalculus|macroeconomics|nremt|ochem|anatomy-physiology)\//;
   function classBoot(){
     if(!CLASS_DIRS.test(location.pathname)) return;
     var signedIn = false;
