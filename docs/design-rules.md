@@ -49,8 +49,6 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
 - Agreed (step 5): no code style font (IBM Plex Mono). Numbers, scores and labels use Nunito with even width digits
   (`font-variant-numeric: tabular-nums`); its font files can be dropped.
 - Agreed (step 5): course banners keep their dark course color in dark mode; only text and accents lighten.
-- Reopened (step 6 restart; was agreed): cards keep today's look: white, 1 px border, soft shadow, 20 px corners (owner's taste over
-  Claude's border only pick). No cards inside cards.
 
 ## Words
 - Agreed: show less at once. Do not explain things people already understand (a button that emails students needs
@@ -71,16 +69,6 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   a full level bar on Progress.
 - Agreed (step 3): phone header is the logo mark, the course name with the switcher, search and the account picture.
 - Agreed (step 2): on phones the 5 sections sit in a bottom bar with icons and labels, all always visible.
-- Reopened (step 6 restart; was agreed): Learn lists the 8 units as rows that open in place; the current unit starts open. Glossary and
-  Tools sit as links under the list.
-- Reopened (step 6 restart; was agreed): a topic row is number, name and one status circle (done, started, new), plus a small "Premium
-  lesson" tag where it applies. The whole row opens the topic; no buttons, times or bars on rows.
-- Reopened (step 6 restart; was agreed in 6b, F1): a topic row opens the topic's free notes; an "Interactive lesson" button (Premium tag where
-  it applies) is the first thing on the notes page.
-- Reopened (step 6 restart; was agreed in 6b, F3): logged out, the header has Log in plus a menu button with the same menu as logged in (Log in,
-  Make a free account, answer sounds, dark mode, For teachers). On phones Log in lives inside that menu.
-- Reopened (step 6 restart; was agreed in 6b, F5): Copy link, Google Classroom, Print and Print with answer key sit behind one "Share" button,
-  which counts as the page's one small action.
 - Agreed (step 6): cards keep today's look: white, 1 px border, soft shadow, 20 px corners (owner's taste, chosen twice).
 - Agreed (step 6): one row style for every list (topics, tools, FRQs, decks, sets): the name, plus one short muted
   second line only when it helps choose (read time, what a tool does, the FRQ's unit). The whole row is one tap target.
@@ -251,3 +239,5 @@ gets its own step, built from `docs/site-feature-inventory.md`.)
   Options page: https://claude.ai/artifact/8Zf1w4n7SoDg3eqyZbiLEC
 - 2026-11-05: step 15 decided: Classroom style tabs (T1), today's class home under the rules (H1), one page assign
   (A1). Options page: https://claude.ai/artifact/Me73k3eNG2PVRpkU9LBARi. All 15 steps done; next: build it in the real code.
+- 2026-11-05: removed the Reopened step 6 and 6b lines; each was settled again in a later step (cards and rows: 6;
+  topics and units: 8; logged out header: 13; Share: 8 and 9). Every rule above is now Agreed.
