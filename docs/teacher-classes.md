@@ -166,7 +166,7 @@ Chemistry and Anatomy & Physiology; every teacher view works for them. Sample: `
     `nremt_exam100_flagged` (list of ids), `nremt_exam100_history` and `nremt_cat_history` (both count as the full
     exam), `nremt_lessons_v1`, `nremt_picks_v1`. Records carry no topic, so `assets/class/nremt-map.js`
     (`scripts/build-class-maps.mjs`; `--check`; rerun after a bank change, the test fails otherwise) maps each id to
-    its topic and difficulty: units are the six topic areas, topics the bank's 21 `topic` labels.
+    its topic and difficulty: units are the six topic areas, topics the bank's `topic` labels per area (25; a label found in two areas is two topics).
   - Ochem: the mastery engine stores concepts, not questions, so `diagnostic-engine.js applyResult` now also writes
     `ochem_items_v1` (per question, AP® shape, 1500 newest) and `ochem_picks_v1`. Older answers: unfixed and fixed
     misses from `ochem_mastery_v1.mistakes`. Exams: `ochem_exam_history_v1` (chapter test = that chapter's unit test,

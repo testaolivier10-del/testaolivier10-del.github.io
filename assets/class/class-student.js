@@ -68,7 +68,7 @@
     if(changed) write(DONE, d);
   }
   // Each course's pages take their own parameters (LevlClassModel.href, docs/teacher-classes.md "Links").
-  var pageC = null;
+  var pageC = null, needTried = false;
   function href(a){ return M().href(pageC || pageCourse(), a); }
   function dueWords(due, now){
     if(!due) return 'No due date';
@@ -126,9 +126,12 @@
     if(!course || !A() || !A().onAuthChange) return;
     pageC = course;
     // A course whose records need a lookup first (NREMT's topic map) loads it before anything is summarized.
+    // If it fails to load, carry on without it (the summary then has no topics for that course).
     var need = M().COURSES[course].need;
-    if(need && !window[M().COURSES[course].g]){
-      var s = document.createElement('script'); s.src = '/' + need; s.onload = function(){ started = false; start(); };
+    if(need && !needTried && !window[M().COURSES[course].g]){
+      needTried = true;
+      var s = document.createElement('script'); s.src = '/' + need;
+      s.onload = s.onerror = function(){ started = false; start(); };
       document.head.appendChild(s); return;
     }
     A().onAuthChange(function(u){
