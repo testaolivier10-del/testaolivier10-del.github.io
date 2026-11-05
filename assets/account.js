@@ -2018,6 +2018,8 @@
     if(started) return;
     started = true;
     renderAccountUI();
+    // The offline page only draws the header; its CSP allows no network (consistency audit D8).
+    if(/\/offline\.html$/.test(location.pathname)) return;
     trackPageview();
     if(sessionLikely() || (window.supabase && window.supabase.createClient)) connect();
   }
