@@ -51,6 +51,9 @@ VAPID_SUBJECT = "mailto:hello@levlprep.com"
 # The AI FRQ grader: "owner" = the owner's account only, while he tries it
 # (docs/frq-grader.md). "on" at launch, "off" to stop.
 FRQ_GRADER = "owner"
+# Teacher classes: Google Classroom for the owner's account only until Google verifies the app
+# (docs/teacher-classes.md). Needs GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET and CLASS_SECRET.
+CLASS_GOOGLE = "owner"
 
 # Premium passes (src/premium.js; setup in README.md, "Premium"). Left
 # commented so nothing changes until Polar is set up: with no product ids,
@@ -73,6 +76,14 @@ FRQ_GRADER = "owner"
 #                         account only, for testing) or unset/"off" (default)
 #   FRQ_GRADER_MODEL      Claude model id for it; default claude-haiku-5-5
 #
+#   CLASS_GOOGLE          Google Classroom for teacher classes (src/class-google.js,
+#                         docs/teacher-classes.md): "on", "owner" (owner only,
+#                         while the Google app is unverified) or unset/"off"
+#   CLASS_LTI             Canvas / Schoology through LTI 1.3 (src/class-lti.js):
+#                         "on", "owner" or unset/"off"
+#   CLASS_SALES_TO        where Class Premium quote requests go; default
+#                         hello@levlprep.com
+#
 #   ALLOW_LOCALHOST       "true" on a development Worker only: lets a copy of
 #                         the site on localhost:8000 call it. Never in
 #                         production.
@@ -87,6 +98,12 @@ FRQ_GRADER = "owner"
 #                          near a browser
 #   POLAR_ACCESS_TOKEN     Polar organization access token (checkouts:write)
 #   POLAR_WEBHOOK_SECRET   the secret Polar shows for the webhook endpoint
+#   CLASS_SECRET           teacher-class integrations: 32+ random characters
+#                          (signs OAuth/LTI state and the stop link, encrypts
+#                          the stored Google token). `openssl rand -base64 48`
+#   GOOGLE_CLIENT_ID       Google Classroom OAuth client (Google Cloud console)
+#   GOOGLE_CLIENT_SECRET
+#   LTI_PRIVATE_KEY        the LTI tool key, from node scripts/lti-keygen.mjs
 #   ANTHROPIC_API_KEY      the FRQ grader's Claude key, from a Console account
 #                          with NO card and auto-reload off (prepaid credits:
 #                          when they run out it errors, it never bills)

@@ -1,56 +1,210 @@
 # Teacher classes (status file)
 
-Free classes for AP® teachers: a teacher makes a class for one course, students join with a code, the teacher
-assigns work and sees where every student struggles. Research report and owner decisions live in the Claude doc
-"LevlPrep Teacher Interface: Research Report"; approved look: the "LevlPrep Teacher Mockups" artifact (2026-11-04),
-built with the real course styles (r3 band, dashboard design F, path card).
+Free classes for teachers: a teacher makes a class for one course (the ten AP® courses, EMT (NREMT), organic
+chemistry, A&P), students join with a code, the teacher assigns work and sees where every student struggles.
+Research report and owner decisions: the Claude doc "LevlPrep Teacher Interface: Research Report"; approved look: the
+"LevlPrep Teacher Mockups" artifact (2026-11-04), built with the real course styles (r3 band, dashboard design F,
+path card).
+
+## Status (2026-11-04)
+
+- v1 is live (migration 2026-11b applied 2026-11-04).
+- v2 is built and integrated on branch `teach-v2` (one PR, "Teacher classes v2", superseding #137 #139 #140 #141).
+  Not merged, SQL 2026-11c/d/e NOT applied, Worker NOT deployed. Everything that needs the Worker or a new flag is
+  off until the owner steps at the end of this file.
+- Sample class without signing in: `/teach/?demo=1` (AP® Biology) and `/teach/?demo=1&course=nremt`; department
+  view `/teach/?demo=1&dept=1`.
 
 ## Owner decisions (2026-11-04)
 
 - Teachers free, no verification at launch. Students stay on the free tier with its limits unless the teacher buys
-  Class Premium at a discount (not built yet; the settings page says to email for now).
-- Pilot AP® Biology; the code works for all ten AP® courses on the shared engine.
+  Class Premium at a discount (checkout not built; the quote form and settings page say to email).
+- Pilot AP® Biology; the code works for every course above. v2: "build all of that" (everything competitors have
+  or teachers ask for).
 - Teacher sees scores, mastery, completion, last active, misses, flags and the answers picked. No streaks, no minutes.
 - Teacher entry: footer link and a line on Premium; nothing on the homepage.
-- Assignments: practice, review, exam, free response; required or optional; due dates, late window, chosen students.
+- Assignments: practice, review, mastery, exam, free response; required or optional; due dates, late window, chosen
+  students. Parents are never emailed; reminders are only sent when the teacher presses Send.
 
-## How it works
+## Files
 
-- Database: `scripts/sql/migrations/2026-11b-classes.sql` (also in `schema.sql`). Tables reached only through
-  functions; `teach_*` for teachers, `class_*` for students. Checked against PGlite (21 checks, see git history).
-  Codes are 8 characters from pgcrypto; code lookups are capped at 30 an hour per account (`class_code_tries`);
-  summaries at 120 KB. Migration applied to the live database 2026-11-04.
-- Model: `assets/class/class-model.js` (summary of a student's course progress, mastery, assignment status, item
-  stats). Tests: `scripts/test/class-model.test.mjs`.
-- Student side: `assets/class/class-student.js`, lazy loaded by `assets/site-chrome.js` on AP® course pages for
-  signed-in visitors; pushes the summary (at most once a minute, only on change) and draws "From your teacher" on
-  the course home. Join page: `join.html` + `assets/class/join.js`. Answer picks: one line in each
-  `*-questions.js` writes `<course>_picks_v1` (this device; read into the summary).
-- Sample class: `/teach/?demo=1` ("See a sample class" on the teacher landing). `assets/class/teach-demo.js` builds 18
-  made-up students mid-term from real AP® Bio question ids, in the browser; edits stay in memory. No sign-in.
-- Teacher app: `teach/index.html` + `assets/class/teach.js` + `assets/class/teach.css` (hash routes: home, work,
-  a/<id>, assign, students, s/<id>, grades, settings, topic/<id>).
+- Database: `scripts/sql/migrations/2026-11b-classes.sql` (v1), `2026-11c-classes-v2.sql` (A1: co-teachers,
+  announcements, mastery, teacher questions, submissions, live mode, departments, copy class),
+  `2026-11d-classes-integrations.sql` (C: mail log, report links, Google and LTI links, quotes, FRQ scoring, purge),
+  `2026-11e-classes-courses.sql` (B: course check accepts `nremt|ochem|anp`). `schema.sql` carries all four, in that
+  order, word for word apart from comments. Tables are reached only through functions; `teach_*` for teachers,
+  `class_*` for students. Codes are 8 characters from pgcrypto; code lookups capped at 30 an hour per account;
+  summaries at 120 KB.
+- Model: `assets/class/class-model.js`: `COURSES` (flags `ap`, `frq`, `unitExams`, `unitWord`, `need`, `bank`), one
+  reader per progress shape (`READ`), `summarize` (progress, mastery, picks, flags, exams, lessons, `done`, `att`),
+  `status` (grading rules below), `curriculum`, `href`, bank lookups. NREMT topic map: `assets/class/nremt-map.js`
+  (built by `scripts/build-class-maps.mjs`; rerun after an NREMT bank change, `--check` and the test fail otherwise).
+- Student side: `assets/class/class-student.js`, lazy loaded by `assets/site-chrome.js` (`CLASS_DIRS`) on class
+  course pages for signed-in visitors; pushes the summary (at most once a minute, only on change) and draws "From
+  your teacher" on the course home (assignments, newest 5 announcements, live link). Join page: `join.html` +
+  `assets/class/join.js` (also "Your classes" and sending FRQ drafts). Answer picks: one line in each course's
+  question code writes `<course>_picks_v1`.
+- Assignment runner (AP® courses): `assets/class/class-run.js` + `class-run.css`, fetched only when the address has
+  `la=<assignment id>`; small hooks (`LA`, `CLS`, `classBoot`) in each AP® course's `practice.js` and `exams.js`.
+- Teacher app: `teach/index.html` + `assets/class/teach.js` + `teach.css`. Hash routes: home, work, a/<id>, assign,
+  students, s/<id>, grades, settings, topic/<id>, skills (AP® only), live, bank, print/<id>; `?dept=1` department.
+  Sample data: `assets/class/teach-demo.js` (18 made-up students mid-term from real question ids, in memory).
+- Integrations: `assets/class/teach-integrations.js` (cards on Settings and the assignment page),
+  `assets/class/class-frq.js`, `assets/class/report.js`; pages `teach/report.html`, `teach/quote.html`,
+  `teach/lms.html`, `teach/lti.html`, `teach/privacy-agreement.html`; Worker `worker/src/class-mail.js`,
+  `class-google.js`, `class-lti.js`, `class-frq.js`. Live mode: `live.html` + `assets/class/live.js`.
 
-## Not in v1 (said honestly in the UI or left out)
+## Contract between the parts
 
-- Time limits, answer reveal timing and shuffle per assignment (need changes in each course's practice engine).
-- Reminder emails to students; teachers copy names instead.
-- Class Premium checkout; Google Classroom import; LTI; co-teachers.
-- NREMT, ochem and A&P classes (different progress stores). Owner asked 2026-11-04 for all courses; plan sent, waiting on OK.
+- `teach.js` loads `teach-integrations.js` and on Settings and each assignment page renders
+  `LevlTeachIntegrations.settings(ctx)` / `.assignment(ctx)` (HTML) into its box, then calls `.wire(ctx)`. ctx:
+  `{ where, demo, classId, cls, role, box, call, members: [{id, name}], rep, assignment }`; `rep` is the report the
+  page already holds (members with summaries), so no second fetch. The integrations also accept ctx without `rep`
+  (they then load `teach_class_report` through `ctx.call`). `role: 'co'` hides Google, LMS and grade passback.
+- Assignment kinds: `practice`, `review`, `mastery` (`spec = { topics, target: 0.8, min: 10, qn }`; `qn` = questions
+  per topic for full mastery, saved by the builder so the student's page and the teacher's agree), `exam`, `frq`.
+- Controls (practice, review, mastery, exam; optional) in `spec.controls`: `{ timeLimit: minutes|null, shuffle,
+  release: 'now'|'after_due'|'after_submit', questions: [teacher question ids] }`. `class_mine` returns
+  `extra_time` per class (multiplier). Controls run only on the ten AP® courses for now; the builder says so for
+  NREMT, ochem and A&P, whose students do the work on the course's usual pages.
+- Student links (`class-student.js` `href`): every course uses `LevlClassModel.href` (table below). On the AP®
+  courses practice, review, mastery and exam links also carry `la=<id>`, and review and mastery go to
+  `practice.html?la=<id>`. FRQ links and all NREMT, ochem and A&P links stay plain.
+- Attempts on the student's device: `levlprep_class_att_v1 = { <aid>: { start, end, n, c, tabs, answers, graded } }`;
+  `summarize` copies it into `summary.att` (40 newest, 60 answers each); `status` prefers it when
+  `spec.controls.timeLimit` is set.
+- Teacher questions: `class_questions` (teacher-owned, single choice). Students read them with
+  `class_questions_for(p_assignment)`; `correct` and `why` only when answers may show (release `now` or missing, the
+  student's due date with extra days passed, or submitted with `after_submit`). Picks go in once with
+  `class_submit(p_assignment, p_picks)` (table `class_submissions`), which returns the keys when they may show.
+- Live mode: `class_live` (one open session per class) and `class_live_answers`; teacher polls `teach_live_state`
+  every 2 s, students `class_live_state`; no Realtime.
 
-## Grading rules (class-model.js `status`)
+## Grading rules (`class-model.js` `status`)
 
 - Practice: N answers in the assignment's topics since it opened. Review: questions missed at some point and redone
-  since it opened (no answers at all is not done; answers with nothing to redo is done). Exam: a non-partial unit test
-  of that unit, or a full exam. Free response: a score saved since it opened.
+  since it opened (no answers at all is not done; answers with nothing to redo is done). Mastery: every listed topic
+  at `target` with at least `min` answers in them since it opened; `doneAt` is when the target was first reached.
+  Exam: a non-partial unit test of that unit, or a full exam. Free response: a score saved since it opened.
 - Done after the due date: late inside the late window, missing when late work is not accepted or the window closed.
 - The student's browser records when it first saw each assignment done (`levlprep_class_done_v1`), so a later redo
   never makes finished work late. Teacher numbers come from the student's own browser (by design, like the rest of
   the site's progress).
 
-## Checks done (2026-11-04)
+## What v2 adds
 
-- PGlite: 24 checks on the SQL (ownership, targeted assignments, leaving, codes, guess limit, grants).
-- Browser: every teacher view and the student card rendered with fake class data built from real AP® Bio questions.
-- Independent review: no XSS or ownership holes; its fixes are in (summary size, listener duplication, sign-out
-  clearing via `levlprep_` keys, code guessing, grading edge cases, builder edits, CSV formula guard).
+Teacher app (A1):
+- Assign to several classes at once (same course, whole class). Copy a class (same order, assignments shifted by N
+  days, new code, no students; teacher questions it uses are copied into the copier's bank).
+- Announcements (5 newest to students). Mastery assignments. Exam controls in the builder; extra time per student
+  (1, 1.25, 1.5, 2, 3).
+- Teacher question bank (`#bank`), picked into assignments. Printable worksheet or test with versions A/B and an
+  answer key (`#print/<id>`; single choice only, graph stimuli left out).
+- AP® skill report and predicted score band (`#skills`, AP® only): each unit's mastery weighted by the midpoint of
+  its exam weight range over the units reached; under 20% is 1 to 2, under 40% 2 to 3, under 60% 3 to 4, under 80%
+  4 to 5, else 5; under 30 answers gives no band. Labelled "Estimate" and "Not a College Board score".
+- Integrity: time used against limit times extra time and tab leaves, on the assignment page and in the gradebook.
+- Live mode (`#live` projector view; students on `live.html`).
+- Co-teachers by code: same rights minus deleting the class or assignments, removing students, archiving, sharing
+  with the department and managing co-teachers. Department view (`?dept=1`): counts and averages only, no names.
+- Fixed: the join page took 6-character codes while the database makes 8.
+
+Course engines (A2, AP® courses):
+- Start card and sticky strip (teacher, title, clock, tab leaves, mastery progress). Practice clock = timeLimit x
+  extra_time, runs from the first Start, survives reloads, hands in at zero. Exams: the exam's own clock scaled to the
+  limit; no pause in a class exam. Tab leaves counted while timed work runs.
+- Held answers grade silently and stay out of `<course>_progress_v1` until release (`levlprep_class_hold_v1`);
+  `after_due` shows "See your answers" after the due date. Mastery always gives feedback.
+- Shuffle of question order (stimulus sets kept whole) and teacher options. Teacher questions are marked `own` and
+  never enter progress, review, mastery or the free allowance.
+- A failed load re-enables Start; a free-plan student who used the course's free exam is told so on the start card.
+
+Other courses (B): NREMT, organic chemistry and A&P classes. Readers for `anp_progress_v1` (+ `anp_prefs_v1.examHistory`,
+now written by `assets/apps/exams.js`), `nremt_mastery` / `nremt_exam100_*` / `nremt_cat_history` (topics from
+the NREMT map: six areas as units, 25 topics, filed by each question's own area), ochem `ochem_items_v1` (new, written
+by `diagnostic-engine.js applyResult`, 1500 newest) plus older misses from `ochem_mastery_v1`. Pick hooks in each.
+`nremt:progress` fires once per finished session after the exam history is saved; `class-student.js` carries on
+without topics if the NREMT map fails to load. No Skills tab, score band or AP® wording; no FRQ tile; NREMT has no
+unit exams.
+
+Links (`LevlClassModel.href`, relative to the course home; AP® links add `la=` as above):
+
+| Course | Practice | Review | Exam |
+| --- | --- | --- | --- |
+| AP® | `practice.html?topic=` | `practice.html?la=` | `exams.html?unit=` / `?mode=full` |
+| A&P | `practice.html?topic=` (first topic) | `review.html` | `exams.html?mode=system&chapter=` / `?mode=final` |
+| Ochem | `practice.html?topic=&count=` | `practice.html?mode=mistakes` | `exams.html?kind=chapter&chapter=` / `?kind=final` |
+| NREMT | `practice.html?system=<area>` (no sub-topic filter; the builder says so) | `review.html?start=review` | `exams.html` (full only) |
+
+Integrations (C), all behind the Worker and flags:
+
+| Item | What it does | Where |
+| --- | --- | --- |
+| Reminder emails | Teacher ticks missing / not started students and presses Send; Worker checks ownership, looks up addresses (teacher never sees them), plain text through Resend. 1 per student per 20 h, 200 a day per teacher, 60 per request; one-click stop link. | `worker/src/class-mail.js`, `class_mail_take` |
+| Family progress report | Printable page (`?c=&s=`) and an expiring share link (1 to 30 days, SHA-256 stored, dies with the membership). No parent emails. | `teach/report.html`, `class_report_get` |
+| Google Classroom | `CLASS_GOOGLE`. OAuth (refresh token AES-GCM under `CLASS_SECRET`), link a course, roster match by email (stores Classroom ids, not emails), invite by email (once a week per address, stop link), post coursework, grade passback on Send. | `worker/src/class-google.js` |
+| Canvas / Schoology (LTI 1.3) | `CLASS_LTI`. OIDC login and launch (RS256, single-use nonce), deep linking, AGS score passback, Canvas JSON config, JWKS. Registrations start `pending`; the owner activates each from an emailed 14-day `/lti/activate` link. Not yet tried against a real Canvas or Schoology. | `worker/src/class-lti.js`, `teach/lms.html`, `teach/lti.html` |
+| Quote / purchase order | Signed-in form, emailed to `CLASS_SALES_TO` (default hello@), receipt to the account. Polar only invoices paid orders, so POs are answered by email. | `teach/quote.html` |
+| Privacy for districts + DPA | Data table, FERPA, COPPA (13+), retention, deletion, subprocessors; fillable DPA in the SDPC NDPA structure, marked unsigned. | `teach/privacy-agreement.html` |
+| Teacher FRQ scoring | Student sends a draft from "Your classes"; teacher ticks rubric points and comments. AI first pass only with `FRQ_GRADER` on and a model in `CLASS_FRQ_PASSED_MODELS`, 60 a day per teacher, a suggestion the teacher must save. | `class_frq_*`, `teach_frq_*`, `worker/src/class-frq.js` |
+
+The mail log, expired report links and used launch nonces are cleared hourly (`class_purge`, from the Worker cron).
+Co-teachers may send reminders, make report links and score free responses; Google, LTI and grade passback stay with
+the owner.
+
+## Checks (integration of `teach-v2`, 2026-11-04)
+
+- `node --test scripts/test/*.test.mjs` with `PGLITE` set: 2101 pass, 0 fail, 0 skipped (includes
+  `class-model`, `class-run`, `classes-v2-sql` on PGlite, `worker-classes`, `sql-migration`).
+- PGlite: `scripts/test/pglite/classes-integrations.mjs` 70 pass. From scratch, 11b -> 11c -> 11d -> 11e applies and
+  re-applies cleanly, and `schema.sql` alone applies cleanly; both give the same 53 class functions (same bodies) and
+  22 tables (same columns); a class can be made for apbio, nremt, ochem and anp and a bad course is refused.
+- `build-class-maps`, `build-apcalc`, `build-apcalcbc` and every other `--check` in `scripts/ci-local.sh` (worker
+  build, sitemap, weight, pricing) pass; `check-site` passes. Fixed here: the Premium FAQ line for the new courses was
+  edited in `premium.html` only, now in `scripts/build-pricing.mjs`.
+- Playwright (Chrome): `scripts/class-browser/run.py` 270 pass (all ten AP® courses), `held-resume-start.py` 39
+  pass, `submit-card.py` 6 pass. Every teacher view, every assignment page and print view of `?demo=1`,
+  `?demo=1&course=nremt` and `?demo=1&dept=1` at 1280 and 390 px: no page errors, no horizontal scroll, integration
+  cards drawn on every assignment page. Student card on AP® Bio and Chem homes: `la=` links; on NREMT, ochem and
+  A&P homes: plain links equal to `LevlClassModel.href`.
+- Earlier per-stream reviews (no XSS or ownership holes; fixes in) are in the git history of the four branches.
+
+## Gaps (said in the UI or left out)
+
+- Controls (time limits, shuffle, held answers, teacher questions) only on the AP® courses; FRQ assignments take no
+  controls; teacher questions are single choice only, and in a full exam with calculator parts they sit in the
+  no-calculator part.
+- Print: no graph stimuli or non single-choice items.
+- NREMT practice links drill a whole area; ochem has per-question history only from this change on; NREMT and ochem
+  picks, `ochem_items_v1` and the NREMT map are per device; no skills report or score band outside AP®.
+- Class Premium checkout. LTI not yet tried on a real Canvas or Schoology.
+
+## Owner steps, in order
+
+1. Review and merge the PR "Teacher classes v2" into main. Merging also deploys the Worker (step 6); with no new
+   secrets or flags set, every new Worker feature stays off, so this is safe. Do step 2 the same day: until then
+   v2 teacher pages call functions that do not exist yet (they show errors, nothing breaks for students).
+2. Supabase SQL editor, in this order: `scripts/sql/migrations/2026-11c-classes-v2.sql`, then
+   `2026-11d-classes-integrations.sql`, then `2026-11e-classes-courses.sql` (2026-11b is already applied). Each is
+   idempotent; rerunning is safe.
+3. Worker secrets and flags (Cloudflare dashboard, Worker, Settings, Variables; or `wrangler secret put`):
+   - `CLASS_SECRET` = `openssl rand -base64 48`. Reminders, report links and stop links need it plus the existing
+     `RESEND_API_KEY` / `REMINDER_FROM`.
+   - Google Classroom: signed in as testaolivier10@gmail.com, create Google Cloud project `levlprep-classroom`;
+     enable the Google Classroom API; OAuth consent screen (External) with the scopes in `GC_SCOPES`
+     (classroom.courses.readonly, classroom.rosters.readonly, classroom.profile.emails,
+     classroom.coursework.students, openid, email); a Web OAuth client with redirect URI
+     `https://api.levlprep.com/class/google/callback`. Secrets `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`; variable
+     `CLASS_GOOGLE = "owner"` to try it on your own account, then submit the app for Google verification
+     (sensitive scopes) and set `"on"` once approved.
+   - Optional: `CLASS_SALES_TO` if quotes should go somewhere other than hello@levlprep.com.
+   - The AI first pass on FRQ scoring needs nothing extra: it follows `FRQ_GRADER` and the eval results.
+4. LTI (Canvas / Schoology): `node scripts/lti-keygen.mjs` -> secret `LTI_PRIVATE_KEY`; `CLASS_LTI = "owner"`;
+   try it on a Canvas where you can add a developer key (a school test instance or an Instructure sandbox); activate
+   each school's registration from the emailed `/lti/activate` link after checking it with the school; then `"on"`.
+5. DPA and SDPC: read and approve `teach/privacy-agreement.html` and the district privacy text; sign each school's
+   DPA; list LevlPrep on the SDPC registry. When the first integration goes live, bump "Last updated" on
+   `privacy.html` and `terms.html` together (check-site wants them equal). Decide Class Premium pricing for quotes.
+6. Deploy the Worker: the merge in step 1 runs `.github/workflows/deploy-worker.yml`; check it succeeded in Actions
+   (or run it by hand there) after the secrets in steps 3 and 4 are in. Flag changes in the dashboard take effect
+   without a redeploy.

@@ -48,7 +48,7 @@
     if(!force && since < GAP){ clearTimeout(timer); timer = setTimeout(function(){ push(course); }, GAP - since + 50); return; }
     noteDone(course);
     var sum = M().summarize(course, function(k){ return localStorage.getItem(k); });
-    var body = JSON.stringify(sum.items) + JSON.stringify(sum.flags) + JSON.stringify(sum.exams) + JSON.stringify(sum.frq) + sum.lessons;
+    var body = JSON.stringify(sum.items) + JSON.stringify(sum.flags) + JSON.stringify(sum.exams) + JSON.stringify(sum.frq) + sum.lessons + JSON.stringify(sum.att || null);
     var last = read(LAST) || {}, h = hash(body);
     if(last[course] === h && !force) return;
     lastPushAt = Date.now();
@@ -67,18 +67,18 @@
     }); });
     if(changed) write(DONE, d);
   }
-  function practiceHref(a){
-    var s = a.spec || {}, t = s.topics || [];
-    if(s.unit && !t.length) return 'practice.html?unit=' + encodeURIComponent(s.unit);
-    if(t.length) return 'practice.html?topic=' + encodeURIComponent(t[0]);
-    return 'practice.html';
-  }
+  /* Each course's pages take their own parameters (LevlClassModel.href, docs/teacher-classes.md "Links").
+     On the ten AP® courses practice, review, mastery and exam links also carry la=<assignment id>: the page then
+     runs the assignment with its controls (assets/class/class-run.js); review and mastery run on the practice page.
+     NREMT, ochem and A&P pages have no class runner yet, so their links stay plain. */
+  var pageC = null, needTried = false;
   function href(a){
-    var s = a.spec || {};
-    if(a.kind === 'review') return 'review.html';
-    if(a.kind === 'exam') return 'exams.html' + (s.unit ? '?unit=' + encodeURIComponent(s.unit) : '?mode=full');
-    if(a.kind === 'frq') return s.frq ? 'frq/' + encodeURIComponent(s.frq) + '.html' : 'frq.html';
-    return practiceHref(a);
+    var c = pageC || pageCourse();
+    if(!M().isAp(c) || a.kind === 'frq') return M().href(c, a);
+    var la = 'la=' + encodeURIComponent(a.id);
+    if(a.kind === 'review' || a.kind === 'mastery') return 'practice.html?' + la;
+    var p = M().href(c, a);
+    return p + (p.indexOf('?') > -1 ? '&' : '?') + la;
   }
   function dueWords(due, now){
     if(!due) return 'No due date';
@@ -86,7 +86,7 @@
     var when = days === 0 ? 'today' : days === 1 ? 'tomorrow' : days > 1 && days < 7 ? d.toLocaleDateString(undefined, { weekday: 'long' }) : d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
     return 'Due ' + when;
   }
-  var KIND = { practice: 'Practice', review: 'Review', exam: 'Practice exam', frq: 'Free response' };
+  var KIND = { practice: 'Practice', review: 'Review', mastery: 'Mastery', exam: 'Practice exam', frq: 'Free response' };
 
   function card(course){
     var host = document.querySelector('main.r3-home');
@@ -108,11 +108,18 @@
           (topics.length ? ' · ' + esc(topics.slice(0, 3).join(', ')) + (topics.length > 3 ? ' and ' + (topics.length - 3) + ' more' : '') : '');
         var btn = st.state === 'done' ? '<a class="lvc-btn is-ghost" href="' + esc(href(a)) + '">Open again</a>' : '<a class="lvc-btn" href="' + esc(href(a)) + '">' + (st.answered ? 'Keep going' : 'Start') + '</a>';
         var chips = a.kind === 'practice' && a.spec && a.spec.topics && a.spec.topics.length > 1
-          ? '<p class="lvc-chips">' + a.spec.topics.map(function(t, i){ return '<a href="practice.html?topic=' + encodeURIComponent(t) + '">' + esc((a.spec.topicNames || [])[i] || t) + '</a>'; }).join('') + '</p>' : '';
+          ? '<p class="lvc-chips">' + a.spec.topics.map(function(t, i){ return '<a href="' + esc(M().topicHref(course, t)) + '">' + esc((a.spec.topicNames || [])[i] || t) + '</a>'; }).join('') + '</p>' : '';
         return '<li class="lvc-row">' + tag + '<p class="lvc-t">' + esc(a.title) + '</p><p class="lvc-m">' + meta + '</p>' +
           ((a.kind === 'practice' || a.kind === 'review') && st.state !== 'done' ? '<div class="lvc-bar"><i style="width:' + pct + '%"></i></div>' : '') + chips + btn + '</li>';
       }).join('');
-      return '<div class="lvc-class"><div class="lvc-head"><h2>From <span>' + esc(c.teacher || 'your teacher') + '</span></h2><p>' + esc(c.name) + '</p></div>' +
+      // A live session open in class (class_mine live: true), then the teacher's newest five announcements.
+      var live = c.live ? '<p class="lvc-live"><a class="lvc-btn" href="/live.html?c=' + encodeURIComponent(c.id) + '">Join the live session</a></p>' : '';
+      var ann = (Array.isArray(c.announcements) ? c.announcements : []).slice().sort(function(x, y){ return (Date.parse(y.created_at || y.at) || 0) - (Date.parse(x.created_at || x.at) || 0); }).slice(0, 5);
+      var annHtml = ann.length ? '<ul class="lvc-ann" aria-label="Announcements">' + ann.map(function(n){
+        var at = Date.parse(n.created_at || n.at);
+        return '<li><p>' + esc(n.body || n.text || n.message || '') + '</p>' + (at ? '<span>' + esc(new Date(at).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })) + '</span>' : '') + '</li>';
+      }).join('') + '</ul>' : '';
+      return '<div class="lvc-class"><div class="lvc-head"><h2>From <span>' + esc(c.teacher || 'your teacher') + '</span></h2><p>' + esc(c.name) + '</p></div>' + live + annHtml +
         (rows ? '<ul class="lvc-list">' + rows + '</ul>' : '<p class="lvc-empty">Nothing assigned right now.</p>') + '</div>';
     }).join('');
     var sec = document.createElement('section');
@@ -128,12 +135,28 @@
     if(document.getElementById('lvClassCss')) return;
     var l = document.createElement('link'); l.id = 'lvClassCss'; l.rel = 'stylesheet'; l.href = '/assets/class/class.css';
     document.head.appendChild(l);
+    // Announcements and the live link (kept here so class.css, shared with the teacher app, stays A1's).
+    var st = document.createElement('style');
+    st.textContent = '.lvc-live{margin:6px 0 10px}.lvc-live .lvc-btn{display:inline-flex}.lvc-ann{list-style:none;margin:8px 0 6px;padding:0;display:grid;gap:8px}' +
+      '.lvc-ann li{background:var(--ctint,var(--surface2));border-radius:14px;padding:10px 14px}.lvc-ann p{margin:0;font-weight:700;color:var(--ink);white-space:pre-line}' +
+      '.lvc-ann span{font-size:13px;color:var(--muted)}';
+    document.head.appendChild(st);
   }
 
   function start(){
     if(started) return; started = true;
     var course = pageCourse();
     if(!course || !A() || !A().onAuthChange) return;
+    pageC = course;
+    // A course whose records need a lookup first (NREMT's topic map) loads it before anything is summarized.
+    // If it fails to load, carry on without it (the summary then has no topics for that course).
+    var need = M().COURSES[course].need;
+    if(need && !needTried && !window[M().COURSES[course].g]){
+      needTried = true;
+      var s = document.createElement('script'); s.src = '/' + need;
+      s.onload = s.onerror = function(){ started = false; start(); };
+      document.head.appendChild(s); return;
+    }
     A().onAuthChange(function(u){
       if(!u) return;
       refresh(false).then(function(){
@@ -156,6 +179,6 @@
     s.onload = start; document.head.appendChild(s);
   }
 
-  window.LevlClassStudent = { refresh: refresh, push: push, href: href, list: function(){ return list || []; } };
+  window.LevlClassStudent = { refresh: refresh, push: push, noteDone: noteDone, href: href, list: function(){ return list || []; } };
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

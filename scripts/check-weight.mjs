@@ -363,7 +363,9 @@ const SHELL_BUDGETS = [
   /* 54 -> 56 (tool audit fixes 2026-10-27): the pathway tracer draws every pathway as a map with a small
      icon per kind of step (30 icons) and its drills place steps on it; measured 54.8 KB on the heaviest page.
      The 3D anatomy tool (same day) measured 54.1 KB, inside this. */
-  ['anatomy-physiology', 56],
+  /* 56 -> 56.4 (teacher classes, other courses, 2026-11-04): the answer-pick line in anp-questions.js and the exam
+     history and picks exams.js writes for a class (docs/teacher-classes.md). Measured 56.1 KB. */
+  ['anatomy-physiology', 56.4],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
@@ -379,7 +381,9 @@ const SHELL_BUDGETS = [
   ['chem', 52],
   /* AP® Physics 1 (physics/, a fork of the AP® Chemistry runtime). Before
      any unit is published; Chemistry's 52 is the reference. */
-  ['physics', 52],
+  /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
+     assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
+  ['physics', 52.3],
   /* AP® Calculus AB (calculus/, a fork of the AP® Physics 1 runtime), plus
      the math layer every question page loads: the expression parser
      (calc-expr.js) and the TeX-to-MathML renderer (calc-math.js), 13.8 KB
@@ -397,7 +401,9 @@ const SHELL_BUDGETS = [
      itself is BC's own file (calculus-bc/assets/cbc-interval.js). Measured 69.4 KB.
      69.5 -> 69.7 (BC integration pass, 2026-10-31): the small-value guard in calc-questions.js
      (below 0.005 a decimal must be right to three significant digits, BC only); measured 69.5 KB. */
-  ['calculus', 69.7],
+  /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
+     assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
+  ['calculus', 70.1],
   /* AP® Statistics (statistics/, a fork of the AP® Calculus AB runtime),
      plus what every statistics question page needs (docs/apstat-spec.md
      section 7): the distributions library (stat-dist.js, 6.4 KB gzipped:
@@ -410,7 +416,9 @@ const SHELL_BUDGETS = [
      decision 15): the flag hook and Flagged mode (as calculus' 68 -> 68.5),
      the setup value step and the tiny p-value wording; measured 82.6 KB.
      83 -> 83.2: the answer-pick line for teacher classes (docs/teacher-classes.md), one line in every AP® renderer. */
-  ['statistics', 83.2],
+  /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
+     assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
+  ['statistics', 83.5],
   /* AP® Environmental Science (environmental-science/, a fork of the AP®
      Statistics runtime, docs/apenv-spec.md decision 1): the calculation
      recipes (env-calc.js) in place of the distributions library, and the
@@ -422,7 +430,9 @@ const SHELL_BUDGETS = [
      reviews grew the unit parser and normaliser (seconds, ng, kL, °C, metric
      tons, compound divisors, "per", scale words; decision 11) and the shell
      carries all nine published units; measured 85.0 KB. */
-  ['environmental-science', 85.5],
+  /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
+     assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
+  ['environmental-science', 85.8],
   /* AP® Psychology (psychology/, a fork of the AP® Environmental Science
      runtime, docs/appsych-spec.md decision 1): ApPsychStats (psy-stats.js,
      descriptive statistics and the normal curve) in place of the calculation
@@ -455,7 +465,9 @@ const SHELL_BUDGETS = [
      axis marks, key.alt) and the integrator's (straight PPC, point names,
      label placement, keyResponse) took mac-graph.js from 9.6 to 14.5 KB
      gzipped; measured 87.1, with the same room for the curriculum. */
-  ['macroeconomics', 89],
+  /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
+     assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
+  ['macroeconomics', 89.4],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -551,7 +563,9 @@ const BUDGETS = [
   /* 49.9 -> 55.2 (tools upgrade, 2026-10-27): the exam's drag-and-drop and options-table items, dragging build
      lists and the Adaptive exam (engine routing, results, setup) in practice-engine.js and practice.css. The item
      interactions themselves are in nremt/assets/tei-items.js (course bucket). Measured 54.8 KB. */
-  ['nremt/practice.html', 55.2],
+  /* 55.2 -> 55.6 (teacher classes, other courses, 2026-11-04): the answer pick and progress event in
+     updateMastery (docs/teacher-classes.md). Measured 55.4 KB. */
+  ['nremt/practice.html', 55.6],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read

@@ -1,0 +1,38 @@
+/* A teacher's assignment on a course's practice or exam page (assets/class/class-run.js, docs/teacher-classes.md).
+   Course colours from class.css (data-cover); neutrals from assets/theme.css, so dark mode follows. */
+.lvr-strip{position:sticky;top:var(--chrome-row1-h,60px);z-index:19;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 18px;
+  margin:0 auto 14px;max-width:1160px;box-sizing:border-box;padding:10px 16px;border-radius:14px;background:var(--white);border:1px solid var(--line);
+  box-shadow:0 10px 26px -22px rgba(11,26,51,.5);border-left:5px solid var(--accent,var(--ink));}
+.lvr-strip.is-note{position:static;border-left-color:var(--muted);}
+.lvr-t{margin:0;font:800 15px var(--font-ui);color:var(--ink);min-width:0;}
+.lvr-t span{color:var(--accent-text,var(--accent,var(--muted)));margin-right:6px;}
+.lvr-m{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+.lvr-time{font:800 18px var(--font-mono,monospace);color:var(--ink);background:var(--surface2);border-radius:10px;padding:3px 10px;}
+.lvr-time.is-low{color:#B4412F;background:#FCE8E3;}
+.lvr-tabs,.lvr-done{background:var(--surface2);border-radius:999px;padding:3px 10px;}
+.lvr-mast{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;}
+.lvr-mt{position:relative;display:inline-block;padding:3px 10px 6px;border-radius:10px;background:var(--surface2);color:var(--ink);overflow:hidden;}
+.lvr-mt b{font-weight:800;}
+.lvr-mt i{position:absolute;left:0;bottom:0;height:3px;background:var(--accent,var(--ink));}
+.lvr-mt.is-ok{background:var(--ctint,var(--surface2));}
+.lvr-card{max-width:760px;margin:0 auto 24px;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px 26px;box-shadow:0 18px 40px -34px rgba(11,26,51,.45);}
+.lvr-card h2{font:900 clamp(24px,3.4vw,32px)/1.08 var(--display,'Inter Display','Nunito',system-ui,sans-serif);letter-spacing:-.035em;margin:0 0 10px;color:var(--ink);}
+.lvr-k{font:800 12.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text,var(--accent,var(--muted)));margin:0 0 8px;}
+.lvr-st{font-weight:800;color:var(--ink);}
+.lvr-list{margin:12px 0;padding-left:20px;display:grid;gap:6px;}
+.lvr-acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0 6px;}
+.lvr-note{color:var(--muted);font-size:14px;}
+.lvr-saved{margin:0;font-weight:700;color:var(--muted);}
+.lvr-review ol{padding-left:22px;display:grid;gap:18px;}
+.lvr-stem{font-weight:700;margin:0 0 8px;}
+.lvr-opts{list-style:none;margin:0;padding:0;display:grid;gap:6px;}
+.lvr-opts li{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 12px;border-radius:10px;background:var(--surface2);}
+.lvr-opts li.is-key{box-shadow:inset 0 0 0 2px var(--accent,var(--ink));}
+.lvr-opts li.is-no{box-shadow:inset 0 0 0 2px #D9694F;}
+.lvr-l{font-weight:800;color:var(--muted);}
+.lvr-tag{font:800 12px var(--font-ui);border-radius:999px;padding:2px 8px;background:var(--line-soft);}
+.lvr-tag.is-key{background:var(--ctint,var(--surface2));color:var(--accent-text,var(--accent));}
+.lvr-why{margin:8px 0 0;font-size:14.5px;}
+@media (max-width:620px){.lvr-strip{top:0;border-radius:0 0 12px 12px;margin-left:-4px;margin-right:-4px;}.lvr-card{padding:20px 18px;}}
+@media print{.lvr-strip{display:none;}}
+.lvr-card h2:focus{outline:none;}

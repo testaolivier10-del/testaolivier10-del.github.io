@@ -485,7 +485,7 @@ function gradeCache(env) {
 }
 const cacheUrl = (key) => `https://frq-grade.cache.levlprep.invalid/${key}`;
 
-async function cacheGet(env, key) {
+export async function cacheGet(env, key) {
   const c = gradeCache(env);
   if (!c) return null;
   try {
@@ -494,7 +494,7 @@ async function cacheGet(env, key) {
   } catch { return null; }
 }
 
-async function cachePut(env, key, value, seconds) {
+export async function cachePut(env, key, value, seconds) {
   const c = gradeCache(env);
   if (!c) return;
   try {
@@ -524,13 +524,13 @@ async function takeGrade(env, userId) {
   } catch { return null; }
 }
 
-async function giveBack(env, userId) {
+export async function giveBack(env, userId) {
   try { await sb(env, 'rpc/frq_grade_give_back', { method: 'POST', body: JSON.stringify({ p_user: userId }) }); } catch { /* best effort */ }
 }
 
 /* The anonymous daily count (frq_grade_counts): which grader answered and
    what Claude used, so the weekly report shows credit use and fallback rate. */
-async function countGrade(env, course, grader, usage) {
+export async function countGrade(env, course, grader, usage) {
   try {
     await sb(env, 'rpc/count_frq_grade', {
       method: 'POST',
