@@ -16,8 +16,10 @@ https://claude.ai/artifact/GbY4t4nHczLZ8JdYkerpZx). Check every options page aga
 ## Build order
 One piece at a time, biggest decisions first; each step shows every reasonable option inside a real page, with an
 honest take and a pick; the owner chooses and the choice is recorded here before the next step.
-1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners (done) · 5 Type and color (done) · 6 Cards and lists ·
-7 Course home · 8 Question screen · 9 Notes page · 10 Progress · 11 Homepage · 12 Teacher side.
+1 Course sections (done) · 2 Navigation (done) · 3 Header (done) · 4 Titles and banners (done) · 5 Type and color (done) ·
+6 Cards, lists and tags · 7 Course home · 8 Learn · 9 Practice · 10 Question screen · 11 Exams · 12 Progress ·
+13 Menus and site wide extras · 14 Homepage · 15 Teacher side. (Reordered 2026-11-05 so each section of the course
+gets its own step, built from `docs/site-feature-inventory.md`.)
 
 ## How we work
 - Agreed: Claude does not just do what the owner says. Each idea gets weighed honestly: say if it is good, what it
@@ -47,7 +49,7 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 - Agreed (step 5): no code style font (IBM Plex Mono). Numbers, scores and labels use Nunito with even width digits
   (`font-variant-numeric: tabular-nums`); its font files can be dropped.
 - Agreed (step 5): course banners keep their dark course color in dark mode; only text and accents lighten.
-- Agreed (step 6): cards keep today's look: white, 1 px border, soft shadow, 20 px corners (owner's taste over
+- Reopened (step 6 restart; was agreed): cards keep today's look: white, 1 px border, soft shadow, 20 px corners (owner's taste over
   Claude's border only pick). No cards inside cards.
 
 ## Words
@@ -69,15 +71,15 @@ honest take and a pick; the owner chooses and the choice is recorded here before
   a full level bar on Progress.
 - Agreed (step 3): phone header is the logo mark, the course name with the switcher, search and the account picture.
 - Agreed (step 2): on phones the 5 sections sit in a bottom bar with icons and labels, all always visible.
-- Agreed (step 6): Learn lists the 8 units as rows that open in place; the current unit starts open. Glossary and
+- Reopened (step 6 restart; was agreed): Learn lists the 8 units as rows that open in place; the current unit starts open. Glossary and
   Tools sit as links under the list.
-- Agreed (step 6): a topic row is number, name and one status circle (done, started, new), plus a small "Premium
+- Reopened (step 6 restart; was agreed): a topic row is number, name and one status circle (done, started, new), plus a small "Premium
   lesson" tag where it applies. The whole row opens the topic; no buttons, times or bars on rows.
-- Agreed (step 6b, F1): a topic row opens the topic's free notes; an "Interactive lesson" button (Premium tag where
+- Reopened (step 6 restart; was agreed in 6b, F1): a topic row opens the topic's free notes; an "Interactive lesson" button (Premium tag where
   it applies) is the first thing on the notes page.
-- Agreed (step 6b, F3): logged out, the header has Log in plus a menu button with the same menu as logged in (Log in,
+- Reopened (step 6 restart; was agreed in 6b, F3): logged out, the header has Log in plus a menu button with the same menu as logged in (Log in,
   Make a free account, answer sounds, dark mode, For teachers). On phones Log in lives inside that menu.
-- Agreed (step 6b, F5): Copy link, Google Classroom, Print and Print with answer key sit behind one "Share" button,
+- Reopened (step 6 restart; was agreed in 6b, F5): Copy link, Google Classroom, Print and Print with answer key sit behind one "Share" button,
   which counts as the page's one small action.
 - Agreed: every design question is shown as pictures of each option before the owner chooses, never as words only.
 - Agreed: the layout must be intuitive and easy to scan; split long pages (tabs, collapsed "More" menus,
@@ -129,3 +131,5 @@ honest take and a pick; the owner chooses and the choice is recorded here before
 - 2026-11-05: step 6b (missing features): F1 notes first with a lesson button (A), F3 menu button when logged out (A),
   F5 one Share button (A). Owner asked why unit actions are in Learn at all; agreed Practice this unit and Unit test
   repeat Practice and Exams, options redrawn. Options page: https://claude.ai/artifact/LK6KsKzERvjrtjZQ9ozfju
+- 2026-11-05: owner restarted the build right after step 5. Step 6 and 6b decisions reopened (kept above, marked
+  Reopened); steps 1 to 5 stand. Build order split so Learn, Practice and Exams each get their own step.
