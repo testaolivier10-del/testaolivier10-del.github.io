@@ -232,10 +232,11 @@
    "added_on": "2026-11-01",
    "thumb_b": "long/yt-apbio-02-thumb-b.png",
    "thumb_c": "long/yt-apbio-02-thumb-c.png",
-   "ab_test": false,
+   "ab_test": "running",
    "endscreen_set": false,
    "reopened": "2026-11-03 Olivier 2026-11-03: never saw this video; the 11-01 approval was not his",
-   "approved_blob": "e2018b26ffec43d33a53759c7550c6b321509a53"
+   "approved_blob": "e2018b26ffec43d33a53759c7550c6b321509a53",
+   "ab_started": "2026-11-05"
   },
   {
    "id": "yt-apchem-01-units-sci-notation",
