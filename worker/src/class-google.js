@@ -1,6 +1,6 @@
-/* Google Classroom for teacher classes (docs/teacher-classes.md, stream C). Behind CLASS_GOOGLE ("on", or
-   "owner" for the owner's account while the Google app is unverified); needs GOOGLE_CLIENT_ID,
-   GOOGLE_CLIENT_SECRET and CLASS_SECRET.
+/* Google Classroom for teacher classes (docs/teacher-classes.md, stream C). Behind CLASS_GOOGLE ("on", "owner"
+   for the owner's account only, or "off"); needs GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET and CLASS_SECRET. Every
+   scope in GC_SCOPES is non-sensitive, so the Google app needs no verification.
 
    OAuth: the teacher's page asks POST /class/google/start for Google's consent URL (state signed, 10
    minutes), Google sends the teacher back to GET /class/google/callback, which hands the refresh token, ENCRYPTED
@@ -11,35 +11,37 @@
 
    What it does, all on the teacher's press:
      courses   the teacher's active Classroom classes, to link one to this LevlPrep class
-     roster    the Classroom students matched to class members by email (the match is stored as Google user
-               ids for grade passback; addresses are not stored), and those who have not joined
-     invite    an email with the join link to Classroom students who have not joined (200 a day per teacher)
+     roster    the Classroom students matched to class members by Google account id: a member matches when they
+               signed in to LevlPrep with Google and that sign-in's id is the Classroom userId
+               (class_google_matches, Worker only). Classroom gives no emails (no classroom.profile.emails).
+               Matches are stored as Google user ids for grade passback; unmatched students come back by name
+     announce  the join link posted as a Classroom announcement in the linked course (once per 10 minutes)
      post      the assignment as Classroom coursework with a link to the course
-     grades    the scores the teacher's page shows, as Classroom grades, for required assignments only;
-               the teacher returns them to students in Classroom
+     grades    the scores the teacher's page shows, as Classroom grades, for required assignments only and
+               matched students only; the teacher returns them to students in Classroom
    Scopes are the narrowest that do this; nothing is read from Classroom that the steps above do not need. */
 import { sb, timedFetch } from './store.js';
 import { siteUrl, apiUrl } from './config.js';
 import { COURSE_NAMES, urlCourse } from './premium.js';
 import { isOwnerEmail } from './umami.js';
 import {
-  clsUuid, clsBody, clsUser, clsReady, clsFlag, clsOwnClass, clsAssignment, clsMembers, clsTeacherName, clsRpc, clsUpsert,
-  clsLine, clsSign, clsVerify, clsEncrypt, clsDecrypt, clsMail, clsMailReady, clsPage, clsRedirect, clsHash,
+  clsUuid, clsBody, clsUser, clsReady, clsFlag, clsOwnClass, clsAssignment, clsMembers, clsRpc, clsUpsert,
+  clsLine, clsSign, clsVerify, clsEncrypt, clsDecrypt, clsPage, clsRedirect,
 } from './class-common.js';
-import { clsStopUrl } from './class-mail.js';
 
 export const GC_SCOPES = [
   'openid', 'email',
   'https://www.googleapis.com/auth/classroom.courses.readonly',
   'https://www.googleapis.com/auth/classroom.rosters.readonly',
-  'https://www.googleapis.com/auth/classroom.profile.emails',
   'https://www.googleapis.com/auth/classroom.coursework.students',
+  'https://www.googleapis.com/auth/classroom.announcements',
 ];
 const GC_API = 'https://classroom.googleapis.com/v1';
 const GC_TOKEN = 'https://oauth2.googleapis.com/token';
 const GC_MAX_PAGES = 10;
 
 export const gcRedirectUri = (env) => `${apiUrl(env)}/class/google/callback`;
+export const gcJoinUrl = (env, code) => `${siteUrl(env)}/join.html?c=${encodeURIComponent(code)}`;
 
 function gcConfigured(env) {
   return clsReady(env) && !!env.GOOGLE_CLIENT_ID && !!env.GOOGLE_CLIENT_SECRET;
@@ -204,7 +206,7 @@ export async function gcStatus(request, env) {
   const cls = p && await clsOwnClass(env, user.id, p.class);
   if (!cls) return { status: 404, body: { error: 'Class not found.' } };
   const row = await gcTokenRow(env, user.id);
-  return { status: 200, body: { on: true, connected: !!row, email: row ? row.account_email : null, linked: await gcLinkedCourse(env, cls.id) } };
+  return { status: 200, body: { on: true, connected: !!row, email: row ? row.account_email : null, linked: await gcLinkedCourse(env, cls.id), join: gcJoinUrl(env, cls.code) } };
 }
 
 /* POST /class/google/disconnect */
@@ -263,7 +265,7 @@ async function gcRosterFor(env, uid, cls) {
   return { link, token, students };
 }
 
-/* POST /class/google/roster { class } -> { matched, missing, notInClassroom } */
+/* POST /class/google/roster { class } -> { matched, missing, notInClassroom, join } */
 export async function gcRoster(request, env) {
   const t = await gcTeacher(env, request);
   if (t.error) return t.error;
@@ -272,72 +274,82 @@ export async function gcRoster(request, env) {
   if (!cls) return { status: 404, body: { error: 'Class not found.' } };
   const r = await gcRosterFor(env, t.user.id, cls);
   if (r.error) return r.error;
-  const people = await clsRpc(env, 'class_member_emails', { p_class: cls.id }) || [];
-  const byEmail = new Map(people.filter((m) => m.email).map((m) => [String(m.email).toLowerCase(), m]));
+  const ids = [...new Set(r.students.map((s) => String(s.userId || '')).filter((u) => /^[0-9A-Za-z_-]{1,64}$/.test(u)))].slice(0, 2000);
+  // Members whose Google sign-in id is a Classroom userId; the SQL returns ids and names only, never an address.
+  const found = ids.length ? (await clsRpc(env, 'class_google_matches', { p_class: cls.id, p_users: ids }) || []) : [];
+  const byGoogle = new Map(found.map((m) => [String(m.google), m]));
   const matched = [], missing = [], seen = new Set();
   const links = [];
   for (const s of r.students) {
-    const email = String((s.profile && s.profile.emailAddress) || '').toLowerCase();
+    const uid = String(s.userId || '');
     const gname = clsLine(s.profile && s.profile.name && s.profile.name.fullName, 80);
-    const m = email && byEmail.get(email);
-    if (m) {
+    const m = byGoogle.get(uid);
+    if (!m) {
+      // No guessing by name: the student joins with the class code and signs in with Google to be matched.
+      missing.push({ user: uid, name: gname || 'A Classroom student' });
+    } else if (!seen.has(m.id)) {
       seen.add(m.id);
       matched.push({ student: m.id, name: m.name, classroom: gname });
-      links.push({ class_id: cls.id, student_id: m.id, provider: 'google', external_user: String(s.userId) });
-    } else {
-      // Names as Classroom shows them; the address never goes back to the page.
-      missing.push({ user: String(s.userId), name: gname || 'A Classroom student', email: !!email });
+      links.push({ class_id: cls.id, student_id: m.id, provider: 'google', external_user: uid });
     }
   }
   if (links.length) await clsUpsert(env, 'class_ext_members', links, 'class_id,student_id,provider');
-  const notInClassroom = people.filter((m) => !seen.has(m.id)).map((m) => ({ student: m.id, name: m.name }));
-  return { status: 200, body: { course: r.link, matched, missing, notInClassroom, counts: { classroom: r.students.length, matched: matched.length, missing: missing.length } } };
+  const notInClassroom = (await clsMembers(env, cls.id)).filter((m) => !seen.has(m.student_id))
+    .map((m) => ({ student: m.student_id, name: m.name })).sort((x, y) => String(x.name).localeCompare(String(y.name)));
+  return {
+    status: 200,
+    body: {
+      course: r.link, matched, missing, notInClassroom, join: gcJoinUrl(env, cls.code),
+      counts: { classroom: r.students.length, matched: matched.length, missing: missing.length },
+    },
+  };
 }
 
-/* POST /class/google/invite { class, users: [Classroom user ids] } -> { sent, skipped } */
-export async function gcInvite(request, env) {
+/* The Classroom announcement with the join link: the class name, the link and one line on what to do. */
+export function gcAnnouncement(env, cls) {
+  const join = gcJoinUrl(env, cls.code);
+  const name = clsLine(cls.name, 60);
+  return {
+    text: [
+      `${name} on LevlPrep (${COURSE_NAMES[cls.course] || 'your course'})`,
+      `Join: ${join}`,
+      `Open the link, sign in with Google using your school account, and press Join (class code ${cls.code}).`,
+    ].join('\n'),
+    materials: [{ link: { url: join, title: `Join ${name} on LevlPrep` } }],
+    state: 'PUBLISHED',
+  };
+}
+
+/* POST /class/google/announce { class } -> { posted, link, join } : the join link as a Classroom announcement in
+   the linked course; at most once every 10 minutes per class (class_announce_take). Owner only. */
+export async function gcAnnounce(request, env) {
   const t = await gcTeacher(env, request);
   if (t.error) return t.error;
-  if (!clsMailReady(env)) return { status: 503, body: { error: 'Invite emails are not set up yet. Post the join link in Classroom instead.' } };
   const p = await clsBody(request);
   const cls = p && await clsOwnClass(env, t.user.id, p.class);
   if (!cls) return { status: 404, body: { error: 'Class not found.' } };
-  const want = new Set((Array.isArray(p.users) ? p.users : []).map(String).filter((u) => /^[0-9A-Za-z_-]{1,40}$/.test(u)));
-  if (!want.size || want.size > 200) return { status: 400, body: { error: 'Pick the students to invite.' } };
-  const r = await gcRosterFor(env, t.user.id, cls);
-  if (r.error) return r.error;
-  const people = await clsRpc(env, 'class_member_emails', { p_class: cls.id }) || [];
-  const members = new Set(people.map((m) => String(m.email || '').toLowerCase()));
-  const teacher = clsLine(await clsTeacherName(env, t.user.id), 60);
-  const join = `${siteUrl(env)}/join.html?c=${encodeURIComponent(cls.code)}`;
-  let sent = 0;
-  const skipped = [];
-  for (const s of r.students) {
-    const uid = String(s.userId);
-    if (!want.has(uid)) continue;
-    const email = String((s.profile && s.profile.emailAddress) || '');
-    if (!email) { skipped.push({ user: uid, why: 'no-email' }); continue; }
-    if (members.has(email.toLowerCase())) { skipped.push({ user: uid, why: 'already-joined' }); continue; }
-    const h = await clsHash(email.trim().toLowerCase());
-    const take = await clsRpc(env, 'class_mail_take', { p_teacher: t.user.id, p_class: cls.id, p_student: null, p_kind: 'invite', p_recipient: h });
-    if (take !== true) { skipped.push({ user: uid, why: 'limit' }); continue; }
-    const stop = clsStopUrl(env, await clsSign(env, 'stop', { h }, null));
-    const first = clsLine(s.profile && s.profile.name && s.profile.name.givenName, 40) || 'there';
-    const mail = await clsMail(env, {
-      to: email,
-      subject: `${teacher} invited you to ${clsLine(cls.name, 60)} on LevlPrep`,
-      text: [`Hi ${first},`, '',
-        `${teacher} uses LevlPrep for ${clsLine(cls.name, 60)} (${COURSE_NAMES[cls.course] || 'your course'}) and invited you from Google Classroom.`, '',
-        `To join, open ${join} and sign in with this school account, or enter the class code ${cls.code}.`, '',
-        'Joining is your choice and is for students 13 and older. The join page shows exactly what your teacher will see before you join.', '',
-        'You got this one email because you are in your teacher\'s Google Classroom class. LevlPrep keeps only a one-way fingerprint of your address, so it does not invite you twice in a week.', '',
-        `No more invites to this address: ${stop}`].join('\n'),
-      headers: { 'List-Unsubscribe': `<${stop}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' },
-    });
-    if (mail.outcome === 'config') return { status: 503, body: { error: 'Invite emails are not set up yet.', sent, skipped } };
-    if (mail.ok) sent++; else skipped.push({ user: uid, why: 'send-failed' });
+  const join = gcJoinUrl(env, cls.code);
+  const link = await gcLinkedCourse(env, cls.id);
+  if (!link) return { status: 409, body: { error: 'Link a Classroom class first.', join } };
+  const token = await gcAccess(env, t.user.id);
+  if (!token) return gcNeedsConnect;
+  if ((await clsRpc(env, 'class_announce_take', { p_class: cls.id })) !== true) {
+    return { status: 429, body: { error: 'The join link went to Classroom in the last 10 minutes. Copy it instead, or try again later.', join } };
   }
-  return { status: 200, body: { sent, skipped } };
+  const res = await timedFetch(`${GC_API}/courses/${link.external_id}/announcements`, {
+    method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(gcAnnouncement(env, cls)),
+  });
+  if (!res.ok) {
+    // Nothing reached Classroom, so the teacher may try again at once.
+    await sb(env, `class_ext_links?class_id=eq.${cls.id}&provider=eq.google`, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json', Prefer: 'return=minimal' }, body: JSON.stringify({ announced_at: null }),
+    });
+    const f = gcFailed({ status: res.status });
+    return { status: f.status, body: { ...f.body, join } };
+  }
+  const w = await res.json();
+  return { status: 200, body: { posted: true, link: w.alternateLink || null, join } };
 }
 
 /* ------------------------------------------------------------ coursework and grades */

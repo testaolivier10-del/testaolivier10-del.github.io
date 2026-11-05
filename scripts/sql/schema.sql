@@ -3536,3 +3536,56 @@ revoke execute on function public.teach_create_class(text, text, jsonb) from pub
 revoke execute on function public.teach_save_question(uuid, jsonb) from public, anon;
 grant execute on function public.teach_create_class(text, text, jsonb) to authenticated;
 grant execute on function public.teach_save_question(uuid, jsonb) to authenticated;
+
+-- ---------------------------------------------------------------------------
+-- 13. Google Classroom without Classroom emails (docs/teacher-classes.md, migrations/2026-11f-classes-google-ids.sql).
+-- Roster students are matched by their Google sign-in id (auth.identities), not by address; the join link is
+-- posted as a Classroom announcement, at most once every 10 minutes per class. Both functions are Worker only.
+-- ---------------------------------------------------------------------------
+
+alter table public.class_ext_links add column if not exists announced_at timestamptz;
+
+-- The members of a class whose Google sign-in is one of the Classroom user ids given, with that id.
+create or replace function public.class_google_matches(p_class uuid, p_users text[])
+returns jsonb
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select coalesce(jsonb_agg(jsonb_build_object('id', m.student_id, 'name', m.name, 'google', g.gid) order by m.name), '[]'::jsonb)
+    from public.class_members m
+    cross join lateral (
+      select case when i.provider_id = any (p_users) then i.provider_id else i.identity_data->>'sub' end as gid
+        from auth.identities i
+       where i.user_id = m.student_id
+         and i.provider = 'google'
+         and (i.provider_id = any (p_users) or i.identity_data->>'sub' = any (p_users))
+       limit 1
+    ) g
+   where m.class_id = p_class
+     and cardinality(p_users) between 1 and 2000;
+$$;
+
+-- True (and the time noted) when the class's linked Classroom course may get a join-link announcement now:
+-- none in the last 10 minutes. False when it is too soon or the class has no linked course.
+create or replace function public.class_announce_take(p_class uuid)
+returns boolean
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  update public.class_ext_links
+     set announced_at = now()
+   where class_id = p_class
+     and provider = 'google'
+     and (announced_at is null or announced_at < now() - interval '10 minutes');
+  return found;
+end;
+$$;
+
+revoke execute on function public.class_google_matches(uuid, text[]) from public, anon, authenticated;
+revoke execute on function public.class_announce_take(uuid) from public, anon, authenticated;
+grant execute on function public.class_google_matches(uuid, text[]) to service_role;
+grant execute on function public.class_announce_take(uuid) to service_role;

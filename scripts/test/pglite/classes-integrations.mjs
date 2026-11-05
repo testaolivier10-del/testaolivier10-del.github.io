@@ -1,10 +1,11 @@
-/* PGlite check of scripts/sql/migrations/2026-11d-classes-integrations.sql (after 2026-11b-classes.sql), on a
-   real Postgres with stub auth.users / auth.uid() and the anon, authenticated and service_role roles.
+/* PGlite check of scripts/sql/migrations/2026-11d-classes-integrations.sql (after 2026-11b-classes.sql) and
+   2026-11f-classes-google-ids.sql, on a
+   real Postgres with stub auth.users / auth.identities / auth.uid() and the anon, authenticated and service_role roles.
 
    Not part of `node --test` (PGlite is not a dependency of the site). To run it:
      cd "$(mktemp -d)" && npm init -y >/dev/null && npm i @electric-sql/pglite@0.3.7
      cp <repo>/scripts/test/pglite/classes-integrations.mjs . && node classes-integrations.mjs <repo>
-   Last run 2026-11-04: 70 passed, 0 failed. */
+   Last run 2026-11-04: 82 passed, 0 failed. */
 import { PGlite } from '@electric-sql/pglite';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -17,6 +18,7 @@ create role anon; create role authenticated; create role service_role;
 create schema auth; create schema extensions;
 create function extensions.gen_random_bytes(n int) returns bytea language sql volatile as $$ select decode(string_agg(lpad(to_hex((random()*255)::int),2,'0'),''),'hex') from generate_series(1,n) $$;
 create table auth.users (id uuid primary key, email text);
+create table auth.identities (user_id uuid references auth.users (id) on delete cascade, provider text not null, provider_id text not null, identity_data jsonb not null default '{}');
 create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('t.uid', true), '')::uuid $$;
 grant usage on schema auth to anon, authenticated, service_role;
 grant execute on function auth.uid() to anon, authenticated, service_role;
@@ -27,6 +29,9 @@ await db.exec(readFileSync(REPO + '/scripts/sql/migrations/2026-11b-classes.sql'
 const mig = readFileSync(REPO + '/scripts/sql/migrations/2026-11d-classes-integrations.sql', 'utf8');
 await db.exec(mig);
 await db.exec(mig); // idempotent
+const migF = readFileSync(REPO + '/scripts/sql/migrations/2026-11f-classes-google-ids.sql', 'utf8');
+await db.exec(migF);
+await db.exec(migF); // idempotent
 const T = '11111111-1111-1111-1111-111111111111', S1 = '22222222-2222-2222-2222-222222222222', S2 = '33333333-3333-3333-3333-333333333333', X = '44444444-4444-4444-4444-444444444444';
 await db.exec(`insert into auth.users values ('${T}','t@x.org'),('${S1}','s1@x.org'),('${S2}','s2@x.org'),('${X}','x@x.org');
 grant select on auth.users to authenticated;`);
@@ -134,6 +139,27 @@ ok(rep && rep.student === 'Sam One' && rep.teacher === 'Ms T' && rep.summary.ite
 ok(rep.assignments.length === 2 && rep.assignments.find((a) => a.id === aid).teacher_score.got === 1, 'report: own assignments with teacher score');
 ok(await one(null, `select public.class_report_get('h2')`, [], 'service_role') === null, 'expired link');
 ok(await one(null, `select public.class_report_get('nope')`, [], 'service_role') === null, 'unknown link');
+
+// Google Classroom matches (2026-11f): by Google sign-in id only, Worker only, never an address.
+for (const f of [`public.class_google_matches('${clsId}', array['g1'])`, `public.class_announce_take('${clsId}')`]) {
+  let denied = false; try { await as(T, 'authenticated', `select ${f}`); } catch { denied = true; }
+  ok(denied, `${f} callable by authenticated`);
+  let denied2 = false; try { await as(null, 'anon', `select ${f}`); } catch { denied2 = true; }
+  ok(denied2, `${f} callable by anon`);
+}
+await db.query(`insert into auth.identities (user_id, provider, provider_id, identity_data) values
+  ($1,'google','g1','{"sub":"g1","email":"s1@x.org"}'), ($2,'google','pid2','{"sub":"g2"}'), ($2,'email',$2::text,'{"email":"s2@x.org"}'), ($3,'google','g3','{"sub":"g3"}')`, [S1, S2, X]);
+const gm = await one(null, `select public.class_google_matches($1, $2::text[])`, [clsId, ['g1', 'g2', 'g3', 'nope']], 'service_role');
+ok(gm.length === 2 && gm.find((m) => m.id === S1).google === 'g1' && gm.find((m) => m.id === S2).google === 'g2', 'matches by provider_id and by sub, members only');
+ok(!JSON.stringify(gm).includes('@'), 'no address in the matches');
+ok(JSON.stringify(await one(null, `select public.class_google_matches($1, $2::text[])`, [clsId, []], 'service_role')) === '[]', 'no ids, no matches');
+ok(JSON.stringify(await one(null, `select public.class_google_matches($1, $2::text[])`, [clsId, ['s1@x.org']], 'service_role')) === '[]', 'an email is not an id');
+ok(await one(null, `select public.class_announce_take($1)`, [clsId], 'service_role') === false, 'no linked course, no announcement');
+await db.query(`insert into public.class_ext_links (class_id, provider, external_id, title) values ($1,'google','501','AP Bio')`, [clsId]);
+ok(await one(null, `select public.class_announce_take($1)`, [clsId], 'service_role') === true, 'first announcement');
+ok(await one(null, `select public.class_announce_take($1)`, [clsId], 'service_role') === false, 'once per 10 minutes');
+await db.query(`update public.class_ext_links set announced_at = now() - interval '11 minutes' where class_id = $1`, [clsId]);
+ok(await one(null, `select public.class_announce_take($1)`, [clsId], 'service_role') === true, 'again after 10 minutes');
 
 // ext links + leaving cascades
 await db.query(`insert into public.class_ext_members (class_id, student_id, provider, external_user) values ($1,$2,'google','g1')`, [clsId, S1]);

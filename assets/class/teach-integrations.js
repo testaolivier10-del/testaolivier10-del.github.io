@@ -230,7 +230,7 @@
     // Sample class: the card as a linked class shows it, every button off.
     if(ctx && ctx.demo) return '<section class="d5-card lvi" id="lviGoogle"><p class="lv-kick">Google Classroom</p><h3 class="lv-h3">Bring your Classroom roster, post assignments, send grades</h3>' +
       '<div id="lviGoogleBody"><p class="d5-mut">Connected as <b>ms.rivera@sample.school</b>. Linked to <b>AP Biology · Period 3</b>.</p>' +
-      '<div class="lv-btns"><button type="button" class="lv-btn is-sm" disabled>Check the roster</button><button type="button" class="lv-btn is-sm is-ghost" disabled>Disconnect</button></div>' +
+      '<div class="lv-btns"><button type="button" class="lv-btn is-sm" disabled>Check the roster</button><button type="button" class="lv-btn is-sm is-ghost" disabled>Post the join link in Classroom</button><button type="button" class="lv-btn is-sm is-ghost" disabled>Copy join link</button><button type="button" class="lv-btn is-sm is-ghost" disabled>Disconnect</button></div>' +
       '<p class="d5-mut lvi-fine"><b>Sample class: nothing is connected.</b> In your own class you connect with the Google account you use for Classroom.</p></div></section>';
     return '<section class="d5-card lvi" id="lviGoogle" hidden><p class="lv-kick">Google Classroom</p><h3 class="lv-h3">Bring your Classroom roster, post assignments, send grades</h3><div id="lviGoogleBody"><p class="d5-mut">Loading…</p></div>' +
       '<p class="lv-msg" id="lviGoogleMsg" role="status" aria-live="polite"></p></section>';
@@ -255,14 +255,18 @@
     if(!g.connected){
       var q = new URLSearchParams(location.search).get('google');
       var why = { canceled: 'Google sign-in was canceled.', failed: 'Google did not finish connecting. Try again.', scopes: 'Google needs every box ticked to connect. Try again and allow all of them.' }[q] || '';
-      return (why ? '<p class="lv-msg is-bad">' + esc(why) + '</p>' : '') + '<p class="d5-mut">Connect with the Google account you use for Classroom. LevlPrep reads your class list and roster, adds coursework you choose, and sets grades you send. It never reads anything else, and you can disconnect any time.</p>' +
+      return (why ? '<p class="lv-msg is-bad">' + esc(why) + '</p>' : '') + '<p class="d5-mut">Connect with the Google account you use for Classroom. LevlPrep reads your class list and roster (names, no email addresses), adds coursework you choose, posts the join link when you press the button, and sets grades you send. It never reads anything else, and you can disconnect any time.</p>' +
         '<div class="lv-btns"><button type="button" class="lv-btn is-sm" data-lvi-act="gc-connect">Connect Google Classroom</button></div>';
     }
     return '<p class="d5-mut">Connected as <b>' + esc(g.email || 'your Google account') + '</b>. ' + (g.linked ? 'Linked to <b>' + esc(g.linked.title || 'a Classroom class') + '</b>.' : 'Pick the Classroom class that matches this one.') + '</p>' +
       '<div class="lvi-row"><label class="lv-field"><span>Classroom class</span><select class="lv-in" id="lviGcCourse"><option value="">Loading…</option></select></label></div>' +
       '<div class="lv-btns"><button type="button" class="lv-btn is-sm is-ghost" data-lvi-act="gc-link">Link this class</button>' +
-      (g.linked ? '<button type="button" class="lv-btn is-sm" data-lvi-act="gc-roster">Check the roster</button>' : '') +
+      (g.linked ? '<button type="button" class="lv-btn is-sm" data-lvi-act="gc-roster">Check the roster</button>' + joinButtons() : '') +
       '<button type="button" class="lv-btn is-sm is-ghost" data-lvi-act="gc-disconnect">Disconnect</button></div><div id="lviGcRoster"></div>';
+  }
+  function joinButtons(){
+    return '<button type="button" class="lv-btn is-sm is-ghost" data-lvi-act="gc-announce">Post the join link in Classroom</button>' +
+      '<button type="button" class="lv-btn is-sm is-ghost" data-lvi-act="gc-copy">Copy join link</button>';
   }
   /* Back from Google with ?gp=: claim the token for this signed-in teacher, then drop it from the address. */
   var finishing = null;
@@ -347,17 +351,25 @@
       busy(true); msg($('lviGoogleMsg'), 'Checking…');
       api('/class/google/roster', { class: id }).then(function(r){
         msg($('lviGoogleMsg'), '');
-        $('lviGcRoster').innerHTML = '<p class="d5-mut"><b>' + plural(r.matched.length, 'student') + '</b> in both. ' +
-          (r.notInClassroom.length ? 'In this class but not found in Classroom by email: ' + r.notInClassroom.map(function(x){ return esc(x.name); }).join(', ') + '. ' : '') + '</p>' +
-          (r.missing.length ? '<p class="lv-h3">In Classroom, not joined yet</p><div class="lvi-list">' + r.missing.map(function(x){ return '<label class="lvt-check lvi-pick"><input type="checkbox" checked data-lvi-inv value="' + esc(x.user) + '"> ' + esc(x.name) + (x.email ? '' : ' <span class="d5-mut">(no email in Classroom)</span>') + '</label>'; }).join('') + '</div>' +
-            '<div class="lv-btns"><button type="button" class="lv-btn is-sm" data-lvi-act="gc-invite">Email them the join link</button></div><p class="d5-mut lvi-fine">One email each with the class code; joining stays their choice. Or post the join link in Classroom yourself.</p>' : '<p class="d5-mut">Everyone in Classroom has joined.</p>');
+        if(r.join) gstat[id] = Object.assign({}, gstat[id] || {}, { join: r.join });
+        $('lviGcRoster').innerHTML = '<p class="d5-mut"><b>' + plural(r.matched.length, 'student') + '</b> matched. ' +
+          (r.notInClassroom.length ? 'In this class but not matched to Classroom yet: ' + r.notInClassroom.map(function(x){ return esc(x.name); }).join(', ') + '. They match once they sign in to LevlPrep with Google, using the account they use in Classroom. ' : '') + '</p>' +
+          (r.missing.length ? '<p class="lv-h3">In Classroom, not matched yet</p><ul class="lvi-list">' + r.missing.map(function(x){ return '<li>' + esc(x.name) + '</li>'; }).join('') + '</ul>' +
+            '<p class="d5-mut lvi-fine">They join with the class code or join link and sign in with Google using their school account; then they match here. Joining stays their choice. Use &ldquo;Post the join link in Classroom&rdquo; above, or copy the link and share it yourself.</p>' :'<p class="d5-mut">Everyone in Classroom is matched.</p>');
       }, function(e){ msg($('lviGoogleMsg'), errText(e), true); }).then(function(){ busy(false); });
     }
-    if(name === 'gc-invite'){
-      var users = [].slice.call(document.querySelectorAll('[data-lvi-inv]:checked')).map(function(i){ return i.value; });
-      if(!users.length) return;
-      busy(true);
-      api('/class/google/invite', { class: id, users: users }).then(function(r){ msg($('lviGoogleMsg'), 'Invited ' + plural(r.sent, 'student') + '.' + (r.skipped.length ? ' ' + r.skipped.length + ' not sent (already joined, no email, or today’s limit).' : '')); }, function(e){ msg($('lviGoogleMsg'), errText(e), true); }).then(function(){ busy(false); });
+    if(name === 'gc-announce'){
+      if(!confirm('Post the join link as an announcement in your Classroom class? Every student in it will see it.')) return;
+      busy(true); msg($('lviGoogleMsg'), 'Posting…');
+      api('/class/google/announce', { class: id }).then(function(r){
+        if(r.join) gstat[id] = Object.assign({}, gstat[id] || {}, { join: r.join });
+        msg($('lviGoogleMsg'), 'Posted the join link in Google Classroom.');
+      }, function(e){ msg($('lviGoogleMsg'), errText(e), true); }).then(function(){ busy(false); });
+    }
+    if(name === 'gc-copy'){
+      var url = (gstat[id] && gstat[id].join) || '';
+      if(!url){ msg($('lviGoogleMsg'), 'The join link is not loaded yet. Try again in a moment.', true); return; }
+      (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(function(){ msg($('lviGoogleMsg'), 'Copied ' + url); }, function(){ window.prompt('Copy the join link:', url); });
     }
     if(name === 'gc-post'){
       busy(true);

@@ -1,7 +1,7 @@
 /* Teacher-class integrations in the Worker (worker/src/class-*.js, docs/teacher-classes.md stream C):
    reminder emails, the stop link, family report links, quote requests, the teacher's AI first pass on free
    responses, Google Classroom and LTI 1.3. Everything outside the Worker is faked: Supabase (auth, a small
-   PostgREST and the 2026-11d functions, modelled on the SQL that was run against PGlite), Resend, Google,
+   PostgREST and the 2026-11d and 2026-11f functions, modelled on the SQL that was run against PGlite), Resend, Google,
    an LMS with its own RSA key, and the Anthropic API. No test reaches a real service. */
 import { test, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
@@ -10,7 +10,7 @@ import { execFileSync } from 'node:child_process';
 import worker from '../../worker/src/index.js';
 import { clsSign, clsVerify, clsEncrypt, clsDecrypt, clsLine } from '../../worker/src/class-common.js';
 import { reminderEmail, quoteFields } from '../../worker/src/class-mail.js';
-import { gcCourseWork, cleanGrades } from '../../worker/src/class-google.js';
+import { gcCourseWork, cleanGrades, gcAnnouncement, GC_SCOPES } from '../../worker/src/class-google.js';
 import { ltiVerifyJwt, ltiClaimProblem, ltiScoresUrl, ltiCanvasConfig, ltiConcerns } from '../../worker/src/class-lti.js';
 import { CLASS_FRQ_PASSED_MODELS } from '../../worker/src/class-frq.js';
 
@@ -70,6 +70,8 @@ function world(opts = {}) {
     teacher_profiles: [{ user_id: T, display_name: 'Ms. Rivera' }, { user_id: CO, display_name: 'Mr. Okafor' }],
     class_coteachers: [{ class_id: C, user_id: CO }],
     class_oauth: [], class_ext_links: [], class_ext_assignments: [], class_ext_members: [], lti_platforms: [], lti_nonces: [],
+    // auth.identities as Supabase keeps them: S1 signed in with Google (sub g1), S2 with an emailed code.
+    identities: [{ user_id: S1, provider: 'google', provider_id: 'g1', identity_data: { sub: 'g1' } }, { user_id: S2, provider: 'email', provider_id: S2, identity_data: {} }],
     class_report_links: [], class_quote_requests: [], class_frq_work: [{ assignment_id: AF, student_id: S1, answers: opts.frqAnswers || { a: 'Shape has no effect on the percentage of the block that turns clear.' } }],
   };
   const st = { mails: [], rpc: [], optout: new Set([S2]), mailTaken: [], google: [], lms: [], claude: 0, gradeTaken: 0, givenBack: 0, ...opts.state };
@@ -88,6 +90,21 @@ function world(opts = {}) {
       st.rpc.push({ name, a });
       if (name === 'class_member_emails') {
         return json(db.class_members.filter((m) => m.class_id === a.p_class).map((m) => ({ id: m.student_id, name: m.name, email: `${m.student_id === S1 ? 's1' : 's2'}@school.org`, optout: st.optout.has(m.student_id) })));
+      }
+      if (name === 'class_google_matches') {
+        // As the SQL: members of the class whose Google identity (provider_id or sub) is one of p_users.
+        const want = new Set(a.p_users || []);
+        if (!want.size || want.size > 2000) return json([]);
+        return json(db.class_members.filter((m) => m.class_id === a.p_class).flatMap((m) => {
+          const i = db.identities.find((x) => x.user_id === m.student_id && x.provider === 'google' && (want.has(x.provider_id) || want.has(x.identity_data.sub)));
+          return i ? [{ id: m.student_id, name: m.name, google: want.has(i.provider_id) ? i.provider_id : i.identity_data.sub }] : [];
+        }));
+      }
+      if (name === 'class_announce_take') {
+        const l = db.class_ext_links.find((x) => x.class_id === a.p_class && x.provider === 'google');
+        if (!l || (l.announced_at && Date.parse(l.announced_at) > Date.now() - 10 * 60 * 1000)) return json(false);
+        l.announced_at = new Date().toISOString();
+        return json(true);
       }
       if (name === 'class_mail_take') {
         if (opts.mailLimit != null && st.mailTaken.length >= opts.mailLimit) return json(false);
@@ -334,7 +351,7 @@ function googleFake(opts = {}) {
       const p = new URLSearchParams(body);
       st.google.push({ token: p.get('grant_type') });
       if (p.get('grant_type') === 'authorization_code') {
-        return new Response(JSON.stringify({ access_token: 'at', refresh_token: opts.noRefresh ? undefined : '1//rt', id_token: `x.${Buffer.from(JSON.stringify({ email: 'teacher@school.org' })).toString('base64url')}.y`, scope: opts.scope || 'openid email https://www.googleapis.com/auth/classroom.courses.readonly https://www.googleapis.com/auth/classroom.rosters.readonly https://www.googleapis.com/auth/classroom.profile.emails https://www.googleapis.com/auth/classroom.coursework.students' }), { status: 200 });
+        return new Response(JSON.stringify({ access_token: 'at', refresh_token: opts.noRefresh ? undefined : '1//rt', id_token: `x.${Buffer.from(JSON.stringify({ email: 'teacher@school.org' })).toString('base64url')}.y`, scope: opts.scope || 'openid email https://www.googleapis.com/auth/classroom.courses.readonly https://www.googleapis.com/auth/classroom.rosters.readonly https://www.googleapis.com/auth/classroom.coursework.students https://www.googleapis.com/auth/classroom.announcements' }), { status: 200 });
       }
       assert.equal(p.get('refresh_token'), '1//rt', 'the stored token decrypts to the one Google gave');
       return new Response(JSON.stringify({ access_token: 'at', expires_in: 3600 }), { status: 200 });
@@ -346,9 +363,13 @@ function googleFake(opts = {}) {
       if (u.pathname === '/v1/courses/501') return new Response(JSON.stringify({ id: '501', name: 'AP Bio 3rd' }), { status: 200 });
       if (u.pathname === '/v1/courses/501/students') {
         return new Response(JSON.stringify({ students: [
-          { userId: 'g1', profile: { emailAddress: 'S1@school.org', name: { fullName: 'Sam Lee', givenName: 'Sam' } } },
-          { userId: 'g9', profile: { emailAddress: 'new@school.org', name: { fullName: 'Nia New', givenName: 'Nia' } } },
+          // Without classroom.profile.emails Classroom sends no emailAddress.
+          { userId: 'g1', profile: { name: { fullName: 'Sam Lee', givenName: 'Sam' } } },
+          { userId: 'g9', profile: { name: { fullName: 'Ana Ruiz', givenName: 'Ana' } } },
         ] }), { status: 200 });
+      }
+      if (u.pathname === '/v1/courses/501/announcements' && method === 'POST') {
+        return opts.announceFails ? new Response('{}', { status: 500 }) : new Response(JSON.stringify({ id: 'an1', alternateLink: 'https://classroom.google.com/c/a' }), { status: 200 });
       }
       if (u.pathname === '/v1/courses/501/courseWork' && method === 'POST') return new Response(JSON.stringify({ id: '9001', alternateLink: 'https://classroom.google.com/c/x' }), { status: 200 });
       if (u.pathname === '/v1/courses/501/courseWork/9001/studentSubmissions' && method === 'GET') return new Response(JSON.stringify({ studentSubmissions: [{ id: 'sub1', userId: 'g1' }] }), { status: 200 });
@@ -370,7 +391,9 @@ test('Google: off without the flag and secrets; consent URL with a signed state;
   assert.equal(url.searchParams.get('redirect_uri'), `${API}/class/google/callback`);
   assert.equal(url.searchParams.get('access_type'), 'offline');
   assert.match(url.searchParams.get('scope'), /classroom\.coursework\.students/);
-  assert.doesNotMatch(url.searchParams.get('scope'), /classroom\.courses(?!\.readonly)\b|drive|gmail/, 'narrow scopes only');
+  assert.doesNotMatch(url.searchParams.get('scope'), /classroom\.courses(?!\.readonly)\b|drive|gmail|profile\.emails/, 'narrow scopes only');
+  assert.deepEqual(url.searchParams.get('scope').split(' '), GC_SCOPES);
+  assert.deepEqual(GC_SCOPES, ['openid', 'email', ...['classroom.courses.readonly', 'classroom.rosters.readonly', 'classroom.coursework.students', 'classroom.announcements'].map((x) => `https://www.googleapis.com/auth/${x}`)], 'exactly the non-sensitive scopes in the Google project');
   const bad = await worker.fetch(new Request(`${API}/class/google/callback?code=c&state=forged.sig`), w.env, {});
   assert.equal(bad.status, 400);
   const cb = await worker.fetch(new Request(`${API}/class/google/callback?code=c&state=${encodeURIComponent(url.searchParams.get('state'))}`), w.env, {});
@@ -402,32 +425,63 @@ async function connected() {
   return w;
 }
 
-test('Google: link a course, match the roster by email, invite those not in the class', async () => {
+test('Google: link a course, match the roster by Google sign-in id (never by name or email), post the join link', async () => {
   const w = await connected();
   assert.equal((await call(w, '/class/google/roster', { class: C })).status, 409, 'link first');
+  assert.equal((await call(w, '/class/google/announce', { class: C })).status, 409, 'link first');
   assert.deepEqual((await call(w, '/class/google/courses', {})).body.courses, [{ id: '501', name: 'AP Bio 3rd', section: '' }]);
   assert.equal((await call(w, '/class/google/link', { class: C, course: '501' })).status, 200);
   const r = await call(w, '/class/google/roster', { class: C });
   assert.equal(r.status, 200);
   assert.deepEqual(r.body.matched, [{ student: S1, name: 'Sam Lee', classroom: 'Sam Lee' }]);
-  assert.deepEqual(r.body.missing, [{ user: 'g9', name: 'Nia New', email: true }]);
-  assert.doesNotMatch(JSON.stringify(r.body), /@/, 'no Classroom address goes back to the page');
-  assert.deepEqual(r.body.counts, { classroom: 2, matched: 1, missing: 1 });
+  // g9 has the same name as member S2, but S2 did not sign in with that Google account: no match by name.
+  assert.deepEqual(r.body.missing, [{ user: 'g9', name: 'Ana Ruiz' }]);
   assert.deepEqual(r.body.notInClassroom, [{ student: S2, name: 'Ana Ruiz' }]);
+  assert.deepEqual(r.body.counts, { classroom: 2, matched: 1, missing: 1 });
+  assert.equal(r.body.join, `${SITE}/join.html?c=K7QM4D`);
+  assert.doesNotMatch(JSON.stringify(r.body), /@|identit|provider_id/, 'no address or identity goes back to the page');
+  const q = w.st.rpc.find((x) => x.name === 'class_google_matches');
+  assert.deepEqual(q.a, { p_class: C, p_users: ['g1', 'g9'] });
+  assert.ok(!w.st.rpc.some((x) => x.name === 'class_member_emails'), 'the roster never looks up emails');
   assert.deepEqual(w.db.class_ext_members.map((m) => [m.student_id, m.external_user]), [[S1, 'g1']]);
-  const inv = await call(w, '/class/google/invite', { class: C, users: ['g9', 'g1'] });
-  assert.equal(inv.body.sent, 1);
-  assert.equal(inv.body.skipped[0].why, 'already-joined');
-  assert.deepEqual(w.st.mails[0].to, ['new@school.org']);
-  assert.match(w.st.mails[0].text, /join\.html\?c=K7QM4D/);
-  assert.match(w.st.mails[0].text, /13 and older/);
-  assert.equal(w.st.mailTaken[0].p_kind, 'invite');
-  assert.match(w.st.mailTaken[0].p_recipient, /^[0-9a-f]{64}$/, 'limited per address (hash), once a week in SQL');
-  assert.match(w.st.mails[0].text, /No more invites to this address: https:\/\/api\.levlprep\.com\/class\/email\/stop\?s=/);
-  const stop = w.st.mails[0].headers['List-Unsubscribe'].slice(1, -1);
-  const res = await worker.fetch(new Request(stop, { method: 'POST' }), w.env, {});
-  assert.equal(res.status, 200);
-  assert.ok(w.st.optout.has(w.st.mailTaken[0].p_recipient), 'stop by address');
+  assert.equal((await call(w, '/class/google/invite', { class: C, users: ['g9'] })).status, 404, 'no invite emails any more');
+  // The sub in identity_data matches too (older identities).
+  w.db.identities.push({ user_id: S2, provider: 'google', provider_id: 'other', identity_data: { sub: 'g9' } });
+  const r2 = await call(w, '/class/google/roster', { class: C });
+  assert.equal(r2.body.matched.length, 2);
+  assert.deepEqual(r2.body.missing, []);
+
+  const an = await call(w, '/class/google/announce', { class: C });
+  assert.equal(an.status, 200);
+  assert.equal(an.body.posted, true);
+  assert.equal(an.body.join, `${SITE}/join.html?c=K7QM4D`);
+  const made = w.st.google.find((g) => g.method === 'POST' && g.path === '/v1/courses/501/announcements');
+  assert.match(made.body.text, /^Bio P3 on LevlPrep \(AP® Biology\)\nJoin: https:\/\/levlprep\.com\/join\.html\?c=K7QM4D\n/);
+  assert.match(made.body.text, /sign in with Google/);
+  assert.equal(made.body.text.split('\n').length, 3, 'name, link and one line of instructions');
+  assert.equal(made.body.materials[0].link.url, `${SITE}/join.html?c=K7QM4D`);
+  assert.equal(made.body.state, 'PUBLISHED');
+  assert.equal(w.st.mails.length, 0, 'no email is sent');
+  assert.equal(w.st.mailTaken.length, 0, 'no invite rows are written');
+  const again = await call(w, '/class/google/announce', { class: C });
+  assert.equal(again.status, 429, 'once per 10 minutes per class');
+  assert.equal(again.body.join, `${SITE}/join.html?c=K7QM4D`, 'the copy fallback still gets the link');
+  assert.equal(w.st.google.filter((g) => g.path === '/v1/courses/501/announcements').length, 1);
+  w.db.class_ext_links[0].announced_at = new Date(Date.now() - 11 * 60 * 1000).toISOString();
+  assert.equal((await call(w, '/class/google/announce', { class: C })).status, 200, 'allowed again after 10 minutes');
+  assert.equal((await call(w, '/class/google/announce', { class: C }, 'tok_x')).status, 404, 'not their class');
+  assert.equal((await call(w, '/class/google/announce', { class: C }, 'tok_co')).status, 404, 'co-teachers cannot post');
+  assert.match(gcAnnouncement({}, { name: 'Chem P1', course: 'apchem', code: 'AB12CD34' }).text, /join\.html\?c=AB12CD34/);
+});
+
+test('Google: an announcement Google refuses does not use up the 10 minutes', async () => {
+  const w = world({ env: G_ON, fetch: googleFake({ announceFails: true }) });
+  w.db.class_oauth.push({ teacher_id: T, provider: 'google', refresh_enc: await clsEncrypt(w.env, '1//rt'), account_email: 'teacher@school.org' });
+  await call(w, '/class/google/link', { class: C, course: '501' });
+  const r = await call(w, '/class/google/announce', { class: C });
+  assert.equal(r.status, 502);
+  assert.equal(r.body.join, `${SITE}/join.html?c=K7QM4D`);
+  assert.equal(w.db.class_ext_links[0].announced_at, null, 'the time is given back');
 });
 
 test('co-teachers: reminders, report links and scoring yes; Google and LMS grade passback no', async () => {
