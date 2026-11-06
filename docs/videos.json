@@ -408,6 +408,57 @@
           "Next: planes and cavities"
         ]
       ]
+    },
+    {
+      "id": "YHDQJ0k3IFU",
+      "course": "apbio",
+      "title": "Elements of Life and Macromolecules for AP Bio (CHONPS, Polymers)",
+      "seconds": 877,
+      "posted": "2026-11-05",
+      "pages": [
+        "bio/notes/elements-of-life.html",
+        "bio/lessons/elements-of-life.html",
+        "bio/notes/macromolecules-intro.html",
+        "bio/lessons/macromolecules-intro.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          48,
+          "Atoms come from somewhere"
+        ],
+        [
+          201,
+          "The six elements of life"
+        ],
+        [
+          316,
+          "Carbon, the backbone"
+        ],
+        [
+          430,
+          "Functional groups"
+        ],
+        [
+          545,
+          "Four families of molecules"
+        ],
+        [
+          634,
+          "Building big molecules"
+        ],
+        [
+          812,
+          "Recap"
+        ],
+        [
+          846,
+          "Next: carbohydrates"
+        ]
+      ]
     }
   ]
 }
