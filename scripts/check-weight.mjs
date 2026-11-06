@@ -226,7 +226,10 @@ const SHELL_BUDGETS = [
      chapter (ochem) and domain (NREMT). Measured 41.6 KB. */
   /* 41.9 -> 45.3 (Practice v2, 2026-11-06): practice-panel.js draws every setting as its own row with the
      not-applicable reasons, the summary and sharing, and runs the question set and its clock; measured 45.0. */
-  ['assets/course', 45.3],
+  /* 45.3 -> 49.3 (Practice v3, 2026-11-06): practice-panel.js draws a 3-column grid per mode (tiles, the
+     multi-unit drop-down, free-response and justify pickers by question, card types, cram plan, remembered
+     settings) and practice-panel.css the tiles, grid and sticky bar; measured 49.0. */
+  ['assets/course', 49.3],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -721,7 +724,7 @@ const BUDGETS = [
      generator has written, so nothing here names a topic before it exists).
      The A&P numbers are the reference. */
   ['bio/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['bio/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
+  ['bio/practice.html', 3.8], // r4 Part D one-panel picker, measured 3.4 KB; Practice v3 tiles, measured 3.7 KB
   ['bio/exams.html', 3],
   ['bio/frq.html', 3],
   /* 40 -> 30 (2026-10-03): the glossary page is now an index, as A&P's
@@ -737,32 +740,32 @@ const BUDGETS = [
   /* AP® Chemistry: as AP® Biology's (CHEM_PAGES below for the first lesson,
      notes page and unit sheet once a unit is published). */
   ['chem/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['chem/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
+  ['chem/practice.html', 3.8], // r4 Part D one-panel picker, measured 3.4 KB; Practice v3 tiles, measured 3.7 KB
   ['chem/exams.html', 3],
   ['chem/frq.html', 3],
   ['chem/glossary.html', 30],
   ['chem/tools.html', 5],
   /* AP® Physics 1: the same (PHYS pages below once a unit is published). */
   ['physics/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['physics/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
+  ['physics/practice.html', 3.8], // r4 Part D one-panel picker, measured 3.4 KB; Practice v3 tiles, measured 3.7 KB
   ['physics/exams.html', 3],
   ['physics/frq.html', 3],
   ['physics/glossary.html', 30],
   ['physics/tools.html', 5],
   ['calculus/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['calculus/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
+  ['calculus/practice.html', 3.8], // r4 Part D one-panel picker, measured 3.4 KB; Practice v3 tiles, measured 3.7 KB
   ['calculus/exams.html', 3],
   ['calculus/frq.html', 3],
   ['calculus/glossary.html', 30],
   ['calculus/tools.html', 5],
   ['calculus-bc/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['calculus-bc/practice.html', 4], // r4 Part D one-panel picker, measured 3.8 KB
+  ['calculus-bc/practice.html', 4.2], // r4 Part D one-panel picker, measured 3.8 KB; Practice v3 tiles, measured 4.1 KB
   ['calculus-bc/exams.html', 3.1], // 3 -> 3.1: the shared footer row adds Teachers and What's new (audit 2026-11, D3)
   ['calculus-bc/frq.html', 3],
   ['calculus-bc/glossary.html', 30],
   ['calculus-bc/tools.html', 5],
   ['statistics/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['statistics/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
+  ['statistics/practice.html', 3.8], // r4 Part D one-panel picker, measured 3.4 KB; Practice v3 tiles, measured 3.7 KB
   ['statistics/exams.html', 3],
   ['statistics/frq.html', 3],
   ['statistics/glossary.html', 30],
@@ -777,7 +780,7 @@ const BUDGETS = [
   ['environmental-science/formula-sheet.html', 12],
   ['environmental-science/justify.html', 5],
   ['psychology/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['psychology/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
+  ['psychology/practice.html', 3.8], // r4 Part D one-panel picker, measured 3.4 KB; Practice v3 tiles, measured 3.7 KB
   ['psychology/exams.html', 3],
   ['psychology/frq.html', 3],
   ['psychology/glossary.html', 30],
@@ -786,7 +789,7 @@ const BUDGETS = [
   ['psychology/justify.html', 5],
   /* AP® Precalculus: as AP® Calculus AB's (its first lesson, notes page and unit sheet once a unit is published, below). */
   ['precalculus/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['precalculus/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
+  ['precalculus/practice.html', 3.8], // r4 Part D one-panel picker, measured 3.4 KB; Practice v3 tiles, measured 3.7 KB
   ['precalculus/exams.html', 3],
   ['precalculus/frq.html', 3],
   ['precalculus/glossary.html', 30],
@@ -794,7 +797,7 @@ const BUDGETS = [
   ['precalculus/formula-sheet.html', 12],
   ['precalculus/justify.html', 5],
   ['macroeconomics/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['macroeconomics/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
+  ['macroeconomics/practice.html', 3.8], // r4 Part D one-panel picker, measured 3.4 KB; Practice v3 tiles, measured 3.7 KB
   ['macroeconomics/exams.html', 3],
   ['macroeconomics/frq.html', 3],
   ['macroeconomics/glossary.html', 30],

@@ -144,3 +144,38 @@ budgets in `scripts/check-weight.mjs`, `scripts/ci-local.sh` (with `BROWSER=1`),
   timer · explanations, each when its rows apply; Start "Start practice / Start the exam / Study cards / Start
   writing / Start a prompt". An empty source (nothing due) stays choosable; the summary says so and Start waits.
   AP® unit tests and mixed sets honour `type`, `diff`, `practice` (`exams.js`, go=1 only).
+- **Practice v3 (owner approved 2026-11-06, mockup `docs/redesign-r4/mockups/PracticeV3.dc.txt`; branch
+  `claude/practice-v3`) replaces v2's "Build your session" form, quick picks and right column with tiles
+  again, improved.** One card: step 1 "What do you want to do?" (a tile per mode: Practice set, Review with the
+  live due count, Flashcards with the live count of new cards left today from the scheduler's store, Exam,
+  NREMT Adaptive exam and Scenarios, Free response and Justify with their counts read at build time, Cram plan;
+  4 a row, 2 on phones with the icon above the words; chosen tile in the course colour). Step 2 "Set it up"
+  with "Reset to defaults": every setting of the mode at once in one 3-column grid (1 column under 640 px).
+  Cells 2, 3 and 4 are Unit, Topic and How many wherever the mode has them (Exam: Kind, Unit, Timing, How
+  many; Justify: Skill, Unit, Topic, Prompt, so the shared cells stay put; the mockup's Justify had Topic first
+  and no Unit). Several units are picked in a drop-down of checkboxes that looks like a select (ochem midterm:
+  first and last chapter ticked). A cell an engine cannot honour is disabled with its reason under it
+  (`why()` in `practice-panel.js`). Practice set: Questions from (Any / My weakest / I missed with count; A&P
+  and ochem add Topics I studied), Unit, Topic, How many, Timer, Explanations, the science practice (A&P: Core
+  concept; none in ochem/NREMT), Question type, Difficulty (A&P plus Level), then the share row (Classroom,
+  copy link = the Start URL, Worksheet, answer key). Choosing a timer sets explanations to At the end (mockup).
+  Review: Questions from (due, fixed), Unit, Topic (AP® and A&P only), How many (All due / 10 / 20).
+  Flashcards: Cards from (every card, missed, weakest, studied, as each engine allows), Deck, Topic, New cards
+  today (AP® and A&P: none/due only, 10, 20, 30, 50; ochem/NREMT fixed at 20), Card types (`kinds=` / `types=`,
+  now sent again). Exam: Kind (AP® Full exam / Unit test / Mixed set; others their own kinds), Unit (unit test
+  only), Timing (Standard / Time and a half / Double / Untimed), How many (unit test, mixed set, custom, ochem
+  chapter test and midterm), AP® unit test and mixed set type, difficulty, practice; A&P custom types,
+  difficulty, level; NREMT difficulty; "What's in the full exam"; share row (worksheet for an AP® unit test
+  or mixed set prints a set with the same filters; the full exam is not printed). Courses without a cram plan
+  (A&P, ochem, NREMT) keep v2's Exam date setting in the Exam grid. Free response: Question type (from the
+  FRQ kit), Unit, Question (next unanswered or one by name, `frq/<id>.html`). Justify: Skill, Unit, Topic,
+  Prompt (next or one by name, `?p=`). Cram plan: Exam date (`LevlExamDate`), Plan length (`weeks=`), Print
+  (`print=1`). Adaptive exam and Scenarios have nothing to set (a line says why). Navy bar at the card's foot,
+  `position: sticky; bottom: 0` (above the phone tab bar), with the mockup's two lines and one Start ("Start
+  practice / Start review / Study cards / Start the exam / Start writing / Start a prompt / Make my plan / Start
+  adaptive exam / Choose a call"). The last mode and every mode's settings are kept in
+  `localStorage.levl_practice_v3_<course>`; a deep link (`?unit=`, `?mode=missed`, `from=due`, ...) wins.
+  Engines and URL contracts are unchanged from v2b. Tested in headless Chrome (bio, nremt, ochem, calculus,
+  anatomy-physiology at 1280 and 390, light and dark). Known: AP® mixed sets are Premium, so a free visitor
+  lands on the exam page's Premium note; justify `go=1` skips Premium-locked prompts and shows the list when
+  only locked ones match.
