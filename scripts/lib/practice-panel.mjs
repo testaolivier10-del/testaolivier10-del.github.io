@@ -1,14 +1,14 @@
-/* Course redesign round 4, Practice v2 (docs/course-redesign-r4.md decision 5, owner approved 2026-11-06;
-   mockup docs/redesign-r4/mockups/PracticeAll.dc.txt): every course's practice.html is one card,
-   "Build your session", with every setting on its own row, always visible. A setting that does not apply to
-   the chosen format stays in place, greyed, with the reason under its label.
+/* Course redesign round 4, Practice v3 (docs/course-redesign-r4.md decision 5, owner approved 2026-11-06;
+   mockup docs/redesign-r4/mockups/PracticeV3.dc.txt): every course's practice.html is one card. Step 1 "What
+   do you want to do?" is a tile per mode the course has; step 2 "Set it up" shows every setting of the chosen
+   mode at once in one 3-column grid; a navy bar at the card's foot (sticky to the viewport's bottom while
+   the card is on screen) sums up the choice with one Start.
 
      <main id="main" class="r3 r3-inner r3-practice" data-cover="KEY">
        <section class="band short">   issue line, "Practice", the question count, the free limit box
        <div class="xshell lap pp-wrap">
-         <div class="pp-grid" id="pp">
-           <section class="pp-card">  quick picks, then the rows (#ppRows, drawn by practice-panel.js)
-           <aside class="pp-side">    the navy "Your session" summary with the one Start, the sharing card
+         <div class="pp-v3" id="pp">
+           <section class="pp-card">  the tiles, the settings grid (#ppSet, drawn by practice-panel.js), the bar
          <div class="pp-engine">      the practice engine's mount; shown only while a session runs
        <script type="application/json" id="ppConfig">
 
@@ -34,6 +34,10 @@ function nremtReviewAreas() {
 }
 function nremtDomains() {
   return JSON.parse(readFileSync(join(ROOT, 'nremt', 'assets', 'flashcards.json'), 'utf8')).domains.map(d => [d.key, d.label]);
+}
+
+function countOf(dir, file, pick) {
+  try { const d = JSON.parse(readFileSync(join(ROOT, dir, 'assets', file), 'utf8')); return pick(d).length; } catch (e) { return 0; }
 }
 
 /* Format chips. Only the formats a course has are offered. */
@@ -86,6 +90,7 @@ export function panelConfig(key) {
       store: { prefs: `${key}_prefs_v1`, cards: `${key}_flashcards_v1` },
       kinds: a.kinds || AP_KINDS, kit: a.kit || 'assets/pages/frq-kit.js', kitGlob: `${a.glob}Frq`,
       engine: '#app', end: '.cx-end', print: true,
+      frqN: countOf(a.dir, 'frq/index.json', d => d), jusN: countOf(a.dir, 'justify.json', d => d.prompts || []),
     };
   }
   if (key === 'anp') return {
@@ -96,6 +101,7 @@ export function panelConfig(key) {
     store: { prefs: 'anp_prefs_v1', cards: 'anp_flashcards_v1' },
     kinds: [['t', 'Term to definition'], ['d', 'Definition to term'], ['f', 'Comparisons and key facts']],
     engine: '#app', end: '.cx-end',
+    exam: 'Finals cover every chapter of A&P I or A&P II, weighted by topic; the TEAS practice follows the TEAS 7 A&P areas',
   };
   if (key === 'ochem') return {
     course: 'ochem', family: 'ochem', note: 'The first four chapters are unlimited.', dir: 'ochem',
@@ -103,6 +109,8 @@ export function panelConfig(key) {
     from: ['new', 'due', 'missed', 'weak', 'studied'], counts: [5, 10, 20, 40, 0],
     examKinds: [['chapter', 'Chapter test'], ['midterm', 'Midterm'], ['final', 'Cumulative final']],
     store: { cards: 'ochem_flashcards_v1' }, engine: '#practiceHome', end: '#sessionQuit', total: '#practiceProgLabel',
+    kinds: [['concept', 'Concepts'], ['table', 'Facts'], ['authored', 'Named reactions']],
+    exam: '50 questions from every chapter, timed at 90 seconds a question',
   };
   /* The flashcard domains are the deck's own (nremt/assets/flashcards.json "domains"). */
   if (key === 'nremt') return {
@@ -111,12 +119,13 @@ export function panelConfig(key) {
     from: ['new', 'due', 'missed', 'weak'], counts: [10, 20, 30, 50],
     examKinds: [['std', '100 questions, 2 hours'], ['real', 'Exam-realistic: no flagging, no going back']],
     store: { cards: 'nremt_flashcards_v1' }, engine: '#nrBuilder', total: '#progressText',
+    kinds: [['fact', 'Key facts'], ['glossary', 'Terms'], ['mnemonic', 'Mnemonics'], ['reference', 'Reference tables']],
+    exam: '100 questions in 2 hours, in the 2025 NREMT domain mix; no feedback until you submit',
     domains: nremtDomains(), reviewAreas: nremtReviewAreas(),
   };
   throw new Error(`practice-panel: no config for ${key}`);
 }
 
-const ico = d => `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
 
 /* The short band: issue line with the course, "Practice", one sub line (the question count, filled in by
    the panel when it knows it) and the free daily limit box (filled in only for a visitor with a limit). */
@@ -136,34 +145,58 @@ export function configHtml(key) {
   return `<script type="application/json" id="ppConfig">${JSON.stringify(panelConfig(key))}</script>`;
 }
 
-/* Without JavaScript nothing here can run, so the card names the pages that open each format. */
+/* Without JavaScript nothing here can run, so the card names the pages that open each mode. */
 function noscriptHtml(key) {
   const c = panelConfig(key), links = [['review.html', 'Review'], ['flashcards.html', 'Flashcards'], ['exams.html', 'Exams']];
   if (c.formats.some(f => f[0] === 'frq')) links.push(['frq.html', 'Free response']);
   if (c.formats.some(f => f[0] === 'jus')) links.push(['justify.html', 'Justify']);
   if (c.formats.some(f => f[0] === 'scen')) links.push(['scenario-sim.html', 'Scenarios']);
-  return `<noscript><p class="pp-noscript">Building a session needs JavaScript. Each format also has its own page: ${links.map(l => `<a href="${l[0]}">${l[1]}</a>`).join(', ')}.</p></noscript>`;
+  if (c.cram) links.push(['cram.html', 'Cram plan']);
+  return `<noscript><p class="pp-noscript">Setting up a session needs JavaScript. Each mode also has its own page: ${links.map(l => `<a href="${l[0]}">${l[1]}</a>`).join(', ')}.</p></noscript>`;
 }
 
-/* The card and the right column. The rows are drawn by practice-panel.js from the config. */
+const ico22 = d => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+/* Step 1's tiles, in the mockup's order; a course shows only the modes it has. The second line of Review and
+   Flashcards is live (practice-panel.js fills in the counts; data-live). */
+const TILE_ICONS = {
+  set: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  rev: '<path d="M20 11a8 8 0 0 0-14.5-4.5L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4.5L20 16"/><path d="M20 20v-4h-4"/>',
+  fc: '<rect x="7" y="4" width="13" height="15" rx="2"/><path d="M4 8v11a2 2 0 0 0 2 2h9"/>',
+  exam: '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M10 2h4"/>',
+  cat: '<path d="M4 18l5-6 4 3 7-9"/><path d="M15 6h5v5"/>',
+  scen: '<rect x="2" y="9" width="13" height="8" rx="1.5"/><path d="M15 11h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8.5 11v4M6.5 13h4"/>',
+  frq: '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>',
+  jus: '<path d="M12 4v16"/><path d="M5 8h14"/><path d="M5 8l-3 7a3.5 3.5 0 0 0 6 0z"/><path d="M19 8l-3 7a3.5 3.5 0 0 0 6 0z"/><path d="M8 20h8"/>',
+  cram: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/>',
+};
+export function panelModes(key) {
+  const c = panelConfig(key), has = id => c.formats.some(f => f[0] === id), out = [];
+  const n = (k, w) => `${k.toLocaleString('en-US')} ${w}${k === 1 ? '' : 's'}`;
+  out.push(['set', 'Practice set', 'Questions with feedback']);
+  out.push(['rev', 'Review', 'Due questions, spaced', 'due']);
+  out.push(['fc', 'Flashcards', 'New and due cards', 'new']);
+  out.push(['exam', 'Exam', 'Timed, like the real one']);
+  if (has('cat')) out.push(['cat', 'Adaptive exam', 'Adapts to each answer, like the CAT']);
+  if (has('scen')) out.push(['scen', 'Scenarios', 'One call, dispatch to handoff']);
+  if (has('frq')) out.push(['frq', 'Free response', c.frqN ? n(c.frqN, 'question') : 'Write, then score with the rubric']);
+  if (has('jus')) out.push(['jus', 'Justify', c.jusN ? n(c.jusN, 'prompt') : 'Short written reasoning']);
+  if (c.cram) out.push(['cram', 'Cram plan', 'Counted back from exam day']);
+  return out;
+}
+
+/* The card: tiles, the settings (drawn by practice-panel.js from the config) and the navy bar. */
 export function panelHtml(key) {
-  const c = panelConfig(key);
-  return `<div class="pp-grid" id="pp">
-<section class="pp-card" aria-labelledby="ppH">
-<div class="pp-head"><h2 class="pp-h2" id="ppH">Build your <em>session</em></h2><p class="pp-hint">Every setting is here. Change any of them.</p></div>
-<div class="pp-quick" role="group" aria-label="Quick picks"><span class="pp-quick-l">Quick picks:</span><button type="button" class="pp-chip" data-quick="q10">Quick 10</button><button type="button" class="pp-chip" data-quick="due">Review what&rsquo;s due</button><button type="button" class="pp-chip" data-quick="exam">Full practice exam</button><button type="button" class="pp-chip" data-quick="cards">20 flashcards</button></div>
-<div class="pp-rows" id="ppRows"><p class="pp-loading">Loading the settings&hellip;</p></div>
+  const tiles = panelModes(key).map(([id, t, line, live]) => `<button type="button" class="pp-tile" data-mode="${id}" aria-pressed="false"><span class="pp-tile-i">${ico22(TILE_ICONS[id])}</span><span class="pp-tile-x"><b>${t}</b><span class="pp-tile-l"${live ? ` data-live="${live}"` : ''}>${line}</span></span></button>`).join('');
+  return `<div class="pp-v3" id="pp">
+<section class="pp-card" aria-label="Set up a practice session">
+<div class="pp-step"><h2 class="pp-k" id="ppK1">1 &middot; What do you want to do?</h2>
+<div class="pp-tiles" role="group" aria-labelledby="ppK1">${tiles}</div></div>
+<div class="pp-step pp-step2"><div class="pp-step-h"><h2 class="pp-k" id="ppK2">2 &middot; Set it up</h2><button type="button" class="pp-reset" id="ppReset">Reset to defaults</button></div>
+<div class="pp-set" id="ppSet" role="group" aria-labelledby="ppK2"><p class="pp-loading">Loading the settings&hellip;</p></div>
 ${noscriptHtml(key)}
+</div>
+<div class="pp-bar"><div class="pp-bar-t"><p class="pp-sum-t" id="ppSumT" aria-live="polite"></p><p class="pp-sum-b" id="ppSumB"></p></div><a class="pp-go" id="ppGo" href="practice.html">Start practice</a></div>
 </section>
-<aside class="pp-side" aria-label="Your session">
-<div class="pp-sum"><p class="pp-sum-k">Your session</p><p class="pp-sum-t" id="ppSumT" aria-live="polite"></p><p class="pp-sum-b" id="ppSumB"></p><a class="pp-go" id="ppGo" href="practice.html">Start practice</a></div>
-<div class="pp-share" id="ppShare"><p class="pp-share-h">Teaching or sharing?</p>
-<a class="pp-chip pp-sbtn" id="ppClass" href="https://classroom.google.com/" target="_blank" rel="noopener">${ico('<path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 14v6h14v-6"/>')} Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a>
-<button type="button" class="pp-chip pp-sbtn" id="ppCopy">${ico('<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>')} Copy a link to this session</button>
-<button type="button" class="pp-chip pp-sbtn" id="ppPrint"${c.print ? '' : ' disabled title="Worksheets are not available for this course yet"'}>${ico('<path d="M7 9V3h10v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/>')} Print as a worksheet</button>
-<label class="pp-key"><input type="checkbox" id="ppKey"${c.print ? '' : ' disabled'}> Answer key on a separate page</label>
-<p class="pp-share-n" id="ppShareN" aria-live="polite"></p></div>
-</aside>
 </div>`;
 }
 

@@ -1,24 +1,28 @@
-/* The Practice panel, version 2 (docs/course-redesign-r4.md decision 5, Practice v2, owner approved
-   2026-11-06; mockup docs/redesign-r4/mockups/PracticeAll.dc.txt). One card, "Build your session", with
-   every setting on its own row, always visible: Format, Exam, Questions from, Units and Topics, the
-   course's science practice (or its equivalent), Question type, Difficulty, How many, Timer, Explanations,
-   Exam date. A setting that does not apply to the chosen format stays where it is, greyed and not
-   clickable, with the reason under its label. Quick picks only fill in the settings.
+/* The Practice panel, version 3 (docs/course-redesign-r4.md decision 5, Practice v3, owner approved
+   2026-11-06; mockup docs/redesign-r4/mockups/PracticeV3.dc.txt). One card:
+     1 · What do you want to do?   a tile per mode the course has (Practice set, Review with the live due
+                                   count, Flashcards with the live new count, Exam, the NREMT adaptive exam and
+                                   scenarios, Free response, Justify, Cram plan)
+     2 · Set it up                 every setting of the chosen mode at once, in one 3-column grid. Unit, Topic
+                                   and How many keep the same cell in every mode (cells 2, 3 and 4). A setting
+                                   an engine cannot honour for this course stays in place, disabled, with the
+                                   reason under its label.
+     the navy bar                  the exact choice in words and one Start whose label fits the mode; sticky to
+                                   the bottom of the viewport while the card is on screen.
+   The last mode and each mode's settings are kept on this device (localStorage levl_practice_v3_<course>).
 
-   The right column mirrors the choice ("Your session") with one Start whose label fits the format, and
-   the sharing card (Classroom, copy link, worksheet with an optional answer key).
-
-   Start runs what was chosen, every option honoured, through the format's existing engine with the
-   settings in the URL and go=1:
-     questions   practice.html?go=1&from=&units=&topic=&practice=&type=&diff=&n=&timer=&expl= (AP® and A&P:
-                 this file builds the set through the engine's hook, window.<Glob>PracticeHook; ochem:
-                 from=&chapters=&topic=&tier=&type=&n=; NREMT: from=&area=&diff=&n=). "Due for review" in
-                 ochem and NREMT is their Review page (review.html?go=1&chapter|domain=&n=).
-     timed exam  exams.html?go=1&... (each course's own contract, docs/course-redesign-r4.md decision 5)
-     flashcards  flashcards.html?go=1&deck=&new= (ochem/NREMT chapter|domain=&scope=; card types stay the page's own)
-     free resp.  frq.html?go=1&type=&unit=      justify   justify.html?go=1&unit=&topic=&skill=
-   The timer for a question set is this file's (a clock over the running session that ends it when time
-   is up); explanations at the end are the engine's (pp-defer hides feedback until the summary).
+   Start runs the mode's existing engine with the settings in the URL and go=1 (the v2 contract, kept):
+     set     practice.html?go=1&from=&units=&topic=&practice=|core=&type=&diff=&level=&n=&timer=&expl= (AP® and
+             A&P: run here through window.<Glob>PracticeHook; ochem: from=&chapters=&topic=&tier=&type=&n=;
+             NREMT: from=&area=&diff=&n=)
+     rev     AP® and A&P: practice.html?go=1&from=due&units=&topic=&n=; ochem review.html?go=1&chapter=&n=;
+             NREMT review.html?go=1&domain=&n=
+     fc      flashcards.html?go=1&deck=&kinds=&new= (ochem chapter=&scope=&types=; NREMT domain=&scope=&types=)
+     exam    exams.html?go=1&... (each course's own contract, docs/course-redesign-r4.md decision 5)
+     frq     frq.html?go=1&type=&unit= or frq/<id>.html      jus  justify.html?go=1&unit=&topic=&skill= or ?p=
+     cram    cram.html?date=&weeks=(&print=1)                cat  exams.html?go=1&exam=cat    scen scenario-sim.html
+   The timer for a question set is this file's (a clock over the running session that ends it when time is
+   up); explanations at the end are the engine's (pp-defer hides feedback until the summary).
    Config: <script type="application/json" id="ppConfig"> (scripts/lib/practice-panel.mjs panelConfig). */
 (function(){
   var cfgEl = document.getElementById('ppConfig'), root = document.getElementById('pp');
@@ -26,9 +30,10 @@
   var C;
   try{ C = JSON.parse(cfgEl.textContent); }catch(e){ return; }
   var W = window, doc = document, fam = C.family;
-  var rowsEl = doc.getElementById('ppRows'), sumT = doc.getElementById('ppSumT'), sumB = doc.getElementById('ppSumB'), goEl = doc.getElementById('ppGo');
+  var setEl = doc.getElementById('ppSet'), sumT = doc.getElementById('ppSumT'), sumB = doc.getElementById('ppSumB'), goEl = doc.getElementById('ppGo');
   var wrap = root.parentNode, engine = doc.querySelector(C.engine);
   var URLP = new URLSearchParams(location.search), GO = URLP.get('go') === '1';
+  var STORE = 'levl_practice_v3_' + C.course;
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function plural(n, w, ws){ return n + ' ' + (n === 1 ? w : (ws || w + 's')); }
@@ -44,19 +49,23 @@
   function getJson(url){ return fetch(url).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }); }
   function has(list, v){ return list.indexOf(v) > -1; }
   function strip(h){ return String(h || '').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&reg;/g, '®'); }
+  function dayKey(ms){ var d = new Date(ms); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  function cap1(t){ return t ? t.charAt(0).toUpperCase() + t.slice(1) : t; }
 
   /* ---------------------------------------------------------------- the course's data */
-  var A = { ready: Promise.resolve(), noun: 'question' };
+  var A = { ready: Promise.resolve() };
   var AP = fam === 'ap', ANP = fam === 'anp', BANK = AP || ANP;
   var CUR = {}, Core = null, META = (C.glob && W[C.glob + 'PracticeMeta']) || {};
+  var UW = C.unitWord === 'Units' ? 'unit' : C.unitWord === 'Domains' ? 'domain' : 'chapter';
   if(BANK){
     CUR = W[C.glob + 'Curriculum'] || {}; Core = W[C.glob + 'Core'];
     var UNITS = (ANP ? CUR.chapters : CUR.units) || [], TOPICS = CUR.topics || [];
     var uOf = function(t){ return ANP ? t.chapter : t.unit; };
     A.units = function(){ var h = {}; TOPICS.forEach(function(t){ if(t.built && t.qn) h[uOf(t)] = 1; }); return UNITS.filter(function(u){ return h[u.id]; }).map(function(u){
-      return { id: u.id, chip: ANP ? String(u.n) : (u.part === 'course' ? String(u.n) : u.title), name: ANP ? u.n + '. ' + u.title : (u.part === 'course' ? 'Unit ' + u.n + ': ' : '') + u.title, course: !ANP && u.part === 'course', part: u.course };
+      return { id: u.id, chip: ANP ? String(u.n) : (u.part === 'course' ? String(u.n) : u.title), name: ANP ? u.n + '. ' + u.title : (u.part === 'course' ? 'Unit ' + u.n + ': ' : '') + u.title, short: ANP ? 'Chapter ' + u.n : (u.part === 'course' ? 'Unit ' + u.n : u.title), course: !ANP && u.part === 'course' };
     }); };
-    A.topics = function(uids){ return TOPICS.filter(function(t){ return t.built && t.qn && (!uids.length || has(uids, uOf(t))); }).map(function(t){ return { id: t.id, unit: uOf(t), name: (t.ced ? t.ced + ' ' : (ANP && t.n ? t.n + '. ' : '')) + t.title, title: t.title }; }); };
+    A.allUnits = function(){ return UNITS.map(function(u){ return { id: u.id, name: ANP ? u.n + '. ' + u.title : (u.part === 'course' ? 'Unit ' + u.n + ': ' : '') + u.title, short: ANP ? 'Chapter ' + u.n : (u.part === 'course' ? 'Unit ' + u.n : u.title) }; }); };
+    A.topics = function(uids, all){ return TOPICS.filter(function(t){ return t.built && (all || t.qn) && (!uids.length || has(uids, uOf(t))); }).map(function(t){ return { id: t.id, unit: uOf(t), name: (t.ced ? t.ced + ' ' : (ANP && t.n ? t.n + '. ' : '')) + t.title, title: t.title }; }); };
     A.practices = function(){ return ANP ? (CUR.core || []).map(function(c){ return { id: c.id, name: c.name }; }) : (CUR.practices || []).map(function(p){ return { id: String(p.id), name: p.id + '. ' + p.name }; }); };
     A.qcount = function(){ return TOPICS.reduce(function(n, t){ return n + (t.built ? (t.qn || 0) : 0); }, 0); };
     A.due = function(){ try{ return Core && Core.reviewCount ? Core.reviewCount() : 0; }catch(e){ return 0; } };
@@ -70,8 +79,7 @@
     };
   } else if(fam === 'ochem'){
     A.ready = W.OchemPracticeBankReady || Promise.resolve();
-    A.noun = 'concept';
-    A.units = function(){ return ((W.OchemCurriculum && W.OchemCurriculum.MODULES) || []).map(function(m, i){ return { id: m.id, n: i + 1, chip: String(i + 1), name: (i + 1) + '. ' + m.title, topics: m.topics }; }); };
+    A.units = function(){ return ((W.OchemCurriculum && W.OchemCurriculum.MODULES) || []).map(function(m, i){ return { id: m.id, n: i + 1, chip: String(i + 1), name: (i + 1) + '. ' + m.title, short: 'Chapter ' + (i + 1), topics: m.topics }; }); };
     A.topics = function(uids){ var out = []; A.units().forEach(function(u){ if(!uids.length || has(uids, u.id)) (u.topics || []).forEach(function(t){ out.push({ id: t.id, unit: u.id, name: t.title, title: t.title }); }); }); return out; };
     A.qcount = function(){ try{ return W.OchemQuestionEngine.stats().total; }catch(e){ return 0; } };
     A.due = function(){ try{ return W.OchemQuestionEngine.reviewQueue().dueTotal; }catch(e){ return 0; } };
@@ -82,8 +90,8 @@
     A.ready = new Promise(function(res){ if(W.NremtQueue) return res(); doc.addEventListener('nremt-queue', function(){ res(); }); });
     var RA = C.reviewAreas || { domains: [], systems: [] };
     A.units = function(){
-      return RA.domains.map(function(d){ return { id: d, chip: d, name: d, exam: true }; })
-        .concat(RA.systems.map(function(d){ return { id: 'system:' + d, chip: d, name: d }; }));
+      return RA.domains.map(function(d){ return { id: d, chip: d, name: d, short: d, exam: true }; })
+        .concat(RA.systems.map(function(d){ return { id: 'system:' + d, chip: d, name: d, short: d }; }));
     };
     A.topics = function(){ return []; };
     A.qcount = function(){ return W.NremtQueue ? W.NremtQueue.total : 0; };
@@ -91,16 +99,24 @@
     A.missed = function(){ var m = readJson('nremt_exam100_missed', []); return Array.isArray(m) ? m.length : 0; };
     A.weak = function(){ return [1]; };
   }
+  /* New flashcards left today: the deck's daily allowance less the cards already introduced today (the
+     schedulers' own store, { fresh: { day, n } }). */
+  A.newToday = function(){
+    var d = readJson(C.store.cards, {}), per = 20;
+    if(BANK){ var p = (readJson(C.store.prefs, {}).flashcards || {}).perDay; if(p >= 5 && p <= 50) per = p; }
+    var used = d && d.fresh && d.fresh.day === dayKey(Date.now()) ? (d.fresh.n || 0) : 0;
+    return Math.max(0, per - used);
+  };
 
-  /* Question types, difficulty levels and flashcard kinds per course. */
+  /* Question types, difficulty levels per course. */
   var ANP_TYPES = [['single', 'Single best answer'], ['vignette', 'Clinical vignettes'], ['multi', 'Select all that apply'],
     ['sequence', 'Sequencing and find the error'], ['predict', 'Prediction tables']];
   var ANP_GROUP = { single: 'single', graph: 'single', image: 'single', vignette: 'vignette', multi: 'multi', order: 'sequence', missing: 'sequence', error: 'sequence', predict: 'predict' };
   function qtypes(){
-    if(AP) return (META.kinds || [{ id: 'all', name: 'All types' }]).map(function(k){ return [k.id === 'all' ? '' : k.id, k.id === 'all' ? 'All' : k.name]; });
-    if(ANP) return [['', 'All']].concat(ANP_TYPES);
-    if(fam === 'ochem') return [['', 'All'], ['interactive', 'Interactive only']];
-    return [['', 'All']];
+    if(AP) return (META.kinds || [{ id: 'all', name: 'All types' }]).map(function(k){ return [k.id === 'all' ? '' : k.id, k.id === 'all' ? 'All types' : k.name]; });
+    if(ANP) return [['', 'All types']].concat(ANP_TYPES);
+    if(fam === 'ochem') return [['', 'All types'], ['interactive', 'Interactive only']];
+    return [['', 'All types']];
   }
   function diffs(){
     if(AP) return (META.diffs || [{ id: '', name: 'Any' }]).map(function(d){ return [d.id, d.name]; });
@@ -109,12 +125,17 @@
     return [['all', 'All levels'], ['easy', 'Easy'], ['medium', 'Medium'], ['hard', 'Hard'], ['expert', 'Expert']];
   }
   var LEVELS = [['', 'Any level'], ['recall', 'Recall'], ['apply', 'Apply'], ['analyze', 'Analyze']];
-
   var TIMERS = [['off', 'Off'], ['pace', 'Exam pace'], ['x15', 'Time and a half'], ['x2', 'Double time']];
   var TK = { off: 0, pace: 1, x15: 1.5, x2: 2 };
-  var FROM = { new: 'New questions', due: 'Due for review', missed: 'Ones I missed', weak: 'My weakest topics', studied: 'Topics I have studied' };
+  var TIMINGS = [['std', 'Standard'], ['x15', 'Time and a half'], ['x2', 'Double'], ['off', 'Untimed']];
+  var TIMING_TXT = { std: 'standard time', x15: 'time and a half', x2: 'double time', off: 'untimed' };
+  var SRC_SET = (function(){
+    var o = [['new', 'Any'], ['weak', 'My weakest'], ['missed', 'I missed']];
+    if(has(C.from, 'studied')) o.push(['studied', 'Topics I studied']);
+    return o;
+  })();
 
-  /* Free response and justify lists load only when that format is chosen. */
+  /* Free response and justify lists load only when that mode is chosen. */
   var FRQ = null, JUS = null, frqData = null, jusData = null;
   function loadFrq(){
     if(FRQ) return FRQ;
@@ -127,380 +148,513 @@
   }
 
   /* ---------------------------------------------------------------- state */
-  var FIDS = C.formats.map(function(f){ return f[0]; });
-  function defaults(){
-    return { f: 'q', from: 'new', units: [], topic: '', practice: '', qt: ANP ? [] : '', diff: fam === 'nremt' ? 'all' : '', level: '',
-      n: C.counts.indexOf(10) > -1 ? 10 : C.counts[0], timer: 'off', expl: 'each', ek: C.examKinds[0][0],
-      date: '' };
+  var MODES = [].map.call(root.querySelectorAll('.pp-tile'), function(t){ return t.getAttribute('data-mode'); });
+  var EK0 = C.examKinds[0][0];
+  function defaultsOf(m){
+    if(m === 'set') return { from: 'new', units: [], topic: '', practice: '', qt: ANP ? [] : '', diff: fam === 'nremt' ? 'all' : '', level: '',
+      n: C.counts.indexOf(10) > -1 ? 10 : C.counts[0], timer: 'off', expl: 'each' };
+    if(m === 'rev') return { units: [], topic: '', n: 0 };
+    if(m === 'fc') return { src: 'all', units: [], topic: '', nw: BANK ? 20 : 20, kinds: (C.kinds || []).map(function(k){ return k[0]; }) };
+    if(m === 'exam') return { ek: AP ? 'full' : EK0, units: [], n: AP ? 20 : ANP ? 20 : fam === 'ochem' ? 20 : 0, timing: 'std', qt: ANP ? [] : '', diff: fam === 'nremt' ? 'all' : '', practice: '', level: '' };
+    if(m === 'frq') return { type: '', unit: '', id: '' };
+    if(m === 'jus') return { skill: '', unit: '', topic: '', id: '' };
+    if(m === 'cram') return { weeks: 3 };
+    return {};
   }
-  var S = defaults();
-  if(fam === 'ochem' || fam === 'nremt') S.qt = '';
+  function fresh(){ var s = { m: MODES[0] }; MODES.forEach(function(m){ s[m] = defaultsOf(m); }); return s; }
+  var S = fresh();
+  (function restore(){
+    var saved = readJson(STORE, null);
+    if(!saved || typeof saved !== 'object') return;
+    if(has(MODES, saved.m)) S.m = saved.m;
+    MODES.forEach(function(m){ var o = saved[m]; if(o && typeof o === 'object') Object.keys(S[m]).forEach(function(k){ if(o[k] !== undefined && typeof o[k] === typeof S[m][k] && Array.isArray(o[k]) === Array.isArray(S[m][k])) S[m][k] = o[k]; }); });
+  })();
+  function save(){ try{ localStorage.setItem(STORE, JSON.stringify(S)); }catch(e){} }
   function readDate(){ var D = W.LevlExamDate, v = D && D.read ? D.read(C.course) : null; return /^\d{4}-\d{2}-\d{2}$/.test(v || '') ? v : ''; }
 
-  /* The settings in the address: the panel's own (go=1 links, "Change the set") and the old deep links
-     other pages still make (practice.html?unit=, ?topic=, ?chapter=, ?core=, ?mode=missed|weak). */
-  function fromUrl(p){
-    var units = (p.get('units') || p.get('chapters') || p.get('unit') || p.get('chapter') || p.get('area') || '').split(',').filter(Boolean);
+  /* The settings in the address: the panel's own go=1 links and the old deep links other pages still make
+     (practice.html?unit=, ?topic=, ?chapter=, ?core=, ?mode=missed|weak). They choose Practice set (or Review
+     for from=due) and win over the remembered settings. */
+  function parseSet(p, base){
+    var s = JSON.parse(JSON.stringify(base));
+    var units = (p.get('units') || p.get('chapters') || p.get('unit') || p.get('chapter') || p.get('area') || p.get('domain') || '').split(',').filter(Boolean);
     var known = A.units ? A.units().map(function(u){ return u.id; }) : [];
-    if(units.length) S.units = units.filter(function(u){ return has(known, u); });
-    if(p.get('topic')){ S.topic = p.get('topic'); var t = A.topics([]).filter(function(x){ return x.id === S.topic; })[0]; if(t && !S.units.length) S.units = [t.unit]; if(!t) S.topic = ''; }
-    if(p.get('practice') || p.get('core')) S.practice = p.get('practice') || p.get('core');
+    if(units.length) s.units = units.filter(function(u){ return has(known, u); });
+    if(p.get('topic')){ s.topic = p.get('topic'); var t = A.topics([]).filter(function(x){ return x.id === s.topic; })[0]; if(t && !s.units.length) s.units = [t.unit]; if(!t) s.topic = ''; }
+    if(p.get('practice') || p.get('core')) s.practice = p.get('practice') || p.get('core');
     var from = p.get('from') || ({ missed: 'missed', weak: 'weak', studied: 'studied', mistakes: 'missed', cumulative: 'studied' })[p.get('mode')] || '';
-    if(has(C.from, from)) S.from = from;
+    if(has(C.from, from)) s.from = from;
     var ty = p.get('type') || '';
-    if(ANP) S.qt = ty ? ty.split(',').filter(function(x){ return ANP_TYPES.some(function(y){ return y[0] === x; }); }) : [];
-    else if(qtypes().some(function(x){ return x[0] === ty && ty; })) S.qt = ty;
+    if(ANP) s.qt = ty ? ty.split(',').filter(function(x){ return ANP_TYPES.some(function(y){ return y[0] === x; }); }) : [];
+    else if(qtypes().some(function(x){ return x[0] === ty && ty; })) s.qt = ty;
     var df = p.get('diff') || p.get('tier') || '';
-    if(diffs().some(function(x){ return x[0] === df; })) S.diff = df;
-    if(LEVELS.some(function(x){ return x[0] === p.get('level'); })) S.level = p.get('level');
+    if(diffs().some(function(x){ return x[0] === df; })) s.diff = df;
+    if(LEVELS.some(function(x){ return x[0] === p.get('level'); })) s.level = p.get('level');
     var n = p.get('n') || p.get('count');
-    if(n !== null && has(C.counts, +n)) S.n = +n;
-    if(TK[p.get('timer')] !== undefined) S.timer = p.get('timer');
-    if(p.get('expl') === 'end') S.expl = 'end';
+    if(n !== null && /^\d+$/.test(n)) s.n = +n;
+    if(TK[p.get('timer')] !== undefined) s.timer = p.get('timer');
+    s.expl = p.get('expl') === 'end' ? 'end' : 'each';
+    return s;
+  }
+  var DEEP = ['units', 'chapters', 'unit', 'chapter', 'area', 'topic', 'practice', 'core', 'from', 'mode', 'type', 'diff', 'tier', 'level', 'n', 'count', 'timer', 'expl'];
+  function fromUrl(p){
+    if(!DEEP.some(function(k){ return p.get(k) !== null; })) return;
+    var s = parseSet(p, defaultsOf('set'));
+    if(s.from === 'due'){ S.m = 'rev'; S.rev = { units: s.units, topic: s.topic, n: s.n || 0 }; }
+    else { if(!has(C.counts, s.n)) s.n = defaultsOf('set').n; S.m = 'set'; S.set = s; }
   }
 
-  /* ---------------------------------------------------------------- rules */
-  var NOT = { exam: 'Not used for a timed exam', cards: 'Not used for flashcards', frq: 'Not used for written answers',
-    jus: 'Not used for justify prompts', cat: 'Not used for the adaptive exam', scen: 'Not used for scenarios' };
-  var REVIEW = fam === 'ochem' || fam === 'nremt';   // "Due for review" is their Review page
-  function isReview(s){ return s.f === 'q' && s.from === 'due' && REVIEW; }
-
-  /* The reason a row does not apply, or ''. */
-  function why(s, row){
-    var f = s.f, ek = s.ek;
-    if(row === 'ek') return f === 'exam' ? '' : 'Only for a timed exam';
-    if(row === 'date') return '';
-    if(f === 'cat' || f === 'scen') return f === 'scen' && row === 'units' ? 'You pick the call on the next page' : NOT[f];
-    if(f === 'q'){
-      if(isReview(s) && (row === 'topic' || row === 'type' || row === 'diff' || row === 'timer' || row === 'expl')) return 'Review serves what is due, by ' + (fam === 'ochem' ? 'chapter' : 'domain');
+  /* ---------------------------------------------------------------- rules per mode */
+  /* The reason a cell is disabled for the mode's current settings, or ''. */
+  function why(m, cell){
+    var s = S[m];
+    if(m === 'set'){
+      if(cell === 'expl' && !BANK) return 'This course explains each answer as you go';
       if(fam === 'nremt'){
-        if(row === 'type') return 'Every item type is mixed in';
-        if((row === 'units' || row === 'diff') && s.from === 'weak') return 'Weak-spot practice picks the domains itself';
-        if((row === 'units' || row === 'diff' || row === 'n') && s.from === 'missed') return 'Every missed question comes back until it is right';
+        if(cell === 'type') return 'Every item type is mixed in';
+        if(cell === 'topic') return 'NREMT practice goes by domain';
+        if((cell === 'units' || cell === 'diff') && s.from === 'weak') return 'Weak-spot practice picks the domains itself';
+        if((cell === 'units' || cell === 'diff' || cell === 'n') && s.from === 'missed') return 'Every missed question comes back until it is right';
       }
       return '';
     }
-    if(f === 'exam'){
-      if(row === 'from') return 'A practice exam draws from every unit by exam weight';
-      if(row === 'expl') return 'Exams explain everything at the end';
-      if(row === 'topic') return 'An exam covers whole ' + (AP ? 'units' : 'chapters');
+    if(m === 'rev'){
+      if(cell === 'topic' && !BANK) return 'Review serves what is due, by ' + UW;
+      return '';
+    }
+    if(m === 'fc'){
+      if((cell === 'units' || cell === 'topic') && BANK && s.src !== 'all') return 'The deck comes from ' + ({ missed: 'the questions you missed', weak: 'your weakest topics', studied: 'the topics you studied' })[s.src];
+      if(cell === 'topic' && !BANK) return 'Flashcards go by ' + UW;
+      if(cell === 'nw' && !BANK) return 'This deck adds 20 new cards a day';
+      return '';
+    }
+    if(m === 'exam'){
+      var ek = s.ek;
       if(AP){
-        if(row === 'units') return ek === 'unit' ? '' : ek === 'full' ? 'A full exam covers every unit' : 'A mixed set draws from every unit';
-        if(row === 'n') return ek === 'full' ? 'The full exam is fixed' : '';
-        if(row === 'timer') return '';
+        if(cell === 'units') return ek === 'unit' ? '' : 'Only for a unit test';
+        if(cell === 'n') return ek === 'full' ? 'The full exam is fixed' : '';
+        if(cell === 'timing') return '';
         return ek === 'full' ? 'A full exam keeps the real exam mix' : '';
       }
       if(ANP){
         var custom = ek === 'custom';
-        if(row === 'units') return ek === 'unit' || ek === 'system' || custom ? '' : ek === 'teas' ? 'TEAS practice follows the TEAS areas' : 'A final covers the whole course';
-        if(row === 'timer') return ek === 'unit' ? 'Unit quizzes are untimed' : '';
-        if(row === 'type' || row === 'diff' || row === 'n') return custom ? '' : 'Only for a custom exam';
-        return 'An exam keeps the course mix';
+        if(cell === 'units') return ek === 'unit' || ek === 'system' || custom ? '' : ek === 'teas' ? 'TEAS practice follows the TEAS areas' : 'A final covers the whole course';
+        if(cell === 'timing') return ek === 'unit' ? 'Unit quizzes are untimed' : '';
+        if(cell === 'date') return '';
+        return custom ? '' : 'Only for a custom exam';
       }
       if(fam === 'ochem'){
-        if(row === 'units') return ek === 'final' ? 'The final covers every chapter' : '';
-        if(row === 'n') return ek === 'final' ? 'The final is 50 questions' : '';
-        if(row === 'timer') return '';
-        return 'An exam keeps the course mix';
+        if(cell === 'units') return ek === 'final' ? 'The final covers every chapter' : '';
+        if(cell === 'n') return ek === 'final' ? 'The final is 50 questions' : '';
+        return '';
       }
-      if(row === 'diff') return '';
-      if(row === 'units') return 'The exam follows the 2025 domain mix';
-      if(row === 'n') return 'The exam is 100 questions';
-      if(row === 'timer') return 'The exam is 2 hours, like the real one';
-      return 'The exam keeps the real mix';
+      if(cell === 'units') return 'The exam follows the 2025 domain mix';
+      if(cell === 'n') return 'The exam is 100 questions';
+      if(cell === 'timing') return 'The exam is 2 hours, like the real one';
+      return '';
     }
-    if(f === 'cards'){
-      if(row === 'from' || row === 'units') return '';
-      if(row === 'topic') return BANK ? '' : 'Flashcards go by ' + (fam === 'ochem' ? 'chapter' : 'domain');
-      if(row === 'n') return BANK ? '' : 'Cards come on your daily schedule';
-      if(row === 'diff') return 'Flashcards have no difficulty levels';
-      if(row === 'practice') return 'Flashcards go by unit and topic';
-      return NOT.cards;
-    }
-    if(f === 'frq'){
-      if(row === 'units') return '';
-      if(row === 'from') return 'Free response opens the next one you have not scored';
-      if(row === 'n') return 'One question at a time';
-      if(row === 'timer') return 'Free response is untimed here; the full practice exam times it';
-      return NOT.frq;
-    }
-    if(f === 'jus'){
-      if(row === 'units' || row === 'topic') return '';
-      if(row === 'from') return 'Justify opens the next prompt you have not checked';
-      if(row === 'n') return 'One prompt at a time';
-      return NOT.jus;
-    }
+    if(m === 'frq'){ if(cell === 'id' && frqData && frqData.failed) return 'The list did not load'; return ''; }
+    if(m === 'jus'){ if(cell === 'id' && jusData && jusData.failed) return 'The list did not load'; return ''; }
     return '';
   }
-  /* One chip that cannot be chosen right now (the row itself applies), or ''. */
-  function chipWhy(s, row, v){
-    if(row === 'from'){
-      if(s.f === 'cards' && fam === 'ochem' && (v === 'due' || v === 'missed')) return 'Not for flashcards';
-      if(s.f === 'cards' && fam === 'nremt' && v !== 'new' && v !== 'weak') return 'Not for flashcards';
-      /* An empty source stays choosable, as in the mockup; the summary says so and Start waits. */
-    }
-    if(row === 'n' && v === 0 && s.f === 'exam' && ((AP && s.ek === 'mixed') || (fam === 'ochem' && s.ek !== 'final'))) return 'Pick a number';
-    if(row === 'expl' && v === 'end' && REVIEW && s.f === 'q') return 'This course explains each answer as you go';
-    if(row === 'units' && fam === 'nremt' && s.f === 'cards'){ var u = A.units().filter(function(x){ return x.id === v; })[0]; if(u && u.exam) return 'Flashcards are grouped by topic area'; }
-    return '';
-  }
-  /* How the unit chips pick: several, one, or a range (the ochem midterm). */
-  function unitsMode(s){
-    if(s.f === 'q') return fam === 'nremt' || isReview(s) ? 'single' : 'multi';
-    if(s.f === 'exam') return ANP && s.ek === 'custom' ? 'multi' : fam === 'ochem' && s.ek === 'midterm' ? 'range' : 'single';
-    if(s.f === 'cards') return BANK ? 'multi' : 'single';
+  /* How the unit picker works: several, one, or a range (the ochem midterm). */
+  function unitsMode(m){
+    var s = S[m];
+    if(m === 'set') return fam === 'nremt' ? 'single' : 'multi';
+    if(m === 'rev') return BANK ? 'multi' : 'single';
+    if(m === 'fc') return BANK ? 'multi' : 'single';
+    if(m === 'exam') return ANP && s.ek === 'custom' ? 'multi' : fam === 'ochem' && s.ek === 'midterm' ? 'range' : 'single';
     return 'single';
   }
-  /* Keep the state inside what the rules allow. */
-  function settle(s){
-    if(!has(FIDS, s.f)) s.f = FIDS[0];
-    if(!C.examKinds.some(function(k){ return k[0] === s.ek; })) s.ek = C.examKinds[0][0];
-    if(!why(s, 'from') && chipWhy(s, 'from', s.from)) s.from = 'new';
-    var um = unitsMode(s);
-    if(um === 'single' && s.units.length > 1) s.units = s.units.slice(0, 1);
-    s.units = s.units.filter(function(u){ return !chipWhy(s, 'units', u); });
-    var unitsOff = !!why(s, 'units');
-    if((um !== 'single' || unitsOff) && s.autoUnit && s.units.length === 1 && s.units[0] === s.autoUnit) s.units = [];
-    if(um !== 'single' || unitsOff) s.autoUnit = null;
-    if(s.f === 'exam' && um === 'single' && !unitsOff && !s.units.length && A.units().length){
-      var first = A.units().filter(function(u){ return !AP || u.course; })[0];
-      if(first){ s.units = [first.id]; s.autoUnit = first.id; }   // an exam on one unit needs one; dropped again if the next choice takes several
-    }
-    if(s.topic && !A.topics(s.units).some(function(t){ return t.id === s.topic; })) s.topic = '';
-    if(!why(s, 'n') && chipWhy(s, 'n', s.n)) s.n = C.counts.filter(function(n){ return n; })[1] || C.counts[0];
-    if(!why(s, 'expl') && chipWhy(s, 'expl', s.expl)) s.expl = 'each';
+  function setCounts(){ return C.counts; }
+  function examCounts(){
+    var ek = S.exam.ek;
+    if(AP) return ek === 'mixed' ? [10, 20, 40, 60] : [5, 10, 20, 40, 0];
+    if(ANP) return [10, 20, 40, 0];
+    if(fam === 'ochem') return [10, 20, 30, 40, 60];
+    return [100];
   }
+  /* Keep each mode's state inside what its rules allow. */
+  function settle(){
+    if(!has(MODES, S.m)) S.m = MODES[0];
+    var st = S.set, ex = S.exam, fc = S.fc;
+    if(!SRC_SET.some(function(x){ return x[0] === st.from; })) st.from = 'new';
+    if(!has(setCounts(), st.n)) st.n = defaultsOf('set').n;
+    if(!TK.hasOwnProperty(st.timer)) st.timer = 'off';
+    if(!BANK) st.expl = 'each';
+    ['set', 'rev', 'fc', 'exam'].forEach(function(m){
+      if(!S[m]) return;
+      var known = A.units().map(function(u){ return u.id; });
+      if(fam === 'nremt' && m === 'fc') S[m].units = S[m].units.filter(function(u){ return (C.domains || []).some(function(d){ return d[0] === u; }); });
+      else S[m].units = S[m].units.filter(function(u){ return has(known, u); });
+      var um = unitsMode(m);
+      if(um === 'single' && S[m].units.length > 1) S[m].units = S[m].units.slice(0, 1);
+      if(S[m].topic !== undefined && S[m].topic && !A.topics(S[m].units).some(function(t){ return t.id === S[m].topic; })) S[m].topic = '';
+    });
+    if(!C.examKinds.some(function(k){ return k[0] === ex.ek; })) ex.ek = AP ? 'full' : EK0;
+    var um = unitsMode('exam');
+    if(um === 'single' && !why('exam', 'units') && !ex.units.length && A.units().length){
+      var first = A.units().filter(function(u){ return !AP || u.course; })[0];
+      if(first) ex.units = [first.id];   // an exam on one unit needs one
+    }
+    if(um === 'range' && !ex.units.length && A.units().length) ex.units = A.units().slice(0, 4).map(function(u){ return u.id; });
+    if(!has(examCounts(), ex.n)) ex.n = examCounts().indexOf(20) > -1 ? 20 : examCounts()[0];
+    if(!TIMINGS.some(function(t){ return t[0] === ex.timing; })) ex.timing = 'std';
+    if(fc){
+      var srcs = fcSources().map(function(x){ return x[0]; });
+      if(!has(srcs, fc.src)) fc.src = 'all';
+      var kk = (C.kinds || []).map(function(k){ return k[0]; });
+      fc.kinds = fc.kinds.filter(function(k){ return has(kk, k); });
+      if(!fc.kinds.length) fc.kinds = kk.slice();
+      if(!has(fcCounts(), fc.nw)) fc.nw = 20;
+    }
+    if(S.cram && S.cram.weeks !== 2 && S.cram.weeks !== 3) S.cram.weeks = 3;
+    if(S.rev && [0, 10, 20].indexOf(S.rev.n) < 0) S.rev.n = 0;
+  }
+  function fcSources(){
+    if(BANK){ var o = [['all', 'Every card'], ['missed', 'I missed'], ['weak', 'My weakest']]; if(has(C.from, 'studied')) o.push(['studied', 'Topics I studied']); return o; }
+    if(fam === 'ochem') return [['all', 'Every card'], ['weak', 'My weakest'], ['studied', 'Topics I studied']];
+    return [['all', 'Every card'], ['weak', 'My weakest']];
+  }
+  function fcCounts(){ return BANK ? [0, 10, 20, 30, 50] : [20]; }
 
   /* ---------------------------------------------------------------- drawing */
-  function chip(row, v, label, on, off, title){
-    return '<button type="button" class="pp-chip" data-k="' + row + '" data-v="' + esc(v) + '" aria-pressed="' + (on ? 'true' : 'false') + '"' +
-      (off ? ' disabled aria-disabled="true"' : '') + (title ? ' title="' + esc(title) + '"' : '') + '>' + label + '</button>';
+  var ICO = {
+    cls: '<path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 14v6h14v-6"/>',
+    link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+    print: '<path d="M7 9V3h10v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/>'
+  };
+  function ico(d){ return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; }
+  var uid = 0;
+  function chip(k, v, label, on, off, title){
+    return '<button type="button" class="pp-chip" data-k="' + k + '" data-v="' + esc(v) + '" aria-pressed="' + (on ? 'true' : 'false') + '"' +
+      (off ? ' disabled' : '') + (title ? ' title="' + esc(title) + '"' : '') + '>' + label + '</button>';
   }
-  function chips(s, row, list, isOn, rowOff){
-    return list.map(function(x){ var cw = rowOff ? '' : chipWhy(s, row, x[0]); return chip(row, x[0], x[1], isOn(x[0]), rowOff || !!cw, cw); }).join('');
+  function chips(k, list, isOn, off){ return '<div class="pp-chips">' + list.map(function(x){ return chip(k, x[0], esc(x[1]), isOn(x[0]), off); }).join('') + '</div>'; }
+  function opt(v, t, cur){ return '<option value="' + esc(v) + '"' + (String(v) === String(cur) ? ' selected' : '') + '>' + esc(t) + '</option>'; }
+  function select(k, label, opts, val, off){
+    return '<select class="pp-sel" data-k="' + k + '" aria-label="' + esc(label) + '"' + (off ? ' disabled' : '') + '>' +
+      opts.map(function(o){ return o.group ? '<optgroup label="' + esc(o.group) + '">' + o.list.map(function(x){ return opt(x.v, x.t, val); }).join('') + '</optgroup>' : opt(o.v, o.t, val); }).join('') + '</select>';
   }
-  function select(row, label, opts, val, off){
-    return '<label class="pp-field"><span class="sr-only">' + label + '</span><select data-k="' + row + '" aria-label="' + esc(label) + '"' + (off ? ' disabled' : '') + '>' +
-      opts.map(function(o){ return o.group ? '<optgroup label="' + esc(o.group) + '">' + o.list.map(function(x){ return '<option value="' + esc(x.v) + '"' + (x.v === val ? ' selected' : '') + '>' + esc(x.t) + '</option>'; }).join('') + '</optgroup>'
-        : '<option value="' + esc(o.v) + '"' + (o.v === val ? ' selected' : '') + '>' + esc(o.t) + '</option>'; }).join('') + '</select></label>';
+  /* One grid cell: the label, the reason when it is disabled, the control. */
+  function cell(id, label, reason, body, note){
+    var lid = 'ppL' + (++uid);
+    return '<div class="pp-cell' + (reason ? ' is-off' : '') + '" data-cell="' + id + '"><span class="pp-lab" id="' + lid + '">' + label + '</span>' +
+      '<div class="pp-ctl" role="group" aria-labelledby="' + lid + '"' + (reason ? ' aria-disabled="true"' : '') + '>' + body + '</div>' +
+      ((reason || note) ? '<span class="pp-why">' + esc(reason || note) + '</span>' : '') + '</div>';
   }
-  function row(id, label, reason, body, note){
-    return '<div class="pp-row' + (reason ? ' is-off' : '') + '" data-row="' + id + '"><div class="pp-lab"><span class="pp-lab-t" id="ppL-' + id + '">' + label + '</span>' +
-      ((reason || note) ? '<span class="pp-why">' + esc(reason || note) + '</span>' : '') + '</div>' +
-      '<div class="pp-ctl" role="group" aria-labelledby="ppL-' + id + '"' + (reason ? ' aria-disabled="true"' : '') + '>' + body + '</div></div>';
+  /* The unit picker: one unit (a select), or several (a checkbox list in a drop-down that looks like the select). */
+  var openMs = null;
+  function unitsText(ids, all){
+    if(!ids.length) return all || 'Every ' + UW;
+    var us = A.units().filter(function(u){ return has(ids, u.id); });
+    if(us.length === 1) return us[0].name;
+    if(us.length > 3 || C.unitWord === 'Domains') return plural(us.length, UW);
+    return (C.unitWord === 'Units' ? 'Units ' : 'Chapters ') + us.map(function(u){ return u.chip; }).join(', ');
+  }
+  function unitPicker(m, off, allLabel, noAll){
+    var s = S[m], um = unitsMode(m), units = A.units();
+    if(um === 'single'){
+      var opts = noAll ? [] : [{ v: '', t: allLabel || 'Every ' + UW }];
+      if(fam === 'nremt' && units.some(function(u){ return u.exam; })){
+        opts.push({ group: 'Exam domains', list: units.filter(function(u){ return u.exam; }).map(function(u){ return { v: u.id, t: u.name }; }) });
+        opts.push({ group: 'Topic areas', list: units.filter(function(u){ return !u.exam; }).map(function(u){ return { v: u.id, t: u.name }; }) });
+      } else opts = opts.concat(units.map(function(u){ return { v: u.id, t: u.name }; }));
+      return select('units', C.unitWord, opts, s.units[0] || '', off);
+    }
+    var head = um === 'range' ? rangeText(s.units) : unitsText(s.units, allLabel);
+    return '<details class="pp-ms" data-ms="' + m + '"' + (openMs === m && !off ? ' open' : '') + (off ? ' aria-disabled="true"' : '') + '><summary class="pp-sel"' + (off ? ' tabindex="-1"' : '') + '>' + esc(head) + '</summary>' +
+      '<div class="pp-ms-list">' + (um === 'range' ? '<p class="pp-ms-n">Tick the first and last chapter; the midterm covers every chapter between them.</p>' :
+        '<label class="pp-ms-o"><input type="checkbox" data-k="uall"' + (s.units.length ? '' : ' checked') + '> ' + esc(allLabel || 'Every ' + UW) + '</label>') +
+      units.map(function(u){ return '<label class="pp-ms-o"><input type="checkbox" data-k="unit" value="' + esc(u.id) + '"' + (has(s.units, u.id) ? ' checked' : '') + '> ' + esc(u.name) + '</label>'; }).join('') +
+      '</div></details>';
+  }
+  function range(ids){
+    var sel = A.units().filter(function(u){ return has(ids, u.id); });
+    var lo = sel.length ? Math.min.apply(null, sel.map(function(u){ return u.n; })) : 1, hi = sel.length ? Math.max.apply(null, sel.map(function(u){ return u.n; })) : 1;
+    return [lo, hi];
+  }
+  function rangeText(ids){ var r = range(ids); return 'Chapters ' + r[0] + (r[1] > r[0] ? ' to ' + r[1] : ''); }
+  function topicPicker(m, off, allTopics){
+    var s = S[m], us = s.units;
+    var first = us.length ? 'Every topic in ' + (us.length > 1 ? 'these ' + UW + 's' : 'this ' + UW) : 'Every topic';
+    return select('topic', 'Topic', [{ v: '', t: first }].concat(A.topics(us, allTopics).map(function(t){ return { v: t.id, t: t.name }; })), s.topic, off);
+  }
+  function countChips(k, list, cur, off, allLabel){ return chips(k, list.map(function(n){ return [n, n ? String(n) : (allLabel || 'All')]; }), function(v){ return +v === cur; }, off); }
+  function shareRow(m){
+    var p = printState(m);
+    return '<div class="pp-share" role="group" aria-label="Share or print"><span class="pp-share-l">Share or print this ' + (m === 'exam' ? 'exam' : 'set') + ':</span>' +
+      '<a class="pp-chip" id="ppClass" href="https://classroom.google.com/" target="_blank" rel="noopener">' + ico(ICO.cls) + ' Google Classroom<span class="sr-only"> (opens in a new tab)</span></a>' +
+      '<button type="button" class="pp-chip" id="ppCopy">' + ico(ICO.link) + ' Copy link</button>' +
+      '<button type="button" class="pp-chip" id="ppPrint"' + (p.ok ? '' : ' disabled title="' + esc(p.why) + '"') + '>' + ico(ICO.print) + ' Worksheet</button>' +
+      '<label class="pp-key"><input type="checkbox" id="ppKey"' + (p.ok ? '' : ' disabled') + (keyOn ? ' checked' : '') + '> Answer key on a separate page</label>' +
+      '<span class="pp-share-n" id="ppShareN" aria-live="polite">' + (p.ok ? '' : esc(p.why)) + '</span></div>';
+  }
+  var keyOn = false;
+  function printState(m){
+    if(!C.print) return { ok: false, why: 'Worksheets are not available for this course yet' };
+    if(m === 'exam' && S.exam.ek === 'full') return { ok: false, why: 'The full exam is not printed; a unit test or mixed set is' };
+    return { ok: true, why: '' };
   }
 
-  function render(){
-    settle(S);
-    var s = S, html = '', w;
-    /* Format */
-    html += row('f', 'Format', '', C.formats.map(function(f){ return chip('f', f[0], esc(f[1]), s.f === f[0]); }).join(''));
-    /* Exam kind */
-    w = why(s, 'ek');
-    html += row('ek', 'Exam', w, chips(s, 'ek', C.examKinds.map(function(k){ return [k[0], esc(k[1])]; }), function(v){ return s.ek === v; }, w),
-'');
-    /* Questions from */
-    w = why(s, 'from');
-    var due = A.due(), miss = A.missed();
-    html += row('from', 'Questions from', w, chips(s, 'from', C.from.map(function(v){
-      var lab = FROM[v];
-      if(s.f === 'cards' && v === 'new') lab = 'New and due cards';
-      if(s.f === 'cards' && v === 'due') lab = 'Due cards only';
-      if(s.f === 'cards' && v === 'missed') lab = 'Terms from questions I missed';
-      if(v === 'due' && s.f !== 'cards') lab += ' &middot; ' + fmt(due);
-      if(v === 'missed' && s.f !== 'cards') lab += ' &middot; ' + fmt(miss);
-      return [v, lab];
-    }), function(v){ return s.from === v; }, w));
-    /* Units and topics */
-    w = why(s, 'units');
-    var um = unitsMode(s), units = A.units ? A.units() : [], tw = why(s, 'topic') || w;
-    var unitChips = chip('units', '', 'All', !s.units.length, !!w) +   // All on every format, as in the mockup
-      chips(s, 'units', units.map(function(u){ return [u.id, esc(u.chip)]; }), function(v){ return has(s.units, v); }, w);
-    var topicSel = fam === 'nremt' ? '' : select('topic', 'Topics', [{ v: '', t: s.units.length ? 'Every topic in ' + (s.units.length > 1 ? 'these ' : 'this ') + (C.unitWord === 'Units' ? 'unit' : 'chapter') + (s.units.length > 1 ? 's' : '') : 'Every topic' }]
-      .concat(A.topics(s.units).map(function(t){ return { v: t.id, t: t.name }; })), s.topic, !!tw);
-    html += row('units', C.unitWord, w, unitChips + topicSel);
-    /* Science practice or its equivalent */
-    if(C.practice){
-      w = why(s, 'practice');
-      html += row('practice', C.practice, w, select('practice', C.practice, [{ v: '', t: 'Every ' + C.practice.toLowerCase() }].concat(A.practices().map(function(p){ return { v: p.id, t: p.name }; })), s.practice, !!w));
+  function grid(m){
+    var s = S[m], h = '', w;
+    if(m === 'set'){
+      w = why(m, 'from');
+      var mc = A.missed();
+      h += cell('from', 'Questions from', w, chips('from', SRC_SET.map(function(x){ return [x[0], x[1] + (x[0] === 'missed' ? ' · ' + fmt(mc) : '')]; }), function(v){ return s.from === v; }, !!w));
+      w = why(m, 'units'); h += cell('units', fam === 'nremt' ? 'Domain' : C.unitWord === 'Units' ? 'Unit' : 'Chapter', w, unitPicker(m, !!w));
+      w = why(m, 'topic'); h += cell('topic', 'Topic', w, fam === 'nremt' ? select('topic', 'Topic', [{ v: '', t: 'Every topic in the domain' }], '', true) : topicPicker(m, !!w));
+      w = why(m, 'n'); h += cell('n', 'How many', w, countChips('n', setCounts(), s.n, !!w));
+      w = why(m, 'timer'); h += cell('timer', 'Timer', w, chips('timer', TIMERS, function(v){ return s.timer === v; }, !!w));
+      w = why(m, 'expl'); h += cell('expl', 'Explanations', w, chips('expl', [['each', 'After each'], ['end', 'At the end']], function(v){ return s.expl === v; }, !!w));
+      if(C.practice){ w = why(m, 'practice'); h += cell('practice', C.practice, w, select('practice', C.practice, [{ v: '', t: 'Every ' + C.practice.toLowerCase() }].concat(A.practices().map(function(p){ return { v: p.id, t: p.name }; })), s.practice, !!w)); }
+      w = why(m, 'type');
+      h += cell('type', 'Question type', w, ANP ? chips('qt', [['', 'All types']].concat(ANP_TYPES), function(v){ return v === '' ? !s.qt.length : has(s.qt, v); }, !!w)
+        : select('qt', 'Question type', qtypes().map(function(t){ return { v: t[0], t: t[1] }; }), s.qt, !!w));
+      w = why(m, 'diff');
+      h += cell('diff', 'Difficulty', w, select('diff', 'Difficulty', diffs().map(function(d){ return { v: d[0], t: d[1] }; }), s.diff, !!w));
+      if(ANP) h += cell('level', 'Level', w, select('level', 'Level', LEVELS.map(function(l){ return { v: l[0], t: l[1] }; }), s.level, !!w));
+      return '<div class="pp-grid3">' + h + '</div>' + shareRow(m);
     }
-    /* Question type: the kind of thing practised (questions, cards, free-response types, justify skills) */
-    w = why(s, 'type');
-    var typeBody = '', typeNote = '';
-    if(ANP) typeBody = chip('qt', '', 'All', !s.qt.length, !!w) + chips(s, 'qt', ANP_TYPES.map(function(t){ return [t[0], esc(t[1])]; }), function(v){ return has(s.qt, v); }, w);
-    else typeBody = chips(s, 'qt', qtypes().map(function(t){ return [t[0], esc(t[1])]; }), function(v){ return s.qt === v; }, w);
-    html += row('type', 'Question type', w, typeBody);
-    /* Difficulty (A&P: and the level) */
-    w = why(s, 'diff');
-    html += row('diff', 'Difficulty', w, chips(s, 'diff', diffs().map(function(d){ return [d[0], esc(d[1])]; }), function(v){ return s.diff === v; }, w) +
-      (ANP ? select('level', 'Level', LEVELS.map(function(l){ return { v: l[0], t: l[1] }; }), s.level, !!w) : ''));
-    /* How many */
-    w = why(s, 'n');
-    html += row('n', 'How many', w, chips(s, 'n', C.counts.map(function(n){ return [n, n ? String(n) : 'All']; }), function(v){ return s.n === v; }, w),
-''); 
-    /* Timer */
-    w = why(s, 'timer');
-    html += row('timer', 'Timer', w, chips(s, 'timer', TIMERS, function(v){ return s.timer === v; }, w));
-    /* Explanations */
-    w = why(s, 'expl');
-    html += row('expl', 'Explanations', w, chips(s, 'expl', [['each', 'After each answer'], ['end', 'At the end']], function(v){ return s.expl === v; }, w), w ? '' : chipWhy(s, 'expl', 'end'));
-    /* Exam date */
-    s.date = readDate();
-    html += row('date', 'Exam date', '', '<label class="pp-field pp-date"><span class="sr-only">Exam date</span><input type="date" data-k="date" value="' + esc(s.date) + '" aria-label="Exam date"></label>' +
-      '<span class="pp-dnote">Optional. Used for your ' + (C.cram ? 'cram plan and ' : '') + 'pacing.</span>' +
-      (C.cram ? '<a class="pp-more" id="ppCram" href="cram.html' + query({ date: s.date }) + '">Make a cram plan from it</a>' : ''));
-    var focus = doc.activeElement && rowsEl.contains(doc.activeElement) ? keyOf(doc.activeElement) : null;
-    rowsEl.innerHTML = html;
-    if(focus){ var el = rowsEl.querySelector(focus); if(el && !el.disabled) el.focus(); }
+    if(m === 'rev'){
+      var due = A.due();
+      h += cell('from', 'Questions from', '', '<div class="pp-chips">' + chip('rsrc', 'due', 'Due for review · ' + fmt(due), true, false) + '</div>', 'Each comes back right before you would forget it');
+      h += cell('units', C.unitWord === 'Units' ? 'Unit' : C.unitWord === 'Domains' ? 'Domain' : 'Chapter', '', unitPicker(m, false));
+      w = why(m, 'topic'); h += cell('topic', 'Topic', w, BANK ? topicPicker(m, !!w) : select('topic', 'Topic', [{ v: '', t: 'Every topic' }], '', true));
+      h += cell('n', 'How many', '', chips('n', [[0, 'All ' + fmt(due) + ' due'], [10, '10'], [20, '20']], function(v){ return +v === s.n; }, false));
+      return '<div class="pp-grid3">' + h + '</div>';
+    }
+    if(m === 'fc'){
+      h += cell('src', 'Cards from', '', chips('src', fcSources(), function(v){ return s.src === v; }, false));
+      w = why(m, 'units');
+      if(fam === 'nremt') h += cell('units', 'Deck', w, select('units', 'Deck', [{ v: '', t: 'Every domain' }].concat((C.domains || []).map(function(d){ return { v: d[0], t: d[1] }; })), s.units[0] || '', !!w));
+      else h += cell('units', 'Deck', w, unitPicker(m, !!w, 'Every ' + UW));
+      w = why(m, 'topic'); h += cell('topic', 'Topic', w, BANK ? topicPicker(m, !!w, true) : select('topic', 'Topic', [{ v: '', t: 'Every topic' }], '', true));
+      w = why(m, 'nw'); h += cell('nw', 'New cards today', w, chips('nw', fcCounts().map(function(n){ return [n, n ? String(n) : 'None, due only']; }), function(v){ return +v === s.nw; }, !!w));
+      h += cell('kinds', 'Card types', '', chips('kinds', C.kinds || [], function(v){ return has(s.kinds, v); }, false), 'Tick one or more');
+      return '<div class="pp-grid3">' + h + '</div>';
+    }
+    if(m === 'exam'){
+      h += cell('ek', 'Kind', '', chips('ek', C.examKinds.map(function(k){ return [k[0], AP ? ({ full: 'Full exam', unit: 'Unit test', mixed: 'Mixed set' })[k[0]] || k[1] : k[1]]; }), function(v){ return s.ek === v; }, false));
+      w = why(m, 'units'); h += cell('units', C.unitWord === 'Units' ? 'Unit' : C.unitWord === 'Domains' ? 'Domain' : 'Chapter', w, w && unitsMode(m) === 'single' ? select('units', 'Unit', [{ v: '', t: 'Every ' + UW }], '', true) : unitPicker(m, !!w, ANP ? 'Every chapter' : '', unitsMode(m) === 'single'));
+      w = why(m, 'timing'); h += cell('timing', 'Timing', w, chips('timing', TIMINGS, function(v){ return !w && s.timing === v; }, !!w));
+      w = why(m, 'n'); h += cell('n', 'How many', w, countChips('n', examCounts(), w && examCounts().length > 1 ? -1 : s.n, !!w));
+      if(AP){
+        w = why(m, 'type'); h += cell('type', 'Question type', w, select('qt', 'Question type', qtypes().map(function(t){ return { v: t[0], t: t[1] }; }), s.qt, !!w));
+        h += cell('diff', 'Difficulty', w, select('diff', 'Difficulty', diffs().map(function(d){ return { v: d[0], t: d[1] }; }), s.diff, !!w));
+        if(C.practice) h += cell('practice', C.practice, w, select('practice', C.practice, [{ v: '', t: 'Every ' + C.practice.toLowerCase() }].concat(A.practices().map(function(p){ return { v: p.id, t: p.name }; })), s.practice, !!w));
+      } else if(ANP){
+        w = why(m, 'type');
+        h += cell('type', 'Question type', w, chips('qt', [['', 'All types']].concat(ANP_TYPES), function(v){ return v === '' ? !s.qt.length : has(s.qt, v); }, !!w));
+        h += cell('diff', 'Difficulty', w, select('diff', 'Difficulty', diffs().map(function(d){ return { v: d[0], t: d[1] }; }), s.diff, !!w));
+        h += cell('level', 'Level', w, select('level', 'Level', LEVELS.map(function(l){ return { v: l[0], t: l[1] }; }), s.level, !!w));
+      } else if(fam === 'nremt'){
+        h += cell('diff', 'Difficulty', '', select('diff', 'Difficulty', diffs().map(function(d){ return { v: d[0], t: d[1] }; }), s.diff, false));
+      }
+      if(!C.cram) h += cell('date', 'Exam date', '', '<input type="date" class="pp-sel" data-k="date" value="' + esc(readDate()) + '" aria-label="Exam date">', 'Optional. Used for your pacing.');
+      return '<div class="pp-grid3">' + h + '</div>' +
+        '<details class="pp-info"><summary>What&rsquo;s in the full exam</summary><p>' + esc(C.exam || '') + '</p></details>' + shareRow(m);
+    }
+    if(m === 'frq'){
+      if(!frqData) loadFrq();
+      var K = frqData && frqData.K || {}, list = frqData && frqData.list || [];
+      var types = K.ORDER ? K.ORDER.filter(function(t){ return list.some(function(f){ return f.type === t; }); }) : [];
+      h += cell('type', 'Question type', '', select('type', 'Question type', [{ v: '', t: types.length ? 'All ' + (types.length === 6 ? 'six ' : '') + 'types' : 'All types' }].concat(types.map(function(t){ return { v: t, t: K.TYPES[t] }; })), s.type, !frqData));
+      var us = []; list.forEach(function(f){ (f.units || []).forEach(function(u){ if(!has(us, u)) us.push(u); }); });
+      var names = A.allUnits ? A.allUnits() : [];
+      us.sort(function(a, b){ return names.findIndex(function(x){ return x.id === a; }) - names.findIndex(function(x){ return x.id === b; }); });
+      h += cell('unit', 'Unit', '', select('unit', 'Unit', [{ v: '', t: 'Every unit' }].concat(us.map(function(u){ var n = names.filter(function(x){ return x.id === u; })[0]; return { v: u, t: n ? n.name : u }; })), s.unit, !frqData));
+      var pool = frqMatches(), sc = K.scores ? safe(K.scores) : {};
+      w = why(m, 'id');
+      h += cell('id', 'Question', w, select('id', 'Question', [{ v: '', t: frqData ? 'Next unanswered' : 'Loading the questions…' }].concat(pool.map(function(f){ var r = sc[f.id]; return { v: f.id, t: f.title + (r ? ' (best ' + r.best + '/' + r.of + ')' : '') }; })), s.id, !frqData || !!w));
+      return '<div class="pp-grid3">' + h + '</div>';
+    }
+    if(m === 'jus'){
+      if(!jusData) loadJus();
+      var sk = jusData && jusData.skills || {};
+      h += cell('skill', 'Skill', '', select('skill', 'Skill', [{ v: '', t: 'Any' }].concat(Object.keys(sk).map(function(k){ return { v: k, t: sk[k] }; })), s.skill, !jusData));
+      var ju = []; ((jusData && jusData.prompts) || []).forEach(function(p){ if(!has(ju, p.unit)) ju.push(p.unit); });
+      var jn = A.allUnits ? A.allUnits() : [];
+      ju.sort(function(a, b){ return jn.findIndex(function(x){ return x.id === a; }) - jn.findIndex(function(x){ return x.id === b; }); });
+      h += cell('unit', 'Unit', '', select('unit', 'Unit', [{ v: '', t: 'Every unit' }].concat(ju.map(function(u){ var n = jn.filter(function(x){ return x.id === u; })[0]; return { v: u, t: n ? n.name : u }; })), s.unit, !jusData));
+      var tps = []; ((jusData && jusData.prompts) || []).forEach(function(p){ if((!s.unit || p.unit === s.unit) && !has(tps, p.topic)) tps.push(p.topic); });
+      var tn = A.topics([], true);
+      h += cell('topic', 'Topic', '', select('topic', 'Topic', [{ v: '', t: 'Every topic' }].concat(tps.map(function(t){ var x = tn.filter(function(y){ return y.id === t; })[0]; return { v: t, t: x ? x.name : t }; })), s.topic, !jusData));
+      w = why(m, 'id');
+      h += cell('id', 'Prompt', w, select('id', 'Prompt', [{ v: '', t: jusData ? 'Next prompt' : 'Loading the prompts…' }].concat(jusMatches().map(function(p){ return { v: p.id, t: p.title }; })), s.id, !jusData || !!w));
+      return '<div class="pp-grid3">' + h + '</div>';
+    }
+    if(m === 'cram'){
+      h += cell('date', 'Exam date', '', '<input type="date" class="pp-sel" data-k="date" value="' + esc(readDate()) + '" aria-label="Exam date">', 'Saved for this course');
+      h += cell('weeks', 'Plan length', '', chips('weeks', [[3, '3 weeks'], [2, '2 weeks']], function(v){ return +v === s.weeks; }, false));
+      h += cell('print', 'Print', '', '<div class="pp-chips"><a class="pp-chip" id="ppCramPrint" href="' + esc(cramHref(true)) + '">' + ico(ICO.print) + ' Print the plan</a></div>');
+      return '<div class="pp-grid3">' + h + '</div>';
+    }
+    if(m === 'cat') return '<p class="pp-fixed">Nothing to set: the adaptive exam picks each question from your last answer, 70 to 120 questions in 2 hours at most, the way the real CAT does. It is a simulation, not the Registry&rsquo;s algorithm.</p>';
+    if(m === 'scen') return '<p class="pp-fixed">You choose the call on the next page: medical or trauma, adult or child. Each call runs from dispatch to handoff, and every decision is explained when it ends.</p>';
+    return '';
+  }
+  function safe(f){ try{ return f() || {}; }catch(e){ return {}; } }
+  function frqMatches(){
+    var s = S.frq, list = frqData && frqData.list || [];
+    return list.filter(function(f){ return (!s.type || f.type === s.type) && (!s.unit || (f.units || []).indexOf(s.unit) > -1); });
+  }
+  function jusMatches(){
+    var s = S.jus, list = jusData && jusData.prompts || [];
+    return list.filter(function(p){ return (!s.unit || p.unit === s.unit) && (!s.topic || p.topic === s.topic) && (!s.skill || p.skill === s.skill); });
+  }
+
+  function paintTiles(){
+    [].forEach.call(root.querySelectorAll('.pp-tile'), function(t){ t.setAttribute('aria-pressed', t.getAttribute('data-mode') === S.m ? 'true' : 'false'); });
+    var d = root.querySelector('[data-live="due"]'), n = root.querySelector('[data-live="new"]');
+    if(d){ var k = A.due(); d.textContent = k ? fmt(k) + ' due now' : 'Nothing due now'; }
+    if(n){ var j = A.newToday(); n.textContent = j ? fmt(j) + ' new today' : 'No new cards left today'; }
+  }
+  function render(){
+    settle();
+    uid = 0;
+    var focus = doc.activeElement && setEl.contains(doc.activeElement) ? keyOf(doc.activeElement) : null;
+    setEl.innerHTML = grid(S.m);
+    setEl.setAttribute('data-mode', S.m);
+    if(focus){ var el = setEl.querySelector(focus); if(el && !el.disabled) el.focus(); }
+    paintTiles();
     paintSummary();
+    save();
   }
   function keyOf(el){
+    if(el.id) return '#' + el.id;
+    var ms = el.closest('.pp-ms');
+    if(ms && el.tagName === 'INPUT') return el.value && el.getAttribute('data-k') === 'unit' ? '.pp-ms input[value="' + el.value.replace(/"/g, '\\"') + '"]' : '.pp-ms input[data-k="uall"]';
+    if(ms) return '.pp-ms summary';
     var k = el.getAttribute('data-k'), v = el.getAttribute('data-v');
     return k ? '[data-k="' + k + '"]' + (v !== null ? '[data-v="' + v.replace(/"/g, '\\"') + '"]' : '') : null;
   }
 
   /* ---------------------------------------------------------------- what Start runs */
-  function unitName(id){ var u = (A.units ? A.units() : []).filter(function(x){ return x.id === id; })[0]; return u ? u.name : id; }
-  function unitsText(s){
-    if(!s.units.length) return 'every ' + (C.unitWord === 'Units' ? 'unit' : C.unitWord === 'Domains' ? 'domain' : 'chapter');
-    if(s.topic){ var t = A.topics(s.units).filter(function(x){ return x.id === s.topic; })[0]; if(t) return t.title; }
-    if(s.units.length === 1) return unitName(s.units[0]);
-    var w = C.unitWord === 'Units' ? 'Units ' : C.unitWord + ' ';
-    return w + A.units().filter(function(u){ return has(s.units, u.id); }).map(function(u){ return u.chip; }).join(', ');
+  function unitName(id){ var u = A.units().filter(function(x){ return x.id === id; })[0]; return u ? u.name : id; }
+  function label(list, v){ var x = list.filter(function(y){ return String(y[0]) === String(v); })[0]; return x ? strip(x[1]) : ''; }
+  function where(s){
+    if(s.topic){ var t = A.topics(s.units, true).filter(function(x){ return x.id === s.topic; })[0]; if(t) return t.title; }
+    return unitsText(s.units);
   }
-  function label(list, v){ var x = list.filter(function(y){ return y[0] === v; })[0]; return x ? strip(x[1]) : ''; }
-  function qsec(s){ return Math.round(C.pace * TK[s.timer]); }
-  function timing(s){ return s.timer === 'pace' ? 'std' : s.timer; }
-  function nOr(s, all){ return s.n || all; }
+  function timing(t){ return t === 'pace' ? 'std' : t; }
+  function filters(s, prac){
+    var bits = [];
+    if(ANP ? s.qt.length : s.qt) bits.push(ANP ? s.qt.map(function(t){ return label(ANP_TYPES, t); }).join(', ') : label(qtypes(), s.qt));
+    if(s.diff && s.diff !== 'all') bits.push(label(diffs(), s.diff).toLowerCase());
+    if(ANP && s.level) bits.push(label(LEVELS, s.level).toLowerCase());
+    if(prac && C.practice && s.practice) bits.push(strip((A.practices().filter(function(p){ return p.id === s.practice; })[0] || {}).name || ''));
+    return bits;
+  }
+  var TLINE = { off: 'no timer', pace: 'exam pace', x15: 'time and a half', x2: 'double time' };
+  var SRC_T = { new: '', weak: ' from your weakest topics', missed: ' you missed', studied: ' from topics you studied' };
 
-  /* { title, body: [lines], cta, href, off }. The wording follows the mockup's renderVals(): a title, then
-     "From <source>, <units>", then type · difficulty, then timer · explanations, each line only when its rows
-     apply. */
-  var SRC = { new: 'new questions', due: 'questions due for review', missed: 'questions you missed', weak: 'your weakest topics', studied: 'topics you have studied' };
-  var TLINE = { off: 'No timer', pace: 'Exam pace', x15: 'Time and a half', x2: 'Double time' };
-  function lines(s, exam){
-    var out = [];
-    out.push('From ' + (why(s, 'from') ? '' : SRC[s.from] + ', ') + unitsText(s));
-    if(!why(s, 'type') || !why(s, 'diff')){
-      var bits = [];
-      if(!why(s, 'type')) bits.push(ANP ? (s.qt.length ? s.qt.map(function(t){ return label(ANP_TYPES, t); }).join(', ') : 'Every question type') : (s.qt ? label(qtypes(), s.qt) : 'Every question type'));
-      if(!why(s, 'diff')) bits.push(s.diff && s.diff !== 'all' ? label(diffs(), s.diff).toLowerCase() : 'any difficulty');
-      if(ANP && s.level && !why(s, 'diff')) bits.push(label(LEVELS, s.level).toLowerCase());
-      if(C.practice && s.practice && !why(s, 'practice')) bits.push(strip((A.practices().filter(function(p){ return p.id === s.practice; })[0] || {}).name || ''));
-      var ln = bits.join(' · ');
-      out.push(ln.charAt(0).toUpperCase() + ln.slice(1));
-    }
-    if(!why(s, 'timer')) out.push(TLINE[s.timer] + (why(s, 'expl') ? '' : ' · explanations ' + (s.expl === 'end' ? 'at the end' : 'after each answer')));
-    return out;
-  }
-  function plan(s){
-    var f = s.f, n = s.n, L = lines(s), nTxt = n ? String(n) : 'All';
-    if(f === 'q'){
-      var cap = s.from === 'due' ? A.due() : s.from === 'missed' && BANK ? A.missed() : 0, k = cap && (!n || n > cap) ? cap : n;
-      var href;
-      if(isReview(s)) href = 'review.html' + query(fam === 'ochem' ? { go: 1, chapter: s.units[0] || '', n: n || '' } : { go: 1, domain: s.units[0] || '', n: n || '' });
-      else if(BANK) href = 'practice.html' + query({ go: 1, from: s.from, units: s.units.join(','), topic: s.topic, practice: AP ? s.practice : '', core: ANP ? s.practice : '',
+  /* { title, line, cta, href, off } in the mockup's wording (renderVals()). */
+  function plan(){
+    var m = S.m, s = S[m];
+    if(m === 'set'){
+      var n = s.n, cap = s.from === 'missed' && BANK ? A.missed() : 0, k = cap && (!n || n > cap) ? cap : n, href;
+      if(BANK) href = 'practice.html' + query({ go: 1, from: s.from, units: s.units.join(','), topic: s.topic, practice: AP ? s.practice : '', core: ANP ? s.practice : '',
         type: ANP ? s.qt.join(',') : s.qt, diff: s.diff, level: ANP ? s.level : '', n: n, timer: s.timer !== 'off' ? s.timer : '', expl: s.expl === 'end' ? 'end' : '' });
       else if(fam === 'ochem') href = 'practice.html' + query({ go: 1, from: s.from, chapters: s.units.join(','), topic: s.topic, tier: s.diff, type: s.qt, n: n, timer: s.timer !== 'off' ? s.timer : '' });
       else href = 'practice.html' + query({ go: 1, from: s.from, area: s.from === 'new' ? s.units[0] || '' : '', diff: s.from === 'new' && s.diff !== 'all' ? s.diff : '', n: s.from === 'missed' ? '' : n, timer: s.timer !== 'off' ? s.timer : '' });
-      var empty = s.from === 'due' && !A.due() ? 'Nothing is due right now' : s.from === 'missed' && !A.missed() ? 'Nothing missed yet' :
-        s.from === 'weak' && BANK && !A.weak().length ? 'Answer some questions first, then your weakest topics show here' : s.from === 'studied' && !A.studied().length ? 'Study a topic first' : '';
-      var off = !!empty;
-      return { title: (k ? k : 'All') + ' questions', body: off ? [empty] : L, cta: 'Start practice', href: href, off: off };
+      var empty = s.from === 'missed' && !A.missed() ? 'Nothing missed yet. Pick Any to start.' :
+        s.from === 'weak' && BANK && !A.weak().length ? 'Answer some questions first, then your weakest topics show here.' : s.from === 'studied' && !A.studied().length ? 'Study a topic first.' : '';
+      var nremtMiss = fam === 'nremt' && s.from === 'missed';
+      var title = (nremtMiss ? 'Every question' : (k ? k : 'All') + ' questions') + SRC_T[s.from];
+      var ln = [why('set', 'units') ? (s.from === 'weak' ? 'Domains picked for you' : 'Every domain') : cap1(where(s))].concat(filters(s, true));
+      ln.push(TLINE[s.timer]);
+      if(BANK) ln.push('explanations ' + (s.expl === 'end' ? 'at the end' : 'after each answer'));
+      return { title: title, line: empty || ln.join(' · '), cta: 'Start practice', href: href, off: !!empty };
     }
-    if(f === 'exam'){
-      var ek = s.ek, std = s.timer === 'pace' ? 'Standard time' : TLINE[s.timer];
+    if(m === 'rev'){
+      var due = A.due(), href2;
+      if(BANK) href2 = 'practice.html' + query({ go: 1, from: 'due', units: s.units.join(','), topic: s.topic, n: s.n });
+      else href2 = 'review.html' + query(fam === 'ochem' ? { go: 1, chapter: s.units[0] || '', n: s.n || '' } : { go: 1, domain: s.units[0] || '', n: s.n || '' });
+      var t2 = s.n ? s.n + ' review questions' : 'All ' + fmt(due) + ' due questions';
+      var scope = s.units.length || s.topic ? 'From ' + where(s) + '. ' : '';
+      return { title: due ? t2 : 'Nothing is due right now', line: due ? scope + 'Each comes back right before you would forget it.' : 'Questions you answer come back here when they are due.', cta: 'Start review', href: href2, off: !due };
+    }
+    if(m === 'fc'){
+      var kinds = s.kinds.length === (C.kinds || []).length ? 'Every card type' : s.kinds.map(function(x){ return label(C.kinds, x); }).join(', ');
+      var t3 = !BANK ? 'Up to ' + A.newToday() + ' new cards, plus any due' : s.nw ? s.nw + ' new cards, plus any due' : 'Due cards only';
+      var deckT = s.src !== 'all' && BANK ? ({ missed: 'Terms from questions you missed', weak: 'Your weakest topics', studied: 'Topics you studied' })[s.src] :
+        (fam === 'nremt' ? (s.units[0] ? label(C.domains, s.units[0]) : 'Every domain') : cap1(where(s))) + (s.src === 'weak' ? ', weakest cards' : s.src === 'studied' ? ', topics you studied' : '');
+      var hr;
+      if(BANK){
+        var deck, uk = ANP ? 'chapter:' : 'unit:';
+        if(s.src === 'missed') deck = 'missed';
+        else if(s.src === 'weak') deck = A.weak().map(function(x){ return 'topic:' + x.id; }).join(',') || 'all';
+        else if(s.src === 'studied') deck = A.studied().map(function(x){ return 'topic:' + x; }).join(',') || 'all';
+        else if(s.topic) deck = 'topic:' + s.topic;
+        else if(s.units.length) deck = s.units.map(function(u){ return uk + u; }).join(',');
+        else deck = 'all';
+        hr = 'flashcards.html' + query({ go: 1, deck: deck, kinds: s.kinds.join(','), 'new': s.nw });
+      } else if(fam === 'ochem') hr = 'flashcards.html' + query({ go: 1, chapter: s.units[0] || 'all', scope: s.src, types: s.kinds.join(',') });
+      else hr = 'flashcards.html' + query({ go: 1, domain: s.units[0] || 'all', scope: s.src, types: s.kinds.join(',') });
+      return { title: t3, line: deckT + ' · ' + kinds + ' · grade yourself as you go', cta: 'Study cards', href: hr };
+    }
+    if(m === 'exam'){
+      var ek = s.ek, tm = TIMING_TXT[s.timing], ff = filters(s, AP);
       if(AP){
-        var t = ek === 'full' ? 'Full practice exam' : ek === 'unit' ? 'Unit test: ' + unitName(s.units[0]) : 'Mixed timed set: ' + (n ? plural(n, 'question') : 'every question');
-        var body = ek === 'full' ? [C.exam, std] : L;
-        return { title: t, body: body, cta: 'Start the exam',
-          href: 'exams.html' + query({ go: 1, mode: ek, unit: ek === 'unit' ? s.units[0] : '', len: ek === 'unit' ? n : '', n: ek === 'mixed' ? n : '', timing: timing(s),
+        var tt = ek === 'full' ? 'Full practice exam' : ek === 'unit' ? unitName(s.units[0]).replace(/:.*/, '') + ' test' : 'Mixed timed set';
+        var ln2 = ek === 'full' ? C.exam : ek === 'unit' ? (s.n ? plural(s.n, 'question') : 'Every question') + ' from ' + unitName(s.units[0]) : plural(s.n, 'question') + ' from every unit';
+        return { title: tt, line: [ln2].concat(ek === 'full' ? [] : ff).concat([tm]).join(' · '), cta: 'Start the exam',
+          href: 'exams.html' + query({ go: 1, mode: ek, unit: ek === 'unit' ? s.units[0] : '', len: ek === 'unit' ? s.n : '', n: ek === 'mixed' ? s.n : '', timing: timing(s.timing),
             type: ek !== 'full' ? s.qt : '', diff: ek !== 'full' ? s.diff : '', practice: ek !== 'full' ? s.practice : '' }) };
       }
       if(ANP){
         var names = { unit: 'Unit quiz', system: 'System exam', finalI: 'Cumulative final, A&P I', finalII: 'Cumulative final, A&P II', custom: 'Custom exam', teas: 'TEAS A&P practice' };
         var custom = ek === 'custom', mode = ek === 'finalI' || ek === 'finalII' ? 'final' : ek;
-        return { title: names[ek] + (custom ? ': ' + (n ? plural(n, 'question') : 'every question that matches') : ''), body: ek === 'unit' || ek === 'system' || custom ? L : [ek === 'teas' ? 'The TEAS 7 A&P areas, at TEAS pace' : 'Every chapter of the course, weighted by topic', std], cta: 'Start the exam',
+        var ln3 = ek === 'unit' || ek === 'system' ? unitName(s.units[0]) : custom ? (s.n ? plural(s.n, 'question') : 'Every matching question') + ' from ' + unitsText(s.units, 'every chapter') : ek === 'teas' ? 'The TEAS 7 A&P areas, at TEAS pace' : 'Every chapter of the course, weighted by topic';
+        return { title: names[ek], line: [ln3].concat(custom ? filters(s) : []).concat(ek === 'unit' ? [] : [tm]).join(' · '), cta: 'Start the exam',
           href: 'exams.html' + query({ go: 1, mode: mode, chapter: ek === 'unit' || ek === 'system' ? s.units[0] : '', course: mode === 'final' ? (ek === 'finalI' ? 'I' : 'II') : '',
-            chapters: custom ? s.units.join(',') : '', types: custom ? s.qt.join(',') : '', levels: custom ? s.level : '', diffs: custom ? s.diff : '', len: custom ? String(n) : '', timing: ek === 'unit' ? '' : timing(s) }) };
+            chapters: custom ? s.units.join(',') : '', types: custom ? s.qt.join(',') : '', levels: custom ? s.level : '', diffs: custom ? s.diff : '', len: custom ? String(s.n) : '', timing: ek === 'unit' ? '' : timing(s.timing) }) };
       }
       if(fam === 'ochem'){
-        var us = A.units(), sel = us.filter(function(u){ return has(s.units, u.id); }), lo = sel.length ? Math.min.apply(null, sel.map(function(u){ return u.n; })) : 1, hi = sel.length ? Math.max.apply(null, sel.map(function(u){ return u.n; })) : 1;
-        var tt = ek === 'chapter' ? 'Chapter test: ' + unitName(s.units[0]) : ek === 'midterm' ? 'Midterm: chapters ' + lo + (hi > lo ? ' to ' + hi : '') : 'Cumulative final';
-        return { title: tt, body: ek === 'final' ? ['50 questions from every chapter', std] : [plural(n, 'question') + ' from ' + (ek === 'midterm' ? 'chapters ' + lo + ' to ' + hi : unitName(s.units[0])), std], cta: 'Start the exam',
-          href: 'exams.html' + query({ go: 1, kind: ek, chapter: ek === 'chapter' ? s.units[0] : '', len: ek === 'final' ? '' : n, from: ek === 'midterm' ? lo : '', to: ek === 'midterm' ? hi : '', timing: timing(s) }) };
+        var r = range(s.units);
+        var t4 = ek === 'chapter' ? 'Chapter test: ' + unitName(s.units[0]) : ek === 'midterm' ? 'Midterm: chapters ' + r[0] + (r[1] > r[0] ? ' to ' + r[1] : '') : 'Cumulative final';
+        return { title: t4, line: (ek === 'final' ? '50 questions from every chapter' : plural(s.n, 'question') + ' from ' + (ek === 'midterm' ? 'chapters ' + r[0] + ' to ' + r[1] : unitName(s.units[0]))) + ' · ' + tm, cta: 'Start the exam',
+          href: 'exams.html' + query({ go: 1, kind: ek, chapter: ek === 'chapter' ? s.units[0] : '', len: ek === 'final' ? '' : s.n, from: ek === 'midterm' ? r[0] : '', to: ek === 'midterm' ? r[1] : '', timing: timing(s.timing) }) };
       }
-      return { title: 'Timed exam: 100 questions', body: ['In the 2025 domain mix, 2 hours' + (s.diff !== 'all' ? ', ' + label(diffs(), s.diff).toLowerCase() + ' only' : ''), ek === 'real' ? 'Exam-realistic: no flagging, no going back' : 'No feedback until you submit'],
+      return { title: 'Timed exam: 100 questions', line: 'The 2025 domain mix, 2 hours' + (s.diff !== 'all' ? ', ' + label(diffs(), s.diff).toLowerCase() + ' only' : '') + ' · ' + (ek === 'real' ? 'exam-realistic: no flagging, no going back' : 'no feedback until you submit'),
         cta: 'Start the exam', href: 'exams.html' + query({ go: 1, exam: 'full', diff: s.diff !== 'all' ? s.diff : '', real: ek === 'real' }) };
     }
-    if(f === 'cards'){
-      var title = (s.from === 'due' ? 'Due' : nTxt) + ' flashcards';
-      if(BANK){
-        var deck, uk = ANP ? 'chapter:' : 'unit:';
-        if(s.from === 'missed') deck = 'missed';
-        else if(s.from === 'weak') deck = A.weak().map(function(x){ return 'topic:' + x.id; }).join(',') || 'all';
-        else if(s.from === 'studied') deck = A.studied().map(function(x){ return 'topic:' + x; }).join(',') || 'all';
-        else if(s.topic) deck = 'topic:' + s.topic;
-        else if(s.units.length) deck = s.units.map(function(u){ return uk + u; }).join(',');
-        else deck = 'all';
-        return { title: title, body: L, cta: 'Study cards', href: 'flashcards.html' + query({ go: 1, deck: deck, 'new': s.from === 'due' ? 0 : (s.n || 50) }) };
-      }
-      var scope = s.from === 'weak' ? 'weak' : s.from === 'studied' ? 'studied' : 'all';
-      if(fam === 'ochem') return { title: 'Flashcards', body: L, cta: 'Study cards', href: 'flashcards.html' + query({ go: 1, chapter: s.units[0] || 'all', scope: scope }) };
-      var lab = s.units.length ? s.units[0].replace(/^system:/, '') : '', dm = (C.domains || []).filter(function(d){ return d[1] === lab; })[0];
-      return { title: 'Flashcards', body: L, cta: 'Study cards', href: 'flashcards.html' + query({ go: 1, domain: dm ? dm[0] : 'all', scope: scope }) };
+    if(m === 'frq'){
+      var pool = frqMatches(), one = s.id && pool.filter(function(f){ return f.id === s.id; })[0];
+      var none = frqData && !frqData.failed && !pool.length;
+      var K = frqData && frqData.K || {};
+      var bits = [s.type && K.TYPES ? K.TYPES[s.type] : '', s.unit ? (A.allUnits().filter(function(x){ return x.id === s.unit; })[0] || {}).short || s.unit : ''].filter(Boolean);
+      return { title: one ? one.title : none ? 'No question matches yet' : 'Next unanswered question', line: (bits.length ? bits.join(' · ') + ' · ' : '') + 'Write each part, then score it with the rubric.', cta: 'Start writing',
+        href: one ? 'frq/' + one.id + '.html' : 'frq.html' + query({ go: 1, type: s.type, unit: s.unit }), off: !!none };
     }
-    if(f === 'frq'){
-      var m = frqData && !frqData.failed ? frqData.list.filter(function(x){ return !s.units.length || (x.units || []).indexOf(s.units[0]) > -1; }) : null;
-      if(!frqData) loadFrq();
-      return { title: 'Written answers', body: m && !m.length ? ['No free-response question matches yet'] : L, cta: 'Start writing',
-        href: 'frq.html' + query({ go: 1, unit: s.units[0] || '' }), off: !!m && !m.length };
+    if(m === 'jus'){
+      var ps = jusMatches(), p1 = s.id && ps.filter(function(p){ return p.id === s.id; })[0], none2 = jusData && !jusData.failed && !ps.length;
+      return { title: p1 ? p1.title : none2 ? 'No prompt matches yet' : 'Next prompt', line: 'Write your answer, then compare it with a model answer.', cta: 'Start a prompt',
+        href: p1 ? 'justify.html?p=' + encodeURIComponent(p1.id) : 'justify.html' + query({ go: 1, unit: s.unit, topic: s.topic, skill: s.skill }), off: !!none2 };
     }
-    if(f === 'jus'){
-      var ps = jusData && jusData.prompts ? jusData.prompts.filter(function(p){ return (!s.units.length || p.unit === s.units[0]) && (!s.topic || p.topic === s.topic); }) : null;
-      if(!jusData) loadJus();
-      return { title: 'Justify prompts', body: ps && !ps.length ? ['No prompt matches yet'] : L, cta: 'Start a prompt',
-        href: 'justify.html' + query({ go: 1, unit: s.units[0] || '', topic: s.topic }), off: !!ps && !ps.length };
+    if(m === 'cram'){
+      var dt = readDate(), dd = dt ? new Date(dt + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : '';
+      return { title: s.weeks + ' week plan' + (dd ? ' to ' + dd : ''), line: dt ? 'A day by day plan; Premium fits it to your weakest units.' : 'Set your exam date and the plan counts back from it.', cta: 'Make my plan', href: cramHref(false) };
     }
-    if(f === 'cat') return { title: 'Adaptive exam', body: ['70 to 120 questions, 2 hours at most', 'A simulation, not the Registry’s algorithm'], cta: 'Start adaptive exam', href: 'exams.html' + query({ go: 1, exam: 'cat' }) };
-    return { title: 'Scenarios', body: ['One call, from dispatch to handoff', 'Every decision explained when the call ends'], cta: 'Choose a call', href: 'scenario-sim.html' };
+    if(m === 'cat') return { title: 'Adaptive exam', line: '70 to 120 questions, 2 hours at most · a simulation, not the Registry’s algorithm', cta: 'Start adaptive exam', href: 'exams.html' + query({ go: 1, exam: 'cat' }) };
+    return { title: 'Scenarios', line: 'One call, from dispatch to handoff · every decision explained when the call ends', cta: 'Choose a call', href: 'scenario-sim.html' };
   }
+  function cramHref(print){ return 'cram.html' + query({ date: readDate(), weeks: S.cram ? S.cram.weeks : 3, print: print }); }
 
   var current = null;
   function paintSummary(){
-    var r = current = plan(S);
+    var r = current = plan();
     sumT.textContent = r.title;
-    sumB.innerHTML = r.body.map(esc).join('<br>');
+    sumB.textContent = r.line;
     goEl.textContent = r.cta;
     goEl.href = r.href;
     if(r.off){ goEl.setAttribute('aria-disabled', 'true'); goEl.classList.add('is-off'); } else { goEl.removeAttribute('aria-disabled'); goEl.classList.remove('is-off'); }
-    paintShare(r);
-  }
-
-  /* ---------------------------------------------------------------- sharing */
-  var shareN = doc.getElementById('ppShareN'), printBtn = doc.getElementById('ppPrint'), keyBox = doc.getElementById('ppKey');
-  function absUrl(h){ try{ return new URL(h, location.href).href; }catch(e){ return h; } }
-  function paintShare(r){
     var cls = doc.getElementById('ppClass');
     if(cls) cls.href = 'https://classroom.google.com/share?url=' + encodeURIComponent(absUrl(r.href)) + '&title=' + encodeURIComponent(r.title + ': ' + strip(doc.querySelector('.band .issue') ? doc.querySelector('.band .issue').textContent : '').trim());
-    if(!C.print) return;
-    var can = S.f === 'q' && !isReview(S);
-    printBtn.disabled = !can; keyBox.disabled = !can;
-    printBtn.title = can ? '' : 'A worksheet is made from a question set: choose Questions as the format';
   }
-  doc.getElementById('ppCopy').addEventListener('click', function(){
-    var url = absUrl(current.href), done = function(){ shareN.setAttribute('data-msg', '1'); shareN.textContent = 'Link copied. It opens this session.'; setTimeout(function(){ shareN.removeAttribute('data-msg'); paintShare(current); }, 4000); };
-    if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function(){ prompt('Copy this link', url); });
-    else { prompt('Copy this link', url); }
-  });
-  if(printBtn) printBtn.addEventListener('click', function(){
-    if(printBtn.disabled) return;
-    hook().then(function(H){
-      var o = runOpts(S, H);
-      if(!H.print) return;
-      H.print({ pick: o.pick, count: o.count, label: o.label, key: keyBox.checked, btn: printBtn, gate: function(g){ shareN.innerHTML = g; } });
-    });
-  });
+  function absUrl(h){ try{ return new URL(h, location.href).href; }catch(e){ return h; } }
 
   /* ---------------------------------------------------------------- AP® and A&P: the question set */
   var hookP = null;
@@ -511,8 +665,8 @@
       doc.addEventListener('levl-practice-ready', function(){ res(W[name]); });
     }));
   }
-  /* The set the settings describe, as a filter over the engine's index stubs. */
-  function runOpts(s, H){
+  /* The set the settings describe, as a filter over the engine's index stubs. s has the set's shape. */
+  function runOpts(s, H, label){
     var ids = null, order = null, weakT = null, studied = null, mode = 'build';
     if(s.from === 'due'){ var q = Core.reviewQueue(), rank = {}; q.forEach(function(id, i){ rank[id] = i; }); ids = rank; order = function(steps){ return steps.slice().sort(function(a, b){ return first(a) - first(b); }); function first(b){ return Math.min.apply(null, b.items.map(function(x){ return x.id in rank ? rank[x.id] : 1e9; })); } }; }
     else if(s.from === 'missed'){ ids = {}; Core.missed().forEach(function(id){ ids[id] = 1; }); mode = 'missed'; }
@@ -535,20 +689,22 @@
       }
       return true;
     };
-    var r = plan(s);
-    return { pick: pick, count: s.n, mode: mode, order: order, label: r.title + ' · ' + r.body[0], defer: s.expl === 'end' };
+    return { pick: pick, count: s.n, mode: mode, order: order, label: label, defer: s.expl === 'end' };
   }
   /* go=1 on practice.html: run it as soon as the engine has its index. */
   function goRun(){
     wrap.classList.add('is-go');
+    var s = parseSet(URLP, defaultsOf('set'));
+    if(URLP.get('from') === 'due') s.from = 'due';
     hook().then(function(H){
-      var ok = H.run(runOpts(S, H));
+      var ok = H.run(runOpts(s, H, current ? current.title + ' · ' + current.line : 'Practice'));
       if(!ok){ wrap.classList.remove('is-go'); H.setup(); clean(); note('No questions match those settings yet. Loosen one of them.'); }
       else startClock();
     });
   }
   function clean(){ try{ history.replaceState(null, '', location.pathname); }catch(e){} }
-  function note(t){ var n = doc.createElement('p'); n.className = 'pp-alert'; n.setAttribute('role', 'status'); n.textContent = t; rowsEl.parentNode.insertBefore(n, rowsEl); }
+  function note(t){ clearAlert(); var n = doc.createElement('p'); n.className = 'pp-alert'; n.setAttribute('role', 'status'); n.textContent = t; setEl.parentNode.insertBefore(n, setEl); }
+  function clearAlert(){ var a = root.querySelector('.pp-alert'); if(a) a.remove(); }
 
   /* ---------------------------------------------------------------- the clock over a question set */
   var clock = null;
@@ -568,7 +724,7 @@
     var t = engine && +engine.getAttribute('data-pp-total');
     if(t) return t;
     var el = C.total && doc.querySelector(C.total), m = el && /(?:of|\/)\s*(\d+)/.exec(el.textContent || '');
-    return m ? +m[1] : (S.n || 20);
+    return m ? +m[1] : (+URLP.get('n') || 20);
   }
   function startClock(){
     var k = TK[URLP.get('timer')] || 0;
@@ -604,62 +760,93 @@
   function watch(){ var r = running(); wrap.classList.toggle('is-run', r); if(r) wrap.classList.remove('is-go'); }
 
   /* ---------------------------------------------------------------- events */
-  rowsEl.addEventListener('click', function(e){
-    var b = e.target.closest('button[data-k]');
-    if(!b || b.disabled) return;
-    var k = b.getAttribute('data-k'), v = b.getAttribute('data-v'), s = S;
-    if(k === 'units'){
-      var um = unitsMode(s);
-      s.autoUnit = null;
-      if(v === '') s.units = [];
-      else if(um === 'single') s.units = [v];
-      else s.units = has(s.units, v) ? s.units.filter(function(x){ return x !== v; }) : s.units.concat(v);
-      s.topic = s.topic && A.topics(s.units).some(function(t){ return t.id === s.topic; }) ? s.topic : '';
-    } else if(k === 'qt' && ANP){
-      s.qt = v === '' ? [] : has(s.qt, v) ? s.qt.filter(function(x){ return x !== v; }) : s.qt.concat(v);
-    } else if(k === 'n') s.n = +v;
-    else if(k === 'f'){
-      s.f = v;
-      /* As the mockup: a timed exam starts at exam pace, explained at the end, every question; questions
-         explain after each answer. */
-      if(v === 'exam'){ s.timer = 'pace'; s.expl = 'end'; s.n = 0; }
-      if(v === 'q') s.expl = 'each';
-    } else s[k] = v;
+  root.querySelector('.pp-tiles').addEventListener('click', function(e){
+    var t = e.target.closest('.pp-tile');
+    if(!t) return;
+    S.m = t.getAttribute('data-mode');
+    openMs = null;
     clearAlert();
     render();
   });
-  rowsEl.addEventListener('change', function(e){
-    var el = e.target, k = el.getAttribute('data-k');
+  doc.getElementById('ppReset').addEventListener('click', function(){
+    S[S.m] = defaultsOf(S.m);
+    keyOn = false; openMs = null;
+    clearAlert();
+    render();
+  });
+  setEl.addEventListener('click', function(e){
+    var b = e.target.closest('button[data-k]');
+    if(!b || b.disabled) return;
+    var k = b.getAttribute('data-k'), v = b.getAttribute('data-v'), m = S.m, s = S[m];
+    if(k === 'qt' && ANP) s.qt = v === '' ? [] : has(s.qt, v) ? s.qt.filter(function(x){ return x !== v; }) : s.qt.concat(v);
+    else if(k === 'kinds'){ s.kinds = has(s.kinds, v) ? s.kinds.filter(function(x){ return x !== v; }) : s.kinds.concat(v); if(!s.kinds.length) s.kinds = [v]; }
+    else if(k === 'n' || k === 'nw' || k === 'weeks') s[k] = +v;
+    else if(k === 'rsrc') return;
+    else if(k === 'ek'){ s.ek = v; s.units = []; s.n = AP && v === 'unit' ? 0 : 20; }
+    else if(k === 'timer'){ s.timer = v; if(v !== 'off' && s.expl === 'each' && BANK) s.expl = 'end'; }   // as the mockup: a timer explains at the end
+    else s[k] = v;
+    clearAlert();
+    render();
+  });
+  setEl.addEventListener('toggle', function(e){
+    var d = e.target;
+    if(!d.classList || !d.classList.contains('pp-ms')) return;
+    if(d.getAttribute('aria-disabled') === 'true'){ d.open = false; return; }
+    openMs = d.open ? d.getAttribute('data-ms') : null;
+  }, true);
+  doc.addEventListener('click', function(e){
+    var d = setEl.querySelector('.pp-ms[open]');
+    if(d && doc.contains(e.target) && !d.contains(e.target)){ d.open = false; openMs = null; }
+  });
+  doc.addEventListener('keydown', function(e){
+    var d = setEl.querySelector('.pp-ms[open]');
+    if(d && e.key === 'Escape'){ d.open = false; openMs = null; d.querySelector('summary').focus(); }
+  });
+  setEl.addEventListener('change', function(e){
+    var el = e.target, k = el.getAttribute('data-k') || el.id, m = S.m, s = S[m];
     if(!k) return;
+    if(k === 'ppKey'){ keyOn = el.checked; return; }
     if(k === 'date'){
       var v = /^\d{4}-\d{2}-\d{2}$/.test(el.value) ? el.value : '';
       var D = W.LevlExamDate;
       if(D && D.write) D.write(C.course, v);
-      S.date = v;
-      var cl = doc.getElementById('ppCram'); if(cl) cl.href = 'cram.html' + query({ date: v });
+      paintSummary();
+      var cp = doc.getElementById('ppCramPrint'); if(cp) cp.href = cramHref(true);
       return;
     }
-    S[k] = el.value;
-    render();
-  });
-  function clearAlert(){ var a = root.querySelector('.pp-alert'); if(a) a.remove(); }
-  root.querySelector('.pp-quick').addEventListener('click', function(e){
-    var b = e.target.closest('[data-quick]');
-    if(!b) return;
-    var q = b.getAttribute('data-quick'), d = defaults();
-    if(q === 'q10'){ d.n = 10; }
-    if(q === 'due'){ d.from = 'due'; d.n = C.counts.indexOf(0) > -1 ? 0 : C.counts[C.counts.length - 1]; }   // may be disabled when nothing is due: Start says so
-    if(q === 'exam'){ d.f = 'exam'; d.ek = AP ? 'full' : ANP ? 'finalI' : fam === 'ochem' ? 'final' : 'std'; d.timer = 'pace'; d.expl = 'end'; d.n = 0; }
-    if(q === 'cards'){ d.f = 'cards'; d.n = 20; }
-    S = d;
+    if(k === 'unit' && el.closest('.pp-ms')){
+      s.units = el.checked ? (has(s.units, el.value) ? s.units : s.units.concat(el.value)) : s.units.filter(function(x){ return x !== el.value; });
+    } else if(k === 'uall'){ s.units = []; }
+    else if(k === 'units') s.units = el.value ? [el.value] : [];
+    else if(k === 'qt' && ANP) s.qt = el.value ? [el.value] : [];
+    else s[k] = el.value;
+    if(m === 'frq' && (k === 'type' || k === 'unit')) s.id = '';
+    if(m === 'jus' && (k === 'skill' || k === 'unit' || k === 'topic')){ s.id = ''; if(k === 'unit') s.topic = ''; }
     clearAlert();
     render();
-    var r = rowsEl.querySelector('[data-row="f"] [aria-pressed="true"]'); if(r) r.focus();
+  });
+  setEl.addEventListener('click', function(e){
+    var c = e.target.closest('#ppCopy, #ppPrint');
+    if(!c || c.disabled) return;
+    var shareN = doc.getElementById('ppShareN');
+    if(c.id === 'ppCopy'){
+      var url = absUrl(current.href), done = function(){ if(shareN) shareN.textContent = 'Link copied. It opens this session.'; };
+      if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function(){ prompt('Copy this link', url); });
+      else prompt('Copy this link', url);
+      return;
+    }
+    /* The worksheet: the set the settings describe (an exam's unit test or mixed set: the same filters and length). */
+    hook().then(function(H){
+      if(!H.print) return;
+      var s = S.m === 'exam' ? { from: 'new', units: S.exam.ek === 'unit' ? S.exam.units : [], topic: '', practice: S.exam.practice, qt: S.exam.qt, diff: S.exam.diff, level: '', n: S.exam.n, expl: 'each' } : S.set;
+      var o = runOpts(s, H, current.title + ' · ' + current.line);
+      H.print({ pick: o.pick, count: o.count, label: o.label, key: keyOn, btn: c, gate: function(g){ if(shareN) shareN.innerHTML = g; } });
+    });
   });
   goEl.addEventListener('click', function(e){
     if(goEl.getAttribute('aria-disabled') === 'true'){ e.preventDefault(); return; }
-    /* A question set on this page: the engine runs it here, no reload (the address keeps the settings). */
-    if(BANK && S.f === 'q' && !isReview(S) && /^practice\.html/.test(goEl.getAttribute('href'))){
+    /* A question set or review on this page: the engine runs it here, no reload (the address keeps the settings). */
+    if(BANK && (S.m === 'set' || S.m === 'rev') && /^practice\.html/.test(goEl.getAttribute('href'))){
       e.preventDefault();
       URLP = new URLSearchParams(goEl.getAttribute('href').split('?')[1] || '');
       try{ history.replaceState(null, '', location.pathname + '?' + URLP.toString()); }catch(x){}

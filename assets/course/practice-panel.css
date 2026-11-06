@@ -1,76 +1,102 @@
-/* The Practice panel, version 2 (docs/course-redesign-r4.md decision 5, Practice v2; mockup
-   docs/redesign-r4/mockups/PracticeAll.dc.txt; markup scripts/lib/practice-panel.mjs, behaviour
+/* The Practice panel, version 3 (docs/course-redesign-r4.md decision 5, Practice v3; mockup
+   docs/redesign-r4/mockups/PracticeV3.dc.txt; markup scripts/lib/practice-panel.mjs, behaviour
    assets/course/practice-panel.js). The short band and .lap (the card pulled up over the band's foot) are
    part A's, in assets/course/r3.css. Colours through the theme tokens and the course tokens r3.css sets
-   per data-cover; the navy summary and the free limit box keep their colours in both themes, because the
-   summary is a dark panel and the box sits on the course band, which is dark in both. */
+   per data-cover; the navy bar and the free limit box keep their colours in both themes, because the bar is
+   a dark panel and the box sits on the course band, which is dark in both. */
 
-.pp-grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px;align-items:start}
-.pp-card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:22px 28px 10px;
+.pp-v3{max-width:1080px}
+.pp-card{background:var(--white);border:1px solid var(--line);border-radius:22px;
   box-shadow:0 1px 2px rgba(11,26,51,.04),0 8px 24px rgba(11,26,51,.05)}
-.pp-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-.pp .pp-h2,.pp-card .pp-h2{margin:0;font:900 30px/1.1 var(--display);letter-spacing:-.035em;color:var(--ink)}
-.pp-h2 em{font-style:normal;color:var(--accent)}
-.pp-hint{margin:0;font:700 14px var(--font-ui);color:var(--muted)}
-.pp-quick{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0 6px}
-.pp-quick-l{font:800 14px var(--font-ui);color:var(--muted)}
-.pp-loading,.pp-noscript{margin:16px 0;font:700 14.5px var(--font-ui);color:var(--muted)}
-.pp-alert{margin:12px 0 0;padding:10px 14px;border-radius:12px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);font:800 14px var(--font-ui);color:var(--ink)}
+.pp-step{padding:24px 28px}
+.pp-step2{border-top:1px solid var(--line)}
+.pp-step-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.pp-card .pp-k{margin:0;font:900 13px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.pp-reset{border:0;background:none;padding:0;font:800 13.5px var(--font-ui);color:var(--muted);text-decoration:underline;cursor:pointer}
+.pp-reset:hover{color:var(--ink)}
+.pp-loading,.pp-noscript{margin:0;font:700 14.5px var(--font-ui);color:var(--muted)}
+.pp-alert{margin:0 0 14px;padding:10px 14px;border-radius:12px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);font:800 14px var(--font-ui);color:var(--ink)}
 
-/* One row per setting: label (and the reason, when it does not apply) on the left, choices on the right. */
-.pp-row{display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)}
-.pp-lab{padding-top:9px}
-.pp-lab-t{display:block;font:900 12.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-.pp-why{display:block;margin-top:2px;font:700 12.5px/1.4 var(--font-ui);color:var(--muted)}
-.pp-ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;min-width:0}
-/* A row that does not apply keeps its label; its choices fade, as in the mockup (opacity .4, not-allowed). */
-.pp-row.is-off .pp-field{opacity:.4}
+/* Step 1: the tiles, 4 a row; the chosen one green (course colour). */
+.pp-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}
+.pp-tile{display:flex;gap:12px;align-items:center;min-height:72px;padding:14px 16px;border-radius:16px;text-align:left;cursor:pointer;
+  font-family:inherit;color:var(--ink);background:var(--white);border:1.5px solid var(--line)}
+.pp-tile:hover{border-color:var(--accent)}
+.pp-tile[aria-pressed="true"]{border:2px solid var(--accent);background:var(--ctint);padding:13.5px 15.5px}
+.pp-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.pp-tile-i{color:var(--accent);flex:none;display:flex}
+.pp-tile-x b{display:block;font:900 16px/1.25 var(--font-ui);color:var(--ink)}
+.pp-tile-l{display:block;color:var(--muted);font:700 13.5px/1.3 var(--font-ui);margin-top:1px}
 
+/* Step 2: one even 3-column grid of settings. */
+.pp-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 22px}
+.pp-cell{min-width:0}
+.pp-lab{display:block;margin-bottom:8px;font:900 12px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pp-why{display:block;margin-top:6px;font:700 12.5px/1.4 var(--font-ui);color:var(--muted)}
+.pp-ctl{min-width:0}
+.pp-cell.is-off .pp-ctl{opacity:.4}
+.pp-chips{display:flex;gap:8px;flex-wrap:wrap}
 .pp-chip{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);background:var(--white);font:800 14.5px var(--font-ui);
   padding:8px 14px;border-radius:10px;color:var(--ink);cursor:pointer;text-decoration:none;line-height:1.25;text-align:left}
 .pp-chip:hover{border-color:var(--accent);color:var(--ink)}
 .pp-chip[aria-pressed="true"]{border-color:var(--accent);background:var(--ctint);color:var(--accent)}
 .pp-chip:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.pp-chip:disabled,.pp-chip[aria-disabled="true"]{cursor:not-allowed;opacity:.4}
+.pp-chip:disabled{cursor:not-allowed}
+.pp-cell:not(.is-off) .pp-chip:disabled{opacity:.4}
 .pp-chip:disabled:hover{border-color:var(--line)}
 .pp-chip[aria-pressed="true"]:disabled:hover{border-color:var(--accent)}
-.pp-field{display:flex;flex:1 1 220px;min-width:200px}
-.pp-row[data-row="practice"] .pp-field{flex:0 1 auto;min-width:260px}
-.pp-field select,.pp-field input{width:100%;font:700 15px var(--font-ui);color:var(--ink);padding:10px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface2)}
-.pp-field select:disabled,.pp-field input:disabled{cursor:not-allowed}
-.pp-date{flex:0 1 200px;min-width:170px}
-.pp-dnote{font:700 14px var(--font-ui);color:var(--muted)}
-.pp-wait{font:700 14px var(--font-ui);color:var(--muted)}
-.pp .pp-more,.pp-card .pp-more{font:900 14.5px var(--font-ui);color:var(--accent)}
-
-/* The right column: the navy summary with the one Start, then the sharing card. */
-.pp-side{position:sticky;top:130px;display:flex;flex-direction:column;gap:16px}
-.pp-sum{background:var(--r3-navy,#0B1A33);color:#fff;border-radius:22px;padding:22px 24px}
-.pp-sum-k{margin:0;font:900 12.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:#FFD43B}
-.pp-sum-t{margin:8px 0 0;font:900 22px/1.2 var(--display);color:#fff}
-.pp-sum-b{margin:8px 0 0;font:600 14.5px/1.5 var(--font-ui);color:var(--muted-on-dark)}
-.pp-sum-b a{color:#fff;text-decoration:underline}
-.pp-go{display:flex;align-items:center;justify-content:center;width:100%;margin-top:16px;padding:14px 22px;border-radius:12px;
-  background:#FFD23F;color:#0B1A33;font:900 16px var(--font-ui);text-decoration:none}
-.pp-go:hover{filter:brightness(1.05);color:#0B1A33}
-.pp-go:focus-visible{outline:3px solid #FFD23F;outline-offset:3px}
-.pp-go.is-off{opacity:.55;cursor:not-allowed}
-.pp-share{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;
-  box-shadow:0 1px 2px rgba(11,26,51,.04),0 8px 24px rgba(11,26,51,.05)}
-.pp-share-h{margin:0 0 2px;font:900 14px var(--font-ui);color:var(--ink)}
-.pp-sbtn{width:100%}
+.pp-sel{display:block;width:100%;font:700 15px var(--font-ui);color:var(--ink);padding:11px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface2);min-height:46px;box-shadow:none}
+.pp-sel:focus{border-color:var(--accent);box-shadow:none}
+.pp-sel:disabled{cursor:not-allowed}
+select.pp-sel,.pp-ms summary{-webkit-appearance:none;appearance:none;padding-right:34px;
+  background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
+  background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+select.pp-sel{text-overflow:ellipsis}
+.pp-sel:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
+input.pp-sel{padding:10px 14px}
+/* Several units: a drop-down of checkboxes that looks like the select. */
+.pp-ms{position:relative}
+.pp-ms summary{list-style:none;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp-ms summary::-webkit-details-marker{display:none}
+.pp-ms[aria-disabled="true"] summary{cursor:not-allowed}
+.pp-ms-list{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:8;max-height:320px;overflow:auto;padding:8px;border-radius:12px;
+  background:var(--white);border:1.5px solid var(--line);box-shadow:0 10px 30px rgba(11,26,51,.16)}
+.pp-ms-o{display:flex;gap:8px;align-items:flex-start;padding:7px 8px;border-radius:8px;font:700 14.5px/1.35 var(--font-ui);color:var(--ink);cursor:pointer}
+.pp-ms-o:hover{background:var(--surface2)}
+.pp-ms-o input{margin:2px 0 0;width:17px;height:17px;flex:none;accent-color:var(--accent)}
+.pp-ms-n{margin:2px 8px 6px;font:700 12.5px/1.4 var(--font-ui);color:var(--muted)}
+.pp-fixed{margin:0;max-width:720px;font:700 15px/1.55 var(--font-ui);color:var(--muted)}
+.pp-info{margin-top:16px}
+.pp-info summary{font:900 14.5px var(--font-ui);color:var(--accent);cursor:pointer}
+.pp-info p{margin:8px 0 0;font:600 14px/1.5 var(--font-ui);color:var(--muted)}
+/* The share row (question sets and exams). */
+.pp-share{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.pp-share .pp-chip:disabled{opacity:.4}
+.pp-share-l{font:800 14px var(--font-ui);color:var(--muted)}
 .pp-key{display:flex;gap:6px;align-items:center;font:700 14px var(--font-ui);color:var(--ink)}
 .pp-key input{width:17px;height:17px;margin:0;accent-color:var(--accent)}
 .pp-key:has(input:disabled){opacity:.45}
-.pp-share-n{margin:0;font:600 12.5px/1.4 var(--font-ui);color:var(--muted)}
+.pp-share-n{flex-basis:100%;font:600 12.5px/1.4 var(--font-ui);color:var(--muted)}
 .pp-share-n:empty{display:none}
+
+/* The navy bar: the choice in words and one Start; sticky to the viewport's foot while the card is on screen. */
+.pp-bar{position:sticky;bottom:0;z-index:5;display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 28px;
+  background:var(--r3-navy,#0B1A33);color:#fff;border-radius:0 0 21px 21px}
+.pp-bar-t{flex:1;min-width:220px}
+.pp-card .pp-sum-t{margin:0;font:900 18px/1.3 var(--font-ui);color:#fff}
+.pp-card .pp-sum-b{margin:2px 0 0;font:600 14px/1.45 var(--font-ui);color:rgba(255,255,255,.78)}
+.pp-go{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:12px;
+  background:#FFD43B;color:#0B1A33;font:900 16px var(--font-ui);text-decoration:none;white-space:nowrap}
+.pp-go:hover{filter:brightness(1.05);color:#0B1A33}
+.pp-go:focus-visible{outline:3px solid #FFD43B;outline-offset:3px}
+.pp-go.is-off{opacity:.55;cursor:not-allowed}
 
 /* The engine: its own setup is the card now, so only a running session or its results show. Ochem keeps
    its suggestions and concept lists under the card (only its builder and rail go); NREMT keeps its
    readiness card. */
 .pp-engine{margin-top:24px}
 .pp-wrap:not(.is-run):not(.is-go) .pp-engine #app{display:none}
-.pp-wrap.is-run .pp-grid,.pp-wrap.is-go .pp-grid{display:none}
+.pp-wrap.is-run .pp-v3,.pp-wrap.is-go .pp-v3{display:none}
 .pp-wrap.is-run .pp-engine,.pp-wrap.is-go .pp-engine{margin-top:0}
 .pp-engine #ocBuilder,.pp-engine #practiceHome .cx-rail,.pp-engine #nrBuilder{display:none}
 .pp-engine #practiceHome > .cx-body{display:block}
@@ -100,16 +126,19 @@
 .pp-free .pp-free-a{font:900 14px var(--font-ui);color:#6B4E00;text-decoration:underline}
 .pp-free-n{flex-basis:100%;font:600 12.5px/1.4 var(--font-ui);color:#3D3418}
 
-@media (max-width:980px){
-  .pp-grid{grid-template-columns:minmax(0,1fr)}
-  .pp-side{position:static}
+@media (max-width:900px){
+  .pp-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pp-grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media (max-width:760px){
-  .pp-card{padding:18px 16px 6px;border-radius:18px}
-  .pp-row{grid-template-columns:minmax(0,1fr);gap:8px;padding:14px 0}
-  .pp-lab{padding-top:0}
-  .pp .pp-h2,.pp-card .pp-h2{font-size:25px}
-  .pp-field{max-width:none}
+@media (max-width:640px){
+  .pp-step{padding:20px 18px}
+  .pp-tiles{gap:10px}
+  .pp-tile{flex-direction:column;align-items:flex-start;gap:6px;padding:12px 14px}
+  .pp-tile[aria-pressed="true"]{padding:11.5px 13.5px}
+  .pp-bar{padding:14px 18px;bottom:calc(66px + env(safe-area-inset-bottom));border-radius:0 0 17px 17px}
+  .pp-card{border-radius:18px}
+  .pp-grid3{grid-template-columns:minmax(0,1fr);gap:18px}
+  .pp-go{flex:1 1 100%}
   .pp-clock{top:auto;bottom:84px;right:auto;left:14px}
 }
 /* A running session starts under the band, not over it (its bar has no card behind it). */
