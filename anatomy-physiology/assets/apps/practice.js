@@ -223,6 +223,7 @@
 
   function renderSetup(){
     view('setup');
+    GO = null; app.classList.remove('pp-defer'); app.removeAttribute('data-pp-total');
     if(state.mode === 'flagged' || (MODE[state.mode] && modeUnavailable(state.mode))) state.mode = 'topic';
     app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' +
       '<form class="cx-card cx-builder anp-pr-setup" novalidate aria-label="Build a practice set">' +
@@ -314,11 +315,38 @@
     return MODE[mode] ? MODE[mode].title : 'Practice';
   }
 
-  function start(mode, count, fixed){
+  /* The Practice panel's hook, window.AnpPracticeHook (docs/course-redesign-r4.md decision 5, Practice v2): assets/course/practice-panel.js
+     builds the set the settings describe (a filter over the index stubs, a count, an order) and runs it here;
+     practice.html?go=1 waits for it instead of drawing this builder. o.defer keeps every answered question out of
+     sight until the summary ("Explanations: at the end"). */
+  var GO = null;
+  function goKeep(stage){
+    if(!GO || !stage || !stage.querySelector('.is-answered')) return;
+    [].forEach.call(stage.querySelectorAll('[data-qid]:not(.is-answered)'), function(el){ el.remove(); });
+    while(stage.firstChild) GO.kept.appendChild(stage.firstChild);
+  }
+  var hookApi = {
+    run: function(o){
+      var pool = bank.filter(o.pick);
+      if(!pool.length) return false;
+      var picked = o.order ? o.order(pool.map(function(q){ return { items: [q] }; })).map(function(b){ return b.items[0]; }) : pickOrder(pool, true);
+      if(o.count) picked = picked.slice(0, o.count);
+      GO = { label: o.label, defer: !!o.defer, kept: document.createDocumentFragment(), again: function(){ hookApi.run(o); } };
+      start(o.mode === 'missed' ? 'missed' : 'go', 0, picked, true);
+      return true;
+    },
+    setup: function(){ renderSetup(); }
+  };
+  function publishHook(){
+    window.AnpPracticeHook = hookApi;
+    try{ document.dispatchEvent(new Event('levl-practice-ready')); }catch(e){}
+  }
+
+  function start(mode, count, fixed, ordered){
     var pool = fixed || poolFor(mode);
     if(!pool.length) return;
     var mixed = mode !== 'topic';
-    var picked = fixed ? shuffle(fixed) : pickOrder(pool, mixed);
+    var picked = fixed ? (ordered ? fixed.slice() : shuffle(fixed)) : pickOrder(pool, mixed);
     if(count) picked = picked.slice(0, count);
     var btn = app.querySelector('.anp-pr-start');
     if(btn){ btn.disabled = true; btn.textContent = 'Loading questions…'; }
@@ -335,10 +363,12 @@
 
   function begin(mode, qs){
     session = {
-      mode: mode, label: modeLabel(mode), queue: qs, i: 0, results: [], firstTry: {},
+      mode: mode, label: mode !== 'retry' && GO && GO.label ? GO.label : modeLabel(mode), queue: qs, i: 0, results: [], firstTry: {},
       tries: {}, retryUntilRight: mode === 'missed' || mode === 'retry', finished: false
     };
     view('session');
+    app.setAttribute('data-pp-total', qs.length);
+    app.classList.toggle('pp-defer', !!(GO && GO.defer));
     app.innerHTML = '<div class="cx-session anp-pr-session">' +
       '<div class="cx-sbar"><span class="cx-sbar-t">' + esc(session.label) + '</span>' +
         '<span class="cx-sbar-n anp-pr-count-l" aria-live="polite"></span>' +
@@ -361,6 +391,7 @@
     if(session.i >= session.queue.length) return finish();
     var q = session.queue[session.i];
     var stage = app.querySelector('.anp-pr-stage'), after = app.querySelector('.anp-pr-after');
+    if(GO && GO.defer) goKeep(stage);
     stage.innerHTML = ''; after.hidden = true; after.innerHTML = '';
     progress();
     if(!Core.serve(q)){
@@ -403,6 +434,7 @@
   function finish(){
     if(!session || session.finished) return;
     session.finished = true;
+    if(GO && GO.defer){ goKeep(app.querySelector('.anp-pr-stage')); app.classList.remove('pp-defer'); }
     var res = session.results, right = res.filter(function(r){ return r.correct; }).length;
     if(res.length && Core) Core.event('anp-session-finish', { mode: session.mode === 'retry' ? 'missed' : session.mode, answered: res.length, correct: right });
     if(!res.length){ renderSetup(); return; }
@@ -449,12 +481,14 @@
       next: nextHtml + coreHtml,
       retry: stillWrong.length ? { act: 'retry', label: 'Retry the ' + plural(stillWrong.length, 'miss', 'misses') } : null,
       stepHtml: window.LevlNextStep ? LevlNextStep('anp', { topics: topicOrder, also: [
-        { label: 'Another set like this', act: function(){ if(mode === 'retry' || !poolFor(mode).length) renderSetup(); else start(mode, count); } }] }) : '',
+        { label: 'Another set like this', act: function(){ if(GO && mode !== 'retry'){ GO.again(); return; } if(mode === 'retry' || !poolFor(mode).length) renderSetup(); else start(mode, count); } }] }) : '',
       more: '<h2>By topic</h2><div class="table-wrap" tabindex="0" role="region" aria-label="Results by topic"><table class="anp-pr-table"><thead><tr><th scope="col">Topic</th><th scope="col">Right</th><th scope="col">Mastery now</th></tr></thead><tbody>' +
         topicOrder.map(function(t){ var b = byTopic[t], m = Core ? Core.topicMastery(t) : { value: 0 };
           return '<tr><th scope="row"><a href="' + lessonHref(t) + '">' + esc(TOPIC[t].title) + '</a></th><td>' + b.c + '/' + b.n + '</td><td>' + (Core ? Core.pct(m.value) : '') + '</td></tr>'; }).join('') +
-        '</tbody></table></div>'
+        '</tbody></table></div>' +
+        (GO && GO.defer ? '<h2>Every question, with its explanation</h2><div class="pp-kept"></div>' : '')
     }) + '</div>';
+    if(GO && GO.defer){ var kept = app.querySelector('.pp-kept'); if(kept) kept.appendChild(GO.kept); GO.kept = document.createDocumentFragment(); }
     LevlStudy.wire(app, { retry: function(){ start('retry', 0, stillWrong); } });
   }
 
@@ -483,7 +517,8 @@
       else if(p.get('chapter') && state.chapter === p.get('chapter')) state.mode = 'chapter';
       else if(p.get('core') && state.core === p.get('core')) state.mode = 'core';
       else if(MODE[p.get('mode')]) state.mode = p.get('mode');
-      if((state.mode === 'flagged' || state.mode === 'missed') && !modeUnavailable(state.mode)) start(state.mode, 0); else renderSetup();
+      publishHook();
+      if(p.get('go') === '1' && document.getElementById('ppConfig')){ /* the panel runs it */ } else if((state.mode === 'flagged' || state.mode === 'missed') && !modeUnavailable(state.mode)) start(state.mode, 0); else renderSetup();
       if(p.toString()){ var s = app.querySelector('.anp-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){
       app.innerHTML = '<p>The question bank did not load. Check your connection and reload; once a page has loaded online it also works offline.</p>';

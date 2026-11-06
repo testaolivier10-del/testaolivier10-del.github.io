@@ -120,13 +120,26 @@
 </div><div class="art" aria-hidden="true"><img src="../assets/covers/art/ochem.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
 <!-- practice-band:end -->
 <div class="xshell lap pp-wrap">
-<div class="pp" id="pp">
-<section class="pp-step pp-s1" aria-labelledby="ppS1"><h2 class="pp-k" id="ppS1">1 &middot; What do you want to do?</h2>
-<!-- practice-tiles:start -->
-<div class="pp-tiles"><a class="pp-tile" href="practice.html" data-mode="set"><span class="pp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><span class="pp-tt"><b>Practice set</b><span class="pp-ts" data-live="set">Questions with feedback</span></span></a><a class="pp-tile" href="review.html" data-mode="review"><span class="pp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.5L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4.5L20 16"/><path d="M20 20v-4h-4"/></svg></span><span class="pp-tt"><b>Review</b><span class="pp-ts" data-live="review">Your spaced review queue</span></span></a><a class="pp-tile" href="flashcards.html" data-mode="flash"><span class="pp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="4" width="13" height="15" rx="2"/><path d="M4 8v11a2 2 0 0 0 2 2h9"/></svg></span><span class="pp-tt"><b>Flashcards</b><span class="pp-ts" data-live="flash">Spaced cards</span></span></a><a class="pp-tile" href="exams.html" data-mode="exam"><span class="pp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M10 2h4"/></svg></span><span class="pp-tt"><b>Exam</b><span class="pp-ts" data-live="exam">Timed, no feedback</span></span></a></div>
-<!-- practice-tiles:end -->
+<!-- practice-panel:start -->
+<div class="pp-grid" id="pp">
+<section class="pp-card" aria-labelledby="ppH">
+<div class="pp-head"><h2 class="pp-h2" id="ppH">Build your <em>session</em></h2><p class="pp-hint">Every setting is here. Change any of them.</p></div>
+<div class="pp-quick" role="group" aria-label="Quick picks"><span class="pp-quick-l">Quick picks:</span><button type="button" class="pp-chip" data-quick="q10">Quick 10</button><button type="button" class="pp-chip" data-quick="due">Review what&rsquo;s due</button><button type="button" class="pp-chip" data-quick="exam">Full practice exam</button><button type="button" class="pp-chip" data-quick="cards">20 flashcards</button></div>
+<div class="pp-rows" id="ppRows"><p class="pp-loading">Loading the settings&hellip;</p></div>
+<noscript><p class="pp-noscript">Building a session needs JavaScript. Each format also has its own page: <a href="review.html">Review</a>, <a href="flashcards.html">Flashcards</a>, <a href="exams.html">Exams</a>.</p></noscript>
 </section>
-<section class="pp-step pp-s2" aria-labelledby="ppS2"><h2 class="pp-k" id="ppS2">2 &middot; Set it up</h2>
+<aside class="pp-side" aria-label="Your session">
+<div class="pp-sum"><p class="pp-sum-k">Your session</p><p class="pp-sum-t" id="ppSumT" aria-live="polite"></p><p class="pp-sum-b" id="ppSumB"></p><a class="pp-go" id="ppGo" href="practice.html">Start practice</a></div>
+<div class="pp-share" id="ppShare"><p class="pp-share-h">Teaching or sharing?</p>
+<a class="pp-chip pp-sbtn" id="ppClass" href="https://classroom.google.com/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 14v6h14v-6"/></svg> Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a>
+<button type="button" class="pp-chip pp-sbtn" id="ppCopy"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg> Copy a link to this session</button>
+<button type="button" class="pp-chip pp-sbtn" id="ppPrint" disabled><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h10v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg> Print as a worksheet</button>
+<label class="pp-key"><input type="checkbox" id="ppKey" disabled> Answer key on a separate page</label>
+<p class="pp-share-n" id="ppShareN" aria-live="polite">Worksheets are not available for this course yet.</p></div>
+</aside>
+</div>
+<!-- practice-panel:end -->
+<div class="pp-engine">
     <!-- Landing: the builder and your numbers (practice-page.js). -->
     <div id="practiceHome"></div>
     <noscript><div class="site-nav-fallback"><p>Practice picks each question from your own attempt history and scores it live, which needs JavaScript. With scripts off you can still read the <a href="learn.html">textbook</a>, and every lesson under <a href="index.html">Home</a> has its own worked questions.</p></div></noscript>
@@ -144,12 +157,10 @@
 
     <!-- End-of-session: score, what moved, what's next. -->
     <div id="practiceSummary" class="practice-view" hidden></div>
-<div class="pp-set" id="ppSet" hidden></div></section>
-<div class="pp-bar" id="ppBar" hidden><div class="pp-bar-t"><p class="pp-sum" id="ppSum" aria-live="polite"></p><p class="pp-sum2" id="ppSum2"></p></div><a class="pp-go" id="ppGo" href="practice.html">Start</a></div>
 </div>
 </div>
 <!-- practice-config:start -->
-<script type="application/json" id="ppConfig">{"course":"ochem","family":"ochem","note":"The first four chapters are unlimited.","modes":["set","review","flash","exam"],"store":{"cards":"ochem_flashcards_v1"},"setRoot":"#practiceHome"}</script>
+<script type="application/json" id="ppConfig">{"course":"ochem","family":"ochem","note":"The first four chapters are unlimited.","dir":"ochem","formats":[["q","Questions, feedback after each"],["exam","Timed exam"],["cards","Flashcards"]],"unitWord":"Chapters","practice":null,"pace":90,"from":["new","due","missed","weak","studied"],"counts":[5,10,20,40,0],"examKinds":[["chapter","Chapter test"],["midterm","Midterm"],["final","Cumulative final"]],"store":{"cards":"ochem_flashcards_v1"},"engine":"#practiceHome","end":"#sessionQuit","total":"#practiceProgLabel"}</script>
 <!-- practice-config:end -->
 </main>
 
@@ -177,6 +188,7 @@
 <script src="assets/periodic-table.js" defer></script>
 <script src="../assets/course/study.js" defer></script>
 <script src="assets/practice-page.js" defer></script>
+<script src="../assets/exam-date.js" defer></script>
 <script src="../assets/course/practice-panel.js" defer></script>
 <div class="xshell">
   <footer>

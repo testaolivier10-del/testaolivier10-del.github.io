@@ -53,6 +53,8 @@
     { id: 'numeric', name: 'Numeric answers' }
   ];
   var DIFFS = [{ id: '', name: 'Any' }, { id: '1', name: 'Easier' }, { id: '2', name: 'Medium' }, { id: '3', name: 'Harder' }];
+  /* The panel draws its Question type and Difficulty rows from these (assets/course/practice-panel.js). */
+  window.ApBioPracticeMeta = { kinds: KINDS, diffs: DIFFS };
   var MODES = [
     { id: 'build', title: 'Any', desc: 'Pick the unit, topic, practice, type and difficulty.' },
     { id: 'weak', title: 'My weakest topics', desc: 'Your lowest-mastery topics, mixed.' },
@@ -240,6 +242,7 @@
 
   function renderSetup(){
     view('setup');
+    GO = null; app.classList.remove('pp-defer'); app.removeAttribute('data-pp-total');
     if(state.mode === 'flagged' || modeUnavailable(state.mode)) state.mode = 'build';
     var n1 = '<span class="cx-step-n" aria-hidden="true">';
     app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' +
@@ -323,14 +326,14 @@
     window.addEventListener('afterprint', done);
     window.print();
   }
-  function worksheet(btn){
-    var picked = take(pickOrder(poolFor(state.mode), state.mode !== 'build' || !state.topic), state.count);
-    var withKey = !!(app.querySelector('#bio-ws-key') || {}).checked;
+  function worksheet(btn, o){
+    var picked = o ? o.picked : take(pickOrder(poolFor(state.mode), state.mode !== 'build' || !state.topic), state.count);
+    var withKey = o ? !!o.key : !!(app.querySelector('#bio-ws-key') || {}).checked;
     var list = [];
     picked.forEach(function(b){ if(!b.skill) b.items.forEach(function(q){ list.push(q); }); });
     var free = Core && Core.locked ? list.filter(function(q){ return !Core.locked(q.unit, q.topic); }) : list;
     var left = list.length - free.length;
-    if(!free.length){ app.querySelector('.bio-pr-sharewrap').insertAdjacentHTML('beforeend', Core.gate('question-bank', 'practice-print')); return; }
+    if(!free.length){ var gate = Core.gate('question-bank', 'practice-print'); if(o && o.gate) o.gate(gate); else app.querySelector('.bio-pr-sharewrap').insertAdjacentHTML('beforeend', gate); return; }
     btn.disabled = true;
     Core.loadQuestions(BASE, free).then(function(qs){
       btn.disabled = false;
@@ -341,7 +344,7 @@
         return s ? '<div class="bio-set">' + Q.stimulusPanel(g.stimulus, s) + items + '</div>' : items;
       }).join('');
       printOnly('<div class="bio-ws"><p class="bio-ws-head">Name: ________________________ &nbsp; Date: ____________</p>' +
-        '<h1 class="bio-ws-title">' + esc(setLabel()) + '</h1><p class="bio-small">LevlPrep biology question set &middot; ' + plural(n, 'question') + (left ? ' &middot; ' + plural(left, 'Premium question') + ' left out' : '') + '</p>' + html +
+        '<h1 class="bio-ws-title">' + esc(o && o.label || setLabel()) + '</h1><p class="bio-small">LevlPrep biology question set &middot; ' + plural(n, 'question') + (left ? ' &middot; ' + plural(left, 'Premium question') + ' left out' : '') + '</p>' + html +
         (withKey ? '<section class="bio-ws-key"><h2>Answer key</h2><ol>' + keys.join('') + '</ol></section>' : '') + '</div>');
     }).catch(function(){ btn.disabled = false; });
   }
@@ -370,8 +373,10 @@
   }
 
   function begin(mode, steps){
-    session = { mode: mode, label: CLS ? CLS.title : mode === 'retry' ? 'Retrying your misses' : setLabel(), steps: steps, i: 0, results: [], firstTry: {}, tries: {}, retry: mode === 'missed' || mode === 'retry', finished: false };
+    session = { mode: mode, label: CLS ? CLS.title : mode === 'retry' ? 'Retrying your misses' : GO && GO.label ? GO.label : setLabel(), steps: steps, i: 0, results: [], firstTry: {}, tries: {}, retry: mode === 'missed' || mode === 'retry', finished: false };
     session.total = itemCount(steps);
+    app.setAttribute('data-pp-total', session.total);
+    app.classList.toggle('pp-defer', !!(GO && GO.defer));
     view('session');
     app.innerHTML = '<div class="cx-session bio-pr-session">' +
       '<div class="cx-sbar"><span class="cx-sbar-t">' + esc(session.label) + '</span><span class="cx-sbar-n bio-pr-count-l" aria-live="polite"></span>' +
@@ -392,6 +397,7 @@
     if(session.i >= session.steps.length) return finish();
     var step = session.steps[session.i];
     var stage = app.querySelector('.bio-pr-stage'), after = app.querySelector('.bio-pr-after');
+    if(GO && GO.defer) goKeep(stage);
     stage.innerHTML = ''; after.hidden = true; after.innerHTML = '';
     progress();
     // The whole set is served or none of it (free tier, ApBioCore.serve).
@@ -446,6 +452,7 @@
   function finish(){
     if(!session || session.finished) return;
     session.finished = true;
+    if(GO && GO.defer){ goKeep(app.querySelector('.bio-pr-stage')); app.classList.remove('pp-defer'); }
     if(CLS && CLS.done(session.results)) return;
     var res = session.results, right = res.filter(function(r){ return r.correct; }).length;
     if(res.length && Core) Core.event('apbio-session-finish', { mode: session.mode === 'retry' ? 'missed' : session.mode, answered: res.length, correct: right });
@@ -482,13 +489,49 @@
       '</tbody></table></div>' +
       '<h2>By science practice</h2><div class="table-wrap" tabindex="0" role="region" aria-label="Results by science practice"><table class="bio-pr-table"><thead><tr><th scope="col">Practice</th><th scope="col">Right</th></tr></thead><tbody>' +
         byPractice.map(function(x){ var p = PRACTICE[x.key]; return '<tr><th scope="row">' + esc(x.key + (p ? '. ' + p.name : '')) + '</th><td>' + x.c + '/' + x.n + '</td></tr>'; }).join('') +
-      '</tbody></table></div>'
+      '</tbody></table></div>' +
+      (GO && GO.defer ? '<h2>Every question, with its explanation</h2><div class="pp-kept"></div>' : '')
     }) + '</div>';
+    if(GO && GO.defer){ var kept = app.querySelector('.pp-kept'); if(kept) kept.appendChild(GO.kept); GO.kept = document.createDocumentFragment(); }
     LevlStudy.wire(app, {
       retry: function(){ start('retry', 0, stillWrong); },
-      again: function(){ if(mode === 'retry' || !poolFor(mode).length) renderSetup(); else start(mode, state.count); },
+      again: function(){ if(GO && mode !== 'retry'){ GO.again(); return; } if(mode === 'retry' || !poolFor(mode).length) renderSetup(); else start(mode, state.count); },
       setup: renderSetup
     });
+  }
+
+  /* The Practice panel's hook, window.ApBioPracticeHook (docs/course-redesign-r4.md decision 5, Practice v2): assets/course/practice-panel.js
+     builds the set the settings describe (a filter over the index stubs, a count, an order) and runs it here;
+     practice.html?go=1 waits for it instead of drawing this builder. o.defer keeps every answered step out of sight
+     until the summary ("Explanations: at the end"). The same filter prints as a worksheet. */
+  var GO = null;
+  function goSteps(o){
+    var steps = blocks.filter(function(b){ return b.items.some(o.pick); });
+    if(o.mode !== 'missed') skills.forEach(function(q){ if(o.pick(q)) steps.push({ stimulus: null, items: [q], topic: q.topic, unit: q.unit, skill: true }); });
+    return steps;
+  }
+  function goKeep(stage){
+    if(!GO || !stage || !stage.querySelector('.is-answered')) return;
+    [].forEach.call(stage.querySelectorAll('[data-qid]:not(.is-answered)'), function(el){ el.remove(); });
+    while(stage.firstChild) GO.kept.appendChild(stage.firstChild);
+  }
+  var hookApi = {
+    matches: matches,
+    run: function(o){
+      var steps = goSteps(o);
+      if(!steps.length) return false;
+      var picked = take(o.order ? o.order(steps) : pickOrder(steps, true), o.count);
+      GO = { label: o.label, defer: !!o.defer, kept: document.createDocumentFragment(), again: function(){ hookApi.run(o); } };
+      CLS = null;
+      start(o.mode === 'missed' ? 'missed' : 'build', 0, picked);
+      return true;
+    },
+    print: function(o){ worksheet(o.btn, { picked: take(pickOrder(goSteps(o), true), o.count), key: o.key, label: o.label, gate: o.gate }); },
+    setup: function(){ renderSetup(); }
+  };
+  function publishHook(){
+    window.ApBioPracticeHook = hookApi;
+    try{ document.dispatchEvent(new Event('levl-practice-ready')); }catch(e){}
   }
 
   /* ?la=: a teacher's assignment, run by assets/class/class-run.js (docs/teacher-classes.md). Without la= none of this runs. */
@@ -518,7 +561,8 @@
       if(KINDS.some(function(k){ return k.id === p.get('type'); })) state.kind = p.get('type');
       if(/^[123]$/.test(p.get('diff') || '')) state.diff = p.get('diff');
       if(MODE[p.get('mode')]) state.mode = p.get('mode');
-      if(LA) classBoot(); else if((state.mode === 'flagged' || state.mode === 'missed') && !modeUnavailable(state.mode)) start(state.mode, 0); else renderSetup();
+      publishHook();
+      if(LA) classBoot(); else if(p.get('go') === '1' && document.getElementById('ppConfig')){ /* the panel runs it */ } else if((state.mode === 'flagged' || state.mode === 'missed') && !modeUnavailable(state.mode)) start(state.mode, 0); else renderSetup();
       if(p.toString()){ var s = app.querySelector('.bio-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){
       app.innerHTML = '<p>The question bank did not load. Check your connection and reload; once a page has loaded online it also works offline.</p>';

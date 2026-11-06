@@ -102,10 +102,14 @@
     /* From the Practice panel (docs/course-redesign-r4.md decision 5): ?deck= any deck, ?kinds=t,d (card types), ?new=
        (new cards a day, kept in the prefs), ?go=1 (start studying at once). */
     var dk = q.get('deck') || '', kd = q.get('kinds') || '', pd = +(q.get('new') || (readPrefs().flashcards || {}).perDay || 0);
-    if(/^(all|missed|(unit|topic|chapter|core):[\w-]+)$/.test(dk)) prefs.deck = dk;
+    /* Practice v2: a deck can be a list (deck=unit:a,unit:b or topic:x,topic:y), and new=0 serves due cards only;
+       neither is kept in the prefs, so the page opened directly is as the student left it. */
+    var listDeck = dk.indexOf(',') > -1;
+    if(/^(all|missed|(unit|topic|chapter|core):[\w-]+(,(unit|topic|chapter|core):[\w-]+)*)$/.test(dk)) prefs.deck = dk;
     if(/^[a-z,]+$/.test(kd)){ var anyK = false; Object.keys(prefs.kinds).forEach(function(k){ prefs.kinds[k] = kd.split(',').indexOf(k) > -1; anyK = anyK || prefs.kinds[k]; }); if(!anyK) Object.keys(prefs.kinds).forEach(function(k){ prefs.kinds[k] = true; }); }
     if(pd >= 5 && pd <= 50){ NEW_PER_DAY = pd; prefs.perDay = pd; }
-    if(dk || kd || q.get('new')) savePrefs();
+    else if(q.get('new') === '0') NEW_PER_DAY = 0;
+    if(dk || kd || q.get('new')){ var keepDeck = prefs.deck; if(listDeck) prefs.deck = (readPrefs().flashcards || {}).deck || 'all'; savePrefs(); prefs.deck = keepDeck; }
   })();
   function savePrefs(){ try{ var all = readPrefs(); all.flashcards = prefs; localStorage.setItem(PREFS, JSON.stringify(all)); }catch(e){} }
 
@@ -153,6 +157,7 @@
     if(!prefs.kinds[c.kind]) return false;
     if(deck === 'all') return true;
     if(deck === 'missed') return !!(missedConcepts && c.concept && missedConcepts[c.concept]);
+    if(deck.indexOf(',') > -1) return deck.split(',').some(function(d){ return inDeck(c, d); });
     var p = deck.split(':');
     if(p[0] === 'topic') return c.topic === p[1];
     if(p[0] === 'unit') return TOPIC[c.topic] && TOPIC[c.topic].unit === p[1];
@@ -160,6 +165,7 @@
   }
   function deckCards(deck){ return CARDS.filter(function(c){ return inDeck(c, deck); }); }
   function deckName(deck){
+    if(deck.indexOf(',') > -1) return deck.indexOf('topic:') === 0 ? 'Your chosen topics' : 'Your chosen ' + (deck.indexOf('chapter:') === 0 ? 'chapters' : 'units');
     if(deck === 'missed') return 'Terms from questions I missed';
     var p = deck.split(':');
     if(p[0] === 'topic' && TOPIC[p[1]]) return TOPIC[p[1]].title;

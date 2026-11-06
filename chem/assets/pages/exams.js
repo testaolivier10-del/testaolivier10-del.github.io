@@ -788,8 +788,9 @@
       if(TIMINGS.some(function(t){ return t.id === saved; })) cfg.timing = saved;
       if(builtUnits().some(function(u){ return u.id === p.get('unit'); })){ cfg.unit = p.get('unit'); cfg.kind = 'unit'; }
       if(p.get('mode') === 'unit' || p.get('mode') === 'full' || p.get('mode') === 'mixed') cfg.kind = p.get('mode');
-      if(MIXED.indexOf(+p.get('n')) > -1) cfg.n = +p.get('n');
-      if(p.get('len') !== null && [15, 25, 0].indexOf(+p.get('len')) > -1) cfg.len = +p.get('len');
+      // Practice v2: the panel may ask for any length (5 to 60), not only the setup's own choices.
+      if(+p.get('n') >= 5 && +p.get('n') <= 60) cfg.n = +p.get('n');
+      if(/^\d+$/.test(p.get('len') || '') && +p.get('len') <= 200) cfg.len = +p.get('len');
       if(TIMINGS.some(function(t){ return t.id === p.get('timing'); })) cfg.timing = p.get('timing');
       if(formById('form-' + p.get('form'))){ cfg.form = 'form-' + p.get('form'); cfg.kind = 'full'; }
       else if(cfg.kind === 'full' && FORMS.length && !p.get('form')) cfg.form = FORMS[0].id;

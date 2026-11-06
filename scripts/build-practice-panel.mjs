@@ -1,16 +1,16 @@
 #!/usr/bin/env node
-/* Course redesign round 4, part D (docs/course-redesign-r4.md decision 5): the Practice panel's generated
+/* Course redesign round 4, Practice v2 (docs/course-redesign-r4.md decision 5): the Practice panel's generated
    parts on the two hand-written practice pages, nremt/practice.html and ochem/practice.html, between
    their markers:
      <!-- practice-band:start --> ... <!-- practice-band:end -->      the short band
-     <!-- practice-tiles:start --> ... <!-- practice-tiles:end -->    step 1, a tile per mode
+     <!-- practice-panel:start --> ... <!-- practice-panel:end -->    the card and the right column
      <!-- practice-config:start --> ... <!-- practice-config:end -->  the panel's config
    The built courses get the same parts from their builders (scripts/lib/practice-panel.mjs practicePage).
    node scripts/build-practice-panel.mjs [--check] */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { bandHtml, tilesHtml, configHtml, panelConfig } from './lib/practice-panel.mjs';
+import { bandHtml, panelHtml, configHtml } from './lib/practice-panel.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK = process.argv.includes('--check');
@@ -31,7 +31,7 @@ for (const p of PAGES) {
   const path = join(ROOT, p.file);
   const old = readFileSync(path, 'utf8');
   let html = between(old, 'practice-band', bandHtml(p.key, { crumbs: p.crumbs }), p.file);
-  html = between(html, 'practice-tiles', `<div class="pp-tiles">${tilesHtml(panelConfig(p.key).modes)}</div>`, p.file);
+  html = between(html, 'practice-panel', panelHtml(p.key), p.file);
   html = between(html, 'practice-config', configHtml(p.key), p.file);
   if (html !== old) {
     stale++;
