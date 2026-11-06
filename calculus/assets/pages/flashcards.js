@@ -101,6 +101,13 @@
     var q = new URLSearchParams(location.search);
     ['topic', 'unit'].forEach(function(k){ if(q.get(k)) prefs.deck = k + ':' + q.get(k); });
     if(q.get('deck') === 'missed') prefs.deck = 'missed';
+    /* From the Practice panel (docs/course-redesign-r4.md decision 5): ?deck= any deck, ?kinds=t,d (card types), ?new=
+       (new cards a day, kept in the prefs), ?go=1 (start studying at once). */
+    var dk = q.get('deck') || '', kd = q.get('kinds') || '', pd = +(q.get('new') || (readPrefs().flashcards || {}).perDay || 0);
+    if(/^(all|missed|(unit|topic|chapter|core):[\w-]+)$/.test(dk)) prefs.deck = dk;
+    if(/^[a-z,]+$/.test(kd)){ var anyK = false; Object.keys(prefs.kinds).forEach(function(k){ prefs.kinds[k] = kd.split(',').indexOf(k) > -1; anyK = anyK || prefs.kinds[k]; }); if(!anyK) Object.keys(prefs.kinds).forEach(function(k){ prefs.kinds[k] = true; }); }
+    if(pd >= 5 && pd <= 50){ NEW_PER_DAY = pd; prefs.perDay = pd; }
+    if(dk || kd || q.get('new')) savePrefs();
   })();
   function savePrefs(){ try{ var all = readPrefs(); all.flashcards = prefs; localStorage.setItem(PREFS, JSON.stringify(all)); }catch(e){} }
 
@@ -369,7 +376,12 @@
   Promise.all([getJson(BASE + 'assets/glossary.json'), getJson(BASE + 'assets/summaries.json')]).then(function(res){
     buildCards(glossMap(res[0]), res[1]);
     if(!(prefs.deck === 'all' || prefs.deck === 'missed' || deckCards(prefs.deck).length)) prefs.deck = 'all';
-    if(prefs.deck === 'missed') return loadMissed().then(renderHome);
-    renderHome();
+    function fcGo(){
+      if(!/[?&]go=1/.test(location.search)) return;
+      try{ history.replaceState(null, '', location.pathname); }catch(e){}
+      var b = app.querySelector('[data-act="study"]'); if(b) b.click();
+    }
+    if(prefs.deck === 'missed') return loadMissed().then(function(){ renderHome(); fcGo(); });
+    renderHome(); fcGo();
   });
 })();

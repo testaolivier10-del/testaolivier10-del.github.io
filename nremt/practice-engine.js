@@ -1317,7 +1317,8 @@ function renderPremium(){
   // The daily allowance, said up front on Practice and Review rather than
   // discovered. The two pages share it: one 15 a day, however it is spent.
   const head = document.querySelector('#introScreen .page-head');
-  const notice = head ? premiumSlot('premiumNotice', head) : null;
+  // Practice is the one-panel page now (docs/course-redesign-r4.md decision 5): no .page-head, the slot sits in the builder.
+  const notice = document.getElementById('premiumNotice') || (head ? premiumSlot('premiumNotice', head) : null);
   if(notice){
     let html = '';
     if(locked && (RUNNER_PAGE === 'practice' || RUNNER_PAGE === 'review')){
@@ -1437,7 +1438,7 @@ function renderDueSummary(sessionCount){
 }
 
 function examStateSummary(state){
-  const totalLen = state.mode === 'adaptive' ? state.adaptiveState.length : state.mode === 'cat' ? 'up to ' + CAT.MAX : state.activeIndices.length;
+  const totalLen = state.mode === 'adaptive' ? state.adaptiveState.length : state.mode === 'cat' ? 'up to ' + (CAT ? CAT.MAX : 120) : state.activeIndices.length;
   const answeredN = state.answers.filter((a, i) => isAnswered(QUESTIONS[state.activeIndices[i]], a)).length;
   const labels = {full:'Timed exam', cat:'Adaptive exam', review:'Missed-question review', flagged:'Flagged-question review', spaced:'Spaced review', domain:'Domain drill', adaptive:'Weak-spot practice', single:'Single question'};
   const label = labels[state.mode] || 'Practice session';
@@ -1480,6 +1481,9 @@ $id('discardExamBtn').addEventListener('click', () => {
 migrateDomainStatsIfNeeded();
 seedExamDomainStatsIfNeeded();
 refreshIntroState();
+// The Practice panel (assets/course/practice-panel.js) shows the live due count and the bank's size.
+window.NremtQueue = { due: function(){ return loadDueForReview().length; }, total: QUESTIONS.length };
+document.dispatchEvent(new Event('nremt-queue'));
 maybeShowStudyReminder();
 setInterval(maybeShowStudyReminder, 15*60*1000);
 
@@ -2881,6 +2885,27 @@ $id('nextStep').addEventListener('click', (e) => {
   if(RUNNER_PAGE !== 'practice'){ location.href = 'practice.html?start=review'; return; }
   beginQuiz(false);
 });
+
+// ?go=1 from the Practice panel (docs/course-redesign-r4.md decision 5): start this page's own mode with
+// the settings in the URL, once every button above is wired. review.html: the spaced queue. exams.html:
+// exam=full|cat, diff (the difficulty filter), real=1 (exam-realistic). An exam in progress wins.
+(function(){
+  const p = new URLSearchParams(location.search);
+  if(p.get('go') !== '1' || loadExamState()) return;
+  history.replaceState(null, '', location.pathname);
+  if(RUNNER_PAGE === 'review'){
+    const b = document.getElementById('spacedReviewBtn');
+    if(b && !b.disabled && !b.hidden) b.click();
+  } else if(RUNNER_PAGE === 'exams'){
+    const r = document.querySelector('input[name="nrExam"][value="' + (p.get('exam') === 'cat' ? 'cat' : 'full') + '"]');
+    if(r){ r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true })); }
+    const d = $id('difficultySelect');
+    if(p.get('diff') && [...d.options].some(o => o.value === p.get('diff'))) d.value = p.get('diff');
+    $id('realisticMode').checked = p.get('real') === '1';
+    const b = document.getElementById('startBtn');
+    if(b && !b.disabled && !b.hidden) b.click();
+  }
+})();
 
 })();
 });

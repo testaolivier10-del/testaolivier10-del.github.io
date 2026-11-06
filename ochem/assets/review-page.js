@@ -322,5 +322,12 @@
   });
 
   // Waits on the question bank for the same reason practice-page.js does.
-  window.OchemPracticeBankReady.then(render);
+  // ?go=1 from the Practice panel (docs/course-redesign-r4.md decision 5): start the day's review at once.
+  window.OchemPracticeBankReady.then(function(){
+    render();
+    if(/[?&]go=1/.test(location.search)){
+      try{ history.replaceState(null, '', location.pathname); }catch(e){}
+      var go = homeEl.querySelector('#startReview'); if(go) go.click();
+    }
+  });
 })();

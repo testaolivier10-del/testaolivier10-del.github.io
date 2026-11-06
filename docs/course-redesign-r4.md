@@ -61,6 +61,13 @@ body, no em dashes, no example data shipped (real progress or nothing).
    - The free daily limit shows once, in the band (dark text on the pale yellow box).
    - Start opens the existing engine for that mode (keep every engine and page; pass the settings in the URL and
      have the engine read them). The old mode pages stay reachable by URL.
+   - Built (part D): markup and per-course config `scripts/lib/practice-panel.mjs` (`practicePage` in the AP® and
+     A&P builders; `scripts/build-practice-panel.mjs [--check]` writes the marker blocks in `nremt/practice.html`
+     and `ochem/practice.html`), behaviour `assets/course/practice-panel.js`, styles `practice-panel.css`. URL
+     contract, each with `go=1`: `review.html?unit=&n=`, `flashcards.html?deck=&kinds=&new=` (ochem/NREMT
+     `chapter|domain=&scope=&types=`), `exams.html?mode=&unit=&len=&n=&timing=` (A&P `mode=&chapter=&course=`,
+     ochem `kind=&chapter=&len=&from=&to=`, NREMT `exam=full|cat&diff=&real=`), `frq.html?type=&unit=` (or
+     `frq/<id>.html`), `justify.html?unit=&topic=&skill=` (or `?p=`), `cram.html?date=&weeks=&print=1`.
 6. **Tools**: tool cards without the description line (Olivier). Keep the Free and Premium groups, the tried status
    and Open. Each group sits in a card so it can overlap the band.
 7. **Progress (dashboard design F)**: five questions kept; Q1 "What should I do now?" points to the path's Up next

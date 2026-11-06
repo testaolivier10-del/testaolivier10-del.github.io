@@ -222,6 +222,14 @@
     var p = id && DATA.prompts.filter(function(x){ return x.id === id; })[0];
     if(UNIT[q.get('unit')]) filter.unit = q.get('unit');
     if(DATA.skills[q.get('skill')]) filter.skill = q.get('skill');
+    /* ?go=1 from the Practice panel (docs/course-redesign-r4.md decision 5): the next prompt not yet checked among those the
+       settings pick (?unit=, ?topic=, ?skill=). */
+    if(q.get('go') === '1'){
+      var sc1 = scores(), tp = q.get('topic');
+      var pool = DATA.prompts.filter(function(x){ return !locked(x) && (!filter.unit || x.unit === filter.unit) && (!tp || x.topic === tp) && (!filter.skill || x.skill === filter.skill); });
+      var nx = pool.filter(function(x){ return !sc1[x.id]; })[0] || pool[0];
+      if(nx){ try{ history.replaceState(null, '', location.pathname + '?p=' + encodeURIComponent(nx.id)); }catch(e){} return one(nx, true); }
+    }
     if(p) return one(p);
     if(q.get('list') || filter.unit || filter.skill) return list();
     // Straight to work: the first prompt (course order) not yet self-checked
