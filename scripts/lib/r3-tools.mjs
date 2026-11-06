@@ -4,8 +4,8 @@
 
    Every tool has its own cover (assets/covers/tools/<course>/<slug>.svg; index.json gives its title and order).
 
-   - toolsHubMain(o): the hub's <main>: a short cover band, an optional featured tool, then groups of tool cards
-     led by their covers. The cards keep the hooks the courses' hub scripts fill: data-tool / data-premium on the
+   - toolsHubMain(o): the hub's <main>: the small inner band (round 4: course, "Tools", the count), then the Free and
+     Premium groups, each in a card, of tool cards led by their covers. The cards keep the hooks the courses' hub scripts fill: data-tool / data-premium on the
      link, .cx-tool-top (the Premium pill goes in it) and .cx-tool-status ("Not tried yet" or accuracy).
    - toolBand(o): the short cover band at the top of a tool page, with the tool's own cover. It sits before the
      tool, outside <main>, so the Tool Studio (assets/course/tool-studio.js) mounts after it. On a desktop the
@@ -62,20 +62,22 @@ ${ctas ? `<div class="hero-ctas">${ctas}</div>` : ''}
 </div>${o.art ? `<div class="art${o.artClass ? ` ${o.artClass}` : ''}" aria-hidden="true">${o.art}</div>` : ''}</div></section>`;
 }
 
-/* One tool card. t: { key, up, slug, href, name, desc, foot, premium (bool), attrs, status (bool) } */
+/* One tool card. t: { key, up, slug, href, name, desc, foot, premium (bool), attrs, status (bool) }
+   Round 4 (owner 2026-11-05, docs/course-redesign-r4.md decision 6): no description line; t.desc is kept in the
+   builders' lists (the tool pages and search still use it) but the card shows cover, name, badge, status and Open. */
 /* Owner 2026-11-03: no topic or skill label under a tool (the name already says what it is). Only an item count
    the hub script updates (.cx-tool-count) stays. */
 function toolFoot(f) { const m = /<span class="cx-tool-count">[\s\S]*?<\/span><\/span>|<span class="cx-tool-count">[\s\S]*?<\/span>/.exec(f || ''); return m ? m[0] : ''; }
 export function toolCard(t) {
   const has = t.slug && toolCover(t.key, t.slug);
   const cover = has ? `<span class="tc" aria-hidden="true"><img src="${coverSrc(t.key, t.slug, t.up)}" alt="" width="640" height="320" loading="lazy" decoding="async"></span>` : '';
-  return `<li><a class="cx-tool r3-tool" href="${t.href}"${t.attrs || ''}>${cover}<span class="cx-tool-top"><span class="cx-tool-name">${esc(t.name)}</span>${t.free ? '<span class="tag free">Free</span>' : ''}</span><span class="cx-tool-desc">${esc(t.desc || '')}</span>${t.status ? '<span class="cx-tool-status"></span>' : ''}<span class="cx-tool-foot"><span>${toolFoot(t.foot)}</span><span class="cx-tool-go">Open <span aria-hidden="true">&rarr;</span></span></span></a></li>`;
+  return `<li><a class="cx-tool r3-tool" href="${t.href}"${t.attrs || ''}>${cover}<span class="cx-tool-top"><span class="cx-tool-name">${esc(t.name)}</span>${t.free ? '<span class="tag free">Free</span>' : ''}</span>${t.status ? '<span class="cx-tool-status"></span>' : ''}<span class="cx-tool-foot"><span>${toolFoot(t.foot)}</span><span class="cx-tool-go">Open <span aria-hidden="true">&rarr;</span></span></span></a></li>`;
 }
 
 /* The hub's <main>. o: {
-     key, up ('../'), course (html name for crumbs), crumbs, kicker, h1 (html), hand, lede, cta, cta2,
+     key, up ('../'), hand (the sub line after the count), sub (html, replaces the whole sub line),
      featured: { slug, href, name, kick, hand, desc, cta, credit (html) } | null,
-     featHtml (html, replaces featured), before (html, first inside #app), status (cards get a .cx-tool-status),
+     featHtml (html, replaces featured), before (html, opens the first card), status (cards get a .cx-tool-status),
      groups: [{ h (html), p, kick, big, cards: [toolCard input] }], note (html), mountClass, mountAttrs, after (html),
      pass (html course name): regroup the cards as Free / With Premium (byAccess; every hub does) } */
 /* One grouping on every course's tools hub (consistency audit 2026-11, C5): the tools a free student can open now,
@@ -95,27 +97,32 @@ export function toolsHubMain(o) {
   if (o.pass) o = { ...o, groups: byAccess(o.groups, o.pass) };
   const up = o.up ?? '../';
   const total = o.groups.reduce((n, g) => n + g.cards.length, 0) + (o.featured || o.featHtml ? 1 : 0);
-  const band = bandShort({
-    crumbs: o.crumbs, kicker: o.kicker || `${COURSE_SHORT[o.key]} &middot; Tools`, note: `${total} tool${total === 1 ? '' : 's'}`,
-    h1: o.h1, hand: o.hand, lede: o.lede, cta: o.cta, cta2: o.cta2,
-    art: `<img src="${up}assets/covers/art/${o.key}.svg" alt="" width="640" height="400" decoding="async">`,
-  });
+  /* Round 4 (docs/course-redesign-r4.md decision 3): the small inner band, issue line with the course name, the title
+     "Tools" and one sub line (the tool count, then the hub's own hand line); no buttons, no breadcrumb (the course
+     tabs say where you are). */
+  const sub = o.sub || `${total} tool${total === 1 ? '' : 's'}${o.hand ? ` &middot; ${o.hand}` : ''}`;
+  const band = `<section class="band short" aria-labelledby="r3Title"><div class="hwrap"><div>
+<p class="issue">${COURSE_SHORT[o.key]} <i></i></p>
+<h1 class="deck" id="r3Title">Tools</h1>
+<p class="lede">${sub}</p>
+</div><div class="art" aria-hidden="true"><img src="${up}assets/covers/art/${o.key}.svg" alt="" width="640" height="400" decoding="async"></div></div></section>`;
   const f = o.featured;
   const feat = o.featHtml ? o.featHtml : f ? `<p class="kicker">${f.kick || 'Featured tool'} <i></i></p>
 <div class="feat r3-feat"><div><h2 class="cname">${esc(f.name)}</h2>${f.hand ? `<p class="hand">${f.hand}</p>` : ''}<p class="cdesc">${f.desc}</p><a class="btn-gold" href="${f.href}">${f.cta} &rarr;</a>${f.credit ? `<p class="credit">${f.credit}</p>` : ''}</div><a class="fig tcfig" href="${f.href}" tabindex="-1" aria-hidden="true"><img src="${coverSrc(o.key, f.slug, up)}" alt="" width="640" height="320" decoding="async"></a></div>` : '';
-  const groups = o.groups.map((g) => {
+  /* Each group sits in a card (decision 6) so the first can overlap the band's foot (.lap, assets/course/r3.css).
+     What came before the groups (a filter bar, a noscript note, a featured tool) opens the first card. */
+  const lead = `${o.before || ''}${feat}`;
+  const groups = o.groups.map((g, i) => {
     const cards = g.cards.map((c) => toolCard({ key: o.key, up, status: o.status, ...c })).join('');
     const head = g.big
       ? `<div class="ruled-h r3-tools-h"><h2>${g.h}</h2>${g.p ? `<p>${g.p}</p>` : ''}</div>`
       : `<p class="kicker">${g.kick || g.h} <i></i></p>${g.p ? `<p class="r3-tools-p">${g.p}</p>` : ''}`;
-    return `<section class="r3-tools-group" aria-label="${esc(String(g.label || g.h).replace(/<[^>]+>/g, ''))}">${head}<ul class="r3-tool-grid">${cards}</ul></section>`;
+    return `<section class="r3-tools-group r3-tools-card${i ? '' : ' lap'}" aria-label="${esc(String(g.label || g.h).replace(/<[^>]+>/g, ''))}">${i ? '' : lead}${head}<ul class="r3-tool-grid">${cards}</ul></section>`;
   }).join('\n');
   return `<main id="main" class="r3 r3-tools" data-cover="${o.key}">
 ${band}
 <div class="hwrap r3-tools-body"><div id="${o.mountId || 'app'}" class="${o.mountClass || ''}" data-slug="tools"${o.mountAttrs || ''}>
-${o.before || ''}
-${feat}
-${groups}
+${groups || lead}
 ${o.note ? `<p class="r3-tools-note">${o.note}</p>` : ''}
 </div>${o.after || ''}</div>
 </main>`;
@@ -135,13 +142,9 @@ export function swapMain(page, main, up) {
    o: { key, up, courseName (html), lede, groups: [{ h, p, tools: [{ slug, name, blurb, premium, foot }] }],
         mountClass, note } */
 export function apToolsHubMain(o) {
-  const first = o.groups.find((g) => g.tools.length);
-  const firstKind = first ? first.h.toLowerCase().replace(/s$/, '') : 'tool';
   return toolsHubMain({
     key: o.key, up: o.up, status: true, mountClass: o.mountClass, pass: o.courseName,
-    crumbs: [{ name: 'LevlPrep', href: `${o.up}index.html` }, { name: o.courseName, href: 'index.html' }, { name: 'Tools' }],
-    h1: 'Change a variable. <span>Watch what happens.</span>', hand: 'every tool ends in questions', lede: esc(o.lede),
-    cta: first ? { href: `tools/${first.tools[0].slug}.html`, label: `Open the first ${firstKind}` } : null,
+    hand: 'every tool ends in questions',
     groups: o.groups.filter((g) => g.tools.length).map((g) => ({
       h: g.h, kick: `${esc(g.h)} &middot; ${g.tools.length}`, p: g.p, label: g.h,
       // A tool may link elsewhere (AP® Calculus BC links AB's trainers: t.href, t.attrs) and keep that
