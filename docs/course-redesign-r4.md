@@ -2,8 +2,8 @@
 
 Owner: Olivier, 2026-11-05. Approved design canvas: https://claude.ai/artifact/8vv1uRvwhJHzZuL9XQCAgA
 (AP® Biology as the template; every course gets the same form). Copies of the approved screens are in
-`docs/redesign-r4/mockups/` (`Main` = course home for a new visitor, `HomeReturning`, `Learn`, `Practice`, `Tools`,
-`Progress`; `.dc.html` files, read them as HTML; `canvas.json` holds the "WHY" notes). Images in them point at
+`docs/redesign-r4/mockups/` (`.dc.txt`, read them as HTML; `Main` = course home for a new visitor, `HomeReturning`, `Learn`, `Practice`, `Tools`,
+`Progress`; `canvas.json` holds the "WHY" notes). Images in them point at
 `/_blob/...`; on the site use the real files (`assets/covers/`, `assets/covers/tools/`, `assets/video/thumbs/`).
 
 ## Owner's rule for this work
