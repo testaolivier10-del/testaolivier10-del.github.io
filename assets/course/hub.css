@@ -413,3 +413,80 @@ body:has(.course-banner),body:has(.ch-home){background-image:linear-gradient(rgb
   .ch-cta,.ch-ghost{padding:13px 18px;}
   .ch-plan{padding:22px;}
 }
+
+/* ---------- Course home = the path (course redesign r4, decision 2; scripts/lib/r3-home.mjs) ----------
+   The first paint: two columns (side cards left, the path's unit sections right; on a phone the path first),
+   overlapping the band like the old lead row. assets/course/path.css (loaded with path.js) draws the stops and
+   repeats the card rules below for lesson pages. */
+.r3-home{--lp-ac:var(--accent);--lp-ct:var(--ctint);--lp-dp:var(--display,'Inter Display'),'Nunito',sans-serif}
+.lp-home{display:grid;grid-template-columns:minmax(300px,380px) minmax(0,1fr);gap:28px;align-items:start;margin:-110px 0 44px;position:relative;z-index:2}
+.lp-hside{display:flex;flex-direction:column;gap:18px;min-width:0}
+.lp-hside .ways{box-shadow:none}
+.lp-hpath{min-width:0}
+@media (max-width:899px){.lp-home{grid-template-columns:minmax(0,1fr);margin-top:-90px}.lp-hpath{order:-1}}
+.lp-ret .lp-static{visibility:hidden}
+.r3-home .lp-card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:22px 24px;box-shadow:0 24px 50px -32px rgba(11,26,51,.4)}
+.r3-home .lp-k{font:800 12px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;margin:0;color:var(--lp-ac)}
+.r3-home .lp-pill{display:inline-block;border:1.5px solid currentColor;border-radius:999px;padding:2px 11px;font:800 12.5px var(--font-ui);color:var(--lp-ac)}
+.r3-home .lp-h2{font:900 28px/1.05 var(--lp-dp);letter-spacing:-.035em;margin:8px 0 6px;color:var(--ink)}
+.r3-home .lp-h2 span,.lp-make h3 span{color:var(--lp-ac)}
+.r3-home .lp-p{margin:0;color:var(--muted);font:700 15px/1.45 var(--font-ui)}
+.r3-home .lp-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:12px;border:0;cursor:pointer;font:900 16px var(--font-ui);text-decoration:none;background:#FFD23F;color:#0B1A33}
+.r3-home .lp-btn.sm{min-height:40px;padding:0 14px;font-size:14.5px}
+.lp-selc h3{font:900 25px/1.12 var(--lp-dp);letter-spacing:-.025em;margin:6px 0 12px;color:var(--ink)}
+.lp-selc .act{display:flex;flex-direction:column;gap:12px}
+.lp-selc .act .lp-btn{width:100%;min-height:50px}
+.lp-make h3{font:900 22px/1.15 var(--lp-dp);letter-spacing:-.02em;margin:0 0 6px;color:var(--ink)}
+.lp-make p{margin:0 0 14px;color:var(--muted);font:600 14.5px/1.45 var(--font-ui)}
+.lp-phead{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.lp-phead>div{flex:1 1 240px;min-width:0}
+.lp-all{min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);font:800 14.5px var(--font-ui);color:var(--ink);cursor:pointer}
+.lp-all:hover{border-color:var(--lp-ac)}
+.lp-u{margin-top:14px}
+.lp-uh{list-style:none;display:flex;align-items:center;gap:14px;padding:16px 22px;border-radius:18px;background:var(--white);border:1px solid var(--line);box-shadow:0 6px 18px rgba(11,26,51,.05);cursor:pointer}
+.lp-uh::-webkit-details-marker{display:none}
+.lp-uh.cur{box-shadow:inset 0 0 0 2px #FFD23F,0 6px 18px rgba(11,26,51,.05)}
+.lp-uh:focus-visible{outline:3px solid var(--lp-ac);outline-offset:3px}
+.lp-uh .n{font:900 34px/1 var(--lp-dp);letter-spacing:-.04em;color:var(--lp-ac);min-width:46px}
+.lp-uh .n:empty{display:none}
+.lp-uh .t{flex:1 1 0;min-width:0}
+.lp-uh small{display:block;font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.lp-uh b{display:block;font:900 20px/1.2 var(--lp-dp);letter-spacing:-.02em;color:var(--ink)}
+.lp-uh .c{font:800 14px var(--font-ui);color:var(--muted);white-space:nowrap}
+@media (max-width:560px){.lp-uh{gap:10px;padding:14px 16px}.lp-uh .n{font-size:26px;min-width:34px}.lp-uh b{font-size:17px}.lp-uh small{font-size:11px;letter-spacing:.06em}.lp-uh .c{font-size:13px}}
+.lp-uh::after{content:"";flex:none;width:9px;height:9px;border:solid var(--muted);border-width:0 2.5px 2.5px 0;transform:rotate(45deg);margin:-5px 4px 0;transition:transform .15s}
+.lp-u[open]>.lp-uh::after{transform:rotate(-135deg);margin-top:5px}
+.lp-nojs{margin:12px 22px;font:800 15px var(--font-ui)}
+.lp-nojs a{color:var(--lp-ac)}
+.r3-home .lp-hand{font:700 20px/1.2 'Kalam','Nunito',cursive;color:var(--amber-text,#A86F00);margin:18px 0 0;text-align:center}
+.r3-home .lp-note{margin:10px 0 0;font:700 14px/1.45 var(--font-ui);color:var(--muted);text-align:center}
+.r3-home .lp-load{margin:14px 0 0;font:700 15px var(--font-ui);color:var(--muted)}
+.lp-faqmore{margin:12px 0 0;font:700 15px/1.45 var(--font-ui);color:var(--muted)}
+.lp-faqmore a{color:var(--accent-text,var(--accent))}
+/* The course's Premium card, the one on premium.html (scripts/lib/pricing-section.mjs), shown open. */
+.lp-prem{margin:0 0 44px}
+.lp-prem .pp-course{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:4px 24px 24px}
+.lp-prem .pp-course>summary{list-style:none;display:flex;align-items:center;gap:16px;padding:16px 0;pointer-events:none}
+.lp-prem .pp-course>summary::-webkit-details-marker{display:none}
+.lp-prem .pp-cover{width:120px;height:60px;object-fit:cover;border-radius:10px;flex-shrink:0;background:var(--panel,#0B1A33)}
+.lp-prem summary h2{margin:0;flex:1;min-width:0;font:900 clamp(22px,2.4vw,28px)/1.15 var(--display);letter-spacing:-.025em;color:var(--ink)}
+.lp-prem .pp-from{display:none}
+.lp-prem .pp-body{display:grid;gap:14px}
+.lp-prem .pc-wrap{margin:0}
+.pp-switch{display:flex;flex-wrap:wrap;gap:8px;border:0;margin:0;padding:0}
+.pp-switch label{position:relative}
+.pp-switch input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.pp-switch span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1.5px solid var(--line);border-radius:999px;font:800 15px var(--font-ui);color:var(--ink);background:var(--white)}
+.pp-switch input:checked+span{background:var(--panel,#0B1A33);border-color:var(--panel,#0B1A33);color:var(--panel-ink,#fff)}
+.pp-switch input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+.lp-prem .pp-buy{display:grid;gap:8px;justify-items:start}
+.lp-prem .pp-note,.lp-prem .pp-sure,.lp-prem .pp-msg,.lp-prem .pp-terms,.lp-prem .pp-compare{margin:0;font-size:14.5px;color:var(--ink)}
+.lp-prem .pp-note span[data-founding-until]{display:block;color:var(--accent-text,var(--accent));font-weight:800}
+.lp-prem .pp-sure,.lp-prem .pp-compare,.lp-prem .pp-day{color:var(--muted);font-size:13.5px}
+.lp-prem .pp-day{display:block;font-weight:700;margin-top:2px}
+.lp-prem .pp-day:empty,.lp-prem .pp-msg:empty{display:none}
+.lp-prem .pp-actions{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:0}
+.lp-prem .pp-cta{background:var(--gold,#FFD23F);color:var(--gold-ink,#0B1A33);border:0;box-shadow:none;font:900 17px var(--font-ui);padding:14px 24px;min-height:52px;border-radius:14px;cursor:pointer}
+.lp-prem a{color:var(--accent-text,var(--accent));font-weight:800}
+.lp-prem .pp-guarantee{background:var(--tint-accent);border-radius:14px;padding:12px 14px}
+@media (max-width:640px){.lp-prem .pp-course{padding:2px 16px 18px}.lp-prem .pp-cover{width:52px;height:52px}.lp-prem .pp-buy{justify-items:stretch}.lp-prem .pp-cta{width:100%}}

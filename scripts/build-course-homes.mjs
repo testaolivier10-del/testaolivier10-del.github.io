@@ -45,6 +45,7 @@ function nremt() {
   const main = r3HomeMain('nremt', {
     up: '../',
     hooks: { kind: 'nremt' },
+    premiumLoaded: true, // the page head already loads ../assets/premium.js
     primaryHref: 'practice.html',
     primaryScript: `<script>try{if(localStorage.getItem('nremt_inprogress_exam')||(localStorage.getItem('nremt_mastery')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>`,
     doms, lede,
