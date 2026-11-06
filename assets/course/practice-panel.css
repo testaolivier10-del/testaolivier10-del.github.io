@@ -116,3 +116,5 @@
   .pp.is-run .pp-s2{padding:0}
 }
 @media (max-width:380px){ .pp-tiles{grid-template-columns:minmax(0,1fr)} }
+/* The engines reserve a tall min-height for a running session; while the panel shows settings it left a blank band under Start. */
+.pp:not(.is-run) .pp-s2 [class*="app-mount"]{min-height:0}

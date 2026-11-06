@@ -188,7 +188,10 @@ const SHELL_BUDGETS = [
      only on course pages, so they are not in this number. */
   /* 342.5 -> 342.8 (consistency audit 2026-11): the four fix batches combined (shared footer links, path load on
      the textbook, Sign in wording, the allowance string). Measured 342.6 KB. */
-  ['site', 342.8],
+  /* 342.8 -> 346.5 (course redesign r4, docs/course-redesign-r4.md): five tabs and the settings menu in
+     site-chrome.js (Part A) plus the shared practice-panel and learn helpers loaded by every course page.
+     Measured 346.1 KB. */
+  ['site', 346.5],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -216,7 +219,8 @@ const SHELL_BUDGETS = [
      around a course's Premium card, Start over in every tool's menu, hint bubbles that keep off every control, the
      12 px phone floor, the strip kept free under Enlarge) plus B7/B8 (the shared end-of-session panel LevlStudy.end
      and keyboard legend in study.js and study.css, which replace three course-specific layouts). */
-  ['assets/course', 39.6],
+  /* 39.6 -> 40.9 (course redesign r4): path.js now renders the course home (Part B). Measured 40.6 KB. */
+  ['assets/course', 40.9],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -580,7 +584,8 @@ const BUDGETS = [
      end order with what to study next by domain, and Review at the daily limit. Measured 56.6 KB. */
   /* 55.2 -> 55.6 (teacher classes, other courses, 2026-11-04): the answer pick and progress event in
      updateMastery (docs/teacher-classes.md). Measured 55.4 KB. */
-  ['nremt/practice.html', 57.4],
+  /* 57.4 -> 58.5 (course redesign r4, Part D): the one-panel mode picker. Measured 58.2 KB. */
+  ['nremt/practice.html', 58.5],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
@@ -706,7 +711,7 @@ const BUDGETS = [
      generator has written, so nothing here names a topic before it exists).
      The A&P numbers are the reference. */
   ['bio/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['bio/practice.html', 3],
+  ['bio/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
   ['bio/exams.html', 3],
   ['bio/frq.html', 3],
   /* 40 -> 30 (2026-10-03): the glossary page is now an index, as A&P's
@@ -722,39 +727,39 @@ const BUDGETS = [
   /* AP® Chemistry: as AP® Biology's (CHEM_PAGES below for the first lesson,
      notes page and unit sheet once a unit is published). */
   ['chem/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['chem/practice.html', 3],
+  ['chem/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
   ['chem/exams.html', 3],
   ['chem/frq.html', 3],
   ['chem/glossary.html', 30],
   ['chem/tools.html', 5],
   /* AP® Physics 1: the same (PHYS pages below once a unit is published). */
   ['physics/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['physics/practice.html', 3],
+  ['physics/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
   ['physics/exams.html', 3],
   ['physics/frq.html', 3],
   ['physics/glossary.html', 30],
   ['physics/tools.html', 5],
   ['calculus/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['calculus/practice.html', 3],
+  ['calculus/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
   ['calculus/exams.html', 3],
   ['calculus/frq.html', 3],
   ['calculus/glossary.html', 30],
   ['calculus/tools.html', 5],
   ['calculus-bc/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['calculus-bc/practice.html', 3],
+  ['calculus-bc/practice.html', 4], // r4 Part D one-panel picker, measured 3.8 KB
   ['calculus-bc/exams.html', 3.1], // 3 -> 3.1: the shared footer row adds Teachers and What's new (audit 2026-11, D3)
   ['calculus-bc/frq.html', 3],
   ['calculus-bc/glossary.html', 30],
   ['calculus-bc/tools.html', 5],
   ['statistics/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['statistics/practice.html', 3],
+  ['statistics/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
   ['statistics/exams.html', 3],
   ['statistics/frq.html', 3],
   ['statistics/glossary.html', 30],
   ['statistics/tools.html', 5],
   ['statistics/formula-sheet.html', 12],
   ['environmental-science/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['environmental-science/practice.html', 3],
+  ['environmental-science/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
   ['environmental-science/exams.html', 3],
   ['environmental-science/frq.html', 3],
   ['environmental-science/glossary.html', 30],
@@ -762,7 +767,7 @@ const BUDGETS = [
   ['environmental-science/formula-sheet.html', 12],
   ['environmental-science/justify.html', 5],
   ['psychology/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['psychology/practice.html', 3],
+  ['psychology/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
   ['psychology/exams.html', 3],
   ['psychology/frq.html', 3],
   ['psychology/glossary.html', 30],
@@ -771,7 +776,7 @@ const BUDGETS = [
   ['psychology/justify.html', 5],
   /* AP® Precalculus: as AP® Calculus AB's (its first lesson, notes page and unit sheet once a unit is published, below). */
   ['precalculus/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['precalculus/practice.html', 3],
+  ['precalculus/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
   ['precalculus/exams.html', 3],
   ['precalculus/frq.html', 3],
   ['precalculus/glossary.html', 30],
@@ -779,7 +784,7 @@ const BUDGETS = [
   ['precalculus/formula-sheet.html', 12],
   ['precalculus/justify.html', 5],
   ['macroeconomics/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['macroeconomics/practice.html', 3],
+  ['macroeconomics/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
   ['macroeconomics/exams.html', 3],
   ['macroeconomics/frq.html', 3],
   ['macroeconomics/glossary.html', 30],
