@@ -774,6 +774,23 @@
     if(b && !b.disabled) b.click();
   }
 
+  /* The Practice panel's custom exam: chapters=, types=, levels=, diffs= (comma lists; missing means every
+     one) and len= (10, 20, 40 or 0 for all). Unknown values are dropped; a list left empty means every one. */
+  function customFromUrl(p){
+    var c = cfg.custom;
+    function list(name, ok){
+      if(!p.has(name)) return null;
+      var v = String(p.get(name)).split(',').filter(function(x){ return ok.indexOf(x) > -1; });
+      return v.length ? v : null;
+    }
+    c.chapters = list('chapters', builtChapters().map(function(x){ return x.id; }));
+    if(c.chapters) c.endo = c.chapters.indexOf(ENDOCRINE) > -1;
+    c.types = list('types', TYPE_GROUPS.map(function(x){ return x.id; }));
+    c.levels = list('levels', ['recall', 'apply', 'analyze']);
+    c.diffs = list('diffs', ['1', '2', '3']);
+    if(['10', '20', '40', '0'].indexOf(p.get('len')) > -1) c.len = +p.get('len');
+  }
+
   function boot(){
     if(!Q || !Core){ app.innerHTML = '<p>Exams could not start. Reload the page to try again.</p>'; return; }
     app.innerHTML = '<p class="anp-small">Loading the question bank…</p>';
@@ -787,6 +804,7 @@
       if(KINDS.some(function(k){ return k.id === p.get('mode'); })) cfg.kind = p.get('mode');
       if(p.get('course') === 'I' || p.get('course') === 'II') cfg.course = p.get('course');
       if(TIMINGS.some(function(t){ return t.id === p.get('timing'); })) cfg.timing = p.get('timing');
+      if(cfg.kind === 'custom') customFromUrl(p);
       renderSetup();
       goNow(p);
       if(p.toString()){ var s = app.querySelector('.anp-pr-start'); if(s && !s.disabled) s.focus(); }
