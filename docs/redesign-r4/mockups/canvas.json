@@ -1,0 +1,151 @@
+{
+ "v": 3,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-06T02:35:05Z"
+ },
+ "title": "LevlPrep course redesign: AP® Biology",
+ "launch": {
+  "view": "canvas"
+ },
+ "pages": [],
+ "boards": {
+  "Main.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1280,
+   "h": 4200,
+   "title": "Home = the path · new visitor",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "HomeReturning.dc.html": {
+   "x": 1360,
+   "y": 0,
+   "w": 1280,
+   "h": 2900,
+   "title": "Home = the path · returning (Premium)",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Learn.dc.html": {
+   "x": 2720,
+   "y": 0,
+   "w": 1280,
+   "h": 1900,
+   "title": "Learn = the textbook (Glossary, Videos inside)",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Practice.dc.html": {
+   "x": 0,
+   "y": 4720,
+   "w": 1280,
+   "h": 1400,
+   "title": "Practice (one panel)",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Tools.dc.html": {
+   "x": 1360,
+   "y": 4720,
+   "w": 1280,
+   "h": 3600,
+   "title": "Tools",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Progress.dc.html": {
+   "x": 2720,
+   "y": 4720,
+   "w": 1280,
+   "h": 2300,
+   "title": "Progress (was Dashboard)",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "PhoneHome.dc.html": {
+   "x": 0,
+   "y": 8840,
+   "w": 390,
+   "h": 844,
+   "title": "Phone · home, new visitor",
+   "is_interactive": true
+  },
+  "PhoneHomeReturning.dc.html": {
+   "x": 470,
+   "y": 8840,
+   "w": 390,
+   "h": 844,
+   "title": "Phone · home, returning",
+   "is_interactive": true
+  },
+  "PhonePractice.dc.html": {
+   "x": 940,
+   "y": 8840,
+   "w": 390,
+   "h": 844,
+   "title": "Phone · practice",
+   "is_interactive": true
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "HomeReturning.dc.html",
+  "Learn.dc.html",
+  "Practice.dc.html",
+  "Tools.dc.html",
+  "Progress.dc.html",
+  "PhoneHome.dc.html",
+  "PhoneHomeReturning.dc.html",
+  "PhonePractice.dc.html"
+ ],
+ "notes": {
+  "r1": {
+   "x": 0,
+   "y": -330,
+   "text": "Home and Learn",
+   "kind": "title1",
+   "maxW": 5360
+  },
+  "r2": {
+   "x": 0,
+   "y": 4390,
+   "text": "Practice, Tools and Progress",
+   "kind": "title1",
+   "maxW": 5360
+  },
+  "r3": {
+   "x": 0,
+   "y": 8510,
+   "text": "Phone",
+   "kind": "title1",
+   "maxW": 5360
+  },
+  "n3": {
+   "x": 1470,
+   "y": 8840,
+   "w": 520,
+   "size": "m",
+   "fill": "blue",
+   "text": "Phone: the 5 tabs fit the bottom bar, so the More sheet goes away. Scroll inside each phone. The tutor button no longer covers content."
+  },
+  "why1": {
+   "x": -700,
+   "y": 0,
+   "w": 600,
+   "size": "s",
+   "fill": "orange",
+   "text": "WHY each change (Home and Learn)\n\n• Path is Home, Path tab removed: your decision.\n• Path shows units as sections; only the current unit is open, the rest open on tap: progressive disclosure (Nielsen Norman Group). Also keeps the content under the path reachable instead of a 12,000px page.\n• Side column = the live Path page's own sidebar (Up next, Create your personalized path, Course progress) plus Ways to study: all existing parts, your Nov 4 choice for Ways to study.\n• Separate 'In this course' list removed: the path's unit sections show the same units and exam shares. Your rule: no repeated info (Oct 26).\n• Stat chips, Free vs Premium cards, FAQ only for non-Premium; FAQ cut to 4: your decision.\n• Video lessons and Tools sections, hero, footer: unchanged from live.\n\n• Learn opens on the textbook (Contents sidebar + reading), not a list of topics: a topic list would repeat the path on Home. Your no-repeat rule.\n• Glossary and Videos are switches inside Learn: follows from grouping into 5 tabs (your decision; nav research: 5 to 7 top items).\n• Share, copy link, print moved into a ⋯ menu: secondary actions belong in an overflow menu, primary ones stay visible (Nielsen Norman Group, overflow menus).\n• Inner tabs (Learn, Practice, Tools, Progress) get a smaller version of Home's colored banner, with the cards below overlapping it a little: your decision (Nov 5 comment)."
+  },
+  "why2": {
+   "x": -700,
+   "y": 4720,
+   "w": 600,
+   "size": "s",
+   "fill": "orange",
+   "text": "WHY each change (Practice, Tools, Progress)\n\n• One panel: pick what to do (practice set, review, flashcards, exam, free response, justify, cram plan), set it up, start. No separate cards: your decision (Nov 5 comment).\n• Every setting is visible, nothing hidden: your decision (Nov 5 comment). Only the exam breakdown (information, not a setting) sits under 'What's in the full exam'.\n• Free daily limit shown once: your rule, no repeated info (Oct 26).\n• Header: smaller colored banner with cards overlapping a little, same on every inner tab: your decision (Nov 5 comment).\n\n• Tools: Free and Premium groups, Not tried yet, Open kept. Descriptions removed: your decision. Each group sits in a card so it can overlap the banner like the other tabs.\n\n• Progress = Dashboard design F, five questions kept. Q1 points to the path's Up next because Home now owns 'what next' (your path decision + no-repeat rule).\n\n• Header everywhere: dark mode and sound grouped in one settings menu (settings menu pattern, PatternFly guidelines; overflow for secondary actions, NN/g). Course name unchanged.\n• Tutor: icon button, because the 'Ask me anything' label covered page content on live (seen on Flashcards and the unit page)."
+  }
+ },
+ "designSystems": []
+}
