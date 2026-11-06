@@ -1,0 +1,34 @@
+On screen, by beat (story scenes are a school running track at golden hour; teaching beats are handwriting on a navy grid board):
+hook: empty track, Leo (16) holding up a phone showing "30 km/h"; Ana (16) skeptical with a measuring wheel.
+promise: three chips appear: "SI units", "convert", "significant figures".
+why: an equation set up correctly, a value "12 cm" circled, the answer struck "x100 off".
+u1: "3" then "3 m" handwritten.
+u2: table: length meter m; mass kilogram kg; time second s. Label "SI = International System".
+u3: "kilogram" with "kilo" highlighted; "g -> kg first".
+u4: "speed = length / time -> m/s"; "SI in -> SI out"; "cm in -> off by 10^n".
+u5: prefix table: kilo k 10^3; centi c 10^-2; milli m 10^-3; micro μ 10^-6; examples 1 km = 1000 m, 1 cm = 0.01 m, 1 ms = 0.001 s.
+u6 (story): Ana rolls a measuring wheel, counter reads 100.0 m; two laser timing gates on tripods with red beams at start and finish.
+p1q: "250 g = ? kg", "40 ms = ? s", pause timer.
+p1a: "0.25 kg", "0.04 s"; struck "250 kg"; small motorcycle icon.
+c1: "1 m / 100 cm = 1".
+c2: "18 cm x (1 m / 100 cm) = 0.18 m", cm struck on top and bottom.
+c3: arrow "bigger unit -> smaller number".
+c4: "72 km/h x (1000 m / 1 km) x (1 h / 3600 s) = 72 000 m / 3600 s = 20 m/s" with strikes.
+c5: "1000/3600 = 1/3.6"; "km/h -> m/s: divide by 3.6"; "m/s -> km/h: multiply by 3.6".
+c6: square 1 m x 1 m, sides labeled 100 cm, "1 m^2 = 10 000 cm^2".
+c7 (story): Leo starts well back, sprints left to right through the beams; timer display "12.431 s"; "100.0 m / 12.431 s = 8.044 m/s".
+c8 (story): "8.044 m/s x 3.6 = 28.96 km/h" vs "30 km/h"; calculator showing 8.044405116.
+p2q: "90 km/h = ? m/s", pause timer.
+p2a: "90 x 1000/3600 = 25 m/s", struck "324".
+g1: decimal point hops drawn as arcs: "0.0040 s = 4.0 x 10^-3 s", "7200 s = 7.2 x 10^3 s", calculator key "E".
+g2: meterstick with centimeter marks, zoom between 45 and 46 cm, reading 0.452 m with the 2 marked "estimate"; calculator "0.4523718" with extra digits greyed.
+g3: rules list with examples: 8.061 (4), 0.0450 (3), 15.0 (3), 7200 (?) -> 7.2 x 10^3 (2).
+g4: "200.0 m / 24.8 s = 8.06 m/s" with "4" and "3" under the values and "3" under the answer.
+g5: "8.7 m + 2.43 m = 11.13 -> 11.1 m", tenths column highlighted.
+g6: "exact: 1000 m/km, 3.6"; "round once, at the end".
+g7 (story): Ana's notepad "100.0 (4), 12.431 (5) -> 8.044 m/s"; second run, timer "11.998 s".
+g8 (story): "8.33 x 3.6 = 29.99" struck vs "100.0/11.998 x 3.6 = 30.00500... -> 30.01 km/h".
+p3q: "0.00720 m: how many sig figs?", "12.0 m + 3.27 m = ?", pause timer.
+p3a: "3"; "15.27 -> 15.3 m".
+rc: four line checklist.
+end (story): Ana photographs the timer screen and texts "30.01"; levlprep.com line at top; next video card "Scalars and vectors".
