@@ -395,14 +395,14 @@ const SHELL_BUDGETS = [
      and the math chapter out, the generated chem-curriculum.js lists every
      topic as live and the exams page's shell measured 50.2 KB; the extra is
      course data, not code. */
-  ['chem', 52],
+  ['chem', 52.4], // Practice v2b (2026-11-06): exams.js keeps the panel's type, difficulty and practice for unit tests and mixed sets; measured 52.2
   /* AP® Physics 1 (physics/, a fork of the AP® Chemistry runtime). Before
      any unit is published; Chemistry's 52 is the reference. */
   /* 52 -> 52.2 (consistency audit 2026-11): the shared end panel call and the exam-day reference cards. Measured
      52.0 KB. */
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
-  ['physics', 52.5],
+  ['physics', 52.9], // Practice v2b (2026-11-06): exams.js keeps the panel's type, difficulty and practice for unit tests and mixed sets; measured 52.7
   /* AP® Calculus AB (calculus/, a fork of the AP® Physics 1 runtime), plus
      the math layer every question page loads: the expression parser
      (calc-expr.js) and the TeX-to-MathML renderer (calc-math.js), 13.8 KB
@@ -440,7 +440,7 @@ const SHELL_BUDGETS = [
   /* 83.2 -> 83.5 (consistency audit 2026-11): the same end panel and reference cards. Measured 83.2 KB. */
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
-  ['statistics', 83.8],
+  ['statistics', 84.1], // Practice v2b (2026-11-06): exams.js keeps the panel's type, difficulty and practice for unit tests and mixed sets; measured 83.9
   /* AP® Environmental Science (environmental-science/, a fork of the AP®
      Statistics runtime, docs/apenv-spec.md decision 1): the calculation
      recipes (env-calc.js) in place of the distributions library, and the
@@ -455,7 +455,7 @@ const SHELL_BUDGETS = [
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
   /* 85.8 -> 86 (consistency audit 2026-11 with teacher classes v2): end panel, reference cards and the ?la= hooks. */
-  ['environmental-science', 86],
+  ['environmental-science', 86.3], // Practice v2b (2026-11-06): exams.js keeps the panel's type, difficulty and practice for unit tests and mixed sets; measured 86.1
   /* AP® Psychology (psychology/, a fork of the AP® Environmental Science
      runtime, docs/appsych-spec.md decision 1): ApPsychStats (psy-stats.js,
      descriptive statistics and the normal curve) in place of the calculation
@@ -472,7 +472,7 @@ const SHELL_BUDGETS = [
      curriculum now lists all five chapters, and Phases 3-4 added form-aware
      expr grading (decision 15), the exam config and the "Make it specific"
      builder; measured 70.9 KB. */
-  ['precalculus', 71.5],
+  ['precalculus', 71.9], // Practice v2b (2026-11-06): exams.js keeps the panel's type, difficulty and practice for unit tests and mixed sets; measured 71.7
   /* AP® Calculus BC (calculus-bc/, docs/apcalcbc-architecture.md): its own files only, the
      curriculum, the accent (cbc.css) and the interval grader (cbc-interval.js); the runtime it
      runs is AB's and counts in the calculus shell above. Measured 8.1 KB before any unit is published
@@ -490,7 +490,7 @@ const SHELL_BUDGETS = [
      gzipped; measured 87.1, with the same room for the curriculum. */
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
-  ['macroeconomics', 89.5], // Practice v2 (2026-11-06): the engine's panel hook and list decks; measured 89.4 (rounded over)
+  ['macroeconomics', 89.9], // Practice v2b (2026-11-06): exams.js keeps the panel's type, difficulty and practice for unit tests and mixed sets; measured 89.7
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

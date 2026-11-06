@@ -132,3 +132,15 @@ budgets in `scripts/check-weight.mjs`, `scripts/ci-local.sh` (with `BROWSER=1`),
   tested in headless Chrome (bio, nremt, ochem, calculus, anatomy-physiology at 1280 and 390). Known limits:
   FRQ and justify run one at a time (How many greyed), the FRQ page has no clock (Timer greyed), AP® exams keep
   the real mix (type, difficulty, practice greyed), justify counts include Premium-locked prompts.
+- Practice v2b (branch `claude/practice-v2b`, owner feedback 2026-11-06: look and work exactly like the mockup,
+  keep the course's options): greying follows the mockup's `applies` (Questions from greyed only for a timed
+  exam, "A practice exam draws from every unit by exam weight"; Question type only for questions and exams;
+  Difficulty and Timer kept for flashcards and written answers but greyed with the engine reason where the engine
+  has no such option; Explanations only for questions, "Exams explain everything at the end"). The Exam row stays
+  (full / unit test / mixed set and each course's kinds), always visible, greyed "Only for a timed exam". A greyed
+  row keeps its label colour; its chips fade to .4. The Question type row always shows question types (card,
+  free-response and justify types stay on their own pages). Timed exam sets Exam pace, At the end, All; Questions
+  sets After each answer; quick picks as the mockup. Summary: title, "From <source>, <units>", type · difficulty,
+  timer · explanations, each when its rows apply; Start "Start practice / Start the exam / Study cards / Start
+  writing / Start a prompt". An empty source (nothing due) stays choosable; the summary says so and Start waits.
+  AP® unit tests and mixed sets honour `type`, `diff`, `practice` (`exams.js`, go=1 only).

@@ -160,9 +160,9 @@ ${noscriptHtml(key)}
 <div class="pp-share" id="ppShare"><p class="pp-share-h">Teaching or sharing?</p>
 <a class="pp-chip pp-sbtn" id="ppClass" href="https://classroom.google.com/" target="_blank" rel="noopener">${ico('<path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 14v6h14v-6"/>')} Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a>
 <button type="button" class="pp-chip pp-sbtn" id="ppCopy">${ico('<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>')} Copy a link to this session</button>
-<button type="button" class="pp-chip pp-sbtn" id="ppPrint"${c.print ? '' : ' disabled'}>${ico('<path d="M7 9V3h10v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/>')} Print as a worksheet</button>
+<button type="button" class="pp-chip pp-sbtn" id="ppPrint"${c.print ? '' : ' disabled title="Worksheets are not available for this course yet"'}>${ico('<path d="M7 9V3h10v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/>')} Print as a worksheet</button>
 <label class="pp-key"><input type="checkbox" id="ppKey"${c.print ? '' : ' disabled'}> Answer key on a separate page</label>
-<p class="pp-share-n" id="ppShareN" aria-live="polite">${c.print ? '' : 'Worksheets are not available for this course yet.'}</p></div>
+<p class="pp-share-n" id="ppShareN" aria-live="polite"></p></div>
 </aside>
 </div>`;
 }

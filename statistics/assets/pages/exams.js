@@ -850,6 +850,24 @@
       K = r[1];
       bank = r[0].filter(function(q){ return TOPIC[q.topic] && TOPIC[q.topic].built; });
       blocks = makeBlocks(bank);
+      /* Practice v2 (docs/course-redesign-r4.md decision 5): a unit test or mixed set started from the Practice
+         panel keeps only the question type, difficulty and practice it asked for (?type=&diff=&practice=). */
+      (function(q){
+        if(q.get('go') !== '1' || q.get('mode') === 'full') return;
+        var ty = q.get('type') || '', df = q.get('diff') || '', pr = q.get('practice') || '';
+        if(!ty && !df && !pr) return;
+        var keep = blocks.filter(function(b){ return b.items.some(function(x){
+          if(df && String(x.diff) !== df) return false;
+          if(pr && String(x.practice || '').split('.')[0] !== pr) return false;
+          if(ty === 'standalone') return !x.stimulus;
+          if(ty === 'sets') return !!x.stimulus;
+          if(ty === 'calc') return !!x.calc;
+          if(ty === 'nocalc') return !x.calc;
+          if(ty.indexOf('set-') === 0) return x.set === ty.slice(4);
+          return !ty || x.type === ty;
+        }); });
+        if(keep.length) blocks = keep;
+      })(new URLSearchParams(location.search));
       var getJ = function(u){ return fetch(BASE + u).then(function(x){ if(!x.ok) throw new Error(u); return x.json(); }); };
       return Promise.all([
         K ? K.index(BASE).then(function(l){ frqList = l || []; }, function(){ frqList = []; }) : null,

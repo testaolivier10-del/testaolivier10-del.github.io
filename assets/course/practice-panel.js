@@ -15,7 +15,7 @@
                  from=&chapters=&topic=&tier=&type=&n=; NREMT: from=&area=&diff=&n=). "Due for review" in
                  ochem and NREMT is their Review page (review.html?go=1&chapter|domain=&n=).
      timed exam  exams.html?go=1&... (each course's own contract, docs/course-redesign-r4.md decision 5)
-     flashcards  flashcards.html?go=1&deck=&kinds=&new= (ochem/NREMT chapter|domain=&scope=&types=)
+     flashcards  flashcards.html?go=1&deck=&new= (ochem/NREMT chapter|domain=&scope=; card types stay the page's own)
      free resp.  frq.html?go=1&type=&unit=      justify   justify.html?go=1&unit=&topic=&skill=
    The timer for a question set is this file's (a clock over the running session that ends it when time
    is up); explanations at the end are the engine's (pp-defer hides feedback until the summary).
@@ -109,11 +109,7 @@
     return [['all', 'All levels'], ['easy', 'Easy'], ['medium', 'Medium'], ['hard', 'Hard'], ['expert', 'Expert']];
   }
   var LEVELS = [['', 'Any level'], ['recall', 'Recall'], ['apply', 'Apply'], ['analyze', 'Analyze']];
-  function cardKinds(){
-    if(BANK) return C.kinds || [];
-    if(fam === 'ochem') return [['concept', 'Concepts'], ['table', 'Facts and values'], ['authored', 'Named reactions']];
-    return [['fact', 'Key facts'], ['glossary', 'Terms'], ['mnemonic', 'Mnemonics'], ['reference', 'Reference tables']];
-  }
+
   var TIMERS = [['off', 'Off'], ['pace', 'Exam pace'], ['x15', 'Time and a half'], ['x2', 'Double time']];
   var TK = { off: 0, pace: 1, x15: 1.5, x2: 2 };
   var FROM = { new: 'New questions', due: 'Due for review', missed: 'Ones I missed', weak: 'My weakest topics', studied: 'Topics I have studied' };
@@ -133,9 +129,9 @@
   /* ---------------------------------------------------------------- state */
   var FIDS = C.formats.map(function(f){ return f[0]; });
   function defaults(){
-    return { f: 'q', from: 'new', units: [], topic: '', practice: '', qt: AP ? '' : [], diff: fam === 'nremt' ? 'all' : '', level: '',
+    return { f: 'q', from: 'new', units: [], topic: '', practice: '', qt: ANP ? [] : '', diff: fam === 'nremt' ? 'all' : '', level: '',
       n: C.counts.indexOf(10) > -1 ? 10 : C.counts[0], timer: 'off', expl: 'each', ek: C.examKinds[0][0],
-      ck: cardKinds().map(function(k){ return k[0]; }), ft: '', sk: '', date: '' };
+      date: '' };
   }
   var S = defaults();
   if(fam === 'ochem' || fam === 'nremt') S.qt = '';
@@ -185,14 +181,14 @@
       return '';
     }
     if(f === 'exam'){
-      if(row === 'from') return AP || fam === 'nremt' ? 'An exam draws from every unit by its exam weight' : 'An exam picks its own questions';
+      if(row === 'from') return 'A practice exam draws from every unit by exam weight';
       if(row === 'expl') return 'Exams explain everything at the end';
       if(row === 'topic') return 'An exam covers whole ' + (AP ? 'units' : 'chapters');
       if(AP){
         if(row === 'units') return ek === 'unit' ? '' : ek === 'full' ? 'A full exam covers every unit' : 'A mixed set draws from every unit';
         if(row === 'n') return ek === 'full' ? 'The full exam is fixed' : '';
         if(row === 'timer') return '';
-        return 'An exam keeps the real exam mix';
+        return ek === 'full' ? 'A full exam keeps the real exam mix' : '';
       }
       if(ANP){
         var custom = ek === 'custom';
@@ -214,20 +210,22 @@
       return 'The exam keeps the real mix';
     }
     if(f === 'cards'){
-      if(row === 'from' || row === 'units' || row === 'type') return '';
+      if(row === 'from' || row === 'units') return '';
       if(row === 'topic') return BANK ? '' : 'Flashcards go by ' + (fam === 'ochem' ? 'chapter' : 'domain');
       if(row === 'n') return BANK ? '' : 'Cards come on your daily schedule';
+      if(row === 'diff') return 'Flashcards have no difficulty levels';
+      if(row === 'practice') return 'Flashcards go by unit and topic';
       return NOT.cards;
     }
     if(f === 'frq'){
-      if(row === 'units' || row === 'type') return '';
+      if(row === 'units') return '';
       if(row === 'from') return 'Free response opens the next one you have not scored';
       if(row === 'n') return 'One question at a time';
       if(row === 'timer') return 'Free response is untimed here; the full practice exam times it';
       return NOT.frq;
     }
     if(f === 'jus'){
-      if(row === 'units' || row === 'topic' || row === 'type') return '';
+      if(row === 'units' || row === 'topic') return '';
       if(row === 'from') return 'Justify opens the next prompt you have not checked';
       if(row === 'n') return 'One prompt at a time';
       return NOT.jus;
@@ -239,13 +237,10 @@
     if(row === 'from'){
       if(s.f === 'cards' && fam === 'ochem' && (v === 'due' || v === 'missed')) return 'Not for flashcards';
       if(s.f === 'cards' && fam === 'nremt' && v !== 'new' && v !== 'weak') return 'Not for flashcards';
-      if(v === 'due' && !A.due()) return 'Nothing is due right now';
-      if(v === 'missed' && !A.missed()) return 'Nothing missed';
-      if(v === 'weak' && BANK && !A.weak().length) return 'Answer some questions first';
-      if(v === 'studied' && !A.studied().length) return 'Study a topic first';
+      /* An empty source stays choosable, as in the mockup; the summary says so and Start waits. */
     }
-    if(row === 'n' && v === 0 && s.f === 'exam' && (AP || fam === 'ochem')) return 'Pick a number';
-    if(row === 'expl' && v === 'end' && REVIEW) return 'This course explains each answer as you go';
+    if(row === 'n' && v === 0 && s.f === 'exam' && ((AP && s.ek === 'mixed') || (fam === 'ochem' && s.ek !== 'final'))) return 'Pick a number';
+    if(row === 'expl' && v === 'end' && REVIEW && s.f === 'q') return 'This course explains each answer as you go';
     if(row === 'units' && fam === 'nremt' && s.f === 'cards'){ var u = A.units().filter(function(x){ return x.id === v; })[0]; if(u && u.exam) return 'Flashcards are grouped by topic area'; }
     return '';
   }
@@ -272,8 +267,8 @@
       if(first){ s.units = [first.id]; s.autoUnit = first.id; }   // an exam on one unit needs one; dropped again if the next choice takes several
     }
     if(s.topic && !A.topics(s.units).some(function(t){ return t.id === s.topic; })) s.topic = '';
-    if(chipWhy(s, 'n', s.n)) s.n = C.counts.filter(function(n){ return n; })[1] || C.counts[0];
-    if(chipWhy(s, 'expl', s.expl)) s.expl = 'each';
+    if(!why(s, 'n') && chipWhy(s, 'n', s.n)) s.n = C.counts.filter(function(n){ return n; })[1] || C.counts[0];
+    if(!why(s, 'expl') && chipWhy(s, 'expl', s.expl)) s.expl = 'each';
   }
 
   /* ---------------------------------------------------------------- drawing */
@@ -303,7 +298,7 @@
     /* Exam kind */
     w = why(s, 'ek');
     html += row('ek', 'Exam', w, chips(s, 'ek', C.examKinds.map(function(k){ return [k[0], esc(k[1])]; }), function(v){ return s.ek === v; }, w),
-      !w && AP && s.ek === 'mixed' ? 'Part of Premium, with the cram kit' : '');
+'');
     /* Questions from */
     w = why(s, 'from');
     var due = A.due(), miss = A.missed();
@@ -319,12 +314,11 @@
     /* Units and topics */
     w = why(s, 'units');
     var um = unitsMode(s), units = A.units ? A.units() : [], tw = why(s, 'topic') || w;
-    var unitChips = (um === 'multi' || (um === 'single' && s.f !== 'exam') ? chip('units', '', 'All', !s.units.length, !!w) : '') +
+    var unitChips = chip('units', '', 'All', !s.units.length, !!w) +   // All on every format, as in the mockup
       chips(s, 'units', units.map(function(u){ return [u.id, esc(u.chip)]; }), function(v){ return has(s.units, v); }, w);
     var topicSel = fam === 'nremt' ? '' : select('topic', 'Topics', [{ v: '', t: s.units.length ? 'Every topic in ' + (s.units.length > 1 ? 'these ' : 'this ') + (C.unitWord === 'Units' ? 'unit' : 'chapter') + (s.units.length > 1 ? 's' : '') : 'Every topic' }]
       .concat(A.topics(s.units).map(function(t){ return { v: t.id, t: t.name }; })), s.topic, !!tw);
-    html += row('units', C.unitWord, w, unitChips + topicSel,
-      um === 'single' && !w ? 'Pick one' : um === 'range' && !w ? 'From the first to the last you pick' : '');
+    html += row('units', C.unitWord, w, unitChips + topicSel);
     /* Science practice or its equivalent */
     if(C.practice){
       w = why(s, 'practice');
@@ -333,19 +327,9 @@
     /* Question type: the kind of thing practised (questions, cards, free-response types, justify skills) */
     w = why(s, 'type');
     var typeBody = '', typeNote = '';
-    if(s.f === 'cards'){ typeBody = chips(s, 'ck', cardKinds().map(function(k){ return [k[0], esc(k[1])]; }), function(v){ return has(s.ck, v); }, w); typeNote = w ? '' : 'Card types'; }
-    else if(s.f === 'frq'){
-      if(!frqData){ loadFrq(); typeBody = '<span class="pp-wait">Loading the types&hellip;</span>'; }
-      else { var K = frqData.K, hv = {}; frqData.list.forEach(function(x){ hv[x.type] = 1; });
-        typeBody = chips(s, 'ft', [['', 'All']].concat((K.ORDER || Object.keys(K.TYPES || {})).filter(function(t){ return hv[t]; }).map(function(t){ return [t, esc((K.TYPES || {})[t] || t)]; })), function(v){ return s.ft === v; }, w); }
-      typeNote = w ? '' : 'Free-response types';
-    } else if(s.f === 'jus'){
-      if(!jusData){ loadJus(); typeBody = '<span class="pp-wait">Loading the skills&hellip;</span>'; }
-      else typeBody = chips(s, 'sk', [['', 'All']].concat(Object.keys(jusData.skills || {}).map(function(k){ return [k, esc(jusData.skills[k])]; })), function(v){ return s.sk === v; }, w);
-      typeNote = w ? '' : 'Justify skills';
-    } else if(ANP) typeBody = chip('qt', '', 'All', !s.qt.length, !!w) + chips(s, 'qt', ANP_TYPES.map(function(t){ return [t[0], esc(t[1])]; }), function(v){ return has(s.qt, v); }, w);
+    if(ANP) typeBody = chip('qt', '', 'All', !s.qt.length, !!w) + chips(s, 'qt', ANP_TYPES.map(function(t){ return [t[0], esc(t[1])]; }), function(v){ return has(s.qt, v); }, w);
     else typeBody = chips(s, 'qt', qtypes().map(function(t){ return [t[0], esc(t[1])]; }), function(v){ return s.qt === v; }, w);
-    html += row('type', 'Question type', w, typeBody, typeNote);
+    html += row('type', 'Question type', w, typeBody);
     /* Difficulty (A&P: and the level) */
     w = why(s, 'diff');
     html += row('diff', 'Difficulty', w, chips(s, 'diff', diffs().map(function(d){ return [d[0], esc(d[1])]; }), function(v){ return s.diff === v; }, w) +
@@ -353,7 +337,7 @@
     /* How many */
     w = why(s, 'n');
     html += row('n', 'How many', w, chips(s, 'n', C.counts.map(function(n){ return [n, n ? String(n) : 'All']; }), function(v){ return s.n === v; }, w),
-      !w && s.f === 'cards' ? 'New cards today' : '');
+''); 
     /* Timer */
     w = why(s, 'timer');
     html += row('timer', 'Timer', w, chips(s, 'timer', TIMERS, function(v){ return s.timer === v; }, w));
@@ -389,108 +373,96 @@
   function timing(s){ return s.timer === 'pace' ? 'std' : s.timer; }
   function nOr(s, all){ return s.n || all; }
 
-  /* { title, body: [lines], cta, href, off } */
-  function plan(s){
-    var f = s.f, n = s.n, lines = [];
-    if(f === 'q'){
-      var src = { new: 'new questions', due: 'questions due for review', missed: 'questions you missed', weak: 'your weakest topics', studied: 'topics you have studied' }[s.from];
-      var cap = s.from === 'due' ? A.due() : s.from === 'missed' && BANK ? A.missed() : 0, k = cap && (!n || n > cap) ? cap : n;
-      var title = (k ? k : 'All') + ' ' + (s.from === 'due' ? 'due ' : '') + (fam === 'ochem' && s.from === 'due' ? 'concepts' : 'questions');
-      lines.push('From ' + src + (why(s, 'units') ? '' : ', ' + unitsText(s)));
+  /* { title, body: [lines], cta, href, off }. The wording follows the mockup's renderVals(): a title, then
+     "From <source>, <units>", then type · difficulty, then timer · explanations, each line only when its rows
+     apply. */
+  var SRC = { new: 'new questions', due: 'questions due for review', missed: 'questions you missed', weak: 'your weakest topics', studied: 'topics you have studied' };
+  var TLINE = { off: 'No timer', pace: 'Exam pace', x15: 'Time and a half', x2: 'Double time' };
+  function lines(s, exam){
+    var out = [];
+    out.push('From ' + (why(s, 'from') ? '' : SRC[s.from] + ', ') + unitsText(s));
+    if(!why(s, 'type') || !why(s, 'diff')){
       var bits = [];
-      if(!why(s, 'type') && (AP ? s.qt : (ANP ? s.qt.length : s.qt))) bits.push(ANP ? s.qt.map(function(t){ return label(ANP_TYPES, t); }).join(', ') : label(qtypes(), s.qt));
-      if(!why(s, 'diff') && s.diff && s.diff !== 'all') bits.push(label(diffs(), s.diff).toLowerCase());
-      if(ANP && s.level) bits.push(label(LEVELS, s.level).toLowerCase());
-      if(C.practice && s.practice) bits.push(strip((A.practices().filter(function(p){ return p.id === s.practice; })[0] || {}).name || ''));
-      if(bits.length) lines.push(bits.join(' · '));
-      if(!why(s, 'timer')) lines.push((s.timer === 'off' ? 'No timer' : label(TIMERS, s.timer) + ', ' + Math.round(qsec(s) / 6) / 10 + ' min a question') + (why(s, 'expl') ? '' : ' · explanations ' + (s.expl === 'end' ? 'at the end' : 'after each answer')));
+      if(!why(s, 'type')) bits.push(ANP ? (s.qt.length ? s.qt.map(function(t){ return label(ANP_TYPES, t); }).join(', ') : 'Every question type') : (s.qt ? label(qtypes(), s.qt) : 'Every question type'));
+      if(!why(s, 'diff')) bits.push(s.diff && s.diff !== 'all' ? label(diffs(), s.diff).toLowerCase() : 'any difficulty');
+      if(ANP && s.level && !why(s, 'diff')) bits.push(label(LEVELS, s.level).toLowerCase());
+      if(C.practice && s.practice && !why(s, 'practice')) bits.push(strip((A.practices().filter(function(p){ return p.id === s.practice; })[0] || {}).name || ''));
+      var ln = bits.join(' · ');
+      out.push(ln.charAt(0).toUpperCase() + ln.slice(1));
+    }
+    if(!why(s, 'timer')) out.push(TLINE[s.timer] + (why(s, 'expl') ? '' : ' · explanations ' + (s.expl === 'end' ? 'at the end' : 'after each answer')));
+    return out;
+  }
+  function plan(s){
+    var f = s.f, n = s.n, L = lines(s), nTxt = n ? String(n) : 'All';
+    if(f === 'q'){
+      var cap = s.from === 'due' ? A.due() : s.from === 'missed' && BANK ? A.missed() : 0, k = cap && (!n || n > cap) ? cap : n;
       var href;
       if(isReview(s)) href = 'review.html' + query(fam === 'ochem' ? { go: 1, chapter: s.units[0] || '', n: n || '' } : { go: 1, domain: s.units[0] || '', n: n || '' });
       else if(BANK) href = 'practice.html' + query({ go: 1, from: s.from, units: s.units.join(','), topic: s.topic, practice: AP ? s.practice : '', core: ANP ? s.practice : '',
         type: ANP ? s.qt.join(',') : s.qt, diff: s.diff, level: ANP ? s.level : '', n: n, timer: s.timer !== 'off' ? s.timer : '', expl: s.expl === 'end' ? 'end' : '' });
       else if(fam === 'ochem') href = 'practice.html' + query({ go: 1, from: s.from, chapters: s.units.join(','), topic: s.topic, tier: s.diff, type: s.qt, n: n, timer: s.timer !== 'off' ? s.timer : '' });
       else href = 'practice.html' + query({ go: 1, from: s.from, area: s.from === 'new' ? s.units[0] || '' : '', diff: s.from === 'new' && s.diff !== 'all' ? s.diff : '', n: s.from === 'missed' ? '' : n, timer: s.timer !== 'off' ? s.timer : '' });
-      var off = (s.from === 'due' && !A.due()) || (s.from === 'missed' && !A.missed());
-      return { title: title, body: lines, cta: s.from === 'due' ? 'Start review' : 'Start practice', href: href, off: off };
+      var empty = s.from === 'due' && !A.due() ? 'Nothing is due right now' : s.from === 'missed' && !A.missed() ? 'Nothing missed yet' :
+        s.from === 'weak' && BANK && !A.weak().length ? 'Answer some questions first, then your weakest topics show here' : s.from === 'studied' && !A.studied().length ? 'Study a topic first' : '';
+      var off = !!empty;
+      return { title: (k ? k : 'All') + ' questions', body: off ? [empty] : L, cta: 'Start practice', href: href, off: off };
     }
     if(f === 'exam'){
-      var ek = s.ek, tl = s.timer === 'off' ? 'No timer' : label(TIMERS, s.timer);
+      var ek = s.ek, std = s.timer === 'pace' ? 'Standard time' : TLINE[s.timer];
       if(AP){
-        var t = ek === 'full' ? 'Full practice exam' : ek === 'unit' ? 'Unit test: ' + unitName(s.units[0]) : 'Mixed timed set';
-        lines.push(ek === 'full' ? C.exam : (n ? plural(n, 'question') : 'Every question in the unit') + (ek === 'mixed' ? ' from every unit' : ''));
-        lines.push(tl + ' · no feedback until the end');
-        return { title: t, body: lines, cta: ek === 'full' ? 'Start the exam' : ek === 'unit' ? 'Start the unit test' : 'Start the timed set',
-          href: 'exams.html' + query({ go: 1, mode: ek, unit: ek === 'unit' ? s.units[0] : '', len: ek === 'unit' ? n : '', n: ek === 'mixed' ? n : '', timing: timing(s) }) };
+        var t = ek === 'full' ? 'Full practice exam' : ek === 'unit' ? 'Unit test: ' + unitName(s.units[0]) : 'Mixed timed set: ' + (n ? plural(n, 'question') : 'every question');
+        var body = ek === 'full' ? [C.exam, std] : L;
+        return { title: t, body: body, cta: 'Start the exam',
+          href: 'exams.html' + query({ go: 1, mode: ek, unit: ek === 'unit' ? s.units[0] : '', len: ek === 'unit' ? n : '', n: ek === 'mixed' ? n : '', timing: timing(s),
+            type: ek !== 'full' ? s.qt : '', diff: ek !== 'full' ? s.diff : '', practice: ek !== 'full' ? s.practice : '' }) };
       }
       if(ANP){
         var names = { unit: 'Unit quiz', system: 'System exam', finalI: 'Cumulative final, A&P I', finalII: 'Cumulative final, A&P II', custom: 'Custom exam', teas: 'TEAS A&P practice' };
         var custom = ek === 'custom', mode = ek === 'finalI' || ek === 'finalII' ? 'final' : ek;
-        if(ek === 'unit' || ek === 'system') lines.push(unitName(s.units[0]));
-        if(custom){ lines.push(unitsText(s) + ', ' + (n ? 'up to ' + plural(n, 'question') : 'every question that matches'));
-          var cb = []; if(s.qt.length) cb.push(s.qt.map(function(x){ return label(ANP_TYPES, x); }).join(', ')); if(s.diff) cb.push(label(diffs(), s.diff).toLowerCase()); if(s.level) cb.push(label(LEVELS, s.level).toLowerCase()); if(cb.length) lines.push(cb.join(' · ')); }
-        lines.push((ek === 'unit' ? 'Untimed' : tl) + ' · no feedback until the end');
-        return { title: names[ek], body: lines, cta: { unit: 'Start the unit quiz', system: 'Start the system exam', finalI: 'Start the final', finalII: 'Start the final', custom: 'Start the custom exam', teas: 'Start TEAS practice' }[ek],
+        return { title: names[ek] + (custom ? ': ' + (n ? plural(n, 'question') : 'every question that matches') : ''), body: ek === 'unit' || ek === 'system' || custom ? L : [ek === 'teas' ? 'The TEAS 7 A&P areas, at TEAS pace' : 'Every chapter of the course, weighted by topic', std], cta: 'Start the exam',
           href: 'exams.html' + query({ go: 1, mode: mode, chapter: ek === 'unit' || ek === 'system' ? s.units[0] : '', course: mode === 'final' ? (ek === 'finalI' ? 'I' : 'II') : '',
             chapters: custom ? s.units.join(',') : '', types: custom ? s.qt.join(',') : '', levels: custom ? s.level : '', diffs: custom ? s.diff : '', len: custom ? String(n) : '', timing: ek === 'unit' ? '' : timing(s) }) };
       }
       if(fam === 'ochem'){
         var us = A.units(), sel = us.filter(function(u){ return has(s.units, u.id); }), lo = sel.length ? Math.min.apply(null, sel.map(function(u){ return u.n; })) : 1, hi = sel.length ? Math.max.apply(null, sel.map(function(u){ return u.n; })) : 1;
         var tt = ek === 'chapter' ? 'Chapter test: ' + unitName(s.units[0]) : ek === 'midterm' ? 'Midterm: chapters ' + lo + (hi > lo ? ' to ' + hi : '') : 'Cumulative final';
-        lines.push(ek === 'final' ? '50 questions from every chapter' : plural(n, 'question'));
-        lines.push(tl + ' · no feedback until you submit');
-        return { title: tt, body: lines, cta: ek === 'final' ? 'Start the final' : ek === 'midterm' ? 'Start the midterm' : 'Start the chapter test',
+        return { title: tt, body: ek === 'final' ? ['50 questions from every chapter', std] : [plural(n, 'question') + ' from ' + (ek === 'midterm' ? 'chapters ' + lo + ' to ' + hi : unitName(s.units[0])), std], cta: 'Start the exam',
           href: 'exams.html' + query({ go: 1, kind: ek, chapter: ek === 'chapter' ? s.units[0] : '', len: ek === 'final' ? '' : n, from: ek === 'midterm' ? lo : '', to: ek === 'midterm' ? hi : '', timing: timing(s) }) };
       }
-      lines.push('100 questions in the 2025 domain mix, 2 hours' + (s.diff !== 'all' ? ', ' + label(diffs(), s.diff).toLowerCase() + ' only' : ''));
-      lines.push(ek === 'real' ? 'Exam-realistic: no flagging, no going back' : 'No feedback until you submit');
-      return { title: 'Timed exam', body: lines, cta: 'Start the exam', href: 'exams.html' + query({ go: 1, exam: 'full', diff: s.diff !== 'all' ? s.diff : '', real: ek === 'real' }) };
+      return { title: 'Timed exam: 100 questions', body: ['In the 2025 domain mix, 2 hours' + (s.diff !== 'all' ? ', ' + label(diffs(), s.diff).toLowerCase() + ' only' : ''), ek === 'real' ? 'Exam-realistic: no flagging, no going back' : 'No feedback until you submit'],
+        cta: 'Start the exam', href: 'exams.html' + query({ go: 1, exam: 'full', diff: s.diff !== 'all' ? s.diff : '', real: ek === 'real' }) };
     }
     if(f === 'cards'){
-      var ct = s.ck.map(function(k){ return label(cardKinds(), k); }).join(', ');
+      var title = (s.from === 'due' ? 'Due' : nTxt) + ' flashcards';
       if(BANK){
-        var deck, what;
-        var uk = ANP ? 'chapter:' : 'unit:';
-        if(s.from === 'missed'){ deck = 'missed'; what = 'Terms from questions you missed'; }
-        else if(s.from === 'weak'){ var wk = A.weak(); deck = wk.map(function(x){ return 'topic:' + x.id; }).join(',') || 'all'; what = 'Your weakest topics'; }
-        else if(s.from === 'studied'){ var st = A.studied(); deck = st.map(function(x){ return 'topic:' + x; }).join(',') || 'all'; what = 'Topics you have studied'; }
-        else if(s.topic){ deck = 'topic:' + s.topic; what = unitsText(s); }
-        else if(s.units.length){ deck = s.units.map(function(u){ return uk + u; }).join(','); what = unitsText(s); }
-        else { deck = 'all'; what = 'Every published topic'; }
-        if(s.from === 'missed' || s.from === 'weak' || s.from === 'studied'){
-          if(s.topic) deck = deck === 'missed' ? deck : deck; // the source decides the deck; units narrow only "new"
-        }
-        lines.push(what);
-        lines.push(s.from === 'due' ? 'Due cards only, no new ones' : 'Up to ' + plural(s.n || 50, 'new card') + ' today, due cards first');
-        lines.push(ct);
-        return { title: (s.from === 'due' ? 'Due' : (s.n || 'All')) + ' flashcards', body: lines, cta: 'Study cards',
-          href: 'flashcards.html' + query({ go: 1, deck: deck, kinds: s.ck.join(','), 'new': s.from === 'due' ? 0 : (s.n || 50) }) };
+        var deck, uk = ANP ? 'chapter:' : 'unit:';
+        if(s.from === 'missed') deck = 'missed';
+        else if(s.from === 'weak') deck = A.weak().map(function(x){ return 'topic:' + x.id; }).join(',') || 'all';
+        else if(s.from === 'studied') deck = A.studied().map(function(x){ return 'topic:' + x; }).join(',') || 'all';
+        else if(s.topic) deck = 'topic:' + s.topic;
+        else if(s.units.length) deck = s.units.map(function(u){ return uk + u; }).join(',');
+        else deck = 'all';
+        return { title: title, body: L, cta: 'Study cards', href: 'flashcards.html' + query({ go: 1, deck: deck, 'new': s.from === 'due' ? 0 : (s.n || 50) }) };
       }
       var scope = s.from === 'weak' ? 'weak' : s.from === 'studied' ? 'studied' : 'all';
-      if(fam === 'ochem'){
-        lines.push(s.units.length ? 'Chapter ' + unitName(s.units[0]) : 'All chapters'); lines.push(ct);
-        return { title: 'Flashcards', body: lines, cta: 'Study cards', href: 'flashcards.html' + query({ go: 1, chapter: s.units[0] || 'all', scope: scope, types: s.ck.join(',') }) };
-      }
+      if(fam === 'ochem') return { title: 'Flashcards', body: L, cta: 'Study cards', href: 'flashcards.html' + query({ go: 1, chapter: s.units[0] || 'all', scope: scope }) };
       var lab = s.units.length ? s.units[0].replace(/^system:/, '') : '', dm = (C.domains || []).filter(function(d){ return d[1] === lab; })[0];
-      lines.push(dm ? dm[1] : 'All domains'); lines.push(ct);
-      return { title: 'Flashcards', body: lines, cta: 'Study cards', href: 'flashcards.html' + query({ go: 1, domain: dm ? dm[0] : 'all', scope: scope, types: s.ck.join(',') }) };
+      return { title: 'Flashcards', body: L, cta: 'Study cards', href: 'flashcards.html' + query({ go: 1, domain: dm ? dm[0] : 'all', scope: scope }) };
     }
     if(f === 'frq'){
-      if(!frqData || frqData.failed) return { title: 'Free response', body: [frqData && frqData.failed ? 'The questions did not load. Check your connection.' : 'Loading the questions'], cta: 'Start writing', href: 'frq.html' };
-      var m = frqData.list.filter(function(x){ return (!s.ft || x.type === s.ft) && (!s.units.length || (x.units || []).indexOf(s.units[0]) > -1); });
-      lines.push(plural(m.length, 'question') + ' match, from ' + unitsText(s));
-      lines.push('Write each part, then score it with the rubric');
-      return { title: s.ft ? (frqData.K.TYPES || {})[s.ft] || 'Free response' : 'Free response', body: lines, cta: 'Start writing',
-        href: 'frq.html' + query({ go: 1, type: s.ft, unit: s.units[0] || '' }), off: !m.length, list: 'frq.html' + query({ type: s.ft, unit: s.units[0] || '' }) };
+      var m = frqData && !frqData.failed ? frqData.list.filter(function(x){ return !s.units.length || (x.units || []).indexOf(s.units[0]) > -1; }) : null;
+      if(!frqData) loadFrq();
+      return { title: 'Written answers', body: m && !m.length ? ['No free-response question matches yet'] : L, cta: 'Start writing',
+        href: 'frq.html' + query({ go: 1, unit: s.units[0] || '' }), off: !!m && !m.length };
     }
     if(f === 'jus'){
-      if(!jusData || jusData.failed) return { title: 'Justify prompts', body: [jusData && jusData.failed ? 'The prompts did not load. Check your connection.' : 'Loading the prompts'], cta: 'Start a prompt', href: 'justify.html' };
-      var ps = (jusData.prompts || []).filter(function(p){ return (!s.units.length || p.unit === s.units[0]) && (!s.topic || p.topic === s.topic) && (!s.sk || p.skill === s.sk); });
-      lines.push(plural(ps.length, 'prompt') + ' match, from ' + unitsText(s));
-      lines.push('Claim, evidence and reasoning, then check it against the rubric');
-      return { title: s.sk ? jusData.skills[s.sk] : 'Justify prompts', body: lines, cta: 'Start a prompt',
-        href: 'justify.html' + query({ go: 1, unit: s.units[0] || '', topic: s.topic, skill: s.sk }), off: !ps.length, list: 'justify.html' + query({ list: 1, unit: s.units[0] || '', skill: s.sk }) };
+      var ps = jusData && jusData.prompts ? jusData.prompts.filter(function(p){ return (!s.units.length || p.unit === s.units[0]) && (!s.topic || p.topic === s.topic); }) : null;
+      if(!jusData) loadJus();
+      return { title: 'Justify prompts', body: ps && !ps.length ? ['No prompt matches yet'] : L, cta: 'Start a prompt',
+        href: 'justify.html' + query({ go: 1, unit: s.units[0] || '', topic: s.topic }), off: !!ps && !ps.length };
     }
-    if(f === 'cat') return { title: 'Adaptive exam', body: ['70 to 120 questions, 2 hours at most', 'Each answer sets the next question; a likely pass or fail at the end', 'A simulation, not the Registry’s algorithm'], cta: 'Start adaptive exam', href: 'exams.html' + query({ go: 1, exam: 'cat' }) };
+    if(f === 'cat') return { title: 'Adaptive exam', body: ['70 to 120 questions, 2 hours at most', 'A simulation, not the Registry’s algorithm'], cta: 'Start adaptive exam', href: 'exams.html' + query({ go: 1, exam: 'cat' }) };
     return { title: 'Scenarios', body: ['One call, from dispatch to handoff', 'Every decision explained when the call ends'], cta: 'Choose a call', href: 'scenario-sim.html' };
   }
 
@@ -498,7 +470,7 @@
   function paintSummary(){
     var r = current = plan(S);
     sumT.textContent = r.title;
-    sumB.innerHTML = r.body.map(esc).join('<br>') + (r.list ? '<br><a href="' + esc(r.list) + '">See them all as a list</a>' : '');
+    sumB.innerHTML = r.body.map(esc).join('<br>');
     goEl.textContent = r.cta;
     goEl.href = r.href;
     if(r.off){ goEl.setAttribute('aria-disabled', 'true'); goEl.classList.add('is-off'); } else { goEl.removeAttribute('aria-disabled'); goEl.classList.remove('is-off'); }
@@ -514,7 +486,7 @@
     if(!C.print) return;
     var can = S.f === 'q' && !isReview(S);
     printBtn.disabled = !can; keyBox.disabled = !can;
-    if(shareN && !shareN.getAttribute('data-msg')) shareN.textContent = can ? '' : 'A worksheet is made from a question set: choose Questions as the format.';
+    printBtn.title = can ? '' : 'A worksheet is made from a question set: choose Questions as the format';
   }
   doc.getElementById('ppCopy').addEventListener('click', function(){
     var url = absUrl(current.href), done = function(){ shareN.setAttribute('data-msg', '1'); shareN.textContent = 'Link copied. It opens this session.'; setTimeout(function(){ shareN.removeAttribute('data-msg'); paintShare(current); }, 4000); };
@@ -645,14 +617,13 @@
       s.topic = s.topic && A.topics(s.units).some(function(t){ return t.id === s.topic; }) ? s.topic : '';
     } else if(k === 'qt' && ANP){
       s.qt = v === '' ? [] : has(s.qt, v) ? s.qt.filter(function(x){ return x !== v; }) : s.qt.concat(v);
-    } else if(k === 'ck'){
-      var nx = has(s.ck, v) ? s.ck.filter(function(x){ return x !== v; }) : s.ck.concat(v);
-      if(nx.length) s.ck = nx;   // at least one card type
     } else if(k === 'n') s.n = +v;
     else if(k === 'f'){
       s.f = v;
-      if(v === 'exam'){ s.timer = 'pace'; }
-      if(v === 'q'){ s.expl = s.expl || 'each'; }
+      /* As the mockup: a timed exam starts at exam pace, explained at the end, every question; questions
+         explain after each answer. */
+      if(v === 'exam'){ s.timer = 'pace'; s.expl = 'end'; s.n = 0; }
+      if(v === 'q') s.expl = 'each';
     } else s[k] = v;
     clearAlert();
     render();
@@ -676,10 +647,9 @@
     var b = e.target.closest('[data-quick]');
     if(!b) return;
     var q = b.getAttribute('data-quick'), d = defaults();
-    d.ck = S.ck;
     if(q === 'q10'){ d.n = 10; }
-    if(q === 'due'){ d.from = 'due'; d.n = C.counts.indexOf(0) > -1 ? 0 : C.counts[C.counts.length - 1]; }
-    if(q === 'exam'){ d.f = 'exam'; d.ek = AP ? 'full' : ANP ? 'finalI' : fam === 'ochem' ? 'final' : 'std'; d.timer = 'pace'; }
+    if(q === 'due'){ d.from = 'due'; d.n = C.counts.indexOf(0) > -1 ? 0 : C.counts[C.counts.length - 1]; }   // may be disabled when nothing is due: Start says so
+    if(q === 'exam'){ d.f = 'exam'; d.ek = AP ? 'full' : ANP ? 'finalI' : fam === 'ochem' ? 'final' : 'std'; d.timer = 'pace'; d.expl = 'end'; d.n = 0; }
     if(q === 'cards'){ d.f = 'cards'; d.n = 20; }
     S = d;
     clearAlert();
