@@ -6,20 +6,16 @@
 
 /* ---- the band on inner pages ---- */
 .r3-inner{padding-bottom:0}
-.r3-inner .band.short .deck span{display:block}
 .r3-inner .band.short .deck .tag.beta{display:inline-block;vertical-align:middle;font:800 12px var(--font-ui);letter-spacing:0;margin:0 0 0 2px}
-.r3-inner .band.short .hwrap{padding-bottom:84px}
-.r3-inner .band.short .lede{font-size:16.5px;margin-bottom:22px}
 .r3-inner .r3-crumb{font:700 13px var(--font-ui);color:rgba(255,255,255,.74);margin:0 0 12px}
 .r3-inner .r3-crumb a{color:rgba(255,255,255,.86);text-decoration:none}
 .r3-inner .r3-crumb a:hover{color:#fff;text-decoration:underline}
 .r3-inner .r3-crumb [aria-current]{color:#fff}
-.r3-inner .band.short .art{max-width:280px}
 /* the site's own breadcrumb row is replaced by the one in the band */
 body:has(.r3-inner) > [data-crumb]{display:none}
 
-/* ---- the body, pulled up over the band ---- */
-.r3-inner .r3-body{position:relative;z-index:2;margin-top:-56px;padding-bottom:40px}
+/* ---- the body, pulled up over the band (the same 38px as .lap in r3.css) ---- */
+.r3-inner .r3-body{position:relative;z-index:2;margin-top:-38px;padding-bottom:40px}
 .r3-inner .r3-body > .page-head{display:none}
 
 /* ---- cards and the dark rail, shared by every page kind ---- */
@@ -63,11 +59,7 @@ body:has(.r3-inner) > [data-crumb]{display:none}
   .r3-inner .r3-unit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:860px){
-  .r3-inner .band.short .hwrap{grid-template-columns:minmax(0,1fr);padding-bottom:70px}
-  .r3-inner .band.short .deck{font-size:30px}
-  .r3-inner .band.short .hand{font-size:19px}
-  .r3-inner .band.short .art{display:none}
-  .r3-inner .r3-body{margin-top:-46px}
+  .r3-inner .r3-body{margin-top:-30px}
   .r3-unit-test .r3-col > [data-set="check"] > *{padding:18px}
 }
 @media (max-width:560px){

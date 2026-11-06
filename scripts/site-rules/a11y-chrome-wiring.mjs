@@ -2,8 +2,10 @@
 
    Guards the audit 2026-10 fix-first 12 and accessibility rows, at the
    source level (check-a11y.mjs drives the same things in a browser):
-   - the phone "More" sheet is inert and aria-hidden while closed;
-   - the floating buttons sit below that sheet (z-index under 44);
+   - the header settings menu (dark mode, answer sounds) is a named button with
+     aria-expanded, and its two switches carry aria-pressed (the phone "More"
+     sheet it once guarded went away with the five tabs, docs/course-redesign-r4.md);
+   - the floating buttons sit below the phone tab bar's overlays (z-index under 44);
    - the study assistant panel is a dialog with a live log;
    - right and wrong answers carry a mark and a word, not colour alone
      (the ::before markers in theme.css for ochem and A&P options);
@@ -14,8 +16,11 @@ import { join } from 'node:path';
 export default function a11yChromeWiring({ ROOT, fail }) {
   const read = (p) => readFileSync(join(ROOT, p), 'utf8');
   const chrome = read('assets/site-chrome.js');
-  if (!/sheet\.setAttribute\('inert', ''\)/.test(chrome) || !/sheet\.setAttribute\('aria-hidden', 'true'\)/.test(chrome)) {
-    fail('assets/site-chrome.js: the closed More sheet must get inert and aria-hidden="true"');
+  if (!/id="settingsBtn" aria-haspopup="true" aria-expanded="false" aria-controls="settingsMenu" aria-label="[^"]+"/.test(chrome)) {
+    fail('assets/site-chrome.js: the settings menu button must be named and carry aria-expanded and aria-controls');
+  }
+  if (!/setAttribute\('aria-expanded', open \? 'true' : 'false'\)/.test(chrome) || !/setAttribute\('aria-pressed'/.test(chrome)) {
+    fail('assets/site-chrome.js: header menus must update aria-expanded, and the theme and sound switches aria-pressed');
   }
   const tutor = read('assets/tutor.js');
   if (!/setAttribute\('role', opts\.inline \? 'region' : 'dialog'\)/.test(tutor)) fail('assets/tutor.js: the floating panel must have role="dialog"');

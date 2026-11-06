@@ -1,5 +1,5 @@
-/* AP® Calculus AB course nav: declares the course's tabs (the site's one tab set,
-   A&P decision 70) and hands the rest to the shared site chrome
+/* AP® Calculus AB course nav: declares the course's section (the five tabs live in
+   site-chrome.js courseTabs) and hands the rest to the shared site chrome
    (assets/site-chrome.js). Each page sets window.ApCalcSection and
    window.ApCalcBase (the path back to calculus/). Also wires [data-print] and
    [data-copy] (Copy link) buttons without an inline handler. */
@@ -8,21 +8,7 @@
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var base = window.ApCalcBase || '';
   var section = window.ApCalcSection || '';
-  var ITEMS = [
-    { key: 'home', label: 'Home', href: base + 'index.html' },
-    { key: 'learn', label: 'Learn', href: base + 'learn.html' },
-    { key: 'practice', label: 'Practice', href: base + 'practice.html' },
-    { key: 'review', label: 'Review', href: base + 'review.html' },
-    { key: 'flashcards', label: 'Flashcards', href: base + 'flashcards.html' },
-    { key: 'exams', label: 'Exams', href: base + 'exams.html' },
-    { key: 'glossary', label: 'Glossary', href: base + 'glossary.html' },
-    { key: 'tools', label: 'Tools', href: base + 'tools.html' },
-    { key: 'dashboard', label: 'Dashboard', href: base + 'dashboard.html' }
-  ];
-  var ALIAS = { frq: 'exams' };
-  section = ALIAS[section] || section;
-  // Flashcards has its own tab (Olivier, 2026-10-26); its page still declares the Practice section.
-  if (/(^|\/)flashcards\.html$/.test(location.pathname)) section = 'flashcards';
+  // The five course tabs (docs/course-redesign-r4.md decision 1); site-chrome.js maps the section to its tab.
   try{
     if(window.LevlChrome){
       window.LevlChrome.registerServiceWorker();
@@ -32,7 +18,7 @@
         courseShort: 'Calculus',
         courseHref: base + 'index.html',
         progressHref: base + 'dashboard.html',
-        items: ITEMS.map(function(it){ return { href: it.href, label: it.label, active: it.key === section }; })
+        items: window.LevlChrome.courseTabs(base, section)
       });
     }
   }catch(e){}
