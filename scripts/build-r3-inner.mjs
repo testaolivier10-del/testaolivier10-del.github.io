@@ -11,6 +11,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { shortBand, bandWords, START_SCRIPT } from './lib/r3-inner.mjs';
 import { homeData } from './lib/r3-home.mjs';
+import { progressBand } from './lib/dashboard-page.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK = process.argv.includes('--check');
@@ -65,7 +66,10 @@ for (const p of PAGES) {
   const path = join(ROOT, p.file);
   const old = readFileSync(path, 'utf8');
   const w = bandWords(p.key, p.slug);
-  let html = between(old, 'r3-band', shortBand({ key: p.key, crumbs: p.crumbs, ...w, lede: p.lede, ledeId: p.ledeId, id: p.id }), p.file);
+  // The Progress tab's band is the round 4 one (scripts/lib/dashboard-page.mjs progressBand).
+  const band = p.slug === 'dashboard' ? progressBand(p.key, '../', { ledeId: p.ledeId, id: p.id })
+    : shortBand({ key: p.key, crumbs: p.crumbs, ...w, lede: p.lede, ledeId: p.ledeId, id: p.id });
+  let html = between(old, 'r3-band', band, p.file);
   /* "How the exam is built" is off the exams page (owner 2026-11-02: the exam should stay simple, like Practice,
      Review and Flashcards); the markers stay so it can come back. */
   if (p.file === 'nremt/exams.html') html = between(html, 'r3-exams-built', '', p.file);

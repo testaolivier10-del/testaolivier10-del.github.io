@@ -2,7 +2,8 @@
 
    Five questions a student actually has, in the order they ask them, and nothing on the page that does not answer
    one of them:
-     1 What should I do now?        one action and why, two "then" steps, today and the streak
+     1 What should I do now?        the path's Up next when a path exists (round 4), else one action and why and two
+                                    "then" steps; today, the streak and the reminder either way
      2 Am I getting better?         one chart: weekly accuracy, exams on the same line, the goal, exam day
      3 Will I be ready?             the course's readiness reading as a distance to a goal, and what closes it
      4 Where am I losing points?    areas ordered by what they cost, not by their percent
@@ -225,8 +226,8 @@
   }
 
   /* ---- pieces ---- */
-  function section(n, kicker, titleHtml, body, id){
-    return '<section class="d5-sec"' + (id ? ' id="' + id + '"' : '') + ' aria-labelledby="d5h' + n + '">' +
+  function section(n, kicker, titleHtml, body, id, cls){
+    return '<section class="d5-sec' + (cls ? ' ' + cls : '') + '"' + (id ? ' id="' + id + '"' : '') + ' aria-labelledby="d5h' + n + '">' +
       '<div class="d5-q"><p class="d5-n">' + n + ' &middot; ' + esc(kicker) + '</p><h2 id="d5h' + n + '">' + titleHtml + '</h2></div>' + body + '</section>';
   }
   /* A folded drawer under a question: the detailed panel the old dashboard showed, kept whole. */
@@ -243,7 +244,7 @@
       html += '<p class="d5-now-t">' + m.title + '</p>' + (m.body ? '<p class="d5-now-b">' + m.body + '</p>' : '') +
         '<ol class="d5-steps">' + m.steps.map(function(s){ return '<li>' + s + '</li>'; }).join('') + '</ol>';
     } else {
-      html += '<div class="d5-now-top"><div class="d5-now-txt"><p class="d5-now-t">' + m.title + '</p>' + (m.body ? '<p class="d5-now-b">' + m.body + '</p>' : '') + '</div>' +
+      html += '<div class="d5-now-top"><div class="d5-now-txt">' + (m.kicker ? '<p class="d5-now-k">' + esc(m.kicker) + '</p>' : '') + '<p class="d5-now-t">' + m.title + '</p>' + (m.body ? '<p class="d5-now-b">' + m.body + '</p>' : '') + '</div>' +
         (m.href ? '<div class="d5-now-go"><p class="d5-starthere" aria-hidden="true">start here</p>' +
           '<svg class="d5-starthere-a" width="40" height="22" viewBox="0 0 40 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 2c8 2 20 4 26 14"/><path d="M26 15l6 2 1-7"/></svg>' +
           '<a class="d5-btn" href="' + esc(m.href) + '">' + esc(m.cta || 'Start') + ' &rarr;</a></div>' : '') + '</div>';
@@ -349,13 +350,122 @@
       '<a href="' + esc(o.backup || '/privacy.html#backup') + '">Download a backup</a><span class="d5-spacer"></span><a href="' + esc(o.premium || '/premium.html') + '">What Premium adds</a></div>';
   }
 
+  /* ---- the path's Up next (round 4, docs/course-redesign-r4.md decision 7: Home owns "what next") ----
+     Question 1 points to the stop the course home shows as Up next. This reads the path the way
+     assets/course/path.js does, without writing anything: assets/path/<course>.json, the student's own
+     <course>_path_v1 and the course's progress. With no path made yet, question 1 stays as it was. */
+  var PATH = { key: null, d: null, loading: false };
+  function pparse(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+  function pathKey(){ var m = document.querySelector('main[data-cover]'); return m ? m.getAttribute('data-cover') : null; }
+  function pathState(key){ var s = pparse(key + '_path_v1'); if(!s || s.v !== 1 || !s.mode) return null; if(s.mode === 'class') s.mode = 'self'; s.done = s.done || {}; s.covered = s.covered || {}; s.cram = s.cram || { kind: 'test', topics: [] }; return s; }
+  function loadPath(){
+    var key = pathKey();
+    if(!key || PATH.d || PATH.loading || !pathState(key) || !window.fetch) return;
+    PATH.key = key; PATH.loading = true;
+    fetch('/assets/path/' + key + '.json', { credentials: 'same-origin' }).then(function(r){ return r.ok ? r.json() : null; }).then(function(d){
+      PATH.loading = false;
+      if(d && d.v === 1){ d.topics.forEach(function(t, i){ t.i = i; }); PATH.d = d; rerender(); }
+    }).catch(function(){ PATH.loading = false; });
+  }
+  // The same stops, in the same order, as path.js stops(); only what picks the current one and names it.
+  function pathNext(){
+    var key = pathKey(), S = key && pathState(key), D = PATH.d;
+    if(!S || !D || PATH.key !== key) return null;
+    var U = D.units, T = D.topics, BY = {}, ACC = null, P;
+    T.forEach(function(t){ BY[t.id] = t; });
+    if(S.anchor && !BY[S.anchor]) S.anchor = null;
+    if(D.kind === 'ap' || D.kind === 'anp'){ var pr = pparse(D.progress) || {}; P = { lessons: pr.lessons || {}, q: pr.q || {} }; }
+    else if(D.kind === 'ochem') P = { op: pparse('ochem_progress') || {}, read: pparse('ochem_textbook_read') || {} };
+    else P = { nl: pparse('nremt_lessons_v1') || {} };
+    function courseDone(id){
+      if(D.kind === 'ap' || D.kind === 'anp') return !!P.lessons[id];
+      if(D.kind === 'ochem') return !!((P.op[id] && P.op[id].completed) || P.read[id]);
+      var t = BY[id]; return !!(t && (t.lessons || []).some(function(l){ return P.nl[l]; }));
+    }
+    function isF(id){ return !!(S.done[id] || S.covered[id] || courseDone(id)); }
+    function acc(id){
+      if(D.kind !== 'ap' && D.kind !== 'anp') return null;
+      if(!ACC){ ACC = {}; for(var k in P.q){ var r = P.q[k]; if(!r || !r.t) continue; var a = ACC[r.t] || (ACC[r.t] = [0, 0]); a[0] += +r.right || 0; a[1] += +r.seen || 0; } }
+      var x = ACC[id]; return x && x[1] >= 3 ? Math.round(100 * x[0] / x[1]) : null;
+    }
+    function base(){ return '/' + D.dir + '/'; }
+    function abs(rel){ if(!rel) return ''; try{ return new URL(rel, location.origin + base()).pathname; }catch(e){ return rel; } }
+    function hasPass(){ try{ return !!(window.LevlPremium && window.LevlPremium.has(key)); }catch(e){ return false; } }
+    function readMode(){ var m = pparse('levl_book_mode_' + D.dir); return !!(m && m.mode === 'read'); }
+    function practiceUrl(t){ return D.practice ? abs(D.practice) + (D.kind === 'nremt' ? '' : '?topic=' + encodeURIComponent(t.id)) : ''; }
+    function bookUrl(t){ return D.kind === 'nremt' ? abs('study-notes.html') + '#chapter-' + t.n : abs('learn.html') + '#' + encodeURIComponent(t.id); }
+    function startUrl(t){ if(readMode() && (t.o || t.l)) return bookUrl(t); if(t.l && (t.f || hasPass())) return abs(t.l); return abs(t.o) || abs(t.l) || practiceUrl(t); }
+    function tName(t){ return (t.n ? t.n + ' ' : '') + t.t; }
+    function courseUnits(){
+      var cus = [];
+      U.forEach(function(u, ui){ if(u.label === 'Skills') return; var ts = T.filter(function(t){ return t.u === ui; }); if(ts.length) cus.push({ u: ui, a: ts[0].i, b: ts[ts.length - 1].i }); });
+      cus.sort(function(x, y){ return x.a - y.a; });
+      cus.forEach(function(c, k){ c.from = k ? cus[k - 1].b + 1 : 0; c.to = k < cus.length - 1 ? c.b : T.length - 1; });
+      return cus;
+    }
+    function topicStop(t, extra){ var o = { kind: 'topic', id: t.id, title: t.t, state: isF(t.id) ? 'done' : 'todo' }; for(var k in extra) o[k] = extra[k]; return o; }
+    var st = [], cus = courseUnits();
+    if(S.mode === 'self'){
+      cus.forEach(function(c, k){
+        var ts = T.filter(function(t){ return t.i >= c.from && t.i <= c.to; }), cnt = 0;
+        ts.forEach(function(t, j){ st.push(topicStop(t, { cu: k })); cnt++; if(cnt % 4 === 0 && j < ts.length - 1) st.push({ kind: 'mix', id: 'x:p' + c.u + '-' + cnt, title: 'Practice set', state: 'todo', cu: k }); });
+        if(D.review) st.push({ kind: 'review', id: 'x:r' + c.u, title: 'Review your misses', state: 'todo', cu: k });
+        var test = D.tests[U[c.u].id];
+        if(test) st.push({ kind: 'test', id: 'x:t' + c.u, title: U[c.u].label + ' test', state: 'todo', url: abs(test), cu: k });
+      });
+      if(D.exams) st.push({ kind: 'exam', id: 'x:exam', title: 'Full practice exam', state: 'todo', cu: cus.length - 1 });
+      var lastT = -1; st.forEach(function(x, i){ if(x.kind === 'topic' && x.state === 'done') lastT = i; });
+      st.forEach(function(x, i){ if(x.kind !== 'topic' && (S.done[x.id] || i < lastT)) x.state = 'done'; });
+    } else if(S.mode === 'cram'){
+      var byAcc = function(x, y){ var ax = acc(x.id), ay = acc(y.id); return (ax == null ? 101 : ax) - (ay == null ? 101 : ay) || x.i - y.i; };
+      var list = S.cram.kind === 'exam' ? T.filter(function(t){ return !isF(t.id); }).sort(byAcc).slice(0, 6)
+        : (S.cram.topics || []).filter(function(id){ return BY[id]; }).map(function(id){ return BY[id]; }).sort(byAcc);
+      var n = 0;
+      list.forEach(function(t){ st.push(topicStop(t)); n++; if(n % 3 === 0 && n < list.length) st.push({ kind: 'mix', title: 'Mixed set', state: 'todo' }); });
+      st.push({ kind: 'mix', title: 'Timed practice', state: 'todo', timed: 1 });
+      st.push({ kind: 'day', title: S.cram.kind === 'exam' ? 'The ' + D.exam.label : 'Test day', state: 'todo' });
+    } else return null;
+    var now = -1;
+    if(S.mode === 'self') st.forEach(function(x, i){ if(now < 0 && x.state === 'todo') now = i; });
+    st.forEach(function(x, i){ if(now < 0 && x.state === 'todo' && x.kind === 'topic') now = i; });
+    if(now < 0) st.forEach(function(x, i){ if(now < 0 && x.state === 'todo') now = i; });
+    if(now < 0) now = st.length - 1;   // everything done: the home shows the last stop, so this does too
+    var s = st[now]; if(!s) return null;
+    var url = s.kind === 'topic' ? startUrl(BY[s.id]) : s.kind === 'review' ? abs(D.review) : s.kind === 'test' ? s.url
+      : s.kind === 'mix' ? (s.timed ? (abs(D.exams) || abs(D.practice)) : abs(D.practice)) : s.kind === 'exam' ? (abs(D.exams) || abs(D.review)) : '';
+    var u = S.mode !== 'cram' && s.cu != null && cus[s.cu] ? U[cus[s.cu].u] : null;
+    var where = u ? u.label + (u.title ? ' · ' + u.title : '') : S.mode === 'cram' ? (S.cram.kind === 'exam' ? 'Exam review' : 'Cramming for a test') : 'Studying on my own';
+    return { title: s.kind === 'topic' ? tName(BY[s.id]) : s.title, url: url, where: where, home: base() };
+  }
+  // Question 1 with a path: the path's Up next leads; what the course's own reading suggested is kept, folded
+  // under it ("Also from your answers"), so nothing the card offered before is gone.
+  function withPath(n, pn){
+    var o = n || {}, rows = '';
+    if(o.steps) rows = '<ol class="d5-steps">' + o.steps.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ol>';
+    else {
+      var list = (o.href ? [{ text: o.title, href: o.href, cta: o.cta }] : []).concat(o.then || []);
+      rows = (o.href && o.body ? '<p class="d5-mut">' + o.body + '</p>' : '') + '<div class="d5-then">' + list.map(function(x){
+        return '<a class="d5-then-row" href="' + esc(x.href) + '"><span>' + x.text + '</span><b>' + esc(x.cta || 'Go') + ' &rarr;</b></a>';
+      }).join('') + '</div>';
+    }
+    return { kicker: 'Your path · ' + pn.where, title: 'Up next on your path: <span>' + esc(pn.title) + '</span>',
+      body: 'Your whole path is on the <a href="' + esc(pn.home) + '">course home</a>.', href: pn.url || pn.home, cta: pn.url ? 'Continue' : 'Open your path',
+      today: o.today, more: [{ label: 'Also from your answers', html: rows, id: 'd5NowMore' }] };
+  }
+
+  var LAST = null;
+  function rerender(){ if(LAST) render(LAST.root, LAST.m); }
+
   /* The whole page, for the courses whose dashboard is drawn by script. */
   function render(root, m){
     if(!root) return;
+    LAST = { root: root, m: m };
+    loadPath();
+    var pn = pathNext(), now = pn ? withPath(m.now, pn) : m.now;
     // A redraw (a sync, another tab, a pass arriving) keeps the drawers the student had open.
     var open = Array.prototype.map.call(root.querySelectorAll('details.d5-more[open] > summary'), function(x){ return x.textContent; });
     root.innerHTML = '<div class="d5">' +
-      section(1, 'right now', 'What should I <span>do now?</span>', nowCard(m.now)) +
+      section(1, 'right now', 'What should I <span>do now?</span>', nowCard(now) + drawers(now.more), null, 'd5-first lap') +
       section(2, 'progress', 'Am I getting <span>better?</span>', progressCard(m.progress)) +
       section(3, m.ready.kicker || 'exam day', m.ready.title, readyCard(m.ready)) +
       section(4, 'focus', 'Where am I <span>losing points?</span>', focusCard(m.focus)) +
@@ -371,9 +481,13 @@
   function band(b){
     if(!b) return;
     var main = document.querySelector('.r3-dashboard') || document;
-    var hand = main.querySelector('.band .hand');
-    if(hand && b.status) hand.textContent = b.status;
-    var ctas = main.querySelector('.band .hero-ctas');
+    // Round 4 band (scripts/lib/dashboard-page.mjs progressBand): the status is its one sub line and the level sits
+    // under it (the band has no buttons now). Older bands: the hand line and the button row.
+    var hand = main.querySelector('.band [data-d5-status]') || main.querySelector('.band .hand');
+    // The status was written as a lowercase hand line; as the band's sub line it starts with a capital.
+    if(hand && b.status) hand.textContent = hand.hasAttribute('data-d5-status') ? b.status.charAt(0).toUpperCase() + b.status.slice(1) : b.status;
+    var ctas = main.querySelector('.band .hero-ctas') || main.querySelector('.band .d5-lvl-row');
+    if(!ctas && b.level && hand){ ctas = document.createElement('p'); ctas.className = 'd5-lvl-row'; hand.parentNode.insertBefore(ctas, hand.nextSibling); }
     if(ctas && b.level){
       var chip = ctas.querySelector('.d5-lvl') || ctas.appendChild(document.createElement('span'));
       chip.className = 'd5-lvl';
@@ -412,9 +526,12 @@
     });
   }
 
+  // A path made or changed in another tab moves question 1 with it.
+  window.addEventListener('storage', function(e){ if(e.key && /_path_v1$/.test(e.key)) { if(!PATH.d) loadPath(); else rerender(); } });
+
   window.LevlDash = {
     render: render, band: band, wire: wire, section: section, now: nowCard, progress: progressCard, ready: readyCard,
     focus: focusCard, record: recordCard, foot: footLine, drawer: drawer, drawers: drawers, icon: icon,
-    dailyWeeks: dailyWeeks, trend: trend, esc: esc, plural: plural, shortDate: shortDate, weekday: weekday, startOfDay: startOfDay
+    rerender: rerender, pathNext: pathNext, dailyWeeks: dailyWeeks, trend: trend, esc: esc, plural: plural, shortDate: shortDate, weekday: weekday, startOfDay: startOfDay
   };
 })();
