@@ -641,11 +641,20 @@
       var p = new URLSearchParams(location.search);
       if(KINDS.some(function(k){ return k.id === p.get('kind'); })) cfg.kind = p.get('kind');
       if(CHAPTER[p.get('chapter')]){ cfg.chapter = p.get('chapter'); if(!p.get('kind')) cfg.kind = 'chapter'; }
+      // From the Practice panel (docs/course-redesign-r4.md decision 5): ?len= (chapter test 20|25, midterm 30|40), ?from=&to= (chapter numbers), ?timing=, ?go=1.
+      var ln = +p.get('len'), fr = +p.get('from'), to = +p.get('to');
+      if(cfg.kind === 'chapter' && (ln === 20 || ln === 25)) cfg.chLen = ln;
+      if(cfg.kind === 'midterm' && (ln === 30 || ln === 40)) cfg.midLen = ln;
+      if(fr >= 1 && to >= fr && to <= CHAPTERS.length){ cfg.from = fr; cfg.to = to; }
+      if(TIMINGS.some(function(t){ return t.id === p.get('timing'); })) cfg.timing = p.get('timing');
+      var go = p.get('go') === '1';
+      if(go){ savePrefs(); try{ history.replaceState(null, '', location.pathname); }catch(e){} }
       var r = savedRun();
       // An attempt whose time ran out while the page was closed is graded as
       // it stood, the same as if the page had been open when the clock hit 0.
       if(r && r.deadline && X.timeLeft(r, Date.now()) <= 0){ run = r; finish(true, true); return; }
       renderSetup();
+      if(go && !r){ var sb = app.querySelector('.ex-start'); if(sb && !sb.disabled) sb.click(); }
       // A pass confirmed after load opens unlimited exams without a reload.
       var wasOpen = examAccess().available;
       if(window.LevlPremium) window.LevlPremium.onChange(function(){

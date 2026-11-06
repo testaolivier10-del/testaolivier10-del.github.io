@@ -45,3 +45,13 @@ page before, owner 2026-10-26, so it stays the first thing seen).
 
 ## Proof
 Screenshots (empty, with data, locked and unlocked, phone, dark) in the PR.
+
+## Round 4: the Progress tab (2026-11-05, docs/course-redesign-r4.md decisions 3 and 7)
+- The band is the small inner one (`progressBand` in `scripts/lib/dashboard-page.mjs`; `scripts/build-r3-inner.mjs`
+  writes it into the NREMT and ochem pages): course name, "Progress", one sub line. `dash.js` `band()` puts the
+  status sentence in that sub line (`data-d5-status`) and the level chip under it; the band has no buttons.
+- Question 1 is a card with `lap`. With a path made (`<course>_path_v1` has a mode), it leads with the path's Up
+  next: `dash.js` `pathNext()` reads `assets/path/<course>.json` and the path state the way `assets/course/path.js`
+  `stops()` does, read-only, and links Continue to the same stop. The course's own suggestion and its "then" steps
+  fold under it ("Also from your answers"). No path: question 1 is as before. Streak, today count and reminder stay.
+  If path.js changes how it picks the current stop, change `pathNext()` with it.

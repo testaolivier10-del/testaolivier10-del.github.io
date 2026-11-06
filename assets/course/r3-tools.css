@@ -3,9 +3,14 @@
    scripts/lib/r3-tools.mjs. Boards: docs/redesign-r3/r10/boards/R10-Tools*, R10-Tool*. */
 
 /* ---------------------------------------------------------------- the hub */
-.r3-tools .r3-tools-body{padding-top:36px}
+.r3-tools .r3-tools-body{padding-top:0}
 .r3-tools .band.short .art{max-width:320px}
-.r3-tools .r3-tools-group{margin:0 0 34px}
+.r3-tools .r3-tools-group{margin-bottom:34px}
+/* Round 4 (docs/course-redesign-r4.md decision 6): each group in a card; the first one (.lap, assets/course/r3.css)
+   overlaps the band's foot. */
+.r3-tools .r3-tools-card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:26px 28px 12px;box-shadow:0 1px 2px rgba(11,26,51,.04),0 8px 24px rgba(11,26,51,.05)}
+.r3-tools .r3-tools-card > .anp-hub-filter:not([hidden]){margin:0 0 18px}
+:root[data-theme="dark"] .r3-tools .r3-tools-card{box-shadow:none}
 .r3-tools .r3-tools-h{margin-bottom:18px}
 .r3-tools .r3-tools-p{margin:-2px 0 16px;color:var(--muted);font-size:15px;max-width:40em}
 .r3-tools .kicker{margin-top:4px}
@@ -22,7 +27,6 @@
 .r3 a.r3-tool .premium-badge{font:800 12px var(--font-ui);border-radius:999px;padding:2px 10px;white-space:nowrap;background:#FFF3D6;color:var(--amber-text);border:0;box-shadow:none}
 .r3 a.r3-tool .cx-tool-top .tag + .premium-badge{margin-left:6px}
 .r3 a.r3-tool[data-premium] .tag.free{display:none}
-.r3 a.r3-tool .cx-tool-desc{font-size:14.5px;line-height:1.45;color:var(--muted);margin:0}
 .r3 a.r3-tool .cx-tool-status{display:flex;flex-direction:column;gap:4px;margin:6px 0 0;font:700 13px var(--font-ui);color:var(--muted)}
 .r3 a.r3-tool .cx-tool-status:empty{display:none}
 .r3 a.r3-tool .cx-tool-stat b{color:var(--ink)}
@@ -51,7 +55,8 @@
   .r3 a.r3-tool .cx-tool-foot{margin-top:2px}
   .r3 .r3-feat{padding:18px;gap:16px}
   .r3 .r3-feat .fig.tcfig{order:-1}
-  .r3-tools .r3-tools-body{padding-top:24px}
+  .r3-tools .r3-tools-card{padding:20px 18px 6px;border-radius:18px}
+  .r3-tools .band.short .art{display:none}
 }
 
 /* --------------------------------------------------------- a tool's opener */

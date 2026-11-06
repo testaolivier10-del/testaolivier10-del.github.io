@@ -102,8 +102,16 @@
   // A link can open the deck on one domain: ?domain=<key>.
   function applyUrl(){
     try{
-      var d = new URLSearchParams(location.search).get('domain');
+      var q = new URLSearchParams(location.search), d = q.get('domain'), ty = q.get('types');
       if(d && DOMAIN[d]) prefs.domain = d;
+      // From the Practice panel (docs/course-redesign-r4.md decision 5): ?scope=all|weak, ?types=fact,glossary,...
+      if(q.get('scope') === 'all' || q.get('scope') === 'weak') prefs.scope = q.get('scope');
+      if(ty && /^[a-z,]+$/.test(ty)){
+        var anyT = false;
+        TYPES.forEach(function(t){ prefs.types[t.key] = ty.split(',').indexOf(t.key) > -1; anyT = anyT || prefs.types[t.key]; });
+        if(!anyT) TYPES.forEach(function(t){ prefs.types[t.key] = true; });
+      }
+      if(q.get('scope') || ty) savePrefs();
     }catch(e){}
     if(prefs.domain !== 'all' && !DOMAIN[prefs.domain]) prefs.domain = 'all';
   }
@@ -558,6 +566,11 @@
     buildDeck(data);
     applyUrl();
     renderHome();
+    // ?go=1 from the Practice panel: start studying at once.
+    if(/[?&]go=1/.test(location.search)){
+      try{ history.replaceState(null, '', location.pathname); }catch(e){}
+      var go = homeEl.querySelector('#fcStart'); if(go) go.click();
+    }
   }, function(err){
     if(window.console && console.warn) console.warn('Flashcard deck unavailable.', err);
     homeEl.innerHTML = '<div class="empty-panel"><h2>The deck did not load</h2>' +

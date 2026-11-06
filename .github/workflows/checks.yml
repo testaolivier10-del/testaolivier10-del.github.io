@@ -249,6 +249,8 @@ jobs:
       # cover band written by scripts/build-r3-inner.mjs.
       - name: the round 3 bands on the hand-written inner pages are current
         run: node scripts/build-r3-inner.mjs --check
+      - name: Practice panel blocks are up to date
+        run: node scripts/build-practice-panel.mjs --check
       # The NREMT tools hub and every NREMT tool page's cover band (round 3) come
       # from scripts/build-r3-tools.mjs.
       - name: the NREMT tools hub and tool bands are current

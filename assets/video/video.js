@@ -63,14 +63,38 @@
     block.classList.add('lpv-open');
     var link = frame.querySelector('.lpv-play');
     frame.appendChild(iframe);
-    if(link) link.remove();
+    if(link){ block.__lpvLink = link; link.remove(); }
+    if(block.classList.contains('lpv-strip') && !block.querySelector(':scope > .lpv-close')){
+      var closer = document.createElement('button');
+      closer.type = 'button';
+      closer.className = 'lpv-close';
+      closer.textContent = 'Close video';
+      block.insertBefore(closer, block.querySelector(':scope > .lpv-chapters'));
+    }
     // Keyboard and screen-reader users land on the player they started.
     try { iframe.focus(); } catch(e){}
     track(block, from);
   }
 
+  // Close video: back to the preview strip, focus on its play button.
+  function shut(block){
+    var frame = block.querySelector('.lpv-frame'), iframe = frame && frame.querySelector('iframe');
+    if(iframe) iframe.remove();
+    if(block.__lpvLink && !frame.querySelector('.lpv-play')) frame.appendChild(block.__lpvLink);
+    block.classList.remove('lpv-open');
+    var b = block.querySelector(':scope > .lpv-close');
+    if(b) b.remove();
+    mark(block, -1);
+    var p = frame.querySelector('.lpv-play');
+    if(p) try{ p.focus(); }catch(e){}
+  }
+
   function onClick(e){
     if(e.defaultPrevented || e.button > 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var close = e.target.closest && e.target.closest('.lpv-close');
+    if(close){ e.preventDefault(); shut(close.closest('.lpv')); return; }
+    var strip = e.target.closest && e.target.closest('.lpv-strip:not(.lpv-open)');
+    if(strip && !e.target.closest('a,button,summary,details')){ e.preventDefault(); play(strip, 0, 'button'); return; }
     var a = e.target.closest && e.target.closest('.lpv a[data-start]');
     if(!a) return;
     var block = a.closest('.lpv');

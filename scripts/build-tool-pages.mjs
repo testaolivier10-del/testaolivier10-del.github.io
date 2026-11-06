@@ -279,13 +279,9 @@ const HUB_START = '<!-- r3-tools:start -->', HUB_END = '<!-- r3-tools:end -->';
 const hubFile = join(ROOT, 'ochem', 'tools.html');
 const card = (t) => ({ slug: t.slug, href: `tools/${t.slug}.html`, name: t.name, desc: undash(t.tagline), foot: esc(t.teaches), free: FREE_TOOLS.includes(t.slug), attrs: ` data-tool="${esc(t.slug)}"` });
 const freeTools = tools.filter((t) => FREE_TOOLS.includes(t.slug)), paidTools = tools.filter((t) => !FREE_TOOLS.includes(t.slug));
-const NUM = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 const hubHtml = '\n' + toolsHubMain({
   key: 'ochem', up: '../', mountId: 'toolHub', mountClass: 'cx-tools',
-  crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: 'Organic Chemistry', href: 'index.html' }, { name: 'Tools' }],
-  h1: `${NUM[tools.length] || tools.length} places <span>to push electrons.</span>`, hand: 'nothing graded, and every one tells you why',
-  lede: 'Push electrons, turn a molecule over, plan a route or make a prediction. For the same chemistry with a right answer, see <a href="practice.html">Practice</a>.',
-  cta: { href: `tools/${tools[0].slug}.html`, label: `Open the ${esc(tools[0].name.toLowerCase())}` }, cta2: { href: 'search.html', label: 'Search everything' },
+  hand: 'nothing graded, and every one tells you why',
   before: '<noscript><div class="site-nav-fallback"><p>Each tool computes its answer in your browser and needs JavaScript to run; the list below still links to every one.</p></div></noscript>',
   // Free, then With Premium, as on every course's hub (toolsHubMain's pass; consistency audit 2026-11, C5).
   pass: 'Organic Chemistry', groups: [{ h: 'Tools', cards: [...freeTools, ...paidTools].map(card) }],

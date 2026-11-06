@@ -41,6 +41,8 @@
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="practice.css">
+<link rel="stylesheet" href="../assets/course/r3-inner.css">
+<link rel="stylesheet" href="../assets/course/practice-panel.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
 {
@@ -97,17 +99,19 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Practice</span></nav></div>
 <!-- crumb:end -->
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<main class="wrap cx-study" id="main">
+<main class="r3 r3-inner r3-practice cx-study" id="main" data-cover="nremt">
 
   <div id="introScreen">
-    <header class="page-head">
-      <div class="eyebrow">NREMT-EMT</div>
-      <h1>Practice</h1>
-      <p class="lede">Drills from the 2,093-question bank in every NREMT item type (multiple choice, select-N, build list, drag and drop, options table), each answer checked as you go.</p>
-    </header>
-
-    <div class="cx-body has-rail">
-      <div class="cx-main">
+<!-- practice-band:start -->
+<section class="band short" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="r3-crumb" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Practice</span></nav>
+<p class="issue">NREMT-EMT <i></i></p>
+<h1 class="deck" id="r3Title">Practice</h1>
+<p class="lede pp-sub" id="ppSub">Every answer explained</p>
+<div class="pp-free" id="ppFree" hidden></div>
+</div><div class="art" aria-hidden="true"><img src="../assets/covers/art/nremt.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+<!-- practice-band:end -->
+    <div class="xshell lap pp-wrap">
         <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
           <div class="resume-exam-text" id="resumeExamText"></div>
           <div class="resume-exam-actions">
@@ -116,13 +120,20 @@
           </div>
         </div>
 
+<div class="pp" id="pp">
+<section class="pp-step pp-s1" aria-labelledby="ppS1"><h2 class="pp-k" id="ppS1">1 &middot; What do you want to do?</h2>
+<!-- practice-tiles:start -->
+<div class="pp-tiles"><a class="pp-tile" href="practice.html" data-mode="set"><span class="pp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><span class="pp-tt"><b>Practice set</b><span class="pp-ts" data-live="set">Questions with feedback</span></span></a><a class="pp-tile" href="review.html" data-mode="review"><span class="pp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.5L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4.5L20 16"/><path d="M20 20v-4h-4"/></svg></span><span class="pp-tt"><b>Review</b><span class="pp-ts" data-live="review">Your spaced review queue</span></span></a><a class="pp-tile" href="flashcards.html" data-mode="flash"><span class="pp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="4" width="13" height="15" rx="2"/><path d="M4 8v11a2 2 0 0 0 2 2h9"/></svg></span><span class="pp-tt"><b>Flashcards</b><span class="pp-ts" data-live="flash">Spaced cards</span></span></a><a class="pp-tile" href="exams.html" data-mode="exam"><span class="pp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M10 2h4"/></svg></span><span class="pp-tt"><b>Exam</b><span class="pp-ts" data-live="exam">Timed, no feedback</span></span></a><a class="pp-tile" href="exams.html#adaptive" data-mode="cat"><span class="pp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18l5-6 4 3 7-9"/><path d="M15 6h5v5"/></svg></span><span class="pp-tt"><b>Adaptive exam</b><span class="pp-ts" data-live="cat">70 to 120 questions, like the real one</span></span></a><a class="pp-tile" href="scenario-sim.html" data-mode="scen"><span class="pp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span class="pp-tt"><b>Scenarios</b><span class="pp-ts" data-live="scen">Run a call from dispatch to handoff</span></span></a></div>
+<!-- practice-tiles:end -->
+</section>
+<section class="pp-step pp-s2" aria-labelledby="ppS2"><h2 class="pp-k" id="ppS2">2 &middot; Set it up</h2>
         <!-- One builder (docs/course-shell.md, W-C): pick a mode, a topic, a
              length, Start. Each mode keeps its own engine button
              (adaptiveStartBtn, domainStartBtn, reviewBtn); flagged questions are on Review.
              nremt-practice.js shows the one that matches the chosen mode. -->
         <form class="cx-card cx-builder" id="nrBuilder" novalidate aria-label="Build a practice set" onsubmit="return false">
           <fieldset class="cx-step">
-            <legend><span class="cx-step-n" aria-hidden="true">1</span>What do you want to practice?</legend>
+            <legend><span class="cx-step-n" aria-hidden="true">1</span>Questions from</legend>
             <div class="cx-choices">
               <label class="cx-choice"><input type="radio" name="nrMode" value="weak" checked><span><b>Weak spots</b><span>Weighted toward what you miss; retargets after every question.</span></span></label>
               <label class="cx-choice"><input type="radio" name="nrMode" value="domain"><span><b>One domain or area</b><span>A short set from one exam domain or topic area.</span></span></label>
@@ -172,7 +183,7 @@
           </div>
 
           <fieldset class="cx-step" data-nr-step="count">
-            <legend><span class="cx-step-n" aria-hidden="true">3</span>How many questions?</legend>
+            <legend><span class="cx-step-n" aria-hidden="true">3</span>How many</legend>
             <div class="cx-pills" id="nrCounts">
               <label class="cx-pill"><input type="radio" name="nrCount" value="10"><span>10</span></label>
               <label class="cx-pill"><input type="radio" name="nrCount" value="15"><span>15</span></label>
@@ -198,21 +209,16 @@
           </div>
           <div id="premiumNotice" class="premium-slot"></div>
         </form>
-
-      </div>
-
-      <!-- Practice keeps only practicing (Olivier, 2026-10-26): the streak, the numbers and the review queue
-           live on Progress and Review. The rail keeps readiness and the other ways to study. -->
-      <aside class="cx-rail" aria-label="Readiness and other ways to study">
-        <div class="intro-row r3-readiness"><div id="readinessCard"></div></div>
-        <nav class="cx-links" aria-label="More ways to study">
-          <a class="cx-link" href="flashcards.html"><b>Flashcards<small>Short facts on spaced cards.</small></b><span aria-hidden="true">&rarr;</span></a>
-          <a class="cx-link" href="exams.html"><b>Exams<small>The timed 100-question exam.</small></b><span aria-hidden="true">&rarr;</span></a>
-        </nav>
-      </aside>
+<div class="pp-set" id="ppSet" hidden></div></section>
+<div class="pp-bar" id="ppBar" hidden><div class="pp-bar-t"><p class="pp-sum" id="ppSum" aria-live="polite"></p><p class="pp-sum2" id="ppSum2"></p></div><a class="pp-go" id="ppGo" href="practice.html">Start</a></div>
+</div>
+      <!-- Readiness (Premium), under the panel; the other ways to study are the panel's tiles. -->
+      <div class="intro-row r3-readiness pp-ready"><div id="readinessCard"></div></div>
     </div>
   </div>
-
+<!-- practice-config:start -->
+<script type="application/json" id="ppConfig">{"course":"nremt","family":"nremt","note":"The study notes stay open.","modes":["set","review","flash","exam","cat","scen"],"store":{"cards":"nremt_flashcards_v1"},"setRoot":"#nrBuilder","domains":[["airway","Airway & Respiratory"],["cardiac","Cardiac & Medical"],["trauma","Trauma"],["obpeds","OB/Peds & Special Populations"],["assessment","Assessment"],["operations","EMS Operations"]]}</script>
+<!-- practice-config:end -->
 </main>
 <div class="xshell cx-foot">
   <footer>
@@ -228,5 +234,6 @@
 <script src="../assets/course/study.js" defer></script>
 <script src="practice-study.js" defer></script>
 <script src="assets/nav.js" defer></script>
+<script src="../assets/course/practice-panel.js" defer></script>
 </body>
 </html>

@@ -766,6 +766,14 @@
 
   /* ------------------------------------------------------ boot */
 
+  /* ?go=1 from the Practice panel (docs/course-redesign-r4.md decision 5): start the exam the settings describe. */
+  function goNow(p){
+    if(p.get('go') !== '1') return;
+    try{ history.replaceState(null, '', location.pathname); }catch(e){}
+    var b = app.querySelector('.cx-start [type="submit"]');
+    if(b && !b.disabled) b.click();
+  }
+
   function boot(){
     if(!Q || !Core){ app.innerHTML = '<p>Exams could not start. Reload the page to try again.</p>'; return; }
     app.innerHTML = '<p class="anp-small">Loading the question bank…</p>';
@@ -777,7 +785,10 @@
       if(TIMINGS.some(function(t){ return t.id === saved; })) cfg.timing = saved;
       if(builtChapters().some(function(c){ return c.id === p.get('chapter'); })) cfg.chapter = p.get('chapter');
       if(KINDS.some(function(k){ return k.id === p.get('mode'); })) cfg.kind = p.get('mode');
+      if(p.get('course') === 'I' || p.get('course') === 'II') cfg.course = p.get('course');
+      if(TIMINGS.some(function(t){ return t.id === p.get('timing'); })) cfg.timing = p.get('timing');
       renderSetup();
+      goNow(p);
       if(p.toString()){ var s = app.querySelector('.anp-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){ app.innerHTML = '<p>The question bank did not load. Check your connection and reload.</p>'; });
   }

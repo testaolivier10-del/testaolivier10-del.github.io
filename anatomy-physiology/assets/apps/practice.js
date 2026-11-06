@@ -226,7 +226,7 @@
     if(state.mode === 'flagged' || (MODE[state.mode] && modeUnavailable(state.mode))) state.mode = 'topic';
     app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' +
       '<form class="cx-card cx-builder anp-pr-setup" novalidate aria-label="Build a practice set">' +
-        '<fieldset class="cx-step anp-pr-modes"><legend>' + step(1) + 'What do you want to practice?</legend>' +
+        '<fieldset class="cx-step anp-pr-modes"><legend>' + step(1) + 'Questions from</legend>' +
           '<div class="cx-choices">' +
           // Flagged questions live in Review now (Olivier, 2026-10-26); ?mode=flagged from there starts them directly.
           MODES.filter(function(m){ return m.id !== 'flagged'; }).map(function(m){
@@ -238,7 +238,7 @@
         '</div></fieldset>' +
         '<div class="cx-step anp-pr-pickstep"><h2 class="cx-step-h">' + step(2) + '<span class="anp-pr-pick-h"></span></h2>' +
           '<div class="anp-pr-pick"></div><p class="cx-avail anp-pr-avail"></p></div>' +
-        '<fieldset class="cx-step anp-pr-count"><legend>' + step(3) + 'How many questions?</legend>' +
+        '<fieldset class="cx-step anp-pr-count"><legend>' + step(3) + 'How many</legend>' +
           '<div class="cx-pills">' +
           COUNTS.map(function(n){ return '<label class="cx-pill"><input type="radio" name="count" value="' + n + '"' + (n === state.count ? ' checked' : '') + '><span>' + (n || 'All') + '</span></label>'; }).join('') +
         '</div></fieldset>' +

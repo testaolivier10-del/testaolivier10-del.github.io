@@ -58,6 +58,7 @@ import { entryPages } from './lib/apprecalc-entry.mjs';
 import { applyVideo } from './lib/videos.mjs';
 import { r3Reading } from './lib/r3-reading.mjs';
 import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
+import { practicePage } from './lib/practice-panel.mjs';
 
 const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
@@ -775,6 +776,7 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
     if (a.slug === 'tools') return swapMain(page, toolsHubR3(a), '../');
     const out = study ? page.replace('<link rel="stylesheet" href="assets/pcalc.css">',
       '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/study.css">\n<link rel="stylesheet" href="assets/pcalc.css">') : page;
+    if (a.slug === 'practice') return practicePage(out, 'apprecalc');
     return a.slug === 'exams' ? examsPage(out, 'apprecalc', map) : out;
   }
 

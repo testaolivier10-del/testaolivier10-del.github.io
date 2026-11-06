@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Practice</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:'Nunito';font-weight:600 900;src:url(/_blob/c5bcabf6e5454e19c2392bdb510ca6d3) format('woff2')}
+@font-face{font-family:'Inter Display';font-weight:800 900;src:url(/_blob/56bd824bf79d45ed391759a05c1ce73c) format('woff2')}
+@font-face{font-family:'Kalam';font-weight:700;src:url(/_blob/031f2640efb523dfedcff5f0c13f4f16) format('woff2')}
+body{margin:0;background:#F7F9FC}
+a{color:#2D6A1F}a:hover{color:#1B4422}
+.lp{--ink:#0B1A33;--muted:#56667F;--line:#E3E9F2;--line-soft:#EDF1F7;--paper:#F7F9FC;--white:#fff;--accent:#2D6A1F;--ctint:#E4F1DD;--bbg:#1B4422;--bac:#7CCB6B;--gold:#FFD43B;--navy:#0B1A33;--amber:#9A5B00;--ui:'Nunito','Segoe UI',system-ui,sans-serif;--display:'Inter Display','Nunito',system-ui,sans-serif;
+ container-type:inline-size;font-family:var(--ui);color:var(--ink);background:var(--paper);background-image:linear-gradient(rgba(11,26,51,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(11,26,51,.035) 1px,transparent 1px);background-size:44px 44px;min-height:100%;font-size:16px;line-height:1.5}
+.lp *{box-sizing:border-box}
+.lp h1,.lp h2,.lp h3,.lp p{margin:0}
+.lp a{color:inherit;text-decoration:none}
+.lp button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+/* header */
+.hdr{background:rgba(247,249,252,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.hdr-top{display:flex;align-items:center;gap:14px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:900 21px var(--display);letter-spacing:-.03em}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);display:grid;place-items:center}
+.crs{display:flex;align-items:center;gap:4px;font:800 14.5px var(--ui);padding:6px 10px;border-radius:9px;border:0;background:transparent;color:var(--ink);border-left:1.5px solid var(--line);border-radius:0;padding-left:14px}
+.hdr-sp{flex:1}
+.ibtn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;color:var(--ink)}
+.tlink{font:800 14.5px var(--ui);padding:9px 12px;border-radius:10px}
+.sbtn{font:800 14.5px var(--ui);padding:9px 16px;border-radius:10px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+.tabs{display:flex;gap:6px;height:46px;align-items:stretch}
+.tab{display:flex;align-items:center;gap:8px;padding:0 14px;font:800 15px var(--ui);color:var(--muted);border-bottom:3px solid transparent}
+.tab.on{color:var(--ink);border-bottom-color:var(--accent)}
+.tab .bdg{font:900 11.5px var(--ui);background:var(--gold);color:var(--ink);border-radius:999px;padding:1px 7px}
+.btm{display:none}
+.show-sm{display:none !important}
+/* band */
+.band{position:relative;background:var(--bbg);color:#fff;overflow:hidden;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px}
+.band-in{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding-top:44px;padding-bottom:130px}
+.issue{display:flex;gap:14px;align-items:center;font:800 13px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.74);margin:0 0 16px}
+.issue i{flex:1;height:1px;background:rgba(255,255,255,.2)}
+.mast{font:900 96px/.9 var(--display);letter-spacing:-.05em}
+.mast em{font-style:normal;color:var(--bac);display:block}
+.hand{font:700 26px/1.2 'Kalam',cursive;color:#FFD43B;margin-top:12px}
+.lead{font-size:18px;color:rgba(255,255,255,.88);margin-top:14px;max-width:520px}
+.art{width:100%;max-width:520px;justify-self:end;border-radius:0}
+.art{aspect-ratio:1.45/1;overflow:hidden;border-radius:24px}
+.art img{width:100%;height:100%;object-fit:cover;object-position:88% 50%;display:block}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:900 16px var(--ui);padding:14px 22px;border-radius:12px;border:0;text-decoration:none}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-ghost{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-ondark{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.btn-sm{font-size:14.5px;padding:10px 16px;border-radius:10px}
+.micro{font:700 13.5px var(--ui);color:rgba(255,255,255,.7);margin-top:12px}
+/* small colored header for inner tabs (Olivier, Nov 5: colored like Home, smaller, cards underlap a little) */
+.slim{position:relative;background:var(--bbg);color:#fff;overflow:hidden;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px}
+.slim-in{display:flex;align-items:center;gap:18px;padding-top:26px;padding-bottom:64px;flex-wrap:wrap}
+.slim .ttl{color:#fff}
+.slim .sub{color:rgba(255,255,255,.78)}
+.slim-art{width:170px;height:96px;border-radius:14px;overflow:hidden;flex:none}
+.slim-art img{width:100%;height:100%;object-fit:cover;object-position:88% 50%;display:block}
+.lap{margin-top:-38px;position:relative;z-index:2}
+.thumb{width:64px;height:40px;border-radius:9px;overflow:hidden;flex:none;background:var(--bbg)}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:75% 50%;display:block}
+.ttl{font:900 38px/1.05 var(--display);letter-spacing:-.035em}
+.ttl em{font-style:normal;color:var(--accent)}
+.sub{color:var(--muted);font-weight:700;font-size:15px;margin-top:4px}
+/* half band */
+.halfband .band-in{padding-top:28px;padding-bottom:84px;grid-template-columns:1fr 280px}
+.halfband .mast{font-size:56px}
+.halfband .hand{font-size:22px}
+.crumbs{font:800 13px var(--ui);color:rgba(255,255,255,.75);margin-bottom:10px}
+/* cards */
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 1px 2px rgba(11,26,51,.04),0 8px 24px rgba(11,26,51,.05)}
+.pad{padding:26px 28px}
+.pill{display:inline-block;border:1.5px solid currentColor;border-radius:999px;padding:1px 10px;font:800 12.5px var(--ui);color:var(--accent)}
+.pill-gold{background:#FFF4CC;border-color:#E7C24A;color:#6B4E00}
+.h2{font:900 30px/1.1 var(--display);letter-spacing:-.035em}
+.h2 em{font-style:normal;color:var(--accent)}
+.h3{font:900 19px/1.25 var(--ui)}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.over{margin-top:-96px;position:relative;z-index:2}
+.grid2{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+.sec{margin-top:56px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:16px}
+.more{font:900 14.5px var(--ui);color:var(--accent);display:inline-flex;gap:6px;align-items:center}
+/* unit rows */
+.urow{display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--line-soft)}
+.unum{font:900 40px/1 var(--display);color:var(--accent);letter-spacing:-.04em}
+.uname{font:900 17px var(--ui)}
+.umeta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.sq{display:flex;gap:4px;flex-wrap:wrap}
+.sq i{width:13px;height:13px;border-radius:3px;background:#E6EBF2;display:block}
+.sq i.s1{background:#BFE0B3}.sq i.s2{background:#5FAE5A}.sq i.s3{background:#1B4422}
+.uw{text-align:right;font:900 20px var(--display);letter-spacing:-.02em}
+.uw small{display:block;font:800 12px var(--ui);color:var(--accent);letter-spacing:0}
+.free{font:800 12px var(--ui);color:var(--accent);background:var(--ctint);border-radius:999px;padding:1px 8px}
+.legend{display:flex;gap:14px;font:700 12.5px var(--ui);color:var(--muted);margin-top:14px;flex-wrap:wrap}
+.legend span{display:flex;gap:6px;align-items:center}
+/* way rows */
+.way{display:flex;gap:14px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:16px;margin-top:12px;background:#fff}
+.way-ic{width:44px;height:44px;border-radius:12px;background:var(--ctint);color:var(--accent);display:grid;place-items:center;flex:none}
+.way-t{font:900 16.5px var(--ui)}
+.way-d{font-size:14px;color:var(--muted)}
+.way .cnt{margin-left:auto;font:900 13px var(--ui);background:var(--gold);border-radius:999px;padding:2px 10px;white-space:nowrap}
+/* media cards */
+.mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.mcard{display:block}
+.mimg{border-radius:14px;overflow:hidden;position:relative;aspect-ratio:2/1;background:var(--bbg)}
+.mimg img{width:100%;height:100%;object-fit:cover;display:block}
+.mplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(11,26,51,.8);display:grid;place-items:center;color:#fff}
+.dur{position:absolute;right:10px;bottom:10px;background:rgba(11,26,51,.85);color:#fff;font:800 12px var(--ui);padding:2px 7px;border-radius:6px}
+.mt{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-top:12px}
+.mname{font:900 16.5px var(--ui)}
+.mdesc{font-size:14px;color:var(--muted);margin-top:3px}
+.prem{font:800 12px var(--ui);background:#FFF4CC;color:#6B4E00;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.tag{font:800 12px var(--ui);background:var(--ctint);color:var(--accent);border-radius:999px;padding:2px 9px;white-space:nowrap}
+/* compare */
+.cmp{width:100%;border-collapse:collapse;font-size:15px}
+.cmp th{font:900 14px var(--ui);text-align:center;padding:12px 8px;border-bottom:2px solid var(--ink)}
+.cmp th:first-child{text-align:left}
+.cmp td{padding:11px 8px;border-bottom:1px solid var(--line-soft);text-align:center;font-weight:700;color:var(--muted)}
+.cmp td:first-child{text-align:left;color:var(--ink);font-weight:700}
+.cmp td.y{color:var(--accent)}
+.cmp .pcol{background:#FBFCF7}
+.deal{display:grid;grid-template-columns:1.5fr 1fr;gap:0;overflow:hidden}
+.deal-r{background:var(--navy);color:#fff;padding:30px}
+.price{font:900 52px/1 var(--display);color:var(--gold);letter-spacing:-.03em}
+/* faq */
+.faq details{border-top:1px solid var(--line);padding:16px 2px}
+.faq summary{font:900 17px var(--ui);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq p{color:var(--muted);margin-top:8px;max-width:640px}
+.faqg{display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
+/* footer */
+.foot{border-top:1px solid var(--line);margin-top:64px;padding:26px 0 40px;font-size:13.5px;color:var(--muted)}
+.foot a{text-decoration:underline}
+/* tutor */
+.fab{position:fixed;right:22px;bottom:22px;width:54px;height:54px;border-radius:16px;background:#0D3B36;color:#2EE6D6;display:grid;place-items:center;border:0;box-shadow:0 6px 18px rgba(11,26,51,.25);z-index:30}
+/* segmented */
+.seg{display:inline-flex;background:#EEF2F7;border-radius:12px;padding:4px;gap:2px}
+.seg button,.seg a{border:0;background:transparent;font:800 14.5px var(--ui);padding:8px 14px;border-radius:9px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.seg .on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(11,26,51,.12)}
+.seg .dis{opacity:.5}
+.field{display:flex;flex-direction:column;gap:6px;font:900 12px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.field select,.field input{font:700 15px var(--ui);color:var(--ink);padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:#F7F9FC;text-transform:none;letter-spacing:0}
+.chip{border:1.5px solid var(--line);background:#fff;font:800 14.5px var(--ui);padding:8px 14px;border-radius:10px;color:var(--ink)}
+.chip.on{border-color:var(--accent);background:var(--ctint);color:var(--accent)}
+.kick{font:700 22px/1 'Kalam',cursive;color:var(--amber)}
+.bar{height:10px;border-radius:99px;background:#E6EBF2;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+@container (max-width:760px){
+ .wrap{padding:0 16px}
+ .hdr-top{height:56px;gap:8px}
+ .logo{font-size:18px}.logo-mark{width:30px;height:30px}
+ .crs{font-size:13.5px;padding-left:10px}
+ .hide-sm{display:none}
+ .tabs{display:none}
+ .show-sm{display:inline-flex !important}
+ .toc-aside{display:none !important}
+ .btm{display:flex;position:sticky;bottom:0;z-index:25;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:6px 0 10px}
+ .btm a{display:flex;flex-direction:column;align-items:center;gap:2px;font:800 11.5px var(--ui);color:var(--muted);padding:4px 8px;border-radius:12px;position:relative}
+ .btm a.on{color:var(--accent)}
+ .btm a.on span.ib{background:var(--ctint)}
+ .btm span.ib{width:52px;height:30px;border-radius:15px;display:grid;place-items:center}
+ .btm .bdg{position:absolute;top:0;right:8px;font:900 10.5px var(--ui);background:var(--gold);color:var(--ink);border-radius:999px;padding:0 6px}
+ .band-in{grid-template-columns:1fr;padding-top:20px;padding-bottom:100px;gap:8px}
+ .art{order:-1;max-width:260px;justify-self:center}
+ .mast{font-size:60px}
+ .hand{font-size:21px}.lead{font-size:16px}
+ .ctas .btn{flex:1 1 100%}
+ .grid2,.mgrid,.faqg,.deal{grid-template-columns:1fr}
+ .over{margin-top:-72px}
+ .pad{padding:20px 18px}
+ .urow{grid-template-columns:44px 1fr;gap:12px}
+ .unum{font-size:30px}
+ .uw{grid-column:2;text-align:left;font-size:16px}.uw small{display:inline;margin-left:6px}
+ .ttl{font-size:28px}
+ .h2{font-size:25px}
+ .halfband .band-in{grid-template-columns:1fr}
+ .halfband .art{display:none}
+ .halfband .mast{font-size:44px}
+ .fab{right:14px;bottom:84px;width:48px;height:48px}
+ .slim-in{padding-top:18px;padding-bottom:54px}
+ .slim-art{display:none}
+ .rail{max-width:none !important;order:2}
+ .tiles{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+ .one{grid-template-columns:1fr !important}
+ .slim-in label{min-width:0 !important;width:100%}
+}
+@container (max-width:520px){ .practice-tiles{grid-template-columns:1fr !important} }
+</style>
+</helmet>
+<div class="lp"><header class="hdr"><div class="wrap"><div class="hdr-top">
+<a class="logo" href="HomeReturning.dc.html"><span class="logo-mark"><svg width="18" height="18" viewBox="0 0 512 512" aria-hidden="true"><rect x="218" y="80" width="76" height="352" rx="22" fill="#2EE6D6"></rect><rect x="80" y="218" width="352" height="76" rx="22" fill="#2EE6D6"></rect></svg></span>LevlPrep</a>
+<span class="crs">AP® Biology</span>
+<span class="hdr-sp"></span>
+<button class="ibtn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+<a class="tlink hide-sm" href="#">For teachers</a>
+<a class="sbtn hide-sm" href="#">Sign in</a>
+<button class="ibtn" aria-label="Settings: dark mode and sound"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg></button>
+</div>
+<nav class="tabs" aria-label="Course"><a class="tab" href="HomeReturning.dc.html">Home</a><a class="tab" href="Learn.dc.html">Learn</a><a class="tab on" href="Practice.dc.html">Practice</a><a class="tab" href="Tools.dc.html">Tools</a><a class="tab" href="Progress.dc.html">Progress</a></nav></div></header>
+<section class="slim"><div class="wrap slim-in"><div style="flex:1;min-width:220px"><p class="issue" style="margin:0 0 8px">AP® Biology <i></i></p><h1 class="ttl">Practice</h1><p class="sub">1,487 questions · every option explained</p></div><div style="display:flex;align-items:center;gap:12px;background:#FFF8DE;border:1px solid #F0D98A;border-radius:14px;padding:10px 14px;color:#0B1A33"><span style="font:900 14px var(--ui);color:#0B1A33">12 of 15 free today</span><span style="width:90px" class="bar"><i style="width:20%;background:#C99A00"></i></span><a href="#" class="small" style="font-weight:900;text-decoration:underline;color:#6B4E00">Get unlimited</a></div><span class="slim-art"><img src="/_blob/05d851cc2ab68021def477f380fce8cc" alt=""></span></div></section>
+<main class="wrap lap">
+<div class="card" style="padding:0;overflow:hidden;max-width:980px">
+<div style="padding:24px 28px"><p style="font:900 13px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)">1 · What do you want to do?</p>
+<div class="tiles" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px"><button onClick="{{pick_set}}" style="{{st_set}};text-align:left;border-radius:14px;padding:12px 14px;font-family:inherit;color:var(--ink);display:flex;gap:10px;align-items:center"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><span><b style="display:block;font-size:15px">Practice set</b><span style="display:block;color:var(--muted);font-size:12.5px;font-weight:700">Questions with feedback</span></span></button><button onClick="{{pick_rev}}" style="{{st_rev}};text-align:left;border-radius:14px;padding:12px 14px;font-family:inherit;color:var(--ink);display:flex;gap:10px;align-items:center"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.5L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4.5L20 16"/><path d="M20 20v-4h-4"/></svg></span><span><b style="display:block;font-size:15px">Review</b><span style="display:block;color:var(--muted);font-size:12.5px;font-weight:700">6 due now</span></span></button><button onClick="{{pick_fc}}" style="{{st_fc}};text-align:left;border-radius:14px;padding:12px 14px;font-family:inherit;color:var(--ink);display:flex;gap:10px;align-items:center"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="4" width="13" height="15" rx="2"/><path d="M4 8v11a2 2 0 0 0 2 2h9"/></svg></span><span><b style="display:block;font-size:15px">Flashcards</b><span style="display:block;color:var(--muted);font-size:12.5px;font-weight:700">20 new today</span></span></button><button onClick="{{pick_exam}}" style="{{st_exam}};text-align:left;border-radius:14px;padding:12px 14px;font-family:inherit;color:var(--ink);display:flex;gap:10px;align-items:center"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M10 2h4"/></svg></span><span><b style="display:block;font-size:15px">Exam</b><span style="display:block;color:var(--muted);font-size:12.5px;font-weight:700">Timed, no feedback</span></span></button><button onClick="{{pick_frq}}" style="{{st_frq}};text-align:left;border-radius:14px;padding:12px 14px;font-family:inherit;color:var(--ink);display:flex;gap:10px;align-items:center"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/></svg></span><span><b style="display:block;font-size:15px">Free response</b><span style="display:block;color:var(--muted);font-size:12.5px;font-weight:700">37 questions</span></span></button><button onClick="{{pick_jus}}" style="{{st_jus}};text-align:left;border-radius:14px;padding:12px 14px;font-family:inherit;color:var(--ink);display:flex;gap:10px;align-items:center"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"/><path d="M5 8h14"/><path d="M5 8l-3 7a3.5 3.5 0 0 0 6 0z"/><path d="M19 8l-3 7a3.5 3.5 0 0 0 6 0z"/><path d="M8 20h8"/></svg></span><span><b style="display:block;font-size:15px">Justify</b><span style="display:block;color:var(--muted);font-size:12.5px;font-weight:700">32 prompts</span></span></button><button onClick="{{pick_cram}}" style="{{st_cram}};text-align:left;border-radius:14px;padding:12px 14px;font-family:inherit;color:var(--ink);display:flex;gap:10px;align-items:center"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg></span><span><b style="display:block;font-size:15px">Cram plan</b><span style="display:block;color:var(--muted);font-size:12.5px;font-weight:700">Counted back from exam day</span></span></button></div></div>
+<div style="padding:22px 28px;border-top:1px solid var(--line)"><p style="font:900 13px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px">2 · Set it up</p><sc-if value="{{is_set}}" hint-placeholder-val="{{ true }}"><div class="one" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px"><div class="field">Questions from<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="chip on">Any</button><button class="chip">My weakest</button><button class="chip">I missed</button></div></div><label class="field">Unit<select><option>Every published unit</option><option>Unit 1: Chemistry of Life</option><option>Unit 2: Cell Structure and Function</option></select></label><label class="field">Topic<select><option>Every topic</option></select></label><div class="field">How many<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="chip">5</button><button class="chip on">10</button><button class="chip">20</button><button class="chip">All</button></div></div></div><div style="margin-top:14px"><div class="one" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px"><label class="field">Science practice<select><option>Every science practice</option></select></label><label class="field">Question type<select><option>All types</option><option>Stimulus sets only</option><option>Standalone only</option></select></label><label class="field">Difficulty<select><option>Any</option><option>Easier</option><option>Harder</option></select></label></div><div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px"><span class="small muted" style="font-weight:800">Share or print this set:</span><button class="chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 14v6h14v-6"/></svg> Google Classroom</button><button class="chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg> Copy link</button><button class="chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h10v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg> Worksheet</button><label class="small" style="display:flex;gap:6px;align-items:center;font-weight:700"><input type="checkbox"> Answer key on a separate page</label></div></div></sc-if><sc-if value="{{is_rev}}" hint-placeholder-val="{{ false }}"><div class="one" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px"><label class="field">Unit<select><option>Every unit</option></select></label><div class="field">How many<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="chip on">All 6 due</button><button class="chip">10</button><button class="chip">20</button></div></div></div></sc-if><sc-if value="{{is_fc}}" hint-placeholder-val="{{ false }}"><div class="one" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px"><label class="field">Deck<select><option>Every published topic (1629)</option><option>Unit 1: Chemistry of Life (249)</option></select></label><div class="field">Card types<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="chip on">Term → definition</button><button class="chip">Definition → term</button><button class="chip">Topic summaries</button></div></div><div class="field">New cards today<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="chip">10</button><button class="chip on">20</button><button class="chip">30</button></div></div></div></sc-if><sc-if value="{{is_exam}}" hint-placeholder-val="{{ false }}"><div class="one" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px"><div class="field">Kind<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="chip on">Full practice exam</button><button class="chip">Unit test</button><button class="chip">Mixed timed set</button></div></div><label class="field">Unit (unit test)<select><option>Unit 1: Chemistry of Life</option></select></label><label class="field">Timing<select><option>Standard time</option><option>Time and a half</option><option>Double time</option><option>Untimed</option></select></label></div><details style="margin-top:14px"><summary style="font:900 14.5px var(--ui);color:var(--accent);cursor:pointer">What's in the full exam</summary><p class="small muted" style="margin-top:8px">Section I: 60 multiple choice in 90 min, drawn from each unit by its exam weight, stimulus sets kept whole. Section II: 6 free response in 90 min, scored with the rubrics. Unit 1 to 8 tests also come as free fixed tests.</p></details></sc-if><sc-if value="{{is_frq}}" hint-placeholder-val="{{ false }}"><div class="one" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px"><label class="field">Question type<select><option>All six types</option><option>Interpreting and Evaluating Experimental Results</option><option>Scientific Investigation</option><option>Conceptual Analysis</option><option>Analyze Model or Visual Representation</option><option>Analyze Data</option></select></label><label class="field">Unit<select><option>Every unit</option></select></label><label class="field">Question<select><option>Next unanswered</option><option>A checkpoint gene and tumor growth</option><option>Two dihybrid crosses tested with chi-square</option></select></label></div></sc-if><sc-if value="{{is_jus}}" hint-placeholder-val="{{ false }}"><div class="one" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px"><label class="field">Topic<select><option>Every topic</option></select></label><label class="field">Skill<select><option>Any</option><option>Explain with a mechanism</option><option>Describe data</option><option>Justify a control</option></select></label><label class="field">Prompt<select><option>Next prompt</option><option>All 32 prompts</option></select></label></div></sc-if><sc-if value="{{is_cram}}" hint-placeholder-val="{{ false }}"><div class="one" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px"><label class="field">Exam date<input type="date" value="2027-05-03"></label><div class="field">Plan length<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="chip on">3 weeks</button><button class="chip">2 weeks</button></div></div><div class="field">Print<button class="chip" style="align-self:flex-start"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h10v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg> Print the plan</button></div></div></sc-if></div>
+<div style="padding:18px 28px;background:var(--navy);color:#fff;display:flex;align-items:center;gap:16px;flex-wrap:wrap"><div style="flex:1;min-width:220px"><p style="font:900 18px var(--ui)">{{summary}}</p><p style="font-size:14px;color:rgba(255,255,255,.75);margin-top:2px">{{summary2}}</p></div><a class="btn btn-gold" href="#">{{cta}}</a></div>
+</div>
+</main><footer class="foot"><div class="wrap">This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="#">Sources</a> page. Spot a mistake? <a href="#"><b>Report a problem</b></a><p style="margin-top:12px">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p><div style="margin-top:10px"><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">About</a> · <a href="#">Sources</a> · <a href="#">What's new</a> · <a href="#">Premium</a> · <a href="#">Teachers</a> · <a href="#">Account</a> · <a href="#">Contact</a></div></div></footer><nav class="btm" aria-label="Course"><a class="" href="HomeReturning.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></span>Home</a><a class="" href="Learn.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg></span>Learn</a><a class="on" href="Practice.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>Practice</a><a class="" href="Tools.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></svg></span>Tools</a><a class="" href="Progress.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 16v-5"/><path d="M12 16V8"/><path d="M16 16v-3"/></svg></span>Progress</a></nav><button class="fab" aria-label="Ask the tutor"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4"/><circle cx="9" cy="13.5" r="1.2"/><circle cx="15" cy="13.5" r="1.2"/></svg></button></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1280, "height": 1400}}'>
+class Component extends DCLogic {
+renderVals() {
+  const m = this.state.m || 'set';
+  const hero = this.props.hero ?? 'slim';
+  const sel = 'border:2px solid #2D6A1F;background:#E4F1DD';
+  const un = 'border:1.5px solid #E3E9F2;background:#fff';
+  const S = {
+    set: ['About 10 questions of 1,487 that match', 'Feedback after every answer. Misses go to your review queue.', 'Start practice'],
+    rev: ['6 questions due now', 'Each one comes back right before you would forget it.', 'Start review'],
+    fc: ['20 new cards, 0 due', 'Grade yourself: Again, Hard, Good or Easy.', 'Study 20 cards'],
+    exam: ['Full practice exam: 60 multiple choice + 6 free response', 'No feedback until the end. This is your 1 free exam.', 'Start the exam'],
+    frq: ['Next unanswered question', 'Write your answer, then score it with the rubric.', 'Start writing'],
+    jus: ['Next prompt', 'Write your answer, then check it.', 'Start a prompt'],
+    cram: ['3 week plan to Monday, May 3, 2027', 'Starts Monday, April 12. Premium fits it to your weakest units.', 'Make my plan'] };
+  const v = { summary: S[m][0], summary2: S[m][1], cta: S[m][2] };
+  ['set','rev','fc','exam','frq','jus','cram'].forEach(k => { v['is_'+k] = m===k; v['st_'+k] = m===k ? sel : un; v['pick_'+k] = () => this.setState({m:k}); });
+  return v;
+}
+}
+</script>
+</body>
+</html>
