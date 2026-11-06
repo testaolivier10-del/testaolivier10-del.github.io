@@ -1,21 +1,21 @@
-/* Course redesign round 4, part D (docs/course-redesign-r4.md decision 5; mockup
-   docs/redesign-r4/mockups/Practice.dc.html): every course's practice.html is one panel.
+/* Course redesign round 4, Practice v2 (docs/course-redesign-r4.md decision 5, owner approved 2026-11-06;
+   mockup docs/redesign-r4/mockups/PracticeAll.dc.txt): every course's practice.html is one card,
+   "Build your session", with every setting on its own row, always visible. A setting that does not apply to
+   the chosen format stays in place, greyed, with the reason under its label.
 
      <main id="main" class="r3 r3-inner r3-practice" data-cover="KEY">
-       <section class="band short">  issue line, "Practice", the question count, the free limit box
-       <div class="xshell lap pp-wrap"><div class="pp" id="pp">
-         1 · What do you want to do?   one tile per mode the course has (links, so they work without JS)
-         2 · Set it up                 the practice engine's own builder (#app) for a Practice set; the
-                                       panel's fields (#ppSet) for every other mode
-         the navy bar                  the summary and the one Start (#ppBar; for a Practice set the
-                                       engine's own .cx-start, styled as the bar)
+       <section class="band short">   issue line, "Practice", the question count, the free limit box
+       <div class="xshell lap pp-wrap">
+         <div class="pp-grid" id="pp">
+           <section class="pp-card">  quick picks, then the rows (#ppRows, drawn by practice-panel.js)
+           <aside class="pp-side">    the navy "Your session" summary with the one Start, the sharing card
+         <div class="pp-engine">      the practice engine's mount; shown only while a session runs
        <script type="application/json" id="ppConfig">
 
-   assets/course/practice-panel.js reads the config, draws the settings and opens the mode's existing
-   page with the settings in the URL (review.html?go=1&unit=..., exams.html?go=1&mode=..., ...); each
-   engine reads them and starts. Styles: assets/course/practice-panel.css (the band and .lap are part A's,
-   in r3.css). Built pages go through practicePage(); nremt/practice.html and ochem/practice.html carry
-   the band, the tiles and the config between markers written by scripts/build-practice-panel.mjs. */
+   assets/course/practice-panel.js reads the config, draws the rows and starts the engine for the chosen
+   format with the settings in the URL (go=1). Styles: assets/course/practice-panel.css. Built pages go
+   through practicePage(); nremt/practice.html and ochem/practice.html carry the band, the panel and the
+   config between markers written by scripts/build-practice-panel.mjs. */
 
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -36,60 +36,43 @@ function nremtDomains() {
   return JSON.parse(readFileSync(join(ROOT, 'nremt', 'assets', 'flashcards.json'), 'utf8')).domains.map(d => [d.key, d.label]);
 }
 
-const ICON = {
-  set: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
-  review: '<path d="M20 11a8 8 0 0 0-14.5-4.5L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4.5L20 16"/><path d="M20 20v-4h-4"/>',
-  flash: '<rect x="7" y="4" width="13" height="15" rx="2"/><path d="M4 8v11a2 2 0 0 0 2 2h9"/>',
-  exam: '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M10 2h4"/>',
-  cat: '<path d="M4 18l5-6 4 3 7-9"/><path d="M15 6h5v5"/>',
-  frq: '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>',
-  justify: '<path d="M12 4v16"/><path d="M5 8h14"/><path d="M5 8l-3 7a3.5 3.5 0 0 0 6 0z"/><path d="M19 8l-3 7a3.5 3.5 0 0 0 6 0z"/><path d="M8 20h8"/>',
-  cram: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/>',
-  scen: '<path d="M3 12h4l2-5 4 10 2-5h6"/>',
+/* Format chips. Only the formats a course has are offered. */
+const F = {
+  q: 'Questions, feedback after each', exam: 'Timed exam', cards: 'Flashcards',
+  frq: 'Written answers (free response)', jus: 'Justify prompts', cat: 'Adaptive exam', scen: 'Scenarios',
 };
+const fmt = ids => ids.map(id => [id, F[id]]);
 
-/* Every mode a course can have. sub is the line under the title until the panel has a live count. */
-export const MODES = {
-  set: { title: 'Practice set', sub: 'Questions with feedback', href: 'practice.html' },
-  review: { title: 'Review', sub: 'Your spaced review queue', href: 'review.html' },
-  flash: { title: 'Flashcards', sub: 'Spaced cards', href: 'flashcards.html' },
-  exam: { title: 'Exam', sub: 'Timed, no feedback', href: 'exams.html' },
-  cat: { title: 'Adaptive exam', sub: '70 to 120 questions, like the real one', href: 'exams.html#adaptive' },
-  frq: { title: 'Free response', sub: 'Scored with the rubrics', href: 'frq.html' },
-  justify: { title: 'Justify', sub: 'Write it, then check it', href: 'justify.html' },
-  cram: { title: 'Cram plan', sub: 'Counted back from exam day', href: 'cram.html' },
-  scen: { title: 'Scenarios', sub: 'Run a call from dispatch to handoff', href: 'scenario-sim.html' },
-};
+const AP_KINDS = [['t', 'Term to definition'], ['d', 'Definition to term'], ['s', 'Topic summaries']];
+const AP_EXAMS = [['full', 'Full practice exam'], ['unit', 'Unit test'], ['mixed', 'Mixed timed set']];
 
-const AP_MODES = ['set', 'review', 'flash', 'exam', 'frq', 'justify', 'cram'];
-const AP_KINDS = [['t', 'Term → definition'], ['d', 'Definition → term'], ['s', 'Topic summaries']];
-
-/* The full practice exam, in one line (information, not a setting: the panel keeps it behind
-   "What's in the full exam"). From each course's exams engine header. */
+/* pace: seconds a multiple-choice question gets at the exam's pace (each exams engine's MCQ_SEC). The full
+   exam line is information for the summary (from each course's exams engine header). */
 const AP = {
-  apbio: { dir: 'bio', glob: 'ApBio', note: 'Units 1 and 2 are unlimited.', practice: 'Science practice',
-    exam: 'Section I: 60 multiple-choice questions in 90 minutes, drawn from each unit by its exam weight, stimulus sets kept whole. Section II: 6 free-response questions in 90 minutes, scored with the rubrics.' },
-  apchem: { dir: 'chem', glob: 'ApChem', note: 'Units 1 and 2 are unlimited.', practice: 'Science practice',
-    exam: 'Section I: 60 multiple-choice questions in 90 minutes, drawn from each unit by its exam weight. Section II: 7 free-response questions in 105 minutes, three long and four short, scored with the rubrics.' },
-  apphys: { dir: 'physics', glob: 'ApPhys', note: 'Units 1 and 2 are unlimited.', practice: 'Science practice',
-    exam: 'Section I: 42 multiple-choice questions in 85 minutes, drawn from each unit by its exam weight. Section II: 4 free-response questions in 95 minutes, in the exam’s fixed order, scored with the rubrics.' },
-  apcalc: { dir: 'calculus', glob: 'ApCalc', note: 'Units 1 and 2 are unlimited.', practice: 'Mathematical practice',
-    exam: 'Section I: 29 multiple-choice questions without a calculator in 62 minutes, then 13 with a graphing calculator in 38 minutes. Section II: 2 free-response questions with a calculator, then 4 without, scored with the rubrics.' },
-  apcalcbc: { dir: 'calculus-bc', glob: 'ApCalc', note: 'Units 1 and 2 are unlimited.', practice: 'Mathematical practice', kit: '../calculus/assets/pages/frq-kit.js',
-    exam: 'Section I: 29 multiple-choice questions without a calculator in 62 minutes, then 13 with a graphing calculator in 38 minutes. Section II: 2 free-response questions with a calculator, then 4 without, scored with the rubrics.' },
-  apstat: { dir: 'statistics', glob: 'ApStat', note: 'Unit 1 is unlimited.', practice: 'Skill',
-    exam: 'Section I: 42 multiple-choice questions in 90 minutes, drawn from every unit by its exam weight. Section II: 4 free-response questions in 90 minutes, 10 points each.' },
-  apenv: { dir: 'environmental-science', glob: 'ApEnv', note: 'Unit 1 is unlimited.', practice: 'Science practice',
+  apbio: { dir: 'bio', glob: 'ApBio', note: 'Units 1 and 2 are unlimited.', practice: 'Science practice', pace: 90,
+    exam: '60 multiple choice in 90 minutes, then 6 free response in 90 minutes' },
+  apchem: { dir: 'chem', glob: 'ApChem', note: 'Units 1 and 2 are unlimited.', practice: 'Science practice', pace: 90,
+    exam: '60 multiple choice in 90 minutes, then 7 free response in 105 minutes' },
+  apphys: { dir: 'physics', glob: 'ApPhys', note: 'Units 1 and 2 are unlimited.', practice: 'Science practice', pace: 121,
+    exam: '42 multiple choice in 85 minutes, then 4 free response in 95 minutes' },
+  apcalc: { dir: 'calculus', glob: 'ApCalc', note: 'Units 1 and 2 are unlimited.', practice: 'Mathematical practice', pace: 143,
+    exam: '42 multiple choice in 100 minutes, then 6 free response in 90 minutes' },
+  apcalcbc: { dir: 'calculus-bc', glob: 'ApCalc', note: 'Units 1 and 2 are unlimited.', practice: 'Mathematical practice', pace: 143,
+    kit: '../calculus/assets/pages/frq-kit.js',
+    exam: '42 multiple choice in 100 minutes, then 6 free response in 90 minutes' },
+  apstat: { dir: 'statistics', glob: 'ApStat', note: 'Unit 1 is unlimited.', practice: 'Skill', pace: 129,
+    exam: '42 multiple choice in 90 minutes, then 4 free response in 90 minutes' },
+  apenv: { dir: 'environmental-science', glob: 'ApEnv', note: 'Unit 1 is unlimited.', practice: 'Science practice', pace: 68,
     kinds: [...AP_KINDS, ['f', 'Formulas']],
-    exam: 'Section I: 80 multiple-choice questions in 90 minutes, drawn from every unit by its exam weight. Section II: 3 free-response questions in 70 minutes, 10 points each.' },
-  appsych: { dir: 'psychology', glob: 'ApPsych', note: 'Unit 1 is unlimited.', practice: 'Science practice',
+    exam: '80 multiple choice in 90 minutes, then 3 free response in 70 minutes' },
+  appsych: { dir: 'psychology', glob: 'ApPsych', note: 'Unit 1 is unlimited.', practice: 'Science practice', pace: 72,
     kinds: [...AP_KINDS, ['f', 'Statistics']],
-    exam: 'Section I: 75 multiple-choice questions in 90 minutes, drawn from every unit by its exam weight. Section II: the Article Analysis and Evidence-Based Questions in 70 minutes, 7 points each.' },
-  apprecalc: { dir: 'precalculus', glob: 'ApPrecalc', note: 'Unit 1 and the algebra chapter are unlimited.', practice: 'Mathematical practice',
-    exam: 'Section I: 29 multiple-choice questions without a calculator in 65 minutes, then 13 with a graphing calculator in 40 minutes. Section II: 2 free-response questions with a calculator, then 2 without, scored with the rubrics.' },
-  apmacro: { dir: 'macroeconomics', glob: 'ApMacro', note: 'Unit 1 is unlimited.', practice: 'Skill',
+    exam: '75 multiple choice in 90 minutes, then the AAQ and EBQ in 70 minutes' },
+  apprecalc: { dir: 'precalculus', glob: 'ApPrecalc', note: 'Unit 1 and the algebra chapter are unlimited.', practice: 'Mathematical practice', pace: 150,
+    exam: '42 multiple choice in 105 minutes, then 4 free response in 60 minutes' },
+  apmacro: { dir: 'macroeconomics', glob: 'ApMacro', note: 'Unit 1 is unlimited.', practice: 'Skill', pace: 70,
     kinds: [...AP_KINDS, ['f', 'Formulas']],
-    exam: 'Section I: 60 multiple-choice questions in 70 minutes, drawn from every unit by its exam weight. Section II: one long and two short free-response questions in 60 minutes, scored with the rubrics.' },
+    exam: '60 multiple choice in 70 minutes, then 3 free response in 60 minutes' },
 };
 
 /* The config practice-panel.js reads. */
@@ -97,39 +80,43 @@ export function panelConfig(key) {
   if (AP[key]) {
     const a = AP[key];
     return {
-      course: key, family: 'ap', glob: a.glob, note: a.note, modes: AP_MODES,
-      store: { prefs: `${key}_prefs_v1`, cards: `${key}_flashcards_v1`, date: `${key}_exam_date` },
-      kinds: a.kinds || AP_KINDS, kit: a.kit || 'assets/pages/frq-kit.js', kitGlob: `${a.glob}Frq`, exam: a.exam,
-      setRoot: '#app',
+      course: key, family: 'ap', glob: a.glob, note: a.note, dir: a.dir,
+      formats: fmt(['q', 'exam', 'cards', 'frq', 'jus']), unitWord: 'Units', practice: a.practice, pace: a.pace,
+      from: ['new', 'due', 'missed', 'weak'], counts: [5, 10, 20, 40, 0], examKinds: AP_EXAMS, exam: a.exam, cram: true,
+      store: { prefs: `${key}_prefs_v1`, cards: `${key}_flashcards_v1` },
+      kinds: a.kinds || AP_KINDS, kit: a.kit || 'assets/pages/frq-kit.js', kitGlob: `${a.glob}Frq`,
+      engine: '#app', end: '.cx-end', print: true,
     };
   }
   if (key === 'anp') return {
-    course: 'anp', family: 'anp', glob: 'Anp', note: 'Foundations questions are unlimited.', modes: ['set', 'review', 'flash', 'exam'],
+    course: 'anp', family: 'anp', glob: 'Anp', note: 'Foundations questions are unlimited.', dir: 'anatomy-physiology',
+    formats: fmt(['q', 'exam', 'cards']), unitWord: 'Chapters', practice: 'Core concept', pace: 90,
+    from: ['new', 'due', 'missed', 'weak', 'studied'], counts: [5, 10, 20, 40, 0],
+    examKinds: [['unit', 'Unit quiz'], ['system', 'System exam'], ['finalI', 'Final, A&P I'], ['finalII', 'Final, A&P II'], ['custom', 'Custom exam'], ['teas', 'TEAS A&P practice']],
     store: { prefs: 'anp_prefs_v1', cards: 'anp_flashcards_v1' },
-    kinds: [['t', 'Term → definition'], ['d', 'Definition → term'], ['f', 'Comparisons and key facts']],
-    setRoot: '#app',
+    kinds: [['t', 'Term to definition'], ['d', 'Definition to term'], ['f', 'Comparisons and key facts']],
+    engine: '#app', end: '.cx-end',
   };
   if (key === 'ochem') return {
-    course: 'ochem', family: 'ochem', note: 'The first four chapters are unlimited.', modes: ['set', 'review', 'flash', 'exam'],
-    store: { cards: 'ochem_flashcards_v1' }, setRoot: '#practiceHome',
+    course: 'ochem', family: 'ochem', note: 'The first four chapters are unlimited.', dir: 'ochem',
+    formats: fmt(['q', 'exam', 'cards']), unitWord: 'Chapters', practice: null, pace: 90,
+    from: ['new', 'due', 'missed', 'weak', 'studied'], counts: [5, 10, 20, 40, 0],
+    examKinds: [['chapter', 'Chapter test'], ['midterm', 'Midterm'], ['final', 'Cumulative final']],
+    store: { cards: 'ochem_flashcards_v1' }, engine: '#practiceHome', end: '#sessionQuit', total: '#practiceProgLabel',
   };
   /* The flashcard domains are the deck's own (nremt/assets/flashcards.json "domains"). */
   if (key === 'nremt') return {
-    course: 'nremt', family: 'nremt', note: 'The study notes stay open.', modes: ['set', 'review', 'flash', 'exam', 'cat', 'scen'],
-    store: { cards: 'nremt_flashcards_v1' }, setRoot: '#nrBuilder', domains: nremtDomains(), reviewAreas: nremtReviewAreas(),
+    course: 'nremt', family: 'nremt', note: 'The study notes stay open.', dir: 'nremt',
+    formats: fmt(['q', 'exam', 'cat', 'scen', 'cards']), unitWord: 'Domains', practice: null, pace: 72,
+    from: ['new', 'due', 'missed', 'weak'], counts: [10, 20, 30, 50],
+    examKinds: [['std', '100 questions, 2 hours'], ['real', 'Exam-realistic: no flagging, no going back']],
+    store: { cards: 'nremt_flashcards_v1' }, engine: '#nrBuilder', total: '#progressText',
+    domains: nremtDomains(), reviewAreas: nremtReviewAreas(),
   };
   throw new Error(`practice-panel: no config for ${key}`);
 }
 
-const svg = id => `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[id]}</svg>`;
-
-/* Step 1: a link per mode (without JavaScript each opens its own page). */
-export function tilesHtml(modes) {
-  return modes.map(id => {
-    const m = MODES[id];
-    return `<a class="pp-tile" href="${m.href}" data-mode="${id}"><span class="pp-ic">${svg(id)}</span><span class="pp-tt"><b>${m.title}</b><span class="pp-ts" data-live="${id}">${m.sub}</span></span></a>`;
-  }).join('');
-}
+const ico = d => `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
 
 /* The short band: issue line with the course, "Practice", one sub line (the question count, filled in by
    the panel when it knows it) and the free daily limit box (filled in only for a visitor with a limit). */
@@ -149,16 +136,34 @@ export function configHtml(key) {
   return `<script type="application/json" id="ppConfig">${JSON.stringify(panelConfig(key))}</script>`;
 }
 
-/* The panel around a step 2 body (the engine's mount). */
-export function panelHtml(key, step2) {
-  const cfg = panelConfig(key);
-  return `<div class="pp" id="pp">
-<section class="pp-step pp-s1" aria-labelledby="ppS1"><h2 class="pp-k" id="ppS1">1 &middot; What do you want to do?</h2>
-<div class="pp-tiles">${tilesHtml(cfg.modes)}</div></section>
-<section class="pp-step pp-s2" aria-labelledby="ppS2"><h2 class="pp-k" id="ppS2">2 &middot; Set it up</h2>
-${step2}
-<div class="pp-set" id="ppSet" hidden></div></section>
-<div class="pp-bar" id="ppBar" hidden><div class="pp-bar-t"><p class="pp-sum" id="ppSum" aria-live="polite"></p><p class="pp-sum2" id="ppSum2"></p></div><a class="pp-go" id="ppGo" href="practice.html">Start</a></div>
+/* Without JavaScript nothing here can run, so the card names the pages that open each format. */
+function noscriptHtml(key) {
+  const c = panelConfig(key), links = [['review.html', 'Review'], ['flashcards.html', 'Flashcards'], ['exams.html', 'Exams']];
+  if (c.formats.some(f => f[0] === 'frq')) links.push(['frq.html', 'Free response']);
+  if (c.formats.some(f => f[0] === 'jus')) links.push(['justify.html', 'Justify']);
+  if (c.formats.some(f => f[0] === 'scen')) links.push(['scenario-sim.html', 'Scenarios']);
+  return `<noscript><p class="pp-noscript">Building a session needs JavaScript. Each format also has its own page: ${links.map(l => `<a href="${l[0]}">${l[1]}</a>`).join(', ')}.</p></noscript>`;
+}
+
+/* The card and the right column. The rows are drawn by practice-panel.js from the config. */
+export function panelHtml(key) {
+  const c = panelConfig(key);
+  return `<div class="pp-grid" id="pp">
+<section class="pp-card" aria-labelledby="ppH">
+<div class="pp-head"><h2 class="pp-h2" id="ppH">Build your <em>session</em></h2><p class="pp-hint">Every setting is here. Change any of them.</p></div>
+<div class="pp-quick" role="group" aria-label="Quick picks"><span class="pp-quick-l">Quick picks:</span><button type="button" class="pp-chip" data-quick="q10">Quick 10</button><button type="button" class="pp-chip" data-quick="due">Review what&rsquo;s due</button><button type="button" class="pp-chip" data-quick="exam">Full practice exam</button><button type="button" class="pp-chip" data-quick="cards">20 flashcards</button></div>
+<div class="pp-rows" id="ppRows"><p class="pp-loading">Loading the settings&hellip;</p></div>
+${noscriptHtml(key)}
+</section>
+<aside class="pp-side" aria-label="Your session">
+<div class="pp-sum"><p class="pp-sum-k">Your session</p><p class="pp-sum-t" id="ppSumT" aria-live="polite"></p><p class="pp-sum-b" id="ppSumB"></p><a class="pp-go" id="ppGo" href="practice.html">Start practice</a></div>
+<div class="pp-share" id="ppShare"><p class="pp-share-h">Teaching or sharing?</p>
+<a class="pp-chip pp-sbtn" id="ppClass" href="https://classroom.google.com/" target="_blank" rel="noopener">${ico('<path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 14v6h14v-6"/>')} Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a>
+<button type="button" class="pp-chip pp-sbtn" id="ppCopy">${ico('<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>')} Copy a link to this session</button>
+<button type="button" class="pp-chip pp-sbtn" id="ppPrint"${c.print ? '' : ' disabled'}>${ico('<path d="M7 9V3h10v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/>')} Print as a worksheet</button>
+<label class="pp-key"><input type="checkbox" id="ppKey"${c.print ? '' : ' disabled'}> Answer key on a separate page</label>
+<p class="pp-share-n" id="ppShareN" aria-live="polite">${c.print ? '' : 'Worksheets are not available for this course yet.'}</p></div>
+</aside>
 </div>`;
 }
 
@@ -179,14 +184,15 @@ export function practicePage(html, key, up = '../') {
   const main = `<main id="main" class="r3 r3-inner r3-practice" data-cover="${key}">
 ${bandHtml(key, { up, crumbs })}
 <div class="xshell lap pp-wrap">
-${panelHtml(key, app[0])}
+${panelHtml(key)}
+<div class="pp-engine">${app[0]}</div>
 </div>
 ${configHtml(key)}
 </main>`;
   let out = html.replace(m[0], main);
   const css = `<link rel="stylesheet" href="${up}assets/course/r3-inner.css">\n<link rel="stylesheet" href="${up}assets/course/practice-panel.css">\n`;
   if (!out.includes('assets/course/practice-panel.css')) out = out.replace('</head>', `${css}</head>`);
-  const js = `${panelConfig(key).modes.includes('cram') ? `<script src="${up}assets/exam-date.js" defer></script>\n` : ''}<script src="${up}assets/course/practice-panel.js" defer></script>\n`;
+  const js = `<script src="${up}assets/exam-date.js" defer></script>\n<script src="${up}assets/course/practice-panel.js" defer></script>\n`;
   if (!out.includes('assets/course/practice-panel.js')) out = out.replace('</body>', `${js}</body>`);
   return out;
 }

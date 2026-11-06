@@ -2936,8 +2936,25 @@ $id('nextStep').addEventListener('click', (e) => {
     $id('realisticMode').checked = p.get('real') === '1';
     const b = document.getElementById('startBtn');
     if(b && !b.disabled && !b.hidden) b.click();
+  } else if(RUNNER_PAGE === 'practice'){
+    // Practice v2: from=new (area= an exam domain or system:<topic area>, empty for the exam mix; diff=), weak, missed; n=.
+    const n = parseInt(p.get('n'), 10) > 0 ? parseInt(p.get('n'), 10) : 20, from = p.get('from');
+    if(from === 'missed'){ const b = $id('reviewBtn'); if(loadMissed().length) b.click(); return; }
+    if(from === 'weak'){
+      const sel = $id('adaptiveLength');
+      if(![...sel.options].some(o => +o.value === n)){ const o = document.createElement('option'); o.value = String(n); o.textContent = String(n); sel.appendChild(o); }
+      sel.value = String(n);
+      $id('adaptiveStartBtn').click();
+      return;
+    }
+    const d = $id('difficultySelect');
+    if(p.get('diff') && [...d.options].some(o => o.value === p.get('diff'))) d.value = p.get('diff');
+    const area = p.get('area') || 'all';
+    startDomainQuiz([...$id('domainSelect').options].some(o => o.value === area) ? area : 'all', n);
   }
 })();
+// The Practice panel's clock (assets/course/practice-panel.js) ends a timed practice set here when time is up.
+window.NremtPanel = { submit(){ if(quizScreen.style.display !== 'none') showResults(); } };
 
 })();
 });

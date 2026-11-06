@@ -788,7 +788,7 @@
     c.types = list('types', TYPE_GROUPS.map(function(x){ return x.id; }));
     c.levels = list('levels', ['recall', 'apply', 'analyze']);
     c.diffs = list('diffs', ['1', '2', '3']);
-    if(['10', '20', '40', '0'].indexOf(p.get('len')) > -1) c.len = +p.get('len');
+    if(/^\d+$/.test(p.get('len') || '') && +p.get('len') <= 200) c.len = +p.get('len');   // Practice v2: any length
   }
 
   function boot(){

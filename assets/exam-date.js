@@ -188,5 +188,6 @@
     return { render: render };
   }
 
-  window.LevlExamDate = { mount: mount, read: read, daysUntil: daysUntil, isDefault: isDefault, DEFAULTS: DEFAULTS };
+  // write: the Practice panel's Exam date row (assets/course/practice-panel.js) saves through the same store.
+  window.LevlExamDate = { mount: mount, read: read, write: write, daysUntil: daysUntil, isDefault: isDefault, DEFAULTS: DEFAULTS };
 })();

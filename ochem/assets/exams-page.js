@@ -643,8 +643,9 @@
       if(CHAPTER[p.get('chapter')]){ cfg.chapter = p.get('chapter'); if(!p.get('kind')) cfg.kind = 'chapter'; }
       // From the Practice panel (docs/course-redesign-r4.md decision 5): ?len= (chapter test 20|25, midterm 30|40), ?from=&to= (chapter numbers), ?timing=, ?go=1.
       var ln = +p.get('len'), fr = +p.get('from'), to = +p.get('to');
-      if(cfg.kind === 'chapter' && (ln === 20 || ln === 25)) cfg.chLen = ln;
-      if(cfg.kind === 'midterm' && (ln === 30 || ln === 40)) cfg.midLen = ln;
+      // Practice v2: the panel may ask for any length from 5 to 60.
+      if(cfg.kind === 'chapter' && ln >= 5 && ln <= 60) cfg.chLen = ln;
+      if(cfg.kind === 'midterm' && ln >= 5 && ln <= 60) cfg.midLen = ln;
       if(fr >= 1 && to >= fr && to <= CHAPTERS.length){ cfg.from = fr; cfg.to = to; }
       if(TIMINGS.some(function(t){ return t.id === p.get('timing'); })) cfg.timing = p.get('timing');
       var go = p.get('go') === '1';

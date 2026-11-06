@@ -70,6 +70,29 @@ body, no em dashes, no example data shipped (real progress or nothing).
      custom exam `chapters=&types=&levels=&diffs=` as comma lists, missing = all, and `len=10|20|40|0`;
      ochem `kind=&chapter=&len=&from=&to=`, NREMT `exam=full|cat&diff=&real=`), `frq.html?type=&unit=` (or
      `frq/<id>.html`), `justify.html?unit=&topic=&skill=` (or `?p=`), `cram.html?date=&weeks=&print=1`.
+   - **Practice v2 (owner approved 2026-11-06, mockup `docs/redesign-r4/mockups/PracticeAll.dc.txt`) replaces
+     the tiles and the per-mode step 2** (the Review tile made the whole card disappear). One card "Build your
+     session" with every row always visible: Format (only the course's formats; NREMT adds Adaptive exam and
+     Scenarios), Exam (the course's exam kinds), Questions from (new, due with live count, missed with live
+     count, weakest; A&P and ochem add studied), Units/Chapters/Domains chips plus Topics, the science practice
+     (A&P: Core concept; none in ochem/NREMT), Question type (cards: card types; FRQ: FRQ types; justify:
+     skills), Difficulty (A&P plus Level), How many, Timer (off, exam pace, time and a half, double), Explanations,
+     Exam date (`LevlExamDate.write`, link to `cram.html?date=`). A row that does not apply is greyed with
+     its reason (`why()` in `practice-panel.js`); a single chip that cannot be chosen is disabled with a title.
+     Quick picks only fill the settings. Right column: navy summary, one Start, sharing card (Classroom,
+     copy link = the Start URL, worksheet + answer key for AP® question sets through the engine).
+   - Start contract: question sets in AP® and A&P run on practice.html through `window.<Glob>PracticeHook` (`ApBioPracticeHook`, `AnpPracticeHook`, ...)
+     (each `assets/pages/practice.js` and `anatomy-physiology/assets/apps/practice.js`: `run({pick, count,
+     mode, order, label, defer})`, `print`, `setup`; `window.<Glob>PracticeMeta` gives the type and difficulty
+     lists); URL `practice.html?go=1&from=&units=&topic=&practice=|core=&type=&diff=&level=&n=&timer=&expl=end`.
+     Ochem `practice.html?go=1&from=&chapters=&topic=&tier=&type=interactive&n=` (`plan.topics` in
+     question-engine.js); NREMT `practice.html?go=1&from=new|weak|missed&area=&diff=&n=`. Due for review in
+     ochem/NREMT goes to their Review page. Timer for question sets: the panel's clock (pace from config ×
+     session length), it presses End session (NREMT: `window.NremtPanel.submit`). Explanations at the end:
+     `pp-defer` hides feedback; answered steps come back in the summary (`.pp-kept`); not offered in
+     ochem/NREMT (their runners explain as they go). Exams accept any length 5 to 60 (AP® unit test and mixed
+     set, ochem chapter test and midterm, A&P custom); flashcards accept list decks (`deck=unit:a,unit:b`,
+     `topic:x,topic:y`) and `new=0` (due only), neither saved to prefs.
 6. **Tools**: tool cards without the description line (Olivier). Keep the Free and Premium groups, the tried status
    and Open. Each group sits in a card so it can overlap the band.
 7. **Progress (dashboard design F)**: five questions kept; Q1 "What should I do now?" points to the path's Up next
@@ -105,3 +128,7 @@ budgets in `scripts/check-weight.mjs`, `scripts/ci-local.sh` (with `BROWSER=1`),
   - Ochem and NREMT Review: the panel has Chapter (ochem) or Domain (NREMT: exam domains and topic areas, read
     from `practice-engine.js`) and How many; `ochem/assets/review-page.js` and `nremt/practice-engine.js`
     narrow and cap only the session the panel starts. Review opened directly serves the whole queue as before.
+- Practice v2 (branch `claude/practice-v2`, 2026-11-06): decision 5's v2 bullets above. Built in all 13 courses;
+  tested in headless Chrome (bio, nremt, ochem, calculus, anatomy-physiology at 1280 and 390). Known limits:
+  FRQ and justify run one at a time (How many greyed), the FRQ page has no clock (Timer greyed), AP® exams keep
+  the real mix (type, difficulty, practice greyed), justify counts include Premium-locked prompts.

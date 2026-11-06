@@ -191,7 +191,9 @@ const SHELL_BUDGETS = [
   /* 342.8 -> 346.5 (course redesign r4, docs/course-redesign-r4.md): five tabs and the settings menu in
      site-chrome.js (Part A) plus the shared practice-panel and learn helpers loaded by every course page.
      Measured 346.1 KB. */
-  ['site', 346.5],
+  /* 346.5 -> 346.9 (Practice v2, 2026-11-06): exam-date.js exports write for the panel's Exam date row and
+     every course practice page loads it; measured 346.7. */
+  ['site', 346.9],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -222,7 +224,9 @@ const SHELL_BUDGETS = [
   /* 39.6 -> 40.9 (course redesign r4): path.js now renders the course home (Part B). Measured 40.6 KB. */
   /* 40.9 -> 41.9 (r4 gaps, 2026-11-05): practice-panel.js gains the A&P custom exam choices and Review by
      chapter (ochem) and domain (NREMT). Measured 41.6 KB. */
-  ['assets/course', 41.9],
+  /* 41.9 -> 45.3 (Practice v2, 2026-11-06): practice-panel.js draws every setting as its own row with the
+     not-applicable reasons, the summary and sharing, and runs the question set and its clock; measured 45.0. */
+  ['assets/course', 45.3],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -486,7 +490,7 @@ const SHELL_BUDGETS = [
      gzipped; measured 87.1, with the same room for the curriculum. */
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
-  ['macroeconomics', 89.4],
+  ['macroeconomics', 89.5], // Practice v2 (2026-11-06): the engine's panel hook and list decks; measured 89.4 (rounded over)
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -589,7 +593,9 @@ const BUDGETS = [
   /* 57.4 -> 58.5 (course redesign r4, Part D): the one-panel mode picker. Measured 58.2 KB. */
   /* 58.5 -> 59.1 (r4 gaps, 2026-11-05): Review by domain and how many (the panel's review areas and the
      engine's reviewPick). Measured 58.8 KB. */
-  ['nremt/practice.html', 59.1],
+  /* 59.1 -> 59.6 (Practice v2, 2026-11-06): the engine starts a practice set from the panel (from, area, diff,
+     n) and exposes the clock's submit; measured 59.4. */
+  ['nremt/practice.html', 59.6],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
@@ -763,7 +769,7 @@ const BUDGETS = [
   ['statistics/tools.html', 5],
   ['statistics/formula-sheet.html', 12],
   ['environmental-science/index.html', 8.5], // round 3 course home, see nremt/index.html
-  ['environmental-science/practice.html', 3.6], // r4 Part D one-panel picker, measured 3.4 KB
+  ['environmental-science/practice.html', 3.8], // Practice v2 card and sharing column, measured 3.6 KB
   ['environmental-science/exams.html', 3],
   ['environmental-science/frq.html', 3],
   ['environmental-science/glossary.html', 30],

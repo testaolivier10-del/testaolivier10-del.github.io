@@ -352,6 +352,8 @@
     build();
     var pool = POOL;
     if(plan.topic) pool = pool.filter(function(q){ return q.topic === plan.topic; });
+    // Practice v2 (docs/course-redesign-r4.md decision 5): the chapters the panel picked, as their topics.
+    if(plan.topics) pool = pool.filter(function(q){ return plan.topics.indexOf(q.topic) !== -1; });
     // An empty concept/qid list is a real, meaningful filter — "nothing is
     // due" must yield an empty pool, not silently fall through to every
     // question in the bank. Hence the `!== undefined` rather than a

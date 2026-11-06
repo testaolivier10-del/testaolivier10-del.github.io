@@ -483,6 +483,21 @@
       params[decodeURIComponent(bits[0])] = decodeURIComponent((bits[1] || '').replace(/\+/g, ' '));
     });
     var count = parseInt(params.count, 10) || undefined;
+    /* ?go=1 from the Practice panel (docs/course-redesign-r4.md decision 5, Practice v2): from=new|weak|missed|studied,
+       chapters= (comma list), topic=, tier=1-4, type=interactive, n= (0 = every question that matches). Chapters the
+       student picked are served even past the frontier, as a topic is. */
+    if(params.go === '1'){
+      var mods = C.MODULES || [], chosen = (params.chapters || '').split(',').filter(Boolean), tops = [];
+      mods.forEach(function(m){ if(chosen.indexOf(m.id) !== -1) m.topics.forEach(function(t){ tops.push(t.id); }); });
+      var n = params.n === '0' ? 999 : (parseInt(params.n, 10) || 10);
+      var mode = ({ weak: 'weak', missed: 'mistakes', studied: 'cumulative' })[params.from] || (params.topic && C.findTopic(params.topic) ? 'topic' : 'adaptive');
+      var plan = E.makePlan(mode, { count: n, topic: params.topic, tiers: /^[1-4]$/.test(params.tier || '') ? [parseInt(params.tier, 10)] : null });
+      if(mode === 'mistakes') plan.count = n;
+      if(tops.length){ plan.topics = tops; if(mode === 'adaptive') delete plan.maxTopicIndex; }
+      if(params.type === 'interactive') plan.interactiveOnly = true;
+      try{ history.replaceState(null, '', location.pathname); }catch(e){}
+      return plan;
+    }
     if(params.concept && CO.get(params.concept)){
       return E.makePlan('weak', {
         concepts: [params.concept], conceptTitle: CO.get(params.concept).title, count: count || 8

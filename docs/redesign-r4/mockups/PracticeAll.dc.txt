@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Practice: one panel, every option</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:'Nunito';font-weight:600 900;src:url(/_blob/c5bcabf6e5454e19c2392bdb510ca6d3) format('woff2')}
+@font-face{font-family:'Inter Display';font-weight:800 900;src:url(/_blob/56bd824bf79d45ed391759a05c1ce73c) format('woff2')}
+@font-face{font-family:'Kalam';font-weight:700;src:url(/_blob/031f2640efb523dfedcff5f0c13f4f16) format('woff2')}
+body{margin:0;background:#F7F9FC}
+a{color:#2D6A1F}a:hover{color:#1B4422}
+.lp{--ink:#0B1A33;--muted:#56667F;--line:#E3E9F2;--line-soft:#EDF1F7;--paper:#F7F9FC;--white:#fff;--accent:#2D6A1F;--ctint:#E4F1DD;--bbg:#1B4422;--bac:#7CCB6B;--gold:#FFD43B;--navy:#0B1A33;--amber:#9A5B00;--ui:'Nunito','Segoe UI',system-ui,sans-serif;--display:'Inter Display','Nunito',system-ui,sans-serif;
+ container-type:inline-size;font-family:var(--ui);color:var(--ink);background:var(--paper);background-image:linear-gradient(rgba(11,26,51,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(11,26,51,.035) 1px,transparent 1px);background-size:44px 44px;min-height:100%;font-size:16px;line-height:1.5}
+.lp *{box-sizing:border-box}
+.lp h1,.lp h2,.lp h3,.lp p{margin:0}
+.lp a{color:inherit;text-decoration:none}
+.lp button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+/* header */
+.hdr{background:rgba(247,249,252,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.hdr-top{display:flex;align-items:center;gap:14px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:900 21px var(--display);letter-spacing:-.03em}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);display:grid;place-items:center}
+.crs{display:flex;align-items:center;gap:4px;font:800 14.5px var(--ui);padding:6px 10px;border-radius:9px;border:0;background:transparent;color:var(--ink);border-left:1.5px solid var(--line);border-radius:0;padding-left:14px}
+.hdr-sp{flex:1}
+.ibtn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;color:var(--ink)}
+.tlink{font:800 14.5px var(--ui);padding:9px 12px;border-radius:10px}
+.sbtn{font:800 14.5px var(--ui);padding:9px 16px;border-radius:10px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+.tabs{display:flex;gap:6px;height:46px;align-items:stretch}
+.tab{display:flex;align-items:center;gap:8px;padding:0 14px;font:800 15px var(--ui);color:var(--muted);border-bottom:3px solid transparent}
+.tab.on{color:var(--ink);border-bottom-color:var(--accent)}
+.tab .bdg{font:900 11.5px var(--ui);background:var(--gold);color:var(--ink);border-radius:999px;padding:1px 7px}
+.btm{display:none}
+.show-sm{display:none !important}
+/* band */
+.band{position:relative;background:var(--bbg);color:#fff;overflow:hidden;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px}
+.band-in{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding-top:44px;padding-bottom:130px}
+.issue{display:flex;gap:14px;align-items:center;font:800 13px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.74);margin:0 0 16px}
+.issue i{flex:1;height:1px;background:rgba(255,255,255,.2)}
+.mast{font:900 96px/.9 var(--display);letter-spacing:-.05em}
+.mast em{font-style:normal;color:var(--bac);display:block}
+.hand{font:700 26px/1.2 'Kalam',cursive;color:#FFD43B;margin-top:12px}
+.lead{font-size:18px;color:rgba(255,255,255,.88);margin-top:14px;max-width:520px}
+.art{width:100%;max-width:520px;justify-self:end;border-radius:0}
+.art{aspect-ratio:1.45/1;overflow:hidden;border-radius:24px}
+.art img{width:100%;height:100%;object-fit:cover;object-position:88% 50%;display:block}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:900 16px var(--ui);padding:14px 22px;border-radius:12px;border:0;text-decoration:none}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-ghost{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-ondark{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.btn-sm{font-size:14.5px;padding:10px 16px;border-radius:10px}
+.micro{font:700 13.5px var(--ui);color:rgba(255,255,255,.7);margin-top:12px}
+/* small colored header for inner tabs (Olivier, Nov 5: colored like Home, smaller, cards underlap a little) */
+.slim{position:relative;background:var(--bbg);color:#fff;overflow:hidden;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px}
+.slim-in{display:flex;align-items:center;gap:18px;padding-top:26px;padding-bottom:64px;flex-wrap:wrap}
+.slim .ttl{color:#fff}
+.slim .sub{color:rgba(255,255,255,.78)}
+.slim-art{width:170px;height:96px;border-radius:14px;overflow:hidden;flex:none}
+.slim-art img{width:100%;height:100%;object-fit:cover;object-position:88% 50%;display:block}
+.lap{margin-top:-38px;position:relative;z-index:2}
+.thumb{width:64px;height:40px;border-radius:9px;overflow:hidden;flex:none;background:var(--bbg)}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:75% 50%;display:block}
+.ttl{font:900 38px/1.05 var(--display);letter-spacing:-.035em}
+.ttl em{font-style:normal;color:var(--accent)}
+.sub{color:var(--muted);font-weight:700;font-size:15px;margin-top:4px}
+/* half band */
+.halfband .band-in{padding-top:28px;padding-bottom:84px;grid-template-columns:1fr 280px}
+.halfband .mast{font-size:56px}
+.halfband .hand{font-size:22px}
+.crumbs{font:800 13px var(--ui);color:rgba(255,255,255,.75);margin-bottom:10px}
+/* cards */
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 1px 2px rgba(11,26,51,.04),0 8px 24px rgba(11,26,51,.05)}
+.pad{padding:26px 28px}
+.pill{display:inline-block;border:1.5px solid currentColor;border-radius:999px;padding:1px 10px;font:800 12.5px var(--ui);color:var(--accent)}
+.pill-gold{background:#FFF4CC;border-color:#E7C24A;color:#6B4E00}
+.h2{font:900 30px/1.1 var(--display);letter-spacing:-.035em}
+.h2 em{font-style:normal;color:var(--accent)}
+.h3{font:900 19px/1.25 var(--ui)}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.over{margin-top:-96px;position:relative;z-index:2}
+.grid2{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+.sec{margin-top:56px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:16px}
+.more{font:900 14.5px var(--ui);color:var(--accent);display:inline-flex;gap:6px;align-items:center}
+/* unit rows */
+.urow{display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--line-soft)}
+.unum{font:900 40px/1 var(--display);color:var(--accent);letter-spacing:-.04em}
+.uname{font:900 17px var(--ui)}
+.umeta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.sq{display:flex;gap:4px;flex-wrap:wrap}
+.sq i{width:13px;height:13px;border-radius:3px;background:#E6EBF2;display:block}
+.sq i.s1{background:#BFE0B3}.sq i.s2{background:#5FAE5A}.sq i.s3{background:#1B4422}
+.uw{text-align:right;font:900 20px var(--display);letter-spacing:-.02em}
+.uw small{display:block;font:800 12px var(--ui);color:var(--accent);letter-spacing:0}
+.free{font:800 12px var(--ui);color:var(--accent);background:var(--ctint);border-radius:999px;padding:1px 8px}
+.legend{display:flex;gap:14px;font:700 12.5px var(--ui);color:var(--muted);margin-top:14px;flex-wrap:wrap}
+.legend span{display:flex;gap:6px;align-items:center}
+/* way rows */
+.way{display:flex;gap:14px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:16px;margin-top:12px;background:#fff}
+.way-ic{width:44px;height:44px;border-radius:12px;background:var(--ctint);color:var(--accent);display:grid;place-items:center;flex:none}
+.way-t{font:900 16.5px var(--ui)}
+.way-d{font-size:14px;color:var(--muted)}
+.way .cnt{margin-left:auto;font:900 13px var(--ui);background:var(--gold);border-radius:999px;padding:2px 10px;white-space:nowrap}
+/* media cards */
+.mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.mcard{display:block}
+.mimg{border-radius:14px;overflow:hidden;position:relative;aspect-ratio:2/1;background:var(--bbg)}
+.mimg img{width:100%;height:100%;object-fit:cover;display:block}
+.mplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(11,26,51,.8);display:grid;place-items:center;color:#fff}
+.dur{position:absolute;right:10px;bottom:10px;background:rgba(11,26,51,.85);color:#fff;font:800 12px var(--ui);padding:2px 7px;border-radius:6px}
+.mt{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-top:12px}
+.mname{font:900 16.5px var(--ui)}
+.mdesc{font-size:14px;color:var(--muted);margin-top:3px}
+.prem{font:800 12px var(--ui);background:#FFF4CC;color:#6B4E00;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.tag{font:800 12px var(--ui);background:var(--ctint);color:var(--accent);border-radius:999px;padding:2px 9px;white-space:nowrap}
+/* compare */
+.cmp{width:100%;border-collapse:collapse;font-size:15px}
+.cmp th{font:900 14px var(--ui);text-align:center;padding:12px 8px;border-bottom:2px solid var(--ink)}
+.cmp th:first-child{text-align:left}
+.cmp td{padding:11px 8px;border-bottom:1px solid var(--line-soft);text-align:center;font-weight:700;color:var(--muted)}
+.cmp td:first-child{text-align:left;color:var(--ink);font-weight:700}
+.cmp td.y{color:var(--accent)}
+.cmp .pcol{background:#FBFCF7}
+.deal{display:grid;grid-template-columns:1.5fr 1fr;gap:0;overflow:hidden}
+.deal-r{background:var(--navy);color:#fff;padding:30px}
+.price{font:900 52px/1 var(--display);color:var(--gold);letter-spacing:-.03em}
+/* faq */
+.faq details{border-top:1px solid var(--line);padding:16px 2px}
+.faq summary{font:900 17px var(--ui);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq p{color:var(--muted);margin-top:8px;max-width:640px}
+.faqg{display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
+/* footer */
+.foot{border-top:1px solid var(--line);margin-top:64px;padding:26px 0 40px;font-size:13.5px;color:var(--muted)}
+.foot a{text-decoration:underline}
+/* tutor */
+.fab{position:fixed;right:22px;bottom:22px;width:54px;height:54px;border-radius:16px;background:#0D3B36;color:#2EE6D6;display:grid;place-items:center;border:0;box-shadow:0 6px 18px rgba(11,26,51,.25);z-index:30}
+/* segmented */
+.seg{display:inline-flex;background:#EEF2F7;border-radius:12px;padding:4px;gap:2px}
+.seg button,.seg a{border:0;background:transparent;font:800 14.5px var(--ui);padding:8px 14px;border-radius:9px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.seg .on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(11,26,51,.12)}
+.seg .dis{opacity:.5}
+.field{display:flex;flex-direction:column;gap:6px;font:900 12px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.field select,.field input{font:700 15px var(--ui);color:var(--ink);padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:#F7F9FC;text-transform:none;letter-spacing:0}
+.chip{border:1.5px solid var(--line);background:#fff;font:800 14.5px var(--ui);padding:8px 14px;border-radius:10px;color:var(--ink)}
+.chip.on{border-color:var(--accent);background:var(--ctint);color:var(--accent)}
+.kick{font:700 22px/1 'Kalam',cursive;color:var(--amber)}
+.bar{height:10px;border-radius:99px;background:#E6EBF2;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+@container (max-width:760px){
+ .wrap{padding:0 16px}
+ .hdr-top{height:56px;gap:8px}
+ .logo{font-size:18px}.logo-mark{width:30px;height:30px}
+ .crs{font-size:13.5px;padding-left:10px}
+ .hide-sm{display:none}
+ .tabs{display:none}
+ .show-sm{display:inline-flex !important}
+ .toc-aside{display:none !important}
+ .btm{display:flex;position:sticky;bottom:0;z-index:25;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:6px 0 10px}
+ .btm a{display:flex;flex-direction:column;align-items:center;gap:2px;font:800 11.5px var(--ui);color:var(--muted);padding:4px 8px;border-radius:12px;position:relative}
+ .btm a.on{color:var(--accent)}
+ .btm a.on span.ib{background:var(--ctint)}
+ .btm span.ib{width:52px;height:30px;border-radius:15px;display:grid;place-items:center}
+ .btm .bdg{position:absolute;top:0;right:8px;font:900 10.5px var(--ui);background:var(--gold);color:var(--ink);border-radius:999px;padding:0 6px}
+ .band-in{grid-template-columns:1fr;padding-top:20px;padding-bottom:100px;gap:8px}
+ .art{order:-1;max-width:260px;justify-self:center}
+ .mast{font-size:60px}
+ .hand{font-size:21px}.lead{font-size:16px}
+ .ctas .btn{flex:1 1 100%}
+ .grid2,.mgrid,.faqg,.deal{grid-template-columns:1fr}
+ .over{margin-top:-72px}
+ .pad{padding:20px 18px}
+ .urow{grid-template-columns:44px 1fr;gap:12px}
+ .unum{font-size:30px}
+ .uw{grid-column:2;text-align:left;font-size:16px}.uw small{display:inline;margin-left:6px}
+ .ttl{font-size:28px}
+ .h2{font-size:25px}
+ .halfband .band-in{grid-template-columns:1fr}
+ .halfband .art{display:none}
+ .halfband .mast{font-size:44px}
+ .fab{right:14px;bottom:84px;width:48px;height:48px}
+ .slim-in{padding-top:18px;padding-bottom:54px}
+ .slim-art{display:none}
+ .rail{max-width:none !important;order:2}
+ .tiles{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+ .one{grid-template-columns:1fr !important}
+ .slim-in label{min-width:0 !important;width:100%}
+}
+@container (max-width:520px){ .practice-tiles{grid-template-columns:1fr !important} }
+</style>
+</helmet>
+<div class="lp"><header class="hdr"><div class="wrap"><div class="hdr-top">
+<a class="logo" href="HomeReturning.dc.html"><span class="logo-mark"><svg width="18" height="18" viewBox="0 0 512 512" aria-hidden="true"><rect x="218" y="80" width="76" height="352" rx="22" fill="#2EE6D6"></rect><rect x="80" y="218" width="352" height="76" rx="22" fill="#2EE6D6"></rect></svg></span>LevlPrep</a>
+<span class="crs">AP® Biology</span>
+<span class="hdr-sp"></span>
+<button class="ibtn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+<a class="tlink hide-sm" href="#">For teachers</a>
+<a class="sbtn hide-sm" href="#">Sign in</a>
+<button class="ibtn" aria-label="Settings: dark mode and sound"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg></button>
+</div>
+<nav class="tabs" aria-label="Course"><a class="tab" href="HomeReturning.dc.html">Home</a><a class="tab" href="Learn.dc.html">Learn</a><a class="tab on" href="Practice.dc.html">Practice</a><a class="tab" href="Tools.dc.html">Tools</a><a class="tab" href="Progress.dc.html">Progress</a></nav></div></header><section class="slim"><div class="wrap slim-in"><div style="flex:1;min-width:220px"><p class="issue" style="margin:0 0 8px">AP® Biology <i></i></p><h1 class="ttl">Practice</h1><p class="sub">1,487 questions · every option explained</p></div><div style="display:flex;align-items:center;gap:12px;background:#FFF8DE;border:1px solid #F0D98A;border-radius:14px;padding:10px 14px;color:#0B1A33"><span style="font:900 14px var(--ui);color:#0B1A33">12 of 15 free today</span><span style="width:90px" class="bar"><i style="width:20%;background:#C99A00"></i></span><a href="#" class="small" style="font-weight:900;text-decoration:underline;color:#6B4E00">Get unlimited</a></div><span class="slim-art"><img src="/_blob/05d851cc2ab68021def477f380fce8cc" alt=""></span></div></section>
+<main class="wrap lap">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px;align-items:start" class="one">
+<div class="card" style="padding:22px 28px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><h2 class="h2">Build your <em>session</em></h2><span class="small muted" style="font-weight:700">Every setting is here. Change any of them.</span></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px"><span class="small muted" style="font-weight:800;align-self:center">Quick picks:</span><button class="chip" onClick="{{pQuick}}">Quick 10</button><button class="chip" onClick="{{pReview}}">Review what's due</button><button class="chip" onClick="{{pExam}}">Full practice exam</button><button class="chip" onClick="{{pCards}}">20 flashcards</button></div>
+<div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)" class="one"><div style="font:900 12.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:9px">Format</div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button onClick="{{f_0}}" style="{{f_0_st}}" class="chip">Questions, feedback after each</button><button onClick="{{f_1}}" style="{{f_1_st}}" class="chip">Timed exam</button><button onClick="{{f_2}}" style="{{f_2_st}}" class="chip">Flashcards</button><button onClick="{{f_3}}" style="{{f_3_st}}" class="chip">Written answers (free response)</button><button onClick="{{f_4}}" style="{{f_4_st}}" class="chip">Justify prompts</button></div></div>
+<div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)" class="one"><div style="font:900 12.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:9px">Questions from<span style="display:block;font:700 12.5px var(--ui);color:var(--muted);text-transform:none;letter-spacing:0;margin-top:2px">{{fromNote}}</span></div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button onClick="{{s_0}}" style="{{s_0_st}}" class="chip">New questions</button><button onClick="{{s_1}}" style="{{s_1_st}}" class="chip">Due for review · 6</button><button onClick="{{s_2}}" style="{{s_2_st}}" class="chip">Ones I missed · 8</button><button onClick="{{s_3}}" style="{{s_3_st}}" class="chip">My weakest topics</button></div></div>
+<div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)" class="one"><div style="font:900 12.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:9px">Units</div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button onClick="{{u_0}}" style="{{u_0_st}}" class="chip">All</button><button onClick="{{u_1}}" style="{{u_1_st}}" class="chip">1</button><button onClick="{{u_2}}" style="{{u_2_st}}" class="chip">2</button><button onClick="{{u_3}}" style="{{u_3_st}}" class="chip">3</button><button onClick="{{u_4}}" style="{{u_4_st}}" class="chip">4</button><button onClick="{{u_5}}" style="{{u_5_st}}" class="chip">5</button><button onClick="{{u_6}}" style="{{u_6_st}}" class="chip">6</button><button onClick="{{u_7}}" style="{{u_7_st}}" class="chip">7</button><button onClick="{{u_8}}" style="{{u_8_st}}" class="chip">8</button><button onClick="{{u_9}}" style="{{u_9_st}}" class="chip">Stats</button><button onClick="{{u_10}}" style="{{u_10_st}}" class="chip">Design</button><label class="field" style="flex:1 1 220px;min-width:200px"><select aria-label="Topics"><option>Every topic in these units</option><option>1.4 Carbohydrates</option></select></label></div></div>
+<div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)" class="one"><div style="font:900 12.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:9px">Science practice<span style="display:block;font:700 12.5px var(--ui);color:var(--muted);text-transform:none;letter-spacing:0;margin-top:2px">{{spNote}}</span></div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><label class="field" style="min-width:260px"><select aria-label="Science practice"><option>Every science practice</option><option>1 Concept explanation</option><option>2 Visual representations</option><option>3 Questions and methods</option><option>4 Representing and describing data</option><option>5 Statistical tests and data analysis</option><option>6 Argumentation</option></select></label></div></div>
+<div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)" class="one"><div style="font:900 12.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:9px">Question type<span style="display:block;font:700 12.5px var(--ui);color:var(--muted);text-transform:none;letter-spacing:0;margin-top:2px">{{typeNote}}</span></div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button onClick="{{t_0}}" style="{{t_0_st}}" class="chip">Standalone</button><button onClick="{{t_1}}" style="{{t_1_st}}" class="chip">Data sets</button><button onClick="{{t_2}}" style="{{t_2_st}}" class="chip">Both</button></div></div>
+<div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)" class="one"><div style="font:900 12.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:9px">Difficulty<span style="display:block;font:700 12.5px var(--ui);color:var(--muted);text-transform:none;letter-spacing:0;margin-top:2px">{{diffNote}}</span></div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button onClick="{{d_0}}" style="{{d_0_st}}" class="chip">Easier</button><button onClick="{{d_1}}" style="{{d_1_st}}" class="chip">Mixed</button><button onClick="{{d_2}}" style="{{d_2_st}}" class="chip">Harder</button></div></div>
+<div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)" class="one"><div style="font:900 12.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:9px">How many</div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button onClick="{{n_0}}" style="{{n_0_st}}" class="chip">5</button><button onClick="{{n_1}}" style="{{n_1_st}}" class="chip">10</button><button onClick="{{n_2}}" style="{{n_2_st}}" class="chip">20</button><button onClick="{{n_3}}" style="{{n_3_st}}" class="chip">40</button><button onClick="{{n_4}}" style="{{n_4_st}}" class="chip">All</button></div></div>
+<div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)" class="one"><div style="font:900 12.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:9px">Timer<span style="display:block;font:700 12.5px var(--ui);color:var(--muted);text-transform:none;letter-spacing:0;margin-top:2px">{{timerNote}}</span></div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button onClick="{{m_0}}" style="{{m_0_st}}" class="chip">Off</button><button onClick="{{m_1}}" style="{{m_1_st}}" class="chip">Exam pace</button><button onClick="{{m_2}}" style="{{m_2_st}}" class="chip">Double time</button></div></div>
+<div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)" class="one"><div style="font:900 12.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:9px">Explanations<span style="display:block;font:700 12.5px var(--ui);color:var(--muted);text-transform:none;letter-spacing:0;margin-top:2px">{{explNote}}</span></div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button onClick="{{e_0}}" style="{{e_0_st}}" class="chip">After each answer</button><button onClick="{{e_1}}" style="{{e_1_st}}" class="chip">At the end</button></div></div>
+<div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)" class="one"><div style="font:900 12.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:9px">Exam date</div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><label class="field"><input type="date" value="2027-05-03" aria-label="Exam date"></label><span class="small muted" style="font-weight:700">Optional. Used for your cram plan and pacing.</span><a class="more" href="#">Make a cram plan from it</a></div></div>
+</div>
+<aside style="position:sticky;top:130px;display:flex;flex-direction:column;gap:16px">
+<div style="background:var(--navy);color:#fff;border-radius:22px;padding:22px 24px"><p style="font:900 12.5px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)">Your session</p><p style="font:900 22px/1.2 var(--display);margin-top:8px">{{sumTitle}}</p><p style="font-size:14.5px;color:rgba(255,255,255,.8);margin-top:8px;white-space:pre-line">{{sumBody}}</p><a class="btn btn-gold" href="#" style="width:100%;margin-top:16px">{{cta}}</a></div>
+<div class="card" style="padding:18px 20px"><p class="small" style="font-weight:900">Teaching or sharing?</p><div style="display:flex;flex-direction:column;gap:8px;margin-top:10px"><button class="chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 14v6h14v-6"/></svg> Share to Google Classroom</button><button class="chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg> Copy a link to this session</button><button class="chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h10v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg> Print as a worksheet</button><label class="small" style="display:flex;gap:6px;align-items:center;font-weight:700"><input type="checkbox"> Answer key on a separate page</label></div></div>
+</aside>
+</div>
+</main><footer class="foot"><div class="wrap">This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="#">Sources</a> page. Spot a mistake? <a href="#"><b>Report a problem</b></a><p style="margin-top:12px">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p><div style="margin-top:10px"><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">About</a> · <a href="#">Sources</a> · <a href="#">What's new</a> · <a href="#">Premium</a> · <a href="#">Teachers</a> · <a href="#">Account</a> · <a href="#">Contact</a></div></div></footer><nav class="btm" aria-label="Course"><a class="" href="HomeReturning.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></span>Home</a><a class="" href="Learn.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg></span>Learn</a><a class="on" href="Practice.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>Practice</a><a class="" href="Tools.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></svg></span>Tools</a><a class="" href="Progress.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 16v-5"/><path d="M12 16V8"/><path d="M16 16v-3"/></svg></span>Progress</a></nav><button class="fab" aria-label="Ask the tutor"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4"/><circle cx="9" cy="13.5" r="1.2"/><circle cx="15" cy="13.5" r="1.2"/></svg></button></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1280, "height": 1700}}'>
+class Component extends DCLogic {
+renderVals() {
+  const s = Object.assign({f:0,s:0,u:[0],t:2,d:1,n:1,m:0,e:0}, this.state);
+  const ON = 'border-color:#2D6A1F;background:#E4F1DD;color:#2D6A1F';
+  const OFF = '';
+  const DIS = 'opacity:.4;cursor:not-allowed';
+  const F = ['q','exam','cards','frq','jus'][s.f];
+  // which settings apply to which format (shown, never hidden; greyed with a reason when they don't apply)
+  const applies = { s: F!=='exam', t: F==='q'||F==='exam', d: F==='q'||F==='exam'||F==='cards', m: F==='q'||F==='exam'||F==='frq', e: F==='q' };
+  const v = {};
+  const set = (k,i) => () => {
+    if (k==='u') { let u = s.u.slice(); if (i===0) u=[0]; else { u = u.filter(x=>x!==0); u = u.includes(i)? u.filter(x=>x!==i) : u.concat(i); if(!u.length) u=[0]; } this.setState({u}); return; }
+    if (applies[k]===false) return;
+    const o = {}; o[k]=i;
+    if (k==='f') { if (i===1) { o.m=1; o.e=1; o.n=4; } if (i===0) { o.e=0; } }
+    this.setState(o);
+  };
+  const counts = {f:5,s:4,u:11,t:3,d:3,n:5,m:3,e:2};
+  Object.keys(counts).forEach(k => { for (let i=0;i<counts[k];i++){ const on = k==='u' ? s.u.includes(i) : s[k]===i; v[k+'_'+i]=set(k,i); v[k+'_'+i+'_st'] = (applies[k]===false? DIS+';' : '') + (on? ON : OFF); } });
+  const why = { exam:'Not used for a timed exam', cards:'Not used for flashcards', frq:'Not used for written answers', jus:'Not used for justify prompts', q:'' };
+  v.fromNote = applies.s ? '' : 'A practice exam draws from every unit by exam weight';
+  v.typeNote = applies.t ? '' : why[F];
+  v.diffNote = applies.d ? '' : why[F];
+  v.timerNote = applies.m ? '' : why[F];
+  v.explNote = applies.e ? '' : (F==='exam' ? 'Exams explain everything at the end' : why[F]);
+  v.spNote = '';
+  const unitTxt = s.u.includes(0) ? 'every unit' : 'Unit' + (s.u.length>1?'s ':' ') + s.u.map(i=>['','1','2','3','4','5','6','7','8','Stats','Design'][i]).join(', ');
+  const n = ['5','10','20','40','all'][s.n];
+  const fmtTitle = { q: n+' questions', exam: 'Full practice exam', cards: (s.n===4?'All':n)+' flashcards', frq: (s.n===4?'All':n)+' written questions', jus: (s.n===4?'All':n)+' justify prompts' }[F];
+  const src = ['new questions','questions due for review','questions you missed','your weakest topics'][s.s];
+  const lines = [];
+  if (F==='exam') lines.push('60 multiple choice + 6 free response', ['No timer','Standard time: 90 + 90 min','Double time'][s.m]);
+  else { lines.push('From ' + (applies.s? src+', ' : '') + unitTxt); if (applies.t) lines.push(['Standalone questions','Data sets only','Standalone and data sets'][s.t] + ' · ' + ['easier','mixed','harder'][s.d]); if (applies.m) lines.push(['No timer','Exam pace','Double time'][s.m] + (applies.e? ' · explanations ' + ['after each answer','at the end'][s.e] : '')); }
+  v.sumTitle = fmtTitle; v.sumBody = lines.join('\n');
+  v.cta = { q:'Start practice', exam:'Start the exam', cards:'Study cards', frq:'Start writing', jus:'Start a prompt' }[F];
+  v.pQuick = () => this.setState({f:0,s:0,u:[0],t:2,d:1,n:1,m:0,e:0});
+  v.pReview = () => this.setState({f:0,s:1,u:[0],t:2,d:1,n:4,m:0,e:0});
+  v.pExam = () => this.setState({f:1,s:0,u:[0],t:2,d:1,n:4,m:1,e:1});
+  v.pCards = () => this.setState({f:2,s:0,u:[0],t:2,d:1,n:2,m:0,e:0});
+  return v;
+}
+}
+</script>
+</body>
+</html>
