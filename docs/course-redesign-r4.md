@@ -64,8 +64,10 @@ body, no em dashes, no example data shipped (real progress or nothing).
    - Built (part D): markup and per-course config `scripts/lib/practice-panel.mjs` (`practicePage` in the AP® and
      A&P builders; `scripts/build-practice-panel.mjs [--check]` writes the marker blocks in `nremt/practice.html`
      and `ochem/practice.html`), behaviour `assets/course/practice-panel.js`, styles `practice-panel.css`. URL
-     contract, each with `go=1`: `review.html?unit=&n=`, `flashcards.html?deck=&kinds=&new=` (ochem/NREMT
+     contract, each with `go=1`: `review.html?unit=&n=` (ochem `chapter=&n=`: the due concepts that show up in
+     that chapter's topics; NREMT `domain=&n=`: an exam domain or `system:<topic area>`), `flashcards.html?deck=&kinds=&new=` (ochem/NREMT
      `chapter|domain=&scope=&types=`), `exams.html?mode=&unit=&len=&n=&timing=` (A&P `mode=&chapter=&course=`,
+     custom exam `chapters=&types=&levels=&diffs=` as comma lists, missing = all, and `len=10|20|40|0`;
      ochem `kind=&chapter=&len=&from=&to=`, NREMT `exam=full|cat&diff=&real=`), `frq.html?type=&unit=` (or
      `frq/<id>.html`), `justify.html?unit=&topic=&skill=` (or `?p=`), `cram.html?date=&weeks=&print=1`.
 6. **Tools**: tool cards without the description line (Olivier). Keep the Free and Premium groups, the tried status
@@ -90,4 +92,16 @@ container; Part A owns those CSS rules. Integration pass after all parts: bump `
 budgets in `scripts/check-weight.mjs`, `scripts/ci-local.sh` (with `BROWSER=1`), screenshots desktop and phone.
 
 ## Status
-- [ ] A Chrome  - [ ] B Home  - [ ] C Learn  - [ ] D Practice  - [ ] E Tools/Progress  - [ ] Integration  - [ ] Live
+- [x] A Chrome  - [x] B Home  - [x] C Learn  - [x] D Practice  - [x] E Tools/Progress  - [x] Integration  - [x] Live
+  (all parts done, merged in PR #149).
+- Follow-up fixes (branch `claude/r4-gaps`, 2026-11-05):
+  - Progress pages: `<title>`, og title, JSON-LD name and breadcrumb say "Progress" (was "Dashboard"; "Your
+    dashboard" in the title), same title pattern as the other tabs. Source: `h1`/`title` of the
+    dashboard entry in each `*/data/pages.json` (and the test fixtures), the nremt/ochem heads by hand,
+    `scripts/build-r3-inner.mjs` crumbs. The URL stays `dashboard.html`.
+  - A&P custom exam: the panel shows the exam page's own custom choices (chapters, question types, level,
+    difficulty, length) and starts it directly; `anatomy-physiology/assets/apps/exams.js` reads them
+    (`customFromUrl`). Opening exams.html directly still shows the setup.
+  - Ochem and NREMT Review: the panel has Chapter (ochem) or Domain (NREMT: exam domains and topic areas, read
+    from `practice-engine.js`) and How many; `ochem/assets/review-page.js` and `nremt/practice-engine.js`
+    narrow and cap only the session the panel starts. Review opened directly serves the whole queue as before.

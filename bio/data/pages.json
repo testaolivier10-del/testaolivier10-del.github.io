@@ -27,7 +27,7 @@
     { "slug": "tools", "section": "tools", "h1": "Tools", "title": "Tools",
       "desc": "Biology simulators and skills tools: enzymes, osmosis, the cell cycle, Hardy-Weinberg, chi-square, graph building and more, each followed by questions.",
       "card": "Simulators, then the questions about what you saw.", "script": "pages/tools.js", "css": ["pages/pages.css", "../../assets/course/reading.css"] },
-    { "slug": "dashboard", "section": "dashboard", "siteScripts": ["exam-date.js"], "h1": "Dashboard", "title": "Your dashboard",
+    { "slug": "dashboard", "section": "dashboard", "siteScripts": ["exam-date.js"], "h1": "Progress", "title": "Progress",
       "desc": "Your biology mastery by unit, topic and science practice, with every miss linked to the lesson that teaches it.",
       "card": "Mastery by unit, topic and science practice.", "script": "pages/dashboard.js", "css": "pages/pages.css" },
     { "slug": "search", "section": "", "h1": "Search", "title": "Search the course",

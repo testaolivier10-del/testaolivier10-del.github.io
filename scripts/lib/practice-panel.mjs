@@ -23,6 +23,15 @@ import { fileURLToPath } from 'node:url';
 import { COURSES } from './r3-inner.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+/* Review areas: the drill picker's exam domains and topic areas (DOMAIN_TARGETS and SYSTEMS in
+   nremt/practice-engine.js), read from the engine so the two cannot drift. */
+function nremtReviewAreas() {
+  const src = readFileSync(join(ROOT, 'nremt', 'practice-engine.js'), 'utf8');
+  const dm = src.match(/const DOMAIN_TARGETS = \{([\s\S]*?)\};/), sm = src.match(/const SYSTEMS = (\[[^\]]*\]);/);
+  if (!dm || !sm) throw new Error('practice-panel: DOMAIN_TARGETS or SYSTEMS not found in nremt/practice-engine.js');
+  const doms = [...dm[1].matchAll(/"([^"]+)"\s*:/g)].map(m => m[1]);
+  return { domains: doms, systems: JSON.parse(sm[1]) };
+}
 function nremtDomains() {
   return JSON.parse(readFileSync(join(ROOT, 'nremt', 'assets', 'flashcards.json'), 'utf8')).domains.map(d => [d.key, d.label]);
 }
@@ -107,7 +116,7 @@ export function panelConfig(key) {
   /* The flashcard domains are the deck's own (nremt/assets/flashcards.json "domains"). */
   if (key === 'nremt') return {
     course: 'nremt', family: 'nremt', note: 'The study notes stay open.', modes: ['set', 'review', 'flash', 'exam', 'cat', 'scen'],
-    store: { cards: 'nremt_flashcards_v1' }, setRoot: '#nrBuilder', domains: nremtDomains(),
+    store: { cards: 'nremt_flashcards_v1' }, setRoot: '#nrBuilder', domains: nremtDomains(), reviewAreas: nremtReviewAreas(),
   };
   throw new Error(`practice-panel: no config for ${key}`);
 }

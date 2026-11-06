@@ -1603,8 +1603,37 @@ $id('flaggedReviewBtn').addEventListener('click', () => {
   beginQuiz(false);
 });
 
+// The Practice panel's Review settings (docs/course-redesign-r4.md decision 5): review.html?go=1&domain=&n=.
+// domain is an exam domain or "system:<topic area>" (the drill picker's values); n caps the queue. Only the
+// start the panel asks for uses them; the page opened directly serves the queue as before.
+let reviewPick = null;
+function reviewArea(v){
+  if(!v || v === 'all') return null;
+  if(Object.prototype.hasOwnProperty.call(DOMAIN_TARGETS, v)) return { v, name: v };
+  if(v.indexOf('system:') === 0 && SYSTEMS.indexOf(v.slice(7)) > -1) return { v, name: v.slice(7) };
+  return null;
+}
 $id('spacedReviewBtn').addEventListener('click', () => {
-  const due = loadDueForReview();
+  const pk = reviewPick;
+  reviewPick = null;
+  let due = loadDueForReview(pk && pk.area ? Infinity : undefined);
+  if(pk && pk.area){
+    const pool = new Set(poolFor(pk.area.v));
+    due = due.filter(i => pool.has(i));
+    if(due.length === 0){
+      const box = $id('spacedReviewBtn').closest('.cx-actions');
+      if(box && !document.getElementById('nrReviewPickNote')){
+        const note = document.createElement('p');
+        note.id = 'nrReviewPickNote';
+        note.className = 'cx-notice';
+        note.setAttribute('role', 'status');
+        note.textContent = 'Nothing from ' + pk.area.name + ' is due right now. Start review for everything that is.';
+        box.parentNode.insertBefore(note, box);
+      }
+      return;
+    }
+    due = due.slice(0, pk.n || 40);
+  } else if(pk && pk.n) due = due.slice(0, pk.n);
   if(due.length === 0) return;
   mode = 'spaced';
   activeIndices = due;
@@ -2894,8 +2923,11 @@ $id('nextStep').addEventListener('click', (e) => {
   if(p.get('go') !== '1' || loadExamState()) return;
   history.replaceState(null, '', location.pathname);
   if(RUNNER_PAGE === 'review'){
+    const n = parseInt(p.get('n'), 10);
+    reviewPick = { area: reviewArea(p.get('domain')), n: n > 0 ? n : 0 };
     const b = document.getElementById('spacedReviewBtn');
     if(b && !b.disabled && !b.hidden) b.click();
+    reviewPick = null;
   } else if(RUNNER_PAGE === 'exams'){
     const r = document.querySelector('input[name="nrExam"][value="' + (p.get('exam') === 'cat' ? 'cat' : 'full') + '"]');
     if(r){ r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true })); }

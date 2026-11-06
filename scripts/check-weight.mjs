@@ -220,7 +220,9 @@ const SHELL_BUDGETS = [
      12 px phone floor, the strip kept free under Enlarge) plus B7/B8 (the shared end-of-session panel LevlStudy.end
      and keyboard legend in study.js and study.css, which replace three course-specific layouts). */
   /* 39.6 -> 40.9 (course redesign r4): path.js now renders the course home (Part B). Measured 40.6 KB. */
-  ['assets/course', 40.9],
+  /* 40.9 -> 41.9 (r4 gaps, 2026-11-05): practice-panel.js gains the A&P custom exam choices and Review by
+     chapter (ochem) and domain (NREMT). Measured 41.6 KB. */
+  ['assets/course', 41.9],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -585,7 +587,9 @@ const BUDGETS = [
   /* 55.2 -> 55.6 (teacher classes, other courses, 2026-11-04): the answer pick and progress event in
      updateMastery (docs/teacher-classes.md). Measured 55.4 KB. */
   /* 57.4 -> 58.5 (course redesign r4, Part D): the one-panel mode picker. Measured 58.2 KB. */
-  ['nremt/practice.html', 58.5],
+  /* 58.5 -> 59.1 (r4 gaps, 2026-11-05): Review by domain and how many (the panel's review areas and the
+     engine's reviewPick). Measured 58.8 KB. */
+  ['nremt/practice.html', 59.1],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read

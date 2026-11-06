@@ -101,8 +101,8 @@
    "siteScripts": [
     "exam-date.js"
    ],
-   "h1": "Dashboard",
-   "title": "Your dashboard",
+   "h1": "Progress",
+   "title": "Progress",
    "desc": "Your physics mastery by unit, topic and science practice, with every miss linked to the lesson that teaches it.",
    "card": "Mastery by unit, topic and science practice.",
    "script": "pages/dashboard.js",

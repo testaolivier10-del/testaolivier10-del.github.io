@@ -44,8 +44,8 @@
       "slug": "dashboard",
       "section": "dashboard",
       "siteScripts": ["exam-date.js"],
-      "h1": "Dashboard",
-      "title": "Your dashboard",
+      "h1": "Progress",
+      "title": "Progress",
       "desc": "Your anatomy and physiology mastery by topic, system and core concept, with lab practical and prediction accuracy and what to study next.",
       "script": "apps/mastery.js",
       "css": "apps/apps.css"

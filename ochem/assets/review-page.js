@@ -136,10 +136,43 @@
     onFinish: renderDone
   });
 
+  /* The Practice panel's Review settings (docs/course-redesign-r4.md decision 5): ?go=1&chapter=&n=.
+     chapter keeps the concepts of today's batch that show up in that chapter's topics (a concept spans
+     topics, so one can belong to several chapters); n keeps the most overdue n of those. Only the session
+     the panel starts uses them: "keep going" and the page opened directly serve the whole batch. */
+  var pick = null;
+  function readPick(){
+    var p = new URLSearchParams(location.search), mods = (window.OchemCurriculum && window.OchemCurriculum.MODULES) || [];
+    var mod = mods.filter(function(m){ return m.id === p.get('chapter'); })[0], n = parseInt(p.get('n'), 10);
+    if(!mod && !(n > 0)) return null;
+    return { topics: mod ? mod.topics.map(function(t){ return t.id; }) : null, title: mod ? mod.title : '', n: n > 0 ? n : 0 };
+  }
+  function narrow(today, pk){
+    var list = today;
+    if(pk && pk.topics) list = list.filter(function(p){
+      var c = CO.get(p.id);
+      return !!c && (c.topics || []).some(function(t){ return pk.topics.indexOf(t) > -1; });
+    });
+    if(pk && pk.n) list = list.slice(0, pk.n);
+    return list;
+  }
+
   function startSession(){
-    var q = E.reviewQueue();
-    if(!q.today.length){ render(); return; }
-    queue = q.today.map(function(p){ return p.id; });
+    var q = E.reviewQueue(), pk = pick;
+    pick = null;
+    var today = narrow(q.today, pk);
+    if(!today.length){
+      render();
+      if(pk && pk.topics && q.today.length){
+        var note = document.createElement('p');
+        note.className = 'cx-notice';
+        note.setAttribute('role', 'status');
+        note.textContent = 'Nothing from ' + pk.title + ' is due today. Here is everything that is.';
+        homeEl.insertBefore(note, homeEl.firstChild);
+      }
+      return;
+    }
+    queue = today.map(function(p){ return p.id; });
     total = queue.length;
     var ceiling = {};
     queue.forEach(function(id){ ceiling[id] = M.reachedTier(id); });
@@ -326,6 +359,7 @@
   window.OchemPracticeBankReady.then(function(){
     render();
     if(/[?&]go=1/.test(location.search)){
+      pick = readPick();
       try{ history.replaceState(null, '', location.pathname); }catch(e){}
       var go = homeEl.querySelector('#startReview'); if(go) go.click();
     }

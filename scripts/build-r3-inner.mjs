@@ -22,13 +22,13 @@ const OC = [{ name: 'LevlPrep', href: '../index.html' }, { name: 'Organic Chemis
 const PAGES = [
   { file: 'nremt/exams.html', key: 'nremt', slug: 'exams', crumbs: [...NR, { name: 'Exams' }],
     lede: 'A full 100-question exam in the proportions of the National Registry&rsquo;s five EMT exam domains (April 2025 outline), on a two-hour clock and scored by domain. Leave mid-way and it waits here for you.' },
-  { file: 'nremt/dashboard.html', key: 'nremt', slug: 'dashboard', crumbs: [...NR, { name: 'Dashboard' }], ledeId: 'headSub',
+  { file: 'nremt/dashboard.html', key: 'nremt', slug: 'dashboard', crumbs: [...NR, { name: 'Progress' }], ledeId: 'headSub',
     lede: 'Everything this browser knows about how you&rsquo;re doing, in six topic areas and the five exam domains.' },
   { file: 'nremt/exam-day.html', key: 'nremt', slug: 'exam-day', crumbs: [...NR, { name: 'About the NREMT-EMT exam' }],
     lede: 'The format, the clock, the cost, who can sit it, what happens if you fail, and what to bring. The practice here trains the content; this page covers everything around it.' },
   { file: 'ochem/exams.html', key: 'ochem', slug: 'exams', crumbs: [...OC, { name: 'Exams' }], id: 'examHero',
     lede: 'Timed tests on one chapter, a range of chapters or the whole course, with a full review at the end.' },
-  { file: 'ochem/dashboard.html', key: 'ochem', slug: 'dashboard', crumbs: [...OC, { name: 'Dashboard' }], ledeId: 'headSub',
+  { file: 'ochem/dashboard.html', key: 'ochem', slug: 'dashboard', crumbs: [...OC, { name: 'Progress' }], ledeId: 'headSub',
     lede: 'Mastery, not a readiness score: built from every question you have answered, not from lessons opened.' },
 ];
 

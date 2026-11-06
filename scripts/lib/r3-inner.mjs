@@ -39,7 +39,7 @@ export function bandWords(key, slug) {
     cta: null,
   };
   if (slug === 'dashboard') return {
-    kicker: 'Dashboard', title: 'Where you', tone: 'stand today.',
+    kicker: 'Progress', title: 'Where you', tone: 'stand today.',
     hand: 'worked out in your browser from every answer you give',
     cta: { label: 'Continue practicing', href: 'practice.html' },
   };

@@ -11,7 +11,7 @@
                                    the engine's own .cx-start, styled as the bar (practice-panel.css)
 
    Start opens the mode's existing page with the settings in the URL and go=1; each engine reads them
-   and starts (review.html?go=1&unit=&n=, flashcards.html?go=1&deck=&kinds=&new=, exams.html?go=1&mode=...,
+   and starts (review.html?go=1&unit=&n= (ochem chapter=, NREMT domain=), flashcards.html?go=1&deck=&kinds=&new=, exams.html?go=1&mode=...,
    frq/<id>.html or frq.html?go=1&type=&unit=, justify.html?p= or ?go=1, cram.html?date=&weeks=&print=).
    The old pages keep working when opened directly. The free daily limit shows once, in the band.
    Config: <script type="application/json" id="ppConfig"> (scripts/lib/practice-panel.mjs panelConfig). */
@@ -116,23 +116,39 @@
   /* ---------------------------------------------------------------- modes */
   var M = {};
 
-  /* Review: the queue, oldest first. AP® and A&P filter it by unit and cap it; ochem and NREMT serve
-     the queue as their engines decide. */
+  /* Review: the queue, oldest first, filtered by unit and capped. AP® and A&P by unit; ochem by chapter
+     (review.html?chapter=: the due concepts that show up in its topics); NREMT by exam domain or topic area
+     (review.html?domain=, the drill picker's values). */
+  function reviewHow(s, due){ return chips('n', 'How many', [[0, due ? 'All ' + due + ' due' : 'All due'], [10, '10'], [20, '20']], s.n); }
+  function reviewArea(s){
+    if(fam === 'ochem'){ var ch = A.chapters().filter(function(x){ return x.id === s.unit; })[0]; return ch ? 'Chapter ' + ch.name : ''; }
+    if(fam === 'nremt') return s.unit.indexOf('system:') === 0 ? s.unit.slice(7) : s.unit;
+    var u = s.unit && A.unitById ? A.unitById(s.unit) : null;
+    return u ? A.unitName(u) : '';
+  }
   M.review = {
     init: function(s){ s.unit = ''; s.n = 0; },
     html: function(s){
       var due = A.due();
-      if(!A.units) return note('Nothing to set: the queue serves what is closest to being forgotten, ' + (fam === 'ochem' ? 'capped per day.' : 'oldest first.'));
+      if(fam === 'ochem') return grid(sel('unit', 'Chapter', [{ v: '', t: 'Every chapter' }].concat(A.chapters().map(function(c){ return { v: c.id, t: c.name }; })), s.unit) + reviewHow(s, due)) +
+        note('Today&rsquo;s batch is capped per day; a concept counts for every chapter it shows up in.');
+      if(fam === 'nremt'){
+        var ra = C.reviewAreas || { domains: [], systems: [] };
+        return grid(sel('unit', 'Domain', [{ v: '', t: 'Every domain' },
+          { group: 'Exam domains', list: ra.domains.map(function(d){ return { v: d, t: d }; }) },
+          { group: 'Topic areas', list: ra.systems.map(function(d){ return { v: 'system:' + d, t: d }; }) }], s.unit) + reviewHow(s, due));
+      }
+      if(!A.units) return note('Nothing to set: the queue serves what is closest to being forgotten, oldest first.');
       return grid(sel('unit', A.unitWord === 'chapter' ? 'Chapter' : 'Unit', [{ v: '', t: 'Every ' + A.unitWord }].concat(A.units().map(function(u){ return { v: u.id, t: A.unitName(u) }; })), s.unit) +
-        chips('n', 'How many', [[0, due ? 'All ' + due + ' due' : 'All due'], [10, '10'], [20, '20']], s.n));
+        reviewHow(s, due));
     },
     sum: function(s){
-      var due = A.due(), u = s.unit && A.unitById ? A.unitById(s.unit) : null;
+      var due = A.due(), area = reviewArea(s);
       return {
-        sum: due ? 'Review: ' + plural(due, A.noun) + ' due now' + (u ? ', from ' + A.unitName(u) : '') : 'Review: nothing is due right now',
+        sum: due ? 'Review: ' + plural(due, A.noun) + ' due now' + (area ? ', from ' + area : '') : 'Review: nothing is due right now',
         sum2: due ? (s.n ? 'The ' + s.n + ' oldest first. ' : 'Oldest first. ') + 'A right answer sends it further out; a miss brings it back soon.' : 'Misses from anywhere in the course come back here when they are due.',
         cta: due ? 'Start review' : 'Open review',
-        href: 'review.html' + (due ? query({ go: 1, unit: s.unit, n: s.n || '' }) : '')
+        href: 'review.html' + (due ? query(fam === 'ochem' ? { go: 1, chapter: s.unit, n: s.n || '' } : fam === 'nremt' ? { go: 1, domain: s.unit, n: s.n || '' } : { go: 1, unit: s.unit, n: s.n || '' }) : '')
       };
     }
   };
@@ -198,6 +214,29 @@
     }
   };
 
+  /* A&P custom exam choices (the exam page's TYPE_GROUPS, LEVEL_NAME and DIFF_NAME in
+     anatomy-physiology/assets/apps/exams.js). */
+  var ANP_TYPES = [['single', 'Single best answer'], ['vignette', 'Clinical vignettes'], ['multi', 'Select all that apply'],
+    ['sequence', 'Sequencing, missing step, find the error'], ['predict', 'Prediction tables']];
+  var ANP_LEVELS = [['recall', 'Recall'], ['apply', 'Apply'], ['analyze', 'Analyze']];
+  var ANP_DIFFS = [['1', 'Easier'], ['2', 'Medium'], ['3', 'Harder']];
+  function ids(list){ return list.map(function(x){ return String(x[0]); }); }
+  function anpCustomFill(s, cs){
+    if(!s.cch) s.cch = cs.map(function(u){ return u.id; });
+    if(!s.ctype) s.ctype = ids(ANP_TYPES);
+    if(!s.clevel) s.clevel = ids(ANP_LEVELS);
+    if(!s.cdiff) s.cdiff = ids(ANP_DIFFS);
+  }
+  function anpCustom(s, cs){
+    anpCustomFill(s, cs);
+    return grid('<div class="pp-wide">' + chips('cch', 'Chapters', cs.map(function(u){ return [u.id, A.unitName(u)]; }), s.cch, 'checkbox') + '</div>' +
+      '<div class="pp-wide">' + chips('ctype', 'Question types', ANP_TYPES, s.ctype, 'checkbox') + '</div>' +
+      chips('clevel', 'Level', ANP_LEVELS, s.clevel, 'checkbox') + chips('cdiff', 'Difficulty', ANP_DIFFS, s.cdiff, 'checkbox') +
+      chips('clen', 'Questions', [[10, '10'], [20, '20'], [40, '40'], [0, 'All that match']], s.clen));
+  }
+  /* A list in the URL only when it leaves something out (the exam page reads every one as "all"). */
+  function some(on, all){ return on && on.length < all.length ? on.join(',') : ''; }
+
   /* Exam. */
   M.exam = {
     init: function(s){
@@ -208,6 +247,9 @@
       } else if(fam === 'anp'){
         var q = readJson(C.store.prefs, {});
         s.kind = 'system'; s.chapter = ''; s.course = 'I';
+        /* Custom exam: the same choices as the exam page's own setup (chapters, question types, level,
+           difficulty, length); null means every one. */
+        s.cch = null; s.ctype = null; s.clevel = null; s.cdiff = null; s.clen = 20;
         s.timing = TIMING.some(function(t){ return t.v === q.examTiming; }) ? q.examTiming : 'std';
       } else if(fam === 'ochem'){
         var o = readJson('ochem_exam_prefs_v1', {}) || {};
@@ -236,7 +278,7 @@
           sel('chapter', 'Chapter (unit quiz, system exam)', cs.map(function(u){ return { v: u.id, t: A.unitName(u) }; }), s.chapter, s.kind !== 'unit' && s.kind !== 'system') +
           chips('course', 'Course (final)', [['I', 'A&P I', s.kind !== 'final'], ['II', 'A&P II', s.kind !== 'final']], s.course) +
           sel('timing', 'Timing', TIMING.map(function(t){ return t.v === 'off' ? { v: 'off', t: 'No timer' } : t; }), s.timing)) +
-          (s.kind === 'custom' ? note('A custom exam asks for its chapters, question types and levels on the next page.') : '');
+          (s.kind === 'custom' ? anpCustom(s, cs) : '');
       }
       if(fam === 'ochem'){
         var chs = A.chapters();
@@ -264,12 +306,17 @@
       }
       if(fam === 'anp'){
         var c = A.unitById(s.chapter), names = { unit: 'Unit quiz', system: 'System exam', final: 'Cumulative final', custom: 'Custom exam', teas: 'TEAS A&P practice' };
-        var custom = s.kind === 'custom';
-        var go = { unit: 'Start the unit quiz', system: 'Start the system exam', final: 'Start the final', custom: 'Choose the custom exam', teas: 'Start TEAS practice' };
-        return { sum: names[s.kind] + (s.kind === 'unit' || s.kind === 'system' ? ': ' + (c ? c.title : '') : s.kind === 'final' ? ': A&P ' + s.course : '') + ', ' + timingName(s.timing).replace('untimed', 'no timer'),
+        var custom = s.kind === 'custom', cs = A.units();
+        if(custom) anpCustomFill(s, cs);
+        var go = { unit: 'Start the unit quiz', system: 'Start the system exam', final: 'Start the final', custom: 'Start the custom exam', teas: 'Start TEAS practice' };
+        var what = s.kind === 'unit' || s.kind === 'system' ? ': ' + (c ? c.title : '') : s.kind === 'final' ? ': A&P ' + s.course
+          : custom ? ': ' + (s.cch.length === cs.length ? 'every chapter' : plural(s.cch.length, 'chapter')) + ', ' + (s.clen ? 'up to ' + s.clen + ' questions' : 'every question that matches') : '';
+        return { sum: names[s.kind] + what + ', ' + timingName(s.timing).replace('untimed', 'no timer'),
           sum2: 'No feedback until the end. Then every question with its explanation.',
           cta: go[s.kind],
-          href: 'exams.html' + query({ go: custom ? '' : 1, mode: s.kind, chapter: s.kind === 'unit' || s.kind === 'system' ? s.chapter : '', course: s.kind === 'final' ? s.course : '', timing: s.timing }) };
+          href: 'exams.html' + query({ go: 1, mode: s.kind, chapter: s.kind === 'unit' || s.kind === 'system' ? s.chapter : '', course: s.kind === 'final' ? s.course : '',
+            chapters: custom ? some(s.cch, cs) : '', types: custom ? some(s.ctype, ANP_TYPES) : '', levels: custom ? some(s.clevel, ANP_LEVELS) : '',
+            diffs: custom ? some(s.cdiff, ANP_DIFFS) : '', len: custom ? String(s.clen) : '', timing: s.timing }) };
       }
       if(fam === 'ochem'){
         var ch = A.chapters().filter(function(x){ return x.id === s.chapter; })[0];
