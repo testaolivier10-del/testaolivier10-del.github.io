@@ -30,7 +30,7 @@ export const THUMB_WIDTHS = [480, 960];
 export const COURSE_DIRS = {
   nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem',
   apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science',
-  appsych: 'psychology', apmacro: 'macroeconomics',
+  appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics',
 };
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -113,7 +113,10 @@ export function displayTitle(v) {
 const NAV_REF = { anp: 'anp-nav-ref', apbio: 'bio-nav-ref', apchem: 'chem-nav-ref', apphys: 'phys-nav-ref',
   apcalc: 'calc-nav-ref', apcalcbc: 'calc-nav-ref', apstat: 'stat-nav-ref', apenv: 'env-nav-ref', appsych: 'psy-nav-ref', apprecalc: 'pcalc-nav-ref', apmacro: 'mac-nav-ref' };
 
-export function videoBlock(v, { compact = false, kind = 'notes' } = {}) {
+/* `strip` is the form at the top of a topic (notes pages and the textbooks; course redesign r4, decision 4): a
+   small preview strip (thumbnail with play button and length, title, "Watch it here, or keep reading") that
+   opens the same click-to-load player in place, with "Close video" (assets/video/video.js). */
+export function videoBlock(v, { compact = false, strip = false, kind = 'notes' } = {}) {
   v = { ...v, title: displayTitle(v) };
   const watch = `https://www.youtube.com/watch?v=${v.id}`;
   const len = clock(v.seconds);
@@ -121,13 +124,13 @@ export function videoBlock(v, { compact = false, kind = 'notes' } = {}) {
   const [y, mo, d] = v.posted.split('-').map(Number);
   const posted = `${d} ${MONTHS[mo - 1]} ${y}`;
   const srcset = THUMB_WIDTHS.map((w) => `/${THUMB_DIR}/${v.id}-${w}.webp ${w}w`).join(', ');
-  const sizes = compact ? '(max-width: 600px) 40vw, 200px' : '(max-width: 760px) 100vw, 720px';
+  const sizes = compact || strip ? '(max-width: 600px) 40vw, 200px' : '(max-width: 760px) 100vw, 720px';
   const chapters = (v.chapters || []).length > 1
     ? `\n  <details class="lpv-chapters"><summary>Chapters <span class="lpv-n">${v.chapters.length}</span></summary><ol>${v.chapters.map(([t, name]) =>
       `<li><a href="${watch}&amp;t=${t}s" data-start="${t}"><span class="lpv-t">${clock(t)}</span> ${esc(name)}</a></li>`).join('')}</ol></details>`
     : '';
   return `${START}
-<section class="lpv${compact ? ' lpv-compact' : ''}${NAV_REF[v.course] ? ' ' + NAV_REF[v.course] : ''}" data-video="${v.id}" data-video-course="${esc(v.course)}" data-video-kind="${kind}" aria-labelledby="lpv-h-${v.id}">
+<section class="lpv${compact ? ' lpv-compact' : ''}${strip ? ' lpv-strip' : ''}${NAV_REF[v.course] ? ' ' + NAV_REF[v.course] : ''}" data-video="${v.id}" data-video-course="${esc(v.course)}" data-video-kind="${kind}" aria-labelledby="lpv-h-${v.id}">
   <link rel="stylesheet" href="/assets/video/video.css">
   <div class="lpv-frame">
     <a class="lpv-play" href="${watch}" data-start="0" aria-label="Play the video lesson: ${esc(v.title)} (${mins} minutes)">
@@ -138,7 +141,7 @@ export function videoBlock(v, { compact = false, kind = 'notes' } = {}) {
   </div>
   <div class="lpv-body">
     <p class="lpv-k"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path d="M8 5.5v13l10.5-6.5z"/></svg>Video lesson<span class="lpv-meta"> &middot; ${mins} min</span></p>
-    <p class="lpv-title" id="lpv-h-${v.id}">${esc(v.title)}</p>${v.note ? `\n    <p class="lpv-note">${esc(v.note)}</p>` : ''}
+    <p class="lpv-title" id="lpv-h-${v.id}">${esc(v.title)}</p>${strip ? '\n    <p class="lpv-sub">Watch it here, or keep reading</p>' : ''}${v.note ? `\n    <p class="lpv-note">${esc(v.note)}</p>` : ''}
     <p class="lpv-fine">Posted ${posted} on <a href="https://www.youtube.com/@LevlPrep">our YouTube channel</a>. The player loads from YouTube only when you press play.</p>
   </div>${chapters}
   <script src="/assets/video/video.js" defer></script>
@@ -156,7 +159,7 @@ ${END}
      ochem lessons: last thing in the hero, compact (inside it, so the rail
        step-back.js adds after first paint cannot reorder it: no shift). */
 const SPOTS = [
-  { test: /^[a-z-]+\/notes\//, kind: 'notes', compact: false, re: /<header class="bk-head">[\s\S]*?<\/header>\n|<header class="tb-chapter-head">[\s\S]*?<\/header>\n|<!-- r3:head -->\n(?:<p class="bk-lede">[\s\S]*?<\/p>\n)?/, at: 'after' },
+  { test: /^[a-z-]+\/notes\//, kind: 'notes', compact: false, strip: true, re: /<header class="bk-head">[\s\S]*?<\/header>\n|<header class="tb-chapter-head">[\s\S]*?<\/header>\n|<!-- r3:head -->\n(?:<p class="bk-lede">[\s\S]*?<\/p>\n)?/, at: 'after' },
   { test: /^ochem\/lessons\//, kind: 'lesson', compact: true, re: /<div class="hero">[\s\S]*?\n(?=  <\/div>\n)/, at: 'after' },
   { test: /^[a-z-]+\/lessons\//, kind: 'lesson', compact: true, re: /<header class="[a-z]+-ls-hero">[\s\S]*?\n(?=[ \t]*<\/header>)/, at: 'after' },
 ];
@@ -216,7 +219,7 @@ export function readerCards(rel, videos = loadVideos()) {
       } else {
         at = `section[id="${m[1]}"] > .bk-sec-head, section[id="${m[1]}"] > .tb-section-head`;
       }
-      let html = videoBlock(v, { kind: 'reader' })
+      let html = videoBlock(v, { kind: 'reader', strip: true })
         .replace(START + '\n', '').replace('\n' + END + '\n', '')
         .replace(/\n  <link rel="stylesheet"[^>]*>/, '').replace(/\n  <script[^>]*><\/script>/, '');
       // A video shown in several sections of one reader needs a distinct heading id per card.
@@ -248,7 +251,7 @@ function placeVideo(rel, html, videos) {
   const m = stripped.match(spot.re);
   if (!m) throw new Error(`${rel}: the page has no place for its video (scripts/lib/videos.mjs SPOTS)`);
   const at = m.index + m[0].length;
-  return stripped.slice(0, at) + videoBlock(v, { compact: spot.compact, kind: spot.kind }) + stripped.slice(at);
+  return stripped.slice(0, at) + videoBlock(v, { compact: spot.compact, strip: !!spot.strip, kind: spot.kind }) + stripped.slice(at);
 }
 
 /* Chapters from a YouTube description: lines that start with m:ss or h:mm:ss. */

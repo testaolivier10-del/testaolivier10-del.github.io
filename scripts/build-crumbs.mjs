@@ -23,7 +23,7 @@ import { applyCrumbs } from './lib/crumbs.mjs';
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const check = process.argv.includes('--check');
 const DIRS = ['nremt', 'ochem', 'ochem/lessons', 'ochem/mechanisms', 'ochem/tools'];
-const GENERATED = new Set(['ochem/glossary.html', 'nremt/glossary.html']); // their generators write the shared .cx-crumb row
+const GENERATED = new Set(['ochem/glossary.html', 'nremt/glossary.html', 'ochem/videos.html', 'nremt/videos.html']); // their generators (videos: build-videos.mjs) write the shared .cx-crumb row
 /* Textbook pages carry their crumb inside the reading column, as A&P and Bio
    do (assets/course/book.css), so they get no row under the tabs. */
 const IN_PAGE = new Set(['ochem/learn.html', 'nremt/study-notes.html']);
