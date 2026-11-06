@@ -270,6 +270,28 @@
    "endscreen_set": false,
    "review_blob": "16b8f29b770d4176de8997c23e4c4f25bbb86795",
    "approved_blob": "16b8f29b770d4176de8997c23e4c4f25bbb86795"
+  },
+  {
+   "id": "yt-phys-01-units-sig-figs",
+   "course": "phys",
+   "topic_pages": [
+    "physics/notes/math-units.html"
+   ],
+   "title": "",
+   "description_file": "",
+   "video": "",
+   "thumb": "",
+   "captions": "",
+   "playlist": "AP Physics 1 | LevlPrep",
+   "date": "",
+   "status": "building",
+   "approved_on": "",
+   "youtube_id": "",
+   "thumbnail_set": false,
+   "playlist_added": false,
+   "captions_set": false,
+   "pr_url": "",
+   "note": "2026-11-06: script audited and saved in the project (claude/levlprep-pipeline/long/p01_script.py); ElevenLabs had 9,065 credits left, reset 2026-11-06 6:07pm PT, so voicing and the build wait for the next run"
   }
  ]
 }
