@@ -100,7 +100,7 @@
 .r3.r3-page{background-image:none;padding-bottom:32px}
 .r3.r3-page > [class*="crumb"]{display:none}
 .r3-pagetop .band .lede{color:rgba(255,255,255,.82);margin:0;max-width:40em}
-.r3-glossary .gx{margin-top:-60px;position:relative;z-index:2}
+.r3-glossary .gx{margin-top:-38px;position:relative;z-index:2}
 .r3-glossary .gx-tools,.r3-glossary .gx-status,.r3-glossary .gx-rail{background:var(--white);margin:0;box-shadow:0 0 0 1px var(--line)}
 .r3-glossary .gx-tools{border-radius:22px 22px 0 0;padding:22px 24px 10px;display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:16px;align-items:end}
 .r3-glossary .gx-tools::before{content:"Find a term";grid-column:1/-1;font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 -8px}
@@ -127,7 +127,7 @@
   .r3-glossary .gx-tools{grid-template-columns:1fr}
   .r3-glossary .gx-terms{grid-template-columns:minmax(0,1fr)}
   .r3-glossary .gx-t{grid-template-columns:minmax(0,1fr)}
-  .r3-glossary .gx,.r3-search #app,.r3-search .bio-app-mount{margin-top:-44px}
+  .r3-search #app,.r3-search .bio-app-mount{margin-top:-44px}
 }
 
 /* ---- lessons (R10-Lesson): the hero is the band, the steps are the card over it ---- */
@@ -163,6 +163,76 @@
   .r3-lesson > .hero,.r3-lesson > [class$="-ls-hero"]{padding:150px 0 76px;background-position:left 0 top 24px;background-size:150px auto}
   .r3-lesson > .hero + *,.r3-lesson > [class$="-ls-hero"] + *{margin-top:-44px}
 }
+
+/* ---- the Learn tab (course redesign r4, decisions 3 and 4; markup scripts/lib/learn-band.mjs) ----
+   The small band itself (.band.short, .lap) is Part A's (assets/course/r3.css); here only what the Learn band adds:
+   the breadcrumb, the sub line, the Textbook / Glossary / Videos switch, and the overlap of each page's first card. */
+.r3-learn-top{padding-bottom:0;background-image:none}
+.r3-learn-top .band [class*="crumb"]{margin:0 0 10px;font:800 13px var(--font-ui);color:rgba(255,255,255,.82)}
+.r3-learn-top .band [class*="crumb"] a{color:#fff;text-decoration:none}
+.r3-learn-top .band [class*="crumb"] a:hover{text-decoration:underline}
+.r3-learn-top .band [class*="crumb"] [aria-current]{color:#fff;font-weight:900}
+.r3-learn-top .band .issue{margin:0 0 8px}
+.r3-learn-top .band .deck{color:#fff;margin:0}
+.r3-learn-top .band .sub{margin:6px 0 0;font:700 15px/1.45 var(--font-ui);color:rgba(255,255,255,.8);max-width:40em}
+.lswitch{display:inline-flex;flex-wrap:wrap;gap:2px;margin:16px 0 0;padding:4px;border-radius:12px;background:rgba(255,255,255,.12)}
+.lswitch a{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:7px 14px;border-radius:9px;font:800 14.5px var(--font-ui);color:#fff;text-decoration:none}
+.lswitch a:hover{background:rgba(255,255,255,.12)}
+.lswitch a[aria-current="page"]{background:#fff;color:#0B1A33;box-shadow:0 1px 3px rgba(11,26,51,.18)}
+.lswitch a:focus-visible{outline:2px solid #FFD23F;outline-offset:2px}
+.lswitch svg{flex:none}
+.tb-shell.r3-read.lap{margin-top:-38px}
+@media (max-width:900px){
+  .r3-learn-top .band.short .hwrap{grid-template-columns:minmax(0,1fr)}
+  .r3-learn-top .band .art{display:none}
+}
+@media (max-width:600px){
+  .lswitch{display:flex}
+  .lswitch a{flex:1 1 0;justify-content:center;padding:7px 8px}
+}
+
+/* "Practice this lesson" at the head of each textbook topic (assets/course/learn.js) */
+.tb-shell.r3-read .lr-practice{display:inline-flex;align-items:center;min-height:30px;padding:3px 11px;border-radius:999px;background:var(--ctint);color:var(--accent);font:900 12.5px var(--font-ui);text-decoration:none;white-space:nowrap}
+.tb-shell.r3-read .lr-practice:hover{background:var(--accent);color:var(--white)}
+
+/* ---- the "⋯" menu: Share to Google Classroom, Copy link, Print (assets/course/more-menu.js) ---- */
+.lmore{position:relative;display:inline-flex;vertical-align:middle}
+.lmore-btn{display:grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;border:1.5px solid var(--line);background:var(--white);color:var(--ink);cursor:pointer}
+.lmore-btn:hover{border-color:var(--ink)}
+.lmore-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lmore-menu{position:absolute;left:0;top:calc(100% + 6px);z-index:60;min-width:230px;padding:6px;border-radius:14px;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow-pop,0 14px 34px -12px rgba(11,26,51,.35));display:flex;flex-direction:column}
+.lmore-menu[hidden]{display:none}
+.lmore-end .lmore-menu,.lmore-folded .lmore-menu{left:auto;right:0}
+.lmore-menu .lmore-item{display:block;width:100%;margin:0;padding:10px 12px;min-height:40px;border:0;border-radius:9px;background:none;box-shadow:none;text-align:left;font:800 14.5px/1.3 var(--font-ui);color:var(--ink);text-decoration:none;cursor:pointer}
+.lmore-menu .lmore-item::before{display:none}
+.lmore-menu .lmore-item:hover,.lmore-menu .lmore-item:focus{background:var(--hover-tint,var(--surface2));outline:none}
+.lmore-menu .lmore-item:focus-visible{box-shadow:inset 0 0 0 2px var(--accent)}
+/* in the band over a notes page: a ghost circle on the course colour */
+.r3-read-top .band .hero-ctas .lmore-btn{width:46px;height:46px;padding:0;background:transparent;color:#fff;border:0;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.r3-read-top .band .hero-ctas .lmore-btn:hover{box-shadow:inset 0 0 0 1.5px #fff}
+.r3-read-top .band .hero-ctas{align-items:center}
+.r3-read-top .band .hero-ctas .lmore-menu .lmore-item{font-size:14.5px;padding:10px 12px;color:var(--ink);background:none}
+.r3-read-top .band .hero-ctas .lmore-menu .lmore-item:hover,.r3-read-top .band .hero-ctas .lmore-menu .lmore-item:focus{background:var(--hover-tint,var(--surface2))}
+/* beside the textbook's Read | Interactive switch */
+.rt-bar .lmore{margin-left:8px;pointer-events:auto}
+.rt-bar .lmore-btn{width:40px;height:40px;box-shadow:0 6px 18px -8px rgba(11,26,51,.35)}
+.lmore-host{display:flex;align-items:center}
+.lmore-up{position:relative;z-index:30}
+@media print{.lmore{display:none !important}}
+
+/* ---- the video lessons page (scripts/build-videos.mjs) ---- */
+.r3.r3-videos{background-image:none;padding-bottom:32px}
+.r3.r3-videos > [class*="crumb"]{display:none}
+.r3-videos .lvids{position:relative;z-index:2;background:var(--white);border-radius:22px;box-shadow:0 0 0 1px var(--line),0 22px 50px -30px rgba(11,26,51,.4);padding:24px clamp(18px,3vw,30px) 26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:22px}
+.r3-videos .lvids.lap{margin-top:-38px}
+.r3-videos .lvid{min-width:0}
+.r3-videos .lvid .lpv{margin:0}
+.lvid-notes{margin:10px 2px 0;font:700 14px/1.5 var(--font-ui);color:var(--muted)}
+.lvid-notes a{color:var(--accent-text,var(--accent));font-weight:900}
+.lvid-empty{grid-column:1 / -1;font:600 15.5px/1.6 var(--font-ui);color:var(--muted)}
+.lvid-empty p{margin:0 0 8px}
+.lvid-empty .lvid-empty-h{font:900 22px/1.2 var(--display,var(--font-display));color:var(--ink);letter-spacing:-.02em}
+.lvid-empty a{color:var(--accent-text,var(--accent));font-weight:800}
 
 /* ---- narrower screens ---- */
 @media (max-width:1080px){

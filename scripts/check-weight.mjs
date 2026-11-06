@@ -71,7 +71,8 @@ const SHELL_BUDGETS = [
   /* The video lesson block's stylesheet and player (assets/video/), loaded
      only by pages that show a video; measured 3.5 KB. Thumbnails are images,
      not counted here, and load lazily from this site. */
-  ['assets/video', 4],
+  /* 4 -> 4.5 (course redesign r4, Part C): the preview strip at the top of a topic and its Close video; 4.2 KB. */
+  ['assets/video', 4.5],
   /* The shared 3D body's engine, assets/body3d/viewer.js (2026-10-27, docs/tools-upgrade.md "3D anatomy"): moved
      out of nremt/assets when the A&P 3D anatomy tool began to share it, without its EMS content (now
      nremt/assets/body-content.js). Loaded only by the body map and the A&P tool. The model (3.3 MB) and three.js
@@ -588,7 +589,7 @@ const BUDGETS = [
   // is an 18 KB shell and the chapters are 144 KB of JSON fetched alongside
   // it, budgeted under DATA_BUDGETS below. First paint no longer waits on
   // thirty-nine chapters nobody asked for.
-  ['nremt/study-notes.html', 21], // +1 (2026-10-26): inline JSON for the chapter video cards (#lpv-reader, docs/video-lessons.md)
+  ['nremt/study-notes.html', 21.5], // +1 (2026-10-26): inline JSON for the chapter video cards (#lpv-reader, docs/video-lessons.md); +0.5 (r4 Part C): the Learn band and strip cards
   ['nremt/glossary.html', 10],
 
   // Added when the scenario set went from eight cases to twenty-five and the
@@ -691,7 +692,8 @@ const BUDGETS = [
   /* 19.5 -> 19.8 (redesign round 3, B4, docs/site-redesign.md): the notes page's cover band and its side
      column (Check your understanding, In the reader) from scripts/lib/r3-reading.mjs, about 0.3 KB on
      every notes page; this is the largest notes page. Measured 19.6 KB. */
-  ['anatomy-physiology/notes/cardiac-cycle.html', 19.8],
+  /* 19.8 -> 20.1 (course redesign r4, Part C): the share menu in the band and the video strip markup. */
+  ['anatomy-physiology/notes/cardiac-cycle.html', 20.1],
   ['anatomy-physiology/tools/predict.html', 3],
   ['anatomy-physiology/tools/lab-practical.html', 3],
   /* The 3D anatomy tool's page (2026-10-27). Its runtime is counted in the anatomy-physiology shell
