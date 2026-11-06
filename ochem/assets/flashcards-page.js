@@ -85,6 +85,16 @@
     var ch = params.get('chapter'), tp = params.get('topic');
     if(ch && C.MODULES.some(function(m){ return m.id === ch; })) prefs.chapter = ch;
     if(tp && TOPIC[tp]){ onlyTopic = tp; prefs.chapter = TOPIC[tp].mod.id; }
+    // From the Practice panel (docs/course-redesign-r4.md decision 5): ?chapter=all, ?scope=all|studied|weak, ?types=concept,table,authored.
+    var sc = params.get('scope'), ty = params.get('types');
+    if(ch === 'all') prefs.chapter = 'all';
+    if(sc === 'all' || sc === 'studied' || sc === 'weak') prefs.scope = sc;
+    if(ty && /^[a-z,]+$/.test(ty)){
+      var anyT = false;
+      ['concept', 'table', 'authored'].forEach(function(k){ prefs.types[k] = ty.split(',').indexOf(k) > -1; anyT = anyT || prefs.types[k]; });
+      if(!anyT) ['concept', 'table', 'authored'].forEach(function(k){ prefs.types[k] = true; });
+    }
+    if(sc || ty || ch) try{ localStorage.setItem(PREFS_KEY, JSON.stringify(prefs)); }catch(e){}
   }catch(e){}
   if(prefs.chapter !== 'all' && !C.MODULES.some(function(m){ return m.id === prefs.chapter; })) prefs.chapter = 'all';
   function savePrefs(){
@@ -674,6 +684,11 @@
     buildDeck(data);
     refreshTeach();
     renderHome();
+    // ?go=1 from the Practice panel: start studying at once.
+    if(/[?&]go=1/.test(location.search)){
+      try{ history.replaceState(null, '', location.pathname); }catch(e){}
+      var go = homeEl.querySelector('#fcStart'); if(go) go.click();
+    }
     // The micro-lessons may land after the deck; copy them over when they do.
     teachReady.then(function(){ refreshTeach(); if(run && run.flipped) renderCard(); });
   }, function(err){

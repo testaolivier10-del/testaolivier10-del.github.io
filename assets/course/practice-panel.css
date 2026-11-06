@@ -1,0 +1,118 @@
+/* The Practice panel (docs/course-redesign-r4.md decision 5; mockup docs/redesign-r4/mockups/Practice.dc.html;
+   markup scripts/lib/practice-panel.mjs, behaviour assets/course/practice-panel.js). The short band and .lap
+   (the card pulled up over the band's foot) are part A's, in assets/course/r3.css. Colours through the theme
+   tokens and the course tokens r3.css sets per data-cover; the free limit box is the same pale yellow with
+   dark text in both themes, because it sits on the course band, which is dark in both. */
+
+.pp{max-width:980px;background:var(--white);border:1px solid var(--line);border-radius:22px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(11,26,51,.04),0 8px 24px rgba(11,26,51,.05)}
+.pp-step{padding:24px 28px}
+.pp-s2{border-top:1px solid var(--line)}
+.pp .pp-k{margin:0 0 12px;font:900 13px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+
+/* Step 1: the mode tiles. */
+.pp-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.pp-tile{display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--white);color:var(--ink);
+  text-decoration:none;box-shadow:inset 0 0 0 1.5px var(--line);transition:box-shadow .12s ease,background .12s ease}
+.pp-tile:hover{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--accent)}
+.pp-tile[aria-pressed="true"]{background:var(--ctint);box-shadow:inset 0 0 0 2px var(--accent)}
+.pp-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.pp-ic{flex:none;display:flex;color:var(--accent)}
+.pp-tt{min-width:0}
+.pp-tt b{display:block;font:900 15px/1.25 var(--font-ui)}
+.pp-ts{display:block;margin-top:1px;font:700 12.5px/1.35 var(--font-ui);color:var(--muted)}
+
+/* Step 2: the panel's own fields (the classes are the engines': .cx-field, .cx-group, .cx-pill). */
+.pp-set[hidden],.pp-bar[hidden],.pp-off{display:none !important}
+.pp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 18px;align-items:start}
+.pp-grid > *{min-width:0;margin:0}
+.pp-grid .cx-group{border:0;padding:0;margin:0}
+.pp-wide{grid-column:1/-1}
+.pp .cx-field input[type=date]{width:100%;min-height:46px;padding:10px 14px;border:0;border-radius:var(--radius);background:var(--surface2);
+  box-shadow:inset 0 0 0 1.5px var(--line);font:800 14.5px var(--font-ui);color:var(--ink)}
+.pp .cx-field select:disabled{opacity:.55}
+.pp-lab{display:block;margin:0 0 8px;font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.pp-fixed > span:last-child{display:block;font:800 14.5px/46px var(--font-ui);color:var(--ink)}
+.pp-check{display:flex;gap:8px;align-items:center;font:700 14.5px/1.4 var(--font-ui);color:var(--ink)}
+.pp-check input{width:18px;height:18px;margin:0;accent-color:var(--accent)}
+.pp-note{margin:0;font:700 14.5px/1.55 var(--font-ui);color:var(--muted)}
+.pp-note b{color:var(--ink)}
+.pp-rules{margin:0 0 12px;padding-left:20px;font:600 14.5px/1.55 var(--font-ui);color:var(--ink)}
+.pp-more{margin-top:16px}
+.pp-more summary{cursor:pointer;font:900 14.5px var(--font-ui);color:var(--accent)}
+.pp-more p{margin:8px 0 0;max-width:62em;font:600 14px/1.55 var(--font-ui);color:var(--muted)}
+
+/* Step 3: the navy bar. */
+.pp-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 28px;background:var(--navy);color:var(--on-accent)}
+.pp-bar-t{flex:1;min-width:220px}
+.pp-sum{margin:0;font:900 18px/1.3 var(--font-ui);color:var(--on-accent)}
+.pp-sum2{margin:3px 0 0;font:600 14px/1.45 var(--font-ui);color:var(--muted-on-dark)}
+.pp-sum2 a{color:var(--on-accent);text-decoration:underline}
+.pp .pp-go{display:inline-flex;align-items:center;justify-content:center;flex:none;padding:14px 22px;border-radius:12px;
+  background:#FFD23F;color:#0B1A33;font:900 16px var(--font-ui);text-decoration:none}
+.pp .pp-go:hover{filter:brightness(1.05);color:#0B1A33}
+.pp .pp-go:focus-visible{outline:3px solid #FFD23F;outline-offset:3px}
+.pp .pp-go.is-off{opacity:.55;cursor:not-allowed}
+
+/* A Practice set: the engine's builder inside step 2, flattened into the panel; its rail (the other
+   ways to study) is step 1 now, and its free line is in the band. */
+.pp [data-pp-engine]{min-height:0;margin:0}
+.pp [data-pp-engine] > .cx-body{display:block;margin:0}
+.pp [data-pp-engine] .cx-rail,.pp [data-pp-engine] .cx-lede,.pp [data-pp-engine] .cx-builder-head{display:none}
+.pp .pp-s2 .cx-builder{margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none}
+.pp .pp-s2 .cx-builder .cx-step-n{display:none}
+.pp .pp-s2 .cx-builder .cx-step{margin:0 0 18px;padding:0;border:0}
+.pp .pp-s2 .cx-builder .cx-step > legend,.pp .pp-s2 .cx-builder .cx-step-h{margin:0 0 8px;font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.pp .pp-s2 .cx-builder .cx-choices{display:flex;flex-wrap:wrap;gap:8px}
+.pp .pp-s2 .cx-builder .cx-choice{position:relative;display:block;min-height:0;padding:8px 14px;border-radius:10px;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line)}
+.pp .pp-s2 .cx-builder .cx-choice input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.pp .pp-s2 .cx-builder .cx-choice:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px}
+.pp .pp-s2 .cx-builder .cx-choice:has(input:checked){background:var(--ctint);box-shadow:inset 0 0 0 2px var(--accent)}
+.pp .pp-s2 .cx-builder .cx-choice:has(input:disabled){opacity:.6}
+.pp .pp-s2 .cx-builder .cx-choice b{font:800 14.5px var(--font-ui)}
+.pp .pp-s2 .cx-builder .cx-choice > span > span{display:none}
+.pp .pp-s2 .cx-builder .cx-choice:has(input:checked) > span > span,.pp .pp-s2 .cx-builder .cx-choice:has(input:disabled) > span > span{display:block;margin-top:2px;font:600 12.5px/1.4 var(--font-ui);color:var(--muted)}
+.pp .pp-s2 .cx-builder .cx-choice > span > span span{display:inline}
+.pp .pp-s2 .cx-builder .cx-fields{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 18px}
+.pp .pp-s2 .cx-builder .premium-quota,.pp .pp-s2 .cx-builder .cx-free{display:none}
+.pp .pp-s2 .cx-builder .cx-start{order:9;margin:22px -28px -24px;padding:18px 28px;border:0;border-radius:0;background:var(--navy);color:var(--on-accent)}
+.pp .pp-s2 .cx-builder .cx-start .cx-sum{font:900 18px/1.3 var(--font-ui);color:var(--on-accent)}
+.pp .pp-s2 .cx-builder .cx-start .cx-sum small{font:600 14px/1.45 var(--font-ui);color:var(--muted-on-dark)}
+.pp .pp-s2 .cx-builder .cx-start .btn-press{background:#FFD23F;color:#0B1A33;box-shadow:none}
+.pp .pp-s2 .cx-builder .cx-start .btn-press:focus-visible{outline:3px solid #FFD23F;outline-offset:3px}
+.pp .pp-s2 .cx-builder{display:flex;flex-direction:column}
+.pp .pp-s2 .cx-builder > *{order:2}
+.pp .pp-s2 .cx-builder > .cx-start ~ *{order:3}
+.pp .pp-s2 .cx-builder > .cx-start{order:9}
+.pp .pp-s2 .cx-builder [class$="-sharewrap"],.pp .pp-s2 .cx-builder .premium-slot{order:4}
+.pp .pp-s2 [class$="-share"]{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+/* While a Practice set runs, the engine has the page. */
+.pp.is-run{max-width:none;background:none;border:0;border-radius:0;box-shadow:none;overflow:visible}
+.pp.is-run .pp-s1,.pp.is-run .pp-k,.pp.is-run .pp-bar{display:none}
+.pp.is-run .pp-s2{padding:0;border:0}
+
+/* The free daily limit, in the band. */
+.pp-free{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;max-width:520px;margin:14px 0 0;padding:10px 14px;
+  border-radius:14px;background:#FFF8DE;border:1px solid #F0D98A;color:#0B1A33}
+.pp-free[hidden]{display:none}
+.pp-free-t{font:900 14px var(--font-ui);color:#0B1A33}
+.pp-free-bar{width:90px;height:10px;border-radius:99px;background:#EADFB8;overflow:hidden}
+.pp-free-bar i{display:block;height:100%;border-radius:99px;background:#C99A00}
+.pp-free .pp-free-a{font:900 14px var(--font-ui);color:#6B4E00;text-decoration:underline}
+.pp-free-n{flex-basis:100%;font:600 12.5px/1.4 var(--font-ui);color:#3D3418}
+
+@media (max-width:860px){
+  .pp-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pp-grid,.pp .pp-s2 .cx-builder .cx-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .pp{border-radius:18px}
+  .pp-step{padding:18px 16px}
+  .pp-grid,.pp .pp-s2 .cx-builder .cx-fields{grid-template-columns:minmax(0,1fr)}
+  .pp-bar{padding:16px}
+  .pp .pp-go,.pp .pp-s2 .cx-builder .cx-start .btn-press{width:100%}
+  .pp-s2 .cx-builder .cx-start{margin:18px -16px -18px;padding:16px}
+  .pp.is-run .pp-s2{padding:0}
+}
+@media (max-width:380px){ .pp-tiles{grid-template-columns:minmax(0,1fr)} }

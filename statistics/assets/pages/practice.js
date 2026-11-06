@@ -59,7 +59,7 @@
   ];
   var DIFFS = [{ id: '', name: 'Any' }, { id: '1', name: 'Easier' }, { id: '2', name: 'Medium' }, { id: '3', name: 'Harder' }];
   var MODES = [
-    { id: 'build', title: 'Build a set', desc: 'Pick the unit, topic, practice, type and difficulty.' },
+    { id: 'build', title: 'Any', desc: 'Pick the unit, topic, practice, type and difficulty.' },
     { id: 'weak', title: 'My weakest topics', desc: 'Your lowest-mastery topics, mixed.' },
     { id: 'missed', title: 'Questions I missed', desc: 'Retried until you get each one right.' },
     { id: 'flagged', title: 'Flagged questions', desc: '' }
@@ -254,14 +254,14 @@
     var n1 = '<span class="cx-step-n" aria-hidden="true">';
     app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' +
       '<form class="cx-card cx-builder stat-pr-setup" novalidate aria-label="Build a practice set">' +
-        '<fieldset class="cx-step"><legend>' + n1 + '1</span>What do you want to practice?</legend><div class="cx-choices">' +
+        '<fieldset class="cx-step"><legend>' + n1 + '1</span>Questions from</legend><div class="cx-choices">' +
           // Flagged questions live in Review now (Olivier, 2026-10-26); ?mode=flagged from there starts them directly.
           MODES.filter(function(m){ return m.id !== 'flagged'; }).map(function(m){
             var why = modeUnavailable(m.id);
             return '<label class="cx-choice"><input type="radio" name="mode" value="' + m.id + '"' + (m.id === state.mode ? ' checked' : '') + (why ? ' disabled' : '') + '><span><b>' + esc(m.title) + '</b><span>' + esc(why || (m.id === 'flagged' ? plural(flaggedCount(), 'question') + ' you flagged to come back to.' : m.desc)) + '</span></span></label>';
           }).join('') + '</div></fieldset>' +
         '<div class="cx-step stat-pr-pickstep"><h2 class="cx-step-h">' + n1 + '2</span><span class="stat-pr-pick-h"></span></h2><div class="stat-pr-pick"></div></div>' +
-        '<fieldset class="cx-step stat-pr-count"><legend>' + n1 + '3</span>How many questions?</legend><div class="cx-pills">' +
+        '<fieldset class="cx-step stat-pr-count"><legend>' + n1 + '3</span>How many</legend><div class="cx-pills">' +
           COUNTS.map(function(n){ return '<label class="cx-pill"><input type="radio" name="count" value="' + n + '"' + (n === state.count ? ' checked' : '') + '><span>' + (n || 'All') + '</span></label>'; }).join('') + '</div></fieldset>' +
         '<div class="cx-start"><p class="cx-sum" aria-live="polite"><span class="stat-pr-sum-main"></span><small>Feedback after every answer. Stimulus sets stay whole and in order. Misses go to your review queue.</small></p>' +
           '<button type="submit" class="btn-press stat-pr-start">Start practice</button></div>' +

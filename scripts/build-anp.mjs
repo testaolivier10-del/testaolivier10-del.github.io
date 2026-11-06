@@ -35,6 +35,7 @@ import {
 import { applyVideo } from './lib/videos.mjs';
 import { r3Reading } from './lib/r3-reading.mjs';
 import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
+import { practicePage } from './lib/practice-panel.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const OUT = join(ROOT, 'anatomy-physiology');
@@ -849,6 +850,7 @@ ${[...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'd
   if (entry.slug === 'dashboard') return dashboardPage(page, 'anp');
   const out = study ? page.replace(`<link rel="stylesheet" href="${depth}assets/anp.css">`,
     `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/study.css">\n<link rel="stylesheet" href="${depth}assets/anp.css">`) : page;
+  if (entry.slug === 'practice' && !depth) return practicePage(out, 'anp');
   return entry.slug === 'exams' && !depth ? examsPage(out, 'anp') : out;
 }
 const STUDY_PAGES = new Set(['practice', 'review', 'exams', 'flashcards']);

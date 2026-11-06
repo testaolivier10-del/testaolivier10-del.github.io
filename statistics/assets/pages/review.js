@@ -24,6 +24,9 @@
   var CUR = window.ApStatCurriculum || { topics: [], units: [] };
   var Core = window.ApStatCore, Q = window.ApStatQuestions;
   var MIN = 60000, DAY = 86400000, SESSION_CAP = 20;
+  /* review.html?go=1&unit=&n= comes from the Practice panel (docs/course-redesign-r4.md decision 5): only that unit's
+     (or chapter's) questions, and the session starts at once. */
+  var GO = new URLSearchParams(location.search), ONLY = GO.get('unit') || '';
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function plural(n, w, ws){ return n + ' ' + (n === 1 ? w : (ws || w + 's')); }
@@ -41,7 +44,7 @@
     if(parts.length > 1 && TOOL[parts[0]] && !(TOOL[parts[0]].premium && Core.locked && Core.locked())) return { kind: 'tool', id: id, tool: TOOL[parts[0]], content: parts[1] || '', item: parts.slice(2).join(':') };
     return null;
   }
-  function dueItems(){ return Core.reviewQueue().map(classify).filter(Boolean); }
+  function dueItems(){ return Core.reviewQueue().map(classify).filter(function(it){ return it && (!ONLY || (it.kind === 'q' && unitOf(it.q) === ONLY)); }); }
 
   function when(ts){
     var d = ts - Date.now();
@@ -203,10 +206,18 @@
     LevlStudy.wire(app, { more: function(){ start(SESSION_CAP); }, home: renderHome });
   }
 
+  function unitOf(q){ var t = TOPIC[q.topic]; return q.unit || (t && (t.unit || t.chapter)) || ''; }
+  function goNow(){
+    if(GO.get('go') !== '1') return;
+    try{ history.replaceState(null, '', location.pathname + (ONLY ? '?unit=' + encodeURIComponent(ONLY) : '')); }catch(e){}
+    var n = dueItems().filter(function(it){ return it.kind === 'q'; }).length;
+    if(n) start(Math.min(n, +GO.get('n') || n));
+  }
+
   function boot(){
     if(!Q || !Core){ app.innerHTML = '<p>Review could not start. Reload the page to try again.</p>'; return; }
     app.innerHTML = '<p class="stat-small">Loading your queue…</p>';
-    loadBank().then(function(b){ bank = b; renderHome(); }, function(){ app.innerHTML = '<p>The question bank did not load. Check your connection and reload.</p>'; });
+    loadBank().then(function(b){ bank = b; renderHome(); goNow(); }, function(){ app.innerHTML = '<p>The question bank did not load. Check your connection and reload.</p>'; });
     window.addEventListener('storage', function(e){ if(e.key === Core.KEY && bank && app.getAttribute('data-view') === 'home') renderHome(); });
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();

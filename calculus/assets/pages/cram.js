@@ -192,6 +192,15 @@
   var state = load();
   if(state.weeks !== 2 && state.weeks !== 3) state.weeks = 3;
   if(!state.done || typeof state.done !== 'object') state.done = {};
+  /* The Practice panel (docs/course-redesign-r4.md decision 5) opens cram.html?date=&weeks=&print=1. */
+  var PRINT = false;
+  (function(){
+    var q = new URLSearchParams(location.search);
+    if(/^\d{4}-\d{2}-\d{2}$/.test(q.get('date') || '')){ try{ localStorage.setItem(DATE_KEY, q.get('date')); }catch(e){} }
+    if(q.get('weeks') === '2' || q.get('weeks') === '3'){ state.weeks = +q.get('weeks'); save(state); }
+    PRINT = q.get('print') === '1';
+    if(q.toString()){ try{ history.replaceState(null, '', location.pathname); }catch(e){} }
+  })();
 
   function mastery(){
     if(!Core || !allowed()) return null;
@@ -322,6 +331,7 @@
       frqList = (l || []).filter(function(f){ return !f.placeholder; });
       frqList.forEach(function(f){ FRQ[f.id] = f; });
       render();
+      if(PRINT){ PRINT = false; setTimeout(function(){ W.print(); }, 400); }
     }).catch(function(){});
   }
   W.addEventListener('storage', function(e){ if(e.key === STORE || e.key === DATE_KEY){ state = load(); if(state.weeks !== 2 && state.weeks !== 3) state.weeks = 3; if(!state.done) state.done = {}; render(); } });
