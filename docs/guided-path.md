@@ -36,6 +36,35 @@ The class code in path.js (anchor, prerequisites, picker, check-in) is kept, unu
   done, the current one and the next three. No "you are here" label: the current stop is the large yellow one.
 - Without a path, the Path page still draws the course-order path, with a "Create my path" card on top.
 
+## The path is the course home (course redesign r4, owner 2026-11-05)
+Decision 2 of `docs/course-redesign-r4.md` (mockups `docs/redesign-r4/mockups/Main` and `HomeReturning`). Every
+course's `index.html` is the path; the Path tab and page go away.
+- Layout (`scripts/lib/r3-home.mjs` `r3HomeMain`, used by every home builder): the cover band without buttons; two
+  columns, the side column on the LEFT (Up next with Start/Continue, Already know it?, Mark done; Create your
+  personalized path before a path exists, else Your path with the setup line, any banners and Change; Course
+  progress, the selected stop's unit as numbered squares; Ways to study) and the path on the RIGHT, one `<details>`
+  section per course unit with the header number, "Unit n · x to y% of the exam", name and "n topics" / "k of n
+  topics" (skills are not counted as topics unless a unit has nothing else). Only the current stop's unit is open;
+  others open on tap; "Show every unit" opens them all. Phone: the path first, the side cards after.
+- First paint: `r3-home.mjs` `pathSkeleton()` writes the unit headers and the first stop from
+  `assets/path/<key>.json`, so nothing jumps; an inline script hides the side cards' first paint (`.lp-ret`) for a
+  returning student until path.js has drawn them. Without JavaScript each section links its first topic.
+- `assets/course/path.js` `renderHome()` replaces the old Path page and home card: same state, stops and setup.
+  `trackHTML()` draws one unit's stops into its section when it is open (`drawUnit`, on the `toggle` event and on
+  resize). Tapping a stop selects it into the Up next card (scrolled into view when off screen); a square in Course
+  progress opens its unit and scrolls to the stop. "Back to your path" links and the setup now go to the home.
+- Styles: first paint in `assets/course/hub.css` (end of file), stops and the rest in `assets/course/path.css`.
+- Below: Video lessons and Tools (tool cards without descriptions). Only for a visitor without this course's
+  Premium (`LevlPremium.launched(k) && LevlPremium.has(k)` through `onChange`; premium.js is now loaded on every home):
+  the 4 exam fact chips, the course's Premium card from `scripts/lib/pricing-section.mjs` `courseSection()` (moved
+  out of `build-pricing.mjs`, which imports it, so premium.html and the home share one function; shown open), and
+  the FAQ cut to 4 questions plus a link to About. The "In this course" list, the hero path card and the old
+  Free/Premium plan cards are gone.
+- `<dir>/path.html` is a redirect stub to the home (`scripts/build-path-pages.mjs`: script keeping query and hash,
+  meta refresh, canonical, plain link).
+- Left to Part A (chrome): removing the Path tab from `assets/site-chrome.js` (and its `mountPath` test for
+  `path.html`, harmless now).
+
 ## Rules (so no student gets stuck)
 - The class is the boss: the path never claims to know the teacher's next topic.
 - One tap to re-center ("My class is on…", or any topic in the whole course view). Progress belongs to topics, not to
@@ -57,7 +86,7 @@ The class code in path.js (anchor, prerequisites, picker, check-in) is kept, unu
 - Prerequisites are derived, not written: topic B is a prerequisite of A when a concept taught in A depends on a
   concept taught in B, B comes earlier in the course, and B is not already implied by another prerequisite of A
   (transitive reduction). At most 3 per topic, with the concept that links them as the reason.
-- `scripts/build-path-pages.mjs` writes `<dir>/path.html` for every course from that course's `review.html` shell.
+- `scripts/build-path-pages.mjs` writes `<dir>/path.html` for every course: since r4 a redirect to the course home.
 - `assets/course/path.js` (`window.LevlPath`) and `assets/course/path.css`: the setup, the Path page (this stretch and
   whole course), the course home card, the end-of-page card on lessons and notes, and a small card at the end of each
   topic in the textbook (`renderBook`, `.lp-secend`: Mark done while it is to do, Done and Continue once done; NREMT
