@@ -36,6 +36,11 @@ The course builders (`build-anp` and the six `build-ap*`), `build-notes-pages.mj
 `build-nremt-notes-pages.mjs` call `applyVideo` when they write a page, so a rebuild keeps the block and every
 `--check` agrees. Ochem lessons are hand-written; `build-videos.mjs` writes those.
 
+Since 2026-11-05 (course redesign r4, decision 4) the block at the top of a topic, on notes pages and in the
+readers, is a small preview strip (`lpv-strip`: thumbnail with play button and length, title, "Watch it here, or
+keep reading"); pressing it opens the same player in place, with "Close video" (`video.js`). Lesson pages keep the
+compact card. Analytics kind for the videos page: `videos`.
+
 Where the block sits: notes pages after the page header, before the prose (the course textbooks, which read only
 the prose, never show it, so the video is not repeated inside the book); NREMT chapter pages after the chapter
 header; lesson pages as a compact card at the end of the lesson's header (ochem: inside the hero).
@@ -60,9 +65,11 @@ each the same-origin thumbnail linking to its notes page (never an iframe), plus
 2. **CSP unchanged.** `frame-src` already allowed `https://www.youtube-nocookie.com` (PR #48, all pages). Thumbnails
    are same-origin, so `img-src` needs nothing. No YouTube script runs in the page; the player runs in its iframe.
 3. **Pages without a video show nothing.** No "coming soon".
-4. **No course "Videos" page for now.** The course home strip shows the newest 3 and links the channel; each course has at most two videos, so a listing page per course would be a
-   nearly empty page in every course's tab row. Revisit when a course has about five: one generated
-   `<course>/videos.html` per course from `docs/videos.json`, linked from the course home, the same in every course.
+4. **A Videos page in every course** (was: none until about five videos). Olivier, 2026-11-05 (course redesign r4,
+   decision 4): Learn has a Textbook / Glossary / Videos switch, so every course has `<course>/videos.html`, written
+   by `build-videos.mjs` from `docs/videos.json` (newest first, the same click-to-load card, a link to each notes
+   page). It is built from the course's glossary page (head, header, tabs, footer, scripts), so run it after the
+   glossary builders. A course with no video gets a short note (no "coming soon") and `noindex`.
 5. **One video per page.** A newer video for the same page takes it over (`add-video.mjs`).
 6. **Titles** are YouTube's, with two display changes: a trailing "| NREMT" (or "| EMT", "| LevlPrep") search suffix is dropped, and "AP"
    gains its ® on AP® course pages (the trademark rules).

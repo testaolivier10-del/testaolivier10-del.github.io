@@ -1,26 +1,28 @@
-/* The course home, site redesign round 3 (docs/site-redesign.md, boards docs/redesign-r3/r10/boards/R10-Home-*):
-   one layout for all thirteen courses, chosen by Olivier from twelve versions (V09b, "cover band").
+/* The course home: one layout for all thirteen courses. Round 3 (docs/site-redesign.md) gave it the tall cover
+   band; course redesign round 4 (docs/course-redesign-r4.md, decision 2; mockups docs/redesign-r4/mockups/Main and
+   HomeReturning) made the guided path the home.
 
-   In order: the tall cover band (kicker, course name, two-tone headline, hand line, lede, buttons, pills,
-   founder line, the cover drawing); "In this course" (the course map) beside a try-one question; the fact
-   strip; the progress card (start or up next, review queue, today's goal or Daily Rounds, level, XP,
-   streak and tracks); "The lead" (notes card, how this course works, exam card); the tools, each with its
-   own cover (assets/covers/tools/<course>/); "Only in <course>"; Free beside Premium; the FAQ; the About
-   row. Styles: assets/course/r3.css (shared with the round 3 inner pages). Words: scripts/lib/course-homes.json,
-   exported from the board generator; prices and the free and Premium lists come live from assets/premium.js.
+   In order: the cover band (kicker, two-tone course name, hand line, lede, the cover drawing; no buttons); two
+   columns, the side column on the left (Up next, Create your personalized path or Your path, Course progress, Ways
+   to study) and the path on the right, one section per course unit (assets/course/path.js draws the stops; the
+   first paint comes from assets/path/<key>.json); the video lessons and the top three tools; then, only for a
+   visitor without this course's Premium, the exam fact chips, the course's Premium card (the one on premium.html,
+   scripts/lib/pricing-section.mjs) and the FAQ cut to four questions. On a phone the path comes first. Styles:
+   assets/course/r3.css (band, ways, media, faq), assets/course/hub.css (the two columns, the unit sections' first
+   paint, the Premium card) and assets/course/path.css (the stops, loaded with path.js). Words:
+   scripts/lib/course-homes.json; prices from assets/premium.js.
 
-   The progress card keeps every id each course's home script fills (bio-home.js and its forks, anp-home.js,
-   ochem-home.js, the NREMT page script), so a returning student's state appears exactly as before; the
-   first-visit wording below is what a new visitor (or a reader with JavaScript off) sees. */
+   The hidden progress card keeps every id each course's home script fills (bio-home.js and its forks,
+   anp-home.js, ochem-home.js, the NREMT page script), so those scripts run as before. */
 import { readFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { premiumData, foundingPrice, money, longDate, SURE, dayAfterUS } from './premium-data.mjs';
+import { premiumData } from './premium-data.mjs';
 import { loadVideos, displayTitle, clock, THUMB_DIR, THUMB_WIDTHS } from './videos.mjs';
+import { courseSection, SECTION_SCRIPT } from './pricing-section.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const DATA = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'course-homes.json'), 'utf8'));
-const FOUNDER = DATA._founder;
 const strip = (s) => String(s).replace(/<[^>]+>/g, '');
 const attr = (s) => String(s).replace(/&(?![a-z]+;|#\d+;)/g, '&amp;').replace(/"/g, '&quot;');
 const DIR = { nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics' };
@@ -43,6 +45,45 @@ export function homeData(key) {
   const d = DATA[key];
   if (!d) throw new Error(`r3-home: no data for "${key}"`);
   return d;
+}
+
+/* ---- the path, as the home (course redesign r4, decision 2) ----
+   The first paint of the path column and the side column, from assets/path/<key>.json (scripts/build-paths.mjs):
+   one section per course unit (skills woven into the unit they sit in, as courseUnits() in assets/course/path.js
+   does), the first one open, and the first stop in the side card. assets/course/path.js then draws the stops into
+   the same sections from the student's own progress and path; without JavaScript each section links its first topic.
+   Markup shared with path.js: .lp-u > summary.lp-uh (.n, .t small + b, .c), keep the two in step. */
+const pad = (n) => String(n).padStart(2, '0');
+export function unitNum(label, k) { const m = /^(?:Unit|Chapter) (\d+)$/.exec(label); return pad(m ? +m[1] : k + 1); }
+function pathSkeleton(key, up, primaryHref) {
+  const f = join(ROOT, 'assets/path', `${key}.json`);
+  if (!existsSync(f)) return null;
+  const D = JSON.parse(readFileSync(f, 'utf8'));
+  const T = D.topics.map((t, i) => ({ ...t, i }));
+  const skill = (t) => D.units[t.u] && D.units[t.u].label === 'Skills';
+  const cus = [];
+  D.units.forEach((u, ui) => { if (u.label === 'Skills') return; const ts = T.filter((t) => t.u === ui); if (ts.length) cus.push({ u: ui, a: ts[0].i, b: ts[ts.length - 1].i }); });
+  cus.sort((x, y) => x.a - y.a);
+  cus.forEach((c, k) => { c.from = k ? cus[k - 1].b + 1 : 0; c.to = k < cus.length - 1 ? c.b : T.length - 1; });
+  const tName = (t) => attr((t.n ? `${t.n} ` : '') + t.t).replace(/</g, '&lt;');
+  const open = (t) => (t.l && t.f ? t.l : t.o || t.l);
+  const units = cus.map((c, k) => {
+    const u = D.units[c.u], ts = T.filter((t) => t.i >= c.from && t.i <= c.to), n = ts.filter((t) => !skill(t)).length || ts.length;
+    // Ochem keeps chapter numbers out of the page text (check-site rule 30); path.js writes the kicker at runtime.
+    const kick = key === 'ochem' ? '&nbsp;' : attr(u.label + (u.w ? ` · ${u.w} of the exam` : ''));
+    return `<details class="lp-u" id="lpu-${k}"${k ? '' : ' open'}><summary class="lp-uh${k ? '' : ' cur'}"><span class="n">${unitNum(u.label, k)}</span><span class="t"><small>${kick}</small><b>${attr(u.title || u.label)}</b></span><span class="c">${n} topic${n > 1 ? 's' : ''}</span></summary><p class="lp-nojs"><a href="${open(ts[0])}">Start with ${tName(ts[0])}</a></p></details>`;
+  }).join('');
+  const t0 = T[0];
+  const name = attr(D.name);
+  const ret = `<script>try{if(localStorage.getItem(${JSON.stringify(`${key}_path_v1`)})||localStorage.getItem(${JSON.stringify(D.progress || 'x')}))document.getElementById('lpHome').classList.add('lp-ret')}catch(e){}</script>`;
+  const side = `<div class="lp-card lp-selc lp-static" id="lpSel" aria-live="polite"><p class="lp-k">Up next</p><h3>${tName(t0)}</h3><div class="act"><a class="lp-btn gold" href="${open(t0) || primaryHref}">Start</a></div></div>
+<div id="lpSetup" class="lp-static"><div class="lp-card lp-make"><h3>Create your <span>personalized path</span></h3><p>Three quick questions and it starts in the right place.</p><button type="button" class="lp-btn gold sm" data-act="setup">Create my path</button></div></div>
+<div class="lp-card lp-map" id="lpMap" hidden></div>`;
+  const path = `<div class="lp-card lp-phead"><div><span class="lp-pill">Your path</span><h2 class="lp-h2" id="lpTitle">The <span>path</span> through ${name}</h2><p class="lp-p" id="lpSub">Every lesson, skill, practice set and unit test, in course order.</p></div><button type="button" class="lp-all" data-act="allunits" aria-pressed="false">Show every unit</button></div>
+<div id="lpUnits">${units}</div>
+<p class="lp-hand lp-tnote">jump anywhere, everything you finish stays done</p>
+<p class="lp-note">Finishing a lesson or marking a stop done moves the path; practice answers do not. Your path&rsquo;s answers are saved on this device; what you finish counts everywhere you are logged in.</p>`;
+  return { side, path, ret };
 }
 
 /* ctx (from the builder): {
@@ -71,56 +112,12 @@ export function r3HomeMain(key, ctx) {
 <h1 class="mast${[d.t1, d.t2].some((w) => /\S{13,}/.test(String(w || '').replace(/<[^>]*>|&[a-z]+;/g, ''))) ? ' mast-long' : ''}" id="r3Title">${d.t1}<span>${d.t2}</span></h1>
 <p class="hand">${d.hand}</p>
 <p class="lede">${String(ctx.lede || d.lede).split(/(?<=[.!?])\s+(?=[A-Z])/)[0]}</p>
-<div class="hero-ctas"><a class="btn-chan" id="heroPrimaryCta" href="${ctx.primaryHref}">${d.btn1}</a>${ctx.primaryScript || ''}<a class="btn-ghost" href="${L.btn2 || '#try'}">${d.btn2}</a></div>
 <a class="hero-continue" id="r3Resume" href="#" hidden><small>Pick up where you left off</small><b id="r3ResumeLabel"></b></a>
 <script>try{var r=(JSON.parse(localStorage.getItem('levl_resume')||'{}')||{})[${JSON.stringify(key)}];if(r&&typeof r.url==='string'&&/^\\/[^\\/]/.test(r.url)){var a=document.getElementById('r3Resume');a.href=r.url;document.getElementById('r3ResumeLabel').textContent=r.label||'Your last page';a.hidden=false;}}catch(e){}</script>
 </div><div class="art" aria-hidden="true"><img src="${up}assets/covers/art/${key}.svg" alt="" width="640" height="400" decoding="async" fetchpriority="high"></div></div></section>`;
 
-  /* ---- In this course: the map, as a contents list ---- */
-  const rows = [];
-  const kind = d.map_kind;
-  if (kind === 'domains') {
-    (ctx.doms || d.doms).forEach(([n, desc, w, q, bar], i) => rows.push({ n: String(i + 1).padStart(2, '0'), b: n, small: `${desc} ${q} questions`, right: `${w}<small>of the exam</small>` }));
-  } else if (kind === 'path') {
-    const p = d.path;
-    for (let g = 0; g < p.length; g += 5) {
-      const grp = p.slice(g, g + 5), tops = grp.reduce((s, x) => s + x[2], 0);
-      // No "Chapters 1 to 5" and no "27 topics": the ochem site rules keep chapter numbers and topic counts
-      // out of the page text (scripts/check-site.mjs rules 30 and the count rule); the number column is the
-      // first chapter's position, generated from curriculum.js by build-course-homes.mjs.
-      const ord = ['First', 'Next', 'Then', 'Later', 'Last', 'More'][Math.min(5, g / 5)];
-      const size = ['', 'one', 'two', 'three', 'four', 'five'][grp.length] || grp.length;
-      rows.push({ n: String(grp[0][0]).padStart(2, '0'), b: `${ord} ${size} chapters`, small: `<span class="grp">${grp.map((x) => x[1]).join(', ')}</span>`,
-        right: g === 0 ? `${tops}<small class="free">topics, the first four chapters free</small>` : `${tops}<small>topics</small>`, txt: true });
-    }
-  } else if (kind === 'parts') {
-    for (const [name, lo, hi, meta] of d.parts) {
-      const grp = d.chapters.filter((x) => x[0] >= lo && x[0] <= hi);
-      const [nch, ntop] = meta.split(' · ');
-      const first = name === 'Foundations';
-      rows.push({ n: String(lo).padStart(2, '0'), b: name, small: `<span class="grp">Chapters ${lo} to ${hi}: ${grp.map((x) => x[1]).join(', ')}</span>`,
-        right: `${ntop}<small${first ? ' class="free"' : ''}>${first ? 'Lessons free, start here' : nch}</small>`, txt: true });
-    }
-  } else {
-    for (const [num, t, meta, w, free, sk] of d.units) {
-      if (sk) rows.push({ n: num, b: t, small: `${meta}, a skills track`, right: 'Skills<small>alongside the units</small>', txt: true });
-      else {
-        const hi = +w.replace('%', '').split(' to ')[1];
-        rows.push({ n: num.length > 1 ? num : String(+num).padStart(2, '0'), b: t, small: meta,
-          right: `${w}${free ? '<small class="free">lessons free</small>' : '<small>of the exam</small>'}` });
-      }
-    }
-  }
-  const tocLinks = L.toc || [];
-  const toc = rows.map((r, i) => {
-    const inner = `<span class="n">${r.n}</span><span><b>${r.b}</b><small>${r.small}</small></span><span class="w${r.txt ? ' txt' : ''}">${r.right}</span>`;
-    return `<li>${tocLinks[i] ? `<a href="${tocLinks[i]}">${inner}</a>` : `<div class="toc-row">${inner}</div>`}</li>`;
-  }).join('');
-
   /* ---- ways to study: in place of the try one question (owner 2026-11-04: it was clutter). The three
      ways a student works outside the path, each to the course's own page. ---- */
-  // The board's sample card still feeds the FAQ's "What kinds of questions are there?" answer.
-  const s = { ...d.sample };
   const WAYS = [
     ['practice.html', 'Practice', 'Questions on any topic, and every answer explains why.', '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>'],
     ['review.html', 'Review', 'What you missed comes back right before you would forget it.', '<path d="M3 12a9 9 0 019-9 9 9 0 017 3.4M21 12a9 9 0 01-9 9 9 9 0 01-7-3.4"/><path d="M21 3v4h-4M3 21v-4h4"/>'],
@@ -128,8 +125,6 @@ export function r3HomeMain(key, ctx) {
   ];
   const ways = `<section class="ways" aria-labelledby="ways-h"><span class="pill">Ways to study</span><h2 id="ways-h">Pick how you <span>want to work</span></h2><ul>${WAYS.map(([href, name, line, ic]) =>
     `<li><a href="${href}"><span class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ic}</svg></span><span class="tx"><b>${name}</b><small>${line}</small></span></a></li>`).join('')}</ul></section>`;
-
-  const lead = `<div class="lead"><section class="contents" aria-labelledby="toc-h"><h2 id="toc-h">In this <span>course</span></h2><p class="sub">${String(d.map_lede).split(/(?<=\.)\s/)[0]}</p><ol class="toc">${toc}</ol></section>${ways}</div>`;
 
   /* ---- fact strip ---- */
   const facts = `<div class="fact-row" aria-label="${d.strip_label}">${(ctx.strip || d.strip).map(([, b, st]) => `<span><span class="dot"></span><span><b>${b}</b> ${st}</span></span>`).join('')}</div>${d.strip_note ? `<p class="fact-note">${d.strip_label}. ${d.strip_note}</p>` : ''}`;
@@ -186,7 +181,9 @@ export function r3HomeMain(key, ctx) {
     const href = tool ? tool.href : (L.tools || 'tools.html');
     const tag = t ? `<span class="tag ${t === 'free' ? 'free' : 'prem'}">${t === 'free' ? 'Free' : 'Premium'}</span>` : '';
     const img = cv ? `<span class="tc"><img src="${up}assets/covers/tools/${key}/${cv.file ? cv.file.split('/').pop() : `${cv.slug}.svg`}" alt="" width="640" height="320" loading="lazy" decoding="async"></span>` : '';
-    return `<a href="${href}">${img}<span class="cmeta"><span class="cname">${nm}</span>${tag}</span><span class="cdesc">${desc}</span></a>`;
+    // No description line on the tool cards (owner, r4 decisions 2 and 6).
+    void desc;
+    return `<a href="${href}">${img}<span class="cmeta"><span class="cname">${nm}</span>${tag}</span></a>`;
   };
   const th = Array.isArray(d.tools_h) ? `${d.tools_h[0]} ${d.tools_h[1]}` : (d.trainh || d.tools_h).replace(/\.$/, '');
   const also = ''; void (d.tools_also || []).map(([h, xs]) => `<p class="also-line"><b>${h}:</b> ${xs.map((x) => { const t = findTool(key, x, tools); return t ? `<a href="${t.href}">${x}</a>` : x; }).join(', ')}</p>`).join('');
@@ -218,67 +215,18 @@ export function r3HomeMain(key, ctx) {
   void xs;
   const extras = '';
 
-  /* ---- free and premium, from assets/premium.js ---- */
-  const { COURSES, FOUNDING } = premiumData();
-  const pc = COURSES[key];
-  let deal = '';
-  if (pc) {
-    const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
-    const low = Math.min(...pc.passes.map((x) => x.price));
-    const pass = pc.passes.find((x) => x.price === low);
-    const from = pc.passes.length > 1 ? 'From ' : '';
-    const spans = (price) => (founding
-      ? `<span data-founding-until="${founding.until}">${money(foundingPrice(price))}</span><span data-founding-after="${founding.until}" hidden>${money(price)}</span>`
-      : money(price));
-    const amt = `${from}${spans(low)}`;
-    const term = pass.until ? `One pass, good through ${longDate(pass.until)}, the end of the exam season.` : `One payment for ${pass.label.toLowerCase()}.`;
-    /* When the full price starts, never a struck-through price nobody has paid yet (owner 2026-10-28). */
-    const note = founding ? `<span data-founding-until="${founding.until}">Founding price, ${money(low)} from ${dayAfterUS(founding.until)}. </span>${term}` : term;
-    /* Unlock goes straight to checkout (owner 2026-10-28): premium.html?buy= opens the course there and starts
-       checkout, or the one-step sign-in, at once. A second pass is one line under it. */
-    const buyHref = (p) => `${up}premium.html?course=${key}&amp;buy=${p.id}`;
-    const other = pc.passes.filter((x) => x !== pass);
-    const buy = `<a class="btn-gold" href="${buyHref(pass)}">Unlock for ${spans(pass.price)}</a>` +
-      other.map((x) => `<a class="plan__alt" href="${buyHref(x)}">Or a ${x.label.replace(/\s*\(.*\)$/, '').toLowerCase()} for ${spans(x.price)}</a>`).join('');
-    const name = d.deal.name;
-    const free = pc.free.filter((x) => !/^Your progress/.test(x));
-    const esc = (t) => String(t).replace(/&(?![a-z]+;|#\d+;)/g, '&amp;').replace(/</g, '&lt;');
-    const freeNote = d.trust && d.trust[0] === 'note' ? `<p class="freenote">${d.trust[1]}</p>` : '';
-    deal = `<section class="home-deal" id="r3Deal" aria-label="Free and Premium">
-    <div class="plan">
-      <span class="pill">Free</span>
-      <h3>Everything to start</h3>
-      <p class="plan__note">Start now, with no card.</p>${freeNote}
-      <ul>${free.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
-      <a class="btn-ghost" href="${L.freeCta || ctx.primaryHref}">${d.deal.freecta}</a>
-    </div>
-    <div class="plan plan--premium">
-      <span class="pill">Premium &middot; ${name}</span>
-      <p class="plan__amt">${amt}</p>
-      <p class="plan__note">${note}</p>
-      <ul>${pc.premium.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
-      ${buy}
-      <p class="plan__sure">${SURE}</p>
-      <a class="plan__compare" href="${up}premium.html#${key}">Compare Free and Premium</a>
-    </div>
-  </section>${founding ? `
-<script>(function(){var n=Date.now(),d=document.getElementById('r3Deal');[].forEach.call(d.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});[].forEach.call(d.querySelectorAll('[data-founding-after]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-after')+'T23:59:59Z'))e.hidden=false;});})();</script>` : ''}`;
-  }
+  /* ---- the course's Premium card, the one on the Premium page (scripts/lib/pricing-section.mjs), shown open ---- */
+  const { COURSES } = premiumData();
+  const prem = COURSES[key] ? `<section class="lp-prem" aria-labelledby="pp-${key}">${courseSection(key, { up, open: true, start: ctx.primaryHref, source: 'course-home', h: 'h2' })}</section>${SECTION_SCRIPT}` : '';
 
-  /* ---- FAQ ---- */
-  const g = d.guide;
-  const qa = [[d.covers_h, d.covers.join(' ')]];
-  const gp = g.p ? `${g.p} ` : '';
-  qa.push([g.h, `${gp}<a href="${L.guide}">${g.cta}</a>.<ul>${g.items.map((x) => `<li>${x}</li>`).join('')}</ul>`]);
-  qa.push([s.legend_title || 'What kinds of questions are there?', `<ul class="legend">${s.legend.map(([a, b]) => `<li><i>${a}</i>${b}</li>`).join('')}</ul>${s.note || ''}`]);
-  if (d.strip_note) qa.push(['Are the exam figures current?', d.strip_note]);
-  if (d.beta) qa.push(['Has this course been reviewed?', `${d.beta_note} <a href="${up}about.html#report">Report a problem</a>.`]);
+  /* ---- FAQ: the four questions Olivier kept for the home (course redesign r4, decision 2), the rest on About ---- */
+  const AP = /^ap/.test(key);
+  const qa = [];
   qa.push(['Is this course free?', d.trust[0] === 'note' ? d.trust[1] : `All notes are free forever. ${d.deal.free[0]}.`]);
-  qa.push(['Is LevlPrep affiliated with the exam?', d.foot.join(' ')]);
-  qa.push(['Who makes LevlPrep?', `${FOUNDER} <a href="${up}about.html">Why I built it</a>. An independent project, not a company or a training program. Premium is an optional one-time pass, and <a href="${up}premium.html">what is free</a> is listed course by course. No ads.`]);
-  qa.push(['How are the questions written?', `Every question in every course is original, written for LevlPrep with an explanation on each one. Automated checks look for answer-position and length tells. <a href="${up}sources.html">Sources and checks</a>.`]);
-  qa.push(['How do I see what changed?', `Corrected questions, new lessons and site fixes are listed, dated, on <a href="${up}changelog.html">What&rsquo;s new</a>.`]);
-  const faq = `<section class="home-faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2><div class="hub-faq">${qa.map(([q, a]) => `<details class="faq-item"><summary>${q}</summary><div class="ans">${a}</div></details>`).join('')}</div></section>`;
+  qa.push([AP || key === 'nremt' ? 'What&rsquo;s on the exam?' : 'What does the course cover?', d.covers.join(' ')]);
+  if (d.beta) qa.push(['Has it been reviewed?', `${d.beta_note} <a href="${up}about.html#report">Report a problem</a>.`]);
+  qa.push([AP ? 'Is LevlPrep affiliated with the College Board?' : 'Is LevlPrep affiliated with the exam?', d.foot.join(' ')]);
+  const faq = `<section class="home-faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2><div class="hub-faq">${qa.map(([q, a]) => `<details class="faq-item"><summary>${q}</summary><div class="ans">${a}</div></details>`).join('')}<p class="lp-faqmore">More questions, about who makes LevlPrep and how the questions are written, are answered on <a href="${up}about.html">About</a>.</p></div></section>`;
 
   /* Who makes this, how the questions are written and what changes are FAQ items now, not a row of cards
      (Olivier, 2026-10-26: "these are all also questions that could just be added to the question thing above"). */
@@ -304,17 +252,34 @@ export function r3HomeMain(key, ctx) {
   const media = (vids.length ? `<section class="media" aria-labelledby="media-v"><div class="media-h"><h2 id="media-v">Video <span>lessons</span></h2><p><a class="go" href="https://www.youtube.com/@LevlPrep">All videos &rarr;</a></p></div><div class="vstrip">${vcards}</div></section>` : '')
     + `<section class="media" aria-labelledby="media-t"><div class="media-h"><h2 id="media-t">Tools</h2><p>${toolsMore}</p></div><div class="dept">${top.map(toolRow).join('')}</div>${credit}</section>`;
 
+  const P = pathSkeleton(key, up, ctx.primaryHref);
+  const home = P ? `<div class="lp-home" id="lpHome">${P.ret}
+<aside class="lp-hside" aria-label="Your next step and ways to study">
+${P.side}
+${ways}
+</aside>
+<section class="lp-hpath" id="levlPath" aria-labelledby="lpTitle">
+${P.path}
+</section>
+</div>` : `<div class="lead">${ways}</div>`;
+  /* Only for a visitor without this course's Premium (owner, r4 decision 2): the exam facts, the Premium card and
+     the FAQ. premium.js says who has a pass; until it has loaded they show, as for every new visitor. */
+  const npScript = `${ctx.premiumLoaded ? '' : `<script src="${up}assets/premium.js" defer></script>`}<script>document.addEventListener('DOMContentLoaded',function(){var P=window.LevlPremium,k=${JSON.stringify(key)};var s=document.querySelector('.lp-prem summary');if(s){s.tabIndex=-1;s.addEventListener('click',function(e){e.preventDefault();});}if(P&&P.onChange)P.onChange(function(){var on=P.launched(k)&&P.has(k);[].forEach.call(document.querySelectorAll('[data-np]'),function(e){e.hidden=on;});});});</script>`;
+
   return `<main id="main" class="r3 r3-home" data-cover="${key}">
 ${band}
 <div class="hwrap">
-${lead}
-${facts}
+${home}
 ${progress}
 ${media}
-${deal}
+<div class="lp-np" data-np>
+${facts}
+${prem}
 ${faq}
+</div>
 ${about}
 ${sticky}
+${npScript}
 </div>
 </main>`;
 }

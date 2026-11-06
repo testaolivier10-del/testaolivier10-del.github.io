@@ -6,7 +6,7 @@
 :root[data-theme="dark"] .d5{--d5-navy:#0B1528;--d5-loss:#E07A62;--d5-loss-t:#F0A08C;--d5-warm:rgba(224,122,98,.16);}
 .d5 a{color:var(--accent-text,var(--accent));}
 .d5-sec{margin:56px 0 0;}
-.d5-sec:first-child{margin-top:28px;}
+.d5-sec:first-child:not(.lap){margin-top:28px;}
 .d5-q{margin:0 0 16px;}
 .d5-n{font:700 20px/1.2 'Kalam','Nunito',cursive;color:var(--hand,#A86F00);margin:0 0 2px;}
 .d5-q h2,.r3-inner .r3-body .d5-q h2{font:900 30px/1.05 var(--display,var(--font-display));letter-spacing:-.035em;margin:0;color:var(--ink);}
@@ -25,6 +25,7 @@
 :root[data-theme="dark"] .d5-now{box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);}
 .d5-now-top{display:flex;gap:22px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;}
 .d5-now-txt{flex:1 1 360px;min-width:0;}
+.d5-now-k{margin:0 0 8px;font:800 12.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72);}
 .d5-now-t{margin:0;font:900 29px/1.12 var(--display,var(--font-display));letter-spacing:-.03em;color:#fff;}
 .d5-now-t span{color:var(--bac,#2EE6D6);}
 .d5-now-b{margin:10px 0 0;color:#C7D3E6;font-size:15.5px;}
@@ -178,7 +179,14 @@
 }
 @media (prefers-reduced-motion:reduce){.d5-more > summary::after{transition:none;}}
 
-/* Owner 2026-11-03: the page body tucks 56px up into the coloured band, which is right for a card but put the
-   first "1 · right now" label on top of the band. On dashboards the first section starts below the band. */
-.r3-inner .r3-body .d5 > .d5-sec:first-child{margin-top:84px;}
-@media (max-width:860px){.r3-inner .r3-body .d5 > .d5-sec:first-child{margin-top:72px;}}
+/* Owner 2026-11-03: the page body tucks 56px up into the coloured band, which put the first "1 · right now" label
+   on top of the band, so the first section started below it. Round 4 (docs/course-redesign-r4.md decisions 3 and 7):
+   the body no longer tucks up; question 1 is a card and overlaps the band's foot through .lap (assets/course/r3.css).
+   A dashboard drawn without a path card (an older model) keeps the old gap. */
+.r3-inner.r3-dashboard .r3-body{margin-top:0;}
+.r3-inner .r3-body .d5 > .d5-sec:first-child:not(.lap){margin-top:28px;}
+.d5 > .d5-sec.d5-first{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:26px 28px 28px;box-shadow:0 1px 2px rgba(11,26,51,.04),0 8px 24px rgba(11,26,51,.05);}
+:root[data-theme="dark"] .d5 > .d5-sec.d5-first{box-shadow:none;}
+.d5-first > .d5-more{margin-top:14px;}
+.r3 .band .d5-lvl-row{margin:-8px 0 22px;}
+@media (max-width:700px){.d5 > .d5-sec.d5-first{padding:18px 16px 20px;border-radius:18px;}}

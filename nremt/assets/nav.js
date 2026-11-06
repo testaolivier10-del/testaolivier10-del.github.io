@@ -10,33 +10,12 @@
    window.LevlXP shim the quiz pages were written against, and the sync
    namespace. */
 (function(){
-  // The same nine tabs, in the same order, as every LevlPrep course: Home,
-  // Learn, Practice, Review, Flashcards, Exams, Glossary, Tools, Dashboard. Search is not
-  // a tab (the header reaches it), and neither is the old Study Plan, whose
-  // countdown is now a card on the Dashboard.
-  var NAV_ITEMS = [
-    // The wordmark goes to the LevlPrep hub now, so the course's own homepage
-    // needs a tab — otherwise there'd be no way back to it from a quiz.
-    { href: 'index.html', label: 'Home' },
-    { href: 'study-notes.html', label: 'Learn' },
-    { href: 'practice.html', label: 'Practice' },
-    { href: 'review.html', label: 'Review' },
-    { href: 'flashcards.html', label: 'Flashcards' },
-    { href: 'exams.html', label: 'Exams' },
-    { href: 'glossary.html', label: 'Glossary' },
-    { href: 'tools.html', label: 'Tools' },
-    { href: 'dashboard.html', label: 'Dashboard' }
-  ];
-
-  // Pages that live "under" a tab but keep their own URL — that tab should
-  // still read as active on them. Learn is the reading (the notes and the
-  // mnemonics); Tools is everything interactive that is not a question set;
-  // exam-day is about the exam itself.
-  var SUBPAGES = {
-    'study-notes.html': ['mnemonics.html'],
-    'exams.html': ['exam-day.html'],
-    'tools.html': ['body-map.html', 'sound-trainer.html', 'scenario-sim.html', 'skillsheets.html', 'flowcharts.html', 'formulary.html', 'reference-cards.html']
-  };
+  // The five course tabs (docs/course-redesign-r4.md decision 1) come from
+  // site-chrome.js courseTabs; Learn here is study-notes.html. Search is not a
+  // tab (the header reaches it). Pages that live "under" a tab but keep their
+  // own URL are mapped here: the interactive references are Tools; the notes,
+  // mnemonics, glossary and exam pages map by file name in courseTabs.
+  var TOOL_PAGES = ['body-map.html', 'sound-trainer.html', 'scenario-sim.html', 'skillsheets.html', 'flowcharts.html', 'formulary.html', 'reference-cards.html'];
 
   // nremt/notes/ pages set NREMT_BASE '../' and NREMT_PAGE (their tab).
   var BASE = window.NREMT_BASE || '';
@@ -106,13 +85,7 @@
       course: 'NREMT-EMT',
       courseHref: BASE + 'index.html',
       progressHref: BASE + 'dashboard.html',
-      items: NAV_ITEMS.map(function(item){
-        return {
-          href: BASE + item.href,
-          label: item.label,
-          active: item.href === cur || (SUBPAGES[item.href] || []).indexOf(cur) !== -1
-        };
-      })
+      items: window.LevlChrome.courseTabs(BASE, TOOL_PAGES.indexOf(cur) !== -1 ? 'tools' : cur.replace(/\.html$/, ''), { learn: 'study-notes.html' })
     });
   }
 

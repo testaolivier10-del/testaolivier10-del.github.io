@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tools</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:'Nunito';font-weight:600 900;src:url(/_blob/c5bcabf6e5454e19c2392bdb510ca6d3) format('woff2')}
+@font-face{font-family:'Inter Display';font-weight:800 900;src:url(/_blob/56bd824bf79d45ed391759a05c1ce73c) format('woff2')}
+@font-face{font-family:'Kalam';font-weight:700;src:url(/_blob/031f2640efb523dfedcff5f0c13f4f16) format('woff2')}
+body{margin:0;background:#F7F9FC}
+a{color:#2D6A1F}a:hover{color:#1B4422}
+.lp{--ink:#0B1A33;--muted:#56667F;--line:#E3E9F2;--line-soft:#EDF1F7;--paper:#F7F9FC;--white:#fff;--accent:#2D6A1F;--ctint:#E4F1DD;--bbg:#1B4422;--bac:#7CCB6B;--gold:#FFD43B;--navy:#0B1A33;--amber:#9A5B00;--ui:'Nunito','Segoe UI',system-ui,sans-serif;--display:'Inter Display','Nunito',system-ui,sans-serif;
+ container-type:inline-size;font-family:var(--ui);color:var(--ink);background:var(--paper);background-image:linear-gradient(rgba(11,26,51,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(11,26,51,.035) 1px,transparent 1px);background-size:44px 44px;min-height:100%;font-size:16px;line-height:1.5}
+.lp *{box-sizing:border-box}
+.lp h1,.lp h2,.lp h3,.lp p{margin:0}
+.lp a{color:inherit;text-decoration:none}
+.lp button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+/* header */
+.hdr{background:rgba(247,249,252,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.hdr-top{display:flex;align-items:center;gap:14px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:900 21px var(--display);letter-spacing:-.03em}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);display:grid;place-items:center}
+.crs{display:flex;align-items:center;gap:4px;font:800 14.5px var(--ui);padding:6px 10px;border-radius:9px;border:0;background:transparent;color:var(--ink);border-left:1.5px solid var(--line);border-radius:0;padding-left:14px}
+.hdr-sp{flex:1}
+.ibtn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;color:var(--ink)}
+.tlink{font:800 14.5px var(--ui);padding:9px 12px;border-radius:10px}
+.sbtn{font:800 14.5px var(--ui);padding:9px 16px;border-radius:10px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+.tabs{display:flex;gap:6px;height:46px;align-items:stretch}
+.tab{display:flex;align-items:center;gap:8px;padding:0 14px;font:800 15px var(--ui);color:var(--muted);border-bottom:3px solid transparent}
+.tab.on{color:var(--ink);border-bottom-color:var(--accent)}
+.tab .bdg{font:900 11.5px var(--ui);background:var(--gold);color:var(--ink);border-radius:999px;padding:1px 7px}
+.btm{display:none}
+.show-sm{display:none !important}
+/* band */
+.band{position:relative;background:var(--bbg);color:#fff;overflow:hidden;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px}
+.band-in{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding-top:44px;padding-bottom:130px}
+.issue{display:flex;gap:14px;align-items:center;font:800 13px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.74);margin:0 0 16px}
+.issue i{flex:1;height:1px;background:rgba(255,255,255,.2)}
+.mast{font:900 96px/.9 var(--display);letter-spacing:-.05em}
+.mast em{font-style:normal;color:var(--bac);display:block}
+.hand{font:700 26px/1.2 'Kalam',cursive;color:#FFD43B;margin-top:12px}
+.lead{font-size:18px;color:rgba(255,255,255,.88);margin-top:14px;max-width:520px}
+.art{width:100%;max-width:520px;justify-self:end;border-radius:0}
+.art{aspect-ratio:1.45/1;overflow:hidden;border-radius:24px}
+.art img{width:100%;height:100%;object-fit:cover;object-position:88% 50%;display:block}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:900 16px var(--ui);padding:14px 22px;border-radius:12px;border:0;text-decoration:none}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-ghost{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-ondark{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.btn-sm{font-size:14.5px;padding:10px 16px;border-radius:10px}
+.micro{font:700 13.5px var(--ui);color:rgba(255,255,255,.7);margin-top:12px}
+/* small colored header for inner tabs (Olivier, Nov 5: colored like Home, smaller, cards underlap a little) */
+.slim{position:relative;background:var(--bbg);color:#fff;overflow:hidden;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px}
+.slim-in{display:flex;align-items:center;gap:18px;padding-top:26px;padding-bottom:64px;flex-wrap:wrap}
+.slim .ttl{color:#fff}
+.slim .sub{color:rgba(255,255,255,.78)}
+.slim-art{width:170px;height:96px;border-radius:14px;overflow:hidden;flex:none}
+.slim-art img{width:100%;height:100%;object-fit:cover;object-position:88% 50%;display:block}
+.lap{margin-top:-38px;position:relative;z-index:2}
+.thumb{width:64px;height:40px;border-radius:9px;overflow:hidden;flex:none;background:var(--bbg)}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:75% 50%;display:block}
+.ttl{font:900 38px/1.05 var(--display);letter-spacing:-.035em}
+.ttl em{font-style:normal;color:var(--accent)}
+.sub{color:var(--muted);font-weight:700;font-size:15px;margin-top:4px}
+/* half band */
+.halfband .band-in{padding-top:28px;padding-bottom:84px;grid-template-columns:1fr 280px}
+.halfband .mast{font-size:56px}
+.halfband .hand{font-size:22px}
+.crumbs{font:800 13px var(--ui);color:rgba(255,255,255,.75);margin-bottom:10px}
+/* cards */
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 1px 2px rgba(11,26,51,.04),0 8px 24px rgba(11,26,51,.05)}
+.pad{padding:26px 28px}
+.pill{display:inline-block;border:1.5px solid currentColor;border-radius:999px;padding:1px 10px;font:800 12.5px var(--ui);color:var(--accent)}
+.pill-gold{background:#FFF4CC;border-color:#E7C24A;color:#6B4E00}
+.h2{font:900 30px/1.1 var(--display);letter-spacing:-.035em}
+.h2 em{font-style:normal;color:var(--accent)}
+.h3{font:900 19px/1.25 var(--ui)}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.over{margin-top:-96px;position:relative;z-index:2}
+.grid2{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+.sec{margin-top:56px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:16px}
+.more{font:900 14.5px var(--ui);color:var(--accent);display:inline-flex;gap:6px;align-items:center}
+/* unit rows */
+.urow{display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--line-soft)}
+.unum{font:900 40px/1 var(--display);color:var(--accent);letter-spacing:-.04em}
+.uname{font:900 17px var(--ui)}
+.umeta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.sq{display:flex;gap:4px;flex-wrap:wrap}
+.sq i{width:13px;height:13px;border-radius:3px;background:#E6EBF2;display:block}
+.sq i.s1{background:#BFE0B3}.sq i.s2{background:#5FAE5A}.sq i.s3{background:#1B4422}
+.uw{text-align:right;font:900 20px var(--display);letter-spacing:-.02em}
+.uw small{display:block;font:800 12px var(--ui);color:var(--accent);letter-spacing:0}
+.free{font:800 12px var(--ui);color:var(--accent);background:var(--ctint);border-radius:999px;padding:1px 8px}
+.legend{display:flex;gap:14px;font:700 12.5px var(--ui);color:var(--muted);margin-top:14px;flex-wrap:wrap}
+.legend span{display:flex;gap:6px;align-items:center}
+/* way rows */
+.way{display:flex;gap:14px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:16px;margin-top:12px;background:#fff}
+.way-ic{width:44px;height:44px;border-radius:12px;background:var(--ctint);color:var(--accent);display:grid;place-items:center;flex:none}
+.way-t{font:900 16.5px var(--ui)}
+.way-d{font-size:14px;color:var(--muted)}
+.way .cnt{margin-left:auto;font:900 13px var(--ui);background:var(--gold);border-radius:999px;padding:2px 10px;white-space:nowrap}
+/* media cards */
+.mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.mcard{display:block}
+.mimg{border-radius:14px;overflow:hidden;position:relative;aspect-ratio:2/1;background:var(--bbg)}
+.mimg img{width:100%;height:100%;object-fit:cover;display:block}
+.mplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(11,26,51,.8);display:grid;place-items:center;color:#fff}
+.dur{position:absolute;right:10px;bottom:10px;background:rgba(11,26,51,.85);color:#fff;font:800 12px var(--ui);padding:2px 7px;border-radius:6px}
+.mt{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-top:12px}
+.mname{font:900 16.5px var(--ui)}
+.mdesc{font-size:14px;color:var(--muted);margin-top:3px}
+.prem{font:800 12px var(--ui);background:#FFF4CC;color:#6B4E00;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.tag{font:800 12px var(--ui);background:var(--ctint);color:var(--accent);border-radius:999px;padding:2px 9px;white-space:nowrap}
+/* compare */
+.cmp{width:100%;border-collapse:collapse;font-size:15px}
+.cmp th{font:900 14px var(--ui);text-align:center;padding:12px 8px;border-bottom:2px solid var(--ink)}
+.cmp th:first-child{text-align:left}
+.cmp td{padding:11px 8px;border-bottom:1px solid var(--line-soft);text-align:center;font-weight:700;color:var(--muted)}
+.cmp td:first-child{text-align:left;color:var(--ink);font-weight:700}
+.cmp td.y{color:var(--accent)}
+.cmp .pcol{background:#FBFCF7}
+.deal{display:grid;grid-template-columns:1.5fr 1fr;gap:0;overflow:hidden}
+.deal-r{background:var(--navy);color:#fff;padding:30px}
+.price{font:900 52px/1 var(--display);color:var(--gold);letter-spacing:-.03em}
+/* faq */
+.faq details{border-top:1px solid var(--line);padding:16px 2px}
+.faq summary{font:900 17px var(--ui);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq p{color:var(--muted);margin-top:8px;max-width:640px}
+.faqg{display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
+/* footer */
+.foot{border-top:1px solid var(--line);margin-top:64px;padding:26px 0 40px;font-size:13.5px;color:var(--muted)}
+.foot a{text-decoration:underline}
+/* tutor */
+.fab{position:fixed;right:22px;bottom:22px;width:54px;height:54px;border-radius:16px;background:#0D3B36;color:#2EE6D6;display:grid;place-items:center;border:0;box-shadow:0 6px 18px rgba(11,26,51,.25);z-index:30}
+/* segmented */
+.seg{display:inline-flex;background:#EEF2F7;border-radius:12px;padding:4px;gap:2px}
+.seg button,.seg a{border:0;background:transparent;font:800 14.5px var(--ui);padding:8px 14px;border-radius:9px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.seg .on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(11,26,51,.12)}
+.seg .dis{opacity:.5}
+.field{display:flex;flex-direction:column;gap:6px;font:900 12px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.field select,.field input{font:700 15px var(--ui);color:var(--ink);padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:#F7F9FC;text-transform:none;letter-spacing:0}
+.chip{border:1.5px solid var(--line);background:#fff;font:800 14.5px var(--ui);padding:8px 14px;border-radius:10px;color:var(--ink)}
+.chip.on{border-color:var(--accent);background:var(--ctint);color:var(--accent)}
+.kick{font:700 22px/1 'Kalam',cursive;color:var(--amber)}
+.bar{height:10px;border-radius:99px;background:#E6EBF2;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+@container (max-width:760px){
+ .wrap{padding:0 16px}
+ .hdr-top{height:56px;gap:8px}
+ .logo{font-size:18px}.logo-mark{width:30px;height:30px}
+ .crs{font-size:13.5px;padding-left:10px}
+ .hide-sm{display:none}
+ .tabs{display:none}
+ .show-sm{display:inline-flex !important}
+ .toc-aside{display:none !important}
+ .btm{display:flex;position:sticky;bottom:0;z-index:25;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:6px 0 10px}
+ .btm a{display:flex;flex-direction:column;align-items:center;gap:2px;font:800 11.5px var(--ui);color:var(--muted);padding:4px 8px;border-radius:12px;position:relative}
+ .btm a.on{color:var(--accent)}
+ .btm a.on span.ib{background:var(--ctint)}
+ .btm span.ib{width:52px;height:30px;border-radius:15px;display:grid;place-items:center}
+ .btm .bdg{position:absolute;top:0;right:8px;font:900 10.5px var(--ui);background:var(--gold);color:var(--ink);border-radius:999px;padding:0 6px}
+ .band-in{grid-template-columns:1fr;padding-top:20px;padding-bottom:100px;gap:8px}
+ .art{order:-1;max-width:260px;justify-self:center}
+ .mast{font-size:60px}
+ .hand{font-size:21px}.lead{font-size:16px}
+ .ctas .btn{flex:1 1 100%}
+ .grid2,.mgrid,.faqg,.deal{grid-template-columns:1fr}
+ .over{margin-top:-72px}
+ .pad{padding:20px 18px}
+ .urow{grid-template-columns:44px 1fr;gap:12px}
+ .unum{font-size:30px}
+ .uw{grid-column:2;text-align:left;font-size:16px}.uw small{display:inline;margin-left:6px}
+ .ttl{font-size:28px}
+ .h2{font-size:25px}
+ .halfband .band-in{grid-template-columns:1fr}
+ .halfband .art{display:none}
+ .halfband .mast{font-size:44px}
+ .fab{right:14px;bottom:84px;width:48px;height:48px}
+ .slim-in{padding-top:18px;padding-bottom:54px}
+ .slim-art{display:none}
+ .rail{max-width:none !important;order:2}
+ .tiles{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+ .one{grid-template-columns:1fr !important}
+ .slim-in label{min-width:0 !important;width:100%}
+}
+@container (max-width:520px){ .practice-tiles{grid-template-columns:1fr !important} }
+</style>
+</helmet>
+<div class="lp"><header class="hdr"><div class="wrap"><div class="hdr-top">
+<a class="logo" href="HomeReturning.dc.html"><span class="logo-mark"><svg width="18" height="18" viewBox="0 0 512 512" aria-hidden="true"><rect x="218" y="80" width="76" height="352" rx="22" fill="#2EE6D6"></rect><rect x="80" y="218" width="352" height="76" rx="22" fill="#2EE6D6"></rect></svg></span>LevlPrep</a>
+<span class="crs">AP® Biology</span>
+<span class="hdr-sp"></span>
+<button class="ibtn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+<a class="tlink hide-sm" href="#">For teachers</a>
+<button class="ibtn" aria-label="Account and settings" style="background:#0B1A33;color:#fff;border-color:#0B1A33;font:900 14px var(--ui)">O</button>
+<button class="ibtn hide-sm" aria-label="Settings: dark mode and sound"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg></button>
+</div>
+<nav class="tabs" aria-label="Course"><a class="tab" href="HomeReturning.dc.html">Home</a><a class="tab" href="Learn.dc.html">Learn</a><a class="tab" href="Practice.dc.html">Practice</a><a class="tab on" href="Tools.dc.html">Tools</a><a class="tab" href="Progress.dc.html">Progress</a></nav></div></header>
+<section class="slim"><div class="wrap slim-in"><div style="flex:1;min-width:220px"><p class="issue" style="margin:0 0 8px">AP® Biology <i></i></p><h1 class="ttl">Tools</h1><p class="sub">19 simulators and skills tools · each one followed by questions</p></div><span class="slim-art"><img src="/_blob/05d851cc2ab68021def477f380fce8cc" alt=""></span></div></section>
+<main class="wrap lap">
+<div class="card pad"><p style="font:900 13px var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:flex;gap:12px;align-items:center">Free · 10<i style="flex:1;height:2px;background:var(--ink);display:block"></i></p><p class="muted" style="margin:4px 0 18px">Open any of these now.</p><div class="mgrid" style="row-gap:34px"><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/cf85aa985eb7099874ed947bc31ea149" alt=""></span><span class="mt"><span class="mname">Osmosis and water potential</span></span><span style="display:block;margin-top:10px"><span class="small" style="font-weight:800;color:var(--accent)">Tried · 3 of 5 questions right</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:60%"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/b917a4dc57a08dcbb532ba6992d33657" alt=""></span><span class="mt"><span class="mname">Mean, SD and standard error</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/54fd77c9b968752038ba573fb5670d95" alt=""></span><span class="mt"><span class="mname">Confidence intervals and error bars</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/204d9b65050a084681a3f3d68228fe51" alt=""></span><span class="mt"><span class="mname">Chi-square test</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/8ed854295462e9fe2b59e57ad4925772" alt=""></span><span class="mt"><span class="mname">Rates and percent change</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/3ecfc24e1aa1150decfbcab4bd85df39" alt=""></span><span class="mt"><span class="mname">Water potential calculations</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/bcc998d4bc150daa60230e0cf9ffb5c2" alt=""></span><span class="mt"><span class="mname">Hardy-Weinberg calculations</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/608d9aaaeb7f77ce51c8e2795223a161" alt=""></span><span class="mt"><span class="mname">Simpson's diversity index</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/535e38b20af3c8e66528d7214cf1a700" alt=""></span><span class="mt"><span class="mname">Graph builder</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/988801b80d531cc50449c280552979b7" alt=""></span><span class="mt"><span class="mname">Experimental design and argumentation</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a></div></div>
+<div class="card pad" style="margin-top:24px"><p style="font:900 13px var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:flex;gap:12px;align-items:center">Premium · 9<i style="flex:1;height:2px;background:var(--ink);display:block"></i></p><div class="mgrid" style="row-gap:34px;margin-top:18px"><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/3ee7555ffa060d68f94acfe7132fcd9f" alt=""></span><span class="mt"><span class="mname">Enzyme activity and inhibition</span><span class="prem">Premium</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/5d5ecb230265fb3a472e5eae3cefaff4" alt=""></span><span class="mt"><span class="mname">Signal transduction and amplification</span><span class="prem">Premium</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/1af4978269f1a23714425a49111696b0" alt=""></span><span class="mt"><span class="mname">Cell cycle checkpoints</span><span class="prem">Premium</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/0fe04502cafb37e73402919b8c6c1365" alt=""></span><span class="mt"><span class="mname">Meiosis and nondisjunction</span><span class="prem">Premium</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/21cc312c0f7f63e3857abaee1986023a" alt=""></span><span class="mt"><span class="mname">Lac and trp operons</span><span class="prem">Premium</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/d84f0f2f440e038e499af32218727f1a" alt=""></span><span class="mt"><span class="mname">Hardy-Weinberg and genetic drift</span><span class="prem">Premium</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/95ab7a942070a35b7bd328f4d9a0528a" alt=""></span><span class="mt"><span class="mname">Phylogenetic tree reading</span><span class="prem">Premium</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/2b93bbb5cc07fe12a938623e830ea2b4" alt=""></span><span class="mt"><span class="mname">Population growth</span><span class="prem">Premium</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="mcard" href="#"><span class="mimg" style="display:block"><img src="/_blob/adb41a2be012483b3019d9b1593901f8" alt=""></span><span class="mt"><span class="mname">Energy flow and ecological pyramids</span><span class="prem">Premium</span></span><span style="display:block;margin-top:10px"><span class="small muted" style="font-weight:700">Not tried yet</span><span class="bar" style="height:5px;width:160px;display:block;margin-top:4px"><i style="width:0"></i></span></span><span class="more" style="margin-top:12px">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a></div></div>
+</main><footer class="foot"><div class="wrap">This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="#">Sources</a> page. Spot a mistake? <a href="#"><b>Report a problem</b></a><p style="margin-top:12px">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p><div style="margin-top:10px"><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">About</a> · <a href="#">Sources</a> · <a href="#">What's new</a> · <a href="#">Premium</a> · <a href="#">Teachers</a> · <a href="#">Account</a> · <a href="#">Contact</a></div></div></footer><nav class="btm" aria-label="Course"><a class="" href="HomeReturning.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></span>Home</a><a class="" href="Learn.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg></span>Learn</a><a class="" href="Practice.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>Practice</a><a class="on" href="Tools.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></svg></span>Tools</a><a class="" href="Progress.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 16v-5"/><path d="M12 16V8"/><path d="M16 16v-3"/></svg></span>Progress</a></nav><button class="fab" aria-label="Ask the tutor"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4"/><circle cx="9" cy="13.5" r="1.2"/><circle cx="15" cy="13.5" r="1.2"/></svg></button></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1280, "height": 3600}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

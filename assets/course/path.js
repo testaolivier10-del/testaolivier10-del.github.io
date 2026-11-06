@@ -1,7 +1,9 @@
 /* The guided study path (docs/guided-path.md), for every course.
 
-   Loaded by assets/site-chrome.js (mountPath) on a course's home, its Path
-   page, its lesson and notes pages and its textbook, with assets/course/path.css. Reads
+   Loaded by assets/site-chrome.js (mountPath) on a course's home (which is the
+   path since course redesign r4: the side column and the unit sections that
+   scripts/lib/r3-home.mjs paints first), its lesson and notes pages and its
+   textbook, with assets/course/path.css. path.html redirects to the home. Reads
    assets/path/<course>.json (scripts/build-paths.mjs) and the course's own
    progress; keeps its own answers in <course>_path_v1 on this device:
 
@@ -24,6 +26,7 @@
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function parse(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
   function abs(rel){ if(!rel) return ''; try{ return new URL(rel, location.origin + '/' + D.dir + '/').pathname; }catch(e){ return rel; } }
+  function home(){ return abs('./'); }
   function track(name, data){ try{ if(window.LevlAnalytics) window.LevlAnalytics.event(name, Object.assign({ course: KEY }, data || {})); }catch(e){} }
   function today(){ var d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
   function isoIn(n){ var d = new Date(); d.setDate(d.getDate() + n); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
@@ -205,11 +208,11 @@
   function stopTitle(s){ return s.kind === 'topic' ? tName(BY[s.id]) : s.title; }
   function selHTML(s){
     if(!s) return '';
-    var k = s.state === 'done' ? 'Done' : s.state === 'now' ? 'Up next' : KINDLBL[stopKind(s)] || '', acts = '', note = '';
+    var k = s.state === 'done' ? 'Done' : s.state === 'now' ? 'Up next · ' + (KINDLBL[stopKind(s)] || '') : KINDLBL[stopKind(s)] || '', acts = '', note = '';
     if(s.kind === 'topic'){
       var t = BY[s.id];
       if(s.state === 'done') acts = '<a class="lp-btn gold" href="' + esc(startUrl(t)) + '">Open again</a><div class="lnk"><button type="button" class="lp-link" data-act="undone" data-id="' + esc(t.id) + '">Not done after all</button></div>';
-      else acts = '<a class="lp-btn gold" href="' + esc(startUrl(t)) + '">' + (s.state === 'now' ? 'Start' : 'Jump here') + '</a><div class="lnk">' +
+      else acts = '<a class="lp-btn gold" href="' + esc(startUrl(t)) + '">' + (s.state === 'now' ? (T.some(function(x){ return isF(x.id); }) ? 'Continue' : 'Start') : 'Jump here') + '</a><div class="lnk">' +
         (D.practice ? '<button type="button" class="lp-link" data-act="check" data-id="' + esc(t.id) + '">Already know it?</button>' : '') +
         '<button type="button" class="lp-link" data-act="markdone" data-id="' + esc(t.id) + '">Mark done</button></div>';
       if(t.l && !t.f && !hasPass() && s.state !== 'done') note = 'Notes and practice are free. The interactive lesson is Premium.';
@@ -227,13 +230,17 @@
   /* ---------- the stops, in groups (one per course unit, or one for cramming) ---------- */
   function groups(){
     var st = stops(), out = [];
-    if(S.mode === 'cram'){ out.push({ k: S.cram.kind === 'exam' ? 'Exam review' : 'Your test', t: S.cram.kind === 'exam' ? 'Weakest topics first' : 'The topics on your test', stops: st }); }
+    if(S.mode === 'cram'){ out.push({ n: '', k: S.cram.kind === 'exam' ? 'Exam review' : 'Your test', t: S.cram.kind === 'exam' ? 'Weakest topics first' : 'The topics on your test', stops: st }); }
     else {
       var by = {};
       st.forEach(function(s){ var g = s.cu || 0; if(!by[g]){ by[g] = { cu: g, stops: [] }; out.push(by[g]); } by[g].stops.push(s); });
       var cus = courseUnits();
-      out.forEach(function(g){ var u = U[cus[g.cu].u], ts = g.stops.filter(function(s){ return s.kind === 'topic'; }), dn = ts.filter(function(s){ return s.state === 'done'; }).length;
-        g.k = u.label + (u.w ? ' · ' + u.w + ' of the exam' : ''); g.t = u.title || u.label; g.c = dn ? dn + ' of ' + ts.length + ' done' : ts.length + ' topic' + (ts.length > 1 ? 's' : ''); g.short = u.label === 'Skills' ? 'Skills' : u.label; });
+      // The header: number, "Unit n · x to y% of the exam", name, and "n topics" or "k of n topics" (skills are
+      // skills, not topics, unless a unit has nothing else). scripts/lib/r3-home.mjs paints the same header first.
+      out.forEach(function(g){ var u = U[cus[g.cu].u], ts = g.stops.filter(function(s){ return s.kind === 'topic'; }), tt = ts.filter(function(s){ return !isSkill(BY[s.id]); }); if(!tt.length) tt = ts;
+        var dn = tt.filter(function(s){ return s.state === 'done'; }).length, m = /^(?:Unit|Chapter) (\d+)$/.exec(u.label);
+        g.n = String(m ? +m[1] : g.cu + 1).padStart(2, '0'); g.k = u.label + (u.w ? ' · ' + u.w + ' of the exam' : ''); g.t = u.title || u.label;
+        g.c = (dn ? dn + ' of ' : '') + tt.length + ' topic' + (tt.length > 1 ? 's' : ''); g.short = u.label; });
     }
     var gi = 0; out.forEach(function(g, k){ g.id = 'lpu-' + k; g.stops.forEach(function(s){ s.gi = gi++; }); });
     return out;
@@ -247,53 +254,50 @@
     return k === 'mix' ? ICON.bolt : k === 'review' ? ICON.review : k === 'test' ? ICON.flag : ICON.trophy;
   }
 
-  /* ---------- drawing the whole path ---------- */
-  var SEL = null;
-  function drawTrack(host){
-    var gs = groups(), all = [], W = host.clientWidth || 640, wide = W >= 560, gap = wide ? 104 : 96, top = 64, html = '';
-    var nowG = -1; gs.forEach(function(g){ g.stops.forEach(function(s){ all.push(s); if(s.state === 'now' && nowG < 0) nowG = s.gi; }); });
-    if(SEL == null || !all.some(function(s){ return s.key === SEL; })) SEL = (all[nowG] || all[all.length - 1] || {}).key;
-    var amp = Math.min(170, W * 0.26), g0 = 0;
-    gs.forEach(function(g, k){
-      var n = g.stops.length, H = top + (n - 1) * gap + 70, pts = g.stops.map(function(s, i){
-        var j = g0 + i; return wide ? [Math.round(W / 2 + amp * Math.sin(j * 0.78)), top + i * gap] : [Math.round(52 + 22 * Math.sin(j * 0.9)), top + i * gap]; });
-      g0 += n;
-      var d = function(a, b, lead, tail){ var s = ''; for(var i = a; i <= b; i++){ var p = pts[i]; if(i === a) s += lead ? 'M' + p[0] + ' 0 L' + p[0] + ' ' + p[1] : 'M' + p[0] + ' ' + p[1]; else { var q = pts[i - 1], m = (q[1] + p[1]) / 2; s += ' C' + q[0] + ' ' + m + ' ' + p[0] + ' ' + m + ' ' + p[0] + ' ' + p[1]; } } if(tail) s += ' L' + pts[b][0] + ' ' + H; return s; };
-      var first = g.stops[0].gi, last = g.stops[n - 1].gi, reach = nowG < 0 ? n - 1 : nowG > last ? n - 1 : nowG >= first ? nowG - first : -1;
-      var svg = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true"><path class="ln todo" d="' + d(0, n - 1, k > 0, k < gs.length - 1) + '"/>' +
-        (reach >= 0 ? '<path class="ln done" d="' + d(0, reach, k > 0, reach === n - 1 && k < gs.length - 1 && nowG > last) + '"/>' : '') + '</svg>';
-      var nodes = g.stops.map(function(s, i){
-        var p = pts[i], kd = stopKind(s), right = wide && p[0] >= W / 2, off = s.state === 'now' ? 58 : 44;
-        var lab = wide ? (right ? 'right:' + (W - p[0] + off) + 'px;text-align:right' : 'left:' + (p[0] + off) + 'px') : 'left:' + (p[0] + off) + 'px;right:0';
-        return '<button type="button" class="lp-s ' + kd + ' ' + s.state + (s.key === SEL ? ' sel' : '') + '" id="lps-' + s.gi + '" data-stop="' + esc(s.key) + '" style="left:' + p[0] + 'px;top:' + p[1] + 'px" aria-pressed="' + (s.key === SEL) + '" aria-label="' + esc(stopTitle(s)) + '"><span class="dot">' + stopFace(s) + '</span></button>' +
-          '<p class="lp-sl ' + s.state + '" style="top:' + p[1] + 'px;' + lab + '"><small>' + esc(s.state === 'now' ? 'Up next · ' + KINDLBL[kd] : s.state === 'done' ? KINDLBL[kd] + ' · done' : KINDLBL[kd]) + '</small>' + esc(stopTitle(s)) + '</p>';
-      }).join('');
-      html += '<section class="lp-g" id="' + g.id + '"><div class="lp-gb' + (nowG >= first && nowG <= last ? ' cur' : '') + '"><div><small>' + esc(g.k) + '</small><b>' + esc(g.t) + '</b></div>' + (g.c ? '<span>' + esc(g.c) + '</span>' : '') + '</div>' +
-        '<div class="lp-tr" style="height:' + H + 'px">' + svg + nodes + '</div></section>';
-    });
-    host.innerHTML = html;
-    return { gs: gs, all: all };
-  }
-  function mapHTML(gs){
-    var tot = 0, dn = 0;
-    var rows = gs.map(function(g){
-      var tn = 0, chips = g.stops.filter(function(s){ return s.kind === 'topic' || s.kind === 'test' || s.kind === 'exam' || s.kind === 'day'; }).map(function(s){
-        if(s.kind === 'topic'){ tot++; tn++; if(s.state === 'done') dn++; }
-        var kd = stopKind(s), t = s.kind === 'topic' ? BY[s.id] : null;
-        return '<button type="button" class="c ' + kd + ' ' + s.state + (s.key === SEL ? ' sel' : '') + '" data-go="' + esc(s.key) + '" title="' + esc(stopTitle(s)) + '" aria-label="' + esc(stopTitle(s)) + '">' + (t ? esc(t.n || (kd === 'skill' ? 'S' : String(tn))) : '★') + '</button>';
-      }).join('');
-      return '<div class="u"><a href="#' + g.id + '">' + esc(g.short ? g.short + ' · ' + g.t : g.k) + '</a><div class="cs">' + chips + '</div></div>';
+  /* ---------- drawing one unit's stretch of the path ----------
+     Each unit is a <details> section on the course home; its stops are drawn when it is open (an open section has
+     a width to draw into). The wave runs on across sections (the phase is the stop's place in the whole path). */
+  var SEL = null, GS = [], NOWG = -1;
+  function trackHTML(g, k, W){
+    var wide = W >= 560, gap = wide ? 104 : 96, top = 64, n = g.stops.length, H = top + (n - 1) * gap + 70, amp = Math.min(170, W * 0.26);
+    var pts = g.stops.map(function(s, i){ var j = s.gi; return wide ? [Math.round(W / 2 + amp * Math.sin(j * 0.78)), top + i * gap] : [Math.round(52 + 22 * Math.sin(j * 0.9)), top + i * gap]; });
+    var d = function(a, b, lead, tail){ var s = ''; for(var i = a; i <= b; i++){ var p = pts[i]; if(i === a) s += lead ? 'M' + p[0] + ' 0 L' + p[0] + ' ' + p[1] : 'M' + p[0] + ' ' + p[1]; else { var q = pts[i - 1], m = (q[1] + p[1]) / 2; s += ' C' + q[0] + ' ' + m + ' ' + p[0] + ' ' + m + ' ' + p[0] + ' ' + p[1]; } } if(tail) s += ' L' + pts[b][0] + ' ' + H; return s; };
+    var first = g.stops[0].gi, last = g.stops[n - 1].gi, nowG = NOWG, reach = nowG < 0 ? n - 1 : nowG > last ? n - 1 : nowG >= first ? nowG - first : -1, more = k < GS.length - 1;
+    var svg = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true"><path class="ln todo" d="' + d(0, n - 1, false, more) + '"/>' +
+      (reach >= 0 ? '<path class="ln done" d="' + d(0, reach, false, reach === n - 1 && more && nowG > last) + '"/>' : '') + '</svg>';
+    var nodes = g.stops.map(function(s, i){
+      var p = pts[i], kd = stopKind(s), right = wide && p[0] >= W / 2, off = s.state === 'now' ? 58 : 44;
+      var lab = wide ? (right ? 'right:' + (W - p[0] + off) + 'px;text-align:right' : 'left:' + (p[0] + off) + 'px') : 'left:' + (p[0] + off) + 'px;right:0';
+      return '<button type="button" class="lp-s ' + kd + ' ' + s.state + (s.key === SEL ? ' sel' : '') + '" id="lps-' + s.gi + '" data-stop="' + esc(s.key) + '" style="left:' + p[0] + 'px;top:' + p[1] + 'px" aria-pressed="' + (s.key === SEL) + '" aria-label="' + esc(stopTitle(s)) + (s.state === 'done' ? ', done' : s.state === 'now' ? ', up next' : '') + '"><span class="dot">' + stopFace(s) + '</span></button>' +
+        '<p class="lp-sl ' + s.state + '" style="top:' + p[1] + 'px;' + lab + '"><small>' + esc(s.state === 'now' ? 'Up next · ' + KINDLBL[kd] : s.state === 'done' ? KINDLBL[kd] + ' · done' : KINDLBL[kd]) + '</small>' + esc(stopTitle(s)) + '</p>';
     }).join('');
-    return '<div class="hd"><b>' + (S.mode === 'cram' ? 'Your list' : 'Course') + '</b><span>' + dn + ' / ' + tot + '</span></div>' + rows;
+    return '<div class="lp-tr" style="height:' + H + 'px" data-w="' + W + '">' + svg + nodes + '</div>';
+  }
+  function drawUnit(det){
+    var k = +det.id.replace('lpu-', ''), g = GS[k], box = $('.lp-trw', det); if(!g || !box) return;
+    var W = Math.round(box.clientWidth); if(!W) return;
+    var tr = $('.lp-tr', box); if(tr && +tr.getAttribute('data-w') === W) return;
+    box.innerHTML = trackHTML(g, k, W);
+  }
+  function groupOf(key){ for(var k = 0; k < GS.length; k++) for(var i = 0; i < GS[k].stops.length; i++) if(GS[k].stops[i].key === key) return k; return -1; }
+  function mapHTML(gs){
+    var tot = 0, dn = 0, gk = Math.max(0, groupOf(SEL));
+    gs.forEach(function(g){ g.stops.forEach(function(s){ if(s.kind === 'topic'){ tot++; if(s.state === 'done') dn++; } }); });
+    var g = gs[gk], tn = 0, chips = g.stops.filter(function(s){ return s.kind === 'topic' || s.kind === 'test' || s.kind === 'exam' || s.kind === 'day'; }).map(function(s){
+      if(s.kind === 'topic') tn++;
+      var kd = stopKind(s), t = s.kind === 'topic' ? BY[s.id] : null;
+      return '<button type="button" class="c ' + kd + ' ' + s.state + (s.key === SEL ? ' sel' : '') + '" data-go="' + esc(s.key) + '" title="' + esc(stopTitle(s)) + '" aria-label="' + esc(stopTitle(s)) + '">' + (t ? esc(t.n || (kd === 'skill' ? 'S' : String(tn))) : '★') + '</button>';
+    }).join('');
+    return '<div class="hd"><h3>' + (S.mode === 'cram' ? 'Your list' : 'Course progress') + '</h3><span>' + dn + ' / ' + tot + '</span></div><div class="u"><a href="#' + g.id + '" data-unit="' + gk + '">' + esc(g.short ? g.short + ' · ' + g.t : g.k) + '</a><div class="cs">' + chips + '</div></div>';
   }
 
-  /* ---------- the Path page ---------- */
+  /* ---------- the course home: the side column and the path (course redesign r4, decision 2) ---------- */
   function metaHTML(){
     var dd = deadline(), n = dd ? daysTo(dd) : null, bits = [];
     bits.push(S.mode === 'cram' ? modeLabel() : 'On my own');
     if(dd && n != null && n >= 0) bits.push(S.mode === 'cram' ? (n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : 'In ' + n + ' days') : 'Exam ' + new Date(dd + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
     var p = pace(); if(p) bits.push('about ' + p + ' min a day');
-    return esc(bits.join(' · ')) + ' · <button type="button" class="lp-link" data-act="setup">Change</button>';
+    return esc(bits.join(' · '));
   }
   function bannersHTML(){
     var b = '', ex = examDate(), n = ex ? daysTo(ex) : null;
@@ -303,63 +307,57 @@
       b += '<div class="lp-banner warm"><div class="tx"><b>You missed a few days. That is fine.</b><p>New pace: about ' + pace() + ' minutes a day.</p></div><div class="lp-row"><button type="button" class="lp-btn sm" data-act="okbehind">Okay</button><button type="button" class="lp-link" data-act="setup">Change the date</button></div></div>';
     return b;
   }
-  var DRAWN = null;
-  function selStop(){ if(!DRAWN) return null; for(var i = 0; i < DRAWN.all.length; i++) if(DRAWN.all[i].key === SEL) return DRAWN.all[i]; return null; }
-  function renderPath(){
-    var host = $('#levlPath'); if(!host) return;
-    var made = !!S.mode; if(!made) S.mode = 'self';
-    host.innerHTML = '<div class="lp-lay"><aside class="lp-side"><div class="lp-head"><span class="lp-pill">' + esc(D.name) + '</span><h1>Your <span>path</span></h1>' +
-      (made ? '<p class="lp-meta2">' + metaHTML() + '</p>' : '') + '</div>' + (made ? bannersHTML() : '') +
-      (made ? '' : '<div class="lp-card lp-make"><h3>Create your <span>personalized path</span></h3><p>Three quick questions and it starts in the right place.</p><button type="button" class="lp-btn gold" data-act="setup">Create my path</button></div>') +
-      '<div class="lp-card lp-selc" id="lpSel" aria-live="polite"></div><div class="lp-card lp-map" id="lpMap"></div></aside>' +
-      '<div class="lp-trw"><div id="lpTrack"></div><p class="lp-hand lp-tnote">jump anywhere, everything you finish stays done</p></div></div>' +
-      '<p class="lp-note">Finishing a lesson or marking a stop done moves the path; practice answers do not. Your path’s answers are saved on this device; what you finish counts everywhere you are logged in.</p>';
-    DRAWN = drawTrack($('#lpTrack'));
-    $('#lpSel').innerHTML = selHTML(selStop());
-    $('#lpMap').innerHTML = mapHTML(DRAWN.gs);
-    if(!made) S.mode = null;
-  }
-  function select(key, scroll){
-    SEL = key;
-    $$('#lpTrack .lp-s').forEach(function(b){ var on = b.getAttribute('data-stop') === key; b.classList.toggle('sel', on); b.setAttribute('aria-pressed', on); });
-    $$('#lpMap .c').forEach(function(b){ b.classList.toggle('sel', b.getAttribute('data-go') === key); });
-    var made = !!S.mode; if(!made) S.mode = 'self';
-    $('#lpSel').innerHTML = selHTML(selStop());
-    if(!made) S.mode = null;
-    if(scroll){ var b = $('#lpTrack [data-stop="' + key.replace(/"/g, '') + '"]'); if(b) b.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-  }
-
-  /* ---------- the course home card ---------- */
-  function miniHTML(list, ni){
-    var X = [6, 22, 40, 58, 75, 92], Y = [150, 80, 125, 70, 140, 85], P = list.map(function(s, i){ return [X[i] * 10, Y[i]]; });
-    var d = function(a, b){ var s = ''; for(var i = a; i <= b; i++){ var p = P[i]; if(i === a) s += 'M' + p[0] + ' ' + p[1]; else { var q = P[i - 1], m = (q[0] + p[0]) / 2; s += ' C' + m + ' ' + q[1] + ' ' + m + ' ' + p[1] + ' ' + p[0] + ' ' + p[1]; } } return s; };
-    var svg = '<svg viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true">' + (list.length > 1 ? '<path class="ln todo" d="' + d(Math.max(0, ni), list.length - 1) + '"/>' : '') + (ni > 0 ? '<path class="ln done" d="' + d(0, ni) + '"/>' : '') + '</svg>';
-    return '<div class="lp-strip"><div class="in">' + svg + list.map(function(s, i){
-      var kd = stopKind(s);
-      return '<a class="lp-ms ' + kd + ' ' + s.state + '" href="' + esc(stopUrl(s) || abs('path.html')) + '" style="left:' + X[i] + '%;top:' + Y[i] + 'px" aria-label="' + esc(stopTitle(s)) + '"><span class="dot">' + stopFace(s) + '</span></a><p class="lp-ml ' + s.state + '" style="left:' + X[i] + '%;top:' + (Y[i] + (s.state === 'now' ? 46 : 32)) + 'px">' + esc(stopTitle(s)) + '</p>';
-    }).join('') + '</div></div>';
+  function selStop(){ for(var k = 0; k < GS.length; k++) for(var i = 0; i < GS[k].stops.length; i++) if(GS[k].stops[i].key === SEL) return GS[k].stops[i]; return null; }
+  var ALL = false, OPEN = null;
+  function headHTML(g, k, open){
+    return '<details class="lp-u" id="' + g.id + '"' + (open ? ' open' : '') + '><summary class="lp-uh' + (NOWG >= g.stops[0].gi && NOWG <= g.stops[g.stops.length - 1].gi ? ' cur' : '') + '"><span class="n">' + esc(g.n) + '</span><span class="t"><small>' + esc(g.k) + '</small><b>' + esc(g.t) + '</b></span><span class="c">' + esc(g.c || '') + '</span></summary><div class="lp-trw"></div></details>';
   }
   function renderHome(){
-    var main = $('main.r3-home'), lead = main && $('.lead', main); if(!lead) return;
-    var slot = $('#lpSlot');
-    if(!slot){ slot = document.createElement('div'); slot.id = 'lpSlot'; slot.className = 'lp-slot'; lead.parentNode.insertBefore(slot, lead); }
-    var pathHref = abs('path.html');
-    if(!S.mode){
-      slot.innerHTML = '<div class="lp-card lp-hnew"><div class="tx"><span class="lp-pill">Your path</span><h2 class="lp-h2">Create your <span>personalized path</span></h2><p class="lp-p">Three quick questions, then a path through all of ' + esc(D.name) + ', in course order.</p>' +
-        '<ol class="lp-qs"><li>How you’re studying</li><li>What you already know</li><li>When your exam is</li></ol>' +
-        '<div class="lp-row"><button type="button" class="lp-btn gold" data-act="setup">Create my path</button><a class="lp-btn ghost" href="' + esc(pathHref) + '">Open full path</a></div></div></div>';
-      return;
-    }
-    var st = stops(), ni = -1; st.forEach(function(s, i){ if(ni < 0 && s.state === 'now') ni = i; });
-    if(ni < 0) ni = st.length - 1;
-    var n = st[ni], from = Math.max(0, ni - 2), mini = st.slice(from, from + 6), url = stopUrl(n);
-    var cus = S.mode === 'cram' ? null : courseUnits(), u = cus && n.cu != null ? U[cus[n.cu].u] : null;
-    var inU = u ? st.filter(function(s){ return s.cu === n.cu && s.kind === 'topic'; }) : [], dU = inU.filter(function(s){ return s.state === 'done'; }).length;
-    slot.innerHTML = '<div class="lp-card lp-hcard"><div class="hd"><div><p class="lp-k">Your path · ' + esc(u ? unitLabel(u) : modeLabel()) + '</p><h2 class="lp-h2">Up next: <span>' + esc(stopTitle(n)) + '</span></h2></div>' +
-      '<div class="lp-row">' + (url ? '<a class="lp-btn gold" href="' + esc(url) + '">Continue</a>' : '') + '<a class="lp-btn ghost" href="' + esc(pathHref) + '">Open full path</a></div></div>' +
-      miniHTML(mini, ni - from) +
-      '<div class="ft"><p class="lp-hand">jump anywhere, everything you finish stays done</p>' + (u ? '<span>' + dU + ' of ' + inU.length + ' in ' + esc(u.label) + '</span>' : '') + '</div></div>';
-    [$('#heroPrimaryCta'), $('.sticky-cta a')].forEach(function(a){ if(a && url){ a.textContent = 'Continue your path'; a.setAttribute('href', url); a.classList.remove('cta-pending'); } });
+    var home = $('#lpHome'); if(!home) return;
+    var made = !!S.mode; if(!made) S.mode = 'self';
+    GS = groups(); NOWG = -1;
+    var all = []; GS.forEach(function(g){ g.stops.forEach(function(s){ all.push(s); if(s.state === 'now' && NOWG < 0) NOWG = s.gi; }); });
+    if(SEL == null || !all.some(function(s){ return s.key === SEL; })) SEL = (all.filter(function(s){ return s.gi === NOWG; })[0] || all[all.length - 1] || {}).key;
+    var cur = 0; GS.forEach(function(g, k){ if(NOWG >= g.stops[0].gi && NOWG <= g.stops[g.stops.length - 1].gi) cur = k; });
+    // Which sections are open: the current stop's unit at first; after that whatever the student opened stays open.
+    var keep = {}; if(OPEN) $$('#lpUnits details.lp-u').forEach(function(d){ if(d.open) keep[d.id] = 1; });
+    var nu = $('#lpUnits');
+    nu.innerHTML = GS.map(function(g, k){ return headHTML(g, k, ALL || keep[g.id] || k === cur); }).join('');
+    OPEN = true;
+    $$('#lpUnits details.lp-u[open]').forEach(drawUnit);
+    var ab = $('#lpHome [data-act="allunits"]'); if(ab){ ab.hidden = GS.length < 2; ab.textContent = ALL ? 'Show only the current unit' : 'Show every unit'; ab.setAttribute('aria-pressed', ALL); }
+    var h = $('#lpTitle'), sub = $('#lpSub');
+    if(h) h.innerHTML = made ? 'Your <span>path</span> through ' + esc(D.name) : 'The <span>path</span> through ' + esc(D.name);
+    if(sub) sub.textContent = !made ? 'Every lesson, skill, practice set and unit test, in course order.' : S.mode === 'cram' ? 'Built from your answers, around your test date.' : 'Built from your answers, in course order' + (deadline() ? ', around your exam date.' : '.');
+    $('#lpSetup').innerHTML = made
+      ? '<div class="lp-card lp-mine"><div class="hd"><h3>Your path</h3><button type="button" class="lp-link" data-act="setup">Change</button></div><p class="lp-meta2">' + metaHTML() + '</p></div>' + bannersHTML()
+      : '<div class="lp-card lp-make"><h3>Create your <span>personalized path</span></h3><p>Three quick questions and it starts in the right place.</p><button type="button" class="lp-btn gold sm" data-act="setup">Create my path</button></div>';
+    $('#lpSel').innerHTML = selHTML(selStop());
+    var mp = $('#lpMap'); mp.innerHTML = mapHTML(GS); mp.hidden = false;
+    $$('#lpHome .lp-static').forEach(function(x){ x.classList.remove('lp-static'); });
+    home.classList.remove('lp-ret'); home.classList.add('lp-on');
+    var url = stopUrl(selStopNow());
+    if(made) [$('.sticky-cta a')].forEach(function(a){ if(a && url){ a.textContent = 'Continue your path'; a.setAttribute('href', url); } });
+    if(!made) S.mode = null;
+  }
+  function selStopNow(){ for(var k = 0; k < GS.length; k++) for(var i = 0; i < GS[k].stops.length; i++) if(GS[k].stops[i].gi === NOWG) return GS[k].stops[i]; return null; }
+  function openUnit(k){ var det = $('#lpu-' + k); if(det && !det.open){ det.open = true; drawUnit(det); } return det; }
+  function select(key, scroll){
+    SEL = key;
+    var k = groupOf(key); if(scroll && k >= 0) openUnit(k);
+    $$('#lpUnits .lp-s').forEach(function(b){ var on = b.getAttribute('data-stop') === key; b.classList.toggle('sel', on); b.setAttribute('aria-pressed', on); });
+    var made = !!S.mode; if(!made) S.mode = 'self';
+    $('#lpSel').innerHTML = selHTML(selStop());
+    $('#lpMap').innerHTML = mapHTML(GS);
+    if(!made) S.mode = null;
+    if(scroll){ var b = $('#lpUnits [data-stop="' + key.replace(/"/g, '') + '"]'); if(b) b.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    // The stop's card is in the side column (under the path on a phone): bring it into view when it is off screen.
+    else { var c = $('#lpSel'), r = c && c.getBoundingClientRect(); if(r && (r.top < 70 || r.bottom > window.innerHeight)) c.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+  }
+  function toggleAll(){
+    ALL = !ALL; var cur = 0; GS.forEach(function(g, k){ if(NOWG >= g.stops[0].gi && NOWG <= g.stops[g.stops.length - 1].gi) cur = k; });
+    $$('#lpUnits details.lp-u').forEach(function(d, k){ d.open = ALL || k === cur; if(d.open) drawUnit(d); });
+    var ab = $('#lpHome [data-act="allunits"]'); if(ab){ ab.textContent = ALL ? 'Show only the current unit' : 'Show every unit'; ab.setAttribute('aria-pressed', ALL); }
   }
 
   /* ---------- the end of a lesson or notes page ---------- */
@@ -384,19 +382,19 @@
     var n = nowStop(), inner;
     if(here >= 0 && (st[here].state === 'now' || st[here].state === 'todo') && !isF(t.id)){
       inner = '<div class="tx"><p class="lp-k">On your path · this stop</p><h3>' + esc(tName(t)) + '</h3><p>' + (lessonDone(t) || !t.l ? 'Done with the notes and some practice? Mark it and the path moves on.' : 'Finishing the interactive lesson moves the path on by itself. Using the notes and practice instead? Mark it done when you are ready.') + '</p></div>' + stepList(t, false) +
-        '<div class="act"><button type="button" class="lp-btn gold" data-act="markdone" data-id="' + esc(t.id) + '">Mark done</button><a class="lp-link" href="' + esc(abs('path.html')) + '">Back to your path</a></div>';
+        '<div class="act"><button type="button" class="lp-btn gold" data-act="markdone" data-id="' + esc(t.id) + '">Mark done</button><a class="lp-link" href="' + esc(home()) + '">Back to your path</a></div>';
     } else if(isF(t.id) && (here >= 0 || S.mode !== 'class' || t.id === S.anchor)){
       if(S.mode === 'class' && t.id === S.anchor && S.ack.anchor !== t.id){
         inner = '<div class="tx"><p class="lp-k">Your class topic is done</p><h3>What is your class on now?</h3><p>The path does not guess what your teacher does next. Tell it, and it lines up what you need.</p></div><span></span><div class="act"><button type="button" class="lp-btn gold" data-act="picker">Something new</button><button type="button" class="lp-link" data-act="still">Still on ' + esc(lower(t.t)) + '</button></div>';
       } else {
-        inner = '<div class="tx"><p class="lp-k">Done · next on your path</p><h3>' + esc(n ? (n.kind === 'topic' ? tName(BY[n.id]) : n.title) : 'Path complete') + '</h3><p>' + (n && n.cls ? 'Your class topic.' : n && n.pre ? 'Needed before your class topic.' : 'Pick up right where the path goes next.') + '</p></div><span></span><div class="act">' + (n && stopUrl(n) ? '<a class="lp-btn gold" href="' + esc(stopUrl(n)) + '">Continue</a>' : '') + '<a class="lp-link" href="' + esc(abs('path.html')) + '">Back to your path</a></div>';
+        inner = '<div class="tx"><p class="lp-k">Done · next on your path</p><h3>' + esc(n ? (n.kind === 'topic' ? tName(BY[n.id]) : n.title) : 'Path complete') + '</h3><p>' + (n && n.cls ? 'Your class topic.' : n && n.pre ? 'Needed before your class topic.' : 'Pick up right where the path goes next.') + '</p></div><span></span><div class="act">' + (n && stopUrl(n) ? '<a class="lp-btn gold" href="' + esc(stopUrl(n)) + '">Continue</a>' : '') + '<a class="lp-link" href="' + esc(home()) + '">Back to your path</a></div>';
       }
     } else if(S.mode === 'class' && !S.ack['off:' + t.id]){
       inner = '<div class="tx"><p class="lp-k">Not on your path right now</p><h3>Is your class on ' + esc(lower(t.t)) + ' now?</h3><p>Say yes and the path re-centers here. Everything you have done stays done.</p></div><span></span><div class="act"><button type="button" class="lp-btn gold" data-act="anchor" data-id="' + esc(t.id) + '">Yes, my class is on this</button><button type="button" class="lp-link" data-act="offno" data-id="' + esc(t.id) + '">No, just looking</button></div>';
     } else if(S.mode === 'cram' && S.cram.kind === 'test' && here < 0){
-      inner = '<div class="tx"><p class="lp-k">Not on your test list</p><h3>Is ' + esc(lower(t.t)) + ' on your test?</h3></div><span></span><div class="act"><button type="button" class="lp-btn gold" data-act="togglecram" data-id="' + esc(t.id) + '">Add it to my test</button><a class="lp-link" href="' + esc(abs('path.html')) + '">Back to your path</a></div>';
+      inner = '<div class="tx"><p class="lp-k">Not on your test list</p><h3>Is ' + esc(lower(t.t)) + ' on your test?</h3></div><span></span><div class="act"><button type="button" class="lp-btn gold" data-act="togglecram" data-id="' + esc(t.id) + '">Add it to my test</button><a class="lp-link" href="' + esc(home()) + '">Back to your path</a></div>';
     } else {
-      inner = '<div class="tx"><p class="lp-k">Your path</p><h3>Up next: ' + esc(n ? (n.kind === 'topic' ? BY[n.id].t : n.title) : 'nothing left') + '</h3></div><span></span><div class="act">' + (n && stopUrl(n) ? '<a class="lp-btn gold" href="' + esc(stopUrl(n)) + '">Continue your path</a>' : '') + '<a class="lp-link" href="' + esc(abs('path.html')) + '">Open your path</a></div>';
+      inner = '<div class="tx"><p class="lp-k">Your path</p><h3>Up next: ' + esc(n ? (n.kind === 'topic' ? BY[n.id].t : n.title) : 'nothing left') + '</h3></div><span></span><div class="act">' + (n && stopUrl(n) ? '<a class="lp-btn gold" href="' + esc(stopUrl(n)) + '">Continue your path</a>' : '') + '<a class="lp-link" href="' + esc(home()) + '">Open your path</a></div>';
     }
     box.innerHTML = '<div class="lp-det">' + inner + '</div>';
   }
@@ -416,7 +414,7 @@
     }
     if(S.mode === 'cram' && here < 0) return '';
     return '<div class="tx"><p class="lp-k">' + (here >= 0 && st[here].state === 'now' ? 'On your path · up next' : 'On your path') + '</p><p>' + (t.l && !lessonDone(t) ? 'Read it here, or finish the interactive lesson. ' : '') + 'Mark it done when you are ready.</p></div>' +
-      '<div class="act"><button type="button" class="lp-btn sm gold" data-act="markdone" data-id="' + esc(t.id) + '">Mark done</button><a class="lp-link" href="' + esc(abs('path.html')) + '">Your path</a></div>';
+      '<div class="act"><button type="button" class="lp-btn sm gold" data-act="markdone" data-id="' + esc(t.id) + '">Mark done</button><a class="lp-link" href="' + esc(home()) + '">Your path</a></div>';
   }
   function renderBook(){
     if(!BOOK || !S.mode) return;
@@ -553,7 +551,7 @@
     if((SU.how === 'self' || SU.how === 'class') && SU.dl === 'date' && SU.date) setExamDate(SU.date);
     if((SU.how === 'self' || SU.how === 'class') && SU.dl === 'exam' && D.exam.date){ try{ if(localStorage.getItem(EXAM_KEY) === 'none') localStorage.removeItem(EXAM_KEY); }catch(e){} }
     save(); closeM(); track('path_made', { mode: S.mode });
-    if(!$('#levlPath')){ location.href = abs('path.html'); return; }
+    if(!$('#lpHome')){ location.href = home(); return; }
     toast('Path made. You can change it any time.'); SEL = null; renderAll();
   }
   function openPicker(){
@@ -588,13 +586,16 @@
 
   /* ---------- events ---------- */
   function onClick(e){
-    var a = e.target.closest('[data-act]'), sp = e.target.closest('#lpTrack [data-stop]'), go = e.target.closest('#lpMap [data-go]');
+    var a = e.target.closest('[data-act]'), sp = e.target.closest('#lpUnits [data-stop]'), go = e.target.closest('#lpMap [data-go]');
     if(sp){ select(sp.getAttribute('data-stop'), false); return; }
     if(go){ select(go.getAttribute('data-go'), true); return; }
-    if(!a || !(a.closest('.lp-ov') || a.closest('#levlPath') || a.closest('#lpSlot') || a.closest('#lpEnd') || a.closest('.lp-secend'))) return;
+    var mu = e.target.closest('#lpMap [data-unit]');
+    if(mu){ e.preventDefault(); var det = openUnit(+mu.getAttribute('data-unit')); if(det) det.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    if(!a || !(a.closest('.lp-ov') || a.closest('#lpHome') || a.closest('#lpEnd') || a.closest('.lp-secend'))) return;
     var act = a.getAttribute('data-act'), id = a.getAttribute('data-id');
     if(act === 'setup') openSetup();
-    else if(act === 'skip'){ closeM(); if(!S.mode){ S.mode = 'self'; S.seen = Date.now(); save(); track('path_made', { mode: 'skip' }); } if(!$('#levlPath')) location.href = abs('path.html'); else renderAll(); }
+    else if(act === 'allunits') toggleAll();
+    else if(act === 'skip'){ closeM(); if(!S.mode){ S.mode = 'self'; S.seen = Date.now(); save(); track('path_made', { mode: 'skip' }); } if(!$('#lpHome')) location.href = home(); else renderAll(); }
     else if(act === 'sunext'){ if(a.disabled) return; var st = suSteps(); if(SU.how && SU.i < st.length - 1){ SU.i++; stepSetup(); } else if(SU.how) applySetup(); }
     else if(act === 'suback'){ SU.i = Math.max(0, SU.i - 1); stepSetup(); }
     else if(act === 'close') closeM();
@@ -608,23 +609,25 @@
     else if(act === 'check') openCheck(id);
     else if(act === 'still'){ S.ack.anchor = S.anchor; save(); toast('Okay. Review and gaps while your class finishes it.'); renderAll(); }
     else if(act === 'offno'){ S.ack['off:' + id] = 1; save(); renderAll(); }
-    else if(act === 'okbehind'){ BEHIND = false; S.ack.behind = today(); save(); renderPath(); }
-    else if(act === 'toexam'){ S.mode = 'cram'; S.cram = { kind: 'exam', topics: [], date: '' }; S.ack.exam = 1; SEL = null; save(); toast('Switched to exam review. Everything you did stays done.'); if(!$('#levlPath')) location.href = abs('path.html'); else renderAll(); }
-    else if(act === 'ackexam'){ S.ack.exam = 1; save(); renderPath(); }
+    else if(act === 'okbehind'){ BEHIND = false; S.ack.behind = today(); save(); renderHome(); }
+    else if(act === 'toexam'){ S.mode = 'cram'; S.cram = { kind: 'exam', topics: [], date: '' }; S.ack.exam = 1; SEL = null; save(); toast('Switched to exam review. Everything you did stays done.'); if(!$('#lpHome')) location.href = home(); else renderAll(); }
+    else if(act === 'ackexam'){ S.ack.exam = 1; save(); renderHome(); }
   }
 
   // The textbook rails (*-toc.js, ochem textbook.js) tick what the path marks done too.
   function changed(){ try{ document.dispatchEvent(new CustomEvent('levl:pathchange', { detail: { course: KEY } })); }catch(e){} }
-  function renderAll(){ readProgress(); ACC = null; renderPath(); renderHome(); renderEnd(); renderBook(); }
+  function renderAll(){ readProgress(); ACC = null; renderHome(); renderEnd(); renderBook(); }
   var PAGE_T = null, BOOK = false;
   function start(data){
     D = data; U = D.units; T = D.topics.map(function(t, i){ t.i = i; BY[t.id] = t; return t; });
     S = load(); readProgress();
-    BOOK = !$('#levlPath') && !$('main.r3-home') && /\/(learn|study-notes)\.html$/.test(location.pathname) && !!$('main.tb-main');
-    PAGE_T = $('#levlPath') || $('main.r3-home') || BOOK ? null : pageTopic();
+    BOOK = !$('main.r3-home') && /\/(learn|study-notes)\.html$/.test(location.pathname) && !!$('main.tb-main');
+    PAGE_T = $('main.r3-home') || BOOK ? null : pageTopic();
     if(BOOK){ var bq = false, bm = $('main.tb-main'); new MutationObserver(function(){ if(bq) return; bq = true; setTimeout(function(){ bq = false; renderBook(); }, 120); }).observe(bm, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden'] }); }
     document.addEventListener('click', onClick);
-    if($('#levlPath') || $('main.r3-home')) maybeCheckin();
+    // A unit section opened by tap (or by the browser's find in page) draws its stops then.
+    document.addEventListener('toggle', function(e){ var d = e.target; if(d && d.classList && d.classList.contains('lp-u') && d.open) drawUnit(d); }, true);
+    if($('#lpHome')) maybeCheckin();
     renderAll();
     // A lesson finishing on this page, or progress from another tab.
     window.addEventListener('storage', function(e){ if(!e.key || e.key === SK || e.key === D.progress || /ochem_|nremt_lessons/.test(e.key)){ S = load(); renderAll(); } });
@@ -633,11 +636,13 @@
     if(PAGE_T){ var was = isF(PAGE_T.id); setInterval(function(){ readProgress(); var nowDone = isF(PAGE_T.id); if(nowDone !== was){ was = nowDone; renderEnd(); } }, 4000); }
     // The ochem textbook marks a section read on the page itself (no storage event in the same tab).
     if(BOOK) document.addEventListener('levl:bookread', function(){ readProgress(); renderBook(); });
-    var rt, lw = window.innerWidth; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ if(window.innerWidth !== lw && $('#lpTrack')){ lw = window.innerWidth; renderPath(); } }, 150); });
+    var rt, lw = window.innerWidth; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ if(window.innerWidth !== lw && $('#lpHome')){ lw = window.innerWidth; $$('#lpUnits details.lp-u[open]').forEach(drawUnit); } }, 150); });
   }
   window.LevlPath = { course: KEY, open: function(){ if(D) openSetup(); } };
   fetch('/assets/path/' + KEY + '.json', { credentials: 'same-origin' }).then(function(r){ return r.ok ? r.json() : null; }).then(function(d){
     if(d && d.v === 1) start(d);
-    else { var h = $('#levlPath'); if(h) h.innerHTML = '<p class="lp-load">The path could not load. Refresh the page to try again.</p>'; }
-  }).catch(function(){ var h = $('#levlPath'); if(h) h.innerHTML = '<p class="lp-load">The path could not load. Check your connection and refresh.</p>'; });
+    else loadFail('Refresh the page to try again.');
+  }).catch(function(){ loadFail('Check your connection and refresh.'); });
+  // The first paint (scripts/lib/r3-home.mjs) stays: every section still links its first topic.
+  function loadFail(m){ var h = $('#lpHome'); if(!h) return; h.classList.remove('lp-ret'); var n = $('#lpUnits'); if(n) n.insertAdjacentHTML('beforebegin', '<p class="lp-load">Your progress could not load. ' + m + '</p>'); }
 })();

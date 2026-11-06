@@ -218,10 +218,6 @@
 .r3 .ruled-h p{margin:0;color:var(--muted);max-width:30em;font-size:15px}
 .r3 .band .art{max-width:520px;justify-self:end;width:100%}
 .r3 .band .art svg{max-width:100%}
-.r3 .band.short .hwrap{padding-top:28px;padding-bottom:64px;grid-template-columns:1.4fr 1fr}
-.r3 .band.short .art{max-width:300px}
-.r3 .band.short .deck{font-size:44px;line-height:1.02;margin:6px 0 6px}
-.r3 .band.short .lede{max-width:34em}
 .r3 .lead.after-short{margin-top:-40px}
 .r3 .toc .grp{font-size:13.5px;color:var(--muted);display:block;margin-top:2px;line-height:1.4}
 .r3 .toc .w.txt{font-size:15px}
@@ -484,3 +480,24 @@
 .r3 .media .vstrip{margin:0}
 .r3 .media .dept{margin:0}
 .r3 .media .dept a{border-top:0;padding-top:0}
+/* ---- the small band on inner tabs (docs/course-redesign-r4.md decision 3, owner 2026-11-05) ----
+   A smaller copy of the home band: same colour and grid, the issue line, the title, one sub line and the course
+   art small on the right (hidden on phones). Its foot is padded so the first card under it, marked .lap, can
+   overlap it by 38px. Declared last and with .short so it wins over the tall band's rules at every width. */
+.r3 .band.short::after{width:420px;height:420px;right:-90px;top:-210px}
+.r3 .band.short .hwrap{grid-template-columns:minmax(0,1fr) auto;gap:16px 32px;align-items:center;padding-top:26px;padding-bottom:64px}
+.r3 .band.short .issue{margin:0 0 8px}
+.r3 .band.short .deck{font:900 38px/1.05 var(--display);letter-spacing:-.035em;margin:0}
+.r3 .band.short .hand{font-size:19px;margin:6px 0 0}
+.r3 .band.short .lede,.r3 .band.short .sub{max-width:40em;margin:4px 0 0;font-size:15px;font-weight:700;line-height:1.5;color:rgba(255,255,255,.78)}
+.r3 .band.short .hero-ctas{margin-top:14px}
+.r3 .band.short .art{width:170px;max-width:170px;height:96px;justify-self:end;order:0}
+.r3 .band.short .art img,.r3 .band.short .art svg{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 12px 18px rgba(0,0,0,.3))}
+.r3 .lap{margin-top:-38px;position:relative;z-index:2}
+@media (max-width:760px){
+  .r3 .band.short .hwrap{grid-template-columns:minmax(0,1fr);padding-top:18px;padding-bottom:54px}
+  .r3 .band.short .art{display:none}
+  .r3 .band.short .deck{font-size:28px}
+  .r3 .band.short .hand{font-size:17px}
+  .r3 .lap{margin-top:-30px}
+}

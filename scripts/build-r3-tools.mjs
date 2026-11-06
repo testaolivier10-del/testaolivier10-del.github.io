@@ -76,10 +76,7 @@ const CREDIT = 'Figure from BodyParts3D &copy; 2008 <a href="https://lifescience
 const card = (slug, name, desc, foot, premium) => ({ slug, href: `${slug}.html`, name, desc, foot, free: !premium, attrs: premium ? ' data-premium="1"' : '' });
 const hub = toolsHubMain({
   key: 'nremt', up: '../', mountClass: 'cx-tools',
-  crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: 'NREMT-EMT', href: 'index.html' }, { name: 'Tools' }],
-  h1: 'What a question bank <span>can&rsquo;t test.</span>', hand: 'anatomy, sounds, calls and the skill stations',
-  lede: 'Practice the parts a question bank can&rsquo;t test: anatomy, sounds, protocol flow, call simulations and the skill sheets.',
-  cta: { href: 'body-map.html', label: 'Open the body map' }, cta2: { href: 'search.html', label: 'Search everything' },
+  hand: 'anatomy, sounds, calls and the skill stations',
   /* No featured tool (owner 2026-11-02: no one tool gets its own section); the body map is the first card. */
   featured: null,
   // Free, then With Premium, as on every course's hub (toolsHubMain's pass; consistency audit 2026-11, C5).

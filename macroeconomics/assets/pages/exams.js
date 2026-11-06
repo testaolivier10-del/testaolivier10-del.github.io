@@ -861,6 +861,14 @@
 
   /* ------------------------------------------------------ boot */
 
+  /* ?go=1 from the Practice panel (docs/course-redesign-r4.md decision 5): start the exam the settings describe. */
+  function goNow(p){
+    if(p.get('go') !== '1') return;
+    try{ history.replaceState(null, '', location.pathname); }catch(e){}
+    var b = app.querySelector('.cx-start [type="submit"]');
+    if(b && !b.disabled) b.click();
+  }
+
   function boot(){
     if(!Q || !Core){ app.innerHTML = '<p>Exams could not start. Reload the page to try again.</p>'; return; }
     app.innerHTML = '<p class="mac-small">Loading the question bank…</p>';
@@ -881,10 +889,12 @@
       if(builtUnits().some(function(u){ return u.id === p.get('unit'); })){ cfg.unit = p.get('unit'); cfg.kind = 'unit'; }
       if(p.get('mode') === 'unit' || p.get('mode') === 'full' || p.get('mode') === 'mixed') cfg.kind = p.get('mode');
       if(MIXED.indexOf(+p.get('n')) > -1) cfg.n = +p.get('n');
+      if(p.get('len') !== null && [15, 25, 0].indexOf(+p.get('len')) > -1) cfg.len = +p.get('len');
+      if(TIMINGS.some(function(t){ return t.id === p.get('timing'); })) cfg.timing = p.get('timing');
       if(formById('form-' + p.get('form'))){ cfg.form = 'form-' + p.get('form'); cfg.kind = 'full'; }
       if(p.get('section') === '1' || p.get('section') === '2') cfg.section = p.get('section');
       else if(cfg.kind === 'full' && FORMS.length && !p.get('form')) cfg.form = FORMS[0].id;
-      if(LA) classBoot(); else renderSetup();
+      if(LA) classBoot(); else { renderSetup(); goNow(p); }
       if(p.toString()){ var s = app.querySelector('.mac-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){ app.innerHTML = '<p>The question bank did not load. Check your connection and reload.</p>'; });
   }

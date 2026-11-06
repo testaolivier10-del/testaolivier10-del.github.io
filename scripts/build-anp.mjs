@@ -35,6 +35,7 @@ import {
 import { applyVideo } from './lib/videos.mjs';
 import { r3Reading } from './lib/r3-reading.mjs';
 import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
+import { practicePage } from './lib/practice-panel.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const OUT = join(ROOT, 'anatomy-physiology');
@@ -849,6 +850,7 @@ ${[...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'd
   if (entry.slug === 'dashboard') return dashboardPage(page, 'anp');
   const out = study ? page.replace(`<link rel="stylesheet" href="${depth}assets/anp.css">`,
     `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/study.css">\n<link rel="stylesheet" href="${depth}assets/anp.css">`) : page;
+  if (entry.slug === 'practice' && !depth) return practicePage(out, 'anp');
   return entry.slug === 'exams' && !depth ? examsPage(out, 'anp') : out;
 }
 const STUDY_PAGES = new Set(['practice', 'review', 'exams', 'flashcards']);
@@ -985,10 +987,7 @@ function toolsHubR3() {
   void LAB_MODES; void figN; /* no featured tool (owner 2026-11-02); the lab practical is the first card */
   return toolsHubMain({
     key: 'anp', up: '../', status: true, mountClass: 'anp-app-mount',
-    crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: esc(COURSE_NAME), href: 'index.html' }, { name: 'Tools' }],
-    h1: 'Start at <span>the lab bench.</span>', hand: 'then work the physiology',
-    lede: `${numWord(tools.length)} tools. Name structures on real figures and a 3D body, then work the physiology. Every tool explains its answers, and what you miss goes into your <a href="review.html">review queue</a>.`,
-    cta: { href: 'tools/lab-practical.html', label: 'Start the lab practical' }, cta2: { href: 'search.html', label: 'Search everything' },
+    hand: 'then work the physiology',
     before: '<div class="anp-hub-filter" hidden></div>',
     // Free, then With Premium, as on every course's hub (toolsHubMain's pass; consistency audit 2026-11, C5).
     pass: esc(COURSE_NAME), groups: [{ h: 'Tools',

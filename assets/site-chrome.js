@@ -354,17 +354,9 @@
   var TAB_ICONS = {
     'Home':      '<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1z"/>',
     'Practice':  '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',
-    'Path':      '<path d="M5 19h8a3 3 0 000-6h-2a3 3 0 010-6h8"/>',
     'Learn':     '<path d="M4 5h6a3 3 0 013 3v12a2 2 0 00-2-2H4zM20 5h-6a3 3 0 00-3 3v12a2 2 0 012-2h7z"/>',
-    'Notes':     '<path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h6"/>',
-    // A stopwatch for timed exams; an "Aa" page for the glossary.
-    'Exams':     '<circle cx="12" cy="14" r="7"/><path d="M12 14V10.5M10 3h4M12 3v4M18.5 7.5l1.5-1.5"/>',
-    'Glossary':  '<path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3z"/><path d="M5 17a3 3 0 013-3h11"/><path d="M9 11l1.6-4 1.6 4M9.6 9.8h2"/>',
-    'Review':    '<path d="M3 12a9 9 0 019-9 9 9 0 017 3.4M21 12a9 9 0 01-9 9 9 9 0 01-7-3.4"/><path d="M21 3v4h-4M3 21v-4h4"/>',
-    'Flashcards':'<rect x="3" y="6" width="14" height="11" rx="2"/><path d="M7 3h12a2 2 0 012 2v9"/>',
     'Tools':     '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
-    'Dashboard': '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
-    'More':      '<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',
+    'Progress':  '<path d="M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-3"/>'
   };
   var GENERIC_ICON = '<path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/>';
   function tabIcon(label){
@@ -372,69 +364,42 @@
       (TAB_ICONS[label] || GENERIC_ICON) + '</svg>';
   }
 
-  /* The phone-width tab bar: the first four tabs, then "More" for the rest.
-     A page with four tabs or fewer gets them all and no More. */
-  function renderBottomNav(cfg, mount){
+  /* The five course tabs (docs/course-redesign-r4.md decision 1). A nav file
+     passes its base and its page's section (else the file name decides). */
+  var TAB_OF = {
+    home: 'home', index: 'home', path: 'home',
+    learn: 'learn', 'study-notes': 'learn', notes: 'learn', lessons: 'learn', units: 'learn', 'unit-sheets': 'learn',
+    glossary: 'learn', videos: 'learn', mnemonics: 'learn',
+    practice: 'practice', review: 'practice', flashcards: 'practice', exams: 'practice', 'exam-day': 'practice',
+    frq: 'practice', justify: 'practice', cram: 'practice', 'unit-tests': 'practice', session: 'practice', mixed: 'practice',
+    tools: 'tools', dashboard: 'progress', mastery: 'progress', progress: 'progress', 'study-plan': 'progress'
+  };
+  function tabOf(name){ return Object.prototype.hasOwnProperty.call(TAB_OF, name) ? TAB_OF[name] : ''; }
+  function courseTabs(base, section, o){
+    base = base || ''; o = o || {};
+    var file = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '');
+    var on = tabOf(section) || tabOf(file);
+    return [
+      ['home', 'Home', 'index.html'], ['learn', 'Learn', o.learn || 'learn.html'], ['practice', 'Practice', 'practice.html'],
+      ['tools', 'Tools', 'tools.html'], ['progress', 'Progress', 'dashboard.html']
+    ].map(function(t){ return { href: base + t[2], label: t[1], active: t[0] === on }; });
+  }
+
+  // The phone tab bar: every tab, no More sheet (r4 decision 1).
+  function renderBottomNav(cfg){
     var items = cfg.items || [];
     if(!items.length) return;
     var old = document.getElementById('levlBottomNav');
     if(old) old.remove();
-    var oldSheet = document.getElementById('levlBottomSheet');
-    if(oldSheet) oldSheet.remove();
-    var oldScrim = document.getElementById('levlBottomScrim');
-    if(oldScrim) oldScrim.remove();
-
-    var shown = items.length > 5 ? items.slice(0, 4) : items;
-    var rest = items.length > 5 ? items.slice(4) : [];
-    var restActive = rest.some(function(it){ return it.active; });
-
     var nav = document.createElement('nav');
     nav.id = 'levlBottomNav';
     nav.className = 'bottom-nav';
     nav.setAttribute('aria-label', (cfg.course || 'Sections') + ' sections');
-    nav.innerHTML = shown.map(function(it){
+    nav.innerHTML = items.map(function(it){
       return '<a href="' + it.href + '" class="bottom-nav__item' + (it.active ? ' active' : '') + '"' +
         (it.active ? ' aria-current="page"' : '') + '><span class="i">' + tabIcon(it.label) + '</span><span class="t">' + escapeHtml(it.label) + '</span></a>';
-    }).join('') + (rest.length
-      ? '<button type="button" class="bottom-nav__item' + (restActive ? ' active' : '') + '" id="levlMoreTab" aria-haspopup="true" aria-expanded="false"><span class="i">' + tabIcon('More') + '</span><span class="t">More</span></button>'
-      : '');
-    document.body.appendChild(nav);
-
-    if(!rest.length) return;
-    var scrim = document.createElement('div');
-    scrim.id = 'levlBottomScrim';
-    scrim.className = 'bottom-scrim';
-    var sheet = document.createElement('div');
-    sheet.id = 'levlBottomSheet';
-    sheet.className = 'bottom-sheet';
-    sheet.setAttribute('role', 'dialog');
-    sheet.setAttribute('aria-label', 'More sections');
-    sheet.innerHTML = '<div class="bottom-sheet__grab"></div>' + rest.map(function(it){
-      return '<a href="' + it.href + '"' + (it.active ? ' class="active" aria-current="page"' : '') + '><span class="i">' + tabIcon(it.label) + '</span>' + escapeHtml(it.label) + '</a>';
     }).join('');
-    document.body.appendChild(scrim);
-    document.body.appendChild(sheet);
-    var more = document.getElementById('levlMoreTab');
-    more.setAttribute('aria-controls', 'levlBottomSheet');
-    /* Closed, the sheet sits off-screen but its links were still in the tab
-       order (audit 2026-10, fix-first 12): inert + aria-hidden take it out of
-       both the tab order and the accessibility tree until it opens. */
-    function setOpen(open){
-      var was = sheet.classList.contains('open');
-      sheet.classList.toggle('open', open);
-      scrim.classList.toggle('open', open);
-      more.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if(open){ sheet.removeAttribute('inert'); sheet.removeAttribute('aria-hidden'); }
-      else { sheet.setAttribute('inert', ''); sheet.setAttribute('aria-hidden', 'true'); }
-      if(open && !was){ var first = sheet.querySelector('a'); if(first) first.focus(); }
-      if(!open && was && sheet.contains(document.activeElement)) more.focus();
-    }
-    setOpen(false);
-    more.addEventListener('click', function(){ setOpen(!sheet.classList.contains('open')); });
-    scrim.addEventListener('click', function(){ setOpen(false); });
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape' && sheet.classList.contains('open')){ setOpen(false); more.focus(); }
-    });
+    document.body.appendChild(nav);
   }
 
   // A course's own key; anything else is treated as the registry's first
@@ -443,17 +408,39 @@
     return Object.prototype.hasOwnProperty.call(COURSE_SHORT, subject) ? subject : COURSE_LIST[0].key;
   }
 
-  var MENU_ICON =
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" ' +
-      'stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+  // Dots for the settings menu and the phone menu (the r4 mockups' header).
+  var DOTS_ICON =
+    '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
+      '<circle cx="5" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="19" cy="12" r="1.9"/></svg>';
+
+  /* Settings menu (r4 decision 8): a panel from 641px up; on a phone its rows
+     sit in the phone menu. */
+  var SETTINGS_CSS =
+    '.chrome-set-btn svg{width:18px;height:18px}' +
+    '@media (min-width:641px){' +
+      '.chrome-settings{display:none;position:absolute;right:0;top:calc(100% + 10px);z-index:50;flex-direction:column;align-items:stretch;gap:2px;min-width:230px;padding:8px;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-pop)}' +
+      '.chrome-settings.open{display:flex}' +
+      '.chrome-settings .theme-toggle{width:100%;height:44px;max-width:none;border-radius:10px;box-shadow:none;background:none;justify-content:flex-start;gap:12px;padding:0 12px;font:800 14.5px var(--font-ui);color:var(--ink)}' +
+      '.chrome-settings .theme-toggle::after{display:none}' +
+      '.chrome-settings .theme-toggle:hover,.chrome-settings .theme-toggle:focus-visible{background:var(--hover-tint);color:var(--ink)}' +
+      '.chrome-settings .chrome-menu__lbl{display:inline}' +
+    '}' +
+    '@media (max-width:640px){.nav-right .chrome-set-btn{display:none}.chrome-settings{display:contents}}';
+  function injectSettingsCss(){
+    if(document.getElementById('levl-settings-css')) return;
+    var st = document.createElement('style');
+    st.id = 'levl-settings-css';
+    st.textContent = SETTINGS_CSS;
+    document.head.appendChild(st);
+  }
 
   /* Row 1, the same on every page of the site (audit 2026-10: the hub, 404,
      search, terms and the courses each showed a different set of controls).
      The wordmark goes to the hub and the course name to the course home; the
      back arrow that also went to the hub read as "previous page" on a lesson
      and is gone. On a phone, account, answer sounds and theme fold into one
-     menu (.chrome-menu); from 641px up the same nodes sit in the row, because
-     the menu is display:contents there. */
+     menu (.chrome-menu); from 641px up it is display:contents and only sounds
+     and theme sit behind the settings button. */
   function headerHtml(o){
     var link = function(cls, id, title, inner, hidden){
       return o.progressHref
@@ -476,41 +463,51 @@
           '<a href="' + searchUrl(o.courseKey) + '" class="theme-toggle search-toggle" id="searchToggle" aria-label="Search' + (o.courseKey ? '' : ' all courses') + '" title="Search (press /)">' + SEARCH_ICON + '</a>' +
           link('nav-streak', 'navStreak', 'Daily streak', FLAME_SVG + '<span id="navStreakCount">0</span>', true) +
           link('level-badge', 'levelBadge', 'Your level', 'L1', true) +
-          '<button type="button" class="theme-toggle chrome-more" id="chromeMenuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="chromeMenu" aria-label="Account and settings" title="Account and settings">' + MENU_ICON + '</button>' +
+          '<button type="button" class="theme-toggle chrome-more" id="chromeMenuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="chromeMenu" aria-label="Account and settings" title="Account and settings">' + DOTS_ICON + '</button>' +
           '<div class="chrome-menu" id="chromeMenu">' +
             (/^\/teach\//.test(location.pathname) ? '' : '<a class="nav-teach" href="/teach/">For teachers</a>') +
             '<span id="accountSlot"></span>' +
-            (window.LevlSound ? '<button type="button" class="theme-toggle sound-toggle" id="soundToggle"></button>' : '') +
-            '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Dark mode" title="Dark mode">' + THEME_ICONS + '<span class="chrome-menu__lbl">Dark mode</span></button>' +
+            '<button type="button" class="theme-toggle chrome-set-btn" id="settingsBtn" aria-haspopup="true" aria-expanded="false" aria-controls="settingsMenu" aria-label="Settings: dark mode and sound" title="Settings">' + DOTS_ICON + '</button>' +
+            '<div class="chrome-settings" id="settingsMenu" role="group" aria-label="Settings">' +
+              (window.LevlSound ? '<button type="button" class="theme-toggle sound-toggle" id="soundToggle"></button>' : '') +
+              '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Dark mode" title="Dark mode">' + THEME_ICONS + '<span class="chrome-menu__lbl">Dark mode</span></button>' +
+            '</div>' +
           '</div>' +
         '</div>' +
       '</div>';
   }
 
-  /* The phone menu. Closed it is display:none (so out of the tab order);
-     Esc or a click elsewhere closes it and focus goes back to the button. A
-     click inside the account menu or the sign-in dialog, which are drawn
-     outside it, does not count as elsewhere. */
-  function wireChromeMenu(){
-    var btn = document.getElementById('chromeMenuBtn');
-    var menu = document.getElementById('chromeMenu');
+  /* A header menu: closed it is display:none; open, focus goes in; Esc, a
+     click elsewhere (not the account menu or sign-in dialog) or tabbing out
+     closes it. */
+  function wireMenu(btnId, menuId){
+    var btn = document.getElementById(btnId);
+    var menu = document.getElementById(menuId);
     if(!btn || !menu) return;
+    function isOpen(){ return menu.classList.contains('open'); }
     function setOpen(open, refocus){
       menu.classList.toggle('open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if(open){ var first = menu.querySelector('button, a'); if(first) first.focus(); }
+      if(open){ var first = menu.querySelector('button, a'); if(first && first.offsetParent !== null) first.focus(); }
       else if(refocus) btn.focus();
     }
-    btn.addEventListener('click', function(){ setOpen(!menu.classList.contains('open')); });
+    btn.addEventListener('click', function(){ setOpen(!isOpen()); });
     document.addEventListener('click', function(e){
-      if(!menu.classList.contains('open')) return;
+      if(!isOpen()) return;
       var t = e.target;
       if(menu.contains(t) || btn.contains(t) || (t.closest && t.closest('#accountMenu, .auth-modal, .modal-overlay'))) return;
       setOpen(false);
     }, true);
     document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape' && menu.classList.contains('open') && !document.getElementById('accountMenu')) setOpen(false, true);
+      if(e.key === 'Escape' && isOpen() && !document.getElementById('accountMenu')){ e.stopPropagation(); setOpen(false, true); }
+    }, true);
+    menu.addEventListener('focusout', function(e){
+      if(isOpen() && e.relatedTarget && !menu.contains(e.relatedTarget) && e.relatedTarget !== btn && !(e.relatedTarget.closest && e.relatedTarget.closest('#accountMenu'))) setOpen(false);
     });
+  }
+  function wireChromeMenu(){
+    wireMenu('settingsBtn', 'settingsMenu');
+    wireMenu('chromeMenuBtn', 'chromeMenu');
   }
 
   function wireControls(courseKey){
@@ -533,24 +530,14 @@
     wireSearchKey(courseKey);
   }
 
-  // The Path tab after Home in every course (docs/guided-path.md).
-  function withPathTab(items){
-    var home = items && items[0];
-    if(!home || home.label !== 'Home' || items.some(function(it){ return it.label === 'Path'; })) return items;
-    var on = /\/path\.html$/.test(location.pathname);
-    var out = items.map(function(it){ return on ? { href: it.href, label: it.label } : it; });
-    out.splice(1, 0, { href: home.href.replace(/(index\.html)?$/, 'path.html'), label: 'Path', active: on });
-    return out;
-  }
-
   function render(cfg){
     var mount = document.getElementById('site-header');
     if(!mount) return;
     var courseKey = courseKeyOf(cfg.subject);
-    if(COURSE_SHORT[courseKey]) cfg.items = withPathTab(cfg.items);
     // The course tint (see --ctint in theme.css) keys off this.
     document.body.setAttribute('data-course', courseKey);
 
+    injectSettingsCss();
     mount.innerHTML = headerHtml({
       course: cfg.course, courseHref: cfg.courseHref, courseShort: cfg.courseShort,
       courseKey: courseKey, progressHref: cfg.progressHref
@@ -577,7 +564,7 @@
     if(window.StudyHubAccount) window.StudyHubAccount.renderAccountUI();
 
     wireOverflowFade(nav.querySelector('.course-nav__inner'));
-    renderBottomNav(cfg, mount);
+    renderBottomNav(cfg);
     wireControls(courseKey);
 
     syncHeights();
@@ -629,6 +616,7 @@
     opts = opts || {};
     var mount = document.getElementById('site-header');
     if(!mount) return;
+    injectSettingsCss();
     mount.innerHTML = headerHtml({ courseKey: '', progressHref: opts.progressHref || '' });
     if(window.HubProgress) window.HubProgress.mount('hub', { href: opts.progressHref || '' });
     if(window.StudyHubAccount) window.StudyHubAccount.renderAccountUI();
@@ -1104,6 +1092,7 @@
 
   window.LevlChrome = {
     render: render,
+    courseTabs: courseTabs,
     renderSite: renderSite,
     setTheme: setTheme,
     syncHeights: syncHeights,

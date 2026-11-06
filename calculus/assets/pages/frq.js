@@ -60,6 +60,12 @@
       var p = new URLSearchParams(location.search);
       if(K.TYPES[p.get('type')]) filter.type = p.get('type');
       if(UNIT[p.get('unit')]) filter.unit = p.get('unit');
+      /* ?go=1 from the Practice panel (docs/course-redesign-r4.md decision 5): straight to the first matching question not yet scored. */
+      if(p.get('go') === '1'){
+        var sc0 = K.scores(), pool = all.filter(function(f){ return (!filter.type || f.type === filter.type) && (!filter.unit || f.units.indexOf(filter.unit) > -1); });
+        var first = pool.filter(function(f){ return !sc0[f.id]; })[0] || pool[0];
+        if(first){ location.replace(BASE + 'frq/' + first.id + '.html'); return; }
+      }
       var units = []; all.forEach(function(f){ f.units.forEach(function(u){ if(units.indexOf(u) < 0) units.push(u); }); });
       units.sort(function(a, b){ return CUR.units.findIndex(function(x){ return x.id === a; }) - CUR.units.findIndex(function(x){ return x.id === b; }); });
       var have = {}; all.forEach(function(f){ have[f.type] = (have[f.type] || 0) + 1; });

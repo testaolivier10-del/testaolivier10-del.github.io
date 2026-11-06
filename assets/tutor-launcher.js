@@ -3,8 +3,10 @@
    assets/tutor.js is about 1,300 lines (the retrieval index, the panel, the
    AI layer). Every page used to download and parse it on load for a button
    most visitors never press (site audit 2026-10, performance). This file is
-   only the button: the mascot, its first-visit tip and the tuck-on-scroll on
-   phones. Reaching for it (hover or focus) starts fetching tutor.js; pressing
+   only the button: the mascot and the tuck-on-scroll on phones. It is
+   icon-only (docs/course-redesign-r4.md decision 8): the "Ask me anything"
+   label beside it covered page content, so the name lives in aria-label and
+   the hover tooltip instead. Reaching for it (hover or focus) starts fetching tutor.js; pressing
    it opens the panel as soon as tutor.js arrives. tutor.js adopts this button
    instead of drawing its own. Mounted by site-chrome.js (mountTutor).
 
@@ -13,7 +15,6 @@
   'use strict';
   if(window.LEVLPREP_TUTOR_INLINE || document.querySelector('.lp-launch')) return;
 
-  var MET_KEY = 'levlprep_ai_met';
   var CSS = '.lp-launch{position:fixed;right:20px;bottom:20px;z-index:42;width:58px;height:58px;padding:0;' +
     'border:none;background:transparent;cursor:pointer;line-height:0;' +
     'filter:drop-shadow(0 4px 10px rgba(0,0,0,.26));transition:transform .16s ease, opacity .2s ease;}' +
@@ -22,12 +23,9 @@
     '.lp-launch:active{transform:translateY(1px) scale(.98);}' +
     '.lp-launch:hover .lp-eye{r:5.6;}' +
     '.lp-launch[aria-busy=true]{opacity:.7;}' +
-    // A mascot with no label is a mystery button on first visit, so it says
-    // what it is until someone has actually opened it once.
-    '.lp-tip{position:fixed;right:86px;bottom:34px;z-index:42;background:var(--navy);color:#fff;' +
-    'font:800 12.5px var(--font-ui);padding:7px 12px;border-radius:10px;white-space:nowrap;' +
-    'pointer-events:none;opacity:0;transform:translateX(6px);transition:opacity .18s ease, transform .18s ease;}' +
-    '.lp-tip.show{opacity:1;transform:translateX(0);}' +
+    // No visible label (decision 8); tutor.js still looks for a .lp-tip, so
+    // an empty one stays in the page, never shown.
+    '.lp-tip{display:none!important;}' +
     '.lp-bob{transform-box:fill-box;transform-origin:center;animation:lpbob 4.2s ease-in-out infinite;}' +
     '@keyframes lpbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}' +
     '.lp-blip{animation:lppulse 2.4s ease-in-out infinite;}' +
@@ -36,7 +34,7 @@
     // Phones: a smaller mascot parked just above the bottom tab bar, tucked
     // away while the reader scrolls down (html.lp-tucked).
     '@media(max-width:640px){.lp-launch{right:12px;bottom:calc(84px + env(safe-area-inset-bottom));width:42px;height:42px;}' +
-    '.lp-launch svg{border-radius:13px;}.lp-tip{display:none;}' +
+    '.lp-launch svg{border-radius:13px;}' +
     'html.lp-tucked .lp-launch{opacity:0;transform:translateY(16px);pointer-events:none;}}';
 
   var SVG = '<svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">' +
@@ -86,7 +84,8 @@
     btn = document.createElement('button');
     btn.className = 'lp-launch';
     btn.type = 'button';
-    btn.setAttribute('aria-label', 'Ask the study assistant');
+    btn.setAttribute('aria-label', 'Ask the tutor');
+    btn.title = 'Ask the tutor';
     btn.innerHTML = SVG;
     document.body.appendChild(btn);
     dock();
@@ -95,12 +94,9 @@
 
     tip = document.createElement('div');
     tip.className = 'lp-tip';
-    tip.textContent = 'Ask me anything';
+    tip.hidden = true;
+    tip.setAttribute('aria-hidden', 'true');
     document.body.appendChild(tip);
-
-    var met = false;
-    try { met = localStorage.getItem(MET_KEY) === '1'; } catch(e){}
-    if(!met) setTimeout(function(){ tip.classList.add('show'); }, 1200);
 
     // Reaching for the button is the earliest honest signal that someone is
     // about to ask, so the assistant starts downloading then.

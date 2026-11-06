@@ -138,7 +138,7 @@
   function builderHtml(recs){
     var step = function(n){ return '<span class="cx-step-n" aria-hidden="true">' + n + '</span>'; };
     return '<form class="cx-card cx-builder" id="ocBuilder" novalidate aria-label="Build a practice set">' +
-      '<fieldset class="cx-step"><legend>' + step(1) + 'What do you want to practice?</legend><div class="cx-choices">' +
+      '<fieldset class="cx-step"><legend>' + step(1) + 'What to practice</legend><div class="cx-choices">' +
         // Flagged questions live in Review now (Olivier, 2026-10-26); ?mode=flagged from there starts them directly.
         MODES.filter(function(m){ return m.mode !== 'flagged'; }).map(function(m){
           var off = modeOff(m.mode), lab = modeTitle(m);
@@ -147,7 +147,7 @@
         }).join('') +
       '</div></fieldset>' +
       '<div class="cx-step" id="ocPickStep"><h2 class="cx-step-h">' + step(2) + '<span id="ocPickH">Which topic?</span></h2><div id="ocPick"></div></div>' +
-      '<fieldset class="cx-step" id="ocCountStep"><legend>' + step(3) + 'How many questions?</legend><div class="cx-pills">' +
+      '<fieldset class="cx-step" id="ocCountStep"><legend>' + step(3) + 'How many</legend><div class="cx-pills">' +
         COUNTS.map(function(n){ return '<label class="cx-pill"><input type="radio" name="ocCount" value="' + n + '"' + (n === pick.count ? ' checked' : '') + '><span>' + n + '</span></label>'; }).join('') +
       '</div></fieldset>' +
       '<div class="cx-start"><p class="cx-sum" aria-live="polite"><span id="ocSum"></span><small>Feedback after every answer, with the concept behind a miss. Misses go to your review queue.</small></p>' +

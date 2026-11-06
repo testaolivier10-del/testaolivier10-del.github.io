@@ -22,6 +22,7 @@
    Idempotent: a page that already has the band is returned as it is. */
 import { homeData } from './r3-home.mjs';
 import { COVERS } from './covers.mjs';
+import { learnBandHtml, bookSub, learnScript } from './learn-band.mjs';
 
 export const R3_HEAD_MARK = '<!-- r3:head -->';
 
@@ -146,14 +147,20 @@ export function r3Reading(html, { key, rel }) {
   const h1 = `<h1 class="deck ${title.m[1]}"${titleAttrs}>${twoTone(title.m[3].trim())}</h1>`;
   const hand = handFor(key);
   const chips = meta ? `<p class="r3-chips ${meta.m[2]}">${splitChips(meta.m[3].trim())}</p>` : '';
-  const links = smallLinks.length ? `<p class="r3-links">${smallLinks.join(' ')}</p>` : '';
+  /* Share to Google Classroom, Copy link and Print go into one "⋯" menu (course redesign r4, decision 4: overflow
+     menus for secondary actions, NN/g); any other small link stays a link. */
+  const isShare = (el) => /\bdata-(copy|print)\b|id="(copyBtn|printBtn)"|classroom\.google/.test(el);
+  const menuEls = smallLinks.filter(isShare);
+  const plain = smallLinks.filter((el) => !isShare(el));
+  const links = plain.length ? `<p class="r3-links">${plain.join(' ')}</p>` : '';
+  const more = menuEls.length ? moreMenu(menuEls) : '';
   const band = `<div class="r3 r3-read-top" data-cover="${key}">
 <section class="band short r3-rband" aria-labelledby="${titleId}"><div class="hwrap"><div>
 ${crumbHtml}
 ${kick ? `<p class="issue">${issue}</p>` : ''}
 ${h1}
 ${hand ? `<p class="${handClass(key)}">${hand}</p>` : ''}
-${buttons ? `<div class="hero-ctas">${buttons}</div>` : ''}
+${buttons || more ? `<div class="hero-ctas">${buttons}${more}</div>` : ''}
 ${chips}
 ${links}
 </div><div class="art" aria-hidden="true"><img src="${up}assets/covers/art/${key}.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
@@ -190,7 +197,24 @@ ${links}
     const mc = out.indexOf('</main>', out.indexOf('<main class="tb-main" id="main">'));
     if (mc > 0) out = out.slice(0, mc + 7) + side + out.slice(mc + 7);
   }
-  return withStyles(out, up);
+  return withStyles(more ? withMoreScript(out, up) : out, up);
+}
+
+/* The "⋯" menu: a button and the page's own share, copy and print controls as its items (moved, with every class
+   and data attribute, so the scripts that wire them keep working). assets/course/more-menu.js opens and closes it
+   and moves focus; the menu starts hidden. */
+export function moreMenu(els, label = 'Share, copy link or print') {
+  const items = els.map((el) => {
+    const tag = el.match(/^<(a|button)\b[^>]*>/)[0];
+    const t2 = /\sclass="/.test(tag) ? tag.replace(/\sclass="([^"]*)"/, ' class="$1 lmore-item"') : tag.replace(/^<(a|button)/, '<$1 class="lmore-item"');
+    return t2.replace(/^<(a|button)/, '<$1 role="menuitem"') + el.slice(tag.length);
+  });
+  return `<div class="lmore"><button type="button" class="lmore-btn" aria-haspopup="menu" aria-expanded="false" aria-label="${label}"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button><div class="lmore-menu" role="menu" hidden>${items.join('')}</div></div>`;
+}
+function withMoreScript(out, up) {
+  if (out.includes('assets/course/more-menu.js')) return out;
+  const i = out.lastIndexOf('</body>');
+  return i < 0 ? out : out.slice(0, i) + `<script src="${up}assets/course/more-menu.js" defer></script>\n` + out.slice(i);
 }
 
 /* Glossary and course search (R10-Glossary, R10-Search): pages with a plain <header class="page-head">
@@ -203,7 +227,7 @@ const PAGE_WORDS = {
   search: { t2: 'the whole course', hand: 'one box for everything' },
 };
 export function r3PageHead(html, { key, rel }) {
-  if (html.includes('class="r3 r3-read-top')) return html;
+  if (html.includes('class="r3 r3-read-top') || html.includes('class="r3 r3-learn-top')) return html;
   const kindM = rel.match(/(glossary|search)\.html$/);
   const words = PAGE_WORDS[kindM ? kindM[1] : ''] || {};
   const body = html.indexOf('<body');
@@ -226,6 +250,16 @@ export function r3PageHead(html, { key, rel }) {
   let crumbHtml = '';
   if (crumb) { crumbHtml = crumb.text.trim(); between = between.slice(0, crumb.start) + between.slice(crumb.end); }
   const titleText = h1[2].trim();
+  /* The glossary is under Learn (course redesign r4, decision 4): the Learn band with the switch, its lede as
+     the sub line; the find tools are the first card and overlap the band (lap). */
+  if (kindM && kindM[1] === 'glossary') {
+    const band = learnBandHtml({ key, active: 'glossary', up, crumb: crumbHtml, sub: lede, h1: true, pageName: titleText.replace(/<[^>]+>/g, '') });
+    const tag = boxTag.text.includes('class="')
+      ? boxTag.text.replace(/class="([^"]*)"/, `class="$1 r3 r3-page r3-glossary" data-cover="${key}"`)
+      : boxTag.text.replace(/>$/, ` class="r3 r3-page r3-glossary" data-cover="${key}">`);
+    const rest = html.slice(head.end).replace(/<div class="gx">/, '<div class="gx lap">');
+    return withStyles(html.slice(0, boxStart) + band + tag + between + `${R3_HEAD_MARK}\n` + rest, up);
+  }
   const titleId = (h1[1].match(/id="([^"]+)"/) || [])[1] || 'r3Title';
   const title = words.t2 ? `${titleText} <span>${words.t2}</span>` : twoTone(titleText);
   const hand = words.hand || handFor(key);
@@ -273,33 +307,24 @@ function withStyles(out, up) {
   return out.replace('</head>', `${css}</head>`);
 }
 
-/* The course book (learn.html, NREMT study-notes.html; R10-Learn): a reader that opens on its static
-   contents and swaps a chapter in. Its band names the book (the contents' own h1 stays in the page for
-   the outline and screen readers, shown only to them while the band is there) and starts at the first
-   page; the crumb moves into the band; the shell becomes the card layout. */
-function learnBand(html, { key, up, shell, mainOpen }) {
-  const toc = find(html, /<div class="tb-static-toc">\s*<h1>([\s\S]*?)<\/h1>\s*<p[^>]*>([\s\S]*?)<\/p>/, mainOpen.end);
-  if (!toc) return html;
+/* The course book (learn.html, NREMT study-notes.html; course redesign r4, decision 4): a reader that opens on
+   its static contents and swaps a chapter in. Its band is the Learn tab's small band (scripts/lib/learn-band.mjs:
+   issue line, "Learn", the sub line, the Textbook / Glossary / Videos switch); the crumb moves into it; the
+   contents' own h1 stays in the page for the outline and screen readers, shown only to them while the band is
+   there; the shell becomes the card layout and, as the first container under the band, overlaps it (lap).
+   assets/course/learn.js (loaded here, before the reader's own scripts) opens the book at the student's topic. */
+export function learnShell(html, { key, up, shell, mainOpen }) {
   let between = html.slice(mainOpen.end);
   const crumb = find(between, /<nav class="[^"]*crumb[^"]*" aria-label="Breadcrumb">[\s\S]*?<\/nav>\s*/);
   let crumbHtml = '';
   if (crumb && crumb.start < 400) { crumbHtml = crumb.text.trim(); between = between.slice(0, crumb.start) + between.slice(crumb.end); }
-  const first = (html.slice(toc.start).match(/href="(notes\/[a-z0-9-]+\.html)"/) || [])[1];
-  const name = toc.m[1].replace(/^The\s+/i, '').trim();
-  const hand = handFor(key);
-  const band = `<div class="r3 r3-read-top r3-learn" data-cover="${key}">
-<section class="band short r3-rband" aria-label="${name.replace(/<[^>]+>/g, '').replace(/"/g, '&quot;')}"><div class="hwrap"><div>
-${crumbHtml}
-<p class="issue">Learn <i></i> Free forever</p>
-<p class="deck" aria-hidden="true">${/\s(study notes|textbook|notes)$/i.test(name) ? name.replace(/\s(study notes|textbook|notes)$/i, ' <span>$1</span>') : twoTone(name)}</p>
-${hand ? `<p class="${handClass(key)}">${hand}</p>` : ''}
-<p class="lede">${toc.m[2].trim()}</p>
-${first ? `<div class="hero-ctas"><a class="btn-chan" href="${first}">Start at the first page</a></div>` : ''}
-</div><div class="art" aria-hidden="true"><img src="${up}assets/covers/art/${key}.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
-</div>
-`;
+  const band = learnBandHtml({ key, active: 'book', up, crumb: crumbHtml, sub: bookSub(key) }) + learnScript(key, up);
   const out = html.slice(0, shell.start) + band
-    + `<div class="tb-shell bk ${shell.m[1]} r3 r3-read" data-cover="${key}">`
+    + `<div class="tb-shell bk ${shell.m[1]} r3 r3-read lap" data-cover="${key}">`
     + html.slice(shell.end, mainOpen.end) + between;
   return withStyles(out, up);
+}
+function learnBand(html, o) {
+  if (!find(html, /<div class="tb-static-toc">\s*<h1>/, o.mainOpen.end)) return html;
+  return learnShell(html, o);
 }

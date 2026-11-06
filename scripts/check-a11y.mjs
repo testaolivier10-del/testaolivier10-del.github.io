@@ -436,32 +436,33 @@ const phone = { viewport: { width: 390, height: 844 } };
 
 console.log('\nInteraction checks.\n');
 
-// The closed phone "More" sheet must be out of the tab order and the
-// accessibility tree; open, focus goes in; Esc closes it and returns focus.
-await interaction('More sheet: inert when closed, Esc returns focus', async (page) => {
+// The header settings menu (dark mode, answer sounds; docs/course-redesign-r4.md
+// decision 8): closed it is out of the tab order; open, focus goes in; Esc
+// closes it and returns focus; the dark mode switch still works from it.
+await interaction('Settings menu: focus in, Esc returns focus, dark mode works', async (page) => {
   await page.goto(url('/ochem/lessons/pka.html'));
-  await page.waitForSelector('#levlMoreTab', { timeout: 15000 });
-  const closed = await page.$eval('#levlBottomSheet', (s) => s.hasAttribute('inert') && s.getAttribute('aria-hidden') === 'true');
-  if (!closed) return 'the closed sheet is not inert + aria-hidden';
-  await page.focus('#levlMoreTab');
+  await page.waitForSelector('#settingsBtn', { timeout: 15000 });
+  const closed = await page.$eval('#settingsMenu', (m) => getComputedStyle(m).display === 'none');
+  if (!closed) return 'the closed settings menu is visible';
+  await page.focus('#settingsBtn');
   await page.keyboard.press('Enter');
   await page.waitForTimeout(100);
   const open = await page.evaluate(() => {
-    const s = document.getElementById('levlBottomSheet');
-    return !s.hasAttribute('inert') && s.contains(document.activeElement);
+    const m = document.getElementById('settingsMenu');
+    return document.getElementById('settingsBtn').getAttribute('aria-expanded') === 'true' && m.contains(document.activeElement);
   });
-  if (!open) return 'opening the sheet did not move focus into it';
+  if (!open) return 'opening the menu did not move focus into it';
   await page.keyboard.press('Escape');
   await page.waitForTimeout(100);
   const back = await page.evaluate(() => document.activeElement && document.activeElement.id);
-  if (back !== 'levlMoreTab') return `Esc left focus on "${back}", not the More button`;
-  const fabs = await page.evaluate(() => {
-    const z = (sel) => { const e = document.querySelector(sel); return e ? Number(getComputedStyle(e).zIndex) || 0 : 0; };
-    return { sheet: z('#levlBottomSheet'), tutor: z('.lp-launch'), table: z('.pt-fab') };
-  });
-  if (fabs.tutor >= fabs.sheet || fabs.table >= fabs.sheet) return `a floating button (z ${Math.max(fabs.tutor, fabs.table)}) sits above the sheet (z ${fabs.sheet})`;
+  if (back !== 'settingsBtn') return `Esc left focus on "${back}", not the settings button`;
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(100);
+  await page.click('#themeToggle');
+  const dark = await page.evaluate(() => document.documentElement.getAttribute('data-theme') === 'dark' && document.getElementById('themeToggle').getAttribute('aria-pressed') === 'true');
+  if (!dark) return 'the dark mode switch in the menu did not turn dark mode on';
   return '';
-}, phone);
+}, { viewport: { width: 1280, height: 800 } });
 
 // The study assistant is a named dialog with a live log; Esc closes it and
 // focus goes back to the button that opened it.
