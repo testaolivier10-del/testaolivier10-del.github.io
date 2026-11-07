@@ -193,7 +193,8 @@ const SHELL_BUDGETS = [
      Measured 346.1 KB. */
   /* 346.5 -> 346.9 (Practice v2, 2026-11-06): exam-date.js exports write for the panel's Exam date row and
      every course practice page loads it; measured 346.7. */
-  ['site', 346.9],
+  /* 346.9 -> 347.1 (cram plan to Home, 2026-11-06): site-chrome.js lights Home on the cram page; measured 346.9. */
+  ['site', 347.1],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -231,7 +232,9 @@ const SHELL_BUDGETS = [
      settings) and practice-panel.css the tiles, grid and sticky bar; measured 49.0. */
   /* 49.3 -> 49.9 (Practice v4 B, 2026-11-06): practice-panel.js groups the settings and shows short lists as
      buttons, practice-panel.css the three columns and segmented choices; measured 49.6. */
-  ['assets/course', 49.9],
+  /* 49.9 -> 50.4 (cram plan to Home, phone Start bars, 2026-11-06): path.js cramLink and paintSticky, the Practice
+     phone bar in practice-panel.js and .css; measured 50.2. */
+  ['assets/course', 50.4],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —

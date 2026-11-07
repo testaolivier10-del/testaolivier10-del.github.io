@@ -371,14 +371,15 @@
     learn: 'learn', 'study-notes': 'learn', notes: 'learn', lessons: 'learn', units: 'learn', 'unit-sheets': 'learn',
     glossary: 'learn', videos: 'learn', mnemonics: 'learn',
     practice: 'practice', review: 'practice', flashcards: 'practice', exams: 'practice', 'exam-day': 'practice',
-    frq: 'practice', justify: 'practice', cram: 'practice', 'unit-tests': 'practice', session: 'practice', mixed: 'practice',
+    frq: 'practice', justify: 'practice', cram: 'home', 'unit-tests': 'practice', session: 'practice', mixed: 'practice',
     tools: 'tools', dashboard: 'progress', mastery: 'progress', progress: 'progress', 'study-plan': 'progress'
   };
   function tabOf(name){ return Object.prototype.hasOwnProperty.call(TAB_OF, name) ? TAB_OF[name] : ''; }
   function courseTabs(base, section, o){
     base = base || ''; o = o || {};
     var file = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '');
-    var on = tabOf(section) || tabOf(file);
+    // The cram page declares the exams section, but it belongs with the path on Home (owner 2026-11-06).
+    var on = (file === 'cram' && tabOf('cram')) || tabOf(section) || tabOf(file);
     return [
       ['home', 'Home', 'index.html'], ['learn', 'Learn', o.learn || 'learn.html'], ['practice', 'Practice', 'practice.html'],
       ['tools', 'Tools', 'tools.html'], ['progress', 'Progress', 'dashboard.html']

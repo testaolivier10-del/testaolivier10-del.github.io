@@ -30,6 +30,7 @@
   var C;
   try{ C = JSON.parse(cfgEl.textContent); }catch(e){ return; }
   var W = window, doc = document, fam = C.family;
+  var mbarT = doc.getElementById('ppMbarT'), mbarGo = doc.getElementById('ppMbarGo'), mbar = doc.getElementById('ppMbar');
   var shareEl = doc.getElementById('ppShare'), setEl = doc.getElementById('ppSet'), sumT = doc.getElementById('ppSumT'), sumB = doc.getElementById('ppSumB'), goEl = doc.getElementById('ppGo');
   var wrap = root.parentNode, engine = doc.querySelector(C.engine);
   var URLP = new URLSearchParams(location.search), GO = URLP.get('go') === '1';
@@ -469,7 +470,8 @@
       }
       if(!C.cram) h += cell('date', 'Exam date', '', '<input type="date" class="pp-sel" data-k="date" value="' + esc(readDate()) + '" aria-label="Exam date">', 'Optional. Used for your pacing.');
       return col(m, h) +
-        '<details class="pp-info"><summary>What&rsquo;s in the full exam</summary><p>' + esc(C.exam || '') + '</p></details>';
+        '<details class="pp-info"><summary>What&rsquo;s in the full exam</summary><p>' + esc(C.exam || '') + '</p></details>' +
+        (C.cram ? '<p class="pp-cram">Close to exam day? <a href="cram.html">Make a day by day cram plan</a></p>' : '');
     }
     if(m === 'frq'){
       if(!frqData) loadFrq();
@@ -665,6 +667,7 @@
     sumT.textContent = r.title;
     sumB.textContent = r.line;
     goEl.textContent = r.cta;
+    if(mbarT){ mbarT.textContent = r.title; mbarGo.textContent = r.cta; mbarGo.classList.toggle('is-off', !!r.off); }
     goEl.href = r.href;
     if(r.off){ goEl.setAttribute('aria-disabled', 'true'); goEl.classList.add('is-off'); } else { goEl.removeAttribute('aria-disabled'); goEl.classList.remove('is-off'); }
     var cls = doc.getElementById('ppClass');
@@ -860,6 +863,13 @@
       H.print({ pick: o.pick, count: o.count, label: o.label, key: keyOn, btn: c, gate: function(g){ if(shareN) shareN.innerHTML = g; } });
     });
   });
+  /* The phone bar's Start is the same Start (its own click handling, the disabled state included). */
+  if(mbarGo) mbarGo.addEventListener('click', function(){ goEl.click(); });
+  /* Out of the way while Your session itself is on screen. */
+  if(mbar && W.IntersectionObserver){
+    new IntersectionObserver(function(es){ es.forEach(function(x){ mbar.classList.toggle('is-hide', x.isIntersecting); }); }, { threshold: 0.4 })
+      .observe(root.querySelector('.pp-sumcard'));
+  }
   goEl.addEventListener('click', function(e){
     if(goEl.getAttribute('aria-disabled') === 'true'){ e.preventDefault(); return; }
     /* A question set or review on this page: the engine runs it here, no reload (the address keeps the settings). */

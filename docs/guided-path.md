@@ -130,3 +130,6 @@ this", or "Mark done" on a path card, in a lesson, notes page or the textbook). 
 - NREMT has no prerequisite map; its class mode re-centers but adds no "before this" stops.
 - Ochem has no per-topic accuracy, so cramming orders its topics by course order.
 - The prototype's Learn tab merge into the whole-course view is left for later (owner to decide).
+
+- 2026-11-06: Your path offers the AP® day by day cram plan (cram.html) from about 7 weeks before the exam and in
+  exam review, and the phone's sticky button names the next stop (`paintSticky`). See docs/course-redesign-r4.md.
