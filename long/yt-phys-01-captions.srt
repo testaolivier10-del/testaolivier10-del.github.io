@@ -1,0 +1,1412 @@
+1
+00:00:00,000 --> 00:00:01,358
+It's the end of practice,
+
+2
+00:00:01,396 --> 00:00:03,509
+and the school track is almost empty.
+
+3
+00:00:03,773 --> 00:00:05,358
+Leo holds up his phone.
+
+4
+00:00:05,433 --> 00:00:07,245
+His running app says he just hit thirty
+
+5
+00:00:07,396 --> 00:00:08,905
+kilometers per hour.
+
+6
+00:00:08,981 --> 00:00:10,113
+Ana doesn't buy it.
+
+7
+00:00:10,490 --> 00:00:11,547
+Phones guess.
+
+8
+00:00:11,849 --> 00:00:14,792
+So, deal: one run, a measuring wheel,
+
+9
+00:00:14,830 --> 00:00:16,981
+and a timer that can't be fooled.
+
+10
+00:00:17,056 --> 00:00:18,641
+If he's really that fast,
+
+11
+00:00:18,716 --> 00:00:19,622
+she'll admit it.
+
+12
+00:00:19,924 --> 00:00:21,132
+By the end of this video,
+
+13
+00:00:21,207 --> 00:00:23,169
+you'll check Leo's claim yourself.
+
+14
+00:00:23,320 --> 00:00:25,962
+Along the way: the units physics runs on,
+
+15
+00:00:26,037 --> 00:00:28,226
+how to convert between them without guessing,
+
+16
+00:00:28,339 --> 00:00:31,018
+and how many digits your answer really gets.
+
+17
+00:00:31,132 --> 00:00:32,830
+This matters more than it looks.
+
+18
+00:00:32,905 --> 00:00:34,490
+You can pick the right equation,
+
+19
+00:00:34,566 --> 00:00:36,754
+set it up perfectly, and still be off by
+
+20
+00:00:36,830 --> 00:00:38,943
+a factor of a hundred, just because one
+
+21
+00:00:39,018 --> 00:00:40,490
+value was in centimeters.
+
+22
+00:00:40,679 --> 00:00:42,301
+And the math won't warn you.
+
+23
+00:00:42,339 --> 00:00:44,075
+You have to catch it yourself,
+
+24
+00:00:44,188 --> 00:00:45,735
+and that's what we'll practice.
+
+25
+00:00:49,235 --> 00:00:51,877
+Every quantity in physics has two parts:
+
+26
+00:00:51,915 --> 00:00:53,424
+a number and a unit.
+
+27
+00:00:53,688 --> 00:00:56,028
+If someone says the cart moved three,
+
+28
+00:00:56,103 --> 00:00:56,903
+three what?
+
+29
+00:00:57,084 --> 00:00:57,819
+Inches?
+
+30
+00:00:57,839 --> 00:00:58,639
+Miles?
+
+31
+00:00:58,896 --> 00:01:00,783
+Three meters is a measurement.
+
+32
+00:01:00,858 --> 00:01:03,009
+Three on its own is just a number.
+
+33
+00:01:03,349 --> 00:01:05,990
+Scientists agreed on one shared set of units,
+
+34
+00:01:06,141 --> 00:01:07,877
+called SI units.
+
+35
+00:01:07,952 --> 00:01:09,839
+SI is short for the French name,
+
+36
+00:01:09,877 --> 00:01:11,462
+the International System.
+
+37
+00:01:11,726 --> 00:01:13,726
+For this course, you need just three.
+
+38
+00:01:13,990 --> 00:01:16,330
+Meters for length, that's a small m.
+
+39
+00:01:16,556 --> 00:01:18,933
+Kilograms for mass, kg.
+
+40
+00:01:19,122 --> 00:01:21,801
+And seconds for time, just s.
+
+41
+00:01:22,141 --> 00:01:24,028
+Notice something odd about that list?
+
+42
+00:01:24,254 --> 00:01:26,745
+The kilogram already has a prefix in it,
+
+43
+00:01:26,820 --> 00:01:29,349
+kilo, and it's still the base unit.
+
+44
+00:01:29,613 --> 00:01:32,707
+So a gram is not the SI unit for mass.
+
+45
+00:01:32,933 --> 00:01:34,594
+If a problem gives you grams,
+
+46
+00:01:34,669 --> 00:01:36,632
+change them to kilograms first.
+
+47
+00:01:36,933 --> 00:01:39,198
+Every other unit is built out of those three.
+
+48
+00:01:39,650 --> 00:01:41,990
+Speed is a length divided by a time,
+
+49
+00:01:42,066 --> 00:01:44,330
+so its unit is meters per second.
+
+50
+00:01:44,632 --> 00:01:45,915
+Here's the payoff.
+
+51
+00:01:45,952 --> 00:01:47,349
+The equations you'll use,
+
+52
+00:01:47,462 --> 00:01:49,084
+and constants like the nine point eight
+
+53
+00:01:49,235 --> 00:01:50,971
+for gravity on the equation sheet,
+
+54
+00:01:51,047 --> 00:01:53,160
+are all in SI units.
+
+55
+00:01:53,235 --> 00:01:55,650
+Put in meters, kilograms and seconds,
+
+56
+00:01:55,726 --> 00:01:58,443
+and the answer comes out in SI units too.
+
+57
+00:01:58,556 --> 00:02:00,556
+Mix in centimeters or grams,
+
+58
+00:02:00,632 --> 00:02:02,367
+and the answer comes out wrong,
+
+59
+00:02:02,556 --> 00:02:04,066
+often by a power of ten.
+
+60
+00:02:04,330 --> 00:02:07,047
+A metric prefix in front of a unit multiplies
+
+61
+00:02:07,122 --> 00:02:08,707
+it by a power of ten.
+
+62
+00:02:08,783 --> 00:02:09,990
+You need four.
+
+63
+00:02:10,066 --> 00:02:12,632
+Kilo, small k: a thousand,
+
+64
+00:02:12,745 --> 00:02:13,915
+ten to the third.
+
+65
+00:02:13,952 --> 00:02:16,330
+A kilometer is a thousand meters.
+
+66
+00:02:16,405 --> 00:02:17,235
+Centi?
+
+67
+00:02:17,311 --> 00:02:19,952
+One hundredth, ten to the negative two.
+
+68
+00:02:20,028 --> 00:02:22,858
+So a centimeter is point oh one meters.
+
+69
+00:02:23,122 --> 00:02:25,462
+Milli goes smaller, a thousandth,
+
+70
+00:02:25,537 --> 00:02:28,896
+so a millisecond is point oh oh one seconds.
+
+71
+00:02:29,160 --> 00:02:30,518
+Now watch the letter m.
+
+72
+00:02:30,971 --> 00:02:32,707
+ms is milliseconds.
+
+73
+00:02:33,084 --> 00:02:34,783
+m alone is meters.
+
+74
+00:02:34,971 --> 00:02:36,632
+Same letter, different job.
+
+75
+00:02:37,009 --> 00:02:38,971
+And micro, written with the Greek letter
+
+76
+00:02:39,122 --> 00:02:42,443
+mu, is ten to the negative six: a millionth.
+
+77
+00:02:43,047 --> 00:02:45,311
+The AP equation sheet you get on the exam
+
+78
+00:02:45,386 --> 00:02:46,405
+lists the rest.
+
+79
+00:02:46,669 --> 00:02:48,292
+Ana starts with the distance.
+
+80
+00:02:48,481 --> 00:02:50,594
+The track lines are probably right,
+
+81
+00:02:50,707 --> 00:02:53,160
+but probably isn't good enough for Ana.
+
+82
+00:02:53,273 --> 00:02:55,273
+She rolls a measuring wheel down the straight,
+
+83
+00:02:55,311 --> 00:02:58,292
+and it clicks off one hundred point oh meters.
+
+84
+00:02:58,367 --> 00:03:00,405
+Then she borrows the coach's laser timing
+
+85
+00:03:00,443 --> 00:03:03,273
+gates, one at the start and one at the finish.
+
+86
+00:03:03,311 --> 00:03:05,235
+The clock starts when Leo breaks the first
+
+87
+00:03:05,311 --> 00:03:07,801
+beam and stops when he breaks the second.
+
+88
+00:03:08,002 --> 00:03:10,594
+No thumbs on buttons, no guessing.
+
+89
+00:03:10,669 --> 00:03:11,575
+Your turn.
+
+90
+00:03:11,650 --> 00:03:14,216
+A cart has a mass of two hundred fifty grams,
+
+91
+00:03:14,254 --> 00:03:16,707
+and a timer reads forty milliseconds.
+
+92
+00:03:16,858 --> 00:03:19,198
+Write both in SI units, ready to go into
+
+93
+00:03:19,235 --> 00:03:20,035
+an equation.
+
+94
+00:03:26,805 --> 00:03:29,069
+Did you get point two five kilograms?
+
+95
+00:03:29,145 --> 00:03:31,711
+Mass goes in kilograms, so two hundred fifty
+
+96
+00:03:31,786 --> 00:03:34,050
+grams becomes point two five.
+
+97
+00:03:34,164 --> 00:03:35,560
+And forty milliseconds?
+
+98
+00:03:35,635 --> 00:03:37,447
+Point oh four seconds.
+
+99
+00:03:37,522 --> 00:03:39,786
+The trap is leaving the mass as two hundred
+
+100
+00:03:39,937 --> 00:03:40,596
+fifty.
+
+101
+00:03:40,616 --> 00:03:42,428
+It looks like a nice number,
+
+102
+00:03:42,503 --> 00:03:44,616
+but an equation would read it as two hundred
+
+103
+00:03:44,843 --> 00:03:46,428
+fifty kilograms.
+
+104
+00:03:46,503 --> 00:03:48,390
+That's about as much as a motorcycle.
+
+105
+00:03:51,890 --> 00:03:54,305
+So how do you switch from one unit to another
+
+106
+00:03:54,456 --> 00:03:55,513
+without guessing?
+
+107
+00:03:55,626 --> 00:03:58,532
+You multiply by a fraction that equals one.
+
+108
+00:03:58,607 --> 00:04:00,871
+One meter over a hundred centimeters is
+
+109
+00:04:01,022 --> 00:04:02,833
+one, because the top and the bottom are
+
+110
+00:04:02,909 --> 00:04:04,041
+the same length.
+
+111
+00:04:04,116 --> 00:04:06,381
+Multiplying by one can't change how big
+
+112
+00:04:06,569 --> 00:04:07,304
+something is.
+
+113
+00:04:07,324 --> 00:04:09,098
+It only changes how it's written.
+
+114
+00:04:09,173 --> 00:04:11,286
+The whole trick is which way up you put
+
+115
+00:04:11,362 --> 00:04:12,267
+that fraction.
+
+116
+00:04:12,343 --> 00:04:14,104
+Put the unit you want on top,
+
+117
+00:04:14,129 --> 00:04:15,890
+and the unit you want to get rid of on the
+
+118
+00:04:16,230 --> 00:04:16,650
+bottom.
+
+119
+00:04:16,670 --> 00:04:19,336
+A pencil is eighteen centimeters long.
+
+120
+00:04:19,463 --> 00:04:22,003
+Times one meter over a hundred centimeters.
+
+121
+00:04:22,079 --> 00:04:24,305
+Centimeters on top cancel centimeters on
+
+122
+00:04:24,343 --> 00:04:26,053
+the bottom, just like numbers,
+
+123
+00:04:26,104 --> 00:04:28,607
+and you're left with point one eight meters.
+
+124
+00:04:28,645 --> 00:04:30,355
+Then check that it makes sense.
+
+125
+00:04:30,406 --> 00:04:32,381
+A meter is bigger than a centimeter,
+
+126
+00:04:32,418 --> 00:04:33,878
+so you need fewer of them,
+
+127
+00:04:33,902 --> 00:04:35,550
+and the number got smaller.
+
+128
+00:04:35,588 --> 00:04:37,475
+If it had gotten bigger, your fraction was
+
+129
+00:04:37,550 --> 00:04:38,569
+upside down.
+
+130
+00:04:38,607 --> 00:04:41,815
+That one check catches most conversion mistakes.
+
+131
+00:04:41,852 --> 00:04:43,626
+Speeds take two fractions,
+
+132
+00:04:43,664 --> 00:04:44,947
+one for each unit.
+
+133
+00:04:45,022 --> 00:04:47,211
+Say a car drives at seventy two kilometers
+
+134
+00:04:47,286 --> 00:04:48,086
+per hour.
+
+135
+00:04:48,116 --> 00:04:50,708
+Times a thousand meters over one kilometer,
+
+136
+00:04:50,733 --> 00:04:52,230
+and the kilometers are gone.
+
+137
+00:04:52,267 --> 00:04:53,588
+Now the hours.
+
+138
+00:04:53,626 --> 00:04:56,116
+Times one hour over three thousand six hundred
+
+139
+00:04:56,192 --> 00:04:56,992
+seconds.
+
+140
+00:04:57,022 --> 00:04:59,060
+That leaves seventy two thousand meters
+
+141
+00:04:59,211 --> 00:05:01,374
+over three thousand six hundred seconds,
+
+142
+00:05:01,425 --> 00:05:03,324
+which is twenty meters per second.
+
+143
+00:05:03,362 --> 00:05:05,739
+Look at what those two fractions do together:
+
+144
+00:05:05,777 --> 00:05:08,468
+a thousand over three thousand six hundred.
+
+145
+00:05:08,519 --> 00:05:10,456
+That's the same as dividing by three point
+
+146
+00:05:10,796 --> 00:05:11,191
+six.
+
+147
+00:05:11,211 --> 00:05:14,003
+So kilometers per hour to meters per second,
+
+148
+00:05:14,154 --> 00:05:15,777
+divide by three point six.
+
+149
+00:05:15,815 --> 00:05:17,500
+Going back, multiply.
+
+150
+00:05:17,525 --> 00:05:19,437
+And if you ever forget which way the shortcut
+
+151
+00:05:19,513 --> 00:05:20,247
+goes...
+
+152
+00:05:20,267 --> 00:05:22,116
+just write the fractions out again.
+
+153
+00:05:22,577 --> 00:05:24,720
+Now, here's a trap that catches a lot of
+
+154
+00:05:24,796 --> 00:05:25,596
+people.
+
+155
+00:05:25,626 --> 00:05:26,708
+Areas!
+
+156
+00:05:26,808 --> 00:05:29,362
+Picture a square, one meter on each side.
+
+157
+00:05:29,399 --> 00:05:31,475
+How many square centimeters is that?
+
+158
+00:05:31,513 --> 00:05:33,513
+Each side is a hundred centimeters,
+
+159
+00:05:33,550 --> 00:05:35,928
+so the area is a hundred times a hundred,
+
+160
+00:05:35,966 --> 00:05:37,966
+ten thousand square centimeters,
+
+161
+00:05:38,003 --> 00:05:39,098
+not a hundred.
+
+162
+00:05:39,135 --> 00:05:41,550
+For an area, you use the conversion fraction
+
+163
+00:05:41,626 --> 00:05:43,966
+twice, once for each length.
+
+164
+00:05:44,041 --> 00:05:46,343
+Leo backs way up for a running start,
+
+165
+00:05:46,381 --> 00:05:48,456
+so the gates catch him at top speed,
+
+166
+00:05:48,494 --> 00:05:50,192
+not while he's still speeding up.
+
+167
+00:05:50,230 --> 00:05:51,412
+And he's off!
+
+168
+00:05:51,463 --> 00:05:53,928
+He breaks the first beam already flying...
+
+169
+00:05:54,003 --> 00:05:55,475
+and then the second one.
+
+170
+00:05:55,513 --> 00:05:57,815
+The display shows thousandths of a second:
+
+171
+00:05:57,852 --> 00:06:00,305
+twelve point four three one seconds.
+
+172
+00:06:00,343 --> 00:06:01,815
+So what was his speed?
+
+173
+00:06:01,852 --> 00:06:03,399
+Distance over time.
+
+174
+00:06:03,437 --> 00:06:05,550
+Ana divides one hundred point oh meters
+
+175
+00:06:05,626 --> 00:06:08,154
+by twelve point four three one seconds.
+
+176
+00:06:08,192 --> 00:06:10,720
+Eight point oh four four meters per second...
+
+177
+00:06:10,758 --> 00:06:12,984
+and that's his average between the gates.
+
+178
+00:06:13,022 --> 00:06:15,173
+But the app said kilometers per hour,
+
+179
+00:06:15,211 --> 00:06:16,381
+so she converts.
+
+180
+00:06:16,418 --> 00:06:17,852
+Times three point six.
+
+181
+00:06:17,928 --> 00:06:19,815
+That gives about twenty eight point nine
+
+182
+00:06:19,966 --> 00:06:21,550
+six kilometers per hour.
+
+183
+00:06:21,777 --> 00:06:22,758
+So close!
+
+184
+00:06:23,211 --> 00:06:26,343
+But it's not thirty, and Leo is not happy.
+
+185
+00:06:26,532 --> 00:06:27,664
+He wants another run.
+
+186
+00:06:28,116 --> 00:06:30,381
+And Ana notices her calculator showed a
+
+187
+00:06:30,532 --> 00:06:32,720
+lot more digits than she wrote down.
+
+188
+00:06:33,022 --> 00:06:33,822
+Your turn.
+
+189
+00:06:34,003 --> 00:06:36,418
+A car on the highway is going ninety kilometers
+
+190
+00:06:36,494 --> 00:06:37,399
+per hour.
+
+191
+00:06:37,475 --> 00:06:39,324
+What's that in meters per second?
+
+192
+00:06:45,988 --> 00:06:47,573
+Ninety kilometers per hour,
+
+193
+00:06:47,649 --> 00:06:50,215
+times a thousand meters over one kilometer,
+
+194
+00:06:50,403 --> 00:06:52,781
+times one hour over three thousand six hundred
+
+195
+00:06:52,932 --> 00:06:53,837
+seconds.
+
+196
+00:06:53,913 --> 00:06:56,101
+That's twenty five meters per second.
+
+197
+00:06:56,215 --> 00:06:59,271
+Or just ninety divided by three point six.
+
+198
+00:06:59,347 --> 00:07:01,158
+If you got three hundred twenty four,
+
+199
+00:07:01,233 --> 00:07:03,233
+you multiplied by three point six.
+
+200
+00:07:03,498 --> 00:07:06,215
+Check the size: times a thousand makes it
+
+201
+00:07:06,366 --> 00:07:08,932
+bigger, divided by three thousand six hundred
+
+202
+00:07:09,007 --> 00:07:11,347
+makes it smaller, and the three thousand
+
+203
+00:07:11,422 --> 00:07:12,705
+six hundred wins.
+
+204
+00:07:12,781 --> 00:07:15,347
+So the answer has to be smaller than ninety.
+
+205
+00:07:18,847 --> 00:07:21,262
+First, a quick tool for writing very big
+
+206
+00:07:21,413 --> 00:07:24,771
+and very small numbers: scientific notation.
+
+207
+00:07:25,035 --> 00:07:27,149
+It's a number from one up to just under
+
+208
+00:07:27,337 --> 00:07:29,111
+ten, times a power of ten,
+
+209
+00:07:29,186 --> 00:07:31,375
+so everyone writes the same number the same
+
+210
+00:07:31,450 --> 00:07:32,250
+way.
+
+211
+00:07:32,356 --> 00:07:34,318
+Take a camera shutter open for point oh
+
+212
+00:07:34,469 --> 00:07:35,866
+oh four oh seconds.
+
+213
+00:07:36,054 --> 00:07:37,715
+Slide the decimal point right,
+
+214
+00:07:37,790 --> 00:07:41,186
+one, two, three, until the four is out front.
+
+215
+00:07:41,300 --> 00:07:43,601
+Three slides right, so it's four point oh
+
+216
+00:07:43,752 --> 00:07:45,601
+times ten to the negative three.
+
+217
+00:07:45,866 --> 00:07:47,903
+A run that lasts seven thousand two hundred
+
+218
+00:07:48,054 --> 00:07:50,620
+seconds slides three places left: seven
+
+219
+00:07:50,771 --> 00:07:52,658
+point two times ten to the third.
+
+220
+00:07:53,111 --> 00:07:54,922
+Small number, negative power.
+
+221
+00:07:55,224 --> 00:07:57,564
+That means small, not negative.
+
+222
+00:07:57,790 --> 00:08:00,281
+And on your calculator, E just means times
+
+223
+00:08:00,356 --> 00:08:01,413
+ten to the.
+
+224
+00:08:01,866 --> 00:08:04,356
+Now, how many digits should an answer have?
+
+225
+00:08:04,583 --> 00:08:06,847
+A measurement is only known so well.
+
+226
+00:08:07,073 --> 00:08:08,960
+Read a meterstick with centimeter marks,
+
+227
+00:08:09,035 --> 00:08:11,526
+and you can see it's past forty five centimeters.
+
+228
+00:08:11,752 --> 00:08:14,243
+Then you estimate between the marks: point
+
+229
+00:08:14,469 --> 00:08:16,130
+four five two meters.
+
+230
+00:08:16,205 --> 00:08:18,545
+That last two is your best guess.
+
+231
+00:08:18,620 --> 00:08:20,733
+Your calculator might say point four five
+
+232
+00:08:20,847 --> 00:08:21,866
+two three seven...
+
+233
+00:08:21,979 --> 00:08:24,130
+and on and on, but nobody measured those
+
+234
+00:08:24,281 --> 00:08:25,413
+extra digits.
+
+235
+00:08:25,526 --> 00:08:27,828
+Significant figures are the digits you actually
+
+236
+00:08:27,903 --> 00:08:28,638
+measured.
+
+237
+00:08:28,658 --> 00:08:30,998
+That includes your last best guess.
+
+238
+00:08:31,073 --> 00:08:32,356
+Here's how you count them.
+
+239
+00:08:32,809 --> 00:08:34,771
+Nonzero digits always count,
+
+240
+00:08:34,847 --> 00:08:37,035
+and so do zeros sandwiched between them.
+
+241
+00:08:37,111 --> 00:08:39,526
+Eight point oh six one has four.
+
+242
+00:08:39,601 --> 00:08:40,507
+Quick test.
+
+243
+00:08:40,620 --> 00:08:42,167
+Point oh four five oh.
+
+244
+00:08:42,205 --> 00:08:43,149
+How many?
+
+245
+00:08:43,224 --> 00:08:43,405
+...
+
+246
+00:08:43,425 --> 00:08:44,034
+Three.
+
+247
+00:08:44,054 --> 00:08:45,752
+The zeros in front are just holding the
+
+248
+00:08:45,790 --> 00:08:46,696
+decimal point.
+
+249
+00:08:46,922 --> 00:08:48,167
+But that zero at the end?
+
+250
+00:08:48,356 --> 00:08:50,620
+It counts, because there's a decimal point.
+
+251
+00:08:51,073 --> 00:08:53,262
+Same with fifteen point oh: three.
+
+252
+00:08:53,715 --> 00:08:55,828
+Without a decimal point, like seven thousand
+
+253
+00:08:55,903 --> 00:08:58,394
+two hundred, the end zeros are unclear.
+
+254
+00:08:58,620 --> 00:09:00,884
+So if you mean two significant figures,
+
+255
+00:09:00,960 --> 00:09:03,866
+write seven point two times ten to the third.
+
+256
+00:09:04,356 --> 00:09:05,941
+When you multiply or divide,
+
+257
+00:09:05,979 --> 00:09:08,054
+the answer keeps as many significant figures
+
+258
+00:09:08,130 --> 00:09:09,866
+as the value with the fewest,
+
+259
+00:09:09,979 --> 00:09:11,903
+because your answer is only as good as your
+
+260
+00:09:11,941 --> 00:09:13,413
+sloppiest measurement.
+
+261
+00:09:13,488 --> 00:09:15,450
+Two hundred point oh meters over twenty
+
+262
+00:09:15,496 --> 00:09:17,111
+four point eight seconds.
+
+263
+00:09:17,186 --> 00:09:19,450
+The distance has four significant figures,
+
+264
+00:09:19,488 --> 00:09:21,262
+but the time has only three.
+
+265
+00:09:21,337 --> 00:09:23,790
+So the answer gets three: eight point oh
+
+266
+00:09:23,903 --> 00:09:26,092
+six meters per second.
+
+267
+00:09:26,167 --> 00:09:28,356
+Adding and subtracting work differently.
+
+268
+00:09:28,507 --> 00:09:30,545
+There, you look at decimal places.
+
+269
+00:09:30,620 --> 00:09:32,658
+Eight point seven meters plus two point
+
+270
+00:09:32,771 --> 00:09:33,941
+four three meters.
+
+271
+00:09:34,016 --> 00:09:36,733
+The calculator says eleven point one three.
+
+272
+00:09:36,809 --> 00:09:38,620
+But nobody knows the hundredths place of
+
+273
+00:09:38,696 --> 00:09:40,884
+eight point seven, so the sum can't know
+
+274
+00:09:40,960 --> 00:09:42,243
+its hundredths either.
+
+275
+00:09:42,318 --> 00:09:44,960
+The answer stops at the tenths place: eleven
+
+276
+00:09:45,111 --> 00:09:46,620
+point one meters.
+
+277
+00:09:47,149 --> 00:09:48,318
+Two last rules.
+
+278
+00:09:48,507 --> 00:09:50,620
+Conversion factors like a thousand meters
+
+279
+00:09:50,696 --> 00:09:52,809
+per kilometer, or three point six,
+
+280
+00:09:52,884 --> 00:09:55,299
+come from definitions, so they're exact.
+
+281
+00:09:55,450 --> 00:09:57,111
+They never limit your digits.
+
+282
+00:09:57,413 --> 00:09:59,601
+And round once, at the very end.
+
+283
+00:09:59,828 --> 00:10:01,715
+Keep the extra digits in your calculator
+
+284
+00:10:01,941 --> 00:10:04,130
+between steps, because rounding early can
+
+285
+00:10:04,205 --> 00:10:05,337
+change the answer.
+
+286
+00:10:05,639 --> 00:10:07,564
+Back on the track, Ana counts.
+
+287
+00:10:07,752 --> 00:10:10,167
+One hundred point oh meters has four significant
+
+288
+00:10:10,243 --> 00:10:12,356
+figures, and twelve point four three one
+
+289
+00:10:12,432 --> 00:10:13,828
+seconds has five.
+
+290
+00:10:14,016 --> 00:10:16,658
+The fewest wins, so Leo's first run was
+
+291
+00:10:16,733 --> 00:10:19,299
+eight point oh four four meters per second,
+
+292
+00:10:19,375 --> 00:10:20,175
+four figures.
+
+293
+00:10:20,507 --> 00:10:21,866
+Meanwhile, where's Leo?
+
+294
+00:10:22,243 --> 00:10:23,325
+Already back at the start,
+
+295
+00:10:23,350 --> 00:10:24,149
+of course!
+
+296
+00:10:24,356 --> 00:10:25,156
+Second run.
+
+297
+00:10:25,262 --> 00:10:27,073
+He flies through the beams...
+
+298
+00:10:27,149 --> 00:10:29,413
+and this time the timer says eleven point
+
+299
+00:10:29,488 --> 00:10:30,998
+nine nine eight seconds.
+
+300
+00:10:31,224 --> 00:10:33,035
+Now watch what early rounding would do.
+
+301
+00:10:33,413 --> 00:10:35,677
+Say Ana gets impatient and rounds the speed
+
+302
+00:10:35,752 --> 00:10:38,167
+to three digits, too early: eight point
+
+303
+00:10:38,243 --> 00:10:39,224
+three three.
+
+304
+00:10:39,375 --> 00:10:41,262
+Times three point six gives twenty nine
+
+305
+00:10:41,413 --> 00:10:42,620
+point nine nine.
+
+306
+00:10:42,696 --> 00:10:44,281
+Just under, again!
+
+307
+00:10:44,507 --> 00:10:46,016
+But what if she does it right?
+
+308
+00:10:46,167 --> 00:10:48,054
+Keep every digit on the calculator,
+
+309
+00:10:48,092 --> 00:10:51,149
+and round only once, at the very end: thirty
+
+310
+00:10:51,299 --> 00:10:53,375
+point oh one kilometers per hour.
+
+311
+00:10:53,639 --> 00:10:56,130
+By the numbers, he just made it.
+
+312
+00:10:56,205 --> 00:10:57,866
+That last digit is a coin flip,
+
+313
+00:10:57,941 --> 00:10:59,677
+so call it a photo finish...
+
+314
+00:10:59,715 --> 00:11:01,639
+but you'd never even see it if you rounded
+
+315
+00:11:01,828 --> 00:11:02,628
+early.
+
+316
+00:11:02,696 --> 00:11:04,507
+Your turn, two quick ones.
+
+317
+00:11:04,696 --> 00:11:06,696
+First, how many significant figures are
+
+318
+00:11:06,771 --> 00:11:09,564
+in point oh oh seven two oh meters?
+
+319
+00:11:09,752 --> 00:11:12,205
+Second, add twelve point oh meters and three
+
+320
+00:11:12,356 --> 00:11:15,111
+point two seven meters, and report it properly.
+
+321
+00:11:21,775 --> 00:11:24,039
+The first one has three: the seven,
+
+322
+00:11:24,077 --> 00:11:25,926
+the two, and the zero at the end.
+
+323
+00:11:26,077 --> 00:11:28,001
+The zeros in front don't count.
+
+324
+00:11:28,190 --> 00:11:30,379
+For the sum, the calculator gives fifteen
+
+325
+00:11:30,530 --> 00:11:31,737
+point two seven.
+
+326
+00:11:31,813 --> 00:11:33,775
+Twelve point oh only goes to the tenths
+
+327
+00:11:33,850 --> 00:11:36,567
+place, so round there: fifteen point three
+
+328
+00:11:36,718 --> 00:11:37,518
+meters.
+
+329
+00:11:37,674 --> 00:11:39,737
+The trap is counting significant figures
+
+330
+00:11:39,888 --> 00:11:41,700
+here, the way you would when multiplying.
+
+331
+00:11:42,001 --> 00:11:44,190
+For adding, it's decimal places.
+
+332
+00:11:47,690 --> 00:11:50,256
+So here's the whole video in four checks
+
+333
+00:11:50,294 --> 00:11:52,520
+you can use on every calculation.
+
+334
+00:11:52,822 --> 00:11:55,690
+One: before anything goes into an equation,
+
+335
+00:11:55,841 --> 00:11:58,671
+convert it to meters, kilograms and seconds.
+
+336
+00:11:58,935 --> 00:12:01,501
+Two: carry the units through each step.
+
+337
+00:12:01,652 --> 00:12:03,464
+Do they cancel to the unit you expect?
+
+338
+00:12:03,992 --> 00:12:06,256
+Three: does the size make sense?
+
+339
+00:12:06,483 --> 00:12:08,898
+Nobody walks at thirty meters per second!
+
+340
+00:12:09,275 --> 00:12:10,181
+And four...
+
+341
+00:12:10,332 --> 00:12:12,520
+round once, at the end, to the significant
+
+342
+00:12:12,671 --> 00:12:14,256
+figures your data support.
+
+343
+00:12:17,756 --> 00:12:19,869
+Of course, Leo wants proof for the team
+
+344
+00:12:19,945 --> 00:12:20,850
+group chat.
+
+345
+00:12:20,964 --> 00:12:23,266
+So Ana snaps a photo of the timer screen
+
+346
+00:12:23,379 --> 00:12:25,303
+and sends it with one line...
+
+347
+00:12:25,341 --> 00:12:27,039
+thirty point oh one!
+
+348
+00:12:27,115 --> 00:12:28,850
+The notes and practice for this topic are
+
+349
+00:12:29,039 --> 00:12:31,115
+free on levlprep.com.
+
+350
+00:12:31,228 --> 00:12:34,133
+Next time: Leo ran a hundred meters.
+
+351
+00:12:34,284 --> 00:12:36,888
+But was that a distance or a displacement?
+
+352
+00:12:37,152 --> 00:12:39,567
+In physics, those aren't the same thing.
+
+353
+00:12:39,643 --> 00:12:41,605
+That's scalars and vectors.
+

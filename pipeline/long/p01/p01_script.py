@@ -1,4 +1,4 @@
-# audited, not voiced
+# audited and voiced (eleven_v4, 2026-11-07; delivery lines in si, convert, sigfigs, recap, outro rewritten after the flatness check, meaning unchanged)
 # Audit log (2026-11-06 long video build; voicing waits for the ElevenLabs reset, 9,065 credits left at 9:32am PT):
 # WHY AUDIT (independent agent): zeros between digits rule, p2a size check logic, 30.01 vs 30 honesty (photo finish),
 #   early rounding framed as too few digits too early, p1a answers without sig fig claims (0.25 kg, 0.04 s), meterstick

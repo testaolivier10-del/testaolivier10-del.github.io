@@ -24,7 +24,7 @@ def hop_number(c, digits, p0, p1, x, y, size, u, col=CREAM, a=1.0, fade_lead=0):
         xs.append(xs[-1] + f.measureText(ch) + size * 0.08)
     for i, ch in enumerate(digits):
         if ch != '.':
-            al = (1 - 0.85 * u) if i < fade_lead else 1.0
+            al = (1 - u) if i < fade_lead else 1.0
             c.drawString(ch, xs[i], y, f, P(col, 255 * a * al))
     pos = p0 + (p1 - p0) * u
     i0 = int(math.floor(pos)); fr = pos - i0
@@ -322,9 +322,9 @@ def c4(c, t):
     k = 'c4'
     t0, q1, q2, q3, q4 = cue(k), cue(k, 1), cue(k, 2), cue(k, 3), cue(k, 4)
     board(c, t)
-    car(c, 260 + min(1400, max(0, t - t0) * 50), 230, 0.8, ua(t, t0 + 0.1, 0.4))
-    c.drawLine(80, 260, 1840, 260, SP((90, 96, 150), 4, 200 * ua(t, t0 + 0.1, 0.4)))
-    text(c, 'speeds: two fractions, one for each unit', W / 2, 380, 44, INK2, ua(t, t0 + 0.2, 0.4) * (1 - ua(t, q2, 0.3)), 'semi', 'center')
+    car(c, 260 + min(1400, max(0, t - t0) * 50), 230, 0.8, ua(t, t0 - 0.45, 0.3))
+    c.drawLine(80, 260, 1840, 260, SP((90, 96, 150), 4, 200 * ua(t, t0 - 0.45, 0.3)))
+    text(c, 'speeds: two fractions, one for each unit', W / 2, 380, 44, INK2, ua(t, t0 - 0.45, 0.3) * (1 - ua(t, q2, 0.3)), 'semi', 'center')
     km = wt(k, 'kilometers', 1); hr = wt(k, 'hours')
     it = [dict(q=('72', 'km/h'), t0=min(q1, t0 + 1.0)), dict(m='×', t0=q2),
           dict(f=(('1000', 'm'), ('1', 'km')), t0=q2 + 0.2, sd=km), dict(m='×', t0=q3 + 0.4),
@@ -421,8 +421,8 @@ def g1(c, t):
     k = 'g1'
     t0, q1, q2, q3, q4 = cue(k), cue(k, 1), cue(k, 2), cue(k, 3), cue(k, 4)
     board(c, t)
-    title(c, 'scientific notation', t, t0 + 0.2, 110, INK2, 48)
-    mdraw(c, 'a × 10^n', 420, 220, 90, CREAM, ua(t, q1 - 0.3, 0.6))
+    title(c, 'scientific notation', t, t0 - 0.45, 110, INK2, 48)
+    mdraw(c, 'a × 10^n', 420, 220, 90, CREAM, ua(t, t0 - 0.4, 0.5))
     mdraw(c, '1 ≤ a < 10', 900, 220, 76, YELLOW, ua(t, q1 + 1.5, 0.6))
     a = ua(t, q2 - 0.2, 0.4)
     if a > 0:
@@ -457,7 +457,7 @@ def g2(c, t):
     k = 'g2'
     t0, q1, q2, q3, q4 = cue(k), cue(k, 1), cue(k, 2), cue(k, 3), cue(k, 4)
     board(c, t)
-    title(c, 'how many digits should an answer have?', t, t0 + 0.1, 140, CREAM, 52)
+    title(c, 'how many digits should an answer have?', t, t0 - 0.45, 140, CREAM, 52)
     text(c, 'a measurement is only known so well', W / 2, 205, 42, INK2, ua(t, q1, 0.4), 'semi', 'center')
     a = ua(t, q2 - 0.3, 0.5)
     if a > 0:

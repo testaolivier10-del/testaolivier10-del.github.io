@@ -18,7 +18,7 @@ FIN = WD.FINISH
 CAMF = FIN + 300                 # the finish two shot: gate at screen 660
 ANA_X, ANA_G, ANA_S = FIN - 420, 762, 0.92
 LEO_X = FIN + 760                # where Leo stands after walking back
-DISP_X, DISP_Y = FIN + 250, 470
+DISP_X, DISP_Y = FIN - 80, 470
 
 
 def sx_f(X, camx=CAMF):
@@ -28,7 +28,7 @@ def sx_f(X, camx=CAMF):
 # ------------------------------------------------------------------ small drawing helpers
 def panel(c, x0, y0, x1, y1, a=1.0, col=(16, 18, 38)):
     if a > 0.01:
-        c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x0, y0, x1, y1), 26, 26), P(col, 246 * a))
+        c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x0, y0, x1, y1), 26, 26), P(col, 255 * a))
         c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x0, y0, x1, y1), 26, 26), SP((90, 100, 160), 3, 200 * a))
 
 
@@ -125,7 +125,7 @@ def finish_scene(c, t, camx, cast_fn, gate_flash=0.0, disp='', disp_glow=0.0, ga
             if disp:
                 WD.display(c, sx(DISP_X), DISP_Y, 0.9, disp, glow_=disp_glow)
                 c.drawLine(sx(DISP_X), DISP_Y + 63, sx(DISP_X), 712, SP(WD.METAL_D, 10))
-        WD.sign(c, sx(FIN) - 170, 'FINISH')
+        WD.sign(c, sx(FIN) + 200, 'FINISH')
         # the white finish line across the lanes
         x = sx(FIN)
         c.drawLine(x + 34, 758, x - 26, 918, SP((250, 246, 240), 9, 230))
@@ -374,7 +374,7 @@ def c7(c, t):
         WD.finish(c, t)
         a = ua(t, wt(k, 'running') - 0.1, 0.4) * (1 - ua(t, t_go, 0.4))
         pill(c, 'running start', W / 2, 140, AMBER, 40, a)
-        WD.display(c, 1700, 120, 0.6, display_val(t, 1e9, 12.431, t_beam) if t >= t_beam else '0.000', ua(t, t_beam - 1.5, 0.4), glow_=0.3, pole=False)
+        WD.display(c, 1700, 120, 0.6, f'{t - t_beam:.3f}' if t >= t_beam else '0.000', ua(t, t_beam - 1.5, 0.4), glow_=0.3, pole=False)
     else:
         t_cross = wt(k, 'second') + 0.15
         wb, bx = walkback_start(t_cross)
@@ -494,7 +494,7 @@ def g8(c, t):
     else:
         def arms(L, ps):
             if win > 0:
-                ps.uarm_n = -4 + 178 * win; ps.elbow_n = 18 - 12 * win; ps.uarm_f = -6 + 160 * win; ps.elbow_f = 16 - 6 * win
+                ps.uarm_n = -4 + 160 * win; ps.elbow_n = 18 - 18 * win; ps.uarm_f = -6 + 214 * win; ps.elbow_f = 16 - 16 * win
                 ps.hand_n = ps.hand_f = 'fist'
                 ps.ground -= 26 * abs(math.sin((t - wt(k, 'just')) * 6)) * win * (1 - ua(t, wt(k, 'that') + 0.8, 0.6))
         two_shot(c, t, leo_kw=dict(smile=0.3 + 0.9 * win, mouth=0.5 * win * (1 - ua(t, wt(k, 'coin'), 0.5)), look=-0.2),
@@ -532,21 +532,23 @@ def end(c, t):
     tb = B.Bt['__DUR'] - 20.0
     a = ua(t, wt(k, 'sends'), 0.3)
     if a > 0:
-        u = ua(t, tb - 0.4, 0.6)
-        cx = 1260 + (1660 - 1260) * u; cy = 300 + (160 - 300) * u; s_ = 1.0 - 0.35 * u
+        u = 0.0
+        cx, cy, s_ = 1060, 330, 0.8
         a2 = a * (1 - ua(t, c3 + 0.4, 0.4))
         if a2 > 0:
             c.save(); c.translate(cx, cy); c.scale(s_, s_)
             c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-200, -70, 200, 70), 34, 34), P((60, 130, 250), 255 * a2))
             text(c, '30.01 km/h', 0, 22, 60, (255, 255, 255), a2, 'xb', 'center')
-            text(c, 'sent to: team chat', 0, -84, 26, CREAM, a2, 'semi', 'center')
+            tail = skia.Path(); tail.moveTo(-170, 20); tail.lineTo(-250, 30); tail.lineTo(-150, 60); tail.close()
+            c.drawPath(tail, P((60, 130, 250), 255 * a2))
+            text(c, 'to: team chat', 0, 116, 44, CREAM, a2, 'semi', 'center')
             c.restore()
     a = ua(t, tb, 0.5)
     if a > 0:
-        c.drawRect(skia.Rect(0, 0, W, 330), P((10, 14, 30), 170 * a))
-        text(c, 'levlprep.com', W / 2, 150, 84, CREAM, a, 'xb', 'center')
-        text(c, 'free notes and practice for this topic', W / 2, 220, 40, INK2, a, 'semi', 'center')
-        pill(c, 'next: scalars and vectors', W / 2, 290, AMBER, 40, ua(t, c4, 0.4))
+        c.drawRect(skia.Rect(0, 0, W, 250), P((10, 14, 30), 170 * a))
+        text(c, 'levlprep.com', W / 2, 100, 76, CREAM, a, 'xb', 'center')
+        text(c, 'free notes and practice for this topic', W / 2, 155, 38, INK2, a, 'semi', 'center')
+        pill(c, 'next: scalars and vectors', W / 2, 212, AMBER, 36, ua(t, c4, 0.4))
 
 
 STORY = dict(hook=hook, u6=u6, c7=c7, c8=c8, g7=g7, g8=g8, end=end)

@@ -139,7 +139,7 @@ class Sprint:
             hy = edge + (14 + 3 * sp) * math.sin(math.pi * w)
         hy = min(hy, 690.0)
         hipc = (x, self.g - hy * un)
-        lean = 6 + 2.2 * sp
+        lean = 10 + 2.6 * sp
         ps = CA.Pose(x=x, ground=0, s=self.s, face=1, lean=lean, neck=lean * 0.8)
         for side, fo in (('n', fn), ('f', ff)):
             dx = (fo[0] - hipc[0]) / un; dy = (fo[1] - hipc[1]) / un

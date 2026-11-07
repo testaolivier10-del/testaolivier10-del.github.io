@@ -185,7 +185,7 @@ def _head2(self, c, J, ps, l):
     for hp_ in hair:
         c.drawPath(hp_, P(pc(HAIR))); self._shade(c, hp_, pc(HAIR_SH), l, 8)
     if k == 'ana':   # the loose strands that frame her face (head sheet)
-        for pts, w in (([(208, 58), (200, 108), (190, 158), (182, 196)], 6), ([(126, 120), (128, 170), (122, 214)], 5)):
+        for pts, w in (([(126, 120), (128, 170), (122, 214)], 5),):
             sp_ = skia.Path(); q = [H(p_) for p_ in pts]; sp_.moveTo(*q[0])
             for i in range(1, len(q) - 1):
                 sp_.quadTo(*q[i], (q[i][0] + q[i + 1][0]) / 2, (q[i][1] + q[i + 1][1]) / 2)

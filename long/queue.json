@@ -277,21 +277,25 @@
    "topic_pages": [
     "physics/notes/math-units.html"
    ],
-   "title": "",
-   "description_file": "",
-   "video": "",
-   "thumb": "",
-   "captions": "",
+   "title": "SI Units, Unit Conversions and Significant Figures | AP Physics 1",
+   "description_file": "long/yt-phys-01-youtube.md",
+   "video": "long/yt-phys-01-units-sig-figs.mp4",
+   "thumb": "long/yt-phys-01-thumb.png",
+   "captions": "long/yt-phys-01-captions.srt",
    "playlist": "AP Physics 1 | LevlPrep",
    "date": "",
-   "status": "building",
+   "status": "pending",
    "approved_on": "",
    "youtube_id": "",
    "thumbnail_set": false,
    "playlist_added": false,
    "captions_set": false,
    "pr_url": "",
-   "note": "2026-11-06: script audited and saved in the project (claude/levlprep-pipeline/long/p01_script.py); ElevenLabs had 9,065 credits left, reset 2026-11-06 6:07pm PT, so voicing and the build wait for the next run"
+   "note": "2026-11-07: built and saved pending review (12:44, eleven_v4)",
+   "thumb_b": "long/yt-phys-01-thumb-b.png",
+   "thumb_c": "long/yt-phys-01-thumb-c.png",
+   "ab_test": false,
+   "endscreen_set": false
   }
  ]
 }
