@@ -98,7 +98,7 @@
    "diff": 2,
    "q": "Why does phosphorus usually move through ecosystems more slowly than carbon or nitrogen?",
    "options": [
-    "It has no significant gas phase.",
+    "It has no gas form, so it never travels through the air.",
     "Plants do not need phosphorus to grow and reproduce.",
     "It is released mainly by volcanoes, which erupt rarely.",
     "Decomposers do not release it from dead plants and animals."
@@ -124,7 +124,7 @@
    "diff": 2,
    "q": "Which process releases phosphate from rocks into the soil?",
    "options": [
-    "Weathering",
+    "Weathering over time",
     "Nitrogen fixation by bacteria",
     "Photosynthesis",
     "Denitrification in wet soil"
@@ -202,7 +202,7 @@
    "diff": 2,
    "q": "Where does most of the phosphate in commercial fertilizer come from?",
    "options": [
-    "Mined phosphate rock",
+    "Phosphate rock mined from the ground",
     "Phosphorus gas captured from the air",
     "Bacteria living in the roots of legumes",
     "Seawater that is boiled down to dry salt"
@@ -349,7 +349,7 @@
    "q": "Which nutrient was limiting algae growth in these ponds?",
    "stimulus": "phosphorus-cycle-s1",
    "options": [
-    "Phosphate: it raised algae 4 to 28",
+    "Phosphate, since adding it raised algae from 4 to 28",
     "Nitrate, since adding it raised algae from 4 to 5",
     "Neither one, since algae need just light and water",
     "Both equally, since ponds D have the most algae"
@@ -411,7 +411,7 @@
    "q": "What is the purpose of ponds A in this study?",
    "stimulus": "phosphorus-cycle-s1",
    "options": [
-    "A baseline for comparison",
+    "They give a baseline to compare the other ponds with.",
     "They test the effect of adding both nutrients at once.",
     "They show how fast phosphate is weathered from rock.",
     "They are spare ponds in case another pond fails."
@@ -465,7 +465,7 @@
    "q": "What best explains why the forest stream has the least phosphate?",
    "stimulus": "phosphorus-cycle-s2",
    "options": [
-    "Roots hold the soil in place.",
+    "Tree roots and leaf litter hold the soil in place.",
     "Forest leaves remove phosphate gas from the air.",
     "Trees release their phosphate into the air as a gas.",
     "Forest soil lacks phosphate, so little can wash in."
@@ -474,7 +474,7 @@
    "why": {
     "correct": "Phosphate travels mostly on soil that washes away; forest cover keeps soil in place, and no fertilizer is added.",
     "options": [
-     "Right: little erosion and no fertilizer.",
+     "Right: roots and leaf litter keep soil, and the phosphate in it, out of the stream.",
      "There is no phosphate in the air to remove.",
      "Phosphorus has no gas form.",
      "Forest soils contain phosphate; it just stays put."
@@ -523,7 +523,7 @@
    "q": "Which action would most directly lower phosphate in the farmland stream?",
    "stimulus": "phosphorus-cycle-s2",
    "options": [
-    "Winter cover crops on the fields",
+    "Planting winter cover crops on the bare fields",
     "Adding more phosphate fertilizer just before heavy rain",
     "Removing the trees that grow along the stream banks",
     "Plowing the fields right before the winter storms"

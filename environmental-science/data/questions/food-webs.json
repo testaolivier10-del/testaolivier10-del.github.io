@@ -23,7 +23,7 @@
    "diff": 2,
    "q": "How is a food web different from a food chain?",
    "options": [
-    "A web links many chains.",
+    "A food web links many food chains that overlap.",
     "A food web shows the producers and leaves out consumers.",
     "A food chain includes more species than a food web.",
     "A food web shows the flow of water, not of energy."
@@ -75,7 +75,7 @@
    "diff": 2,
    "q": "Why are food webs with many links usually more stable than simple ones when one species declines?",
    "options": [
-    "Consumers can switch foods.",
+    "Consumers can switch to other food sources.",
     "Complex webs lack predators, so prey are safe.",
     "Complex webs do not need producers at the base.",
     "Simple webs hold more energy at each level."

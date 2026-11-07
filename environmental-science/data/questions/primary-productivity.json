@@ -77,7 +77,7 @@
    "diff": 2,
    "q": "What is gross primary productivity (GPP)?",
    "options": [
-    "The total rate producers capture energy",
+    "The total rate at which producers capture energy by photosynthesis",
     "The energy left after producers use some for respiration",
     "The energy that reaches the animals at the top of the chain",
     "The rate at which decomposers release CO2 from dead matter"
@@ -213,7 +213,7 @@
    "diff": 2,
    "q": "Which factor most limits primary productivity in a desert?",
    "options": [
-    "Water, which is scarce",
+    "Water, since deserts get very little rain",
     "Sunlight, since deserts are cloudy most days",
     "Carbon dioxide, since desert air lacks it",
     "Temperature, since deserts are cold year-round"
@@ -265,7 +265,7 @@
    "diff": 2,
    "q": "Why does more sunlight not always increase primary productivity?",
    "options": [
-    "Another factor may be limiting.",
+    "Another factor, such as water or CO2, may be limiting.",
     "Plants do not use sunlight for photosynthesis.",
     "Sunlight lowers the amount of CO2 in the air.",
     "More light speeds respiration more than photosynthesis."
@@ -595,7 +595,7 @@
    "q": "Why is the dark bottle needed in this experiment?",
    "stimulus": "primary-productivity-s2",
    "options": [
-    "It measures respiration by itself.",
+    "It measures respiration alone, with no photosynthesis.",
     "It shows how much light the algae need to grow.",
     "It keeps the water in the bottles from warming up.",
     "It stops the algae in the bottle from respiring."

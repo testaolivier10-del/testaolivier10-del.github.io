@@ -130,7 +130,7 @@
    "diff": 3,
    "q": "Country X has 300 million people with a footprint of 8 gha per person. Country Y has 1.4 billion people with a footprint of 1.2 gha per person. Which statement is correct?",
    "options": [
-    "X's total footprint is larger than Y's",
+    "X's total footprint is larger than Y's, despite its fewer people",
     "Y's total footprint is larger because Y has more people in it",
     "Their total footprints are equal, since their populations differ",
     "X's footprint per person is smaller because X has fewer people"

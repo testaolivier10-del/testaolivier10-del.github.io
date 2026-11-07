@@ -876,7 +876,7 @@ declare
   v_s integer;
   v_t text;
 begin
-  if p_course is null or p_course !~ '^[a-z]{2,8}$'
+  if p_course is null or p_course !~ '^[a-z]{2,12}$'
      or p_items is null or jsonb_typeof(p_items) <> 'array' or jsonb_array_length(p_items) > 25 then
     return;
   end if;

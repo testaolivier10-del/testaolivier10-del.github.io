@@ -150,6 +150,12 @@ its files, the daily accuracy log `hub_daily_v1` and what was left out.
 `path.html` (`scripts/build-path-pages.mjs`, from its review.html), `assets/course/path.js` and `.css`, and the Path
 tab in `assets/site-chrome.js`. Rebuild both scripts after changing a course's topics, map or review page.
 
+## Question quality
+
+`docs/question-quality.md` is the status file: what the 2026-11 audit measured in every bank, what was fixed
+(NREMT reshuffle, honest "explained" wording, dealt choices on teacher printed tests, Env Sci length cues, tally
+fixes), live answer data and what is open. The analytics runs check question health (Project doc A3.9).
+
 ## Analytics
 
 `docs/analytics-plan.md` is the status file: the Umami proxy and bot filter, first-touch source, question tallies

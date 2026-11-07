@@ -884,7 +884,7 @@
       '<span class="pp-free-n">' + (q.left > 0 ? 'Shared by Practice and Review.' : 'They come back at midnight.') + (C.note ? ' ' + esc(C.note) : '') + '</span>';
     box.hidden = false;
   }
-  function paintCount(){ var sub = doc.getElementById('ppSub'), n = A.qcount(); if(sub && n) sub.textContent = fmt(n) + ' questions · every option explained'; }
+  function paintCount(){ var sub = doc.getElementById('ppSub'), n = A.qcount(); if(sub && n) sub.textContent = fmt(n) + ' questions · ' + (C.explained || 'every option explained'); }
 
   function boot(){
     fromUrl(URLP);

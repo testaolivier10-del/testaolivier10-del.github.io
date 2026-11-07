@@ -541,7 +541,7 @@
     if(exam && exam.course === course) exam.answered++;
     if(!enabled || optedOut() || automated()) return;
     qid = String(qid == null ? '' : qid);
-    if(!QID.test(qid) || !/^[a-z]{2,8}$/.test(String(course))) return;
+    if(!QID.test(qid) || !/^[a-z]{2,12}$/.test(String(course))) return;   // 12: apprecalc has 9 letters (2026-11-06)
     var now = Date.now(), given = typeof secs === 'number' && isFinite(secs);
     var clamp = function(x){ return Math.min(900, Math.max(0, Math.round(x))); };
     var inBurst = !given && burst && burst.course === course && now - burst.last < BURST_MS;

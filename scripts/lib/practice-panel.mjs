@@ -104,7 +104,7 @@ export function panelConfig(key) {
     exam: 'Finals cover every chapter of A&P I or A&P II, weighted by topic; the TEAS practice follows the TEAS 7 A&P areas',
   };
   if (key === 'ochem') return {
-    course: 'ochem', family: 'ochem', note: 'The first four chapters are unlimited.', dir: 'ochem',
+    course: 'ochem', family: 'ochem', explained: 'every answer explained', note: 'The first four chapters are unlimited.', dir: 'ochem',
     formats: fmt(['q', 'exam', 'cards']), unitWord: 'Chapters', practice: null, pace: 90,
     from: ['new', 'due', 'missed', 'weak', 'studied'], counts: [5, 10, 20, 40, 0],
     examKinds: [['chapter', 'Chapter test'], ['midterm', 'Midterm'], ['final', 'Cumulative final']],
@@ -114,7 +114,7 @@ export function panelConfig(key) {
   };
   /* The flashcard domains are the deck's own (nremt/assets/flashcards.json "domains"). */
   if (key === 'nremt') return {
-    course: 'nremt', family: 'nremt', note: 'The study notes stay open.', dir: 'nremt',
+    course: 'nremt', family: 'nremt', explained: 'every answer explained', note: 'The study notes stay open.', dir: 'nremt',
     formats: fmt(['q', 'exam', 'cat', 'scen', 'cards']), unitWord: 'Domains', practice: null, pace: 72,
     from: ['new', 'due', 'missed', 'weak'], counts: [10, 20, 30, 50],
     examKinds: [['std', '100 questions, 2 hours'], ['real', 'Exam-realistic: no flagging, no going back']],
@@ -130,6 +130,7 @@ export function panelConfig(key) {
 /* The short band: issue line with the course, "Practice", one sub line (the question count, filled in by
    the panel when it knows it) and the free daily limit box (filled in only for a visitor with a limit). */
 export function bandHtml(key, { up = '../', crumbs = [], sub = 'Every answer explained' } = {}) {
+  /* NREMT and ochem explain the right answer; the AP® courses and A&P explain every option (question audit 2026-11-06). */
   const label = COURSES[key].label;
   const crumb = crumbs.length ? `<nav class="r3-crumb" aria-label="Breadcrumb">${crumbs.map((c, i) => i === crumbs.length - 1
     ? `<span aria-current="page">${c.name}</span>` : `<a href="${c.href}">${c.name}</a> <span aria-hidden="true">&rsaquo;</span> `).join('')}</nav>\n` : '';

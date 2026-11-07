@@ -49,6 +49,9 @@ Umami already got `premium-*` funnel events from `assets/premium.js`.
 
 ## Reading the new data
 
+- 2026-11-06 (docs/question-quality.md): course keys up to 12 letters (AP® Precalculus was dropped before; migration
+  2026-11g), and a question left blank in an exam is no longer sent as a wrong answer.
+
 - Hardest questions (10+ answers this week): see the query at the top of the migration.
 - Umami Events: `video-play` by `video` and `course`; `heard-from` by `answer`; `exam-quit` by `pct`; `read` by `depth`;
   any event by `src`; `purchase` by `src` and `ref`.

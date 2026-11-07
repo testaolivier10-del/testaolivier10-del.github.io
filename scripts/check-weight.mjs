@@ -600,7 +600,8 @@ const BUDGETS = [
      engine's reviewPick). Measured 58.8 KB. */
   /* 59.1 -> 59.6 (Practice v2, 2026-11-06): the engine starts a practice set from the panel (from, area, diff,
      n) and exposes the clock's submit; measured 59.4. */
-  ['nremt/practice.html', 59.6],
+  /* 59.6 -> 59.8 (question audit 2026-11-06): practice-engine.js deals the choices afresh each visit; measured 59.6. */
+  ['nremt/practice.html', 59.8],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read

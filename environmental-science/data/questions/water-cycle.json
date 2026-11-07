@@ -173,7 +173,7 @@
    "diff": 2,
    "q": "Why does heavy rain on dry, hard-packed soil often cause more runoff than the same rain on loose, moist soil?",
    "options": [
-    "Less water soaks in, so more flows off.",
+    "Less water soaks into hard soil, so more runs off the surface.",
     "Hard soil makes more water evaporate during the storm.",
     "Loose, moist soil repels the water that falls on it.",
     "Dry soil pulls the storm clouds closer to the ground."
@@ -380,7 +380,7 @@
    "q": "Which conclusion about freshwater does the chart support?",
    "stimulus": "water-cycle-s1",
    "options": [
-    "Most freshwater is ice or groundwater.",
+    "Most freshwater is locked in ice or held as groundwater.",
     "Lakes and rivers hold most of the freshwater on Earth.",
     "Freshwater makes up about half of the water on Earth.",
     "Groundwater is the largest of the water reservoirs."
@@ -434,7 +434,7 @@
    "q": "How does paving change where rain goes, according to the table?",
    "stimulus": "water-cycle-s2",
    "options": [
-    "Runoff rises and infiltration falls.",
+    "Runoff rises from 10 to 70 cm, and infiltration falls.",
     "Infiltration rises from 40 to 70 cm, and runoff falls.",
     "Evaporation and transpiration double, from 25 to 50 cm.",
     "Evaporation changes, but runoff and infiltration stay put."
@@ -492,7 +492,7 @@
    "q": "Based on the table, what happens to the groundwater below a town as more land is paved?",
    "stimulus": "water-cycle-s2",
    "options": [
-    "It refills more slowly.",
+    "It is refilled more slowly, because less rain soaks in.",
     "It is refilled faster, because the runoff soaks in.",
     "It does not change, because the rain is the same.",
     "It turns salty from chemicals on the pavement."

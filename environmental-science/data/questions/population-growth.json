@@ -125,7 +125,7 @@
    "options": [
     "The yeast cells stop dividing once they are 12 hours old",
     "The flask gets colder each hour of the experiment",
-    "Sugar runs low and wastes build up",
+    "Sugar runs low and toxic wastes build up in the flask",
     "Yeast stop growing at a set 300 thousand cells per mL"
    ],
    "correct": 2,
@@ -211,7 +211,7 @@
    "q": "Both curves start at 20 and match for the first few years. Why do they separate later?",
    "stimulus": "population-growth-s2",
    "options": [
-    "Limits slow the S-curve near K",
+    "Limiting factors slow the S-curve near carrying capacity",
     "The J-curve species has a lower biotic potential",
     "The S-curve species dies out after 15 years",
     "The J-curve stops growing once it reaches the carrying capacity"
@@ -392,7 +392,7 @@
    "options": [
     "A disease that spreads faster in crowded herds",
     "Competition among birds for the few nesting sites",
-    "A late frost that kills plants",
+    "A sudden late frost that kills young plants",
     "Predators that hunt more where prey is dense"
    ],
    "correct": 2,

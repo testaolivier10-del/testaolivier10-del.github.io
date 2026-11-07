@@ -440,7 +440,7 @@
    "q": "Which panel of the diagram is the only one that makes electricity?",
    "stimulus": "solar-energy-s2",
    "options": [
-    "Photovoltaic",
+    "Photovoltaic (PV) cells",
     "Active solar heating",
     "Passive solar design",
     "Each of the three makes electricity"

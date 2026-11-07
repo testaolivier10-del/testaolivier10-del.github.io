@@ -276,7 +276,7 @@ if(!QUESTIONS.length){
 // options (remapping its correct index to match) anyway, so the letter a learner
 // sees is theirs alone and no ordering in the file can leak an answer here.
 //
-// The chosen order is persisted per-browser (not re-rolled every page load): saved quiz
+// The chosen order is persisted per-browser while an exam is in progress (re-rolled on every other page load): saved quiz
 // progress (EXAM_STATE_KEY, below) stores each answer as an option INDEX, not option text.
 // Re-shuffling on every load — as this used to do — silently changed what index 0/1/2/3
 // pointed to, so resuming an in-progress exam (or even just reloading mid-quiz) could show
@@ -291,14 +291,18 @@ if(!QUESTIONS.length){
 const OPTION_ORDER_KEY = 'nremt_option_order';
 let OPTION_ORDERS = {};   // id -> shown position -> bank index; updateMastery saves picks in bank order
 (function shuffleQuestionOptions(){
-  // A question with no saved order is one added to the bank since this browser
-  // last loaded the page. It gets shuffled; every question that already had an
-  // order keeps it, so a half-finished exam still grades against the letters it
-  // displayed.
+  // Each visit deals every question's options afresh, so a student who sees a question again
+  // cannot answer it from memory of the letter (question quality audit, 2026-11-06). Only while
+  // an exam is in progress (nremt_inprogress_exam, EXAM_STATE_KEY below, which is declared later)
+  // is the saved order kept, so the half-finished exam still grades against the letters it showed.
+  // A question with no saved order (new to the bank) is shuffled either way.
   let orders = {};
   let changed = false;
+  let keep = false;
+  try{ keep = !!localStorage.getItem('nremt_inprogress_exam'); }catch(e){ keep = false; }
   try{
-    const raw = localStorage.getItem(OPTION_ORDER_KEY);
+    const raw = keep ? localStorage.getItem(OPTION_ORDER_KEY) : null;
+    if(!keep) changed = true;
     const parsed = raw ? JSON.parse(raw) : null;
     orders = QID.readOrders(parsed);
     // Dropping a stale entry, or converting the array, is itself a change

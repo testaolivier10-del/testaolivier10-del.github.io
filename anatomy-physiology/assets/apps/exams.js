@@ -623,7 +623,7 @@
     var rows = run.qs.map(function(q){
       var r = run.res[q.id] || { correct: false, score: 0, pick: null, skipped: true };
       // An unanswered question is recorded as a miss, so it reaches review.
-      Core.record(q.id, !!r.correct, { topic: q.topic, core: q.core, level: q.level, diff: q.diff, src: 'q' });
+      Core.record(q.id, !!r.correct, { skipped: !!r.skipped, topic: q.topic, core: q.core, level: q.level, diff: q.diff, src: 'q' });
       return { q: q, r: r };
     });
     var right = rows.filter(function(x){ return x.r.correct; }).length, total = rows.length;
