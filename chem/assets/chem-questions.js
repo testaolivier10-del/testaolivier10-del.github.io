@@ -304,6 +304,8 @@
     }
 
     if(q.type === 'predict') predict(); else if(q.type === 'order') order(); else if(q.type === 'multi') multi(); else if(q.type === 'numeric') numeric(); else choice();
+    // In an exam nothing is graded yet, so the button says what it does.
+    if(opts.exam) actions.querySelectorAll('.chem-check').forEach(function(b){ b.textContent = 'Lock in answer'; });
 
     function optWhy(x, i){
       if(reveal && q.why && q.why.options && q.why.options[i]) x.insertAdjacentHTML('beforeend', '<span class="chem-opt-why">' + html(q.why.options[i]) + '</span>');
@@ -315,12 +317,23 @@
         return '<button type="button" class="chem-opt cx-opt" role="radio" aria-checked="false" data-i="' + i + '">' + html(q.options[i]) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.chem-opt-btns'));
+      // One answer: a tap selects (and can be changed), Check grades, like every
+      // other question type (consistency pass 2026-11-07).
+      actions.innerHTML = '<button type="button" class="btn-press sm chem-check" disabled>Check</button>';
+      var check = actions.querySelector('.chem-check'), sel = -1;
       body.querySelectorAll('.chem-opt').forEach(function(b){
         b.addEventListener('click', function(){
           if(done || busy) return;
-          busy = true;
-          explain(function(){
-            var pick = +b.getAttribute('data-i'), g = grade(q, pick);
+          sel = +b.getAttribute('data-i');
+          body.querySelectorAll('.chem-opt').forEach(function(x){ x.setAttribute('aria-checked', x === b ? 'true' : 'false'); });
+          check.disabled = false;
+        });
+      });
+      check.addEventListener('click', function(){
+        if(done || busy || sel < 0) return;
+        busy = true;
+        explain(function(){
+            var pick = sel, g = grade(q, pick);
             body.querySelectorAll('.chem-opt').forEach(function(x){
               var i = +x.getAttribute('data-i');
               x.setAttribute('aria-disabled', 'true');
@@ -331,7 +344,6 @@
               optWhy(x, i);
             });
             finish(g, '', pick);
-          });
         });
       });
     }

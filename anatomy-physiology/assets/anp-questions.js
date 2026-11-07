@@ -113,6 +113,8 @@
 
     var type = q.type;
     if(type === 'predict') predict(); else if(type === 'order') order(); else if(type === 'multi') multi(); else choice();
+    // In an exam nothing is graded yet, so the button says what it does.
+    if(opts.exam) actions.querySelectorAll('.anp-check').forEach(function(b){ b.textContent = 'Lock in answer'; });
 
     /* single, vignette, graph, image, missing, error: one right option. */
     function choice(){
@@ -127,12 +129,23 @@
         return '<button type="button" class="anp-opt cx-opt" role="radio" aria-checked="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.anp-opt-btns'));
+      // One answer: a tap selects (and can be changed), Check grades, like every
+      // other question type (consistency pass 2026-11-07).
+      actions.innerHTML = '<button type="button" class="btn-press sm anp-check" disabled>Check</button>';
+      var check = actions.querySelector('.anp-check'), sel = -1;
       body.querySelectorAll('.anp-opt').forEach(function(b){
         b.addEventListener('click', function(){
           if(done || busy) return;
-          busy = true;
-          explain(function(){
-          var pick = +b.getAttribute('data-i');
+          sel = +b.getAttribute('data-i');
+          body.querySelectorAll('.anp-opt').forEach(function(x){ x.setAttribute('aria-checked', x === b ? 'true' : 'false'); });
+          check.disabled = false;
+        });
+      });
+      check.addEventListener('click', function(){
+        if(done || busy || sel < 0) return;
+        busy = true;
+        explain(function(){
+          var pick = sel;
           var ok = pick === q.correct;
           body.querySelectorAll('.anp-opt').forEach(function(x){
             var i = +x.getAttribute('data-i');
@@ -145,7 +158,6 @@
             if(reveal && q.why && q.why.options && q.why.options[i]) x.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(q.why.options[i]) + '</span>');
           });
           finish(ok, ok ? 1 : 0, '', pick);
-          });
         });
       });
     }

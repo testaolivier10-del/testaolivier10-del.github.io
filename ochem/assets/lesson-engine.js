@@ -201,7 +201,9 @@
           '<div class="choice-row">' + shuf.options.map(function(o,i){
             var orig = shuf.toOriginal ? shuf.toOriginal[i] : i;
             return '<button class="choice-btn" data-i="' + orig + '">' + o + '</button>';
-          }).join('') + '</div>' + feedbackHtml('fb')
+          }).join('') + '</div>' +
+          '<div class="actions" style="justify-content:flex-start;"><button class="btn-press" id="checkBtn" disabled>Check answer</button></div>' +
+          feedbackHtml('fb')
         ) +
         (isExplain ? nextButtonHtml(cfg.nextLabel || 'Continue', true) : (isFinal ? '<div id="doneBox"></div>' : nextButtonHtml(cfg.nextLabel || 'Continue', false)));
 
@@ -212,11 +214,23 @@
 
       var fb = card.querySelector('#fb');
       var next = isFinal ? null : card.querySelector('#nextBtn');
+      // A tap selects (and can be changed), Check grades, the same as every
+      // other question on the site (consistency pass 2026-11-07).
+      var check = card.querySelector('#checkBtn'), sel = null;
       card.querySelectorAll('.choice-btn').forEach(function(btn){
+        btn.setAttribute('aria-pressed', 'false');
         btn.addEventListener('click', function(){
+          sel = btn;
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.toggle('selected', b === btn); b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+          check.disabled = false;
+        });
+      });
+      check.addEventListener('click', function(){
+          var btn = sel; if(!btn) return;
           var i = parseInt(btn.getAttribute('data-i'), 10);
           var isCorrect = i === cfg.correctIndex;
-          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          check.disabled = true;
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; b.classList.remove('selected'); });
           btn.classList.add(isCorrect ? 'correct' : 'wrong');
           record(isCorrect);
           if(isCorrect){
@@ -235,9 +249,13 @@
             else next.disabled = false;
           } else {
             showFeedback(fb, false, cfg.wrongFeedback || 'Not quite — try again.');
-            card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+            // Leave the wrong pick marked until another option is chosen.
+            sel = null;
+            card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.setAttribute('aria-pressed', 'false'); });
+            btn.addEventListener('click', function clear(){ btn.classList.remove('wrong'); btn.removeEventListener('click', clear); });
+            card.querySelectorAll('.choice-btn').forEach(function(b){ if(b !== btn) b.addEventListener('click', function(){ btn.classList.remove('wrong'); }, { once: true }); });
           }
-        });
+          if(isCorrect) check.closest('.actions').remove();
       });
       if(next) next.addEventListener('click', advance);
     }

@@ -88,16 +88,25 @@
       return {
         html: '<div class="choice-row cx-opts">' + shuf.options.map(function(o, i){
           return '<button class="choice-btn cx-opt" data-i="' + shuf.toOriginal[i] + '"><span>' + esc(o) + '</span></button>';
-        }).join('') + '</div>',
+        }).join('') + '</div>' + '<div class="actions" style="justify-content:flex-start;"><button class="btn-press" id="checkBtn" disabled>Check answer</button></div>',
+        // A tap selects (and can be changed), Check grades, the same as every
+        // other question on the site (consistency pass 2026-11-07).
         attach: function(submit){
+          var sel = null, check = cardEl.querySelector('#checkBtn');
           cardEl.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.setAttribute('aria-pressed', 'false');
             btn.addEventListener('click', function(){
-              submit({ choice: parseInt(btn.getAttribute('data-i'), 10) });
+              sel = parseInt(btn.getAttribute('data-i'), 10);
+              cardEl.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.toggle('selected', b === btn); b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+              check.disabled = false;
             });
           });
+          check.addEventListener('click', function(){ if(sel !== null) submit({ choice: sel }); });
         },
         lock: function(response, correct){
+          var cb = cardEl.querySelector('#checkBtn'); if(cb) cb.closest('.actions').remove();
           cardEl.querySelectorAll('.choice-btn').forEach(function(b, i){
+            b.classList.remove('selected');
             var orig = shuf.toOriginal[i];
             b.disabled = true;
             if(orig === q.answer){ b.classList.add('correct'); if(orig === response.choice) b.classList.add('is-picked'); }
@@ -109,16 +118,24 @@
 
     function renderClickAtom(q){
       return {
-        html: '<div class="click-hint">Click an atom on the molecule.</div>' +
-              Mo.svg(q.molecule, { clickable: 'all' }),
+        html: '<div class="click-hint">Click an atom on the molecule, then check your answer.</div>' +
+              Mo.svg(q.molecule, { clickable: 'all' }) + '<div class="actions" style="justify-content:flex-start;"><button class="btn-press" id="checkBtn" disabled>Check answer</button></div>',
         attach: function(submit){
+          var sel = null, check = cardEl.querySelector('#checkBtn');
           cardEl.querySelectorAll('.atom').forEach(function(el){
-            function go(){ submit({ key: el.getAttribute('data-key') }); }
+            function go(){
+              sel = el.getAttribute('data-key');
+              cardEl.querySelectorAll('.atom').forEach(function(a){ a.classList.toggle('chosen', a === el); });
+              check.disabled = false;
+            }
             el.addEventListener('click', go);
             el.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); } });
           });
+          check.addEventListener('click', function(){ if(sel !== null) submit({ key: sel }); });
         },
         lock: function(response, correct){
+          var cb = cardEl.querySelector('#checkBtn'); if(cb) cb.closest('.actions').remove();
+          cardEl.querySelectorAll('.atom.chosen').forEach(function(a){ a.classList.remove('chosen'); });
           var ok = D.acceptedKeys(q);
           cardEl.querySelector('.scene').classList.add('scene--locked');
           cardEl.querySelectorAll('.atom').forEach(function(el){
@@ -175,25 +192,36 @@
       return {
         html: '<div class="click-hint">Click where the arrow starts, then where it ends.</div>' +
               Mo.svg(q.molecule, { clickable: 'all' }) +
-              '<div class="multi-note" id="arrowNote">Start at a source of electrons.</div>',
+              '<div class="multi-note" id="arrowNote">Start at a source of electrons.</div>' + '<div class="actions" style="justify-content:flex-start;"><button class="btn-press" id="checkBtn" disabled>Check answer</button></div>',
         attach: function(submit){
-          var note = cardEl.querySelector('#arrowNote');
+          var note = cardEl.querySelector('#arrowNote'), check = cardEl.querySelector('#checkBtn'), to = null;
+          function mark(){
+            cardEl.querySelectorAll('.atom').forEach(function(a){ var k = a.getAttribute('data-key'); a.classList.toggle('chosen', k === from || k === to); });
+            check.disabled = !(from !== null && to !== null);
+          }
           cardEl.querySelectorAll('.atom').forEach(function(el){
             function go(){
               var k = el.getAttribute('data-key');
               if(from === null){
                 from = k;
-                el.classList.add('chosen');
                 note.textContent = 'Tail on ' + Mo.labelFor(q.molecule, k) + '. Now click where those electrons go.';
-              } else if(k !== from){
-                submit({ from: from, to: k });
+              } else if(k === from){
+                // Clicking the tail again starts the arrow over.
+                from = null; to = null;
+                note.textContent = 'Start at a source of electrons.';
+              } else {
+                to = k;
+                note.textContent = 'Arrow from ' + Mo.labelFor(q.molecule, from) + ' to ' + Mo.labelFor(q.molecule, k) + '. Click the tail again to start over, or check your answer.';
               }
+              mark();
             }
             el.addEventListener('click', go);
             el.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); } });
           });
+          check.addEventListener('click', function(){ if(from !== null && to !== null) submit({ from: from, to: to }); });
         },
         lock: function(response, correct){
+          var cb = cardEl.querySelector('#checkBtn'); if(cb) cb.closest('.actions').remove();
           // Redraw the scene showing the student's arrow in red when wrong and
           // the correct one in green alongside it, so the mistake is visible
           // rather than described.

@@ -98,11 +98,27 @@
     var qs = [].slice.call(shell.querySelectorAll('.nl-q')), answered = 0, right = 0;
     qs.forEach(function(q){
       var ok = +q.getAttribute('data-correct');
-      var opts = [].slice.call(q.querySelectorAll('.nl-opt'));
+      var opts = [].slice.call(q.querySelectorAll('.nl-opt')), sel = -1;
+      // A tap selects (and can be changed), Check grades, the same as every
+      // other question on the site (consistency pass 2026-11-07).
+      var bar = document.createElement('div');
+      bar.className = 'nl-q-act';
+      bar.innerHTML = '<button type="button" class="btn-press sm nl-check" disabled>Check</button>';
+      q.querySelector('.nl-q-opts').insertAdjacentElement('afterend', bar);
+      var check = bar.querySelector('.nl-check');
       opts.forEach(function(b){
+        b.setAttribute('aria-pressed', 'false');
         b.addEventListener('click', function(){
           if(q.classList.contains('is-answered')) return;
-          var pick = +b.getAttribute('data-i'), good = pick === ok;
+          sel = +b.getAttribute('data-i');
+          opts.forEach(function(o){ o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+          check.disabled = false;
+        });
+      });
+      check.addEventListener('click', function(){
+          if(q.classList.contains('is-answered') || sel < 0) return;
+          var pick = sel, good = pick === ok;
+          bar.remove();
           q.classList.add('is-answered', good ? 'is-right' : 'is-wrong');
           opts.forEach(function(o, j){
             o.disabled = true;
@@ -116,7 +132,6 @@
           answered++; if(good) right++;
           gate();
           if(answered === qs.length) finish();
-        });
       });
     });
     function finish(){
