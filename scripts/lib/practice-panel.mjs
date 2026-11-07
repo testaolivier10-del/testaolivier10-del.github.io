@@ -181,13 +181,15 @@ export function panelModes(key) {
   if (has('scen')) out.push(['scen', 'Scenarios', 'One call, dispatch to handoff']);
   if (has('frq')) out.push(['frq', 'Free response', c.frqN ? n(c.frqN, 'question') : 'Write, then score with the rubric']);
   if (has('jus')) out.push(['jus', 'Justify', c.jusN ? n(c.jusN, 'prompt') : 'Short written reasoning']);
-  if (c.cram) out.push(['cram', 'Cram plan', 'Counted back from exam day']);
+  /* The cram plan is a schedule, not a session: it lives with the path on Home (owner 2026-11-06); Exam links to it. */
   return out;
 }
 
 /* The card (Practice v4 B): the modes as a list on the left, the chosen mode's settings in one column in
    the middle (drawn by practice-panel.js from the config, in two groups), and Your session on the right:
-   the choice in words, one Start, Reset and the share row. The right column stays in view on wide screens. */
+   the choice in words, one Start, Reset and the share row. The right column stays in view on wide screens; on
+   narrower ones, where it comes after the settings, a one-line bar (.pp-mbar: the choice and Start) stays above the
+   tab bar until Your session is on screen (owner 2026-11-06). */
 export function panelHtml(key) {
   const tiles = panelModes(key).map(([id, t, line, live]) => `<button type="button" class="pp-tile" data-mode="${id}" aria-pressed="false"><span class="pp-tile-i">${ico22(TILE_ICONS[id])}</span><span class="pp-tile-x"><b>${t}</b><span class="pp-tile-l"${live ? ` data-live="${live}"` : ''}>${line}</span></span></button>`).join('');
   return `<div class="pp-v3 pp-v4" id="pp">
@@ -204,6 +206,7 @@ ${noscriptHtml(key)}
 <div id="ppShare"></div>
 </div></aside>
 </section>
+<div class="pp-mbar" id="ppMbar"><p class="pp-mbar-t" id="ppMbarT" aria-hidden="true"></p><button type="button" class="pp-mbar-go" id="ppMbarGo">Start</button></div>
 </div>`;
 }
 

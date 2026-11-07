@@ -158,6 +158,7 @@ function buildAp(c) {
   const ex = examDefaults[c.key];
   return {
     kind: 'ap', exam: ex ? { date: ex.date, label: ex.label.replace(/ \(.*\)$/, '') } : { date: null, label: 'AP® exam' },
+    cram: has(`${c.dir}/cram.html`) ? 'cram.html' : null,
     progress: `${c.storagePrefix}progress_v1`,
     units: units.map((u) => ({ id: u.id, label: u.n ? `Unit ${u.n}` : 'Skills', title: u.title, w: range(u.weight),
       f: free.includes(u.id) || u.part === 'skills' ? 1 : 0 })),

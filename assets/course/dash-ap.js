@@ -93,7 +93,7 @@
     // ---------------------------------------------------------------- 2 progress
     var progress = { weeks: weeks, exams: exams, examWord: cfg.examWord || 'exams', firstExamWord: 'first exam',
       examDate: examT ? { t: examT } : null,
-      allHref: exams.length ? BASE + 'exams.html' : null, allText: 'Exams',
+      allHref: exams.length ? BASE + 'exams.html' : null, allText: 'Exams', cramHref: BASE + 'cram.html',
       empty: isNew ? 'Your line starts with your first answers.' : 'Your weekly line starts now: each week with 5 or more answers adds a point.',
       more: cfg.examHistoryHtml ? [{ label: 'Exam history', html: cfg.examHistoryHtml }] : [] };
 

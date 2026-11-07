@@ -198,3 +198,11 @@ budgets in `scripts/check-weight.mjs`, `scripts/ci-local.sh` (with `BROWSER=1`),
   greying with reasons, remembered settings, deep links and every Start URL are unchanged from v3.
   Tested in headless Chrome (bio, nremt, ochem, calculus, anatomy-physiology; every mode; 1280 and 390;
   light and dark; no overflow, no errors).
+
+- **Cram plan moves to Home; phone Start bars (owner 2026-11-06).** The Cram plan is a schedule, not a session, so
+  it left Practice (AP® courses now show 6 modes). It is offered in Your path on Home from about 7 weeks before the
+  exam and in exam review (`cramLink` in `assets/course/path.js`; `cram` in each AP® path file from
+  `scripts/build-paths.mjs`), linked under Practice's Exam settings and beside Exams on Progress, and its page lights
+  the Home tab. Practice on narrower screens has a one-line bar with the choice and Start (`.pp-mbar`) above the tab
+  bar until Your session is on screen; Home's phone button follows the path ("Start:" or "Continue:" the next topic,
+  `paintSticky`) instead of "Open the textbook".

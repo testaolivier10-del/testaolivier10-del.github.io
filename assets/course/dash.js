@@ -264,7 +264,7 @@
   function progressCard(p){
     var tr = trend(p), html = '<div class="d5-card">';
     var has = (p.weeks && p.weeks.length) || (p.exams && p.exams.length);
-    if(!has) return html + '<p class="d5-lead">' + (p.empty || 'Your line starts with your first answers.') + '</p><p class="d5-mut">Each week you answer at least 5 questions adds a point, and every exam lands on the same line.</p>' + drawers(p.more) + '</div>';
+    if(!has) return html + '<p class="d5-lead">' + (p.empty || 'Your line starts with your first answers.') + '</p><p class="d5-mut">Each week you answer at least 5 questions adds a point, and every exam lands on the same line.' + (p.cramHref ? ' Close to exam day, make a <a href="' + esc(p.cramHref) + '">cram plan</a>.' : '') + '</p>' + drawers(p.more) + '</div>';
     html += '<p class="d5-lead">' + esc(tr.head || '') + '</p>';
     var sub = [];
     if(p.sub) sub.push(p.sub);
@@ -279,7 +279,7 @@
     if(p.weeks && p.weeks.length) key.push('<span><i class="d5-k-line"></i>your accuracy each week</span>');
     if(p.exams && p.exams.length) key.push('<span><i class="d5-k-exam"></i>' + esc(p.examWord || 'exams') + '</span>');
     if(p.goal) key.push('<span><i class="d5-k-goal"></i>' + esc(p.goal.key || p.goal.label) + '</span>');
-    if(key.length || p.allHref) html += '<div class="d5-key">' + key.join('') + (p.allHref ? '<span class="d5-spacer"></span><a href="' + esc(p.allHref) + '">' + esc(p.allText || 'All exams') + '</a>' : '') + '</div>';
+    if(key.length || p.allHref || p.cramHref) html += '<div class="d5-key">' + key.join('') + (p.allHref || p.cramHref ? '<span class="d5-spacer"></span>' : '') + (p.cramHref ? '<a href="' + esc(p.cramHref) + '">Cram plan</a>' : '') + (p.allHref ? '<a href="' + esc(p.allHref) + '">' + esc(p.allText || 'All exams') + '</a>' : '') + '</div>';
     return html + drawers(p.more) + '</div>';
   }
 
