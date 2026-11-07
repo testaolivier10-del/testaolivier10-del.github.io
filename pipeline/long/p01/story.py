@@ -16,7 +16,7 @@ import base as B
 
 FIN = WD.FINISH
 CAMF = FIN + 300                 # the finish two shot: gate at screen 660
-ANA_X, ANA_G, ANA_S = FIN - 250, 984, 1.06
+ANA_X, ANA_G, ANA_S = FIN - 420, 762, 0.92
 LEO_X = FIN + 760                # where Leo stands after walking back
 DISP_X, DISP_Y = FIN + 250, 470
 
@@ -125,6 +125,7 @@ def finish_scene(c, t, camx, cast_fn, gate_flash=0.0, disp='', disp_glow=0.0, ga
             if disp:
                 WD.display(c, sx(DISP_X), DISP_Y, 0.9, disp, glow_=disp_glow)
                 c.drawLine(sx(DISP_X), DISP_Y + 63, sx(DISP_X), 712, SP(WD.METAL_D, 10))
+        WD.sign(c, sx(FIN) - 170, 'FINISH')
         # the white finish line across the lanes
         x = sx(FIN)
         c.drawLine(x + 34, 758, x - 26, 918, SP((250, 246, 240), 9, 230))
@@ -274,6 +275,7 @@ def u6(c, t):
             wx = sx(X) + 300
             hp = (sx(X) + 150, PE.GROUND - 300)
             PE.ik(A, ps, hp); ps.hand_n = 'grip'
+            ps.uarm_f = 12; ps.elbow_f = 70; ps.hand_f = 'relaxed'
             ang = (X / 64.0)
             A.draw(c, ps, world=True)
             hpt = PE.hand_pt(A, ps, 'n', (0, 50))
@@ -287,7 +289,7 @@ def u6(c, t):
         a = ua(t, c1 + 1.0, 0.4)
         if a > 0:
             panel(c, 1380, 60, 1840, 260, a)
-            text(c, 'measuring wheel', 1610, 118, 36, INK2, a, 'semi', 'center')
+            text(c, 'measuring wheel', 1610, 118, 40, INK2, a, 'semi', 'center')
             text(c, f'{dist:5.1f} m', 1610, 220, 84, YELLOW if dist >= 99.95 else CREAM, a, 'xb', 'center')
     else:
         # shot B: the start gate, the plan of the run across the top
@@ -296,6 +298,7 @@ def u6(c, t):
         def props(c, sx):
             on = ua(t, wt(k, 'start', after=c3), 0.4)
             WD.gate(c, sx(0.0), t, 0.0, a=ua(t, wt(k, 'laser') - 0.2, 0.5))
+            WD.sign(c, sx(0.0) - 170, 'START')
             if on < 1:
                 pass
             X0 = sx(0.0); c.drawLine(X0 + 34, 758, X0 - 26, 918, SP((250, 246, 240), 9, 230))
@@ -321,13 +324,13 @@ def u6(c, t):
             text(c, '100.0 m', 1240, y - 30, 38, YELLOW, a, 'xb', 'center')
             # what the clock does
             s1 = ua(t, wt(k, 'starts') - 0.1, 0.3); s2 = ua(t, wt(k, 'stops') - 0.1, 0.3)
-            text(c, 'clock starts', 760, y + 84, 36, GREEN, s1 * a, 'bold', 'center')
-            text(c, 'clock stops', 1720, y + 84, 36, CORAL, s2 * a, 'bold', 'center')
+            text(c, 'clock starts', 780, y + 84, 40, GREEN, s1 * a, 'bold', 'center')
+            text(c, 'clock stops', 1700, y + 84, 40, CORAL, s2 * a, 'bold', 'center')
             if s1 > 0 and s2 < 1:
                 xx = 740 + (1740 - 740) * sm((t - wt(k, 'starts')) / (wt(k, 'stops') - wt(k, 'starts')))
                 c.drawCircle(xx, y, 14, P((47, 99, 200), 255 * a))
         if t > c4 - 0.2:
-            v = '0.000' if t < wt(k, 'starts') + 0.2 else display_val(t, wt(k, 'stops') + 0.2, 12.431, wt(k, 'starts') + 0.2)
+            v = '0.000'
             WD.display(c, 1240, 420, 0.8, v, ua(t, c4 - 0.2, 0.4), glow_=0.4, pole=False)
 
 
@@ -358,6 +361,7 @@ def c7(c, t):
 
         def props(c, sx):
             WD.gate(c, sx(0.0), t, fl)
+            WD.sign(c, sx(0.0) - 170, 'START')
             X0 = sx(0.0); c.drawLine(X0 + 34, 758, X0 - 26, 918, SP((250, 246, 240), 9, 230))
 
         def cast_fn(c, sx):
@@ -382,12 +386,12 @@ def c7(c, t):
         WD.finish(c, t)
         a = ua(t, wt(k, 'divides') - 0.4, 0.4)
         if a > 0:
-            panel(c, 240, 30, 1300, 270, a)
-            text(c, 'speed = distance ÷ time', 770, 90, 34, INK2, a, 'semi', 'center')
+            panel(c, 330, 30, 1290, 270, a)
+            text(c, 'speed = distance ÷ time', 810, 90, 34, INK2, a, 'semi', 'center')
             M.row(c, [dict(q=('100.0', 'm'), t0=wt(k, 'divides') + 0.1), dict(m='÷', t0=wt(k, 'by', after=c4)),
                       dict(q=('12.431', 's'), t0=wt(k, 'twelve', after=c4)), dict(m='=', t0=c5 - 0.3),
-                      dict(q=('8.044', 'm/s'), t0=c5, col=YELLOW)], 770, 200, 72, t, 'center')
-            pill(c, 'his AVERAGE speed between the gates', 770, 320, TEAL, 32, ua(t, wt(k, 'average'), 0.4))
+                      dict(q=('8.044', 'm/s'), t0=c5, col=YELLOW)], 810, 200, 66, t, 'center')
+            pill(c, 'his AVERAGE speed between the gates', 810, 320, TEAL, 32, ua(t, wt(k, 'average'), 0.4))
 
 
 def two_shot(c, t, leo_kw=None, ana_kw=None, disp='', leo_extra=None):
@@ -408,29 +412,29 @@ def c8(c, t):
     k = 'c8'
     c1, c2, c3, c4 = (cue(k, i) for i in range(1, 5))
     sad = ua(t, c3 + 0.3, 0.6)
-    two_shot(c, t, leo_kw=dict(mouth=talking(t, k, wt(k, 'he', after=c3), wt(k, 'run')) * 0, smile=0.4 - 1.0 * sad, neck=-8 * sad,
+    two_shot(c, t, leo_kw=dict(mouth=talking(t, k, wt(k, 'he', after=c3), wt(k, 'run')) * 0, smile=0.4 - 1.3 * sad, neck=10 * sad,
                                 brow=-0.6 * sad, look=-0.3),
              ana_kw=dict(hold='calc', smile=0.4, look=0.3), disp='12.431')
     WD.finish(c, t)
     a = ua(t, c1, 0.4) * (1 - ua(t, c4 - 0.3, 0.4))
     if a > 0:
-        panel(c, 200, 30, 1290, 290, a)
+        panel(c, 330, 30, 1290, 290, a)
         M.row(c, [dict(q=('8.044', 'm/s'), t0=c1 + 0.2), dict(m='×', t0=wt(k, 'times')), dict(m='3.6', t0=wt(k, 'three'), col=TEAL),
-                  dict(m='=', t0=c2 - 0.2), dict(q=('28.96', 'km/h'), t0=c2 + 0.4, col=YELLOW)], 745, 140, 70, t, 'center')
+                  dict(m='=', t0=c2 - 0.2), dict(q=('28.96', 'km/h'), t0=c2 + 0.4, col=YELLOW)], 810, 140, 62, t, 'center')
         aa = ua(t, c3, 0.4) * a
         if aa > 0:
-            mdraw(c, '28.96 km/h  <  30 km/h', 745, 250, 64, CORAL, aa, align='center')
+            mdraw(c, '28.96 km/h  <  30 km/h', 810, 250, 60, CORAL, aa, align='center')
     # the calculator showed more digits than she wrote down
     a = ua(t, c4, 0.4)
     if a > 0:
-        panel(c, 200, 40, 1290, 330, a)
-        c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(270, 80, 1220, 220), 18, 18), P((190, 214, 178), 255 * a))
+        panel(c, 330, 40, 1290, 330, a)
+        c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(380, 80, 1240, 220), 18, 18), P((190, 214, 178), 255 * a))
         f = K.font('xb', 96); s1, s2 = '8.044', '405116'
         w1, w2 = f.measureText(s1), f.measureText(s2)
-        x0 = 745 - (w1 + w2) / 2
+        x0 = 810 - (w1 + w2) / 2
         c.drawString(s1, x0, 186, f, P((40, 56, 40), 255 * a))
         c.drawString(s2, x0 + w1, 186, f, P((40, 56, 40), 255 * a * (1 - 0.55 * ua(t, wt(k, 'wrote'), 0.4))))
-        text(c, 'what she wrote: 8.044', 745, 290, 38, AMBER, ua(t, wt(k, 'wrote'), 0.4), 'semi', 'center')
+        text(c, 'what she wrote: 8.044', 810, 290, 38, AMBER, ua(t, wt(k, 'wrote'), 0.4), 'semi', 'center')
 
 
 def g7(c, t):
@@ -457,6 +461,7 @@ def g7(c, t):
         # the start: Leo is back, bouncing on his toes, ready
         def props(c, sx):
             WD.gate(c, sx(0.0), t, 0.0)
+            WD.sign(c, sx(0.0) - 170, 'START')
             X0 = sx(0.0); c.drawLine(X0 + 34, 758, X0 - 26, 918, SP((250, 246, 240), 9, 230))
 
         def cast_fn(c, sx):
@@ -489,7 +494,7 @@ def g8(c, t):
     else:
         def arms(L, ps):
             if win > 0:
-                ps.uarm_n = -4 + 168 * win; ps.elbow_n = 18 + 10 * win; ps.uarm_f = -6 + 160 * win; ps.elbow_f = 16 + 14 * win
+                ps.uarm_n = -4 + 178 * win; ps.elbow_n = 18 - 12 * win; ps.uarm_f = -6 + 160 * win; ps.elbow_f = 16 - 6 * win
                 ps.hand_n = ps.hand_f = 'fist'
                 ps.ground -= 26 * abs(math.sin((t - wt(k, 'just')) * 6)) * win * (1 - ua(t, wt(k, 'that') + 0.8, 0.6))
         two_shot(c, t, leo_kw=dict(smile=0.3 + 0.9 * win, mouth=0.5 * win * (1 - ua(t, wt(k, 'coin'), 0.5)), look=-0.2),
@@ -497,19 +502,19 @@ def g8(c, t):
     WD.finish(c, t)
     a = ua(t, c1 + 1.2, 0.4)
     if a > 0:
-        panel(c, 150, 24, 1270, 330, a)
+        panel(c, 330, 24, 1290, 330, a)
         early = ua(t, c3 - 0.2, 0.5)
         y1 = 120
-        mdraw(c, '8.33', 210, y1, 66, CREAM, ua(t, wt(k, 'eight') - 0.1, 0.5), a)
-        text(c, 'rounded too early', 210, y1 + 50, 34, CORAL, ua(t, wt(k, 'early', after=c1 + 2), 0.4) * a, 'semi')
-        mdraw(c, '× 3.6 = 29.99 km/h', 370, y1, 66, CREAM, ua(t, wt(k, 'times') - 0.1, 0.9), a)
-        M.strike(c, 200, 990, y1 - 22, ua(t, c3 - 0.3, 0.35), a)
+        mdraw(c, '8.33', 380, y1, 62, CREAM, ua(t, wt(k, 'eight') - 0.1, 0.5), a)
+        text(c, 'rounded too early', 380, y1 + 50, 40, CORAL, ua(t, wt(k, 'early', after=c1 + 2), 0.4) * a, 'semi')
+        mdraw(c, '× 3.6 = 29.99 km/h', 530, y1, 62, CREAM, ua(t, wt(k, 'times') - 0.1, 0.9), a)
+        M.strike(c, 370, 1140, y1 - 22, ua(t, c3 - 0.3, 0.35), a)
         if early > 0:
             y2 = 240
-            mdraw(c, '100.0 ÷ 11.998 = 8.334722…', 210, y2, 58, CREAM, ua(t, wt(k, 'keep') - 0.1, 0.9), a)
-            mdraw(c, '× 3.6 = 30.005… → 30.01 km/h', 210, y2 + 70, 58, YELLOW, ua(t, c4 - 0.1, 1.2), a)
-            M.underline(c, 870, 1200, y2 + 86, ua(t, wt(k, 'thirty', after=c4) + 0.6, 0.5), AMBER, a)
-    pill(c, 'photo finish', 710, 380, AMBER, 40, ua(t, wt(k, 'photo'), 0.4) * (1 - ua(t, fin(k) + 0.2, 0.3)))
+            mdraw(c, '100.0 ÷ 11.998 = 8.334722…', 380, y2, 54, CREAM, ua(t, wt(k, 'keep') - 0.1, 0.9), a)
+            mdraw(c, '× 3.6 = 30.005… → 30.01 km/h', 380, y2 + 66, 54, YELLOW, ua(t, c4 - 0.1, 1.2), a)
+            M.underline(c, 1010, 1270, y2 + 82, ua(t, wt(k, 'thirty', after=c4) + 0.6, 0.5), AMBER, a)
+    pill(c, 'photo finish', 810, 390, AMBER, 40, ua(t, wt(k, 'photo'), 0.4) * (1 - ua(t, fin(k) + 0.2, 0.3)))
 
 
 def end(c, t):

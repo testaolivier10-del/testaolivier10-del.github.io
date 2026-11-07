@@ -16,7 +16,7 @@ Bt = B.Bt
 D = B.D
 
 
-def hop_number(c, digits, p0, p1, x, y, size, u, col=CREAM, a=1.0):
+def hop_number(c, digits, p0, p1, x, y, size, u, col=CREAM, a=1.0, fade_lead=0):
     """digits with a decimal point that hops from slot p0 to slot p1; arcs count the hops"""
     f = K.font('hand', size)
     xs = [x]
@@ -24,7 +24,8 @@ def hop_number(c, digits, p0, p1, x, y, size, u, col=CREAM, a=1.0):
         xs.append(xs[-1] + f.measureText(ch) + size * 0.08)
     for i, ch in enumerate(digits):
         if ch != '.':
-            c.drawString(ch, xs[i], y, f, P(col, 255 * a))
+            al = (1 - 0.85 * u) if i < fade_lead else 1.0
+            c.drawString(ch, xs[i], y, f, P(col, 255 * a * al))
     pos = p0 + (p1 - p0) * u
     i0 = int(math.floor(pos)); fr = pos - i0
     i0 = max(0, min(len(xs) - 1, i0)); i1 = max(0, min(len(xs) - 1, i0 + 1))
@@ -321,10 +322,11 @@ def c4(c, t):
     k = 'c4'
     t0, q1, q2, q3, q4 = cue(k), cue(k, 1), cue(k, 2), cue(k, 3), cue(k, 4)
     board(c, t)
-    car(c, 260 + min(1400, max(0, t - q1) * 60), 230, 0.8, ua(t, q1 - 0.2, 0.4))
-    c.drawLine(80, 260, 1840, 260, SP((90, 96, 150), 4, 200 * ua(t, q1 - 0.2, 0.4)))
+    car(c, 260 + min(1400, max(0, t - t0) * 50), 230, 0.8, ua(t, t0 + 0.1, 0.4))
+    c.drawLine(80, 260, 1840, 260, SP((90, 96, 150), 4, 200 * ua(t, t0 + 0.1, 0.4)))
+    text(c, 'speeds: two fractions, one for each unit', W / 2, 380, 44, INK2, ua(t, t0 + 0.2, 0.4) * (1 - ua(t, q2, 0.3)), 'semi', 'center')
     km = wt(k, 'kilometers', 1); hr = wt(k, 'hours')
-    it = [dict(q=('72', 'km/h'), t0=q1 + 0.3), dict(m='×', t0=q2),
+    it = [dict(q=('72', 'km/h'), t0=min(q1, t0 + 1.0)), dict(m='×', t0=q2),
           dict(f=(('1000', 'm'), ('1', 'km')), t0=q2 + 0.2, sd=km), dict(m='×', t0=q3 + 0.4),
           dict(f=(('1', 'h'), ('3600', 's')), t0=q3 + 0.6, sn=hr + 0.6)]
     lightbar(c, t, 520, q2, q4, 160, 1760, 260)
@@ -419,13 +421,14 @@ def g1(c, t):
     k = 'g1'
     t0, q1, q2, q3, q4 = cue(k), cue(k, 1), cue(k, 2), cue(k, 3), cue(k, 4)
     board(c, t)
-    mdraw(c, 'a × 10^n', 420, 200, 90, CREAM, ua(t, q1 - 0.3, 0.6))
-    mdraw(c, '1 ≤ a < 10', 900, 200, 76, YELLOW, ua(t, q1 + 1.5, 0.6))
+    title(c, 'scientific notation', t, t0 + 0.2, 110, INK2, 48)
+    mdraw(c, 'a × 10^n', 420, 220, 90, CREAM, ua(t, q1 - 0.3, 0.6))
+    mdraw(c, '1 ≤ a < 10', 900, 220, 76, YELLOW, ua(t, q1 + 1.5, 0.6))
     a = ua(t, q2 - 0.2, 0.4)
     if a > 0:
         lightbar(c, t, 430, q2, q3, 160, 1760, 160)
         sl = wt(k, 'slide')
-        hop_number(c, '00040', 1, 4, 260, 430, 96, ua(t, sl + 0.3, 2.2), CREAM, a)
+        hop_number(c, '00040', 1, 4, 260, 430, 96, ua(t, sl + 0.3, 2.2), CREAM, a, fade_lead=3)
         mdraw(c, 's  =  4.0 × 10^{-3} s', 720, 430, 90, YELLOW, ua(t, wt(k, 'negative', after=q2) - 1.0, 0.8))
     a = ua(t, q3 - 0.2, 0.4)
     if a > 0:
@@ -454,7 +457,8 @@ def g2(c, t):
     k = 'g2'
     t0, q1, q2, q3, q4 = cue(k), cue(k, 1), cue(k, 2), cue(k, 3), cue(k, 4)
     board(c, t)
-    title(c, 'a measurement is only known so well', t, q1 - 0.2, 140, INK2, 48)
+    title(c, 'how many digits should an answer have?', t, t0 + 0.1, 140, CREAM, 52)
+    text(c, 'a measurement is only known so well', W / 2, 205, 42, INK2, ua(t, q1, 0.4), 'semi', 'center')
     a = ua(t, q2 - 0.3, 0.5)
     if a > 0:
         x0, y0, wd = 260, 300, 1400
@@ -502,9 +506,9 @@ def g3(c, t):
             mdraw(c, '→ 7.2 × 10^3  has 2', 560, y, 76, YELLOW, ua(t, wt(k, 'seven', 1) - 0.2, 0.9))
         else:
             mdraw(c, '→ ' + n, 560, y, 96, YELLOW, ua(t, ans_t, 0.4))
-        text(c, why, 1740, y - 20, 36, INK2, ua(t, tt + 0.6, 0.4), 'semi', 'right')
+        text(c, why, 1740, y - 20, 38, INK2, ua(t, (ans_t if ans_t else tt + 0.6) + 0.4, 0.4), 'semi', 'right')
     a = ua(t, wt(k, 'quick'), 0.3) * (1 - ua(t, wt(k, 'three') - 0.1, 0.3))
-    pill(c, 'quick test: how many?', 1300, 420, AMBER, 40, a)
+    pill(c, 'quick test: how many?', 1250, 400, AMBER, 40, a)
 
 
 def g4(c, t):

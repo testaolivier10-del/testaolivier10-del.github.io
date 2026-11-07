@@ -44,11 +44,16 @@ def opn(a, b, k):
         r = skia.Op(a, b, k)
     except RuntimeError:
         # a degenerate deformed outline: nudge one path a hair and try once more, else keep the base shape
-        q = skia.Path(b); q.offset(0.37, 0.21)
-        try:
-            r = skia.Op(a, q, k)
-        except RuntimeError:
-            return skia.Path() if k == skia.PathOp.kIntersect_PathOp else skia.Path(a)
+        r = None
+        for dx, dy in ((0.37, 0.21), (-0.29, 0.43), (0.51, -0.33)):
+            q = skia.Path(b); q.offset(dx, dy)
+            try:
+                r = skia.Op(a, q, k); break
+            except RuntimeError:
+                continue
+        if r is None:
+            # never fall back to the whole shape for a difference: that paints a full shade over a person for a frame
+            return skia.Path() if k in (skia.PathOp.kIntersect_PathOp, skia.PathOp.kDifference_PathOp) else skia.Path(a)
     return r if r is not None else skia.Path()
 
 
@@ -72,7 +77,21 @@ def union(ps):
 
 
 def inter(a, b): return opn(a, b, skia.PathOp.kIntersect_PathOp)
-def diff(a, b): return opn(a, b, skia.PathOp.kDifference_PathOp)
+def diff(a, b):
+    """a minus b; when b is a slightly shifted copy of a (rims and shade bands) the result is a thin edge. Skia's path op
+    can silently return a wrong, filled result for a rare deformed outline (a whole person shaded for one frame): if the
+    result covers the middle of the shape, nudge b and retry, else draw nothing for that frame."""
+    r = opn(a, b, skia.PathOp.kDifference_PathOp)
+    bb = a.computeTightBounds()
+    cx, cy = bb.centerX(), bb.centerY()
+    if a.contains(cx, cy) and b.contains(cx, cy) and r.contains(cx, cy):
+        for dx, dy in ((0.37, 0.21), (-0.29, 0.43)):
+            q = skia.Path(b); q.offset(dx, dy)
+            r2 = opn(a, q, skia.PathOp.kDifference_PathOp)
+            if not r2.contains(cx, cy):
+                return r2
+        return skia.Path()
+    return r
 
 
 def circ(x, y, r):

@@ -55,7 +55,7 @@ class Kid(PR.Person):
             legb = ['spine', 'thigh_' + s, 'shin_' + s]
             o, an = J['boot_' + s]; a = math.radians(an); ca, sa = math.cos(a), math.sin(a)
             fb = lambda px, py: (o[0] + px * ca - py * sa, o[1] + px * sa + py * ca)
-            shoe = [(-60, 30), (30, 26), (70, 56), (114, 80), (128, 104), (124, 132), (-70, 132), (-74, 80)]
+            shoe = [(-60, -16), (34, -16), (66, 44), (114, 76), (128, 104), (124, 132), (-70, 132), (-74, 70)]
             add(g, curve([fb(*p) for p in shoe]), BOOT_C, ['boot_' + s])
             add(g, curve([fb(*p) for p in [(-74, 110), (130, 110), (128, 140), (-74, 140)]]), SOLE, ['boot_' + s], 'detail')
             if leo:   # a swoosh-free stripe on the running shoe
@@ -132,11 +132,11 @@ _THROAT = {'leo': (166, 258), 'ana': (172, 250)}
 _CUT = {'leo': 262, 'ana': 254}
 _NAPE = {'leo': [(80, 206), (125, 236)], 'ana': [(106, 210), (140, 236)]}
 FEAT = {
-    'leo': dict(eye=(195, 146), ew=12, eh=7.5, iris=(199, 146), ir=6.5, ear=(110, 160),
+    'leo': dict(eye=(195, 146), ew=13, eh=8.5, iris=(199, 146), ir=7.0, ear=(110, 160),
                 brow=[(176, 128), (196, 118), (219, 119), (219, 125), (197, 125), (178, 133)],
                 mouth=((203, 201), (215, 204), (228, 199)), blush=((188, 168), 16, 9, 0.35), lash=False,
                 fade=[(36, 92), (150, 74), (150, 92), (128, 108), (102, 128), (92, 190), (82, 200), (52, 150)]),
-    'ana': dict(eye=(210, 147), ew=13, eh=7.5, iris=(214, 148), ir=6.5, ear=(122, 162),
+    'ana': dict(eye=(210, 147), ew=15, eh=9.0, iris=(214, 148), ir=7.6, ear=(122, 162),
                 brow=[(190, 123), (210, 115), (233, 117), (233, 122), (211, 120), (192, 128)],
                 mouth=((219, 206), (230, 208), (241, 203)), blush=((197, 168), 17, 9, 0.42), lash=True, fade=None),
 }
@@ -184,6 +184,13 @@ def _head2(self, c, J, ps, l):
         c.restore()
     for hp_ in hair:
         c.drawPath(hp_, P(pc(HAIR))); self._shade(c, hp_, pc(HAIR_SH), l, 8)
+    if k == 'ana':   # the loose strands that frame her face (head sheet)
+        for pts, w in (([(208, 58), (200, 108), (190, 158), (182, 196)], 6), ([(126, 120), (128, 170), (122, 214)], 5)):
+            sp_ = skia.Path(); q = [H(p_) for p_ in pts]; sp_.moveTo(*q[0])
+            for i in range(1, len(q) - 1):
+                sp_.quadTo(*q[i], (q[i][0] + q[i + 1][0]) / 2, (q[i][1] + q[i + 1][1]) / 2)
+            sp_.lineTo(*q[-1])
+            c.drawPath(sp_, SP(pc(HAIR), w * R(1)))
     ex, ey = H(F['ear']); sc = R(1)
     c.save(); c.translate(ex, ey)
     c.drawOval(skia.Rect(-17 * sc, -24 * sc, 17 * sc, 24 * sc), P(pc(SKIN)))
@@ -212,7 +219,7 @@ def _head2(self, c, J, ps, l):
         mo = _sm_path([H(m0), H((m1[0], m1[1] + 11 * ps.mouth)), H(m2), H((m1[0], m1[1] - 2))])
         c.drawPath(mo, P((110, 44, 44)))
     else:
-        mp = skia.Path(); mp.moveTo(*H(m0)); mp.quadTo(*H((m1[0], m1[1] + 3 * (ps.smile - 0.4))), *H(m2))
+        mp = skia.Path(); mp.moveTo(*H(m0)); mp.quadTo(*H((m1[0], m1[1] + 9 * (ps.smile - 0.4))), *H(m2))
         c.drawPath(mp, SP((128, 62, 52), 3 * sc))
 
 

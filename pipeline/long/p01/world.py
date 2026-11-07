@@ -268,3 +268,15 @@ def grain_layer(c, t):
             _GR.append(skia.Image.fromarray(np.ascontiguousarray(rgba), colorType=skia.kRGBA_8888_ColorType))
     img = _GR[int(t * 24) % len(_GR)]
     c.drawImageRect(img, skia.Rect(0, 0, W, H), skia.SamplingOptions(), skia.Paint(BlendMode=skia.BlendMode.kOverlay))
+
+
+def sign(c, x, label, a=1.0):
+    """a post with a sign on the grass behind the track, START or FINISH (so the two gates read as different places)"""
+    c.drawRect(skia.Rect(x - 5, 560, x + 5, 712), P(METAL_D, 255 * a))
+    w = 190 if label == 'FINISH' else 160
+    col = (40, 44, 60)
+    c.drawRRect(rr(x - w / 2, 520, x + w / 2, 590, 10), P(col, 255 * a))
+    if label == 'FINISH':   # a checker strip on top
+        for i in range(10):
+            c.drawRect(skia.Rect(x - w / 2 + i * w / 10, 506, x - w / 2 + (i + 1) * w / 10, 520), P((250, 250, 250) if i % 2 else (20, 20, 24), 255 * a))
+    text(c, label, x, 570, 40, CREAM, a, 'xb', 'center')

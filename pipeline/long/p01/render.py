@@ -74,7 +74,7 @@ def frame(t, surf=None):
         if p['t0'] - 0.3 <= t <= p['t1'] + 0.3:
             a = K.win(t, p['t0'] - 0.3, p['t1'], 0.3, 0.3)
             K.timer(c, (t - p['t0']) / (p['t1'] - p['t0']), a=a)
-            K.text(c, 'pause and try it', W - 130, 230, 26, K.CREAM, a, 'semi', 'center')
+            K.text(c, 'pause and try it', W - 150, 236, 36, K.CREAM, a, 'semi', 'center')
     # fade in from black at the start, out at the very end
     fa = max(1 - t / 0.6, 0, (t - (DUR - 0.8)) / 0.8)
     if fa > 0:
