@@ -501,3 +501,6 @@
   .r3 .band.short .hand{font-size:17px}
   .r3 .lap{margin-top:-30px}
 }
+
+/* The sticky button carries the path's next topic (assets/course/path.js paintSticky): one line. */
+.r3 .sticky-cta .btn-chan{flex:1;min-width:0;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

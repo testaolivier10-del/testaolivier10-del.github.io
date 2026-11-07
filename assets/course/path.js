@@ -206,6 +206,19 @@
   function isSkill(t){ return !!(t && U[t.u] && U[t.u].label === 'Skills'); }
   function stopKind(s){ return s.kind === 'topic' ? (isSkill(BY[s.id]) ? 'skill' : 'topic') : s.kind === 'day' || s.kind === 'finish' ? 'exam' : s.kind; }
   function stopTitle(s){ return s.kind === 'topic' ? tName(BY[s.id]) : s.title; }
+  /* The phone's sticky button follows the path (owner 2026-11-06): "Continue: <topic>" to the same place as the
+     Up next card, instead of a fixed "Open the textbook". Without a stop to go to it keeps the built link. */
+  function paintSticky(){
+    var a = document.querySelector('.r3-home .sticky-cta a'); if(!a || !GS) return;
+    var now = null;
+    GS.forEach(function(g){ g.stops.forEach(function(s){ if(!now && s.state === 'now') now = s; }); });
+    if(!now) return;
+    var url = '', lbl = '';
+    if(now.kind === 'topic' && BY[now.id]){ var t = BY[now.id]; url = startUrl(t); lbl = (T.some(function(x){ return isF(x.id); }) ? 'Continue' : 'Start') + ': ' + t.t; }
+    else { url = stopUrl(now); lbl = now.kind === 'mix' ? (now.timed ? 'Open exams' : 'Start practice') : now.kind === 'review' ? 'Start review' : now.kind === 'test' ? 'Take the test' : now.kind === 'exam' ? 'Open exams' : ''; }
+    if(!url || !lbl) return;
+    a.href = url; a.textContent = lbl;
+  }
   function selHTML(s){
     if(!s) return '';
     var k = s.state === 'done' ? 'Done' : s.state === 'now' ? 'Up next · ' + (KINDLBL[stopKind(s)] || '') : KINDLBL[stopKind(s)] || '', acts = '', note = '';
@@ -299,6 +312,13 @@
     var p = pace(); if(p) bits.push('about ' + p + ' min a day');
     return esc(bits.join(' · '));
   }
+  /* The day by day cram plan (AP®: cram.html, moved here from Practice, owner 2026-11-06): offered from about 7
+     weeks before the exam and while the path is in exam review. */
+  function cramLink(){
+    var ex = examDate(), n = ex ? daysTo(ex) : null;
+    if(!D.cram || !((n != null && n > 0 && n <= 49) || (S.mode === 'cram' && S.cram.kind === 'exam'))) return '';
+    return '<p class="lp-cram"><a href="' + esc(D.cram) + (ex ? '?date=' + ex : '') + '">Make a day by day cram plan</a> <span>you can print</span></p>';
+  }
   function bannersHTML(){
     var b = '', ex = examDate(), n = ex ? daysTo(ex) : null;
     if(n != null && n > 0 && n <= 49 && S.mode !== 'cram' && !S.ack.exam)
@@ -330,14 +350,13 @@
     if(h) h.innerHTML = made ? 'Your <span>path</span> through ' + esc(D.name) : 'The <span>path</span> through ' + esc(D.name);
     if(sub) sub.textContent = !made ? 'Every lesson, skill, practice set and unit test, in course order.' : S.mode === 'cram' ? 'Built from your answers, around your test date.' : 'Built from your answers, in course order' + (deadline() ? ', around your exam date.' : '.');
     $('#lpSetup').innerHTML = made
-      ? '<div class="lp-card lp-mine"><div class="hd"><h3>Your path</h3><button type="button" class="lp-link" data-act="setup">Change</button></div><p class="lp-meta2">' + metaHTML() + '</p></div>' + bannersHTML()
+      ? '<div class="lp-card lp-mine"><div class="hd"><h3>Your path</h3><button type="button" class="lp-link" data-act="setup">Change</button></div><p class="lp-meta2">' + metaHTML() + '</p>' + cramLink() + '</div>' + bannersHTML()
       : '<div class="lp-card lp-make"><h3>Create your <span>personalized path</span></h3><p>Three quick questions and it starts in the right place.</p><button type="button" class="lp-btn gold sm" data-act="setup">Create my path</button></div>';
     $('#lpSel').innerHTML = selHTML(selStop());
+    paintSticky();
     var mp = $('#lpMap'); mp.innerHTML = mapHTML(GS); mp.hidden = false;
     $$('#lpHome .lp-static').forEach(function(x){ x.classList.remove('lp-static'); });
     home.classList.remove('lp-ret'); home.classList.add('lp-on');
-    var url = stopUrl(selStopNow());
-    if(made) [$('.sticky-cta a')].forEach(function(a){ if(a && url){ a.textContent = 'Continue your path'; a.setAttribute('href', url); } });
     if(!made) S.mode = null;
   }
   function selStopNow(){ for(var k = 0; k < GS.length; k++) for(var i = 0; i < GS[k].stops.length; i++) if(GS[k].stops[i].gi === NOWG) return GS[k].stops[i]; return null; }
@@ -348,6 +367,7 @@
     $$('#lpUnits .lp-s').forEach(function(b){ var on = b.getAttribute('data-stop') === key; b.classList.toggle('sel', on); b.setAttribute('aria-pressed', on); });
     var made = !!S.mode; if(!made) S.mode = 'self';
     $('#lpSel').innerHTML = selHTML(selStop());
+    paintSticky();
     $('#lpMap').innerHTML = mapHTML(GS);
     if(!made) S.mode = null;
     if(scroll){ var b = $('#lpUnits [data-stop="' + key.replace(/"/g, '') + '"]'); if(b) b.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
