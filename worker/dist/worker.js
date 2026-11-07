@@ -1024,6 +1024,28 @@ function passTerms(pass) {
   return pass.until ? { days: 1, until: new Date(Date.parse(pass.until)).toISOString() } : { days: pass.days, until: null };
 }
 
+/* A fixed-date pass only runs to its date, so buying it again while one
+   already reaches that date adds nothing but premium_add_pass's one-day
+   floor. That is a mistake (a double click, a second tab), never a choice:
+   checkout refuses it, and an order that slips through anyway (two checkouts
+   opened before either was paid) is refunded automatically by the webhook.
+   Day-based passes are different: a second one really extends access. */
+function alreadyCovered(pass, rows, now = Date.now()) {
+  if (!pass || !pass.until) return false;
+  const end = Date.parse(pass.until);
+  if (!(now < end)) return false;
+  return (rows || []).some((r) => !r.refunded_at && Date.parse(r.expires_at) >= end - DAY_MS);
+}
+
+/* The order premium_add_pass just queued starts at or after the date, so it
+   bought only the floor day: a duplicate (see alreadyCovered). Also how a
+   refund of such an order is told apart, so it never uses up the buyer's
+   one self-serve refund. */
+function isDuplicateFixedPass(passId, startsAt) {
+  const pass = isPass(passId) ? PASSES[passId] : null;
+  return !!(pass && pass.until && Date.parse(startsAt) >= Date.parse(pass.until) - 60000);
+}
+
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
@@ -1134,6 +1156,15 @@ async function premiumCheckout(request, env) {
   const user = await sessionUser(env, token);
   if (!user) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
 
+  if (pass.until) {
+    const have = await sb(env, `premium_passes?select=expires_at,refunded_at` +
+      `&user_id=eq.${encodeURIComponent(user.id)}&course=eq.${encodeURIComponent(pass.course)}&refunded_at=is.null` +
+      `&order=expires_at.desc&limit=1`);
+    if (have.ok && alreadyCovered(pass, await have.json())) {
+      return { status: 409, body: { error: 'You already have this pass, so there’s nothing to buy. Nothing was charged. Refresh the page if Premium isn’t showing yet.', owned: true } };
+    }
+  }
+
   const body = {
     products: [productId],
     external_customer_id: user.id,
@@ -1215,11 +1246,13 @@ async function premiumRefund(request, env, now = Date.now()) {
   const row = (await rowRes.json())[0];
   const keys = await ledgerKeys({ email: user.email, customerId: row && row.customer_id, userId: user.id });
   const [priorRes, ledger] = await Promise.all([
-    sb(env, `premium_passes?select=id&user_id=eq.${uid}&order_id=not.is.null&refunded_at=not.is.null&limit=1`),
+    sb(env, `premium_passes?select=id,pass,starts_at&user_id=eq.${uid}&order_id=not.is.null&refunded_at=not.is.null&limit=50`),
     ledgerHas(env, keys, 'refund'),
   ]);
   if (!priorRes.ok || ledger === null) return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
-  const prior = (await priorRes.json()).length + (ledger ? 1 : 0);
+  // A duplicate we refunded ourselves is our fix, not the buyer's one refund.
+  const priorRows = (await priorRes.json()).filter((r) => !isDuplicateFixedPass(r.pass, r.starts_at));
+  const prior = priorRows.length + (ledger ? 1 : 0);
   const refusal = refundRefusal(row, prior, now);
   if (refusal) return { status: 409, body: { error: refusal } };
   // Claimed before Polar is asked, so two clicks at once cannot both refund:
@@ -1604,6 +1637,8 @@ async function recordPaid(env, order, now) {
   });
   // A second delivery of the same order adds nothing.
   if (!added || !added.inserted) return { status: 200, body: { ok: true, duplicate: true } };
+  // Bought a fixed-date pass the buyer already had: give the money back now.
+  if (isDuplicateFixedPass(passId, added.starts_at)) return await refundDuplicate(env, order, pass, now);
   // The funnel's last step, counted here where payment is a fact. Best
   // effort: a missed count must not make Polar redeliver the order.
   try {
@@ -1625,6 +1660,36 @@ async function recordPaid(env, order, now) {
     });
   }
   return { status: 200, body: { ok: true } };
+}
+
+/* The full order back through Polar, then the floor-day pass marked refunded.
+   Never counted as a sale or as the buyer's self-serve refund. If Polar does
+   not answer, the pass stays (one harmless day) and the log asks a person to
+   refund the order by hand; the webhook is not retried, since a retry would
+   find the order already recorded. */
+async function refundDuplicate(env, order, pass, now) {
+  let res = null;
+  try {
+    res = await timedFetch(`${polarApi(env)}/v1/refunds/`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        order_id: order.id,
+        reason: 'duplicate',
+        amount: Number.isInteger(order.net_amount) ? order.net_amount : order.total_amount,
+        comment: 'Automatic refund: the buyer already had this pass',
+      }),
+    });
+  } catch (err) {
+    console.log('duplicate pass refund: no answer', order.id, String(err));
+  }
+  if (!res || !res.ok) {
+    if (res) console.log('duplicate pass refund failed, refund by hand', order.id, res.status, (await res.text()).slice(0, 300));
+    return { status: 200, body: { ok: true, duplicate_pass: true, refunded: false } };
+  }
+  await refundOrder(env, order.id, now);
+  await umamiServerEvent('refund', { course: pass.course, how: 'duplicate' });
+  return { status: 200, body: { ok: true, duplicate_pass: true, refunded: true } };
 }
 
 // Only a full refund takes the pass away. A partial one is a goodwill
