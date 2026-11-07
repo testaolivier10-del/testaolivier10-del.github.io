@@ -178,3 +178,11 @@ D16. Formula sheet, score calculator and justify pages reachable only from insid
     course's Exams page where they exist.
     Status: fixed. Each AP Exams page's rail lists its formula or equations sheet, score calculator (chem, physics, calc AB) and justify trainer as cards.
 D17. NREMT tools page "8 tools" vs "Seven tools" (same as C5).
+
+## End screen v2b (owner 2026-11-07)
+
+Owner approved a simpler end panel after a before/after mockup. `LevlStudy.end` now draws one card: score, percent,
+a right/missed bar and the actions (next step, Retry N misses, quiet links), with no explainer lines. Topics use
+`LevlStudy.topics` (one table, misses first: topic, right, mastery, Lesson and Notes), replacing both "What to study
+next" and the "By topic" table; breakdowns use `LevlStudy.bars`. Applied to every AP course and A&P Practice and Review;
+ochem gets the shared card. NREMT's exam results screen is still its own layout (not yet converted).
