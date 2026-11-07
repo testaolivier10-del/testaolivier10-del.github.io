@@ -1357,6 +1357,13 @@
     }).then(function (res) {
       return res.json().then(function (body) { return { ok: res.ok, body: body }; });
     }).then(function (r) {
+      if (r.body && r.body.owned) {
+        /* Already has this pass (a second tab or a double click): say so and
+           refresh what this page knows, never open a second payment. */
+        var owned = new Error(r.body.error);
+        owned.owned = true;
+        throw owned;
+      }
       if (!r.ok || !r.body || !r.body.url) throw new Error((r.body && r.body.error) || 'checkout failed');
       var url = r.body.url;
       /* Pay on top of this page in Polar's own checkout frame. If that frame
@@ -1371,9 +1378,14 @@
           pollForPass(course);
         });
       }, function () { window.location.href = url; });
-    }).catch(function () {
+    }).catch(function (err) {
       button.disabled = false;
       button.innerHTML = label;
+      if (err && err.owned) {
+        setMsg(err.message, 'info', button);
+        pollForPass(course);
+        return;
+      }
       setMsg('Checkout didn’t open. You may be offline. Nothing was charged. Try again in a moment.', 'error', button);
     });
   }

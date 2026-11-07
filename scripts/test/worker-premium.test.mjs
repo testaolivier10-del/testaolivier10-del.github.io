@@ -604,3 +604,65 @@ test('pass ending: invite rewards get no "a pass you bought" notice', () => {
     assert.deepEqual(passesEnding([{ user_id: USER, course: 'nremt', pass, order_id: 'refr:1', expires_at: iso(now + 2 * 86400000) }], now), []);
   assert.equal(passesEnding([{ user_id: USER, course: 'nremt', pass: 'nremt-90', order_id: 'ord_1', expires_at: iso(now + 2 * 86400000) }], now).length, 1);
 });
+
+/* A fixed-date pass bought twice: the second adds only a floor day, so
+   checkout refuses it and an order that slips through is refunded. */
+test('alreadyCovered: only a fixed-date pass that already reaches its date', async () => {
+  const { alreadyCovered, isDuplicateFixedPass } = await import('../../worker/src/premium.js');
+  const END = '2027-07-01T09:59:59.000Z';
+  const now = Date.UTC(2026, 10, 7);
+  assert.equal(alreadyCovered(PASSES['bio-2027'], [{ expires_at: END }], now), true);
+  assert.equal(alreadyCovered(PASSES['bio-2027'], [{ expires_at: END, refunded_at: '2026-11-07T00:00:00Z' }], now), false);
+  assert.equal(alreadyCovered(PASSES['bio-2027'], [{ expires_at: '2026-12-01T00:00:00Z' }], now), false, 'a short grant still lets them buy');
+  assert.equal(alreadyCovered(PASSES['bio-2027'], [], now), false);
+  assert.equal(alreadyCovered(PASSES['ochem-year'], [{ expires_at: '2030-01-01T00:00:00Z' }], now), false, 'day passes extend');
+  assert.equal(isDuplicateFixedPass('bio-2027', END), true);
+  assert.equal(isDuplicateFixedPass('bio-2027', '2026-11-07T02:39:10Z'), false);
+  assert.equal(isDuplicateFixedPass('nremt-90', '2030-01-01T00:00:00Z'), false);
+});
+
+test('checkout refuses a fixed-date pass the student already has, before asking Polar', async () => {
+  const now = Date.now();
+  const db = fakeDb([{ user_id: USER, course: 'apbio', pass: 'bio-2027', order_id: 'o1',
+    starts_at: new Date(now).toISOString(), expires_at: new Date(Date.parse(PASSES['bio-2027'].until)).toISOString() }], now);
+  const inner = globalThis.fetch;
+  const polar = [];
+  globalThis.fetch = async (url, init = {}) => {
+    if (String(url).endsWith('/auth/v1/user')) return new Response(JSON.stringify({ id: USER, email: 'a@b.co' }), { status: 200 });
+    if (String(url).includes('polar')) { polar.push(url); return new Response(JSON.stringify({ url: 'https://polar.example/c' }), { status: 201 }); }
+    return inner(url, init);
+  };
+  const env = { ...ENV, POLAR_ACCESS_TOKEN: 'pat', POLAR_PRODUCTS: JSON.stringify({ 'bio-2027': 'prod_bio' }) };
+  const res = await worker.fetch(new Request('https://w.example/premium/checkout', {
+    method: 'POST',
+    headers: { Origin: 'https://levlprep.com', 'Content-Type': 'application/json', Authorization: 'Bearer good' },
+    body: JSON.stringify({ pass: 'bio-2027', returnTo: 'https://levlprep.com/bio/' }),
+  }), env);
+  assert.equal(res.status, 409);
+  const body = await res.json();
+  assert.equal(body.owned, true);
+  assert.match(body.error, /already have this pass/);
+  assert.equal(polar.length, 0);
+  assert.equal(db.rows.length, 1);
+});
+
+test('order.paid for a fixed-date pass already owned is refunded in full and not counted', async () => {
+  const now = Date.UTC(2026, 10, 7, 2, 40);
+  const db = fakeDb([], now);
+  const inner = globalThis.fetch;
+  const refunds = [];
+  globalThis.fetch = async (url, init = {}) => {
+    if (String(url).endsWith('/v1/refunds/')) { refunds.push(JSON.parse(init.body)); return new Response('{}', { status: 201 }); }
+    return inner(url, init);
+  };
+  const env = { ...ENV, POLAR_ACCESS_TOKEN: 'pat' };
+  const bio = (id) => paid({ id, metadata: { user_id: USER, pass: 'bio-2027' }, net_amount: 1750, total_amount: 1750 });
+  await premiumWebhook(delivery(bio('ord_a'), now), env, now);
+  const r = await premiumWebhook(delivery(bio('ord_b'), now), env, now);
+  assert.equal(r.status, 200);
+  assert.equal(r.body.refunded, true);
+  assert.deepEqual(refunds.map((x) => [x.order_id, x.amount, x.reason]), [['ord_b', 1750, 'duplicate']]);
+  assert.ok(db.rows.find((x) => x.order_id === 'ord_b').refunded_at);
+  assert.ok(!db.rows.find((x) => x.order_id === 'ord_a').refunded_at, 'the real pass stays');
+  assert.deepEqual(db.counts, ['apbio'], 'one sale counted, not two');
+});
