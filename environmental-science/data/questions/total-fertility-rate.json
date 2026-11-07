@@ -289,7 +289,7 @@
     "Well below it, so the population will shrink fast",
     "Far above it, so the population will grow fast",
     "Exactly 2, so the population will hold steady",
-    "Slightly above, so slow growth"
+    "Slightly above it, so the population will grow slowly"
    ],
    "correct": 3,
    "why": {

@@ -1003,9 +1003,17 @@
       rs[1].forEach(function(r){ var by = r[0], why = r[1]; Object.keys(r[2]).forEach(function(k){ stim[k] = r[2][k]; });
         // Graph stimuli are drawn with the course page's styles, so worksheets keep to text and table stimuli.
         Object.keys(by).forEach(function(k){ var it = by[k], sh = it.stimulus && r[2][it.stimulus] ? String(r[2][it.stimulus].html || '') : '';
-          if(it.type === 'single' && it.options && topics.indexOf(it.topic) !== -1 && !/<svg|<canvas|<details/i.test(sh)) pool.push({ id: it.id, q: it.q, options: it.options, correct: it.correct, stimulus: it.stimulus, why: (why[k] && why[k].why && why[k].why.correct) || '' }); }); });
+          if(it.type === 'single' && it.options && topics.indexOf(it.topic) !== -1 && !/<svg|<canvas|<details/i.test(sh)) pool.push({ id: it.id, q: it.q, options: it.options, correct: it.correct, fixed: !!it.fixed, stimulus: it.stimulus, why: (why[k] && why[k].why && why[k].why.correct) || '' }); }); });
       var list = mine.concat(seeded(pool, a.id + PR.version)).slice(0, PR.n);
       if(PR.version === 'B') list = seeded(list, a.id + 'B2');
+      /* The answer choices in a dealt order per question and version, with the key following them: the bank keeps
+         its authoring order (often the key first), which the course pages shuffle on screen but a printed test
+         did not (question audit 2026-11-06). Items marked fixed (a scale, an ordered list) keep their order. */
+      list = list.map(function(it){
+        if(it.mine || it.fixed || !Array.isArray(it.options) || typeof it.correct !== 'number') return it;   // a teacher's own question keeps the order they wrote (it may end in "all of these")
+        var ord = seeded(it.options.map(function(o, i){ return i; }), a.id + PR.version + it.id);
+        return Object.assign({}, it, { options: ord.map(function(i){ return it.options[i]; }), correct: ord.indexOf(it.correct) });
+      });
       var shown = {}, n = 0;
       var qs = list.map(function(it){
         var txt = it.mine ? esc : rich, st = it.stimulus && stim[it.stimulus] && !shown[it.stimulus] ? stim[it.stimulus] : null;

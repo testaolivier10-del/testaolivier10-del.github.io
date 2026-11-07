@@ -122,7 +122,7 @@
    "diff": 1,
    "q": "During an El Niño, what happens to the trade winds over the equatorial Pacific?",
    "options": [
-    "They weaken",
+    "They become weaker than usual",
     "They strengthen",
     "They reverse and blow toward the poles",
     "They stay exactly as in a normal year"
@@ -567,7 +567,7 @@
    "q": "Which evidence in the bulletin most directly supports the forecast of smaller catches off Peru?",
    "stimulus": "el-nino-la-nina-s3",
    "options": [
-    "\"surface water ... is now 1.5 °C warmer than average\"",
+    "\"surface water ... South America is now 1.5 °C warmer than average\"",
     "\"Parts of Indonesia and eastern Australia face a higher risk of drought\"",
     "\"the southern states are likely to have a wetter than normal winter\"",
     "\"Forecasters expect these conditions to last through the coming winter\""

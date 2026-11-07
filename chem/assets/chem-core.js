@@ -51,7 +51,7 @@
   function record(id, correct, meta){
     meta = meta || {};
     // Today's score, which the daily-limit card shows (assets/premium.js).
-    if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer(COURSE, correct, id, meta.topic);
+    if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer(COURSE, correct, meta.skipped ? null : id, meta.topic);   // a question left blank in an exam is not sent to the per-question tallies
     var d = load();
     var r = d.q[id] || { t: meta.topic, u: meta.unit || unitOf(meta.topic), p: meta.practice || '', l: levelKey(meta.level), d: meta.diff || 1, n: 0, c: 0, right: 0, seen: 0, due: 0, ivl: 0, ease: 2.3, lapses: 0, src: meta.src || 'q' };
     if(meta.topic) r.t = meta.topic;

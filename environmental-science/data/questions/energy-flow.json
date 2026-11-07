@@ -243,7 +243,7 @@
    "diff": 2,
    "q": "Why can a given area of farmland feed more people if they eat grain directly than if the grain is fed to cattle and people eat the beef?",
    "options": [
-    "Eating grain skips a trophic step.",
+    "Eating the grain directly skips one trophic level.",
     "Beef has more calories per kilogram than grain does.",
     "Cattle make new energy from the grass they eat.",
     "Grain plants are secondary consumers in the field."
@@ -312,7 +312,7 @@
    "diff": 2,
    "q": "In an energy pyramid, what does the width of each level show?",
    "options": [
-    "The energy at that level",
+    "The amount of energy available at that level",
     "The number of species at that level",
     "The body size of each organism there",
     "The average age of the organisms there"
@@ -405,7 +405,7 @@
    "q": "Which statement do the data support?",
    "stimulus": "energy-flow-s1",
    "options": [
-    "Each transfer is close to 10%.",
+    "Each transfer passes on close to 10% of the energy.",
     "Each level holds about half the energy of the level below.",
     "Energy increases at the higher trophic levels.",
     "The bass get about 10% of the producers’ energy."

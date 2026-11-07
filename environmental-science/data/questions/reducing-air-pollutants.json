@@ -100,7 +100,7 @@
    "stimulus": "reducing-air-pollutants-s1",
    "options": [
     "Sulfur dioxide, cut by the wet scrubber",
-    "Particulate matter",
+    "Particulate matter, by the precipitator",
     "Nitrogen oxides, by a lower burner temperature",
     "Carbon dioxide, by the new controls"
    ],
@@ -182,7 +182,7 @@
    "options": [
     "Each plant should be required to install the same scrubber",
     "SO2 should be cut mainly to slow global climate warming",
-    "A cap with trading cuts SO2 at low cost",
+    "A cap with trading guarantees the total SO2 cut at low cost",
     "Plants that buy permits will clean up their neighborhoods"
    ],
    "correct": 2,

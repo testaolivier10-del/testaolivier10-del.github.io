@@ -725,7 +725,7 @@
     var rows = run.rows;
     // Recorded now, at the end (A&P decision 42); unanswered counts as a miss.
     // Exam-only questions (fixed exams) count in the score, not in practice or review.
-    rows.forEach(function(x){ if(!x.q.own && !(CLS && CLS.keep(x))) Core.record(x.q.id, !!x.r.correct, { topic: x.q.topic, unit: x.q.unit, practice: x.q.practice, level: x.q.level, diff: x.q.diff, src: 'q' }); });
+    rows.forEach(function(x){ if(!x.q.own && !(CLS && CLS.keep(x))) Core.record(x.q.id, !!x.r.correct, { skipped: !!x.r.skipped, topic: x.q.topic, unit: x.q.unit, practice: x.q.practice, level: x.q.level, diff: x.q.diff, src: 'q' }); });
     var right = rows.filter(function(x){ return x.r.correct; }).length, total = rows.length;
     if(window.StudyHubAccount && window.StudyHubAccount.promptToSave && total >= 10){
       setTimeout(function(){ window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + right + '/' + total, { kind: 'exam', score: right, total: total, missed: rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length }); }, 2600);
