@@ -221,7 +221,7 @@
       next: touched.length ? '<div class="module-card">' + conceptRows(
           touched.sort(function(a, b){ return a.strength - b.strength; }),
           function(p){ return p.isDue ? 'back in this queue' : upcomingLabel(p); }) + '</div>' : '',
-      retry: missQ ? { href: 'practice.html?mode=mistakes', label: missQ === 1 ? 'Retry the miss' : 'Retry the ' + missQ + ' misses' } : null,
+      retry: missQ ? { href: 'practice.html?mode=mistakes', label: missQ === 1 ? 'Retry 1 miss' : 'Retry ' + missQ + ' misses' } : null,
       // One next step (assets/next-step.js): what is still due here comes first.
       stepHtml: window.LevlNextStep ? LevlNextStep('ochem', { concepts: Object.keys(S.conceptsTouched),
         due: { n: stillDue.today.length, noun: 'concept', act: startSession }, also: [{ label: 'Back to the queue', act: render }] }) : ''

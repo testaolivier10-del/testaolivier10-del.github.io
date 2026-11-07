@@ -445,7 +445,7 @@
       line: score + '% right',
       sub: touched.length ? esc('Across ' + plural(touched.length, 'concept') + '.') : '',
       extras: xpHtml, next: nextHtml,
-      retry: missIds.length ? { act: 'retry', label: missIds.length === 1 ? 'Retry the miss' : 'Retry the ' + missIds.length + ' misses' } : null,
+      retry: missIds.length ? { act: 'retry', label: missIds.length === 1 ? 'Retry 1 miss' : 'Retry ' + missIds.length + ' misses' } : null,
       // One next step (assets/next-step.js); the engine's own pick stays as a quiet alternative.
       stepHtml: window.LevlNextStep ? LevlNextStep('ochem', { concepts: Object.keys(S.conceptsTouched),
         also: [lead ? { label: lead.cta, act: function(){ startSession(lead.plan); } } : { label: 'Practice again', act: renderHome }] }) : '',
