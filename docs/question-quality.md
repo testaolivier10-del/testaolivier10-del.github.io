@@ -52,8 +52,8 @@ measured, what was fixed and what is still open, so a later session can carry on
   (an independent review passed 42 and reworded 3 whose new key gave the answer away in another way: phosphorus
   cycle 2 and 16, endangered species 6); "Wheat" against three other crop names left as is.
 - Question tallies (`question_stats`): AP® Precalculus was never counted (course key `apprecalc` has 9 letters;
-  `answer()` in `assets/analytics.js` and `track_answers()` allowed 8). Client fixed; the database function needs
-  `scripts/sql/migrations/2026-11g-question-stats-course.sql` applied (owner).
+  `answer()` in `assets/analytics.js` and `track_answers()` allowed 8). Client fixed; the database function
+  (`scripts/sql/migrations/2026-11g-question-stats-course.sql`) was applied 2026-11-06 with the owner's OK.
 - A question left blank in an AP® or A&P exam was sent to the tallies as a wrong answer (equal seconds each), which
   would make questions look harder than they are. Blank ones still count as misses for the student's own review but
   are no longer sent (`skipped` in each exams page's `Core.record` call; each core passes no id to `noteAnswer`).
@@ -75,7 +75,6 @@ reports, and propose changes to the owner; they never edit questions.
 
 ## Open
 
-- Owner: apply the 2026-11g migration.
 - A paid expert spot check per course (about 100 random questions), NREMT first.
 - Relabel difficulty from real results once the data allows (analytics run A3.9c).
 - Organic Chemistry: 363 true or false items (guessable half the time) and short explanations; NREMT and ochem have no
