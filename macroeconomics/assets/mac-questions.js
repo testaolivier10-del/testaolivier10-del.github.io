@@ -164,6 +164,8 @@
 
     if(q.type === 'order') order(); else if(q.type === 'multi') multi(); else if(q.type === 'numeric') numeric();
     else if(q.type === 'specific') specificItem(); else if(q.type === 'graph') graphItem(); else choice();
+    // In an exam nothing is graded yet, so the button says what it does.
+    if(opts.exam) actions.querySelectorAll('.mac-check').forEach(function(b){ b.textContent = 'Lock in answer'; });
 
     /* A graph item (mac-graph.js, docs/apmacro-architecture.md "graph"):
        shift, place or label on the graph, then Check; every rubric point is
@@ -200,12 +202,23 @@
         return '<button type="button" class="mac-opt cx-opt" role="radio" aria-checked="false" data-i="' + i + '">' + html(q.options[i]) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.mac-opt-btns'));
+      // One answer: a tap selects (and can be changed), Check grades, like every
+      // other question type (consistency pass 2026-11-07).
+      actions.innerHTML = '<button type="button" class="btn-press sm mac-check" disabled>Check</button>';
+      var check = actions.querySelector('.mac-check'), sel = -1;
       body.querySelectorAll('.mac-opt').forEach(function(b){
         b.addEventListener('click', function(){
           if(done || busy) return;
-          busy = true;
-          explain(function(){
-            var pick = +b.getAttribute('data-i'), g = grade(q, pick);
+          sel = +b.getAttribute('data-i');
+          body.querySelectorAll('.mac-opt').forEach(function(x){ x.setAttribute('aria-checked', x === b ? 'true' : 'false'); });
+          check.disabled = false;
+        });
+      });
+      check.addEventListener('click', function(){
+        if(done || busy || sel < 0) return;
+        busy = true;
+        explain(function(){
+            var pick = sel, g = grade(q, pick);
             body.querySelectorAll('.mac-opt').forEach(function(x){
               var i = +x.getAttribute('data-i');
               x.setAttribute('aria-disabled', 'true');
@@ -216,7 +229,6 @@
               optWhy(x, i);
             });
             finish(g, '', pick);
-          });
         });
       });
     }

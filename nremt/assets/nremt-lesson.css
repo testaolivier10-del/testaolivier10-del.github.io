@@ -85,3 +85,6 @@
 .nl-free-first{background:var(--white,#fff);border:1px solid var(--line);border-radius:20px;padding:22px clamp(18px,3vw,28px);display:grid;gap:12px;justify-items:start;}
 .nl-free-first p{margin:0;font-size:16px;line-height:1.6;}
 .nl-card[hidden],.nl-steps[hidden]{display:none;}
+/* Select then Check (consistency pass 2026-11-07). */
+.nl-opt[aria-pressed="true"]{border-color:var(--accent);background:var(--paper);box-shadow:inset 0 0 0 1px var(--accent);}
+.nl-q-act{margin-top:10px;}

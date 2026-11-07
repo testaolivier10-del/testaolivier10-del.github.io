@@ -150,6 +150,7 @@
 .choice-btn.correct{background:var(--tint-good);box-shadow:inset 0 0 0 2px var(--good);}
 .choice-btn.wrong{background:var(--tint-bad);box-shadow:inset 0 0 0 2px var(--coral);}
 .choice-btn:disabled{cursor:default;}
+.choice-btn.selected{border-color:var(--accent);background:var(--tint-accent);box-shadow:inset 0 0 0 2px var(--accent);}
 .choice-row[style*="flex-direction:column"] > .choice-btn{flex:0 0 auto;}
 
 /* The radical-halogenation sorter: three reaction steps, each classified into

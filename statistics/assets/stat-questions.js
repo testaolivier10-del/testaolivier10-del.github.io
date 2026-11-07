@@ -333,6 +333,8 @@
 
     if(q.type === 'predict') predict(); else if(q.type === 'order') order(); else if(q.type === 'multi') multi(); else if(q.type === 'numeric') numeric();
     else if(q.type === 'interval') intervalItem(); else if(q.type === 'setup') setupItem(); else if(q.type === 'conclude') concludeItem(); else if(q.type === 'expr') expr(); else choice();
+    // In an exam nothing is graded yet, so the button says what it does.
+    if(opts.exam) actions.querySelectorAll('.stat-check').forEach(function(b){ b.textContent = 'Lock in answer'; });
 
     function optWhy(x, i){
       if(reveal && q.why && q.why.options && q.why.options[i]) x.insertAdjacentHTML('beforeend', '<span class="stat-opt-why">' + html(q.why.options[i]) + '</span>');
@@ -344,12 +346,23 @@
         return '<button type="button" class="stat-opt cx-opt" role="radio" aria-checked="false" data-i="' + i + '">' + html(q.options[i]) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.stat-opt-btns'));
+      // One answer: a tap selects (and can be changed), Check grades, like every
+      // other question type (consistency pass 2026-11-07).
+      actions.innerHTML = '<button type="button" class="btn-press sm stat-check" disabled>Check</button>';
+      var check = actions.querySelector('.stat-check'), sel = -1;
       body.querySelectorAll('.stat-opt').forEach(function(b){
         b.addEventListener('click', function(){
           if(done || busy) return;
-          busy = true;
-          explain(function(){
-            var pick = +b.getAttribute('data-i'), g = grade(q, pick);
+          sel = +b.getAttribute('data-i');
+          body.querySelectorAll('.stat-opt').forEach(function(x){ x.setAttribute('aria-checked', x === b ? 'true' : 'false'); });
+          check.disabled = false;
+        });
+      });
+      check.addEventListener('click', function(){
+        if(done || busy || sel < 0) return;
+        busy = true;
+        explain(function(){
+            var pick = sel, g = grade(q, pick);
             body.querySelectorAll('.stat-opt').forEach(function(x){
               var i = +x.getAttribute('data-i');
               x.setAttribute('aria-disabled', 'true');
@@ -360,7 +373,6 @@
               optWhy(x, i);
             });
             finish(g, '', pick);
-          });
         });
       });
     }
