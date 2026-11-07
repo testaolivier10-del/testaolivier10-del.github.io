@@ -480,21 +480,21 @@
     var topics = byTopic.slice().sort(function(a, b){ return (b.n - b.c) - (a.n - a.c) || a.c / a.n - b.c / b.n; });
     var sub = esc(String(session.label).replace(/^\d+ questions?\s*\u00b7\s*/, ''));
     app.innerHTML = '<div class="bio-pr-summary">' + LevlStudy.end({
-      right: right, total: res.length, line: pctRight + '% right on the first try', sub: sub, course: 'apbio',
-      nextTitle: weak.length ? 'Your topics, misses first' : 'Your topics',
-      next: '<ul class="cx-topics">' + topics.map(function(x){
-          var m = Core.topicMastery(x.key), t = TOPIC[x.key], missed = x.n - x.c;
-          return '<li class="' + (missed ? 'is-miss' : 'is-ok') + '"><div class="cx-topic-main"><a class="cx-topic-name" href="' + lessonHref(x.key) + '">' + esc(t ? t.title : x.key) + '</a>' +
-            '<span class="cx-topic-stats"><span class="cx-topic-tag">' + (missed ? missed + ' missed' : 'All right') + '</span><span>' + x.c + '/' + x.n + ' right</span>' +
-            '<span class="cx-topic-m">Mastery now <b>' + Core.pct(m.value) + '</b><span class="cx-mbar" aria-hidden="true"><i style="width:' + Math.round((m.value || 0) * 100) + '%"></i></span></span></span></div>' +
-            '<div class="cx-topic-go"><a class="btn-outline sm" href="' + lessonHref(x.key) + '">Lesson</a><a class="btn-outline sm" href="' + notesHref(x.key) + '">Notes</a></div></li>';
-        }).join('') + '</ul>' + (weak.length ? '' : '<p class="cx-small">Everything right. Try a timed <a href="' + BASE + 'exams.html">unit test</a> to test it under time.</p>'),
-      retry: stillWrong.length ? { act: 'retry', label: 'Retry ' + plural(missedQs || stillWrong.length, 'missed question') } : null,
+      right: right, total: res.length, line: pctRight + '% right', course: 'apbio',
+      nextTitle: 'Topics',
+      next: '<div class="cx-topics" role="table" aria-label="Results by topic"><div class="cx-topics-h" role="row"><span role="columnheader">Topic</span><span role="columnheader">Right</span><span role="columnheader">Mastery</span><span></span></div>' + topics.map(function(x){
+          var m = Core.topicMastery(x.key), t = TOPIC[x.key], missed = x.n - x.c, mp = Math.round((m.value || 0) * 100);
+          return '<div class="cx-topic' + (missed ? ' is-miss' : '') + '" role="row"><a class="cx-topic-name" role="cell" href="' + lessonHref(x.key) + '">' + esc(t ? t.title : x.key) + '</a>' +
+            '<span class="cx-topic-r" role="cell">' + x.c + '/' + x.n + '</span>' +
+            '<span class="cx-topic-m" role="cell"><span class="cx-mbar" aria-hidden="true"><i style="width:' + mp + '%"></i></span>' + mp + '%</span>' +
+            '<span class="cx-topic-go" role="cell"><a class="btn-outline sm" href="' + lessonHref(x.key) + '">Lesson</a><a class="btn-outline sm" href="' + notesHref(x.key) + '">Notes</a></span></div>';
+        }).join('') + '</div>',
+      retry: stillWrong.length ? { act: 'retry', label: 'Retry ' + plural(missedQs || stillWrong.length, 'miss', 'misses') } : null,
       step: due ? { href: BASE + 'review.html', label: 'Review ' + plural(due, 'due question'), why: 'Due questions come first: a review late is a relearn.' }
         : { act: 'again', label: again.label, why: 'Nothing is due, so the next set keeps the same filters.' },
       also: due ? [again, change] : [change],
       more:
-      '<h2 class="cx-endp-h">By science practice</h2><ul class="cx-prac">' +
+      '<h2 class="cx-endp-h">Science practices</h2><ul class="cx-prac">' +
         byPractice.map(function(x){ var p = PRACTICE[x.key]; return '<li><span>' + esc(x.key + (p ? '. ' + p.name : '')) + '</span><span class="cx-mbar" aria-hidden="true"><i style="width:' + Math.round(x.c / x.n * 100) + '%"></i></span><b>' + x.c + '/' + x.n + '</b></li>'; }).join('') +
       '</ul>' +
       (GO && GO.defer ? '<h2>Every question, with its explanation</h2><div class="pp-kept"></div>' : '')

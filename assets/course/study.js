@@ -92,12 +92,11 @@
     /* End screen v2 (owner 2026-11-07, mockup): one card for the score with a right/missed bar and the actions
        beside it, then the topics in one list (the old "What to study next" cards and "By topic" table merged),
        then the course's breakdowns. Nothing removed; the score card is neutral, the bar carries right and missed. */
-    var bar = total ? '<span class="cx-endp-bar" aria-hidden="true"><i class="ok" style="width:' + (right / total * 100) + '%"></i><i class="no" style="width:' + (miss / total * 100) + '%"></i></span>' +
-      '<span class="cx-endp-key"><span><i class="ok"></i>' + right + ' right</span><span><i class="no"></i>' + miss + ' missed</span></span>' : '';
-    var acts = (o.step ? ctl('btn-press', o.step) : '') + (o.retry ? ctl('btn-outline', o.retry) : '');
-    var step = o.stepHtml || ((acts || also.length) ? '<div class="cx-endp-acts">' + acts + '</div>' +
-      (o.step && o.step.why ? '<p class="cx-endp-why">' + o.step.why + '</p>' : '') +
-      (also.length ? '<p class="cx-endp-also">' + also.map(function(a){ return ctl('link-quiet', a); }).join('') + '</p>' : '') : '');
+    var bar = total ? '<span class="cx-endp-bar" role="img" aria-label="' + right + ' right, ' + miss + ' missed"><i class="ok" style="width:' + (right / total * 100) + '%"></i><i class="no" style="width:' + (miss / total * 100) + '%"></i></span>' : '';
+    // v2b (owner 2026-11-07): no explainer lines; the buttons say what they do.
+    var acts = (o.step ? ctl('btn-press', o.step) : '') + (o.retry ? ctl('btn-outline', o.retry) : '') +
+      also.map(function(a){ return ctl('link-quiet', a); }).join('');
+    var step = o.stepHtml || (acts ? '<div class="cx-endp-acts">' + acts + '</div>' : '');
     return '<section class="cx-endp cx-endp2" aria-label="Session results">' +
       '<div class="cx-endp-card">' +
         '<div class="cx-endp-score" tabindex="-1"><span class="cx-score-big">' + right + '<small>/' + total + '</small></span>' +
