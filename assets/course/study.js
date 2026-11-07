@@ -88,16 +88,24 @@
   }
   function end(o){
     var also = (o.also || []).filter(Boolean).slice(0, 2);
-    var step = o.stepHtml || (o.step ? '<div class="cx-endp-step"><p class="cx-endp-k">Next step</p>' + ctl('btn-press', o.step) +
-      (o.step.why ? '<p class="cx-endp-why">' + o.step.why + '</p>' : '') +
-      (also.length ? '<p class="cx-endp-also">' + also.map(function(a){ return ctl('link-quiet', a); }).join('') + '</p>' : '') + '</div>' : '');
-    return '<section class="cx-endp" aria-label="Session results">' +
-      '<div class="cx-endp-score" tabindex="-1"><span class="cx-score-big">' + (o.right || 0) + '<small>/' + (o.total || 0) + '</small></span>' +
-        '<span><b>' + (o.line || '') + '</b>' + (o.sub ? '<span class="cx-small">' + o.sub + '</span>' : '') + '</span></div>' +
+    var right = o.right || 0, total = o.total || 0, miss = total - right;
+    /* End screen v2 (owner 2026-11-07, mockup): one card for the score with a right/missed bar and the actions
+       beside it, then the topics in one list (the old "What to study next" cards and "By topic" table merged),
+       then the course's breakdowns. Nothing removed; the score card is neutral, the bar carries right and missed. */
+    var bar = total ? '<span class="cx-endp-bar" aria-hidden="true"><i class="ok" style="width:' + (right / total * 100) + '%"></i><i class="no" style="width:' + (miss / total * 100) + '%"></i></span>' +
+      '<span class="cx-endp-key"><span><i class="ok"></i>' + right + ' right</span><span><i class="no"></i>' + miss + ' missed</span></span>' : '';
+    var acts = (o.step ? ctl('btn-press', o.step) : '') + (o.retry ? ctl('btn-outline', o.retry) : '');
+    var step = o.stepHtml || ((acts || also.length) ? '<div class="cx-endp-acts">' + acts + '</div>' +
+      (o.step && o.step.why ? '<p class="cx-endp-why">' + o.step.why + '</p>' : '') +
+      (also.length ? '<p class="cx-endp-also">' + also.map(function(a){ return ctl('link-quiet', a); }).join('') + '</p>' : '') : '');
+    return '<section class="cx-endp cx-endp2" aria-label="Session results">' +
+      '<div class="cx-endp-card">' +
+        '<div class="cx-endp-score" tabindex="-1"><span class="cx-score-big">' + right + '<small>/' + total + '</small></span>' +
+          '<span><b>' + (o.line || '') + '</b>' + (o.sub ? '<span class="cx-small">' + o.sub + '</span>' : '') + bar + '</span></div>' +
+        step + (o.stepHtml && also.length ? '<p class="cx-endp-also">' + also.map(function(a){ return ctl('link-quiet', a); }).join('') + '</p>' : '') +
+      '</div>' +
       (o.extras || '') +
-      (o.next ? '<h2 class="cx-endp-h">What to study next</h2>' + o.next : '') +
-      (o.retry ? '<div class="cx-endp-retry">' + ctl('btn-outline', o.retry) + '</div>' : '') +
-      step + (o.stepHtml && also.length ? '<p class="cx-endp-also">' + also.map(function(a){ return ctl('link-quiet', a); }).join('') + '</p>' : '') +
+      (o.next ? '<h2 class="cx-endp-h">' + (o.nextTitle || 'What to study next') + '</h2>' + o.next : '') +
       (o.more || '') + premiumAtLimit(o.course) +
     '</section>';
   }
