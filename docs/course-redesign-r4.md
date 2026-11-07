@@ -179,3 +179,19 @@ budgets in `scripts/check-weight.mjs`, `scripts/ci-local.sh` (with `BROWSER=1`),
   anatomy-physiology at 1280 and 390, light and dark). Known: AP® mixed sets are Premium, so a free visitor
   lands on the exam page's Premium note; justify `go=1` skips Premium-locked prompts and shows the list when
   only locked ones match.
+
+- **Practice v4 B (owner picked version B of three, 2026-11-06; mockup `docs/redesign-r4/mockups/PracticeV4B.dc.txt`,
+  the other two on the canvas; branch `claude/practice-v4b`) replaces v3's tiles, 3-column grid and sticky navy bar.**
+  One card in three columns: the modes as a list on the left (chosen one tinted with a bar in the course colour),
+  the chosen mode's settings in one column in the middle, and Your session on the right (navy card with the
+  summary and one Start, Reset to defaults, then the share row), which stays in view (`position: sticky`) while
+  the settings scroll. Under 1020 px the right column moves under the other two; under 640 px all three stack,
+  the modes 2 a row. Reasons: one column, read top to bottom (Baymard, multi-column forms are skipped and
+  misread); settings in two groups under a heading per mode (`GROUPS` in `practice-panel.js`: Which
+  questions / How it runs and the like; group related fields, NN/g, IxDF); a list of up to 5 short choices is
+  buttons in one segmented box, longer lists stay drop-downs (`pick()`; US Web Design System and CMS: buttons
+  under about 7 choices), so Difficulty and Level are buttons now; the phone Start bar covered half the
+  choices (NN/g: sticky bars as small as possible), so on phones Start is at the end, not sticky. Settings,
+  greying with reasons, remembered settings, deep links and every Start URL are unchanged from v3.
+  Tested in headless Chrome (bio, nremt, ochem, calculus, anatomy-physiology; every mode; 1280 and 390;
+  light and dark; no overflow, no errors).

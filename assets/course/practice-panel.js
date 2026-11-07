@@ -30,7 +30,7 @@
   var C;
   try{ C = JSON.parse(cfgEl.textContent); }catch(e){ return; }
   var W = window, doc = document, fam = C.family;
-  var setEl = doc.getElementById('ppSet'), sumT = doc.getElementById('ppSumT'), sumB = doc.getElementById('ppSumB'), goEl = doc.getElementById('ppGo');
+  var shareEl = doc.getElementById('ppShare'), setEl = doc.getElementById('ppSet'), sumT = doc.getElementById('ppSumT'), sumB = doc.getElementById('ppSumB'), goEl = doc.getElementById('ppGo');
   var wrap = root.parentNode, engine = doc.querySelector(C.engine);
   var URLP = new URLSearchParams(location.search), GO = URLP.get('go') === '1';
   var STORE = 'levl_practice_v3_' + C.course;
@@ -330,7 +330,7 @@
     return '<button type="button" class="pp-chip" data-k="' + k + '" data-v="' + esc(v) + '" aria-pressed="' + (on ? 'true' : 'false') + '"' +
       (off ? ' disabled' : '') + (title ? ' title="' + esc(title) + '"' : '') + '>' + label + '</button>';
   }
-  function chips(k, list, isOn, off){ return '<div class="pp-chips">' + list.map(function(x){ return chip(k, x[0], esc(x[1]), isOn(x[0]), off); }).join('') + '</div>'; }
+  function chips(k, list, isOn, off){ return '<div class="pp-chips' + (list.length >= 4 && list.some(function(x){ return strip(x[1]).length > 8; }) ? ' pp-chips-l' : '') + '">' + list.map(function(x){ return chip(k, x[0], esc(x[1]), isOn(x[0]), off); }).join('') + '</div>'; }
   function opt(v, t, cur){ return '<option value="' + esc(v) + '"' + (String(v) === String(cur) ? ' selected' : '') + '>' + esc(t) + '</option>'; }
   function select(k, label, opts, val, off){
     return '<select class="pp-sel" data-k="' + k + '" aria-label="' + esc(label) + '"' + (off ? ' disabled' : '') + '>' +
@@ -380,14 +380,29 @@
     var first = us.length ? 'Every topic in ' + (us.length > 1 ? 'these ' + UW + 's' : 'this ' + UW) : 'Every topic';
     return select('topic', 'Topic', [{ v: '', t: first }].concat(A.topics(us, allTopics).map(function(t){ return { v: t.id, t: t.name }; })), s.topic, off);
   }
+  /* A list of up to 5 short choices shows as buttons (all visible at once); a longer one stays a drop-down. */
+  function pick(k, label, list, val, off){
+    if(list.length <= 5 && list.every(function(x){ return String(x[1]).length <= 16; })) return chips(k, list, function(v){ return String(v) === String(val); }, off);
+    return select(k, label, list.map(function(x){ return { v: x[0], t: x[1] }; }), val, off);
+  }
+  /* The settings in two groups, each under a heading (Which questions, How it runs; the names fit the mode). */
+  var GROUPS = { set: ['Which questions', 'How it runs', ['n', 'timer', 'expl']], rev: ['Which questions', 'How many', ['n']],
+    fc: ['Which cards', 'How many', ['nw']], exam: ['Which exam', 'How it runs', ['timing', 'n', 'date']],
+    frq: ['Which question', '', []], jus: ['Which prompt', '', []], cram: ['Your exam', 'The plan', ['weeks', 'print']] };
+  function col(m, h){
+    var g = GROUPS[m], t = doc.createElement('div'), a = '', b = '';
+    t.innerHTML = h;
+    [].forEach.call(t.children, function(c){ if(has(g[2], c.getAttribute('data-cell'))) b += c.outerHTML; else a += c.outerHTML; });
+    return '<div class="pp-grp"><h3 class="pp-gh">' + g[0] + '</h3>' + a + '</div>' + (b ? '<div class="pp-grp"><h3 class="pp-gh">' + g[1] + '</h3>' + b + '</div>' : '');
+  }
   function countChips(k, list, cur, off, allLabel){ return chips(k, list.map(function(n){ return [n, n ? String(n) : (allLabel || 'All')]; }), function(v){ return +v === cur; }, off); }
   function shareRow(m){
     var p = printState(m);
-    return '<div class="pp-share" role="group" aria-label="Share or print"><span class="pp-share-l">Share or print this ' + (m === 'exam' ? 'exam' : 'set') + ':</span>' +
+    return '<div class="pp-share" role="group" aria-label="Share or print"><span class="pp-share-l">Share or print this ' + (m === 'exam' ? 'exam' : 'set') + '</span>' +
       '<a class="pp-chip" id="ppClass" href="https://classroom.google.com/" target="_blank" rel="noopener">' + ico(ICO.cls) + ' Google Classroom<span class="sr-only"> (opens in a new tab)</span></a>' +
       '<button type="button" class="pp-chip" id="ppCopy">' + ico(ICO.link) + ' Copy link</button>' +
       '<button type="button" class="pp-chip" id="ppPrint"' + (p.ok ? '' : ' disabled title="' + esc(p.why) + '"') + '>' + ico(ICO.print) + ' Worksheet</button>' +
-      '<label class="pp-key"><input type="checkbox" id="ppKey"' + (p.ok ? '' : ' disabled') + (keyOn ? ' checked' : '') + '> Answer key on a separate page</label>' +
+      '<label class="pp-key"><input type="checkbox" id="ppKey"' + (p.ok ? '' : ' disabled') + (keyOn ? ' checked' : '') + '> Answer key on its own page</label>' +
       '<span class="pp-share-n" id="ppShareN" aria-live="polite">' + (p.ok ? '' : esc(p.why)) + '</span></div>';
   }
   var keyOn = false;
@@ -411,11 +426,11 @@
       if(C.practice){ w = why(m, 'practice'); h += cell('practice', C.practice, w, select('practice', C.practice, [{ v: '', t: 'Every ' + C.practice.toLowerCase() }].concat(A.practices().map(function(p){ return { v: p.id, t: p.name }; })), s.practice, !!w)); }
       w = why(m, 'type');
       h += cell('type', 'Question type', w, ANP ? chips('qt', [['', 'All types']].concat(ANP_TYPES), function(v){ return v === '' ? !s.qt.length : has(s.qt, v); }, !!w)
-        : select('qt', 'Question type', qtypes().map(function(t){ return { v: t[0], t: t[1] }; }), s.qt, !!w));
+        : pick('qt', 'Question type', qtypes(), s.qt, !!w));
       w = why(m, 'diff');
-      h += cell('diff', 'Difficulty', w, select('diff', 'Difficulty', diffs().map(function(d){ return { v: d[0], t: d[1] }; }), s.diff, !!w));
-      if(ANP) h += cell('level', 'Level', w, select('level', 'Level', LEVELS.map(function(l){ return { v: l[0], t: l[1] }; }), s.level, !!w));
-      return '<div class="pp-grid3">' + h + '</div>' + shareRow(m);
+      h += cell('diff', 'Difficulty', w, pick('diff', 'Difficulty', diffs(), s.diff, !!w));
+      if(ANP) h += cell('level', 'Level', w, pick('level', 'Level', LEVELS, s.level, !!w));
+      return col(m, h);
     }
     if(m === 'rev'){
       var due = A.due();
@@ -423,7 +438,7 @@
       h += cell('units', C.unitWord === 'Units' ? 'Unit' : C.unitWord === 'Domains' ? 'Domain' : 'Chapter', '', unitPicker(m, false));
       w = why(m, 'topic'); h += cell('topic', 'Topic', w, BANK ? topicPicker(m, !!w) : select('topic', 'Topic', [{ v: '', t: 'Every topic' }], '', true));
       h += cell('n', 'How many', '', chips('n', [[0, 'All ' + fmt(due) + ' due'], [10, '10'], [20, '20']], function(v){ return +v === s.n; }, false));
-      return '<div class="pp-grid3">' + h + '</div>';
+      return col(m, h);
     }
     if(m === 'fc'){
       h += cell('src', 'Cards from', '', chips('src', fcSources(), function(v){ return s.src === v; }, false));
@@ -433,7 +448,7 @@
       w = why(m, 'topic'); h += cell('topic', 'Topic', w, BANK ? topicPicker(m, !!w, true) : select('topic', 'Topic', [{ v: '', t: 'Every topic' }], '', true));
       w = why(m, 'nw'); h += cell('nw', 'New cards today', w, chips('nw', fcCounts().map(function(n){ return [n, n ? String(n) : 'None, due only']; }), function(v){ return +v === s.nw; }, !!w));
       h += cell('kinds', 'Card types', '', chips('kinds', C.kinds || [], function(v){ return has(s.kinds, v); }, false), 'Tick one or more');
-      return '<div class="pp-grid3">' + h + '</div>';
+      return col(m, h);
     }
     if(m === 'exam'){
       h += cell('ek', 'Kind', '', chips('ek', C.examKinds.map(function(k){ return [k[0], AP ? ({ full: 'Full exam', unit: 'Unit test', mixed: 'Mixed set' })[k[0]] || k[1] : k[1]]; }), function(v){ return s.ek === v; }, false));
@@ -441,20 +456,20 @@
       w = why(m, 'timing'); h += cell('timing', 'Timing', w, chips('timing', TIMINGS, function(v){ return !w && s.timing === v; }, !!w));
       w = why(m, 'n'); h += cell('n', 'How many', w, countChips('n', examCounts(), w && examCounts().length > 1 ? -1 : s.n, !!w));
       if(AP){
-        w = why(m, 'type'); h += cell('type', 'Question type', w, select('qt', 'Question type', qtypes().map(function(t){ return { v: t[0], t: t[1] }; }), s.qt, !!w));
-        h += cell('diff', 'Difficulty', w, select('diff', 'Difficulty', diffs().map(function(d){ return { v: d[0], t: d[1] }; }), s.diff, !!w));
+        w = why(m, 'type'); h += cell('type', 'Question type', w, pick('qt', 'Question type', qtypes(), s.qt, !!w));
+        h += cell('diff', 'Difficulty', w, pick('diff', 'Difficulty', diffs(), s.diff, !!w));
         if(C.practice) h += cell('practice', C.practice, w, select('practice', C.practice, [{ v: '', t: 'Every ' + C.practice.toLowerCase() }].concat(A.practices().map(function(p){ return { v: p.id, t: p.name }; })), s.practice, !!w));
       } else if(ANP){
         w = why(m, 'type');
         h += cell('type', 'Question type', w, chips('qt', [['', 'All types']].concat(ANP_TYPES), function(v){ return v === '' ? !s.qt.length : has(s.qt, v); }, !!w));
-        h += cell('diff', 'Difficulty', w, select('diff', 'Difficulty', diffs().map(function(d){ return { v: d[0], t: d[1] }; }), s.diff, !!w));
-        h += cell('level', 'Level', w, select('level', 'Level', LEVELS.map(function(l){ return { v: l[0], t: l[1] }; }), s.level, !!w));
+        h += cell('diff', 'Difficulty', w, pick('diff', 'Difficulty', diffs(), s.diff, !!w));
+        h += cell('level', 'Level', w, pick('level', 'Level', LEVELS, s.level, !!w));
       } else if(fam === 'nremt'){
-        h += cell('diff', 'Difficulty', '', select('diff', 'Difficulty', diffs().map(function(d){ return { v: d[0], t: d[1] }; }), s.diff, false));
+        h += cell('diff', 'Difficulty', '', pick('diff', 'Difficulty', diffs(), s.diff, false));
       }
       if(!C.cram) h += cell('date', 'Exam date', '', '<input type="date" class="pp-sel" data-k="date" value="' + esc(readDate()) + '" aria-label="Exam date">', 'Optional. Used for your pacing.');
-      return '<div class="pp-grid3">' + h + '</div>' +
-        '<details class="pp-info"><summary>What&rsquo;s in the full exam</summary><p>' + esc(C.exam || '') + '</p></details>' + shareRow(m);
+      return col(m, h) +
+        '<details class="pp-info"><summary>What&rsquo;s in the full exam</summary><p>' + esc(C.exam || '') + '</p></details>';
     }
     if(m === 'frq'){
       if(!frqData) loadFrq();
@@ -468,7 +483,7 @@
       var pool = frqMatches(), sc = K.scores ? safe(K.scores) : {};
       w = why(m, 'id');
       h += cell('id', 'Question', w, select('id', 'Question', [{ v: '', t: frqData ? 'Next unanswered' : 'Loading the questions…' }].concat(pool.map(function(f){ var r = sc[f.id]; return { v: f.id, t: f.title + (r ? ' (best ' + r.best + '/' + r.of + ')' : '') }; })), s.id, !frqData || !!w));
-      return '<div class="pp-grid3">' + h + '</div>';
+      return col(m, h);
     }
     if(m === 'jus'){
       if(!jusData) loadJus();
@@ -483,13 +498,13 @@
       h += cell('topic', 'Topic', '', select('topic', 'Topic', [{ v: '', t: 'Every topic' }].concat(tps.map(function(t){ var x = tn.filter(function(y){ return y.id === t; })[0]; return { v: t, t: x ? x.name : t }; })), s.topic, !jusData));
       w = why(m, 'id');
       h += cell('id', 'Prompt', w, select('id', 'Prompt', [{ v: '', t: jusData ? 'Next prompt' : 'Loading the prompts…' }].concat(jusMatches().map(function(p){ return { v: p.id, t: p.title }; })), s.id, !jusData || !!w));
-      return '<div class="pp-grid3">' + h + '</div>';
+      return col(m, h);
     }
     if(m === 'cram'){
       h += cell('date', 'Exam date', '', '<input type="date" class="pp-sel" data-k="date" value="' + esc(readDate()) + '" aria-label="Exam date">', 'Saved for this course');
       h += cell('weeks', 'Plan length', '', chips('weeks', [[3, '3 weeks'], [2, '2 weeks']], function(v){ return +v === s.weeks; }, false));
       h += cell('print', 'Print', '', '<div class="pp-chips"><a class="pp-chip" id="ppCramPrint" href="' + esc(cramHref(true)) + '">' + ico(ICO.print) + ' Print the plan</a></div>');
-      return '<div class="pp-grid3">' + h + '</div>';
+      return col(m, h);
     }
     if(m === 'cat') return '<p class="pp-fixed">Nothing to set: the adaptive exam picks each question from your last answer, 70 to 120 questions in 2 hours at most, the way the real CAT does. It is a simulation, not the Registry&rsquo;s algorithm.</p>';
     if(m === 'scen') return '<p class="pp-fixed">You choose the call on the next page: medical or trauma, adult or child. Each call runs from dispatch to handoff, and every decision is explained when it ends.</p>';
@@ -517,6 +532,7 @@
     var focus = doc.activeElement && setEl.contains(doc.activeElement) ? keyOf(doc.activeElement) : null;
     setEl.innerHTML = grid(S.m);
     setEl.setAttribute('data-mode', S.m);
+    if(shareEl) shareEl.innerHTML = S.m === 'set' || S.m === 'exam' ? shareRow(S.m) : '';
     if(focus){ var el = setEl.querySelector(focus); if(el && !el.disabled) el.focus(); }
     paintTiles();
     paintSummary();
@@ -825,7 +841,8 @@
     clearAlert();
     render();
   });
-  setEl.addEventListener('click', function(e){
+  if(shareEl) shareEl.addEventListener('change', function(e){ if(e.target.id === 'ppKey') keyOn = e.target.checked; });
+  root.addEventListener('click', function(e){
     var c = e.target.closest('#ppCopy, #ppPrint');
     if(!c || c.disabled) return;
     var shareN = doc.getElementById('ppShareN');

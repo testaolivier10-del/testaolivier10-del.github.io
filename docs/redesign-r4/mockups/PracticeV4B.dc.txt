@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Practice v4 · B: list, form, summary</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:'Nunito';font-weight:600 900;src:url(/_blob/c5bcabf6e5454e19c2392bdb510ca6d3) format('woff2')}
+@font-face{font-family:'Inter Display';font-weight:800 900;src:url(/_blob/56bd824bf79d45ed391759a05c1ce73c) format('woff2')}
+@font-face{font-family:'Kalam';font-weight:700;src:url(/_blob/031f2640efb523dfedcff5f0c13f4f16) format('woff2')}
+body{margin:0;background:#F7F9FC}
+a{color:#2D6A1F}a:hover{color:#1B4422}
+.lp{--ink:#0B1A33;--muted:#56667F;--line:#E3E9F2;--line-soft:#EDF1F7;--paper:#F7F9FC;--white:#fff;--accent:#2D6A1F;--ctint:#E4F1DD;--bbg:#1B4422;--bac:#7CCB6B;--gold:#FFD43B;--navy:#0B1A33;--amber:#9A5B00;--ui:'Nunito','Segoe UI',system-ui,sans-serif;--display:'Inter Display','Nunito',system-ui,sans-serif;
+ container-type:inline-size;font-family:var(--ui);color:var(--ink);background:var(--paper);background-image:linear-gradient(rgba(11,26,51,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(11,26,51,.035) 1px,transparent 1px);background-size:44px 44px;min-height:100%;font-size:16px;line-height:1.5}
+.lp *{box-sizing:border-box}
+.lp h1,.lp h2,.lp h3,.lp p{margin:0}
+.lp a{color:inherit;text-decoration:none}
+.lp button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+/* header */
+.hdr{background:rgba(247,249,252,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.hdr-top{display:flex;align-items:center;gap:14px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:900 21px var(--display);letter-spacing:-.03em}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);display:grid;place-items:center}
+.crs{display:flex;align-items:center;gap:4px;font:800 14.5px var(--ui);padding:6px 10px;border-radius:9px;border:0;background:transparent;color:var(--ink);border-left:1.5px solid var(--line);border-radius:0;padding-left:14px}
+.hdr-sp{flex:1}
+.ibtn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;color:var(--ink)}
+.tlink{font:800 14.5px var(--ui);padding:9px 12px;border-radius:10px}
+.sbtn{font:800 14.5px var(--ui);padding:9px 16px;border-radius:10px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+.tabs{display:flex;gap:6px;height:46px;align-items:stretch}
+.tab{display:flex;align-items:center;gap:8px;padding:0 14px;font:800 15px var(--ui);color:var(--muted);border-bottom:3px solid transparent}
+.tab.on{color:var(--ink);border-bottom-color:var(--accent)}
+.tab .bdg{font:900 11.5px var(--ui);background:var(--gold);color:var(--ink);border-radius:999px;padding:1px 7px}
+.btm{display:none}
+.show-sm{display:none !important}
+/* band */
+.band{position:relative;background:var(--bbg);color:#fff;overflow:hidden;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px}
+.band-in{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding-top:44px;padding-bottom:130px}
+.issue{display:flex;gap:14px;align-items:center;font:800 13px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.74);margin:0 0 16px}
+.issue i{flex:1;height:1px;background:rgba(255,255,255,.2)}
+.mast{font:900 96px/.9 var(--display);letter-spacing:-.05em}
+.mast em{font-style:normal;color:var(--bac);display:block}
+.hand{font:700 26px/1.2 'Kalam',cursive;color:#FFD43B;margin-top:12px}
+.lead{font-size:18px;color:rgba(255,255,255,.88);margin-top:14px;max-width:520px}
+.art{width:100%;max-width:520px;justify-self:end;border-radius:0}
+.art{aspect-ratio:1.45/1;overflow:hidden;border-radius:24px}
+.art img{width:100%;height:100%;object-fit:cover;object-position:88% 50%;display:block}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:900 16px var(--ui);padding:14px 22px;border-radius:12px;border:0;text-decoration:none}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-ghost{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-ondark{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.btn-sm{font-size:14.5px;padding:10px 16px;border-radius:10px}
+.micro{font:700 13.5px var(--ui);color:rgba(255,255,255,.7);margin-top:12px}
+/* small colored header for inner tabs (Olivier, Nov 5: colored like Home, smaller, cards underlap a little) */
+.slim{position:relative;background:var(--bbg);color:#fff;overflow:hidden;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px}
+.slim-in{display:flex;align-items:center;gap:18px;padding-top:26px;padding-bottom:64px;flex-wrap:wrap}
+.slim .ttl{color:#fff}
+.slim .sub{color:rgba(255,255,255,.78)}
+.slim-art{width:170px;height:96px;border-radius:14px;overflow:hidden;flex:none}
+.slim-art img{width:100%;height:100%;object-fit:cover;object-position:88% 50%;display:block}
+.lap{margin-top:-38px;position:relative;z-index:2}
+.thumb{width:64px;height:40px;border-radius:9px;overflow:hidden;flex:none;background:var(--bbg)}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:75% 50%;display:block}
+.ttl{font:900 38px/1.05 var(--display);letter-spacing:-.035em}
+.ttl em{font-style:normal;color:var(--accent)}
+.sub{color:var(--muted);font-weight:700;font-size:15px;margin-top:4px}
+/* half band */
+.halfband .band-in{padding-top:28px;padding-bottom:84px;grid-template-columns:1fr 280px}
+.halfband .mast{font-size:56px}
+.halfband .hand{font-size:22px}
+.crumbs{font:800 13px var(--ui);color:rgba(255,255,255,.75);margin-bottom:10px}
+/* cards */
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 1px 2px rgba(11,26,51,.04),0 8px 24px rgba(11,26,51,.05)}
+.pad{padding:26px 28px}
+.pill{display:inline-block;border:1.5px solid currentColor;border-radius:999px;padding:1px 10px;font:800 12.5px var(--ui);color:var(--accent)}
+.pill-gold{background:#FFF4CC;border-color:#E7C24A;color:#6B4E00}
+.h2{font:900 30px/1.1 var(--display);letter-spacing:-.035em}
+.h2 em{font-style:normal;color:var(--accent)}
+.h3{font:900 19px/1.25 var(--ui)}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.over{margin-top:-96px;position:relative;z-index:2}
+.grid2{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+.sec{margin-top:56px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:16px}
+.more{font:900 14.5px var(--ui);color:var(--accent);display:inline-flex;gap:6px;align-items:center}
+/* unit rows */
+.urow{display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--line-soft)}
+.unum{font:900 40px/1 var(--display);color:var(--accent);letter-spacing:-.04em}
+.uname{font:900 17px var(--ui)}
+.umeta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.sq{display:flex;gap:4px;flex-wrap:wrap}
+.sq i{width:13px;height:13px;border-radius:3px;background:#E6EBF2;display:block}
+.sq i.s1{background:#BFE0B3}.sq i.s2{background:#5FAE5A}.sq i.s3{background:#1B4422}
+.uw{text-align:right;font:900 20px var(--display);letter-spacing:-.02em}
+.uw small{display:block;font:800 12px var(--ui);color:var(--accent);letter-spacing:0}
+.free{font:800 12px var(--ui);color:var(--accent);background:var(--ctint);border-radius:999px;padding:1px 8px}
+.legend{display:flex;gap:14px;font:700 12.5px var(--ui);color:var(--muted);margin-top:14px;flex-wrap:wrap}
+.legend span{display:flex;gap:6px;align-items:center}
+/* way rows */
+.way{display:flex;gap:14px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:16px;margin-top:12px;background:#fff}
+.way-ic{width:44px;height:44px;border-radius:12px;background:var(--ctint);color:var(--accent);display:grid;place-items:center;flex:none}
+.way-t{font:900 16.5px var(--ui)}
+.way-d{font-size:14px;color:var(--muted)}
+.way .cnt{margin-left:auto;font:900 13px var(--ui);background:var(--gold);border-radius:999px;padding:2px 10px;white-space:nowrap}
+/* media cards */
+.mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.mcard{display:block}
+.mimg{border-radius:14px;overflow:hidden;position:relative;aspect-ratio:2/1;background:var(--bbg)}
+.mimg img{width:100%;height:100%;object-fit:cover;display:block}
+.mplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(11,26,51,.8);display:grid;place-items:center;color:#fff}
+.dur{position:absolute;right:10px;bottom:10px;background:rgba(11,26,51,.85);color:#fff;font:800 12px var(--ui);padding:2px 7px;border-radius:6px}
+.mt{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-top:12px}
+.mname{font:900 16.5px var(--ui)}
+.mdesc{font-size:14px;color:var(--muted);margin-top:3px}
+.prem{font:800 12px var(--ui);background:#FFF4CC;color:#6B4E00;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.tag{font:800 12px var(--ui);background:var(--ctint);color:var(--accent);border-radius:999px;padding:2px 9px;white-space:nowrap}
+/* compare */
+.cmp{width:100%;border-collapse:collapse;font-size:15px}
+.cmp th{font:900 14px var(--ui);text-align:center;padding:12px 8px;border-bottom:2px solid var(--ink)}
+.cmp th:first-child{text-align:left}
+.cmp td{padding:11px 8px;border-bottom:1px solid var(--line-soft);text-align:center;font-weight:700;color:var(--muted)}
+.cmp td:first-child{text-align:left;color:var(--ink);font-weight:700}
+.cmp td.y{color:var(--accent)}
+.cmp .pcol{background:#FBFCF7}
+.deal{display:grid;grid-template-columns:1.5fr 1fr;gap:0;overflow:hidden}
+.deal-r{background:var(--navy);color:#fff;padding:30px}
+.price{font:900 52px/1 var(--display);color:var(--gold);letter-spacing:-.03em}
+/* faq */
+.faq details{border-top:1px solid var(--line);padding:16px 2px}
+.faq summary{font:900 17px var(--ui);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq p{color:var(--muted);margin-top:8px;max-width:640px}
+.faqg{display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
+/* footer */
+.foot{border-top:1px solid var(--line);margin-top:64px;padding:26px 0 40px;font-size:13.5px;color:var(--muted)}
+.foot a{text-decoration:underline}
+/* tutor */
+.fab{position:fixed;right:22px;bottom:22px;width:54px;height:54px;border-radius:16px;background:#0D3B36;color:#2EE6D6;display:grid;place-items:center;border:0;box-shadow:0 6px 18px rgba(11,26,51,.25);z-index:30}
+/* segmented */
+.seg{display:inline-flex;background:#EEF2F7;border-radius:12px;padding:4px;gap:2px}
+.seg button,.seg a{border:0;background:transparent;font:800 14.5px var(--ui);padding:8px 14px;border-radius:9px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.seg .on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(11,26,51,.12)}
+.seg .dis{opacity:.5}
+.field{display:flex;flex-direction:column;gap:6px;font:900 12px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.field select,.field input{font:700 15px var(--ui);color:var(--ink);padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:#F7F9FC;text-transform:none;letter-spacing:0}
+.chip{border:1.5px solid var(--line);background:#fff;font:800 14.5px var(--ui);padding:8px 14px;border-radius:10px;color:var(--ink)}
+.chip.on{border-color:var(--accent);background:var(--ctint);color:var(--accent)}
+.kick{font:700 22px/1 'Kalam',cursive;color:var(--amber)}
+.bar{height:10px;border-radius:99px;background:#E6EBF2;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+@container (max-width:760px){
+ .wrap{padding:0 16px}
+ .hdr-top{height:56px;gap:8px}
+ .logo{font-size:18px}.logo-mark{width:30px;height:30px}
+ .crs{font-size:13.5px;padding-left:10px}
+ .hide-sm{display:none}
+ .tabs{display:none}
+ .show-sm{display:inline-flex !important}
+ .toc-aside{display:none !important}
+ .btm{display:flex;position:sticky;bottom:0;z-index:25;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:6px 0 10px}
+ .btm a{display:flex;flex-direction:column;align-items:center;gap:2px;font:800 11.5px var(--ui);color:var(--muted);padding:4px 8px;border-radius:12px;position:relative}
+ .btm a.on{color:var(--accent)}
+ .btm a.on span.ib{background:var(--ctint)}
+ .btm span.ib{width:52px;height:30px;border-radius:15px;display:grid;place-items:center}
+ .btm .bdg{position:absolute;top:0;right:8px;font:900 10.5px var(--ui);background:var(--gold);color:var(--ink);border-radius:999px;padding:0 6px}
+ .band-in{grid-template-columns:1fr;padding-top:20px;padding-bottom:100px;gap:8px}
+ .art{order:-1;max-width:260px;justify-self:center}
+ .mast{font-size:60px}
+ .hand{font-size:21px}.lead{font-size:16px}
+ .ctas .btn{flex:1 1 100%}
+ .grid2,.mgrid,.faqg,.deal{grid-template-columns:1fr}
+ .over{margin-top:-72px}
+ .pad{padding:20px 18px}
+ .urow{grid-template-columns:44px 1fr;gap:12px}
+ .unum{font-size:30px}
+ .uw{grid-column:2;text-align:left;font-size:16px}.uw small{display:inline;margin-left:6px}
+ .ttl{font-size:28px}
+ .h2{font-size:25px}
+ .halfband .band-in{grid-template-columns:1fr}
+ .halfband .art{display:none}
+ .halfband .mast{font-size:44px}
+ .fab{right:14px;bottom:84px;width:48px;height:48px}
+ .slim-in{padding-top:18px;padding-bottom:54px}
+ .slim-art{display:none}
+ .rail{max-width:none !important;order:2}
+ .tiles{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+ .one{grid-template-columns:1fr !important}
+ .slim-in label{min-width:0 !important;width:100%}
+}
+@container (max-width:520px){ .practice-tiles{grid-template-columns:1fr !important} }
+/*PV*/
+.pv{--r:14px}
+.pv .lbl{display:block;font:900 12px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pv .gh{font:900 15px var(--ui);color:var(--ink);margin:0}
+.pv .seg{display:inline-flex;flex-wrap:nowrap;border:1.5px solid var(--line);border-radius:12px;background:#fff;padding:3px;gap:3px;max-width:100%}
+.pv .seg button{justify-content:center;align-items:center;display:flex;border:0;background:transparent;font:800 14.5px var(--ui);color:var(--ink);padding:8px 14px;border-radius:9px;white-space:nowrap;cursor:pointer;flex:1 1 auto}
+.pv .seg button:hover{background:#F2F5F9}
+.pv select,.pv input[type=date]{width:100%;font:700 15px var(--ui);color:var(--ink);padding:11px 40px 11px 14px;border-radius:12px;border:1.5px solid var(--line);background:#F7F9FC url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2356667F' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center;appearance:none;-webkit-appearance:none}
+.pv input[type=date]{background-image:none;padding-right:14px}
+.pv .btn-gold{color:#0B1A33 !important}
+.pv .why{text-transform:none;letter-spacing:0;display:block;font:700 13px var(--ui);color:var(--muted);margin-top:6px}
+.pv .off{opacity:.42;pointer-events:none}
+.pv .sharebar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pv .sbtn2{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);background:#fff;font:800 14px var(--ui);padding:8px 13px;border-radius:10px;color:var(--ink)}
+.pv .ck{display:inline-flex;gap:8px;align-items:center;font:700 14.5px var(--ui)}
+.pv .ck input{width:18px;height:18px;accent-color:#2D6A1F}
+.pv details summary{font:900 14.5px var(--ui);color:var(--accent);cursor:pointer}
+/* mode picker, shared */
+.pv .modes{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.pv .mode{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;border-radius:14px;padding:12px 12px 11px;font-family:inherit;color:var(--ink);cursor:pointer;min-width:0}
+.pv .mode b{font:900 15px/1.2 var(--ui);display:block}
+.pv .mode small{font:700 12.5px/1.25 var(--ui);color:var(--muted);display:block}
+.pv .mode .mi{color:var(--accent)}
+.pv .mode .mtx{display:flex;flex-direction:column;gap:2px;min-width:0}
+/* A: one column */
+.pa .row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:18px;align-items:center;padding:11px 0}
+.pa .row .lbl{margin:0}
+.pa .row .ctl{max-width:560px}
+.pa .grp{padding:18px 0 6px}
+.pa .grp+.grp{border-top:1px solid var(--line-soft)}
+.pa .go{display:flex;align-items:center;gap:16px;background:var(--navy);color:#fff;padding:14px 28px;border-radius:0 0 22px 22px}
+.pa .go p{margin:0}
+/* B: rail + form + summary */
+.pb .cols{display:grid;grid-template-columns:220px minmax(0,1fr) 280px;gap:0}
+.pb .mrail{border-right:1px solid var(--line);padding:18px 12px;display:flex;flex-direction:column;gap:4px}
+.pb .ritem{display:flex;align-items:center;gap:11px;border:0;border-radius:12px;padding:10px 12px;text-align:left;font-family:inherit;color:var(--ink);cursor:pointer;width:100%}
+.pb .ritem b{font:900 15px/1.2 var(--ui);display:block}.pb .ritem small{font:700 12.5px var(--ui);color:var(--muted)}
+.pb .form{padding:22px 28px}
+.pb .field{margin-bottom:22px}
+.pb .gh{margin:6px 0 14px}
+.pb .gsep{border-top:1px solid var(--line-soft);margin:6px 0 18px}
+.pb .side{border-left:1px solid var(--line);padding:22px 20px;background:#FBFCFE;border-radius:0 22px 22px 0}
+.pb .sum{position:sticky;top:130px}
+.pb .sumcard{background:var(--navy);color:#fff;border-radius:16px;padding:18px}
+/* C: tabs + sentence */
+.pc .tabsx{display:flex;gap:4px;border-bottom:1.5px solid var(--line);padding:0 20px;overflow-x:auto}
+.pc .tabx{display:flex;align-items:center;gap:8px;border:0;background:none;font:800 15px var(--ui);color:var(--muted);padding:16px 12px 13px;border-bottom:3px solid transparent;margin-bottom:-1.5px;white-space:nowrap;cursor:pointer}
+.pc .sent{font:800 24px/2.15 var(--ui);color:var(--ink);margin:0}
+.pc .sent select,.pc .sent input[type=date]{display:inline-block;width:auto;font:900 21px var(--ui);color:var(--accent);background-color:var(--ctint);border:0;border-bottom:2.5px solid var(--accent);border-radius:10px 10px 4px 4px;padding:2px 34px 2px 12px;background-position:right 10px center;margin:0 2px;max-width:100%}
+.pc .sent input[type=date]{padding-right:12px}
+.pc .sent select{field-sizing:content}
+.pc .hint{font:700 14px var(--ui);color:var(--muted);margin-top:14px}
+@container (max-width:760px){
+ .pv .modes{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .pv .mode{flex-direction:row;align-items:center;padding:10px 12px;gap:10px}
+ .pv .mode .mtx{min-width:0}
+ .pv .mode b{font-size:14.5px}.pv .mode small{font-size:12px}
+ .pv .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:100%}
+ .pv .seg.s4,.pv .seg.long{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .pv .seg button{padding:9px 6px;white-space:normal;line-height:1.2;text-align:center}
+ .pv .modes>:last-child:nth-child(odd),.pb .mrail>:last-child:nth-child(odd){grid-column:1/-1}
+ .fab{bottom:150px !important}
+ .pa .row{grid-template-columns:1fr;gap:8px;padding:9px 0}
+ .pa>div{padding-left:16px !important;padding-right:16px !important}
+ .pa>div>button[style*=absolute]{right:16px !important}
+ .pa .go{position:sticky;bottom:62px;z-index:6;padding:10px 14px;border-radius:14px;margin:0 -6px;gap:10px}
+ .pa .go .s2{display:none}
+ .pa .go .s1{font-size:15px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .pa .go .btn{padding:10px 16px;font-size:15px;flex:none}
+ .pb .cols{grid-template-columns:1fr}
+ .pb .mrail{border-right:0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:14px}
+ .pb .ritem{padding:9px 10px;border:1.5px solid var(--line)}
+ .pb .form{padding:18px 16px}
+ .pb .side{border-left:0;border-top:1px solid var(--line);border-radius:0 0 22px 22px;padding:16px}
+ .pb .sum{position:static}
+ .pc .tabsx{display:none}
+ .pc .modes{padding:14px 14px 0}
+ .pc .sent{font-size:19px;line-height:2.25}
+ .pc .sent select,.pc .sent input[type=date]{font-size:17px}
+ .pc .gobar{flex-direction:column;align-items:stretch !important}
+ .pc .gobar .btn{width:100%;text-align:center}
+}
+@container (min-width:761px){ .pc .modes{display:none} }
+</style>
+</helmet>
+<div class="lp"><header class="hdr"><div class="wrap"><div class="hdr-top">
+<a class="logo" href="HomeReturning.dc.html"><span class="logo-mark"><svg width="18" height="18" viewBox="0 0 512 512" aria-hidden="true"><rect x="218" y="80" width="76" height="352" rx="22" fill="#2EE6D6"></rect><rect x="80" y="218" width="352" height="76" rx="22" fill="#2EE6D6"></rect></svg></span>LevlPrep</a>
+<span class="crs">AP® Biology</span>
+<span class="hdr-sp"></span>
+<button class="ibtn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+<a class="tlink hide-sm" href="#">For teachers</a>
+<a class="sbtn hide-sm" href="#">Sign in</a>
+<button class="ibtn" aria-label="Settings: dark mode and sound"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg></button>
+</div>
+<nav class="tabs" aria-label="Course"><a class="tab" href="HomeReturning.dc.html">Home</a><a class="tab" href="Learn.dc.html">Learn</a><a class="tab on" href="Practice.dc.html">Practice</a><a class="tab" href="Tools.dc.html">Tools</a><a class="tab" href="Progress.dc.html">Progress</a></nav></div></header><section class="slim"><div class="wrap slim-in"><div style="flex:1;min-width:220px"><p class="issue" style="margin:0 0 8px">AP® Biology <i></i></p><h1 class="ttl">Practice</h1><p class="sub">1,487 questions · every option explained</p></div><div style="display:flex;align-items:center;gap:12px;background:#FFF8DE;border:1px solid #F0D98A;border-radius:14px;padding:10px 14px;color:#0B1A33"><span style="font:900 14px var(--ui);color:#0B1A33">12 of 15 free today</span><span style="width:90px" class="bar"><i style="width:20%;background:#C99A00"></i></span><a href="#" class="small" style="font-weight:900;text-decoration:underline;color:#6B4E00">Get unlimited</a></div><span class="slim-art"><img src="/_blob/05d851cc2ab68021def477f380fce8cc" alt=""></span></div></section><main class="wrap lap"><div class="pv pb card" style="padding:0;overflow:visible;max-width:1180px">
+<div class="cols">
+<nav class="mrail" aria-label="What do you want to do?"><button class="ritem" onClick="{{pick_set}}" style="{{rt_set}}"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><span style="min-width:0"><b>Practice set</b><small>1,487 questions</small></span></button><button class="ritem" onClick="{{pick_rev}}" style="{{rt_rev}}"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.5L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4.5L20 16"/><path d="M20 20v-4h-4"/></svg></span><span style="min-width:0"><b>Review</b><small>6 due now</small></span></button><button class="ritem" onClick="{{pick_fc}}" style="{{rt_fc}}"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="4" width="13" height="15" rx="2"/><path d="M4 8v11a2 2 0 0 0 2 2h9"/></svg></span><span style="min-width:0"><b>Flashcards</b><small>20 new today</small></span></button><button class="ritem" onClick="{{pick_exam}}" style="{{rt_exam}}"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M10 2h4"/></svg></span><span style="min-width:0"><b>Exam</b><small>Full, unit, mixed</small></span></button><button class="ritem" onClick="{{pick_frq}}" style="{{rt_frq}}"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/></svg></span><span style="min-width:0"><b>Free response</b><small>37 questions</small></span></button><button class="ritem" onClick="{{pick_jus}}" style="{{rt_jus}}"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"/><path d="M5 8h14"/><path d="M5 8l-3 7a3.5 3.5 0 0 0 6 0z"/><path d="M19 8l-3 7a3.5 3.5 0 0 0 6 0z"/><path d="M8 20h8"/></svg></span><span style="min-width:0"><b>Justify</b><small>32 prompts</small></span></button><button class="ritem" onClick="{{pick_cram}}" style="{{rt_cram}}"><span style="color:var(--accent);flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg></span><span style="min-width:0"><b>Cram plan</b><small>To exam day</small></span></button></nav>
+<div class="form"><sc-if value="{{is_set}}" hint-placeholder-val="{{ true }}"><p class="gh">Which questions</p><div class="field"><span class="lbl">Questions from</span><div style="margin-top:8px"><div class="seg" role="radiogroup" aria-label="Questions from"><button onClick="{{c_src_0}}" style="{{cs_src_0}}">Any</button><button onClick="{{c_src_1}}" style="{{cs_src_1}}">My weakest</button><button onClick="{{c_src_2}}" style="{{cs_src_2}}">I missed · 8</button></div></div></div><div class="field"><span class="lbl">Unit</span><div style="margin-top:8px"><select aria-label="Unit"><option>Every unit</option><option>Unit 1: Chemistry of Life</option><option>Unit 2: Cell Structure and Function</option><option>Unit 3: Cellular Energetics</option><option>Unit 4: Cell Communication and Cell Cycle</option><option>Unit 5: Heredity</option><option>Unit 6: Gene Expression and Regulation</option><option>Unit 7: Natural Selection</option><option>Unit 8: Ecology</option></select></div></div><div class="field"><span class="lbl">Topic</span><div style="margin-top:8px"><select aria-label="Topic"><option>Every topic</option><option>1.1 Structure of Water and Hydrogen Bonding</option><option>1.2 Elements of Life</option><option>1.4 Carbohydrates</option></select></div></div><div class="field"><span class="lbl">Science practice</span><div style="margin-top:8px"><select aria-label="Science practice"><option>Every science practice</option><option>1 Concept explanation</option><option>2 Visual representations</option><option>3 Questions and methods</option><option>4 Representing and describing data</option><option>5 Statistical tests and data analysis</option><option>6 Argumentation</option></select></div></div><div class="field"><span class="lbl">Question type</span><div style="margin-top:8px"><select aria-label="Question type"><option>All types</option><option>Standalone</option><option>Data sets</option><option>Numeric answers</option></select></div></div><div class="field"><span class="lbl">Difficulty</span><div style="margin-top:8px"><div class="seg s4" role="radiogroup" aria-label="Difficulty"><button onClick="{{c_diff_0}}" style="{{cs_diff_0}}">Any</button><button onClick="{{c_diff_1}}" style="{{cs_diff_1}}">Easier</button><button onClick="{{c_diff_2}}" style="{{cs_diff_2}}">Medium</button><button onClick="{{c_diff_3}}" style="{{cs_diff_3}}">Harder</button></div></div></div><div class="gsep"></div><p class="gh">How it runs</p><div class="field"><span class="lbl">How many</span><div style="margin-top:8px"><div class="seg" role="radiogroup" aria-label="How many"><button onClick="{{c_n_0}}" style="{{cs_n_0}}">5</button><button onClick="{{c_n_1}}" style="{{cs_n_1}}">10</button><button onClick="{{c_n_2}}" style="{{cs_n_2}}">20</button><button onClick="{{c_n_3}}" style="{{cs_n_3}}">40</button><button onClick="{{c_n_4}}" style="{{cs_n_4}}">All</button></div></div></div><div class="field"><span class="lbl">Timer</span><div style="margin-top:8px"><div class="seg s4 long" role="radiogroup" aria-label="Timer"><button onClick="{{c_tm_0}}" style="{{cs_tm_0}}">Off</button><button onClick="{{c_tm_1}}" style="{{cs_tm_1}}">Exam pace</button><button onClick="{{c_tm_2}}" style="{{cs_tm_2}}">Time and a half</button><button onClick="{{c_tm_3}}" style="{{cs_tm_3}}">Double time</button></div></div></div><div class="field"><span class="lbl">Explanations</span><div style="margin-top:8px"><div class="seg" role="radiogroup" aria-label="Explanations"><button onClick="{{c_ex_0}}" style="{{cs_ex_0}}">After each answer</button><button onClick="{{c_ex_1}}" style="{{cs_ex_1}}">At the end</button></div></div></div></sc-if><sc-if value="{{is_rev}}" hint-placeholder-val="{{ false }}"><p class="gh">Which questions</p><div class="field"><span class="lbl">Questions from</span><div style="margin-top:8px"><div class="seg" role="radiogroup" aria-label="Questions from"><button onClick="{{c_rsrc_0}}" style="{{cs_rsrc_0}}">Due for review · 6</button></div></div></div><div class="field"><span class="lbl">Unit</span><div style="margin-top:8px"><select aria-label="Unit"><option>Every unit</option><option>Unit 1: Chemistry of Life</option><option>Unit 2: Cell Structure and Function</option><option>Unit 3: Cellular Energetics</option><option>Unit 4: Cell Communication and Cell Cycle</option><option>Unit 5: Heredity</option><option>Unit 6: Gene Expression and Regulation</option><option>Unit 7: Natural Selection</option><option>Unit 8: Ecology</option></select></div></div><div class="field"><span class="lbl">Topic</span><div style="margin-top:8px"><select aria-label="Topic"><option>Every topic</option><option>1.1 Structure of Water and Hydrogen Bonding</option><option>1.2 Elements of Life</option><option>1.4 Carbohydrates</option></select></div></div><div class="gsep"></div><p class="gh">How many</p><div class="field"><span class="lbl">How many</span><div style="margin-top:8px"><div class="seg" role="radiogroup" aria-label="How many"><button onClick="{{c_rn_0}}" style="{{cs_rn_0}}">All 6 due</button><button onClick="{{c_rn_1}}" style="{{cs_rn_1}}">10</button><button onClick="{{c_rn_2}}" style="{{cs_rn_2}}">20</button></div></div></div></sc-if><sc-if value="{{is_fc}}" hint-placeholder-val="{{ false }}"><p class="gh">Which cards</p><div class="field"><span class="lbl">Cards from</span><div style="margin-top:8px"><div class="seg s4" role="radiogroup" aria-label="Cards from"><button onClick="{{c_fsrc_0}}" style="{{cs_fsrc_0}}">Every card</button><button onClick="{{c_fsrc_1}}" style="{{cs_fsrc_1}}">Missed</button><button onClick="{{c_fsrc_2}}" style="{{cs_fsrc_2}}">Weakest</button><button onClick="{{c_fsrc_3}}" style="{{cs_fsrc_3}}">Studied</button></div></div></div><div class="field"><span class="lbl">Deck</span><div style="margin-top:8px"><select aria-label="Deck"><option>Every unit (1,629 cards)</option><option>Unit 1: Chemistry of Life cards</option><option>Unit 2: Cell Structure and Function cards</option><option>Unit 3: Cellular Energetics cards</option><option>Unit 4: Cell Communication and Cell Cycle cards</option><option>Unit 5: Heredity cards</option><option>Unit 6: Gene Expression and Regulation cards</option><option>Unit 7: Natural Selection cards</option><option>Unit 8: Ecology cards</option></select></div></div><div class="field"><span class="lbl">Topic</span><div style="margin-top:8px"><select aria-label="Topic"><option>Every topic</option><option>1.1 Structure of Water and Hydrogen Bonding</option><option>1.2 Elements of Life</option><option>1.4 Carbohydrates</option></select></div></div><div class="field"><span class="lbl">Card types</span><div style="margin-top:8px"><div class="seg long" role="radiogroup" aria-label="Card types"><button onClick="{{c_ft_0}}" style="{{cs_ft_0}}">Term → definition</button><button onClick="{{c_ft_1}}" style="{{cs_ft_1}}">Definition → term</button><button onClick="{{c_ft_2}}" style="{{cs_ft_2}}">Summaries</button></div></div></div><div class="gsep"></div><p class="gh">How many</p><div class="field"><span class="lbl">New cards today</span><div style="margin-top:8px"><div class="seg" role="radiogroup" aria-label="New cards today"><button onClick="{{c_fn_0}}" style="{{cs_fn_0}}">None</button><button onClick="{{c_fn_1}}" style="{{cs_fn_1}}">10</button><button onClick="{{c_fn_2}}" style="{{cs_fn_2}}">20</button><button onClick="{{c_fn_3}}" style="{{cs_fn_3}}">30</button><button onClick="{{c_fn_4}}" style="{{cs_fn_4}}">50</button></div></div></div></sc-if><sc-if value="{{is_exam}}" hint-placeholder-val="{{ false }}"><p class="gh">Which questions</p><div class="field"><span class="lbl">Kind</span><div style="margin-top:8px"><div class="seg" role="radiogroup" aria-label="Kind"><button onClick="{{c_ek_0}}" style="{{cs_ek_0}}">Full exam</button><button onClick="{{c_ek_1}}" style="{{cs_ek_1}}">Unit test</button><button onClick="{{c_ek_2}}" style="{{cs_ek_2}}">Mixed set</button></div></div></div><div class="field" style="{{ds_eunit}}"><span class="lbl">Unit</span><div style="margin-top:8px"><select aria-label="Unit"><option>Unit 1: Chemistry of Life</option><option>Unit 2: Cell Structure and Function</option><option>Unit 3: Cellular Energetics</option><option>Unit 4: Cell Communication and Cell Cycle</option><option>Unit 5: Heredity</option><option>Unit 6: Gene Expression and Regulation</option><option>Unit 7: Natural Selection</option><option>Unit 8: Ecology</option></select></div><sc-if value="{{dis_eunit}}" hint-placeholder-val="{{ false }}"><span class="why">Only for a unit test</span></sc-if></div><div class="field" style="{{ds_etype}}"><span class="lbl">Question type</span><div style="margin-top:8px"><select aria-label="Question type"><option>All types</option><option>Standalone</option><option>Data sets</option><option>Numeric answers</option></select></div><sc-if value="{{dis_etype}}" hint-placeholder-val="{{ false }}"><span class="why">A full exam keeps the real mix</span></sc-if></div><div class="field" style="{{ds_ediff}}"><span class="lbl">Difficulty</span><div style="margin-top:8px"><div class="seg s4" role="radiogroup" aria-label="Difficulty"><button onClick="{{c_ediff_0}}" style="{{cs_ediff_0}}">Any</button><button onClick="{{c_ediff_1}}" style="{{cs_ediff_1}}">Easier</button><button onClick="{{c_ediff_2}}" style="{{cs_ediff_2}}">Medium</button><button onClick="{{c_ediff_3}}" style="{{cs_ediff_3}}">Harder</button></div></div><sc-if value="{{dis_ediff}}" hint-placeholder-val="{{ false }}"><span class="why">A full exam keeps the real mix</span></sc-if></div><div class="field" style="{{ds_eprac}}"><span class="lbl">Science practice</span><div style="margin-top:8px"><select aria-label="Science practice"><option>Every science practice</option><option>1 Concept explanation</option><option>2 Visual representations</option><option>3 Questions and methods</option><option>4 Representing and describing data</option><option>5 Statistical tests and data analysis</option><option>6 Argumentation</option></select></div><sc-if value="{{dis_eprac}}" hint-placeholder-val="{{ false }}"><span class="why">A full exam keeps the real mix</span></sc-if></div><div class="gsep"></div><p class="gh">How it runs</p><div class="field" style="{{ds_en}}"><span class="lbl">How many</span><div style="margin-top:8px"><div class="seg" role="radiogroup" aria-label="How many"><button onClick="{{c_en_0}}" style="{{cs_en_0}}">10</button><button onClick="{{c_en_1}}" style="{{cs_en_1}}">20</button><button onClick="{{c_en_2}}" style="{{cs_en_2}}">40</button></div></div><sc-if value="{{dis_en}}" hint-placeholder-val="{{ false }}"><span class="why">A full exam is always 60 + 6</span></sc-if></div><div class="field"><span class="lbl">Timing</span><div style="margin-top:8px"><div class="seg s4 long" role="radiogroup" aria-label="Timing"><button onClick="{{c_et_0}}" style="{{cs_et_0}}">Standard</button><button onClick="{{c_et_1}}" style="{{cs_et_1}}">Time and a half</button><button onClick="{{c_et_2}}" style="{{cs_et_2}}">Double</button><button onClick="{{c_et_3}}" style="{{cs_et_3}}">Untimed</button></div></div></div><details style="margin-top:4px"><summary>What's in the full exam</summary><p class="small muted" style="margin-top:8px">Section I: 60 multiple choice in 90 minutes, from each unit by its exam weight. Section II: 6 free response in 90 minutes, scored with the rubrics.</p></details></sc-if><sc-if value="{{is_frq}}" hint-placeholder-val="{{ false }}"><p class="gh">Which question</p><div class="field"><span class="lbl">Question type</span><div style="margin-top:8px"><select aria-label="Question type"><option>All six types</option><option>Experimental results</option><option>Scientific investigation</option><option>Conceptual analysis</option><option>Model or visual</option><option>Analyze data</option></select></div></div><div class="field"><span class="lbl">Unit</span><div style="margin-top:8px"><select aria-label="Unit"><option>Every unit</option><option>Unit 1: Chemistry of Life</option><option>Unit 2: Cell Structure and Function</option><option>Unit 3: Cellular Energetics</option><option>Unit 4: Cell Communication and Cell Cycle</option><option>Unit 5: Heredity</option><option>Unit 6: Gene Expression and Regulation</option><option>Unit 7: Natural Selection</option><option>Unit 8: Ecology</option></select></div></div><div class="field"><span class="lbl">Question</span><div style="margin-top:8px"><select aria-label="Question"><option>Next unanswered</option><option>Pick one from the list</option></select></div></div></sc-if><sc-if value="{{is_jus}}" hint-placeholder-val="{{ false }}"><p class="gh">Which prompt</p><div class="field"><span class="lbl">Skill</span><div style="margin-top:8px"><select aria-label="Skill"><option>Any skill</option><option>Explain a mechanism</option><option>Describe data</option><option>Justify a control</option></select></div></div><div class="field"><span class="lbl">Unit</span><div style="margin-top:8px"><select aria-label="Unit"><option>Every unit</option><option>Unit 1: Chemistry of Life</option><option>Unit 2: Cell Structure and Function</option><option>Unit 3: Cellular Energetics</option><option>Unit 4: Cell Communication and Cell Cycle</option><option>Unit 5: Heredity</option><option>Unit 6: Gene Expression and Regulation</option><option>Unit 7: Natural Selection</option><option>Unit 8: Ecology</option></select></div></div><div class="field"><span class="lbl">Topic</span><div style="margin-top:8px"><select aria-label="Topic"><option>Every topic</option><option>1.1 Structure of Water and Hydrogen Bonding</option><option>1.2 Elements of Life</option><option>1.4 Carbohydrates</option></select></div></div><div class="field"><span class="lbl">Prompt</span><div style="margin-top:8px"><select aria-label="Prompt"><option>Next prompt</option><option>Pick one from the list</option></select></div></div></sc-if><sc-if value="{{is_cram}}" hint-placeholder-val="{{ false }}"><p class="gh">Your exam</p><div class="field"><span class="lbl">Exam date</span><div style="margin-top:8px"><input type="date" value="2027-05-10" aria-label="Exam date"></div></div><div class="gsep"></div><p class="gh">The plan</p><div class="field"><span class="lbl">Plan length</span><div style="margin-top:8px"><div class="seg" role="radiogroup" aria-label="Plan length"><button onClick="{{c_cl_0}}" style="{{cs_cl_0}}">3 weeks</button><button onClick="{{c_cl_1}}" style="{{cs_cl_1}}">2 weeks</button></div></div></div><div class="field"><span class="lbl">Print</span><div style="margin-top:8px"><label class="ck"><input type="checkbox"> Print the plan when it is made</label></div></div></sc-if></div>
+<aside class="side"><div class="sum"><div class="sumcard"><p style="font:900 12px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)">Your session</p>
+<p style="font:900 19px/1.3 var(--ui);margin-top:8px">{{summary}}</p><p style="font-size:14px;color:rgba(255,255,255,.8);margin-top:6px">{{summary2}}</p>
+<a class="btn btn-gold" href="#" style="display:block;text-align:center;margin-top:16px">{{cta}}</a></div>
+<button onClick="{{reset}}" style="border:0;background:none;font:800 13.5px var(--ui);color:var(--muted);text-decoration:underline;cursor:pointer;margin-top:12px">Reset to defaults</button>
+<sc-if value="{{is_set}}" hint-placeholder-val="{{ true }}"><div style="margin-top:18px"><p class="lbl" style="margin-bottom:10px">Share or print</p><div style="display:flex;flex-direction:column;gap:8px"><button class="sbtn2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 14v6h14v-6"/></svg> Google Classroom</button><button class="sbtn2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg> Copy link</button><button class="sbtn2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h10v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg> Worksheet</button><label class="ck" style="margin-top:4px"><input type="checkbox"> Answer key on its own page</label></div></div></sc-if><sc-if value="{{is_exam}}" hint-placeholder-val="{{ false }}"><div style="margin-top:18px"><p class="lbl" style="margin-bottom:10px">Share or print</p><div style="display:flex;flex-direction:column;gap:8px"><button class="sbtn2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 14v6h14v-6"/></svg> Google Classroom</button><button class="sbtn2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg> Copy link</button><button class="sbtn2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h10v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg> Worksheet</button><label class="ck" style="margin-top:4px"><input type="checkbox"> Answer key on its own page</label></div></div></sc-if></div></aside>
+</div></div></main><footer class="foot"><div class="wrap">This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="#">Sources</a> page. Spot a mistake? <a href="#"><b>Report a problem</b></a><p style="margin-top:12px">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p><div style="margin-top:10px"><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">About</a> · <a href="#">Sources</a> · <a href="#">What's new</a> · <a href="#">Premium</a> · <a href="#">Teachers</a> · <a href="#">Account</a> · <a href="#">Contact</a></div></div></footer><nav class="btm" aria-label="Course"><a class="" href="HomeReturning.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></span>Home</a><a class="" href="Learn.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg></span>Learn</a><a class="on" href="Practice.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>Practice</a><a class="" href="Tools.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></svg></span>Tools</a><a class="" href="Progress.dc.html"><span class="ib"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 16v-5"/><path d="M12 16V8"/><path d="M16 16v-3"/></svg></span>Progress</a></nav><button class="fab" aria-label="Ask the tutor"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4"/><circle cx="9" cy="13.5" r="1.2"/><circle cx="15" cy="13.5" r="1.2"/></svg></button></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1280, "height": 1500}}'>
+class Component extends DCLogic {
+renderVals() {
+  const F = {"set": [["src", "Questions from", "seg", ["Any", "My weakest", "I missed \u00b7 8"], "q", 0], ["unit", "Unit", "sel", ["Every unit", "Unit 1: Chemistry of Life", "Unit 2: Cell Structure and Function", "Unit 3: Cellular Energetics", "Unit 4: Cell Communication and Cell Cycle", "Unit 5: Heredity", "Unit 6: Gene Expression and Regulation", "Unit 7: Natural Selection", "Unit 8: Ecology"], "q", 0], ["topic", "Topic", "sel", ["Every topic", "1.1 Structure of Water and Hydrogen Bonding", "1.2 Elements of Life", "1.4 Carbohydrates"], "q", 0], ["prac", "Science practice", "sel", ["Every science practice", "1 Concept explanation", "2 Visual representations", "3 Questions and methods", "4 Representing and describing data", "5 Statistical tests and data analysis", "6 Argumentation"], "q", 0], ["type", "Question type", "sel", ["All types", "Standalone", "Data sets", "Numeric answers"], "q", 0], ["diff", "Difficulty", "seg", ["Any", "Easier", "Medium", "Harder"], "q", 0], ["n", "How many", "seg", ["5", "10", "20", "40", "All"], "s", 1], ["tm", "Timer", "seg", ["Off", "Exam pace", "Time and a half", "Double time"], "s", 0], ["ex", "Explanations", "seg", ["After each answer", "At the end"], "s", 0]], "rev": [["rsrc", "Questions from", "seg", ["Due for review \u00b7 6"], "q", 0], ["runit", "Unit", "sel", ["Every unit", "Unit 1: Chemistry of Life", "Unit 2: Cell Structure and Function", "Unit 3: Cellular Energetics", "Unit 4: Cell Communication and Cell Cycle", "Unit 5: Heredity", "Unit 6: Gene Expression and Regulation", "Unit 7: Natural Selection", "Unit 8: Ecology"], "q", 0], ["rtopic", "Topic", "sel", ["Every topic", "1.1 Structure of Water and Hydrogen Bonding", "1.2 Elements of Life", "1.4 Carbohydrates"], "q", 0], ["rn", "How many", "seg", ["All 6 due", "10", "20"], "s", 0]], "fc": [["fsrc", "Cards from", "seg", ["Every card", "Missed", "Weakest", "Studied"], "q", 0], ["deck", "Deck", "sel", ["Every unit (1,629 cards)", "Unit 1: Chemistry of Life cards", "Unit 2: Cell Structure and Function cards", "Unit 3: Cellular Energetics cards", "Unit 4: Cell Communication and Cell Cycle cards", "Unit 5: Heredity cards", "Unit 6: Gene Expression and Regulation cards", "Unit 7: Natural Selection cards", "Unit 8: Ecology cards"], "q", 0], ["ftopic", "Topic", "sel", ["Every topic", "1.1 Structure of Water and Hydrogen Bonding", "1.2 Elements of Life", "1.4 Carbohydrates"], "q", 0], ["ft", "Card types", "multi", ["Term \u2192 definition", "Definition \u2192 term", "Summaries"], "q", 7], ["fn", "New cards today", "seg", ["None", "10", "20", "30", "50"], "s", 2]], "exam": [["ek", "Kind", "seg", ["Full exam", "Unit test", "Mixed set"], "q", 0], ["eunit", "Unit", "sel", ["Unit 1: Chemistry of Life", "Unit 2: Cell Structure and Function", "Unit 3: Cellular Energetics", "Unit 4: Cell Communication and Cell Cycle", "Unit 5: Heredity", "Unit 6: Gene Expression and Regulation", "Unit 7: Natural Selection", "Unit 8: Ecology"], "q", 0], ["etype", "Question type", "sel", ["All types", "Standalone", "Data sets", "Numeric answers"], "q", 0], ["ediff", "Difficulty", "seg", ["Any", "Easier", "Medium", "Harder"], "q", 0], ["eprac", "Science practice", "sel", ["Every science practice", "1 Concept explanation", "2 Visual representations", "3 Questions and methods", "4 Representing and describing data", "5 Statistical tests and data analysis", "6 Argumentation"], "q", 0], ["en", "How many", "seg", ["10", "20", "40"], "s", 1], ["et", "Timing", "seg", ["Standard", "Time and a half", "Double", "Untimed"], "s", 0]], "frq": [["qt", "Question type", "sel", ["All six types", "Experimental results", "Scientific investigation", "Conceptual analysis", "Model or visual", "Analyze data"], "q", 0], ["qunit", "Unit", "sel", ["Every unit", "Unit 1: Chemistry of Life", "Unit 2: Cell Structure and Function", "Unit 3: Cellular Energetics", "Unit 4: Cell Communication and Cell Cycle", "Unit 5: Heredity", "Unit 6: Gene Expression and Regulation", "Unit 7: Natural Selection", "Unit 8: Ecology"], "q", 0], ["qq", "Question", "sel", ["Next unanswered", "Pick one from the list"], "q", 0]], "jus": [["js", "Skill", "sel", ["Any skill", "Explain a mechanism", "Describe data", "Justify a control"], "q", 0], ["junit", "Unit", "sel", ["Every unit", "Unit 1: Chemistry of Life", "Unit 2: Cell Structure and Function", "Unit 3: Cellular Energetics", "Unit 4: Cell Communication and Cell Cycle", "Unit 5: Heredity", "Unit 6: Gene Expression and Regulation", "Unit 7: Natural Selection", "Unit 8: Ecology"], "q", 0], ["jtopic", "Topic", "sel", ["Every topic", "1.1 Structure of Water and Hydrogen Bonding", "1.2 Elements of Life", "1.4 Carbohydrates"], "q", 0], ["jp", "Prompt", "sel", ["Next prompt", "Pick one from the list"], "q", 0]], "cram": [["cdate", "Exam date", "date", [], "q", 0], ["cl", "Plan length", "seg", ["3 weeks", "2 weeks"], "s", 0], ["cp", "Print", "check", ["Print the plan when it is made"], "s", 0]]};
+  const DEF = {m:'set'}; Object.values(F).forEach(fs=>fs.forEach(f=>{ if(f[2]==='seg'||f[2]==='multi') DEF[f[0]]=f[5]; }));
+  const s = Object.assign({}, DEF, this.state);
+  const T_ON='border:2px solid #2D6A1F;background:#E4F1DD', T_OFF='border:1.5px solid #E3E9F2;background:#fff';
+  const C_ON='background:#E4F1DD;color:#2D6A1F;box-shadow:inset 0 0 0 1.5px #2D6A1F';
+  const v={};
+  const modes=Object.keys(F);
+  modes.forEach(k=>{ const on=s.m===k; v['is_'+k]=on; v['st_'+k]=on?T_ON:T_OFF;
+    v['rt_'+k]=on?'background:#E4F1DD;box-shadow:inset 3px 0 0 #2D6A1F':'background:transparent';
+    v['tb_'+k]=on?'color:#0B1A33;border-bottom-color:#2D6A1F':'';
+    v['pick_'+k]=()=>this.setState({m:k}); });
+  Object.values(F).forEach(fs=>fs.forEach(f=>{ const id=f[0];
+    if(f[2]==='seg') f[3].forEach((o,i)=>{ v['c_'+id+'_'+i]=()=>{const u={}; u[id]=i; if(id==='tm'&&i>0) u.ex=1; this.setState(u);}; v['cs_'+id+'_'+i]= s[id]===i?C_ON:''; });
+    if(f[2]==='multi') f[3].forEach((o,i)=>{ const bit=1<<i; v['c_'+id+'_'+i]=()=>{const u={}; let x=s[id]^bit; if(!x) x=bit; u[id]=x; this.setState(u);}; v['cs_'+id+'_'+i]= (s[id]&bit)?C_ON:''; });
+  }));
+  const full = s.ek===0;
+  ['eunit','en','etype','ediff','eprac'].forEach(id=>{ v['dis_'+id]=full; v['ds_'+id]= full?'opacity:.45':''; });
+  v.reset=()=>this.setState(Object.assign({}, DEF, {m:s.m}));
+  const lab=(id)=>{ for(const fs of Object.values(F)) for(const f of fs) if(f[0]===id) return f[3][s[id]]; return ''; };
+  const n=lab('n');
+  const ft=['Term → definition','Definition → term','Summaries'].filter((x,i)=>s.ft&(1<<i)).join(', ');
+  const T={
+    set:[(n==='All'?'All':n)+' questions'+['',' from your weakest topics',' you missed'][s.src], 'Every unit · '+['no timer','exam pace','time and a half','double time'][s.tm]+' · explanations '+['after each answer','at the end'][s.ex]],
+    rev:[['All 6 due questions','10 review questions','20 review questions'][s.rn], 'Each comes back right before you would forget it.'],
+    fc:[['No new cards','10 new cards','20 new cards','30 new cards','50 new cards'][s.fn]+', plus any due', ft],
+    exam:[['Full practice exam','Unit 1 test','Mixed timed set'][s.ek], (full?'60 multiple choice + 6 free response':lab('en')+' questions')+' · '+['standard time','time and a half','double time','untimed'][s.et]+'. Your 1 free exam.'],
+    frq:['Next unanswered question','Write each part, then score it with the rubric.'],
+    jus:['Next prompt','Write your answer, then compare it with a model answer.'],
+    cram:[['3','2'][s.cl]+' week plan to May 10, 2027','A day by day plan; Premium fits it to your weakest units.']};
+  const CTA={"set": "Start practice", "rev": "Start review", "fc": "Study cards", "exam": "Start the exam", "frq": "Start writing", "jus": "Start a prompt", "cram": "Make my plan"};
+  v.summary=T[s.m][0]; v.summary2=T[s.m][1]; v.cta=CTA[s.m];
+  return v;
+}
+}
+</script>
+</body>
+</html>

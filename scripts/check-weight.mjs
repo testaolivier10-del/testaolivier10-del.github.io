@@ -229,7 +229,9 @@ const SHELL_BUDGETS = [
   /* 45.3 -> 49.3 (Practice v3, 2026-11-06): practice-panel.js draws a 3-column grid per mode (tiles, the
      multi-unit drop-down, free-response and justify pickers by question, card types, cram plan, remembered
      settings) and practice-panel.css the tiles, grid and sticky bar; measured 49.0. */
-  ['assets/course', 49.3],
+  /* 49.3 -> 49.9 (Practice v4 B, 2026-11-06): practice-panel.js groups the settings and shows short lists as
+     buttons, practice-panel.css the three columns and segmented choices; measured 49.6. */
+  ['assets/course', 49.9],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —

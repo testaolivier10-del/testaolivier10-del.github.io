@@ -1,14 +1,14 @@
-/* Course redesign round 4, Practice v3 (docs/course-redesign-r4.md decision 5, owner approved 2026-11-06;
-   mockup docs/redesign-r4/mockups/PracticeV3.dc.txt): every course's practice.html is one card. Step 1 "What
-   do you want to do?" is a tile per mode the course has; step 2 "Set it up" shows every setting of the chosen
-   mode at once in one 3-column grid; a navy bar at the card's foot (sticky to the viewport's bottom while
-   the card is on screen) sums up the choice with one Start.
+/* Course redesign round 4, Practice v4 B (docs/course-redesign-r4.md decision 5, owner approved 2026-11-06;
+   mockup docs/redesign-r4/mockups/PracticeV4B.dc.txt): every course's practice.html is one card in three
+   columns. The modes the course has are a list on the left; every setting of the chosen mode is in one
+   column in the middle, in two groups; Your session on the right sums up the choice with one Start, Reset
+   and the share row, and stays in view while the settings scroll (on phones the three stack).
 
      <main id="main" class="r3 r3-inner r3-practice" data-cover="KEY">
        <section class="band short">   issue line, "Practice", the question count, the free limit box
        <div class="xshell lap pp-wrap">
          <div class="pp-v3" id="pp">
-           <section class="pp-card">  the tiles, the settings grid (#ppSet, drawn by practice-panel.js), the bar
+           <section class="pp-card">  .pp-rail (the modes), .pp-form (#ppSet, drawn by practice-panel.js), .pp-side
          <div class="pp-engine">      the practice engine's mount; shown only while a session runs
        <script type="application/json" id="ppConfig">
 
@@ -184,18 +184,24 @@ export function panelModes(key) {
   return out;
 }
 
-/* The card: tiles, the settings (drawn by practice-panel.js from the config) and the navy bar. */
+/* The card (Practice v4 B): the modes as a list on the left, the chosen mode's settings in one column in
+   the middle (drawn by practice-panel.js from the config, in two groups), and Your session on the right:
+   the choice in words, one Start, Reset and the share row. The right column stays in view on wide screens. */
 export function panelHtml(key) {
   const tiles = panelModes(key).map(([id, t, line, live]) => `<button type="button" class="pp-tile" data-mode="${id}" aria-pressed="false"><span class="pp-tile-i">${ico22(TILE_ICONS[id])}</span><span class="pp-tile-x"><b>${t}</b><span class="pp-tile-l"${live ? ` data-live="${live}"` : ''}>${line}</span></span></button>`).join('');
-  return `<div class="pp-v3" id="pp">
+  return `<div class="pp-v3 pp-v4" id="pp">
 <section class="pp-card" aria-label="Set up a practice session">
-<div class="pp-step"><h2 class="pp-k" id="ppK1">1 &middot; What do you want to do?</h2>
+<div class="pp-rail"><h2 class="sr-only" id="ppK1">What do you want to do?</h2>
 <div class="pp-tiles" role="group" aria-labelledby="ppK1">${tiles}</div></div>
-<div class="pp-step pp-step2"><div class="pp-step-h"><h2 class="pp-k" id="ppK2">2 &middot; Set it up</h2><button type="button" class="pp-reset" id="ppReset">Reset to defaults</button></div>
+<div class="pp-form"><h2 class="sr-only" id="ppK2">Set it up</h2>
 <div class="pp-set" id="ppSet" role="group" aria-labelledby="ppK2"><p class="pp-loading">Loading the settings&hellip;</p></div>
 ${noscriptHtml(key)}
 </div>
-<div class="pp-bar"><div class="pp-bar-t"><p class="pp-sum-t" id="ppSumT" aria-live="polite"></p><p class="pp-sum-b" id="ppSumB"></p></div><a class="pp-go" id="ppGo" href="practice.html">Start practice</a></div>
+<aside class="pp-side" aria-label="Your session"><div class="pp-sum">
+<div class="pp-sumcard"><p class="pp-sum-k">Your session</p><p class="pp-sum-t" id="ppSumT" aria-live="polite"></p><p class="pp-sum-b" id="ppSumB"></p><a class="pp-go" id="ppGo" href="practice.html">Start practice</a></div>
+<button type="button" class="pp-reset" id="ppReset">Reset to defaults</button>
+<div id="ppShare"></div>
+</div></aside>
 </section>
 </div>`;
 }
