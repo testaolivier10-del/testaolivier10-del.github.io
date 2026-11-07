@@ -778,6 +778,10 @@
         '<small id="accountMenuState" aria-live="polite">' + escapeHtml(syncStatusText()) + '</small>' +
       '</div>' +
       '<a role="menuitem" href="/account.html" id="accountPageLink">Account &amp; Premium</a>' +
+      // Answer sounds and dark mode live here while signed in (owner 2026-11-07); the header's own toggles stay
+      // the source of truth, so these just press them.
+      (document.getElementById('soundToggle') ? '<button type="button" role="menuitemcheckbox" id="accountSoundBtn"></button>' : '') +
+      (document.getElementById('themeToggle') ? '<button type="button" role="menuitemcheckbox" id="accountThemeBtn">Dark mode</button>' : '') +
       '<button type="button" role="menuitem" id="accountSyncBtn">Sync now</button>' +
       '<button type="button" role="menuitem" id="accountSignOutBtn">Sign out</button>' +
       '<button type="button" role="menuitem" class="account-menu__danger" id="accountDeleteBtn">Delete account</button>';
@@ -796,6 +800,14 @@
     document.addEventListener('click', onDocClickForMenu, true);
     document.addEventListener('keydown', onMenuKeydown, true);
 
+    var sBtn = document.getElementById('accountSoundBtn'), tBtn = document.getElementById('accountThemeBtn');
+    function paintToggles(){
+      if(sBtn && window.LevlSound){ var on = window.LevlSound.isEnabled(); sBtn.textContent = 'Answer sounds: ' + (on ? 'on' : 'off'); sBtn.setAttribute('aria-checked', on ? 'true' : 'false'); }
+      if(tBtn){ tBtn.setAttribute('aria-checked', document.documentElement.getAttribute('data-theme') === 'dark' ? 'true' : 'false'); tBtn.textContent = 'Dark mode: ' + (tBtn.getAttribute('aria-checked') === 'true' ? 'on' : 'off'); }
+    }
+    paintToggles();
+    if(sBtn) sBtn.addEventListener('click', function(){ var b = document.getElementById('soundToggle'); if(b) b.click(); paintToggles(); });
+    if(tBtn) tBtn.addEventListener('click', function(){ var b = document.getElementById('themeToggle'); if(b) b.click(); paintToggles(); });
     var state = document.getElementById('accountMenuState');
     function busy(text){ state.setAttribute('data-busy', '1'); state.textContent = text; }
     function idle(text){ state.removeAttribute('data-busy'); state.textContent = text || syncStatusText(); }

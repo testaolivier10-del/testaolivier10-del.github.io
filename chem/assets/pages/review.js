@@ -128,7 +128,7 @@
     }).catch(function(){ if(btn){ btn.disabled = false; btn.textContent = 'Try again'; } });
   }
   function begin(list){
-    session = { list: list, i: 0, answered: 0, right: 0, missed: [], done: false };
+    session = { list: list, i: 0, answered: 0, right: 0, missed: [], seen: [], done: false };
     view('session');
     app.innerHTML = '<div class="cx-session chem-rv-session"><div class="cx-sbar"><span class="cx-sbar-t">Spaced review</span><span class="cx-sbar-n chem-pr-count-l" aria-live="polite"></span>' +
       '<button type="button" class="cx-end chem-rv-quit">End review</button></div><div class="cx-progress chem-pr-track" aria-hidden="true"><i style="width:0%"></i></div>' +
@@ -159,7 +159,7 @@
       after.querySelector('.chem-pr-next').addEventListener('click', function(){ if(session.answered) finish(); else { session.done = true; renderHome(); } });
     } else {
       Q.hydrate(stage, [it.q], { onAnswer: function(res){
-        session.answered++; if(res.correct) session.right++; else session.missed.push(it.q);
+        session.answered++; if(res.correct) session.right++; else session.missed.push(it.q); session.seen.push({ q: it.q, correct: res.correct });
         var t = TOPIC[it.q.topic];
         after.insertAdjacentHTML('afterbegin', '<p class="cx-from chem-pr-from">' + (res.correct ? 'Scheduled further out. ' : 'Back in ten minutes. ') + (t && t.built ? 'From <a href="' + BASE + 'lessons/' + it.q.topic + '.html">' + esc(t.title) + '</a>.' : '') + '</p>');
         showNext(after);
@@ -186,6 +186,9 @@
     var due = dueItems(), up = upcoming(), left = due.filter(function(x){ return x.kind === 'q'; }).length, leftTools = due.length - left;
     var mt = {}; session.missed.forEach(function(q){ mt[q.topic] = (mt[q.topic] || 0) + 1; });
     var tops = Object.keys(mt).filter(function(t){ return TOPIC[t] && TOPIC[t].built; }).sort(function(a, b){ return mt[b] - mt[a]; });
+    /* End screen v2b (owner 2026-11-07): every topic reviewed, in one table. */
+    var tc = {}, tt = [];
+    session.seen.forEach(function(x){ var t = x.q.topic; if(!t) return; if(!tc[t]){ tc[t] = { c: 0, n: 0 }; tt.push(t); } tc[t].n++; if(x.correct) tc[t].c++; });
     view('done');
     /* The shared end panel (LevlStudy.end, consistency audit 2026-11, B7). */
     var missN = session.answered - session.right;
@@ -193,12 +196,11 @@
       right: session.right, total: session.answered, course: 'apchem',
       line: left ? plural(left, 'question') + ' still due' : leftTools ? 'Questions cleared' : 'Queue cleared',
       sub: (leftTools ? plural(leftTools, 'tool item') + ' still ' + (leftTools === 1 ? 'waits' : 'wait') + ' in the tools. ' : '') +
-        (missN ? plural(missN, 'miss', 'misses') + ' come back in ten minutes. ' : '') +
-        (up.next && !due.length ? 'Next item due ' + esc(when(up.next)) + '.' : ''),
-      next: tops.length ? '<ul class="chem-pr-next-list">' + tops.slice(0, 3).map(function(t){
-        return '<li><div><b>' + esc(TOPIC[t].title) + '</b><span class="chem-small">' + plural(mt[t], 'miss', 'misses') + ' in this review</span></div><a class="btn-outline" href="' + BASE + 'lessons/' + t + '.html">Lesson</a><a class="btn-outline" href="' + BASE + 'notes/' + t + '.html">Notes</a></li>';
-      }).join('') + '</ul>' : '',
-      retry: missN ? { href: BASE + 'practice.html?mode=missed', label: missN === 1 ? 'Retry the miss' : 'Retry the ' + missN + ' misses' } : null,
+        (up.next && !due.length ? 'Next due ' + esc(when(up.next)) + '.' : ''),
+      nextTitle: 'Topics',
+      next: LevlStudy.topics(tt.map(function(t){ return { name: TOPIC[t] ? TOPIC[t].title : t, href: TOPIC[t] && TOPIC[t].built ? '' + BASE + 'lessons/' + t + '.html' : null, c: tc[t].c, n: tc[t].n, mastery: Core.topicMastery ? Core.topicMastery(t).value || 0 : null,
+        links: TOPIC[t] && TOPIC[t].built ? [{ label: 'Lesson', href: '' + BASE + 'lessons/' + t + '.html' }, { label: 'Notes', href: '' + BASE + 'notes/' + t + '.html' }] : [] }; })),
+      retry: missN ? { href: BASE + 'practice.html?mode=missed', label: missN === 1 ? 'Retry 1 miss' : 'Retry ' + missN + ' misses' } : null,
       step: left ? { act: 'more', label: 'Keep going: ' + plural(left, 'question') + ' due', why: 'Still due today, while this session is fresh.' }
         : { href: BASE + 'practice.html', label: 'Practice something new', why: 'Nothing else is due right now.' },
       also: [{ act: 'home', label: 'Back to the queue' }]

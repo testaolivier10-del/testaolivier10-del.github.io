@@ -457,17 +457,12 @@
 
     var weakTopics = topicOrder.filter(function(t){ return byTopic[t].c < byTopic[t].n; })
       .sort(function(a, b){ return (byTopic[a].c / byTopic[a].n) - (byTopic[b].c / byTopic[b].n); });
-    var nextHtml;
-    if(weakTopics.length){
-      nextHtml = '<ul class="anp-pr-next-list">' + weakTopics.slice(0, 4).map(function(t){
-        var b = byTopic[t];
-        return '<li><div><b>' + esc(TOPIC[t].title) + '</b><span class="anp-small">' + (b.n - b.c) + ' of ' + b.n + ' missed</span></div>' +
-          '<a class="btn-outline" href="' + lessonHref(t) + '">Lesson</a><a class="btn-outline" href="' + notesHref(t) + '">Notes</a></li>';
-      }).join('') + '</ul>';
-    } else {
-      var nxt = suggestNextTopic();
-      nextHtml = '<p>Everything right. ' + (nxt ? 'Keep going with <a href="' + lessonHref(nxt.id) + '">' + esc(nxt.title) + '</a>, the next topic you have not started.' : 'Try a timed <a href="' + BASE + 'exams.html">system exam</a> to test it under pressure.') + '</p>';
-    }
+    /* End screen v2b (owner 2026-11-07): one topic table, misses first; with no misses, the next topic in one line. */
+    var nxt = weakTopics.length ? null : suggestNextTopic();
+    var nextHtml = LevlStudy.topics(topicOrder.map(function(t){ var b = byTopic[t];
+      return { name: TOPIC[t].title, href: lessonHref(t), c: b.c, n: b.n, mastery: Core ? Core.topicMastery(t).value || 0 : null,
+        links: [{ label: 'Lesson', href: lessonHref(t) }, { label: 'Notes', href: notesHref(t) }] }; })) +
+      (nxt ? '<p class="cx-small">Next topic: <a href="' + lessonHref(nxt.id) + '">' + esc(nxt.title) + '</a></p>' : '');
     var cores = Object.keys(coreMiss).sort(function(a, b){ return coreMiss[b] - coreMiss[a]; }).slice(0, 2).filter(function(c){ return CORE[c]; });
     var coreHtml = cores.length ? '<p class="cx-small">The misses cluster on ' + cores.map(function(c){ return '<a href="' + BASE + 'concepts/' + c + '.html">' + esc(CORE[c].name) + '</a>'; }).join(' and ') + '. The concept page shows the same idea in every system.</p>' : '';
 
@@ -477,15 +472,12 @@
     /* The shared end panel (LevlStudy.end, consistency audit 2026-11, B7): score, what to study next, Retry
        misses, one next step (assets/next-step.js), then the table. */
     app.innerHTML = '<div class="anp-pr-summary">' + LevlStudy.end({
-      right: right, total: res.length, course: 'anp', line: pctRight + '% right on the first try', sub: esc(session.label),
-      next: nextHtml + coreHtml,
-      retry: stillWrong.length ? { act: 'retry', label: 'Retry the ' + plural(stillWrong.length, 'miss', 'misses') } : null,
+      right: right, total: res.length, course: 'anp', line: pctRight + '% right',
+      nextTitle: 'Topics', next: nextHtml + coreHtml,
+      retry: stillWrong.length ? { act: 'retry', label: 'Retry ' + plural(stillWrong.length, 'miss', 'misses') } : null,
       stepHtml: window.LevlNextStep ? LevlNextStep('anp', { topics: topicOrder, also: [
         { label: 'Another set like this', act: function(){ if(GO && mode !== 'retry'){ GO.again(); return; } if(mode === 'retry' || !poolFor(mode).length) renderSetup(); else start(mode, count); } }] }) : '',
-      more: '<h2>By topic</h2><div class="table-wrap" tabindex="0" role="region" aria-label="Results by topic"><table class="anp-pr-table"><thead><tr><th scope="col">Topic</th><th scope="col">Right</th><th scope="col">Mastery now</th></tr></thead><tbody>' +
-        topicOrder.map(function(t){ var b = byTopic[t], m = Core ? Core.topicMastery(t) : { value: 0 };
-          return '<tr><th scope="row"><a href="' + lessonHref(t) + '">' + esc(TOPIC[t].title) + '</a></th><td>' + b.c + '/' + b.n + '</td><td>' + (Core ? Core.pct(m.value) : '') + '</td></tr>'; }).join('') +
-        '</tbody></table></div>' +
+      more: 
         (GO && GO.defer ? '<h2>Every question, with its explanation</h2><div class="pp-kept"></div>' : '')
     }) + '</div>';
     if(GO && GO.defer){ var kept = app.querySelector('.pp-kept'); if(kept) kept.appendChild(GO.kept); GO.kept = document.createDocumentFragment(); }

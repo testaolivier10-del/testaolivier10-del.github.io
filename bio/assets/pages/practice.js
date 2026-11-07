@@ -477,26 +477,17 @@
        "By topic" both showed; Retry counts questions, not sets; the score line names the real question count. */
     var missedQs = 0;
     stillWrong.forEach(function(s){ s.items.forEach(function(q){ if(q.id in session.firstTry && !session.firstTry[q.id]) missedQs++; }); });
-    var topics = byTopic.slice().sort(function(a, b){ return (b.n - b.c) - (a.n - a.c) || a.c / a.n - b.c / b.n; });
-    var sub = esc(String(session.label).replace(/^\d+ questions?\s*\u00b7\s*/, ''));
     app.innerHTML = '<div class="bio-pr-summary">' + LevlStudy.end({
       right: right, total: res.length, line: pctRight + '% right', course: 'apbio',
       nextTitle: 'Topics',
-      next: '<div class="cx-topics" role="table" aria-label="Results by topic"><div class="cx-topics-h" role="row"><span role="columnheader">Topic</span><span role="columnheader">Right</span><span role="columnheader">Mastery</span><span></span></div>' + topics.map(function(x){
-          var m = Core.topicMastery(x.key), t = TOPIC[x.key], missed = x.n - x.c, mp = Math.round((m.value || 0) * 100);
-          return '<div class="cx-topic' + (missed ? ' is-miss' : '') + '" role="row"><a class="cx-topic-name" role="cell" href="' + lessonHref(x.key) + '">' + esc(t ? t.title : x.key) + '</a>' +
-            '<span class="cx-topic-r" role="cell">' + x.c + '/' + x.n + '</span>' +
-            '<span class="cx-topic-m" role="cell"><span class="cx-mbar" aria-hidden="true"><i style="width:' + mp + '%"></i></span>' + mp + '%</span>' +
-            '<span class="cx-topic-go" role="cell"><a class="btn-outline sm" href="' + lessonHref(x.key) + '">Lesson</a><a class="btn-outline sm" href="' + notesHref(x.key) + '">Notes</a></span></div>';
-        }).join('') + '</div>',
+      next: LevlStudy.topics(byTopic.map(function(x){ var t = TOPIC[x.key]; return { name: t ? t.title : x.key, href: lessonHref(x.key), c: x.c, n: x.n, mastery: Core.topicMastery(x.key).value || 0,
+        links: [{ label: 'Lesson', href: lessonHref(x.key) }, { label: 'Notes', href: notesHref(x.key) }] }; })),
       retry: stillWrong.length ? { act: 'retry', label: 'Retry ' + plural(missedQs || stillWrong.length, 'miss', 'misses') } : null,
       step: due ? { href: BASE + 'review.html', label: 'Review ' + plural(due, 'due question'), why: 'Due questions come first: a review late is a relearn.' }
         : { act: 'again', label: again.label, why: 'Nothing is due, so the next set keeps the same filters.' },
-      also: due ? [again, change] : [change],
+      also: due ? [again, change] : weak.length ? [change] : [change, { href: BASE + 'exams.html', label: 'Try a unit test' }],
       more:
-      '<h2 class="cx-endp-h">Science practices</h2><ul class="cx-prac">' +
-        byPractice.map(function(x){ var p = PRACTICE[x.key]; return '<li><span>' + esc(x.key + (p ? '. ' + p.name : '')) + '</span><span class="cx-mbar" aria-hidden="true"><i style="width:' + Math.round(x.c / x.n * 100) + '%"></i></span><b>' + x.c + '/' + x.n + '</b></li>'; }).join('') +
-      '</ul>' +
+      LevlStudy.bars('Science practices', byPractice.map(function(x){ var p = PRACTICE[x.key]; return { label: x.key + (p ? '. ' + p.name : ''), c: x.c, n: x.n }; })) +
       (GO && GO.defer ? '<h2>Every question, with its explanation</h2><div class="pp-kept"></div>' : '')
     }) + '</div>';
     if(GO && GO.defer){ var kept = app.querySelector('.pp-kept'); if(kept) kept.appendChild(GO.kept); GO.kept = document.createDocumentFragment(); }

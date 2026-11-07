@@ -2056,3 +2056,9 @@ mtext{white-space:pre;}
 :where(table:not([class])){border-collapse:collapse;margin:14px 0;}
 :where(table:not([class])) :where(th,td){text-align:left;vertical-align:top;border-bottom:1px solid var(--line, rgba(0,0,0,.1));}
 :where(table:not([class])) :where(thead th){font-weight:700;}
+/* Signed in, answer sounds and dark mode sit in the username menu (owner 2026-11-07), so the
+   separate settings dots go on desktop. Signed out (no username menu) the dots stay. */
+@media (min-width:641px){
+  .chrome-menu:has(#accountBtn[aria-haspopup]) #settingsBtn,
+  .chrome-menu:has(#accountBtn[aria-haspopup]) #settingsMenu{display:none !important;}
+}

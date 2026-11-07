@@ -483,23 +483,21 @@
        misses, one next step (the review queue when something is due), then the tables. */
     var mode = session.mode, due = Core.reviewCount();
     var again = { act: 'again', label: 'Another set like this' }, change = { act: 'setup', label: 'Change the set' };
+    /* End screen v2 (mockup 2026-11-07): one topic list (misses first) carries what "What to study next" and
+       "By topic" both showed; Retry counts questions, not sets; the score line names the real question count. */
+    var missedQs = 0;
+    stillWrong.forEach(function(s){ s.items.forEach(function(q){ if(q.id in session.firstTry && !session.firstTry[q.id]) missedQs++; }); });
     app.innerHTML = '<div class="pcalc-pr-summary">' + LevlStudy.end({
-      right: right, total: res.length, line: pctRight + '% right on the first try', sub: esc(session.label), course: 'apprecalc',
-      next: (weak.length ? '<ul class="pcalc-pr-next-list">' + weak.slice(0, 4).map(function(x){
-          return '<li><div><b>' + esc(TOPIC[x.key] ? TOPIC[x.key].title : x.key) + '</b><span class="pcalc-small">' + (x.n - x.c) + ' of ' + x.n + ' missed</span></div>' +
-            '<a class="btn-outline" href="' + lessonHref(x.key) + '">Lesson</a><a class="btn-outline" href="' + notesHref(x.key) + '">Notes</a></li>';
-        }).join('') + '</ul>' : '<p>Everything right. Try a timed <a href="' + BASE + 'exams.html">unit test</a> to test it under time.</p>'),
-      retry: stillWrong.length ? { act: 'retry', label: 'Retry the ' + plural(stillWrong.length, 'miss', 'misses') } : null,
+      right: right, total: res.length, line: pctRight + '% right', course: 'apprecalc',
+      nextTitle: 'Topics',
+      next: LevlStudy.topics(byTopic.map(function(x){ var t = TOPIC[x.key]; return { name: t ? t.title : x.key, href: lessonHref(x.key), c: x.c, n: x.n, mastery: Core.topicMastery(x.key).value || 0,
+        links: [{ label: 'Lesson', href: lessonHref(x.key) }, { label: 'Notes', href: notesHref(x.key) }] }; })),
+      retry: stillWrong.length ? { act: 'retry', label: 'Retry ' + plural(missedQs || stillWrong.length, 'miss', 'misses') } : null,
       step: due ? { href: BASE + 'review.html', label: 'Review ' + plural(due, 'due question'), why: 'Due questions come first: a review late is a relearn.' }
         : { act: 'again', label: again.label, why: 'Nothing is due, so the next set keeps the same filters.' },
-      also: due ? [again, change] : [change],
+      also: due ? [again, change] : weak.length ? [change] : [change, { href: BASE + 'exams.html', label: 'Try a unit test' }],
       more:
-      '<h2>By topic</h2><div class="table-wrap" tabindex="0" role="region" aria-label="Results by topic"><table class="pcalc-pr-table"><thead><tr><th scope="col">Topic</th><th scope="col">Right</th><th scope="col">Mastery now</th></tr></thead><tbody>' +
-        byTopic.map(function(x){ var m = Core.topicMastery(x.key); return '<tr><th scope="row"><a href="' + lessonHref(x.key) + '">' + esc(TOPIC[x.key] ? TOPIC[x.key].title : x.key) + '</a></th><td>' + x.c + '/' + x.n + '</td><td>' + Core.pct(m.value) + '</td></tr>'; }).join('') +
-      '</tbody></table></div>' +
-      '<h2>By mathematical practice</h2><div class="table-wrap" tabindex="0" role="region" aria-label="Results by mathematical practice"><table class="pcalc-pr-table"><thead><tr><th scope="col">Practice</th><th scope="col">Right</th></tr></thead><tbody>' +
-        byPractice.map(function(x){ var p = PRACTICE[x.key]; return '<tr><th scope="row">' + esc(x.key + (p ? '. ' + p.name : '')) + '</th><td>' + x.c + '/' + x.n + '</td></tr>'; }).join('') +
-      '</tbody></table></div>' +
+      LevlStudy.bars('Mathematical practices', byPractice.map(function(x){ var p = PRACTICE[x.key]; return { label: x.key + (p ? '. ' + p.name : ''), c: x.c, n: x.n }; })) +
       (GO && GO.defer ? '<h2>Every question, with its explanation</h2><div class="pp-kept"></div>' : '')
     }) + '</div>';
     if(GO && GO.defer){ var kept = app.querySelector('.pp-kept'); if(kept) kept.appendChild(GO.kept); GO.kept = document.createDocumentFragment(); }

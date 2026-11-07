@@ -96,7 +96,10 @@
     // v2b (owner 2026-11-07): no explainer lines; the buttons say what they do.
     var acts = (o.step ? ctl('btn-press', o.step) : '') + (o.retry ? ctl('btn-outline', o.retry) : '') +
       also.map(function(a){ return ctl('link-quiet', a); }).join('');
-    var step = o.stepHtml || (acts ? '<div class="cx-endp-acts">' + acts + '</div>' : '');
+    // A ready next step (LevlNextStep) keeps its own buttons; Retry sits under it.
+    var rt = o.retry ? ctl('btn-outline cx-endp-retry2', o.retry) : '';
+    var step = o.stepHtml ? (rt && o.stepHtml.indexOf('<p class="levl-next__why">') > -1 ? o.stepHtml.replace('<p class="levl-next__why">', rt + '<p class="levl-next__why">') : o.stepHtml + (rt ? '<div class="cx-endp-acts">' + rt + '</div>' : ''))
+      : (acts ? '<div class="cx-endp-acts">' + acts + '</div>' : '');
     return '<section class="cx-endp cx-endp2" aria-label="Session results">' +
       '<div class="cx-endp-card">' +
         '<div class="cx-endp-score" tabindex="-1"><span class="cx-score-big">' + right + '<small>/' + total + '</small></span>' +
@@ -107,6 +110,28 @@
       (o.next ? '<h2 class="cx-endp-h">' + (o.nextTitle || 'What to study next') + '</h2>' + o.next : '') +
       (o.more || '') + premiumAtLimit(o.course) +
     '</section>';
+  }
+  /* End screen v2b helpers (owner 2026-11-07), one look in every course.
+     topics(rows): one table, misses first. Row: { name, href, c, n, mastery (0..1 or null), links: [{ label, href }] }.
+     bars(title, rows): a compact breakdown. Row: { label, c, n }. */
+  function topics(rows){
+    rows = rows.slice().sort(function(a, b){ return (b.n - b.c) - (a.n - a.c) || a.c / a.n - b.c / b.n; });
+    var hasM = rows.some(function(r){ return r.mastery != null; });
+    return '<div class="cx-topics' + (hasM ? '' : ' no-m') + '" role="table" aria-label="Results by topic"><div class="cx-topics-h" role="row"><span role="columnheader">Topic</span><span role="columnheader">Right</span>' +
+      (hasM ? '<span role="columnheader">Mastery</span>' : '') + '<span></span></div>' + rows.map(function(r){
+        var mp = r.mastery == null ? null : Math.round(r.mastery * 100);
+        return '<div class="cx-topic' + (r.c < r.n ? ' is-miss' : '') + '" role="row">' +
+          (r.href ? '<a class="cx-topic-name" role="cell" href="' + esc(r.href) + '">' + esc(r.name) + '</a>' : '<span class="cx-topic-name" role="cell">' + esc(r.name) + '</span>') +
+          '<span class="cx-topic-r" role="cell">' + r.c + '/' + r.n + '</span>' +
+          (hasM ? '<span class="cx-topic-m" role="cell">' + (mp == null ? '' : '<span class="cx-mbar" aria-hidden="true"><i style="width:' + mp + '%"></i></span>' + mp + '%') + '</span>' : '') +
+          '<span class="cx-topic-go" role="cell">' + (r.links || []).map(function(l){ return '<a class="btn-outline sm" href="' + esc(l.href) + '">' + esc(l.label) + '</a>'; }).join('') + '</span></div>';
+      }).join('') + '</div>';
+  }
+  function bars(title, rows){
+    if(!rows || !rows.length) return '';
+    return '<h2 class="cx-endp-h">' + esc(title) + '</h2><ul class="cx-prac">' + rows.map(function(r){
+      return '<li><span>' + esc(r.label) + '</span><span class="cx-mbar" aria-hidden="true"><i style="width:' + Math.round(r.n ? r.c / r.n * 100 : 0) + '%"></i></span><b>' + r.c + '/' + r.n + '</b></li>';
+    }).join('') + '</ul>';
   }
   /* Wires an end panel's data-act buttons to handlers, then puts the focus on the score. */
   function wire(root, handlers){
@@ -149,7 +174,7 @@
   });
 
   window.LevlStudy = { rail: rail, stat: stat, empty: empty, actions: actions, free: free, allowance: allowance, streak: streak, esc: esc, plural: plural,
-    end: end, wire: wire, keys: keys, atLimit: atLimit, premiumAtLimit: premiumAtLimit };
+    end: end, wire: wire, topics: topics, bars: bars, keys: keys, atLimit: atLimit, premiumAtLimit: premiumAtLimit };
 
   /* Site redesign round 3 (docs/site-redesign.md, boards R10-Practice-*,
      R10-Review, R10-Flashcards*): every study page opens with the short cover

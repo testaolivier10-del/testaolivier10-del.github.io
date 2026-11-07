@@ -165,7 +165,7 @@
   }
 
   function begin(list){
-    session = { list: list, i: 0, answered: 0, right: 0, missed: [], done: false };
+    session = { list: list, i: 0, answered: 0, right: 0, missed: [], seen: [], done: false };
     view('session');
     app.innerHTML = '<div class="cx-session anp-rv-session">' +
       '<div class="cx-sbar"><span class="cx-sbar-t">Spaced review</span><span class="cx-sbar-n anp-pr-count-l" aria-live="polite"></span>' +
@@ -204,7 +204,7 @@
       after.querySelector('.anp-pr-next').addEventListener('click', function(){ if(session.answered) finish(); else { session.done = true; renderHome(); } });
     } else {
       Q.render(it.q, stage, { n: session.i + 1, onAnswer: function(res){
-        session.answered++; if(res.correct) session.right++; else session.missed.push(it.q);
+        session.answered++; if(res.correct) session.right++; else session.missed.push(it.q); session.seen.push({ q: it.q, correct: res.correct });
         var t = TOPIC[it.q.topic];
         after.insertAdjacentHTML('afterbegin', '<p class="cx-from anp-pr-from">' + (res.correct ? 'Scheduled further out. ' : 'Back in ten minutes. ') +
           (t && t.built ? 'From <a href="' + BASE + 'lessons/' + it.q.topic + '.html">' + esc(t.title) + '</a>.' : '') + '</p>');
@@ -232,6 +232,9 @@
     if(!session.answered){ renderHome(); return; }
     var due = dueItems(), up = upcoming();
     var left = due.filter(function(x){ return x.kind === 'q'; }).length, leftTools = due.length - left;
+    /* End screen v2b (owner 2026-11-07): every topic reviewed, in one table. */
+    var tc = {}, tt = [];
+    session.seen.forEach(function(x){ var t = x.q.topic; if(!t) return; if(!tc[t]){ tc[t] = { c: 0, n: 0 }; tt.push(t); } tc[t].n++; if(x.correct) tc[t].c++; });
     view('done');
     var missTopics = {};
     session.missed.forEach(function(q){ missTopics[q.topic] = (missTopics[q.topic] || 0) + 1; });
@@ -242,13 +245,12 @@
       right: session.right, total: session.answered, course: 'anp',
       line: left ? plural(left, 'question') + ' still due' : leftTools ? 'Questions cleared' : 'Queue cleared',
       sub: (leftTools ? plural(leftTools, 'tool item') + ' still ' + (leftTools === 1 ? 'waits' : 'wait') + ' in ' + (leftTools === 1 ? 'its tool' : 'the tools') + '. ' : '') +
-        (missN ? plural(missN, 'miss', 'misses') + ' come back in ten minutes. ' : '') +
-        (up.next && !due.length ? 'Next item due ' + esc(when(up.next)) + '.' : ''),
-      next: mt.length ? '<ul class="anp-pr-next-list">' + mt.slice(0, 3).map(function(t){
-        return '<li><div><b>' + esc(TOPIC[t].title) + '</b><span class="anp-small">' + plural(missTopics[t], 'miss', 'misses') + ' in this review</span></div>' +
-          '<a class="btn-outline" href="' + BASE + 'lessons/' + t + '.html">Lesson</a><a class="btn-outline" href="' + BASE + 'notes/' + t + '.html">Notes</a></li>';
-      }).join('') + '</ul>' : '',
-      retry: missN ? { href: BASE + 'practice.html?mode=missed', label: missN === 1 ? 'Retry the miss' : 'Retry the ' + missN + ' misses' } : null,
+        (up.next && !due.length ? 'Next due ' + esc(when(up.next)) + '.' : ''),
+      nextTitle: 'Topics',
+      next: LevlStudy.topics(tt.map(function(t){ var ok = TOPIC[t] && TOPIC[t].built; return { name: TOPIC[t] ? TOPIC[t].title : t, href: ok ? BASE + 'lessons/' + t + '.html' : null, c: tc[t].c, n: tc[t].n,
+        mastery: ok && Core.topicMastery ? Core.topicMastery(t).value || 0 : null,
+        links: ok ? [{ label: 'Lesson', href: BASE + 'lessons/' + t + '.html' }, { label: 'Notes', href: BASE + 'notes/' + t + '.html' }] : [] }; })),
+      retry: missN ? { href: BASE + 'practice.html?mode=missed', label: missN === 1 ? 'Retry 1 miss' : 'Retry ' + missN + ' misses' } : null,
       // One next step (assets/next-step.js): what is still due here comes first.
       stepHtml: window.LevlNextStep ? LevlNextStep('anp', { due: { n: left, noun: 'question', act: function(){ start(SESSION_CAP); } },
         also: [{ label: 'Back to the queue', act: renderHome }] }) : ''
