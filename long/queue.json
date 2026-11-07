@@ -283,9 +283,9 @@
    "thumb": "long/yt-phys-01-thumb.png",
    "captions": "long/yt-phys-01-captions.srt",
    "playlist": "AP Physics 1 | LevlPrep",
-   "date": "",
-   "status": "pending",
-   "approved_on": "",
+   "date": "2026-11-12",
+   "status": "approved",
+   "approved_on": "2026-11-07",
    "youtube_id": "",
    "thumbnail_set": false,
    "playlist_added": false,
@@ -296,7 +296,8 @@
    "thumb_c": "long/yt-phys-01-thumb-c.png",
    "ab_test": false,
    "endscreen_set": false,
-   "review_blob": "3bff97851123e7b1b6d29adab1e97a35ab8c9549"
+   "review_blob": "3bff97851123e7b1b6d29adab1e97a35ab8c9549",
+   "approved_blob": "3bff97851123e7b1b6d29adab1e97a35ab8c9549"
   }
  ]
 }
