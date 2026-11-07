@@ -1006,7 +1006,8 @@
    "posted_tt": true,
    "poll_skipped": "posted via Buffer shareNow without the poll sticker at Olivier request 2026-11-05",
    "posted_yt": true,
-   "pin_comment_id": "UgxFpTFBN8-nLaqECsN4AaABAg"
+   "pin_comment_id": "UgxFpTFBN8-nLaqECsN4AaABAg",
+   "pin_tt": "comment_only"
   },
   {
    "id": "w1104-01-zombie-ant",
@@ -1032,7 +1033,7 @@
    "pin_question": "Which part is creepier: the noon bite or the stalk out of its head?",
    "pin_comment_id": "Ugy6pdyfSSYG0BiSHlx4AaABAg",
    "pin_yt": false,
-   "pin_tt": false,
+   "pin_tt": "comment_only",
    "review_blob": "34c22ac7e569b2ce099f704b70ca7fedd372f8f1",
    "approved_blob": "34c22ac7e569b2ce099f704b70ca7fedd372f8f1"
   },
