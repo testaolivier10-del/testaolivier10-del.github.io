@@ -60,7 +60,8 @@
   "2026-11-04 daily run (2:41pm PT): no failed runs. One time move done: cane toads (TikTok and YouTube) moved from 6pm to 3pm today, post_time_3pm true. Cane toads live at 3pm as AvX1mWH5YWc: Studio thumbnail, YouTube question pinned (Studio Comments page), TikTok question comment. Guard faint marked posted. No approved Shorts to schedule (w1031 three still pending). yt-apbio-02 approved for 11-05, so tomorrow's run publishes it. Playlists in textbook order. No new viewer comments. YouTube API calls ran on the laptop (YT_CRED env) because copying the oauth file into the workspace was refused.",
   "2026-11-04 midweek build: w1104 zombie ant (AP Bio), stunt airbag (AP Physics 1, poll prediction, manual), sodium lake (AP Chem, CTA) queued pending. ElevenLabs ended at about 9,600 characters, under the 10,000 reserve (music_v1 takes cost more than the balance showed when checked; reset Nov 6). No course series episode this run.",
   "2026-11-05 daily run (2:41pm PT): no failed runs. yt-apbio-02 live as YHDQJ0k3IFU (Zapier): thumbnail, AP Bio playlist, captions, link comment pinned, 3 way thumbnail test running, end screen (best for viewer, AP Bio playlist, subscribe, moved to the lower half clear of levlprep.com); apbio-01 end screen video now points to it; site PR #148. Scheduled at 3pm: zombie ant 11-06 (TikTok and YouTube), stunt airbag poll Short holds 11-07 (manual), sodium lake 11-08. Speed camera poll Short (today) handed off to the phone: 32 MB is over the 10 MB Chrome upload cap. Cane toads posted. No new comments. Note: Thumbnail A/B dialog's first file input is slot 1, so upload the current pick to slot 1 too.",
-  "2026-11-06 long video build: yt-phys-01-units-sig-figs (new AP Physics 1 coverage map, 39 videos) scripted and audited (why, fact, human read, recheck), about 11,200 chars, about 12:45. ElevenLabs had 9,065 credits (reset 6:07pm PT today), so stopped before voicing per spec step 1. Next run resumes at step 6 from pipeline/long/p01/ (also in the project). Music note: the stored routine prompt still mentions music; the spec's 2026-11-05 rule (no music in long videos, Olivier's words) wins."
+  "2026-11-06 long video build: yt-phys-01-units-sig-figs (new AP Physics 1 coverage map, 39 videos) scripted and audited (why, fact, human read, recheck), about 11,200 chars, about 12:45. ElevenLabs had 9,065 credits (reset 6:07pm PT today), so stopped before voicing per spec step 1. Next run resumes at step 6 from pipeline/long/p01/ (also in the project). Music note: the stored routine prompt still mentions music; the spec's 2026-11-05 rule (no music in long videos, Olivier's words) wins.",
+  "2026-11-06 daily run (fired late, 7:24pm PT): no failed runs, no approved Shorts to schedule (w1031 three pending). Speed camera marked posted; youtube ids: speed camera evwburP9DQI, zombie ant R-V4ZZJ8Eno. Question comments posted on YouTube and TikTok for both (TikTok comment_only). Studio showed 'Oops, something went wrong' (also with authuser=1) and refused screenshots, so their Studio thumbnails and YouTube pins wait; youtube.com comment menu offers only Report (viewer account). 5 comment replies drafted. Speed camera TikTok is doing well (about 2.2K likes, 29 comments)."
  ],
  "pending_reruns": [],
  "related_check_after": null,
@@ -82,7 +83,17 @@
   "yt:UgziVkL6BsR9eTqHm-Z4AaABAg",
   "tt:mr.retard:guard-faint:hours at work",
   "tt:jayjay._.wilson:guard-faint:lifewithpots",
-  "yt:Ugwm6KrIOCU_rInfzAh4AaABAg"
+  "yt:Ugwm6KrIOCU_rInfzAh4AaABAg",
+  "yt:Ugx_DCykNPFvp38AXyp4AaABAg",
+  "yt:UgxWbCQG3W8b9HSUFAh4AaABAg",
+  "tt:patrick:speed-camera:people v johnson",
+  "tt:percival2765:speed-camera:speed traps irl",
+  "tt:amelia:speed-camera:theorum",
+  "tt:whisper:speed-camera:mvt my love",
+  "tt:deklan4394:speed-camera:shortcut dirt roads",
+  "tt:akhil:speed-camera:oh",
+  "tt:anthony tones pabon:speed-camera:is this legal",
+  "tt:roy alphard:zombie-ant:middle school"
  ],
  "comment_drafts": [
   {
@@ -173,6 +184,50 @@
    "comment": "Huh?  Good point . . .",
    "reply": "Right? The planes that never made it home were the ones with the real story.",
    "status": "drafted 2026-11-03"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1101-03-speed-camera",
+   "author": "Patrick",
+   "comment": "There's no real precedent on it, but generally this application of MVT is thrown out in court, and has been found to be an illegal speed trap in a california court of appeals (People v. Johnson)",
+   "reply": "Fair point, thanks for the detail. The \"fair\" in the video is about the math: she must have hit 75 at some moment. Whether a court accepts an average speed as proof depends on where you live.",
+   "status": "drafted 2026-11-06",
+   "note": "5 viewer replies already argue the law; we did not verify the case he cites, so the draft makes no legal claim."
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1101-03-speed-camera",
+   "author": "deklan4394",
+   "comment": "Yah so ur telling me if they add that here and it sees me pass one way and I take a shortcut on some dirt roads I can get a ticket for it bc I want to save some time and miles on my car",
+   "reply": "Real concern. The math assumes you drove the timed stretch, so a shortcut makes your average look faster than it really was. That's why these setups work best on roads with no side exits.",
+   "status": "drafted 2026-11-06"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1101-03-speed-camera",
+   "author": "Anthony Tones Pabon",
+   "comment": "Is this legal?",
+   "reply": "Depends where you live. Some places use average speed cameras and some don't, so the rules change from place to place.",
+   "status": "drafted 2026-11-06",
+   "note": "It already has 1 reply that this run could not open; read it before posting."
+  },
+  {
+   "platform": "youtube",
+   "video": "w1101-03-speed-camera",
+   "comment_id": "Ugx_DCykNPFvp38AXyp4AaABAg",
+   "author": "@CyberSecure",
+   "comment": "Average speed cameras is what they are called ... speed up and then slow down massively your average speed will be below the limit ... also hide your plate number and your good",
+   "reply": "Yep, average speed cameras is the name. And right, only the time between the two cameras counts, so it's your average that gets judged, not your speed at each camera.",
+   "status": "drafted 2026-11-06",
+   "note": "Skips the plate hiding part on purpose."
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1104-01-zombie-ant",
+   "author": "roy alphard",
+   "comment": "I learned this in middle school how is this AP",
+   "reply": "Middle school gets the cool part! AP Bio uses it for parasitism and how species interact in the ecology unit, plus how a parasite can change its host's behavior.",
+   "status": "drafted 2026-11-06"
   }
  ],
  "series_counts": {
