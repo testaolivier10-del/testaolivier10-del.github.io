@@ -29,7 +29,10 @@ body, no em dashes, no example data shipped (real progress or nothing).
      plus a "Show every unit" toggle (progressive disclosure, Nielsen Norman Group). Stops keep the live path's look
      (read, skill, practice, unit test; done green with a green trail; current gold).
    - Below both columns: the existing Video lessons and Tools sections (tool cards without descriptions).
-   - Non-Premium visitors only (Premium users never see these): the 4 exam fact chips, the course's Premium card
+   - Hidden only from a visitor with an active pass for this course (owner 2026-11-06: not for the pass they
+     already bought; still shown on every other course's Home and again once the pass ends). The rule is
+     `LevlPremium.launched(k) && LevlPremium.has(k)` for this course's key (`[data-np]` in `scripts/lib/r3-home.mjs`;
+     `has()` checks the pass's expiry). Shown to everyone else: the 4 exam fact chips, the course's Premium card
      copied from the live Premium page (`courseSection` in `scripts/build-pricing.mjs`, shown open: cover + title,
      the Free/Premium table, the buy area with founding price, per-day price, Unlock + Start free, refund line,
      competitor comparison, Fine print and terms) and the FAQ cut to 4 questions (Is this course free? What's on the
