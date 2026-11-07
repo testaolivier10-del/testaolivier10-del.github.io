@@ -274,8 +274,9 @@ async function answerOne(page) {
 }
 results.push(await anpFlow('/anatomy-physiology/practice.html (flow)', async (page, bank, problems) => {
   await page.goto(ORIGIN + '/anatomy-physiology/practice.html?topic=blood-composition', { waitUntil: 'load', timeout: 30000 });
-  await page.waitForSelector('.anp-pr-start:not([disabled])', { timeout: 15000 });
-  await page.click('.anp-pr-start');
+  // The Practice panel's Start, once the panel has read the topic from the address (after the index loads).
+  await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+  await page.click('#ppGo');
   await page.waitForSelector('.anp-pr-stage .anp-q', { timeout: 15000 });
   if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
   await answerOne(page);
@@ -325,8 +326,9 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
     const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
     results.push(await anpFlow('/bio/practice.html (flow)', async (page, bank, problems) => {
       await page.goto(ORIGIN + '/bio/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
-      await page.waitForSelector('.bio-pr-start:not([disabled])', { timeout: 15000 });
-      await page.click('.bio-pr-start');
+      // The Practice panel's Start, once the panel has read the topic from the address (after the index loads).
+      await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+      await page.click('#ppGo');
       await page.waitForSelector('.bio-pr-stage .bio-q', { timeout: 15000 });
       if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
       // Whatever kind comes first: an option, a number, a prediction table
@@ -354,8 +356,9 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
     const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
     results.push(await anpFlow('/chem/practice.html (flow)', async (page, bank, problems) => {
       await page.goto(ORIGIN + '/chem/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
-      await page.waitForSelector('.chem-pr-start:not([disabled])', { timeout: 15000 });
-      await page.click('.chem-pr-start');
+      // The Practice panel's Start, once the panel has read the topic from the address (after the index loads).
+      await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+      await page.click('#ppGo');
       await page.waitForSelector('.chem-pr-stage .chem-q', { timeout: 15000 });
       if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
       // Whatever kind comes first: an option, a number, a prediction table
@@ -383,8 +386,9 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
     const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
     results.push(await anpFlow('/physics/practice.html (flow)', async (page, bank, problems) => {
       await page.goto(ORIGIN + '/physics/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
-      await page.waitForSelector('.phys-pr-start:not([disabled])', { timeout: 15000 });
-      await page.click('.phys-pr-start');
+      // The Practice panel's Start, once the panel has read the topic from the address (after the index loads).
+      await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+      await page.click('#ppGo');
       await page.waitForSelector('.phys-pr-stage .phys-q', { timeout: 15000 });
       if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
       // Whatever kind comes first: an option, a number, a prediction table
@@ -409,8 +413,9 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
     const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
     results.push(await anpFlow('/calculus-bc/practice.html (flow)', async (page, bank, problems) => {
       await page.goto(ORIGIN + '/calculus-bc/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
-      await page.waitForSelector('.calc-pr-start:not([disabled])', { timeout: 15000 });
-      await page.click('.calc-pr-start');
+      // The Practice panel's Start, once the panel has read the topic from the address (after the index loads).
+      await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+      await page.click('#ppGo');
       await page.waitForSelector('.calc-pr-stage .calc-q', { timeout: 15000 });
       if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
       const q = page.locator('.calc-pr-stage .calc-q').first();
@@ -436,8 +441,9 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
     const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
     results.push(await anpFlow('/calculus/practice.html (flow)', async (page, bank, problems) => {
       await page.goto(ORIGIN + '/calculus/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
-      await page.waitForSelector('.calc-pr-start:not([disabled])', { timeout: 15000 });
-      await page.click('.calc-pr-start');
+      // The Practice panel's Start, once the panel has read the topic from the address (after the index loads).
+      await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+      await page.click('#ppGo');
       await page.waitForSelector('.calc-pr-stage .calc-q', { timeout: 15000 });
       if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
       // Whatever kind comes first: an option, a number, a prediction table
@@ -465,8 +471,9 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
     const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
     results.push(await anpFlow('/precalculus/practice.html (flow)', async (page, bank, problems) => {
       await page.goto(ORIGIN + '/precalculus/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
-      await page.waitForSelector('.pcalc-pr-start:not([disabled])', { timeout: 15000 });
-      await page.click('.pcalc-pr-start');
+      // The Practice panel's Start, once the panel has read the topic from the address (after the index loads).
+      await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+      await page.click('#ppGo');
       await page.waitForSelector('.pcalc-pr-stage .pcalc-q', { timeout: 15000 });
       if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
       // Whatever kind comes first: an option, a number, a prediction table
@@ -494,8 +501,9 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
     const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
     results.push(await anpFlow('/statistics/practice.html (flow)', async (page, bank, problems) => {
       await page.goto(ORIGIN + '/statistics/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
-      await page.waitForSelector('.stat-pr-start:not([disabled])', { timeout: 15000 });
-      await page.click('.stat-pr-start');
+      // The Practice panel's Start, once the panel has read the topic from the address (after the index loads).
+      await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+      await page.click('#ppGo');
       await page.waitForSelector('.stat-pr-stage .stat-q', { timeout: 15000 });
       if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
       // Whatever kind comes first: an option, a number, a prediction table
@@ -523,8 +531,9 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
     const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
     results.push(await anpFlow('/environmental-science/practice.html (flow)', async (page, bank, problems) => {
       await page.goto(ORIGIN + '/environmental-science/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
-      await page.waitForSelector('.env-pr-start:not([disabled])', { timeout: 15000 });
-      await page.click('.env-pr-start');
+      // The Practice panel's Start, once the panel has read the topic from the address (after the index loads).
+      await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+      await page.click('#ppGo');
       await page.waitForSelector('.env-pr-stage .env-q', { timeout: 15000 });
       if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
       // Whatever kind comes first: an option, a number, a prediction table
@@ -554,8 +563,9 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
     const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
     results.push(await anpFlow('/psychology/practice.html (flow)', async (page, bank, problems) => {
       await page.goto(ORIGIN + '/psychology/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
-      await page.waitForSelector('.psy-pr-start:not([disabled])', { timeout: 15000 });
-      await page.click('.psy-pr-start');
+      // The Practice panel's Start, once the panel has read the topic from the address (after the index loads).
+      await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+      await page.click('#ppGo');
       await page.waitForSelector('.psy-pr-stage .psy-q', { timeout: 15000 });
       if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
       // Whatever kind comes first: an option, a number, a prediction table
@@ -585,8 +595,9 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
     const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
     results.push(await anpFlow('/macroeconomics/practice.html (flow)', async (page, bank, problems) => {
       await page.goto(ORIGIN + '/macroeconomics/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
-      await page.waitForSelector('.mac-pr-start:not([disabled])', { timeout: 15000 });
-      await page.click('.mac-pr-start');
+      // The Practice panel's Start, once the panel has read the topic from the address (after the index loads).
+      await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+      await page.click('#ppGo');
       await page.waitForSelector('.mac-pr-stage .mac-q', { timeout: 15000 });
       if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
       // Whatever kind comes first: an option, a number, a prediction table
