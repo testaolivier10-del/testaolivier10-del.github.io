@@ -664,51 +664,43 @@
     });
     return order.map(function(key){ return { key: key, n: out[key].n, c: out[key].c }; });
   }
-  function barTable(title, list, name, link){
-    if(!list.length) return '';
-    return '<section class="anp-ex-break"><h3>' + title + '</h3><ul class="anp-ex-bars">' + list.map(function(x){
-      var p = pctOf(x.c, x.n), nm = esc(name(x.key)), href = link && link(x.key);
-      return '<li><span class="anp-ex-bar-name">' + (href ? '<a href="' + href + '">' + nm + '</a>' : nm) + '</span>' +
-        '<span class="track thin" aria-hidden="true"><i class="' + (p >= 80 ? 'is-hi' : p >= 60 ? 'is-mid' : 'is-lo') + '" style="width:' + p + '%"></i></span>' +
-        '<span class="anp-ex-bar-v">' + x.c + '/' + x.n + '</span></li>';
-    }).join('') + '</ul></section>';
-  }
-
   function renderResults(rows, right, timeUp){
     var total = rows.length, k = run.meta.kind;
     var used = Date.now() - run.startedAt;
-    var p = pctOf(right, total);
     var byTopic = tally(rows, function(q){ return q.topic; }).sort(function(a, b){ return a.c / a.n - b.c / b.n; });
     var bySystem = k === 'teas' ? tally(rows, function(q){ return q.teas; }) : tally(rows, function(q){ return q.chapter; });
     var byCore = tally(rows, function(q){ return q.core || []; }).sort(function(a, b){ return a.c / a.n - b.c / b.n; });
     var byLevel = tally(rows, function(q){ return q.level; });
-    var weak = byTopic.filter(function(x){ return x.c < x.n; }).slice(0, 3);
-    var missedN = total - right;
+    var missedN = total - right, skipped = rows.filter(function(x){ return x.r.skipped; }).length, wrongN = missedN - skipped;
+    function lessonHref(t){ return BASE + 'lessons/' + t + '.html'; }
+    /* Score card v3 (docs/score-card.md): the band carries the score and the clock, the card the misses and the next
+       step, then topics, the breakdowns and every question. The clock counts only unpaused time on a timed exam. */
+    var spent = run.limit ? run.limit - Math.max(0, run.left) : used;
+    var kind = k === 'unit' ? 'Unit quiz' : k === 'system' ? 'System exam' : k === 'final' ? 'Final exam' : k === 'teas' ? 'TEAS style set' : k === 'custom' ? 'Custom exam' : 'Practice exam';
     view('results');
-    app.innerHTML = '<div class="anp-ex-results">' +
-      '<div class="anp-pr-score"><span class="anp-pr-score-big">' + right + '<small>/' + total + '</small></span>' +
-        '<span><b>' + p + '%' + (k === 'teas' ? ' on this TEAS-style set' : '') + '</b><span class="anp-small">' + esc(run.label) +
-        ' · ' + (timeUp ? 'time ran out' : 'finished in ' + mmss(used)) + '</span></span></div>' +
-      (k === 'teas' ? '<p class="anp-ex-note">This is an estimate: the area mix is a guess at the real weighting, because ATI does not publish it' + (teasPlan().scaled ? ', and only the built areas are included' : '') + '. A score here is practice, not a prediction of your TEAS score.</p><p class="anp-disclaimer">' + esc(TEAS_DISCLAIMER) + '</p>' : '') +
-      (missedN ? '<p>' + plural(missedN, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>.</p>' : '<p>Every question right.</p>') +
-      (weak.length ? '<h2>Study next</h2><ul class="anp-pr-next-list">' + weak.map(function(x){
-        return '<li><div><b>' + esc(TOPIC[x.key].title) + '</b><span class="anp-small">' + x.c + ' of ' + x.n + ' right</span></div>' +
-          '<a class="btn-outline" href="' + BASE + 'lessons/' + x.key + '.html">Lesson</a><a class="btn-outline" href="' + BASE + 'notes/' + x.key + '.html">Notes</a></li>';
-      }).join('') + '</ul>' : '') +
-      '<h2>Your score, broken down</h2><div class="anp-ex-breaks">' +
-        barTable(k === 'teas' ? 'By TEAS area' : 'By system', bySystem, function(key){ return k === 'teas' ? (AREA[key] ? AREA[key].name : key) : (CHAPTER[key] ? CHAPTER[key].title : key); }, function(key){ return k === 'teas' ? '' : BASE + 'chapters/' + key + '.html'; }) +
-        barTable('By topic', byTopic, function(key){ return TOPIC[key] ? TOPIC[key].title : key; }, function(key){ return BASE + 'lessons/' + key + '.html'; }) +
-        barTable('By core concept', byCore, function(key){ return CORE[key] ? CORE[key].name : key; }, function(key){ return BASE + 'concepts/' + key + '.html'; }) +
-        barTable('By level', byLevel, function(key){ return LEVEL_NAME[key] || key; }) +
-      '</div>' +
-      (window.LevlNextStep ? LevlNextStep('anp', { topics: byTopic.map(function(x){ return x.key; }), also: [missedN
-        ? { label: 'Practice your misses', href: BASE + 'practice.html?mode=missed' } : { label: 'Another exam', act: renderSetup }] }) : '') +
-      '<h2 id="anp-ex-review-h">Review every question</h2>' +
-      '<div class="anp-ex-filter" role="group" aria-label="Show"><button type="button" class="anp-pr-chip-b" aria-pressed="true" data-f="all">All ' + total + '</button><button type="button" class="anp-pr-chip-b" aria-pressed="false" data-f="miss"' + (missedN ? '' : ' disabled') + '>Missed ' + missedN + '</button></div>' +
-      '<ol class="anp-ex-review">' + rows.map(function(x, i){ return reviewItem(x.q, x.r, i + 1); }).join('') + '</ol>' +
-      '<div class="anp-pr-actions"><button type="button" class="btn-outline" data-act="again">Another exam</button></div>' +
-    '</div>';
-    app.querySelectorAll('[data-act="again"]').forEach(function(b){ b.addEventListener('click', renderSetup); });
+    app.innerHTML = '<div class="anp-ex-results">' + LevlStudy.end({
+      kind: kind, right: right, total: total, skipped: skipped,
+      sub: run.label && run.label !== kind ? esc(run.label) : '', chips: [timeUp ? 'Time ran out' : ''],
+      timed: { used: mmss(spent), limit: run.limit ? mmss(run.limit) : '', pace: total ? mmss(spent / total) : '' },
+      missed: rows.filter(function(x){ return !x.r.correct; }).map(function(x){ return LevlStudy.miss(x.q, x.r.pick, x.q.topic ? lessonHref(x.q.topic) : ''); }),
+      missedTitle: skipped && wrongN ? 'You missed ' + wrongN + ' and left ' + skipped + ' unanswered' : skipped ? 'You left ' + skipped + ' unanswered' : '',
+      stepHtml: window.LevlNextStep ? LevlNextStep('anp', { topics: byTopic.map(function(x){ return x.key; }), also: [missedN
+        ? { label: 'Practice your misses', href: BASE + 'practice.html?mode=missed' } : { label: 'Another exam', act: renderSetup }] }) : '',
+      step: missedN ? { href: BASE + 'practice.html?mode=missed', label: 'Practice your misses' } : { act: 'again', label: 'Another exam' },
+      nextTitle: 'Topics',
+      next: LevlStudy.topics(byTopic.map(function(x){ var t = TOPIC[x.key], m = Core.topicMastery ? Core.topicMastery(x.key) : null;
+        return { name: t ? t.title : x.key, href: lessonHref(x.key), c: x.c, n: x.n, mastery: m ? m.value || 0 : null, links: [{ label: 'Lesson', href: lessonHref(x.key) }, { label: 'Notes', href: BASE + 'notes/' + x.key + '.html' }] }; })),
+      more: (k === 'teas' ? '<p class="anp-ex-note">This is an estimate: the area mix is a guess at the real weighting, because ATI does not publish it' + (teasPlan().scaled ? ', and only the built areas are included' : '') + '. A score here is practice, not a prediction of your TEAS score.</p><p class="anp-disclaimer">' + esc(TEAS_DISCLAIMER) + '</p>' : '') +
+        (missedN ? '<p>' + plural(missedN, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>.</p>' : '<p>Every question right.</p>') +
+        LevlStudy.bars(k === 'teas' ? 'By TEAS area' : 'By system', bySystem.map(function(x){ return { label: k === 'teas' ? (AREA[x.key] ? AREA[x.key].name : x.key) : (CHAPTER[x.key] ? CHAPTER[x.key].title : x.key), c: x.c, n: x.n }; })) +
+        LevlStudy.bars('By core concept', byCore.map(function(x){ return { label: CORE[x.key] ? CORE[x.key].name : x.key, c: x.c, n: x.n }; })) +
+        LevlStudy.bars('By level', byLevel.map(function(x){ return { label: LEVEL_NAME[x.key] || x.key, c: x.c, n: x.n }; })),
+      kept: '<h2 class="cx-endp-h" id="anp-ex-review-h">Review every question</h2>' +
+        '<div class="anp-ex-filter" role="group" aria-label="Show"><button type="button" class="anp-pr-chip-b" aria-pressed="true" data-f="all">All ' + total + '</button><button type="button" class="anp-pr-chip-b" aria-pressed="false" data-f="miss"' + (missedN ? '' : ' disabled') + '>Missed ' + missedN + '</button></div>' +
+        '<ol class="anp-ex-review">' + rows.map(function(x, i){ return reviewItem(x.q, x.r, i + 1); }).join('') + '</ol>' +
+        '<div class="anp-pr-actions"><button type="button" class="btn-outline" data-act="again">Another exam</button></div>'
+    }) + '</div>';
+    LevlStudy.wire(app, { again: renderSetup });
     app.querySelectorAll('[data-f]').forEach(function(b){
       b.addEventListener('click', function(){
         var miss = b.getAttribute('data-f') === 'miss';
@@ -716,8 +708,7 @@
         app.querySelectorAll('.anp-ex-ritem').forEach(function(li){ li.hidden = miss && li.classList.contains('is-ok'); });
       });
     });
-    if(window.LevlLazy) window.LevlLazy('share', function(S){ S.result(app.querySelector('.anp-pr-score'), { course: 'anp', right: right, total: total, label: k === 'teas' ? 'a TEAS-style A&P practice set' : 'an anatomy & physiology practice exam (' + run.label + ')' }); });
-    var h = app.querySelector('.anp-pr-score'); h.setAttribute('tabindex', '-1'); h.focus();
+    if(window.LevlLazy) window.LevlLazy('share', function(S){ S.result(app.querySelector('.cx-endp-card'), { course: 'anp', right: right, total: total, label: k === 'teas' ? 'a TEAS-style A&P practice set' : 'an anatomy & physiology practice exam (' + run.label + ')' }); });
   }
 
   /* One question in the review: the stem, every option with "your answer"

@@ -23,5 +23,17 @@ missedTitle, badges:[text], step, retry, also, stepHtml, extras, next, nextTitle
 `levl_card_v1` last percent and best per course and kind; `levl_mast_seen_v1` mastery last shown per topic;
 `levl_card_path_v1` path percent last shown.
 
+## Exam results (2026-11-07)
+Every exam results screen draws the card: the nine AP courses' `<course>/assets/pages/exams.js` (calculus-bc runs
+calculus's), `anatomy-physiology/assets/apps/exams.js` and `ochem/assets/exams-page.js`. Kind is the exam kind (Unit
+test, Mixed timed set, Practice exam; A&P Unit quiz, System exam, Final exam, Custom exam, TEAS style set; ochem
+Chapter test, Midterm, Cumulative final), the exam's own label is a chip, `timed` is the whole exam's clock (unpaused
+time; pace from the multiple choice section), free response points and "time ran out" are chips. Below the card: the
+review queue line, the readiness band explanation (or the course's "no score is estimated" note), the A&P TEAS note,
+ochem XP, the breakdowns, then the full answer list with its All/Missed (and ochem Flagged) filter, the Premium card
+and "Another exam". A&P and ochem keep their LevlNextStep next step and the share button (after the card). A Section
+II timed section (no multiple choice) scores its rubric points on the card.
+
 ## Not built
-The estimated AP score needs its own scoring model per course; `estimate` is supported but nothing sets it yet.
+The estimated AP score needs its own scoring model per course. `estimate` shows only the existing readiness band
+(bio, chem, physics, calculus full practice exams, "rough, not calibrated"); no new model was made.

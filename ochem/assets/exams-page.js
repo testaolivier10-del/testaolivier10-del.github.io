@@ -536,25 +536,14 @@
     // A restored exam, or explanations still in flight: redraw the review once
     // they are here.
     if(!window.OchemPracticeWhyLoaded && window.OchemPracticeWhyLoad){
-      window.OchemPracticeWhyLoad().then(function(why){ if(why && !run && document.querySelector('.ex-review')) renderResults(r, items, s, timeUp, whileAway, used); });
+      window.OchemPracticeWhyLoad().then(function(why){ var ol = !run && document.querySelector('.ex-review'); if(why && ol) ol.innerHTML = items.map(function(it, i){ return reviewItem(it, r.orders[i], i + 1); }).join(''); });
     }
-  }
-
-  function bars(title, list, name, href){
-    if(!list.length) return '';
-    return '<section class="ex-break"><h3>' + title + '</h3><ul class="ex-bars">' + list.map(function(x){
-      var p = pctOf(x.c, x.n), nm = esc(name(x.key)), h = href && href(x.key);
-      return '<li><span class="ex-bar-name">' + (h ? '<a href="' + h + '">' + nm + '</a>' : nm) + '</span>' +
-        '<span class="track thin" aria-hidden="true"><i class="' + (p >= 80 ? 'is-hi' : p >= 60 ? 'is-mid' : 'is-lo') + '" style="width:' + p + '%"></i></span>' +
-        '<span class="ex-bar-v">' + x.c + '/' + x.n + '<span class="sr-only"> right</span></span></li>';
-    }).join('') + '</ul></section>';
   }
 
   function renderResults(r, items, s, timeUp, whileAway, used){
     view('results');
     var missed = s.answered - s.right, blank = s.total - s.answered;
     var multiChapter = s.byChapter.length > 1;
-    var weak = s.weak.slice(0, 5);
     var flaggedN = items.filter(function(it){ return it.flagged; }).length;
     var xp = window.OchemXP && s.answered ? window.OchemXP.summaryHtml() : '';
     var chOrder = {};
@@ -563,35 +552,41 @@
     var byTopic = s.byTopic.slice().sort(function(a, b){ return (a.c / a.n - b.c / b.n) || (b.n - a.n); });
     var byDiff = ['easy', 'medium', 'hard'].map(function(d){ return s.byDiff.filter(function(x){ return x.key === d; })[0]; }).filter(Boolean);
 
-    app.innerHTML = '<h1 class="sr-only">Exam results</h1><div class="ex-results">' +
-      '<div class="overall-card ex-score" tabindex="-1"><div><div class="k">' + esc(r.label) + '</div><div class="big">' + s.pct + '%</div></div>' +
-        '<div class="ex-score-d">' + s.right + ' of ' + s.total + ' right' + (blank ? ', ' + blank + ' left blank' : '') + '. ' +
-          (timeUp ? (whileAway ? 'Time ran out while you were away, so it was graded as it stood.' : 'Time ran out.') : 'Finished in ' + clock(used) + '.') + '</div></div>' +
-      xp +
-      (missed ? '<p>' + plural(missed, 'missed question') + ' went to your <a href="review.html">review queue</a>.</p>' : (s.answered ? '<p>Every answered question right.</p>' : '')) +
-      (weak.length ? '<h2 class="section-head">Study next</h2><ul class="ex-next">' + weak.map(function(x){
-        var t = TOPIC[x.key];
-        return '<li><div><b>' + esc(t.title) + '</b><span class="ex-small">' + x.c + ' of ' + x.n + ' right &middot; ' + esc(chLabel(CHAPTER[t.chapter])) + '</span></div>' +
-          '<span class="ex-next-links"><a class="btn-outline" href="learn.html#' + esc(t.id) + '">Read the section</a>' +
-          (t.lesson ? '<a class="btn-outline" href="' + esc(t.href) + '">Lesson</a>' : '') + '</span></li>';
-      }).join('') + '</ul>' : '') +
-      '<h2 class="section-head">Your score, broken down</h2><div class="ex-breaks">' +
-        (multiChapter ? bars('By chapter', byChapter, function(k){ return chLabel(CHAPTER[k]); }, function(k){ return 'learn.html#' + CHAPTER[k].topics[0].id; }) : '') +
-        bars('By topic', byTopic, function(k){ return TOPIC[k].title; }, function(k){ return 'learn.html#' + k; }) +
-        bars('By difficulty', byDiff, function(k){ return DIFF_NAME[k]; }) +
-      '</div>' +
-      (window.LevlNextStep ? LevlNextStep('ochem', { topics: s.byTopic.map(function(x){ return x.key; }), also: [{ label: 'Take another exam', act: renderSetup }] }) : '') +
-      '<h2 class="section-head" id="exReviewH">Review every question</h2>' +
-      '<div class="ex-filter" role="group" aria-label="Show">' +
-        '<button type="button" class="ex-chip-b" aria-pressed="true" data-f="all">All ' + s.total + '</button>' +
-        '<button type="button" class="ex-chip-b" aria-pressed="false" data-f="miss"' + (s.total - s.right ? '' : ' disabled') + '>Missed ' + (s.total - s.right) + '</button>' +
-        '<button type="button" class="ex-chip-b" aria-pressed="false" data-f="flag"' + (flaggedN ? '' : ' disabled') + '>Flagged ' + flaggedN + '</button>' +
-      '</div>' +
-      '<ol class="ex-review">' + items.map(function(it, i){ return reviewItem(it, r.orders[i], i + 1); }).join('') + '</ol>' +
-      '<div class="ex-actions"><button type="button" class="btn-outline" data-act="again">Take another exam</button></div>' +
-    '</div>';
+    function topicHref(k){ var t = TOPIC[k]; return t && t.lesson ? t.href : 'learn.html#' + k; }
+    /* Score card v3 (docs/score-card.md): the band carries the score and the clock, the card the misses and the next
+       step, then topics, the breakdowns and every question. Stems and options are plain text here, so they are
+       escaped before the card reads them as markup. */
+    var missedQs = items.filter(function(it){ return it.choice !== it.answer; }).map(function(it){
+      var q = BYID[it.id];
+      return LevlStudy.miss({ prompt: esc(q.prompt), options: q.options.map(esc), answer: q.answer, why: q.why ? esc(q.why) : '' }, it.choice, topicHref(q.topic));
+    });
+    app.innerHTML = '<h1 class="sr-only">Exam results</h1><div class="ex-results">' + LevlStudy.end({
+      kind: KIND_NAME[r.kind] || 'Practice exam', right: s.right, total: s.total, skipped: blank,
+      sub: r.label && r.label !== KIND_NAME[r.kind] ? esc(r.label) : '',
+      chips: [timeUp ? (whileAway ? 'Time ran out while you were away, graded as it stood' : 'Time ran out') : ''],
+      timed: { used: clock(used), limit: r.limit ? clock(r.limit) : '', pace: s.total ? clock(used / s.total) : '' },
+      missed: missedQs,
+      missedTitle: blank && missed ? 'You missed ' + missed + ' and left ' + blank + ' blank' : blank ? 'You left ' + blank + ' blank' : '',
+      stepHtml: window.LevlNextStep ? LevlNextStep('ochem', { topics: s.byTopic.map(function(x){ return x.key; }), also: [{ label: 'Take another exam', act: renderSetup }] }) : '',
+      step: { act: 'again', label: 'Take another exam' },
+      nextTitle: 'Topics',
+      next: LevlStudy.topics(byTopic.map(function(x){ var t = TOPIC[x.key];
+        return { name: t.title, href: 'learn.html#' + x.key, c: x.c, n: x.n, mastery: null,
+          links: [{ label: 'Study', href: topicHref(x.key) }] }; })),
+      more: xp + (missed ? '<p>' + plural(missed, 'missed question') + ' went to your <a href="review.html">review queue</a>.</p>' : (s.answered ? '<p>Every answered question right.</p>' : '')) +
+        (multiChapter ? LevlStudy.bars('By chapter', byChapter.map(function(x){ return { label: chLabel(CHAPTER[x.key]), c: x.c, n: x.n }; })) : '') +
+        LevlStudy.bars('By difficulty', byDiff.map(function(x){ return { label: DIFF_NAME[x.key], c: x.c, n: x.n }; })),
+      kept: '<h2 class="cx-endp-h" id="exReviewH">Review every question</h2>' +
+        '<div class="ex-filter" role="group" aria-label="Show">' +
+          '<button type="button" class="ex-chip-b" aria-pressed="true" data-f="all">All ' + s.total + '</button>' +
+          '<button type="button" class="ex-chip-b" aria-pressed="false" data-f="miss"' + (s.total - s.right ? '' : ' disabled') + '>Missed ' + (s.total - s.right) + '</button>' +
+          '<button type="button" class="ex-chip-b" aria-pressed="false" data-f="flag"' + (flaggedN ? '' : ' disabled') + '>Flagged ' + flaggedN + '</button>' +
+        '</div>' +
+        '<ol class="ex-review">' + items.map(function(it, i){ return reviewItem(it, r.orders[i], i + 1); }).join('') + '</ol>' +
+        '<div class="ex-actions"><button type="button" class="btn-outline" data-act="again">Take another exam</button></div>'
+    }) + '</div>';
 
-    app.querySelectorAll('[data-act="again"]').forEach(function(b){ b.addEventListener('click', function(){ renderSetup(); }); });
+    LevlStudy.wire(app, { again: function(){ renderSetup(); } });
     app.querySelectorAll('[data-f]').forEach(function(b){
       b.addEventListener('click', function(){
         var f = b.getAttribute('data-f');
@@ -601,8 +596,7 @@
         });
       });
     });
-    if(window.LevlLazy) window.LevlLazy('share', function(S){ S.result(app.querySelector('.ex-score'), { course: 'ochem', right: s.right, total: s.total, label: 'an organic chemistry practice exam (' + r.label + ')' }); });
-    focusEl(app.querySelector('.ex-score'));
+    if(window.LevlLazy) window.LevlLazy('share', function(S){ S.result(app.querySelector('.cx-endp-card'), { course: 'ochem', right: s.right, total: s.total, label: 'an organic chemistry practice exam (' + r.label + ')' }); });
   }
 
   /* How a report names an ochem question: id plus a hash of the stem, the
