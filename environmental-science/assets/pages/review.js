@@ -159,7 +159,7 @@
       after.querySelector('.env-pr-next').addEventListener('click', function(){ if(session.answered) finish(); else { session.done = true; renderHome(); } });
     } else {
       Q.hydrate(stage, [it.q], { onAnswer: function(res){
-        session.answered++; if(res.correct) session.right++; else session.missed.push(it.q); session.seen.push({ q: it.q, correct: res.correct });
+        session.answered++; if(res.correct) session.right++; else session.missed.push(it.q); session.seen.push({ q: it.q, correct: res.correct, pick: res.pick });
         var t = TOPIC[it.q.topic];
         after.insertAdjacentHTML('afterbegin', '<p class="cx-from env-pr-from">' + (res.correct ? 'Scheduled further out. ' : 'Back in ten minutes. ') + (t && t.built ? 'From <a href="' + BASE + 'lessons/' + it.q.topic + '.html">' + esc(t.title) + '</a>.' : '') + '</p>');
         showNext(after);
@@ -197,6 +197,8 @@
       line: left ? plural(left, 'question') + ' still due' : leftTools ? 'Questions cleared' : 'Queue cleared',
       sub: (leftTools ? plural(leftTools, 'tool item') + ' still ' + (leftTools === 1 ? 'waits' : 'wait') + ' in the tools. ' : '') +
         (up.next && !due.length ? 'Next due ' + esc(when(up.next)) + '.' : ''),
+      kind: 'Review',
+      missed: session.seen.filter(function(x){ return !x.correct; }).map(function(x){ return LevlStudy.miss(x.q, x.pick, x.q.topic && TOPIC[x.q.topic] && TOPIC[x.q.topic].built ? BASE + 'lessons/' + x.q.topic + '.html' : ''); }),
       nextTitle: 'Topics',
       next: LevlStudy.topics(tt.map(function(t){ return { name: TOPIC[t] ? TOPIC[t].title : t, href: TOPIC[t] && TOPIC[t].built ? '' + BASE + 'lessons/' + t + '.html' : null, c: tc[t].c, n: tc[t].n, mastery: Core.topicMastery ? Core.topicMastery(t).value || 0 : null,
         links: TOPIC[t] && TOPIC[t].built ? [{ label: 'Lesson', href: '' + BASE + 'lessons/' + t + '.html' }, { label: 'Notes', href: '' + BASE + 'notes/' + t + '.html' }] : [] }; })),

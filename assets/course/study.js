@@ -86,29 +86,103 @@
     var P = window.LevlPremium;
     return atLimit(course) && P && P.card ? P.card(course, source || 'summary') : '';
   }
+  /* Score card v3 (owner approved mockup, 2026-11-07; docs/score-card.md). One layout for every course and mode:
+     a course-colour band (kind of session, big result, right/missed bar, a few chips, one handwritten line that
+     says what happened, the path line), a white card over its foot (what you missed with the answer and its
+     explanation, earned badges, the main button, Retry and quiet links), then topics with mastery arrows and the
+     course's breakdowns. Under 5 questions only the band, the misses and the buttons show.
+     o: { course, kind, right, total, skipped, unit ('right'), chips: [text], sub, timed: { used, limit, pace },
+          missed: [LevlStudy.miss(...)], missedTitle, hand, step, retry, also, stepHtml, extras, next, nextTitle,
+          more, kept, estimate: { value, range, label } } */
+  var LS = { get: function(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } },
+             set: function(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
+  function courseKey(){ return (document.body && document.body.getAttribute('data-course')) || 'site'; }
+  var UPS = null;   // mastery moves counted by topics() for the handwritten line
+  var ICO = {
+    clock: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    up: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg>',
+    down: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>',
+    star: '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21l1.5-7L2 9.3l7-.8z"/></svg>'
+  };
+  /* One missed question for the card, from a question object and the student's pick. Works with every course's
+     shapes: options + correct index, a correct list (select all), a number or text answer; anything else shows the
+     stem only. stem, options and explanations are the courses' own authored markup. */
+  function textOf(h){ var d = document.createElement('div'); d.innerHTML = String(h == null ? '' : h); return (d.textContent || '').replace(/\s+/g, ' ').trim(); }
+  function miss(q, pick, href){
+    if(!q) return null;
+    var opts = q.options || q.choices || q.opts, you = '', ans = '';
+    var cor = q.correct != null ? q.correct : q.answer;
+    if(opts && typeof cor === 'number'){ ans = opts[cor]; you = typeof pick === 'number' ? opts[pick] : ''; }
+    else if(opts && Array.isArray(cor)){ ans = cor.map(function(i){ return opts[i]; }).join(', '); you = Array.isArray(pick) ? pick.map(function(i){ return opts[i]; }).join(', ') : ''; }
+    else if(cor != null && typeof cor !== 'object'){ ans = String(cor); you = pick == null || typeof pick === 'object' ? '' : String(pick); }
+    var why = q.why && (q.why.correct || (typeof q.why === 'string' ? q.why : '')) || q.explanation || q.rationale || '';
+    var yw = q.why && q.why.options && typeof pick === 'number' ? q.why.options[pick] : '';
+    return { stem: q.q || q.stem || q.prompt || q.question || '', you: you, ans: ans, why: why, youWhy: yw, href: href || '' };
+  }
+  function missedHtml(list, title){
+    list = (list || []).filter(Boolean);
+    if(!list.length) return '';
+    var row = function(m, i){
+      return '<details class="cx-mq"' + (i >= 3 ? ' hidden data-more' : '') + '><summary><span class="cx-mq-x" aria-hidden="true">&#x2715;</span><span class="cx-mq-q"><span class="cx-mq-stem">' + textOf(m.stem).replace(/[&<>]/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }) + '</span>' +
+        (m.ans ? '<small>' + (m.you ? 'You said ' + esc(textOf(m.you)) + ' · ' : '') + 'Answer: <b>' + esc(textOf(m.ans)) + '</b></small>' : '') + '</span><span class="cx-mq-ch" aria-hidden="true">&rsaquo;</span></summary>' +
+        '<div class="cx-mq-body">' + (m.youWhy ? '<p><b>Your answer:</b> ' + m.youWhy + '</p>' : '') + (m.why ? '<p>' + m.why + '</p>' : '') +
+          (m.href ? '<p><a href="' + esc(m.href) + '">Open the lesson</a></p>' : (!m.why && !m.youWhy ? '<p class="cx-small">The explanation is in the answer list below.</p>' : '')) + '</div></details>';
+    };
+    return '<div class="cx-missed"><p class="cx-card-k">' + esc(title || ('You missed ' + list.length)) + '</p>' + list.map(row).join('') +
+      (list.length > 3 ? '<button type="button" class="cx-mq-more" data-act="moremiss">+ ' + (list.length - 3) + ' more</button>' : '') + '</div>';
+  }
+  function handLine(o, pct, best){
+    if(o.hand != null) return o.hand;
+    if(!o.total) return '';
+    if(pct === 100) return o.total >= 3 ? 'Every one right!' : 'All right!';
+    if(best) return 'Your best yet!';
+    if(UPS && UPS.up >= 2) return UPS.up + ' topics went up!';
+    if(pct >= 80) return 'Strong set.';
+    if(pct >= 50) return 'Misses come back in review.';
+    return 'The misses are where it sticks.';
+  }
   function end(o){
     var also = (o.also || []).filter(Boolean).slice(0, 2);
-    var right = o.right || 0, total = o.total || 0, miss = total - right;
-    /* End screen v2 (owner 2026-11-07, mockup): one card for the score with a right/missed bar and the actions
-       beside it, then the topics in one list (the old "What to study next" cards and "By topic" table merged),
-       then the course's breakdowns. Nothing removed; the score card is neutral, the bar carries right and missed. */
-    var bar = total ? '<span class="cx-endp-bar" role="img" aria-label="' + right + ' right, ' + miss + ' missed"><i class="ok" style="width:' + (right / total * 100) + '%"></i><i class="no" style="width:' + (miss / total * 100) + '%"></i></span>' : '';
-    // v2b (owner 2026-11-07): no explainer lines; the buttons say what they do.
-    var acts = (o.step ? ctl('btn-press', o.step) : '') + (o.retry ? ctl('btn-outline', o.retry) : '') +
-      also.map(function(a){ return ctl('link-quiet', a); }).join('');
-    // A ready next step (LevlNextStep) keeps its own buttons; Retry sits under it.
+    var right = o.right || 0, total = o.total || 0, skip = o.skipped || 0, miss_ = Math.max(0, total - right - skip);
+    var pct = total ? Math.round(100 * right / total) : 0, ck = courseKey(), kind = o.kind || 'Practice set', short = total < 5;
+    if(o.title == null){ var cn = document.querySelector('.site-header__course-full'); o.title = cn ? cn.textContent : ''; }
+    // Last time and personal best, per course and kind of session (this device).
+    var lk = 'levl_card_v1', st = LS.get(lk) || {}, key = ck + '|' + kind, prev = st[key], best = false, chips = [];
+    if(total >= 3){
+      if(prev && prev.n >= 3){ var d = pct - prev.p; if(d) chips.push('<span class="cx-chip ' + (d > 0 ? 'up' : 'dn') + '">' + (d > 0 ? ICO.up : ICO.down) + (d > 0 ? '+' : '') + d + '% vs last time</span>'); }
+      best = !!(prev && total >= 5 && pct > (prev.b || 0) && pct < 100);
+      st[key] = { p: pct, n: total, b: Math.max(pct, prev && prev.b || 0), at: Date.now() }; LS.set(lk, st);
+    }
+    if(o.timed){ chips.unshift('<span class="cx-chip">' + ICO.clock + esc(o.timed.used + (o.timed.limit ? ' of ' + o.timed.limit : '')) + '</span>' + (o.timed.pace ? '<span class="cx-chip">' + esc(o.timed.pace) + ' a question</span>' : '')); }
+    if(skip) chips.push('<span class="cx-chip">' + skip + ' unanswered</span>');
+    (o.chips || []).forEach(function(c){ if(c) chips.push('<span class="cx-chip">' + c + '</span>'); });
+    if(o.sub) chips.push('<span class="cx-chip cx-chip-txt">' + o.sub + '</span>');
+    // The path line, from the summary the path keeps (assets/course/path.js saveSum).
+    var ps = LS.get(ck + '_path_sum_v1'), pl = '';
+    if(ps && ps.next){
+      var pk = 'levl_card_path_v1', pseen = LS.get(pk) || {}, was = pseen[ck];
+      pl = '<p class="cx-pathln"><span>Path</span><span class="cx-pb" aria-hidden="true"><i style="width:' + ps.pct + '%"></i></span><span>' + (was != null && was !== ps.pct ? was + '% &rarr; ' : '') + ps.pct + '%</span>' +
+        '<span class="cx-nx">· Up next: ' + (ps.href ? '<a href="' + esc(ps.href) + '">' + esc(ps.next) + '</a>' : esc(ps.next)) + '</span></p>';
+      pseen[ck] = ps.pct; LS.set(pk, pseen);
+    }
+    var hand = handLine(o, pct, best);
+    var badges = (best ? '<span class="cx-bdg">' + ICO.star + 'Personal best</span>' : '') + (o.badges || []).map(function(b){ return '<span class="cx-bdg">' + ICO.star + esc(b) + '</span>'; }).join('');
+    var bar = total ? '<span class="cx-bar" role="img" aria-label="' + right + ' right, ' + miss_ + ' missed' + (skip ? ', ' + skip + ' unanswered' : '') + '"><i class="ok" style="--w:' + (right / total * 100) + '%"></i><i class="no" style="--w:' + (miss_ / total * 100) + '%"></i>' + (skip ? '<i class="sk" style="--w:' + (skip / total * 100) + '%"></i>' : '') + '</span>' : '';
+    var est = o.estimate ? '<span class="cx-est"><small>' + esc(o.estimate.label || 'Estimated score') + '</small><b>' + esc(o.estimate.value) + '</b>' + (o.estimate.range ? '<em>' + esc(o.estimate.range) + '</em>' : '') + '</span>' : '';
     var rt = o.retry ? ctl('btn-outline cx-endp-retry2', o.retry) : '';
-    var step = o.stepHtml ? (rt && o.stepHtml.indexOf('<p class="levl-next__why">') > -1 ? o.stepHtml.replace('<p class="levl-next__why">', rt + '<p class="levl-next__why">') : o.stepHtml + (rt ? '<div class="cx-endp-acts">' + rt + '</div>' : ''))
-      : (acts ? '<div class="cx-endp-acts">' + acts + '</div>' : '');
-    return '<section class="cx-endp cx-endp2" aria-label="Session results">' +
-      '<div class="cx-endp-card">' +
-        '<div class="cx-endp-score" tabindex="-1"><span class="cx-score-big">' + right + '<small>/' + total + '</small></span>' +
-          '<span><b>' + (o.line || '') + '</b>' + (o.sub ? '<span class="cx-small">' + o.sub + '</span>' : '') + bar + '</span></div>' +
-        step + (o.stepHtml && also.length ? '<p class="cx-endp-also">' + also.map(function(a){ return ctl('link-quiet', a); }).join('') + '</p>' : '') +
+    var acts = o.stepHtml ? o.stepHtml + (rt ? '<div class="cx-endp-acts">' + rt + '</div>' : '')
+      : '<div class="cx-endp-acts">' + (o.step ? ctl('btn-press', o.step) : '') + rt + also.map(function(a){ return ctl('link-quiet', a); }).join('') + '</div>';
+    UPS = null;
+    return '<section class="cx-endp cx-endp3' + (short ? ' is-short' : '') + '" aria-label="Session results">' +
+      '<div class="cx-band">' +
+        '<p class="cx-kick">' + esc(kind) + '<i></i>' + esc(o.title || '') + '</p>' +
+        '<div class="cx-endp-score" tabindex="-1"><span class="cx-big" data-n="' + right + '">' + right + '<small>/' + total + '</small></span>' +
+          '<span class="cx-hero-side">' + (o.unit ? '<b>' + esc(o.unit) + '</b>' : '') + (hand ? '<span class="cx-hand">' + esc(hand) + '</span>' : '') + '</span>' + est + '</div>' +
+        bar + (chips.length ? '<p class="cx-chips">' + chips.join('') + '</p>' : '') + pl +
       '</div>' +
-      (o.extras || '') +
-      (o.next ? '<h2 class="cx-endp-h">' + (o.nextTitle || 'What to study next') + '</h2>' + o.next : '') +
-      (o.more || '') + premiumAtLimit(o.course) +
+      '<div class="cx-endp-card">' + missedHtml(o.missed, o.missedTitle) + (badges ? '<p class="cx-bdgs">' + badges + '</p>' : '') + acts + (o.extras || '') + '</div>' +
+      (short ? '' : (o.next ? '<h2 class="cx-endp-h">' + (o.nextTitle || 'Topics') + '</h2>' + o.next : '') + (o.more || '')) +
+      (o.kept || '') + premiumAtLimit(o.course) +
     '</section>';
   }
   /* End screen v2b helpers (owner 2026-11-07), one look in every course.
@@ -116,16 +190,21 @@
      bars(title, rows): a compact breakdown. Row: { label, c, n }. */
   function topics(rows){
     rows = rows.slice().sort(function(a, b){ return (b.n - b.c) - (a.n - a.c) || a.c / a.n - b.c / b.n; });
-    var hasM = rows.some(function(r){ return r.mastery != null; });
-    return '<div class="cx-topics' + (hasM ? '' : ' no-m') + '" role="table" aria-label="Results by topic"><div class="cx-topics-h" role="row"><span role="columnheader">Topic</span><span role="columnheader">Right</span>' +
+    var hasM = rows.some(function(r){ return r.mastery != null; }), ck = courseKey(), mk = 'levl_mast_seen_v1', ms = LS.get(mk) || {}, seen = ms[ck] || (ms[ck] = {});
+    UPS = { up: 0, down: 0 };
+    var html = '<div class="cx-topics' + (hasM ? '' : ' no-m') + '" role="table" aria-label="Results by topic"><div class="cx-topics-h" role="row"><span role="columnheader">Topic</span><span role="columnheader">Right</span>' +
       (hasM ? '<span role="columnheader">Mastery</span>' : '') + '<span></span></div>' + rows.map(function(r){
-        var mp = r.mastery == null ? null : Math.round(r.mastery * 100);
+        var mp = r.mastery == null ? null : Math.round(r.mastery * 100), was = seen[r.name], dl = '';
+        if(mp != null){ if(was != null && was !== mp){ var d = mp - was; UPS[d > 0 ? 'up' : 'down']++; dl = '<span class="cx-dl ' + (d > 0 ? 'up' : 'dn') + '">' + (d > 0 ? '&#9650;' : '&#9660;') + ' ' + Math.abs(d) + '%</span>'; } seen[r.name] = mp; }
+        var study = r.c < r.n && r.links && r.links.length ? '<a class="btn-outline sm" href="' + esc(r.links[0].href) + '">Study</a>' : '';
         return '<div class="cx-topic' + (r.c < r.n ? ' is-miss' : '') + '" role="row">' +
           (r.href ? '<a class="cx-topic-name" role="cell" href="' + esc(r.href) + '">' + esc(r.name) + '</a>' : '<span class="cx-topic-name" role="cell">' + esc(r.name) + '</span>') +
           '<span class="cx-topic-r" role="cell">' + r.c + '/' + r.n + '</span>' +
-          (hasM ? '<span class="cx-topic-m" role="cell">' + (mp == null ? '' : '<span class="cx-mbar" aria-hidden="true"><i style="width:' + mp + '%"></i></span>' + mp + '%') + '</span>' : '') +
-          '<span class="cx-topic-go" role="cell">' + (r.links || []).map(function(l){ return '<a class="btn-outline sm" href="' + esc(l.href) + '">' + esc(l.label) + '</a>'; }).join('') + '</span></div>';
+          (hasM ? '<span class="cx-topic-m" role="cell">' + (mp == null ? '' : '<span class="cx-mbar" aria-hidden="true"><i style="width:' + mp + '%"></i></span>' + mp + '% ' + dl) + '</span>' : '') +
+          '<span class="cx-topic-go" role="cell">' + study + '</span></div>';
       }).join('') + '</div>';
+    LS.set(mk, ms);
+    return html;
   }
   function bars(title, rows){
     if(!rows || !rows.length) return '';
@@ -137,9 +216,23 @@
   function wire(root, handlers){
     if(!root) return;
     [].forEach.call(root.querySelectorAll('.cx-endp [data-act]'), function(b){
-      var fn = handlers[b.getAttribute('data-act')];
+      var act = b.getAttribute('data-act'), fn = handlers[act];
+      if(act === 'moremiss') fn = function(){ [].forEach.call(root.querySelectorAll('.cx-mq[data-more]'), function(d){ d.hidden = false; }); b.remove(); };
       if(fn) b.addEventListener('click', fn);
     });
+    // The score counts up and the bar fills (under a second), unless the student asked for less motion.
+    var big = root.querySelector('.cx-endp3 .cx-big'), card = root.querySelector('.cx-endp3');
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(card && !calm){
+      card.classList.add('is-anim');
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ card.classList.add('is-in'); }); });
+      var n = big ? +big.getAttribute('data-n') : 0, node = big && big.firstChild;
+      if(node && node.nodeType === 3 && n > 0){
+        var t0 = null, dur = Math.min(800, 250 + n * 40);
+        var step = function(t){ if(t0 == null) t0 = t; var k = Math.min(1, (t - t0) / dur); node.nodeValue = String(Math.round(n * (1 - Math.pow(1 - k, 3)))); if(k < 1) requestAnimationFrame(step); };
+        node.nodeValue = '0'; requestAnimationFrame(step);
+      }
+    }
     var h = root.querySelector('.cx-endp-score');
     if(h){ try{ h.focus({ preventScroll: true }); }catch(e){ h.focus(); } }
   }
@@ -174,7 +267,7 @@
   });
 
   window.LevlStudy = { rail: rail, stat: stat, empty: empty, actions: actions, free: free, allowance: allowance, streak: streak, esc: esc, plural: plural,
-    end: end, wire: wire, topics: topics, bars: bars, keys: keys, atLimit: atLimit, premiumAtLimit: premiumAtLimit };
+    end: end, wire: wire, topics: topics, bars: bars, miss: miss, keys: keys, atLimit: atLimit, premiumAtLimit: premiumAtLimit };
 
   /* Site redesign round 3 (docs/site-redesign.md, boards R10-Practice-*,
      R10-Review, R10-Flashcards*): every study page opens with the short cover

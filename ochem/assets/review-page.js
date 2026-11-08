@@ -214,9 +214,12 @@
 
     // The shared end panel (LevlStudy.end, consistency audit 2026-11, B7), XP inside it.
     var html = LevlStudy.end({
-      right: S.correct, total: S.asked, course: 'ochem',
-      line: esc(cleared ? (S.correct === S.asked ? 'Queue cleared, everything right.' : 'Today\'s queue is done.') : 'Stopped early. The rest is still queued.'),
-      sub: esc(lines.join(' ')),
+      right: S.correct, total: S.asked, course: 'ochem', kind: 'Review',
+      hand: cleared ? (S.correct === S.asked ? 'Queue cleared!' : 'Queue done.') : 'Stopped early.',
+      chips: [!stillDue.today.length && !S.meta.deferred && next ? 'Next batch ' + (next.dueIn <= 1 ? 'tomorrow' : 'in ' + plural(next.dueIn, 'day')) : '',
+        S.meta.deferred ? plural(S.meta.deferred, 'concept') + ' held for tomorrow' : ''],
+      missed: S.history.filter(function(h){ return !h.isCheck && !h.d.correct; }).map(function(h){ return LevlStudy.miss(h.q, h.response && h.response.choice); }),
+      nextTitle: 'Concepts',
       extras: xpHtml,
       next: touched.length ? '<div class="module-card">' + conceptRows(
           touched.sort(function(a, b){ return a.strength - b.strength; }),

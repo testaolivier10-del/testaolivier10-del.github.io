@@ -636,7 +636,15 @@
 
   // The textbook rails (*-toc.js, ochem textbook.js) tick what the path marks done too.
   function changed(){ try{ document.dispatchEvent(new CustomEvent('levl:pathchange', { detail: { course: KEY } })); }catch(e){} }
-  function renderAll(){ readProgress(); ACC = null; renderHome(); renderEnd(); renderBook(); }
+  /* A small summary for the score card on practice pages (assets/course/study.js card, owner 2026-11-07),
+     which do not load the path: how much of the path is done and the next stop. */
+  function saveSum(){
+    try{ var n = nowStop(), done = T.filter(function(t){ return isF(t.id); }).length;
+      localStorage.setItem(KEY + '_path_sum_v1', JSON.stringify({ pct: T.length ? Math.round(100 * done / T.length) : 0,
+        next: n ? (n.kind === 'topic' ? BY[n.id].t : n.title) : '', href: n ? stopUrl(n) || '' : '', at: Date.now() }));
+    }catch(e){}
+  }
+  function renderAll(){ readProgress(); ACC = null; renderHome(); renderEnd(); renderBook(); saveSum(); }
   var PAGE_T = null, BOOK = false;
   function start(data){
     D = data; U = D.units; T = D.topics.map(function(t, i){ t.i = i; BY[t.id] = t; return t; });
