@@ -420,13 +420,13 @@
       (limit ? '' : '<span class="phys-small">Untimed</span>') + (pausable && limit ? '<button type="button" class="btn-outline phys-ex-pause" aria-pressed="false">Pause</button>' : '') + '</div>';
   }
   function startClock(limit, onEnd){
-    run.limit = limit; run.left = limit; run.used = 0; run.last = Date.now(); run.paused = false; run.warned = {};
+    run.limAll = (run.limAll || 0) + limit; run.limit = limit; run.left = limit; run.used = 0; run.last = Date.now(); run.paused = false; run.warned = {};
     clearInterval(run.tick);
     run.tick = setInterval(function(){
       if(!run || run.done) return;
       var t = Date.now(), d = t - run.last; run.last = t;
       if(run.paused) return;
-      run.used += d;
+      run.used += d; run.usedAll = (run.usedAll || 0) + d; if(run.section === 1) run.usedMcq = (run.usedMcq || 0) + d;
       var el = app.querySelector('.phys-ex-time');
       if(!run.limit){ if(el) el.textContent = mmss(run.used); return; }
       run.left -= d;
@@ -667,13 +667,6 @@
     rows.forEach(function(x){ var k = keyFn(x.q); if(!k) return; if(!out[k]){ out[k] = { n: 0, c: 0 }; order.push(k); } out[k].n++; if(x.r.correct) out[k].c++; });
     return order.map(function(k){ return { key: k, n: out[k].n, c: out[k].c }; });
   }
-  function barTable(title, list, name, link, unitWord){
-    if(!list.length) return '';
-    return '<section class="phys-ex-break"><h3>' + title + '</h3><ul class="phys-ex-bars">' + list.map(function(x){
-      var p = pctOf(x.c, x.n), nm = esc(name(x.key)), href = link && link(x.key);
-      return '<li><span class="phys-ex-bar-name">' + (href ? '<a href="' + href + '">' + nm + '</a>' : nm) + '</span><span class="track thin" aria-hidden="true"><i class="' + (p >= 80 ? 'is-hi' : p >= 60 ? 'is-mid' : 'is-lo') + '" style="width:' + p + '%"></i></span><span class="phys-ex-bar-v">' + x.c + '/' + x.n + (unitWord ? ' ' + unitWord : '') + '</span></li>';
-    }).join('') + '</ul></section>';
-  }
   function results(rows, right, fg, fo, composite, b){
     if(CLS && CLS.done(rows)) return;
     var total = rows.length, k = run.meta.kind, missedN = total - right;
@@ -683,34 +676,46 @@
     var byLevel = tally(rows, function(q){ return q.level; });
     var frqByUnit = {};
     (run.frqScores || []).forEach(function(s, i){ var u = run.frqs[i].units[0]; frqByUnit[u] = frqByUnit[u] || { key: u, c: 0, n: 0 }; frqByUnit[u].c += s.got; frqByUnit[u].n += s.of; });
-    var weak = byTopic.filter(function(x){ return x.c < x.n; }).slice(0, 3);
+    var skipped = rows.filter(function(x){ return x.r.skipped; }).length, wrongN = missedN - skipped;
+    function lessonHref(t){ return BASE + 'lessons/' + t + '.html'; }
+    /* Score card v3 (docs/score-card.md): one LevlStudy.end card for every exam kind. The band carries the
+       multiple choice score, the clock and the free response points; the card the misses and the buttons; below
+       it the topics, the breakdowns, the band explanation and the full answer list. A Section II timed section
+       has no multiple choice to score, so its card counts the rubric points instead. */
+    var frqOnly = !total && fo, chips = [];
+    if(fo && !frqOnly) chips.push('Free response ' + fg + '/' + fo + ' (your self score)');
+    if(run.timeUp1) chips.push('Time ran out in Section I');
+    if(run.timeUp2) chips.push('Time ran out in Section II');
+    var kind = k === 'unit' ? 'Unit test' : k === 'mixed' ? 'Mixed timed set' : frqOnly ? 'Free response section' : 'Practice exam';
     view('results');
-    app.innerHTML = '<div class="phys-ex-results">' +
-      '<div class="phys-pr-score"><span class="phys-pr-score-big">' + right + '<small>/' + total + '</small></span><span><b>Multiple choice: ' + pctOf(right, total) + '%</b><span class="phys-small">' + esc(run.label) +
-        (run.timeUp1 ? ' · time ran out in Section I' : '') + '</span></span></div>' +
-      (fo ? '<div class="phys-pr-score phys-ex-fsum"><span class="phys-pr-score-big">' + fg + '<small>/' + fo + '</small></span><span><b>Free response (your self-score): ' + pctOf(fg, fo) + '%</b><span class="phys-small">' + plural(run.frqs.length, 'question') + ' scored with the rubrics' + (run.timeUp2 ? ' · time ran out in Section II' : '') + '</span></span></div>' : '') +
-      (k === 'full' ? '<section class="phys-ex-band" aria-labelledby="phys-ex-band-h"><h2 id="phys-ex-band-h">Readiness estimate: band ' + b + ' of 5</h2>' +
+    app.innerHTML = '<div class="phys-ex-results">' + LevlStudy.end({
+      kind: kind, right: frqOnly ? fg : right, total: frqOnly ? fo : total, skipped: frqOnly ? 0 : skipped, unit: frqOnly ? 'points, your self score' : 'multiple choice',
+      sub: run.label && run.label !== kind ? esc(run.label) : '', chips: chips,
+      timed: run.usedAll ? { used: mmss(run.usedAll), limit: run.limAll ? mmss(run.limAll) : '', pace: total && run.usedMcq ? mmss(run.usedMcq / total) : '' } : null,
+      estimate: k === 'full' && b ? { label: 'Readiness band', value: b + ' of 5', range: 'rough, not calibrated' } : null,
+      missed: rows.filter(function(x){ return !x.r.correct; }).map(function(x){ return LevlStudy.miss(x.q, x.r.pick, x.q.topic ? lessonHref(x.q.topic) : ''); }),
+      missedTitle: skipped && wrongN ? 'You missed ' + wrongN + ' and left ' + skipped + ' unanswered' : skipped ? 'You left ' + skipped + ' unanswered' : '',
+      step: missedN ? { href: BASE + 'practice.html?mode=missed', label: 'Practice your misses' } : { act: 'again', label: 'Another exam' },
+      also: missedN ? [{ act: 'again', label: 'Another exam' }] : [],
+      nextTitle: 'Topics',
+      next: byTopic.length ? LevlStudy.topics(byTopic.map(function(x){ var t = TOPIC[x.key], m = Core.topicMastery ? Core.topicMastery(x.key) : null;
+        return { name: t ? t.title : x.key, href: lessonHref(x.key), c: x.c, n: x.n, mastery: m ? m.value || 0 : null, links: [{ label: 'Lesson', href: lessonHref(x.key) }, { label: 'Notes', href: BASE + 'notes/' + x.key + '.html' }] }; })) : '',
+      more: (total ? (missedN ? '<p>' + plural(rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>' + (rows.some(function(x){ return !x.r.correct && x.q.own; }) ? ' (questions written only for this exam stay here, in the review below)' : '') + '.</p>' : '<p>Every multiple-choice question right.</p>') : '') +
+        (k === 'full' ? '<section class="phys-ex-band" aria-labelledby="phys-ex-band-h"><h2 id="phys-ex-band-h">Readiness estimate: band ' + b + ' of 5</h2>' +
         '<p class="phys-ex-band-warn"><b>' + NOT_CALIBRATED + '</b></p>' +
         '<p class="phys-small">How it is worked out: multiple choice and free response count half each, as the two sections do on the exam, giving ' + composite + '%; then 70% and up is band 5, 55% band 4, 41% band 3, 31% band 2, below that band 1. These cut-offs are our estimate, fitted to the published 2025 and 2026 score distributions; the real ones are not published and change a little each year' +
         (run.meta.partial ? ', and this was a shorter exam that leaves out units with no questions yet' : '') + '. The <a href="' + BASE + 'score-calculator.html">score calculator</a> explains the method.</p></section>' : '') +
-      (missedN ? '<p>' + plural(rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>' + (rows.some(function(x){ return !x.r.correct && x.q.own; }) ? ' (questions written only for this exam stay here, in the review below)' : '') + '.</p>' : '<p>Every multiple-choice question right.</p>') +
-      (weak.length ? '<h2>Study next</h2><ul class="phys-pr-next-list">' + weak.map(function(x){
-        return '<li><div><b>' + esc(TOPIC[x.key] ? TOPIC[x.key].title : x.key) + '</b><span class="phys-small">' + x.c + ' of ' + x.n + ' right</span></div><a class="btn-outline" href="' + BASE + 'lessons/' + x.key + '.html">Lesson</a><a class="btn-outline" href="' + BASE + 'notes/' + x.key + '.html">Notes</a></li>';
-      }).join('') + '</ul>' : '') +
-      '<h2>Your score, broken down</h2><div class="phys-ex-breaks">' +
-        barTable('Multiple choice by unit', byUnit, unitName, function(key){ return BASE + 'units/' + key + '.html'; }) +
-        (fo ? barTable('Free response by unit (points)', Object.keys(frqByUnit).map(function(u){ return frqByUnit[u]; }), unitName, null, 'pts') : '') +
-        barTable('Multiple choice by science practice', byPractice, function(key){ return key + (PRACTICE[key] ? '. ' + PRACTICE[key].name : ''); }) +
-        barTable('By topic', byTopic, function(key){ return TOPIC[key] ? TOPIC[key].title : key; }, function(key){ return BASE + 'lessons/' + key + '.html'; }) +
-        barTable('By level', byLevel, function(key){ return LEVEL_NAME[key] || key; }) +
-      '</div>' +
-      '<div class="phys-pr-actions">' + (missedN ? '<a class="btn-press" href="' + BASE + 'practice.html?mode=missed">Practice your misses</a>' : '') + '<button type="button" class="btn-outline" data-act="again">Another exam</button></div>' +
-      '<h2>Review every question</h2>' +
-      '<div class="phys-ex-filter" role="group" aria-label="Show"><button type="button" class="phys-pr-chip-b" aria-pressed="true" data-f="all">All ' + total + '</button><button type="button" class="phys-pr-chip-b" aria-pressed="false" data-f="miss"' + (missedN ? '' : ' disabled') + '>Missed ' + missedN + '</button></div>' +
-      '<ol class="phys-ex-review">' + rows.map(function(x, i){ return reviewItem(x.q, x.r, i + 1); }).join('') + '</ol>' +
-      (window.LevlPremium && window.LevlPremium.card ? window.LevlPremium.card('apphys', 'summary') : '') +
-      '<div class="phys-pr-actions"><button type="button" class="btn-outline" data-act="again">Another exam</button></div></div>';
-    app.querySelectorAll('[data-act="again"]').forEach(function(x){ x.addEventListener('click', renderSetup); });
+        LevlStudy.bars('Multiple choice by unit', byUnit.map(function(x){ return { label: unitName(x.key), c: x.c, n: x.n }; })) +
+        (fo ? LevlStudy.bars('Free response by unit (points)', Object.keys(frqByUnit).map(function(u){ return { label: unitName(u), c: frqByUnit[u].c, n: frqByUnit[u].n }; })) : '') +
+        LevlStudy.bars('Multiple choice by science practice', byPractice.map(function(x){ return { label: x.key + (PRACTICE[x.key] ? '. ' + PRACTICE[x.key].name : ''), c: x.c, n: x.n }; })) +
+        LevlStudy.bars('By level', byLevel.map(function(x){ return { label: LEVEL_NAME[x.key] || x.key, c: x.c, n: x.n }; })),
+      kept: total ? '<h2 class="cx-endp-h">Review every question</h2>' +
+        '<div class="phys-ex-filter" role="group" aria-label="Show"><button type="button" class="phys-pr-chip-b" aria-pressed="true" data-f="all">All ' + total + '</button><button type="button" class="phys-pr-chip-b" aria-pressed="false" data-f="miss"' + (missedN ? '' : ' disabled') + '>Missed ' + missedN + '</button></div>' +
+        '<ol class="phys-ex-review">' + rows.map(function(x, i){ return reviewItem(x.q, x.r, i + 1); }).join('') + '</ol>' +
+        (window.LevlPremium && window.LevlPremium.card ? window.LevlPremium.card('apphys', 'summary') : '') +
+        '<div class="phys-pr-actions"><button type="button" class="btn-outline" data-act="again">Another exam</button></div>' : (window.LevlPremium && window.LevlPremium.card ? window.LevlPremium.card('apphys', 'summary') : '')
+    }) + '</div>';
+    LevlStudy.wire(app, { again: renderSetup });
     app.querySelectorAll('[data-f]').forEach(function(x){
       x.addEventListener('click', function(){
         var miss = x.getAttribute('data-f') === 'miss';
@@ -718,7 +723,6 @@
         app.querySelectorAll('.phys-ex-ritem').forEach(function(li){ li.hidden = miss && li.classList.contains('is-ok'); });
       });
     });
-    var h = app.querySelector('.phys-pr-score'); h.setAttribute('tabindex', '-1'); h.focus();
   }
 
   /* One question in the review, options in authored order, each with its

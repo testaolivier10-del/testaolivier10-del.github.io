@@ -240,6 +240,7 @@ const SHELL_BUDGETS = [
   ['assets/course', 56.6],
   /* 52.1 -> 56.6 (score card v3, 2026-11-07): study.js end() and the .cx-endp3 styles (56.4 measured before this
      branch), plus card-loader.js and the card's Tool Studio fixes for FRQ, justify and NREMT scenarios; measured 56.6. */
+  /* 52.1 -> 56.5 (score card v3, owner 2026-11-07, docs/score-card.md): LevlStudy.end, miss and the .cx-endp3 styles; measured 56.4 KB. */
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -408,14 +409,14 @@ const SHELL_BUDGETS = [
      and the math chapter out, the generated chem-curriculum.js lists every
      topic as live and the exams page's shell measured 50.2 KB; the extra is
      course data, not code. */
-  ['chem', 52.6], // Select then Check (2026-11-07): one answer questions wait for Check like every other type; measured about 0.1 KB more
+  ['chem', 52.8], // Score card on exam results (2026-11-07): LevlStudy.end replaces each exam summary; measured about 0.1 KB more
   /* AP® Physics 1 (physics/, a fork of the AP® Chemistry runtime). Before
      any unit is published; Chemistry's 52 is the reference. */
   /* 52 -> 52.2 (consistency audit 2026-11): the shared end panel call and the exam-day reference cards. Measured
      52.0 KB. */
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
-  ['physics', 53.1], // Select then Check (2026-11-07): one answer questions wait for Check like every other type; measured about 0.1 KB more
+  ['physics', 53.3], // Score card on exam results (2026-11-07): LevlStudy.end replaces each exam summary; measured about 0.1 KB more
   /* AP® Calculus AB (calculus/, a fork of the AP® Physics 1 runtime), plus
      the math layer every question page loads: the expression parser
      (calc-expr.js) and the TeX-to-MathML renderer (calc-math.js), 13.8 KB
@@ -437,7 +438,7 @@ const SHELL_BUDGETS = [
      reference cards (D16) in exams.js, and calc-core.js calling the milestones check after a lesson (D4). */
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
-  ['calculus', 71.0], // Select then Check (2026-11-07): one answer questions wait for Check like every other type; measured about 0.1 KB more
+  ['calculus', 71.1], // Score card on exam results (2026-11-07): LevlStudy.end replaces each exam summary; measured about 0.1 KB more
   /* AP® Statistics (statistics/, a fork of the AP® Calculus AB runtime),
      plus what every statistics question page needs (docs/apstat-spec.md
      section 7): the distributions library (stat-dist.js, 6.4 KB gzipped:
@@ -453,7 +454,7 @@ const SHELL_BUDGETS = [
   /* 83.2 -> 83.5 (consistency audit 2026-11): the same end panel and reference cards. Measured 83.2 KB. */
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
-  ['statistics', 84.3], // Select then Check (2026-11-07): one answer questions wait for Check like every other type; measured about 0.1 KB more
+  ['statistics', 84.5], // Score card on exam results (2026-11-07): LevlStudy.end replaces each exam summary; measured about 0.1 KB more
   /* AP® Environmental Science (environmental-science/, a fork of the AP®
      Statistics runtime, docs/apenv-spec.md decision 1): the calculation
      recipes (env-calc.js) in place of the distributions library, and the
@@ -468,7 +469,7 @@ const SHELL_BUDGETS = [
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
   /* 85.8 -> 86 (consistency audit 2026-11 with teacher classes v2): end panel, reference cards and the ?la= hooks. */
-  ['environmental-science', 86.5], // Select then Check (2026-11-07): one answer questions wait for Check like every other type; measured about 0.1 KB more
+  ['environmental-science', 86.7], // Score card on exam results (2026-11-07): LevlStudy.end replaces each exam summary; measured about 0.1 KB more
   /* AP® Psychology (psychology/, a fork of the AP® Environmental Science
      runtime, docs/appsych-spec.md decision 1): ApPsychStats (psy-stats.js,
      descriptive statistics and the normal curve) in place of the calculation
@@ -485,7 +486,7 @@ const SHELL_BUDGETS = [
      curriculum now lists all five chapters, and Phases 3-4 added form-aware
      expr grading (decision 15), the exam config and the "Make it specific"
      builder; measured 70.9 KB. */
-  ['precalculus', 72.1], // Select then Check (2026-11-07): one answer questions wait for Check like every other type; measured about 0.1 KB more
+  ['precalculus', 72.3], // Score card on exam results (2026-11-07): LevlStudy.end replaces each exam summary; measured about 0.1 KB more
   /* AP® Calculus BC (calculus-bc/, docs/apcalcbc-architecture.md): its own files only, the
      curriculum, the accent (cbc.css) and the interval grader (cbc-interval.js); the runtime it
      runs is AB's and counts in the calculus shell above. Measured 8.1 KB before any unit is published
@@ -503,7 +504,7 @@ const SHELL_BUDGETS = [
      gzipped; measured 87.1, with the same room for the curriculum. */
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
-  ['macroeconomics', 90.1], // Select then Check (2026-11-07): one answer questions wait for Check like every other type; measured about 0.1 KB more
+  ['macroeconomics', 90.3], // Score card on exam results (2026-11-07): LevlStudy.end replaces each exam summary; measured about 0.1 KB more
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -1006,7 +1007,7 @@ const DATA_BUDGETS = [
      Measured 3.4 and 10.0 KB gzipped, about a tenth added. */
   ['ochem/assets/exam-core.js', 4],
   // 11 -> 12: the exam setup now carries the shared rail (W-C).
-  ['ochem/assets/exams-page.js', 12],
+  ['ochem/assets/exams-page.js', 12.1], // Score card on exam results (2026-11-07): the LevlStudy.end call; measured 12.0 KB
   /* The flashcard deck, generated from the notes' tables by
      scripts/build-flashcards.mjs. Fetched by flashcards.html after it paints,
      alongside concept-teach.json. Measured at 25.3 KB for 526 cards — about
