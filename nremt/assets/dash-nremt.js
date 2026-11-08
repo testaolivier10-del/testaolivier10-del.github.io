@@ -149,12 +149,12 @@
         var n = Math.min(dueCount, 40, quota === Infinity ? 40 : Math.max(quota, 0));
         var shaky = levels[0] + levels[1];
         if(n > 0) acts.push({ title: 'Review your <span>' + plural(n, n === dueCount ? 'question' : 'shakiest question') + '</span>.',
-          body: (shaky ? plural(shaky, 'question') + ' you have missed or barely know are in your queue. ' : '') + 'Bringing them back before they fade is the cheapest way to keep what you learned.' + (pace ? ' About ' + Math.max(1, Math.round(n * pace / 60)) + ' minutes at your pace.' : ''),
+          body: (shaky ? plural(shaky, 'missed or shaky question') + ' in your queue.' : '') + (pace ? ' About ' + Math.max(1, Math.round(n * pace / 60)) + ' minutes.' : ''),
           href: 'review.html?start=spaced', cta: 'Start review', then: 'Review ' + plural(n, 'due question'), key: 'review' });
       }
-      if(costly) acts.push({ title: 'Drill <span>' + esc(costly.d) + '</span>.', body: 'It has cost you ' + costly.miss + ' of ' + costly.total + ' questions so far, more than any other area.' + (NOTES[costly.d] ? ' Read <a href="' + notesHref(NOTES[costly.d]) + '">' + esc(NOTES[costly.d][1]) + '</a> first if it has been a while.' : ''),
+      if(costly) acts.push({ title: 'Drill <span>' + esc(costly.d) + '</span>.', body: costly.miss + ' of ' + costly.total + ' missed so far.' + (NOTES[costly.d] ? ' Notes: <a href="' + notesHref(NOTES[costly.d]) + '">' + esc(NOTES[costly.d][1]) + '</a>' : ''),
         href: 'practice.html?system=' + encodeURIComponent(costly.d), cta: 'Drill it', then: 'Then drill ' + esc(costly.d) + ', your most expensive area', key: 'drill' });
-      if(missedCount) acts.push({ title: 'Redo the <span>' + plural(missedCount, 'question') + '</span> you got wrong.', body: 'Your missed list from practice and exams, each with its explanation.', href: 'review.html?start=review', cta: 'Redo them', then: 'Then redo the ' + plural(missedCount, 'question') + ' you got wrong', key: 'missed' });
+      if(missedCount) acts.push({ title: 'Redo the <span>' + plural(missedCount, 'question') + '</span> you got wrong.', body: 'From practice and exams, with explanations.', href: 'review.html?start=review', cta: 'Redo them', then: 'Then redo the ' + plural(missedCount, 'question') + ' you got wrong', key: 'missed' });
       var lastExam = history.length ? history[history.length - 1].date : 0;
       if(G.canUse('exam') && allTotal >= 40 && (!lastExam || Date.now() - lastExam > 7 * 86400000)) acts.push({ title: history.length ? 'Take a full <span>timed exam</span>.' : 'Take your first <span>full timed exam</span>.',
         body: history.length ? 'Your last was ' + plural(Math.round((Date.now() - lastExam) / 86400000), 'day') + ' ago. Each one makes the readiness reading steadier.' : 'It is scored by exam domain, and your readiness reading starts from it.', href: 'exams.html', cta: 'Start the exam', then: history.length ? 'Then take a full timed exam' : 'Then take your first full timed exam', key: 'exam' });
@@ -168,7 +168,7 @@
     var progress = {
       weeks: weeks, exams: history.map(function(x){ return { t: x.date, pct: Math.round(x.score / x.total * 100) }; }),
       examWord: 'full exams', firstExamWord: 'first full exam',
-      sub: overallPct !== null ? 'Overall: ' + overallPct + '% on ' + plural(allTotal, 'answer') + ' in every mode' + (missedCount ? ', ' + missedCount + ' in your missed queue.' : '.') : '',
+      sub: '',
       goal: { pct: GOAL, label: '80%, the full-exam certificate line', key: 'the certificate line: 80% on a full exam (weekly practice accuracy is not an exam score)' },
       examDate: examT ? { t: examT } : null, allHref: history.length ? 'exams.html' : null, allText: 'Exams',
       empty: overallPct === null ? 'Your line starts with your first answers.' : 'So far: ' + overallPct + '% on ' + plural(allTotal, 'answer') + '. Your weekly line starts now.',
@@ -182,9 +182,9 @@
     if(daysLeft !== null){
       if(canReady) sideBits.push(plural(daysLeft, 'day') + ' left');
       if(bank && unseen) sideBits.push('about ' + Math.ceil(unseen / Math.max(1, daysLeft)) + ' new questions a day finishes the bank');
-    } else sideBits.push('No exam date yet. <a href="#d5ExamDate">Set one</a>');
+    }
     var ready = { title: title3, side: sideBits.join('<br>'), gap: [], more: [
-      { label: daysLeft === null ? 'Set your exam date' : 'Exam date and daily target', html: '<div id="examDateCard"></div>', open: daysLeft === null && !isNew, id: 'd5ExamDate' }
+      { label: daysLeft === null ? 'Exam date <small class="d5-mut">not set</small>' : 'Exam date and daily target', html: '<div id="examDateCard"></div>', open: false, id: 'd5ExamDate' }
     ] };
     if(canReady && R.available){
       var v = R.value;
@@ -206,10 +206,9 @@
       ready.big = '&mdash;'; ready.note = 'One full timed exam starts your readiness reading.';
       ready.gap.push({ text: 'Take a full timed exam: 100 questions, two hours, scored by domain', value: 'starts it', kind: 'mut', href: 'exams.html' });
     } else {
-      ready.big = daysLeft !== null ? String(daysLeft) : (overallPct !== null ? overallPct + '%' : '&mdash;');
-      ready.bigSub = daysLeft !== null ? ' days left' : (overallPct !== null ? ' accuracy so far' : '');
-      ready.note = 'Your readiness estimate comes with Premium.';
-      ready.extra = G.gate('readiness', 'dashboard-domains');
+      // Owner 2026-11-07: one row, not a repeat of question 2's accuracy and a sales box.
+      ready.lockRow = { label: 'Readiness estimate', href: '../premium.html#nremt' };
+      if(daysLeft !== null) ready.more[0].label = 'Exam date <small class="d5-mut">' + plural(daysLeft, 'day') + ' left</small>';
     }
     if(pace) ready.gap.push({ text: 'Pace on your recent full exams: ' + pace + ' s a question. The practice exam gives you ' + EXAM_SECONDS_PER_Q, value: pace <= EXAM_SECONDS_PER_Q * 0.9 ? 'on track' : pace <= EXAM_SECONDS_PER_Q ? 'tight' : 'too slow', kind: pace <= EXAM_SECONDS_PER_Q * 0.9 ? 'ok' : 'mut' });
     ready.foot = 'Built from your own practice scores. Not calibrated against real NREMT results and not a chance of passing.';
@@ -258,9 +257,9 @@
     var atTop = levels[4] + levels[5];
     var record = {
       stats: [
-        { label: 'Level', big: 'Level ' + info.level, sub: '&middot; ' + Number(info.toNext).toLocaleString() + ' XP to ' + (info.level + 1), bar: info.into / info.span },
-        { label: 'Memory', big: plural(totalTracked, 'question'), sub: totalTracked ? 'tracked, ' + atTop + ' at the top two levels' : 'tracked so far' },
-        { label: 'Answered', big: allTotal.toLocaleString(), sub: 'in every mode &middot; ' + earnedN + ' of ' + badgeDefs.length + ' badges' }
+        { label: 'Level', big: String(info.level), sub: Number(info.toNext).toLocaleString() + ' XP to ' + (info.level + 1), bar: info.into / info.span },
+        { label: 'Answered', big: allTotal.toLocaleString(), sub: totalTracked ? atTop + ' of ' + totalTracked + ' strong' : 'in every mode' },
+        { label: 'Badges', big: earnedN + '<small class="d5-mut" style="display:inline;font-size:14px">/' + badgeDefs.length + '</small>', sub: 'earned' }
       ],
       badges: badgeDefs.map(function(b){ var e = b.have >= b.need; return { icon: b.icon, label: b.label, earned: e, sub: e ? 'earned' : b.prog(Math.min(b.have, b.need)) }; }),
       next: bestExam >= GOAL ? { text: 'Certificate earned: a full exam at ' + GOAL + '% or higher.', sub: 'Your best is ' + bestExam + '%.', href: '#d5Milestones', cta: 'See it' }

@@ -102,7 +102,7 @@
       big: coverage + '%', bigSub: ' of ' + ofWhat + ' at Strong',
       note: coverage >= 100 ? 'All of it. Keep Review clear.' : isNew ? 'Every topic you bring to Strong fills this in.' : (100 - coverage) + '% to go' + (daysLeft !== null ? ', with ' + plural(daysLeft, 'day') + ' left.' : '.'),
       scale: { value: coverage, goal: null, lo: '0%', hi: '100%', aria: coverage + '% of ' + ofWhat + ' is at Strong or better.' },
-      side: daysLeft !== null ? plural(daysLeft, 'day') + ' left' + (leftTopics ? '<br>about ' + Math.ceil(leftTopics / Math.max(1, daysLeft)) + ' ' + (Math.ceil(leftTopics / Math.max(1, daysLeft)) === 1 ? 'topic' : 'topics') + ' a day to Strong covers the rest' : '') : 'No exam date yet. <a href="#d5ExamDate">Set one</a>',
+      side: daysLeft !== null ? (leftTopics ? 'About ' + Math.ceil(leftTopics / Math.max(1, daysLeft)) + ' ' + (Math.ceil(leftTopics / Math.max(1, daysLeft)) === 1 ? 'topic' : 'topics') + ' a day to Strong covers the rest' : '') : '',
       gapTitle: 'What closes the gap', gap: [] };
     // The groups already under way that cost the most, then the next one in course order: students learn in
     // order, so an untouched unit at the end of the year is not the first thing to point at.
@@ -115,9 +115,9 @@
     });
     var lastBand = cfg.lastBand;
     if(lastBand) ready.gap.push({ text: 'Your last full practice exam: a rough band ' + lastBand + ' of 5 (not calibrated against real AP&reg; scores)', value: 'band ' + lastBand, kind: 'mut', href: BASE + 'exams.html' });
-    if(cfg.cram) ready.gap.push({ text: 'The cram kit: a 3-week or 2-week plan counted back from your exam date, with timed mixed sets', value: 'plan', kind: 'mut', href: BASE + 'cram.html' });
+    if(cfg.cram) ready.gap.push({ text: 'Cram plan: counted back from your exam date', value: 'plan', kind: 'mut', href: BASE + 'cram.html' });
     if(!ready.gap.length) delete ready.gap;
-    ready.foot = cfg.group === 'unit' ? 'Counts the topics at Strong, each unit weighted by its share of the AP&reg; exam (the middle of the College Board&rsquo;s range). Mastery is not a score prediction.' : 'Counts the topics at Strong, every built topic once. Mastery is not a score prediction.';
+    ready.foot = cfg.group === 'unit' ? 'Units weighted by their share of the AP&reg; exam. Not a score prediction.' : 'Every built topic counts once. Not a score prediction.';
     ready.more = [{ label: daysLeft === null ? 'Set your exam date' : 'Exam date and daily target', html: '<div id="d5ExamCard"></div>', open: daysLeft === null && !isNew, id: 'd5ExamDate' }];
     if(cfg.frqHtml) ready.more.push({ label: 'Free-response scores', html: cfg.frqHtml });
 
