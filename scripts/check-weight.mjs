@@ -610,7 +610,8 @@ const BUDGETS = [
   /* 59.1 -> 59.6 (Practice v2, 2026-11-06): the engine starts a practice set from the panel (from, area, diff,
      n) and exposes the clock's submit; measured 59.4. */
   /* 59.6 -> 59.8 (question audit 2026-11-06): practice-engine.js deals the choices afresh each visit; measured 59.6. */
-  ['nremt/practice.html', 59.8],
+  /* 59.8 -> 61.1 (score card 2026-11-07): renderEnd draws LevlStudy.end on the results, plus its CSS; measured 61.0. */
+  ['nremt/practice.html', 61.1],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
