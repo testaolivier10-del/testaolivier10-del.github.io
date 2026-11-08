@@ -25,3 +25,12 @@ missedTitle, badges:[text], step, retry, also, stepHtml, extras, next, nextTitle
 
 ## Not built
 The estimated AP score needs its own scoring model per course; `estimate` is supported but nothing sets it yet.
+
+## Flashcards (every course, 2026-11-07)
+kind 'Flashcards', unit 'knew it': cards whose first grade this session was not Again, out of cards graded. The hand line
+counts cards whose interval is longer than when the session met them ("N cards moved up a box"). Chips: ended early,
+new cards left today, due now or "Next due <when>", due by tomorrow (NREMT, ochem), the grade tally, XP. The missed list
+is the cards first marked Again (front, back; a long back shows its first sentence and opens to the whole), titled by
+when they come back. Main button: study the cards left today (through LevlNextStep on A&P, ochem and NREMT), else
+Practice questions; Retry runs the missed cards again as a no XP run that keeps their schedule; quiet "Change the deck".
+Topics (by topic, or topic area on NREMT) show when the session touched more than one.

@@ -269,7 +269,7 @@
   /* ---- a session ---- */
   function start(ids, mode){
     if(!ids.length) return;
-    run = { queue: ids.slice(), mode: mode, total: ids.length, done: 0, flipped: false, counts: [0, 0, 0, 0, 0], paidIds: {}, paid: 0, seen: {}, deck: prefs.deck };
+    run = { queue: ids.slice(), mode: mode, total: ids.length, done: 0, flipped: false, counts: [0, 0, 0, 0, 0], paidIds: {}, paid: 0, seen: {}, first: {}, from: {}, deck: prefs.deck };
     showCard();
   }
   function frontHtml(c){
@@ -291,7 +291,7 @@
     var s = load().cards[c.id];
     var st = isNew(s) ? '<span class="chem-fc-tag new">New</span>' : isLearning(s) ? '<span class="chem-fc-tag learn">Learning</span>' : '<span class="chem-fc-tag">Review</span>';
     var p = Math.round(run.done / Math.max(1, run.done + run.queue.length) * 100);
-    app.innerHTML = '<div class="cx-session chem-fc-session"><div class="cx-sbar"><span class="cx-sbar-t">' + esc(deckName(run.deck)) + (run.mode === 'ahead' ? ' &middot; studying ahead' : '') + '</span><span class="cx-sbar-n">' + run.done + ' done &middot; ' + run.queue.length + ' to go</span><button type="button" class="cx-end" data-act="quit">End session</button></div>' +
+    app.innerHTML = '<div class="cx-session chem-fc-session"><div class="cx-sbar"><span class="cx-sbar-t">' + esc(deckName(run.deck)) + (run.mode === 'ahead' ? ' &middot; studying ahead' : run.mode === 'retry' ? ' &middot; missed cards' : '') + '</span><span class="cx-sbar-n">' + run.done + ' done &middot; ' + run.queue.length + ' to go</span><button type="button" class="cx-end" data-act="quit">End session</button></div>' +
       '<div class="cx-progress" role="progressbar" aria-label="Session progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p + '"><i style="width:' + p + '%"></i></div>' +
       '<div class="chem-fc-card" id="chem-fc-card"><button type="button" class="chem-fc-face chem-fc-front" data-act="flip" aria-describedby="chem-fc-hint"><span class="chem-fc-meta">' + st + '<span class="chem-fc-tag">' + (c.kind === 's' ? 'Summary' : 'Glossary') + '</span><span>' + esc(TOPIC[c.topic].title) + '</span></span>' +
         frontHtml(c) + '<span class="chem-fc-tap" id="chem-fc-hint">Tap or press Space to show the answer</span></button></div>' +
@@ -321,11 +321,12 @@
   function grade(g){
     if(!run || !run.flipped) return;
     var id = run.queue.shift(), now = Date.now(), d = load(), prev = d.cards[id] || null, wasNew = isNew(prev), early = isEarly(prev, now);
+    if(!(id in run.first)){ run.first[id] = g; run.from[id] = isNew(prev) ? 0 : prev.i || 0; }
     d.cards[id] = next(prev, g, now, early);
     if(wasNew){ var today = dayKey(now); if(d.fresh.day !== today) d.fresh = { day: today, n: 0 }; d.fresh.n++; }
     save(d);
     run.counts[g]++;
-    if(!early && run.mode !== 'ahead' && !run.paidIds[id]){ run.paidIds[id] = 1; run.paid++; }
+    if(!early && run.mode === 'scheduled' && !run.paidIds[id]){ run.paidIds[id] = 1; run.paid++; }
     if(!run.seen[id]){ run.seen[id] = 1; run.done++; }
     if(g === AGAIN) run.queue.splice(Math.min(AGAIN_GAP, run.queue.length), 0, id);
     showCard();
@@ -341,21 +342,68 @@
     return xp;
   }
   window.addEventListener('pagehide', function(){ if(run) settle(); });
+  /* The end of a session: the shared score card (docs/score-card.md, LevlStudy.end). A card counts as known when
+     its first grade this session was not Again; it moved up a box when its interval is longer now than when the
+     session met it. The missed list shows each card's front and back, and when it comes back. */
+  function whenLabel(t, now){
+    var m = Math.round((t - now) / MIN);
+    if(m < 60) return 'in ' + plural(Math.max(1, m), 'minute');
+    if(dayKey(t) === dayKey(now)) return 'later today';
+    var days = Math.round((midnightPlus(t, 0) - midnightPlus(now, 0)) / 864e5);
+    return days === 1 ? 'tomorrow' : 'in ' + days + ' days';
+  }
+  function cardBits(c){
+    var f = document.createElement('div'), b = document.createElement('div');
+    f.innerHTML = frontHtml(c); b.innerHTML = backHtml(c);
+    var q = f.querySelector('.chem-fc-q'), a = b.querySelector(c.kind === 'd' ? '.chem-fc-a-term' : '.chem-fc-a'), l = b.querySelector('.chem-fc-from a');
+    return { stem: q ? q.innerHTML : '', ans: a ? a.innerHTML : '', href: l ? l.getAttribute('href') : '', name: l ? l.textContent : '' };
+  }
+  /* A long back (a summary, a worked answer) shows its first sentence in the row and the whole of it when opened. */
+  function brief(h){
+    var t = String(h || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    if(t.length <= 140) return [h, ''];
+    var m = t.match(/^.{20,140}?[.;:](?=\s|$)/);
+    return [esc(m ? m[0] : t.slice(0, 120).trim() + '\u2026'), h];
+  }
   function finish(quit){
     if(!run) return;
     var r = run, xp = settle(), graded = r.counts[1] + r.counts[2] + r.counts[3] + r.counts[4];
     if(graded && window.ApChemCore) window.ApChemCore.event('apchem-session-finish', { mode: 'flashcards', answered: graded, correct: graded - r.counts[1] });
     run = null;
-    var q = queueFor(deckCards(r.deck), Date.now());
-    app.innerHTML = '<section class="chem-fc-done panel" aria-labelledby="chem-fc-done-h" tabindex="-1"><h2 id="chem-fc-done-h">' + (quit && r.done < r.total ? 'Session ended' : 'Session complete') + '</h2>' +
-      (graded ? '<p>You worked through ' + plural(r.done, 'card') + ' (' + plural(graded, 'grade') + ').</p><ul class="chem-fc-tally">' + [1, 2, 3, 4].map(function(g){ return '<li class="g' + g + '"><b>' + r.counts[g] + '</b><span>' + GRADES[g].label + '</span></li>'; }).join('') + '</ul>' : '<p>No cards graded this time.</p>') +
-      (xp ? '<p class="chem-fc-xp">+' + xp + ' XP</p>' : '') + (r.counts[1] ? '<p class="chem-fc-note">Cards you marked Again come back in about ten minutes.</p>' : '') +
-      '<div class="chem-fc-actions">' + (q.due.length + q.fresh.length ? '<button type="button" class="btn-press alt" data-act="more">Keep going (' + (q.due.length + q.fresh.length) + ')</button>' : '') +
-      '<button type="button" class="btn-outline" data-act="home">Back to decks</button><a class="btn-outline" href="' + esc(BASE + 'practice.html') + '">Practice questions</a></div></section>';
-    var more = app.querySelector('[data-act="more"]');
-    if(more) more.addEventListener('click', function(){ start(q.due.concat(q.fresh), 'scheduled'); });
-    app.querySelector('[data-act="home"]').addEventListener('click', function(){ renderHome(); var s = document.getElementById('chem-fc-deck'); if(s) s.focus(); });
-    app.querySelector('.chem-fc-done').focus({ preventScroll: true });
+    var now = Date.now(), cards = deckCards(r.deck), q = queueFor(cards, now), d = load(), todo = q.due.length + q.fresh.length;
+    var seen = Object.keys(r.first), missIds = seen.filter(function(id){ return r.first[id] === AGAIN; });
+    var up = seen.filter(function(id){ var s = d.cards[id]; return s && (s.i || 0) > r.from[id]; }).length;
+    var nextDue = 0, back = 0;
+    cards.forEach(function(c){ var s = d.cards[c.id]; if(!isNew(s) && s.d > now && (!nextDue || s.d < nextDue)) nextDue = s.d; });
+    missIds.forEach(function(id){ var s = d.cards[id]; if(s && s.d > now && (!back || s.d < back)) back = s.d; });
+    var tally = [4, 3, 2, 1].filter(function(g){ return r.counts[g]; }).map(function(g){ return r.counts[g] + ' ' + GRADES[g].label; }).join(', ');
+    var byTopic = {}, order = [];
+    seen.forEach(function(id){
+      var c = BY_ID[id]; if(!c) return;
+      var t = byTopic[c.topic];
+      if(!t){ var bits = cardBits(c); t = byTopic[c.topic] = { name: TOPIC[c.topic] ? TOPIC[c.topic].title : bits.name, href: bits.href, c: 0, n: 0, mastery: null }; t.links = bits.href ? [{ label: 'Lesson', href: bits.href }] : []; order.push(t); }
+      t.n++; if(r.first[id] !== AGAIN) t.c++;
+    });
+    var practice = { href: BASE + 'practice.html', label: 'Practice questions' };
+    function home(){ renderHome(); var s = document.getElementById('chem-fc-deck'); if(s) s.focus(); }
+    app.innerHTML = '<div class="chem-fc-end">' + LevlStudy.end({
+      kind: 'Flashcards', unit: 'knew it', right: seen.length - missIds.length, total: seen.length,
+      hand: !graded ? 'No cards graded this time.' : up ? plural(up, 'card') + ' moved up a box' : null,
+      chips: [quit && r.done < r.total ? 'Ended early' : '', q.fresh.length ? plural(q.fresh.length, 'new card') + ' left today' : '',
+        q.due.length ? q.due.length + ' due now' : nextDue ? 'Next due ' + whenLabel(nextDue, now) : '', tally, xp ? '+' + xp + ' XP' : ''],
+      sub: r.mode === 'ahead' && graded ? 'Studying ahead earns no XP' : '',
+      missedTitle: back ? 'Back ' + whenLabel(back, now) : 'Missed at first',
+      missed: missIds.map(function(id){ var c = BY_ID[id]; if(!c) return null; var b = cardBits(c), a = brief(b.ans); return { stem: b.stem, you: '', ans: a[0], why: a[1], youWhy: '', href: b.href }; }),
+      step: todo ? { act: 'more', label: 'Study ' + plural(todo, q.due.length ? 'card' : 'new card') } : practice,
+      retry: missIds.length ? { act: 'retry', label: 'Retry ' + plural(missIds.length, 'miss', 'misses') } : null,
+      also: [{ act: 'home', label: 'Change the deck' }, todo ? practice : null],
+      nextTitle: 'Topics', next: order.length > 1 ? LevlStudy.topics(order) : ''
+    }) + '</div>';
+    LevlStudy.wire(app, {
+      more: function(){ start(q.due.concat(q.fresh), 'scheduled'); },
+      retry: function(){ start(missIds, 'retry'); },
+      home: home
+    });
   }
   document.addEventListener('keydown', function(e){
     if(!run || e.ctrlKey || e.metaKey || e.altKey) return;
