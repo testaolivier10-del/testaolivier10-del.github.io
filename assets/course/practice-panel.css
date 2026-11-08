@@ -51,8 +51,9 @@
 .pp-chip:disabled:hover{border-color:var(--line)}
 .pp-chip[aria-pressed="true"]:disabled:hover{border-color:var(--accent)}
 /* A setting's choices sit in one segmented box; the chosen one is tinted. */
-.pp-ctl .pp-chips{display:inline-flex;flex-wrap:wrap;gap:3px;padding:3px;border:1.5px solid var(--line);border-radius:12px;background:var(--white);max-width:100%}
-.pp-ctl .pp-chip{border:0;background:transparent;padding:8px 14px;border-radius:9px;justify-content:center}
+/* Owner 2026-11-07: each choice is its own outlined button, so wrapped rows on a phone never read as loose words. */
+.pp-ctl .pp-chips{display:inline-flex;flex-wrap:wrap;gap:6px;max-width:100%}
+.pp-ctl .pp-chip{border:0;background:var(--white);padding:8px 14px;border-radius:10px;justify-content:center;box-shadow:inset 0 0 0 1.5px var(--line)}
 .pp-ctl .pp-chip:hover{background:var(--surface2)}
 .pp-ctl .pp-chip[aria-pressed="true"]{background:var(--ctint);color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent)}
 .pp-sel{display:block;width:100%;font:700 15px var(--font-ui);color:var(--ink);padding:11px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface2);min-height:46px;box-shadow:none}
