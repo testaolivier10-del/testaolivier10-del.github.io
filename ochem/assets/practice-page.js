@@ -441,9 +441,9 @@
     if(lead) nextHtml += '<div class="next-up"><b>' + esc(lead.headline) + '.</b> ' + esc(lead.detail) + '</div>';
 
     summaryEl.innerHTML = LevlStudy.end({
-      right: S.correct, total: asked, course: 'ochem',
-      line: score + '% right',
-      sub: touched.length ? esc('Across ' + plural(touched.length, 'concept') + '.') : '',
+      right: S.correct, total: asked, course: 'ochem', kind: 'Practice set',
+      missed: S.history.filter(function(h){ return !h.isCheck && !h.d.correct; }).map(function(h){ return LevlStudy.miss(h.q, h.response && h.response.choice); }),
+      nextTitle: 'Concepts',
       extras: xpHtml, next: nextHtml,
       retry: missIds.length ? { act: 'retry', label: missIds.length === 1 ? 'Retry 1 miss' : 'Retry ' + missIds.length + ' misses' } : null,
       // One next step (assets/next-step.js); the engine's own pick stays as a quiet alternative.

@@ -717,3 +717,25 @@ a.mode-card .go{font:900 14px var(--font-ui);color:var(--accent-ink, var(--accen
 .cat-how{margin:10px 0 0;padding:14px 16px;border-radius:14px;background:var(--white);box-shadow:inset 0 0 0 1px var(--line);}
 .cat-how summary{font-weight:900;cursor:pointer;min-height:28px;}
 .cat-how p{margin:10px 0 0;font-size:14.5px;line-height:1.6;max-width:72ch;}
+
+/* ---- The score card on the results (docs/score-card.md; renderEnd in practice-engine.js) ----
+   One column: the shared card (assets/course/study.css .cx-endp3), its extras, the topic areas under each
+   domain, the adaptive verdict, then the answer list moved into the card's last section. */
+#resultsScreen #nrEnd{max-width:880px;margin:0 auto;}
+#nrEnd .nr-end-x{flex:1 1 100%;order:5;}
+#nrEnd .next-xp{font:900 14px var(--font-ui);color:var(--accent-text,var(--accent));margin:12px 0 0;}
+#nrEnd .cleared-note{margin:12px 0 0;}
+#nrEnd .nr-end-links{display:flex;flex-wrap:wrap;gap:6px 18px;margin:12px 0 0;}
+#nrEnd .nr-end-links .link-quiet{background:none;border:0;padding:4px 0;cursor:pointer;font:800 14px var(--font-ui);color:var(--muted);text-decoration:underline;text-underline-offset:3px;}
+#nrEnd .nr-end-links .link-quiet:hover{color:var(--ink);}
+#nrEnd .nr-subs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:4px 24px;}
+#nrEnd .nr-sub h3{margin:14px 0 4px;font:900 14px var(--font-ui);color:var(--ink);}
+#nrEnd .nr-cat{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:16px 18px;}
+#nrEnd .nr-cat .cat-dom{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--line);font-size:14px;}
+#nrEnd .readiness-update{margin-top:22px;padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:var(--white);}
+#nrEnd .readiness-update .r-sub{color:var(--muted);}
+#nrEnd .readiness-update .r-tag{color:var(--muted);}
+#nrEnd .readiness-update .r-label.tier-good{background:var(--tint-good);color:var(--good-text);}
+#nrEnd .readiness-update .r-label.tier-mid{background:var(--tint-amber);color:var(--ink);}
+#nrEnd .readiness-update .r-label.tier-low{background:var(--tint-bad);color:var(--bad-text);}
+@media print{ #nrEnd .nr-end-links,#nrEnd .cx-endp-acts,#nrEnd .levl-next{display:none !important;} #nrEnd .cx-band{-webkit-print-color-adjust:exact;print-color-adjust:exact;} }

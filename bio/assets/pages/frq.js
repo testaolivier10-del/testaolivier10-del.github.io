@@ -48,6 +48,31 @@
     document.head.appendChild(s);
   }
 
+  /* The score card under the rubric once the score is saved (docs/score-card.md; the shared loader
+     ../assets/course/card-loader.js brings study.js and study.css). Next goes to the first question after this
+     one not yet scored, else the list. */
+  function scoreCard(K, f, box, after, topic){
+    var host = box.querySelector('.fq-card');
+    if(!host){ host = document.createElement('div'); host.className = 'fq-card'; after.insertAdjacentElement('afterend', host); }
+    var all = { href: BASE + 'frq.html', label: 'All free response questions' };
+    function draw(next){
+      window.LevlCard.frq({ host: host, f: f, box: box, course: 'apbio', href: topic ? BASE + 'notes/' + topic + '.html' : '',
+        step: next ? { href: BASE + 'frq/' + next.id + '.html', label: 'Next question' } : all, also: next ? [all] : [] });
+    }
+    function go(){
+      K.index(BASE).then(function(list){
+        var sc = K.scores(), i = list.findIndex(function(x){ return x.id === f.id; });
+        var rest = list.slice(i + 1).concat(list.slice(0, Math.max(0, i)));
+        draw(rest.filter(function(x){ return !sc[x.id]; })[0] || null);
+      }).catch(function(){ draw(null); });
+    }
+    if(window.LevlCard){ go(); return; }
+    var s = document.createElement('script');
+    s.src = BASE + '../assets/course/card-loader.js';
+    s.onload = function(){ if(window.LevlCard) go(); };
+    document.head.appendChild(s);
+  }
+
   /* -------------------------------------------------------------- list */
   var filter = { type: '', unit: '' };
   function list(K){
@@ -140,6 +165,8 @@
           if(Core) Core.event('apbio-frq-score', { frq: id, got: s.got, of: s.of });
           this.textContent = 'Saved';
           this.disabled = true;
+          var more = this.parentNode.querySelector('a.btn-outline'); if(more) more.hidden = true;
+          scoreCard(K, f, box, this.parentNode, topic);
         });
         box.querySelector('#bio-fq-r-h').focus();
       });

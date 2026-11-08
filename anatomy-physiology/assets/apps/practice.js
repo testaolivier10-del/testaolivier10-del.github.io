@@ -410,7 +410,7 @@
     session.tries[q.id] = (session.tries[q.id] || 0) + 1;
     if(!(q.id in session.firstTry)){
       session.firstTry[q.id] = res.correct;
-      session.results.push({ q: q, correct: res.correct, score: res.score });
+      session.results.push({ q: q, correct: res.correct, score: res.score, pick: res.pick });
     }
     // Missed mode: a miss comes back at the end of this session (three tries
     // at most, so a session always ends).
@@ -472,13 +472,13 @@
     /* The shared end panel (LevlStudy.end, consistency audit 2026-11, B7): score, what to study next, Retry
        misses, one next step (assets/next-step.js), then the table. */
     app.innerHTML = '<div class="anp-pr-summary">' + LevlStudy.end({
-      right: right, total: res.length, course: 'anp', line: pctRight + '% right',
+      right: right, total: res.length, course: 'anp', kind: 'Practice set',
+      missed: res.filter(function(r){ return !r.correct; }).map(function(r){ return LevlStudy.miss(r.q, r.pick, r.q.topic && TOPIC[r.q.topic] ? lessonHref(r.q.topic) : ''); }),
       nextTitle: 'Topics', next: nextHtml + coreHtml,
       retry: stillWrong.length ? { act: 'retry', label: 'Retry ' + plural(stillWrong.length, 'miss', 'misses') } : null,
       stepHtml: window.LevlNextStep ? LevlNextStep('anp', { topics: topicOrder, also: [
         { label: 'Another set like this', act: function(){ if(GO && mode !== 'retry'){ GO.again(); return; } if(mode === 'retry' || !poolFor(mode).length) renderSetup(); else start(mode, count); } }] }) : '',
-      more: 
-        (GO && GO.defer ? '<h2>Every question, with its explanation</h2><div class="pp-kept"></div>' : '')
+      kept: GO && GO.defer ? '<h2 class="cx-endp-h">All ' + res.length + ' answers, with explanations</h2><div class="pp-kept"></div>' : ''
     }) + '</div>';
     if(GO && GO.defer){ var kept = app.querySelector('.pp-kept'); if(kept) kept.appendChild(GO.kept); GO.kept = document.createDocumentFragment(); }
     LevlStudy.wire(app, { retry: function(){ start('retry', 0, stillWrong); } });

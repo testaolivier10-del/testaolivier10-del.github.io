@@ -2387,8 +2387,7 @@ function rewindTo(i){
    is a miss and goes to Review (assets/tool-results.js), linking back to this
    scenario. Forks where every option carries a consequence are not scored. */
 function recordDebrief(){
-  if(!window.NremtToolResults) return 0;
-  let missed = 0;
+  const out = { missed: 0, right: 0, total: 0, critical: 0, misses: [] };
   pathLog.forEach(p => {
     const node = currentScenario.nodes[p.fromNode];
     if(!node || !node.choices || node.choices.length < 2) return;
@@ -2396,14 +2395,46 @@ function recordDebrief(){
     if(!better.length) return;
     const picked = node.choices[p.index];
     const correct = !picked.consequence;
-    if(!correct) missed++;
-    window.NremtToolResults.record({
+    out.total++;
+    if(correct) out.right++;
+    else {
+      out.missed++;
+      // A miss at a time-critical fork (the ones the monitor runs a clock on) is a critical miss.
+      const crit = !!(SIM && SIM.HESITATE[p.fromNode]);
+      if(crit) out.critical++;
+      out.misses.push({ node, p, better: better[0], crit });
+    }
+    if(window.NremtToolResults) window.NremtToolResults.record({
       tool: 'scenario-sim', id: currentScenario.id + ':' + p.fromNode, correct,
       label: currentScenario.title + ': ' + better[0].text,
       href: 'scenario-sim.html?scenario=' + currentScenario.id
     });
   });
-  return missed;
+  if(!window.NremtToolResults) out.missed = 0;
+  return out;
+}
+
+/* The score card at the end of a call (docs/score-card.md; ../assets/course/card-loader.js brings study.js and
+   study.css): calls right out of the scored forks, the outcome in the handwritten line, a chip for critical
+   misses, and each wrong call with the right one and what it cost. Its buttons replace the dock's Try again and
+   Next call. */
+function clip(t, n){ const s = String(t || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : s; }
+function scoreCard(host, deb, ending, nxt){
+  if(!host || !window.LevlCard) return;
+  const misses = deb.misses.map(m => ({ stem: clip(m.node.text, 150), you: m.p.text, ans: m.better.text,
+    why: m.p.consequence ? '<b>What it cost:</b> ' + m.p.consequence : '', youWhy: '', href: '' }));
+  window.LevlCard.show(host, {
+    course: 'nremt', kind: 'Scenario', title: currentScenario.title, right: deb.right, total: deb.total, unit: 'calls right',
+    hand: ending === 'good' ? 'Good outcome!' : ending === 'bad' ? 'Poor outcome.' : 'Mixed outcome.',
+    chips: deb.critical ? [deb.critical + ' critical miss' + (deb.critical === 1 ? '' : 'es')] : [],
+    missed: misses, missedTitle: misses.length ? (misses.length === 1 ? '1 call to change' : misses.length + ' calls to change') : '',
+    step: { act: 'next', label: 'Next call: ' + nxt.title },
+    retry: { act: 'again', label: 'Try this call again' },
+    also: [{ act: 'picker', label: 'All scenarios' }]
+  }, { next: () => startScenario(nxt.id), again: () => startScenario(currentScenario.id), picker: () => backToPicker() }, () => {
+    // Drawn: the card's outcome and buttons stand in for the badge and the dock's two buttons.
+    document.querySelectorAll('.sim-end-acts, #simBox .ending-badge').forEach(el => { el.hidden = true; el.style.display = 'none'; });
+  });
 }
 
 /* The live patient (assets/scenario-monitor.js): a monitor fed by each node's
@@ -2501,7 +2532,7 @@ function renderNode(consequenceText){
 
   if (node.ending) {
     if(monitor){ monitor.destroy(); monitor = null; }
-    const missedSteps = recordDebrief();
+    const deb = recordDebrief(), missedSteps = deb.missed, nxtCall = nextScenario();
     if (studio) {
       const outcome = node.ending === 'good' ? 'Good outcome' : node.ending === 'bad' ? 'Poor outcome' : 'Mixed outcome';
       studio.pills([{ html: outcome, tone: node.ending === 'good' ? 'good' : node.ending === 'bad' ? 'bad' : 'warn' }]);
@@ -2515,13 +2546,14 @@ function renderNode(consequenceText){
         ${missedSteps ? `<p class="debrief-review">${missedSteps} skipped or out-of-order step${missedSteps === 1 ? '' : 's'} went to your <a href="review.html">Review queue</a>. Each leaves it when you take the better choice on a later run.</p>` : ''}
         <div class="sim-end-acts">
           <button type="button" class="ls-btn ls-pri" id="simAgain">Try this call again</button>
-          <button type="button" class="ls-btn ls-pri sim-next" id="simNext"><span>Next call</span><small>${nextScenario().title}</small></button>
+          <button type="button" class="ls-btn ls-pri sim-next" id="simNext"><span>Next call</span><small>${nxtCall.title}</small></button>
         </div>
         ${window.LevlNextStep ? LevlNextStep('nremt', { tags: ['nremt:' + currentScenario.id] }) : ''}`;
-      const nxt = nextScenario();
+      const nxt = nxtCall;
       document.getElementById('simAgain').addEventListener('click', () => startScenario(currentScenario.id));
       document.getElementById('simNext').addEventListener('click', () => startScenario(nxt.id));
       box.innerHTML = `
+      <div class="sim-card"></div>
       <span class="ending-badge ${node.ending}">${outcome}</span>
       <p class="node-text">${node.text}</p>
       <div class="path-log">
@@ -2543,6 +2575,7 @@ function renderNode(consequenceText){
         </ol>
       </div>`;
       studio.root.setAttribute('data-sim', 'end');
+      scoreCard(box.querySelector('.sim-card'), deb, node.ending, nxt);
       document.getElementById('backBtn').addEventListener('click', backToPicker);
       box.querySelectorAll('[data-rewind]').forEach(btn => {
         btn.addEventListener('click', () => { studio.root.setAttribute('data-sim', 'call'); rewindTo(parseInt(btn.dataset.rewind, 10)); });
@@ -2555,6 +2588,7 @@ function renderNode(consequenceText){
         <span class="sim-domain">${currentScenario.domain}</span>
         <button type="button" class="back-link" id="backBtn">&larr; All scenarios</button>
       </div>
+      <div class="sim-card"></div>
       <span class="ending-badge ${node.ending}">${node.ending === 'good' ? 'Good outcome' : node.ending === 'bad' ? 'Poor outcome' : 'Mixed outcome'}</span>
       <p class="node-text">${node.text}</p>
       ${missedSteps ? `<p class="debrief-review">${missedSteps} skipped or out-of-order step${missedSteps === 1 ? '' : 's'} went to your <a href="review.html">Review queue</a>. Each leaves it when you take the better choice on a later run.</p>` : ''}
@@ -2580,6 +2614,7 @@ function renderNode(consequenceText){
       </div>
     `;
     document.getElementById('backBtn').addEventListener('click', backToPicker);
+    scoreCard(box.querySelector('.sim-card'), deb, node.ending, nxtCall);
     box.querySelectorAll('[data-rewind]').forEach(btn => {
       btn.addEventListener('click', () => rewindTo(parseInt(btn.dataset.rewind, 10)));
     });
@@ -2653,6 +2688,7 @@ if (studio) studio.hint({ target: document.querySelector('#pickerGrid [data-scen
 <script src="assets/tool-results.js" defer></script>
 <script src="assets/body-figures.js" defer></script>
 <script src="assets/scenario-monitor.js" defer></script>
+<script src="../assets/course/card-loader.js" defer></script>
 <script src="assets/nav.js" defer></script>
 </body>
 </html>

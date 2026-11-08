@@ -422,7 +422,7 @@
   function answered(q, res){
     if(CLS) CLS.answer(q, res);
     session.tries[q.id] = (session.tries[q.id] || 0) + 1;
-    if(!(q.id in session.firstTry)){ session.firstTry[q.id] = res.correct; session.results.push({ q: q, correct: res.correct, score: res.score }); }
+    if(!(q.id in session.firstTry)){ session.firstTry[q.id] = res.correct; session.results.push({ q: q, correct: res.correct, score: res.score, pick: res.pick }); }
     progress();
   }
   function stepDone(step){
@@ -478,17 +478,19 @@
     var missedQs = 0;
     stillWrong.forEach(function(s){ s.items.forEach(function(q){ if(q.id in session.firstTry && !session.firstTry[q.id]) missedQs++; }); });
     app.innerHTML = '<div class="bio-pr-summary">' + LevlStudy.end({
-      right: right, total: res.length, line: pctRight + '% right', course: 'apbio',
+      right: right, total: res.length, course: 'apbio', kind: 'Practice set',
+      missed: res.filter(function(r){ return !r.correct; }).map(function(r){ return LevlStudy.miss(r.q, r.pick, r.q.topic ? lessonHref(r.q.topic) : ''); }),
       nextTitle: 'Topics',
       next: LevlStudy.topics(byTopic.map(function(x){ var t = TOPIC[x.key]; return { name: t ? t.title : x.key, href: lessonHref(x.key), c: x.c, n: x.n, mastery: Core.topicMastery(x.key).value || 0,
         links: [{ label: 'Lesson', href: lessonHref(x.key) }, { label: 'Notes', href: notesHref(x.key) }] }; })),
       retry: stillWrong.length ? { act: 'retry', label: 'Retry ' + plural(missedQs || stillWrong.length, 'miss', 'misses') } : null,
-      step: due ? { href: BASE + 'review.html', label: 'Review ' + plural(due, 'due question'), why: 'Due questions come first: a review late is a relearn.' }
-        : { act: 'again', label: again.label, why: 'Nothing is due, so the next set keeps the same filters.' },
+      step: due ? { href: BASE + 'review.html', label: 'Review ' + plural(due, 'due question') }
+        : { act: 'again', label: again.label },
       also: due ? [again, change] : weak.length ? [change] : [change, { href: BASE + 'exams.html', label: 'Try a unit test' }],
       more:
       LevlStudy.bars('Science practices', byPractice.map(function(x){ var p = PRACTICE[x.key]; return { label: x.key + (p ? '. ' + p.name : ''), c: x.c, n: x.n }; })) +
-      (GO && GO.defer ? '<h2>Every question, with its explanation</h2><div class="pp-kept"></div>' : '')
+      '',
+      kept: GO && GO.defer ? '<h2 class="cx-endp-h">All ' + res.length + ' answers, with explanations</h2><div class="pp-kept"></div>' : ''
     }) + '</div>';
     if(GO && GO.defer){ var kept = app.querySelector('.pp-kept'); if(kept) kept.appendChild(GO.kept); GO.kept = document.createDocumentFragment(); }
     LevlStudy.wire(app, {
