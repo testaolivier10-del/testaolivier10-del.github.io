@@ -269,6 +269,12 @@ a.gl{cursor:pointer;}
 .anp-cards{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
 .anp-cards li a{display:flex;flex-direction:column;gap:4px;height:100%;padding:15px 17px;border-radius:16px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);}
 .anp-cards li a span{color:var(--muted);font:600 13.5px/1.45 var(--font-ui);}
+/* The mastery line under a card: the card filled its cell (height:100%), so the line was drawn over the gap and the
+   next card's edge. The cell stacks card and line instead. */
+.anp-cards li{display:flex;flex-direction:column;gap:6px;}
+.anp-cards li a{flex:1;height:auto;}
+.anp-cards li > .anp-mastery{padding-left:4px;}
+.anp-cards li > .anp-mastery:empty{display:none;}
 .anp-filter{display:inline-flex;align-items:center;gap:8px;font:800 13.5px var(--font-ui);margin-top:6px;}
 .anp-filter input,.anp-filter select{padding:8px 11px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 14px var(--font-ui);}
 /* The glossary page's own rules are inlined in glossary.html (build-anp.mjs,
