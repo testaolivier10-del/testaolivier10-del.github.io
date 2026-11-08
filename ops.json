@@ -62,7 +62,8 @@
   "2026-11-05 daily run (2:41pm PT): no failed runs. yt-apbio-02 live as YHDQJ0k3IFU (Zapier): thumbnail, AP Bio playlist, captions, link comment pinned, 3 way thumbnail test running, end screen (best for viewer, AP Bio playlist, subscribe, moved to the lower half clear of levlprep.com); apbio-01 end screen video now points to it; site PR #148. Scheduled at 3pm: zombie ant 11-06 (TikTok and YouTube), stunt airbag poll Short holds 11-07 (manual), sodium lake 11-08. Speed camera poll Short (today) handed off to the phone: 32 MB is over the 10 MB Chrome upload cap. Cane toads posted. No new comments. Note: Thumbnail A/B dialog's first file input is slot 1, so upload the current pick to slot 1 too.",
   "2026-11-06 long video build: yt-phys-01-units-sig-figs (new AP Physics 1 coverage map, 39 videos) scripted and audited (why, fact, human read, recheck), about 11,200 chars, about 12:45. ElevenLabs had 9,065 credits (reset 6:07pm PT today), so stopped before voicing per spec step 1. Next run resumes at step 6 from pipeline/long/p01/ (also in the project). Music note: the stored routine prompt still mentions music; the spec's 2026-11-05 rule (no music in long videos, Olivier's words) wins.",
   "2026-11-06 daily run (fired late, 7:24pm PT): no failed runs, no approved Shorts to schedule (w1031 three pending). Speed camera marked posted; youtube ids: speed camera evwburP9DQI, zombie ant R-V4ZZJ8Eno. Question comments posted on YouTube and TikTok for both (TikTok comment_only). Studio showed 'Oops, something went wrong' (also with authuser=1) and refused screenshots, so their Studio thumbnails and YouTube pins wait; youtube.com comment menu offers only Report (viewer account). 5 comment replies drafted. Speed camera TikTok is doing well (about 2.2K likes, 29 comments).",
-  "2026-11-07 long video build: yt-phys-01-units-sig-figs built (12:44, eleven_v4, about 24,000 credits incl. two flatness re-voices) and saved pending. Fresh eyes review 7.5 after three passes (motion, scene life and people stiffness are the gap). Fixed a skia path op glitch in pipeline/long/p01/airman2.py diff() that painted a full shade over a person for one frame; pipeline/people/airman2.py still has the old diff."
+  "2026-11-07 long video build: yt-phys-01-units-sig-figs built (12:44, eleven_v4, about 24,000 credits incl. two flatness re-voices) and saved pending. Fresh eyes review 7.5 after three passes (motion, scene life and people stiffness are the gap). Fixed a skia path op glitch in pipeline/long/p01/airman2.py diff() that painted a full shade over a person for one frame; pipeline/people/airman2.py still has the old diff.",
+  "2026-11-08 daily run (3:38pm PT): no failed runs, post_time_3pm already done. Zombie ant marked posted; youtube ids stunt airbag ZX6PVaQKHvQ, sodium lake F56DnDnpzdY. Studio worked after switching account to Levl Prep (screenshots still refused; checks done by page script): thumbnails set for speed camera, zombie ant, stunt airbag, sodium lake; sodium lake related video set to atomic structure. No approved Shorts, so nothing is scheduled after today (w1031 three still pending). Playlists in order. No new YouTube comments; 3 TikTok replies drafted, snakeplisskenlives 'No, they dont' listed without a reply. yt-apchem-01 is due tomorrow."
  ],
  "pending_reruns": [],
  "related_check_after": null,
@@ -94,7 +95,13 @@
   "tt:deklan4394:speed-camera:shortcut dirt roads",
   "tt:akhil:speed-camera:oh",
   "tt:anthony tones pabon:speed-camera:is this legal",
-  "tt:roy alphard:zombie-ant:middle school"
+  "tt:roy alphard:zombie-ant:middle school",
+  "tt:user7458449416819:speed-camera:prof pulled over",
+  "tt:nickpickering45:speed-camera:dont speed",
+  "tt:etcadrian:speed-camera:didnt know mvt",
+  "tt:snakeplisskenlives:speed-camera:no they dont (no reply, context unclear)",
+  "tt:nyo.america:speed-camera:theorum",
+  "tt:frumley04:speed-camera:oh"
  ],
  "comment_drafts": [
   {
@@ -229,6 +236,30 @@
    "comment": "I learned this in middle school how is this AP",
    "reply": "Middle school gets the cool part! AP Bio uses it for parasitism and how species interact in the ecology unit, plus how a parasite can change its host's behavior.",
    "status": "drafted 2026-11-06"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1101-03-speed-camera",
+   "author": "user7458449416819",
+   "comment": "My prof told us a story how he got pulled over for speeding bc of this",
+   "reply": "Ha, that's the best way to remember the mean value theorem. Did his average speed give him away?",
+   "status": "drafted 2026-11-08"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1101-03-speed-camera",
+   "author": "nickpickering45",
+   "comment": "maybe don't go over the speed limit then",
+   "reply": "Simplest fix of all. The math only catches you if your average is over the limit.",
+   "status": "drafted 2026-11-08"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1101-03-speed-camera",
+   "author": "etcadrian",
+   "comment": "hahaha shit I didn't know MVT could be used like this",
+   "reply": "Right? It shows up in way more places than the textbook lets on.",
+   "status": "drafted 2026-11-08"
   }
  ],
  "series_counts": {
