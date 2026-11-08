@@ -236,7 +236,9 @@ const SHELL_BUDGETS = [
   /* 49.9 -> 50.4 (cram plan to Home, phone Start bars, 2026-11-06): path.js cramLink and paintSticky, the Practice
      phone bar in practice-panel.js and .css; measured 50.2. */
   /* 50.4 -> 52.1 (end screen v2b, owner 2026-11-07): LevlStudy.topics and .bars plus their styles, shared by every course. */
-  ['assets/course', 52.1],
+  /* 52.1 -> 56.6 (score card v3, 2026-11-07): study.js end() and the .cx-endp3 styles (56.4 measured before this
+     branch), plus card-loader.js and the card's Tool Studio fixes for FRQ, justify and NREMT scenarios; measured 56.6. */
+  ['assets/course', 56.6],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -630,7 +632,8 @@ const BUDGETS = [
   /* 53 -> 55 (calm tools P1): the inline Tool Studio arrangement (stage/dock/Why, the call so far); measured 54.3 KB. */
   /* 55 -> 57 (tool audit fixes 2026-10-27): the picker's category chips with seven drawn icons, the end screen's
      Try again / Next call pair and the unclamped opening call; measured 56.3 KB. The case data is unchanged. */
-  ['nremt/scenario-sim.html', 57],
+  /* 57 -> 57.2 (score card at the end of a call, 2026-11-07): the scoring and card call in the page; measured 57.1 KB, a hair over a 57.1 budget. */
+  ['nremt/scenario-sim.html', 57.2],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four

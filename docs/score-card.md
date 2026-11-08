@@ -15,6 +15,23 @@ Owner approved the improved mockup on 2026-11-07 ("make that live"). One layout 
    list (`o.kept`) when feedback was held to the end.
 Under 5 questions: band, misses and buttons only. Motion: count up, bar fill, card rises; off for reduced motion.
 
+## Free response, justify and NREMT scenarios
+These pages do not ship study.js and study.css; `assets/course/card-loader.js` (`LevlCard`) loads both the first time
+a result is drawn. `LevlCard.frq` and `LevlCard.justify` build the card from the ticked rubric, so each course's
+`frq.js` and `justify.js` only call them.
+- Free response (`<course>/assets/pages/frq.js`): one question per page, so the card appears under the rubric when
+  the student presses Save my score. Points of points; each part with an unticked point is a miss (the part's prompt,
+  the points it still needs, its full-credit sample); a chip names the part that lost the most when one part lost
+  more than any other. Next question goes to the next question not yet scored.
+- Justify (`<course>/assets/pages/justify.js`): the card appears under the checklist on Save my check; sound reasons
+  of the checklist; each point not made is a miss with the model answer that earns it. Rewrite and Next move into
+  the card (the old row hides until the next check).
+- NREMT scenarios (`nremt/scenario-sim.html`): at the end of a call; calls right of the scored forks (the same forks
+  that go to Review), the outcome as the handwritten line, a chip for critical misses (a miss at a time-critical
+  fork, `NremtSim.HESITATE`), each wrong call with the right one and what it cost. Next call, Try again and All
+  scenarios are the card's buttons; the dock keeps the Review note and the next step, the stage keeps the outcome
+  text and the path with Go back to this decision.
+
 ## o
 `{ course, kind, title, right, total, skipped, unit, hand, chips:[text], sub, timed:{used,limit,pace}, missed:[...],
 missedTitle, badges:[text], step, retry, also, stepHtml, extras, next, nextTitle, more, kept, estimate:{label,value,range} }`
