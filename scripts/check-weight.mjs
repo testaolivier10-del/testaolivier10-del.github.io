@@ -238,7 +238,8 @@ const SHELL_BUDGETS = [
   /* 50.4 -> 52.1 (end screen v2b, owner 2026-11-07): LevlStudy.topics and .bars plus their styles, shared by every course. */
   /* 52.1 -> 56.4 (score card v3, owner 2026-11-07): LevlStudy.end v3 and .cx-endp3 styles, measured on claude/score-card. */
   /* -> 57.0 (score card v3 on every mode, owner 2026-11-07): study.js and study.css plus card-loader.js. */
-  ['assets/course', 57.0],
+  /* -> 57.2 (overlap sweep 2026-11): the answer chip rules name Env Sci's, Macro's and Psychology's marks; measured 57.1 KB. */
+  ['assets/course', 57.2],
   /* 52.1 -> 56.6 (score card v3, 2026-11-07): study.js end() and the .cx-endp3 styles (56.4 measured before this
      branch), plus card-loader.js and the card's Tool Studio fixes for FRQ, justify and NREMT scenarios; measured 56.6. */
   /* 52.1 -> 56.5 (score card v3, owner 2026-11-07, docs/score-card.md): LevlStudy.end, miss and the .cx-endp3 styles; measured 56.4 KB. */

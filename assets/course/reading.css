@@ -71,6 +71,8 @@ a[class$="-fq-card"] b{font:900 17.5px/1.3 'Inter Display',var(--font-display),s
 
 /* ---- One free-response question (mockup S16) ------------------------------ */
 article[class$="-frq"]{display:grid;gap:16px;margin-top:22px;}
+/* Grid items default to min-width:auto, so a wide data table stretched the stimulus card past the phone screen; let it shrink so the table scrolls in its own wrapper. */
+article[class$="-frq"] > *{min-width:0;}
 section[class$="-stim"]{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px clamp(18px,3.5vw,32px);box-shadow:0 20px 44px -40px color-mix(in srgb,var(--ink) 60%,transparent);}
 section[class$="-stim"]>h3{font:900 clamp(20px,2.4vw,24px)/1.2 'Inter Display',var(--font-display),system-ui,sans-serif;letter-spacing:-.02em;}
 section[class$="-stim"] p{font-size:16.5px;line-height:1.7;}
@@ -86,3 +88,7 @@ b[class$="-frq-label"]{display:inline-grid;place-items:center;min-width:34px;hei
   section[class$="-stim"],li[class$="-frq-part"]{border:0;box-shadow:none;padding:0;background:none;}
   b[class$="-frq-label"]{background:none;color:inherit;min-width:0;padding:0;}
 }
+/* A data table wider than a phone scrolls in its wrapper; its caption stays put and wraps to the visible width
+   instead of scrolling off to the side with the columns. */
+section[class$="-stim"] .table-wrap{container-type:inline-size;}
+section[class$="-stim"] .table-wrap > table > caption{max-width:100cqw;position:sticky;left:0;box-sizing:border-box;}

@@ -73,6 +73,10 @@
 .tb-shell.r3-read .bk-row{border-radius:0;border:0;border-bottom:1px solid var(--line);background:none;padding:12px 0}
 .tb-shell.r3-read .bk-row:last-child{border-bottom:0}
 .tb-shell.r3-read .bk-row-n{background:none;color:var(--accent);font:900 22px/1 var(--display);letter-spacing:-.04em;min-width:52px;padding:0;height:auto;border-radius:0;text-align:left}
+/* The big topic number needs its own width: in book.css's 30 px phone track "8.10" ran into the title. */
+.tb-shell.r3-read .bk-row{grid-template-columns:56px minmax(0,1fr) auto auto}
+.tb-shell.r3-read .bk-row-n{min-width:0;white-space:nowrap}
+@media (max-width:700px){.tb-shell.r3-read .bk-row{grid-template-columns:56px minmax(0,1fr)}}
 .tb-shell.r3-read .bk-row-title{font:900 16px/1.3 var(--display);letter-spacing:-.01em;color:var(--ink)}
 .tb-shell.r3-read .bk-row-btns .bk-btn{background:var(--ctint);color:var(--accent);border:0;box-shadow:none;font:900 13.5px var(--font-ui);padding:7px 13px;border-radius:9px}
 .tb-shell.r3-read .bk-row-btns .bk-btn:hover{filter:brightness(.96)}
@@ -146,8 +150,11 @@
 .r3-lesson[data-cover="appsych"] > [class$="-ls-hero"]{background-image:url(../covers/art/appsych.svg)}
 .r3-lesson[data-cover="apprecalc"] > [class$="-ls-hero"]{background-image:url(../covers/art/apprecalc.svg)}
 .r3-lesson[data-cover="apmacro"] > [class$="-ls-hero"]{background-image:url(../covers/art/apmacro.svg)}
-.r3-lesson > .hero .eyebrow,.r3-lesson > [class$="-ls-hero"] .eyebrow{border:0;padding:0;color:rgba(255,255,255,.76);font:800 13px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;background:none}
+.r3-lesson > .hero .eyebrow,.r3-lesson > [class$="-ls-hero"] .eyebrow{border:0;padding:0;white-space:normal;color:rgba(255,255,255,.76);font:800 13px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;background:none}
 .r3-lesson > .hero h1,.r3-lesson > [class$="-ls-hero"] h1{color:#fff;font:900 clamp(40px,4.6vw,56px)/1 var(--display) !important;letter-spacing:-.04em;margin:10px 0 10px !important}
+/* A phone: one long word ("Compartmentalization") at 40 px ran 40 px off the screen. Smaller on a phone, and a word
+   that still does not fit breaks rather than pushing the page sideways. */
+@media (max-width:560px){.r3-lesson > .hero h1,.r3-lesson > [class$="-ls-hero"] h1{font-size:clamp(28px,8.4vw,40px) !important;overflow-wrap:break-word}}
 .r3-lesson > .hero .lede,.r3-lesson > [class$="-ls-hero"] .lede{color:rgba(255,255,255,.84) !important;font-size:17px;max-width:36em}
 .r3-lesson > [class$="-ls-hero"] [class$="-tags"] span{background:rgba(255,255,255,.14);color:#fff;border:0}
 .r3-lesson > .hero .lpv,.r3-lesson > [class$="-ls-hero"] .lpv{background:var(--white);color:var(--ink);border-radius:16px;max-width:560px}

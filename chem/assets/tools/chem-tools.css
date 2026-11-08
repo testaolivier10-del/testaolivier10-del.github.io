@@ -910,7 +910,8 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
   .ls-root .chem-ls-stage .pb-fig svg{width:auto;height:100%;max-width:100%;}
 }
 .ls-root .pb-pal .pb-chip{padding-right:18px;}
-.ls-root .pb-pal .pb-n{top:8px;right:10px;}
+/* The count sits inside the chip (two 44 px columns plus a 6 px gap, centred), clear of its border: it sat on the edge. */
+.ls-root .pb-pal .pb-n{top:12px;right:calc(50% - 38px);line-height:1;}
 /* Pictures to pick from: two to a row, calm labels. */
 .ls-root .cd-pics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
 .ls-root .cd-pics .bt-radio{margin:0;padding:6px;border:0;box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface2);}
