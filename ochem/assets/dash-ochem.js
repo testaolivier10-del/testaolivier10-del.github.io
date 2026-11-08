@@ -99,7 +99,7 @@
     big: coverage + '%', bigSub: ' of the concepts at Solid',
     note: coverage >= 100 ? 'All of them. Keep Rounds going.' : isNew ? 'Every concept you bring to Solid fills this in.' : (100 - coverage) + '% to go' + (daysLeft !== null ? ', with ' + plural(daysLeft, 'day') + ' left.' : '.'),
     scale: { value: coverage, goal: null, lo: '0%', hi: '100%', aria: coverage + '% of the ' + total + ' concepts are at Solid or better.' },
-    side: daysLeft !== null ? plural(daysLeft, 'day') + ' left' + (notSolidAll ? '<br>about ' + Math.ceil(notSolidAll / Math.max(1, daysLeft)) + ' concepts a day to Solid covers the rest' : '') : 'No exam date yet. <a href="#d5ExamDate">Set one</a>',
+    side: daysLeft !== null ? (notSolidAll ? 'About ' + Math.ceil(notSolidAll / Math.max(1, daysLeft)) + ' concepts a day to Solid covers the rest' : '') : '',
     gapTitle: 'What closes the gap', gap: [],
     foot: 'Strength comes from the concepts each question tests and fades if you stop practising. Solid starts at 70%.',
     more: [{ label: daysLeft === null ? 'Set your exam date' : 'Exam date and daily target', html: '<div id="examDateCard"></div>', open: daysLeft === null && !isNew, id: 'd5ExamDate' }] };

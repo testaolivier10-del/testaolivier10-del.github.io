@@ -278,7 +278,6 @@
     var key = [];
     if(p.weeks && p.weeks.length) key.push('<span><i class="d5-k-line"></i>your accuracy each week</span>');
     if(p.exams && p.exams.length) key.push('<span><i class="d5-k-exam"></i>' + esc(p.examWord || 'exams') + '</span>');
-    if(p.goal) key.push('<span><i class="d5-k-goal"></i>' + esc(p.goal.key || p.goal.label) + '</span>');
     if(key.length || p.allHref || p.cramHref) html += '<div class="d5-key">' + key.join('') + (p.allHref || p.cramHref ? '<span class="d5-spacer"></span>' : '') + (p.cramHref ? '<a href="' + esc(p.cramHref) + '">Cram plan</a>' : '') + (p.allHref ? '<a href="' + esc(p.allHref) + '">' + esc(p.allText || 'All exams') + '</a>' : '') + '</div>';
     return html + drawers(p.more) + '</div>';
   }
@@ -286,6 +285,11 @@
   function readyCard(r){
     var html = '<div class="d5-card">';
     if(r.locked) return html + r.locked + drawers(r.more) + '</div>';
+    /* Owner 2026-11-07 (Progress cleanup): without Premium, readiness is one row, not a figure that repeats question 2
+       and a sales box. */
+    if(r.lockRow) return html + '<div class="d5-xrow"><span><b>' + esc(r.lockRow.label) + '</b> <span class="d5-xpill">Premium</span></span><span class="d5-spacer"></span><a class="d5-xbtn" href="' + esc(r.lockRow.href) + '">' + esc(r.lockRow.cta || 'Unlock') + '</a></div>' +
+      (r.gap && r.gap.length ? '<div class="d5-gap">' + r.gap.map(function(x){ var val = x.value == null ? '' : '<b class="d5-gap-v' + (x.kind === 'ok' ? ' ok' : x.kind === 'mut' ? ' mut' : '') + '">' + esc(x.value) + '</b>';
+        return x.href ? '<a class="d5-gap-row" href="' + esc(x.href) + '"><span>' + x.text + '</span>' + val + '</a>' : '<div class="d5-gap-row"><span>' + x.text + '</span>' + val + '</div>'; }).join('') + '</div>' : '') + drawers(r.more) + '</div>';
     html += '<div class="d5-ready-top"><div><p class="d5-big"><b>' + r.big + '</b>' + (r.bigSub ? '<span>' + r.bigSub + '</span>' : '') + (r.badge || '') + '</p>' +
       (r.note ? '<p class="d5-hand">' + esc(r.note) + '</p>' : '') + '</div>' + (r.side ? '<p class="d5-ready-side">' + r.side + '</p>' : '') + '</div>';
     if(r.scale){
@@ -307,7 +311,7 @@
   var focusSeq = 0;
   function focusCard(f){
     var id = 'd5f' + (++focusSeq), views = (f.views || []).filter(Boolean), html = '<div class="d5-card">';
-    html += '<div class="d5-focus-top"><p class="d5-mut">' + (f.intro || '') + '</p>';
+    html += '<div class="d5-focus-top">';
     if(views.length > 1) html += '<div class="d5-seg" role="group" aria-label="Group by">' + views.map(function(v, i){
       return '<button type="button" data-d5view="' + id + '-' + i + '" aria-pressed="' + (i === 0) + '">' + esc(v.label) + (v.badge || '') + '</button>';
     }).join('') + '</div>';
@@ -316,12 +320,12 @@
       html += '<div class="d5-view" id="' + id + '-' + i + '"' + (i ? ' hidden' : '') + '>' + (v.intro ? '<p class="d5-mut d5-view-i">' + v.intro + '</p>' : '');
       if(v.locked) html += v.locked;
       else if(!v.rows || !v.rows.length) html += '<p class="d5-empty">' + (v.empty || 'Answer a few questions and this fills in.') + '</p>';
-      else html += v.rows.map(function(r){
-        return '<a class="d5-row" href="' + esc(r.href) + '"><span class="d5-ic' + (r.warm ? ' warm' : '') + '">' + (r.icon ? (P[r.icon] ? icon(r.icon) : '<b>' + esc(r.icon) + '</b>') : '') + '</span>' +
-          '<span class="d5-row-n"><b>' + esc(r.name) + '</b><small>' + (r.sub || '') + '</small></span>' +
+      else html += v.rows.map(function(r, k){
+        return '<a class="d5-row"' + (k >= 3 ? ' hidden data-d5x' : '') + ' href="' + esc(r.href) + '"><span class="d5-ic' + (r.warm ? ' warm' : '') + '">' + (r.icon ? (P[r.icon] ? icon(r.icon) : '<b>' + esc(r.icon) + '</b>') : '') + '</span>' +
+          '<span class="d5-row-n"><b>' + esc(r.name) + '</b></span>' +
           '<span class="d5-row-b"><span class="d5-bar"><i style="width:' + Math.round(Math.max(0, Math.min(1, r.bar || 0)) * 100) + '%"></i></span><small>' + (r.cost || '') + '</small></span>' +
           '<span class="d5-go">' + esc(r.cta || 'Drill') + ' &rarr;</span></a>';
-      }).join('');
+      }).join('') + (v.rows.length > 3 ? '<button type="button" class="d5-showmore" data-d5more="' + id + '-' + i + '">Show ' + (v.rows.length - 3) + ' more</button>' : '');
       if(v.foot) html += '<p class="d5-mut d5-view-f">' + v.foot + '</p>';
       html += '</div>';
     });
@@ -331,23 +335,32 @@
   function recordCard(r){
     var html = '<div class="d5-card"><div class="d5-rec-top">';
     (r.stats || []).forEach(function(s){
-      html += '<div class="d5-rec-s"><p class="d5-k">' + esc(s.label) + '</p><p><b>' + s.big + '</b>' + (s.sub ? ' <span class="d5-mut">' + s.sub + '</span>' : '') + '</p>' +
+      var big = String(s.big).replace(/^Level\s+/, ''), sub = String(s.sub || '').replace(/^\s*(&middot;|\u00b7)\s*/, '');
+      html += '<div class="d5-rec-s"><p class="d5-k">' + esc(s.label) + '</p><p><b>' + big + '</b>' + (sub ? ' <span class="d5-mut">' + sub + '</span>' : '') + '</p>' +
         (s.bar != null ? '<span class="d5-bar d5-bar-acc"><i style="width:' + Math.round(Math.max(0, Math.min(1, s.bar)) * 100) + '%"></i></span>' : '') + (s.html || '') + '</div>';
     });
     html += '</div>';
-    if(r.badges && r.badges.length) html += '<ul class="d5-badges">' + r.badges.map(function(b){
+    var grid = '';
+    if(r.badges && r.badges.length) grid = '<ul class="d5-badges">' + r.badges.map(function(b){
       return '<li class="' + (b.earned ? 'on' : 'off') + '"><span class="d5-med" aria-hidden="true">' + (P[b.icon] ? icon(b.icon, 26) : '<b>' + esc(b.icon || '') + '</b>') + '</span><b>' + esc(b.label) + '</b><small>' + esc(b.sub || (b.earned ? 'Earned' : '')) + '</small>' +
         '<span class="d5-sr">' + (b.earned ? 'earned' : 'not yet') + '</span></li>';
     }).join('') + '</ul>';
+    var more = (r.more || []).slice();
+    if(grid){
+      var cnt = ' (' + r.badges.filter(function(b){ return b.earned; }).length + ' of ' + r.badges.length + ')';
+      var bi = more.findIndex(function(d){ return d && d.label === 'Badges'; });
+      if(bi > -1) more[bi] = Object.assign({}, more[bi], { label: 'Badges' + cnt, html: grid + (more[bi].html || '') });
+      else more.unshift({ label: 'Badges' + cnt, html: grid });
+    }
     if(r.next) html += '<div class="d5-next">' + icon('medal', 26) + '<span><b>' + r.next.text + '</b>' + (r.next.sub ? ' <span class="d5-mut">' + r.next.sub + '</span>' : '') + '</span>' +
       (r.next.href ? '<a href="' + esc(r.next.href) + '">' + esc(r.next.cta || 'See milestones') + '</a>' : '') + '</div>';
-    return html + drawers(r.more) + '</div>';
+    return html + drawers(more) + '</div>';
   }
 
   function footLine(o){
     o = o || {};
     return '<div class="d5-house"><span>Kept in this browser.</span><a href="' + esc(o.account || '/account.html') + '">Sign in to sync it</a>' +
-      '<a href="' + esc(o.backup || '/privacy.html#backup') + '">Download a backup</a><span class="d5-spacer"></span><a href="' + esc(o.premium || '/premium.html') + '">What Premium adds</a></div>';
+      '<span class="d5-spacer"></span><a href="' + esc(o.backup || '/privacy.html#backup') + '">Download a backup</a></div>';
   }
 
   /* ---- the path's Up next (round 4, docs/course-redesign-r4.md decision 7: Home owns "what next") ----
@@ -486,9 +499,10 @@
     var hand = main.querySelector('.band [data-d5-status]') || main.querySelector('.band .hand');
     // The status was written as a lowercase hand line; as the band's sub line it starts with a capital.
     if(hand && b.status) hand.textContent = hand.hasAttribute('data-d5-status') ? b.status.charAt(0).toUpperCase() + b.status.slice(1) : b.status;
-    var ctas = main.querySelector('.band .hero-ctas') || main.querySelector('.band .d5-lvl-row');
-    if(!ctas && b.level && hand){ ctas = document.createElement('p'); ctas.className = 'd5-lvl-row'; hand.parentNode.insertBefore(ctas, hand.nextSibling); }
-    if(ctas && b.level){
+    // Owner 2026-11-07: the level chip left the band (it crowded the status line); question 5 and the header show it.
+    var old = main.querySelector('.band .d5-lvl-row'); if(old) old.remove();
+    var ctas = main.querySelector('.band .hero-ctas');
+    if(ctas && b.level && false){
       var chip = ctas.querySelector('.d5-lvl') || ctas.appendChild(document.createElement('span'));
       chip.className = 'd5-lvl';
       chip.innerHTML = '<b>Level ' + b.level.level + '</b> ' + esc(b.level.title || '') + (b.level.toNext != null ? '<small>' + Number(b.level.toNext).toLocaleString() + ' XP to ' + (b.level.level + 1) + '</small>' : '');
@@ -515,6 +529,8 @@
       // A link to a drawer on this page ("Set one", "See milestones") opens it.
       var a = e.target.closest && e.target.closest('a[href^="#"]');
       if(a){ var t = document.getElementById(a.getAttribute('href').slice(1)); if(t && t.tagName === 'DETAILS') t.open = true; return; }
+      var sm = e.target.closest && e.target.closest('[data-d5more]');
+      if(sm){ var pv = document.getElementById(sm.getAttribute('data-d5more')); if(pv) Array.prototype.forEach.call(pv.querySelectorAll('[data-d5x]'), function(x){ x.hidden = false; }); sm.remove(); return; }
       var b = e.target.closest && e.target.closest('[data-d5view]');
       if(!b) return;
       var group = b.parentNode, target = b.getAttribute('data-d5view');
