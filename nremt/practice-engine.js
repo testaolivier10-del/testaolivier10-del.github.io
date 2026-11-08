@@ -91,20 +91,10 @@ const RUNNER_SCREENS = `
     </div>
   </div>
 
+  <!-- The score card (docs/score-card.md): showResults draws LevlStudy.end into #nrEnd and moves the answer
+       list (.results-main, whose filters are wired once below) into its last section. -->
   <div id="resultsScreen">
-    <div class="results-top-row"><button class="retry-btn" id="retryBtnTop">&larr; Back to Start</button><button type="button" class="retry-btn print-btn" id="printResultBtn">Print or save as PDF</button></div>
-    <div class="results-side">
-      <div class="score-card">
-        <div class="big" id="scoreBig">0/100</div>
-        <div class="sub" id="scoreSub">0% correct, finished in 0:00:00</div>
-        <div class="domain-breakdown" id="domainBreakdown"></div>
-        <div id="readinessUpdate"></div>
-      </div>
-      <div id="nextStep" class="next-step"></div>
-      <div id="clearedNote" class="cleared-note" style="display:none;"></div>
-      <div id="nextSlot"></div>
-      <div id="premiumSlot"></div>
-    </div>
+    <div id="nrEnd"></div>
     <div class="results-main">
       <div class="filter-row">
         <button class="active" data-filter="all">All</button>
@@ -112,7 +102,6 @@ const RUNNER_SCREENS = `
         <button data-filter="unanswered">Unanswered only</button>
       </div>
       <div id="reviewList"></div>
-      <!-- One "Back to Start", at the top of the results (consistency audit 2026-11, B13). -->
     </div>
   </div>
 `;
@@ -2536,7 +2525,7 @@ function showResults(){
   quizScreen.style.display = 'none';
   $id('timerBar').style.display = 'none';
   $id('practiceBanner').style.display = 'none';
-  resultsScreen.style.display = 'grid';
+  resultsScreen.style.display = 'block';
   window.scrollTo(0, 0);
 
   let score = 0;
@@ -2656,80 +2645,28 @@ function showResults(){
     });
   }
 
-  // A share button under the score, and for a full timed exam the 80%
-  // milestone (assets/share.js, assets/milestones.js; both fetched on demand).
-  // check() reads the exam history asynchronously, after it is saved below.
-  if(window.LevlLazy){
-    window.LevlLazy('share', S => S.result($id('scoreSub'), { course: 'nremt', right: score, total: activeIndices.length,
-      label: mode === 'full' ? 'a full-length NREMT-EMT practice exam' : mode === 'cat' ? 'an adaptive NREMT-EMT practice exam' : 'an NREMT-EMT practice set' }));
-    if(mode === 'full') window.LevlLazy('milestones', M => M.check('nremt'));
-  }
+  // The 80% milestone for a full timed exam (assets/milestones.js, fetched on demand). check() reads the exam
+  // history asynchronously, after it is saved below. Share result is a quiet link on the card (shareResult).
+  if(window.LevlLazy && mode === 'full') window.LevlLazy('milestones', M => M.check('nremt'));
 
-  // The Premium card only once today's free questions are used, the gentle way the AP courses
-  // do it (consistency audit 2026-11, B15). The allowance line on Practice and Review says the rest.
-  $id('premiumSlot').innerHTML = window.LevlStudy && LevlStudy.premiumAtLimit ? LevlStudy.premiumAtLimit('nremt', 'results') : '';
-
-  // One next step (assets/next-step.js). Right after a review the due queue is what was just done.
-  // With today's free questions used, the due queue cannot start until tomorrow, so it is not offered (B5).
-  $id('nextSlot').innerHTML = window.LevlNextStep ? LevlNextStep('nremt', { skip: mode === 'spaced' || mode === 'review' || !G.canUse('review') ? ['review'] : [],
-    tags: Object.values(domainStats).flatMap(s => Object.keys(s.topics).filter(t => s.topics[t].total >= 5)).map(t => 'nremt:' + t) }) : '';
-
-  $id('scoreBig').textContent = `${score}/${activeIndices.length}`;
-  $id('scoreSub').textContent = `${Math.round(score/activeIndices.length*100)}% correct, finished in ${formatDuration(elapsed)}`;
-
-  // By exam domain, in the order the exam outline lists them; each domain's
-  // rows underneath are the topic areas its questions came from.
-  const breakdownEl = $id('domainBreakdown');
-  const examOrder = Object.keys(DOMAIN_TARGETS);
-  breakdownEl.innerHTML = Object.entries(examStats)
-    .sort((a,b) => examOrder.indexOf(a[0]) - examOrder.indexOf(b[0]))
-    .map(([d,s]) => {
-    const topicRows = Object.entries(s.topics || {})
-      .sort((a,b) => a[0].localeCompare(b[0]))
-      .map(([t,ts]) => `<div class="row topic-row"><span>${t}</span><span>${ts.correct}/${ts.total}</span></div>`)
-      .join('');
-    return `<div class="row"><span>${d}</span><span>${s.correct}/${s.total}</span></div>${topicRows}`;
-  }).join('');
   resultsScreen.setAttribute('data-mode', mode);
-  if(mode === 'cat') renderCatResults(score, elapsed);
-
-  // A next step, so the end of a session is not a dead end: the misses from
-  // this session first, while the explanations are fresh.
+  // The adaptive exam's verdict, its scale and each domain against the line (sets lastCat for the history).
+  const catHtml = mode === 'cat' ? renderCatResults(score, elapsed) : '';
   lastSessionMisses = sessionMisses.slice();
-  const nextStepEl = $id('nextStep');
-  const xpLine = xpGained ? `<p class="next-xp">+${xpGained} XP</p>` : '';
-  /* The shared end-of-session order (consistency audit 2026-11, B7; LevlStudy.end on the other courses): the
-     score and the domain list above, then XP, what to study next, Retry misses, the one next step (#nextSlot)
-     and, only once today's free questions are used, the Premium card (#premiumSlot, B15). */
-  const weakDomains = Object.entries(examStats).filter(([, s]) => s.correct < s.total)
-    .sort((a, b) => a[1].correct / a[1].total - b[1].correct / b[1].total).slice(0, 3);
-  const studyNext = weakDomains.length
-    ? `<h2 class="cx-endp-h">What to study next</h2><ul class="cx-list nr-next-list">${weakDomains.map(([d, s]) => {
-        const n = CAT_NOTES[d];
-        return `<li><div><b>${d}</b><span>${s.total - s.correct} of ${s.total} missed</span></div>${n ? `<a class="btn-outline" href="${n[0]}">Notes</a>` : ''}</li>`;
-      }).join('')}</ul>`
-    : `<h2 class="cx-endp-h">What to study next</h2><p class="next-note">No misses this time. Try a <a href="practice.html">weak-spot session</a> or a domain you have not drilled yet.</p>`;
-  nextStepEl.innerHTML = xpLine + studyNext + (sessionMisses.length
-    ? `<button type="button" class="btn-outline next-step-btn" id="reviewMissesBtn">Retry the ${sessionMisses.length === 1 ? 'miss' : sessionMisses.length + ' misses'}</button>
-       <p class="next-note">Goes back over the ${sessionMisses.length === 1 ? 'question' : 'questions'} you got wrong, with the explanation after each answer.</p>`
-    : '');
 
-  const clearedNote = $id('clearedNote');
-  if(mode === 'review' && missedSet.size === 0){
-    clearedNote.style.display = 'block';
-    clearedNote.textContent = "You've cleared your entire missed-question queue. Nice work. Take the full exam again to build a new one, or just keep it clean.";
-  } else if(mode === 'review'){
-    clearedNote.style.display = 'block';
-    clearedNote.textContent = `${missedSet.size} question${missedSet.size===1?'':'s'} still in your review queue for next time.`;
+  // A note for the missed and flagged queues.
+  let clearedText = '';
+  if(mode === 'review'){
+    clearedText = missedSet.size === 0
+      ? "You've cleared your entire missed-question queue. Nice work. Take the full exam again to build a new one, or just keep it clean."
+      : `${missedSet.size} question${missedSet.size===1?'':'s'} still in your review queue for next time.`;
   } else if(mode === 'flagged'){
     const stillFlagged = loadFlagged().length;
-    clearedNote.style.display = 'block';
-    clearedNote.textContent = stillFlagged === 0
+    clearedText = stillFlagged === 0
       ? "You've unflagged everything in this review session. Flag any question again from its answer screen whenever something's worth coming back to."
       : `${stillFlagged} question${stillFlagged===1?'':'s'} still flagged for review. Flags don't clear on their own. Unflag one with its Flag button once you're confident on it.`;
-  } else {
-    clearedNote.style.display = 'none';
   }
+  renderEnd({ score, elapsed, examStats, domainStats, xpGained, clearedText, catHtml });
 
   if(mode === 'full'){
     const best = localStorage.getItem(STORAGE_KEY);
@@ -2767,6 +2704,104 @@ function showResults(){
   document.querySelectorAll('.filter-row button').forEach(b=>b.classList.remove('active'));
   document.querySelector('.filter-row button[data-filter="all"]').classList.add('active');
   renderReview('all');
+}
+
+/* ---- The score card (docs/score-card.md) ----
+   One LevlStudy.end in every mode: the band (result, bar, time and pace on the clock, the adaptive exam's
+   pass likelihood), the misses with their explanations, the next step and Retry, then the five domains (misses
+   first, a Study button on each missed one), the topic areas under each domain, the adaptive verdict, and the
+   full answer list with its filters. */
+const END_KIND = { full: 'Timed exam', cat: 'Adaptive exam', spaced: 'Review', review: 'Missed questions', flagged: 'Flagged questions', adaptive: 'Weak spots' };
+function shortDur(ms){
+  const t = Math.max(0, Math.round(ms / 1000)), h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), x = t % 60;
+  return (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(x).padStart(2, '0');
+}
+function endEsc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+// What the student picked and the key, as plain option text (the letters follow the shuffled display order, so
+// they are left off here; the answer list below keeps its own wording).
+function endAnswerText(q, ans, key){
+  if(!key && (ans === null || ans === undefined)) return '';
+  const v = key ? q.correct : ans;
+  if(!q.type || q.type === 'single') return typeof v === 'number' ? q.options[v] : '';
+  if(q.type === 'multi') return Array.isArray(v) ? v.slice().sort((a, b) => a - b).map(i => q.options[i]).join(', ') : '';
+  return (key ? formatCorrectAnswerText(q, LETTERS) : formatUserAnswerText(q, ans, LETTERS)) || '';
+}
+function endMiss(q, ans){
+  return { stem: q.q, you: endAnswerText(q, ans, false), ans: endAnswerText(q, ans, true), why: q.explain || '', youWhy: '', href: '' };
+}
+function shareResult(r){
+  if(!window.LevlLazy) return;
+  window.LevlLazy('share', S => {
+    const c = (S.COURSES && S.COURSES.nremt) || {};
+    S.share({ what: 'exam', course: 'nremt', title: 'LevlPrep ' + (c.name || ''), text: S.resultText(r), url: c.home || '/' });
+  });
+}
+function renderEnd(o){
+  const host = $id('nrEnd');
+  const list = resultsScreen.querySelector('.results-main');
+  // The answer list lives inside the card; take it out before the card is redrawn.
+  if(list) resultsScreen.appendChild(list);
+  if(!window.LevlStudy || !LevlStudy.end){ host.innerHTML = ''; return; }
+  const n = activeIndices.length, score = o.score;
+  const skipped = activeIndices.reduce((k, qIdx, i) => k + (isAnswered(QUESTIONS[qIdx], answers[i]) ? 0 : 1), 0);
+  const missed = [];
+  activeIndices.forEach((qIdx, i) => {
+    const q = QUESTIONS[qIdx];
+    if(isAnswered(q, answers[i]) && !isAnswerCorrect(q, answers[i])) missed.push({ q, qIdx, m: endMiss(q, answers[i]) });
+  });
+  const timed = mode === 'full' || mode === 'cat';
+  let agg = {};
+  try{ agg = JSON.parse(localStorage.getItem(EXAM_DOMAIN_STATS_KEY) || '{}') || {}; }catch(e){ agg = {}; }
+  const examOrder = Object.keys(DOMAIN_TARGETS);
+  const doms = Object.entries(o.examStats).sort((a, b) => examOrder.indexOf(a[0]) - examOrder.indexOf(b[0]));
+  const topics = LevlStudy.topics(doms.map(([d, s]) => {
+    const notes = CAT_NOTES[d], a = agg[d];
+    return { name: d, href: notes ? notes[0] : '', c: s.correct, n: s.total, mastery: a && a.total ? a.correct / a.total : null,
+      links: notes ? [{ label: 'Notes', href: notes[0] }] : [] };
+  }));
+  // The topic areas each domain's questions came from, as before, one compact list per domain.
+  const subs = doms.map(([d, s]) => {
+    const rows = Object.entries(s.topics || {}).sort((a, b) => a[0].localeCompare(b[0]));
+    return `<div class="nr-sub"><h3>${endEsc(d)}</h3><ul class="cx-prac">${rows.map(([t, ts]) =>
+      `<li><span>${endEsc(t)}</span><span class="cx-mbar" aria-hidden="true"><i style="width:${Math.round(ts.correct / ts.total * 100)}%"></i></span><b>${ts.correct}/${ts.total}</b></li>`).join('')}</ul></div>`;
+  }).join('');
+  const cat = mode === 'cat' && lastCat ? lastCat : null;
+  const nMiss = lastSessionMisses.length;
+  const shareR = { course: 'nremt', right: score, total: n,
+    label: mode === 'full' ? 'a full-length NREMT-EMT practice exam' : mode === 'cat' ? 'an adaptive NREMT-EMT practice exam' : 'an NREMT-EMT practice set' };
+  host.innerHTML = LevlStudy.end({
+    course: 'nremt', kind: END_KIND[mode] || 'Practice set', right: score, total: n, skipped,
+    hand: cat ? cat.v.head : undefined,
+    timed: timed ? { used: shortDur(o.elapsed), limit: shortDur(TIME_LIMIT_MS), pace: n - skipped > 0 ? shortDur(o.elapsed / (n - skipped)) : '' } : null,
+    chips: timed ? [] : ['Finished in ' + shortDur(o.elapsed)],
+    estimate: cat ? { label: 'Pass likelihood', value: Math.round(cat.d.pAbove * 100) + '%' } : null,
+    missed: missed.map(x => x.m),
+    retry: nMiss ? { act: 'retry', label: 'Retry ' + (nMiss === 1 ? 'the miss' : 'the ' + nMiss + ' misses') } : null,
+    // One next step (assets/next-step.js). Right after a review the due queue is what was just done. With
+    // today's free questions used, the due queue cannot start until tomorrow, so it is not offered (B5).
+    stepHtml: window.LevlNextStep ? LevlNextStep('nremt', { skip: mode === 'spaced' || mode === 'review' || !G.canUse('review') ? ['review'] : [],
+      tags: Object.values(o.domainStats).flatMap(s => Object.keys(s.topics).filter(t => s.topics[t].total >= 5)).map(t => 'nremt:' + t) }) : '',
+    extras: '<div class="nr-end-x">' + (o.xpGained ? `<p class="next-xp">+${o.xpGained} XP</p>` : '') +
+      (o.clearedText ? `<p class="cleared-note">${endEsc(o.clearedText)}</p>` : '') +
+      '<p class="nr-end-links"><button type="button" class="link-quiet" data-act="share">Share result</button>' +
+      '<button type="button" class="link-quiet" data-act="print">Print or save as PDF</button>' +
+      '<button type="button" class="link-quiet" data-act="start">Back to Start</button></p></div>',
+    nextTitle: 'Exam domains', next: topics,
+    more: (cat ? '<h2 class="cx-endp-h">Against the passing line</h2>' + o.catHtml : '') +
+      '<div id="readinessUpdate"></div>' +
+      (subs ? '<h2 class="cx-endp-h">Topic areas in each domain</h2><div class="nr-subs">' + subs + '</div>' : ''),
+    kept: '<h2 class="cx-endp-h">Every question, with the why</h2><div class="nr-kept"></div>'
+  });
+  const slot = host.querySelector('.nr-kept');
+  if(slot && list) slot.appendChild(list);
+  LevlStudy.wire(host, { retry: retryMisses, start: backToStart, print: printResult, share: () => shareResult(shareR) });
+  // The explanations file may land after the card is drawn; fill the misses' explanations when it does.
+  if(missed.some(x => !x.m.why)){
+    loadExplanations().then(() => {
+      const rows = host.querySelectorAll('.cx-mq .cx-mq-body');
+      missed.forEach((x, i) => { const q = QUESTIONS[x.qIdx]; if(!x.m.why && q.explain && rows[i]) rows[i].innerHTML = '<p>' + q.explain + '</p>'; });
+    });
+  }
 }
 
 async function renderReview(filter){
@@ -2851,8 +2886,6 @@ function renderCatResults(score, elapsed){
     return { name, ...CAT.domainBand(mine, d.theta), right: mine.filter(r => r.right).length };
   });
   lastCat = { d, v, doms };
-  $id('scoreBig').textContent = v.head;
-  $id('scoreSub').textContent = `${d.n} questions answered, ${score} right, in ${formatDuration(elapsed)}.`;
   const word = { above: 'Above passing', near: 'Near passing', below: 'Below passing', none: 'Not tested' };
   const rows = doms.map(x => {
     const link = CAT_NOTES[x.name];
@@ -2860,10 +2893,10 @@ function renderCatResults(score, elapsed){
       `<span class="cat-study">Study next: <a href="${link[0]}">notes: ${link[1]}</a> &middot; <a href="practice.html?domain=${encodeURIComponent(x.name)}">drill this domain</a></span>`;
     return `<div class="row cat-dom"><span class="cat-dom-name">${x.name}<small>${x.n ? `${x.right} of ${x.n} right` : 'no questions this time'}</small></span><span class="cat-tag is-${x.band}">${word[x.band]}</span>${study}</div>`;
   }).join('');
-  $id('domainBreakdown').innerHTML = `
+  return `<div class="nr-cat">
     <div class="cat-verdict tier-${v.tier}"><p class="cat-v-head">${v.head}</p><p>${v.text}</p>${catScale(d)}</div>
     ${rows}
-    <p class="cat-note">LevlPrep&rsquo;s simulation of an adaptive exam, not the National Registry&rsquo;s algorithm. The passing line is our estimate from the bank&rsquo;s difficulty tags, and a domain is Near when the estimate for it is within one standard error of the line. <a href="exams.html#catHow">How it works</a>.</p>`;
+    <p class="cat-note">LevlPrep&rsquo;s simulation of an adaptive exam, not the National Registry&rsquo;s algorithm. The passing line is our estimate from the bank&rsquo;s difficulty tags, and a domain is Near when the estimate for it is within one standard error of the line. <a href="exams.html#catHow">How it works</a>.</p></div>`;
 }
 function saveCatHistory(score, elapsed){
   if(!lastCat) return;
@@ -2902,13 +2935,12 @@ function backToStart(){
   refreshIntroState();
 }
 $id('retryBtn').addEventListener('click', backToStart);
-$id('printResultBtn').addEventListener('click', () => {
+function printResult(){
   resultsScreen.setAttribute('data-printed', new Date().toLocaleString());
   window.print();
-});
-$id('retryBtnTop').addEventListener('click', backToStart);
-$id('nextStep').addEventListener('click', (e) => {
-  if(!e.target.closest('#reviewMissesBtn') || !lastSessionMisses.length) return;
+}
+function retryMisses(){
+  if(!lastSessionMisses.length) return;
   resultsScreen.style.display = 'none';
   mode = 'review';
   selectedDomain = null;
@@ -2917,7 +2949,7 @@ $id('nextStep').addEventListener('click', (e) => {
   // the queue over there, where the missed list it came from already lives.
   if(RUNNER_PAGE !== 'practice'){ location.href = 'practice.html?start=review'; return; }
   beginQuiz(false);
-});
+}
 
 // ?go=1 from the Practice panel (docs/course-redesign-r4.md decision 5): start this page's own mode with
 // the settings in the URL, once every button above is wired. review.html: the spaced queue. exams.html:
