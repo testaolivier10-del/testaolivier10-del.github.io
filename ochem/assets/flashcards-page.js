@@ -369,12 +369,14 @@
     return a;
   }
 
-  function startSession(mode){
+  function startSession(mode, retryIds){
     classify();
     var now = Date.now();
     var sel = selection();
     var list;
-    if(mode === 'review'){
+    if(mode === 'retry'){
+      list = retryIds.slice();
+    } else if(mode === 'review'){
       var q = S.queue(ids(sel), now);
       list = q.due.concat(q.fresh);
     } else {
@@ -389,9 +391,9 @@
     var chapter = prefs.chapter === 'all' ? '' : ' · ' + C.MODULES.filter(function(m){ return m.id === prefs.chapter; })[0].title;
     run = {
       mode: mode, queue: list, total: list.length, done: 0, current: null, flipped: false,
-      counts: { 1: 0, 2: 0, 3: 0, 4: 0 }, paid: {}, flushed: 0, seen: {}
+      counts: { 1: 0, 2: 0, 3: 0, 4: 0 }, paid: {}, flushed: 0, seen: {}, first: {}, from: {}
     };
-    modeEl.textContent = (mode === 'review' ? 'Review' : 'Studying ahead') + (onlyTopic ? ' · ' + TOPIC[onlyTopic].topic.title : chapter);
+    modeEl.textContent = (mode === 'review' ? 'Review' : mode === 'retry' ? 'Missed cards' : 'Studying ahead') + (onlyTopic ? ' · ' + TOPIC[onlyTopic].topic.title : chapter);
     show('session');
     // Started and finished, like the practice sessions: the pair is what gives
     // a completion rate. A deck reopened mid-run is a new session, honestly.
@@ -543,7 +545,10 @@
   function grade(g){
     if(!run || !run.current || !run.flipped || turning) return;
     var card = run.current;
-    var res = S.grade(card.id, g, Date.now(), { cram: run.mode === 'ahead' });
+    var prev = S.get(card.id);
+    if(!(card.id in run.first)){ run.first[card.id] = g; run.from[card.id] = S.isNew(prev) ? 0 : prev.i || 0; }
+    // Retrying the misses is studying ahead too: no XP, and a card known again keeps its schedule.
+    var res = S.grade(card.id, g, Date.now(), { cram: run.mode !== 'review' });
     run.counts[g]++;
     run.seen[card.id] = true;
     if(res.scheduled) run.paid[card.id] = true;
@@ -631,6 +636,29 @@
   }
   window.addEventListener('pagehide', function(){ if(run && !sessionEl.hidden) settle(); });
 
+  /* The end of a session: the shared score card (docs/score-card.md, LevlStudy.end). A card counts as known when
+     its first grade this session was not Again; it moved up a box when its interval is longer now than when the
+     session met it. The missed list shows each card's front and back, and when it comes back. */
+  function whenLabel(t, now){
+    var m = Math.round((t - now) / 60000);
+    if(m < 60) return 'in ' + plural(Math.max(1, m), 'minute');
+    if(S.dayKey(t) === S.dayKey(now)) return 'later today';
+    var a = new Date(t), b = new Date(now); a.setHours(0, 0, 0, 0); b.setHours(0, 0, 0, 0);
+    var days = Math.round((a - b) / 864e5);
+    return days === 1 ? 'tomorrow' : 'in ' + days + ' days';
+  }
+  // The back as markup: the table and authored answers are the deck's own markup, the concept text is plain.
+  function ansText(card){
+    if(card.a) return card.a.map(function(row){ return (row[0] ? esc(row[0]) + ': ' : '') + row[1]; }).join('; ');
+    return esc(card.teach || card.hint || '');
+  }
+  /* A long back (a summary, a worked answer) shows its first sentence in the row and the whole of it when opened. */
+  function brief(h){
+    var t = String(h || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    if(t.length <= 140) return [h, ''];
+    var m = t.match(/^.{20,140}?[.;:](?=\s|$)/);
+    return [esc(m ? m[0] : t.slice(0, 120).trim() + '\u2026'), h];
+  }
   function finish(completed){
     if(!run) return;
     var reviewed = run.counts[1] + run.counts[2] + run.counts[3] + run.counts[4];
@@ -640,31 +668,50 @@
     var r = run;
     var xpHtml = window.OchemXP && paidCount() ? window.OchemXP.summaryHtml() : '';
     if(window.LevlSound && reviewed) window.LevlSound.flourish(reviewed ? (r.counts[3] + r.counts[4]) / reviewed : 0);
+    run = null;
 
     var now = Date.now();
     var sel = selection();
     var q = S.queue(ids(sel), now);
     var more = q.due.length + q.fresh.length;
     var tomorrow = S.upcoming(ids(sel), now, 2);   // through the end of tomorrow
-
-    var line = reviewed
-      ? plural(Object.keys(r.seen).length, 'card') + ': ' +
-        [[4, 'Easy'], [3, 'Good'], [2, 'Hard'], [1, 'Again']].filter(function(x){ return r.counts[x[0]]; })
-          .map(function(x){ return r.counts[x[0]] + ' ' + x[1]; }).join(', ') + '.'
-      : 'No cards graded.';
-    var note = r.mode === 'ahead'
-      ? 'Studying ahead: cards you knew keep their schedule, anything you missed was brought forward. No XP for early reviews.'
-      : (r.counts[1] ? 'Cards you missed are back on a short interval.' : 'Every card moved further out.');
-    var html = xpHtml + '<div class="rec-card">' +
-      '<div class="k">' + (completed ? 'Session done' : 'Session ended') + '</div>' +
-      '<h2>' + esc(completed ? (r.mode === 'review' && !more ? 'That’s everything due.' : 'Done.') : 'Stopped early — the rest is still waiting.') + '</h2>' +
-      '<p>' + esc(line + ' ' + note) + '</p>' +
-      (tomorrow ? '<p>' + esc(plural(tomorrow, 'card') + ' due by tomorrow.') + '</p>' : '') +
-      (window.LevlNextStep ? LevlNextStep('ochem', { focus: true, also: [{ label: 'Back to the deck', act: renderHome }],
-        due: { n: more, label: 'Keep going \u00b7 ' + plural(more, 'card'), act: function(){ startSession('review'); } } }) : '') + '</div>';
-    run = null;
-    doneEl.innerHTML = html;
+    var d = S.load(), deckIds = ids(sel), nextDue = 0, back = 0;
+    var seen = Object.keys(r.first), missIds = seen.filter(function(id){ return r.first[id] === S.AGAIN; });
+    var up = seen.filter(function(id){ var st = d.cards[id]; return st && (st.i || 0) > r.from[id]; }).length;
+    deckIds.forEach(function(id){ var st = d.cards[id]; if(!S.isNew(st) && st.d > now && (!nextDue || st.d < nextDue)) nextDue = st.d; });
+    missIds.forEach(function(id){ var st = d.cards[id]; if(st && st.d > now && (!back || st.d < back)) back = st.d; });
+    var tally = [4, 3, 2, 1].filter(function(g){ return r.counts[g]; }).map(function(g){ return r.counts[g] + ' ' + S.GRADES[g].label; }).join(', ');
+    var groups = {}, order = [];
+    seen.forEach(function(id){
+      var card = BY_ID[id]; if(!card) return;
+      var k = card.topic, t = groups[k];
+      if(!t){ t = groups[k] = { name: TOPIC[k] ? TOPIC[k].topic.title : k, href: 'learn.html#' + k, c: 0, n: 0, mastery: null, links: TOPIC[k] && C.hasLesson(TOPIC[k].topic) ? [{ label: 'Lesson', href: TOPIC[k].topic.href }] : [] }; order.push(t); }
+      t.n++; if(r.first[id] !== S.AGAIN) t.c++;
+    });
+    doneEl.innerHTML = LevlStudy.end({
+      kind: 'Flashcards', unit: 'knew it', right: seen.length - missIds.length, total: seen.length,
+      hand: !reviewed ? 'No cards graded this time.' : up ? plural(up, 'card') + ' moved up a box' : null,
+      chips: [completed ? '' : 'Ended early', q.fresh.length ? plural(q.fresh.length, 'new card') + ' left today' : '',
+        q.due.length ? q.due.length + ' due now' : nextDue ? 'Next due ' + whenLabel(nextDue, now) : '',
+        tomorrow ? plural(tomorrow, 'card') + ' due by tomorrow' : '', tally],
+      sub: r.mode === 'ahead' && reviewed ? 'Studying ahead earns no XP' : '',
+      missedTitle: back ? 'Back ' + whenLabel(back, now) : 'Missed at first',
+      missed: missIds.map(function(id){ var card = BY_ID[id]; var a = card && brief(ansText(card));
+      return card ? { stem: card.src === 'concept' ? esc(card.title) : card.q, you: '', ans: a[0], why: a[1], youWhy: '', href: TOPIC[card.topic] ? (C.hasLesson(TOPIC[card.topic].topic) ? TOPIC[card.topic].topic.href : 'learn.html#' + card.topic) : '' } : null; }),
+      retry: missIds.length ? { act: 'retry', label: 'Retry ' + plural(missIds.length, 'miss', 'misses') } : null,
+      // The one next step (assets/next-step.js): the cards left today when there are any.
+      stepHtml: window.LevlNextStep ? LevlNextStep('ochem', { also: [{ label: 'Change the deck', act: renderHome }],
+        due: { n: more, label: 'Study ' + plural(more, q.due.length ? 'card' : 'new card'), act: function(){ startSession('review'); } } }) : '',
+      step: window.LevlNextStep ? null : more ? { act: 'more', label: 'Study ' + plural(more, q.due.length ? 'card' : 'new card') } : { act: 'home', label: 'Change the deck' },
+      extras: xpHtml,
+      nextTitle: 'Topics', next: order.length > 1 ? LevlStudy.topics(order) : ''
+    });
     show('done');
+    LevlStudy.wire(doneEl, {
+      more: function(){ startSession('review'); },
+      retry: function(){ startSession('retry', missIds); },
+      home: renderHome
+    });
   }
 
   quitBtn.addEventListener('click', function(){ finish(false); });

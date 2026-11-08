@@ -236,7 +236,8 @@ const SHELL_BUDGETS = [
   /* 49.9 -> 50.4 (cram plan to Home, phone Start bars, 2026-11-06): path.js cramLink and paintSticky, the Practice
      phone bar in practice-panel.js and .css; measured 50.2. */
   /* 50.4 -> 52.1 (end screen v2b, owner 2026-11-07): LevlStudy.topics and .bars plus their styles, shared by every course. */
-  ['assets/course', 52.1],
+  /* 52.1 -> 56.4 (score card v3, owner 2026-11-07): LevlStudy.end v3 and .cx-endp3 styles, measured on claude/score-card. */
+  ['assets/course', 56.4],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
