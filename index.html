@@ -151,16 +151,6 @@
   .about-card p{margin:0;font-size:14px;color:var(--muted);line-height:1.6;}
   .about-card a{color:var(--ink);}
   /* Your-progress card, once there is progress to show. */
-  #hubProgress{margin:0 0 40px;}
-  .hub-progress-card{background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);padding:22px 24px;}
-  .hub-progress-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
-  .hub-level-ring{width:52px;height:52px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font:900 17px var(--font-ui);background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.28);}
-  .hub-level-title{font:900 19px var(--font-ui);margin:0;}
-  .hub-level-sub{font:700 13px var(--font-ui);margin:3px 0 0;opacity:.78;}
-  .hub-track{height:9px;border-radius:var(--radius-pill);background:rgba(255,255,255,.16);overflow:hidden;}
-  .hub-fill{height:100%;background:var(--on-accent);border-radius:var(--radius-pill);}
-  .hub-split{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:2px solid rgba(255,255,255,.15);}
-  .hub-split span{font:900 11.5px var(--font-ui);padding:5px 11px;border-radius:var(--radius-pill);background:rgba(244,210,140,.16);color:#F4D28C;}
   .hub-continue{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:16px;}
   .hub-continue a{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--on-accent);background:rgba(255,255,255,.10);border-radius:var(--radius);padding:11px 14px;}
   .hub-continue a:hover{background:rgba(255,255,255,.18);}
@@ -241,7 +231,6 @@
     </div>
   </section>
 
-  <div id="hubProgress" hidden></div>
 
   <section id="subjects" aria-labelledby="subjects-h">
     <div class="home-sh"><h2 id="subjects-h">Pick your <span>course</span></h2><p>Start any of them right now, and sign in only when you want your progress saved.</p></div>
@@ -392,52 +381,6 @@ document.addEventListener('DOMContentLoaded', function(){
   if(window.HubProgress) window.HubProgress.mount('hub');
 
   // ---- Your progress, once there is any ----
-  (function renderProgress(){
-    var box = document.getElementById('hubProgress');
-    if(!box || !window.HubProgress) return;
-    var info = window.HubProgress.levelInfo('hub');
-    var streak = window.HubProgress.streak();
-    var subjects = Object.keys(info.subjects || {}).filter(function(k){ return info.subjects[k] > 0; });
-    if(!info.total && !streak.current) return;   // nothing to show a first-time visitor
-
-    // courses:begin COURSE_LIST key,name (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
-    var COURSE_LIST = [
-      { key: 'nremt', name: 'NREMT-EMT' },
-      { key: 'ochem', name: 'Organic Chemistry' },
-      { key: 'anp', name: 'Anatomy & Physiology' },
-      { key: 'apbio', name: 'AP® Biology' },
-      { key: 'apchem', name: 'AP® Chemistry' },
-      { key: 'apphys', name: 'AP® Physics 1' },
-      { key: 'apcalc', name: 'AP® Calculus AB' },
-      { key: 'apstat', name: 'AP® Statistics' },
-      { key: 'apenv', name: 'AP® Environmental Science' },
-      { key: 'appsych', name: 'AP® Psychology' },
-      { key: 'apprecalc', name: 'AP® Precalculus' },
-      { key: 'apcalcbc', name: 'AP® Calculus BC' },
-      { key: 'apmacro', name: 'AP® Macroeconomics' },
-    ];
-    // courses:end
-    var LABELS = {};
-    COURSE_LIST.forEach(function(c){ LABELS[c.key] = c.name; });
-    var pct = Math.round(info.into / info.span * 100);
-    box.innerHTML =
-      '<div class="hub-progress-card">' +
-        '<div class="hub-progress-top">' +
-          '<span class="hub-level-ring">L' + info.level + '</span>' +
-          '<div>' +
-            '<p class="hub-level-title">' + info.title + '</p>' +
-            '<p class="hub-level-sub">' + info.total + ' XP total' +
-              (streak.current ? ' &middot; ' + streak.current + '-day streak' : '') + '</p>' +
-          '</div>' +
-        '</div>' +
-        '<div class="hub-track"><div class="hub-fill" style="width:' + pct + '%"></div></div>' +
-        '<p class="hub-level-sub">' + info.into + ' / ' + info.span + ' XP to Level ' + (info.level + 1) + '</p>' +
-        (subjects.length ? '<div class="hub-split">' + subjects.map(function(k){
-          return '<span>' + (LABELS[k] || k) + ' &middot; ' + info.subjects[k] + ' XP</span>';
-        }).join('') + '</div>' : '') +
-      '</div>';
-    box.hidden = false;
-  })();
 });
 </script>
 </body>
