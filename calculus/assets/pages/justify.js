@@ -81,6 +81,28 @@
   }
   function lsBox(cls, els){ var d = document.createElement('div'); d.className = cls; (els || []).forEach(function(e){ if(e) d.appendChild(e); }); return d; }
 
+  /* The score card under the checklist once the check is saved (docs/score-card.md; the shared loader
+     ../assets/course/card-loader.js brings study.js and study.css). It carries Rewrite and Next, so the row that
+     held them hides until the next check. */
+  function scoreCard(p, next, box, after){
+    var host = box.querySelector('.js-card');
+    if(!host){ host = document.createElement('div'); host.className = 'js-card'; after.insertAdjacentElement('afterend', host); }
+    var again = document.querySelector('[data-act="again"]'), nx = again && again.parentNode.querySelector('a.btn-outline');
+    var all = { href: LIST, label: 'All prompts' };
+    function go(){
+      if(again) again.hidden = true;
+      if(nx) nx.hidden = true;
+      window.LevlCard.justify({ host: host, p: p, box: box, course: CK, href: BASE + 'notes/' + p.topic + '.html',
+        step: next ? { href: '?p=' + encodeURIComponent(next.id), label: 'Next prompt' } : all, also: next ? [all] : [],
+        onRetry: again ? function(){ again.click(); } : null });
+    }
+    if(window.LevlCard){ go(); return; }
+    var s = document.createElement('script');
+    s.src = BASE + '../assets/course/card-loader.js';
+    s.onload = function(){ if(window.LevlCard) go(); };
+    document.head.appendChild(s);
+  }
+
   /* -------------------------------------------------------------- list */
   function list(){
     view('list');
@@ -194,6 +216,7 @@
         saveScore(p.id, got, p.checklist.length);
         if(Core) Core.event(CK + '-justify-check', { prompt: p.id, got: got, of: p.checklist.length });
         this.textContent = 'Saved'; this.disabled = true;
+        scoreCard(p, next, box, this.parentNode);
       });
       box.querySelector('[data-act="again"]').addEventListener('click', function(){
         box.hidden = true; btn.hidden = false;

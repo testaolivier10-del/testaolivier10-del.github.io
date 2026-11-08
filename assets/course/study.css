@@ -505,6 +505,14 @@ body[data-course="apmacro"] .cx-endp3{--sc-bg:#2E4D0C;--sc-ac:#C8F07A;}
 .cx-endp3 .cx-endp-acts{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:14px 0 0;padding-top:14px;border-top:1px solid var(--line);}
 .cx-endp3 .cx-endp-card > .cx-endp-acts:first-child{margin-top:0;padding-top:0;border-top:0;}
 .cx-endp3 .link-quiet{white-space:nowrap;}
+/* Inside a Tool Studio panel (justify, NREMT scenarios) .ls-root .btn-press drops the vertical padding, which only a
+   <button> centres on its own: a link button in the card centres its label here. */
+.ls-root .cx-endp3 a.btn-press{display:inline-flex;align-items:center;justify-content:center;}
+/* NREMT's studio styles every details > summary as a grey pill with its own chevron (nremt-studio.css): the card's
+   misses keep their own look. */
+.ls-root .cx-mq > summary{display:flex;align-items:flex-start;min-height:0;padding:10px 0;margin:0;border-radius:0;background:none;font:700 14px/1.4 var(--font-ui);color:var(--ink);}
+.ls-root .cx-mq > summary::after{content:none;display:none;}
+.ls-root .cx-mq[open] > summary{margin-bottom:0;}
 .cx-endp3 .levl-next{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);}
 .cx-endp3 .cx-endp-card > .levl-next:first-child{margin-top:0;padding-top:0;border-top:0;}
 .cx-endp3 .levl-next__k,.cx-endp3 .levl-next__why{display:none;}
