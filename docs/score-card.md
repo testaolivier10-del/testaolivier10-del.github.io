@@ -64,3 +64,10 @@ Practice questions; Retry runs the missed cards again as a no XP run that keeps 
 Topics (by topic, or topic area on NREMT) show when the session touched more than one.
 The estimated AP score needs its own scoring model per course. `estimate` shows only the existing readiness band
 (bio, chem, physics, calculus full practice exams, "rough, not calibrated"); no new model was made.
+
+## NREMT practice results
+`nremt/practice-engine.js` renderEnd draws the card (#nrEnd) for practice sets, weak spots, missed, flagged, review,
+timed and adaptive exams: timed chips, unanswered, the adaptive verdict as the handwritten line and its pass
+likelihood as `estimate`; below, the 5 domains as the topics table (Notes on missed rows), the adaptive passing line
+block, readiness, topic areas per domain, and the full answer list with All / Incorrect only / Unanswered only.
+"vs last time" and "Personal best" are off for one-question pages (free response, justify, scenarios).

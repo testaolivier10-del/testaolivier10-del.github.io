@@ -158,7 +158,9 @@
     if(o.title == null){ var cn = document.querySelector('.site-header__course-full'); o.title = cn ? cn.textContent : ''; }
     // Last time and personal best, per course and kind of session (this device).
     var lk = 'levl_card_v1', st = LS.get(lk) || {}, key = ck + '|' + kind, prev = st[key], best = false, chips = [];
-    if(total >= 3){
+    // One question per page (free response, justify, a scenario): last time and best would compare different questions.
+    var oneQ = o.noHistory || /^(Free response|Justify|Scenario)/.test(kind);
+    if(total >= 3 && !oneQ){
       if(prev && prev.n >= 3){ var d = pct - prev.p; if(d) chips.push('<span class="cx-chip ' + (d > 0 ? 'up' : 'dn') + '">' + (d > 0 ? ICO.up : ICO.down) + (d > 0 ? '+' : '') + d + '% vs last time</span>'); }
       best = !!(prev && total >= 5 && pct > (prev.b || 0) && pct < 100);
       st[key] = { p: pct, n: total, b: Math.max(pct, prev && prev.b || 0), at: Date.now() }; LS.set(lk, st);
