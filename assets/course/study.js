@@ -119,12 +119,22 @@
     var yw = q.why && q.why.options && typeof pick === 'number' ? q.why.options[pick] : '';
     return { stem: q.q || q.stem || q.prompt || q.question || '', you: you, ans: ans, why: why, youWhy: yw, href: href || '' };
   }
+  /* A question's own markup kept for one summary line: math (MathML, KaTeX) stays as it rendered in the
+     question; pictures, tables and block wrappers that would not fit one line are dropped or made inline. */
+  function lineHtml(h){
+    var d = document.createElement('div'); d.innerHTML = String(h == null ? '' : h);
+    [].forEach.call(d.querySelectorAll('img,figure,table,video,audio,iframe,script,style,button,input,select,textarea'), function(x){ x.remove(); });
+    [].forEach.call(d.querySelectorAll('svg'), function(x){ if(!x.closest('.katex,math,mjx-container')) x.remove(); });
+    [].forEach.call(d.querySelectorAll('p,div,ul,ol,li,h1,h2,h3,h4,blockquote,pre,section'), function(x){ if(x.closest('.katex,math')) return; var sp = document.createElement('span'); while(x.firstChild) sp.appendChild(x.firstChild); sp.appendChild(document.createTextNode(' ')); x.replaceWith(sp); });
+    [].forEach.call(d.querySelectorAll('a'), function(x){ var sp = document.createElement('span'); while(x.firstChild) sp.appendChild(x.firstChild); x.replaceWith(sp); });
+    return d.innerHTML.trim();
+  }
   function missedHtml(list, title){
     list = (list || []).filter(Boolean);
     if(!list.length) return '';
     var row = function(m, i){
-      return '<details class="cx-mq"' + (i >= 3 ? ' hidden data-more' : '') + '><summary><span class="cx-mq-x" aria-hidden="true">&#x2715;</span><span class="cx-mq-q"><span class="cx-mq-stem">' + textOf(m.stem).replace(/[&<>]/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }) + '</span>' +
-        (m.ans ? '<small>' + (m.you ? 'You said ' + esc(textOf(m.you)) + ' · ' : '') + 'Answer: <b>' + esc(textOf(m.ans)) + '</b></small>' : '') + '</span><span class="cx-mq-ch" aria-hidden="true">&rsaquo;</span></summary>' +
+      return '<details class="cx-mq"' + (i >= 3 ? ' hidden data-more' : '') + '><summary><span class="cx-mq-x" aria-hidden="true">&#x2715;</span><span class="cx-mq-q"><span class="cx-mq-stem">' + lineHtml(m.stem) + '</span>' +
+        (m.ans ? '<small>' + (m.you ? 'You said ' + lineHtml(m.you) + ' · ' : '') + 'Answer: <b>' + lineHtml(m.ans) + '</b></small>' : '') + '</span><span class="cx-mq-ch" aria-hidden="true">&rsaquo;</span></summary>' +
         '<div class="cx-mq-body">' + (m.youWhy ? '<p><b>Your answer:</b> ' + m.youWhy + '</p>' : '') + (m.why ? '<p>' + m.why + '</p>' : '') +
           (m.href ? '<p><a href="' + esc(m.href) + '">Open the lesson</a></p>' : (!m.why && !m.youWhy ? '<p class="cx-small">The explanation is in the answer list below.</p>' : '')) + '</div></details>';
     };
