@@ -7,8 +7,12 @@ name = "levlprep-site"
 main = "index.js"
 compatibility_date = "2025-09-01"
 workers_dev = true
-# levlprep.com moves here at the cutover (docs/premium-vault.md, Cutover).
-# Until then the site is tested on its workers.dev address.
+# levlprep.com is served here (cutover 2026-11-08, docs/premium-vault.md). A route, not a custom
+# domain, so the zone's DNS records stay as they are: the route takes effect once levlprep.com's
+# records are proxied (orange cloud), and turning the proxy off is the instant way back.
+routes = [
+  { pattern = "levlprep.com/*", zone_name = "levlprep.com" },
+]
 
 [assets]
 directory = "../../.deploy/site"
