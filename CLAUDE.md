@@ -178,6 +178,12 @@ Never paste a YouTube iframe into a page.
 `docs/tools-upgrade-2026-10.md` is the status file: the hands-on audit of every tool (`docs/tool-audit-2026-10.md`),
 the fixes for it, and three builds (NREMT exam item types and adaptive exam, ochem synthesis trainer, A&P 3D anatomy).
 
+## Database backups
+
+`docs/backups.md` is the status file: the nightly encrypted dump with a restore test
+(`.github/workflows/db-backup.yml`, `scripts/backup/run.sh`) into Cloudflare KV `levlprep-backups`, owner setup and
+how to restore.
+
 ## Premium vault and the Cloudflare host
 
 `docs/premium-vault.md` is the status file: which lesson pages are vaulted (`scripts/vault/rules.mjs`), the deploy

@@ -66,8 +66,8 @@ flags through `noteFreeExam`, from `nremt/assets/premium-gates.js`). Tests: `scr
 
 ## Owner checklist
 
-1. **Apply the SQL migration** `scripts/sql/migrations/2026-11h-free-usage.sql` in Supabase (SQL editor), or tell
-   Claude to apply it. Until then the new calls fail quietly and the browser count stands, as before.
+1. ~~Apply the SQL migration~~ Done 2026-11-08 (applied by Claude with the owner's go-ahead; checked: RLS on, table
+   closed to anon and authenticated, the two RPCs granted to authenticated only).
 2. Merge the PR. The deploy then puts the vault on the API Worker and the site on `levlprep-site.<account>.workers.dev`.
 3. Claude: read that address from the deploy log, set `SITE_PREVIEW_ORIGIN` to it in `worker/wrangler.toml`, test a
    free, a signed-out and a Premium account there.
@@ -82,5 +82,5 @@ flags through `noteFreeExam`, from `nremt/assets/premium-gates.js`). Tests: `scr
 ## Status
 
 - 2026-11-08: built and tested locally (Worker tests, PGlite SQL test, Chrome checks of one vaulted lesson per
-  course as Premium, free and signed out, and 77 ordinary pages for missing files). Not yet deployed. The SQL
-  migration was not applied: applying it to the live database needs the owner's go-ahead.
+  course as Premium, free and signed out, and 77 ordinary pages for missing files). SQL migration applied the same
+  day.
