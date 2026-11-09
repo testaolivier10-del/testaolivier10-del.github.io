@@ -65,7 +65,7 @@ C_E = T_SO - 0.15                 # (no cut) push continues into the head
 C_F1 = T_BEFORE - 0.14
 C_F2 = T_AFTER - 0.12
 C_G = T_AND3 - 0.1
-CUTS = [C_C, C_D, C_F1, C_F2, C_G]
+CUTS = [0.95, C_C, C_D, C_F1, C_F2, C_G]
 LAND = T_EIGHTY - 0.02            # the iron hits the ground
 APEX = (C_B + LAND) / 2
 
@@ -264,48 +264,89 @@ GAGE = G.gage(K_A)
 GAGE_NH = G.gage(K_A, hat=None)
 ROD_L = 0.65 * 1365 * K_A * 0.98       # 3 ft 7 in on a 5 ft 6 in man
 ROD_W = 16
-GX = HOLE_X + 119                      # he stands over the hole: the iron's line passes just under his left cheek
-ROD_B = GY - 60                        # the blunt end down in the hole, on the powder
+GX = HOLE_X + 119                      # refined below so the iron's line passes just under his left cheekbone
+ROD_B = GY + 90                        # the blunt end deep in the drill hole, on the powder (hidden below the mouth)
+HOLE_Y = GY - 64
 
 
+T_STROKE = 1.15
 def tamp_off(t):
-    """how far the iron is lifted above the bottom of its stroke (px): lift, then a firm push down, about once a second"""
-    if t >= C_B: return 0.0
-    ph = (t * 0.92 + 0.3) % 1.0
-    return 44 * (0.5 - 0.5 * math.cos(ph / 0.6 * math.pi)) if ph < 0.6 else 44 * (1 - smooth((ph - 0.6) / 0.25))
+    """how far the iron is lifted above the bottom of its stroke (px): a clear lift, then a firm push down, one stroke a
+    little over a second; still at the bottom when the spark comes"""
+    if t >= T_SPARK - 0.05: return 0.0
+    ph = (t / T_STROKE + 0.25) % 1.0
+    v = 86 * (0.5 - 0.5 * math.cos(ph / 0.62 * math.pi)) if ph < 0.62 else 86 * (1 - smooth((ph - 0.62) / 0.28))
+    return v * (1 - smooth((t - (T_SPARK - 0.5)) / 0.42))      # the last push ends at the bottom as the spark comes
+
+
+HEAD_DOWN = 24          # his head is turned down to the hole he is packing
+
+
+def _fist_center(who, ps, side):
+    b = near_hand_path(who, ps, side).computeTightBounds()
+    return ((b.left() + b.right()) / 2, (b.top() + b.bottom()) / 2)
 
 
 _TC = {}
-def tamp_pose(t):
-    key = int(round(tamp_off(t)))
+def tamp_kw(key):
+    """pose for a lift of key px: both fists closed around the iron (solved, then corrected on the drawn fist centres)"""
     if key not in _TC:
         base_y = ROD_B - key
-        lean = 32 - 0.12 * key
-        kw = dict(face=-1, lean=lean, neck=10, thigh_n=-4, knee_n=-10 - 0.15 * key, thigh_f=16, knee_f=-12 - 0.15 * key,
+        lean = 34 - 0.10 * key
+        kw = dict(face=-1, lean=lean, neck=10, thigh_n=-4, knee_n=-12 - 0.12 * key, thigh_f=16, knee_f=-14 - 0.12 * key,
                   hand_n='grip', hand_f='grip', x=GX)
-        un, en, _ = G.arm_to(GAGE, kw, 'n', (HOLE_X, base_y - ROD_L * 0.55), GY, gd=40)
-        uf, ef, _ = G.arm_to(GAGE, kw, 'f', (HOLE_X, base_y - ROD_L * 0.72), GY, gd=40)
-        _TC[key] = dict(kw, uarm_n=un, elbow_n=en, uarm_f=uf, elbow_f=ef)
-    return A.Pose(ground=GY, br=math.sin(t * 2.4) * 0.5, blink=int(t * 10) % 37 == 0, **_TC[key]), ROD_B - key
+        out = dict(kw)
+        for side, f in (('n', 0.64), ('f', 0.82)):
+            tgt = (HOLE_X, base_y - ROD_L * f)
+            for it in range(3):
+                u, e, _ = G.arm_to(GAGE, kw, side, tgt, GY, gd=40)
+                k2 = dict(out, **{'uarm_' + side: u, 'elbow_' + side: e})
+                ps = A.Pose(ground=GY, **k2); ps.head_abs = HEAD_DOWN
+                cx, cy = _fist_center(GAGE, ps, side)
+                want = (HOLE_X, base_y - ROD_L * f)
+                tgt = (tgt[0] + (want[0] - cx), tgt[1] + (want[1] - cy))
+            out = k2
+        _TC[key] = out
+    return _TC[key]
 
 
-def near_hand_path(who, ps):
-    J = who.joints(ps); h, _ = who._hand(J, 'n', ps)
+def tamp_pose(t):
+    key = int(round(tamp_off(t)))
+    ps = A.Pose(ground=GY, br=math.sin(t * 2.4) * 0.5, blink=int(t * 10) % 37 == 0, **tamp_kw(key))
+    ps.head_abs = HEAD_DOWN
+    return ps, ROD_B - key
+
+
+def _cheek_dx():
+    kw = dict(face=-1, lean=34, neck=10, thigh_n=-4, knee_n=-12, thigh_f=16, knee_f=-14, x=0)
+    ps = A.Pose(ground=GY, **kw); ps.head_abs = HEAD_DOWN; J = GAGE.joints(ps); h = GAGE._hf(J)
+    return GAGE.canvas_pt(ps, h(*_hp((206, 196))))[0]
+
+
+def near_hand_path(who, ps, side='n'):
+    J = who.joints(ps); h, _ = who._hand(J, side, ps)
     m = skia.Matrix(); m.setTranslate(ps.x, ps.ground); m.preScale(ps.s * who.k * ps.face, ps.s * who.k)
     q = skia.Path(h); q.transform(m); return q
+
+
+GX = HOLE_X - _cheek_dx()
 
 
 def draw_tamp(c, t):
     ps, by = tamp_pose(t)
     GAGE.draw(c, ps, light=(0.7, -0.6), rim=(255, 224, 170))
-    # the iron passes behind the near fist and in front of the far one
+    # the far fist is redrawn over his chest so it reads clearly around the iron; the iron passes in front of it and behind
+    # the near fist
+    fh = near_hand_path(GAGE, ps, 'f'); sk = GAGE.pc(A.SKIN); sks = GAGE.pc(A.SKIN_SH)
+    c.drawPath(fh, P(mix(sk, (60, 50, 50), 0.12))); q = skia.Path(fh); q.offset(8, -6); c.drawPath(diff(fh, q), P(sks))
     c.save(); c.clipPath(near_hand_path(GAGE, ps), skia.ClipOp.kDifference, True)
+    c.clipRect(skia.Rect(-4000, -4000, 4000, HOLE_Y + 4))
     iron(c, (HOLE_X, by), 0.0, ROD_L, ROD_W)
     c.restore()
     # grit puffs from the hole at the bottom of each push; a tiny spark early (iron on rock); the big one on "spark"
-    ph = (t * 0.92 + 0.3) % 1.0
-    if t < C_B and 0.85 < ph < 1.0 or (t < C_B and ph < 0.12):
-        u = ((ph - 0.85) % 1.0) / 0.27
+    ph = (t / T_STROKE + 0.25) % 1.0
+    if t < T_SPARK - 0.05 and (0.86 < ph or ph < 0.12):
+        u = ((ph - 0.86) % 1.0) / 0.26
         for k in range(7):
             a = -math.pi / 2 + (k - 3) * 0.42
             c.drawCircle(HOLE_X + math.cos(a) * 46 * u, GY - 62 + math.sin(a) * 30 * u + 40 * u * u, 4 + 6 * u, P((196, 180, 150), 150 * (1 - u), MaskFilter=blur(3)))
@@ -331,11 +372,18 @@ APEX_Y = -300
 T_APEX = C_B + 2.9
 
 
+T_PASS = 0.27          # the blast drives it up through his head over about 8 frames (drawn, not hidden)
+V_PASS = 1600.0
+
+
 def flight(t):
     d = t - C_B
     y0 = ROD_B - ROD_L / 2
-    u = min(1.0, d / (T_APEX - C_B))
-    y = y0 + (APEX_Y - y0) * (1 - (1 - u) ** 7)
+    if d < T_PASS:
+        return HOLE_X, y0 - V_PASS * d, 0.0
+    y1 = y0 - V_PASS * T_PASS
+    u = min(1.0, (d - T_PASS) / (T_APEX - C_B - T_PASS))
+    y = y1 + (APEX_Y - y1) * (1 - (1 - u) ** 5)
     if d > T_APEX - C_B:
         e = d - (T_APEX - C_B); y = APEX_Y + 380 * e * e
     x = HOLE_X - 40 * u - 30 * max(0, d - (T_APEX - C_B))
@@ -345,7 +393,7 @@ def flight(t):
 
 def thrown(t):
     """he is thrown back off his feet: pivot at the heels, rotating back (to the right) toward the ground"""
-    u = smooth((t - C_B) / 0.55)
+    u = smooth((t - C_B - T_PASS) / 0.55)
     return 80 * u, 140 * u
 
 
@@ -374,9 +422,31 @@ def draw_blast(c, t, p):
         c.drawCircle(HOLE_X, GY - 90, 70 + 260 * d, P((255, 250, 235), 255 * a, MaskFilter=blur(14)))
 
 
+def head_path(who, ps):
+    J = who.joints(ps); h = who._hf(J)
+    q = union([curve([h(*_hp(p)) for p in HEAD_SHAPES[k]]) for k in ('skin', 'hair', 'hairtop', 'ear')])
+    m = skia.Matrix(); m.setTranslate(ps.x, ps.ground); m.preScale(ps.s * who.k * ps.face, ps.s * who.k)
+    q.transform(m); return q
+
+
 def draw_gage_A(c, t):
-    if t < C_B:
-        draw_tamp(c, t); return
+    if t < C_B + T_PASS:
+        if t < C_B:
+            draw_tamp(c, t); return
+        # the instant of the injury: he is still bent over the hole; the iron goes in under his left cheekbone and comes
+        # out of the top of his skull, tapered end first (drawn inside the head as hidden, entering and leaving)
+        ps, by = tamp_pose(C_B - 0.01)
+        ps.hand_n = ps.hand_f = 'relaxed'; ps.smile = -0.6; ps.blink = True; ps.mouth = 0.3
+        GAGE.draw(c, ps, light=(0.7, -0.6), rim=(255, 224, 170))
+        x, y, ang = flight(t)
+        hp = head_path(GAGE, ps)
+        c.save(); c.clipPath(hp, skia.ClipOp.kDifference, True); c.clipRect(skia.Rect(-4000, -4000, 4000, HOLE_Y + 4))
+        iron(c, (x, y + ROD_L / 2), 0.0, ROD_L, ROD_W)
+        c.restore()
+        # where it passes through, a dark red wound band shows on his cheek
+        J = GAGE.joints(ps); hh = GAGE._hf(J); ex, ey = GAGE.canvas_pt(ps, hh(*_hp((206, 196))))
+        if y - ROD_L / 2 < ey: c.drawCircle(ex, ey, 6, P((110, 18, 28), 230))
+        return
     ang, dx = thrown(t)
     k = smooth((t - C_B) / 0.3)
     ps = A.Pose(x=GX, ground=GY, face=-1, lean=lerp(32, -6, k), neck=lerp(10, -20, k), thigh_n=-6, knee_n=-6, thigh_f=8, knee_f=-6,
@@ -384,8 +454,8 @@ def draw_gage_A(c, t):
     c.save(); c.translate(dx, 0); c.translate(GX + 50, GY); c.rotate(ang); c.translate(-GX - 50, -GY)
     GAGE_NH.draw(c, ps, light=(0.7, -0.6), rim=(255, 224, 170), shadow=False)
     c.restore()
-    d = t - C_B             # his hat knocked up off his head by the iron, tumbling back
-    hx0, hy0 = HOLE_X + 30, GY - 1230 * K_A
+    d = t - C_B - T_PASS    # his hat knocked up off his head by the iron, tumbling back
+    hx0, hy0 = HOLE_X + 40, GY - 1230 * K_A
     draw_hat(c, hx0 + 220 * d, hy0 - 700 * d + 900 * d * d, 0.9 * K_A, 380 * d)
 
 
@@ -400,34 +470,51 @@ def draw_hat(c, x, y, s, rot, col=(112, 78, 52)):
     c.restore()
 
 
+T_TEASE = 0.95
+
+
+def shot_teaser(c, t):
+    """0 to 0.95 s: the injury itself in slow motion, close on his head (the hook), before the story starts"""
+    tt = C_B + 0.16 + 0.07 * (t / T_TEASE)
+    ps, _ = tamp_pose(C_B - 0.01)
+    J = GAGE.joints(ps); hx, hy = GAGE.canvas_pt(ps, J['head_piv'])
+    z = 2.3 + 0.25 * (t / T_TEASE)
+    c.save(); c.translate(540, 980); c.scale(z, z); c.translate(-(hx + 10), -(hy + 10))
+    p = side_world(c, tt, 'day')
+    draw_blast(c, tt, p)
+    draw_gage_A(c, tt)
+    c.restore()
+    # the blast lights him from below
+    c.drawRect(skia.Rect(0, 900, W, H), skia.Paint(Shader=skia.GradientShader.MakeLinear([(0, 900), (0, 1700)], [skia.Color(255, 220, 150, 0), skia.Color(255, 230, 170, 200)])))
+
+
 def shot_AB(c, t):
+    if t < T_TEASE: return shot_teaser(c, t)
     # camera: a slow push toward his hands and the hole; from the blast it tilts up with the iron into the sky
     if t < C_B:
-        u = ease_io(t / C_B)
+        u = ease_io((t - 0.95) / (C_B - 0.95))
         z = lerp(1.2, 1.32, u); cx = lerp(470, 440, u); cy = lerp(1010, 1050, u)
     else:
         x, y, _ = flight(t)
         # pull back and tilt up: the whole cut below, the smoke rising, the iron high above it
-        k = ease_io((t - C_B - 0.1) / 1.6)
-        z = lerp(1.32, 0.45, k) + 0.04 * smooth((t - C_B - 1.7) / 3); cx = lerp(440, 520, k); cy = lerp(1050, 380, k)
+        d = t - C_B
+        k1 = ease_io((d - 0.15) / 0.9); k2 = ease_io((d - 1.0) / 1.0); k3 = ease_io((d - 2.0) / 1.6)
+        z = lerp(lerp(1.32, 0.62, k1), 0.5, k2); cx = lerp(440, 600, k1); cy = lerp(lerp(1050, 1080, k1), 380, k2)
+        z = lerp(z, 1.05, k3); cx = lerp(cx, x + 60, k3); cy = lerp(cy, y + 30, k3)
         if t > C_C - 0.45: pass
     c.save(); c.translate(540, 960); c.scale(z, z); c.translate(-cx, -cy)
     p = side_world(c, t, 'day')
     motes(c, t, p)
     if t >= C_B: draw_blast(c, t, p)
     draw_gage_A(c, t)
-    if C_B <= t < C_B + 0.22:
-        d = t - C_B; a = max(0, 1 - d / 0.22)
+    if C_B + T_PASS <= t < C_B + T_PASS + 0.2:
+        d = t - C_B - T_PASS; a = max(0, 1 - d / 0.2)
         c.drawRect(skia.Rect(HOLE_X - 110, GY - 1400, HOLE_X + 110, GY - 60), P((255, 250, 232), 255 * a, MaskFilter=blur(26)))
         c.drawCircle(HOLE_X + 10, GY - 690, 190, P((255, 250, 232), 255 * a, MaskFilter=blur(30)))
     if t >= C_B:
         x, y, ang = flight(t)
         base = (x - math.sin(ang) * ROD_L / 2, y + math.cos(ang) * ROD_L / 2)
-        if t < C_B + 0.2:      # the first instant: a real directional blur along its path, out through the flash
-            for k in range(6):
-                f = k / 6
-                iron(c, (base[0], base[1] + (ROD_B - ROD_L / 2 - y) * f * 0.6), ang, ROD_L, ROD_W, a=60)
-        iron(c, base, ang, ROD_L, ROD_W)
+        if t >= C_B + T_PASS: iron(c, base, ang, ROD_L, ROD_W)
     if t < C_B + 0.5: fg_rocks(c, t, p)
     c.restore()
 
@@ -576,7 +663,11 @@ G_HIP = (700, GY - 6)        # where he lies on the ledge, feet toward the hole
 
 
 def sit_amt(t):
-    return smooth((t - T_LIVED - 0.05) / 1.1)
+    return smooth((t - T_LIVED - 0.2) / 1.1)
+
+
+def plant_amt(t):
+    return smooth((t - T_LIVED + 0.45) / 0.4)
 
 
 def gage_D_pose(t):
@@ -588,11 +679,12 @@ def gage_D_pose(t):
     kw = dict(face=-1, lean=lean, neck=lerp(-10, 8, s), thigh_n=86, knee_n=-4, thigh_f=82, knee_f=-10, ank_n=-78, ank_f=-70,
               hand_n='flat', hand_f='flat', blink=(t < T_LIVED + 0.05) or (int(t * 10) % 31 == 0), mouth=max(0, talk), x=G_HIP[0])
     g = G_HIP[1] + off
-    if s > 0.02:     # propped up: both hands planted flat on the rock behind his hips
-        tn = (G_HIP[0] + lerp(40, 74, s), G_HIP[1] - 2); tf = (G_HIP[0] + lerp(60, 96, s), G_HIP[1] - 4)
+    pl = plant_amt(t)
+    if pl > 0.001:   # first both palms go flat onto the rock beside his hips, then he pushes himself up on them (fixed spots)
+        tn = (G_HIP[0] + 70, G_HIP[1] - 2); tf = (G_HIP[0] + 92, G_HIP[1] - 4)
         un, en, _ = G.arm_to(GD, dict(kw), 'n', tn, g, key=('dn', round(s, 2)), gd=20)
         uf, ef, _ = G.arm_to(GD, dict(kw), 'f', tf, g, key=('df', round(s, 2)), gd=20)
-        kw.update(uarm_n=un, elbow_n=en, uarm_f=uf, elbow_f=ef)
+        kw.update(uarm_n=lerp(82, un, pl), elbow_n=lerp(4, en, pl), uarm_f=lerp(86, uf, pl), elbow_f=lerp(2, ef, pl))
     else:          # flat on his back: arms lie along his sides on the rock
         kw.update(uarm_n=82, elbow_n=4, uarm_f=86, elbow_f=2)
     ps = A.Pose(ground=g, br=0.6 * math.sin(t * 2.6), **kw)
@@ -650,11 +742,11 @@ def cam_DE(t):
     gx, gy = G_HIP
     if t < C_E:
         u = ease_io((t - C_D) / (C_E - C_D))
-        return lerp(1.3, 1.45, u), lerp(760, 780, u), lerp(1150, 1160, u)
+        return lerp(1.1, 1.2, u), lerp(760, 780, u), lerp(1060, 1060, u)
     u = ease_io((t - C_E) / 1.6)
     ps = gage_D_pose(t); J = GD.joints(ps); hx, hy = GD.canvas_pt(ps, J['head_piv'])
-    z = lerp(1.45, 4.6, u) + 0.25 * smooth((t - C_E - 1.6) / 6.5)
-    return z, lerp(780, hx - 62, u), lerp(1160, hy - 52, u)
+    z = lerp(1.2, 4.6, u) + 0.25 * smooth((t - C_E - 1.6) / 6.5)
+    return z, lerp(780, hx - 62, u), lerp(1060, hy - 52, u)
 
 
 def shot_DE(c, t):
@@ -675,6 +767,8 @@ def shot_DE(c, t):
     worker_D(c, t, gps)
     if t >= C_E: xray_head(c, t, gps)
     if t < C_E: fg_rocks(c, t, p)
+    c.restore(); c.save()
+    if t >= C_E: front_view(c, t)
     c.restore()
 
 
@@ -698,6 +792,79 @@ TEMPORAL = [(204, 146), (186, 150), (164, 156), (140, 160), (128, 152), (150, 14
 CEREB = [(96, 162), (116, 156), (138, 166), (126, 182), (104, 180)]
 STEM = [(140, 160), (152, 158), (156, 190), (146, 194)]
 ENTRY = (206, 196); EXIT = (186, 52)                              # in under the cheekbone, behind the eye, out the top front
+
+
+XR = {}
+T_FV0 = T_LEFT - 0.15         # a front view lens opens on "left frontal lobe"
+T_FV1 = at('the', 2) - 0.05   # and closes before "the part of the brain"
+
+
+def side_sx(t):
+    return 1.0
+
+
+def front_sx(t):
+    return smooth((t - T_FV0) / 0.3) * (1 - smooth((t - T_FV1) / 0.3))
+
+
+def front_view(c, t):
+    """his head from the front as an x ray: the iron went in under his LEFT cheekbone (the viewer's right) and out the top,
+    left of the midline; only the left frontal lobe is lit"""
+    sx = front_sx(t)
+    if sx <= 0.01 or 'head' not in XR: return
+    hx, hy = XR['head']
+    LX, LY, LR = 270, 830, 225          # a round lens beside his head, opening out of it
+    cx, cy = lerp(hx, LX, sx), lerp(hy, LY, sx); r = LR * sx
+    c.drawLine(hx - 40, hy, cx, cy, SP((255, 210, 63), 4, 200 * sx))
+    lens = skia.Path(); lens.addCircle(cx, cy, r)
+    c.drawPath(lens, P((10, 18, 40), 245))
+    c.save(); c.clipPath(lens, skia.ClipOp.kIntersect, True)
+    k = r / 150
+    c.translate(cx, cy + 6 * k); c.scale(k, k)
+    E = lambda pts: smooth_closed(pts)
+    M = lambda pts: smooth_closed(pts + [(-x, y) for x, y in reversed(pts)])
+    skin = M([(0, -112), (54, -104), (80, -70), (86, -20), (82, 24), (72, 60), (58, 92), (38, 116), (16, 128), (0, 130)])
+    c.drawPath(skin, P((22, 50, 92)))
+    for sd in (-1, 1): c.drawOval(skia.Rect(sd * 84 - 10, -6, sd * 84 + 10, 34), P((22, 50, 92)))     # ears
+    bone = (228, 238, 252)
+    vault = M([(0, -104), (46, -97), (70, -66), (76, -24), (72, 10), (0, 8)])
+    brain = M([(0, -98), (42, -92), (64, -64), (68, -26), (64, 4), (0, 4)])
+    c.drawPath(vault, P((200, 220, 248), 70)); c.drawPath(brain, P((206, 120, 142), 235))
+    lit = smooth((t - T_LEFT + 0.1) / 0.4)
+    # his left frontal lobe (viewer's right hemisphere)
+    lobe = E([(3, -96), (42, -90), (64, -62), (67, -24), (62, -2), (3, -2)])
+    c.drawPath(lobe, P((250, 186, 76), 235 * lit))
+    for sd in (-1, 1):
+        for k2 in range(4):
+            q = skia.Path(); q.moveTo(sd * 8, -80 + k2 * 18); q.quadTo(sd * 34, -90 + k2 * 18, sd * 60, -70 + k2 * 20); c.drawPath(q, SP((150, 70, 96), 2.0, 140))
+    c.drawLine(0, -98, 0, 4, SP((110, 40, 64), 3.4, 230))                          # the midline between the hemispheres
+    c.drawPath(vault, SP(bone, 3.4, 235))
+    for sd in (-1, 1):
+        c.drawOval(skia.Rect(sd * 30 - 18, 6, sd * 30 + 18, 36), P((12, 26, 52))); c.drawOval(skia.Rect(sd * 30 - 18, 6, sd * 30 + 18, 36), SP(bone, 3, 235))
+        c.drawPath(E([(sd * 50, 36), (sd * 74, 30), (sd * 78, 46), (sd * 56, 54)]), P(bone, 210))      # cheekbones
+    c.drawPath(E([(0, 38), (8, 50), (6, 64), (-6, 64), (-8, 50)]), P((12, 26, 52)))                    # nasal opening
+    maxilla = M([(0, 66), (36, 62), (52, 52), (46, 84), (0, 86)]); c.drawPath(maxilla, SP(bone, 3, 220))
+    for k2 in range(-3, 4):
+        c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(k2 * 9 - 3.5, 78, k2 * 9 + 3.5, 87), 2, 2), P((236, 244, 255), 235))
+        c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(k2 * 9 - 3.5, 92, k2 * 9 + 3.5, 100), 2, 2), P((236, 244, 255), 235))
+    jaw = skia.Path(); jaw.moveTo(-52, 52); jaw.quadTo(-50, 114, 0, 122); jaw.quadTo(50, 114, 52, 52); c.drawPath(jaw, SP(bone, 3.4, 230))
+    # the track: from under his left cheekbone up, behind the left eye, out the top just left of the midline
+    ent, ext = (50, 62), (16, -104)
+    L_ = math.hypot(ext[0] - ent[0], ext[1] - ent[1]); ux, uy = (ext[0] - ent[0]) / L_, (ext[1] - ent[1]) / L_; nx, ny = -uy, ux
+    w = 14
+    c.save(); c.clipPath(skin, skia.ClipOp.kIntersect, True)
+    c.drawPath(poly([(ent[0] + nx * w / 2, ent[1] + ny * w / 2), (ext[0] + nx * w / 2, ext[1] + ny * w / 2),
+                     (ext[0] - nx * w / 2, ext[1] - ny * w / 2), (ent[0] - nx * w / 2, ent[1] - ny * w / 2)]), P((120, 20, 36), 220))
+    c.restore()
+    Lr = 3.6 / 7.4 * 210
+    iron(c, (ent[0] - ux * 60, ent[1] - uy * 60), math.atan2(ux, -uy), Lr, w, a=120)
+    c.restore()
+    c.drawCircle(cx, cy, r, SP((255, 210, 63), 5, 240))
+    if sx > 0.9:
+        f = skia.Font(__import__('layout').BLACK, 34); txt = 'FRONT VIEW: HIS LEFT'; tw = f.measureText(txt)
+        rr = skia.Rect(cx - tw / 2 - 18, cy + r + 18, cx + tw / 2 + 18, cy + r + 66)
+        c.drawRRect(skia.RRect.MakeRectXY(rr, 22, 22), P((10, 18, 36), 230)); c.drawRRect(skia.RRect.MakeRectXY(rr, 22, 22), SP((255, 210, 63), 3, 230))
+        c.drawString(txt, cx - tw / 2, cy + r + 54, f, P((255, 255, 255)))
 
 
 def xray_alpha(t):
@@ -727,12 +894,18 @@ def xray_head(c, t, ps):
     O = lambda pts: _open([h(*_hp(p)) for p in pts])
     head = union([S(HEAD_SHAPES['skin']), S(HEAD_SHAPES['hair']), S(HEAD_SHAPES['hairtop']), S(HEAD_SHAPES['ear'])])
     c.drawRect(skia.Rect(-4000, -4000, 6000, 6000), P((8, 14, 30), 200 * a))     # the world dims
+    hcx, hcy = who.canvas_pt(ps, h(*_hp((170, 150))))
+    m = c.getTotalMatrix(); XR['head'] = m.mapXY(hcx, hcy); XR['scale'] = m.getScaleX() * ps.s * who.k * 1.25
+    sx = side_sx(t)
+    if sx <= 0.0: return
+    w_out = smooth((t - (C_F1 - 0.6)) / 0.45)
+    c.saveLayerAlpha(None, int(255 * (1 - w_out)))
+    c.translate(hcx, hcy); c.scale(sx, 1); c.translate(-hcx, -hcy)
     c.save(); c.translate(ps.x, ps.ground); c.scale(ps.s * who.k * ps.face, ps.s * who.k)
     top = h(*_hp((160, 40)))[1]; bot = h(*_hp((160, 252)))[1]
-    w_in = smooth((t - (C_E + 0.7)) / 0.8); w_out = smooth((t - (C_F1 - 0.6)) / 0.45)
+    w_in = smooth((t - (C_E + 0.7)) / 0.8)
     c.save(); c.clipPath(head, skia.ClipOp.kIntersect, True)
-    if w_out <= 0: c.clipRect(skia.Rect(-4000, -4000, 4000, top + (bot - top) * w_in))
-    else: c.clipRect(skia.Rect(-4000, top + (bot - top) * w_out, 4000, 4000))
+    c.clipRect(skia.Rect(-4000, -4000, 4000, top + (bot - top) * w_in))
     c.drawPath(head, P((22, 50, 92)))
     for pts, al in ((VAULT, 70), (FACE, 60), (MAND, 70)):
         c.drawPath(S(pts), P((200, 220, 248), al))
@@ -761,7 +934,7 @@ def xray_head(c, t, ps):
     # the wound track left by the iron (drawn as it goes: entry to exit)
     ex, ey = h(*_hp(ENTRY)); xx_, xy_ = h(*_hp(EXIT))
     L_ = math.hypot(xx_ - ex, xy_ - ey); ux, uy = (xx_ - ex) / L_, (xy_ - ey) / L_; nx, ny = -uy, ux
-    tr = smooth((t - T_TORE - 0.1) / 1.1)
+    tr = smooth((t - T_TORE) / 0.75)
     if tr > 0:
         w = 28 * 1.25
         q = poly([(ex + nx * w / 2, ey + ny * w / 2), (ex + ux * L_ * tr + nx * w / 2, ey + uy * L_ * tr + ny * w / 2),
@@ -769,14 +942,15 @@ def xray_head(c, t, ps):
         c.drawPath(q, P((120, 20, 36), 215))
     c.restore()
     # the ghost iron replaying its path, from below the jaw up through and out of the top of the head (tapered end first)
-    if T_TORE - 0.15 < t < T_TORE + 1.6:
-        u = (t - (T_TORE - 0.15)) / 1.6
+    if T_TORE - 0.15 < t < T_TORE + 1.0:
+        u = (t - (T_TORE - 0.15)) / 1.0
         Lr = 3.6 / 7.4 * 172 * 1.25 * 2.0          # 3 ft 7 in against a skull about 7.4 in long (172 units)
         Lr = min(Lr, 1000)
         tip = -Lr * 0.15 + (L_ + Lr * 1.15) * smooth(u)
         base = (ex + ux * (tip - Lr), ey + uy * (tip - Lr))
         al = 170 * min(1, u * 6) * min(1, (1 - u) * 6)
         iron(c, base, math.atan2(ux, -uy), Lr, 28 * 1.25, a=al)
+    c.restore()
     c.restore()
     # chips on their words, beside the face (in front of it), leaders to the lit lobe
     fx, fy = who.canvas_pt(ps, h(*_hp((224, 96))))
@@ -794,10 +968,13 @@ def chip_world(c, text, ax, ay, dy, a):
 def draw_chips(c):
     import layout as L
     for text, (ax, ay), dy, a in CHIPS:
-        f = skia.Font(L.BLACK, 44); w = f.measureText(text)
-        x = 56 + w / 2
-        y = ay + dy - 60
-        c.drawLine(x + w / 2 + 24, y - 10, ax, ay, SP((255, 210, 63), 4, 230 * a))
+        f = skia.Font(L.BLACK, 40); w = f.measureText(text)
+        if dy == 'front':
+            x = W - 70 - w / 2; y = ay - 230
+            c.drawLine(x - w / 2 + 10, y + 22, ax, ay, SP((255, 210, 63), 4, 230 * a))
+        else:
+            x = 80 + w / 2; y = ay + dy - 60
+            c.drawLine(x + w / 2 + 24, y - 10, ax, ay, SP((255, 210, 63), 4, 230 * a))
         c.drawCircle(ax, ay, 8, P((255, 210, 63), 255 * a))
         r = skia.Rect(x - w / 2 - 24, y - 42, x + w / 2 + 24, y + 22)
         c.drawRRect(skia.RRect.MakeRectXY(r, 28, 28), P((10, 18, 36), 230 * a))
@@ -828,7 +1005,7 @@ def shot_F(c, t):
     after = t >= C_F2
     t0 = C_F2 if after else C_F1; t1 = C_G if after else C_F2
     u = (t - t0) / (t1 - t0)
-    z = lerp(1.0, 1.06, ease_io(u)); cx = lerp(560, 580, u); cy = lerp(960, 975, u)
+    z = lerp(1.0, 1.16, ease_io(u)); cx = lerp(520, 640, ease_io(u)); cy = lerp(960, 1000, ease_io(u))
     c.save(); c.translate(540, 960); c.scale(z, z); c.translate(-cx, -cy)
     p = side_world(c, t, 'grey' if after else 'day', keg=not after)
     crew_bg(c, t, p)
@@ -844,8 +1021,9 @@ def shot_F(c, t):
         nod = 7 * math.sin(max(0, t - T_CAPABLE + 0.2) * 7) * smooth((t - T_CAPABLE + 0.2) / 0.3) * (1 - smooth((t - T_CAPABLE - 0.9) / 0.3))
         bx = FGX + 190
         bk = dict(face=-1, lean=6, neck=4 + nod, uarm_f=4, elbow_f=22, hand_n='flat', hand_f='relaxed', x=bx, smile=0.9)
-        g_sh = shoulder_pt(g, gps)
-        un, en, _ = G.arm_to(BOSS, dict(bk), 'n', (g_sh[0] + 26, g_sh[1] - 4), GY - 10, key='bossF1b', gd=36)
+        J_ = g.joints(gps); sh_top = g.canvas_pt(gps, J_['torso_f'](-50, 352))       # the top of his back shoulder
+        pat = 10 * max(0.0, math.sin((t - T_CAPABLE + 0.2) * 9)) * smooth((t - T_CAPABLE + 0.2) / 0.1) * (1 - smooth((t - T_CAPABLE - 0.5) / 0.1))
+        un, en, _ = G.arm_to(BOSS, dict(bk), 'n', (sh_top[0] + 6, sh_top[1] - 10 - pat), GY - 10, key=('bossF1c', round(pat)), gd=40)
         bps = A.Pose(ground=GY - 10, br=math.sin(t * 2 + 1) * 0.6, uarm_n=un, elbow_n=en, **bk)
         BOSS.draw(c, bps, light=light, rim=rim)
         g.draw(c, gps, light=light, rim=rim)
@@ -854,28 +1032,31 @@ def shot_F(c, t):
     else:
         g = G_AFTER
         sw = smooth((t - T_SWORE + 0.2) / 0.25) * (1 - smooth((t - T_BRUSH + 0.1) / 0.25))
-        br_ = smooth((t - T_BRUSH + 0.05) / 0.3) * (1 - smooth((t - T_DROP - 0.5) / 0.6))
+        br_ = smooth((t - T_BRUSH + 0.05) / 0.3)
         dr = t >= T_DROP
+        if t < T_DROP - 0.12: HF_DROP.clear()
         mouth = 0.0
         if T_SWORE - 0.15 < t < T_BRUSH + 0.1: mouth = 0.55 + 0.35 * math.sin(t * 19)
-        shake = 6 * math.sin(t * 22) * sw
+        shake = 7 * math.sin(t * 22) * sw
+        op = smooth((t - T_DROP + 0.5) / 0.3)        # he holds the plan out, then his fingers open and it drops
         # "swore": he leans in, scowling, mouth open, and shakes the plan in his near fist at the contractor; "brushed off
         # advice": he lowers it and turns his head away, chin up; "dropped": his hand opens and the plan falls
         gk = dict(face=-1, lean=lerp(lerp(2, 10, sw), -6, br_), neck=lerp(lerp(2, 10, sw), -32, br_), brow=1.0, mouth=mouth,
-                  uarm_n=lerp(lerp(10, 58, sw), 14, br_) + shake, elbow_n=lerp(lerp(26, 40, sw), 24, br_),
-                  hand_n='grip' if not dr else 'flat', uarm_f=4, elbow_f=24, hand_f='relaxed', x=FGX + 80)
+                  uarm_n=lerp(lerp(lerp(10, 92, sw), 30, br_), 34, op) + shake, elbow_n=lerp(lerp(26, 20, sw), 30, br_),
+                  hand_n='grip' if t < T_DROP - 0.12 else 'flat', wrist_n=lerp(0, -20, op), uarm_f=4, elbow_f=24, hand_f='relaxed', x=FGX + 80)
         gps = A.Pose(ground=GY, br=math.sin(t * 2.6) * 0.6, **gk)
         ad = smooth((t - T_BRUSH + 0.5) / 0.4) * (1 - smooth((t - T_DROP - 0.3) / 0.5))
-        bk = dict(face=1, lean=lerp(4, 8, ad), neck=6, uarm_n=lerp(4, 46, ad), elbow_n=lerp(20, 44, ad), hand_n='flat', wrist_n=lerp(0, -50, ad),
-                  uarm_f=4, elbow_f=22, hand_f='relaxed', x=FBX - 40)
+        bk = dict(face=1, lean=lerp(4, 10, ad), neck=6, uarm_n=lerp(4, 40, ad), elbow_n=lerp(20, 50, ad), hand_n='flat', wrist_n=lerp(0, -50, ad),
+                  uarm_f=4, elbow_f=22, hand_f='relaxed', x=FBX - 150)
         BOSS.draw(c, A.Pose(ground=GY, br=math.sin(t * 2 + 1) * 0.6, **bk), light=light, rim=rim)
         g.draw(c, gps, light=light, rim=rim)
         hf = G.grip_pt(g, gps, 'n', 30)
-        if not dr:
+        if t < T_DROP - 0.12:
             draw_sheet_hang(c, hf, 0.0, 0.0)
             c.save(); c.clipPath(near_hand_path(g, gps), skia.ClipOp.kIntersect, True); g.draw(c, gps, light=light, rim=rim); c.restore()
         else:
-            d = t - T_DROP
+            d = max(0.0, t - T_DROP + 0.12)
+            hf = HF_DROP.setdefault('p', hf)
             y_land = GY - 6
             fall = min(y_land - hf[1] - 60, 0.5 * 900 * d * d)     # light paper: slower than free fall, fluttering
             k = fall / max(1, y_land - hf[1] - 60)
@@ -891,6 +1072,9 @@ def draw_roll(c, h):
     c.drawPath(poly([(x - 10, y - 30), (x + 10, y - 30), (x + 12, y + 110), (x - 8, y + 110)]), P((236, 228, 206)))
     c.drawOval(skia.Rect(x - 8, y + 104, x + 12, y + 114), P((200, 190, 166)))
     c.drawLine(x - 4, y - 26, x - 2, y + 104, SP((210, 200, 176), 3))
+
+
+HF_DROP = {}
 
 
 def draw_sheet_hang(c, top, land, tilt):
@@ -941,7 +1125,7 @@ FR1 = G.worker_a(0.62); FR2 = G.worker_b(0.58)
 
 def shot_G(c, t):
     u = (t - C_G) / (DUR - C_G)
-    z = lerp(1.04, 1.12, ease_io(u)); cx = lerp(610, 570, u); cy = 1000
+    z = lerp(1.0, 1.18, ease_io(u)); cx = lerp(660, 600, ease_io(u)); cy = lerp(1000, 1040, ease_io(u))
     c.save(); c.translate(540, 960); c.scale(z, z); c.translate(-cx, -cy)
     p = side_world(c, t, 'dusk', keg=False)
     lx, ly = 1010, GY - 170          # a lantern on a post at the camp (scene life)
@@ -956,9 +1140,13 @@ def shot_G(c, t):
     kw = dict(face=-1, lean=5, neck=-6, thigh_n=8 + 16 * s, knee_n=-4 - 40 * max(0.0, co), thigh_f=8 - 16 * s, knee_f=-4 - 40 * max(0.0, -co),
               uarm_n=-14 * s, elbow_n=24, uarm_f=14 * s, elbow_f=24, hand_n='relaxed', hand_f='relaxed')
     G_WALK.draw(c, A.Pose(x=520 - d, ground=GY - 20, br=0.4 * math.sin(t * 3), **kw), light=p['light'], rim=p['rim'])
-    for who, x, g, n in ((FR1, 810, 1560, 0), (FR2, 940, 1530, 1)):
-        who.draw(c, A.Pose(x=x, ground=g, face=-1, neck=-4 + 3 * math.sin(t * 0.7 + n), lean=2, uarm_n=4 + 2 * n, elbow_n=30, uarm_f=0, elbow_f=26,
-                           hand_n='relaxed', hand_f='relaxed', br=math.sin(t * 2.3 + n)), light=p['light'], rim=p['rim'])
+    # the friends watch him go: they breathe, the near one lowers his head on "no longer", the far one turns to look at him
+    lo = smooth((t - T_NO + 0.2) / 0.6); tu = smooth((t - at('friends') - 0.3) / 0.5) * (1 - smooth((t - T_NO - 0.4) / 0.5))
+    for who, x, g, n, nk, sh in ((FR1, 810, 1560, 0, 4 + 16 * lo, 0.0), (FR2, 940, 1530, 1, -4 - 10 * tu + 8 * lo, 1.0)):
+        b = math.sin(t * 2.0 + n * 1.7)
+        who.draw(c, A.Pose(x=x, ground=g + 2 * b, face=-1, neck=nk, lean=2 + 2 * lo + 1.2 * b, uarm_n=4 + 2 * n + 3 * b, elbow_n=30 + 6 * lo,
+                           uarm_f=0 + 3 * b, elbow_f=26, hand_n='relaxed', hand_f='relaxed', br=1.5 * b, blink=int((t + n) * 10) % 29 == 0),
+                 light=p['light'], rim=p['rim'])
     c.restore()
 
 

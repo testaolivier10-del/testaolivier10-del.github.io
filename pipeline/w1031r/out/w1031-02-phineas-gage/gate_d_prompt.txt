@@ -1,0 +1,17 @@
+You are an independent fresh eyes reviewer for a 41 second vertical educational Short (AP Psychology) about Phineas Gage. You have NOT seen how it was made. Grade it strictly; a score of 8 means you would happily publish it on a quality educational channel.
+
+Files (look at them with the Read tool; do not open the mp4 directly): /tmp/gage_review/
+- still_XXs.png: one frame every second (XX = second)
+- strip_sectionN_A-Bs.png: 4 frames per second for each section
+- crop_*.png: close crops of hands and of the injury (every frame from 5.5 to 6.1 s)
+- thumbnail.png: the cover image
+
+Narration (voiced): "Phineas Gage was tamping blasting powder into a rock in eighteen forty eight, when a spark set it off, and the iron rod in his hands shot up through his skull. It landed about eighty feet away. And somehow... he lived. He was talking within minutes. So what did that rod take from him? It tore through his left frontal lobe, the part of the brain that plans ahead and holds back impulses. Before the accident, his bosses called him their most capable foreman. Afterward, he swore, brushed off advice, and dropped his plans as fast as he made them. And his friends said he was NO longer Gage."
+
+Known facts to check the picture against: he packed powder into a drill hole with a 3 ft 7 in iron rod (tamping, not drilling); a spark set off the powder; the iron went in under his LEFT cheekbone, behind the left eye and out the top of his skull, tapered end first; it landed point first about 80 ft away; he was thrown on his back, spoke within minutes and sat up; the damage was to the LEFT frontal lobe; afterward he lost his left eye.
+
+Checklist: hook (something striking in the first 1 to 2 s); story clarity (could a cold viewer follow each line from the picture); every person's action physically right (hands ON what they hold, push or touch, nothing moving by itself); accuracy of the picture; visual quality and consistency (art, people as one body with no seams, scene life, camera never static over about 2 s); text readable and not covering faces or action; the ending; the thumbnail (clear at small size, true to the video).
+
+Sections: 1 hook and tamping 0-6 s; 2 blast and flight 6-10.5 s; 3 landing 10.5-12.8 s; 4 survival 12.8-17.4 s; 5 x ray 17.4-26 s; 6 before 26-30.6 s; 7 after 30.6-36.4 s; 8 ending 36.4-41.1 s.
+
+Output exactly: one line per section "Section N: score/10: main issue (with time)", then "Hand contact: pass/fail: details", "Accuracy: pass/fail: details", "Thumbnail: score/10: issue", "Overall: score/10", then up to 8 concrete fixes, most important first. Be concrete and brief.

@@ -17,10 +17,7 @@ def scene_png(t, path):
 def hero_png(path, iron_up=0.0):
     s = skia.Surface(1400, 1600); c = s.getCanvas(); c.clear(skia.Color4f(0, 0, 0, 0))
     c.translate(700 - B.GX * 1.6 + 120, 1550 - B.GY * 1.6); c.scale(1.6, 1.6)
-    ps, by = B.tamp_pose(2.0)
-    B.GAGE.draw(c, ps, light=(0.7, -0.6), rim=(255, 224, 170), shadow=False)
-    c.save(); c.clipPath(B.near_hand_path(B.GAGE, ps), skia.ClipOp.kDifference, True)
-    B.iron(c, (B.HOLE_X, by), 0.0, B.ROD_L, B.ROD_W); c.restore()
+    B.draw_gage_A(c, B.C_B + 0.26)      # the iron going in under his left cheekbone and out of the top of his head
     s.makeImageSnapshot().save(path); return path
 
 
@@ -29,12 +26,16 @@ bg2 = scene_png(B.T_LEFT + 1.2, OUT + 'bg_xray.png')
 hero = hero_png(OUT + 'hero.png')
 
 
+ENTRY_X, ENTRY_Y = 0, 0
+
+
 def concept_a():
+    global ENTRY_X, ENTRY_Y
     c = T.background(bg, focus=(0.45, 0.55), zoom=1.15, blur=12, tint=PSY, dark=0.5, burst=(560, 1150), burst_col=(255, 230, 170))
     T.top_shade(c, 820, 225)
-    s, p = T.subject(hero, 1150, glow=(255, 230, 170), glow_r=32)
+    s, p = T.subject(hero, 1180, glow=(255, 230, 170), glow_r=32)
     T.paste(c, s, 560 - s.width / 2, 1760 - s.height + p)
-    T.arrow(c, (900, 1060), (480, 880), bend=0.35, col=T.YELLOW)
+    T.arrow(c, (900, 1260), (448, 935), bend=0.3, col=T.YELLOW)
     T.text_line(c, 'AN IRON ROD', 540, 190, 200)
     T.text_line(c, 'THROUGH HIS SKULL', 540, 430, 130, box=T.YELLOW)
     T.pill(c, 'AP PSYCHOLOGY', PSY); T.mark(c); return c

@@ -17,3 +17,16 @@ hands planted as he sits up, worker's hand on his shoulder from 15 s, contractor
 his near fist until it drops; shots.py passes.
 Builder self review (not independent): hook 8, blast and flight 7.5 (the iron is small in the wide sky shot), landing 8, survival 8,
 x ray 8.5, before and after 8, ending 8, whole video 8.
+
+## Fix round 1 (2026-11-09, after an independent reviewer scored 5)
+Changes: a 1 s hook flash forward of the injury; tamping with his head down to the hole, both fists drawn on the iron, clear
+strokes, the iron deep in the drill hole; the injury drawn over 8 frames (in under the left cheekbone, out the top, tapered
+end first) instead of hidden by the flash; a wide pull back with his whole body, then a push in on the iron in the sky;
+palms planted before he sits up, the worker's head in frame; a round front view lens (track left of the midline, left lobe
+lit); chips moved inboard and the x ray fades out; the contractor's hand on top of his shoulder with a pat; the hand opens
+before the plan drops; a "swore" gesture; camera push and drift in the before and after shots; slow push, breathing, a head
+drop and a head turn on the friends; music 23 dB under the voice; thumbnail shows the iron through his head.
+Gates: story check pass, shots.py pass, -14.4 LUFS, transcript 99.1 percent, motion_qc only planned jumps.
+Gate D with two NEW independent reviewers (claude -p, given only the video stills, strips, crops, narration and checklist):
+reviewer 1 overall 6 (sections 7, 6, 6, 6, 7, 7, 6, 6); reviewer 2 overall 6 (sections 6, 7, 6, 6, 6, 6, 5, 5).
+Below the bar: per the coordinator, the new video and thumbnail are NOT published; the old file stays on the branch.

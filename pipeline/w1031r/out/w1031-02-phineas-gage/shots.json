@@ -2,8 +2,30 @@
  "video": "w1031-02-phineas-gage",
  "shots": [
   {
-   "id": "A",
+   "id": "T",
    "t0": 0.0,
+   "t1": 0.95,
+   "what": "hook: the injury in slow motion, close on his head, warm blast light",
+   "motion_source": "procedural (blast drives the iron)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": "iron hidden inside the head between the entry under the left cheekbone and the exit at the top; slow push"
+  },
+  {
+   "id": "A",
+   "t0": 0.95,
    "t1": 5.62,
    "what": "rock cut, Gage leans over the drill hole packing powder with the iron, both fists on it; grit puffs, a small spark, the big spark",
    "motion_source": "procedural tamp cycle + per frame arm solve onto the iron",

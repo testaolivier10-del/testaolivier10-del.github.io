@@ -76,7 +76,7 @@ def to(x, under, mask=None):
     return x * 10 ** ((vref - under - db(x[m])) / 20) if m.any() else x
 
 
-mus = to(mus * shape * duck, 20, sp)
+mus = to(mus * shape * duck, 23, sp)
 if np.abs(amb).max() > 0: amb = to(amb, 26)
 if np.abs(fx).max() > 0: fx = to(fx, 10)
 fade = np.clip(t / 0.05, 0, 1) * np.clip((DUR - t) / 0.8, 0, 1)
