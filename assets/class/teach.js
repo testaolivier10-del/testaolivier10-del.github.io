@@ -1,16 +1,18 @@
-/* The teacher app (teach/index.html, docs/teacher-classes.md).
+/* The teacher app (teach/index.html, docs/teacher-classes.md). Five tabs (Class, Assignments, Students, Live,
+   Settings) and the short band on every inner page (simplified teacher pages, owner 2026-11-08).
 
    /teach/            sign in, teacher name, the teacher's classes, a new class
    /teach/?c=<id>     one class, by hash:
-     #home            what needs you, where the work stands, how the class is doing
-     #work            every assignment          #a/<id>       one assignment's results
+     #home            what needs you today, mastery by unit; rail: students to check on, tell the class
+     #work            every assignment          #a/<id>[/questions|/topics]   one assignment, in three views
      #assign          the builder (#assign/<topicId>, #assign/edit/<id>, #assign/student/<id>)
-     #students        everyone                  #s/<id>       one student
-     #grades          the gradebook             #settings     order, code, name
+     #students[/gradebook|/skills]   the list, the gradebook, AP® skills and score bands (AP® only)
+     #s/<id>          one student (accommodations, family report, remove)
+     #settings[/join|/class|/people|/connect|/school]   one section at a time
      #topic/<id>      where the class struggles on one topic
-     #skills          AP® skill report and the predicted AP® score band (an estimate; AP® courses only)
      #live            live mode: one question at a time on the projector, answers arrive as students submit
      #bank            the teacher's own questions        #print/<id>   a printable worksheet or test with its key
+     (old #grades and #skills links go to #students/gradebook and #students/skills)
    /teach/?dept=1     the department: classes the teachers in it share (numbers only, no student names)
 
    Every number comes from the students' own summaries (assets/class/class-model.js) through teach_class_report;
@@ -55,14 +57,32 @@
       (o.hand ? '<p class="hand">' + o.hand + '</p>' : '') + (o.lede ? '<p class="lede">' + o.lede + '</p>' : '') +
       (o.ctas ? '<div class="hero-ctas">' + o.ctas + '</div>' : '') + '</div>' + (o.art || '') + '</div></section>';
   }
-  function frame(inner, cover){
-    return '<main id="lvtMain" class="r3 r3-home d5" data-cover="' + esc(cover || 'apbio') + '">' + inner + '</main>';
+  /* The short band every inner teacher page uses (the course inner tabs' band, owner 2026-11-05; simplified teacher
+     pages, owner 2026-11-08): breadcrumbs, a kicker, the title, one line, optional buttons and a right-hand box. */
+  function sband(o){
+    var cr = (o.crumbs || []).map(function(c){ return c[1] ? '<a href="' + c[1] + '">' + c[0] + '</a>' : '<span aria-current="page">' + c[0] + '</span>'; }).join(' <span aria-hidden="true">›</span> ');
+    return '<section class="band short tm-sb"><div class="hwrap"><div>' + (cr ? '<nav class="r3-crumb" aria-label="Breadcrumb">' + cr + '</nav>' : '') +
+      '<p class="issue">' + o.issue + ' <i></i></p><h1 class="deck">' + o.title + '</h1>' + (o.lede ? '<p class="lede">' + o.lede + '</p>' : '') +
+      (o.ctas ? '<div class="tm-ctas">' + o.ctas + '</div>' : '') + '</div>' + (o.right || '') + '</div></section>';
+  }
+  var YOURS = ['Your classes', '/teach/'];
+  function classCrumbs(more){ return [YOURS, [esc(S.rep.class.name), '#home']].concat(more || []); }
+  function classIssue(){ return esc(course().name) + ' &middot; ' + esc(S.rep.class.name); }
+  function body(inner){ return '<div class="xshell lap tm-body">' + inner + '</div>'; }
+  // Sub views inside a page (Students: list, gradebook, skills; an assignment: students, questions, topics), as links.
+  function views(items, on){
+    return '<nav class="tm-views" aria-label="Views">' + items.map(function(x){ return '<a class="pp-chip" href="' + x[0] + '"' + (x[2] === on ? ' aria-current="page"' : '') + '>' + x[1] + '</a>'; }).join('') + '</nav>';
+  }
+  // A button that opens a small panel under it (the assignment's Remind, Send grades and More).
+  function menu(label, inner, attrs){ return '<details class="tm-menu"' + (attrs || '') + '><summary class="lp-btn sm tm-mline">' + label + '</summary><div class="tm-pop">' + inner + '</div></details>'; }
+  function frame(inner, cover, home){
+    return '<main id="lvtMain" class="r3 ' + (home ? 'r3-home' : 'r3-inner') + ' d5" data-cover="' + esc(cover || 'apbio') + '">' + inner + '</main>';
   }
   function setNav(active){
     var bar = document.getElementById('lvtBar');
     if(!S.rep){ bar.innerHTML = ''; return; }
-    var tabs = [['home', 'Class'], ['work', 'Assignments'], ['students', 'Students'], ['grades', 'Gradebook'], ['skills', 'Skills'], ['live', 'Live'], ['settings', 'Settings']]
-      .filter(function(t){ return t[0] !== 'skills' || M.isAp(S.rep.class.course); });
+    // Five tabs (owner 2026-11-08): Gradebook and AP® skills are views of Students.
+    var tabs = [['home', 'Class'], ['work', 'Assignments'], ['students', 'Students'], ['live', 'Live'], ['settings', 'Settings']];
     bar.innerHTML = '<div class="course-nav"><nav class="course-nav__inner" aria-label="' + esc(S.rep.class.name) + ' sections">' +
       tabs.map(function(t){ var on = t[0] === active; return '<a href="#' + t[0] + '" class="course-nav__link' + (on ? ' active' : '') + '"' + (on ? ' aria-current="page"' : '') + '>' + t[1] + '</a>'; }).join('') +
       '<a href="#assign" class="course-nav__link tm-navcta">+ Assign</a></nav></div>';
@@ -104,7 +124,7 @@
   var INT = null;
   function loadIntegrations(){
     return loadScript('/assets/class/teach-integrations.js').then(function(){ INT = window.LevlTeachIntegrations || null; }, function(){ INT = null; })
-      .then(function(){ if(INT && S.rep && /^#(a\/|settings)/.test(location.hash)) route(); });
+      .then(function(){ if(INT && S.rep && /^#(a\/|s\/|settings)/.test(location.hash)) route(); });
   }
   function hook(where, boxId, extra){
     var box = document.getElementById(boxId); if(!box || !INT || typeof INT[where] !== 'function') return;
@@ -187,13 +207,13 @@
       '<div class="d5-card"><p class="d5-lead">Your order, their path</p><p class="d5-mut">Set the units in the order you teach them. Every student’s study path follows it.</p></div>' +
       '<div class="d5-card"><p class="d5-lead">See the misconception</p><p class="d5-mut">Each question the class misses, with the wrong answer most of them picked.</p></div>' +
       '<div class="d5-card"><p class="d5-lead">Fix it in one tap</p><p class="d5-mut">Turn any weak topic into an assignment from the class page.</p></div></div>' +
-      '<p class="d5-mut" style="margin:28px 0 60px">Free for teachers. Students use the free plan, so nobody has to pay. Students must be 13 or older. <a href="/privacy.html#classes">What teachers see</a>. Student? <a href="/join.html">Join a class</a>.</p></div>'));
+      '<p class="d5-mut" style="margin:28px 0 60px">Free for teachers. Students use the free plan, so nobody has to pay. Students must be 13 or older. <a href="/privacy.html#classes">What teachers see</a>. Student? <a href="/join.html">Join a class</a>.</p></div>', 'apbio', true));
     document.getElementById('lvtSignIn').addEventListener('click', function(){ A().openAuthModal(); });
   }
   function viewProfile(){
     var meta = (S.user && S.user.user_metadata) || {};
-    render(frame(band({ issue: 'LevlPrep <i></i> For teachers', m1: 'Welcome,', m2: 'teacher', hand: 'one step before your first class', small: true }) +
-      '<div class="hwrap"><form class="d5-card tm-up lv-narrow" id="lvtProf"><p class="d5-lead">How students see you</p><p class="d5-mut">Shown to students when they join, for example &ldquo;Ms. Rivera&rdquo;.</p>' +
+    render(frame(sband({ issue: 'LevlPrep &middot; For teachers', title: 'Welcome, teacher', lede: 'One step before your first class.' }) +
+      '<div class="xshell lap tm-body"><form class="d5-card lv-narrow" id="lvtProf"><p class="d5-lead">How students see you</p><p class="d5-mut">Shown to students when they join, for example &ldquo;Ms. Rivera&rdquo;.</p>' +
       '<label class="lv-field" style="margin-top:16px"><span>Your name for students</span><input class="lv-in" id="lvtPName" maxlength="60" required value="' + esc(meta.full_name || '') + '"></label>' +
       '<label class="lv-field"><span>School (optional, only you see it)</span><input class="lv-in" id="lvtPSchool" maxlength="120"></label>' +
       '<label class="lvt-check"><input type="checkbox" id="lvtPOk" required> I’ll follow my school’s rules for using online tools with students</label>' +
@@ -215,8 +235,8 @@
         '<p class="d5-mut">' + plural(c.members, 'student') + ' &middot; code <b style="font-family:var(--font-mono)">' + esc(c.code) + '</b></p></a>';
     }).join('');
     var opts = M.ORDER.map(function(k){ return '<option value="' + k + '"' + (k === 'apbio' ? ' selected' : '') + '>' + esc(M.COURSES[k].name) + '</option>'; }).join('');
-    render(frame(band({ issue: 'LevlPrep <i></i> For teachers', m1: 'Your', m2: 'classes', hand: list.length ? plural(list.length, 'class', 'classes') : 'make your first class', small: true }) +
-      '<div class="hwrap"><div class="lvt-assign tm-up"><div class="main">' +
+    render(frame(sband({ issue: 'LevlPrep &middot; For teachers', title: 'Your classes', lede: list.length ? plural(list.length, 'class', 'classes') : 'Make your first class.' }) +
+      '<div class="xshell lap tm-body"><div class="lvt-assign"><div class="main">' +
       (cards ? '<div class="lv-grid2">' + cards + '</div>' : '<div class="d5-card tm-empty"><p class="d5-lead">No classes yet</p><p class="d5-mut">Make one on the right. Each class period gets its own code.</p></div>') +
       '</div><aside class="side"><form class="lp-card" id="lvtNew"><span class="lp-pill">New class</span><h2 class="lp-h2">Make a <span>class</span></h2>' +
       '<label class="lv-field" style="margin-top:12px"><span>Course</span><select class="lv-in" id="lvtNCourse">' + opts + '</select></label>' +
@@ -309,41 +329,43 @@
     return '<a class="lvt-srow" href="#s/' + x.m.id + '"><span class="lvt-av" style="background:' + bg + ';color:' + fg + '">' + esc(initials(x.m.name)) + '</span><span style="flex:1"><b>' + esc(x.m.name) + '</b><small>' + x.why + '</small></span>' + CHEV + '</a>';
   }
   function viewHome(){
-    var c = S.rep.class, cn = course().name;
-    var nd = needs(), list = D.assign.filter(function(a){ return a.open; }).slice(0, 5);
-    var html = band({ issue: esc(cn) + ' &middot; Teacher <i></i> ' + esc(c.name), m1: esc(c.name), m2: 'at a glance',
-      hand: plural(D.members.length, 'student') + (D.current ? ' &middot; now teaching ' + esc(unitName(D.current)) : ''),
-      lede: 'Everything your class did on LevlPrep, and what needs you today.',
-      ctas: '<a class="btn-chan" href="#assign">Assign work</a><a class="btn-ghost" href="#grades">Gradebook</a>', art: codeArt() });
-    html += '<div class="hwrap">';
-    if(!D.members.length){
-      html += '<section class="d5-sec"><div class="d5-card tm-empty"><p class="d5-lead">No students yet</p><p class="d5-mut">Share the join link or show the code on screen. Students sign in with Google or an emailed code, then see exactly what you’ll see before they join.</p>' +
-        '<p class="lv-btns" style="justify-content:center;margin-top:16px"><button class="lp-btn gold" data-copy="link" type="button">Copy join link</button><button class="lp-btn ghost" data-show="code" type="button">Show the code on screen</button><a class="lp-btn ghost" href="#settings">Set your unit order</a></p></div></section>';
+    var c = S.rep.class, cn = course().name, n = D.members.length;
+    var nd = needs();
+    var code = '<div class="tm-jc" aria-label="Join code"><span class="k">Join code</span><span class="v">' + esc(c.code) + '</span>' +
+      '<button class="lp-btn gold sm" data-copy="link" type="button">Copy join link</button><button class="lp-btn sm tm-line" data-show="code" type="button">Show on screen</button>' +
+      '<span class="n">' + (n ? plural(n, 'student') : 'no students yet') + '</span></div>';
+    var html = sband({ crumbs: [YOURS, [esc(c.name)]], issue: esc(cn) + ' &middot; Teacher', title: esc(c.name),
+      lede: plural(n, 'student') + (D.current ? ' &middot; now teaching ' + esc(unitName(D.current)) : ''), right: code });
+    var main = '';
+    if(!n){
+      main += '<div class="d5-card tm-empty"><p class="d5-lead">No students yet</p><p class="d5-mut">Share the join link or show the code on screen. Students sign in with Google or an emailed code, then see exactly what you’ll see before they join.</p>' +
+        '<p class="lv-btns" style="justify-content:center;margin-top:16px"><button class="lp-btn gold" data-copy="link" type="button">Copy join link</button><button class="lp-btn ghost" data-show="code" type="button">Show the code on screen</button><a class="lp-btn ghost" href="#settings">Set your unit order</a></p></div>';
     }
-    html += '<section class="d5-sec">' + q('1', 'What', 'needs you today') + '<div class="d5-now">' +
-      (nd.length ? nd.map(function(x){ return '<div class="tm-now"><div class="tx"><b>' + x.t + '</b><span>' + x.s + '</span></div>' + x.b + '</div>'; }).join('') + '<p class="d5-starthere tm-starthere">start at the top</p>'
-        : '<div class="tm-now"><div class="tx"><b>Nothing needs you right now</b><span>Late work, struggling topics and flagged questions show up here.</span></div><a class="lp-btn gold sm" href="#assign">Assign something</a></div>') + '</div></section>';
-    html += '<section class="d5-sec">' + q('2', 'Where the', 'work stands') + (list.length ? '<div class="d5-card lvt-list">' + list.map(arow).join('') + '</div>' + (D.assign.length > 5 ? '<p style="margin:12px 0 0;font-weight:800"><a href="#work">All ' + D.assign.length + ' assignments</a></p>' : '')
-      : '<div class="d5-card tm-empty"><p class="d5-lead">Nothing assigned yet</p><p class="d5-mut">Practice, review, a practice exam or a free response, in one screen.</p><p style="margin:14px 0 0"><a class="lp-btn gold" href="#assign">Assign work</a></p></div>') + '</section>';
+    main += '<div class="d5-now tm-today"><p class="tm-today-h">What needs you today</p>' +
+      (nd.length ? nd.map(function(x){ return '<div class="tm-now"><div class="tx"><b>' + x.t + '</b><span>' + x.s + '</span></div>' + x.b + '</div>'; }).join('')
+        : '<div class="tm-now"><div class="tx"><b>Nothing needs you right now</b><span>Late work, struggling topics and flagged questions show up here.</span></div><a class="lp-btn gold sm" href="#assign">Assign something</a></div>') +
+      '<p class="tm-today-f"><a href="#work">' + (D.assign.length ? 'All ' + plural(D.assign.length, 'assignment') : 'Assign work') + '</a></p></div>';
     var ur = unitRows(function(u, cls){ var v = D.unitAvg[u]; return '<div class="lvt-urow' + cls + '"><div><b>' + esc(unitName(u)) + (cls === ' is-now' ? ' &middot; now' : '') + '</b><small>' + esc(unitTitle(u)) + '</small></div><div class="bar"><i style="width:' + Math.round(v * 100) + '%"></i></div><div class="v">' + pct(v) + '</div></div>'; });
+    main += '<div class="d5-card"><p class="d5-lead">Mastery by unit, in your order</p><p class="d5-mut">Class average' + (D.current ? '. Units you haven’t reached yet are faded.' : '. Set the unit you’re on in Settings.') + '</p>' + ur + '</div>';
     var co = checkOn();
-    html += '<section class="d5-sec">' + q('3', 'How the', 'class is doing') + '<div class="lv-grid2"><div class="d5-card"><p class="d5-lead">Mastery by unit, in your order</p><p class="d5-mut">Class average' + (D.current ? '. Units you haven’t reached yet are faded.' : '. Set the unit you’re on in Settings.') + '</p>' + ur + '</div>' +
-      '<div class="d5-card"><p class="d5-lead">Students to check on</p><p class="d5-mut">Picked from missing work, scores and activity.</p><div style="margin-top:6px">' + (co.length ? co.map(srow).join('') : '<p class="d5-empty">Nobody stands out right now.</p>') + '</div>' +
-      (D.members.length ? '<p style="margin:12px 0 0"><a href="#students" style="font-weight:800">All ' + plural(D.members.length, 'student') + '</a></p>' : '') + '</div></div></section>';
-    html += '<section class="d5-sec">' + q('4', 'Tell the', 'class') + announceHtml() + '</section></div><div style="height:60px"></div>';
+    var rail = '<div class="d5-card"><p class="d5-lead">Students to check on</p><p class="d5-mut">Picked from missing work, scores and activity.</p><div style="margin-top:6px">' + (co.length ? co.map(srow).join('') : '<p class="d5-empty">Nobody stands out right now.</p>') + '</div>' +
+      (n ? '<p style="margin:12px 0 0"><a href="#students" style="font-weight:800">All ' + plural(n, 'student') + '</a></p>' : '') + '</div>' + announceHtml();
+    html += body('<div class="tm-split"><div class="tm-mainc">' + main + '</div><aside class="tm-rail">' + rail + '</aside></div>') + '<div style="height:60px"></div>';
     render(frame(html, c.course), 'home');
     writeDeptStats();
   }
 
   /* ------------------------------------------------------------- announcements */
+  // Tell the class: the box first, the posted ones folded under it (owner 2026-11-08).
   function announceHtml(){
     var list = (S.rep.announcements || []).slice(0, 6);
-    return '<div class="lv-grid2"><form class="d5-card" id="lvtAnn"><p class="d5-lead">Post an announcement</p><p class="d5-mut">Shows at the top of their course home, under your name. Keep it short.</p>' +
+    return '<form class="d5-card tm-annc" id="lvtAnn"><p class="d5-lead">Tell the class</p>' +
       '<label class="lv-field" style="margin-top:12px"><span class="tm-sr">Announcement</span><textarea class="lv-in tm-ta" id="lvtAnnBody" maxlength="1000" rows="3" placeholder="Unit 4 test moved to Friday. Finish the signaling practice first." required></textarea></label>' +
-      '<p class="lv-btns" style="margin:0"><button class="lp-btn gold sm" type="submit">Post to ' + esc(S.rep.class.name) + '</button><span class="lv-msg" id="lvtAnnMsg" role="status" style="margin:0"></span></p></form>' +
-      '<div class="d5-card"><p class="d5-lead">Posted</p>' + (list.length ? list.map(function(n){
+      '<p class="lv-btns" style="margin:0"><button class="lp-btn gold sm" type="submit">Post to ' + esc(S.rep.class.name) + '</button></p><p class="lv-msg" id="lvtAnnMsg" role="status" style="margin:6px 0 0"></p>' +
+      '<p class="d5-mut" style="margin-top:6px">Shows at the top of their course home, under your name.</p>' +
+      (list.length ? '<details class="tm-fold"><summary>' + plural(list.length, 'posted', 'posted') + '</summary>' + list.map(function(n){
         return '<div class="tm-ann"><p>' + esc(n.body) + '</p><small>' + esc(n.author) + ' &middot; ' + day(Date.parse(n.created_at)) + (n.mine || isOwner() ? ' &middot; <button type="button" class="tm-link" data-delann="' + esc(n.id) + '">Delete</button>' : '') + '</small></div>';
-      }).join('') : '<p class="d5-empty">Nothing posted yet.</p>') + '</div></div>';
+      }).join('') + '</details>' : '<p class="d5-empty" style="margin-top:10px">Nothing posted yet.</p>') + '</form>';
   }
   function postAnnouncement(){
     var el = document.getElementById('lvtAnnBody'), msg = document.getElementById('lvtAnnMsg'), body = (el.value || '').trim();
@@ -374,10 +396,15 @@
 
   /* ------------------------------------------------------------- assignments */
   function viewWork(){
-    var c = S.rep.class;
-    var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> Assignments', m1: 'Assign', m2: 'ments', hand: plural(D.assign.length, 'assignment'), small: true, ctas: '<a class="btn-chan" href="#assign">Assign work</a>' }) +
-      '<div class="hwrap"><div class="tm-up">' + (D.assign.length ? '<div class="d5-card lvt-list">' + D.assign.map(arow).join('') + '</div>' : '<div class="d5-card tm-empty"><p class="d5-lead">Nothing assigned yet</p><p style="margin:14px 0 0"><a class="lp-btn gold" href="#assign">Assign work</a></p></div>') + '</div><div style="height:60px"></div></div>';
+    var c = S.rep.class, now = Date.now();
+    var soon = D.assign.filter(function(a){ var d = a.due_at && Date.parse(a.due_at); return a.open && d && d > now && d - now < 2 * DAY; }).length;
+    var miss = D.assign.filter(function(a){ return a.n.missing; }).length;
+    var lede = [plural(D.assign.length, 'assignment')].concat(soon ? [soon + ' due in the next two days'] : []).concat(miss ? [plural(miss, 'has', 'have').replace(/^(\d+) /, '$1 ') + ' missing work'] : []).join(' &middot; ');
+    var html = sband({ crumbs: classCrumbs([['Assignments']]), issue: classIssue(), title: 'Assignments', lede: lede,
+      ctas: '<a class="btn-chan" href="#assign">Assign work</a><a class="btn-ghost" href="#bank" id="lvtBankLink">Your questions</a>' }) +
+      body(D.assign.length ? '<div class="d5-card lvt-list">' + D.assign.map(arow).join('') + '</div>' : '<div class="d5-card tm-empty"><p class="d5-lead">Nothing assigned yet</p><p style="margin:14px 0 0"><a class="lp-btn gold" href="#assign">Assign work</a></p></div>') + '<div style="height:60px"></div>';
     render(frame(html, c.course), 'work');
+    myQuestions().then(function(qs){ var l = document.getElementById('lvtBankLink'); if(l && qs.length) l.textContent = 'Your questions (' + qs.length + ')'; });
   }
   function col(title, cls, ms, a, valFn, empty){
     var rows = ms.map(function(m){ return '<a class="lvt-p" href="#s/' + m.id + '" style="text-decoration:none;color:var(--ink)"><span class="lvt-av" style="width:28px;height:28px;font-size:11px">' + esc(initials(m.name)) + '</span><b>' + esc(m.name) + '</b><span>' + valFn(m) + '</span></a>'; });
@@ -386,20 +413,18 @@
       (rest ? '<details><summary class="d5-mut" style="cursor:pointer;margin:6px 4px">' + (rows.length - 8) + ' more</summary>' + rest + '</details>' : '') +
       (ms.length ? '<p style="margin:12px 0 0"><button class="lp-btn sm ghost" type="button" data-copytext="' + esc(ms.map(function(m){ return m.name; }).join(', ')) + '">Copy names</button></p>' : '') + '</div>';
   }
+  /* Each question folds to one line (topic, stem, % wrong, the wrong answer most picked); the choices, who got it wrong
+     and Assign practice open on tap (owner 2026-11-08). */
   function struggleHtml(id, items){
     if(!items.length) return '<div class="d5-card tm-empty"><p class="d5-lead">Not enough answers yet</p><p class="d5-mut">Questions show here once at least two students have answered them.</p></div>';
-    return '<div class="d5-card lvt-list" id="' + id + '">' + items.map(function(o){ return '<div class="lvt-qi" data-item="' + esc(o.id) + '"><div><p class="lv-kick">' + esc(topicName(o.t)) + '</p><p class="stem d5-mut">Loading the question…</p></div><div></div></div>'; }).join('') + '</div>';
+    return '<div class="d5-card lvt-list" id="' + id + '">' + items.map(function(o){ return '<div class="lvt-qi tm-qi" data-item="' + esc(o.id) + '"><details class="tm-q"><summary><div class="tm-qs"><p class="lv-kick">' + esc(topicName(o.t)) + '</p><p class="stem d5-mut">Loading the question…</p></div></summary></details></div>'; }).join('') + '</div>';
   }
   function fillStruggle(id, items){
     items.forEach(function(o){
       var t = D.topics[o.t], unit = t ? (t.bank || t.unit) : o.u;
       bankFor(unit).then(function(by){
         var box = document.querySelector('#' + id + ' [data-item="' + (window.CSS && CSS.escape ? CSS.escape(o.id) : o.id) + '"]'); if(!box) return;
-        var it = by[o.id], wrongPct = Math.round(o.wrong / o.n * 100);
-        var left = '<div><p class="lv-kick">' + esc(topicName(o.t)) + '</p><p class="stem">' + (it ? rich(it.q) : 'Question ' + esc(o.id)) + '</p>' +
-          '<p class="lv-btns" style="margin-top:12px"><span class="lv-tag is-late">' + wrongPct + '% wrong</span><span class="lv-tag">' + plural(o.n, 'answer') + '</span>' + (o.flags ? '<span class="lv-tag is-prog">' + plural(o.flags, 'flag') + '</span>' : '') + '</p>' +
-          '<div class="lv-btns" style="margin-top:12px"><a class="lp-btn sm ghost" href="#assign/' + esc(o.t) + '">Assign practice on this topic</a>' + (o.who.length ? '<details><summary class="lp-btn sm ghost" style="list-style:none">Who got it wrong</summary><p class="tm-who-list">' + esc(o.who.join(', ')) + '</p></details>' : '') + '</div></div>';
-        var right = '';
+        var it = by[o.id], wrongPct = Math.round(o.wrong / o.n * 100), right = '', pick = '';
         if(it && it.type === 'single' && it.options){
           var total = Object.keys(o.picks).reduce(function(x, k){ return x + o.picks[k]; }, 0);
           if(total){
@@ -409,9 +434,13 @@
               if(!ok && n && (!top || n > top.n)) top = { i: i, n: n, p: p };
               return '<div class="lvt-opt"><span class="l' + (ok ? ' ok' : '') + '">' + String.fromCharCode(65 + i) + '</span><div class="b"><i class="' + (ok ? 'ok' : n ? 'no' : '') + '" style="width:' + p + '%"></i><span>' + rich(op) + '</span></div><span class="v">' + p + '%</span></div>';
             }).join('') + (top ? '<p class="lvt-miss">most wrong answers picked ' + String.fromCharCode(65 + top.i) + '</p>' : '') + '<p class="d5-mut" style="font-size:12.5px">From ' + plural(total, 'student') + ' whose pick was saved.</p>';
+            if(top) pick = '<span class="lv-tag tm-pick">picked ' + String.fromCharCode(65 + top.i) + '</span>';
           }
         }
-        box.innerHTML = left + '<div>' + right + '</div>';
+        var open = box.querySelector('details') && box.querySelector('details').open;
+        box.innerHTML = '<details class="tm-q"' + (open ? ' open' : '') + '><summary><div class="tm-qs"><p class="lv-kick">' + esc(topicName(o.t)) + '</p><p class="stem">' + (it ? rich(it.q) : 'Question ' + esc(o.id)) + '</p></div>' +
+          '<div class="tm-qt"><span class="lv-tag is-late">' + wrongPct + '% wrong</span><span class="lv-tag">' + plural(o.n, 'answer') + '</span>' + (o.flags ? '<span class="lv-tag is-prog">' + plural(o.flags, 'flag') + '</span>' : '') + pick + '</div></summary>' +
+          '<div class="tm-qbody"><div>' + right + '</div><div class="lv-btns"><a class="lp-btn sm ghost" href="#assign/' + esc(o.t) + '">Assign practice on this topic</a>' + (o.who.length ? '<details><summary class="lp-btn sm ghost" style="list-style:none">Who got it wrong</summary><p class="tm-who-list">' + esc(o.who.join(', ')) + '</p></details>' : '') + '</div></div></details>';
       });
     });
   }
@@ -425,7 +454,8 @@
         (v < 80 ? '<a class="lp-btn sm gold" href="#assign/' + esc(t) + '">Fix it: assign</a>' : '<span class="lv-tag is-done">Solid</span>') + '</div>';
     }).join('');
   }
-  function viewAssignment(id){
+  function viewAssignment(arg){
+    var parts = String(arg || '').split('/'), id = parts[0], view = parts[1] || 'students';
     var a = D.assign.filter(function(x){ return x.id === id; })[0];
     if(!a){ location.hash = '#work'; return; }
     var c = S.rep.class, ms = a.who, st = a.st;
@@ -438,26 +468,43 @@
     var items = drill ? M.itemStats(ms, filter).filter(function(o){ return o.wrong; }).slice(0, 6) : [];
     var flags = 0, fc = M.flagCounts(ms); Object.keys(fc).forEach(function(k){ var t = (/^[a-z]+-(.+)-\d+$/.exec(k) || [])[1]; if(!topics.length || topics.indexOf(t) !== -1) flags++; });
     var lateTxt = a.late_until ? 'late work until ' + day(Date.parse(a.late_until)) : 'no late work';
-    var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> ' + (a.required ? 'Required' : 'Optional') + ' &middot; ' + KIND[a.kind],
-      m1: esc(a.title), m2: '', hand: (a.due_at ? 'due ' + day(Date.parse(a.due_at)) + ' &middot; ' : '') + a.n.done + ' of ' + a.n.all + ' done',
-      lede: (a.kind === 'practice' ? a.spec.count + ' questions &middot; ' : '') + (a.kind === 'mastery' ? 'until ' + pct(a.spec.target || 0.8) + ' mastery on each topic, at least ' + (a.spec.min == null ? 10 : a.spec.min) + ' answers &middot; ' : '') + lateTxt + (ctlText(a) ? ' &middot; ' + ctlText(a) : '') + (topics.length ? ' &middot; ' + esc(topics.map(topicName).join(', ')) : ''),
-      ctas: '<a class="btn-chan" href="#assign/edit/' + a.id + '">Edit settings or due date</a>' + (a.kind !== 'frq' ? '<a class="btn-ghost" href="#print/' + a.id + '">Print worksheet</a>' : '') + '<button class="btn-ghost" type="button" data-csv="' + a.id + '">Export CSV</button>', small: true });
-    html += '<div class="hwrap"><div class="lvt-stats tm-up"><div class="lvt-stat"><b>' + a.n.done + ' of ' + a.n.all + '</b><span>done</span></div><div class="lvt-stat"><b>' + (a.avg == null ? '·' : pct(a.avg)) + '</b><span>class average so far</span></div>' +
+    var lede = [(a.required ? 'Required ' : 'Optional ') + KIND[a.kind].toLowerCase()]
+      .concat(a.kind === 'practice' ? [a.spec.count + ' questions'] : [])
+      .concat(a.kind === 'mastery' ? ['until ' + pct(a.spec.target || 0.8) + ' on each topic, at least ' + (a.spec.min == null ? 10 : a.spec.min) + ' answers'] : [])
+      .concat(a.due_at ? ['due ' + day(Date.parse(a.due_at))] : []).concat([lateTxt]).concat(ctlText(a) ? [ctlText(a)] : [])
+      .concat(topics.length ? [esc(topics.map(function(x){ var tt = D.topics[x]; return tt && tt.ced ? tt.ced : topicName(x); }).join(', '))] : []).join(' &middot; ');
+    var html = sband({ crumbs: classCrumbs([['Assignments', '#work'], [esc(a.title)]]), issue: classIssue(), title: esc(a.title), lede: lede });
+    var out = '<div class="lvt-stats tm-stats0"><div class="lvt-stat"><b>' + a.n.done + ' of ' + a.n.all + '</b><span>done</span></div><div class="lvt-stat"><b>' + (a.avg == null ? '·' : pct(a.avg)) + '</b><span>class average so far</span></div>' +
       '<div class="lvt-stat"><b>' + (a.n.not + a.n.missing) + '</b><span>' + (a.n.missing ? 'not started or missing' : 'not started') + '</span></div><div class="lvt-stat"><b>' + flags + '</b><span>questions flagged as confusing</span></div></div>';
+    // One row of actions; reminders and grade passback open from their buttons (cards from teach-integrations.js).
+    var nRemind = a.n.not + a.n.missing;
+    var more = (a.kind !== 'frq' ? '<a href="#print/' + a.id + '">Print worksheet</a>' : '') + '<button type="button" data-csv="' + a.id + '">Export CSV</button>' +
+      (isOwner() ? '<button type="button" class="tm-danger" data-del="' + a.id + '">Delete this assignment</button>' : '<p class="d5-mut" style="margin:6px 12px">Only the class’s owner can delete assignments.</p>');
+    out += '<div class="tm-acts"><a class="lp-btn gold sm" href="#assign/edit/' + a.id + '">Edit</a>' +
+      menu(nRemind ? 'Remind ' + plural(nRemind, 'student') : 'Remind', '<div id="lvtSlotRemind"></div>', ' data-lvt-slot="lvtSlotRemind" hidden') +
+      menu('Send grades', '<div id="lvtSlotGrades"></div>', ' data-lvt-slot="lvtSlotGrades" hidden') +
+      menu('More', '<div class="tm-poplist">' + more + '</div>') + '</div>';
+    var vs = [['#a/' + a.id, 'Students', 'students']];
+    if(drill) vs.push(['#a/' + a.id + '/questions', 'Questions' + (flags ? ' &middot; ' + flags + ' flagged' : ''), 'questions']);
+    if(drill && topics.length) vs.push(['#a/' + a.id + '/topics', 'Topics', 'topics']);
+    if(!vs.some(function(v){ return v[2] === view; })) view = 'students';
+    if(vs.length > 1) out += views(vs, view);
     var val = function(m){ var s = st[m.id]; if(a.kind === 'mastery' && s.state !== 'done') return s.state === 'missing' ? 'missing' : s.since ? pct(s.mastery) + ' &middot; ' + s.met + ' of ' + s.total + ' topics' : ago(m.last);
       return s.state === 'done' ? (s.score == null ? 'done' : pct(s.score)) + (s.late ? ' late' : '') : s.state === 'progress' ? s.answered + ' of ' + s.total : s.state === 'missing' ? 'missing' : ago(m.last); };
-    html += '<section class="d5-sec">' + q('1', 'Who’s', 'done') + '<div class="lvt-cols">' + col(a.n.missing ? 'Not started or missing' : 'Not started', 'is-late', not, a, val, 'Everyone has started.') + col('In progress', 'is-prog', prog, a, val, 'Nobody is midway.') + col('Done', 'is-done', done, a, val, 'Nobody has finished yet.') + '</div></section>';
-    var n = 2;
-    var timed = timedHtml(a);
-    if(timed) html += '<section class="d5-sec">' + q(String(n++), 'Timed work and', 'integrity') + timed + '</section>';
-    if(drill){
-      html += '<section class="d5-sec">' + q(String(n++), 'Where they', 'struggle') + struggleHtml('lvtQs', items) + '</section>';
-      if(topics.length) html += '<section class="d5-sec">' + q(String(n++), 'By', 'topic') + '<div class="d5-card lvt-list">' + topicRows(topics, filter) + '</div></section>';
+    if(view === 'students'){
+      out += '<div class="lvt-cols">' + col(a.n.missing ? 'Not started or missing' : 'Not started', 'is-late', not, a, val, 'Everyone has started.') + col('In progress', 'is-prog', prog, a, val, 'Nobody is midway.') + col('Done', 'is-done', done, a, val, 'Nobody has finished yet.') + '</div>';
+      var timed = timedHtml(a);
+      if(timed) out += '<div style="margin-top:18px">' + timed + '</div>';
+      out += '<div id="lvtSlotFrq" class="tm-slotfrq"></div>';
+    } else if(view === 'questions'){
+      out += '<p class="tm-note">Most missed first. Tap a question to see what the class picked.</p>' + struggleHtml('lvtQs', items);
+    } else {
+      out += '<div class="d5-card lvt-list">' + topicRows(topics, filter) + '</div>';
     }
-    html += '<div id="lvtIntA"></div>';
-    html += '<p style="margin:40px 0 60px">' + (isOwner() ? '<button class="lp-btn sm ghost" type="button" data-del="' + a.id + '">Delete this assignment</button>' : '<span class="d5-mut">Only the class’s owner can delete assignments.</span>') + '</p></div>';
+    out += '<div id="lvtIntA" hidden></div>';
+    html += body(out) + '<div style="height:60px"></div>';
     render(frame(html, c.course), 'work');
-    fillStruggle('lvtQs', items);
+    if(view === 'questions') fillStruggle('lvtQs', items);
     hook('assignment', 'lvtIntA', { assignment: a });
   }
   /* Integrity column: time used against the limit (with each student's extra time) and tab leaves, from the
@@ -477,9 +524,11 @@
   function viewTopic(t){
     if(!D.topics[t]){ location.hash = '#home'; return; }
     var items = M.itemStats(D.members, function(r){ return r.t === t; }).filter(function(o){ return o.wrong; }).slice(0, 8);
-    var html = band({ issue: esc(course().name) + ' &middot; ' + esc(S.rep.class.name) + ' <i></i> Topic', m1: esc(D.topics[t].title), m2: '', hand: 'every answer your class gave on this topic', small: true,
+    var tw = topicWeek().filter(function(x){ return x.t === t; })[0];
+    var html = sband({ crumbs: classCrumbs([[esc(topicName(t))]]), issue: classIssue(), title: esc(topicName(t)),
+      lede: (tw ? Math.round(tw.rate * 100) + '% of this week’s answers wrong &middot; ' : '') + 'most missed first &middot; tap a question to see what the class picked',
       ctas: '<a class="btn-chan" href="#assign/' + esc(t) + '">Fix it: assign practice</a>' }) +
-      '<div class="hwrap"><div class="tm-up">' + struggleHtml('lvtQs', items) + '</div><div style="height:60px"></div></div>';
+      body('<div class="tm-topic">' + struggleHtml('lvtQs', items) + '</div>') + '<div style="height:60px"></div>';
     render(frame(html, S.rep.class.course), 'home');
     fillStruggle('lvtQs', items);
   }
@@ -521,83 +570,105 @@
     Promise.all([frqIndex(), myQuestions(), myClasses()]).then(function(){ if(location.hash.indexOf('#assign') === 0) drawAssign(); });
     drawAssign();
   }
-  /* The builder's controls (spec.controls, enforced by the course pages): time limit, shuffle, when answers show,
-     and the teacher's own questions mixed in. */
+  /* The builder is the student Practice panel's layout (owner 2026-11-08): the kind on the left, its settings in the
+     middle (only what applies to that kind), a live summary with the title and one button on the right. */
+  function cellH(lab, ctl, why, cls){ return '<div class="pp-cell' + (cls ? ' ' + cls : '') + '"><span class="pp-lab">' + lab + '</span><div class="pp-ctl">' + ctl + (why ? '<p class="pp-why">' + why + '</p>' : '') + '</div></div>'; }
+  function chipsH(attr, opts){ return '<div class="pp-chips">' + opts.map(function(o){ return '<button type="button" class="pp-chip" data-' + attr + '="' + o[0] + '" aria-pressed="' + !!o[2] + '">' + o[1] + '</button>'; }).join('') + '</div>'; }
+  function selH(id, opts, val){ return '<select class="pp-sel" id="' + id + '">' + opts.map(function(o){ return '<option value="' + esc(o[0]) + '"' + (String(val) === String(o[0]) ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select>'; }
+  // A drop-down of checkboxes that looks like the select (practice-panel.css .pp-ms); key keeps it open across redraws.
+  function msH(key, label, inner){ return '<details class="pp-ms" data-ms="' + key + '"' + (B.openMs === key ? ' open' : '') + '><summary class="pp-sel">' + label + '</summary><div class="pp-ms-list">' + inner + '</div></details>'; }
   function controlsHtml(){
     if(B.kind === 'frq') return '';
     // Only the ten AP® courses run assignments with controls (assets/class/class-run.js, ?la=); elsewhere, say so.
-    if(!M.isAp(S.rep.class.course)) return '<section class="d5-card">' + q('3', 'Exam', 'controls') +
-      '<p class="d5-mut" style="margin:-6px 0 0">Time limits, shuffled questions, held answers and your own questions work on the AP® courses for now. In ' + esc(course().name || 'this course') + ', students do this assignment on the course’s usual pages, and you see their results here as usual.</p></section>';
-    var times =[[0, 'No time limit'], [10, '10 minutes'], [15, '15 minutes'], [20, '20 minutes'], [30, '30 minutes'], [45, '45 minutes'], [60, '1 hour'], [90, '90 minutes'], [180, '3 hours']];
+    if(!M.isAp(S.rep.class.course)) return '<div class="pp-grp"><h3 class="pp-gh">Controls</h3><p class="d5-mut" style="margin:0 0 20px">Time limits, shuffled questions, held answers and your own questions work on the AP® courses for now. In ' + esc(course().name || 'this course') + ', students do this assignment on the course’s usual pages, and you see their results here as usual.</p></div>';
+    var times = [[0, 'No time limit'], [10, '10 minutes'], [15, '15 minutes'], [20, '20 minutes'], [30, '30 minutes'], [45, '45 minutes'], [60, '1 hour'], [90, '90 minutes'], [180, '3 hours']];
     if(B.timeLimit && !times.some(function(o){ return o[0] === B.timeLimit; })) times.push([B.timeLimit, B.timeLimit + ' minutes']);
     var mineIn = (S.qs || []).filter(function(x){ return !B.topics.length || B.kind === 'exam' || B.topics.indexOf(x.topic) !== -1 || B.questions.indexOf(x.id) !== -1; });
     var xt = D.members.filter(function(m){ return m.extra_time > 1; }).length;
-    return '<section class="d5-card">' + q('3', 'Exam', 'controls') + '<p class="d5-mut" style="margin:-6px 0 14px">All optional. Students see them before they start.</p><div class="lv-grid2">' +
-      '<label class="lv-field"><span>Time limit</span><select class="lv-in" id="lvtTime">' + times.map(function(o){ return '<option value="' + o[0] + '"' + (B.timeLimit === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label>' +
-      '<label class="lv-field"><span>Show answers and explanations</span><select class="lv-in" id="lvtRel">' + ['now', 'after_submit', 'after_due'].map(function(k){ return '<option value="' + k + '"' + (B.release === k ? ' selected' : '') + '>' + RELEASE[k].charAt(0).toUpperCase() + RELEASE[k].slice(1) + '</option>'; }).join('') + '</select></label></div>' +
-      '<label class="lvt-check"><input type="checkbox" id="lvtShuf"' + (B.shuffle ? ' checked' : '') + '> Shuffle the questions and the answer choices for each student</label>' +
-      (B.timeLimit ? '<p class="d5-mut" style="margin:6px 0 0">' + (xt ? plural(xt, 'student') + ' with extra time get' + (xt === 1 ? 's' : '') + ' it on top. ' : '') + 'Set extra time on a student’s page. Tab leaves show in the assignment’s integrity column.</p>' : '') +
-      '<div class="tm-mineq"><p class="d5-lead" style="font-size:16px;margin-top:14px">Add your own questions</p>' +
-      (mineIn.length ? mineIn.map(function(x){ return '<label class="lvt-check"><input type="checkbox" data-myq="' + esc(x.id) + '"' + (B.questions.indexOf(x.id) !== -1 ? ' checked' : '') + '> ' + esc(String(x.q).slice(0, 110)) + (x.topic && D.topics[x.topic] ? ' <small class="d5-mut">' + esc(D.topics[x.topic].title) + '</small>' : '') + '</label>'; }).join('')
-        : '<p class="d5-mut">' + ((S.qs || []).length ? 'None of your questions are on these topics. ' : 'You have not written any questions yet. ') + '<a href="#bank">Write questions</a></p>') +
-      (mineIn.length ? '<p class="d5-mut" style="margin:6px 0 0"><a href="#bank">Write or edit your questions</a></p>' : '') + '</div></section>';
+    var mineLabel = B.questions.length ? plural(B.questions.length, 'question') + ' added' : 'None added';
+    var mine = mineIn.length ? msH('myq', mineLabel, mineIn.map(function(x){ return '<label class="pp-ms-o"><input type="checkbox" data-myq="' + esc(x.id) + '"' + (B.questions.indexOf(x.id) !== -1 ? ' checked' : '') + '> <span>' + esc(String(x.q).slice(0, 110)) + (x.topic && D.topics[x.topic] ? ' <small class="d5-mut">' + esc(D.topics[x.topic].title) + '</small>' : '') + '</span></label>'; }).join('') + '<p class="tm-msu"><a href="#bank">Write or edit your questions</a></p>')
+      : '<p class="d5-mut" style="margin:10px 0 0">' + ((S.qs || []).length ? 'None of your questions are on these topics. ' : 'You have not written any yet. ') + '<a href="#bank">Write questions</a></p>';
+    return '<div class="pp-grp tm-2"><h3 class="pp-gh">Controls <small>optional, students see them before they start</small></h3>' +
+      cellH('Time limit', selH('lvtTime', times, B.timeLimit), B.timeLimit ? (xt ? plural(xt, 'student') + ' with extra time get' + (xt === 1 ? 's' : '') + ' it on top. ' : '') + 'Set extra time on a student’s page.' : '') +
+      cellH('Answers and explanations', selH('lvtRel', ['now', 'after_submit', 'after_due'].map(function(k){ return [k, RELEASE[k].charAt(0).toUpperCase() + RELEASE[k].slice(1)]; }), B.release)) +
+      cellH('Shuffle', '<label class="pp-ms-o tm-plain"><input type="checkbox" id="lvtShuf"' + (B.shuffle ? ' checked' : '') + '> Shuffle questions and choices for each student</label>') +
+      cellH('Your questions', mine) + '</div>';
   }
   function alsoHtml(){
     if(B.id) return '';
     var others = (S.classes || []).filter(function(c){ return c.id !== CLASS_ID && c.course === S.rep.class.course && !c.archived; });
     if(!others.length) return '';
-    return '<div style="margin-top:14px"><p class="d5-lead" style="font-size:16px">Also assign to</p>' + (B.who === 'some' ? '<p class="d5-mut">Chosen students are in this class only, so other classes are off.</p>' :
-      '<div class="lv-grid3">' + others.map(function(c){ return '<label class="lvt-check"><input type="checkbox" data-also="' + esc(c.id) + '"' + (B.also.indexOf(c.id) !== -1 ? ' checked' : '') + '> ' + esc(c.name) + ' <small class="d5-mut">' + plural(c.members, 'student') + '</small></label>'; }).join('') + '</div><p class="d5-mut" style="margin:6px 0 0">Same settings and dates; each class gets its own copy.</p>') + '</div>';
+    return cellH('Also assign to', B.who === 'some' ? '<p class="d5-mut" style="margin:0">Chosen students are in this class only, so other classes are off.</p>'
+      : others.map(function(c){ return '<label class="pp-ms-o tm-plain"><input type="checkbox" data-also="' + esc(c.id) + '"' + (B.also.indexOf(c.id) !== -1 ? ' checked' : '') + '> ' + esc(c.name) + ' &middot; ' + plural(c.members, 'student') + '</label>'; }).join(''),
+      B.who === 'some' ? '' : 'Same settings and dates; each class gets its own copy.');
+  }
+  function topicsLabel(){
+    if(!B.topics.length) return B.kind === 'review' ? 'Every topic' : 'Pick topics';
+    var names = B.topics.map(topicName);
+    return esc(names.length > 2 ? names.slice(0, 2).join(', ') + ' and ' + (names.length - 2) + ' more' : names.join(', '));
   }
   function drawAssign(){
     var c = S.rep.class;
     if(!B.titleTouched) B.title = autoTitle();
-    var tile = function(k, n, d){ return '<button class="lvt-tile" type="button" data-kind="' + k + '" aria-pressed="' + (B.kind === k) + '"><b>' + n + '</b><span>' + d + '</span></button>'; };
-    var units = D.order.concat(D.extra).map(function(u){
-      var ts = S.cur.topics.filter(function(t){ return t.unit === u && t.built !== false; });
-      var picked = ts.filter(function(t){ return B.topics.indexOf(t.id) !== -1; }).length;
-      return '<details class="lvt-unit"' + (picked || u === D.current ? ' open' : '') + '><summary>' + esc(unitName(u)) + ' &middot; ' + esc(unitTitle(u)) + ' <small>' + (picked ? picked + ' of ' + ts.length + ' picked' : 'none') + '</small></summary><div class="tops">' +
-        '<label><input type="checkbox" data-unitall="' + esc(u) + '"' + (picked === ts.length && ts.length ? ' checked' : '') + '> <b>The whole unit</b></label>' +
-        ts.map(function(t){ return '<label><input type="checkbox" data-topic="' + esc(t.id) + '"' + (B.topics.indexOf(t.id) !== -1 ? ' checked' : '') + '> ' + esc(topicName(t.id)) + '</label>'; }).join('') + '</div></details>';
-    }).join('');
-    var wt = weakTopics();
-    var chips = B.topics.map(function(t){ return '<a href="#" data-untopic="' + esc(t) + '">' + esc(topicName(t)) + ' &times;</a>'; }).join('');
+    var ic = function(d){ return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; };
+    var tile = function(k, n, d, i){ return '<button type="button" class="pp-tile" data-kind="' + k + '" aria-pressed="' + (B.kind === k) + '"><span class="pp-tile-i">' + ic(i) + '</span><span class="pp-tile-x"><b>' + n + '</b><span class="pp-tile-l">' + d + '</span></span></button>'; };
+    var tiles = tile('practice', 'Practice', 'Questions on topics you pick', '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>') +
+      tile('mastery', 'Mastery', 'Until each topic is mastered', '<path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/>') +
+      tile('review', 'Review', 'Each student redoes their misses', '<path d="M20 11a8 8 0 0 0-14.5-4.5L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4.5L20 16"/><path d="M20 20v-4h-4"/>') +
+      tile('exam', 'Practice exam', M.isAp(c.course) ? 'A unit test or the full exam' : course().unitExams === false ? 'A full timed practice exam' : 'A ' + esc((course().unitWord || 'unit').toLowerCase()) + ' test or the final', '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M10 2h4"/>') +
+      (course().frq === false ? '' : tile('frq', 'Free response', 'AP&reg; style, rubric scored', '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>'));
     var what = '';
     if(drillKind(B.kind)){
-      var amount = B.kind === 'mastery' ? '<div class="lv-grid2" style="margin-top:16px"><label class="lv-field"><span>Mastery to reach on each topic</span><select class="lv-in" id="lvtTarget">' + [0.6, 0.7, 0.8, 0.9].map(function(v){ return '<option value="' + v + '"' + (B.target === v ? ' selected' : '') + '>' + pct(v) + '</option>'; }).join('') + '</select></label>' +
-          '<label class="lv-field"><span>At least this many answers</span><input class="lv-in" type="number" min="1" max="200" id="lvtMin" value="' + B.min + '"></label></div><p class="d5-mut" style="margin:0">Mastery is the course’s own number: recent right answers on each topic, harder questions counting more. A student who already masters a topic still answers the minimum.</p>'
-        : '<label class="lv-field" style="margin-top:16px;max-width:280px"><span>' + (B.kind === 'practice' ? 'Questions to answer' : 'Most questions to redo') + '</span><input class="lv-in" type="number" min="1" max="100" id="lvtCount" value="' + B.count + '"></label>';
+      var wt = weakTopics();
+      var tlist = D.order.concat(D.extra).map(function(u){
+        var ts = S.cur.topics.filter(function(t){ return t.unit === u && t.built !== false; });
+        var picked = ts.filter(function(t){ return B.topics.indexOf(t.id) !== -1; }).length;
+        return '<p class="tm-msu">' + esc(unitName(u)) + ' &middot; ' + esc(unitTitle(u)) + '</p><label class="pp-ms-o"><input type="checkbox" data-unitall="' + esc(u) + '"' + (picked === ts.length && ts.length ? ' checked' : '') + '> <b>The whole ' + esc((course().unitWord || 'unit').toLowerCase()) + '</b></label>' +
+          ts.map(function(t){ return '<label class="pp-ms-o"><input type="checkbox" data-topic="' + esc(t.id) + '"' + (B.topics.indexOf(t.id) !== -1 ? ' checked' : '') + '> ' + esc(topicName(t.id)) + '</label>'; }).join('');
+      }).join('');
       // NREMT's practice page drills a whole topic area, so a one-topic assignment can take more than one drill.
-      var areaNote = course().topicFilter === false ? '<p class="d5-mut" style="margin:0 0 14px">EMT practice drills a whole topic area, so students reach a topic’s questions inside its area’s drill. For practice, the whole area works best.</p>' : '';
-      what = '<section class="d5-card">' + q('2', 'On which', 'topics?') + areaNote + (chips ? '<p class="lvc-chips" style="margin:0 0 14px">' + chips + '</p>' : B.kind === 'review' ? '<p class="d5-mut" style="margin:0 0 14px">No topics picked: each student reviews every miss in the course.</p>' : '') + units +
-        (wt.length ? '<div class="tm-hint"><p><b>Your class is weakest on ' + esc(topicName(wt[0])) + '.</b> From every answer so far in the units you’ve taught.</p><button class="lp-btn sm" type="button" data-weak="1">Use the ' + plural(wt.length, 'weakest topic') + '</button></div>' : '') +
-        amount + '</section>';
+      var areaNote = course().topicFilter === false ? 'EMT practice drills a whole topic area, so students reach a topic’s questions inside its area’s drill. For practice, the whole area works best.' : '';
+      var topicCtl = msH('topics', topicsLabel(), tlist) + (wt.length ? '<p class="tm-bhint">Class is weakest on ' + esc(topicName(wt[0])) + '. <button type="button" class="tm-link" data-weak="1">Use the ' + plural(wt.length, 'weakest topic') + '</button></p>' : '');
+      what = cellH('Topics' + (B.kind === 'review' ? ' <small>optional</small>' : ''), topicCtl, B.kind === 'review' && !B.topics.length ? 'No topics picked: each student reviews every miss in the course.' : areaNote);
+      if(B.kind === 'mastery'){
+        what += cellH('Mastery target', chipsH('target', [0.6, 0.7, 0.8, 0.9].map(function(v){ return [v, pct(v), B.target === v]; })), 'Mastery is the course’s own number: recent right answers on each topic, harder questions counting more.') +
+          cellH('At least this many answers', '<input class="pp-sel tm-num" type="number" min="1" max="200" id="lvtMin" value="' + B.min + '">', 'A student who already masters a topic still answers the minimum.');
+      } else {
+        what += cellH(B.kind === 'practice' ? 'Questions' : 'Most questions to redo', '<input class="pp-sel tm-num" type="number" min="1" max="100" id="lvtCount" value="' + B.count + '">');
+      }
     } else if(B.kind === 'exam'){
-      what = '<section class="d5-card">' + q('2', 'Which', 'exam?') + '<label class="lv-field"><span>Exam</span><select class="lv-in" id="lvtUnit"><option value="">Full practice exam</option>' + (course().unitExams === false ? [] : D.order).map(function(u){ return '<option value="' + esc(u) + '"' + (B.unit === u ? ' selected' : '') + '>' + esc(unitName(u) + ' test: ' + unitTitle(u)) + '</option>'; }).join('') + '</select></label><p class="d5-mut">Students take it on the course’s Exams page, timed as usual.</p></section>';
+      what = cellH('Unit test or full exam', selH('lvtUnit', [['', 'Full practice exam']].concat((course().unitExams === false ? [] : D.order).map(function(u){ return [u, esc(unitName(u) + ' test: ' + unitTitle(u))]; })), B.unit), 'Students take it on the course’s Exams page, timed as usual.');
     } else {
       var fs = (S.frqs || []).slice().sort(function(a, b){ return String(a.title).localeCompare(b.title); });
-      what = '<section class="d5-card">' + q('2', 'Which', 'free response?') + '<label class="lv-field"><span>Question</span><select class="lv-in" id="lvtFrq"><option value="">Pick one</option>' + fs.map(function(f){ return '<option value="' + esc(f.id) + '"' + (B.frq === f.id ? ' selected' : '') + '>' + esc(f.title) + (f.points ? ' (' + f.points + ' points)' : '') + '</option>'; }).join('') + '</select></label><p class="d5-mut">Students score it against the rubric; Premium students can use the AI grader.</p></section>';
+      what = cellH('Free response', selH('lvtFrq', [['', 'Pick one']].concat(fs.map(function(f){ return [f.id, esc(f.title) + (f.points ? ' (' + f.points + ' points)' : '')]; })), B.frq), 'Students score it against the rubric; Premium students can use the AI grader.');
     }
-    var seg = function(attr, val, on, label){ return '<button type="button" data-' + attr + '="' + val + '" aria-pressed="' + on + '">' + label + '</button>'; };
-    var who = '<div class="lv-seg" role="group" aria-label="Who">' + seg('who', 'all', B.who === 'all', 'Whole class (' + D.members.length + ')') + seg('who', 'some', B.who === 'some', 'Choose students') + '</div>' +
-      (B.who === 'some' ? '<div class="lv-grid3" style="margin-top:12px">' + D.members.map(function(m){ return '<label class="lvt-check"><input type="checkbox" data-student="' + m.id + '"' + (B.students.indexOf(m.id) !== -1 ? ' checked' : '') + '> ' + esc(m.name) + '</label>'; }).join('') + '</div>' : '');
     var lateOpts = [[0, 'Not accepted'], [1, 'Up to 1 day late'], [2, 'Up to 2 days late'], [3, 'Up to 3 days late'], [7, 'Up to a week late']];
     if(B.late && !lateOpts.some(function(o){ return o[0] === B.late; })) lateOpts.push([B.late, 'Up to ' + plural(B.late, 'day') + ' late']);
-    var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> ' + (B.id ? 'Edit' : 'Assign'), m1: B.id ? 'Edit' : 'Assign', m2: 'work', hand: 'one screen, smart defaults', lede: 'Pick what, which topics and when.', small: true }) +
-      '<div class="hwrap"><form class="lvt-assign tm-up" id="lvtAssign"><div class="main">' +
-      '<section class="d5-card">' + q('1', 'What should', 'they do?') + '<div class="lvt-tiles">' + tile('practice', 'Practice', 'Questions on the topics you pick') + tile('mastery', 'Mastery', 'Keeps going until they master each topic') + tile('review', 'Review', 'Each student redoes their own misses') + tile('exam', 'Practice exam', M.isAp(c.course) ? 'A unit test or the full AP&reg; exam' : course().unitExams === false ? 'A full timed practice exam' : 'A ' + esc((course().unitWord || 'unit').toLowerCase()) + ' test or the cumulative final') +
-        (course().frq === false ? '' : tile('frq', 'Free response', 'AP&reg; style, scored with the rubric')) + '</div></section>' +
-      what + controlsHtml() +
-      '<section class="d5-card">' + q(B.kind === 'frq' ? '3' : '4', 'When, and', 'does it count?') + '<div class="lv-grid2"><label class="lv-field"><span>Opens (blank is now)</span><input class="lv-in" type="datetime-local" id="lvtOpens" value="' + esc(B.opens) + '"></label><label class="lv-field"><span>Due</span><input class="lv-in" type="datetime-local" id="lvtDue" value="' + esc(B.due) + '"></label></div>' +
-      '<div class="lv-grid2"><div><div class="lv-seg" role="group" aria-label="Required or optional">' + seg('req', '1', B.required, 'Required') + seg('req', '0', !B.required, 'Optional') + '</div><p class="d5-mut" style="margin-top:8px">' + (B.required ? 'Counts in the gradebook. Late and missing work is flagged.' : 'Never late and never in the average; you still see who did it.') + '</p></div>' +
-      '<label class="lv-field"><span>Late work</span><select class="lv-in" id="lvtLate">' + lateOpts.map(function(o){ return '<option value="' + o[0] + '"' + (B.late === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label></div></section>' +
-      '<section class="d5-card">' + q(B.kind === 'frq' ? '4' : '5', 'Who', 'gets it?') + who + alsoHtml() + '</section>' +
-      '<section class="d5-card"><label class="lv-field" style="margin:0"><span>Title students see</span><input class="lv-in" id="lvtTitle" maxlength="120" value="' + esc(B.title) + '"></label></section>' +
-      '<div class="lv-btns"><button class="lp-btn gold" type="submit">' + (B.id ? 'Save changes' : 'Assign to ' + esc(c.name) + (B.also.length && B.who !== 'some' ? ' and ' + plural(B.also.length, 'more class', 'more classes') : '')) + '</button><a class="lp-btn ghost" href="#' + (B.id ? 'a/' + B.id : 'home') + '">Cancel</a><p class="lv-msg" id="lvtAMsg" role="status" style="margin:0"></p></div>' +
-      '</div><aside class="side"><div class="d5-now lvt-prev"><p class="d5-starthere" style="text-align:left">what students will see</p><div class="card"><span class="lv-tag ' + (B.required ? 'is-req' : '') + '">' + (B.required ? (B.due ? 'Due ' + esc(day(Date.parse(B.due))) : 'Required') : 'Optional') + '</span><b>' + esc(B.title) + '</b>' +
-      '<p class="d5-mut" style="margin:0">From ' + esc((S.profile && S.profile.name) || 'you') + ' &middot; ' + KIND[B.kind] + (B.kind === 'practice' ? ' &middot; ' + B.count + ' questions' : '') + (B.kind === 'mastery' ? ' &middot; to ' + pct(B.target) : '') + (B.timeLimit && B.kind !== 'frq' ? ' &middot; ' + B.timeLimit + ' min' : '') + '</p><p style="margin:12px 0 0"><span class="lp-btn gold sm">Start</span></p></div>' +
-      '<ul class="d5-steps"><li>Shows at the top of their course home</li><li>Works on the free plan; free limits still apply unless they have Premium</li><li>Progress updates here as they work</li></ul></div></aside></form><div style="height:60px"></div></div>';
+    var when = '<div class="pp-grp tm-2"><h3 class="pp-gh">When</h3>' +
+      cellH('Opens', '<input class="pp-sel" type="datetime-local" id="lvtOpens" value="' + esc(B.opens) + '">', 'Blank opens it now.') +
+      cellH('Due', '<input class="pp-sel" type="datetime-local" id="lvtDue" value="' + esc(B.due) + '">') +
+      cellH('Counts', chipsH('req', [['1', 'Required', B.required], ['0', 'Optional', !B.required]]), B.required ? 'Counts in the gradebook. Late and missing work is flagged.' : 'Never late and never in the average; you still see who did it.') +
+      cellH('Late work', selH('lvtLate', lateOpts, B.late)) + '</div>';
+    var who = '<div class="pp-grp"><h3 class="pp-gh">Who</h3>' +
+      cellH('Students', chipsH('who', [['all', 'Whole class (' + D.members.length + ')', B.who === 'all'], ['some', 'Choose students', B.who === 'some']]) +
+        (B.who === 'some' ? '<div class="tm-picks">' + D.members.map(function(m){ return '<label class="pp-ms-o tm-plain"><input type="checkbox" data-student="' + m.id + '"' + (B.students.indexOf(m.id) !== -1 ? ' checked' : '') + '> ' + esc(m.name) + '</label>'; }).join('') + '</div>' : '')) +
+      alsoHtml() + '</div>';
+    // The summary, as students will see it.
+    var subj = drillKind(B.kind) ? (B.topics.length ? B.topics.map(function(x){ var tt = D.topics[x]; return tt && tt.ced ? tt.ced : tt ? tt.title : x; }).slice(0, 4).join(', ') + (B.topics.length > 4 ? ' and more' : '') : B.kind === 'review' ? 'every miss' : 'no topics yet') : B.kind === 'exam' ? (B.unit ? unitName(B.unit) : 'full exam') : '';
+    var sumT = KIND[B.kind] + (B.kind === 'practice' ? ' &middot; ' + B.count + ' questions' : B.kind === 'mastery' ? ' &middot; to ' + pct(B.target) : B.kind === 'review' ? ' &middot; up to ' + B.count : '') + (B.timeLimit && B.kind !== 'frq' ? ' &middot; ' + B.timeLimit + ' min' : '');
+    var sumB = [esc(subj)].filter(Boolean).concat(B.due ? ['due ' + esc(day(Date.parse(B.due)))] : []).concat([B.required ? 'required' : 'optional', B.who === 'some' ? plural(B.students.length, 'student') : 'whole class']).join(' &middot; ');
+    var go = B.id ? 'Save changes' : 'Assign to ' + esc(c.name) + (B.also.length && B.who !== 'some' ? ' and ' + plural(B.also.length, 'more class', 'more classes') : '');
+    var side = '<aside class="pp-side"><div class="pp-sum"><div class="pp-sumcard"><p class="pp-sum-k">Students will see</p><p class="pp-sum-t">' + sumT + '</p><p class="pp-sum-b">' + sumB + '</p>' +
+      '<label class="tm-btitle"><span>Title</span><input class="pp-sel" id="lvtTitle" maxlength="120" value="' + esc(B.title) + '"></label>' +
+      '<button class="pp-go" type="submit">' + go + '</button><p class="lv-msg tm-amsg" id="lvtAMsg" role="status"></p></div>' +
+      '<p class="tm-side-n">From ' + esc((S.profile && S.profile.name) || 'you') + '. Shows at the top of their course home. Works on the free plan; free limits still apply unless they have Premium.</p>' +
+      '<p class="tm-side-n"><a href="#' + (B.id ? 'a/' + B.id : 'work') + '">Cancel</a></p></div></aside>';
+    var html = sband({ crumbs: classCrumbs([[B.id ? 'Edit' : 'Assign work']]), issue: classIssue(), title: B.id ? 'Edit assignment' : 'Assign work', lede: 'Pick what, then set it up. Everything is on one panel.' }) +
+      '<div class="xshell lap tm-body pp-wrap"><form class="pp-v3 pp-v4" id="lvtAssign" novalidate><section class="pp-card" aria-label="Assign work"><div class="pp-rail"><div class="pp-tiles" role="group" aria-label="What should they do?">' + tiles + '</div></div>' +
+      '<div class="pp-form"><div class="pp-set"><div class="pp-grp"><h3 class="pp-gh">What</h3>' + what + '</div>' + when + who + controlsHtml() + '</div></div>' + side + '</section></form></div><div style="height:60px"></div>';
+    var ms = B.openMs ? document.querySelector('details[data-ms="' + B.openMs + '"] .pp-ms-list') : null, msTop = ms ? ms.scrollTop : 0;
     render(frame(html, c.course), 'work');
+    var ms2 = B.openMs ? document.querySelector('details[data-ms="' + B.openMs + '"] .pp-ms-list') : null; if(ms2) ms2.scrollTop = msTop;
   }
   function readForm(){
     var g = function(id){ var el = document.getElementById(id); return el ? el.value : null; };
@@ -649,7 +720,17 @@
   }
 
   /* ------------------------------------------------------------- students */
-  function viewStudents(){
+  /* Students: List, Gradebook and AP® skills are three views of one tab (owner 2026-11-08). */
+  function studentsFrame(view, lede, inner){
+    var vs = [['#students', 'List', 'list'], ['#students/gradebook', 'Gradebook', 'gradebook']];
+    if(M.isAp(S.rep.class.course)) vs.push(['#students/skills', 'AP&reg; skills', 'skills']);
+    var miss = D.members.filter(function(m){ return D.assign.some(function(a){ return a.st[m.id] && a.st[m.id].state === 'missing'; }); }).length;
+    return sband({ crumbs: classCrumbs([['Students']]), issue: classIssue(), title: 'Students', lede: plural(D.members.length, 'student') + (miss ? ' &middot; ' + miss + ' with missing work' : '') }) +
+      body('<div class="tm-toolbar">' + views(vs, view) + (D.members.length ? '<button class="lp-btn sm tm-mline" type="button" data-csv="all">Export CSV</button>' : '') + '</div>' + inner) + '<div style="height:60px"></div>';
+  }
+  function viewStudents(view){
+    if(view === 'gradebook') return viewGrades();
+    if(view === 'skills'){ if(M.isAp(S.rep.class.course)) return viewSkills(); location.replace('#students'); return; }
     var c = S.rep.class, cu = D.current;
     var rows = D.members.slice().sort(function(a, b){ return a.name.localeCompare(b.name); }).map(function(m){
       var req = D.assign.filter(function(a){ return a.required && a.st[m.id]; });
@@ -658,9 +739,7 @@
         '<div class="hide"><div class="lv-bar"><i style="width:' + Math.round((cu ? m.um[cu] : m.overall) * 100) + '%"></i></div><small>' + (cu ? pct(m.um[cu]) + ' in ' + esc(unitName(cu)) + ' &middot; ' : '') + done + ' of ' + req.length + ' required done</small></div>' +
         '<div class="lvt-score">' + pct(m.overall) + '<small>mastery</small></div></a>';
     }).join('');
-    var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> Students', m1: 'Stu', m2: 'dents', hand: plural(D.members.length, 'student'), small: true }) +
-      '<div class="hwrap"><div class="tm-up">' + (rows ? '<div class="d5-card lvt-list">' + rows + '</div>' : '<div class="d5-card tm-empty"><p class="d5-lead">No students yet</p><p class="lv-btns" style="justify-content:center;margin-top:14px"><button class="lp-btn gold" data-copy="link" type="button">Copy join link</button></p></div>') + '</div><div style="height:60px"></div></div>';
-    render(frame(html, c.course), 'students');
+    render(frame(studentsFrame('list', '', rows ? '<div class="d5-card lvt-list">' + rows + '</div>' : '<div class="d5-card tm-empty"><p class="d5-lead">No students yet</p><p class="lv-btns" style="justify-content:center;margin-top:14px"><button class="lp-btn gold" data-copy="link" type="button">Copy join link</button></p></div>'), c.course), 'students');
   }
   function viewStudent(id){
     var m = D.byId[id]; if(!m){ location.hash = '#students'; return; }
@@ -669,11 +748,13 @@
     var req = mine.filter(function(a){ return a.required; });
     var done = req.filter(function(a){ return a.st[m.id].state === 'done'; }).length, late = mine.filter(function(a){ return a.st[m.id].late; }).length, miss = req.filter(function(a){ return a.st[m.id].state === 'missing'; }).length;
     var band5 = M.isAp(c.course) ? scoreBand(m) : null;
-    var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> Student', m1: esc(m.name), m2: '', hand: 'in ' + esc(c.name) + ' since ' + day(m.joined) + ' &middot; ' + ago(m.last),
-      lede: 'You see their ' + esc(course().name) + ' work only. Their other courses stay private.', ctas: '<a class="btn-chan" href="#assign/student/' + m.id + '">Assign to ' + esc(m.name.split(' ')[0]) + '</a>', small: true });
-    html += '<div class="hwrap"><div class="lvt-stats tm-up tm-5"><div class="lvt-stat"><b>' + pct(m.overall) + '</b><span>overall mastery</span></div><div class="lvt-stat"><b>' + done + ' of ' + req.length + '</b><span>required done</span></div>' +
+    var first = esc(m.name.split(' ')[0]);
+    var html = sband({ crumbs: classCrumbs([['Students', '#students'], [esc(m.name)]]), issue: classIssue(), title: esc(m.name),
+      lede: 'In ' + esc(c.name) + ' since ' + day(m.joined) + ' &middot; ' + ago(m.last) + ' &middot; you see their ' + esc(course().name) + ' work only',
+      ctas: '<a class="btn-chan" href="#assign/student/' + m.id + '">Assign to ' + first + '</a>' });
+    html += '<div class="xshell lap tm-body"><div class="lvt-stats tm-5 tm-stats0"><div class="lvt-stat"><b>' + pct(m.overall) + '</b><span>overall mastery</span></div><div class="lvt-stat"><b>' + done + ' of ' + req.length + '</b><span>required done</span></div>' +
       '<div class="lvt-stat"><b>' + late + '</b><span>late &middot; ' + miss + ' missing</span></div><div class="lvt-stat"><b>' + m.week + '</b><span>questions this week</span></div>' +
-      (M.isAp(c.course) ? '<a class="lvt-stat" href="#skills" style="text-decoration:none;color:inherit"><b>' + (band5 ? band5.label : '·') + '</b><span>AP® score band, an estimate</span></a>' : '<div class="lvt-stat"><b>' + plural(m.summary ? m.summary.lessons || 0 : 0, 'lesson') + '</b><span>finished</span></div>') + '</div>';
+      (M.isAp(c.course) ? '<a class="lvt-stat" href="#students/skills" style="text-decoration:none;color:inherit"><b>' + (band5 ? band5.label : '·') + '</b><span>AP® score band, an estimate</span></a>' : '<div class="lvt-stat"><b>' + plural(m.summary ? m.summary.lessons || 0 : 0, 'lesson') + '</b><span>finished</span></div>') + '</div>';
     var bars = unitRows(function(u, cls){ var v = m.um[u], av = D.unitAvg[u], col = v >= 0.6 ? 'var(--accent)' : v >= 0.4 ? 'var(--amber)' : '#D9694F';
       return '<div class="lvt-urow' + cls + '"><div><b>' + esc(unitName(u)) + '</b><small>' + esc(unitTitle(u)) + '</small></div><div class="bar" style="position:relative;overflow:visible"><i style="width:' + Math.round(v * 100) + '%;background:' + col + '"></i><em class="tm-mark" style="left:' + Math.round(av * 100) + '%"></em></div><div class="v">' + pct(v) + '<small style="display:block;font:700 11.5px var(--font-ui);color:var(--muted)">class ' + pct(av) + '</small></div></div>'; });
     var al = mine.slice(0, 8).map(function(a){ var s = a.st[m.id];
@@ -684,15 +765,18 @@
       .map(function(t){ return '<div class="lvc-row"><div><p class="lvc-t">' + esc(topicName(t)) + '</p><p class="lvc-m">' + m.tm[t].wrong + ' of ' + m.tm[t].answered + ' wrong</p></div><a class="lp-btn sm ghost" style="grid-column:2" href="#assign/student/' + m.id + '" data-pretopic="' + esc(t) + '">Assign practice</a></div>'; }).join('');
     var flags = Object.keys((m.summary && m.summary.flags) || {}).map(function(k){ var t = (/^[a-z]+-(.+)-\d+$/.exec(k) || [])[1]; return { k: k, t: t, ts: m.summary.flags[k] }; }).filter(function(x){ return D.topics[x.t]; }).sort(function(a, b){ return b.ts - a.ts; }).slice(0, 5)
       .map(function(x){ var r = m.summary.items && m.summary.items[x.k]; return '<div class="lvc-row"><div><p class="lvc-t">' + esc(topicName(x.t)) + '</p><p class="lvc-m">flagged ' + day(x.ts) + (r ? ' &middot; ' + (r[4] ? 'now answered right' : 'still wrong') : '') + '</p></div><a class="lp-btn sm ghost" style="grid-column:2" href="#topic/' + esc(x.t) + '">Look at it</a></div>'; }).join('');
-    html += '<section class="d5-sec">' + q('1', 'How they’re', 'doing') + '<div class="lv-grid2"><div class="d5-card"><p class="d5-lead">Mastery by unit</p><p class="d5-mut">Their score, with the class average as a line.</p>' + bars + '</div>' +
-      '<div class="d5-card"><p class="d5-lead">Their assignments</p>' + (al || '<p class="d5-empty">Nothing assigned to them yet.</p>') + '</div></div></section>';
-    html += '<section class="d5-sec">' + q('2', 'What they get', 'wrong') + '<div class="lv-grid2"><div class="d5-card"><p class="d5-lead">Weakest topics</p>' + (weak || '<p class="d5-empty">Not enough answers yet.</p>') + '</div>' +
-      '<div class="d5-card"><p class="d5-lead">Questions they flagged</p><p class="d5-mut">Students flag questions they find confusing.</p>' + (flags || '<p class="d5-empty">No flags.</p>') + '</div></div></section>';
-    html += '<section class="d5-sec">' + q('3', 'Their', 'accommodations') + '<div class="d5-card"><p class="d5-lead">Applied to every assignment, hidden from classmates</p><div class="lv-grid2" style="margin-top:14px"><label class="lv-field"><span>Extra days on due dates</span><select class="lv-in" id="lvtXd">' +
+    var acc = '<div><p class="d5-lead">Accommodations</p><p class="d5-mut">Applied to every assignment, hidden from classmates.</p><div class="lv-grid2" style="margin-top:12px"><label class="lv-field"><span>Extra days on due dates</span><select class="lv-in" id="lvtXd">' +
       [0, 1, 2, 3, 5, 7].map(function(n){ return '<option value="' + n + '"' + (m.extra_days === n ? ' selected' : '') + '>' + (n ? plural(n, 'day') : 'None') + '</option>'; }).join('') + '</select></label>' +
       '<label class="lv-field"><span>Extra time on timed work</span><select class="lv-in" id="lvtXt">' + [[1, 'None'], [1.25, 'Time and a quarter'], [1.5, 'Time and a half'], [2, 'Double time'], [3, 'Triple time']].map(function(o){ return '<option value="' + o[0] + '"' + (+(m.extra_time || 1) === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label></div>' +
-      '<p class="lv-btns"><button class="lp-btn sm" type="button" data-savem="' + m.id + '">Save</button>' + (isOwner() ? '<button class="lp-btn sm ghost" type="button" data-removem="' + m.id + '">Remove from class</button>' : '') + '</p><p class="lv-msg" id="lvtXMsg" role="status"></p></div></section><div style="height:60px"></div></div>';
+      '<p class="lv-btns"><button class="lp-btn gold sm" type="button" data-savem="' + m.id + '">Save</button></p><p class="lv-msg" id="lvtXMsg" role="status"></p></div>';
+    var leave = '<div><p class="d5-lead">Leaving the class?</p><p class="d5-mut">' + (isOwner() ? 'Removes ' + first + ' from ' + esc(c.name) + '. Their own LevlPrep progress stays theirs, and they can rejoin with the code.</p><p class="lv-btns" style="margin-top:12px"><button class="tm-link tm-danger" type="button" data-removem="' + m.id + '">Remove from class</button></p>' : 'Only the class’s owner can remove students.</p>') + '</div>';
+    html += '<div class="tm-stack"><div class="lv-grid2"><div class="d5-card"><p class="d5-lead">Mastery by unit</p><p class="d5-mut">Their score, with the class average as a line.</p>' + bars + '</div>' +
+      '<div class="d5-card"><p class="d5-lead">Their assignments</p>' + (al || '<p class="d5-empty">Nothing assigned to them yet.</p>') + '</div></div>' +
+      '<div class="lv-grid2"><div class="d5-card"><p class="d5-lead">Weakest topics</p>' + (weak || '<p class="d5-empty">Not enough answers yet.</p>') + '</div>' +
+      '<div class="d5-card"><p class="d5-lead">Questions they flagged</p><p class="d5-mut">Students flag questions they find confusing.</p>' + (flags || '<p class="d5-empty">No flags.</p>') + '</div></div>' +
+      '<div class="d5-card tm-for">' + acc + '<div id="lvtIntF"></div>' + leave + '</div></div></div><div style="height:60px"></div>';
     render(frame(html, c.course), 'students');
+    hook('student', 'lvtIntF', { student: { id: m.id, name: m.name } });
   }
 
   /* ------------------------------------------------------------- gradebook */
@@ -715,12 +799,10 @@
     var ms = D.members.slice().sort(function(a, b){ return GB_SORT === 'avg' ? (avgFor(b) || 0) - (avgFor(a) || 0) : a.name.localeCompare(b.name); });
     var head = '<tr><th class="nm"><button class="tm-gb-sort" data-sort="name" type="button">Student</button></th><th><button class="tm-gb-sort" data-sort="avg" type="button">Average</button><small>required only</small></th>' + as.map(function(a){ return '<th><a href="#a/' + a.id + '" style="color:inherit;text-decoration:none">' + esc(a.title) + '</a><small>' + [a.required ? '' : 'optional', a.due_at ? day(Date.parse(a.due_at)) : ''].filter(Boolean).join(' &middot; ') + '</small></th>'; }).join('') + '</tr>';
     var body = ms.map(function(m){ return '<tr><td class="nm"><a href="#s/' + m.id + '">' + esc(m.name) + '</a></td><td><b class="lvt-score" style="font-size:15px">' + pct(avgFor(m)) + '</b></td>' + as.map(function(a){ return cell(a, m); }).join('') + '</tr>'; }).join('');
-    var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> Gradebook', m1: 'Grade', m2: 'book', hand: 'tap a name or an assignment to dig in', lede: 'Missing work counts as zero in the average; optional work never counts.', small: true,
-      ctas: '<button class="btn-chan" type="button" data-csv="all">Export CSV</button>' }) +
-      '<div class="hwrap">' + (as.length && ms.length ? '<div class="d5-card lvt-gb tm-up"><table><thead>' + head + '</thead><tbody>' + body + '</tbody></table></div>' +
+    var inner = as.length && ms.length ? '<p class="tm-note">Missing work counts as zero in the average; optional work never counts. Tap a name or an assignment to dig in.</p><div class="d5-card lvt-gb"><table><thead>' + head + '</thead><tbody>' + body + '</tbody></table></div>' +
         '<p class="d5-mut" style="margin-top:14px"><span class="lvt-c g">80%+</span> <span class="lvt-c y">60 to 79% or in progress</span> <span class="lvt-c r">under 60% or missing</span> <span class="lvt-c e late">late</span> <span class="tm-tabs">4&times;</span> left the tab during timed work</p>'
-        : '<div class="d5-card tm-empty tm-up"><p class="d5-lead">Nothing to grade yet</p><p class="d5-mut">Scores appear once students join and you assign work.</p></div>') + '<div style="height:60px"></div></div>';
-    render(frame(html, c.course), 'grades');
+      : '<div class="d5-card tm-empty"><p class="d5-lead">Nothing to grade yet</p><p class="d5-mut">Scores appear once students join and you assign work.</p></div>';
+    render(frame(studentsFrame('gradebook', '', inner), c.course), 'students');
   }
   function csv(rows){ return rows.map(function(r){ return r.map(function(v){ v = v == null ? '' : String(v); if(/^[=+\-@\t\r]/.test(v)) v = "'" + v; return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(','); }).join('\n'); }
   function download(name, text){ var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type: 'text/csv' })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500); }
@@ -733,7 +815,8 @@
 
   /* ------------------------------------------------------------- settings */
   var ORDER_DRAFT = null;
-  function viewSettings(){
+  /* Settings: a side menu, one section at a time (owner 2026-11-08). Family reports live on each student's page. */
+  function viewSettings(sec){
     var c = S.rep.class;
     if(!ORDER_DRAFT) ORDER_DRAFT = { order: D.order.slice(), current: D.current };
     var o = ORDER_DRAFT, ci = o.current ? o.order.indexOf(o.current) : -1;
@@ -742,29 +825,33 @@
       return '<div class="lvt-ou' + (i === ci ? ' is-now' : '') + '"><span class="mv"><button type="button" data-up="' + i + '" aria-label="Move ' + esc(unitName(u)) + ' up"' + (i ? '' : ' disabled') + '>&#9650;</button><button type="button" data-down="' + i + '" aria-label="Move ' + esc(unitName(u)) + ' down"' + (i < o.order.length - 1 ? '' : ' disabled') + '>&#9660;</button></span>' +
         '<span><b>' + esc(unitName(u)) + ' &middot; ' + esc(unitTitle(u)) + '</b></span>' + tag + '<button class="lp-btn sm ghost" type="button" data-now="' + esc(u) + '">' + (i === ci ? 'Teaching now' : 'Set as now') + '</button></div>';
     }).join('');
-    var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> Settings', m1: 'Class', m2: 'settings', hand: 'your order drives every student’s path', small: true }) +
-      '<div class="hwrap"><div class="lvt-assign tm-up"><div class="main">' +
-      '<section class="d5-card">' + q('1', 'Your', 'order') + '<p class="d5-mut" style="margin:-6px 0 14px">Put the units in the order you teach them and mark the one you’re on. Students can still study ahead on their own.</p><div class="lvt-order">' + rows + '</div>' +
-      '<p class="lv-btns" style="margin-top:14px"><button class="lp-btn gold sm" type="button" data-saveorder="1">Save order</button><span class="lv-msg" id="lvtOMsg" role="status" style="margin:0"></span></p></section>' +
-      '<section class="d5-card">' + q('2', 'Get', 'students in') + '<div class="d5-now" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 24px"><span class="lv-code" style="flex:1;color:#fff">' + esc(c.code) + '</span><button class="lp-btn gold sm" data-copy="link" type="button">Copy join link</button><button class="lp-btn sm tm-line" data-show="code" type="button">Show on screen</button></div>' +
-      '<p class="lv-btns" style="margin-top:12px"><button class="lp-btn sm ghost" type="button" data-newcode="1">Make a new code</button><span class="d5-mut">The old code stops working; students already in stay.</span></p></section>' +
-      '<section class="d5-card">' + q('3', 'The', 'class') + '<label class="lv-field"><span>Class name</span><input class="lv-in" id="lvtCName" maxlength="60" value="' + esc(c.name) + '"></label>' +
+    var S6 = [['order', 'Unit order'], ['join', 'Join code'], ['class', 'Class details'], ['people', 'Co-teachers and department']]
+      .concat(isOwner() ? [['connect', 'Google Classroom and LMS']] : []).concat([['school', 'Class Premium and paperwork']]);
+    if(!S6.some(function(x){ return x[0] === sec; })) sec = 'order';
+    var pane = '';
+    if(sec === 'order') pane = '<section class="d5-card"><p class="d5-mut" style="margin:0 0 14px">Put the units in the order you teach them and mark the one you’re on. Students can still study ahead on their own.</p><div class="lvt-order">' + rows + '</div>' +
+      '<p class="lv-btns" style="margin-top:14px"><button class="lp-btn gold sm" type="button" data-saveorder="1">Save order</button><span class="lv-msg" id="lvtOMsg" role="status" style="margin:0"></span></p></section>';
+    else if(sec === 'join') pane = '<section class="d5-card"><p class="d5-lead">Get students in</p><div class="d5-now" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 24px;margin-top:12px"><span class="lv-code" style="flex:1;color:#fff">' + esc(c.code) + '</span><button class="lp-btn gold sm" data-copy="link" type="button">Copy join link</button><button class="lp-btn sm tm-line" data-show="code" type="button">Show on screen</button></div>' +
+      '<p class="lv-btns" style="margin-top:12px"><button class="lp-btn sm ghost" type="button" data-newcode="1">Make a new code</button><span class="d5-mut">The old code stops working; students already in stay.</span></p><p class="lv-msg" id="lvtCMsg" role="status"></p></section>';
+    else if(sec === 'class') pane = '<section class="d5-card"><p class="d5-lead">The class</p><label class="lv-field" style="margin-top:12px"><span>Class name</span><input class="lv-in" id="lvtCName" maxlength="60" value="' + esc(c.name) + '"></label>' +
       '<p class="lv-btns"><button class="lp-btn sm" type="button" data-savename="1">Save</button>' + (isOwner() ? '<button class="lp-btn sm ghost" type="button" data-archive="1">' + (c.archived ? 'Unarchive' : 'Archive at year end') + '</button><button class="lp-btn sm ghost" type="button" data-delclass="1">Delete class</button>' : '') + '</p><p class="lv-msg" id="lvtCMsg" role="status"></p></section>' +
-      '<section class="d5-card">' + q('4', 'Copy this', 'class') + '<p class="d5-mut" style="margin:-6px 0 14px">For another period or next year: the same course, unit order and assignments, with every date moved. No students, and a new join code.</p>' +
+      '<section class="d5-card"><p class="d5-lead">Copy this class</p><p class="d5-mut" style="margin:0 0 14px">For another period or next year: the same course, unit order and assignments, with every date moved. No students, and a new join code.</p>' +
       '<div class="lv-grid2"><label class="lv-field"><span>Name of the copy</span><input class="lv-in" id="lvtCpName" maxlength="60" value="' + esc(c.name + ' (copy)') + '"></label>' +
       '<label class="lv-field"><span>Move every date by</span><select class="lv-in" id="lvtCpShift">' + [[0, 'Keep the same dates'], [1, '1 day'], [7, '1 week'], [14, '2 weeks'], [126, '18 weeks (next semester)'], [364, '52 weeks (next year, same weekday)']].map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('') + '<option value="custom">Another number of days</option></select></label></div>' +
       '<label class="lv-field" id="lvtCpDaysBox" hidden style="max-width:240px"><span>Days (negative moves earlier)</span><input class="lv-in" type="number" id="lvtCpDays" min="-400" max="400" value="0"></label>' +
-      '<p class="lv-btns"><button class="lp-btn sm" type="button" data-copyclass="1">Copy the class</button><span class="lv-msg" id="lvtCpMsg" role="status" style="margin:0"></span></p></section>' +
-      '<section class="d5-card">' + q('5', 'Your', 'co-teachers') + coteachHtml() + '</section>' +
-      '<section class="d5-card">' + q('6', 'Your', 'department') + '<p class="d5-mut" style="margin:-6px 0 14px">Department heads see each shared class’s averages, never a student’s name or answers.</p>' +
+      '<p class="lv-btns"><button class="lp-btn sm" type="button" data-copyclass="1">Copy the class</button><span class="lv-msg" id="lvtCpMsg" role="status" style="margin:0"></span></p></section>';
+    else if(sec === 'people') pane = '<section class="d5-card"><p class="d5-lead">Your co-teachers</p>' + coteachHtml() + '</section>' +
+      '<section class="d5-card"><p class="d5-lead">Your department</p><p class="d5-mut" style="margin:0 0 14px">Department heads see each shared class’s averages, never a student’s name or answers.</p>' +
       (isOwner() ? '<label class="lvt-check"><input type="checkbox" id="lvtDeptShare"' + (c.dept_shared ? ' checked' : '') + '> Share this class’s numbers with my department</label>' : '<p class="d5-mut">Only the owner can share this class.</p>') +
-      '<p class="lv-btns"><a class="lp-btn sm ghost" href="' + deptHref() + '">Department view</a><span class="lv-msg" id="lvtDMsg" role="status" style="margin:0"></span></p></section>' +
-      '<div id="lvtIntS"></div>' +
-      '</div><aside class="side"><div class="lp-card"><span class="lp-pill">Class Premium</span><h2 class="lp-h2">Everything, for <span>the whole class</span></h2><p class="lp-p">Classes work on the free plan, with its normal limits. Class Premium unlocks every lesson, question and exam for every student, at a discount for teachers.</p>' +
-      '<p class="d5-mut" style="margin-top:12px">Coming soon. To get it now for your class, email <b>hello@levlprep.com</b> with your class size.</p></div>' +
-      '<div class="d5-card" style="margin-top:16px"><p class="d5-lead">Your classes</p><p class="d5-mut"><a href="/teach/">All classes and a new one</a></p></div></aside></div><div style="height:60px"></div></div>';
+      '<p class="lv-btns"><a class="lp-btn sm ghost" href="' + deptHref() + '">Department view</a><span class="lv-msg" id="lvtDMsg" role="status" style="margin:0"></span></p></section>';
+    else if(sec === 'connect') pane = '<div id="lvtIntS"></div>';
+    else pane = '<div class="lp-card"><span class="lp-pill">Class Premium</span><h2 class="lp-h2">Everything, for <span>the whole class</span></h2><p class="lp-p">Classes work on the free plan, with its normal limits. Class Premium unlocks every lesson, question and exam for every student, at a discount for teachers.</p>' +
+      '<p class="d5-mut" style="margin-top:12px">Coming soon. To get it now for your class, email <b>hello@levlprep.com</b> with your class size.</p></div><div id="lvtIntS"></div>';
+    var html = sband({ crumbs: classCrumbs([['Settings']]), issue: classIssue(), title: 'Class settings', lede: 'Your unit order drives every student’s path.' }) +
+      body('<div class="tm-set"><nav class="tm-side" aria-label="Settings sections">' + S6.map(function(x){ return '<a class="tm-sidebtn" href="#settings' + (x[0] === 'order' ? '' : '/' + x[0]) + '"' + (x[0] === sec ? ' aria-current="page"' : '') + '>' + x[1] + '</a>'; }).join('') + '</nav>' +
+        '<div class="tm-panes">' + pane + '</div></div><p class="tm-note" style="margin-top:14px">Family progress reports are on each student’s page.</p>') + '<div style="height:60px"></div>';
     render(frame(html, c.course), 'settings');
-    hook('settings', 'lvtIntS');
+    if(sec === 'connect' || sec === 'school') hook('settings', 'lvtIntS', { part: sec });
   }
   function coteachHtml(){
     var c = S.rep.class, list = S.rep.coteachers || [];
@@ -809,20 +896,18 @@
     var dist = BANDS.map(function(b){ return { label: b[1], n: counted.filter(function(x){ return x.b.label === b[1]; }).length }; });
     var classMid = counted.length ? counted.reduce(function(s, x){ return s + x.b.mid; }, 0) / counted.length : null;
     var reach = bandUnits(), maxN = Math.max.apply(null, dist.map(function(d){ return d.n; }).concat([1]));
-    var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> Skills', m1: 'AP® skills', m2: 'and score bands', hand: 'from every answer your students gave', small: true,
-      lede: 'How the class does on each ' + (/Calculus|Statistics|Precalculus/.test(course().name) ? 'mathematical' : 'science') + ' practice the exam tests, and where each student is heading.' });
-    html += '<div class="hwrap"><div class="lv-grid2 tm-up"><div class="d5-card"><p class="d5-lead">Predicted AP® score bands <span class="lv-tag is-prog">Estimate</span></p>' +
+    var inner = '<div class="lv-grid2"><div class="d5-card"><p class="d5-lead">Predicted AP® score bands <span class="lv-tag is-prog">Estimate</span></p>' +
       '<p class="d5-mut">On ' + (D.curIdx >= 0 ? 'the units taught so far (' + esc(reach.map(unitName).join(', ')) + ')' : 'every unit; set the unit you’re on in Settings to judge only what you’ve taught') + '. Not a College Board score.</p>' +
       dist.map(function(d){ return '<div class="lvt-urow"><div><b>' + d.label + '</b></div><div class="bar"><i style="width:' + Math.round(d.n / maxN * 100) + '%"></i></div><div class="v">' + d.n + '</div></div>'; }).join('') +
       '<p class="d5-mut" style="margin-top:10px">' + (counted.length ? plural(counted.length, 'student') + ' with enough answers' + (classMid ? ', class middle about ' + classMid.toFixed(1) : '') + '. ' : '') + (D.members.length - counted.length ? plural(D.members.length - counted.length, 'student') + ' need' + (D.members.length - counted.length === 1 ? 's' : '') + ' 30 or more answers first.' : '') + '</p>' +
       '<details class="tm-how"><summary>How the estimate works</summary><p>Each unit’s mastery (recent right answers per topic, as on the course pages) is weighted by that unit’s share of the AP® exam, then turned into a band: under 20% is 1 to 2, under 40% is 2 to 3, under 60% is 3 to 4, under 80% is 4 to 5, and 80% or more is 5. Mastery grows with practice, so early in the year bands run low. Treat it as a conversation starter, not a prediction you can promise.</p></details></div>' +
-      '<div class="d5-card"><p class="d5-lead">By skill</p><p class="d5-mut">Share of answers right on questions tagged with each practice.</p><div id="lvtSkillBox"><p class="d5-mut">Loading the question tags…</p></div></div></div>' +
-      '<section class="d5-sec">' + q('2', 'Each', 'student') + '<div class="d5-card lvt-gb" id="lvtSkillGrid"><p class="d5-mut" style="padding:16px">Loading…</p></div></section></div><div style="height:60px"></div>';
-    render(frame(html, c.course), 'skills');
+      '<div class="d5-card"><p class="d5-lead">By skill</p><p class="d5-mut">Share of answers right on questions tagged with each ' + (/Calculus|Statistics|Precalculus/.test(course().name) ? 'mathematical' : 'science') + ' practice the exam tests.</p><div id="lvtSkillBox"><p class="d5-mut">Loading the question tags…</p></div></div></div>' +
+      '<div class="d5-card lvt-gb" id="lvtSkillGrid" style="margin-top:18px"><p class="d5-mut" style="padding:16px">Loading…</p></div>';
+    render(frame(studentsFrame('skills', '', inner), c.course), 'students');
     var units = {};
     D.members.forEach(function(m){ M.rows(m.summary).forEach(function(r){ var t = D.topics[r.t]; units[t && t.bank ? t.bank : r.u] = 1; }); });
     Promise.all(Object.keys(units).filter(Boolean).map(bankFor)).then(function(banks){
-      if(location.hash !== '#skills') return;
+      if(location.hash !== '#students/skills') return;
       var by = {}; banks.forEach(function(b){ Object.keys(b).forEach(function(k){ by[k] = b[k]; }); });
       var all = {}, per = {};
       D.members.forEach(function(m){
@@ -873,14 +958,13 @@
     var c = S.rep.class, reach = (D.curIdx >= 0 ? D.order.slice(0, D.curIdx + 1) : D.order).concat(D.extra);
     var opts = reach.map(function(u){ return '<optgroup label="' + esc(unitLabel(u)) + '">' + S.cur.topics.filter(function(t){ return t.unit === u && t.built !== false; }).map(function(t){ return '<option value="t:' + esc(t.id) + '"' + (L.source === 't:' + t.id ? ' selected' : '') + '>' + esc(topicName(t.id)) + '</option>'; }).join('') + '</optgroup>'; }).join('');
     var wt = weakTopics();
-    var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> Live', m1: 'Live', m2: 'in class', hand: 'one question on the screen, every answer as it lands', small: true,
-      lede: 'Put a question on the projector. Students answer on their phones at levlprep.com/live; you see who answered, then reveal what the class picked.' });
-    html += '<div class="hwrap"><div class="lvt-assign tm-up"><div class="main"><form class="d5-card" id="lvtLiveGo">' + q('1', 'What to', 'ask') +
-      '<label class="lv-field"><span>Questions from</span><select class="lv-in" id="lvtLiveSrc">' + (wt.length ? '<option value="weak">Your class’s weakest topics (' + esc(wt.map(function(t){ return D.topics[t].title; }).join(', ')) + ')</option>' : '') +
+    var html = sband({ crumbs: classCrumbs([['Live']]), issue: classIssue(), title: 'Live in class', lede: 'One question on the projector; students answer at levlprep.com/live; you reveal what the class picked.' });
+    html += '<div class="xshell lap tm-body"><div class="lvt-assign"><div class="main"><form class="d5-card" id="lvtLiveGo"><p class="d5-lead">What to ask</p>' +
+      '<label class="lv-field" style="margin-top:12px"><span>Questions from</span><select class="lv-in" id="lvtLiveSrc">' + (wt.length ? '<option value="weak">Your class’s weakest topics (' + esc(wt.map(function(t){ return D.topics[t].title; }).join(', ')) + ')</option>' : '') +
       '<option value="mine"' + (L.source === 'mine' ? ' selected' : '') + '>Your own questions</option>' + opts + '</select></label>' +
       '<label class="lv-field" style="max-width:220px"><span>How many</span><input class="lv-in" type="number" id="lvtLiveN" min="1" max="30" value="8"></label>' +
       '<p class="d5-mut">Single-choice questions only. Each one stays open until you reveal it.</p><p class="lv-btns"><button class="lp-btn gold" type="submit">Start live</button><span class="lv-msg' + (err ? ' is-bad' : '') + '" id="lvtLiveMsg" role="status" style="margin:0">' + esc(err || '') + '</span></p></form></div>' +
-      '<aside class="side"><div class="d5-now lvt-prev"><p class="d5-starthere" style="text-align:left">what students do</p><ul class="d5-steps"><li>Open levlprep.com/live, signed in</li><li>The question shows on their phone as you start it</li><li>They tap an answer; they can change it until you reveal</li><li>After the reveal they see the right answer and why</li></ul></div></aside></div><div style="height:60px"></div></div>';
+      '<aside class="side"><div class="d5-now lvt-prev"><p class="d5-starthere" style="text-align:left">what students do</p><ul class="d5-steps"><li>Open levlprep.com/live, signed in</li><li>The question shows on their phone as you start it</li><li>They tap an answer; they can change it until you reveal</li><li>After the reveal they see the right answer and why</li></ul></div></aside></div></div><div style="height:60px"></div>';
     render(frame(html, c.course), 'live');
   }
   function liveQueue(src, n){
@@ -942,9 +1026,9 @@
       var e = QE || { id: null, topic: '', q: '', options: ['', '', '', ''], correct: 0, why: '' };
       var list = qs.map(function(x){ return '<div class="lvt-qi"><div><p class="lv-kick">' + esc(x.topic && D.topics[x.topic] ? topicName(x.topic) : 'No topic') + '</p><p class="stem">' + esc(x.q) + '</p><ol class="tm-qo">' + x.options.map(function(o, i){ return '<li' + (i === x.correct ? ' class="ok"' : '') + '>' + esc(o) + '</li>'; }).join('') + '</ol></div>' +
         '<div class="lv-btns" style="align-self:start"><button class="lp-btn sm ghost" type="button" data-editq="' + esc(x.id) + '">Edit</button><button class="lp-btn sm ghost" type="button" data-delq="' + esc(x.id) + '">Delete</button></div></div>'; }).join('');
-      var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> Your questions', m1: 'Your', m2: 'questions', hand: plural(qs.length, 'question') + ' in your ' + esc(course().name) + ' bank', small: true,
-        lede: 'Write your own single-choice questions. Add them to practice, mastery or exam assignments in the builder, print them on worksheets or ask them live. Only you and the classes you assign them to see them.' });
-      html += '<div class="hwrap"><div class="lvt-assign tm-up"><div class="main">' + (list ? '<div class="d5-card lvt-list">' + list + '</div>' : '<div class="d5-card tm-empty"><p class="d5-lead">No questions yet</p><p class="d5-mut">Write the first one on the right.</p></div>') + '</div>' +
+      var html = sband({ crumbs: classCrumbs([['Assignments', '#work'], ['Your questions']]), issue: classIssue(), title: 'Your questions',
+        lede: plural(qs.length, 'question') + ' in your ' + esc(course().name) + ' bank &middot; add them to assignments, print them or ask them live &middot; only you and the classes you assign see them' });
+      html += '<div class="xshell lap tm-body"><div class="lvt-assign"><div class="main">' + (list ? '<div class="d5-card lvt-list">' + list + '</div>' : '<div class="d5-card tm-empty"><p class="d5-lead">No questions yet</p><p class="d5-mut">Write the first one on the right.</p></div>') + '</div>' +
         '<aside class="side"><form class="d5-card" id="lvtQForm"><p class="d5-lead">' + (e.id ? 'Edit question' : 'New question') + '</p>' +
         '<label class="lv-field"><span>Topic</span><select class="lv-in" id="lvtQTopic">' + topicOpts(e.topic) + '</select></label>' +
         '<label class="lv-field"><span>Question</span><textarea class="lv-in tm-ta" id="lvtQText" rows="3" maxlength="2000" required>' + esc(e.q) + '</textarea></label>' +
@@ -984,8 +1068,8 @@
     if(a.kind === 'exam') topics = S.cur.topics.filter(function(t){ return (a.spec.unit ? t.unit === a.spec.unit : bandUnits().indexOf(t.unit) !== -1) && t.built !== false; }).map(function(t){ return t.id; });
     if(!PR.n || PR.id !== id){ PR = { id: id, n: Math.min(40, a.kind === 'practice' ? a.spec.count || 20 : 20), key: true, version: 'A' }; }
     var units = topics.map(function(t){ var x = D.topics[t]; return x ? (x.bank || x.unit) : null; }).filter(function(v, i, arr){ return v && arr.indexOf(v) === i; });
-    var html = band({ issue: esc(course().name) + ' &middot; ' + esc(c.name) + ' <i></i> Print', m1: 'Print', m2: 'worksheet', hand: esc(a.title), small: true }) +
-      '<div class="hwrap"><div class="d5-card tm-up tm-noprint"><div class="lv-grid3"><label class="lv-field"><span>Questions</span><input class="lv-in" type="number" id="lvtPrN" min="1" max="60" value="' + PR.n + '"></label>' +
+    var html = sband({ crumbs: classCrumbs([['Assignments', '#work'], [esc(a.title), '#a/' + a.id], ['Print']]), issue: classIssue(), title: 'Print worksheet', lede: esc(a.title) }) +
+      '<div class="xshell lap tm-body"><div class="d5-card tm-noprint"><div class="lv-grid3"><label class="lv-field"><span>Questions</span><input class="lv-in" type="number" id="lvtPrN" min="1" max="60" value="' + PR.n + '"></label>' +
       '<label class="lv-field"><span>Version</span><select class="lv-in" id="lvtPrV"><option' + (PR.version === 'A' ? ' selected' : '') + '>A</option><option' + (PR.version === 'B' ? ' selected' : '') + '>B</option></select></label>' +
       '<label class="lvt-check" style="align-self:end"><input type="checkbox" id="lvtPrK"' + (PR.key ? ' checked' : '') + '> Answer key on its own page</label></div>' +
       '<p class="d5-mut">Single-choice questions from the assignment’s topics' + (ctl(a).questions && ctl(a).questions.length ? ', your own questions first' : '') + '. Version B puts the questions in a different order.</p>' +
@@ -1034,10 +1118,9 @@
   function deptHref(){ return DEMO ? '/teach/?demo=1&dept=1' : '/teach/?dept=1'; }
   function viewDept(){
     call('teach_dept_view').then(function(d){
-      var html = band({ issue: 'LevlPrep <i></i> For teachers', m1: 'Your', m2: 'department', hand: d ? esc(d.name) : 'see how every shared class is doing', small: true,
-        ctas: '<a class="btn-ghost" href="' + (DEMO ? '/teach/?demo=1' : '/teach/') + '">' + (DEMO ? 'Back to the sample class' : 'Your classes') + '</a>' });
+      var html = sband({ crumbs: [DEMO ? ['Sample class', '/teach/?demo=1'] : YOURS, ['Department']], issue: 'LevlPrep &middot; For teachers', title: 'Your department', lede: d ? esc(d.name) : 'See how every shared class is doing.' });
       if(!d){
-        html += '<div class="hwrap"><div class="lv-grid2 tm-up"><form class="d5-card" id="lvtDeptNew"><p class="d5-lead">Start a department</p><p class="d5-mut">For a department head or a team of teachers. You get a code to give the others.</p>' +
+        html += '<div class="xshell lap tm-body"><div class="lv-grid2"><form class="d5-card" id="lvtDeptNew"><p class="d5-lead">Start a department</p><p class="d5-mut">For a department head or a team of teachers. You get a code to give the others.</p>' +
           '<label class="lv-field" style="margin-top:12px"><span>Department name</span><input class="lv-in" id="lvtDeptName" maxlength="80" placeholder="Lincoln High Science" required></label><button class="lp-btn gold sm" type="submit">Make the department</button></form>' +
           '<form class="d5-card" id="lvtDeptJoin"><p class="d5-lead">Join one</p><p class="d5-mut">Enter the code your department head gave you. You can be in one department at a time.</p>' +
           '<label class="lv-field" style="margin-top:12px"><span>Department code</span><input class="lv-in" id="lvtDeptCode" maxlength="8" autocapitalize="characters" spellcheck="false" required></label><button class="lp-btn gold sm" type="submit">Join</button><p class="lv-msg" id="lvtDeptMsg" role="status"></p></form></div><div style="height:60px"></div></div>';
@@ -1049,7 +1132,7 @@
         return '<tr><td class="nm"><b>' + esc(k.name) + '</b><small style="display:block;color:var(--muted);font-weight:700">' + esc(k.teacher || '') + (k.mine ? ' (you)' : '') + '</small></td><td>' + esc(C.name || k.course) + '</td><td>' + k.members + '</td>' +
           '<td>' + (s.n ? pct(s.active7 / s.n) : '·') + '</td><td>' + pct(s.overall) + '</td><td>' + (s.onTime == null ? '·' : pct(s.onTime)) + '</td><td><span class="tm-dus">' + (units || '<span class="d5-mut">no numbers yet</span>') + '</span></td></tr>';
       }).join('');
-      html += '<div class="hwrap"><div class="lvt-stats tm-up"><div class="lvt-stat"><b>' + (d.classes || []).length + '</b><span>shared classes</span></div><div class="lvt-stat"><b>' + (d.teachers || []).length + '</b><span>teachers</span></div>' +
+      html += '<div class="xshell lap tm-body"><div class="lvt-stats tm-stats0"><div class="lvt-stat"><b>' + (d.classes || []).length + '</b><span>shared classes</span></div><div class="lvt-stat"><b>' + (d.teachers || []).length + '</b><span>teachers</span></div>' +
         '<div class="lvt-stat"><b style="font-family:var(--font-mono);letter-spacing:.08em">' + esc(d.code) + '</b><span>code for other teachers</span></div><div class="lvt-stat"><b>' + (d.classes || []).reduce(function(x, k){ return x + k.members; }, 0) + '</b><span>students</span></div></div>' +
         '<section class="d5-sec">' + q('1', 'Shared', 'classes') + (rows ? '<div class="d5-card lvt-gb"><table><thead><tr><th class="nm">Class</th><th>Course</th><th>Students</th><th>Active this week</th><th>Mastery</th><th>Required work on time</th><th>Mastery by unit<small>in each teacher’s order, current unit marked</small></th></tr></thead><tbody>' + rows + '</tbody></table></div>'
           : '<div class="d5-card tm-empty"><p class="d5-lead">No shared classes yet</p><p class="d5-mut">Each teacher turns on sharing in a class’s Settings.</p></div>') +
@@ -1072,6 +1155,14 @@
     document.addEventListener('keydown', function esc1(e){ if(e.key === 'Escape'){ o.remove(); document.removeEventListener('keydown', esc1); } });
     document.body.appendChild(o); o.querySelector('button').focus();
   }
+  // An open drop-down (the builder's topics, the assignment's Remind, Send grades and More) closes on a click outside it.
+  document.addEventListener('click', function(e){
+    [].forEach.call(document.querySelectorAll('details.pp-ms[open], details.tm-menu[open]'), function(d){
+      if(d.contains(e.target)) return;
+      d.open = false; if(B && d.getAttribute('data-ms') === B.openMs) B.openMs = null;
+    });
+  }, true);
+  document.addEventListener('toggle', function(e){ var d = e.target; if(B && d.getAttribute && d.getAttribute('data-ms') && !d.open && d.getAttribute('data-ms') === B.openMs) B.openMs = null; }, true);
   document.addEventListener('click', function(e){
     var t = e.target.closest ? e.target.closest('button,a') : null; if(!t) return;
     var g = function(a){ return t.getAttribute(a); };
@@ -1083,13 +1174,14 @@
     else if(g('data-kind')){ e.preventDefault(); readForm(); B.kind = g('data-kind'); if(!B.titleTouched) B.title = ''; drawAssign(); }
     else if(g('data-req')){ e.preventDefault(); readForm(); B.required = g('data-req') === '1'; drawAssign(); }
     else if(g('data-who')){ e.preventDefault(); readForm(); B.who = g('data-who'); drawAssign(); }
+    else if(g('data-target')){ e.preventDefault(); readForm(); B.target = parseFloat(g('data-target')) || 0.8; drawAssign(); }
     else if(g('data-weak')){ e.preventDefault(); readForm(); B.topics = weakTopics(); drawAssign(); }
     else if(g('data-untopic')){ e.preventDefault(); readForm(); B.topics = B.topics.filter(function(x){ return x !== g('data-untopic'); }); drawAssign(); }
     else if(g('data-pretopic')){ B = null; var st = g('href').slice(1).split('/').pop(); B = newDraft('student/' + st); B.arg = 'student/' + st; B.topics = [g('data-pretopic')]; }
     else if(g('data-savem')){ call('teach_set_member', { p_class: CLASS_ID, p_student: g('data-savem'), p_patch: { extra_days: parseInt(document.getElementById('lvtXd').value, 10) || 0, extra_time: parseFloat(document.getElementById('lvtXt').value) || 1 } }).then(function(ok){ var m = document.getElementById('lvtXMsg'); m.textContent = ok ? 'Saved.' : 'That did not save.'; m.className = 'lv-msg' + (ok ? '' : ' is-bad'); if(ok) loadClass(); }); }
     else if(g('data-removem')){ if(confirm('Remove this student from the class? You stop seeing their work. They can rejoin with the code.')) call('teach_set_member', { p_class: CLASS_ID, p_student: g('data-removem'), p_patch: { remove: true } }).then(function(){ loadClass().then(function(){ location.hash = '#students'; }); }); }
-    else if(g('data-up') != null || g('data-down') != null){ var i = +(g('data-up') != null ? g('data-up') : g('data-down')), j = g('data-up') != null ? i - 1 : i + 1, o = ORDER_DRAFT.order; var x = o[i]; o[i] = o[j]; o[j] = x; viewSettings(); var f = document.querySelector('[data-' + (g('data-up') != null ? 'up' : 'down') + '="' + j + '"]'); if(f) f.focus(); }
-    else if(g('data-now')){ ORDER_DRAFT.current = g('data-now'); viewSettings(); }
+    else if(g('data-up') != null || g('data-down') != null){ var i = +(g('data-up') != null ? g('data-up') : g('data-down')), j = g('data-up') != null ? i - 1 : i + 1, o = ORDER_DRAFT.order; var x = o[i]; o[i] = o[j]; o[j] = x; viewSettings('order'); var f = document.querySelector('[data-' + (g('data-up') != null ? 'up' : 'down') + '="' + j + '"]'); if(f) f.focus(); }
+    else if(g('data-now')){ ORDER_DRAFT.current = g('data-now'); viewSettings('order'); }
     else if(g('data-saveorder')){ patchClass({ unit_order: ORDER_DRAFT.order, current_unit: ORDER_DRAFT.current }, 'lvtOMsg', 'Saved. Students’ paths now follow this order.'); }
     else if(g('data-newcode')){ if(confirm('Make a new code? The old one stops working.')) patchClass({ new_code: true }, 'lvtCMsg', 'New code made.'); }
     else if(g('data-savename')){ patchClass({ name: document.getElementById('lvtCName').value }, 'lvtCMsg', 'Saved.'); }
@@ -1131,13 +1223,14 @@
   });
   document.addEventListener('change', function(e){
     var t = e.target; if(!B || !document.getElementById('lvtAssign') || !document.getElementById('lvtAssign').contains(t)) return;
+    var openMs = t.closest && t.closest('details[data-ms]'); B.openMs = openMs ? openMs.getAttribute('data-ms') : null;
     if(t.hasAttribute('data-topic')){ readForm(); var id = t.getAttribute('data-topic'); B.topics = t.checked ? B.topics.concat([id]) : B.topics.filter(function(x){ return x !== id; }); drawAssign(); }
     else if(t.hasAttribute('data-unitall')){ readForm(); var u = t.getAttribute('data-unitall'), ids = S.cur.topics.filter(function(x){ return x.unit === u && x.built !== false; }).map(function(x){ return x.id; });
       B.topics = B.topics.filter(function(x){ return ids.indexOf(x) === -1; }).concat(t.checked ? ids : []); drawAssign(); }
-    else if(t.hasAttribute('data-student')){ var s = t.getAttribute('data-student'); B.students = t.checked ? B.students.concat([s]) : B.students.filter(function(x){ return x !== s; }); }
-    else if(t.hasAttribute('data-myq')){ var mq = t.getAttribute('data-myq'); B.questions = t.checked ? B.questions.concat([mq]) : B.questions.filter(function(x){ return x !== mq; }); }
+    else if(t.hasAttribute('data-student')){ readForm(); var s = t.getAttribute('data-student'); B.students = t.checked ? B.students.concat([s]) : B.students.filter(function(x){ return x !== s; }); drawAssign(); }
+    else if(t.hasAttribute('data-myq')){ readForm(); var mq = t.getAttribute('data-myq'); B.questions = t.checked ? B.questions.concat([mq]) : B.questions.filter(function(x){ return x !== mq; }); drawAssign(); }
     else if(t.hasAttribute('data-also')){ readForm(); var ac = t.getAttribute('data-also'); B.also = t.checked ? B.also.concat([ac]) : B.also.filter(function(x){ return x !== ac; }); drawAssign(); }
-    else if(t.id === 'lvtUnit' || t.id === 'lvtFrq' || t.id === 'lvtCount' || t.id === 'lvtDue' || t.id === 'lvtTime' || t.id === 'lvtTarget'){ readForm(); drawAssign(); }
+    else if(t.id === 'lvtUnit' || t.id === 'lvtFrq' || t.id === 'lvtCount' || t.id === 'lvtDue' || t.id === 'lvtTime' || t.id === 'lvtMin' || t.id === 'lvtLate'){ readForm(); drawAssign(); }
   });
   document.addEventListener('submit', function(e){
     var id = e.target.id;
@@ -1171,12 +1264,12 @@
     if(head === 'work') viewWork();
     else if(head === 'a') viewAssignment(rest);
     else if(head === 'assign') viewAssign(rest);
-    else if(head === 'students') viewStudents();
+    else if(head === 'students') viewStudents(rest);
     else if(head === 's') viewStudent(rest);
-    else if(head === 'grades') viewGrades();
-    else if(head === 'settings') viewSettings();
+    else if(head === 'grades') location.replace('#students/gradebook');   // old links: Gradebook and Skills are views of Students now
+    else if(head === 'skills') location.replace(M.isAp(S.rep.class.course) ? '#students/skills' : '#students');
+    else if(head === 'settings') viewSettings(rest);
     else if(head === 'topic') viewTopic(rest);
-    else if(head === 'skills'){ if(M.isAp(S.rep.class.course)) viewSkills(); else { location.replace('#home'); } }
     else if(head === 'live') viewLive();
     else if(head === 'bank') viewBank();
     else if(head === 'print') viewPrint(rest);
@@ -1184,7 +1277,7 @@
   }
   window.addEventListener('hashchange', route);
 
-  function fail(text){ render(frame(band({ issue: 'LevlPrep <i></i> For teachers', m1: 'Not', m2: 'available', hand: text, small: true, ctas: '<a class="btn-chan" href="/teach/">Your classes</a>' }) + '<div style="height:60px"></div>')); }
+  function fail(text){ render(frame(sband({ issue: 'LevlPrep &middot; For teachers', title: 'Not available', lede: esc(text.charAt(0).toUpperCase() + text.slice(1)) + '.', ctas: '<a class="btn-chan" href="/teach/">Your classes</a>' }) + '<div style="height:60px"></div>')); }
   function start(){
     if(!S.user){ viewSignedOut(); return; }
     call('teach_profile').then(function(p){

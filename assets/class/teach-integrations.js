@@ -55,7 +55,8 @@
     var rep = full || (cls ? { class: cls, members: ctx.members || [], assignments: ctx.assignment ? [ctx.assignment] : [] } : null);
     if(rep && !rep.class.id && id){ rep.class = Object.assign({ id: id }, rep.class); }
     return { __n: true, rep: rep, full: !!full, classId: id, demo: !!ctx.demo, role: ctx.role || (cls && cls.role) || 'owner',
-             assignment: ctx.assignment || null, call: ctx.call || null, box: ctx.box || null, where: ctx.where || (ctx.assignment ? 'assignment' : 'settings') };
+             assignment: ctx.assignment || null, call: ctx.call || null, box: ctx.box || null, where: ctx.where || (ctx.assignment ? 'assignment' : 'settings'),
+             part: ctx.part || null, student: ctx.student || null };
   }
   function loadRep(n){
     if(n.full) return Promise.resolve(n.rep);
@@ -146,6 +147,7 @@
     if(!btns) return;
     $('lviGradeBtns').innerHTML = btns;
     box.hidden = false;
+    syncSlots();
   }
 
   /* ---------------------------------------------- free-response scoring */
@@ -216,15 +218,22 @@
 
   /* ============================================================ settings */
 
+  // On each student's page (simplified teacher pages, owner 2026-11-08): one student, so no picker.
   function familiesCard(ctx){
-    var ms = ctx.rep.members.slice().sort(function(a, b){ return String(a.name).localeCompare(b.name); });
-    return '<section class="d5-card lvi" id="lviFam"><p class="lv-kick">Families</p><h3 class="lv-h3">Progress report for a parent or guardian</h3>' +
-      '<p class="d5-mut">One student’s progress in this class: mastery by unit, every assignment and its status, your free-response scores and comments. Print it, or make a link that stops working after the days you pick. No parent email is asked for or stored.</p>' +
-      (ms.length ? '<div class="lvi-row"><label class="lv-field"><span>Student</span><select class="lv-in" id="lviFamWho">' + ms.map(function(m){ return '<option value="' + esc(m.id) + '">' + esc(m.name) + '</option>'; }).join('') + '</select></label>' +
-        '<label class="lv-field"><span>Link works for</span><select class="lv-in" id="lviFamDays"><option value="7">7 days</option><option value="14" selected>14 days</option><option value="30">30 days</option></select></label></div>' +
-        '<div class="lv-btns"><button type="button" class="lv-btn is-sm is-ghost" data-lvi-act="fam-print"' + (ctx.demo ? ' disabled' : '') + '>Open printable report</button><button type="button" class="lv-btn is-sm" data-lvi-act="fam-link"' + (ctx.demo ? ' disabled' : '') + '>Make a share link</button><button type="button" class="lv-btn is-sm is-ghost" data-lvi-act="fam-revoke"' + (ctx.demo ? ' disabled' : '') + '>Turn off this student’s links</button></div>' +
-        '<div id="lviFamOut"></div>' : '<p class="d5-mut">Reports appear once students join.</p>') +
-      '<p class="lv-msg" id="lviFamMsg" role="status" aria-live="polite"></p></section>';
+    var st = ctx.student; if(!st) return '';
+    var off = ctx.demo ? ' disabled' : '';
+    return '<section class="lvi tm-famc" id="lviFam"><p class="d5-lead">Family progress report</p>' +
+      '<p class="d5-mut">Mastery by unit, every assignment and its status, your free-response scores and comments. Print it, or make a link that stops working after the days you pick. No parent email is asked for or stored.</p>' +
+      '<input type="hidden" id="lviFamWho" value="' + esc(st.id) + '">' +
+      '<label class="lv-field" style="margin:12px 0 0;max-width:220px"><span class="tm-sr">Link works for</span><select class="lv-in" id="lviFamDays"><option value="1">Link works 1 day</option><option value="7">Link works 7 days</option><option value="14" selected>Link works 14 days</option><option value="30">Link works 30 days</option></select></label>' +
+      '<div class="lv-btns" style="margin-top:12px"><button type="button" class="lp-btn sm tm-mline" data-lvi-act="fam-print"' + off + '>Print report</button><button type="button" class="lp-btn sm tm-mline" data-lvi-act="fam-link"' + off + '>Make a share link</button><button type="button" class="tm-link" data-lvi-act="fam-revoke"' + off + '>Turn off their links</button></div>' +
+      '<div id="lviFamOut"></div><p class="lv-msg" id="lviFamMsg" role="status" aria-live="polite"></p>' + (ctx.demo ? '<p class="d5-mut lvi-fine"><b>Sample class: nothing is made.</b></p>' : '') + '</section>';
+  }
+  function student(ctx){
+    css();
+    var n = norm(ctx);
+    if(!n.rep || !n.student) return '';
+    return familiesCard(n);
   }
   function googleCard(ctx){
     // Sample class: the card as a linked class shows it, every button off.
@@ -244,11 +253,14 @@
     return '<section class="d5-card lvi"><p class="lv-kick">For your school</p><h3 class="lv-h3">Class Premium, purchase orders and privacy paperwork</h3>' +
       '<div class="lv-btns"><a class="lv-btn is-sm is-ghost" href="/teach/quote.html">Ask for a quote or send a purchase order</a><a class="lv-btn is-sm is-ghost" href="/teach/privacy-agreement.html">Student data privacy and DPA</a></div></section>';
   }
+  // Settings shows one section at a time: part 'connect' (Google Classroom, Canvas and Schoology) or 'school'.
   function settings(ctx){
     css();
     var n = norm(ctx);
     if(!n.rep) return '';
-    return '<div class="lvi-wrap">' + familiesCard(n) + (isOwner(n) ? googleCard(n) + lmsCard() : '') + moreCard() + '</div>';
+    if(n.part === 'school') return '<div class="lvi-wrap">' + moreCard() + '</div>';
+    if(n.part === 'connect') return '<div class="lvi-wrap">' + (isOwner(n) ? googleCard(n) + lmsCard() : '') + '</div>';
+    return '<div class="lvi-wrap">' + (isOwner(n) ? googleCard(n) + lmsCard() : '') + moreCard() + '</div>';
   }
 
   function googleBody(ctx, g){
@@ -409,9 +421,20 @@
     }
   }
 
+  /* The assignment page has a slot for each card (Remind and Send grades open from buttons; free-response scoring
+     sits under the students). Move each card there, and show a button only when its card is there and not hidden. */
+  var SLOTS = { lviRemind: 'lvtSlotRemind', lviGrades: 'lvtSlotGrades', lviFrq: 'lvtSlotFrq' };
+  function place(){
+    Object.keys(SLOTS).forEach(function(k){ var card = $(k), slot = $(SLOTS[k]); if(card && slot && card.parentNode !== slot){ slot.innerHTML = ''; slot.appendChild(card); } });
+    syncSlots();
+  }
+  function syncSlots(){
+    [].forEach.call(document.querySelectorAll('[data-lvt-slot]'), function(d){ var slot = $(d.getAttribute('data-lvt-slot')), card = slot && slot.firstElementChild; d.hidden = !card || card.hidden; });
+  }
   function wire(ctx){
     var n = norm(ctx);
     CUR = n;
+    place();
     if(!wired){
       wired = true;
       document.addEventListener('click', function(e){
@@ -425,6 +448,7 @@
         if(n !== CUR) return;
         var box = n.box || document.querySelector('[data-lvi-pending]');
         if(box) box.innerHTML = assignment(n);
+        place();
         wireRest(n);
       }, function(){ var box = n.box || document.querySelector('[data-lvi-pending]'); if(box) box.innerHTML = ''; });
       return;
@@ -445,5 +469,5 @@
     });
   }
 
-  window.LevlTeachIntegrations = { settings: settings, assignment: assignment, wire: wire, gradeList: function(c, z, f){ return gradeList(norm(c), z, f); } };
+  window.LevlTeachIntegrations = { settings: settings, assignment: assignment, student: student, wire: wire, gradeList: function(c, z, f){ return gradeList(norm(c), z, f); } };
 })();
