@@ -76,6 +76,8 @@
     if (!locked() || freeExamUsed(kind)) return;
     try { window.localStorage.setItem(keyFor(kind), JSON.stringify({ at: Date.now() })); }
     catch (e) { /* private mode: the exam still runs */ }
+    // Counted on the account too, so another browser cannot start a second free one (assets/premium.js).
+    try { if (api() && api().noteFreeExam) api().noteFreeExam(COURSE, kind); } catch (e) { /* the exam still runs */ }
   }
 
   /* ---- whole features ---------------------------------------------------- */

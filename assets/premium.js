@@ -733,6 +733,7 @@
       rows.forEach(function (r) { if (r && r.course && r.expires_at) courses[r.course] = r.expires_at; });
       writeJson(ACCESS_KEY, { userId: uid, courses: courses, syncedAt: Date.now() });
       notify();
+      syncUsage(uid);
       return true;
     });
   }
@@ -777,6 +778,58 @@
 
   /* Counted in this browser, reset at local midnight. Members and courses
      without an allowance get an unlimited quota, so callers never branch. */
+  /* Free limits on the account too, for a signed-in free user (docs/premium-vault.md): the browser count
+     stays the one pages read; this keeps it the larger of browser and account, both ways. */
+  var NREMT_EXAM_KEYS = { exam: 'nremt_free_exam_v1', cat: 'nremt_free_cat_v1' };
+  function signedInAccount() {
+    var a = window.StudyHubAccount;
+    return a && a.rpcData && a.user && a.user() ? a : null;
+  }
+  function usageAdd(course, kind, n) {
+    var a = signedInAccount();
+    if (!a || !COURSES[course]) return;
+    var day = kind === 'q' ? today() : '';
+    a.rpcData('free_usage_add', { p_course: course, p_kind: kind, p_day: day, p_n: n }).then(function (used) {
+      if (kind !== 'q' || typeof used !== 'number') return;
+      var s = readJson(QUOTA_KEY);
+      var mine = s[course] && s[course].day === today() ? s[course].used : 0;
+      if (used > mine) { s[course] = { day: today(), used: used }; writeJson(QUOTA_KEY, s); notify(); }
+    }, function () {});
+  }
+  function nremtFlag(kind) {
+    try { return !!window.localStorage.getItem(NREMT_EXAM_KEYS[kind]); } catch (e) { return false; }
+  }
+  var usageSynced = '';
+  function syncUsage(uid) {
+    var a = signedInAccount();
+    if (!a || usageSynced === uid + '|' + today()) return;
+    usageSynced = uid + '|' + today();
+    a.rpcData('free_usage_get', { p_day: today() }).then(function (m) {
+      if (!m || typeof m !== 'object' || Array.isArray(m)) { usageSynced = ''; return; }
+      var q = readJson(QUOTA_KEY), e = readJson(EXAM_KEY), changed = false;
+      Object.keys(COURSES).forEach(function (c) {
+        if (has(c)) return;
+        var r = m[c] || {};
+        var mine = q[c] && q[c].day === today() ? q[c].used : 0;
+        var theirs = typeof r.q === 'number' ? r.q : 0;
+        if (theirs > mine) { q[c] = { day: today(), used: theirs }; changed = true; }
+        else if (mine > theirs) usageAdd(c, 'q', Math.min(30, mine - theirs));
+        if (r.exam && e[c] !== true) { e[c] = true; changed = true; }
+        else if (!r.exam && e[c] === true) usageAdd(c, 'exam', 1);
+        if (c === 'nremt') {
+          ['exam', 'cat'].forEach(function (k) {
+            var here = nremtFlag(k);
+            if (r[k] && !here) { try { window.localStorage.setItem(NREMT_EXAM_KEYS[k], JSON.stringify({ at: Date.now(), from: 'account' })); changed = true; } catch (x) { /* private mode */ } }
+            else if (!r[k] && here) usageAdd('nremt', k, 1);
+          });
+        }
+      });
+      if (changed) { writeJson(QUOTA_KEY, q); writeJson(EXAM_KEY, e); notify(); }
+    }, function () { usageSynced = ''; });
+  }
+  // NREMT's free exams (premium-gates.js examStarted).
+  function noteFreeExam(course, kind) { usageAdd(course, kind === 'cat' ? 'cat' : 'exam', 1); }
+
   function quota(course) {
     var c = COURSES[course];
     var unlimited = !c || !c.dailyFree || has(course);
@@ -795,6 +848,7 @@
         if (used + n > limit) return false;
         s[course] = { day: today(), used: used + n };
         writeJson(QUOTA_KEY, s);
+        usageAdd(course, 'q', n);
         return true;
       },
     };
@@ -907,6 +961,7 @@
         if (s[course] === true) return false;
         s[course] = true;
         writeJson(EXAM_KEY, s);
+        usageAdd(course, 'exam', 1);
         return true;
       },
     };
@@ -1719,6 +1774,7 @@
     guaranteeText: guaranteeText,
     has: has,
     isFreeChapter: isFreeChapter,
+    noteFreeExam: noteFreeExam,
     gate: gate,
     badge: badge,
     card: card,

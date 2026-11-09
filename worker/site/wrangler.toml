@@ -1,0 +1,17 @@
+# The public site (docs/premium-vault.md). Static files from .deploy/site
+# (scripts/build-deploy.mjs), served free and without a request limit; the
+# small script below runs only when no file matches, to give the same URLs
+# GitHub Pages gave: /bio -> /bio/, /bio/ -> /bio/index.html, /about -> /about.html,
+# and 404.html for anything else.
+name = "levlprep-site"
+main = "index.js"
+compatibility_date = "2025-09-01"
+workers_dev = true
+# levlprep.com moves here at the cutover (docs/premium-vault.md, Cutover).
+# Until then the site is tested on its workers.dev address.
+
+[assets]
+directory = "../../.deploy/site"
+binding = "ASSETS"
+html_handling = "none"
+not_found_handling = "none"

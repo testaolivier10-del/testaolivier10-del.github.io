@@ -20,7 +20,7 @@ const WORD_NUM = /\b(?:twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|one
 
 function walkFiles(dir, out = []) {
   for (const f of readdirSync(dir)) {
-    if (['.git', 'node_modules', 'docs', 'scripts', '.github', '.claude', 'data', 'worker', 'vendor'].includes(f)) continue;
+    if (['.git', 'node_modules', 'docs', 'scripts', '.github', '.claude', 'data', 'worker', 'vendor', '.deploy'].includes(f)) continue;
     const p = join(dir, f);
     if (statSync(p).isDirectory()) walkFiles(p, out);
     else if (f.endsWith('.html')) out.push(p);

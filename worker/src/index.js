@@ -20,6 +20,7 @@ import { umamiProxy } from './umami.js';
 import { MODELS, extractText } from './ai.js';
 import { gradeRoute } from './frq-grade.js';
 import { classApiRoute, classPublicRoute, classPurge, CLASS_PUBLIC_PATHS } from './classes.js';
+import { vaultRoute } from './vault.js';
 import { premiumCheckout, premiumWebhook, premiumRefund, premiumGuarantee, runPassEnding, reconcilePolar, bearerToken, sessionUser } from './premium.js';
 
 // Only these origins may call the Worker. Without this, anyone could point
@@ -34,7 +35,10 @@ const ALLOWED_ORIGINS = [
 const DEV_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000'];
 
 export function allowedOrigins(env) {
-  return env && String(env.ALLOW_LOCALHOST) === 'true' ? ALLOWED_ORIGINS.concat(DEV_ORIGINS) : ALLOWED_ORIGINS;
+  // The site's own preview address on workers.dev (SITE_PREVIEW_ORIGIN, wrangler.toml), so the
+  // new host can be tested end to end before levlprep.com moves to it (docs/premium-vault.md).
+  const base = env && env.SITE_PREVIEW_ORIGIN ? ALLOWED_ORIGINS.concat([String(env.SITE_PREVIEW_ORIGIN)]) : ALLOWED_ORIGINS;
+  return env && String(env.ALLOW_LOCALHOST) === 'true' ? base.concat(DEV_ORIGINS) : base;
 }
 
 /* The per-IP throttle (wrangler.toml, RATE_LIMITER), bucketed per route so a
@@ -276,6 +280,19 @@ export default {
 
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: corsHeaders(origin, env) });
+    }
+
+    /* A Premium lesson from the vault (src/vault.js, docs/premium-vault.md): a GET from the
+       site's own pages only, with the reader's session; the pass is checked inside. */
+    if (path === '/vault') {
+      if (request.method !== 'GET') return reply({ error: 'GET only' }, 405);
+      if (!allowedOrigins(env).includes(origin)) return reply({ error: 'Origin not allowed' }, 403);
+      const limit = async (key) => {
+        if (!env.RATE_LIMITER) return false;
+        const { success } = await env.RATE_LIMITER.limit({ key });
+        return !success;
+      };
+      return vaultRoute(request, env, corsHeaders(origin, env), limit);
     }
 
     /* The way out of the reminder emails, from the footer link and from the

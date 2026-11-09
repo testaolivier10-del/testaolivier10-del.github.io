@@ -17,6 +17,18 @@ routes = [
   { pattern = "api.levlprep.com", custom_domain = true },
 ]
 
+# The Premium vault (src/vault.js, docs/premium-vault.md): the Premium lesson
+# pages the deploy keeps off the public site. run_worker_first so no request
+# can read them except through vaultRoute(), which checks the session and the
+# pass. html_handling none so env.VAULT.fetch returns x.html as it is, with no
+# redirect. Built by scripts/build-deploy.mjs before every deploy.
+[assets]
+directory = "../.deploy/vault"
+binding = "VAULT"
+run_worker_first = true
+html_handling = "none"
+not_found_handling = "none"
+
 # Workers AI. Free accounts get a daily allowance; past it, requests fail and
 # the site falls back to its own answers. No card, no overage.
 [ai]

@@ -178,6 +178,13 @@ Never paste a YouTube iframe into a page.
 `docs/tools-upgrade-2026-10.md` is the status file: the hands-on audit of every tool (`docs/tool-audit-2026-10.md`),
 the fixes for it, and three builds (NREMT exam item types and adaptive exam, ochem synthesis trainer, A&P 3D anatomy).
 
+## Premium vault and the Cloudflare host
+
+`docs/premium-vault.md` is the status file: which lesson pages are vaulted (`scripts/vault/rules.mjs`), the deploy
+build (`scripts/build-deploy.mjs` into `.deploy/`), the stub loader `assets/vault.js`, the Worker route
+`worker/src/vault.js`, the site Worker `worker/site/`, free limits on the server (`2026-11h-free-usage.sql`) and the
+owner's cutover checklist. A new lesson page type must carry its free marker or the deploy fails.
+
 ## Usage rules (save tokens, keep quality)
 
 Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.
