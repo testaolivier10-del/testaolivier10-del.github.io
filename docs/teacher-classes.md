@@ -15,6 +15,31 @@ path card).
 - Sample class without signing in: `/teach/?demo=1` (AP® Biology) and `/teach/?demo=1&course=nremt`; department
   view `/teach/?demo=1&dept=1`.
 
+## Simplified pages (owner 2026-11-08)
+
+Owner asked to simplify the teacher interface while keeping every feature, approved the mockup ("LevlPrep teacher
+pages, simplified", https://claude.ai/artifact/3ojuisZySxXq63uRJpJHk1) and asked for it live. The live pages must look
+and work like that mockup.
+- Inner pages use the course inner tabs' short band (`sband()` in `teach.js`, `.tm-sb`), content pulled up over it
+  (`.tm-body`). Only the signed-out landing keeps the big band (`band()`, `frame(..., true)`).
+- Tabs 7 to 5: Class, Assignments, Students, Live, Settings (+ Assign). Gradebook and AP® skills are views of Students
+  (`#students/gradebook`, `#students/skills`); old `#grades` and `#skills` links redirect.
+- Class home: today list, mastery by unit; rail with Students to check on and Tell the class (posted ones folded).
+  "Where the work stands" and the hero Assign/Gradebook buttons are gone (they repeated the Assignments tab and the
+  tabs). Join code is a small card in the band.
+- One assignment: action row Edit, Remind N students, Send grades, More (Print worksheet, Export CSV, Delete); views
+  Students (with the integrity table and free-response scoring under it), Questions, Topics (`#a/<id>/questions`,
+  `/topics`). `teach-integrations.js` `place()` moves its cards into slots: `#lvtSlotRemind`, `#lvtSlotGrades` (both
+  in drop-down panels; a button shows only when its card is there and not hidden), `#lvtSlotFrq`.
+- Questions (assignment and topic pages) fold to one line: stem, % wrong, flags, the wrong answer most picked.
+- Assign: the student Practice panel's layout (`practice-panel.css`): kind tiles, the kind's settings, a summary with
+  the title and one button. Topics and "your questions" are drop-downs of checkboxes that stay open while picking
+  (`B.openMs`). Every earlier setting is kept.
+- Student page: mastery and assignments, weakest topics and flags, then one card with accommodations, the family
+  progress report (`LevlTeachIntegrations.student(ctx)`, moved here from Settings) and Remove from class.
+- Settings: side menu, one section at a time (`#settings`, `/join`, `/class`, `/people`, `/connect` owner only,
+  `/school`); `settings(ctx)` takes `part: 'connect' | 'school'`.
+
 ## Owner decisions (2026-11-04)
 
 - Teachers free, no verification at launch. Students stay on the free tier with its limits unless the teacher buys
@@ -22,7 +47,7 @@ path card).
 - Pilot AP® Biology; the code works for every course above. v2: "build all of that" (everything competitors have
   or teachers ask for).
 - Teacher sees scores, mastery, completion, last active, misses, flags and the answers picked. No streaks, no minutes.
-- Teacher entry: footer link and a line on Premium; nothing on the homepage.
+- Teacher entry: footer link and a line on Premium; nothing on the homepage (changed 2026-11-04: a "For teachers" header link and a homepage strip).
 - Assignments: practice, review, mastery, exam, free response; required or optional; due dates, late window, chosen
   students. Parents are never emailed; reminders are only sent when the teacher presses Send.
 
