@@ -189,7 +189,9 @@ cron, into Cloudflare KV `levlprep-backups`; nothing for the owner to set up), t
 `docs/premium-vault.md` is the status file: which lesson pages are vaulted (`scripts/vault/rules.mjs`), the deploy
 build (`scripts/build-deploy.mjs` into `.deploy/`), the stub loader `assets/vault.js`, the Worker route
 `worker/src/vault.js`, the site Worker `worker/site/`, free limits on the server (`2026-11h-free-usage.sql`) and the
-owner's cutover checklist. A new lesson page type must carry its free marker or the deploy fails.
+owner's cutover checklist. levlprep.com is served by the Cloudflare site Worker since 2026-11-08 (GitHub Pages is
+only the fallback); the repo is still public (see the status file). A new lesson page type must carry its free marker
+or the deploy fails.
 
 ## Usage rules (save tokens, keep quality)
 
