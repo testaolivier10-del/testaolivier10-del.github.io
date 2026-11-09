@@ -265,7 +265,7 @@
     document.addEventListener('click', function(e){
       var t = e.target.closest && e.target.closest('[data-lvx]'); if(!t) return;
       var a = t.getAttribute('data-lvx');
-      if(a === 'go'){ e.preventDefault(); go(t.getAttribute('data-view'), t.getAttribute('data-sub')); window.scrollTo({ top: 0 }); }
+      if(a === 'go'){ e.preventDefault(); go(t.getAttribute('data-view'), t.getAttribute('data-sub')); }
       else if(a === 'older'){ var k = t.getAttribute('data-key'); st.older[k] = !st.older[k]; render(); }
       else if(a === 'leave'){
         if(!confirm('Leave this class? Your teacher will stop seeing your work in it.')) return;
