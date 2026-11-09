@@ -1,0 +1,26 @@
+{
+ "w1108-01-penny-doubling": {
+  "course": "AP Precalculus",
+  "search_phrase": "penny doubled every day",
+  "text": "Would you take a penny doubled every day for thirty days, or a million dollars today? She grabs the million. Her brother? He takes the penny. On day one he has a cent. Then two. Then four. After two weeks he has about eighty dollars, and she's sure she won. [curious] So how does he end up richer? Every day, his pile grows by as much as he already has. By day twenty, that's about five thousand dollars. Five days later, almost a hundred and seventy thousand. And on day thirty, that one penny is worth over FIVE million. That's exponential growth... it crawls for weeks, then it takes off.",
+  "vo": "Would you take a penny doubled every day for thirty days, or a million dollars today? She grabs the million. Her brother? He takes the penny. On day one he has a cent. Then two. Then four. After two weeks he has about eighty dollars, and she's sure she won. [curious] So how does he end up richer? Every day, his pile grows by as much as he already has. By day twenty, that's about five thousand dollars. Five days later, almost a hundred and seventy thousand. And on day thirty, that one penny is worth over FIVE million. That's exponential growth... it crawls for weeks, then it takes off."
+ },
+ "w1108-02-heat-stroke": {
+  "course": "NREMT",
+  "search_phrase": "heat stroke",
+  "text": "Heat stroke just dropped this runner a hundred meters from the finish line. He's confused, and his skin is burning hot. So does the medical team rush him to the hospital? Not yet. A rectal thermometer reads about a hundred and seven degrees, and every minute it stays that high, his brain and organs take more damage. [serious] So they cool him first, right here, in a tub of ice water up to his neck. Within about fifteen minutes his temperature is dropping fast, and he's starting to make sense again. Once he's down near a hundred and two, he goes to the hospital. COOL first... then transport.",
+  "vo": "Heat stroke just dropped this runner a hundred meters from the finish line. He's confused, and his skin is burning hot. So does the medical team rush him to the hospital? NOT yet. A rectal thermometer reads about a hundred and seven degrees, and every minute it stays that high, his brain and organs take more damage. [serious] So they cool him first, right HERE, in a tub of ice water up to his neck. Within about fifteen minutes his temperature is dropping fast, and he's starting to make sense again. Once he's down near a hundred and two, he goes to the hospital. COOL first... then transport."
+ },
+ "w1108-03-hyperinflation": {
+  "course": "AP Macroeconomics",
+  "search_phrase": "hyperinflation",
+  "text": "This man just got paid, and in hyperinflation, his wife has to spend it the minute she gets it. It's Germany, nineteen twenty three. Wait until afternoon, and that money buys less. A loaf of bread cost a few hundred marks at the start of the year. By November... about two hundred BILLION. [curious] So what happened? The government owed war reparations it couldn't pay, so it printed more and more money to pay its bills. But the country wasn't making any more bread. More money chasing the same bread means each mark buys less. Free practice for this on levlprep dot com.",
+  "vo": "This man just got paid, and in hyperinflation, his wife has to spend it the minute she gets it. It's Germany, nineteen twenty three. Wait until afternoon, and that money buys less. A loaf of bread cost a few hundred marks at the start of the year. By November... about two hundred BILLION. [curious] So what happened? The government owed war reparations it couldn't pay, so it printed more and more money to pay its bills. But the country wasn't making any more bread. More money chasing the same bread means each mark buys less. Free practice for this on levlprep dot com."
+ },
+ "w1108-04-zeno-paradox": {
+  "course": "AP Calculus BC",
+  "search_phrase": "Zeno's paradox",
+  "text": "Zeno's paradox argues this man can never reach that door. First he has to walk halfway. Then half of what's left. Then half of THAT. The halves never run out, so... does he ever get there? Watch. A half. Then a quarter. An eighth. A sixteenth. Each step closes half the gap that's left, so the total gets closer and closer to the whole distance. Infinitely many pieces... and together they add up to EXACTLY the whole way. And the time? Each piece takes half as long to walk, so the times add up to a few ordinary seconds. [warmly] So yes, he gets there. In calculus, that's an infinite series that converges.",
+  "vo": "Zeno's paradox argues this man can never reach that door. First he has to walk halfway. Then half of what's left. Then half of THAT. The halves never run out, so... does he ever get there? Watch. A half. Then a quarter. An eighth. A sixteenth. Each step closes half the gap that's left, so the total gets closer and closer to the whole distance. Infinitely many pieces... and together they add up to EXACTLY the whole way. And the time? Each piece takes half as long to walk, so the times add up to a few ordinary seconds. [warmly] So yes, he gets there. In calculus, that's an infinite series that converges."
+ }
+}
