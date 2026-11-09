@@ -178,6 +178,12 @@ Never paste a YouTube iframe into a page.
 `docs/tools-upgrade-2026-10.md` is the status file: the hands-on audit of every tool (`docs/tool-audit-2026-10.md`),
 the fixes for it, and three builds (NREMT exam item types and adaptive exam, ochem synthesis trainer, A&P 3D anatomy).
 
+## Database backups
+
+`docs/backups.md` is the status file: the nightly encrypted dump with a restore test
+(`.github/workflows/db-backup.yml`, `scripts/backup/run.sh`) into Cloudflare KV `levlprep-backups`, owner setup and
+how to restore.
+
 ## Usage rules (save tokens, keep quality)
 
 Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.
