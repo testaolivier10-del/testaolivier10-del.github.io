@@ -69,8 +69,8 @@ flags through `noteFreeExam`, from `nremt/assets/premium-gates.js`). Tests: `scr
 1. ~~Apply the SQL migration~~ Done 2026-11-08 (applied by Claude with the owner's go-ahead; checked: RLS on, table
    closed to anon and authenticated, the two RPCs granted to authenticated only).
 2. Merge the PR. The deploy then puts the vault on the API Worker and the site on `levlprep-site.<account>.workers.dev`.
-3. Claude: read that address from the deploy log, set `SITE_PREVIEW_ORIGIN` to it in `worker/wrangler.toml`, test a
-   free, a signed-out and a Premium account there.
+3. Done 2026-11-08: deployed; the site is at `https://levlprep-site.testaolivier10.workers.dev` and
+   `SITE_PREVIEW_ORIGIN` is set to it. Owner: sign in there with the emailed code and open a Premium lesson.
 4. **Cutover** (Claude with the owner): in Cloudflare DNS remove the GitHub Pages records for `levlprep.com` and
    `www`, add `routes = [{ pattern = "levlprep.com", custom_domain = true }, { pattern = "www.levlprep.com",
    custom_domain = true }]` to `worker/site/wrangler.toml`, deploy, check the live site, then turn off GitHub Pages.

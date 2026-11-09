@@ -67,6 +67,9 @@ FRQ_GRADER = "owner"
 # non-sensitive (no classroom.profile.emails), so Google needs no app verification. Needs GOOGLE_CLIENT_ID,
 # GOOGLE_CLIENT_SECRET and CLASS_SECRET; without them it stays off on its own. "off" to stop.
 CLASS_GOOGLE = "on"
+# The new site host's test address (worker/site, docs/premium-vault.md), so the Premium vault answers
+# pages served there while levlprep.com still points at GitHub Pages. Remove after the cutover.
+SITE_PREVIEW_ORIGIN = "https://levlprep-site.testaolivier10.workers.dev"
 
 # Premium passes (src/premium.js; setup in README.md, "Premium"). Left
 # commented so nothing changes until Polar is set up: with no product ids,
