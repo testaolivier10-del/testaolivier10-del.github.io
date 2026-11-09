@@ -71,10 +71,19 @@ flags through `noteFreeExam`, from `nremt/assets/premium-gates.js`). Tests: `scr
 2. Merge the PR. The deploy then puts the vault on the API Worker and the site on `levlprep-site.<account>.workers.dev`.
 3. Done 2026-11-08: deployed; the site is at `https://levlprep-site.testaolivier10.workers.dev` and
    `SITE_PREVIEW_ORIGIN` is set to it. Owner: sign in there with the emailed code and open a Premium lesson.
-4. **Cutover** (Claude with the owner): in Cloudflare DNS remove the GitHub Pages records for `levlprep.com` and
+4. **Cutover: done 2026-11-08.** levlprep.com's A records were already proxied; the site Worker has the route
+   `levlprep.com/*` (`worker/site/wrangler.toml`), and a Cloudflare Redirect Rule sends `www.levlprep.com/*` to
+   `levlprep.com` (301, query string kept). Checked in the owner's Chrome: the public copy of a Premium lesson is the
+   stub, the owner's Premium account gets the full lesson through `/vault`, `/bio/data/...` is 404. GitHub Pages is
+   still on and still receives the build, so the way back is to remove the route. Original plan: in Cloudflare DNS remove the GitHub Pages records for `levlprep.com` and
    `www`, add `routes = [{ pattern = "levlprep.com", custom_domain = true }, { pattern = "www.levlprep.com",
    custom_domain = true }]` to `worker/site/wrangler.toml`, deploy, check the live site, then turn off GitHub Pages.
-5. **Make the repo private** (GitHub, Settings, General, Danger zone). Only after the cutover: GitHub Pages stops for
+5. **Not done (2026-11-08): making the repo private.** Measured the month before: about 405 Actions runs, Site checks
+   about 30 billed minutes a run (accessibility 16, metadata 5, unit tests 4, links 3), roughly 9,000 minutes a month.
+   A private repo on the free plan gets 2,000, after which checks and deploys stop until the next month. So the repo
+   stays public until the owner chooses: trim CI hard, pay for more minutes, or move Premium lesson sources out of
+   the public repo. Until then the Premium lesson sources (`<course>/lessons/*.html`, `<course>/data/`) are readable
+   on GitHub, though no longer on the website. Original step: (GitHub, Settings, General, Danger zone). Only after the cutover: GitHub Pages stops for
    a private repo on the free plan. No forks existed on 2026-11-08, so the history goes private with it.
 6. Watch GitHub Actions minutes for a month (2,000 free a month for a private repo); if over, run the browser checks
    only on pull requests.
