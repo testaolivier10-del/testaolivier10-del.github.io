@@ -1,6 +1,7 @@
 # Premium server gating: plan (not built)
 
-Status: plan only, October 2026. Nothing here is implemented. Written for the site audit's Fix-first 3
+Status: superseded by docs/premium-vault.md (2026-11-08), which built the lesson part of this plan. Background only.
+Original status: plan only, October 2026. Written for the site audit's Fix-first 3
 ("later, serve Premium banks and lessons from the Worker after checking the pass").
 
 ## The problem

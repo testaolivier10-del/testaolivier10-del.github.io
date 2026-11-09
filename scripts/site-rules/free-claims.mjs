@@ -25,7 +25,7 @@ const BANNED = [
   [/\bteaching material (is|stays) free/i, 'notes and textbook pages are free; lessons outside the early chapters are not'],
 ];
 
-const SKIP_DIRS = new Set(['.git', 'node_modules', 'docs', 'scripts', '.github', '.claude', 'data']);
+const SKIP_DIRS = new Set(['.git', 'node_modules', 'docs', 'scripts', '.github', '.claude', 'data', '.deploy']); // .deploy: the deploy build
 const ALLOW_FILES = new Set(['changelog.html']);
 
 function files(dir, root, out = []) {

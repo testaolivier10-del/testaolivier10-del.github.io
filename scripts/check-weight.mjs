@@ -195,7 +195,9 @@ const SHELL_BUDGETS = [
      every course practice page loads it; measured 346.7. */
   /* 346.9 -> 347.1 (cram plan to Home, 2026-11-06): site-chrome.js lights Home on the cram page; measured 346.9. */
   /* 347.1 -> 347.6 (sounds and dark mode in the username menu, owner 2026-11-07): account.js and theme.css. */
-  ['site', 347.6],
+  /* 347.6 -> 348.4 (free limits on the account, owner 2026-11-08, docs/premium-vault.md): premium.js reports and
+     reads back the daily questions and free exams of a signed-in free user. Measured 348.1 KB. */
+  ['site', 348.4],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
