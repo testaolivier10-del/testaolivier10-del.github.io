@@ -48,7 +48,14 @@ simple = { limit = 12, period = 60 }
 # UTC happened to be chosen. Each tick only reads rows whose time has actually
 # come, so an idle tick costs one indexed query.
 [triggers]
-crons = ["*/15 * * * *"]
+# The second: the nightly database backup (src/backup.js), in steps every 20 minutes from
+# 10:00 to 12:40 UTC, each continuing where the last stopped. Must match BACKUP_CRON.
+crons = ["*/15 * * * *", "*/20 10-12 * * *"]
+
+# The private store for those backups (docs/backups.md): KV namespace levlprep-backups.
+[[kv_namespaces]]
+binding = "BACKUPS"
+id = "03af2c257b6f414abc9b89e2b3da2510"
 
 # Reminders need the site's own database, since push_subscriptions is locked
 # the same way every other table is (RLS on, no policies) and the browser can

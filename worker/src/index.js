@@ -21,6 +21,7 @@ import { MODELS, extractText } from './ai.js';
 import { gradeRoute } from './frq-grade.js';
 import { classApiRoute, classPublicRoute, classPurge, CLASS_PUBLIC_PATHS } from './classes.js';
 import { vaultRoute } from './vault.js';
+import { runBackup, BACKUP_CRON } from './backup.js';
 import { premiumCheckout, premiumWebhook, premiumRefund, premiumGuarantee, runPassEnding, reconcilePolar, bearerToken, sessionUser } from './premium.js';
 
 // Only these origins may call the Worker. Without this, anyone could point
@@ -255,6 +256,12 @@ export default {
      See src/reminders.js for why the browser decides everything and this only
      delivers. */
   async scheduled(event, env, ctx) {
+    // The nightly database backup has its own cron and its own run, so it never shares the
+    // 50-request allowance of a reminders tick (src/backup.js, docs/backups.md).
+    if (event && event.cron === BACKUP_CRON) {
+      ctx.waitUntil(runBackup(env, event.scheduledTime || Date.now()).then((r) => console.log('backup', JSON.stringify(r))));
+      return;
+    }
     // Both channels on the same tick, and independently: an email provider
     // that is down must not stop the push reminders, and vice versa.
     // Premium rides the same tick: the pass-ending email every time, and the
