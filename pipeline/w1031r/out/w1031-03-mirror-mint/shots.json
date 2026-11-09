@@ -1,0 +1,225 @@
+{
+ "video": "w1031-03-mirror-mint",
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0,
+   "t1": 4.02,
+   "what": "kitchen wide: the cook lifts a spearmint sprig to his nose; scent curls into two small mirror image carvones",
+   "motion_source": "keyed arm solved per frame onto the target (people kit, one skinned body); code scent and molecules",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": "near hand grips the stem (stem drawn behind the fingers); far hand rests flat on the worktop; scene life: tree, curtain, steam, dust in the window beam, hanging pans"
+  },
+  {
+   "id": "s2",
+   "t0": 4.02,
+   "t1": 8.51,
+   "what": "close on his face and the sprig; scent gathers into (R) carvone",
+   "motion_source": "same rig and world, camera push; RDKit geometry",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s3",
+   "t0": 8.51,
+   "t1": 13.81,
+   "what": "close on the seeded rye loaf; caraway seeds light; (S) carvone rises",
+   "motion_source": "code art, camera push",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "na",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s4",
+   "t0": 13.81,
+   "t1": 17.16,
+   "what": "the two carvones big across a glass mirror pane over the blurred kitchen; reflection lines",
+   "motion_source": "exact reflection of the R model",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "na",
+    "scene": "yes"
+   },
+   "notes": "depth: blurred kitchen behind"
+  },
+  {
+   "id": "s5",
+   "t0": 17.16,
+   "t1": 23.41,
+   "what": "his own hands from his view: left on right, turned over; thumbs never match",
+   "motion_source": "keyed hands with forearms from the bottom of frame; the arm carries the hand",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": "hands drawn as a close up (the side view body cannot show palms), matching skin and sleeves"
+  },
+  {
+   "id": "s6",
+   "t0": 23.41,
+   "t1": 25.46,
+   "what": "the spearmint form slides onto the caraway form and turns to the best fit; side group mismatched (red)",
+   "motion_source": "scipy best fit proper rotation (slerp)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "na",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s7",
+   "t0": 25.46,
+   "t1": 28.2,
+   "what": "push toward his nose",
+   "motion_source": "camera push on the rig",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s8",
+   "t0": 28.2,
+   "t1": 33.18,
+   "what": "lens from his nose into the olfactory epithelium; two different receptors; each carvone docks into its own and fires",
+   "motion_source": "code scene; lens and inset (face keeps moving in the inset)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "na",
+    "scene": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s9",
+   "t0": 33.18,
+   "t1": 37.07,
+   "what": "inset grows back to the kitchen; mint at his nose, then he lowers it, grips a rye slice and lifts it to his nose",
+   "motion_source": "arm solved per frame onto the slice; slice moves only once gripped",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": "slice bottom edge pinched in the fist"
+  },
+  {
+   "id": "s10",
+   "t0": 37.07,
+   "t1": 41.72,
+   "what": "pull back to the kitchen wide; end line",
+   "motion_source": "camera pull",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": ""
+  }
+ ]
+}

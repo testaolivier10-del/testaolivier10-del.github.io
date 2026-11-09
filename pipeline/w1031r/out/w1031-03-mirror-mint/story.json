@@ -1,0 +1,180 @@
+{
+ "id": "w1031-03-mirror-mint",
+ "format": "short",
+ "duration": 41.72,
+ "answer": {
+  "kind": "place",
+  "what": "which mirror image is which: the (R) form at the sprig smells of mint, its mirror image at the rye slice smells of rye bread"
+ },
+ "long_reason": "The story needs three premises before the payoff (both smells are carvone; the two are mirror images that cannot be stacked; the receptors are chiral too) plus the spoken CTA line of this run; cutting any premise breaks the deduction (video standard 5d). Spoken part 39.8 s after a 5 percent speed up.",
+ "beats": [
+  {
+   "t0": 0,
+   "t1": 4.02,
+   "kind": "question",
+   "person": true,
+   "anchor": true,
+   "diagram": false,
+   "changes": [
+    0,
+    0.7,
+    1.6,
+    2.3,
+    2.9
+   ],
+   "what": "the cook lifts a spearmint sprig to his nose behind a seeded rye loaf; green and amber scent rise and curl into two small mirror image molecules on \"mirror image molecules\"",
+   "source": ""
+  },
+  {
+   "t0": 4.02,
+   "t1": 8.51,
+   "kind": "explain",
+   "person": true,
+   "anchor": true,
+   "diagram": true,
+   "changes": [
+    4.02,
+    5.3,
+    6.1,
+    7.2,
+    7.6
+   ],
+   "what": "zoom cut to his face and the sprig; scent rises on \"smell\" and gathers into an (R) carvone ball and stick beside his face on \"carvone\"",
+   "source": "LibreTexts Stereoisomerism and Smell; Wikipedia Carvone; PMC11107518"
+  },
+  {
+   "t0": 8.51,
+   "t1": 13.81,
+   "kind": "explain",
+   "person": false,
+   "anchor": true,
+   "diagram": true,
+   "changes": [
+    8.51,
+    10.3,
+    11.0,
+    12.3,
+    12.7
+   ],
+   "what": "zoom cut to the loaf; caraway seeds light on \"caraway seeds\"; scent rises into the mirror image (S) carvone on \"full of carvone\"",
+   "source": "LibreTexts Stereoisomerism and Smell; Wikipedia Carvone; PMC11107518"
+  },
+  {
+   "t0": 13.81,
+   "t1": 17.16,
+   "kind": "explain",
+   "person": false,
+   "anchor": true,
+   "diagram": true,
+   "changes": [
+    13.81,
+    14.3,
+    15.1,
+    15.9,
+    16.6
+   ],
+   "what": "both molecules big across a glass mirror pane; atoms pulse, bonds pulse, reflection lines join each atom to its twin on \"flipped\"",
+   "source": "LibreTexts Stereoisomerism and Smell; Wikipedia Carvone; PMC11107518"
+  },
+  {
+   "t0": 17.16,
+   "t1": 23.41,
+   "kind": "explain",
+   "person": true,
+   "anchor": false,
+   "diagram": false,
+   "changes": [
+    17.16,
+    17.5,
+    18.4,
+    19.1,
+    20.1,
+    21.1,
+    21.8,
+    22.1
+   ],
+   "what": "his own hands from his view, thumbs out: LEFT and RIGHT; the left hand moves onto the right (thumbs do not match), turns over (palm faces away), red on \"never lines up\"",
+   "source": "LibreTexts Stereoisomerism and Smell; Wikipedia Carvone; PMC11107518"
+  },
+  {
+   "t0": 23.41,
+   "t1": 25.46,
+   "kind": "answer",
+   "person": false,
+   "anchor": true,
+   "diagram": true,
+   "changes": [
+    23.41,
+    24.3,
+    24.5
+   ],
+   "what": "the spearmint molecule slides onto the caraway one and turns to the best fit; the side group at the stereocentre does not match (red): CHIRAL",
+   "source": "LibreTexts Stereoisomerism and Smell; Wikipedia Carvone; PMC11107518"
+  },
+  {
+   "t0": 25.46,
+   "t1": 28.2,
+   "kind": "question",
+   "person": true,
+   "anchor": false,
+   "diagram": false,
+   "changes": [
+    25.46,
+    26.6,
+    27.3
+   ],
+   "what": "close on his face and the sprig, slow push toward his nose",
+   "source": ""
+  },
+  {
+   "t0": 28.2,
+   "t1": 33.18,
+   "kind": "explain",
+   "person": true,
+   "anchor": false,
+   "diagram": true,
+   "changes": [
+    28.2,
+    28.8,
+    30.0,
+    31.3,
+    32.1,
+    32.5
+   ],
+   "what": "a lens opens from his nose (his face stays in an inset): two receptor proteins; pockets light on \"chiral too\"; spearmint docks in one (green signal), caraway in the other (amber)",
+   "source": "LibreTexts Stereoisomerism and Smell; Wikipedia Carvone; PMC11107518"
+  },
+  {
+   "t0": 33.18,
+   "t1": 37.07,
+   "kind": "payoff",
+   "person": true,
+   "anchor": true,
+   "diagram": false,
+   "changes": [
+    33.18,
+    33.8,
+    34.7,
+    35.2,
+    36.0
+   ],
+   "what": "the inset grows back to the kitchen: mint at his nose (green); he lowers it, picks up a rye slice and smells it (amber)",
+   "source": "LibreTexts Stereoisomerism and Smell; Wikipedia Carvone; PMC11107518"
+  },
+  {
+   "t0": 37.07,
+   "t1": 41.72,
+   "kind": "cta",
+   "person": true,
+   "anchor": true,
+   "diagram": false,
+   "changes": [
+    37.07,
+    38.5,
+    40.2
+   ],
+   "what": "pull back to the wide kitchen; levlprep.com end line",
+   "source": ""
+  }
+ ]
+}
