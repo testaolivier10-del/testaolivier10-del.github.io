@@ -1,0 +1,127 @@
+{
+ "id": "w1031-01-cold-heart",
+ "format": "short",
+ "duration": 41.3,
+ "answer": {
+  "kind": "action",
+  "what": "keep a severely cold patient flat and handle him gently: slide him, never yank him"
+ },
+ "long_reason": "Premises first (he went through the ice, the cold heart is twitchy, a jolt can cause VF), then the rough pull stopped and the careful slide, then the steady beat: every beat must be shown for a cold viewer to follow; 41 s at a natural eleven_v4 pace with no speed up.",
+ "beats": [
+  {
+   "t0": 0,
+   "t1": 2.4,
+   "kind": "mistake",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    0.0,
+    0.8,
+    1.6
+   ],
+   "what": "a rescuer kneeling at an ice hole hauls a man up by the chest in rough yanks",
+   "source": ""
+  },
+  {
+   "t0": 2.4,
+   "t1": 4.8,
+   "kind": "result",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    2.5,
+    3.2,
+    4.0
+   ],
+   "what": "on the second yank his head snaps and a red warning pulse flashes from his chest",
+   "source": "WMS: rough handling risks VF"
+  },
+  {
+   "t0": 4.8,
+   "t1": 9.28,
+   "kind": "result",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    4.8,
+    6.0,
+    7.2,
+    8.4
+   ],
+   "what": "the broken ice and black water around him; he is limp and pale; breath vapour, headlamps, camera pushing in",
+   "source": ""
+  },
+  {
+   "t0": 9.28,
+   "t1": 18.784,
+   "kind": "explain",
+   "person": true,
+   "anchor": true,
+   "diagram": true,
+   "changes": [
+    9.28,
+    10.48,
+    11.68,
+    12.88,
+    14.08,
+    15.28,
+    16.48,
+    17.68
+   ],
+   "what": "a lens opens from his chest: a slow cold heart with an extra beat on twitchy; IF JOLTED, VF: the wall ripples, no squeeze, chaotic trace",
+   "source": "WMS hypothermia guidelines 2019 (AAFP 2020 summary); AHA"
+  },
+  {
+   "t0": 18.784,
+   "t1": 25.253,
+   "kind": "result",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    18.78,
+    19.98,
+    21.18,
+    22.38,
+    23.58,
+    24.78
+   ],
+   "what": "he yanks hard; the second rescuer walks up and puts her hand on his shoulder; he eases the man back down",
+   "source": ""
+  },
+  {
+   "t0": 25.253,
+   "t1": 33.12,
+   "kind": "answer",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    25.25,
+    26.75,
+    28.25,
+    29.75,
+    31.25,
+    32.75
+   ],
+   "what": "the man lies flat, wrapped and strapped on the sled; the rescuers slide it slowly toward shore on ropes",
+   "source": "WMS: horizontal position, gentle handling"
+  },
+  {
+   "t0": 33.12,
+   "t1": 41.3,
+   "kind": "payoff",
+   "person": true,
+   "anchor": true,
+   "diagram": true,
+   "changes": [
+    33.12,
+    34.62,
+    36.12,
+    37.62,
+    39.12,
+    40.62
+   ],
+   "what": "the lens opens from his chest on the sled: slow, steady beat and a slow regular trace",
+   "source": "WMS"
+  }
+ ]
+}

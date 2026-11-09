@@ -1,0 +1,124 @@
+## Section grades
+
+**S1 Hook and haul (0–4.8 s): 5/10.**
+- **Why:** The title is strong, but the picture doesn't show a rough lift.
+  - Both faces sit forehead to forehead, so it reads as a hug or a tender carry.
+  - The man's head rises about 35 px in the first second, then sits still until the yank ring pulses at 3.5–4.2 s, which barely moves him.
+  - The hook says "too roughly" and the frame never shows roughness.
+- **Fixes:**
+  - Make the pull violent: lean back, the man's torso jerks up and out of the hole, and the sled slides under the rescuer's knees.
+  - Add a big splash and a camera shake.
+  - Separate the two heads so they aren't nose to nose.
+  - Add a red "WRONG" tag or a red flash on the yank.
+
+**S2 Through the ice (4.8–9.3): 4/10.**
+- **Why:** This is the same wide frame as S1 for 4.5 s. Only the title changes.
+  - "He went through the ice… too long" has nothing to show. There's no fall, no cracking ice, no clock or cold cue.
+  - It breaks the "no static frame over about 2 s" rule.
+- **Fixes:**
+  - Cut to a brief flashback: a dark figure breaking through the ice, with ripples and a shiver or frost build-up on his parka.
+  - Or run a slow push-in on the man while a "minutes in water" clock ticks.
+  - Add a camera drift either way.
+
+**S3 Heart lens and VF (9.3–18.8): 7/10.** This is the best section.
+- **Why:** The lens opens cleanly, the slow beat and twitch read, and the "IF JOLTED" tag makes the VF cause legible.
+- **Problems:**
+  - From 12.0 s the lens is a 340 px disc stuck over the rescuers' torsos, and the scene below it is dead for about 6 s.
+  - The VF trace at 15.4–18 s is an almost regular zigzag. It looks like flutter or VT, not chaotic VF. It needs irregular amplitude and rate.
+  - The heart "quiver" is mostly a few cracks drawn on a normal heart. Add real wobble or squirm.
+  - The trace strip and chip text are small. The chip is about 12 px tall on the 360 px contact sheet, which is about 36 px at full size.
+  - The 9.28 s "opening" lens is a tiny dot floating above the rescuer's helmet, not clearly from his chest.
+- **Fixes:** Anchor the lens beam visibly to the man's sternum, make the VF trace irregular, enlarge the trace and chip, and let the haul keep moving behind the lens.
+
+**S4 Rough pull and her hand on his shoulder (18.8–25.1): 5/10.**
+- **Why:** Cause and effect fail here.
+  - The yank at about 21–22 s produces no visible rise.
+  - The man's posture is nearly identical from 19 to 25 s, so "he eases him back down" isn't shown.
+  - The second rescuer walks in at 22.0–22.8 s, then pops at 23.03 s into a bent, legless orange blob behind the first rescuer. That is a pose swap with no transition.
+  - Her face reads male, and the narration says "her".
+  - The hand lands on the first rescuer's shoulder, hidden behind his body, so the moment of contact is small.
+  - The tow rope vanishes when she arrives.
+  - The zoom at 25.05 s is the clearest frame in the section, and it is one frame long.
+- **Fixes:**
+  - Show a real yank: the man lifts, the water slaps, and a red flash marks the jolt.
+  - Show her walk, kneel and touch in one continuous move.
+  - Use a clear side view of her gloved hand pressing his shoulder.
+  - Show him easing back down, with the man sinking back a few px.
+  - Hold the zoom on the touch for 1 s or more.
+  - Give her a female face and hair.
+
+**S5 The sled slide (25.1–33.1): 6.5/10.**
+- **Why:** The scene is clean and readable. The man is flat, wrapped and strapped, with two ropes. The parallax, the stride and the ambulance drift all work.
+- **Problems:**
+  - It's a hard cut to a new place with no hole, and the moon appears for the first time. The man's move from hole to sled is never shown.
+  - The man is only a tiny gray head at the sled's left end. At phone size he is barely a person.
+  - From about 31 s the camera push-in crops the red rescuer at the left edge and the orange rescuer at the right edge. Their faces are cut off at 32–34 s.
+  - Nothing shows the sled sliding: no runner shadow, no snow spray, no trail line.
+  - The red rescuer's face points back toward the sled while he walks away from it. Say so with a glance back, or turn him forward.
+  - The drifting blue rectangle chip in the foreground (about x 130, y 548 on the contact sheet) looks like a glitch.
+- **Fixes:**
+  - Add a one-beat bridge from the hole to the sled.
+  - Make the man's face bigger and warmer, with a blanket line.
+  - Pull the camera back so both rescuers stay in frame.
+  - Add runner shadow and snow spray.
+  - Remove the stray rectangle.
+
+**S6 Payoff lens and end (33.1–41.3): 6/10.**
+- **Why:** The slow steady beat is correct and calm, which closes the idea.
+- **Problems:**
+  - The title "SLOW BUT STEADY / ALL THE WAY TO SHORE" appears at 33.07 s, but the words come at 36.8 s.
+  - The last 3.3 s is nearly a hold on one frame, with only the heart beating.
+  - The shore is never shown, so "all the way to shore" is a promise with no picture.
+  - The lens right edge touches the orange helmet at about 34 s.
+  - The ECG trace is faint.
+  - The ending is a plain card, with no resolution.
+- **Fixes:**
+  - Pull back and show the ambulance and shore at the end.
+  - Show the rescuers reaching the shore line and stopping, then fade the lens out.
+  - Retime the title to the voice.
+  - Add a closing beat at 38–41 s such as a sunrise glow, a wave or a paramedic hand-off.
+
+## Whole-video grades
+
+| Dimension | Grade | Note |
+|---|---|---|
+| Hook | 5 | Strong words, flat picture. The rough lift is never shown. |
+| Story clarity for a cold viewer | 5.5 | The chain is clear in words. The visuals skip two links: why the pull is dangerous, and how the man gets from the hole to the sled. |
+| Spectacle and payoff | 5 | There is no big moment. The jolt, the VF and the rescue are all small. |
+| One idea landing | 6.5 | "Gentle, flat" lands through the narration and the S5 pairing. The reason the first haul was wrong isn't shown. |
+| Ending | 5 | It's a hold on a card, with no shore and no resolution. |
+| Visual interest and polish | 5 | S1–S2 are static. S3 is a held lens over a static scene. S5 is good. The foreground has blurry blob smudges and the bottom 25–30% is empty. |
+| People | 6.5 | The body is continuous and the style is clean. The pose pop at 23 s is a seam, the faces touch at 0–4 s, the lower body is ghosted at the waterline, and the hunched orange rescuer has no legs. |
+| Hand contact and cause | 5.5 | The kneeling rescuer's glove is on the parka. The man doesn't rise when he pulls, and he doesn't ease down when she touches. The sled does move while they walk. |
+| Scene life | 5.5 | Falling snow and the headlamp beams add life. The wide shots feel static otherwise. |
+| Phone readability | 7 | The titles and captions are good. The lens chips, the ECG trace and the watermark are small. The lens collides with the helmet at 34 s, and the rescuers are clipped at the frame edges at 32–34 s. |
+| Consistency across the video | 5.5 | S5–S6 look polished and S1–S2 feel thin. The moon only appears from S5. |
+| Accuracy of visuals | 6.5 | The ice-water setting, the flat sled and the slow heart are right. The VF trace is too regular, and the Osborn/J wave is dropped. The pull-by-chest technique has no clear problem shown. |
+| Would I watch this for fun | 5.5 | It's pleasant and clean, but nothing makes it a must-watch. |
+
+## Versus old_sheet.png
+The new version is clearly better in three places.
+- The sled slide is now a real moving scene with ropes, a flat wrapped patient and walking rescuers.
+- The heart lens is bigger and cleaner.
+- The titles are more consistent.
+
+It is not clearly better in the first half. The old version had three people in one frame, a large labeled ECG monitor, and more visual density. The new S1–S2 is thinner and less dynamic.
+
+## Concrete flaws
+
+| Time | Screen position | Flaw |
+|---|---|---|
+| 0–4.8 | centre | The faces touch and the haul looks gentle, not rough. |
+| 4.8–9.3 | whole frame | A static duplicate of S1. |
+| 9.28 | above the helmet | The lens opens as a tiny dot, not from the chest. |
+| 12–18.8 | lens centre | A 6 s hold over a dead scene, and the VF trace is too regular. |
+| 21–22 | the man | There is no visible rise on the yank. |
+| 22.8–23.03 | left of the first rescuer | The orange rescuer pops from a standing walk into a hunched blob. |
+| 23–25 | behind the first rescuer's shoulder | Her hand is hidden, and the hand-on-shoulder beat is tiny. |
+| 25.05→25.15 | whole frame | A single frame of zoom, then a hard cut. |
+| 25–41 | below the captions | A blue rectangle chip, the empty lower third and blurry blob shapes. |
+| 31–35 | both edges | The red and orange rescuers are cropped, and the lens at about 34 s touches the orange helmet. |
+| 33.07 | the top title | Early by 3.7 s against the voice. |
+| 38–41.3 | whole frame | A static hold with no shore. |
+
+**OVERALL 5.5/10, MIN SECTION 4/10.** It does not ship.

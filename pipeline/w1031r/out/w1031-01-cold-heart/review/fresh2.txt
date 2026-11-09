@@ -1,0 +1,80 @@
+**S1 hook and haul (0–4.8 s): 5/10.** The title is strong, but the picture doesn't show a rough lift.
+- At 0.25–4.8 s the man rises about 20 px, then stays put while the rescuer holds a calm kneel with a hand on his chest or upper arm. It reads as a gentle hug or a tender carry.
+- The rescuer's face is nose to nose with the man's. It looks like a kiss or a consolation, not a haul.
+- A red ring pulses on the contact point at 2.5–4.5 s. It is a helpful cue but looks like a UI overlay.
+- Fixes: lean the rescuer's whole body back with straining shoulders and a visibly jerky rise. Show the man's legs or lower body breaking the surface, with water sheeting off. Turn the faces away from each other. Add a camera punch-in on the yank.
+
+**S2 through the ice (4.8–9.3 s): 4/10.**
+- The shot is almost frozen for 4.5 s. The only changes are snow on the man's helmet and a slow camera push.
+- Nothing shows "through the ice" or "too long". There is no cracked ice, no fall, no clock or time cue, and no shivering. The man is already sitting calmly at the hole.
+- Fixes: cut a quick flashback of the break-through. Add a shiver or tremor on the man and breath fog. Add a visible time cue.
+
+**S3 heart lens and VF (9.3–18.8 s): 6/10.**
+- The lens itself is good. It has a clear heart with a green slow trace, then a red jittering trace. The "IF JOLTED" chip works as a conditional, and the lens beam coming from his chest is a nice touch.
+- The world is dead for about 9.5 s. The two figures hold exactly the same pose from 9 to 18.5 s. The only motion is snow and the lens contents.
+- The VF is under-sold. The heart still looks like a normal heart with slight wobble, and the trace is small and low in the lens.
+- The chip text glitches at about 18.0 s: "FIBRI!.LATION" has a rendering artifact. This is a text defect.
+- The chip is a long, small string at about 12 px cap height on a 1080 px frame. It is hard to read on a phone.
+- The caption pill sits on the man's lap and the watermark sits on the rescuer's boot. Both cover the action.
+- Fixes: enlarge the lens and the trace. Make the VF flash red with a screen shake. Give the man a small shudder. Break the 9 s hold into two or three camera moves, such as a push into the lens and a cutaway to the trace. Fix the glyph glitch.
+
+**S4 rough pull and her hand on his shoulder (18.8–25.1 s): 5/10.**
+- The yank at about 21 s works. The man tips backward with a splash and the rescuer is clearly pulling.
+- The second rescuer walks in, but the sequence is crowded. At 23–25 s she stacks directly behind the first rescuer, so the two overlap into one orange-and-red blob.
+- Her hand on his shoulder (23.3–24.8 s) is hidden. In the hands sheet I cannot see a hand land on the shoulder, only a dark glove near his arm. This is the key beat of the story and it does not read.
+- The zoom to 25.05 s is a huge crop on her face and shows no contact and no easing down. The man is cut off at the bottom.
+- "He eases the man back down" is missing. The man just ends up in the water, and there is no clear slow-lowering motion.
+- Fixes: make her enter from the far side so she doesn't overlap. Do a clean close-up of her hand on his shoulder, then show a slow, visible lowering and a relaxed man. Avoid the face-only zoom.
+
+**S5 the sled slide (25.1–33.1 s): 6/10.**
+- The scene is clean and readable. The man is wrapped in blue and strapped, the sled is orange, and the two rescuers each hold a rope.
+- The sled does not visibly travel relative to its surroundings. The camera tracks it, so only the background drifts.
+- The red rescuer's hand and the walk cycle are stiff, with a jerky weight shift. The rope visibly attaches to the sled nose and to her hand, which is good.
+- The red rescuer is cropped at the left edge at 26–27 s.
+- The leap from the hole scene to a fully wrapped man on the sled has no explanation, since 25.1–25.25 s is a hard cut. The man was not seen being moved onto the sled.
+- Flat, mostly empty ice for 8 s gives low visual interest.
+- Fixes: add a sled-load transition. Add ice texture or parallax, such as cracks, reeds or footprints. Add a camera dolly, and show breath fog.
+
+**S6 payoff lens and end (33.1–41.3 s): 5/10.**
+- The lens shows a green slow-steady trace, but the trace is tiny and unspectacular. Slow-steady vs chaotic is the payoff, and nothing contrasts it with the earlier jitter, such as a side-by-side with the earlier VF.
+- The "SLOW, STEADY BEAT" chip overlaps the ambulance at 36–38 s and merges with the lens rim.
+- The lens covers the man's face and the sled's front at 34–38 s.
+- At 38.5–41.3 s the camera pulls back and the pair walk away. It is a mild, gentle ending with no punchline and no reinforcement of the one idea. The last 1.3 s is an end card on a near-empty frame.
+- Fixes: add a closing graphic recap, such as "flat + gentle = steady beat", and move the chip clear of the ambulance. Make the trace larger.
+
+**Whole-video grades**
+
+| Dimension | Grade | Note |
+|---|---|---|
+| Hook | 5/10 | The title is good, but the visual doesn't show roughness. Nothing happens in the first 2 s. |
+| Story clarity for a cold viewer | 6/10 | The beats are understandable from the narration. The visuals don't explain "through the ice", and the wrong-vs-right contrast is weak. |
+| Spectacle and payoff | 4/10 | There is no big moment. The VF is understated and the sled slide is flat. |
+| The one idea landing | 6/10 | The narration carries it, but the visuals only partly support it. |
+| Ending | 4/10 | It trails off with a quiet walk-away and a plain end card. |
+| Visual interest and polish | 5/10 | There is a clean flat style, a moon, a forest and snow. Yet 9–18 s is a static hold, and 1–9 s is nearly static. Camera work is only slow drifts plus one abrupt zoom. |
+| People (continuous body, no seams) | 6/10 | The red rescuer's body is solid. Two rescuers overlapping at 23–25 s blur together, the man's body is mostly hidden (arms missing) in the hole, and the walk cycles are stiff. |
+| HAND CONTACT AND CAUSE | 5/10 | The kneeling rescuer's hand is on the parka, which is good, but the gesture reads as holding, not hauling. The shoulder hand is hidden. The man rises on his own early on. The sled hand-to-rope grips are fine. |
+| Scene life | 4/10 | Only snow and a small breath. No ambient movement such as ambulance lights, wind, ice cracks, or secondary characters. |
+| Phone readability | 6/10 | The titles are large and clear. The lens chips are small, the "SLOW, STEADY BEAT" chip overlaps the ambulance, the VF chip has a glitch, and the caption pill covers the action. |
+| Consistency across the video | 5/10 | The first half has close, busy framing. The sled half is wide and empty. The man's mood is inconsistent. |
+| Accuracy | 7/10 | The heart anatomy and slow-then-VF trace are fine. Flat, gentle handling and the 2-rope sled are correct. The "kneeling rescuer hauls by the chest" is shown calmly. There is no real tension at the ice hole. |
+| Would I watch this for fun | 5/10 | It's competent explainer fare, but too static. |
+| **Comparison to old version** | | The new one has a stronger style, better title cards and an actual lens. The old one had clearer group action and a more dramatic hole, with three people interacting. The new one is more polished but less dramatic. |
+
+**OVERALL 5/10, MIN SECTION 4/10** (S2).
+
+**Concrete flaws, with time and screen position**
+- 0.25–4.8 s, center: the rescuer-to-man faces touch nose to nose, which reads as a hug.
+- 5–9 s, whole frame: nothing moves.
+- 9–18.5 s, whole frame: the identical pose is held for 9.5 s.
+- About 18.0 s, VF chip, top center: "FIBRI!.LATION" glyph glitch.
+- 12–18 s, lens chips: the text is too small for a phone.
+- 23–25 s, center: two rescuers overlap. Her hand on his shoulder is not visible.
+- 25.05 s, whole frame: hard cut to a face close-up with no contact shown.
+- 25.15 s, whole frame: hard cut to the sled scene, with the man already wrapped.
+- 26–27 s, left edge: the red rescuer is cropped.
+- 36–38 s, top left: the chip overlaps the ambulance.
+- 34–38 s, center: the lens covers the sled's front and the man's face.
+- 39.5–41.3 s, whole frame: low-energy pull-back to an empty end card.
+
+I haven't opened the motion strips or `sheet_motion_2fps_2.png`, so the late-video motion judgements rest on the stills and the hands sheets.

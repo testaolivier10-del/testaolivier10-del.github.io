@@ -1,0 +1,124 @@
+{
+ "positive_global_styles": [
+  "cinematic documentary score",
+  "felt piano",
+  "warm strings",
+  "soft synth pads",
+  "cold winter night atmosphere",
+  "restrained, intimate",
+  "high quality mix",
+  "no percussion kit"
+ ],
+ "negative_global_styles": [
+  "vocals",
+  "choir",
+  "lyrics",
+  "drum kit",
+  "EDM",
+  "trailer brass",
+  "corporate pop",
+  "comedy",
+  "lo-fi"
+ ],
+ "sections": [
+  {
+   "section_name": "rough lift",
+   "positive_local_styles": [
+    "tense A minor",
+    "low sustained cellos",
+    "high cold piano notes",
+    "uneasy pulse"
+   ],
+   "negative_local_styles": [
+    "drums"
+   ],
+   "duration_ms": 4700,
+   "lines": []
+  },
+  {
+   "section_name": "through the ice",
+   "positive_local_styles": [
+    "sparse and cold",
+    "glassy celesta and soft piano",
+    "low string drone",
+    "stillness"
+   ],
+   "negative_local_styles": [
+    "drums"
+   ],
+   "duration_ms": 4000,
+   "lines": []
+  },
+  {
+   "section_name": "the cold heart",
+   "positive_local_styles": [
+    "very quiet",
+    "slow low pulse like a slow heartbeat",
+    "soft pads",
+    "suspense"
+   ],
+   "negative_local_styles": [
+    "drums"
+   ],
+   "duration_ms": 3100,
+   "lines": []
+  },
+  {
+   "section_name": "the jolt",
+   "positive_local_styles": [
+    "dark tension",
+    "trembling string tremolo",
+    "dissonant cluster",
+    "unstable"
+   ],
+   "negative_local_styles": [
+    "big hits",
+    "drums"
+   ],
+   "duration_ms": 6900,
+   "lines": []
+  },
+  {
+   "section_name": "the rough pull",
+   "positive_local_styles": [
+    "tension rising then easing",
+    "low strings",
+    "a held breath",
+    "softening at the end"
+   ],
+   "negative_local_styles": [
+    "drums"
+   ],
+   "duration_ms": 6300,
+   "lines": []
+  },
+  {
+   "section_name": "careful slide",
+   "positive_local_styles": [
+    "warm turn to C major",
+    "gentle felt piano melody",
+    "soft strings",
+    "slow and tender"
+   ],
+   "negative_local_styles": [
+    "drums"
+   ],
+   "duration_ms": 8000,
+   "lines": []
+  },
+  {
+   "section_name": "slow but steady",
+   "positive_local_styles": [
+    "warm resolution in C major",
+    "piano melody returns",
+    "strings swell gently then settle",
+    "soft final sustained chord"
+   ],
+   "negative_local_styles": [
+    "drums"
+   ],
+   "duration_ms": 8300,
+   "lines": []
+  }
+ ]
+}

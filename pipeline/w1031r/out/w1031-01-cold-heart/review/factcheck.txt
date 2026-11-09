@@ -1,0 +1,29 @@
+**Fact check (35 s EMT short, cold heart)**
+
+1. **TRUE.** The cooled myocardium is irritable and prone to dysrhythmias, and "twitchy" is acceptable shorthand. The AAFP summary of the WMS guideline says to handle gently "to prevent dysrhythmia." https://www.aafp.org/pubs/afp/issues/2020/1101/p571.html
+
+2. **NEEDS REWORDING.** The teaching is standard, but the evidence is weak. The WMS and AHA say to handle gently, yet some protocols and reviews note that rough-handling VF is not well demonstrated. The wording "one rough jolt *can* tip the heart into VF" is fine. Avoid "will" or "always." The on-screen "IF JOLTED" label already handles this. https://www.columbusco.org/sites/default/files/uploads/emergency/2025%20Protocols/te-5-hypothermia-protocol-2025.pdf
+
+3. **TRUE.** VF is chaotic electrical activity, and the ventricles quiver without pumping. This is standard AHA/NREMT content.
+
+4. **TRUE, with a caveat.** WMS says to keep the patient horizontal and handle gently. The sources I found tie horizontal positioning to *moderate* hypothermia and afterdrop. It also applies to severe, but "slowly" isn't a stated guideline, only "gently." Fine for the script. https://www.aafp.org/pubs/afp/issues/2020/1101/p571.html
+
+5. **MISLEADING.** Gentle handling lowers the risk but does not guarantee a "steady" rhythm. The severely cold heart is still at risk of arrhythmia, and it is not "protected." Rephrase to "gives the heart the best chance to stay slow and regular" or "lowers the risk."
+
+6. **TRUE.** Bradycardia is expected. Osborn (J) waves are a classic ECG finding, though not universal and more typical at lower temperatures. Say "may show." I could not source this from the search results, so it rests on standard emergency medicine texts.
+
+**Motion list**
+- **a.** Fine. Hypothermia is usually an *immersion* case, and the victim should not be allowed to struggle.
+- **b.** Hauling him up by the armpits in a vertical lift is a reasonable "wrong" example. It should be clearly labeled as wrong. The suit and lying position are good ice-rescue practice. Rescuers should spread their weight, so keep the rescuer prone or on a sled, not kneeling upright.
+- **c.** Realistic. A J wave after the QRS is correct. A single early beat is acceptable. Don't present it as a diagnostic finding.
+- **d.** OK because it is labeled "IF JOLTED." Make sure VF looks chaotic and has no identifiable QRS.
+- **e.** Horizontal and wrapped is correct. Insulating or vapor-barrier wrap and covering the head would be better. Strapped onto a sled is fine. One concern is that a rope-pulled sled should not jerk. Show smooth, slow motion.
+- **f.** Fine, but use hedged wording per item 5. A "regular" ECG is only an expectation, not a promise.
+
+VERDICT: FIX
+- Item 5: change "keeps its steady rhythm" to "lowers the risk of VF" or similar.
+- Item 2: keep "can" or "may." Never say "will."
+- Item 6: use "may show" for the J wave.
+- Optionally cover the head and add an insulating wrap in e.
+
+Sources: [AAFP, WMS guideline summary](https://www.aafp.org/pubs/afp/issues/2020/1101/p571.html), [Columbus protocol](https://www.columbusco.org/sites/default/files/uploads/emergency/2025%20Protocols/te-5-hypothermia-protocol-2025.pdf)

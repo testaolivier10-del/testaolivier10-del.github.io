@@ -1,0 +1,115 @@
+{
+ "video": "w1031-01-cold-heart",
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0,
+   "t1": 9.28,
+   "what": "night lake, ice hole: RED kneels on the sled and hauls the man up by the chest; ORANGE holds his tether",
+   "motion_source": "procedural (IK: wrists solved onto the parka every frame; one lift value moves both)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes",
+    "contact": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s2",
+   "t0": 9.28,
+   "t1": 18.78,
+   "what": "the heart lens over the scene, tied to his chest: cold beat, extra beat, IF JOLTED VF",
+   "motion_source": "procedural heart (lib/heart.py) and ECG",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes",
+    "contact": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s3",
+   "t0": 18.78,
+   "t1": 25.1,
+   "what": "hard yank; ORANGE walks two planted steps and lays her hand on his shoulder; he eases the man down",
+   "motion_source": "procedural (foot locked walk, IK hands)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes",
+    "contact": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s4",
+   "t0": 25.1,
+   "t1": 33.12,
+   "what": "zoom cut: flat on the sled, slid slowly on two ropes that end in the rescuers' hands",
+   "motion_source": "procedural (foot locked walk, sled moves at walking speed)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes",
+    "contact": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s5",
+   "t0": 33.12,
+   "t1": 41.3,
+   "what": "the lens from his chest on the sled: slow steady beat",
+   "motion_source": "procedural heart and ECG",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes",
+    "contact": "yes"
+   },
+   "notes": ""
+  }
+ ]
+}
