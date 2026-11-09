@@ -10,7 +10,7 @@ from kit import P, SP, blur, smooth, lerp, mix, smooth_closed
 
 SKIN, SKIN_SH, SKIN_HI = (226, 168, 128), (198, 142, 106), (240, 190, 152)
 SHIRT, SHIRT_SH = (70, 96, 136), (52, 72, 106)
-CUFF = (214, 206, 190)
+CUFF = (104, 132, 172)      # the rolled shirt sleeve (same fabric as the cook's)
 # fingers in the right hand's palm view: (base x, base y, length, width, splay deg); thumb listed separately
 FINGERS = [(-50, -150, 92, 30, -9), (-17, -160, 116, 33, -3), (17, -160, 126, 34, 1), (51, -150, 112, 33, 6)]
 THUMB = ((62, -40), 110, 38, 52)

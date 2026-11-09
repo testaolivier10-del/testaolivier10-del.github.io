@@ -22,7 +22,26 @@ G, AMB = (110, 214, 130), (255, 178, 92)
 
 # ------------------------------------------------------------------ the cook: one skinned body
 SHIRT, SHIRT_SH, SHIRT_HI = (70, 96, 136), (52, 72, 106), (98, 126, 166)
-COOK = PP.Person(0.92, cap=False, palette={A2.OL: SHIRT, A2.OL_SH: SHIRT_SH, A2.OL_HI: SHIRT_HI, A2.CUFF: (214, 206, 190),
+ROLL, ROLL_SH, ROLL_HI = (104, 132, 172), (60, 84, 120), (150, 176, 212)
+
+
+class CookPerson(PP.Person):
+    """the cook: the people kit body, with his rolled shirt sleeve drawn as folded shirt fabric (two fold creases and a
+    lit fold edge, skinned to the arm like the rest of the figure) instead of a flat cuff"""
+    def _build_rest(self):
+        L = super()._build_rest()
+        J = self.J0
+        stroke = lambda path, w: (lambda d: (SP((0, 0, 0), w).getFillPath(path, d), d)[1])(skia.Path())
+        for s in 'fn':
+            uf = self.frame(*J['uarm_' + s])
+            for y, col, w, al in ((160, ROLL_SH, 5, 220), (171, ROLL_HI, 4, 170), (198, ROLL_SH, 4, 190), (210, ROLL_HI, 3, 150)):
+                p = skia.Path(); p.moveTo(*uf(-70, y)); p.quadTo(*uf(0, y + 8), *uf(68, y))
+                L.append(dict(grp='far' if s == 'f' else 'arm', col=col, kind='detail', a=al, bones=['uarm_' + s, 'farm_' + s],
+                              rings=self._bind(stroke(p, w), ['uarm_' + s, 'farm_' + s], 12), limb='arm'))
+        return L
+
+
+COOK = CookPerson(0.92, cap=False, palette={A2.OL: SHIRT, A2.OL_SH: SHIRT_SH, A2.OL_HI: SHIRT_HI, A2.CUFF: ROLL,
                  A2.BELT: (236, 230, 216), A2.BELT_SH: (206, 198, 182), (150, 120, 80): (236, 230, 216),
                  A2.SKIN: (226, 168, 128), A2.SKIN_SH: (202, 146, 110)})
 CX, GROUND = 300, 1842
@@ -293,19 +312,24 @@ def foreground(c, t):
 
 
 # ------------------------------------------------------------------ the cook's poses
-def cook_pose(t, mint_at_nose=1.0, far_target=None, br=0.0):
-    """returns (kw, near hand target). mint_at_nose 0..1 moves the near hand from chest height to the nose."""
+def cook_pose(t, near_tgt, far_tgt, smile=0.4):
+    """the cook with the near wrist on near_tgt and the far wrist on far_tgt (arms solved per frame)"""
     kw = dict(BASE); kw['neck'] = 4 + 2 * math.sin(t * 0.6)
     kw['lean'] = 4 + 1.2 * math.sin(t * 1.1)          # breathing sway
-    n = nose_pt(kw)
-    low = (n[0] + 150, n[1] + 330)
-    hi = (n[0] + 70, n[1] + 112)                     # the fist just under and in front of the nose
-    tgt = (lerp(low[0], hi[0], mint_at_nose), lerp(low[1], hi[1], mint_at_nose))
-    ua, el, _ = _arm_to(kw, 'n', tgt); kw['uarm_n'] = ua; kw['elbow_n'] = el; kw['hand_n'] = 'grip'
+    ua, el, _ = _arm_to(kw, 'n', near_tgt); kw['uarm_n'] = ua; kw['elbow_n'] = el; kw['hand_n'] = 'grip'
     kw['wrist_n'] = -30
-    if far_target is not None:
-        uf, ef, _ = _arm_to(kw, 'f', far_target); kw['uarm_f'] = uf; kw['elbow_f'] = ef
+    uf, ef, _ = _arm_to(kw, 'f', far_tgt); kw['uarm_f'] = uf; kw['elbow_f'] = ef; kw['hand_f'] = 'grip'
+    kw['smile'] = smile
     return kw
+
+
+NOSE0 = None
+
+
+def nose0():
+    global NOSE0
+    if NOSE0 is None: NOSE0 = nose_pt(dict(BASE))
+    return NOSE0
 
 
 def draw_cook(c, kw):
@@ -335,3 +359,26 @@ def held(kw, side='n'):
     o, d = J['hand_' + side]; f = COOK.frame(o, d)
     p = COOK.canvas_pt(ps, f(4, 44))
     return p, d
+
+
+def slice_in_hand(c, kw, t, hl=0.0, s=0.72):
+    """the rye slice held up by his far hand: the slice's lower crust sits in the hand, the fingers wrap behind it (their
+    tips show past the far edge) and the thumb lies across the front of the crust, as a real hand holds a slice"""
+    p, d = held(kw, 'f')
+    sk = mix(COOK.pc(A2.SKIN), (24, 26, 34), 0.12); sh = mix(COOK.pc(A2.SKIN_SH), (24, 26, 34), 0.12)
+    bx, by = p[0] + 4, p[1] + 34                   # bottom centre of the slice, low in the hand
+    # finger tips curling round the far edge, behind the slice
+    for k in range(3):
+        fx, fy = bx + 40 * s + 10, by - (34 + k * 22) * s
+        c.drawRoundRect(skia.Rect(fx - 16, fy - 10, fx + 10, fy + 10), 10, 10, P(sh))
+    slice_(c, bx, by, -6, s, hl=hl, lying=False)
+    # the thumb across the front of the crust (from the heel of the hand up onto the slice)
+    th0 = (bx - 50 * s, by - 2); th1 = (bx - 14 * s, by - 30 * s)
+    q = skia.Path(); q.moveTo(*th0); q.lineTo(*th1)
+    c.drawPath(q, SP(sk, 24))
+    c.drawCircle(*th1, 12, P(sk))
+    c.drawPath(q, SP(sh, 7, 120))
+    c.drawRoundRect(skia.Rect(th1[0] - 6, th1[1] - 9, th1[0] + 7, th1[1] + 4), 5, 5, P(mix(sk, (255, 236, 226), 0.5)))
+    # the heel of the hand under the crust
+    c.drawOval(skia.Rect(bx - 52 * s - 14, by - 18, bx + 30 * s, by + 22), P(sk))
+    c.drawOval(skia.Rect(bx - 52 * s - 14, by + 2, bx + 30 * s, by + 22), P(sh))

@@ -119,7 +119,7 @@ class Short:
         if self.series: lpk.series_tag(c, self.series)
         # titles hard switch: each holds until the next starts (no crossfade overlap)
         for i, (a, lines) in enumerate(self.titles):
-            b = self.titles[i + 1][0] if i + 1 < len(self.titles) else self.t_end
+            b = self.titles[i + 1][0] if i + 1 < len(self.titles) else self.dur + 1
             if a <= t < b:
                 _title_hard(c, lines, t, a)
         if t < self.t_end:
@@ -127,7 +127,7 @@ class Short:
             c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(40, 1368, 72 + ww, 1414), 20, 20), P((5, 12, 26), 150))
             L.watermark(c)
         self.cap.draw(c, t)
-        if t > self.t_end: lpk.end_line(c, t, self.t_end, y=1560)
+        if t > self.t_end: lpk.end_line(c, t, self.t_end, y=1680)
         return s
 
 

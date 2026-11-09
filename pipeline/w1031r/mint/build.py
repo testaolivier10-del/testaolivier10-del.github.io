@@ -57,15 +57,16 @@ T_TURNS = at('turns'); T_NEVER = at('never'); T_CHEM = at('chemists'); T_KY1 = a
 T_SO = at('so'); T_NOSE = at('nose'); T_REC = at('receptors'); T_KY2 = at('kyral', 2); T_EACH = at('each')
 T_FITS = at('fits'); T_ONE3 = at('one', 3); T_MINT2 = at('mint', 2); T_ITS2 = at('its', 2); T_RYE3 = at('rye', 3)
 T_FREE = at('free')
-T_END = WD.end() + 0.45
-DUR = round(T_END + 1.5, 2)
+DUR = round(WD.end() + 0.5, 2)       # the tail trimmed to 0.5 s after the CTA
+T_END = DUR - 1.5                     # levlprep.com end line over the last 1.5 s
 
 C1 = T_TAKE - 0.06; C2 = T_AND2 - 0.06; C3 = T_SAME - 0.06; C4 = T_LIKE - 0.06; C5 = T_CHEM - 0.06; C6 = T_SO - 0.06
 LENS0 = T_REC - 0.45; LENS1 = T_ONE3 - 0.12
 CUTS = [C1, C2, C3, C4, C5, C6]
 
 TITLES = [
-    (-0.5, [[('MIRROR IMAGE', Y)], [('MOLECULES', Wt)]]),
+    (-0.5, [[('SAME', Wt), (' MOLECULE?', Y)]]),
+    (T_MIRROR - 0.12, [[('MIRROR IMAGE', Y)], [('MOLECULES', Wt)]]),
     (C1, [[('SPEARMINT', GT)]]),
     (T_CARV1 - 0.1, [[('SPEARMINT', GT)], [('= CARVONE', Wt)]]),
     (C2, [[('RYE BREAD', AT)]]),
@@ -141,54 +142,45 @@ def rising(c, t, x, y, col, seed, h=260, a=1.0):
 
 # ------------------------------------------------------------------ the cook over time (one body, actions that connect)
 def cook_state(t):
-    m = 0.18 + 0.82 * ease_io(t / 0.75)
-    m = lerp(m, 0.15, ease_io((t - T_ITS2) / 0.6))
-    rest = (470, 1236)
-    sl = A.SLICE_W
-    nose = A.nose_pt(dict(A.BASE))
-    lift = (nose[0] + 70, nose[1] + 140)
-    r0 = T_ITS2 + 0.05; g0 = r0 + 0.42; l1 = T_RYE3 - 0.05
-    if t < r0: far = rest; phase = 'rest'
-    elif t < g0: far = (lerp(rest[0], sl[0], ease_io((t - r0) / (g0 - r0))), lerp(rest[1], sl[1] - 6, ease_io((t - r0) / (g0 - r0)))); phase = 'reach'
-    else:
-        u = ease_io((t - g0) / (l1 - g0)); far = (lerp(sl[0], lift[0], u), lerp(sl[1] - 6, lift[1], u)); phase = 'lift'
-    kw = A.cook_pose(t, m, far)
-    kw['hand_f'] = 'grip' if phase == 'lift' else ('flat' if phase == 'rest' else 'grip')
-    return kw, phase, far, m
-
+    """mint in his near hand, a slice of rye in his far hand from frame zero (the two smells side by side). He brings
+    the mint to his nose on "Take the spearmint"; in the payoff he lowers it and lifts the rye to his nose instead."""
+    n = A.nose0()
+    mint_low = (n[0] + 175, n[1] + 255); mint_nose = (n[0] + 70, n[1] + 112)
+    rye_low = (n[0] + 64, n[1] + 250); rye_nose = (n[0] + 74, n[1] + 128)
+    lift0 = ease_io(t / 0.6)                                    # frame zero: both hands rise into view
+    mint_low = (mint_low[0], mint_low[1] + 60 * (1 - lift0)); rye_low = (rye_low[0], rye_low[1] + 50 * (1 - lift0))
+    m = ease_io((t - (T_TAKE + 0.05)) / 0.7) * (1 - ease_io((t - T_ITS2) / 0.6))
+    r = ease_io((t - (T_ITS2 + 0.15)) / 0.75)
+    near = (lerp(mint_low[0], mint_nose[0], m), lerp(mint_low[1], mint_nose[1], m))
+    far = (lerp(rye_low[0], rye_nose[0], r), lerp(rye_low[1], rye_nose[1], r))
+    smile = 0.4 + 0.6 * ease_io((t - (T_FREE - 0.2)) / 1.2)
+    kw = A.cook_pose(t, near, far, smile)
+    return kw, r, far, m
 
 def kitchen(c, t, z, tx, ty, mol_small=0.0, glow_g=0.0, glow_a=0.0, seed_hl=0.0, wisps=True):
     c.save(); c.translate(540, 960); c.scale(z, z); c.translate(-tx, -ty)
     A.room(c, t); A.teapot(c, t)
-    kw, phase, far, m = cook_state(t)
+    kw, r, far, m = cook_state(t)
     ps = A.draw_cook(c, kw)
     A.counter(c, t)
     A.loaf(c, t, hl=seed_hl)
     A.knife(c); A.mint_glass(c, t)
-    # the slice: lying on the worktop until his far hand grips it, then carried by the hand (face toward us)
-    if phase == 'lift':
-        p, d = A.held(kw, 'f')
-        u = smooth((t - (T_ITS2 + 0.47)) / 0.5)
-        A.slice_(c, p[0] + 6, p[1] + lerp(8, -12, u), lerp(0, -8, u), lerp(0.9, 0.72, u), hl=glow_a * 0.6, lying=u < 0.25)   # its bottom edge pinched in the fist
-        A.hand_over(c, ps, 'f')
-    else:
-        A.slice_(c, *A.SLICE_W, 0.0, 0.9)
-        if phase == 'reach': A.hand_over(c, ps, 'f')
+    # the rye slice in his far hand: crust in the hand, fingers wrapped behind, thumb across the front
+    A.slice_in_hand(c, kw, t, hl=glow_a * 0.6)
     # the sprig in his near hand: the stem passes behind his fingers
     p, d = A.held(kw, 'n')
-    ang = lerp(-15, 18, smooth((0.6 - m) / 0.4)) if m < 0.6 else -15
+    ang = lerp(18, -15, m)
     A.sprig(c, p[0], p[1], ang, t, 0.85, glow=glow_g)
     A.hand_over(c, ps, 'n')
     if wisps:
-        sp = A.held(kw, 'n')[0]
-        rising(c, t, sp[0] - 20, sp[1] - 120, G, 1, 200, 0.9)
-        rising(c, t, A.LOAF[0] + 40, A.LOAF[1] - 70, AMB, 2, 220, 0.9)
-    if glow_a > 0.01 and phase == 'lift':
+        rising(c, t, p[0] - 10, p[1] - 120, G, 1, 200, 0.9)
         q = A.held(kw, 'f')[0]
-        c.drawCircle(q[0], q[1] - 40, 110, P(AMB, 90 * glow_a, MaskFilter=blur(40), BlendMode=skia.BlendMode.kScreen))
+        rising(c, t, q[0], q[1] - 60, AMB, 2, 200, 0.9)
+    if glow_a > 0.01:
+        q = A.held(kw, 'f')[0]
+        c.drawCircle(q[0], q[1] - 30, 110, P((255, 196, 90), 110 * glow_a, MaskFilter=blur(40), BlendMode=skia.BlendMode.kScreen))
     c.restore()
     return kw
-
 
 def blurred_kitchen(c, t, r=22, dark=0.35, z=1.25):
     c.saveLayer(None, skia.Paint(ImageFilter=skia.ImageFilters.Blur(r, r)))
@@ -203,25 +195,30 @@ def to_screen(z, tx, ty, x, y):
 
 # ------------------------------------------------------------------ shots
 def shot1(c, t):
+    """frame zero: mint in one hand, rye in the other; their scents rise and become two mirror image carvones (in
+    under a second) across a dashed mirror line: the same molecule?"""
     u = t / C1
-    z = lerp(1.06, 1.14, ease_io(u)); tx, ty = lerp(560, 600, u), lerp(1000, 980, u)
-    kitchen(c, t, z, tx, ty)
-    # scent curls into two small mirror image molecules across a dashed line on "mirror image molecules"
-    k = smooth((t - (T_MIRROR - 0.5)) / 1.1)
-    mx = 760
-    gx, gy = to_screen(z, tx, ty, 690, 830); ax, ay = to_screen(z, tx, ty, 930, 830)
-    sp = to_screen(z, tx, ty, 560, 700); lf = to_screen(z, tx, ty, A.LOAF[0] + 40, A.LOAF[1] - 80)
-    wisp(c, t, sp[0], sp[1], gx, gy, k, G, 3)
-    wisp(c, t, lf[0], lf[1], ax, ay, k, AMB, 4)
-    ma = smooth((t - T_MIRROR - 0.25) / 0.5)
+    z = lerp(1.25, 1.33, ease_io(u)); tx, ty = lerp(640, 650, u), lerp(940, 930, u)
+    kitchen(c, t, z, tx, ty, wisps=False)
+    kw = cook_state(t)[0]
+    sp = to_screen(z, tx, ty, *A.held(kw, 'n')[0]); rp = to_screen(z, tx, ty, *A.held(kw, 'f')[0])
+    gx, gy = to_screen(z, tx, ty, 960, 690); ax, ay = to_screen(z, tx, ty, 720, 690)
+    mx = (gx + ax) / 2
+    k = smooth((t - 0.05) / 0.7)
+    wisp(c, t, sp[0], sp[1] - 120, gx, gy, k, G, 3)
+    wisp(c, t, rp[0], rp[1] - 60, ax, ay, k, AMB, 4)
+    rising(c, t, sp[0] - 10, sp[1] - 130, G, 1, 160, 0.8)
+    rising(c, t, rp[0], rp[1] - 70, AMB, 2, 160, 0.8)
+    ma = smooth((t - 0.3) / 0.45)
     if ma > 0.01:
-        sc = 40 * z * (0.7 + 0.3 * ma)
-        pair(c, gx, gy, sc, (gx + ax) / 2, t, ma, ma, roll=0.2 * math.sin(t * 0.8))
-        sx = (gx + ax) / 2
-        for j in range(9):
-            y = gy - 150 + j * 34
-            c.drawLine(sx, y, sx, y + 18, SP((255, 255, 255), 4, 170 * ma))
-
+        sc = 38 * z * (0.75 + 0.25 * ma)
+        pulse = math.exp(-((t - T_MIRROR - 0.2) / 0.35) ** 2)
+        pair(c, gx, gy, sc, mx, t, ma, ma, pa=pulse, roll=0.15 * math.sin(t * 0.8))
+        for j in range(11):
+            y = gy - 190 + j * 36
+            c.drawLine(mx, y, mx, y + 20, SP((255, 255, 255), 4 + 3 * pulse, (150 + 100 * pulse) * ma))
+        L.chip(c, 'SPEARMINT', gx, gy + 190, G, 34, ma)
+        L.chip(c, 'RYE', ax, ay + 190, AMB, 34, ma)
 
 def shot2(c, t):
     u = (t - C1) / (C2 - C1)
@@ -289,8 +286,8 @@ def shot4(c, t):
                 xa = lerp(x0, x1, j / n); xb = lerp(x0, x1, (j + 0.6) / n)
                 if abs((xa + xb) / 2 - 540) > 540 * fl: continue
                 c.drawLine(xa, y0, xb, y1 if False else y0, SP((255, 240, 180), 3, 150 * fl))
-    L.chip(c, 'SPEARMINT', 290, 1225, G, 38, 1.0)
-    L.chip(c, 'CARAWAY', 790, 1225, AMB, 38, 1.0)
+    L.chip(c, 'SPEARMINT', 290, 1265, G, 38, 1.0)
+    L.chip(c, 'CARAWAY', 790, 1265, AMB, 38, 1.0)
     c.restore()
 
 
@@ -376,24 +373,68 @@ def nose_screen(t):
     return to_screen(z, tx, ty, *n)
 
 
-INSET = (955, 1250, 100)
+INSET = (540, 1292, 64)
+
+
+# two different receptors; each pocket carved from the carvone form it fits, docked in different orientations
+DSC = 60
+DOCK_R = proj(BASE, 285, 770, DSC)
+DOCK_S = proj(MIRR @ M.rot(0.0, 0.0, 0.32).T, 795, 760, DSC)
+REC_A = N.Receptor(285, 760, [(-215, 380), (-232, 140), (-216, 10), (-180, -20), (180, -20), (214, 10), (226, 160), (210, 380)],
+                   (150, 120, 206), (116, 88, 170), DOCK_R, DSC)
+REC_B = N.Receptor(795, 752, [(-205, 380), (-222, 60), (-200, 0), (-120, -16), (150, -14), (222, 30), (236, 200), (214, 380)],
+                   (96, 162, 196), (70, 128, 162), DOCK_S, DSC)
+DOCK_S3 = MIRR @ M.rot(0.0, 0.0, 0.32).T
+T_WRONG0 = LENS0 + 0.65                 # they swap pockets and fail ("...inside it are chiral too")
+T_WRONG1 = T_WRONG0 + 0.95
+T_BACK = T_KY2 + 0.85                   # each goes back to its own pocket
+T_DOCK = T_EACH + 0.55
+
+
+def _mol_at(which, t):
+    """where each carvone is: (screen points, glow amount, clash atoms)"""
+    float_ = {0: (285, 600), 1: (795, 600)}
+    own = {0: (285, 770), 1: (795, 760)}
+    other = {0: (795, 760), 1: (285, 770)}
+    fx, fy = float_[which]; fx += 18 * math.sin(t * 0.9 + which * 2); fy += 12 * math.sin(t * 1.2 + which)
+    go = ease_io((t - T_WRONG0) / 0.8)                       # across to the wrong pocket
+    down = ease_io((t - T_WRONG0 - 0.75) / 0.35)
+    back = ease_io((t - T_BACK) / 0.6)                       # back over its own
+    dock = ease_io((t - T_DOCK + 0.55) / 0.55)
+    ox, oy = other[which]; sx, sy = own[which]
+    stop = oy - 150 + 8 * math.sin(max(0, t - T_WRONG0 - 1.1) * 14) * math.exp(-max(0, t - T_WRONG0 - 1.1) * 4)
+    x = lerp(lerp(fx, ox, go), sx, back)
+    y = lerp(lerp(fy - 40 * math.sin(math.pi * go) * (1 if which == 0 else -1), stop, down), lerp(fy, sy, dock), back)
+    base3 = BASE if which == 0 else DOCK_S3
+    pts = proj(base3, x, y, DSC) if which == 0 else proj(DOCK_S3, x, y, DSC)
+    clash = []
+    if down > 0.5 and back < 0.5:
+        rec = REC_B if which == 0 else REC_A
+        test = pts.copy(); test[:, 1] += (oy - stop)          # where the atoms would be if it went all the way in
+        clash = rec.solid_hits(test)
+    return pts, clash, dock * (t > T_DOCK - 0.05)
 
 
 def receptor_shot(c, t):
-    N.scene(c, t, glow=(smooth((t - T_EACH - 0.75) / 0.3), smooth((t - T_FITS - 0.2) / 0.3)),
-            open_hl=smooth((t - T_KY2) / 0.3) * (1 - smooth((t - T_EACH) / 0.4)))
-    # the two carvones drift in the mucus, then each docks into its own receptor
-    for i, (base, col, dk0, x0) in enumerate(((BASE, G, T_EACH, 250), (MIRR, AMB, T_EACH + 0.4, 690))):
-        d = ease_io((t - dk0) / 0.75)
-        fx, fy = x0 + 40 * math.sin(t * 0.8 + i * 2), 660 + 30 * math.sin(t * 1.1 + i)
-        dx, dy = N.dock_pt(i)
-        x, y = lerp(fx, dx, d), lerp(fy, dy, d)
-        roll = (1 - d) * 0.6 * math.sin(t * 0.9 + i * 1.7) + (0.3 if i == 0 else -0.3)
-        pp = proj(base @ M.rot(0.0, roll).T, x, y, 50)
-        M.draw(c, pp, 50, smooth((t - LENS0 - 0.3) / 0.4), col, 0.8)
-        L.chip(c, 'SPEARMINT' if i == 0 else 'CARAWAY', x, y - 150, col, 34, smooth((t - LENS0 - 0.4) / 0.3) * (1 - 0.0 * d))
-    L.chip(c, 'SMELL RECEPTORS', 540, 1290, (200, 180, 255), 38, smooth((t - T_REC) / 0.3))
-
+    ga = smooth((t - T_DOCK) / 0.3), smooth((t - T_DOCK - 0.25) / 0.3)
+    N.backdrop(c, t, (REC_A, REC_B), glow=ga)
+    hl = smooth((t - T_KY2 - 0.1) / 0.3) * (1 - smooth((t - T_DOCK) / 0.5))
+    REC_A.draw(c, t, ga[0], G, hl); REC_B.draw(c, t, ga[1], AMB, hl)
+    ma = smooth((t - LENS0 - 0.2) / 0.4)
+    fail = smooth((t - T_WRONG0 - 1.05) / 0.2) * (1 - smooth((t - T_BACK) / 0.25))
+    for which, col in ((1, AMB), (0, G)):
+        pts, clash, dk = _mol_at(which, t)
+        M.draw(c, pts, DSC, ma, col, 0.8 * ma)
+        if fail > 0.01:
+            for k in clash:
+                c.drawCircle(float(pts[k, 0]), float(pts[k, 1]), 30, SP((255, 80, 80), 6, 255 * fail))
+        L.chip(c, 'SPEARMINT' if which == 0 else 'CARAWAY', float(pts[:, 0].mean()), max(470.0, float(pts[:, 1].min()) - 34), col, 32, ma)
+    if fail > 0.01: L.chip(c, "WRONG POCKET: NO FIT", 540, 1185, R, 36, fail)
+    ok = smooth((t - T_DOCK) / 0.3)
+    if ok > 0.01: L.chip(c, 'EACH FITS ITS OWN', 540, 1185, Y, 36, ok)
+    L.chip(c, 'RECEPTOR 1', 285, 1080, (220, 205, 255), 30, ma)
+    L.chip(c, 'RECEPTOR 2', 795, 1080, (200, 235, 255), 30, ma)
+    N.foreground(c, t)
 
 def shot8(c, t):
     """the lens from his nose into the epithelium; his face stays in a round inset"""
@@ -416,35 +457,44 @@ def shot8(c, t):
 
 
 def shot9(c, t):
-    """the inset grows back into the kitchen: mint, then the rye slice"""
+    """the inset grows back into the kitchen: the mint at his nose with the green spearmint carvone glowing beside it,
+    then he lowers it and lifts the rye: the gold caraway carvone glows beside the slice"""
     g = ease_io((t - LENS1) / 0.6)
-    zf, txf, tyf = lerp(1.6, 1.68, ease_io((t - LENS1) / (T_FREE - LENS1))), 560, lerp(950, 960, (t - LENS1) / 4)
+    zf, txf, tyf = lerp(1.6, 1.7, ease_io((t - LENS1) / (T_FREE - LENS1))), 560, lerp(950, 940, (t - LENS1) / 4)
+    gm = 1 - smooth((t - T_ITS2) / 0.5); gr = smooth((t - T_ITS2 - 0.5) / 0.5)
     if g < 1:
         receptor_shot(c, t)
         ix, iy, ir = INSET
-        r = lerp(ir, 1300, g); cx_, cy_ = lerp(ix, 540, g), lerp(iy, 960, g)
-        c.save(); q = skia.Path(); q.addCircle(cx_, cy_, r); c.clipPath(q, skia.ClipOp.kIntersect, True)
-        kitchen(c, t, zf, txf, tyf, glow_g=0.8, glow_a=smooth((t - T_RYE3 + 0.3) / 0.5))
+        rr = lerp(ir, 1300, g); cx_, cy_ = lerp(ix, 540, g), lerp(iy, 960, g)
+        c.save(); q = skia.Path(); q.addCircle(cx_, cy_, rr); c.clipPath(q, skia.ClipOp.kIntersect, True)
+        kitchen(c, t, zf, txf, tyf, glow_g=0.8 * gm, glow_a=gr)
         c.restore()
-        c.drawCircle(cx_, cy_, r, SP((255, 255, 255), 7, 230 * (1 - g)))
+        c.drawCircle(cx_, cy_, rr, SP((255, 255, 255), 7, 230 * (1 - g)))
     else:
-        kitchen(c, t, zf, txf, tyf, glow_g=0.8 * (1 - 0.5 * smooth((t - T_ITS2) / 0.5)), glow_a=smooth((t - T_RYE3 + 0.3) / 0.5))
-    ga = smooth((t - LENS1 - 0.3) / 0.4)
-    if ga > 0.01:
-        kw, ph, far, m = cook_state(t)
-        sp = to_screen(zf, txf, tyf, *A.held(kw, 'n')[0])
-        L.chip(c, 'MINT', sp[0] + 40, sp[1] - 300, G, 40, ga * (1 - smooth((t - T_ITS2) / 0.3)))
-        ra = smooth((t - T_RYE3 + 0.25) / 0.4)
-        if ra > 0.01 and ph == 'lift':
-            q = to_screen(zf, txf, tyf, *A.held(kw, 'f')[0])
-            L.chip(c, 'RYE BREAD', min(q[0] + 200, 880), q[1] - 40, AMB, 40, ra)
+        kitchen(c, t, zf, txf, tyf, glow_g=0.8 * gm, glow_a=gr)
+    payoff_mols(c, t, zf, txf, tyf, g)
 
+
+def payoff_mols(c, t, z, tx, ty, a=1.0):
+    gm = 1 - smooth((t - T_ITS2) / 0.5); gr = smooth((t - T_ITS2 - 0.4) / 0.5)
+    sc = 30 * z
+    if gm > 0.01:
+        x, y = to_screen(z, tx, ty, 660, 700)
+        pp = proj(BASE @ M.rot(0.0, 0.2 * math.sin(t)).T, x, y + 6 * math.sin(t * 1.3), sc)
+        c.drawCircle(x, y, 190, P((120, 240, 140), 120 * gm * a, MaskFilter=blur(60), BlendMode=skia.BlendMode.kScreen))
+        M.draw(c, pp, sc, gm * a, G, gm)
+    if gr > 0.01:
+        x, y = to_screen(z, tx, ty, 680, 720)
+        pp = proj(MIRR @ M.rot(0.0, -0.2 * math.sin(t)).T, x, y + 6 * math.sin(t * 1.3), sc)
+        c.drawCircle(x, y, 190, P((255, 200, 90), 130 * gr * a, MaskFilter=blur(60), BlendMode=skia.BlendMode.kScreen))
+        M.draw(c, pp, sc, gr * a, AMB, gr)
 
 def shot10(c, t):
-    u = ease_io((t - T_FREE + 0.3) / 1.8)
-    z = lerp(1.68, 1.18, u); tx = 560; ty = lerp(960, 990, u)
-    kitchen(c, t, z, tx, ty, glow_g=0.4, glow_a=0.8)
-
+    """end on him smelling the rye and smiling, a slow push in (no static wide)"""
+    u = ease_io((t - (T_FREE - 0.3)) / (DUR - T_FREE + 0.3))
+    z = lerp(1.7, 2.15, u); tx = lerp(560, 500, u); ty = lerp(940, 860, u)
+    kitchen(c, t, z, tx, ty, glow_a=1.0)
+    payoff_mols(c, t, z, tx, ty, 1 - u * 0.4)
 
 def scene(c, t):
     if t < C1: shot1(c, t)
@@ -461,6 +511,17 @@ def scene(c, t):
 
 FIX = {'kyral.': 'chiral.', 'kyral': 'chiral', 'FLIPPED,': 'flipped,', 'levlprep': 'levlprep'}
 SHORT = kit.Short(WD, 'ORGANIC CHEMISTRY', TITLES, scene, DUR, T_END, fix=FIX, cuts=CUTS)
+
+
+# caption phrases kept whole (fix round: "it are chiral too" had shown alone)
+_SIZES = [4, 4, 3, 3, 3, 3, 4, 4, 3, 3, 3, 3, 3, 2, 2, 4, 4, 3, 5, 4, 3, 4, 4, 4, 4, 3, 5, 3, 3, 4, 4, 3, 4, 2]
+_flat = [x for ch in SHORT.cap.chunks for x in ch]
+assert sum(_SIZES) == len(_flat), (sum(_SIZES), len(_flat))
+_ch, _i = [], 0
+for _n in _SIZES:
+    _ch.append(_flat[_i:_i + _n]); _i += _n
+SHORT.cap.chunks = _ch
+
 
 if __name__ == '__main__':
     out, st = kit.args()

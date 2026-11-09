@@ -1,0 +1,61 @@
+**Review by rA** (40.3 s). I viewed a contact sheet (a still every 1.5 s) and 8 enlarged stills at 0.5, 2, 5, 16, 19.5, 24, 26 and 36 s. I did not extract 4 fps hand-action frames or hand crops, and I did not listen to the audio. My notes on sound and on frame-by-frame hand motion are inferred from the stills and the narration text.
+
+**Section notes**
+- **S1 (0–4.0), hook:**
+  - The hook is a title card plus a question, "SAME MOLECULE?", then "MIRROR IMAGE MOLECULES". It is clean and readable.
+  - Both molecules start faded and ghosted over the window, and the labels are low contrast. The molecules sit against a bright window, so the "SPEARMINT" label is clipped at the right edge around 3 s.
+  - The man holds the mint and bread with an arm stretched out. The bread hovers above the forearm with no fingers on it, so it is unsupported.
+  - The hook is not a real story hook. It states the topic and does not raise a question the viewer needs answered.
+- **S2 (4.0–8.5):**
+  - Close-up on the spearmint with a good slow push. At ~5 s the bread floats at the bottom right, partly hidden by his sleeve and cut off by the caption. It is not held, and no hand is on it.
+  - The title "SPEARMINT" switches cleanly.
+  - At ~7 s the carvone molecule sits at the top right, overlapping the corner of the frame. It is small, and the "SPEARMINT" label is tiny.
+- **S3 (8.5–13.8):**
+  - The bread close-ups look good, and the caraway seeds and the carvone label read well.
+  - The bread shot is a pleasant static-ish pan. It is the least "story" part and works as a list of facts.
+  - The molecule hovers over the bread with nothing moving it.
+  - The narration jumps from "spearmint's smell is carvone" to "rye bread's smell comes from caraway", which is slightly confusing. Visually, "RYE" at 0.5 s and "CARAWAY" at 16 s label the same molecule differently.
+- **S4 (13.8–17.2):**
+  - The two carvone molecules are mirrored across a vertical plane, which is correct: the carbonyl is at bottom-left against bottom-right, and the methyl groups flip.
+  - The labels "SPEARMINT" and "CARAWAY" sit directly over the blurred background. The caption "ONE IS FLIPPED" is good.
+  - The plane glass slab is a nice touch. The molecules are large and clear, and this is the best chemistry shot.
+- **S5 (17.2–23.4):**
+  - The hands show left and right and then overlay. They are clearly flat and illustrated, but the arms are very long and thin and the sleeves are cut at the bottom. The wrists look a bit stiff.
+  - The overlay hand, drawn in red outline, is a good visual. The "LEFT / RIGHT" labels sit over the arms, and "THUMBS DON'T MATCH" and "PALM FACES AWAY" are small, bottom-centre, and crowd the caption.
+  - The hand "laid on" the other appears to slide on its own with no visible shoulder or body motion. This is a contact and motion concern: the arms are disembodied, since the man is blurred in the background and the arms don't clearly connect to him.
+  - The "NEVER LINES UP" title is red on a bright, warm background. It is readable, but it sits near the top of the frame.
+- **S6 (23.4–25.5):**
+  - "CHIRAL" shows the molecules overlaid. The overlay is confusing: a green molecule with an extra side group and a brown one that is not clearly the mirror of the first. At this moment they look like two different molecules, not an overlay of mirror images, so the picture undermines the point.
+  - It is also very busy for 2 s, with the labels "CARAWAY" and "SPEARMINT" tiny and the "SIDE GROUP DOESN'T MATCH" note too small for a phone.
+- **S7 (25.5–28.2):**
+  - A good return to the character with the question "HOW DOES HIS NOSE TELL?". The face is expressive.
+  - The bread is again at the bottom, partly behind the caption, and not held by a visible hand. The mint is held in the fist, which is fine.
+- **S8 (28.2–33.2):**
+  - The receptor scene is the spectacle: purple and blue receptor pockets with the two molecules approaching. It is a colour change and a real visual idea.
+  - "WRONG POCKET: NO FIT" and "EACH FITS ITS OWN" labels are tiny. The phone text is very small and sits over the receptor art.
+  - The science claim is roughly right ("receptors are chiral, so each fits differently"). It should not claim that one receptor means mint and the other means rye. The "Receptor 1 / Receptor 2" labelling is hedged enough, but it still suggests a simple two-receptor lock. In reality the odor comes from combined receptor activation patterns.
+  - The nose is only shown as a cartoon tissue cross-section with a small nostril circle.
+- **S9 (33.2–37.1):** Back on the man: "MINT" and then "MINT OR RYE". He holds the mint in one hand and the bread in the other, raised in the air. The bread now floats above his raised arm with no visible fingers. The mirror molecule hovers over his head. It lands the idea (one flips, the other changes smell) but with no real emotional reaction from him, such as a sniff or a smile.
+- **S10 (37.1–end):** The ending is the call to action, "FREE PRACTICE LEVLPREP.COM". The brief says to end on the payoff, but it ends on a plug. The title card is big and clear. The frame is static with only a slow zoom, and the CTA repeats the URL twice (title and caption plus a bottom badge).
+
+**Whole-video notes**
+- **Story:** It is an explainer with a character, not a story. It has no problem, no tension, and no turn, only facts in sequence.
+- **Hand contact:**
+  - In the opening and closing kitchen shots the bread floats over the forearm with no fingers on it, so it fails the "hand ON the thing it holds" rule. That is the biggest flaw against the channel brief.
+  - In the 5 s and 25 s close-ups the bread sits in the corner and is never clearly held.
+  - The mint is held properly in the fist.
+  - In the hands scene, the arms are disconnected from the body and move on their own.
+- **Phone readability:** Many labels (RYE, SPEARMINT, CARAWAY, RECEPTOR 1, WRONG POCKET) are at or below about 14 px equivalent. Captions are good. Some titles sit over bright window and sky areas.
+- **Chemistry:** The mirror-image molecules at 16 s are true mirror images, and the claim that receptors are chiral is acceptable. The S6 overlay looks like two different molecules. The "rye" versus "caraway" labelling is inconsistent.
+- **Motion and finish:** The camera moves slowly and there are blur and film-grain touches. Most shots move, but S10 and some title-only holds feel static. The audio was not checked.
+
+SCORES S1=6 S2=7 S3=7 S4=8 S5=6 S6=5 S7=7 S8=7 S9=6 S10=5 OVERALL=6 HOOK=5 FUN=5 ENDING=5 CONTACT=4
+TOP FIXES:
+- Put a visible hand and fingers on the bread in every shot (0–4 s, 5 s, 25–28 s, 33–37 s). The bread now floats over the forearm or sits unheld in the corner.
+- Redraw the S6 "CHIRAL" overlay so it clearly shows the same molecule and its mirror image. As drawn they look like two different molecules.
+- Make the hook a real question or surprise ("Why does the same molecule smell like two things?") with the molecules fully visible from frame 1, not ghosted over the bright window.
+- End on the payoff (a sniff and a reaction, or a mint-versus-rye reveal) and keep the URL as a short tag. The ending is currently a plug.
+- Make the small labels bigger (molecule names, "WRONG POCKET", "THUMBS DON'T MATCH", receptor labels). Keep them off the bright window and clear of the captions.
+- Use consistent names ("rye" versus "caraway") and keep the carvone molecule from clipping at the frame edge (about 3 s).
+- Connect the arms in the hands scene to the body, or show the shoulder, and make sure the laid-on hand is moved by the arm, not by itself.
+- Soften the receptor claim so it doesn't imply one receptor means mint and another means rye.

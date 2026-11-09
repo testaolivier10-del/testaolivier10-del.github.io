@@ -47,8 +47,7 @@ bed('birds_real', 0, B.C3, 1.0)                        # birds outside the kitch
 bed('birds_real', B.LENS1, DUR, 0.9)
 put(fx, 'cloth_real', 0.02, 0.5, maxlen=0.6, fade_out=0.3)            # the sprig's leaves rustle as he lifts it
 put(fx, 'cloth_real', B.T_LAY + 0.85, 0.6, maxlen=0.4, fade_out=0.2)  # his left palm lands on his right
-put(fx, 'glass_clink_real', B.T_EACH + 0.7, 0.35, maxlen=0.8, fade_out=0.4)   # the spearmint form clicks into its receptor
-put(fx, 'page_flip_real', B.T_ITS2 + 0.45, 0.5, maxlen=0.5, fade_out=0.2)    # he picks up the slice of rye
+put(fx, 'glass_clink_real', B.T_DOCK - 0.05, 0.35, maxlen=0.8, fade_out=0.4)   # the spearmint form clicks into its receptor
 shape_pts = [0, B.C5 - 0.2, B.C5 + 0.3, B.C6, B.C6 + 0.4, B.LENS1, B.LENS1 + 0.5, DUR], [1.0, 1.0, 0.85, 0.75, 0.75, 0.9, 1.1, 1.0]
 
 mus, _ = librosa.load(MUS, sr=SR, mono=True)
