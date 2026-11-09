@@ -66,8 +66,15 @@ and work like that mockup.
   `status` (grading rules below), `curriculum`, `href`, bank lookups. NREMT topic map: `assets/class/nremt-map.js`
   (built by `scripts/build-class-maps.mjs`; rerun after an NREMT bank change, `--check` and the test fail otherwise).
 - Student side: `assets/class/class-student.js`, lazy loaded by `assets/site-chrome.js` (`CLASS_DIRS`) on class
-  course pages for signed-in visitors; pushes the summary (at most once a minute, only on change) and draws "From
-  your teacher" on the course home (assignments, newest 5 announcements, live link). Join page: `join.html` +
+  course pages for signed-in visitors; pushes the summary (at most once a minute, only on change) and loads
+  `assets/class/class-view.js` + `class-view.css` on the course home: a **Path | My class** switch under the band (My
+  class only for a student in a class; opens on My class when something is due or a live session is open, else Path;
+  last view kept in sessionStorage; addresses `#path`, `#class`, `#class/assign`, `#class/results`, `#class/info`).
+  My class has a side menu: Overview (due, done, average score, next up, practice to strengthen, latest announcement,
+  live link), Assignments (To do, Optional, Done, Missing as plain lists), Results (topic mastery with words, weak-topic
+  practice card, finished work with scores) and Class info (what the teacher sees, leave class, join another). Scores and
+  mastery only, no letter grade, no comparing students; "Practice to strengthen" never changes class numbers. All
+  computed in the browser from `summarize` and `status`. Design spec: Design artifact "Class view" (2026-11). Join page: `join.html` +
   `assets/class/join.js` (also "Your classes" and sending FRQ drafts). Answer picks: one line in each course's
   question code writes `<course>_picks_v1`.
 - Assignment runner (AP® courses): `assets/class/class-run.js` + `class-run.css`, fetched only when the address has
@@ -202,6 +209,8 @@ the owner.
   `class_ext_links` columns.
 
 ## Gaps (said in the UI or left out)
+- My class shows scores as the student computes them. A teacher "hide scores from students" setting needs a backend column and is not built.
+- PR #175 (card footnote overlap) is replaced by the My class view; the old "From your teacher" card is gone.
 
 - Controls (time limits, shuffle, held answers, teacher questions) only on the AP® courses; FRQ assignments take no
   controls; teacher questions are single choice only, and in a full exam with calculator parts they sit in the

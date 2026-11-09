@@ -1,0 +1,106 @@
+/* Teacher classes, the student's "My class" view (assets/class/class-view.js, docs/teacher-classes.md).
+   Plain on purpose: a white page, big bold group headings with a dark rule under them, wide spacing, one
+   primary button per list. The course colour comes from [data-cover] (--accent, --ctint) set in class.css. */
+.lvs.is-top{position:relative;z-index:3;margin:-110px 0 70px;display:flex}
+@media (max-width:1100px){.lvs.is-top{margin-top:-90px;margin-bottom:56px}}
+.lvs.is-top ~ .lp-home{margin-top:0}
+.lvs-seg{display:inline-flex;gap:4px;padding:5px;background:var(--white,#fff);border:1px solid var(--line,#e3e8f0);border-radius:999px;box-shadow:0 18px 40px -26px rgba(11,26,51,.45)}
+.lvs-seg a{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 22px;border-radius:999px;font:800 16px var(--font-ui);color:var(--ink,#0b1a33);text-decoration:none;white-space:nowrap}
+.lvs-seg a[aria-selected="true"]{background:var(--accent,#2c6a2a);color:#fff}
+.lvs-seg a:not([aria-selected="true"]):hover{background:var(--ctint,#e4f1dd)}
+.lvs-seg a:focus-visible{outline:3px solid #ffd23f;outline-offset:2px}
+.lvs-b{font:800 12.5px var(--font-ui);background:#ffd23f;color:#0b1a33;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.lvs-b.is-live{background:#e0245e;color:#fff}
+.lvs-seg a[aria-selected="true"] .lvs-b{background:#fff;color:var(--accent,#2c6a2a)}
+
+/* While My class is open the home's other blocks step aside. */
+.r3-home.lv-on .hwrap.lv-keep > :not(.lvs):not(.lvx){display:none}
+.r3-home.lv-on > :not(.band):not(.hwrap){display:none}
+
+.lvx{position:relative;z-index:3;display:grid;grid-template-columns:230px minmax(0,1fr);gap:34px;align-items:start;margin:0 0 56px;color:var(--ink,#0b1a33)}
+.lvx[hidden]{display:none}
+.lvx p{margin:0}
+.lvx-side{position:sticky;top:calc(var(--site-header-h,112px) + 18px);background:var(--white,#fff);border:1px solid var(--line,#e3e8f0);border-radius:22px;padding:20px 16px;box-shadow:0 24px 50px -34px rgba(11,26,51,.4)}
+.lvx-who{font:900 20px/1.15 var(--font-ui);letter-spacing:-.02em;padding:0 8px}
+.lvx-cls{font:700 14.5px var(--font-ui);color:var(--muted,#55627a);padding:2px 8px 10px}
+.lvx-pill{display:inline-block;margin:0 8px 12px;border:1.5px solid var(--accent,#2c6a2a);color:var(--accent,#2c6a2a);border-radius:999px;padding:2px 11px;font:800 12.5px var(--font-ui)}
+.lvx-pick{display:block;margin:0 8px 12px}.lvx-pick span{display:block;font:800 11.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#55627a);margin-bottom:4px}
+.lvx-pick select{width:100%;min-height:40px;border:1.5px solid var(--line,#e3e8f0);border-radius:10px;font:700 14px var(--font-ui);padding:0 8px;background:var(--white,#fff);color:inherit}
+.lvx-side nav{display:flex;flex-direction:column;gap:2px;margin-top:6px}
+.lvx-side nav a{display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:0 12px;border-radius:12px;font:800 16px var(--font-ui);color:var(--ink,#0b1a33);text-decoration:none}
+.lvx-side nav a:hover{background:var(--surface2,#f2f5fa)}
+.lvx-side nav a[aria-current="page"]{background:var(--ctint,#e4f1dd);color:var(--accent,#2c6a2a)}
+.lvx-side nav b{font:800 13px var(--font-ui);background:var(--accent,#2c6a2a);color:#fff;border-radius:999px;padding:1px 9px}
+.lvx-side a:focus-visible,.lvx-btn:focus-visible{outline:3px solid #ffd23f;outline-offset:2px}
+.lvx-body{min-width:0;display:flex;flex-direction:column;gap:22px}
+
+.lvx-card{background:var(--white,#fff);border:1px solid var(--line,#e3e8f0);border-radius:22px;padding:26px 28px;box-shadow:0 24px 50px -34px rgba(11,26,51,.4)}
+.lvx-card > h2{font:900 26px/1.1 var(--font-ui);letter-spacing:-.025em;margin:0 0 6px}
+.lvx-note{font:700 14.5px/1.4 var(--font-ui);color:var(--muted,#55627a);margin:0 0 4px!important}
+.lvx-empty{font:700 16px var(--font-ui);color:var(--muted,#55627a);padding:14px 0}
+.lvx-h{font:800 12.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#55627a);margin:18px 0 6px!important}
+
+.lvx-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.lvx-stat{background:var(--white,#fff);border:1px solid var(--line,#e3e8f0);border-radius:20px;padding:18px 22px}
+.lvx-stat .k{font:800 12px var(--font-ui);letter-spacing:.07em;color:var(--muted,#55627a)}
+.lvx-stat .v{font:900 38px/1.1 var(--font-ui);letter-spacing:-.03em;margin-top:4px}
+.lvx-stat .s{font:700 14px var(--font-ui);color:var(--muted,#55627a);margin-top:2px}
+
+/* Rows: one title, one grey line, one button. The first row of a list has no rule above it. */
+.lvx-g{margin-top:44px}.lvx-g.is-first{margin-top:22px}
+.lvx-g > h3{display:flex;align-items:baseline;gap:10px;margin:0;padding-bottom:10px;border-bottom:2px solid var(--ink,#0b1a33);font:900 22px/1.1 var(--font-ui);letter-spacing:-.02em}
+.lvx-g > h3 em{font:800 17px var(--font-ui);font-style:normal;color:var(--muted,#55627a)}
+.lvx-row,.lvx-frow{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 0;border-top:1px solid var(--line,#e3e8f0)}
+.lvx-row.is-first,.lvx-frow.is-first,.lvx-card > .lvx-row:first-of-type{border-top:0}
+.lvx-main{min-width:0;flex:1}
+.lvx-t{font:800 18px/1.25 var(--font-ui);letter-spacing:-.01em}
+.lvx-m{font:700 14.5px/1.4 var(--font-ui);color:var(--muted,#55627a);margin-top:3px!important}
+.lvx-m b{color:var(--ink,#0b1a33)}
+.lvx-main .lvx-tag{margin-bottom:6px}
+.lvx-tag{display:inline-block;font:800 12.5px var(--font-ui);border-radius:999px;padding:3px 11px;background:var(--surface2,#f2f5fa);color:var(--muted,#55627a)}
+.lvx-tag.is-due{background:#fff2c2;color:#5a4200}
+.lvx-tag.is-late,.lvx-tag.is-warn{background:#fde4e4;color:#9b1c1c}
+.lvx-tag.is-rec{background:var(--ctint,#e4f1dd);color:var(--accent,#2c6a2a)}
+.lvx-tag.is-res{background:#e8eefc;color:#1d44a6}
+.lvx-bar{height:7px;border-radius:99px;background:var(--surface2,#eaeff6);margin-top:9px;max-width:420px;overflow:hidden}
+.lvx-bar i{display:block;height:100%;background:var(--accent,#2c6a2a);border-radius:99px}
+.lvx-frow b{font:800 16px var(--font-ui);white-space:nowrap}
+.lvx-fold{margin-top:10px!important}
+.lvx-fold button{background:none;border:0;padding:6px 0;font:800 15px var(--font-ui);color:var(--accent,#2c6a2a);cursor:pointer;text-decoration:underline}
+
+.lvx-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:12px;border:2px solid #ffd23f;background:#ffd23f;color:#0b1a33;font:900 15.5px var(--font-ui);text-decoration:none;white-space:nowrap;cursor:pointer;flex:none}
+.lvx-btn.is-ghost{background:transparent;border-color:var(--line,#d5dce8);color:var(--ink,#0b1a33)}
+.lvx-btn.is-ghost:hover{border-color:var(--ink,#0b1a33)}
+.lvx-btn.is-gold{background:#ffd23f}
+
+.lvx-live{display:flex;align-items:center;gap:16px;background:#fff7d6;border:2px solid #ffd23f;border-radius:20px;padding:16px 22px}
+.lvx-live > div{flex:1;min-width:0}.lvx-live .b{font:900 18px var(--font-ui)}.lvx-live p:not(.b){font:700 14.5px var(--font-ui);color:#5a4200}
+.lvx-live .dot{width:12px;height:12px;border-radius:50%;background:#e0245e;flex:none;box-shadow:0 0 0 5px rgba(224,36,94,.2)}
+.lvx-ann{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px}
+.lvx-ann li{background:var(--ctint,#e4f1dd);border-radius:14px;padding:12px 16px}
+.lvx-ann p{font:700 16px/1.45 var(--font-ui);white-space:pre-line}.lvx-ann span{font:700 13px var(--font-ui);color:var(--muted,#55627a)}
+
+.lvx-weak{display:flex;align-items:center;justify-content:space-between;gap:18px;background:var(--ctint,#e4f1dd);border-radius:20px;padding:18px 24px}
+.lvx-weak .b{font:900 19px var(--font-ui)}.lvx-weak p:not(.b){font:700 14.5px/1.4 var(--font-ui);color:var(--muted,#3d4a60);margin-top:2px}
+.lvx-trow{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(90px,1fr) 92px 70px;align-items:center;gap:16px;padding:12px 0;border-top:1px solid var(--line,#e3e8f0);font:700 16px var(--font-ui)}
+.lvx-trow b{font-weight:800}.lvx-trow a{font:800 14.5px var(--font-ui);color:var(--accent,#2c6a2a)}
+.lvx-meter{height:9px;border-radius:99px;background:var(--surface2,#eaeff6);overflow:hidden}
+.lvx-meter i{display:block;height:100%;border-radius:99px;background:var(--accent,#2c6a2a)}
+.lvx-meter.is-mid i{background:#e0a100}.lvx-meter.is-low i{background:#d64545}
+.lvx-two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.lvx-two ul{margin:0;padding-left:18px;font:700 15px/1.5 var(--font-ui);color:var(--muted,#3d4a60)}
+.lvx-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding-top:20px;border-top:1px solid var(--line,#e3e8f0)}
+
+@media (max-width:899px){
+  .lvx{grid-template-columns:minmax(0,1fr);gap:18px}
+  .lvx-side{position:static;padding:14px}
+  .lvx-side nav{flex-direction:row;overflow-x:auto;gap:6px}
+  .lvx-side nav a{white-space:nowrap;flex:none}
+  .lvx-stats{gap:8px}.lvx-stat{padding:12px 12px}.lvx-stat .v{font-size:28px}.lvx-stat .s{font-size:12.5px}.lvx-stat .k{font-size:11px}
+  .lvx-card{padding:20px 18px}
+  .lvx-row,.lvx-frow,.lvx-weak,.lvx-live{flex-wrap:wrap}
+  .lvx-row .lvx-btn,.lvx-weak .lvx-btn,.lvx-live .lvx-btn{width:100%}
+  .lvx-trow{grid-template-columns:minmax(0,1fr) 84px;row-gap:6px}.lvx-trow .lvx-meter{grid-column:1/-1;grid-row:2}
+  .lvx-two{grid-template-columns:minmax(0,1fr)}
+  .lvs-seg a{padding:0 16px;font-size:15px}
+}
