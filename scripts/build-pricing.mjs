@@ -446,14 +446,26 @@ put('premium.html', premiumPage());
 
 function hubPricing() {
   const low = Math.min(...ORDER.map((k) => lowest(COURSES[k]).price));
-  /* Free and Premium in one line (consistency audit 2026-11, D9: the homepage told the free/Premium story twice
-     and premium.html, About and Account told it again). The full story lives on premium.html; this is the one
-     short mention the homepage keeps, with the founding price while it lasts. */
-  const amount = founding
-    ? `from ${money(low)}<span data-founding-until="${founding.until}"> (${money(foundingPrice(low))} founding price until ${longDate(founding.until)})</span>`
-    : `from ${money(low)}`;
-  return `  <section class="home-deal" aria-label="Free and Premium">
-    <p class="home-deal__line"><span class="pill">Free and Premium</span> Notes are free forever in every course. Premium is a one-time pass per course, ${amount}, with no subscription. <a href="premium.html">What Premium adds, and every price</a></p>
+  /* Free and Premium as one card (owner 2026-11-08, canvas in Project doc claude/levlprep-home-pair.md): the left half
+     of the homepage's .home-pair row, the teacher card (static in index.html) on the right. Still the one short
+     mention of the free/Premium story on the homepage (consistency audit 2026-11, D9); the full story lives on
+     premium.html. The founding price shows until its date, then the hide script below removes it and the struck
+     full price reads plain again. */
+  const short = (iso) => { const d = new Date(iso + 'T12:00:00Z');
+    return `${d.getUTCDate()} ${d.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' })} ${d.getUTCFullYear()}`; };
+  const price = founding
+    ? `From <b class="pair-full">${money(low)}</b><span data-founding-until="${founding.until}"><b class="pair-now">${money(foundingPrice(low))}</b> founding price until ${short(founding.until)}</span>`
+    : `From <b class="pair-full">${money(low)}</b>`;
+  return `  <section class="pair-card" aria-labelledby="home-deal-h">
+    <span class="pill">Free and Premium</span>
+    <h2 id="home-deal-h">Notes are <span>free forever.</span></h2>
+    <ul class="pair-list">
+      <li>Premium is one payment per course</li>
+      <li>No subscription, never renews</li>
+      <li>Full refund within 7 days</li>
+    </ul>
+    <p class="pair-price">${price}</p>
+    <div class="pair-ctas"><a class="btn-ghost" href="premium.html">What Premium adds</a></div>
   </section>
 <script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});})();</script>`;
 }
