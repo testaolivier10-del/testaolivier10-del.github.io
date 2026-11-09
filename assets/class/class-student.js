@@ -7,15 +7,15 @@
        localStorage['levlprep_classes_v1'])
      - pushes their summary of this course (LevlClassModel.summarize) after a
        change, at most once a minute, and only when it changed
-     - draws "From your teacher" on the course home: each assignment, where
-       they stand on it and a link to do it
+     - on the course home, loads class-view.js: the Path | My class switch and the
+       class pages (overview, assignments, results, class info)
    Nothing runs for anyone not in a class of this course: one cached read. */
 (function(){
   'use strict';
   if(window.LevlClassStudent) return;
   // levlprep_ keys: cleared with the rest of a student's data at sign-out and account deletion (assets/account.js).
   var CACHE = 'levlprep_classes_v1', LAST = 'levlprep_class_push_v1', DONE = 'levlprep_class_done_v1', TTL = 20 * 60000, GAP = 60000;
-  var list = null, timer = null, lastPushAt = 0, started = false, wired = false;
+  var list = null, timer = null, lastPushAt = 0, started = false, wired = false, viewLoading = false;
 
   function M(){ return window.LevlClassModel; }
   function A(){ return window.StudyHubAccount; }
@@ -88,59 +88,18 @@
   }
   var KIND = { practice: 'Practice', review: 'Review', mastery: 'Mastery', exam: 'Practice exam', frq: 'Free response' };
 
-  function card(course){
-    var host = document.querySelector('main.r3-home');
-    var classes = mine(course);
-    var old = document.getElementById('lvClassCard'); if(old) old.remove();
-    if(!host || !classes.length) return;
-    var now = Date.now(), sum = M().summarize(course, function(k){ return localStorage.getItem(k); }, now);
-    var html = classes.map(function(c){
-      var open = (c.assignments || []).filter(function(a){ return Date.parse(a.opens_at) <= now; });
-      var rows = open.map(function(a){
-        var st = M().status(a, sum, now), pct = st.total ? Math.round(st.answered / st.total * 100) : 0;
-        var tag = st.state === 'done' ? '<span class="lvc-tag is-done">Done' + (st.late ? ', late' : '') + '</span>'
-          : st.state === 'missing' ? '<span class="lvc-tag is-late">Missing</span>'
-          : !a.required ? '<span class="lvc-tag">Optional</span>'
-          : st.late ? '<span class="lvc-tag is-late">Late</span>'
-          : '<span class="lvc-tag is-req">' + esc(dueWords(a.due_at, now)) + '</span>';
-        var topics = (a.spec && a.spec.topicNames) || [];
-        var meta = KIND[a.kind] + (a.kind === 'practice' ? ' · ' + st.answered + ' of ' + st.total + ' questions' : a.kind === 'review' ? (st.total ? ' · ' + st.answered + ' of ' + st.total + ' redone' : ' · nothing to redo yet') : '') +
-          (topics.length ? ' · ' + esc(topics.slice(0, 3).join(', ')) + (topics.length > 3 ? ' and ' + (topics.length - 3) + ' more' : '') : '');
-        var btn = st.state === 'done' ? '<a class="lvc-btn is-ghost" href="' + esc(href(a)) + '">Open again</a>' : '<a class="lvc-btn" href="' + esc(href(a)) + '">' + (st.answered ? 'Keep going' : 'Start') + '</a>';
-        var chips = a.kind === 'practice' && a.spec && a.spec.topics && a.spec.topics.length > 1
-          ? '<p class="lvc-chips">' + a.spec.topics.map(function(t, i){ return '<a href="' + esc(M().topicHref(course, t)) + '">' + esc((a.spec.topicNames || [])[i] || t) + '</a>'; }).join('') + '</p>' : '';
-        return '<li class="lvc-row">' + tag + '<p class="lvc-t">' + esc(a.title) + '</p><p class="lvc-m">' + meta + '</p>' +
-          ((a.kind === 'practice' || a.kind === 'review') && st.state !== 'done' ? '<div class="lvc-bar"><i style="width:' + pct + '%"></i></div>' : '') + chips + btn + '</li>';
-      }).join('');
-      // A live session open in class (class_mine live: true), then the teacher's newest five announcements.
-      var live = c.live ? '<p class="lvc-live"><a class="lvc-btn" href="/live.html?c=' + encodeURIComponent(c.id) + '">Join the live session</a></p>' : '';
-      var ann = (Array.isArray(c.announcements) ? c.announcements : []).slice().sort(function(x, y){ return (Date.parse(y.created_at || y.at) || 0) - (Date.parse(x.created_at || x.at) || 0); }).slice(0, 5);
-      var annHtml = ann.length ? '<ul class="lvc-ann" aria-label="Announcements">' + ann.map(function(n){
-        var at = Date.parse(n.created_at || n.at);
-        return '<li><p>' + esc(n.body || n.text || n.message || '') + '</p>' + (at ? '<span>' + esc(new Date(at).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })) + '</span>' : '') + '</li>';
-      }).join('') + '</ul>' : '';
-      return '<div class="lvc-class"><div class="lvc-head"><h2>From <span>' + esc(c.teacher || 'your teacher') + '</span></h2><p>' + esc(c.name) + '</p></div>' + live + annHtml +
-        (rows ? '<ul class="lvc-list">' + rows + '</ul>' : '<p class="lvc-empty">Nothing assigned right now.</p>') + '</div>';
-    }).join('');
-    var sec = document.createElement('section');
-    sec.id = 'lvClassCard'; sec.className = 'lvc'; sec.setAttribute('aria-label', 'From your teacher');
-    sec.innerHTML = html + '<p class="lvc-note">Your teacher sees your work in this course only. <a href="/join.html">Your classes</a></p>';
-    // Inside the page column, overlapping the band where the path card would, with the path card under it.
-    var col = host.querySelector('.band ~ .hwrap');
-    if(col){ sec.className = 'lvc is-top'; col.insertBefore(sec, col.firstChild); }
-    else host.insertBefore(sec, host.firstChild);
+  /* The home's Path | My class switch and the class pages live in class-view.js (loaded here, only for a student in a class). */
+  function view(){
+    if(window.LevlClassView){ window.LevlClassView.mount(pageC); return; }
+    if(viewLoading) return; viewLoading = true;
+    var s = document.createElement('script'); s.src = '/assets/class/class-view.js';
+    s.onload = function(){ if(window.LevlClassView) window.LevlClassView.mount(pageC); };
+    document.head.appendChild(s);
   }
-
   function css(){
     if(document.getElementById('lvClassCss')) return;
     var l = document.createElement('link'); l.id = 'lvClassCss'; l.rel = 'stylesheet'; l.href = '/assets/class/class.css';
     document.head.appendChild(l);
-    // Announcements and the live link (kept here so class.css, shared with the teacher app, stays A1's).
-    var st = document.createElement('style');
-    st.textContent = '.lvc-live{margin:6px 0 10px}.lvc-live .lvc-btn{display:inline-flex}.lvc-ann{list-style:none;margin:8px 0 6px;padding:0;display:grid;gap:8px}' +
-      '.lvc-ann li{background:var(--ctint,var(--surface2));border-radius:14px;padding:10px 14px}.lvc-ann p{margin:0;font-weight:700;color:var(--ink);white-space:pre-line}' +
-      '.lvc-ann span{font-size:13px;color:var(--muted)}';
-    document.head.appendChild(st);
   }
 
   function start(){
@@ -162,11 +121,11 @@
       refresh(false).then(function(){
         if(!mine(course).length) return;
         css();
-        if(isHome()) card(course);
+        if(isHome()) view();
         push(course, false);
         if(wired) return;
         wired = true;
-        document.addEventListener(course + ':progress', function(){ push(course, false); if(isHome()) card(course); });
+        document.addEventListener(course + ':progress', function(){ push(course, false); if(isHome() && window.LevlClassView) window.LevlClassView.render(); });
         // Leaving the page: send a change still waiting out the one-minute gap (unchanged summaries are never resent).
         window.addEventListener('pagehide', function(){ if(timer){ clearTimeout(timer); timer = null; lastPushAt = 0; push(course, false); } });
       });
@@ -179,6 +138,6 @@
     s.onload = start; document.head.appendChild(s);
   }
 
-  window.LevlClassStudent = { refresh: refresh, push: push, noteDone: noteDone, href: href, list: function(){ return list || []; } };
+  window.LevlClassStudent = { refresh: refresh, push: push, noteDone: noteDone, href: href, dueWords: dueWords, list: function(){ return list || []; } };
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
